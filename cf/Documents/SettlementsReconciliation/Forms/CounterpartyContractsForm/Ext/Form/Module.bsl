@@ -92,17 +92,3 @@ Procedure UncheckAll(Command)
 	
 EndProcedure // ClearCheckboxes()
 // 
-
-
-
-
-
-
-
-
-
-
-
-
-
-

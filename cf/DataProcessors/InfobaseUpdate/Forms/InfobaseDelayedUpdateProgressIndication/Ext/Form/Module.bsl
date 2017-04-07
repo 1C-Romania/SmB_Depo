@@ -455,17 +455,3 @@ Procedure ChangeScheduleAfterQuestion(Result, Schedule) Export
 EndProcedure
 
 #EndRegion
-
-
-
-
-
-
-
-
-
-
-
-
-
-

@@ -192,17 +192,3 @@ EndProcedure // SourceSelection()
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-

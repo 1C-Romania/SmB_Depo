@@ -49,16 +49,3 @@ Procedure ApplicationUpdateOrderDocumentCreated(Item)
 EndProcedure
 
 #EndRegion
-
-
-
-
-
-
-
-
-
-
-
-
-

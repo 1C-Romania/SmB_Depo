@@ -75,17 +75,3 @@ Procedure ExportVTSDEnd(Result, Parameters) Export
 	EndIf;
 	
 EndProcedure
-
-
-
-
-
-
-
-
-
-
-
-
-
-

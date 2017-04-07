@@ -170,17 +170,3 @@ Procedure AddSelectedUsersAtServer()
 EndProcedure
 
 #EndRegion
-
-
-
-
-
-
-
-
-
-
-
-
-
-

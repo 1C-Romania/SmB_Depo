@@ -40,17 +40,3 @@ Procedure OnCreateAtServer(Cancel, StandardProcessing)
 	SettingsComposer.Initialize(SettingsSource);
 	
 EndProcedure // OnCreateAtServer()
-
-
-
-
-
-
-
-
-
-
-
-
-
-

@@ -95,7 +95,16 @@
 					<xr:PasswordMode>false</xr:PasswordMode>
 					<xr:MarkNegatives>false</xr:MarkNegatives>
 					<xr:MinValue xsi:nil="true"/>
-					<xr:Synonym/>
+					<xr:Synonym>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Predefined</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Предопределенный</v8:content>
+						</v8:item>
+					</xr:Synonym>
 					<xr:Comment/>
 					<xr:FullTextSearch>Use</xr:FullTextSearch>
 					<xr:ChoiceParameterLinks/>
@@ -120,7 +129,16 @@
 					<xr:PasswordMode>false</xr:PasswordMode>
 					<xr:MarkNegatives>false</xr:MarkNegatives>
 					<xr:MinValue xsi:nil="true"/>
-					<xr:Synonym/>
+					<xr:Synonym>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Ref</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Ссылка</v8:content>
+						</v8:item>
+					</xr:Synonym>
 					<xr:Comment/>
 					<xr:FullTextSearch>Use</xr:FullTextSearch>
 					<xr:ChoiceParameterLinks/>
@@ -145,7 +163,16 @@
 					<xr:PasswordMode>false</xr:PasswordMode>
 					<xr:MarkNegatives>false</xr:MarkNegatives>
 					<xr:MinValue xsi:nil="true"/>
-					<xr:Synonym/>
+					<xr:Synonym>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Deletion mark</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Пометка удаления</v8:content>
+						</v8:item>
+					</xr:Synonym>
 					<xr:Comment/>
 					<xr:FullTextSearch>Use</xr:FullTextSearch>
 					<xr:ChoiceParameterLinks/>
@@ -279,7 +306,7 @@
 						</v8:item>
 						<v8:item>
 							<v8:lang>ru</v8:lang>
-							<v8:content>фамилия, имя, отчество</v8:content>
+							<v8:content>Полное имя</v8:content>
 						</v8:item>
 					</xr:Synonym>
 					<xr:Comment/>
@@ -1101,7 +1128,7 @@ Invalid users disappear from all lists when selecting or picking users in docume
 							</Synonym>
 							<Comment/>
 							<Type>
-								<v8:Type>cfg:CatalogRef.ContactInformationTypes</v8:Type>
+								<v8:Type>cfg:CatalogRef.ContactInformationKinds</v8:Type>
 							</Type>
 							<PasswordMode>false</PasswordMode>
 							<Format/>
@@ -1190,7 +1217,7 @@ Invalid users disappear from all lists when selecting or picking users in docume
 					</Attribute>
 					<Attribute uuid="3b6e7ee6-0ef5-464a-a01a-6143479c7a61">
 						<Properties>
-							<Name>FieldsValues</Name>
+							<Name>FieldValues</Name>
 							<Synonym>
 								<v8:item>
 									<v8:lang>en</v8:lang>
@@ -1402,7 +1429,7 @@ Invalid users disappear from all lists when selecting or picking users in docume
 					</Attribute>
 					<Attribute uuid="6534ea96-2145-49e6-9739-f59459dc7f6b">
 						<Properties>
-							<Name>EMail_Address</Name>
+							<Name>EmailAddress</Name>
 							<Synonym>
 								<v8:item>
 									<v8:lang>en</v8:lang>
@@ -1561,11 +1588,11 @@ Invalid users disappear from all lists when selecting or picking users in docume
 					</Attribute>
 					<Attribute uuid="6a91112c-f6cc-47a0-9d26-a36c7702af7d">
 						<Properties>
-							<Name>PhoneNumberNoCodes</Name>
+							<Name>PhoneNumberWithoutCodes</Name>
 							<Synonym>
 								<v8:item>
 									<v8:lang>en</v8:lang>
-									<v8:content>Phone Number w/o Codes</v8:content>
+									<v8:content>Phone number without codes</v8:content>
 								</v8:item>
 								<v8:item>
 									<v8:lang>ru</v8:lang>

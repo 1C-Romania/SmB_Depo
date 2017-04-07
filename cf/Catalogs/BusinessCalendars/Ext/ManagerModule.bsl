@@ -39,8 +39,8 @@ EndFunction
 //  layout data is used, otherwise, the business calendar data is
 //  generated based on the holidays information and considering existing weekends transfer rules.
 //
-Function ResultFillManufacturingCalendarDefault(BusinessCalendarCode, YearNumber) Export
-	
+Function ResultFillManufacturingCalendarDefault(BusinessCalendarCode, YearNumber, Type = "MondayFriday") Export
+
 	LengthOfDay = 24 * 3600;
 	
 	BusinessCalendarData = New ValueTable;
@@ -64,19 +64,51 @@ Function ResultFillManufacturingCalendarDefault(BusinessCalendarCode, YearNumber
 	
 	DayKinds = New Map;
 	
-	DateOfDay = Date(YearNumber, 1, 1);
-	While DateOfDay <= Date(YearNumber, 12, 31) Do
-		// "FromNonHoliday" day - determine considering the weekday.
-		WeekDayNumber = WeekDay(DateOfDay);
-		If WeekDayNumber <= 5 Then
-			DayKinds.Insert(DateOfDay, Enums.BusinessCalendarDayKinds.Working);
-		ElsIf WeekDayNumber = 6 Then
-			DayKinds.Insert(DateOfDay, Enums.BusinessCalendarDayKinds.Saturday);
-		ElsIf WeekDayNumber = 7 Then
-			DayKinds.Insert(DateOfDay, Enums.BusinessCalendarDayKinds.Sunday);
-		EndIf;
-		DateOfDay = DateOfDay + LengthOfDay;
-	EndDo;
+	If Type = "MondayFriday" Then
+	
+		DateOfDay = Date(YearNumber, 1, 1);
+		While DateOfDay <= Date(YearNumber, 12, 31) Do
+			// "FromNonHoliday" day - determine considering the weekday.
+			WeekDayNumber = WeekDay(DateOfDay);
+			If WeekDayNumber <= 5 Then
+				DayKinds.Insert(DateOfDay, Enums.BusinessCalendarDayKinds.Working);
+			ElsIf WeekDayNumber = 6 Then
+				DayKinds.Insert(DateOfDay, Enums.BusinessCalendarDayKinds.Saturday);
+			ElsIf WeekDayNumber = 7 Then
+				DayKinds.Insert(DateOfDay, Enums.BusinessCalendarDayKinds.Sunday);
+			EndIf;
+			DateOfDay = DateOfDay + LengthOfDay;
+		EndDo;
+		
+	ElsIf Type = "SundayThursday" Then
+	
+		DateOfDay = Date(YearNumber, 1, 1);
+		While DateOfDay <= Date(YearNumber, 12, 31) Do
+			// "FromNonHoliday" day - determine considering the weekday.
+			WeekDayNumber = WeekDay(DateOfDay);
+			If WeekDayNumber <= 4 Or WeekDayNumber = 7 Then
+				DayKinds.Insert(DateOfDay, Enums.BusinessCalendarDayKinds.Working);
+			ElsIf WeekDayNumber = 5 Or WeekDayNumber = 6 Then
+				DayKinds.Insert(DateOfDay, Enums.BusinessCalendarDayKinds.Sunday);
+			EndIf;
+			DateOfDay = DateOfDay + LengthOfDay;
+		EndDo;
+	
+	ElsIf Type = "SaturdayThursday" Then
+	
+		DateOfDay = Date(YearNumber, 1, 1);
+		While DateOfDay <= Date(YearNumber, 12, 31) Do
+			// "FromNonHoliday" day - determine considering the weekday.
+			WeekDayNumber = WeekDay(DateOfDay);
+			If WeekDayNumber <= 4 Or WeekDayNumber = 6 Or WeekDayNumber = 7 Then
+				DayKinds.Insert(DateOfDay, Enums.BusinessCalendarDayKinds.Working);
+			ElsIf WeekDayNumber = 5 Then
+				DayKinds.Insert(DateOfDay, Enums.BusinessCalendarDayKinds.Sunday);
+			EndIf;
+			DateOfDay = DateOfDay + LengthOfDay;
+		EndDo;
+	
+	EndIf;
 	
 	// If a weekend day and a public holiday match, the weekend day is transferred to the next working day after the holiday except of the weekends that match with public holidays during the New Year holidays and Christmas.	
 	

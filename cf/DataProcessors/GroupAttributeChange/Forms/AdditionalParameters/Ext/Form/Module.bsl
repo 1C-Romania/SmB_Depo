@@ -81,17 +81,3 @@ Procedure SetFormItems()
 EndProcedure
 
 #EndRegion
-
-
-
-
-
-
-
-
-
-
-
-
-
-

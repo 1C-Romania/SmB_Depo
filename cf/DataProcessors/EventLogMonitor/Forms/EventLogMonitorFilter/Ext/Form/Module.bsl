@@ -461,17 +461,3 @@ Function GetEventLogMonitorFilter()
 EndFunction
 
 #EndRegion
-
-
-
-
-
-
-
-
-
-
-
-
-
-

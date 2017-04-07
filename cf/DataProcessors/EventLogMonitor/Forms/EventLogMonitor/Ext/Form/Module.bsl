@@ -422,17 +422,3 @@ Procedure SetFilterOnClient()
 EndProcedure
 
 #EndRegion
-
-
-
-
-
-
-
-
-
-
-
-
-
-

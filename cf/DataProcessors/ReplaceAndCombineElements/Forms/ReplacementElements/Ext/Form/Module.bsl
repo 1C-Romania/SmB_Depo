@@ -44,7 +44,7 @@ Procedure OnCreateAtServer(Cancel, StandardProcessing)
 		NewColumn.DataPath = "List.Code";
 	EndIf;
 	
-	Items["ListRefNew"].Title = NStr("en='Description';ru='Наименование'");
+	Items["ListRefNew"].Title = NStr("en='Description';ru='Description'");
 	
 	Items.List.ChangeRowOrder = False;
 	Items.List.ChangeRowSet  = False;
@@ -1447,17 +1447,3 @@ Procedure BackgroundJobCancel()
 EndProcedure
 
 #EndRegion
-
-
-
-
-
-
-
-
-
-
-
-
-
-

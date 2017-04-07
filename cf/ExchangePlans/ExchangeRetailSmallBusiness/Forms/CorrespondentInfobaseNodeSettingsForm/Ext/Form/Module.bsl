@@ -204,17 +204,3 @@ Procedure UpdateDataToFormTable(Source, Receiver, AttributeName)
 	EndDo;
 	
 EndProcedure
-
-
-
-
-
-
-
-
-
-
-
-
-
-

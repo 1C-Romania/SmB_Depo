@@ -153,13 +153,13 @@ Function FormInputNameContactInformation(Val InformationKind) Export
 	
 	AllTypes = "Enum.ContactInformationTypes.";
 	If InformationType = PredefinedValue(AllTypes + "Address") Then
-		Return "DataProcessor.InputContactInformation.Form.InputAddress";
+		Return "DataProcessor.ContactInformationInput.Form.AddressInput";
 		
 	ElsIf InformationType = PredefinedValue(AllTypes + "Phone") Then
-		Return "DataProcessor.InputContactInformation.Form.InputPhone";
+		Return "DataProcessor.ContactInformationInput.Form.PhoneInput";
 		
 	ElsIf InformationType = PredefinedValue(AllTypes + "Fax") Then
-		Return "DataProcessor.InputContactInformation.Form.InputPhone";
+		Return "DataProcessor.ContactInformationInput.Form.PhoneInput";
 		
 	EndIf;
 	

@@ -8,17 +8,3 @@ Procedure OnCreateAtServer(Cancel, StandardProcessing)
 	Items.List.ReadOnly = Not AllowedEditDocumentPrices;
 	
 EndProcedure
-
-
-
-
-
-
-
-
-
-
-
-
-
-

@@ -112,17 +112,3 @@ Procedure OnOpen(Cancel)
 	EndIf;
 
 EndProcedure
-
-
-
-
-
-
-
-
-
-
-
-
-
-

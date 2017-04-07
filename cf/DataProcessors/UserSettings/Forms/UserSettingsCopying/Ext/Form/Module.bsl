@@ -65,7 +65,7 @@ Procedure NotificationProcessing(EventName, Parameter, Source)
 	ElsIf Upper(EventName) = Upper("SettingsChoice") Then
 		
 		SelectedSettings = New Structure;
-		SelectedSettings.Insert("ReportSettings", Parameter.ReportsSettings);
+		SelectedSettings.Insert("ReportSettings", Parameter.ReportSettings);
 		SelectedSettings.Insert("ExternalView", Parameter.ExternalView);
 		SelectedSettings.Insert("OtherSettings", Parameter.OtherSettings);
 		SelectedSettings.Insert("PersonalSettings", Parameter.PersonalSettings);
@@ -536,17 +536,3 @@ Procedure CheckActiveUsers()
 EndProcedure
 
 #EndRegion
-
-
-
-
-
-
-
-
-
-
-
-
-
-

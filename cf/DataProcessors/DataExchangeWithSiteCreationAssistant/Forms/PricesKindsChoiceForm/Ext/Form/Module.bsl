@@ -68,16 +68,3 @@ Procedure CommandOK(Command)
 	Close(SelectedPriceKinds);
 	
 EndProcedure
-
-
-
-
-
-
-
-
-
-
-
-
-

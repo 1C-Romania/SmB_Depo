@@ -82,54 +82,73 @@ Function UniversalDate() Export
 	Return SessionDate + ClientWorkParameters.AdjustmentToUniversalTime;
 EndFunction
 
-// Offers a user to set extension of work with files in the web client.
+// Suggests the user to install the file system extension in the web client.
 //
-// It is intended for use in the beginning of code fragments where work with files is executed.
-// ForExample:
+// Is intended to be used at the beginning of a script that processes files.
+// For example:
 //
-//    Notification = New NotifyDescription("PrintDocumentEnd", ThisObject);
-//    MessageText = NStr("en='To print document, it is required to set work with files extension.';ru='Для печати документа необходимо установить расширение работы с файлами.'");
-//    CommonUseClient.ShowQuestionOnFileOperationsExtensionSetting(Alert, MessageText);
+//    Notification = New NotifyDescription("PrintDocumentCompletion", ThisObject);
+//    MessageText = NStr("en='Document printing requires the file system extension to be installed.'");
+//    CommonUseClient.ShowFileSystemExtensionInstallationQuestion(Notification, MessageText);
 //
-//    Procedure DocumentPrintingEnd(ExtensionEnabled, AdditionalParameters)
-//      Export If ExtensionEnabled
-//      Then document printing code //that counts on the fact that the extension is enabled.
-//         ...
-//      Otherwise,
-//         document printing code that works without an enabled extension.
-//         ...
-//      EndIf;
+//    Procedure PrintDocumentCompletion(ExtensionAttached, AdditionalParameters) Export
+//    If ExtensionAttached Then 
+//      // script that prints a document using the extension
+//      // ....
+//    Else
+//      // script that prints a document without extension attaching
+//      // ....
+//    EndIf;
 //
 // Parameters:
-//   OnCloseNotifyDescription    - NotifyDescription - description
-//                                    of the procedure that will be called after closing the form with the following parameters:
-//                                      ExtensionAttached    - Boolean - True if the extension is enabled.
-//                                      AdditionalParameters - Arbitrary - parameters
-//                                                                               specified in WarningAboutClosingDescription.
-//   SuggestionText                - String - message type. If not specified the text is displayed by default.
-//   PossibleToContinueWithoutInstallation - Boolean - If True, then the ContinueWithoutSetting
-//                                              button will be shown if False, then the Continue button will be shown.
+//    NotifyOnCloseDescription    - NotifyDescription - description of the procedure to be
+//                                  called once the form is closed. Contains the following
+//                                  parameters:
+//                                   ExtensionAttached    - Boolean - True if the extension has
+//                                                          been attached.
+//                                   AdditionalParameters - Arbitrary - parameters defined in
+//                                                          OnCloseNotifyDescription.
+//    SuggestionText              - String - message text. If text is not specified, the
+//                                  default text is displayed.
+//   CanContinueWithoutInstalling - Boolean - if True is passed, the ContinueWithoutInstalling
+//                                  button is shown, if False is passed, the Cancel button is
+//                                  shown.
 //
-Procedure ShowQuestionAboutFileOperationsExtensionSetting(OnCloseNotifyDescription, SuggestionText = "", 
-	PossibleToContinueWithoutInstallation = True) Export
+Procedure  ShowFileSystemExtensionInstallationQuestion(NotifyOnCloseDescription,  SuggestionText = "", 
+	CanContinueWithoutInstalling = True) Export
 	
-	AlertDescriptionEnd = New NotifyDescription("ShowQuestionOnFileOperationsExtensionSettingEnd",
-		ThisObject, OnCloseNotifyDescription);
-	
+	Notification = New NotifyDescription("ShowFileSystemExtensionInstallationQuestionCompletion", ThisObject, NotifyOnCloseDescription);
 #If Not WebClient Then
-	// The extension is always enabled in thin and thick client.
-	ExecuteNotifyProcessing(AlertDescriptionEnd, "ConnectionNotRequired");
+	// In thin and thick clients the extension is always attached
+	ExecuteNotifyProcessing(Notification);
 	Return;
 #EndIf
 	
-	AdditionalParameters = New Structure;
-	AdditionalParameters.Insert("AlertDescriptionEnd", AlertDescriptionEnd);
-	AdditionalParameters.Insert("SuggestionText", SuggestionText);
-	AdditionalParameters.Insert("PossibleToContinueWithoutInstallation", PossibleToContinueWithoutInstallation);
+	// If the extension is already installed, there is no need to ask about it
+	ExtensionAttached =  AttachFileSystemExtension();
+	If ExtensionAttached Then 
+		ExecuteNotifyProcessing(Notification);
+		Return;
+	EndIf;
 	
-	Notification = New NotifyDescription("ShowQuestionOnFileOperationsExtensionSettingOnExtensionSetting",
-		ThisObject, AdditionalParameters);
-	BeginAttachingFileSystemExtension(Notification);
+	FirstCallInSession = (SuggestFileSystemExtensionInstallation = Undefined);
+	If FirstCallInSession Then
+		SuggestFileSystemExtensionInstallation = SuggestFileSystemExtensionInstallation();
+	EndIf;
+	
+	If CanContinueWithoutInstalling And Not SuggestFileSystemExtensionInstallation Then
+		ExecuteNotifyProcessing(Notification);
+		Return;
+	EndIf;
+	
+	If Not CanContinueWithoutInstalling Or FirstCallInSession Then
+		FormParameters = New Structure;
+		FormParameters.Insert("SuggestionText", SuggestionText);
+		FormParameters.Insert("CanContinueWithoutInstalling", CanContinueWithoutInstalling);
+		OpenForm("CommonForm.FileSystemExtensionInstallationQuestion", FormParameters,,,,,Notification);
+	Else
+		ExecuteNotifyProcessing(Notification);
+	EndIf;
 	
 EndProcedure
 
@@ -167,7 +186,7 @@ Procedure CheckFileOperationsExtensionConnected(OnCloseNotifyDescription, Val Su
 	Parameters = New Structure("WarningAboutClosingDescription, WarningText", 
 		OnCloseNotifyDescription, WarningText, );
 	Notification = New NotifyDescription("CheckFileOperationsExtensionConnectedEnd", ThisObject, Parameters);
-	ShowQuestionAboutFileOperationsExtensionSetting(Notification, SuggestionText);
+	ShowFileSystemExtensionInstallationQuestion(Notification, SuggestionText);
 	
 EndProcedure
 
@@ -833,6 +852,23 @@ EndProcedure
 
 #Region ServiceProceduresAndFunctions
 
+Procedure ShowFileSystemExtensionInstallationQuestionCompletion(Action, ClosingNotification) Export
+	
+#If WebClient Then
+	If Action = "NoLongerPrompt" Then
+		SystemInfo = New SystemInfo();
+		ClientID = SystemInfo.ClientID;
+		SuggestFileSystemExtensionInstallation = False;
+		CommonUseServerCall.CommonSettingsStorageSave(
+			"ProgramSettings/SuggestFileSystemExtensionInstallation", ClientID,
+			SuggestFileSystemExtensionInstallation);
+	EndIf;
+#EndIf
+	
+	ExecuteNotifyProcessing(ClosingNotification,  AttachFileSystemExtension());
+	
+EndProcedure	
+
 Procedure ShowQuestionOnFileOperationsExtensionSettingOnExtensionSetting(Attached, AdditionalParameters) Export
 	
 	// If extension is already enabled, do not ask about it.
@@ -866,24 +902,6 @@ Procedure ShowQuestionOnFileOperationsExtensionSettingOnExtensionSetting(Attache
 	FormParameters.Insert("SuggestionText", AdditionalParameters.SuggestionText);
 	FormParameters.Insert("PossibleToContinueWithoutInstallation", AdditionalParameters.PossibleToContinueWithoutInstallation);
 	OpenForm("CommonForm.QuestionAboutFileOperationsExtensionSetting", FormParameters,,,,,AdditionalParameters.AlertDescriptionEnd);
-	
-EndProcedure
-
-Procedure ShowQuestionOnFileOperationsExtensionSettingEnd(Action, ClosingAlert) Export
-	
-	ExtensionAttached = (Action = "ExtensionAttached" Or Action = "ConnectionNotRequired");
-#If WebClient Then
-	If Action = "DoNotOfferAgain"
-		Or Action = "ExtensionAttached" Then
-		SystemInfo = New SystemInfo();
-		ClientID = SystemInfo.ClientID;
-		ApplicationParameters["StandardSubsystems.SuggestFileSystemExtensionInstallation"] = False;
-		CommonUseServerCall.CommonSettingsStorageSave(
-			"ApplicationSettings/OfferFileOperationsExtensionSetting", ClientID, False);
-	EndIf;
-#EndIf
-	
-	ExecuteNotifyProcessing(ClosingAlert, ExtensionAttached);
 	
 EndProcedure
 

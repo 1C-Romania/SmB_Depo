@@ -547,17 +547,3 @@ Procedure FillTemplateStartChoice(Item, ChoiceData, StandardProcessing)
 	FillTemplate = Object.ScheduleType;
 	
 EndProcedure // FillTemplateStartChoice()
-
-
-
-
-
-
-
-
-
-
-
-
-
-

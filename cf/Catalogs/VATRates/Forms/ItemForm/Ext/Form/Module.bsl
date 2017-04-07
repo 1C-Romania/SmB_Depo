@@ -30,17 +30,3 @@ Procedure NotTaxableOnChange(Item)
 	CommonUseClientServer.SetFormItemProperty(Items, "Calculated", "Visible", Not Object.NotTaxable);
 	
 EndProcedure // NotTaxableOnChange()
-
-
-
-
-
-
-
-
-
-
-
-
-
-

@@ -25,17 +25,3 @@ Procedure AllowEdit(Command)
 	Close(Result);
 
 EndProcedure // AllowEdit()
-
-
-
-
-
-
-
-
-
-
-
-
-
-

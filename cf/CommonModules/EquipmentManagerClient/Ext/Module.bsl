@@ -58,7 +58,7 @@ Function ConnectEquipment(ClientID, EETypes = Undefined,
 					// Error message prompting that the driver can not be imported.
 					ErrorDescription = ErrorDescription + ?(IsBlankString(ErrorDescription), "", Chars.LF)
 								   + NStr("en='%Description%: Cannot export the peripheral driver.
-		|Check if the driver is correctly installed and registered in the system.';ru='%Наименование%: Не удалось загрузить драйвер устройства.
+		|Check if the driver is correctly installed and registered in the system.';ru='%Description%: Не удалось загрузить драйвер устройства.
 		|Проверьте, что драйвер корректно установлен и зарегистрирован в системе.'");
 					ErrorDescription = StrReplace(ErrorDescription, "%Description%", Device.Description);
 					FinalResult = False;
@@ -368,7 +368,7 @@ Procedure StartEnablingDeviceGettingDriverObjectEnd(DriverObject, Parameters) Ex
 		If Parameters.AlertOnConnect <> Undefined Then
 			// Error message prompting that the driver can not be imported.
 			ErrorDescription = NStr("en='%Description%: Cannot export the peripheral driver.
-		|Check if the driver is correctly installed and registered in the system.';ru='%Наименование%: Не удалось загрузить драйвер устройства.
+		|Check if the driver is correctly installed and registered in the system.';ru='%Description%: Не удалось загрузить драйвер устройства.
 		|Проверьте, что драйвер корректно установлен и зарегистрирован в системе.'");
 			ErrorDescription = StrReplace(ErrorDescription, "%Description%", Parameters.ANewConnection.Description);
 			ExecutionResult = New Structure("Result, ErrorDetails", False, ErrorDescription);
@@ -453,7 +453,7 @@ Procedure StartConnectPeripheral(AlertOnConnect, ClientID, EETypes = Undefined, 
 							If AlertOnConnect <> Undefined Then
 								// Error message prompting that the driver can not be imported.
 								ErrorDescription = NStr("en='%Description%: Cannot export the peripheral driver.
-		|Check if the driver is correctly installed and registered in the system.';ru='%Наименование%: Не удалось загрузить драйвер устройства.
+		|Check if the driver is correctly installed and registered in the system.';ru='%Description%: Не удалось загрузить драйвер устройства.
 		|Проверьте, что драйвер корректно установлен и зарегистрирован в системе.'");
 								ErrorDescription = StrReplace(ErrorDescription, "%Description%",ANewConnection.Description);
 								ExecutionResult = New Structure("Result, ErrorDetails", False, ErrorDescription);
@@ -566,7 +566,7 @@ Procedure StartDisconnectEquipmentGettingDriverObjectEnd(DriverObject, Parameter
 		If Parameters.AlertOnDisconnect <> Undefined Then
 			// Error message prompting that the driver can not be imported.
 			ErrorDescription = NStr("en='%Description%: Cannot export the peripheral driver.
-		|Check if the driver is correctly installed and registered in the system.';ru='%Наименование%: Не удалось загрузить драйвер устройства.
+		|Check if the driver is correctly installed and registered in the system.';ru='%Description%: Не удалось загрузить драйвер устройства.
 		|Проверьте, что драйвер корректно установлен и зарегистрирован в системе.'");
 			ErrorDescription = StrReplace(ErrorDescription, "%Description%", Parameters.ConnectedDevice.Description);
 			ExecutionResult = New Structure("Result, ErrorDetails", False, ErrorDescription);
@@ -618,7 +618,7 @@ Procedure StartDisconnectEquipment(AlertOnDisconnect, ClientID, EETypes = Undefi
 								If AlertOnDisconnect <> Undefined Then
 									// Error message prompting that the driver can not be imported.
 									ErrorDescription = NStr("en='%Description%: Cannot export the peripheral driver.
-		|Check if the driver is correctly installed and registered in the system.';ru='%Наименование%: Не удалось загрузить драйвер устройства.
+		|Check if the driver is correctly installed and registered in the system.';ru='%Description%: Не удалось загрузить драйвер устройства.
 		|Проверьте, что драйвер корректно установлен и зарегистрирован в системе.'");
 									ErrorDescription = StrReplace(ErrorDescription, "%Description%",ConnectedDevice.Description);
 									ExecutionResult = New Structure("Result, ErrorDetails", False, ErrorDescription);
@@ -770,7 +770,7 @@ Function RunCommand(ID, Command, InputParameters, Output_Parameters, Timeout = -
 			// Error message prompting that the driver can not be imported.
 			Output_Parameters = New Array();
 			ErrorDescription = NStr("en='""%Description%"": Cannot export the peripheral driver.
-		|Check if the driver is correctly installed and registered in the system.';ru='%Наименование%: Не удалось загрузить драйвер устройства.
+		|Check if the driver is correctly installed and registered in the system.';ru='%Description%: Не удалось загрузить драйвер устройства.
 		|Проверьте, что драйвер корректно установлен и зарегистрирован в системе.'");
 			ErrorDescription = StrReplace(ErrorDescription, "%Description%", ConnectedDevice.Description);
 			Output_Parameters.Add(999);
@@ -2407,7 +2407,7 @@ Function GetEventFromDevice(DetailsEvents, ErrorDescription = "") Export
 				If DriverObject = Undefined Then
 					// Error message prompting that the driver can not be imported.
 					ErrorDescription = NStr("en='""%Description%"": Cannot export the peripheral driver.
-		|Check if the driver is correctly installed and registered in the system.';ru='%Наименование%: Не удалось загрузить драйвер устройства.
+		|Check if the driver is correctly installed and registered in the system.';ru='%Description%: Не удалось загрузить драйвер устройства.
 		|Проверьте, что драйвер корректно установлен и зарегистрирован в системе.'");
 					ErrorDescription = StrReplace(ErrorDescription, "%Description%", Connection.Description);
 					Continue;

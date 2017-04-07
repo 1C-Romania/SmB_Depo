@@ -10,9 +10,6 @@
 		<pattern>([0-9]{1}[1-9]{1}|[1-9]{1}[0-9]{1})[0-9]{8}</pattern>
 	</valueType>
 	<valueType name="IDParticipEDFType" base="xs:string" variety="Atomic" minLength="4" maxLength="46"/>
-	<valueType name="KPPType" base="xs:string" variety="Atomic" length="9">
-		<pattern>([0-9]{1}[1-9]{1}|[1-9]{1}[0-9]{1})([0-9]{2})([0-9A-F]{2})([0-9]{3})</pattern>
-	</valueType>
 	<objectType name="SignerType">
 		<property name="Position" lowerBound="0" form="Attribute">
 			<typeDef xsi:type="ValueType" base="xs:string" variety="Atomic" minLength="1" maxLength="1000"/>
@@ -81,6 +78,5 @@
 			<typeDef xsi:type="ValueType" base="xs:string" variety="Atomic" minLength="1" maxLength="1000"/>
 		</property>
 		<property xmlns:d3p1="DP_PRANNUL" name="TINLP" type="d3p1:TINLEType" lowerBound="1" form="Attribute"/>
-		<property xmlns:d3p1="DP_PRANNUL" name="KPP" type="d3p1:KPPType" lowerBound="1" form="Attribute"/>
 	</objectType>
 </package>

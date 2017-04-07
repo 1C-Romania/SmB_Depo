@@ -135,7 +135,7 @@
 						</v8:item>
 						<v8:item>
 							<v8:lang>ru</v8:lang>
-							<v8:content>Контрагенты</v8:content>
+							<v8:content>Контрагент</v8:content>
 						</v8:item>
 					</Title>
 					<Width>30</Width>
@@ -154,7 +154,7 @@
 						</v8:item>
 						<v8:item>
 							<v8:lang>ru</v8:lang>
-							<v8:content>Контакт</v8:content>
+							<v8:content>Договор</v8:content>
 						</v8:item>
 					</Title>
 					<Width>20</Width>
@@ -227,9 +227,13 @@
 							<v8:lang>en</v8:lang>
 							<v8:content>Company</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Организация</v8:content>
+						</v8:item>
 					</Title>
-					<ContextMenu name="CounterpartyContextMenu" id="9"/>
-					<ExtendedTooltip name="CounterpartyExtendedTooltip" id="31"/>
+					<ContextMenu name="CompanyContextMenu" id="9"/>
+					<ExtendedTooltip name="CompanyExtendedTooltip" id="31"/>
 				</LabelField>
 				<LabelField name="PurchaseOrder" id="14">
 					<DataPath>List.PurchaseOrder</DataPath>
@@ -283,7 +287,7 @@
 						</v8:item>
 						<v8:item>
 							<v8:lang>ru</v8:lang>
-							<v8:content>Примечание</v8:content>
+							<v8:content>Комментарий</v8:content>
 						</v8:item>
 					</Title>
 					<ContextMenu name="CommentContextMenu" id="23"/>
@@ -301,7 +305,7 @@
 						</v8:item>
 						<v8:item>
 							<v8:lang>ru</v8:lang>
-							<v8:content>Ведомость составил</v8:content>
+							<v8:content>Автор</v8:content>
 						</v8:item>
 					</Title>
 					<ContextMenu name="AuthorContextMenu" id="27"/>

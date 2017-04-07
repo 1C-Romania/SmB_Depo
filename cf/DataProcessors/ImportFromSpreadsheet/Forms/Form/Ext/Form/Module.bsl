@@ -77,8 +77,6 @@ Procedure FillAttributes()
 		NewRow = Attributes.Add();
 		NewRow.AttributeName = "TIN";
 		NewRow = Attributes.Add();
-		NewRow.AttributeName = "KPP";
-		NewRow = Attributes.Add();
 		NewRow.AttributeName = "Comment";
 		
 	ElsIf IsBalance Then
@@ -338,10 +336,6 @@ Procedure FillImportingList()
 		If ColumnNumber <> Undefined Then
 			NewRow.TIN = TrimAll(Source[RowCounter][ColumnNumber - 1]);
 		EndIf;
-		ColumnNumber = FindAttributeColumnNumber("KPP");
-		If ColumnNumber <> Undefined Then
-			NewRow.KPP = TrimAll(Source[RowCounter][ColumnNumber - 1]);
-		EndIf;
 		ColumnNumber = FindAttributeColumnNumber("Price");
 		If ColumnNumber <> Undefined Then
 			StringNumber = TrimAll(Source[RowCounter][ColumnNumber - 1]);
@@ -370,7 +364,7 @@ Procedure FillImportingList()
 		
 	EndDo;
 	
-	ImportingTable.GroupBy("Description,Ref,IsNew,SKU,Code,VAT,Barcode,CCDNo,Comment,DescriptionFull,TIN,KPP,Price,ImportingFlag","Quantity");
+	ImportingTable.GroupBy("Description,Ref,IsNew,SKU,Code,VAT,Barcode,CCDNo,Comment,DescriptionFull,TIN,Price,ImportingFlag","Quantity");
 	
 	Object.ImportingList.Load(ImportingTable);
 	
@@ -489,9 +483,9 @@ Procedure Import(Cancel)
 			FillPropertyValues(ObjectToWrite, ImportRow);
 			ObjectToWrite.DescriptionFull = ObjectToWrite.DescriptionFull;
 			If StrLen(ObjectToWrite.TIN) = 12 Then
-				ObjectToWrite.LegalEntityIndividual = Enums.LegalEntityIndividual.Ind;
+				ObjectToWrite.LegalEntityIndividual = Enums.CounterpartyKinds.Individual;
 			Else
-				ObjectToWrite.LegalEntityIndividual = Enums.LegalEntityIndividual.LegalEntity;
+				ObjectToWrite.LegalEntityIndividual = Enums.CounterpartyKinds.LegalEntity;
 			EndIf;
 			ObjectToWrite.GLAccountCustomerSettlements = ChartsOfAccounts.Managerial.AccountsReceivable;
 			ObjectToWrite.CustomerAdvancesGLAccount = ChartsOfAccounts.Managerial.AccountsByAdvancesReceived;
@@ -821,17 +815,3 @@ Procedure PathToFileOpen(Item, StandardProcessing)
 	TextDoc.Show(PathToFile, PathToFile);
 	
 EndProcedure
-
-
-
-
-
-
-
-
-
-
-
-
-
-

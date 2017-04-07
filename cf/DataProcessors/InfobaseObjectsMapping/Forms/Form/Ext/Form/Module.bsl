@@ -1468,17 +1468,3 @@ Procedure ScriptExecutionMappingObjects()
 EndProcedure
 
 #EndRegion
-
-
-
-
-
-
-
-
-
-
-
-
-
-

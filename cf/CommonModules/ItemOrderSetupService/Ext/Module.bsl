@@ -375,7 +375,7 @@ Function CheckItemArranging(TableMetadata)
 	|	&Owner AS Owner,
 	|	&Parent AS Parent,
 	|	Table.AdditionalOrderingAttribute AS AdditionalOrderingAttribute,
-	|	1 AS Count,
+	|	1 AS Quantity,
 	|	Table.Ref AS Ref
 	|INTO AllItems
 	|FROM
@@ -407,7 +407,7 @@ Function CheckItemArranging(TableMetadata)
 	|FROM
 	|	IndexStatistics AS IndexStatistics
 	|WHERE
-	|	IndexStatistics.Count > 1
+	|	IndexStatistics.Quantity > 1
 	|;
 	|
 	|////////////////////////////////////////////////////////////////////////////////
@@ -416,7 +416,7 @@ Function CheckItemArranging(TableMetadata)
 	|FROM
 	|	AllItems AS AllItems
 	|		INNER JOIN Duplicates AS Duplicates
-	|		BY AllItems.AdditionalOrderingAttribute = Duplicates.AdditionalOrderingAttribute
+	|		ON AllItems.AdditionalOrderingAttribute = Duplicates.AdditionalOrderingAttribute
 	|			AND AllItems.Parent = Duplicates.Parent
 	|			AND AllItems.Owner = Duplicates.Owner
 	|

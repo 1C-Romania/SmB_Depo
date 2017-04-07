@@ -15,9 +15,6 @@
 	<valueType name="TINLEType" base="xs:string" variety="Atomic" length="10">
 		<pattern>([0-9]{1}[1-9]{1}|[1-9]{1}[0-9]{1})[0-9]{8}</pattern>
 	</valueType>
-	<valueType name="KPPType" base="xs:string" variety="Atomic" length="9">
-		<pattern>([0-9]{1}[1-9]{1}|[1-9]{1}[0-9]{1})([0-9]{2})([0-9A-F]{2})([0-9]{3})</pattern>
-	</valueType>
 	<valueType name="OKOPFType" base="xs:string" variety="Atomic" length="2">
 		<pattern>[0-9]{2}</pattern>
 	</valueType>

@@ -695,7 +695,7 @@ Function GenerateLockMessage(Val Message, Val KeyCode) Export
 		MessageText = MessageText +
 		    NStr("en='%1
 		|To allow users work, use servers cluster console or start ""1C:Enterprise"" with parameters:
-		|ENTERPRISE %2 /AllowUsersWork /UC%3';ru='%1
+		|ENTERPRISE %2 /CAllowUsersWork /UC%3';ru='%1
 		|Для того чтобы разрешить работу пользователей, воспользуйтесь консолью кластера серверов или запустите
 		|""1С:Предприятие"" с параметрами: ENTERPRISE %2 /CРазрешитьРаботуПользователей /UC%3'");
 	EndIf;

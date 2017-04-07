@@ -1,7 +1,60 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
 <CommandInterface xmlns="http://v8.1c.ru/8.3/xcf/extrnprops" xmlns:xr="http://v8.1c.ru/8.3/xcf/readable" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.2">
+	<CommandsVisibility>
+		<Command name="Document.Event.StandardCommand.OpenList">
+			<Visibility>
+				<xr:Common>false</xr:Common>
+			</Visibility>
+		</Command>
+		<Command name="Document.Event.Command.PhoneCalls">
+			<Visibility>
+				<xr:Common>false</xr:Common>
+			</Visibility>
+		</Command>
+		<Command name="Document.Event.Command.Email">
+			<Visibility>
+				<xr:Common>false</xr:Common>
+			</Visibility>
+		</Command>
+		<Command name="Document.Event.Command.PrivateMeetings">
+			<Visibility>
+				<xr:Common>false</xr:Common>
+			</Visibility>
+		</Command>
+		<Command name="Document.Event.Command.OtherEvents">
+			<Visibility>
+				<xr:Common>false</xr:Common>
+			</Visibility>
+		</Command>
+		<Command name="Document.PowerOfAttorney.StandardCommand.OpenList">
+			<Visibility>
+				<xr:Common>true</xr:Common>
+			</Visibility>
+		</Command>
+		<Command name="Catalog.CCDNumbers.StandardCommand.OpenList">
+			<Visibility>
+				<xr:Common>true</xr:Common>
+			</Visibility>
+		</Command>
+	</CommandsVisibility>
 	<CommandsPlacement>
 		<Command name="Document.Event.StandardCommand.OpenList">
+			<CommandGroup>NavigationPanelSeeAlso</CommandGroup>
+			<Placement>Auto</Placement>
+		</Command>
+		<Command name="Document.Event.Command.PhoneCalls">
+			<CommandGroup>NavigationPanelSeeAlso</CommandGroup>
+			<Placement>Auto</Placement>
+		</Command>
+		<Command name="Document.Event.Command.Email">
+			<CommandGroup>NavigationPanelSeeAlso</CommandGroup>
+			<Placement>Auto</Placement>
+		</Command>
+		<Command name="Document.Event.Command.PrivateMeetings">
+			<CommandGroup>NavigationPanelSeeAlso</CommandGroup>
+			<Placement>Auto</Placement>
+		</Command>
+		<Command name="Document.Event.Command.OtherEvents">
 			<CommandGroup>NavigationPanelSeeAlso</CommandGroup>
 			<Placement>Auto</Placement>
 		</Command>
@@ -21,6 +74,18 @@
 		<Command name="Document.Event.StandardCommand.OpenList">
 			<CommandGroup>NavigationPanelSeeAlso</CommandGroup>
 		</Command>
+		<Command name="Document.Event.Command.PhoneCalls">
+			<CommandGroup>NavigationPanelSeeAlso</CommandGroup>
+		</Command>
+		<Command name="Document.Event.Command.Email">
+			<CommandGroup>NavigationPanelSeeAlso</CommandGroup>
+		</Command>
+		<Command name="Document.Event.Command.PrivateMeetings">
+			<CommandGroup>NavigationPanelSeeAlso</CommandGroup>
+		</Command>
+		<Command name="Document.Event.Command.OtherEvents">
+			<CommandGroup>NavigationPanelSeeAlso</CommandGroup>
+		</Command>
 		<Command name="Document.PowerOfAttorney.StandardCommand.OpenList">
 			<CommandGroup>NavigationPanelSeeAlso</CommandGroup>
 		</Command>
@@ -28,12 +93,6 @@
 			<CommandGroup>NavigationPanelSeeAlso</CommandGroup>
 		</Command>
 		<Command name="CommonCommand.ReportsPanel_InventoryAndPurchasing">
-			<CommandGroup>ActionsPanelReports</CommandGroup>
-		</Command>
-		<Command name="0:86c7cd8b-368e-4915-851c-d028e5d0ffcb">
-			<CommandGroup>ActionsPanelReports</CommandGroup>
-		</Command>
-		<Command name="0:0d50a6cc-db1a-4bff-b65a-72bc2f35f3da">
 			<CommandGroup>ActionsPanelReports</CommandGroup>
 		</Command>
 		<Command name="CommonCommand.AdditionalReportsInventoryAndPurchases">

@@ -280,16 +280,3 @@ Procedure PrintLastSlipReceipt(Command)
 EndProcedure
 
 #EndRegion
-
-
-
-
-
-
-
-
-
-
-
-
-

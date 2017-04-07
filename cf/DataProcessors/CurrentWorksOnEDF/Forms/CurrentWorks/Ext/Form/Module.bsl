@@ -75,8 +75,6 @@ Procedure OnCreateAtServer(Cancel, StandardProcessing)
 		"PaymentOrderInMetadata");
 	NameAccountsInvoiceReceived = ElectronicDocumentsReUse.NameAttributeObjectExistanceInAppliedSolution(
 		"InvoiceReceivedInMetadata");
-	SupplierInvoiceNoteAdvanceName = ElectronicDocumentsReUse.NameAttributeObjectExistanceInAppliedSolution(
-		"SupplierInvoiceNoteAdvanceInMetadata");
 	SupplierProductsAndServicesPricesRegistration = ElectronicDocumentsReUse.NameAttributeObjectExistanceInAppliedSolution(
 		"SupplierProductsAndServicesPricesRegistration");
 
@@ -89,9 +87,6 @@ Procedure OnCreateAtServer(Cancel, StandardProcessing)
 	EndIf;
 	If ValueIsFilled(NameAccountsInvoiceReceived) Then
 		ExcludedTypes.Insert(NameAccountsInvoiceReceived);
-	EndIf;
-	If ValueIsFilled(SupplierInvoiceNoteAdvanceName) Then
-		ExcludedTypes.Insert(SupplierInvoiceNoteAdvanceName);
 	EndIf;
 	If ValueIsFilled(SupplierProductsAndServicesPricesRegistration) Then
 		ExcludedTypes.Insert(SupplierProductsAndServicesPricesRegistration);
@@ -111,10 +106,6 @@ Procedure OnCreateAtServer(Cancel, StandardProcessing)
 		EndIf;
 	EndDo;
 	
-	IssuedInvoiceName = ElectronicDocumentsReUse.NameAttributeObjectExistanceInAppliedSolution(
-		"CustomerInvoiceNoteInMetadata");
-	IssuedInvoiceNameAdvance = ElectronicDocumentsReUse.NameAttributeObjectExistanceInAppliedSolution(
-		"CustomerInvoiceNoteAdvanceInMetadata");
 	NameOfCommercialOffers = ElectronicDocumentsReUse.NameAttributeObjectExistanceInAppliedSolution(
 		"CommercialOfferToClient");
 	
@@ -160,18 +151,6 @@ Procedure OnCreateAtServer(Cancel, StandardProcessing)
 			SubqueryText = SubqueryText + StrReplace(SubqueryTextPattern, "DocumentType", DocumentType);
 			
 			
-			If (DocumentType = IssuedInvoiceName
-					AND CommonUse.IsObjectAttribute("BasisDocument", Metadata.Documents[IssuedInvoiceName]))
-				OR (DocumentType = IssuedInvoiceNameAdvance
-					AND CommonUse.IsObjectAttribute("BasisDocument", Metadata.Documents[IssuedInvoiceNameAdvance]))
-				Then
-				
-				SubqueryText = StrReplace(
-					SubqueryText, DocumentType + ".Counterparty", DocumentType + ".BasisDocument.Counterparty");
-				SubqueryText = StrReplace(
-					SubqueryText, DocumentType + ".DocumentAmount", DocumentType + ".BasisDocument.DocumentAmount");
-			EndIf;
-				
 			If DocumentType = NameOfCommercialOffers Then
 				SubqueryText = StrReplace(
 					SubqueryText, DocumentType + ".Counterparty", DocumentType + ".Agreement.Counterparty");
@@ -1729,13 +1708,11 @@ Procedure SendInvitationsServer(PostedInvitations, EDFSettingsProfilesMatchToMar
 	InvitationsTable.Columns.Add("Description");
 	InvitationsTable.Columns.Add("DescriptionForUserMessage");
 	InvitationsTable.Columns.Add("TIN");
-	InvitationsTable.Columns.Add("KPP");
 	InvitationsTable.Columns.Add("EMail_Address");
 	InvitationsTable.Columns.Add("InvitationText");
 	InvitationsTable.Columns.Add("ExternalCode");
 	
 	AttributeNameCounterpartyTIN = ElectronicDocumentsReUse.NameAttributeObjectExistanceInAppliedSolution("CounterpartyTIN");
-	AttributeNameCounterpartyKPP = ElectronicDocumentsReUse.NameAttributeObjectExistanceInAppliedSolution("CounterpartyCRR");
 	AttributeNameCounterpartyName = ElectronicDocumentsReUse.NameAttributeObjectExistanceInAppliedSolution("CounterpartyDescription");
 	AttributeNameExternalCounterpartyCode = ElectronicDocumentsReUse.NameAttributeObjectExistanceInAppliedSolution("ExternalCounterpartyCode");
 	AttributeNameCounterpartyNameForMessageToUser = ElectronicDocumentsReUse.NameAttributeObjectExistanceInAppliedSolution("CounterpartyNameForMessageToUser");
@@ -1757,7 +1734,7 @@ Procedure SendInvitationsServer(PostedInvitations, EDFSettingsProfilesMatchToMar
 		EndIf;
 		
 		CounterpartyParametersStructure = CommonUse.ObjectAttributeValues(EDFSettingsParametersStructure.Counterparty,
-			AttributeNameCounterpartyTIN + ", " + AttributeNameCounterpartyKPP + ", " + AttributeNameCounterpartyName + ", "
+			AttributeNameCounterpartyTIN + ", " + AttributeNameCounterpartyName + ", "
 			+ AttributeNameExternalCounterpartyCode + ", " + AttributeNameCounterpartyNameForMessageToUser);
 	
 		If Not ValueIsFilled(CounterpartyParametersStructure[AttributeNameCounterpartyTIN]) Then
@@ -1781,7 +1758,6 @@ Procedure SendInvitationsServer(PostedInvitations, EDFSettingsProfilesMatchToMar
 		NewRow.Description       = CounterpartyParametersStructure[AttributeNameCounterpartyName];
 		NewRow.DescriptionForUserMessage = CounterpartyParametersStructure[AttributeNameCounterpartyNameForMessageToUser];
 		NewRow.TIN                = CounterpartyParametersStructure[AttributeNameCounterpartyTIN];
-		NewRow.KPP                = CounterpartyParametersStructure[AttributeNameCounterpartyKPP];
 		NewRow.ExternalCode         = CounterpartyParametersStructure[AttributeNameExternalCounterpartyCode];
 		
 	EndDo;
@@ -2059,17 +2035,3 @@ Procedure SetResponsibleAlert(Val Result, Val AdditionalParameters) Export
 EndProcedure
 
 #EndRegion
-
-
-
-
-
-
-
-
-
-
-
-
-
-

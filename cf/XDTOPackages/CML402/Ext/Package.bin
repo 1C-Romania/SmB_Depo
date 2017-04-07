@@ -829,9 +829,6 @@
 		<property name="TIN" lowerBound="0">
 			<typeDef xsi:type="ValueType" base="xs:string" variety="Atomic" minLength="10" maxLength="12"/>
 		</property>
-		<property name="KPP" lowerBound="0">
-			<typeDef xsi:type="ValueType" base="xs:string" variety="Atomic" length="9"/>
-		</property>
 		<property name="DefaultActivityKind" lowerBound="0">
 			<typeDef xsi:type="ValueType" base="xs:string" variety="Atomic" maxLength="3000" whiteSpace="preserve"/>
 		</property>

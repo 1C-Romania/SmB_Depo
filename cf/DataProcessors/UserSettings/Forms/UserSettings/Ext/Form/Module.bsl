@@ -1180,17 +1180,3 @@ Function SelectedSettings()
 EndFunction
 
 #EndRegion
-
-
-
-
-
-
-
-
-
-
-
-
-
-

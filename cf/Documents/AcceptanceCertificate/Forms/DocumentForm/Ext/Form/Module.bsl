@@ -418,7 +418,7 @@ Procedure RecalculateExchangeRateMultiplicitySettlementCurrency(StructureData)
 		NotifyDescription = New NotifyDescription("QuestionOnRecalculatingPaymentCurrencyRateConversionFactorEnd", ThisObject, QuestionParameters);
 		
 		QuestionText = NStr("ru = 'На дату документа у валюты расчетов (" + CurrencyRateInLetters + ") был задан курс.
-         							|Установить курс расчетов (" + RateNewCurrenciesInLetters + ") в соответствии с курсом валюты?';en = 'As of the date of document the settlement currency (" + CurrencyRateInLetters + ") exchange rate was specified.
+									|Установить курс расчетов (" + RateNewCurrenciesInLetters + ") в соответствии с курсом валюты?'; en = 'As of the date of document the settlement currency (" + CurrencyRateInLetters + ") exchange rate was specified.
 									|Set the settlements rate (" + RateNewCurrenciesInLetters + ") according to exchange rate?'");
 		
 		ShowQueryBox(NOTifyDescription, QuestionText, QuestionDialogMode.YesNo);
@@ -579,89 +579,57 @@ Function GenerateLabelPricesAndCurrency(LabelStructure)
 	// Currency.
 	If LabelStructure.CurrencyTransactionsAccounting Then
 		If ValueIsFilled(LabelStructure.DocumentCurrency) Then
-			//===============================
-			//©# (Begin)	AlekS [2016-09-13]
-			//LabelText = NStr("en='%Currency%';ru='%Вал%'");
-			//LabelText = StrReplace(LabelText, "%Currency%", TrimAll(String(LabelStructure.DocumentCurrency)));
-			LabelText = TrimAll(String(LabelStructure.DocumentCurrency));
-			//©# (End)		AlekS [2016-09-13]
-			//===============================
+			LabelText = NStr("ru = '%Currency%'; en = '%Currency%'");
+			LabelText = StrReplace(LabelText, "%Currency%", TrimAll(String(LabelStructure.DocumentCurrency)));
 		EndIf;
-	EndIf;
+	EndIf;	
 	
 	// Prices kind.
 	If ValueIsFilled(LabelStructure.PriceKind) Then
-		//===============================
-		//©# (Begin)	AlekS [2016-09-13]
-		//If IsBlankString(LabelText) Then
-		//	LabelText = LabelText + NStr("en='%PriceKind%';ru='%PriceKind%'");
-		//Else
-		//	LabelText = LabelText + NStr("en=' • %PriceKind%';ru=' • %ВидЦен%'");
-		//EndIf;
-		//LabelText = StrReplace(LabelText, "%PriceKind%", TrimAll(String(LabelStructure.PriceKind)));
-		LabelText = LabelText + " • " + TrimAll(String(LabelStructure.PriceKind));
-		//©# (End)		AlekS [2016-09-13]
-		//===============================
+		If IsBlankString(LabelText) Then
+			LabelText = LabelText + NStr("ru = '%PriceKind%'; en = '%PriceKind%'");
+		Else	
+			LabelText = LabelText + NStr("ru = ' • %PriceKind%'; en = ' • %PriceKind%'");
+		EndIf;	
+		LabelText = StrReplace(LabelText, "%PriceKind%", TrimAll(String(LabelStructure.PriceKind)));
 	EndIf;
 	
 	// Margins discount kind.
 	If ValueIsFilled(LabelStructure.DiscountKind) Then
-		//===============================
-		//©# (Begin)	AlekS [2016-09-13]
-		//If IsBlankString(LabelText) Then
-		//	LabelText = LabelText + NStr("en='%DiscountMarkupKind%';ru='%ВидСкидкиНаценки%'");
-		//Else
-		//	LabelText = LabelText + NStr("en=' • %MarkupDiscountKind%';ru=' • %ВидСкидкиНаценки%'");
-		//EndIf;
-		//LabelText = StrReplace(LabelText, "%DiscountMarkupKind%", TrimAll(String(LabelStructure.DiscountKind)));
-		LabelText = LabelText + " • " + TrimAll(String(LabelStructure.DiscountKind));
-		//©# (End)		AlekS [2016-09-13]
-		//===============================
+		If IsBlankString(LabelText) Then
+			LabelText = LabelText + NStr("ru = '%DiscountMarkupKind%'; en = '%DiscountMarkupKind%'");
+		Else
+			LabelText = LabelText + NStr("ru = ' • %DiscountMarkupKind%'; en = ' • %MarkupDiscountKind%'");
+		EndIf;
+		LabelText = StrReplace(LabelText, "%DiscountMarkupKind%", TrimAll(String(LabelStructure.DiscountKind)));
 	EndIf;
 	
 	// Discount card.
 	If ValueIsFilled(LabelStructure.DiscountCard) Then
-		//===============================
-		//©# (Begin)	AlekS [2016-09-13]
-		//If IsBlankString(LabelText) Then
-		//	LabelText = LabelText + NStr("en='%DiscountCard%';ru='%ДисконтнаяКарта%'");
-		//Else
-		//	LabelText = LabelText + NStr("en=' • %DiscountCard%';ru=' • %ДисконтнаяКарта%'");
-		//EndIf;
-		//LabelText = StrReplace(LabelText, "%DiscountCard%", String(LabelStructure.DiscountPercentByDiscountCard)+"% by map"); //ShortLP(String(LabelStructure.DiscountCard)));
-		LabelText = LabelText + " • " + String(LabelStructure.DiscountPercentByDiscountCard) + 
-							NStr("en='% by card';ru='% по карте'"); 
-		//©# (End)		AlekS [2016-09-13]
-		//===============================
+		If IsBlankString(LabelText) Then
+			LabelText = LabelText + NStr("ru = '%DiscountCard%'; en = '%DiscountCard%'");
+		Else
+			LabelText = LabelText + NStr("ru = ' • %DiscountCard%'; en = ' • %DiscountCard%'");
+		EndIf;
+		LabelText = StrReplace(LabelText, "%DiscountCard%", String(LabelStructure.DiscountPercentByDiscountCard)+"% by map"); //ShortLP(String(LabelStructure.DiscountCard)));
 	EndIf;	
 	
 	// VAT taxation.
 	If ValueIsFilled(LabelStructure.VATTaxation) Then
-		//If IsBlankString(LabelText) Then
-		//	LabelText = LabelText + NStr("en='%VATTaxation%';ru='%VATTaxation%'");
-		//Else
-		//	LabelText = LabelText + NStr("en=' • %VATTaxation%';ru=' • %НалогообложениеНДС%'");
-		//EndIf;
-		//LabelText = StrReplace(LabelText, "%VATTaxation%", TrimAll(String(LabelStructure.VATTaxation)));
-		LabelText = LabelText + " • " + TrimAll(String(LabelStructure.VATTaxation));
-		//©# (End)		AlekS [2016-09-13]
-		//===============================
+		If IsBlankString(LabelText) Then
+			LabelText = LabelText + NStr("ru = '%VATTaxation%'; en = '%VATTaxation%'");
+		Else
+			LabelText = LabelText + NStr("ru = ' • %VATTaxation%'; en = ' • %VATTaxation%'");
+		EndIf;	
+		LabelText = StrReplace(LabelText, "%VATTaxation%", TrimAll(String(LabelStructure.VATTaxation)));
 	EndIf;
 	
-	
-//===============================
-//©# (Begin)	AlekS [2016-09-13]
-//
-//  THIS FLAG HAS NO CHANCE TO BE SHOWED - need attention !   8-(
-//
-//©# (End)		AlekS [2016-09-13]
-//===============================
 	// Flag showing that amount includes VAT.
 	If IsBlankString(LabelText) Then	
 		If LabelStructure.AmountIncludesVAT Then	
-			LabelText = NStr("en='Amount includes VAT';ru='Сумма включает НДС'");
+			LabelText = NStr("ru = 'Сумма включает НДС'; en = 'Amount includes VAT'");
 		Else		
-			LabelText = NStr("en='Amount does not include VAT';ru='Сумма не включает НДС'");
+			LabelText = NStr("ru = 'Сумма не включает НДС'; en = 'Amount does not include VAT'");
 		EndIf;	
 	EndIf;	
 	
@@ -1168,8 +1136,6 @@ Procedure OnCreateAtServer(Cancel, StandardProcessing)
 	LabelStructure = New Structure("PriceKind, DiscountKind, DocumentCurrency, SettlementsCurrency, ExchangeRate, RateNationalCurrency, AmountIncludesVAT, CurrencyTransactionsAccounting, VATTaxation, DiscountCard, DiscountPercentByDiscountCard", Object.PriceKind, Object.DiscountMarkupKind, Object.DocumentCurrency, SettlementsCurrency, Object.ExchangeRate, RateNationalCurrency, Object.AmountIncludesVAT, CurrencyTransactionsAccounting, Object.VATTaxation, Object.DiscountCard, Object.DiscountPercentByDiscountCard);
 	PricesAndCurrency = GenerateLabelPricesAndCurrency(LabelStructure);
 	
-	SmallBusinessServer.SetTextAboutInvoice(ThisForm);
-	
 	// Attribute visible set from user settings
 	SetVisibleFromUserSettings();
 	
@@ -1237,7 +1203,7 @@ Procedure BeforeWrite(Cancel, WriteParameters)
 			CalculatedDiscounts = True;
 			
 			Message = New UserMessage;
-			Message.Text = NStr("ru = 'Автоматические скидки (наценки) рассчитаны!'; en = 'Automatic discounts (markups) are calculated!'");
+			Message.Text = NStr("ru = 'Рассчитаны автоматические скидки (наценки)!'; en = 'Automatic discounts (markups) are calculated!'");
 			Message.SetData(ThisObject);
 			Message.Message();
 			
@@ -1289,35 +1255,12 @@ Procedure AfterWrite(WriteParameters)
 	
 	Notify("NotificationAboutChangingDebt");
 	
-	If Not InvoiceText = "Enter invoice note"
-		AND ?(NOT UpdateSubordinatedInvoice = Undefined, UpdateSubordinatedInvoice, False) Then
-		
-		NotifyDescription = New NotifyDescription("QuestionAboutChangingSubordinateInvoiceEnd", ThisObject);
-		QuestionText = NStr("en='Changes were made in the document. Is it required to fill in the subordinate invoice once again?';ru='В документе были произведены изменения. Требуется ли повторно заполнить подчиненный Счет-фактуру?'");
-		ShowQueryBox(NOTifyDescription, QuestionText, QuestionDialogMode.YesNo);
-		
-	EndIf;
-	
 	// AutomaticDiscounts
 	If DiscountsCalculatedBeforeWrite Then
 		DiscountsAreCalculatedDateTime = CurrentDate(); // It is better to leave the string last to minimize the time difference between AfterRecording handler and BeforeClosing handler calling .
 	EndIf;
 
 EndProcedure // AfterWrite()
-
-// Performs the actions after a response to the question about the change of subordinate invoice.
-//
-&AtClient
-Procedure QuestionAboutChangingSubordinateInvoiceEnd(Result, AdditionalParameters) Export
-
-	If Result = DialogReturnCode.Yes Then
-		
-		SmallBusinessServer.ChangeSubordinateInvoice(Object.Ref);
-		Notify("UpdateIBDocumentAfterFilling");
-		
-	EndIf;
-
-EndProcedure
 
 // Procedure - event handler of the form NotificationProcessing.
 //
@@ -1331,13 +1274,7 @@ Procedure NotificationProcessing(EventName, Parameter, Source)
 		
 	EndIf;
 	
-	If EventName = "RefreshOfTextAboutInvoice" 
-		AND TypeOf(Parameter) = Type("Structure") 
-		AND Parameter.BasisDocument = Object.Ref Then
-		
-		InvoiceText = Parameter.Presentation;
-		
-	ElsIf EventName = "AfterRecordingOfCounterparty" 
+	If EventName = "AfterRecordingOfCounterparty" 
 		AND ValueIsFilled(Parameter)
 		AND Object.Counterparty = Parameter Then
 			
@@ -1361,17 +1298,6 @@ Procedure NotificationProcessing(EventName, Parameter, Source)
 	EndIf;
 	
 EndProcedure // NotificationProcessing()
-
-// Procedure - selection handler.
-//
-&AtClient
-Procedure ChoiceProcessing(ValueSelected, ChoiceSource)
-	
-	If ChoiceSource.FormName = "Document.CustomerInvoiceNote.Form.DocumentForm" Then
-		InvoiceText = ValueSelected;
-	EndIf;
-	
-EndProcedure
 
 &AtServer
 // Procedure-handler of the OnCreateAtServer event.
@@ -1572,16 +1498,6 @@ Procedure EditPrepaymentOffsetEnd(Result, AdditionalParameters) Export
     EndIf;
 
 EndProcedure // EditPrepaymentOffset()
-
-// Procedure - clicking handler on the hyperlink InvoiceText.
-//
-&AtClient
-Procedure InvoiceNoteTextClick(Item, StandardProcessing)
-	
-	StandardProcessing = False;
-	SmallBusinessClient.OpenInvoice(ThisForm);
-	
-EndProcedure
 
 // Procedure - command handler DocumentSetting.
 //
@@ -2151,7 +2067,6 @@ EndProcedure
 
 &AtClient
 Procedure PrepaymentMultiplicityOnChange(Item)
-	
 	
 	TabularSectionRow = Items.Prepayment.CurrentData;
 	
@@ -2869,4 +2784,3 @@ Procedure WorksAndServicesCustomerOrderOnChange(Item)
 EndProcedure
 
 #EndRegion
-

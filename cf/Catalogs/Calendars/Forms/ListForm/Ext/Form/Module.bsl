@@ -30,17 +30,3 @@ Procedure ChangeSelected(Command)
 EndProcedure
 
 #EndRegion
-
-
-
-
-
-
-
-
-
-
-
-
-
-

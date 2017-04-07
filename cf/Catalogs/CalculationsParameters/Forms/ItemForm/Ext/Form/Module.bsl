@@ -1258,17 +1258,3 @@ Procedure FillByTemplateEnd(Response,PatternName) Export
 	EndIf;
 	
 EndProcedure
-
-
-
-
-
-
-
-
-
-
-
-
-
-

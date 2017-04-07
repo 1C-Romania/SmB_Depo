@@ -177,17 +177,3 @@ EndProcedure // UpdateAdditionalAttributeItems()
 #EndRegion
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-

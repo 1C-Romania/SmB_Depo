@@ -124,7 +124,7 @@
 						</v8:item>
 						<v8:item>
 							<v8:lang>ru</v8:lang>
-							<v8:content>Контакт</v8:content>
+							<v8:content>Договор</v8:content>
 						</v8:item>
 					</Title>
 					<Width>20</Width>
@@ -179,9 +179,13 @@
 							<v8:lang>en</v8:lang>
 							<v8:content>Company</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Организация</v8:content>
+						</v8:item>
 					</Title>
 					<Width>20</Width>
-					<ContextMenu name="CounterpartyContextMenu" id="9"/>
+					<ContextMenu name="CompanyContextMenu" id="9"/>
 					<ExtendedTooltip name="CompanyExtendedTooltip" id="52"/>
 				</LabelField>
 				<CheckBoxField name="KeepBackComissionFee" id="32">
@@ -267,7 +271,7 @@
 						</v8:item>
 						<v8:item>
 							<v8:lang>ru</v8:lang>
-							<v8:content>Примечание</v8:content>
+							<v8:content>Комментарий</v8:content>
 						</v8:item>
 					</Title>
 					<ContextMenu name="CommentContextMenu" id="35"/>
@@ -341,12 +345,12 @@
 				<DefaultVisible>false</DefaultVisible>
 			</Item>
 			<Item>
-				<Command>Document.AgentReport.Command.InvoiceWithCCDCreateBasedOn</Command>
+				<Command>0:495018fb-e937-41e6-b3d3-c9d0746b1da8</Command>
 				<Type>Auto</Type>
 				<DefaultVisible>false</DefaultVisible>
 			</Item>
 			<Item>
-				<Command>Document.CustomerInvoiceNote.StandardCommand.CreateBasedOn</Command>
+				<Command>2:bc0f80db-2084-4ebc-8fab-df30c343112b</Command>
 				<Type>Auto</Type>
 				<DefaultVisible>false</DefaultVisible>
 			</Item>

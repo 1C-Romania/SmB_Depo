@@ -19,7 +19,7 @@
 Procedure OnDetermineObjectsWithLockedAttributes(Objects) Export
 	
 	Objects.Insert(Metadata.ChartsOfCharacteristicTypes.AdditionalAttributesAndInformation.FullName(), "GetObjectAttributesBeingLocked");
-	Objects.Insert(Metadata.Catalogs.ContactInformationTypes.FullName(), "GetObjectAttributesBeingLocked");
+	Objects.Insert(Metadata.Catalogs.ContactInformationKinds.FullName(), "GetObjectAttributesBeingLocked");
 	Objects.Insert(Metadata.Catalogs.AccrualAndDeductionKinds.FullName(), "GetObjectAttributesBeingLocked");
 	Objects.Insert(Metadata.Catalogs.CounterpartyContracts.FullName(), "GetObjectAttributesBeingLocked");
 	Objects.Insert(Metadata.Catalogs.CashRegisters.FullName(), "GetObjectAttributesBeingLocked");

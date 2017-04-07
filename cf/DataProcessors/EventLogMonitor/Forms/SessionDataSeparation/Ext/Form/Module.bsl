@@ -73,16 +73,3 @@ Procedure CommandCancel(Command)
 EndProcedure
 
 #EndRegion
-
-
-
-
-
-
-
-
-
-
-
-
-

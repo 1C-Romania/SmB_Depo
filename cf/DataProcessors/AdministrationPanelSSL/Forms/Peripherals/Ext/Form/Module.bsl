@@ -231,17 +231,3 @@ EndProcedure // ConstantsSetUseExchangeWithPeripheralsOfflineOnChange()
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-

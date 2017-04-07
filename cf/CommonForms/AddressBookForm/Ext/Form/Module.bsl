@@ -118,7 +118,7 @@ EndProcedure
 Procedure SelectedRecipientsMarkOnChange(Item)
 	
 	SetSubordinatedMarkRecursively(Items.SelectedRecipients.CurrentData.Check, Items.SelectedRecipients.CurrentData.GetItems());
-	If Items.SelectedRecipients.CurrentData.Check AND TypeOf(Items.SelectedRecipients.CurrentData.Value) = Type("CatalogRef.ContactInformationTypes") Then
+	If Items.SelectedRecipients.CurrentData.Check AND TypeOf(Items.SelectedRecipients.CurrentData.Value) = Type("CatalogRef.ContactInformationKinds") Then
 		Parent = Items.SelectedRecipients.CurrentData.GetParent();
 		Parent.Check= True;
 	EndIf;
@@ -549,7 +549,7 @@ Procedure ChangeCounterpartyMarkups(Mark, Tree)
 		RowFirstLevel.Check = Mark;
 		RowsSecondLevel = RowFirstLevel.GetItems();
 		For Each RowSecondLevel IN RowsSecondLevel Do
-			If TypeOf(RowSecondLevel.Value) <> Type("CatalogRef.ContactInformationTypes") Then
+			If TypeOf(RowSecondLevel.Value) <> Type("CatalogRef.ContactInformationKinds") Then
 				Continue;
 			EndIf;
 			RowSecondLevel.Check = Mark;
@@ -605,7 +605,7 @@ Function ConvertRecipientsTreeInValuesTable(Tree)
 		
 		For Each RowSecondLevel IN RowsSecondLevel Do
 			
-			If RowFirstLevel.Check AND TypeOf(RowSecondLevel.Value) = Type("CatalogRef.ContactInformationTypes") AND RowSecondLevel.Check Then
+			If RowFirstLevel.Check AND TypeOf(RowSecondLevel.Value) = Type("CatalogRef.ContactInformationKinds") AND RowSecondLevel.Check Then
 				
 				If NewRowCounterparty = Undefined Then
 					NewRowCounterparty = RecipientsTable.Add();
@@ -624,7 +624,7 @@ Function ConvertRecipientsTreeInValuesTable(Tree)
 				
 				For Each RowThirdLevel IN RowsThirdLevel Do
 					
-					If TypeOf(RowThirdLevel.Value) = Type("CatalogRef.ContactInformationTypes") AND RowThirdLevel.Check Then
+					If TypeOf(RowThirdLevel.Value) = Type("CatalogRef.ContactInformationKinds") AND RowThirdLevel.Check Then
 						
 						If NewRowContactPerson = Undefined Then
 							NewRowContactPerson = RecipientsTable.Add();
@@ -667,17 +667,3 @@ Procedure RefreshSelectionValuesPanelServer(EventName)
 EndProcedure
 
 #EndRegion
-
-
-
-
-
-
-
-
-
-
-
-
-
-

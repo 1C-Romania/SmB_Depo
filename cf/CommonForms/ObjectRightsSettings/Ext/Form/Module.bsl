@@ -926,17 +926,3 @@ Procedure CheckPermissionToManageRights()
 EndProcedure
 
 #EndRegion
-
-
-
-
-
-
-
-
-
-
-
-
-
-

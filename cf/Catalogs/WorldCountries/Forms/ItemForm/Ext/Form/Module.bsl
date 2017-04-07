@@ -1,10 +1,10 @@
 ﻿
-#Region FormEventsHandlers
+#Region FormEventHandlers
 //
 
 &AtServer
 Procedure OnCreateAtServer(Cancel, StandardProcessing)
-	If Parameters.Property("AutoTest") Then
+	If Parameters.Property("Autotest") Then
 		Return;
 	EndIf;
 	
@@ -19,17 +19,3 @@ Procedure AfterWrite(WriteParameters)
 EndProcedure
 
 #EndRegion
-
-
-
-
-
-
-
-
-
-
-
-
-
-

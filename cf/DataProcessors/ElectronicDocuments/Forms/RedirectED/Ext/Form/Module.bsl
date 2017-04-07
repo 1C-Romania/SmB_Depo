@@ -131,17 +131,3 @@ Function RedirectED(TotallyED)
 EndFunction
 
 #EndRegion
-
-
-
-
-
-
-
-
-
-
-
-
-
-

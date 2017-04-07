@@ -217,17 +217,3 @@ Function MessageParametersToTechicalSupport()
 EndFunction
 
 #EndRegion
-
-
-
-
-
-
-
-
-
-
-
-
-
-

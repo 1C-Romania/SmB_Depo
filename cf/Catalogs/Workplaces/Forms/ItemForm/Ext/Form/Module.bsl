@@ -182,16 +182,3 @@ Function GetPicture(EquipmentType, Size)
 EndFunction
 
 #EndRegion
-
-
-
-
-
-
-
-
-
-
-
-
-

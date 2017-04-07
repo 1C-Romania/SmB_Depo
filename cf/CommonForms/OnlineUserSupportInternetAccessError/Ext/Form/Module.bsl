@@ -175,17 +175,3 @@ Procedure ApplicationLaunchException(InfError, StandardProcessing, AdditParamete
 EndProcedure
 
 #EndRegion
-
-
-
-
-
-
-
-
-
-
-
-
-
-

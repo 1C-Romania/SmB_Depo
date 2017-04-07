@@ -107,17 +107,3 @@ Procedure OnCreateAtServer(Cancel, StandardProcessing)
 	FillTableFilesOfPackageED();
 	
 EndProcedure
-
-
-
-
-
-
-
-
-
-
-
-
-
-

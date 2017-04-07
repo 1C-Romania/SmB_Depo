@@ -227,17 +227,3 @@ Procedure DisplayLabelExceptions()
 	
 	
 EndProcedure
-
-
-
-
-
-
-
-
-
-
-
-
-
-

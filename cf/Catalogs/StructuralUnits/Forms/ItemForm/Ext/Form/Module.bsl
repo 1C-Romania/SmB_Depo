@@ -1,5 +1,4 @@
-﻿
-#Region FormEventsHandlers
+﻿#Region FormEventsHandlers
 
 &AtServer
 Procedure OnCreateAtServer(Cancel, StandardProcessing)
@@ -46,6 +45,12 @@ Procedure OnCreateAtServer(Cancel, StandardProcessing)
 		OR Object.StructuralUnitType = TypeOfStructuralUnitRetailAmmountAccounting
 	);
 	
+	If Parameters.Key.IsEmpty() Then
+		// SB.ContactInformation
+		ContactInformationSB.OnCreateOnReadAtServer(ThisObject);
+		// End SB.ContactInformation
+	КонецЕсли;
+	
 	// StandardSubsystems.AdditionalReportsAndDataProcessors
 	AdditionalReportsAndDataProcessors.OnCreateAtServer(ThisForm);
 	// End StandardSubsystems.AdditionalReportsAndDataProcessors
@@ -53,10 +58,6 @@ Procedure OnCreateAtServer(Cancel, StandardProcessing)
 	// StandardSubsystems.ObjectsAttributesEditProhibition
 	ObjectsAttributesEditProhibition.LockAttributes(ThisForm);
 	// End StandardSubsystems.ObjectsAttributesEditProhibition
-	
-	// StandardSubsystems.ContactInformation
-	ContactInformationManagement.OnCreateAtServer(ThisForm, Object, "PageContactInformation", FormItemTitleLocation.Left);
-	// End StandardSubsystems.ContactInformation
 	
 	// StandardSubsystems.Printing
 	PrintManagement.OnCreateAtServer(ThisForm);
@@ -66,7 +67,7 @@ Procedure OnCreateAtServer(Cancel, StandardProcessing)
 	PropertiesManagement.OnCreateAtServer(ThisForm, Object, "AdditionalAttributesPage");
 	// End StandardSubsystems.Properties
 	
-EndProcedure
+EndProcedure // OnCreateAtServer()
 
 &AtServer
 Procedure OnReadAtServer(CurrentObject)
@@ -75,11 +76,11 @@ Procedure OnReadAtServer(CurrentObject)
 	PropertiesManagement.OnReadAtServer(ThisForm, CurrentObject);
 	// End StandardSubsystems.Properties
 	
-	// StandardSubsystems.ContactInformation
-	ContactInformationManagement.OnReadAtServer(ThisForm, CurrentObject);
-	// End StandardSubsystems.ContactInformation
+	// SB.ContactInformation
+	ContactInformationSB.OnCreateOnReadAtServer(ThisObject);
+	// End SB.ContactInformation
 	
-EndProcedure
+EndProcedure // OnReadAtServer()
 
 &AtClient
 Procedure NotificationProcessing(EventName, Parameter, Source)
@@ -103,11 +104,11 @@ Procedure BeforeWriteAtServer(Cancel, CurrentObject, WriteParameters)
 	// Mechanism handler "Properties".
 	PropertiesManagement.BeforeWriteAtServer(ThisForm, CurrentObject);
 	
-	// StandardSubsystems.ContactInformation
-	ContactInformationManagement.BeforeWriteAtServer(ThisForm, CurrentObject);
-	// End StandardSubsystems.ContactInformation
+	// SB.ContactInformation
+	ContactInformationSB.BeforeWriteAtServer(ThisObject, CurrentObject);
+	// End SB.ContactInformation
 	
-EndProcedure
+EndProcedure // BeforeWriteAtServer()
 
 &AtServer
 Procedure FillCheckProcessingAtServer(Cancel, CheckedAttributes)
@@ -116,11 +117,11 @@ Procedure FillCheckProcessingAtServer(Cancel, CheckedAttributes)
 	PropertiesManagement.FillCheckProcessing(ThisForm, Cancel, CheckedAttributes);
 	// End StandardSubsystems.Properties
 	
-	// StandardSubsystems.ContactInformation
-	ContactInformationManagement.FillCheckProcessingAtServer(ThisForm, Object, Cancel);
-	// End StandardSubsystems.ContactInformation
+	// SB.ContactInformation
+	ContactInformationSB.FillCheckProcessingAtServer(ThisObject, Cancel);
+	// End SB.ContactInformation
 	
-EndProcedure
+EndProcedure // FillCheckProcessingAtServer()
 
 &AtServer
 Procedure AfterWriteAtServer(CurrentObject, WriteParameters)
@@ -128,7 +129,7 @@ Procedure AfterWriteAtServer(CurrentObject, WriteParameters)
 	// Handler of the subsystem prohibiting the object attribute editing.
 	ObjectsAttributesEditProhibition.LockAttributes(ThisForm);
 	
-EndProcedure
+EndProcedure // AfterWriteOnServer()
 
 #EndRegion
 
@@ -164,7 +165,7 @@ Procedure StructuralUnitTypeOnChange(Item)
 		
 	EndIf;
 	
-EndProcedure
+EndProcedure // StructuralUnitTypeOnChange()
 
 &AtClient
 Procedure InventoryAutotransferClick(Item)
@@ -266,6 +267,59 @@ EndProcedure
 
 #EndRegion
 
+#Region ContactInformationSB
+
+&AtServer
+Procedure AddContactInformationServer(AddingKind, SetShowInFormAlways = False) Export
+	
+	ContactInformationSB.AddContactInformation(ThisObject, AddingKind, SetShowInFormAlways);
+	
+EndProcedure
+
+&AtClient
+Procedure Attachable_ActionCIClick(Item)
+	
+	ContactInformationSBClient.ActionCIClick(ThisObject, Item);
+	
+EndProcedure
+
+&AtClient
+Procedure Attachable_PresentationCIOnChange(Item)
+	
+	ContactInformationSBClient.PresentationCIOnChange(ThisObject, Item);
+	
+EndProcedure
+
+&AtClient
+Procedure Attachable_PresentationCIStartChoice(Item, ChoiceData, StandardProcessing)
+	
+	ContactInformationSBClient.PresentationCIStartChoice(ThisObject, Item, ChoiceData, StandardProcessing);
+	
+EndProcedure
+
+&AtClient
+Procedure Attachable_PresentationCIClearing(Item, StandardProcessing)
+	
+	ContactInformationSBClient.PresentationCIClearing(ThisObject, Item, StandardProcessing);
+	
+EndProcedure
+
+&AtClient
+Procedure Attachable_CommentCIOnChange(Item)
+	
+	ContactInformationSBClient.CommentCIOnChange(ThisObject, Item);
+	
+EndProcedure
+
+&AtClient
+Procedure Attachable_ContactInformationSBExecuteCommand(Command)
+	
+	ContactInformationSBClient.ExecuteCommand(ThisObject, Command);
+	
+EndProcedure
+
+#EndRegion
+
 #Region LibrariesHandlers
 
 // StandardSubsystems.AdditionalReportsAndDataProcessors
@@ -293,47 +347,6 @@ Procedure Attachable_AuthorizeObjectDetailsEditing(Command)
 EndProcedure // Connected_AllowObjectAttributeEdit()
 // End
 
-// StandardSubsystems.ContactInformation
-&AtClient
-Procedure Attachable_ContactInformationOnChange(Item)
-	
-	ContactInformationManagementClient.PresentationOnChange(ThisForm, Item);
-	
-EndProcedure
-
-&AtClient
-Procedure Attachable_ContactInformationStartChoice(Item, ChoiceData, StandardProcessing)
-	
-	Result = ContactInformationManagementClient.PresentationStartChoice(ThisForm, Item, , StandardProcessing);
-	RefreshContactInformation(Result);
-	
-EndProcedure
-
-&AtClient
-Procedure Attachable_ContactInformationClearing(Item, StandardProcessing)
-	
-	Result = ContactInformationManagementClient.ClearingPresentation(ThisForm, Item.Name);
-	RefreshContactInformation(Result);
-	
-EndProcedure
-
-&AtClient
-Procedure Attachable_ContactInformationExecuteCommand(Command)
-	
-	Result = ContactInformationManagementClient.LinkCommand(ThisForm, Command.Name);
-	RefreshContactInformation(Result);
-	ContactInformationManagementClient.OpenAddressEntryForm(ThisForm, Result);
-	
-EndProcedure
-
-&AtServer
-Function RefreshContactInformation(Result = Undefined)
-	
-	Return ContactInformationManagement.RefreshContactInformation(ThisForm, Object, Result);
-	
-EndFunction
-// End StandardSubsystems.ContactInformation
-
 // StandardSubsystems.Printing
 &AtClient
 Procedure Attachable_ExecutePrintCommand(Command)
@@ -358,19 +371,5 @@ EndProcedure // UpdateAdditionalAttributeItems()
 // End StandardSubsystems.Properties
 
 #EndRegion
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 

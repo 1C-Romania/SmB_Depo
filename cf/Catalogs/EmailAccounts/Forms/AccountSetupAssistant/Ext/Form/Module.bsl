@@ -936,17 +936,3 @@ Procedure PickSettingsAndCreateAccount()
 EndProcedure
 
 #EndRegion
-
-
-
-
-
-
-
-
-
-
-
-
-
-

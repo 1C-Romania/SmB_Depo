@@ -128,52 +128,83 @@ Function ObjectAttributeValue(Ref, AttributeName) Export
 	
 EndFunction 
 
-// Returns attributes values read from
-// the infobase for several objects.
+// Returns a structure that contains attribute values read from the infobase by
+// object reference.
 // 
-//  If there is no access to one of the attributes, access right exception will occur.
-//  If it is required to read the attribute
-//  regardless of the current user rights, then you should use preliminary transition to the privileged mode.
+// If access to any of the attributes is denied, an exception is raised.
+// To be able to read attribute values irrespective of current user rights, 
+// turn privileged mode on.
 // 
-// Function is not designed for receiving attributes values of empty refs.
-// 
+// Is not intended for retrieving empty reference attribute values.
+//
 // Parameters:
-//  RefArray - array of references to objects of the same type.
-// 			IMPORTANT! values of the array should be references to objects of the same type.
-//  AttributeNames - String, names of the
-// 			attributes separated by commas in the format of requirements for the structure properties.
-// 			For example, "Code, Name, Parent".
-// 
+//  Ref        - AnyRef - reference to the object whose attribute values are retrieved.
+//  Attributes - String - attribute names separated with commas, formatted according to
+//               structure requirements 
+//               Example: "Code, Description, Parent".
+//             - Structure, FixedStructure -  keys are field aliases used for resulting
+//               structure keys, values (optional) are field names. If a value is empty, it
+//               is considered equal to the key.
+//             - Array, FixedArray - attribute names formatted according to structure
+//               property requirements.
+//
 // Returns:
-//  Map - where key - ref to object but Value - structure
-// 	that contains the list of properties as the list of names in row.
-// 			AttributesNames, with the values of the attributes read from the infobase.
-// 
-Function ObjectAttributeValues(RefArray, AttributeNames) Export
+//  Structure - contains names (keys) and values of the requested attributes.
+//              If the string of the requested attributes is empty, an empty structure is returned.
+//              If an empty reference is passed as the object reference, all return attribute
+//              will be Undefined.
+//
+Function ObjectAttributeValues(Ref, Val Attributes) Export
 	
-	AttributeValues = New Map;
-	If RefArray.Count() = 0 Then
-		Return AttributeValues;
+	If TypeOf(Attributes) = Type("String") Then
+		If IsBlankString(Attributes) Then
+			Return New Structure;
+		EndIf;
+		Attributes = StringFunctionsClientServer.DecomposeStringIntoSubstringsArray(Attributes, ",", True);
 	EndIf;
 	
-	Query = New Query;
-	Query.Text =
-		"SELECT
-		|	Ref AS Ref, " + AttributeNames + "
-		|IN
-		|	" + RefArray[0].Metadata().FullName() + " AS
-		|Table
-		|	WHERE Table.Ref IN (&RefsArray)";
-	Query.SetParameter("RefArray", RefArray);
+	AttributeStructure = New Structure;
+	If TypeOf(Attributes) = Type("Structure") Or TypeOf(Attributes) = Type("FixedStructure") Then
+		AttributeStructure = Attributes;
+	ElsIf TypeOf(Attributes) = Type("Array") Or TypeOf(Attributes) = Type("FixedArray") Then
+		For Each Attribute In Attributes Do
+			AttributeStructure.Insert(StrReplace(Attribute, ".", ""), Attribute);
+		EndDo;
+	Else
+		Raise StringFunctionsClientServer.SubstituteParametersInString(
+			NStr("en = 'Invalid Attributes parameter type: %1'"),
+			String(TypeOf(Attributes)));
+	EndIf;
 	
-	Selection = Query.Execute().Select();
-	While Selection.Next() Do
-		Result = New Structure(AttributeNames);
-		FillPropertyValues(Result, Selection);
-		AttributeValues[Selection.Ref] = Result;
+	FieldTexts = "";
+	For Each KeyAndValue In AttributeStructure Do
+		FieldName   = ?(ValueIsFilled(KeyAndValue.Value),
+		              TrimAll(KeyAndValue.Value),
+		              TrimAll(KeyAndValue.Key));
+		
+		Alias = TrimAll(KeyAndValue.Key);
+		
+		FieldTexts  = FieldTexts + ?(IsBlankString(FieldTexts), "", ",") + "" + FieldName + " AS " + Alias;
 	EndDo;
 	
-	Return AttributeValues;
+	Query = New Query;
+	Query.SetParameter("Ref", Ref);
+	Query.Text =
+	"SELECT
+	|" + FieldTexts + " FROM " + Ref.Metadata().FullName() + " AS SpecifiedTableAlias
+	| WHERE
+	| SpecifiedTableAlias.Ref = &Ref
+	|";
+	Selection = Query.Execute().Select();
+	Selection.Next();
+	
+	Result = New Structure;
+	For Each KeyAndValue In AttributeStructure Do
+		Result.Insert(KeyAndValue.Key);
+	EndDo;
+	FillPropertyValues(Result, Selection);
+	
+	Return Result;
 	
 EndFunction
 
@@ -5882,9 +5913,9 @@ Procedure ReplaceInObject(Results, Val UsagePlace, Val WriteParameters, Val Inte
 			Block.Lock();
 		Except
 			// Add record about an unsuccessful attempt to lock the result.
-			Error = NStr("en='Unable to lock one or several objects from"
-"the list %1';ru='Не удалось заблокировать один или"
-"несколько объектов из списка %1'");
+			Error = NStr("en='Unable to lock one or several objects from
+		|the list %1';ru='Не удалось заблокировать один или
+		|несколько объектов из списка %1'");
 			Error = StrReplace(Error, "%1", LockListDescription(Block));
 			For Each String In ProcessedRows Do
 				AddReplacementResult(Results, String.Ref, 

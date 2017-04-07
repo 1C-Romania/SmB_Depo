@@ -64,16 +64,3 @@ Procedure CommandOK(Command)
 	Close(StructureOfFormAttributes);
 	
 EndProcedure // CommandOK()
-
-
-
-
-
-
-
-
-
-
-
-
-

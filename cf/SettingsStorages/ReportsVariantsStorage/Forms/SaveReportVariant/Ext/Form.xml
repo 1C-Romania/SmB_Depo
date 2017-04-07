@@ -359,11 +359,19 @@
 											<v8:lang>en</v8:lang>
 											<v8:content>New</v8:content>
 										</v8:item>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Новый</v8:content>
+										</v8:item>
 									</Title>
 									<ToolTip>
 										<v8:item>
 											<v8:lang>en</v8:lang>
 											<v8:content>New</v8:content>
+										</v8:item>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Новый</v8:content>
 										</v8:item>
 									</ToolTip>
 									<ExtendedTooltip name="NewExtendedTooltip" id="127"/>
@@ -609,12 +617,6 @@
 							<Type>CommandBarButton</Type>
 							<Enabled>false</Enabled>
 							<CommandName>Form.Command.Back</CommandName>
-							<Title>
-								<v8:item>
-									<v8:lang>ru</v8:lang>
-									<v8:content>Назад</v8:content>
-								</v8:item>
-							</Title>
 							<ExtendedTooltip name="BackExtendedTooltip" id="107"/>
 						</Button>
 					</ChildItems>
@@ -626,12 +628,6 @@
 						<Button name="GoToNext" id="15">
 							<Type>CommandBarButton</Type>
 							<CommandName>Form.Command.GoToNext</CommandName>
-							<Title>
-								<v8:item>
-									<v8:lang>ru</v8:lang>
-									<v8:content>Далее</v8:content>
-								</v8:item>
-							</Title>
 							<ExtendedTooltip name="NextExtendedTooltip" id="108"/>
 						</Button>
 						<Button name="Save" id="55">

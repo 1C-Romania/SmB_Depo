@@ -105,17 +105,3 @@ Procedure ConnectEndPointAtServer(Cancel, FillError)
 EndProcedure
 
 #EndRegion
-
-
-
-
-
-
-
-
-
-
-
-
-
-

@@ -545,7 +545,7 @@
 							<Comment/>
 							<Type>
 								<v8:Type>cfg:ChartOfCharacteristicTypesRef.AdditionalAttributesAndInformation</v8:Type>
-								<v8:Type>cfg:CatalogRef.ContactInformationTypes</v8:Type>
+								<v8:Type>cfg:CatalogRef.ContactInformationKinds</v8:Type>
 							</Type>
 							<PasswordMode>false</PasswordMode>
 							<Format/>
@@ -576,6 +576,30 @@
 			<Form>ListForm</Form>
 			<Form>ChoiceForm</Form>
 			<Form>GroupForm</Form>
+			<Command uuid="92765074-0f54-4f2c-af0a-85c0c865c288">
+				<Properties>
+					<Name>Segments</Name>
+					<Synonym>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Segments</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Сегменты</v8:content>
+						</v8:item>
+					</Synonym>
+					<Comment/>
+					<Group>CommandGroup.Settings</Group>
+					<CommandParameterType/>
+					<ParameterUseMode>Single</ParameterUseMode>
+					<ModifiesData>false</ModifiesData>
+					<Representation>Auto</Representation>
+					<ToolTip/>
+					<Picture/>
+					<Shortcut/>
+				</Properties>
+			</Command>
 		</ChildObjects>
 	</Catalog>
 </MetaDataObject>

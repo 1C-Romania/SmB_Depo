@@ -966,15 +966,15 @@ Function GeneratePrintFormOfTheBill(ObjectsArray, PrintObjects)
 		
 		// Output invoice header.
 		TemplateArea = Template.GetArea("Title");
-		TemplateArea.Parameters.HeaderText = "Receipt CR on return No "
+		TemplateArea.Parameters.HeaderText = NStr("ru = 'Чек ККМ на возврат № '; en = 'Receipt CR on return No '")
 												+ DocumentNumber
-												+ " from "
+												+ NStr("ru = ' от '; en = ' from '")
 												+ Format(Header.Date, "DLF=DD");
 
 		Spreadsheet.Put(TemplateArea);
 		
 		TemplateArea = Template.GetArea("Vendor");
-		VendorPresentation = SmallBusinessServer.CompaniesDescriptionFull(InfoAboutCompany, "FullDescr,TIN,KPP,LegalAddress,PhoneNumbers,");
+		VendorPresentation = SmallBusinessServer.CompaniesDescriptionFull(InfoAboutCompany, "FullDescr,TIN,LegalAddress,PhoneNumbers,");
 		TemplateArea.Parameters.VendorPresentation = VendorPresentation;
 		TemplateArea.Parameters.Vendor = Header.Company;
 		Spreadsheet.Put(TemplateArea);
@@ -1017,9 +1017,7 @@ Function GeneratePrintFormOfTheBill(ObjectsArray, PrintObjects)
 		While LinesSelectionInventory.Next() Do
 			
 			If Not ValueIsFilled(LinesSelectionInventory.ProductsAndServices) Then
-				Message(NStr("en='Products and services value is not filled in in one of the rows - String during printing is skipped.';
-							 |ru='Products and services value is not filled in in one of the rows - String during printing is skipped.'"), 
-					MessageStatus.Important);
+				Message(NStr("ru = 'В одной из строк не заполнено значение номенклатуры - строка при печати пропущена.'; en = 'Products and services value is not filled in in one of the rows - String during printing is skipped.'"), MessageStatus.Important);
 				Continue;
 			EndIf;
 			
@@ -1081,10 +1079,10 @@ Function GeneratePrintFormOfTheBill(ObjectsArray, PrintObjects)
 		// Output amount in writing.
 		TemplateArea = Template.GetArea("AmountInWords");
 		AmountToBeWrittenInWords = Total;
-		TemplateArea.Parameters.TotalRow = NStr("en='Total titles ';ru='Total titles '") + 
-											String(LinesSelectionInventory.Count()) + 
-											NStr("en=', in the amount of ';ru=', in the amount of '") + 
-											SmallBusinessServer.AmountsFormat(AmountToBeWrittenInWords, Header.Currency);
+		TemplateArea.Parameters.TotalRow = NStr("ru = 'Всего наименований '; en = 'Total titles '")
+													+ String(LinesSelectionInventory.Count())
+													+ NStr("ru = ', на сумму '; en = ', in the amount of '")
+													+ SmallBusinessServer.AmountsFormat(AmountToBeWrittenInWords, Header.Currency);
 																						   
 		TemplateArea.Parameters.AmountInWords = WorkWithCurrencyRates.GenerateAmountInWords(AmountToBeWrittenInWords, Header.Currency);
 		Spreadsheet.Put(TemplateArea);
@@ -1109,7 +1107,9 @@ EndFunction // GeneratePettyCashBookCoverAndLastSheetPrintableForm()
 Procedure Print(ObjectsArray, PrintParameters, PrintFormsCollection, PrintObjects, OutputParameters) Export
 	
 	If PrintManagement.NeedToPrintTemplate(PrintFormsCollection, "SalesReceipt") Then
+		
 		PrintManagement.OutputSpreadsheetDocumentToCollection(PrintFormsCollection, "SalesReceipt", "Sales receipt", GeneratePrintFormOfTheBill(ObjectsArray, PrintObjects));
+		
 	EndIf;
 	
 	// parameters of sending printing forms by email

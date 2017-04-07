@@ -780,17 +780,3 @@ Procedure RadioButtonOnChange(Item)
 	DisplayTimetableSchedule();
 	
 EndProcedure
-
-
-
-
-
-
-
-
-
-
-
-
-
-

@@ -141,17 +141,3 @@ Procedure SetCursorSelectTables(Val StartRowSerialNumber)
 EndProcedure
 
 #EndRegion
-
-
-
-
-
-
-
-
-
-
-
-
-
-

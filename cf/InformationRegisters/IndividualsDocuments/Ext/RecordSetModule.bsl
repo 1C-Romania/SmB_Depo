@@ -9,11 +9,11 @@ Procedure BeforeWrite(Cancel, Replacing)
 		Return;
 	EndIf;
 	
-	TextSeries				= NStr("en=', series: %1';ru=', серия: %1'");
-	TextNumber				= NStr("en=',  No.%1';ru=',  No.%1'");
-	TextIssuanceDate			= NStr("en=', issued: %1 year';ru=', выдан: %1 года'");
-	TextValidityPeriod		= NStr("en=', valid till: %1 year';ru=', действует до: %1 года'");
-	TextDepartmentCode	= NStr("en=', div. No.%1';ru=', № подр. %1'");
+	TextSeries			= NStr("en=', series: %1';			ru=', серия: %1'");
+	TextNumber			= NStr("en=', No.%1';				ru=', № %1'");
+	TextIssuanceDate	= NStr("en=', issued: %1 year';		ru=', выдан: %1 года'");
+	TextValidityPeriod	= NStr("en=', valid till: %1 year';	ru=', действует до: %1 года'");
+	TextDepartmentCode	= NStr("en=', div. No.%1';			ru=', № подр. %1'");
 	
 	For Each Record IN ThisObject Do
 		If Record.DocumentKind.IsEmpty() Then
@@ -87,33 +87,5 @@ Procedure OnWrite(Cancel, Replacing)
 	EndDo;
 	
 EndProcedure
-
-Procedure FillCheckProcessing(Cancel, CheckedAttributes)
-	
-	For Each Record IN ThisObject Do
-		RecordStructure = New Structure("Period, Ind, DocumentKind");
-		FillPropertyValues(RecordStructure, Record);
-		
-		RecordKey = InformationRegisters.IndividualsDocuments.CreateRecordKey(RecordStructure);
-		
-		If Not IsBlankString(Record.Series) Then
-			ErrorText = "";
-			Cancel = Not IndividualsDocumentsClientServer.DocumentSeriesSpecifiedProperly(Record.DocumentKind, Record.Series, ErrorText) Or Cancel;
-			If Not IsBlankString(ErrorText) Then
-				CommonUseClientServer.MessageToUser(ErrorText, RecordKey, "Record.Series");
-			EndIf;
-		EndIf;
-		
-		If Not IsBlankString(Record.Number) Then
-			ErrorText = "";
-			Cancel = Not IndividualsDocumentsClientServer.DocumentNumberSpecifiedProperly(Record.DocumentKind, Record.Number, ErrorText) Or Cancel;
-			If Not IsBlankString(ErrorText) Then
-				CommonUseClientServer.MessageToUser(ErrorText, RecordKey, "Record.Number");
-			EndIf;
-		EndIf;
-	EndDo;
-	
-EndProcedure
-
 
 #EndIf

@@ -18,9 +18,6 @@
 	<valueType name="CTDType" base="xs:string" variety="Atomic" length="7">
 		<pattern>[0-9]{7}</pattern>
 	</valueType>
-	<valueType name="KPPType" base="xs:string" variety="Atomic" length="9">
-		<pattern>([0-9]{1}[1-9]{1}|[1-9]{1}[0-9]{1})[0-9]{7}</pattern>
-	</valueType>
 	<valueType name="OKVType" base="xs:string" variety="Atomic" length="3">
 		<pattern>[0-9]{3}</pattern>
 	</valueType>
@@ -88,7 +85,6 @@
 							<typeDef xsi:type="ValueType" base="xs:string" variety="Atomic" minLength="1" maxLength="1000"/>
 						</property>
 						<property xmlns:d7p1="KORSFAKT" name="TINLP" type="d7p1:TINLEType" lowerBound="0" form="Attribute"/>
-						<property xmlns:d7p1="KORSFAKT" name="KPP" type="d7p1:KPPType" lowerBound="0" form="Attribute"/>
 					</typeDef>
 				</property>
 				<property name="PrPP" lowerBound="0">

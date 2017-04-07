@@ -1,12 +1,12 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
 <CommandInterface xmlns="http://v8.1c.ru/8.3/xcf/extrnprops" xmlns:xr="http://v8.1c.ru/8.3/xcf/readable" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.2">
 	<CommandsVisibility>
-		<Command name="Catalog.StructuralUnits.StandardCommand.OpenList">
+		<Command name="Catalog.BankAccounts.StandardCommand.OpenList">
 			<Visibility>
 				<xr:Common>false</xr:Common>
 			</Visibility>
 		</Command>
-		<Command name="Catalog.BankAccounts.StandardCommand.OpenList">
+		<Command name="Catalog.StructuralUnits.StandardCommand.OpenList">
 			<Visibility>
 				<xr:Common>false</xr:Common>
 			</Visibility>
@@ -48,16 +48,19 @@
 		<Command name="CommonCommand.OpenRIFunctionsMenu">
 			<CommandGroup>NavigationPanelOrdinary</CommandGroup>
 		</Command>
-		<Command name="Catalog.StructuralUnits.StandardCommand.OpenList">
+		<Command name="Catalog.BankAccounts.StandardCommand.OpenList">
 			<CommandGroup>NavigationPanelOrdinary</CommandGroup>
 		</Command>
-		<Command name="Catalog.BankAccounts.StandardCommand.OpenList">
+		<Command name="Catalog.StructuralUnits.StandardCommand.OpenList">
 			<CommandGroup>NavigationPanelOrdinary</CommandGroup>
 		</Command>
 		<Command name="Catalog.Companies.Command.AddCompany">
 			<CommandGroup>ActionsPanelCreate</CommandGroup>
 		</Command>
-		<Command name="ChartOfAccounts.Managerial.StandardCommand.Create">
+		<Command name="Catalog.BankAccounts.StandardCommand.Create">
+			<CommandGroup>ActionsPanelCreate</CommandGroup>
+		</Command>
+		<Command name="Catalog.StructuralUnits.StandardCommand.Create">
 			<CommandGroup>ActionsPanelCreate</CommandGroup>
 		</Command>
 		<Command name="Catalog.Employees.StandardCommand.Create">
@@ -66,10 +69,7 @@
 		<Command name="Catalog.Employees.StandardCommand.CreateFolder">
 			<CommandGroup>ActionsPanelCreate</CommandGroup>
 		</Command>
-		<Command name="Catalog.StructuralUnits.StandardCommand.Create">
-			<CommandGroup>ActionsPanelCreate</CommandGroup>
-		</Command>
-		<Command name="Catalog.BankAccounts.StandardCommand.Create">
+		<Command name="ChartOfAccounts.Managerial.StandardCommand.Create">
 			<CommandGroup>ActionsPanelCreate</CommandGroup>
 		</Command>
 	</CommandsOrder>

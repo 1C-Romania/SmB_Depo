@@ -21,17 +21,3 @@ Procedure OnCreateAtServer(Cancel, StandardProcessing)
 	Items.Price.Enabled = PriceAvailable;
 	
 EndProcedure
-
-
-
-
-
-
-
-
-
-
-
-
-
-

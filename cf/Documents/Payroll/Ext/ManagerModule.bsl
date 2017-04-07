@@ -290,7 +290,7 @@ Procedure InitializeDocumentData(DocumentRefPayroll, StructureAdditionalProperti
 	Query.SetParameter("Ref", DocumentRefPayroll);
 	Query.SetParameter("PointInTime", New Boundary(StructureAdditionalProperties.ForPosting.PointInTime, BoundaryType.Including));
 	Query.SetParameter("Company", StructureAdditionalProperties.ForPosting.Company);
-	Query.SetParameter("Payroll", NStr("en = 'Payroll'"));
+	Query.SetParameter("Payroll", NStr("en='Payroll';ru='Начисление зарплаты'"));
 	Query.SetParameter("AddedTax", NStr("en='Tax accrued';ru='Начисленные налоги'"));
 	    	
 	ResultsArray = Query.ExecuteBatch();

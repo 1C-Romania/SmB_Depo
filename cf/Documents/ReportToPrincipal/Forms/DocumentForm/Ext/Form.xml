@@ -279,8 +279,8 @@
 							<DataPath>Object.Company</DataPath>
 							<SkipOnInput>true</SkipOnInput>
 							<Wrap>false</Wrap>
-							<ContextMenu name="CounterpartyContextMenu" id="94"/>
-							<ExtendedTooltip name="CounterpartyExtendedTooltip" id="138"/>
+							<ContextMenu name="CompanyContextMenu" id="94"/>
+							<ExtendedTooltip name="CompanyExtendedTooltip" id="138"/>
 							<Events>
 								<Event name="OnChange">CompanyOnChange</Event>
 							</Events>
@@ -1027,15 +1027,6 @@
 			<ShowTitle>false</ShowTitle>
 			<ExtendedTooltip name="FooterExtendedTooltip" id="185"/>
 			<ChildItems>
-				<LabelField name="InvoiceText" id="117">
-					<DataPath>InvoiceText</DataPath>
-					<Hiperlink>true</Hiperlink>
-					<ContextMenu name="InvoiceTextContextMenu" id="118"/>
-					<ExtendedTooltip name="InvoiceTextExtendedTooltip" id="188"/>
-					<Events>
-						<Event name="Click">InvoiceNoteTextClick</Event>
-					</Events>
-				</LabelField>
 				<UsualGroup name="Totals" id="71">
 					<ToolTip>
 						<v8:item>
@@ -1265,7 +1256,12 @@
 				</v8:item>
 			</Title>
 			<Type>
-				<v8:TypeId>7df51630-43b5-4ce5-9c6d-05075e9da985</v8:TypeId>
+				<v8:Type>xs:decimal</v8:Type>
+				<v8:NumberQualifiers>
+					<v8:Digits>10</v8:Digits>
+					<v8:FractionDigits>0</v8:FractionDigits>
+					<v8:AllowedSign>Nonnegative</v8:AllowedSign>
+				</v8:NumberQualifiers>
 			</Type>
 		</Attribute>
 		<Attribute name="RateNationalCurrency" id="11">
@@ -1280,7 +1276,12 @@
 				</v8:item>
 			</Title>
 			<Type>
-				<v8:TypeId>68e59cac-a032-48d5-8f3f-dc6a3fc54686</v8:TypeId>
+				<v8:Type>xs:decimal</v8:Type>
+				<v8:NumberQualifiers>
+					<v8:Digits>10</v8:Digits>
+					<v8:FractionDigits>4</v8:FractionDigits>
+					<v8:AllowedSign>Nonnegative</v8:AllowedSign>
+				</v8:NumberQualifiers>
 			</Type>
 		</Attribute>
 		<Attribute name="NationalCurrency" id="12">
@@ -1341,25 +1342,6 @@
 			</Title>
 			<Type>
 				<v8:Type>xs:boolean</v8:Type>
-			</Type>
-		</Attribute>
-		<Attribute name="InvoiceText" id="17">
-			<Title>
-				<v8:item>
-					<v8:lang>en</v8:lang>
-					<v8:content>Customer invoice note</v8:content>
-				</v8:item>
-				<v8:item>
-					<v8:lang>ru</v8:lang>
-					<v8:content>Счет-фактура</v8:content>
-				</v8:item>
-			</Title>
-			<Type>
-				<v8:Type>xs:string</v8:Type>
-				<v8:StringQualifiers>
-					<v8:Length>0</v8:Length>
-					<v8:AllowedLength>Variable</v8:AllowedLength>
-				</v8:StringQualifiers>
 			</Type>
 		</Attribute>
 		<Attribute name="CounterpartyDoSettlementsByOrders" id="19">
@@ -1651,14 +1633,14 @@
 				<Index>1</Index>
 			</Item>
 			<Item>
-				<Command>Document.ReportToPrincipal.Command.InvoiceWithCCDCreateBasedOn</Command>
+				<Command>0:3a4c6085-ac67-45e2-9944-86028532950b</Command>
 				<Type>Auto</Type>
 				<CommandGroup>FormCommandBarCreateBasedOn</CommandGroup>
 				<Index>3</Index>
 				<DefaultVisible>false</DefaultVisible>
 			</Item>
 			<Item>
-				<Command>Document.CustomerInvoiceNote.StandardCommand.CreateBasedOn</Command>
+				<Command>2:bc0f80db-2084-4ebc-8fab-df30c343112b</Command>
 				<Type>Auto</Type>
 				<CommandGroup>FormCommandBarCreateBasedOn</CommandGroup>
 				<Index>2</Index>

@@ -3,11 +3,6 @@
 	<VerticalScroll>useIfNecessary</VerticalScroll>
 	<AutoCommandBar name="FormCommandBar" id="-1">
 		<ChildItems>
-			<Button name="FormImportClassifier" id="16">
-				<Type>CommandBarButton</Type>
-				<CommandName>Form.Command.ImportClassifier</CommandName>
-				<ExtendedTooltip name="FormImportClassifierExtendedTooltip" id="17"/>
-			</Button>
 			<Button name="FormChangeForm" id="33">
 				<Type>CommandBarButton</Type>
 				<CommandName>Form.StandardCommand.CustomizeForm</CommandName>
@@ -186,32 +181,4 @@
 			</Settings>
 		</Attribute>
 	</Attributes>
-	<Commands>
-		<Command name="ImportClassifier" id="1">
-			<Title>
-				<v8:item>
-					<v8:lang>en</v8:lang>
-					<v8:content>Import classifier</v8:content>
-				</v8:item>
-				<v8:item>
-					<v8:lang>ru</v8:lang>
-					<v8:content>Загрузка классификатора</v8:content>
-				</v8:item>
-			</Title>
-			<ToolTip>
-				<v8:item>
-					<v8:lang>en</v8:lang>
-					<v8:content>Import classifier</v8:content>
-				</v8:item>
-				<v8:item>
-					<v8:lang>ru</v8:lang>
-					<v8:content>Загрузка классификатора</v8:content>
-				</v8:item>
-			</ToolTip>
-			<Action>ImportClassifier</Action>
-			<FunctionalOptions>
-				<Item>FunctionalOption.WorkInLocalMode</Item>
-			</FunctionalOptions>
-		</Command>
-	</Commands>
 </Form>

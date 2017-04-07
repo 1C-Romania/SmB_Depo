@@ -64,15 +64,15 @@
 						<CommandName>Form.Item.Classifier.StandardCommand.CancelSearch</CommandName>
 						<ExtendedTooltip name="ClassifierContextMenuCancelSearchExtendedTooltip" id="50"/>
 					</Button>
-					<Button name="ClassifierContextMenuListSortAsc" id="38">
+					<Button name="ClassifierContextMenuSortListAsc" id="38">
 						<Type>CommandBarButton</Type>
 						<CommandName>Form.Item.Classifier.StandardCommand.SortListAsc</CommandName>
-						<ExtendedTooltip name="ClassifierContextMenuListSortAscExtendedTooltip" id="51"/>
+						<ExtendedTooltip name="ClassifierContextMenuSortListAscExtendedTooltip" id="51"/>
 					</Button>
-					<Button name="ClassifierContextMenuSortListByDesc" id="39">
+					<Button name="ClassifierContextMenuSortListDesc" id="39">
 						<Type>CommandBarButton</Type>
 						<CommandName>Form.Item.Classifier.StandardCommand.SortListDesc</CommandName>
-						<ExtendedTooltip name="ClassifierContextMenuSortListByDescExtendedTooltip" id="52"/>
+						<ExtendedTooltip name="ClassifierContextMenuSortListDescExtendedTooltip" id="52"/>
 					</Button>
 					<Button name="ClassifierContextMenuOutputList" id="40">
 						<Type>CommandBarButton</Type>
@@ -84,7 +84,7 @@
 						<CommandName>Form.Item.Classifier.StandardCommand.CopyToClipboard</CommandName>
 						<ExtendedTooltip name="ClassifierContextMenuCopyToClipboardExtendedTooltip" id="54"/>
 					</Button>
-					<Button name="ClassificationContextMenuSelectAll" id="42">
+					<Button name="ClassifierContextMenuSelectAll" id="42">
 						<Type>CommandBarButton</Type>
 						<CommandName>17:51c99108-107c-43e1-8918-e48835bf2495</CommandName>
 						<ExtendedTooltip name="ClassifierContextMenuSelectAllExtendedTooltip" id="55"/>
@@ -178,20 +178,20 @@
 				<ExtendedTooltip name="ClassifierSearchControlExtendedTooltip" id="77"/>
 			</SearchControlAddition>
 			<Events>
-				<Event name="ValueChoice">ClassifierValueSelection</Event>
-				<Event name="Selection">ClassifierSelection</Event>
-				<Event name="BeforeAddRow">ClassifierBeforeStartAdding</Event>
+				<Event name="ValueChoice">ClassifierValueChoice</Event>
+				<Event name="Selection">ClassifierChoice</Event>
+				<Event name="BeforeAddRow">ClassifierBeforeAddRow</Event>
 				<Event name="BeforeDeleteRow">ClassifierBeforeDelete</Event>
-				<Event name="BeforeRowChange">ClassifierBeforeChange</Event>
+				<Event name="BeforeRowChange">ClassifierBeforeRowChange</Event>
 			</Events>
 			<ChildItems>
-				<InputField name="ClassifierName" id="22">
+				<InputField name="ClassifierDescription" id="22">
 					<DataPath>Classifier.Description</DataPath>
 					<Width>12</Width>
 					<HorizontalStretch>false</HorizontalStretch>
 					<TextEdit>false</TextEdit>
-					<ContextMenu name="ClassifierNameContextMenu" id="23"/>
-					<ExtendedTooltip name="ClassifierNameExtendedTooltip" id="64"/>
+					<ContextMenu name="ClassifierDescriptionContextMenu" id="23"/>
+					<ExtendedTooltip name="ClassifierDescriptionExtendedTooltip" id="64"/>
 				</InputField>
 				<InputField name="ClassifierCode" id="20">
 					<DataPath>Classifier.Code</DataPath>
@@ -214,11 +214,11 @@
 					<ContextMenu name="ClassifierNumAlpha3ContextMenu" id="29"/>
 					<ExtendedTooltip name="ClassifierNumAlpha3ExtendedTooltip" id="67"/>
 				</InputField>
-				<InputField name="ClassifierDescriptionFull" id="24">
-					<DataPath>Classifier.DescriptionFull</DataPath>
+				<InputField name="ClassifierLongDescription" id="24">
+					<DataPath>Classifier.LongDescription</DataPath>
 					<TextEdit>false</TextEdit>
-					<ContextMenu name="ClassifierDescriptionFullContextMenu" id="25"/>
-					<ExtendedTooltip name="ClassifierDescriptionFullExtendedTooltip" id="68"/>
+					<ContextMenu name="ClassifierLongDescriptionContextMenu" id="25"/>
+					<ExtendedTooltip name="ClassifierLongDescriptionExtendedTooltip" id="68"/>
 				</InputField>
 			</ChildItems>
 		</Table>
@@ -269,7 +269,7 @@
 						</v8:item>
 						<v8:item>
 							<v8:lang>ru</v8:lang>
-							<v8:content>Наименование</v8:content>
+							<v8:content>Description</v8:content>
 						</v8:item>
 					</Title>
 					<Type>
@@ -280,11 +280,11 @@
 						</v8:StringQualifiers>
 					</Type>
 				</Column>
-				<Column name="DescriptionFull" id="3">
+				<Column name="LongDescription" id="3">
 					<Title>
 						<v8:item>
 							<v8:lang>en</v8:lang>
-							<v8:content>Full description</v8:content>
+							<v8:content>Long description</v8:content>
 						</v8:item>
 						<v8:item>
 							<v8:lang>ru</v8:lang>

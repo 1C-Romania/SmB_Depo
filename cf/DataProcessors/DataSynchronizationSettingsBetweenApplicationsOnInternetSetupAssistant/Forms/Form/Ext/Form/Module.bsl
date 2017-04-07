@@ -1890,17 +1890,3 @@ Function PageNumber_ComparisonStatisticReceiving()
 EndFunction
 
 #EndRegion
-
-
-
-
-
-
-
-
-
-
-
-
-
-

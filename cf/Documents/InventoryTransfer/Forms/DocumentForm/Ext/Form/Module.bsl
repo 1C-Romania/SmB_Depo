@@ -270,7 +270,7 @@ Function GetDataStructuralUnitPayeeOnChange(StructureData)
 	ArrayOfOwners = New Array;
 	ArrayOfOwners.Add(StructureData.Recipient);
 	
-	Addresses = ContactInformationManagement.ContactInformationOfObjects(ArrayOfOwners, , Catalogs.ContactInformationTypes.StructuralUnitsFactAddress);
+	Addresses = ContactInformationManagement.ObjectsContactInformation(ArrayOfOwners, , Catalogs.ContactInformationKinds.StructuralUnitsFactAddress);
 	If Addresses.Count() > 0 Then
 		
 		ShippingAddress = Addresses[0].Presentation;

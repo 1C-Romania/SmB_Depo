@@ -153,17 +153,3 @@ Procedure AddTreeSubstring(Tree, Val MetadataObject)
 	NewRow.Picture = RowOwner.Picture;
 	
 EndProcedure
-
-
-
-
-
-
-
-
-
-
-
-
-
-

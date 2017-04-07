@@ -421,17 +421,3 @@ Function MoveVersion(VersionStructure, MaximumFileSize, FileArrayWithErrors)
 EndFunction
 
 #EndRegion
-
-
-
-
-
-
-
-
-
-
-
-
-
-

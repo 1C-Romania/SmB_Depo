@@ -191,16 +191,3 @@ Procedure OnChangeConnectionFromServer(Val ConnectionFromServer)
 EndProcedure
 
 #EndRegion
-
-
-
-
-
-
-
-
-
-
-
-
-

@@ -55,17 +55,3 @@ Procedure FinishEdit(Command)
 EndProcedure
 
 #EndRegion
-
-
-
-
-
-
-
-
-
-
-
-
-
-

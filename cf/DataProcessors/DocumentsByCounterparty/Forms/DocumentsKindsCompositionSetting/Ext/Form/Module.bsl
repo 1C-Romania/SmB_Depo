@@ -20,17 +20,3 @@ Procedure Save(Command)
 	Close(DocumentsKindsList);
 
 EndProcedure
-
-
-
-
-
-
-
-
-
-
-
-
-
-

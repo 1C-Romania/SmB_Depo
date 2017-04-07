@@ -1288,17 +1288,3 @@ EndProcedure // CartReserveOnChange()
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-

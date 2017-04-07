@@ -30,16 +30,3 @@ Procedure ColumnsListChoice(Item, SelectedRow, Field, StandardProcessing)
 EndProcedure
 
 #EndRegion
-
-
-
-
-
-
-
-
-
-
-
-
-

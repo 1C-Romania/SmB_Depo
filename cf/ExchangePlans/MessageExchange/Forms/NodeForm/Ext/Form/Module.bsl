@@ -63,17 +63,3 @@ Procedure MakeThisEndPointSubordinate(Command)
 EndProcedure
 
 #EndRegion
-
-
-
-
-
-
-
-
-
-
-
-
-
-

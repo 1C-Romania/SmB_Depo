@@ -218,19 +218,17 @@ Procedure SendInvitationsServer(PostedInvitations, Marker)
 	InvitationsTable.Columns.Add("Description");
 	InvitationsTable.Columns.Add("DescriptionForUserMessage");
 	InvitationsTable.Columns.Add("TIN");
-	InvitationsTable.Columns.Add("KPP");
 	InvitationsTable.Columns.Add("EMail_Address");
 	InvitationsTable.Columns.Add("InvitationText");
 	InvitationsTable.Columns.Add("ExternalCode");
 	
 	AttributeNameCounterpartyTIN = ElectronicDocumentsReUse.NameAttributeObjectExistanceInAppliedSolution("CounterpartyTIN");
-	AttributeNameCounterpartyKPP = ElectronicDocumentsReUse.NameAttributeObjectExistanceInAppliedSolution("CounterpartyCRR");
 	AttributeNameCounterpartyName = ElectronicDocumentsReUse.NameAttributeObjectExistanceInAppliedSolution("CounterpartyDescription");
 	AttributeNameExternalCounterpartyCode = ElectronicDocumentsReUse.NameAttributeObjectExistanceInAppliedSolution("ExternalCounterpartyCode");
 	AttributeNameCounterpartyNameForMessageToUser = ElectronicDocumentsReUse.NameAttributeObjectExistanceInAppliedSolution("CounterpartyNameForMessageToUser");
 	
 	CounterpartyParametersStructure = CommonUse.ObjectAttributesValues(Recipient,
-		AttributeNameCounterpartyTIN + ", " + AttributeNameCounterpartyKPP + ", " + AttributeNameCounterpartyName + ", "
+		AttributeNameCounterpartyTIN + ", " + AttributeNameCounterpartyName + ", "
 		+ AttributeNameExternalCounterpartyCode + ", " + AttributeNameCounterpartyNameForMessageToUser);
 		
 	If Not ValueIsFilled(Email) Then
@@ -262,7 +260,6 @@ Procedure SendInvitationsServer(PostedInvitations, Marker)
 	NewRow.Description       = CounterpartyParametersStructure[AttributeNameCounterpartyName];
 	NewRow.DescriptionForUserMessage = CounterpartyParametersStructure[AttributeNameCounterpartyNameForMessageToUser];
 	NewRow.TIN = CounterpartyParametersStructure[AttributeNameCounterpartyTIN];
-	NewRow.KPP = CounterpartyParametersStructure[AttributeNameCounterpartyKPP];
 	NewRow.ExternalCode = CounterpartyParametersStructure[AttributeNameExternalCounterpartyCode];
 		
 	If Not ValueIsFilled(InvitationsTable) Then
@@ -448,17 +445,3 @@ Procedure EndInvitationTextEditing(Result, AdditionalParameters) Export
 EndProcedure
 
 #EndRegion
-
-
-
-
-
-
-
-
-
-
-
-
-
-

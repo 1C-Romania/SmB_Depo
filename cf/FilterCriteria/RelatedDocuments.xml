@@ -34,7 +34,6 @@
 				<v8:Type>cfg:DocumentRef.InventoryTransfer</v8:Type>
 				<v8:Type>cfg:DocumentRef.GoodsExpense</v8:Type>
 				<v8:Type>cfg:DocumentRef.SupplierInvoice</v8:Type>
-				<v8:Type>cfg:DocumentRef.SupplierInvoiceNote</v8:Type>
 				<v8:Type>cfg:DocumentRef.ReceiptCRReturn</v8:Type>
 				<v8:Type>cfg:DocumentRef.SalesTarget</v8:Type>
 				<v8:Type>cfg:DocumentRef.WorkOrder</v8:Type>
@@ -48,7 +47,6 @@
 				<v8:Type>cfg:DocumentRef.FixedAssetsEnter</v8:Type>
 				<v8:Type>cfg:DocumentRef.OtherExpenses</v8:Type>
 				<v8:Type>cfg:DocumentRef.InventoryReservation</v8:Type>
-				<v8:Type>cfg:DocumentRef.CustomerInvoiceNote</v8:Type>
 				<v8:Type>cfg:DocumentRef.CashTransferPlan</v8:Type>
 				<v8:Type>cfg:DocumentRef.PaymentReceiptPlan</v8:Type>
 				<v8:Type>cfg:DocumentRef.ExpenseReport</v8:Type>
@@ -83,74 +81,70 @@
 			</Type>
 			<UseStandardCommands>false</UseStandardCommands>
 			<Content>
-				<xr:Item xsi:type="xr:MDObjectRef">Document.ExpenseReport.Attribute.BasisDocument</xr:Item>
-				<xr:Item xsi:type="xr:MDObjectRef">Document.ExpenseReport.TabularSection.AdvancesPaid.Attribute.Document</xr:Item>
 				<xr:Item xsi:type="xr:MDObjectRef">Document.AcceptanceCertificate.Attribute.BasisDocument</xr:Item>
 				<xr:Item xsi:type="xr:MDObjectRef">Document.AcceptanceCertificate.Attribute.CustomerOrder</xr:Item>
 				<xr:Item xsi:type="xr:MDObjectRef">Document.AcceptanceCertificate.TabularSection.WorksAndServices.Attribute.CustomerOrder</xr:Item>
-				<xr:Item xsi:type="xr:MDObjectRef">Document.PowerOfAttorney.Attribute.BasisDocument</xr:Item>
 				<xr:Item xsi:type="xr:MDObjectRef">Document.AdditionalCosts.TabularSection.Inventory.Attribute.ReceiptDocument</xr:Item>
-				<xr:Item xsi:type="xr:MDObjectRef">Document.WorkOrder.Attribute.Event</xr:Item>
-				<xr:Item xsi:type="xr:MDObjectRef">Document.WorkOrder.TabularSection.Works.Attribute.Customer</xr:Item>
-				<xr:Item xsi:type="xr:MDObjectRef">Document.ProductionOrder.Attribute.CustomerOrder</xr:Item>
-				<xr:Item xsi:type="xr:MDObjectRef">Document.ProductionOrder.Attribute.BasisDocument</xr:Item>
-				<xr:Item xsi:type="xr:MDObjectRef">Document.CustomerOrder.Attribute.Event</xr:Item>
-				<xr:Item xsi:type="xr:MDObjectRef">Document.PurchaseOrder.Attribute.CustomerOrder</xr:Item>
-				<xr:Item xsi:type="xr:MDObjectRef">Document.PurchaseOrder.Attribute.Event</xr:Item>
-				<xr:Item xsi:type="xr:MDObjectRef">Document.InventoryReceipt.Attribute.BasisDocument</xr:Item>
-				<xr:Item xsi:type="xr:MDObjectRef">Document.AgentReport.TabularSection.Customers.Attribute.CustomerInvoiceNote</xr:Item>
-				<xr:Item xsi:type="xr:MDObjectRef">Document.ProcessingReport.Attribute.CustomerOrder</xr:Item>
-				<xr:Item xsi:type="xr:MDObjectRef">Document.RetailReport.Attribute.InventoryReconciliation</xr:Item>
-				<xr:Item xsi:type="xr:MDObjectRef">Document.SubcontractorReport.Attribute.BasisDocument</xr:Item>
-				<xr:Item xsi:type="xr:MDObjectRef">Document.SubcontractorReport.Attribute.CustomerOrder</xr:Item>
-				<xr:Item xsi:type="xr:MDObjectRef">Document.CashTransfer.Attribute.BasisDocument</xr:Item>
-				<xr:Item xsi:type="xr:MDObjectRef">Document.InventoryTransfer.Attribute.BasisDocument</xr:Item>
-				<xr:Item xsi:type="xr:MDObjectRef">Document.TransferBetweenCells.Attribute.BasisDocument</xr:Item>
-				<xr:Item xsi:type="xr:MDObjectRef">Document.PaymentOrder.Attribute.BasisDocument</xr:Item>
-				<xr:Item xsi:type="xr:MDObjectRef">Document.CashReceipt.Attribute.Document</xr:Item>
-				<xr:Item xsi:type="xr:MDObjectRef">Document.CashReceipt.Attribute.BasisDocument</xr:Item>
-				<xr:Item xsi:type="xr:MDObjectRef">Document.CashReceipt.TabularSection.PaymentDetails.Attribute.Document</xr:Item>
-				<xr:Item xsi:type="xr:MDObjectRef">Document.PaymentReceiptPlan.Attribute.BasisDocument</xr:Item>
-				<xr:Item xsi:type="xr:MDObjectRef">Document.PaymentReceipt.Attribute.BasisDocument</xr:Item>
-				<xr:Item xsi:type="xr:MDObjectRef">Document.PaymentReceipt.Attribute.Document</xr:Item>
-				<xr:Item xsi:type="xr:MDObjectRef">Document.PaymentReceipt.TabularSection.PaymentDetails.Attribute.Document</xr:Item>
-				<xr:Item xsi:type="xr:MDObjectRef">Document.PaymentReceipt.TabularSection.PaymentDetails.Attribute.PlanningDocument</xr:Item>
-				<xr:Item xsi:type="xr:MDObjectRef">Document.SupplierInvoice.Attribute.BasisDocument</xr:Item>
-				<xr:Item xsi:type="xr:MDObjectRef">Document.GoodsReceipt.Attribute.BasisDocument</xr:Item>
 				<xr:Item xsi:type="xr:MDObjectRef">Document.CashOutflowPlan.Attribute.BasisDocument</xr:Item>
 				<xr:Item xsi:type="xr:MDObjectRef">Document.CashPayment.Attribute.Document</xr:Item>
 				<xr:Item xsi:type="xr:MDObjectRef">Document.CashPayment.Attribute.BasisDocument</xr:Item>
 				<xr:Item xsi:type="xr:MDObjectRef">Document.CashPayment.TabularSection.PaymentDetails.Attribute.Document</xr:Item>
 				<xr:Item xsi:type="xr:MDObjectRef">Document.CashPayment.TabularSection.PaymentDetails.Attribute.PlanningDocument</xr:Item>
 				<xr:Item xsi:type="xr:MDObjectRef">Document.CashPayment.TabularSection.PayrollPayment.Attribute.Statement</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">Document.CashReceipt.Attribute.Document</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">Document.CashReceipt.Attribute.BasisDocument</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">Document.CashReceipt.TabularSection.PaymentDetails.Attribute.Document</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">Document.CashTransfer.Attribute.BasisDocument</xr:Item>
 				<xr:Item xsi:type="xr:MDObjectRef">Document.CustomerInvoice.Attribute.BasisDocument</xr:Item>
 				<xr:Item xsi:type="xr:MDObjectRef">Document.CustomerInvoice.Attribute.Order</xr:Item>
 				<xr:Item xsi:type="xr:MDObjectRef">Document.CustomerInvoice.TabularSection.Inventory.Attribute.Order</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">Document.CustomerOrder.Attribute.Event</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">Document.Event.Attribute.BasisDocument</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">Document.Event.TabularSection.BasisDocuments.Attribute.BasisDocument</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">Document.ExpenseReport.Attribute.BasisDocument</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">Document.ExpenseReport.TabularSection.AdvancesPaid.Attribute.Document</xr:Item>
 				<xr:Item xsi:type="xr:MDObjectRef">Document.GoodsExpense.Attribute.BasisDocument</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">Document.GoodsReceipt.Attribute.BasisDocument</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">Document.InventoryAssembly.Attribute.BasisDocument</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">Document.InventoryReceipt.Attribute.BasisDocument</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">Document.InventoryReservation.Attribute.CustomerOrder</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">Document.InventoryReservation.TabularSection.Inventory.Attribute.OriginalReservePlace</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">Document.InventoryReservation.TabularSection.Inventory.Attribute.NewReservePlace</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">Document.InventoryTransfer.Attribute.BasisDocument</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">Document.InventoryWriteOff.Attribute.BasisDocument</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">Document.InvoiceForPayment.Attribute.BasisDocument</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">Document.InvoiceForPayment.Attribute.Event</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">Document.JobSheet.TabularSection.Operations.Attribute.CustomerOrder</xr:Item>
 				<xr:Item xsi:type="xr:MDObjectRef">Document.PaymentExpense.Attribute.BasisDocument</xr:Item>
 				<xr:Item xsi:type="xr:MDObjectRef">Document.PaymentExpense.Attribute.Document</xr:Item>
 				<xr:Item xsi:type="xr:MDObjectRef">Document.PaymentExpense.TabularSection.PaymentDetails.Attribute.Document</xr:Item>
 				<xr:Item xsi:type="xr:MDObjectRef">Document.PaymentExpense.TabularSection.PaymentDetails.Attribute.PlanningDocument</xr:Item>
 				<xr:Item xsi:type="xr:MDObjectRef">Document.PaymentExpense.TabularSection.PayrollPayment.Attribute.Statement</xr:Item>
-				<xr:Item xsi:type="xr:MDObjectRef">Document.InventoryReservation.Attribute.CustomerOrder</xr:Item>
-				<xr:Item xsi:type="xr:MDObjectRef">Document.InventoryReservation.TabularSection.Inventory.Attribute.OriginalReservePlace</xr:Item>
-				<xr:Item xsi:type="xr:MDObjectRef">Document.InventoryReservation.TabularSection.Inventory.Attribute.NewReservePlace</xr:Item>
-				<xr:Item xsi:type="xr:MDObjectRef">Document.InventoryAssembly.Attribute.BasisDocument</xr:Item>
-				<xr:Item xsi:type="xr:MDObjectRef">Document.SettlementsReconciliation.TabularSection.DeleteEnteredCorrections.Attribute.CorrectionDocument</xr:Item>
-				<xr:Item xsi:type="xr:MDObjectRef">Document.JobSheet.TabularSection.Operations.Attribute.CustomerOrder</xr:Item>
-				<xr:Item xsi:type="xr:MDObjectRef">Document.Event.Attribute.BasisDocument</xr:Item>
-				<xr:Item xsi:type="xr:MDObjectRef">Document.Event.TabularSection.BasisDocuments.Attribute.BasisDocument</xr:Item>
-				<xr:Item xsi:type="xr:MDObjectRef">Document.InventoryWriteOff.Attribute.BasisDocument</xr:Item>
-				<xr:Item xsi:type="xr:MDObjectRef">Document.InvoiceForPayment.Attribute.BasisDocument</xr:Item>
-				<xr:Item xsi:type="xr:MDObjectRef">Document.InvoiceForPayment.Attribute.Event</xr:Item>
-				<xr:Item xsi:type="xr:MDObjectRef">Document.SupplierInvoiceForPayment.Attribute.BasisDocument</xr:Item>
-				<xr:Item xsi:type="xr:MDObjectRef">Document.SupplierInvoiceForPayment.Attribute.Event</xr:Item>
-				<xr:Item xsi:type="xr:MDObjectRef">Document.CustomerInvoiceNote.Attribute.BasisDocument</xr:Item>
-				<xr:Item xsi:type="xr:MDObjectRef">Document.CustomerInvoiceNote.TabularSection.BasisDocuments.Attribute.BasisDocument</xr:Item>
-				<xr:Item xsi:type="xr:MDObjectRef">Document.SupplierInvoiceNote.Attribute.BasisDocument</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">Document.PaymentOrder.Attribute.BasisDocument</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">Document.PaymentReceipt.Attribute.BasisDocument</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">Document.PaymentReceipt.Attribute.Document</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">Document.PaymentReceipt.TabularSection.PaymentDetails.Attribute.Document</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">Document.PaymentReceipt.TabularSection.PaymentDetails.Attribute.PlanningDocument</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">Document.PaymentReceiptPlan.Attribute.BasisDocument</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">Document.PowerOfAttorney.Attribute.BasisDocument</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">Document.ProcessingReport.Attribute.CustomerOrder</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">Document.ProductionOrder.Attribute.CustomerOrder</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">Document.ProductionOrder.Attribute.BasisDocument</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">Document.PurchaseOrder.Attribute.CustomerOrder</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">Document.PurchaseOrder.Attribute.Event</xr:Item>
 				<xr:Item xsi:type="xr:MDObjectRef">Document.ReceiptCR.Attribute.CashCRSession</xr:Item>
 				<xr:Item xsi:type="xr:MDObjectRef">Document.ReceiptCRReturn.Attribute.CashCRSession</xr:Item>
 				<xr:Item xsi:type="xr:MDObjectRef">Document.ReceiptCRReturn.Attribute.ReceiptCR</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">Document.RetailReport.Attribute.InventoryReconciliation</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">Document.SettlementsReconciliation.TabularSection.DeleteEnteredCorrections.Attribute.CorrectionDocument</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">Document.SubcontractorReport.Attribute.BasisDocument</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">Document.SubcontractorReport.Attribute.CustomerOrder</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">Document.SupplierInvoice.Attribute.BasisDocument</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">Document.SupplierInvoiceForPayment.Attribute.BasisDocument</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">Document.SupplierInvoiceForPayment.Attribute.Event</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">Document.TransferBetweenCells.Attribute.BasisDocument</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">Document.WorkOrder.Attribute.Event</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">Document.WorkOrder.TabularSection.Works.Attribute.Customer</xr:Item>
 			</Content>
 			<DefaultForm/>
 			<AuxiliaryForm/>

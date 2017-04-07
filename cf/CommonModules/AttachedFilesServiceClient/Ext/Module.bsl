@@ -506,7 +506,7 @@ Procedure PlaceAttachedFile(Notification, AttachedFile, FormID, AdditionalParame
 	Context.Insert("ErrorTitle",
 		NStr("en='Failed to place the file from your computer into storage due to:';ru='Не удалось поместить файл с компьютера в хранилище файлов по причине:'") + Chars.LF);
 	
-	CommonUseClient.ShowQuestionAboutFileOperationsExtensionSetting(New NotifyDescription(
+	CommonUseClient.ShowFileSystemExtensionInstallationQuestion(New NotifyDescription(
 		"PlaceAttachedFileAfterConnectionExpansions", ThisObject, Context),, False);
 	
 EndProcedure
@@ -694,7 +694,7 @@ Procedure GetAttachedFile(Notification, AttachedFile, FormID, AdditionalParamete
 	
 	Context.Insert("ForEditing", ValueIsFilled(Context.FileData.IsEditing));
 	
-	CommonUseClient.ShowQuestionAboutFileOperationsExtensionSetting(New NotifyDescription(
+	CommonUseClient.ShowFileSystemExtensionInstallationQuestion(New NotifyDescription(
 		"GetAttachedFileAfterConnectionExpansions", ThisObject, Context),, False);
 	
 EndProcedure
@@ -1311,7 +1311,7 @@ Procedure UpdateStateAboutFileSaving(Val SelectedFiles, Val File, Val CurrentPos
 		Else
 			ExplanationText = StringFunctionsClientServer.SubstituteParametersInString(
 				NStr("en='Is Saved file ""%1"" (%2 MB).
-		|You Are Welcome, please wait...';ru='Сохраняется файл ""%1"" (%2 Мб).
+		|Please wait...';ru='Сохраняется файл ""%1"" (%2 Мб).
 		|Пожалуйста, подождите...'"), File.Name, SizeInMB);
 		EndIf;
 		Status(ExplanationText);

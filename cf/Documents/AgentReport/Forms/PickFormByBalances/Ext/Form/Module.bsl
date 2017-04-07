@@ -195,17 +195,3 @@ Procedure InventoryTableQuantityOnChange(Item)
 	TabularSectionRow.Selected = (TabularSectionRow.Quantity <> 0);
 	
 EndProcedure // InventoryTableQuantityOnChange()
-
-
-
-
-
-
-
-
-
-
-
-
-
-

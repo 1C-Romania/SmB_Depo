@@ -4,11 +4,6 @@
 	<VerticalScroll>useIfNecessary</VerticalScroll>
 	<AutoCommandBar name="FormCommandBar" id="-1">
 		<ChildItems>
-			<Button name="FormImportClassifier" id="20">
-				<Type>CommandBarButton</Type>
-				<CommandName>Form.Command.ImportClassifier</CommandName>
-				<ExtendedTooltip name="FormImportClassifierExtendedTooltip" id="21"/>
-			</Button>
 			<Button name="FormShowInactiveBanks" id="19">
 				<Type>CommandBarButton</Type>
 				<OnlyInAllActions>false</OnlyInAllActions>
@@ -99,7 +94,7 @@
 						</v8:item>
 						<v8:item>
 							<v8:lang>ru</v8:lang>
-							<v8:content>Наименование</v8:content>
+							<v8:content>Description</v8:content>
 						</v8:item>
 					</Title>
 					<Width>40</Width>
@@ -252,32 +247,6 @@
 		</Attribute>
 	</Attributes>
 	<Commands>
-		<Command name="ImportClassifier" id="1">
-			<Title>
-				<v8:item>
-					<v8:lang>en</v8:lang>
-					<v8:content>Import classifier</v8:content>
-				</v8:item>
-				<v8:item>
-					<v8:lang>ru</v8:lang>
-					<v8:content>Загрузка классификатора</v8:content>
-				</v8:item>
-			</Title>
-			<ToolTip>
-				<v8:item>
-					<v8:lang>en</v8:lang>
-					<v8:content>Import classifier</v8:content>
-				</v8:item>
-				<v8:item>
-					<v8:lang>ru</v8:lang>
-					<v8:content>Загрузка классификатора</v8:content>
-				</v8:item>
-			</ToolTip>
-			<Action>ImportClassifier</Action>
-			<FunctionalOptions>
-				<Item>FunctionalOption.WorkInLocalMode</Item>
-			</FunctionalOptions>
-		</Command>
 		<Command name="ShowInactiveBanks" id="2">
 			<Title>
 				<v8:item>

@@ -1357,17 +1357,3 @@ Procedure FillLeftObjectCollections(ExecutionResultInBackground)
 EndProcedure
 
 #EndRegion
-
-
-
-
-
-
-
-
-
-
-
-
-
-

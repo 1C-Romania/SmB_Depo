@@ -60,10 +60,6 @@ Procedure ParseFileOnServer();
 			If TINProperty <> Undefined Then
 				TIN = DataVal.Get(TINProperty);
 			EndIf;
-			PropertyKPP = DataVal.Properties().Get("KPP");
-			If PropertyKPP <> Undefined Then
-				KPP = DataVal.Get(PropertyKPP);
-			EndIf;
 			PropertyARBOC = DataVal.Properties().Get("OKPO");
 			If PropertyARBOC <> Undefined Then
 				OKPO = DataVal.Get(PropertyARBOC);
@@ -137,7 +133,7 @@ Procedure ParseFileOnServer();
 		EndIf;
 	EndIf;
 
-	TIN_KPP = "" +  TIN + "/" + KPP;
+	TIN_KPP = "" +  TIN;
 
 	If Not ValueIsFilled(Counterparty) Then
 		DefineCounterparty();
@@ -301,17 +297,3 @@ Procedure OnCreateAtServer(Cancel, StandardProcessing)
 EndProcedure
 
 #EndRegion
-
-
-
-
-
-
-
-
-
-
-
-
-
-

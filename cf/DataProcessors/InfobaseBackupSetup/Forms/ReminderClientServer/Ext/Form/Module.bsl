@@ -68,17 +68,3 @@ Procedure OKOnServer()
 EndProcedure
 
 #EndRegion
-
-
-
-
-
-
-
-
-
-
-
-
-
-

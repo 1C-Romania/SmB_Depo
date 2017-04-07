@@ -1121,17 +1121,3 @@ Procedure UpdateSalesWidget()
 EndProcedure
 
 #EndRegion
-
-
-
-
-
-
-
-
-
-
-
-
-
-

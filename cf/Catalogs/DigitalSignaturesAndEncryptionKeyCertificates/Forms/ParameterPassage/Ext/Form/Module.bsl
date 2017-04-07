@@ -181,17 +181,3 @@ Procedure SetCertificatePassword(CertificatRef, Password, PasswordExplanation) E
 EndProcedure
 
 #EndRegion
-
-
-
-
-
-
-
-
-
-
-
-
-
-

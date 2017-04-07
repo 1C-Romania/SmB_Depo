@@ -131,26 +131,3 @@ Procedure LableBusinessActivitiesClick(Item)
 	EndIf;
 	
 EndProcedure // LableBusinessActivitiesClick()
-
-// Procedure - command handler CatalogBankAccounts.
-//
-&AtClient
-Procedure LabelCompaniesBankAccountsClick(Item)
-	
-	OpenForm("Catalog.BankAccounts.Form.ListFormCompaniesBankAccounts");
-	
-EndProcedure // LabelCompaniesBankAccountsClick()
-
-
-
-
-
-
-
-
-
-
-
-
-
-

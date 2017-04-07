@@ -56,17 +56,3 @@ Procedure ListOnActivateRow(Item)
 	
 EndProcedure // ListOnActivateRow()
 // 
-
-
-
-
-
-
-
-
-
-
-
-
-
-

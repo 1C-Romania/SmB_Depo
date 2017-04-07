@@ -57,17 +57,3 @@ Procedure AddComment()
 	EndTry;
 	
 EndProcedure
-
-
-
-
-
-
-
-
-
-
-
-
-
-

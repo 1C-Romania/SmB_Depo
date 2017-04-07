@@ -609,52 +609,31 @@ Function GenerateLabelPricesAndCurrency(LabelStructure)
 	// Currency.
 	If LabelStructure.CurrencyTransactionsAccounting Then
 		If ValueIsFilled(LabelStructure.DocumentCurrency) Then
-			//===============================
-			//©# (Begin)	AlekS [2016-09-13]
-			//LabelText = NStr("en='%Currency%';ru='%Вал%'");
-			//LabelText = StrReplace(LabelText, "%Currency%", TrimAll(String(LabelStructure.DocumentCurrency)));
-			LabelText = TrimAll(String(LabelStructure.DocumentCurrency));
-			//©# (End)		AlekS [2016-09-13]
-			//===============================
+			LabelText = NStr("en='%Currency%';ru='%Currency%'");
+			LabelText = StrReplace(LabelText, "%Currency%", TrimAll(String(LabelStructure.DocumentCurrency)));
 		EndIf;
 	EndIf;
 	
 	// Kind of counterparty prices.
 	If ValueIsFilled(LabelStructure.CounterpartyPriceKind) Then
-		//===============================
-		//©# (Begin)	AlekS [2016-09-13]
-		//If IsBlankString(LabelText) Then
-		//	LabelText = LabelText + NStr("en='%PriceKind%';ru='%PriceKind%'");
-		//Else
-		//	LabelText = LabelText + NStr("en=' • %PriceKind%';ru=' • %ВидЦен%'");
-		//EndIf;
-		//LabelText = StrReplace(LabelText, "%PriceKind%", TrimAll(String(LabelStructure.PriceKind)));
-		LabelText = LabelText + " • " + TrimAll(String(LabelStructure.CounterpartyPriceKind));
-		//©# (End)		AlekS [2016-09-13]
-		//===============================
+		If IsBlankString(LabelText) Then
+			LabelText = LabelText + NStr("en='%CounterpartyPriceKind%';ru='%CounterpartyPriceKind%'");
+		Else
+			LabelText = LabelText + NStr("en=' • %CounterpartyPriceKind%';ru=' • %CounterpartyPriceKind%'");
+		EndIf;
+		LabelText = StrReplace(LabelText, "%CounterpartyPriceKind%", TrimAll(String(LabelStructure.CounterpartyPriceKind)));
 	EndIf;
 	
 	// VAT taxation.
 	If ValueIsFilled(LabelStructure.VATTaxation) Then
-		//If IsBlankString(LabelText) Then
-		//	LabelText = LabelText + NStr("en='%VATTaxation%';ru='%VATTaxation%'");
-		//Else
-		//	LabelText = LabelText + NStr("en=' • %VATTaxation%';ru=' • %НалогообложениеНДС%'");
-		//EndIf;
-		//LabelText = StrReplace(LabelText, "%VATTaxation%", TrimAll(String(LabelStructure.VATTaxation)));
-		LabelText = LabelText + " • " + TrimAll(String(LabelStructure.VATTaxation));
-		//©# (End)		AlekS [2016-09-13]
-		//===============================
+		If IsBlankString(LabelText) Then
+			LabelText = LabelText + NStr("en='%VATTaxation%';ru='%VATTaxation%'");
+		Else
+			LabelText = LabelText + NStr("en=' • %VATTaxation%';ru=' • %VATTaxation%'");
+		EndIf;
+		LabelText = StrReplace(LabelText, "%VATTaxation%", TrimAll(String(LabelStructure.VATTaxation)));
 	EndIf;
 	
-	
-//===============================
-//©# (Begin)	AlekS [2016-09-13]
-//
-//  THIS FLAG HAS NO CHANCE TO BE SHOWED - need attention !   8-(
-//
-//©# (End)		AlekS [2016-09-13]
-//===============================
 	// Flag showing that amount includes VAT.
 	If IsBlankString(LabelText) Then
 		If LabelStructure.AmountIncludesVAT Then
@@ -1339,8 +1318,6 @@ Procedure OnCreateAtServer(Cancel, StandardProcessing)
 	
 	Object.VATCommissionFeePercent = SubsidiaryCompany.DefaultVATRate;
 	
-	SmallBusinessServer.SetTextAboutInvoice(ThisForm);
-	
 	// Setting contract visible.
 	SetContractVisible();
 	
@@ -1434,19 +1411,6 @@ Procedure AfterWrite(WriteParameters)
 	
 	Notify("NotificationAboutChangingDebt");
 	
-	If Not InvoiceText = "Enter invoice note"
-		AND ?(NOT UpdateSubordinatedInvoice = Undefined, UpdateSubordinatedInvoice, False) Then
-		
-		QuestionText = NStr("en='Changes were made in the document.
-		|Is it required to fill in the subordinate invoice once again?';ru='В документе были произведены изменения.
-		|Требуется ли повторно заполнить подчиненный Счет-фактуру?'");
-									
-		NotifyDescription = New NotifyDescription("DefineNecessityToFillSubordinateInvoiceNote", ThisObject);
-		
-		ShowQueryBox(NOTifyDescription, QuestionText, QuestionDialogMode.YesNo);
-		
-	EndIf;
-	
 EndProcedure // AfterWrite()
 
 &AtClient
@@ -1495,13 +1459,7 @@ Procedure NotificationProcessing(EventName, Parameter, Source)
 	EndIf;
 	// End Peripherals
 	
-	If EventName = "RefreshOfTextAboutInvoice" 
-		AND TypeOf(Parameter) = Type("Structure") 
-		AND Parameter.BasisDocument = Object.Ref Then
-		
-		InvoiceText = Parameter.Presentation;
-		
-	ElsIf EventName = "AfterRecordingOfCounterparty" 
+	If EventName = "AfterRecordingOfCounterparty" 
 		AND ValueIsFilled(Parameter)
 		AND Object.Counterparty = Parameter Then
 		
@@ -1527,11 +1485,7 @@ EndProcedure // NotificationProcessing()
 &AtClient
 Procedure ChoiceProcessing(ValueSelected, ChoiceSource)
 	
-	If ChoiceSource.FormName = "Document.CustomerInvoiceNote.Form.DocumentForm" Then
-		
-		InvoiceText = ValueSelected;
-		
-	ElsIf ChoiceSource.FormName = "Document.ReportToPrincipal.Form.PickFormBySales" Then
+	If ChoiceSource.FormName = "Document.ReportToPrincipal.Form.PickFormBySales" Then
 		
 		GetInventoryAcceptedFromStorage(ValueSelected);
 		
@@ -1743,16 +1697,6 @@ Procedure ImportFromDCTEnd(Result, Parameters) Export
 EndProcedure
 
 // End Peripherals
-
-// Procedure - clicking handler on the hyperlink InvoiceText.
-//
-&AtClient
-Procedure InvoiceNoteTextClick(Item, StandardProcessing)
-	
-	StandardProcessing = False;
-	SmallBusinessClient.OpenInvoice(ThisForm);
-	
-EndProcedure
 
 ////////////////////////////////////////////////////////////////////////////////
 // PROCEDURE - EVENT HANDLERS OF HEADER ATTRIBUTES
@@ -2459,20 +2403,6 @@ Procedure OpenPricesAndCurrencyFormEnd(ClosingResult, AdditionalParameters) Expo
 EndProcedure // OpenPricesAndCurrencyFormEnd()
 
 &AtClient
-// Procedure-handler response on question about filling of subordinate document Invoice
-//
-Procedure DefineNecessityToFillSubordinateInvoiceNote(ClosingResult, AdditionalParameters) Export
-	
-	If ClosingResult = DialogReturnCode.Yes Then
-		
-		SmallBusinessServer.ChangeSubordinateInvoice(Object.Ref);
-		Notify("UpdateIBDocumentAfterFilling");
-		
-	EndIf;
-	
-EndProcedure // DefineNecessityToFillSubordinateInvoiceNote()
-
-&AtClient
 // Procedure-handler of the answer to the question about repeated advances offset
 //
 Procedure DefineAdvancePaymentOffsetsRefreshNeed(ClosingResult, AdditionalParameters) Export
@@ -2563,18 +2493,4 @@ EndProcedure
 // End StandardSubsystems.Printing
 
 #EndRegion
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 

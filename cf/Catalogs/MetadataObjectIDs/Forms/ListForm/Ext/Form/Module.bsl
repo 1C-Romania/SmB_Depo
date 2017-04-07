@@ -122,17 +122,3 @@ Procedure OrderAndApplyAppearanceList()
 EndProcedure
 
 #EndRegion
-
-
-
-
-
-
-
-
-
-
-
-
-
-

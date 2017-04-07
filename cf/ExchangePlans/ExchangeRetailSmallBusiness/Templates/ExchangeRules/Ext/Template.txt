@@ -537,9 +537,9 @@ EndIf;</BeforeProcessExport>
 				<Description>Catalog: Companies</Description>
 				<Order>500</Order>
 				<SearchFieldSequence>If Variantsearchnumber = 1 Then
-	Stringofsearchpropertynames = "TIN, KPP, Name";
+	Stringofsearchpropertynames = "TIN, Name";
 ElsIf Variantsearchnumber = 2 Then
-	Stringofsearchpropertynames = "TIN, KPP";
+	Stringofsearchpropertynames = "TIN";
 ElsIf Variantsearchnumber = 3 Then
 	Stringofsearchpropertynames = "Code";
 Else
@@ -562,27 +562,6 @@ EndIf;</SearchFieldSequence>
 						<Order>100</Order>
 						<Source Name="Code" Kind="Property" Type="String"/>
 						<Receiver Name="Code" Kind="Property" Type="String"/>
-					</Property>
-					<Property>
-						<Code>3</Code>
-						<Description>CodeByOKATO --&gt; CodeByOKATO</Description>
-						<Order>150</Order>
-						<Source Name="CodeByOKATO" Kind="Attribute" Type="String"/>
-						<Receiver Name="CodeByOKATO" Kind="Attribute" Type="String"/>
-					</Property>
-					<Property>
-						<Code>4</Code>
-						<Description>CodeByOKPO --&gt; CodeByOKPO</Description>
-						<Order>200</Order>
-						<Source Name="CodeByOKPO" Kind="Attribute" Type="String"/>
-						<Receiver Name="CodeByOKPO" Kind="Attribute" Type="String"/>
-					</Property>
-					<Property Search="true">
-						<Code>5</Code>
-						<Description>KPP --&gt; KPP</Description>
-						<Order>250</Order>
-						<Source Name="KPP" Kind="Attribute" Type="String"/>
-						<Receiver Name="KPP" Kind="Attribute" Type="String"/>
 					</Property>
 					<Property Search="true">
 						<Code>6</Code>
@@ -1286,25 +1265,11 @@ EndIf;</BeforeExport>
 						<Receiver Name="TIN" Kind="Attribute" Type="String"/>
 					</Property>
 					<Property>
-						<Code>2</Code>
-						<Description>CodeByOKPO --&gt; CodeByOKPO</Description>
-						<Order>100</Order>
-						<Source Name="CodeByOKPO" Kind="Attribute" Type="String"/>
-						<Receiver Name="CodeByOKPO" Kind="Attribute" Type="String"/>
-					</Property>
-					<Property>
 						<Code>3</Code>
 						<Description>Comment --&gt; Comment</Description>
 						<Order>150</Order>
 						<Source Name="Comment" Kind="Attribute" Type="String"/>
 						<Receiver Name="Comment" Kind="Attribute" Type="String"/>
-					</Property>
-					<Property Search="true">
-						<Code>4</Code>
-						<Description>KPP --&gt; KPP</Description>
-						<Order>200</Order>
-						<Source Name="KPP" Kind="Attribute" Type="String"/>
-						<Receiver Name="KPP" Kind="Attribute" Type="String"/>
 					</Property>
 					<Property>
 						<Code>5</Code>

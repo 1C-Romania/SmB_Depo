@@ -10,17 +10,14 @@ Procedure OnCreateAtServer(Cancel, StandardProcessing)
 		Return;
 	EndIf;
 	
-	If Parameters.Storages <> Undefined Then
-		For Each Storage IN Parameters.Storages Do
-			Items.StorageIdentifier.ChoiceList.Add(Storage);
-		EndDo;
-		
-		If Parameters.Storages.Count() = 1 Then
-			Items.StorageIdentifier.Enabled = False;
-			CurrentItem = Items.Pin;
-		EndIf;
+	For Each Storage IN Parameters.Storages Do
+		Items.StorageIdentifier.ChoiceList.Add(Storage);
+	EndDo;
+	
+	If Parameters.Storages.Count() = 1 Then
+		Items.StorageIdentifier.Enabled = False;
+		CurrentItem = Items.Pin;
 	EndIf;
-
 	
 	BankApplication = CommonUse.ObjectAttributeValue(Parameters.EDAgreement, "BankApplication");
 	
@@ -104,18 +101,4 @@ Procedure SetEnabledOfItems()
 EndProcedure
 
 #EndRegion
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 

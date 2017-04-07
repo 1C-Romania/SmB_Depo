@@ -25,13 +25,6 @@
 		</right>
 	</object>
 	<object>
-		<name>Document.SupplierInvoiceNote.Command.OpenSupplierInvoiceNotes</name>
-		<right>
-			<name>View</name>
-			<value>true</value>
-		</right>
-	</object>
-	<object>
 		<name>InformationRegister.CounterpartyProductsAndServicesPrices.Attribute.Author</name>
 		<right>
 			<name>Edit</name>
@@ -64,81 +57,6 @@
 		<right>
 			<name>Edit</name>
 			<value>false</value>
-		</right>
-	</object>
-	<object>
-		<name>Document.SupplierInvoiceNote</name>
-		<right>
-			<name>Read</name>
-			<value>true</value>
-			<restrictionByCondition>
-				<condition>#ByValues( "Document.SupplierInvoiceNote","Read","",
-"CounterpartiesGroup","Counterparty", "","", "","", "","", "","", "","", "","", "","", "","", "","", "","", "","", "","", "","", "","", "","" )</condition>
-			</restrictionByCondition>
-		</right>
-		<right>
-			<name>Insert</name>
-			<value>true</value>
-			<restrictionByCondition>
-				<condition>#ByValues( "Document.SupplierInvoiceNote","Insert","",
-"CounterpartiesGroup","Counterparty", "","", "","", "","", "","", "","", "","", "","", "","", "","", "","", "","", "","", "","", "","", "","" )</condition>
-			</restrictionByCondition>
-		</right>
-		<right>
-			<name>Update</name>
-			<value>true</value>
-			<restrictionByCondition>
-				<condition>#ByValues( "Document.SupplierInvoiceNote","Update","",
-"CounterpartiesGroup","Counterparty", "","", "","", "","", "","", "","", "","", "","", "","", "","", "","", "","", "","", "","", "","", "","" )</condition>
-			</restrictionByCondition>
-		</right>
-		<right>
-			<name>Posting</name>
-			<value>true</value>
-		</right>
-		<right>
-			<name>UndoPosting</name>
-			<value>true</value>
-		</right>
-		<right>
-			<name>View</name>
-			<value>true</value>
-		</right>
-		<right>
-			<name>InteractiveInsert</name>
-			<value>true</value>
-		</right>
-		<right>
-			<name>Edit</name>
-			<value>true</value>
-		</right>
-		<right>
-			<name>InteractiveSetDeletionMark</name>
-			<value>true</value>
-		</right>
-		<right>
-			<name>InteractiveClearDeletionMark</name>
-			<value>true</value>
-		</right>
-		<right>
-			<name>InteractivePosting</name>
-			<value>true</value>
-		</right>
-		<right>
-			<name>InteractivePostingRegular</name>
-			<value>true</value>
-		</right>
-		<right>
-			<name>InteractiveUndoPosting</name>
-			<value>true</value>
-		</right>
-		<right>
-			<name>InteractiveChangeOfPosted</name>
-			<value>true</value>
-		</right>
-		<right>
-			<name>InputByString</name>
-			<value>true</value>
 		</right>
 	</object>
 	<object>

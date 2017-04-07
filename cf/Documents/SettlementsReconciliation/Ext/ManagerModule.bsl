@@ -152,8 +152,6 @@ Function GetDocumentPresentationsForCounterparties()
 	DocumentKindsCounterparty.Insert("SupplierInvoice",				NStr("en='Implementation (goods, services)';ru='Реализация (товаров, услуг)'"));
 	DocumentKindsCounterparty.Insert("CustomerInvoice", 				NStr("en='Receipt (goods, services)';ru='Поступление (товаров, услуг)'"));
 	DocumentKindsCounterparty.Insert("InvoiceForPayment", 						NStr("en='Invoice for payment';ru='Счет на оплату'"));
-	DocumentKindsCounterparty.Insert("CustomerInvoiceNote", 						NStr("en='Supplier invoice note';ru='Счет-фактура (полученный)'"));
-	DocumentKindsCounterparty.Insert("SupplierInvoiceNote", 			NStr("en='Customer invoice note (issued)';ru='Счет-фактура (выданный)'"));
 	
 	Return DocumentKindsCounterparty;
 	

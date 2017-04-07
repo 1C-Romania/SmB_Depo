@@ -2350,17 +2350,3 @@ Procedure RecommendationsQuantityOnChange(Item)
 	RecommendationsSelectedOnChange(Item);
 	
 EndProcedure // RecommendationsQuantityOnChange()
-
-
-
-
-
-
-
-
-
-
-
-
-
-

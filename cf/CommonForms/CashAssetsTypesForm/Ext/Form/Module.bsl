@@ -12,17 +12,3 @@ Procedure OK(Command)
 	Close(Selection);
 	
 EndProcedure
-
-
-
-
-
-
-
-
-
-
-
-
-
-

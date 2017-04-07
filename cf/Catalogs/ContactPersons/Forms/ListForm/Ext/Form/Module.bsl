@@ -1,273 +1,210 @@
 ﻿
-////////////////////////////////////////////////////////////////////////////////
-// GENERAL PURPOSE PROCEDURES AND FUNCTIONS
+#Region FormVariables
 
-// Processes a row activation event of the document list.
-//
 &AtClient
-Procedure HandleIncreasedRowsList()
-	
-	InfPanelParameters = New Structure("CIAttribute, ContactPerson", "Ref");
-	SmallBusinessClient.InfoPanelProcessListRowActivation(ThisForm, InfPanelParameters);
-	
-EndProcedure // HandleListStringActivation()
+Var SettingMainContactPersonCompleted; // Flag of successful setting of main contact person from a form of counterparty
 
-////////////////////////////////////////////////////////////////////////////////
-// PROCEDURE - FORM EVENT HANDLERS
+#EndRegion
+
+#Region FormEventHadlers
 
 &AtServer
-// Procedure - OnCreateAtServer event handler.
-//
 Procedure OnCreateAtServer(Cancel, StandardProcessing)
+	
+	SetConditionalAppearance();
+	
+	If Parameters.Property("AutoTest") Then
+		Return; // Return if the form for analysis is received..
+	EndIf;
+	
+	Parameters.Filter.Property("Owner", CounterpartyOwner);
+	
+	If ValueIsFilled(CounterpartyOwner) Then
+		// Context opening of the form with the selection by the counterparty
+	
+		AutoTitle = False;
+		Title = NStr("ru='Контактные лица'; en = 'Contact persons'") + " """ + CounterpartyOwner + """";
+		
+		List.Parameters.SetParameterValue("MainCounterpartyContactPerson",
+			CommonUse.ObjectAttributeValue(CounterpartyOwner, "ContactPerson"));
+		
+	Else
+		// Opening in common mode
+		
+		Items.Owner.Visible		= True;
+		Items.MoveUp.Visible	= False;
+		Items.MoveDown.Visible	= False;
+		List.Parameters.SetParameterValue("MainCounterpartyContactPerson", Undefined);
+		
+	EndIf;
+	
+	Items.UseAsMain.Visible = AccessRight("Edit", Metadata.Catalogs.Counterparties);
+	
+	CommonUseClientServer.SetFilterDynamicListItem(
+		List,
+		"Invalid",
+		False,
+		,
+		,
+		Not Items.ShowInvalid.Check);
+	
+	// Establish the settings form for the case of the opening of the choice mode
+	Items.List.ChoiceMode = Parameters.ChoiceMode;
+	Items.List.MultipleChoice = ?(Parameters.CloseOnChoice = Undefined, False, Not Parameters.CloseOnChoice);
+	If Parameters.ChoiceMode Then
+		PurposeUseKey = "ChoicePick";
+		WindowOpeningMode = FormWindowOpeningMode.LockOwnerWindow;
+	Else
+		PurposeUseKey = "List";
+	EndIf;
 	
 	// StandardSubsystems.AdditionalReportsAndDataProcessors
 	AdditionalReportsAndDataProcessors.OnCreateAtServer(ThisForm);
 	// End StandardSubsystems.AdditionalReportsAndDataProcessors
 	
-	ContactPersonsListByDefault = GetContactPersonsByDefault();
-	
-	If ContactPersonsListByDefault.Count() > 0 Then
-		
-		SetAppearanceOfContactPersonsByDefault(ContactPersonsListByDefault);
-		
-	EndIf;
-	
-	If Parameters.Property("OpeningMode") Then
-		WindowOpeningMode = Parameters.OpeningMode;
-	EndIf;
-	
-	If Users.InfobaseUserWithFullAccess()
-		OR (IsInRole("OutputToPrinterClipboardFile")
-		AND EmailOperations.CheckSystemAccountAvailable()) Then
-		
-		SystemEmailAccount = EmailOperations.SystemAccount();
-		
-	Else
-		
-		Items.ListDetailsContactPersonEmailAddress.Hyperlink = False;
-		
-	EndIf;
-	
 EndProcedure // OnCreateAtServer()
 
-&AtServerNoContext
-// Function receives and returns a contact person selection default 
-// 
-// ArrayCounterparty - counterparty array for which it is required to select contact persons default.
-//
-Function GetContactPersonsByDefault(ArrayCounterparty = Undefined)
-	
-	Query			= New Query;
-	
-	Query.Text	=
-	"SELECT
-	|	Counterparties.ContactPerson AS ContactPerson
-	|FROM
-	|	Catalog.Counterparties AS Counterparties
-	|WHERE
-	|	(NOT Counterparties.IsFolder)
-	|	AND (NOT Counterparties.ContactPerson = VALUE(Catalog.ContactPersons.EmptyRef))
-	|	AND &FilterConditionByCounterparties";
-	
-	
-	Query.Text = StrReplace(Query.Text, 
-		"&FilterConditionByCounterparties",
-		?(TypeOf(ArrayCounterparty) = Type("Array"), "Counterparties.Ref IN (&ArrayCounterparty)", "True"));
-	
-	QueryResult			= Query.Execute().Unload();
-	
-	ContactPersonsListByDefault	= New ValueList;
-	ContactPersonsListByDefault.LoadValues(QueryResult.UnloadColumn("ContactPerson"));
-	
-	Return ContactPersonsListByDefault;
-	
-EndFunction //GetContactPersonsByDefault()
-
-&AtServer
-// Procedure selects in contact person list by bold font default
-//
-Procedure SetAppearanceOfContactPersonsByDefault(ContactPersonsListByDefault)
-	
-	//  CLEAN
-	For Each ConditionalAppearanceItem IN List.SettingsComposer.Settings.ConditionalAppearance.Items Do
-		
-		If ConditionalAppearanceItem.UserSettingID = "Preset" Then
-			
-			List.SettingsComposer.Settings.ConditionalAppearance.Items.Delete(ConditionalAppearanceItem);
-			
-		EndIf;
-		
-	EndDo;
-	
-	//  COLORIZE
-	ConditionalAppearanceItemsOfList	= List.SettingsComposer.Settings.ConditionalAppearance.Items;
-	ConditionalAppearanceItem			= ConditionalAppearanceItemsOfList.Add();
-	
-	FilterItem 						= ConditionalAppearanceItem.Filter.Items.Add(Type("DataCompositionFilterItem"));
-	
-	FilterItem.LeftValue 		= New DataCompositionField("Ref");
-	FilterItem.ComparisonType 			= DataCompositionComparisonType.InList;
-	FilterItem.RightValue 		= ContactPersonsListByDefault;
-	
-	ConditionalAppearanceItem.Appearance.SetParameterValue("Font", New Font(,,True,));
-	
-	ConditionalAppearanceItem.ViewMode = DataCompositionSettingsItemViewMode.Inaccessible;
-	ConditionalAppearanceItem.UserSettingID = "Preset";
-	ConditionalAppearanceItem.Presentation = "Contact person by default";  
-	
-EndProcedure //SetAppearanceOfContactPersonsByDefault()
-
 &AtClient
-// Procedure sets the current record as a default Contact person for the owner
-//
-Procedure SetAsContactPersonByDefault(Command)
+Procedure NotificationProcessing(EventName, Parameter, Source)
 	
-	ContactPersonsListByDefault = New ValueList;
-	
-	CurrentListRow = Items.List.CurrentData;
-	
-	If CurrentListRow = Undefined Then
-		
-		MessageText = NStr("en='The contact person which is necessary to be set as a Contact person by default is not selected.';ru='Не выбрано контактное лицо, которое необходимо установить как Контактным лицом по умолчанию'");
-		CommonUseClientServer.MessageToUser(MessageText);
-		
-		Return;
-		
+	If EventName = "SettingMainContactPersonCompleted" Then
+		SettingMainContactPersonCompleted = True;
 	EndIf;
-	
-	NewContactPerson	= CurrentListRow.Ref;
-	Counterparty			= CurrentListRow.Owner;
-	
-	For Each ConditionalAppearanceItem IN List.SettingsComposer.Settings.ConditionalAppearance.Items Do
-		
-		If ConditionalAppearanceItem.UserSettingID = "Preset" AND
-			ConditionalAppearanceItem.Presentation = "Contact person by default" Then
-			
-			FilterItem					= ConditionalAppearanceItem.Filter.Items[0];
-			ContactPersonsListByDefault	= FilterItem.RightValue;
-			
-			Break;
-			
-		EndIf;
-		
-	EndDo;
-	
-	If Not ContactPersonsListByDefault.FindByValue(NewContactPerson) = Undefined Then
-		
-		Return;
-		
-	EndIf;
-	
-	ChangeCardOfCounterpartyAndChangeListAppearance(Counterparty, NewContactPerson, ContactPersonsListByDefault);
-	
-	Notify("RereadContactPersonByDefault");
-	
-EndProcedure //SetAsContactPersonByDefault()
-
-&AtServer
-// Procedure - writes new value in
-// counterparty card and updates the visual presentation of the contact person default in list form
-//
-Procedure ChangeCardOfCounterpartyAndChangeListAppearance(Counterparty, NewContactPerson, ContactPersonsListByDefault)
-	
-	CounterpartyObject 						= Counterparty.GetObject();
-	OldContactPersonByDefault			= CounterpartyObject.ContactPerson;
-	CounterpartyObject.ContactPerson			= NewContactPerson;
-	
-	Try
-		
-		CounterpartyObject.Write();
-		
-	Except
-		
-		MessageText = NStr("en='Failed to change the default contact person in the counterparty card.';ru='Не удалось поменять контактное лицо по умолчанию в карточке контрагента.'");
-		CommonUseClientServer.MessageToUser(MessageText);
-		
-	EndTry;
-	
-	ValueListItem 					= ContactPersonsListByDefault.FindByValue(OldContactPersonByDefault);
-	
-	If Not ValueListItem = Undefined Then
-		
-		ContactPersonsListByDefault.Delete(ValueListItem);
-		
-	EndIf;
-	
-	ContactPersonsListByDefault.Add(NewContactPerson);
-	
-	SetAppearanceOfContactPersonsByDefault(ContactPersonsListByDefault);
-	
-EndProcedure //ChangeCardOfCounterpartyAndChangeListAppearance()
-
-// Procedure - handler of clicking the SendEmailToContactPerson button.
-//
-&AtClient
-Procedure SendEmailToContactPerson(Item, StandardProcessing)
-	
-	StandardProcessing = False;
-	
-	ListCurrentData = Items.List.CurrentData;
-	If ListCurrentData = Undefined Then
-		Return;
-	EndIf;
-	
-	Recipients = New Array;
-	If ValueIsFilled(ContactPersonESInformation) Then
-		StructureRecipient = New Structure;
-		StructureRecipient.Insert("Presentation", ListCurrentData.Ref);
-		StructureRecipient.Insert("Address", ContactPersonESInformation);
-		Recipients.Add(StructureRecipient);
-	EndIf;
-	
-	SendingParameters = New Structure;
-	SendingParameters.Insert("Recipient", Recipients);
-	
-	EmailOperationsClient.CreateNewEmail(SendingParameters);
-	
-EndProcedure // SendEmailToContactPerson()
-
-////////////////////////////////////////////////////////////////////////////////
-// PROCEDURE - DYNAMIC LIST EVENT HANDLERS
-
-// Procedure - event handler OnActivateRow of dynamic list List.
-//
-&AtClient
-Procedure ListOnActivateRow(Item)
-	
-	AttachIdleHandler("HandleIncreasedRowsList", 0.2, True);
-	
-EndProcedure // ListOnActivateRow()
-
-#Region PerformanceMeasurements
-
-&AtClient
-Procedure ListBeforeAddRow(Item, Cancel, Copy, Parent, Group)
-	
-	KeyOperation = "CreatingFormContactPersons";
-	PerformanceEstimationClientServer.StartTimeMeasurement(KeyOperation);
-	
-EndProcedure
-
-&AtClient
-Procedure ListBeforeRowChange(Item, Cancel)
-	
-	KeyOperation = "OpeningFormContactPersons";
-	PerformanceEstimationClientServer.StartTimeMeasurement(KeyOperation);
 	
 EndProcedure
 
 #EndRegion
 
+#Region FormItemsEventHadlers
 
+&AtClient
+Procedure ListOnActivateRow(Item)
+	
+	If TypeOf(Items.List.CurrentRow) <> Type("DynamicalListGroupRow")
+		And Items.List.CurrentData <> Undefined Then
+		
+		Items.UseAsMain.Enabled = Not Items.List.CurrentData.IsMainContactPerson;
+	EndIf;
+	
+EndProcedure // ListOnActivateRow()
 
+#EndRegion
 
+#Region FormCommandsHandlers
 
+&AtClient
+Procedure UseAsMain(Command)
+	
+	If TypeOf(Items.List.CurrentRow) = Type("DynamicalListGroupRow")
+		Or Items.List.CurrentData = Undefined
+		Or Items.List.CurrentData.IsMainContactPerson Then
+		
+		Return;
+	EndIf;
+	
+	NewMainContactPerson = Items.List.CurrentData.Ref;
+	
+	// If the form of counterparty is opened, then change the main account in it
+	SettingMainContactPersonCompleted = False;
+	
+	ParametersStructure = New Structure;
+	ParametersStructure.Insert("Counterparty", Items.List.CurrentData.Owner);
+	ParametersStructure.Insert("NewMainContactPerson", NewMainContactPerson);
+	
+	Notify("SettingMainContactPerson", ParametersStructure, ThisObject);
+	
+	// If the form of counterparty is closed, then change the main account by ourselves
+	If Not SettingMainContactPersonCompleted Then
+		WriteMainContactPerson(ParametersStructure);
+	EndIf;
+	
+	// Update dynamical list
+	If ValueIsFilled(CounterpartyOwner) Then
+		List.Parameters.SetParameterValue("MainCounterpartyContactPerson", NewMainContactPerson);
+	Else
+		Items.List.Refresh();;
+	EndIf;
+	
+EndProcedure //UseAsMain()
 
+&AtClient
+Procedure ShowInvalid(Command)
+	
+	Items.ShowInvalid.Check = Not Items.ShowInvalid.Check;
+	
+	CommonUseClientServer.SetFilterDynamicListItem(
+		List,
+		"Invalid",
+		False,
+		,
+		,
+		Not Items.ShowInvalid.Check);
+	
+EndProcedure
 
+#EndRegion
 
+#Region ServiceProceduresAndFunctions
+	
+&AtServer
+Procedure SetConditionalAppearance()
+	
+	// 1. Invalid contact distinguish gray
+	NewConditionalAppearance = List.SettingsComposer.FixedSettings.ConditionalAppearance.Items.Add();
+	
+	Appearance = NewConditionalAppearance.Appearance.Items.Find("TextColor");
+	Appearance.Value 	= StyleColors.UnavailableCellTextColor;
+	Appearance.Use		= True;
+	
+	Filter = NewConditionalAppearance.Filter.Items.Add(Type("DataCompositionFilterItem"));
+	Filter.ComparisonType	= DataCompositionComparisonType.Equal;
+	Filter.Use				= True;
+	Filter.LeftValue 		= New DataCompositionField("Invalid");
+	Filter.RightValue 		= True;
+	
+EndProcedure
 
+&AtServerNoContext
+Процедура WriteMainContactPerson(ParametersStructure)
+	
+	CounterpartyObject = ParametersStructure.Counterparty.GetObject();
+	CounterpartySuccesfullyLocked = True;
+	
+	Try
+		CounterpartyObject.Lock();
+	Except
+		
+		CounterpartySuccesfullyLocked = False;
+		
+		MessageText = StrTemplate(
+			NStr("ru = 'Не удалось заблокировать %1: %2, для изменения основного контактного лица, по причине:
+				|%3'; en = 'Could not be locked %1: %2, for editing main contact person, because:
+				|%3'", Metadata.DefaultLanguage.LanguageCode), 
+				ParametersStructure.Counterparty.Metadata.ObjectPresentation, DetailErrorDescription(ErrorInfo()));
+		WriteLogEvent(MessageText, EventLogLevel.Warning,, CounterpartyObject, ErrorDescription());
+		
+	EndTry;
+	
+	// If lockig was successful edit bank account by default of counterparty
+	If CounterpartySuccesfullyLocked Then
+		CounterpartyObject.ContactPerson = ParametersStructure.NewMainContactPerson;
+		CounterpartyObject.Write();
+	EndIf;
+	
+EndProcedure
 
+#EndRegion
 
+#Region LibraryHandlers
+	
+&AtClient
+Procedure MoveUp(Command)
+	ItemOrderSetupClient.MoveItemUpExecute(List, Items.List);
+EndProcedure
 
+&AtClient
+Procedure MoveDown(Command)
+	ItemOrderSetupClient.MoveItemDownExecute(List, Items.List);
+EndProcedure
 
-
+#EndRegion

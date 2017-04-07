@@ -85,17 +85,3 @@ Procedure FillCompanies(Command)
 	DataExchangeClient.CorrespondentInfobaseObjectSelectionHandlerFill("Company", "Catalog.Companies", Items.Companies, ExternalConnectionParameters);
 	
 EndProcedure
-
-
-
-
-
-
-
-
-
-
-
-
-
-

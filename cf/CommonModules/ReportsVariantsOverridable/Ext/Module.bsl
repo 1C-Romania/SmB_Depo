@@ -28,7 +28,7 @@ Procedure DetermineSectionsWithReportVariants(Sections) Export
 	
 	Sections.Add(Metadata.Subsystems.MarketingAndSales, NStr("en='Marketing and sales';ru='Маркетинг и продажи'"));
 	Sections.Add(Metadata.Subsystems.InventoryAndPurchasing, NStr("en='Inventory and purchasing';ru='Запасы и закупки'"));
-	Sections.Add(Metadata.Subsystems.Services, NStr("en = 'Service'"));
+	Sections.Add(Metadata.Subsystems.Services, NStr("en='Service';ru='Услуга'"));
 	Sections.Add(Metadata.Subsystems.KittingAndProduction, NStr("en='Production';ru='Производство'"));
 	Sections.Add(Metadata.Subsystems.Finances, NStr("en='Finances';ru='Деньги'"));
 	Sections.Add(Metadata.Subsystems.PayrollAndHumanResources, NStr("en='Payroll and Human Resources';ru='Зарплата и персонал'"));
@@ -111,6 +111,7 @@ Procedure HighlightKeyReports(Settings)
 	MakeMain(Settings,"Sales","SalesDynamics");
 	MakeMain(Settings,"IncomeAndExpenses","Statement");
 	MakeMain(Settings,"IncomeAndExpensesByCashMethod","Default");
+	MakeMain(Settings,"TurnoverBalanceSheet","TBS");
 	// DiscountCards
 	MakeMain(Settings,"SalesByDiscountCards","SalesByDiscountCards");
 	// End

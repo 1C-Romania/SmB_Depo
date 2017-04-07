@@ -17,17 +17,3 @@ Procedure OK(Command)
 	Close(New Structure("PriceKind, ToDate", PriceKind, ToDate)); 
 	
 EndProcedure
-
-
-
-
-
-
-
-
-
-
-
-
-
-

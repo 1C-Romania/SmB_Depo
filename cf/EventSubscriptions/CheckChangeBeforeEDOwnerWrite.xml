@@ -17,14 +17,12 @@
 			<Source>
 				<v8:Type>cfg:DocumentObject.PaymentOrder</v8:Type>
 				<v8:Type>cfg:DocumentObject.CustomerOrder</v8:Type>
-				<v8:Type>cfg:DocumentObject.CustomerInvoiceNote</v8:Type>
 				<v8:Type>cfg:DocumentObject.RandomED</v8:Type>
 				<v8:Type>cfg:DocumentObject.PurchaseOrder</v8:Type>
 				<v8:Type>cfg:DocumentObject.SupplierInvoice</v8:Type>
 				<v8:Type>cfg:DocumentObject.CustomerInvoice</v8:Type>
 				<v8:Type>cfg:DocumentObject.EDPackage</v8:Type>
 				<v8:Type>cfg:DocumentObject.AcceptanceCertificate</v8:Type>
-				<v8:Type>cfg:DocumentObject.SupplierInvoiceNote</v8:Type>
 			</Source>
 			<Event>BeforeWrite</Event>
 			<Handler>CommonModule.ElectronicDocumentsService.ElectronicDocumentsOwnerBeforeWrite</Handler>

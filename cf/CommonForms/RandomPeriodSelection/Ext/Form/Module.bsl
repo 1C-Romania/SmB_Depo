@@ -38,17 +38,3 @@ Procedure Select(Command)
 EndProcedure
 
 #EndRegion
-
-
-
-
-
-
-
-
-
-
-
-
-
-

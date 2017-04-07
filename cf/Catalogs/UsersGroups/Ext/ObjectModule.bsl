@@ -82,7 +82,7 @@ Procedure BeforeWrite(Cancel)
 		If Content.Count() > 0 Then
 			Raise
 				NStr("en='Adding users to
-		|the folder ""everyone"" is not supported.';ru='Добавление пользователей в группу
+		|the folder ""All users"" is not supported.';ru='Добавление пользователей в группу
 		|""Все пользователи"" не поддерживается.'");
 		EndIf;
 	Else

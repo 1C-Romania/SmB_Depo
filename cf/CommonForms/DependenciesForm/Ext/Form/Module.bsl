@@ -813,17 +813,3 @@ Procedure DocumentTreeSelection(Item, SelectedRow, Field, StandardProcessing)
 	OpenDocumentForm();
 	
 EndProcedure
-
-
-
-
-
-
-
-
-
-
-
-
-
-

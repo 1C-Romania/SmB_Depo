@@ -257,7 +257,7 @@ EndProcedure
 //  Result - DialogReturnCode - result from running previous operation of permissions
 //                                   to use external resources application assistant (used values - OK, Skip and Cancel).
 //                                   Value Skip is used if security profiles  settings
-//                                   have not been changed, but requests to use external resources should
+//                                   haven't been changed, but requests to use external resources should
 //                                   be considered successfully applied (for example if the use of
 //                                   all requested external resources were already granted
 //  previously), Status - Structure - describing the status of
@@ -265,7 +265,7 @@ EndProcedure
 //
 // Result of the peration
 // is opening form
-// Processing.PermissionForExternalResourcesUseSettings.FormZaveršenieZaprosaRazrešenij "as for that notifications of closing description"
+// Processing.PermissionForExternalResourcesUseSettings.FormZaveršenieZaprosaRazrešenij "as for that notifications of closing description
 // Procedure PosleZaveršeniâZaprosaRazrešenijNaIspolzovanieVnešnihResursov or abort the preinstalled works assistant.
 //
 Procedure AfterPermissionsSettingToUseExternalResources(Result, Status) Export

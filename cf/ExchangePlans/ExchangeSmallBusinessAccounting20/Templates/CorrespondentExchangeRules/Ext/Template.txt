@@ -713,27 +713,6 @@ EndIf;</AfterImport>
 						<Receiver Name="TIN" Kind="Attribute" Type="String"/>
 					</Property>
 					<Property>
-						<Code>4</Code>
-						<Description>CodeByOKATO --&gt; CodeByOKATO</Description>
-						<Order>200</Order>
-						<Source Name="CodeByOKATO" Kind="Attribute" Type="String"/>
-						<Receiver Name="CodeByOKATO" Kind="Attribute" Type="String"/>
-					</Property>
-					<Property>
-						<Code>5</Code>
-						<Description>CodeByOKPO --&gt; CodeByOKPO</Description>
-						<Order>250</Order>
-						<Source Name="CodeByOKPO" Kind="Attribute" Type="String"/>
-						<Receiver Name="CodeByOKPO" Kind="Attribute" Type="String"/>
-					</Property>
-					<Property Search="true">
-						<Code>6</Code>
-						<Description>KPP --&gt; KPP</Description>
-						<Order>300</Order>
-						<Source Name="KPP" Kind="Attribute" Type="String"/>
-						<Receiver Name="KPP" Kind="Attribute" Type="String"/>
-					</Property>
-					<Property>
 						<Code>7</Code>
 						<Description>DescriptionFull --&gt; DescriptionFull</Description>
 						<Order>350</Order>
@@ -1006,14 +985,6 @@ EndIf;</AfterImport>
 						<ConversionRuleCode>Banks                                             </ConversionRuleCode>
 					</Property>
 					<Property>
-						<Code>16</Code>
-						<Description>AlwaysSpecifyPPC --&gt; KPPIndicationVersion</Description>
-						<Order>800</Order>
-						<Source Name="AlwaysSpecifyPPC" Kind="Attribute" Type="Boolean"/>
-						<Receiver Name="KPPIndicationVersion" Kind="Attribute" Type="EnumRef.KPPIndicationVariants"/>
-						<BeforeExport>Expression = ?(Source.AlwaysSpecifyPPC, "Enums.KPPIndicationVariants.InAllPaymentOrders","Enums.KPPIndicationVariants.OnTransferOfTaxes");</BeforeExport>
-					</Property>
-					<Property>
 						<Code>17</Code>
 						<Description>MonthInWords --&gt; MonthOutputOption</Description>
 						<Order>850</Order>
@@ -1228,20 +1199,6 @@ EndIf;</AfterImport>
 						<Order>250</Order>
 						<Source Name="TIN" Kind="Attribute" Type="String"/>
 						<Receiver Name="TIN" Kind="Attribute" Type="String"/>
-					</Property>
-					<Property>
-						<Code>6</Code>
-						<Description>CodeByOKPO --&gt; CodeByOKPO</Description>
-						<Order>300</Order>
-						<Source Name="CodeByOKPO" Kind="Attribute" Type="String"/>
-						<Receiver Name="CodeByOKPO" Kind="Attribute" Type="String"/>
-					</Property>
-					<Property Search="true">
-						<Code>7</Code>
-						<Description>KPP --&gt; KPP</Description>
-						<Order>350</Order>
-						<Source Name="KPP" Kind="Attribute" Type="String"/>
-						<Receiver Name="KPP" Kind="Attribute" Type="String"/>
 					</Property>
 					<Property>
 						<Code>8</Code>
@@ -4028,20 +3985,6 @@ Execute(Algorithms.FillInVatRateCaps);</AfterImport>
 							<Source Name="Counterparty" Kind="Attribute" Type="CatalogRef.Counterparties"/>
 							<Receiver Name="Counterparty" Kind="Attribute" Type="CatalogRef.Counterparties"/>
 							<ConversionRuleCode>Counterparties                                       </ConversionRuleCode>
-						</Property>
-						<Property>
-							<Code>10</Code>
-							<Description>PayerKPP --&gt; PayerKPP</Description>
-							<Order>500</Order>
-							<Source Name="PayerKPP" Kind="Attribute" Type="String"/>
-							<Receiver Name="PayerKPP" Kind="Attribute" Type="String"/>
-						</Property>
-						<Property>
-							<Code>11</Code>
-							<Description>PayeeKPP --&gt; PayeeKPP</Description>
-							<Order>550</Order>
-							<Source Name="PayeeKPP" Kind="Attribute" Type="String"/>
-							<Receiver Name="PayeeKPP" Kind="Attribute" Type="String"/>
 						</Property>
 						<Property>
 							<Code>12</Code>

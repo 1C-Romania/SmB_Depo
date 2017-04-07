@@ -48,12 +48,6 @@
 				<CommandSource>FormCommandPanelGlobalCommands</CommandSource>
 				<ExtendedTooltip name="GroupGlobalCommandsExtendedTooltip" id="44"/>
 				<ChildItems>
-					<Button name="CommonCommandObjectReports" id="45">
-						<Type>CommandBarButton</Type>
-						<CommandName>CommonCommand.ObjectReports</CommandName>
-						<DataPath>Items.List.CurrentData.Ref</DataPath>
-						<ExtendedTooltip name="CommonCommandObjectReportsExtendedTooltip" id="46"/>
-					</Button>
 					<Button name="CommonCommandAdditionalInformationCommandBar" id="47">
 						<Type>CommandBarButton</Type>
 						<OnlyInAllActions>false</OnlyInAllActions>
@@ -309,7 +303,7 @@ FROM
 			<Title>
 				<v8:item>
 					<v8:lang>en</v8:lang>
-					<v8:content>Type hierarchy</v8:content>
+					<v8:content>Hierarchy of types</v8:content>
 				</v8:item>
 				<v8:item>
 					<v8:lang>ru</v8:lang>

@@ -290,7 +290,7 @@ Procedure SetConditionalAppearance()
 	FilterElement = Item.Filter.Items.Add(Type("DataCompositionFilterItem"));
 	FilterElement.LeftValue = New DataCompositionField("UsersWorkProhibitionStatus");
 	FilterElement.ComparisonType = DataCompositionComparisonType.Equal;
-	FilterElement.RightValue = NStr("en = 'Planned',en = 'Запланировано'");
+	FilterElement.RightValue = NStr("en='Planned';ru='планируемый'");
 
 	Item.Appearance.SetParameterValue("TextColor", StyleColors.ExplanationTextError);
 
@@ -576,16 +576,3 @@ Function InfobaseScheduledJobsLockingAtServer(AdministrationParameters)
 EndFunction
 
 #EndRegion
-
-
-
-
-
-
-
-
-
-
-
-
-

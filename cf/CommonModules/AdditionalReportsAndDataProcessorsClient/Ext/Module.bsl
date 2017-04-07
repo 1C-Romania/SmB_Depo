@@ -303,15 +303,11 @@ EndProcedure
 // Opens data processor form.
 Procedure RunOpenOfProcessingForm(ExecuteCommand, Form, DestinationObjects) Export
 	ProcessingParameters = New Structure("CommandID, AdditionalDataProcessorRef, FormName, SessionKey");
-	//( elmi Lost in translation - fixed for  #17
-	//ProcessingParameters.AdditionalDataProcessorRef = ExecuteCommand.Refs;
-    ProcessingParameters.AdditionalDataProcessorRef = ExecuteCommand.Ref;
-    //) elmi
-
-	ProcessingParameters.CommandID        = ExecuteCommand.ID;
-	ProcessingParameters.SessionKey = ExecuteCommand.Ref.UUID();
+	ProcessingParameters.CommandID          = ExecuteCommand.ID;
+	ProcessingParameters.AdditionalInformationProcessorRef = ExecuteCommand.Ref;
 	ProcessingParameters.FormName                      = ?(Form = Undefined, Undefined, Form.FormName);
-		
+	ProcessingParameters.SessionKey = ExecuteCommand.Ref.UUID();
+	
 	If TypeOf(DestinationObjects) = Type("Array") Then
 		ProcessingParameters.Insert("DestinationObjects", DestinationObjects);
 	EndIf;
@@ -544,7 +540,7 @@ EndProcedure
 Procedure ExportToFile(ExportParameters) Export
 	MessageText = NStr("en='For external data processors (report) export to file, it is recommended to install extension for 1C:Enterprise web client.';ru='Для выгрузки внешней обработки (отчета) в файл рекомендуется установить расширение для веб-клиента 1С:Предприятие.'");
 	Handler = New NotifyDescription("ExportToFileEnd", ThisObject, ExportParameters);
-	CommonUseClient.ShowQuestionAboutFileOperationsExtensionSetting(Handler, MessageText);
+	CommonUseClient.ShowFileSystemExtensionInstallationQuestion(Handler, MessageText);
 EndProcedure
 
 // Procedure continued (see above).

@@ -273,17 +273,3 @@ Function FormattedStringForChart(CurrentValue, MaxValue, ValueColor)
 EndFunction
 
 #EndRegion
-
-
-
-
-
-
-
-
-
-
-
-
-
-

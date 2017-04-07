@@ -1036,17 +1036,3 @@ Procedure ExternalUsersGroupsDragEnd(UserMessage)
 EndProcedure
 
 #EndRegion
-
-
-
-
-
-
-
-
-
-
-
-
-
-

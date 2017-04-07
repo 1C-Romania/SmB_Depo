@@ -17,17 +17,3 @@ Procedure Attachable_GoToFileForm(Command)
 	AttachedFilesClient.GoToAttachedFileForm(ThisForm);
 	
 EndProcedure
-
-
-
-
-
-
-
-
-
-
-
-
-
-

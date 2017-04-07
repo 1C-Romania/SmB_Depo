@@ -954,75 +954,6 @@ EndIf;</AfterParametersImport>
 				</Values>
 			</Rule>
 			<Rule>
-				<Code>AccountTypeIssuedInvoice</Code>
-				<Description>Enum: Kinds operations "Account-texture"</Description>
-				<Order>950</Order>
-				<Source>EnumRef.OperationKindsCustomerInvoiceNote</Source>
-				<Receiver>EnumRef.AccountTypeCustomerInvoiceNoteBy</Receiver>
-				<Properties/>
-				<Values>
-					<Value>
-						<Code>1</Code>
-						<Description>Advance --&gt; Prepayment</Description>
-						<Order>50</Order>
-						<Source>Advance</Source>
-						<Receiver>Prepayment</Receiver>
-					</Value>
-					<Value>
-						<Code>2</Code>
-						<Description>Sale --&gt; OnImplementation</Description>
-						<Order>100</Order>
-						<Source>Sale</Source>
-						<Receiver>OnImplementation</Receiver>
-					</Value>
-					<Value>
-						<Code>3</Code>
-						<Description>AccrualDifferences --&gt; OnSummDifference</Description>
-						<Order>150</Order>
-						<Source>AccrualDifferences</Source>
-						<Receiver>OnSummDifference</Receiver>
-					</Value>
-					<Value>
-						<Code>4</Code>
-						<Description>OnPrincipalAdvance --&gt; OnPrincipalAdvance</Description>
-						<Order>200</Order>
-						<Source>OnPrincipalAdvance</Source>
-						<Receiver>OnPrincipalAdvance</Receiver>
-					</Value>
-				</Values>
-			</Rule>
-			<Rule>
-				<Code>ReceivedInvoiceKind</Code>
-				<Description>Enum: Kinds operations "Account-texture"</Description>
-				<Order>950</Order>
-				<Source>EnumRef.OperationKindsSupplierInvoiceNote</Source>
-				<Receiver>EnumRef.ReceivedInvoiceKind</Receiver>
-				<Properties/>
-				<Values>
-					<Value>
-						<Code>1</Code>
-						<Description>Advance --&gt; Prepayment</Description>
-						<Order>50</Order>
-						<Source>Advance</Source>
-						<Receiver>Prepayment</Receiver>
-					</Value>
-					<Value>
-						<Code>2</Code>
-						<Description>Receipt --&gt; OnIncome</Description>
-						<Order>100</Order>
-						<Source>Receipt</Source>
-						<Receiver>OnIncome</Receiver>
-					</Value>
-					<Value>
-						<Code>3</Code>
-						<Description>AccrualDifferences --&gt; TrueUp</Description>
-						<Order>150</Order>
-						<Source>AccrualDifferences</Source>
-						<Receiver>OnIncome</Receiver>
-					</Value>
-				</Values>
-			</Rule>
-			<Rule>
 				<Code>OperationKindsMoveProducts</Code>
 				<Description>Enum: Kinds operations "Inventory transfer"</Description>
 				<Order>1000</Order>
@@ -1323,14 +1254,6 @@ EndIf;</AfterParametersImport>
 						<Receiver Name="DestinationText" Kind="Attribute" Type="String"/>
 					</Property>
 					<Property>
-						<Code>15</Code>
-						<Description>KPPIndicationVersion --&gt; AlwaysSpecifyPPC</Description>
-						<Order>750</Order>
-						<Source Name="KPPIndicationVersion" Kind="Attribute" Type="EnumRef.KPPIndicationVariants"/>
-						<Receiver Name="AlwaysSpecifyPPC" Kind="Attribute" Type="Boolean"/>
-						<BeforeExport>Value = (Source.KPPIndicationVersion = Enums.KPPIndicationVariants.InAllPaymentOrders);</BeforeExport>
-					</Property>
-					<Property>
 						<Code>16</Code>
 						<Description>MonthOutputOption --&gt; MonthInWords</Description>
 						<Order>800</Order>
@@ -1532,20 +1455,6 @@ EndIf;</AfterImport>
 						<Order>250</Order>
 						<Source Name="TIN" Kind="Attribute" Type="String"/>
 						<Receiver Name="TIN" Kind="Attribute" Type="String"/>
-					</Property>
-					<Property>
-						<Code>6</Code>
-						<Description>CodeByOKPO --&gt; CodeByOKPO</Description>
-						<Order>300</Order>
-						<Source Name="CodeByOKPO" Kind="Attribute" Type="String"/>
-						<Receiver Name="CodeByOKPO" Kind="Attribute" Type="String"/>
-					</Property>
-					<Property Search="true">
-						<Code>7</Code>
-						<Description>KPP --&gt; KPP</Description>
-						<Order>350</Order>
-						<Source Name="KPP" Kind="Attribute" Type="String"/>
-						<Receiver Name="KPP" Kind="Attribute" Type="String"/>
 					</Property>
 					<Property>
 						<Code>8</Code>
@@ -1914,27 +1823,6 @@ EndIf;</BeforeExport>
 						<Order>150</Order>
 						<Source Name="TIN" Kind="Attribute" Type="String"/>
 						<Receiver Name="TIN" Kind="Attribute" Type="String"/>
-					</Property>
-					<Property>
-						<Code>4</Code>
-						<Description>CodeByOKATO --&gt; CodeByOKATO</Description>
-						<Order>200</Order>
-						<Source Name="CodeByOKATO" Kind="Attribute" Type="String"/>
-						<Receiver Name="CodeByOKATO" Kind="Attribute" Type="String"/>
-					</Property>
-					<Property>
-						<Code>5</Code>
-						<Description>CodeByOKPO --&gt; CodeByOKPO</Description>
-						<Order>250</Order>
-						<Source Name="CodeByOKPO" Kind="Attribute" Type="String"/>
-						<Receiver Name="CodeByOKPO" Kind="Attribute" Type="String"/>
-					</Property>
-					<Property Search="true">
-						<Code>6</Code>
-						<Description>KPP --&gt; KPP</Description>
-						<Order>300</Order>
-						<Source Name="KPP" Kind="Attribute" Type="String"/>
-						<Receiver Name="KPP" Kind="Attribute" Type="String"/>
 					</Property>
 					<Property>
 						<Code>7</Code>
@@ -5499,14 +5387,6 @@ EndIf;</BeforeExport>
 							<Receiver Name="Posted" Kind="Property" Type="Boolean"/>
 						</Property>
 						<Property>
-							<Code>10</Code>
-							<Description>OperationKind --&gt; InvoiceKind</Description>
-							<Order>450</Order>
-							<Source Name="OperationKind" Kind="Attribute" Type="EnumRef.OperationKindsCustomerInvoiceNote"/>
-							<Receiver Name="InvoiceKind" Kind="Attribute" Type="EnumRef.CustomerInvoiceNoteKindDisplayed"/>
-							<ConversionRuleCode>AccountTypeIssuedInvoice                          </ConversionRuleCode>
-						</Property>
-						<Property>
 							<Code>16</Code>
 							<Description>DocumentAmount --&gt; DocumentAmount</Description>
 							<Order>500</Order>
@@ -5599,9 +5479,7 @@ EndIf;</BeforeProcessExport>
 							<Order>850</Order>
 							<Source Name="Inventory" Kind="TabularSection"/>
 							<Receiver Name="Advances" Kind="TabularSection"/>
-							<BeforeProcessExport>If Source.OperationKind &lt;&gt; Enums.OperationKindsCustomerInvoiceNote.Advance Then
-	Cancel = True;
-EndIf;</BeforeProcessExport>
+							<BeforeProcessExport></BeforeProcessExport>
 							<Property>
 								<Code>24</Code>
 								<Description>ProductsAndServices --&gt; ProductsAndServices</Description>
@@ -7816,288 +7694,6 @@ Execute(Algorithms.BuildingStructureOfContractCounterparty);</BeforeExport>
 								<ConversionRuleCode>ProductsAndServices                                      </ConversionRuleCode>
 							</Property>
 						</Group>
-					</Properties>
-					<Values/>
-				</Rule>
-				<Rule>
-					<Code>SupplierInvoiceNote</Code>
-					<Description>Document: Account-texture (Received)</Description>
-					<Order>200</Order>
-					<AfterImport>If DataImportToInformationBaseMode() Then
-	
-	If Not ValueIsFilled(Object.Company) Then
-		Object.Company = Parameters.MainCompany;
-	EndIf;
-	
-	Object.SetOperationKindCode();
-	Object.ReceivingMethodCode = 1; //SB does not involve getting CIN in the electronic form
-	
-	If (Object.InvoiceKind = Enums.ReceivedInvoiceKind.Prepayment
-		OR Object.InvoiceKind = Enums.ReceivedInvoiceKind.OnPrincipalAdvance
-		OR TypeOf(Object.BasisDocument) = Type("DocumentRef.SalesReportToPrincipal"))
-		AND Object.Advances.Count() = 0 Then 
-		
-		Object.Advances.Add();
-	EndIf;
-	
-	If Not ValueIsFilled(Object.DocumentAmount) Then
-		
-		If ValueIsFilled(Object.BasisDocument)
-			AND CommonUse.RefExists(Object.BasisDocument) Then
-			
-			CINParameters = Undefined;
-			AccountingVAT.GetCustomerInvoiceNoteParameters(
-				Object.Ref,
-				Constants.CurrencyOfRegulatedAccounting.Get(),
-				CINParameters);
-			
-			FillPropertyValues(Object, CINParameters,
-				"DocumentAmount,
-				|VATAmountDocument");
-			
-		EndIf;
-		
-	EndIf;	
-		
-	Execute(Algorithms.HandleCounterpartyContract);
-	
-EndIf;</AfterImport>
-					<SynchronizeByID>true</SynchronizeByID>
-					<Source>DocumentRef.SupplierInvoiceNote</Source>
-					<Receiver>DocumentRef.SupplierInvoiceNote</Receiver>
-					<Properties>
-						<Property>
-							<Code>1</Code>
-							<Description>DocumentCurrency --&gt; DocumentCurrency</Description>
-							<Order>50</Order>
-							<Source Name="DocumentCurrency" Kind="Attribute" Type="CatalogRef.Currencies"/>
-							<Receiver Name="DocumentCurrency" Kind="Attribute" Type="CatalogRef.Currencies"/>
-							<ConversionRuleCode>Currencies                                            </ConversionRuleCode>
-						</Property>
-						<Property Search="true">
-							<Code>2</Code>
-							<Description>Date --&gt; Date</Description>
-							<Order>100</Order>
-							<Source Name="Date" Kind="Property" Type="Date"/>
-							<Receiver Name="Date" Kind="Property" Type="Date"/>
-						</Property>
-						<Property>
-							<Code>3</Code>
-							<Description>IncomingDocumentDate --&gt; IncomingDocumentDate</Description>
-							<Order>150</Order>
-							<Source Name="IncomingDocumentDate" Kind="Attribute" Type="Date"/>
-							<Receiver Name="IncomingDocumentDate" Kind="Attribute" Type="Date"/>
-						</Property>
-						<Property>
-							<Code>4</Code>
-							<Description>BasisDocument --&gt; BasisDocument</Description>
-							<Order>200</Order>
-							<Source Name="BasisDocument" Kind="Attribute"/>
-							<Receiver Name="BasisDocument" Kind="Attribute"/>
-							<BeforeExport>If TypeOf(Source.BasisDocument) = Type("DocumentRef.SupplierInvoice") Then		
-	If Source.BasisDocument.OperationKind = Enums.OperationKindsSupplierInvoice.ReturnFromCustomer
- 	 OR Source.BasisDocument.OperationKind = Enums.OperationKindsSupplierInvoice.ReturnFromAgent Then
-		OCRName = "ReturnOfProductsFromCustomer";
-	ElsIf Source.BasisDocument.OperationKind = Enums.OperationKindsSupplierInvoice.ReceptionForCommission
-		  OR Source.BasisDocument.OperationKind = Enums.OperationKindsSupplierInvoice.ReceptionIntoProcessing
-		  OR Source.BasisDocument.OperationKind = Enums.OperationKindsSupplierInvoice.ReceiptFromVendor Then
-		OCRName = "ReceiptOfGoodsAndServices";
-	EndIf;	
-EndIf;</BeforeExport>
-						</Property>
-						<Property>
-							<Code>6</Code>
-							<Description>Counterparty --&gt; Counterparty</Description>
-							<Order>250</Order>
-							<Source Name="Counterparty" Kind="Attribute" Type="CatalogRef.Counterparties"/>
-							<Receiver Name="Counterparty" Kind="Attribute" Type="CatalogRef.Counterparties"/>
-							<ConversionRuleCode>Counterparties                                       </ConversionRuleCode>
-						</Property>
-						<Property Search="true">
-							<Code>7</Code>
-							<Description>Number --&gt; Number</Description>
-							<Order>300</Order>
-							<Source Name="Number" Kind="Property" Type="String"/>
-							<Receiver Name="Number" Kind="Property" Type="String"/>
-						</Property>
-						<Property>
-							<Code>8</Code>
-							<Description>IncomingDocumentNumber --&gt; IncomingDocumentNumber</Description>
-							<Order>350</Order>
-							<Source Name="IncomingDocumentNumber" Kind="Attribute" Type="String"/>
-							<Receiver Name="IncomingDocumentNumber" Kind="Attribute" Type="String"/>
-						</Property>
-						<Property>
-							<Code>9</Code>
-							<Description>Company --&gt; Company</Description>
-							<Order>400</Order>
-							<Source Name="Company" Kind="Attribute" Type="CatalogRef.Companies"/>
-							<Receiver Name="Company" Kind="Attribute" Type="CatalogRef.Companies"/>
-							<ConversionRuleCode>Companies                                       </ConversionRuleCode>
-						</Property>
-						<Property>
-							<Code>10</Code>
-							<Description>DeletionMark --&gt; DeletionMark</Description>
-							<Order>450</Order>
-							<Source Name="DeletionMark" Kind="Property" Type="Boolean"/>
-							<Receiver Name="DeletionMark" Kind="Property" Type="Boolean"/>
-						</Property>
-						<Property>
-							<Code>11</Code>
-							<Description>Posted --&gt; Posted</Description>
-							<Order>500</Order>
-							<Source Name="Posted" Kind="Property" Type="Boolean"/>
-							<Receiver Name="Posted" Kind="Property" Type="Boolean"/>
-						</Property>
-						<Property>
-							<Code>13</Code>
-							<Description>Contract --&gt; CounterpartyContract</Description>
-							<Order>550</Order>
-							<Source Name="Contract" Kind="Attribute" Type="CatalogRef.CounterpartiesContracts"/>
-							<Receiver Name="CounterpartyContract" Kind="Attribute" Type="CatalogRef.CounterpartiesContracts"/>
-							<ConversionRuleCode>CounterpartyContracts                              </ConversionRuleCode>
-							<BeforeExport>
-Execute(Algorithms.BuildingStructureOfContractCounterparty);</BeforeExport>
-						</Property>
-						<Property>
-							<Code>15</Code>
-							<Description>DocumentAmount --&gt; DocumentAmount</Description>
-							<Order>600</Order>
-							<Source Name="DocumentAmount" Kind="Attribute" Type="Number"/>
-							<Receiver Name="DocumentAmount" Kind="Attribute" Type="Number"/>
-						</Property>
-						<Property>
-							<Code>16</Code>
-							<Description>OperationKind --&gt; InvoiceKind</Description>
-							<Order>650</Order>
-							<Source Name="OperationKind" Kind="Attribute" Type="EnumRef.OperationKindsSupplierInvoiceNote"/>
-							<Receiver Name="InvoiceKind" Kind="Attribute" Type="EnumRef.ReceivedCustomerInvoiceNoteKind"/>
-							<ConversionRuleCode>ReceivedInvoiceKind                        </ConversionRuleCode>
-						</Property>
-						<Property>
-							<Code>21</Code>
-							<Description>Comment --&gt; Comment</Description>
-							<Order>700</Order>
-							<Source Name="Comment" Kind="Attribute" Type="String"/>
-							<Receiver Name="Comment" Kind="Attribute" Type="String"/>
-						</Property>
-						<Group>
-							<Code>12</Code>
-							<Description> --&gt; BasisDocuments</Description>
-							<Order>750</Order>
-							<Source Name="" Kind=""/>
-							<Receiver Name="BasisDocuments" Kind="TabularSection"/>
-							<BeforeProcessExport>ObjectsCollection = New ValueTable;
-ObjectsCollection.Columns.Add("BasisDocument");
-
-NewRow = ObjectsCollection.Add();
-NewRow.BasisDocument = Source.BasisDocument;</BeforeProcessExport>
-							<Property>
-								<Code>14</Code>
-								<Description> --&gt; BasisDocument</Description>
-								<Order>50</Order>
-								<Source Name="" Kind=""/>
-								<Receiver Name="BasisDocument" Kind="Attribute"/>
-								<BeforeExport>Execute(Algorithms.DetermineNameOfPwcFoundationDocument);</BeforeExport>
-							</Property>
-						</Group>
-						<Group>
-							<Code>17</Code>
-							<Description>Inventory --&gt; Advances</Description>
-							<Order>800</Order>
-							<Source Name="Inventory" Kind="TabularSection"/>
-							<Receiver Name="Advances" Kind="TabularSection"/>
-							<BeforeProcessExport>If Source.OperationKind &lt;&gt; Enums.OperationKindsSupplierInvoiceNote.Advance
-	AND TypeOf(Source.BasisDocument) &lt;&gt; Type("DocumentRef.ReportToPrincipal") Then
-	Cancel = True;
-EndIf;</BeforeProcessExport>
-							<Property>
-								<Code>18</Code>
-								<Description>VATRate --&gt; VATRate</Description>
-								<Order>50</Order>
-								<Source Name="VATRate" Kind="Attribute" Type="CatalogRef.VATRates"/>
-								<Receiver Name="VATRate" Kind="Attribute" Type="EnumRef.VATRates"/>
-								<BeforeExport>Execute(Algorithms.FillVatRateTableParts);</BeforeExport>
-							</Property>
-							<Property>
-								<Code>19</Code>
-								<Description>TotalAmount --&gt; Amount</Description>
-								<Order>100</Order>
-								<Source Name="TotalAmount" Kind="Attribute" Type="Number"/>
-								<Receiver Name="Amount" Kind="Attribute" Type="Number"/>
-							</Property>
-							<Property>
-								<Code>20</Code>
-								<Description>VATAmount --&gt; VATAmount</Description>
-								<Order>150</Order>
-								<Source Name="VATAmount" Kind="Attribute" Type="Number"/>
-								<Receiver Name="VATAmount" Kind="Attribute" Type="Number"/>
-							</Property>
-						</Group>
-						<Group>
-							<Code>24</Code>
-							<Description>InvoiceNotesIssuedToCustomers --&gt; InvoiceNotesIssuedToCustomers</Description>
-							<Order>850</Order>
-							<Source Name="InvoiceNotesIssuedToCustomers" Kind="TabularSection"/>
-							<Receiver Name="InvoiceNotesIssuedToCustomers" Kind="TabularSection"/>
-							<Property>
-								<Code>25</Code>
-								<Description>VAT --&gt; VAT</Description>
-								<Order>50</Order>
-								<Source Name="VAT" Kind="Attribute" Type="Number"/>
-								<Receiver Name="VAT" Kind="Attribute" Type="Number"/>
-							</Property>
-							<Property>
-								<Code>26</Code>
-								<Description>Customer --&gt; Customer</Description>
-								<Order>100</Order>
-								<Source Name="Customer" Kind="Attribute" Type="CatalogRef.Counterparties"/>
-								<Receiver Name="Customer" Kind="Attribute" Type="CatalogRef.Counterparties"/>
-								<ConversionRuleCode>Counterparties                                       </ConversionRuleCode>
-							</Property>
-							<Property>
-								<Code>27</Code>
-								<Description>Subagent --&gt; Subagent</Description>
-								<Order>150</Order>
-								<Source Name="Subagent" Kind="Attribute" Type="CatalogRef.Counterparties"/>
-								<Receiver Name="Subagent" Kind="Attribute" Type="CatalogRef.Counterparties"/>
-								<ConversionRuleCode>Counterparties                                       </ConversionRuleCode>
-							</Property>
-							<Property>
-								<Code>28</Code>
-								<Description>Amount --&gt; Amount</Description>
-								<Order>200</Order>
-								<Source Name="Amount" Kind="Attribute" Type="Number"/>
-								<Receiver Name="Amount" Kind="Attribute" Type="Number"/>
-							</Property>
-							<Property>
-								<Code>29</Code>
-								<Description>CustomerInvoiceNote --&gt; CustomerInvoiceNote</Description>
-								<Order>250</Order>
-								<Source Name="CustomerInvoiceNote" Kind="Attribute" Type="DocumentRef.CustomerInvoiceNote"/>
-								<Receiver Name="CustomerInvoiceNote" Kind="Attribute" Type="DocumentRef.CustomerInvoiceNote"/>
-							</Property>
-						</Group>
-						<Property>
-							<Code>22</Code>
-							<Description> --&gt; VATBroughtDeductible</Description>
-							<Order>900</Order>
-							<Source Name="" Kind=""/>
-							<Receiver Name="VATBroughtDeductible" Kind="Attribute" Type="Boolean"/>
-							<BeforeExport>If Source.Date &gt;= Date("20120101") Then
-	Value = True;
-Else
-	Value = False;
-EndIf;</BeforeExport>
-						</Property>
-						<Property>
-							<Code>23</Code>
-							<Description> --&gt; VATAmountDocument</Description>
-							<Order>950</Order>
-							<Source Name="" Kind=""/>
-							<Receiver Name="VATAmountDocument" Kind="Attribute" Type="Number"/>
-							<BeforeExport>Value = Source.Inventory.Total("VATAmount");</BeforeExport>
-						</Property>
 					</Properties>
 					<Values/>
 				</Rule>
@@ -11714,20 +11310,6 @@ EndIf;</BeforeExport>
 							<ConversionRuleCode>Counterparties                                       </ConversionRuleCode>
 						</Property>
 						<Property>
-							<Code>10</Code>
-							<Description>PayerKPP --&gt; PayerKPP</Description>
-							<Order>500</Order>
-							<Source Name="PayerKPP" Kind="Attribute" Type="String"/>
-							<Receiver Name="PayerKPP" Kind="Attribute" Type="String"/>
-						</Property>
-						<Property>
-							<Code>11</Code>
-							<Description>PayeeKPP --&gt; PayeeKPP</Description>
-							<Order>550</Order>
-							<Source Name="PayeeKPP" Kind="Attribute" Type="String"/>
-							<Receiver Name="PayeeKPP" Kind="Attribute" Type="String"/>
-						</Property>
-						<Property>
 							<Code>12</Code>
 							<Description>PaymentDestination --&gt; PaymentDestination</Description>
 							<Order>600</Order>
@@ -14395,14 +13977,6 @@ EndIf;</BeforeObjectExport>
 					<SelectionObject>DocumentRef.ExpenseReport</SelectionObject>
 				</Rule>
 				<Rule Disable="false">
-					<Code>SupplierInvoiceNote</Code>
-					<Description>Document "Customer invoice note received"</Description>
-					<Order>100</Order>
-					<ConversionRuleCode>SupplierInvoiceNote                             </ConversionRuleCode>
-					<DataSelectionVariant>StandardSelection</DataSelectionVariant>
-					<SelectionObject>DocumentRef.SupplierInvoiceNote</SelectionObject>
-				</Rule>
-				<Rule Disable="false">
 					<Code>SupplierInvoice</Code>
 					<Description>Document "Supplier invoice"</Description>
 					<Order>300</Order>
@@ -15290,85 +14864,6 @@ If Counterparty.DoOperationsByContracts &lt;&gt; True Then
 Else
 	
 	Value = Contract;
-	OCRName = "CounterpartyContractsSearchByIdIdentificator";
-
-EndIf;</Text>
-		</Algorithm>
-		<Algorithm Name="BuildingStructureOfContractCounterparty" UsedOnImport="false">
-			<Text>
-If Source.Counterparty.DoOperationsByContracts &lt;&gt; True Then
-	
-	OCRName = "CounterpartyContracts";
-	
-	If TypeOf(Source) = Type("DocumentObject.CustomerInvoiceNote") 
-		OR TypeOf(Source) = Type("DocumentObject.SupplierInvoiceNote") Then
-			
-		Document = Source.BasisDocument;
-	Else
-		Document = Source.Ref;
-	EndIf;
-		
-	If TypeOf(Document) = Type("DocumentRef.AcceptanceCertificate")
-		OR TypeOf(Document) = Type("DocumentRef.ExpenseReport")
-		OR TypeOf(Document) = Type("DocumentRef.AdditionalCosts")
-		OR TypeOf(Document) = Type("DocumentRef.AgentReport") 
-		OR TypeOf(Document) = Type("DocumentRef.ReportToPrincipal")
-		OR TypeOf(Document) = Type("DocumentRef.ProcessingReport")
-		OR TypeOf(Document) = Type("DocumentRef.SubcontractorReport")
-		OR TypeOf(Document) = Type("DocumentRef.InvoiceForPayment") Then
-			
-		ContractKindsList = Catalogs.CounterpartyContracts.GetContractKindsListForDocument(Document);
-	Else
-		ContractKindsList = Catalogs.CounterpartyContracts.GetContractKindsListForDocument(Document, Document.OperationKind);
-	EndIf;
-		
-	Contract = ?(ValueIsFilled(CollectionObject), CollectionObject.Contract, Source.Contract);
-		
-	If Contract.Company &lt;&gt; Source.Company
-		OR ContractKindsList.FindByValue(Contract.ContractKind) = Undefined Then 
-			
-		StructureOfTreaty = New Structure;
-		StructureOfTreaty.Insert("Description");
-		StructureOfTreaty.Insert("Owner");
-		StructureOfTreaty.Insert("Code");
-		StructureOfTreaty.Insert("Company");
-		StructureOfTreaty.Insert("DeletionMark");
-		StructureOfTreaty.Insert("SettlementsInStandardUnits");
-		StructureOfTreaty.Insert("SettlementsCurrency");
-		StructureOfTreaty.Insert("IsFolder");
-		StructureOfTreaty.Insert("ContractKind");
-		StructureOfTreaty.Insert("PriceKind");
-		StructureOfTreaty.Insert("ContractDate");
-		StructureOfTreaty.Insert("ContractNo");
-			
-		FillPropertyValues(StructureOfTreaty, Contract);
-			
-		StructureOfTreaty.Code = "";
-		StructureOfTreaty.Company = Source.Company;
-			
-		If ContractKindsList.Count() &gt; 0 Then
-			StructureOfTreaty.ContractKind = ContractKindsList[0].Value;
-		EndIf;
-			
-		If TypeOf(Source) = Type("DocumentObject.AdditionalCosts") Then
-				
-			For Each TabularSectionRow IN Source.Inventory Do
-				If TypeOf(TabularSectionRow.ReceiptDocument) = Type("DocumentRef.SupplierInvoice")
-					AND TabularSectionRow.ReceiptDocument.OperationKind = Enums.OperationKindsSupplierInvoice.ReceptionForCommission Then
-						
-					StructureOfTreaty.ContractKind = Enums.ContractKinds.FromPrincipal;
-					Break;
-				EndIf;
-			EndDo;
-				
-		EndIf;
-			
-		Value = StructureOfTreaty;
-			
-	EndIf;
-
-Else
-	
 	OCRName = "CounterpartyContractsSearchByIdIdentificator";
 
 EndIf;</Text>

@@ -501,17 +501,3 @@ Procedure Select(Command)
 	EndIf;
 	
 EndProcedure // Select()
-
-
-
-
-
-
-
-
-
-
-
-
-
-

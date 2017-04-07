@@ -39,17 +39,3 @@ Procedure OnCreateAtServer(Cancel, StandardProcessing)
 									AND EDExchangeMethod = Enums.EDExchangeMethods.ThroughBankWebSource;
 	
 EndProcedure
-
-
-
-
-
-
-
-
-
-
-
-
-
-

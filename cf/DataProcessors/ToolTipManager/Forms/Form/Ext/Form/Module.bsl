@@ -32,17 +32,3 @@ Procedure ToolTipTemplateOnClick(Item, EventData, StandardProcessing)
 	EndIf;
 	
 EndProcedure
-
-
-
-
-
-
-
-
-
-
-
-
-
-

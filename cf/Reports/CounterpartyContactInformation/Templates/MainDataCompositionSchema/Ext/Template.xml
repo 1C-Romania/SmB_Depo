@@ -18,10 +18,6 @@
 			<dataPath>TIN</dataPath>
 			<field>TIN</field>
 		</field>
-		<field xsi:type="DataSetFieldField">
-			<dataPath>CodeByOKPO</dataPath>
-			<field>CodeByOKPO</field>
-		</field>
 		<field xsi:type="DataSetFieldNestedDataSet">
 			<dataPath>CounterpartyContactInformation</dataPath>
 			<field>CounterpartyContactInformation</field>
@@ -67,10 +63,6 @@
 					<v8:content>Тип</v8:content>
 				</v8:item>
 			</title>
-		</field>
-		<field xsi:type="DataSetFieldField">
-			<dataPath>KPP</dataPath>
-			<field>KPP</field>
 		</field>
 		<field xsi:type="DataSetFieldField">
 			<dataPath>ResponsibleManager</dataPath>
@@ -119,21 +111,19 @@
 	Counterparties.Ref,
 	Counterparties.LegalEntityIndividual,
 	Counterparties.TIN,
-	Counterparties.KPP,
 	Counterparties.BankAccountByDefault,
 	Counterparties.Responsible AS ResponsibleManager,
 	Counterparties.ContactPerson AS MainContactPerson,
-	Counterparties.CodeByOKPO,
 	Counterparties.ContactInformation.(
 		Type,
 		Kind,
 		PRESENTATION(Counterparties.ContactInformation.Kind) AS KindPresentation,
 		Presentation
 	) AS CounterpartyContactInformation
-	FROM
+FROM
 	Catalog.Counterparties AS Counterparties
-	WHERE
-		Counterparties.Ref = &amp;Counterparty</query>
+WHERE
+	Counterparties.Ref = &amp;Counterparty</query>
 	</dataSet>
 	<dataSet xsi:type="DataSetQuery">
 		<name>DataSet2</name>

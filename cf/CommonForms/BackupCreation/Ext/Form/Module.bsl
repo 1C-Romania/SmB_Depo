@@ -157,17 +157,3 @@ Procedure SwitchOffSoleMode()
 EndProcedure
 
 #EndRegion
-
-
-
-
-
-
-
-
-
-
-
-
-
-

@@ -54,6 +54,9 @@
 				<ContextMenu name="ListSearchControlContextMenu" id="21"/>
 				<ExtendedTooltip name="ListSearchControlExtendedTooltip" id="22"/>
 			</SearchControlAddition>
+			<Events>
+				<Event name="BeforeCollapse">ListBeforeCollapse</Event>
+			</Events>
 			<ChildItems>
 				<LabelField name="Ind" id="4">
 					<DataPath>List.Ind</DataPath>

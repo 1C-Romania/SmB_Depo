@@ -939,111 +939,6 @@ EndProcedure // RecalculateTabularSectionAmountByCheckBoxAmountIncludesVAT()
 #EndRegion
 
 //////////////////////////////////////////////////////////////////////////////// 
-// PROCEDURES AND FUNCTIONS FOR WORK WITH CUSTOMER INVOICE NOTES
-
-// Sets hyperlink label for Customer invoice note
-//
-Procedure SetTextAboutInvoice(DocumentForm, Received = False) Export
-
-	InvoiceFound = SmallBusinessServer.GetSubordinateInvoice(DocumentForm.Object.Ref, Received);
-	If ValueIsFilled(InvoiceFound) Then
-		DocumentForm.InvoiceText = InvoicePresentation(InvoiceFound.Number, InvoiceFound.Date);	
-	Else
-	    DocumentForm.InvoiceText = "Enter invoice note";
-	EndIf;
-
-EndProcedure // FillInCustomerInvoiceNoteText()
-
-// Generates hyperlink label on Customer invoice note
-//
-Function InvoicePresentation(Date, Number) Export
-
-	InvoiceText = NStr("en='No. %Number% from %Date% y.';ru='№ %Номер% от %Дата% г.'");
-	InvoiceText = StrReplace(InvoiceText, "%Number%", Number);
-	InvoiceText = StrReplace(InvoiceText, "%Date%", Format(Date, "DF=dd.MM.yyyy"));	
-	Return InvoiceText;
-
-EndFunction // GetCustomerInvoiceNotePresentation()
-
-// Sets hyperlink label for Customer invoice note
-//
-Procedure OpenInvoice(DocumentForm, Received = False) Export
-	
-	InvoiceFound = SmallBusinessServer.GetSubordinateInvoice(DocumentForm.Object.Ref, Received);
-	
-	If DocumentForm.Object.DeletionMark 
-		AND Not ValueIsFilled(InvoiceFound) Then
-		Message = New UserMessage();
-		Message.Text = NStr("en='The invoice can not be entered on the base of the document marked for deletion!';ru='Счет-фактуру нельзя вводить на основании документа, помеченного на удаление!'");	
-		Message.Message();
-		Return;	
-	EndIf;
-	
-	If DocumentForm.Modified Then
-		Message = New UserMessage();
-		Message.Text = NStr("en='Document was changed. First, you should write document.';ru='Документ был изменен. Сначала следует записать документ!'");	
-		Message.Message();
-		Return;	
-	EndIf;
-	
-	If Not ValueIsFilled(DocumentForm.Object.Ref) Then
-		Message = New UserMessage();
-		Message.Text = NStr("en='Document is not written. First, you should write document.';ru='Документ не записан. Сначала следует записать документ!'");	
-		Message.Message();
-		Return;	
-	EndIf;
-	
-	If Received Then
-		FormName = "Document.SupplierInvoiceNote.ObjectForm";
-	Else
-		FormName = "Document.CustomerInvoiceNote.ObjectForm";
-	EndIf;
-	
-	// Open and enter new document
-	ParametersStructureAccountInvoice = New Structure;
-	If ValueIsFilled(InvoiceFound) Then
-		
-		ParametersStructureAccountInvoice.Insert("Key", InvoiceFound.Ref);
-		
-	Else
-		
-		ParametersStructureAccountInvoice.Insert("Basis", DocumentForm.Object.Ref);
-		
-	EndIf;
-	
-	OpenForm(FormName, ParametersStructureAccountInvoice, DocumentForm);
-	
-EndProcedure // FillInCustomerInvoiceNoteText() 
-
-// Procedure reports form opening to update label-hyperlink about customer invoice note
-// 
-// Used while printing UID (Universal
-// transmission document) CustomerInvoiceNotesDescription. Array type (multidimensional).
-// 
-// Each array string contains description of created customer invoice note.
-// Description decryption:
-//  [0] - ref to
-//  base document [1] - customer
-//  invoice note date [2] - customer invoice note number
-//
-Procedure RefreshInscriptionsOnAccountsOpenInvoicesForms(InvoiceDetails)
-	
-	If TypeOf(InvoiceDetails) = Type("Array") Then
-		
-		For Each InvoiceCreated IN InvoiceDetails Do
-		
-			Structure = New Structure;
-			Structure.Insert("BasisDocument", InvoiceCreated[0]);
-			Structure.Insert("Presentation", SmallBusinessClient.InvoicePresentation(InvoiceCreated[2], InvoiceCreated[1]));
-			Notify("RefreshOfTextAboutInvoice", Structure);
-			
-		EndDo;
-		
-	EndIf;
-	
-EndProcedure // UpdateLabelsAboutOpenFormsCustomerInvoiceNotes()
-
-//////////////////////////////////////////////////////////////////////////////// 
 // PROCEDURES AND FUNCTIONS OF ADDITIONAL ATTRIBUTES SUBSYSTEM
 
 // Procedure expands values tree on form.
@@ -1338,7 +1233,7 @@ EndProcedure
 //
 Procedure CreateEmail(Val FieldsValues, Val Presentation = "", ExpectedKind = Undefined, FormObject) Export
 	
-	ContactInformation = ContactInformationManagementServiceServerCall.CastContactInformationXML(
+	ContactInformation = ContactInformationInternalServerCall.TransformContactInformationXML(
 		New Structure("FieldsValues, Presentation, ContactInformationKind", FieldsValues, Presentation, ExpectedKind));
 		
 	InformationType = ContactInformation.ContactInformationType;
@@ -1348,7 +1243,7 @@ Procedure CreateEmail(Val FieldsValues, Val Presentation = "", ExpectedKind = Un
 	EndIf;
 	
 	XMLData = ContactInformation.DataXML;
-	MailAddress = ContactInformationManagementServiceServerCall.RowCompositionContactInformation(XMLData);
+	MailAddress = ContactInformationInternalServerCall.ContactInformationContentString(XMLData);
 	If TypeOf(MailAddress) <> Type("String") Then
 		Raise NStr("en='Error of the email address obtaining, incorrect type of the contact details';ru='Ошибка получения адреса электронной почты, неверный тип контактной информации'");
 	EndIf;

@@ -5,17 +5,6 @@
 
 #Region ServiceProgramInterface
 
-// See details of the same procedure in the StandardSubsystemsServer module.
-Procedure OnAddHandlersOfServiceEvents(ClientHandlers, ServerHandlers) Export
-	
-	// SERVERSIDE HANDLERS.
-	
-	ServerHandlers[
-		"StandardSubsystems.InfobaseVersionUpdate\OnAddUpdateHandlers"
-	].Add("ContactInformationManagementService");
-	
-EndProcedure
-
 // Returns enumeration value type of the contact information kind.
 //
 //  Parameters:
@@ -27,7 +16,7 @@ Function TypeKindContactInformation(Val InformationKind) Export
 	Type = TypeOf(InformationKind);
 	If Type = Type("EnumRef.ContactInformationTypes") Then
 		Result = InformationKind;
-	ElsIf Type = Type("CatalogRef.ContactInformationTypes") Then
+	ElsIf Type = Type("CatalogRef.ContactInformationKinds") Then
 		Result = InformationKind.Type;
 	ElsIf InformationKind <> Undefined Then
 		Data = New Structure("Type");
@@ -67,7 +56,7 @@ EndProcedure
 //
 Procedure OnDetermineObjectsWithLockedAttributes(Objects) Export
 	
-	Objects.Insert(Metadata.Catalogs.ContactInformationTypes.FullName(), "");
+	Objects.Insert(Metadata.Catalogs.ContactInformationKinds.FullName(), "");
 	
 EndProcedure
 
@@ -83,7 +72,7 @@ EndProcedure
 //                            If an empty row is specified, then both functions are defined in the manager module.
 //
 Procedure WhenDefiningObjectsWithEditableAttributes(Objects) Export
-	Objects.Insert(Metadata.Catalogs.ContactInformationTypes.FullName(), "NotEditableInGroupProcessingAttributes");
+	Objects.Insert(Metadata.Catalogs.ContactInformationKinds.FullName(), "NotEditableInGroupProcessingAttributes");
 EndProcedure
 
 #EndRegion
@@ -237,13 +226,13 @@ EndProcedure
 // Compulsorily import all countries from the classifier.
 //
 Procedure ImportWorldCountries() Export
-	Catalogs.WorldCountries.RefreshWorldCountriesByClassifier(True);
+	Catalogs.WorldCountries.UpdateWorldCountriesByClassifier(True);
 EndProcedure
 
 // Update only existing items of countries by a classifier.
 Procedure UpdateExistingCountries() Export
 	
-	Catalogs.WorldCountries.RefreshWorldCountriesByClassifier();
+	Catalogs.WorldCountries.UpdateWorldCountriesByClassifier();
 	
 EndProcedure
 
@@ -449,7 +438,7 @@ EndFunction
 //
 Function AttributesListSettlement(ID = Undefined, ClassifierVariant = "AC") Export
 	
-	Result = ContactInformationManagementClientServer.LocalityAddressPartsStructure(ClassifierVariant);
+	Result = ContactInformationManagementClientServer.LocalityAddressPartsStructure();
 	
 	If ID = Undefined Then
 		Return Result;
@@ -491,7 +480,7 @@ EndFunction
 //
 Function StreetAttributesList(ID = Undefined, ClassifierVariant = "AC") Export
 	
-	Result = ContactInformationManagementClientServer.LocalityAddressPartsStructure(ClassifierVariant);
+	Result = ContactInformationManagementClientServer.LocalityAddressPartsStructure();
 	
 	If ID = Undefined Then
 		Return Result;
@@ -664,31 +653,27 @@ Function CheckAddressInXML(AddressInXML, AddressCheckParameters = Undefined) Exp
 	HasErrors = False;
 	
 	AddressFormat = "AC";
-	AddressRussianOnly = True;
-	If TypeOf(AddressCheckParameters) = Type("CatalogRef.ContactInformationTypes") Then
+	DomesticAddressOnly = True;
+	If TypeOf(AddressCheckParameters) = Type("CatalogRef.ContactInformationKinds") Then
 		CheckParameters = StructureTypeContactInformation(AddressCheckParameters);
-		AddressFormat = ?(CheckParameters.CheckByFIAS, "FIAS", "AC");
-		AddressRussianOnly = CheckParameters.AddressRussianOnly;
+		AddressFormat = "AC";
+		DomesticAddressOnly = CheckParameters.DomesticAddressOnly;
 	Else 
 		CheckParameters = StructureTypeContactInformation();
 		If AddressCheckParameters <> Undefined Then
 			If AddressCheckParameters.Property("AddressFormat") AND ValueIsFilled(AddressCheckParameters.AddressFormat) Then
 				AddressFormat = AddressCheckParameters.AddressFormat;
 			EndIf;
-			If AddressCheckParameters.Property("AddressRussianOnly") AND ValueIsFilled(AddressCheckParameters.AddressRussianOnly) Then
-				AddressRussianOnly = AddressCheckParameters.AddressRussianOnly;
+			If AddressCheckParameters.Property("DomesticAddressOnly") AND ValueIsFilled(AddressCheckParameters.DomesticAddressOnly) Then
+				DomesticAddressOnly = AddressCheckParameters.DomesticAddressOnly;
 			EndIf;
 		EndIf;
-		CheckParameters.CheckCorrectness = True;
-		CheckParameters.ProhibitEntryOfIncorrect = True;
+		CheckParameters.CheckValidity = True;
+		CheckParameters.ProhibitInvalidEntry = True;
 	EndIf;
 	
-	If Upper(AddressFormat) = "FIAS" Then
-		CheckParameters.Insert("CheckByFIAS", True);
-	EndIf;
-
 	CheckParameters.Insert("AddressFormat", AddressFormat);
-	CheckParameters.Insert("AddressRussianOnly ", AddressRussianOnly);
+	CheckParameters.Insert("DomesticAddressOnly ", DomesticAddressOnly);
 	
 	Address = Source.Content;
 	
@@ -870,7 +855,7 @@ Function LocalityAutofitList(Text, AdditionalParameters) Export
 		Return ErrorStructureAddressClassifierProvider(Result);
 	EndIf;
 	
-	PartsAddresses = ContactInformationManagementClientServer.LocalityAddressPartsStructure(AdditionalParameters.AddressFormat);
+	PartsAddresses = ContactInformationManagementClientServer.LocalityAddressPartsStructure();
 	
 	Parent = Undefined;
 	Levels   = New Array;
@@ -921,7 +906,7 @@ Function StreetAutoselectionList(Settlement, Text, AdditionalParameters) Export
 		Return ErrorStructureAddressClassifierProvider(Result);
 	EndIf;
 	
-	PartsAddresses = ContactInformationManagementClientServer.LocalityAddressPartsStructure(AdditionalParameters.AddressFormat);
+	PartsAddresses = ContactInformationManagementClientServer.LocalityAddressPartsStructure();
 	
 	Levels = New Array;
 	For Each KeyValue In PartsAddresses Do
@@ -1026,7 +1011,7 @@ EndFunction
 // Returns the values list
 Function AddressesAvailableForCopying(Val FieldsForAnalysisValues, Val AddressKind) Export
 	
-	AddressRussianOnly = AddressKind.AddressRussianOnly;
+	DomesticAddressOnly = AddressKind.DomesticAddressOnly;
 	
 	Result = New ValueList;
 	
@@ -1038,7 +1023,7 @@ Function AddressesAvailableForCopying(Val FieldsForAnalysisValues, Val AddressKi
 			// Not an empty presentation
 			AValidSource = False;
 		Else
-			If AddressRussianOnly Then
+			If DomesticAddressOnly Then
 				// You can not copy a foreign address to the address restricted by Russia.
 				XMLAddress = ContactInformationManagement.XMLContactInformation(Address.FieldsValue, Presentation, AddressKind);
 				XDTOAddress = ContactInformationFromXML(XMLAddress, AddressKind);
@@ -1183,10 +1168,10 @@ Function ContactInformationFromXML(Val Text, Val ExpectedKind = Undefined, Conve
 	EnumerationWebPage           = Enums.ContactInformationTypes.WebPage;
 	EnumerationPhone               = Enums.ContactInformationTypes.Phone;
 	EnumFax                  = Enums.ContactInformationTypes.Fax;
-	EnumerationAnother                = Enums.ContactInformationTypes.Another;
+	EnumerationAnother                = Enums.ContactInformationTypes.Other;
 	
 	TargetNamespace = ContactInformationManagementClientServerReUse.TargetNamespace();
-	If ContactInformationManagementClientServer.IsContactInformationInXML(Text) Then
+	If ContactInformationClientServer.IsXMLString(Text) Then
 		XMLReader = New XMLReader;
 		XMLReader.SetString(Text);
 		
@@ -1198,7 +1183,7 @@ Function ContactInformationFromXML(Val Text, Val ExpectedKind = Undefined, Conve
 			WriteLogEvent(EventLogMonitorEvent(),
 				EventLogLevel.Error, , Text, DetailErrorDescription(ErrorInfo()));
 			
-			If TypeOf(ExpectedKind) = Type("CatalogRef.ContactInformationTypes") Then
+			If TypeOf(ExpectedKind) = Type("CatalogRef.ContactInformationKinds") Then
 				ErrorText = StrReplace(NStr("en='Incorrect XML format of the %1 contact information, fields values were cleared.';ru='Некорректный формат XML контактной информации для ""%1"", значения полей были очищены.'"),
 					"%1", String(ExpectedKind));
 			Else
@@ -1329,7 +1314,7 @@ Function XDTOContactInformationByPresentation(Text, ExpectedKind) Export
 	ElsIf ExpectedType = Enums.ContactInformationTypes.Fax Then
 		Return DeserializingFax("", Text, ExpectedType);
 		
-	ElsIf ExpectedType = Enums.ContactInformationTypes.Another Then
+	ElsIf ExpectedType = Enums.ContactInformationTypes.Other Then
 		Return DeserializationOfOtherContactInformation("", Text, ExpectedType);
 		
 	EndIf;
@@ -1424,9 +1409,9 @@ Function GenerateAddressByPresentation(Presentation)
 	Else
 		Address.Country = TrimAll(Upper(RowOfCountry.Value));
 		// Check if there is a country in the Countries of the world catalog and implicitly add it if there is no country.
-		WorldCountriesData = Catalogs.WorldCountries.WorldCountriesData(, Address.Country);
-		If WorldCountriesData <> Undefined AND Not ValueIsFilled(WorldCountriesData.Ref) Then
-			WorldCountry = Catalogs.WorldCountries.ReferenceAccordingToClassifier(WorldCountriesData);
+		WorldCountryData = Catalogs.WorldCountries.WorldCountryData(, Address.Country);
+		If WorldCountryData <> Undefined AND Not ValueIsFilled(WorldCountryData.Ref) Then
+			WorldCountry = Catalogs.WorldCountries.RefByClassifier(WorldCountryData);
 		EndIf;
 	EndIf;
 	
@@ -1750,7 +1735,7 @@ EndFunction
 //
 Function DeserializationOfOtherContactInformation(FieldsValues, Presentation = "", ExpectedType = Undefined) Export
 	
-	If ContactInformationManagementClientServer.IsContactInformationInXML(FieldsValues) Then
+	If ContactInformationClientServer.IsXMLString(FieldsValues) Then
 		// General format of a contact information.
 		Return ContactInformationFromXML(FieldsValues, ExpectedType);
 	EndIf;
@@ -1765,7 +1750,7 @@ Function DeserializationOfOtherContactInformation(FieldsValues, Presentation = "
 	ElsIf ExpectedType = Enums.ContactInformationTypes.WebPage Then
 		Result.Content = XDTOFactory.Create(XDTOFactory.Type(TargetNamespace, "WebSite"));
 		
-	ElsIf ExpectedType = Enums.ContactInformationTypes.Another Then
+	ElsIf ExpectedType = Enums.ContactInformationTypes.Other Then
 		Result.Content = XDTOFactory.Create(XDTOFactory.Type(TargetNamespace, "Other"));
 		
 	ElsIf ExpectedType <> Undefined Then
@@ -1777,138 +1762,6 @@ Function DeserializationOfOtherContactInformation(FieldsValues, Presentation = "
 	
 	Return Result;
 	
-EndFunction
-
-// Returns presentation of the contact information generated from the address in the XML format.
-//
-// Parameters:
-//   XMLString    -  String - Address in the XML format.
-//   ContactInformationFormat  - String             - If ADDRCLASS is specified, then district
-// and urban district are not included in the addresses presentation.
-//    ContactInformationKind - Structure - additional parameters of forming presentation for addresses:
-//      * Type - String - The contact information type;
-//      * IncludeCountriesToPresentation - Boolean - address country will be included to the presentation;
-//      * AddressFormat                 - String - If ADDRCLASS is specified, then district
-// and urban district are not included in the addresses presentation.
-// Returns:
-//      String - generated presentation.
-//
-Function PresentationContactInformation(Val XMLString, Val ContactInformationFormat) Export
-	
-	IsRow = TypeOf(XMLString) = Type("String");
-	If IsRow AND Not ContactInformationManagementClientServer.IsContactInformationInXML(XMLString) Then
-		// The previous format of fields values, return the row itself.
-		Return XMLString;
-	EndIf;
-	
-	Kind = New Structure("Type,IncludeCountryInPresentation,AddressFormat", "", False, "AC");
-	If ContactInformationFormat = Undefined Then
-		Kind.Type = ContactInformationType(?(IsRow, XMLString, ContactInformationFromXML(XMLString)));
-	Else
-		FillPropertyValues(Kind, ContactInformationFormat);
-	EndIf;
-	
-	XDTODataObject = ?(IsRow, ContactInformationFromXML(XMLString), XMLString);
-	If Not IsBlankString(XDTODataObject.Presentation) AND Kind.AddressFormat = "FIAS" Then
-		Return XDTODataObject.Presentation; // Return previously generated presentation.
-	EndIf;
-	
-	Return GeneratePresentationContactInformation(XDTODataObject, Kind);
-	
-EndFunction
-
-//  Computes and selects the check box showing that the address was entered in a free form.
-//  Emptiness of the Address_by_document field value is not used as a check box.
-//
-//  Parameters:
-//      XDTOInformation - XDTOObject, Row - Contact information.
-//      NewValue  - Boolean - optionally set new value.
-//
-//  Returns:
-//      Boolean - new value.
-//
-Function AddressEnteredInFreeForm(XDTOInformation, NewValue = Undefined) Export
-	NeedToSerialize = TypeOf(XDTOInformation) = Type("String");
-	If NeedToSerialize AND Not ContactInformationManagementClientServer.IsContactInformationInXML(XDTOInformation) Then
-		// Old version of fields values, not supported.
-		Return False;
-	EndIf;
-	
-	XDTODataObject = ?(NeedToSerialize, ContactInformationFromXML(XDTOInformation), XDTOInformation);
-	If Not ItsRussianAddress(XDTODataObject) Then
-		// Do not support
-		Return False;
-	EndIf;
-	
-	AddressRF = XDTODataObject.Content.Content;
-	If TypeOf(NewValue) <> Type("Boolean") Then
-		// Read
-		Return Not IsBlankString(AddressRF.Address_to_document);
-	EndIf;
-		
-	// Set
-	If NewValue Then
-		AddressRF.Address_to_document = XDTODataObject.Presentation;
-	Else
-		AddressRF.Reset("Address_to_document");
-	EndIf;
-	
-	If NeedToSerialize Then
-		XDTOInformation = ContactInformationXDTOVXML(XDTODataObject);
-	EndIf;
-	Return NewValue;
-EndFunction
-
-// Generates and returns a contact information presentation.
-//
-// Parameters:
-//   Information    - XDTOObject, Row - contact information.
-//   InformationKind - CatalogRef.ContactInformationTypes, Structure - parameters to generate a presentation.
-//   AddressFormat  - String             - If ADDRCLASS is specified, then district
-// and urban district are not included in the addresses presentation.
-//
-// Returns:
-//      String - generated presentation.
-//
-Function GeneratePresentationContactInformation(Information, InformationKind) Export
-	
-	If TypeOf(Information) = Type("XDTODataObject") Then
-		If Information.Content = Undefined Then
-			Return Information.Presentation;
-		EndIf;
-		
-		TargetNamespace = ContactInformationManagementClientServerReUse.TargetNamespace();
-		InformationType    = Information.Content.Type();
-		If InformationType = XDTOFactory.Type(TargetNamespace, "Address") Then
-			Return AddressPresentation(Information.Content, InformationKind);
-			
-		ElsIf InformationType = XDTOFactory.Type(TargetNamespace, "PhoneNumber") Then // SB
-			PresentationPhone = PresentationPhone(Information.Content);
-			Return ?(IsBlankString(PresentationPhone), Information.Presentation, PresentationPhone);
-			
-		ElsIf InformationType = XDTOFactory.Type(TargetNamespace, "FaxNumber") Then // SB
-			FaxPresentation = PresentationPhone(Information.Content);
-			Return ?(IsBlankString(PresentationPhone), Information.Presentation, FaxPresentation);
-			
-		ElsIf InformationType = XDTOFactory.Type(TargetNamespace, "Email") Then
-			Return String(Information.Content.Value);
-		EndIf;
-		
-		// Endcap for other types
-		If TypeOf(InformationType) = Type("XDTODataObject") AND InformationType.Properties.Get("Value") <> Undefined Then
-			Return String(Information.Content.Value);
-		EndIf;
-		
-		Return String(Information.Content);
-	EndIf;
-	
-	// Old format or new deserialized one.
-	If InformationKind.Type = Enums.ContactInformationTypes.Address Then
-		NewInfo = XMLBXDTOAddress(Information,,Enums.ContactInformationTypes.Address);
-		Return GeneratePresentationContactInformation(NewInfo, InformationKind);
-	EndIf;
-	
-	Return TrimAll(Information);
 EndFunction
 
 //  Returns the check box showing that a passed address - Russian.
@@ -2385,8 +2238,8 @@ Function AddressPresentation(Val XDTOAddress, Val InformationKind) Export
 	EndIf;
 	
 	InsertCountries = New Array;
-	InsertCountries.Add(Country);
 	InsertCountries.Add(Presentation);
+	InsertCountries.Add(Country);
 	Return ContactInformationManagementClientServer.GenerateFullDescr(InsertCountries);
 EndFunction
 
@@ -2427,7 +2280,7 @@ Function AddressFillingErrorsXDTO(XDTOAddress, InformationKind, ResultByGroups =
 	EndIf;
 	
 	// Checking check boxes
-	If TypeOf(InformationKind) = Type("CatalogRef.ContactInformationTypes") Then
+	If TypeOf(InformationKind) = Type("CatalogRef.ContactInformationKinds") Then
 		CheckCheckBoxes = StructureTypeContactInformation(InformationKind);
 	Else
 		CheckCheckBoxes = InformationKind;
@@ -2438,7 +2291,7 @@ Function AddressFillingErrorsXDTO(XDTOAddress, InformationKind, ResultByGroups =
 		// Address outside RF
 		Result = ?(ResultByGroups, New Array, New ValueList);
 		
-		If CheckCheckBoxes.AddressRussianOnly Then
+		If CheckCheckBoxes.DomesticAddressOnly Then
 			ErrorText = NStr("en='Address should be only Russian.';ru='Адрес должен быть только российским.'");
 			If ResultByGroups Then
 				Result.Add(New Structure("Fields, ErrorTypes, Message", New Array,
@@ -2455,7 +2308,7 @@ Function AddressFillingErrorsXDTO(XDTOAddress, InformationKind, ResultByGroups =
 	// Check an empty address separately if the filling is required.
 	If Not XDTOContactInformationFilled(AddressRF) Then
 		// Address is empty
-		If CheckCheckBoxes.RequiredFilling Then
+		If CheckCheckBoxes.Mandatory Then
 			// But must be filled in
 			ErrorText = NStr("en='Address is not filled in.';ru='Адрес не заполнен.'");
 			
@@ -2981,9 +2834,9 @@ EndFunction
 //
 Function StructureTypeContactInformation(Val Source = Undefined) Export
 	
-	AttributesMetadata = Metadata.Catalogs.ContactInformationTypes.Attributes;
+	AttributesMetadata = Metadata.Catalogs.ContactInformationKinds.Attributes;
 	
-	If TypeOf(Source) = Type("CatalogRef.ContactInformationTypes") Then
+	If TypeOf(Source) = Type("CatalogRef.ContactInformationKinds") Then
 		Attributes = "Description";
 		For Each AttributeMetadata In AttributesMetadata Do
 			Attributes = Attributes + "," + AttributeMetadata.Name;
@@ -3044,7 +2897,7 @@ EndFunction
 //
 Function ContactInformationInOldStructure(XDTOContactInformation, FieldsOldContent = False) Export
 	
-	If ContactInformationManagementClientServer.IsContactInformationInXML(XDTOContactInformation) Then
+	If ContactInformationClientServer.IsXMLString(XDTOContactInformation) Then
 		XDTOContact = ContactInformationFromXML(XDTOContactInformation);
 	Else
 		XDTOContact = XDTOContactInformation
@@ -3234,9 +3087,7 @@ Procedure FillAddressErrorsByClassifier(XDTOAddressRF, CheckCheckBoxes, Result)
 	
 	Addresses = New Array;
 	
-	If CheckCheckBoxes.CheckByFIAS Then
-		Addresses.Add( New Structure("Address, AddressFormat", XDTOAddressRF, "FIAS") );
-	ElsIf CheckCheckBoxes.CheckCorrectness Then
+	If CheckCheckBoxes.CheckValidity Then
 		Addresses.Add( New Structure("Address, AddressFormat", XDTOAddressRF, "AC") );
 	EndIf;
 	
@@ -3291,7 +3142,7 @@ EndFunction
 // Inner for serialization.
 Function AddressDeserializationCommon(Val FieldsValues, Val Presentation, Val ExpectedType = Undefined)
 	
-	If ContactInformationManagementClientServer.IsContactInformationInXML(FieldsValues) Then
+	If ContactInformationClientServer.IsXMLString(FieldsValues) Then
 		// General format of a contact information.
 		Return ContactInformationFromXML(FieldsValues, ExpectedType);
 	EndIf;
@@ -3577,7 +3428,7 @@ EndFunction
 
 Function DeserializationPhoneFax(FieldsValues, Presentation = "", ExpectedType = Undefined)
 	
-	If ContactInformationManagementClientServer.IsContactInformationInXML(FieldsValues) Then
+	If ContactInformationClientServer.IsXMLString(FieldsValues) Then
 		// General format of a contact information.
 		Return ContactInformationFromXML(FieldsValues, ExpectedType);
 	EndIf;
@@ -3832,744 +3683,7 @@ EndProcedure
 
 #EndRegion
 
-#Region ServiceProceduresAndFunctionsForSXMLWork
-
-// Compares two XML and returns the result as the values table.
-//
-// Parameters:
-//    StaticText1 - String - XML data.
-//    StaticText1 - String - XML data.
-//
-// Returns:
-//    ValuesTable with columns:
-//        * Path      - String - XPath path to the distinction place.
-//        * Value1 - String - value in XML from the Text1 parameter.
-//        * Value2 - String - value in XML from the Text2 parameter.
-//
-Function DifferencesXML(Val StaticText1, Val Text2) Export
-	Return ValueFromXMLString( XSLT_ValuesTableXMLDifferences(StaticText1, Text2) );
-EndFunction
-
-// Returns the corresponding ContactInformationTypes enumeration value by the XML row.
-//
-// Parameters:
-//    XMLString - Row describing a contact information.
-//
-// Returns:
-//     EnumRef.ContactInformationTypes - result.
-//
-Function ContactInformationType(Val XMLString) Export
-	Return ValueFromXMLString( XSLT_ContactInformationTypeByXMLRow(XMLString) );
-EndFunction
-
-// Reads a row of content from a contact information value.
-// If the value of the compound type content, then it returns undefined.
-//
-// Parameters:
-//    Text  Row - XML row of a contact information. can be modified.
-//
-// Returns:
-//    String       - XML content value.
-//    Undefined - The Content property is not found.
-//
-Function RowCompositionContactInformation(Val Text, Val NewValue = Undefined) Export
-	Read = New XMLReader;
-	Read.SetString(Text);
-	XDTODataObject= XDTOFactory.ReadXML(Read, 
-		XDTOFactory.Type(ContactInformationManagementClientServerReUse.TargetNamespace(), "ContactInformation"));
-	
-	Content = XDTODataObject.Content;
-	If Content <> Undefined 
-		AND Content.Properties().Get("Value") <> Undefined
-		AND TypeOf(Content.Value) = Type("String") 
-	Then
-		Return Content.Value;
-	EndIf;
-	
-	Return Undefined;
-EndFunction
-
-// Converts the row of key-value pairs (see old address format) to the structure.
-//
-// Parameters:
-//    Text - String - key = value pairs, separated with line breaks.
-//
-// Returns:
-//    Structure - conversion result
-//
-Function KeyValueOfRowInStructure(Val Text) Export
-	Return ValueFromXMLString( XSLT_KeyValueOfRowInStructure(Text) );
-EndFunction
-
-// Converts the row of key-value pairs (see old address format) to the values list.
-// In the return list of values presentation - source key, value - source value.
-//
-// Parameters:
-//    Text             - String - key = value pairs, separated with line breaks.
-//    UniquenessFields - Boolean - check box showing that only the last of unique keys will be kept.
-//
-// Returns:
-//    ValueList - conversion result
-// 
-Function StringKeyOfValueInValueList(Val Text, Val UniquenessFields = True) Export
-	If UniquenessFields Then
-		Return ValueFromXMLString( XSLT_UniqueByPresentationInList(XSLT_StringKeyOfValueInValueList(Text)) );
-	EndIf;
-	Return ValueFromXMLString( XSLT_StringKeyOfValueInValueList(Text) );
-EndFunction
-
-// Converts the structure to the row of key-value pairs separated by commas.
-//
-// Parameters:
-//    Structure - Structure - original structure.
-//
-// Returns:
-//    String - conversion result
-// 
-Function StructureToStringKeyValue(Val Structure) Export
-	Return XSLT_StructureToStringKeyValue( ValueToXMLString(Structure) );
-EndFunction
-
-// Converts the values list to a row of key-value pairs separated by commas.
-//
-// Parameters:
-//    List - ValueList - source data.
-//
-// Returns:
-//    String - conversion result
-// 
-Function ValueListIntoStringKeyValue(Val List) Export
-	Return XSLT_ValueListIntoStringKeyValue( ValueToXMLString(List) );
-EndFunction
-
-// Converts structure to values list. Key is converted to presentation.
-//
-// Parameters:
-//    Structure - Structure - original structure.
-//
-// Returns:
-//    ValueList - conversion result
-//
-Function StructureInValueList(Val Structure) Export
-	Return ValueFromXMLString( XSLT_StructureInValueList( ValueToXMLString(Structure) ) );
-EndFunction
-
-// Converts values list to structure. Presentation is converted to key.
-//
-// Parameters:
-//    List - ValueList - source data.
-//
-// Returns:
-//    Structure - conversion result
-//
-Function ValueListInStructure(Val List) Export
-	Return ValueFromXMLString( XSLT_ValueListInStructure( ValueToXMLString(List) ) );
-EndFunction
-
-// Compares two references of contact information.
-//
-// Parameters:
-//    Data1 - XDTOObject - object with a contact information.
-//            - String     - contact information in the XML format
-//            - Structure  - description contact information. Fields are expected:
-//                 * FieldValues - String, Structure, ValuesList, Map - contact information fields.
-//                 * Presentation - String - Presentation. It is used if you are
-// unable to compute presentation from FieldValues (the Presentation field is absent in them).
-//                 * Comment - String - comment. It is used in case it was
-//                                          impossible to compute a comment from FieldValues
-//                 * ContactInformationKind - CatalogRef.ContactInformationTypes, EnumRef.ContactInformationTypes,
-//                                             Structure It is used in case you did not manage to compute type from FieldValues.
-//    Data2 - XDTOObject, String, Structure - similarly Data1.
-//
-// Returns:
-//     ValuesTable: - table of different fields with the following columns:
-//        * Path      - String - XPath identifying a distinguished value. The
-//                               ContactInformationType value means that the sent instances of the contact information have different types.
-//        *Description  - String - description of the different attributes in terms of the subject area.
-//        * Value1 - String - value corresponding to the object passed in the Data1 parameter.
-//        * Value2 - String - value corresponding to the object passed in the Data2 parameters.
-//
-Function DifferentContactInformation(Val Data1, Val Data2) Export
-	DataKI1 = CastContactInformationXML(Data1);
-	DataKI2 = CastContactInformationXML(Data2);
-	
-	ContactInformationType = DataKI1.ContactInformationType;
-	If ContactInformationType <> DataKI2.ContactInformationType Then
-		// Different types, do not compare father.
-		Result = New ValueTable;
-		Columns   = Result.Columns;
-		ResultRow = Result.Add();
-		ResultRow[Columns.Add("Path").Name]      = "ContactInformationType";
-		ResultRow[Columns.Add("Value1").Name] = DataKI1.ContactInformationType;
-		ResultRow[Columns.Add("Value2").Name] = DataKI2.ContactInformationType;
-		ResultRow[Columns.Add("Definition").Name]  = NStr("en='Different contact information types';ru='Различные типы контактной информации'");
-		Return Result;
-	EndIf;
-	
-	TextXMLDifferences = XSLT_ValuesTableXMLDifferences(DataKI1.DataXML, DataKI2.DataXML);
-	
-	// Give an interpretation depending on the type.
-	Return ValueFromXMLString( XSLT_InterpretingDifferencesXMLContactInformation(
-			TextXMLDifferences, ContactInformationType));
-	
-EndFunction
-
-// Converts a contact information to XML kind.
-//
-// Parameters:
-//    Data - String     - contact information description.
-//           - XDTOObject - contact information description.
-//           - Structure  - contact information description. Fields are expected:
-//                 * FieldValues - String, Structure, ValuesList, Map - contact information fields.
-//                 * Presentation - String - Presentation. It is used if you are
-// unable to compute presentation from FieldValues (the Presentation field is absent in them).
-//                 * Comment - String - comment. It is used in case it
-//                                          was impossible to compute a comment from FieldValues
-//                 * ContactInformationKind - CatalogRef.ContactInformationTypes, EnumRef.ContactInformationTypes,
-//                                             Structure It is used in case you did not manage to compute the type from FieldValues.
-//
-// Returns:
-//     Structure - contains fields:
-//        * ContactInformationType - Listing.ContactInformationTypes
-//        * DataXML               - String - text XML.
-//
-Function CastContactInformationXML(Val Data) Export
-	If ItIsXMLString(Data) Then
-		Return New Structure("DataXML, ContactInformationType",
-			Data, ValueFromXMLString( XSLT_ContactInformationTypeByXMLRow(Data) ));
-		
-	ElsIf TypeOf(Data) = Type("XDTODataObject") Then
-		DataXML = ContactInformationXDTOVXML(Data);
-		Return New Structure("DataXML, ContactInformationType",
-			DataXML, ValueFromXMLString( XSLT_ContactInformationTypeByXMLRow(DataXML) ));
-		
-	EndIf;
-		
-	// Wait for the structure
-	Comment = Undefined;
-	Data.Property("Comment", Comment);
-	
-	FieldsValues = Data.FieldsValues;
-	If ItIsXMLString(FieldsValues) Then 
-		// Perhaps you will need to predefine the comment.
-		If Not IsBlankString(Comment) Then
-			ContactInformationManagement.SetContactInformationComment(FieldsValues, Comment);
-		EndIf;
-		
-		Return New Structure("DataXML, ContactInformationType",
-			FieldsValues, ValueFromXMLString( XSLT_ContactInformationTypeByXMLRow(FieldsValues) ));
-		
-	EndIf;
-	
-	// Collate FieldValues, ContactInformationKind, Presentation.
-	TypeValuesFields = TypeOf(FieldsValues);
-	If TypeValuesFields = Type("String") Then
-		// Text from the key-value pairs
-		XMLStringStructure = XSLT_KeyValueOfRowInStructure(FieldsValues)
-		
-	ElsIf TypeValuesFields = Type("ValueList") Then
-		// Values list
-		XMLStringStructure = XSLT_ValueListInStructure( ValueToXMLString(FieldsValues) );
-		
-	ElsIf TypeValuesFields = Type("Map") Then
-		// Map
-		XMLStringStructure = XSLT_MatchInStructure( ValueToXMLString(FieldsValues) );
-		
-	Else
-		// Wait for the structure
-		XMLStringStructure = ValueToXMLString(FieldsValues);
-		
-	EndIf;
-	
-	// Collate by ContactInformationKind.
-	ContactInformationType = TypeKindContactInformation(Data.ContactInformationKind);
-	
-	Result = New Structure("ContactInformationType, DataXML", ContactInformationType);
-	
-	AllTypes = Enums.ContactInformationTypes;
-	If ContactInformationType = AllTypes.Address Then
-		Result.DataXML = XSLT_StructureToAddress(XMLStringStructure, Data.Presentation, Comment);
-		
-	ElsIf ContactInformationType = AllTypes.EmailAddress Then
-		Result.DataXML = XSLT_StructureToEmailAddress(XMLStringStructure, Data.Presentation, Comment);
-		
-	ElsIf ContactInformationType = AllTypes.WebPage Then
-		Result.DataXML = XSLT_StructureIntoWebPage(XMLStringStructure, Data.Presentation, Comment);
-		
-	ElsIf ContactInformationType = AllTypes.Phone Then
-		Result.DataXML = XSLT_StructureInPhone(XMLStringStructure, Data.Presentation, Comment);
-		
-	ElsIf ContactInformationType = AllTypes.Fax Then
-		Result.DataXML = XSLT_StructureInFax(XMLStringStructure, Data.Presentation, Comment);
-		
-	ElsIf ContactInformationType = AllTypes.Another Then
-		Result.DataXML = XSLT_StructureToOther(XMLStringStructure, Data.Presentation, Comment);
-		
-	Else
-		Raise NStr("en='Transformation parameters error, contact information type is not defined';ru='Ошибка параметров преобразования, не определен тип контактной информации'");
-		
-	EndIf;
-	
-	Return Result;
-EndFunction
-
-#EndRegion
-
 #Region ServiceProceduresAndFunctionsBySXSLTWork
-
-// Converts the values list keeping only last values of key-value type by the key-presentation.
-//
-// Parameters:
-//    Text - String - serialized values list.
-//
-// Returns:
-//     String - XML of a serialized values list.
-//
-Function XSLT_UniqueByPresentationInList(Val Text)
-	
-	Converter = ContactInformationManagementServiceReUse.XSLT_UniqueByPresentationInList();
-	Return Converter.TransformFromString(Text);
-	
-EndFunction
-
-// Compares two XML rows.
-// Only rows and attributes, without the non-space ones, CDATA etc are checked. The order is important.
-//
-// Parameters:
-//    StaticText1 - String - XML
-//    row Text2 - String - XML row
-//
-// Returns:
-//    String - serialized ValueTable (http://v8.1c.ru/8.1/data/core) that has three columns:
-//       * Path      - String - path to place of distinction.
-//       * Value1 - String - value in XML from the Text1 parameter.
-//       * Value2 - String - value in XML from the Text2 parameter.
-//
-Function XSLT_ValuesTableXMLDifferences(StaticText1, Text2)
-	
-	Converter = ContactInformationManagementServiceReUse.XSLT_ValuesTableXMLDifferences();
-	
-	Builder = New TextDocument;
-	Builder.AddLine("<dn><f>");
-	Builder.AddLine( XSLT_DeleteXMLDescription(StaticText1) );
-	Builder.AddLine("</f><s>");
-	Builder.AddLine( XSLT_DeleteXMLDescription(Text2) );
-	Builder.AddLine("</s></dn>");
-	
-	Return Converter.TransformFromString(Builder.GetText());
-	
-EndFunction
-
-// Converts text with Key = Value pairs divided by line breaks (see address format) in XML.
-// In case there are repeated keys, they are all included into the result, but the last one will be used during deserialization (a special feature of a platform serializer).
-//
-// Parameters:
-//    Text - String - Key = Value pairs.
-//
-// Returns:
-//     String  - XML of a serialized structure.
-//
-Function XSLT_KeyValueOfRowInStructure(Val Text) 
-	
-	Converter = ContactInformationManagementServiceReUse.XSLT_KeyValueOfRowInStructure();
-	Return Converter.TransformFromString(XSLT_NodeParameterRows(Text));
-	
-EndFunction
-
-// Converts text with Key = Value pairs divided by line breaks (see address format) in XML.
-// In case of repeated keys, everything is included to the result.
-//
-// Parameters:
-//    Text - String - Key = Value pairs.
-//
-// Returns:
-//    String  - XML of a serialized values list.
-//
-Function XSLT_StringKeyOfValueInValueList(Val Text)
-	
-	Converter = ContactInformationManagementServiceReUse.XSLT_StringKeyOfValueInValueList();
-	Return Converter.TransformFromString(XSLT_NodeParameterRows(Text));
-	
-EndFunction
-
-// Converts values list to row of key = value pairs divided by line break.
-//
-// Parameters:
-//    Text - String - serialized values list.
-//
-// Returns:
-//    String - conversion result
-//
-Function XSLT_ValueListIntoStringKeyValue(Val Text)
-	
-	Converter = ContactInformationManagementServiceReUse.XSLT_ValueListIntoStringKeyValue();
-	Return Converter.TransformFromString(Text);
-	
-EndFunction
-
-// Converts the structure to the row of key = value pairs divided by a line break.
-//
-// Parameters:
-//    Text - String - serialized structure.
-//
-// Returns:
-//    String - conversion result
-//
-Function XSLT_StructureToStringKeyValue(Val Text)
-	
-	Converter = ContactInformationManagementServiceReUse.XSLT_StructureToStringKeyValue();
-	Return Converter.TransformFromString(Text);
-	
-EndFunction
-
-// Converts values list to structure. Presentation is converted to key.
-//
-// Parameters:
-//    Text - String - serialized values list.
-//
-// Returns:
-//    String - conversion result
-//
-Function XSLT_ValueListInStructure(Text)
-	
-	Converter = ContactInformationManagementServiceReUse.XSLT_ValueListInStructure();
-	Return Converter.TransformFromString(Text);
-	
-EndFunction
-
-// Converts structure to values list. Key is converted to presentation.
-//
-// Parameters:
-//    Text - String - serialized structure.
-//
-// Returns:
-//    String - conversion result
-//
-Function XSLT_StructureInValueList(Text)
-	
-	Converter = ContactInformationManagementServiceReUse.XSLT_StructureInValueList();
-	Return Converter.TransformFromString(Text);
-	
-EndFunction
-
-// Converts match to structure. Key is converted to key, value - in value.
-//
-// Parameters:
-//    Text - String - serialized match.
-//
-// Returns:
-//    String - conversion result
-//
-Function XSLT_MatchInStructure(Text)
-	
-	Converter = ContactInformationManagementServiceReUse.XSLT_MatchInStructure();
-	Return Converter.TransformFromString(Text);
-	
-EndFunction
-
-// Analyzes the Path-Value1-Value2 table for the specified kind of the contact information.
-//
-// Parameters:
-//    Text                   - String - row XML with ValueTable from the XML comparison result.
-//    ContactInformationType - EnumRef.ContactInformationTypes  - enumeration value of a type.
-//
-// Returns:
-//    String - serialized values table of different fields.
-//
-Function XSLT_InterpretingDifferencesXMLContactInformation(Val Text, Val ContactInformationType) 
-	
-	Converter = ContactInformationManagementServiceReUse.XSLT_InterpretingDifferencesXMLContactInformation(
-		ContactInformationType);
-	Return Converter.TransformFromString(Text);
-	
-EndFunction
-
-// Converts structure to XML of contact information.
-//
-// Parameters:
-//    Text         - String - serialized structure.
-//    Presentation - String - optional presentation. Used only if the structure does
-//                             not contain a presentation field.
-//    Comment   - String - optional comment. Used only if the structure does not contain a comment field.
-//
-// Returns:
-//    String - Contact information XML.
-//
-Function XSLT_StructureToAddress(Val Text, Val Presentation = Undefined, Val Comment = Undefined)
-	
-	Converter = ContactInformationManagementServiceReUse.XSLT_XSLTransform();
-	Return XSLT_PresentationAndCommentControl(
-		Converter.TransformFromString(Text),
-		Presentation, Comment);
-		
-EndFunction
-
-// Converts structure to XML of contact information.
-//
-// Parameters:
-//    Text         - String - serialized structure.
-//    Presentation - String - optional presentation. Used only if the structure does
-//                             not contain a presentation field.
-//    Comment   - String - optional comment. Used only if the structure does not contain a comment field.
-//
-// Returns:
-//    String - Contact information XML.
-//
-Function XSLT_StructureToEmailAddress(Val Text, Val Presentation = Undefined, Val Comment = Undefined)
-	
-	Converter = ContactInformationManagementServiceReUse.XSLT_StructureToEmailAddress();
-	Return XSLT_PresentationAndCommentControl(
-		XSLT_RowSimpleTypeValueControl(Converter.TransformFromString(Text), Presentation), 
-		Presentation, Comment);
-		
-EndFunction
-
-// Converts structure to XML of contact information.
-//
-// Parameters:
-//    Text         - String - serialized structure.
-//    Presentation - String - optional presentation. Used only if the structure does
-//                             not contain a presentation field.
-//    Comment   - String - optional comment. Used only if the structure does not contain a comment field.
-//
-// Returns:
-//    String - Contact information XML.
-//
-Function XSLT_StructureIntoWebPage(Val Text, Val Presentation = Undefined, Val Comment = Undefined)
-	Converter = ContactInformationManagementServiceReUse.XSLT_StructureIntoWebPage();
-	
-	Return XSLT_PresentationAndCommentControl(
-		XSLT_RowSimpleTypeValueControl( Converter.TransformFromString(Text), Presentation),
-		Presentation, Comment);
-		
-EndFunction
-
-// Converts structure to XML of contact information.
-//
-// Parameters:
-//    Text         - String - serialized structure.
-//    Presentation - String - optional presentation. Used only if the structure does
-//                             not contain a presentation field.
-//    Comment   - String - optional comment. Used only if the structure does not contain a comment field.
-//
-// Returns:
-//    String - Contact information XML.
-//
-Function XSLT_StructureInPhone(Val Text, Val Presentation = Undefined, Val Comment = Undefined)
-	Converter = ContactInformationManagementServiceReUse.XSLT_StructureInPhone();
-	Return XSLT_PresentationAndCommentControl(
-		Converter.TransformFromString(Text),
-		Presentation, Comment);
-EndFunction
-
-// Converts structure to XML of contact information.
-//
-// Parameters:
-//    Text         - String - serialized structure.
-//    Presentation - String - optional presentation. Used only if the structure does
-//                             not contain a presentation field.
-//    Comment   - String - optional comment. Used only if the structure does not contain a comment field.
-//
-// Returns:
-//    String - Contact information XML.
-//
-Function XSLT_StructureInFax(Val Text, Val Presentation = Undefined, Val Comment = Undefined)
-	
-	Converter = ContactInformationManagementServiceReUse.XSLT_StructureInFax();
-	Return XSLT_PresentationAndCommentControl(
-		Converter.TransformFromString(Text),
-		Presentation, Comment);
-		
-EndFunction
-
-// Converts structure to XML of contact information.
-//
-// Parameters:
-//    Text         - String - serialized structure.
-//    Presentation - String - optional presentation. Used only if the structure does
-//                             not contain a presentation field.
-//    Comment   - String - optional comment. Used only if the structure does not contain a comment field.
-//
-// Returns:
-//    String - Contact information XML.
-//
-Function XSLT_StructureToOther(Val Text, Val Presentation = Undefined, Val Comment = Undefined)
-	
-	Converter = ContactInformationManagementServiceReUse.XSLT_StructureToOther();
-	Return XSLT_PresentationAndCommentControl(
-		XSLT_RowSimpleTypeValueControl( Converter.TransformFromString(Text), Presentation),
-		Presentation, Comment);
-		
-EndFunction
-
-// Sets a presentation and a comment in the contact information if they are not filled in.
-//
-// Parameters:
-//    Text         - String - serialized structure.
-//    Presentation - String - optional presentation. Used only if the structure does
-//                             not contain a presentation field.
-//    Comment   - String - optional comment. Used only if the structure does not contain a comment field.
-//
-// Returns:
-//    String - Contact information XML.
-//
-Function XSLT_PresentationAndCommentControl(Val Text, Val Presentation = Undefined, Val Comment = Undefined)
-	
-	If Presentation = Undefined AND Comment = Undefined Then
-		Return Text;
-	EndIf;
-	
-	XSLT_Text = New TextDocument;
-	XSLT_Text.AddLine("
-		|<xsl:stylesheet version=""1.0"" xmlns:xsl=""http://www.w3.org/1999/XSL/Transform""
-		|  xmlns:tns=""http://www.v8.1c.ru/ssl/contactinfo""
-		|  xmlns=""http://www.v8.1c.ru/ssl/contactinfo"" 
-		|>
-		|  <xsl:output method=""xml"" omit-xml-declaration=""yes"" indent=""yes"" encoding=""utf-8""/>
-		|
-		|  <xsl:template match=""node() | @*"">
-		|    <xsl:copy>
-		|      <xsl:apply-templates select=""node() | @*"" />
-		|    </xsl:copy>
-		|  </xsl:template>
-		|");
-		
-	If Presentation <> Undefined Then
-		XSLT_Text.AddLine("
-		|  <xsl:template match=""tns:ContactInformation/@Presentation"">
-		|    <xsl:attribute name=""Presentation"">
-		|      <xsl:choose>
-		|        <xsl:when test="".=''"">" + NormalizedXMLRow(Presentation) + "</xsl:when>
-		|        <xsl:otherwise>
-		|          <xsl:value-of select="".""/>
-		|        </xsl:otherwise>
-		|      </xsl:choose>
-		|    </xsl:attribute>
-		|  </xsl:template>
-		|");
-	EndIf;
-	
-	If Comment <> Undefined Then
-		XSLT_Text.AddLine("
-		|  <xsl:template match=""tns:ContactInformation/tns:Comment"">
-		|    <xsl:element name=""Comment"">
-		|      <xsl:choose>
-		|        <xsl:when test="".=''"">" + NormalizedXMLRow(Comment) + "</xsl:when>
-		|        <xsl:otherwise>
-		|          <xsl:value-of select="".""/>
-		|        </xsl:otherwise>
-		|      </xsl:choose>
-		|    </xsl:element>
-		|  </xsl:template>
-		|");
-	EndIf;
-		XSLT_Text.AddLine("
-		|</xsl:stylesheet>
-		|");
-		
-	Converter = New XSLTransform;
-	Converter.LoadFromString( XSLT_Text.GetText() );
-	
-	Return Converter.TransformFromString(Text);
-EndFunction
-
-// Sets to the Content contact information.Value to passed presentation.
-// If Presentation equals to undefined, then it does nothing. Otherwise, checks for emptiness.
-// Content. If there is nothing there and attribute Content.Value empty, then set the presentation value to the content.
-//
-// Parameters:
-//    Text         - String - Contact information XML.
-//    Presentation - String - set presentation.
-//
-// Returns:
-//    String - Contact information XML.
-//
-Function XSLT_RowSimpleTypeValueControl(Val Text, Val Presentation)
-	
-	If Presentation = Undefined Then
-		Return Text;
-	EndIf;
-	
-	Converter = New XSLTransform;
-	Converter.LoadFromString("
-		|<xsl:stylesheet version=""1.0"" xmlns:xsl=""http://www.w3.org/1999/XSL/Transform""
-		|  xmlns:tns=""http://www.v8.1c.ru/ssl/contactinfo""
-		|>
-		|  <xsl:output method=""xml"" omit-xml-declaration=""yes"" indent=""yes"" encoding=""utf-8""/>
-		|  
-		|  <xsl:template match=""node() | @*"">
-		|    <xsl:copy>
-		|      <xsl:apply-templates select=""node() | @*"" />
-		|    </xsl:copy>
-		|  </xsl:template>
-		|  
-		|  <xsl:template match=""tns:ContactInformation/tns:Content/@Value"">
-		|    <xsl:attribute name=""Value"">
-		|      <xsl:choose>
-		|        <xsl:when test="".=''"">" + NormalizedXMLRow(Presentation) + "</xsl:when>
-		|        <xsl:otherwise>
-		|          <xsl:value-of select="".""/>
-		|        </xsl:otherwise>
-		|      </xsl:choose>
-		|    </xsl:attribute>
-		|  </xsl:template>
-		|
-		|</xsl:stylesheet>
-		|");
-	
-	Return Converter.TransformFromString(Text);
-EndFunction
-
-// Returns the XML fragment to substitute the <Node>Row<Node> row.
-//
-// Parameters:
-//    Text       - String - insert into XML.
-//    ItemName - String - optional name for an external node.
-//
-// Returns:
-//    String - resulting XML.
-//
-Function XSLT_NodeParameterRows(Val Text, Val ItemName = "ExternalParamNode")
-	
-	// Through xml record for special character masking.
-	Record = New XMLWriter;
-	Record.SetString();
-	Record.WriteStartElement(ItemName);
-	Record.WriteText(Text);
-	Record.WriteEndElement();
-	Return Record.Close();
-	
-EndFunction
-
-// Returns XML without <?xml description...> to include to another XML.
-//
-// Parameters:
-//    Text - String - source XML.
-//
-// Returns:
-//    String - resulting XML.
-//
-Function XSLT_DeleteXMLDescription(Val Text)
-	
-	Converter = ContactInformationManagementServiceReUse.XSLT_DeleteXMLDescription();
-	Return Converter.TransformFromString(TrimL(Text));
-	
-EndFunction
-
-// Converts the XML text of the contact information to the type enumeration.
-//
-// Parameters:
-//    Text - String - source XML.
-//
-// Returns:
-//    String - serialized value of the ContactInformation enumeration.
-//
-Function XSLT_ContactInformationTypeByXMLRow(Val Text)
-	
-	Converter = ContactInformationManagementServiceReUse.XSLT_ContactInformationTypeByXMLRow();
-	Return Converter.TransformFromString(TrimL(Text));
-	
-EndFunction
 
 //  Returns a flag showing whether it is an XML text
 //

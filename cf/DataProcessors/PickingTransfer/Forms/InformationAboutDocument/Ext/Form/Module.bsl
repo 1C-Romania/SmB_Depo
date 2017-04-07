@@ -35,17 +35,3 @@ Procedure OnCreateAtServer(Cancel, StandardProcessing)
 	
 EndProcedure // OnCreateAtServer()
  
-
-
-
-
-
-
-
-
-
-
-
-
-
-

@@ -26,17 +26,3 @@ Procedure WriteAndClose(Command)
 EndProcedure
 
 #EndRegion
-
-
-
-
-
-
-
-
-
-
-
-
-
-

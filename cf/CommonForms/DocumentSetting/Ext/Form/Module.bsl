@@ -303,17 +303,3 @@ Procedure RememberSelection(Command)
 	Close(StructureOfFormAttributes);
 	
 EndProcedure // RememberSelection()
-
-
-
-
-
-
-
-
-
-
-
-
-
-

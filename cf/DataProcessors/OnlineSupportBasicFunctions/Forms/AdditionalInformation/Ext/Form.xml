@@ -198,13 +198,6 @@
 					<ContextMenu name="TINContextMenu" id="80"/>
 					<ExtendedTooltip name="TINExtendedTooltip" id="104"/>
 				</InputField>
-				<InputField name="KPP" id="86">
-					<DataPath>KPP</DataPath>
-					<Width>20</Width>
-					<HorizontalStretch>false</HorizontalStretch>
-					<ContextMenu name="KPPContextMenu" id="87"/>
-					<ExtendedTooltip name="KPPExtendedTooltip" id="105"/>
-				</InputField>
 				<InputField name="Head" id="23">
 					<DataPath>Head</DataPath>
 					<Width>30</Width>
@@ -523,6 +516,10 @@ purchase date</v8:content>
 					<v8:lang>en</v8:lang>
 					<v8:content>Company</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Контрагент</v8:content>
+				</v8:item>
 			</Title>
 			<Type>
 				<v8:Type>xs:string</v8:Type>
@@ -579,25 +576,6 @@ purchase date</v8:content>
 				<v8:item>
 					<v8:lang>ru</v8:lang>
 					<v8:content>наименование организации</v8:content>
-				</v8:item>
-			</Title>
-			<Type>
-				<v8:Type>xs:string</v8:Type>
-				<v8:StringQualifiers>
-					<v8:Length>1000</v8:Length>
-					<v8:AllowedLength>Variable</v8:AllowedLength>
-				</v8:StringQualifiers>
-			</Type>
-		</Attribute>
-		<Attribute name="KPP" id="15">
-			<Title>
-				<v8:item>
-					<v8:lang>en</v8:lang>
-					<v8:content>KPP</v8:content>
-				</v8:item>
-				<v8:item>
-					<v8:lang>ru</v8:lang>
-					<v8:content>КПП</v8:content>
 				</v8:item>
 			</Title>
 			<Type>

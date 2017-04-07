@@ -184,17 +184,3 @@ Procedure WorkChangesOnePageStorageFormat()
 EndProcedure
 
 #EndRegion
-
-
-
-
-
-
-
-
-
-
-
-
-
-

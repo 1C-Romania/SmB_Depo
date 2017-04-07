@@ -1851,18 +1851,6 @@ Procedure ClearAttributesNotRelatedToOperation()
 	
 EndProcedure // ClearAttributesNotRelatedToOperation()
 
-&AtClient
-Procedure AfterWriteEnding(Result, AdditionalParameters) Export
-	
-	Response = Result;
-	
-	If Response = DialogReturnCode.Yes Then
-		SmallBusinessServer.ChangeSubordinateInvoice(Object.Ref);
-		Notify("UpdateIBDocumentAfterFilling");
-	EndIf;
-	
-EndProcedure
-
 ////////////////////////////////////////////////////////////////////////////////
 // PROCEDURE - ACTIONS OF THE FORM COMMAND PANELS
 

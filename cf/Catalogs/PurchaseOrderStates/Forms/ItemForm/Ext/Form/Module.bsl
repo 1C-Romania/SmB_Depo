@@ -76,17 +76,3 @@ Procedure AfterWrite(WriteParameters)
 	
 EndProcedure // AfterWrite()
 // 
-
-
-
-
-
-
-
-
-
-
-
-
-
-

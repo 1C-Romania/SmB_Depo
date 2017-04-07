@@ -414,17 +414,3 @@ Procedure HTMLTextOnClickAfterSelectFromList(SelectedItem, AdditionalParameters)
 EndProcedure
 
 #EndRegion
-
-
-
-
-
-
-
-
-
-
-
-
-
-

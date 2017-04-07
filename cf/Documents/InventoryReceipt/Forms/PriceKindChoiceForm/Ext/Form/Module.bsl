@@ -77,17 +77,3 @@ Procedure PriceKindOnChange(Item)
 	EndIf;
 	
 EndProcedure // PriceKindOnChange()
-
-
-
-
-
-
-
-
-
-
-
-
-
-

@@ -83,7 +83,7 @@ Procedure Select1CBuhphoneFile(ClosingAlert, PathToFile = "") Export
 	
 	SuggestionText = NStr("en='To select 1C-Buhphone application you shall install the file work extension.';ru='Для выбора приложения 1С-Бухфон необходимо установить расширение работы с файлами.'");
 	Notification = New NotifyDescription("Select1CBuhphoneFileAfterExtensionInstallation", ThisObject, AdditionalParameters);
-	CommonUseClient.ShowQuestionAboutFileOperationsExtensionSetting(Notification, SuggestionText, False);
+	CommonUseClient.ShowFileSystemExtensionInstallationQuestion(Notification, SuggestionText, False);
 EndProcedure
 
 // Procedure continued (see above).
@@ -151,7 +151,7 @@ Procedure Run1CBuhphone() Export
 	
 	Notification = New NotifyDescription("Run1CBuhphoneAfterExtensionInstallation", ThisObject);
 	MessageText = NStr("en='To start 1C-Buhphone, you shall install the file work extension.';ru='Для запуска 1С-Бухфон необходимо установить расширение работы с файлами.'");
-	CommonUseClient.ShowQuestionAboutFileOperationsExtensionSetting(Notification, MessageText, False);
+	CommonUseClient.ShowFileSystemExtensionInstallationQuestion(Notification, MessageText, False);
 	
 EndProcedure
 

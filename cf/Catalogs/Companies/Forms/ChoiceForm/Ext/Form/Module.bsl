@@ -37,16 +37,3 @@ Procedure OnCreateAtServer(Cancel, StandardProcessing)
 	SmallBusinessServer.MarkMainItemWithBold(SmallBusinessReUse.GetValueOfSetting("MainCompany"), List);
 	
 EndProcedure // OnCreateAtServer()
-
-
-
-
-
-
-
-
-
-
-
-
-

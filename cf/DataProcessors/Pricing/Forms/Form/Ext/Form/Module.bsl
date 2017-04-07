@@ -1763,17 +1763,3 @@ Procedure DetermineNecessityForTabularSectionClearing(ClosingResult, AdditionalP
 EndProcedure // DetermineNecessityForTabularSectionClearing()
 
 #EndRegion
-
-
-
-
-
-
-
-
-
-
-
-
-
-

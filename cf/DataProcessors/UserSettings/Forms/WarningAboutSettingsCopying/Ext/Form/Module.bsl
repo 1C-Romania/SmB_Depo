@@ -25,17 +25,3 @@ Procedure Copy(Command)
 EndProcedure
 
 #EndRegion
-
-
-
-
-
-
-
-
-
-
-
-
-
-

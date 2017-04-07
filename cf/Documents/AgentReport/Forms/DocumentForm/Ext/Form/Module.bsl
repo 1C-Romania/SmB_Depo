@@ -5,9 +5,6 @@
 &AtClient
 Var LineCopyInventory;
 
-&AtClient
-Var UpdateSubordinatedInvoice;
-
 ////////////////////////////////////////////////////////////////////////////////
 // GENERAL PURPOSE PROCEDURES AND FUNCTIONS
 
@@ -522,23 +519,6 @@ Procedure UpdateColumnTotalAtClient(UpdateAllRows = False)
 	
 EndProcedure // UpdateColumnTotalAtClient()
 
-// Procedure of updating the invoices refs.
-//
-&AtServer
-Procedure UpdateRefsOfInvoicesAtServer(ChangeSubordinateInc)
-	
-	Document = FormAttributeToValue("Object");
-	Document.UpdateRefsOfInvoices();
-	ValueToFormAttribute(Document, "Object");
-	
-	If ChangeSubordinateInc Then
-		
-		SmallBusinessServer.ChangeSubordinateInvoice(Object.Ref, True);
-		
-	EndIf;
-	
-EndProcedure // UpdateRefsOfInvoicesAtServer()
-
 // Function returns the label text "Prices and currency".
 //
 &AtClientAtServerNoContext
@@ -549,59 +529,38 @@ Function GenerateLabelPricesAndCurrency(LabelStructure)
 	// Currency.
 	If LabelStructure.CurrencyTransactionsAccounting Then
 		If ValueIsFilled(LabelStructure.DocumentCurrency) Then
-			//===============================
-			//©# (Begin)	AlekS [2016-09-13]
-			//LabelText = NStr("en='%Currency%';ru='%Вал%'");
-			//LabelText = StrReplace(LabelText, "%Currency%", TrimAll(String(LabelStructure.DocumentCurrency)));
-			LabelText = TrimAll(String(LabelStructure.DocumentCurrency));
-			//©# (End)		AlekS [2016-09-13]
-			//===============================
+			LabelText = NStr("ru = '%Currency%'; en = '%Currency%'");
+			LabelText = StrReplace(LabelText, "%Currency%", TrimAll(String(LabelStructure.DocumentCurrency)));
 		EndIf;
 	EndIf;
 	
 	// Prices kind.
 	If ValueIsFilled(LabelStructure.PriceKind) Then
-		//===============================
-		//©# (Begin)	AlekS [2016-09-13]
-		//If IsBlankString(LabelText) Then
-		//	LabelText = LabelText + NStr("en='%PriceKind%';ru='%PriceKind%'");
-		//Else
-		//	LabelText = LabelText + NStr("en=' • %PriceKind%';ru=' • %ВидЦен%'");
-		//EndIf;
-		//LabelText = StrReplace(LabelText, "%PriceKind%", TrimAll(String(LabelStructure.PriceKind)));
-		LabelText = LabelText + " • " + TrimAll(String(LabelStructure.PriceKind));
-		//©# (End)		AlekS [2016-09-13]
-		//===============================
+		If IsBlankString(LabelText) Then
+			LabelText = LabelText + NStr("ru = '%PriceKind%'; en = '%PriceKind%'");
+		Else	
+			LabelText = LabelText + NStr("ru = ' • %PriceKind%'; en = ' • %PriceKind%'");
+		EndIf;	
+		LabelText = StrReplace(LabelText, "%PriceKind%", TrimAll(String(LabelStructure.PriceKind)));
 	EndIf;
 	
 	// VAT taxation.
 	If ValueIsFilled(LabelStructure.VATTaxation) Then
-		//If IsBlankString(LabelText) Then
-		//	LabelText = LabelText + NStr("en='%VATTaxation%';ru='%VATTaxation%'");
-		//Else
-		//	LabelText = LabelText + NStr("en=' • %VATTaxation%';ru=' • %НалогообложениеНДС%'");
-		//EndIf;
-		//LabelText = StrReplace(LabelText, "%VATTaxation%", TrimAll(String(LabelStructure.VATTaxation)));
-		LabelText = LabelText + " • " + TrimAll(String(LabelStructure.VATTaxation));
-		//©# (End)		AlekS [2016-09-13]
-		//===============================
+		If IsBlankString(LabelText) Then
+			LabelText = LabelText + NStr("ru = '%VATTaxation%'; en = '%VATTaxation%'");
+		Else
+			LabelText = LabelText + NStr("ru = ' • %VATTaxation%'; en = ' • %VATTaxation%'");
+		EndIf;	
+		LabelText = StrReplace(LabelText, "%VATTaxation%", TrimAll(String(LabelStructure.VATTaxation)));
 	EndIf;
 	
-	
-//===============================
-//©# (Begin)	AlekS [2016-09-13]
-//
-//  THIS FLAG HAS NO CHANCE TO BE SHOWED - need attention !   8-(
-//
-//©# (End)		AlekS [2016-09-13]
-//===============================
 	// Flag showing that amount includes VAT.
 	If IsBlankString(LabelText) Then	
 		If LabelStructure.AmountIncludesVAT Then	
-			LabelText = NStr("en='Amount includes VAT';ru='Сумма включает НДС'");
-		Else
-			LabelText = NStr("en='Amount does not include VAT';ru='Сумма не включает НДС'");
-		EndIf;
+			LabelText = NStr("ru = 'Сумма включает НДС'; en = 'Amount includes VAT'");
+		Else		
+			LabelText = NStr("ru = 'Сумма не включает НДС'; en = 'Amount does not include VAT'");
+		EndIf;	
 	EndIf;
 	
 	Return LabelText;
@@ -1152,30 +1111,6 @@ Procedure SetVisibleAndEnabled()
 	
 EndProcedure // SetVisibleAndEnabled()
 
-// Procedure sets the links of the selection parameters of the Invoice input field.
-//
-// Parameters:
-//  No.
-//
-&AtServer
-Procedure SetFilterMakeOutInvoicesConsolidated()
-	
-	If Object.MakeOutInvoicesCollective Then
-		NewArray = New Array();
-		NewConnection = New ChoiceParameterLink("Filter.Counterparty", "Object.Counterparty");
-		NewArray.Add(NewConnection);
-		NewConnections = New FixedArray(NewArray);
-		Items.CustomersInvoiceNote.ChoiceParameterLinks = NewConnections;
-	Else
-		NewArray = New Array();
-		NewConnection = New ChoiceParameterLink("Filter.Counterparty", "Items.Customers.CurrentData.Customer");
-		NewArray.Add(NewConnection);
-		NewConnections = New FixedArray(NewArray);
-		Items.CustomersInvoiceNote.ChoiceParameterLinks = NewConnections;
-	EndIf;
-	
-EndProcedure // SetFilterMakeOutInvoicesConsolidated()
-
 ////////////////////////////////////////////////////////////////////////////////
 // PROCEDURE - FORM EVENT HANDLERS
 
@@ -1246,12 +1181,6 @@ Procedure OnCreateAtServer(Cancel, StandardProcessing)
 	
 	Object.VATCommissionFeePercent = SubsidiaryCompany.DefaultVATRate;
 	
-	// Customer invoice notes for sold products and services
-	MakeOutInvoicesCollective = DocumentDate >= '20150101';
-	Items.MakeOutInvoicesCollective.Enabled = DocumentDate >= '20150101';
-	SetFilterMakeOutInvoicesConsolidated();
-	
-	SmallBusinessServer.SetTextAboutInvoice(ThisForm, True);
 	
 	// Setting contract visible.
 	SetContractVisible();
@@ -1293,15 +1222,6 @@ Procedure OnReadAtServer(CurrentObject)
 	ChangeProhibitionDates.ObjectOnReadAtServer(ThisForm, CurrentObject);
 	
 EndProcedure // OnReadAtServer()
-
-&AtClient
-//Procedure - event handler of the form BeforeWrite
-//
-Procedure BeforeWrite(Cancel, WriteParameters)
-	
-	UpdateSubordinatedInvoice = Modified;
-	
-EndProcedure
 
 // Procedure - event handler BeforeWriteAtServer form.
 //
@@ -1354,13 +1274,6 @@ Procedure AfterWrite(WriteParameters)
 	
 	Notify("NotificationAboutChangingDebt");
 	
-	// Do not ask the question, as it is the basic script for this document:
-	// - update the content of all invoice notes (either issued in PM or received document);
-	ChangeSubordinateInc = Not (InvoiceText = "Enter invoice note")
-		AND ?(NOT UpdateSubordinatedInvoice = Undefined, UpdateSubordinatedInvoice, False);
-
-	UpdateRefsOfInvoicesAtServer(ChangeSubordinateInc);
-	
 EndProcedure // AfterWrite()
 
 // Procedure - event handler OnOpen.
@@ -1373,7 +1286,7 @@ Procedure OnOpen(Cancel)
 	// Peripherals
 	EquipmentManagerClientOverridable.StartConnectingEquipmentOnFormOpen(ThisForm, "BarCodeScanner");
 	// End Peripherals
-
+	
 EndProcedure // OnOpen()
 
 // Procedure - event handler OnClose.
@@ -1412,13 +1325,7 @@ Procedure NotificationProcessing(EventName, Parameter, Source)
 	EndIf;
 	// End Peripherals
 	
-	If EventName = "RefreshOfTextAboutInvoiceReceived"
-		AND TypeOf(Parameter) = Type("Structure") 
-		AND Parameter.BasisDocument = Object.Ref Then
-		
-		InvoiceText = Parameter.Presentation;
-		
-	ElsIf EventName = "AfterRecordingOfCounterparty" 
+	If EventName = "AfterRecordingOfCounterparty" 
 		AND ValueIsFilled(Parameter)
 		AND Object.Counterparty = Parameter Then
 		
@@ -1450,11 +1357,7 @@ EndProcedure // NotificationProcessing()
 &AtClient
 Procedure ChoiceProcessing(ValueSelected, ChoiceSource)
 	
-	If ChoiceSource.FormName = "Document.SupplierInvoiceNote.Form.DocumentForm" Then
-		
-		InvoiceText = ValueSelected;
-		
-	ElsIf ChoiceSource.FormName = "Document.AgentReport.Form.PickFormByBalances" Then
+	If ChoiceSource.FormName = "Document.AgentReport.Form.PickFormByBalances" Then
 		
 		GetInventoryTransferredFromStorage(ValueSelected);
 		
@@ -1699,16 +1602,6 @@ EndProcedure
 
 // End Peripherals
 
-// Procedure - clicking handler on the hyperlink InvoiceText.
-//
-&AtClient
-Procedure InvoiceNoteTextClick(Item, StandardProcessing)
-	
-	StandardProcessing = False;
-	SmallBusinessClient.OpenInvoice(ThisForm, True);
-	
-EndProcedure
-
 ////////////////////////////////////////////////////////////////////////////////
 // PROCEDURE - EVENT HANDLERS OF HEADER ATTRIBUTES
 
@@ -1737,19 +1630,6 @@ Procedure DateOnChange(Item)
 		LabelStructure = New Structure("PriceKind, DocumentCurrency, SettlementsCurrency, ExchangeRate, RateNationalCurrency, AmountIncludesVAT, CurrencyTransactionsAccounting, VATTaxation", Object.PriceKind, Object.DocumentCurrency, SettlementsCurrency, Object.ExchangeRate, RateNationalCurrency, Object.AmountIncludesVAT, CurrencyTransactionsAccounting, Object.VATTaxation);
 		PricesAndCurrency = GenerateLabelPricesAndCurrency(LabelStructure);
 		
-		// Customer invoice notes for sold products and services
-		InvoiceConsolidated = Object.MakeOutInvoicesCollective;
-		If DocumentDate < '20150101' Then
-			Object.MakeOutInvoicesCollective = False;
-			Items.MakeOutInvoicesCollective.Enabled = False;
-		Else
-			Object.MakeOutInvoicesCollective = True;
-			Items.MakeOutInvoicesCollective.Enabled = True;
-		EndIf;
-		If InvoiceConsolidated <> Object.MakeOutInvoicesCollective Then
-			SetFilterMakeOutInvoicesConsolidated();
-		EndIf;
-		
 	EndIf;
 	
 EndProcedure // DateOnChange()
@@ -1775,15 +1655,6 @@ Procedure CompanyOnChange(Item)
 	ProcessContractChange();
 	
 EndProcedure // CompanyOnChange()
-
-// Procedure - event handler OnChange of the MakeOutInvoicesCollective input field.
-//
-&AtClient
-Procedure MakeOutInvoicesCollectiveOnChange(Item)
-	
-	SetFilterMakeOutInvoicesConsolidated();
-	
-EndProcedure
 
 // Procedure - event handler OnChange of the BrokerageCalculationMethod input field.
 //
@@ -2625,17 +2496,3 @@ EndProcedure
 // End StandardSubsystems.Printing
 
 #EndRegion
-
-
-
-
-
-
-
-
-
-
-
-
-
-

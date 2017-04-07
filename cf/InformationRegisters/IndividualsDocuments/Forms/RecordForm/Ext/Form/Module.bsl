@@ -1,21 +1,35 @@
-﻿////////////////////////////////////////////////////////////////////////////////
-// FORM HEADER ITEM EVENT HANDLERS
+﻿
+#Region FormEventsHandlers
+
+&AtClient
+Procedure AfterWrite(WriteParameters)
+	
+	Notify("ChangedIndividualDocument");
+	
+EndProcedure
+
+#EndRegion
+
+#Region FormItemsEventHadlers
 
 &AtClient
 Procedure DocumentKindOnChange(Item)
 	
-	If IsPersonID(Record.Ind, Record.DocumentKind, Record.Period) Then
+	If IsIdentityDocument(Record.Ind, Record.DocumentKind, Record.Period) Then
 		Record.IsIdentityDocument = True;
 	EndIf;
 	
 EndProcedure
 
-////////////////////////////////////////////////////////////////////////////////
-// SERVICE PROCEDURES AND FUNCTIONS
+#EndRegion
+
+#Region ServiceProceduresAndFunctions
 
 &AtServerNoContext
-Function IsPersonID(Ind, DocumentKind, Date)
+Function IsIdentityDocument(Ind, DocumentKind, Date)
 	
 	Return InformationRegisters.IndividualsDocuments.IsPersonID(Ind, DocumentKind, Date);
 	
 EndFunction
+
+#EndRegion

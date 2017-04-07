@@ -538,16 +538,3 @@ EndProcedure // UpdateAdditionalAttributeItems()
 // End StandardSubsystems.Properties
 
 #EndRegion
-
-
-
-
-
-
-
-
-
-
-
-
-

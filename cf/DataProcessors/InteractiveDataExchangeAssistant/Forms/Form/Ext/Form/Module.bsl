@@ -699,7 +699,7 @@ Procedure OpenNodeInformationExchangeDirectory()
 	Notification = New NotifyDescription("AfterWorksWithFilesExpansionCheck", ThisForm, AdditionalParameters);
 	
 	SuggestionText = NStr("en='To open a directory, you need to set an extension of working with files.';ru='Для открытия каталога необходимо необходимо установить расширение работы с файлами.'");
-	CommonUseClient.ShowQuestionAboutFileOperationsExtensionSetting(Notification, SuggestionText);
+	CommonUseClient.ShowFileSystemExtensionInstallationQuestion(Notification, SuggestionText);
 	
 EndProcedure
 
@@ -3211,7 +3211,6 @@ Procedure GenerateTreeSpeciesDocuments(ArraySelectedValues = Undefined)
 	AddLineTreeOfDocumentsKind(MetaDocuments.AcceptanceCertificate, UpperLevelRow);
 	AddLineTreeOfDocumentsKind(MetaDocuments.CustomerInvoice, UpperLevelRow);
 	AddLineTreeOfDocumentsKind(MetaDocuments.InvoiceForPayment, UpperLevelRow);
-	AddLineTreeOfDocumentsKind(MetaDocuments.CustomerInvoiceNote, UpperLevelRow);
 	AddLineTreeOfDocumentsKind(MetaDocuments.AgentReport, UpperLevelRow);
 	AddLineTreeOfDocumentsKind(MetaDocuments.RetailReport, UpperLevelRow);
 	AddLineTreeOfDocumentsKind(MetaDocuments.RetailRevaluation, UpperLevelRow);
@@ -3227,7 +3226,6 @@ Procedure GenerateTreeSpeciesDocuments(ArraySelectedValues = Undefined)
 	AddLineTreeOfDocumentsKind(MetaDocuments.InventoryReconciliation, UpperLevelRow);
 	AddLineTreeOfDocumentsKind(MetaDocuments.InventoryReceipt, UpperLevelRow);
 	AddLineTreeOfDocumentsKind(MetaDocuments.InventoryWriteOff, UpperLevelRow);
-	AddLineTreeOfDocumentsKind(MetaDocuments.SupplierInvoiceNote, UpperLevelRow);
 	
 	UpperLevelRow = FilterTree.Rows.Add();
 	UpperLevelRow.Presentation = "Service";
@@ -3316,17 +3314,3 @@ EndProcedure
 #EndRegion
 
 #EndRegion
-
-
-
-
-
-
-
-
-
-
-
-
-
-

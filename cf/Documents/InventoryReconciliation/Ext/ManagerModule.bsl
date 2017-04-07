@@ -95,7 +95,7 @@ Function PrintForm(ObjectsArray, PrintObjects, TemplateName)
 			EndIf;
 			
 			TemplateArea = Template.GetArea("PrintingTime");
-			TemplateArea.Parameters.PrintingTime = 	NStr("en='Date and time of printing: ';ru='Дата и время печати '") +
+			TemplateArea.Parameters.PrintingTime = 	NStr("en='Date and time of printing: ';ru='Дата и время печати: '") +
 													CurrentDate() + 
 													NStr("en='. User: ';ru='. Пользователь: '") + 
 													Users.CurrentUser();
@@ -179,10 +179,7 @@ Function PrintForm(ObjectsArray, PrintObjects, TemplateName)
 			
 			// Displaying invoice header
 			TemplateArea = Template.GetArea("Title");
-			TemplateArea.Parameters.HeaderText = NStr("en='Inventory survey No ';ru='Инвентаризация запасов № '") + 
-												 DocumentNumber + 
-												 NStr("en=' from ';ru=' от '") + 
-												 Format(Header.DocumentDate, "DLF=DD");
+			TemplateArea.Parameters.HeaderText = NStr("en='Inventory survey No ';ru='Инвентаризация запасов № '") + DocumentNumber + NStr("en=' from ';ru=' от '") + Format(Header.DocumentDate, "DLF=DD");
 			SpreadsheetDocument.Put(TemplateArea);
 			
 			// Output company and warehouse data
@@ -194,7 +191,7 @@ Function PrintForm(ObjectsArray, PrintObjects, TemplateName)
 			TemplateArea.Parameters.CompanyPresentation = CompanyPresentation;
 			
 			TemplateArea.Parameters.CurrencyName = String(PrintingCurrency);
-			TemplateArea.Parameters.Currency     = PrintingCurrency;
+			TemplateArea.Parameters.Currency             = PrintingCurrency;
 			SpreadsheetDocument.Put(TemplateArea);
 
 			// Output table header.
@@ -202,7 +199,7 @@ Function PrintForm(ObjectsArray, PrintObjects, TemplateName)
 			TemplateArea.Parameters.Fill(Header);
 			SpreadsheetDocument.Put(TemplateArea);
 			
-			TotalAmount        		= 0;
+			TotalAmount        = 0;
 			TotalAmountByAccounting = 0;
 
 			TemplateArea = Template.GetArea("String");
@@ -253,9 +250,13 @@ EndFunction // PrintForm()
 Procedure Print(ObjectsArray, PrintParameters, PrintFormsCollection, PrintObjects, OutputParameters) Export
 	
 	If PrintManagement.NeedToPrintTemplate(PrintFormsCollection, "MerchandiseFillingForm") Then
+		
 		PrintManagement.OutputSpreadsheetDocumentToCollection(PrintFormsCollection, "MerchandiseFillingForm", "Merchandise filling form", PrintForm(ObjectsArray, PrintObjects, "MerchandiseFillingForm"));
+		
 	ElsIf PrintManagement.NeedToPrintTemplate(PrintFormsCollection, "InventoryReconciliation") Then
+		
 		PrintManagement.OutputSpreadsheetDocumentToCollection(PrintFormsCollection, "InventoryReconciliation", "Inventory reconciliation", PrintForm(ObjectsArray, PrintObjects, "InventoryReconciliation"));
+		
 	EndIf;
 	
 	// parameters of sending printing forms by email

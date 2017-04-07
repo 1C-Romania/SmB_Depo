@@ -78,7 +78,7 @@ Procedure OnClose()
 	If Not SoftwareClosing
 		AND Not OnlineUserSupportClient.FormIsOpened(InteractionContext,
 			"DataProcessor.Connection1CTaxcom.Form.SubscriberPersonalArea") Then
-		// Close business-process on server by a user
+		// Close business process on server by a user
 		OnlineUserSupportClient.EndBusinessProcess(InteractionContext);
 	EndIf;
 	
@@ -382,17 +382,3 @@ Function MessageParametersToTechicalSupport()
 EndFunction
 
 #EndRegion
-
-
-
-
-
-
-
-
-
-
-
-
-
-

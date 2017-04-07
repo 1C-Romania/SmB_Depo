@@ -19,7 +19,7 @@ EndFunction // GetDataDateOnChange()
 Function GetCompanyDataOnChange(Company)
 	
 	StructureData = New Structure();
-	StructureData.Insert("Counterparty", SmallBusinessServer.GetCompany(Company));
+	StructureData.Insert("Company", SmallBusinessServer.GetCompany(Company));
 	
 	Return StructureData;
 	
@@ -99,8 +99,8 @@ Procedure FillTimesheet()
 	
 	Query = New Query;
 		
-	Query.SetParameter("Company", SubsidiaryCompany);
-	Query.SetParameter("Calendar", SubsidiaryCompany.BusinessCalendar);
+	Query.SetParameter("Company", Company);
+	Query.SetParameter("Calendar", Company.BusinessCalendar);
 	Query.SetParameter("StructuralUnit", Object.StructuralUnit);
 	Query.SetParameter("StartDate", Object.RegistrationPeriod);
 	Query.SetParameter("EndDate", EndOfMonth(Object.RegistrationPeriod));
@@ -342,7 +342,7 @@ Procedure OnCreateAtServer(Cancel, StandardProcessing)
 		DocumentDate = CurrentDate();
 	EndIf;
 	
-	Counterparty = SmallBusinessServer.GetCompany(Object.Company);
+	Company = SmallBusinessServer.GetCompany(Object.Company);
 	If Object.DataInputMethod = PredefinedValue("Enum.TimeDataInputMethods.TotalForPeriod") Then
 		Items.Pages.CurrentPage = Items.GroupWorkedTimeForPeriod;
 	Else	
@@ -507,8 +507,8 @@ Procedure CompanyOnChange(Item)
 
 	// Company change event data processor.
 	Object.Number = "";
-	StructureData = GetCompanyDataOnChange(Object.Company);
-	Counterparty = StructureData.Counterparty;
+	StructureData	= GetCompanyDataOnChange(Object.Company);
+	Company			= StructureData.Company;
 	
 EndProcedure // CompanyOnChange()
 
@@ -723,17 +723,3 @@ EndProcedure
 // End StandardSubsystems.Printing
 
 #EndRegion
-
-
-
-
-
-
-
-
-
-
-
-
-
-

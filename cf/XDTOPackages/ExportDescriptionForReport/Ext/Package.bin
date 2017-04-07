@@ -17,7 +17,6 @@
 	<valueType name="CTDType" base="xs:string" variety="Atomic" length="7">
 		<pattern>[0-9]{7}</pattern>
 	</valueType>
-	<valueType name="KPPType" base="xs:string" variety="Atomic" length="9"/>
 	<objectType name="FileData">
 		<property name="Name" lowerBound="1" form="Attribute">
 			<typeDef xsi:type="ValueType" base="xs:string" variety="Atomic" minLength="1" maxLength="200"/>
@@ -32,14 +31,12 @@
 			<typeDef xsi:type="ValueType" base="xs:string" variety="Atomic" minLength="1" maxLength="1000"/>
 		</property>
 		<property xmlns:d3p1="Import2Statements" name="TIN" type="d3p1:TINType" lowerBound="1" form="Attribute"/>
-		<property xmlns:d3p1="Import2Statements" name="KPP" type="d3p1:KPPType" lowerBound="0" form="Attribute"/>
 	</objectType>
 	<objectType name="Company">
 		<property name="Description" lowerBound="1" form="Attribute">
 			<typeDef xsi:type="ValueType" base="xs:string" variety="Atomic" minLength="1" maxLength="1000"/>
 		</property>
 		<property xmlns:d3p1="Import2Statements" name="TIN" type="d3p1:TINType" lowerBound="1" form="Attribute"/>
-		<property xmlns:d3p1="Import2Statements" name="KPP" type="d3p1:KPPType" lowerBound="0" form="Attribute"/>
 	</objectType>
 	<objectType name="File">
 		<property name="VersForm" lowerBound="1" form="Attribute">

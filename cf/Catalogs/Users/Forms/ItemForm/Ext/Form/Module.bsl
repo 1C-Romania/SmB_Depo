@@ -1187,14 +1187,14 @@ Procedure OverrideContactInformationEditingInService()
 	
 	ContactInformation = ThisObject.ContactInformationAdditionalAttributeInfo;
 	
-	StringEMail = ContactInformation.FindRows(New Structure("Kind", Catalogs["ContactInformationTypes"].UserEmail))[0];
+	StringEMail = ContactInformation.FindRows(New Structure("Kind", Catalogs["ContactInformationKinds"].UserEmail))[0];
 	ItemsEMail = Items[StringEMail.AttributeName];
 	ItemsEMail.SetAction("OnChange", "Attachable_OnEEmailAddressChange");
 	
 	ItemsEMail.ChoiceButton = True;
 	ItemsEMail.SetAction("StartChoice", "Attachable_EMailStartChoice");
 	
-	StringPhone = ContactInformation.FindRows(New Structure("Kind", Catalogs["ContactInformationTypes"].UserPhone))[0];
+	StringPhone = ContactInformation.FindRows(New Structure("Kind", Catalogs["ContactInformationKinds"].UserPhone))[0];
 	ItemPhone = Items[StringPhone.AttributeName];
 	ItemPhone.SetAction("OnChange", "Attachable_OnPhoneChange");
 	
@@ -1203,7 +1203,7 @@ EndProcedure
 &AtClientAtServerNoContext
 Function ContactInformationKindUserEmail()
 	
-	PredefinedValueName = "Catalog." + "ContactInformationTypes" + ".UserEmail";
+	PredefinedValueName = "Catalog." + "ContactInformationKinds" + ".UserEmail";
 	
 	Return PredefinedValue(PredefinedValueName);
 	
@@ -1642,17 +1642,3 @@ Procedure ProcessRolesInterface(Action, MainParameter = Undefined)
 EndProcedure
 
 #EndRegion
-
-
-
-
-
-
-
-
-
-
-
-
-
-

@@ -889,7 +889,7 @@ Procedure FillTextFillResultInformation(Form)
 	InformationalPicture = New Picture;
 	AvailableFillingPattern = False;
 	If Form.ManualEdit Then
-		InformationalText = NStr("en='Work schedule for the current year is changed manually. Click ""Populate from template"" to return to automatic filling.';ru='График работы на текущий год изменен вручную. Нажмите ""Заполнить по шаблону"" чтобы вернуться к автоматическому заполнению.'");
+		InformationalText = NStr("en='Work schedule for the current year is changed manually. Click ""Fill by template"" to return to automatic filling.';ru='График работы на текущий год изменен вручную. Нажмите ""Заполнить по шаблону"" чтобы вернуться к автоматическому заполнению.'");
 		InformationalPicture = PictureLib.Warning;
 		AvailableFillingPattern = True;
 	Else
@@ -899,7 +899,7 @@ Procedure FillTextFillResultInformation(Form)
 				InformationalPicture = PictureLib.Information;
 			EndIf;
 		Else
-			InformationalText = NStr("en='The displayed result does not match the template setting. Click ""Populate from template"" to see how the work schedule looks like with respect to the template modifications.';ru='Нажмите ""Заполнить по шаблону"", чтобы увидеть как выглядит график работы с учетом изменений шаблона.'");
+			InformationalText = NStr("en='The displayed result does not match the template setting. Click ""Fill by template"" to see how the work schedule looks like with respect to the template modifications.';ru='Нажмите ""Заполнить по шаблону"", чтобы увидеть как выглядит график работы с учетом изменений шаблона.'");
 			InformationalPicture = PictureLib.Warning;
 			AvailableFillingPattern = True;
 		EndIf;
@@ -956,17 +956,3 @@ Procedure CurrentYearNumberOnChangeEnd(Response, AdditionalParameters) Export
 EndProcedure
 
 #EndRegion
-
-
-
-
-
-
-
-
-
-
-
-
-
-

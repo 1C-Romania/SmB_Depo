@@ -416,11 +416,6 @@ Procedure OnAddHandlersOfServiceEvents(ClientHandlers, ServerHandlers) Export
 		CalendarSchedulesModule.OnAddHandlersOfServiceEvents(ClientHandlers, ServerHandlers);
 	EndIf;
 	
-	If CommonUse.SubsystemExists("StandardSubsystems.ContactInformation") Then
-		ModuleContactInformationManagementService = CommonUse.CommonModule("ContactInformationManagementService");
-		ModuleContactInformationManagementService.OnAddHandlersOfServiceEvents(ClientHandlers, ServerHandlers);
-	EndIf;
-	
 	If CommonUse.SubsystemExists("StandardSubsystems.UserReminders") Then
 		ModuleUserRemindersService = CommonUse.CommonModule("UserRemindersService");
 		ModuleUserRemindersService.OnAddHandlersOfServiceEvents(ClientHandlers, ServerHandlers);
@@ -608,11 +603,6 @@ Procedure OnAddHandlersOfServiceEvents(ClientHandlers, ServerHandlers) Export
 	If CommonUse.SubsystemExists("StandardSubsystems.DigitalSignature") Then
 		ModuleDigitalSignatureService = CommonUse.CommonModule("DigitalSignatureService");
 		ModuleDigitalSignatureService.OnAddHandlersOfServiceEvents(ClientHandlers, ServerHandlers);
-	EndIf;
-	
-	If CommonUse.SubsystemExists("StandardSubsystems.WorkWithCounterparties") Then
-		ModuleCheckCounterparties = CommonUse.CommonModule("CounterpartiesCheck");
-		ModuleCheckCounterparties.OnAddHandlersOfServiceEvents(ClientHandlers, ServerHandlers);
 	EndIf;
 	
 EndProcedure

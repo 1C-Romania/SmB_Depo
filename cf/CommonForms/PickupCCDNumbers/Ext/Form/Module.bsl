@@ -362,17 +362,3 @@ Procedure DecorationHelpClick(Item)
 	OpenForm("DataProcessor.ToolTipManager.Form.Form", ParametersToolTipManager);
 	
 EndProcedure // DecorationHelpClick()
-
-
-
-
-
-
-
-
-
-
-
-
-
-

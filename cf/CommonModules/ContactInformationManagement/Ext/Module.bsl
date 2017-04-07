@@ -1,150 +1,174 @@
 ﻿////////////////////////////////////////////////////////////////////////////////
-// The Contact information subsystem.
+// Contact information subsystem.
 //
 ////////////////////////////////////////////////////////////////////////////////
 
-#Region ProgramInterface
+#Region SubsystemsLibrary 
+
+#Region Interface
 
 ////////////////////////////////////////////////////////////////////////////////
-// Handlers of form events and object module.
+// Form event handlers, object module handlers.
 
-// Handler for the OnCreateAtServer form event.
-// Called from the CI object-owner form module while implementing subsystem.
+// OnCreateAtServer form event handler. 
+// It is called from the owner object form module when Contact information subsystem is embedded.
 //
 // Parameters:
-//    Form                - ManagedForm - Object-owner form is designed to output contact.
-//                           Information.
-//    Object               - Arbitrary - Object-owner of contact information.
-//    TitleLocationCI - FormItemTitleLocation - It can
-//                                                             take values FormItemTitleLocation.Left
-//                                                             or FormItemTitleLocation.Top (by default).
+//    Form                            - ManagedForm - owner object form used for contact information output. 
+//    Object                          - Arbitrary   - contact information owner object. 
+//    ContactInformationTitleLocation - FormItemTitleLocation - can take on the following values: 
+//                                      FormItemTitleLocation.Left and FormItemTitleLocation.Top (default value).
 //
-Procedure OnCreateAtServer(Form, Object, ItemNameForPlacement = "", TitleLocationCI = "",
-	Val ExcludedKinds = Undefined, DeferredInitialization = False) Export
+Procedure OnCreateAtServer(Form, Object, ItemForPlacementName = "", TitleLocationContactInformation = "") Export
 	
-	If ExcludedKinds = Undefined Then
-		ExcludedKinds = New Array;
-	EndIf;
+	String500 = New TypeDescription("String", , New StringQualifiers(500));
 	
-	ArrayOfAddedDetails = New Array;
-	CheckContactInformationAttributesPresence(Form, ArrayOfAddedDetails);
+	BooleanTypeDescription = New TypeDescription("Boolean");
+	AttributesToAddArray = New Array;
 	
-	// Get CI kinds list
+	// Creating a value table
+	DescriptionName = "ContactInformationAdditionalAttributeInfo";
+	AttributesToAddArray.Add(New FormAttribute(DescriptionName, New TypeDescription("ValueTable")));
+	AttributesToAddArray.Add(New FormAttribute("AttributeName", String500, DescriptionName));
+	AttributesToAddArray.Add(New FormAttribute("Kind", New TypeDescription("CatalogRef.ContactInformationKinds"), DescriptionName));
+	AttributesToAddArray.Add(New FormAttribute("Type", New TypeDescription("EnumRef.ContactInformationTypes"), DescriptionName));
+	AttributesToAddArray.Add(New FormAttribute("FieldValues", New TypeDescription("ValueList, String"), DescriptionName));
+	AttributesToAddArray.Add(New FormAttribute("Presentation", String500, DescriptionName));
+	AttributesToAddArray.Add(New FormAttribute("Comment", New TypeDescription("String"), DescriptionName));
+	AttributesToAddArray.Add(New FormAttribute("IsTabularSectionAttribute", BooleanTypeDescription, DescriptionName));
 	
-	ObjectReference = Object.Ref;
-	ObjectMetadata = ObjectReference.Metadata();
-	FullMetadataObjectName = ObjectMetadata.FullName();
-	NameCIKindsGroups = StrReplace(FullMetadataObjectName, ".", "");
-	CIKindsGroup = Catalogs.ContactInformationTypes[NameCIKindsGroups];
+	AddedItemsTableName = "AddedContactInformationItems";
+	AttributesToAddArray.Add(New FormAttribute(AddedItemsTableName, New TypeDescription("ValueTable")));
+	AttributesToAddArray.Add(New FormAttribute("ItemName", String500, AddedItemsTableName));
+	AttributesToAddArray.Add(New FormAttribute("Priority", New TypeDescription("Number"), AddedItemsTableName));
+	AttributesToAddArray.Add(New FormAttribute("IsCommand", BooleanTypeDescription, AddedItemsTableName));
+	AttributesToAddArray.Add(New FormAttribute("IsTabularSectionAttribute", BooleanTypeDescription, AddedItemsTableName));
+	
+	AttributesToAddArray.Add(New FormAttribute("AddedContactInformationItemList", New TypeDescription("ValueList")));
+	
+	AttributesToAddArray.Add(New FormAttribute("ContactInformationTitleLocation", String500));
+	AttributesToAddArray.Add(New FormAttribute("ContactInformationGroupForPlacement", String500));
+	
+	// Getting contact information kind list
+	
+	ObjectRef = Object.Ref;
+	ObjectMetadata = ObjectRef.Metadata();
+	MetadataObjectFullName = ObjectMetadata.FullName();
+	CIKindGroupName = StrReplace(MetadataObjectFullName, ".", "");
+	CIKindsGroup = Catalogs.ContactInformationKinds[CIKindGroupName];
 	ObjectName = ObjectMetadata.Name;
 	
-	If ObjectMetadata.TabularSections.ContactInformation.Attributes.Find("RowIdTableParts") = Undefined Then
-		DataRowIDOfTableParts = "0";
+	If ObjectMetadata.TabularSections.ContactInformation.Attributes.Find("TabularSectionRowID") = Undefined Then
+		TabularSectionRowIDData = "0";
 	Else
-		DataRowIDOfTableParts = "ISNULL(ContactInformation.TabularSectionRowID, 0)";
+		TabularSectionRowIDData = "ISNULL(ContactInformation.TabularSectionRowID, 0)";
 	EndIf;
 	
 	Query = New Query;
-	If ValueIsFilled(ObjectReference) Then
+	If ValueIsFilled(ObjectRef) Then
 		Query.Text ="
-		|SELECT
-		|	ContactInformationTypes.Ref                       AS Kind,
-		|	ContactInformationTypes.PredefinedDataName    AS PredefinedDataName,
-		|	ContactInformationTypes.Type                          AS Type,
-		|	ContactInformationTypes.RequiredFilling       AS RequiredFilling,
-		|	ContactInformationTypes.ToolTip                    AS ToolTip,
-		|	ContactInformationTypes.Description                 AS Description,
-		|	ContactInformationTypes.EditInDialogOnly AS EditInDialogOnly,
-		|	ContactInformationTypes.IsFolder                    AS ThisAttributeOfTabularSection,
-		|	ContactInformationTypes.AdditionalOrderingAttribute    AS AdditionalOrderingAttribute,
-		|	ISNULL(ContactInformation.Presentation, """")    AS Presentation,
-		|	ISNULL(ContactInformation.FieldsValues, """")    AS FieldsValues,
-		|	ISNULL(ContactInformation.LineNumber, 0)         AS LineNumber,
-		|	" + DataRowIDOfTableParts + "      AS RowID,
-		|	CAST("""""""" AS String(200))                    AS AttributeName,
-		|	CAST("""" AS String)                             AS Comment
-		|FROM
-		|	Catalog.ContactInformationTypes AS ContactInformationTypes
-		|LEFT JOIN 
-		|	" +  FullMetadataObjectName + ".ContactInformation AS ContactInformation
-		|ON ContactInformation.Ref = &Owner
-		|	AND ContactInformationTypes.Ref = ContactInformation.Kind
-		|WHERE
-		|	NOT ContactInformationTypes.DeletionMark 
-		|	AND (ContactInformationTypes.Parent = &CIKindsGroup
-		|	OR ContactInformationTypes.Parent.Parent = &CIKindsGroup) 
-		|ORDER BY ContactInformationTypes.Ref HIERARCHY
-		|";
-	Else
+			|SELECT
+			|	ContactInformationKinds.Ref                         AS Kind,
+			|	ContactInformationKinds.PredefinedDataName          AS PredefinedDataName,
+			|	ContactInformationKinds.Type                        AS Type,
+			|	ContactInformationKinds.Mandatory                   AS Mandatory,
+			|	ContactInformationKinds.ToolTip                     AS ToolTip,
+			|	ContactInformationKinds.Description                 AS Description,
+			|	ContactInformationKinds.Description                 AS Title,
+			|	ContactInformationKinds.EditInDialogOnly            AS EditInDialogOnly,
+			|	ContactInformationKinds.IsFolder                    AS IsTabularSectionAttribute,
+			|	ContactInformationKinds.AdditionalOrderingAttribute AS AdditionalOrderingAttribute,
+			|	ISNULL(ContactInformation.Presentation, """")       AS Presentation,
+			|	ISNULL(ContactInformation.FieldValues, """")        AS FieldValues,
+			|	ISNULL(ContactInformation.LineNumber, 0)            AS LineNumber,
+			|	" + TabularSectionRowIDData + "                     AS RowID,
+			|	CAST("""""""" AS STRING(200))                       AS AttributeName,
+			|	CAST("""" AS STRING)                                AS Comment
+			|FROM
+			|	Catalog.ContactInformationKinds AS ContactInformationKinds
+			|LEFT JOIN 
+			|	" +  MetadataObjectFullName + ".ContactInformation
+			|AS ContactInformation
+			|ON ContactInformation.Ref
+			|= &Owner AND
+			|ContactInformationKinds.Ref
+			|= ContactInformation.Kind
+			|WHERE NOT
+			|ContactInformationKinds.DeletionMark AND ( ContactInformationKinds.Parent
+			|= &CIKindsGroup OR
+			|ContactInformationKinds.Parent.Parent
+			|= &CIKindsGroup
+			|) ORDER BY ContactInformationKinds.Ref HIERARCHY
+			|";
+	Else 
 		Query.Text ="
-		|SELECT
-		|	ContactInformation.Presentation               AS Presentation,
-		|	ContactInformation.FieldsValues               AS FieldsValues,
-		|	ContactInformation.LineNumber                 AS LineNumber,
-		|	ContactInformation.Kind                         AS Kind,
-		|	" + DataRowIDOfTableParts + " AS RowIdTableParts
-		|INTO 
-		|	ContactInformation
-		|FROM
-		|	&TableContactInformation AS ContactInformation
-		|INDEX BY
-		|	Kind
-		|;////////////////////////////////////////////////////////////////////////////////
-		|
-		|SELECT
-		|	ContactInformationTypes.Ref                       AS Kind,
-		|	ContactInformationTypes.PredefinedDataName    AS PredefinedDataName,
-		|	ContactInformationTypes.Type                          AS Type,
-		|	ContactInformationTypes.RequiredFilling       AS RequiredFilling,
-		|	ContactInformationTypes.ToolTip                    AS ToolTip,
-		|	ContactInformationTypes.Description                 AS Description,
-		|	ContactInformationTypes.EditInDialogOnly AS EditInDialogOnly,
-		|	ContactInformationTypes.IsFolder                    AS ThisAttributeOfTabularSection,
-		|	ContactInformationTypes.AdditionalOrderingAttribute    AS AdditionalOrderingAttribute,
-		|	ISNULL(ContactInformation.Presentation, """")    AS Presentation,
-		|	ISNULL(ContactInformation.FieldsValues, """")    AS FieldsValues,
-		|	ISNULL(ContactInformation.LineNumber, 0)         AS LineNumber,
-		|	" + DataRowIDOfTableParts + "      AS RowID,
-		|	CAST("""""""" AS String(200))                    AS AttributeName,
-		|	CAST("""" AS String)                             AS Comment
-		|FROM
-		|	Catalog.ContactInformationTypes AS ContactInformationTypes
-		|LEFT JOIN 
-		|	ContactInformation AS ContactInformation
-		|ON 
-		|	ContactInformationTypes.Ref = ContactInformation.Kind
-		|WHERE
-		|	NOT ContactInformationTypes.DeletionMark
-		|	AND (
-		|		ContactInformationTypes.Parent = &CIKindsGroup 
-		|		OR ContactInformationTypes.Parent.Parent = &CIKindsGroup)
-		|ORDER BY
-		|	ContactInformationTypes.Ref HIERARCHY
-		|";
-		
-		Query.SetParameter("TableContactInformation", Object.ContactInformation.Unload());
+			|SELECT
+			|	ContactInformation.Presentation  AS Presentation,
+			|	ContactInformation.FieldValues   AS FieldValues,
+			|	ContactInformation.LineNumber    AS LineNumber,
+			|	ContactInformation.Kind          AS Kind,
+			|	" + TabularSectionRowIDData + "  AS TabularSectionRowID
+			|INTO 
+			|	ContactInformation
+			|FROM
+			|	&ContactInformationTable AS ContactInformation
+			|INDEX BY
+			|	Kind
+			|;////////////////////////////////////////////////////////////////////////////////
+			|
+			|SELECT
+			|	ContactInformationKinds.Ref                         AS Kind,
+			|	ContactInformationKinds.PredefinedDataName          AS PredefinedDataName,
+			|	ContactInformationKinds.Type                        AS Type,
+			|	ContactInformationKinds.Mandatory                   AS Mandatory,
+			|	ContactInformationKinds.ToolTip                     AS ToolTip,
+			|	ContactInformationKinds.Description                 AS Description,
+			|	ContactInformationKinds.Description                 AS Title,
+			|	ContactInformationKinds.EditInDialogOnly            AS EditInDialogOnly,
+			|	ContactInformationKinds.IsFolder                    AS IsTabularSectionAttribute,
+			|	ContactInformationKinds.AdditionalOrderingAttribute AS AdditionalOrderingAttribute,
+			|	ISNULL(ContactInformation.Presentation, """")       AS Presentation,
+			|	ISNULL(ContactInformation.FieldValues, """")        AS FieldValues,
+			|	ISNULL(ContactInformation.LineNumber, 0)            AS LineNumber,
+			|	" + TabularSectionRowIDData + "                     AS RowID,
+			|	CAST("""""""" AS STRING(200))                       AS AttributeName,
+			|	CAST("""" AS STRING)                                AS Comment
+			|FROM
+			|	Catalog.ContactInformationKinds AS ContactInformationKinds
+			|LEFT JOIN 
+			|	ContactInformation AS ContactInformation
+			|ON 
+			|	ContactInformationKinds.Ref = ContactInformation.Kind
+			|WHERE
+			|	Not ContactInformationKinds.DeletionMark
+			|	AND (
+			|		ContactInformationKinds.Parent = &CIKindsGroup 
+			|		OR ContactInformationKinds.Parent.Parent = &CIKindsGroup
+			|	)
+			|ORDER BY
+			|	ContactInformationKinds.Ref HIERARCHY
+			|";
+			
+		Query.SetParameter("ContactInformationTable", Object.ContactInformation.Unload());
 	EndIf;
 	
 	Query.SetParameter("CIKindsGroup", CIKindsGroup);
-	Query.SetParameter("Owner", ObjectReference);
+	Query.SetParameter("Owner", ObjectRef);
 	
 	SetPrivilegedMode(True);
 	ContactInformation = Query.Execute().Unload(QueryResultIteration.ByGroupsWithHierarchy).Rows;
 	SetPrivilegedMode(False);
 	
 	ContactInformation.Sort("AdditionalOrderingAttribute, LineNumber");
-	String500 = New TypeDescription("String", , New StringQualifiers(500));
-	
-	CreatedAttributes = CommonUseClientServer.CopyArray(ExcludedKinds);
 	
 	For Each ContactInformationObject In ContactInformation Do
 		
-		If ContactInformationObject.ThisAttributeOfTabularSection Then
+		If ContactInformationObject.IsTabularSectionAttribute Then
 			
-			NameKindKI = ContactInformationObject.PredefinedDataName;
-			Pos = Find(NameKindKI, ObjectName);
+			CIKindName = ContactInformationObject.PredefinedDataName;
+			Pos = Find(CIKindName, ObjectName);
 			
-			TabularSectionName = Mid(NameKindKI, Pos + StrLen(ObjectName));
+			TabularSectionName = Mid(CIKindName, Pos + StrLen(ObjectName));
 			
 			PreviousKind = Undefined;
 			AttributeName = "";
@@ -155,16 +179,16 @@ Procedure OnCreateAtServer(Form, Object, ItemNameForPlacement = "", TitleLocatio
 				
 				ContactInformationObject.Rows.Sort("AdditionalOrderingAttribute");
 				
-				CurrentKind = CIRow.Type;
+				CurrentKind = CIRow.Kind;
 				
 				If CurrentKind <> PreviousKind Then
 					
 					AttributeName = "ContactInformationField" + TabularSectionName + ContactInformationObject.Rows.IndexOf(CIRow);
 					
-					PathDetails = "Object." + TabularSectionName;
+					AttributesPath = "Object." + TabularSectionName;
 					
-					ArrayOfAddedDetails.Add(New FormAttribute(AttributeName, String500, PathDetails, CIRow.Description, True));
-					ArrayOfAddedDetails.Add(New FormAttribute(AttributeName + "FieldsValues", New TypeDescription("ValueList, String"), PathDetails,, True));
+					AttributesToAddArray.Add(New FormAttribute(AttributeName, String500, AttributesPath, CIRow.Title, True));
+					AttributesToAddArray.Add(New FormAttribute(AttributeName + "FieldValues", New TypeDescription("ValueList, String"), AttributesPath,, True));
 					PreviousKind = CurrentKind;
 					
 				EndIf;
@@ -174,95 +198,77 @@ Procedure OnCreateAtServer(Form, Object, ItemNameForPlacement = "", TitleLocatio
 			EndDo;
 			
 		Else
+			ContactInformationObject.AttributeName = "ContactInformationField" + ContactInformation.IndexOf(ContactInformationObject);
 			
-			IndexOf = CreatedAttributes.Find(ContactInformationObject.Type);
+			AttributesToAddArray.Add(New FormAttribute(ContactInformationObject.AttributeName, String500, , ContactInformationObject.Title, True));
 			
-			If IndexOf = Undefined Then
-				ContactInformationObject.AttributeName = "ContactInformationField" + ContactInformation.IndexOf(ContactInformationObject);
-				If Not DeferredInitialization Then
-					ArrayOfAddedDetails.Add(New FormAttribute(ContactInformationObject.AttributeName, String500, , ContactInformationObject.Description, True));
-				EndIf;
-			Else
-				ContactInformationObject.AttributeName = "ContactInformationField" + ContactInformationObject.PredefinedDataName;
-				CreatedAttributes.Delete(IndexOf);
-			EndIf;
-			
-			// If you detect recognition errors, do not interrupt generation.
+			// Proceeding regardless of any recognition errors
 			Try
-				ContactInformationObject.Comment = ContactInformationComment(ContactInformationObject.FieldsValues);
+				ContactInformationObject.Comment = ContactInformationInternal.ContactInformationComment(ContactInformationObject.FieldValues);
 			Except
-				WriteLogEvent(ContactInformationManagementService.EventLogMonitorEvent(),
-				EventLogLevel.Error, , ContactInformationObject.FieldsValues, 
-				DetailErrorDescription(ErrorInfo()));
+				WriteLogEvent(ContactInformationInternalCached.EventLogMessageText(),
+					EventLogLevel.Error, , ContactInformationObject.FieldValues, DetailErrorDescription(ErrorInfo())
+				);
 				CommonUseClientServer.MessageToUser(
-				NStr("en='Incorrect format of contact information.';ru='Некорректный формат контактной информации.'"), ,
-				ContactInformationObject.AttributeName);
+					NStr("ru = 'Ошибка анализа контактной информации, возможно из-за неверного формата поля.'; en = 'Contact information analysis error, possibly due to invalid field value format.'"), ,
+					ContactInformationObject.AttributeName);
 			EndTry;
 		EndIf;
 		
 	EndDo;
 	
-	// Add new attributes
-	If ArrayOfAddedDetails.Count() > 0 Then
-		Form.ChangeAttributes(ArrayOfAddedDetails);
-	EndIf;
+	// Adding new attributes
+	Form.ChangeAttributes(AttributesToAddArray);
 	
-	Form.ContactInformationParameters = New Structure;
-	Form.ContactInformationParameters.Insert("TitleLocation", String(TitleLocationCI));
-	Form.ContactInformationParameters.Insert("GroupForPosting", ItemNameForPlacement);
-	Form.ContactInformationParameters.Insert("AddedItemsList", New ValueList);
-	Form.ContactInformationParameters.Insert("AddedElements", New ValueList);
-	Form.ContactInformationParameters.Insert("ExcludedKinds", ExcludedKinds);
-	Form.ContactInformationParameters.Insert("DeferredInitialization", DeferredInitialization);
-	Form.ContactInformationParameters.Insert("ExecutedDeferredInitialization", False);
+	Form.ContactInformationTitleLocation = TitleLocationContactInformation;
+	Form.ContactInformationGroupForPlacement = ItemForPlacementName;
 	
 	PreviousKind = Undefined;
 	
 	Filter = New Structure("Type", Enums.ContactInformationTypes.Address);
-	QuantityAddresses = ContactInformation.FindRows(Filter).Count();
+	AddressCount = ContactInformation.FindRows(Filter).Count();
 	
-	// Create items on the form and fill in attribute values.
-	Parent = ?(IsBlankString(ItemNameForPlacement), Form, Form.Items[ItemNameForPlacement]);
+	// Creating form items, filling in the attribute values
+	Parent = ?(IsBlankString(ItemForPlacementName), Form, Form.Items[ItemForPlacementName]);
 	
-	// Creating groups for contact information.
-	CompositionGroup = VarGroup("CompositionGroupContactInformation",
+	// Creating groups for contact information
+	CompositionGroup = Group("ContactInformationCompositionGroup",
 	Form, Parent, ChildFormItemsGroup.Horizontal, 5);
-	TitlesGroup = VarGroup("GroupHeadersContactInformation",
+	HeaderGroup = Group("ContactInformationTitleGroup",
 	Form, CompositionGroup, ChildFormItemsGroup.Vertical, 4);
-	GroupInputFields = VarGroup("FieldsGroupEnteringContactInformation",
+	InputFieldGroup = Group("ContactInformationInputFieldGroup",
 	Form, CompositionGroup, ChildFormItemsGroup.Vertical, 4);
-	ActionsGroup = VarGroup("GroupActionsContactInformation",
+	ActionGroup = Group("ContactInformationActionGroup",
 	Form, CompositionGroup, ChildFormItemsGroup.Vertical, 4);
 	
-	TitleLeft = TitleLeft(Form, TitleLocationCI);
-	CraftedItems = CommonUseClientServer.CopyArray(ExcludedKinds);
+	TitleLeft = TitleLeft(Form, TitleLocationContactInformation);
 	
 	For Each CIRow In ContactInformation Do
 		
-		If CIRow.ThisAttributeOfTabularSection Then
+		If CIRow.IsTabularSectionAttribute Then
 			
-			NameKindKI = CommonUse.PredefinedName(CIRow.Type);
-			Pos = Find(NameKindKI, ObjectName);
+			CIKindName = CommonUse.PredefinedName(CIRow.Kind);
+			Pos = Find(CIKindName, ObjectName);
 			
-			TabularSectionName = Mid(NameKindKI, Pos + StrLen(ObjectName));
+			TabularSectionName = Mid(CIKindName, Pos + StrLen(ObjectName));
 			
-			PreviousTSKind = Undefined;
+			PreviousTabularSectionKind = Undefined;
 			
-			For Each RowOfTabularSectionKI In CIRow.Rows Do
+			For Each ContactInformationTabularSectionRow In CIRow.Rows Do
 				
-				KindOfTS = RowOfTabularSectionKI.Type;
+				TabularSectionKind = ContactInformationTabularSectionRow.Kind;
 				
-				If KindOfTS <> PreviousTSKind Then
+				If TabularSectionKind <> PreviousTabularSectionKind Then
 					
-					TabularSectionGroup = Form.Items[TabularSectionName + "GroupContactInformation"];
+					TabularSectionGroup = Form.Items[TabularSectionName + "ContactInformationGroup"];
 					
-					Item = Form.Items.Add(RowOfTabularSectionKI.AttributeName, Type("FormField"), TabularSectionGroup);
+					Item = Form.Items.Add(ContactInformationTabularSectionRow.AttributeName, Type("FormField"), TabularSectionGroup);
 					Item.Type = FormFieldType.InputField;
-					Item.DataPath = "Object." + TabularSectionName + "." + RowOfTabularSectionKI.AttributeName;
+					Item.DataPath = "Object." + TabularSectionName + "." + ContactInformationTabularSectionRow.AttributeName;
 					
-					If ForContactInformationTypeAvailableEditInDialog(RowOfTabularSectionKI.Type) Then
+					If CanEditContactInformationTypeInDialog(ContactInformationTabularSectionRow.Type) Then
 						Item.ChoiceButton = True;
-						If KindOfTS.EditInDialogOnly Then
+						If TabularSectionKind.EditInDialogOnly Then
 							Item.TextEdit = False;
 						EndIf;
 						
@@ -270,26 +276,26 @@ Procedure OnCreateAtServer(Form, Object, ItemNameForPlacement = "", TitleLocatio
 					EndIf;
 					Item.SetAction("OnChange", "Attachable_ContactInformationOnChange");
 					
-					If KindOfTS.RequiredFilling Then
+					If TabularSectionKind.Mandatory Then
 						Item.AutoMarkIncomplete = True;
 					EndIf;
 					
-					AddItemDescription(Form, RowOfTabularSectionKI.AttributeName, 2);
-					AddAttributeToDescription(Form, RowOfTabularSectionKI, False, True);
-					PreviousTSKind = KindOfTS;
+					AddItemDetails(Form, ContactInformationTabularSectionRow.AttributeName, 2, , True);
+					AddAttributeToDetails(Form, ContactInformationTabularSectionRow, False, True);
+					PreviousTabularSectionKind = TabularSectionKind;
 					
 				EndIf;
 				
 				Filter = New Structure;
-				Filter.Insert("RowIdTableParts", RowOfTabularSectionKI.RowID);
+				Filter.Insert("TabularSectionRowID", ContactInformationTabularSectionRow.RowID);
 				
 				TableRows = Form.Object[TabularSectionName].FindRows(Filter);
 				
 				If TableRows.Count() = 1 Then
 					
 					TableRow = TableRows[0];
-					TableRow[RowOfTabularSectionKI.AttributeName] = RowOfTabularSectionKI.Presentation;
-					TableRow[RowOfTabularSectionKI.AttributeName + "FieldsValues"] = RowOfTabularSectionKI.FieldsValues;
+					TableRow[ContactInformationTabularSectionRow.AttributeName] = ContactInformationTabularSectionRow.Presentation;
+					TableRow[ContactInformationTabularSectionRow.AttributeName + "FieldValues"] = ContactInformationTabularSectionRow.FieldValues;
 					
 				EndIf;
 				
@@ -299,166 +305,129 @@ Procedure OnCreateAtServer(Form, Object, ItemNameForPlacement = "", TitleLocatio
 			
 		EndIf;
 		
-		IsComment = ValueIsFilled(CIRow.Comment);
+		HasComment = ValueIsFilled(CIRow.Comment);
 		AttributeName = CIRow.AttributeName;
-		ItemIndex = CraftedItems.Find(CIRow.Kind);
-		StaticItem = ItemIndex <> Undefined;
 		
 		IsNewCIKind = (CIRow.Kind <> PreviousKind);
 		
-		If DeferredInitialization Then
+		// Adding the title
+		If TitleLeft Then
 			
-			AddAttributeToDescription(Form, CIRow, IsNewCIKind,, StaticItem);
-			If StaticItem Then
-				CraftedItems.Delete(ItemIndex);
-			EndIf;
-			Continue;
+			ItemTitle(Form, CIRow.Type, AttributeName, HeaderGroup, CIRow.Description, IsNewCIKind, HasComment);
 			
 		EndIf;
 		
-		If Not StaticItem Then
+		TextBox(Form, CIRow.EditInDialogOnly, CIRow.Type, AttributeName, CIRow.ToolTip, IsNewCIKind, CIRow.Mandatory);
+		
+		// Displaying the comment
+		If HasComment Then
 			
-			If TitleLeft Then
-				
-				TitleFunc(Form, CIRow.Type, AttributeName, TitlesGroup, CIRow.Description, IsNewCIKind, IsComment);
-				
-			EndIf;
-			
-			InputField(Form, CIRow.EditInDialogOnly, CIRow.Type, AttributeName, CIRow.ToolTip, IsNewCIKind, CIRow.RequiredFilling);
-			
-			// Output comment
-			If IsComment Then
-				
-				NameComments = "Comment" + AttributeName;
-				Comment(Form, CIRow.Comment, NameComments, GroupInputFields);
-				
-			EndIf;
-			
-			// Endcap if fields has title above.
-			If Not TitleLeft AND IsNewCIKind Then
-				
-				NameDecoration = "DecorationTop" + AttributeName;
-				Decoration = Form.Items.Add(NameDecoration, Type("FormDecoration"), ActionsGroup);
-				AddItemDescription(Form, NameDecoration, 2);
-				
-			EndIf;
-			
-			Action(Form, CIRow.Type, AttributeName, ActionsGroup, QuantityAddresses, IsComment);
-			
-		Else
-			
-			CraftedItems.Delete(ItemIndex);
+			CommentName = "Comment" + AttributeName;
+			Comment(Form, CIRow.Comment, CommentName, InputFieldGroup);
 			
 		EndIf;
 		
-		AddAttributeToDescription(Form, CIRow, IsNewCIKind);
+		// Using a placeholder if the field title is located at the top
+		If Not TitleLeft And IsNewCIKind Then
+			
+			DecorationName = "DecorationTop" + AttributeName;
+			Decoration = Form.Items.Add(DecorationName, Type("FormDecoration"), ActionGroup);
+			AddItemDetails(Form, DecorationName, 2);
+			
+		EndIf;
+		
+		Action(Form, CIRow.Type, AttributeName, ActionGroup, AddressCount, HasComment);
+		AddAttributeToDetails(Form, CIRow, IsNewCIKind);
 		
 		PreviousKind = CIRow.Kind;
 		
 	EndDo;
 	
-	If Not DeferredInitialization AND Form.ContactInformationParameters.AddedItemsList.Count() > 0 Then
+	If Form.AddedContactInformationItemList.Count() > 0 Then
 		
-		CommandGroup = VarGroup("GroupContactInformationAddFieldInput",
+		CommandGroup = Group("ContactInformationGroupAddInputField",
 		Form, Parent, ChildFormItemsGroup.Horizontal, 5);
 		CommandGroup.Representation = UsualGroupRepresentation.NormalSeparation;
 		
 		CommandName = "ContactInformationAddInputField";
 		Command = Form.Commands.Add(CommandName);
-		Command.ToolTip = NStr("en='Add additional field of the contact information';ru='Добавить дополнительное поле контактной информации'");
+		Command.ToolTip = NStr("ru = 'Добавить дополнительное поле контактной информации'; en = 'Add an additional contact information field'");
 		Command.Representation = ButtonRepresentation.PictureAndText;
 		Command.Picture = PictureLib.AddListItem;
 		Command.Action = "Attachable_ContactInformationExecuteCommand";
 		
-		AddItemDescription(Form, CommandName, 9, True);
+		AddItemDetails(Form, CommandName, 9, True);
 		
 		Button = Form.Items.Add(CommandName,Type("FormButton"), CommandGroup);
-		Button.Title = NStr("en='Add';ru='Добавить'");
+		Button.Title = NStr("ru = 'Добавить'; en = 'Add'");
 		Button.CommandName = CommandName;
-		AddItemDescription(Form, CommandName, 2);
+		AddItemDetails(Form, CommandName, 2);
 		
 	EndIf;
 	
 EndProcedure
 
-// Handler for the OnReadAtServer form event.
-// Called from the CI object-owner form module while implementing subsystem.
+// OnReadAtServer form event handler. 
+// It is called from the owner object form module when Contact information subsystem is embedded.
 //
 // Parameters:
-//    Form  - ManagedForm - Object-owner form designed to output contact information.
-//    Object - Arbitrary - Object-owner of contact information.
+//    Form   - ManagedForm - owner object form used for contact information output. 
+//    Object - Arbitrary   - contact information owner object.
 //
 Procedure OnReadAtServer(Form, Object) Export
 	
-	FormAttributesList = Form.GetAttributes();
+	FormAttributeList = Form.GetAttributes();
 	
-	FirstLaunch = True;
-	For Each Attribute In FormAttributesList Do
-		If Attribute.Name = "ContactInformationParameters" AND TypeOf(Form.ContactInformationParameters) = Type("Structure") Then
-			FirstLaunch = False;
+	Restart = False;
+	For Each Attribute In FormAttributeList Do
+		If Attribute.Name = "ContactInformationAdditionalAttributeInfo" Then
+			Restart = True;
 			Break;
 		EndIf;
 	EndDo;
 	
-	If FirstLaunch Then
-		Return;
-	EndIf;
-	
-	Parameters = Form.ContactInformationParameters;
-	
-	TitleLocationCI = Parameters.TitleLocation;
-	TitleLocationCI = ?(ValueIsFilled(TitleLocationCI), FormItemTitleLocation[TitleLocationCI], FormItemTitleLocation.Top);
-	
-	ItemNameForPlacement = Parameters.GroupForPosting;
-	
-	ExecutedDeferredInitialization = Parameters.ExecutedDeferredInitialization;
-	
-	DeleteCommandsAndFormItems(Form);
-	
-	ArrayOfDeletedDetails = New Array;
-	
-	ObjectName = Object.Ref.Metadata().Name;
-	
-	StaticAttributes = CommonUseClientServer.CopyArray(Parameters.ExcludedKinds);
-	
-	DeferredInitialization = Parameters.DeferredInitialization AND Not ExecutedDeferredInitialization;
-	
-	For Each FormAttribute In Form.ContactInformationAdditionalAttributeInfo Do
+	If Restart Then
 		
-		If FormAttribute.ThisAttributeOfTabularSection Then
-			
-			ArrayOfDeletedDetails.Add("Object." + TabularSectionNameByCI(FormAttribute.Type, ObjectName) + "." + FormAttribute.AttributeName);
-			ArrayOfDeletedDetails.Add("Object." + TabularSectionNameByCI(FormAttribute.Type, ObjectName) + "." + FormAttribute.AttributeName + "FieldsValues");
-			
-		Else
-			
-			IndexOf = StaticAttributes.Find(FormAttribute.Type);
-			
-			If IndexOf = Undefined Then // Attribute is created dynamically
-				If Not DeferredInitialization Then
-					ArrayOfDeletedDetails.Add(FormAttribute.AttributeName);
-				EndIf;
+		TitleLocationContactInformation = Form.ContactInformationTitleLocation;
+		TitleLocationContactInformation = ?(ValueIsFilled(TitleLocationContactInformation), FormItemTitleLocation[TitleLocationContactInformation], FormItemTitleLocation.Top);
+		
+		ItemForPlacementName = Form.ContactInformationGroupForPlacement;
+		
+		DeleteCommandsAndFormItems(Form);
+		
+		AttributesToDeleteArray = New Array;
+		
+		ObjectName = Object.Ref.Metadata().Name;
+		
+		For Each FormAttribute In Form.ContactInformationAdditionalAttributeInfo Do
+			If Not FormAttribute.IsTabularSectionAttribute Then
+				AttributesToDeleteArray.Add(FormAttribute.AttributeName);
 			Else
-				StaticAttributes.Delete(IndexOf);
+				AttributesToDeleteArray.Add("Object." + TabularSectionNameByCIKind(FormAttribute.Kind, ObjectName) + "." + FormAttribute.AttributeName);
+				AttributesToDeleteArray.Add("Object." + TabularSectionNameByCIKind(FormAttribute.Kind, ObjectName) + "." + FormAttribute.AttributeName + "FieldValues");
 			EndIf;
-			
-		EndIf;
-	EndDo;
-	
-	Form.ContactInformationAdditionalAttributeInfo.Clear();
-	Form.ChangeAttributes(, ArrayOfDeletedDetails);
-	
-	OnCreateAtServer(Form, Object, ItemNameForPlacement, TitleLocationCI, Parameters.ExcludedKinds, DeferredInitialization);
-	Parameters.ExecutedDeferredInitialization = ExecutedDeferredInitialization;
+		EndDo;
+		
+		AttributesToDeleteArray.Add("AddedContactInformationItems");
+		AttributesToDeleteArray.Add("AddedContactInformationItemList");
+		AttributesToDeleteArray.Add("ContactInformationTitleLocation");
+		AttributesToDeleteArray.Add("ContactInformationGroupForPlacement");
+		AttributesToDeleteArray.Add("ContactInformationAdditionalAttributeInfo");
+		
+		Form.ChangeAttributes(, AttributesToDeleteArray);
+		
+		OnCreateAtServer(Form, Object, ItemForPlacementName, TitleLocationContactInformation);
+		
+	EndIf;
 	
 EndProcedure
 
-// Handler for the AfterWriteOnServer form event.
-// Called from the CI object-owner form module while implementing subsystem.
+// AfterWriteAtServer form event handler. 
+// It is called from the owner object form module when Contact information subsystem is embedded.
 //
 // Parameters:
-//    Form  - ManagedForm - Object-owner form designed to output contact information.
-//    Object - Arbitrary - Object-owner of contact information.
+//    Form   - ManagedForm - owner object form used for contact information output. 
+//    Object - Arbitrary   - contact information owner object.
 //
 Procedure AfterWriteAtServer(Form, Object) Export
 	
@@ -466,25 +435,25 @@ Procedure AfterWriteAtServer(Form, Object) Export
 	
 	For Each TableRow In Form.ContactInformationAdditionalAttributeInfo Do
 		
-		If TableRow.ThisAttributeOfTabularSection Then
+		If TableRow.IsTabularSectionAttribute Then
 			
-			InformationKind = TableRow.Type;
+			InformationKind = TableRow.Kind;
 			AttributeName = TableRow.AttributeName;
-			TabularSectionName = TabularSectionNameByCI(InformationKind, ObjectName);
+			TabularSectionName = TabularSectionNameByCIKind(InformationKind, ObjectName);
 			FormTabularSection = Form.Object[TabularSectionName];
 			
-			For Each RowOfTabularSectionForms In FormTabularSection Do
+			For Each FormTabularSectionRow In FormTabularSection Do
 				
 				Filter = New Structure;
 				Filter.Insert("Kind", InformationKind);
-				Filter.Insert("RowIdTableParts", RowOfTabularSectionForms.RowIdTableParts);
-				FoundStrings = Object.ContactInformation.FindRows(Filter);
+				Filter.Insert("TabularSectionRowID", FormTabularSectionRow.TabularSectionRowID);
+				FoundRows = Object.ContactInformation.FindRows(Filter);
 				
-				If FoundStrings.Count() = 1 Then
+				If FoundRows.Count() = 1 Then
 					
-					CIRow = FoundStrings[0];
-					RowOfTabularSectionForms[AttributeName] = CIRow.Presentation;
-					RowOfTabularSectionForms[AttributeName + "FieldsValues"] = CIRow.FieldsValues;
+					CIRow = FoundRows[0];
+					FormTabularSectionRow[AttributeName] = CIRow.Presentation;
+					FormTabularSectionRow[AttributeName + "FieldValues"] = CIRow.FieldValues;
 					
 				EndIf;
 				
@@ -496,88 +465,85 @@ Procedure AfterWriteAtServer(Form, Object) Export
 	
 EndProcedure
 
-// Handler for the FillCheckProcessingAtServer form event.
-// Called from the CI object-owner form module while implementing subsystem.
+// FillCheckProcessingAtServer form event handler. 
+// It is called from the owner object form module when Contact information subsystem is embedded.
 //
 // Parameters:
-//    Form  - ManagedForm - Object-owner form designed to output contact information.
-//    Object - Arbitrary - Object-owner of contact information.
+//    Form   - ManagedForm - owner object form used for contact information output. 
+//    Object - Arbitrary   - contact information owner object.
 //
 Procedure FillCheckProcessingAtServer(Form, Object, Cancel) Export
 	
 	ObjectName = Object.Ref.Metadata().Name;
-	LevelErrors = 0;
+	ErrorLevel = 0;
 	PreviousKind = Undefined;
 	
 	For Each TableRow In Form.ContactInformationAdditionalAttributeInfo Do
 		
 		InformationKind = TableRow.Kind;
 		InformationType = TableRow.Type;
-		Comment   = TableRow.Comment;
-		AttributeName  = TableRow.AttributeName;
+		Comment         = TableRow.Comment;
+		AttributeName   = TableRow.AttributeName;
 		
-		RequiredFilling = InformationKind.RequiredFilling;
+		Mandatory = InformationKind.Mandatory;
 		
-		If TableRow.ThisAttributeOfTabularSection Then
+		If TableRow.IsTabularSectionAttribute Then
 			
-			TabularSectionName = TabularSectionNameByCI(InformationKind, ObjectName);
+			TabularSectionName = TabularSectionNameByCIKind(InformationKind, ObjectName);
 			FormTabularSection = Form.Object[TabularSectionName];
 			
-			For Each RowOfTabularSectionForms In FormTabularSection Do
+			For Each FormTabularSectionRow In FormTabularSection Do
 				
-				Presentation = RowOfTabularSectionForms[AttributeName];
-				Field = "Object." + TabularSectionName + "[" + (RowOfTabularSectionForms.LineNumber - 1) + "]." + AttributeName;
+				Presentation = FormTabularSectionRow[AttributeName];
+				Field = "Object." + TabularSectionName + "[" + (FormTabularSectionRow.LineNumber - 1) + "]." + AttributeName;
 				
-				If RequiredFilling AND IsBlankString(Presentation) Then
+				If Mandatory And IsBlankString(Presentation) Then
 					
-					MessageText = NStr("en='Field ""%1"" is not filled.';ru='Поле ""%1"" не заполнено.'");
+					MessageText = NStr("ru = 'Поле ""%1"" не заполнено.'; en = 'The %1 field is required.'");
 					MessageText = StringFunctionsClientServer.SubstituteParametersInString(MessageText, InformationKind.Description);
 					CommonUseClientServer.MessageToUser(MessageText,,Field);
-					CurrentLevelErrors = 2;
+					CurrentErrorLevel = 2;
 					
 				Else
 					
-					FieldsValues = RowOfTabularSectionForms[AttributeName + "FieldsValues"];
+					FieldValues = FormTabularSectionRow[AttributeName + "FieldValues"];
 					
-					CurrentLevelErrors = ValidateContactInformation(Presentation, FieldsValues, InformationKind,
+					CurrentErrorLevel = ValidateContactInformation(Presentation, FieldValues, InformationKind,
 					InformationType, AttributeName, , Field);
 					
-					RowOfTabularSectionForms[AttributeName] = Presentation;
-					RowOfTabularSectionForms[AttributeName + "FieldsValues"] = FieldsValues;
+					FormTabularSectionRow[AttributeName] = Presentation;
+					FormTabularSectionRow[AttributeName + "FieldValues"] = FieldValues;
 					
 				EndIf;
 				
-				LevelErrors = ?(CurrentLevelErrors > LevelErrors, CurrentLevelErrors, LevelErrors);
+				ErrorLevel = ?(CurrentErrorLevel > ErrorLevel, CurrentErrorLevel, ErrorLevel);
 				
 			EndDo;
 			
 		Else
 			
-			FormItem = Form.Items.Find(AttributeName);
-			If FormItem = Undefined Then
-				Continue; // Item was not created. Deferred initialization was not called.
-			EndIf;
-			
 			Presentation = Form[AttributeName];
 			
-			If InformationKind <> PreviousKind AND RequiredFilling AND IsBlankString(Presentation) 
-				// And there are no other strings with data for CI with multiple values.
-				AND Not HasOtherFilledThisKingCIRows(Form, TableRow, InformationKind)
+			If InformationKind <> PreviousKind And Mandatory And IsBlankString(Presentation) 
+				// And no other strings containing data for contact information kinds with multiple values
+				And Not HasOtherStringsFilledWithThisContactInformationKind(
+					Form, TableRow, InformationKind
+				)
 			Then
 				
-				MessageText = NStr("en='Field ""%1"" is not filled.';ru='Поле ""%1"" не заполнено.'");
+				MessageText = NStr("ru = 'Поле ""%1"" не заполнено.'; en = 'The %1 field is required.'");
 				MessageText = StringFunctionsClientServer.SubstituteParametersInString(MessageText, InformationKind.Description);
 				CommonUseClientServer.MessageToUser(MessageText,,,AttributeName);
-				CurrentLevelErrors = 2;
+				CurrentErrorLevel = 2;
 				
 			Else
 				
-				CurrentLevelErrors = ValidateContactInformation(Presentation, TableRow.FieldsValues,
+				CurrentErrorLevel = ValidateContactInformation(Presentation, TableRow.FieldValues,
 				InformationKind, InformationType, AttributeName, Comment);
 				
 			EndIf;
 			
-			LevelErrors = ?(CurrentLevelErrors > LevelErrors, CurrentLevelErrors, LevelErrors);
+			ErrorLevel = ?(CurrentErrorLevel > ErrorLevel, CurrentErrorLevel, ErrorLevel);
 			
 		EndIf;
 		
@@ -585,18 +551,18 @@ Procedure FillCheckProcessingAtServer(Form, Object, Cancel) Export
 		
 	EndDo;
 	
-	If LevelErrors <> 0 Then
+	If ErrorLevel <> 0 Then
 		Cancel = True;
 	EndIf;
 	
 EndProcedure
 
-// Handler for the BeforeWriteOnServer form event.
-// Called from the CI object-owner form module while implementing subsystem.
+// BeforeWriteAtServer form event handler. 
+// It is called from the owner object form module when Contact information subsystem is embedded.
 //
 // Parameters:
-//    Form  - ManagedForm - Object-owner form designed to output contact information.
-//    Object - Arbitrary - Object-owner of contact information.
+//    Form   - ManagedForm - owner object form used for contact information output. 
+//    Object - Arbitrary   - contact information owner object.
 //
 Procedure BeforeWriteAtServer(Form, Object, Cancel = False) Export
 	
@@ -608,30 +574,30 @@ Procedure BeforeWriteAtServer(Form, Object, Cancel = False) Export
 		
 		InformationKind = TableRow.Kind;
 		InformationType = TableRow.Type;
-		AttributeName  = TableRow.AttributeName;
-		RequiredFilling = InformationKind.RequiredFilling;
+		AttributeName   = TableRow.AttributeName;
+		Mandatory       = InformationKind.Mandatory;
 		
-		If TableRow.ThisAttributeOfTabularSection Then
+		If TableRow.IsTabularSectionAttribute Then
 			
-			TabularSectionName = TabularSectionNameByCI(InformationKind, ObjectName);
+			TabularSectionName = TabularSectionNameByCIKind(InformationKind, ObjectName);
 			FormTabularSection = Form.Object[TabularSectionName];
-			For Each RowOfTabularSectionForms In FormTabularSection Do
+			For Each FormTabularSectionRow In FormTabularSection Do
 				
-				RowID = RowOfTabularSectionForms.GetID();
-				RowOfTabularSectionForms.RowIdTableParts = RowID;
+				RowID = FormTabularSectionRow.GetID();
+				FormTabularSectionRow.TabularSectionRowID = RowID;
 				
-				TabularSectionRow = Object[TabularSectionName][RowOfTabularSectionForms.LineNumber - 1];
-				TabularSectionRow.RowIdTableParts = RowID;
+				TabularSectionRow = Object[TabularSectionName][FormTabularSectionRow.LineNumber - 1];
+				TabularSectionRow.TabularSectionRowID = RowID;
 				
-				FieldsValues = RowOfTabularSectionForms[AttributeName + "FieldsValues"];
+				FieldValues = FormTabularSectionRow[AttributeName + "FieldValues"];
 				
-				WriteContactInformation(Object, FieldsValues, InformationKind, InformationType, RowID);
+				WriteContactInformation(Object, FieldValues, InformationKind, InformationType, RowID);
 				
 			EndDo;
 			
 		Else
 			
-			WriteContactInformation(Object, TableRow.FieldsValues, InformationKind, InformationType);
+			WriteContactInformation(Object, TableRow.FieldValues, InformationKind, InformationType);
 			
 		EndIf;
 		
@@ -641,433 +607,504 @@ Procedure BeforeWriteAtServer(Form, Object, Cancel = False) Export
 	
 EndProcedure
 
-// Adds (deletes) input filed or comment to form while updating data.
-// Called from the CI object-owner form module while implementing subsystem.
+// Adds (or deletes) an input field or comment for the form, and updates form data. 
+// It is called from the owner object form module when Contact information subsystem is embedded.
 //
 // Parameters:
-//    Form     - ManagedForm - Object-owner form designed to output contact information.
-//    Object    - Arbitrary - Object-owner of contact information.
-//    Result - Arbitrary - Optional service attribute received from a previous event handler.
+//    Form   - ManagedForm - owner object form used for contact information output. 
+//    Object - Arbitrary   - contact information owner object.
+//    Result - Arbitrary   - optional internal attribute provided by the previous event handler.
 //
 // Returns:
-//    Undefined
+//    Undefined.
 //
-Function RefreshContactInformation(Form, Object, Result = Undefined) Export
+Function UpdateContactInformation(Form, Object, Result = Undefined) Export
 	
 	If Result = Undefined Then
 		Return Undefined;
 		
-	ElsIf Result.Property("IsAddingComment") Then
-		ChangeComment(Form, Result.AttributeName, Result.IsAddingComment);
+	ElsIf Result.Property("IsAddComment") Then
+		ModifyComment(Form, Result.AttributeName, Result.IsAddComment);
 		
 	ElsIf Result.Property("AddedKind") Then
-		AddLineContactInformation(Form, Result);
+		AddContactInformationString(Form, Result);
 		
 	EndIf;
 	
 	Return Undefined;
 EndFunction
 
-// Handler of the "FillingDataProcessor" event subscription.
-//
-Procedure FillingContactInformation(Source, FillingData, FillingText, StandardProcessing) Export
-	
-	ObjectContactInformationFillingDataProcessor(Source, FillingData);
-	
-EndProcedure
-
-// Handler of the "FillingDataProcessor" event subscription for documents.
-//
-Procedure DocumentContactInformationFillingDataProcessor(Source, FillingData, StandardProcessing) Export
-	
-	ObjectContactInformationFillingDataProcessor(Source, FillingData);
-	
-EndProcedure
-
-// Executes deferred initialization of attributes and contact information items
-//
-// Parameters:
-//    Form                - ManagedForm - Object-owner form is designed to output contact.
-//                           Information.
-//    Object               - Arbitrary - Object-owner of contact information.
-//
-Procedure ExecuteDeferredInitialization(Form, Object) Export
-	
-	ContactInformationAdditionalAttributeInfo = Form.ContactInformationAdditionalAttributeInfo.Unload(, "Kind, Presentation, FieldsValues, Comment");
-	Form.ContactInformationAdditionalAttributeInfo.Clear();
-	ItemNameForPlacement = Form.ContactInformationParameters.GroupForPosting;
-	TitleLocationCI = Form.ContactInformationParameters.TitleLocation;
-	TitleLocationCI = ?(ValueIsFilled(TitleLocationCI), FormItemTitleLocation[TitleLocationCI], FormItemTitleLocation.Top);
-	OnCreateAtServer(Form, Object, ItemNameForPlacement, TitleLocationCI, Form.ContactInformationParameters.ExcludedKinds);
-	
-	For Each ContactInformationKind In Form.ContactInformationParameters.ExcludedKinds Do
-		
-		Filter = New Structure("Kind", ContactInformationKind);
-		RowArray = Form.ContactInformationAdditionalAttributeInfo.FindRows(Filter);
-		
-		If RowArray.Count() > 0 Then
-			SavedValue = ContactInformationAdditionalAttributeInfo.FindRows(Filter)[0];
-			CurrentValue = RowArray[0];
-			FillPropertyValues(CurrentValue, SavedValue);
-			Form[CurrentValue.AttributeName] = SavedValue.Presentation;
-		EndIf;
-		
-	EndDo;
-	
-	If Form.Items.Find("EmptyDecorationContactInformation") <> Undefined
-		AND Form.Items.FieldsGroupEnteringContactInformation.ChildItems.Count() > 0 Then
-		Form.Items.EmptyDecorationContactInformation.Visible = False;
-	EndIf;
-	
-	Form.ContactInformationParameters.ExecutedDeferredInitialization = True;
-	
-EndProcedure
-
 ////////////////////////////////////////////////////////////////////////////////
-// Reading contact information with other subsystems.
+// Contact information accessibility for other subsystems.
 
-// Checks whether address corresponds to the address information requirements.
+// Checks a domestic address for compliance with address information requirements.
 //
 // Parameters:
-//   AddressInXML					 - String -  XML row of a contact information.
-//   CheckParameters	 - Structure, CatalogRef.ContactInformationTypes - check box of address check.
-//          AddressRussianOnly - Boolean - Address should be only Russian. By default is TRUE.
-//          AddressFormat - String - By which classifier to check "KLADR" or "FIAS". By default is "KLADR".
+//    AddressFieldStructure - Structure, ValueList, String - address information fields.
+//                             Structure and ValueList contain address field names and values,
+//                             String contains a single contact information XML string,
+//                             or multiple strings with field names and values.
+//
+//    ContactInformationKind - CatalogRef.ContactInformationKinds - contact information kind matching the address to be validated.
+//
 // Returns:
-//   Structure - contains structure with fields:
-//        * Result - String - Result Checks: "Correct", "NotChecked", "ContainsErrors".
-//        * ErrorList - ValueList - Error information.
-Function ValidateAddress(Val AddressInXML, CheckParameters = Undefined) Export
-	
-	Return ContactInformationManagementService.CheckAddressInXML(AddressInXML, CheckParameters);
+//    Array - contains a structure with the following fields:
+//        * ErrorType - String - Error ID. Available values:
+//                "PresentationNotMatchingFieldSet"
+//                "MandatoryFieldsNotFilled"
+//                "FieldAbbreviationsNotSpecified"
+//                "InvalidFieldCharacters"
+//                "FieldLengthsNotMatching"
+//                "ClassifierErrors"
+//        * Message - String - Detailed error text.
+//        * Fields - Array - contains structures with the following fields:
+//                ** FieldName - String - address structure item name.
+//                ** Message   - String - detailed error text for the field.
+//
+Function ValidateAddress(Val AddressFieldStructure, ContactInformationKind = Undefined) Export
+	Return ContactInformationInternal.AddressFillErrors(AddressFieldStructure, ContactInformationKind, True);
 EndFunction
 
-// It converts all incoming formats of contact information into XML.
+// Converts all incoming contact information formats to XML.
 //
 // Parameters:
-//    FieldsValues - String, Structure, Map, ValuesList - contact information fields description.
-//    Presentation - String  - presentation. Used if it is impossible to determine presentation from parameter.
-//                    FieldsValues (there is no "Presentation" field).
-//    ExpectedKind  - CatalogRef.ContactInformationTypes, EnumRef.ContactInformationTypes - 
-//                    Used to determine the type if it is impossible to find it by the FieldsValues field.
+//    FieldValues  - String, Structure, Map, ValueList - description of the contact information fields.
+//    Presentation - String - presentation. Used if unable to determine presentation based on the
+//                            FieldValues parameter (the Presentation field is not available).
+//    ExpectedKind - CatalogRef.ContactInformationKinds, EnumRef.ContactInformationTypes - Used if unable 
+//                            to determine type by the FieldValues field.
 //
 // Returns:
-//     String  - contact information XML data.
+//     String  - contact information XML string.
 //
-Function XMLContactInformation(Val FieldsValues, Val Presentation = "", Val ExpectedKind = Undefined) Export
+Function ContactInformationToXML(Val FieldValues, Val Presentation = "", Val ExpectedKind = Undefined) Export
 	
-	Result = ContactInformationManagementService.CastContactInformationXML(New Structure(
-		"FieldsValues, Presentation, ContactInformationKind",
-		FieldsValues, Presentation, ExpectedKind));
-	Return Result.DataXML;
+	Result = ContactInformationXML.TransformContactInformationXML(New Structure(
+		"FieldValues, Presentation, ContactInformationKind",
+		FieldValues, Presentation, ExpectedKind));
 	
+	Return Result.XMLData;
 EndFunction
 
-// Returns the corresponding ContactInformationTypes enumeration value by the XML row.
+// Returns ContactInformationTypes enumeration value by XML string.
 //
 // Parameters:
 //    XMLString - String - contact information.
 //
 // Returns:
-//    EnumRef.ContactInformationTypes - corresponding type.
+//    EnumRef.ContactInformationTypes - type matching the XML string.
 //
 Function ContactInformationType(Val XMLString) Export
-	Return ContactInformationManagementService.ContactInformationType(XMLString);
+	Return ContactInformationXML.ContactInformationType(XMLString);
 EndFunction
 
-// It parses  contact information presentation and returns XML string.
-// For mailing addresses correct parsing is not guaranteed.
-//
-//  Parameters:
-//      Presentation - String  - row contact information presentation displayed to a user.
-//      ExpectedKind  - CatalogRef.ContactInformationTypes, EnumRef.ContactInformationTypes, Structure
-//
-// Returns:
-//      String - contact information in XML.
-//
-Function PresentationXMLContactInformation(Presentation, ExpectedKind) Export
-	
-	Return ContactInformationManagementService.ContactInformationXDTOVXML(
-		ContactInformationManagementService.XDTOContactInformationByPresentation(Presentation, ExpectedKind));
-		
-EndFunction
-
-// Receives contact information presentation (address, phone, e-email etc.).
+// Reads or sets the contact information presentation.
 //
 // Parameters:
-//    XMLString               - XDTOObject, Row - object or contact information XML.
-//    ContactInformationKind - Structure - additional parameters of forming presentation for addresses:
-//      * IncludeCountriesToPresentation - Boolean - address country will be included to the presentation;
-//      * AddressFormat                 - String - If ADDRCLASS is specified, then district
-// and urban district are not included in the addresses presentation.
+//    XMLString - String - contact information XML string.
+//    NewValue  - String - value to be set.
 //
 // Returns:
-//    String - contact information presentation.
+//    String - new value.
 //
-Function PresentationContactInformation(Val XMLString, Val ContactInformationKind = Undefined) Export
-	
-	Return ContactInformationManagementService.PresentationContactInformation(XMLString, ContactInformationKind);
-	
+Function ContactInformationPresentation(XMLString, Val NewValue = Undefined) Export
+	Return ContactInformationInternal.ContactInformationPresentation(XMLString, NewValue);
 EndFunction
 
-// Receives comment for contact information.
+// Generates contact information presentation based on internal field values.
 //
 // Parameters:
-//   XMLString - XDTOObject, Row - object or contact information XML.
+//    XMLString              - String - contact information XML string.
+//    ContactInformationKind - CatalogRef.ContactInformationKinds, Structure - a set of flags
+//                             specifying presentation generation parameters.
 //
 // Returns:
-//   String
+//    String - generated presentation.
 //
-Function ContactInformationComment(XMLString) Export
+Function ContactInformationPresentationByFieldValues(Val XMLString, Val ContactInformationKind = Undefined) Export
 	
-	IsRow = TypeOf(XMLString) = Type("String");
-	If IsRow AND Not ContactInformationManagementClientServer.IsContactInformationInXML(XMLString) Then
-		// Previous field values format, no comment.
+	If ContactInformationKind = Undefined Then
+		Kind = ContactInformationKindStructure();
+		Kind.Type = ContactInformationXML.ContactInformationType(XMLString);
+	Else
+		Kind = ContactInformationKind;
+	EndIf;
+	
+	Return ContactInformationInternal.GenerateContactInformationPresentation(XMLString, Kind);
+EndFunction
+
+// Reads or sets a contact information comment.
+//
+// Parameters:
+//    XMLString - String - contact information XML string.
+//    NewValue  - String - value to be set.
+//
+// Returns:
+//    String - new value.
+//
+Function ContactInformationComment(XMLString, Val NewValue = Undefined) Export
+	Return ContactInformationInternal.ContactInformationComment(XMLString, NewValue);
+EndFunction
+
+// Reads or sets an address by document (for domestic addresses only). 
+// If the passed string does not contain domestic address information, raises an exception.
+//
+// Parameters:
+//    XMLString - String - contact information XML string.
+//    NewValue  - String - value to be set.
+//
+// Returns:
+//    String - new value.
+//
+Function AddressByContactInformationDocument(XMLString, Val NewValue = Undefined) Export
+	If IsBlankString(XMLString) Then
 		Return "";
 	EndIf;
 	
-	XDTODataObject = ?(IsRow, ContactInformationManagementService.ContactInformationFromXML(XMLString), XMLString);
-	Return XDTODataObject.Comment;
+	Namespace = ContactInformationClientServerCached.Namespace();
+	Read = New XMLReader;
+	Read.SetString(XMLString);
+	XDTOAddress = XDTOFactory.ReadXML(Read, XDTOFactory.Type(Namespace, "ContactInformation"));
+	AddressUS = ContactInformationInternal.HomeCountryAddress(XDTOAddress.Content);
+	If AddressUS = Undefined Then
+		Raise NStr("ru = 'Невозможно определить адрес, ожидается локальный адрес'; en = 'Cannot determine the address by document, expecting a domestic address'");
+	EndIf;
 	
+	If NewValue <> Undefined Then
+		AddressUS.Address_to_document = NewValue;
+		XMLString = ContactInformationInternal.ContactInformationSerialization(XDTOAddress);
+	EndIf;
+	
+	Return String(AddressUS.Address_to_document);
 EndFunction
 
-// Receives comment for contact information.
+// Returns the address country information.
+// If the passed string does not contain address information, raises an exception.
 //
 // Parameters:
-//   XMLString   - XDTOObject, Row - object or contact information XML. 
-//   Comment - String - comment new value.
-//
-//
-Procedure SetContactInformationComment(XMLString, Val Comment) Export
-	
-	IsRow = TypeOf(XMLString) = Type("String");
-	If IsRow AND Not ContactInformationManagementClientServer.IsContactInformationInXML(XMLString) Then
-		// Previous field values format, no comment.
-		Return;
-	EndIf;
-	
-	XDTODataObject = ?(IsRow, ContactInformationManagementService.ContactInformationFromXML(XMLString), XMLString);
-	XDTODataObject.Comment = Comment;
-	If IsRow Then
-		XMLString = ContactInformationManagementService.ContactInformationXDTOVXML(XDTODataObject);
-	EndIf;
-	
-EndProcedure
-
-// Returns information about the address country.
-// If the passed string contains no information about address, an exception will be thrown.
-//
-// Parameters:
-//    XMLString - String - Contact information XML.
+//    XMLString - String - contact information XML string.
 //
 // Returns:
-//    Structure - address country description. Contains fields:
-//        * Ref             - CatalogRef.WorldCountries, Undefined - world country corresponding item.
-//        * Description       - String - country description part.
-//        * Code                - String - country description part.
-//        * DescriptionFull - String - country description part.
-//        * CodeAlpha2          - String - country description part.
-//        * CodeAlpha3          - String - country description part.
+//    Structure - address country description. Contains the following fields:
+//        * Ref             - CatalogRef.WorldCountries, Undefined - world country item. 
+//        * Description     - String - a part of country description. 
+//        * Code            - String - a part of country description. 
+//        * LongDescription - String - a part of country description. 
+//        * AlphaCode2      - String - a part of country description. 
+//        * AlphaCode3      - String - a part of country description.
 //
-// If an empty string is passed, an empty string is returned.
-// If country is not found in catalog but found in the classifier, then the "Ref" field of the result is not filled in.
-// If country is not found both in address and the classifier, then only the "Name" field will be filled in.
+// If an empty string is passed, returns an empty structure.
+// If the country is found in the classifier but not found in the country catalog, 
+// the Ref field of the resulting structure is not filled. 
+// If the country is found neither in the classifier nor in the country catalog, 
+// only the Description field is filled.
 //
-Function CountryAddressesContactInformation(Val XMLString) Export
+Function ContactInformationAddressCountry(Val XMLString) Export
 	
-	Result = New Structure("Ref, Code, Description, DescriptionFull, AlphaCode2, AlphaCode3");
+	Result = New Structure("Ref, Code, Description, LongDescription, AlphaCode2, AlphaCode3");
 	If IsBlankString(XMLString) Then
 		Return Result;
 	EndIf;
 	
-	// Read country name
-	TargetNamespace = ContactInformationManagementClientServerReUse.TargetNamespace();
+	// Reading the country description
+	Namespace = ContactInformationClientServerCached.Namespace();
 	Read = New XMLReader;
 	Read.SetString(XMLString);
-	XDTOAddress = XDTOFactory.ReadXML(Read, XDTOFactory.Type(TargetNamespace, "ContactInformation"));
+	XDTOAddress = XDTOFactory.ReadXML(Read, XDTOFactory.Type(Namespace, "ContactInformation"));
 	Address = XDTOAddress.Content;
-	If Address = Undefined Or Address.Type() <> XDTOFactory.Type(TargetNamespace, "Address") Then
-		Raise NStr("en='Impossible to define the country, address is awaited.';ru='Невозможно определить страну, ожидается адрес.'");
+	If Address = Undefined Or Address.Type() <> XDTOFactory.Type(Namespace, "Address") Then
+		Raise NStr("ru = 'Невозможно определить страну, ожидается адрес.'; en = 'Cannot determine country, expecting an address.'");
 	EndIf;
 	
 	Result.Description = TrimAll(Address.Country);
-	CountryInformation = Catalogs.WorldCountries.WorldCountriesData(, Result.Description);
-	Return ?(CountryInformation = Undefined, Result, CountryInformation);
+	CountryData = Catalogs.WorldCountries.WorldCountryData(, Result.Description);
+	Return ?(CountryData = Undefined, Result, CountryData);
 EndFunction
 
-// Returns RF territorial entity name for address or an empty string if territorial entity is not defined.
-// If the passed string contains no information about address, an exception will be thrown.
+// Returns address state name or an empty string (if the state is undefined). 
+// If the passed string does not contain address information, raises an exception.
 //
 // Parameters:
-//    XMLString - String - Contact information XML.
+//    XMLString - String - contact information XML string.
 //
 // Returns:
-//    String - Description
+//    String - name.
 //
-Function AddressesStateContactInformation(Val XMLString) Export
-	
+Function ContactInformationAddressState(Val XMLString) Export
 	If IsBlankString(XMLString) Then
 		Return "";
 	EndIf;
 	
-	TargetNamespace = ContactInformationManagementClientServerReUse.TargetNamespace();
+	Namespace = ContactInformationClientServerCached.Namespace();
 	Read = New XMLReader;
 	Read.SetString(XMLString);
-	XDTOAddress = XDTOFactory.ReadXML(Read, XDTOFactory.Type(TargetNamespace, "ContactInformation"));
+	XDTOAddress = XDTOFactory.ReadXML(Read, XDTOFactory.Type(Namespace, "ContactInformation"));
 	Address = XDTOAddress.Content;
-	If Address = Undefined Or Address.Type() <> XDTOFactory.Type(TargetNamespace, "Address") Then
-		Raise NStr("en='Impossible to delete the RF subject, waiting for address.';ru='Невозможно определить субъекта РФ, ожидается адрес.'");
+	If Address = Undefined Or Address.Type() <> XDTOFactory.Type(Namespace, "Address") Then
+		Raise NStr("ru = 'Невозможно определить регион, ожидается адрес.'; en = 'Cannot determine state, expecting an address.'");
 	EndIf;
 	
-	AddressRF = ContactInformationManagementService.RussianAddress(Address);
-	Return ?(AddressRF = Undefined, "", TrimAll(AddressRF.RFTerritorialEntity));
-	
+	AddressUS = ContactInformationInternal.HomeCountryAddress(Address);
+	Return ?(AddressUS = Undefined, "", TrimAll(AddressUS.Region));
 EndFunction
 
-// Returns city name for RF address or an empty string for a foreign address.
-// If the passed string contains no information about address, an exception will be thrown.
+// Returns address city name or an empty string (for foreign addresses).
+// If the passed string does not contain address information, raises an exception.
 //
 // Parameters:
-//    XMLString - String - Contact information XML.
+//    XMLString - String - contact information XML string.
 //
 // Returns:
-//    String - Description
+//    String - name.
 //
-Function CityAddressContactInformation(Val XMLString) Export
-	
+Function ContactInformationAddressCity(Val XMLString) Export
 	If IsBlankString(XMLString) Then
 		Return "";
 	EndIf;
 	
-	TargetNamespace = ContactInformationManagementClientServerReUse.TargetNamespace();
+	Namespace = ContactInformationClientServerCached.Namespace();
 	Read = New XMLReader;
 	Read.SetString(XMLString);
-	XDTOAddress = XDTOFactory.ReadXML(Read, XDTOFactory.Type(TargetNamespace, "ContactInformation"));
+	XDTOAddress = XDTOFactory.ReadXML(Read, XDTOFactory.Type(Namespace, "ContactInformation"));
 	Address = XDTOAddress.Content;
-	If Address = Undefined Or Address.Type() <> XDTOFactory.Type(TargetNamespace, "Address") Then
-		Raise NStr("en='Impossible to define the city, address is awaited.';ru='Невозможно определить город, ожидается адрес.'");
+	If Address = Undefined Or Address.Type() <> XDTOFactory.Type(Namespace, "Address") Then
+		Raise NStr("ru = 'Невозможно определить город, ожидается адрес.'; en = 'Cannot determine city, expecting an address.'");
 	EndIf;
 	
-	AddressRF = ContactInformationManagementService.RussianAddress(Address);
-	Return ?(AddressRF = Undefined, "", TrimAll(AddressRF.City));
-	
+	AddressUS = ContactInformationInternal.HomeCountryAddress(Address);
+	Return ?(AddressUS = Undefined, "", TrimAll(AddressUS.City));
 EndFunction
 
-// Returns a domain of the network address for a web link or an email address.
+// Returns a network address domain for URLs or email addresses.
 //
 // Parameters:
-//    XMLString - String - Contact information XML.
+//    XMLString - String - contact information XML string.
 //
 // Returns:
-//    String - required value.
+//    String - network address domain.
 //
-Function DomainAddressContactInformation(Val XMLString) Export
+Function ContactInformationAddressDomain(Val XMLString) Export
 	If IsBlankString(XMLString) Then
 		Return "";
 	EndIf;
 	
-	TargetNamespace = ContactInformationManagementClientServerReUse.TargetNamespace();
+	Namespace = ContactInformationClientServerCached.Namespace();
 	Read = New XMLReader;
 	Read.SetString(XMLString);
-	XDTOAddress = XDTOFactory.ReadXML(Read, XDTOFactory.Type(TargetNamespace, "ContactInformation"));
+	XDTOAddress = XDTOFactory.ReadXML(Read, XDTOFactory.Type(Namespace, "ContactInformation"));
 	Content = XDTOAddress.Content;
 	If Content <> Undefined Then
 		Type = Content.Type();
-		If Type = XDTOFactory.Type(TargetNamespace, "WebSite") Then
-			DomainAddresses = TrimAll(Content.Value);
-			Position = Find(DomainAddresses, "://");
+		If Type = XDTOFactory.Type(Namespace, "Website") Then
+			AddressDomain = TrimAll(Content.Value);
+			Position = Find(AddressDomain, "://");
 			If Position > 0 Then
-				DomainAddresses = Mid(DomainAddresses, Position + 3);
+				AddressDomain = Mid(AddressDomain, Position + 3);
 			EndIf;
-			Position = Find(DomainAddresses, "/");
-			Return ?(Position = 0, DomainAddresses, Left(DomainAddresses, Position - 1));
+			Position = Find(AddressDomain, "/");
+			Return ?(Position = 0, AddressDomain, Left(AddressDomain, Position - 1));
 			
-		ElsIf Type = XDTOFactory.Type(TargetNamespace, "Email") Then
-			DomainAddresses = TrimAll(Content.Value);
-			Position = Find(DomainAddresses, "@");
-			Return ?(Position = 0, DomainAddresses, Mid(DomainAddresses, Position + 1));
+		ElsIf Type = XDTOFactory.Type(Namespace, "Email") Then
+			AddressDomain = TrimAll(Content.Value);
+			Position = Find(AddressDomain, "@");
+			Return ?(Position = 0, AddressDomain, Mid(AddressDomain, Position + 1));
 			
 		EndIf;
 	EndIf;
 	
-	Raise NStr("en='Impossible to determine the domain, waiting for email or web link';ru='Невозможно определить домен, ожидается электронная почта или веб-ссылка.'");	
+	Raise NStr("ru = 'Невозможно определить домен, ожидается электронная почта или веб-ссылка.'; en = 'Cannot determine domain, expecting an email address or URL.'");	
 EndFunction
 
-// Returns a string with the phone number without a code and additional number.
+// Returns a string containing a phone number without country code or extension.
 //
 // Parameters:
-//    XMLString - String - Contact information XML.
+//    XMLString - String - contact information XML string.
 //
 // Returns:
-//    String - required value.
+//    String - phone number.
 //
-Function PhoneNumberContactInformation(Val XMLString) Export
+Function ContactInformationPhoneNumber(Val XMLString) Export
 	If IsBlankString(XMLString) Then
 		Return "";
 	EndIf;
 	
-	TargetNamespace = ContactInformationManagementClientServerReUse.TargetNamespace();
+	Namespace = ContactInformationClientServerCached.Namespace();
 	Read = New XMLReader;
 	Read.SetString(XMLString);
-	XDTOAddress = XDTOFactory.ReadXML(Read, XDTOFactory.Type(TargetNamespace, "ContactInformation"));
+	XDTOAddress = XDTOFactory.ReadXML(Read, XDTOFactory.Type(Namespace, "ContactInformation"));
 	Content = XDTOAddress.Content;
 	If Content <> Undefined Then
 		Type = Content.Type();
-		If Type = XDTOFactory.Type(TargetNamespace, "PhoneNumber") Then
+		If Type = XDTOFactory.Type(Namespace, "PhoneNumber") Then
 			Return TrimAll(Content.Number);
 			
-		ElsIf Type = XDTOFactory.Type(TargetNamespace, "FaxNumber") Then
+		ElsIf Type = XDTOFactory.Type(Namespace, "FaxNumber") Then
 			Return TrimAll(Content.Number);
 			
 		EndIf;
 	EndIf;
 	
-	Raise NStr("en='Impossible to define the number, phone or fax is awaited.';ru='Невозможно определить номер, ожидается телефона или факс.'");
+	Raise NStr("ru = 'Невозможно определить номер, ожидается телефона или факс.'; en = 'Cannot determine number, expecting a phone or fax number.'");
 EndFunction
 
-// Compares two references of contact information.
+// Compares two sets of contact information.
 //
 // Parameters:
-//    Data1 - XDTOObject - object with a contact information.
-//            - String     - contact information in the XML format
-//            - Structure  - description contact information. Fields are expected:
-//                 * FieldValues - String, Structure, ValuesList, Map - contact information fields.
-//                 * Presentation - String - Presentation. It is used if you are
-// unable to compute presentation from FieldValues (the Presentation field is absent in them).
-//                 * Comment - String - comment. It is used in case it was
-//                                          impossible to compute a comment from FieldValues
-//                 * ContactInformationKind - CatalogRef.ContactInformationTypes, EnumRef.ContactInformationTypes,
-//                                             Structure It is used in case you did not manage to compute type from FieldValues.
-//    Data2 - XDTOObject, String, Structure - similarly Data1.
+//    Data1 - XTDOObject - object containing contact information.
+//          - String     - contact information in XML format.
+//          - Structure  - contact information description. The following fields are expected:
+//                 * FieldValues  - String, Structure, ValueList, Map - contact information fields.
+//                 * Presentation - String  - Presentation. Used when presentation cannot be extracted 
+//                                           from FieldValues (the Presentation field is not available).
+//                 * Comment      - String  - comment. Used when comment cannot be extracted from FieldValues.
+//                 * ContactInformationKind - CatalogRef.ContactInformationKinds,
+//                                            EnumRef.ContactInformationTypes, Structure.
+//                                            Used when type cannot be extracted from FieldValues.
+//    Data2 - XTDOObject, String, Structure - similar to Data1.
 //
 // Returns:
-//     ValuesTable: - table of different fields with the following columns:
-//        * Path      - String - XPath identifying a distinguished value. The
-//                               ContactInformationType value means that the sent instances of the contact information have different types.
-//        *Description  - String - description of the different attributes in terms of the subject area.
-//        * Value1 - String - value corresponding to the object passed in the Data1 parameter.
-//        * Value2 - String - value corresponding to the object passed in the Data2 parameters.
+//     ValueTable - table of differing fields, with the following columns:
+//        * Path    - String - XPath identifying the value difference. ContactInformationType value
+//                             specifies that the passed contact information sets have different types.
+//        * Details - String - description of the differing attribute in terms of application business logic.
+//        * Value1  - String - value matching the object passed in Data1 parameter.
+//        * Value2  - String - value matching the object passed in Data2 parameter.
 //
-Function DifferentContactInformation(Val Data1, Val Data2) Export
-	Return ContactInformationManagementService.DifferentContactInformation(Data1, Data2);
+Function ContactInformationDifferences(Val Data1, Val Data2) Export
+	Return ContactInformationXML.ContactInformationDifferences(Data1, Data2);
 EndFunction
 
-// Get value of contact information certain kind in the object.
+//  Transforms data from the new contact information XML format to the old format.
+//
+//  Parameters:
+//      Data            - String  - contact information XML string. 
+//      OldFieldContent - Boolean - optional flag specifying whether fields not available in SL versions 
+//                                  earlier than 2.1.3 should be excluded from the field content.
+//
+//  Returns:
+//      String - set of key-value pairs separated by line breaks.
+//
+Function PreviousContactInformationXMLFormat(Val Data, Val OldFieldContent = False) Export
+	
+	If ContactInformationClientServer.IsXMLContactInformation(Data) Then
+		OldFormat = ContactInformationInternal.ContactInformationToOldStructure(Data, OldFieldContent);
+		Return ContactInformationManagementClientServer.ConvertFieldListToString(
+			OldFormat.FieldValues, False);
+	EndIf;
+	
+	Return Data;
+EndFunction
+
+//  Transforms data from the new contact information XML format to the old format structure.
+//
+//  Parameters:
+//      Data                   - String - contact information XML string, or a set of key-value pairs.
+//      ContactInformationKind - CatalogRef.ContactInformationKinds, Structure - description of contact information parameters.
+//
+//  Returns:
+//      Structure - set of key-value pairs.
+//
+Function PreviousContactInformationXMLStructure(Val Data, Val ContactInformationKind = Undefined) Export
+	
+	If ContactInformationClientServer.IsXMLContactInformation(Data) Then
+		// New contact information format
+		Return ContactInformationManagementClientServer.FieldValueStructure(
+			PreviousContactInformationXMLFormat(Data));
+		
+	ElsIf IsBlankString(Data) And ContactInformationKind <> Undefined Then
+		// Generating contact information by kind
+		Return ContactInformationManagementClientServer.ContactInformationStructureByType(
+			ContactInformationKind.Type);
+		
+	EndIf;
+	
+	// Returning full structure for the selected kind, with filled fields
+	Return ContactInformationManagementClientServer.FieldValueStructure(Data, ContactInformationKind);
+EndFunction
+
+////////////////////////////////////////////////////////////////////////////////////////////////////
+
+// Looks up country data in country catalog or world country classifier.
 //
 // Parameters:
-//     Ref                  - AnyRef - ref to contact information
-//                                             object-owner (company, counterparty, partner etc).
-//     ContactInformationKind - CatalogRef.ContactInformationTypes - data processor parameters.
+//    CountryCode - String, Number - country code by country classifier. 
+//                                   If not specified, search by code is not performed.
+//    Description - String         - country description. If not specified, search by description is not performed.
 //
 // Returns:
-//     String - value row presentation.
+//    Structure - country description. Contains the following fields:
+//        * Ref             - CatalogRef.WorldCountries, Undefined - world country item. 
+//        * Description     - String - a part of country description.
+//        * Code            - String - a part of country description.
+//        * LongDescription - String - a part of country description.
+//        * AlphaCode2      - String - a part of country description.
+//        * AlphaCode3      - String - a part of country description.
+//    Undefined - the country is found neither in the catalog nor in the classifier.
+//
+Function WorldCountryData(Val CountryCode = Undefined, Val Description = Undefined) Export
+	Return Catalogs.WorldCountries.WorldCountryData(CountryCode, Description);
+EndFunction
+
+// Determines country data using country classifier.
+//
+// Parameters:
+//    CountryCode - String, Number - country code.
+//
+// Returns:
+//    Structure - country description. Contains the following fields:
+//        * Description     - String - a part of country description.
+//        * Code            - String - a part of country description.
+//        * LongDescription - String - a part of country description.
+//        * AlphaCode2      - String - a part of country description.
+//        * AlphaCode3      - String - a part of country description.
+//    Undefined - the country is not found in the classifier.
+//
+Function WorldCountryClassifierDataByCode(Val CountryCode) Export
+	Return Catalogs.WorldCountries.WorldCountryClassifierDataByCode(CountryCode);
+EndFunction
+
+// Determines country data using country classifier.
+//
+// Parameters:
+//    Description - String - country description.
+//
+// Returns:
+//    Structure - country description. Contains the following fields:
+//        * Description     - String - a part of country description.
+//        * Code            - String - a part of country description.
+//        * LongDescription - String - a part of country description.
+//        * AlphaCode2      - String - a part of country description.
+//        * AlphaCode3      - String - a part of country description.
+//    Undefined - the country is not found in the classifier.
+//
+Function WorldCountryClassifierDataByDescription(Val Description) Export
+	Return Catalogs.WorldCountries.WorldCountryClassifierDataByDescription(Description);
+EndFunction
+
+////////////////////////////////////////////////////////////////////////////////////////////////////
+
+// Obsolete. Use ObjectContactInformation instead.
+//
+Function GetObjectContactInformation(Ref, ContactInformationKind) Export
+	Return ObjectContactInformation(Ref, ContactInformationKind);
+EndFunction
+
+// Gets a value of a specified contact information kind from an object.
+//
+// Parameters
+//     Ref                    - AnyRef - reference to the contact information owner object 
+//                              (company, counterparty, partner, and so on). 
+//     ContactInformationKind - CatalogRef.ContactInformationKinds - contact information kind to be processed.
+//
+// Returns:
+//     String - value represented as a string.
 //
 Function ObjectContactInformation(Ref, ContactInformationKind) Export
 	
-	ObjectsArray = New Array;
-	ObjectsArray.Add(Ref);
+	ObjectArray = New Array;
+	ObjectArray.Add(Ref);
 	
-	ObjectContactInformation = ContactInformationOfObjects(ObjectsArray,, ContactInformationKind);
+	ObjectContactInformation = ObjectsContactInformation(ObjectArray,, ContactInformationKind);
 	
 	If ObjectContactInformation.Count() > 0 Then
 		Return ObjectContactInformation[0].Presentation;
@@ -1077,220 +1114,33 @@ Function ObjectContactInformation(Ref, ContactInformationKind) Export
 	
 EndFunction
 
-// Designed to create temporary table with contact information of several objects.
-//
-// Parameters:
-//    TempTablesManager - TempTablesManager - for generating.
-//    ObjectsArray - Array - contact information owners, all items should be of the same type.
-//    CITypes         - Array - optional, used if all types are not specified.
-//    CIKinds         - Array -  optional, used if all kinds are not specified.
-//
-// The TTContactInformation temporary table with fields is created in manager:
-//    * Object        - Ref - CI owner.
-//    * Kind           - CatalogRef.ContactInformationTypes
-//    * Type           - EnumRef.ContactInformationTypes
-//    * FieldValues - String - field values data.
-//    * Presentation - String - CI presentation.
-//
-Procedure CreateContactInformation(TempTablesManager, ObjectsArray, CITypes = Undefined, CIKinds = Undefined) Export
-	
-	If TypeOf(ObjectsArray) = Type("Array") AND ObjectsArray.Count() > 0 Then
-		Ref = ObjectsArray.Get(0);
-	Else
-		Raise NStr("en='Invalid value for the contact information owners array.';ru='Неверное значение для массива владельцев контактной информации.'");
-	EndIf;
-	
-	Query = New Query("
-		|SELECT ALLOWED
-		|	ContactInformation.Ref AS Object,
-		|	ContactInformation.Kind AS Kind,
-		|	ContactInformation.Type AS Type,
-		|	ContactInformation.FieldsValues AS FieldsValues,
-		|	ContactInformation.Presentation AS Presentation
-		|INTO TTContactInformation
-		|FROM
-		|	" + Ref.Metadata().FullName() + ".ContactInformation
-		|AS
-		|ContactInformation WHERE ContactInformation.Ref IN (&ObjectsArray)
-		|	" + ?(CITypes = Undefined, "", "And ContactInformation.Type IN (&CITypes)") + "
-		|	" + ?(CIKinds = Undefined, "", "And ContactInformation.Type IN (&CIKinds)") + "
-		|");
-	
-	Query.TempTablesManager = TempTablesManager;
-	
-	Query.SetParameter("ObjectsArray", ObjectsArray);
-	Query.SetParameter("CITypes", CITypes);
-	Query.SetParameter("CIKinds", CIKinds);
-	
-	Query.Execute();
-EndProcedure
-
-// Designed to get contact information for several objects.
-//
-// Parameters:
-//    ObjectsArray - Array - contact information owners, all items should be of the same type.
-//    CITypes         - Array - optional, used if all types are not specified.
-//    CIKinds         - Array -  optional, used if all kinds are not specified.
-//
-// Return
-//    value Values table - result. Columns:
-//        * Object        - Ref - CI owner.
-//        * Kind           - CatalogRef.ContactInformationTypes
-//        * Type           - EnumRef.ContactInformationTypes
-//        * FieldValues - String - field values data.
-//        * Presentation - String - CI presentation.
-//
-Function ContactInformationOfObjects(ObjectsArray, CITypes = Undefined, CIKinds = Undefined) Export
-	
-	Query = New Query;
-	Query.TempTablesManager = New TempTablesManager;
-	
-	CreateContactInformation(Query.TempTablesManager, ObjectsArray, CITypes, CIKinds);
-	
-	Query.Text =
-	"SELECT
-	|	ContactInformation.Object AS Object,
-	|	ContactInformation.Kind AS Kind,
-	|	ContactInformation.Type AS Type,
-	|	ContactInformation.FieldsValues AS FieldsValues,
-	|	ContactInformation.Presentation AS Presentation
-	|FROM
-	|	TTContactInformation AS ContactInformation";
-	
-	Return Query.Execute().Unload();
-	
-EndFunction
-
-// Fills in contact information in objects.
-//
-// Parameters:
-//    FillingData - ValueTable - describes objects for filling. Contains columns:
-//        * Receiver    - Arbitrary - ref or object where you should fill in CI.
-//        * KindCI       - CatalogRef.ContactInformationTypes  - contact information kind filled
-//                                                                     in in the receiver.
-//        * StructureCI - ValuesList, String, Structure - contact information fields of values data.
-//        * StringKey  - Structure - filter to search for a string in tabular section where Key - column name
-//                                    in the tabular section, Value - filter value.
-//
-Procedure FillContactInformationObjects(FillingData) Export
-	
-	PreviousReceiver = Undefined;
-	FillingData.Sort("Receiver, CIKind");
-	
-	For Each RowFill In FillingData Do
-		
-		Receiver = RowFill.Receiver;
-		If CommonUse.IsReference(TypeOf(Receiver)) Then
-			Receiver = Receiver.GetObject();
-		EndIf;
-		
-		If PreviousReceiver <> Undefined AND PreviousReceiver <> Receiver Then
-			If PreviousReceiver.Ref = Receiver.Ref Then
-				Receiver = PreviousReceiver;
-			Else
-				PreviousReceiver.Write();
-			EndIf;
-		EndIf;
-		
-		CIKind = RowFill.CIKind;
-		ReceiverObjectName = Receiver.Metadata().Name;
-		TabularSectionName = TabularSectionNameByCI(CIKind, ReceiverObjectName);
-		
-		If IsBlankString(TabularSectionName) Then
-			FillContactInformationTableParts(Receiver, CIKind, RowFill.CIStructure);
-		Else
-			If TypeOf(RowFill.RowKey) <> Type("Structure") Then
-				Continue;
-			EndIf;
-			
-			If RowFill.RowKey.Property("LineNumber") Then
-				LineCountTabularSection = Receiver[TabularSectionName].Count();
-				LineNumber = RowFill.RowKey.LineNumber;
-				If LineNumber > 0 AND LineNumber <= LineCountTabularSection Then
-					TabularSectionRow = Receiver[TabularSectionName][LineNumber - 1];
-					FillContactInformationTableParts(Receiver, CIKind, RowFill.CIStructure, TabularSectionRow);
-				EndIf;
-			Else
-				RowsOfTabularSection = Receiver[TabularSectionName].FindRows(RowFill.RowKey);
-				For Each TabularSectionRow In RowsOfTabularSection Do
-					FillContactInformationTableParts(Receiver, CIKind, RowFill.CIStructure, TabularSectionRow);
-				EndDo;
-			EndIf;
-		EndIf;
-		
-		PreviousReceiver = Receiver;
-		
-	EndDo;
-	
-	If PreviousReceiver <> Undefined Then
-		PreviousReceiver.Write();
-	EndIf;
-	
-EndProcedure
-
-// Fills in object contact information.
-//
-// Parameters:
-//    Receiver    - Arbitrary - ref or object where you should fill in CI.
-//    CIKind       - CatalogRef.ContactInformationTypes - contact information kind filled in in the receiver.
-//    CIStructure - Structure - contact information filled structure.
-//    RowKey  - Structure  - selection to search for a string in tabular section, Key - Column name in
-//                               the tabular section, value - filter value.
-//
-Procedure FillContactInformationObject(Receiver, CIKind, CIStructure, RowKey = Undefined) Export
-	
-	FillingData = New ValueTable;
-	FillingData.Columns.Add("Receiver");
-	FillingData.Columns.Add("CIKind");
-	FillingData.Columns.Add("CIStructure");
-	FillingData.Columns.Add("RowKey");
-	
-	RowFill = FillingData.Add();
-	RowFill.Receiver = Receiver;
-	RowFill.CIKind = CIKind;
-	RowFill.CIStructure = CIStructure;
-	RowFill.RowKey = RowKey;
-	
-	FillContactInformationObjects(FillingData);
-	
-EndProcedure
-
-// Outdated. You should use ObjectContactInformation.
-//
-Function GetObjectContactInformation(Ref, ContactInformationKind) Export
-	Return ObjectContactInformation(Ref, ContactInformationKind);
-EndFunction
-
-////////////////////////////////////////////////////////////////////////////////
-// Backward compatibility.
-
-//  Returns all contact information values of a definite kind for object-owner.
+//  Gets all values for a specified contact information kind from the owner object.
 //
 //  Parameters:
-//      Ref                  - AnyRef - ref to contact information
-//                                              object-owner (company, counterparty, partner etc).
-//      ContactInformationKind - CatalogRef.ContactInformationTypes - data processor parameters.
+//     Ref                    - AnyRef - reference to the contact information owner object 
+//                                      (company, counterparty, partner, and so on). 
+//     ContactInformationKind - CatalogRef.ContactInformationKinds - contact information kind to be processed.
 //
 //  Returns:
-//      Values table - information. Columns: 
-//          * LineNumber     - Number     - row number of the object-owner additional tabular section.
-//          * Presentation   - String    - CI presentation entered by a user.
-//          * FieldsStructure  - Structure - information data key-value pairs.
+//      Value table, with the following columns: 
+//          * LineNumber     - Number    - row number of the additional tabular section of the owner object.
+//          * Presentation   - String    - contact information presentation entered by user. 
+//          * FieldStructure - Structure - key-value information pairs.
 //
 Function ObjectContactInformationTable(Ref, ContactInformationKind) Export
 	
 	Query = New Query(StringFunctionsClientServer.SubstituteParametersInString("
 		|SELECT 
-		|	Data.RowIdTableParts AS LineNumber,
-		|	Data.Presentation                     AS Presentation,
-		|	Data.FieldsValues                     AS FieldsValues
+		|	Data.TabularSectionRowID AS LineNumber,
+		|	Data.Presentation                    AS Presentation,
+		|	Data.FieldValues                     AS FieldValues
 		|FROM
 		|	%1.ContactInformation AS Data
 		|WHERE
 		|	Data.Ref = &Ref
 		|	AND Data.Kind = &Kind
 		|ORDER BY
-		|	Data.RowIdTableParts
+		|	Data.TabularSectionRowID
 		|", Ref.Metadata().FullName()));
 	Query.SetParameter("Ref", Ref);
 	Query.SetParameter("Kind", ContactInformationKind);
@@ -1298,577 +1148,287 @@ Function ObjectContactInformationTable(Ref, ContactInformationKind) Export
 	Result = New ValueTable;
 	Result.Columns.Add("LineNumber");
 	Result.Columns.Add("Presentation");
-	Result.Columns.Add("FieldsStructure");
+	Result.Columns.Add("FieldStructure");
 	Result.Indexes.Add("LineNumber");
 	
 	Selection = Query.Execute().Select();
 	While Selection.Next() Do
 		DataRow = Result.Add();
 		FillPropertyValues(DataRow, Selection, "LineNumber, Presentation");
-		DataRow.FieldsStructure = PreviousStructureOfContactInformationXML(
-			Selection.FieldsValues, ContactInformationKind);
+		DataRow.FieldStructure = ContactInformationInternal.PreviousContactInformationXMLStructure(
+			Selection.FieldValues, ContactInformationKind);
 	EndDo;
 	
 	Return  Result;
 EndFunction
 
-
-// Converts XML format data to the previous format of contact information.
+// Creates a temporary table containing contact information for multiple objects
 //
 // Parameters:
-//    Data                 - String - Contact information XML.
-//    AbridgedFieldsContent - Boolean - if False, then fields will be excluded
-//                                      from the fields content that are absent in SSL versions less than 2.1.3.
+//    TempTablesManager       - TempTablesManager - for generation purposes. 
+//    ObjectArray             - Array - contact information owners (all items must have the same type). 
+//    ContactInformationTypes - Array - optional, used if some of the types are undefined.
+//    ContactInformationKinds - Array -  optional, used if some of the kinds are undefined.
 //
-// Returns:
-//    String  - key-value pairs set separated by a line break.
+// ContactInformationTemporaryTable is created in the temporary table manager. The table contains the following fields:
+//    * Object       - Ref - contact information owner.
+//    * Kind         - CatalogRef.ContactInformationKinds.
+//    * Type         - EnumRef.ContactInformationTypes.
+//    * FieldValues  - String - field value data. 
+//    * Presentation - String - contact information presentation.
 //
-Function PreviousFormatContactInformationXML(Val Data, Val AbridgedFieldsContent = False) Export
+Procedure CreateContactInformationTemporaryTable(TempTablesManager, ObjectArray, ContactInfoTypes = Undefined, CIKinds = Undefined) Export
 	
-	If ContactInformationManagementClientServer.IsContactInformationInXML(Data) Then
-		OldFormat = ContactInformationManagementService.ContactInformationInOldStructure(Data, AbridgedFieldsContent);
-		Return ContactInformationManagementClientServer.ConvertFieldListToString(
-			OldFormat.FieldsValues, False);
+	If TypeOf(ObjectArray) = Type("Array") And ObjectArray.Count() > 0 Then
+		Ref = ObjectArray.Get(0);
+	Else
+		Raise NStr("ru = 'Неверное значение для массива владельцев контактной информации.'; en = 'Invalid value in the contact information owner data array.'");
 	EndIf;
 	
-	Return Data;
-EndFunction
+	Query = New Query("
+		|SELECT ALLOWED
+		|	ContactInformation.Ref  AS Object,
+		|	ContactInformation.Kind AS Kind,
+		|	ContactInformation.Type AS Type,
+		|	ContactInformation.FieldValues AS FieldValues,
+		|	ContactInformation.Presentation AS Presentation
+		|INTO ContactInformationTemporaryTable
+		|FROM
+		|	" + Ref.Metadata().FullName() + ".ContactInformation
+		|AS
+		|ContactInformation WHERE ContactInformation.Ref IN (&ObjectArray)
+		|	" + ?(ContactInfoTypes = Undefined, "", "AND ContactInformation.Type IN (&ContactInfoTypes)") + "
+		|	" + ?(CIKinds = Undefined, "", "AND ContactInformation.Kind IN (&CIKinds)") + "
+		|");
+	
+	Query.TempTablesManager = TempTablesManager;
+	
+	Query.SetParameter("ObjectArray", ObjectArray);
+	Query.SetParameter("ContactInfoTypes", ContactInfoTypes);
+	Query.SetParameter("CIKinds", CIKinds);
+	
+	Query.Execute();
+EndProcedure
 
-// Converts XML new format data of contact information to the old format structure.
+// Gets contact information for multiple objects.
 //
 // Parameters:
-//   Data                  - String - XML of contact information or key-value pair.
-//   ContactInformationKind - CatalogRef.ContactInformationTypes, Structure - contact information parameters. 
+//    ObjectArray             - Array - contact information owners (all items must have the same type).
+//    ContactInformationTypes - Array - optional, used if some of the types are undefined. 
+//    ContactInformationKinds - Array - optional, used if some of the kinds are undefined.
 //
-// Returns:
-//   Structure - key-value pairs set. Properties content for address:
-//        ** Country           - String - text presentation of a country.
-//        ** CountryCode        - String - country code by OKSM.
-//        ** Index           - String - postal code (only for RF addresses).
-//        ** State           - String - text presentation of the RF territorial entity (only for RF addresses).
-//        ** StateCode       - String - RF territorial entity code (only for RF addresses).
-//        ** StateAbbr - String - abbr region (if FieldsOldContent = False).
-//        ** Region            - String - text presentation of a region (only for RF addresses).
-//        ** RegionAbbr  - String - abbr district (if FieldsOldContent = False).
-//        ** City            - String - text presentation of a city (only for RF addresses).
-//        ** CityAbbreviation  - String - city abbreviation (only for RF addresses).
-//        ** Settlement  - String - text presentation of the locality (only for RF addresses).
-//        ** SettlementAbbreviation - String - abbr inhabited locality (if FieldsOldContent = False).
-//        ** Street            - String - street text presentation (only for RF addresses).
-//        ** StreetAbbreviation  - String - abbr streets (if FieldsOldContent = False).
-//        ** HouseType          - String - cm. TypesOfAddressingAddressesRF().
-//        ** House              - String - text presentation of a house (only for RF addresses).
-//        ** HouseType       - String - cm. TypesOfAddressingAddressesRF().
-//        ** Block           - String - text presentation of a block (only for RF addresses).
-//        ** ApartmentType      - String - cm. TypesOfAddressingAddressesRF().
-//        ** Apartment         - String - text presentation of an apartment (only for RF addresses).
-//       Properties content for phone:
-//        ** CountryCode        - String - code Countries. ForExample, +7.
-//        ** CityCode        - String - city code. For example, 495.
-//        ** PhoneNumber    - String - phone number.
-//        ** Supplementary       - String - additional phone number.
+// Returns
+//    Value table - result. Columns:
+//        * Object       - Ref - contact information owner.
+//        * Kind         - CatalogRef.ContactInformationKinds.
+//        * Type         - EnumRef.ContactInformationTypes.
+//        * FieldValues  - String - field value data.
+//        * Presentation - String - contact information presentation.
 //
-Function PreviousStructureOfContactInformationXML(Val Data, Val ContactInformationKind = Undefined) Export
-	
-	If ContactInformationManagementClientServer.IsContactInformationInXML(Data) Then
-		// CI new format
-		Return ContactInformationManagementClientServer.FieldValuesStructure(
-			PreviousFormatContactInformationXML(Data));
-		
-	ElsIf IsBlankString(Data) AND ContactInformationKind <> Undefined Then
-		// Generate by kind
-		Return ContactInformationManagementClientServer.StructureContactInformationByType(
-			ContactInformationKind.Type);
-		
-	EndIf;
-	
-	// Return full string for this kind with the filled in fields.
-	Return ContactInformationManagementClientServer.FieldValuesStructure(Data, ContactInformationKind);
-EndFunction
-
-////////////////////////////////////////////////////////////////////////////////////////////////////
-
-// Determines country data by the countries list or by OKSM classifier.
-//
-// Parameters:
-//    CountryCode    - String, Number - OKSM country code. If it is not specified, then search by code is not executed.
-//    Description - String - Country name. If it is not specified, then search by name is not executed.
-//
-// Returns:
-//    Structure - country description. Contains fields:
-//        * Ref             - CatalogRef.WorldCountries, Undefined - world country corresponding item.
-//        * Description       - String - country description part.
-//        * Code                - String - country description part.
-//        * DescriptionFull - String - country description part.
-//        * CodeAlpha2          - String - country description part.
-//        * CodeAlpha3          - String - country description part.
-//    Undefined - country is not found both in the address and the classifier.
-//
-Function WorldCountriesData(Val CountryCode = Undefined, Val Description = Undefined) Export
-	Return Catalogs.WorldCountries.WorldCountriesData(CountryCode, Description);
-EndFunction
-
-// Specifies country data by OKSM classifier.
-//
-// Parameters:
-//    CountryCode - String, Number - country code.
-//
-// Returns:
-//    Structure - country description. Contains fields:
-//        * Description       - String - country description part.
-//        * Code                - String - country description part.
-//        * DescriptionFull - String - country description part.
-//        * CodeAlpha2          - String - country description part.
-//        * CodeAlpha3          - String - country description part.
-//    Undefined - country is not found in the classifier.
-//
-Function ClassifierDataOfWorldCountriesByCode(Val CountryCode) Export
-	Return Catalogs.WorldCountries.ClassifierDataOfWorldCountriesByCode(CountryCode);
-EndFunction
-
-// Specifies country data by OKSM classifier.
-//
-// Parameters:
-//    Description - String - country name.
-//
-// Returns:
-//    Structure - country description. Contains fields:
-//        * Description       - String - country description part.
-//        * Code                - String - country description part.
-//        * DescriptionFull - String - country description part.
-//        * CodeAlpha2          - String - country description part.
-//        * CodeAlpha3          - String - country description part.
-//    Undefined - country is not found in the classifier.
-//
-Function WorldCountriesClassifierDataByName(Val Description) Export
-	Return Catalogs.WorldCountries.WorldCountriesClassifierDataByName(Description);
-EndFunction
-
-////////////////////////////////////////////////////////////////////////////////
-// Info base update.
-
-// Receive values of the contact information definite type in the object.
-//
-// Parameters
-//    Ref                  - AnyRef - ref to object-owner of contact information (company, counterparty,
-//    partner etc) ContactInformationType - EnumRef.ContactInformationTypes
-//
-// Returns:
-//    ValueTable - columns 
-//        * Value - string - value row
-//        presentation * Kind      - string - contact information kind presentation
-//
-Function ObjectContactInformationValues(Ref, ContactInformationType) Export
-	
-	ObjectsArray = New Array;
-	ObjectsArray.Add(Ref);
-	
-	ObjectContactInformation = ContactInformationOfObjects(ObjectsArray, ContactInformationType);
+Function ObjectsContactInformation(ObjectArray, ContactInfoTypes = Undefined, CIKinds = Undefined) Export
 	
 	Query = New Query;
+	Query.TempTablesManager = New TempTablesManager;
 	
-	Query.SetParameter("ObjectContactInformation", ObjectContactInformation);
+	CreateContactInformationTemporaryTable(Query.TempTablesManager, ObjectArray, ContactInfoTypes, CIKinds);
 	
 	Query.Text =
 	"SELECT
-	|	ObjectContactInformation.Presentation,
-	|	ObjectContactInformation.Kind
-	|INTO TTContactInformationObject
+	|	ContactInformation.Object AS Object,
+	|	ContactInformation.Kind   AS Kind,
+	|	ContactInformation.Type   AS Type,
+	|	ContactInformation.FieldValues  AS FieldValues,
+	|	ContactInformation.Presentation AS Presentation
 	|FROM
-	|	&ObjectContactInformation AS ObjectContactInformation
-	|;
-	|
-	|////////////////////////////////////////////////////////////////////////////////
-	|SELECT
-	|	ObjectContactInformation.Presentation AS Value,
-	|	PRESENTATION(ObjectContactInformation.Kind) AS Kind
-	|FROM
-	|	TTContactInformationObject AS ObjectContactInformation";
+	|	ContactInformationTemporaryTable AS ContactInformation";
 	
 	Return Query.Execute().Unload();
 	
 EndFunction
 
-
-// Sets contact information kind properties.
-// 
+// Fills in contact information for multiple objects.
+//
 // Parameters:
-//    Parameters - Structure - See description in the ContactInformationKindParameters function
-// 
-Procedure SetPropertiesContactInformationKind(Parameters) Export
+//    FillingData - ValueTable - describes objects to be filled in. Contains the following columns:
+//        * Target      - Arbitrary - reference or object whose contact information must be filled in.
+//        * CIKind      - CatalogRef.ContactInformationKinds  - contact information kind filled in the target.
+//        * CIStructure - ValueList, String, Structure - contact information field value data.
+//        * RowKey      - Structure - filter used to search the tabular section for a row
+//                        where Key is the name of a tabular section column, and Value is the filter value.
+//
+Procedure FillObjectsContactInformation(FillingData) Export
 	
-	If TypeOf(Parameters.Kind) = Type("String") Then
-		Object = Catalogs.ContactInformationTypes[Parameters.Kind].GetObject();
-	Else
-		Object = Parameters.Kind.GetObject();
-	EndIf;
+	PreviousTarget = Undefined;
+	FillingData.Sort("Target, CIKind");
 	
-	Object.Type                                  = Parameters.Type;
-	Object.ToolTip                            = Parameters.ToolTip;
-	Object.EditMethodEditable    = Parameters.EditMethodEditable;
-	Object.EditInDialogOnly         = Parameters.EditInDialogOnly;
-	Object.RequiredFilling               = Parameters.RequiredFilling;
-	Object.AllowInputOfMultipleValues      = Parameters.AllowInputOfMultipleValues;
-	Object.DisableEditByUser = Parameters.DisableEditByUser;
-	
-	VerificationSettings = Parameters.VerificationSettings;
-	CheckSettings = TypeOf(VerificationSettings) = Type("Structure");
-	ParametersError   = NStr("en='Address verification settings are filled incorrectly';ru='Некорректно заполнены настройки проверки адреса'");
-	
-	If CheckSettings AND Parameters.Type = Enums.ContactInformationTypes.Address Then
-		If VerificationSettings.AddressRussianOnly Then
-			If Not VerificationSettings.CheckCorrectness Then
-				If VerificationSettings.ProhibitEntryOfIncorrect Then
-					Raise ParametersError;
+	For Each FillString In FillingData Do
+		
+		Target = FillString.Target;
+		If CommonUse.IsReference(TypeOf(Target)) Then
+			Target = Target.GetObject();
+		EndIf;
+		
+		If PreviousTarget <> Undefined And PreviousTarget <> Target Then
+			If PreviousTarget.Ref = Target.Ref Then
+				Target = PreviousTarget;
+			Else
+				PreviousTarget.Write();
+			EndIf;
+		EndIf;
+		
+		CIKind = FillString.CIKind;
+		TargetObjectName = Target.Metadata().Name;
+		TabularSectionName = TabularSectionNameByCIKind(CIKind, TargetObjectName);
+		
+		If IsBlankString(TabularSectionName) Then
+			FillTabularSectionContactInformation(Target, CIKind, FillString.CIStructure);
+		Else
+			If TypeOf(FillString.RowKey) <> Type("Structure") Then
+				Continue;
+			EndIf;
+			
+			If FillString.RowKey.Property("LineNumber") Then
+				TabularSectionLineCount = Target[TabularSectionName].Count();
+				LineNumber = FillString.RowKey.LineNumber;
+				If LineNumber > 0 And LineNumber <= TabularSectionLineCount Then
+					TabularSectionRow = Target[TabularSectionName][LineNumber - 1];
+					FillTabularSectionContactInformation(Target, CIKind, FillString.CIStructure, TabularSectionRow);
 				EndIf;
 			Else
-				// See note
-				If Not VerificationSettings.ProhibitEntryOfIncorrect Then
-					Raise ParametersError;
-				EndIf;
-			EndIf;
-			
-		Else
-			If VerificationSettings.CheckCorrectness Or VerificationSettings.ProhibitEntryOfIncorrect Or VerificationSettings.HideObsoleteAddresses Then
-				Raise ParametersError;
-			EndIf;
-			
-		EndIf;
-		
-		FillPropertyValues(Object, VerificationSettings);
-		
-	ElsIf CheckSettings AND Parameters.Type = Enums.ContactInformationTypes.EmailAddress Then
-		If Not VerificationSettings.CheckCorrectness Then
-			If VerificationSettings.ProhibitEntryOfIncorrect Then
-				Raise ParametersError;
-			EndIf;
-		Else
-			// See note
-			If Not VerificationSettings.ProhibitEntryOfIncorrect Then
-				Raise ParametersError;
+				TabularSectionRows = Target[TabularSectionName].FindRows(FillString.RowKey);
+				For Each TabularSectionRow In TabularSectionRows Do
+					FillTabularSectionContactInformation(Target, CIKind, FillString.CIStructure, TabularSectionRow);
+				EndDo;
 			EndIf;
 		EndIf;
-		SetCheckAttributesValue(Object, VerificationSettings);
 		
-	Else
-		SetCheckAttributesValue(Object);
+		PreviousTarget = Target;
 		
-	EndIf;
+	EndDo;
 	
-	If Parameters.Order <> Undefined Then
-		Object.AdditionalOrderingAttribute = Parameters.Order;
-	EndIf;
-	
-	InfobaseUpdate.WriteData(Object);
-	
-EndProcedure
-
-// Returns parameters structure of contact information kind for a definite type
-// 
-// Parameters:
-//    Type - EnumRef.ContactInformationTypes, String - contact information type
-//                                                                for the CheckSettings property filling
-// 
-// Returns:
-//    Structure - contains structure with fields:
-//        * Kind - CatalogRef.ContactInformationTypes, String   - Ref to the contact
-//                                                                      information kind or the predefined item ID.
-//        * Type - EnumRef.ContactInformationTypes - Contact information type
-//                                                                      or its identifier.
-//        * Tooltip - String                                        - Tooltip to the contact information kind.
-//        * Order - Number, Undefined                             - Contact information kind order,
-//                                                                      position in list relatively to the other items:
-//                                                                          Undefined - not reassign;
-//                                                                          0            - assign automatically;
-//                                                                          Number > 0    - assign specified order.
-//        * CanChangeEditingMethod - Boolean                - True if there is an
-//                                                                      opportunity to change editing method only in the dialog, False - else.
-//        * EditOnlyInDialog - Boolean                     - True if you edit only
-//                                                                      in the dialog, False - else.
-//        * RequiredFilling                                    - Boolean - True if mandatory
-//                                                                      field filling is required, False - else.
-//        * AllowSeveralValuesOutput - Boolean                  - Shows that it
-//                                                                      is possible to use additional input fields for the specified kind.
-//        * DisableEditByUser - Boolean             - Shows that
-//                                                                      user editing of contact
-//                                                                      information kind property is unavailable.
-//        * CheckSettings - Structure, Undefined               - Settings of the contact information kind check.
-//            For the Address type - Structure containing fields:
-//                * AddressRussianOnly        - Boolean - True if only Russian addresses are used, False -
-//                                                          else.
-//                * CheckCorrectness        - Boolean - True if address is checked by
-//                                                          KLADR profiles (Only if AddressRussianOnly = True), False - else.
-//                * CheckByFIAS              - Boolean - True if address is checked by
-//                                                          FIAS profiles (Only if AddressRussianOnly = True), False - else.
-//                * ProhibitEntryIncorrect   - Boolean - True if it is required
-//                                                          to prohibit user to write incorrect
-//                                                          address (Only if CheckCorrectness = True), False - else.
-//                * HideObsoleteAddresses   - Boolean - True if it is not required to
-//                                                          show irrelevant addresses while entering
-//                                                          (Only if AddressRussianOnly = True), False - else.
-//                * IncludeCountriesToPresentation - Boolean - True if it is required to
-//                                                          include country name to the address presentation, False - else.
-//            For the EmailAddress type - Structure containing fields:
-//                * CheckCorrectness        - Boolean - True if it is required to check
-//                                                          whether email address is correct, False - else.
-//                * ProhibitEntryIncorrect   - Boolean - True if it is required
-//                                                          to prohibit user to
-//                                                          write incorrect address (Only if CheckCorrectness = True), False - else.
-//            For the rest of the types or to specify the default settings Undefined is used.
-// 
-// Note:
-//    To set the CheckCorrectness parameter to the True value, you
-//    should set the ProhibitEntryIncorrect parameter to the True value.
-// 
-//    While using the Order parameter, you should closely monitor the uniqueness of the assigned value. If
-//    after the update order values are non unique, then user will
-//    not be able to set order.
-//    It is generally recommended not to use this parameter (the order does not change)
-//    or to fill it in with 0 value (the order will be automatically assigned to the "Items order setting" subsystem while executing the procedure).
-//    To put CI kinds in a particular order relative to each other without explicit
-//    placement at the top of the list, it is enough to call this procedure
-//    in the required sequence for each CI kind with order specification 0. If a definite predefined CI kind is added to the existing ones in
-//    IB, it is not recommended to assign order explicitly.
-// 
-Function ParametersKindContactInformation(Type = Undefined) Export
-	
-	If TypeOf(Type) = Type("String") Then
-		SetType = Enums.ContactInformationTypes[Type];
-	Else
-		SetType = Type;
-	EndIf;
-	
-	ParametersKind = New Structure;
-	ParametersKind.Insert("Kind");
-	ParametersKind.Insert("Type", SetType);
-	ParametersKind.Insert("ToolTip");
-	ParametersKind.Insert("Order");
-	ParametersKind.Insert("EditMethodEditable", False);
-	ParametersKind.Insert("EditInDialogOnly", False);
-	ParametersKind.Insert("RequiredFilling", False);
-	ParametersKind.Insert("AllowInputOfMultipleValues", False);
-	ParametersKind.Insert("DisableEditByUser", False);
-	
-	If SetType = Enums.ContactInformationTypes.Address Then
-		VerificationSettings = New Structure;
-		VerificationSettings.Insert("AddressRussianOnly", False);
-		VerificationSettings.Insert("CheckCorrectness", False);
-		VerificationSettings.Insert("CheckByFIAS", False);
-		VerificationSettings.Insert("ProhibitEntryOfIncorrect", False);
-		VerificationSettings.Insert("HideObsoleteAddresses", False);
-		VerificationSettings.Insert("IncludeCountryInPresentation", False);
-	ElsIf SetType = Enums.ContactInformationTypes.EmailAddress Then
-		VerificationSettings = New Structure;
-		VerificationSettings.Insert("CheckCorrectness", False);
-		VerificationSettings.Insert("ProhibitEntryOfIncorrect", False);
-	Else
-		VerificationSettings = Undefined;
-	EndIf;
-	
-	ParametersKind.Insert("VerificationSettings", VerificationSettings);
-	
-	Return ParametersKind;
-	
-EndFunction
-
-// Writes contact information from XML to the Object contact information tabular section fields.
-//
-// Parameters:
-//    Object - AnyRef - phone or fax number.
-//    FieldsValues - String - contact information in the XML format
-//    InformationKind - Catalog.ContactInformationTypes - ref to contact information kind.
-//    InformationType - Enum.ContactInformationTypes - contact information type.
-//    RowID - Number - tabular section string ID.
-Procedure WriteContactInformation(Object, FieldsValues, InformationKind, InformationType, RowID = 0) Export
-	
-	ObjectCI = ContactInformationManagementService.ContactInformationFromXML(FieldsValues, InformationKind);
-	
-	If Not ContactInformationManagementService.XDTOContactInformationFilled(ObjectCI) Then
-		Return;
-	EndIf;
-	
-	NewRow = Object.ContactInformation.Add();
-	NewRow.Presentation = ObjectCI.Presentation;
-	NewRow.FieldsValues = ContactInformationManagementService.ContactInformationXDTOVXML(ObjectCI);
-	NewRow.Kind           = InformationKind;
-	NewRow.Type           = InformationType;
-	
-	If ValueIsFilled(RowID) Then
-		NewRow.RowIdTableParts = RowID;
-	EndIf;
-	
-	// Fill in TS additional attributes.
-	If InformationType = Enums.ContactInformationTypes.EmailAddress Then
-		FillTabularSectionForEMailAddressAttributes(NewRow, ObjectCI);
-		
-	ElsIf InformationType = Enums.ContactInformationTypes.Address Then
-		FillTabularSectionForAddressAttributes(NewRow, ObjectCI);
-		
-	ElsIf InformationType = Enums.ContactInformationTypes.Phone Then
-		FillTabularSectionForPhoneAttributes(NewRow, ObjectCI);
-		
-	ElsIf InformationType = Enums.ContactInformationTypes.Fax Then
-		FillTabularSectionForPhoneAttributes(NewRow, ObjectCI);
-		
-	ElsIf InformationType = Enums.ContactInformationTypes.WebPage Then
-		FillTabularSectionForWebpageAttributes(NewRow, ObjectCI);
-		
+	If PreviousTarget <> Undefined Then
+		PreviousTarget.Write();
 	EndIf;
 	
 EndProcedure
 
-// Outdated. You should use SetContactInformationKindProperties.
+// Fills in contact information for a single object.
 //
-Procedure RefreshContactInformationKind(Kind, Type, ToolTip, EditMethodEditable, EditInDialogOnly,
-	RequiredFilling, Order = Undefined, AllowInputOfMultipleValues = False, VerificationSettings = Undefined) Export
+// Parameters:
+//    Target      - Arbitrary - reference or object whose contact information must be filled in.
+//    CIKind      - CatalogRef.ContactInformationKinds - contact information kind filled in the target.
+//    CIStructure - Structure - filled contact information structure.
+//    RowKey      - Structure - filter used to search the tabular section for a row
+//                              where Key is the name of a tabular section column, and Value is filter value.
+//
+Procedure FillObjectContactInformation(Target, CIKind, CIStructure, RowKey = Undefined) Export
 	
-	ParametersKind = ParametersKindContactInformation();
-	ParametersKind.Kind = Kind;
-	ParametersKind.Type = Type;
-	ParametersKind.ToolTip = ToolTip;
-	ParametersKind.EditMethodEditable = EditMethodEditable;
-	ParametersKind.EditInDialogOnly = EditInDialogOnly;
-	ParametersKind.RequiredFilling = RequiredFilling;
-	ParametersKind.Order = Order;
-	ParametersKind.AllowInputOfMultipleValues = AllowInputOfMultipleValues;
-	ParametersKind.VerificationSettings = VerificationSettings;
-	ParametersKind.DisableEditByUser = False;
+	FillingData = New ValueTable;
+	FillingData.Columns.Add("Target");
+	FillingData.Columns.Add("CIKind");
+	FillingData.Columns.Add("CIStructure");
+	FillingData.Columns.Add("RowKey");
 	
-	SetPropertiesContactInformationKind(ParametersKind);
+	FillString = FillingData.Add();
+	FillString.Target = Target;
+	FillString.CIKind = CIKind;
+	FillString.CIStructure = CIStructure;
+	FillString.RowKey = RowKey;
+	
+	FillObjectsContactInformation(FillingData);
 	
 EndProcedure
 
 #EndRegion
 
+#Region InternalInterface
 
-#Region ServiceProceduresAndFunctions
-
-////////////////////////////////////////////////////////////////////////////////
-// Initialize items on object-owner contact information form.
-
-Procedure AddItemDescription(Form, ItemName, Priority, ThisCommand = False)
+// See the description of this procedure in the StandardSubsystemsServer module.
+Procedure InternalEventHandlersOnAdd(ClientHandlers, ServerHandlers) Export
 	
-	Form.ContactInformationParameters.AddedElements.Add(ItemName, Priority, ThisCommand);
+	// SERVER HANDLERS
 	
-EndProcedure
-
-Procedure DeleteItemDetails(Form, ItemName)
-	
-	AddedElements = Form.ContactInformationParameters.AddedElements;
-	FoundString = AddedElements.FindByValue(ItemName);
-	AddedElements.Delete(FoundString);
+	ServerHandlers[
+		"StandardSubsystems.InfobaseVersionUpdate\OnAddUpdateHandlers"
+	].Add("ContactInformationManagement");
 	
 EndProcedure
 
-Function TitleLeft(Form, Val TitleLocationCI = Undefined)
+//  Returns enumeration value of contact information kind type.
+//
+//  Parameters:
+//    InformationKind - CatalogRef.ContactInformationKinds, Structure - data source.
+//
+Function ContactInformationKindType(Val InformationKind) Export
+	Result = Undefined;
 	
-	If Not ValueIsFilled(TitleLocationCI) Then
-		
-		SavedTitleLocation = Form.ContactInformationParameters.TitleLocation;
-		If ValueIsFilled(SavedTitleLocation) Then
-			TitleLocationCI = FormItemTitleLocation[SavedTitleLocation];
+	Type = TypeOf(InformationKind);
+	If Type = Type("EnumRef.ContactInformationTypes") Then
+		Result = InformationKind;
+	ElsIf Type = Type("CatalogRef.ContactInformationKinds") Then
+		Result = InformationKind.Type;
+	ElsIf InformationKind <> Undefined Then
+		Data = New Structure("Type");
+		FillPropertyValues(Data, InformationKind);
+		Result = Data.Type;
+	EndIf;
+	
+	Return Result;
+EndFunction
+
+#EndRegion
+
+#Region InternalProceduresAndFunctions
+
+// Filling event subscription handler.
+//
+Procedure FillContactInformationProcessing(Source, FillingData, FillingText, StandardProcessing) Export
+	
+	ObjectContactInformationFilling(Source, FillingData);
+	
+EndProcedure
+
+// Filling event subscription handler for documents.
+//
+Procedure DocumentContactInformationFilling(Source, FillingData, StandardProcessing) Export
+	
+	ObjectContactInformationFilling(Source, FillingData);
+	
+EndProcedure
+
+Procedure ObjectContactInformationFilling(Object, Val FillingData)
+	
+	If TypeOf(FillingData) <> Type("Structure") Then
+		Return;
+	EndIf;
+	
+	// Description, if available in the target object
+	Description = Undefined;
+	If FillingData.Property("Description", Description) 
+		And HasObjectAttribute("Description", Object) 
+	Then
+		Object.Description = Description;
+	EndIf;
+	
+	// Contact information table. It is only filled if the contact information cannot be found in any other tabular section.
+	ContactInformation = Undefined;
+	If FillingData.Property("ContactInformation", ContactInformation) 
+		And HasObjectAttribute("ContactInformation", Object) 
+	Then
+	
+		If TypeOf(ContactInformation) = Type("ValueTable") Then
+			TableColumns = ContactInformation.Columns;
 		Else
-			TitleLocationCI = FormItemTitleLocation.Top;
+			TableColumns = ContactInformation.UnloadColumns().Columns;
 		EndIf;
 		
-	EndIf;
-	
-	Return (TitleLocationCI = FormItemTitleLocation.Left);
-	
-EndFunction
-
-Procedure ChangeComment(Form, AttributeName, IsAddingComment)
-	
-	DetailsContactInformation = Form.ContactInformationAdditionalAttributeInfo;
-	
-	Filter = New Structure("AttributeName", AttributeName);
-	FoundString = DetailsContactInformation.FindRows(Filter)[0];
-	
-	// Title and edit box
-	ItemTitle = Form.Items.Find("Title" + AttributeName);
-	NameComments = "Comment" + AttributeName;
-	
-	TitleLeft = TitleLeft(Form);
-	
-	If IsAddingComment Then
-		
-		InputField = Form.Items.Find(AttributeName);
-		GroupInputFields = Form.Items.FieldsGroupEnteringContactInformation;
-		
-		CurrentItem = ?(GroupInputFields.ChildItems.Find(InputField.Name) = Undefined, InputField.Parent, InputField);
-		IndexOfCurrentItem = GroupInputFields.ChildItems.IndexOf(CurrentItem);
-		NextItem = GroupInputFields.ChildItems.Get(IndexOfCurrentItem + 1);
-		
-		Comment = Comment(Form, FoundString.Comment, NameComments, GroupInputFields);
-		Form.Items.Move(Comment, GroupInputFields, NextItem);
-		
-		If TitleLeft Then
+		If TableColumns.Find("TabularSectionRowID") = Undefined Then
 			
-			TitlesGroup = Form.Items.GroupHeadersContactInformation;
-			IndexOfHeader = TitlesGroup.ChildItems.IndexOf(ItemTitle);
-			NextTitle = TitlesGroup.ChildItems.Get(IndexOfHeader + 1);
-			
-			NameStubs = "EndCapHeader" + AttributeName;
-			EndCap = Form.Items.Add(NameStubs, Type("FormDecoration"), TitlesGroup);
-			Form.Items.Move(EndCap, TitlesGroup, NextTitle);
-			AddItemDescription(Form, NameStubs, 2);
-			
-		EndIf;
-		
-	Else
-		
-		Comment = Form.Items[NameComments];
-		Form.Items.Delete(Comment);
-		DeleteItemDetails(Form, NameComments);
-		
-		If TitleLeft Then
-			
-			ItemTitle.Height = 1;
-			
-			NameStubs = "EndCapHeader" + AttributeName;
-			EndCapHeader = Form.Items[NameStubs];
-			Form.Items.Delete(EndCapHeader);
-			DeleteItemDetails(Form, NameStubs);
-			
-		EndIf;
-		
-	EndIf;
-	
-	// Action
-	ActionsGroup = Form.Items.GroupActionsContactInformation;
-	NameStubsActions = "EndCapActions" + AttributeName;
-	EndCapActions = Form.Items.Find(NameStubsActions);
-	
-	If IsAddingComment Then
-		
-		If EndCapActions = Undefined Then
-			
-			EndCapActions = Form.Items.Add(NameStubsActions, Type("FormDecoration"), ActionsGroup);
-			EndCapActions.Height = 1;
-			Action = Form.Items["Command" + AttributeName];
-			IndexOfCommands = ActionsGroup.ChildItems.IndexOf(Action);
-			NextItem = ActionsGroup.ChildItems.Get(IndexOfCommands + 1);
-			If EndCapActions <> NextItem Then
-				Form.Items.Move(EndCapActions, ActionsGroup, NextItem);
-			EndIf;
-			AddItemDescription(Form, NameStubsActions, 2);
-			
-		Else
-			
-			EndCapActions.Height = 2;
-			
-		EndIf;
-		
-	Else
-		
-		If EndCapActions.Height = 1 Then
-			
-			Form.Items.Delete(EndCapActions);
-			DeleteItemDetails(Form, NameStubsActions);
-			
-		Else
-			
-			EndCapActions.Height = 1;
+			For Each CIRow In ContactInformation Do
+				NewCIRow = Object.ContactInformation.Add();
+				FillPropertyValues(NewCIRow, CIRow, , "FieldValues");
+				NewCIRow.FieldValues = ContactInformationToXML(CIRow.FieldValues, CIRow.Presentation, CIRow.Kind);
+			EndDo;
 			
 		EndIf;
 		
@@ -1876,484 +1436,18 @@ Procedure ChangeComment(Form, AttributeName, IsAddingComment)
 	
 EndProcedure
 
-Procedure AddLineContactInformation(Form, Result)
-	
-	AddedKind = Result.AddedKind;
-	If TypeOf(AddedKind)= Type("CatalogRef.ContactInformationTypes") Then
-		InformationAboutCIKind = CommonUse.ObjectAttributesValues(AddedKind, "Type, Name< EditOnlyInDialog, Tooltip");
-	Else
-		InformationAboutCIKind = AddedKind;
-		AddedKind    = AddedKind.Ref;
-	EndIf;
-	
-	TableContactInformation = Form.ContactInformationAdditionalAttributeInfo;
-	
-	Filter = New Structure("Kind", AddedKind);
-	FoundStrings = TableContactInformation.FindRows(Filter);
-	ItemCount = FoundStrings.Count();
-	
-	LastRow = FoundStrings.Get(ItemCount-1);
-	IndexOfRowsToBeAdded = TableContactInformation.IndexOf(LastRow) + 1;
-	IsLastRow = False;
-	If IndexOfRowsToBeAdded = TableContactInformation.Count() Then
-		IsLastRow = True;
-	Else
-		NextAttributeName = TableContactInformation[IndexOfRowsToBeAdded].AttributeName;
-	EndIf;
-	
-	NewRow = TableContactInformation.Insert(IndexOfRowsToBeAdded);
-	AttributeName = "ContactInformationField" + NewRow.GetID();
-	NewRow.AttributeName = AttributeName;
-	NewRow.Type = AddedKind;
-	NewRow.Type = InformationAboutCIKind.Type;
-	NewRow.ThisAttributeOfTabularSection = False;
-	
-	ArrayOfAddedDetails = New Array;
-	ArrayOfAddedDetails.Add(New FormAttribute(AttributeName, New TypeDescription("String", , New StringQualifiers(500)), , InformationAboutCIKind.Description, True));
-	
-	Form.ChangeAttributes(ArrayOfAddedDetails);
-	
-	TitleLeft = TitleLeft(Form);
-	
-	// Rendering on form
-	If TitleLeft Then
-		TitlesGroup = Form.Items.GroupHeadersContactInformation;
-		Title = TitleFunc(Form, InformationAboutCIKind.Type, AttributeName, TitlesGroup, InformationAboutCIKind.Description);
-		
-		If Not IsLastRow Then
-			NextTitle = Form.Items["Title" + NextAttributeName];
-			Form.Items.Move(Title, TitlesGroup, NextTitle);
-		EndIf;
-	EndIf;
-	
-	GroupInputFields = Form.Items.FieldsGroupEnteringContactInformation;
-	InputField = InputField(Form, InformationAboutCIKind.EditInDialogOnly, InformationAboutCIKind.Type, AttributeName, InformationAboutCIKind.ToolTip);
-	
-	If Not IsLastRow Then
-		
-		NameOfNextItem = LastRow.AttributeName;
-		
-		If ValueIsFilled(LastRow.Comment) Then
-			NameOfNextItem = "Comment" + NameOfNextItem;
-		EndIf;
-		
-		IndexOfNextItem = GroupInputFields.ChildItems.IndexOf(Form.Items[NameOfNextItem]) + 1;
-		NextItem = GroupInputFields.ChildItems.Get(IndexOfNextItem);
-		
-		Form.Items.Move(InputField, GroupInputFields, NextItem);
-		
-	EndIf;
-	
-	ActionsGroup = Form.Items.GroupActionsContactInformation;
-	Filter = New Structure("Type", Enums.ContactInformationTypes.Address);
-	QuantityAddresses = TableContactInformation.FindRows(Filter).Count();
-	
-	NameActions = "Command" + NextAttributeName;
-	NameStubs = "DecorationTop" + NextAttributeName;
-	
-	If Form.Items.Find(NameStubs) <> Undefined Then
-		NameOfNextAction = NameStubs;
-	ElsIf Form.Items.Find(NameActions) <> Undefined Then
-		NameOfNextAction = NameActions;
-	Else
-		NameOfNextAction = "EndCapActions" + NextAttributeName;
-	EndIf;
-	
-	Action = Action(Form, InformationAboutCIKind.Type, AttributeName, ActionsGroup, QuantityAddresses);
-	If Not IsLastRow Then
-		NextAction = Form.Items[NameOfNextAction];
-		Form.Items.Move(Action, ActionsGroup, NextAction);
-	EndIf;
-	
-	Form.CurrentItem = Form.Items[AttributeName];
-	
-	If InformationAboutCIKind.Type = Enums.ContactInformationTypes.Address
-		AND InformationAboutCIKind.EditInDialogOnly Then
-		
-		Result.Insert("AddressesFormItem", AttributeName);
-		
-	EndIf;
-	
-EndProcedure
-
-Function TitleFunc(Form, Type, AttributeName, TitlesGroup, Description, IsNewCIKind = False, IsComment = False)
-	
-	NameHeader = "Title" + AttributeName;
-	Item = Form.Items.Add(NameHeader, Type("FormDecoration"), TitlesGroup);
-	Item.Title = ?(IsNewCIKind, Description + ":", "");
-	
-	If Type = Enums.ContactInformationTypes.Another Then
-		Item.Height = 5;
-		Item.VerticalAlign = ItemVerticalAlign.Top;
-	Else
-		Item.VerticalAlign = ItemVerticalAlign.Center;
-	EndIf;
-	
-	AddItemDescription(Form, NameHeader, 2);
-	
-	If IsComment Then
-		
-		NameStubs = "EndCapHeader" + AttributeName;
-		EndCap = Form.Items.Add(NameStubs, Type("FormDecoration"), TitlesGroup);
-		AddItemDescription(Form, NameStubs, 2);
-		
-	EndIf;
-	
-	Return Item;
-	
-EndFunction
-
-Function InputField(Form, EditInDialogOnly, Type, AttributeName, ToolTip, IsNewCIKind = False, RequiredFilling = False)
-	
-	TitleLeft = TitleLeft(Form);
-	
-	Item = Form.Items.Add(AttributeName, Type("FormField"), Form.Items.FieldsGroupEnteringContactInformation);
-	Item.Type = FormFieldType.InputField;
-	Item.ToolTip = ToolTip;
-	Item.DataPath = AttributeName;
-	Item.HorizontalStretch = True;
-	Item.TitleLocation = ?(TitleLeft Or Not IsNewCIKind, FormItemTitleLocation.None, FormItemTitleLocation.Top);
-	Item.SetAction("Clearing", "Attachable_ContactInformationClearing");
-	
-	AddItemDescription(Form, AttributeName, 2);
-	
-	// Set edit box properties.
-	If Type = Enums.ContactInformationTypes.Another Then
-		Item.Height = 5;
-		Item.MultiLine = True;
-		Item.VerticalStretch = False;
-	Else
-		
-		// Enter a comment via context menu.
-		CommandName = "ContextMenu" + AttributeName;
-		Command = Form.Commands.Add(CommandName);
-		Button = Form.Items.Add(CommandName,Type("FormButton"), Item.ContextMenu);
-		Command.ToolTip = NStr("en='Enter comment';ru='Ввести комментарий'");
-		Command.Action = "Attachable_ContactInformationExecuteCommand";
-		Button.Title = NStr("en='Enter comment';ru='Ввести комментарий'");
-		Button.CommandName = CommandName;
-		Command.ModifiesStoredData = True;
-		
-		AddItemDescription(Form, CommandName, 1);
-		AddItemDescription(Form, CommandName, 9, True);
-	EndIf;
-	
-	If RequiredFilling AND IsNewCIKind Then
-		Item.AutoMarkIncomplete = True;
-	EndIf;
-	
-	// Edit in dialog
-	If ForContactInformationTypeAvailableEditInDialog(Type) Then
-		
-		Item.ChoiceButton = True;
-		
-		If EditInDialogOnly Then
-			Item.TextEdit = False;
-			Item.BackColor = StyleColors.ContactInformationWithEditingInDialogColor;
-		EndIf;
-		Item.SetAction("StartChoice", "Attachable_ContactInformationStartChoice");
-		
-	EndIf;
-	Item.SetAction("OnChange", "Attachable_ContactInformationOnChange");
-	
-	Return Item;
-	
-EndFunction
-
-Function Action(Form, Type, AttributeName, ActionsGroup, QuantityAddresses, IsComment = False)
-	
-	CanCreateAction = True;
-	If Type = Enums.ContactInformationTypes.EmailAddress Then
-		If CommonUse.SubsystemExists("StandardSubsystems.EmailOperations") Then
-			ModuleEmailOperations = CommonUse.CommonModule("EmailOperations");
-			If Not ModuleEmailOperations.AvailableEmailSending() Then
-				CanCreateAction = False;
-			EndIf;
-		Else
-			CanCreateAction = False;
-		EndIf;
-	EndIf;
-	
-	If CanCreateAction AND ((Type = Enums.ContactInformationTypes.WebPage
-		Or Type = Enums.ContactInformationTypes.EmailAddress)
-		Or (Type = Enums.ContactInformationTypes.Address AND QuantityAddresses > 1)) Then
-		
-		// There is an action
-		CommandName = "Command" + AttributeName;
-		Command = Form.Commands.Add(CommandName);
-		AddItemDescription(Form, CommandName, 9, True);
-		Command.Representation = ButtonRepresentation.Picture;
-		Command.Action = "Attachable_ContactInformationExecuteCommand";
-		
-		Item = Form.Items.Add(CommandName,Type("FormButton"), ActionsGroup);
-		AddItemDescription(Form, CommandName, 2);
-		Item.CommandName = CommandName;
-		
-		If Type = Enums.ContactInformationTypes.Address Then
-			
-			Item.Title = NStr("en='Fill';ru='Заполнить'");
-			Command.ToolTip = NStr("en='Fill in address from another field';ru='Заполнить адрес из другого поля'");
-			Command.Picture = PictureLib.MoveLeft;
-			Command.ModifiesStoredData = True;
-			
-		ElsIf Type = Enums.ContactInformationTypes.WebPage Then
-			
-			Item.Title = NStr("en='Goto';ru='Перейти'");
-			Command.ToolTip = NStr("en='Navigate to link';ru='Перейти по ссылке'");
-			Command.Picture = PictureLib.ContactInformationForNavigateLink;
-			
-		ElsIf Type = Enums.ContactInformationTypes.EmailAddress Then
-			
-			Item.Title = NStr("en='Write letter';ru='Написать письмо'");
-			Command.ToolTip = NStr("en='Write letter';ru='Написать письмо'");
-			Command.Picture = PictureLib.SendByEmail;
-			
-		EndIf;
-		
-		If IsComment Then
-			
-			NameStubsActions = "EndCapActions" + AttributeName;
-			EndCapActions = Form.Items.Add(NameStubsActions, Type("FormDecoration"), ActionsGroup);
-			EndCapActions.Height = 1;
-			AddItemDescription(Form, NameStubsActions, 2);
-			
-		EndIf;
-		
-	Else
-		
-		// No action, put a stub.
-		NameStubsActions = "EndCapActions" + AttributeName;
-		Item = Form.Items.Add(NameStubsActions, Type("FormDecoration"), ActionsGroup);
-		AddItemDescription(Form, NameStubsActions, 2);
-		If IsComment Then
-			Item.Height = 2;
-		ElsIf Type = Enums.ContactInformationTypes.Another Then
-			Item.Height = 5;
-		EndIf;
-		
-	EndIf;
-	
-	Return Item;
-	
-EndFunction
-
-Function Comment(Form, Comment, NameComments, GroupForPosting)
-	
-	Item = Form.Items.Add(NameComments, Type("FormDecoration"), GroupForPosting);
-	Item.Title = Comment;
-	
-	Item.TextColor = StyleColors.ExplanationText;
-	
-	Item.HorizontalStretch = True;
-	Item.VerticalStretch  = False;
-	Item.VerticalAlign  = ItemVerticalAlign.Top;
-	
-	Item.Height = 1;
-	
-	AddItemDescription(Form, NameComments, 2);
-	
-	Return Item;
-	
-EndFunction
-
-// Deletes separators in phone number.
+// Checks the form for strings filled with contact information of the same kind (excluding the current string).
 //
-// Parameters:
-//    PhoneNumber - String - phone or fax number.
-//
-// Returns:
-//     String - phone or fax number without separators.
-//
-Function RemoveSeparatorsToPhoneNumber(Val PhoneNumber)
+Function HasOtherStringsFilledWithThisContactInformationKind(Val Form, Val StringToValidate, Val ContactInformationKind)
 	
-	Pos = Find(PhoneNumber, ",");
-	If Pos <> 0 Then
-		PhoneNumber = Left(PhoneNumber, Pos-1);
-	EndIf;
-	
-	PhoneNumber = StrReplace(PhoneNumber, "-", "");
-	PhoneNumber = StrReplace(PhoneNumber, " ", "");
-	PhoneNumber = StrReplace(PhoneNumber, "+", "");
-	
-	Return PhoneNumber;
-	
-EndFunction
-
-Function VarGroup(GroupName, Form, Parent, Group, DeletionOrder) 
-	
-	VarGroup = Form.Items.Find(GroupName);
-	
-	If VarGroup = Undefined Then
-		VarGroup = Form.Items.Add(GroupName, Type("FormGroup"), Parent);
-		VarGroup.Type = FormGroupType.UsualGroup;
-		VarGroup.ShowTitle = False;
-		VarGroup.Representation = UsualGroupRepresentation.None;
-		VarGroup.Group = Group;
-		AddItemDescription(Form, GroupName, DeletionOrder);
-		
-	EndIf;
-	
-	Return VarGroup;
-	
-EndFunction
-
-Procedure CheckContactInformationAttributesPresence(Form, ArrayOfAddedDetails)
-	
-	FormAttributesList = Form.GetAttributes();
-	
-	CreateContactInformationParameters = True;
-	CreateContactInformationTable = True;
-	For Each Attribute In FormAttributesList Do
-		If Attribute.Name = "ContactInformationParameters" Then
-			CreateContactInformationParameters = False;
-		ElsIf Attribute.Name = "ContactInformationAdditionalAttributeInfo" Then
-			CreateContactInformationTable = False;
-		EndIf;
-	EndDo;
-	
-	If CreateContactInformationTable Then
-		
-		String500 = New TypeDescription("String", , New StringQualifiers(500));
-		
-		// Create values table
-		DescriptionName = "ContactInformationAdditionalAttributeInfo";
-		ArrayOfAddedDetails.Add(New FormAttribute(DescriptionName, New TypeDescription("ValueTable")));
-		ArrayOfAddedDetails.Add(New FormAttribute("AttributeName", String500, DescriptionName));
-		ArrayOfAddedDetails.Add(New FormAttribute("Kind", New TypeDescription("CatalogRef.ContactInformationTypes"), DescriptionName));
-		ArrayOfAddedDetails.Add(New FormAttribute("Type", New TypeDescription("EnumRef.ContactInformationTypes"), DescriptionName));
-		ArrayOfAddedDetails.Add(New FormAttribute("FieldsValues", New TypeDescription("ValueList, String"), DescriptionName));
-		ArrayOfAddedDetails.Add(New FormAttribute("Presentation", String500, DescriptionName));
-		ArrayOfAddedDetails.Add(New FormAttribute("Comment", New TypeDescription("String"), DescriptionName));
-		ArrayOfAddedDetails.Add(New FormAttribute("ThisAttributeOfTabularSection", New TypeDescription("Boolean"), DescriptionName));
-		
-	EndIf;
-	
-	If CreateContactInformationParameters Then
-		
-		ArrayOfAddedDetails.Add(New FormAttribute("ContactInformationParameters", New TypeDescription()));
-		
-	EndIf;
-	
-EndProcedure
-
-Procedure SetCheckAttributesValue(Object, VerificationSettings = Undefined)
-	
-	Object.CheckCorrectness = ?(VerificationSettings = Undefined, False, VerificationSettings.CheckCorrectness);
-	If Object.Type = Enums.ContactInformationTypes.Address Then
-		Object.CheckByFIAS       = ?(VerificationSettings = Undefined, False, VerificationSettings.CheckByFIAS);
-	EndIf;
-	
-	Object.AddressRussianOnly = False;
-	Object.IncludeCountryInPresentation = False;
-	Object.ProhibitEntryOfIncorrect =?(VerificationSettings = Undefined, False, VerificationSettings.ProhibitEntryOfIncorrect);
-	Object.HideObsoleteAddresses = False;
-	
-EndProcedure
-
-Procedure AddAttributeToDescription(Form, CIRow, IsNewCIKind, ThisAttributeOfTabularSection = False, FillAttributeValue = True)
-	
-	NewRow = Form.ContactInformationAdditionalAttributeInfo.Add();
-	NewRow.AttributeName  = CIRow.AttributeName;
-	NewRow.Kind           = CIRow.Kind;
-	NewRow.Type           = CIRow.Type;
-	NewRow.ThisAttributeOfTabularSection = ThisAttributeOfTabularSection;
-	
-	If IsBlankString(CIRow.FieldsValues) Then
-		NewRow.FieldsValues = "";
-	Else
-		NewRow.FieldsValues = ContactInformationManagementClientServer.ConvertStringToFieldList(CIRow.FieldsValues);
-	EndIf;
-	
-	NewRow.Presentation = CIRow.Presentation;
-	NewRow.Comment   = CIRow.Comment;
-	
-	If FillAttributeValue AND Not ThisAttributeOfTabularSection Then
-		
-		Form[CIRow.AttributeName] = CIRow.Presentation;
-		
-	EndIf;
-	
-	StructureCIKind = ContactInformationManagementService.StructureTypeContactInformation(CIRow.Kind);
-	StructureCIKind.Insert("Ref", CIRow.Kind);
-	
-	If IsNewCIKind AND StructureCIKind.AllowInputOfMultipleValues AND Not ThisAttributeOfTabularSection Then
-		
-		Form.ContactInformationParameters.AddedItemsList.Add(StructureCIKind, CIRow.Kind.Description);
-		
-	EndIf;
-	
-EndProcedure
-
-Procedure DeleteCommandsAndFormItems(Form)
-	
-	AddedElements = Form.ContactInformationParameters.AddedElements;
-	AddedElements.SortByPresentation();
-	
-	For Each ElementToDelete In AddedElements Do
-		
-		If ElementToDelete.Check Then
-			Form.Commands.Delete(Form.Commands[ElementToDelete.Value]);
-		Else
-			Form.Items.Delete(Form.Items[ElementToDelete.Value]);
-		EndIf;
-		
-	EndDo;
-	
-EndProcedure
-
-// Returns whether editing in dialog by the contact information type is available.
-//
-// Parameters:
-//    Type - EnumRef.ContactInformationTypes - contact information type.
-//
-// Returns:
-//    Boolean - whether editing is available in dialog.
-//
-Function ForContactInformationTypeAvailableEditInDialog(Type)
-	
-	If Type = Enums.ContactInformationTypes.Address Then
-		Return True;
-	ElsIf Type = Enums.ContactInformationTypes.Phone Then
-		Return True;
-	ElsIf Type = Enums.ContactInformationTypes.Fax Then
-		Return True;
-	Else
-		Return False;
-	EndIf;
-	
-EndFunction
-
-// Returns document tabular section name by the contact information kind.
-//
-// Parameters:
-//    CIKind      - CatalogRef.ContactInformationTypes - kind of contact information.
-//    ObjectName - String - full name of metadata object.
-//
-// Returns:
-//    String - tabular section name of an empty string if there is no tabular section.
-//
-Function TabularSectionNameByCI(CIKind, ObjectName) Export
-	
-	GroupTypeKI = CommonUse.ObjectAttributeValue(CIKind, "Parent");
-	NameKindKI = CommonUse.PredefinedName(GroupTypeKI);
-	Pos = Find(NameKindKI, ObjectName);
-	
-	Return Mid(NameKindKI, Pos + StrLen(ObjectName));
-	
-EndFunction
-
-// Checks whether there are filled in CI strings of the same kind in form (except of the current one).
-//
-Function HasOtherFilledThisKingCIRows(Val Form, Val CheckedString, Val ContactInformationKind)
-	
-	AllStringsThisKind = Form.ContactInformationAdditionalAttributeInfo.FindRows(
+	AllRowsOfThisKind = Form.ContactInformationAdditionalAttributeInfo.FindRows(
 		New Structure("Kind", ContactInformationKind)
 	);
 	
-	For Each StringKind In AllStringsThisKind Do
+	For Each RowOfThisKind In AllRowsOfThisKind Do
 		
-		If StringKind <> CheckedString Then
-			Presentation = Form[StringKind.AttributeName];
+		If RowOfThisKind <> StringToValidate Then
+			Presentation = Form[RowOfThisKind.AttributeName];
 			If Not IsBlankString(Presentation) Then 
 				Return True;
 			EndIf;
@@ -2364,83 +1458,537 @@ Function HasOtherFilledThisKingCIRows(Val Form, Val CheckedString, Val ContactIn
 	Return False;
 EndFunction
 
-Procedure OutputMessageToUser(MessageText, AttributeName, AttributeField)
+// Checks whether an object has an attribute with the specified name.
+//
+// Parameters:
+//     AttributeName - String    - name of the attribute to be checked.
+//     Object        - Arbitrary - object to be checked.
+//
+// Returns:
+//     Boolean - check result.
+//
+Function HasObjectAttribute(Val AttributeName, Val Object)
+	AttributeCheck = New Structure(AttributeName, Undefined);
+	FillPropertyValues(AttributeCheck, Object);
+	If AttributeCheck[AttributeName] <> Undefined Then
+		Return True;
+	EndIf;
 	
-	AttributeName = ?(IsBlankString(AttributeField), AttributeName, "");
-	CommonUseClientServer.MessageToUser(MessageText,,AttributeField, AttributeName);
+	AttributeCheck[AttributeName] = "";
+	FillPropertyValues(AttributeCheck, Object);
+	Return AttributeCheck.Description = Undefined;
+EndFunction
+
+// Updates contact information fields based on ValueTable of an object of different kind (such as catalog).
+//
+// Parameters:
+//    Source - ValueTable  - value table containing contact information.
+//    Target - ManagedForm - object form used to receive the contact information.
+//
+Procedure FillContactInformation(Source, Target) Export
+	ContactInformationFieldCollection = Target.ContactInformationAdditionalAttributeInfo;
+	
+	For Each ContactInformationFieldCollectionItem In ContactInformationFieldCollection Do
+		
+		RowInCI = Source.Find(ContactInformationFieldCollectionItem.Kind, "Kind");
+		If RowInCI <> Undefined Then
+			Target[ContactInformationFieldCollectionItem.AttributeName] = RowInCI.Presentation;
+			ContactInformationFieldCollectionItem.FieldValues          = ContactInformationManagementClientServer.ConvertStringToFieldList(RowInCI.FieldValues);
+		EndIf;
+		
+	EndDo;
 	
 EndProcedure
 
-////////////////////////////////////////////////////////////////////////////////
-// Filling additional attributes of the "Contact information" tabular section.
+Procedure AddItemDetails(Form, ItemName, Priority, IsCommand = False, IsTabularSectionAttribute = False)
+	
+	NewRow = Form.AddedContactInformationItems.Add();
+	NewRow.ItemName = ItemName;
+	NewRow.Priority = Priority;
+	NewRow.IsCommand = IsCommand;
+	NewRow.IsTabularSectionAttribute = IsTabularSectionAttribute;
+	
+EndProcedure
 
-// Fills in additional attributes of the "Contact information" tabular section for address.
+Procedure DeleteItemDescription(Form, ItemName)
+	
+	AddedItems = Form.AddedContactInformationItems;
+	Filter = New Structure("ItemName", ItemName);
+	FoundRow = AddedItems.FindRows(Filter)[0];
+	AddedItems.Delete(FoundRow);
+	
+EndProcedure
+
+Function TitleLeft(Form, Val TitleLocationContactInformation = Undefined)
+	
+	If Not ValueIsFilled(TitleLocationContactInformation) Then
+		
+		SavedTitlePosition = Form.ContactInformationTitleLocation;
+		If ValueIsFilled(SavedTitlePosition) Then
+			TitleLocationContactInformation = FormItemTitleLocation[SavedTitlePosition];
+		Else
+			TitleLocationContactInformation = FormItemTitleLocation.Top;
+		EndIf;
+		
+	EndIf;
+	
+	Return (TitleLocationContactInformation = FormItemTitleLocation.Left);
+	
+EndFunction
+
+Procedure ModifyComment(Form, AttributeName, IsAddComment)
+	
+	ContactInformationDescription = Form.ContactInformationAdditionalAttributeInfo;
+	
+	Filter = New Structure("AttributeName", AttributeName);
+	FoundRow = ContactInformationDescription.FindRows(Filter)[0];
+	
+	// Title and input field
+	ItemTitle = Form.Items.Find("Title" + AttributeName);
+	CommentName = "Comment" + AttributeName;
+	
+	TitleLeft = TitleLeft(Form);
+	
+	If IsAddComment Then
+		
+		TextBox = Form.Items.Find(AttributeName);
+		InputFieldGroup = Form.Items.ContactInformationInputFieldGroup;
+		
+		CurrentItem = ?(InputFieldGroup.ChildItems.Find(TextBox.Name) = Undefined, TextBox.Parent, TextBox);
+		CurrentItemIndex = InputFieldGroup.ChildItems.IndexOf(CurrentItem);
+		NextItem = InputFieldGroup.ChildItems.Get(CurrentItemIndex + 1);
+		
+		Comment = Comment(Form, FoundRow.Comment, CommentName, InputFieldGroup);
+		Form.Items.Move(Comment, InputFieldGroup, NextItem);
+		
+		If TitleLeft Then
+			
+			HeaderGroup = Form.Items.ContactInformationTitleGroup;
+			TitleIndex = HeaderGroup.ChildItems.IndexOf(ItemTitle);
+			NextTitle = HeaderGroup.ChildItems.Get(TitleIndex + 1);
+			
+			PlaceholderName = "TitlePlaceholder" + AttributeName;
+			Placeholder = Form.Items.Add(PlaceholderName, Type("FormDecoration"), HeaderGroup);
+			Form.Items.Move(Placeholder, HeaderGroup, NextTitle);
+			AddItemDetails(Form, PlaceholderName, 2);
+			
+		EndIf;
+		
+	Else
+		
+		Comment = Form.Items[CommentName];
+		Form.Items.Delete(Comment);
+		DeleteItemDescription(Form, CommentName);
+		
+		If TitleLeft Then
+			
+			ItemTitle.Height = 1;
+			
+			PlaceholderName = "TitlePlaceholder" + AttributeName;
+			TitlePlaceholder = Form.Items[PlaceholderName];
+			Form.Items.Delete(TitlePlaceholder);
+			DeleteItemDescription(Form, PlaceholderName);
+			
+		EndIf;
+		
+	EndIf;
+	
+	// Action
+	ActionGroup = Form.Items.ContactInformationActionGroup;
+	ActionPlaceholderName = "ActionPlaceholder" + AttributeName;
+	ActionPlaceholder = Form.Items.Find(ActionPlaceholderName);
+	
+	If IsAddComment Then
+		
+		If ActionPlaceholder = Undefined Then
+			
+			ActionPlaceholder = Form.Items.Add(ActionPlaceholderName, Type("FormDecoration"), ActionGroup);
+			ActionPlaceholder.Height = 1;
+			Action = Form.Items["Command" + AttributeName];
+			CommandIndex = ActionGroup.ChildItems.IndexOf(Action);
+			NextItem = ActionGroup.ChildItems.Get(CommandIndex + 1);
+			If ActionPlaceholder <> NextItem Then
+				Form.Items.Move(ActionPlaceholder, ActionGroup, NextItem);
+			EndIf;
+			AddItemDetails(Form, ActionPlaceholderName, 2);
+			
+		Else
+			
+			ActionPlaceholder.Height = 2;
+			
+		EndIf;
+		
+	Else
+		
+		If ActionPlaceholder.Height = 1 Then
+			
+			Form.Items.Delete(ActionPlaceholder);
+			DeleteItemDescription(Form, ActionPlaceholderName);
+			
+		Else
+			
+			ActionPlaceholder.Height = 1;
+			
+		EndIf;
+		
+	EndIf;
+	
+EndProcedure
+
+Procedure AddContactInformationString(Form, Result)
+	
+	AddedKind = Result.AddedKind;
+	If TypeOf(AddedKind)= Type("CatalogRef.ContactInformationKinds") Then
+		CIKindInformation = CommonUse.ObjectAttributeValues(AddedKind, "Type, Description, EditInDialogOnly, Tooltip");
+	Else
+		CIKindInformation = AddedKind;
+		AddedKind    = AddedKind.Ref;
+	EndIf;
+	
+	ContactInformationTable = Form.ContactInformationAdditionalAttributeInfo;
+	
+	Filter = New Structure("Kind", AddedKind);
+	FoundRows = ContactInformationTable.FindRows(Filter);
+	ItemCount = FoundRows.Count();
+	
+	LastRow = FoundRows.Get(ItemCount-1);
+	AddedRowIndex = ContactInformationTable.IndexOf(LastRow) + 1;
+	IsLastRow = False;
+	If AddedRowIndex = ContactInformationTable.Count() Then
+		IsLastRow = True;
+	Else
+		NextAttributeName = ContactInformationTable[AddedRowIndex].AttributeName;
+	EndIf;
+	
+	NewRow = ContactInformationTable.Insert(AddedRowIndex);
+	AttributeName = "ContactInformationField" + NewRow.GetID();
+	NewRow.AttributeName = AttributeName;
+	NewRow.Kind = AddedKind;
+	NewRow.Type = CIKindInformation.Type;
+	NewRow.IsTabularSectionAttribute = False;
+	
+	AttributesToAddArray = New Array;
+	AttributesToAddArray.Add(New FormAttribute(AttributeName, New TypeDescription("String", , New StringQualifiers(500)), , CIKindInformation.Description, True));
+	
+	Form.ChangeAttributes(AttributesToAddArray);
+	
+	TitleLeft = TitleLeft(Form);
+	
+	//Displaying form items
+	If TitleLeft Then
+		HeaderGroup = Form.Items.ContactInformationTitleGroup;
+		Title = ItemTitle(Form, CIKindInformation.Type, AttributeName, HeaderGroup, CIKindInformation.Description);
+		
+		If Not IsLastRow Then
+			NextTitle = Form.Items["Title" + NextAttributeName];
+			Form.Items.Move(Title, HeaderGroup, NextTitle);
+		EndIf;
+	EndIf;
+	
+	InputFieldGroup = Form.Items.ContactInformationInputFieldGroup;
+	TextBox = TextBox(Form, CIKindInformation.EditInDialogOnly, CIKindInformation.Type, AttributeName, CIKindInformation.ToolTip);
+	
+	If Not IsLastRow Then
+		
+		NextItemName = LastRow.AttributeName;
+		
+		If ValueIsFilled(LastRow.Comment) Then
+			NextItemName = "Comment" + NextItemName;
+		EndIf;
+		
+		NextItemIndex = InputFieldGroup.ChildItems.IndexOf(Form.Items[NextItemName]) + 1;
+		NextItem = InputFieldGroup.ChildItems.Get(NextItemIndex);
+		
+		Form.Items.Move(TextBox, InputFieldGroup, NextItem);
+		
+	EndIf;
+	
+	ActionGroup = Form.Items.ContactInformationActionGroup;
+	Filter = New Structure("Type", Enums.ContactInformationTypes.Address);
+	AddressCount = ContactInformationTable.FindRows(Filter).Count();
+	
+	ActionName = "Command" + NextAttributeName;
+	PlaceholderName = "DecorationTop" + NextAttributeName;
+	
+	If Form.Items.Find(PlaceholderName) <> Undefined Then
+		NextActionName = PlaceholderName;
+	ElsIf Form.Items.Find(ActionName) <> Undefined Then
+		NextActionName = ActionName;
+	Else
+		NextActionName = "ActionPlaceholder" + NextAttributeName;
+	EndIf;
+	
+	Action = Action(Form, CIKindInformation.Type, AttributeName, ActionGroup, AddressCount);
+	If Not IsLastRow Then
+		NextAction = Form.Items[NextActionName];
+		Form.Items.Move(Action, ActionGroup, NextAction);
+	EndIf;
+	
+	Form.CurrentItem = Form.Items[AttributeName];
+	
+	If CIKindInformation.Type = Enums.ContactInformationTypes.Address
+		And CIKindInformation.EditInDialogOnly Then
+		
+		Result.Insert("AddressFormItem", AttributeName);
+		
+	EndIf;
+	
+EndProcedure
+
+Function ItemTitle(Form, Type, AttributeName, HeaderGroup, Description, IsNewCIKind = False, HasComment = False)
+	
+	TitleName = "Title" + AttributeName;
+	Item = Form.Items.Add(TitleName, Type("FormDecoration"), HeaderGroup);
+	Item.Title = ?(IsNewCIKind, Description + ":", "");
+	
+	If Type = Enums.ContactInformationTypes.Other Then
+		Item.Height = 5;
+		Item.VerticalAlign = ItemVerticalAlign.Top;
+	Else
+		Item.VerticalAlign = ItemVerticalAlign.Center;
+	EndIf;
+	
+	AddItemDetails(Form, TitleName, 2);
+	
+	If HasComment Then
+		
+		PlaceholderName = "TitlePlaceholder" + AttributeName;
+		Placeholder = Form.Items.Add(PlaceholderName, Type("FormDecoration"), HeaderGroup);
+		AddItemDetails(Form, PlaceholderName, 2);
+		
+	EndIf;
+	
+	Return Item;
+	
+EndFunction
+
+Function TextBox(Form, EditInDialogOnly, Type, AttributeName, ToolTip, IsNewCIKind = False, Mandatory = False)
+	
+	TitleLeft = TitleLeft(Form);
+	
+	Item = Form.Items.Add(AttributeName, Type("FormField"), Form.Items.ContactInformationInputFieldGroup);
+	Item.Type = FormFieldType.InputField;
+	Item.ToolTip = ToolTip;
+	Item.DataPath = AttributeName;
+	Item.HorizontalStretch = True;
+	Item.TitleLocation = ?(TitleLeft Or Not IsNewCIKind, FormItemTitleLocation.None, FormItemTitleLocation.Top);
+	Item.SetAction("Clearing", "Attachable_ContactInformationClear");
+	
+	AddItemDetails(Form, AttributeName, 2);
+	
+	// Setting input field properties
+	If Type = Enums.ContactInformationTypes.Other Then
+		Item.Height = 5;
+		Item.MultiLine = True;
+		Item.VerticalStretch = False;
+	Else
+		
+		// Entering comment via context menu
+		CommandName = "ContextMenu" + AttributeName;
+		Command = Form.Commands.Add(CommandName);
+		Button = Form.Items.Add(CommandName,Type("FormButton"), Item.ContextMenu);
+		Command.ToolTip = NStr("ru = 'Ввести комментарий'; en = 'Enter comment'");
+		Command.Action = "Attachable_ContactInformationExecuteCommand";
+		Button.Title = NStr("ru = 'Ввести комментарий'; en = 'Enter comment'");
+		Button.CommandName = CommandName;
+		Command.ModifiesStoredData = True;
+		
+		AddItemDetails(Form, CommandName, 1);
+		AddItemDetails(Form, CommandName, 9, True);
+	EndIf;
+	
+	If Mandatory And IsNewCIKind Then
+		Item.AutoMarkIncomplete = True;
+	EndIf;
+	
+	// Editing in dialog
+	If CanEditContactInformationTypeInDialog(Type) Then
+		
+		Item.ChoiceButton = True;
+		
+		If EditInDialogOnly Then
+			Item.TextEdit = False;
+			Item.BackColor = StyleColors.ContactInformationEditedInDialogColor;
+		EndIf;
+		Item.SetAction("StartChoice", "Attachable_ContactInformationStartChoice");
+		
+	EndIf;
+	Item.SetAction("OnChange", "Attachable_ContactInformationOnChange");
+	
+	Return Item;
+	
+EndFunction
+
+Function Action(Form, Type, AttributeName, ActionGroup, AddressCount, HasComment = False)
+	
+	If (Type = Enums.ContactInformationTypes.WebPage
+		Or Type = Enums.ContactInformationTypes.EmailAddress)
+		Or (Type = Enums.ContactInformationTypes.Address And AddressCount > 1) Then
+		
+		// Action is available
+		CommandName = "Command" + AttributeName;
+		Command = Form.Commands.Add(CommandName);
+		AddItemDetails(Form, CommandName, 9, True);
+		Command.Representation = ButtonRepresentation.Picture;
+		Command.Action = "Attachable_ContactInformationExecuteCommand";
+		
+		Item = Form.Items.Add(CommandName,Type("FormButton"), ActionGroup);
+		AddItemDetails(Form, CommandName, 2);
+		Item.CommandName = CommandName;
+		
+		If Type = Enums.ContactInformationTypes.Address Then
+			
+			Item.Title = NStr("ru = 'Заполнить'; en = 'Fill'");
+			Command.ToolTip = NStr("ru = 'Заполнить адрес из другого поля'; en = 'Fill in address'");
+			Command.Picture = PictureLib.MoveLeft;
+			Command.ModifiesStoredData = True;
+			
+		ElsIf Type = Enums.ContactInformationTypes.WebPage Then
+			
+			Item.Title = NStr("ru = 'Перейти'; en = 'GoTo'");
+			Command.ToolTip = NStr("ru = 'Перейти по ссылке'; en = 'Go to URL'");
+			Command.Picture = PictureLib.ContactInformationGotoURL;
+			
+		ElsIf Type = Enums.ContactInformationTypes.EmailAddress Then
+			
+			Item.Title = NStr("ru = 'Написать письмо'; en = 'Create email message'");
+			Command.ToolTip = NStr("ru = 'Написать письмо'; en = 'Create an email message'");
+			Command.Picture = PictureLib.SendEmail;
+			
+		EndIf;
+		
+		If HasComment Then
+			
+			ActionPlaceholderName = "ActionPlaceholder" + AttributeName;
+			ActionPlaceholder = Form.Items.Add(ActionPlaceholderName, Type("FormDecoration"), ActionGroup);
+			ActionPlaceholder.Height = 1;
+			AddItemDetails(Form, ActionPlaceholderName, 2);
+			
+		EndIf;
+		
+	Else
+		
+		// Action is not available, using placeholder
+		ActionPlaceholderName = "ActionPlaceholder" + AttributeName;
+		Item = Form.Items.Add(ActionPlaceholderName, Type("FormDecoration"), ActionGroup);
+		AddItemDetails(Form, ActionPlaceholderName, 2);
+		If HasComment Then
+			Item.Height = 2;
+		ElsIf Type = Enums.ContactInformationTypes.Other Then
+			Item.Height = 5;
+		EndIf;
+		
+	EndIf;
+	
+	Return Item;
+	
+EndFunction
+
+Function Comment(Form, Comment, CommentName, GroupForPlacement)
+	
+	Item = Form.Items.Add(CommentName, Type("FormDecoration"), GroupForPlacement);
+	Item.Title = Comment;
+	
+	Item.TextColor = StyleColors.InformationText;
+	
+	Item.HorizontalStretch = True;
+	Item.VerticalStretch  = False;
+	Item.VerticalAlign  = ItemVerticalAlign.Top;
+	
+	Item.Height = 1;
+	
+	AddItemDetails(Form, CommentName, 2);
+	
+	Return Item;
+	
+EndFunction
+
+Function Group(GroupName, Form, Parent, Grouping, DeletionOrder)
+	
+	NewFolder = Form.Items.Add(GroupName, Type("FormGroup"), Parent);
+	NewFolder.Type = FormGroupType.UsualGroup;
+	NewFolder.ShowTitle = False;
+	NewFolder.Representation = UsualGroupRepresentation.None;
+	NewFolder.Group = Grouping;
+	AddItemDetails(Form, GroupName, DeletionOrder);
+	
+	Return NewFolder;
+	
+EndFunction
+
+////////////////////////////////////////////////////////////////////////////////
+// SL event handlers.
+
+////////////////////////////////////////////////////////////////////////////////
+// Filling additional attributes of Contact information tabular section.
+
+// Fills the additional attributes of Contact information tabular section for an address.
 //
 // Parameters:
-//    TabularSectionRow - TabularSectionRow - filled "Contact information" tabular section row.
-//    Source             - XDTODataObject  - contact information.
+//    TabularSectionRow - TabularSectionRow - contact information tabular section row to be filled.
+//    Source            - XDTODataObject    - contact information.
 //
-Procedure FillTabularSectionForAddressAttributes(TabularSectionRow, Source)
+Procedure FillTabularSectionAttributesForAddress(TabularSectionRow, Source)
 	
-	// Defaults
+	// Default preferences
 	TabularSectionRow.Country = "";
-	TabularSectionRow.State = "";
+	TabularSectionRow.Region = "";
 	TabularSectionRow.City  = "";
 	
 	Address = Source.Content;
 	
-	TargetNamespace = ContactInformationManagementClientServerReUse.TargetNamespace();
-	IsAddress = TypeOf(Address) = Type("XDTODataObject") AND Address.Type() = XDTOFactory.Type(TargetNamespace, "Address");
-	If IsAddress AND Address.Content <> Undefined Then 
+	Namespace = ContactInformationClientServerCached.Namespace();
+	IsAddress = TypeOf(Address) = Type("XDTODataObject") And Address.Type() = XDTOFactory.Type(Namespace, "Address");
+	If IsAddress And Address.Content <> Undefined Then 
 		TabularSectionRow.Country = Address.Country;
-		AddressRF = ContactInformationManagementService.RussianAddress(Address);
-		If AddressRF <> Undefined Then
-			// Russian address
-			TabularSectionRow.State = AddressRF.RFTerritorialEntity;
-			TabularSectionRow.City  = AddressRF.City;
+		AddressUS = ContactInformationInternal.HomeCountryAddress(Address);
+		If AddressUS <> Undefined Then
+			// Domestic address
+			TabularSectionRow.Region = AddressUS.Region;
+			TabularSectionRow.City   = AddressUS.City;
 		EndIf;
 	EndIf;
 	
 EndProcedure
 
-// Fills in additional attributes of the "Contact information" tabular section for email address.
+// Fills the additional attributes of Contact information tabular section for an email address.
 //
 // Parameters:
-//    TabularSectionRow - TabularSectionRow - filled "Contact information" tabular section row.
-//    Source             - XDTODataObject  - contact information.
+//    TabularSectionRow - TabularSectionRow - contact information tabular section row to be filled.
+//    Source            - XDTODataObject    - contact information.
 //
-Procedure FillTabularSectionForEMailAddressAttributes(TabularSectionRow, Source)
+Procedure FillTabularSectionAttributesForEmailAddress(TabularSectionRow, Source)
 	
-	Result = CommonUseClientServer.ParseStringWithPostalAddresses(TabularSectionRow.Presentation, False);
+	Result = CommonUseClientServer.SplitStringWithEmailAddresses(TabularSectionRow.Presentation, False);
 	
 	If Result.Count() > 0 Then
-		TabularSectionRow.EMail_Address = Result[0].Address;
+		TabularSectionRow.EmailAddress = Result[0].Address;
 		
-		Pos = Find(TabularSectionRow.EMail_Address, "@");
+		Pos = Find(TabularSectionRow.EmailAddress, "@");
 		If Pos <> 0 Then
-			TabularSectionRow.ServerDomainName = Mid(TabularSectionRow.EMail_Address, Pos+1);
+			TabularSectionRow.ServerDomainName = Mid(TabularSectionRow.EmailAddress, Pos+1);
 		EndIf;
 	EndIf;
 	
 EndProcedure
 
-// Fills in additional attributes of the "Contact information" tabular section for phone and address.
+// Fills the additional attributes of Contact information tabular section for phone and fax numbers.
 //
 // Parameters:
-//    TabularSectionRow - TabularSectionRow - filled "Contact information" tabular section row.
-//    Source             - XDTODataObject  - contact information.
+//    TabularSectionRow - TabularSectionRow - contact information tabular section row to be filled.
+//    Source            - XDTODataObject    - contact information.
 //
-Procedure FillTabularSectionForPhoneAttributes(TabularSectionRow, Source)
+Procedure FillTabularSectionAttributesForPhone(TabularSectionRow, Source)
 	
-	// Defaults
-	TabularSectionRow.PhoneNumberNoCodes = "";
+	// Default preferences
+	TabularSectionRow.PhoneNumberWithoutCodes = "";
 	TabularSectionRow.PhoneNumber         = "";
 	
 	Phone = Source.Content;
-	TargetNamespace = ContactInformationManagementClientServerReUse.TargetNamespace();
-	If Phone <> Undefined AND Phone.Type() = XDTOFactory.Type(TargetNamespace, "PhoneNumber") Then
+	Namespace = ContactInformationClientServerCached.Namespace();
+	If Phone <> Undefined And Phone.Type() = XDTOFactory.Type(Namespace, "PhoneNumber") Then
 		CountryCode     = Phone.CountryCode;
-		CityCode     = Phone.CityCode;
+		AreaCode     = Phone.AreaCode;
 		PhoneNumber = Phone.Number;
 		
 		If Left(CountryCode, 1) = "+" Then
@@ -2457,32 +2005,32 @@ Procedure FillTabularSectionForPhoneAttributes(TabularSectionRow, Source)
 			PhoneNumber = Left(PhoneNumber, Pos-1);
 		EndIf;
 		
-		TabularSectionRow.PhoneNumberNoCodes = RemoveSeparatorsToPhoneNumber(PhoneNumber);
-		TabularSectionRow.PhoneNumber         = RemoveSeparatorsToPhoneNumber(String(CountryCode) + CityCode + PhoneNumber);
+		TabularSectionRow.PhoneNumberWithoutCodes = RemoveSeparatorsFromPhoneNumber(PhoneNumber);
+		TabularSectionRow.PhoneNumber         = RemoveSeparatorsFromPhoneNumber(String(CountryCode) + AreaCode + PhoneNumber);
 	EndIf;
 	
 EndProcedure
 
-// Fills in additional attributes of the "Contact information" tabular section for phone and address.
+// Fills the additional attributes of Contact information tabular section for phone and fax numbers.
 //
 // Parameters:
-//    TabularSectionRow - TabularSectionRow - filled "Contact information" tabular section row.
-//    Source             - XDTODataObject  - contact information.
+//    TabularSectionRow - TabularSectionRow - contact information tabular section row to be filled.
+//    Source            - XDTODataObject    - contact information.
 //
-Procedure FillTabularSectionForWebpageAttributes(TabularSectionRow, Source)
+Procedure FillTabularSectionAttributesForWebPage(TabularSectionRow, Source)
 	
-	// Defaults
+	// Default preferences
 	TabularSectionRow.ServerDomainName = "";
 	
 	PageAddress = Source.Content;
-	TargetNamespace = ContactInformationManagementClientServerReUse.TargetNamespace();
-	If PageAddress <> Undefined AND PageAddress.Type() = XDTOFactory.Type(TargetNamespace, "WebSite") Then
-		AddressByString = PageAddress.Value;
+	Namespace = ContactInformationClientServerCached.Namespace();
+	If PageAddress <> Undefined And PageAddress.Type() = XDTOFactory.Type(Namespace, "Website") Then
+		AddressAsString = PageAddress.Value;
 		
-		// Delete protocol
-		ServerAddress = Right(AddressByString, StrLen(AddressByString) - Find(AddressByString, "://") );
+		// Deleting the protocol
+		ServerAddress = Right(AddressAsString, StrLen(AddressAsString) - Find(AddressAsString, "://") );
 		Pos = Find(ServerAddress, "/");
-		// Delete path
+		// Deleting the path
 		ServerAddress = ?(Pos = 0, ServerAddress, Left(ServerAddress,  Pos-1));
 		
 		TabularSectionRow.ServerDomainName = ServerAddress;
@@ -2491,77 +2039,76 @@ Procedure FillTabularSectionForWebpageAttributes(TabularSectionRow, Source)
 	
 EndProcedure
 
-// Fills in contact information in the receiver "Contact information" tabular section.
+// Fills the contact information in Contact information tabular section of the target.
 //
 // Parameters:
-//        * Receiver    - Arbitrary - Object in which you need to fill in CI.
-//        * KindCI       - CatalogRef.ContactInformationTypes - contact information kind filled
-//                                                                    in in the receiver.
-//        * StructureCI - ValuesList, String, Structure - contact information fields of values data.
-//        * TabularSectionRow - TabularSectionRow, Undefined - receiver data if contact
-//                                 information is filled in for a string.
-//                                                                      Undefined if
-//                                                                      contact information is filled in for a receiver.
+//     * Target            - Arbitrary - object whose contact information is to be filled.
+//     * CIKind            - CatalogRef.ContactInformationKinds - contact information kind filled in the target.
+//     * CIStructure       - ValueList, String, Structure - values of contact information fields.
+//     * TabularSectionRow - TabularSectionRow, Undefined - target data if contact information is filled
+//                                                          for a row. Undefined if contact information is 
+//                                                          filled for the target.
 //
-Procedure FillContactInformationTableParts(Receiver, CIKind, CIStructure, TabularSectionRow = Undefined)
+Procedure FillTabularSectionContactInformation(Target, CIKind, CIStructure, TabularSectionRow = Undefined)
 	
 	FilterParameters = New Structure;
 	If TabularSectionRow = Undefined Then
-		FillingData = Receiver;
+		FillingData = Target;
 	Else
 		FillingData = TabularSectionRow;
-		FilterParameters.Insert("RowIdTableParts", TabularSectionRow.RowIdTableParts);
+		FilterParameters.Insert("TabularSectionRowID", TabularSectionRow.TabularSectionRowID);
 	EndIf;
 	
 	FilterParameters.Insert("Kind", CIKind);
-	FoundStringsCI = Receiver.ContactInformation.FindRows(FilterParameters);
-	If FoundStringsCI.Count() = 0 Then
-		CIRow = Receiver.ContactInformation.Add();
+	FoundCIRows  = Target.ContactInformation.FindRows(FilterParameters);
+	If FoundCIRows.Count() = 0 Then
+		CIRow = Target.ContactInformation.Add();
 		If TabularSectionRow <> Undefined Then
-			CIRow.RowIdTableParts = TabularSectionRow.RowIdTableParts;
+			CIRow.TabularSectionRowID = TabularSectionRow.TabularSectionRowID;
 		EndIf;
 	Else
-		CIRow = FoundStringsCI[0];
+		CIRow = FoundCIRows[0];
 	EndIf;
 	
-	// From any understood - in XML.
-	FieldsValues = XMLContactInformation(CIStructure, , CIKind);
-	Presentation = PresentationContactInformation(FieldsValues);
+	// Converting from any readable format to XML
+	FieldValues = ContactInformationToXML(CIStructure, , CIKind);
+	Presentation = ContactInformationPresentation(FieldValues);
 	
 	CIRow.Type           = CIKind.Type;
-	CIRow.Type           = CIKind;
+	CIRow.Kind           = CIKind;
 	CIRow.Presentation = Presentation;
-	CIRow.FieldsValues = FieldsValues;
+	CIRow.FieldValues = FieldValues;
 	
-	FillAdditionalAttributesContactInformation(CIRow, Presentation, FieldsValues);
+	FillContactInformationAdditionalAttributes(CIRow, Presentation, FieldValues);
 EndProcedure
 
-// Checks email contact information and informs about errors. 
+// Validates an email contact information and reports any errors. 
 //
 // Parameters:
-//     Source      - XDTODataObject - contact information.
-//     InformationKind - CatalogRef.ContactInformationTypes - contact information kind with checking settings.
-//     AttributeName  - String - optional attribute name for binding error message.
+//     Source          - XDTODataObject - contact information.
+//     InformationKind - CatalogRef.ContactInformationKinds - contact information kind 
+//                                                            with validation settings. 
+//     AttributeName   - String - name of the attribute used to link the error message (optional).
 //
 // Returns:
-//     Number - errors level: 0 - no, 1 - nonlocking, 2 - locking.
+//     Number - error level (0 - none, 1 - noncritical, 2 - critical).
 //
-Function FillEMailErrors(Source, InformationKind, Val AttributeName = "", AttributeField = "")
+Function EmailFIllingErrors(Source, InformationKind, Val AttributeName = "", AttributeField = "")
 	
-	If Not InformationKind.CheckCorrectness Then
+	If Not InformationKind.CheckValidity Then
 		Return 0;
 	EndIf;
 	
 	ErrorString = "";
 	
-	EMail_Address = Source.Content;
-	TargetNamespace = ContactInformationManagementClientServerReUse.TargetNamespace();
-	If EMail_Address <> Undefined AND EMail_Address.Type() = XDTOFactory.Type(TargetNamespace, "Email") Then
+	EmailAddress = Source.Content;
+	Namespace = ContactInformationClientServerCached.Namespace();
+	If EmailAddress <> Undefined And EmailAddress.Type() = XDTOFactory.Type(Namespace, "Email") Then
 		Try
-			Result = CommonUseClientServer.ParseStringWithPostalAddresses(EMail_Address.Value);
+			Result = CommonUseClientServer.SplitStringWithEmailAddresses(EmailAddress.Value);
 			If Result.Count() > 1 Then
 				
-				ErrorString = NStr("en='Entry of the single email address is permitted';ru='Допускается ввод только одного адреса электронной почты'");
+				ErrorString = NStr("ru = 'Разрешен только один email'; en = 'Only one email address is allowed'");
 				
 			EndIf;
 		Except
@@ -2570,163 +2117,552 @@ Function FillEMailErrors(Source, InformationKind, Val AttributeName = "", Attrib
 	EndIf;
 	
 	If Not IsBlankString(ErrorString) Then
-		OutputMessageToUser(ErrorString, AttributeName, AttributeField);
-		ErrorsLevel = ?(InformationKind.ProhibitEntryOfIncorrect, 2, 1);
+		DisplayUserMessage(ErrorString, AttributeName, AttributeField);
+		ErrorLevel = ?(InformationKind.ProhibitInvalidEntry, 2, 1);
 	Else
-		ErrorsLevel = 0;
+		ErrorLevel = 0;
 	EndIf;
 	
-	Return ErrorsLevel;
+	Return ErrorLevel;
 	
 EndFunction
 
-// Fills in additional attributes of the "Contact information" tabular section string.
+// Validates an address contact information and reports any errors. Returns the error flag.
 //
 // Parameters:
-//    CIRow      - TabularSectionRow - string "Contact information".
-//    Presentation - String                     - value presentation.
-//    FieldsValues - ValueList, XDTOObject - fields value.
-//
-Procedure FillAdditionalAttributesContactInformation(CIRow, Presentation, FieldsValues)
-	
-	If TypeOf(FieldsValues) = Type("XDTODataObject") Then
-		ObjectCI = FieldsValues;
-	Else
-		ObjectCI = ContactInformationManagementService.ContactInformationFromXML(FieldsValues, CIRow.Type);
-	EndIf;
-	
-	InformationType = CIRow.Type;
-
-	If InformationType = Enums.ContactInformationTypes.EmailAddress Then
-		FillTabularSectionForEMailAddressAttributes(CIRow, ObjectCI);
-		
-	ElsIf InformationType = Enums.ContactInformationTypes.Address Then
-		FillTabularSectionForAddressAttributes(CIRow, ObjectCI);
-		
-	ElsIf InformationType = Enums.ContactInformationTypes.Phone Then
-		FillTabularSectionForPhoneAttributes(CIRow, ObjectCI);
-		
-	ElsIf InformationType = Enums.ContactInformationTypes.Fax Then
-		FillTabularSectionForPhoneAttributes(CIRow, ObjectCI);
-		
-	ElsIf InformationType = Enums.ContactInformationTypes.WebPage Then
-		FillTabularSectionForWebpageAttributes(CIRow, ObjectCI);
-		
-	EndIf;
-	
-EndProcedure
-
-// Checks contact information and writes it to the values table.
-//
-Function ValidateContactInformation(Presentation, FieldsValues, InformationKind, InformationType,
-	AttributeName, Comment = Undefined, PathToAttribute = "")
-	
-	SerializationText = ?(IsBlankString(FieldsValues), Presentation, FieldsValues);
-	
-	ObjectCI = ContactInformationManagementService.ContactInformationFromXML(SerializationText, InformationKind);
-	If Comment <> Undefined Then
-		ObjectCI.Comment = Comment;
-	EndIf;
-	ObjectCI.Presentation = Presentation;
-	
-	FieldsValues = ContactInformationManagementService.ContactInformationXDTOVXML(ObjectCI);
-	
-	If IsBlankString(Presentation) AND IsBlankString(ObjectCI.Comment) Then
-		Return 0;
-	EndIf;
-	
-	// Checking
-	If InformationType = Enums.ContactInformationTypes.EmailAddress Then
-		LevelErrors = FillEMailErrors(ObjectCI, InformationKind, AttributeName, PathToAttribute);
-	ElsIf InformationType = Enums.ContactInformationTypes.Address Then
-		LevelErrors = AddressFillingErrors(ObjectCI.Content, InformationKind, AttributeName);
-	ElsIf InformationType = Enums.ContactInformationTypes.Phone Then
-		LevelErrors = PhoneFillingErrors(ObjectCI, InformationKind, AttributeName);
-	ElsIf InformationType = Enums.ContactInformationTypes.Fax Then
-		LevelErrors = PhoneFillingErrors(ObjectCI, InformationKind, AttributeName);
-	ElsIf InformationType = Enums.ContactInformationTypes.WebPage Then
-		LevelErrors = ErrorsFillWebPages(ObjectCI, InformationKind, AttributeName);
-	Else
-		// Do not check other.
-		LevelErrors = 0;
-	EndIf;
-	
-	Return LevelErrors;
-	
-EndFunction
-
-// Checks address contact information and informs about errors. Returns errors check box.
-//
-// Parameters:
-//     Source      - XDTODataObject - contact information.
-//     InformationKind - CatalogRef.ContactInformationTypes - contact information kind with checking settings.
-//     AttributeName  - String - optional attribute name for binding error message.
+//     Source          - XDTODataObject - contact information.
+//     InformationKind - CatalogRef.ContactInformationKinds - contact information kind 
+//                                                            with validation settings.
+//     AttributeName   - String - name of the attribute used to link the error message (optional).
 //
 // Returns:
-//     Number - errors level: 0 - no, 1 - nonlocking, 2 - locking.
+//     Number - error level (0 - none, 1 - noncritical, 2 - critical).
 //
-Function AddressFillingErrors(Source, InformationKind, AttributeName = "", AttributeField = "") Export
-	
-	If Not InformationKind.CheckCorrectness Then
+Function AddressFillErrors(Source, InformationKind, AttributeName = "", AttributeField = "")
+	If Not InformationKind.CheckValidity Then
 		Return 0;
 	EndIf;
 	HasErrors = False;
 	
-	If Not ContactInformationManagementService.ItsRussianAddress(Source) Then
-		Return 0;
-	EndIf;
-	TargetNamespace = ContactInformationManagementClientServerReUse.TargetNamespace();
-	
-	If Source <> Undefined AND Source.Type() = XDTOFactory.Type(TargetNamespace, "Address") Then
-		Address = Source;
-	Else
-		Address = Source.Content;
-	EndIf;
-	
-	If Address <> Undefined AND Address.Type() = XDTOFactory.Type(TargetNamespace, "Address") Then
-		ErrorList = ContactInformationManagementService.AddressFillingErrorsXDTO(Address, InformationKind);
+	Address = Source.Content;
+	Namespace = ContactInformationClientServerCached.Namespace();
+	If Address <> Undefined And Address.Type() = XDTOFactory.Type(Namespace, "Address") Then
+		ErrorList = ContactInformationInternal.AddressFillErrors(Address, InformationKind);
 		For Each Item In ErrorList Do
-			OutputMessageToUser(Item.Presentation, AttributeName, AttributeField);
+			DisplayUserMessage(Item.Presentation, AttributeName, AttributeField);
 			HasErrors = True;
 		EndDo;
 	EndIf;
 	
-	If HasErrors AND InformationKind.ProhibitEntryOfIncorrect Then
+	If HasErrors And InformationKind.ProhibitInvalidEntry Then
 		Return 2;
 	ElsIf HasErrors Then
 		Return 1;
 	EndIf;
 	
 	Return 0;
-EndFunction
+EndFunction    
 
-// Checks phone contact information and informs about errors. Returns errors check box.
+// Validates a phone contact information and reports any errors. Returns the error flag.
 //
-// Parameters:
-//     Source      - XDTODataObject - contact information.
-//     InformationKind - CatalogRef.ContactInformationTypes - contact information kind with checking settings.
-//     AttributeName  - String - optional attribute name for binding error message.
+//     Source          - XDTODataObject - contact information.
+//     InformationKind - CatalogRef.ContactInformationKinds - contact information kind
+//                                                            with validation settings.
+//     AttributeName   - String - name of the attribute used to link the error message (optional).
 //
 // Returns:
-//     Number - errors level: 0 - no, 1 - nonlocking, 2 - locking.
+//     Number - error level (0 - none, 1 - noncritical, 2 - critical).
 //
 Function PhoneFillingErrors(Source, InformationKind, AttributeName = "")
 	Return 0;
 EndFunction
 
-// Checks web page contact information and informs about errors. Returns errors check box.
+// Validates a webpage contact information and reports any errors. Returns the error flag.
 //
 // Parameters:
-//     Source      - XDTODataObject - contact information.
-//     InformationKind - CatalogRef.ContactInformationTypes - contact information kind with checking settings.
-//     AttributeName  - String - optional attribute name for binding error message.
+//     Source          - XDTODataObject - contact information.
+//     InformationKind - CatalogRef.ContactInformationKinds - contact information kind
+//                                                            with validation settings.
+//     AttributeName   - String - name of the attribute used to link the error message (optional).
 //
 // Returns:
-//     Number - errors level: 0 - no, 1 - nonlocking, 2 - locking.
+//     Number - error level (0 - none, 1 - noncritical, 2 - critical).
 //
-Function ErrorsFillWebPages(Source, InformationKind, AttributeName = "")
+Function WebpageFillingErrors(Source, InformationKind, AttributeName = "")
 	Return 0;
 EndFunction
+
+// Removes separators from a phone number.
+//
+// Parameters:
+//    PhoneNumber - String - phone or fax number.
+//
+// Returns:
+//     String - phone or fax number with separators removed.
+//
+Function RemoveSeparatorsFromPhoneNumber(Val PhoneNumber)
+	
+	Pos = Find(PhoneNumber, ",");
+	If Pos <> 0 Then
+		PhoneNumber = Left(PhoneNumber, Pos-1);
+	EndIf;
+	
+	PhoneNumber = StrReplace(PhoneNumber, "-", "");
+	PhoneNumber = StrReplace(PhoneNumber, " ", "");
+	PhoneNumber = StrReplace(PhoneNumber, "+", "");
+	
+	Return PhoneNumber;
+	
+EndFunction
+
+// Validates contact information and writes it to a value table.
+//
+Function ValidateContactInformation(Presentation, FieldValues, InformationKind, InformationType,
+	AttributeName, Comment = Undefined, AttributePath = "") Export
+	
+	SerializationText = ?(IsBlankString(FieldValues), Presentation, FieldValues);
+	
+	CIObject = ContactInformationInternal.ContactInformationDeserialization(SerializationText, InformationKind);
+	If Comment <> Undefined Then
+		ContactInformationInternal.ContactInformationComment(CIObject, Comment);
+	EndIf;
+	
+	ContactInformationInternal.ContactInformationPresentation(CIObject, Presentation);
+	FieldValues = ContactInformationInternal.ContactInformationSerialization(CIObject);
+	
+	If IsBlankString(Presentation) And IsBlankString(CIObject.Comment) Then
+		Return 0;
+	EndIf;
+	
+	// Checking
+	If InformationType = Enums.ContactInformationTypes.EmailAddress Then
+		ErrorLevel = EmailFIllingErrors(CIObject, InformationKind, AttributeName, AttributePath);
+	ElsIf InformationType = Enums.ContactInformationTypes.Address Then
+		ErrorLevel = AddressFillErrors(CIObject, InformationKind, AttributeName);
+	ElsIf InformationType = Enums.ContactInformationTypes.Phone Then
+		ErrorLevel = PhoneFillingErrors(CIObject, InformationKind, AttributeName);
+	ElsIf InformationType = Enums.ContactInformationTypes.Fax Then
+		ErrorLevel = PhoneFillingErrors(CIObject, InformationKind, AttributeName);
+	ElsIf InformationType = Enums.ContactInformationTypes.WebPage Then
+		ErrorLevel = WebpageFillingErrors(CIObject, InformationKind, AttributeName);
+	Else
+		// No validation is performed for other information types
+		ErrorLevel = 0;
+	EndIf;
+	
+	Return ErrorLevel;
+	
+EndFunction
+
+Procedure WriteContactInformation(Object, FieldValues, InformationKind, InformationType, RowID = 0) Export
+	
+	CIObject = ContactInformationInternal.ContactInformationDeserialization(FieldValues, InformationKind);
+	
+	If Not ContactInformationInternal.XDTOContactInformationFilled(CIObject) Then
+		Return;
+	EndIf;
+	
+	NewRow = Object.ContactInformation.Add();
+	NewRow.Presentation   = CIObject.Presentation;
+	NewRow.FieldValues    = ContactInformationInternal.ContactInformationSerialization(CIObject);
+	NewRow.Kind           = InformationKind;
+	NewRow.Type           = InformationType;
+	
+	If ValueIsFilled(RowID) Then
+		NewRow.TabularSectionRowID = RowID;
+	EndIf;
+	
+	// Filling additional attributes of the tabular section
+	If InformationType = Enums.ContactInformationTypes.EmailAddress Then
+		FillTabularSectionAttributesForEmailAddress(NewRow, CIObject);
+		
+	ElsIf InformationType = Enums.ContactInformationTypes.Address Then
+		FillTabularSectionAttributesForAddress(NewRow, CIObject);
+		
+	ElsIf InformationType = Enums.ContactInformationTypes.Phone Then
+		FillTabularSectionAttributesForPhone(NewRow, CIObject);
+		
+	ElsIf InformationType = Enums.ContactInformationTypes.Fax Then
+		FillTabularSectionAttributesForPhone(NewRow, CIObject);
+		
+	ElsIf InformationType = Enums.ContactInformationTypes.WebPage Then
+		FillTabularSectionAttributesForWebPage(NewRow, CIObject);
+		
+	EndIf;
+	
+EndProcedure
+
+////////////////////////////////////////////////////////////////////////////////
+// Internal procedures.
+
+// Fills the additional attributes of Contact information tabular section row.
+//
+// Parameters:
+//    CIRow        - TabularSectionRow     - contact information row.
+//    Presentation - String                - value presentation.
+//    FieldValues  - ValueList, XTDOObject - field values.
+//
+Procedure FillContactInformationAdditionalAttributes(CIRow, Presentation, FieldValues)
+	
+	If TypeOf(FieldValues) = Type("XDTODataObject") Then
+		CIObject = FieldValues;
+	Else
+		CIObject = ContactInformationInternal.ContactInformationDeserialization(FieldValues, CIRow.Kind);
+	EndIf;
+	
+	InformationType = CIRow.Type;
+
+	If InformationType = Enums.ContactInformationTypes.EmailAddress Then
+		FillTabularSectionAttributesForEmailAddress(CIRow, CIObject);
+		
+	ElsIf InformationType = Enums.ContactInformationTypes.Address Then
+		FillTabularSectionAttributesForAddress(CIRow, CIObject);
+		
+	ElsIf InformationType = Enums.ContactInformationTypes.Phone Then
+		FillTabularSectionAttributesForPhone(CIRow, CIObject);
+		
+	ElsIf InformationType = Enums.ContactInformationTypes.Fax Then
+		FillTabularSectionAttributesForPhone(CIRow, CIObject);
+		
+	ElsIf InformationType = Enums.ContactInformationTypes.WebPage Then
+		FillTabularSectionAttributesForWebPage(CIRow, CIObject);
+		
+	EndIf;
+	
+EndProcedure
+
+// Returns an empty address structure.
+//
+// Returns:
+//    Structure - address description containing field names (keys) and field values.
+//
+Function GetEmptyAddressStructure() Export
+	
+	Return ContactInformationManagementClientServer.AddressFieldStructure();
+	
+EndFunction
+
+// Returns the flag specifying whether contact information can be edited in a dialog.
+//
+// Parameters:
+//    Type - EnumRef.ContactInformationTypes - contact information type.
+//
+// Returns:
+//    Boolean - dialog information edit flag.
+//
+Function CanEditContactInformationTypeInDialog(Type)
+	
+	If Type = Enums.ContactInformationTypes.Address Then
+		Return True;
+	ElsIf Type = Enums.ContactInformationTypes.Phone Then
+		Return True;
+	ElsIf Type = Enums.ContactInformationTypes.Fax Then
+		Return True;
+	Else
+		Return False;
+	EndIf;
+	
+EndFunction
+
+// Returns the name of a document tabular section by contact information kind.
+//
+// Parameters:
+//    CIKind     - CatalogRef.ContactInformationKinds - contact information kind.
+//    ObjectName - String                             - full name of a metadata object.
+//
+// Returns:
+//    String - tabular section name, or an empty string if the tabular section is not available.
+//
+Function TabularSectionNameByCIKind(CIKind, ObjectName) Export
+	
+	CIKindGroup = CommonUse.ObjectAttributeValue(CIKind, "Parent");
+	CIKindName = CommonUse.PredefinedName(CIKindGroup);
+	Pos = Find(CIKindName, ObjectName);
+	
+	Return Mid(CIKindName, Pos + StrLen(ObjectName));
+	
+EndFunction
+
+Procedure SetValidationAttributeValues(Object, ValidationSettings = Undefined)
+	
+	Object.CheckValidity				= ?(ValidationSettings = Undefined, False, ValidationSettings.CheckValidity);
+	Object.DomesticAddressOnly			= False;
+	Object.IncludeCountryInPresentation	= False;
+	Object.ProhibitInvalidEntry			= ?(ValidationSettings = Undefined, False, ValidationSettings.ProhibitInvalidEntry);
+	Object.HideObsoleteAddresses		= False;
+	
+EndProcedure
+
+Procedure AddAttributeToDetails(Form, CIRow, IsNewCIKind, IsTabularSectionAttribute = False)
+	
+	NewRow = Form.ContactInformationAdditionalAttributeInfo.Add();
+	NewRow.AttributeName  = CIRow.AttributeName;
+	NewRow.Kind           = CIRow.Kind;
+	NewRow.Type           = CIRow.Type;
+	NewRow.IsTabularSectionAttribute = IsTabularSectionAttribute;
+	
+	If IsBlankString(CIRow.FieldValues) Then
+		NewRow.FieldValues = "";
+	Else
+		NewRow.FieldValues = ContactInformationManagementClientServer.ConvertStringToFieldList(CIRow.FieldValues);
+	EndIf;
+	
+	NewRow.Presentation = CIRow.Presentation;
+	NewRow.Comment      = CIRow.Comment;
+	
+	If Not IsTabularSectionAttribute Then
+		
+		Form[CIRow.AttributeName] = CIRow.Presentation;
+		
+	EndIf;
+	
+	CIKindStructure = ContactInformationKindStructure(CIRow.Kind);
+	CIKindStructure.Insert("Ref", CIRow.Kind);
+	
+	If IsNewCIKind And CIKindStructure.AllowMultipleValueInput And Not IsTabularSectionAttribute Then
+		
+		Form.AddedContactInformationItemList.Add(CIKindStructure, CIRow.Kind.Description);
+		
+	EndIf;
+	
+EndProcedure
+
+Procedure DeleteCommandsAndFormItems(Form)
+	
+	AddedItems = Form.AddedContactInformationItems;
+	AddedItems.Sort("Priority");
+	
+	For Each ElementToDelete In AddedItems Do
+		
+		If ElementToDelete.IsCommand Then
+			Form.Commands.Delete(Form.Commands[ElementToDelete.ItemName]);
+		Else
+			Form.Items.Delete(Form.Items[ElementToDelete.ItemName]);
+		EndIf;
+		
+	EndDo;
+	
+EndProcedure
+
+Procedure DisplayUserMessage(MessageText, AttributeName, AttributeField)
+	
+	AttributeName = ?(IsBlankString(AttributeField), AttributeName, "");
+	CommonUseClientServer.MessageToUser(MessageText,,AttributeField, AttributeName);
+	
+EndProcedure
+
+////////////////////////////////////////////////////////////////////////////////
+// Infobase update.
+
+// Adds update handlers that are required by the subsystem.
+//
+// Parameters:
+//  Handlers - ValueTable - see the description of the NewUpdateHandlerTable function 
+//                          in the InfobaseUpdate common module.
+// 
+Procedure OnAddUpdateHandlers(Handlers) Export
+	
+EndProcedure
+
+// Updates a specified contact information kind.
+//
+// Parameters:
+//     Kind - CatalogRef.ContactInformationKinds, String - Reference to a contact information kind
+//                                                           or a predefined item ID. 
+//     Type - EnumRef.ContactInformationTypes, String - Contact information type or its ID.
+//     ToolTip - String                               - Tooltip for the contact information kind.
+//     CanChangeEditMode - Boolean                    - True if kind settings can be modified, False otherwise.
+//     EditInDialogOnly  - Boolean                    - True if data can only be edited in a dialog, False otherwise.
+//     Mandatory         - Boolean                    - True if the field is mandatory, False otherwise.
+//     Order - Number, Undefined                      - Contact information kind order (relative position in the list): 
+//                                                          Undefined   - do not reassign,
+//                                                          0           - assign automatically,
+//                                                          Number > 0  - assign the specified position.
+//    AllowMultipleValueInput - Boolean               - flag specifying whether additional input fields are used for this kind.
+//    ValidationSettings - Structure, Undefined       - validation settings for a contact information kind.
+//        For the Address type, a structure containing the following fields:
+//            * DomesticAddressOnly   - Boolean - True if only domestic addresses are used, False otherwise.
+//            * CheckValidity         - Boolean - True if address validation by classifier is performed (provided that DomesticAddressOnly = True), False otherwise.
+//            * ProhibitInvalidEntry  - Boolean - True if user must be prohibited from entering invalid addresses (provided that CheckValidity = True), False otherwise.
+//            * HideObsoleteAddresses - Boolean - True if obsolete addresses must not be displayed during input (provided that DomesticAddressOnly = True), False otherwise.
+//            * IncludeCountryInPresentation - Boolean - True if the country description must be included in the address presentation, False otherwise.
+//        For the EmailAddress type, a structure containing the following fields:
+//            * CheckValidity       - Boolean  - True if email address validation is necessary, False otherwise.
+//            * ProhibitInvalidEntry - Boolean - True if user must be prohibited from entering invalid addresses (provided that CheckValidity = True), False otherwise.
+//        For any other types, as well as for the default settings, Undefined is used.
+//
+// Comment:
+//     To set CheckValidity to True, you first need to set ProhibitInvalidEntry to True.
+//
+// When using the Order parameter, make sure that the assigned order value is unique. 
+// If any non-unique order values are identified in this same group after update, users cannot 
+// further edit order values.
+// Generally, we recommend that you either refrain from using this parameter to reassign 
+// the default item order, or that you set it to 0 (in this case, the order will be assigned 
+// automatically by the Item order setup subsystem during procedure execution).
+// To reassign several contact information kinds in a given relative order without moving them 
+// to the beginning of the list, you only need to call the procedure in sequence 
+// for each required contact information kind (with order value set to 0).
+// If a predefined contact information kind is added to the infobase, we recommend 
+// that you do not assign its order explicitly.
+//
+Procedure RefreshContactInformationKind(Kind, Type, ToolTip, CanChangeEditMode, EditInDialogOnly, Mandatory, Order = Undefined, AllowMultipleValueInput = False, ValidationSettings = Undefined) Export
+	
+	If TypeOf(Kind) = Type("String") Then
+		Object = Catalogs.ContactInformationKinds[Kind].GetObject();
+	Else
+		Object = Kind.GetObject();
+	EndIf;
+	
+	If TypeOf(Type) = Type("String") Then
+		TypeToSet = Enums.ContactInformationTypes[Type];
+	Else
+		TypeToSet = Type;
+	EndIf;
+	
+	Object.Type                      = TypeToSet;
+	Object.ToolTip                   = ToolTip;
+	Object.CanChangeEditMode         = CanChangeEditMode;
+	Object.EditInDialogOnly          = EditInDialogOnly;
+	Object.Mandatory                 = Mandatory;
+	Object.AllowMultipleValueInput   = AllowMultipleValueInput;
+	
+	ValidateSettings = TypeOf(ValidationSettings) = Type("Structure");
+	ParameterError   = NStr("ru = 'Параметры проверки адреса'; en = 'Invalid address validation settings'");
+	
+	If ValidateSettings And TypeToSet = Enums.ContactInformationTypes.Address Then
+		If ValidationSettings.DomesticAddressOnly Then
+			If Not ValidationSettings.CheckValidity Then
+				If ValidationSettings.ProhibitInvalidEntry Then
+					Raise ParameterError;
+				EndIf;
+			Else
+				// See comment above
+				If Not ValidationSettings.ProhibitInvalidEntry Then
+					Raise ParameterError;
+				EndIf;
+			EndIf;
+			
+		Else
+			If ValidationSettings.CheckValidity Or ValidationSettings.ProhibitInvalidEntry Or ValidationSettings.HideObsoleteAddresses Then
+				Raise ParameterError;
+			EndIf;
+			
+		EndIf;
+		
+		FillPropertyValues(Object, ValidationSettings);
+		
+	ElsIf ValidateSettings And TypeToSet = Enums.ContactInformationTypes.EmailAddress Then
+		If Not ValidationSettings.CheckValidity Then
+			If ValidationSettings.ProhibitInvalidEntry Then
+				Raise ParameterError;
+			EndIf;
+		Else
+			// See comment above
+			If Not ValidationSettings.ProhibitInvalidEntry Then
+				Raise ParameterError;
+			EndIf;
+		EndIf;
+		SetValidationAttributeValues(Object, ValidationSettings);
+		
+	Else
+		SetValidationAttributeValues(Object);
+		
+	EndIf;
+	
+	If Order <> Undefined Then
+		Object.AdditionalOrderingAttribute = Order;
+	EndIf;
+	
+	InfobaseUpdate.WriteData(Object);
+EndProcedure
+
+// Gets values for a specified contact information type from an object.
+//
+// Parameters
+//    Ref                    - AnyRef - reference to the contact information owner object 
+//                                      (company, counterparty, partner, and so on). 
+//    ContactInformationType - EnumRef.ContactInformationTypes.
+//
+// Returns:
+//    ValueTable - with the following columns:
+//        * Value - String - value represented as a string. 
+//        * Kind  - String - contact information kind presentation.
+//
+Function ObjectContactInformationValues(Ref, ContactInformationType) Export
+	
+	ObjectArray = New Array;
+	ObjectArray.Add(Ref);
+	
+	ObjectContactInformation = ObjectsContactInformation(ObjectArray, ContactInformationType);
+	
+	Query = New Query;
+	
+	Query.SetParameter("ObjectContactInformation", ObjectContactInformation);
+	
+	Query.Text =
+	"SELECT
+	|	ObjectContactInformation.Presentation,
+	|	ObjectContactInformation.Kind
+	|INTO ObjectContactInformationTemporaryTable
+	|FROM
+	|	&ObjectContactInformation AS ObjectContactInformation
+	|;
+	|
+	|////////////////////////////////////////////////////////////////////////////////
+	|SELECT
+	|	ObjectContactInformation.Presentation AS Value,
+	|	PRESENTATION(ObjectContactInformation.Kind) AS Kind
+	|FROM
+	|	ObjectContactInformationTemporaryTable AS ObjectContactInformation";
+	
+	Return Query.Execute().Unload();
+	
+EndFunction
+
+// Constructor used to create a structure containing fields compatible 
+//  with the contact information kind catalog.
+//
+// Parameters:
+//     Source - CatalogRef.ContactInformationKinds - data source (optional).
+//
+// Returns:
+//     Structure - containing fields compatible with the contact information kind catalog.
+//
+Function ContactInformationKindStructure(Val Source = Undefined) Export
+	
+	MetaAttributes = Metadata.Catalogs.ContactInformationKinds.Attributes;
+	
+	If TypeOf(Source) = Type("CatalogRef.ContactInformationKinds") Then
+		Attributes = "Description";
+		For Each Meta In MetaAttributes Do
+			Attributes = Attributes + "," + Meta.Name;
+		EndDo;
+		
+		Return CommonUse.ObjectAttributeValues(Source, Attributes);
+	EndIf;
+	
+	Result = New Structure("Description", "");
+	For Each Meta In MetaAttributes Do
+		Result.Insert(Meta.Name, Meta.Type.AdjustValue());
+	EndDo;
+	
+	Return Result;
+EndFunction
+
+#EndRegion
+
+#EndRegion
+
+#Region ServiceProceduresAndFunctions
+
+// Handler of the "FillingDataProcessor" event subscription.
+//
+Procedure FillingContactInformation(Source, FillingData, FillingText, StandardProcessing) Export
+	
+	ObjectContactInformationFillingDataProcessor(Source, FillingData);
+	
+EndProcedure
 
 Procedure ObjectContactInformationFillingDataProcessor(Object, Val FillingData)
 	
@@ -2759,7 +2695,7 @@ Procedure ObjectContactInformationFillingDataProcessor(Object, Val FillingData)
 			For Each CIRow In ContactInformation Do
 				NewCIRow = Object.ContactInformation.Add();
 				FillPropertyValues(NewCIRow, CIRow, , "FieldsValues");
-				NewCIRow.FieldsValues = XMLContactInformation(CIRow.FieldsValues, CIRow.Presentation, CIRow.Type);
+				NewCIRow.FieldsValues = ContactInformationToXML(CIRow.FieldsValues, CIRow.Presentation, CIRow.Type);
 			EndDo;
 			
 		EndIf;
@@ -2789,4 +2725,244 @@ Function IsObjectAttribute(Val AttributeName, Val Object)
 	Return CheckAttribute.Description = Undefined;
 EndFunction
 
+// Returns parameters structure of contact information kind for a definite type
+// 
+// Parameters:
+//    Type - EnumRef.ContactInformationTypes, String - contact information type
+//                                                                for the CheckSettings property filling
+// 
+// Returns:
+//    Structure - contains structure with fields:
+//        * Kind - CatalogRef.ContactInformationTypes, String   - Ref to the contact
+//                                                                      information kind or the predefined item ID.
+//        * Type - EnumRef.ContactInformationTypes - Contact information type
+//                                                                      or its identifier.
+//        * Tooltip - String                                        - Tooltip to the contact information kind.
+//        * Order - Number, Undefined                             - Contact information kind order,
+//                                                                      position in list relatively to the other items:
+//                                                                          Undefined - not reassign;
+//                                                                          0            - assign automatically;
+//                                                                          Number > 0    - assign specified order.
+//        * CanChangeEditingMethod - Boolean                - True if there is an
+//                                                                      opportunity to change editing method only in the dialog, False - else.
+//        * EditOnlyInDialog - Boolean                     - True if you edit only
+//                                                                      in the dialog, False - else.
+//        * Mandatory                                    - Boolean - True if mandatory
+//                                                                      field filling is required, False - else.
+//        * AllowSeveralValuesOutput - Boolean                  - Shows that it
+//                                                                      is possible to use additional input fields for the specified kind.
+//        * CheckSettings - Structure, Undefined               - Settings of the contact information kind check.
+//            For the Address type - Structure containing fields:
+//                * DomesticAddressOnly        - Boolean - True if only Russian addresses are used, False -
+//                                                          else.
+//                * CheckValidity        - Boolean - True if address is checked by
+//                                                          KLADR profiles (Only if DomesticAddressOnly = True), False - else.
+//                * ProhibitEntryIncorrect   - Boolean - True if it is required
+//                                                          to prohibit user to write incorrect
+//                                                          address (Only if CheckValidity = True), False - else.
+//                * HideObsoleteAddresses   - Boolean - True if it is not required to
+//                                                          show irrelevant addresses while entering
+//                                                          (Only if DomesticAddressOnly = True), False - else.
+//                * IncludeCountriesToPresentation - Boolean - True if it is required to
+//                                                          include country name to the address presentation, False - else.
+//            For the EmailAddress type - Structure containing fields:
+//                * CheckValidity        - Boolean - True if it is required to check
+//                                                          whether email address is correct, False - else.
+//                * ProhibitEntryIncorrect   - Boolean - True if it is required
+//                                                          to prohibit user to
+//                                                          write incorrect address (Only if CheckValidity = True), False - else.
+//            For the rest of the types or to specify the default settings Undefined is used.
+// 
+// Note:
+//    To set the CheckValidity parameter to the True value, you
+//    should set the ProhibitEntryIncorrect parameter to the True value.
+// 
+//    While using the Order parameter, you should closely monitor the uniqueness of the assigned value. If
+//    after the update order values are non unique, then user will
+//    not be able to set order.
+//    It is generally recommended not to use this parameter (the order does not change)
+//    or to fill it in with 0 value (the order will be automatically assigned to the "Items order setting" subsystem while executing the procedure).
+//    To put CI kinds in a particular order relative to each other without explicit
+//    placement at the top of the list, it is enough to call this procedure
+//    in the required sequence for each CI kind with order specification 0. If a definite predefined CI kind is added to the existing ones in
+//    IB, it is not recommended to assign order explicitly.
+// 
+Function ContactInformationKindParameters(Type = Undefined) Export
+	
+	If TypeOf(Type) = Type("String") Then
+		SetType = Enums.ContactInformationTypes[Type];
+	Else
+		SetType = Type;
+	EndIf;
+	
+	ParametersKind = New Structure;
+	ParametersKind.Insert("Kind");
+	ParametersKind.Insert("Type", SetType);
+	ParametersKind.Insert("ToolTip");
+	ParametersKind.Insert("Order");
+	ParametersKind.Insert("CanChangeEditMode", False);
+	ParametersKind.Insert("EditInDialogOnly", False);
+	ParametersKind.Insert("Mandatory", False);
+	ParametersKind.Insert("AllowMultipleValueInput", False);
+	
+	If SetType = Enums.ContactInformationTypes.Address Then
+		VerificationSettings = New Structure;
+		VerificationSettings.Insert("DomesticAddressOnly", False);
+		VerificationSettings.Insert("CheckValidity", False);
+		VerificationSettings.Insert("ProhibitInvalidEntry", False);
+		VerificationSettings.Insert("HideObsoleteAddresses", False);
+		VerificationSettings.Insert("IncludeCountryInPresentation", False);
+	ElsIf SetType = Enums.ContactInformationTypes.EmailAddress Then
+		VerificationSettings = New Structure;
+		VerificationSettings.Insert("CheckValidity", False);
+		VerificationSettings.Insert("ProhibitInvalidEntry", False);
+	ElsIf SetType = Enums.ContactInformationTypes.Phone Then
+		VerificationSettings = New Structure;
+	Else
+		VerificationSettings = Undefined;
+	EndIf;
+	
+	ParametersKind.Insert("VerificationSettings", VerificationSettings);
+	
+	Return ParametersKind;
+	
+EndFunction
+
+// Sets contact information kind properties.
+// 
+// Parameters:
+//    Parameters - Structure - See description in the ContactInformationKindParameters function
+// 
+Procedure SetContactInformationKindProperties(Parameters) Export
+	
+	If TypeOf(Parameters.Kind) = Type("String") Then
+		Object = Catalogs.ContactInformationKinds[Parameters.Kind].GetObject();
+	Else
+		Object = Parameters.Kind.GetObject();
+	EndIf;
+	
+	Object.Type						= Parameters.Type;
+	Object.CanChangeEditMode		= Parameters.CanChangeEditMode;
+	Object.EditInDialogOnly         = Parameters.EditInDialogOnly;
+	Object.Mandatory				= Parameters.Mandatory;
+	Object.AllowMultipleValueInput	= Parameters.AllowMultipleValueInput;
+	
+	VerificationSettings	= Parameters.VerificationSettings;
+	CheckSettings	= TypeOf(VerificationSettings) = Type("Structure");
+	
+	If CheckSettings And Parameters.Type = Enums.ContactInformationTypes.Address Then
+		FillPropertyValues(Object, VerificationSettings);
+	ElsIf CheckSettings And Parameters.Type = Enums.ContactInformationTypes.EmailAddress Then
+		SetValidationAttributeValues(Object, VerificationSettings);
+	ElsIf CheckSettings And Parameters.Type = Enums.ContactInformationTypes.Phone Тогда
+	Else
+		SetValidationAttributeValues(Object);
+	EndIf;
+	
+	If Parameters.Order <> Undefined Then
+		Object.AdditionalOrderingAttribute = Parameters.Order;
+	EndIf;
+	
+	InfobaseUpdate.WriteData(Object);
+	
+EndProcedure
+
+// It parses  contact information presentation and returns XML string.
+// For mailing addresses correct parsing is not guaranteed.
+//
+//  Parameters:
+//      Presentation - String  - row contact information presentation displayed to a user.
+//      ExpectedKind  - CatalogRef.ContactInformationTypes, EnumRef.ContactInformationTypes, Structure
+//
+// Returns:
+//      String - contact information in XML.
+//
+Function ContactInformationXMLByPresentation(Presentation, ExpectedKind) Export
+	
+	Return ContactInformationInternal.ContactInformationSerialization(
+		ContactInformationInternal.ContactInformationParsing(Presentation, ExpectedKind));
+		
+EndFunction
+
+// It parses  contact information presentation and returns XML string.
+// For mailing addresses correct parsing is not guaranteed.
+//
+//  Parameters:
+//      Presentation - String  - row contact information presentation displayed to a user.
+//      ExpectedKind  - CatalogRef.ContactInformationTypes, EnumRef.ContactInformationTypes, Structure
+//
+// Returns:
+//      String - contact information in XML.
+//
+Function PresentationXMLContactInformation(Presentation, ExpectedKind) Export
+	
+	Return ContactInformationInternal.ContactInformationSerialization(
+		ContactInformationInternal.ContactInformationParsing(Presentation, ExpectedKind));
+		
+EndFunction
+
+// Receives comment for contact information.
+//
+// Parameters:
+//   XMLString   - XDTOObject, Row - object or contact information XML. 
+//   Comment - String - comment new value.
+//
+//
+Procedure SetContactInformationComment(XMLString, Val Comment) Export
+	
+	IsRow = TypeOf(XMLString) = Type("String");
+	If IsRow AND Not ContactInformationClientServer.IsXMLString(XMLString) Then
+		// Previous field values format, no comment.
+		Return;
+	EndIf;
+	
+	XDTODataObject = ?(IsRow, ContactInformationInternal.ContactInformationDeserialization(XMLString), XMLString);
+	XDTODataObject.Comment = Comment;
+	If IsRow Then
+		XMLString = ContactInformationInternal.ContactInformationSerialization(XDTODataObject);
+	EndIf;
+	
+EndProcedure
+
+Procedure CheckContactInformationAttributesPresence(Form, ArrayOfAddedDetails)
+	
+	FormAttributesList = Form.GetAttributes();
+	
+	CreateContactInformationParameters = True;
+	CreateContactInformationTable = True;
+	For Each Attribute In FormAttributesList Do
+		If Attribute.Name = "ContactInformationParameters" Then
+			CreateContactInformationParameters = False;
+		ElsIf Attribute.Name = "ContactInformationAdditionalAttributeInfo" Then
+			CreateContactInformationTable = False;
+		EndIf;
+	EndDo;
+	
+	If CreateContactInformationTable Then
+		
+		String500 = New TypeDescription("String", , New StringQualifiers(500));
+		
+		// Create values table
+		DescriptionName = "ContactInformationAdditionalAttributeInfo";
+		ArrayOfAddedDetails.Add(New FormAttribute(DescriptionName, New TypeDescription("ValueTable")));
+		ArrayOfAddedDetails.Add(New FormAttribute("AttributeName", String500, DescriptionName));
+		ArrayOfAddedDetails.Add(New FormAttribute("Kind", New TypeDescription("CatalogRef.ContactInformationKinds"), DescriptionName));
+		ArrayOfAddedDetails.Add(New FormAttribute("Type", New TypeDescription("EnumRef.ContactInformationTypes"), DescriptionName));
+		ArrayOfAddedDetails.Add(New FormAttribute("FieldsValues", New TypeDescription("ValueList, String"), DescriptionName));
+		ArrayOfAddedDetails.Add(New FormAttribute("Presentation", String500, DescriptionName));
+		ArrayOfAddedDetails.Add(New FormAttribute("Comment", New TypeDescription("String"), DescriptionName));
+		ArrayOfAddedDetails.Add(New FormAttribute("ThisAttributeOfTabularSection", New TypeDescription("Boolean"), DescriptionName));
+		
+	EndIf;
+	
+	If CreateContactInformationParameters Then
+		
+		ArrayOfAddedDetails.Add(New FormAttribute("ContactInformationParameters", New TypeDescription()));
+		
+	EndIf;
+	
+EndProcedure
+
 #EndRegion
+
+

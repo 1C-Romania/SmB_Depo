@@ -3910,17 +3910,3 @@ Procedure ViewOrdersInformation(Command)
 	OrdersInformationDetailProcessing();
 	
 EndProcedure // ViewOrdersInformation()
-
-
-
-
-
-
-
-
-
-
-
-
-
-

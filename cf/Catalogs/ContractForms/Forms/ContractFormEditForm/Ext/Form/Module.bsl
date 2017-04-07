@@ -434,16 +434,6 @@ Procedure InsertCounterpartyContactPersonLocative(Command)
 EndProcedure
 
 &AtClient
-Procedure InsertCounterpartyKPPCode(Command)
-	InsertInfobaseParameter(PredefinedValue("Enum.ContractsWithCounterpartiesTemplatesParameters.CounterpartyCRR"));
-EndProcedure
-
-&AtClient
-Procedure InsertCompanyKPPCode(Command)
-	InsertInfobaseParameter(PredefinedValue("Enum.ContractsWithCounterpartiesTemplatesParameters.CompanyKPP"));
-EndProcedure
-
-&AtClient
 Procedure InsertCompanyName(Command)
 	InsertInfobaseParameter(PredefinedValue("Enum.ContractsWithCounterpartiesTemplatesParameters.CompanyName"));
 EndProcedure
@@ -534,8 +524,8 @@ Procedure InsertCounterpartyFactAddress(Command)
 EndProcedure
 
 &AtClient
-Procedure InsertCompanyFactAddress(Command)
-	InsertInfobaseParameter(PredefinedValue("Enum.ContractsWithCounterpartiesTemplatesParameters.CompanyFactAddress"));
+Procedure InsertCompanyActualAddress(Command)
+	InsertInfobaseParameter(PredefinedValue("Enum.ContractsWithCounterpartiesTemplatesParameters.CompanyActualAddress"));
 EndProcedure
 
 &AtClient
@@ -757,16 +747,3 @@ Procedure InsertCounterpartyContactPersonPositionDescriptionFullLocative(Command
 EndProcedure
 
 #EndRegion
-
-
-
-
-
-
-
-
-
-
-
-
-

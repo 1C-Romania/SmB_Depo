@@ -257,17 +257,3 @@ Procedure InsertImagesToHTML(HTMLFileName)
 EndProcedure
 
 #EndRegion
-
-
-
-
-
-
-
-
-
-
-
-
-
-

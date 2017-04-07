@@ -9,14 +9,13 @@ Procedure ExportCompanyAttributes(StorageAddress, UUID)
 	Try
 		
 		XDTOCounterparty = ElectronicDocumentsInternal.GetCMLObjectType("Counterparty", "4.02");
-		ElectronicDocumentsInternal.FillXDTOProperty(XDTOCounterparty, "ID", TIN + "_" + KPP, True, ErrorText);
+		ElectronicDocumentsInternal.FillXDTOProperty(XDTOCounterparty, "ID", TIN, True, ErrorText);
 		ElectronicDocumentsInternal.FillXDTOProperty(XDTOCounterparty, "Description", Description, True, ErrorText);
 		
 		If Not ElectronicDocumentsOverridable.ThisIsInd(Company) Then
 			LegalEntityIndividualXDTO = ElectronicDocumentsInternal.GetCMLObjectType("DetailsOfLegalEntity", "4.02");
 			ElectronicDocumentsInternal.FillXDTOProperty(
 				LegalEntityIndividualXDTO, "OfficialName", DescriptionFull, True, ErrorText);
-			ElectronicDocumentsInternal.FillXDTOProperty(LegalEntityIndividualXDTO, "KPP", KPP, , ErrorText);
 			
 			If ValueIsFilled(Head) Then
 				XDTOHead = ElectronicDocumentsInternal.GetCMLObjectType("Counterparty", "4.02");
@@ -68,7 +67,6 @@ Procedure ExportCompanyAttributes(StorageAddress, UUID)
 		EndIf;
 		
 		ElectronicDocumentsInternal.FillXDTOProperty(LegalEntityIndividualXDTO, "TIN", TIN, True, ErrorText);
-		ElectronicDocumentsInternal.FillXDTOProperty(LegalEntityIndividualXDTO, "OKPO", OKPO, , ErrorText);
 		
 		If ValueIsFilled(ActualAddress) Then
 			AddressXDTO = ElectronicDocumentsInternal.GetCMLObjectType("Address", "4.02");
@@ -213,7 +211,6 @@ Function GetDetails()
 	ReturnStructure.Insert("Description");
 	ReturnStructure.Insert("DescriptionFull");
 	ReturnStructure.Insert("TIN");
-	ReturnStructure.Insert("KPP");
 	ReturnStructure.Insert("OKPO");
 	ReturnStructure.Insert("HeadPost");
 	ReturnStructure.Insert("Head");
@@ -240,7 +237,6 @@ Procedure RefreshForm()
 	EndIf;
 	If LegalEntityIndividual = AnIndividualEntrepreneur Then
 		Items.GroupHead.Visible = False;
-		Items.KPP.Visible                = False;
 		
 		LabelCertificate = NStr("en='Certificate No';ru='Свидетельство №'") + CertificateNumber + NStr("en=' from ';ru=' от '") + Format(CertificateDate, "DLF=D");
 	Else
@@ -391,17 +387,3 @@ Procedure OnOpen(Cancel)
 	RefreshForm();
 	
 EndProcedure
-
-
-
-
-
-
-
-
-
-
-
-
-
-

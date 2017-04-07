@@ -367,17 +367,3 @@ Procedure FilteredAdvancesBeforeAddRow(Item, Cancel, Copy, Parent, Group)
 	Cancel = True;
 	
 EndProcedure // FilteredAdvancesBeforeAddRow()
-
-
-
-
-
-
-
-
-
-
-
-
-
-

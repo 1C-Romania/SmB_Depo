@@ -870,7 +870,7 @@ Function WebServerResponceStructure(ErrorText, RecordToEventLogMonitor,
 	If RecordToEventLogMonitor Then
 		
 		If IsBlankString(MessageText) Then
-			MessageText = NStr("en='%ErrorText. Error code: %ErrorCode';ru='%ТекстОшибки. Код ошибки: %КодОшибки.'");
+			MessageText = NStr("en='%ErrorText. Error code: %ErrorCode';ru='%ErrorText. Код ошибки: %ErrorCode.'");
 			MessageText = StrReplace(MessageText, "%ErrorText", ErrorText);
 			MessageText = StrReplace(MessageText, "%ErrorCode", ErrorCode);
 		EndIf;

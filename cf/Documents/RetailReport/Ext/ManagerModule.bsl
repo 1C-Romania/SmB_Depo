@@ -2289,7 +2289,7 @@ Function GeneratePrintFormOfReportAboutRetailSales(ObjectsArray, PrintObjects)
 		Spreadsheet.Put(TemplateArea);
 		
 		TemplateArea = Template.GetArea("Vendor");
-		VendorPresentation = SmallBusinessServer.CompaniesDescriptionFull(InfoAboutCompany, "FullDescr,TIN,KPP,LegalAddress,PhoneNumbers,");
+		VendorPresentation = SmallBusinessServer.CompaniesDescriptionFull(InfoAboutCompany, "FullDescr,TIN,LegalAddress,PhoneNumbers,");
 		TemplateArea.Parameters.VendorPresentation = VendorPresentation;
 		TemplateArea.Parameters.Vendor = Header.Company;
 		Spreadsheet.Put(TemplateArea);
@@ -2437,9 +2437,11 @@ Function GeneratePrintFormOfReportAboutRetailSales(ObjectsArray, PrintObjects)
 		EndIf;
 		
 		Spreadsheet.Put(TemplateArea);
+		
 		Spreadsheet.PutHorizontalPageBreak();
 		
 		PrintManagement.SetDocumentPrintArea(Spreadsheet, FirstLineNumber, PrintObjects, ReceiptCR);
+		
 	EndDo;
 	
 	Return Spreadsheet;
@@ -2451,11 +2453,14 @@ EndFunction // GeneratePettyCashBookCoverAndLastSheetPrintableForm()
 Procedure Print(ObjectsArray, PrintParameters, PrintFormsCollection, PrintObjects, OutputParameters) Export
 	
 	If PrintManagement.NeedToPrintTemplate(PrintFormsCollection, "RetailReport") Then
+		
 		PrintManagement.OutputSpreadsheetDocumentToCollection(
 			PrintFormsCollection,
 			"RetailReport",
 			"Retail report",
-			GeneratePrintFormOfReportAboutRetailSales(ObjectsArray, PrintObjects));
+			GeneratePrintFormOfReportAboutRetailSales(ObjectsArray, PrintObjects)
+		);
+		
 	EndIf;
 	
 	// parameters of sending printing forms by email

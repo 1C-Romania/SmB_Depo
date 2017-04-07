@@ -320,7 +320,6 @@ Procedure PrepareDataAboutCompanies(COPContext, HandlerContext)
 	Phone         = "";
 	Description    = "";
 	TIN             = "";
-	KPP             = "";
 	OGRN            = "";
 	TaxOfficeCode         = "";
 	LegalEntityIndividual       = "";
@@ -340,7 +339,6 @@ Procedure PrepareDataAboutCompanies(COPContext, HandlerContext)
 	CompanyDataStructure.Property("Phone"        , Phone);
 	CompanyDataStructure.Property("Description"   , Description);
 	CompanyDataStructure.Property("TIN"            , TIN);
-	CompanyDataStructure.Property("KPP"            , KPP);
 	CompanyDataStructure.Property("OGRN"           , OGRN);
 	CompanyDataStructure.Property("TaxOfficeCode"        , TaxOfficeCode);
 	CompanyDataStructure.Property("LegalEntityIndividual"      , LegalEntityIndividual);
@@ -370,7 +368,6 @@ Procedure PrepareDataAboutCompanies(COPContext, HandlerContext)
 	OnlineUserSupportClientServer.WriteContextParameter(COPContext, "agencyED", Description);
 	OnlineUserSupportClientServer.WriteContextParameter(COPContext, "orgindED", LegalEntityIndividual);
 	OnlineUserSupportClientServer.WriteContextParameter(COPContext, "tinED", TIN);
-	OnlineUserSupportClientServer.WriteContextParameter(COPContext, "kppED", KPP);
 	OnlineUserSupportClientServer.WriteContextParameter(COPContext, "ogrnED", OGRN);
 	OnlineUserSupportClientServer.WriteContextParameter(COPContext, "codeimnsED", TaxOfficeCode);
 	OnlineUserSupportClientServer.WriteContextParameter(COPContext, "lastnameED", Surname);

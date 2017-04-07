@@ -742,17 +742,3 @@ Function GetStandardReportSettings(ReportName, ParametersAndSelections, VariantN
 	
 EndFunction // GetUserSettings()
 // 
-
-
-
-
-
-
-
-
-
-
-
-
-
-

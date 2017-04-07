@@ -36,7 +36,6 @@
 				<xr:Item xsi:type="xr:MDObjectRef">Document.AcceptanceCertificate</xr:Item>
 				<xr:Item xsi:type="xr:MDObjectRef">Document.CustomerOrder</xr:Item>
 				<xr:Item xsi:type="xr:MDObjectRef">Document.InvoiceForPayment</xr:Item>
-				<xr:Item xsi:type="xr:MDObjectRef">Document.CustomerInvoiceNote</xr:Item>
 			</RegisteredDocuments>
 			<IncludeHelpInContents>true</IncludeHelpInContents>
 			<StandardAttributes>
@@ -312,12 +311,15 @@
 							<v8:lang>en</v8:lang>
 							<v8:content>Company</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Организация</v8:content>
+						</v8:item>
 					</Synonym>
 					<Comment/>
 					<Indexing>DontIndex</Indexing>
 					<References>
 						<xr:Item xsi:type="xr:MDObjectRef">Document.CustomerInvoice.Attribute.Company</xr:Item>
-						<xr:Item xsi:type="xr:MDObjectRef">Document.CustomerInvoiceNote.Attribute.Company</xr:Item>
 						<xr:Item xsi:type="xr:MDObjectRef">Document.InvoiceForPayment.Attribute.Company</xr:Item>
 						<xr:Item xsi:type="xr:MDObjectRef">Document.AcceptanceCertificate.Attribute.Company</xr:Item>
 						<xr:Item xsi:type="xr:MDObjectRef">Document.CustomerOrder.Attribute.Company</xr:Item>
@@ -341,7 +343,6 @@
 					<Indexing>DontIndex</Indexing>
 					<References>
 						<xr:Item xsi:type="xr:MDObjectRef">Document.CustomerInvoice.Attribute.OperationKind</xr:Item>
-						<xr:Item xsi:type="xr:MDObjectRef">Document.CustomerInvoiceNote.Attribute.OperationKind</xr:Item>
 						<xr:Item xsi:type="xr:MDObjectRef">Document.CustomerOrder.Attribute.OperationKind</xr:Item>
 					</References>
 				</Properties>
@@ -363,7 +364,6 @@
 					<Indexing>DontIndex</Indexing>
 					<References>
 						<xr:Item xsi:type="xr:MDObjectRef">Document.CustomerInvoice.Attribute.Counterparty</xr:Item>
-						<xr:Item xsi:type="xr:MDObjectRef">Document.CustomerInvoiceNote.Attribute.Counterparty</xr:Item>
 						<xr:Item xsi:type="xr:MDObjectRef">Document.InvoiceForPayment.Attribute.Counterparty</xr:Item>
 						<xr:Item xsi:type="xr:MDObjectRef">Document.AcceptanceCertificate.Attribute.Counterparty</xr:Item>
 						<xr:Item xsi:type="xr:MDObjectRef">Document.CustomerOrder.Attribute.Counterparty</xr:Item>
@@ -387,7 +387,6 @@
 					<Indexing>DontIndex</Indexing>
 					<References>
 						<xr:Item xsi:type="xr:MDObjectRef">Document.CustomerInvoice.Attribute.Contract</xr:Item>
-						<xr:Item xsi:type="xr:MDObjectRef">Document.CustomerInvoiceNote.Attribute.Contract</xr:Item>
 						<xr:Item xsi:type="xr:MDObjectRef">Document.InvoiceForPayment.Attribute.Contract</xr:Item>
 						<xr:Item xsi:type="xr:MDObjectRef">Document.AcceptanceCertificate.Attribute.Contract</xr:Item>
 						<xr:Item xsi:type="xr:MDObjectRef">Document.CustomerOrder.Attribute.Contract</xr:Item>
@@ -434,7 +433,6 @@
 					<Indexing>DontIndex</Indexing>
 					<References>
 						<xr:Item xsi:type="xr:MDObjectRef">Document.CustomerInvoice.Attribute.DocumentAmount</xr:Item>
-						<xr:Item xsi:type="xr:MDObjectRef">Document.CustomerInvoiceNote.Attribute.DocumentAmount</xr:Item>
 						<xr:Item xsi:type="xr:MDObjectRef">Document.AcceptanceCertificate.Attribute.DocumentAmount</xr:Item>
 						<xr:Item xsi:type="xr:MDObjectRef">Document.CustomerOrder.Attribute.DocumentAmount</xr:Item>
 						<xr:Item xsi:type="xr:MDObjectRef">Document.InvoiceForPayment.Attribute.DocumentAmount</xr:Item>
@@ -458,7 +456,6 @@
 					<Indexing>DontIndex</Indexing>
 					<References>
 						<xr:Item xsi:type="xr:MDObjectRef">Document.CustomerInvoice.Attribute.DocumentCurrency</xr:Item>
-						<xr:Item xsi:type="xr:MDObjectRef">Document.CustomerInvoiceNote.Attribute.DocumentCurrency</xr:Item>
 						<xr:Item xsi:type="xr:MDObjectRef">Document.InvoiceForPayment.Attribute.DocumentCurrency</xr:Item>
 						<xr:Item xsi:type="xr:MDObjectRef">Document.AcceptanceCertificate.Attribute.DocumentCurrency</xr:Item>
 						<xr:Item xsi:type="xr:MDObjectRef">Document.CustomerOrder.Attribute.DocumentCurrency</xr:Item>
@@ -482,7 +479,6 @@
 					<Indexing>DontIndex</Indexing>
 					<References>
 						<xr:Item xsi:type="xr:MDObjectRef">Document.CustomerInvoice.Attribute.Comment</xr:Item>
-						<xr:Item xsi:type="xr:MDObjectRef">Document.CustomerInvoiceNote.Attribute.Comment</xr:Item>
 						<xr:Item xsi:type="xr:MDObjectRef">Document.InvoiceForPayment.Attribute.Comment</xr:Item>
 						<xr:Item xsi:type="xr:MDObjectRef">Document.AcceptanceCertificate.Attribute.Comment</xr:Item>
 						<xr:Item xsi:type="xr:MDObjectRef">Document.CustomerOrder.Attribute.Comment</xr:Item>
@@ -509,7 +505,6 @@
 						<xr:Item xsi:type="xr:MDObjectRef">Document.CustomerOrder.Attribute.Author</xr:Item>
 						<xr:Item xsi:type="xr:MDObjectRef">Document.CustomerInvoice.Attribute.Author</xr:Item>
 						<xr:Item xsi:type="xr:MDObjectRef">Document.InvoiceForPayment.Attribute.Author</xr:Item>
-						<xr:Item xsi:type="xr:MDObjectRef">Document.CustomerInvoiceNote.Attribute.Author</xr:Item>
 					</References>
 				</Properties>
 			</Column>

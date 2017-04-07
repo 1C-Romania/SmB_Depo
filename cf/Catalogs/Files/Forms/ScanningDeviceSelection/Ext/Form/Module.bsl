@@ -35,16 +35,3 @@ Procedure ChooseScanner(Command)
 EndProcedure
 
 #EndRegion
-
-
-
-
-
-
-
-
-
-
-
-
-

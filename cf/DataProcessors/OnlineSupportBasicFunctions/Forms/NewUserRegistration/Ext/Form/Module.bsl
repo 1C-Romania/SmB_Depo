@@ -177,17 +177,3 @@ Function MessageParametersToTechicalSupport()
 EndFunction
 
 #EndRegion
-
-
-
-
-
-
-
-
-
-
-
-
-
-

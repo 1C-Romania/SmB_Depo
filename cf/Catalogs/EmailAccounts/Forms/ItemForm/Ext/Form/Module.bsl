@@ -237,17 +237,3 @@ Function permissions()
 EndFunction
 
 #EndRegion
-
-
-
-
-
-
-
-
-
-
-
-
-
-

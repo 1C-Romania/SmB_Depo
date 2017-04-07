@@ -41,17 +41,3 @@ Procedure CommandOK(Command)
 	Close(ListProductsAndServicesGroups);
 	
 EndProcedure
-
-
-
-
-
-
-
-
-
-
-
-
-
-

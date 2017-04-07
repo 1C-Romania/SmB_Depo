@@ -234,17 +234,3 @@ Procedure AllowExternalResourceEnd(Result, WriteParameters) Export
 EndProcedure
 
 #EndRegion
-
-
-
-
-
-
-
-
-
-
-
-
-
-

@@ -183,7 +183,6 @@ Function PutIntoTemporaryStorageAtServer()
 	|	Tu_Products.ProductsAndServices.AlcoholicProductsKind.Code AS AlcoholicProductsKindCode,
 	|	Tu_Products.ProductsAndServices.ImportedAlcoholicProducts AS ImportedAlcoholicProducts,
 	|	Tu_Products.ProductsAndServices.AlcoholicProductsManufacturerImporter.TIN AS ManufacturerImporterTIN,
-	|	Tu_Products.ProductsAndServices.AlcoholicProductsManufacturerImporter.KPP AS ManufacturerImporterKPP,
 	|	Tu_Products.ProductsAndServices.VolumeDAL AS VolumeDAL
 	|FROM
 	|	Tu_Products AS Tu_Products
@@ -227,10 +226,6 @@ Function PutIntoTemporaryStorageAtServer()
 			NewRow = PropertyTable.Add();
 			NewRow.Description = "ManufacturerImporterTIN";
 			NewRow.Value = ProductsSelection.ManufacturerImporterTIN;
-			
-			NewRow = PropertyTable.Add();
-			NewRow.Description = "ManufacturerImporterKPP";
-			NewRow.Value = ProductsSelection.ManufacturerImporterKPP;
 			
 			NewRow = PropertyTable.Add();
 			NewRow.Description = "VolumeDAL";
@@ -336,20 +331,6 @@ Procedure OnCloseAtServer()
 	CommonSettingsStorage.Save("ElectronicDocumentsSendDirectory", "FilterProducts", 
 		New ValueStorage(SettingsComposer.GetSettings()));
 EndProcedure
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 

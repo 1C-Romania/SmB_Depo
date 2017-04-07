@@ -11,7 +11,7 @@ Procedure OnCreateAtServer(Cancel, StandardProcessing)
 	If Parameters.Filter.Property("Ind") Then
 		Ind = Parameters.Filter.Ind;
 		
-		IdentityCard = InformationRegisters.IndividualsDocuments.DocumentCertifyingPersonalityOfInd(Ind);
+		IdentityCard = InformationRegisters.IndividualsDocuments.IdentificationDocument(Ind);
 		
 		IsIdentity = Not IsBlankString(IdentityCard);
 		

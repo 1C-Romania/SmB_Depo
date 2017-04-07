@@ -252,17 +252,3 @@ Function CreateServerInitialImageAtServer()
 EndFunction
 
 #EndRegion
-
-
-
-
-
-
-
-
-
-
-
-
-
-

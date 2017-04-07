@@ -154,17 +154,17 @@ Procedure PrepareForm(Form, Refs, GroupForProhibitionButton, ProhibitionButtonTi
 	   AND Not AllAttributesWithoutEditingRight Then
 		
 		// Addition of a command
-		Command = Form.Commands.Add("AuthorizeObjectDetailsEditing");
-		Command.Title = ?(IsBlankString(ProhibitionButtonTitle), NStr("en='Allow Attributes Editing';ru='Разрешить редактирование реквизитов'"), ProhibitionButtonTitle);
-		Command.Action = "Attachable_AuthorizeObjectAttributesEditing";
+		Command = Form.Commands.Add("AllowObjectAttributeEdit");
+		Command.Title = ?(IsBlankString(ProhibitionButtonTitle), NStr("en='Allow editing attributes';ru='Разрешить редактирование реквизитов'"), ProhibitionButtonTitle);
+		Command.Action = "Attachable_AllowObjectAttributeEdit";
 		Command.Picture = PictureLib.AuthorizeObjectDetailsEditing;
 		Command.ModifiesStoredData = True;
 		
 		// Addition of a button
 		ParentGroup = ?(GroupForProhibitionButton <> Undefined, GroupForProhibitionButton, Form.CommandBar);
-		Button = Form.Items.Add("AuthorizeObjectDetailsEditing", Type("FormButton"), ParentGroup);
+		Button = Form.Items.Add("AllowObjectAttributeEdit", Type("FormButton"), ParentGroup);
 		Button.OnlyInAllActions = True;
-		Button.CommandName = "AuthorizeObjectDetailsEditing";
+		Button.CommandName = "AllowObjectAttributeEdit";
 	EndIf;
 	
 EndProcedure

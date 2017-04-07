@@ -36,17 +36,3 @@ Procedure SaveChanges(Command)
 EndProcedure
 
 #EndRegion
-
-
-
-
-
-
-
-
-
-
-
-
-
-

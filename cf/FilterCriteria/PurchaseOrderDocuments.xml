@@ -29,40 +29,39 @@
 			</Type>
 			<UseStandardCommands>false</UseStandardCommands>
 			<Content>
-				<xr:Item xsi:type="xr:MDObjectRef">Document.ExpenseReport.TabularSection.Payments.Attribute.Order</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">Document.AdditionalCosts.Attribute.PurchaseOrder</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">Document.CashOutflowPlan.Attribute.BasisDocument</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">Document.CashPayment.Attribute.BasisDocument</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">Document.CashPayment.TabularSection.PaymentDetails.Attribute.Order</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">Document.CashReceipt.TabularSection.PaymentDetails.Attribute.Order</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">Document.CustomerInvoice.Attribute.Order</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">Document.CustomerInvoice.TabularSection.Inventory.Attribute.Order</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">Document.CustomerInvoice.TabularSection.Prepayment.Attribute.Order</xr:Item>
 				<xr:Item xsi:type="xr:MDObjectRef">Document.EnterOpeningBalance.TabularSection.InventoryTransferred.Attribute.Order</xr:Item>
 				<xr:Item xsi:type="xr:MDObjectRef">Document.EnterOpeningBalance.TabularSection.InventoryReceived.Attribute.Order</xr:Item>
 				<xr:Item xsi:type="xr:MDObjectRef">Document.EnterOpeningBalance.TabularSection.AccountsPayable.Attribute.PurchaseOrder</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">Document.Event.Attribute.BasisDocument</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">Document.Event.TabularSection.BasisDocuments.Attribute.BasisDocument</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">Document.ExpenseReport.TabularSection.Payments.Attribute.Order</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">Document.GoodsReceipt.Attribute.BasisDocument</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">Document.InventoryReservation.TabularSection.Inventory.Attribute.OriginalReservePlace</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">Document.InventoryReservation.TabularSection.Inventory.Attribute.NewReservePlace</xr:Item>
 				<xr:Item xsi:type="xr:MDObjectRef">Document.Netting.Attribute.Order</xr:Item>
 				<xr:Item xsi:type="xr:MDObjectRef">Document.Netting.TabularSection.Creditor.Attribute.Order</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">Document.PaymentExpense.Attribute.BasisDocument</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">Document.PaymentExpense.TabularSection.PaymentDetails.Attribute.Order</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">Document.PaymentOrder.Attribute.BasisDocument</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">Document.PaymentReceipt.TabularSection.PaymentDetails.Attribute.Order</xr:Item>
 				<xr:Item xsi:type="xr:MDObjectRef">Document.PowerOfAttorney.Attribute.BasisDocument</xr:Item>
-				<xr:Item xsi:type="xr:MDObjectRef">Document.AdditionalCosts.Attribute.PurchaseOrder</xr:Item>
 				<xr:Item xsi:type="xr:MDObjectRef">Document.ReportToPrincipal.TabularSection.Inventory.Attribute.PurchaseOrder</xr:Item>
 				<xr:Item xsi:type="xr:MDObjectRef">Document.ReportToPrincipal.TabularSection.Prepayment.Attribute.Order</xr:Item>
 				<xr:Item xsi:type="xr:MDObjectRef">Document.SubcontractorReport.Attribute.BasisDocument</xr:Item>
-				<xr:Item xsi:type="xr:MDObjectRef">Document.PaymentOrder.Attribute.BasisDocument</xr:Item>
-				<xr:Item xsi:type="xr:MDObjectRef">Document.CashReceipt.TabularSection.PaymentDetails.Attribute.Order</xr:Item>
-				<xr:Item xsi:type="xr:MDObjectRef">Document.PaymentReceipt.TabularSection.PaymentDetails.Attribute.Order</xr:Item>
 				<xr:Item xsi:type="xr:MDObjectRef">Document.SupplierInvoice.Attribute.BasisDocument</xr:Item>
 				<xr:Item xsi:type="xr:MDObjectRef">Document.SupplierInvoice.Attribute.Order</xr:Item>
 				<xr:Item xsi:type="xr:MDObjectRef">Document.SupplierInvoice.TabularSection.Inventory.Attribute.Order</xr:Item>
 				<xr:Item xsi:type="xr:MDObjectRef">Document.SupplierInvoice.TabularSection.Expenses.Attribute.PurchaseOrder</xr:Item>
 				<xr:Item xsi:type="xr:MDObjectRef">Document.SupplierInvoice.TabularSection.Prepayment.Attribute.Order</xr:Item>
-				<xr:Item xsi:type="xr:MDObjectRef">Document.GoodsReceipt.Attribute.BasisDocument</xr:Item>
-				<xr:Item xsi:type="xr:MDObjectRef">Document.CashOutflowPlan.Attribute.BasisDocument</xr:Item>
-				<xr:Item xsi:type="xr:MDObjectRef">Document.CashPayment.Attribute.BasisDocument</xr:Item>
-				<xr:Item xsi:type="xr:MDObjectRef">Document.CashPayment.TabularSection.PaymentDetails.Attribute.Order</xr:Item>
-				<xr:Item xsi:type="xr:MDObjectRef">Document.CustomerInvoice.Attribute.Order</xr:Item>
-				<xr:Item xsi:type="xr:MDObjectRef">Document.CustomerInvoice.TabularSection.Inventory.Attribute.Order</xr:Item>
-				<xr:Item xsi:type="xr:MDObjectRef">Document.CustomerInvoice.TabularSection.Prepayment.Attribute.Order</xr:Item>
-				<xr:Item xsi:type="xr:MDObjectRef">Document.PaymentExpense.Attribute.BasisDocument</xr:Item>
-				<xr:Item xsi:type="xr:MDObjectRef">Document.PaymentExpense.TabularSection.PaymentDetails.Attribute.Order</xr:Item>
-				<xr:Item xsi:type="xr:MDObjectRef">Document.InventoryReservation.TabularSection.Inventory.Attribute.OriginalReservePlace</xr:Item>
-				<xr:Item xsi:type="xr:MDObjectRef">Document.InventoryReservation.TabularSection.Inventory.Attribute.NewReservePlace</xr:Item>
-				<xr:Item xsi:type="xr:MDObjectRef">Document.Event.Attribute.BasisDocument</xr:Item>
-				<xr:Item xsi:type="xr:MDObjectRef">Document.Event.TabularSection.BasisDocuments.Attribute.BasisDocument</xr:Item>
 				<xr:Item xsi:type="xr:MDObjectRef">Document.SupplierInvoiceForPayment.Attribute.BasisDocument</xr:Item>
-				<xr:Item xsi:type="xr:MDObjectRef">Document.SupplierInvoiceNote.Attribute.BasisDocument</xr:Item>
 			</Content>
 			<DefaultForm/>
 			<AuxiliaryForm/>

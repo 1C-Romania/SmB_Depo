@@ -1374,7 +1374,7 @@ EndProcedure
 //  FlagAttributeName - String - name of the exchange plan attribute according to which a filter of nodes selection is set.
 //
 // Returns:
-//  Array - Exchange plan nodes array for which the "Always export" flag is set.
+//  Array - Exchange plan nodes array for which the "Always export» flag is set.
 //
 Function GetNodesArrayForRegistrationAlwaysExport(Val ExchangePlanName, Val FlagAttributeName) Export
 	

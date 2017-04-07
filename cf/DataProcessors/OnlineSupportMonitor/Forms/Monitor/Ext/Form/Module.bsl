@@ -291,17 +291,3 @@ Function MessageParametersToTechicalSupportUpdate()
 EndFunction
 
 #EndRegion
-
-
-
-
-
-
-
-
-
-
-
-
-
-

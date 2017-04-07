@@ -190,17 +190,3 @@ Procedure RefreshIndexesIconElements(CorrespondentInfobaseTable)
 EndProcedure
 
 #EndRegion
-
-
-
-
-
-
-
-
-
-
-
-
-
-

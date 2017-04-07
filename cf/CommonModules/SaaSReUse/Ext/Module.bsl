@@ -48,8 +48,8 @@ EndFunction
 Function AccordanceOfUserCITypesXDTO() Export
 	
 	Map = New Map;
-	Map.Insert(Catalogs.ContactInformationTypes.UserEmail, "UserEMail");
-	Map.Insert(Catalogs.ContactInformationTypes.UserPhone, "UserPhone");
+	Map.Insert(Catalogs.ContactInformationKinds.UserEmail, "UserEMail");
+	Map.Insert(Catalogs.ContactInformationKinds.UserPhone, "UserPhone");
 	
 	Return New FixedMap(Map);
 	

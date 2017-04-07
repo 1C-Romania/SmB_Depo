@@ -1065,7 +1065,7 @@ Function RunUpdateIteration(Val IterationUpdate, Val Parameters) Export
 				EndIf;
 			EndIf;
 			
-			AdditionalParameters = New Structure("ToWriteInJournal, LibraryIdentifier, HandlersExecutionProcess, InBackground",
+			AdditionalParameters = New Structure("ToWriteInJournal, LibraryID, HandlersExecutionProcess, InBackground",
 				ToWriteInJournal, LibraryID, Parameters.HandlersExecutionProcess, Parameters.InBackground);
 			ExecuteHandlerUpdate(Handler, HandlerParameters, AdditionalParameters);
 		EndDo;
@@ -2411,7 +2411,7 @@ Function PerhapsOperationalUpdate(IterationsUpdate)
 				EndIf;
 				HandlerParameters.Insert("ExclusiveMode", False);
 				
-				AdditionalParameters = New Structure("ToWriteInJournal, LibraryIdentifier, HandlersExecutionProcess, InBackground",
+				AdditionalParameters = New Structure("ToWriteInJournal, LibraryID, HandlersExecutionProcess, InBackground",
 					ToWriteInJournal, IterationUpdate.Subsystem, Undefined, False);
 				
 				ExecuteHandlerUpdate(Handler, HandlerParameters, AdditionalParameters);
@@ -2737,7 +2737,7 @@ Procedure ValidateHandlersProperties(IterationUpdate)
 				ZeroVersion = False;
 				ErrorDescription = StringFunctionsClientServer.SubstituteParametersInString(
 					NStr("en='Handler has filled the Version property wrong: %1.
-		|Right format, for example: 21.3.70.';ru='У обработчика не правильно заполнено свойство Версия: ""%1"".
+		|Correct format, for example: 21.3.70.';ru='У обработчика не правильно заполнено свойство Версия: ""%1"".
 		|Правильный формат, например: ""2.1.3.70"".'"),
 					Metadata.Version);
 			EndTry;

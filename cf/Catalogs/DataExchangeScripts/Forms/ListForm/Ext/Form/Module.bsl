@@ -41,17 +41,3 @@ Procedure EnableDisableScheduledJobAtServer(SelectedRows, UseScheduledJob)
 EndProcedure
 
 #EndRegion
-
-
-
-
-
-
-
-
-
-
-
-
-
-

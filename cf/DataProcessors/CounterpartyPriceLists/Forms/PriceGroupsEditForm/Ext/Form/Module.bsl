@@ -108,17 +108,3 @@ Procedure Pick(Command)
 	
 EndProcedure // Selection()
 // 
-
-
-
-
-
-
-
-
-
-
-
-
-
-

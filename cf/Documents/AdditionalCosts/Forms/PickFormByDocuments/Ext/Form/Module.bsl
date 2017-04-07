@@ -694,17 +694,3 @@ Procedure FilteredInventorySelection(Item, SelectedRow, Field, StandardProcessin
 	EndIf;
 	
 EndProcedure //FilteredInventorySelection()
-
-
-
-
-
-
-
-
-
-
-
-
-
-

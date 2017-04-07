@@ -119,17 +119,3 @@ Procedure CommandConfirm(Command)
 EndProcedure
 
 #EndRegion
-
-
-
-
-
-
-
-
-
-
-
-
-
-

@@ -66,6 +66,19 @@
 				<CommandName>Form.StandardCommand.Help</CommandName>
 				<ExtendedTooltip name="FormHelpExtendedTooltip" id="84"/>
 			</Button>
+			<Popup name="GroupPrintCommand" id="93">
+				<Title>
+					<v8:item>
+						<v8:lang>en</v8:lang>
+						<v8:content>Print</v8:content>
+					</v8:item>
+					<v8:item>
+						<v8:lang>ru</v8:lang>
+						<v8:content>Печать</v8:content>
+					</v8:item>
+				</Title>
+				<ExtendedTooltip name="GroupPrintCommandExtendedTooltip" id="94"/>
+			</Popup>
 		</ChildItems>
 	</AutoCommandBar>
 	<Events>
@@ -202,62 +215,6 @@
 					<ContextMenu name="ListOfTINContextMenu" id="17"/>
 					<ExtendedTooltip name="ListOfTINExtendedTooltip" id="56"/>
 				</LabelField>
-				<LabelField name="ListKPP" id="18">
-					<DataPath>List.KPP</DataPath>
-					<UserVisible>
-						<xr:Common>false</xr:Common>
-					</UserVisible>
-					<Title>
-						<v8:item>
-							<v8:lang>en</v8:lang>
-							<v8:content>KPP</v8:content>
-						</v8:item>
-						<v8:item>
-							<v8:lang>ru</v8:lang>
-							<v8:content>КПП</v8:content>
-						</v8:item>
-					</Title>
-					<Width>10</Width>
-					<ContextMenu name="ListKPPContextMenu" id="19"/>
-					<ExtendedTooltip name="ListKPPExtendedTooltip" id="57"/>
-				</LabelField>
-				<LabelField name="ListCodeRNCofPS" id="20">
-					<DataPath>List.CodeByOKPO</DataPath>
-					<UserVisible>
-						<xr:Common>false</xr:Common>
-					</UserVisible>
-					<Title>
-						<v8:item>
-							<v8:lang>en</v8:lang>
-							<v8:content>OKPO</v8:content>
-						</v8:item>
-						<v8:item>
-							<v8:lang>ru</v8:lang>
-							<v8:content>ОКПО</v8:content>
-						</v8:item>
-					</Title>
-					<Width>10</Width>
-					<ContextMenu name="ListCodeByARBOCContextMenu" id="21"/>
-					<ExtendedTooltip name="ListCodeByARBOCExtendedTooltip" id="58"/>
-				</LabelField>
-				<LabelField name="ListCodeByOKATO" id="69">
-					<DataPath>List.CodeByOKATO</DataPath>
-					<UserVisible>
-						<xr:Common>false</xr:Common>
-					</UserVisible>
-					<Width>10</Width>
-					<ContextMenu name="ListCodeByOKATOContextMenu" id="70"/>
-					<ExtendedTooltip name="ListCodeByOKATOExtendedTooltip" id="71"/>
-				</LabelField>
-				<LabelField name="ListCodebyOKTMO" id="66">
-					<DataPath>List.CodebyOKTMO</DataPath>
-					<UserVisible>
-						<xr:Common>false</xr:Common>
-					</UserVisible>
-					<Width>10</Width>
-					<ContextMenu name="ListCodebyOKTMOContextMenu" id="67"/>
-					<ExtendedTooltip name="ListCodebyOKTMOExtendedTooltip" id="68"/>
-				</LabelField>
 				<LabelField name="ListBankAccountDefault" id="22">
 					<DataPath>List.BankAccountByDefault</DataPath>
 					<UserVisible>
@@ -324,7 +281,7 @@
 					<ExtendedTooltip name="ListDescriptionFullExtendedTooltip" id="61"/>
 				</LabelField>
 				<LabelField name="CertificateIssueDate" id="44">
-					<DataPath>List.CertificateIssueDate</DataPath>
+					<DataPath>1/178</DataPath>
 					<UserVisible>
 						<xr:Common>false</xr:Common>
 					</UserVisible>
@@ -333,7 +290,7 @@
 					<ExtendedTooltip name="CertificateIssuanceDateExtendedTooltip" id="63"/>
 				</LabelField>
 				<LabelField name="CertificateSeriesNumber" id="46">
-					<DataPath>List.CertificateSeriesNumber</DataPath>
+					<DataPath>1/181</DataPath>
 					<UserVisible>
 						<xr:Common>false</xr:Common>
 					</UserVisible>

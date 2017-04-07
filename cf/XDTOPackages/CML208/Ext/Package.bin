@@ -34,7 +34,6 @@
 	<valueType name="IdentifierGlobalType" base="xs:string" variety="Atomic" maxLength="40"/>
 	<valueType name="IdentifierType" base="xs:string" variety="Atomic" maxLength="20"/>
 	<valueType name="FileNameType" base="xs:string" variety="Atomic" maxLength="255"/>
-	<valueType name="KPPType" base="xs:string" variety="Atomic" length="9"/>
 	<valueType name="QuantityType" base="xs:decimal" variety="Atomic"/>
 	<valueType name="CommentType" base="xs:string" variety="Atomic" maxLength="3000"/>
 	<valueType name="ContactType" base="xs:string" variety="Atomic" maxLength="100">
@@ -383,7 +382,6 @@
 		<property xmlns:d3p1="urn:1C.ru:commerceml_2" name="OfficialName" type="d3p1:NameType" lowerBound="0"/>
 		<property xmlns:d3p1="urn:1C.ru:commerceml_2" name="LegalAddress" type="d3p1:Address" lowerBound="0"/>
 		<property xmlns:d3p1="urn:1C.ru:commerceml_2" name="TIN" type="d3p1:TINType" lowerBound="0"/>
-		<property xmlns:d3p1="urn:1C.ru:commerceml_2" name="KPP" type="d3p1:KPPType" lowerBound="0"/>
 		<property xmlns:d3p1="urn:1C.ru:commerceml_2" name="DefaultActivityKind" type="d3p1:NameType" lowerBound="0"/>
 		<property xmlns:d3p1="urn:1C.ru:commerceml_2" name="EGRPO" type="d3p1:EGRPOType" lowerBound="0"/>
 		<property xmlns:d3p1="urn:1C.ru:commerceml_2" name="OKVED" type="d3p1:OKVEDType" lowerBound="0"/>
@@ -421,7 +419,6 @@
 				<property xmlns:d5p1="urn:1C.ru:commerceml_2" name="OfficialName" type="d5p1:NameType"/>
 				<property xmlns:d5p1="urn:1C.ru:commerceml_2" name="LegalAddress" type="d5p1:Address" lowerBound="0"/>
 				<property xmlns:d5p1="urn:1C.ru:commerceml_2" name="TIN" type="d5p1:TINType" lowerBound="0"/>
-				<property xmlns:d5p1="urn:1C.ru:commerceml_2" name="KPP" type="d5p1:KPPType" lowerBound="0"/>
 				<property xmlns:d5p1="urn:1C.ru:commerceml_2" name="DefaultActivityKind" type="d5p1:NameType" lowerBound="0"/>
 				<property xmlns:d5p1="urn:1C.ru:commerceml_2" name="EGRPO" type="d5p1:EGRPOType" lowerBound="0"/>
 				<property xmlns:d5p1="urn:1C.ru:commerceml_2" name="OKVED" type="d5p1:OKVEDType" lowerBound="0"/>
@@ -524,7 +521,6 @@
 				<property xmlns:d5p1="urn:1C.ru:commerceml_2" name="OfficialName" type="d5p1:NameType"/>
 				<property xmlns:d5p1="urn:1C.ru:commerceml_2" name="LegalAddress" type="d5p1:Address" lowerBound="0"/>
 				<property xmlns:d5p1="urn:1C.ru:commerceml_2" name="TIN" type="d5p1:TINType" lowerBound="0"/>
-				<property xmlns:d5p1="urn:1C.ru:commerceml_2" name="KPP" type="d5p1:KPPType" lowerBound="0"/>
 				<property xmlns:d5p1="urn:1C.ru:commerceml_2" name="DefaultActivityKind" type="d5p1:NameType" lowerBound="0"/>
 				<property xmlns:d5p1="urn:1C.ru:commerceml_2" name="EGRPO" type="d5p1:EGRPOType" lowerBound="0"/>
 				<property xmlns:d5p1="urn:1C.ru:commerceml_2" name="OKVED" type="d5p1:OKVEDType" lowerBound="0"/>
@@ -550,7 +546,6 @@
 		<property xmlns:d3p1="urn:1C.ru:commerceml_2" name="OfficialName" type="d3p1:NameType" lowerBound="0"/>
 		<property xmlns:d3p1="urn:1C.ru:commerceml_2" name="LegalAddress" type="d3p1:Address" lowerBound="0"/>
 		<property xmlns:d3p1="urn:1C.ru:commerceml_2" name="TIN" type="d3p1:TINType" lowerBound="0"/>
-		<property xmlns:d3p1="urn:1C.ru:commerceml_2" name="KPP" type="d3p1:KPPType" lowerBound="0"/>
 		<property xmlns:d3p1="urn:1C.ru:commerceml_2" name="DefaultActivityKind" type="d3p1:NameType" lowerBound="0"/>
 		<property xmlns:d3p1="urn:1C.ru:commerceml_2" name="EGRPO" type="d3p1:EGRPOType" lowerBound="0"/>
 		<property xmlns:d3p1="urn:1C.ru:commerceml_2" name="OKVED" type="d3p1:OKVEDType" lowerBound="0"/>
@@ -588,7 +583,6 @@
 				<property xmlns:d5p1="urn:1C.ru:commerceml_2" name="OfficialName" type="d5p1:NameType"/>
 				<property xmlns:d5p1="urn:1C.ru:commerceml_2" name="LegalAddress" type="d5p1:Address" lowerBound="0"/>
 				<property xmlns:d5p1="urn:1C.ru:commerceml_2" name="TIN" type="d5p1:TINType" lowerBound="0"/>
-				<property xmlns:d5p1="urn:1C.ru:commerceml_2" name="KPP" type="d5p1:KPPType" lowerBound="0"/>
 				<property xmlns:d5p1="urn:1C.ru:commerceml_2" name="DefaultActivityKind" type="d5p1:NameType" lowerBound="0"/>
 				<property xmlns:d5p1="urn:1C.ru:commerceml_2" name="EGRPO" type="d5p1:EGRPOType" lowerBound="0"/>
 				<property xmlns:d5p1="urn:1C.ru:commerceml_2" name="OKVED" type="d5p1:OKVEDType" lowerBound="0"/>

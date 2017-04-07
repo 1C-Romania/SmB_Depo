@@ -371,17 +371,3 @@ Procedure AutomaticDiscountsOnChange(Item)
 EndProcedure
 
 #EndRegion
-
-
-
-
-
-
-
-
-
-
-
-
-
-

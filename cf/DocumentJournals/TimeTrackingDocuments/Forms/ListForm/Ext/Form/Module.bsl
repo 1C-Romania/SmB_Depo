@@ -136,16 +136,3 @@ Procedure ListBeforeAddRow(Item, Cancel, Copy, Parent, Group)
 	EndIf; 
 	
 EndProcedure
-
-
-
-
-
-
-
-
-
-
-
-
-

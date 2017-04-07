@@ -122,6 +122,10 @@
 									<v8:lang>en</v8:lang>
 									<v8:content>Company</v8:content>
 								</v8:item>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Организация</v8:content>
+								</v8:item>
 							</Title>
 							<ToolTip>
 								<v8:item>
@@ -272,21 +276,6 @@
 												</v8:item>
 											</Title>
 											<ExtendedTooltip name="InsertTINExtendedTooltip" id="251"/>
-										</Button>
-										<Button name="InsertCompanyKPPCode" id="252">
-											<Type>CommandBarButton</Type>
-											<CommandName>Form.Command.InsertCompanyKPPCode</CommandName>
-											<Title>
-												<v8:item>
-													<v8:lang>en</v8:lang>
-													<v8:content>KPP</v8:content>
-												</v8:item>
-												<v8:item>
-													<v8:lang>ru</v8:lang>
-													<v8:content>КПП</v8:content>
-												</v8:item>
-											</Title>
-											<ExtendedTooltip name="InsertCompanyKPPCodeExtendedTooltip" id="253"/>
 										</Button>
 										<Button name="InsertCompanyOKATO" id="254">
 											<Type>CommandBarButton</Type>
@@ -562,7 +551,7 @@
 								</Button>
 								<Button name="InsertCompanyFactAddress" id="226">
 									<Type>CommandBarButton</Type>
-									<CommandName>Form.Command.InsertCompanyFactAddress</CommandName>
+									<CommandName>Form.Command.InsertCompanyActualAddress</CommandName>
 									<Title>
 										<v8:item>
 											<v8:lang>en</v8:lang>
@@ -600,7 +589,7 @@
 								</v8:item>
 								<v8:item>
 									<v8:lang>ru</v8:lang>
-									<v8:content>Контрагенты</v8:content>
+									<v8:content>Контрагент</v8:content>
 								</v8:item>
 							</Title>
 							<ToolTip>
@@ -807,21 +796,6 @@
 												</v8:item>
 											</Title>
 											<ExtendedTooltip name="InsertCounterpartyTINExtendedPopupHelp" id="267"/>
-										</Button>
-										<Button name="InsertCounterpartyKPPCode" id="264">
-											<Type>CommandBarButton</Type>
-											<CommandName>Form.Command.InsertCounterpartyKPPCode</CommandName>
-											<Title>
-												<v8:item>
-													<v8:lang>en</v8:lang>
-													<v8:content>KPP</v8:content>
-												</v8:item>
-												<v8:item>
-													<v8:lang>ru</v8:lang>
-													<v8:content>КПП</v8:content>
-												</v8:item>
-											</Title>
-											<ExtendedTooltip name="InsertCounterpartyKPPCodeExtendedTooltip" id="265"/>
 										</Button>
 										<Button name="InsertCounterpartyOKPO" id="262">
 											<Type>CommandBarButton</Type>
@@ -1542,12 +1516,6 @@
 						<Button name="Back" id="323">
 							<Type>CommandBarButton</Type>
 							<CommandName>Form.Item.FormattedDocument.StandardCommand.Redo</CommandName>
-							<Title>
-								<v8:item>
-									<v8:lang>ru</v8:lang>
-									<v8:content>Назад</v8:content>
-								</v8:item>
-							</Title>
 							<ExtendedTooltip name="BackExtendedTooltip" id="324"/>
 						</Button>
 						<Button name="CopyToClipboard" id="325">
@@ -2011,7 +1979,7 @@
 			</ToolTip>
 			<Action>InsertSupplierPaymentDueDate</Action>
 		</Command>
-		<Command name="InsertCompanyFactAddress" id="16">
+		<Command name="InsertCompanyActualAddress" id="16">
 			<Title>
 				<v8:item>
 					<v8:lang>en</v8:lang>
@@ -2032,7 +2000,7 @@
 					<v8:content>Вставить фактический адрес организации</v8:content>
 				</v8:item>
 			</ToolTip>
-			<Action>InsertCompanyFactAddress</Action>
+			<Action>InsertCompanyActualAddress</Action>
 		</Command>
 		<Command name="InsertCompanyPhone" id="17">
 			<Title>
@@ -2264,29 +2232,6 @@
 			</ToolTip>
 			<Action>InsertCompanyTIN</Action>
 		</Command>
-		<Command name="InsertCompanyKPPCode" id="27">
-			<Title>
-				<v8:item>
-					<v8:lang>en</v8:lang>
-					<v8:content>Insert companyKPP</v8:content>
-				</v8:item>
-				<v8:item>
-					<v8:lang>ru</v8:lang>
-					<v8:content>Вставить КППОрганизации</v8:content>
-				</v8:item>
-			</Title>
-			<ToolTip>
-				<v8:item>
-					<v8:lang>en</v8:lang>
-					<v8:content>Insert companyKPP</v8:content>
-				</v8:item>
-				<v8:item>
-					<v8:lang>ru</v8:lang>
-					<v8:content>Вставить КППОрганизации</v8:content>
-				</v8:item>
-			</ToolTip>
-			<Action>InsertCompanyKPPCode</Action>
-		</Command>
 		<Command name="InsertCompanyOKATO" id="28">
 			<Title>
 				<v8:item>
@@ -2378,29 +2323,6 @@
 				</v8:item>
 			</ToolTip>
 			<Action>InsertCounterpartyTIN</Action>
-		</Command>
-		<Command name="InsertCounterpartyKPPCode" id="32">
-			<Title>
-				<v8:item>
-					<v8:lang>en</v8:lang>
-					<v8:content>Insert companyKPP</v8:content>
-				</v8:item>
-				<v8:item>
-					<v8:lang>ru</v8:lang>
-					<v8:content>Вставить КППОрганизации</v8:content>
-				</v8:item>
-			</Title>
-			<ToolTip>
-				<v8:item>
-					<v8:lang>en</v8:lang>
-					<v8:content>Insert companyKPP</v8:content>
-				</v8:item>
-				<v8:item>
-					<v8:lang>ru</v8:lang>
-					<v8:content>Вставить КППОрганизации</v8:content>
-				</v8:item>
-			</ToolTip>
-			<Action>InsertCounterpartyKPPCode</Action>
 		</Command>
 		<Command name="InsertCounterpartyOKPO" id="34">
 			<Title>

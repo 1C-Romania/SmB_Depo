@@ -29,12 +29,12 @@ Procedure OnWrite(Cancel)
 		
 		Initials = Description;
 		
-		Surname  = SmallBusinessServer.SelectWord(Initials);
-		Name      = SmallBusinessServer.SelectWord(Initials);
-		Patronymic = SmallBusinessServer.SelectWord(Initials);
+		Surname		= SmallBusinessServer.SelectWord(Initials);
+		Name		= SmallBusinessServer.SelectWord(Initials);
+		Patronymic	= SmallBusinessServer.SelectWord(Initials);
 
 		WriteSet = DescriptionFullRecordSet.Add();
-		WriteSet.Period		= ?(ValueIsFilled(BirthDate), BirthDate, '19000101');
+		WriteSet.Period		= ?(ValueIsFilled(BirthDate), Birthdate, '19000101');
 		WriteSet.Surname	= Surname;
 		WriteSet.Name		= Name;
 		WriteSet.Patronymic	= Patronymic;
@@ -43,10 +43,10 @@ Procedure OnWrite(Cancel)
 			
 			DescriptionFullRecordSet[0].Ind = Ref;
 			
-			DescriptionFullRecordSet.Filter.Ind.Use	= True;
-			DescriptionFullRecordSet.Filter.Ind.Value			= DescriptionFullRecordSet[0].Ind;
+			DescriptionFullRecordSet.Filter.Ind.Use			= True;
+			DescriptionFullRecordSet.Filter.Ind.Value		= DescriptionFullRecordSet[0].Ind;
 			DescriptionFullRecordSet.Filter.Period.Use		= True;
-			DescriptionFullRecordSet.Filter.Period.Value			= DescriptionFullRecordSet[0].Period;
+			DescriptionFullRecordSet.Filter.Period.Value	= DescriptionFullRecordSet[0].Period;
 			If Not ValueIsFilled(WriteSet.Surname + WriteSet.Name + WriteSet.Patronymic) Then
 				WriteSet.Surname	= Surname;
 				WriteSet.Name		= Name;

@@ -140,10 +140,29 @@ Procedure MoveDay(Command)
 	
 EndProcedure
 
+
 &AtClient
 Procedure FillDefault(Command)
 	
-	FillOfDefaultData();
+	FillOfDefaultData("MondayFriday");
+	
+	Items.Calendar.Refresh();
+	
+EndProcedure
+
+&AtClient
+Procedure FillSundayThursday(Command)
+	
+	FillOfDefaultData("SundayThursday");
+	
+	Items.Calendar.Refresh();
+	
+EndProcedure
+
+&AtClient
+Procedure FillSaturdayThursday(Command)
+	
+	FillOfDefaultData("SaturdayThursday");
 	
 	Items.Calendar.Refresh();
 	
@@ -205,12 +224,12 @@ Procedure ReadDataOfBusinessCalendar(BusinessCalendar, YearNumber)
 EndProcedure
 
 &AtServer
-Procedure FillOfDefaultData()
+Procedure FillOfDefaultData(Type)
 	
 	// Fills out the form with the production calendar data composed on the basis of holidays and holiday shifts.
 	
 	ConvertDataShopCalendar(
-		Catalogs.BusinessCalendars.ResultFillManufacturingCalendarDefault(Object.Code, CurrentYearNumber));
+		Catalogs.BusinessCalendars.ResultFillManufacturingCalendarDefault(Object.Code, CurrentYearNumber, Type));
 
 	Modified = True;
 	
@@ -463,17 +482,3 @@ Procedure PrintEnd(ResponseOnOfferWrite, ExecuteParameters = Undefined) Export
 EndProcedure
 
 #EndRegion
-
-
-
-
-
-
-
-
-
-
-
-
-
-

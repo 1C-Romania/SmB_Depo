@@ -1134,17 +1134,3 @@ Procedure ListSelection(Item, SelectedRow, Field, StandardProcessing)
 	NotifyChoice(DocumentData);
 	
 EndProcedure // ListSelection()
-
-
-
-
-
-
-
-
-
-
-
-
-
-

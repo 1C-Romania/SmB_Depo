@@ -164,7 +164,7 @@
 						</v8:item>
 						<v8:item>
 							<v8:lang>ru</v8:lang>
-							<v8:content>ПометкаУдаления</v8:content>
+							<v8:content>Пометка удаления</v8:content>
 						</v8:item>
 					</xr:Synonym>
 					<xr:Comment/>
@@ -294,6 +294,7 @@
 				<xr:Item xsi:type="xr:MDObjectRef">Document.GoodsReceipt</xr:Item>
 				<xr:Item xsi:type="xr:MDObjectRef">Document.SupplierInvoiceForPayment</xr:Item>
 				<xr:Item xsi:type="xr:MDObjectRef">Document.ReceiptCR</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">Catalog.Counterparties</xr:Item>
 			</BasedOn>
 			<InputByString>
 				<xr:Field>Document.SupplierInvoice.StandardAttribute.Number</xr:Field>
@@ -426,6 +427,10 @@
 							<v8:lang>en</v8:lang>
 							<v8:content>Company</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Организация</v8:content>
+						</v8:item>
 					</Synonym>
 					<Comment/>
 					<Type>
@@ -471,11 +476,11 @@
 					<Synonym>
 						<v8:item>
 							<v8:lang>en</v8:lang>
-							<v8:content>Counterparty</v8:content>
+							<v8:content>Supplier</v8:content>
 						</v8:item>
 						<v8:item>
 							<v8:lang>ru</v8:lang>
-							<v8:content>Контрагенты</v8:content>
+							<v8:content>Поставщик</v8:content>
 						</v8:item>
 					</Synonym>
 					<Comment/>
@@ -505,7 +510,13 @@
 					<FillValue xsi:type="xr:DesignTimeRef">Catalog.Counterparties.EmptyRef</FillValue>
 					<FillChecking>ShowError</FillChecking>
 					<ChoiceFoldersAndItems>Items</ChoiceFoldersAndItems>
-					<ChoiceParameterLinks/>
+					<ChoiceParameterLinks>
+						<xr:Link>
+							<xr:Name>Additional.OperationKind</xr:Name>
+							<xr:DataPath xsi:type="xs:string">Document.SupplierInvoice.Attribute.OperationKind</xr:DataPath>
+							<xr:ValueChange>DontChange</xr:ValueChange>
+						</xr:Link>
+					</ChoiceParameterLinks>
 					<ChoiceParameters/>
 					<QuickChoice>Auto</QuickChoice>
 					<CreateOnInput>Auto</CreateOnInput>
@@ -526,7 +537,7 @@
 						</v8:item>
 						<v8:item>
 							<v8:lang>ru</v8:lang>
-							<v8:content>Контакт</v8:content>
+							<v8:content>Договор</v8:content>
 						</v8:item>
 					</Synonym>
 					<Comment/>
@@ -654,7 +665,7 @@
 						</v8:item>
 						<v8:item>
 							<v8:lang>ru</v8:lang>
-							<v8:content>Порядок</v8:content>
+							<v8:content>Заказ</v8:content>
 						</v8:item>
 					</Synonym>
 					<Comment/>
@@ -722,7 +733,7 @@
 						</v8:item>
 						<v8:item>
 							<v8:lang>ru</v8:lang>
-							<v8:content>Склад, на который приходуются запасы</v8:content>
+							<v8:content>Склад</v8:content>
 						</v8:item>
 					</Synonym>
 					<Comment/>
@@ -840,7 +851,7 @@
 					<Synonym>
 						<v8:item>
 							<v8:lang>en</v8:lang>
-							<v8:content>Include services to the inventory cost</v8:content>
+							<v8:content>Include services in the inventory cost</v8:content>
 						</v8:item>
 						<v8:item>
 							<v8:lang>ru</v8:lang>
@@ -891,11 +902,11 @@
 					<Synonym>
 						<v8:item>
 							<v8:lang>en</v8:lang>
-							<v8:content>Currency</v8:content>
+							<v8:content>Document currency</v8:content>
 						</v8:item>
 						<v8:item>
 							<v8:lang>ru</v8:lang>
-							<v8:content>Вал.</v8:content>
+							<v8:content>Валюта документа</v8:content>
 						</v8:item>
 					</Synonym>
 					<Comment/>
@@ -973,7 +984,7 @@
 					<MinValue xsi:nil="true"/>
 					<MaxValue xsi:nil="true"/>
 					<FillFromFillingValue>false</FillFromFillingValue>
-					<FillValue xsi:type="xr:DesignTimeRef">Enum.VATTaxationTypes.EnumValue.TaxableByVAT</FillValue>
+					<FillValue xsi:type="xr:DesignTimeRef">Enum.VATTaxationTypes.EnumValue.NotTaxableByVAT</FillValue>
 					<FillChecking>ShowError</FillChecking>
 					<ChoiceFoldersAndItems>Items</ChoiceFoldersAndItems>
 					<ChoiceParameterLinks/>
@@ -1024,7 +1035,7 @@
 					<MinValue xsi:nil="true"/>
 					<MaxValue xsi:nil="true"/>
 					<FillFromFillingValue>false</FillFromFillingValue>
-					<FillValue xsi:type="xs:boolean">true</FillValue>
+					<FillValue xsi:type="xs:boolean">false</FillValue>
 					<FillChecking>DontCheck</FillChecking>
 					<ChoiceFoldersAndItems>Items</ChoiceFoldersAndItems>
 					<ChoiceParameterLinks/>
@@ -1263,11 +1274,11 @@
 					<Synonym>
 						<v8:item>
 							<v8:lang>en</v8:lang>
-							<v8:content>Counterparty price kind</v8:content>
+							<v8:content>Supplier price kind</v8:content>
 						</v8:item>
 						<v8:item>
 							<v8:lang>ru</v8:lang>
-							<v8:content>Вид цен контрагента</v8:content>
+							<v8:content>Вид цен поставщика</v8:content>
 						</v8:item>
 					</Synonym>
 					<Comment/>
@@ -1362,11 +1373,11 @@
 					<Synonym>
 						<v8:item>
 							<v8:lang>en</v8:lang>
-							<v8:content>In. Doc. No</v8:content>
+							<v8:content>Incoming document #</v8:content>
 						</v8:item>
 						<v8:item>
 							<v8:lang>ru</v8:lang>
-							<v8:content>In. Doc. No</v8:content>
+							<v8:content>№ вх. документа</v8:content>
 						</v8:item>
 					</Synonym>
 					<Comment/>
@@ -1417,11 +1428,11 @@
 					<Synonym>
 						<v8:item>
 							<v8:lang>en</v8:lang>
-							<v8:content>Date of incoming document</v8:content>
+							<v8:content>Incoming document date</v8:content>
 						</v8:item>
 						<v8:item>
 							<v8:lang>ru</v8:lang>
-							<v8:content>Дата входящего документа</v8:content>
+							<v8:content>Дата вх. документа</v8:content>
 						</v8:item>
 					</Synonym>
 					<Comment/>
@@ -1475,7 +1486,7 @@
 						</v8:item>
 						<v8:item>
 							<v8:lang>ru</v8:lang>
-							<v8:content>Примечание</v8:content>
+							<v8:content>Комментарий</v8:content>
 						</v8:item>
 					</Synonym>
 					<Comment/>
@@ -1585,7 +1596,7 @@
 						</v8:item>
 						<v8:item>
 							<v8:lang>ru</v8:lang>
-							<v8:content>Ответственный менеджер</v8:content>
+							<v8:content>Ответственный</v8:content>
 						</v8:item>
 					</Synonym>
 					<Comment/>
@@ -1636,7 +1647,7 @@
 						</v8:item>
 						<v8:item>
 							<v8:lang>ru</v8:lang>
-							<v8:content>Ведомость составил</v8:content>
+							<v8:content>Автор</v8:content>
 						</v8:item>
 					</Synonym>
 					<Comment/>
@@ -1683,7 +1694,7 @@
 					<Synonym>
 						<v8:item>
 							<v8:lang>en</v8:lang>
-							<v8:content>Vendor order position</v8:content>
+							<v8:content>Purchase order position</v8:content>
 						</v8:item>
 						<v8:item>
 							<v8:lang>ru</v8:lang>
@@ -1885,11 +1896,11 @@
 							<Synonym>
 								<v8:item>
 									<v8:lang>en</v8:lang>
-									<v8:content>Products and services</v8:content>
+									<v8:content>Product or service</v8:content>
 								</v8:item>
 								<v8:item>
 									<v8:lang>ru</v8:lang>
-									<v8:content>Продукция и услуги</v8:content>
+									<v8:content>Номенклатура</v8:content>
 								</v8:item>
 							</Synonym>
 							<Comment/>
@@ -1932,6 +1943,62 @@
 							<FullTextSearch>Use</FullTextSearch>
 						</Properties>
 					</Attribute>
+					<Attribute uuid="b33fc9a5-b4c1-48a4-b014-d2fd3bdd0f7c">
+						<Properties>
+							<Name>MeasurementUnit</Name>
+							<Synonym>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>UOM</v8:content>
+								</v8:item>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Ед.</v8:content>
+								</v8:item>
+							</Synonym>
+							<Comment/>
+							<Type>
+								<v8:Type>cfg:CatalogRef.UOMClassifier</v8:Type>
+								<v8:Type>cfg:CatalogRef.UOM</v8:Type>
+							</Type>
+							<PasswordMode>false</PasswordMode>
+							<Format/>
+							<EditFormat/>
+							<ToolTip>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Unit of measurement of the products and services item</v8:content>
+								</v8:item>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Единица измерения номенклатурной позиции.</v8:content>
+								</v8:item>
+							</ToolTip>
+							<MarkNegatives>false</MarkNegatives>
+							<Mask/>
+							<MultiLine>false</MultiLine>
+							<ExtendedEdit>false</ExtendedEdit>
+							<MinValue xsi:nil="true"/>
+							<MaxValue xsi:nil="true"/>
+							<FillChecking>ShowError</FillChecking>
+							<ChoiceFoldersAndItems>Items</ChoiceFoldersAndItems>
+							<ChoiceParameterLinks>
+								<xr:Link>
+									<xr:Name>Filter.Owner</xr:Name>
+									<xr:DataPath xsi:type="xs:string">Document.SupplierInvoice.TabularSection.Inventory.Attribute.ProductsAndServices</xr:DataPath>
+									<xr:ValueChange>Clear</xr:ValueChange>
+								</xr:Link>
+							</ChoiceParameterLinks>
+							<ChoiceParameters/>
+							<QuickChoice>Auto</QuickChoice>
+							<CreateOnInput>Auto</CreateOnInput>
+							<ChoiceForm/>
+							<LinkByType/>
+							<ChoiceHistoryOnInput>Auto</ChoiceHistoryOnInput>
+							<Indexing>DontIndex</Indexing>
+							<FullTextSearch>Use</FullTextSearch>
+						</Properties>
+					</Attribute>
 					<Attribute uuid="75e696ba-13fe-4804-b007-664f63f31923">
 						<Properties>
 							<Name>Characteristic</Name>
@@ -1942,7 +2009,7 @@
 								</v8:item>
 								<v8:item>
 									<v8:lang>ru</v8:lang>
-									<v8:content>Characteristic</v8:content>
+									<v8:content>Характеристика</v8:content>
 								</v8:item>
 							</Synonym>
 							<Comment/>
@@ -2031,62 +2098,6 @@
 									<xr:DataPath xsi:type="xs:string">Document.SupplierInvoice.Attribute.OperationKind</xr:DataPath>
 									<xr:ValueChange>Clear</xr:ValueChange>
 								</xr:Link>
-								<xr:Link>
-									<xr:Name>Filter.Owner</xr:Name>
-									<xr:DataPath xsi:type="xs:string">Document.SupplierInvoice.TabularSection.Inventory.Attribute.ProductsAndServices</xr:DataPath>
-									<xr:ValueChange>Clear</xr:ValueChange>
-								</xr:Link>
-							</ChoiceParameterLinks>
-							<ChoiceParameters/>
-							<QuickChoice>Auto</QuickChoice>
-							<CreateOnInput>Auto</CreateOnInput>
-							<ChoiceForm/>
-							<LinkByType/>
-							<ChoiceHistoryOnInput>Auto</ChoiceHistoryOnInput>
-							<Indexing>DontIndex</Indexing>
-							<FullTextSearch>Use</FullTextSearch>
-						</Properties>
-					</Attribute>
-					<Attribute uuid="b33fc9a5-b4c1-48a4-b014-d2fd3bdd0f7c">
-						<Properties>
-							<Name>MeasurementUnit</Name>
-							<Synonym>
-								<v8:item>
-									<v8:lang>en</v8:lang>
-									<v8:content>UOM</v8:content>
-								</v8:item>
-								<v8:item>
-									<v8:lang>ru</v8:lang>
-									<v8:content>Единицы измерения</v8:content>
-								</v8:item>
-							</Synonym>
-							<Comment/>
-							<Type>
-								<v8:Type>cfg:CatalogRef.UOMClassifier</v8:Type>
-								<v8:Type>cfg:CatalogRef.UOM</v8:Type>
-							</Type>
-							<PasswordMode>false</PasswordMode>
-							<Format/>
-							<EditFormat/>
-							<ToolTip>
-								<v8:item>
-									<v8:lang>en</v8:lang>
-									<v8:content>Unit of measurement of the products and services item</v8:content>
-								</v8:item>
-								<v8:item>
-									<v8:lang>ru</v8:lang>
-									<v8:content>Единица измерения номенклатурной позиции.</v8:content>
-								</v8:item>
-							</ToolTip>
-							<MarkNegatives>false</MarkNegatives>
-							<Mask/>
-							<MultiLine>false</MultiLine>
-							<ExtendedEdit>false</ExtendedEdit>
-							<MinValue xsi:nil="true"/>
-							<MaxValue xsi:nil="true"/>
-							<FillChecking>ShowError</FillChecking>
-							<ChoiceFoldersAndItems>Items</ChoiceFoldersAndItems>
-							<ChoiceParameterLinks>
 								<xr:Link>
 									<xr:Name>Filter.Owner</xr:Name>
 									<xr:DataPath xsi:type="xs:string">Document.SupplierInvoice.TabularSection.Inventory.Attribute.ProductsAndServices</xr:DataPath>
@@ -2275,7 +2286,7 @@
 								</v8:item>
 								<v8:item>
 									<v8:lang>ru</v8:lang>
-									<v8:content>Указывается ставка НДС</v8:content>
+									<v8:content>Ставка НДС</v8:content>
 								</v8:item>
 							</Synonym>
 							<Comment/>
@@ -2324,7 +2335,7 @@
 								</v8:item>
 								<v8:item>
 									<v8:lang>ru</v8:lang>
-									<v8:content>Указывается сумма НДС</v8:content>
+									<v8:content>Сумма НДС</v8:content>
 								</v8:item>
 							</Synonym>
 							<Comment/>
@@ -2378,7 +2389,7 @@
 								</v8:item>
 								<v8:item>
 									<v8:lang>ru</v8:lang>
-									<v8:content>Порядок</v8:content>
+									<v8:content>Заказ</v8:content>
 								</v8:item>
 							</Synonym>
 							<Comment/>
@@ -2444,7 +2455,7 @@
 								</v8:item>
 								<v8:item>
 									<v8:lang>ru</v8:lang>
-									<v8:content>Итого</v8:content>
+									<v8:content>Всего</v8:content>
 								</v8:item>
 							</Synonym>
 							<Comment/>
@@ -2606,7 +2617,7 @@
 								</v8:item>
 								<v8:item>
 									<v8:lang>ru</v8:lang>
-									<v8:content>Состав</v8:content>
+									<v8:content>Содержание</v8:content>
 								</v8:item>
 							</Synonym>
 							<Comment/>
@@ -2721,11 +2732,11 @@
 							<Synonym>
 								<v8:item>
 									<v8:lang>en</v8:lang>
-									<v8:content>Products and services</v8:content>
+									<v8:content>Product or service</v8:content>
 								</v8:item>
 								<v8:item>
 									<v8:lang>ru</v8:lang>
-									<v8:content>Продукция и услуги</v8:content>
+									<v8:content>Номенклатура</v8:content>
 								</v8:item>
 							</Synonym>
 							<Comment/>
@@ -2778,7 +2789,7 @@
 								</v8:item>
 								<v8:item>
 									<v8:lang>ru</v8:lang>
-									<v8:content>Единицы измерения</v8:content>
+									<v8:content>Ед.</v8:content>
 								</v8:item>
 							</Synonym>
 							<Comment/>
@@ -2996,7 +3007,7 @@
 								</v8:item>
 								<v8:item>
 									<v8:lang>ru</v8:lang>
-									<v8:content>Указывается ставка НДС</v8:content>
+									<v8:content>Ставка НДС</v8:content>
 								</v8:item>
 							</Synonym>
 							<Comment/>
@@ -3045,7 +3056,7 @@
 								</v8:item>
 								<v8:item>
 									<v8:lang>ru</v8:lang>
-									<v8:content>Указывается сумма НДС</v8:content>
+									<v8:content>Сумма НДС</v8:content>
 								</v8:item>
 							</Synonym>
 							<Comment/>
@@ -3164,7 +3175,7 @@
 								</v8:item>
 								<v8:item>
 									<v8:lang>ru</v8:lang>
-									<v8:content>Итого</v8:content>
+									<v8:content>Всего</v8:content>
 								</v8:item>
 							</Synonym>
 							<Comment/>
@@ -3397,7 +3408,7 @@
 								</v8:item>
 								<v8:item>
 									<v8:lang>ru</v8:lang>
-									<v8:content>Состав</v8:content>
+									<v8:content>Содержание</v8:content>
 								</v8:item>
 							</Synonym>
 							<Comment/>
@@ -3516,7 +3527,7 @@
 								</v8:item>
 								<v8:item>
 									<v8:lang>ru</v8:lang>
-									<v8:content>документ</v8:content>
+									<v8:content>Документ</v8:content>
 								</v8:item>
 							</Synonym>
 							<Comment/>
@@ -3576,7 +3587,7 @@
 								</v8:item>
 								<v8:item>
 									<v8:lang>ru</v8:lang>
-									<v8:content>Порядок</v8:content>
+									<v8:content>Заказ</v8:content>
 								</v8:item>
 							</Synonym>
 							<Comment/>
@@ -3794,7 +3805,7 @@
 								</v8:item>
 								<v8:item>
 									<v8:lang>ru</v8:lang>
-									<v8:content>Сумма платежа (итог)</v8:content>
+									<v8:content>Сумма платежа</v8:content>
 								</v8:item>
 							</Synonym>
 							<Comment/>
@@ -3860,7 +3871,7 @@
 						</v8:item>
 						<v8:item>
 							<v8:lang>ru</v8:lang>
-							<v8:content>Дополнительные реквизиты объекта</v8:content>
+							<v8:content>Дополнительные реквизиты</v8:content>
 						</v8:item>
 					</Synonym>
 					<Comment/>

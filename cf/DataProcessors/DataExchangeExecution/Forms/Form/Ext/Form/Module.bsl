@@ -1090,17 +1090,3 @@ Procedure ScenarioWhenThereAreErrorsOnStartup()
 EndProcedure
 
 #EndRegion
-
-
-
-
-
-
-
-
-
-
-
-
-
-

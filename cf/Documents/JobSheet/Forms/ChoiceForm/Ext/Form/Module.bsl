@@ -7,17 +7,3 @@ Procedure OnCreateAtServer(Cancel, StandardProcessing)
 	SmallBusinessServer.SetDesignDateColumn(List);
 	
 EndProcedure // OnCreateAtServer()
-
-
-
-
-
-
-
-
-
-
-
-
-
-

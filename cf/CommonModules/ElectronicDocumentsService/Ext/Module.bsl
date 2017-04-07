@@ -1620,11 +1620,6 @@ Function GetEDPresentation(LinkToED) Export
 			OR LinkToED.EDKind = Enums.EDKinds.NotificationAboutClarification Then
 		
 		Presentation = "" + LinkToED.VersionPointTypeED + DateText;
-	ElsIf LinkToED.EDKind = Enums.EDKinds.CustomerInvoiceNote
-		  OR LinkToED.EDKind = Enums.EDKinds.CorrectiveInvoiceNote Then
-		
-		Presentation = "" + LinkToED.EDKind + " No " + LinkToED.SenderDocumentNumber + DateText;
-		
 	ElsIf LinkToED.EDKind = Enums.EDKinds.BankStatement Then
 		Presentation = "" + LinkToED.EDKind+" dated " + Format(LinkToED.CreationDate,"DLF=D");
 	ElsIf LinkToED.EDKind = Enums.EDKinds.QueryStatement
@@ -1662,7 +1657,7 @@ Function DetermineEDPresentation(EDKind, ParametersStructure) Export
 		DateText = "_" + Format(PropertyValue, "DF=yyyy-MM-dd");
 	EndIf;
 	
-	If EDKind <> Enums.EDKinds.CustomerInvoiceNote AND EDKind <> Enums.EDKinds.NotificationAboutReception
+	If EDKind <> Enums.EDKinds.NotificationAboutReception
 		AND EDKind <> Enums.EDKinds.Confirmation AND EDKind <> Enums.EDKinds.NotificationAboutClarification
 		AND EDKind <> Enums.EDKinds.PaymentOrder AND EDKind <> Enums.EDKinds.STATEMENT
 		AND EDKind <> Enums.EDKinds.QueryStatement AND ParametersStructure.Property("EDVersion", PropertyValue)
@@ -1673,9 +1668,7 @@ Function DetermineEDPresentation(EDKind, ParametersStructure) Export
 		
 	EndIf;
 	
-	If EDKind = Enums.EDKinds.CustomerInvoiceNote OR  EDKind = Enums.EDKinds.CorrectiveInvoiceNote Then
-		TextEDKind = NStr("en='IR';ru='IR'");
-	ElsIf EDKind = Enums.EDKinds.TORG12 Then
+	If EDKind = Enums.EDKinds.TORG12 Then
 		TextEDKind = NStr("en='TORG-12';ru='ТОРГ-12'");
 	ElsIf EDKind = Enums.EDKinds.TORG12Seller OR EDKind = Enums.EDKinds.TORG12Customer Then
 		TextEDKind = String(EDKind);
@@ -2025,7 +2018,7 @@ Function GetNewED(AccAgreementsAndStructuresOfCertificates = Undefined, Readmiss
 		|%1'");
 			ErrorText = StringFunctionsClientServer.SubstituteParametersInString(Text, ErrorText);
 			
-			MessageText = NStr("en='An error occurred while receiving new electronicdocuments is started.
+			MessageText = NStr("en='An error occurred while receiving new electronic documents.
 		|(see details in Event log monitor).';ru='Ошибка при получении новых эл.документов.
 		|(подробности см. в Журнале регистрации).'");
 			ElectronicDocumentsServiceCallServer.ProcessExceptionByEDOnServer(
@@ -2659,7 +2652,6 @@ Procedure SaveInvitation(InvitationsTable) Export
 	|	Invitation.ID,
 	|	Invitation.ExternalID AS ExternalID,
 	|	Invitation.TIN AS TIN,
-	|	Invitation.KPP,
 	|	Invitation.State,
 	|	Invitation.Description,
 	|	Invitation.Changed AS Changed,
@@ -2678,7 +2670,6 @@ Procedure SaveInvitation(InvitationsTable) Export
 	|SELECT
 	|	Invitation.EDFProfileSettings,
 	|	Invitation.TIN AS TIN,
-	|	Invitation.KPP,
 	|	Invitation.ExternalID AS ExternalID,
 	|	MAX(Invitation.Changed) AS Changed
 	|INTO RecordsLastChanges
@@ -2688,7 +2679,6 @@ Procedure SaveInvitation(InvitationsTable) Export
 	|GROUP BY
 	|	Invitation.EDFProfileSettings,
 	|	Invitation.TIN,
-	|	Invitation.KPP,
 	|	Invitation.ExternalID
 	|
 	|INDEX BY
@@ -2704,7 +2694,6 @@ Procedure SaveInvitation(InvitationsTable) Export
 	|	Invitation.ID,
 	|	Invitation.ExternalID,
 	|	Invitation.TIN,
-	|	Invitation.KPP,
 	|	Invitation.Description,
 	|	Invitation.Changed AS Changed,
 	|	Invitation.ErrorDescription,
@@ -2726,9 +2715,9 @@ Procedure SaveInvitation(InvitationsTable) Export
 		LastChangesVT = Result.Unload();
 		
 		// If an error occurs that is located in
-		// the query for counterparty joining, Taxcom returns record with error specification but without KPP. As
+		// the query for counterparty joining, Taxcom returns record with error specification. As
 		// a result query can return 2 records by one counterparty (TIN and
-		// ExternalID match and KPP is empty in one record and filled in in another one). Not to mislead
+		// ExternalID match in one record and filled in in another one). Not to mislead
 		// users, one record (the earlier one) should be removed.
 		For Ct = -LastChangesVT.Count() + 1 To 0 Do
 			VTRow = LastChangesVT[-Ct];
@@ -2737,12 +2726,10 @@ Procedure SaveInvitation(InvitationsTable) Export
 			If RowArray.Count() > 1 Then
 				FirstItem = RowArray[0];
 				SecondItem = RowArray[1];
-				If Not ValueIsFilled(FirstItem.KPP) OR Not ValueIsFilled(SecondItem.KPP) Then
-					If FirstItem.Changed > SecondItem.Changed Then
-						LastChangesVT.Delete(SecondItem);
-					Else
-						LastChangesVT.Delete(FirstItem);
-					EndIf;
+				If FirstItem.Changed > SecondItem.Changed Then
+					LastChangesVT.Delete(SecondItem);
+				Else
+					LastChangesVT.Delete(FirstItem);
 				EndIf;
 			EndIf;
 		EndDo;
@@ -2754,7 +2741,6 @@ Procedure SaveInvitation(InvitationsTable) Export
 			Error = (NewInvitations.MemberStatus = Enums.EDExchangeMemberStatuses.Error);
 			If ValueIsFilled(NewInvitations.TIN) Then
 				AttributeNameCounterpartyTIN = ElectronicDocumentsReUse.NameAttributeObjectExistanceInAppliedSolution("CounterpartyTIN");
-				AttributeNameCounterpartyKPP = ElectronicDocumentsReUse.NameAttributeObjectExistanceInAppliedSolution("CounterpartyCRR");
 				
 				Query = New Query;
 				QueryText =
@@ -2766,19 +2752,13 @@ Procedure SaveInvitation(InvitationsTable) Export
 				|	Not EDFSettings.DeletionMark
 				|	AND EDFSettings.Counterparty." + AttributeNameCounterpartyTIN + " = &TIN";
 				Query.SetParameter("TIN", NewInvitations.TIN);
-				If ValueIsFilled(NewInvitations.KPP) AND AttributeNameCounterpartyKPP <> Undefined Then
-					QueryText = QueryText + " AND
-					|	EDFSettings.Counterparty." + AttributeNameCounterpartyKPP + " = &KPP";
-					Query.SetParameter("KPP", NewInvitations.KPP);
-				EndIf;
 				Query.Text = QueryText;
 				
 				Selection = Query.Execute().Select();
 				If Selection.Next() Then
 					Counterparty = Selection.Counterparty;
 				Else
-					Counterparty = ElectronicDocumentsOverridable.ObjectRefOnTINKPP("Counterparties", NewInvitations.TIN,
-						NewInvitations.KPP);
+					Counterparty = ElectronicDocumentsOverridable.ObjectRefOnTIN("Counterparties", NewInvitations.TIN);
 				EndIf;
 			EndIf;
 			
@@ -2790,14 +2770,14 @@ Procedure SaveInvitation(InvitationsTable) Export
 		|not found
 		|in base:
 		|Name: %2
-		|TIN: %3 KPP: %4 Status: %5.';ru='Обмен по профилю настроек ЭДО %1.
+		|TIN: %3 Status: %5.';ru='Обмен по профилю настроек ЭДО %1.
 		|В
 		|базе не
 		|найден контрагент:
 		|Наименование:
-		|%2 ИНН: %3 КПП: %4 Статус: %5.'");
+		|%2 ИНН: %3 Статус: %5.'");
 					MessageText = StringFunctionsClientServer.SubstituteParametersInString(Text, NewInvitations.EDFProfileSettings,
-						NewInvitations.Description, NewInvitations.TIN, NewInvitations.KPP, NewInvitations.MemberStatus);
+						NewInvitations.Description, NewInvitations.TIN, NewInvitations.MemberStatus);
 				Else
 					ErrorDescription = ?(ValueIsFilled(NewInvitations.ErrorDescription),
 						NewInvitations.ErrorDescription, NStr("en='Error';ru='Ошибка'"));
@@ -2808,15 +2788,15 @@ Procedure SaveInvitation(InvitationsTable) Export
 		|counterparty: Name: %3
 		|DS Address:
 		|%4 TIN:
-		|%5 KPP: %6 Status: %7.';ru='Обмен по профилю настроек ЭДО %1.
+		|%5 Status: %7.';ru='Обмен по профилю настроек ЭДО %1.
 		|%2 в
 		|приглашении для
 		|контрагента: Наименование:
 		|%3
 		|Адрес ЭП:
-		|%4 ИНН: %5 КПП: %6 Статус: %7.'");
+		|%4 ИНН: %5 Статус: %7.'");
 					MessageText = StringFunctionsClientServer.SubstituteParametersInString(Text, NewInvitations.EDFProfileSettings,
-						ErrorDescription, Description, NewInvitations.Description, NewInvitations.TIN, NewInvitations.KPP,
+						ErrorDescription, Description, NewInvitations.Description, NewInvitations.TIN,
 						NewInvitations.MemberStatus);
 				EndIf;
 				CommonUseClientServer.MessageToUser(MessageText);
@@ -2898,7 +2878,6 @@ Procedure SaveInvitation(InvitationsTable) Export
 						"CompanyID, EDExchangeMethod");
 					
 					Filter = New Structure;
-					Filter.Insert("OutgoingDocument", Enums.EDKinds.CustomerInvoiceNote);
 					FoundStrings = EDFSetup.OutgoingDocuments.FindRows(Filter);
 					For Each String IN FoundStrings Do
 						String.ToForm              = True;
@@ -3163,11 +3142,6 @@ Procedure InformAboutEDAgreementMissing(EDParameters, Source) Export
 	ParameterTable.Columns.Add("Value");
 	ParameterTable.Columns.Add("Order");
 	
-	IsCustomerInvoiceNote = False;
-	If EDParameters.Property("IsCustomerInvoiceNote") AND ValueIsFilled(EDParameters.IsCustomerInvoiceNote) Then
-		IsCustomerInvoiceNote = EDParameters.IsCustomerInvoiceNote;
-	EndIf;
-	
 	IsPaymentOrder = False;
 	If EDParameters.Property("EDKind") AND EDParameters.EDKind = Enums.EDKinds.PaymentOrder Then
 		IsPaymentOrder = True;
@@ -3185,31 +3159,22 @@ Procedure InformAboutEDAgreementMissing(EDParameters, Source) Export
 		Order = 0;
 		If Lower(CurParameter.Key) = Lower("Company") Then
 			Order = 1;
-		ElsIf Lower(CurParameter.Key) = Lower("Partner") AND Not IsCustomerInvoiceNote Then
+		ElsIf Lower(CurParameter.Key) = Lower("Partner") Then
 			Order = 2;
 		ElsIf Lower(CurParameter.Key) = Lower("Counterparty") Then
 			Order = 3;
 		ElsIf Lower(CurParameter.Key) = Lower("CounterpartyContract") Then
 			Order = 4;
-		ElsIf Lower(CurParameter.Key) = Lower("EDDirection") AND Not IsCustomerInvoiceNote Then
+		ElsIf Lower(CurParameter.Key) = Lower("EDDirection") Then
 			Order = 5;
-		ElsIf Lower(CurParameter.Key) = Lower("EDKind") AND Not IsCustomerInvoiceNote Then
+		ElsIf Lower(CurParameter.Key) = Lower("EDKind") Then
 			Order = 6;
-		ElsIf Lower(CurParameter.Key) = Lower("IsCustomerInvoiceNote") AND IsCustomerInvoiceNote Then
-			Order = 0.5;
 		EndIf;
 		
 		If Order > 0 Then
 			ParameterString = ParameterTable.Add();
 			FillPropertyValues(ParameterString, CurParameter);
-			If IsCustomerInvoiceNote Then
-				If Lower(CurParameter.Key) = Lower("IsCustomerInvoiceNote") Then
-					ParameterString.Key = "Exchange method";
-					ParameterString.Value = Enums.EDExchangeMethods.ThroughEDFOperatorTaxcom;
-				ElsIf Lower(CurParameter.Key) = Lower("Counterparty") Then
-					ParameterString.Key = "Participant";
-				EndIf;
-			ElsIf EDParameters.EDKind = Enums.EDKinds.PaymentOrder Then
+			If EDParameters.EDKind = Enums.EDKinds.PaymentOrder Then
 				If CurParameter.Key = "Counterparty" Then
 					ParameterString.Key = "Bank";
 				EndIf;
@@ -4001,9 +3966,7 @@ Function ReturnEDStatusesArray(ExchangeSettings) Export
 						StatusesArray.Add(Enums.EDStatuses.Delivered);
 					EndIf;
 				
-					If ExchangeSettings.EDKind <> Enums.EDKinds.CustomerInvoiceNote
-						AND ExchangeSettings.EDKind <> Enums.EDKinds.CorrectiveInvoiceNote
-						AND ExchangeSettings.EDKind <> Enums.EDKinds.TORG12Customer
+					If ExchangeSettings.EDKind <> Enums.EDKinds.TORG12Customer
 						AND ExchangeSettings.EDKind <> Enums.EDKinds.ActCustomer
 						AND ExchangeSettings.EDKind <> Enums.EDKinds.AgreementAboutCostChangeRecipient
 						AND ExchangeSettings.EDKind <> Enums.EDKinds.InvoiceForPayment Then
@@ -4115,9 +4078,7 @@ Function ReturnEDStatusesArray(ExchangeSettings) Export
 						EndIf;
 					Else
 						StatusesArray.Add(Enums.EDStatuses.Approved);
-						If ExchangeSettings.EDKind <> Enums.EDKinds.CustomerInvoiceNote
-							AND ExchangeSettings.EDKind <> Enums.EDKinds.CorrectiveInvoiceNote
-							AND ExchangeSettings.EDKind <> Enums.EDKinds.TORG12Seller
+						If ExchangeSettings.EDKind <> Enums.EDKinds.TORG12Seller
 							AND ExchangeSettings.EDKind <> Enums.EDKinds.ActPerformer
 							AND ExchangeSettings.EDKind <> Enums.EDKinds.AgreementAboutCostChangeSender
 							AND ExchangeSettings.EDKind <> Enums.EDKinds.InvoiceForPayment Then
@@ -4923,12 +4884,7 @@ Function GenerateAttachedFiles(ObjectsArray, ExchangeParameters, AdditParameters
 		
 		ExchangeStructure.EDStructure.Insert("UniqueId", String(AddedFile.UUID()));
 				
-		If ExchangeStructure.EDStructure.EDKind = Enums.EDKinds.CustomerInvoiceNote
-		 OR ExchangeStructure.EDStructure.EDKind = Enums.EDKinds.CorrectiveInvoiceNote Then
-			VersionPointTypeED = Enums.EDVersionElementTypes.ESF;
-		Else
-			VersionPointTypeED = Enums.EDVersionElementTypes.PrimaryED;
-		EndIf;
+		VersionPointTypeED = Enums.EDVersionElementTypes.PrimaryED;
 		
 		ExchangeStructure.EDStructure.Insert("VersionPointTypeED", VersionPointTypeED);
 		EDFormingDateBySender = "";
@@ -4974,9 +4930,7 @@ Function GetEDFileFullName(ExchangeStructure) Export
 		  OR ExchangeStructure.EDKind = Enums.EDKinds.AgreementAboutCostChangeRecipient
 		  OR ExchangeStructure.EDKind = Enums.EDKinds.PaymentOrder)
 		OR EDExchangeMethod = Enums.EDExchangeMethods.ThroughEDFOperatorTaxcom
-		AND (ExchangeStructure.EDKind = Enums.EDKinds.CustomerInvoiceNote
-		   OR ExchangeStructure.EDKind = Enums.EDKinds.CorrectiveInvoiceNote
-		   OR ExchangeStructure.EDKind = Enums.EDKinds.TORG12)
+		AND ExchangeStructure.EDKind = Enums.EDKinds.TORG12
 		OR ExchangeStructure.EDStructure.EDFProfileSettings.EDExchangeMethod = Enums.EDExchangeMethods.QuickExchange Then
 		
 		FullFileName = ExchangeStructure.FullFileName;
@@ -5886,10 +5840,6 @@ Procedure GenerateXMLFile(CurItem, ReturnStructureArray, ExchangeParameters, Add
 			ReturnStructure = ElectronicDocumentsInternal.GenerateGoodsReturnBetweenCompanies(ObjectForExport,
 				EDExchangeSettings);
 				
-		ElsIf CurItem.Key = Enums.EDKinds.CustomerInvoiceNote
-			OR CurItem.Key = Enums.EDKinds.CorrectiveInvoiceNote Then
-			ReturnStructure = ElectronicDocumentsInternal.GenerateInvoiceFTS(ObjectForExport, EDExchangeSettings);
-			
 		ElsIf CurItem.Key = Enums.EDKinds.PaymentOrder Then
 			ReturnStructure = ElectronicDocumentsInternal.GeneratePaymentOrder(ObjectForExport, EDExchangeSettings);
 			
@@ -7398,8 +7348,6 @@ Function IsFTS(EDKind) Export
 		Or EDKind = Enums.EDKinds.TORG12Seller
 		Or EDKind = Enums.EDKinds.ActCustomer
 		Or EDKind = Enums.EDKinds.ActPerformer
-		Or EDKind = Enums.EDKinds.CustomerInvoiceNote
-		Or EDKind = Enums.EDKinds.CorrectiveInvoiceNote
 		Or EDKind = Enums.EDKinds.AgreementAboutCostChangeSender
 		Or EDKind = Enums.EDKinds.AgreementAboutCostChangeRecipient Then
 		Result = True;
@@ -7538,7 +7486,7 @@ Procedure SendEDStateRequestToBank(ParametersStructure, StorageAddress) Export
 	SenderName = CommonUse.GetAttributeValue(
 		AgreementAttributes.Company, AttributeCompanyName);
 	ClientApplicationVersion = ElectronicDocumentsReUse.ClientApplicationVersionForBank();
-	CompanyAttributes = CommonUse.ObjectAttributesValues(AgreementAttributes.Company, "TIN, KPP");
+	CompanyAttributes = CommonUse.ObjectAttributesValues(AgreementAttributes.Company, "TIN");
 	BankingDetails = CommonUse.ObjectAttributesValues(AgreementAttributes.Counterparty, "Code, description");
 	TargetNamespace = ElectronicDocumentsService.AsynchronousExchangeWithBanksNamespace();
 	AsynchronousExchangeWithBanksSchemeVersion = ElectronicDocumentsService.AsynchronousExchangeWithBanksSchemeVersion();
@@ -7566,7 +7514,6 @@ Procedure SendEDStateRequestToBank(ParametersStructure, StorageAddress) Export
 			Sender, "name", SenderName, True, ErrorText);
 		ElectronicDocumentsInternal.FillXDTOProperty(
 			Sender, "tin", CompanyAttributes.TIN, True, ErrorText);
-		ElectronicDocumentsInternal.FillXDTOProperty(Sender, "kpp", CompanyAttributes.KPP, , ErrorText);
 		ElectronicDocumentsInternal.FillXDTOProperty(EDStateQuery, "Sender", Sender, True, ErrorText);
 		
 		Recipient = ElectronicDocumentsInternal.GetCMLObjectType("BankPartyType", TargetNamespace);
@@ -7924,7 +7871,6 @@ Procedure CreateEDPackAsync(Envelop) Export
 				id = XDTOData.Sender.id;
 				name = XDTOData.Sender.name;
 				tin = XDTOData.Sender.tin;
-				kpp = XDTOData.Sender.kpp;
 				bic = XDTOData.Recipient.bic;
 				bankName = XDTOData.Recipient.name;
 				docId = XDTOData.id;
@@ -7933,7 +7879,6 @@ Procedure CreateEDPackAsync(Envelop) Export
 				ElectronicDocumentsInternal.FillXDTOProperty(CustomerPartyType, "id", id, True, ErrorText);
 				ElectronicDocumentsInternal.FillXDTOProperty(CustomerPartyType, "name", name, , ErrorText);
 				ElectronicDocumentsInternal.FillXDTOProperty(CustomerPartyType, "tin", tin, , ErrorText);
-				ElectronicDocumentsInternal.FillXDTOProperty(CustomerPartyType, "kpp", kpp, , ErrorText);
 				ElectronicDocumentsInternal.FillXDTOProperty(
 					Sender, "Customer", CustomerPartyType, True, ErrorText);
 				ElectronicDocumentsInternal.FillXDTOProperty(Packet, "Sender", Sender, True, ErrorText);

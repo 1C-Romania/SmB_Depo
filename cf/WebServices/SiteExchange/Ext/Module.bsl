@@ -260,8 +260,6 @@ Procedure AddQueriesToBatchQueryToExportProductsAndServices(QueryText, Parameter
 		|	Companies.DescriptionFull AS DescriptionFull,
 		|	Companies.LegalEntityIndividual AS LegalEntityIndividual,
 		|	Companies.TIN AS TIN,
-		|	Companies.KPP AS KPP,
-		|	Companies.CodeByOKPO AS CodeByOKPO,
 		|	Companies.ContactInformation.(
 		|		Type AS Type,
 		|		Kind AS Kind,
@@ -558,8 +556,6 @@ Procedure AddQueriesToBatchQueryToExportResiduesAndPrices(QueryText, Parameters)
 		|	Companies.DescriptionFull AS DescriptionFull,
 		|	Companies.LegalEntityIndividual AS LegalEntityIndividual,
 		|	Companies.TIN AS TIN,
-		|	Companies.KPP AS KPP,
-		|	Companies.CodeByOKPO AS CodeByOKPO,
 		|	Companies.ContactInformation.(
 		|		Type AS Type,
 		|		Kind AS Kind,

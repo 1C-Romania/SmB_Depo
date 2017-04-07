@@ -819,13 +819,6 @@
 		</right>
 	</object>
 	<object>
-		<name>Subsystem.CounterpartiesCheck</name>
-		<right>
-			<name>View</name>
-			<value>true</value>
-		</right>
-	</object>
-	<object>
 		<name>CommonForm.MessageForm</name>
 		<right>
 			<name>View</name>
@@ -859,7 +852,7 @@
 		</right>
 	</object>
 	<object>
-		<name>Catalog.Users.TabularSection.ContactInformation.Attribute.FieldsValues</name>
+		<name>Catalog.Users.TabularSection.ContactInformation.Attribute.FieldValues</name>
 		<right>
 			<name>View</name>
 			<value>false</value>
@@ -1018,17 +1011,6 @@
 	</object>
 	<object>
 		<name>CommonCommand.AdditionalReportsInventoryAndPurchases</name>
-		<right>
-			<name>View</name>
-			<value>true</value>
-		</right>
-	</object>
-	<object>
-		<name>Constant.UseCounterpartiesVerification</name>
-		<right>
-			<name>Read</name>
-			<value>true</value>
-		</right>
 		<right>
 			<name>View</name>
 			<value>true</value>
@@ -1232,45 +1214,6 @@
 		</right>
 	</object>
 	<object>
-		<name>Catalog.CustomerInvoiceNoteAttachedFiles</name>
-		<right>
-			<name>Read</name>
-			<value>true</value>
-		</right>
-		<right>
-			<name>Insert</name>
-			<value>true</value>
-		</right>
-		<right>
-			<name>Update</name>
-			<value>true</value>
-		</right>
-		<right>
-			<name>View</name>
-			<value>true</value>
-		</right>
-		<right>
-			<name>InteractiveInsert</name>
-			<value>true</value>
-		</right>
-		<right>
-			<name>Edit</name>
-			<value>true</value>
-		</right>
-		<right>
-			<name>InteractiveSetDeletionMark</name>
-			<value>true</value>
-		</right>
-		<right>
-			<name>InteractiveClearDeletionMark</name>
-			<value>true</value>
-		</right>
-		<right>
-			<name>InputByString</name>
-			<value>true</value>
-		</right>
-	</object>
-	<object>
 		<name>CommonForm.CalendarForm</name>
 		<right>
 			<name>View</name>
@@ -1376,7 +1319,7 @@
 		</right>
 	</object>
 	<object>
-		<name>Catalog.Users.TabularSection.ContactInformation.Attribute.EMail_Address</name>
+		<name>Catalog.Users.TabularSection.ContactInformation.Attribute.EmailAddress</name>
 		<right>
 			<name>View</name>
 			<value>false</value>
@@ -1484,7 +1427,7 @@
 		</right>
 	</object>
 	<object>
-		<name>Catalog.Users.TabularSection.ContactInformation.Attribute.PhoneNumberNoCodes</name>
+		<name>Catalog.Users.TabularSection.ContactInformation.Attribute.PhoneNumberWithoutCodes</name>
 		<right>
 			<name>View</name>
 			<value>false</value>
@@ -1514,13 +1457,6 @@
 			<name>Use</name>
 			<value>true</value>
 		</right>
-		<right>
-			<name>View</name>
-			<value>true</value>
-		</right>
-	</object>
-	<object>
-		<name>CommonForm.CounterpartyVerificationsSetting</name>
 		<right>
 			<name>View</name>
 			<value>true</value>
@@ -1607,17 +1543,6 @@
 		<name>Constant.DeleteFunctionalOptionOrderOnReceptionInHeader</name>
 		<right>
 			<name>Read</name>
-			<value>true</value>
-		</right>
-		<right>
-			<name>View</name>
-			<value>true</value>
-		</right>
-	</object>
-	<object>
-		<name>DataProcessor.InstructionOnUsageCounterpartiesCheck</name>
-		<right>
-			<name>Use</name>
 			<value>true</value>
 		</right>
 		<right>
@@ -2269,53 +2194,6 @@
 		</right>
 	</object>
 	<object>
-		<name>Catalog.DeleteAlcoholicProductsKinds</name>
-		<right>
-			<name>Read</name>
-			<value>true</value>
-		</right>
-		<right>
-			<name>Insert</name>
-			<value>true</value>
-		</right>
-		<right>
-			<name>Update</name>
-			<value>true</value>
-		</right>
-		<right>
-			<name>View</name>
-			<value>true</value>
-		</right>
-		<right>
-			<name>InteractiveInsert</name>
-			<value>true</value>
-		</right>
-		<right>
-			<name>Edit</name>
-			<value>true</value>
-		</right>
-		<right>
-			<name>InteractiveSetDeletionMark</name>
-			<value>true</value>
-		</right>
-		<right>
-			<name>InteractiveClearDeletionMark</name>
-			<value>true</value>
-		</right>
-		<right>
-			<name>InputByString</name>
-			<value>true</value>
-		</right>
-		<right>
-			<name>InteractiveSetDeletionMarkPredefinedData</name>
-			<value>true</value>
-		</right>
-		<right>
-			<name>InteractiveClearDeletionMarkPredefinedData</name>
-			<value>true</value>
-		</right>
-	</object>
-	<object>
 		<name>Constant.FunctionalOptionUseDiscountsMarkups</name>
 		<right>
 			<name>Read</name>
@@ -2417,25 +2295,6 @@
 		</right>
 		<right>
 			<name>View</name>
-			<value>true</value>
-		</right>
-	</object>
-	<object>
-		<name>InformationRegister.CounterpartiesStates</name>
-		<right>
-			<name>Read</name>
-			<value>true</value>
-		</right>
-		<right>
-			<name>Update</name>
-			<value>true</value>
-		</right>
-		<right>
-			<name>View</name>
-			<value>true</value>
-		</right>
-		<right>
-			<name>Edit</name>
 			<value>true</value>
 		</right>
 	</object>
@@ -3260,45 +3119,6 @@
 	</object>
 	<object>
 		<name>Catalog.CustomerOrderAttachedFiles</name>
-		<right>
-			<name>Read</name>
-			<value>true</value>
-		</right>
-		<right>
-			<name>Insert</name>
-			<value>true</value>
-		</right>
-		<right>
-			<name>Update</name>
-			<value>true</value>
-		</right>
-		<right>
-			<name>View</name>
-			<value>true</value>
-		</right>
-		<right>
-			<name>InteractiveInsert</name>
-			<value>true</value>
-		</right>
-		<right>
-			<name>Edit</name>
-			<value>true</value>
-		</right>
-		<right>
-			<name>InteractiveSetDeletionMark</name>
-			<value>true</value>
-		</right>
-		<right>
-			<name>InteractiveClearDeletionMark</name>
-			<value>true</value>
-		</right>
-		<right>
-			<name>InputByString</name>
-			<value>true</value>
-		</right>
-	</object>
-	<object>
-		<name>Catalog.SupplierInvoiceNoteAttachedFiles</name>
 		<right>
 			<name>Read</name>
 			<value>true</value>

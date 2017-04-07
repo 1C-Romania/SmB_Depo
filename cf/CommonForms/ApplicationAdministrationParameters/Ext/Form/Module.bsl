@@ -300,16 +300,3 @@ Procedure CheckFileBaseAdministrationParameters()
 EndProcedure
 
 #EndRegion
-
-
-
-
-
-
-
-
-
-
-
-
-

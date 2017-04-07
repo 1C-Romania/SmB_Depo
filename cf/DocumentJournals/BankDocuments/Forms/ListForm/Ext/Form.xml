@@ -98,6 +98,10 @@
 							<v8:lang>en</v8:lang>
 							<v8:content>Company</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Организация</v8:content>
+						</v8:item>
 					</InputHint>
 					<ContextMenu name="CompanyContextMenu" id="32"/>
 					<ExtendedTooltip name="CompanyExtendedTooltip" id="574"/>
@@ -131,21 +135,6 @@
 			<CommandSource>Form</CommandSource>
 			<ExtendedTooltip name="CommandBarExtendedTooltip" id="645"/>
 			<ChildItems>
-				<Button name="LoadFromFile" id="530">
-					<Type>CommandBarButton</Type>
-					<CommandName>Form.Command.LoadFromFile</CommandName>
-					<Title>
-						<v8:item>
-							<v8:lang>en</v8:lang>
-							<v8:content>Import</v8:content>
-						</v8:item>
-						<v8:item>
-							<v8:lang>ru</v8:lang>
-							<v8:content>Загрузить</v8:content>
-						</v8:item>
-					</Title>
-					<ExtendedTooltip name="LoadFromFileExtendedTooltip" id="577"/>
-				</Button>
 				<Button name="FormChangeForm" id="672">
 					<Type>CommandBarButton</Type>
 					<CommandName>Form.StandardCommand.CustomizeForm</CommandName>
@@ -520,6 +509,10 @@
 												<v8:item>
 													<v8:lang>en</v8:lang>
 													<v8:content>Company</v8:content>
+												</v8:item>
+												<v8:item>
+													<v8:lang>ru</v8:lang>
+													<v8:content>Организация</v8:content>
 												</v8:item>
 											</Title>
 											<ContextMenu name="ListCompanyContextMenu" id="11"/>
@@ -1103,6 +1096,10 @@ FROM
 					<v8:lang>en</v8:lang>
 					<v8:content>Company</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Организация</v8:content>
+				</v8:item>
 			</Title>
 			<Type>
 				<v8:Type>cfg:CatalogRef.Companies</v8:Type>
@@ -1275,29 +1272,6 @@ FROM
 		</ConditionalAppearance>
 	</Attributes>
 	<Commands>
-		<Command name="LoadFromFile" id="25">
-			<Title>
-				<v8:item>
-					<v8:lang>en</v8:lang>
-					<v8:content>Import statement from file</v8:content>
-				</v8:item>
-				<v8:item>
-					<v8:lang>ru</v8:lang>
-					<v8:content>Загрузить выписку из файла</v8:content>
-				</v8:item>
-			</Title>
-			<ToolTip>
-				<v8:item>
-					<v8:lang>en</v8:lang>
-					<v8:content>Export the write-offs on the account of the client bank</v8:content>
-				</v8:item>
-				<v8:item>
-					<v8:lang>ru</v8:lang>
-					<v8:content>Загрузить списания по счету из клиент-банка</v8:content>
-				</v8:item>
-			</ToolTip>
-			<Action>LoadFromFile</Action>
-		</Command>
 		<Command name="StatementGoTo" id="1">
 			<Title>
 				<v8:item>

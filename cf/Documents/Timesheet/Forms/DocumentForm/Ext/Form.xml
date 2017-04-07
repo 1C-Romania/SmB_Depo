@@ -126,7 +126,7 @@
 								<xr:Ref>StdPicture.Calendar</xr:Ref>
 								<xr:LoadTransparent>true</xr:LoadTransparent>
 							</ChoiceButtonPicture>
-							<BackColor>style:ManagingFieldBackgroundColor</BackColor>
+							<BackColor>style:MasterFieldBackground</BackColor>
 							<ContextMenu name="RegistrationPeriodContextMenu" id="1718"/>
 							<ExtendedTooltip name="RegistrationPeriodExtendedTooltip" id="1727"/>
 							<Events>
@@ -7349,11 +7349,11 @@
 				</v8:DateQualifiers>
 			</Type>
 		</Attribute>
-		<Attribute name="SubsidiaryCompany" id="4">
+		<Attribute name="Company" id="4">
 			<Title>
 				<v8:item>
 					<v8:lang>en</v8:lang>
-					<v8:content>SubsidiaryCompany</v8:content>
+					<v8:content>Company</v8:content>
 				</v8:item>
 				<v8:item>
 					<v8:lang>ru</v8:lang>

@@ -1148,17 +1148,3 @@ Procedure FinishAddingFile(NOTSpecified, AdditionalParameters) Export
 	BeginPutFile(NOTifyDescription, AddressInStorage, SelectedFile, True, UUID);
 	
 EndProcedure
-
-
-
-
-
-
-
-
-
-
-
-
-
-

@@ -7,10 +7,6 @@
 	<Configuration PlatformVersion="8.2" ConfigurationVersion="1.5.2.23" ConfigurationSynonym="Small Business, version 1.5">SmallBusiness</Configuration>
 	<ExchangePlanContent>
 		<Item>
-			<Type>DocumentRef.SupplierInvoiceNote</Type>
-			<AutoRecord>false</AutoRecord>
-		</Item>
-		<Item>
 			<Type>InformationRegisterRecord.IndividualsDescriptionFull</Type>
 			<AutoRecord>false</AutoRecord>
 		</Item>
@@ -3220,118 +3216,6 @@ EndIf;</BeforeProcess>
 				ExchangePlans.RecordChanges(Recipients, BasisDocument);
 			EndIf;
 		EndDo;
-	EndIf;
-	
-EndIf;</AfterProcessing>
-			</Rule>
-			<Rule Disable="false" Valid="true">
-				<Code>000000095</Code>
-				<Description>Document: Account-texture (Received)</Description>
-				<SettingsObject>DocumentRef.SupplierInvoiceNote</SettingsObject>
-				<MetadataObjectName>Document.SupplierInvoiceNote</MetadataObjectName>
-				<MetadataObjectType>Document</MetadataObjectType>
-				<FilterByExchangePlanProperties>
-					<Group>
-						<BooleanGroupValue>OR</BooleanGroupValue>
-						<FilterItem>
-							<IsConstantString>true</IsConstantString>
-							<ObjectPropertyType>Boolean</ObjectPropertyType>
-							<ExchangePlanProperty>ManualExchange</ExchangePlanProperty>
-							<ComparisonType>Equal</ComparisonType>
-							<ObjectProperty>true</ObjectProperty>
-							<ExchangePlanPropertyTable>
-								<Property>
-									<Description>ManualExchange</Description>
-									<Type>Boolean</Type>
-									<Kind>Attribute</Kind>
-								</Property>
-							</ExchangePlanPropertyTable>
-						</FilterItem>
-						<Group>
-							<BooleanGroupValue>AND</BooleanGroupValue>
-							<FilterItem>
-								<IsConstantString>false</IsConstantString>
-								<ObjectPropertyType>Date</ObjectPropertyType>
-								<ExchangePlanProperty>DocumentsDumpStartDate</ExchangePlanProperty>
-								<ComparisonType>GreaterOrEqual</ComparisonType>
-								<ObjectProperty>Date</ObjectProperty>
-								<ObjectPropertyTable>
-									<Property>
-										<Description>Date</Description>
-										<Type>Date</Type>
-										<Kind>Property</Kind>
-									</Property>
-								</ObjectPropertyTable>
-								<ExchangePlanPropertyTable>
-									<Property>
-										<Description>DocumentsDumpStartDate</Description>
-										<Type>Date</Type>
-										<Kind>Attribute</Kind>
-									</Property>
-								</ExchangePlanPropertyTable>
-							</FilterItem>
-							<Group>
-								<BooleanGroupValue>OR</BooleanGroupValue>
-								<FilterItem>
-									<IsConstantString>true</IsConstantString>
-									<ObjectPropertyType>Boolean</ObjectPropertyType>
-									<ExchangePlanProperty>UseCompaniesFilter</ExchangePlanProperty>
-									<ComparisonType>Equal</ComparisonType>
-									<ObjectProperty>false</ObjectProperty>
-									<ExchangePlanPropertyTable>
-										<Property>
-											<Description>UseCompaniesFilter</Description>
-											<Type>Boolean</Type>
-											<Kind>Attribute</Kind>
-										</Property>
-									</ExchangePlanPropertyTable>
-								</FilterItem>
-								<FilterItem>
-									<IsConstantString>false</IsConstantString>
-									<ObjectPropertyType>CatalogRef.Companies</ObjectPropertyType>
-									<ExchangePlanProperty>[Companies].Company</ExchangePlanProperty>
-									<ComparisonType>Equal</ComparisonType>
-									<ObjectProperty>Company</ObjectProperty>
-									<ObjectPropertyTable>
-										<Property>
-											<Description>Company</Description>
-											<Type>CatalogRef.Companies</Type>
-											<Kind>Attribute</Kind>
-										</Property>
-									</ObjectPropertyTable>
-									<ExchangePlanPropertyTable>
-										<Property>
-											<Description>[Companies]</Description>
-											<Kind>TabularSection</Kind>
-										</Property>
-										<Property>
-											<Description>Company</Description>
-											<Type>CatalogRef.Companies</Type>
-											<Kind>Attribute</Kind>
-										</Property>
-									</ExchangePlanPropertyTable>
-								</FilterItem>
-							</Group>
-						</Group>
-					</Group>
-				</FilterByExchangePlanProperties>
-				<FilterByObjectProperties/>
-				<BeforeProcess>If Not ValueIsFilled(Object.BasisDocument) Then
-	Cancel = True;
-EndIf;</BeforeProcess>
-				<AfterProcessing>If Not Cancel Then 
-	
-	Recipients = ExchangePlans.ExchangeSmallBusinessAccounting30.IdentifyArrayOfRecipients(Export, Object, Recipients);
-	ExchangePlans.ExchangeSmallBusinessAccounting30.RegisterRelatedDocuments(Export, Object, ORR, Recipients);
-	
-	If Not Export Then
-		
-		BasisDocument = Object.BasisDocument;
-		If TypeOf(BasisDocument) = Type("DocumentRef.SupplierInvoice")
-			OR TypeOf(BasisDocument) = Type("DocumentRef.ExpenseReport") Then
-			
-			ExchangePlans.RecordChanges(Recipients, BasisDocument);
-		EndIf;
 	EndIf;
 	
 EndIf;</AfterProcessing>

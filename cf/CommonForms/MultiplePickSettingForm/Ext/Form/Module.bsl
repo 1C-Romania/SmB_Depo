@@ -157,17 +157,3 @@ Procedure ShowPricesOnChange(Item)
 	
 EndProcedure // ShowPricesOnChange()
 // 
-
-
-
-
-
-
-
-
-
-
-
-
-
-

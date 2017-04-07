@@ -256,16 +256,3 @@ Procedure RefreshWorkingPlaceParameters()
 EndProcedure
 
 #EndRegion
-
-
-
-
-
-
-
-
-
-
-
-
-

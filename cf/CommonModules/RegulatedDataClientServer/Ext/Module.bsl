@@ -152,39 +152,6 @@ Function TINMeetsTheRequirements(Val TIN, ThisLegalEntity, MessageText) Export
 
 EndFunction 
 
-// Checks correspondence of the Tax Registration Reason Code (KPP) to the requirements.
-//
-// Parameters:
-//  KPP          - String - The Tax Registration Reason Code (KPP) being verified.
-//  MessageText - String - Text of the message of errors found.
-//
-// Returns:
-//  True       - KPP meets the requirements;
-//  False         - KPP does not meet the requirements.
-//
-Function KPPMeetsTheRequirements(Val KPP, MessageText) Export
-
-	MeetsRequirements = True;
-	MessageText           = "";
-
-	KPP      = TrimAll(KPP);
-	KPPLength = StrLen(KPP);
-
-	If Not StringFunctionsClientServer.OnlyNumbersInString(KPP) Then
-		MeetsRequirements = False;
-		MessageText = MessageText + NStr("en='KPP should contain numbers only.';ru='КПП должен состоять только из цифр.'");
-	EndIf;
-
-	If KPPLength <> 9 Then
-		MeetsRequirements = False;
-		MessageText = MessageText + ?(ValueIsFilled(MessageText), Chars.LF, "") +
-			NStr("en='KPP should contain 9 numbers.';ru='КПП должен состоять из 9 цифр.'");
-	EndIf;
-
-	Return MeetsRequirements;
-
-EndFunction 
-
 // Checks correspondence of OGRN to the requirements.
 //
 // Parameters:
@@ -252,51 +219,6 @@ Function MSRNMeetsTheRequirements(Val OGRN, ThisLegalEntity, MessageText) Export
 
 	Return MeetsRequirements;
 
-EndFunction 
-
-// Checks correspondence of OKPO to requirements of standards.
-//
-// Parameters:
-//  VerifiableCode         - String - The OKPO code being verified;
-//  ThisLegalEntity     - Boolean - shows whether the OKPO code owner is a legal entity;
-//  MessageText         - String - text of the message of errors found in the verified OKPO code;
-//
-// Returns:
-//  Boolean.
-//
-Function CodeByOKPOMeetsTheRequirements(Val VerifiableCode, ThisLegalEntity, MessageText = "") Export
-	
-	VerifiableCode = TrimAll(VerifiableCode);
-	MessageText = "";
-	CodeLength = StrLen(VerifiableCode);
-
-	If ThisLegalEntity = Undefined Then
-		MessageText = MessageText + NStr("en='The OKPO owner type is not defined.';ru='Не определен тип владельца кода ОКПО.'");
-		Return False;
-	EndIf;
-	
-	If Not StringFunctionsClientServer.OnlyNumbersInString(VerifiableCode) Then
-		MessageText = MessageText + NStr("en='The OKPO code shall consist of digits only.';ru='Код ОКПО должен состоять только из цифр.'") + Chars.LF;
-	EndIf;
-
-	If ThisLegalEntity AND CodeLength <> 8 Then
-		MessageText = MessageText + NStr("en='The OKPO code of a legal person shall consist of 8 digits.';ru='Код ОКПО юридического лица должен состоять из 8 цифр.'") + Chars.LF;
-	ElsIf Not ThisLegalEntity AND CodeLength <> 10 Then
-		MessageText = MessageText + NStr("en='The OKPO code of a physical person shall consist of 10 digits.';ru='Код ОКПО физического лица должен состоять из 10 цифр.'") + Chars.LF;
-	EndIf;
-	
-	If Not IsBlankString(MessageText) Then
-		MessageText = TrimAll(MessageText);
-		Return False;
-	EndIf;
-	
-	If Not ClassifierCodeCorrect(VerifiableCode) Then
-		MessageText = NStr("en='Check number for OKPO code does not match the calculated one.';ru='Контрольное число для кода по ОКПО не совпадает с рассчитанным.'");
-		Return False
-	EndIf;
-	
-	Return True;
-	
 EndFunction 
 
 // Checks the number of the insurance certificate for correspondence to requirements of RPF.

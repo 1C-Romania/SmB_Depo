@@ -107,17 +107,3 @@ Procedure Pick(Command)
 	OpenForm("Catalog.CounterpartyPriceKind.Form.QuickChoiceForm", New Structure("Multiselect, ChoiceMode, CloseOnChoice", True, True, False), ThisForm);
 	
 EndProcedure //Pick()
-
-
-
-
-
-
-
-
-
-
-
-
-
-

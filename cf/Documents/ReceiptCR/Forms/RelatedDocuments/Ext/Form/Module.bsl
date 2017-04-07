@@ -85,17 +85,3 @@ Procedure OpenDocument(CurDocument)
 EndProcedure
 
 #EndRegion
-
-
-
-
-
-
-
-
-
-
-
-
-
-

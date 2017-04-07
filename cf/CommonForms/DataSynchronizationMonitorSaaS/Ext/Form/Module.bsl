@@ -142,17 +142,3 @@ Procedure DetailedAtServer()
 EndProcedure
 
 #EndRegion
-
-
-
-
-
-
-
-
-
-
-
-
-
-

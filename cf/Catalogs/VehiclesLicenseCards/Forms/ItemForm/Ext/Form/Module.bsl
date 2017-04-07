@@ -51,16 +51,3 @@ Procedure LicenseOwnerOnChange(Item)
 EndProcedure
 
 #EndRegion
-
-
-
-
-
-
-
-
-
-
-
-
-

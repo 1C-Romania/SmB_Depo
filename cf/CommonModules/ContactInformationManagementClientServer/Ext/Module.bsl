@@ -1,79 +1,81 @@
 ﻿////////////////////////////////////////////////////////////////////////////////
-// The Contact information subsystem.
+// Contact information subsystem.
 //
 ////////////////////////////////////////////////////////////////////////////////
 
-#Region ProgramInterface
+#Region SubsystemsLibrary 
 
-// The function generates a presentation with a kind for the address input form.
+#Region Interface
+
+// This function generates presentation and kind for address input form.
 //
 // Parameters:
-//    StructureOfAddress  - Structure - address structure.
-//    Presentation    - String - address presentation.
-//    KindDescription - String - kind name.
+//    AddressStructure  - Structure - address structure.
+//    Presentation      - String    - address presentation.
+//    KindDescription   - String    - kind description.
 //
 // Returns:
-//    String - address presentation with a kind.
+//    String - address and kind presentation.
 //
-Function GenerateAddressPresentation(StructureOfAddress, Presentation, KindDescription = Undefined) Export 
+Function GenerateAddressPresentation(AddressStructure, Presentation, KindDescription = Undefined) Export 
 	
 	Presentation = "";
 	
-	Country = ValueByStructureKey("Country", StructureOfAddress);
+	Country = ValueByStructureKey("Country", AddressStructure);
 	
 	If Country <> Undefined Then
-		SupplementAddressPresentation(TrimAll(ValueByStructureKey("CountryDescription", StructureOfAddress)), ", ", Presentation);
+		SupplementAddressPresentation(TrimAll(ValueByStructureKey("CountryDescription", AddressStructure)), ", ", Presentation);
 	EndIf;
 	
-	SupplementAddressPresentation(TrimAll(ValueByStructureKey("IndexOf", StructureOfAddress)),			", ", Presentation);
-	SupplementAddressPresentation(TrimAll(ValueByStructureKey("State", StructureOfAddress)),			", ", Presentation);
-	SupplementAddressPresentation(TrimAll(ValueByStructureKey("Region", StructureOfAddress)),			", ", Presentation);
-	SupplementAddressPresentation(TrimAll(ValueByStructureKey("City", StructureOfAddress)),			", ", Presentation);
-	SupplementAddressPresentation(TrimAll(ValueByStructureKey("Settlement", StructureOfAddress)),	", ", Presentation);
-	SupplementAddressPresentation(TrimAll(ValueByStructureKey("Street", StructureOfAddress)),			", ", Presentation);
-	SupplementAddressPresentation(TrimAll(ValueByStructureKey("House", StructureOfAddress)),				", " + ValueByStructureKey("HouseType", StructureOfAddress) + " No. ", Presentation);
-	SupplementAddressPresentation(TrimAll(ValueByStructureKey("Block", StructureOfAddress)),			", " + ValueByStructureKey("BlockType", StructureOfAddress)+ " ", Presentation);
-	SupplementAddressPresentation(TrimAll(ValueByStructureKey("Apartment", StructureOfAddress)),			", " + ValueByStructureKey("ApartmentType", StructureOfAddress) + " ", Presentation);
+	SupplementAddressPresentation(TrimAll(ValueByStructureKey("Index", AddressStructure)),			", ", Presentation);
+	SupplementAddressPresentation(TrimAll(ValueByStructureKey("State", AddressStructure)),			", ", Presentation);
+	SupplementAddressPresentation(TrimAll(ValueByStructureKey("County", AddressStructure)),			", ", Presentation);
+	SupplementAddressPresentation(TrimAll(ValueByStructureKey("City", AddressStructure)),			", ", Presentation);
+	SupplementAddressPresentation(TrimAll(ValueByStructureKey("Settlement", AddressStructure)),	", ", Presentation);
+	SupplementAddressPresentation(TrimAll(ValueByStructureKey("Street", AddressStructure)),			", ", Presentation);
+	SupplementAddressPresentation(TrimAll(ValueByStructureKey("Building", AddressStructure)),				", " + ValueByStructureKey("BuildingType", AddressStructure) + " # ", Presentation);
+	SupplementAddressPresentation(TrimAll(ValueByStructureKey("Unit", AddressStructure)),			", " + ValueByStructureKey("UnitType", AddressStructure)+ " ", Presentation);
+	SupplementAddressPresentation(TrimAll(ValueByStructureKey("Apartment", AddressStructure)),			", " + ValueByStructureKey("ApartmentType", AddressStructure) + " ", Presentation);
 	
 	If StrLen(Presentation) > 2 Then
 		Presentation = Mid(Presentation, 3);
 	EndIf;
 	
-	KindDescription = ValueByStructureKey("KindDescription", StructureOfAddress);
+	KindDescription	= ValueByStructureKey("KindDescription", AddressStructure);
 	PresentationWithKind = KindDescription + ": " + Presentation;
 	
 	Return PresentationWithKind;
 	
 EndFunction
 
-// Creates a string presentation of the phone number.
+// Generates a string presentation of a phone number.
 //
 // Parameters:
-//    CountryCode     - String - country code.
-//    CityCode     - String - city code.
-//    PhoneNumber - String - phone number.
-//    Supplementary    - String - extension.
-//    Comment   - String - comment.
+//    CountryCode  - String - country code.
+//    AreaCode     - String - area code.
+//    PhoneNumber  - String - phone number.
+//    Extension    - String - extension.
+//    Comment      - String - comment.
 //
-// Returns - String - phone presentation.
+// Returns - String - phone number presentation.
 //
-Function GeneratePhonePresentation(CountryCode, CityCode, PhoneNumber, Supplementary, Comment) Export
+Function GeneratePhonePresentation(CountryCode, AreaCode, PhoneNumber, Extension, Comment) Export
 	
 	Presentation = TrimAll(CountryCode);
-	If Not IsBlankString(Presentation) AND Left(Presentation,1) <> "+" Then
+	If Not IsBlankString(Presentation) And Left(Presentation,1) <> "+" Then
 		Presentation = "+" + Presentation;
 	EndIf;
 	
-	If Not IsBlankString(CityCode) Then
-		Presentation = Presentation + ?(IsBlankString(Presentation), "", " ") + "(" + TrimAll(CityCode) + ")";
+	If Not IsBlankString(AreaCode) Then
+		Presentation = Presentation + ?(IsBlankString(Presentation), "", " ") + "(" + TrimAll(AreaCode) + ")";
 	EndIf;
 	
 	If Not IsBlankString(PhoneNumber) Then
 		Presentation = Presentation + ?(IsBlankString(Presentation), "", " ") + TrimAll(PhoneNumber);
 	EndIf;
 	
-	If Not IsBlankString(Supplementary) Then
-		Presentation = Presentation + ?(IsBlankString(Presentation), "", ", ") + "ext. " + TrimAll(Supplementary);
+	If Not IsBlankString(Extension) Then
+		Presentation = Presentation + ?(IsBlankString(Presentation), "", ", ") + "ext. " + TrimAll(Extension);
 	EndIf;
 	
 	If Not IsBlankString(Comment) Then
@@ -84,39 +86,275 @@ Function GeneratePhonePresentation(CountryCode, CityCode, PhoneNumber, Supplemen
 	
 EndFunction
 
-// Returns a contact information structure by type.
+//Returns contact information structure by type
 //
 // Parameters:
-//    CIType - EnumRef.ContactInformationTypes - contact information type.
+//    CIType - EnumRef.ContactInformationTypes - contact information type
 //
 // Returns:
-//    Structure - empty structure of contact information, keys - fields names, field values.
+//    Structure - empty contact information structure, keys - field names, fields values
 //
-Function StructureContactInformationByType(CIType) Export
+Function ContactInformationStructureByType(CIType) Export
 	
 	If CIType = PredefinedValue("Enum.ContactInformationTypes.Address") Then
-		Return AddressFieldsStructure();
+		Return AddressFieldStructure();
 	ElsIf CIType = PredefinedValue("Enum.ContactInformationTypes.Phone") Then
-		Return PhoneFieldsStructure();
+		Return PhoneFieldStructure();
 	Else
 		Return New Structure;
 	EndIf;
 	
 EndFunction
 
-// Returns a flag showing whether a contact information data string is XML data.
+#EndRegion
+
+#Region InternalProceduresAndFunctions
+
+// Adds string to address presentation.
 //
 // Parameters:
-//     Text - String - Checking string.
+//    Supplement          - String - string to be added to address.
+//    ConcatenationString - String - concatenation string.
+//    Presentation        - String - address presentation.
+//
+Procedure SupplementAddressPresentation(Supplement, ConcatenationString, Presentation)
+	
+	If Supplement <> "" Then
+		Presentation = Presentation + ConcatenationString + Supplement;
+	EndIf;
+	
+EndProcedure
+
+// Returns value string by structure property.
+// 
+// Parameters:
+//    Key       - String - structure key.
+//    Structure - Structure - passed structure.
 //
 // Returns:
-//     Boolean - checking result.
+//    Arbitrary - value.
+//    String    - empty string if no value
 //
-Function IsContactInformationInXML(Val Text) Export
+Function ValueByStructureKey(Key, Structure)
 	
-	Return TypeOf(Text) = Type("String") AND Left(TrimL(Text),1) = "<";
+	Value = Undefined;
+	
+	If Structure.Property(Key, Value) Then 
+		Return String(Value);
+	EndIf;
+	
+	Return "";
 	
 EndFunction
+
+// Returns a string of additional values by attribute name.
+//
+// Parameters:
+//    Form          - ManagedForm - passed form.
+//    AttributeName - String      - attribute name.
+//
+// Returns:
+//    CollectionRow - collection string.
+//    Undefined     - no data
+//
+Function GetAdditionalValueString(Form, AttributeName) Export
+	
+	Filter = New Structure("AttributeName", AttributeName);
+	Rows = Form.ContactInformationAdditionalAttributeInfo.FindRows(Filter);
+	
+	Return ?(Rows.Count() = 0, Undefined, Rows[0]);
+	
+EndFunction
+
+// Returns empty address structure
+//
+// Returns:
+//    Structure - address, keys - field names, fields values
+//
+Function AddressFieldStructure() Export
+	
+	AddressStructure = New Structure;
+	AddressStructure.Insert("Presentation", "");
+	AddressStructure.Insert("Country", "");
+	AddressStructure.Insert("CountryDescription", "");
+	AddressStructure.Insert("CountryCode","");
+	AddressStructure.Insert("Index","");
+	AddressStructure.Insert("State","");
+	AddressStructure.Insert("StateAbbr","");
+	AddressStructure.Insert("County","");
+	AddressStructure.Insert("CountyAbbr","");
+	AddressStructure.Insert("City","");
+	AddressStructure.Insert("CityAbbr","");
+	AddressStructure.Insert("Settlement","");
+	AddressStructure.Insert("SettlementAbbr","");
+	AddressStructure.Insert("Street","");
+	AddressStructure.Insert("StreetAbbr","");
+	AddressStructure.Insert("Building","");
+	AddressStructure.Insert("Unit","");
+	AddressStructure.Insert("Apartment","");
+	AddressStructure.Insert("BuildingType","");
+	AddressStructure.Insert("UnitType","");
+	AddressStructure.Insert("ApartmentType","");
+	AddressStructure.Insert("KindDescription","");
+	
+	Return AddressStructure;
+	
+EndFunction
+
+// Returns empty phone structure
+//
+// Returns:
+//    Structure - keys - field names, field values
+//
+Function PhoneFieldStructure() Export
+	
+	PhoneStructure = New Structure;
+	PhoneStructure.Insert("Presentation", "");
+	PhoneStructure.Insert("CountryCode", "");
+	PhoneStructure.Insert("AreaCode", "");
+	PhoneStructure.Insert("PhoneNumber", "");
+	PhoneStructure.Insert("Extension", "");
+	PhoneStructure.Insert("Comment", "");
+	
+	Return PhoneStructure;
+	
+EndFunction
+
+// Gets abbreviated geographical name of an object
+//
+// Parameters:
+//    GeographicalName - String - geographical name of object
+//
+// Returns:
+//     String - empty string, or last word of the geographical name
+//
+Function AddressAbbreviation(Val GeographicalName) Export
+	
+	Abbr = "";
+	WordArray = StringFunctionsClientServer.SplitStringIntoWordArray(GeographicalName, " ");
+	If WordArray.Count() > 1 Then
+		Abbr = WordArray[WordArray.Count() - 1];
+	EndIf;
+	
+	Return Abbr;
+	
+EndFunction
+
+// Returns field list string.
+//
+// Parameters:
+//    FieldMap       - ValueList - field mapping.
+//    NoEmptyFields  - Boolean   - flag specifying that fields with empty values should be kept (optional)
+//
+//  Returns:
+//     String - list transformation result
+//
+Function ConvertFieldListToString(FieldMap, NoEmptyFields = True) Export
+	
+	FieldValueStructure = New Structure;
+	For Each Item In FieldMap Do
+		FieldValueStructure.Insert(Item.Presentation, Item.Value);
+	EndDo;
+	
+	Return FieldRow(FieldValueStructure, NoEmptyFields);
+EndFunction
+
+// Returns value list. Transforms field string to value list.
+//
+// Parameters:
+//    FieldRow - String - field string.
+//
+// Returns:
+//    ValueList - field value list.
+//
+Function ConvertStringToFieldList(FieldRow) Export
+	
+	// Transformation of XML serialization not necessary
+	If ContactInformationClientServer.IsXMLContactInformation(FieldRow) Then
+		Return FieldRow;
+	EndIf;
+	
+	Result = New ValueList;
+	
+	FieldValueStructure = FieldValueStructure(FieldRow);
+	For Each AttributeValue In FieldValueStructure Do
+		Result.Add(AttributeValue.Value, AttributeValue.Key);
+	EndDo;
+	
+	Return Result;
+	
+EndFunction
+
+//  Transforms string containing Key=Value pairs to structure
+//
+//  Parameters:
+//      FieldRow               - String - string containing data fields in Key=Value format 
+//      ContactInformationKind - CatalogRef.ContactInformationKinds - used to determine unfilled field content
+//
+//  Returns:
+//      Structure - field values
+//
+Function FieldValueStructure(FieldRow, ContactInformationKind = Undefined) Export
+	
+	If ContactInformationKind = Undefined Then
+		Result = New Structure;
+	Else
+		Result = ContactInformationStructureByType(ContactInformationKind.Type);
+	EndIf;
+	
+	LastItem = Undefined;
+	
+	For Iteration = 1 To StrLineCount(FieldRow) Do
+		ReceivedString = StrGetLine(FieldRow, Iteration);
+		If Left(ReceivedString, 1) = Chars.Tab Then
+			If Result.Count() > 0 Then
+				Result.Insert(LastItem, Result[LastItem] + Chars.LF + Mid(ReceivedString, 2));
+			EndIf;
+		Else
+			CharPosition = Find(ReceivedString, "=");
+			If CharPosition <> 0 Then
+				FieldValue = Left(ReceivedString, CharPosition - 1);
+				AttributeValue = Mid(ReceivedString, CharPosition + 1);
+				If FieldValue = "State" Or FieldValue = "County" Or FieldValue = "City" 
+					Or FieldValue = "Settlement" Or FieldValue = "Street" Then
+					If Find(FieldRow, FieldValue + "Abbr") = 0 Then
+						Result.Insert(FieldValue + "Abbr", AddressAbbreviation(AttributeValue));
+					EndIf;
+				EndIf;
+				Result.Insert(FieldValue, AttributeValue);
+				LastItem = FieldValue;
+			EndIf;
+		EndIf;
+	EndDo;
+	
+	Return Result;
+EndFunction
+
+//  Returns field list string.
+//
+//  Parameters:
+//    FieldValueStructure - Structure - field value structure.
+//    NoEmptyFields       - Boolean   - flag specifying if fields with empty values should be kept (optional)
+//
+//  Returns:
+//      String - structure transformation result
+//
+Function FieldRow(FieldValueStructure, NoEmptyFields = True) Export
+	
+	Result = "";
+	For Each AttributeValue In FieldValueStructure Do
+		If NoEmptyFields And IsBlankString(AttributeValue.Value) Then
+			Continue;
+		EndIf;
+		
+		Result = Result + ?(Result = "", "", Chars.LF)
+		            + AttributeValue.Key + "=" + StrReplace(AttributeValue.Value, Chars.LF, Chars.LF + Chars.Tab);
+	EndDo;
+	
+	Return Result;
+EndFunction
+
+#EndRegion
 
 #EndRegion
 
@@ -287,27 +525,21 @@ EndFunction
 // Returns:
 //      Structure - description of a locality.
 //
-Function LocalityAddressPartsStructure(ClassifierVariant = "FIAS") Export
+Function LocalityAddressPartsStructure() Export
 	
 	Result = New Structure;
 	
-	Result.Insert("State",           ItemAddressStructure(NStr("en='State';ru='Состояние'"),      NStr("en='Addresses state';ru='Регион адреса'"),           "RFTerritorialEntity",     1));
-	If ClassifierVariant = "FIAS" Then
-		Result.Insert("District",        ItemAddressStructure(NStr("en='District';ru='Район'"),       NStr("en='Address region';ru='Округ адреса'"),            "District",         2));
-	EndIf;
-	Result.Insert("Region",            ItemAddressStructure(NStr("en='Region';ru='Регион'"),       NStr("en='Address region';ru='Округ адреса'"),            "PrRayMO/Region", 3));
-	Result.Insert("City",            ItemAddressStructure(NStr("en='City';ru='Город'"),       NStr("en='Address city';ru='Город адреса'"),            "City",         4));
-	If ClassifierVariant = "FIAS" Then
-		Result.Insert("UrbDistrict", ItemAddressStructure(NStr("en='Ext. dis.';ru='Внутр. р-н.'"), NStr("en='Urban district';ru='Внутригородской район'"),   "UrbDistrict",  5));
-	EndIf;
-	Result.Insert("Settlement", ItemAddressStructure(NStr("en='Us.Item';ru='Us.Item'"),
-		NStr("en='Addresses of settlement';ru='Населенный пункт адреса'"), "Settlement",  6, True));
-	Result.Insert("Street", ItemAddressStructure(NStr("en='Street';ru='Улица'"),
-		NStr("en='Address street';ru='Улица адреса'"), "Street", 7));
-	Result.Insert("AdditionalItem", ItemAddressStructure(NStr("en='AdditionalItem';ru='AdditionalItem'"),
-		NStr("en='Additional address item';ru='Дополнительный элемент адреса'"), "AddEMailAddress[TypeAdrEl='10200000']", 90));
-	Result.Insert("SubordinateItem", ItemAddressStructure(NStr("en='Subordinate item';ru='Подчиненный элемент'"),
-		NStr("en='Subordinate address item';ru='Подчиненный элемент адреса'"), "AddEMailAddress[TypeAdrEl='10400000']", 91));
+	Result.Insert("State",	ItemAddressStructure(NStr("ru = 'Регион'; en = 'State'"),	NStr("ru = 'Регион адреса'; en = 'Addresses state'"),	"RFTerritorialEntity",	1));
+	Result.Insert("Region",	ItemAddressStructure(NStr("ru = 'Район'; en = 'County'"),	NStr("ru = 'Район адреса'; en = 'Address county'"),		"PrRayMO/Region",		3));
+	Result.Insert("City",	ItemAddressStructure(NStr("ru = 'Город'; en = 'City'"),		NStr("ru = 'Город адреса'; en = 'Address city'"),		"City",					4));
+	Result.Insert("Settlement", ItemAddressStructure(NStr("ru = 'Населенный пункт'; en = 'Settlement'"),
+		NStr("ru = 'Населенный пункт адреса'; en = 'Addresses of settlement'"), "Settlement",  6, True));
+	Result.Insert("Street", ItemAddressStructure(NStr("ru = 'Улица'; en = 'Street'"),
+		NStr("ru = 'Улица адреса'; en = 'Address street'"), "Street", 7));
+	Result.Insert("AdditionalItem", ItemAddressStructure(NStr("ru = 'Дополнительный элемент'; en = 'Additional item'"),
+		NStr("ru = 'Дополнительный элемент адреса'; en = 'Additional address item'"), "AddEMailAddress[TypeAdrEl='10200000']", 90));
+	Result.Insert("SubordinateItem", ItemAddressStructure(NStr("ru = 'Подчиненный элемент'; en = 'Subordinate item'"),
+		NStr("ru = 'Подчиненный элемент адреса'; en = 'Subordinate address item'"), "AddEMailAddress[TypeAdrEl='10400000']", 91));
 		
 	Return Result;
 	
@@ -415,17 +647,13 @@ EndFunction
 //      PartsAddresses           - Structure - Description of the current address state.
 //      ClassifierVariant - String    - Classifier option.
 //
-Function SettlementPresentationByAddressParts(PartsAddresses, ClassifierVariant = "FIAS") Export
+Function SettlementPresentationByAddressParts(PartsAddresses) Export
 	
 	Levels = New Array;
 	Levels.Add(1);
 	Levels.Add(3);
 	Levels.Add(4);
 	Levels.Add(6);
-	If ClassifierVariant = "FIAS" Then
-		Levels.Add(2);
-		Levels.Add(5);
-	EndIf;
 	Return PresentationByAddressParts(PartsAddresses,Levels);
 	
 EndFunction
@@ -436,14 +664,10 @@ EndFunction
 //      PartsAddresses           - Structure - Description of the current address state.
 //      ClassifierVariant - String    - Classifier option.
 //
-Function StreetPresentationByAddressParts(PartsAddresses, ClassifierVariant = "FIAS") Export
+Function StreetPresentationByAddressParts(PartsAddresses) Export
 	
 	Levels = New Array;
 	Levels.Add(7);
-	If ClassifierVariant = "FIAS" Then
-		Levels.Add(90);
-		Levels.Add(91);
-	EndIf;
 	Return PresentationByAddressParts(PartsAddresses, Levels);
 	
 EndFunction
@@ -488,255 +712,6 @@ Function PresentationByAddressParts(PartsAddresses, Levels)
 	EndDo;
 	
 	Return TrimAll(Mid(Result, 2));
-EndFunction
-
-#EndRegion
-
-#Region OtherServiceProceduresAndFunctions
-
-// Supplements an address presentation with a string.
-//
-// Parameters:
-//    Supplement         - String - address addition.
-//    ConcatenationString - String - concatenation string.
-//    Presentation      - String - address presentation.
-//
-Procedure SupplementAddressPresentation(Supplement, ConcatenationString, Presentation)
-	
-	If Supplement <> "" Then
-		Presentation = Presentation + ConcatenationString + Supplement;
-	EndIf;
-	
-EndProcedure
-
-// Returns a value string by the structure property.
-// 
-// Parameters:
-//    Key - String - structure key.
-//    Structure - Structure - passed structure.
-//
-// Returns:
-//    Arbitrary - value.
-//    String       - empty string if there is no value.
-//
-Function ValueByStructureKey(Key, Structure)
-	
-	Value = Undefined;
-	
-	If Structure.Property(Key, Value) Then 
-		Return String(Value);
-	EndIf;
-	
-	Return "";
-	
-EndFunction
-
-// Returns a string of additional values by an attribute name.
-//
-// Parameters:
-//    Form - ManagedForm - passed form.
-//    AttributeName - String - attribute name.
-//
-// Returns:
-//    CollectionRow - string of collection.
-//    Undefined - no data.
-//
-Function GetAdditionalValuesString(Form, AttributeName) Export
-	
-	Filter = New Structure("AttributeName", AttributeName);
-	Rows = Form.ContactInformationAdditionalAttributeInfo.FindRows(Filter);
-	
-	Return ?(Rows.Count() = 0, Undefined, Rows[0]);
-	
-EndFunction
-
-// Returns en empty address structure.
-//
-// Returns:
-//    Structure - address, keys - fields names, field values.
-//
-Function AddressFieldsStructure() Export
-	
-	StructureOfAddress = New Structure;
-	StructureOfAddress.Insert("Presentation", "");
-	StructureOfAddress.Insert("Country", "");
-	StructureOfAddress.Insert("CountryDescription", "");
-	StructureOfAddress.Insert("CountryCode","");
-	StructureOfAddress.Insert("IndexOf","");
-	StructureOfAddress.Insert("State","");
-	StructureOfAddress.Insert("StateAbbr","");
-	StructureOfAddress.Insert("Region","");
-	StructureOfAddress.Insert("RegionAbbr","");
-	StructureOfAddress.Insert("City","");
-	StructureOfAddress.Insert("CityAbbr","");
-	StructureOfAddress.Insert("Settlement","");
-	StructureOfAddress.Insert("SettlementAbbr","");
-	StructureOfAddress.Insert("Street","");
-	StructureOfAddress.Insert("StreetAbbr","");
-	StructureOfAddress.Insert("House","");
-	StructureOfAddress.Insert("Block","");
-	StructureOfAddress.Insert("Apartment","");
-	StructureOfAddress.Insert("HouseType","");
-	StructureOfAddress.Insert("BlockType","");
-	StructureOfAddress.Insert("ApartmentType","");
-	StructureOfAddress.Insert("KindDescription","");
-	
-	Return StructureOfAddress;
-	
-EndFunction
-
-// Returns an empty phone structure.
-//
-// Returns:
-//    Structure - keys - fields names, field values.
-//
-Function PhoneFieldsStructure() Export
-	
-	PhoneStructure = New Structure;
-	PhoneStructure.Insert("Presentation", "");
-	PhoneStructure.Insert("CountryCode", "");
-	PhoneStructure.Insert("CityCode", "");
-	PhoneStructure.Insert("PhoneNumber", "");
-	PhoneStructure.Insert("Supplementary", "");
-	PhoneStructure.Insert("Comment", "");
-	
-	Return PhoneStructure;
-	
-EndFunction
-
-// Gets an abbreviation of the geographical object name.
-//
-// Parameters:
-//    GeographicalName - String - geographical object name.
-//
-// Returns:
-//     String - empty string or the last word in the geographical name.
-//
-Function AddressAbbreviation(Val GeographicalName) Export
-	
-	Abbr = "";
-	ArrayOfWords = StringFunctionsClientServer.SplitStringIntoWordArray(GeographicalName, " ");
-	If ArrayOfWords.Count() > 1 Then
-		Abbr = ArrayOfWords[ArrayOfWords.Count() - 1];
-	EndIf;
-	
-	Return Abbr;
-	
-EndFunction
-
-// Returns a string of field list.
-//
-// Parameters:
-//    FieldMap - ValueList - field matches.
-//    WithoutEmptyFields    - Boolean - optional check box for saving fields with empty values.
-//
-//  Returns:
-//     String - result converted from the list.
-//
-Function ConvertFieldListToString(FieldMap, WithoutEmptyFields = True) Export
-	
-	FieldValuesStructure = New Structure;
-	For Each Item In FieldMap Do
-		FieldValuesStructure.Insert(Item.Presentation, Item.Value);
-	EndDo;
-	
-	Return FieldsRow(FieldValuesStructure, WithoutEmptyFields);
-EndFunction
-
-// Returns a list of values. Converts the field string to the value list.
-//
-// Parameters:
-//    FieldsRow - String - fields string.
-//
-// Returns:
-//    ValueList - list of field values.
-//
-Function ConvertStringToFieldList(FieldsRow) Export
-	
-	// It is not required to convert XML serialization.
-	If IsContactInformationInXML(FieldsRow) Then
-		Return FieldsRow;
-	EndIf;
-	
-	Result = New ValueList;
-	
-	FieldValuesStructure = FieldValuesStructure(FieldsRow);
-	For Each FieldValue In FieldValuesStructure Do
-		Result.Add(FieldValue.Value, FieldValue.Key);
-	EndDo;
-	
-	Return Result;
-	
-EndFunction
-
-//  Converts a field string of kind key = value into a structure.
-//
-//  Parameters:
-//      FieldsRow             - String - field value with data of kind key = value.
-//      ContactInformationKind - CatalogRef.ContactInformationTypes - to define content
-//                                                                            of unfilled fields.
-//
-//  Returns:
-//      Structure - fields value.
-//
-Function FieldValuesStructure(FieldsRow, ContactInformationKind = Undefined) Export
-	
-	If ContactInformationKind = Undefined Then
-		Result = New Structure;
-	Else
-		Result = StructureContactInformationByType(ContactInformationKind.Type);
-	EndIf;
-	
-	LastItem = Undefined;
-	
-	For Iteration = 1 To StrLineCount(FieldsRow) Do
-		ReceivedString = StrGetLine(FieldsRow, Iteration);
-		If Left(ReceivedString, 1) = Chars.Tab Then
-			If Result.Count() > 0 Then
-				Result.Insert(LastItem, Result[LastItem] + Chars.LF + Mid(ReceivedString, 2));
-			EndIf;
-		Else
-			CharPosition = Find(ReceivedString, "=");
-			If CharPosition <> 0 Then
-				FieldsName = Left(ReceivedString, CharPosition - 1);
-				FieldValue = Mid(ReceivedString, CharPosition + 1);
-				If FieldsName = "State" Or FieldsName = "Region" Or FieldsName = "City" 
-					Or FieldsName = "Settlement" Or FieldsName = "Street" Then
-					If Find(FieldsRow, FieldsName + "Abbr") = 0 Then
-						Result.Insert(FieldsName + "Abbr", AddressAbbreviation(FieldValue));
-					EndIf;
-				EndIf;
-				Result.Insert(FieldsName, FieldValue);
-				LastItem = FieldsName;
-			EndIf;
-		EndIf;
-	EndDo;
-	
-	Return Result;
-EndFunction
-
-//  Returns a string of field list.
-//
-//  Parameters:
-//    FieldValuesStructure - Structure - structure of field values.
-//    WithoutEmptyFields         - Boolean - optional check box for saving fields with empty values.
-//
-//  Returns:
-//      String - conversion result from a structure.
-//
-Function FieldsRow(FieldValuesStructure, WithoutEmptyFields = True) Export
-	
-	Result = "";
-	For Each FieldValue In FieldValuesStructure Do
-		If WithoutEmptyFields AND IsBlankString(FieldValue.Value) Then
-			Continue;
-		EndIf;
-		
-		Result = Result + ?(Result = "", "", Chars.LF)
-		            + FieldValue.Key + "=" + StrReplace(FieldValue.Value, Chars.LF, Chars.LF + Chars.Tab);
-	EndDo;
-	
-	Return Result;
 EndFunction
 
 #EndRegion

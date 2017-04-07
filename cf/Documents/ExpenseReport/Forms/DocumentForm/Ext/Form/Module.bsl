@@ -722,37 +722,21 @@ Function GenerateLabelPricesAndCurrency(LabelStructure)
 	// Currency.
 	If LabelStructure.CurrencyTransactionsAccounting Then
 		If ValueIsFilled(LabelStructure.DocumentCurrency) Then
-			//===============================
-			//©# (Begin)	AlekS [2016-09-13]
-			//LabelText = NStr("en='%Currency%';ru='%Вал%'");
-			//LabelText = StrReplace(LabelText, "%Currency%", TrimAll(String(LabelStructure.DocumentCurrency)));
-			LabelText = TrimAll(String(LabelStructure.DocumentCurrency));
-			//©# (End)		AlekS [2016-09-13]
-			//===============================
+			LabelText = NStr("en='%Currency%';ru='%Currency%'");
+			LabelText = StrReplace(LabelText, "%Currency%", TrimAll(String(LabelStructure.DocumentCurrency)));
 		EndIf;
 	EndIf;
 	
 	// VAT taxation.
 	If ValueIsFilled(LabelStructure.VATTaxation) Then
-		//If IsBlankString(LabelText) Then
-		//	LabelText = LabelText + NStr("en='%VATTaxation%';ru='%VATTaxation%'");
-		//Else
-		//	LabelText = LabelText + NStr("en=' • %VATTaxation%';ru=' • %НалогообложениеНДС%'");
-		//EndIf;
-		//LabelText = StrReplace(LabelText, "%VATTaxation%", TrimAll(String(LabelStructure.VATTaxation)));
-		LabelText = LabelText + " • " + TrimAll(String(LabelStructure.VATTaxation));
-		//©# (End)		AlekS [2016-09-13]
-		//===============================
+		If IsBlankString(LabelText) Then
+			LabelText = LabelText + NStr("en='%VATTaxation%';ru='%VATTaxation%'");
+		Else
+			LabelText = LabelText + NStr("en=' • %VATTaxation%';ru=' • %VATTaxation%'");
+		EndIf;
+		LabelText = StrReplace(LabelText, "%VATTaxation%", TrimAll(String(LabelStructure.VATTaxation)));
 	EndIf;
 	
-	
-//===============================
-//©# (Begin)	AlekS [2016-09-13]
-//
-//  THIS FLAG HAS NO CHANCE TO BE SHOWED - need attention !   8-(
-//
-//©# (End)		AlekS [2016-09-13]
-//===============================
 	// Flag showing that amount includes VAT.
 	If IsBlankString(LabelText) Then
 		If LabelStructure.AmountIncludesVAT Then
@@ -1154,8 +1138,6 @@ Procedure OnCreateAtServer(Cancel, StandardProcessing)
 	Items.InventoryInventoryPick.Visible = AccessRight("Read", Metadata.AccumulationRegisters.Inventory);
 	Items.ExpensesExpensesSelection.Visible = AccessRight("Read", Metadata.AccumulationRegisters.Inventory);
 	
-	SmallBusinessServer.SetTextAboutInvoice(ThisForm, True);
-	
 	// Filling in the additional attributes of tabular section.
 	SetAccountsAttributesVisible();
 	
@@ -1266,13 +1248,7 @@ Procedure NotificationProcessing(EventName, Parameter, Source)
 	EndIf;
 	// End Peripherals
 	
-	If EventName = "RefreshOfTextAboutInvoiceReceived" 
-		AND TypeOf(Parameter) = Type("Structure") 
-		AND Parameter.BasisDocument = Object.Ref Then
-				
-		InvoiceText = Parameter.Presentation;
-		
-	ElsIf EventName = "AfterRecordingOfCounterparty" 
+	If EventName = "AfterRecordingOfCounterparty" 
 		AND ValueIsFilled(Parameter) Then
 			
 		For Each CurRow IN Object.Payments Do
@@ -1303,17 +1279,6 @@ Procedure NotificationProcessing(EventName, Parameter, Source)
 	
 EndProcedure // NotificationProcessing()
 
-// Procedure - selection handler.
-//
-&AtClient
-Procedure ChoiceProcessing(ValueSelected, ChoiceSource)
-	
-	If ChoiceSource.FormName = "Document.SupplierInvoiceNote.Form.DocumentForm" Then
-		InvoiceText = ValueSelected;
-	EndIf;
-	
-EndProcedure 
-
 // Procedure - EditDocumentCurrency command handler.
 //
 &AtClient
@@ -1324,16 +1289,6 @@ Procedure EditDocumentCurrency(Item, StandardProcessing)
 	Modified = True;
 	
 EndProcedure // EditDocumentCurrency()
-
-// Procedure - clicking handler on the hyperlink InvoiceText.
-//
-&AtClient
-Procedure InvoiceNoteTextClick(Item, StandardProcessing)
-	
-	StandardProcessing = False;
-	SmallBusinessClient.OpenInvoice(ThisForm, True);
-	
-EndProcedure
 
 ////////////////////////////////////////////////////////////////////////////////
 // PROCEDURE - EVENT HANDLERS OF HEADER ATTRIBUTES
@@ -1924,7 +1879,7 @@ EndProcedure // PaymentsDocumentSelectionStart()
 // Calculates the amount of the payment.
 //
 &AtClient
-Procedure SettlementsAccountsAmountOnChange(Item)
+Procedure PaymentsSettlementsAmountOnChange(Item)
 	
 	CalculatePaymentSUM(Items.Payments.CurrentData);
 	SpentTotalAmount = Object.Inventory.Total("Total") + Object.Expenses.Total("Total") + Object.Payments.Total("PaymentAmount");
@@ -2081,16 +2036,3 @@ EndProcedure
 // End StandardSubsystems.Printing
 
 #EndRegion
-
-
-
-
-
-
-
-
-
-
-
-
-

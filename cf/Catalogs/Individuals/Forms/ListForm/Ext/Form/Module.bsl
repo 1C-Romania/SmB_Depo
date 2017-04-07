@@ -25,17 +25,3 @@ Procedure Attachable_ExecutePrintCommand(Command)
 EndProcedure
 // End StandardSubsystems.Printing
 // 
-
-
-
-
-
-
-
-
-
-
-
-
-
-

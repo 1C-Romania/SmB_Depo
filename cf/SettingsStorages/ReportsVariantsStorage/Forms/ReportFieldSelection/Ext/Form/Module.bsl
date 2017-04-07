@@ -201,8 +201,7 @@ Function KDTable(ThisObject)
 		If TypeOf(CurrentKDNode) = Type("DataCompositionSettings") Then
 			Return CurrentKDNode.GroupAvailableFields;
 		Else
-			//ELMI 24.02.2017 Return CurrentKDNode.GroupFields.AvailableFieldsGroupFields;
-			Return CurrentKDNode.GroupFields.GroupFieldsAvailableFields;  //ELMI 24.02.2017 
+			Return CurrentKDNode.GroupFields.GroupFieldsAvailableFields;
 		EndIf;
 	EndIf;
 EndFunction
@@ -237,16 +236,3 @@ Procedure GroupFieldsExpandString(KDTable, TreeRows, AvailableKDFieldParent = Un
 EndProcedure
 
 #EndRegion
-
-
-
-
-
-
-
-
-
-
-
-
-

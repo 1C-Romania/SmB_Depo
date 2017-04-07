@@ -25,36 +25,3 @@ Procedure OnCreateAtServer(Cancel, StandardProcessing)
 	EndIf;	
 	
 EndProcedure // OnCreateAtServer()
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-// Rise { Sargsyan N 2016-08-17
-&AtClient
-Procedure NotificationProcessing(EventName, Parameter, Source)
-	
-	If EventName = "PresentationsChanged" Then
-		RiseFillPresentations(Parameter);
-		Modified = True;
-	EndIf;
-	
-EndProcedure
-
-&AtServer
-Procedure  RiseFillPresentations(Table)
-	Object.MultilingualPresentations.Clear();
-	Object.MultilingualPresentations.Load(Table.Unload());
-EndProcedure
-// Rise } Sargsyan N 2016-08-17

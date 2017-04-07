@@ -161,17 +161,3 @@ Procedure UsersGroupOnChangingOnServer()
 EndProcedure
 
 #EndRegion
-
-
-
-
-
-
-
-
-
-
-
-
-
-

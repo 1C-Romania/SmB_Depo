@@ -1153,9 +1153,6 @@ Procedure FillAgreementSettings(CompletingSettings)
 		If ValueIsFilled(ED.Recipient.tin) Then
 			CompanySearchStructure.Insert("TIN", ED.Recipient.tin);
 		EndIf;
-		If ValueIsFilled(ED.Recipient.kpp) Then
-			CompanySearchStructure.Insert("KPP", ED.Recipient.kpp);
-		EndIf;
 		If ValueIsFilled(ED.Recipient.name) Then
 			CompanySearchStructure.Insert("Description", ED.Recipient.name);
 			Object.Description = ED.Recipient.name;
@@ -1240,17 +1237,3 @@ Function CryptographyIsUsed(BankApplication)
 EndFunction
 //Procedures and functions code
 #EndRegion
-
-
-
-
-
-
-
-
-
-
-
-
-
-

@@ -181,17 +181,3 @@ Procedure OpenFileCard()
 EndProcedure
 
 #EndRegion
-
-
-
-
-
-
-
-
-
-
-
-
-
-

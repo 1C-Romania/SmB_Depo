@@ -279,16 +279,3 @@ Procedure DocumentsTableSelection(Item, SelectedRow, Field, StandardProcessing)
 	ShowValue(Undefined,Item.CurrentData.Document);
 
 EndProcedure
-
-
-
-
-
-
-
-
-
-
-
-
-

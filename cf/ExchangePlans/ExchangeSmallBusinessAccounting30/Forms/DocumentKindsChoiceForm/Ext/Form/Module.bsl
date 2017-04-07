@@ -42,7 +42,6 @@ Procedure GenerateTreeSpeciesDocuments(ArraySelectedValues)
 	AddLineTreeOfDocumentsKind(MetaDocuments.AcceptanceCertificate, UpperLevelRow);
 	AddLineTreeOfDocumentsKind(MetaDocuments.CustomerInvoice, UpperLevelRow);
 	AddLineTreeOfDocumentsKind(MetaDocuments.InvoiceForPayment, UpperLevelRow);
-	AddLineTreeOfDocumentsKind(MetaDocuments.CustomerInvoiceNote, UpperLevelRow);
 	AddLineTreeOfDocumentsKind(MetaDocuments.AgentReport, UpperLevelRow);
 	AddLineTreeOfDocumentsKind(MetaDocuments.RetailReport, UpperLevelRow);
 	AddLineTreeOfDocumentsKind(MetaDocuments.RetailRevaluation, UpperLevelRow);
@@ -58,7 +57,6 @@ Procedure GenerateTreeSpeciesDocuments(ArraySelectedValues)
 	AddLineTreeOfDocumentsKind(MetaDocuments.InventoryReconciliation, UpperLevelRow);
 	AddLineTreeOfDocumentsKind(MetaDocuments.InventoryReceipt, UpperLevelRow);
 	AddLineTreeOfDocumentsKind(MetaDocuments.InventoryWriteOff, UpperLevelRow);
-	AddLineTreeOfDocumentsKind(MetaDocuments.SupplierInvoiceNote, UpperLevelRow);
 	
 	UpperLevelRow = FilterTree.Rows.Add();
 	UpperLevelRow.Presentation = "Service";
@@ -196,20 +194,6 @@ Function GenerateTableSelectedValues()
 	Return PutToTempStorage(TableSelectedValues, UUID);
 
 EndFunction
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 

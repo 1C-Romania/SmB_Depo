@@ -1,8 +1,7 @@
 ﻿#If Server Or ThickClientOrdinaryApplication Or ExternalConnection Then
 
-////////////////////////////////////////////////////////////////////////////////
-// EXPORT PROCEDURES AND FUNCTIONS OF DOCUMENT
-
+#Region Interface
+	
 // Procedure distributes expenses by quantity.
 //
 Procedure DistributeTabSectExpensesByQuantity() Export
@@ -10,20 +9,11 @@ Procedure DistributeTabSectExpensesByQuantity() Export
 	SrcAmount = 0;
 	DistributionBaseQuantity = Inventory.Total("Quantity");
 	TotalExpenses = Expenses.Total("Total");
-	
-	//( elmi #11
-	If  Not IncludeVATInPrice Then
-	      TotalVatAmount = Expenses.Итог("VATAmount");
-	      TotalExpenses = TotalExpenses - TotalVatAmount ;
-	EndIf;		  
-    //) elmi
-	
-	
 	For Each StringInventory IN Inventory Do
 		
-		StringInventory.AmountExpenses = ?(DistributionBaseQuantity <> 0, Round((TotalExpenses - SrcAmount) * StringInventory.Quantity / DistributionBaseQuantity, 2, 1),0); 
+		StringInventory.AmountExpenses = ?(DistributionBaseQuantity <> 0, Round((TotalExpenses - SrcAmount) * StringInventory.Quantity / DistributionBaseQuantity, 2, 1),0);
 		DistributionBaseQuantity = DistributionBaseQuantity - StringInventory.Quantity;
-		SrcAmount = SrcAmount + StringInventory.AmountExpenses; 
+		SrcAmount = SrcAmount + StringInventory.AmountExpenses;
 		
 	EndDo;
 	
@@ -36,27 +26,29 @@ Procedure DistributeTabSectExpensesByAmount() Export
 	SrcAmount = 0;
 	ReserveAmount = Inventory.Total("Total");
 	TotalExpenses = Expenses.Total("Total");
-	
-	//( elmi #11
-	If  Not IncludeVATInPrice Then
-	      TotalVatAmount = Expenses.Итог("VATAmount");
-	      TotalExpenses = TotalExpenses - TotalVatAmount ;
-	EndIf;		  
-    //) elmi
-	
-	
 	For Each StringInventory IN Inventory Do
 		
-		StringInventory.AmountExpenses = ?(ReserveAmount <> 0, Round((TotalExpenses - SrcAmount) * StringInventory.Total / ReserveAmount, 2, 1),0);     
+		StringInventory.AmountExpenses = ?(ReserveAmount <> 0, Round((TotalExpenses - SrcAmount) * StringInventory.Total / ReserveAmount, 2, 1),0);
 		ReserveAmount = ReserveAmount - StringInventory.Total;
-		SrcAmount = SrcAmount + StringInventory.AmountExpenses; 
+		SrcAmount = SrcAmount + StringInventory.AmountExpenses;
 		
 	EndDo;
 	
 EndProcedure // DistributeTabSectionExpensesByAmount()
 
-///////////////////////////////////////////////////////////////////////////////
-// PROCEDURES OF FILLING THE DOCUMENT
+#EndRegion
+
+#Region DocumentFillingProcedures
+
+Procedure FillByStructure(FillingData) Export
+	
+	If Not FillingData.Property("PurchaseOrdersArray") Then
+		Return;
+	EndIf;
+	
+	FillByPurchaseOrder(FillingData);
+	
+EndProcedure
 
 // Procedure fills advances.
 //
@@ -272,7 +264,7 @@ EndProcedure // FillPrepayment()
 // BasisDocument - DocumentRef.CustomerInvoice - customer
 // invoice FillingData - Structure - Document filling data
 //	
-Procedure FillBySalesInvoice(FillingData)
+Procedure FillByCustomerInvoice(FillingData) Export
 	
 	// Filling out a document header.
 	If FillingData.OperationKind = Enums.OperationKindsCustomerInvoice.SaleToCustomer Then
@@ -336,7 +328,7 @@ EndProcedure // FillBySalesInvoice()
 // Parameters:
 // FillingData - Structure - Document filling data
 //	
-Procedure FillByCustomerOrder(FillingData)
+Procedure FillByCustomerOrder(FillingData) Export
 	
 	If SmallBusinessReUse.AttributeInHeader("PurchaseOrderPositionInReceiptDocuments") Then
 		Order = FillingData;
@@ -685,7 +677,7 @@ EndProcedure // FillByJobOrder()
 // Parameters:
 // FillingData - Structure - Document filling data
 //	
-Procedure FillByPurchaseOrder(FillingData)
+Procedure FillByPurchaseOrder(FillingData) Export
 	
 	// Document basis and document setting.
 	OrdersArray = New Array;
@@ -908,7 +900,7 @@ EndProcedure // FillByPurchaseOrder()
 // Parameters:
 // FillingData - Structure - Document filling data
 //	
-Procedure FillByGoodsReceipt(FillingData)
+Procedure FillByGoodsReceipt(FillingData) Export
 	
 	// Filling out a document header.
 	ThisObject.BasisDocument = FillingData.Ref;
@@ -935,7 +927,7 @@ EndProcedure // FillByGoodsReceipt()
 // Parameters:
 // FillingData - Structure - Document filling data
 //	
-Procedure FillBySupplierInvoiceForPayment(FillingData)
+Procedure FillBySupplierInvoiceForPayment(FillingData) Export
 	
 	// Filling out a document header.
 	ThisObject.BasisDocument = FillingData.Ref;
@@ -1016,7 +1008,7 @@ EndProcedure // FillByPurchaseOrder()
 // BasisDocument - DocumentRef.CustomerInvoice - customer
 // invoice FillingData - Structure - Document filling data
 //	
-Procedure FillInByCRReceipt(FillingData)
+Procedure FillByReceiptCR(FillingData)
 	
 	// Filling out a document header.
 	OperationKind = Enums.OperationKindsSupplierInvoice.ReturnFromCustomer;
@@ -1052,36 +1044,10 @@ EndProcedure // FillBySalesInvoice()
 
 #EndRegion
 
-// Procedure of cancellation of posting of subordinate invoice note (supplier)
-//
-Procedure SubordinatedInvoiceControl()
-	
-	InvoiceStructure = SmallBusinessServer.GetSubordinateInvoice(Ref, True);
-	If Not InvoiceStructure = Undefined Then
-		
-		CustomerInvoiceNote	 = InvoiceStructure.Ref;
-		If CustomerInvoiceNote.Posted Then
-			
-			MessageText = NStr("en='Due to the absence of the turnovers by the %CurrentDocumentPresentation% document, undo the posting of %InvoicePresentation%.';ru='В связи с отсутствием движений у документа %ПредставлениеТекущегоДокумента% распроводится %ПредставлениеСчетФактуры%.'");
-			MessageText = StrReplace(MessageText, "%CurrentDocumentPresentation%", """Supplier invoice No " + Number + " from " + Format(Date, "DF=dd.MM.yyyy") + """");
-			MessageText = StrReplace(MessageText, "%InvoicePresentation%", """Invoice Note (Supplier) No. " + InvoiceStructure.Number + " from " + InvoiceStructure.Date + """");
-			
-			CommonUseClientServer.MessageToUser(MessageText);
-			
-			InvoiceObject = CustomerInvoiceNote.GetObject();
-			InvoiceObject.Write(DocumentWriteMode.UndoPosting);
-			
-		EndIf;
-		
-	EndIf;
-	
-EndProcedure //SubordinateInvoiceControl()
+#EndRegion
 
-////////////////////////////////////////////////////////////////////////////////
-// EVENT HANDLERS
+#Region EventHandlers
 
-// Procedure - event handler of the OnCopy object.
-//
 Procedure OnCopy(CopiedObject)
 	
 	SmallBusinessManagementElectronicDocumentsServer.ClearIncomingDocumentDateNumber(ThisObject);
@@ -1089,58 +1055,23 @@ Procedure OnCopy(CopiedObject)
 	
 EndProcedure // OnCopy()
 
-// Procedure - handler of the FillingProcessor event.
-//
 Procedure Filling(FillingData, StandardProcessing) Export
 	
-	If Not ValueIsFilled(FillingData) Then
-		Return;
-	EndIf;
+	FillingStrategy = New Map;
+	FillingStrategy[Type("Structure")]								= "FillByStructure";
+	FillingStrategy[Type("DocumentRef.CustomerInvoice")]			= "FillByCustomerInvoice";
+	FillingStrategy[Type("DocumentRef.CustomerOrder")]				= "FillByCustomerOrder";
+	FillingStrategy[Type("DocumentRef.PurchaseOrder")]				= "FillByPurchaseOrder";
+	FillingStrategy[Type("DocumentRef.GoodsReceipt")]				= "FillByGoodsReceipt";
+	FillingStrategy[Type("DocumentRef.SupplierInvoiceForPayment")]	= "FillBySupplierInvoiceForPayment";
+	FillingStrategy[Type("DocumentRef.ReceiptCR")]					= "FillByReceiptCR";
 	
-	If TypeOf(FillingData) = Type("DocumentRef.CustomerInvoice") Then
-		
-		FillBySalesInvoice(FillingData);
-		
-	ElsIf TypeOf(FillingData) = Type("DocumentRef.CustomerOrder") Then
-		
-		FillByCustomerOrder(FillingData);
-		
-	ElsIf TypeOf(FillingData) = Type("DocumentRef.PurchaseOrder") 
-		OR (TypeOf(FillingData) = Type("Structure") AND FillingData.Property("PurchaseOrdersArray")) Then
-		
-		FillByPurchaseOrder(FillingData);
-		
-	ElsIf TypeOf(FillingData) = Type("DocumentRef.GoodsReceipt") Then
-		
-		FillByGoodsReceipt(FillingData);
-		
-	ElsIf TypeOf(FillingData) = Type("DocumentRef.SupplierInvoiceForPayment") Then	
-		
-		FillBySupplierInvoiceForPayment(FillingData);
-		
-	// CWP
-	ElsIf TypeOf(FillingData) = Type("DocumentRef.ReceiptCR") Then
-		
-		FillInByCRReceipt(FillingData);
-		
-	// End CWP
-	ElsIf TypeOf(FillingData) = Type("Structure") Then
-		
-		FillPropertyValues(ThisObject, FillingData);
-		If Not ValueIsFilled(CounterpartyPriceKind) 
-			AND ValueIsFilled(Contract) Then
-			
-			CounterpartyPriceKind = Contract.CounterpartyPriceKind;
-			
-		EndIf;
-		RegisterVendorPrices = ValueIsFilled(CounterpartyPriceKind);
-		
-	EndIf;
+	ObjectFillingSB.FillDocument(ThisObject, FillingData, FillingStrategy);
 	
-EndProcedure // FillingProcessor()
+	RegisterVendorPrices	= ValueIsFilled(CounterpartyPriceKind);
+	
+EndProcedure // Filling()
 
-// Procedure - event handler BeforeWrite object.
-//
 Procedure BeforeWrite(Cancel, WriteMode, PostingMode)
 	
 	If DataExchange.Load Then
@@ -1187,8 +1118,6 @@ Procedure BeforeWrite(Cancel, WriteMode, PostingMode)
 	
 EndProcedure // BeforeWrite()
 
-// Procedure - event handler FillCheckProcessing object.
-//
 Procedure FillCheckProcessing(Cancel, CheckedAttributes)
 	
 	// Check existence of retail prices.
@@ -1231,14 +1160,9 @@ Procedure FillCheckProcessing(Cancel, CheckedAttributes)
 		
 	EndIf;
 	
-	
-	//( elmi #11
-	//If IncludeExpensesInCostPrice
-	//	AND Inventory.Total("AmountExpenses") <> Expenses.Total("Total") Then 
-	If  IncludeExpensesInCostPrice Then
-		If  (ThisObject.IncludeVATInPrice And Inventory.Total("AmountExpenses") <> Expenses.Total("Total"))
-			OR  ( NOT ThisObject.IncludeVATInPrice And Inventory.Total("AmountExpenses") <> Expenses.Total("Total")- Expenses.Total("VATAmount")) Then
-	
+	If IncludeExpensesInCostPrice
+		AND Inventory.Total("AmountExpenses") <> Expenses.Total("Total") Then
+		
 		MessageText = NStr("en='Amount of services is not equal to the distributed amount by inventories!';ru='Сумма услуг не равна распределенной сумме по запасам!'");
 		SmallBusinessServer.ShowMessageAboutError(
 			,
@@ -1248,10 +1172,9 @@ Procedure FillCheckProcessing(Cancel, CheckedAttributes)
 			Undefined,
 			Cancel
 		);
-		EndIf;
+		
 	EndIf;
-	//) elmi
-
+	
 	OrderReceptionInHeader = PurchaseOrderPosition = Enums.AttributePositionOnForm.InHeader;
 	
 	TableInventory = Inventory.Unload(, "Order, Total");
@@ -1323,8 +1246,6 @@ Procedure FillCheckProcessing(Cancel, CheckedAttributes)
 	
 EndProcedure // FillCheckProcessing()
 
-// Procedure - event handler Posting object.
-//
 Procedure Posting(Cancel, PostingMode)
 	
 	// Initialization of additional properties for document posting.
@@ -1374,8 +1295,6 @@ Procedure Posting(Cancel, PostingMode)
 	
 EndProcedure // Posting()
 
-// Procedure - event handler UndoPosting object.
-//
 Procedure UndoPosting(Cancel)
 	
 	// Initialization of additional properties for document posting
@@ -1392,13 +1311,6 @@ Procedure UndoPosting(Cancel)
 	
 	// Deleting the prices from information register Prices of counterparty products and services.
 	Documents.SupplierInvoice.DeleteVendorPrices(Ref);
-	
-	// Subordinate invoice note (supplier)
-	If Not Cancel Then
-		
-		SubordinatedInvoiceControl();
-		
-	EndIf;
 	
 EndProcedure // UndoPosting()
 
@@ -1466,5 +1378,7 @@ Procedure CheckExistenceOfRetailPrice(Cancel)
 	EndIf;
 	
 EndProcedure // CheckRetailPriceExistence()
+
+#EndRegion
 
 #EndIf

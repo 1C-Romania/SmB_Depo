@@ -40,6 +40,15 @@ EndProcedure
 
 #Region ServiceProceduresAndFunctions
 
+Procedure GenerateDescription() Export
+	
+	Description = StrTemplate(
+		NStr("ru = '%1, в %2'; en = '%1, in %2'"),
+		TrimAll(AccountNo),
+		Bank);
+	
+EndProcedure
+
 Procedure ClearAttributeMainBankAccount()
 	
 	Query = New Query;

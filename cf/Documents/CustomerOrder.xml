@@ -1149,7 +1149,11 @@ Recalculation of the tabular section of the document on changing the discount ty
 					<FillChecking>ShowError</FillChecking>
 					<ChoiceFoldersAndItems>Items</ChoiceFoldersAndItems>
 					<ChoiceParameterLinks/>
-					<ChoiceParameters/>
+					<ChoiceParameters>
+						<app:item name="Filter.Customer">
+							<app:value xsi:type="xs:boolean">true</app:value>
+						</app:item>
+					</ChoiceParameters>
 					<QuickChoice>Auto</QuickChoice>
 					<CreateOnInput>Auto</CreateOnInput>
 					<ChoiceForm/>
@@ -1802,7 +1806,7 @@ Recalculation of the tabular section of the document on changing the discount ty
 					<MinValue xsi:nil="true"/>
 					<MaxValue xsi:nil="true"/>
 					<FillFromFillingValue>false</FillFromFillingValue>
-					<FillValue xsi:type="xr:DesignTimeRef">Enum.VATTaxationTypes.EnumValue.TaxableByVAT</FillValue>
+					<FillValue xsi:type="xr:DesignTimeRef">Enum.VATTaxationTypes.EnumValue.NotTaxableByVAT</FillValue>
 					<FillChecking>ShowError</FillChecking>
 					<ChoiceFoldersAndItems>Items</ChoiceFoldersAndItems>
 					<ChoiceParameterLinks/>
@@ -1853,7 +1857,7 @@ Recalculation of the tabular section of the document on changing the discount ty
 					<MinValue xsi:nil="true"/>
 					<MaxValue xsi:nil="true"/>
 					<FillFromFillingValue>false</FillFromFillingValue>
-					<FillValue xsi:type="xs:boolean">true</FillValue>
+					<FillValue xsi:type="xs:boolean">false</FillValue>
 					<FillChecking>DontCheck</FillChecking>
 					<ChoiceFoldersAndItems>Items</ChoiceFoldersAndItems>
 					<ChoiceParameterLinks/>
@@ -7824,16 +7828,13 @@ Recalculation of the tabular section of the document on changing the discount ty
 					</Attribute>
 				</ChildObjects>
 			</TabularSection>
+			<Template>PF_MXL_CustomerInvoice</Template>
 			<Template>PF_MXL_CustomerOrderTemplate</Template>
-			<Template>PF_MXL_InvoiceForPartialPayment</Template>
-			<Template>PF_MXL_InvoiceForPayment</Template>
-			<Template>PF_MXL_ServicesAcceptanceCertificate</Template>
-			<Template>PF_MXL_Bill</Template>
+			<Template>PF_MXL_ProformaInvoice</Template>
 			<Template>PF_MXL_JobOrder</Template>
+			<Template>PF_MXL_ServicesAcceptanceCertificate</Template>
 			<Template>PF_MXL_ServicesAcceptanceCertificateDetailed</Template>
-			<Template>PF_MXL_MerchandiseFillingForm</Template>
 			<Template>CounterpartyInformation</Template>
-			<Template>PF_MXL_AppendixToContract</Template>
 			<Command uuid="33869677-42fb-46c2-9751-4996b4a74962">
 				<Properties>
 					<Name>EnterActualPayment</Name>
@@ -7845,32 +7846,6 @@ Recalculation of the tabular section of the document on changing the discount ty
 						<v8:item>
 							<v8:lang>ru</v8:lang>
 							<v8:content>Ввести фактический платеж</v8:content>
-						</v8:item>
-					</Synonym>
-					<Comment/>
-					<Group>FormCommandBarCreateBasedOn</Group>
-					<CommandParameterType>
-						<v8:Type>cfg:DocumentRef.CustomerOrder</v8:Type>
-					</CommandParameterType>
-					<ParameterUseMode>Single</ParameterUseMode>
-					<ModifiesData>false</ModifiesData>
-					<Representation>Auto</Representation>
-					<ToolTip/>
-					<Picture/>
-					<Shortcut/>
-				</Properties>
-			</Command>
-			<Command uuid="37e02458-4631-460d-a422-85daae2b10ea">
-				<Properties>
-					<Name>InvoiceWithCCDCreateBasedOn</Name>
-					<Synonym>
-						<v8:item>
-							<v8:lang>en</v8:lang>
-							<v8:content>Invoice (Fill CCD numbers)</v8:content>
-						</v8:item>
-						<v8:item>
-							<v8:lang>ru</v8:lang>
-							<v8:content>Счет-фактура (заполнить номера ГТД)</v8:content>
 						</v8:item>
 					</Synonym>
 					<Comment/>

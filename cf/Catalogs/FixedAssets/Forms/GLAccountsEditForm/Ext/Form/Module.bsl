@@ -96,17 +96,3 @@ Procedure Default(Command)
 	NotifyAboutSettlementAccountChange();
 	
 EndProcedure // Default()
-
-
-
-
-
-
-
-
-
-
-
-
-
-

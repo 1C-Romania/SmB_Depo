@@ -539,7 +539,7 @@ Procedure FileDirectoryChoiceHandler(Object, Val PropertyName, StandardProcessin
 	AdditionalParameters.Insert("CompletionAlert", CompletionAlert);
 	
 	Notification = New NotifyDescription("FileDirectorySelectionHandlerEnd", ThisObject, AdditionalParameters);
-	CommonUseClient.ShowQuestionAboutFileOperationsExtensionSetting(Notification, WarningText, False);
+	CommonUseClient.ShowFileSystemExtensionInstallationQuestion(Notification, WarningText, False);
 EndProcedure
 
 // Handler of the modeless directory selection dialog end.
@@ -602,7 +602,7 @@ Procedure FileChoiceHandler(Object, Val PropertyName, StandardProcessing = False
 	Notification.AdditionalParameters.Insert("DialogueParameters",     DialogueParameters);
 	Notification.AdditionalParameters.Insert("CompletionAlert", CompletionAlert);
 	
-	CommonUseClient.ShowQuestionAboutFileOperationsExtensionSetting(Notification, WarningText, False);
+	CommonUseClient.ShowFileSystemExtensionInstallationQuestion(Notification, WarningText, False);
 EndProcedure
 
 // Handler of the modeless file selection dialog end.
@@ -676,7 +676,7 @@ Procedure PassFilesToServer(CompletionAlert, Val FileNames, Val FormID = Undefin
 		EndIf;
 	EndIf;
 	
-	CommonUseClient.ShowQuestionAboutFileOperationsExtensionSetting(Notification, WarningText, False);
+	CommonUseClient.ShowFileSystemExtensionInstallationQuestion(Notification, WarningText, False);
 EndProcedure
 
 // Handler of the modeless file pass to server end.

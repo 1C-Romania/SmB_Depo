@@ -109,17 +109,3 @@ Procedure SaveFlagState(ShowOnWorkStart)
 EndProcedure
 
 #EndRegion
-
-
-
-
-
-
-
-
-
-
-
-
-
-

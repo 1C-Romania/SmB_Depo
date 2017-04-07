@@ -254,17 +254,3 @@ Procedure OnChangeProperties()
 EndProcedure
 
 #EndRegion
-
-
-
-
-
-
-
-
-
-
-
-
-
-

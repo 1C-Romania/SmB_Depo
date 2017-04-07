@@ -54,10 +54,7 @@ Procedure FillByCashPayment(FillingData)
 		StructureByCurrency.ExchangeRate
 	);
 	Multiplicity = ?(
-	    //( elmi # 08.5
-	    //StructureByCurrency.ExchangeRate = 0,
-	    StructureByCurrency.Multiplicity = 0,
-		//) elmi
+		StructureByCurrency.ExchangeRate = 0,
 		1,
 		StructureByCurrency.Multiplicity
 	);
@@ -93,10 +90,7 @@ Procedure FillByPaymentExpense(FillingData)
 		StructureByCurrency.ExchangeRate
 	);
 	Multiplicity = ?(
-	    //( elmi # 08.5
-	    //StructureByCurrency.ExchangeRate = 0,
-	    StructureByCurrency.Multiplicity = 0,
-		//) elmi
+		StructureByCurrency.ExchangeRate = 0,
 		1,
 		StructureByCurrency.Multiplicity
 	);
@@ -107,31 +101,6 @@ Procedure FillByPaymentExpense(FillingData)
 	NewRow.Amount = FillingData.DocumentAmount;
 	
 EndProcedure // FillByPaymentExpense()
-
-// Procedure of cancellation of posting of subordinate invoice note (supplier)
-//
-Procedure SubordinatedInvoiceControl()
-	
-	InvoiceStructure = SmallBusinessServer.GetSubordinateInvoice(Ref, True);
-	If Not InvoiceStructure = Undefined Then
-		
-		CustomerInvoiceNote	 = InvoiceStructure.Ref;
-		If CustomerInvoiceNote.Posted Then
-			
-			MessageText = NStr("en='Due to the absence of the turnovers by the %CurrentDocumentPresentation% document, undo the posting of %InvoicePresentation%.';ru='В связи с отсутствием движений у документа %ПредставлениеТекущегоДокумента% распроводится %ПредставлениеСчетФактуры%.'");
-			MessageText = StrReplace(MessageText, "%CurrentDocumentPresentation%", """Expense report # " + Number + " dated " + Format(Date, "DF=dd.MM.yyyy") + """");
-			MessageText = StrReplace(MessageText, "%InvoicePresentation%", """Invoice Note (Supplier) # " + InvoiceStructure.Number + " dated " + InvoiceStructure.Date + """");
-			
-			CommonUseClientServer.MessageToUser(MessageText);
-			
-			InvoiceObject = CustomerInvoiceNote.GetObject();
-			InvoiceObject.Write(DocumentWriteMode.UndoPosting);
-			
-		EndIf;
-		
-	EndIf;
-	
-EndProcedure //SubordinateInvoiceControl()
 
 ////////////////////////////////////////////////////////////////////////////////
 // EVENT HANDLERS
@@ -305,13 +274,6 @@ Procedure UndoPosting(Cancel)
 	
 	// Control of occurrence of a negative balance.
 	Documents.ExpenseReport.RunControl(Ref, AdditionalProperties, Cancel, True);
-	
-	// Subordinate invoice note (supplier)
-	If Not Cancel Then
-		
-		SubordinatedInvoiceControl();
-		
-	EndIf;
 	
 EndProcedure // UndoPosting()
 

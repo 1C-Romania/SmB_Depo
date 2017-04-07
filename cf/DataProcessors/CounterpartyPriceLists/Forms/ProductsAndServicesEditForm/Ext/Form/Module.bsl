@@ -99,17 +99,3 @@ Procedure Pick(Command)
 	OpenForm("Catalog.ProductsAndServices.ChoiceForm", New Structure("Multiselect, ChoiceFoldersAndItems, ChoiceMode, CloseOnChoice", True, FoldersAndItemsUse.FoldersAndItems, True, False), ThisForm);
 	
 EndProcedure // Pick()
-
-
-
-
-
-
-
-
-
-
-
-
-
-

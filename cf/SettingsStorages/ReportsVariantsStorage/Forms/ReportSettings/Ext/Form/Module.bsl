@@ -2452,8 +2452,8 @@ Function ExecuteStep(CaseUser, Script)
 	ElsIf Script.CurrentStep = "GroupFieldsTables" Then
 		Return GroupFieldsTables(CaseUser, Script);
 	
-	ElsIf Script.CurrentStep = "FieldsTablesShiftRows" Then
-		Return FieldsTablesShiftRows(CaseUser, Script);
+	ElsIf Script.CurrentStep = "FieldsTablesMoveRows" Then
+		Return FieldsTablesMoveRows(CaseUser, Script);
 	
 	ElsIf Script.CurrentStep = "FieldsTablesDeleteRows" Then
 		Return FieldsTablesDeleteRows(CaseUser, Script);
@@ -2621,7 +2621,7 @@ Function GroupFieldsTables(CaseUser, Script)
 EndFunction
 
 &AtClient
-Function FieldsTablesShiftRows(CaseUser, Script)
+Function FieldsTablesMoveRows(CaseUser, Script)
 	CurrentParent = Script.CurrentParent;
 	ItemTable = Items[Script.TableName];
 	KDNode = FieldsTablesFindNode(ThisObject, Script.TableName, Undefined);
@@ -4643,7 +4643,7 @@ Procedure RegisterGroupsContentItems(KDNode = Undefined, KDRowsSet = Undefined, 
 	If RowsSet = Undefined Then
 		RowsSet = GroupingContent.GetItems();
 	EndIf;
-	AvailableFields = KDNode.AvailableFieldsGroupFields;
+	AvailableFields = KDNode.GroupFieldsAvailableFields;
 	For Each KDItem IN KDRowsSet Do
 		If TypeOf(KDItem) = Type("DataCompositionGroupField") Then
 			AvailableField = AvailableFields.FindField(KDItem.Field);
@@ -4972,16 +4972,3 @@ Procedure RegisterDisabledLinks(Information)
 EndProcedure
 
 #EndRegion
-
-
-
-
-
-
-
-
-
-
-
-
-

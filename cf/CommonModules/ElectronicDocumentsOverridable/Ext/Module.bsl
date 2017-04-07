@@ -20,7 +20,6 @@ Procedure GetEDActualKinds(Array) Export
 	Array.Add(Enums.EDKinds.ProductOrder);
 	Array.Add(Enums.EDKinds.ResponseToOrder);
 	Array.Add(Enums.EDKinds.ProductsDirectory);
-	Array.Add(Enums.EDKinds.CustomerInvoiceNote);
 	Array.Add(Enums.EDKinds.RightsDelegationAct);
 	
 	Array.Add(Enums.EDKinds.PaymentOrder);
@@ -109,18 +108,6 @@ Procedure FillEDParametersBySource(Source, EDParameters, FormatCML = False) Expo
 		EDParameters.EDKind =  Enums.EDKinds.ProductsDirectory;
 		EDParameters.EDDirection = Enums.EDDirections.Outgoing;
 		
-	ElsIf SourceType = Type("DocumentRef.CustomerInvoiceNote") 
-		OR SourceType = Type("DocumentObject.CustomerInvoiceNote") Then
-		
-		EDParameters.EDKind =  Enums.EDKinds.CustomerInvoiceNote;
-		EDParameters.EDDirection = Enums.EDDirections.Outgoing;
-		
-	ElsIf SourceType = Type("DocumentRef.SupplierInvoiceNote") 
-		OR SourceType = Type("DocumentObject.SupplierInvoiceNote") Then
-		
-		EDParameters.EDKind =  Enums.EDKinds.CustomerInvoiceNote;
-		EDParameters.EDDirection = Enums.EDDirections.Incoming;
-		
 	ElsIf SourceType = Type("DocumentRef.AcceptanceCertificate") 
 		OR SourceType = Type("DocumentObject.AcceptanceCertificate") Then
 		
@@ -146,24 +133,6 @@ Procedure FillEDParametersBySource(Source, EDParameters, FormatCML = False) Expo
 	EndIf;
 	
 EndProcedure
-
-// It determines whether the object is a corrective document
-//
-// Parameters:
-//  ObjectReference - DocumentRef.CustomerInvoiceNote
-//
-// Returns:
-//  Boolean
-//
-Function IsCorrectingDocument(ObjectReference) Export
-	
-	Result = False;
-	
-	
-	
-	Return Result;
-	
-EndFunction
 
 ////////////////////////////////////////////////////////////////////////////////
 // Definition of ED library objects and applied solution matching
@@ -228,21 +197,16 @@ EndProcedure
 //
 Procedure GetMapOfNamesObjectsMDAndAttributes(ObjectAttributesMap) Export
 	
-	ObjectAttributesMap.Insert("CustomerInvoiceNoteInMetadata",       "CustomerInvoiceNote");
-	ObjectAttributesMap.Insert("InvoiceReceivedInMetadata",     "SupplierInvoiceNote");
-	ObjectAttributesMap.Insert("IssueDateInCustomerInvoiceNote", "DateOfExtension");
 	ObjectAttributesMap.Insert("ReceiveDateInInvoiceReceived", "Date");
 	ObjectAttributesMap.Insert("AccountNo",                           "AccountNo");
 	
 	ObjectAttributesMap.Insert("CounterpartyTIN",                       "TIN");
-	ObjectAttributesMap.Insert("CounterpartyCRR",                       "KPP");
 	ObjectAttributesMap.Insert("CounterpartyDescription",              "Description");
 	ObjectAttributesMap.Insert("CounterpartyNameForMessageToUser", "Description");
 	ObjectAttributesMap.Insert("ExternalCounterpartyCode",                "Code");
 	ObjectAttributesMap.Insert("CounterpartyPartner",                   Undefined);
 	
 	ObjectAttributesMap.Insert("CompanyTIN",                       "TIN");
-	ObjectAttributesMap.Insert("CompanyKPP",                       "KPP");
 	ObjectAttributesMap.Insert("CompanyDescription",              "Description");
 	ObjectAttributesMap.Insert("ShortDescriptionOfTheCompany",   "Description");
 	
@@ -400,16 +364,6 @@ Procedure GetObjectKeyAttributesStructure(ObjectName, KeyAttributesStructure) Ex
 		// CWT
 		ObjectAttributesString = ("ProductsAndServices, Quantity, Price, Amount, VATRate");
 		KeyAttributesStructure.Insert("Inventory", ObjectAttributesString);
-		
-	ElsIf ObjectName = "Document.CustomerInvoiceNote" Then
-		// header
-		ObjectAttributesString = ("Date, Number, Company, DeletionMark, DocumentAmount");
-		KeyAttributesStructure.Insert("Header", ObjectAttributesString);
-		
-	ElsIf ObjectName = "Document.SupplierInvoiceNote" Then
-		// header
-		ObjectAttributesString = ("Date, Number, Company, DeletionMark, DocumentAmount");
-		KeyAttributesStructure.Insert("Header", ObjectAttributesString);
 		
 	ElsIf ObjectName = "Document.AcceptanceCertificate" Then
 		// header
@@ -1060,243 +1014,6 @@ Procedure PrepareDataByAct501Customer(ObjectReference, EDStructure, ParametersSt
 	
 EndProcedure
 
-// Obsolete procedure, you shall use FillInDataByFTSInvoice instead of this procedure.
-// It prepares data for the electronic document of CustomerInvoiceNote type.
-//
-// Parameters:
-//  ObjectReference - documentRef - reference to the infobase object used to create an electronic document;
-//  EDStructure - structure - data structure to generate an electronic document;
-//  ParametersStructure - structure - parameters for electronic document filling.
-//
-Procedure PrepareDataByInvoice(ObjectReference, EDStructure, ParametersStructure) Export
-	
-	If ObjectReference.OperationKind <> Enums.OperationKindsCustomerInvoiceNote.Sale Then
-		
-		MessageText = StringFunctionsClientServer.SubstituteParametersInString(
-			NStr("en='It is not possible to create an eletronic document for the operation kind ""%1""!';ru='Нельзя создать электронный документ для вида операции ""%1""!'"), ObjectReference.OperationKind);
-		
-		Raise MessageText;
-		
-	EndIf;
-	
-	Query = New Query;
-	Query.Text =
-	"SELECT
-	|	Document.Ref AS Ref,
-	|	Document.Date AS Date,
-	|	Document.Number AS Number,
-	|	Document.DocumentCurrency.Code AS CurrencyCode,
-	|	NULL AS CorrectionNumber,
-	|	NULL AS DateOfExtension,
-	|	CASE
-	|		WHEN Document.BasisDocument REFS Document.CustomerInvoice
-	|				AND Document.BasisDocument <> VALUE(Document.CustomerInvoice.EmptyRef)
-	|			THEN Document.BasisDocument.Number
-	|		ELSE NULL
-	|	END AS BasisDocumentNumber,
-	|	ResponsiblePersons.Employee.Description AS HeadDescriptionFull,
-	|	NULL AS InvoiceBasis,
-	|	CASE
-	|		WHEN Document.DocumentCurrency = NationalCurrency.Value.Ref
-	|			THEN FALSE
-	|		ELSE TRUE
-	|	END AS InForeignCurrency,
-	|	Document.Company AS Vendor,
-	|	Document.Counterparty AS Customer,
-	|	Document.Same,
-	|	Document.Consignor,
-	|	Document.Consignee
-	|FROM
-	|	Document.CustomerInvoiceNote AS Document
-	|		LEFT JOIN InformationRegister.ResponsiblePersons.SliceLast(&Date, ResponsiblePersonType = VALUE(Enum.ResponsiblePersonTypes.Head)) AS ResponsiblePersons
-	|		ON Document.Company = ResponsiblePersons.Company,
-	|	Constant.NationalCurrency AS NationalCurrency
-	|WHERE
-	|	Document.Ref = &CurrentInvoice
-	|;
-	|
-	|////////////////////////////////////////////////////////////////////////////////
-	|SELECT
-	|	DocumentInventory.LineNumber AS LineNumber,
-	|	CASE
-	|		WHEN (CAST(DocumentInventory.ProductsAndServices.DescriptionFull AS String(255))) = """"
-	|			THEN DocumentInventory.ProductsAndServices.Description
-	|		ELSE DocumentInventory.ProductsAndServices.DescriptionFull
-	|	END AS ProductsAndServicesDescription,
-	|	CASE
-	|		WHEN DocumentInventory.MeasurementUnit REFS Catalog.UOMClassifier
-	|			THEN DocumentInventory.MeasurementUnit.Code
-	|		ELSE DocumentInventory.ProductsAndServices.MeasurementUnit.Code
-	|	END AS MeasurementUnitCode,
-	|	CASE
-	|		WHEN DocumentInventory.MeasurementUnit REFS Catalog.UOMClassifier
-	|			THEN DocumentInventory.MeasurementUnit.Description
-	|		ELSE DocumentInventory.ProductsAndServices.MeasurementUnit.Description
-	|	END AS MeasurementUnitDescription,
-	|	DocumentInventory.ProductsAndServices.MeasurementUnit.Description AS MeasurementUnit,
-	|	CASE
-	|		WHEN DocumentInventory.MeasurementUnit REFS Catalog.UOMClassifier
-	|			THEN DocumentInventory.Quantity
-	|		ELSE DocumentInventory.Quantity * DocumentInventory.MeasurementUnit.Factor
-	|	END AS Quantity,
-	|	CASE
-	|		WHEN DocumentInventory.MeasurementUnit REFS Catalog.UOMClassifier
-	|			THEN DocumentInventory.Price
-	|		WHEN DocumentInventory.Quantity * DocumentInventory.MeasurementUnit.Factor <> 0
-	|			THEN DocumentInventory.Amount / (DocumentInventory.Quantity * DocumentInventory.MeasurementUnit.Factor)
-	|		ELSE 0
-	|	END AS Price,
-	|	DocumentInventory.Amount AS AmountWithoutVAT,
-	|	DocumentInventory.VATAmount AS VATAmount,
-	|	DocumentInventory.Total AS Amount,
-	|	CASE
-	|		WHEN DocumentInventory.CountryOfOrigin = VALUE(Catalog.WorldCountries.EmptyRef)
-	|			THEN ""643""
-	|		ELSE DocumentInventory.CountryOfOrigin.Code
-	|	END AS CountryOfOriginCode,
-	|	DocumentInventory.CCDNo.Code AS CustomsDeclarationNumber,
-	|	""Additional data"" AS TextAdditPr,
-	|	""no excise"" AS Excise,
-	|	CASE
-	|		WHEN DocumentInventory.VATRate = VALUE(Catalog.VATRates.EmptyRef)
-	|				OR DocumentInventory.VATRate.NotTaxable
-	|			THEN ""Without VAT""
-	|		ELSE DocumentInventory.VATRate.Rate
-	|	END AS VATRate,
-	|	""text"" AS VATRateType,
-	|	DocumentInventory.ProductsAndServices AS ProductsAndServices,
-	|	DocumentInventory.Characteristic AS Characteristic,
-	|	DocumentInventory.MeasurementUnit AS Package,
-	|	CAST("""" AS String(110)) AS ID,
-	|	NULL AS OperationKindCode
-	|FROM
-	|	Document.CustomerInvoiceNote.Inventory AS DocumentInventory
-	|WHERE
-	|	DocumentInventory.Ref = &CurrentInvoice
-	|;
-	|
-	|////////////////////////////////////////////////////////////////////////////////
-	|SELECT
-	|	PaymentDocuments.PaymentAccountingDocumentNumber AS NumberPRD,
-	|	PaymentDocuments.PaymentAccountingDocumentDate AS DatePRD
-	|FROM
-	|	Document.CustomerInvoiceNote.PaymentDocumentsDateNumber AS PaymentDocuments
-	|WHERE
-	|	PaymentDocuments.Ref = &CurrentInvoice
-	|;
-	|
-	|////////////////////////////////////////////////////////////////////////////////
-	|SELECT DISTINCT
-	|	InvoiceBasisDocuments.BasisDocument
-	|FROM
-	|	Document.CustomerInvoiceNote.BasisDocuments AS InvoiceBasisDocuments
-	|WHERE
-	|	InvoiceBasisDocuments.Ref = &CurrentInvoice";
-	
-	Query.SetParameter("Date", ObjectReference.Date);
-	Query.SetParameter("CurrentInvoice", ObjectReference);
-	
-	QueryResult = Query.ExecuteBatch();
-	
-	DocumentHeader 	   = QueryResult[0].Select();
-	ProductsTable 	   = QueryResult[1].Unload();
-	PaymentDocuments = QueryResult[2].Unload();
-	BasisDocuments = QueryResult[3].Unload();
-	
-	//Header
-	DocumentHeader.Next();
-	
-	ParametersStructure.InvNumber				= DocumentHeader.Number;
-	ParametersStructure.DateInv					= DocumentHeader.Date;
-	
-	//Inventory table
-	ParametersStructure.ProductsTable			= ProductsTable;
-	ParametersStructure.VATAmountTotal			= ProductsTable.Total("VATAmount");
-	ParametersStructure.SumWithoutVATTotal		= ProductsTable.Total("AmountWithoutVAT");
-	ParametersStructure.AmountVATAll			= ProductsTable.Total("Amount");
-	
-	//Payment documents
-	ParametersStructure.PaymentDocuments		= PaymentDocuments;
-	
-	// Transfer basis documents.
-	ParametersStructure.BasisDocuments = BasisDocuments;
-	
-	//Fields from the electronic document
-	InfoAboutCustomer = GetDataLegalIndividual(DocumentHeader.Customer, DocumentHeader.Date);
-	InfoAboutVendor  = GetDataLegalIndividual(DocumentHeader.Vendor, DocumentHeader.Date);
-	
-	SmallBusinessManagementElectronicDocumentsServer.FillExchangeParticipantInfo(ParametersStructure.Company, DocumentHeader.Vendor, InfoAboutVendor);
-	SmallBusinessManagementElectronicDocumentsServer.FillExchangeParticipantInfo(ParametersStructure.Counterparty, DocumentHeader.Customer, InfoAboutCustomer);
-	
-	Consignor = ?(NOT ValueIsFilled(DocumentHeader.Consignor)OR (DocumentHeader.Same),
-				EDStructure.Company, DocumentHeader.Consignor);
-	Consignee  = ?(NOT ValueIsFilled(DocumentHeader.Consignee) OR (DocumentHeader.Same),
-				EDStructure.Counterparty, DocumentHeader.Consignee);
-	
-	SmallBusinessManagementElectronicDocumentsServer.FillExchangeParticipantInfo(ParametersStructure.InfoAboutShipper.Consignor, Consignor, 
-		GetDataLegalIndividual(Consignor, DocumentHeader.Date));
-	SmallBusinessManagementElectronicDocumentsServer.FillExchangeParticipantInfo(ParametersStructure.Consignee, Consignee,
-		GetDataLegalIndividual(Consignee, DocumentHeader.Date));
-	
-	// Fill in the signatory data
-	ThisIsInd = ThisIsInd(EDStructure.Company);
-	DataLegalIndividual = GetDataLegalIndividual(EDStructure.Company);
-	
-	If ThisIsInd Then
-		Initials = DataLegalIndividual.FullDescr;
-		CertificateAboutRegistrationIPData(EDStructure.Company, ParametersStructure.Signer.CertificateAboutRegistrationIP);
-	Else
-		Initials = DocumentHeader.HeadDescriptionFull;
-	EndIf;
-	SmallBusinessManagementElectronicDocumentsServer.FillSNPAndPosition(ParametersStructure.Signer, Initials);
-	ParametersStructure.Signer.ThisIsInd = ThisIsInd;
-	ParametersStructure.Signer.TIN = DataLegalIndividual.TIN;
-	ParametersStructure.Signer.Position = "";
-	
-	// Header additional data
-	AdditDataStructure = New Structure;
-	AdditDataStructure.Insert("InForeignCurrency", DocumentHeader.InForeignCurrency);
-	AdditDataStructure.Insert("BasisDocumentIncomingNumber", DocumentHeader.BasisDocumentNumber);
-	ElectronicDocuments.AddDataToAdditDataTree(ParametersStructure, AdditDataStructure, "Header", True);
-	
-	ParametersStructure.CurrencyCode = DocumentHeader.CurrencyCode;
-	
-	// Tabular section of the document and its additional information
-	JustServices = 0;
-	For Each ProductsRow IN ProductsTable Do
-		
-		AdditDataStructure = New Structure;
-		AdditDataStructure = SmallBusinessManagementElectronicDocumentsServer.GetProductsAndServicesAdditDataStructure(ProductsRow.ProductsAndServices, 
-																														ProductsRow.Characteristic, 
-																														ProductsRow.ProductsAndServicesDescription);
-		AdditDataStructure.Insert("MeasurementUnitDescription", ProductsRow.MeasurementUnitDescription);
-		ElectronicDocuments.AddDataToAdditDataTree(ParametersStructure, AdditDataStructure, "Products", True, ProductsRow.LineNumber);
-		
-		If Not ProductsRow.ProductsAndServices.ProductsAndServicesType = Enums.ProductsAndServicesTypes.InventoryItem Then
-			
-			JustServices = JustServices + 1;
-			
-		EndIf;
-		
-	EndDo;
-	
-	//Other fields
-	ParametersStructure.JustServices = (JustServices <> 0 AND JustServices = ProductsTable.Count());
-	
-EndProcedure
-
-// It prepares data for the electronic document of CorrectiveSupplierInvoiceNote type.
-//
-// Parameters:
-//  ObjectReference - DocumentRef, reference to the infobase object used to create an electronic document.
-//  EDStructure - Structure, data structure to generate an electronic document.
-//
-Procedure PrepareDataByAdjustmentInvoice(ObjectReference, EDStructure, ParametersStructure) Export
-	
-	
-	
-EndProcedure
-
 // Work with the CML data structure
 
 // It fills the storage address with the value table - products directory
@@ -1792,10 +1509,6 @@ Function SaveVBDObjectData(StringForImport, ParseTree, RefToOwner = Undefined, W
 		
 		FoundObject = SmallBusinessManagementElectronicDocumentsServer.FoundCreatePurchaseOrder(StringForImport, ParseTree, RefToOwner);
 		
-	ElsIf StringForImport.EDKind = Enums.EDKinds.CustomerInvoiceNote Then
-		
-		FoundObject = SmallBusinessManagementElectronicDocumentsServer.FoundCreateInvoice(StringForImport, ParseTree, RefToOwner);
-		
 	ElsIf StringForImport.EDKind = Enums.EDKinds.ProductsDirectory Then
 		
 		SmallBusinessManagementElectronicDocumentsServer.SaveProductCatalogData(StringForImport, ParseTree, RefToOwner);
@@ -1853,13 +1566,11 @@ Function FindRefToObject(ObjectType, IDObject = "", AdditionalAttributes = Undef
 		AND ValueIsFilled(AdditionalAttributes) Then
 		
 		TIN = ""; 
-		KPP = "";
 		AdditionalAttributes.Property("TIN", TIN);
-		AdditionalAttributes.Property("KPP", KPP);
 		
-		If ValueIsFilled(TIN+KPP) Then // by TIN+KPP
+		If ValueIsFilled(TIN) Then 
 			
-			Result = ObjectRefOnTINKPP(ObjectType, TIN, KPP); 
+			Result = ObjectRefOnTIN(ObjectType, TIN); 
 			
 		EndIf;
 		
@@ -1914,10 +1625,10 @@ Function FindRefToObject(ObjectType, IDObject = "", AdditionalAttributes = Undef
 			
 		EndIf;
 		
-	ElsIf ObjectType = "ContactInformationTypes" Then
+	ElsIf ObjectType = "ContactInformationKinds" Then
 		
 		Try 
-			Result = Catalogs.ContactInformationTypes[IDObject];
+			Result = Catalogs.ContactInformationKinds[IDObject];
 		Except
 			Result = Undefined;
 		EndTry;
@@ -1983,22 +1694,21 @@ Function FindRefToObjectByAttribute(CatalogName, AttributeName, AttributeVal, Ow
 	
 EndFunction
 
-// Finds the catalog item by TIN and KPP attributes. 
+// Finds the catalog item by TIN attributes. 
 // If the item is not found, we return Undefined
 // Parameters:
 //  ObjectType - String, catalog name in metadata;
 //  TIN - String;
-//  KPP - String;
 //  Company - Company, reference to the company catalog item
 //
 // Returns:
 //  Result - references to the catalog or undefined
 //
-Function ObjectRefOnTINKPP(ObjectType, TIN, KPP, Company = Undefined) Export
+Function ObjectRefOnTIN(ObjectType, TIN, Company = Undefined) Export
 	
 	Result = Undefined;
 	
-	If IsBlankString(TIN) AND IsBlankString(KPP) Then
+	If IsBlankString(TIN) Then
 		
 		Return Result;
 		
@@ -2011,7 +1721,7 @@ Function ObjectRefOnTINKPP(ObjectType, TIN, KPP, Company = Undefined) Export
 	|FROM
 	|	&CatalogType AS Catalog
 	|WHERE
-	|	&SearchConditionByTIN AND &SearchConditionByKPP";
+	|	&SearchConditionByTIN";
 	
 	Query.Text = StrReplace(Query.Text, "&CatalogType", "Catalog." + ObjectType); 
 	
@@ -2023,17 +1733,6 @@ Function ObjectRefOnTINKPP(ObjectType, TIN, KPP, Company = Undefined) Export
 	Else
 		
 		Query.SetParameter("SearchConditionByTIN", True);
-		
-	EndIf;
-	
-	If Not IsBlankString(KPP) Then
-		
-		Query.Text = StrReplace(Query.Text, "&SearchConditionByKPP", "Catalog.KPP LIKE &KPP");
-		Query.SetParameter("KPP", KPP);
-		
-	Else
-		
-		Query.SetParameter("SearchConditionByKPP", True);
 		
 	EndIf;
 	
@@ -2076,14 +1775,12 @@ Function FillCounterpartyAttributes(AttributesStructure) Export
 	
 	Counterparty.Description = AttributesStructure.Description;
 	Counterparty.TIN = Mid(TIN_KPP, 1, Find(TIN_KPP,"/")-1);
-	Counterparty.KPP = Mid(TIN_KPP, Find(TIN_KPP,"/")+1);
-	Counterparty.CodeByOKPO = AttributesStructure.OKPO;
 	
 	// Contact information
 	
 	If Not IsBlankString(AttributesStructure.AddressOfRepresentation) Then
 		
-		CIKind = Catalogs.ContactInformationTypes.CounterpartyFactAddress;
+		CIKind = Catalogs.ContactInformationKinds.CounterpartyFactAddress;
 		CIPhysicalAddress = Counterparty.ContactInformation.Find(CIKind, "Kind");
 		
 		If CIPhysicalAddress = Undefined Then
@@ -2101,7 +1798,7 @@ Function FillCounterpartyAttributes(AttributesStructure) Export
 	
 	If Not IsBlankString(AttributesStructure.LegalAddressRepresentation) Then
 		
-		CIKind = Catalogs.ContactInformationTypes.CounterpartyLegalAddress;
+		CIKind = Catalogs.ContactInformationKinds.CounterpartyLegalAddress;
 		CILegalAddress = Counterparty.ContactInformation.Find(CIKind, "Kind");
 		
 		If CILegalAddress = Undefined Then
@@ -2119,7 +1816,7 @@ Function FillCounterpartyAttributes(AttributesStructure) Export
 	
 	If Not IsBlankString(AttributesStructure.Phone) Then
 		
-		CIKind = Catalogs.ContactInformationTypes.CounterpartyPhone;
+		CIKind = Catalogs.ContactInformationKinds.CounterpartyPhone;
 		CIPhones = Counterparty.ContactInformation.Find(CIKind, "Kind");
 		
 		If CIPhones = Undefined Then
@@ -2249,9 +1946,9 @@ Function GetCounterpartyId(Counterparty, CounterpartyKind) Export
 	
 	CounterpartyId = "";
 	If Upper(CounterpartyKind) = Upper("Company") Then
-		CounterpartyId = Counterparty.TIN + "_" + Counterparty.KPP;
+		CounterpartyId = Counterparty.TIN;
 	ElsIf Upper(CounterpartyKind) = Upper("Counterparty") Then
-		CounterpartyId = Counterparty.TIN + "_" + Counterparty.KPP;
+		CounterpartyId = Counterparty.TIN;
 	EndIf;
 	
 	Return CounterpartyId;
@@ -2423,7 +2120,7 @@ EndProcedure
 //
 // Parameters:
 //  AttributesTable - value table with the fields: Party, Description, TIN,
-//  KPP, EmailAddress, ExternalCode, DescriptionForUserMessage.
+//  EmailAddress, ExternalCode, DescriptionForUserMessage.
 //    Description - it is
 //    passed to EDF operator, NameForUserMessage - displays in the message to IB user.
 //  CounterpartiesArray - array of references to parties-counterparties.
@@ -2436,7 +2133,6 @@ Procedure FillCounterpartiesAttributesForInvitationToExchange(AttributesTable, C
 		|	Counterparties.Ref AS Participant,
 		|	Counterparties.Description AS Description,
 		|	Counterparties.TIN AS TIN,
-		|	Counterparties.KPP AS KPP,
 		|	Counterparties.Code AS ExternalCode,
 		|	DeleteEDExchangeMembersThroughEDFOperators.EMail_Address AS EMail_Address,
 		|	Counterparties.Description AS DescriptionForUserMessage
@@ -2468,7 +2164,7 @@ Function GetDataLegalIndividual(LegalEntityIndividual, InformationData = Undefin
 	 
 	If TypeOf(LegalEntityIndividual) = Type("CatalogRef.Companies") Then
 		
-		If LegalEntityIndividual.LegalEntityIndividual = Enums.LegalEntityIndividual.Ind Then
+		If LegalEntityIndividual.LegalEntityIndividual = Enums.CounterpartyKinds.Individual Then
 			 
 			Information.Insert("FullDescr", 
 				CommonUse.ObjectAttributeValue(LegalEntityIndividual, "Description"));
@@ -2546,9 +2242,9 @@ Function GetContactInformation(Company) Export
 	|	Catalog.Companies.ContactInformation AS CompaniesContactInformation
 	|WHERE
 	|	CompaniesContactInformation.Ref = &Object
-	|	AND (CompaniesContactInformation.Type = VALUE(Catalog.ContactInformationTypes.CompanyEmail)
-	|			OR CompaniesContactInformation.Type = VALUE(Catalog.ContactInformationTypes.CompanyPhone)
-	|			OR CompaniesContactInformation.Type = VALUE(Catalog.ContactInformationTypes.CounterpartyFax))";
+	|	AND (CompaniesContactInformation.Type = VALUE(Catalog.ContactInformationKinds.CompanyEmail)
+	|			OR CompaniesContactInformation.Type = VALUE(Catalog.ContactInformationKinds.CompanyPhone)
+	|			OR CompaniesContactInformation.Type = VALUE(Catalog.ContactInformationKinds.CounterpartyFax))";
 	
 	Query.SetParameter("Object", Company);
 	
@@ -2611,18 +2307,18 @@ Procedure GetAddressAsStructure(StructureOfAddress, ParametersStructure, Counter
 		Return;
 	EndIf; 
 	If TypeOf(ParametersStructure[CounterpartyKind]) = Type("CatalogRef.Companies") Then
-		If CommonUse.GetAttributeValue(ParametersStructure[CounterpartyKind], "LegalEntityIndividual") = Enums.LegalEntityIndividual.LegalEntity Then
+		If CommonUse.GetAttributeValue(ParametersStructure[CounterpartyKind], "LegalEntityIndividual") = Enums.CounterpartyKinds.LegalEntity Then
 			Object = ParametersStructure[CounterpartyKind];
-			ContactInformationKind = ?(AddressKind = "Legal", Catalogs.ContactInformationTypes.CompanyLegalAddress, Catalogs.ContactInformationTypes.CompanyFactAddress);
+			ContactInformationKind = ?(AddressKind = "Legal", Catalogs.ContactInformationKinds.CompanyLegalAddress, Catalogs.ContactInformationKinds.CompanyActualAddress);
 			CatalogName = "Companies";
 		Else
 			Object = CommonUse.GetAttributeValue(ParametersStructure[CounterpartyKind], "Individual");
-			ContactInformationKind = ?(AddressKind = "Legal", Catalogs.ContactInformationTypes.IndividualAddressByRegistration, Catalogs.ContactInformationTypes.IndividualPlaceOfResidence);
+			ContactInformationKind = ?(AddressKind = "Legal", Catalogs.ContactInformationKinds.IndividualAddressByRegistration, Catalogs.ContactInformationKinds.IndividualPlaceOfResidence);
 			CatalogName = "Individuals";
 		EndIf;
 	Else
 		Object = ParametersStructure[CounterpartyKind];
-		ContactInformationKind = ?(AddressKind = "Legal", Catalogs.ContactInformationTypes.CounterpartyLegalAddress, Catalogs.ContactInformationTypes.CounterpartyFactAddress);
+		ContactInformationKind = ?(AddressKind = "Legal", Catalogs.ContactInformationKinds.CounterpartyLegalAddress, Catalogs.ContactInformationKinds.CounterpartyFactAddress);
 		CatalogName = "Counterparties";
 	EndIf;
 	
@@ -3123,7 +2819,7 @@ Function ThisIsInd(CounterpartyData) Export
 	EndIf;
 		
 	ThisIsInd = False;
-	If LegalEntityIndividual = Enums.LegalEntityIndividual.Ind Then
+	If LegalEntityIndividual = Enums.CounterpartyKinds.Individual Then
 		ThisIsInd = True;
 	EndIf;
 	
@@ -3480,9 +3176,6 @@ Procedure DocumentsKindsListByEDKind(EDKind, ReturnList) Export
 	If EDKind = Enums.EDKinds.TORG12 OR EDKind = Enums.EDKinds.TORG12Seller Then
 		ReturnList.Add(Documents.SupplierInvoice.EmptyRef(),
 			Metadata.Documents.SupplierInvoice.Presentation());
-	ElsIf EDKind = Enums.EDKinds.CustomerInvoiceNote Then
-		ReturnList.Add(Documents.SupplierInvoiceNote.EmptyRef(),
-			Metadata.Documents.SupplierInvoiceNote.Presentation());
 	EndIf;
 	
 EndProcedure
@@ -3507,10 +3200,9 @@ EndProcedure
 Procedure GetCompanyAttributesForExportToFile(Company, ReturnStructure) Export
 	
 	CompanyAttributes = CommonUse.ObjectAttributesValues(Company, 
-		"Description, DescriptionFull, TIN, KPP, CodeByOKPO, LegalEntityIndividual, CertificateSeriesNumber, CertificateIssueDate");
+		"Description, DescriptionFull, TIN, LegalEntityIndividual, CertificateSeriesNumber, CertificateIssueDate");
 		
 	FillPropertyValues(ReturnStructure, CompanyAttributes);
-	ReturnStructure.OKPO = CompanyAttributes.CodeByOKPO;
 	
 	CompanyLegalAddress = SmallBusinessManagementElectronicDocumentsServer.GetAddressOfContactInformation(Company, "Legal");
 	ReturnStructure.LegalAddress     = CompanyLegalAddress.Presentation;
@@ -3522,7 +3214,7 @@ Procedure GetCompanyAttributesForExportToFile(Company, ReturnStructure) Export
 	
 	ReturnStructure.Phone = SmallBusinessManagementElectronicDocumentsServer.GetPhoneFromContactInformation(Company);
 	
-	If ReturnStructure.LegalEntityIndividual = Enums.LegalEntityIndividual.LegalEntity Then
+	If ReturnStructure.LegalEntityIndividual = Enums.CounterpartyKinds.LegalEntity Then
 		StructureOfResponsible = SmallBusinessServer.OrganizationalUnitsResponsiblePersons(Company, CurrentSessionDate());
 		ReturnStructure.Head          = StructureOfResponsible.HeadDescriptionFull;
 		ReturnStructure.HeadPost = StructureOfResponsible.HeadPosition;
@@ -3892,224 +3584,6 @@ Procedure AdditionalAnalyticsCatalogProductsAndServicesCharacteristics(ProductsA
 	
 EndProcedure
 
-// It prepares data for the electronic document of CustomerInvoice type.
-//
-// Parameters:
-//  ObjectReference - documentRef - reference to
-//  the infobase object used to create an electronic document.
-//  EDStructure - structure - data structure for generating an electronic document.
-//  DataTree - value tree, data tree for filling an electronic document.
-//
-Procedure FillInDataByInvoiceFTS(ObjectReference, EDStructure, DataTree) Export
-	
-	If ObjectReference.OperationKind <> Enums.OperationKindsCustomerInvoiceNote.Sale Then
-		
-		MessageText = StringFunctionsClientServer.SubstituteParametersInString(
-			NStr("en='It is not possible to create an eletronic document for the operation kind ""%1""!';ru='Нельзя создать электронный документ для вида операции ""%1""!'"), ObjectReference.OperationKind);
-		
-		Raise MessageText;
-		
-	EndIf;
-	
-	Query = New Query;
-	Query.Text =
-	"SELECT
-	|	Document.Ref AS Ref,
-	|	Document.Date AS Date,
-	|	Document.Number AS Number,
-	|	Document.DocumentCurrency.Code AS CurrencyCode,
-	|	NULL AS CorrectionNumber,
-	|	NULL AS DateOfExtension,
-	|	CASE
-	|		WHEN Document.BasisDocument REFS Document.CustomerInvoice
-	|				AND Document.BasisDocument <> VALUE(Document.CustomerInvoice.EmptyRef)
-	|			THEN Document.BasisDocument.Number
-	|		ELSE NULL
-	|	END AS BasisDocumentNumber,
-	|	ResponsiblePersons.Employee.Description AS HeadDescriptionFull,
-	|	NULL AS InvoiceBasis,
-	|	CASE
-	|		WHEN Document.DocumentCurrency = NationalCurrency.Value.Ref
-	|			THEN FALSE
-	|		ELSE TRUE
-	|	END AS InForeignCurrency,
-	|	Document.Company AS Vendor,
-	|	Document.Counterparty AS Customer,
-	|	Document.Same,
-	|	Document.Consignor,
-	|	Document.Consignee
-	|FROM
-	|	Document.CustomerInvoiceNote AS Document
-	|		LEFT JOIN InformationRegister.ResponsiblePersons.SliceLast(&Date, ResponsiblePersonType = VALUE(Enum.ResponsiblePersonTypes.Head)) AS ResponsiblePersons
-	|		ON Document.Company = ResponsiblePersons.Company,
-	|	Constant.NationalCurrency AS NationalCurrency
-	|WHERE
-	|	Document.Ref = &CurrentInvoice
-	|;
-	|
-	|////////////////////////////////////////////////////////////////////////////////
-	|SELECT
-	|	DocumentInventory.LineNumber AS LineNumber,
-	|	CASE
-	|		WHEN (CAST(DocumentInventory.ProductsAndServices.DescriptionFull AS String(255))) = """"
-	|			THEN DocumentInventory.ProductsAndServices.Description
-	|		ELSE DocumentInventory.ProductsAndServices.DescriptionFull
-	|	END AS ProductsAndServicesDescription,
-	|	CASE
-	|		WHEN DocumentInventory.MeasurementUnit REFS Catalog.UOMClassifier
-	|			THEN DocumentInventory.MeasurementUnit.Code
-	|		ELSE DocumentInventory.ProductsAndServices.MeasurementUnit.Code
-	|	END AS MeasurementUnitCode,
-	|	CASE
-	|		WHEN DocumentInventory.MeasurementUnit REFS Catalog.UOMClassifier
-	|			THEN DocumentInventory.MeasurementUnit.Description
-	|		ELSE DocumentInventory.ProductsAndServices.MeasurementUnit.Description
-	|	END AS MeasurementUnitDescription,
-	|	DocumentInventory.ProductsAndServices.MeasurementUnit.Description AS MeasurementUnit,
-	|	CASE
-	|		WHEN DocumentInventory.MeasurementUnit REFS Catalog.UOMClassifier
-	|			THEN DocumentInventory.Quantity
-	|		ELSE DocumentInventory.Quantity * DocumentInventory.MeasurementUnit.Factor
-	|	END AS Quantity,
-	|	CASE
-	|		WHEN DocumentInventory.MeasurementUnit REFS Catalog.UOMClassifier
-	|			THEN DocumentInventory.Price
-	|		WHEN DocumentInventory.Quantity * DocumentInventory.MeasurementUnit.Factor <> 0
-	|			THEN DocumentInventory.Amount / (DocumentInventory.Quantity * DocumentInventory.MeasurementUnit.Factor)
-	|		ELSE 0
-	|	END AS Price,
-	|	DocumentInventory.Amount AS AmountWithoutVAT,
-	|	DocumentInventory.VATAmount AS VATAmount,
-	|	DocumentInventory.Total AS SumWithVAT,
-	|	CASE
-	|		WHEN DocumentInventory.CountryOfOrigin = VALUE(Catalog.WorldCountries.EmptyRef)
-	|			THEN ""643""
-	|		ELSE DocumentInventory.CountryOfOrigin.Code
-	|	END AS CountryOfOriginCode,
-	|	DocumentInventory.CCDNo.Code AS CustomsDeclarationNumber,
-	|	""Additional data"" AS TextAdditPr,
-	|	""no excise"" AS Excise,
-	|	DocumentInventory.VATRate AS VATRate,
-	|	""text"" AS VATRateType,
-	|	DocumentInventory.ProductsAndServices AS ProductsAndServices,
-	|	DocumentInventory.Characteristic AS Characteristic,
-	|	DocumentInventory.MeasurementUnit AS Package,
-	|	CAST("""" AS String(110)) AS ID,
-	|	NULL AS OperationKindCode,
-	|	UNDEFINED AS AdditionalInformationDigitallySigned
-	|FROM
-	|	Document.CustomerInvoiceNote.Inventory AS DocumentInventory
-	|WHERE
-	|	DocumentInventory.Ref = &CurrentInvoice
-	|;
-	|
-	|////////////////////////////////////////////////////////////////////////////////
-	|SELECT
-	|	PaymentDocuments.PaymentAccountingDocumentNumber AS NumberPRD,
-	|	PaymentDocuments.PaymentAccountingDocumentDate AS DatePRD
-	|FROM
-	|	Document.CustomerInvoiceNote.PaymentDocumentsDateNumber AS PaymentDocuments
-	|WHERE
-	|	PaymentDocuments.Ref = &CurrentInvoice
-	|;
-	|
-	|////////////////////////////////////////////////////////////////////////////////
-	|SELECT DISTINCT
-	|	InvoiceBasisDocuments.BasisDocument
-	|FROM
-	|	Document.CustomerInvoiceNote.BasisDocuments AS InvoiceBasisDocuments
-	|WHERE
-	|	InvoiceBasisDocuments.Ref = &CurrentInvoice";
-	
-	Query.SetParameter("Date", ObjectReference.Date);
-	Query.SetParameter("CurrentInvoice", ObjectReference);
-	
-	QueryResult = Query.ExecuteBatch();
-	
-	DocumentHeader 	   = QueryResult[0].Select();
-	ProductsTable 	   = QueryResult[1].Unload();
-	PaymentDocuments = QueryResult[2].Unload();
-	BasisDocuments = QueryResult[3].Unload();
-	
-	//Header.
-	DocumentHeader.Next();
-	
-	CommonUseED.FillTreeAttributeValue(DataTree, "InvoiceNumber", DocumentHeader.Number);
-	CommonUseED.FillTreeAttributeValue(DataTree, "InvoiceDate",  DocumentHeader.Date);
-	
-	//Fields from the electronic document.
-	InfoAboutCustomer = GetDataLegalIndividual(DocumentHeader.Customer, DocumentHeader.Date);
-	InfoAboutVendor  = GetDataLegalIndividual(DocumentHeader.Vendor, DocumentHeader.Date);
-	
-	SmallBusinessManagementElectronicDocumentsServer.ParticipantDataFill(DataTree, InfoAboutVendor, "Seller");
-	SmallBusinessManagementElectronicDocumentsServer.ParticipantDataFill(DataTree, InfoAboutCustomer, "Customer");
-	
-	If Not ValueIsFilled(DocumentHeader.Consignor) OR (DocumentHeader.Same) Then
-		CommonUseED.FillTreeAttributeValue(DataTree, "ConsignorInfo.TheSame", True);
-	Else
-		SmallBusinessManagementElectronicDocumentsServer.FillCargoSenderRecipientData(DataTree, GetDataLegalIndividual(DocumentHeader.Consignor, DocumentHeader.Date), "InformationAboutConsignor.Consignor");
-	EndIf;
-	
-	Consignee = ?(NOT ValueIsFilled(DocumentHeader.Consignee) OR (DocumentHeader.Consignee = "the same"),
-				EDStructure.Counterparty, DocumentHeader.Consignee);
-	SmallBusinessManagementElectronicDocumentsServer.FillCargoSenderRecipientData(DataTree, GetDataLegalIndividual(Consignee, DocumentHeader.Date), "Consignee");
-	
-	CommonUseED.FillTreeAttributeValue(DataTree, "CurrencyCode", DocumentHeader.CurrencyCode);
-	
-	//Payment documents.
-	CommonUseED.ImportingTableToTree(DataTree, PaymentDocuments, "PaymentAndSettlementDocuments");
-	
-	// Basis documents.
-	CommonUseED.FillTreeAttributeValue(DataTree, "BasisDocuments", BasisDocuments);
-	
-	// Tabular section of the document and its additional data.
-	JustServices = 0;
-	For Each ProductsRow IN ProductsTable Do
-		
-		AdditDataStructure = New Structure;
-		AdditDataStructure = SmallBusinessManagementElectronicDocumentsServer.GetProductsAndServicesAdditDataStructure(ProductsRow.ProductsAndServices, 
-																														ProductsRow.Characteristic, 
-																														ProductsRow.ProductsAndServicesDescription);
-		AdditDataStructure.Insert("MeasurementUnitDescription", ProductsRow.MeasurementUnitDescription);
-		
-		ProductsRow.AdditionalInformationDigitallySigned = AdditDataStructure;
-		
-		If Not ProductsRow.ProductsAndServices.ProductsAndServicesType = Enums.ProductsAndServicesTypes.InventoryItem Then
-			JustServices = JustServices + 1;
-		EndIf;
-		
-	EndDo;
-	
-	JustServices = (JustServices <> 0 AND JustServices = ProductsTable.Count());
-	
-	//Inventory table.
-	CommonUseED.ImportingTableToTree(DataTree, ProductsTable, "ProductsTable");
-	
-	CommonUseED.FillTreeAttributeValue(DataTree,
-		"TotalDue.AmountWithoutVATTotal", ProductsTable.Total("AmountWithoutVAT"));
-	CommonUseED.FillTreeAttributeValue(DataTree,
-		"TotalDue.AmountWithVATTotal",  ProductsTable.Total("SumWithVAT"));
-	CommonUseED.FillTreeAttributeValue(DataTree,
-		"TotalDue.AmountVATTotal",   ProductsTable.Total("VATAmount"));
-		
-	//Other fields.
-	CommonUseED.FillTreeAttributeValue(DataTree, "JustServices", JustServices);
-	
-EndProcedure
-
-// It prepares data for the electronic document of CorrectiveCustomerInvoiceNote type.
-//
-// Parameters:
-//  ObjectReference - documentRef - reference to
-//  the infobase object used to create an electronic document.
-//  EDStructure - structure - data structure for generating an electronic document.
-//  DataTree - value tree, data tree for filling an electronic document.
-//
-Procedure FillInDataInCorrectionInvoiceFTS(ObjectReference, EDStructure, DataTree) Export
-
-
-EndProcedure
-
 // It prepares data for the electronic document of Company Details type of CML 2 format.
 //
 // Parameters: 
@@ -4330,7 +3804,6 @@ Procedure FillInDataInTransferOrder(ObjectReference, EDStructure, DocumentTree) 
 	|	PaymentOrder.DocumentAmount AS Amount,
 	|	PaymentOrder.Counterparty.DescriptionFull AS RecipientAttributes_Description,
 	|	PaymentOrder.Counterparty.TIN AS RecipientAttributes_TIN,
-	|	PaymentOrder.Counterparty.KPP AS RecipientAttributes_KPP,
 	|	PaymentOrder.CounterpartyAccount.AccountNo AS RecipientAttributes_BankAccount,
 	|	PaymentOrder.CounterpartyAccount.Bank.Code AS RecipientAttributes_Bank_BIN,
 	|	PaymentOrder.CounterpartyAccount.Bank.Description AS RecipientAttributes_Bank_Description,
@@ -4338,7 +3811,6 @@ Procedure FillInDataInTransferOrder(ObjectReference, EDStructure, DocumentTree) 
 	|	PaymentOrder.CounterpartyAccount.Bank.CorrAccount AS RecipientAttributes_Bank_CorrAccount,
 	|	PaymentOrder.Company.Description AS PayerAttributes_Description,
 	|	PaymentOrder.Company.TIN AS PayerAttributes_TIN,
-	|	PaymentOrder.Company.KPP AS PayerAttributes_KPP,
 	|	PaymentOrder.BankAccount.AccountNo AS PayerAttributes_BankAccount,
 	|	PaymentOrder.BankAccount.Bank.Code AS PayerAttributes_Bank_BIN,
 	|	PaymentOrder.BankAccount.Bank.Description AS PayerAttributes_Bank_Description,
@@ -4355,8 +3827,6 @@ Procedure FillInDataInTransferOrder(ObjectReference, EDStructure, DocumentTree) 
 	|		ELSE FALSE
 	|	END AS PaymentToBudget,
 	|	PaymentOrder.AuthorStatus AS PaymentsToBudget_AuthorStatus,
-	|	PaymentOrder.BKCode AS PaymentsToBudget_KBKIndicator,
-	|	PaymentOrder.OKATOCode AS PaymentsToBudget_OKTMO,
 	|	PaymentOrder.BasisIndicator AS PaymentsToBudget_BasisIndicator,
 	|	CASE
 	|		WHEN PaymentOrder.PeriodIndicator = """"

@@ -1122,7 +1122,7 @@ Procedure GenerateTablePayrollPayments(DocumentRefCustomerOrder, StructureAdditi
 	|FROM
 	|	TemporaryTableArtist AS TablePayrollPayments";
 	
-	Query.SetParameter("Payroll", NStr("en = 'Payroll'"));
+	Query.SetParameter("Payroll", NStr("ru = 'Начисление зарплаты'; en = 'Payroll'"));
 	QueryResult = Query.Execute();
 	
 	StructureAdditionalProperties.TableForRegisterRecords.Insert("TablePayrollPayments", QueryResult.Unload());
@@ -2621,7 +2621,7 @@ Procedure GenerateTableInventoryPerformers(DocumentRefCustomerOrder, StructureAd
 	|WHERE
 	|	TableInventoryPerformers.Amount > 0";
 	
-	Query.SetParameter("Payroll", NStr("en = 'Payroll'"));	
+	Query.SetParameter("Payroll", NStr("ru = 'Начисление зарплаты'; en = 'Payroll'"));	
 	Query.SetParameter("SalaryDistribution", 	NStr("en='Cost application on finished goods';ru='Отнесение затрат на продукцию'"));	
 	
 	ResultsArray = Query.ExecuteBatch();
@@ -5726,6 +5726,10 @@ EndProcedure
 //
 Function PrintCustomerOrder(ObjectsArray, PrintObjects, TemplateName)
 	
+	Var Errors;
+	
+	UseVAT	= GetFunctionalOption("UseVAT");
+	
 	SpreadsheetDocument = New SpreadsheetDocument;
 	SpreadsheetDocument.PrintParametersKey = "PrintParameters_CustomerOrder";
 	
@@ -5734,7 +5738,7 @@ Function PrintCustomerOrder(ObjectsArray, PrintObjects, TemplateName)
 	Query.Text = 
 	"SELECT
 	|	CustomerOrder.Ref AS Ref,
-	|	CustomerOrder.Number AS Number,
+	|	CustomerOrder.Number AS DocumentNumber,
 	|	CustomerOrder.Date AS DocumentDate,
 	|	CustomerOrder.Company AS Company,
 	|	CustomerOrder.Counterparty AS Counterparty,
@@ -5776,7 +5780,7 @@ Function PrintCustomerOrder(ObjectsArray, PrintObjects, TemplateName)
 	|			ELSE CAST(CustomerOrder.Inventory.ProductsAndServices.DescriptionFull AS String(1000))
 	|		END AS InventoryItem,
 	|		ProductsAndServices.SKU AS SKU,
-	|		MeasurementUnit.Description AS MeasurementUnit,
+	|		MeasurementUnit.Description AS UnitOfMeasure,
 	|		Quantity AS Quantity,
 	|		Price AS Price,
 	|		Amount AS Amount,
@@ -5820,34 +5824,63 @@ Function PrintCustomerOrder(ObjectsArray, PrintObjects, TemplateName)
 		
 		FirstLineNumber = SpreadsheetDocument.TableHeight + 1;
 		
-		SpreadsheetDocument.PrintParametersName = "PRINT_PARAMETERS_BuyersOrder_TemplateBuyersOrder";
+		SpreadsheetDocument.PrintParametersName = "PRINT_PARAMETERS_CustomerOrder_CustomerOrder";
 		
 		Template = PrintManagement.PrintedFormsTemplate("Document.CustomerOrder.PF_MXL_CustomerOrderTemplate");
 		
 		InfoAboutCompany = SmallBusinessServer.InfoAboutLegalEntityIndividual(Header.Company, Header.DocumentDate, ,);
 		InfoAboutCounterparty = SmallBusinessServer.InfoAboutLegalEntityIndividual(Header.Counterparty, Header.DocumentDate, ,);
 		
-		If Header.DocumentDate < Date('20110101') Then
-			DocumentNumber = SmallBusinessServer.GetNumberForPrinting(Header.Number, Header.Prefix);
+		If Template.Areas.Find("TitleWithLogo") <> Undefined
+			AND Template.Areas.Find("TitleWithoutLogo") <> Undefined Then
+			
+			If ValueIsFilled(Header.Company.LogoFile) Then
+				
+				TemplateArea = Template.GetArea("TitleWithLogo");
+				TemplateArea.Parameters.Fill(Header);
+				
+				PictureData = AttachedFiles.GetFileBinaryData(Header.Company.LogoFile);
+				If ValueIsFilled(PictureData) Then
+					
+					TemplateArea.Drawings.Logo.Picture = New Picture(PictureData);
+					
+				EndIf;
+				
+			Else // If images are not selected, print regular header
+				
+				TemplateArea = Template.GetArea("TitleWithoutLogo");
+				TemplateArea.Parameters.Fill(Header);
+				
+			EndIf;
+			
+			SpreadsheetDocument.Put(TemplateArea);
+			
 		Else
-			DocumentNumber = ObjectPrefixationClientServer.GetNumberForPrinting(Header.Number, True, True);
-		EndIf;		
+			
+			MessageText = NStr("en='ATTENTION! Perhaps, user template is used default methods for the accounts printing may work incorrectly.';ru='ВНИМАНИЕ! Возможно используется пользовательский макет. Штатный механизм печати счетов может работать некоректно.'");
+			CommonUseClientServer.AddUserError(Errors, , MessageText, Undefined);
+			
+		EndIf;
 		
-		TemplateArea = Template.GetArea("Title");
-		TemplateArea.Parameters.HeaderText = "Customer order No "
-												+ DocumentNumber
-												+ " from "
-												+ Format(Header.DocumentDate, "DLF=DD");
+		TemplateArea = Template.GetArea("InvoiceHeaderVendor");
+		
+		TemplateArea.Parameters.Fill(Header);
+		
+		VendorPresentation	= SmallBusinessServer.CompaniesDescriptionFull(InfoAboutCompany, "FullDescr");
+		
+		TemplateArea.Parameters.VendorPresentation	= VendorPresentation;
+		TemplateArea.Parameters.VendorAddress		= SmallBusinessServer.CompaniesDescriptionFull(InfoAboutCompany, "LegalAddress");
+		TemplateArea.Parameters.VendorPhoneFax		= SmallBusinessServer.CompaniesDescriptionFull(InfoAboutCompany, "PhoneNumbers,Fax");
+		TemplateArea.Parameters.VendorEmail			= SmallBusinessServer.CompaniesDescriptionFull(InfoAboutCompany, "Email");
 		
 		SpreadsheetDocument.Put(TemplateArea);
 		
-		TemplateArea = Template.GetArea("Vendor");
-		TemplateArea.Parameters.VendorPresentation = SmallBusinessServer.CompaniesDescriptionFull(InfoAboutCompany, "FullDescr,TIN,KPP,LegalAddress,PhoneNumbers,");
-		SpreadsheetDocument.Put(TemplateArea);
+		TemplateArea = Template.GetArea("InvoiceHeaderCustomer");
 		
-		TemplateArea = Template.GetArea("Customer");
-		RecipientPresentation = SmallBusinessServer.CompaniesDescriptionFull(InfoAboutCounterparty, "FullDescr,TIN,KPP,LegalAddress,PhoneNumbers,");
-		TemplateArea.Parameters.RecipientPresentation = RecipientPresentation; 
+		TemplateArea.Parameters.CustomerPresentation	= SmallBusinessServer.CompaniesDescriptionFull(InfoAboutCounterparty, "FullDescr");;
+		TemplateArea.Parameters.CustomerAddress			= SmallBusinessServer.CompaniesDescriptionFull(InfoAboutCounterparty, "LegalAddress");;
+		TemplateArea.Parameters.CustomerPhoneFax		= SmallBusinessServer.CompaniesDescriptionFull(InfoAboutCounterparty, "PhoneNumbers,Fax");;
+		
 		SpreadsheetDocument.Put(TemplateArea);
 		
 		LinesSelectionInventory = Header.Inventory.Select();
@@ -5857,15 +5890,17 @@ Function PrintCustomerOrder(ObjectsArray, PrintObjects, TemplateName)
 		
 		If AreDiscounts Then
 			
-			TemplateArea = Template.GetArea("TableWithDiscountHeader");
+			TemplateArea = Template.GetArea("TableHeaderWithDiscount");
+			TemplateArea.Parameters.Currency	= Header.DocumentCurrency;
 			SpreadsheetDocument.Put(TemplateArea);
-			TemplateArea = Template.GetArea("RowWithDiscount");
+			TemplateArea = Template.GetArea("TableRowWithDiscount");
 			
 		Else
 			
 			TemplateArea = Template.GetArea("TableHeader");
+			TemplateArea.Parameters.Currency	= Header.DocumentCurrency;
 			SpreadsheetDocument.Put(TemplateArea);
-			TemplateArea = Template.GetArea("String");
+			TemplateArea = Template.GetArea("TableRow");
 			
 		EndIf;
 		
@@ -5878,9 +5913,9 @@ Function PrintCustomerOrder(ObjectsArray, PrintObjects, TemplateName)
 			TemplateArea.Parameters.Fill(SelectionRowsWork);
 			
 			If ValueIsFilled(SelectionRowsWork.Content) Then
-				TemplateArea.Parameters.InventoryItem = SelectionRowsWork.Content;
+				TemplateArea.Parameters.ProductDescription = SelectionRowsWork.Content;
 			Else
-				TemplateArea.Parameters.InventoryItem = SmallBusinessServer.GetProductsAndServicesPresentationForPrinting(SelectionRowsWork.InventoryItem, 
+				TemplateArea.Parameters.ProductDescription = SmallBusinessServer.GetProductsAndServicesPresentationForPrinting(SelectionRowsWork.InventoryItem, 
 																	SelectionRowsWork.Characteristic, SelectionRowsWork.SKU);
 			EndIf;
 																
@@ -5912,9 +5947,9 @@ Function PrintCustomerOrder(ObjectsArray, PrintObjects, TemplateName)
 			TemplateArea.Parameters.Fill(LinesSelectionInventory);
 			
 			If ValueIsFilled(LinesSelectionInventory.Content) Then
-				TemplateArea.Parameters.InventoryItem = LinesSelectionInventory.Content;
+				TemplateArea.Parameters.ProductDescription = LinesSelectionInventory.Content;
 			Else
-				TemplateArea.Parameters.InventoryItem = SmallBusinessServer.GetProductsAndServicesPresentationForPrinting(LinesSelectionInventory.InventoryItem, 
+				TemplateArea.Parameters.ProductDescription = SmallBusinessServer.GetProductsAndServicesPresentationForPrinting(LinesSelectionInventory.InventoryItem, 
 																	LinesSelectionInventory.Characteristic, LinesSelectionInventory.SKU);
 			EndIf;
 																
@@ -5943,33 +5978,23 @@ Function PrintCustomerOrder(ObjectsArray, PrintObjects, TemplateName)
 		EndDo;
 		
 		TemplateArea = Template.GetArea("Total");
-		TemplateArea.Parameters.Total = SmallBusinessServer.AmountsFormat(Amount);
+		TemplateArea.Parameters.Total		= SmallBusinessServer.AmountsFormat(Amount);
+		TemplateArea.Parameters.Currency	= Header.DocumentCurrency;
 		SpreadsheetDocument.Put(TemplateArea);
 		
-		TemplateArea = Template.GetArea("TotalVAT");
-		If VATAmount = 0 Then
-			TemplateArea.Parameters.VAT = "Without tax (VAT)";
-			TemplateArea.Parameters.TotalVAT = "-";
-		Else
-			TemplateArea.Parameters.VAT = ?(Header.AmountIncludesVAT, "Including VAT:", "VAT Amount:");
-			TemplateArea.Parameters.TotalVAT = SmallBusinessServer.AmountsFormat(VATAmount);
-		EndIf; 
-		SpreadsheetDocument.Put(TemplateArea);
-		
-		TemplateArea = Template.GetArea("AmountInWords");
-		AmountToBeWrittenInWords = Total;
-		TemplateArea.Parameters.TotalRow = "Total titles "
-												+ String(Quantity)
-												+ ", in the amount of "
-												+ SmallBusinessServer.AmountsFormat(AmountToBeWrittenInWords, Header.DocumentCurrency);
-		
-		TemplateArea.Parameters.AmountInWords = WorkWithCurrencyRates.GenerateAmountInWords(AmountToBeWrittenInWords, Header.DocumentCurrency);
-		
-		SpreadsheetDocument.Put(TemplateArea);
-		
-		TemplateArea = Template.GetArea("Signatures");
-		TemplateArea.Parameters.Released = Header.Responsible;
-		SpreadsheetDocument.Put(TemplateArea);
+		If UseVAT Then
+			
+			TemplateArea = Template.GetArea("TotalVAT");
+			If VATAmount = 0 Then
+				TemplateArea.Parameters.VAT = "Without tax (VAT)";
+				TemplateArea.Parameters.TotalVAT = "-";
+			Else
+				TemplateArea.Parameters.VAT = ?(Header.AmountIncludesVAT, "Including VAT:", "VAT Amount:");
+				TemplateArea.Parameters.TotalVAT = SmallBusinessServer.AmountsFormat(VATAmount);
+			EndIf; 
+			SpreadsheetDocument.Put(TemplateArea);
+			
+		EndIf;
 		
 		PrintManagement.SetDocumentPrintArea(SpreadsheetDocument, FirstLineNumber, PrintObjects, Header.Ref);
 	EndDo;
@@ -5982,9 +6007,11 @@ EndFunction // PrintForm()
 
 // Document printing procedure.
 //
-Function PrintInvoiceForPayment(ObjectsArray, PrintObjects, TemplateName) Export
+Function PrintProformaInvoice(ObjectsArray, PrintObjects, TemplateName, Signature = False) Export
 	
 	Var Errors;
+	
+	UseVAT	= GetFunctionalOption("UseVAT");
 	
 	SpreadsheetDocument = New SpreadsheetDocument;
 	
@@ -5995,7 +6022,7 @@ Function PrintInvoiceForPayment(ObjectsArray, PrintObjects, TemplateName) Export
 	|	CustomerOrder.AmountIncludesVAT AS AmountIncludesVAT,
 	|	CustomerOrder.DocumentCurrency AS DocumentCurrency,
 	|	CustomerOrder.Date AS DocumentDate,
-	|	CustomerOrder.Number AS Number,
+	|	CustomerOrder.Number AS DocumentNumber,
 	|	CustomerOrder.BankAccount AS BankAccount,
 	|	CustomerOrder.Counterparty AS Counterparty,
 	|	CustomerOrder.Company AS Company,
@@ -6007,7 +6034,7 @@ Function PrintInvoiceForPayment(ObjectsArray, PrintObjects, TemplateName) Export
 	|			ELSE CAST(CustomerOrder.Works.ProductsAndServices.DescriptionFull AS String(1000))
 	|		END AS InventoryItem,
 	|		ProductsAndServices.SKU AS SKU,
-	|		ProductsAndServices.MeasurementUnit AS MeasurementUnit,
+	|		ProductsAndServices.MeasurementUnit AS UnitOfMeasure,
 	|		Price AS Price,
 	|		Amount AS Amount,
 	|		VATAmount AS VATAmount,
@@ -6032,7 +6059,7 @@ Function PrintInvoiceForPayment(ObjectsArray, PrintObjects, TemplateName) Export
 	|			ELSE CAST(CustomerOrder.Inventory.ProductsAndServices.DescriptionFull AS String(1000))
 	|		END AS InventoryItem,
 	|		ProductsAndServices.SKU AS SKU,
-	|		MeasurementUnit AS MeasurementUnit,
+	|		MeasurementUnit AS UnitOfMeasure,
 	|		Price AS Price,
 	|		Amount AS Amount,
 	|		VATAmount AS VATAmount,
@@ -6083,7 +6110,7 @@ Function PrintInvoiceForPayment(ObjectsArray, PrintObjects, TemplateName) Export
 		SelectionRowsWork = Header.Works.Select();
 		PrepaymentTable = Header.PaymentCalendar.Unload(); 
 				
-		SpreadsheetDocument.PrintParametersName = "InvoiceForPayment_Print_Parameters" + TemplateName;
+		SpreadsheetDocument.PrintParametersName = "PARAMETERS_PRINT_" + TemplateName + "_" + TemplateName;
 		
 		Template = PrintManagement.PrintedFormsTemplate("Document.CustomerOrder.PF_MXL_" + TemplateName);
 		
@@ -6097,6 +6124,7 @@ Function PrintInvoiceForPayment(ObjectsArray, PrintObjects, TemplateName) Export
 			If ValueIsFilled(Header.Company.LogoFile) Then
 				
 				TemplateArea = Template.GetArea("TitleWithLogo");
+				TemplateArea.Parameters.Fill(Header);
 				
 				PictureData = AttachedFiles.GetFileBinaryData(Header.Company.LogoFile);
 				If ValueIsFilled(PictureData) Then
@@ -6108,6 +6136,7 @@ Function PrintInvoiceForPayment(ObjectsArray, PrintObjects, TemplateName) Export
 			Else // If images are not selected, print regular header
 				
 				TemplateArea = Template.GetArea("TitleWithoutLogo");
+				TemplateArea.Parameters.Fill(Header);
 				
 			EndIf;
 			
@@ -6120,54 +6149,49 @@ Function PrintInvoiceForPayment(ObjectsArray, PrintObjects, TemplateName) Export
 			
 		EndIf;
 		
-		TemplateArea = Template.GetArea("InvoiceHeader");
-		If ValueIsFilled(InfoAboutCompany.Bank) Then
-			TemplateArea.Parameters.RecipientBankPresentation = InfoAboutCompany.Bank.Description + " " + InfoAboutCompany.Bank.City;
-		EndIf; 
-		TemplateArea.Parameters.TIN = InfoAboutCompany.TIN;
-		TemplateArea.Parameters.KPP = InfoAboutCompany.KPP;
-		TemplateArea.Parameters.VendorPresentation = ?(IsBlankString(InfoAboutCompany.CorrespondentText), InfoAboutCompany.FullDescr, InfoAboutCompany.CorrespondentText);
-		TemplateArea.Parameters.RecipientBankBIC = InfoAboutCompany.BIN;
-		TemplateArea.Parameters.RecipientBankAccountPresentation = InfoAboutCompany.CorrAccount;
-		TemplateArea.Parameters.RecipientAccountPresentation = InfoAboutCompany.AccountNo;
+		TemplateArea = Template.GetArea("InvoiceHeaderVendor");
+		
+		TemplateArea.Parameters.Fill(Header);
+		
+		VendorPresentation	= SmallBusinessServer.CompaniesDescriptionFull(InfoAboutCompany, "FullDescr");
+		
+		TemplateArea.Parameters.VendorPresentation	= VendorPresentation;
+		TemplateArea.Parameters.VendorAddress		= SmallBusinessServer.CompaniesDescriptionFull(InfoAboutCompany, "LegalAddress");
+		TemplateArea.Parameters.VendorPhoneFax		= SmallBusinessServer.CompaniesDescriptionFull(InfoAboutCompany, "PhoneNumbers,Fax");
+		TemplateArea.Parameters.VendorEmail			= SmallBusinessServer.CompaniesDescriptionFull(InfoAboutCompany, "Email");
+		
+		TemplateArea.Parameters.BankPresentation	=  SmallBusinessServer.CompaniesDescriptionFull(InfoAboutCompany, "Bank", False);
+		TemplateArea.Parameters.BankAccountNumber	=  SmallBusinessServer.CompaniesDescriptionFull(InfoAboutCompany, "AccountNo", False);
+		TemplateArea.Parameters.BankSWIFT			=  SmallBusinessServer.CompaniesDescriptionFull(InfoAboutCompany, "SWIFT", False);
+		
+		CorrespondentText	= SmallBusinessServer.CompaniesDescriptionFull(InfoAboutCompany, "CorrespondentText", False);
+		TemplateArea.Parameters.BankBeneficiary		=  ?(ValueIsFilled(CorrespondentText), CorrespondentText, VendorPresentation);
 		
 		SpreadsheetDocument.Put(TemplateArea);
 		
-		If Header.DocumentDate < Date('20110101') Then
-			DocumentNumber = SmallBusinessServer.GetNumberForPrinting(Header.Number, Header.Prefix);
-		Else
-			DocumentNumber = ObjectPrefixationClientServer.GetNumberForPrinting(Header.Number, True, True);
-		EndIf;		
+		TemplateArea = Template.GetArea("InvoiceHeaderCustomer");
 		
-		TemplateArea = Template.GetArea("Title");
-		TemplateArea.Parameters.HeaderText = "Invoice for payment # "
-												+ DocumentNumber
-												+ " from "
-												+ Format(Header.DocumentDate, "DLF=DD");
-												
-		SpreadsheetDocument.Put(TemplateArea);
+		TemplateArea.Parameters.CustomerPresentation	= SmallBusinessServer.CompaniesDescriptionFull(InfoAboutCounterparty, "FullDescr");;
+		TemplateArea.Parameters.CustomerAddress			= SmallBusinessServer.CompaniesDescriptionFull(InfoAboutCounterparty, "LegalAddress");;
+		TemplateArea.Parameters.CustomerPhoneFax		= SmallBusinessServer.CompaniesDescriptionFull(InfoAboutCounterparty, "PhoneNumbers,Fax");;
 		
-		TemplateArea = Template.GetArea("Vendor");
-		TemplateArea.Parameters.VendorPresentation = SmallBusinessServer.CompaniesDescriptionFull(InfoAboutCompany, "FullDescr,TIN,KPP,LegalAddress,PhoneNumbers,");
-		SpreadsheetDocument.Put(TemplateArea);
-		
-		TemplateArea = Template.GetArea("Customer");
-		TemplateArea.Parameters.RecipientPresentation = SmallBusinessServer.CompaniesDescriptionFull(InfoAboutCounterparty, "FullDescr,TIN,KPP,LegalAddress,PhoneNumbers,");
 		SpreadsheetDocument.Put(TemplateArea);
 
 		AreDiscounts = (Header.Inventory.Unload().Total("IsDiscount") + Header.Works.Unload().Total("IsDiscount")) <> 0;
 		
 		If AreDiscounts Then
 			
-			TemplateArea = Template.GetArea("TableWithDiscountHeader");
+			TemplateArea = Template.GetArea("TableHeaderWithDiscount");
+			TemplateArea.Parameters.Currency	= Header.DocumentCurrency;
 			SpreadsheetDocument.Put(TemplateArea);
-			TemplateArea = Template.GetArea("RowWithDiscount");
+			TemplateArea = Template.GetArea("TableRowWithDiscount");
 			
 		Else
 			
 			TemplateArea = Template.GetArea("TableHeader");
+			TemplateArea.Parameters.Currency	= Header.DocumentCurrency;
 			SpreadsheetDocument.Put(TemplateArea);
-			TemplateArea = Template.GetArea("String");
+			TemplateArea = Template.GetArea("TableRow");
 			
 		EndIf;
 		
@@ -6183,9 +6207,9 @@ Function PrintInvoiceForPayment(ObjectsArray, PrintObjects, TemplateName) Export
 			TemplateArea.Parameters.LineNumber = Quantity;
 			
 			If ValueIsFilled(SelectionRowsWork.Content) Then
-				TemplateArea.Parameters.InventoryItem = SelectionRowsWork.Content;
+				TemplateArea.Parameters.ProductDescription = SelectionRowsWork.Content;
 			Else
-				TemplateArea.Parameters.InventoryItem = SmallBusinessServer.GetProductsAndServicesPresentationForPrinting(SelectionRowsWork.InventoryItem, 
+				TemplateArea.Parameters.ProductDescription = SmallBusinessServer.GetProductsAndServicesPresentationForPrinting(SelectionRowsWork.InventoryItem, 
 																	SelectionRowsWork.Characteristic, SelectionRowsWork.SKU);
 			EndIf;
 						
@@ -6219,9 +6243,9 @@ Function PrintInvoiceForPayment(ObjectsArray, PrintObjects, TemplateName) Export
 			TemplateArea.Parameters.LineNumber = Quantity;
 			
 			If ValueIsFilled(LinesSelectionInventory.Content) Then
-				TemplateArea.Parameters.InventoryItem = LinesSelectionInventory.Content;
+				TemplateArea.Parameters.ProductDescription = LinesSelectionInventory.Content;
 			Else
-				TemplateArea.Parameters.InventoryItem = SmallBusinessServer.GetProductsAndServicesPresentationForPrinting(LinesSelectionInventory.InventoryItem, 
+				TemplateArea.Parameters.ProductDescription = SmallBusinessServer.GetProductsAndServicesPresentationForPrinting(LinesSelectionInventory.InventoryItem, 
 																	LinesSelectionInventory.Characteristic, LinesSelectionInventory.SKU);
 			EndIf;
 																
@@ -6249,448 +6273,57 @@ Function PrintInvoiceForPayment(ObjectsArray, PrintObjects, TemplateName) Export
 		EndDo;
 		
 		TemplateArea = Template.GetArea("Total");
-		TemplateArea.Parameters.Total = SmallBusinessServer.AmountsFormat(Amount);
+		TemplateArea.Parameters.Total		= SmallBusinessServer.AmountsFormat(Amount);
+		TemplateArea.Parameters.Currency	= Header.DocumentCurrency;
 		SpreadsheetDocument.Put(TemplateArea);
-		
-		TemplateArea = Template.GetArea("TotalVAT");
-		If VATAmount = 0 Then
-			TemplateArea.Parameters.VAT = "Without tax (VAT)";
-			TemplateArea.Parameters.TotalVAT = "-";
-		Else
-			TemplateArea.Parameters.VAT = ?(Header.AmountIncludesVAT, "Including VAT:", "VAT Amount:");
-			TemplateArea.Parameters.TotalVAT = SmallBusinessServer.AmountsFormat(VATAmount);
-		EndIf; 
-		
-		If TemplateName = "InvoiceForPartialPayment" Then
+	
+		If UseVAT Then
+			
+			TemplateArea = Template.GetArea("TotalVAT");
 			If VATAmount = 0 Then
-				TemplateArea.Parameters.VATToPay = "Without tax (VAT)";
-				TemplateArea.Parameters.TotalVATToPay = "-";
+				TemplateArea.Parameters.VAT = "Without tax (VAT)";
+				TemplateArea.Parameters.TotalVAT = "-";
 			Else
-				TemplateArea.Parameters.VATToPay = ?(Header.AmountIncludesVAT, "Including payment VAT:", "VAT amount of payment:");
-				If PrepaymentTable.Total("PaymentPercentage") > 0 Then
-					TemplateArea.Parameters.TotalVATToPay = SmallBusinessServer.AmountsFormat(PrepaymentTable.Total("PayVATAmount"));
-				Else
-					TemplateArea.Parameters.TotalVATToPay = "-";
-				EndIf;
+				TemplateArea.Parameters.VAT = ?(Header.AmountIncludesVAT, "Including VAT:", "VAT Amount:");
+				TemplateArea.Parameters.TotalVAT = SmallBusinessServer.AmountsFormat(VATAmount);
 			EndIf; 
-			If PrepaymentTable.Total("PaymentPercentage") > 0 Then
-				TemplateArea.Parameters.TotalToPay = SmallBusinessServer.AmountsFormat(PrepaymentTable.Total("PaymentAmount"));
-				TemplateArea.Parameters.PaymentPercentage = PrepaymentTable.Total("PaymentPercentage");
-			Else
-				TemplateArea.Parameters.TotalToPay = "-";
-				TemplateArea.Parameters.PaymentPercentage = "-";
-			EndIf;
-		EndIf;
-		
-		SpreadsheetDocument.Put(TemplateArea);
-		
-		If Template.Areas.Find("TotalToPay") = Undefined Then
-			
-			MessageText = NStr("en='ATTENTION! Template area ""Total for payment"" is not found. Perhaps, user template is used';ru='ВНИМАНИЕ! Не обнаружена область макета ""Итог к оплате"". Возможно используется пользовательский макет.'");
-			CommonUseClientServer.AddUserError(Errors, , MessageText, Undefined);
-			
-		Else
-			
-			TemplateArea = Template.GetArea("TotalToPay");
-			TemplateArea.Parameters.Fill(New Structure("TotalToPay", SmallBusinessServer.AmountsFormat(Total)));
 			SpreadsheetDocument.Put(TemplateArea);
-			
+		
 		EndIf;
 		
-		TemplateArea = Template.GetArea("AmountInWords");
-		AmountToBeWrittenInWords = Total;
-		TemplateArea.Parameters.TotalRow = "Total titles "
-												+ String(Quantity)
-												+ ", in the amount of "
-												+ SmallBusinessServer.AmountsFormat(AmountToBeWrittenInWords, Header.DocumentCurrency);
+		If Signature Then
 		
-		TemplateArea.Parameters.AmountInWords = WorkWithCurrencyRates.GenerateAmountInWords(AmountToBeWrittenInWords, Header.DocumentCurrency);
-		
-		SpreadsheetDocument.Put(TemplateArea);
-		
-		TemplateArea = Template.GetArea("AccountFooter");
-		
-		Heads = SmallBusinessServer.OrganizationalUnitsResponsiblePersons(Header.Company, Header.DocumentDate);
-		
-		TemplateArea.Parameters.HeadDescriptionFull = Heads.HeadDescriptionFull;
-		TemplateArea.Parameters.AccountantDescriptionFull   = Heads.ChiefAccountantNameAndSurname;
-		
-		SpreadsheetDocument.Put(TemplateArea);
-		
-		PrintManagement.SetDocumentPrintArea(SpreadsheetDocument, FirstLineNumber, PrintObjects, Header.Ref);
-		
-	EndDo;
-	
-	CommonUseClientServer.ShowErrorsToUser(Errors);
-	
-	SpreadsheetDocument.FitToPage = True;
-	
-	Return SpreadsheetDocument;
-
-EndFunction // PrintInvoiceForPayment()
-
-// Document printing procedure.
-//
-Function PrintInvoiceWithFacsimileSignature(ObjectsArray, PrintObjects, TemplateName) Export
-	
-	Var Errors;
-	
-	SpreadsheetDocument = New SpreadsheetDocument;
-	
-	Query = New Query();
-	Query.Text = 
-	"SELECT
-	|	CustomerOrder.Ref AS Ref,
-	|	CustomerOrder.AmountIncludesVAT AS AmountIncludesVAT,
-	|	CustomerOrder.DocumentCurrency AS DocumentCurrency,
-	|	CustomerOrder.Date AS DocumentDate,
-	|	CustomerOrder.Number AS Number,
-	|	CustomerOrder.BankAccount AS BankAccount,
-	|	CustomerOrder.Counterparty AS Counterparty,
-	|	CustomerOrder.Company AS Company,
-	|	CustomerOrder.Company.Prefix AS Prefix,
-	|	CustomerOrder.Works.(
-	|		CASE
-	|			WHEN (CAST(CustomerOrder.Works.ProductsAndServices.DescriptionFull AS String(1000))) = """"
-	|				THEN CustomerOrder.Works.ProductsAndServices.Description
-	|			ELSE CAST(CustomerOrder.Works.ProductsAndServices.DescriptionFull AS String(1000))
-	|		END AS InventoryItem,
-	|		ProductsAndServices.SKU AS SKU,
-	|		ProductsAndServices.MeasurementUnit AS MeasurementUnit,
-	|		Price AS Price,
-	|		Amount AS Amount,
-	|		VATAmount AS VATAmount,
-	|		Total AS Total,
-	|		CustomerOrder.Works.Quantity * CustomerOrder.Works.Factor * CustomerOrder.Works.Multiplicity AS Quantity,
-	|		Characteristic,
-	|		Content,
-	|		DiscountMarkupPercent,
-	|		CASE
-	|			WHEN CustomerOrder.Works.DiscountMarkupPercent <> 0
-	|					OR CustomerOrder.Works.AutomaticDiscountAmount <> 0
-	|				THEN 1
-	|			ELSE 0
-	|		END AS IsDiscount,
-	|		LineNumber AS LineNumber,
-	|		AutomaticDiscountAmount
-	|	),
-	|	CustomerOrder.Inventory.(
-	|		CASE
-	|			WHEN (CAST(CustomerOrder.Inventory.ProductsAndServices.DescriptionFull AS String(1000))) = """"
-	|				THEN CustomerOrder.Inventory.ProductsAndServices.Description
-	|			ELSE CAST(CustomerOrder.Inventory.ProductsAndServices.DescriptionFull AS String(1000))
-	|		END AS InventoryItem,
-	|		ProductsAndServices.SKU AS SKU,
-	|		MeasurementUnit AS MeasurementUnit,
-	|		Price AS Price,
-	|		Amount AS Amount,
-	|		VATAmount AS VATAmount,
-	|		Total AS Total,
-	|		Quantity AS Quantity,
-	|		Characteristic,
-	|		Content,
-	|		DiscountMarkupPercent,
-	|		CASE
-	|			WHEN CustomerOrder.Inventory.DiscountMarkupPercent <> 0
-	|					OR CustomerOrder.Inventory.AutomaticDiscountAmount <> 0
-	|				THEN 1
-	|			ELSE 0
-	|		END AS IsDiscount,
-	|		LineNumber AS LineNumber,
-	|		AutomaticDiscountAmount
-	|	),
-	|	CustomerOrder.PaymentCalendar.(
-	|		PaymentPercentage,
-	|		PaymentAmount,
-	|		PayVATAmount
-	|	)
-	|FROM
-	|	Document.CustomerOrder AS CustomerOrder
-	|WHERE
-	|	CustomerOrder.Ref IN(&ObjectsArray)
-	|
-	|ORDER BY
-	|	Ref,
-	|	LineNumber";
-	
-	Query.SetParameter("ObjectsArray", ObjectsArray);
-	
-	Header = Query.Execute().Select();
-	
-	FirstDocument = True;
-	
-	While Header.Next() Do
-		
-		If Not FirstDocument Then
-			SpreadsheetDocument.PutHorizontalPageBreak();
-		EndIf;
-		FirstDocument = False;
-		
-		FirstLineNumber = SpreadsheetDocument.TableHeight + 1;
-		
-		LinesSelectionInventory = Header.Inventory.Select();
-		SelectionRowsWork = Header.Works.Select();
-		PrepaymentTable = Header.PaymentCalendar.Unload(); 
+			If Template.Areas.Find("InvoiceFooterWithSignature") <> Undefined Then
 				
-		SpreadsheetDocument.PrintParametersName = "InvoiceForPayment_Print_Parameters" + TemplateName;
-		
-		Template = PrintManagement.PrintedFormsTemplate("Document.CustomerOrder.PF_MXL_" + TemplateName);
-		
-		InfoAboutCompany = SmallBusinessServer.InfoAboutLegalEntityIndividual(Header.Company, Header.DocumentDate, ,Header.BankAccount);
-		InfoAboutCounterparty = SmallBusinessServer.InfoAboutLegalEntityIndividual(Header.Counterparty, Header.DocumentDate, ,);
-		
-		//If user template is used - there were no such sections
-		If Template.Areas.Find("TitleWithLogo") <> Undefined
-			AND Template.Areas.Find("TitleWithoutLogo") <> Undefined Then
-			
-			If ValueIsFilled(Header.Company.LogoFile) Then
-				
-				TemplateArea = Template.GetArea("TitleWithLogo");
-				
-				PictureData = AttachedFiles.GetFileBinaryData(Header.Company.LogoFile);
-				If ValueIsFilled(PictureData) Then
+				If ValueIsFilled(Header.Company.FileFacsimilePrinting) Then
 					
-					TemplateArea.Drawings.Logo.Picture = New Picture(PictureData);
+					TemplateArea = Template.GetArea("InvoiceFooterWithSignature");
 					
-				EndIf;
-				
-			Else // If images are not selected, print regular header
-				
-				TemplateArea = Template.GetArea("TitleWithoutLogo");
-				
-			EndIf;
-			
-			SpreadsheetDocument.Put(TemplateArea);
-			
-		Else
-			
-			MessageText = NStr("en='ATTENTION! Perhaps, user template is used default methods for the accounts printing may work incorrectly.';ru='ВНИМАНИЕ! Возможно используется пользовательский макет. Штатный механизм печати счетов может работать некоректно.'");
-			CommonUseClientServer.AddUserError(Errors, , MessageText, Undefined);
-			
-		EndIf;
-		
-		TemplateArea = Template.GetArea("InvoiceHeader");
-		If ValueIsFilled(InfoAboutCompany.Bank) Then
-			TemplateArea.Parameters.RecipientBankPresentation = InfoAboutCompany.Bank.Description + " " + InfoAboutCompany.Bank.City;;
-		EndIf; 
-		TemplateArea.Parameters.TIN = InfoAboutCompany.TIN;
-		TemplateArea.Parameters.KPP = InfoAboutCompany.KPP;
-		TemplateArea.Parameters.VendorPresentation = ?(IsBlankString(InfoAboutCompany.CorrespondentText), InfoAboutCompany.FullDescr, InfoAboutCompany.CorrespondentText);
-		TemplateArea.Parameters.RecipientBankBIC = InfoAboutCompany.BIN;
-		TemplateArea.Parameters.RecipientBankAccountPresentation = InfoAboutCompany.CorrAccount;
-		TemplateArea.Parameters.RecipientAccountPresentation = InfoAboutCompany.AccountNo;
-		
-		SpreadsheetDocument.Put(TemplateArea);
-		
-		If Header.DocumentDate < Date('20110101') Then
-			DocumentNumber = SmallBusinessServer.GetNumberForPrinting(Header.Number, Header.Prefix);
-		Else
-			DocumentNumber = ObjectPrefixationClientServer.GetNumberForPrinting(Header.Number, True, True);
-		EndIf;		
-		
-		TemplateArea = Template.GetArea("Title");
-		TemplateArea.Parameters.HeaderText = "Invoice for payment # "
-												+ DocumentNumber
-												+ " from "
-												+ Format(Header.DocumentDate, "DLF=DD");
-												
-		SpreadsheetDocument.Put(TemplateArea);
-		
-		TemplateArea = Template.GetArea("Vendor");
-		TemplateArea.Parameters.VendorPresentation = SmallBusinessServer.CompaniesDescriptionFull(InfoAboutCompany, "FullDescr,TIN,KPP,LegalAddress,PhoneNumbers,");
-		SpreadsheetDocument.Put(TemplateArea);
-		
-		TemplateArea = Template.GetArea("Customer");
-		TemplateArea.Parameters.RecipientPresentation = SmallBusinessServer.CompaniesDescriptionFull(InfoAboutCounterparty, "FullDescr,TIN,KPP,LegalAddress,PhoneNumbers,");
-		SpreadsheetDocument.Put(TemplateArea);
-
-		AreDiscounts = (Header.Inventory.Unload().Total("IsDiscount") + Header.Works.Unload().Total("IsDiscount")) <> 0;
-		
-		If AreDiscounts Then
-			
-			TemplateArea = Template.GetArea("TableWithDiscountHeader");
-			SpreadsheetDocument.Put(TemplateArea);
-			TemplateArea = Template.GetArea("RowWithDiscount");
-			
-		Else
-			
-			TemplateArea = Template.GetArea("TableHeader");
-			SpreadsheetDocument.Put(TemplateArea);
-			TemplateArea = Template.GetArea("String");
-			
-		EndIf;
-		
-		Amount		= 0;
-		VATAmount	= 0;
-		Total		= 0;
-		Quantity	= 0;
-		
-		While SelectionRowsWork.Next() Do
-			
-			Quantity = Quantity + 1;
-			TemplateArea.Parameters.Fill(SelectionRowsWork);
-			TemplateArea.Parameters.LineNumber = Quantity;
-			
-			If ValueIsFilled(SelectionRowsWork.Content) Then
-				TemplateArea.Parameters.InventoryItem = SelectionRowsWork.Content;
-			Else
-				TemplateArea.Parameters.InventoryItem = SmallBusinessServer.GetProductsAndServicesPresentationForPrinting(SelectionRowsWork.InventoryItem, 
-																	SelectionRowsWork.Characteristic, SelectionRowsWork.SKU);
-			EndIf;
+					PictureData = AttachedFiles.GetFileBinaryData(Header.Company.FileFacsimilePrinting);
+					If ValueIsFilled(PictureData) Then
 						
-			If AreDiscounts Then
-				If SelectionRowsWork.DiscountMarkupPercent = 100 Then
-					Discount = SelectionRowsWork.Price * SelectionRowsWork.Quantity;
-					TemplateArea.Parameters.Discount         = Discount;
-					TemplateArea.Parameters.AmountWithoutDiscount = Discount;
-				ElsIf SelectionRowsWork.DiscountMarkupPercent = 0 AND SelectionRowsWork.AutomaticDiscountAmount = 0 Then
-					TemplateArea.Parameters.Discount         = 0;
-					TemplateArea.Parameters.AmountWithoutDiscount = SelectionRowsWork.Amount;
-				Else
-					Discount = SelectionRowsWork.Quantity * SelectionRowsWork.Price - SelectionRowsWork.Amount; // AutomaticDiscounts
-					TemplateArea.Parameters.Discount         = Discount;
-					TemplateArea.Parameters.AmountWithoutDiscount = SelectionRowsWork.Amount + Discount;
-				EndIf;
-			EndIf;
-			
-			SpreadsheetDocument.Put(TemplateArea);
-			
-			Amount	= Amount		+ SelectionRowsWork.Amount;
-			VATAmount= VATAmount	+ SelectionRowsWork.VATAmount;
-			Total	= Total		+ SelectionRowsWork.Total;
-			
-		EndDo;
-		
-		While LinesSelectionInventory.Next() Do
-			
-			Quantity = Quantity + 1;
-			TemplateArea.Parameters.Fill(LinesSelectionInventory);
-			TemplateArea.Parameters.LineNumber = Quantity;
-			
-			If ValueIsFilled(LinesSelectionInventory.Content) Then
-				TemplateArea.Parameters.InventoryItem = LinesSelectionInventory.Content;
-			Else
-				TemplateArea.Parameters.InventoryItem = SmallBusinessServer.GetProductsAndServicesPresentationForPrinting(LinesSelectionInventory.InventoryItem, 
-																	LinesSelectionInventory.Characteristic, LinesSelectionInventory.SKU);
-			EndIf;
-																
-			If AreDiscounts Then
-				If LinesSelectionInventory.DiscountMarkupPercent = 100 Then
-					Discount = LinesSelectionInventory.Price * LinesSelectionInventory.Quantity;
-					TemplateArea.Parameters.Discount         = Discount;
-					TemplateArea.Parameters.AmountWithoutDiscount = Discount;
-				ElsIf LinesSelectionInventory.DiscountMarkupPercent = 0 AND LinesSelectionInventory.AutomaticDiscountAmount = 0 Then
-					TemplateArea.Parameters.Discount         = 0;
-					TemplateArea.Parameters.AmountWithoutDiscount = LinesSelectionInventory.Amount;
-				Else
-					Discount = LinesSelectionInventory.Quantity * LinesSelectionInventory.Price - LinesSelectionInventory.Amount; // AutomaticDiscounts
-					TemplateArea.Parameters.Discount         = Discount;
-					TemplateArea.Parameters.AmountWithoutDiscount = LinesSelectionInventory.Amount + Discount;
-				EndIf;
-			EndIf;
-			
-			SpreadsheetDocument.Put(TemplateArea);
-			
-			Amount	= Amount		+ LinesSelectionInventory.Amount;
-			VATAmount= VATAmount	+ LinesSelectionInventory.VATAmount;
-			Total	= Total		+ LinesSelectionInventory.Total;
-			
-		EndDo;
-		
-		TemplateArea = Template.GetArea("Total");
-		TemplateArea.Parameters.Total = SmallBusinessServer.AmountsFormat(Amount);
-		SpreadsheetDocument.Put(TemplateArea);
-		
-		TemplateArea = Template.GetArea("TotalVAT");
-		If VATAmount = 0 Then
-			TemplateArea.Parameters.VAT = "Without tax (VAT)";
-			TemplateArea.Parameters.TotalVAT = "-";
-		Else
-			TemplateArea.Parameters.VAT = ?(Header.AmountIncludesVAT, "Including VAT:", "VAT Amount:");
-			TemplateArea.Parameters.TotalVAT = SmallBusinessServer.AmountsFormat(VATAmount);
-		EndIf; 
-		
-		If TemplateName = "InvoiceForPartialPayment" Then
-			If VATAmount = 0 Then
-				TemplateArea.Parameters.VATToPay = "Without tax (VAT)";
-				TemplateArea.Parameters.TotalVATToPay = "-";
-			Else
-				TemplateArea.Parameters.VATToPay = ?(Header.AmountIncludesVAT, "Including payment VAT:", "VAT amount of payment:");
-				If PrepaymentTable.Total("PaymentPercentage") > 0 Then
-					TemplateArea.Parameters.TotalVATToPay = SmallBusinessServer.AmountsFormat(PrepaymentTable.Total("PayVATAmount"));
-				Else
-					TemplateArea.Parameters.TotalVATToPay = "-";
-				EndIf;
-			EndIf; 
-			If PrepaymentTable.Total("PaymentPercentage") > 0 Then
-				TemplateArea.Parameters.TotalToPay = SmallBusinessServer.AmountsFormat(PrepaymentTable.Total("PaymentAmount"));
-				TemplateArea.Parameters.PaymentPercentage = PrepaymentTable.Total("PaymentPercentage");
-			Else
-				TemplateArea.Parameters.TotalToPay = "-";
-				TemplateArea.Parameters.PaymentPercentage = "-";
-			EndIf;
-		EndIf;
-		
-		SpreadsheetDocument.Put(TemplateArea);
-		
-		If Template.Areas.Find("TotalToPay") = Undefined Then
-			
-			MessageText = NStr("en='ATTENTION! Template area ""Total for payment"" is not found. Perhaps, user template is used';ru='ВНИМАНИЕ! Не обнаружена область макета ""Итог к оплате"". Возможно используется пользовательский макет.'");
-			CommonUseClientServer.AddUserError(Errors, , MessageText, Undefined);
-			
-		Else
-			
-			TemplateArea = Template.GetArea("TotalToPay");
-			TemplateArea.Parameters.Fill(New Structure("TotalToPay", SmallBusinessServer.AmountsFormat(Total)));
-			SpreadsheetDocument.Put(TemplateArea);
-			
-		EndIf;
-		
-		TemplateArea = Template.GetArea("AmountInWords");
-		AmountToBeWrittenInWords = Total;
-		TemplateArea.Parameters.TotalRow = "Total titles "
-												+ String(Quantity)
-												+ ", in the amount of "
-												+ SmallBusinessServer.AmountsFormat(AmountToBeWrittenInWords, Header.DocumentCurrency);
-																					
-		TemplateArea.Parameters.AmountInWords = WorkWithCurrencyRates.GenerateAmountInWords(AmountToBeWrittenInWords, Header.DocumentCurrency);
-		
-		SpreadsheetDocument.Put(TemplateArea);
-		
-		If Template.Areas.Find("InvoiceFooterWithFaxPrint") <> Undefined Then
-		
-			If ValueIsFilled(Header.Company.FileFacsimilePrinting) Then
-				
-				TemplateArea = Template.GetArea("InvoiceFooterWithFaxPrint");
-				
-				PictureData = AttachedFiles.GetFileBinaryData(Header.Company.FileFacsimilePrinting);
-				If ValueIsFilled(PictureData) Then
+						TemplateArea.Drawings.FacsimilePrint.Picture = New Picture(PictureData);
+						
+					EndIf;
 					
-					TemplateArea.Drawings.FacsimilePrint.Picture = New Picture(PictureData);
+				Else
+					
+					MessageText = NStr("en='Facsimile for company is not set. Facsimile is set in the company card, ""Printing setting"" section.';ru='Факсимиле для организации не установлена. Установка факсимиле выполняется в карточке организации, раздел ""Настройка печати"".'");
+					CommonUseClientServer.AddUserError(Errors, , MessageText, Undefined);
+					
+					TemplateArea = Template.GetArea("InvoiceFooter");
 					
 				EndIf;
 				
 			Else
 				
-				MessageText = NStr("en='Facsimile for company is not set. Facsimile is set in the company card, ""Printing setting"" section.';ru='Факсимиле для организации не установлена. Установка факсимиле выполняется в карточке организации, раздел ""Настройка печати"".'");
-				CommonUseClientServer.AddUserError(Errors, , MessageText, Undefined);
-				
-				TemplateArea = Template.GetArea("AccountFooter");
-				
-				Heads = SmallBusinessServer.OrganizationalUnitsResponsiblePersons(Header.Company, Header.DocumentDate);
-				
-				TemplateArea.Parameters.HeadDescriptionFull = Heads.HeadDescriptionFull;
-				TemplateArea.Parameters.AccountantDescriptionFull   = Heads.ChiefAccountantNameAndSurname;
+				// You do not need to add the second warning as the warning is added while trying to output a title.
 				
 			EndIf;
 			
-		Else
-			
-			// You do not need to add the second warning as the warning is added while trying to output a title.
-			
-		EndIf;
+			SpreadsheetDocument.Put(TemplateArea);
 		
-		SpreadsheetDocument.Put(TemplateArea);
+		EndIf;	
 		
 		PrintManagement.SetDocumentPrintArea(SpreadsheetDocument, FirstLineNumber, PrintObjects, Header.Ref);
 		
@@ -6702,7 +6335,7 @@ Function PrintInvoiceWithFacsimileSignature(ObjectsArray, PrintObjects, Template
 	
 	Return SpreadsheetDocument;
 
-EndFunction // PrintInvoiceForPaymentWithFacsimileSignature()
+EndFunction // PrintProformaInvoice()
 
 // Document printing procedure.
 //
@@ -6798,11 +6431,11 @@ Function PrintServicesAcceptanceCertificate(ObjectsArray, PrintObjects, Template
 		SpreadsheetDocument.Put(TemplateArea);
 		
 		TemplateArea = Template.GetArea("Vendor");
-		TemplateArea.Parameters.VendorPresentation = SmallBusinessServer.CompaniesDescriptionFull(InfoAboutCompany, "FullDescr,TIN,KPP,LegalAddress,PhoneNumbers,");
+		TemplateArea.Parameters.VendorPresentation = SmallBusinessServer.CompaniesDescriptionFull(InfoAboutCompany, "FullDescr,TIN,LegalAddress,PhoneNumbers,");
 		SpreadsheetDocument.Put(TemplateArea);
 		
 		TemplateArea = Template.GetArea("Customer");
-		TemplateArea.Parameters.RecipientPresentation = SmallBusinessServer.CompaniesDescriptionFull(InfoAboutCounterparty, "FullDescr,TIN,KPP,LegalAddress,PhoneNumbers,");
+		TemplateArea.Parameters.RecipientPresentation = SmallBusinessServer.CompaniesDescriptionFull(InfoAboutCounterparty, "FullDescr,TIN,LegalAddress,PhoneNumbers,");
 		SpreadsheetDocument.Put(TemplateArea);
 		
 		AreDiscounts = Header.Works.Unload().Total("IsDiscount") <> 0;
@@ -6901,10 +6534,14 @@ EndFunction // PrintForm()
 
 // Document printing procedure.
 //
-Function PrintSalesInvoice(ObjectsArray, PrintObjects, TemplateName)
+Function PrintCustomerInvoice(ObjectsArray, PrintObjects, TemplateName)
+	
+	Var Errors;
+	
+	UseVAT	= GetFunctionalOption("UseVAT");
 	
 	SpreadsheetDocument = New SpreadsheetDocument;
-	SpreadsheetDocument.PrintParametersKey = "PrintParameters_CustomerOrder";
+	SpreadsheetDocument.PrintParametersKey = "PRINT_PARAMETRS_CustomerOrder_CustomerInvoice";
 
 	FirstDocument = True;
 	
@@ -6923,7 +6560,7 @@ Function PrintSalesInvoice(ObjectsArray, PrintObjects, TemplateName)
 		"SELECT
 		|	CustomerOrder.Finish AS DocumentDate,
 		|	CustomerOrder.Date AS Date,
-		|	CustomerOrder.Number,
+		|	CustomerOrder.Number AS DocumentNumber,
 		|	CustomerOrder.Company AS Company,
 		|	CustomerOrder.Counterparty AS Counterparty,
 		|	CustomerOrder.AmountIncludesVAT AS AmountIncludesVAT,
@@ -6947,7 +6584,7 @@ Function PrintSalesInvoice(ObjectsArray, PrintObjects, TemplateName)
 		|	END AS InventoryItem,
 		|	CustomerOrderInventory.ProductsAndServices.SKU AS SKU,
 		|	CustomerOrderInventory.ProductsAndServices.Code AS Code,
-		|	CustomerOrderInventory.MeasurementUnit AS StorageUnit,
+		|	CustomerOrderInventory.MeasurementUnit AS UnitOfMeasure,
 		|	CustomerOrderInventory.Quantity AS Quantity,
 		|	CustomerOrderInventory.Price AS Price,
 		|	CustomerOrderInventory.Amount AS Amount,
@@ -7013,47 +6650,86 @@ Function PrintSalesInvoice(ObjectsArray, PrintObjects, TemplateName)
 		
 		LinesSelectionInventory = BatchQueryExecutionResult[1].Select();
 
-		SpreadsheetDocument.PrintParametersName = "PRINT_PARAMETERS_CustomerOrder_Invoice";
+		SpreadsheetDocument.PrintParametersName = "PRINT_PARAMETRS_CustomerOrder_CustomerInvoice";
 									  
-		Template = PrintManagement.PrintedFormsTemplate("Document.CustomerOrder.PF_MXL_Bill");
+		Template = PrintManagement.PrintedFormsTemplate("Document.CustomerOrder.PF_MXL_CustomerInvoice");
 		InfoAboutCompany = SmallBusinessServer.InfoAboutLegalEntityIndividual(Header.Company, Header.DocumentDate, ,);
 		InfoAboutCounterparty = SmallBusinessServer.InfoAboutLegalEntityIndividual(Header.Counterparty, Header.DocumentDate, ,);
 
-		If Header.Date < Date('20110101') Then
-			DocumentNumber = SmallBusinessServer.GetNumberForPrinting(Header.Number, Header.Prefix);
+		If Template.Areas.Find("TitleWithLogo") <> Undefined
+			AND Template.Areas.Find("TitleWithoutLogo") <> Undefined Then
+			
+			If ValueIsFilled(Header.Company.LogoFile) Then
+				
+				TemplateArea = Template.GetArea("TitleWithLogo");
+				TemplateArea.Parameters.Fill(Header);
+				
+				PictureData = AttachedFiles.GetFileBinaryData(Header.Company.LogoFile);
+				If ValueIsFilled(PictureData) Then
+					
+					TemplateArea.Drawings.Logo.Picture = New Picture(PictureData);
+					
+				EndIf;
+				
+			Else // If images are not selected, print regular header
+				
+				TemplateArea = Template.GetArea("TitleWithoutLogo");
+				TemplateArea.Parameters.Fill(Header);
+				
+			EndIf;
+			
+			SpreadsheetDocument.Put(TemplateArea);
+			
 		Else
-			DocumentNumber = ObjectPrefixationClientServer.GetNumberForPrinting(Header.Number, True, True);
-		EndIf;		
+			
+			MessageText = NStr("en='ATTENTION! Perhaps, user template is used default methods for the accounts printing may work incorrectly.';ru='ВНИМАНИЕ! Возможно используется пользовательский макет. Штатный механизм печати счетов может работать некоректно.'");
+			CommonUseClientServer.AddUserError(Errors, , MessageText, Undefined);
+			
+		EndIf;
+	
+		TemplateArea = Template.GetArea("InvoiceHeaderVendor");
 		
-		TemplateArea = Template.GetArea("Title");
-		TemplateArea.Parameters.HeaderText = "Customer invoice No "
-												+ DocumentNumber
-												+ " from "
-												+ Format(Header.DocumentDate, "DLF=DD");
-												
+		TemplateArea.Parameters.Fill(Header);
+		
+		VendorPresentation	= SmallBusinessServer.CompaniesDescriptionFull(InfoAboutCompany, "FullDescr");
+		
+		TemplateArea.Parameters.VendorPresentation	= VendorPresentation;
+		TemplateArea.Parameters.VendorAddress		= SmallBusinessServer.CompaniesDescriptionFull(InfoAboutCompany, "LegalAddress");
+		TemplateArea.Parameters.VendorPhoneFax		= SmallBusinessServer.CompaniesDescriptionFull(InfoAboutCompany, "PhoneNumbers,Fax");
+		TemplateArea.Parameters.VendorEmail			= SmallBusinessServer.CompaniesDescriptionFull(InfoAboutCompany, "Email");
+		
+		TemplateArea.Parameters.BankPresentation	=  SmallBusinessServer.CompaniesDescriptionFull(InfoAboutCompany, "Bank", False);
+		TemplateArea.Parameters.BankAccountNumber	=  SmallBusinessServer.CompaniesDescriptionFull(InfoAboutCompany, "AccountNo", False);
+		TemplateArea.Parameters.BankSWIFT			=  SmallBusinessServer.CompaniesDescriptionFull(InfoAboutCompany, "SWIFT", False);
+		
+		CorrespondentText	= SmallBusinessServer.CompaniesDescriptionFull(InfoAboutCompany, "CorrespondentText", False);
+		TemplateArea.Parameters.BankBeneficiary		=  ?(ValueIsFilled(CorrespondentText), CorrespondentText, VendorPresentation);
+		
 		SpreadsheetDocument.Put(TemplateArea);
 		
-		TemplateArea = Template.GetArea("Vendor");
-		TemplateArea.Parameters.VendorPresentation = SmallBusinessServer.CompaniesDescriptionFull(InfoAboutCompany, "FullDescr,TIN,KPP,LegalAddress,PhoneNumbers,");
-		SpreadsheetDocument.Put(TemplateArea);
+		TemplateArea = Template.GetArea("InvoiceHeaderCustomer");
 		
-		TemplateArea = Template.GetArea("Customer");
-		TemplateArea.Parameters.RecipientPresentation = SmallBusinessServer.CompaniesDescriptionFull(InfoAboutCounterparty, "FullDescr,TIN,KPP,LegalAddress,PhoneNumbers,");
+		TemplateArea.Parameters.CustomerPresentation	= SmallBusinessServer.CompaniesDescriptionFull(InfoAboutCounterparty, "FullDescr");;
+		TemplateArea.Parameters.CustomerAddress			= SmallBusinessServer.CompaniesDescriptionFull(InfoAboutCounterparty, "LegalAddress");;
+		TemplateArea.Parameters.CustomerPhoneFax		= SmallBusinessServer.CompaniesDescriptionFull(InfoAboutCounterparty, "PhoneNumbers,Fax");;
+		
 		SpreadsheetDocument.Put(TemplateArea);
 
 		AreDiscounts = BatchQueryExecutionResult[1].Unload().Total("IsDiscount") <> 0;
 	
 		If AreDiscounts Then
 			
-			TemplateArea = Template.GetArea("TableWithDiscountHeader");
+			TemplateArea = Template.GetArea("TableHeaderWithDiscount");
+			TemplateArea.Parameters.Currency	= Header.DocumentCurrency;
 			SpreadsheetDocument.Put(TemplateArea);
-			TemplateArea = Template.GetArea("RowWithDiscount");
+			TemplateArea = Template.GetArea("TableRowWithDiscount");
 			
 		Else
 			
 			TemplateArea = Template.GetArea("TableHeader");
+			TemplateArea.Parameters.Currency	= Header.DocumentCurrency;
 			SpreadsheetDocument.Put(TemplateArea);
-			TemplateArea = Template.GetArea("String");
+			TemplateArea = Template.GetArea("TableRow");
 			
 		EndIf;
 		
@@ -7064,16 +6740,12 @@ Function PrintSalesInvoice(ObjectsArray, PrintObjects, TemplateName)
 		
 		While LinesSelectionInventory.Next() Do
 		
-			If TemplateName = "Consignment" AND LinesSelectionInventory.ProductsAndServicesType = Enums.ProductsAndServicesTypes.Service Then
-				Continue;
-			EndIf;
-			
 			TemplateArea.Parameters.Fill(LinesSelectionInventory);
 			
 			If ValueIsFilled(LinesSelectionInventory.Content) Then
-				TemplateArea.Parameters.InventoryItem = LinesSelectionInventory.Content;
+				TemplateArea.Parameters.ProductDescription = LinesSelectionInventory.Content;
 			Else
-				TemplateArea.Parameters.InventoryItem = SmallBusinessServer.GetProductsAndServicesPresentationForPrinting(LinesSelectionInventory.InventoryItem, 
+				TemplateArea.Parameters.ProductDescription = SmallBusinessServer.GetProductsAndServicesPresentationForPrinting(LinesSelectionInventory.InventoryItem, 
 																	LinesSelectionInventory.Characteristic, LinesSelectionInventory.SKU);
 			EndIf;
 																
@@ -7104,33 +6776,24 @@ Function PrintSalesInvoice(ObjectsArray, PrintObjects, TemplateName)
 		EndDo;
 		
 		TemplateArea = Template.GetArea("Total");
-		TemplateArea.Parameters.Total = SmallBusinessServer.AmountsFormat(Amount);
+		TemplateArea.Parameters.Total		= SmallBusinessServer.AmountsFormat(Amount);
+		TemplateArea.Parameters.Currency	= Header.DocumentCurrency;
 		SpreadsheetDocument.Put(TemplateArea);
 		
-		TemplateArea = Template.GetArea("TotalVAT");
-		If VATAmount = 0 Then
-			TemplateArea.Parameters.VAT = "Without tax (VAT)";
-			TemplateArea.Parameters.TotalVAT = "-";
-		Else
-			TemplateArea.Parameters.VAT = ?(Header.AmountIncludesVAT, "Including VAT:", "VAT Amount:");
-			TemplateArea.Parameters.TotalVAT = SmallBusinessServer.AmountsFormat(VATAmount);
-		EndIf; 
-		SpreadsheetDocument.Put(TemplateArea);
+		If UseVAT Then
+			
+			TemplateArea = Template.GetArea("TotalVAT");
+			If VATAmount = 0 Then
+				TemplateArea.Parameters.VAT = "Without tax (VAT)";
+				TemplateArea.Parameters.TotalVAT = "-";
+			Else
+				TemplateArea.Parameters.VAT = ?(Header.AmountIncludesVAT, "Including VAT:", "VAT Amount:");
+				TemplateArea.Parameters.TotalVAT = SmallBusinessServer.AmountsFormat(VATAmount);
+			EndIf; 
+			SpreadsheetDocument.Put(TemplateArea);
+		
+		EndIf;
 
-		TemplateArea = Template.GetArea("AmountInWords");
-		AmountToBeWrittenInWords = Total;
-		TemplateArea.Parameters.TotalRow = "Total titles "
-												+ String(Quantity)
-												+ ", in the amount of "
-												+ SmallBusinessServer.AmountsFormat(AmountToBeWrittenInWords, Header.DocumentCurrency);
-		
-		TemplateArea.Parameters.AmountInWords = WorkWithCurrencyRates.GenerateAmountInWords(AmountToBeWrittenInWords, Header.DocumentCurrency);
-		
-		SpreadsheetDocument.Put(TemplateArea);
-		
-		TemplateArea = Template.GetArea("Signatures");
-		SpreadsheetDocument.Put(TemplateArea);
-		
 		PrintManagement.SetDocumentPrintArea(SpreadsheetDocument, FirstLineNumber, PrintObjects, CurrentDocument);
 	
 	EndDo;
@@ -7139,7 +6802,7 @@ Function PrintSalesInvoice(ObjectsArray, PrintObjects, TemplateName)
 	
 	Return SpreadsheetDocument;
 	
-EndFunction // PrintForm()
+EndFunction // PrintCustomerInvoice()
 
 // Document printing procedure.
 //
@@ -7305,11 +6968,11 @@ Function PrintJobOrder(ObjectsArray, PrintObjects, TemplateName)
 		SpreadsheetDocument.Put(TemplateArea);
 		
 		TemplateArea = Template.GetArea("Vendor");
-		TemplateArea.Parameters.VendorPresentation = SmallBusinessServer.CompaniesDescriptionFull(InfoAboutCompany, "FullDescr,TIN,KPP,LegalAddress,PhoneNumbers,");
+		TemplateArea.Parameters.VendorPresentation = SmallBusinessServer.CompaniesDescriptionFull(InfoAboutCompany, "FullDescr,TIN,LegalAddress,PhoneNumbers,");
 		SpreadsheetDocument.Put(TemplateArea);
 		
 		TemplateArea = Template.GetArea("Customer");
-		TemplateArea.Parameters.RecipientPresentation = SmallBusinessServer.CompaniesDescriptionFull(InfoAboutCounterparty, "FullDescr,TIN,KPP,LegalAddress,PhoneNumbers,");
+		TemplateArea.Parameters.RecipientPresentation = SmallBusinessServer.CompaniesDescriptionFull(InfoAboutCounterparty, "FullDescr,TIN,LegalAddress,PhoneNumbers,");
 		SpreadsheetDocument.Put(TemplateArea);
 		
 		TemplateArea = Template.GetArea("terms");
@@ -7525,433 +7188,35 @@ Function PrintJobOrder(ObjectsArray, PrintObjects, TemplateName)
 
 EndFunction // PrintForm()
 
-// Document printing procedure.
-//
-Function PrintMerchandiseFillingForm(ObjectsArray, PrintObjects, TemplateName)
-	
-	SpreadsheetDocument = New SpreadsheetDocument;
-	SpreadsheetDocument.PrintParametersKey = "PrintParameters_CustomerOrder";
-
-	FirstDocument = True;
-	
-	For Each CurrentDocument IN ObjectsArray Do
-	
-		If Not FirstDocument Then
-			SpreadsheetDocument.PutHorizontalPageBreak();
-		EndIf;
-		FirstDocument = False;
-		
-		FirstLineNumber = SpreadsheetDocument.TableHeight + 1;
-		
-		Query = New Query();
-		Query.SetParameter("CurrentDocument", CurrentDocument);
-		Query.Text = 
-		"SELECT
-		|	CustomerOrder.Date AS DocumentDate,
-		|	CustomerOrder.SalesStructuralUnit AS WarehousePresentation,
-		|	CustomerOrder.Number,
-		|	CustomerOrder.Company.Prefix AS Prefix,
-		|	CustomerOrder.Inventory.(
-		|		LineNumber AS LineNumber,
-		|		ProductsAndServices.Warehouse AS Warehouse,
-		|		ProductsAndServices.Cell AS Cell,
-		|		CASE
-		|			WHEN (CAST(CustomerOrder.Inventory.ProductsAndServices.DescriptionFull AS String(100))) = """"
-		|				THEN CustomerOrder.Inventory.ProductsAndServices.Description
-		|			ELSE CustomerOrder.Inventory.ProductsAndServices.DescriptionFull
-		|		END AS InventoryItem,
-		|		ProductsAndServices.SKU AS SKU,
-		|		ProductsAndServices.Code AS Code,
-		|		MeasurementUnit.Description AS MeasurementUnit,
-		|		Quantity AS Quantity,
-		|		Characteristic,
-		|		ProductsAndServices.ProductsAndServicesType AS ProductsAndServicesType
-		|	),
-		|	CustomerOrder.Materials.(
-		|		LineNumber AS LineNumber,
-		|		ProductsAndServices.Warehouse AS Warehouse,
-		|		ProductsAndServices.Cell AS Cell,
-		|		CASE
-		|			WHEN (CAST(CustomerOrder.Materials.ProductsAndServices.DescriptionFull AS String(100))) = """"
-		|				THEN CustomerOrder.Materials.ProductsAndServices.Description
-		|			ELSE CustomerOrder.Materials.ProductsAndServices.DescriptionFull
-		|		END AS Material,
-		|		ProductsAndServices.SKU AS SKU,
-		|		ProductsAndServices.Code AS Code,
-		|		MeasurementUnit.Description AS MeasurementUnit,
-		|		Quantity AS Quantity,
-		|		Characteristic,
-		|		ProductsAndServices.ProductsAndServicesType AS ProductsAndServicesType
-		|	)
-		|FROM
-		|	Document.CustomerOrder AS CustomerOrder
-		|WHERE
-		|	CustomerOrder.Ref = &CurrentDocument
-		|
-		|ORDER BY
-		|	LineNumber";
-			
-		Header = Query.Execute().Select();
-		Header.Next();
-		
-		LinesSelectionInventory = Header.Inventory.Select();
-        SelectionRowsMaterials = Header.Materials.Select();
-		
-		SpreadsheetDocument.PrintParametersName = "PRINT_PARAMETERS_BuyersOrder_FormOfFilling";
-									  
-		Template = PrintManagement.PrintedFormsTemplate("Document.CustomerOrder.PF_MXL_MerchandiseFillingForm");
-		
-		If Header.DocumentDate < Date('20110101') Then
-			DocumentNumber = SmallBusinessServer.GetNumberForPrinting(Header.Number, Header.Prefix);
-		Else
-			DocumentNumber = ObjectPrefixationClientServer.GetNumberForPrinting(Header.Number, True, True);
-		EndIf;		
-		
-		TemplateArea = Template.GetArea("Title");
-		TemplateArea.Parameters.HeaderText = "Job order No "
-												+ DocumentNumber
-												+ " from "
-												+ Format(Header.DocumentDate, "DLF=DD");
-												
-		SpreadsheetDocument.Put(TemplateArea);
-		
-		TemplateArea = Template.GetArea("Warehouse");
-		TemplateArea.Parameters.WarehousePresentation = Header.WarehousePresentation;
-		SpreadsheetDocument.Put(TemplateArea);
-						
-		TemplateArea = Template.GetArea("PrintingTime");
-		TemplateArea.Parameters.PrintingTime = "Date and time of printing: "
-												 + CurrentDate()
-												+ ". User: "
-												+ Users.CurrentUser();
-		SpreadsheetDocument.Put(TemplateArea);
-		
-		TemplateArea = Template.GetArea("TableHeader");
-		SpreadsheetDocument.Put(TemplateArea);			
-		TemplateArea = Template.GetArea("String");
-		
-		While LinesSelectionInventory.Next() Do
-
-			If Not LinesSelectionInventory.ProductsAndServicesType = Enums.ProductsAndServicesTypes.InventoryItem Then
-				Continue;
-			EndIf;
-			
-			TemplateArea.Parameters.Fill(LinesSelectionInventory);
-			TemplateArea.Parameters.InventoryItem = SmallBusinessServer.GetProductsAndServicesPresentationForPrinting(LinesSelectionInventory.InventoryItem, 
-																	LinesSelectionInventory.Characteristic, LinesSelectionInventory.SKU);
-																
-			SpreadsheetDocument.Put(TemplateArea);
-							
-		EndDo;
-
-		TemplateArea = Template.GetArea("Total");
-		SpreadsheetDocument.Put(TemplateArea);
-		
-		TemplateArea = Template.GetArea("MaterialsTableHeader");
-		SpreadsheetDocument.Put(TemplateArea);			
-		TemplateArea = Template.GetArea("StringMaterials");
-		
-		While SelectionRowsMaterials.Next() Do
-
-			If Not SelectionRowsMaterials.ProductsAndServicesType = Enums.ProductsAndServicesTypes.InventoryItem Then
-				Continue;
-			EndIf;
-			
-			TemplateArea.Parameters.Fill(SelectionRowsMaterials);
-			TemplateArea.Parameters.InventoryItem = SmallBusinessServer.GetProductsAndServicesPresentationForPrinting(SelectionRowsMaterials.Material, 
-																	SelectionRowsMaterials.Characteristic, SelectionRowsMaterials.SKU);
-						
-			SpreadsheetDocument.Put(TemplateArea);
-							
-		EndDo;
-
-		TemplateArea = Template.GetArea("TotalMaterials");
-		SpreadsheetDocument.Put(TemplateArea);
-				
-		PrintManagement.SetDocumentPrintArea(SpreadsheetDocument, FirstLineNumber, PrintObjects, CurrentDocument);
-		
-	EndDo;
-	
-	SpreadsheetDocument.FitToPage = True;
-	
-	Return SpreadsheetDocument;
-
-EndFunction // PrintForm()
-
-// Document printing procedure.
-//
-Function PrintAppendixToContract(ObjectsArray, PrintObjects, TemplateName)
-	
-	SpreadsheetDocument = New SpreadsheetDocument;
-	//TabularDocument.PrintParametersKey = "PrintParameters_AppendixToContract";
-	
-	Query = New Query();
-	Query.SetParameter("ObjectsArray", ObjectsArray);
-	Query.Text = 
-	"SELECT
-	|	CustomerOrder.Ref AS Ref,
-	|	CustomerOrder.Number AS Number,
-	|	CustomerOrder.Date AS DocumentDate,
-	|	CustomerOrder.Company AS Company,
-	|	CustomerOrder.Counterparty AS Counterparty,
-	|	CustomerOrder.AmountIncludesVAT AS AmountIncludesVAT,
-	|	CustomerOrder.DocumentCurrency AS DocumentCurrency,
-	|	CustomerOrder.Responsible,
-	|	CustomerOrder.Company.Prefix AS Prefix,
-	|	CustomerOrder.Works.(
-	|		LineNumber AS LineNumber,
-	|		CASE
-	|			WHEN (CAST(CustomerOrder.Works.ProductsAndServices.DescriptionFull AS String(1000))) = """"
-	|				THEN CustomerOrder.Works.ProductsAndServices.Description
-	|			ELSE CAST(CustomerOrder.Works.ProductsAndServices.DescriptionFull AS String(1000))
-	|		END AS InventoryItem,
-	|		ProductsAndServices.SKU AS SKU,
-	|		ProductsAndServices.MeasurementUnit.Description AS MeasurementUnit,
-	|		CustomerOrder.Works.Quantity * CustomerOrder.Works.Factor * CustomerOrder.Works.Multiplicity AS Quantity,
-	|		Price AS Price,
-	|		Amount AS Amount,
-	|		VATAmount AS VATAmount,
-	|		Total AS Total,
-	|		Characteristic,
-	|		DiscountMarkupPercent,
-	|		CASE
-	|			WHEN CustomerOrder.Works.DiscountMarkupPercent <> 0
-	|					OR CustomerOrder.Works.AutomaticDiscountAmount <> 0
-	|				THEN 1
-	|			ELSE 0
-	|		END AS IsDiscount,
-	|		Content,
-	|		Ref.Start AS ShipmentDate,
-	|		AutomaticDiscountAmount
-	|	),
-	|	CustomerOrder.Inventory.(
-	|		LineNumber AS LineNumber,
-	|		CASE
-	|			WHEN (CAST(CustomerOrder.Inventory.ProductsAndServices.DescriptionFull AS String(1000))) = """"
-	|				THEN CustomerOrder.Inventory.ProductsAndServices.Description
-	|			ELSE CAST(CustomerOrder.Inventory.ProductsAndServices.DescriptionFull AS String(1000))
-	|		END AS InventoryItem,
-	|		ProductsAndServices.SKU AS SKU,
-	|		MeasurementUnit.Description AS MeasurementUnit,
-	|		Quantity AS Quantity,
-	|		Price AS Price,
-	|		Amount AS Amount,
-	|		VATAmount AS VATAmount,
-	|		Total AS Total,
-	|		CASE
-	|			WHEN CustomerOrder.Inventory.Ref.OperationKind = VALUE(Enum.OperationKindsCustomerOrder.JobOrder)
-	|				THEN CustomerOrder.Inventory.Ref.Start
-	|			ELSE CustomerOrder.Inventory.ShipmentDate
-	|		END AS ShipmentDate,
-	|		Characteristic,
-	|		Content,
-	|		DiscountMarkupPercent,
-	|		CASE
-	|			WHEN CustomerOrder.Inventory.DiscountMarkupPercent <> 0
-	|					OR CustomerOrder.Inventory.AutomaticDiscountAmount <> 0
-	|				THEN 1
-	|			ELSE 0
-	|		END AS IsDiscount,
-	|		AutomaticDiscountAmount
-	|	),
-	|	CounterpartyContracts.Ref AS RefTreaty,
-	|	CounterpartyContracts.ContractDate AS ContractDate,
-	|	CounterpartyContracts.ContractNo AS ContractNo
-	|FROM
-	|	Document.CustomerOrder AS CustomerOrder
-	|		LEFT JOIN Catalog.CounterpartyContracts AS CounterpartyContracts
-	|		ON CustomerOrder.Contract = CounterpartyContracts.Ref
-	|WHERE
-	|	CustomerOrder.Ref IN(&ObjectsArray)
-	|
-	|ORDER BY
-	|	Ref,
-	|	LineNumber";
-	
-	Header = Query.Execute().Select();
-	
-	FirstDocument = True;
-	
-	While Header.Next() Do
-		
-		If Not FirstDocument Then
-			SpreadsheetDocument.PutHorizontalPageBreak();
-		EndIf;
-		FirstDocument = False;
-		
-		FirstLineNumber = SpreadsheetDocument.TableHeight + 1;
-		
-		SpreadsheetDocument.PrintParametersName = "PRINT_PARAMETERS_CustomerOrder_TemplateAppendixToContract";
-		
-		Template = PrintManagement.PrintedFormsTemplate("Document.CustomerOrder.PF_MXL_AppendixToContract");
-		
-		InfoAboutCompany = SmallBusinessServer.InfoAboutLegalEntityIndividual(Header.Company, Header.DocumentDate);
-		InfoAboutCounterparty = SmallBusinessServer.InfoAboutLegalEntityIndividual(Header.Counterparty, Header.DocumentDate);
-		
-		TemplateArea = Template.GetArea("Title");
-		TemplateArea.Parameters.HeaderText = "to contract No "
-												+ Header.ContractNo
-												+ " from "
-												+ Format(Header.ContractDate, "DLF=DD");
-		
-		SpreadsheetDocument.Put(TemplateArea);
-		
-		TemplateArea = Template.GetArea("Vendor");
-		TemplateArea.Parameters.VendorPresentation = SmallBusinessServer.CompaniesDescriptionFull(InfoAboutCompany, "FullDescr,TIN,KPP,LegalAddress,PhoneNumbers,");
-		SpreadsheetDocument.Put(TemplateArea);
-		
-		TemplateArea = Template.GetArea("Customer");
-		RecipientPresentation = SmallBusinessServer.CompaniesDescriptionFull(InfoAboutCounterparty, "FullDescr,TIN,KPP,LegalAddress,PhoneNumbers,");
-		TemplateArea.Parameters.RecipientPresentation = RecipientPresentation; 
-		SpreadsheetDocument.Put(TemplateArea);
-		
-		LinesSelectionInventory = Header.Inventory.Select();
-		SelectionRowsWork = Header.Works.Select();
-		
-		AreDiscounts = (Header.Inventory.Unload().Total("IsDiscount") + Header.Works.Unload().Total("IsDiscount")) <> 0;
-		
-		If AreDiscounts Then
-			
-			TemplateArea = Template.GetArea("TableWithDiscountHeader");
-			SpreadsheetDocument.Put(TemplateArea);
-			TemplateArea = Template.GetArea("RowWithDiscount");
-			
-		Else
-			
-			TemplateArea = Template.GetArea("TableHeader");
-			SpreadsheetDocument.Put(TemplateArea);
-			TemplateArea = Template.GetArea("String");
-			
-		EndIf;
-		
-		Amount		= 0;
-		VATAmount	= 0;
-		Total		= 0;
-		Quantity	= 0;
-		
-		While SelectionRowsWork.Next() Do
-			TemplateArea.Parameters.Fill(SelectionRowsWork);
-			
-			If ValueIsFilled(SelectionRowsWork.Content) Then
-				TemplateArea.Parameters.InventoryItem = SelectionRowsWork.Content;
-			Else
-				TemplateArea.Parameters.InventoryItem = SmallBusinessServer.GetProductsAndServicesPresentationForPrinting(SelectionRowsWork.InventoryItem, 
-																	SelectionRowsWork.Characteristic, SelectionRowsWork.SKU);
-			EndIf;
-																
-			If AreDiscounts Then
-				If SelectionRowsWork.DiscountMarkupPercent = 100 Then
-					Discount = SelectionRowsWork.Price * SelectionRowsWork.Quantity;
-					TemplateArea.Parameters.Discount         = Discount;
-					TemplateArea.Parameters.AmountWithoutDiscount = Discount;
-				ElsIf SelectionRowsWork.DiscountMarkupPercent = 0 AND SelectionRowsWork.AutomaticDiscountAmount = 0 Then
-					TemplateArea.Parameters.Discount         = 0;
-					TemplateArea.Parameters.AmountWithoutDiscount = SelectionRowsWork.Amount;
-				Else
-					Discount = SelectionRowsWork.Quantity * SelectionRowsWork.Price - SelectionRowsWork.Amount; // AutomaticDiscounts
-					TemplateArea.Parameters.Discount         = Discount;
-					TemplateArea.Parameters.AmountWithoutDiscount = SelectionRowsWork.Amount + Discount;
-				EndIf;
-			EndIf;
-			
-			SpreadsheetDocument.Put(TemplateArea);
-			
-			Amount		= Amount		+ SelectionRowsWork.Amount;
-			VATAmount	= VATAmount	+ SelectionRowsWork.VATAmount;
-			Total		= Total		+ SelectionRowsWork.Total;
-			Quantity	= Quantity+ 1;
-			
-		EndDo;
-		
-		While LinesSelectionInventory.Next() Do
-			TemplateArea.Parameters.Fill(LinesSelectionInventory);
-			
-			If ValueIsFilled(LinesSelectionInventory.Content) Then
-				TemplateArea.Parameters.InventoryItem = LinesSelectionInventory.Content;
-			Else
-				TemplateArea.Parameters.InventoryItem = SmallBusinessServer.GetProductsAndServicesPresentationForPrinting(LinesSelectionInventory.InventoryItem, 
-																	LinesSelectionInventory.Characteristic, LinesSelectionInventory.SKU);
-			EndIf;
-																
-			If AreDiscounts Then
-				If LinesSelectionInventory.DiscountMarkupPercent = 100 Then
-					Discount = LinesSelectionInventory.Price * LinesSelectionInventory.Quantity;
-					TemplateArea.Parameters.Discount         = Discount;
-					TemplateArea.Parameters.AmountWithoutDiscount = Discount;
-				ElsIf LinesSelectionInventory.DiscountMarkupPercent = 0 AND LinesSelectionInventory.AutomaticDiscountAmount = 0 Then
-					TemplateArea.Parameters.Discount         = 0;
-					TemplateArea.Parameters.AmountWithoutDiscount = LinesSelectionInventory.Amount;
-				Else
-					Discount = LinesSelectionInventory.Quantity * LinesSelectionInventory.Price - LinesSelectionInventory.Amount; // AutomaticDiscounts
-					TemplateArea.Parameters.Discount         = Discount;
-					TemplateArea.Parameters.AmountWithoutDiscount = LinesSelectionInventory.Amount + Discount;
-				EndIf;
-			EndIf;
-			
-			SpreadsheetDocument.Put(TemplateArea);
-			
-			Amount		= Amount		+ LinesSelectionInventory.Amount;
-			VATAmount	= VATAmount	+ LinesSelectionInventory.VATAmount;
-			Total		= Total		+ LinesSelectionInventory.Total;
-			Quantity	= Quantity+ 1;
-			
-		EndDo;
-		
-		TemplateArea = Template.GetArea("Total");
-		TemplateArea.Parameters.Total = SmallBusinessServer.AmountsFormat(Amount);
-		SpreadsheetDocument.Put(TemplateArea);
-		
-		TemplateArea = Template.GetArea("TotalVAT");
-		If VATAmount = 0 Then
-			TemplateArea.Parameters.VAT = "Without tax (VAT)";
-			TemplateArea.Parameters.TotalVAT = "-";
-		Else
-			TemplateArea.Parameters.VAT = ?(Header.AmountIncludesVAT, "Including VAT:", "VAT Amount:");
-			TemplateArea.Parameters.TotalVAT = SmallBusinessServer.AmountsFormat(VATAmount);
-		EndIf; 
-		SpreadsheetDocument.Put(TemplateArea);
-		
-		TemplateArea = Template.GetArea("AmountInWords");
-		AmountToBeWrittenInWords = Total;
-		TemplateArea.Parameters.TotalRow = "Total titles "
-												+ String(Quantity)
-												+ ", in the amount of "
-												+ SmallBusinessServer.AmountsFormat(AmountToBeWrittenInWords, Header.DocumentCurrency);
-		
-		TemplateArea.Parameters.AmountInWords = WorkWithCurrencyRates.GenerateAmountInWords(AmountToBeWrittenInWords, Header.DocumentCurrency);
-		
-		SpreadsheetDocument.Put(TemplateArea);
-		
-		PrintManagement.SetDocumentPrintArea(SpreadsheetDocument, FirstLineNumber, PrintObjects, Header.Ref);
-	EndDo;
-	
-	SpreadsheetDocument.FitToPage = True;
-	
-	Return SpreadsheetDocument;	
-
-EndFunction // PrintForm()
-
 // Function checks if the document is posted and calls
 // the procedure of document printing.
 //
 Function PrintForm(ObjectsArray, PrintObjects, TemplateName)
 	
 	If TemplateName = "CustomerOrderTemplate" Then
+		
 		Return PrintCustomerOrder(ObjectsArray, PrintObjects, TemplateName);
-	ElsIf TemplateName = "InvoiceForPayment" OR TemplateName = "InvoiceForPartialPayment" Then
-		Return PrintInvoiceForPayment(ObjectsArray, PrintObjects, TemplateName);
-	ElsIf TemplateName = "InvoiceForPaymentWithFacsimileSignature" OR TemplateName = "InvoiceForPartialPaymentWithFacsimileSignature" Then
-		Return PrintInvoiceWithFacsimileSignature(ObjectsArray, PrintObjects, StrReplace(TemplateName, "WithFacsimileSignature", ""));
+		
+	ElsIf TemplateName = "ProformaInvoice" Then
+		
+		Return PrintProformaInvoice(ObjectsArray, PrintObjects, TemplateName);
+		
+	ElsIf TemplateName = "ProformaInvoiceWithSignature" Then
+		
+		Return PrintProformaInvoice(ObjectsArray, PrintObjects, "ProformaInvoice", True);
+		
 	ElsIf TemplateName = "ServicesAcceptanceCertificate" OR TemplateName = "ServicesAcceptanceCertificateDetailed" Then
+		
 		Return PrintServicesAcceptanceCertificate(ObjectsArray, PrintObjects, TemplateName);
-	ElsIf TemplateName = "Consignment" OR TemplateName = "SaleInvoiceWithServices" Then
-		Return PrintSalesInvoice(ObjectsArray, PrintObjects, TemplateName);
+		
+	ElsIf TemplateName = "CustomerInvoice" Then
+		
+		Return PrintCustomerInvoice(ObjectsArray, PrintObjects, TemplateName);
+		
 	ElsIf TemplateName = "JobOrder" Then
+		
 		Return PrintJobOrder(ObjectsArray, PrintObjects, TemplateName);
-	ElsIf TemplateName = "MerchandiseFillingForm" Then
-		Return PrintMerchandiseFillingForm(ObjectsArray, PrintObjects, TemplateName);
-	ElsIf TemplateName = "AppendixToContract" Then
-		Return PrintAppendixToContract(ObjectsArray, PrintObjects, TemplateName);
+		
 	EndIf;
 	
 EndFunction // PrintForm()
@@ -7970,29 +7235,33 @@ EndFunction // PrintForm()
 Procedure Print(ObjectsArray, PrintParameters, PrintFormsCollection, PrintObjects, OutputParameters) Export
 	
 	If PrintManagement.NeedToPrintTemplate(PrintFormsCollection, "CustomerOrderTemplate") Then
+		
 		PrintManagement.OutputSpreadsheetDocumentToCollection(PrintFormsCollection, "CustomerOrderTemplate", "Customer order", PrintForm(ObjectsArray, PrintObjects, "CustomerOrderTemplate"));
-	ElsIf PrintManagement.NeedToPrintTemplate(PrintFormsCollection, "InvoiceForPayment") Then
-		PrintManagement.OutputSpreadsheetDocumentToCollection(PrintFormsCollection, "InvoiceForPayment", "Invoice for payment", PrintForm(ObjectsArray, PrintObjects, "InvoiceForPayment"));
-	ElsIf PrintManagement.NeedToPrintTemplate(PrintFormsCollection, "InvoiceForPaymentWithFacsimileSignature") Then
-		PrintManagement.OutputSpreadsheetDocumentToCollection(PrintFormsCollection, "InvoiceForPaymentWithFacsimileSignature", "Invoice for payment", PrintForm(ObjectsArray, PrintObjects, "InvoiceForPaymentWithFacsimileSignature"));
-	ElsIf PrintManagement.NeedToPrintTemplate(PrintFormsCollection, "InvoiceForPartialPayment") Then
-		PrintManagement.OutputSpreadsheetDocumentToCollection(PrintFormsCollection, "InvoiceForPartialPayment", "Invoice for partial payment", PrintForm(ObjectsArray, PrintObjects, "InvoiceForPartialPayment"));
-	ElsIf PrintManagement.NeedToPrintTemplate(PrintFormsCollection, "InvoiceForPartialPaymentWithFacsimileSignature") Then
-		PrintManagement.OutputSpreadsheetDocumentToCollection(PrintFormsCollection, "InvoiceForPartialPaymentWithFacsimileSignature", "Invoice for partial payment", PrintForm(ObjectsArray, PrintObjects, "InvoiceForPartialPaymentWithFacsimileSignature"));
+		
+	ElsIf PrintManagement.NeedToPrintTemplate(PrintFormsCollection, "ProformaInvoice") Then
+		
+		PrintManagement.OutputSpreadsheetDocumentToCollection(PrintFormsCollection, "ProformaInvoice", "Proforma invoice", PrintForm(ObjectsArray, PrintObjects, "ProformaInvoice"));
+		
+	ElsIf PrintManagement.NeedToPrintTemplate(PrintFormsCollection, "ProformaInvoiceWithSignature") Then
+		
+		PrintManagement.OutputSpreadsheetDocumentToCollection(PrintFormsCollection, "ProformaInvoiceWithSignature", "Proforma invoice", PrintForm(ObjectsArray, PrintObjects, "ProformaInvoiceWithSignature"));
+		
 	ElsIf PrintManagement.NeedToPrintTemplate(PrintFormsCollection, "ServicesAcceptanceCertificate") Then
+		
 		PrintManagement.OutputSpreadsheetDocumentToCollection(PrintFormsCollection, "ServicesAcceptanceCertificate", "Services acceptance certificate", PrintForm(ObjectsArray, PrintObjects, "ServicesAcceptanceCertificate"));
+		
 	ElsIf PrintManagement.NeedToPrintTemplate(PrintFormsCollection, "ServicesAcceptanceCertificateDetailed") Then
+		
 		PrintManagement.OutputSpreadsheetDocumentToCollection(PrintFormsCollection, "ServicesAcceptanceCertificateDetailed", "Services acceptance certificate (detailed)", PrintForm(ObjectsArray, PrintObjects, "ServicesAcceptanceCertificateDetailed"));
-	ElsIf PrintManagement.NeedToPrintTemplate(PrintFormsCollection, "SaleInvoiceWithServices") Then
-		PrintManagement.OutputSpreadsheetDocumentToCollection(PrintFormsCollection, "SaleInvoiceWithServices", "Invoice (services)", PrintForm(ObjectsArray, PrintObjects, "SaleInvoiceWithServices"));
-	ElsIf PrintManagement.NeedToPrintTemplate(PrintFormsCollection, "Consignment") Then
-		PrintManagement.OutputSpreadsheetDocumentToCollection(PrintFormsCollection, "Consignment", "Consignment", PrintForm(ObjectsArray, PrintObjects, "Consignment"));
+		
+	ElsIf PrintManagement.NeedToPrintTemplate(PrintFormsCollection, "CustomerInvoice") Then
+		
+		PrintManagement.OutputSpreadsheetDocumentToCollection(PrintFormsCollection, "CustomerInvoice", "CustomerInvoice", PrintForm(ObjectsArray, PrintObjects, "CustomerInvoice"));
+		
 	ElsIf PrintManagement.NeedToPrintTemplate(PrintFormsCollection, "JobOrder") Then
+		
 		PrintManagement.OutputSpreadsheetDocumentToCollection(PrintFormsCollection, "JobOrder", "Job-order", PrintForm(ObjectsArray, PrintObjects, "JobOrder"));
-	ElsIf PrintManagement.NeedToPrintTemplate(PrintFormsCollection, "MerchandiseFillingForm") Then
-		PrintManagement.OutputSpreadsheetDocumentToCollection(PrintFormsCollection, "MerchandiseFillingForm", "Merchandise filling form", PrintForm(ObjectsArray, PrintObjects, "MerchandiseFillingForm"));
-	ElsIf PrintManagement.NeedToPrintTemplate(PrintFormsCollection, "AppendixToContract") Then
-		PrintManagement.OutputSpreadsheetDocumentToCollection(PrintFormsCollection, "AppendixToContract", "Appendix to contract", PrintForm(ObjectsArray, PrintObjects, "AppendixToContract"));
+		
 	EndIf;
 	
 	// parameters of sending printing forms by email
@@ -8013,53 +7282,30 @@ Procedure AddPrintCommands(PrintCommands) Export
 	
 	// Customer order
 	PrintCommand = PrintCommands.Add();
-	PrintCommand.ID = "CustomerOrderTemplate";
-	PrintCommand.Presentation = NStr("en='Customer order';ru='Заказ покупателя'");
-	PrintCommand.FormsList = "DocumentForm,ListForm,ShipmentDocumentsListForm,PaymentDocumentsListForm";
-	PrintCommand.CheckPostingBeforePrint = False;
-	PrintCommand.PlaceProperties = "GroupImportantCommandsCustomerOrder";
-	PrintCommand.Order = 1;
+	PrintCommand.ID							= "CustomerOrderTemplate";
+	PrintCommand.Presentation				= NStr("en='Customer order';ru='Заказ покупателя'");
+	PrintCommand.FormsList					= "DocumentForm,ListForm,ShipmentDocumentsListForm,PaymentDocumentsListForm";
+	PrintCommand.CheckPostingBeforePrint	= False;
+	PrintCommand.PlaceProperties			= "GroupImportantCommandsCustomerOrder";
+	PrintCommand.Order						= 1;
 	
-	// Invoice for payment
+	// Proforma invoice
 	PrintCommand = PrintCommands.Add();
-	PrintCommand.ID = "InvoiceForPayment";
-	PrintCommand.Presentation = NStr("en='Invoice for payment';ru='Счет на оплату'");
-	PrintCommand.FormsList = "DocumentForm,ListForm,ShipmentDocumentsListForm,PaymentDocumentsListForm";
-	PrintCommand.CheckPostingBeforePrint = False;
-	PrintCommand.PlaceProperties = "GroupImportantCommandsCustomerOrder";
-	PrintCommand.Order = 4;
+	PrintCommand.ID							= "ProformaInvoice";
+	PrintCommand.Presentation				= NStr("ru = 'Счет на оплату'; en = 'Proforma invoice'");
+	PrintCommand.FormsList					= "DocumentForm,ListForm,ShipmentDocumentsListForm,PaymentDocumentsListForm";
+	PrintCommand.CheckPostingBeforePrint	= False;
+	PrintCommand.PlaceProperties			= "GroupImportantCommandsCustomerOrder";
+	PrintCommand.Order						= 4;
 	
-	// Invoice for Payment (Partial Payment)
+	// Proforma invoice with signature
 	PrintCommand = PrintCommands.Add();
-	PrintCommand.ID = "InvoiceForPartialPayment";
-	PrintCommand.Presentation = NStr("en='Invoice for partial payment';ru='Счет на частичную оплату'");
-	PrintCommand.FormsList = "DocumentForm,ListForm,ShipmentDocumentsListForm,PaymentDocumentsListForm";
-	PrintCommand.CheckPostingBeforePrint = False;
-	PrintCommand.FunctionalOptions = "PaymentCalendar";
-	PrintCommand.PlaceProperties = "GroupImportantCommandsCustomerOrder";
-	PrintCommand.Order = 7;
-	
-	// Printing commands visible with facsimile will not be throttled
-	// by a flag of Companies field fullness for users to know about this opportunity
-	
-	// The invoice for payment with facsimile
-	PrintCommand = PrintCommands.Add();
-	PrintCommand.ID = "InvoiceForPaymentWithFacsimileSignature";
-	PrintCommand.Presentation = NStr("en='Invoice for payment (with facsimile)';ru='Счет на оплату (с факсимиле)'");
-	PrintCommand.FormsList = "DocumentForm,ListForm,ShipmentDocumentsListForm,PaymentDocumentsListForm";
-	PrintCommand.CheckPostingBeforePrint = False;
-	PrintCommand.PlaceProperties = "GroupImportantCommandsCustomerOrder";
-	PrintCommand.Order = 10;
-	
-	// Invoice for payment with facsimile (partial payment)
-	PrintCommand = PrintCommands.Add();
-	PrintCommand.ID = "InvoiceForPartialPaymentWithFacsimileSignature";
-	PrintCommand.Presentation = NStr("en='Invoice for partial payment (with facsimile)';ru='Счет на частичную оплату (с факсимиле)'");
-	PrintCommand.FormsList = "DocumentForm,ListForm,ShipmentDocumentsListForm,PaymentDocumentsListForm";
-	PrintCommand.CheckPostingBeforePrint = False;
-	PrintCommand.FunctionalOptions = "PaymentCalendar";
-	PrintCommand.PlaceProperties = "GroupImportantCommandsCustomerOrder";
-	PrintCommand.Order = 14;
+	PrintCommand.ID							= "ProformaInvoiceWithSignature";
+	PrintCommand.Presentation				= NStr("ru = 'Счет на оплату (с подписями)'; en = 'Proforma invoice (with signature)'");
+	PrintCommand.FormsList					= "DocumentForm,ListForm,ShipmentDocumentsListForm,PaymentDocumentsListForm";
+	PrintCommand.CheckPostingBeforePrint	= False;
+	PrintCommand.PlaceProperties			= "GroupImportantCommandsCustomerOrder";
+	PrintCommand.Order						= 10;
 	
 	// Contract
 	PrintCommand = PrintCommands.Add();
@@ -8071,22 +7317,13 @@ Procedure AddPrintCommands(PrintCommands) Export
 	PrintCommand.PlaceProperties = "GroupImportantCommandsCustomerOrder";
 	PrintCommand.Order = 17;
 	
-	// Appendix to contract
-	PrintCommand = PrintCommands.Add();
-	PrintCommand.ID = "AppendixToContract";
-	PrintCommand.Presentation = NStr("en='Appendix to contract';ru='Приложение к договору'");
-	PrintCommand.FormsList = "DocumentForm,ListForm,ShipmentDocumentsListForm,PaymentDocumentsListForm";
-	PrintCommand.CheckPostingBeforePrint = False;
-	PrintCommand.PlaceProperties = "GroupImportantCommandsCustomerOrder";
-	PrintCommand.Order = 20;
-	
 	//::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 	// Job order
 	//
 	
 	// Documents set
 	PrintCommand = PrintCommands.Add();
-	PrintCommand.ID = "CustomerOrderTemplate,JobOrder,ServicesAcceptanceCertificate,ServicesAcceptanceCertificateDetailed,Consignment,SaleInvoiceWithServices,InvoiceForPayment,InvoiceForPartialPayment,InvoiceForPaymentWithFacsimileSignature,InvoiceForPartialPaymentWithFacsimileSignature";
+	PrintCommand.ID = "CustomerOrderTemplate,JobOrder,ServicesAcceptanceCertificate,ServicesAcceptanceCertificateDetailed,CustomerInvoice,ProformaInvoice,ProformaInvoiceWithSignature";
 	PrintCommand.Presentation = NStr("en='Custom kit of documents';ru='Настраиваемый комплект документов'");
 	PrintCommand.FormsList = "FormJobOrder,FormJobOrderList,ShipmentDocumentsListForm,PaymentDocumentsListForm";
 	PrintCommand.CheckPostingBeforePrint = False;
@@ -8132,71 +7369,30 @@ Procedure AddPrintCommands(PrintCommands) Export
 	
 	// Customer invoice
 	PrintCommand = PrintCommands.Add();
-	PrintCommand.ID = "Consignment";
-	PrintCommand.Presentation = NStr("en='Customer invoice';ru='Расходная накладная'");
-	PrintCommand.FormsList = "FormJobOrder,FormJobOrderList,ShipmentDocumentsListForm,PaymentDocumentsListForm";
-	PrintCommand.CheckPostingBeforePrint = False;
-	PrintCommand.PlaceProperties = "GroupImportantCommandsJobOrder";
-	PrintCommand.Order = 66;
-	
-	// Customer invoice (Services)
-	PrintCommand = PrintCommands.Add();
-	PrintCommand.ID = "SaleInvoiceWithServices";
-	PrintCommand.Presentation = NStr("en='Customer invoice (Services)';ru='Расходная накладная (с услугами)'");
-	PrintCommand.FormsList = "FormJobOrder,FormJobOrderList,ShipmentDocumentsListForm,PaymentDocumentsListForm";
-	PrintCommand.CheckPostingBeforePrint = False;
-	PrintCommand.PlaceProperties = "GroupImportantCommandsJobOrder";
-	PrintCommand.Order = 69;
+	PrintCommand.ID							= "CustomerInvoice";
+	PrintCommand.Presentation				= NStr("en = 'Customer invoice'; ru = 'Расходная накладная'");
+	PrintCommand.FormsList					= "FormJobOrder,FormJobOrderList,ShipmentDocumentsListForm,PaymentDocumentsListForm";
+	PrintCommand.CheckPostingBeforePrint	= False;
+	PrintCommand.PlaceProperties			= "GroupImportantCommandsJobOrder";
+	PrintCommand.Order						= 66;
 	
 	// Invoice for payment
 	PrintCommand = PrintCommands.Add();
-	PrintCommand.ID = "InvoiceForPayment";
-	PrintCommand.Presentation = NStr("en='Invoice for payment';ru='Счет на оплату'");
-	PrintCommand.FormsList = "FormJobOrder,FormJobOrderList,ShipmentDocumentsListForm,PaymentDocumentsListForm";
-	PrintCommand.CheckPostingBeforePrint = False;
-	PrintCommand.PlaceProperties = "GroupImportantCommandsJobOrder";
-	PrintCommand.Order = 72;
-	
-	// Invoice for Payment (Partial Payment)
-	PrintCommand = PrintCommands.Add();
-	PrintCommand.ID = "InvoiceForPartialPayment";
-	PrintCommand.Presentation = NStr("en='Invoice for partial payment';ru='Счет на частичную оплату'");
-	PrintCommand.FormsList = "FormJobOrder,FormJobOrderList,ShipmentDocumentsListForm,PaymentDocumentsListForm";
-	PrintCommand.CheckPostingBeforePrint = False;
-	PrintCommand.FunctionalOptions = "PaymentCalendar";
-	PrintCommand.PlaceProperties = "GroupImportantCommandsJobOrder";
-	PrintCommand.Order = 75;
-	
-	// Printing commands visible with facsimile will not be throttled
-	// by a flag of Companies field fullness for users to know about this opportunity
+	PrintCommand.ID							= "ProformaInvoice";
+	PrintCommand.Presentation				= NStr("ru = 'Счет на оплату'; en = 'Proforma invoice'");
+	PrintCommand.FormsList					= "FormJobOrder,FormJobOrderList,ShipmentDocumentsListForm,PaymentDocumentsListForm";
+	PrintCommand.CheckPostingBeforePrint	= False;
+	PrintCommand.PlaceProperties			= "GroupImportantCommandsJobOrder";
+	PrintCommand.Order						= 72;
 	
 	// The invoice for payment with facsimile
 	PrintCommand = PrintCommands.Add();
-	PrintCommand.ID = "InvoiceForPaymentWithFacsimileSignature";
-	PrintCommand.Presentation = NStr("en='Invoice for payment (with facsimile)';ru='Счет на оплату (с факсимиле)'");
-	PrintCommand.FormsList = "FormJobOrder,FormJobOrderList,ShipmentDocumentsListForm,PaymentDocumentsListForm";
-	PrintCommand.CheckPostingBeforePrint = False;
-	PrintCommand.PlaceProperties = "GroupImportantCommandsJobOrder";
-	PrintCommand.Order = 78;
-	
-	// Invoice for payment with facsimile (partial payment)
-	PrintCommand = PrintCommands.Add();
-	PrintCommand.ID = "InvoiceForPartialPaymentWithFacsimileSignature";
-	PrintCommand.Presentation = NStr("en='Invoice for partial payment (with facsimile)';ru='Счет на частичную оплату (с факсимиле)'");
-	PrintCommand.FormsList = "FormJobOrder,FormJobOrderList,ShipmentDocumentsListForm,PaymentDocumentsListForm";
-	PrintCommand.CheckPostingBeforePrint = False;
-	PrintCommand.FunctionalOptions = "PaymentCalendar";
-	PrintCommand.PlaceProperties = "GroupImportantCommandsJobOrder";
-	PrintCommand.Order = 81;
-	
-	// Merchandise filling form
-	PrintCommand = PrintCommands.Add();
-	PrintCommand.ID = "MerchandiseFillingForm";
-	PrintCommand.Presentation = NStr("en='Merchandise filling form';ru='Бланк товарного наполнения'");
-	PrintCommand.FormsList = "FormJobOrder,FormJobOrderList,ShipmentDocumentsListForm,PaymentDocumentsListForm";
-	PrintCommand.CheckPostingBeforePrint = False;
-	PrintCommand.PlaceProperties = "GroupImportantCommandsJobOrder";
-	PrintCommand.Order = 90;
+	PrintCommand.ID							= "ProformaInvoiceWithSignature";
+	PrintCommand.Presentation				= NStr("ru = 'Счет на оплату (с подписями)'; en = 'Proforma invoice (with signature)'");
+	PrintCommand.FormsList					= "FormJobOrder,FormJobOrderList,ShipmentDocumentsListForm,PaymentDocumentsListForm";
+	PrintCommand.CheckPostingBeforePrint	= False;
+	PrintCommand.PlaceProperties			= "GroupImportantCommandsJobOrder";
+	PrintCommand.Order						= 78;
 	
 	// Contract
 	PrintCommand = PrintCommands.Add();
@@ -8207,15 +7403,6 @@ Procedure AddPrintCommands(PrintCommands) Export
 	PrintCommand.CheckPostingBeforePrint = False;
 	PrintCommand.PlaceProperties = "GroupImportantCommandsJobOrder";
 	PrintCommand.Order = 96;
-	
-	// Appendix to contract
-	PrintCommand = PrintCommands.Add();
-	PrintCommand.ID = "AppendixToContract";
-	PrintCommand.Presentation = NStr("en='Appendix to contract';ru='Приложение к договору'");
-	PrintCommand.FormsList = "FormJobOrder,FormJobOrderList,ShipmentDocumentsListForm,PaymentDocumentsListForm";
-	PrintCommand.CheckPostingBeforePrint = False;
-	PrintCommand.PlaceProperties = "GroupImportantCommandsJobOrder";
-	PrintCommand.Order = 99;
 	
 EndProcedure
 

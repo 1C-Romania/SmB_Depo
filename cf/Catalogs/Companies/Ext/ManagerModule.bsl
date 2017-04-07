@@ -104,91 +104,17 @@ EndFunction
 Procedure AddPrintCommands(PrintCommands) Export
 	
 	PrintCommand = PrintCommands.Add();
-	PrintCommand.ID = "PrintFaxPrintWorkAssistant";
-	PrintCommand.Presentation = NStr("en='How to create facsimile fast and easy?';ru='Как быстро и просто создать факсимиле?'");
-	PrintCommand.FormsList = "ItemForm";
-	PrintCommand.CheckPostingBeforePrint = False;
-	PrintCommand.OverrideUserCountSettings = False;
-	PrintCommand.Order = 1;
-	
-	PrintCommand = PrintCommands.Add();
-	PrintCommand.ID = "PreviewPrintedFormsInvoiceForPayment";
-	PrintCommand.Presentation = NStr("en='Preview of the ""Invoice for payment"" print form';ru='Предварительный просмотр печатной формы ""Счет на оплату""'");
-	PrintCommand.FormsList = "ItemForm";
-	PrintCommand.CheckPostingBeforePrint = False;
-	PrintCommand.OverrideUserCountSettings = False;
-	PrintCommand.Order = 4;
+	PrintCommand.ID				= "CompanyAttributes";
+	PrintCommand.Presentation	= NStr("ru = 'Реквизиты'; en = 'Attributes'");
+	PrintCommand.FormsList		= "ItemForm,ListForm";
+	PrintCommand.FormTitle		= NStr("ru = 'Печать реквизитов организации'; en = 'Print company attributes'");
+	PrintCommand.Order			= 1;
 	
 EndProcedure
 
 #EndRegion
 
 #Region ServiceProgramInterface
-
-// It is called while transferring to the configuration version 2.1.3.16.
-//
-Procedure RefreshPredefinedContactInformationTypesCompanies() Export
-	
-	If Not CommonUse.SubsystemExists("StandardSubsystems.ContactInformation") Then
-		Return;
-	EndIf;
-	
-	ModuleContactInformationManagement = CommonUse.CommonModule("ContactInformationManagement");
-	
-	ParametersKind = ModuleContactInformationManagement.ParametersKindContactInformation("Address");
-	ParametersKind.Kind= "CompanyLegalAddress";
-	ParametersKind.ToolTip = NStr("en='Company legal address';ru='Юридический адрес организации'");
-	ParametersKind.EditMethodEditable = True;
-	ParametersKind.Order = 1;
-	ParametersKind.VerificationSettings.AddressRussianOnly = True;
-	ModuleContactInformationManagement.SetPropertiesContactInformationKind(ParametersKind);
-	
-	ParametersKind = ModuleContactInformationManagement.ParametersKindContactInformation("Address");
-	ParametersKind.Kind = "CompanyFactAddress";
-	ParametersKind.ToolTip = NStr("en='Company physical address';ru='Фактический адрес организации'");
-	ParametersKind.EditMethodEditable = True;
-	ParametersKind.Order = 1;
-	ModuleContactInformationManagement.SetPropertiesContactInformationKind(ParametersKind);
-	
-	ParametersKind = ModuleContactInformationManagement.ParametersKindContactInformation("Phone");
-	ParametersKind.Kind = "CompanyPhone";
-	ParametersKind.ToolTip = NStr("en=""Company's phone"";ru='Телефон организации'");
-	ParametersKind.EditMethodEditable = True;
-	ParametersKind.AllowInputOfMultipleValues = True;
-	ParametersKind.Order = 3;
-	ModuleContactInformationManagement.SetPropertiesContactInformationKind(ParametersKind);
-	
-	ParametersKind = ModuleContactInformationManagement.ParametersKindContactInformation("Fax");
-	ParametersKind.Kind = "CompanyFax";
-	ParametersKind.ToolTip = NStr("en=""Company's fax"";ru='Факс организации'");
-	ParametersKind.EditMethodEditable = True;
-	ParametersKind.AllowInputOfMultipleValues = True;
-	ParametersKind.Order = 4;
-	ModuleContactInformationManagement.SetPropertiesContactInformationKind(ParametersKind);
-	
-	ParametersKind = ModuleContactInformationManagement.ParametersKindContactInformation("EmailAddress");
-	ParametersKind.Kind = "CompanyEmail";
-	ParametersKind.ToolTip = NStr("en='Company email address';ru='Адрес электронной почты организации'");
-	ParametersKind.EditMethodEditable = True;
-	ParametersKind.AllowInputOfMultipleValues = True;
-	ParametersKind.Order = 5;
-	ModuleContactInformationManagement.SetPropertiesContactInformationKind(ParametersKind);
-	
-	ParametersKind = ModuleContactInformationManagement.ParametersKindContactInformation("Address");
-	ParametersKind.Kind = "CompanyPostalAddress";
-	ParametersKind.ToolTip = NStr("en='Company postal address';ru='Почтовый адрес организации'");
-	ParametersKind.EditMethodEditable = True;
-	ParametersKind.Order = 6;
-	ModuleContactInformationManagement.SetPropertiesContactInformationKind(ParametersKind);
-	
-	ParametersKind = ModuleContactInformationManagement.ParametersKindContactInformation("Another");
-	ParametersKind.Kind = "CompanyOtherInformation";
-	ParametersKind.ToolTip = NStr("en='Any other contact information';ru='Любая другая контактная информация'");
-	ParametersKind.EditMethodEditable = True;
-	ParametersKind.Order = 7;
-	ModuleContactInformationManagement.SetPropertiesContactInformationKind(ParametersKind);
-	
-EndProcedure
 
 // It is called while transferring to SSL version 2.2.1.12.
 //
@@ -252,7 +178,7 @@ Function PrintPreviewInvoicesForPayment(ObjectsArray, PrintObjects, TemplateName
 	Header.Insert("Company", 		Company);
 	Header.Insert("BankAccount",	Company.BankAccountByDefault);
 	Header.Insert("Prefix", 			Company.Prefix);
-	Header.Insert("RecipientPresentation", "Field contains customer information: full name, TIN, KPP, legal address, phones.");
+	Header.Insert("RecipientPresentation", "Field contains customer information: full name, TIN, legal address, phones.");
 	
 	Inventory = New Structure;
 	Inventory.Insert("LineNumber",			1);
@@ -312,7 +238,6 @@ Function PrintPreviewInvoicesForPayment(ObjectsArray, PrintObjects, TemplateName
 	EndIf; 
 	
 	TemplateArea.Parameters.TIN = InfoAboutCompany.TIN;
-	TemplateArea.Parameters.KPP = InfoAboutCompany.KPP;
 	TemplateArea.Parameters.VendorPresentation = ?(IsBlankString(InfoAboutCompany.CorrespondentText), InfoAboutCompany.FullDescr, InfoAboutCompany.CorrespondentText);;
 	TemplateArea.Parameters.RecipientBankBIC = InfoAboutCompany.BIN;
 	TemplateArea.Parameters.RecipientBankAccountPresentation = InfoAboutCompany.CorrAccount;
@@ -335,7 +260,7 @@ Function PrintPreviewInvoicesForPayment(ObjectsArray, PrintObjects, TemplateName
 	SpreadsheetDocument.Put(TemplateArea);
 	
 	TemplateArea = Template.GetArea("Vendor");
-	TemplateArea.Parameters.VendorPresentation = SmallBusinessServer.CompaniesDescriptionFull(InfoAboutCompany, "FullDescr,TIN,KPP,LegalAddress,PhoneNumbers,");
+	TemplateArea.Parameters.VendorPresentation = SmallBusinessServer.CompaniesDescriptionFull(InfoAboutCompany, "FullDescr,TIN,LegalAddress,PhoneNumbers,");
 	SpreadsheetDocument.Put(TemplateArea);
 	
 	TemplateArea = Template.GetArea("Customer");
@@ -404,6 +329,100 @@ Function PrintPreviewInvoicesForPayment(ObjectsArray, PrintObjects, TemplateName
 	
 EndFunction //PrintPreviewInvoicesForPayment()
 
+// The procedure for the formation of a spreadsheet document with details of companies
+//
+Function PrintCompanyCard(ObjectsArray, PrintObjects)
+	
+	SpreadsheetDocument = New SpreadsheetDocument;
+	Template = PrintManagement.PrintedFormsTemplate("Catalog.Companies.CompanyAttributes");
+	Separator = Template.GetArea("Separator");
+	
+	CurrentDate		= CurrentSessionDate();
+	FirstDocument	= True;
+	
+	For Each Company In ObjectsArray Do
+	
+		If Not FirstDocument Then
+			SpreadsheetDocument.Put(Separator);
+			SpreadsheetDocument.PutHorizontalPageBreak();
+		EndIf;
+		
+		FirstDocument	= False;
+		RowNumberBegin	= SpreadsheetDocument.TableHeight + 1;
+		IsLegalEntity	= Company.LegalEntityIndividual = Enums.CounterpartyKinds.LegalEntity;
+		
+		InfoAboutCompany = SmallBusinessServer.InfoAboutLegalEntityIndividual(Company, CurrentDate);
+		
+		Area = Template.GetArea("Description");
+		Area.Parameters.DescriptionFull = InfoAboutCompany.FullDescr;
+		SpreadsheetDocument.Put(Area);
+		
+		If ValueIsFilled(InfoAboutCompany.TIN) Then
+			Area = Template.GetArea("TIN");
+			Area.Parameters.TIN = InfoAboutCompany.TIN;
+			SpreadsheetDocument.Put(Area);
+		EndIf;
+		
+		If ValueIsFilled(InfoAboutCompany.RegistrationNumber) Then
+			Area = Template.GetArea("RegistrationNumber");
+			Area.Parameters.RegistrationNumber = InfoAboutCompany.RegistrationNumber;
+			SpreadsheetDocument.Put(Area);
+		EndIf;
+		
+		If ValueIsFilled(InfoAboutCompany.AccountNo) 
+			And ValueIsFilled(InfoAboutCompany.SWIFT) 
+			And ValueIsFilled(InfoAboutCompany.Bank) Then
+			
+			Area = Template.GetArea("BankAccount");
+			Area.Parameters.AccountNo	= InfoAboutCompany.AccountNo;
+			Area.Parameters.SWIFT		= InfoAboutCompany.SWIFT;
+			Area.Parameters.CorrAccount	= InfoAboutCompany.CorrAccount;
+			Area.Parameters.Bank		= InfoAboutCompany.Bank;
+			Area.Parameters.IBAN		= InfoAboutCompany.IBAN;
+			SpreadsheetDocument.Put(Area);
+		EndIf;
+		
+		If ValueIsFilled(InfoAboutCompany.LegalAddress) 
+			Or ValueIsFilled(InfoAboutCompany.PhoneNumbers) Then
+			SpreadsheetDocument.Put(Separator);
+		EndIf;
+		
+		If IsLegalEntity And ValueIsFilled(InfoAboutCompany.LegalAddress) Then
+			Area = Template.GetArea("LegalAddress");
+			Area.Parameters.LegalAddress	= InfoAboutCompany.LegalAddress;
+			SpreadsheetDocument.Put(Area);
+		EndIf;
+			
+		If Not IsLegalEntity And ValueIsFilled(InfoAboutCompany.LegalAddress) Then
+			Area = Template.GetArea("IndividualAddress");
+			Area.Parameters.IndividualAddress	= InfoAboutCompany.LegalAddress;
+			SpreadsheetDocument.Put(Area);
+		EndIf;
+			
+		If ValueIsFilled(InfoAboutCompany.PhoneNumbers) Then
+			Area = Template.GetArea("Phone");
+			Area.Parameters.Phone = InfoAboutCompany.PhoneNumbers;
+			SpreadsheetDocument.Put(Area);
+		EndIf;
+		
+		PrintManagement.SetDocumentPrintArea(SpreadsheetDocument, RowNumberBegin, PrintObjects, Company);
+		
+	EndDo;
+	
+	SpreadsheetDocument.TopMargin		= 20;
+	SpreadsheetDocument.BottomMargin	= 20;
+	SpreadsheetDocument.LeftMargin		= 20;
+	SpreadsheetDocument.RightMargin		= 20;
+	
+	SpreadsheetDocument.PageOrientation	= PageOrientation.Portrait;
+	SpreadsheetDocument.FitToPage		= True;
+	
+	SpreadsheetDocument.PrintParametersKey = "PrintParameters__Company_CompanyCard";
+	
+	Return SpreadsheetDocument;
+
+EndFunction
+
 // Generate printed forms of objects
 //
 // Incoming:
@@ -420,6 +439,16 @@ Procedure Print(ObjectsArray,
 				 PrintFormsCollection,
 				 PrintObjects,
 				 OutputParameters) Export
+	
+	If PrintManagement.NeedToPrintTemplate(PrintFormsCollection, "CompanyAttributes") Then
+		
+		PrintManagement.OutputSpreadsheetDocumentToCollection(
+			PrintFormsCollection,
+			"CompanyAttributes",
+			NStr("ru='Реквизиты организации'; en = 'Company attributes'"),
+			PrintCompanyCard(ObjectsArray, PrintObjects));
+		
+	EndIf;
 	
 	If PrintManagement.NeedToPrintTemplate(PrintFormsCollection, "PrintFaxPrintWorkAssistant") Then
 		

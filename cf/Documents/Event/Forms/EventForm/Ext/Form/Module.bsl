@@ -487,7 +487,7 @@ Function GetHowToContact(Contact, ThisIsEMail = False)
 		CITypes.Add(Enums.ContactInformationTypes.Phone);
 	EndIf;
 	
-	CITable = ContactInformationManagement.ContactInformationOfObjects(Contacts, CITypes);
+	CITable = ContactInformationManagement.ObjectsContactInformation(Contacts, CITypes);
 	CITable.Sort("Type DESC");
 	For Each CIRow IN CITable Do
 		Result = "" + Result + ?(Result = "", "", ", ") + CIRow.Presentation;
@@ -832,16 +832,3 @@ EndProcedure
 // End StandardSubsystems.AdditionalReportsAndDataProcessors
 
 #EndRegion
-
-
-
-
-
-
-
-
-
-
-
-
-

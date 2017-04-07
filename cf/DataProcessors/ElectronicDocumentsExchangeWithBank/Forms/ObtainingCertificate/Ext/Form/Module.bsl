@@ -199,17 +199,3 @@ Procedure ContinueReceivingCertificate(Authentication, Parameters) Export
 	NotifyChoice(XMLCertificate);
 	
 EndProcedure
-
-
-
-
-
-
-
-
-
-
-
-
-
-

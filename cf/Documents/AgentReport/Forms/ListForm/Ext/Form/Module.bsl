@@ -36,7 +36,7 @@ Procedure OnLoadDataFromSettingsAtServer(Settings)
 EndProcedure // OnLoadDataFromSettingsAtServer()
 
 &AtClient
-// Procedure - event handler OnChange of attribute Department.
+// Procedure - event handler OnChange of attribute department.
 // 
 Procedure DepartmentOnChange(Item)
 	
@@ -72,17 +72,3 @@ EndProcedure
 // End StandardSubsystems.Printing
 
 #EndRegion
-
-
-
-
-
-
-
-
-
-
-
-
-
-

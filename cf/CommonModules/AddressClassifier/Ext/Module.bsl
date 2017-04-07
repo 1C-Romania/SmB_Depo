@@ -281,3 +281,138 @@ EndFunction
 
 #EndRegion
 
+#Region InternalProceduresAndFunctions
+
+Function QueryCodeStateAddressClassifier() Export
+	
+	Query = New Query("
+		|SELECT TOP 1
+		|	Description + "" "" + Abbr AS State
+		|FROM
+		|	InformationRegister.AddressClassifier
+		|WHERE
+		|	AddressItemType              = 1
+		|	AND AddressObjectCodeInCode  = &Code
+		|	AND CountyCodeInCode         = 0
+		|	AND CityCodeInCode           = 0
+		|	AND SettlementCodeInCode     = 0
+		|	AND StreetCodeInCode         = 0
+		|");
+		
+	Return Query;
+EndFunction
+
+#EndRegion
+
+#Region SubsystemsLibrary 
+
+////////////////////////////////////////////////////////////////////////////////
+// Data for ContactInformation subsystem, breaking subsystem interrelations
+//
+
+Function QueryAddressDeserializationByACPresentation(Val WorldCountriesSource = Undefined) Export
+	
+	Query = New Query("
+		|SELECT 
+		|	AddressData.Position0   AS Position0,
+		|	AddressData.Position    AS Position,
+		|	AddressData.Value       AS Value,
+		|	AddressData.Description AS Description,
+		|	AddressData.Abbr        AS Abbr,
+		|	AddressData.Beginning   AS Beginning,
+		|	AddressData.Length      AS Length
+		|INTO 
+		|	AddressData
+		|FROM
+		|	&AddressData AS AddressData
+		|INDEX BY
+		|	Position0, Position, Description, Abbr
+		|;//////////////////////////////////////////////////////////////////////////////
+		|
+		|SELECT 
+		|	RecognizedData.Position    AS Position,
+		|	RecognizedData.Value       AS Value,
+		|	RecognizedData.Description AS Description,
+		|	RecognizedData.Abbr        AS Abbr,
+		|	RecognizedData.Beginning   AS Beginning,
+		|	RecognizedData.Length      AS Length,
+		|	FALSE                      AS Processed,
+		|
+		|	RecognizedData.LevelByClassifier AS LevelByClassifier,
+		|	CASE 
+		|		WHEN RecognizedData.LevelByClassifier IS NULL THEN FALSE 
+		|		ELSE TRUE 
+		|	END AS FoundInClassifier,
+		|
+		|	RecognizedData.LevelByAbbreviations AS LevelByAbbreviations,
+		|	CASE 
+		|		WHEN RecognizedData.LevelByAbbreviations IS NULL THEN FALSE 
+		|		ELSE TRUE 
+		|	END AS FoundInAbbreviations,
+		|
+		|	CASE
+		|		WHEN Not RecognizedData.MinimumWorldCountries IS NULL THEN TRUE
+		|		WHEN RecognizedData.Value IN (&ClassifierCountries) THEN TRUE
+		|		ELSE FALSE
+		|	END AS FoundInWorldCountries,
+		|
+		|	CASE 
+		|		WHEN RecognizedData.Value = &USAName THEN TRUE
+		|		ELSE FALSE
+		|	END AS IsUSA,
+		|	
+		|	CASE
+		|		WHEN RecognizedData.Description LIKE ""[0-9][0-9][0-9][0-9][0-9][0-9]"" THEN TRUE
+		|		ELSE FALSE
+		|	END AS FoundByPostalCode
+		|
+		|FROM (
+		|	SELECT 
+		|		AddressData.Position    AS Position,
+		|		AddressData.Value       AS Value,
+		|		AddressData.Description AS Description,
+		|		AddressData.Abbr        AS Abbr,
+		|
+		|		AddressData.Beginning     AS Beginning,
+		|		AddressData.Length        AS Length,
+		|
+		|		MIN(AddressClassifier.AddressItemType) AS LevelByClassifier,
+		|		MIN(AddressAbbreviations.Level)        AS LevelByAbbreviations,
+		|	
+		|		MIN(WorldCountries.Description) AS MinimumWorldCountries
+		|
+		|	FROM 
+		|		AddressData AS AddressData
+		|	LEFT JOIN
+		|		InformationRegister.AddressClassifier AS AddressClassifier
+		|	ON
+		|		AddressClassifier.Description = AddressData.Description
+		|		AND AddressClassifier.Abbr = AddressData.Abbr
+		|		AND AddressClassifier.AddressItemType <= 5
+		|		AND AddressClassifier.AddressItemType >= AddressData.Position0
+		|	LEFT JOIN
+		|		InformationRegister.AddressAbbreviations AS AddressAbbreviations
+		|	ON
+		|		AddressAbbreviations.Abbr = AddressData.Abbr
+		|		AND AddressAbbreviations.Level <= 5
+		|	LEFT JOIN
+		|		" + ?(WorldCountriesSource = Undefined, "( SELECT &USAName AS Description )", WorldCountriesSource) + " AS
+		|	WorldCountries
+		|	ON WorldCountries.Description
+		|	= AddressData.Value GROUP
+		|	BY
+		|	AddressData.Position,
+		|	AddressData.Value,
+		|	AddressData.Description,
+		|	AddressData.Abbr,
+		|	AddressData.Beginning,
+		|AddressData.Length ) AS
+		|RecognizedData
+		|ORDER BY
+		|	RecognizedData.Position DESC
+		|");
+		
+	Return Query;
+EndFunction
+
+#EndRegion

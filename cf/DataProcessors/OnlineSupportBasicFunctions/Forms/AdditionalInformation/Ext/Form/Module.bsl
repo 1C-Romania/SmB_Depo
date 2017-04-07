@@ -163,7 +163,6 @@ Procedure SendForm(Command)
 		QueryParameters.Add(New Structure("Name, Value", "organizationName", CounterpartyName));
 		QueryParameters.Add(New Structure("Name, Value", "typeActivity"    , BusinessType));
 		QueryParameters.Add(New Structure("Name, Value", "tin"             , StrReplace(TIN, " ", "")));
-		QueryParameters.Add(New Structure("Name, Value", "kpp"             , StrReplace(KPP, " ", "")));
 		QueryParameters.Add(New Structure("Name, Value", "director"        , Head));
 		QueryParameters.Add(New Structure("Name, Value", "PhoneNumber"     , Phone));
 		QueryParameters.Add(New Structure("Name, Value", "email"           , EmailAddress));
@@ -258,7 +257,6 @@ Procedure SetOnlyViewCompanyFields(OnlyViewFields)
 	Items.CounterpartyName.ReadOnly     = OnlyViewFields;
 	Items.BusinessType.ReadOnly         = OnlyViewFields;
 	Items.TIN.ReadOnly                  = OnlyViewFields;
-	Items.KPP.ReadOnly                  = OnlyViewFields;
 	Items.Head.ReadOnly                 = OnlyViewFields;
 	Items.Phone.ReadOnly                = OnlyViewFields;
 	Items.EmailAddress.ReadOnly         = OnlyViewFields;
@@ -379,7 +377,6 @@ Function NewCompanyData()
 	Result.Insert("CounterpartyName", CounterpartyName);
 	Result.Insert("typeActivity"       , BusinessType);
 	Result.Insert("tin"                , TIN);
-	Result.Insert("kpp"                , KPP);
 	Result.Insert("director "          , Head);
 	Result.Insert("PhoneNumber"        , Phone);
 	Result.Insert("email"              , EmailAddress);
@@ -428,7 +425,6 @@ Procedure FillCompanyFieldData()
 		CounterpartyName     = "";
 		BusinessType         = "";
 		TIN                  = "";
-		KPP                  = "";
 		Head                 = "";
 		Phone                = "";
 		EmailAddress         = "";
@@ -439,7 +435,6 @@ Procedure FillCompanyFieldData()
 		CompanyCurrentData.Property("CounterpartyName"    , CounterpartyName);
 		CompanyCurrentData.Property("typeActivity"           , BusinessType);
 		CompanyCurrentData.Property("tin"                    , TIN);
-		CompanyCurrentData.Property("kpp"                    , KPP);
 		CompanyCurrentData.Property("director"               , Head);
 		CompanyCurrentData.Property("PhoneNumber"            , Phone);
 		CompanyCurrentData.Property("email"                  , EmailAddress);
@@ -575,7 +570,6 @@ Function MessageParametersToTechicalSupport()
 		|Company name: %2
 		|Business type: %3
 		|TIN: %4
-		|KPP: %5
 		|Director: %6
 		|Phone: %7
 		|Email: %8
@@ -603,7 +597,6 @@ Function MessageParametersToTechicalSupport()
 		CounterpartyName,
 		BusinessType,
 		TIN,
-		KPP,
 		Head,
 		Phone,
 		EmailAddress,
@@ -644,17 +637,3 @@ Function MessageParametersToTechicalSupport()
 EndFunction
 
 #EndRegion
-
-
-
-
-
-
-
-
-
-
-
-
-
-

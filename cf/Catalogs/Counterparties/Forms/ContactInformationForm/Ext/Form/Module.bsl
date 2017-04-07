@@ -740,9 +740,9 @@ Function LoadSettingsCIContent()
 		
 		If UseCI Then
 			SettingsCIContent.UsedCIKinds.Add(Selection.CIKind);
-			If Selection.CIKind.Parent = Catalogs.ContactInformationTypes.CatalogCounterparties Then
+			If Selection.CIKind.Parent = Catalogs.ContactInformationKinds.CatalogCounterparties Then
 				SettingsCIContent.UsedCIKinds_Counterparties.Add(Selection.CIKind);
-			ElsIf Selection.CIKind.Parent = Catalogs.ContactInformationTypes.CatalogContactPersons Then
+			ElsIf Selection.CIKind.Parent = Catalogs.ContactInformationKinds.CatalogContactPersons Then
 				SettingsCIContent.UsedCIKinds_ContactPersons.Add(Selection.CIKind);
 			EndIf;
 		EndIf;
@@ -985,16 +985,3 @@ Function UniqueFileName(FileName)
 EndFunction
 
 #EndRegion
-
-
-
-
-
-
-
-
-
-
-
-
-

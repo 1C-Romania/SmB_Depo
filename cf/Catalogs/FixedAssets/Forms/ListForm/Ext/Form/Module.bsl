@@ -239,17 +239,3 @@ Procedure ListOnActivateRow(Item)
 	SetEnabled();
 	
 EndProcedure // ListOnActivateRow()
-
-
-
-
-
-
-
-
-
-
-
-
-
-

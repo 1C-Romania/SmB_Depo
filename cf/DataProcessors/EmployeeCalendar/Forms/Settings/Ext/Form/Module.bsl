@@ -95,17 +95,3 @@ Procedure EmployeesListOnChange(Item)
 	EmployeesListChanged = True;
 	
 EndProcedure // EmployeesListOnChange()
-
-
-
-
-
-
-
-
-
-
-
-
-
-

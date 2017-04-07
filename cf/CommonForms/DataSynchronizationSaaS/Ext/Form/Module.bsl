@@ -897,17 +897,3 @@ Procedure SynchronizationSettingsMissingScript()
 EndProcedure
 
 #EndRegion
-
-
-
-
-
-
-
-
-
-
-
-
-
-

@@ -37,17 +37,3 @@ Procedure SetMarkAtServer(Certificate)
 EndProcedure
 
 #EndRegion
-
-
-
-
-
-
-
-
-
-
-
-
-
-

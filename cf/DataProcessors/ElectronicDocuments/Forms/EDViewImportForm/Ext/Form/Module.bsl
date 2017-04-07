@@ -498,9 +498,7 @@ Function EDDataFile(LinkToED, Val SubordinatedEDFileName = Undefined)
 				OR LinkToED.EDKind = Enums.EDKinds.CancellationOffer
 				OR LinkToED.EDKind = Enums.EDKinds.TORG12Seller
 				OR LinkToED.EDKind = Enums.EDKinds.ActPerformer
-				OR LinkToED.EDKind = Enums.EDKinds.AgreementAboutCostChangeSender
-				OR LinkToED.EDKind = Enums.EDKinds.CustomerInvoiceNote
-				OR LinkToED.EDKind = Enums.EDKinds.CorrectiveInvoiceNote Then
+				OR LinkToED.EDKind = Enums.EDKinds.AgreementAboutCostChangeSender Then
 				
 				SelectionEDAddData = ElectronicDocumentsService.SelectionAdditDataED(LinkToED);
 				If SelectionEDAddData.Next() Then
@@ -965,17 +963,3 @@ Procedure MapAfterFillingAlert(Result, AdditionalParameters) Export
 EndProcedure
 
 #EndRegion
-
-
-
-
-
-
-
-
-
-
-
-
-
-

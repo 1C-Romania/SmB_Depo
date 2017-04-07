@@ -1802,7 +1802,7 @@ Function ReportToPrincipalPrinting(ObjectsArray, PrintObjects)
 		While CustomersSelection.Next() Do
 			
 			InfoAboutCustomer = SmallBusinessServer.InfoAboutLegalEntityIndividual(CustomersSelection.Customer, CustomersSelection.SaleDate);
-			TextCustomer = "Customer: " + SmallBusinessServer.CompaniesDescriptionFull(InfoAboutCustomer, "FullDescr,LegalAddress,KPP,TIN,");
+			TextCustomer = "Customer: " + SmallBusinessServer.CompaniesDescriptionFull(InfoAboutCustomer, "FullDescr,LegalAddress,TIN,");
 
 			TemplateArea = Template.GetArea("RowCustomer");
 			TemplateArea.Parameters.CustomerPresentation = TextCustomer;

@@ -547,44 +547,28 @@ Function GenerateLabelPricesAndCurrency(LabelStructure)
 	// Currency.
 	If LabelStructure.CurrencyTransactionsAccounting Then
 		If ValueIsFilled(LabelStructure.DocumentCurrency) Then
-			//===============================
-			//©# (Begin)	AlekS [2016-09-13]
-			//LabelText = NStr("en='%Currency%';ru='%Вал%'");
-			//LabelText = StrReplace(LabelText, "%Currency%", TrimAll(String(LabelStructure.DocumentCurrency)));
-			LabelText = TrimAll(String(LabelStructure.DocumentCurrency));
-			//©# (End)		AlekS [2016-09-13]
-			//===============================
+			LabelText = NStr("ru = '%Currency%'; en = '%Currency%'");
+			LabelText = StrReplace(LabelText, "%Currency%", TrimAll(String(LabelStructure.DocumentCurrency)));
 		EndIf;
 	EndIf;
 	
 	// VAT taxation.
 	If ValueIsFilled(LabelStructure.VATTaxation) Then
-		//If IsBlankString(LabelText) Then
-		//	LabelText = LabelText + NStr("en='%VATTaxation%';ru='%VATTaxation%'");
-		//Else
-		//	LabelText = LabelText + NStr("en=' • %VATTaxation%';ru=' • %НалогообложениеНДС%'");
-		//EndIf;
-		//LabelText = StrReplace(LabelText, "%VATTaxation%", TrimAll(String(LabelStructure.VATTaxation)));
-		LabelText = LabelText + " • " + TrimAll(String(LabelStructure.VATTaxation));
-		//©# (End)		AlekS [2016-09-13]
-		//===============================
+		If IsBlankString(LabelText) Then
+			LabelText = LabelText + NStr("ru = '%VATTaxation%'; en = '%VATTaxation%'");
+		Else
+			LabelText = LabelText + NStr("ru = ' • %VATTaxation%'; en = ' • %VATTaxation%'");
+		EndIf;	
+		LabelText = StrReplace(LabelText, "%VATTaxation%", TrimAll(String(LabelStructure.VATTaxation)));
 	EndIf;
 	
-	
-//===============================
-//©# (Begin)	AlekS [2016-09-13]
-//
-//  THIS FLAG HAS NO CHANCE TO BE SHOWED - need attention !   8-(
-//
-//©# (End)		AlekS [2016-09-13]
-//===============================
 	// Flag showing that amount includes VAT.
 	If IsBlankString(LabelText) Then
-		If LabelStructure.AmountIncludesVAT Then
-			LabelText = NStr("en='Amount includes VAT';ru='Сумма включает НДС'");
-		Else
-			LabelText = NStr("en='Amount does not include VAT';ru='Сумма не включает НДС'");
-		EndIf;
+		If LabelStructure.AmountIncludesVAT Then	
+			LabelText = NStr("ru = 'Сумма включает НДС'; en = 'Amount includes VAT'");
+		Else		
+			LabelText = NStr("ru = 'Сумма не включает НДС'; en = 'Amount does not include VAT'");
+		EndIf;	
 	EndIf;
 	
 	Return LabelText;
@@ -931,8 +915,6 @@ Procedure OnCreateAtServer(Cancel, StandardProcessing)
 	LabelStructure = New Structure("DocumentCurrency, SettlementsCurrency, ExchangeRate, RateNationalCurrency, AmountIncludesVAT, CurrencyTransactionsAccounting, VATTaxation", Object.DocumentCurrency, SettlementsCurrency, Object.ExchangeRate, RateNationalCurrency, Object.AmountIncludesVAT, CurrencyTransactionsAccounting, Object.VATTaxation);
 	PricesAndCurrency = GenerateLabelPricesAndCurrency(LabelStructure);
 	
-	SmallBusinessServer.SetTextAboutInvoice(ThisForm, True);
-	
 	SmallBusinessClientServer.SetPictureForComment(Items.GroupAdditional, Object.Comment);
 	
 	// Setting contract visible.
@@ -1016,13 +998,7 @@ EndProcedure // AfterWrite()
 &AtClient
 Procedure NotificationProcessing(EventName, Parameter, Source)
 	
-	If EventName = "RefreshOfTextAboutInvoiceReceived" 
-		AND TypeOf(Parameter) = Type("Structure") 
-		AND Parameter.BasisDocument = Object.Ref Then
-		
-		InvoiceText = Parameter.Presentation;
-		
-	ElsIf EventName = "AfterRecordingOfCounterparty" 
+	If EventName = "AfterRecordingOfCounterparty" 
 		AND ValueIsFilled(Parameter)
 		AND Object.Counterparty = Parameter Then
 		
@@ -1065,17 +1041,6 @@ Procedure NotificationProcessing(EventName, Parameter, Source)
 	EndIf;
 	
 EndProcedure // NotificationProcessing()
-
-// Procedure - selection handler.
-//
-&AtClient
-Procedure ChoiceProcessing(ValueSelected, ChoiceSource)
-	
-	If ChoiceSource.FormName = "Document.SupplierInvoiceNote.Form.DocumentForm" Then
-		InvoiceText = ValueSelected;
-	EndIf;
-	
-EndProcedure 
 
 
 ////////////////////////////////////////////////////////////////////////////////
@@ -1197,16 +1162,6 @@ Procedure EditPrepaymentOffsetEnd(Result, AdditionalParameters) Export
 	EndIf;
 
 EndProcedure // EditPrepaymentOffset()
-
-// Procedure - clicking handler on the hyperlink InvoiceText.
-//
-&AtClient
-Procedure InvoiceNoteTextClick(Item, StandardProcessing)
-	
-	StandardProcessing = False;
-	SmallBusinessClient.OpenInvoice(ThisForm, True);
-	
-EndProcedure
 
 ////////////////////////////////////////////////////////////////////////////////
 // PROCEDURE - EVENT HANDLERS OF HEADER ATTRIBUTES

@@ -121,16 +121,3 @@ Function StatusListOutgoing()
 EndFunction
 
 #EndRegion
-
-
-
-
-
-
-
-
-
-
-
-
-

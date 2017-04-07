@@ -344,13 +344,11 @@ Procedure SetIdentifier(CatalogName, IdentifierSourceRef)
 	
 	If CatalogName = "Companies" Then
 		AttributeNameCompanyTIN = ElectronicDocumentsReUse.NameAttributeObjectExistanceInAppliedSolution("CompanyTIN");
-		AttributeNameCompanyKPP = ElectronicDocumentsReUse.NameAttributeObjectExistanceInAppliedSolution("CompanyKPP");
 		
 		ParametersCompany = CommonUse.ObjectAttributesValues(IdentifierSourceRef,
-			AttributeNameCompanyTIN + ", " + AttributeNameCompanyKPP);
+			AttributeNameCompanyTIN);
 		
-		RowFill = String(ParametersCompany[AttributeNameCompanyTIN])
-			+ "_" + String(ParametersCompany[AttributeNameCompanyKPP]);
+		RowFill = String(ParametersCompany[AttributeNameCompanyTIN]);
 		If Right(RowFill, 1) = "_" Then
 			RowFill = StrReplace(RowFill, "_", "");
 		EndIf;
@@ -358,13 +356,11 @@ Procedure SetIdentifier(CatalogName, IdentifierSourceRef)
 		
 	ElsIf CatalogName = "Counterparties" Then
 		AttributeNameCounterpartyTIN = ElectronicDocumentsReUse.NameAttributeObjectExistanceInAppliedSolution("CounterpartyTIN");
-		AttributeNameCounterpartyKPP = ElectronicDocumentsReUse.NameAttributeObjectExistanceInAppliedSolution("CounterpartyCRR");
 		
 		CounterpartyParameters = CommonUse.ObjectAttributesValues(IdentifierSourceRef,
-			AttributeNameCounterpartyTIN + ", " + AttributeNameCounterpartyKPP);
+			AttributeNameCounterpartyTIN);
 		
-		RowFill = String(CounterpartyParameters[AttributeNameCounterpartyTIN])
-			+ "_" + String(CounterpartyParameters[AttributeNameCounterpartyKPP]);
+		RowFill = String(CounterpartyParameters[AttributeNameCounterpartyTIN]);
 		If Right(RowFill, 1) = "_" Then
 			RowFill = StrReplace(RowFill, "_", "");
 		EndIf;
@@ -632,14 +628,6 @@ Procedure SaveParameters(DataSaved)
 					NewRow.UseDS = True;
 				EndIf;
 				
-				If (EnumValue = Enums.EDKinds.CustomerInvoiceNote
-					OR EnumValue = Enums.EDKinds.CorrectiveInvoiceNote)
-					AND EDExchangeMethod <> Enums.EDExchangeMethods.ThroughEDFOperatorTaxcom Then
-					
-					NewRow.ToForm = False;
-					NewRow.UseDS = False;
-					
-				EndIf;
 				// Put the exchange format version in the new EDF settings.
 				FormatVersion = "CML 2.08";
 				If EnumValue = Enums.EDKinds.RandomED Then
@@ -649,9 +637,7 @@ Procedure SaveParameters(DataSaved)
 					OR EnumValue = Enums.EDKinds.TORG12Customer
 					OR EnumValue = Enums.EDKinds.TORG12Seller
 					OR EnumValue = Enums.EDKinds.AgreementAboutCostChangeSender
-					OR EnumValue = Enums.EDKinds.AgreementAboutCostChangeRecipient
-					OR EnumValue = Enums.EDKinds.CustomerInvoiceNote
-					OR EnumValue = Enums.EDKinds.CorrectiveInvoiceNote Then
+					OR EnumValue = Enums.EDKinds.AgreementAboutCostChangeRecipient Then
 					FormatVersion = "Federal Tax Service 5.01";
 				EndIf;
 				NewRow.FormatVersion = FormatVersion;
@@ -1076,16 +1062,3 @@ Procedure AfterSelectingDirectory(SelectedFiles, AdditionalParameters) Export
 EndProcedure
 
 #EndRegion
-
-
-
-
-
-
-
-
-
-
-
-
-

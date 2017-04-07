@@ -50,11 +50,6 @@ EndProcedure
 Procedure OnAddUpdateHandlers(Handlers) Export
 	
 	Handler = Handlers.Add();
-	Handler.Version = "2.1.3.16";
-	Handler.InitialFilling = True;
-	Handler.Procedure = "Catalogs.Companies.RefreshPredefinedContactInformationTypesCompanies";
-	
-	Handler = Handlers.Add();
 	Handler.Version = "2.2.1.12";
 	Handler.InitialFilling = True;
 	Handler.Procedure = "Catalogs.Companies.FillConstantUseSeveralCompanies";

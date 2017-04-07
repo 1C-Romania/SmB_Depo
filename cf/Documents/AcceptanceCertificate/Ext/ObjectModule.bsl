@@ -539,31 +539,6 @@ Procedure FillByInvoiceForPayment(FillingData)
 	
 EndProcedure // FillByInvoiceForPayment()
 
-// Posting cancellation procedure of the subordinate customer invoice note
-//
-Procedure SubordinatedInvoiceControl()
-	
-	InvoiceStructure = SmallBusinessServer.GetSubordinateInvoice(Ref);
-	If Not InvoiceStructure = Undefined Then
-		
-		CustomerInvoiceNote	 = InvoiceStructure.Ref;
-		If CustomerInvoiceNote.Posted Then
-			
-			MessageText = NStr("en='As there are no register records of the %CurrentDocumentPresentation% document, undo the posting of %InvoicePresentation%.';ru='В связи с отсутствием движений у документа %ПредставлениеТекущегоДокумента% распроводится счет фактура %ПредставлениеСчетФактуры%.'");
-			MessageText = StrReplace(MessageText, "%CurrentDocumentPresentation%", """Acceptance certificate No " + Number + " dated " + Format(Date, "DF=dd.MM.yyyy") + """");
-			MessageText = StrReplace(MessageText, "%InvoicePresentation%", """Customer invoice note (issued) No " + InvoiceStructure.Number + " dated " + InvoiceStructure.Date + """");
-			
-			CommonUseClientServer.MessageToUser(MessageText);
-			
-			InvoiceObject = CustomerInvoiceNote.GetObject();
-			InvoiceObject.Write(DocumentWriteMode.UndoPosting);
-			
-		EndIf;
-		
-	EndIf;
-	
-EndProcedure //SubordinateInvoiceControl()
-
 ////////////////////////////////////////////////////////////////////////////////
 // EVENT HANDLERS
 
@@ -772,13 +747,6 @@ Procedure UndoPosting(Cancel)
 	
 	// Control of occurrence of a negative balance.
 	Documents.AcceptanceCertificate.RunControl(Ref, AdditionalProperties, Cancel, True);
-	
-	// Subordinate customer invoice note
-	If Not Cancel Then
-		
-		SubordinatedInvoiceControl();
-		
-	EndIf;
 	
 EndProcedure // UndoPosting()
 

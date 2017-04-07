@@ -11,27 +11,6 @@
 		</right>
 	</object>
 	<object>
-		<name>Document.CustomerInvoiceNote.Attribute.Same</name>
-		<right>
-			<name>Edit</name>
-			<value>false</value>
-		</right>
-	</object>
-	<object>
-		<name>Document.CustomerInvoiceNote.Attribute.Contract</name>
-		<right>
-			<name>Edit</name>
-			<value>false</value>
-		</right>
-	</object>
-	<object>
-		<name>Document.CustomerInvoiceNote.TabularSection.Inventory.Attribute.Total</name>
-		<right>
-			<name>Edit</name>
-			<value>false</value>
-		</right>
-	</object>
-	<object>
 		<name>Document.CashReceipt</name>
 		<right>
 			<name>Read</name>
@@ -119,27 +98,6 @@
 		</right>
 	</object>
 	<object>
-		<name>Document.CustomerInvoiceNote.TabularSection.BasisDocuments.Attribute.BasisDocument</name>
-		<right>
-			<name>Edit</name>
-			<value>false</value>
-		</right>
-	</object>
-	<object>
-		<name>Document.CustomerInvoiceNote.Attribute.IncomingDocumentNumber</name>
-		<right>
-			<name>Edit</name>
-			<value>false</value>
-		</right>
-	</object>
-	<object>
-		<name>Document.CustomerInvoiceNote.TabularSection.Inventory.Attribute.Amount</name>
-		<right>
-			<name>Edit</name>
-			<value>false</value>
-		</right>
-	</object>
-	<object>
 		<name>Catalog.PettyCashes</name>
 		<right>
 			<name>Read</name>
@@ -191,38 +149,10 @@
 		</right>
 	</object>
 	<object>
-		<name>Document.CustomerInvoiceNote.TabularSection.Inventory.Attribute.Price</name>
-		<right>
-			<name>Edit</name>
-			<value>false</value>
-		</right>
-	</object>
-	<object>
-		<name>Document.CustomerInvoiceNote.Attribute.DocumentAmount</name>
-		<right>
-			<name>Edit</name>
-			<value>false</value>
-		</right>
-	</object>
-	<object>
 		<name>Subsystem.Finances.Subsystem.ReferenceInformation</name>
 		<right>
 			<name>View</name>
 			<value>true</value>
-		</right>
-	</object>
-	<object>
-		<name>Document.CustomerInvoiceNote.Attribute.Author</name>
-		<right>
-			<name>Edit</name>
-			<value>false</value>
-		</right>
-	</object>
-	<object>
-		<name>Document.CustomerInvoiceNote.Attribute.Counterparty</name>
-		<right>
-			<name>Edit</name>
-			<value>false</value>
 		</right>
 	</object>
 	<object>
@@ -385,20 +315,6 @@
 		</right>
 	</object>
 	<object>
-		<name>Document.CustomerInvoiceNote.TabularSection.PaymentDocumentsDateNumber</name>
-		<right>
-			<name>Edit</name>
-			<value>false</value>
-		</right>
-	</object>
-	<object>
-		<name>Document.CustomerInvoiceNote.TabularSection.Inventory.Attribute.CCDNo</name>
-		<right>
-			<name>Edit</name>
-			<value>false</value>
-		</right>
-	</object>
-	<object>
 		<name>Document.ExpenseReport</name>
 		<right>
 			<name>Read</name>
@@ -493,34 +409,6 @@ AS T1 ON T.Ref = T1.Ref",
 		</right>
 	</object>
 	<object>
-		<name>Document.CustomerInvoiceNote.TabularSection.BasisDocuments</name>
-		<right>
-			<name>Edit</name>
-			<value>false</value>
-		</right>
-	</object>
-	<object>
-		<name>Document.CustomerInvoiceNote.Attribute.DocumentCurrency</name>
-		<right>
-			<name>Edit</name>
-			<value>false</value>
-		</right>
-	</object>
-	<object>
-		<name>Document.CustomerInvoiceNote.Attribute.Multiplicity</name>
-		<right>
-			<name>Edit</name>
-			<value>false</value>
-		</right>
-	</object>
-	<object>
-		<name>Document.CustomerInvoiceNote.Attribute.BasisDocument</name>
-		<right>
-			<name>Edit</name>
-			<value>false</value>
-		</right>
-	</object>
-	<object>
 		<name>Document.CustomerOrder.Command.OpenJobOrdersForPayment</name>
 		<right>
 			<name>View</name>
@@ -528,127 +416,10 @@ AS T1 ON T.Ref = T1.Ref",
 		</right>
 	</object>
 	<object>
-		<name>Document.CustomerInvoiceNote.TabularSection.Inventory.Attribute.Batch</name>
-		<right>
-			<name>Edit</name>
-			<value>false</value>
-		</right>
-	</object>
-	<object>
-		<name>Document.CustomerInvoiceNote.TabularSection.Inventory.Attribute.Characteristic</name>
-		<right>
-			<name>Edit</name>
-			<value>false</value>
-		</right>
-	</object>
-	<object>
-		<name>Document.SupplierInvoiceNote</name>
-		<right>
-			<name>Read</name>
-			<value>true</value>
-			<restrictionByCondition>
-				<condition>#ByValues( "Document.SupplierInvoiceNote","Read","",
-"CounterpartiesGroup","Counterparty", "","", "","", "","", "","", "","", "","", "","", "","", "","", "","", "","", "","", "","", "","", "","" )</condition>
-			</restrictionByCondition>
-		</right>
-		<right>
-			<name>Insert</name>
-			<value>true</value>
-			<restrictionByCondition>
-				<condition>#ByValues( "Document.SupplierInvoiceNote","Insert","",
-"CounterpartiesGroup","Counterparty", "","", "","", "","", "","", "","", "","", "","", "","", "","", "","", "","", "","", "","", "","", "","" )</condition>
-			</restrictionByCondition>
-		</right>
-		<right>
-			<name>Update</name>
-			<value>true</value>
-			<restrictionByCondition>
-				<condition>#ByValues( "Document.SupplierInvoiceNote","Update","",
-"CounterpartiesGroup","Counterparty", "","", "","", "","", "","", "","", "","", "","", "","", "","", "","", "","", "","", "","", "","", "","" )</condition>
-			</restrictionByCondition>
-		</right>
-		<right>
-			<name>Posting</name>
-			<value>true</value>
-		</right>
-		<right>
-			<name>UndoPosting</name>
-			<value>true</value>
-		</right>
-		<right>
-			<name>View</name>
-			<value>true</value>
-		</right>
-		<right>
-			<name>InteractiveInsert</name>
-			<value>true</value>
-		</right>
-		<right>
-			<name>Edit</name>
-			<value>true</value>
-		</right>
-		<right>
-			<name>InteractiveSetDeletionMark</name>
-			<value>true</value>
-		</right>
-		<right>
-			<name>InteractiveClearDeletionMark</name>
-			<value>true</value>
-		</right>
-		<right>
-			<name>InteractivePosting</name>
-			<value>true</value>
-		</right>
-		<right>
-			<name>InteractivePostingRegular</name>
-			<value>true</value>
-		</right>
-		<right>
-			<name>InteractiveUndoPosting</name>
-			<value>true</value>
-		</right>
-		<right>
-			<name>InteractiveChangeOfPosted</name>
-			<value>true</value>
-		</right>
-		<right>
-			<name>InputByString</name>
-			<value>true</value>
-		</right>
-	</object>
-	<object>
-		<name>Document.CustomerInvoiceNote.Attribute.Consignor</name>
-		<right>
-			<name>Edit</name>
-			<value>false</value>
-		</right>
-	</object>
-	<object>
-		<name>Document.CustomerInvoiceNote.Attribute.IncomingDocumentDate</name>
-		<right>
-			<name>Edit</name>
-			<value>false</value>
-		</right>
-	</object>
-	<object>
 		<name>Report.PaymentCalendar.Command.OpenPaymentCalendar</name>
 		<right>
 			<name>View</name>
 			<value>true</value>
-		</right>
-	</object>
-	<object>
-		<name>Document.CustomerInvoiceNote.Attribute.Company</name>
-		<right>
-			<name>Edit</name>
-			<value>false</value>
-		</right>
-	</object>
-	<object>
-		<name>Document.CustomerInvoiceNote.TabularSection.Inventory.Attribute.MeasurementUnit</name>
-		<right>
-			<name>Edit</name>
-			<value>false</value>
 		</right>
 	</object>
 	<object>
@@ -736,127 +507,10 @@ AS T1 ON T.Ref = T1.Ref",
 		</right>
 	</object>
 	<object>
-		<name>Document.CustomerInvoiceNote</name>
-		<right>
-			<name>Read</name>
-			<value>true</value>
-			<restrictionByCondition>
-				<condition>#ByValues( "Document.CustomerInvoiceNote","Read","",
-"CounterpartiesGroup","Counterparty", "","", "","", "","", "","", "","", "","", "","", "","", "","", "","", "","", "","", "","", "","", "","" )</condition>
-			</restrictionByCondition>
-		</right>
-		<right>
-			<name>Insert</name>
-			<value>true</value>
-			<restrictionByCondition>
-				<condition>#ByValues( "Document.CustomerInvoiceNote","Insert","",
-"CounterpartiesGroup","Counterparty", "","", "","", "","", "","", "","", "","", "","", "","", "","", "","", "","", "","", "","", "","", "","" )</condition>
-			</restrictionByCondition>
-		</right>
-		<right>
-			<name>Update</name>
-			<value>true</value>
-			<restrictionByCondition>
-				<condition>#ByValues( "Document.CustomerInvoiceNote","Update","",
-"CounterpartiesGroup","Counterparty", "","", "","", "","", "","", "","", "","", "","", "","", "","", "","", "","", "","", "","", "","", "","" )</condition>
-			</restrictionByCondition>
-		</right>
-		<right>
-			<name>Posting</name>
-			<value>true</value>
-		</right>
-		<right>
-			<name>UndoPosting</name>
-			<value>true</value>
-		</right>
-		<right>
-			<name>View</name>
-			<value>true</value>
-		</right>
-		<right>
-			<name>InteractiveInsert</name>
-			<value>true</value>
-		</right>
-		<right>
-			<name>Edit</name>
-			<value>true</value>
-		</right>
-		<right>
-			<name>InteractiveSetDeletionMark</name>
-			<value>true</value>
-		</right>
-		<right>
-			<name>InteractiveClearDeletionMark</name>
-			<value>true</value>
-		</right>
-		<right>
-			<name>InteractivePosting</name>
-			<value>true</value>
-		</right>
-		<right>
-			<name>InteractivePostingRegular</name>
-			<value>true</value>
-		</right>
-		<right>
-			<name>InteractiveUndoPosting</name>
-			<value>true</value>
-		</right>
-		<right>
-			<name>InteractiveChangeOfPosted</name>
-			<value>true</value>
-		</right>
-		<right>
-			<name>InputByString</name>
-			<value>true</value>
-		</right>
-	</object>
-	<object>
-		<name>Document.CustomerInvoiceNote.StandardAttribute.Posted</name>
-		<right>
-			<name>Edit</name>
-			<value>false</value>
-		</right>
-	</object>
-	<object>
-		<name>Document.CustomerInvoiceNote.StandardAttribute.Ref</name>
-		<right>
-			<name>Edit</name>
-			<value>false</value>
-		</right>
-	</object>
-	<object>
-		<name>Document.CustomerInvoiceNote.StandardAttribute.DeletionMark</name>
-		<right>
-			<name>Edit</name>
-			<value>false</value>
-		</right>
-	</object>
-	<object>
-		<name>Document.CustomerInvoiceNote.StandardAttribute.Date</name>
-		<right>
-			<name>Edit</name>
-			<value>false</value>
-		</right>
-	</object>
-	<object>
-		<name>Document.CustomerInvoiceNote.StandardAttribute.Number</name>
-		<right>
-			<name>Edit</name>
-			<value>false</value>
-		</right>
-	</object>
-	<object>
 		<name>Catalog.ProductsAndServices</name>
 		<right>
 			<name>Read</name>
 			<value>true</value>
-		</right>
-	</object>
-	<object>
-		<name>Document.CustomerInvoiceNote.Attribute.ExchangeRate</name>
-		<right>
-			<name>Edit</name>
-			<value>false</value>
 		</right>
 	</object>
 	<object>
@@ -867,31 +521,10 @@ AS T1 ON T.Ref = T1.Ref",
 		</right>
 	</object>
 	<object>
-		<name>Document.CustomerInvoiceNote.TabularSection.Inventory.Attribute.Content</name>
-		<right>
-			<name>Edit</name>
-			<value>false</value>
-		</right>
-	</object>
-	<object>
-		<name>Document.CustomerInvoiceNote.Attribute.OperationKind</name>
-		<right>
-			<name>Edit</name>
-			<value>false</value>
-		</right>
-	</object>
-	<object>
 		<name>Catalog.UOM</name>
 		<right>
 			<name>Read</name>
 			<value>true</value>
-		</right>
-	</object>
-	<object>
-		<name>Document.CustomerInvoiceNote.TabularSection.Inventory.Attribute.ProductsAndServices</name>
-		<right>
-			<name>Edit</name>
-			<value>false</value>
 		</right>
 	</object>
 	<object>
@@ -902,52 +535,10 @@ AS T1 ON T.Ref = T1.Ref",
 		</right>
 	</object>
 	<object>
-		<name>Document.CustomerInvoiceNote.TabularSection.Inventory.Attribute.Quantity</name>
-		<right>
-			<name>Edit</name>
-			<value>false</value>
-		</right>
-	</object>
-	<object>
-		<name>Document.CustomerInvoiceNote.TabularSection.PaymentDocumentsDateNumber.Attribute.PaymentAccountingDocumentNumber</name>
-		<right>
-			<name>Edit</name>
-			<value>false</value>
-		</right>
-	</object>
-	<object>
 		<name>Document.CustomerOrder.Command.OpenCustomerOrdersForPayment</name>
 		<right>
 			<name>View</name>
 			<value>true</value>
-		</right>
-	</object>
-	<object>
-		<name>Document.CustomerInvoiceNote.Attribute.Consignee</name>
-		<right>
-			<name>Edit</name>
-			<value>false</value>
-		</right>
-	</object>
-	<object>
-		<name>Document.CustomerInvoiceNote.TabularSection.Inventory</name>
-		<right>
-			<name>Edit</name>
-			<value>false</value>
-		</right>
-	</object>
-	<object>
-		<name>Document.CustomerInvoiceNote.Attribute.Comment</name>
-		<right>
-			<name>Edit</name>
-			<value>false</value>
-		</right>
-	</object>
-	<object>
-		<name>Document.CustomerInvoiceNote.TabularSection.Inventory.Attribute.CountryOfOrigin</name>
-		<right>
-			<name>Edit</name>
-			<value>false</value>
 		</right>
 	</object>
 	<object>
@@ -962,27 +553,6 @@ AS T1 ON T.Ref = T1.Ref",
 		<right>
 			<name>Read</name>
 			<value>true</value>
-		</right>
-	</object>
-	<object>
-		<name>Document.CustomerInvoiceNote.TabularSection.PaymentDocumentsDateNumber.Attribute.PaymentAccountingDocumentDate</name>
-		<right>
-			<name>Edit</name>
-			<value>false</value>
-		</right>
-	</object>
-	<object>
-		<name>Document.CustomerInvoiceNote.TabularSection.Inventory.Attribute.VATRate</name>
-		<right>
-			<name>Edit</name>
-			<value>false</value>
-		</right>
-	</object>
-	<object>
-		<name>Document.CustomerInvoiceNote.TabularSection.Inventory.Attribute.VATAmount</name>
-		<right>
-			<name>Edit</name>
-			<value>false</value>
 		</right>
 	</object>
 	<restrictionTemplate>

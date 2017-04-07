@@ -477,17 +477,3 @@ Function PredefinedScheduleOption3() // Each day at 10:00, except Sa and Su
 EndFunction
 
 #EndRegion
-
-
-
-
-
-
-
-
-
-
-
-
-
-

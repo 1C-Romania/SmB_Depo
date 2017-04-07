@@ -834,17 +834,3 @@ Procedure ScriptToCreateStandAloneWorkingPlace()
 EndProcedure
 
 #EndRegion
-
-
-
-
-
-
-
-
-
-
-
-
-
-

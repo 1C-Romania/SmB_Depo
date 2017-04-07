@@ -504,16 +504,3 @@ Function ParseStringWithPostalAddresses(AddressForAnswer)
 	Return ServiceTechnologyIntegrationWithSSL.ParseStringWithPostalAddresses(AddressForAnswer, False);
 	
 EndFunction
-
-
-
-
-
-
-
-
-
-
-
-
-

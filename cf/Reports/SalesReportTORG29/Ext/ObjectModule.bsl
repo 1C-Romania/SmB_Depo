@@ -275,7 +275,6 @@ Function GenerateReportTORG29(StartDate, EndDate, StructuralUnit, Company, Repor
 	TemplateArea.Parameters.CompilationDate = CurrentDate();
 	TemplateArea.Parameters.StartDate = StartDate;
 	TemplateArea.Parameters.EndDate = EndDate;
-	TemplateArea.Parameters.CompanyByOKPO = InfoAboutCustomer.CodeByOKPO;
 	FRPName = StructuralUnit.FRP.Description;
 	TemplateArea.Parameters.FRP = ?(ValueIsFilled(FRPName), FRPName, "");
 	

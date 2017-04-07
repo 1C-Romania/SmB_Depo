@@ -511,17 +511,3 @@ Procedure SetTableRowQuantity(Table, LineCount)
 	EndDo;
 	
 EndProcedure
-
-
-
-
-
-
-
-
-
-
-
-
-
-

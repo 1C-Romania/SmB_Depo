@@ -157,8 +157,17 @@
 					<xr:PasswordMode>false</xr:PasswordMode>
 					<xr:MarkNegatives>false</xr:MarkNegatives>
 					<xr:MinValue xsi:nil="true"/>
-					<xr:Synonym/>
-					<xr:Comment>Deletion mark</xr:Comment>
+					<xr:Synonym>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Deletion mark</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Пометка удаления</v8:content>
+						</v8:item>
+					</xr:Synonym>
+					<xr:Comment/>
 					<xr:FullTextSearch>Use</xr:FullTextSearch>
 					<xr:ChoiceParameterLinks/>
 					<xr:FillValue xsi:nil="true"/>
@@ -272,7 +281,6 @@
 				<xr:Item xsi:type="xr:MDObjectRef">Document.ExpenseReport</xr:Item>
 				<xr:Item xsi:type="xr:MDObjectRef">Document.ReportToPrincipal</xr:Item>
 				<xr:Item xsi:type="xr:MDObjectRef">Document.PayrollSheet</xr:Item>
-				<xr:Item xsi:type="xr:MDObjectRef">Document.SupplierInvoiceNote</xr:Item>
 				<xr:Item xsi:type="xr:MDObjectRef">Document.SubcontractorReport</xr:Item>
 				<xr:Item xsi:type="xr:MDObjectRef">Document.AdditionalCosts</xr:Item>
 				<xr:Item xsi:type="xr:MDObjectRef">Document.SupplierInvoiceForPayment</xr:Item>
@@ -338,6 +346,10 @@
 							<v8:lang>en</v8:lang>
 							<v8:content>Company</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Организация</v8:content>
+						</v8:item>
 					</Synonym>
 					<Comment/>
 					<Type>
@@ -387,7 +399,7 @@
 						</v8:item>
 						<v8:item>
 							<v8:lang>ru</v8:lang>
-							<v8:content>Примечание</v8:content>
+							<v8:content>Комментарий</v8:content>
 						</v8:item>
 					</Synonym>
 					<Comment/>
@@ -498,11 +510,11 @@
 					<Synonym>
 						<v8:item>
 							<v8:lang>en</v8:lang>
-							<v8:content>Currency</v8:content>
+							<v8:content>Document currency</v8:content>
 						</v8:item>
 						<v8:item>
 							<v8:lang>ru</v8:lang>
-							<v8:content>Вал.</v8:content>
+							<v8:content>Валюта документа</v8:content>
 						</v8:item>
 					</Synonym>
 					<Comment/>
@@ -553,7 +565,7 @@
 						</v8:item>
 						<v8:item>
 							<v8:lang>ru</v8:lang>
-							<v8:content>Элемент</v8:content>
+							<v8:content>Статья</v8:content>
 						</v8:item>
 					</Synonym>
 					<Comment/>
@@ -776,7 +788,6 @@
 					<Comment/>
 					<Type>
 						<v8:Type>cfg:DocumentRef.SupplierInvoice</v8:Type>
-						<v8:Type>cfg:DocumentRef.SupplierInvoiceNote</v8:Type>
 						<v8:Type>cfg:DocumentRef.ExpenseReport</v8:Type>
 						<v8:Type>cfg:DocumentRef.SubcontractorReport</v8:Type>
 						<v8:Type>cfg:DocumentRef.ReportToPrincipal</v8:Type>
@@ -878,11 +889,11 @@
 					<Synonym>
 						<v8:item>
 							<v8:lang>en</v8:lang>
-							<v8:content>In. Doc. No</v8:content>
+							<v8:content>In. doc. #</v8:content>
 						</v8:item>
 						<v8:item>
 							<v8:lang>ru</v8:lang>
-							<v8:content>In. Doc. No</v8:content>
+							<v8:content>Номер вх. док.</v8:content>
 						</v8:item>
 					</Synonym>
 					<Comment>Incoming document No.</Comment>
@@ -933,7 +944,7 @@
 					<Synonym>
 						<v8:item>
 							<v8:lang>en</v8:lang>
-							<v8:content>Inc. doc date</v8:content>
+							<v8:content>Inc. doc. date</v8:content>
 						</v8:item>
 						<v8:item>
 							<v8:lang>ru</v8:lang>
@@ -991,7 +1002,7 @@
 						</v8:item>
 						<v8:item>
 							<v8:lang>ru</v8:lang>
-							<v8:content>Контрагенты</v8:content>
+							<v8:content>Контрагент</v8:content>
 						</v8:item>
 					</Synonym>
 					<Comment/>
@@ -1042,7 +1053,7 @@
 						</v8:item>
 						<v8:item>
 							<v8:lang>ru</v8:lang>
-							<v8:content>Контакт</v8:content>
+							<v8:content>Договор</v8:content>
 						</v8:item>
 					</Synonym>
 					<Comment/>
@@ -1099,7 +1110,7 @@
 						</v8:item>
 						<v8:item>
 							<v8:lang>ru</v8:lang>
-							<v8:content>Ведомость составил</v8:content>
+							<v8:content>Автор</v8:content>
 						</v8:item>
 					</Synonym>
 					<Comment/>
@@ -1163,7 +1174,7 @@
 						</v8:item>
 						<v8:item>
 							<v8:lang>ru</v8:lang>
-							<v8:content>Дополнительные реквизиты объекта</v8:content>
+							<v8:content>Дополнительные реквизиты</v8:content>
 						</v8:item>
 					</Synonym>
 					<Comment/>

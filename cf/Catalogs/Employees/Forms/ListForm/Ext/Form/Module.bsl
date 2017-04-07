@@ -69,17 +69,3 @@ Procedure ChoiceProcessing(ValueSelected, ChoiceSource)
 	EndIf;
 	
 EndProcedure
-
-
-
-
-
-
-
-
-
-
-
-
-
-

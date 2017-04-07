@@ -282,17 +282,3 @@ Procedure HandleError(Val ShortPresentation, Val DetailedPresentation)
 	Raise StringFunctionsClientServer.SubstituteParametersInString(ExceptionPattern, ShortPresentation);
 	
 EndProcedure
-
-
-
-
-
-
-
-
-
-
-
-
-
-

@@ -12,13 +12,6 @@ Procedure OnCreateAtServer(Cancel, StandardProcessing)
 	
 	CloseOnElementChoice = Parameters.CloseOnChoice; // SB
 	
-	CanUpdateClassifier =
-		Not CommonUseReUse.DataSeparationEnabled() // Updated automatically in the service model.
-		AND Not CommonUse.IsSubordinateDIBNode()   // Updated automatically in DIB node.
-		AND AccessRight("Update", Metadata.Catalogs.RFBankClassifier); // User with the required rights.
-
-	Items.FormImportClassifier.Visible = CanUpdateClassifier;
-	
 	SwitchVisibleInactiveBanks(False);
 	
 EndProcedure
@@ -26,11 +19,6 @@ EndProcedure
 #EndRegion
 
 #Region FormCommandsHandlers
-
-&AtClient
-Procedure ImportClassifier(Command)
-	OpenForm("Catalog.RFBankClassifier.Form.ImportClassifier", , ThisObject);
-EndProcedure
 
 &AtClient
 Procedure ShowInactiveBanks(Command)
@@ -112,16 +100,3 @@ Procedure ListBeforeAddRow(Item, Cancel, Copy, Parent, Group)
 EndProcedure
 
 #EndRegion
-
-
-
-
-
-
-
-
-
-
-
-
-

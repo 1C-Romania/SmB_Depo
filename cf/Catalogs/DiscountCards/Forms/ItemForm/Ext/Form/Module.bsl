@@ -496,17 +496,3 @@ Procedure CopyMCInBC(Command)
 EndProcedure
 
 #EndRegion
-
-
-
-
-
-
-
-
-
-
-
-
-
-

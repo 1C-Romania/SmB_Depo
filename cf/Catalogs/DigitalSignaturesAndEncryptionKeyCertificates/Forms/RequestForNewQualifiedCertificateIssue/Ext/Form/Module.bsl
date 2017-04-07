@@ -896,8 +896,7 @@ Procedure GoToPageStatementProcessingPending()
 	EndIf;
 	
 	If DocumentsPrinted
-	   AND ValueIsFilled(DocumentsPartnerTIN)
-	   AND (DocumentsPartnerIsIE Or ValueIsFilled(DocumentsPartnerKPP)) Then
+	   AND ValueIsFilled(DocumentsPartnerTIN) Then
 		
 		GoToPageStatementProcessingPendingContinuation("Send", Undefined);
 		Return;
@@ -923,12 +922,11 @@ Procedure GoToPageStatementProcessingPending()
 		|Заявление может обрабатываться дольше обычного.'");
 		EndIf;
 		
-	ElsIf Not ValueIsFilled(DocumentsPartnerTIN)
-	      Or Not ValueIsFilled(DocumentsPartnerKPP) Then
+	ElsIf Not ValueIsFilled(DocumentsPartnerTIN) Then
 		
 		Text = Text + Chars.LF  + Chars.LF +
-			NStr("en='TIN or KPP of service company is not specified.
-		|Statement might be processed longer than usual.';ru='Не указан ИНН или КПП обслуживающей организации.
+			NStr("en='TIN of service company is not specified.
+		|Statement might be processed longer than usual.';ru='Не указан ИНН обслуживающей организации.
 		|Заявление может обрабатываться дольше обычного.'");
 	EndIf;
 	
@@ -1189,7 +1187,6 @@ Procedure ClearCompanyDetails()
 	ClearAttribute("AbbreviatedName");
 	ClearAttribute("DescriptionFull");
 	ClearAttribute("TIN");
-	ClearAttribute("KPP");
 	ClearAttribute("OGRN");
 	ClearAttribute("BankAccount");
 	ClearAttribute("BIN");
@@ -1218,7 +1215,6 @@ Procedure OnChangingCompanyOnServer(Import = False)
 		Attributes.Insert("AbbreviatedName");
 		Attributes.Insert("DescriptionFull");
 		Attributes.Insert("TIN");
-		Attributes.Insert("KPP");
 		Attributes.Insert("OGRN");
 		Attributes.Insert("BankAccount");
 		Attributes.Insert("BIN");
@@ -1251,16 +1247,11 @@ Procedure OnChangingCompanyOnServer(Import = False)
 		SetAttribute(Attributes, "LegalAddress", , True, True);
 		SetAttribute(Attributes, "ActualAddress", , True, True);
 		
-		If Not ThisIsIndividualEntrepreneur Then
-			SetAttribute(Attributes, "KPP", True);
-		EndIf;
 	EndIf;
 	
 	If ThisIsIndividualEntrepreneur Then
-		Items.KPP.Visible = False;
 		Items.OGRN.Title = NStr("en='OGRNIP';ru='ОГРНИП'");
 	Else
-		Items.KPP.Visible = True;
 		Items.OGRN.Title = NStr("en='OGRN';ru='ОГРН'");
 	EndIf;
 	
@@ -1295,18 +1286,6 @@ Function CompanyFilled()
 		EndIf;
 		If ValueIsFilled(MessageText) Then
 			CommonUseClientServer.MessageToUser(MessageText, , "TIN", , Cancel);
-		EndIf;
-	EndIf;
-	
-	If Not ThisIsIndividualEntrepreneur
-	   AND ValidateAttribute(Cancel, "KPP") Then
-		
-		MessageText = "";
-		If ModuleRegulatedDataClientServer <> Undefined Then
-			ModuleRegulatedDataClientServer.KPPMeetsTheRequirements(KPP, MessageText);
-		EndIf;
-		If ValueIsFilled(MessageText) Then
-			CommonUseClientServer.MessageToUser(MessageText, , "KPP", , Cancel);
 		EndIf;
 	EndIf;
 	
@@ -1765,7 +1744,7 @@ Procedure OnChangingDocumentTypeOnServer()
 		Items.DocumentNumber.Title = NStr("en='Series and number';ru='Серия и номер'");
 		Items.DocumentNumber.Mask = "99 99 999999";
 	Else
-		Items.DocumentNumber.Title = NStr("en='Number';ru='Номер'");
+		Items.DocumentNumber.Title = NStr("en='Number';ru='Number'");
 		Items.DocumentNumber.Mask = "";
 	EndIf;
 	
@@ -1941,7 +1920,6 @@ Procedure OnChangingPartnerOnServer(Import = False)
 	Attributes.Insert("Presentation");
 	Attributes.Insert("ThisIsIndividualEntrepreneur", False);
 	Attributes.Insert("TIN");
-	Attributes.Insert("KPP");
 	
 	If CommonUse.SubsystemExists("StandardSubsystems.Companies") Then
 		Attributes.Insert("Company", Company);
@@ -1975,16 +1953,8 @@ Procedure OnChangingPartnerOnServer(Import = False)
 	
 	FormAttributes = New Structure;
 	FormAttributes.Insert("DocumentsPartnerTIN", Attributes.TIN);
-	FormAttributes.Insert("DocumentsPartnerKPP", Attributes.KPP);
 	
 	SetAttribute(FormAttributes, "DocumentsPartnerTIN", True);
-	
-	If DocumentsPartnerIsIE Then
-		Items.DocumentsPartnerKPP.Visible = False;
-	Else
-		SetAttribute(FormAttributes, "DocumentsPartnerKPP", True);
-		Items.DocumentsPartnerKPP.Visible = True;
-	EndIf;
 	
 EndProcedure
 
@@ -1999,7 +1969,6 @@ EndProcedure
 Procedure ClearPartnerAttributes()
 	
 	ClearAttribute("DocumentsPartnerTIN");
-	ClearAttribute("DocumentsPartnerKPP");
 	
 EndProcedure
 
@@ -2023,18 +1992,6 @@ Function PartnerFilled()
 		EndIf;
 		If ValueIsFilled(MessageText) Then
 			CommonUseClientServer.MessageToUser(MessageText, , "DocumentsPartnerTIN", , Cancel);
-		EndIf;
-	EndIf;
-	
-	If Not DocumentsPartnerIsIE
-	   AND ValueIsFilled(DocumentsPartnerKPP) Then
-		
-		MessageText = "";
-		If ModuleRegulatedDataClientServer <> Undefined Then
-			ModuleRegulatedDataClientServer.KPPMeetsTheRequirements(DocumentsPartnerKPP, MessageText);
-		EndIf;
-		If ValueIsFilled(MessageText) Then
-			CommonUseClientServer.MessageToUser(MessageText, , "DocumentsPartnerKPP", , Cancel);
 		EndIf;
 	EndIf;
 	
@@ -2432,10 +2389,6 @@ Function XMLStatement(Ticket)
 		XMLWriterItem(XMLWriter, "LegalEntityCharacteristic", Not ThisIsIndividualEntrepreneur);
 		XMLWriterItem(XMLWriter, "TIN");
 		
-		If Not ThisIsIndividualEntrepreneur Then
-			XMLWriterItem(XMLWriter, "KPP");
-		EndIf;
-		
 		XMLWriterItem(XMLWriter, "OGRN");
 		XMLWriterItem(XMLWriter, "FullDescr",  DescriptionFull);
 		XMLWriterItem(XMLWriter, "ShortDescription", AbbreviatedName);
@@ -2490,9 +2443,6 @@ Function XMLStatement(Ticket)
 		XMLWriter.WriteEndElement(); // ItemEnd EDSOwners.
 		
 		XMLWriterItem(XMLWriter, "PartnerITN", DocumentsPartnerTIN);
-		If Not DocumentsPartnerIsIE Then
-			XMLWriterItem(XMLWriter, "PartnerIEC", DocumentsPartnerKPP);
-		EndIf;
 		
 		XMLWriterItem(XMLWriter, "UserTicket", Ticket);
 		
@@ -3328,7 +3278,7 @@ Procedure AddressPresentationSelectionStart(Form, Item, ChoiceData, StandardProc
 	
 	ContactInformationKind = New Structure;
 	ContactInformationKind.Insert("Type", PredefinedValue(TypeNameContactInformation));
-	ContactInformationKind.Insert("AddressRussianOnly",        True);
+	ContactInformationKind.Insert("DomesticAddressOnly",        True);
 	ContactInformationKind.Insert("IncludeCountryInPresentation", False);
 	ContactInformationKind.Insert("HideObsoleteAddresses",   False);
 	
@@ -3550,11 +3500,6 @@ Procedure FillAttributesStatements(All = False)
 	FillAttribute("AbbreviatedName");
 	FillAttribute("DescriptionFull");
 	FillAttribute("TIN");
-	
-	If Not ThisIsIndividualEntrepreneur Then
-		FillAttribute("KPP");
-	EndIf;
-	
 	FillAttribute("OGRN");
 	FillAttribute("BankAccount");
 	FillAttribute("BIN");
@@ -3585,7 +3530,7 @@ Procedure FillAttributesStatements(All = False)
 		String.Attribute = NStr("en='Series and number';ru='Серия и номер'");
 		String.Value = AttributePresentationRFPassportNumber(DocumentNumber);
 	Else
-		String.Attribute = NStr("en='Number';ru='Номер'");
+		String.Attribute = NStr("en='Number';ru='Number'");
 		String.Value = DocumentNumber;
 	EndIf;
 	
@@ -3625,12 +3570,6 @@ Procedure FillAttributesStatements(All = False)
 	String = RequestAttributes.Add();
 	String.Attribute = NStr("en='Partner TIN';ru='ИНН партнера'");
 	String.Value = DocumentsPartnerTIN;
-	
-	If Not DocumentsPartnerIsIE Then
-		String = RequestAttributes.Add();
-		String.Attribute = NStr("en='Partner IEC';ru='КПП партнера'");
-		String.Value = DocumentsPartnerKPP;
-	EndIf;
 	
 EndProcedure
 
@@ -3931,7 +3870,6 @@ Procedure WriteStatement()
 		UpdateValue(Content, "AbbreviatedName");
 		UpdateValue(Content, "DescriptionFull");
 		UpdateValue(Content, "TIN");
-		UpdateValue(Content, "KPP");
 		UpdateValue(Content, "OGRN");
 		UpdateValue(Content, "BankAccount");
 		UpdateValue(Content, "BIN");
@@ -3985,7 +3923,6 @@ Procedure WriteStatement()
 		UpdateValue(Content, "DocumentsPartnerRef");
 		UpdateValue(Content, "DocumentsPartnerIsIE");
 		UpdateValue(Content, "DocumentsPartnerTIN");
-		UpdateValue(Content, "DocumentsPartnerKPP");
 		UpdateValue(Content, "DocumentsPrinted");
 		
 	ElsIf CurrentObject.RequestStatus = Enums.CertificateIssueRequestState.Sent Then
@@ -4000,7 +3937,6 @@ Procedure WriteStatement()
 			UpdateValue(Content, "DocumentsPartnerRef");
 			UpdateValue(Content, "DocumentsPartnerIsIE");
 			UpdateValue(Content, "DocumentsPartnerTIN");
-			UpdateValue(Content, "DocumentsPartnerKPP");
 		EndIf;
 		UpdateValue(Content, "UpdateDateConditions");
 		UpdateValue(Content, "RequestProcessingState");
@@ -4848,7 +4784,7 @@ Procedure CreateCryptographyObject(ContinuationProcessor, ExtensionPurposeForFil
 	Context.Insert("ContinuationProcessor", ContinuationProcessor);
 	Context.Insert("CryptographyExternalComponentFunction", CryptographyExternalComponentFunction);
 	
-	CommonUseClient.ShowQuestionAboutFileOperationsExtensionSetting(
+	CommonUseClient.ShowFileSystemExtensionInstallationQuestion(
 		New NotifyDescription("CreateCryptographyObjectAfterConnectingFilesExtension",
 			ThisObject, Context),
 		ExtensionPurposeForFileOperations,
@@ -5060,17 +4996,3 @@ Procedure GetTemporaryFilesDirectoryComponentsAfterCalling(Folder, CallParameter
 EndProcedure
 
 #EndRegion
-
-
-
-
-
-
-
-
-
-
-
-
-
-

@@ -838,11 +838,6 @@ Procedure OnAddUpdateHandlers(Handlers) Export
 	Handler.Procedure = "InformationRegisters.UsersGroupsContents.RefreshDataRegister";
 	
 	Handler = Handlers.Add();
-	Handler.Version = "2.1.3.16";
-	Handler.InitialFilling = True;
-	Handler.Procedure = "UsersService.UpdateUsersPredefinedContactInformationTypes";
-	
-	Handler = Handlers.Add();
 	Handler.Version = "2.1.4.19";
 	Handler.Procedure = "UsersService.MoveExternalUsersGroupsToRoot";
 	
@@ -1081,7 +1076,6 @@ Procedure OnFillingKindsOfRestrictionsRightsOfMetadataObjects(Definition) Export
 	|InformationRegister.UsersGroupsContents.Read.ExternalUsers
 	|InformationRegister.UsersGroupsContents.Read.Users
 	|";
-
 	
 EndProcedure
 
@@ -3377,33 +3371,6 @@ Procedure ConvertRolesNamesToIdentifiers() Export
 		EndDo;
 		InfobaseUpdate.WriteData(Object);
 	EndDo;
-	
-EndProcedure
-
-// Called during transition to configuration 2 version.1.3.16.
-Procedure UpdateUsersPredefinedContactInformationTypes() Export
-	
-	If Not CommonUse.SubsystemExists("StandardSubsystems.ContactInformation") Then
-		Return;
-	EndIf;
-	
-	ModuleContactInformationManagement = CommonUse.CommonModule("ContactInformationManagement");
-	
-	ParametersKind = ModuleContactInformationManagement.ParametersKindContactInformation("EmailAddress");
-	ParametersKind.Kind = "UserEmail";
-	ParametersKind.ToolTip = NStr("en='User email address';ru='Адрес электронной почты пользователя'");
-	ParametersKind.EditMethodEditable = True;
-	ParametersKind.AllowInputOfMultipleValues = True;
-	ParametersKind.Order = 1;
-	ModuleContactInformationManagement.SetPropertiesContactInformationKind(ParametersKind);
-	
-	ParametersKind = ModuleContactInformationManagement.ParametersKindContactInformation("Phone");
-	ParametersKind.Kind = "UserPhone";
-	ParametersKind.ToolTip = NStr("en='Use contact phone number';ru='Контактный телефон пользователя'");
-	ParametersKind.EditMethodEditable = True;
-	ParametersKind.AllowInputOfMultipleValues = True;
-	ParametersKind.Order = 2;
-	ModuleContactInformationManagement.SetPropertiesContactInformationKind(ParametersKind);
 	
 EndProcedure
 

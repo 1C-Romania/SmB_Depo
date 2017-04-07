@@ -169,17 +169,3 @@ Procedure SaveAttributeValue(AttributePathToData, Result)
 EndProcedure
 
 #EndRegion
-
-
-
-
-
-
-
-
-
-
-
-
-
-

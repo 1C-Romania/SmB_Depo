@@ -2,28 +2,92 @@
 
 #Region EventsHandlers
 
-// Procedure - BeforeWrite event handler.
-//
+Procedure Filling(FillingData, FillingText, StandardProcessing)
+	
+	FillByDefault();
+
+EndProcedure
+
 Procedure BeforeWrite(Cancel)
 	
-	If Not DataExchange.Load AND ThisObject.IsNew()
-	AND Not Constants.FunctionalOptionAccountingByMultipleCompanies.Get() Then
-		CommonUseClientServer.MessageToUser(NStr("en='Accounting by several companies is disabled in applicationm .';ru='В программе отключен учет по нескольким организациям.'"));
+	// 1. Actions performed always, including the exchange of data
+	
+	If IsNew() Then
+		
+		// The "Ref" is certainly not filled.
+		// However, reference may be transmitted in the During the exchange.
+		
+		NewObjectRef = GetNewObjectRef();
+		If NewObjectRef.IsEmpty() Then
+			SetNewObjectRef(Catalogs.Companies.GetRef());
+		EndIf;
+		
+	EndIf;
+	
+	// No execute action in the data exchange
+	If DataExchange.Load Then
+		Return;
+	EndIf;
+	
+	// 2. No further action is performed when recording data exchange mechanism is initiated
+	
+	// Check the possibility of changes
+	If IsNew() And Not GetFunctionalOption("UseSeveralCompanies") Then
+		CommonUseClientServer.MessageToUser(NStr("ru = 'В программе отключен учет по нескольким организациям.'; en = 'Accounting by several companies is disabled in application.'"));
 		Cancel = True;
 	EndIf;
 	
-EndProcedure // BeforeWrite()
+	If Cancel Then
+		Return;
+	EndIf;
+	
+	BringDataToConsistentState();
+	
+EndProcedure
 
-// Event handler OnCopy
-//
 Procedure OnCopy(CopiedObject)
 	
-	BankAccountByDefault = Undefined;
+	If DataExchange.Load Then
+		Return;
+	EndIf;
 	
-	LogoFile = Catalogs.CompaniesAttachedFiles.EmptyRef();
-	FileFacsimilePrinting = Catalogs.CompaniesAttachedFiles.EmptyRef();
+	BankAccountByDefault	= Undefined;
+	LogoFile				= Undefined;
+	FileFacsimilePrinting	= Undefined;
 	
-EndProcedure // OnCopy()
+EndProcedure
+
+#EndRegion
+
+#Region ServiceProceduresAndFunctions
+
+Procedure FillByDefault()
+	
+	If Not ValueIsFilled(BusinessCalendar) Then
+		BusinessCalendar = SmallBusinessServer.GetCalendarByProductionCalendarUAE();
+	EndIf;
+	
+	If Not ValueIsFilled(DefaultVATRate) Then
+		DefaultVATRate = SmallBusinessReUse.GetVATRateWithoutVAT();
+	EndIf;
+	
+	If Not ValueIsFilled(PettyCashByDefault) Then
+		PettyCashByDefault = Catalogs.PettyCashes.GetPettyCashByDefault();
+	EndIf;
+	
+EndProcedure
+
+// Procedure coordinates the state some attributes of the object depending on the other
+//
+Procedure BringDataToConsistentState()
+	
+	If LegalEntityIndividual = Enums.CounterpartyKinds.LegalEntity Then
+		
+		Individual = Undefined;
+		
+	EndIf;
+	
+EndProcedure
 
 #EndRegion
 

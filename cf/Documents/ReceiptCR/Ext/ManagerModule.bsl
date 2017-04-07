@@ -982,7 +982,7 @@ Function PrintForm(ObjectsArray, PrintObjects, TemplateName)
 		Spreadsheet.Put(TemplateArea);
 		
 		TemplateArea = Template.GetArea("Vendor");
-		VendorPresentation = SmallBusinessServer.CompaniesDescriptionFull(InfoAboutCompany, "FullDescr,TIN,KPP,LegalAddress,PhoneNumbers,");
+		VendorPresentation = SmallBusinessServer.CompaniesDescriptionFull(InfoAboutCompany, "FullDescr,TIN,LegalAddress,PhoneNumbers,");
 		TemplateArea.Parameters.VendorPresentation = VendorPresentation;
 		TemplateArea.Parameters.Vendor = Header.Company;
 		Spreadsheet.Put(TemplateArea);

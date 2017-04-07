@@ -175,20 +175,6 @@ Procedure SaveAndExecuteCurrentSettingChoice()
 	
 	CloseOnChoice = True;
 	ExecuteCase(ViewCurrentSettings);
-EndProcedure
+EndProcedure;
 
 #EndRegion
-
-
-
-
-
-
-
-
-
-
-
-
-
-

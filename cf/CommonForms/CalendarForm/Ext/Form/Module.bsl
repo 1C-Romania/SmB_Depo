@@ -53,17 +53,3 @@ EndProcedure // CalendarDateOnActivateDate()
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-

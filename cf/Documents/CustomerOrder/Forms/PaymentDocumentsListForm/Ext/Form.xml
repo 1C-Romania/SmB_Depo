@@ -142,6 +142,10 @@
 							<v8:lang>en</v8:lang>
 							<v8:content>Company</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Организация</v8:content>
+						</v8:item>
 					</InputHint>
 					<ContextMenu name="FilterCompanyContextMenu" id="52"/>
 					<ExtendedTooltip name="FilterCompanyExtendedTooltip" id="233"/>
@@ -640,10 +644,14 @@
 									<v8:lang>en</v8:lang>
 									<v8:content>Company</v8:content>
 								</v8:item>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Организация</v8:content>
+								</v8:item>
 							</Title>
 							<Width>20</Width>
-							<ContextMenu name="CounterpartyContextMenu" id="9"/>
-							<ExtendedTooltip name="CounterpartyExtendedTooltip" id="260"/>
+							<ContextMenu name="CompanyContextMenu" id="9"/>
+							<ExtendedTooltip name="CompanyExtendedTooltip" id="260"/>
 						</LabelField>
 						<LabelField name="SalesStructuralUnit" id="30">
 							<DataPath>List.SalesStructuralUnit</DataPath>
@@ -1625,6 +1633,10 @@ WHERE
 					<v8:lang>en</v8:lang>
 					<v8:content>Company</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Организация</v8:content>
+				</v8:item>
 			</Title>
 			<Type>
 				<v8:Type>cfg:CatalogRef.Companies</v8:Type>
@@ -2159,12 +2171,12 @@ WHERE
 				<Type>Auto</Type>
 			</Item>
 			<Item>
-				<Command>Document.CustomerOrder.Command.InvoiceWithCCDCreateBasedOn</Command>
+				<Command>0:37e02458-4631-460d-a422-85daae2b10ea</Command>
 				<Type>Auto</Type>
 				<Index>11</Index>
 			</Item>
 			<Item>
-				<Command>Document.CustomerInvoiceNote.StandardCommand.CreateBasedOn</Command>
+				<Command>2:bc0f80db-2084-4ebc-8fab-df30c343112b</Command>
 				<Type>Auto</Type>
 				<Index>10</Index>
 			</Item>

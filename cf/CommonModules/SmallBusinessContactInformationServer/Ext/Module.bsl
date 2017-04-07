@@ -33,7 +33,7 @@ Function PrepareRecipientsEmailAddresses(val Recipients, Recursive = True) Expor
 	EmailAddress = Enums.ContactInformationTypes.EmailAddress;
 	
 	ArrayOfRecipients = Recipients.UnloadValues();
-	TableEmail = ContactInformationManagement.ContactInformationOfObjects(ArrayOfRecipients, EmailAddress);
+	TableEmail = ContactInformationManagement.ObjectsContactInformation(ArrayOfRecipients, EmailAddress);
 	
 	For Each Recipient in Recipients Do
 		
@@ -79,7 +79,7 @@ EndFunction
 // The function returns field value "FieldsValues" of contact information
 //
 // Ref - ref to catalog (Organization, Counterparty)
-//  ContactInformationKind - contact information kind (Catalog.ContactInformationTypes)
+//  ContactInformationKind - contact information kind (Catalog.ContactInformationKinds)
 //
 Function GetValueOfContactInformationFields(Ref, ContactInformationKind) Export
 	

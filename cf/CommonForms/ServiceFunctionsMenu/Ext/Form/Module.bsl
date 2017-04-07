@@ -377,17 +377,3 @@ Procedure OpenUnpaidJobOrdersClick(Item)
 	OpenForm("Document.CustomerOrder.ListForm", OpenParameters, , "JobOrderDocumentsListFormStageUnpaid");
 	
 EndProcedure // OpenUnpaidJobOrdersClick()
-
-
-
-
-
-
-
-
-
-
-
-
-
-

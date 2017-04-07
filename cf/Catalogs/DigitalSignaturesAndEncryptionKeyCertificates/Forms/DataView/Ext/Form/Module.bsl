@@ -47,17 +47,3 @@ Procedure OpenData()
 EndProcedure
 
 #EndRegion
-
-
-
-
-
-
-
-
-
-
-
-
-
-

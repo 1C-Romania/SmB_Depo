@@ -92,7 +92,7 @@ Function CheckForCorrectnessAndBlankExportValue(DocumentRow)
 	AttributesPaymentDocumentExportTNRPayer = Payer + "BankAccount," + Payer + "SettlementBank," + Payer + "BankCity," + Payer + "BankPCBIC";
 	AttributesPaymentDocumentExportRecipient = Recipient + "Account," + Recipient + "," + Recipient + "TIN";
 	AttributesPaymentDocumentExportTNRRecipient = Recipient + "BankAccount," + Recipient + "SettlementBank," + Recipient + "BankCity," + Recipient + "BankPCBIC";
-	AttributesExDockPlBudgetPayment = "AuthorStatus,PayerKPP,PayeeKPP,BKCode,OKATOCode,BasisIndicator,PeriodIndicator,NumberIndicator,DateIndicator,TypeIndicator";
+	AttributesExDockPlBudgetPayment = "AuthorStatus,BasisIndicator,PeriodIndicator,NumberIndicator,DateIndicator,TypeIndicator";
 	
 	StringAttributes = "%AttributesPaymentDocumentExportBasic%,%AttributesPaymentDocumentExportPayer%,%AttributesPaymentDocumentExportTNRPayer%%AttributesPaymentDocumentExportRecipient%,%AttributesPaymentDocumentExportTNRRecipient%";
 	StringAttributes = StrReplace(StringAttributes, "%AttributesPaymentDocumentExportBasic%", AttributesPaymentDocumentExportBasic);
@@ -499,15 +499,12 @@ Procedure FillDump()
 	|	PaymentOrder.PayeeText,
 	|	PaymentOrder.TransferToBudgetKind,
 	|	PaymentOrder.PayerTIN AS PayerTIN,
-	|	PaymentOrder.PayerKPP AS PayerKPP,
 	|	PaymentOrder.PayeeTIN AS PayeeTIN,
-	|	PaymentOrder.PayeeKPP AS PayeeKPP,
 	|	PaymentOrder.BKCode,
 	|	PaymentOrder.OKATOCode,
 	|	PaymentOrder.Company.DescriptionFull AS Company,
 	|	PaymentOrder.Company.PayerDescriptionOnTaxTransfer AS CompanyTaxTransfer,
 	|	PaymentOrder.Company.TIN AS CompanyTIN,
-	|	PaymentOrder.Company.KPP AS CompanyKPP,
 	|	PaymentOrder.BankAccount AS CompanyAccount,
 	|	PaymentOrder.BankAccount.AccountNo AS CompanyAccountNo,
 	|	PaymentOrder.BankAccount.Bank.Code AS CompanyBankBIC,
@@ -519,7 +516,6 @@ Procedure FillDump()
 	|	PaymentOrder.BankAccount.AccountsBank.Code AS CompanyBankProcessingCenterBIC,
 	|	PaymentOrder.BankAccount.AccountsBank.CorrAccount AS CompanyBankProcessingCenterCorrAccount,
 	|	PaymentOrder.Counterparty.TIN AS CounterpartyTIN,
-	|	PaymentOrder.Counterparty.KPP AS CounterpartyKPP,
 	|	PaymentOrder.CounterpartyAccount AS CounterpartyAccount,
 	|	PaymentOrder.CounterpartyAccount.AccountNo AS CounterpartyAccountNo,
 	|	PaymentOrder.CounterpartyAccount.Bank AS CounterpartyBank,

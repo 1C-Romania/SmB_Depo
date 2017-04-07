@@ -254,16 +254,9 @@ Procedure ImportDriverFile(FullFileName)
 	
 	TempDriverFile = New File(FullFileName);
 	
-	//If GetDriverInformationByFile(TempDriverFile.DescriptionFull) Then
-	If GetDriverInformationByFile(TempDriverFile.FullName) Then
+	If GetDriverInformationByFile(TempDriverFile.DescriptionFull) Then
 		Notification = New NotifyDescription("ImportDriverFileWhenFinished", ThisObject, TempDriverFile.Name);
-		//===============================
-		//©# (Begin)	AlekS [2016-09-30]
-		//BeginPuttingFiles(Notification, Undefined, TempDriverFile.DescriptionFull, False) 
-		BeginPuttingFiles(Notification, Undefined, TempDriverFile.FullName, False) 
-		//©# (End)		AlekS [2016-09-30]
-		//===============================
-	
+		BeginPuttingFiles(Notification, Undefined, TempDriverFile.DescriptionFull, False) 
 	EndIf;
 	
 EndProcedure
@@ -442,12 +435,7 @@ Procedure UpdateItemsState();
 		
 	Items.FormExportDriverFile.Visible = VisibleExportFile;
 	Items.FormSetupDriver.Visible     = VisibleExportFile;
-	//===============================
-	//©# (Begin)	AlekS [2016-09-28]
-	//Items.FormExportDriverFile.Visible = Not ProvidedApplication;
-	Items.FormImportDriverFile.Visible = Not ProvidedApplication;
-	//©# (End)		AlekS [2016-09-28]
-	//===============================
+	Items.FormExportDriverFile.Visible = Not ProvidedApplication;
 	
 	If Not IsBlankString(DriverFileName) Or ProvidedApplication Then
 		If IsBlankString(Object.ObjectID) Then
@@ -517,17 +505,3 @@ Procedure SetupDriver()
 EndProcedure
 
 #EndRegion
-
-
-
-
-
-
-
-
-
-
-
-
-
-

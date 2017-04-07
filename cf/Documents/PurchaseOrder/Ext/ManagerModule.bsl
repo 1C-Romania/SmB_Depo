@@ -1179,11 +1179,11 @@ Function PrintForm(ObjectsArray, PrintObjects)
 		SpreadsheetDocument.Put(TemplateArea);
 		
 		TemplateArea = Template.GetArea("Customer");
-		TemplateArea.Parameters.RecipientPresentation = SmallBusinessServer.CompaniesDescriptionFull(InfoAboutCompany, "FullDescr,TIN,KPP,LegalAddress,PhoneNumbers,");
+		TemplateArea.Parameters.RecipientPresentation = SmallBusinessServer.CompaniesDescriptionFull(InfoAboutCompany, "FullDescr,TIN,LegalAddress,PhoneNumbers,");
 		SpreadsheetDocument.Put(TemplateArea);
 		
 		TemplateArea = Template.GetArea("Vendor");
-		VendorPresentation = SmallBusinessServer.CompaniesDescriptionFull(InfoAboutCounterparty, "FullDescr,TIN,KPP,LegalAddress,PhoneNumbers,");
+		VendorPresentation = SmallBusinessServer.CompaniesDescriptionFull(InfoAboutCounterparty, "FullDescr,TIN,LegalAddress,PhoneNumbers,");
 		TemplateArea.Parameters.VendorPresentation = VendorPresentation; 
 		SpreadsheetDocument.Put(TemplateArea);
 		

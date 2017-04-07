@@ -522,16 +522,3 @@ Procedure RecipientOfWastesOpening(Item, StandardProcessing)
 	EndIf;
 	
 EndProcedure // RecipientOfWastesOpening()
-
-
-
-
-
-
-
-
-
-
-
-
-

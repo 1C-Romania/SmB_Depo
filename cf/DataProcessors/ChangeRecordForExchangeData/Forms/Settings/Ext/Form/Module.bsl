@@ -221,17 +221,3 @@ Procedure SetSettingAddressOfExternalQueryProcessors(PathToFile)
 EndProcedure
 
 #EndRegion
-
-
-
-
-
-
-
-
-
-
-
-
-
-

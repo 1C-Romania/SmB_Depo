@@ -12,24 +12,11 @@ Procedure OnCreateAtServer(Cancel, StandardProcessing)
 		ReadOnly = True;
 	EndIf;
 	
-	CanUpdateClassifier =
-		Not CommonUseReUse.DataSeparationEnabled() // Updated automatically in the service model.
-		AND Not CommonUse.IsSubordinateDIBNode()   // Updated automatically in DIB node.
-		AND AccessRight("Update", Metadata.Catalogs.RFBankClassifier); // User with the required rights.
-
-	Items.FormImportClassifier.Visible = CanUpdateClassifier;
-
 EndProcedure
 
 #EndRegion
 
 #Region FormCommandsHandlers
-
-&AtClient
-Procedure ImportClassifier(Command)
-	FormParameters = New Structure("OpenFromList");
-	OpenForm("Catalog.RFBankClassifier.Form.ImportClassifier", FormParameters, ThisObject);
-EndProcedure
 
 &AtClient
 Procedure ListBeforeAddRow(Item, Cancel, Copy, Parent, Group)
@@ -43,16 +30,3 @@ Procedure ListBeforeAddRow(Item, Cancel, Copy, Parent, Group)
 EndProcedure
 
 #EndRegion
-
-
-
-
-
-
-
-
-
-
-
-
-

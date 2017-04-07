@@ -24,7 +24,6 @@
 // * Phone - String - company phone;
 // * Description - String - company name;
 // * TIN - String - Company's TIN;
-// * KPP - String - Company's KPP;
 // * OGRN - String - Company OGRN;
 // * TaxOfficeCode - String - IMNS company code;
 // * LegalEntityIndividual - String - kind, possible values are: LegalEntity or Individual;
@@ -68,7 +67,6 @@
 //		
 // 	CompanyData.Insert(Name   , );
 // 	CompanyData.Insert(TIN            , );
-// 	CompanyData.Insert(KPP            , );
 // 	CompanyData.Insert(OGRN           , );
 // 	CompanyData.Insert(IMNSCode        , );
 // 	CompanyData.Insert(LegalEntityIndividual,      Individual);
@@ -85,11 +83,10 @@
 //	
 // CompanyData.Insert(Name,   CompanyObject.DescriptionFull);
 // CompanyData.Insert(TIN,            CompanyObject.TIN);
-// CompanyData.Insert(KPP,            CompanyObject.KPP);
 // CompanyData.Insert(OGRN,           CompanyObject.OGRN);
 // CompanyData.Insert(IMNSCode        , );
 //	
-// BodyKinds = Enums.LegalEntityIndividual;
+// BodyKinds = Enums.CounterpartyKinds;
 // If CompanyObject.LegalEntityIndividual
 // 	= BodyKinds.LegalEntity OR CompanyObject.LegalEntityIndividual =
 // 	BodyKinds.LegalEntityNotResident Then CompanyData.Insert(LegalEntityIndividual, LegalEntity);
@@ -125,7 +122,7 @@
 //	
 // SearchStructure = New Structure;
 // SearchStructure.Insert(Type, Enums.ContactInformationTypes.Phone);
-// SearchStructure.Insert(Kind, Catalogs.ContactInformationTypes.CompanyPhone);
+// SearchStructure.Insert(Kind, Catalogs.ContactInformationKinds.CompanyPhone);
 // PhoneRows = CompanyObject.ContactInformation.FindRows(SearchStructure);
 //	
 // If PhoneRows.Count() >
@@ -137,15 +134,14 @@
 //	
 // Example for Enterprise accounting, edition 3.0:
 //	
-// CompanyProperties = CommonUse.ObjectAttributeValues(Company, DescriptionFull, TIN, KPP, OGRN, TaxOfficeCode, LegalEntityIndividual);
+// CompanyProperties = CommonUse.ObjectAttributeValues(Company, DescriptionFull, TIN, OGRN, TaxOfficeCode, LegalEntityIndividual);
 //	
-// CompanyIndividual = CompanyProperties.LegalEntityIndividual = Enums.LegalEntityIndividual.Individual;
+// CompanyIndividual = CompanyProperties.LegalEntityIndividual = Enums.CounterpartyKinds.Individual;
 //	
 // CompanyData.Insert(CompanyRef, Company);
 //	
 // CompanyData.Insert(Name   , CompanyProperties.DescriptionFull);
 // CompanyData.Insert(TIN,            CompanyProperties.TIN);
-// CompanyData.Insert(KPP,            CompanyProperties.KPP);
 // CompanyData.Insert(OGRN,           CompanyProperties.OGRN);
 // CompanyData.Insert(IMNSCode,        CompanyProperties.TaxOfficeCode);
 //	
@@ -163,11 +159,11 @@
 //	
 // If CompanyIndividual
 // 	Then ContactInformationObject = CommonUse.GetAttributeValue(Company, Entrepreneur);
-// 	ContactInformationKind = Catalogs.ContactInformationTypes.ResidenceAddress Individuals;
+// 	ContactInformationKind = Catalogs.ContactInformationKinds.ResidenceAddress Individuals;
 // 	CatalogName = Individuals;
 // Else
 // 	ContactInformationObject = Company;
-// 	ContactInformationKind = Catalogs.ContactInformationTypes.CompanyLegalAddress;
+// 	ContactInformationKind = Catalogs.ContactInformationKinds.CompanyLegalAddress;
 // 	CatalogName = Company;
 // EndIf;
 //	
@@ -235,17 +231,16 @@
 Procedure FillCompanyRegistrationData(Company, CompanyData) Export
 	
 	CompanyProperties = CommonUse.ObjectAttributesValues(Company, 
-			"DescriptionFull, TIN, KPP, OGRN, LegalEntityIndividual");
+			"DescriptionFull, TIN, OGRN, LegalEntityIndividual");
 	
 	CompanyData.Insert("CompanyRef", Company);
 	
 	CompanyData.Insert("Description", CompanyProperties.DescriptionFull);
 	CompanyData.Insert("TIN"         , CompanyProperties.TIN);
-	CompanyData.Insert("KPP"         , CompanyProperties.KPP);
 	CompanyData.Insert("OGRN"        , CompanyProperties.OGRN);
 	CompanyData.Insert("TaxOfficeCode"     , "");
 	
-	If CompanyProperties.LegalEntityIndividual = Enums.LegalEntityIndividual.Ind Then
+	If CompanyProperties.LegalEntityIndividual = Enums.CounterpartyKinds.Individual Then
 		CompanyData.Insert("LegalEntityIndividual", "Ind");
 	Else
 		CompanyData.Insert("LegalEntityIndividual", "LegalEntity");
@@ -311,7 +306,7 @@ Procedure FillCompanyRegistrationData(Company, CompanyData) Export
 		|	Catalog.Companies.ContactInformation AS ContactInformation
 		|WHERE
 		|	ContactInformation.Ref = &Company
-		|	AND ContactInformation.Type = VALUE(Catalog.ContactInformationTypes.CompanyLegalAddress)";
+		|	AND ContactInformation.Type = VALUE(Catalog.ContactInformationKinds.CompanyLegalAddress)";
 	
 	Query.SetParameter("Company", Company);
 	
@@ -354,7 +349,7 @@ Procedure FillCompanyRegistrationData(Company, CompanyData) Export
 	EndIf;
 	
 	CompanyData.Insert("Phone", ContactInformationManagement.ObjectContactInformation(
-				Company, Catalogs.ContactInformationTypes.CompanyPhone));
+				Company, Catalogs.ContactInformationKinds.CompanyPhone));
 	
 EndProcedure
 

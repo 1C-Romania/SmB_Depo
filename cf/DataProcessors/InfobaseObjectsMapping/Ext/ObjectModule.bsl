@@ -220,7 +220,6 @@ Procedure Assistant() Export
 		// popular search fields
 		AddSearchField(SearchFieldArray, "Company");
 		AddSearchField(SearchFieldArray, "TIN");
-		AddSearchField(SearchFieldArray, "KPP");
 		
 		If SearchFieldArray.Count() = 0 Then
 			

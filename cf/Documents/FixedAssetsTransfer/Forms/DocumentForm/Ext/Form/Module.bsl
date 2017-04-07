@@ -422,45 +422,44 @@ Function GenerateLabelPricesAndCurrency(LabelStructure)
 	If LabelStructure.CurrencyTransactionsAccounting Then
 		
 		If ValueIsFilled(LabelStructure.DocumentCurrency) Then
-			//===============================
-			//©# (Begin)	AlekS [2016-09-13]
-			//LabelText = NStr("en='%Currency%';ru='%Вал%'");
-			//LabelText = StrReplace(LabelText, "%Currency%", TrimAll(String(LabelStructure.DocumentCurrency)));
-			LabelText = TrimAll(String(LabelStructure.DocumentCurrency));
-			//©# (End)		AlekS [2016-09-13]
-			//===============================
+			
+			LabelText = NStr("en='%Currency%';ru='%Currency%'");
+			LabelText = StrReplace(LabelText, "%Currency%", TrimAll(String(LabelStructure.DocumentCurrency)));
+			
 		EndIf;
 		
 	EndIf;
 	
 	// VAT taxation.
 	If ValueIsFilled(LabelStructure.VATTaxation) Then
-		//If IsBlankString(LabelText) Then
-		//	LabelText = LabelText + NStr("en='%VATTaxation%';ru='%VATTaxation%'");
-		//Else
-		//	LabelText = LabelText + NStr("en=' • %VATTaxation%';ru=' • %НалогообложениеНДС%'");
-		//EndIf;
-		//LabelText = StrReplace(LabelText, "%VATTaxation%", TrimAll(String(LabelStructure.VATTaxation)));
-		LabelText = LabelText + " • " + TrimAll(String(LabelStructure.VATTaxation));
-		//©# (End)		AlekS [2016-09-13]
-		//===============================
+		
+		If IsBlankString(LabelText) Then
+			
+			LabelText = LabelText + NStr("en='%VATTaxation%';ru='%VATTaxation%'");
+			
+		Else
+			
+			LabelText = LabelText + NStr("en=' • %VATTaxation%';ru=' • %VATTaxation%'");
+			
+		EndIf;
+		
+		LabelText = StrReplace(LabelText, "%VATTaxation%", TrimAll(String(LabelStructure.VATTaxation)));
+		
 	EndIf;
 	
-	
-//===============================
-//©# (Begin)	AlekS [2016-09-13]
-//
-//  THIS FLAG HAS NO CHANCE TO BE SHOWED - need attention !   8-(
-//
-//©# (End)		AlekS [2016-09-13]
-//===============================
 	// Flag showing that amount includes VAT.
 	If IsBlankString(LabelText) Then	
+		
 		If LabelStructure.AmountIncludesVAT Then	
+			
 			LabelText = NStr("en='Amount includes VAT';ru='Сумма включает НДС'");
+			
 		Else
+			
 			LabelText = NStr("en='Amount does not include VAT';ru='Сумма не включает НДС'");
+			
 		EndIf;
+		
 	EndIf;
 	
 	Return LabelText;
@@ -1347,8 +1346,6 @@ Procedure PrepaymentMultiplicityOnChange(Item)
 		TabularSectionRow.Multiplicity,
 		?(Object.DocumentCurrency = NationalCurrency,RepetitionNationalCurrency, Object.Multiplicity)
 	);
-	
-	
 	
 EndProcedure
 

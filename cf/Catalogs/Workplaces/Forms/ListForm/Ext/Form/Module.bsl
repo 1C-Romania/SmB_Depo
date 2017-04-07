@@ -72,16 +72,3 @@ Function GetWorkplaceByClientID(ID)
 EndFunction
 
 #EndRegion
-
-
-
-
-
-
-
-
-
-
-
-
-

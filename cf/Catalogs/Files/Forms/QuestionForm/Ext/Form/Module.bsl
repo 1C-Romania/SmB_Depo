@@ -39,17 +39,3 @@ Procedure FilesSelection(Item, SelectedRow, Field, StandardProcessing)
 EndProcedure
 
 #EndRegion
-
-
-
-
-
-
-
-
-
-
-
-
-
-

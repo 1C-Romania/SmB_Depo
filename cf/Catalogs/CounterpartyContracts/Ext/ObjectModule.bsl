@@ -1,5 +1,32 @@
 ﻿#If Server Or ThickClientOrdinaryApplication Or ExternalConnection Then
 
+#Region EventsHandlers
+
+Procedure Filling(FillingData, FillingText, StandardProcessing)
+	
+	If TypeOf(FillingData) = Type("CatalogRef.Counterparties") Then
+		// Program filling by method Fill()
+		
+		StandardProcessing = False;
+		
+		CompanyByDefault = SmallBusinessReUse.GetValueByDefaultUser(UsersClientServer.AuthorizedUser(), "MainCompany");
+		If Not ValueIsFilled(CompanyByDefault) Then
+			CompanyByDefault = Catalogs.Companies.MainCompany;
+		EndIf;
+		
+		Description				= "Main contract";
+		SettlementsCurrency		= Constants.NationalCurrency.Get();
+		Company					= CompanyByDefault;
+		ContractKind			= Enums.ContractKinds.WithCustomer;
+		PriceKind				= Catalogs.PriceKinds.GetMainKindOfSalePrices();
+		Owner					= FillingData;
+		VendorPaymentDueDate	= Constants.VendorPaymentDueDate.Get();
+		CustomerPaymentDueDate	= Constants.CustomerPaymentDueDate.Get();
+		
+	EndIf;
+	
+EndProcedure
+
 Procedure FillCheckProcessing(Cancel, CheckedAttributes)
 	
 	// Prices kind.
@@ -13,6 +40,17 @@ Procedure BeforeWrite(Cancel)
 	
 	If DataExchange.Load Then
 		Return;
+	EndIf;
+	
+	If DeletionMark Then
+		
+		CounterpartyAttributesValues = CommonUse.ObjectAttributesValues(Owner, "DeletionMark, ContractByDefault");
+		
+		If Not CounterpartyAttributesValues.DeletionMark And CounterpartyAttributesValues.ContractByDefault = Ref Then
+			MessageText = NStr("ru='Договор контрагента, установленный в качестве основного, не может быть помечен на удаление.'; en = 'The counterparty contract, established as the main, can not be marked for deletion.'");
+			CommonUseClientServer.MessageToUser(MessageText, Ref,,, Cancel);
+		EndIf;
+		
 	EndIf;
 	
 	Query = New Query(
@@ -31,7 +69,7 @@ Procedure BeforeWrite(Cancel)
 	Selection = Query.Execute().Select();
 	
 	If Selection.Next() Then
-		MessageText = NStr("en='Contracts are not accounted for the counterparty.';ru='Для контрагента не ведется учет по договорам.'");
+		MessageText = NStr("en = 'Contracts are not accounted for the counterparty.'; ru = 'Для контрагента не ведется учет по договорам.'");
 		SmallBusinessServer.ShowMessageAboutError(
 			ThisObject,
 			MessageText,
@@ -40,8 +78,14 @@ Procedure BeforeWrite(Cancel)
 			,
 			Cancel
 		);
-	EndIf
+	EndIf;
+	
+	If ValueIsFilled(Ref) Then
+		AdditionalProperties.Insert("DeletionMark", Ref.DeletionMark);
+	EndIf;
 	
 EndProcedure
+
+#EndRegion
 
 #EndIf

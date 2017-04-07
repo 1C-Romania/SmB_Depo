@@ -146,17 +146,3 @@ Procedure NotificationProcessing(EventName, Parameter, Source)
 	
 EndProcedure // NotificationProcessing()
 // 
-
-
-
-
-
-
-
-
-
-
-
-
-
-

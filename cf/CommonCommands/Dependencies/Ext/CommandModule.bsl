@@ -6,7 +6,7 @@ Procedure CommandProcessing(CommandParameter, CommandExecuteParameters)
 	
 	If ValueIsFilled(CommandParameter) Then
 	
-		OpenForm("CommonForm.DependenciesForm",New Structure("DocumentRef", CommandParameter),
+		OpenForm("CommonForm.Dependencies",New Structure("FilterObject", CommandParameter),
 				CommandExecuteParameters.Source,
 				CommandExecuteParameters.Source.UniqueKey,
 				CommandExecuteParameters.Window);

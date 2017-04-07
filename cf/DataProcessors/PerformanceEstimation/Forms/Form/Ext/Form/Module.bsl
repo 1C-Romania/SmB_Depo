@@ -183,7 +183,7 @@ EndProcedure
 &AtClient
 Procedure DataExport(Command)
 	NotifyDescription = New NotifyDescription("SelectFileAskedExport", ThisObject);
-	CommonUseClient.ShowQuestionAboutFileOperationsExtensionSetting(NOTifyDescription);
+	CommonUseClient.ShowFileSystemExtensionInstallationQuestion(NOTifyDescription);
 EndProcedure
 
 &AtClient
@@ -1527,17 +1527,3 @@ Procedure DeleteKeyOperationOnServer()
 EndProcedure
 
 #EndRegion
-
-
-
-
-
-
-
-
-
-
-
-
-
-

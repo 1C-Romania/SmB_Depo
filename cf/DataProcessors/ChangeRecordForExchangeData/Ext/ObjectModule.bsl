@@ -266,7 +266,7 @@ Function GenerateMetadataStructure(ExchangePlanName = Undefined) Export
 	MetadataLevelForm(CurStringNumber, CurParameters, 17, 18, True, "AccumulationRegisters",      NStr("en='Accumulation registers';ru='Регистры накопления'"));
 	MetadataLevelForm(CurStringNumber, CurParameters, 19, 20, True, "AccountingRegisters",     NStr("en='Accounting registers';ru='Регистры бухгалтерии'"));
 	MetadataLevelForm(CurStringNumber, CurParameters, 21, 22, True, "CalculationRegisters",         NStr("en='Calculation registers';ru='Регистры расчета'"));
-	MetadataLevelForm(CurStringNumber, CurParameters, 23, 24, True, "BusinessProcesses",          NStr("en='Business-processes';ru='Деловые процессы'"));
+	MetadataLevelForm(CurStringNumber, CurParameters, 23, 24, True, "BusinessProcesses",          NStr("en='Business processes';ru='Деловые процессы'"));
 	MetadataLevelForm(CurStringNumber, CurParameters, 25, 26, True, "Tasks",                  NStr("en='Tasks';ru='Задания'"));
 	
 	Return Result;

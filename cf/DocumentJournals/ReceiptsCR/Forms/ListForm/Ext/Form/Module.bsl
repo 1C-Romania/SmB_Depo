@@ -862,17 +862,3 @@ Procedure ListBeforeRowChange(Item, Cancel)
 EndProcedure
 
 #EndRegion
-
-
-
-
-
-
-
-
-
-
-
-
-
-

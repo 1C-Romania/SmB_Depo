@@ -279,32 +279,6 @@
 					<ContextMenu name="ListPayerTINContextMenu" id="17"/>
 					<ExtendedTooltip name="ListPayerTINExtendedTooltip" id="74"/>
 				</LabelField>
-				<LabelField name="ListBkCode" id="20">
-					<DataPath>List.BKCode</DataPath>
-					<UserVisible>
-						<xr:Common>false</xr:Common>
-					</UserVisible>
-					<ContextMenu name="ListBKCodeContextMenu" id="21"/>
-					<ExtendedTooltip name="ListBKCodeExtendedTooltip" id="76"/>
-				</LabelField>
-				<LabelField name="ListOKATOCode" id="22">
-					<DataPath>List.OKATOCode</DataPath>
-					<UserVisible>
-						<xr:Common>false</xr:Common>
-					</UserVisible>
-					<ToolTip>
-						<v8:item>
-							<v8:lang>en</v8:lang>
-							<v8:content>The OKTMO code is the code of the territory (settlement) where assets are accumulated (before 01/01/2014 - the OKATO code)</v8:content>
-						</v8:item>
-						<v8:item>
-							<v8:lang>ru</v8:lang>
-							<v8:content>Код ОКТМО - код территории (населенного пункта), на которой мобилизуются средства (до 01.01.2014 код ОКАТО)</v8:content>
-						</v8:item>
-					</ToolTip>
-					<ContextMenu name="ListOKATOCodeContextMenu" id="23"/>
-					<ExtendedTooltip name="ListOKATOCodeExtendedTooltip" id="77"/>
-				</LabelField>
 				<LabelField name="ListPaymentIdentifier" id="97">
 					<DataPath>List.PaymentIdentifier</DataPath>
 					<UserVisible>
@@ -313,7 +287,7 @@
 					<Title>
 						<v8:item>
 							<v8:lang>en</v8:lang>
-							<v8:content>WIN</v8:content>
+							<v8:content>UIN</v8:content>
 						</v8:item>
 						<v8:item>
 							<v8:lang>ru</v8:lang>
@@ -322,22 +296,6 @@
 					</Title>
 					<ContextMenu name="ListPaymentIdentifierContextMenu" id="98"/>
 					<ExtendedTooltip name="ListPaymentIdentifierExtendedTooltip" id="99"/>
-				</LabelField>
-				<LabelField name="ListPayerKPP" id="26">
-					<DataPath>List.PayerKPP</DataPath>
-					<UserVisible>
-						<xr:Common>false</xr:Common>
-					</UserVisible>
-					<ContextMenu name="ListPayerKPPContextMenu" id="27"/>
-					<ExtendedTooltip name="ListPayerKPPExtendedTooltip" id="79"/>
-				</LabelField>
-				<LabelField name="ListKPPRecipient" id="28">
-					<DataPath>List.PayeeKPP</DataPath>
-					<UserVisible>
-						<xr:Common>false</xr:Common>
-					</UserVisible>
-					<ContextMenu name="ListKPPRecipientContextMenu" id="29"/>
-					<ExtendedTooltip name="ListKPPRecipientExtendedTooltip" id="80"/>
 				</LabelField>
 				<LabelField name="ListPaymentDestination" id="30">
 					<DataPath>List.PaymentDestination</DataPath>
@@ -515,12 +473,8 @@
 	DocumentPaymentOrder.PaymentKind,
 	DocumentPaymentOrder.PayerTIN,
 	DocumentPaymentOrder.PayeeTIN,
-	DocumentPaymentOrder.BKCode,
-	DocumentPaymentOrder.OKATOCode,
 	DocumentPaymentOrder.Comment,
 	DocumentPaymentOrder.Counterparty,
-	DocumentPaymentOrder.PayerKPP,
-	DocumentPaymentOrder.PayeeKPP,
 	DocumentPaymentOrder.PaymentDestination,
 	DocumentPaymentOrder.Paid,
 	DocumentPaymentOrder.Company,

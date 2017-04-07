@@ -56,13 +56,6 @@
 			</role>
 		</field>
 		<field xsi:type="DataSetFieldField">
-			<dataPath>CodeByOKPO</dataPath>
-			<field>CodeByOKPO</field>
-			<role>
-				<dcscom:required>true</dcscom:required>
-			</role>
-		</field>
-		<field xsi:type="DataSetFieldField">
 			<dataPath>Comment</dataPath>
 			<field>Comment</field>
 			<role>
@@ -86,13 +79,6 @@
 		<field xsi:type="DataSetFieldField">
 			<dataPath>ResidueForShipment</dataPath>
 			<field>ResidueForShipment</field>
-			<role>
-				<dcscom:required>true</dcscom:required>
-			</role>
-		</field>
-		<field xsi:type="DataSetFieldField">
-			<dataPath>KPP</dataPath>
-			<field>KPP</field>
 			<role>
 				<dcscom:required>true</dcscom:required>
 			</role>
@@ -398,7 +384,7 @@ INTO TemporaryTableShipmentBalance
 FROM
 	AccumulationRegister.CustomerOrders.Balance(
 			,
-			CustomerOrder In
+			CustomerOrder IN
 				(SELECT
 					TemporaryTableOrders.CustomerOrder
 				FROM
@@ -430,7 +416,7 @@ FROM
 			,
 			,
 			,
-			InvoiceForPayment In
+			InvoiceForPayment IN
 				(SELECT
 					TemporaryTableOrders.CustomerOrder
 				FROM
@@ -494,23 +480,21 @@ SELECT ALLOWED
 	TemporaryTableOrders.CustomerOrder.BankAccount AS BankAccount,
 	TemporaryTableOrders.CustomerOrder.Counterparty AS Counterparty,
 	TemporaryTableOrders.CustomerOrder.Counterparty.Description AS Description,
-	TemporaryTableOrders.CustomerOrder.Counterparty.FullDescr AS DescriptionFull,
+	TemporaryTableOrders.CustomerOrder.Counterparty.DescriptionFull AS DescriptionFull,
 	TemporaryTableOrders.CustomerOrder.Counterparty.LegalEntityIndividual AS LegalEntityIndividual,
 	TemporaryTableOrders.CustomerOrder.Counterparty.TIN AS TIN,
-	TemporaryTableOrders.CustomerOrder.Counterparty.KPP AS KPP,
-	TemporaryTableOrders.CustomerOrder.Counterparty.CodeByOKPO AS CodeByOKPO,
 	ISNULL(CurrencyRatesSliceLast.ExchangeRate, 1) AS ExchangeRate,
 	TemporaryTableOrders.CustomerOrder.Inventory.(
 		ProductsAndServices AS ProductsAndServices,
 		ProductsAndServices.ProductsAndServicesType AS ProductsAndServicesType,
 		Characteristic AS Characteristic,
-		Count AS Count,
+		Quantity AS Count,
 		Price AS Price,
 		DiscountMarkupPercent AS DiscountMarkupPercent,
 		Amount AS Amount,
 		VATRate AS VATRate,
 		VATAmount AS VATAmount,
-		TotalAmount AS TotalAmount,
+		Total AS TotalAmount,
 		ShipmentDate AS ShipmentDate,
 		ProductsAndServices.SKU AS SKU,
 		ProductsAndServices.MeasurementUnit AS MeasurementUnit,
@@ -659,16 +643,10 @@ ORDER BY
 					<dcsset:field>ResidueForShipment</dcsset:field>
 				</dcsset:item>
 				<dcsset:item xsi:type="dcsset:SelectedItemField">
-					<dcsset:field>CodeByOKPO</dcsset:field>
-				</dcsset:item>
-				<dcsset:item xsi:type="dcsset:SelectedItemField">
 					<dcsset:field>Comment</dcsset:field>
 				</dcsset:item>
 				<dcsset:item xsi:type="dcsset:SelectedItemField">
 					<dcsset:field>Counterparty</dcsset:field>
-				</dcsset:item>
-				<dcsset:item xsi:type="dcsset:SelectedItemField">
-					<dcsset:field>KPP</dcsset:field>
 				</dcsset:item>
 				<dcsset:item xsi:type="dcsset:SelectedItemField">
 					<dcsset:field>ExchangeRate</dcsset:field>

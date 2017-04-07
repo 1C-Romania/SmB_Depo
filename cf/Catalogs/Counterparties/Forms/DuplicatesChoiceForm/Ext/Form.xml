@@ -82,7 +82,7 @@
 						</v8:item>
 						<v8:item>
 							<v8:lang>ru</v8:lang>
-							<v8:content>Наименование</v8:content>
+							<v8:content>Description</v8:content>
 						</v8:item>
 					</Title>
 					<ContextMenu name="ReferenceListContextMenu" id="6"/>
@@ -94,12 +94,6 @@
 					<HorizontalStretch>true</HorizontalStretch>
 					<ContextMenu name="ListOfTINContextMenu" id="9"/>
 					<ExtendedTooltip name="ListOfTINExtendedTooltip" id="10"/>
-				</LabelField>
-				<LabelField name="ListKPP" id="11">
-					<DataPath>DoublesList.KPP</DataPath>
-					<Width>10</Width>
-					<ContextMenu name="ListKPPContextMenu" id="12"/>
-					<ExtendedTooltip name="ListKPPExtendedTooltip" id="13"/>
 				</LabelField>
 				<LabelField name="DoublesCodeList" id="32">
 					<DataPath>DoublesList.Code</DataPath>
@@ -165,7 +159,6 @@
 				<QueryText>SELECT
 	Counterparties.Ref,
 	Counterparties.TIN,
-	Counterparties.KPP,
 	CASE
 		WHEN Counterparties.DeletionMark
 			THEN 4
@@ -178,7 +171,7 @@ FROM
 	Catalog.Counterparties AS Counterparties
 WHERE
 	Counterparties.TIN = &amp;TIN
-		AND Counterparties.KPP = &amp;KPP</QueryText>
+</QueryText>
 				<ListSettings>
 					<dcsset:filter>
 						<dcsset:viewMode>Normal</dcsset:viewMode>
@@ -229,15 +222,6 @@ WHERE
 				<v8:Type>xs:string</v8:Type>
 				<v8:StringQualifiers>
 					<v8:Length>12</v8:Length>
-					<v8:AllowedLength>Variable</v8:AllowedLength>
-				</v8:StringQualifiers>
-			</Type>
-		</Parameter>
-		<Parameter name="KPP">
-			<Type>
-				<v8:Type>xs:string</v8:Type>
-				<v8:StringQualifiers>
-					<v8:Length>9</v8:Length>
 					<v8:AllowedLength>Variable</v8:AllowedLength>
 				</v8:StringQualifiers>
 			</Type>

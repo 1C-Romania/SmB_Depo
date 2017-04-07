@@ -245,17 +245,3 @@ Procedure AmountTextEditEnd(Item, Text, ChoiceData, StandardProcessing)
 EndProcedure
 
 #EndRegion
-
-
-
-
-
-
-
-
-
-
-
-
-
-

@@ -55,16 +55,3 @@ Procedure OnCreateAtServer(Cancel, StandardProcessing)
 EndProcedure
 
 // Form attributes
-
-
-
-
-
-
-
-
-
-
-
-
-

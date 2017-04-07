@@ -338,6 +338,10 @@
 									<v8:lang>en</v8:lang>
 									<v8:content>Company</v8:content>
 								</v8:item>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Организация</v8:content>
+								</v8:item>
 							</Title>
 							<Wrap>false</Wrap>
 							<ContextMenu name="CompanyContextMenu" id="23"/>
@@ -1631,7 +1635,12 @@
 				</v8:item>
 			</Title>
 			<Type>
-				<v8:TypeId>7df51630-43b5-4ce5-9c6d-05075e9da985</v8:TypeId>
+				<v8:Type>xs:decimal</v8:Type>
+				<v8:NumberQualifiers>
+					<v8:Digits>10</v8:Digits>
+					<v8:FractionDigits>0</v8:FractionDigits>
+					<v8:AllowedSign>Nonnegative</v8:AllowedSign>
+				</v8:NumberQualifiers>
 			</Type>
 		</Attribute>
 		<Attribute name="RateNationalCurrency" id="13">
@@ -1646,7 +1655,12 @@
 				</v8:item>
 			</Title>
 			<Type>
-				<v8:TypeId>68e59cac-a032-48d5-8f3f-dc6a3fc54686</v8:TypeId>
+				<v8:Type>xs:decimal</v8:Type>
+				<v8:NumberQualifiers>
+					<v8:Digits>10</v8:Digits>
+					<v8:FractionDigits>4</v8:FractionDigits>
+					<v8:AllowedSign>Nonnegative</v8:AllowedSign>
+				</v8:NumberQualifiers>
 			</Type>
 		</Attribute>
 		<Attribute name="NationalCurrency" id="14">

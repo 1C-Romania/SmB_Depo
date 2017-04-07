@@ -43,17 +43,3 @@ Procedure FinishEdit(Command)
 	Close(GetCompositionSettingsServer());
 	
 EndProcedure
-
-
-
-
-
-
-
-
-
-
-
-
-
-

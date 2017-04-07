@@ -150,14 +150,10 @@
 							<ContextMenu name="CorrespondenceContextMenu" id="186"/>
 							<ExtendedTooltip name="CorrespondenceExtendedTooltip" id="212"/>
 						</InputField>
-						<InputField name="CounterpartySource" id="108">
+						<InputField name="CounterpartySource" id="333">
 							<DataPath>Object.CounterpartySource</DataPath>
-							<Wrap>false</Wrap>
-							<ContextMenu name="CounterpartySourceContextMenu" id="109"/>
-							<ExtendedTooltip name="CounterpartySourceExtendedTooltip" id="215"/>
-							<Events>
-								<Event name="OnChange">CounterpartyOnChange</Event>
-							</Events>
+							<ContextMenu name="CounterpartySourceContextMenu" id="334"/>
+							<ExtendedTooltip name="CounterpartySourceExtendedTooltip" id="335"/>
 						</InputField>
 						<InputField name="CounterpartyRecipient" id="110">
 							<DataPath>Object.Counterparty</DataPath>
@@ -314,7 +310,7 @@
 								</xr:Item>
 							</ChoiceList>
 							<ChoiceListButton>false</ChoiceListButton>
-							<BackColor>style:ManagingFieldBackgroundColor</BackColor>
+							<BackColor>style:MasterFieldBackground</BackColor>
 							<ContextMenu name="OperationTypeContextMenu" id="10"/>
 							<ExtendedTooltip name="OperationTypeExtendedTooltip" id="214"/>
 							<Events>
@@ -502,6 +498,9 @@
 								</InputField>
 								<InputField name="DebitorMultiplicity" id="32">
 									<DataPath>Object.Debitor.Multiplicity</DataPath>
+									<UserVisible>
+										<xr:Common>false</xr:Common>
+									</UserVisible>
 									<Wrap>false</Wrap>
 									<ContextMenu name="DebitorRepetitionContextMenu" id="33"/>
 									<ExtendedTooltip name="DebitorRepetitionExtendedTooltip" id="229"/>
@@ -509,12 +508,12 @@
 										<Event name="OnChange">DebitorMultiplicityOnChange</Event>
 									</Events>
 								</InputField>
-								<InputField name="DebitorSumOfAccounting" id="34">
+								<InputField name="DebitorAccountingAmount" id="34">
 									<DataPath>Object.Debitor.AccountingAmount</DataPath>
 									<HorizontalStretch>true</HorizontalStretch>
 									<Wrap>false</Wrap>
-									<ContextMenu name="DebitorSumOfAccountingContextMenu" id="35"/>
-									<ExtendedTooltip name="DebitorSumOfAccountingExtendedTooltip" id="230"/>
+									<ContextMenu name="DebitorAccountingAmountContextMenu" id="35"/>
+									<ExtendedTooltip name="DebitorAccountingAmountExtendedTooltip" id="230"/>
 									<Events>
 										<Event name="OnChange">DebitorAccountingAmountOnChange</Event>
 									</Events>
@@ -751,6 +750,9 @@
 								</InputField>
 								<InputField name="CreditorMultiplicity" id="140">
 									<DataPath>Object.Creditor.Multiplicity</DataPath>
+									<UserVisible>
+										<xr:Common>false</xr:Common>
+									</UserVisible>
 									<Wrap>false</Wrap>
 									<ContextMenu name="CreditorRepetitionContextMenu" id="141"/>
 									<ExtendedTooltip name="CreditorRepetitionExtendedTooltip" id="243"/>
@@ -758,7 +760,7 @@
 										<Event name="OnChange">CreditorMultiplicityOnChange</Event>
 									</Events>
 								</InputField>
-								<InputField name="CreditorAccountingSum" id="142">
+								<InputField name="CreditorAccountingAmount" id="142">
 									<DataPath>Object.Creditor.AccountingAmount</DataPath>
 									<HorizontalStretch>true</HorizontalStretch>
 									<Wrap>false</Wrap>
@@ -1436,7 +1438,12 @@
 				</v8:item>
 			</Title>
 			<Type>
-				<v8:TypeId>68e59cac-a032-48d5-8f3f-dc6a3fc54686</v8:TypeId>
+				<v8:Type>xs:decimal</v8:Type>
+				<v8:NumberQualifiers>
+					<v8:Digits>10</v8:Digits>
+					<v8:FractionDigits>4</v8:FractionDigits>
+					<v8:AllowedSign>Nonnegative</v8:AllowedSign>
+				</v8:NumberQualifiers>
 			</Type>
 		</Attribute>
 		<Attribute name="Multiplicity" id="18">
@@ -1451,7 +1458,12 @@
 				</v8:item>
 			</Title>
 			<Type>
-				<v8:TypeId>7df51630-43b5-4ce5-9c6d-05075e9da985</v8:TypeId>
+				<v8:Type>xs:decimal</v8:Type>
+				<v8:NumberQualifiers>
+					<v8:Digits>10</v8:Digits>
+					<v8:FractionDigits>0</v8:FractionDigits>
+					<v8:AllowedSign>Nonnegative</v8:AllowedSign>
+				</v8:NumberQualifiers>
 			</Type>
 		</Attribute>
 		<Attribute name="Counterparty" id="19">

@@ -219,16 +219,3 @@ Procedure EnableRequestsProcessingAwaitingHandler(Val Interval)
 EndProcedure
 
 #EndRegion
-
-
-
-
-
-
-
-
-
-
-
-
-

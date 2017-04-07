@@ -459,14 +459,6 @@ Procedure NotificationProcessing(EventName, Parameter, Source)
 	EndIf;
 	// End Peripherals
 	
-	If EventName = "RefreshOfTextAboutInvoice" Then
-		If TypeOf(Parameter) = Type("Structure") Then
-			If Parameter.BasisDocument = Object.Ref Then
-				InvoiceText = Parameter.Presentation;
-			EndIf;
-		EndIf;
-	EndIf;
-	
 EndProcedure // NotificationProcessing()
 
 // Procedure - EditByList command handler.
@@ -888,16 +880,3 @@ EndProcedure
 // End StandardSubsystems.Printing
 
 #EndRegion
-
-
-
-
-
-
-
-
-
-
-
-
-

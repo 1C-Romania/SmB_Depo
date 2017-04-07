@@ -27,7 +27,7 @@
 //				modules that implement processor of
 //			the On system startup event ** BusinessProcesses - Map - client
 //				handlers of business processes:
-//				*** Key - String - <Entry point of business-process>\<Event name>;
+//				*** Key - String - <Entry point of business process>\<Event name>;
 //				*** Value - String - name of the
 //					client mode realising business process handler;
 //

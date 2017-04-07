@@ -61,17 +61,3 @@ Function FindHistory()
 EndFunction
 
 #EndRegion
-
-
-
-
-
-
-
-
-
-
-
-
-
-

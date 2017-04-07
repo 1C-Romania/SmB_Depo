@@ -349,10 +349,10 @@ EndFunction
 //      ItemsOfReceiver - ItemCollectionOfDataCompositionFilter - receiver.
 //      SourceItems - ItemCollectionOfDataCompositionFilter - source.
 //      FieldMap - The KeyAndValue object collection where.
-//      Key - source path to the field data, 
-//      Value - path for result. 
-//  For Example for replacements fields of type.
-//  ""Ref.Name" -> "RegistrationObject.name″ the New structure must be passed("Ref", "RegistrationObject").
+//                          Key - source path to the field data, Value - path 
+//                          for result. For Example for replacements fields of type.
+//                          "Ref.Name"
+//                          -> "RegistrationObject.name″ the New structure must be passed("Ref", "RegistrationObject").
 //
 Procedure AddCompositionFilterValues(ItemsOfReceiver, SourceItems, FieldMap = Undefined) Export
 	

@@ -889,17 +889,3 @@ Procedure Scenario1GoToTable()
 EndProcedure
 
 #EndRegion
-
-
-
-
-
-
-
-
-
-
-
-
-
-

@@ -1,38 +1,220 @@
 ﻿#If Server Or ThickClientOrdinaryApplication Or ExternalConnection Then
 
-#Region ServiceProceduresAndFunctions
-
-// Posting cancellation procedure of the subordinate customer invoice note
-//
-Procedure SubordinatedInvoiceControl()
+#Region DocumentFillingProcedures
 	
-	InvoiceStructure = SmallBusinessServer.GetSubordinateInvoice(Ref);
-	If Not InvoiceStructure = Undefined Then
-		
-		CustomerInvoiceNote	 = InvoiceStructure.Ref;
-		If CustomerInvoiceNote.Posted Then
-			
-			MessageText = NStr("en='As there are no register records of the %CurrentDocumentPresentation% document, undo the posting of %InvoicePresentation%.';ru='В связи с отсутствием движений у документа %ПредставлениеТекущегоДокумента% распроводится счет фактура %ПредставлениеСчетФактуры%.'");
-			MessageText = StrReplace(MessageText, "%CurrentDocumentPresentation%", """Account on payment # " + Number + " dated " + Format(Date, "DF=dd.MM.yyyy") + """");
-			MessageText = StrReplace(MessageText, "%InvoicePresentation%", """Customer invoice note (issued) # " + InvoiceStructure.Number + " dated " + InvoiceStructure.Date + """");
-			
-			CommonUseClientServer.MessageToUser(MessageText);
-			
-			InvoiceObject = CustomerInvoiceNote.GetObject();
-			InvoiceObject.Write(DocumentWriteMode.UndoPosting);
-			
-		EndIf;
-		
+Procedure FillingHandler(FillingData) Export
+	
+	If Not ValueIsFilled(FillingData) Then
+		Return;
 	EndIf;
 	
-EndProcedure //SubordinateInvoiceControl()
+	If Not CommonUse.ReferenceTypeValue(FillingData) Then
+		Return;
+	EndIf;
+	
+	If Not ValueIsFilled(TabularSectionName(FillingData)) Then
+		Return;
+	EndIf;
+	
+	QueryResult = QueryDataForFilling(FillingData).Execute();
+	
+	If QueryResult.IsEmpty() Then
+		Return;
+	EndIf;
+	
+	SelectionHeader = QueryResult.Select();
+	SelectionHeader.Next();
+	
+	FillPropertyValues(ThisObject, SelectionHeader);
+	
+	If DocumentCurrency <> Constants.NationalCurrency.Get() Then
+		CurrencyStructure = InformationRegisters.CurrencyRates.GetLast(Date, New Structure("Currency", Contract.SettlementsCurrency));
+		ExchangeRate = CurrencyStructure.ExchangeRate;
+		Multiplicity = CurrencyStructure.Multiplicity;
+	EndIf;
+	
+	ThisObject.Inventory.Clear();
+	TabularSectionSelection = SelectionHeader[TabularSectionName(FillingData)].Select();
+	While TabularSectionSelection.Next() Do
+		FillPropertyValues(ThisObject.Inventory.Add(), TabularSectionSelection);
+	EndDo;
+	
+	If TypeOf(FillingData) = Type("DocumentRef.CustomerOrder") Then
+		SelectionWorks = SelectionHeader.Works.Select();
+		While SelectionWorks.Next() Do
+			FillPropertyValues(ThisObject.Inventory.Add(), SelectionWorks);
+		EndDo;
+	EndIf;
+	
+	If GetFunctionalOption("UseAutomaticDiscountsMarkups") Then
+		SelectionDiscountsMarkups = SelectionHeader.DiscountsMarkups.Select();
+		While SelectionDiscountsMarkups.Next() Do
+			FillPropertyValues(ThisObject.DiscountsMarkups.Add(), SelectionDiscountsMarkups);
+		EndDo;
+	EndIf;
+	
+	DocumentAmount = Inventory.Total("Total");
+	
+EndProcedure
+
+Function QueryDataForFilling(FillingData)
+	
+	Wizard = New QuerySchema;
+	Batch = Wizard.QueryBatch[0];
+	Batch.SelectAllowed = True;
+	Operator0 = Batch.Operators[0];
+	Operator0.Sources.Add(FillingData.Metadata().FullName());
+	For Each HeaderFieldDescription In HeaderFieldsDescription(FillingData) Do
+		Operator0.SelectedFields.Add(HeaderFieldDescription.Key);
+		If ValueIsFilled(HeaderFieldDescription.Value) Then
+			Batch.Columns[Batch.Columns.Count() - 1].Alias = HeaderFieldDescription.Value;
+		EndIf;
+	EndDo;
+	
+	For Each CurFieldDescriptionTabularSectionInventory In FieldsDescriptionTabularSectionInventory(FillingData) Do
+		Operator0.SelectedFields.Add(
+		StringFunctionsClientServer.SubstituteParametersInString(
+		"%1.%2",
+		TabularSectionName(FillingData),
+		CurFieldDescriptionTabularSectionInventory.Key));
+		If ValueIsFilled(CurFieldDescriptionTabularSectionInventory.Value) Then
+			Batch.Columns[Batch.Columns.Count() - 1].Alias = CurFieldDescriptionTabularSectionInventory.Value;
+		EndIf;
+	EndDo;
+	
+	For Each CurFieldDescriptionTabularSectionWorks In FieldsDescriptionTabularSectionWorks(FillingData) Do
+		Operator0.SelectedFields.Add(CurFieldDescriptionTabularSectionWorks.Key);
+		If ValueIsFilled(CurFieldDescriptionTabularSectionWorks.Value) Then
+			ColumnNestedTable = Batch.Columns[Batch.Columns.Count() - 1];
+			ColumnNestedTable.Columns[ColumnNestedTable.Columns.Count() - 1].Alias = CurFieldDescriptionTabularSectionWorks.Value;
+		EndIf;
+	EndDo;
+	
+	If GetFunctionalOption("UseAutomaticDiscountsMarkups") Then
+		Operator0.SelectedFields.Add("DiscountsMarkups.ConnectionKey");
+		Operator0.SelectedFields.Add("DiscountsMarkups.DiscountMarkup");
+		Operator0.SelectedFields.Add("DiscountsMarkups.Amount");
+	EndIf;
+	
+	Operator0.Filter.Add("Ref = &Parameter");
+	
+	Result = New Query(Wizard.GetQueryText());
+	Result.SetParameter("Parameter", FillingData);
+	
+	Return Result;
+	
+EndFunction
+
+Function TabularSectionName(FillingData)
+	
+	TabularSectionNames = New Map;
+	TabularSectionNames[Type("DocumentRef.CustomerOrder")] = "Inventory";
+	TabularSectionNames[Type("DocumentRef.CustomerInvoice")] = "Inventory";
+	TabularSectionNames[Type("DocumentRef.AcceptanceCertificate")] = "WorksAndServices";
+	TabularSectionNames[Type("DocumentRef.ProcessingReport")] = "Products";
+	
+	Return TabularSectionNames[TypeOf(FillingData)];
+	
+EndFunction
+
+Function HeaderFieldsDescription(FillingData)
+	
+	Result = New Map;
+	
+	FillingDataMetadata = FillingData.Metadata();
+	
+	Result.Insert("Ref", "BasisDocument");
+	Result.Insert("Company");
+	Result.Insert("Company.BankAccountByDefault", "BankAccount");
+	
+	AddAttributeIfItIsInDocument(Result, FillingDataMetadata, "DiscountCard");
+	AddAttributeIfItIsInDocument(Result, FillingDataMetadata, "DiscountPercentByDiscountCard");
+	AddAttributeIfItIsInDocument(Result, FillingDataMetadata, "ExchangeRate");
+	AddAttributeIfItIsInDocument(Result, FillingDataMetadata, "Multiplicity");
+	AddAttributeIfItIsInDocument(Result, FillingDataMetadata, "AmountIncludesVAT");
+	AddAttributeIfItIsInDocument(Result, FillingDataMetadata, "VATTaxation");
+	AddAttributeIfItIsInDocument(Result, FillingDataMetadata, "Contract");
+	AddAttributeIfItIsInDocument(Result, FillingDataMetadata, "Counterparty");
+	AddAttributeIfItIsInDocument(Result, FillingDataMetadata, "DocumentCurrency");
+	
+	If GetFunctionalOption("UseAutomaticDiscountsMarkups") Then
+		Result.Insert("DiscountsAreCalculated");
+	EndIf;
+	
+	Return Result;
+	
+EndFunction
+
+Procedure AddAttributeIfItIsInDocument(ResultMap, FillingDataMetadata, AttributeName)
+	
+	If CommonUse.IsObjectAttribute(AttributeName, FillingDataMetadata) Then
+		ResultMap.Insert(AttributeName);
+	EndIf;
+	
+EndProcedure
+
+Function FieldsDescriptionTabularSectionInventory(FillingData)
+	
+	Result = New Map;
+	Result.Insert("ProductsAndServices");
+	Result.Insert("Characteristic");
+	Result.Insert("Content");
+	Result.Insert("MeasurementUnit");
+	Result.Insert("Quantity");
+	Result.Insert("Price");
+	Result.Insert("DiscountMarkupPercent");
+	Result.Insert("Amount");
+	Result.Insert("VATRate");
+	Result.Insert("VATAmount");
+	Result.Insert("Total");
+	If TabularSectionName(FillingData) <> "WorksAndServices" Then
+		Result.Insert("Batch");
+	EndIf;
+	
+	If GetFunctionalOption("UseAutomaticDiscountsMarkups") Then
+		Result.Insert("ConnectionKey");
+		Result.Insert("AutomaticDiscountAmount");
+		Result.Insert("AutomaticDiscountsPercent");
+	EndIf;
+	
+	Return Result;
+	
+EndFunction
+
+Function FieldsDescriptionTabularSectionWorks(FillingData)
+	
+	Result = New Map;
+	
+	If TypeOf(FillingData) <> Type("DocumentRef.CustomerOrder") Then
+		Return Result;
+	EndIf;
+	
+	Result.Insert("Works.ProductsAndServices");
+	Result.Insert("Works.Characteristic");
+	Result.Insert("Works.Content");
+	Result.Insert("Works.ProductsAndServices.MeasurementUnit", "MeasurementUnit");
+	Result.Insert("Works.Quantity * Works.Factor * Works.Multiplicity", "Quantity");
+	Result.Insert("Works.Price");
+	Result.Insert("Works.AutomaticDiscountsPercent");
+	Result.Insert("Works.Amount");
+	Result.Insert("Works.VATRate");
+	Result.Insert("Works.VATAmount");
+	Result.Insert("Works.Total");
+	
+	If GetFunctionalOption("UseAutomaticDiscountsMarkups") Then
+		Result.Insert("Works.ConnectionKeyForMarkupsDiscounts", "ConnectionKey");
+		Result.Insert("Works.AutomaticDiscountAmount");
+		Result.Insert("Works.AutomaticDiscountsPercent");
+	EndIf;
+	
+	Return Result;
+	
+EndFunction
 
 #EndRegion
 
-#Region EventsHandlers
+#Region EventHandlers
 
-// Procedure - event handler "Posting".
-//
 Procedure Posting(Cancel, PostingMode)
 	
 	// Initialization of additional properties for document posting
@@ -52,8 +234,6 @@ Procedure Posting(Cancel, PostingMode)
 	
 EndProcedure // Posting()
 
-// Procedure - event handler BeforeWrite object.
-//
 Procedure BeforeWrite(Cancel, WriteMode, PostingMode)
 	
 	If DataExchange.Load Then
@@ -70,296 +250,27 @@ Procedure BeforeWrite(Cancel, WriteMode, PostingMode)
 	
 EndProcedure // BeforeWrite()
 
-// Procedure - event handler FillingProcessor object.
-//
 Procedure Filling(FillingData, StandardProcessing) Export
 	
-	UseAutomaticDiscounts = GetFunctionalOption("UseAutomaticDiscountsMarkups");
+	ObjectFillingSB.FillDocument(ThisObject, FillingData, "FillingHandler");
 	
-	If TypeOf(FillingData) = Type("DocumentRef.CustomerOrder") Then
-		
-		Company		= FillingData.Company;
-		DocumentCurrency = FillingData.DocumentCurrency;
-		Contract			= FillingData.Contract;
-		Counterparty		= FillingData.Counterparty;
-		BankAccount	= FillingData.Company.BankAccountByDefault;
-		VATTaxation = FillingData.VATTaxation;
-		// DiscountCards
-		DiscountCard = FillingData.DiscountCard;
-		DiscountPercentByDiscountCard = FillingData.DiscountPercentByDiscountCard;
-		// End DiscountCards
-		
-		If DocumentCurrency = Constants.NationalCurrency.Get() Then
-			ExchangeRate = FillingData.ExchangeRate;
-			Multiplicity = FillingData.Multiplicity;
-		Else
-			StructureByCurrency = InformationRegisters.CurrencyRates.GetLast(Date, New Structure("Currency", Contract.SettlementsCurrency));
-			ExchangeRate = StructureByCurrency.ExchangeRate;
-			Multiplicity = StructureByCurrency.Multiplicity;
-		EndIf;
-		
-		Company		  = FillingData.Company;
-		AmountIncludesVAT  = FillingData.AmountIncludesVAT;
-		BasisDocument = FillingData;
-		
-		Inventory.Clear();
-		
-		For Each CurStringInventory IN FillingData.Inventory Do
-			NewRow = Inventory.Add();
-			NewRow.ProductsAndServices		 = CurStringInventory.ProductsAndServices;
-			NewRow.Characteristic		 = CurStringInventory.Characteristic;
-			NewRow.Batch				 = CurStringInventory.Batch;
-			NewRow.Content			 = CurStringInventory.Content;
-			NewRow.MeasurementUnit	 = CurStringInventory.MeasurementUnit;
-			NewRow.Quantity			 = CurStringInventory.Quantity;
-			NewRow.Price				 = CurStringInventory.Price;	
-			NewRow.DiscountMarkupPercent = CurStringInventory.DiscountMarkupPercent;	
-			NewRow.Amount				 = CurStringInventory.Amount;
-			NewRow.VATRate			 = CurStringInventory.VATRate;
-			NewRow.VATAmount			 = CurStringInventory.VATAmount;
-			NewRow.Total				 = CurStringInventory.Total;
-			// AutomaticDiscounts
-			If UseAutomaticDiscounts Then
-				NewRow.ConnectionKey			 = CurStringInventory.ConnectionKey;
-				NewRow.AutomaticDiscountAmount	= CurStringInventory.AutomaticDiscountAmount;
-				NewRow.AutomaticDiscountsPercent	= CurStringInventory.AutomaticDiscountsPercent;
-			EndIf;
-			// End AutomaticDiscounts
-		EndDo;
-		
-		For Each CurRowWork IN FillingData.Works Do
-			NewRow = Inventory.Add();
-			NewRow.ProductsAndServices		 = CurRowWork.ProductsAndServices;
-			NewRow.Characteristic		 = CurRowWork.Characteristic;
-			NewRow.Content			 = CurRowWork.Content;
-			NewRow.MeasurementUnit	 = CurRowWork.ProductsAndServices.MeasurementUnit;
-			NewRow.Quantity			 = CurRowWork.Quantity * CurRowWork.Factor * CurRowWork.Multiplicity;
-			NewRow.Price				 = CurRowWork.Price;	
-			NewRow.DiscountMarkupPercent = CurRowWork.DiscountMarkupPercent;	
-			NewRow.Amount				 = CurRowWork.Amount;
-			NewRow.VATRate			 = CurRowWork.VATRate;
-			NewRow.VATAmount			 = CurRowWork.VATAmount;
-			NewRow.Total				 = CurRowWork.Total;
-		EndDo;
-		
-		PaymentAmount = Inventory.Total("Total");
-		
-		// AutomaticDiscounts
-		If UseAutomaticDiscounts Then
-			DiscountsMarkups.Load(FillingData.DiscountsMarkups.Unload());
-			DiscountsAreCalculated = FillingData.DiscountsAreCalculated;
-		EndIf;
-		// End AutomaticDiscounts
-		
-	ElsIf TypeOf(FillingData) = Type("DocumentRef.CustomerInvoice") Then
-		
-		Company		= FillingData.Company;
-		DocumentCurrency = FillingData.DocumentCurrency;
-		Contract			= FillingData.Contract;
-		Counterparty		= FillingData.Counterparty;
-		BankAccount	= FillingData.Company.BankAccountByDefault;
-		VATTaxation = FillingData.VATTaxation;
-		// DiscountCards
-		DiscountCard = FillingData.DiscountCard;
-		DiscountPercentByDiscountCard = FillingData.DiscountPercentByDiscountCard;
-		// End DiscountCards
-		
-		If DocumentCurrency = Constants.NationalCurrency.Get() Then
-			ExchangeRate = FillingData.ExchangeRate;
-			Multiplicity = FillingData.Multiplicity;
-		Else
-			StructureByCurrency = InformationRegisters.CurrencyRates.GetLast(Date, New Structure("Currency", Contract.SettlementsCurrency));
-			ExchangeRate = StructureByCurrency.ExchangeRate;
-			Multiplicity = StructureByCurrency.Multiplicity;
-		EndIf;
+EndProcedure // Filling()
 
-		Company		  = FillingData.Company;
-		AmountIncludesVAT  = FillingData.AmountIncludesVAT;
-		BasisDocument = FillingData;
-		
-		Inventory.Clear();
-		
-		For Each CurStringInventory IN FillingData.Inventory Do
-			
-			NewRow = Inventory.Add();
-			NewRow.ProductsAndServices		 = CurStringInventory.ProductsAndServices;
-			NewRow.Characteristic		 = CurStringInventory.Characteristic;
-			NewRow.Batch				 = CurStringInventory.Batch;
-			NewRow.MeasurementUnit	 = CurStringInventory.MeasurementUnit;
-			NewRow.Quantity			 = CurStringInventory.Quantity;
-			NewRow.Price				 = CurStringInventory.Price;	
-			NewRow.DiscountMarkupPercent = CurStringInventory.DiscountMarkupPercent;	
-			NewRow.Amount				 = CurStringInventory.Amount;
-			NewRow.VATRate			 = CurStringInventory.VATRate;
-			NewRow.VATAmount			 = CurStringInventory.VATAmount;
-			NewRow.Total				 = CurStringInventory.Total;
-			NewRow.Content 			 = CurStringInventory.Content;
-			// AutomaticDiscounts
-			If UseAutomaticDiscounts Then
-				NewRow.ConnectionKey			 = CurStringInventory.ConnectionKey;
-				NewRow.AutomaticDiscountAmount	= CurStringInventory.AutomaticDiscountAmount;
-				NewRow.AutomaticDiscountsPercent	= CurStringInventory.AutomaticDiscountsPercent;
-			EndIf;
-			// End AutomaticDiscounts
-			
-		EndDo;
-		
-		PaymentAmount = Inventory.Total("Total");
-		
-		// AutomaticDiscounts
-		If UseAutomaticDiscounts Then
-			DiscountsMarkups.Load(FillingData.DiscountsMarkups.Unload());
-			DiscountsAreCalculated = FillingData.DiscountsAreCalculated;
-		EndIf;
-		// End AutomaticDiscounts
-		
-	ElsIf TypeOf(FillingData) = Type("DocumentRef.AcceptanceCertificate") Then
-		
-		Company		= FillingData.Company;
-		DocumentCurrency = FillingData.DocumentCurrency;
-		Contract			= FillingData.Contract;
-		Counterparty		= FillingData.Counterparty;
-		BankAccount	= FillingData.Company.BankAccountByDefault;
-		VATTaxation = FillingData.VATTaxation;
-		// DiscountCards
-		DiscountCard = FillingData.DiscountCard;
-		DiscountPercentByDiscountCard = FillingData.DiscountPercentByDiscountCard;
-		// End DiscountCards
-		
-		If DocumentCurrency = Constants.NationalCurrency.Get() Then
-			ExchangeRate = FillingData.ExchangeRate;
-			Multiplicity = FillingData.Multiplicity;
-		Else
-			StructureByCurrency = InformationRegisters.CurrencyRates.GetLast(Date, New Structure("Currency", Contract.SettlementsCurrency));
-			ExchangeRate = StructureByCurrency.ExchangeRate;
-			Multiplicity = StructureByCurrency.Multiplicity;
-		EndIf;
-
-		Company		  = FillingData.Company;
-		AmountIncludesVAT  = FillingData.AmountIncludesVAT;
-		BasisDocument = FillingData;
-		
-		Inventory.Clear();
-		
-		For Each CurStringInventory IN FillingData.WorksAndServices Do
-			NewRow = Inventory.Add();
-			NewRow.ProductsAndServices		 = CurStringInventory.ProductsAndServices;
-			NewRow.Characteristic		 = CurStringInventory.Characteristic;
-			NewRow.MeasurementUnit	 = CurStringInventory.MeasurementUnit;
-			NewRow.Quantity			 = CurStringInventory.Quantity;
-			NewRow.Price				 = CurStringInventory.Price;	
-			NewRow.DiscountMarkupPercent = CurStringInventory.DiscountMarkupPercent;	
-			NewRow.Amount				 = CurStringInventory.Amount;
-			NewRow.VATRate			 = CurStringInventory.VATRate;
-			NewRow.VATAmount			 = CurStringInventory.VATAmount;
-			NewRow.Total				 = CurStringInventory.Total;
-			NewRow.Content 			 = CurStringInventory.Content;
-			// AutomaticDiscounts
-			If UseAutomaticDiscounts Then
-				NewRow.ConnectionKey			 = CurStringInventory.ConnectionKey;
-				NewRow.AutomaticDiscountAmount	= CurStringInventory.AutomaticDiscountAmount;
-				NewRow.AutomaticDiscountsPercent	= CurStringInventory.AutomaticDiscountsPercent;
-			EndIf;
-			// End AutomaticDiscounts
-		EndDo;
-		
-		PaymentAmount = Inventory.Total("Total");
-		
-		// AutomaticDiscounts
-		If UseAutomaticDiscounts Then
-			DiscountsMarkups.Load(FillingData.DiscountsMarkups.Unload());
-			DiscountsAreCalculated = FillingData.DiscountsAreCalculated;
-		EndIf;
-		// End AutomaticDiscounts
-		
-	ElsIf TypeOf(FillingData) = Type("DocumentRef.ProcessingReport") Then
-		
-		Company		= FillingData.Company;
-		DocumentCurrency = FillingData.DocumentCurrency;
-		Contract			= FillingData.Contract;
-		Counterparty		= FillingData.Counterparty;
-		BankAccount	= FillingData.Company.BankAccountByDefault;
-		VATTaxation = FillingData.VATTaxation;
-		
-		If DocumentCurrency = Constants.NationalCurrency.Get() Then
-			ExchangeRate = FillingData.ExchangeRate;
-			Multiplicity = FillingData.Multiplicity;
-		Else
-			StructureByCurrency = InformationRegisters.CurrencyRates.GetLast(Date, New Structure("Currency", Contract.SettlementsCurrency));
-			ExchangeRate = StructureByCurrency.ExchangeRate;
-			Multiplicity = StructureByCurrency.Multiplicity;
-		EndIf;
-
-		Company		  = FillingData.Company;
-		AmountIncludesVAT  = FillingData.AmountIncludesVAT;
-		BasisDocument = FillingData;
-		
-		Inventory.Clear();
-		
-		For Each CurStringInventory IN FillingData.Products Do
-			
-			NewRow = Inventory.Add();
-			NewRow.ProductsAndServices		 = CurStringInventory.ProductsAndServices;
-			NewRow.Characteristic		 = CurStringInventory.Characteristic;
-			NewRow.Batch				 = CurStringInventory.Batch;
-			NewRow.MeasurementUnit	 = CurStringInventory.MeasurementUnit;
-			NewRow.Quantity			 = CurStringInventory.Quantity;
-			NewRow.Price				 = CurStringInventory.Price;	
-			NewRow.DiscountMarkupPercent = CurStringInventory.DiscountMarkupPercent;	
-			NewRow.Amount				 = CurStringInventory.Amount;
-			NewRow.VATRate			 = CurStringInventory.VATRate;
-			NewRow.VATAmount			 = CurStringInventory.VATAmount;
-			NewRow.Total				 = CurStringInventory.Total; 
-			NewRow.Content 			 = CurStringInventory.Content;
-			
-		EndDo;
-		
-		PaymentAmount = Inventory.Total("Total");
-		
-	ElsIf TypeOf(FillingData) = Type("DocumentRef.Event") Then
-	
-		Event = FillingData.Ref;
-		If FillingData.Parties.Count() > 0 AND TypeOf(FillingData.Parties[0].Contact) = Type("CatalogRef.Counterparties") Then
-			Counterparty = FillingData.Parties[0].Contact;
-			Contract = Counterparty.ContractByDefault;
-		EndIf;
-		
-		StructureByCurrency = InformationRegisters.CurrencyRates.GetLast(Date, New Structure("Currency", Contract.SettlementsCurrency));
-		ExchangeRate = StructureByCurrency.ExchangeRate;
-		Multiplicity = StructureByCurrency.Multiplicity;
-		
-		SettingValue = SmallBusinessReUse.GetValueByDefaultUser(Users.CurrentUser(), "MainCompany");
-		If ValueIsFilled(SettingValue) Then
-			If Company <> SettingValue Then
-				Company = SettingValue;
-			EndIf;
-		Else
-			Company = Catalogs.Companies.MainCompany;	
-		EndIf;
-		
-		VATTaxation = SmallBusinessServer.VATTaxation(Company,, Date);
-		
-	EndIf;
-	
-EndProcedure // FillingProcessor()
-
-// Procedure - event handler FillCheckProcessing object.
-//
 Procedure FillCheckProcessing(Cancel, CheckedAttributes)
 	
 	// 100% discount.
-	ThereAreManualDiscounts = GetFunctionalOption("UseDiscountsMarkups");
-	ThereAreAutomaticDiscounts = GetFunctionalOption("UseAutomaticDiscountsMarkups"); // AutomaticDiscounts
-	If ThereAreManualDiscounts OR ThereAreAutomaticDiscounts Then
+	AreManualDiscounts		= GetFunctionalOption("UseDiscountsMarkups");
+	AreAutomaticDiscounts	= GetFunctionalOption("UseAutomaticDiscountsMarkups"); // AutomaticDiscounts
+	If AreManualDiscounts OR AreAutomaticDiscounts Then
 		For Each StringInventory IN Inventory Do
 			// AutomaticDiscounts
 			CurAmount = StringInventory.Price * StringInventory.Quantity;
-			ManualDiscountCurAmount = ?(ThereAreManualDiscounts, ROUND(CurAmount * StringInventory.DiscountMarkupPercent / 100, 2), 0);
-			AutomaticDiscountCurAmount = ?(ThereAreAutomaticDiscounts, StringInventory.AutomaticDiscountAmount, 0);
-			CurAmountDiscounts = ManualDiscountCurAmount + AutomaticDiscountCurAmount;
-			If StringInventory.DiscountMarkupPercent <> 100 AND CurAmountDiscounts < CurAmount
+			CurAmountManualDiscount		= ?(AreManualDiscounts, Round(CurAmount * StringInventory.DiscountMarkupPercent / 100, 2), 0);
+			CurAmountAutomaticDiscount	= ?(AreAutomaticDiscounts, StringInventory.AutomaticDiscountAmount, 0);
+			CurAmountDiscount			= CurAmountManualDiscount + CurAmountAutomaticDiscount;
+			If StringInventory.DiscountMarkupPercent <> 100 AND CurAmountDiscount < CurAmount
 				AND Not ValueIsFilled(StringInventory.Amount) Then
-				MessageText = NStr("en='Column ""Amount"" is not populated in string %Number% of list ""Inventory"".';ru='Не заполнена колонка ""Сумма"" в строке %Номер% списка ""Запасы"".'");
+				MessageText = NStr("ru = 'Не заполнена колонка ""Сумма"" в строке %Номер% списка ""Запасы"".'; en = 'Column ""Amount"" is not populated in row %Number% of list ""Inventory"".'");
 				MessageText = StrReplace(MessageText, "%Number%", StringInventory.LineNumber);
 				SmallBusinessServer.ShowMessageAboutError(
 					ThisObject,
@@ -394,7 +305,7 @@ Procedure FillCheckProcessing(Cancel, CheckedAttributes)
 		AND PaymentCalendar.Count() = 1
 		AND Not ValueIsFilled(PaymentCalendar[0].PayDate) Then
 		
-		MessageText = NStr("en='Field ""Payment date"" is required.';ru='Поле ""Дата оплаты"" не заполнено.'");
+		MessageText = NStr("ru = 'Поле ""Дата оплаты"" не заполнено.'; en = 'Field ""Payment date"" is required.'");
 		SmallBusinessServer.ShowMessageAboutError(ThisObject, MessageText, , , "PayDate", Cancel);
 		SmallBusinessServer.DeleteAttributeBeingChecked(CheckedAttributes, "PaymentCalendar.PaymentDate");
 		
@@ -405,19 +316,6 @@ Procedure FillCheckProcessing(Cancel, CheckedAttributes)
 	EndIf;
 	
 EndProcedure // FillCheckProcessing()
-
-// Procedure - event handler UndoPosting object.
-//
-Procedure UndoPosting(Cancel)
-	
-	// Subordinate customer invoice note
-	If Not Cancel Then
-		
-		SubordinatedInvoiceControl();
-		
-	EndIf;
-	
-EndProcedure // UndoPosting()
 
 #EndRegion
 

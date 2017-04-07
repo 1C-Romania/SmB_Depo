@@ -18,13 +18,13 @@ EndFunction
 Procedure SetIdentifier(IdentificatorSource, Data)
 	
 	If IdentificatorSource = "Company" Then
-		RowFill = String(Data.TIN)+"_"+String(Data.KPP);
+		RowFill = String(Data.TIN);
 		If Right(RowFill, 1) = "_" Then
 			RowFill = StrReplace(RowFill, "_", "");
 		EndIf;
 		Object.CompanyID = TrimAll(RowFill);
 	Else
-		RowFill = String(Data.TIN)+"_"+String(Data.KPP);
+		RowFill = String(Data.TIN);
 		If Right(RowFill, 1) = "_" Then
 			RowFill = StrReplace(RowFill, "_", "");
 		EndIf;
@@ -770,17 +770,3 @@ Procedure BeforeWriteAtServer(Cancel, CurrentObject, WriteParameters)
 EndProcedure
 
 #EndRegion
-
-
-
-
-
-
-
-
-
-
-
-
-
-

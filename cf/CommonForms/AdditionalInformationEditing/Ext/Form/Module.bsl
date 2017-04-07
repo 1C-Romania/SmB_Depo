@@ -261,17 +261,3 @@ Function GetCurrentPropertiesValues()
 EndFunction
 
 #EndRegion
-
-
-
-
-
-
-
-
-
-
-
-
-
-

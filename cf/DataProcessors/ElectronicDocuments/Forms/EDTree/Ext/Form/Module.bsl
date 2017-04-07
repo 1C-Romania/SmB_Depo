@@ -66,7 +66,6 @@ Function EDKindsArrayWoodRootElements()
 	EDKindsList.Add(Enums.EDKinds.TORG12Seller);
 	EDKindsList.Add(Enums.EDKinds.ActPerformer);
 	EDKindsList.Add(Enums.EDKinds.AgreementAboutCostChangeSender);
-	EDKindsList.Add(Enums.EDKinds.CustomerInvoiceNote);
 	EDKindsList.Add(Enums.EDKinds.TORG12);
 	EDKindsList.Add(Enums.EDKinds.AcceptanceCertificate);
 	
@@ -184,9 +183,7 @@ Procedure GenerateTreesED()
 		If ValueIsFilled(ActualED) Then
 			ParametersOfActualED = CommonUse.ObjectAttributesValues(ActualED,
 				"EDStatus, EDFScheduleVersion, EDKind, EDDirection, EDAgreement");
-			If ParametersOfActualED.EDStatus = Enums.EDStatuses.RejectedByReceiver
-				AND Not ParametersOfActualED.EDKind = Enums.EDKinds.CustomerInvoiceNote
-				AND Not ParametersOfActualED.EDKind = Enums.EDKinds.CorrectiveInvoiceNote Then
+			If ParametersOfActualED.EDStatus = Enums.EDStatuses.RejectedByReceiver Then
 				
 				ParametersStructure = New Structure;
 				ParametersStructure.Insert("EDKind",               ParametersOfActualED.EDKind);
@@ -242,90 +239,7 @@ Procedure PrepopulatingTree(ED, ObjectTree, ThisCurrentED, RootElement = Undefin
 		ExchangeThroughOperator = (ExchangeSettings.EDExchangeMethod = Enums.EDExchangeMethods.ThroughEDFOperatorTaxcom);
 		PackageFormatVersion = ExchangeSettings.PackageFormatVersion;
 		RootElement = Undefined;
-		If ExchangeThroughOperator AND (ED.EDKind = Enums.EDKinds.CustomerInvoiceNote
-			OR ED.EDKind = Enums.EDKinds.CorrectiveInvoiceNote) Then
-		
-			RowESF                = ObjectTree.Rows.Add();
-			RowESF.EDType          = Enums.EDVersionElementTypes.ESF;
-			RowESF.EDKind          = ED.EDKind;
-			RowESF.EDDirection  = ED.EDDirection;
-			RowESF.RowIsAvailable = True;
-			RowESF.ActualED   = ThisCurrentED;
-			RootElement = RowESF;
-			
-			If ED.EDDirection = Enums.EDDirections.Incoming Then
-				
-				RowPDO                 = RowESF.Rows.Add();
-				RowPDO.EDType           = Enums.EDVersionElementTypes.EISDC;
-				RowPDO.EDKind           = Enums.EDKinds.Confirmation;
-				RowPDO.EDDirection   = Enums.EDDirections.Incoming;
-				
-				RowIP                  = RowESF.Rows.Add();
-				RowIP.EDType            = Enums.EDVersionElementTypes.NAREI;
-				RowIP.EDKind            = Enums.EDKinds.NotificationAboutReception;
-				RowIP.EDDirection    = Enums.EDDirections.Outgoing;
-				
-				NewRow               = RowPDO.Rows.Add();
-				NewRow.EDType         = Enums.EDVersionElementTypes.NRCDDEI;
-				NewRow.EDKind         = Enums.EDKinds.NotificationAboutReception;
-				NewRow.EDDirection = Enums.EDDirections.Outgoing;
-				
-				RowPDOIP               = RowIP.Rows.Add();
-				RowPDOIP.EDType         = Enums.EDVersionElementTypes.SDANAREIC;
-				RowPDOIP.EDKind         = Enums.EDKinds.Confirmation;
-				RowPDOIP.EDDirection = Enums.EDDirections.Incoming;
-				
-				NewRow               = RowPDOIP.Rows.Add();
-				NewRow.EDType         = Enums.EDVersionElementTypes.NRCDDNREI;
-				NewRow.EDKind         = Enums.EDKinds.NotificationAboutReception;
-				NewRow.EDDirection = Enums.EDDirections.Outgoing;
-				
-				If ED.EDStatus = Enums.EDStatuses.Rejected Then
-					
-					RowUU                  = RowESF.Rows.Add();
-					RowUU.EDType            = Enums.EDVersionElementTypes.NAEIC;
-					RowUU.EDKind            = Enums.EDKinds.NotificationAboutClarification;
-					RowUU.EDDirection    = Enums.EDDirections.Outgoing;
-					NewRow               = RowUU.Rows.Add();
-					NewRow.EDType         = Enums.EDVersionElementTypes.NRNCEI;
-					NewRow.EDKind         = Enums.EDKinds.NotificationAboutReception;
-					NewRow.EDDirection = Enums.EDDirections.Incoming;
-					
-				EndIf;
-				
-			Else
-				
-				RowOfPDP                 = RowESF.Rows.Add();
-				RowOfPDP.EDType           = Enums.EDVersionElementTypes.EIRDC;
-				RowOfPDP.EDKind           = Enums.EDKinds.Confirmation;
-				RowOfPDP.EDDirection   = Enums.EDDirections.Incoming;
-				
-				NewRow               = RowOfPDP.Rows.Add();
-				NewRow.EDType         = Enums.EDVersionElementTypes.NRCDREI;
-				NewRow.EDKind         = Enums.EDKinds.NotificationAboutReception;
-				NewRow.EDDirection = Enums.EDDirections.Outgoing;
-				
-				NewRow               = RowESF.Rows.Add();
-				NewRow.EDType         = Enums.EDVersionElementTypes.NAREI;
-				NewRow.EDKind         = Enums.EDKinds.NotificationAboutReception;
-				NewRow.EDDirection = Enums.EDDirections.Incoming;
-				
-				If ED.EDStatus = Enums.EDStatuses.Rejected OR ED.EDStatus = Enums.EDStatuses.RejectedByReceiver Then
-					
-					RowUU                  = RowESF.Rows.Add();
-					RowUU.EDType            = Enums.EDVersionElementTypes.NAEIC;
-					RowUU.EDKind            = Enums.EDKinds.NotificationAboutClarification;
-					RowUU.EDDirection    = Enums.EDDirections.Incoming;
-					
-					NewRow               = RowUU.Rows.Add();
-					NewRow.EDType         = Enums.EDVersionElementTypes.NRNCEI;
-					NewRow.EDKind         = Enums.EDKinds.NotificationAboutReception;
-					NewRow.EDDirection = Enums.EDDirections.Outgoing;
-					
-				EndIf;
-				
-			EndIf;
-		ElsIf ED.EDKind = Enums.EDKinds.TORG12Seller
+		If ED.EDKind = Enums.EDKinds.TORG12Seller
 			OR ED.EDKind = Enums.EDKinds.ActPerformer
 			OR ED.EDKind = Enums.EDKinds.AgreementAboutCostChangeSender Then
 			
@@ -968,17 +882,3 @@ Procedure OnOpen(Cancel)
 	EndIf;
 	
 EndProcedure
-
-
-
-
-
-
-
-
-
-
-
-
-
-

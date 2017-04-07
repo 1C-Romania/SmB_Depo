@@ -207,9 +207,9 @@ Procedure FillAlcoholProductsAttributesByItemGroup()
 		Object.AlcoholicProductsKind = Object.ProductsAndServicesCategory.AlcoholicProductsKind;
 	EndIf;
 	
-	Object.ImportedAlcoholicProducts = Object.CountryOfOrigin <> Catalogs.WorldCountries.Russia;
+	Object.ImportedAlcoholicProducts = Object.CountryOfOrigin <> Constants.HomeCountry.Get();
 	If Object.ImportedAlcoholicProducts <> Object.ProductsAndServicesCategory.ImportedAlcoholicProducts Then
-		Object.CountryOfOrigin = ?(Object.ProductsAndServicesCategory.ImportedAlcoholicProducts, Undefined, Catalogs.WorldCountries.Russia);
+		Object.CountryOfOrigin = ?(Object.ProductsAndServicesCategory.ImportedAlcoholicProducts, Undefined, Constants.HomeCountry.Get());
 	EndIf;
 
 EndProcedure // FillAlcoholProductsAttributesByItemGroup()
@@ -663,44 +663,6 @@ Procedure AfterWriteAtServer(CurrentObject, WriteParameters)
 	
 EndProcedure // AfterWriteOnServer()
 
-
-// Rise { Bernavski N 2016-09-13
-&AtServer
-Function CheckUniquenessOfNomenclature()
-		
-	StructureSearch = New Structure("Code,Description",Undefined,"=");
-	
-	If ValueIsFilled(Object.DescriptionFull) Then
-		StructureSearch.Insert("DescriptionFull", "=");	
-	EndIf;
-	
-	If ValueIsFilled(Object.SKU) Then
-		StructureSearch.Insert("SKU", "=");
-	EndIf;
-	
-	FoundObjects = Catalogs.ProductsAndServices.FindDuplicates(Object, StructureSearch);
-	                                            
-	Return FoundObjects;	 
-	
-EndFunction
-
-&AtClient
-Procedure DuplicatesListFormClosure(ClosingResult, AdditionalParameters) Export
-	
-	If Not ClosingResult = True Then 	
-		NotifyWritingNew(ClosingResult);
-		Modified = False;
-		If ThisForm.IsOpen() And ClosingResult <> Undefined Then
-			Close();
-		EndIf;
-	ElsIf ClosingResult = True Then 	
-		CheckedOnDuplicates = True;
-		Write();
-	EndIf;
-	
-EndProcedure
-// Rise } Bernavski N 2016-09-13
-
 &AtClient
 // BeforeRecord event handler procedure.
 //
@@ -709,35 +671,6 @@ Procedure BeforeWrite(Cancel, WriteParameters)
 	// StandardSubsystems.PerformanceEstimation
 	PerformanceEstimationClientServer.StartTimeMeasurement("CatalogProductsAndServicesWrite");
 	// StandardSubsystems.PerformanceEstimation
-	
-	// Rise { Bernavski N 2016-09-13
-	If Not Cancel And Not CheckedOnDuplicates And Object.Ref.IsEmpty() And ValueIsFilled(Object.Description)And SmallBusinessReUse.GetValueByDefaultUser(UsersClientServer.CurrentUser(),"SearchDuplicatesOfProductsAndServices") = True Then
-		Try
-			FoundObjects = CheckUniquenessOfNomenclature();
-		Except             
-			Cancel = True;
-			Info = ErrorInfo();
-			If Info.Cause <> Undefined Then
-				ErrorDescription = Info.Cause.Description;
-			Else
-				ErrorDescription = Info.Description;
-			EndIf;
-
-			Raise(ErrorDescription);
-		EndTry;	
-		If FoundObjects.Count() > 0 Then      
-			
-			NotifyDescription = New NotifyDescription("DuplicatesListFormClosure", ThisForm);
-			
-			FormParameters = New Structure;
-			FormParameters.Insert("FoundObjects", FoundObjects); 
-			
-			OpenForm("Catalog.ProductsAndServices.Form.DuplicatesChoiceForm", FormParameters, ThisForm,,,,NotifyDescription,FormWindowOpeningMode.LockOwnerWindow); 
-			Cancel = True;
-			CheckedOnDuplicates = False;
-		EndIf;
-	EndIf;
-	// Rise } Bernavski N 2016-09-13
 	
 EndProcedure //BeforeWrite()
 
@@ -1079,17 +1012,3 @@ EndProcedure // UpdateAdditionalAttributeItems()
 // End StandardSubsystems.Properties
 
 #EndRegion
-
-
-
-
-
-
-
-
-
-
-
-
-
-

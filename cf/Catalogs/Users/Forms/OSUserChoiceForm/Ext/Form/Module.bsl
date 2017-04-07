@@ -111,17 +111,3 @@ Procedure ComposeResultAndCloseForm()
 EndProcedure
 
 #EndRegion
-
-
-
-
-
-
-
-
-
-
-
-
-
-

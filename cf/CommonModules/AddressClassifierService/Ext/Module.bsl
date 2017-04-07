@@ -7266,8 +7266,9 @@ Procedure DeleteTemporaryFile(FullFileName) Export
 		DeleteFiles(FullFileName)
 	Except
 		WriteLogEvent(EventLogMonitorEvent(), EventLogLevel.Warning,
-			,, StringFunctionsClientServer.SubstituteParametersInString(NStr("en='Unable to delete a temporary file %1 as: %2';
-			|ru='Невозможно удалить временный файл %1 как: %2'"), FullFileName, DetailErrorDescription(ErrorInfo())));
+			,, StringFunctionsClientServer.SubstituteParametersInString(NStr("en='Unable to delete a temporary
+				|file %1 as: %2';ru='Unable to delete a temporary
+				|file %1 as: %2'"), FullFileName, DetailErrorDescription(ErrorInfo())));
 	EndTry
 	
 EndProcedure

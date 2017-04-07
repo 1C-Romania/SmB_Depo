@@ -121,14 +121,6 @@ Function ArrayAdditionalDocumentAttributes(DocumentName) Export
 		
 		AdditAttributesArray.Add("EventType");
 		
-	ElsIf DocumentName = "CustomerInvoiceNote" Then
-		
-		AdditAttributesArray.Add("OperationKind");
-		
-	ElsIf DocumentName = "SupplierInvoiceNote" Then
-		
-		AdditAttributesArray.Add("OperationKind");
-		
 	ElsIf DocumentName = "ReceiptCR" Then
 		
 		AdditAttributesArray.Add("CashCR");

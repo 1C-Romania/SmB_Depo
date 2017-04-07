@@ -342,17 +342,3 @@ Procedure HandleReceivedCodeOnClientEnd(SelectItem, Parameters) Export
 EndProcedure
 
 #EndRegion
-
-
-
-
-
-
-
-
-
-
-
-
-
-

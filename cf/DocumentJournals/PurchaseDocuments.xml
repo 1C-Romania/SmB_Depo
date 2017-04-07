@@ -35,7 +35,6 @@
 				<xr:Item xsi:type="xr:MDObjectRef">Document.SupplierInvoice</xr:Item>
 				<xr:Item xsi:type="xr:MDObjectRef">Document.PurchaseOrder</xr:Item>
 				<xr:Item xsi:type="xr:MDObjectRef">Document.AdditionalCosts</xr:Item>
-				<xr:Item xsi:type="xr:MDObjectRef">Document.SupplierInvoiceNote</xr:Item>
 				<xr:Item xsi:type="xr:MDObjectRef">Document.SupplierInvoiceForPayment</xr:Item>
 			</RegisteredDocuments>
 			<IncludeHelpInContents>true</IncludeHelpInContents>
@@ -312,12 +311,15 @@
 							<v8:lang>en</v8:lang>
 							<v8:content>Company</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Организация</v8:content>
+						</v8:item>
 					</Synonym>
 					<Comment/>
 					<Indexing>DontIndex</Indexing>
 					<References>
 						<xr:Item xsi:type="xr:MDObjectRef">Document.PurchaseOrder.Attribute.Company</xr:Item>
-						<xr:Item xsi:type="xr:MDObjectRef">Document.SupplierInvoiceNote.Attribute.Company</xr:Item>
 						<xr:Item xsi:type="xr:MDObjectRef">Document.SupplierInvoice.Attribute.Company</xr:Item>
 						<xr:Item xsi:type="xr:MDObjectRef">Document.AdditionalCosts.Attribute.Company</xr:Item>
 						<xr:Item xsi:type="xr:MDObjectRef">Document.SupplierInvoiceForPayment.Attribute.Company</xr:Item>
@@ -341,7 +343,6 @@
 					<Indexing>DontIndex</Indexing>
 					<References>
 						<xr:Item xsi:type="xr:MDObjectRef">Document.PurchaseOrder.Attribute.OperationKind</xr:Item>
-						<xr:Item xsi:type="xr:MDObjectRef">Document.SupplierInvoiceNote.Attribute.OperationKind</xr:Item>
 						<xr:Item xsi:type="xr:MDObjectRef">Document.SupplierInvoice.Attribute.OperationKind</xr:Item>
 					</References>
 				</Properties>
@@ -363,7 +364,6 @@
 					<Indexing>DontIndex</Indexing>
 					<References>
 						<xr:Item xsi:type="xr:MDObjectRef">Document.PurchaseOrder.Attribute.Counterparty</xr:Item>
-						<xr:Item xsi:type="xr:MDObjectRef">Document.SupplierInvoiceNote.Attribute.Counterparty</xr:Item>
 						<xr:Item xsi:type="xr:MDObjectRef">Document.SupplierInvoice.Attribute.Counterparty</xr:Item>
 						<xr:Item xsi:type="xr:MDObjectRef">Document.AdditionalCosts.Attribute.Counterparty</xr:Item>
 						<xr:Item xsi:type="xr:MDObjectRef">Document.SupplierInvoiceForPayment.Attribute.Counterparty</xr:Item>
@@ -387,7 +387,6 @@
 					<Indexing>DontIndex</Indexing>
 					<References>
 						<xr:Item xsi:type="xr:MDObjectRef">Document.PurchaseOrder.Attribute.Contract</xr:Item>
-						<xr:Item xsi:type="xr:MDObjectRef">Document.SupplierInvoiceNote.Attribute.Contract</xr:Item>
 						<xr:Item xsi:type="xr:MDObjectRef">Document.SupplierInvoice.Attribute.Contract</xr:Item>
 						<xr:Item xsi:type="xr:MDObjectRef">Document.AdditionalCosts.Attribute.Contract</xr:Item>
 						<xr:Item xsi:type="xr:MDObjectRef">Document.SupplierInvoiceForPayment.Attribute.Contract</xr:Item>
@@ -432,7 +431,6 @@
 					<Indexing>DontIndex</Indexing>
 					<References>
 						<xr:Item xsi:type="xr:MDObjectRef">Document.PurchaseOrder.Attribute.DocumentAmount</xr:Item>
-						<xr:Item xsi:type="xr:MDObjectRef">Document.SupplierInvoiceNote.Attribute.DocumentAmount</xr:Item>
 						<xr:Item xsi:type="xr:MDObjectRef">Document.SupplierInvoice.Attribute.DocumentAmount</xr:Item>
 						<xr:Item xsi:type="xr:MDObjectRef">Document.AdditionalCosts.Attribute.DocumentAmount</xr:Item>
 						<xr:Item xsi:type="xr:MDObjectRef">Document.SupplierInvoiceForPayment.Attribute.DocumentAmount</xr:Item>
@@ -456,7 +454,6 @@
 					<Indexing>DontIndex</Indexing>
 					<References>
 						<xr:Item xsi:type="xr:MDObjectRef">Document.PurchaseOrder.Attribute.DocumentCurrency</xr:Item>
-						<xr:Item xsi:type="xr:MDObjectRef">Document.SupplierInvoiceNote.Attribute.DocumentCurrency</xr:Item>
 						<xr:Item xsi:type="xr:MDObjectRef">Document.SupplierInvoice.Attribute.DocumentCurrency</xr:Item>
 						<xr:Item xsi:type="xr:MDObjectRef">Document.AdditionalCosts.Attribute.DocumentCurrency</xr:Item>
 						<xr:Item xsi:type="xr:MDObjectRef">Document.SupplierInvoiceForPayment.Attribute.DocumentCurrency</xr:Item>
@@ -506,7 +503,6 @@
 						<xr:Item xsi:type="xr:MDObjectRef">Document.PurchaseOrder.Attribute.IncomingDocumentNumber</xr:Item>
 						<xr:Item xsi:type="xr:MDObjectRef">Document.SupplierInvoice.Attribute.IncomingDocumentNumber</xr:Item>
 						<xr:Item xsi:type="xr:MDObjectRef">Document.SupplierInvoiceForPayment.Attribute.IncomingDocumentNumber</xr:Item>
-						<xr:Item xsi:type="xr:MDObjectRef">Document.SupplierInvoiceNote.Attribute.PaymentAccountingDocumentNumber</xr:Item>
 					</References>
 				</Properties>
 			</Column>
@@ -530,7 +526,6 @@
 						<xr:Item xsi:type="xr:MDObjectRef">Document.PurchaseOrder.Attribute.IncomingDocumentDate</xr:Item>
 						<xr:Item xsi:type="xr:MDObjectRef">Document.SupplierInvoice.Attribute.IncomingDocumentDate</xr:Item>
 						<xr:Item xsi:type="xr:MDObjectRef">Document.SupplierInvoiceForPayment.Attribute.IncomingDocumentDate</xr:Item>
-						<xr:Item xsi:type="xr:MDObjectRef">Document.SupplierInvoiceNote.Attribute.PaymentAccountingDocumentDate</xr:Item>
 					</References>
 				</Properties>
 			</Column>
@@ -551,7 +546,6 @@
 					<Indexing>DontIndex</Indexing>
 					<References>
 						<xr:Item xsi:type="xr:MDObjectRef">Document.PurchaseOrder.Attribute.Comment</xr:Item>
-						<xr:Item xsi:type="xr:MDObjectRef">Document.SupplierInvoiceNote.Attribute.Comment</xr:Item>
 						<xr:Item xsi:type="xr:MDObjectRef">Document.SupplierInvoice.Attribute.Comment</xr:Item>
 						<xr:Item xsi:type="xr:MDObjectRef">Document.AdditionalCosts.Attribute.Comment</xr:Item>
 						<xr:Item xsi:type="xr:MDObjectRef">Document.SupplierInvoiceForPayment.Attribute.Comment</xr:Item>
@@ -578,7 +572,6 @@
 						<xr:Item xsi:type="xr:MDObjectRef">Document.PurchaseOrder.Attribute.Author</xr:Item>
 						<xr:Item xsi:type="xr:MDObjectRef">Document.SupplierInvoice.Attribute.Author</xr:Item>
 						<xr:Item xsi:type="xr:MDObjectRef">Document.SupplierInvoiceForPayment.Attribute.Author</xr:Item>
-						<xr:Item xsi:type="xr:MDObjectRef">Document.SupplierInvoiceNote.Attribute.Author</xr:Item>
 					</References>
 				</Properties>
 			</Column>

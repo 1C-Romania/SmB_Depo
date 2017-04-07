@@ -117,17 +117,3 @@ Procedure Filter()
 EndProcedure
 
 #EndRegion
-
-
-
-
-
-
-
-
-
-
-
-
-
-

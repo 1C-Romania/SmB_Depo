@@ -29,7 +29,7 @@ Procedure WhenDefiningObjectsWithEditableAttributes(Objects) Export
 	Objects.Insert(Metadata.Catalogs.Currencies.FullName(), "EditedAttributesInGroupDataProcessing");
 	Objects.Insert(Metadata.Catalogs.ReportsVariants.FullName(), "EditedAttributesInGroupDataProcessing");
 	Objects.Insert(Metadata.Catalogs.FileVersions.FullName(), "EditedAttributesInGroupDataProcessing");
-	Objects.Insert(Metadata.Catalogs.ContactInformationTypes.FullName(), "NotEditableInGroupProcessingAttributes");
+	Objects.Insert(Metadata.Catalogs.ContactInformationKinds.FullName(), "NotEditableInGroupProcessingAttributes");
 	Objects.Insert(Metadata.Catalogs.ExternalUsers.FullName(), "NotEditableInGroupProcessingAttributes");
 	Objects.Insert(Metadata.Catalogs.ExternalUsersGroups.FullName(), "NotEditableInGroupProcessingAttributes");
 	Objects.Insert(Metadata.Catalogs.AccessGroups.FullName(), "NotEditableInGroupProcessingAttributes");
@@ -62,11 +62,9 @@ Procedure WhenDefiningObjectsWithEditableAttributes(Objects) Export
 	Objects.Insert(Metadata.Catalogs.EventAttachedFiles.FullName(), "EditedAttributesInGroupDataProcessing");
 	Objects.Insert(Metadata.Catalogs.SystemMessages.FullName(), "NotEditableInGroupProcessingAttributes");
 	Objects.Insert(Metadata.Catalogs.SpecificationsAttachedFiles.FullName(), "EditedAttributesInGroupDataProcessing");
-	Objects.Insert(Metadata.Catalogs.WorldCountries.FullName(), "NotEditableInGroupProcessingAttributes");
+	Objects.Insert(Metadata.Catalogs.WorldCountries.FullName(), "AttributesToSkipOnGroupProcessing");
 	Objects.Insert(Metadata.Catalogs.DataExchangeScripts.FullName(), "NotEditableInGroupProcessingAttributes");
 	Objects.Insert(Metadata.Catalogs.SupplierInvoiceForPaymentAttachedFiles.FullName(), "EditedAttributesInGroupDataProcessing");
-	Objects.Insert(Metadata.Catalogs.SupplierInvoiceNoteAttachedFiles.FullName(), "EditedAttributesInGroupDataProcessing");
-	Objects.Insert(Metadata.Catalogs.CustomerInvoiceNoteAttachedFiles.FullName(), "EditedAttributesInGroupDataProcessing");
 	Objects.Insert(Metadata.Catalogs.FileStorageVolumes.FullName(), "EditedAttributesInGroupDataProcessing");
 	Objects.Insert(Metadata.Catalogs.EmailAccounts.FullName(), "EditedAttributesInGroupDataProcessing");
 	Objects.Insert(Metadata.Catalogs.Files.FullName(), "EditedAttributesInGroupDataProcessing");

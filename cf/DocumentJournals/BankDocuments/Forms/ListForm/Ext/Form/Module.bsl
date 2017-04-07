@@ -153,13 +153,6 @@ Procedure CompanyOnChange(Item)
 EndProcedure // CompanyOnChange()
 
 &AtClient
-Procedure LoadFromFile(Command)
-	
-	SmallBusinessClient.ImportDataFromStatementFile(UUID);
-	
-EndProcedure // LoadFromFile()
-
-&AtClient
 Procedure BankStatementsOnActivateRow(Item)
 	
 	AttachIdleHandler("Attachable_HandleListRowActivation", 0.2, True);
@@ -183,16 +176,3 @@ Procedure StatementGoTo(Command)
 EndProcedure // StatementGoTo()
 
 #EndRegion
-
-
-
-
-
-
-
-
-
-
-
-
-

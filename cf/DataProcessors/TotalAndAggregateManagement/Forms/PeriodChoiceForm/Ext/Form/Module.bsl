@@ -60,17 +60,3 @@ Function EndOfPeriod(Date)
 EndFunction
 
 #EndRegion
-
-
-
-
-
-
-
-
-
-
-
-
-
-

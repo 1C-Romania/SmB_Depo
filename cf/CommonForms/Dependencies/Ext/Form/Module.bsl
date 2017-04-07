@@ -21,7 +21,7 @@ EndProcedure
 &AtClient
 Procedure OnOpen(Cancel)
 
-	ReportTable.Show();
+	//ReportTable.Show();
 
 EndProcedure
 
@@ -32,7 +32,7 @@ EndProcedure
 Procedure Refresh(Command)
 	
 	OutputStructureOfSubordinance();
-	ReportTable.Show();
+	//ReportTable.Show();
 	
 EndProcedure
 
@@ -48,7 +48,7 @@ Procedure OutputForCurrent(Command)
 	EndIf;
 	
 	OutputStructureOfSubordinance();
-	ReportTable.Show();
+	//ReportTable.Show();
 	
 EndProcedure
 
@@ -150,13 +150,13 @@ Procedure DisplayDocumentAndPicture(TreeRow,Template,IsCurrentDocument = False,I
 			If TreeRow.GetItems().Count() Then
 				AreaPicture = Template.GetArea("DocumentPostedConnectorLeftBottom");
 			Else
-				AreaPicture = Template.GetArea("DocumentHeld");
+				AreaPicture = Template.GetArea("DocumentPosted");
 			EndIf;
 		Else
 			If TreeRow.GetItems().Count() Then
 				AreaPicture = Template.GetArea("DocumentPostedConnectorLeftTop");
 			Else
-				AreaPicture = Template.GetArea("DocumentHeld");
+				AreaPicture = Template.GetArea("DocumentPosted");
 			EndIf;
 		EndIf;
 	ElsIf TreeRow.DeletionMark Then
@@ -372,7 +372,7 @@ EndProcedure
 Procedure OutputStructureOfSubordinance()
 
 	RefreshTreeStructureOfSubjection();
-	ReportTable.Show();
+	//ReportTable.Show();
 
 EndProcedure
 
@@ -443,7 +443,7 @@ Function GetSelectionByDocumentAttributes(DocumentRef)
 	|FROM
 	|	Document." + DocumentMetadata.Name + "
 	|WHERE
-	|	Refs = &Refs
+	|	Ref = &Ref
 	|";
 	ReplaceQueryText(QueryText, DocumentMetadata, "#Amount", "DocumentAmount");
 	ReplaceQueryTextCurrency(QueryText, DocumentMetadata, "#Currency", "Currency"); // SB
@@ -707,7 +707,7 @@ Procedure OutputSubordinateDocuments(CurrentDocument,ParentalTree)
 		TextByDocumentType = "
 		|	Date,
 		|	Ref,
-		|	IsPosted,
+		|	Posted,
 		|	DeletionMark,
 		|	" + ?(DocumentAttributesCache[KeyAndValue.Key]["DocumentAmount"], "DocumentAmount", "NULL") + " AS DocumentAmount,
 		|	&Currency AS Currency,
@@ -733,7 +733,7 @@ Procedure OutputSubordinateDocuments(CurrentDocument,ParentalTree)
 		AdditAttributesArray = DependenciesOverridable.ArrayAdditionalDocumentAttributes(KeyAndValue.Key);
 		AddQueryTextByAttributesDocument(TextByDocumentType, AdditAttributesArray);
 		
-		QueryText = QueryText + ?(QueryText = "", " SELECT ", " MERGE ALL SELECT ") + TextByDocumentType;
+		QueryText = QueryText + ?(QueryText = "", " SELECT ", " UNION ALL SELECT ") + TextByDocumentType;
 
 	EndDo;
 
@@ -755,7 +755,7 @@ EndProcedure
 Function AddRowToTree(TreeRows, Selection)
 
 	NewRow = TreeRows.Add();
-	FillPropertyValues(NewRow, Selection, "Refs, Presentation, DocumentAmount, Currency, IsPosted, DeletionMark");
+	FillPropertyValues(NewRow, Selection, "Ref, Presentation, DocumentAmount, Currency, Posted, DeletionMark");
 	
 	OverriddenPresentation = DependenciesOverridable.GetDocumentPresentationToPrint(Selection);
 	If OverriddenPresentation <> Undefined Then
@@ -917,7 +917,7 @@ Procedure PostDocument(Command)
 			If IsBlankString(ErrorText) Then
 				
 				OutputStructureOfSubordinance();
-				ReportTable.Show();
+				//ReportTable.Show();
 				
 			EndIf;
 			
@@ -952,7 +952,7 @@ Procedure UndoPostingDocument(Command)
 			ErrorText = UndoPostingDocumentAtServer(CurrentDocument);
 			
 			OutputStructureOfSubordinance();
-			ReportTable.Show();
+			//ReportTable.Show();
 			
 		Except
 			
@@ -985,7 +985,7 @@ Procedure SetDeletionMarkDocument(Command)
 			ErrorText = SetDeletionMarkOfDocumentAtServer(CurrentDocument);
 			
 			OutputStructureOfSubordinance();
-			ReportTable.Show();
+			//ReportTable.Show();
 			
 		Except
 			
@@ -1073,17 +1073,3 @@ Procedure FindInList(Command)
 	EndTry;
 	
 EndProcedure // FindInList()
-
-
-
-
-
-
-
-
-
-
-
-
-
-

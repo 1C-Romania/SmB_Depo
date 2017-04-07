@@ -116,16 +116,3 @@ Procedure OpenDocumentKind(SelectedEventType)
 EndProcedure
 
 #EndRegion
-
-
-
-
-
-
-
-
-
-
-
-
-

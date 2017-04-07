@@ -477,16 +477,3 @@ Function ShowMessageToUser(Text)
 	Message.Message();
 	
 EndFunction
-
-
-
-
-
-
-
-
-
-
-
-
-

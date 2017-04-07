@@ -28,17 +28,3 @@ Procedure OK(Command)
 	Close(New Structure("CustomSettingValue", Not DontShowAgain));
 	
 EndProcedure // OK()
-
-
-
-
-
-
-
-
-
-
-
-
-
-

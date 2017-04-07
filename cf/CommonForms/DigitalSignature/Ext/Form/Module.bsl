@@ -36,17 +36,3 @@ Procedure OpenCertificate(Command)
 EndProcedure
 
 #EndRegion
-
-
-
-
-
-
-
-
-
-
-
-
-
-

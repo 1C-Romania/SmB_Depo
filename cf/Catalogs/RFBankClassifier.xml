@@ -279,7 +279,7 @@
 						</v8:item>
 						<v8:item>
 							<v8:lang>ru</v8:lang>
-							<v8:content>Наименование</v8:content>
+							<v8:content>Description</v8:content>
 						</v8:item>
 					</xr:Synonym>
 					<xr:Comment>Bank name</xr:Comment>
@@ -663,34 +663,9 @@
 					<FullTextSearch>Use</FullTextSearch>
 				</Properties>
 			</Attribute>
-			<Form>ImportClassifier</Form>
 			<Form>ChoiceForm</Form>
 			<Form>ListForm</Form>
 			<Form>ItemForm</Form>
-			<Command uuid="30f18fbf-4240-4708-a71a-189f8fc324f3">
-				<Properties>
-					<Name>RFBankClassifier</Name>
-					<Synonym>
-						<v8:item>
-							<v8:lang>en</v8:lang>
-							<v8:content>Bank classifier</v8:content>
-						</v8:item>
-						<v8:item>
-							<v8:lang>ru</v8:lang>
-							<v8:content>Классификатор банков РФ</v8:content>
-						</v8:item>
-					</Synonym>
-					<Comment>Opens form for editing</Comment>
-					<Group>ActionsPanelTools</Group>
-					<CommandParameterType/>
-					<ParameterUseMode>Single</ParameterUseMode>
-					<ModifiesData>false</ModifiesData>
-					<Representation>Auto</Representation>
-					<ToolTip/>
-					<Picture/>
-					<Shortcut/>
-				</Properties>
-			</Command>
 		</ChildObjects>
 	</Catalog>
 </MetaDataObject>

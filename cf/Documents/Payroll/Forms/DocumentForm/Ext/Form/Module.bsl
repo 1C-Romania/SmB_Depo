@@ -593,7 +593,7 @@ Procedure FillByDepartment()
 			TabularSectionRow.DaysWorked = 0;
 			TabularSectionRow.HoursWorked = 0;
 			
-			MessageText = NStr("en='%Employee%, %AccrualKind%: Working hours data has been entered consolidated. Time calculation for each accrual (deduction) kind is not possible!';ru='%Сотрудник%, %ВидНачисления%: Данные об отработанном времени введены сводно. Расчет времени по каждому виду начисления (удержания) невозможен!'");
+			MessageText = NStr("en='%Employee%, %AccrualKind%: Working hours data has been entered consolidated. Time calculation for each accrual (deduction) kind is not possible!';ru='%Employee%, %AccrualKind%: Данные об отработанном времени введены сводно. Расчет времени по каждому виду начисления (удержания) невозможен!'");
 			MessageText = StrReplace(MessageText, "%Employee%", TabularSectionRow.Employee);
 			MessageText = StrReplace(MessageText, "%AccrualKind%", TabularSectionRow.AccrualDeductionKind);
 			MessageField = "Object.AccrualsDeductions[" + Object.AccrualsDeductions.IndexOf(TabularSectionRow) + "].Employee";
@@ -1236,18 +1236,4 @@ EndProcedure
 // End StandardSubsystems.Printing
 
 #EndRegion
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 

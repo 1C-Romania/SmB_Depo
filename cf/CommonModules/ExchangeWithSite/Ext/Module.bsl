@@ -980,7 +980,7 @@ Procedure AddQueriesToBatch(QueryText, Parameters)
 		|		Presentation,
 		|		FieldsValues,
 		|		Country,
-		|		Region,
+		|		State,
 		|		City,
 		|		EMail_Address,
 		|		ServerDomainName,
@@ -1161,8 +1161,6 @@ Procedure AddQueriesToBatch(QueryText, Parameters)
 		|	Companies.DescriptionFull AS DescriptionFull,
 		|	Companies.LegalEntityIndividual AS LegalEntityIndividual,
 		|	Companies.TIN AS TIN,
-		|	Companies.KPP AS KPP,
-		|	Companies.CodeByOKPO AS CodeByOKPO,
 		|	Companies.ContactInformation.(
 		|		Type AS Type,
 		|		Kind AS Kind,
@@ -3822,7 +3820,7 @@ Function GetContractFromPropertiesOfOrder(OrderProperties, DocumentObject)
 EndFunction
 
 // Searches the counterparty based on the counterparty identification method specified for the exchange plan node.
-// For the specified Name or TINKPP counterparty identification method the counterparty is created if it is not found.
+// For the specified Name or TIN counterparty identification method the counterparty is created if it is not found.
 //
 // Parameters
 // DocumentObject - DocumentObject.CustomerOrder - order for which a counterparty is identified.
@@ -3861,12 +3859,6 @@ Function IdentifyCounterparty(DocumentObject, DocumentXDTO, Parameters, ErrorDes
 			TIN = XDTOCounterparty.TIN;
 		EndIf;
 		
-		KPP = "";
-		If XDTOObjectContainsProperty(XDTOCounterparty, "KPP")
-			AND TypeOf(XDTOCounterparty.KPP) = Type("String") Then
-			KPP = XDTOCounterparty.KPP;
-		EndIf;
-		
 		Description = "";
 		If XDTOObjectContainsProperty(XDTOCounterparty, "Description")
 			AND TypeOf(XDTOCounterparty.Description) = Type("String") Then
@@ -3899,7 +3891,7 @@ Function IdentifyCounterparty(DocumentObject, DocumentXDTO, Parameters, ErrorDes
 			
 			Query.SetParameter("Description", Description);
 			
-		ElsIf Parameters.CounterpartiesIdentificationMethod = Enums.CounterpartiesIdentificationMethods.TINKPP Then	
+		ElsIf Parameters.CounterpartiesIdentificationMethod = Enums.CounterpartiesIdentificationMethods.TIN Then	
 			
 			If IsBlankString(TIN) Then
 				
@@ -3912,13 +3904,12 @@ Function IdentifyCounterparty(DocumentObject, DocumentXDTO, Parameters, ErrorDes
 			
 			TextOfMessageFoundFewCounterparties = 
 				StringFunctionsClientServer.SubstituteParametersInString(
-					NStr("en=' by TIN: %1, KPP: %2';ru=' по ИНН: %1, КПП: %2'"),
-					TIN, KPP);
+					NStr("en=' by TIN: %1;ru=' по ИНН: %1'"),
+					TIN);
 			
-			Query.Text = Query.Text + " WHERE Counterparties.TIN = &TIN AND Counterparties.KPP = &KPP ";
+			Query.Text = Query.Text + " WHERE Counterparties.TIN = &TIN ";
 			
 			Query.SetParameter("TIN", TIN);
-			Query.SetParameter("KPP", KPP);
 			
 		EndIf;
 		
@@ -4004,10 +3995,6 @@ Procedure FillCounterpartyDataOfOrder(XDTOCounterparty, CounterpartyInformation)
 	
 	If XDTOObjectContainsProperty(XDTOCounterparty, "TIN") Then
 		AddInformationStringAboutCounterparty("TIN", XDTOCounterparty.TIN, CounterpartyInformation);
-	EndIf;
-		
-	If XDTOObjectContainsProperty(XDTOCounterparty, "KPP") Then
-		AddInformationStringAboutCounterparty("KPP", XDTOCounterparty.KPP, CounterpartyInformation);
 	EndIf;
 		
 	If XDTOObjectContainsProperty(XDTOCounterparty, "OKPO") AND XDTOPropertyIsFilled(XDTOCounterparty.OKPO) Then
@@ -4142,10 +4129,6 @@ Function CreateCounterparty(DocumentObject, XDTOCounterparty, Parameters, ErrorD
 	NewCounterparty = Catalogs.Counterparties.CreateItem();
 	FillPropertyValues(NewCounterparty, XDTOCounterparty);
 	
-	If XDTOObjectContainsProperty(XDTOCounterparty, "OKPO") AND XDTOPropertyIsFilled(XDTOCounterparty.OKPO) Then
-		NewCounterparty.CodeByOKPO = XDTOCounterparty.OKPO;
-	EndIf;
-	
 	If XDTOObjectContainsProperty(XDTOCounterparty, "FullDescr") Then
 		NewCounterparty.DescriptionFull = XDTOCounterparty.FullDescr;
 	EndIf;
@@ -4154,9 +4137,9 @@ Function CreateCounterparty(DocumentObject, XDTOCounterparty, Parameters, ErrorD
 	
 	If XDTOObjectContainsProperty(XDTOCounterparty, "OfficialName") Then
 		NewCounterparty.DescriptionFull = XDTOCounterparty.OfficialName;
-		NewCounterparty.LegalEntityIndividual = Enums.LegalEntityIndividual.LegalEntity;
+		NewCounterparty.LegalEntityIndividual = Enums.CounterpartyKinds.LegalEntity;
 	Else
-		NewCounterparty.LegalEntityIndividual = Enums.LegalEntityIndividual.Ind;
+		NewCounterparty.LegalEntityIndividual = Enums.CounterpartyKinds.Individual;
 	EndIf;
 	
 	SNPString = GetFromXDTOObjectStringWithSNP(XDTOCounterparty);
@@ -4197,26 +4180,26 @@ Procedure FillCounterpartyContactInformation(CounterpartyObject, XDTOCounterpart
 	
 	If XDTOObjectContainsProperty(XDTOCounterparty, "Address") Then
 		
-		AddressKind = Catalogs.ContactInformationTypes.CounterpartyFactAddress;
+		AddressKind = Catalogs.ContactInformationKinds.CounterpartyFactAddress;
 		AddressXDTO = XDTOCounterparty.Address;
 		
 		FillCounterpartyContactInformationStringFromXDTOObject(CounterpartyObject, AddressKind, AddressXDTO);
 		
 	EndIf;
 	
-	If CounterpartyObject.LegalEntityIndividual = Enums.LegalEntityIndividual.LegalEntity
+	If CounterpartyObject.LegalEntityIndividual = Enums.CounterpartyKinds.LegalEntity
 		AND XDTOObjectContainsProperty(XDTOCounterparty, "LegalAddress") Then
 		
-		AddressKind = Catalogs.ContactInformationTypes.CounterpartyLegalAddress;
+		AddressKind = Catalogs.ContactInformationKinds.CounterpartyLegalAddress;
 		AddressXDTO = XDTOCounterparty.LegalAddress;
 		
 		FillCounterpartyContactInformationStringFromXDTOObject(CounterpartyObject, AddressKind, AddressXDTO);
 		
 	// Individual contains the registration address.
-	ElsIf CounterpartyObject.LegalEntityIndividual = Enums.LegalEntityIndividual.Ind
+	ElsIf CounterpartyObject.LegalEntityIndividual = Enums.CounterpartyKinds.Individual
 		AND XDTOObjectContainsProperty(XDTOCounterparty, "RegistrationAddress") Then
 		
-		AddressKind = Catalogs.ContactInformationTypes.CounterpartyLegalAddress;
+		AddressKind = Catalogs.ContactInformationKinds.CounterpartyLegalAddress;
 		AddressXDTO = XDTOCounterparty.RegistrationAddress;
 		
 		FillCounterpartyContactInformationStringFromXDTOObject(CounterpartyObject, AddressKind, AddressXDTO);
@@ -6521,7 +6504,7 @@ Function GetXDTOCounterparty(CounterpartyData, CMLPackage) Export
 	XDTOCounterparty.ID = String(CounterpartyData.Counterparty.UUID());
 	XDTOCounterparty.Description = CounterpartyData.Description;
 	
-	ThisIsLegalEntity = CounterpartyData.LegalEntityIndividual = Enums.LegalEntityIndividual.LegalEntity;
+	ThisIsLegalEntity = CounterpartyData.LegalEntityIndividual = Enums.CounterpartyKinds.LegalEntity;
 	If ThisIsLegalEntity Then
 		
 		If Not IsBlankString(CounterpartyData.DescriptionFull) Then
@@ -6545,15 +6528,6 @@ Function GetXDTOCounterparty(CounterpartyData, CMLPackage) Export
 		XDTOCounterparty.TIN = TIN;
 	EndIf;
 	
-	KPP = GetKPPForXDTO(CounterpartyData.KPP);
-	If Not IsBlankString(KPP) Then
-		XDTOCounterparty.KPP = KPP;
-	EndIf;
-	
-	If ThisIsLegalEntity Then
-		XDTOCounterparty.OKPO = CounterpartyData.CodeByOKPO;
-	EndIf;
-	
 	If Not ThisIsCompany Then
 		XDTOCounterparty.Role = "Customer";
 	EndIf;
@@ -6566,7 +6540,7 @@ EndFunction
 
 Function GetTINForXDTO(TIN, LegalEntityIndividual)
 	
-	If LegalEntityIndividual = Enums.LegalEntityIndividual.LegalEntity Then
+	If LegalEntityIndividual = Enums.CounterpartyKinds.LegalEntity Then
 		TINValue = ?(StrLen(TIN) = 10, TIN, "");
 	Else
 		TINValue = ?(StrLen(TIN) = 12, TIN, "");
@@ -6575,14 +6549,6 @@ Function GetTINForXDTO(TIN, LegalEntityIndividual)
 	Return TINValue;
 	
 EndFunction
-
-Function GetKPPForXDTO(KPP)
-	
-	ValueKPP = ?(StrLen(KPP) = 9, KPP, "");
-	
-	Return ValueKPP;
-	
-EndFunction 
 
 // Checks the barcode correspondence with CML205 format.
 // If the barcode is not compliant with the format, it returns an empty string.
@@ -6606,7 +6572,7 @@ Procedure AddXDTOCompanyLegAddress(XDTOCompany, ContactInformation, CMLPackage)
 	
 	SearchStructure = New Structure;
 	SearchStructure.Insert("Type", Enums.ContactInformationTypes.Address);
-	SearchStructure.Insert("Kind", Catalogs.ContactInformationTypes.CompanyLegalAddress);
+	SearchStructure.Insert("Kind", Catalogs.ContactInformationKinds.CompanyLegalAddress);
 	
 	If Not CISelection.FindNext(SearchStructure)
 		OR IsBlankString(CISelection.Presentation) Then
@@ -6959,27 +6925,27 @@ Function GetTypeContactInformationKindByXDTOType(XDTOCIType)
 		OR Lower(XDTOCIType) = "housephone" Then
 		
 		CIType = Enums.ContactInformationTypes.Phone;
-		CIKind = Catalogs.ContactInformationTypes.CounterpartyPhone;
+		CIKind = Catalogs.ContactInformationKinds.CounterpartyPhone;
 		
 	ElsIf Lower(XDTOCIType) = "Fax" Then
 		
 		CIType = Enums.ContactInformationTypes.Fax;
-		CIKind = Catalogs.ContactInformationTypes.CounterpartyFax;
+		CIKind = Catalogs.ContactInformationKinds.CounterpartyFax;
 		
 	ElsIf Lower(XDTOCIType) = "mail" Then
 		
 		CIType = Enums.ContactInformationTypes.EmailAddress;
-		CIKind = Catalogs.ContactInformationTypes.CounterpartyEmail;
+		CIKind = Catalogs.ContactInformationKinds.CounterpartyEmail;
 		
 	ElsIf Lower(XDTOCIType) = "WebSite" Then
 		
 		CIType = Enums.ContactInformationTypes.WebPage;
-		CIKind = Catalogs.ContactInformationTypes.CounterpartyOtherInformation;
+		CIKind = Catalogs.ContactInformationKinds.CounterpartyOtherInformation;
 		
 	Else
 		
-		CIType = Enums.ContactInformationTypes.Another;
-		CIKind = Catalogs.ContactInformationTypes.CounterpartyOtherInformation;
+		CIType = Enums.ContactInformationTypes.Other;
+		CIKind = Catalogs.ContactInformationKinds.CounterpartyOtherInformation;
 		
 	EndIf;
 	
@@ -7807,7 +7773,7 @@ Procedure AddWarehousesToXDTOOffersPackage(XDTOOffersPackage, CMLPackage, Parame
 			//Address
 			SearchStructure = New Structure;
 			SearchStructure.Insert("Type", Enums.ContactInformationTypes.Address);
-			SearchStructure.Insert("Kind", Catalogs.ContactInformationTypes.StructuralUnitsFactAddress);
+			SearchStructure.Insert("Kind", Catalogs.ContactInformationKinds.StructuralUnitsFactAddress);
 			
 			If CISelection.FindNext(SearchStructure)
 				AND Not IsBlankString(CISelection.Presentation) Then
@@ -7851,7 +7817,7 @@ Procedure AddWarehousesToXDTOOffersPackage(XDTOOffersPackage, CMLPackage, Parame
 			
 			SearchStructure = New Structure;
 			SearchStructure.Insert("Type", Enums.ContactInformationTypes.Phone);
-			SearchStructure.Insert("Kind", Catalogs.ContactInformationTypes.StructuralUnitsPhone);
+			SearchStructure.Insert("Kind", Catalogs.ContactInformationKinds.StructuralUnitsPhone);
 			
 			If CISelection.FindNext(SearchStructure)
 				AND Not IsBlankString(CISelection.Presentation) Then

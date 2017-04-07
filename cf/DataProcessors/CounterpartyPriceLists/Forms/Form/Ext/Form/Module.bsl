@@ -1467,17 +1467,3 @@ Procedure MultipleFilterByProductsAndServicesClick(Item)
 	OpenForm("DataProcessor.CounterpartyPriceLists.Form.ProductsAndServicesEditForm", New Structure("ProductsAndServicesArray", FillArrayByTabularSectionAtClient("ProductsAndServices")), ThisForm);
 	
 EndProcedure // MultipleFilterByProductsAndServicesClick()
-
-
-
-
-
-
-
-
-
-
-
-
-
-

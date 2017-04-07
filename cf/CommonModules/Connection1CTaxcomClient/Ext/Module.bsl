@@ -44,10 +44,10 @@ Procedure StartWorkWithEDFOperatorMechanism(
 	If Not ValueIsFilled(Company) Then
 		
 		If Not IsBlankString(ErrorText) Then
-			ErrorText = ErrorText + " " + NStr("en='and';ru='а также'") + " ";
+			ErrorText = ErrorText + " " + NStr("en='and';ru='и'") + " ";
 		EndIf;
 		
-		ErrorText = ErrorText + NStr("en='Company';ru='Организация'");
+		ErrorText = ErrorText + NStr("en='""Company""';ru='""Организация""'");
 		ErrorsCount = ErrorsCount + 1;
 		
 	EndIf;
@@ -83,45 +83,41 @@ Procedure StartWorkWithEDFOperatorMechanism(
 		If IsBlankString(CompanyID) Then
 			// This is an ididentifier receipt
 			UserNotificationText = 
-			NStr("en='You can receive a unique identifier of"
-						"ED exchange member after connecting to the users"
-						"online support service and checking the authenticity of the owner specified in the subscriber certificate agreement."
-						"Continue?';
-				 |ru='Получение уникального идентификатора"
-						"участника обмена ЭД будет доступно после подключения"
-						"к сервису Интернет-поддержки пользователей и проверки подлинности владельца указанного в соглашении сертификата абонента."
-						"Продолжить?'");
+			NStr("en='You can receive a unique identifier of
+		|ED exchange member after connecting to the users
+		|online support service and checking the authenticity of the owner specified in the subscriber certificate agreement.
+		|Continue?';ru='Получение уникального идентификатора
+		|участника обмена ЭД будет доступно после подключения
+		|к сервису Интернет-поддержки пользователей и проверки подлинности владельца указанного в соглашении сертификата абонента.
+		|Продолжить?'");
 		Else
 			UserNotificationText =
-			NStr("en='You can add a new certificate"
-						"into an agreement after connecting to users online"
-						"support service and checking the authenticity of the owner specified in the subscriber certificate agreement."
-						"Continue?';
-				 |ru='Добавление нового сертификата в соглашение будет выполнено"
-						"после подключения к сервису Интернет-поддержки пользователей и проверки"
-						"подлинности владельца указанного в соглашении сертификата абонента."
-						"Продолжить?'");
+			NStr("en='You can add a new certificate
+		|into an agreement after connecting to users online
+		|support service and checking the authenticity of the owner specified in the subscriber certificate agreement.
+		|Continue?';ru='Добавление нового сертификата в соглашение будет выполнено
+		|после подключения к сервису Интернет-поддержки пользователей и проверки
+		|подлинности владельца указанного в соглашении сертификата абонента.
+		|Продолжить?'");
 		EndIf;
 		
 	ElsIf BusinessProcessOption = "taxcomPrivat" Then
 		
 		UserNotificationText = 
-		NStr("en='You can log in the personal account"
-					"of the ED exchange participant after connecting to"
-					"the users online support and checking the authenticity of the owner specified in the subscriber certificate agreement."
-					"Continue?';
-			 |ru='Вход в личный кабинет участника"
-					"обмена ЭД будет доступен после подключения"
-					"к сервису Интернет-поддержки пользователей и проверки подлинности владельца указанного в соглашении сертификата абонента."
-					"Продолжить?'");
+		NStr("en='You can log in the personal account
+		|of the ED exchange participant after connecting to
+		|the users online support and checking the authenticity of the owner specified in the subscriber certificate agreement.
+		|Continue?';ru='Вход в личный кабинет участника
+		|обмена ЭД будет доступен после подключения
+		|к сервису Интернет-поддержки пользователей и проверки подлинности владельца указанного в соглашении сертификата абонента.
+		|Продолжить?'");
 		
 	Else
 		
 		WarningText = StrReplace(
-			NStr("en='Error occurred inserting users online support mechanism."
-						"An incorrect version of the business process is specified (%1).';
-				 |ru='Ошибка встраивания механизма Интернет-поддержки пользователей."
-						"Указан неверный вариант бизнес-процесса (%1).'"),
+			NStr("en='Error occurred inserting users online support mechanism.
+		|An incorrect version of the business process is specified (%1).';ru='Ошибка встраивания механизма Интернет-поддержки пользователей.
+		|Указан неверный вариант бизнес-процесса (%1).'"),
 			"%1",
 			BusinessProcessOption);
 		ShowMessageBox(, WarningText);
@@ -274,8 +270,6 @@ Procedure FormOpenParameters(COPContext, OpenableFormName, Parameters) Export
 			OnlineUserSupportClientServer.SessionParameterValue(COPContext, "agencyED"));
 		Parameters.Insert("tinED",
 			OnlineUserSupportClientServer.SessionParameterValue(COPContext, "tinED"));
-		Parameters.Insert("kppED",
-			OnlineUserSupportClientServer.SessionParameterValue(COPContext, "kppED"));
 		Parameters.Insert("ogrnED",
 			OnlineUserSupportClientServer.SessionParameterValue(COPContext, "ogrnED"));
 		Parameters.Insert("codeimnsED",

@@ -59,17 +59,3 @@ EndProcedure // ListOnActivateRow()
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-

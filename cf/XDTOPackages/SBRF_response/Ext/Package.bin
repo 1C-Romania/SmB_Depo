@@ -22,7 +22,6 @@
 	<valueType name="InnType" base="xs:string" variety="Atomic">
 		<pattern>[0-9]{5,12}</pattern>
 	</valueType>
-	<valueType name="KppType" base="xs:string" variety="Atomic" maxLength="9"/>
 	<valueType name="OgrnType" base="xs:string" variety="Atomic" minLength="13" maxLength="15">
 		<pattern>[0-9]{13,15}</pattern>
 	</valueType>
@@ -514,8 +513,6 @@
 		<property name="taxPaytKind" lowerBound="0" form="Attribute">
 			<typeDef xsi:type="ValueType" base="xs:string" variety="Atomic" minLength="1" maxLength="2"/>
 		</property>
-		<property xmlns:d3p1="http://www.bssys.com/en/" name="kpp103" type="d3p1:KppType" lowerBound="0" form="Attribute"/>
-		<property xmlns:d3p1="http://www.bssys.com/en/" name="kpp102" type="d3p1:KppType" lowerBound="0" form="Attribute"/>
 	</objectType>
 	<objectType name="Dict">
 		<property name="dictId" lowerBound="0" form="Attribute">
@@ -650,7 +647,6 @@
 		</property>
 	</objectType>
 	<objectType name="OrgData">
-		<property xmlns:d3p1="http://www.bssys.com/en/" name="kpp" type="d3p1:KppType" lowerBound="0" form="Attribute"/>
 		<property xmlns:d3p1="http://www.bssys.com/en/" name="okato" type="d3p1:OkatoType" lowerBound="0" form="Attribute"/>
 		<property xmlns:d3p1="http://www.bssys.com/en/" name="tin" type="d3p1:InnType" lowerBound="0" form="Attribute"/>
 		<property name="orgName" lowerBound="1" form="Attribute">
@@ -658,12 +654,6 @@
 		</property>
 		<property xmlns:d3p1="http://www.bssys.com/en/" name="okpo" type="d3p1:OkpoType" lowerBound="0" form="Attribute"/>
 		<property xmlns:d3p1="http://www.bssys.com/en/" name="orgOGRN" type="d3p1:OgrnType" lowerBound="0" form="Attribute"/>
-	</objectType>
-	<objectType name="OrgKpp">
-		<property xmlns:d3p1="http://www.bssys.com/en/" name="KPPIndex" type="d3p1:KppType"/>
-		<property name="CheckKPP" lowerBound="0">
-			<typeDef xsi:type="ValueType" base="xs:string" variety="Atomic" length="1"/>
-		</property>
 	</objectType>
 	<objectType name="Param">
 		<property name="name" lowerBound="1" form="Attribute">
@@ -706,7 +696,6 @@
 				<pattern>[0-9]{5,12}</pattern>
 			</typeDef>
 		</property>
-		<property xmlns:d3p1="http://www.bssys.com/en/" name="kpp" type="d3p1:KppType" lowerBound="0" form="Attribute"/>
 		<property xmlns:d3p1="http://www.bssys.com/en/" name="personalAcc" type="d3p1:AccNumType" lowerBound="0" form="Attribute"/>
 		<property name="Name">
 			<typeDef xsi:type="ValueType" base="xs:string" variety="Atomic" length="160"/>
@@ -722,7 +711,6 @@
 				<pattern>[0-9]{5,12}</pattern>
 			</typeDef>
 		</property>
-		<property xmlns:d3p1="http://www.bssys.com/en/" name="kpp" type="d3p1:KppType" lowerBound="0" form="Attribute"/>
 		<property xmlns:d3p1="http://www.bssys.com/en/" name="personalAcc" type="d3p1:AccNumType" lowerBound="1" form="Attribute"/>
 		<property name="Name">
 			<typeDef xsi:type="ValueType" base="xs:string" variety="Atomic" maxLength="160"/>
@@ -838,7 +826,6 @@
 								<property name="OtherOrgData" lowerBound="0">
 									<typeDef xsi:type="ObjectType">
 										<property name="Locked" type="xs:string" lowerBound="0"/>
-										<property xmlns:d11p1="http://www.bssys.com/en/" name="OrgKpp" type="d11p1:OrgKpp" lowerBound="0" upperBound="-1"/>
 										<property name="InternationalName" lowerBound="0">
 											<typeDef xsi:type="ValueType" base="xs:string" variety="Atomic" minLength="1" maxLength="350"/>
 										</property>
@@ -1197,13 +1184,11 @@
 		<property name="payeeName" lowerBound="0" form="Attribute">
 			<typeDef xsi:type="ValueType" base="xs:string" variety="Atomic" maxLength="300"/>
 		</property>
-		<property xmlns:d3p1="http://www.bssys.com/en/" name="payeeKPP" type="d3p1:KppType" lowerBound="0" form="Attribute"/>
 		<property xmlns:d3p1="http://www.bssys.com/en/" name="payerTIN" type="d3p1:InnType" lowerBound="0" form="Attribute"/>
 		<property xmlns:d3p1="http://www.bssys.com/en/" name="payerAcc" type="d3p1:AccComType" lowerBound="1" form="Attribute"/>
 		<property name="payerName" lowerBound="0" form="Attribute">
 			<typeDef xsi:type="ValueType" base="xs:string" variety="Atomic" maxLength="300"/>
 		</property>
-		<property xmlns:d3p1="http://www.bssys.com/en/" name="payerKPP" type="d3p1:KppType" lowerBound="0" form="Attribute"/>
 		<property name="payeeBankName" lowerBound="0" form="Attribute">
 			<typeDef xsi:type="ValueType" base="xs:string" variety="Atomic" maxLength="140"/>
 		</property>

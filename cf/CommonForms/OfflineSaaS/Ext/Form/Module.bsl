@@ -331,17 +331,3 @@ Procedure DisableIndividualWorkplace(DeactivatebleOfflineWorkplace)
 EndProcedure
 
 #EndRegion
-
-
-
-
-
-
-
-
-
-
-
-
-
-

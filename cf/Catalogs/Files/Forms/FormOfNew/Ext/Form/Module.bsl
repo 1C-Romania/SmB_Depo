@@ -33,17 +33,3 @@ Procedure SetUsageParameters(CreationModeParameter) Export
 EndProcedure	
 
 #EndRegion
-
-
-
-
-
-
-
-
-
-
-
-
-
-

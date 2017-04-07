@@ -321,17 +321,3 @@ Procedure SetEnabled(AttributePathToData = "")
 EndProcedure
 
 #EndRegion
-
-
-
-
-
-
-
-
-
-
-
-
-
-

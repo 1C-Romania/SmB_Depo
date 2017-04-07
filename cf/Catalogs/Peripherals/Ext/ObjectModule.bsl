@@ -52,7 +52,7 @@ Procedure OnCopy(CopiedObject)
 	DeviceIsInUse = True;
 	Parameters = Undefined;
 
-	Description = NStr("en='%Description% (copy)';ru='%Наименование% (копия)'");
+	Description = NStr("en='%Description% (copy)';ru='%Description% (копия)'");
 	Description = StrReplace(Description, "%Description%", CopiedObject.Description);
 	
 EndProcedure

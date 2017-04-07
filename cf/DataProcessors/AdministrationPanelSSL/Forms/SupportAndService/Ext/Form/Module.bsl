@@ -68,14 +68,6 @@ Procedure OnCreateAtServer(Cancel, StandardProcessing)
 	Items.DataProcessorCurrencyRatesImportProcess.Visible = RunMode.Local;
 	// End StandardSubsystems.Currencies
 	
-	// StandardSubsystems.Banks
-	Items.ImportBanksClassifier.Visible = RunMode.Local AND RunMode.ThisIsSystemAdministrator;
-	// End StandardSubsystems.Banks
-	
-	// StandardSubsystems.PersonalDataProtection
-	Items.OpenSettingsRegistrationEventsAccessToPersonalData.Visible = RunMode.ThisIsSystemAdministrator;
-	// End StandardSubsystems.PersonalDataProtection
-	
 	// StandardSubsystems.ConfigurationUpdate
 	Items.DataProcessorConfigurationUpdate.Visible = RunMode.Local AND RunMode.ThisIsSystemAdministrator AND Not RunMode.IsLinuxClient;
 	Items.ApplicationUpdateSetup.Visible = RunMode.Local AND RunMode.ThisIsSystemAdministrator AND Not RunMode.IsLinuxClient;
@@ -85,16 +77,6 @@ Procedure OnCreateAtServer(Cancel, StandardProcessing)
 	// StandardSubsystems.InfobaseVersionUpdate
 	Items.DetailInfobaseUpdateInEventLogMonitor.Visible = RunMode.ThisIsSystemAdministrator;
 	// End StandardSubsystems.IBVersionUpdate
-	
-	// SB. OnlineUserSupport
-	Items.GroupOnlineUserSupport.Visible = OnlineUserSupport.UseOnlineSupportAllowedInCurrentOperationMode() AND RunMode.ThisIsSystemAdministrator;
-	Items.GroupConnectionFromServer.Visible = RunMode.ClientServer;
-	If Not RunMode.ClientServer Then
-		PromptParts = StringFunctionsClientServer.DecomposeStringIntoSubstringsArray(Items.ConnectOnlineUserSupportExtendedTooltip.Title, Chars.LF);
-		PromptParts.Delete(PromptParts.UBound());
-		Items.ConnectOnlineUserSupportExtendedTooltip.Title = StringFunctionsClientServer.RowFromArraySubrows(PromptParts, Chars.LF);
-	EndIf;
-	// SB. End OnlineUserSupport
 	
 	// Items state update.
 	SetEnabled();
@@ -183,18 +165,6 @@ EndProcedure
 Procedure DetailInfobaseUpdateInEventLogMonitorOnChange(Item)
 	Attachable_OnAttributeChange(Item);
 EndProcedure
-// End StandardSubsystems.IBVersionUpdate
-
-// SB. OnlineUserSupport
-&AtClient
-Procedure ConnectionTimeoutToOnlineSupportServiceOnChange(Item)
-	Attachable_OnAttributeChange(Item);
-EndProcedure
-
-&AtClient
-Procedure ConnectionToOUSServiceFromServerOnChange(Item)
-	Attachable_OnAttributeChange(Item);
-EndProcedure
 
 &AtClient
 Procedure GroupInternetSupportConnectionExtendedTooltipDataProcessorNavigationRefs(Item, URL, StandardProcessing)
@@ -271,15 +241,6 @@ Procedure DataProcessorCurrencyRatesImportProcess(Command)
 EndProcedure
 // End StandardSubsystems.Currencies
 
-// StandardSubsystems.Banks
-&AtClient
-Procedure ImportBanksClassifier(Command)
-	
-	OpenForm("Catalog.RFBankClassifier.Form.ImportClassifier");
-	
-EndProcedure
-// End StandardSubsystems.Banks
-
 // StandardSubsystems.FullTextSearch
 &AtClient
 Procedure ProcessingManagingFullTextSearch(Command)
@@ -314,16 +275,6 @@ Procedure InformationAndSupport(Command)
 	OpenForm("DataProcessor.InformationCenter.Form.InformationCenter");
 	
 EndProcedure // InformationAndSupport()
-// End ServiceTechnology.InformationCenter
-
-// SB. OnlineUserSupport
-&AtClient
-Procedure ConnectOnlineUserSupport(Command)
-	
-	OnlineUserSupportClient.ConnectOnlineUserSupport();
-	
-EndProcedure
-// SB. End OnlineUserSupport
 
 #EndRegion
 
@@ -561,17 +512,3 @@ Function ScheduledJobsFindPredefined(PredefinedName)
 EndFunction
 
 #EndRegion
-
-
-
-
-
-
-
-
-
-
-
-
-
-

@@ -187,17 +187,3 @@ Procedure CreateFormTable(Val FormTableFieldName, Val AttributeNameFormDataColle
 EndProcedure
 
 #EndRegion
-
-
-
-
-
-
-
-
-
-
-
-
-
-

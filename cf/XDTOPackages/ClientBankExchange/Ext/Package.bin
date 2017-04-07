@@ -159,9 +159,6 @@
 		<property name="PayerTIN" lowerBound="0">
 			<typeDef xsi:type="ValueType" base="xs:string" variety="Atomic" maxLength="12"/>
 		</property>
-		<property name="PayerKPP" lowerBound="0">
-			<typeDef xsi:type="ValueType" base="xs:string" variety="Atomic" maxLength="9"/>
-		</property>
 		<property name="Payer1" lowerBound="0">
 			<typeDef xsi:type="ValueType" base="xs:string" variety="Atomic" maxLength="160"/>
 		</property>
@@ -199,9 +196,6 @@
 		</property>
 		<property name="PayeeTIN" lowerBound="0">
 			<typeDef xsi:type="ValueType" base="xs:string" variety="Atomic" maxLength="12"/>
-		</property>
-		<property name="PayeeKPP" lowerBound="0">
-			<typeDef xsi:type="ValueType" base="xs:string" variety="Atomic" maxLength="9"/>
 		</property>
 		<property name="Payee1" lowerBound="0">
 			<typeDef xsi:type="ValueType" base="xs:string" variety="Atomic" maxLength="160"/>

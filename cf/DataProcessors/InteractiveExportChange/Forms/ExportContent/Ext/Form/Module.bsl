@@ -305,17 +305,3 @@ Procedure DetailsLevelGroupAnalysis(Filter, DetailsParameters)
 EndProcedure
 
 #EndRegion
-
-
-
-
-
-
-
-
-
-
-
-
-
-

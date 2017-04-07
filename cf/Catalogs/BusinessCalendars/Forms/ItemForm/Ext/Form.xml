@@ -14,11 +14,42 @@
 				<CommandName>Form.Command.MoveDay</CommandName>
 				<ExtendedTooltip name="FormToMoveOutDayExtendedTooltip" id="27"/>
 			</Button>
-			<Button name="FormFillDefault" id="16">
-				<Type>CommandBarButton</Type>
-				<CommandName>Form.Command.FillDefault</CommandName>
-				<ExtendedTooltip name="FormFillDefaultExtendedTooltip" id="28"/>
-			</Button>
+			<Popup name="FormGroupFill" id="50">
+				<Title>
+					<v8:item>
+						<v8:lang>en</v8:lang>
+						<v8:content>Fill</v8:content>
+					</v8:item>
+					<v8:item>
+						<v8:lang>ru</v8:lang>
+						<v8:content>Заполнить</v8:content>
+					</v8:item>
+				</Title>
+				<ToolTip>
+					<v8:item>
+						<v8:lang>en</v8:lang>
+						<v8:content>Form group fill</v8:content>
+					</v8:item>
+				</ToolTip>
+				<ExtendedTooltip name="FormGroupFillExtendedTooltip" id="51"/>
+				<ChildItems>
+					<Button name="FormFillSundayThursday" id="52">
+						<Type>CommandBarButton</Type>
+						<CommandName>Form.Command.FillSundayThursday</CommandName>
+						<ExtendedTooltip name="FormFillSundayThursdayExtendedTooltip" id="53"/>
+					</Button>
+					<Button name="FormFillSaturdayThursday" id="54">
+						<Type>CommandBarButton</Type>
+						<CommandName>Form.Command.FillSaturdayThursday</CommandName>
+						<ExtendedTooltip name="FormFillSaturdayThursdayExtendedTooltip" id="55"/>
+					</Button>
+					<Button name="FormFillDefault" id="16">
+						<Type>CommandBarButton</Type>
+						<CommandName>Form.Command.FillDefault</CommandName>
+						<ExtendedTooltip name="FormFillDefaultExtendedTooltip" id="28"/>
+					</Button>
+				</ChildItems>
+			</Popup>
 			<Button name="PrintForm" id="25">
 				<Type>CommandBarButton</Type>
 				<CommandName>Form.Command.Print</CommandName>
@@ -432,29 +463,24 @@
 			<Title>
 				<v8:item>
 					<v8:lang>en</v8:lang>
-					<v8:content>Fill in by default</v8:content>
+					<v8:content>Monday - Friday</v8:content>
 				</v8:item>
 				<v8:item>
 					<v8:lang>ru</v8:lang>
-					<v8:content>Заполнить по умолчанию</v8:content>
+					<v8:content>Понедельник - Пятница</v8:content>
 				</v8:item>
 			</Title>
 			<ToolTip>
 				<v8:item>
 					<v8:lang>en</v8:lang>
-					<v8:content>Fill in by default</v8:content>
+					<v8:content>Monday - Friday</v8:content>
 				</v8:item>
 				<v8:item>
 					<v8:lang>ru</v8:lang>
-					<v8:content>Заполнить по умолчанию</v8:content>
+					<v8:content>Понедельник - Пятница</v8:content>
 				</v8:item>
 			</ToolTip>
-			<Picture>
-				<xr:Ref>CommonPicture.FillForm</xr:Ref>
-				<xr:LoadTransparent>true</xr:LoadTransparent>
-			</Picture>
 			<Action>FillDefault</Action>
-			<Representation>TextPicture</Representation>
 			<ModifiesSavedData>true</ModifiesSavedData>
 		</Command>
 		<Command name="Print" id="4">
@@ -484,6 +510,52 @@
 			</Picture>
 			<Action>Print</Action>
 			<Representation>TextPicture</Representation>
+		</Command>
+		<Command name="FillSundayThursday" id="5">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Sunday - Thursday</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Воскресенье - Четверг</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Sunday - Thursday</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Воскресенье - Четверг</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>FillSundayThursday</Action>
+		</Command>
+		<Command name="FillSaturdayThursday" id="6">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Saturday - Thursday</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Суббота - Четверг</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Saturday - Thursday</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Суббота - Четверг</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>FillSaturdayThursday</Action>
 		</Command>
 	</Commands>
 	<CommandInterface>

@@ -417,17 +417,3 @@ Function StructureOfFixedStructure(Source)
 EndFunction
 
 #EndRegion
-
-
-
-
-
-
-
-
-
-
-
-
-
-

@@ -49,7 +49,7 @@ Procedure FillPaymentDestination()
 	
 	TextAmount = String(Format(DocumentAmount, "ND=15; NFD=2; NDS=-; NZ=0-00; NG="));
 	
-	TextPaymentDestination = NStr("en='%TextDestination% Amount %TextAmount% %VATRateValue% %TextVAT%';ru='%ТекстНазначение% Сумма %ТекстСумма% %ЗначениеСтавкиНДС% %ТекстНДС%'"
+	TextPaymentDestination = NStr("en='%TextDestination% Amount %TextAmount% %VATRateValue% %TextVAT%';ru='%TextDestination% Сумма %TextAmount% %VATRateValue% %TextVAT%'"
 	);
 	
 	TextPaymentDestination = StrReplace(TextPaymentDestination, "%TextDestination%", PaymentText);
@@ -429,8 +429,6 @@ Procedure FillCheckProcessing(Cancel, CheckedAttributes)
 	
 	If OperationKind <> Enums.OperationKindsPaymentOrder.TaxTransfer Then
 		SmallBusinessServer.DeleteAttributeBeingChecked(CheckedAttributes, "TransferToBudgetKind");
-		SmallBusinessServer.DeleteAttributeBeingChecked(CheckedAttributes, "BKCode");
-		SmallBusinessServer.DeleteAttributeBeingChecked(CheckedAttributes, "OKATOCode");
 	EndIf;
 	
 EndProcedure // FillCheckProcessing()
@@ -468,7 +466,6 @@ Procedure OnCopy(CopiedObject)
 	   AND Not SmallBusinessClientServer.PaymentToBudgetAttributesNewRulesApplied(CurrentDate()))
 	   OR (NOT SmallBusinessClientServer.PaymentToBudgetAttributesNewRulesApplied(CopiedObject.Date)
 	   AND SmallBusinessClientServer.PaymentToBudgetAttributesNewRulesApplied(Date))) Then
-		OKATOCode = "";
 		PaymentIdentifier = "";
 	EndIf;
 	

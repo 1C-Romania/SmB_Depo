@@ -344,17 +344,3 @@ Procedure InventoryTableQuantityOnChange(Item)
 	TabularSectionRow.Amount = TabularSectionRow.Price * TabularSectionRow.Quantity;
 	
 EndProcedure // InventoryTableQuantityOnChange()
-
-
-
-
-
-
-
-
-
-
-
-
-
-

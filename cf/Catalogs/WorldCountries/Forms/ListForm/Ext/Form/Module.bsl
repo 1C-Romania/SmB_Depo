@@ -1,15 +1,14 @@
 ﻿
-#Region FormEventsHandlers
-//
+#Region FormEventHandlers
 
 &AtServer
 Procedure OnCreateAtServer(Cancel, StandardProcessing)
-	If Parameters.Property("AutoTest") Then
+	If Parameters.Property("Autotest") Then
 		Return;
 	EndIf;
 	
-	// Initialize the internal flags.
-	CanAddToCatalog = Catalogs.WorldCountries.IsRightToAdd();
+	// Initializing internal flags
+	CanAddToCatalog = Catalogs.WorldCountries.HasRightToAdd();
 	
 	If Parameters.AllowClassifierData=Undefined Then
 		AllowClassifierData = True;
@@ -22,46 +21,46 @@ Procedure OnCreateAtServer(Cancel, StandardProcessing)
 	
 	Parameters.Property("ChoiceMode", ChoiceMode);
 	
-	// Allow items
+	// Allowing items
 	Items.List.ChoiceMode = ChoiceMode;
-	Items.ListChoose.Visible         = ChoiceMode;
-	Items.ListChoose.DefaultButton = ChoiceMode;
+	Items.ListSelect.Visible       = ChoiceMode;
+	Items.ListSelect.DefaultButton = ChoiceMode;
 	
-	Items.ListChooseFromClassifier.Visible = (ChoiceMode AND Not OnlyClassifierData);
-	Items.ClassifierList.Visible           = CanAddToCatalog;
+	Items.ListSelectFromClassifier.Visible = (ChoiceMode And Not OnlyClassifierData);
+	Items.ListClassifierList.Visible       = Not Items.ListSelectFromClassifier.Visible;
 	
-	// Define mode by flags
+	// Determining mode according to flags
 	If ChoiceMode Then
 		If AllowClassifierData Then
 			If OnlyClassifierData Then
 				If CanAddToCatalog Then 
-					// Selection of classifier countries only.
+					// Selecting only countries listed in the classifier
 					OpenClassifierForm = True
 					
 				Else
-					// Show only catalog and classifier intersection.
-					SetInterceptionFilterToClassifier();
-					// Hide classifier buttons.
-					Items.ListChooseFromClassifier.Visible = False;
-					Items.ClassifierList.Visible           = False;
+					// Displaying only items present both in catalog and classifier
+					SetCatalogAndClassifierJunctionFilter();
+					// Hiding classifier buttons
+					Items.ListSelectFromClassifier.Visible = False;
+					Items.ListClassifierList.Visible       = False;
 				EndIf;
 				
 			Else
 				If CanAddToCatalog Then 
-					// Show catalog and selection button from classifier (default settings).
+					// Displaying classifier and classifier selection button (as per default settings)
 				Else
-					// Hide classifier buttons.
-					Items.ListChooseFromClassifier.Visible = False;
-					Items.ClassifierList.Visible           = False;
+					// Hiding classifier buttons
+					Items.ListSelectFromClassifier.Visible = False;
+					Items.ListClassifierList.Visible       = False;
 				EndIf;
 			EndIf;
 			
 		 Else
-			// Show only catalog items.
-			Items.ClassifierList.Visible = False;
-			// Hide classifier buttons.
-			Items.ListChooseFromClassifier.Visible = False;
-			Items.ClassifierList.Visible           = False;
+			// Displaying catalog items only
+			Items.ListClassifierList.Visible = False;
+			// Hiding classifier buttons
+			Items.ListSelectFromClassifier.Visible = False;
+			Items.ListClassifierList.Visible       = False;
 		EndIf;
 	EndIf;
 	
@@ -71,13 +70,13 @@ EndProcedure
 Procedure OnOpen(Cancel)
 	
 	If OpenClassifierForm Then
-		// Selection only classifier countries, open its choice form.
+		// Selecting only countries listed in the classifier; opening classifier form for selection
 		OpenParameters = New Structure;
 		OpenParameters.Insert("ChoiceMode",        True);
-		OpenParameters.Insert("CloseOnChoice", CloseOnChoice);
-		OpenParameters.Insert("CurrentRow",      Items.List.CurrentRow);
-		OpenParameters.Insert("WindowOpeningMode",  WindowOpeningMode);
-		OpenParameters.Insert("CurrentRow",      Items.List.CurrentRow);
+		OpenParameters.Insert("CloseOnChoice",     CloseOnChoice);
+		OpenParameters.Insert("CurrentRow",        Items.List.CurrentRow);
+		OpenParameters.Insert("WindowOpeningMode", WindowOpeningMode);
+		OpenParameters.Insert("CurrentRow",        Items.List.CurrentRow);
 		
 		OpenForm("Catalog.WorldCountries.Form.Classifier", OpenParameters, FormOwner);
 		Cancel = True;
@@ -88,61 +87,55 @@ EndProcedure
 &AtClient
 Procedure NotificationProcessing(EventName, Parameter, Source)
 	If EventName="Catalog.WorldCountries.Update" Then
-		RefreshListOfCountriesRepresentationList();
+		RefreshCountryListRepresentation();
 	EndIf;
 EndProcedure
 
 #EndRegion
 
-#Region FormTableItemsEventsHandlersList
-//
+#Region ListFormTableItemEventHandlers
 
 &AtClient
-Procedure ListBeforeAddRow(Item, Cancel, Copy, Parent, Group)
-	If Not Copy Then
+Procedure ListBeforeAddRow(Item, Cancel, Clone, Parent, Group)
+	If Not Clone Then
 		Cancel = True;
-		QuestionText = NStr("en='There is option to select the world country from the classifier.
-		|Select?';ru='Есть возможность подобрать страну мира из классификатора.
-		|Подобрать?'");
+		QuestionText = NStr("ru = 'Можно подобрать страну из классификатора.
+		                        |Подобрать?'; en='You can pick a world country from classifier.
+		                        |Pick?'");
 								
-		NotificationHandler = New NotifyDescription("NotificationPickQueryFromClassifier", ThisObject);
-		SelectionButtons = New ValueList();
-		SelectionButtons.Add(DialogReturnCode.Yes, "Pick");
-		SelectionButtons.Add(DialogReturnCode.No, "Create");
-		SelectionButtons.Add(DialogReturnCode.Cancel, "Cancel");
-		ShowQueryBox(NotificationHandler, QuestionText, SelectionButtons, , DialogReturnCode.Cancel);
+		NotificationHandler = New NotifyDescription("NotifyClassifierSelectionQuestion", ThisObject);
+		ShowQueryBox(NotificationHandler, QuestionText, QuestionDialogMode.YesNoCancel, , DialogReturnCode.No);
 	EndIf;
 EndProcedure
 
 &AtClient
-Procedure ListChoiceProcessing(Item, ValueSelected, StandardProcessing)
+Procedure ChoiceProcessingList(Item, SelectedValue, StandardProcessing)
 	If ChoiceMode Then
-		// Selection from classifier
-		NotifyChoice(ValueSelected);
+		// Selecting from classifier
+		NotifyChoice(SelectedValue);
 	EndIf;
 EndProcedure
 
 &AtClient
 Procedure ListNewWriteProcessing(NewObject, Source, StandardProcessing)
-	RefreshListOfCountriesRepresentationList();
+	RefreshCountryListRepresentation();
 EndProcedure
 
 #EndRegion
 
-#Region FormCommandsHandlers
-//
+#Region FormCommandHandlers
 
 &AtClient
 Procedure OpenClassifier(Command)
-	// Open on view
+	// Opening for viewing
 	OpenParameters = New Structure;
 	OpenParameters.Insert("CurrentRow", Items.List.CurrentRow);
 	OpenForm("Catalog.WorldCountries.Form.Classifier", OpenParameters, Items.List);
 EndProcedure
 
 &AtClient
-Procedure ChooseFromClassifier(Command)
-	// Open for selection
+Procedure SelectFromClassifier(Command)
+	// Opening for selection
 	OpenParameters = New Structure;
 	OpenParameters.Insert("ChoiceMode", True);
 	OpenParameters.Insert("CloseOnChoice", CloseOnChoice);
@@ -154,35 +147,34 @@ EndProcedure
 
 #EndRegion
 
-#Region ServiceProceduresAndFunctions
-//
+#Region InternalProceduresAndFunctions
 
 &AtClient
-Procedure RefreshListOfCountriesRepresentationList()
+Procedure RefreshCountryListRepresentation()
 	
-	If ItemIdentificatorFilterReferences<>Undefined Then
-		// Additional filter which is to be updated was applied.
-		SetInterceptionFilterToClassifier();
+	If RefFilterItemID<>Undefined Then
+		// An additional filter was set and must be updated
+		SetCatalogAndClassifierJunctionFilter();
 	EndIf;
 	
 	Items.List.Refresh();
 EndProcedure
 
 &AtServer
-Procedure SetInterceptionFilterToClassifier()
-	FilterList = List.SettingsComposer.FixedSettings.Filter;
+Procedure SetCatalogAndClassifierJunctionFilter()
+	ListFilter = List.SettingsComposer.FixedSettings.Filter;
 	
-	If ItemIdentificatorFilterReferences=Undefined Then
-		FilterItem = FilterList.Items.Add(Type("DataCompositionFilterItem"));
+	If RefFilterItemID=Undefined Then
+		FilterItem = ListFilter.Items.Add(Type("DataCompositionFilterItem"));
 		
-		FilterItem.ViewMode = DataCompositionSettingsItemViewMode.Inaccessible;
-		FilterItem.LeftValue    = New DataCompositionField("Ref");
-		FilterItem.ComparisonType     = DataCompositionComparisonType.InList;
-		FilterItem.Use    = True;
+		FilterItem.ViewMode       = DataCompositionSettingsItemViewMode.Inaccessible;
+		FilterItem.LeftValue      = New DataCompositionField("Ref");
+		FilterItem.ComparisonType = DataCompositionComparisonType.InList;
+		FilterItem.Use            = True;
 		
-		ItemIdentificatorFilterReferences = FilterList.GetIDByObject(FilterItem);
+		RefFilterItemID = ListFilter.GetIDByObject(FilterItem);
 	Else
-		FilterItem = FilterList.GetObjectByID(ItemIdentificatorFilterReferences);
+		FilterItem = ListFilter.GetObjectByID(RefFilterItemID);
 	EndIf;
 	
 	Query = New Query("
@@ -201,7 +193,7 @@ Procedure SetInterceptionFilterToClassifier()
 		|	Catalog.WorldCountries AS WorldCountries
 		|INNER JOIN
 		|	Classifier AS Classifier
-		|ON
+		|BY
 		|	WorldCountries.Code = Classifier.Code
 		|	AND WorldCountries.Description = Classifier.Description
 		|");
@@ -210,16 +202,16 @@ Procedure SetInterceptionFilterToClassifier()
 EndProcedure
 
 &AtClient
-Procedure NotificationPickQueryFromClassifier(QuestionResult, AdditionalParameters) Export
+Procedure NotifyClassifierSelectionQuestion(QuestionResult, AdditionalParameters) Export
 	
 	If QuestionResult=DialogReturnCode.Yes Then
-		// Pick from ACC
+		// Picking from classifier
 		OpenParameters = New Structure;
 		OpenParameters.Insert("ChoiceMode", True);
 		OpenForm("Catalog.WorldCountries.Form.Classifier", OpenParameters, Items.List);
 		
 	ElsIf QuestionResult=DialogReturnCode.No Then
-		// Adding new item
+		// Adding an item
 		OpenForm("Catalog.WorldCountries.ObjectForm");
 		
 	EndIf;
@@ -227,17 +219,3 @@ Procedure NotificationPickQueryFromClassifier(QuestionResult, AdditionalParamete
 EndProcedure
 
 #EndRegion
-
-
-
-
-
-
-
-
-
-
-
-
-
-

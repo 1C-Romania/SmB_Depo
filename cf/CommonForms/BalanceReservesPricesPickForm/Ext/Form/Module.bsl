@@ -1630,17 +1630,3 @@ EndProcedure // DetermineNeedForDocumentFillByBasis()
 
 #EndRegion
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-

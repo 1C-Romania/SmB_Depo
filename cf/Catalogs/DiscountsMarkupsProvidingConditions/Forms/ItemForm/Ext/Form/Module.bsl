@@ -468,16 +468,3 @@ Function GetDataProductsAndServicesOnChange(StructureData)
 EndFunction // ReceiveDataProductsAndServicesOnChange()
 
 #EndRegion
-
-
-
-
-
-
-
-
-
-
-
-
-

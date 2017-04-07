@@ -191,17 +191,6 @@
 		</right>
 	</object>
 	<object>
-		<name>Document.CustomerInvoiceNote.Attribute.CorrectionCustomerInvoiceNote</name>
-		<right>
-			<name>View</name>
-			<value>false</value>
-		</right>
-		<right>
-			<name>Edit</name>
-			<value>false</value>
-		</right>
-	</object>
-	<object>
 		<name>Catalog.CustomerOrderAttachedFiles.Attribute.PathToFile</name>
 		<right>
 			<name>View</name>
@@ -1203,7 +1192,7 @@
 		</right>
 	</object>
 	<object>
-		<name>Catalog.StructuralUnits.TabularSection.ContactInformation.Attribute.PhoneNumberNoCodes</name>
+		<name>Catalog.StructuralUnits.TabularSection.ContactInformation.Attribute.PhoneNumberWithoutCodes</name>
 		<right>
 			<name>View</name>
 			<value>false</value>
@@ -1797,7 +1786,7 @@
 		</right>
 	</object>
 	<object>
-		<name>Catalog.Counterparties.TabularSection.ContactInformation.Attribute.State</name>
+		<name>Catalog.Counterparties.TabularSection.ContactInformation.Attribute.Region</name>
 		<right>
 			<name>View</name>
 			<value>false</value>
@@ -2578,17 +2567,6 @@
 		</right>
 	</object>
 	<object>
-		<name>Catalog.SupplierInvoiceNoteAttachedFiles.Attribute.PictureIndex</name>
-		<right>
-			<name>View</name>
-			<value>false</value>
-		</right>
-		<right>
-			<name>Edit</name>
-			<value>false</value>
-		</right>
-	</object>
-	<object>
 		<name>Document.CustomerInvoice.Attribute.Driver</name>
 		<right>
 			<name>View</name>
@@ -2876,17 +2854,6 @@
 	</object>
 	<object>
 		<name>Catalog.PriceKinds.Attribute.Percent</name>
-		<right>
-			<name>View</name>
-			<value>false</value>
-		</right>
-		<right>
-			<name>Edit</name>
-			<value>false</value>
-		</right>
-	</object>
-	<object>
-		<name>Catalog.CustomerInvoiceNoteAttachedFiles.TabularSection.DigitalSignatures.Attribute.Signer</name>
 		<right>
 			<name>View</name>
 			<value>false</value>
@@ -3667,17 +3634,6 @@
 		</right>
 	</object>
 	<object>
-		<name>Catalog.CustomerInvoiceNoteAttachedFiles.TabularSection.EncryptionCertificates</name>
-		<right>
-			<name>View</name>
-			<value>false</value>
-		</right>
-		<right>
-			<name>Edit</name>
-			<value>false</value>
-		</right>
-	</object>
-	<object>
 		<name>Report.StandardBOM.Attribute.Cost</name>
 		<right>
 			<name>View</name>
@@ -4185,17 +4141,6 @@
 	</object>
 	<object>
 		<name>Catalog.ExpenseReportAttachedFiles.TabularSection.DigitalSignatures.Attribute.CertificateIsIssuedTo</name>
-		<right>
-			<name>View</name>
-			<value>false</value>
-		</right>
-		<right>
-			<name>Edit</name>
-			<value>false</value>
-		</right>
-	</object>
-	<object>
-		<name>Document.CustomerInvoiceNote.Attribute.Same</name>
 		<right>
 			<name>View</name>
 			<value>false</value>
@@ -5306,7 +5251,7 @@
 		</right>
 	</object>
 	<object>
-		<name>Catalog.ContactInformationTypes.Attribute.AddressRussianOnly</name>
+		<name>Catalog.ContactInformationKinds.Attribute.DomesticAddressOnly</name>
 		<right>
 			<name>View</name>
 			<value>false</value>
@@ -5526,17 +5471,6 @@
 		</right>
 	</object>
 	<object>
-		<name>Catalog.SupplierInvoiceNoteAttachedFiles.Attribute.ModificationDateUniversal</name>
-		<right>
-			<name>View</name>
-			<value>false</value>
-		</right>
-		<right>
-			<name>Edit</name>
-			<value>false</value>
-		</right>
-	</object>
-	<object>
 		<name>Document.Timesheet.TabularSection.WorkedTimeByDays.Attribute.FirstHours29</name>
 		<right>
 			<name>View</name>
@@ -5713,17 +5647,6 @@
 		</right>
 	</object>
 	<object>
-		<name>Document.SupplierInvoiceNote.TabularSection.Inventory.Attribute.Content</name>
-		<right>
-			<name>View</name>
-			<value>false</value>
-		</right>
-		<right>
-			<name>Edit</name>
-			<value>false</value>
-		</right>
-	</object>
-	<object>
 		<name>InformationRegister.FilesInWorkingDirectory.Resource.Path</name>
 		<right>
 			<name>View</name>
@@ -5768,7 +5691,7 @@
 		</right>
 	</object>
 	<object>
-		<name>Catalog.Individuals.Attribute.BirthDate</name>
+		<name>Catalog.Individuals.Attribute.Birthdate</name>
 		<right>
 			<name>View</name>
 			<value>false</value>
@@ -6275,17 +6198,6 @@
 	</object>
 	<object>
 		<name>InformationRegister.ReportOnCurrencyRatesDifference.StandardAttribute.Period</name>
-		<right>
-			<name>View</name>
-			<value>false</value>
-		</right>
-		<right>
-			<name>Edit</name>
-			<value>false</value>
-		</right>
-	</object>
-	<object>
-		<name>Catalog.SupplierInvoiceNoteAttachedFiles.Attribute.IsEditing</name>
 		<right>
 			<name>View</name>
 			<value>false</value>
@@ -7330,29 +7242,7 @@
 		</right>
 	</object>
 	<object>
-		<name>Document.CustomerInvoiceNote.Attribute.Contract</name>
-		<right>
-			<name>View</name>
-			<value>false</value>
-		</right>
-		<right>
-			<name>Edit</name>
-			<value>false</value>
-		</right>
-	</object>
-	<object>
 		<name>Document.Timesheet.TabularSection.WorkedTimeByDays.Attribute.FirstHours30</name>
-		<right>
-			<name>View</name>
-			<value>false</value>
-		</right>
-		<right>
-			<name>Edit</name>
-			<value>false</value>
-		</right>
-	</object>
-	<object>
-		<name>Document.SupplierInvoiceNote.Attribute.DocumentCurrency</name>
 		<right>
 			<name>View</name>
 			<value>false</value>
@@ -7397,17 +7287,6 @@
 	</object>
 	<object>
 		<name>ExchangePlan.ExchangeWithPeripheralsOffline.Attribute.ImportCompleted</name>
-		<right>
-			<name>View</name>
-			<value>false</value>
-		</right>
-		<right>
-			<name>Edit</name>
-			<value>false</value>
-		</right>
-	</object>
-	<object>
-		<name>Catalog.SupplierInvoiceNoteAttachedFiles.TabularSection.DigitalSignatures</name>
 		<right>
 			<name>View</name>
 			<value>false</value>
@@ -7463,17 +7342,6 @@
 	</object>
 	<object>
 		<name>DataProcessor.ExchangeMessagesTransportFILE.Attribute.MessageFileTemplateName</name>
-		<right>
-			<name>View</name>
-			<value>false</value>
-		</right>
-		<right>
-			<name>Edit</name>
-			<value>false</value>
-		</right>
-	</object>
-	<object>
-		<name>Catalog.CustomerInvoiceNoteAttachedFiles.TabularSection.DigitalSignatures.Attribute.Comment</name>
 		<right>
 			<name>View</name>
 			<value>false</value>
@@ -8848,17 +8716,6 @@
 		</right>
 	</object>
 	<object>
-		<name>Catalog.SupplierInvoiceNoteAttachedFiles.TabularSection.EncryptionCertificates.Attribute.Certificate</name>
-		<right>
-			<name>View</name>
-			<value>false</value>
-		</right>
-		<right>
-			<name>Edit</name>
-			<value>false</value>
-		</right>
-	</object>
-	<object>
 		<name>Catalog.Calendars.TabularSection.WorkSchedule</name>
 		<right>
 			<name>View</name>
@@ -9025,17 +8882,6 @@
 	</object>
 	<object>
 		<name>DataProcessor.PrintLabelsAndTags.TabularSection.SourceData</name>
-		<right>
-			<name>View</name>
-			<value>false</value>
-		</right>
-		<right>
-			<name>Edit</name>
-			<value>false</value>
-		</right>
-	</object>
-	<object>
-		<name>Catalog.SupplierInvoiceNoteAttachedFiles.Attribute.TextExtractionStatus</name>
 		<right>
 			<name>View</name>
 			<value>false</value>
@@ -9443,17 +9289,6 @@
 	</object>
 	<object>
 		<name>DataProcessor.InfobaseObjectsMapping.TabularSection.TableOfAutomaticallyMappedObjects.Attribute.ReceiverField3</name>
-		<right>
-			<name>View</name>
-			<value>false</value>
-		</right>
-		<right>
-			<name>Edit</name>
-			<value>false</value>
-		</right>
-	</object>
-	<object>
-		<name>Document.SupplierInvoiceNote.TabularSection.Inventory.Attribute.Amount</name>
 		<right>
 			<name>View</name>
 			<value>false</value>
@@ -10014,17 +9849,6 @@
 		</right>
 	</object>
 	<object>
-		<name>Catalog.Companies.Attribute.LogoFileDelete</name>
-		<right>
-			<name>View</name>
-			<value>false</value>
-		</right>
-		<right>
-			<name>Edit</name>
-			<value>false</value>
-		</right>
-	</object>
-	<object>
 		<name>Report.InvoiceForPaymentAnalysis.Attribute.FilterByPaymentState</name>
 		<right>
 			<name>View</name>
@@ -10103,17 +9927,6 @@
 	</object>
 	<object>
 		<name>Document.CustomerOrder.TabularSection.AdditionalAttributes</name>
-		<right>
-			<name>View</name>
-			<value>false</value>
-		</right>
-		<right>
-			<name>Edit</name>
-			<value>false</value>
-		</right>
-	</object>
-	<object>
-		<name>Document.CustomerInvoiceNote.TabularSection.Inventory.Attribute.Total</name>
 		<right>
 			<name>View</name>
 			<value>false</value>
@@ -12060,17 +11873,6 @@
 		</right>
 	</object>
 	<object>
-		<name>Document.SupplierInvoiceNote.TabularSection.Inventory.Attribute.ProductsAndServices</name>
-		<right>
-			<name>View</name>
-			<value>false</value>
-		</right>
-		<right>
-			<name>Edit</name>
-			<value>false</value>
-		</right>
-	</object>
-	<object>
 		<name>Document.ReportToPrincipal.TabularSection.Inventory.Attribute.ProductsAndServices</name>
 		<right>
 			<name>View</name>
@@ -12259,17 +12061,6 @@
 	</object>
 	<object>
 		<name>Catalog.Peripherals.Attribute.DeviceIsInUse</name>
-		<right>
-			<name>View</name>
-			<value>false</value>
-		</right>
-		<right>
-			<name>Edit</name>
-			<value>false</value>
-		</right>
-	</object>
-	<object>
-		<name>Catalog.CustomerInvoiceNoteAttachedFiles.TabularSection.DigitalSignatures.Attribute.SignatureDate</name>
 		<right>
 			<name>View</name>
 			<value>false</value>
@@ -12731,17 +12522,6 @@
 		</right>
 	</object>
 	<object>
-		<name>Document.SupplierInvoiceNote.TabularSection.Inventory.Attribute.Characteristic</name>
-		<right>
-			<name>View</name>
-			<value>false</value>
-		</right>
-		<right>
-			<name>Edit</name>
-			<value>false</value>
-		</right>
-	</object>
-	<object>
 		<name>Document.PaymentOrder.StandardAttribute.Posted</name>
 		<right>
 			<name>View</name>
@@ -13017,17 +12797,6 @@
 		</right>
 	</object>
 	<object>
-		<name>Catalog.CustomerInvoiceNoteAttachedFiles.Attribute.Size</name>
-		<right>
-			<name>View</name>
-			<value>false</value>
-		</right>
-		<right>
-			<name>Edit</name>
-			<value>false</value>
-		</right>
-	</object>
-	<object>
 		<name>Document.Timesheet.TabularSection.WorkedTimeByDays.Attribute.ThirdTimeKind27</name>
 		<right>
 			<name>View</name>
@@ -13281,7 +13050,7 @@
 		</right>
 	</object>
 	<object>
-		<name>Catalog.ContactInformationTypes.Attribute.Type</name>
+		<name>Catalog.ContactInformationKinds.Attribute.Type</name>
 		<right>
 			<name>View</name>
 			<value>false</value>
@@ -13414,17 +13183,6 @@
 	</object>
 	<object>
 		<name>Catalog.CashRegisters.Attribute.StructuralUnit</name>
-		<right>
-			<name>View</name>
-			<value>false</value>
-		</right>
-		<right>
-			<name>Edit</name>
-			<value>false</value>
-		</right>
-	</object>
-	<object>
-		<name>Document.CustomerInvoiceNote.TabularSection.BasisDocuments.Attribute.BasisDocument</name>
 		<right>
 			<name>View</name>
 			<value>false</value>
@@ -13579,17 +13337,6 @@
 	</object>
 	<object>
 		<name>Document.AdditionalCosts.TabularSection.Inventory.Attribute.Batch</name>
-		<right>
-			<name>View</name>
-			<value>false</value>
-		</right>
-		<right>
-			<name>Edit</name>
-			<value>false</value>
-		</right>
-	</object>
-	<object>
-		<name>Document.SupplierInvoiceNote.Attribute.BasisDocument</name>
 		<right>
 			<name>View</name>
 			<value>false</value>
@@ -14172,17 +13919,6 @@
 		</right>
 	</object>
 	<object>
-		<name>Catalog.Companies.Attribute.CertificateIssueDate</name>
-		<right>
-			<name>View</name>
-			<value>false</value>
-		</right>
-		<right>
-			<name>Edit</name>
-			<value>false</value>
-		</right>
-	</object>
-	<object>
 		<name>Catalog.ExpenseReportAttachedFiles.TabularSection.DigitalSignatures.Attribute.Comment</name>
 		<right>
 			<name>View</name>
@@ -14315,17 +14051,6 @@
 		</right>
 	</object>
 	<object>
-		<name>Document.CustomerInvoiceNote.Attribute.DateOfExtension</name>
-		<right>
-			<name>View</name>
-			<value>false</value>
-		</right>
-		<right>
-			<name>Edit</name>
-			<value>false</value>
-		</right>
-	</object>
-	<object>
 		<name>Catalog.AccessGroupsProfiles.TabularSection.AccessValues.Attribute.AccessValue</name>
 		<right>
 			<name>View</name>
@@ -14360,17 +14085,6 @@
 	</object>
 	<object>
 		<name>AccumulationRegister.InventoryReceived.Dimension.Contract</name>
-		<right>
-			<name>View</name>
-			<value>false</value>
-		</right>
-		<right>
-			<name>Edit</name>
-			<value>false</value>
-		</right>
-	</object>
-	<object>
-		<name>Document.PaymentOrder.Attribute.BKCode</name>
 		<right>
 			<name>View</name>
 			<value>false</value>
@@ -14547,17 +14261,6 @@
 	</object>
 	<object>
 		<name>InformationRegister.DeviationFromResourcesWorkSchedules.Attribute.NotABusinessDay</name>
-		<right>
-			<name>View</name>
-			<value>false</value>
-		</right>
-		<right>
-			<name>Edit</name>
-			<value>false</value>
-		</right>
-	</object>
-	<object>
-		<name>Document.CustomerInvoiceNote.Attribute.IncomingDocumentNumber</name>
 		<right>
 			<name>View</name>
 			<value>false</value>
@@ -16438,17 +16141,6 @@
 		</right>
 	</object>
 	<object>
-		<name>Document.CustomerInvoiceNote.TabularSection.Inventory.Attribute.Amount</name>
-		<right>
-			<name>View</name>
-			<value>false</value>
-		</right>
-		<right>
-			<name>Edit</name>
-			<value>false</value>
-		</right>
-	</object>
-	<object>
 		<name>InformationRegister.PaymentsSchedule.Attribute.Item</name>
 		<right>
 			<name>View</name>
@@ -16603,7 +16295,7 @@
 		</right>
 	</object>
 	<object>
-		<name>Catalog.ContactInformationTypes.Attribute.CheckCorrectness</name>
+		<name>Catalog.ContactInformationKinds.Attribute.CheckValidity</name>
 		<right>
 			<name>View</name>
 			<value>false</value>
@@ -16967,17 +16659,6 @@
 	</object>
 	<object>
 		<name>Catalog.Employees.Attribute.OccupationType</name>
-		<right>
-			<name>View</name>
-			<value>false</value>
-		</right>
-		<right>
-			<name>Edit</name>
-			<value>false</value>
-		</right>
-	</object>
-	<object>
-		<name>Catalog.CustomerInvoiceNoteAttachedFiles.Attribute.Volume</name>
 		<right>
 			<name>View</name>
 			<value>false</value>
@@ -17450,50 +17131,6 @@
 		</right>
 	</object>
 	<object>
-		<name>InformationRegister.PersonalDataAreas.StandardAttribute.Active</name>
-		<right>
-			<name>View</name>
-			<value>false</value>
-		</right>
-		<right>
-			<name>Edit</name>
-			<value>false</value>
-		</right>
-	</object>
-	<object>
-		<name>InformationRegister.PersonalDataAreas.StandardAttribute.LineNumber</name>
-		<right>
-			<name>View</name>
-			<value>false</value>
-		</right>
-		<right>
-			<name>Edit</name>
-			<value>false</value>
-		</right>
-	</object>
-	<object>
-		<name>InformationRegister.PersonalDataAreas.StandardAttribute.Recorder</name>
-		<right>
-			<name>View</name>
-			<value>false</value>
-		</right>
-		<right>
-			<name>Edit</name>
-			<value>false</value>
-		</right>
-	</object>
-	<object>
-		<name>InformationRegister.PersonalDataAreas.StandardAttribute.Period</name>
-		<right>
-			<name>View</name>
-			<value>false</value>
-		</right>
-		<right>
-			<name>Edit</name>
-			<value>false</value>
-		</right>
-	</object>
-	<object>
 		<name>Catalog.VATRates.Attribute.Calculated</name>
 		<right>
 			<name>View</name>
@@ -17825,17 +17462,6 @@
 	</object>
 	<object>
 		<name>Catalog.ProductsAndServicesCharacteristics.TabularSection.AdditionalAttributes.Attribute.Property</name>
-		<right>
-			<name>View</name>
-			<value>false</value>
-		</right>
-		<right>
-			<name>Edit</name>
-			<value>false</value>
-		</right>
-	</object>
-	<object>
-		<name>Document.SupplierInvoiceNote.Attribute.PaymentAccountingDocumentDate</name>
 		<right>
 			<name>View</name>
 			<value>false</value>
@@ -18770,7 +18396,7 @@
 		</right>
 	</object>
 	<object>
-		<name>Catalog.ContactInformationTypes.Attribute.AllowInputOfMultipleValues</name>
+		<name>Catalog.ContactInformationKinds.Attribute.AllowMultipleValueInput</name>
 		<right>
 			<name>View</name>
 			<value>false</value>
@@ -18957,17 +18583,6 @@
 		</right>
 	</object>
 	<object>
-		<name>Catalog.CustomerInvoiceNoteAttachedFiles.Attribute.PictureIndex</name>
-		<right>
-			<name>View</name>
-			<value>false</value>
-		</right>
-		<right>
-			<name>Edit</name>
-			<value>false</value>
-		</right>
-	</object>
-	<object>
 		<name>Catalog.ProductsAndServicesAttachedFiles.Attribute.FileOwner</name>
 		<right>
 			<name>View</name>
@@ -19002,17 +18617,6 @@
 	</object>
 	<object>
 		<name>Document.CashReceipt.TabularSection.PaymentDetails.Attribute.PlanningDocument</name>
-		<right>
-			<name>View</name>
-			<value>false</value>
-		</right>
-		<right>
-			<name>Edit</name>
-			<value>false</value>
-		</right>
-	</object>
-	<object>
-		<name>Catalog.CustomerInvoiceNoteAttachedFiles.TabularSection.DigitalSignatures.Attribute.Imprint</name>
 		<right>
 			<name>View</name>
 			<value>false</value>
@@ -20002,7 +19606,7 @@
 		</right>
 	</object>
 	<object>
-		<name>Catalog.Users.TabularSection.ContactInformation.Attribute.FieldsValues</name>
+		<name>Catalog.Users.TabularSection.ContactInformation.Attribute.FieldValues</name>
 		<right>
 			<name>View</name>
 			<value>false</value>
@@ -20926,17 +20530,6 @@
 		</right>
 	</object>
 	<object>
-		<name>Catalog.CustomerInvoiceNoteAttachedFiles.TabularSection.EncryptionCertificates.Attribute.Certificate</name>
-		<right>
-			<name>View</name>
-			<value>false</value>
-		</right>
-		<right>
-			<name>Edit</name>
-			<value>false</value>
-		</right>
-	</object>
-	<object>
 		<name>DataProcessor.DataExchangeCreationAssistant.TabularSection.StatisticsInformation.Attribute.ObjectsMappingPercent</name>
 		<right>
 			<name>View</name>
@@ -21179,13 +20772,6 @@
 		</right>
 	</object>
 	<object>
-		<name>Document.CustomerInvoiceNote.Command.OpenInvoices</name>
-		<right>
-			<name>View</name>
-			<value>true</value>
-		</right>
-	</object>
-	<object>
 		<name>AccumulationRegister.CashAssets.Resource.Amount</name>
 		<right>
 			<name>View</name>
@@ -21220,17 +20806,6 @@
 	</object>
 	<object>
 		<name>InformationRegister.DataExchangeRules.Resource.RulesFilename</name>
-		<right>
-			<name>View</name>
-			<value>false</value>
-		</right>
-		<right>
-			<name>Edit</name>
-			<value>false</value>
-		</right>
-	</object>
-	<object>
-		<name>Document.AgentReport.TabularSection.Customers.Attribute.CustomerInvoiceNote</name>
 		<right>
 			<name>View</name>
 			<value>false</value>
@@ -22363,7 +21938,7 @@
 		</right>
 	</object>
 	<object>
-		<name>Catalog.Individuals.TabularSection.ContactInformation.Attribute.EMail_Address</name>
+		<name>Catalog.Individuals.TabularSection.ContactInformation.Attribute.EmailAddress</name>
 		<right>
 			<name>View</name>
 			<value>false</value>
@@ -23386,17 +22961,6 @@
 		</right>
 	</object>
 	<object>
-		<name>Document.CustomerInvoiceNote.TabularSection.Inventory.Attribute.Price</name>
-		<right>
-			<name>View</name>
-			<value>false</value>
-		</right>
-		<right>
-			<name>Edit</name>
-			<value>false</value>
-		</right>
-	</object>
-	<object>
 		<name>Document.FixedAssetsOutput.TabularSection.FixedAssets.Attribute.Quantity</name>
 		<right>
 			<name>View</name>
@@ -23705,7 +23269,7 @@
 		</right>
 	</object>
 	<object>
-		<name>Catalog.Individuals.TabularSection.ContactInformation.Attribute.FieldsValues</name>
+		<name>Catalog.Individuals.TabularSection.ContactInformation.Attribute.FieldValues</name>
 		<right>
 			<name>View</name>
 			<value>false</value>
@@ -23738,7 +23302,7 @@
 		</right>
 	</object>
 	<object>
-		<name>Catalog.ContactInformationTypes.Attribute.EditInDialogOnly</name>
+		<name>Catalog.ContactInformationKinds.Attribute.EditInDialogOnly</name>
 		<right>
 			<name>View</name>
 			<value>false</value>
@@ -24410,17 +23974,6 @@
 	</object>
 	<object>
 		<name>Catalog.ProductsAndServicesCategories.StandardAttribute.Code</name>
-		<right>
-			<name>View</name>
-			<value>false</value>
-		</right>
-		<right>
-			<name>Edit</name>
-			<value>false</value>
-		</right>
-	</object>
-	<object>
-		<name>Document.CustomerInvoiceNote.Attribute.DocumentAmount</name>
 		<right>
 			<name>View</name>
 			<value>false</value>
@@ -26092,17 +25645,6 @@
 		</right>
 	</object>
 	<object>
-		<name>Document.SupplierInvoiceNote.TabularSection.Inventory.Attribute.Batch</name>
-		<right>
-			<name>View</name>
-			<value>false</value>
-		</right>
-		<right>
-			<name>Edit</name>
-			<value>false</value>
-		</right>
-	</object>
-	<object>
 		<name>Document.Timesheet.TabularSection.WorkedTimeByDays.Attribute.FirstTimeKind14</name>
 		<right>
 			<name>View</name>
@@ -26389,17 +25931,6 @@
 		</right>
 	</object>
 	<object>
-		<name>Catalog.SupplierInvoiceNoteAttachedFiles.Attribute.Encrypted</name>
-		<right>
-			<name>View</name>
-			<value>false</value>
-		</right>
-		<right>
-			<name>Edit</name>
-			<value>false</value>
-		</right>
-	</object>
-	<object>
 		<name>Document.FixedAssetsWriteOff.Attribute.Correspondence</name>
 		<right>
 			<name>View</name>
@@ -26631,17 +26162,6 @@
 		</right>
 	</object>
 	<object>
-		<name>Document.SupplierInvoiceNote.Attribute.Contract</name>
-		<right>
-			<name>View</name>
-			<value>false</value>
-		</right>
-		<right>
-			<name>Edit</name>
-			<value>false</value>
-		</right>
-	</object>
-	<object>
 		<name>ExchangePlan.ExchangeSmallBusinessAccounting30.TabularSection.DocumentKinds.Attribute.MetadataObjectName</name>
 		<right>
 			<name>View</name>
@@ -26753,28 +26273,6 @@
 	</object>
 	<object>
 		<name>Catalog.WorkOrderAttachedFiles.Attribute.ModificationDateUniversal</name>
-		<right>
-			<name>View</name>
-			<value>false</value>
-		</right>
-		<right>
-			<name>Edit</name>
-			<value>false</value>
-		</right>
-	</object>
-	<object>
-		<name>Document.SupplierInvoiceNote.TabularSection.Inventory.Attribute.Total</name>
-		<right>
-			<name>View</name>
-			<value>false</value>
-		</right>
-		<right>
-			<name>Edit</name>
-			<value>false</value>
-		</right>
-	</object>
-	<object>
-		<name>Catalog.SupplierInvoiceNoteAttachedFiles.Attribute.Size</name>
 		<right>
 			<name>View</name>
 			<value>false</value>
@@ -28171,17 +27669,6 @@
 		</right>
 	</object>
 	<object>
-		<name>Catalog.Companies.Attribute.PayerDescriptionOnTaxTransfer</name>
-		<right>
-			<name>View</name>
-			<value>false</value>
-		</right>
-		<right>
-			<name>Edit</name>
-			<value>false</value>
-		</right>
-	</object>
-	<object>
 		<name>AccumulationRegister.InventoryFromWarehouses.Resource.Quantity</name>
 		<right>
 			<name>View</name>
@@ -28568,17 +28055,6 @@
 	</object>
 	<object>
 		<name>Document.Netting.TabularSection.Creditor.Attribute.AdvanceFlag</name>
-		<right>
-			<name>View</name>
-			<value>false</value>
-		</right>
-		<right>
-			<name>Edit</name>
-			<value>false</value>
-		</right>
-	</object>
-	<object>
-		<name>Document.CustomerInvoiceNote.Attribute.Author</name>
 		<right>
 			<name>View</name>
 			<value>false</value>
@@ -29359,105 +28835,6 @@
 		</right>
 	</object>
 	<object>
-		<name>Catalog.CustomerInvoiceNoteAttachedFiles.StandardAttribute.PredefinedDataName</name>
-		<right>
-			<name>View</name>
-			<value>false</value>
-		</right>
-		<right>
-			<name>Edit</name>
-			<value>false</value>
-		</right>
-	</object>
-	<object>
-		<name>Catalog.CustomerInvoiceNoteAttachedFiles.StandardAttribute.Predefined</name>
-		<right>
-			<name>View</name>
-			<value>false</value>
-		</right>
-		<right>
-			<name>Edit</name>
-			<value>false</value>
-		</right>
-	</object>
-	<object>
-		<name>Catalog.CustomerInvoiceNoteAttachedFiles.StandardAttribute.Ref</name>
-		<right>
-			<name>View</name>
-			<value>false</value>
-		</right>
-		<right>
-			<name>Edit</name>
-			<value>false</value>
-		</right>
-	</object>
-	<object>
-		<name>Catalog.CustomerInvoiceNoteAttachedFiles.StandardAttribute.DeletionMark</name>
-		<right>
-			<name>View</name>
-			<value>false</value>
-		</right>
-		<right>
-			<name>Edit</name>
-			<value>false</value>
-		</right>
-	</object>
-	<object>
-		<name>Catalog.CustomerInvoiceNoteAttachedFiles.StandardAttribute.IsFolder</name>
-		<right>
-			<name>View</name>
-			<value>false</value>
-		</right>
-		<right>
-			<name>Edit</name>
-			<value>false</value>
-		</right>
-	</object>
-	<object>
-		<name>Catalog.CustomerInvoiceNoteAttachedFiles.StandardAttribute.Owner</name>
-		<right>
-			<name>View</name>
-			<value>false</value>
-		</right>
-		<right>
-			<name>Edit</name>
-			<value>false</value>
-		</right>
-	</object>
-	<object>
-		<name>Catalog.CustomerInvoiceNoteAttachedFiles.StandardAttribute.Parent</name>
-		<right>
-			<name>View</name>
-			<value>false</value>
-		</right>
-		<right>
-			<name>Edit</name>
-			<value>false</value>
-		</right>
-	</object>
-	<object>
-		<name>Catalog.CustomerInvoiceNoteAttachedFiles.StandardAttribute.Description</name>
-		<right>
-			<name>View</name>
-			<value>false</value>
-		</right>
-		<right>
-			<name>Edit</name>
-			<value>false</value>
-		</right>
-	</object>
-	<object>
-		<name>Catalog.CustomerInvoiceNoteAttachedFiles.StandardAttribute.Code</name>
-		<right>
-			<name>View</name>
-			<value>false</value>
-		</right>
-		<right>
-			<name>Edit</name>
-			<value>false</value>
-		</right>
-	</object>
-	<object>
 		<name>InformationRegister.DataExchangeResults.Attribute.DocumentDate</name>
 		<right>
 			<name>View</name>
@@ -29623,17 +29000,6 @@
 		</right>
 	</object>
 	<object>
-		<name>Document.CustomerInvoiceNote.Attribute.Counterparty</name>
-		<right>
-			<name>View</name>
-			<value>false</value>
-		</right>
-		<right>
-			<name>Edit</name>
-			<value>false</value>
-		</right>
-	</object>
-	<object>
 		<name>Document.FixedAssetsTransfer.Attribute.ExchangeRate</name>
 		<right>
 			<name>View</name>
@@ -29646,17 +29012,6 @@
 	</object>
 	<object>
 		<name>Catalog.Workplaces.Attribute.NetworkPort</name>
-		<right>
-			<name>View</name>
-			<value>false</value>
-		</right>
-		<right>
-			<name>Edit</name>
-			<value>false</value>
-		</right>
-	</object>
-	<object>
-		<name>Document.PaymentOrder.Attribute.PayerKPP</name>
 		<right>
 			<name>View</name>
 			<value>false</value>
@@ -31328,17 +30683,6 @@
 		</right>
 	</object>
 	<object>
-		<name>Document.AgentReport.TabularSection.Customers.Attribute.CustomerInvoiceNoteIssued</name>
-		<right>
-			<name>View</name>
-			<value>false</value>
-		</right>
-		<right>
-			<name>Edit</name>
-			<value>false</value>
-		</right>
-	</object>
-	<object>
 		<name>Catalog.CounterpartyContracts.TabularSection.AdditionalAttributes.Attribute.TextString</name>
 		<right>
 			<name>View</name>
@@ -31955,17 +31299,6 @@
 		</right>
 	</object>
 	<object>
-		<name>Document.AgentReport.TabularSection.Customers.Attribute.InvoiceDate</name>
-		<right>
-			<name>View</name>
-			<value>false</value>
-		</right>
-		<right>
-			<name>Edit</name>
-			<value>false</value>
-		</right>
-	</object>
-	<object>
 		<name>DataProcessor.ConfigurationUpdate.Attribute.UpdateDateTime</name>
 		<right>
 			<name>View</name>
@@ -32428,17 +31761,6 @@
 		</right>
 	</object>
 	<object>
-		<name>Catalog.CustomerInvoiceNoteAttachedFiles.Attribute.TextExtractionStatus</name>
-		<right>
-			<name>View</name>
-			<value>false</value>
-		</right>
-		<right>
-			<name>Edit</name>
-			<value>false</value>
-		</right>
-	</object>
-	<object>
 		<name>InformationRegister.FixedAssetsParameters.Dimension.Company</name>
 		<right>
 			<name>View</name>
@@ -32824,7 +32146,7 @@
 		</right>
 	</object>
 	<object>
-		<name>Catalog.ContactInformationTypes.Attribute.ProhibitEntryOfIncorrect</name>
+		<name>Catalog.ContactInformationKinds.Attribute.ProhibitInvalidEntry</name>
 		<right>
 			<name>View</name>
 			<value>false</value>
@@ -33056,17 +32378,6 @@
 	</object>
 	<object>
 		<name>ExchangePlan.ExchangeSmallBusinessAccounting20.Attribute.DebitItem</name>
-		<right>
-			<name>View</name>
-			<value>false</value>
-		</right>
-		<right>
-			<name>Edit</name>
-			<value>false</value>
-		</right>
-	</object>
-	<object>
-		<name>Document.CustomerInvoiceNote.Attribute.InitialDocumentNumber</name>
 		<right>
 			<name>View</name>
 			<value>false</value>
@@ -34749,17 +34060,6 @@
 		</right>
 	</object>
 	<object>
-		<name>Document.SupplierInvoiceNote.Attribute.IncomingDocumentDate</name>
-		<right>
-			<name>View</name>
-			<value>false</value>
-		</right>
-		<right>
-			<name>Edit</name>
-			<value>false</value>
-		</right>
-	</object>
-	<object>
 		<name>Document.AcceptanceCertificate.TabularSection.WorksAndServices.Attribute.Amount</name>
 		<right>
 			<name>View</name>
@@ -34782,7 +34082,7 @@
 		</right>
 	</object>
 	<object>
-		<name>Catalog.Companies.TabularSection.ContactInformation.Attribute.EMail_Address</name>
+		<name>Catalog.Companies.TabularSection.ContactInformation.Attribute.EmailAddress</name>
 		<right>
 			<name>View</name>
 			<value>false</value>
@@ -34958,7 +34258,7 @@
 		</right>
 	</object>
 	<object>
-		<name>Catalog.Users.TabularSection.ContactInformation.Attribute.EMail_Address</name>
+		<name>Catalog.Users.TabularSection.ContactInformation.Attribute.EmailAddress</name>
 		<right>
 			<name>View</name>
 			<value>false</value>
@@ -35289,17 +34589,6 @@
 	</object>
 	<object>
 		<name>Document.RetailReport.TabularSection.PaymentWithPaymentCards.Attribute.ChargeCardKind</name>
-		<right>
-			<name>View</name>
-			<value>false</value>
-		</right>
-		<right>
-			<name>Edit</name>
-			<value>false</value>
-		</right>
-	</object>
-	<object>
-		<name>Document.SupplierInvoiceNote.TabularSection.Inventory.Attribute.VATAmount</name>
 		<right>
 			<name>View</name>
 			<value>false</value>
@@ -37015,7 +36304,7 @@
 		</right>
 	</object>
 	<object>
-		<name>Catalog.Users.TabularSection.ContactInformation.Attribute.PhoneNumberNoCodes</name>
+		<name>Catalog.Users.TabularSection.ContactInformation.Attribute.PhoneNumberWithoutCodes</name>
 		<right>
 			<name>View</name>
 			<value>false</value>
@@ -37488,17 +36777,6 @@
 		</right>
 	</object>
 	<object>
-		<name>Catalog.Companies.Attribute.KPP</name>
-		<right>
-			<name>View</name>
-			<value>false</value>
-		</right>
-		<right>
-			<name>Edit</name>
-			<value>false</value>
-		</right>
-	</object>
-	<object>
 		<name>DataProcessor.ClientBank.TabularSection.Exporting.Attribute.CounterpartyBankProcessingCenterBIC</name>
 		<right>
 			<name>View</name>
@@ -37686,17 +36964,6 @@
 		</right>
 	</object>
 	<object>
-		<name>Catalog.CustomerInvoiceNoteAttachedFiles.TabularSection.EncryptionCertificates.Attribute.Presentation</name>
-		<right>
-			<name>View</name>
-			<value>false</value>
-		</right>
-		<right>
-			<name>Edit</name>
-			<value>false</value>
-		</right>
-	</object>
-	<object>
 		<name>DataProcessor.InfobaseObjectsConversion.Attribute.DebugModeFlag</name>
 		<right>
 			<name>View</name>
@@ -37874,17 +37141,6 @@
 	</object>
 	<object>
 		<name>AccumulationRegister.Purchases.Resource.Amount</name>
-		<right>
-			<name>View</name>
-			<value>false</value>
-		</right>
-		<right>
-			<name>Edit</name>
-			<value>false</value>
-		</right>
-	</object>
-	<object>
-		<name>Document.SupplierInvoiceNote.Attribute.ExchangeRate</name>
 		<right>
 			<name>View</name>
 			<value>false</value>
@@ -38302,17 +37558,6 @@
 		</right>
 	</object>
 	<object>
-		<name>Catalog.SupplierInvoiceNoteAttachedFiles.Attribute.CreationDate</name>
-		<right>
-			<name>View</name>
-			<value>false</value>
-		</right>
-		<right>
-			<name>Edit</name>
-			<value>false</value>
-		</right>
-	</object>
-	<object>
 		<name>AccumulationRegister.FixedAssetsOutput.Resource.Quantity</name>
 		<right>
 			<name>View</name>
@@ -38676,17 +37921,6 @@
 		</right>
 	</object>
 	<object>
-		<name>Catalog.CustomerInvoiceNoteAttachedFiles.Attribute.FileStorageType</name>
-		<right>
-			<name>View</name>
-			<value>false</value>
-		</right>
-		<right>
-			<name>Edit</name>
-			<value>false</value>
-		</right>
-	</object>
-	<object>
 		<name>Catalog.MagneticCardsTemplates.Attribute.TrackAvailability2</name>
 		<right>
 			<name>View</name>
@@ -38787,17 +38021,6 @@
 	</object>
 	<object>
 		<name>InformationRegister.DeleteJobQueue.Resource.ActiveBackgroundJob</name>
-		<right>
-			<name>View</name>
-			<value>false</value>
-		</right>
-		<right>
-			<name>Edit</name>
-			<value>false</value>
-		</right>
-	</object>
-	<object>
-		<name>Document.SupplierInvoiceNote.Attribute.Author</name>
 		<right>
 			<name>View</name>
 			<value>false</value>
@@ -39831,29 +39054,7 @@
 		</right>
 	</object>
 	<object>
-		<name>Catalog.Counterparties.Attribute.TINEnteredCorrectly</name>
-		<right>
-			<name>View</name>
-			<value>false</value>
-		</right>
-		<right>
-			<name>Edit</name>
-			<value>false</value>
-		</right>
-	</object>
-	<object>
 		<name>Document.CustomerInvoice.Attribute.Consignor</name>
-		<right>
-			<name>View</name>
-			<value>false</value>
-		</right>
-		<right>
-			<name>Edit</name>
-			<value>false</value>
-		</right>
-	</object>
-	<object>
-		<name>Document.SupplierInvoiceNote.Attribute.Comment</name>
 		<right>
 			<name>View</name>
 			<value>false</value>
@@ -40667,17 +39868,6 @@
 		</right>
 	</object>
 	<object>
-		<name>InformationRegister.IndividualsDocuments.Resource.DeleteDocumentKind</name>
-		<right>
-			<name>View</name>
-			<value>false</value>
-		</right>
-		<right>
-			<name>Edit</name>
-			<value>false</value>
-		</right>
-	</object>
-	<object>
 		<name>Document.FixedAssetsTransfer.TabularSection.Prepayment.Attribute.Multiplicity</name>
 		<right>
 			<name>View</name>
@@ -41009,17 +40199,6 @@
 	</object>
 	<object>
 		<name>Document.CustomerOrder.Attribute.Event</name>
-		<right>
-			<name>View</name>
-			<value>false</value>
-		</right>
-		<right>
-			<name>Edit</name>
-			<value>false</value>
-		</right>
-	</object>
-	<object>
-		<name>Document.SupplierInvoiceNote.Attribute.IncomingDocumentNumber</name>
 		<right>
 			<name>View</name>
 			<value>false</value>
@@ -41492,7 +40671,7 @@
 		</right>
 	</object>
 	<object>
-		<name>Catalog.StructuralUnits.TabularSection.ContactInformation.Attribute.State</name>
+		<name>Catalog.StructuralUnits.TabularSection.ContactInformation.Attribute.Region</name>
 		<right>
 			<name>View</name>
 			<value>false</value>
@@ -41624,7 +40803,7 @@
 		</right>
 	</object>
 	<object>
-		<name>Catalog.ContactInformationTypes.StandardAttribute.PredefinedDataName</name>
+		<name>Catalog.ContactInformationKinds.StandardAttribute.PredefinedDataName</name>
 		<right>
 			<name>View</name>
 			<value>false</value>
@@ -41635,7 +40814,7 @@
 		</right>
 	</object>
 	<object>
-		<name>Catalog.ContactInformationTypes.StandardAttribute.Predefined</name>
+		<name>Catalog.ContactInformationKinds.StandardAttribute.Predefined</name>
 		<right>
 			<name>View</name>
 			<value>false</value>
@@ -41646,7 +40825,7 @@
 		</right>
 	</object>
 	<object>
-		<name>Catalog.ContactInformationTypes.StandardAttribute.Ref</name>
+		<name>Catalog.ContactInformationKinds.StandardAttribute.Ref</name>
 		<right>
 			<name>View</name>
 			<value>false</value>
@@ -41657,7 +40836,7 @@
 		</right>
 	</object>
 	<object>
-		<name>Catalog.ContactInformationTypes.StandardAttribute.DeletionMark</name>
+		<name>Catalog.ContactInformationKinds.StandardAttribute.DeletionMark</name>
 		<right>
 			<name>View</name>
 			<value>false</value>
@@ -41668,7 +40847,7 @@
 		</right>
 	</object>
 	<object>
-		<name>Catalog.ContactInformationTypes.StandardAttribute.IsFolder</name>
+		<name>Catalog.ContactInformationKinds.StandardAttribute.IsFolder</name>
 		<right>
 			<name>View</name>
 			<value>false</value>
@@ -41679,7 +40858,7 @@
 		</right>
 	</object>
 	<object>
-		<name>Catalog.ContactInformationTypes.StandardAttribute.Owner</name>
+		<name>Catalog.ContactInformationKinds.StandardAttribute.Owner</name>
 		<right>
 			<name>View</name>
 			<value>false</value>
@@ -41690,7 +40869,7 @@
 		</right>
 	</object>
 	<object>
-		<name>Catalog.ContactInformationTypes.StandardAttribute.Parent</name>
+		<name>Catalog.ContactInformationKinds.StandardAttribute.Parent</name>
 		<right>
 			<name>View</name>
 			<value>false</value>
@@ -41701,7 +40880,7 @@
 		</right>
 	</object>
 	<object>
-		<name>Catalog.ContactInformationTypes.StandardAttribute.Description</name>
+		<name>Catalog.ContactInformationKinds.StandardAttribute.Description</name>
 		<right>
 			<name>View</name>
 			<value>false</value>
@@ -41712,18 +40891,7 @@
 		</right>
 	</object>
 	<object>
-		<name>Catalog.ContactInformationTypes.StandardAttribute.Code</name>
-		<right>
-			<name>View</name>
-			<value>false</value>
-		</right>
-		<right>
-			<name>Edit</name>
-			<value>false</value>
-		</right>
-	</object>
-	<object>
-		<name>Document.CustomerInvoiceNote.TabularSection.PaymentDocumentsDateNumber</name>
+		<name>Catalog.ContactInformationKinds.StandardAttribute.Code</name>
 		<right>
 			<name>View</name>
 			<value>false</value>
@@ -42097,7 +41265,7 @@
 		</right>
 	</object>
 	<object>
-		<name>Catalog.Companies.TabularSection.ContactInformation.Attribute.PhoneNumberNoCodes</name>
+		<name>Catalog.Companies.TabularSection.ContactInformation.Attribute.PhoneNumberWithoutCodes</name>
 		<right>
 			<name>View</name>
 			<value>false</value>
@@ -42141,7 +41309,7 @@
 		</right>
 	</object>
 	<object>
-		<name>Catalog.ContactPersons.Attribute.ConnectionRegistrationDate</name>
+		<name>Catalog.ContactPersons.Attribute.CreationDate</name>
 		<right>
 			<name>View</name>
 			<value>false</value>
@@ -42273,17 +41441,6 @@
 		</right>
 	</object>
 	<object>
-		<name>Catalog.Companies.Attribute.CodeByOKPO</name>
-		<right>
-			<name>View</name>
-			<value>false</value>
-		</right>
-		<right>
-			<name>Edit</name>
-			<value>false</value>
-		</right>
-	</object>
-	<object>
 		<name>Document.ReceiptCR.TabularSection.Inventory.Attribute.MeasurementUnit</name>
 		<right>
 			<name>View</name>
@@ -42384,17 +41541,6 @@
 	</object>
 	<object>
 		<name>Catalog.AdditionalReportsAndDataProcessors.TabularSection.Purpose</name>
-		<right>
-			<name>View</name>
-			<value>false</value>
-		</right>
-		<right>
-			<name>Edit</name>
-			<value>false</value>
-		</right>
-	</object>
-	<object>
-		<name>Catalog.CustomerInvoiceNoteAttachedFiles.Attribute.Extension</name>
 		<right>
 			<name>View</name>
 			<value>false</value>
@@ -42604,17 +41750,6 @@
 	</object>
 	<object>
 		<name>AccumulationRegister.PurchaseOrders.Dimension.PurchaseOrder</name>
-		<right>
-			<name>View</name>
-			<value>false</value>
-		</right>
-		<right>
-			<name>Edit</name>
-			<value>false</value>
-		</right>
-	</object>
-	<object>
-		<name>Catalog.SupplierInvoiceNoteAttachedFiles.Attribute.FileOwner</name>
 		<right>
 			<name>View</name>
 			<value>false</value>
@@ -42933,17 +42068,6 @@
 		</right>
 	</object>
 	<object>
-		<name>Document.CustomerInvoiceNote.TabularSection.Inventory.Attribute.CCDNo</name>
-		<right>
-			<name>View</name>
-			<value>false</value>
-		</right>
-		<right>
-			<name>Edit</name>
-			<value>false</value>
-		</right>
-	</object>
-	<object>
 		<name>Catalog.SpecificationsAttachedFiles.Attribute.CreationDate</name>
 		<right>
 			<name>View</name>
@@ -43176,17 +42300,6 @@
 	</object>
 	<object>
 		<name>Document.CustomerInvoice.TabularSection.Inventory.Attribute.Content</name>
-		<right>
-			<name>View</name>
-			<value>false</value>
-		</right>
-		<right>
-			<name>Edit</name>
-			<value>false</value>
-		</right>
-	</object>
-	<object>
-		<name>Catalog.SupplierInvoiceNoteAttachedFiles.Attribute.Changed</name>
 		<right>
 			<name>View</name>
 			<value>false</value>
@@ -43858,17 +42971,6 @@
 	</object>
 	<object>
 		<name>Document.InventoryReceipt.Attribute.PriceKind</name>
-		<right>
-			<name>View</name>
-			<value>false</value>
-		</right>
-		<right>
-			<name>Edit</name>
-			<value>false</value>
-		</right>
-	</object>
-	<object>
-		<name>Document.SupplierInvoiceNote.Attribute.Multiplicity</name>
 		<right>
 			<name>View</name>
 			<value>false</value>
@@ -44715,17 +43817,6 @@
 		</right>
 	</object>
 	<object>
-		<name>Catalog.CustomerInvoiceNoteAttachedFiles.TabularSection.DigitalSignatures.Attribute.CertificateIsIssuedTo</name>
-		<right>
-			<name>View</name>
-			<value>false</value>
-		</right>
-		<right>
-			<name>Edit</name>
-			<value>false</value>
-		</right>
-	</object>
-	<object>
 		<name>Document.SupplierInvoice.TabularSection.Inventory.Attribute.AmountExpenses</name>
 		<right>
 			<name>View</name>
@@ -44913,7 +44004,7 @@
 		</right>
 	</object>
 	<object>
-		<name>Catalog.Counterparties.TabularSection.ContactInformation.Attribute.PhoneNumberNoCodes</name>
+		<name>Catalog.Counterparties.TabularSection.ContactInformation.Attribute.PhoneNumberWithoutCodes</name>
 		<right>
 			<name>View</name>
 			<value>false</value>
@@ -45694,17 +44785,6 @@
 		</right>
 	</object>
 	<object>
-		<name>Catalog.SupplierInvoiceNoteAttachedFiles.Attribute.Definition</name>
-		<right>
-			<name>View</name>
-			<value>false</value>
-		</right>
-		<right>
-			<name>Edit</name>
-			<value>false</value>
-		</right>
-	</object>
-	<object>
 		<name>Document.SupplierInvoice.TabularSection.Inventory.Attribute.Quantity</name>
 		<right>
 			<name>View</name>
@@ -45739,17 +44819,6 @@
 	</object>
 	<object>
 		<name>AccumulationRegister.InventoryByCCD.Dimension.CCDNo</name>
-		<right>
-			<name>View</name>
-			<value>false</value>
-		</right>
-		<right>
-			<name>Edit</name>
-			<value>false</value>
-		</right>
-	</object>
-	<object>
-		<name>Catalog.Counterparties.Attribute.KPP</name>
 		<right>
 			<name>View</name>
 			<value>false</value>
@@ -46124,17 +45193,6 @@
 	</object>
 	<object>
 		<name>Document.Timesheet.TabularSection.WorkedTimeByDays.Attribute.FirstTimeKind15</name>
-		<right>
-			<name>View</name>
-			<value>false</value>
-		</right>
-		<right>
-			<name>Edit</name>
-			<value>false</value>
-		</right>
-	</object>
-	<object>
-		<name>Document.SupplierInvoiceNote.TabularSection.Inventory.Attribute.VATRate</name>
 		<right>
 			<name>View</name>
 			<value>false</value>
@@ -47157,17 +46215,6 @@
 		</right>
 	</object>
 	<object>
-		<name>Catalog.CustomerInvoiceNoteAttachedFiles.Attribute.Changed</name>
-		<right>
-			<name>View</name>
-			<value>false</value>
-		</right>
-		<right>
-			<name>Edit</name>
-			<value>false</value>
-		</right>
-	</object>
-	<object>
 		<name>Document.CustomerOrder.TabularSection.Inventory.Attribute.Amount</name>
 		<right>
 			<name>View</name>
@@ -47323,17 +46370,6 @@
 	</object>
 	<object>
 		<name>Catalog.WorkSchedules.TabularSection.Periods.Attribute.BeginTime</name>
-		<right>
-			<name>View</name>
-			<value>false</value>
-		</right>
-		<right>
-			<name>Edit</name>
-			<value>false</value>
-		</right>
-	</object>
-	<object>
-		<name>Catalog.SupplierInvoiceNoteAttachedFiles.Attribute.TextStorage</name>
 		<right>
 			<name>View</name>
 			<value>false</value>
@@ -48048,28 +47084,6 @@
 		</right>
 	</object>
 	<object>
-		<name>Catalog.CustomerInvoiceNoteAttachedFiles.Attribute.IsEditing</name>
-		<right>
-			<name>View</name>
-			<value>false</value>
-		</right>
-		<right>
-			<name>Edit</name>
-			<value>false</value>
-		</right>
-	</object>
-	<object>
-		<name>Catalog.CustomerInvoiceNoteAttachedFiles.Attribute.Definition</name>
-		<right>
-			<name>View</name>
-			<value>false</value>
-		</right>
-		<right>
-			<name>Edit</name>
-			<value>false</value>
-		</right>
-	</object>
-	<object>
 		<name>Document.Timesheet.TabularSection.WorkedTimeByDays.Attribute.SecondTimeKind15</name>
 		<right>
 			<name>View</name>
@@ -48213,7 +47227,7 @@
 		</right>
 	</object>
 	<object>
-		<name>Catalog.ContactInformationTypes.Attribute.HideObsoleteAddresses</name>
+		<name>Catalog.ContactInformationKinds.Attribute.HideObsoleteAddresses</name>
 		<right>
 			<name>View</name>
 			<value>false</value>
@@ -48225,17 +47239,6 @@
 	</object>
 	<object>
 		<name>Catalog.CustomerOrderAttachedFiles.TabularSection.DigitalSignatures.Attribute.SignatureFileName</name>
-		<right>
-			<name>View</name>
-			<value>false</value>
-		</right>
-		<right>
-			<name>Edit</name>
-			<value>false</value>
-		</right>
-	</object>
-	<object>
-		<name>Catalog.ContactPersons.Attribute.Ind</name>
 		<right>
 			<name>View</name>
 			<value>false</value>
@@ -48379,17 +47382,6 @@
 	</object>
 	<object>
 		<name>Document.CustomerInvoice.Attribute.CarrierBankAccount</name>
-		<right>
-			<name>View</name>
-			<value>false</value>
-		</right>
-		<right>
-			<name>Edit</name>
-			<value>false</value>
-		</right>
-	</object>
-	<object>
-		<name>Document.CustomerInvoiceNote.TabularSection.BasisDocuments</name>
 		<right>
 			<name>View</name>
 			<value>false</value>
@@ -49071,17 +48063,6 @@
 		</right>
 	</object>
 	<object>
-		<name>Catalog.CustomerInvoiceNoteAttachedFiles.Attribute.Encrypted</name>
-		<right>
-			<name>View</name>
-			<value>false</value>
-		</right>
-		<right>
-			<name>Edit</name>
-			<value>false</value>
-		</right>
-	</object>
-	<object>
 		<name>Document.TimeTracking.TabularSection.Operations.Attribute.PriceKind</name>
 		<right>
 			<name>View</name>
@@ -49203,28 +48184,6 @@
 		</right>
 	</object>
 	<object>
-		<name>Catalog.SupplierInvoiceNoteAttachedFiles.Attribute.PathToFile</name>
-		<right>
-			<name>View</name>
-			<value>false</value>
-		</right>
-		<right>
-			<name>Edit</name>
-			<value>false</value>
-		</right>
-	</object>
-	<object>
-		<name>Catalog.CustomerInvoiceNoteAttachedFiles.Attribute.TextStorage</name>
-		<right>
-			<name>View</name>
-			<value>false</value>
-		</right>
-		<right>
-			<name>Edit</name>
-			<value>false</value>
-		</right>
-	</object>
-	<object>
 		<name>Document.ExpenseReport.TabularSection.Expenses.Attribute.StructuralUnit</name>
 		<right>
 			<name>View</name>
@@ -49281,17 +48240,6 @@
 	</object>
 	<object>
 		<name>Document.AdditionalCosts.Attribute.Department</name>
-		<right>
-			<name>View</name>
-			<value>false</value>
-		</right>
-		<right>
-			<name>Edit</name>
-			<value>false</value>
-		</right>
-	</object>
-	<object>
-		<name>Document.CustomerInvoiceNote.Attribute.DocumentCurrency</name>
 		<right>
 			<name>View</name>
 			<value>false</value>
@@ -49786,7 +48734,7 @@
 		</right>
 	</object>
 	<object>
-		<name>Catalog.StructuralUnits.TabularSection.ContactInformation.Attribute.EMail_Address</name>
+		<name>Catalog.StructuralUnits.TabularSection.ContactInformation.Attribute.EmailAddress</name>
 		<right>
 			<name>View</name>
 			<value>false</value>
@@ -49863,17 +48811,6 @@
 		</right>
 	</object>
 	<object>
-		<name>Catalog.SupplierInvoiceNoteAttachedFiles.Attribute.Extension</name>
-		<right>
-			<name>View</name>
-			<value>false</value>
-		</right>
-		<right>
-			<name>Edit</name>
-			<value>false</value>
-		</right>
-	</object>
-	<object>
 		<name>InformationRegister.ExchangeTransportSettings.Resource.DataImportTransactionItemCount</name>
 		<right>
 			<name>View</name>
@@ -49929,7 +48866,7 @@
 		</right>
 	</object>
 	<object>
-		<name>Catalog.Counterparties.TabularSection.ContactInformation.Attribute.EMail_Address</name>
+		<name>Catalog.Counterparties.TabularSection.ContactInformation.Attribute.EmailAddress</name>
 		<right>
 			<name>View</name>
 			<value>false</value>
@@ -51755,17 +50692,6 @@
 		</right>
 	</object>
 	<object>
-		<name>Catalog.CustomerInvoiceNoteAttachedFiles.TabularSection.EncryptionCertificates.Attribute.Imprint</name>
-		<right>
-			<name>View</name>
-			<value>false</value>
-		</right>
-		<right>
-			<name>Edit</name>
-			<value>false</value>
-		</right>
-	</object>
-	<object>
 		<name>DataProcessor.InfobaseBackup.Attribute.BackupScheduleOption</name>
 		<right>
 			<name>View</name>
@@ -52020,17 +50946,6 @@
 	</object>
 	<object>
 		<name>Document.AgentReport.TabularSection.Prepayment.Attribute.ExchangeRate</name>
-		<right>
-			<name>View</name>
-			<value>false</value>
-		</right>
-		<right>
-			<name>Edit</name>
-			<value>false</value>
-		</right>
-	</object>
-	<object>
-		<name>Document.SupplierInvoiceNote.Attribute.DocumentAmount</name>
 		<right>
 			<name>View</name>
 			<value>false</value>
@@ -52349,17 +51264,6 @@
 		</right>
 	</object>
 	<object>
-		<name>Catalog.Counterparties.Attribute.CodeByOKPO</name>
-		<right>
-			<name>View</name>
-			<value>false</value>
-		</right>
-		<right>
-			<name>Edit</name>
-			<value>false</value>
-		</right>
-	</object>
-	<object>
 		<name>Catalog.KeyOperations.Attribute.MinimumAllowedLevel</name>
 		<right>
 			<name>View</name>
@@ -52591,7 +51495,7 @@
 		</right>
 	</object>
 	<object>
-		<name>Catalog.ContactInformationTypes.Attribute.AdditionalOrderingAttribute</name>
+		<name>Catalog.ContactInformationKinds.Attribute.AdditionalOrderingAttribute</name>
 		<right>
 			<name>View</name>
 			<value>false</value>
@@ -53196,17 +52100,6 @@
 		</right>
 	</object>
 	<object>
-		<name>Document.CustomerInvoiceNote.Attribute.Multiplicity</name>
-		<right>
-			<name>View</name>
-			<value>false</value>
-		</right>
-		<right>
-			<name>Edit</name>
-			<value>false</value>
-		</right>
-	</object>
-	<object>
 		<name>Document.SubcontractorReport.Attribute.Contract</name>
 		<right>
 			<name>View</name>
@@ -53658,17 +52551,6 @@
 		</right>
 	</object>
 	<object>
-		<name>Document.CustomerInvoiceNote.Attribute.BasisDocument</name>
-		<right>
-			<name>View</name>
-			<value>false</value>
-		</right>
-		<right>
-			<name>Edit</name>
-			<value>false</value>
-		</right>
-	</object>
-	<object>
 		<name>InformationRegister.ChangeProhibitionDates.Attribute.Comment</name>
 		<right>
 			<name>View</name>
@@ -53713,7 +52595,7 @@
 		</right>
 	</object>
 	<object>
-		<name>Catalog.ContactPersons.TabularSection.ContactPersonRoles.Attribute.ContactPersonRole</name>
+		<name>Catalog.ContactPersons.TabularSection.Roles.Attribute.Role</name>
 		<right>
 			<name>View</name>
 			<value>false</value>
@@ -54285,17 +53167,6 @@
 		</right>
 	</object>
 	<object>
-		<name>Document.CustomerInvoiceNote.Attribute.InitialDocumentDate</name>
-		<right>
-			<name>View</name>
-			<value>false</value>
-		</right>
-		<right>
-			<name>Edit</name>
-			<value>false</value>
-		</right>
-	</object>
-	<object>
 		<name>Document.Netting.TabularSection.Creditor</name>
 		<right>
 			<name>View</name>
@@ -54329,7 +53200,7 @@
 		</right>
 	</object>
 	<object>
-		<name>Catalog.Companies.TabularSection.ContactInformation.Attribute.FieldsValues</name>
+		<name>Catalog.Companies.TabularSection.ContactInformation.Attribute.FieldValues</name>
 		<right>
 			<name>View</name>
 			<value>false</value>
@@ -54352,17 +53223,6 @@
 	</object>
 	<object>
 		<name>InformationRegister.AccessGroupsDefaultValues.Dimension.AccessGroup</name>
-		<right>
-			<name>View</name>
-			<value>false</value>
-		</right>
-		<right>
-			<name>Edit</name>
-			<value>false</value>
-		</right>
-	</object>
-	<object>
-		<name>Catalog.CustomerInvoiceNoteAttachedFiles.Attribute.CreationDate</name>
 		<right>
 			<name>View</name>
 			<value>false</value>
@@ -54451,17 +53311,6 @@
 	</object>
 	<object>
 		<name>Catalog.AccessGroups.TabularSection.AccessValues</name>
-		<right>
-			<name>View</name>
-			<value>false</value>
-		</right>
-		<right>
-			<name>Edit</name>
-			<value>false</value>
-		</right>
-	</object>
-	<object>
-		<name>Catalog.CustomerInvoiceNoteAttachedFiles.TabularSection.DigitalSignatures.Attribute.Certificate</name>
 		<right>
 			<name>View</name>
 			<value>false</value>
@@ -54594,17 +53443,6 @@
 	</object>
 	<object>
 		<name>Catalog.EDAttachedFiles.TabularSection.DigitalSignatures.Attribute.Imprint</name>
-		<right>
-			<name>View</name>
-			<value>false</value>
-		</right>
-		<right>
-			<name>Edit</name>
-			<value>false</value>
-		</right>
-	</object>
-	<object>
-		<name>Catalog.SupplierInvoiceNoteAttachedFiles.TabularSection.DigitalSignatures.Attribute.Comment</name>
 		<right>
 			<name>View</name>
 			<value>false</value>
@@ -55188,17 +54026,6 @@
 	</object>
 	<object>
 		<name>DataProcessor.PickingSales.Attribute.DocumentCurrency</name>
-		<right>
-			<name>View</name>
-			<value>false</value>
-		</right>
-		<right>
-			<name>Edit</name>
-			<value>false</value>
-		</right>
-	</object>
-	<object>
-		<name>Document.SupplierInvoiceNote.Attribute.Company</name>
 		<right>
 			<name>View</name>
 			<value>false</value>
@@ -57068,17 +55895,6 @@
 		</right>
 	</object>
 	<object>
-		<name>Catalog.SupplierInvoiceNoteAttachedFiles.TabularSection.DigitalSignatures.Attribute.SignatureDate</name>
-		<right>
-			<name>View</name>
-			<value>false</value>
-		</right>
-		<right>
-			<name>Edit</name>
-			<value>false</value>
-		</right>
-	</object>
-	<object>
 		<name>AccumulationRegister.CashAssetsForecast.StandardAttribute.Active</name>
 		<right>
 			<name>View</name>
@@ -57629,17 +56445,6 @@
 		</right>
 	</object>
 	<object>
-		<name>Document.SupplierInvoiceNote.TabularSection.Inventory.Attribute.Quantity</name>
-		<right>
-			<name>View</name>
-			<value>false</value>
-		</right>
-		<right>
-			<name>Edit</name>
-			<value>false</value>
-		</right>
-	</object>
-	<object>
 		<name>Document.ReceiptCR.Attribute.Company</name>
 		<right>
 			<name>View</name>
@@ -57718,17 +56523,6 @@
 	</object>
 	<object>
 		<name>Document.ReceiptCRReturn.TabularSection.PaymentWithPaymentCards</name>
-		<right>
-			<name>View</name>
-			<value>false</value>
-		</right>
-		<right>
-			<name>Edit</name>
-			<value>false</value>
-		</right>
-	</object>
-	<object>
-		<name>Catalog.SupplierInvoiceNoteAttachedFiles.TabularSection.DigitalSignatures.Attribute.SignatureFileName</name>
 		<right>
 			<name>View</name>
 			<value>false</value>
@@ -57926,17 +56720,6 @@
 		</right>
 	</object>
 	<object>
-		<name>Document.CustomerInvoiceNote.Attribute.StampBase</name>
-		<right>
-			<name>View</name>
-			<value>false</value>
-		</right>
-		<right>
-			<name>Edit</name>
-			<value>false</value>
-		</right>
-	</object>
-	<object>
 		<name>Document.PaymentOrder.Attribute.VATAmount</name>
 		<right>
 			<name>View</name>
@@ -58113,17 +56896,6 @@
 		</right>
 	</object>
 	<object>
-		<name>Document.SupplierInvoiceNote.TabularSection.Inventory</name>
-		<right>
-			<name>View</name>
-			<value>false</value>
-		</right>
-		<right>
-			<name>Edit</name>
-			<value>false</value>
-		</right>
-	</object>
-	<object>
 		<name>Document.Timesheet.TabularSection.WorkedTimeByDays.Attribute.ThirdTimeKind1</name>
 		<right>
 			<name>View</name>
@@ -58256,17 +57028,6 @@
 		</right>
 	</object>
 	<object>
-		<name>Document.CustomerInvoiceNote.TabularSection.Inventory.Attribute.Batch</name>
-		<right>
-			<name>View</name>
-			<value>false</value>
-		</right>
-		<right>
-			<name>Edit</name>
-			<value>false</value>
-		</right>
-	</object>
-	<object>
 		<name>Document.FixedAssetsModernization.TabularSection.FixedAssets.Attribute.UsagePeriodForDepreciationCalculation</name>
 		<right>
 			<name>View</name>
@@ -58333,7 +57094,7 @@
 		</right>
 	</object>
 	<object>
-		<name>Catalog.ContactInformationTypes.Attribute.ToolTip</name>
+		<name>Catalog.ContactInformationKinds.Attribute.ToolTip</name>
 		<right>
 			<name>View</name>
 			<value>false</value>
@@ -58598,17 +57359,6 @@
 	</object>
 	<object>
 		<name>Document.CustomerInvoice.Attribute.OperationKind</name>
-		<right>
-			<name>View</name>
-			<value>false</value>
-		</right>
-		<right>
-			<name>Edit</name>
-			<value>false</value>
-		</right>
-	</object>
-	<object>
-		<name>Catalog.SupplierInvoiceNoteAttachedFiles.Attribute.Author</name>
 		<right>
 			<name>View</name>
 			<value>false</value>
@@ -60566,17 +59316,6 @@
 		</right>
 	</object>
 	<object>
-		<name>Document.CustomerInvoiceNote.TabularSection.Inventory.Attribute.Characteristic</name>
-		<right>
-			<name>View</name>
-			<value>false</value>
-		</right>
-		<right>
-			<name>Edit</name>
-			<value>false</value>
-		</right>
-	</object>
-	<object>
 		<name>Document.Timesheet.TabularSection.WorkedTimeByDays.Attribute.SecondHours25</name>
 		<right>
 			<name>View</name>
@@ -60841,7 +59580,7 @@
 		</right>
 	</object>
 	<object>
-		<name>Catalog.ContactPersons.TabularSection.ContactInformation.Attribute.FieldsValues</name>
+		<name>Catalog.ContactPersons.TabularSection.ContactInformation.Attribute.FieldValues</name>
 		<right>
 			<name>View</name>
 			<value>false</value>
@@ -60918,61 +59657,6 @@
 		</right>
 	</object>
 	<object>
-		<name>Document.SupplierInvoiceNote.StandardAttribute.Posted</name>
-		<right>
-			<name>View</name>
-			<value>false</value>
-		</right>
-		<right>
-			<name>Edit</name>
-			<value>false</value>
-		</right>
-	</object>
-	<object>
-		<name>Document.SupplierInvoiceNote.StandardAttribute.Ref</name>
-		<right>
-			<name>View</name>
-			<value>false</value>
-		</right>
-		<right>
-			<name>Edit</name>
-			<value>false</value>
-		</right>
-	</object>
-	<object>
-		<name>Document.SupplierInvoiceNote.StandardAttribute.DeletionMark</name>
-		<right>
-			<name>View</name>
-			<value>false</value>
-		</right>
-		<right>
-			<name>Edit</name>
-			<value>false</value>
-		</right>
-	</object>
-	<object>
-		<name>Document.SupplierInvoiceNote.StandardAttribute.Date</name>
-		<right>
-			<name>View</name>
-			<value>false</value>
-		</right>
-		<right>
-			<name>Edit</name>
-			<value>false</value>
-		</right>
-	</object>
-	<object>
-		<name>Document.SupplierInvoiceNote.StandardAttribute.Number</name>
-		<right>
-			<name>View</name>
-			<value>false</value>
-		</right>
-		<right>
-			<name>Edit</name>
-			<value>false</value>
-		</right>
-	</object>
-	<object>
 		<name>AccumulationRegister.Inventory.Attribute.ProductsAndServicesCorr</name>
 		<right>
 			<name>View</name>
@@ -61007,17 +59691,6 @@
 	</object>
 	<object>
 		<name>Catalog.FileFoldersAttachedFiles.Attribute.FileOwner</name>
-		<right>
-			<name>View</name>
-			<value>false</value>
-		</right>
-		<right>
-			<name>Edit</name>
-			<value>false</value>
-		</right>
-	</object>
-	<object>
-		<name>Document.CustomerInvoiceNote.Attribute.Consignor</name>
 		<right>
 			<name>View</name>
 			<value>false</value>
@@ -61431,7 +60104,7 @@
 		</right>
 	</object>
 	<object>
-		<name>Catalog.ContactInformationTypes.Attribute.IncludeCountryInPresentation</name>
+		<name>Catalog.ContactInformationKinds.Attribute.IncludeCountryInPresentation</name>
 		<right>
 			<name>View</name>
 			<value>false</value>
@@ -61783,17 +60456,6 @@
 		</right>
 	</object>
 	<object>
-		<name>Catalog.CustomerInvoiceNoteAttachedFiles.Attribute.ModificationDateUniversal</name>
-		<right>
-			<name>View</name>
-			<value>false</value>
-		</right>
-		<right>
-			<name>Edit</name>
-			<value>false</value>
-		</right>
-	</object>
-	<object>
 		<name>Document.Netting.TabularSection.Debitor.Attribute.Order</name>
 		<right>
 			<name>View</name>
@@ -62026,17 +60688,6 @@
 	</object>
 	<object>
 		<name>Document.SupplierInvoiceForPayment.TabularSection.Inventory.Attribute.Content</name>
-		<right>
-			<name>View</name>
-			<value>false</value>
-		</right>
-		<right>
-			<name>Edit</name>
-			<value>false</value>
-		</right>
-	</object>
-	<object>
-		<name>Document.CustomerInvoiceNote.Attribute.IncomingDocumentDate</name>
 		<right>
 			<name>View</name>
 			<value>false</value>
@@ -62509,17 +61160,6 @@
 		</right>
 	</object>
 	<object>
-		<name>Document.CustomerInvoiceNote.Attribute.Company</name>
-		<right>
-			<name>View</name>
-			<value>false</value>
-		</right>
-		<right>
-			<name>Edit</name>
-			<value>false</value>
-		</right>
-	</object>
-	<object>
 		<name>Catalog.FileFoldersAttachedFiles.TabularSection.DigitalSignatures.Attribute.Certificate</name>
 		<right>
 			<name>View</name>
@@ -62773,17 +61413,6 @@
 		</right>
 	</object>
 	<object>
-		<name>Catalog.CustomerInvoiceNoteAttachedFiles.Attribute.Author</name>
-		<right>
-			<name>View</name>
-			<value>false</value>
-		</right>
-		<right>
-			<name>Edit</name>
-			<value>false</value>
-		</right>
-	</object>
-	<object>
 		<name>Catalog.LabelsAndTagsTemplates.Attribute.Pattern</name>
 		<right>
 			<name>View</name>
@@ -62818,17 +61447,6 @@
 	</object>
 	<object>
 		<name>InformationRegister.EDExchangeStatesThroughEDFOperators.Resource.EDDateReceived</name>
-		<right>
-			<name>View</name>
-			<value>false</value>
-		</right>
-		<right>
-			<name>Edit</name>
-			<value>false</value>
-		</right>
-	</object>
-	<object>
-		<name>InformationRegister.CounterpartyDuplicatesExist.Dimension.KPP</name>
 		<right>
 			<name>View</name>
 			<value>false</value>
@@ -62993,7 +61611,7 @@
 		</right>
 	</object>
 	<object>
-		<name>Catalog.ContactPersons.TabularSection.ContactInformation.Attribute.EMail_Address</name>
+		<name>Catalog.ContactPersons.TabularSection.ContactInformation.Attribute.EmailAddress</name>
 		<right>
 			<name>View</name>
 			<value>false</value>
@@ -63049,28 +61667,6 @@
 	</object>
 	<object>
 		<name>Document.Payroll.TabularSection.AccrualsDeductions.Attribute.DaysWorked</name>
-		<right>
-			<name>View</name>
-			<value>false</value>
-		</right>
-		<right>
-			<name>Edit</name>
-			<value>false</value>
-		</right>
-	</object>
-	<object>
-		<name>Catalog.SupplierInvoiceNoteAttachedFiles.TabularSection.EncryptionCertificates.Attribute.Presentation</name>
-		<right>
-			<name>View</name>
-			<value>false</value>
-		</right>
-		<right>
-			<name>Edit</name>
-			<value>false</value>
-		</right>
-	</object>
-	<object>
-		<name>Document.CustomerInvoiceNote.TabularSection.Inventory.Attribute.MeasurementUnit</name>
 		<right>
 			<name>View</name>
 			<value>false</value>
@@ -64006,124 +62602,6 @@
 	</object>
 	<object>
 		<name>AccumulationRegister.AccrualsAndDeductions.Dimension.Currency</name>
-		<right>
-			<name>View</name>
-			<value>false</value>
-		</right>
-		<right>
-			<name>Edit</name>
-			<value>false</value>
-		</right>
-	</object>
-	<object>
-		<name>Document.CustomerInvoiceNote</name>
-		<right>
-			<name>Read</name>
-			<value>true</value>
-		</right>
-		<right>
-			<name>Insert</name>
-			<value>true</value>
-		</right>
-		<right>
-			<name>Update</name>
-			<value>true</value>
-		</right>
-		<right>
-			<name>Posting</name>
-			<value>true</value>
-		</right>
-		<right>
-			<name>UndoPosting</name>
-			<value>true</value>
-		</right>
-		<right>
-			<name>View</name>
-			<value>true</value>
-		</right>
-		<right>
-			<name>InteractiveInsert</name>
-			<value>true</value>
-		</right>
-		<right>
-			<name>Edit</name>
-			<value>true</value>
-		</right>
-		<right>
-			<name>InteractiveSetDeletionMark</name>
-			<value>true</value>
-		</right>
-		<right>
-			<name>InteractiveClearDeletionMark</name>
-			<value>true</value>
-		</right>
-		<right>
-			<name>InteractivePosting</name>
-			<value>true</value>
-		</right>
-		<right>
-			<name>InteractivePostingRegular</name>
-			<value>true</value>
-		</right>
-		<right>
-			<name>InteractiveUndoPosting</name>
-			<value>true</value>
-		</right>
-		<right>
-			<name>InteractiveChangeOfPosted</name>
-			<value>true</value>
-		</right>
-		<right>
-			<name>InputByString</name>
-			<value>true</value>
-		</right>
-	</object>
-	<object>
-		<name>Document.CustomerInvoiceNote.StandardAttribute.Posted</name>
-		<right>
-			<name>View</name>
-			<value>false</value>
-		</right>
-		<right>
-			<name>Edit</name>
-			<value>false</value>
-		</right>
-	</object>
-	<object>
-		<name>Document.CustomerInvoiceNote.StandardAttribute.Ref</name>
-		<right>
-			<name>View</name>
-			<value>false</value>
-		</right>
-		<right>
-			<name>Edit</name>
-			<value>false</value>
-		</right>
-	</object>
-	<object>
-		<name>Document.CustomerInvoiceNote.StandardAttribute.DeletionMark</name>
-		<right>
-			<name>View</name>
-			<value>false</value>
-		</right>
-		<right>
-			<name>Edit</name>
-			<value>false</value>
-		</right>
-	</object>
-	<object>
-		<name>Document.CustomerInvoiceNote.StandardAttribute.Date</name>
-		<right>
-			<name>View</name>
-			<value>false</value>
-		</right>
-		<right>
-			<name>Edit</name>
-			<value>false</value>
-		</right>
-	</object>
-	<object>
-		<name>Document.CustomerInvoiceNote.StandardAttribute.Number</name>
 		<right>
 			<name>View</name>
 			<value>false</value>
@@ -65146,17 +63624,6 @@
 		</right>
 	</object>
 	<object>
-		<name>Document.SupplierInvoiceNote.Attribute.OperationKind</name>
-		<right>
-			<name>View</name>
-			<value>false</value>
-		</right>
-		<right>
-			<name>Edit</name>
-			<value>false</value>
-		</right>
-	</object>
-	<object>
 		<name>AccumulationRegister.CashAssetsForecast.Resource.AmountExpenseCur</name>
 		<right>
 			<name>View</name>
@@ -65674,17 +64141,6 @@
 		</right>
 	</object>
 	<object>
-		<name>Catalog.Companies.Attribute.CodeByOKATO</name>
-		<right>
-			<name>View</name>
-			<value>false</value>
-		</right>
-		<right>
-			<name>Edit</name>
-			<value>false</value>
-		</right>
-	</object>
-	<object>
 		<name>Document.Payroll.TabularSection.IncomeTaxes.Attribute.Employee</name>
 		<right>
 			<name>View</name>
@@ -65916,7 +64372,7 @@
 		</right>
 	</object>
 	<object>
-		<name>Catalog.ContactInformationTypes.Attribute.RequiredFilling</name>
+		<name>Catalog.ContactInformationKinds.Attribute.Mandatory</name>
 		<right>
 			<name>View</name>
 			<value>false</value>
@@ -66345,17 +64801,6 @@
 		</right>
 	</object>
 	<object>
-		<name>Catalog.Companies.Attribute.CodebyOKTMO</name>
-		<right>
-			<name>View</name>
-			<value>false</value>
-		</right>
-		<right>
-			<name>Edit</name>
-			<value>false</value>
-		</right>
-	</object>
-	<object>
 		<name>Document.AdditionalCosts.Attribute.IncludeVATInPrice</name>
 		<right>
 			<name>View</name>
@@ -66588,17 +65033,6 @@
 	</object>
 	<object>
 		<name>InformationRegister.UserReminders.Dimension.EventTime</name>
-		<right>
-			<name>View</name>
-			<value>false</value>
-		</right>
-		<right>
-			<name>Edit</name>
-			<value>false</value>
-		</right>
-	</object>
-	<object>
-		<name>Document.CustomerInvoiceNote.Attribute.ExchangeRate</name>
 		<right>
 			<name>View</name>
 			<value>false</value>
@@ -66895,7 +65329,7 @@
 		</right>
 	</object>
 	<object>
-		<name>Catalog.Companies.TabularSection.ContactInformation.Attribute.State</name>
+		<name>Catalog.Companies.TabularSection.ContactInformation.Attribute.Region</name>
 		<right>
 			<name>View</name>
 			<value>false</value>
@@ -67083,17 +65517,6 @@
 	</object>
 	<object>
 		<name>Catalog.PaymentReceiptAttachedFiles.TabularSection.DigitalSignatures.Attribute.CertificateIsIssuedTo</name>
-		<right>
-			<name>View</name>
-			<value>false</value>
-		</right>
-		<right>
-			<name>Edit</name>
-			<value>false</value>
-		</right>
-	</object>
-	<object>
-		<name>Document.CustomerInvoiceNote.Attribute.CorrectionNumber</name>
 		<right>
 			<name>View</name>
 			<value>false</value>
@@ -67379,7 +65802,7 @@
 		</right>
 	</object>
 	<object>
-		<name>Catalog.ContactPersons.TabularSection.ContactInformation.Attribute.PhoneNumberNoCodes</name>
+		<name>Catalog.ContactPersons.TabularSection.ContactInformation.Attribute.PhoneNumberWithoutCodes</name>
 		<right>
 			<name>View</name>
 			<value>false</value>
@@ -67555,7 +65978,7 @@
 		</right>
 	</object>
 	<object>
-		<name>Catalog.ContactPersons.TabularSection.ContactPersonRoles</name>
+		<name>Catalog.ContactPersons.TabularSection.Roles</name>
 		<right>
 			<name>View</name>
 			<value>false</value>
@@ -69315,17 +67738,6 @@
 		</right>
 	</object>
 	<object>
-		<name>Catalog.ContactPersons.Attribute.ConnectionStopDate</name>
-		<right>
-			<name>View</name>
-			<value>false</value>
-		</right>
-		<right>
-			<name>Edit</name>
-			<value>false</value>
-		</right>
-	</object>
-	<object>
 		<name>Document.InventoryReceipt.TabularSection.Inventory.Attribute.Amount</name>
 		<right>
 			<name>View</name>
@@ -69338,17 +67750,6 @@
 	</object>
 	<object>
 		<name>Document.AdditionalCosts.TabularSection.Inventory.Attribute.VATAmount</name>
-		<right>
-			<name>View</name>
-			<value>false</value>
-		</right>
-		<right>
-			<name>Edit</name>
-			<value>false</value>
-		</right>
-	</object>
-	<object>
-		<name>Document.SupplierInvoiceNote.Attribute.PaymentAccountingDocumentNumber</name>
 		<right>
 			<name>View</name>
 			<value>false</value>
@@ -69393,17 +67794,6 @@
 	</object>
 	<object>
 		<name>Document.Budget.TabularSection.Operations</name>
-		<right>
-			<name>View</name>
-			<value>false</value>
-		</right>
-		<right>
-			<name>Edit</name>
-			<value>false</value>
-		</right>
-	</object>
-	<object>
-		<name>Catalog.SupplierInvoiceNoteAttachedFiles.TabularSection.DigitalSignatures.Attribute.Signature</name>
 		<right>
 			<name>View</name>
 			<value>false</value>
@@ -69711,7 +68101,7 @@
 		</right>
 	</object>
 	<object>
-		<name>Catalog.Counterparties.Attribute.EMail_Address</name>
+		<name>Catalog.Counterparties.Attribute.Email</name>
 		<right>
 			<name>View</name>
 			<value>false</value>
@@ -70042,17 +68432,6 @@
 	</object>
 	<object>
 		<name>Document.EmploymentContract.Attribute.Company</name>
-		<right>
-			<name>View</name>
-			<value>false</value>
-		</right>
-		<right>
-			<name>Edit</name>
-			<value>false</value>
-		</right>
-	</object>
-	<object>
-		<name>Catalog.SupplierInvoiceNoteAttachedFiles.Attribute.FileStorage</name>
 		<right>
 			<name>View</name>
 			<value>false</value>
@@ -70404,7 +68783,7 @@
 		</right>
 	</object>
 	<object>
-		<name>Catalog.ContactInformationTypes.Attribute.EditMethodEditable</name>
+		<name>Catalog.ContactInformationKinds.Attribute.CanChangeEditMode</name>
 		<right>
 			<name>View</name>
 			<value>false</value>
@@ -70536,17 +68915,6 @@
 		</right>
 	</object>
 	<object>
-		<name>Document.CustomerInvoiceNote.TabularSection.Inventory.Attribute.Content</name>
-		<right>
-			<name>View</name>
-			<value>false</value>
-		</right>
-		<right>
-			<name>Edit</name>
-			<value>false</value>
-		</right>
-	</object>
-	<object>
 		<name>Document.InventoryTransfer.Attribute.PowerOfAttorneyNumber</name>
 		<right>
 			<name>View</name>
@@ -70658,17 +69026,6 @@
 	</object>
 	<object>
 		<name>Catalog.CounterpartiesAttachedFiles.TabularSection.DigitalSignatures.Attribute.Signer</name>
-		<right>
-			<name>View</name>
-			<value>false</value>
-		</right>
-		<right>
-			<name>Edit</name>
-			<value>false</value>
-		</right>
-	</object>
-	<object>
-		<name>Document.CustomerInvoiceNote.Attribute.OperationKind</name>
 		<right>
 			<name>View</name>
 			<value>false</value>
@@ -71614,28 +69971,6 @@
 		</right>
 	</object>
 	<object>
-		<name>DataProcessor.ImportFromSpreadsheet.TabularSection.ImportingList.Attribute.KPP</name>
-		<right>
-			<name>View</name>
-			<value>false</value>
-		</right>
-		<right>
-			<name>Edit</name>
-			<value>false</value>
-		</right>
-	</object>
-	<object>
-		<name>Document.SupplierInvoiceNote.TabularSection.Inventory.Attribute.MeasurementUnit</name>
-		<right>
-			<name>View</name>
-			<value>false</value>
-		</right>
-		<right>
-			<name>Edit</name>
-			<value>false</value>
-		</right>
-	</object>
-	<object>
 		<name>DataProcessor.UniversalXMLDataExchange.Attribute.ExchangeFileName</name>
 		<right>
 			<name>View</name>
@@ -71812,17 +70147,6 @@
 		</right>
 	</object>
 	<object>
-		<name>Catalog.SupplierInvoiceNoteAttachedFiles.TabularSection.DigitalSignatures.Attribute.Certificate</name>
-		<right>
-			<name>View</name>
-			<value>false</value>
-		</right>
-		<right>
-			<name>Edit</name>
-			<value>false</value>
-		</right>
-	</object>
-	<object>
 		<name>DataProcessor.ElectronicDocumentsExchangeWithBank.TabularSection.Statements.Attribute.CompanyAccount</name>
 		<right>
 			<name>View</name>
@@ -71845,7 +70169,7 @@
 		</right>
 	</object>
 	<object>
-		<name>Catalog.Individuals.TabularSection.ContactInformation.Attribute.PhoneNumberNoCodes</name>
+		<name>Catalog.Individuals.TabularSection.ContactInformation.Attribute.PhoneNumberWithoutCodes</name>
 		<right>
 			<name>View</name>
 			<value>false</value>
@@ -72890,7 +71214,7 @@
 		</right>
 	</object>
 	<object>
-		<name>Catalog.Companies.Attribute.OGRN</name>
+		<name>Catalog.Companies.Attribute.RegistrationNumber</name>
 		<right>
 			<name>View</name>
 			<value>false</value>
@@ -72945,7 +71269,7 @@
 		</right>
 	</object>
 	<object>
-		<name>Catalog.Counterparties.TabularSection.ContactInformation.Attribute.FieldsValues</name>
+		<name>Catalog.Counterparties.TabularSection.ContactInformation.Attribute.FieldValues</name>
 		<right>
 			<name>View</name>
 			<value>false</value>
@@ -72990,17 +71314,6 @@
 	</object>
 	<object>
 		<name>Document.CostAllocation.TabularSection.Inventory.Attribute.Reserve</name>
-		<right>
-			<name>View</name>
-			<value>false</value>
-		</right>
-		<right>
-			<name>Edit</name>
-			<value>false</value>
-		</right>
-	</object>
-	<object>
-		<name>Document.SupplierInvoiceNote.TabularSection.Inventory.Attribute.CountryOfOrigin</name>
 		<right>
 			<name>View</name>
 			<value>false</value>
@@ -73100,17 +71413,6 @@
 	</object>
 	<object>
 		<name>Document.CashReceipt.Attribute.Multiplicity</name>
-		<right>
-			<name>View</name>
-			<value>false</value>
-		</right>
-		<right>
-			<name>Edit</name>
-			<value>false</value>
-		</right>
-	</object>
-	<object>
-		<name>Document.PaymentOrder.Attribute.PayeeKPP</name>
 		<right>
 			<name>View</name>
 			<value>false</value>
@@ -74034,17 +72336,6 @@
 		</right>
 	</object>
 	<object>
-		<name>Document.CustomerInvoiceNote.TabularSection.Inventory.Attribute.ProductsAndServices</name>
-		<right>
-			<name>View</name>
-			<value>false</value>
-		</right>
-		<right>
-			<name>Edit</name>
-			<value>false</value>
-		</right>
-	</object>
-	<object>
 		<name>Document.Payroll.TabularSection.AccrualsDeductions.Attribute.Indicator3</name>
 		<right>
 			<name>View</name>
@@ -74188,28 +72479,6 @@
 		</right>
 	</object>
 	<object>
-		<name>InformationRegister.PersonalDataAreas.Resource.UseRegistrationEventLogMonitor</name>
-		<right>
-			<name>View</name>
-			<value>false</value>
-		</right>
-		<right>
-			<name>Edit</name>
-			<value>false</value>
-		</right>
-	</object>
-	<object>
-		<name>Catalog.SupplierInvoiceNoteAttachedFiles.TabularSection.DigitalSignatures.Attribute.CertificateIsIssuedTo</name>
-		<right>
-			<name>View</name>
-			<value>false</value>
-		</right>
-		<right>
-			<name>Edit</name>
-			<value>false</value>
-		</right>
-	</object>
-	<object>
 		<name>Document.EnterOpeningBalance.TabularSection.TaxesSettlements</name>
 		<right>
 			<name>View</name>
@@ -74343,17 +72612,6 @@
 	</object>
 	<object>
 		<name>Document.Netting.Attribute.Correspondence</name>
-		<right>
-			<name>View</name>
-			<value>false</value>
-		</right>
-		<right>
-			<name>Edit</name>
-			<value>false</value>
-		</right>
-	</object>
-	<object>
-		<name>Catalog.CustomerInvoiceNoteAttachedFiles.TabularSection.DigitalSignatures.Attribute.SignatureFileName</name>
 		<right>
 			<name>View</name>
 			<value>false</value>
@@ -74540,17 +72798,6 @@
 		</right>
 	</object>
 	<object>
-		<name>Catalog.CustomerInvoiceNoteAttachedFiles.Attribute.FileStorage</name>
-		<right>
-			<name>View</name>
-			<value>false</value>
-		</right>
-		<right>
-			<name>Edit</name>
-			<value>false</value>
-		</right>
-	</object>
-	<object>
 		<name>ExchangePlan.ExchangeSmallBusinessAccounting20.Attribute.UseDocumentTypesFilter</name>
 		<right>
 			<name>View</name>
@@ -74563,17 +72810,6 @@
 	</object>
 	<object>
 		<name>DataProcessor.DataExchangeCreationAssistant.Attribute.RefNew</name>
-		<right>
-			<name>View</name>
-			<value>false</value>
-		</right>
-		<right>
-			<name>Edit</name>
-			<value>false</value>
-		</right>
-	</object>
-	<object>
-		<name>Document.SupplierInvoiceNote.Attribute.Counterparty</name>
 		<right>
 			<name>View</name>
 			<value>false</value>
@@ -74706,17 +72942,6 @@
 	</object>
 	<object>
 		<name>Document.ProductionOrder.Attribute.BasisDocument</name>
-		<right>
-			<name>View</name>
-			<value>false</value>
-		</right>
-		<right>
-			<name>Edit</name>
-			<value>false</value>
-		</right>
-	</object>
-	<object>
-		<name>Catalog.Counterparties.Attribute.KPPEnteredCorrectly</name>
 		<right>
 			<name>View</name>
 			<value>false</value>
@@ -75068,17 +73293,6 @@
 		</right>
 	</object>
 	<object>
-		<name>InformationRegister.PersonalDataAreas.Dimension.AreaName</name>
-		<right>
-			<name>View</name>
-			<value>false</value>
-		</right>
-		<right>
-			<name>Edit</name>
-			<value>false</value>
-		</right>
-	</object>
-	<object>
 		<name>Catalog.Counterparties.Attribute.TrackPaymentsByBills</name>
 		<right>
 			<name>View</name>
@@ -75332,17 +73546,6 @@
 		</right>
 	</object>
 	<object>
-		<name>Catalog.SupplierInvoiceNoteAttachedFiles.Attribute.FileStorageType</name>
-		<right>
-			<name>View</name>
-			<value>false</value>
-		</right>
-		<right>
-			<name>Edit</name>
-			<value>false</value>
-		</right>
-	</object>
-	<object>
 		<name>Document.SupplierInvoice.Attribute.IncludeExpensesInCostPrice</name>
 		<right>
 			<name>View</name>
@@ -75509,17 +73712,6 @@
 	</object>
 	<object>
 		<name>Catalog.CompaniesAttachedFiles.Attribute.DigitallySigned</name>
-		<right>
-			<name>View</name>
-			<value>false</value>
-		</right>
-		<right>
-			<name>Edit</name>
-			<value>false</value>
-		</right>
-	</object>
-	<object>
-		<name>Catalog.SupplierInvoiceNoteAttachedFiles.TabularSection.EncryptionCertificates</name>
 		<right>
 			<name>View</name>
 			<value>false</value>
@@ -76278,17 +74470,6 @@
 		</right>
 	</object>
 	<object>
-		<name>Document.CustomerInvoiceNote.TabularSection.Inventory.Attribute.Quantity</name>
-		<right>
-			<name>View</name>
-			<value>false</value>
-		</right>
-		<right>
-			<name>Edit</name>
-			<value>false</value>
-		</right>
-	</object>
-	<object>
 		<name>DataProcessor.DataSynchronizationSettingsBetweenApplicationsOnInternetSetupAssistant.TabularSection.StatisticsInformation.Attribute.ObjectsCountInSource</name>
 		<right>
 			<name>View</name>
@@ -76565,17 +74746,6 @@
 	</object>
 	<object>
 		<name>DataProcessor.ImportFromSpreadsheet.TabularSection.ImportingList.Attribute.TIN</name>
-		<right>
-			<name>View</name>
-			<value>false</value>
-		</right>
-		<right>
-			<name>Edit</name>
-			<value>false</value>
-		</right>
-	</object>
-	<object>
-		<name>Catalog.Counterparties.Attribute.UpdateSuccessful</name>
 		<right>
 			<name>View</name>
 			<value>false</value>
@@ -76883,29 +75053,7 @@
 		</right>
 	</object>
 	<object>
-		<name>Document.SupplierInvoiceNote.TabularSection.Inventory.Attribute.Price</name>
-		<right>
-			<name>View</name>
-			<value>false</value>
-		</right>
-		<right>
-			<name>Edit</name>
-			<value>false</value>
-		</right>
-	</object>
-	<object>
 		<name>Document.FixedAssetsWriteOff.TabularSection.FixedAssets.Attribute.DepreciatedCost</name>
-		<right>
-			<name>View</name>
-			<value>false</value>
-		</right>
-		<right>
-			<name>Edit</name>
-			<value>false</value>
-		</right>
-	</object>
-	<object>
-		<name>Document.CustomerInvoiceNote.Attribute.Correction</name>
 		<right>
 			<name>View</name>
 			<value>false</value>
@@ -77159,17 +75307,6 @@
 	</object>
 	<object>
 		<name>InformationRegister.ReportOnCurrencyRatesDifference.Resource.Amount</name>
-		<right>
-			<name>View</name>
-			<value>false</value>
-		</right>
-		<right>
-			<name>Edit</name>
-			<value>false</value>
-		</right>
-	</object>
-	<object>
-		<name>Catalog.SupplierInvoiceNoteAttachedFiles.TabularSection.DigitalSignatures.Attribute.Signer</name>
 		<right>
 			<name>View</name>
 			<value>false</value>
@@ -77478,17 +75615,6 @@
 	</object>
 	<object>
 		<name>InformationRegister.EnterpriseResourcesKinds.Dimension.EnterpriseResource</name>
-		<right>
-			<name>View</name>
-			<value>false</value>
-		</right>
-		<right>
-			<name>Edit</name>
-			<value>false</value>
-		</right>
-	</object>
-	<object>
-		<name>Document.CustomerInvoiceNote.TabularSection.PaymentDocumentsDateNumber.Attribute.PaymentAccountingDocumentNumber</name>
 		<right>
 			<name>View</name>
 			<value>false</value>
@@ -78157,17 +76283,6 @@
 	</object>
 	<object>
 		<name>Catalog.PaymentReceiptAttachedFiles.TabularSection.DigitalSignatures.Attribute.Comment</name>
-		<right>
-			<name>View</name>
-			<value>false</value>
-		</right>
-		<right>
-			<name>Edit</name>
-			<value>false</value>
-		</right>
-	</object>
-	<object>
-		<name>Catalog.SupplierInvoiceNoteAttachedFiles.Attribute.DigitallySigned</name>
 		<right>
 			<name>View</name>
 			<value>false</value>
@@ -79003,17 +77118,6 @@
 		</right>
 	</object>
 	<object>
-		<name>Catalog.CustomerInvoiceNoteAttachedFiles.TabularSection.DigitalSignatures.Attribute.Signature</name>
-		<right>
-			<name>View</name>
-			<value>false</value>
-		</right>
-		<right>
-			<name>Edit</name>
-			<value>false</value>
-		</right>
-	</object>
-	<object>
 		<name>AccumulationRegister.Timesheet.Resource.Days</name>
 		<right>
 			<name>View</name>
@@ -79080,7 +77184,7 @@
 		</right>
 	</object>
 	<object>
-		<name>Catalog.StructuralUnits.TabularSection.ContactInformation.Attribute.FieldsValues</name>
+		<name>Catalog.StructuralUnits.TabularSection.ContactInformation.Attribute.FieldValues</name>
 		<right>
 			<name>View</name>
 			<value>false</value>
@@ -79312,17 +77416,6 @@
 	</object>
 	<object>
 		<name>Catalog.Companies.TabularSection.AdditionalAttributes</name>
-		<right>
-			<name>View</name>
-			<value>false</value>
-		</right>
-		<right>
-			<name>Edit</name>
-			<value>false</value>
-		</right>
-	</object>
-	<object>
-		<name>Document.CustomerInvoiceNote.Attribute.Consignee</name>
 		<right>
 			<name>View</name>
 			<value>false</value>
@@ -79784,17 +77877,6 @@
 		</right>
 	</object>
 	<object>
-		<name>Document.CustomerInvoiceNote.TabularSection.Inventory</name>
-		<right>
-			<name>View</name>
-			<value>false</value>
-		</right>
-		<right>
-			<name>Edit</name>
-			<value>false</value>
-		</right>
-	</object>
-	<object>
 		<name>Document.MonthEnd.Attribute.DirectCostCalculation</name>
 		<right>
 			<name>View</name>
@@ -80203,17 +78285,6 @@
 	</object>
 	<object>
 		<name>Document.CostAllocation.TabularSection.Products.Attribute.Batch</name>
-		<right>
-			<name>View</name>
-			<value>false</value>
-		</right>
-		<right>
-			<name>Edit</name>
-			<value>false</value>
-		</right>
-	</object>
-	<object>
-		<name>Document.CustomerInvoiceNote.Attribute.Comment</name>
 		<right>
 			<name>View</name>
 			<value>false</value>
@@ -81236,17 +79307,6 @@
 		</right>
 	</object>
 	<object>
-		<name>Catalog.CustomerInvoiceNoteAttachedFiles.TabularSection.DigitalSignatures</name>
-		<right>
-			<name>View</name>
-			<value>false</value>
-		</right>
-		<right>
-			<name>Edit</name>
-			<value>false</value>
-		</right>
-	</object>
-	<object>
 		<name>DataProcessor.ClientBank.TabularSection.ImportBankAccounts.Attribute.Begin</name>
 		<right>
 			<name>View</name>
@@ -81413,17 +79473,6 @@
 	</object>
 	<object>
 		<name>AccumulationRegister.CustomerOrders.Dimension.ProductsAndServices</name>
-		<right>
-			<name>View</name>
-			<value>false</value>
-		</right>
-		<right>
-			<name>Edit</name>
-			<value>false</value>
-		</right>
-	</object>
-	<object>
-		<name>Document.CustomerInvoiceNote.TabularSection.Inventory.Attribute.CountryOfOrigin</name>
 		<right>
 			<name>View</name>
 			<value>false</value>
@@ -82391,17 +80440,6 @@
 		</right>
 	</object>
 	<object>
-		<name>Document.PaymentOrder.Attribute.OKATOCode</name>
-		<right>
-			<name>View</name>
-			<value>false</value>
-		</right>
-		<right>
-			<name>Edit</name>
-			<value>false</value>
-		</right>
-	</object>
-	<object>
 		<name>Document.MonthEnd.Attribute.Company</name>
 		<right>
 			<name>View</name>
@@ -82425,17 +80463,6 @@
 	</object>
 	<object>
 		<name>DataProcessor.ConfigurationUpdate.TabularSection.AvailableUpdates.Attribute.Version</name>
-		<right>
-			<name>View</name>
-			<value>false</value>
-		</right>
-		<right>
-			<name>Edit</name>
-			<value>false</value>
-		</right>
-	</object>
-	<object>
-		<name>Catalog.SupplierInvoiceNoteAttachedFiles.Attribute.Volume</name>
 		<right>
 			<name>View</name>
 			<value>false</value>
@@ -82513,17 +80540,6 @@
 	</object>
 	<object>
 		<name>Document.InventoryAssembly.TabularSection.Products.Attribute.Quantity</name>
-		<right>
-			<name>View</name>
-			<value>false</value>
-		</right>
-		<right>
-			<name>Edit</name>
-			<value>false</value>
-		</right>
-	</object>
-	<object>
-		<name>Catalog.Companies.Attribute.CertificateSeriesNumber</name>
 		<right>
 			<name>View</name>
 			<value>false</value>
@@ -83436,17 +81452,6 @@
 		</right>
 	</object>
 	<object>
-		<name>Catalog.Companies.Attribute.FaximilePrintingFileDelete</name>
-		<right>
-			<name>View</name>
-			<value>false</value>
-		</right>
-		<right>
-			<name>Edit</name>
-			<value>false</value>
-		</right>
-	</object>
-	<object>
 		<name>InformationRegister.ObjectRightsSettings.Dimension.Right</name>
 		<right>
 			<name>View</name>
@@ -84107,40 +82112,7 @@
 		</right>
 	</object>
 	<object>
-		<name>Document.CustomerInvoiceNote.TabularSection.PaymentDocumentsDateNumber.Attribute.PaymentAccountingDocumentDate</name>
-		<right>
-			<name>View</name>
-			<value>false</value>
-		</right>
-		<right>
-			<name>Edit</name>
-			<value>false</value>
-		</right>
-	</object>
-	<object>
 		<name>InformationRegister.DataExchangeMessages.Resource.MessageFileName</name>
-		<right>
-			<name>View</name>
-			<value>false</value>
-		</right>
-		<right>
-			<name>Edit</name>
-			<value>false</value>
-		</right>
-	</object>
-	<object>
-		<name>Catalog.SupplierInvoiceNoteAttachedFiles.TabularSection.DigitalSignatures.Attribute.Imprint</name>
-		<right>
-			<name>View</name>
-			<value>false</value>
-		</right>
-		<right>
-			<name>Edit</name>
-			<value>false</value>
-		</right>
-	</object>
-	<object>
-		<name>Catalog.SupplierInvoiceNoteAttachedFiles.TabularSection.EncryptionCertificates.Attribute.Imprint</name>
 		<right>
 			<name>View</name>
 			<value>false</value>
@@ -84646,7 +82618,7 @@
 		</right>
 	</object>
 	<object>
-		<name>Catalog.WorldCountries.Attribute.DescriptionFull</name>
+		<name>Catalog.WorldCountries.Attribute.LongDescription</name>
 		<right>
 			<name>View</name>
 			<value>false</value>
@@ -84723,29 +82695,7 @@
 		</right>
 	</object>
 	<object>
-		<name>Document.SupplierInvoiceNote.TabularSection.Inventory.Attribute.CCDNo</name>
-		<right>
-			<name>View</name>
-			<value>false</value>
-		</right>
-		<right>
-			<name>Edit</name>
-			<value>false</value>
-		</right>
-	</object>
-	<object>
 		<name>Document.CostAllocation.TabularSection.InventoryDistribution.Attribute.ProductsAndServices</name>
-		<right>
-			<name>View</name>
-			<value>false</value>
-		</right>
-		<right>
-			<name>Edit</name>
-			<value>false</value>
-		</right>
-	</object>
-	<object>
-		<name>Catalog.CustomerInvoiceNoteAttachedFiles.Attribute.FileOwner</name>
 		<right>
 			<name>View</name>
 			<value>false</value>
@@ -85252,17 +83202,6 @@
 	</object>
 	<object>
 		<name>Catalog.ReportsVariants.Attribute.Settings</name>
-		<right>
-			<name>View</name>
-			<value>false</value>
-		</right>
-		<right>
-			<name>Edit</name>
-			<value>false</value>
-		</right>
-	</object>
-	<object>
-		<name>Document.CustomerInvoiceNote.TabularSection.Inventory.Attribute.VATRate</name>
 		<right>
 			<name>View</name>
 			<value>false</value>
@@ -85856,7 +83795,7 @@
 		</right>
 	</object>
 	<object>
-		<name>Catalog.ContactPersons.TabularSection.ContactInformation.Attribute.State</name>
+		<name>Catalog.ContactPersons.TabularSection.ContactInformation.Attribute.Region</name>
 		<right>
 			<name>View</name>
 			<value>false</value>
@@ -85912,17 +83851,6 @@
 	</object>
 	<object>
 		<name>Report.SalesReportTORG29.Attribute.StartDate</name>
-		<right>
-			<name>View</name>
-			<value>false</value>
-		</right>
-		<right>
-			<name>Edit</name>
-			<value>false</value>
-		</right>
-	</object>
-	<object>
-		<name>Catalog.CustomerInvoiceNoteAttachedFiles.Attribute.PathToFile</name>
 		<right>
 			<name>View</name>
 			<value>false</value>
@@ -86142,7 +84070,7 @@
 		</right>
 	</object>
 	<object>
-		<name>Catalog.Individuals.TabularSection.ContactInformation.Attribute.State</name>
+		<name>Catalog.Individuals.TabularSection.ContactInformation.Attribute.Region</name>
 		<right>
 			<name>View</name>
 			<value>false</value>
@@ -86330,17 +84258,6 @@
 	</object>
 	<object>
 		<name>InformationRegister.DeleteJobQueue.StandardAttribute.Period</name>
-		<right>
-			<name>View</name>
-			<value>false</value>
-		</right>
-		<right>
-			<name>Edit</name>
-			<value>false</value>
-		</right>
-	</object>
-	<object>
-		<name>Catalog.CustomerInvoiceNoteAttachedFiles.Attribute.DigitallySigned</name>
 		<right>
 			<name>View</name>
 			<value>false</value>
@@ -87220,105 +85137,6 @@
 		</right>
 	</object>
 	<object>
-		<name>Catalog.SupplierInvoiceNoteAttachedFiles.StandardAttribute.PredefinedDataName</name>
-		<right>
-			<name>View</name>
-			<value>false</value>
-		</right>
-		<right>
-			<name>Edit</name>
-			<value>false</value>
-		</right>
-	</object>
-	<object>
-		<name>Catalog.SupplierInvoiceNoteAttachedFiles.StandardAttribute.Predefined</name>
-		<right>
-			<name>View</name>
-			<value>false</value>
-		</right>
-		<right>
-			<name>Edit</name>
-			<value>false</value>
-		</right>
-	</object>
-	<object>
-		<name>Catalog.SupplierInvoiceNoteAttachedFiles.StandardAttribute.Ref</name>
-		<right>
-			<name>View</name>
-			<value>false</value>
-		</right>
-		<right>
-			<name>Edit</name>
-			<value>false</value>
-		</right>
-	</object>
-	<object>
-		<name>Catalog.SupplierInvoiceNoteAttachedFiles.StandardAttribute.DeletionMark</name>
-		<right>
-			<name>View</name>
-			<value>false</value>
-		</right>
-		<right>
-			<name>Edit</name>
-			<value>false</value>
-		</right>
-	</object>
-	<object>
-		<name>Catalog.SupplierInvoiceNoteAttachedFiles.StandardAttribute.IsFolder</name>
-		<right>
-			<name>View</name>
-			<value>false</value>
-		</right>
-		<right>
-			<name>Edit</name>
-			<value>false</value>
-		</right>
-	</object>
-	<object>
-		<name>Catalog.SupplierInvoiceNoteAttachedFiles.StandardAttribute.Owner</name>
-		<right>
-			<name>View</name>
-			<value>false</value>
-		</right>
-		<right>
-			<name>Edit</name>
-			<value>false</value>
-		</right>
-	</object>
-	<object>
-		<name>Catalog.SupplierInvoiceNoteAttachedFiles.StandardAttribute.Parent</name>
-		<right>
-			<name>View</name>
-			<value>false</value>
-		</right>
-		<right>
-			<name>Edit</name>
-			<value>false</value>
-		</right>
-	</object>
-	<object>
-		<name>Catalog.SupplierInvoiceNoteAttachedFiles.StandardAttribute.Description</name>
-		<right>
-			<name>View</name>
-			<value>false</value>
-		</right>
-		<right>
-			<name>Edit</name>
-			<value>false</value>
-		</right>
-	</object>
-	<object>
-		<name>Catalog.SupplierInvoiceNoteAttachedFiles.StandardAttribute.Code</name>
-		<right>
-			<name>View</name>
-			<value>false</value>
-		</right>
-		<right>
-			<name>Edit</name>
-			<value>false</value>
-		</right>
-	</object>
-	<object>
 		<name>Document.SupplierInvoice.TabularSection.Inventory.Attribute.Content</name>
 		<right>
 			<name>View</name>
@@ -87727,17 +85545,6 @@
 	</object>
 	<object>
 		<name>InformationRegister.CalendarSchedules.Dimension.Calendar</name>
-		<right>
-			<name>View</name>
-			<value>false</value>
-		</right>
-		<right>
-			<name>Edit</name>
-			<value>false</value>
-		</right>
-	</object>
-	<object>
-		<name>Document.CustomerInvoiceNote.TabularSection.Inventory.Attribute.VATAmount</name>
 		<right>
 			<name>View</name>
 			<value>false</value>

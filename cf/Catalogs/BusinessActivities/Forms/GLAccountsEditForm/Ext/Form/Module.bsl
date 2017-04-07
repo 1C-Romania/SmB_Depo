@@ -141,17 +141,3 @@ Procedure NotifyAccountChange()
 	Notify("ActivityAccountsChanged", ParameterStructure);
 	
 EndProcedure
-
-
-
-
-
-
-
-
-
-
-
-
-
-

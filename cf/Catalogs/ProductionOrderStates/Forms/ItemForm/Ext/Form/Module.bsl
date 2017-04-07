@@ -79,17 +79,3 @@ EndProcedure // AfterWrite()
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-

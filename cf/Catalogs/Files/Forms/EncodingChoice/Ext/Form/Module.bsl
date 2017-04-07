@@ -323,17 +323,3 @@ Function GetEncodingsFullList()
 EndFunction
 
 #EndRegion
-
-
-
-
-
-
-
-
-
-
-
-
-
-

@@ -141,7 +141,7 @@ Procedure SaveCertificate(Notification, Certificate, FileDescriptionWithoutExten
 	Context.Insert("FileDescriptionWithoutExtension", FileDescriptionWithoutExtension);
 	Context.Insert("CertificateAddress",      Undefined);
 	
-	CommonUseClient.ShowQuestionAboutFileOperationsExtensionSetting(
+	CommonUseClient.ShowFileSystemExtensionInstallationQuestion(
 		New NotifyDescription("SaveCertificateAfterExpansionSetting", ThisObject, Context));
 	
 EndProcedure
@@ -254,7 +254,7 @@ Procedure SaveCertificateQuery(Notification, CertificateQuery, FileDescriptionWi
 	Context.Insert("CertificateQuery",    CertificateQuery);
 	Context.Insert("FileDescriptionWithoutExtension", FileDescriptionWithoutExtension);
 	
-	CommonUseClient.ShowQuestionAboutFileOperationsExtensionSetting(
+	CommonUseClient.ShowFileSystemExtensionInstallationQuestion(
 		New NotifyDescription("SaveCertificateQueryAfterSettingExpansion", ThisObject, Context));
 	
 EndProcedure
@@ -1944,7 +1944,7 @@ Procedure SaveDataWithSignatureAfterSavingDataFile(Result, Context) Export
 		CommonUseClientServer.SplitFullFileName(Context.FullFileName));
 	
 	If ValueIsFilled(Context.DataFileNameContent.Path) Then
-		CommonUseClient.ShowQuestionAboutFileOperationsExtensionSetting(New NotifyDescription(
+		CommonUseClient.ShowFileSystemExtensionInstallationQuestion(New NotifyDescription(
 			"SaveDataWithSignatureAfterFileWorkExtensionConnection", ThisObject, Context));
 	Else
 		SaveDataWithSignatureAfterFileWorkExtensionConnection(False, Context);
@@ -2198,7 +2198,7 @@ Procedure SetExtensionAfterWorkWithCryptographyExtansionConnectionCheck(Attached
 		Return;
 	EndIf;
 	
-	CommonUseClient.ShowQuestionAboutFileOperationsExtensionSetting(
+	CommonUseClient.ShowFileSystemExtensionInstallationQuestion(
 		New NotifyDescription("SetExtensionAfterFileOperationsExtensionConnection", ThisObject, Context),
 		NStr("en='Before you set decryption to work with a digital
 		|signature and encrytion you should set an extension to work with files.';ru='Перед установкой расширения для работы

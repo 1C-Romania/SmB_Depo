@@ -141,17 +141,3 @@ Procedure SynchronizationModeCompanyOnValueChange()
 	;
 	
 EndProcedure
-
-
-
-
-
-
-
-
-
-
-
-
-
-

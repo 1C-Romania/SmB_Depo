@@ -207,17 +207,3 @@ Function SettingDetails(Object, Setup, Value)
 EndFunction
 
 #EndRegion
-
-
-
-
-
-
-
-
-
-
-
-
-
-

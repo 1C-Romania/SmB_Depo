@@ -6,7 +6,6 @@
 //
 Function PrintForm(ObjectsArray, PrintObjects)
 	
-
 EndFunction // PrintForm()
 
 // Generate printed forms of objects
@@ -22,7 +21,6 @@ EndFunction // PrintForm()
 //
 Procedure Print(ObjectsArray, PrintParameters, PrintFormsCollection, PrintObjects, OutputParameters) Export
 	
-	
 EndProcedure
 
 // Fills in the list of printing commands.
@@ -31,8 +29,7 @@ EndProcedure
 //   PrintCommands - ValueTable - see fields' content in the PrintManagement.CreatePrintCommandsCollection function.
 //
 Procedure AddPrintCommands(PrintCommands) Export
-	
-	
+
 EndProcedure
 
 #EndRegion

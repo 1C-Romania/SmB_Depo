@@ -36,13 +36,6 @@ Procedure OnCreateAtServer(Cancel, StandardProcessing)
 		EDKind       = EDAttributes.EDKind;
 	EndIf;
 	
-	If ElectronicDocument.EDKind = Enums.EDKinds.CustomerInvoiceNote
-		OR ElectronicDocument.EDKind = Enums.EDKinds.CorrectiveInvoiceNote Then
-		
-		CloseOnClient = True;
-		Return;
-	EndIf;
-	
 	Counterparty = ElectronicDocument.Counterparty;
 	
 	ReadCounterpartyProductsAndServicesServer();
@@ -389,20 +382,6 @@ Procedure WriteCounterpartyProductsAndServicesServer(Cancel = False)
 	EndIf;
 	
 EndProcedure
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 

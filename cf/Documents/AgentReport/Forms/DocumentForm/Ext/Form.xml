@@ -95,7 +95,6 @@
 		<Event name="NotificationProcessing">NotificationProcessing</Event>
 		<Event name="OnReadAtServer">OnReadAtServer</Event>
 		<Event name="OnOpen">OnOpen</Event>
-		<Event name="BeforeWrite">BeforeWrite</Event>
 		<Event name="BeforeWriteAtServer">BeforeWriteAtServer</Event>
 		<Event name="OnCreateAtServer">OnCreateAtServer</Event>
 		<Event name="OnClose">OnClose</Event>
@@ -169,16 +168,6 @@
 								<Event name="StartChoice">ContractStartChoice</Event>
 							</Events>
 						</InputField>
-						<CheckBoxField name="MakeOutInvoicesCollective" id="311">
-							<DataPath>Object.MakeOutInvoicesCollective</DataPath>
-							<TitleLocation>Right</TitleLocation>
-							<CheckBoxType>Auto</CheckBoxType>
-							<ContextMenu name="MakeOutInvoicesCollectiveContextMenu" id="312"/>
-							<ExtendedTooltip name="MakeOutInvoicesCollectiveExtendedTooltip" id="313"/>
-							<Events>
-								<Event name="OnChange">MakeOutInvoicesCollectiveOnChange</Event>
-							</Events>
-						</CheckBoxField>
 					</ChildItems>
 				</UsualGroup>
 				<UsualGroup name="RightColumn" id="11">
@@ -407,27 +396,6 @@
 									<Width>10</Width>
 									<ContextMenu name="CustomersTotalContextMenu" id="129"/>
 									<ExtendedTooltip name="CustomersTotalExtendedTooltip" id="160"/>
-								</InputField>
-								<CheckBoxField name="BuyersCustomerInvoiceNote" id="130">
-									<DataPath>Object.Customers.CustomerInvoiceNoteIssued</DataPath>
-									<EditMode>EnterOnInput</EditMode>
-									<CheckBoxType>Auto</CheckBoxType>
-									<ContextMenu name="BuyersCustomerInvoiceNoteContextMenu" id="131"/>
-									<ExtendedTooltip name="BuyersCustomerInvoiceNoteExtendedTooltip" id="161"/>
-								</CheckBoxField>
-								<InputField name="BuyersDateInvoice" id="132">
-									<DataPath>Object.Customers.InvoiceDate</DataPath>
-									<EditMode>EnterOnInput</EditMode>
-									<Width>10</Width>
-									<HorizontalStretch>false</HorizontalStretch>
-									<ContextMenu name="CustomersInvoiceNoteDateContextMenu" id="133"/>
-									<ExtendedTooltip name="CustomersInvoiceNoteDateExtendedTooltip" id="162"/>
-								</InputField>
-								<InputField name="CustomersInvoiceNote" id="134">
-									<DataPath>Object.Customers.CustomerInvoiceNote</DataPath>
-									<EditMode>EnterOnInput</EditMode>
-									<ContextMenu name="CustomersInvoiceNoteContextMenu" id="135"/>
-									<ExtendedTooltip name="CustomersInvoiceNoteExtendedTooltip" id="163"/>
 								</InputField>
 							</ChildItems>
 						</Table>
@@ -1090,15 +1058,6 @@
 			<ShowTitle>false</ShowTitle>
 			<ExtendedTooltip name="FooterExtendedTooltip" id="197"/>
 			<ChildItems>
-				<LabelField name="InvoiceText" id="117">
-					<DataPath>InvoiceText</DataPath>
-					<Hiperlink>true</Hiperlink>
-					<ContextMenu name="InvoiceTextContextMenu" id="118"/>
-					<ExtendedTooltip name="InvoiceTextExtendedTooltip" id="200"/>
-					<Events>
-						<Event name="Click">InvoiceNoteTextClick</Event>
-					</Events>
-				</LabelField>
 				<UsualGroup name="Totals" id="69">
 					<ToolTip>
 						<v8:item>
@@ -1328,7 +1287,12 @@
 				</v8:item>
 			</Title>
 			<Type>
-				<v8:TypeId>7df51630-43b5-4ce5-9c6d-05075e9da985</v8:TypeId>
+				<v8:Type>xs:decimal</v8:Type>
+				<v8:NumberQualifiers>
+					<v8:Digits>10</v8:Digits>
+					<v8:FractionDigits>0</v8:FractionDigits>
+					<v8:AllowedSign>Nonnegative</v8:AllowedSign>
+				</v8:NumberQualifiers>
 			</Type>
 		</Attribute>
 		<Attribute name="RateNationalCurrency" id="11">
@@ -1343,7 +1307,12 @@
 				</v8:item>
 			</Title>
 			<Type>
-				<v8:TypeId>68e59cac-a032-48d5-8f3f-dc6a3fc54686</v8:TypeId>
+				<v8:Type>xs:decimal</v8:Type>
+				<v8:NumberQualifiers>
+					<v8:Digits>10</v8:Digits>
+					<v8:FractionDigits>4</v8:FractionDigits>
+					<v8:AllowedSign>Nonnegative</v8:AllowedSign>
+				</v8:NumberQualifiers>
 			</Type>
 		</Attribute>
 		<Attribute name="NationalCurrency" id="12">
@@ -1404,25 +1373,6 @@
 			</Title>
 			<Type>
 				<v8:Type>xs:boolean</v8:Type>
-			</Type>
-		</Attribute>
-		<Attribute name="InvoiceText" id="17">
-			<Title>
-				<v8:item>
-					<v8:lang>en</v8:lang>
-					<v8:content>Customer invoice note</v8:content>
-				</v8:item>
-				<v8:item>
-					<v8:lang>ru</v8:lang>
-					<v8:content>Счет-фактура</v8:content>
-				</v8:item>
-			</Title>
-			<Type>
-				<v8:Type>xs:string</v8:Type>
-				<v8:StringQualifiers>
-					<v8:Length>0</v8:Length>
-					<v8:AllowedLength>Variable</v8:AllowedLength>
-				</v8:StringQualifiers>
 			</Type>
 		</Attribute>
 		<Attribute name="TabularSectionName" id="19">
@@ -1764,20 +1714,20 @@
 				<Index>1</Index>
 			</Item>
 			<Item>
-				<Command>Document.AgentReport.Command.InvoiceWithCCDCreateBasedOn</Command>
+				<Command>0:495018fb-e937-41e6-b3d3-c9d0746b1da8</Command>
 				<Type>Auto</Type>
 				<CommandGroup>FormCommandBarCreateBasedOn</CommandGroup>
 				<Index>3</Index>
 				<DefaultVisible>false</DefaultVisible>
 			</Item>
 			<Item>
-				<Command>Document.SupplierInvoiceNote.StandardCommand.CreateBasedOn</Command>
+				<Command>2:b346bd8f-c991-4541-af43-ea3d6d64a42e</Command>
 				<Type>Auto</Type>
 				<CommandGroup>FormCommandBarCreateBasedOn</CommandGroup>
 				<Index>4</Index>
 			</Item>
 			<Item>
-				<Command>Document.CustomerInvoiceNote.StandardCommand.CreateBasedOn</Command>
+				<Command>2:bc0f80db-2084-4ebc-8fab-df30c343112b</Command>
 				<Type>Auto</Type>
 				<CommandGroup>FormCommandBarCreateBasedOn</CommandGroup>
 				<Index>2</Index>

@@ -599,7 +599,7 @@ Function DefineUserEmailAddress() Export
 			Return "";
 		EndIf;
 		
-		Return Module.ObjectContactInformation(CurrentUser, PredefinedValue("Catalog.ContactInformationTypes.UserEmail"));
+		Return Module.ObjectContactInformation(CurrentUser, PredefinedValue("Catalog.ContactInformationKinds.UserEmail"));
 		
 	EndIf;
 	

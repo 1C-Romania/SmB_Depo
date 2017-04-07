@@ -306,17 +306,3 @@ Function SelectedRowsQuantity(TableName)
 	
 	Return Result;
 EndFunction
-
-
-
-
-
-
-
-
-
-
-
-
-
-

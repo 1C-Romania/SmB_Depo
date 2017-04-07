@@ -11,17 +11,3 @@ Procedure OnCreateAtServer(Cancel, StandardProcessing)
 	SmallBusinessClientServer.SetListFilterItem(List, "Ref", AllResources, True, DataCompositionComparisonType.NotEqual);
 	
 EndProcedure // OnCreateAtServer()
-
-
-
-
-
-
-
-
-
-
-
-
-
-

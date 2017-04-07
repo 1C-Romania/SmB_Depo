@@ -201,7 +201,7 @@ Function PrintForm(ObjectsArray, PrintObjects, TemplateName)
 			SpreadsheetDocument.Put(TemplateArea);
 			
 			TemplateArea = Template.GetArea("Customer");
-			TemplateArea.Parameters.RecipientPresentation = SmallBusinessServer.CompaniesDescriptionFull(InfoAboutCompany, "FullDescr,TIN,KPP,LegalAddress,PhoneNumbers,");
+			TemplateArea.Parameters.RecipientPresentation = SmallBusinessServer.CompaniesDescriptionFull(InfoAboutCompany, "FullDescr,TIN,LegalAddress,PhoneNumbers,");
 			SpreadsheetDocument.Put(TemplateArea);
 
 			TemplateArea = Template.GetArea("TableHeader");

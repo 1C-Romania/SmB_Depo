@@ -546,16 +546,3 @@ Procedure RecipientsVisibleSetupAtServer()
 EndProcedure
 
 #EndRegion
-
-
-
-
-
-
-
-
-
-
-
-
-

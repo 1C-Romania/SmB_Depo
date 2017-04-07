@@ -201,7 +201,7 @@ Function PrintForm(ObjectsArray, PrintObjects, TemplateName)
 			SpreadsheetDocument.Put(TemplateArea);
 			
 			TemplateArea = Template.GetArea("Customer");
-			TemplateArea.Parameters.RecipientPresentation = SmallBusinessServer.CompaniesDescriptionFull(InfoAboutCompany, "FullDescr,TIN,KPP,LegalAddress,PhoneNumbers,");
+			TemplateArea.Parameters.RecipientPresentation = SmallBusinessServer.CompaniesDescriptionFull(InfoAboutCompany, "FullDescr,TIN,LegalAddress,PhoneNumbers,");
 			SpreadsheetDocument.Put(TemplateArea);
 
 			TemplateArea = Template.GetArea("TableHeader");
@@ -284,7 +284,6 @@ Function PrintForm(ObjectsArray, PrintObjects, TemplateName)
 			
 			TemplateAreaHeader.Parameters.Fill(Header);
 			TemplateAreaHeader.Parameters.CompanyPresentation = SmallBusinessServer.CompaniesDescriptionFull(InfoAboutCompany);
-			TemplateAreaHeader.Parameters.CompanyByOKPO        = InfoAboutCompany.CodeByOKPO;
 			TemplateAreaHeader.Parameters.DocumentNumber           = DocumentNumber;
 	
 			SpreadsheetDocument.Put(TemplateAreaHeader);
@@ -453,7 +452,9 @@ Function PrintForm(ObjectsArray, PrintObjects, TemplateName)
 			SpreadsheetDocument.Put(TemplateArea);			
 			
 		EndIf;
+		
 		PrintManagement.SetDocumentPrintArea(SpreadsheetDocument, FirstLineNumber, PrintObjects, CurrentDocument);
+		
 	EndDo;
 	
 	SpreadsheetDocument.FitToPage = True;
@@ -476,15 +477,21 @@ EndFunction // PrintForm()
 Procedure Print(ObjectsArray, PrintParameters, PrintFormsCollection, PrintObjects, OutputParameters) Export
 	
 	If PrintManagement.NeedToPrintTemplate(PrintFormsCollection, "GoodsReceipt") Then
+		
 		PrintManagement.OutputSpreadsheetDocumentToCollection(PrintFormsCollection, "GoodsReceipt", "Purchase order receipt", PrintForm(ObjectsArray, PrintObjects, "GoodsReceipt"));
+		
 	EndIf;
 	
 	If PrintManagement.NeedToPrintTemplate(PrintFormsCollection, "M4") Then
+		
 		PrintManagement.OutputSpreadsheetDocumentToCollection(PrintFormsCollection, "M4", "M-4", PrintForm(ObjectsArray, PrintObjects, "M4"));
+		
 	EndIf;
 	
 	If PrintManagement.NeedToPrintTemplate(PrintFormsCollection, "MerchandiseFillingForm") Then
+		
 		PrintManagement.OutputSpreadsheetDocumentToCollection(PrintFormsCollection, "MerchandiseFillingForm", "Merchandise filling form", PrintForm(ObjectsArray, PrintObjects, "MerchandiseFillingForm"));
+		
 	EndIf;
 	
 	// parameters of sending printing forms by email
@@ -508,7 +515,7 @@ Procedure AddPrintCommands(PrintCommands) Export
 	
 	PrintCommand = PrintCommands.Add();
 	PrintCommand.ID = "GoodsReceipt";
-	PrintCommand.Presentation = NStr("en='Purchase order receipt (plain)';ru='Приходный ордер (плоский)'");
+	PrintCommand.Presentation = NStr("en='Purchase order receipt';ru='Приходный ордер'");
 	PrintCommand.FormsList = "DocumentForm,ListForm";
 	PrintCommand.CheckPostingBeforePrint = False;
 	PrintCommand.Order = 7;

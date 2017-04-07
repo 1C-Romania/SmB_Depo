@@ -412,17 +412,3 @@ Procedure CashRegistersChoice(Item, SelectedRow, Field, StandardProcessing)
 	EndIf;
 	
 EndProcedure
-
-
-
-
-
-
-
-
-
-
-
-
-
-

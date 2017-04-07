@@ -22,7 +22,7 @@
 		</right>
 	</object>
 	<object>
-		<name>Catalog.Counterparties.TabularSection.ContactInformation.Attribute.State</name>
+		<name>Catalog.Counterparties.TabularSection.ContactInformation.Attribute.Region</name>
 		<right>
 			<name>View</name>
 			<value>false</value>
@@ -253,13 +253,6 @@
 	</object>
 	<object>
 		<name>DataProcessor.Scheduler.Command.OpenJobScheduler</name>
-		<right>
-			<name>View</name>
-			<value>true</value>
-		</right>
-	</object>
-	<object>
-		<name>Document.CustomerOrder.Command.InvoiceWithCCDCreateBasedOn</name>
 		<right>
 			<name>View</name>
 			<value>true</value>
@@ -732,7 +725,7 @@
 		</right>
 	</object>
 	<object>
-		<name>Catalog.ContactPersons.Attribute.ConnectionRegistrationDate</name>
+		<name>Catalog.ContactPersons.Attribute.CreationDate</name>
 		<right>
 			<name>View</name>
 			<value>false</value>
@@ -859,18 +852,7 @@
 		</right>
 	</object>
 	<object>
-		<name>Catalog.Counterparties.TabularSection.ContactInformation.Attribute.PhoneNumberNoCodes</name>
-		<right>
-			<name>View</name>
-			<value>false</value>
-		</right>
-		<right>
-			<name>Edit</name>
-			<value>false</value>
-		</right>
-	</object>
-	<object>
-		<name>Catalog.Counterparties.Attribute.KPP</name>
+		<name>Catalog.Counterparties.TabularSection.ContactInformation.Attribute.PhoneNumberWithoutCodes</name>
 		<right>
 			<name>View</name>
 			<value>false</value>
@@ -978,17 +960,6 @@
 		</right>
 	</object>
 	<object>
-		<name>Catalog.ContactPersons.Attribute.Ind</name>
-		<right>
-			<name>View</name>
-			<value>false</value>
-		</right>
-		<right>
-			<name>Edit</name>
-			<value>false</value>
-		</right>
-	</object>
-	<object>
 		<name>DataProcessor.DocumentsByCounterparty.Command.CustomerOrderDocuments</name>
 		<right>
 			<name>View</name>
@@ -1089,7 +1060,7 @@
 		</right>
 	</object>
 	<object>
-		<name>Catalog.Counterparties.TabularSection.ContactInformation.Attribute.EMail_Address</name>
+		<name>Catalog.Counterparties.TabularSection.ContactInformation.Attribute.EmailAddress</name>
 		<right>
 			<name>View</name>
 			<value>false</value>
@@ -1112,17 +1083,6 @@
 	</object>
 	<object>
 		<name>Catalog.ContactPersons.TabularSection.ContactInformation.Attribute.Kind</name>
-		<right>
-			<name>View</name>
-			<value>false</value>
-		</right>
-		<right>
-			<name>Edit</name>
-			<value>false</value>
-		</right>
-	</object>
-	<object>
-		<name>Catalog.Counterparties.Attribute.CodeByOKPO</name>
 		<right>
 			<name>View</name>
 			<value>false</value>
@@ -1232,7 +1192,7 @@
 		</right>
 	</object>
 	<object>
-		<name>Catalog.ContactPersons.TabularSection.ContactPersonRoles.Attribute.ContactPersonRole</name>
+		<name>Catalog.ContactPersons.TabularSection.Roles.Attribute.Role</name>
 		<right>
 			<name>View</name>
 			<value>false</value>
@@ -1366,7 +1326,7 @@
 		</right>
 	</object>
 	<object>
-		<name>Catalog.ContactPersons.TabularSection.ContactInformation.Attribute.FieldsValues</name>
+		<name>Catalog.ContactPersons.TabularSection.ContactInformation.Attribute.FieldValues</name>
 		<right>
 			<name>View</name>
 			<value>false</value>
@@ -1388,7 +1348,7 @@
 		</right>
 	</object>
 	<object>
-		<name>Catalog.ContactPersons.TabularSection.ContactInformation.Attribute.EMail_Address</name>
+		<name>Catalog.ContactPersons.TabularSection.ContactInformation.Attribute.EmailAddress</name>
 		<right>
 			<name>View</name>
 			<value>false</value>
@@ -1548,7 +1508,7 @@ T1 ON T.Document.CustomerOrder = T1.Ref",
 		</right>
 	</object>
 	<object>
-		<name>Catalog.ContactPersons.TabularSection.ContactInformation.Attribute.PhoneNumberNoCodes</name>
+		<name>Catalog.ContactPersons.TabularSection.ContactInformation.Attribute.PhoneNumberWithoutCodes</name>
 		<right>
 			<name>View</name>
 			<value>false</value>
@@ -1559,7 +1519,7 @@ T1 ON T.Document.CustomerOrder = T1.Ref",
 		</right>
 	</object>
 	<object>
-		<name>Catalog.ContactPersons.TabularSection.ContactPersonRoles</name>
+		<name>Catalog.ContactPersons.TabularSection.Roles</name>
 		<right>
 			<name>View</name>
 			<value>false</value>
@@ -1570,18 +1530,7 @@ T1 ON T.Document.CustomerOrder = T1.Ref",
 		</right>
 	</object>
 	<object>
-		<name>Catalog.ContactPersons.Attribute.ConnectionStopDate</name>
-		<right>
-			<name>View</name>
-			<value>false</value>
-		</right>
-		<right>
-			<name>Edit</name>
-			<value>false</value>
-		</right>
-	</object>
-	<object>
-		<name>Catalog.Counterparties.Attribute.EMail_Address</name>
+		<name>Catalog.Counterparties.Attribute.Email</name>
 		<right>
 			<name>View</name>
 			<value>false</value>
@@ -1767,7 +1716,7 @@ T1 ON T.Document.CustomerOrder = T1.Ref",
 		</right>
 	</object>
 	<object>
-		<name>Catalog.Counterparties.TabularSection.ContactInformation.Attribute.FieldsValues</name>
+		<name>Catalog.Counterparties.TabularSection.ContactInformation.Attribute.FieldValues</name>
 		<right>
 			<name>View</name>
 			<value>false</value>
@@ -1950,7 +1899,7 @@ T1 ON T.Document.CustomerOrder = T1.Ref",
 		</right>
 	</object>
 	<object>
-		<name>Catalog.ContactPersons.TabularSection.ContactInformation.Attribute.State</name>
+		<name>Catalog.ContactPersons.TabularSection.ContactInformation.Attribute.Region</name>
 		<right>
 			<name>View</name>
 			<value>false</value>

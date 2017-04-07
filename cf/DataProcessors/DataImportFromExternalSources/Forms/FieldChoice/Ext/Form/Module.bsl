@@ -133,16 +133,3 @@ Procedure ImportFiledsTableChoice(Item, SelectedRow, Field, StandardProcessing)
 EndProcedure
 
 #EndRegion
-
-
-
-
-
-
-
-
-
-
-
-
-

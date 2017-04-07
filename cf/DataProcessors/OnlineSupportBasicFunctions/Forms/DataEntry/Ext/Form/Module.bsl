@@ -82,17 +82,3 @@ Function XMLValueString(Val Value) Export
 EndFunction
 
 #EndRegion
-
-
-
-
-
-
-
-
-
-
-
-
-
-

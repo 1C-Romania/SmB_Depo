@@ -7,17 +7,3 @@ Procedure CounterpartyOnChange(Item)
 	SmallBusinessClientServer.SetListFilterItem(List, "Owner", Counterparty, ValueIsFilled(Counterparty));
 	
 EndProcedure // CounterpartyOnChange()
-
-
-
-
-
-
-
-
-
-
-
-
-
-

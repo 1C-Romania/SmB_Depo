@@ -45,7 +45,7 @@
 	</column>
 	
 	<column>
-		<Name xsi:type="xs:string">DescriptionFull</Name>
+		<Name xsi:type="xs:string">LongDescription</Name>
 		<ValueType>
 			<Type>xs:string</Type>
 			<StringQualifiers>
@@ -56,7 +56,7 @@
 	</column>
 
 	<column>
-		<Name xsi:type="xs:string">Irrelevant</Name>
+		<Name xsi:type="xs:string">Obsolete</Name>
 		<ValueType>
 			<Type>xs:boolean</Type>
 		</ValueType>
@@ -69,6 +69,34 @@
 		<column>Description</column>
 	</index>
 	
+	<row>
+		<Value>ABKHAZIA</Value>
+		<Value>AB</Value>
+		<Value>ABH</Value>
+		<Value>895</Value>
+		<Value>Republic of Abkhazia</Value>
+	</row>
+	<row>
+		<Value>AUSTRALIA</Value>
+		<Value>AU</Value>
+		<Value>AUS</Value>
+		<Value>036</Value>
+		<Value>Commonwealth of Australia</Value>
+	</row>
+	<row>
+		<Value>AUSTRIA</Value>
+		<Value>AT</Value>
+		<Value>AUT</Value>
+		<Value>040</Value>
+		<Value>Republic of Austria</Value>
+	</row>
+	<row>
+		<Value>AZERBAIJAN</Value>
+		<Value>AZ</Value>
+		<Value>AZE</Value>
+		<Value>031</Value>
+		<Value>Republic of Azerbaijan</Value>
+	</row>
 	<row>
 		<Value>AFGHANISTAN</Value>
 		<Value>AF</Value>
@@ -148,27 +176,6 @@
 		<Value>AW</Value>
 		<Value>ABW</Value>
 		<Value>533</Value>
-	</row>
-	<row>
-		<Value>AUSTRALIA</Value>
-		<Value>AU</Value>
-		<Value>AUS</Value>
-		<Value>036</Value>
-		<Value>Commonwealth of Australia</Value>
-	</row>
-	<row>
-		<Value>AUSTRIA</Value>
-		<Value>AT</Value>
-		<Value>AUT</Value>
-		<Value>040</Value>
-		<Value>Republic of Austria</Value>
-	</row>
-	<row>
-		<Value>AZERBAIJAN</Value>
-		<Value>AZ</Value>
-		<Value>AZE</Value>
-		<Value>031</Value>
-		<Value>Republic of Azerbaijan</Value>
 	</row>
 	<row>
 		<Value>BAHAMAS</Value>
@@ -1622,6 +1629,7 @@
 		<Value>AE</Value>
 		<Value>ARE</Value>
 		<Value>784</Value>
+		<Value>United Arab Emirates</Value>
 	</row>
 	<row>
 		<Value>UNITED KINGDOM</Value>
@@ -1631,7 +1639,7 @@
 		<Value>United Kingdom of Great Britain and Northern Ireland</Value>
 	</row>
 	<row>
-		<Value>UNITED SATATES</Value>
+		<Value>UNITED STATES</Value>
 		<Value>US</Value>
 		<Value>USA</Value>
 		<Value>840</Value>

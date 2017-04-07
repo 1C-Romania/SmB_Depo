@@ -95,16 +95,3 @@ Procedure BackgroundJobUpdateOnServer(JobParameters)
 EndProcedure
 
 #EndRegion
-
-
-
-
-
-
-
-
-
-
-
-
-

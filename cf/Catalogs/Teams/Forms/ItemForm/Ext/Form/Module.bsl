@@ -1,11 +1,12 @@
-﻿#Region FormEventsHandlers
+﻿
+#Region FormEventHandlers
 
 &AtServer
 Procedure OnCreateAtServer(Cancel, StandardProcessing)
 	
 	If Not Constants.FunctionalOptionUseJobSharing.Get() Then
 		
-		If Items.Find("ContentEmployeeCode") <> Undefined Then	
+		If Items.Find("ContentEmployeeCode") <> Undefined Then		
 			
 			Items.ContentEmployeeCode.Visible = False;		
 			

@@ -36,20 +36,6 @@ Function SurnameInitialsOfIndividual(FullDescr, Surname = " ", Name = " ", Patro
 	
 EndFunction
 
-// Determines whether an actual e-document Customer invoice note exists for the passed owner.
-//
-// Parameters
-//  RefToOwner - DocumentRef, - electronic document owner
-//
-// Returns:
-//  Boolean - True - whether an actual document exists, otherwise, False.
-//
-Function IsWorkingESF(RefToOwner) Export
-	
-	Return ElectronicDocumentsServiceCallServer.IsWorkingESF(RefToOwner);
-	
-EndFunction
-
 // Receives the value of the functional option.
 //
 // Parameters:
@@ -99,52 +85,6 @@ Function GetTextOfEDStateByOwners(RefsArrayToOwners, PlaceIntoStructure = False)
 	
 EndFunction
 
-// Receives an issue date of the electronic customer invoice note.
-//
-// Parameters:
-// CustomerInvoiceNote - DocumentRef - ref to an outgoing customer invoice note in the applied solution.
-//
-// Returns:
-//  DateOfExtension - Date - electronic customer invoice note date.
-//
-Function DateOfExtensionInvoice(CustomerInvoiceNote) Export
-	
-	DateOfExtension = Undefined;
-	
-	Query = New Query;
-	Query.Text =
-	"SELECT
-	|	EDStates.ElectronicDocument
-	|FROM
-	|	InformationRegister.EDStates AS EDStates
-	|WHERE
-	|	EDStates.ObjectReference = &ObjectReference";
-	Query.SetParameter("ObjectReference", CustomerInvoiceNote);
-	
-	Result = Query.Execute().Select();
-	Result.Next();
-	
-	If ValueIsFilled(Result.ElectronicDocument) Then
-		Query = New Query;
-		Query.Text =
-		"SELECT
-		|	EDAttachedFiles.SenderDocumentDate
-		|FROM
-		|	Catalog.EDAttachedFiles AS EDAttachedFiles
-		|WHERE
-		|	EDAttachedFiles.ElectronicDocumentOwner = &ElectronicDocumentOwner
-		|	AND EDAttachedFiles.VersionPointTypeED = VALUE(Enum.EDVersionElementTypes.EIRDC)";
-		Query.SetParameter("ElectronicDocumentOwner", Result.ElectronicDocument);
-		
-		Result = Query.Execute().Select();
-		Result.Next();
-		DateOfExtension = Result.SenderDocumentDate;
-	EndIf;
-	
-	Return DateOfExtension
-	
-EndFunction
-
 ////////////////////////////////////////////////////////////////////////////////
 // Processing the electronic documents
 
@@ -164,8 +104,6 @@ Function GetTextOfElectronicDocumentsQueryOnSigning(ForDesktop = True, AddFilter
 		|	EDAttachedFiles.SenderDocumentDate,
 		|	CASE
 		|		WHEN EDAttachedFiles.EDKind = VALUE(Enum.EDKinds.ProductsDirectory)
-		|				OR EDAttachedFiles.EDKind = VALUE(Enum.EDKinds.CustomerInvoiceNote)
-		|				OR EDAttachedFiles.EDKind = VALUE(Enum.EDKinds.CorrectiveInvoiceNote)
 		|				OR EDAttachedFiles.EDKind = VALUE(Enum.EDKinds.NotificationAboutReception)
 		|				OR EDAttachedFiles.EDKind = VALUE(Enum.EDKinds.Confirmation)
 		|				OR EDAttachedFiles.EDKind = VALUE(Enum.EDKinds.NotificationAboutClarification)
@@ -227,8 +165,6 @@ Function GetTextOfElectronicDocumentsQueryOnSigning(ForDesktop = True, AddFilter
 		|	ServiceED.SenderDocumentDate,
 		|	CASE
 		|		WHEN ServiceED.EDKind = VALUE(Enum.EDKinds.ProductsDirectory)
-		|				OR ServiceED.EDKind = VALUE(Enum.EDKinds.CustomerInvoiceNote)
-		|				OR ServiceED.EDKind = VALUE(Enum.EDKinds.CorrectiveInvoiceNote)
 		|				OR ServiceED.EDKind = VALUE(Enum.EDKinds.NotificationAboutReception)
 		|				OR ServiceED.EDKind = VALUE(Enum.EDKinds.Confirmation)
 		|				OR ServiceED.EDKind = VALUE(Enum.EDKinds.NotificationAboutClarification)
@@ -417,17 +353,6 @@ Function GetMapIBDocumentsElectronicDocumentsKits(DocumentsIB, UUID) Export
 		FileData = ElectronicDocumentsService.GetFileData(Result.AttachedFile,
 			UUID);
 			
-		// Edit attachment file name for CORESF - remove after dimension check in the name 150.
-		If Result.AttachedFile.EDKind = Enums.EDKinds.CorrectiveInvoiceNote Then
-			StringAtID = Result.AttachedFile.UniqueId;
-			Description = FileData.Description;
-			UIDPosition = Find(Description, "_" + Left(StringAtID, 35));
-			If UIDPosition > 0 Then
-				FileData.Description = Left(Description, UIDPosition) + StringAtID;
-				FileData.FileName = FileData.Description + "." + FileData.Extension;
-			EndIf;
-		EndIf;
-		
 		EDParametersStructure = New Structure;
 		EDParametersStructure.Insert("FileType", "ExportFile");
 		EDParametersStructure.Insert("FileName", FileData.FileName);
@@ -465,8 +390,6 @@ EndFunction
 // Generates ED info that will be shown in a
 // unified list of documents that are submitted to FTS on demand. E-documents exchanges must be
 // complete, they should not be marked for deletion and to be of the following ED kinds:
-// CustomerInvoiceNote
-// CorrectiveInvoiceNote
 // TORG12Seller
 // ActPerformer
 //
@@ -480,8 +403,6 @@ EndFunction
 //          file owner - String, an e-document kind
 //                       to be converted into a string presentation of a particular format. Possible values:
 //                       "AcceptanceCertificate"
-//                       "CustomerInvoiceNote"
-//                       "CorrectiveInvoiceNote"
 //                       "GoodsConsignmentTORG12"
 //    EDArray - Array, array of references to the electronic documents.
 //             If the array is filled out, it is required to fill in ED properties from the array.
@@ -497,10 +418,6 @@ Procedure GetEDPropertiesForDocumentsSubmittedToMagazineBroadcastsOnFTS(EDProper
 	               |	CASE
 	               |		WHEN ISNULL(EDAttachedFilesOwners.EDKind, EDAttachedFiles.EDKind) = VALUE(Enum.EDKinds.ActPerformer)
 	               |			THEN ""AcceptanceCertificate""
-	               |		WHEN ISNULL(EDAttachedFilesOwners.EDKind, EDAttachedFiles.EDKind) = VALUE(Enum.EDKinds.CorrectiveInvoiceNote)
-	               |			THEN ""CorrectiveInvoiceNote""
-	               |		WHEN ISNULL(EDAttachedFilesOwners.EDKind, EDAttachedFiles.EDKind) = VALUE(Enum.EDKinds.CustomerInvoiceNote)
-	               |			THEN ""CustomerInvoiceNote""
 	               |		WHEN ISNULL(EDAttachedFilesOwners.EDKind, EDAttachedFiles.EDKind) = VALUE(Enum.EDKinds.TORG12Seller)
 	               |			THEN ""TORG12DeliveryNote""
 	               |		ELSE """"
@@ -524,10 +441,8 @@ Procedure GetEDPropertiesForDocumentsSubmittedToMagazineBroadcastsOnFTS(EDProper
 	EndIf;
 	
 	EDKindsArray = New Array;
-	EDKindsArray.Add(Enums.EDKinds.CustomerInvoiceNote);
 	EDKindsArray.Add(Enums.EDKinds.ActPerformer);
 	EDKindsArray.Add(Enums.EDKinds.TORG12Seller);
-	EDKindsArray.Add(Enums.EDKinds.CorrectiveInvoiceNote);
 	Query.SetParameter("EDKinds", EDKindsArray);
 	Query.Text = QueryText;
 	
@@ -809,7 +724,6 @@ Procedure GetBankStatementDataTextFormat(ED, LinksToRepository, AccountsArray) E
 			PayerTIN = ElectronicDocumentsInternal.GetParsedTreeStringAttributeValue(
 																ParseTree, TSRow, "PayerTIN");
 			Text.AddLine("PayerTIN=" + PayerTIN);
-			AddNotBlankParameter(ParseTree, TSRow, Text, "PayerKPP");
 			
 			PayerIndirectPayments = ElectronicDocumentsInternal.GetParsedTreeStringAttributeValue(
 																ParseTree, TSRow, "PayerIndirectPayments");
@@ -842,7 +756,6 @@ Procedure GetBankStatementDataTextFormat(ED, LinksToRepository, AccountsArray) E
 																					TSRow,
 																					"PayeeTIN");
 			Text.AddLine("PayeeTIN=" + PayeeTIN);
-			AddNotBlankParameter(ParseTree, TSRow, Text, "PayeeKPP");
 			
 			RecipientIndirectSettlements = ElectronicDocumentsInternal.GetParsedTreeStringAttributeValue(
 																ParseTree, TSRow, "RecipientIndirectSettlements");

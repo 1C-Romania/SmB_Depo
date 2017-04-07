@@ -272,14 +272,6 @@ Procedure SendApplication(Command)
 		Message.Message();
 	EndIf;
 	
-	If IsBlankString(KPP) AND LegalEntityIndividual = "LegalEntity" Then
-		Error    = True;
-		Message = New UserMessage;
-		Message.Text = NStr("en='The KPP field is not filled in';ru='Не заполнено поле ""КПП""'");
-		Message.Field = "KPP";
-		Message.Message();
-	EndIf;
-	
 	If IsBlankString(OGRN) AND LegalEntityIndividual = "LegalEntity" Then
 		Error    = True;
 		Message = New UserMessage;
@@ -376,25 +368,6 @@ Procedure SendApplication(Command)
 		EndTry;
 	EndIf;
 	
-	If Not IsBlankString(KPP) Then
-		Try
-			KPPNumber = Number(TrimAll(KPP));
-			If StrLen(TrimAll(KPP)) <> 9 Then
-				Error    = True;
-				Message = New UserMessage;
-				Message.Text = NStr("en='KPP should contain 9 digits';ru='""КПП"" должен содержать 9 цифр'");
-				Message.Field = "KPP";
-				Message.Message();
-			EndIf;
-		Except
-			Error    = True;
-			Message = New UserMessage;
-			Message.Text = NStr("en='Invalid characters are used in KPP';ru='В ""КПП"" использованы недопустимые символы'");
-			Message.Field = "KPP";
-			Message.Message();
-		EndTry;
-	EndIf;
-	
 	If Not IsBlankString(OGRN) Then
 		Try
 			OGRNNumber = Number(TrimAll(OGRN));
@@ -461,7 +434,6 @@ Procedure SendApplication(Command)
 	QueryParameters.Add(New Structure("Name, Value", "addressphoneED"    , Phone));
 	QueryParameters.Add(New Structure("Name, Value", "agencyED"          , Company));
 	QueryParameters.Add(New Structure("Name, Value", "tinED"             , TIN));
-	QueryParameters.Add(New Structure("Name, Value", "kppED"             , KPP));
 	QueryParameters.Add(New Structure("Name, Value", "ogrnED"            , OGRN));
 	QueryParameters.Add(New Structure("Name, Value", "codeimnsED"        , TaxAuthorityCode));
 	QueryParameters.Add(New Structure("Name, Value", "lastnameED"        , Surname));
@@ -546,7 +518,6 @@ Procedure UpdateCompanyInformation()
 	Phone                  = Parameters.addressphoneED;
 	Company              = Parameters.agencyED;
 	TIN                      = Parameters.tinED;
-	KPP                      = Parameters.kppED;
 	OGRN                     = Parameters.ogrnED;
 	TaxAuthorityCode      = Parameters.codeimnsED;
 	Surname                  = Parameters.lastnameED;
@@ -572,14 +543,9 @@ EndProcedure
 Procedure SettingsByLegalEntityIndividual()
 	
 	If LegalEntityIndividual = "LegalEntity" Then
-		Items.KPP.Enabled = True;
-		Items.KPP.AutoMarkIncomplete = True;
 		Items.OGRN.AutoMarkIncomplete = True;
 	Else
-		Items.KPP.Enabled = False;
-		Items.KPP.AutoMarkIncomplete  = False;
 		Items.OGRN.AutoMarkIncomplete = False;
-		KPP = "";
 	EndIf;
 	
 EndProcedure
@@ -774,17 +740,3 @@ Function MessageParametersToTechicalSupport()
 EndFunction
 
 #EndRegion
-
-
-
-
-
-
-
-
-
-
-
-
-
-

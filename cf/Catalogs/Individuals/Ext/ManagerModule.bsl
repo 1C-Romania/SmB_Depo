@@ -1,7 +1,6 @@
-﻿
-#If Server Or ThickClientOrdinaryApplication Or ExternalConnection Then
+﻿#If Server Or ThickClientOrdinaryApplication Or ExternalConnection Then
 
-#Region ServiceProceduresAndFunctions
+#Region Interface
 
 // The procedure fills in the array of individuals persons
 //
@@ -67,24 +66,6 @@ Function IndividualDocumentByType(Period, Individual, DocumentKind = Undefined) 
 	Return IndividualsDocuments;
 	
 EndFunction // DocumentIndividualsByKind()
-
-#Region PrintInterface
-
-// Fills in the list of printing commands.
-// 
-// Parameters:
-//   PrintCommands - ValueTable - see fields' content in the PrintManagement.CreatePrintCommandsCollection function.
-//
-Procedure AddPrintCommands(PrintCommands) Export
-	
-	If CommonUse.SubsystemExists("StandardSubsystems.PersonalDataProtection") Then
-		PersonalDataProtectionModule = CommonUse.CommonModule("PersonalDataProtection");
-		PersonalDataProtectionModule.AddConsentToPersonalDataProcessingPrintCommand(PrintCommands);
-	EndIf;
-	
-EndProcedure
-
-#EndRegion
 
 #EndRegion
 

@@ -125,17 +125,3 @@ Procedure ProcessChoiceInCurrencyList(StandardProcessing = Undefined)
 EndProcedure
 
 #EndRegion
-
-
-
-
-
-
-
-
-
-
-
-
-
-

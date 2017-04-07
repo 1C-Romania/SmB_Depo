@@ -121,14 +121,7 @@ Function MessageParametersToTechicalSupport()
 	Result.Insert("FromWhom"     , Email);
 	
 	MessageText = StringFunctionsClientServer.SubstituteParametersInString(
-		NStr("en=""Hello! 
-		|I can't recover my password to connect InternetSupport. 
-		|Please help me to solve the problem. 
-		|Login: %1. 
-		|Email: %2. 
-		|%TechnicalParameters% 
-		|----------------------------------------------- 
-		|Yours sincerely, ."";ru='Здравствуйте!
+		NStr("en=""Hello! I can't recover my password to connect InternetSupport. Please help me to solve the problem. Login: %1. Email: %2. %TechnicalParameters% ----------------------------------------------- Yours sincerely, ."";ru='Здравствуйте!
 		|У меня не получается восстановить свой пароль для подключения
 		|Интернет-поддержки.
 		|Прошу помочь разобраться с проблемой.
@@ -149,16 +142,3 @@ Function MessageParametersToTechicalSupport()
 EndFunction
 
 #EndRegion
-
-
-
-
-
-
-
-
-
-
-
-
-

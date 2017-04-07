@@ -108,7 +108,7 @@
 				<xr:Item xsi:type="xr:MDObjectRef">Role.SystemAdministrator</xr:Item>
 			</DefaultRoles>
 			<Vendor>1C Company</Vendor>
-			<Version>1.5.3.38</Version>
+			<Version>1.5.3.44</Version>
 			<UpdateCatalogAddress>https://1c-dn.com/user/profile/</UpdateCatalogAddress>
 			<IncludeHelpInContents>true</IncludeHelpInContents>
 			<UseManagedFormInOrdinaryApplication>true</UseManagedFormInOrdinaryApplication>
@@ -525,10 +525,10 @@
 			<Language>Spanish</Language>
 			<Language>Swedish</Language>
 			<Language>Turkish</Language>
+			<Subsystem>CRM</Subsystem>
 			<Subsystem>Analysis</Subsystem>
 			<Subsystem>AttachedFilesService</Subsystem>
 			<Subsystem>Finances</Subsystem>
-			<Subsystem>CounterpartiesCheck</Subsystem>
 			<Subsystem>DataImportFromExternalSources</Subsystem>
 			<Subsystem>ElectronicInteraction</Subsystem>
 			<Subsystem>Enterprise</Subsystem>
@@ -565,26 +565,22 @@
 			<StyleItem>CellBorder</StyleItem>
 			<StyleItem>CompletedJob</StyleItem>
 			<StyleItem>ContactInformationWithEditingInDialogColor</StyleItem>
-			<StyleItem>CounterpartyColorOutsideRegistry</StyleItem>
-			<StyleItem>CounterpartyColorTerminatedActivities</StyleItem>
-			<StyleItem>CurrentCounterpartyColor</StyleItem>
 			<StyleItem>CurrentTimeInterval</StyleItem>
 			<StyleItem>DeletedAdditionalAttributeFont</StyleItem>
 			<StyleItem>DeletedAttributeBackground</StyleItem>
 			<StyleItem>DeletedAttributeTitleBackground</StyleItem>
 			<StyleItem>DeniedAccessRight</StyleItem>
 			<StyleItem>ErrorCounterpartyHighlightColor</StyleItem>
-			<StyleItem>EventRefusal</StyleItem>
 			<StyleItem>ExplanationText</StyleItem>
 			<StyleItem>ExplanationTextError</StyleItem>
 			<StyleItem>FileLockedByAnotherUser</StyleItem>
 			<StyleItem>FileLockedByCurrentUser</StyleItem>
 			<StyleItem>FilterActiveValueBackground</StyleItem>
 			<StyleItem>FilterOptionsPanelBackground</StyleItem>
-			<StyleItem>FTSServiceTestModeBackgroundColor</StyleItem>
+			<StyleItem>FontRightFilterPanel</StyleItem>
 			<StyleItem>HiddenReportOptionColor</StyleItem>
 			<StyleItem>InaccessibleDataColor</StyleItem>
-			<StyleItem>ManagingFieldBackgroundColor</StyleItem>
+			<StyleItem>MasterFieldBackground</StyleItem>
 			<StyleItem>MinorInscriptionText</StyleItem>
 			<StyleItem>ModifiedAttributeValueBackground</StyleItem>
 			<StyleItem>ModifiedAttributeValueColor</StyleItem>
@@ -602,6 +598,7 @@
 			<StyleItem>ScheduleDateChangedBackground</StyleItem>
 			<StyleItem>ScheduledTime</StyleItem>
 			<StyleItem>SelectedUser</StyleItem>
+			<StyleItem>TextColorRightFilterPanel</StyleItem>
 			<StyleItem>TitleColorSettingsGroup</StyleItem>
 			<StyleItem>TotalsGroupBackground</StyleItem>
 			<StyleItem>UnacceptedVersion</StyleItem>
@@ -628,6 +625,7 @@
 			<CommonPicture>AttachFile</CommonPicture>
 			<CommonPicture>AuthorizeObjectDetailsEditing</CommonPicture>
 			<CommonPicture>BackColor</CommonPicture>
+			<CommonPicture>BasicList</CommonPicture>
 			<CommonPicture>BlankStatus</CommonPicture>
 			<CommonPicture>BoldFacedType</CommonPicture>
 			<CommonPicture>BorderInside</CommonPicture>
@@ -660,10 +658,18 @@
 			<CommonPicture>ConnectorTopRightBottom</CommonPicture>
 			<CommonPicture>Consultant1CBuhphon</CommonPicture>
 			<CommonPicture>ContactInformation</CommonPicture>
+			<CommonPicture>ContactInformationAddress</CommonPicture>
+			<CommonPicture>ContactInformationEmail</CommonPicture>
+			<CommonPicture>ContactInformationFax</CommonPicture>
 			<CommonPicture>ContactInformationForNavigateLink</CommonPicture>
+			<CommonPicture>ContactInformationGotoURL</CommonPicture>
 			<CommonPicture>ContactInformationIrrelevant</CommonPicture>
-			<CommonPicture>ControlledEventsCollection152FL</CommonPicture>
-			<CommonPicture>CopyRows</CommonPicture>
+			<CommonPicture>ContactInformationKinds</CommonPicture>
+			<CommonPicture>ContactInformationOther</CommonPicture>
+			<CommonPicture>ContactInformationPhone</CommonPicture>
+			<CommonPicture>ContactInformationSkype</CommonPicture>
+			<CommonPicture>ContactInformationWebpage</CommonPicture>
+			<CommonPicture>CounterpartyCollection</CommonPicture>
 			<CommonPicture>CountIsReviewed</CommonPicture>
 			<CommonPicture>CWP_ExpandAdditionalPanel</CommonPicture>
 			<CommonPicture>CWP_MinimizeAdditionalPanel</CommonPicture>
@@ -724,6 +730,7 @@
 			<CommonPicture>ElectronicDocumentsWrongSignature</CommonPicture>
 			<CommonPicture>ElementsIcons</CommonPicture>
 			<CommonPicture>Email</CommonPicture>
+			<CommonPicture>Empty</CommonPicture>
 			<CommonPicture>EmptyFormat</CommonPicture>
 			<CommonPicture>Encrypted</CommonPicture>
 			<CommonPicture>EndEditFile</CommonPicture>
@@ -737,6 +744,7 @@
 			<CommonPicture>ExchangeWithSiteWebServicePublication</CommonPicture>
 			<CommonPicture>ExclamationMarkGray</CommonPicture>
 			<CommonPicture>ExecuteScheduledJobManually</CommonPicture>
+			<CommonPicture>ExpandFilters</CommonPicture>
 			<CommonPicture>Export</CommonPicture>
 			<CommonPicture>ExportDataFromInfobaseIntoXMLFile</CommonPicture>
 			<CommonPicture>ExportFile</CommonPicture>
@@ -760,6 +768,7 @@
 			<CommonPicture>GanttDiagramPicture</CommonPicture>
 			<CommonPicture>Gear</CommonPicture>
 			<CommonPicture>GetWeight</CommonPicture>
+			<CommonPicture>GoogleMaps</CommonPicture>
 			<CommonPicture>GoToBack</CommonPicture>
 			<CommonPicture>GoToLeftActive</CommonPicture>
 			<CommonPicture>GoToLeftNotActive</CommonPicture>
@@ -873,7 +882,6 @@
 			<CommonPicture>PaperClipCollection</CommonPicture>
 			<CommonPicture>ParametersAndFiltersIcons</CommonPicture>
 			<CommonPicture>PartiallyCorrected16</CommonPicture>
-			<CommonPicture>PasteRows</CommonPicture>
 			<CommonPicture>PayrollSection</CommonPicture>
 			<CommonPicture>PDFFormat</CommonPicture>
 			<CommonPicture>PeripheralReportWithoutBlanking</CommonPicture>
@@ -943,6 +951,7 @@
 			<CommonPicture>SectionAdministration</CommonPicture>
 			<CommonPicture>SectionAdministration48</CommonPicture>
 			<CommonPicture>SectionAnalysis</CommonPicture>
+			<CommonPicture>SectionCRM</CommonPicture>
 			<CommonPicture>SectionEnterprise</CommonPicture>
 			<CommonPicture>SectionMain</CommonPicture>
 			<CommonPicture>SectionOrganizer</CommonPicture>
@@ -1026,6 +1035,8 @@
 			<CommonPicture>WithoutBorder</CommonPicture>
 			<CommonPicture>WorkingDirectoryByDefault</CommonPicture>
 			<CommonPicture>WriteSMS</CommonPicture>
+			<CommonPicture>CopyRows</CommonPicture>
+			<CommonPicture>PasteRows</CommonPicture>
 			<Interface>Administrative</Interface>
 			<Interface>Common</Interface>
 			<Interface>Full</Interface>
@@ -1121,7 +1132,6 @@
 			<Role>InteractiveOpenExternalReportsAndDataProcessors</Role>
 			<Role>OutputToPrinterClipboardFile</Role>
 			<Role>PerformanceSetupAndEstimation</Role>
-			<Role>PersonalDataProcessingConsentPreparation</Role>
 			<Role>ReadAccrualsAndTimesheetBalances</Role>
 			<Role>ReadAdditionalInformation</Role>
 			<Role>ReadBasicReferenceData</Role>
@@ -1206,6 +1216,7 @@
 			<CommonModule>AccessManagementServiceSaaS</CommonModule>
 			<CommonModule>AccessManagementServiceSaaSSTL</CommonModule>
 			<CommonModule>AccessManagementServiceServerCall</CommonModule>
+			<CommonModule>AccountingServer</CommonModule>
 			<CommonModule>AdditionalReportsAndDataProcessors</CommonModule>
 			<CommonModule>AdditionalReportsAndDataProcessorsClient</CommonModule>
 			<CommonModule>AdditionalReportsAndDataProcessorsClientOverridable</CommonModule>
@@ -1285,6 +1296,11 @@
 			<CommonModule>Connection1CTaxcomClientServer</CommonModule>
 			<CommonModule>Connection1CTaxcomOverridable</CommonModule>
 			<CommonModule>Connection1CTaxcomServerCall</CommonModule>
+			<CommonModule>ContactInformationClientServer</CommonModule>
+			<CommonModule>ContactInformationClientServerCached</CommonModule>
+			<CommonModule>ContactInformationInternal</CommonModule>
+			<CommonModule>ContactInformationInternalCached</CommonModule>
+			<CommonModule>ContactInformationInternalServerCall</CommonModule>
 			<CommonModule>ContactInformationManagement</CommonModule>
 			<CommonModule>ContactInformationManagementClient</CommonModule>
 			<CommonModule>ContactInformationManagementClientServer</CommonModule>
@@ -1292,15 +1308,16 @@
 			<CommonModule>ContactInformationManagementService</CommonModule>
 			<CommonModule>ContactInformationManagementServiceReUse</CommonModule>
 			<CommonModule>ContactInformationManagementServiceServerCall</CommonModule>
+			<CommonModule>ContactInformationPanelSB</CommonModule>
+			<CommonModule>ContactInformationPanelSBClient</CommonModule>
+			<CommonModule>ContactInformationSB</CommonModule>
+			<CommonModule>ContactInformationSBClient</CommonModule>
+			<CommonModule>ContactInformationSBClientServer</CommonModule>
+			<CommonModule>ContactInformationSBServerCall</CommonModule>
+			<CommonModule>ContactInformationXML</CommonModule>
 			<CommonModule>ContactsClassification</CommonModule>
 			<CommonModule>ContactsClassificationClient</CommonModule>
 			<CommonModule>ContactsClassificationServerCall</CommonModule>
-			<CommonModule>CounterpartiesCheck</CommonModule>
-			<CommonModule>CounterpartiesCheckClient</CommonModule>
-			<CommonModule>CounterpartiesCheckClientOverridable</CommonModule>
-			<CommonModule>CounterpartiesCheckClientServer</CommonModule>
-			<CommonModule>CounterpartiesCheckOverridable</CommonModule>
-			<CommonModule>CounterpartiesCheckServerCall</CommonModule>
 			<CommonModule>CurrencyRatesServiceSaaS</CommonModule>
 			<CommonModule>CurrentWorksOverridable</CommonModule>
 			<CommonModule>CurrentWorksServer</CommonModule>
@@ -1422,7 +1439,6 @@
 			<CommonModule>GroupObjectChangeOverridable</CommonModule>
 			<CommonModule>GroupObjectsChangeClient</CommonModule>
 			<CommonModule>IndividualsClientServer</CommonModule>
-			<CommonModule>IndividualsDocumentsClientServer</CommonModule>
 			<CommonModule>InfobaseBackupClient</CommonModule>
 			<CommonModule>InfobaseBackupClientGlobal</CommonModule>
 			<CommonModule>InfobaseBackupClientOverridable</CommonModule>
@@ -1575,10 +1591,6 @@
 			<CommonModule>PermissionSettingOnExternalResourcesUsageClient</CommonModule>
 			<CommonModule>PermissionSettingOnExternalResourcesUsageGlobal</CommonModule>
 			<CommonModule>PermissionSettingOnExternalResourcesUsageServerCall</CommonModule>
-			<CommonModule>PersonalDataProtection</CommonModule>
-			<CommonModule>PersonalDataProtectionClient</CommonModule>
-			<CommonModule>PersonalDataProtectionOverridable</CommonModule>
-			<CommonModule>PersonalDataProtectionReUse</CommonModule>
 			<CommonModule>PickProductsAndServicesInDocuments</CommonModule>
 			<CommonModule>PickProductsAndServicesInDocumentsClient</CommonModule>
 			<CommonModule>PickProductsAndServicesInDocumentsClientOverridable</CommonModule>
@@ -1587,7 +1599,6 @@
 			<CommonModule>PickProductsAndServicesInDocumentsReUse</CommonModule>
 			<CommonModule>PredefinedDataExportImport</CommonModule>
 			<CommonModule>PredefinedDataExportImportReUse</CommonModule>
-			<CommonModule>PresentationsReUse</CommonModule>
 			<CommonModule>PrintManagement</CommonModule>
 			<CommonModule>PrintManagementClient</CommonModule>
 			<CommonModule>PrintManagementClientReUse</CommonModule>
@@ -1664,8 +1675,6 @@
 			<CommonModule>StringFunctionsClientServer</CommonModule>
 			<CommonModule>SuppliedData</CommonModule>
 			<CommonModule>SuppliedDataOverridable</CommonModule>
-			<CommonModule>TabularPartCopyClient</CommonModule>
-			<CommonModule>TabularPartCopyServer</CommonModule>
 			<CommonModule>TotalsAndAggregateManagementService</CommonModule>
 			<CommonModule>TranslationXDTO</CommonModule>
 			<CommonModule>TranslationXDTOOverridable</CommonModule>
@@ -1707,17 +1716,21 @@
 			<CommonModule>WorkSchedules</CommonModule>
 			<CommonModule>WorkSchedulesClientServer</CommonModule>
 			<CommonModule>WorkWithBanks</CommonModule>
-			<CommonModule>WorkWithBanksClient</CommonModule>
-			<CommonModule>WorkWithBanksGlobal</CommonModule>
 			<CommonModule>WorkWithBanksOverridable</CommonModule>
+			<CommonModule>WorkWithCounterpartiesClientServerOverridable</CommonModule>
 			<CommonModule>WorkWithCurrencyRates</CommonModule>
 			<CommonModule>WorkWithCurrencyRatesClient</CommonModule>
 			<CommonModule>WorkWithCurrencyRatesClientServer</CommonModule>
 			<CommonModule>WorkWithCurrencyRatesGlobal</CommonModule>
 			<CommonModule>WorkWithCurrencyRatesOverridable</CommonModule>
 			<CommonModule>WorkWithCurrencyRatesServerCall</CommonModule>
+			<CommonModule>WorkWithFilters</CommonModule>
+			<CommonModule>WorkWithFiltersClient</CommonModule>
+			<CommonModule>WorkWithFiltersClientServer</CommonModule>
 			<CommonModule>WorkWithProductsClientServer</CommonModule>
 			<CommonModule>WorkWithProductsServer</CommonModule>
+			<CommonModule>TabularPartCopyClient</CommonModule>
+			<CommonModule>TabularPartCopyServer</CommonModule>
 			<CommonModule>WorkWithScannerClient</CommonModule>
 			<CommonAttribute>DataAreaAuxiliaryData</CommonAttribute>
 			<CommonAttribute>DataAreaBasicData</CommonAttribute>
@@ -1826,7 +1839,6 @@
 			<EventSubscription>CancelSendNodeDataInDistributedInfobase</EventSubscription>
 			<EventSubscription>ChangeStateVersionsBeforeWriteED</EventSubscription>
 			<EventSubscription>CheckChangeBeforeEDOwnerWrite</EventSubscription>
-			<EventSubscription>CheckCounterparty</EventSubscription>
 			<EventSubscription>CheckDataExchangeSettingChangePossibility</EventSubscription>
 			<EventSubscription>CheckDataMigrationRestrictionFiltersChanges</EventSubscription>
 			<EventSubscription>CheckDateChangesInSubject</EventSubscription>
@@ -1905,7 +1917,6 @@
 			<EventSubscription>SetDeletionMarkOnDocumentFiles</EventSubscription>
 			<EventSubscription>SetNewVersionEDOnOwnerWrite</EventSubscription>
 			<EventSubscription>UndividedObjectsControlOnWrite</EventSubscription>
-			<EventSubscription>UndividedObjectsControlOnWriteCounterpartiesCheck</EventSubscription>
 			<EventSubscription>UndividedObjectsControlOnWriteServiceTechnology</EventSubscription>
 			<EventSubscription>UndividedRecordSetsControlOnWrite</EventSubscription>
 			<EventSubscription>UndividedRecordSetsControlOnWriteServiceTechnology</EventSubscription>
@@ -1922,7 +1933,6 @@
 			<ScheduledJob>AggregatesUpdate</ScheduledJob>
 			<ScheduledJob>ChangeProhibitionRelativeDatesCurrentValuesRecalculation</ScheduledJob>
 			<ScheduledJob>ClearObsoleteObjectsVersions</ScheduledJob>
-			<ScheduledJob>CounterpartiesCheck</ScheduledJob>
 			<ScheduledJob>CurrencyRatesImportProcess</ScheduledJob>
 			<ScheduledJob>DataAreasMaintenance</ScheduledJob>
 			<ScheduledJob>DataAreasUpdate</ScheduledJob>
@@ -2126,7 +2136,6 @@
 			<CommonCommand>ChangesHistory</CommonCommand>
 			<CommonCommand>ChooseWSCurrentSession</CommonCommand>
 			<CommonCommand>ConfigureExchangeMessagesTransportParameters</CommonCommand>
-			<CommonCommand>CounterpartyVerificationsSetting</CommonCommand>
 			<CommonCommand>CreateBackup</CommonCommand>
 			<CommonCommand>CreatingLinkedObjects</CommonCommand>
 			<CommonCommand>CurrencyRatesImport</CommonCommand>
@@ -2206,6 +2215,7 @@
 			<CommonCommand>UserInfo</CommonCommand>
 			<CommonCommand>WhatNewsPageInVideoVersion</CommonCommand>
 			<CommonCommand>WriteCertificatePassword</CommonCommand>
+			<CommandGroup>Settings</CommandGroup>
 			<CommandGroup>DataExchangeExecution</CommandGroup>
 			<CommandGroup>DataExchangeParameters</CommandGroup>
 			<CommandGroup>ED</CommandGroup>
@@ -2407,7 +2417,6 @@
 			<Constant>UseAdditionalAttributesAndInformation</Constant>
 			<Constant>UseAdditionalReportsAndDataProcessors</Constant>
 			<Constant>UseAdditionalReportsDirectoryAndDataprocessorsSaaS</Constant>
-			<Constant>UseCounterpartiesVerification</Constant>
 			<Constant>UseCommonAdditionalAttributesAndInformation</Constant>
 			<Constant>UseCommonAdditionalValues</Constant>
 			<Constant>UseCounterpartiesAccessGroups</Constant>
@@ -2440,7 +2449,6 @@
 			<Constant>VerifyDigitalSignaturesAtServer</Constant>
 			<CommonForm>AccessRights</CommonForm>
 			<CommonForm>AccessRightsSimplified</CommonForm>
-			<CommonForm>AccessToPersonalDataEventsRegistrationSettings</CommonForm>
 			<CommonForm>AccountPasswordConfirmation</CommonForm>
 			<CommonForm>ActionSelectionWhenFileDifferencesDetected</CommonForm>
 			<CommonForm>AddDigitalSignatureFromFile</CommonForm>
@@ -2467,7 +2475,6 @@
 			<CommonForm>ConnectEndPoint</CommonForm>
 			<CommonForm>ConnectionWithHostRecovery</CommonForm>
 			<CommonForm>CorrespondentInfobaseObjectSelection</CommonForm>
-			<CommonForm>CounterpartyVerificationsSetting</CommonForm>
 			<CommonForm>CurrencyForm</CommonForm>
 			<CommonForm>CurrentWorks</CommonForm>
 			<CommonForm>CustomerAdvancesPickForm</CommonForm>
@@ -2577,7 +2584,7 @@
 			<Catalog>Cells</Catalog>
 			<Catalog>Companies</Catalog>
 			<Catalog>CompaniesAttachedFiles</Catalog>
-			<Catalog>ContactInformationTypes</Catalog>
+			<Catalog>ContactInformationKinds</Catalog>
 			<Catalog>ContactPersons</Catalog>
 			<Catalog>ContactPersonsRoles</Catalog>
 			<Catalog>ContractForms</Catalog>
@@ -2587,13 +2594,12 @@
 			<Catalog>CounterpartyContracts</Catalog>
 			<Catalog>CounterpartyContractsAttachedFiles</Catalog>
 			<Catalog>CounterpartyPriceKind</Catalog>
-			<Catalog>CustomerInvoiceNoteAttachedFiles</Catalog>
 			<Catalog>Currencies</Catalog>
+			<Catalog>CustomerAcquisitionChannels</Catalog>
 			<Catalog>CustomerOrderAttachedFiles</Catalog>
 			<Catalog>CustomerOrderStates</Catalog>
 			<Catalog>DataAreasMessages</Catalog>
 			<Catalog>DataExchangeScripts</Catalog>
-			<Catalog>DeleteAlcoholicProductsKinds</Catalog>
 			<Catalog>DigitalSignatureAndEncryptionApplications</Catalog>
 			<Catalog>DigitalSignaturesAndEncryptionKeyCertificates</Catalog>
 			<Catalog>DiscountCardKinds</Catalog>
@@ -2668,7 +2674,6 @@
 			<Catalog>SuppliedAdditionalReportsAndDataProcessors</Catalog>
 			<Catalog>SuppliedData</Catalog>
 			<Catalog>SupplierInvoiceAttachedFiles</Catalog>
-			<Catalog>SupplierInvoiceNoteAttachedFiles</Catalog>
 			<Catalog>SupplierInvoiceForPaymentAttachedFiles</Catalog>
 			<Catalog>SuppliersProductsAndServices</Catalog>
 			<Catalog>SystemMessages</Catalog>
@@ -2700,7 +2705,6 @@
 			<Document>CashTransferPlan</Document>
 			<Document>CostAllocation</Document>
 			<Document>CustomerInvoice</Document>
-			<Document>CustomerInvoiceNote</Document>
 			<Document>CustomerOrder</Document>
 			<Document>Dismissal</Document>
 			<Document>EDPackage</Document>
@@ -2751,7 +2755,6 @@
 			<Document>SubcontractorReport</Document>
 			<Document>SupplierInvoice</Document>
 			<Document>SupplierInvoiceForPayment</Document>
-			<Document>SupplierInvoiceNote</Document>
 			<Document>TaxAccrual</Document>
 			<Document>Timesheet</Document>
 			<Document>TimeTracking</Document>
@@ -2804,12 +2807,10 @@
 			<Enum>ConnectionChannelTypes</Enum>
 			<Enum>ContactInformationTypes</Enum>
 			<Enum>ContractKinds</Enum>
-			<Enum>CounterpartiesCheckStates</Enum>
 			<Enum>ContractsWithCounterpartiesTemplatesParameters</Enum>
-			<Enum>CounterpartyExistenceStates</Enum>
 			<Enum>CostingBases</Enum>
 			<Enum>CounterpartiesIdentificationMethods</Enum>
-			<Enum>LegalEntityIndividual</Enum>
+			<Enum>CounterpartyKinds</Enum>
 			<Enum>CurrencyRateSetMethods</Enum>
 			<Enum>DataAreaStatuses</Enum>
 			<Enum>DataExchangeProblemTypes</Enum>
@@ -2868,7 +2869,6 @@
 			<Enum>InfobaseTypes</Enum>
 			<Enum>InfobaseUsageModes</Enum>
 			<Enum>InventoryMovementTypes</Enum>
-			<Enum>KPPIndicationVariants</Enum>
 			<Enum>InventoryReplenishmentMethods</Enum>
 			<Enum>InventoryValuationMethods</Enum>
 			<Enum>JobStates</Enum>
@@ -2884,7 +2884,6 @@
 			<Enum>OperationKindsCashPayment</Enum>
 			<Enum>OperationKindsCashReceipt</Enum>
 			<Enum>OperationKindsCustomerInvoice</Enum>
-			<Enum>OperationKindsCustomerInvoiceNote</Enum>
 			<Enum>OperationKindsCustomerOrder</Enum>
 			<Enum>OperationKindsEmployeeOccupationChange</Enum>
 			<Enum>OperationKindsInventoryAssembly</Enum>
@@ -2897,7 +2896,6 @@
 			<Enum>OperationKindsProductionOrder</Enum>
 			<Enum>OperationKindsPurchaseOrder</Enum>
 			<Enum>OperationKindsSupplierInvoice</Enum>
-			<Enum>OperationKindsSupplierInvoiceNote</Enum>
 			<Enum>OperationKindsTaxAccrual</Enum>
 			<Enum>OperationKindsTransferBetweenCells</Enum>
 			<Enum>OperationKindsWorkOrder</Enum>
@@ -3063,7 +3061,7 @@
 			<DataProcessor>ClientBank</DataProcessor>
 			<DataProcessor>ConfigurationUpdate</DataProcessor>
 			<DataProcessor>Connection1CTaxcom</DataProcessor>
-			<DataProcessor>InputContactInformation</DataProcessor>
+			<DataProcessor>ContactInformationInput</DataProcessor>
 			<DataProcessor>CounterpartyPriceLists</DataProcessor>
 			<DataProcessor>CurrencyRatesImportProcess</DataProcessor>
 			<DataProcessor>CurrentWorks</DataProcessor>
@@ -3120,7 +3118,6 @@
 			<DataProcessor>InfobaseUpdate</DataProcessor>
 			<DataProcessor>InformationCenter</DataProcessor>
 			<DataProcessor>InformationOnStart</DataProcessor>
-			<DataProcessor>InstructionOnUsageCounterpartiesCheck</DataProcessor>
 			<DataProcessor>InteractiveDataExchangeAssistant</DataProcessor>
 			<DataProcessor>InteractiveDataExchangeInModelServiceAssistant</DataProcessor>
 			<DataProcessor>InteractiveExportChange</DataProcessor>
@@ -3136,8 +3133,6 @@
 			<DataProcessor>PerformanceEstimation</DataProcessor>
 			<DataProcessor>PermissionSettingsForExternalResourcesUse</DataProcessor>
 			<DataProcessor>PermissionSettingsForExternalResourcesUseSaaS</DataProcessor>
-			<DataProcessor>PersonalDataProcessingConsent</DataProcessor>
-			<DataProcessor>PersonalDataProtection</DataProcessor>
 			<DataProcessor>PickingReceipt</DataProcessor>
 			<DataProcessor>PickingSales</DataProcessor>
 			<DataProcessor>PickingTransfer</DataProcessor>
@@ -3171,6 +3166,8 @@
 			<InformationRegister>AdditionalAddressInformation</InformationRegister>
 			<InformationRegister>AdditionalInformation</InformationRegister>
 			<InformationRegister>AdditionalInformationProcessorsFunctions</InformationRegister>
+			<InformationRegister>AddressAbbreviations</InformationRegister>
+			<InformationRegister>AddressClassifier</InformationRegister>
 			<InformationRegister>AddressInformationChangingReasons</InformationRegister>
 			<InformationRegister>AddressInformationExportedVersions</InformationRegister>
 			<InformationRegister>AddressInformationReductionsLevels</InformationRegister>
@@ -3187,8 +3184,8 @@
 			<InformationRegister>CalendarSchedules</InformationRegister>
 			<InformationRegister>ChangeProhibitionDates</InformationRegister>
 			<InformationRegister>CompaniesTaxationSystems</InformationRegister>
+			<InformationRegister>ContactInformationKindSettings</InformationRegister>
 			<InformationRegister>CorrectionExecutionDatesBySections</InformationRegister>
-			<InformationRegister>CounterpartiesStates</InformationRegister>
 			<InformationRegister>CounterpartyDuplicatesExist</InformationRegister>
 			<InformationRegister>CounterpartyProductsAndServicesPrices</InformationRegister>
 			<InformationRegister>CurrencyRates</InformationRegister>
@@ -3267,7 +3264,6 @@
 			<InformationRegister>PermissionOnUseDataAreasExternalResources</InformationRegister>
 			<InformationRegister>PermissionQueriesOnUseDataAreasExternalResources</InformationRegister>
 			<InformationRegister>PermissionQueriesOnUseExternalResources</InformationRegister>
-			<InformationRegister>PersonalDataAreas</InformationRegister>
 			<InformationRegister>ProductsAndServicesAnalogs</InformationRegister>
 			<InformationRegister>ProductsAndServicesBarcodes</InformationRegister>
 			<InformationRegister>ProductsAndServicesPrices</InformationRegister>

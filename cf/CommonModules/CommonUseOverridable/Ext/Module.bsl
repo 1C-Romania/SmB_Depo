@@ -324,4 +324,37 @@ Function GetRefSearchExceptions() Export
 	
 EndFunction
 
+Function StructureToString(StructureForTransformation, Separator = ",") Export
+	
+	Result = "";
+	
+	For Each Item In StructureForTransformation Do
+		
+		SeparatorChar = ?(IsBlankString(Result), "", Separator);
+		
+		Result = Result + SeparatorChar + Item.Key;
+		
+	EndDo;
+	
+	Return Result;
+	
+EndFunction
+
+Function StringToStructure(StringForTransformation, Separator = ",") Export
+	
+	Result	= New Structure;
+	StringPropertySearch	= StringForTransformation;
+	
+	SeparatorPosition = StrFind(StringPropertySearch,Separator);
+	While SeparatorPosition <> 0 Do
+		Result.Insert(СокрЛП(Лев(StringPropertySearch, SeparatorPosition-1)));
+		StringPropertySearch = Сред(StringPropertySearch, SeparatorPosition+1);
+		SeparatorPosition = СтрНайти(StringPropertySearch,Separator);
+	EndDo;
+	Result.Insert(СокрЛП(StringPropertySearch));
+	
+	Return Result;
+	
+EndFunction
+
 #EndRegion

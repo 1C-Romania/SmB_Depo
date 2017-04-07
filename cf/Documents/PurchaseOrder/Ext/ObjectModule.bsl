@@ -1,26 +1,224 @@
 ﻿#If Server Or ThickClientOrdinaryApplication Or ExternalConnection Then
 
-///////////////////////////////////////////////////////////////////////////////
-// PROCEDURES OF FILLING THE DOCUMENT
+#Region EventHandlers
+	
+Procedure OnCopy(CopiedObject)
+	
+	SmallBusinessManagementElectronicDocumentsServer.ClearIncomingDocumentDateNumber(ThisObject);
+	
+	ThisObject.OrderState	= GetPurchaseOrderState();
+	ThisObject.Closed		= False;
+	ThisObject.Event		= Documents.Event.EmptyRef();
+	
+EndProcedure // OnCopy()
 
-// Procedure for filling the document basing on Customer order.
-//
-Procedure FillUsingCustomerOrder(FillingData) Export
+Procedure Filling(FillingData, StandardProcessing) Export
 	
-	// Header filling.
-	AttributeValues = CommonUse.ObjectAttributesValues(FillingData, New Structure("Company, Ref, OperationKind, Start, ShipmentDate, OrderState, Closed, Posted"));
+	FillingStrategy = New Map;
+	FillingStrategy[Type("DocumentRef.CustomerOrder")]		= "FillByCustomerOrder";
+	FillingStrategy[Type("DocumentRef.ProductionOrder")]	= "FillByProductionOrder";
 	
-	Documents.CustomerOrder.CheckAbilityOfEnteringByCustomerOrder(FillingData, AttributeValues);
+	ExcludingProperties = "OrderState";
+	ObjectFillingSB.FillDocument(ThisObject, FillingData, FillingStrategy, ExcludingProperties);
 	
-	Company = AttributeValues.Company;
-	CustomerOrder = AttributeValues.Ref;
-	If AttributeValues.OperationKind = Enums.OperationKindsCustomerOrder.JobOrder Then
-		ReceiptDate = AttributeValues.Start;
-	Else
-		ReceiptDate = AttributeValues.ShipmentDate;
+	FillByDefault();
+	
+EndProcedure // Filling()
+
+Procedure BeforeWrite(Cancel, WriteMode, PostingMode)
+	
+	If DataExchange.Load Then
+		Return;
 	EndIf;
 	
-	// Filling out tabular section.
+	If ReceiptDatePosition = Enums.AttributePositionOnForm.InHeader Then
+		For Each TabularSectionRow IN Inventory Do
+			If TabularSectionRow.ReceiptDate <> ReceiptDate Then
+				TabularSectionRow.ReceiptDate = ReceiptDate;
+			EndIf;
+		EndDo;
+	EndIf;
+	
+	If ReceiptDatePosition = Enums.AttributePositionOnForm.InTabularSection Then
+		If Inventory.Count() > 0 Then
+			ReceiptDate = Inventory[0].ReceiptDate;
+		EndIf;
+	EndIf;
+	
+	If ValueIsFilled(Counterparty)
+	AND Not Counterparty.DoOperationsByContracts
+	AND Not ValueIsFilled(Contract) Then
+		Contract = Counterparty.ContractByDefault;
+	EndIf;
+	
+	DocumentAmount = Inventory.Total("Total");
+	
+EndProcedure // BeforeWrite()
+
+Procedure Posting(Cancel, PostingMode)
+	
+	// Initialization of additional properties for document posting
+	SmallBusinessServer.InitializeAdditionalPropertiesForPosting(Ref, AdditionalProperties);
+	
+	// Initialization of document data
+	Documents.PurchaseOrder.InitializeDocumentData(Ref, AdditionalProperties);
+	
+	// Preparation of record sets
+	SmallBusinessServer.PrepareRecordSetsForRecording(ThisObject);
+	
+	// Registering in accounting sections
+	SmallBusinessServer.ReflectInventoryTransferSchedule(AdditionalProperties, RegisterRecords, Cancel);
+	SmallBusinessServer.ReflectPurchaseOrders(AdditionalProperties, RegisterRecords, Cancel);
+	SmallBusinessServer.ReflectInventoryDemand(AdditionalProperties, RegisterRecords, Cancel);
+	SmallBusinessServer.ReflectOrdersPlacement(AdditionalProperties, RegisterRecords, Cancel);
+	SmallBusinessServer.ReflectInventory(AdditionalProperties, RegisterRecords, Cancel);
+	SmallBusinessServer.ReflectPaymentCalendar(AdditionalProperties, RegisterRecords, Cancel);
+	SmallBusinessServer.ReflectInvoicesAndOrdersPayment(AdditionalProperties, RegisterRecords, Cancel);
+	
+	// Writing of record sets
+	SmallBusinessServer.WriteRecordSets(ThisObject);
+
+	// Control
+	Documents.PurchaseOrder.RunControl(Ref, AdditionalProperties, Cancel);
+	
+	AdditionalProperties.ForPosting.StructureTemporaryTables.TempTablesManager.Close();
+	
+EndProcedure
+
+Procedure UndoPosting(Cancel)
+	
+	// Initialization of additional properties to undo document posting
+	SmallBusinessServer.InitializeAdditionalPropertiesForPosting(Ref, AdditionalProperties);
+	
+	// Preparation of record sets
+	SmallBusinessServer.PrepareRecordSetsForRecording(ThisObject);
+	
+	// Writing of record sets
+	SmallBusinessServer.WriteRecordSets(ThisObject);
+	
+	// Control
+	Documents.PurchaseOrder.RunControl(Ref, AdditionalProperties, Cancel, True);
+	
+EndProcedure
+
+Procedure FillCheckProcessing(Cancel, CheckedAttributes)
+	
+	If DataExchange.Load Then
+		Return;
+	EndIf;
+	
+	If Not Counterparty.DoOperationsByContracts Then
+		SmallBusinessServer.DeleteAttributeBeingChecked(CheckedAttributes, "Contract");
+	EndIf;
+	
+	If Materials.Total("Reserve") > 0 Then
+		
+		For Each StringMaterials in Materials Do
+		
+			If StringMaterials.Reserve > 0 AND Not ValueIsFilled(StructuralUnitReserve) Then
+				
+				MessageText = NStr("en='The reserve warehouse is not filled.';ru='Не заполнен склад резерва.'");
+				SmallBusinessServer.ShowMessageAboutError(ThisObject, MessageText, , , "StructuralUnitReserve", Cancel);
+				
+			EndIf;
+		
+		EndDo;
+	
+	EndIf;
+	
+	If SchedulePayment
+	   AND CashAssetsType = Enums.CashAssetTypes.Noncash Then
+	   
+		SmallBusinessServer.DeleteAttributeBeingChecked(CheckedAttributes, "PettyCash");
+		
+	ElsIf SchedulePayment
+	   AND CashAssetsType = Enums.CashAssetTypes.Cash Then
+	   
+		SmallBusinessServer.DeleteAttributeBeingChecked(CheckedAttributes, "BankAccount");
+		
+	Else
+		
+		SmallBusinessServer.DeleteAttributeBeingChecked(CheckedAttributes, "PettyCash");
+		SmallBusinessServer.DeleteAttributeBeingChecked(CheckedAttributes, "BankAccount");
+		
+	EndIf;
+	
+	If SchedulePayment
+	   AND PaymentCalendar.Count() = 1
+	   AND Not ValueIsFilled(PaymentCalendar[0].PayDate) Then
+		
+		MessageText = NStr("en='Field ""Payment date"" is required.';ru='Поле ""Дата оплаты"" не заполнено.'");
+		SmallBusinessServer.ShowMessageAboutError(ThisObject, MessageText, , , "PayDate", Cancel);
+		SmallBusinessServer.DeleteAttributeBeingChecked(CheckedAttributes, "PaymentCalendar.PaymentDate");
+		
+	EndIf;
+	
+	If Constants.FunctionalOptionInventoryReservation.Get()
+		AND OperationKind = Enums.OperationKindsPurchaseOrder.OrderForProcessing Then
+		
+		For Each StringMaterials IN Materials Do
+			
+			If StringMaterials.Reserve > StringMaterials.Quantity Then
+				
+				MessageText = NStr("en='In string No.%Number% of tabular section ""Recycling materials"" quantity of the write-off positions from reserve exceeds the total materials.';ru='В строке №%Номер% табл. части ""Материалы в переработку"" количество позиций к списанию из резерва превышает общее количество материалов.'");
+				MessageText = StrReplace(MessageText, "%Number%", StringMaterials.LineNumber);
+				SmallBusinessServer.ShowMessageAboutError(
+					ThisObject,
+					MessageText,
+					"Materials",
+					StringMaterials.LineNumber,
+					"Reserve",
+					Cancel
+				);
+				
+			EndIf;	
+			
+		EndDo;		
+		
+	EndIf;
+	
+	If Not Constants.UsePurchaseOrderStates.Get() Then
+		
+		If Not ValueIsFilled(OrderState) Then
+			MessageText = NStr("en='Field ""Order state"" is not filled. IN the accounting parameters settings it is necessary to install the statuses values.';ru='Поле ""Состояние заказа"" не заполнено. В настройках параметров учета необходимо установить значения состояний.'");
+			SmallBusinessServer.ShowMessageAboutError(ThisObject, MessageText, , , "OrderState", Cancel);
+		EndIf;
+		
+	EndIf;
+	
+	If ReceiptDatePosition = Enums.AttributePositionOnForm.InTabularSection Then
+		CheckedAttributes.Delete(CheckedAttributes.Find("ReceiptDate"));
+	Else
+		CheckedAttributes.Delete(CheckedAttributes.Find("Inventory.ReceiptDate"));
+	EndIf;
+	
+EndProcedure // FillCheckProcessing()
+
+#EndRegion
+
+#Region DocumentFillingProcedures
+
+Procedure FillByCustomerOrder(DocumentRefCustomerOrder) Export
+	
+	If Not ValueIsFilled(DocumentRefCustomerOrder) Then
+		Return;
+	EndIf;
+	
+	// Header filling.
+	AttributeValues = CommonUse.ObjectAttributesValues(DocumentRefCustomerOrder, 
+	New Structure("Company, Ref, OperationKind, Start, ShipmentDate, OrderState, Posted"));
+	
+	Documents.CustomerOrder.CheckAbilityOfEnteringByCustomerOrder(DocumentRefCustomerOrder, AttributeValues);
+	
+	Company			= AttributeValues.Company;
+	CustomerOrder	= AttributeValues.Ref;
+	If AttributeValues.OperationKind = Enums.OperationKindsCustomerOrder.JobOrder Then
+		ReceiptDate	= AttributeValues.Start;
+	Else
+		ReceiptDate	= AttributeValues.ShipmentDate;
+	EndIf;
+	
+	// Tabular section filling.
 	Query = New Query;
 	Query.Text =
 	"SELECT
@@ -230,7 +428,7 @@ Procedure FillUsingCustomerOrder(FillingData) Export
 		
 	EndIf;
 	
-	Query.SetParameter("BasisDocument", FillingData);
+	Query.SetParameter("BasisDocument", DocumentRefCustomerOrder);
 	Query.SetParameter("Ref", Ref);
 	
 	ResultsArray = Query.ExecuteBatch();
@@ -327,33 +525,88 @@ Procedure FillUsingCustomerOrder(FillingData) Export
 	
 EndProcedure // FillByCustomerOrder()
 
-// Procedure of cancellation of posting of subordinate invoice note (supplier)
-//
-Procedure SubordinatedInvoiceControl()
+Procedure FillByProductionOrder(DocumentRefProductionOrder) Export
 	
-	InvoiceStructure = SmallBusinessServer.GetSubordinateInvoice(Ref, True);
-	If Not InvoiceStructure = Undefined Then
-		
-		CustomerInvoiceNote	 = InvoiceStructure.Ref;
-		If CustomerInvoiceNote.Posted Then
-			
-			MessageText = NStr("en='Due to the absence of the turnovers by the %CurrentDocumentPresentation% document, undo the posting of %InvoicePresentation%.';ru='В связи с отсутствием движений у документа %ПредставлениеТекущегоДокумента% распроводится %ПредставлениеСчетФактуры%.'");
-			MessageText = StrReplace(MessageText, "%CurrentDocumentPresentation%", """Order vendor # " + Number + " dated " + Format(Date, "DF=dd.MM.yyyy") + """");
-			MessageText = StrReplace(MessageText, "%InvoicePresentation%", """Invoice Note (Supplier) # " + InvoiceStructure.Number + " dated " + InvoiceStructure.Date + """");
-			
-			CommonUseClientServer.MessageToUser(MessageText);
-			
-			InvoiceObject = CustomerInvoiceNote.GetObject();
-			InvoiceObject.Write(DocumentWriteMode.UndoPosting);
-			
-		EndIf;
-		
+	BasisOperationKind = CommonUse.ObjectAttributeValue(DocumentRefProductionOrder, "OperationKind");
+	
+	If BasisOperationKind <> Enums.OperationKindsProductionOrder.Assembly
+		And BasisOperationKind <> Enums.OperationKindsProductionOrder.Disassembly
+		Then
+		Return;
 	EndIf;
 	
-EndProcedure //SubordinateInvoiceControl()
+	Query = New Query(
+	"SELECT
+	|	ProductionOrder.Ref AS Order,
+	|	ProductionOrder.Company AS Company,
+	|	CASE
+	|		WHEN FunctionalOptionInventoryReservation.Value
+	|			THEN ProductionOrder.CustomerOrder
+	|		ELSE ProductionOrder.BasisDocument
+	|	END AS CustomerOrder,
+	|	ProductionOrder.BasisDocument,
+	|	ProductionOrder.Start AS ReceiptDate,
+	|	ProductionOrder.Inventory.(
+	|		Ref.Start AS ReceiptDate,
+	|		ProductsAndServices,
+	|		Characteristic,
+	|		MeasurementUnit,
+	|		Quantity,
+	|		ProductsAndServices.VATRate AS VATRate
+	|	) AS Inventory
+	|FROM
+	|	Document.ProductionOrder AS ProductionOrder,
+	|	Constant.FunctionalOptionInventoryReservation AS FunctionalOptionInventoryReservation
+	|WHERE
+	|	ProductionOrder.Ref = &BasisDocument");
+	
+	If BasisOperationKind = Enums.OperationKindsProductionOrder.Disassembly Then
+		Query.Text = StrReplace(
+		Query.Text,
+		"ProductionOrder.Inventory.(",
+		"ProductionOrder.Products.(");
+	EndIf;
+	
+	Query.SetParameter("BasisDocument", DocumentRefProductionOrder);
+	
+	QueryResult = Query.Execute();
+	
+	If QueryResult.IsEmpty() Then
+		Return;
+	EndIf;
+	
+	QueryResultSelection = QueryResult.Select();
+	QueryResultSelection.Next();
+	
+	FillPropertyValues(ThisObject, QueryResultSelection);
+	
+	VATRate = Undefined;
+	VATRateFromProductsAndServices = False;
+	If VATTaxation = Enums.VATTaxationTypes.TaxableByVAT Then
+		If VATTaxation = Enums.VATTaxationTypes.NotTaxableByVAT Then
+			VATRate = SmallBusinessReUse.GetVATRateWithoutVAT();
+		Else
+			VATRate = SmallBusinessReUse.GetVATRateZero();
+		КонецЕсли;
+	Else
+		VATRateFromProductsAndServices = True;
+		VATRate = Company.DefaultVATRate;
+	EndIf;
+	
+	Inventory.Load(QueryResultSelection.Inventory.Unload());
+	
+	For Each RowInventory In Inventory Do
+		If VATRateFromProductsAndServices Then
+			If Not ValueIsFilled(RowInventory.VATRate) Then
+				RowInventory.VATRate = VATRate;
+			EndIf;
+		Else
+			RowInventory.VATRate = VATRate;
+		EndIf;
+	EndDo;
+	
+EndProcedure
 
-// Procedure fills the Quantity column by free balances at warehouse.
-//
 Procedure FillColumnReserveByBalances() Export
 	
 	Materials.LoadColumn(New Array(Materials.Count()), "Reserve");
@@ -482,9 +735,19 @@ Procedure FillColumnReserveByBalances() Export
 	
 EndProcedure // FillColumnReserveByBalances()
 
-// Procedure fills document when copying.
-//
-Procedure FillOnCopy()
+Procedure FillByDefault()
+	
+	If Not ValueIsFilled(OrderState) Then
+		ThisObject.OrderState = GetPurchaseOrderState();
+	EndIf;
+	
+EndProcedure
+
+#EndRegion
+
+#Region ServiceProceduresAndFunctions
+	
+Function GetPurchaseOrderState()
 	
 	If Constants.UsePurchaseOrderStates.Get() Then
 		User = Users.CurrentUser();
@@ -500,346 +763,10 @@ Procedure FillOnCopy()
 		OrderState = Constants.PurchaseOrdersInProgressStatus.Get();
 	EndIf;
 	
-	Closed = False;
+	Return OrderState;
 	
-EndProcedure // FillOnCopy()
+EndFunction // GetPurchaseOrderState()
 
-////////////////////////////////////////////////////////////////////////////////
-// EVENT HANDLERS
-
-// Procedure - event handler of the OnCopy object.
-//
-Procedure OnCopy(CopiedObject)
-	
-	SmallBusinessManagementElectronicDocumentsServer.ClearIncomingDocumentDateNumber(ThisObject);
-	
-	FillOnCopy();
-	
-EndProcedure // OnCopy()
-
-// Procedure - event handler FillingProcessor object.
-//
-Procedure Filling(FillingData, StandardProcessing) Export
-	
-	If Not ValueIsFilled(FillingData) Then
-		Return;
-	EndIf;
-	
-	If TypeOf(FillingData) = Type("CatalogRef.Counterparties") Then
-		
-		If FillingData.IsFolder Then
-			Raise NStr("en='Unable to select counterparty group.';ru='Нельзя выбирать группу контрагентов.'");
-		EndIf;
-		
-		Counterparty = FillingData;
-		Contract = FillingData.ContractByDefault;
-		CounterpartyPriceKind = FillingData.ContractByDefault.CounterpartyPriceKind;
-		
-		DocumentCurrency = Contract.SettlementsCurrency;
-		StructureByCurrency = InformationRegisters.CurrencyRates.GetLast(Date, New Structure("Currency", Contract.SettlementsCurrency));
-		ExchangeRate = StructureByCurrency.ExchangeRate;
-		Multiplicity = StructureByCurrency.Multiplicity;
-		
-		Return;
-		
-	ElsIf TypeOf(FillingData) = Type("DocumentRef.Event") Then
-	
-		Event = FillingData.Ref;
-		If FillingData.Parties.Count() > 0 AND TypeOf(FillingData.Parties[0].Contact) = Type("CatalogRef.Counterparties") Then
-			Counterparty = FillingData.Parties[0].Contact;
-			Contract = Counterparty.ContractByDefault;
-			CounterpartyPriceKind = Contract.CounterpartyPriceKind;
-			
-			DocumentCurrency = Contract.SettlementsCurrency;
-			StructureByCurrency = InformationRegisters.CurrencyRates.GetLast(Date, New Structure("Currency", Contract.SettlementsCurrency));
-			ExchangeRate = StructureByCurrency.ExchangeRate;
-			Multiplicity = StructureByCurrency.Multiplicity;
-		EndIf;
-		
-		Return;
-		
-	ElsIf TypeOf(FillingData) = Type("Structure") Then
-		
-		FillPropertyValues(ThisObject, FillingData);
-		
-	ElsIf TypeOf(FillingData) = Type("DocumentRef.CustomerOrder") Then
-		
-		FillUsingCustomerOrder(FillingData);
-		
-	ElsIf TypeOf(FillingData) = Type("DocumentRef.ProductionOrder") Then
-		
-		If FillingData.OperationKind = Enums.OperationKindsProductionOrder.Assembly Then
-		
-			Query = New Query(
-			"SELECT
-			|	ProductionOrder.Ref AS Order,
-			|	ProductionOrder.Company AS Company,
-			|	ProductionOrder.CustomerOrder,
-			|	ProductionOrder.Start AS ReceiptDate,
-			|	ProductionOrder.Inventory.(
-			|		Ref.Start AS ReceiptDate,
-			|		ProductsAndServices,
-			|		Characteristic,
-			|		MeasurementUnit,
-			|		Quantity,
-			|		ProductsAndServices.VATRate AS VATRate
-			|	) AS Inventory
-			|FROM
-			|	Document.ProductionOrder AS ProductionOrder
-			|WHERE
-			|	ProductionOrder.Ref = &BasisDocument");
-			
-		ElsIf FillingData.OperationKind = Enums.OperationKindsProductionOrder.Disassembly Then
-		
-			Query = New Query(
-			"SELECT
-			|	ProductionOrder.Ref AS Order,
-			|	ProductionOrder.Company AS Company,
-			|	ProductionOrder.CustomerOrder,
-			|	ProductionOrder.Start AS ReceiptDate,
-			|	ProductionOrder.Products.(
-			|		Ref.Start AS ReceiptDate,
-			|		ProductsAndServices,
-			|		Characteristic,
-			|		MeasurementUnit,
-			|		Quantity,
-			|		ProductsAndServices.VATRate AS VATRate
-			|	) AS Inventory
-			|FROM
-			|	Document.ProductionOrder AS ProductionOrder
-			|WHERE
-			|	ProductionOrder.Ref = &BasisDocument");
-			
-		Else
-			
-			Return;
-			
-		EndIf;
-		
-		Query.SetParameter("BasisDocument", FillingData);
-		
-		QueryResult = Query.Execute();
-		
-		If Not QueryResult.IsEmpty() Then
-			
-			QueryResultSelection = QueryResult.Select();
-			QueryResultSelection.Next();
-			
-			FillPropertyValues(ThisObject, QueryResultSelection);
-			
-			VATRate = Undefined;
-			VATTaxationFromProductsAndServices = False;
-			If VATTaxation = Enums.VATTaxationTypes.TaxableByVAT Then
-				If VATTaxation = Enums.VATTaxationTypes.NotTaxableByVAT Then
-					VATRate = SmallBusinessReUse.GetVATRateWithoutVAT();
-				Else
-					VATRate = SmallBusinessReUse.GetVATRateZero();
-				EndIf;
-			Else
-				VATTaxationFromProductsAndServices = True;
-				VATRate = Company.DefaultVATRate;
-			EndIf;
-			
-			Inventory.Load(QueryResultSelection.Inventory.Unload());
-			
-			For Each StringInventory IN Inventory Do
-				If VATTaxationFromProductsAndServices Then
-					If Not ValueIsFilled(StringInventory.VATRate) Then
-						StringInventory.VATRate = VATRate;
-					EndIf;
-				Else
-					StringInventory.VATRate = VATRate;
-				EndIf;
-			EndDo;
-			
-		EndIf;
-		
-	EndIf;
-	
-EndProcedure // FillingProcessor()
-
-// Procedure - event handler BeforeWrite object.
-//
-Procedure BeforeWrite(Cancel, WriteMode, PostingMode)
-	
-	If DataExchange.Load Then
-		Return;
-	EndIf;
-	
-	If ReceiptDatePosition = Enums.AttributePositionOnForm.InHeader Then
-		For Each TabularSectionRow IN Inventory Do
-			If TabularSectionRow.ReceiptDate <> ReceiptDate Then
-				TabularSectionRow.ReceiptDate = ReceiptDate;
-			EndIf;
-		EndDo;
-	EndIf;
-	
-	If ReceiptDatePosition = Enums.AttributePositionOnForm.InTabularSection Then
-		If Inventory.Count() > 0 Then
-			ReceiptDate = Inventory[0].ReceiptDate;
-		EndIf;
-	EndIf;
-	
-	If ValueIsFilled(Counterparty)
-	AND Not Counterparty.DoOperationsByContracts
-	AND Not ValueIsFilled(Contract) Then
-		Contract = Counterparty.ContractByDefault;
-	EndIf;
-	
-	DocumentAmount = Inventory.Total("Total");
-	
-EndProcedure // BeforeWrite()
-
-// Procedure - event handler FillCheckProcessing object.
-//
-Procedure FillCheckProcessing(Cancel, CheckedAttributes)
-	
-	If DataExchange.Load Then
-		Return;
-	EndIf;
-	
-	If Not Counterparty.DoOperationsByContracts Then
-		SmallBusinessServer.DeleteAttributeBeingChecked(CheckedAttributes, "Contract");
-	EndIf;
-	
-	If Materials.Total("Reserve") > 0 Then
-		
-		For Each StringMaterials in Materials Do
-		
-			If StringMaterials.Reserve > 0 AND Not ValueIsFilled(StructuralUnitReserve) Then
-				
-				MessageText = NStr("en='The reserve warehouse is not filled.';ru='Не заполнен склад резерва.'");
-				SmallBusinessServer.ShowMessageAboutError(ThisObject, MessageText, , , "StructuralUnitReserve", Cancel);
-				
-			EndIf;
-		
-		EndDo;
-	
-	EndIf;
-	
-	If SchedulePayment
-	   AND CashAssetsType = Enums.CashAssetTypes.Noncash Then
-	   
-		SmallBusinessServer.DeleteAttributeBeingChecked(CheckedAttributes, "PettyCash");
-		
-	ElsIf SchedulePayment
-	   AND CashAssetsType = Enums.CashAssetTypes.Cash Then
-	   
-		SmallBusinessServer.DeleteAttributeBeingChecked(CheckedAttributes, "BankAccount");
-		
-	Else
-		
-		SmallBusinessServer.DeleteAttributeBeingChecked(CheckedAttributes, "PettyCash");
-		SmallBusinessServer.DeleteAttributeBeingChecked(CheckedAttributes, "BankAccount");
-		
-	EndIf;
-	
-	If SchedulePayment
-	   AND PaymentCalendar.Count() = 1
-	   AND Not ValueIsFilled(PaymentCalendar[0].PayDate) Then
-		
-		MessageText = NStr("en='Field ""Payment date"" is required.';ru='Поле ""Дата оплаты"" не заполнено.'");
-		SmallBusinessServer.ShowMessageAboutError(ThisObject, MessageText, , , "PayDate", Cancel);
-		SmallBusinessServer.DeleteAttributeBeingChecked(CheckedAttributes, "PaymentCalendar.PaymentDate");
-		
-	EndIf;
-	
-	If Constants.FunctionalOptionInventoryReservation.Get()
-		AND OperationKind = Enums.OperationKindsPurchaseOrder.OrderForProcessing Then
-		
-		For Each StringMaterials IN Materials Do
-			
-			If StringMaterials.Reserve > StringMaterials.Quantity Then
-				
-				MessageText = NStr("en='In string No.%Number% of tabular section ""Recycling materials"" quantity of the write-off positions from reserve exceeds the total materials.';ru='В строке №%Номер% табл. части ""Материалы в переработку"" количество позиций к списанию из резерва превышает общее количество материалов.'");
-				MessageText = StrReplace(MessageText, "%Number%", StringMaterials.LineNumber);
-				SmallBusinessServer.ShowMessageAboutError(
-					ThisObject,
-					MessageText,
-					"Materials",
-					StringMaterials.LineNumber,
-					"Reserve",
-					Cancel
-				);
-				
-			EndIf;	
-			
-		EndDo;		
-		
-	EndIf;
-	
-	If Not Constants.UsePurchaseOrderStates.Get() Then
-		
-		If Not ValueIsFilled(OrderState) Then
-			MessageText = NStr("en='Field ""Order state"" is not filled. IN the accounting parameters settings it is necessary to install the statuses values.';ru='Поле ""Состояние заказа"" не заполнено. В настройках параметров учета необходимо установить значения состояний.'");
-			SmallBusinessServer.ShowMessageAboutError(ThisObject, MessageText, , , "OrderState", Cancel);
-		EndIf;
-		
-	EndIf;
-	
-	If ReceiptDatePosition = Enums.AttributePositionOnForm.InTabularSection Then
-		CheckedAttributes.Delete(CheckedAttributes.Find("ReceiptDate"));
-	Else
-		CheckedAttributes.Delete(CheckedAttributes.Find("Inventory.ReceiptDate"));
-	EndIf;
-	
-EndProcedure // FillCheckProcessing()
-
-// Procedure - event handler Posting object.
-//
-Procedure Posting(Cancel, PostingMode)
-	
-	// Initialization of additional properties for document posting
-	SmallBusinessServer.InitializeAdditionalPropertiesForPosting(Ref, AdditionalProperties);
-	
-	// Initialization of document data
-	Documents.PurchaseOrder.InitializeDocumentData(Ref, AdditionalProperties);
-	
-	// Preparation of record sets
-	SmallBusinessServer.PrepareRecordSetsForRecording(ThisObject);
-	
-	// Registering in accounting sections
-	SmallBusinessServer.ReflectInventoryTransferSchedule(AdditionalProperties, RegisterRecords, Cancel);
-	SmallBusinessServer.ReflectPurchaseOrders(AdditionalProperties, RegisterRecords, Cancel);
-	SmallBusinessServer.ReflectInventoryDemand(AdditionalProperties, RegisterRecords, Cancel);
-	SmallBusinessServer.ReflectOrdersPlacement(AdditionalProperties, RegisterRecords, Cancel);
-	SmallBusinessServer.ReflectInventory(AdditionalProperties, RegisterRecords, Cancel);
-	SmallBusinessServer.ReflectPaymentCalendar(AdditionalProperties, RegisterRecords, Cancel);
-	SmallBusinessServer.ReflectInvoicesAndOrdersPayment(AdditionalProperties, RegisterRecords, Cancel);
-	
-	// Writing of record sets
-	SmallBusinessServer.WriteRecordSets(ThisObject);
-
-	// Control
-	Documents.PurchaseOrder.RunControl(Ref, AdditionalProperties, Cancel);
-	
-	AdditionalProperties.ForPosting.StructureTemporaryTables.TempTablesManager.Close();
-	
-EndProcedure
-
-// Procedure - event handler UndoPosting object.
-//
-Procedure UndoPosting(Cancel)
-	
-	// Initialization of additional properties to undo document posting
-	SmallBusinessServer.InitializeAdditionalPropertiesForPosting(Ref, AdditionalProperties);
-	
-	// Preparation of record sets
-	SmallBusinessServer.PrepareRecordSetsForRecording(ThisObject);
-	
-	// Writing of record sets
-	SmallBusinessServer.WriteRecordSets(ThisObject);
-	
-	// Control
-	Documents.PurchaseOrder.RunControl(Ref, AdditionalProperties, Cancel, True);
-	
-	// Subordinate invoice note (supplier)
-	If Not Cancel Then
-		
-		SubordinatedInvoiceControl();
-		
-	EndIf;
-	
-EndProcedure
+#EndRegion
 
 #EndIf

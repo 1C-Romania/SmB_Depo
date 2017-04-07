@@ -117,13 +117,13 @@ Function GetXDTOObject(Data)
 			ElsIf CurRow.Type = Enums.ContactInformationTypes.Fax Then
 				PassedObject.Fax = CurRow.Presentation;
 			ElsIf CurRow.Type = Enums.ContactInformationTypes.Address
-				AND CurRow.Type = Catalogs.ContactInformationTypes.CounterpartyPostalAddress Then
+				AND CurRow.Type = Catalogs.ContactInformationKinds.CounterpartyPostalAddress Then
 				CounterpartyPostalAddress = CurRow.Presentation;
 			ElsIf CurRow.Type = Enums.ContactInformationTypes.Address
-				AND CurRow.Type = Catalogs.ContactInformationTypes.CounterpartyLegalAddress Then
+				AND CurRow.Type = Catalogs.ContactInformationKinds.CounterpartyLegalAddress Then
 				CounterpartyLegalAddress = CurRow.Presentation;
 			ElsIf CurRow.Type = Enums.ContactInformationTypes.Address
-				AND CurRow.Type = Catalogs.ContactInformationTypes.CounterpartyFactAddress Then
+				AND CurRow.Type = Catalogs.ContactInformationKinds.CounterpartyFactAddress Then
 				CounterpartyFactAddress = CurRow.Presentation;
 			ElsIf CurRow.Type = Enums.ContactInformationTypes.EmailAddress Then
 				PassedObject.Email = CurRow.Presentation;
@@ -873,7 +873,7 @@ Function FindCreateCounterparties(ExchangeNode, XDTODataObject)
 			NeedToWriteObject = True;
 		EndIf;
 		If Not ValueIsFilled(Object.LegalEntityIndividual) Then
-			Object.LegalEntityIndividual = Enums.LegalEntityIndividual.LegalEntity;
+			Object.LegalEntityIndividual = Enums.CounterpartyKinds.LegalEntity;
 			NeedToWriteObject = True;
 		EndIf;
 		If Not ValueIsFilled(Object.Responsible) Then
@@ -911,7 +911,7 @@ Function FindCreateCounterparties(ExchangeNode, XDTODataObject)
 			FoundAddressString = False;
 			For Each CurRow IN Object.ContactInformation Do
 				If CurRow.Type = Enums.ContactInformationTypes.Address
-				   AND CurRow.Type = Catalogs.ContactInformationTypes.CounterpartyFactAddress Then
+				   AND CurRow.Type = Catalogs.ContactInformationKinds.CounterpartyFactAddress Then
 					FoundAddressString = True;
 					If CurRow.Presentation <> XDTODataObject.Adress Then
 						CurRow.Presentation = XDTODataObject.Adress;
@@ -922,7 +922,7 @@ Function FindCreateCounterparties(ExchangeNode, XDTODataObject)
 			If Not FoundAddressString Then
 				NewRow = Object.ContactInformation.Add();
 				NewRow.Type = Enums.ContactInformationTypes.Address;
-				NewRow.Type = Catalogs.ContactInformationTypes.CounterpartyFactAddress;
+				NewRow.Type = Catalogs.ContactInformationKinds.CounterpartyFactAddress;
 				NewRow.Presentation = XDTODataObject.Adress;
 				NeedToWriteObject = True;
 			EndIf;
@@ -931,7 +931,7 @@ Function FindCreateCounterparties(ExchangeNode, XDTODataObject)
 			FoundString = False;
 			For Each CurRow IN Object.ContactInformation Do
 				If CurRow.Type =  Enums.ContactInformationTypes.Phone
-				   AND CurRow.Type = Catalogs.ContactInformationTypes.CounterpartyPhone Then
+				   AND CurRow.Type = Catalogs.ContactInformationKinds.CounterpartyPhone Then
 					FoundString = True;
 					If CurRow.Presentation <> XDTODataObject.Tel Then
 						CurRow.Presentation = XDTODataObject.Tel;
@@ -942,7 +942,7 @@ Function FindCreateCounterparties(ExchangeNode, XDTODataObject)
 			If Not FoundString Then
 				NewRow = Object.ContactInformation.Add();
 				NewRow.Type = Enums.ContactInformationTypes.Phone;
-				NewRow.Type = Catalogs.ContactInformationTypes.CounterpartyPhone;
+				NewRow.Type = Catalogs.ContactInformationKinds.CounterpartyPhone;
 				NewRow.Presentation = XDTODataObject.Tel;
 				NeedToWriteObject = True;
 			EndIf;
@@ -951,7 +951,7 @@ Function FindCreateCounterparties(ExchangeNode, XDTODataObject)
 			FoundString = False;
 			For Each CurRow IN Object.ContactInformation Do
 				If CurRow.Type =  Enums.ContactInformationTypes.EmailAddress
-				   AND CurRow.Type = Catalogs.ContactInformationTypes.CounterpartyEmail Then
+				   AND CurRow.Type = Catalogs.ContactInformationKinds.CounterpartyEmail Then
 					FoundString = True;
 					If CurRow.Presentation <> XDTODataObject.Email Then
 						CurRow.Presentation = XDTODataObject.Email;
@@ -962,7 +962,7 @@ Function FindCreateCounterparties(ExchangeNode, XDTODataObject)
 			If Not FoundString Then
 				NewRow = Object.ContactInformation.Add();
 				NewRow.Type = Enums.ContactInformationTypes.EmailAddress;
-				NewRow.Type = Catalogs.ContactInformationTypes.CounterpartyEmail;
+				NewRow.Type = Catalogs.ContactInformationKinds.CounterpartyEmail;
 				NewRow.Presentation = XDTODataObject.Email;
 				NeedToWriteObject = True;
 			EndIf;

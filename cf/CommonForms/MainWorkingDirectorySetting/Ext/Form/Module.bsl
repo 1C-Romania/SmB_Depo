@@ -101,7 +101,7 @@ Procedure ClearLocalFilesCache(Command)
 	
 	QuestionText =
 		NStr("en='From the main working directory all files
-		|will be deleted, except those borrowed by you for editing.
+		|will be deleted, except those locked by you for editing.
 		|
 		|Continue?';ru='Из основного рабочего каталога будут удалены все файлы,
 		|кроме занятых вами для редактирования.
@@ -273,17 +273,3 @@ Procedure SetNewWorkingDirectoryEnd(Result, NewDirectory) Export
 EndProcedure
 
 #EndRegion
-
-
-
-
-
-
-
-
-
-
-
-
-
-

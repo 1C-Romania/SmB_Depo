@@ -212,47 +212,6 @@ EndProcedure // FillByPayrollSheet()
 // Parameters:
 //  FillingData - Structure - Data on filling the document.
 //	
-Procedure FillBySupplierInvoiceNote(FillingData)
-	
-	Query = New Query();
-	
-	Query.SetParameter("Ref", FillingData);
-	Query.SetParameter("Date", CurrentDate());
-	
-	// Fill document header data.
-	Query.Text =
-	"SELECT
-	|	VALUE(Enum.OperationKindsCashReceipt.FromCustomer) AS OperationKind,
-	|	&Ref AS BasisDocument,
-	|	DocumentTable.Company AS Company,
-	|	DocumentTable.Number AS IncomingDocumentNumber,
-	|	DocumentTable.Date AS IncomingDocumentDate,
-	|	DocumentTable.DocumentCurrency AS DocumentCurrency,
-	|	DocumentTable.Counterparty AS Counterparty,
-	|	DocumentTable.Contract AS Contract,
-	|	DocumentTable.DocumentAmount AS DocumentAmount
-	|FROM
-	|	Document.SupplierInvoiceNote AS DocumentTable
-	|WHERE
-	|	DocumentTable.Ref = &Ref";
-	
-	QueryResult = Query.Execute();
-	
-	If Not QueryResult.IsEmpty() Then
-		
-		Selection = QueryResult.Select();
-		Selection.Next();
-		FillPropertyValues(ThisObject, Selection);
-		
-	EndIf;
-	
-EndProcedure // FillBySupplierInvoiceNote()
-
-// Procedure of filling the document on the basis.
-//
-// Parameters:
-//  FillingData - Structure - Data on filling the document.
-//	
 Procedure FillByAdditionalCosts(FillingData)
 	
 	Query = New Query();
@@ -391,8 +350,6 @@ Procedure Filling(FillingData, StandardProcessing) Export
 		FillByReportToPrincipal(FillingData);
 	ElsIf TypeOf(FillingData) = Type("DocumentRef.PayrollSheet") Then
 		FillByPayrollSheet(FillingData);
-	ElsIf TypeOf(FillingData) = Type("DocumentRef.SupplierInvoiceNote") Then
-		FillBySupplierInvoiceNote(FillingData);
 	ElsIf TypeOf(FillingData) = Type("DocumentRef.AdditionalCosts") Then
 		FillByAdditionalCosts(FillingData);
 	ElsIf TypeOf(FillingData) = Type("DocumentRef.SubcontractorReport") Then

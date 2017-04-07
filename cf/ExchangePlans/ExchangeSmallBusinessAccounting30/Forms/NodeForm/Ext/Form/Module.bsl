@@ -313,17 +313,3 @@ Procedure OnChangeOfDataSynchronization()
 	EndIf;
 
 EndProcedure
-
-
-
-
-
-
-
-
-
-
-
-
-
-

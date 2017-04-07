@@ -154,7 +154,7 @@
 							<DataPath>Object.Status</DataPath>
 							<SkipOnInput>true</SkipOnInput>
 							<Width>1</Width>
-							<BackColor>style:ManagingFieldBackgroundColor</BackColor>
+							<BackColor>style:MasterFieldBackground</BackColor>
 							<ContextMenu name="StateContextMenu" id="34"/>
 							<ExtendedTooltip name="StateExtendedTooltip" id="231"/>
 							<Events>
@@ -165,8 +165,8 @@
 						<InputField name="Company" id="8">
 							<DataPath>Object.Company</DataPath>
 							<SkipOnInput>true</SkipOnInput>
-							<ContextMenu name="CounterpartyContextMenu" id="9"/>
-							<ExtendedTooltip name="CounterpartyExtendedTooltip" id="230"/>
+							<ContextMenu name="CompanyContextMenu" id="9"/>
+							<ExtendedTooltip name="CompanyExtendedTooltip" id="230"/>
 							<Events>
 								<Event name="OnChange">CompanyOnChange</Event>
 							</Events>
@@ -549,7 +549,7 @@
 									<ChildItems>
 										<InputField name="BalanceBeginPeriod" id="323">
 											<DataPath>Object.BalanceBeginPeriod</DataPath>
-											<BackColor>style:ManagingFieldBackgroundColor</BackColor>
+											<BackColor>style:MasterFieldBackground</BackColor>
 											<ContextMenu name="BalanceBeginOfPeriodContextMenu" id="324"/>
 											<ExtendedTooltip name="BalanceBeginPeriodExtendedTooltip" id="325"/>
 										</InputField>

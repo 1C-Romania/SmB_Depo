@@ -34,17 +34,3 @@ Procedure ReportSelection(Item, Area, StandardProcessing)
 EndProcedure
 
 #EndRegion
-
-
-
-
-
-
-
-
-
-
-
-
-
-

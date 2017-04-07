@@ -1,11 +1,11 @@
 ﻿
-#Region FormEventsHandlers
+#Region FormEventHandlers
 //
 
 &AtServer
 Procedure OnCreateAtServer(Cancel, StandardProcessing)
 	
-	If Parameters.Property("AutoTest") Then
+	If Parameters.Property("Autotest") Then
 		Return;
 	EndIf;
 	
@@ -16,8 +16,8 @@ Procedure OnCreateAtServer(Cancel, StandardProcessing)
 	Parameters.Property("ChoiceMode", ChoiceMode);
 	Items.Classifier.ChoiceMode = ChoiceMode;
 	
-	// Service attributes
-	ClassifierFields = "Code, Description, DescriptionFull, AlphaCode2, AlphaCode3";
+	// Internal attributes
+	ClassifierFields = "Code, Description, LongDescription, AlphaCode2, AlphaCode3";
 	
 	Meta = Metadata.Catalogs.WorldCountries;
 	ClassifierObjectPresentation = Meta.ExtendedObjectPresentation;
@@ -31,7 +31,7 @@ Procedure OnCreateAtServer(Cancel, StandardProcessing)
 		ClassifierObjectPresentation = " (" + ClassifierObjectPresentation + ")";
 	EndIf;
 	
-	ClassifierData = ClassifierCondition();
+	ClassifierData = ClassifierStatus();
 	Classifier.Load(ClassifierData);
 	
 	Filter = Classifier.FindRows(New Structure("Code", Parameters.CurrentRow.Code));
@@ -42,34 +42,34 @@ EndProcedure
 
 #EndRegion
 
-#Region FormTableItemEventHandlersClassifier
+#Region ClassifierFormTableItemEventHandlers
 //
 
 &AtClient
-Procedure ClassifierSelection(Item, SelectedRow, Field, StandardProcessing)
+Procedure ClassifierChoice(Item, SelectedRow, Field, StandardProcessing)
 	StandardProcessing = False;
 	
 	If Not ChoiceMode Then 
-		OpenFormElementClassifier(Item.CurrentData);
+		OpenClassifierItemForm(Item.CurrentData);
 		Return;
 	EndIf;
 	
 	If TypeOf(SelectedRow)=Type("Array") Then
-		SelectionStringID = SelectedRow[0];
+		SelectedRowID = SelectedRow[0];
 	Else
-		SelectionStringID = SelectedRow;
+		SelectedRowID = SelectedRow;
 	EndIf;
 	
-	NotifyAboutClassifierElementSelection(SelectionStringID);
+	NotifyClassifierItemChoice(SelectedRowID);
 EndProcedure
 
 &AtClient
-Procedure ClassifierValueSelection(Item, Value, StandardProcessing)
-	NotifyAboutClassifierElementSelection(Value);
+Procedure ClassifierValueChoice(Item, Value, StandardProcessing)
+	NotifyClassifierItemChoice(Value);
 EndProcedure
 
 &AtClient
-Procedure ClassifierBeforeStartAdding(Item, Cancel, Copy, Parent, Group)
+Procedure ClassifierBeforeAddRow(Item, Cancel, Clone, Parent, Group)
 	Cancel = True;
 EndProcedure
 
@@ -79,47 +79,47 @@ Procedure ClassifierBeforeDelete(Item, Cancel)
 EndProcedure
 
 &AtClient
-Procedure ClassifierBeforeChange(Item, Cancel)
+Procedure ClassifierBeforeRowChange(Item, Cancel)
 	Cancel = True;
-	OpenFormElementClassifier(Items.Classifier.CurrentData);
+	OpenClassifierItemForm(Items.Classifier.CurrentData);
 EndProcedure
 
 #EndRegion
 
-#Region ServiceProceduresAndFunctions
+#Region InternalProceduresAndFunctions
 //
 
 &AtClient
-Procedure OpenFormElementClassifier(FillingData, IsNew=False)
+Procedure OpenClassifierItemForm(FillingData, IsNew=False)
 	If FillingData=Undefined Then
 		Return;
 	EndIf;
 	
 	FormParameters = New Structure;
-	FormParameters.Insert("Basis", New Structure(ClassifierFields));
-	FillPropertyValues(FormParameters.Basis, FillingData);
+	FormParameters.Insert("Base", New Structure(ClassifierFields));
+	FillPropertyValues(FormParameters.Base, FillingData);
 	If IsNew Then
-		FormParameters.Basis.Insert("Code", "--");
+		FormParameters.Base.Insert("Code", "--");
 	Else
 		FormParameters.Insert("ReadOnly", True);
 	EndIf;
 	Form = OpenForm("Catalog.WorldCountries.ObjectForm", FormParameters, Items.Classifier);
-	If Not IsNew AND Form.AutoTitle Then 
+	If Not IsNew And Form.AutoTitle Then 
 		Form.AutoTitle = False;
 		Form.Title = FillingData.Description + ClassifierObjectPresentation;
 	EndIf;
 EndProcedure
 
 &AtClient
-Procedure NotifyAboutClassifierElementSelection(SelectionStringID)
-	AllStringData = Classifier.FindByID(SelectionStringID);
-	If AllStringData<>Undefined Then
+Procedure NotifyClassifierItemChoice(SelectedRowID)
+	AllRowData = Classifier.FindByID(SelectedRowID);
+	If AllRowData<>Undefined Then
 		RowData = New Structure(ClassifierFields);
-		FillPropertyValues(RowData, AllStringData);
+		FillPropertyValues(RowData, AllRowData);
 		
-		ChoiceData = ChoiceDataElementClassifier(RowData);
+		ChoiceData = ClassifierItemChoiceData(RowData);
 		If ChoiceData.IsNew Then
-			NewElementsCreatiopPublicize(ChoiceData.Ref);
+			NotifyItemCreation(ChoiceData.Ref);
 		EndIf;
 		
 		NotifyChoice(ChoiceData.Ref);
@@ -127,29 +127,29 @@ Procedure NotifyAboutClassifierElementSelection(SelectionStringID)
 EndProcedure
 
 &AtServerNoContext
-Function ChoiceDataElementClassifier(Val CountryInformation)
-	// We are searching by code only, as all codes are specified in the classifier.
-	Ref = Catalogs.WorldCountries.FindByCode(CountryInformation.Code);
+Function ClassifierItemChoiceData(Val CountryData)
+	// Searching by code only, because all codes are specified in the classifier
+	Ref = Catalogs.WorldCountries.FindByCode(CountryData.Code);
 	IsNew = Not ValueIsFilled(Ref);
 	If IsNew Then
 		Country = Catalogs.WorldCountries.CreateItem();
-		FillPropertyValues(Country, CountryInformation);
+		FillPropertyValues(Country, CountryData);
 		Country.Write();
 		Ref = Country.Ref;
 	EndIf;
 	
-	Return New Structure("Ref, IsNew, Code", Ref, IsNew, CountryInformation.Code);
+	Return New Structure("Ref, IsNew, Code", Ref, IsNew, CountryData.Code);
 EndFunction
 
 &AtServerNoContext
-Function ClassifierCondition()
+Function ClassifierStatus()
 	Data = Catalogs.WorldCountries.ClassifierTable();
 	
 	Data.Columns.Add("IconIndex", New TypeDescription("Number", New NumberQualifiers(2, 0)));
 	Data.FillValues(8, "IconIndex");
 	
 	Query = New Query("SELECT Code FROM Catalog.WorldCountries WHERE Predefined");
-	For Each PredefinedString IN Query.Execute().Unload() Do
+	For Each PredefinedString In Query.Execute().Unload() Do
 		DataRow = Data.Find(PredefinedString.Code, "Code");
 		If DataRow<>Undefined Then
 			DataRow.IconIndex = 5;
@@ -160,23 +160,9 @@ Function ClassifierCondition()
 EndFunction
 
 &AtClient
-Procedure NewElementsCreatiopPublicize(Ref)
+Procedure NotifyItemCreation(Ref)
 	NotifyWritingNew(Ref);
 	Notify("Catalog.WorldCountries.Update", Ref, ThisObject);
 EndProcedure
 
 #EndRegion
-
-
-
-
-
-
-
-
-
-
-
-
-
-

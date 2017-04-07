@@ -282,17 +282,3 @@ Procedure SettingFileChoiceProcessing(Result, Address, FileName, AdditionalParam
 	EndIf;
 	
 EndProcedure
-
-
-
-
-
-
-
-
-
-
-
-
-
-

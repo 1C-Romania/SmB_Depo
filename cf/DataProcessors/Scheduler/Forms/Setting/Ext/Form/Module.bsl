@@ -191,17 +191,3 @@ Procedure TimeLimitToOnChange(Item)
 	EndIf;
 	
 EndProcedure // TimeLimitToOnChange()
-
-
-
-
-
-
-
-
-
-
-
-
-
-

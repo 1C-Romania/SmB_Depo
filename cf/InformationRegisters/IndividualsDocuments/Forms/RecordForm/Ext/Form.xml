@@ -4,6 +4,9 @@
 	<CommandBarLocation>Top</CommandBarLocation>
 	<VerticalScroll>useIfNecessary</VerticalScroll>
 	<AutoCommandBar name="FormCommandBar" id="-1"/>
+	<Events>
+		<Event name="AfterWrite">AfterWrite</Event>
+	</Events>
 	<ChildItems>
 		<InputField name="Ind" id="18">
 			<DataPath>Record.Ind</DataPath>
@@ -43,24 +46,37 @@
 					<v8:content>Серия и номер</v8:content>
 				</v8:item>
 			</ToolTip>
-			<HorizontalStretch>false</HorizontalStretch>
 			<Group>Horizontal</Group>
 			<Representation>None</Representation>
 			<ShowTitle>false</ShowTitle>
 			<ExtendedTooltip name="GroupNumberSeriesAndExtendedTooltip" id="29"/>
 			<ChildItems>
-				<InputField name="Series" id="7">
-					<DataPath>Record.Series</DataPath>
-					<Wrap>false</Wrap>
-					<ContextMenu name="SeriesContextMenu" id="8"/>
-					<ExtendedTooltip name="SeriesExtendedTooltip" id="30"/>
-				</InputField>
-				<InputField name="Number" id="9">
-					<DataPath>Record.Number</DataPath>
-					<Wrap>false</Wrap>
-					<ContextMenu name="NumberContextMenu" id="10"/>
-					<ExtendedTooltip name="NumberExtendedTooltip" id="31"/>
-				</InputField>
+				<UsualGroup name="GroupNestedSeriesNumber" id="39">
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Group nested series number</v8:content>
+						</v8:item>
+					</Title>
+					<Group>Horizontal</Group>
+					<Representation>None</Representation>
+					<ShowTitle>false</ShowTitle>
+					<ExtendedTooltip name="GroupNestedSeriesNumberExtendedTooltip" id="40"/>
+					<ChildItems>
+						<InputField name="Series" id="7">
+							<DataPath>Record.Series</DataPath>
+							<Wrap>false</Wrap>
+							<ContextMenu name="SeriesContextMenu" id="8"/>
+							<ExtendedTooltip name="SeriesExtendedTooltip" id="30"/>
+						</InputField>
+						<InputField name="Number" id="9">
+							<DataPath>Record.Number</DataPath>
+							<Wrap>false</Wrap>
+							<ContextMenu name="NumberContextMenu" id="10"/>
+							<ExtendedTooltip name="NumberExtendedTooltip" id="31"/>
+						</InputField>
+					</ChildItems>
+				</UsualGroup>
 			</ChildItems>
 		</UsualGroup>
 		<UsualGroup name="GroupDateIssuanceAndValidityPeriod" id="20">
@@ -110,7 +126,6 @@
 		</InputField>
 		<InputField name="DepartmentCode" id="13">
 			<DataPath>Record.DepartmentCode</DataPath>
-			<HorizontalStretch>false</HorizontalStretch>
 			<Wrap>false</Wrap>
 			<ContextMenu name="DepartmentCodeContextMenu" id="14"/>
 			<ExtendedTooltip name="DepartmentCodeExtendedTooltip" id="36"/>

@@ -239,17 +239,3 @@ Procedure SetEncodingCommandPresentation(Presentation)
 EndProcedure
 
 #EndRegion
-
-
-
-
-
-
-
-
-
-
-
-
-
-

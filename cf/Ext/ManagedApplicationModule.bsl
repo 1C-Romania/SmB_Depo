@@ -1,7 +1,9 @@
 ﻿// StandardSubsystems
 
-// Storage of global variables.
+// StandardSubsystems.BaseFunctionality
 //  
+// Flag that shows whether the file system installation must be suggested in the current session.
+Var SuggestFileSystemExtensionInstallation Export;
 // ApplicationParameters - Map - variable storage where:
 //   * Key - String - variable name in the format as LibraryName.VariableName;
 //   * Value - Arbitrary - variable value.

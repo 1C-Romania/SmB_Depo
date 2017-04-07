@@ -683,17 +683,3 @@ Procedure ImportAttachmentsFromFiles()
 EndProcedure
 
 #EndRegion
-
-
-
-
-
-
-
-
-
-
-
-
-
-

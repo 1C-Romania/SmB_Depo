@@ -5,8 +5,7 @@
 // Procedure generates document printing form by the specified layout.
 //
 Function PrintForm(ObjectsArray, PrintObjects, DocumentType)
-	
-	
+
 EndFunction // PrintForm()
 
 // Generate printed forms of objects
@@ -21,8 +20,7 @@ EndFunction // PrintForm()
 //   table documents OutputParameters       - Structure        - Parameters of generated table documents
 //
 Procedure Print(ObjectsArray, PrintParameters, PrintFormsCollection, PrintObjects, OutputParameters) Export
-	
-	
+
 EndProcedure
 
 // Fills in the list of printing commands.
@@ -31,8 +29,7 @@ EndProcedure
 //   PrintCommands - ValueTable - see fields' content in the PrintManagement.CreatePrintCommandsCollection function.
 //
 Procedure AddPrintCommands(PrintCommands) Export
-	
-	
+
 EndProcedure
 
 #EndRegion

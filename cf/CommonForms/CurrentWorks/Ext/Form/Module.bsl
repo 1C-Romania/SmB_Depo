@@ -1042,17 +1042,3 @@ Procedure MyRemindersTotalRemindersClick(Item, StandardProcessing)
 	OpenForm("InformationRegister.UserReminders.Form.MyReminders");
 	
 EndProcedure // MyRemindersTotalRemindersClick()
-
-
-
-
-
-
-
-
-
-
-
-
-
-

@@ -12,7 +12,7 @@ Procedure GenerateTableCashAssets(DocumentRef, StructureAdditionalProperties)
 	Query.SetParameter("PointInTime", New Boundary(StructureAdditionalProperties.ForPosting.PointInTime, BoundaryType.Including));
 	Query.SetParameter("ControlPeriod", StructureAdditionalProperties.ForPosting.PointInTime.Date);
 	Query.SetParameter("Company", StructureAdditionalProperties.ForPosting.Company);
-	Query.SetParameter("CashTransfering", NStr("en='Cash flow';ru='Движение денежных средств'"));
+	Query.SetParameter("CashTransfering", NStr("ru = 'Перемещение денежных средств'; en = 'Cash flow'"));
 	Query.SetParameter("ExchangeDifference", NStr("en='Exchange rate difference';ru='Курсовая разница'"));
 	
 	Query.Text =

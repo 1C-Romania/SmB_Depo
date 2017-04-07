@@ -189,17 +189,3 @@ Procedure DefineOpportunitiesForProperties(Instruction, ApplicationsSetting, Ext
 EndProcedure
 
 #EndRegion
-
-
-
-
-
-
-
-
-
-
-
-
-
-

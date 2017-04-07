@@ -40,17 +40,3 @@ Procedure FilterResponsibleOnChange(Item)
 EndProcedure
 
 #EndRegion
-
-
-
-
-
-
-
-
-
-
-
-
-
-

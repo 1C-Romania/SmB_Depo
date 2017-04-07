@@ -425,7 +425,7 @@ EndFunction
 	
 &AtClient
 Function NewDocumentName()
-	Return NStr("en = 'New'");
+	Return NStr("en='New';ru='Новый'");
 EndFunction
 
 &AtClient
@@ -528,17 +528,3 @@ Procedure WhenOnlyReadingReceivingEnd(ReadOnly, AdditionalParameters) Export
 EndProcedure
 
 #EndRegion
-
-
-
-
-
-
-
-
-
-
-
-
-
-

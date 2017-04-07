@@ -135,17 +135,3 @@ Procedure InformationRegisterListOnChange(Item)
 	UpdateRegisterPageTitle(TitlePagesInformationRegisters, ListOfInformationRegisters);
 	
 EndProcedure // InformationRegisterListOnChange()
-
-
-
-
-
-
-
-
-
-
-
-
-
-

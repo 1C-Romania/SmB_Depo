@@ -31,17 +31,3 @@ Procedure OnReadAtServer(CurrentObject)
 EndProcedure
 
 #EndRegion
-
-
-
-
-
-
-
-
-
-
-
-
-
-

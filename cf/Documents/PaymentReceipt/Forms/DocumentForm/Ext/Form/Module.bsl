@@ -2511,20 +2511,6 @@ Procedure DefineNeedToRecalculateAmountsOnRateChange(ClosingResult, AdditionalPa
 	
 EndProcedure // DetermineNeedToRecalculateAmountsOnRateChange()
 
-&AtClient
-// Procedure-handler response on question about filling of subordinate document Invoice
-//
-Procedure DefineNecessityToFillSubordinateInvoiceNote(ClosingResult, AdditionalParameters) Export
-	
-	If ClosingResult = DialogReturnCode.Yes Then
-		
-		SmallBusinessServer.ChangeSubordinateInvoice(Object.Ref);
-		Notify("UpdateIBDocumentAfterFilling");
-		
-	EndIf;
-	
-EndProcedure // DefineNecessityToFillSubordinateInvoiceNote()
-
 #EndRegion
 
 #Region LibrariesHandlers

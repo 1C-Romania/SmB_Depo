@@ -333,16 +333,3 @@ Procedure ControlBalancesOnPostingOnChange(Item)
 EndProcedure
 
 #EndRegion
-
-
-
-
-
-
-
-
-
-
-
-
-

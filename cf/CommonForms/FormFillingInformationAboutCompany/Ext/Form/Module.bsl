@@ -21,7 +21,7 @@ Var mFormRecordCompleted;
 &AtServer
 Procedure WriteFormChanges(FinishEntering = False)
 	
-	If Company.LegalEntityIndividual = PredefinedValue("Enum.LegalEntityIndividual.Ind") Then
+	If Company.LegalEntityIndividual = PredefinedValue("Enum.CounterpartyKinds.Individual") Then
 		IndividualObject = FormAttributeToValue("Individual");
 		IndividualObject.Write();
 		Company.Individual = IndividualObject.Ref;
@@ -142,7 +142,7 @@ EndProcedure // WriteFormChanges()
 &AtClient
 Procedure SetActivePage()
 	
-	StringLegalEntityIndividual = ?(Company.LegalEntityIndividual = PredefinedValue("Enum.LegalEntityIndividual.Ind"), "Individual", "LegalEntity");
+	StringLegalEntityIndividual = ?(Company.LegalEntityIndividual = PredefinedValue("Enum.CounterpartyKinds.Individual"), "Individual", "LegalEntity");
 	SearchString = "Step" + String(mCurrentPageNumber) + ?(mCurrentPageNumber = 2, StringLegalEntityIndividual, "");
 	Items.Pages.CurrentPage = Items.Find(SearchString);
 	
@@ -194,7 +194,7 @@ Procedure ExecuteActionsOnTransitionToNextPage(Cancel)
 				Cancel
 			);
 		EndIf;
-		If Company.LegalEntityIndividual = PredefinedValue("Enum.LegalEntityIndividual.Ind")
+		If Company.LegalEntityIndividual = PredefinedValue("Enum.CounterpartyKinds.Individual")
 		AND Not ValueIsFilled(Individual.Description) Then
 			MessageText = NStr("en='Specify the full name.';ru='Укажите ФИО.'");
 			CommonUseClientServer.MessageToUser(
@@ -488,15 +488,13 @@ EndProcedure // Decoration38Click()
 &AtClient
 Procedure CompanyDescriptionOnChange(Item)
 	
-	If IsBlankString(Company.DescriptionFull)
-	   AND IsBlankString(Company.PayerDescriptionOnTaxTransfer) Then
+	If IsBlankString(Company.DescriptionFull) Then
 		
-		If Company.LegalEntityIndividual = PredefinedValue("Enum.LegalEntityIndividual.Ind") Then
+		If Company.LegalEntityIndividual = PredefinedValue("Enum.CounterpartyKinds.Individual") Then
 			Company.DescriptionFull = "CO """+Company.Description+"""";
 		Else
 			Company.DescriptionFull = "LLC """+Company.Description+"""";
 		EndIf;
-		Company.PayerDescriptionOnTaxTransfer = Company.DescriptionFull;
 		
 	EndIf;
 	
@@ -599,20 +597,6 @@ Procedure WarehouseManNameOnChange(Item)
 	EndIf;
 	
 EndProcedure
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 

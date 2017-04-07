@@ -1508,7 +1508,7 @@ Function ErrorDescriptionOnIBUserWrite(ErrorTemplate,
 				ErrorTemplate,
 				"""" + NameForEntering + """ ("
 				+ ?(ValueIsFilled(InfobaseUserID),
-					NStr("en = 'New'"),
+					NStr("en='New';ru='Новый'"),
 					String(InfobaseUserID))
 				+ ")",
 				?(ErrorInfo = Undefined,

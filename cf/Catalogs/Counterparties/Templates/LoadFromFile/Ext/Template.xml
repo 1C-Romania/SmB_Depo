@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
 <document xmlns="http://v8.1c.ru/8.2/data/spreadsheet" xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
 	<languageSettings>
-		<currentLanguage>ru</currentLanguage>
+		<currentLanguage>en</currentLanguage>
 		<defaultLanguage>en</defaultLanguage>
 		<languageInfo>
 			<id>en</id>
@@ -10,8 +10,8 @@
 		</languageInfo>
 		<languageInfo>
 			<id>ru</id>
-			<code>Русский</code>
-			<description>Русский</description>
+			<code>Russian</code>
+			<description>Russian</description>
 		</languageInfo>
 		<languageInfo>
 			<id>az</id>
@@ -49,6 +49,16 @@
 			<description>German</description>
 		</languageInfo>
 		<languageInfo>
+			<id>hu</id>
+			<code>Hungarian</code>
+			<description>Hungarian</description>
+		</languageInfo>
+		<languageInfo>
+			<id>it</id>
+			<code>Italian</code>
+			<description>Italian</description>
+		</languageInfo>
+		<languageInfo>
 			<id>lv</id>
 			<code>Latvian</code>
 			<description>Latvian</description>
@@ -79,13 +89,23 @@
 			<description>Slovenian</description>
 		</languageInfo>
 		<languageInfo>
+			<id>es</id>
+			<code>Spanish</code>
+			<description>Spanish</description>
+		</languageInfo>
+		<languageInfo>
+			<id>sv</id>
+			<code>Swedish</code>
+			<description>Swedish</description>
+		</languageInfo>
+		<languageInfo>
 			<id>tr</id>
 			<code>Turkish</code>
 			<description>Turkish</description>
 		</languageInfo>
 	</languageSettings>
 	<columns>
-		<size>9</size>
+		<size>7</size>
 		<columnsItem>
 			<index>0</index>
 			<column>
@@ -128,25 +148,13 @@
 				<formatIndex>7</formatIndex>
 			</column>
 		</columnsItem>
-		<columnsItem>
-			<index>7</index>
-			<column>
-				<formatIndex>8</formatIndex>
-			</column>
-		</columnsItem>
-		<columnsItem>
-			<index>8</index>
-			<column>
-				<formatIndex>9</formatIndex>
-			</column>
-		</columnsItem>
 	</columns>
 	<rowsItem>
 		<index>0</index>
 		<row>
 			<c>
 				<c>
-					<f>10</f>
+					<f>8</f>
 					<tl>
 						<v8:item>
 							<v8:lang>en</v8:lang>
@@ -161,7 +169,7 @@
 					<note>
 						<drawingType>Text</drawingType>
 						<id>0</id>
-						<formatIndex>11</formatIndex>
+						<formatIndex>9</formatIndex>
 						<text>
 							<v8:item>
 								<v8:lang>en</v8:lang>
@@ -190,7 +198,7 @@ String, 10 or 12 digits</v8:content>
 			</c>
 			<c>
 				<c>
-					<f>12</f>
+					<f>10</f>
 					<tl>
 						<v8:item>
 							<v8:lang>en</v8:lang>
@@ -205,7 +213,7 @@ String, 10 or 12 digits</v8:content>
 					<note>
 						<drawingType>Text</drawingType>
 						<id>0</id>
-						<formatIndex>11</formatIndex>
+						<formatIndex>9</formatIndex>
 						<text>
 							<v8:item>
 								<v8:lang>en</v8:lang>
@@ -219,13 +227,13 @@ String, 10 or 12 digits</v8:content>
 							</v8:item>
 						</text>
 						<beginRow>1</beginRow>
-						<beginRowOffset>-21</beginRowOffset>
+						<beginRowOffset>-22</beginRowOffset>
 						<endRow>0</endRow>
-						<endRowOffset>51</endRowOffset>
+						<endRowOffset>58</endRowOffset>
 						<beginColumn>1</beginColumn>
-						<beginColumnOffset>21</beginColumnOffset>
+						<beginColumnOffset>22</beginColumnOffset>
 						<endColumn>1</endColumn>
-						<endColumnOffset>1614</endColumnOffset>
+						<endColumnOffset>878</endColumnOffset>
 						<autoSize>true</autoSize>
 						<pictureSize>Stretch</pictureSize>
 						<zOrder>0</zOrder>
@@ -234,7 +242,7 @@ String, 10 or 12 digits</v8:content>
 			</c>
 			<c>
 				<c>
-					<f>10</f>
+					<f>8</f>
 					<tl>
 						<v8:item>
 							<v8:lang>en</v8:lang>
@@ -249,7 +257,7 @@ String, 10 or 12 digits</v8:content>
 					<note>
 						<drawingType>Text</drawingType>
 						<id>0</id>
-						<formatIndex>11</formatIndex>
+						<formatIndex>9</formatIndex>
 						<text>
 							<v8:item>
 								<v8:lang>en</v8:lang>
@@ -276,7 +284,7 @@ String, 10 or 12 digits</v8:content>
 			</c>
 			<c>
 				<c>
-					<f>13</f>
+					<f>11</f>
 					<tl>
 						<v8:item>
 							<v8:lang>en</v8:lang>
@@ -291,7 +299,7 @@ String, 10 or 12 digits</v8:content>
 					<note>
 						<drawingType>Text</drawingType>
 						<id>0</id>
-						<formatIndex>11</formatIndex>
+						<formatIndex>9</formatIndex>
 						<text>
 							<v8:item>
 								<v8:lang>en</v8:lang>
@@ -326,95 +334,7 @@ Default value: Legal entity</v8:content>
 			</c>
 			<c>
 				<c>
-					<f>10</f>
-					<tl>
-						<v8:item>
-							<v8:lang>en</v8:lang>
-							<v8:content>OKPO</v8:content>
-						</v8:item>
-						<v8:item>
-							<v8:lang>ru</v8:lang>
-							<v8:content>ОКПО</v8:content>
-						</v8:item>
-					</tl>
-					<d xsi:type="xs:string"/>
-					<note>
-						<drawingType>Text</drawingType>
-						<id>0</id>
-						<formatIndex>11</formatIndex>
-						<text>
-							<v8:item>
-								<v8:lang>en</v8:lang>
-								<v8:content>Code by All-Russian Classifier of Enterprises and Organizations to display in document print forms.
-String, 10 digits</v8:content>
-							</v8:item>
-							<v8:item>
-								<v8:lang>ru</v8:lang>
-								<v8:content>Код по Общероссийскому классификатору предприятий и организаций, для отражения в печатных формах документов.
-Строка, 10 цифр</v8:content>
-							</v8:item>
-						</text>
-						<beginRow>1</beginRow>
-						<beginRowOffset>-21</beginRowOffset>
-						<endRow>0</endRow>
-						<endRowOffset>93</endRowOffset>
-						<beginColumn>1</beginColumn>
-						<beginColumnOffset>21</beginColumnOffset>
-						<endColumn>4</endColumn>
-						<endColumnOffset>1878</endColumnOffset>
-						<autoSize>true</autoSize>
-						<pictureSize>Stretch</pictureSize>
-						<zOrder>0</zOrder>
-					</note>
-				</c>
-			</c>
-			<c>
-				<c>
-					<f>10</f>
-					<tl>
-						<v8:item>
-							<v8:lang>en</v8:lang>
-							<v8:content>KPP</v8:content>
-						</v8:item>
-						<v8:item>
-							<v8:lang>ru</v8:lang>
-							<v8:content>КПП</v8:content>
-						</v8:item>
-					</tl>
-					<d xsi:type="xs:string"/>
-					<note>
-						<drawingType>Text</drawingType>
-						<id>0</id>
-						<formatIndex>11</formatIndex>
-						<text>
-							<v8:item>
-								<v8:lang>en</v8:lang>
-								<v8:content>Code of registration to show in print forms of documents. Specified only for the legal entity.
-String, 9 digits</v8:content>
-							</v8:item>
-							<v8:item>
-								<v8:lang>ru</v8:lang>
-								<v8:content>Код постановки на учет, для отражения в печатных формах документов. Указывается только для юридического лица.
-Строка, 9 цифр</v8:content>
-							</v8:item>
-						</text>
-						<beginRow>1</beginRow>
-						<beginRowOffset>-21</beginRowOffset>
-						<endRow>0</endRow>
-						<endRowOffset>93</endRowOffset>
-						<beginColumn>1</beginColumn>
-						<beginColumnOffset>21</beginColumnOffset>
-						<endColumn>5</endColumn>
-						<endColumnOffset>1863</endColumnOffset>
-						<autoSize>true</autoSize>
-						<pictureSize>Stretch</pictureSize>
-						<zOrder>0</zOrder>
-					</note>
-				</c>
-			</c>
-			<c>
-				<c>
-					<f>10</f>
+					<f>8</f>
 					<tl>
 						<v8:item>
 							<v8:lang>en</v8:lang>
@@ -429,7 +349,7 @@ String, 9 digits</v8:content>
 					<note>
 						<drawingType>Text</drawingType>
 						<id>0</id>
-						<formatIndex>11</formatIndex>
+						<formatIndex>9</formatIndex>
 						<text>
 							<v8:item>
 								<v8:lang>en</v8:lang>
@@ -448,7 +368,7 @@ String of unlimited length</v8:content>
 						<endRowOffset>93</endRowOffset>
 						<beginColumn>1</beginColumn>
 						<beginColumnOffset>21</beginColumnOffset>
-						<endColumn>6</endColumn>
+						<endColumn>4</endColumn>
 						<endColumnOffset>1563</endColumnOffset>
 						<autoSize>true</autoSize>
 						<pictureSize>Stretch</pictureSize>
@@ -458,7 +378,7 @@ String of unlimited length</v8:content>
 			</c>
 			<c>
 				<c>
-					<f>10</f>
+					<f>8</f>
 					<tl>
 						<v8:item>
 							<v8:lang>en</v8:lang>
@@ -473,7 +393,7 @@ String of unlimited length</v8:content>
 					<note>
 						<drawingType>Text</drawingType>
 						<id>0</id>
-						<formatIndex>11</formatIndex>
+						<formatIndex>9</formatIndex>
 						<text>
 							<v8:item>
 								<v8:lang>en</v8:lang>
@@ -492,7 +412,7 @@ information String of unlimited length</v8:content>
 						<endRowOffset>93</endRowOffset>
 						<beginColumn>1</beginColumn>
 						<beginColumnOffset>21</beginColumnOffset>
-						<endColumn>7</endColumn>
+						<endColumn>5</endColumn>
 						<endColumnOffset>579</endColumnOffset>
 						<autoSize>true</autoSize>
 						<pictureSize>Stretch</pictureSize>
@@ -502,7 +422,7 @@ information String of unlimited length</v8:content>
 			</c>
 			<c>
 				<c>
-					<f>14</f>
+					<f>12</f>
 					<tl>
 						<v8:item>
 							<v8:lang>en</v8:lang>
@@ -517,7 +437,7 @@ information String of unlimited length</v8:content>
 					<note>
 						<drawingType>Text</drawingType>
 						<id>0</id>
-						<formatIndex>11</formatIndex>
+						<formatIndex>9</formatIndex>
 						<text>
 							<v8:item>
 								<v8:lang>en</v8:lang>
@@ -534,7 +454,7 @@ information String of unlimited length</v8:content>
 						<endRowOffset>51</endRowOffset>
 						<beginColumn>1</beginColumn>
 						<beginColumnOffset>21</beginColumnOffset>
-						<endColumn>8</endColumn>
+						<endColumn>6</endColumn>
 						<endColumnOffset>741</endColumnOffset>
 						<autoSize>true</autoSize>
 						<pictureSize>Stretch</pictureSize>
@@ -545,7 +465,7 @@ information String of unlimited length</v8:content>
 		</row>
 	</rowsItem>
 	<templateMode>true</templateMode>
-	<defaultFormatIndex>6</defaultFormatIndex>
+	<defaultFormatIndex>13</defaultFormatIndex>
 	<height>1</height>
 	<vgRows>1</vgRows>
 	<namedItem xsi:type="NamedItemCells">
@@ -554,18 +474,8 @@ information String of unlimited length</v8:content>
 			<type>Rectangle</type>
 			<beginRow>0</beginRow>
 			<endRow>0</endRow>
-			<beginColumn>8</beginColumn>
-			<endColumn>8</endColumn>
-		</area>
-	</namedItem>
-	<namedItem xsi:type="NamedItemCells">
-		<name>CodeByOKPO</name>
-		<area>
-			<type>Rectangle</type>
-			<beginRow>0</beginRow>
-			<endRow>0</endRow>
-			<beginColumn>4</beginColumn>
-			<endColumn>4</endColumn>
+			<beginColumn>6</beginColumn>
+			<endColumn>6</endColumn>
 		</area>
 	</namedItem>
 	<namedItem xsi:type="NamedItemCells">
@@ -574,8 +484,8 @@ information String of unlimited length</v8:content>
 			<type>Rectangle</type>
 			<beginRow>0</beginRow>
 			<endRow>0</endRow>
-			<beginColumn>7</beginColumn>
-			<endColumn>7</endColumn>
+			<beginColumn>5</beginColumn>
+			<endColumn>5</endColumn>
 		</area>
 	</namedItem>
 	<namedItem xsi:type="NamedItemCells">
@@ -594,18 +504,8 @@ information String of unlimited length</v8:content>
 			<type>Rectangle</type>
 			<beginRow>0</beginRow>
 			<endRow>0</endRow>
-			<beginColumn>6</beginColumn>
-			<endColumn>6</endColumn>
-		</area>
-	</namedItem>
-	<namedItem xsi:type="NamedItemCells">
-		<name>KPP</name>
-		<area>
-			<type>Rectangle</type>
-			<beginRow>0</beginRow>
-			<endRow>0</endRow>
-			<beginColumn>5</beginColumn>
-			<endColumn>5</endColumn>
+			<beginColumn>4</beginColumn>
+			<endColumn>4</endColumn>
 		</area>
 	</namedItem>
 	<namedItem xsi:type="NamedItemCells">
@@ -652,12 +552,6 @@ information String of unlimited length</v8:content>
 	</format>
 	<format>
 		<width>131</width>
-	</format>
-	<format>
-		<width>80</width>
-	</format>
-	<format>
-		<width>72</width>
 	</format>
 	<format>
 		<width>160</width>
@@ -707,5 +601,8 @@ information String of unlimited length</v8:content>
 	<format>
 		<font>2</font>
 		<backColor>style:ButtonBackColor</backColor>
+	</format>
+	<format>
+		<width>72</width>
 	</format>
 </document>

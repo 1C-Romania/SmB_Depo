@@ -33,25 +33,6 @@ Function TypeKindContactInformation(Val InformationKind) Export
 	
 EndFunction
 
-// It returns content string from the contact information value.
-//
-//  Parameters:
-//      XMLData - String - XML data of contact information.
-//
-//  Returns:
-//      String - it
-//      contains Undefined - if the content value is of the compound type.
-//
-Function RowCompositionContactInformation(Val XMLData) Export;
-	Return ContactInformationManagementService.RowCompositionContactInformation(XMLData);
-EndFunction
-
-// It converts all incoming formats of contact information into XML.
-//
-Function CastContactInformationXML(Val Data) Export
-	Return ContactInformationManagementService.CastContactInformationXML(Data);
-EndFunction
-
 // It returns the list of string identifiers available for copying to the current addresses.
 // 
 Function AddressesAvailableForCopying(Val FieldsForAnalysisValues, Val AddressKind) Export
@@ -64,7 +45,7 @@ EndFunction
 //
 Function WorldCountryAccordingToClassifier(Val CountryCode) Export
 	
-	Return Catalogs.WorldCountries.ReferenceAccordingToClassifier(
+	Return Catalogs.WorldCountries.RefByClassifier(
 		New Structure("Code", CountryCode));
 		
 EndFunction
@@ -74,7 +55,7 @@ EndFunction
 Procedure CollectionOfWorldCountriesAccordingToClassifier(Collection) Export
 	
 	For Each KeyValue In Collection Do
-		Collection[KeyValue.Key] = Catalogs.WorldCountries.ReferenceAccordingToClassifier(
+		Collection[KeyValue.Key] = Catalogs.WorldCountries.RefByClassifier(
 			New Structure("Code", KeyValue.Value.Code));
 	EndDo;
 		

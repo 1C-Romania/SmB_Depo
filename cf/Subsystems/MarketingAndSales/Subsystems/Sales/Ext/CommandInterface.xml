@@ -6,12 +6,22 @@
 				<xr:Common>false</xr:Common>
 			</Visibility>
 		</Command>
-		<Command name="Document.SupplierInvoice.Command.OpenSupplierInvoiceForReturn">
+		<Command name="Catalog.Counterparties.Command.Suppliers">
 			<Visibility>
 				<xr:Common>false</xr:Common>
 			</Visibility>
 		</Command>
-		<Command name="Document.SupplierInvoiceNote.Command.OpenSupplierInvoiceNotes">
+		<Command name="Catalog.Counterparties.Command.OtherCounterparties">
+			<Visibility>
+				<xr:Common>false</xr:Common>
+			</Visibility>
+		</Command>
+		<Command name="Catalog.Counterparties.StandardCommand.OpenList">
+			<Visibility>
+				<xr:Common>false</xr:Common>
+			</Visibility>
+		</Command>
+		<Command name="Document.SupplierInvoice.Command.OpenSupplierInvoiceForReturn">
 			<Visibility>
 				<xr:Common>false</xr:Common>
 			</Visibility>
@@ -21,17 +31,7 @@
 				<xr:Common>false</xr:Common>
 			</Visibility>
 		</Command>
-		<Command name="Document.SupplierInvoiceNote.StandardCommand.OpenList">
-			<Visibility>
-				<xr:Common>false</xr:Common>
-			</Visibility>
-		</Command>
 		<Command name="CommonCommand.OpenMarketingAndSalesFunctionsMenu">
-			<Visibility>
-				<xr:Common>false</xr:Common>
-			</Visibility>
-		</Command>
-		<Command name="Document.CustomerInvoiceNote.Command.OpenInvoices">
 			<Visibility>
 				<xr:Common>false</xr:Common>
 			</Visibility>
@@ -128,6 +128,18 @@
 		<Command name="DocumentJournal.SalesDocuments.StandardCommand.OpenList">
 			<CommandGroup>NavigationPanelImportant</CommandGroup>
 		</Command>
+		<Command name="Catalog.Counterparties.Command.Customers">
+			<CommandGroup>NavigationPanelOrdinary</CommandGroup>
+		</Command>
+		<Command name="Catalog.Counterparties.Command.Suppliers">
+			<CommandGroup>NavigationPanelOrdinary</CommandGroup>
+		</Command>
+		<Command name="Catalog.Counterparties.Command.OtherCounterparties">
+			<CommandGroup>NavigationPanelOrdinary</CommandGroup>
+		</Command>
+		<Command name="Catalog.Counterparties.StandardCommand.OpenList">
+			<CommandGroup>NavigationPanelOrdinary</CommandGroup>
+		</Command>
 		<Command name="Document.CustomerOrder.Command.OpenCustomerOrder">
 			<CommandGroup>NavigationPanelOrdinary</CommandGroup>
 		</Command>
@@ -140,28 +152,16 @@
 		<Command name="Document.AcceptanceCertificate.StandardCommand.OpenList">
 			<CommandGroup>NavigationPanelOrdinary</CommandGroup>
 		</Command>
-		<Command name="Document.CustomerInvoiceNote.StandardCommand.OpenList">
-			<CommandGroup>NavigationPanelOrdinary</CommandGroup>
-		</Command>
 		<Command name="Document.AgentReport.StandardCommand.OpenList">
 			<CommandGroup>NavigationPanelOrdinary</CommandGroup>
 		</Command>
 		<Command name="Document.SupplierInvoice.Command.OpenSupplierInvoiceForReturn">
 			<CommandGroup>NavigationPanelOrdinary</CommandGroup>
 		</Command>
-		<Command name="Document.SupplierInvoiceNote.Command.OpenSupplierInvoiceNotes">
-			<CommandGroup>NavigationPanelOrdinary</CommandGroup>
-		</Command>
 		<Command name="Document.CustomerInvoice.Command.OpenSalesInvoiceToReturn">
 			<CommandGroup>NavigationPanelOrdinary</CommandGroup>
 		</Command>
-		<Command name="Document.SupplierInvoiceNote.StandardCommand.OpenList">
-			<CommandGroup>NavigationPanelOrdinary</CommandGroup>
-		</Command>
 		<Command name="CommonCommand.OpenMarketingAndSalesFunctionsMenu">
-			<CommandGroup>NavigationPanelOrdinary</CommandGroup>
-		</Command>
-		<Command name="Document.CustomerInvoiceNote.Command.OpenInvoices">
 			<CommandGroup>NavigationPanelOrdinary</CommandGroup>
 		</Command>
 		<Command name="Catalog.CustomerOrderStates.StandardCommand.OpenList">
@@ -191,16 +191,16 @@
 		<Command name="Document.AcceptanceCertificate.StandardCommand.Create">
 			<CommandGroup>ActionsPanelCreate</CommandGroup>
 		</Command>
-		<Command name="Document.CustomerInvoiceNote.StandardCommand.Create">
-			<CommandGroup>ActionsPanelCreate</CommandGroup>
-		</Command>
 		<Command name="Document.AgentReport.StandardCommand.Create">
 			<CommandGroup>ActionsPanelCreate</CommandGroup>
 		</Command>
 		<Command name="Document.SupplierInvoice.StandardCommand.Create">
 			<CommandGroup>ActionsPanelCreate</CommandGroup>
 		</Command>
-		<Command name="Document.SupplierInvoiceNote.StandardCommand.Create">
+		<Command name="Catalog.Counterparties.StandardCommand.CreateFolder">
+			<CommandGroup>ActionsPanelCreate</CommandGroup>
+		</Command>
+		<Command name="Catalog.Counterparties.StandardCommand.Create">
 			<CommandGroup>ActionsPanelCreate</CommandGroup>
 		</Command>
 	</CommandsOrder>

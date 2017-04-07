@@ -637,57 +637,6 @@
 					<FullTextSearch>Use</FullTextSearch>
 				</Properties>
 			</Resource>
-			<Resource uuid="750ee643-6668-4fd4-979d-62b0fe00e973">
-				<Properties>
-					<Name>DeleteDocumentKind</Name>
-					<Synonym>
-						<v8:item>
-							<v8:lang>en</v8:lang>
-							<v8:content>(not used) Document kind</v8:content>
-						</v8:item>
-						<v8:item>
-							<v8:lang>ru</v8:lang>
-							<v8:content>(не используется) Вид документа</v8:content>
-						</v8:item>
-					</Synonym>
-					<Comment/>
-					<Type>
-						<v8:Type>cfg:CatalogRef.IndividualsDocumentsKinds</v8:Type>
-					</Type>
-					<PasswordMode>false</PasswordMode>
-					<Format/>
-					<EditFormat/>
-					<ToolTip>
-						<v8:item>
-							<v8:lang>en</v8:lang>
-							<v8:content>Kind of identity document</v8:content>
-						</v8:item>
-						<v8:item>
-							<v8:lang>ru</v8:lang>
-							<v8:content>Вид документа удостоверяющего личность</v8:content>
-						</v8:item>
-					</ToolTip>
-					<MarkNegatives>false</MarkNegatives>
-					<Mask/>
-					<MultiLine>false</MultiLine>
-					<ExtendedEdit>false</ExtendedEdit>
-					<MinValue xsi:nil="true"/>
-					<MaxValue xsi:nil="true"/>
-					<FillFromFillingValue>false</FillFromFillingValue>
-					<FillValue xsi:type="xr:DesignTimeRef">ba1f0ae8-fdcc-4aa2-8601-bfec8a102b7f.00000000-0000-0000-0000-000000000000</FillValue>
-					<FillChecking>DontCheck</FillChecking>
-					<ChoiceFoldersAndItems>Items</ChoiceFoldersAndItems>
-					<ChoiceParameterLinks/>
-					<ChoiceParameters/>
-					<QuickChoice>Auto</QuickChoice>
-					<CreateOnInput>Auto</CreateOnInput>
-					<ChoiceForm/>
-					<LinkByType/>
-					<ChoiceHistoryOnInput>Auto</ChoiceHistoryOnInput>
-					<Indexing>DontIndex</Indexing>
-					<FullTextSearch>Use</FullTextSearch>
-				</Properties>
-			</Resource>
 			<Dimension uuid="988623f8-3a47-4ff8-9df7-7f286fe3e671">
 				<Properties>
 					<Name>Ind</Name>
@@ -799,6 +748,7 @@
 			<Form>ListForm</Form>
 			<Form>RecordForm</Form>
 			<Form>DocumentsOfIndividual</Form>
+			<Form>FormFillingDetails</Form>
 			<Command uuid="41d31712-6181-4cfe-9aa4-02b7a50150b0">
 				<Properties>
 					<Name>DocumentsOfIndividual</Name>

@@ -12,10 +12,10 @@
 // Return
 // value Presentation		- String - identity document presentation
 //
-Function DocumentCertifyingPersonalityOfInd(Ind, Date = Undefined) Export
+Function IdentificationDocument(Ind, Date = Undefined) Export
 	
 	Query = New Query;
-	Query.SetParameter("Ind",	Ind);
+	Query.SetParameter("Individual",	Ind);
 	Query.SetParameter("CutoffDate",	Date);
 	
 	Query.Text =
@@ -30,7 +30,7 @@ Function DocumentCertifyingPersonalityOfInd(Ind, Date = Undefined) Export
 	|			InformationRegister.IndividualsDocuments AS IndividualsDocuments
 	|		WHERE
 	|			IndividualsDocuments.IsIdentityDocument
-	|			AND IndividualsDocuments.Ind = &Ind
+	|			AND IndividualsDocuments.Ind = &Individual
 	|			" + ?(Date <> Undefined, "AND IndividualsDocuments.Period <= &CutoffDate", "") + "
 	|		
 	|		GROUP
@@ -71,9 +71,9 @@ Function IsPersonID(Ind, DocumentKind, Date) Export
 	EndIf;
 	
 	Query = New Query;
-	Query.SetParameter("Ind",		Ind);
+	Query.SetParameter("Individual",	Ind);
 	Query.SetParameter("DocumentKind",	DocumentKind);
-	Query.SetParameter("CutoffDate",		Date);
+	Query.SetParameter("CutoffDate",	Date);
 	
 	Query.Text =
 	"SELECT
@@ -86,7 +86,7 @@ Function IsPersonID(Ind, DocumentKind, Date) Export
 	|		FROM
 	|			InformationRegister.IndividualsDocuments AS IndividualsDocuments
 	|		WHERE
-	|			IndividualsDocuments.Ind = &Ind
+	|			IndividualsDocuments.Ind = &Individual
 	|			AND IndividualsDocuments.Period < &CutoffDate
 	|			AND IndividualsDocuments.IsIdentityDocument
 		
@@ -96,6 +96,44 @@ Function IsPersonID(Ind, DocumentKind, Date) Export
 	|			AND IndividualsDocuments.Period = DocumentsSlice.Period
 	|			AND (IndividualsDocuments.DocumentKind = &DocumentKind)";
 	Return Not Query.Execute().IsEmpty();
+	
+EndFunction
+
+Function GetDocumentPresentationByIndividual(Individual) Export
+	
+	If Individual.IsEmpty() Then
+		Return NStr("ru = 'Заполнить сведения паспорта (другого документа)'; en = 'Fill passport details (other document)'");
+	EndIf;
+	
+	QueryIndividualDocuments = New Query;
+	QueryIndividualDocuments.Text =
+	"SELECT TOP 1
+	|	IndividualsDocumentsSliceLast.Presentation AS Presentation,
+	|	1 AS Priority
+	|FROM
+	|	InformationRegister.IndividualsDocuments.SliceLast(
+	|			,
+	|			Ind = &Individual
+	|				AND DocumentKind = &DocumentKind) AS IndividualsDocumentsSliceLast
+	|
+	|UNION ALL
+	|
+	|SELECT TOP 1
+	|	IndividualsDocumentsSliceLast.Presentation,
+	|	2
+	|FROM
+	|	InformationRegister.IndividualsDocuments.SliceLast(, Ind = &Individual) AS IndividualsDocumentsSliceLast
+	|
+	|ORDER BY
+	|	Priority";
+	QueryIndividualDocuments.SetParameter("Individual", Individual);
+	QueryIndividualDocuments.SetParameter("DocumentKind", Catalogs.IndividualsDocumentsKinds.LocalPassport);
+	Selection = QueryIndividualDocuments.Execute().Select();
+	If Selection.Next() Then
+		Return Selection.Presentation;
+	Else
+		Return NStr("ru = 'Заполнить сведения паспорта (другого документа)'; en = 'Fill passport details (other document)'");
+	EndIf;
 	
 EndFunction
 

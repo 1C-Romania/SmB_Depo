@@ -660,8 +660,6 @@ Procedure ChangeVisibleEnabled()
 	EDTitleSeller = (Object.EDKind = Enums.EDKinds.TORG12Seller
 					OR Object.EDKind = Enums.EDKinds.ActPerformer
 					OR Object.EDKind = Enums.EDKinds.AgreementAboutCostChangeSender);
-	EDCustomerInvoiceNote = Object.EDKind = Enums.EDKinds.CustomerInvoiceNote
-					OR Object.EDKind = Enums.EDKinds.CorrectiveInvoiceNote;
 					
 	CryptographyIsUsed = CommonUse.ObjectAttributeValue(Object.EDAgreement, "CryptographyIsUsed");
 	If Not ElectronicDocumentsServiceCallServer.GetFunctionalOptionValue("UseDigitalSignatures")
@@ -712,7 +710,6 @@ Procedure ChangeVisibleEnabled()
 		
 		// SendEDConfirmationCommand visible and accessibility:
 		Items.SendEDConfirmationCommand.Visible = ThereIsPossibilityOfSigning
-			AND Not EDCustomerInvoiceNote
 			AND Not EDTitleSeller
 			AND Object.EDKind <> Enums.EDKinds.TORG12Customer
 			AND Object.EDKind <> Enums.EDKinds.ActCustomer
@@ -731,9 +728,7 @@ Procedure ChangeVisibleEnabled()
 			AND Object.EDKind <> Enums.EDKinds.AgreementAboutCostChangeRecipient
 			AND Object.EDKind <> Enums.EDKinds.BankStatement
 			AND Object.EDKind <> Enums.EDKinds.STATEMENT
-			AND Object.EDKind <> Enums.EDKinds.NotificationOnStatusOfED
-			AND (NOT ThereIsPossibilityOfSigning OR EDCustomerInvoiceNote
-				OR EDTitleSeller Or ThisAccountVersions30);
+			AND Object.EDKind <> Enums.EDKinds.NotificationOnStatusOfED;
 		
 		Items.CommandApproveED.Enabled = (Object.EDStatus = Enums.EDStatuses.Received
 			AND Not(Object.EDKind = Enums.EDKinds.NotificationAboutReception
@@ -746,14 +741,6 @@ Procedure ChangeVisibleEnabled()
 		
 		If Object.EDKind = Enums.EDKinds.BankStatement Then
 			Items.CommandChooseDocument.Visible = False;
-		EndIf;
-		
-		// For incoming customer invoice note button Reject has its name and image
-		If Object.Ref.EDKind = Enums.EDKinds.CustomerInvoiceNote
-			Or Object.Ref.EDKind = Enums.EDKinds.CorrectiveInvoiceNote Then
-			
-			Items.RejectCommand.Title = NStr("en='Request clarification on the e-document';ru='Запросить уточнение по электронному документу'");
-			Items.RejectCommand.Picture = PictureLib.UserWithoutNecessaryProperties;
 		EndIf;
 		
 	ElsIf Object.EDDirection = Enums.EDDirections.Outgoing Then
@@ -1365,8 +1352,6 @@ Function EDDataFile(LinkToED = Undefined, Val SubordinatedEDFileName = Undefined
 				OR LinkToED.EDKind = Enums.EDKinds.TORG12Seller
 				OR LinkToED.EDKind = Enums.EDKinds.ActPerformer
 				OR LinkToED.EDKind = Enums.EDKinds.AgreementAboutCostChangeSender
-				OR LinkToED.EDKind = Enums.EDKinds.CustomerInvoiceNote
-				OR LinkToED.EDKind = Enums.EDKinds.CorrectiveInvoiceNote
 				OR LinkToED.EDKind = Enums.EDKinds.EDStateQuery
 				OR LinkToED.EDKind = Enums.EDKinds.NotificationOnStatusOfED
 				OR LinkToED.EDKind = Enums.EDKinds.QueryProbe Then
@@ -1942,8 +1927,6 @@ Procedure DeterminePresenceOfAdditionalInformationHideFlag()
 		OR LinkToED.EDKind = Enums.EDKinds.ActPerformer
 		OR LinkToED.EDKind = Enums.EDKinds.TORG12Customer
 		OR LinkToED.EDKind = Enums.EDKinds.TORG12Seller
-		OR LinkToED.EDKind = Enums.EDKinds.CustomerInvoiceNote
-		OR LinkToED.EDKind = Enums.EDKinds.CorrectiveInvoiceNote
 		OR LinkToED.EDKind = Enums.EDKinds.AgreementAboutCostChangeSender
 		OR LinkToED.EDKind = Enums.EDKinds.AgreementAboutCostChangeRecipient
 		
@@ -2637,17 +2620,3 @@ Function ExchangeMethodToPMAgreements(EDAgreement, EDKind)
 EndFunction
 
 #EndRegion
-
-
-
-
-
-
-
-
-
-
-
-
-
-

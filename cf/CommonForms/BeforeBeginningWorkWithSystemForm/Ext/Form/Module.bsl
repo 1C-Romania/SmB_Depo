@@ -67,11 +67,11 @@ EndProcedure // OnOpen()
 Procedure SetButtonParameters()
 	
 	If Items.FillInformationAboutCompanyStatus.Picture = PictureLib.Done Then
-		Items.FillInformationAboutCompany.Title = NStr("en='Change'");
-	EndIf;
+		Items.FillInformationAboutCompany.Title = NStr("en='Change';ru='Изменить'");
+	EndIf;                                                                    
 	
 	If Items.BalanceEnteringStatus.Picture = PictureLib.Done Then
-		Items.BalanceEntering.Title = NStr("en='Change'");
+		Items.BalanceEntering.Title = NStr("en='Change';ru='Изменить'");
 	EndIf;
 	
 EndProcedure // SetButtonParameters()
@@ -127,17 +127,3 @@ Procedure OpenFormInputBalancesCompletion(CompletedFilling,Parameters) Export
 	EndIf;
 	
 EndProcedure
-
-
-
-
-
-
-
-
-
-
-
-
-
-

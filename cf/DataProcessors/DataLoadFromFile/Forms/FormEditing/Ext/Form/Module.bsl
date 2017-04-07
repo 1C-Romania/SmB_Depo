@@ -124,17 +124,3 @@ Procedure ResetSettingsEnd(QuestionResult, CorrelationObjectName) Export
 EndProcedure
 
 #EndRegion
-
-
-
-
-
-
-
-
-
-
-
-
-
-

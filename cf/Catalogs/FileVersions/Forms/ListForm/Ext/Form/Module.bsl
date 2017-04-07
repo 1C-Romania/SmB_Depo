@@ -71,17 +71,3 @@ Procedure ListBeforeDelete(Item, Cancel)
 EndProcedure
 
 #EndRegion
-
-
-
-
-
-
-
-
-
-
-
-
-
-

@@ -479,7 +479,7 @@ Procedure ShowQuestionAboutFileOperationsExtensionSetting(NOTifyDescription) Exp
 	If Not ClientSupportsSynchronousCalls() Then
 		ExecuteNotifyProcessing(NOTifyDescription, False);
 	Else
-		CommonUseClient.ShowQuestionAboutFileOperationsExtensionSetting(NOTifyDescription);
+		CommonUseClient.ShowFileSystemExtensionInstallationQuestion(NOTifyDescription);
 	EndIf;
 EndProcedure
 

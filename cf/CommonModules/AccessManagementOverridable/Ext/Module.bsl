@@ -66,7 +66,7 @@ Procedure WhenFillingOutProfileGroupsAccessProvided(ProfileDescriptions, UpdateP
 	ProfileDescription = AccessManagement.AccessGroupProfileNewDescription();
 	ProfileDescription.Name           = "Sales";
 	ProfileDescription.ID = "76337576-bff4-11df-9174-e0cb4ed5f4c3";	
-	ProfileDescription.Description = NStr("en = 'Sales';ru='Продажи'");
+	ProfileDescription.Description = NStr("en='Sales';ru='Продажи'");
 	ProfileDescription.Definition = NStr("en='Use this profile to work with the Sales and Service sections.';ru='Под профилем осуществляется работа с разделами Продажи и Сервис.'"
 	);
 	
@@ -507,7 +507,6 @@ Procedure WhenFillingOutProfileGroupsAccessProvided(ProfileDescriptions, UpdateP
 	ProfileDescription.Roles.Add("RemindersUse");
 	ProfileDescription.Roles.Add("UseSubordinationStructure");
 	ProfileDescription.Roles.Add("UseEMailAccounts");
-	ProfileDescription.Roles.Add("PersonalDataProcessingConsentPreparation");
 	ProfileDescription.Roles.Add("EditObjectAttributes");
 	ProfileDescription.Roles.Add("ReadBasicReferenceData");
 	ProfileDescription.Roles.Add("ReadAdditionalInformation");
@@ -631,13 +630,13 @@ EndProcedure
 //                           example,
 //                           Document.SupplierInvoice.Read.Company
 //                           Document.SupplierInvoice.Read.Counterparties
-//                           Document.SupplierInvoice.Change.Companies
-//                           Document.SupplierInvoice.Change.Counterparties
+//                           Document.SupplierInvoice.Update.Companies
+//                           Document.SupplierInvoice.Update.Counterparties
 //                           Document.EMails.Read.Object.Document.EMails
-//                           Document.EMails.Change.Object.Document.EMails
+//                           Document.EMails.Update.Object.Document.EMails
 //                           Document.Files.Read.Object.Catalog.FileFolders
 //                           Document.Files.Read.Object.Document.EMail
-//                 Document.Files.Change.Object.Catalog.FileFolders Document.Files.Change.Object.Document.EMail Access kind Object predefined as literal. This access kind is
+//                 Document.Files.Update.Object.Catalog.FileFolders Document.Files.Update.Object.Document.EMail Access kind Object predefined as literal. This access kind is
 //                 used in the access limitations templates as "ref" to another
 //                 object according to which the current table object is restricted.
 //                 When the Object access kind is specified, you should
@@ -659,8 +658,6 @@ Procedure OnFillingKindsOfRestrictionsRightsOfMetadataObjects(Definition) Export
 	|Catalog.FileVersions.Read.Object.Document.PaymentExpense
 	|Catalog.FileVersions.Read.Object.Document.Event
 	|Catalog.FileVersions.Read.Object.Document.SupplierInvoiceForPayment
-	|Catalog.FileVersions.Read.Object.Document.CustomerInvoiceNote
-	|Catalog.FileVersions.Read.Object.Document.SupplierInvoiceNote
 	|Catalog.FileVersions.Read.Object.Catalog.CounterpartyContracts
 	|Catalog.FileVersions.Read.Object.Catalog.Counterparties
 	|Catalog.FileVersions.Read.Object.Catalog.ProductsAndServices
@@ -676,8 +673,6 @@ Procedure OnFillingKindsOfRestrictionsRightsOfMetadataObjects(Definition) Export
 	|Catalog.FileVersions.Update.Object.Document.PaymentExpense
 	|Catalog.FileVersions.Update.Object.Document.Event
 	|Catalog.FileVersions.Update.Object.Document.SupplierInvoiceForPayment
-	|Catalog.FileVersions.Update.Object.Document.CustomerInvoiceNote
-	|Catalog.FileVersions.Update.Object.Document.SupplierInvoiceNote
 	|Catalog.FileVersions.Update.Object.Catalog.CounterpartyContracts
 	|Catalog.FileVersions.Update.Object.Catalog.Counterparties
 	|Catalog.FileVersions.Update.Object.Catalog.ProductsAndServices
@@ -698,8 +693,6 @@ Procedure OnFillingKindsOfRestrictionsRightsOfMetadataObjects(Definition) Export
 	|Catalog.Files.Read.Object.Document.PaymentExpense
 	|Catalog.Files.Read.Object.Document.Event
 	|Catalog.Files.Read.Object.Document.SupplierInvoiceForPayment
-	|Catalog.Files.Read.Object.Document.CustomerInvoiceNote
-	|Catalog.Files.Read.Object.Document.SupplierInvoiceNote
 	|Catalog.Files.Read.Object.Catalog.CounterpartyContracts
 	|Catalog.Files.Read.Object.Catalog.Counterparties
 	|Catalog.Files.Read.Object.Catalog.ProductsAndServices
@@ -715,8 +708,6 @@ Procedure OnFillingKindsOfRestrictionsRightsOfMetadataObjects(Definition) Export
 	|Catalog.Files.Update.Object.Document.PaymentExpense
 	|Catalog.Files.Update.Object.Document.Event
 	|Catalog.Files.Update.Object.Document.SupplierInvoiceForPayment
-	|Catalog.Files.Update.Object.Document.CustomerInvoiceNote
-	|Catalog.Files.Update.Object.Document.SupplierInvoiceNote
 	|Catalog.Files.Update.Object.Catalog.CounterpartyContracts
 	|Catalog.Files.Update.Object.Catalog.Counterparties
 	|Catalog.Files.Update.Object.Catalog.ProductsAndServices
@@ -758,10 +749,6 @@ Procedure OnFillingKindsOfRestrictionsRightsOfMetadataObjects(Definition) Export
 	|Document.Event.Update.CounterpartiesGroup
 	|Document.InvoiceForPayment.Read.CounterpartiesGroup
 	|Document.InvoiceForPayment.Update.CounterpartiesGroup
-	|Document.CustomerInvoiceNote.Read.CounterpartiesGroup
-	|Document.CustomerInvoiceNote.Update.CounterpartiesGroup
-	|Document.SupplierInvoiceNote.Read.CounterpartiesGroup
-	|Document.SupplierInvoiceNote.Update.CounterpartiesGroup
 	|DocumentJournal.FundsPlanningDocuments.Read.CounterpartiesGroup
 	|DocumentJournal.BankDocuments.Read.CounterpartiesGroup
 	|DocumentJournal.CashDocuments.Read.CounterpartiesGroup
@@ -781,8 +768,6 @@ Procedure OnFillingKindsOfRestrictionsRightsOfMetadataObjects(Definition) Export
 	|InformationRegister.VersionStoredFiles.Read.Object.Document.PaymentExpense
 	|InformationRegister.VersionStoredFiles.Read.Object.Document.Event
 	|InformationRegister.VersionStoredFiles.Read.Object.Document.SupplierInvoiceForPayment
-	|InformationRegister.VersionStoredFiles.Read.Object.Document.CustomerInvoiceNote
-	|InformationRegister.VersionStoredFiles.Read.Object.Document.SupplierInvoiceNote
 	|InformationRegister.VersionStoredFiles.Read.Object.Catalog.CounterpartyContracts
 	|InformationRegister.VersionStoredFiles.Read.Object.Catalog.Counterparties
 	|InformationRegister.VersionStoredFiles.Read.Object.Catalog.ProductsAndServices
@@ -796,6 +781,7 @@ Procedure OnFillingKindsOfRestrictionsRightsOfMetadataObjects(Definition) Export
 	|AccumulationRegister.AccountsReceivable.Read.CounterpartiesGroup
 	|AccumulationRegister.AccountsPayable.Read.CounterpartiesGroup
 	|";
+
 	
 EndProcedure
 

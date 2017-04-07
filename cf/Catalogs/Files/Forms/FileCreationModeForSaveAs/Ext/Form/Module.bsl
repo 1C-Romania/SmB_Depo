@@ -34,17 +34,3 @@ Procedure OpenDirectory(Command)
 EndProcedure
 
 #EndRegion
-
-
-
-
-
-
-
-
-
-
-
-
-
-

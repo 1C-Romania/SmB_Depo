@@ -864,7 +864,7 @@ Function GetCurrentUserIsEditing(VersionRef) Export
 	|FROM
 	|	Catalog.Files AS Files
 	|		INNER JOIN Catalog.FileVersions AS FileVersions
-	|		BY (TRUE)
+	|		ON (TRUE)
 	|WHERE
 	|	FileVersions.Ref = &Version
 	|	AND Files.Ref = FileVersions.Owner";
@@ -960,7 +960,7 @@ Function FileData(FileOrVersionRef) Export
 		|FROM
 		|	Catalog.Files AS Files
 		|		INNER JOIN Catalog.FileVersions AS FileVersions
-		|		BY (TRUE)
+		|		ON (TRUE)
 		|WHERE
 		|	FileVersions.Ref = &Version
 		|	AND Files.Ref = FileVersions.Owner";

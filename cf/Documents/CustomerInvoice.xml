@@ -292,6 +292,7 @@
 				<xr:Item xsi:type="xr:MDObjectRef">Document.CustomerOrder</xr:Item>
 				<xr:Item xsi:type="xr:MDObjectRef">Document.PurchaseOrder</xr:Item>
 				<xr:Item xsi:type="xr:MDObjectRef">Document.SupplierInvoice</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">Catalog.Counterparties</xr:Item>
 			</BasedOn>
 			<InputByString>
 				<xr:Field>Document.CustomerInvoice.StandardAttribute.Number</xr:Field>
@@ -1546,7 +1547,13 @@
 					<FillValue xsi:type="xr:DesignTimeRef">Catalog.Counterparties.EmptyRef</FillValue>
 					<FillChecking>ShowError</FillChecking>
 					<ChoiceFoldersAndItems>Items</ChoiceFoldersAndItems>
-					<ChoiceParameterLinks/>
+					<ChoiceParameterLinks>
+						<xr:Link>
+							<xr:Name>Additional.OperationKind</xr:Name>
+							<xr:DataPath xsi:type="xs:string">Document.CustomerInvoice.Attribute.OperationKind</xr:DataPath>
+							<xr:ValueChange>DontChange</xr:ValueChange>
+						</xr:Link>
+					</ChoiceParameterLinks>
 					<ChoiceParameters/>
 					<QuickChoice>Auto</QuickChoice>
 					<CreateOnInput>Auto</CreateOnInput>
@@ -1706,7 +1713,7 @@
 					<MinValue xsi:nil="true"/>
 					<MaxValue xsi:nil="true"/>
 					<FillFromFillingValue>false</FillFromFillingValue>
-					<FillValue xsi:type="xr:DesignTimeRef">Enum.VATTaxationTypes.EnumValue.TaxableByVAT</FillValue>
+					<FillValue xsi:type="xr:DesignTimeRef">Enum.VATTaxationTypes.EnumValue.NotTaxableByVAT</FillValue>
 					<FillChecking>ShowError</FillChecking>
 					<ChoiceFoldersAndItems>Items</ChoiceFoldersAndItems>
 					<ChoiceParameterLinks/>
@@ -2464,7 +2471,7 @@
 					<MinValue xsi:nil="true"/>
 					<MaxValue xsi:nil="true"/>
 					<FillFromFillingValue>false</FillFromFillingValue>
-					<FillValue xsi:type="xs:boolean">true</FillValue>
+					<FillValue xsi:type="xs:boolean">false</FillValue>
 					<FillChecking>DontCheck</FillChecking>
 					<ChoiceFoldersAndItems>Items</ChoiceFoldersAndItems>
 					<ChoiceParameterLinks/>
@@ -4639,33 +4646,9 @@
 					</Attribute>
 				</ChildObjects>
 			</TabularSection>
-			<Template>PF_MXL_MerchandiseFillingForm</Template>
-			<Template>PF_MXL_Bill</Template>
+			<Template>PF_MXL_CompletionCertificate</Template>
+			<Template>PF_MXL_CustomerInvoice</Template>
 			<Template>LoadFromFileInventory</Template>
-			<Command uuid="abeadca6-f86d-42de-9569-f80e7975fb46">
-				<Properties>
-					<Name>DeleteInvoiceWithCFDCreateBasedOn</Name>
-					<Synonym>
-						<v8:item>
-							<v8:lang>en</v8:lang>
-							<v8:content>(not used) Invoice (fill in the CCD numbers)</v8:content>
-						</v8:item>
-						<v8:item>
-							<v8:lang>ru</v8:lang>
-							<v8:content>(Не используется) Счет-фактура (заполнить номера ГТД)</v8:content>
-						</v8:item>
-					</Synonym>
-					<Comment/>
-					<Group>FormCommandBarCreateBasedOn</Group>
-					<CommandParameterType/>
-					<ParameterUseMode>Single</ParameterUseMode>
-					<ModifiesData>false</ModifiesData>
-					<Representation>Auto</Representation>
-					<ToolTip/>
-					<Picture/>
-					<Shortcut/>
-				</Properties>
-			</Command>
 			<Command uuid="b516b710-763f-468a-b796-9d89733672be">
 				<Properties>
 					<Name>OpenSalesInvoiceToReturn</Name>

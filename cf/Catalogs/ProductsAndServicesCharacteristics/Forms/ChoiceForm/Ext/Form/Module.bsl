@@ -280,17 +280,3 @@ Procedure PropertyValueTreeOnStartEdit(Item, NewRow, Copy)
 	SmallBusinessClient.PropertyValueTreeOnStartEdit(Item);
 	
 EndProcedure // PropertyValueTreeOnStartEdit()
-
-
-
-
-
-
-
-
-
-
-
-
-
-

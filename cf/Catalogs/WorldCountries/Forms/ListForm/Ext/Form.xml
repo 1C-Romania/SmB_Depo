@@ -65,16 +65,16 @@
 			<AutoCommandBar name="ListCommandBar" id="3">
 				<Autofill>false</Autofill>
 				<ChildItems>
-					<Button name="ListChoose" id="16">
+					<Button name="ListSelect" id="16">
 						<Type>CommandBarButton</Type>
 						<CommandName>Form.Item.List.StandardCommand.Choose</CommandName>
-						<ExtendedTooltip name="ListChooseExtendedTooltip" id="21"/>
+						<ExtendedTooltip name="ListSelectExtendedTooltip" id="21"/>
 					</Button>
-					<ButtonGroup name="CommandList" id="15">
+					<ButtonGroup name="ListCommands" id="15">
 						<Title>
 							<v8:item>
 								<v8:lang>en</v8:lang>
-								<v8:content>List comands</v8:content>
+								<v8:content>List commands</v8:content>
 							</v8:item>
 							<v8:item>
 								<v8:lang>ru</v8:lang>
@@ -84,7 +84,7 @@
 						<ToolTip>
 							<v8:item>
 								<v8:lang>en</v8:lang>
-								<v8:content>Command list</v8:content>
+								<v8:content>List commands</v8:content>
 							</v8:item>
 							<v8:item>
 								<v8:lang>ru</v8:lang>
@@ -94,15 +94,15 @@
 						<CommandSource>Item.List</CommandSource>
 						<ExtendedTooltip name="ListCommandsExtendedTooltip" id="22"/>
 					</ButtonGroup>
-					<Button name="ClassifierList" id="17">
+					<Button name="ListClassifierList" id="17">
 						<Type>CommandBarButton</Type>
 						<CommandName>Form.Command.OpenClassifier</CommandName>
-						<ExtendedTooltip name="ClassifierListExtendedTooltip" id="23"/>
+						<ExtendedTooltip name="ListClassifierListExtendedTooltip" id="23"/>
 					</Button>
-					<Button name="ListChooseFromClassifier" id="18">
+					<Button name="ListSelectFromClassifier" id="18">
 						<Type>CommandBarButton</Type>
-						<CommandName>Form.Command.ChooseFromClassifier</CommandName>
-						<ExtendedTooltip name="ListChooseFromClassifierExtendedTooltip" id="24"/>
+						<CommandName>Form.Command.SelectFromClassifier</CommandName>
+						<ExtendedTooltip name="ListSelectFromClassifierExtendedTooltip" id="24"/>
 					</Button>
 					<Button name="ListChangeForm" id="19">
 						<Type>CommandBarButton</Type>
@@ -143,7 +143,7 @@
 			</SearchControlAddition>
 			<Events>
 				<Event name="BeforeAddRow">ListBeforeAddRow</Event>
-				<Event name="ChoiceProcessing">ListChoiceProcessing</Event>
+				<Event name="ChoiceProcessing">ChoiceProcessingList</Event>
 				<Event name="NewWriteProcessing">ListNewWriteProcessing</Event>
 			</Events>
 			<ChildItems>
@@ -173,20 +173,20 @@
 					<ContextMenu name="AlphaCode3ContextMenu" id="11"/>
 					<ExtendedTooltip name="AlphaCode3ExtendedTooltip" id="31"/>
 				</LabelField>
-				<LabelField name="DescriptionFull" id="12">
-					<DataPath>List.DescriptionFull</DataPath>
+				<LabelField name="LongDescription" id="12">
+					<DataPath>List.LongDescription</DataPath>
 					<Title>
 						<v8:item>
 							<v8:lang>en</v8:lang>
-							<v8:content>Full description</v8:content>
+							<v8:content>Long description</v8:content>
 						</v8:item>
 						<v8:item>
 							<v8:lang>ru</v8:lang>
 							<v8:content>Полное наименование</v8:content>
 						</v8:item>
 					</Title>
-					<ContextMenu name="DescriptionFullContextMenu" id="13"/>
-					<ExtendedTooltip name="DescriptionFullExtendedTooltip" id="32"/>
+					<ContextMenu name="LongDescriptionContextMenu" id="13"/>
+					<ExtendedTooltip name="LongDescriptionExtendedTooltip" id="32"/>
 				</LabelField>
 				<LabelField name="Ref" id="33">
 					<DataPath>List.Ref</DataPath>
@@ -260,11 +260,11 @@
 				<v8:Type>xs:boolean</v8:Type>
 			</Type>
 		</Attribute>
-		<Attribute name="ItemIdentificatorFilterReferences" id="4">
+		<Attribute name="RefFilterItemID" id="4">
 			<Title>
 				<v8:item>
 					<v8:lang>en</v8:lang>
-					<v8:content>Filter item ID references</v8:content>
+					<v8:content>Ref filter item ID</v8:content>
 				</v8:item>
 				<v8:item>
 					<v8:lang>ru</v8:lang>
@@ -298,11 +298,11 @@
 			</ToolTip>
 			<Action>OpenClassifier</Action>
 		</Command>
-		<Command name="ChooseFromClassifier" id="1">
+		<Command name="SelectFromClassifier" id="1">
 			<Title>
 				<v8:item>
 					<v8:lang>en</v8:lang>
-					<v8:content>Choose from classifier</v8:content>
+					<v8:content>Select from classifier</v8:content>
 				</v8:item>
 				<v8:item>
 					<v8:lang>ru</v8:lang>
@@ -312,7 +312,7 @@
 			<ToolTip>
 				<v8:item>
 					<v8:lang>en</v8:lang>
-					<v8:content>Choose from classifier</v8:content>
+					<v8:content>Select from classifier</v8:content>
 				</v8:item>
 				<v8:item>
 					<v8:lang>ru</v8:lang>
@@ -323,7 +323,7 @@
 				<xr:Ref>StdPicture.ChooseValue</xr:Ref>
 				<xr:LoadTransparent>true</xr:LoadTransparent>
 			</Picture>
-			<Action>ChooseFromClassifier</Action>
+			<Action>SelectFromClassifier</Action>
 			<Representation>TextPicture</Representation>
 		</Command>
 	</Commands>

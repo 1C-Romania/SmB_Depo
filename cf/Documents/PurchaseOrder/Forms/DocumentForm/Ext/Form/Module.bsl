@@ -513,61 +513,44 @@ Function GenerateLabelPricesAndCurrency(LabelStructure)
 	// Currency.
 	If LabelStructure.CurrencyTransactionsAccounting Then
 		If ValueIsFilled(LabelStructure.DocumentCurrency) Then
-			//===============================
-			//©# (Begin)	AlekS [2016-09-13]
-			//LabelText = NStr("en='%Currency%';ru='%Вал%'");
-			//LabelText = StrReplace(LabelText, "%Currency%", TrimAll(String(LabelStructure.DocumentCurrency)));
-			LabelText = TrimAll(String(LabelStructure.DocumentCurrency));
-			//©# (End)		AlekS [2016-09-13]
-			//===============================
+			LabelText = NStr("en='%Currency%';ru='%Currency%'");
+			LabelText = StrReplace(LabelText, "%Currency%", TrimAll(String(LabelStructure.DocumentCurrency)));
 		EndIf;
 	EndIf;
 		
 	// Kind of counterparty prices.
 	If ValueIsFilled(LabelStructure.CounterpartyPriceKind) Then
-		//===============================
-		//©# (Begin)	AlekS [2016-09-13]
-		//If IsBlankString(LabelText) Then
-		//	LabelText = LabelText + NStr("en='%PriceKind%';ru='%PriceKind%'");
-		//Else
-		//	LabelText = LabelText + NStr("en=' • %PriceKind%';ru=' • %ВидЦен%'");
-		//EndIf;
-		//LabelText = StrReplace(LabelText, "%PriceKind%", TrimAll(String(LabelStructure.PriceKind)));
-		LabelText = LabelText + " • " + TrimAll(String(LabelStructure.CounterpartyPriceKind));
-		//©# (End)		AlekS [2016-09-13]
-		//===============================
-	EndIf;
-	
-	// VAT taxation.
-	If ValueIsFilled(LabelStructure.VATTaxation) Then
-		//If IsBlankString(LabelText) Then
-		//	LabelText = LabelText + NStr("en='%VATTaxation%';ru='%VATTaxation%'");
-		//Else
-		//	LabelText = LabelText + NStr("en=' • %VATTaxation%';ru=' • %НалогообложениеНДС%'");
-		//EndIf;
-		//LabelText = StrReplace(LabelText, "%VATTaxation%", TrimAll(String(LabelStructure.VATTaxation)));
-		LabelText = LabelText + " • " + TrimAll(String(LabelStructure.VATTaxation));
-		//©# (End)		AlekS [2016-09-13]
-		//===============================
-	EndIf;
-	
-	
-//===============================
-//©# (Begin)	AlekS [2016-09-13]
-//
-//  THIS FLAG HAS NO CHANCE TO BE SHOWED - need attention !   8-(
-//
-//©# (End)		AlekS [2016-09-13]
-//===============================
-	// Flag showing that amount includes VAT.
-	If IsBlankString(LabelText) Then	
-		If LabelStructure.AmountIncludesVAT Then	
-			LabelText = NStr("en='Amount includes VAT';ru='Сумма включает НДС'");
-		Else		
-			LabelText = NStr("en='Amount does not include VAT';ru='Сумма не включает НДС'");
+		If IsBlankString(LabelText) Then
+			LabelText = LabelText + NStr("en='%CounterpartyPriceKind%';ru='%CounterpartyPriceKind%'");
+		Else	
+			LabelText = LabelText + NStr("en=' • %CounterpartyPriceKind%';ru=' • %CounterpartyPriceKind%'");
 		EndIf;	
+		LabelText = StrReplace(LabelText, "%CounterpartyPriceKind%", TrimAll(String(LabelStructure.CounterpartyPriceKind)));
+	EndIf;
+	
+	If SmallBusinessServer.GetFunctionalOptionValue("UseVAT") Then
+		
+		// VAT taxation.
+		If ValueIsFilled(LabelStructure.VATTaxation) Then
+			If IsBlankString(LabelText) Then
+				LabelText = LabelText + NStr("en='%VATTaxation%';ru='%VATTaxation%'");
+			Else
+				LabelText = LabelText + NStr("en=' • %VATTaxation%';ru=' • %VATTaxation%'");
+			EndIf;	
+			LabelText = StrReplace(LabelText, "%VATTaxation%", TrimAll(String(LabelStructure.VATTaxation)));
+		EndIf;
+		
+		// Flag showing that amount includes VAT.
+		If IsBlankString(LabelText) Then	
+			If LabelStructure.AmountIncludesVAT Then	
+				LabelText = NStr("en='Amount includes VAT';ru='Сумма включает НДС'");
+			Else		
+				LabelText = NStr("en='Amount does not include VAT';ru='Сумма не включает НДС'");
+			EndIf;	
+		EndIf;	
+	
 	EndIf;	
- 
+
 	Return LabelText;
 	
 EndFunction // GenerateLabelPricesAndCurrency()
@@ -932,32 +915,6 @@ Procedure ProcessContractChange(ContractData = Undefined)
 	EndIf;
 	
 EndProcedure
-
-////////////////////////////////////////////////////////////////////////////////
-// Subsystem 'ElectronicDocuments'
-
-&AtServer
-Procedure SetEDStateTextAtServer()
-	
-	EDStateText = ElectronicDocumentsClientServer.GetTextOfEDState(Object.Ref, ThisForm);
-	
-EndProcedure
-
-// Event handler of clicking the EDState attribute
-//
-&AtClient
-Procedure EDStateClick(Item, StandardProcessing)
-	
-	StandardProcessing = False;
-	
-	OpenParameters = New Structure;
-	OpenParameters.Insert("Uniqueness",	Object.Ref.UUID());
-	OpenParameters.Insert("Source",		ThisForm);
-	OpenParameters.Insert("Window", 			ThisForm.Window);
-	
-	ElectronicDocumentsClient.OpenEDList(Object.Ref, OpenParameters);
-	
-EndProcedure // EDStateClick()
 
 ////////////////////////////////////////////////////////////////////////////////
 // PROCEDURES FOR WORK WITH THE SELECTION
@@ -1405,13 +1362,8 @@ Procedure OnCreateAtServer(Cancel, StandardProcessing)
 		
 	EndIf;
 	
-	SmallBusinessClientServer.SetPictureForComment(Items.GroupAdditional, Object.Comment);
-	
 	// Setting contract visible.
 	SetContractVisible();
-	
-	// Subsystem 'ElectronicDocuments'
-	SetEDStateTextAtServer();
 	
 	// PickProductsAndServicesInDocuments
 	PickProductsAndServicesInDocuments.AssignPickForm(SelectionOpenParameters, Object.Ref.Metadata().Name, "Inventory");
@@ -1473,16 +1425,6 @@ Procedure AfterWrite(WriteParameters)
 	EndIf;
 	
 EndProcedure // AfterWrite()
-
-// Procedure - handler of the AfterWriteAtServer event.
-//
-&AtServer
-Procedure AfterWriteAtServer(CurrentObject, WriteParameters)
-	
-	// Subsystem 'ElectronicDocuments'
-	SetEDStateTextAtServer();
-	
-EndProcedure // AfterWriteOnServer()
 
 &AtServer
 // Procedure-handler of the OnCreateAtServer event.
@@ -1586,18 +1528,6 @@ Procedure NotificationProcessing(EventName, Parameter, Source)
 		UpdateAdditionalAttributesItems();
 		
 	EndIf;
-	
-	// Subsystem 'ElectronicDocuments'
-	If EventName = "RefreshStateED" Then
-		
-		SetEDStateTextAtServer();
-		
-	ElsIf EventName = "UpdateIBDocumentAfterFilling" Then
-		
-		ThisForm.Read();
-		
-	EndIf;
-	// End "ElectronicDocuments" subsystem
 	
 	// Peripherals
 	If Source = "Peripherals"
@@ -2130,22 +2060,6 @@ Procedure OrderStateOnChange(Item)
 	SetVisibleAndEnabled();
 	
 EndProcedure // OrderStateOnChange()
-
-// Procedure - OnChange event handler of the Comment input field.
-//
-&AtClient
-Procedure CommentOnChange(Item)
-	
-	AttachIdleHandler("Attachable_SetPictureForComment", 0.5, True);
-	
-EndProcedure // CommentOnChange()
-
-&AtClient
-Procedure Attachable_SetPictureForComment()
-	
-	SmallBusinessClientServer.SetPictureForComment(Items.GroupAdditional, Object.Comment);
-	
-EndProcedure
 
 ////////////////////////////////////////////////////////////////////////////////
 // PROCEDURE - EVENT HANDLERS OF THE INVENTORY TABULAR SECTION ATTRIBUTES
@@ -2804,16 +2718,3 @@ EndProcedure // UpdateAdditionalAttributeItems()
 // End StandardSubsystems.Properties
 
 #EndRegion
-
-
-
-
-
-
-
-
-
-
-
-
-

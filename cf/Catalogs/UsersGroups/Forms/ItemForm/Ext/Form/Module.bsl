@@ -297,17 +297,3 @@ Procedure ContentMoveString(MovementDirection)
 EndProcedure
 
 #EndRegion
-
-
-
-
-
-
-
-
-
-
-
-
-
-

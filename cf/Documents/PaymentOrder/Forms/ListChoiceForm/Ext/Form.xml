@@ -203,7 +203,7 @@
 					<ExtendedTooltip name="ListOfTINRecipientExtendedTooltip" id="73"/>
 				</LabelField>
 				<LabelField name="ListBkCode" id="20">
-					<DataPath>List.BKCode</DataPath>
+					<DataPath>1/146</DataPath>
 					<UserVisible>
 						<xr:Common>false</xr:Common>
 					</UserVisible>
@@ -211,7 +211,7 @@
 					<ExtendedTooltip name="ListBKCodeExtendedTooltip" id="74"/>
 				</LabelField>
 				<LabelField name="ListOKATOCode" id="22">
-					<DataPath>List.OKATOCode</DataPath>
+					<DataPath>1/157</DataPath>
 					<UserVisible>
 						<xr:Common>false</xr:Common>
 					</UserVisible>
@@ -245,22 +245,6 @@
 					</Title>
 					<ContextMenu name="ListPaymentIdentifierContextMenu" id="96"/>
 					<ExtendedTooltip name="ListPaymentIdentifierExtendedTooltip" id="97"/>
-				</LabelField>
-				<LabelField name="ListPayerKPP" id="26">
-					<DataPath>List.PayerKPP</DataPath>
-					<UserVisible>
-						<xr:Common>false</xr:Common>
-					</UserVisible>
-					<ContextMenu name="ListPayerKPPContextMenu" id="27"/>
-					<ExtendedTooltip name="ListPayerKPPExtendedTooltip" id="77"/>
-				</LabelField>
-				<LabelField name="ListKPPRecipient" id="28">
-					<DataPath>List.PayeeKPP</DataPath>
-					<UserVisible>
-						<xr:Common>false</xr:Common>
-					</UserVisible>
-					<ContextMenu name="ListKPPRecipientContextMenu" id="29"/>
-					<ExtendedTooltip name="ListKPPRecipientExtendedTooltip" id="78"/>
 				</LabelField>
 				<LabelField name="ListPaymentDestination" id="30">
 					<DataPath>List.PaymentDestination</DataPath>

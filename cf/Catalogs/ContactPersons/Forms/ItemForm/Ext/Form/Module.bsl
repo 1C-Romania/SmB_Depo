@@ -1,26 +1,12 @@
-﻿////////////////////////////////////////////////////////////////////////////////
-// PROCEDURE - FORM EVENT HANDLERS
+﻿
+#Region FormEventHadlers
 
 &AtServer
-// Procedure-handler of the OnCreateAtServer event.
-// Performs initial attributes forms filling.
-//
 Procedure OnCreateAtServer(Cancel, StandardProcessing)
 	
-	If Not ValueIsFilled(Object.Ref) Then
-		Object.Responsible = SmallBusinessReUse.GetValueByDefaultUser(Users.CurrentUser(), "MainResponsible");	;
-		Object.ConnectionRegistrationDate = CurrentDate();
-	EndIf;
-	
-	If Users.InfobaseUserWithFullAccess()
-		OR (IsInRole("OutputToPrinterClipboardFile")
-		AND EmailOperations.CheckSystemAccountAvailable()) Then
+	If Parameters.Key.IsEmpty() Then
 		
-		SystemEmailAccount = EmailOperations.SystemAccount();
-		
-	Else
-		
-		Items.FormSendEmailToContactPerson.Visible = False;
+		OnCreateOnReadAtServer();
 		
 	EndIf;
 	
@@ -32,28 +18,20 @@ Procedure OnCreateAtServer(Cancel, StandardProcessing)
 	AdditionalReportsAndDataProcessors.OnCreateAtServer(ThisForm);
 	// End StandardSubsystems.AdditionalReportsAndDataProcessors
 	
-	// StandardSubsystems.ContactInformation
-	ContactInformationManagement.OnCreateAtServer(ThisForm, Object, "GroupContactInformation");
-	// End StandardSubsystems.ContactInformation
-	
 	// StandardSubsystems.Printing
 	PrintManagement.OnCreateAtServer(ThisForm);
 	// End StandardSubsystems.Printing
 	
 	// StandardSubsystems.Properties
-	PropertiesManagement.OnCreateAtServer(ThisForm, Object, "AdditionalAttributesPage");
+	PropertiesManagement.OnCreateAtServer(ThisForm, Object, "AdditionalAttributes");
 	// End StandardSubsystems.Properties
 	
 EndProcedure // OnCreateAtServer()
 
 &AtServer
-// Event handler procedure OnReadAtServer
-//
 Procedure OnReadAtServer(CurrentObject)
 	
-	// StandardSubsystems.ContactInformation
-	ContactInformationManagement.OnReadAtServer(ThisForm, CurrentObject);
-	// End StandardSubsystems.ContactInformation
+	OnCreateOnReadAtServer();
 	
 	// StandardSubsystems.Properties
 	PropertiesManagement.OnReadAtServer(ThisForm, CurrentObject);
@@ -62,8 +40,6 @@ Procedure OnReadAtServer(CurrentObject)
 EndProcedure // OnReadAtServer()
 
 &AtClient
-// Procedure-handler of the NotificationProcessing event.
-//
 Procedure NotificationProcessing(EventName, Parameter, Source)
 	
 	// Mechanism handler "Properties".
@@ -74,26 +50,38 @@ Procedure NotificationProcessing(EventName, Parameter, Source)
 EndProcedure // NotificationProcessing()
 
 &AtServer
-// Procedure-handler of the BeforeWriteAtServer event.
-//
 Procedure BeforeWriteAtServer(Cancel, CurrentObject, WriteParameters)
 	
-	// Mechanism handler "Properties".
-	PropertiesManagement.BeforeWriteAtServer(ThisForm, CurrentObject);
+	WriteRolesData(CurrentObject);
 	
-	// Subsystem handler "Contact information".
-	ContactInformationManagement.BeforeWriteAtServer(ThisForm, CurrentObject, Cancel);
+	// SB.ContactInformation
+	ContactInformationSB.BeforeWriteAtServer(ThisObject, CurrentObject);
+	// End SB.ContactInformation
+	
+	// StandardSubsystems.Properties
+	PropertiesManagement.BeforeWriteAtServer(ThisForm, CurrentObject);
+	// End StandardSubsystems.Properties
 	
 EndProcedure // BeforeWriteAtServer()
 
+&AtClient
+Procedure AfterWrite(WriteParameters)
+	
+	NotifyParameter = New Structure;
+	NotifyParameter.Insert("ContactPerson",	Object.Ref);
+	NotifyParameter.Insert("Owner",			Object.Owner);
+	NotifyParameter.Insert("Description",	Object.Description);
+	
+	Notify("Write_ContactPerson", NotifyParameter, ThisObject);
+	
+EndProcedure
+
 &AtServer
-// Procedure-handler of the FillCheckProcessingAtServer event.
-//
 Procedure FillCheckProcessingAtServer(Cancel, CheckedAttributes)
 	
-	// StandardSubsystems.ContactInformation
-	ContactInformationManagement.FillCheckProcessingAtServer(ThisForm, Object, Cancel);
-	// End StandardSubsystems.ContactInformation
+	// SB.ContactInformation
+	ContactInformationSB.FillCheckProcessingAtServer(ThisObject, Cancel);
+	// End SB.ContactInformation
 	
 	// StandardSubsystems.Properties
 	PropertiesManagement.FillCheckProcessing(ThisForm, Cancel, CheckedAttributes);
@@ -101,12 +89,266 @@ Procedure FillCheckProcessingAtServer(Cancel, CheckedAttributes)
 	
 EndProcedure // FillCheckProcessingAtServer()
 
-////////////////////////////////////////////////////////////////////////////////
-// PROPERTY MECHANISM PROCEDURES
+#EndRegion
 
-////////////////////////////////////////////////////////////////////////////////
-// SUBSYSTEM PROCEDURES "CONTACT INFORMATION"
+#Region FormItemsEventHadlers
 
+&AtClient
+Procedure RolesCloudURLProcessing(Item, FormattedStringURL, StandardProcessing)
+	
+	StandardProcessing = False;
+	
+	RoleID = Mid(FormattedStringURL, StrLen("Role_")+1);
+	RolesRow = RolesData.FindByID(RoleID);
+	RolesData.Delete(RolesRow);
+	
+	RefreshRolesItems();
+	
+	Modified = True;
+	
+EndProcedure
+
+#EndRegion
+
+#Region ServiceProceduresAndFunctions
+
+&AtServer
+Procedure OnCreateOnReadAtServer()
+	
+	ReadRolesData();
+	RefreshRolesItems();
+	
+	// SB.ContactInformation
+	ContactInformationSB.OnCreateOnReadAtServer(ThisObject, , 6);
+	// End SB.ContactInformation
+	
+EndProcedure
+
+&AtServer
+Procedure RefreshContactInformationItems()
+	
+	// SB.ContactInformation
+	ContactInformationSB.RefreshContactInformationItems(ThisObject);
+	// End SB.ContactInformation
+	
+EndProcedure
+
+#EndRegion
+
+#Region Roles
+
+&AtServer
+Procedure ReadRolesData()
+	
+	RolesData.Clear();
+	
+	If Not ValueIsFilled(Object.Ref) Then
+		Return;
+	EndIf;
+	
+	Query = New Query;
+	Query.Text = 
+		"SELECT
+		|	ContactPersonsRoles.Role AS Role,
+		|	ContactPersonsRoles.Role.DeletionMark AS DeletionMark,
+		|	ContactPersonsRoles.Role.Description AS Description
+		|FROM
+		|	Catalog.ContactPersons.Roles AS ContactPersonsRoles
+		|WHERE
+		|	ContactPersonsRoles.Ref = &Ref";
+	
+	Query.SetParameter("Ref", Object.Ref);
+	
+	Selection = Query.Execute().Select();
+	
+	While Selection.Next() Do
+		
+		NewRoleData = RolesData.Add();
+		URLFS	= "Role_" + NewRoleData.GetID();
+		
+		NewRoleData.Role				= Selection.Role;
+		NewRoleData.DeletionMark		= Selection.DeletionMark;
+		NewRoleData.RolePresentation	= FormattedStringRolePresentation(Selection.Description, Selection.DeletionMark, URLFS);
+		NewRoleData.RoleLength			= StrLen(Selection.Description);
+		
+	EndDo;
+	
+EndProcedure
+
+&AtServer
+Procedure RefreshRolesItems()
+	
+	FS = RolesData.Unload(, "RolePresentation").UnloadColumn("RolePresentation");
+	
+	Index = FS.Count()-1;
+	While Index > 0 Do
+		FS.Insert(Index, "  ");
+		Index = Index - 1;
+	EndDo;
+	
+	Items.RolesCloud.Title			= New FormattedString(FS);
+	Items.RolesAndIndent.Visible	= FS.Count() > 0;
+	
+EndProcedure
+
+&AtServer
+Procedure WriteRolesData(CurrentObject)
+	
+	CurrentObject.Roles.Load(RolesData.Unload(,"Role"));
+	
+EndProcedure
+
+&AtServer
+Procedure AttachRoleAtServer(Role)
+	
+	If RolesData.FindRows(New Structure("Role", Role)).Count() > 0 Then
+		Return;
+	EndIf;
+	
+	RoleData = CommonUse.ObjectAttributesValues(Role, "Description, DeletionMark");
+	
+	RolesRow = RoleData.Add();
+	URLFS = "Role_" + RolesRow.GetID();
+	
+	RolesRow.Role				= Role;
+	RolesRow.DeletionMark		= RoleData.DeletionMark;
+	RolesRow.RolePresentation	= FormattedStringRolePresentation(RoleData.Description, RoleData.DeletionMark, URLFS);
+	RolesRow.RoleLength			= StrLen(RoleData.Description);
+	
+	RefreshRolesItems();
+	
+	Modified = True;
+	
+EndProcedure
+
+&AtServer
+Procedure CreateAndAttachRoleAtServer(Val RoleTitle)
+	
+	Role = FindCreateRole(RoleTitle);
+	AttachRoleAtServer(Role);
+	
+EndProcedure
+
+&AtServerNoContext
+Function FindCreateRole(Val RoleTitle)
+	
+	Role = Catalogs.ContactPersonsRoles.FindByDescription(RoleTitle, True);
+	
+	If Role.IsEmpty() Then
+		
+		RoleObject = Catalogs.ContactPersonsRoles.CreateItem();
+		RoleObject.Description = RoleTitle;
+		RoleObject.Write();
+		Role = RoleObject.Ref;
+		
+	EndIf;
+	
+	Return Role;
+	
+EndFunction
+
+&AtClientAtServerNoContext
+Function FormattedStringRolePresentation(RoleDescription, DeletionMark, URLFS)
+	
+	#If Client Then
+	Color		= CommonUseClientReUse.StyleColor("MinorInscriptionText");
+	BaseFont	= CommonUseClientReUse.StyleFont("NormalTextFont");
+	#Else
+	Color		= StyleColors.MinorInscriptionText;
+	BaseFont	= StyleFonts.NormalTextFont;
+	#EndIf
+	
+	Font	= New Font(BaseFont,,,True,,?(DeletionMark, True, Undefined));
+	
+	ComponentsFS = New Array;
+	ComponentsFS.Add(New FormattedString(RoleDescription + Chars.NBSp, Font, Color));
+	ComponentsFS.Add(New FormattedString(PictureLib.Clear, , , , URLFS));
+	
+	Return New FormattedString(ComponentsFS);
+	
+EndFunction
+
+&AtClient
+Procedure RoleInputFieldChoiceProcessing(Item, SelectedValue, StandardProcessing)
+	
+	If Not ValueIsFilled(SelectedValue) Then
+		Return;
+	EndIf;
+	
+	StandardProcessing = False;
+	
+	If TypeOf(SelectedValue) = Type("CatalogRef.ContactPersonsRoles") Then
+		AttachRoleAtServer(SelectedValue);
+	EndIf;
+	Item.UpdateEditText();
+	
+EndProcedure
+
+&AtClient
+Procedure RoleInputFieldTextEditEnd(Item, Text, ChoiceData, DataGetParameters, StandardProcessing)
+	
+	If Not IsBlankString(Text) Then
+		StandardProcessing = False;
+		CreateAndAttachRoleAtServer(Text);
+		CurrentItem = Items.RoleInputField;
+	EndIf;
+	
+EndProcedure
+
+#EndRegion
+
+#Region ContactInformationSB
+
+&AtServer
+Procedure AddContactInformationServer(AddingKind, SetShowInFormAlways = False) Export
+	
+	ContactInformationSB.AddContactInformation(ThisObject, AddingKind, SetShowInFormAlways);
+	
+EndProcedure
+
+&AtClient
+Procedure Attachable_ActionCIClick(Item)
+	
+	ContactInformationSBClient.ActionCIClick(ThisObject, Item);
+	
+EndProcedure
+
+&AtClient
+Procedure Attachable_PresentationCIOnChange(Item)
+	
+	ContactInformationSBClient.PresentationCIOnChange(ThisObject, Item);
+	
+EndProcedure
+
+&AtClient
+Procedure Attachable_PresentationCIStartChoice(Item, ChoiceData, StandardProcessing)
+	
+	ContactInformationSBClient.PresentationCIStartChoice(ThisObject, Item, ChoiceData, StandardProcessing);
+	
+EndProcedure
+
+&AtClient
+Procedure Attachable_PresentationCIClearing(Item, StandardProcessing)
+	
+	ContactInformationSBClient.PresentationCIClearing(ThisObject, Item, StandardProcessing);
+	
+EndProcedure
+
+&AtClient
+Procedure Attachable_CommentCIOnChange(Item)
+	
+	ContactInformationSBClient.CommentCIOnChange(ThisObject, Item);
+	
+EndProcedure
+
+&AtClient
+Procedure Attachable_ContactInformationSBExecuteCommand(Command)
+	
+	ContactInformationSBClient.ExecuteCommand(ThisObject, Command);
+	
+EndProcedure
+
+#EndRegion
 
 #Region LibrariesHandlers
 
@@ -125,119 +367,6 @@ Procedure AdditionalReportsAndProcessingsExecuteAllocatedCommandAtServer(ItemNam
 	AdditionalReportsAndDataProcessors.ExecuteAllocatedCommandAtServer(ThisForm, ItemName, ExecutionResult);
 EndProcedure
 // End StandardSubsystems.AdditionalReportsAndDataProcessors
-
-// StandardSubsystems.ContactInformation
-&AtClient
-Procedure Attachable_ContactInformationOnChange(Item)
-	
-	ContactInformationManagementClient.PresentationOnChange(ThisForm, Item);
-	
-EndProcedure
-
-&AtClient
-Procedure Attachable_ContactInformationStartChoice(Item, ChoiceData, StandardProcessing)
-	
-	Result = ContactInformationManagementClient.PresentationStartChoice(ThisForm, Item, , StandardProcessing);
-	RefreshContactInformation(Result);
-	
-EndProcedure
-
-&AtClient
-Procedure Attachable_ContactInformationClearing(Item, StandardProcessing)
-	
-	Result = ContactInformationManagementClient.ClearingPresentation(ThisForm, Item.Name);
-	RefreshContactInformation(Result);
-	
-EndProcedure
-
-&AtClient
-Procedure Attachable_ContactInformationExecuteCommand(Command)
-	
-	Result = ContactInformationManagementClient.LinkCommand(ThisForm, Command.Name);
-	RefreshContactInformation(Result);
-	ContactInformationManagementClient.OpenAddressEntryForm(ThisForm, Result);
-	
-EndProcedure
-
-&AtServer
-Function RefreshContactInformation(Result = Undefined)
-	
-	Return ContactInformationManagement.RefreshContactInformation(ThisForm, Object, Result);
-	
-EndFunction
-
-#Region SB_KI
-&AtServerNoContext
-Function GetEMAILContactPerson(RefToCurrentItem)
-	
-	If RefToCurrentItem = Catalogs.ContactPersons.EmptyRef() Then
-		
-		Return Undefined;
-		
-	EndIf;
-	
-	Result = New Array;
-	MailAddressArray = New Array;
-	StructureRecipient = New Structure("Presentation, Address", RefToCurrentItem);
-	
-	Query = New Query;
-	Query.SetParameter("Ref", RefToCurrentItem);
-	
-	Query.Text =
-	"SELECT
-	|	ContactPersonsContactInformation.Ref.Description AS ContactPresentation,
-	|	ContactPersonsContactInformation.EMail_Address AS EMail_Address
-	|FROM
-	|	Catalog.ContactPersons.ContactInformation AS ContactPersonsContactInformation
-	|WHERE
-	|	ContactPersonsContactInformation.Ref = &Ref";
-	
-	SelectionFromQuery = Query.Execute().Select();
-	AddContactEmailAddress = True;
-	While SelectionFromQuery.Next() Do
-		
-		If Not ValueIsFilled(SelectionFromQuery.EMail_Address)
-			OR (NOT AddContactEmailAddress) Then
-			
-			Continue;
-			
-		EndIf;
-		
-		If MailAddressArray.Find(SelectionFromQuery.EMail_Address) = Undefined Then
-			
-			MailAddressArray.Add(SelectionFromQuery.EMail_Address);
-			AddCounterpartyEmailAddress = False;
-			
-		EndIf;
-		
-	EndDo;
-	
-	StructureRecipient.Address = StringFunctionsClientServer.GetStringFromSubstringArray(MailAddressArray, "; ");
-	Result.Add(StructureRecipient);
-	
-	Return Result;
-	
-EndFunction // GetEMAILContactPerson()
-
-&AtClient
-Procedure SendEmailToContactPerson(Command)
-	
-	ListOfEmailAddresses = GetEMAILContactPerson(Object.Ref);
-	
-	If ListOfEmailAddresses = Undefined Then
-		
-		ListOfEmailAddresses = New ValueList;
-		MessageText = NStr("en='Counterparty is not written. The list of emails will be empty.';ru='Контрагент не записан. Список электронных адресов будет пуст.'");
-		CommonUseClientServer.MessageToUser(MessageText);
-		
-	EndIf;
-	
-	SendingParameters = New Structure("Recipient, DeleteFilesAfterSend", ListOfEmailAddresses, True);
-	EmailOperationsClient.CreateNewEmail(SendingParameters);
-	
-EndProcedure // SendEmailToContactPerson()
-#EndRegion
-// End StandardSubsystems.ContactInformation
 
 // StandardSubsystems.Printing
 &AtClient
@@ -260,20 +389,7 @@ Procedure UpdateAdditionalAttributesItems()
 	PropertiesManagement.UpdateAdditionalAttributesItems(ThisForm, FormAttributeToValue("Object"));
 	
 EndProcedure // UpdateAdditionalAttributeItems()
+
 // End StandardSubsystems.Properties
 
 #EndRegion
-
-
-
-
-
-
-
-
-
-
-
-
-
-

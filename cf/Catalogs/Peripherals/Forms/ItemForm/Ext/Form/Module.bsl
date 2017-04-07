@@ -220,17 +220,3 @@ Function GetDriversList(EquipmentType, OnlyAvailable)
 EndFunction
 
 #EndRegion
-
-
-
-
-
-
-
-
-
-
-
-
-
-

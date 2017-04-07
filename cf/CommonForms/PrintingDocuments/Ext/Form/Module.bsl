@@ -863,13 +863,13 @@ Function DefaultPrintedFormFileName(PrintObject, PrintedFormName)
 		EndIf;
 		ParametersForInsert.Date = Format(ParametersForInsert.Date, "DLF=D");
 		ParametersForInsert.Insert("PrintedFormName", PrintedFormName);
-		Pattern = NStr("en='[PrintingFormName] # [Number] dated [Date]';ru='[НазваниеПечатнойФормы] № [Номер] от [Дата]'");
+		Pattern = NStr("en='[PrintedFormName] [Number] dated [Date]';ru='[PrintedFormName] [Number] от [Date]'");
 	Else
 		ParametersForInsert = New Structure;
 		ParametersForInsert.Insert("PrintedFormName",PrintedFormName);
 		ParametersForInsert.Insert("ObjectPresentation", CommonUse.SubjectString(PrintObject));
 		ParametersForInsert.Insert("CurrentDate",Format(CurrentSessionDate(), "DLF=D"));
-		Pattern = NStr("en='[PrintedFormName] - [ObjectPresentation] - [CurrentDate]';ru='[НазваниеПечатнойФормы] - [ПредставлениеОбъекта] - [ТекущаяДата]'");
+		Pattern = NStr("en='[PrintedFormName] - [ObjectPresentation] - [CurrentDate]';ru='[PrintedFormName] - [ObjectPresentation] - [CurrentDate]'");
 	EndIf;
 	
 	Return StringFunctionsClientServer.SubstituteParametersInStringByName(Pattern, ParametersForInsert);
@@ -1280,19 +1280,5 @@ EndFunction
 #EndRegion
 
 #EndRegion
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 

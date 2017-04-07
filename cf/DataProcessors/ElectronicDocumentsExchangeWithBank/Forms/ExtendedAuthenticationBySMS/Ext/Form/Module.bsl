@@ -141,17 +141,3 @@ Procedure SendSMS()
 EndProcedure
 
 #EndRegion
-
-
-
-
-
-
-
-
-
-
-
-
-
-

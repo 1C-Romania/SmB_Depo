@@ -44,17 +44,3 @@ Procedure ListSelection(Item, SelectedRow, Field, StandardProcessing)
 	// End StandardSubsystems.PerformanceEstimation
 	
 EndProcedure // ListSelection()
-
-
-
-
-
-
-
-
-
-
-
-
-
-

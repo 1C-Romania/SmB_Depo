@@ -7097,7 +7097,6 @@ Function PrintForm(ObjectsArray, PrintObjects, TemplateName)
 													+ " from "
 													+ Format(Header.DocumentDate, "DLF=DD");
 			TemplateArea.Parameters.Fill(Header);
-			TemplateArea.Parameters.OKATOCode                  = InfoAboutCompany.CodeByOKPO;
 			TemplateArea.Parameters.CompanyPresentation = SmallBusinessServer.CompaniesDescriptionFull(InfoAboutCompany);
 			TemplateArea.Parameters.CompilationDate          = Format(Header.DocumentDate, "DF=dd.MM.yy");
 			
@@ -7220,7 +7219,6 @@ Function PrintForm(ObjectsArray, PrintObjects, TemplateName)
 			TemplateArea.Parameters.CompanyPresentation = SmallBusinessServer.CompaniesDescriptionFull(InfoAboutCompany);
 			TemplateArea.Parameters.DocumentNumber           = DocumentNumber;
 			TemplateArea.Parameters.DocumentDate            = Header.DocumentDate;
-			TemplateArea.Parameters.CompanyByOKPO        = InfoAboutCompany.CodeByOKPO;
 			SpreadsheetDocument.Put(TemplateArea);
 			
 			RowsPerPage = 23;

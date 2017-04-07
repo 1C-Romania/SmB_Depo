@@ -30,7 +30,6 @@ Procedure ChoiceFormsUsageTable(UsageTable) Export
 	AddSelectionUsageRow(UsageTable, Metadata.Documents.CustomerOrder.Name, Metadata.Documents.CustomerOrder.TabularSections.Inventory.Name, ChoiceFormFullName);
 	AddSelectionUsageRow(UsageTable, Metadata.Documents.AcceptanceCertificate.Name, Metadata.Documents.AcceptanceCertificate.TabularSections.WorksAndServices.Name, ChoiceFormFullName);
 	AddSelectionUsageRow(UsageTable, Metadata.Documents.CustomerInvoice.Name, Metadata.Documents.CustomerInvoice.TabularSections.Inventory.Name, ChoiceFormFullName);
-	AddSelectionUsageRow(UsageTable, Metadata.Documents.CustomerInvoiceNote.Name, Metadata.Documents.CustomerInvoiceNote.TabularSections.Inventory.Name, ChoiceFormFullName);
 	AddSelectionUsageRow(UsageTable, Metadata.Documents.ReceiptCR.Name, Metadata.Documents.ReceiptCR.TabularSections.Inventory.Name, ChoiceFormFullName);
 	
 	// Receipt
@@ -40,7 +39,6 @@ Procedure ChoiceFormsUsageTable(UsageTable) Export
 	AddSelectionUsageRow(UsageTable, Metadata.Documents.PurchaseOrder.Name, Metadata.Documents.PurchaseOrder.TabularSections.Inventory.Name, ChoiceFormFullName);
 	AddSelectionUsageRow(UsageTable, Metadata.Documents.SupplierInvoice.Name, Metadata.Documents.SupplierInvoice.TabularSections.Inventory.Name, ChoiceFormFullName);
 	AddSelectionUsageRow(UsageTable, Metadata.Documents.SupplierInvoice.Name, Metadata.Documents.SupplierInvoice.TabularSections.Expenses.Name, ChoiceFormFullName);
-	AddSelectionUsageRow(UsageTable, Metadata.Documents.SupplierInvoiceNote.Name, Metadata.Documents.SupplierInvoiceNote.TabularSections.Inventory.Name, ChoiceFormFullName);
 	
 	// Other
 	ChoiceFormFullName = DataProcessors.PickingTransfer.ChoiceFormFullName();
@@ -205,25 +203,3 @@ Function SearchGoods(SearchString, ErrorDescription) Export
 EndFunction
 
 // End Full-text search
-
-Function PriceKindCustomerInvoiceNotes(Counterparty, CounterpartyContract, Incoming = True) Export
-	
-	PriceKind = Undefined;
-	If ValueIsFilled(CounterpartyContract) Then
-		
-		PriceKind = CommonUse.GetAttributeValue(CounterpartyContract, ?(Incoming, "CounterpartyPriceKind", "PriceKind"));
-		
-	ElsIf ValueIsFilled(Counterparty) Then
-		
-		CounterpartyContract = Counterparty.ContractByDefault;
-		If ValueIsFilled(CounterpartyContract) Then
-			
-			PriceKind = CommonUse.GetAttributeValue(CounterpartyContract, ?(Incoming, "CounterpartyPriceKind", "PriceKind"));
-			
-		EndIf;
-		
-	EndIf;
-	
-	Return PriceKind
-	
-EndFunction

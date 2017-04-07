@@ -42,17 +42,3 @@ Procedure CommandOK(Command)
 EndProcedure
 
 #EndRegion
-
-
-
-
-
-
-
-
-
-
-
-
-
-

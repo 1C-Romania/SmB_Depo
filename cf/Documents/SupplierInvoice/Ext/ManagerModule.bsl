@@ -5033,11 +5033,11 @@ Procedure GenerateSupplierInvoiceWithExpenses(Query, SpreadsheetDocument)
 	SpreadsheetDocument.Put(TemplateArea);
 	
 	TemplateArea = Template.GetArea("Vendor");
-	TemplateArea.Parameters.VendorPresentation = SmallBusinessServer.CompaniesDescriptionFull(InfoAboutCompany, "FullDescr,TIN,KPP,LegalAddress,PhoneNumbers,");
+	TemplateArea.Parameters.VendorPresentation = SmallBusinessServer.CompaniesDescriptionFull(InfoAboutCompany, "FullDescr,TIN,LegalAddress,PhoneNumbers,");
 	SpreadsheetDocument.Put(TemplateArea);
 	
 	TemplateArea = Template.GetArea("Customer");
-	TemplateArea.Parameters.RecipientPresentation = SmallBusinessServer.CompaniesDescriptionFull(InfoAboutCounterparty, "FullDescr,TIN,KPP,LegalAddress,PhoneNumbers,");
+	TemplateArea.Parameters.RecipientPresentation = SmallBusinessServer.CompaniesDescriptionFull(InfoAboutCounterparty, "FullDescr,TIN,LegalAddress,PhoneNumbers,");
 	SpreadsheetDocument.Put(TemplateArea);
 	
 	TemplateArea = Template.GetArea("TableHeader");
@@ -5249,11 +5249,11 @@ Function PrintForm(ObjectsArray, PrintObjects, TemplateName)
 			SpreadsheetDocument.Put(TemplateArea);
 			
 			TemplateArea = Template.GetArea("Vendor");
-			TemplateArea.Parameters.VendorPresentation = SmallBusinessServer.CompaniesDescriptionFull(InfoAboutCompany, "FullDescr,TIN,KPP,LegalAddress,PhoneNumbers,");
+			TemplateArea.Parameters.VendorPresentation = SmallBusinessServer.CompaniesDescriptionFull(InfoAboutCompany, "FullDescr,TIN,LegalAddress,PhoneNumbers,");
 			SpreadsheetDocument.Put(TemplateArea);
 			
 			TemplateArea = Template.GetArea("Customer");
-			TemplateArea.Parameters.RecipientPresentation = SmallBusinessServer.CompaniesDescriptionFull(InfoAboutCounterparty, "FullDescr,TIN,KPP,LegalAddress,PhoneNumbers,");
+			TemplateArea.Parameters.RecipientPresentation = SmallBusinessServer.CompaniesDescriptionFull(InfoAboutCounterparty, "FullDescr,TIN,LegalAddress,PhoneNumbers,");
 			SpreadsheetDocument.Put(TemplateArea);
 			
 			TemplateArea = Template.GetArea("TableHeader");
@@ -5432,7 +5432,7 @@ Function PrintForm(ObjectsArray, PrintObjects, TemplateName)
 			TemplateArea = Template.GetArea("Vendor");
 			TemplateArea.Parameters.VendorPresentation = SmallBusinessServer.CompaniesDescriptionFull(
 				InfoAboutCompany,
-				"FullDescr,TIN,KPP,LegalAddress,PhoneNumbers,"
+				"FullDescr,TIN,LegalAddress,PhoneNumbers,"
 			);
 			
 			SpreadsheetDocument.Put(TemplateArea);
@@ -5440,7 +5440,7 @@ Function PrintForm(ObjectsArray, PrintObjects, TemplateName)
 			TemplateArea = Template.GetArea("Customer");
 			TemplateArea.Parameters.RecipientPresentation = SmallBusinessServer.CompaniesDescriptionFull(
 				InfoAboutCounterparty,
-				"FullDescr,TIN,KPP,LegalAddress,PhoneNumbers,"
+				"FullDescr,TIN,LegalAddress,PhoneNumbers,"
 			);
 			
 			SpreadsheetDocument.Put(TemplateArea);

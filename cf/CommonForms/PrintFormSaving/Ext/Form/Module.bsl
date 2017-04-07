@@ -167,17 +167,3 @@ Function CanAttachFilesToObject(ObjectReference)
 EndFunction
 
 #EndRegion
-
-
-
-
-
-
-
-
-
-
-
-
-
-

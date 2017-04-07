@@ -686,17 +686,3 @@ Procedure FillVariantsList()
 EndProcedure
 
 #EndRegion
-
-
-
-
-
-
-
-
-
-
-
-
-
-

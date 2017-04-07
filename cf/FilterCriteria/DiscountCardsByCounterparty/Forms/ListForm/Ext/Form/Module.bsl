@@ -15,17 +15,3 @@ Procedure NewWriteProcessing(NewObject, Source, StandardProcessing)
 	Items.List.Refresh();
 	
 EndProcedure
-
-
-
-
-
-
-
-
-
-
-
-
-
-

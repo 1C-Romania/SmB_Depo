@@ -527,16 +527,3 @@ Procedure DisableDataSynchronizationScript()
 EndProcedure
 
 #EndRegion
-
-
-
-
-
-
-
-
-
-
-
-
-

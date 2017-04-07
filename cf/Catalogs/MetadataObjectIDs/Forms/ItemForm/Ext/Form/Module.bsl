@@ -65,17 +65,3 @@ Procedure UpdateIdentificatorProperty()
 EndProcedure
 
 #EndRegion
-
-
-
-
-
-
-
-
-
-
-
-
-
-

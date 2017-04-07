@@ -43,7 +43,7 @@ EndProcedure
 Procedure LocalDirectoryExportFilesBeginningSelection(Item, ChoiceData, StandardProcessing)
 	
 	NotifyDescription = New NotifyDescription("SelectExportDirectoryItIsProposed", ThisObject);
-	CommonUseClient.ShowQuestionAboutFileOperationsExtensionSetting(NOTifyDescription);
+	CommonUseClient.ShowFileSystemExtensionInstallationQuestion(NOTifyDescription);
 	
 EndProcedure
 
@@ -327,17 +327,3 @@ Procedure AllowExternalResourceSave(Result, NotSpecified) Export
 EndProcedure
 
 #EndRegion
-
-
-
-
-
-
-
-
-
-
-
-
-
-

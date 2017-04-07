@@ -663,7 +663,7 @@ Procedure MapSupplier(Vendor, Vendor_IncomingData) Export
 		
 	EndIf;
 	
-	//:::TIN and KPP Search
+	//:::TIN Search
 	Separators = New Array;
 	Separators.Add("/");
 	Separators.Add("\");
@@ -671,7 +671,6 @@ Procedure MapSupplier(Vendor, Vendor_IncomingData) Export
 	Separators.Add("|");
 	
 	TIN = "";
-	KPP = "";
 	
 	For Each SeparatorValue IN Separators Do
 		
@@ -683,11 +682,9 @@ Procedure MapSupplier(Vendor, Vendor_IncomingData) Export
 		EndIf;
 		
 		TIN = Left(Vendor_IncomingData, SeparatorPosition - 1);
-		KPP = Mid(Vendor_IncomingData, SeparatorPosition + 1);
 		
-		Query = New Query("SELECT Catalog.Counterparties.Ref WHERE Not IsFolder AND TIN = &TIN AND KPP = &KPP");
+		Query = New Query("SELECT Catalog.Counterparties.Ref WHERE Not IsFolder AND TIN = &TIN");
 		Query.SetParameter("TIN", TIN);
-		Query.SetParameter("KPP", KPP);
 		
 		Selection = Query.Execute().Select();
 		If Selection.Next() Then
@@ -835,7 +832,7 @@ EndProcedure
 //:::Counterparty
 Procedure MapCounterparty(Counterparty, TIN_KPP, CounterpartyDescription, BankAccount) Export
 	
-	//:::TIN and KPP Search
+	//:::TIN Search
 	If Not IsBlankString(TIN_KPP) Then
 		
 		Separators = New Array;
@@ -845,7 +842,6 @@ Procedure MapCounterparty(Counterparty, TIN_KPP, CounterpartyDescription, BankAc
 		Separators.Add("|");
 		
 		TIN = "";
-		KPP = "";
 		
 		For Each SeparatorValue IN Separators Do
 			
@@ -857,11 +853,9 @@ Procedure MapCounterparty(Counterparty, TIN_KPP, CounterpartyDescription, BankAc
 			EndIf;
 			
 			TIN = Left(TIN_KPP, SeparatorPosition - 1);
-			KPP = Mid(TIN_KPP, SeparatorPosition + 1);
 			
-			Query = New Query("SELECT Catalog.Counterparties.Ref WHERE Not IsFolder AND TIN = &TIN AND KPP = &KPP");
+			Query = New Query("SELECT Catalog.Counterparties.Ref WHERE Not IsFolder AND TIN = &TIN");
 			Query.SetParameter("TIN", TIN);
-			Query.SetParameter("KPP", KPP);
 			
 			Selection = Query.Execute().Select();
 			If Selection.Next() Then

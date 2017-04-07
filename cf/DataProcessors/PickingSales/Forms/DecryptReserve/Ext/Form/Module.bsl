@@ -32,17 +32,3 @@ Procedure OnCreateAtServer(Cancel, StandardProcessing)
 	Characteristic = Parameters.Characteristic;
 	
 EndProcedure // OnCreateAtServer()
-
-
-
-
-
-
-
-
-
-
-
-
-
-

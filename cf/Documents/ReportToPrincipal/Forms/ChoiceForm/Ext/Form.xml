@@ -209,9 +209,13 @@
 							<v8:lang>en</v8:lang>
 							<v8:content>Company</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Организация</v8:content>
+						</v8:item>
 					</Title>
 					<Width>20</Width>
-					<ContextMenu name="CounterpartyContextMenu" id="9"/>
+					<ContextMenu name="CompanyContextMenu" id="9"/>
 					<ExtendedTooltip name="CompanyExtendedTooltip" id="52"/>
 				</LabelField>
 				<CheckBoxField name="KeepBackComissionFee" id="32">
@@ -381,7 +385,7 @@
 				<DefaultVisible>false</DefaultVisible>
 			</Item>
 			<Item>
-				<Command>Document.ReportToPrincipal.Command.InvoiceWithCCDCreateBasedOn</Command>
+				<Command>0:3a4c6085-ac67-45e2-9944-86028532950b</Command>
 				<Type>Auto</Type>
 				<CommandGroup>FormCommandBarCreateBasedOn</CommandGroup>
 				<Index>1</Index>

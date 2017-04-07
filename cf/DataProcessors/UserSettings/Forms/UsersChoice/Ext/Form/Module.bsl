@@ -463,17 +463,3 @@ Procedure FillUsersList(UserType, UseGroups);
 EndProcedure
 
 #EndRegion
-
-
-
-
-
-
-
-
-
-
-
-
-
-

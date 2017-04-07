@@ -523,17 +523,3 @@ Procedure SetScanningComponentEnd(Result, ExecuteParameters) Export
 EndProcedure
 
 #EndRegion
-
-
-
-
-
-
-
-
-
-
-
-
-
-

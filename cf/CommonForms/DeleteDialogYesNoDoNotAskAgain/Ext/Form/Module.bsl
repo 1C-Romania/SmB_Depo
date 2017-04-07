@@ -56,17 +56,3 @@ Procedure OnCreateAtServer(Cancel, StandardProcessing)
 	Items.TextDecoration.Title = Parameters.HeaderText;
 	
 EndProcedure
-
-
-
-
-
-
-
-
-
-
-
-
-
-

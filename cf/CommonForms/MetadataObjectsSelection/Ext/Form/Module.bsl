@@ -379,11 +379,11 @@ Function NewRowOfTree(RowParameters, IsMetadataObject = False)
 	
 	Collection = RowParameters.Parent.GetItems();
 	NewRow = Collection.Add();
-	NewRow.Name             = RowParameters.Name;
-	NewRow.Presentation     = ?(ValueIsFilled(RowParameters.Synonym), RowParameters.Synonym, RowParameters.Name);
-	NewRow.Check            = ?(Parameters.SelectedMetadataObjects.FindByValue(RowParameters.FullName) = Undefined, 0, 1);
-	NewRow.Picture          = RowParameters.Picture;
-	NewRow.FullName         = RowParameters.FullName;
+	NewRow.Name				= RowParameters.Name;
+	NewRow.Presentation		= ?(ValueIsFilled(RowParameters.Synonym), RowParameters.Synonym, RowParameters.Name);
+	NewRow.Check			= ?(Parameters.SelectedMetadataObjects.FindByValue(RowParameters.FullName) = Undefined, 0, 1);
+	NewRow.Picture			= RowParameters.Picture;
+	NewRow.FullName			= RowParameters.FullName;
 	NewRow.IsMetadataObject	= IsMetadataObject;
 	
 	If NewRow.IsMetadataObject 
@@ -607,17 +607,3 @@ Procedure DataReceiving(Parent = Undefined)
 EndProcedure
 
 #EndRegion
-
-
-
-
-
-
-
-
-
-
-
-
-
-

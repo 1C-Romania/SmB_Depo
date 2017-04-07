@@ -1624,28 +1624,28 @@ EndFunction
 //
 Function GetAttributePresentationInLanguage(Val AttributeName) Export
 	
-	If      AttributeName = "Number" Then
-		Return NStr("en='Number';ru='Номер'");
+	If AttributeName = "Number" Then
+		Return NStr("ru = 'Номер'; en='Number'");
 	ElsIf AttributeName = "Name" Then
-		Return NStr("en='Description';ru='Наименование'");
+		Return NStr("ru = 'Наименование'; en='Name'");
 	ElsIf AttributeName = "Code" Then
-		Return NStr("en='Code';ru='код'");
+		Return NStr("ru = 'Код'; en='Code'");
 	ElsIf AttributeName = "IsFolder" Then
-		Return NStr("en='IsFolder';ru='IsFolder'");
+		Return NStr("ru = 'Это группа'; en='Is folder'");
 	ElsIf AttributeName = "Description" Then
-		Return NStr("en='Description';ru='Наименование'");
+		Return NStr("ru = 'Наименование'; en='Description'");
 	ElsIf AttributeName = "Date" Then
-		Return NStr("en='Date';ru='Дата'");
+		Return NStr("ru = 'Дата'; en='Date'");
 	ElsIf AttributeName = "Posted" Then
-		Return NStr("en='Posted';ru='Проведен'");
+		Return NStr("ru = 'Проведен'; en='Posted'");
 	ElsIf AttributeName = "DeletionMark" Then
-		Return NStr("en='DeletionMark';ru='ПометкаУдаления'");
+		Return NStr("ru = 'Пометка удаления'; en='Deletion mark'");
 	ElsIf AttributeName = "Ref" Then
-		Return NStr("en='Ref';ru='Ссылка'");
+		Return NStr("ru = 'Ссылка'; en='Ref'");
 	ElsIf AttributeName = "Parent" Then
-		Return NStr("en='Parent';ru='Родитель'");
+		Return NStr("ru = 'Родитель'; en='Parent'");
 	ElsIf AttributeName = "Owner" Then
-		Return NStr("en='Owner';ru='Владелец'");
+		Return NStr("ru = 'Владелец'; en='Owner'");
 	Else
 		Return AttributeName;
 	EndIf;

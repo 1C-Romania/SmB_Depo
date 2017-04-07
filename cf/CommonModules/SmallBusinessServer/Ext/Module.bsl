@@ -125,8 +125,7 @@ Procedure SetDesignDateColumn(DinList) Export
 	FilterItem.LeftValue		= New DataCompositionField("Date");
 	FilterItem.RightValue	= New StandardBeginningDate(StandardBeginningDateVariant.BeginningOfNextDay);
 	
-	//DesignElement.Appearance.SetParameterValue("Format", "DF=H:mm");
-	DesignElement.Appearance.SetParameterValue("Format", "DF=dd/MM/yyyy");
+	DesignElement.Appearance.SetParameterValue("Format", "DF=h:mm");
 	
 	MadeOutField = DesignElement.Fields.Items.Add();
 	MadeOutField.Field = New DataCompositionField("Date");
@@ -1162,6 +1161,27 @@ Function GetContentText(ProductsAndServices, Characteristic = Undefined) Export
 	
 EndFunction // GetDataContentSelectionStart()
 
+// Function - Reference to binary file data.
+//
+// Parameters:
+//  AttachedFile - CatalogRef - reference to catalog with name "*AttachedFiles".
+//  FormID - UUID - Form ID, which is used in the preparation of binary file data.
+// 
+// Returned value:
+//   - String - address in temporary storage; 
+//   - Undefined, if you can not get the data.
+//
+Function ReferenceToBinaryFileData(AttachedFile, FormID) Export
+	
+	SetPrivilegedMode(True);
+	Try
+		Return AttachedFiles.GetFileData(AttachedFile, FormID).FileBinaryDataRef;
+	Except
+		Return Undefined;
+	EndTry;
+	
+EndFunction // ReferenceToBinaryFileData()
+
 ////////////////////////////////////////////////////////////////////////////////
 // PROCEDURES AND FUNCTIONS
 
@@ -1383,12 +1403,12 @@ Procedure GenerateQueryTextCounterpartiesInfoPanel(QueryText)
 	|	CIKinds.Ref AS CIKind,
 	|	ISNULL(CICounterparty.Presentation, """") AS CIPresentation
 	|FROM
-	|	Catalog.ContactInformationTypes AS CIKinds
+	|	Catalog.ContactInformationKinds AS CIKinds
 	|		LEFT JOIN Catalog.Counterparties.ContactInformation AS CICounterparty
 	|		ON (CICounterparty.Ref = &Counterparty)
 	|			AND CIKinds.Ref = CICounterparty.Kind
 	|WHERE
-	|	CIKinds.Parent = VALUE(Catalog.ContactInformationTypes.CatalogCounterparties)
+	|	CIKinds.Parent = VALUE(Catalog.ContactInformationKinds.CatalogCounterparties)
 	|	AND CIKinds.Predefined
 	|
 	|ORDER BY
@@ -1412,12 +1432,12 @@ Procedure GenerateQueryTextContactsInfoPanel(QueryText)
 	|	CIKinds.Ref AS CIKind,
 	|	ISNULL(CIContactPersons.Presentation, """") AS CIPresentation
 	|FROM
-	|	Catalog.ContactInformationTypes AS CIKinds
+	|	Catalog.ContactInformationKinds AS CIKinds
 	|		LEFT JOIN Catalog.ContactPersons.ContactInformation AS CIContactPersons
 	|		ON (CIContactPersons.Ref = &ContactPerson)
 	|			AND CIKinds.Ref = CIContactPersons.Kind
 	|WHERE
-	|	CIKinds.Parent = VALUE(Catalog.ContactInformationTypes.CatalogContactPersons)
+	|	CIKinds.Parent = VALUE(Catalog.ContactInformationKinds.CatalogContactPersons)
 	|	AND CIKinds.Predefined";
 	
 EndProcedure // GenerateQueryTextContactPersonInfPanel()
@@ -1496,21 +1516,21 @@ Function GetDataCounterpartyInfoPanel(CISelection, IPData)
 	While CISelection.Next() Do
 		
 		CIPresentation = TrimAll(CISelection.CIPresentation);
-		If CISelection.CIKind = PredefinedValue("Catalog.ContactInformationTypes.CounterpartyPhone") Then
+		If CISelection.CIKind = PredefinedValue("Catalog.ContactInformationKinds.CounterpartyPhone") Then
 			IPData.Phone = ?(IsBlankString(IPData.Phone), CIPresentation, IPData.Phone + ", "+ CIPresentation);
-		ElsIf CISelection.CIKind = PredefinedValue("Catalog.ContactInformationTypes.CounterpartyEmail") Then
+		ElsIf CISelection.CIKind = PredefinedValue("Catalog.ContactInformationKinds.CounterpartyEmail") Then
 			IPData.E_mail = ?(IsBlankString(IPData.E_mail), CIPresentation, IPData.E_mail + ", "+ CIPresentation);
-		ElsIf CISelection.CIKind = PredefinedValue("Catalog.ContactInformationTypes.CounterpartyFax") Then
+		ElsIf CISelection.CIKind = PredefinedValue("Catalog.ContactInformationKinds.CounterpartyFax") Then
 			IPData.Fax = ?(IsBlankString(IPData.Fax), CIPresentation, IPData.Fax + ", "+ CIPresentation);
-		ElsIf CISelection.CIKind = PredefinedValue("Catalog.ContactInformationTypes.CounterpartyFactAddress") Then
+		ElsIf CISelection.CIKind = PredefinedValue("Catalog.ContactInformationKinds.CounterpartyActualAddress") Then
 			IPData.RealAddress = ?(IsBlankString(IPData.RealAddress), CIPresentation, IPData.RealAddress + Chars.LF + CIPresentation);
-		ElsIf CISelection.CIKind = PredefinedValue("Catalog.ContactInformationTypes.CounterpartyLegalAddress") Then
+		ElsIf CISelection.CIKind = PredefinedValue("Catalog.ContactInformationKinds.CounterpartyLegalAddress") Then
 			IPData.LegAddress = ?(IsBlankString(IPData.LegAddress), CIPresentation, IPData.LegAddress + Chars.LF + CIPresentation);
-		ElsIf CISelection.CIKind = PredefinedValue("Catalog.ContactInformationTypes.CounterpartyPostalAddress") Then
+		ElsIf CISelection.CIKind = PredefinedValue("Catalog.ContactInformationKinds.CounterpartyPostalAddress") Then
 			IPData.MailAddress = ?(IsBlankString(IPData.MailAddress), CIPresentation, IPData.MailAddress + Chars.LF + CIPresentation);
-		ElsIf CISelection.CIKind = PredefinedValue("Catalog.ContactInformationTypes.CounterpartyShippingAddress") Then
+		ElsIf CISelection.CIKind = PredefinedValue("Catalog.ContactInformationKinds.CounterpartyDeliveryAddress") Then
 			IPData.ShippingAddress = ?(IsBlankString(IPData.ShippingAddress), CIPresentation, IPData.ShippingAddress + Chars.LF + CIPresentation);
-		ElsIf CISelection.CIKind = PredefinedValue("Catalog.ContactInformationTypes.CounterpartyOtherInformation") Then
+		ElsIf CISelection.CIKind = PredefinedValue("Catalog.ContactInformationKinds.CounterpartyOtherInformation") Then
 			IPData.OtherInformation = ?(IsBlankString(IPData.OtherInformation), CIPresentation, IPData.OtherInformation + Chars.LF + CIPresentation);
 		EndIf;
 		
@@ -1527,9 +1547,9 @@ Function GetDataContactPersonInfoPanel(CISelection, IPData)
 	While CISelection.Next() Do
 		
 		CIPresentation = TrimAll(CISelection.CIPresentation);
-		If CISelection.CIKind = PredefinedValue("Catalog.ContactInformationTypes.ContactPersonPhone") Then
+		If CISelection.CIKind = PredefinedValue("Catalog.ContactInformationKinds.ContactPersonPhone") Then
 			IPData.CLPhone = ?(IsBlankString(IPData.CLPhone), CIPresentation, IPData.CLPhone + ", "+ CIPresentation);
-		ElsIf CISelection.CIKind = PredefinedValue("Catalog.ContactInformationTypes.ContactPersonEmail") Then
+		ElsIf CISelection.CIKind = PredefinedValue("Catalog.ContactInformationKinds.ContactPersonEmail") Then
 			IPData.ClEmail = ?(IsBlankString(IPData.ClEmail), CIPresentation, IPData.ClEmail + ", "+ CIPresentation);
 		EndIf;
 		
@@ -3952,7 +3972,7 @@ EndFunction // ProductsAndServicesPresentation()
 // Returns:
 //  String - ref with the products and services presentation.
 //
-Function PresentationOfCounterparty(CounterpartyPresentation,
+Function CounterpartyPresentation(CounterpartyPresentation,
 	                             ContractPresentation = "",
 	                             DocumentPresentation = "",
 	                             OrderPresentation = "",
@@ -4083,7 +4103,7 @@ Function GetPassportDataAsString(DataStructure) Export
 			AND Not ValueIsFilled(DocumentKind)
 			AND Not ValueIsFilled(Series + Number + WhoIssued + NumberUnits)) Then
 
-			PersonalDataList = NStr("en='%DocumentKind% Series: %Series%, No. %Number%, Issued: %DateIssued%, %IssuedBy%; department No. %DepartmentNumber%';ru='%ВидДокумента% Серия: %Серия%, № %Номер%, Выдан: %ДатаВыдачи% года, %КемВыдан%; № подр. %НомерПодразделения%'");
+			PersonalDataList = NStr("en='%DocumentKind% Series: %Series%, No. %Number%, Issued: %DateIssued%, %IssuedBy%; department No. %DepartmentNumber%';ru='%DocumentKind% Серия: %Series%, № %Number%, Выдан: %IssueDate% года, %WhoIssued%; № подр. %NumberUnits%'");
 			
 			PersonalDataList = StrReplace(PersonalDataList, "%DocumentKind%", ?(DocumentKind.IsEmpty(),"","" + DocumentKind + ", "));
 			PersonalDataList = StrReplace(PersonalDataList, "%Series%", Series);
@@ -4690,7 +4710,7 @@ Procedure ShowMessageAboutPostingToCashAssetsRegisterErrors(DocObject, RecordsSe
 	MessageTitleText = ErrorTitle + Chars.LF + NStr("en='Lack of the cash resources';ru='Не хватает денежных средств'");
 	ShowMessageAboutError(DocObject, MessageTitleText, , , , Cancel);
 	
-	MessagePattern = NStr("en='%PettyCashAccount%: %PettyCashAccountPresentation%, balance %AmountBalance% %Currency%, not enough %Amount% %Currency%';ru='%СчетКасса%: %ПредставлениеСчетаКассы%, остаток %СуммаОстаток% %Валюта%, недостаточно %Сумма% %Валюта%'");
+	MessagePattern = NStr("en='%PettyCashAccount%: %PettyCashAccountPresentation%, balance %AmountBalance% %Currency%, not enough %Amount% %Currency%';ru='%PettyCashAccount%: %PettyCashAccountPresentation%, остаток %AmountBalance% %Currency%, недостаточно %Amount% %Currency%'");
 		
 	While RecordsSelection.Next() Do
 		
@@ -4751,8 +4771,8 @@ Procedure ShowMessageAboutPostingToAdvanceHolderPaymentsRegisterErrors(DocObject
 	ShowMessageAboutError(DocObject, MessageTitleText, , , , Cancel);
 	
 	MessagePattern = NStr("en='%AdvanceHolderPresentation%,
-		|Cash balance assets issued to advance holder: %AdvanceHolderBalance% %CurrencyPresentation%';ru='%ПредставлениеПодотчетногоЛица%,
-		|Остаток выданных подотчетному лицу денежных средств: %ОстатокУПодотчетногоЛица% %ВалютаПредставление%'");
+		|Cash balance assets issued to advance holder: %AdvanceHolderBalance% %CurrencyPresentation%';ru='%AdvanceHolderPresentation%,
+		|Остаток выданных подотчетному лицу денежных средств: %AdvanceHolderBalance% %CurrencyPresentation%'");
 		
 	While RecordsSelection.Next() Do
 		
@@ -4782,10 +4802,10 @@ Procedure ShowMessageAboutPostingToAccountsPayableRegisterErrors(DocObject, Reco
 			
 			If RecordsSelection.SettlementsType = Enums.SettlementsTypes.Debt Then
 				MessageText = NStr("en='%CounterpartyPresentation% - debt balance to the vendor by the calculation document is less than the paid amount.
-		|Posted amount payable: %AmountCurrOnWrite% %CurrencyPresentation%.
-		|Debt before the balance provider:% SummaOstatkaDebt% ValûtaPredstavlenie%.';ru='%ПредставлениеКонтрагента% - остаток задолженности перед поставщиком по документу расчетов меньше оплаченной суммы.
-		|Разнесенная сумма платежа: %СуммаВалПриЗаписи% %ВалютаПредставление%.
-		|Остаток задолженности перед поставщиком: %СуммаОстаткаЗадолженности% %ВалютаПредставление%.'"
+		|Posted amount payable: %SumCurOnWrite% %CurrencyPresentation%.
+		|Debt before the balance provider:% RemainingDebtAmount% CurrencyPresentation%.';ru='%CounterpartyPresentation% - остаток задолженности перед поставщиком по документу расчетов меньше оплаченной суммы.
+		|Разнесенная сумма платежа: %SumCurOnWrite% %CurrencyPresentation%.
+		|Остаток задолженности перед поставщиком: %RemainingDebtAmount% %CurrencyPresentation%.'"
 				);
 				MessageText = StrReplace(MessageText, "%SumCurOnWrite%", String(RecordsSelection.SumCurOnWrite));
 				MessageText = StrReplace(MessageText, "%RemainingDebtAmount%", String(RecordsSelection.DebtBalanceAmount));
@@ -4793,12 +4813,12 @@ Procedure ShowMessageAboutPostingToAccountsPayableRegisterErrors(DocObject, Reco
 			
 			If RecordsSelection.SettlementsType = Enums.SettlementsTypes.Advance Then
 				If RecordsSelection.AmountOfOutstandingAdvances = 0 Then
-					MessageText = NStr("en='%CounterpartyPresentation% - paid advances to the supplier under the document are already set off completely in the trade documents.';ru='%ПредставлениеКонтрагента% - выданные по документу авансы поставщику уже полностью зачтены в товарных документах.'"
+					MessageText = NStr("en='%CounterpartyPresentation% - paid advances to the supplier under the document are already set off completely in the trade documents.';ru='%CounterpartyPresentation% - выданные по документу авансы поставщику уже полностью зачтены в товарных документах.'"
 					);
 				Else
 					MessageText = NStr("en='%CounterpartyPresentation% - advances issued to vendor by document are already partially accounted in the  trade documents.
-		|Balance of non-offset advances: %OutstandingAdvancesAmount% %CurrencyPresentation%.';ru='%ПредставлениеКонтрагента% - выданные по документу авансы поставщику уже частично зачтены в товарных документах.
-		|Остаток незачтенных авансов: %СуммаНепогашенныхАвансов% %ВалютаПредставление%.'"
+		|Balance of non-offset advances: %OutstandingAdvancesAmount% %CurrencyPresentation%.';ru='%CounterpartyPresentation% - выданные по документу авансы поставщику уже частично зачтены в товарных документах.
+		|Остаток незачтенных авансов: %OutstandingAdvancesAmount% %CurrencyPresentation%.'"
 					);
 					MessageText = StrReplace(MessageText, "%UnpaidAdvancesAmount%", String(RecordsSelection.AmountOfOutstandingAdvances));
 				EndIf;
@@ -4808,12 +4828,12 @@ Procedure ShowMessageAboutPostingToAccountsPayableRegisterErrors(DocObject, Reco
 			
 			If RecordsSelection.SettlementsType = Enums.SettlementsTypes.Debt Then
 				If RecordsSelection.AmountOfOutstandingDebt = 0 Then
-					MessageText = NStr("en='%CounterpartyPresentation% - debt to supplier under the document is already paid completely.';ru='%ПредставлениеКонтрагента% - задолженность перед поставщиком по документу уже полностью оплачена.'"
+					MessageText = NStr("en='%CounterpartyPresentation% - debt to supplier under the document is already paid completely.';ru='%CounterpartyPresentation% - задолженность перед поставщиком по документу уже полностью оплачена.'"
 					);
 				Else
 					MessageText = NStr("en='%CounterpartyPresentation% - vendor debt by the document is partially paid off.
-		|Balance of unpaid debt amount: %UnpaidDebtAmount% %CurrencyPresentation%.';ru='%ПредставлениеКонтрагента% - задолженность перед поставщиком по документу уже частично оплачена.
-		|Остаток непогашенной суммы задолженности: %СуммаНепогашеннойЗадолженности% %ВалютаПредставление%.'"
+		|Balance of unpaid debt amount: %UnpaidDebtAmount% %CurrencyPresentation%.';ru='%CounterpartyPresentation% - задолженность перед поставщиком по документу уже частично оплачена.
+		|Остаток непогашенной суммы задолженности: %UnpaidDebtAmount% %CurrencyPresentation%.'"
 					);
 					MessageText = StrReplace(MessageText, "%UnpaidDebtAmount%", String(RecordsSelection.AmountOfOutstandingDebt));
 				EndIf;
@@ -4821,9 +4841,9 @@ Procedure ShowMessageAboutPostingToAccountsPayableRegisterErrors(DocObject, Reco
 			If RecordsSelection.SettlementsType = Enums.SettlementsTypes.Advance Then
 				MessageText = NStr("en='%CounterpartyPresentation% - accounted advances amount can not be more than the balance of advances issued to vendor.
 		|Accounted amount:
-		|%CurrAmountOnWrite %CurrencyPresentation% Issued advances balance: %IssuedAdvancesAmount% %CurrencyPresentation%.';ru='%ПредставлениеКонтрагента% - зачитываемая сумма авансов не может быть больше остатка выданных авансов поставщику.
+		|%CurrAmountOnWrite %CurrencyPresentation% Issued advances balance: %IssuedAdvancesAmount% %CurrencyPresentation%.';ru='%CounterpartyPresentation% - зачитываемая сумма авансов не может быть больше остатка выданных авансов поставщику.
 		|Зачитываемая
-		|сумма: %СуммаВалПриЗаписи% %ВалютаПредставление% Остаток выданных авансов: %СуммаВыданныхАвансов% %ВалютаПредставление%.'"
+		|сумма: %CurrAmountOnWrite% %CurrencyPresentation% Остаток выданных авансов: %IssuedAdvancesAmount% %CurrencyPresentation%.'"
 				);
 				MessageText = StrReplace(MessageText, "%SumCurOnWrite%", String(RecordsSelection.SumCurOnWrite));
 				MessageText = StrReplace(MessageText, "%IssuedAdvancesAmount%", String(RecordsSelection.AdvanceAmountsPaid));
@@ -4831,7 +4851,7 @@ Procedure ShowMessageAboutPostingToAccountsPayableRegisterErrors(DocObject, Reco
 			
 		EndIf;
 		
-		MessageText = StrReplace(MessageText, "%PresentationCounterparty%", PresentationOfCounterparty(RecordsSelection.CounterpartyPresentation, RecordsSelection.ContractPresentation, RecordsSelection.DocumentPresentation, RecordsSelection.OrderPresentation, RecordsSelection.CalculationsTypesPresentation));
+		MessageText = StrReplace(MessageText, "%CounterpartyPresentation%", CounterpartyPresentation(RecordsSelection.CounterpartyPresentation, RecordsSelection.ContractPresentation, RecordsSelection.DocumentPresentation, RecordsSelection.OrderPresentation, RecordsSelection.CalculationsTypesPresentation));
 		MessageText = StrReplace(MessageText, "%CurrencyPresentation%", TrimAll(RecordsSelection.CurrencyPresentation));
 		
 		ShowMessageAboutError(DocObject, MessageText, , , , Cancel);
@@ -4844,8 +4864,8 @@ EndProcedure // ReportErrorsPostingByRegisterAccountsPayable()
 //
 Procedure ShowMessageAboutPostingToAccountsReceivableRegisterErrors(DocObject, RecordsSelection, Cancel) Export
 	
-	ErrorTitle = NStr("en='Error:';ru='Ошибка:'");
-	MessageTitleText = ErrorTitle + Chars.LF + NStr("en='No possiblity to fix the settlements with customers';ru='Нет возможности зафиксировать расчеты с покупателями'");
+	ErrorTitle = NStr("ru = 'Ошибка:'; en = 'Error:'");
+	MessageTitleText = ErrorTitle + Chars.LF + NStr("ru = 'Нет возможности зафиксировать расчеты с покупателями'; en = 'No possiblity to fix the settlements with customers'");
 	ShowMessageAboutError(DocObject, MessageTitleText, , , , Cancel);
 		
 	While RecordsSelection.Next() Do
@@ -4854,10 +4874,10 @@ Procedure ShowMessageAboutPostingToAccountsReceivableRegisterErrors(DocObject, R
 			
 			If RecordsSelection.SettlementsType = Enums.SettlementsTypes.Debt Then
 				MessageText = NStr("en='%CounterpartyPresentation% - balance customer debt by calculations document is less than posted payment amount.
-		|Posted amount payable: %AmountCurrOnWrite% %CurrencyPresentation%.
-		|Remaining customer debt: %RemainingDebtAmount% %CurrencyPresentation%.';ru='%ПредставлениеКонтрагента% - остаток задолженность покупателя по документу расчетов меньше разнесенной суммы платежа.
-		|Разнесенная сумма платежа: %СуммаВалПриЗаписи% %ВалютаПредставление%.
-		|Остаток задолженности покупателя: %СуммаОстаткаЗадолженности% %ВалютаПредставление%.'"
+		|Posted amount payable: %SumCurOnWrite% %CurrencyPresentation%.
+		|Remaining customer debt: %RemainingDebtAmount% %CurrencyPresentation%.';ru='%CounterpartyPresentation% - остаток задолженность покупателя по документу расчетов меньше разнесенной суммы платежа.
+		|Разнесенная сумма платежа: %SumCurOnWrite% %CurrencyPresentation%.
+		|Остаток задолженности покупателя: %RemainingDebtAmount% %RemainingDebtAmount%.'"
 				);
 				MessageText = StrReplace(MessageText, "%SumCurOnWrite%", String(RecordsSelection.SumCurOnWrite));
 				MessageText = StrReplace(MessageText, "%RemainingDebtAmount%", String(RecordsSelection.DebtBalanceAmount));
@@ -4865,12 +4885,12 @@ Procedure ShowMessageAboutPostingToAccountsReceivableRegisterErrors(DocObject, R
 			
 			If RecordsSelection.SettlementsType = Enums.SettlementsTypes.Advance Then
 				If RecordsSelection.AmountOfOutstandingAdvances = 0 Then
-					MessageText = NStr("en='%CounterpartyPresentation% - received by the document advances from the customer are already set off completely in the trade documents.';ru='%ПредставлениеКонтрагента% - полученные по документу авансы от покупателя уже полностью зачтены в товарных документах.'"
+					MessageText = NStr("en='%CounterpartyPresentation% - received by the document advances from the customer are already set off completely in the trade documents.';ru='%CounterpartyPresentation% - полученные по документу авансы от покупателя уже полностью зачтены в товарных документах.'"
 					);
 				Else
 					MessageText = NStr("en='%CounterpartyPresentation% - advances received by the document from the customer are partially accounted in the trade documents.
-		|Balance of non-offset advances: %OutstandingAdvancesAmount% %CurrencyPresentation%.';ru='%ПредставлениеКонтрагента% - полученные по документу авансы от покупателя уже частично зачтены в товарных документах.
-		|Остаток незачтенных авансов: %СуммаНепогашенныхАвансов% %ВалютаПредставление%.'"
+		|Balance of non-offset advances: %UnpaidAdvancesAmount% %CurrencyPresentation%.';ru='%CounterpartyPresentation% - полученные по документу авансы от покупателя уже частично зачтены в товарных документах.
+		|Остаток незачтенных авансов: %UnpaidAdvancesAmount% %CurrencyPresentation%.'"
 					);
 					MessageText = StrReplace(MessageText, "%UnpaidAdvancesAmount%", String(RecordsSelection.AmountOfOutstandingAdvances));
 				EndIf;
@@ -4880,12 +4900,12 @@ Procedure ShowMessageAboutPostingToAccountsReceivableRegisterErrors(DocObject, R
 			
 			If RecordsSelection.SettlementsType = Enums.SettlementsTypes.Debt Then
 				If RecordsSelection.AmountOfOutstandingDebt = 0 Then
-					MessageText = NStr("en='%CounterpartyPresentation% - customer debt on the document has already been paid off.';ru='%ПредставлениеКонтрагента% - задолженность покупателя по документу уже полностью оплачена.'"
+					MessageText = NStr("en='%CounterpartyPresentation% - customer debt on the document has already been paid off.';ru='%CounterpartyPresentation% - задолженность покупателя по документу уже полностью оплачена.'"
 					);
 				Else
 					MessageText = NStr("en='%CounterpartyPresentation% - customer debt on the document has been partially paid off.
-		|Balance of unpaid debt amount: %UnpaidDebtAmount% %CurrencyPresentation%.';ru='%ПредставлениеКонтрагента% - задолженность покупателя по документу уже частично оплачена.
-		|Остаток непогашенной суммы задолженности: %СуммаНепогашеннойЗадолженности% %ВалютаПредставление%.'"
+		|Balance of unpaid debt amount: %UnpaidDebtAmount% %CurrencyPresentation%.';ru='%CounterpartyPresentation% - задолженность покупателя по документу уже частично оплачена.
+		|Остаток непогашенной суммы задолженности: %UnpaidDebtAmount% %CurrencyPresentation%.'"
 					);
 					MessageText = StrReplace(MessageText, "%UnpaidDebtAmount%", String(RecordsSelection.AmountOfOutstandingDebt));
 				EndIf;
@@ -4894,9 +4914,9 @@ Procedure ShowMessageAboutPostingToAccountsReceivableRegisterErrors(DocObject, R
 			If RecordsSelection.SettlementsType = Enums.SettlementsTypes.Advance Then
 				MessageText = NStr("en='%CounterpartyPresentation% - accounted advances amount can not be more than balance of advances received from customer.
 		|Accounted amount:
-		|%CurrAmountOnWrite %CurrencyPresentation% Received advances balance: %ReceivedAdvancesAmount% %CurrencyPresentation%.';ru='%ПредставлениеКонтрагента% - зачитываемая сумма авансов не может быть больше остатка полученных авансов от покупателя.
+		|%SumCurOnWrite %CurrencyPresentation% Received advances balance: %ReceivedAdvancesAmount% %CurrencyPresentation%.';ru='%CounterpartyPresentation% - зачитываемая сумма авансов не может быть больше остатка полученных авансов от покупателя.
 		|Зачитываемая
-		|сумма: %СуммаВалПриЗаписи% %ВалютаПредставление% Остаток полученных авансов: %СуммаПолученныхАвансов% %ВалютаПредставление%.'"
+		|сумма: %SumCurOnWrite% %CurrencyPresentation% Остаток полученных авансов: %ReceivedAdvancesAmount% %CurrencyPresentation%.'"
 				);
 				MessageText = StrReplace(MessageText, "%SumCurOnWrite%", String(RecordsSelection.SumCurOnWrite));
 				MessageText = StrReplace(MessageText, "%ReceivedAdvancesAmount%", String(RecordsSelection.AdvanceAmountsReceived));
@@ -4904,7 +4924,7 @@ Procedure ShowMessageAboutPostingToAccountsReceivableRegisterErrors(DocObject, R
 			
 		EndIf;
 		
-		MessageText = StrReplace(MessageText, "%PresentationCounterparty%", PresentationOfCounterparty(RecordsSelection.CounterpartyPresentation, RecordsSelection.ContractPresentation, RecordsSelection.DocumentPresentation, RecordsSelection.OrderPresentation, RecordsSelection.CalculationsTypesPresentation));
+		MessageText = StrReplace(MessageText, "%CounterpartyPresentation%", CounterpartyPresentation(RecordsSelection.CounterpartyPresentation, RecordsSelection.ContractPresentation, RecordsSelection.DocumentPresentation, RecordsSelection.OrderPresentation, RecordsSelection.CalculationsTypesPresentation));
 		MessageText = StrReplace(MessageText, "%CurrencyPresentation%", TrimAll(RecordsSelection.CurrencyPresentation));
 		
 		ShowMessageAboutError(DocObject, MessageText, , , , Cancel);
@@ -5965,26 +5985,23 @@ EndFunction
 Function CompaniesDescriptionFull(ListInformation, List = "", WithPrefix = True) Export
 
 	If IsBlankString(List) Then
-		List = "FullDescr,TIN,Certificate,LegalAddress,PhoneNumbers,Fax,AccountNo,Bank,BIN,CorrAccount";
+		List = "FullDescr,TIN,LegalAddress,PhoneNumbers,Fax,AccountNo,Bank,SWIFT,CorrAccount";
 	EndIf; 
 
 	Result = "";
 
 	AccordanceOfParameters = New Map();
-	AccordanceOfParameters.Insert("FullDescr",		" ");
-	AccordanceOfParameters.Insert("TIN",						" TIN ");
-	AccordanceOfParameters.Insert("KPP",						" KPP ");
-	AccordanceOfParameters.Insert("Certificate",			" ");
-	AccordanceOfParameters.Insert("CertificateIssueDate",	" from ");
-	AccordanceOfParameters.Insert("LegalAddress",			" ");
-	AccordanceOfParameters.Insert("MailAddress",			" ");
-	AccordanceOfParameters.Insert("PhoneNumbers",					" tel.: ");
-	AccordanceOfParameters.Insert("Fax",						" fax: ");
-	AccordanceOfParameters.Insert("AccountNo",				" r/From ");
-	AccordanceOfParameters.Insert("Bank",						" in the bank ");
-	AccordanceOfParameters.Insert("BIN",						" BIN ");
-	AccordanceOfParameters.Insert("CorrAccount",					" k/From ");
-	AccordanceOfParameters.Insert("CodeByOKPO",				" NCBO code ");
+	AccordanceOfParameters.Insert("FullDescr",			" ");
+	AccordanceOfParameters.Insert("TIN",				" TIN ");
+	AccordanceOfParameters.Insert("RegistrationNumber",	" ");
+	AccordanceOfParameters.Insert("LegalAddress",		" ");
+	AccordanceOfParameters.Insert("PostalAddress",		" ");
+	AccordanceOfParameters.Insert("PhoneNumbers",		" tel.: ");
+	AccordanceOfParameters.Insert("Fax",				" fax: ");
+	AccordanceOfParameters.Insert("AccountNo",			" account number ");
+	AccordanceOfParameters.Insert("Bank",				" in the bank ");
+	AccordanceOfParameters.Insert("SWIFT",				" SWIFT ");
+	AccordanceOfParameters.Insert("CorrAccount",		" corr. account ");
 
 	List          = List + ?(Right(List, 1) = ",", "", ",");
 	NumberOfParameters = StrOccurrenceCount(List, ",");
@@ -6070,9 +6087,9 @@ EndFunction // QuantityInWords()
 //
 Function InfoAboutLegalEntityIndividual(LegalEntityIndividual, PeriodDate, ForIndividualOnlyInitials = True, BankAccount = Undefined) Export
 
-	Information = New Structure("Presentation, FullDescr, CodeByOKPO, TIN, KPP, PhoneNumbers, Fax, LegalAddress, Bank, BIN, CorrAccount, CorrespondentText, AccountNo, BankAddress, Email");
-	Query   = New Query;
-	Data   = Undefined;
+	Information	= New Structure("Presentation, FullDescr, TIN, RegistrationNumber, PhoneNumbers, Fax, LegalAddress, Bank, SWIFT, CorrAccount, CorrespondentText, AccountNo, BankAddress, Email");
+	Query		= New Query;
+	Data		= Undefined;
 
 	If Not ValueIsFilled(LegalEntityIndividual) Then
 		Return Information;
@@ -6099,24 +6116,15 @@ Function InfoAboutLegalEntityIndividual(LegalEntityIndividual, PeriodDate, ForIn
 		Return Information;
 	EndIf;
 
-	Query.SetParameter("PairLegEntInd",      LegalEntityIndividual);
-	Query.SetParameter("PairBankAccount", CurrentBankAccount);
+	Query.SetParameter("ParLegEntInd",      LegalEntityIndividual);
+	Query.SetParameter("ParBankAccount",	CurrentBankAccount);
 
 	Query.Text = 
 	"SELECT
 	|	Companies.Presentation AS Description,
 	|	Companies.DescriptionFull AS FullDescr,
 	|	Companies.TIN,
-	|	Companies.KPP,
-	|	Companies.CodeByOKPO AS CodeByOKPO,";
-	
-	If CatalogName = "Companies" Then
-		
-		Query.Text = Query.Text + "
-		|	Companies.CertificateSeriesNumber, 
-		|	Companies.CertificateIssueDate,";
-		
-	EndIf;
+	|	Companies.RegistrationNumber,";
 	
 	If Not ValueIsFilled(CurrentBankAccount) Then
 	
@@ -6124,119 +6132,95 @@ Function InfoAboutLegalEntityIndividual(LegalEntityIndividual, PeriodDate, ForIn
 		|	""""                          AS AccountNo,
 		|	""""                          AS CorrespondentText,
 		|	""""                          AS Bank,
-		|	""""                          AS BIN,
+		|	""""                          AS SWIFT,
 		|	""""                          AS CorrAccount,
 		|	""""                          AS BankAddress
 		|FROM
 		|	Catalog."+CatalogName+" AS Companies
-		|WHERE Companies.Ref = &PairLegEntInd";
+		|WHERE Companies.Ref = &ParLegEntInd";
 	
 	Else
 	
 		Query.Text = Query.Text + "
-		|	BankAccounts.AccountNo AS AccountNo,
-		|	BankAccounts.CorrespondentText AS CorrespondentText,
-		|	BankAccounts."+BankAttributeName+" AS Bank, 
-		|	BankAccounts."+BankAttributeName+".Code AS BIN,
-		|	BankAccounts."+BankAttributeName+".CorrAccount AS CorrAccount, 
-		|	BankAccounts."+BankAttributeName+".Address AS BankAddress
+		|	BankAccounts.AccountNo							AS AccountNo,
+		|	BankAccounts.CorrespondentText					AS CorrespondentText,
+		|	BankAccounts."+BankAttributeName+"				AS Bank, 
+		|	BankAccounts."+BankAttributeName+".Code			AS SWIFT,
+		|	BankAccounts."+BankAttributeName+".CorrAccount	AS CorrAccount, 
+		|	BankAccounts."+BankAttributeName+".Address		AS BankAddress
 		|FROM 
 		|	Catalog."+CatalogName+" AS Companies, 
 		|	Catalog.BankAccounts AS BankAccounts
 		|
 		|WHERE
-		|	Companies.Ref = &PairLegEntInd
-		|	AND BankAccounts.Ref = &PairBankAccount";
+		|	Companies.Ref			= &ParLegEntInd
+		|	AND BankAccounts.Ref	= &ParBankAccount";
 		
 	EndIf;
 	
 	Data = Query.Execute().Select();
 	Data.Next();
 
-	Information.Insert("CodeByOKPO", 		"");
-	Information.Insert("KPP",       		"");
-	Information.Insert("Certificate",	"");
-	
-	If Not (LegalEntityIndividual.Metadata().Attributes.Find("LegalEntityIndividual") = Undefined) Then
-
-		Information.CodeByOKPO = Data.CodeByOKPO;
-		
-		If LegalEntityIndividual.LegalEntityIndividual = Enums.LegalEntityIndividual.LegalEntity Then
-			
-			Information.KPP = Data.KPP;
-			
-		ElsIf CatalogName = "Companies" Then
-			
-			Information.Certificate = "certificate " + Data.CertificateSeriesNumber + " dated " + Format(Data.CertificateIssueDate, "DF=dd.MM.yyyy");
-			
-		EndIf;
-
-	ElsIf CatalogName = "Companies" Then
-		
-		Information.CodeByOKPO = Data.CodeByOKPO;
-		Information.KPP       = Data.KPP;
-		
-	EndIf;
-	
 	Information.Insert("FullDescr", Data.FullDescr);
 
 	If Data <> Undefined Then
 
 		If TypeOf(LegalEntityIndividual) = Type("CatalogRef.Companies") Then
 			
-			Phone = Catalogs.ContactInformationTypes.CompanyPhone;
-			Fax = Catalogs.ContactInformationTypes.CompanyFax;
-			LegAddress = Catalogs.ContactInformationTypes.CompanyLegalAddress;
-			RealAddress = Catalogs.ContactInformationTypes.CompanyFactAddress;
-			PostAddress = Catalogs.ContactInformationTypes.CompanyPostalAddress;
-			E_mail = Catalogs.ContactInformationTypes.CompanyEmail;
+			Phone		= Catalogs.ContactInformationKinds.CompanyPhone;
+			Fax			= Catalogs.ContactInformationKinds.CompanyFax;
+			LegAddress	= Catalogs.ContactInformationKinds.CompanyLegalAddress;
+			RealAddress	= Catalogs.ContactInformationKinds.CompanyActualAddress;
+			PostAddress	= Catalogs.ContactInformationKinds.CompanyPostalAddress;
+			Email		= Catalogs.ContactInformationKinds.CompanyEmail;
 			
 		ElsIf TypeOf(LegalEntityIndividual) = Type("CatalogRef.Individuals") Then
 			
-			Phone = Catalogs.ContactInformationTypes.IndividualPhone;
-			Fax = Catalogs.ContactInformationTypes.EmptyRef();
-			LegAddress = Catalogs.ContactInformationTypes.IndividualAddressByRegistration;
-			RealAddress = Catalogs.ContactInformationTypes.IndividualAddressByRegistration;
-			PostAddress = Catalogs.ContactInformationTypes.EmptyRef();
-			E_mail = Undefined;
+			Phone		= Catalogs.ContactInformationKinds.IndividualPhone;
+			Fax			= Catalogs.ContactInformationKinds.EmptyRef();
+			LegAddress	= Catalogs.ContactInformationKinds.IndividualPostalAddress;
+			RealAddress	= Catalogs.ContactInformationKinds.IndividualActualAddress;
+			PostAddress	= Catalogs.ContactInformationKinds.IndividualPostalAddress;
+			Email		= Catalogs.ContactInformationKinds.IndividualEmail;
 			
 		ElsIf TypeOf(LegalEntityIndividual) = Type("CatalogRef.Counterparties") Then
 			
-			Phone = Catalogs.ContactInformationTypes.CounterpartyPhone;
-			Fax = Catalogs.ContactInformationTypes.CounterpartyFax;
-			LegAddress = Catalogs.ContactInformationTypes.CounterpartyLegalAddress;
-			RealAddress = Catalogs.ContactInformationTypes.CounterpartyFactAddress;
-			PostAddress = Catalogs.ContactInformationTypes.CounterpartyPostalAddress;
-			E_mail = Catalogs.ContactInformationTypes.CounterpartyEmail;
+			Phone		= Catalogs.ContactInformationKinds.CounterpartyPhone;
+			Fax			= Catalogs.ContactInformationKinds.CounterpartyFax;
+			LegAddress	= Catalogs.ContactInformationKinds.CounterpartyLegalAddress;
+			RealAddress	= Catalogs.ContactInformationKinds.CounterpartyActualAddress;
+			PostAddress	= Catalogs.ContactInformationKinds.CounterpartyPostalAddress;
+			Email		= Catalogs.ContactInformationKinds.CounterpartyEmail;
 			
 		Else
 			
-			Phone = Catalogs.ContactInformationTypes.EmptyRef();
-			Fax = Catalogs.ContactInformationTypes.EmptyRef();
-			LegAddress = Catalogs.ContactInformationTypes.EmptyRef();
-			RealAddress = Catalogs.ContactInformationTypes.EmptyRef();
-			PostAddress = Catalogs.ContactInformationTypes.EmptyRef();
-			E_mail = Undefined;
+			Phone		= Catalogs.ContactInformationKinds.EmptyRef();
+			Fax			= Catalogs.ContactInformationKinds.EmptyRef();
+			LegAddress	= Catalogs.ContactInformationKinds.EmptyRef();
+			RealAddress	= Catalogs.ContactInformationKinds.EmptyRef();
+			PostAddress	= Catalogs.ContactInformationKinds.EmptyRef();
+			Email		= Undefined;
 			
 		EndIf;
 		
-		Information.Insert("Presentation",	Data.Description);
-		Information.Insert("TIN",			Data.TIN);
-		Information.Insert("PhoneNumbers",		GetContactInformation(LegalEntityIndividual, Phone));
-		Information.Insert("Fax", 			GetContactInformation(LegalEntityIndividual, Fax));
-		Information.Insert("AccountNo",		Data.AccountNo);
-		Information.Insert("Bank",			Data.Bank);
-		Information.Insert("BIN",			Data.BIN);
-		Information.Insert("BankAddress",		Data.BankAddress);
-		Information.Insert("CorrAccount",		Data.CorrAccount);
-		Information.Insert("CorrespondentText", Data.CorrespondentText);
-		Information.Insert("LegalAddress", GetContactInformation(LegalEntityIndividual, LegAddress));
-		Information.Insert("ActualAddress", GetContactInformation(LegalEntityIndividual, RealAddress));
-		Information.Insert("MailAddress",	GetContactInformation(LegalEntityIndividual, PostAddress));
+		Information.Insert("Presentation",			Data.Description);
+		Information.Insert("TIN",					Data.TIN);
+		Information.Insert("RegistrationNumber",	Data.RegistrationNumber);
+		Information.Insert("PhoneNumbers",			GetContactInformation(LegalEntityIndividual, Phone));
+		Information.Insert("Fax",					GetContactInformation(LegalEntityIndividual, Fax));
+		Information.Insert("AccountNo",				Data.AccountNo);
+		Information.Insert("Bank",					Data.Bank);
+		Information.Insert("SWIFT",					Data.SWIFT);
+		Information.Insert("BankAddress",			Data.BankAddress);
+		Information.Insert("CorrAccount",			Data.CorrAccount);
+		Information.Insert("CorrespondentText",		Data.CorrespondentText);
+		Information.Insert("LegalAddress",			GetContactInformation(LegalEntityIndividual, LegAddress));
+		Information.Insert("ActualAddress",			GetContactInformation(LegalEntityIndividual, RealAddress));
+		Information.Insert("MailAddress",			GetContactInformation(LegalEntityIndividual, PostAddress));
 		
-		If ValueIsFilled(E_mail) Then
+		If ValueIsFilled(Email) Then
 			
-			Information.Insert("Email", GetContactInformation(LegalEntityIndividual, E_mail));
+			Information.Insert("Email", GetContactInformation(LegalEntityIndividual, Email));
 			
 		EndIf;
 		
@@ -6498,7 +6482,7 @@ Function CheckAccountsInvoicePagePut(Spreadsheet, AreaCurRows, IsLastRow, Templa
 	
 	Return CheckResult;
 	
-EndFunction // CheckCustomerInvoiceNoteOnPageOutput()
+EndFunction // CheckAccountsInvoicePagePut()
 
 // Check if UTD printing is correct
 //
@@ -6670,92 +6654,6 @@ EndFunction // GetContractDocument
 
 ///////////////////////////////////////////////////////////////////////////////// 
 // PROCEDURES AND FUNCTIONS FOR WORK WITH CUSTOMER INVOICE NOTES
-
-// Function returns reference to the subordinate customer invoice note
-//
-Function GetSubordinateInvoice(BasisDocument, Received = False) Export
-
-	If Not ValueIsFilled(BasisDocument) Then
-		
-		Return Undefined;
-		
-	EndIf;
-	
-	If Received Then
-		
-		QueryText = 
-		"SELECT
-		|	CustomerInvoiceNote.Ref,
-		|	CustomerInvoiceNote.Number,
-		|	CustomerInvoiceNote.Date
-		|FROM
-		|	Document.SupplierInvoiceNote AS CustomerInvoiceNote
-		|WHERE
-		|	CustomerInvoiceNote.BasisDocument = &BasisDocument
-		|	AND Not CustomerInvoiceNote.DeletionMark";
-		
-	Else
-		
-		// For outgoing SF basis documents are stored in TS BasisDocuments
-		QueryText = 
-		"SELECT
-		|	InvoiceBasisDocuments.Ref,
-		|	InvoiceBasisDocuments.Ref.Number,
-		|	InvoiceBasisDocuments.Ref.Date
-		|FROM
-		|	Document.CustomerInvoiceNote.BasisDocuments AS InvoiceBasisDocuments
-		|WHERE
-		|	InvoiceBasisDocuments.BasisDocument = &BasisDocument";
-		
-	EndIf;
-	
-	Query = New Query(QueryText);
-	Query.SetParameter("BasisDocument", BasisDocument);
-	QueryResult = Query.Execute();
-	
-	If QueryResult.IsEmpty() Then
-		Return Undefined;
-	EndIf;
-	
-	Selection = QueryResult.Select();
-	Selection.Next();
-	
-	ReturnStructure = New Structure;
-	ReturnStructure.Insert("Ref", Selection.Ref);
-	ReturnStructure.Insert("Number", Selection.Number);
-	ReturnStructure.Insert("Date", Selection.Date);
-	
-	Return ReturnStructure;
-
-EndFunction // GetSubordinateCustomerInvoiceNote()
- 
-// Sets hyperlink label for Customer invoice note
-//
-Procedure SetTextAboutInvoice(DocumentForm, Received = False) Export
-
-	InvoiceFound = SmallBusinessServer.GetSubordinateInvoice(DocumentForm.Object.Ref, Received);
-	If ValueIsFilled(InvoiceFound) Then
-		InvoiceText = NStr("en='# %Number% dated %Date% y.';ru='№ %Номер% от %Дата% г.'");
-		InvoiceText = StrReplace(InvoiceText, "%Number%", InvoiceFound.Number);
-		InvoiceText = StrReplace(InvoiceText, "%Date%", Format(InvoiceFound.Date, "DF=dd.MM.yyyy"));
-		DocumentForm.InvoiceText = InvoiceText;	
-	Else
-	    DocumentForm.InvoiceText = "Enter invoice note";
-	EndIf;
-
-EndProcedure // FillInCustomerInvoiceNoteText()
-
-//While changing the base document correct
-//the subordinate Customer invoice note Parameters:
-//BasisDocument - base document for which you should search and correct customer invoice note
-Procedure ChangeSubordinateInvoice(BasisDocument, Received = False) Export
-	
-	CustomerInvoiceNote = SmallBusinessServer.GetSubordinateInvoice(BasisDocument, Received);
-	InvoiceObject = CustomerInvoiceNote.Ref.GetObject();
-	InvoiceObject.Filling(BasisDocument, FALSE);
-	InvoiceObject.Write();
-	
-EndProcedure
 
 // Fills in attribute by CCD number.
 //
@@ -8056,9 +7954,7 @@ Function GetQueryTextExchangeRatesDifferencesAccountsPayable(TempTablesManager, 
 		|
 		|////////////////////////////////////////////////////////////////////////////////
 		|SELECT
-// Rise { Bernavski N 2016-09-21
-		|	1 AS Priority,
-// Rise } Bernavski N 2016-09-21			
+		|	1 AS Order,
 		|	DocumentTable.LineNumber AS LineNumber,
 		|	DocumentTable.Date AS Period,
 		|	DocumentTable.RecordType AS RecordType,
@@ -8106,9 +8002,7 @@ Function GetQueryTextExchangeRatesDifferencesAccountsPayable(TempTablesManager, 
 		|	TemporaryTableOfExchangeRateDifferencesAccountsPayable AS DocumentTable
 		|
 		|ORDER BY
-// Rise { Bernavski N 2016-09-21
-		|	Priority,
-// Rise } Bernavski N 2016-09-21			
+		|	Order,
 		|	LineNumber
 		|;
 		|
@@ -10650,83 +10544,6 @@ Function GetCalendarByProductionCalendaRF() Export
 	
 EndFunction // GetCalendarByProductionCalendaRF()
 
-Procedure RefreshPredefinedKindsOfContractualPartnerContactInformation() Export
-	
-	AddressCheckParameters = New Structure;
-	AddressCheckParameters.Insert("AddressRussianOnly", True);
-	AddressCheckParameters.Insert("CheckCorrectness", False);
-	AddressCheckParameters.Insert("ProhibitEntryOfIncorrect", False);
-	AddressCheckParameters.Insert("HideObsoleteAddresses", False);
-	AddressCheckParameters.Insert("IncludeCountryInPresentation", False);
-	
-	ContactInformationManagement.RefreshContactInformationKind(Catalogs.ContactInformationTypes.CounterpartyLegalAddress,          Enums.ContactInformationTypes.Address,
-		NStr("en='Counterparty legal address';ru='Юридический адрес контрагента'"), False, False, False, 1, , AddressCheckParameters);
-	ContactInformationManagement.RefreshContactInformationKind(Catalogs.ContactInformationTypes.CounterpartyFactAddress,        Enums.ContactInformationTypes.Address,
-		NStr("en='Counterparty physical address';ru='Фактический адрес контрагента'"), False, False, False, 2);
-	ContactInformationManagement.RefreshContactInformationKind(Catalogs.ContactInformationTypes.CounterpartyShippingAddress,     Enums.ContactInformationTypes.Address,
-		NStr("en='Shipping address';ru='адрес доставки'"), True, False, False, 3, False);
-	ContactInformationManagement.RefreshContactInformationKind(Catalogs.ContactInformationTypes.CounterpartyPhone,          Enums.ContactInformationTypes.Phone,
-		NStr("en='Counterparty phone';ru='Телефон контрагента'"), True, False, False, 4, False);
-	ContactInformationManagement.RefreshContactInformationKind(Catalogs.ContactInformationTypes.CounterpartyFax,             Enums.ContactInformationTypes.Fax,
-		NStr("en='Counterparty fax';ru='Факс контрагента'"), True, False, False, 5, False);
-	ContactInformationManagement.RefreshContactInformationKind(Catalogs.ContactInformationTypes.CounterpartyEmail,            Enums.ContactInformationTypes.EmailAddress,
-		NStr("en='Counterparty email address';ru='Адрес электронной почты контрагента'"), True, False, False, 6, False);
-	ContactInformationManagement.RefreshContactInformationKind(Catalogs.ContactInformationTypes.CounterpartyPostalAddress,    Enums.ContactInformationTypes.Address,
-		NStr("en='Counterparty mail address';ru='Почтовый адрес контрагента'"), False, False, False, 7);
-	ContactInformationManagement.RefreshContactInformationKind(Catalogs.ContactInformationTypes.CounterpartyOtherInformation, Enums.ContactInformationTypes.Another,
-		NStr("en='Any other counterparty information';ru='Любая другая информация контрагента'"), True, False, False, 8, False);
-	
-EndProcedure // UpdatePredefinedContactInformationTypesCounterparty()
-
-Procedure RefreshPredefinedKindsOfContactInformationOfIndividual() Export
-	
-	AddressCheckParameters = New Structure;
-	AddressCheckParameters.Insert("AddressRussianOnly", True);
-	AddressCheckParameters.Insert("CheckCorrectness", False);
-	AddressCheckParameters.Insert("ProhibitEntryOfIncorrect", False);
-	AddressCheckParameters.Insert("HideObsoleteAddresses", False);
-	AddressCheckParameters.Insert("IncludeCountryInPresentation", False);
-	
-	ContactInformationManagement.RefreshContactInformationKind(Catalogs.ContactInformationTypes.IndividuaAddressForlInformation, Enums.ContactInformationTypes.Address,
-		NStr("en='Address for the individual generation';ru='Адрес для информирования физического лица'"), False, False, False, 1, , AddressCheckParameters);
-	ContactInformationManagement.RefreshContactInformationKind(Catalogs.ContactInformationTypes.IndividualAddressOutsideRF, Enums.ContactInformationTypes.Address,
-		NStr("en='Address outside FR of individual';ru='Адрес за пределами РФ физического лица'"), False, False, False, 2);
-	ContactInformationManagement.RefreshContactInformationKind(Catalogs.ContactInformationTypes.IndividualAddressByRegistration, Enums.ContactInformationTypes.Address,
-		NStr("en=""Individual's official residential registration"";ru='Адрес по прописке физического лица'"), False, False, False, 3);
-	ContactInformationManagement.RefreshContactInformationKind(Catalogs.ContactInformationTypes.IndividualPlaceOfResidence, Enums.ContactInformationTypes.Address,
-		NStr("en=""Individual's residential address"";ru='Адрес проживания физического лица'"), False, False, False, 4, , AddressCheckParameters);
-	ContactInformationManagement.RefreshContactInformationKind(Catalogs.ContactInformationTypes.OtherIndInfo, Enums.ContactInformationTypes.Another,
-		NStr("en='Any other information of individual';ru='Любая другая информация физического лица'"), True, False, False, 5, False);
-	ContactInformationManagement.RefreshContactInformationKind(Catalogs.ContactInformationTypes.IndividualPhone, Enums.ContactInformationTypes.Phone,
-		NStr("en='Individual phone';ru='Телефон физического лица'"), True, False, False, 6, False);
-		
-EndProcedure //UpdatePredefinedContactInformationOfIndividualTypes()
-
-Procedure RefreshPredefinedKindsOfContactInformationContactPerson() Export
-	
-	ContactInformationManagement.RefreshContactInformationKind(Catalogs.ContactInformationTypes.ContactPersonPhone, Enums.ContactInformationTypes.Phone,
-		NStr("en='Counterparty phone';ru='Телефон контрагента'"), True, False, False, 1, False);
-	ContactInformationManagement.RefreshContactInformationKind(Catalogs.ContactInformationTypes.ContactPersonEmail, Enums.ContactInformationTypes.EmailAddress,
-		NStr("en='Counterparty email address';ru='Адрес электронной почты контрагента'"), True, False, False, 2, False);
-	
-EndProcedure //UpdatePredefinedContactInformationTypesContactPerson()
-
-Procedure UpdatePredefinedStructuralUnitsContactInformationTypes() Export
-	
-	AddressCheckParameters = New Structure;
-	AddressCheckParameters.Insert("AddressRussianOnly", True);
-	AddressCheckParameters.Insert("CheckCorrectness", False);
-	AddressCheckParameters.Insert("ProhibitEntryOfIncorrect", False);
-	AddressCheckParameters.Insert("HideObsoleteAddresses", False);
-	AddressCheckParameters.Insert("IncludeCountryInPresentation", False);
-	
-	ContactInformationManagement.RefreshContactInformationKind(Catalogs.ContactInformationTypes.StructuralUnitsFactAddress, Enums.ContactInformationTypes.Address,
-		NStr("en='Structural unit actual address';ru='Фактический адрес структурной единицы'"), False, False, False, 1);
-	ContactInformationManagement.RefreshContactInformationKind(Catalogs.ContactInformationTypes.StructuralUnitsPhone,   Enums.ContactInformationTypes.Phone,
-		NStr("en='Structural unit phone';ru='Телефон структурной единицы'"), True, False, False, 2, False);
-		
-EndProcedure // UpdatePredefinedContactInformationTypesCounterparty()
-
 // Old. Saved to support compatibility.
 // Function reads calendar data from register
 //
@@ -10766,56 +10583,56 @@ Function GetAvailableForPrintingCIKinds() Export
 	Query = New Query;
 	Query.Text = 
 		"SELECT
-		|	ContactInformationTypes.Ref AS CIKind,
-		|	ContactInformationTypes.Description AS Description,
-		|	ContactInformationTypes.ToolTip AS ToolTip,
+		|	ContactInformationKinds.Ref AS CIKind,
+		|	ContactInformationKinds.Description AS Description,
+		|	ContactInformationKinds.ToolTip AS ToolTip,
 		|	1 AS CIOwnerIndex,
-		|	ContactInformationTypes.AdditionalOrderingAttribute AS AdditionalOrderingAttribute
+		|	ContactInformationKinds.AdditionalOrderingAttribute AS AdditionalOrderingAttribute
 		|FROM
-		|	Catalog.ContactInformationTypes AS ContactInformationTypes
+		|	Catalog.ContactInformationKinds AS ContactInformationKinds
 		|WHERE
-		|	ContactInformationTypes.Parent = &CICatalogCounterparties
-		|	AND ContactInformationTypes.IsFolder = FALSE
-		|	AND ContactInformationTypes.DeletionMark = FALSE
+		|	ContactInformationKinds.Parent = &CICatalogCounterparties
+		|	AND ContactInformationKinds.IsFolder = FALSE
+		|	AND ContactInformationKinds.DeletionMark = FALSE
 		|
 		|UNION ALL
 		|
 		|SELECT
-		|	ContactInformationTypes.Ref,
-		|	ContactInformationTypes.Description,
-		|	ContactInformationTypes.ToolTip,
+		|	ContactInformationKinds.Ref,
+		|	ContactInformationKinds.Description,
+		|	ContactInformationKinds.ToolTip,
 		|	2,
-		|	ContactInformationTypes.AdditionalOrderingAttribute
+		|	ContactInformationKinds.AdditionalOrderingAttribute
 		|FROM
-		|	Catalog.ContactInformationTypes AS ContactInformationTypes
+		|	Catalog.ContactInformationKinds AS ContactInformationKinds
 		|WHERE
-		|	ContactInformationTypes.Parent = &CICatalogContactPersons
-		|	AND ContactInformationTypes.IsFolder = FALSE
-		|	AND ContactInformationTypes.DeletionMark = FALSE
+		|	ContactInformationKinds.Parent = &CICatalogContactPersons
+		|	AND ContactInformationKinds.IsFolder = FALSE
+		|	AND ContactInformationKinds.DeletionMark = FALSE
 		|
 		|UNION ALL
 		|
 		|SELECT
-		|	ContactInformationTypes.Ref,
-		|	ContactInformationTypes.Description,
-		|	ContactInformationTypes.ToolTip,
+		|	ContactInformationKinds.Ref,
+		|	ContactInformationKinds.Description,
+		|	ContactInformationKinds.ToolTip,
 		|	3,
-		|	ContactInformationTypes.AdditionalOrderingAttribute
+		|	ContactInformationKinds.AdditionalOrderingAttribute
 		|FROM
-		|	Catalog.ContactInformationTypes AS ContactInformationTypes
+		|	Catalog.ContactInformationKinds AS ContactInformationKinds
 		|WHERE
-		|	ContactInformationTypes.Parent = &CICatalogIndividuals
-		|	AND ContactInformationTypes.IsFolder = FALSE
-		|	AND ContactInformationTypes.DeletionMark = FALSE
-		|	AND ContactInformationTypes.Type = &TypePhone
+		|	ContactInformationKinds.Parent = &CICatalogIndividuals
+		|	AND ContactInformationKinds.IsFolder = FALSE
+		|	AND ContactInformationKinds.DeletionMark = FALSE
+		|	AND ContactInformationKinds.Type = &TypePhone
 		|
 		|ORDER BY
 		|	CIOwnerIndex,
 		|	AdditionalOrderingAttribute";
 	
-	Query.SetParameter("CICatalogCounterparties", Catalogs.ContactInformationTypes.CatalogCounterparties);	
-	Query.SetParameter("CICatalogContactPersons", Catalogs.ContactInformationTypes.CatalogContactPersons);	
-	Query.SetParameter("CICatalogIndividuals", Catalogs.ContactInformationTypes.CatalogIndividuals);	
+	Query.SetParameter("CICatalogCounterparties", Catalogs.ContactInformationKinds.CatalogCounterparties);	
+	Query.SetParameter("CICatalogContactPersons", Catalogs.ContactInformationKinds.CatalogContactPersons);	
+	Query.SetParameter("CICatalogIndividuals", Catalogs.ContactInformationKinds.CatalogIndividuals);	
 	Query.SetParameter("TypePhone", Enums.ContactInformationTypes.Phone);
 	
 	SetPrivilegedMode(True);
@@ -10829,14 +10646,14 @@ EndFunction
 // The function sets an initial value of the contact information kind use.
 //
 // Parameters:
-//  CIKind	 - Catalog.ContactInformationTypes	 - Check contact
+//  CIKind	 - Catalog.ContactInformationKinds	 - Check contact
 // information kind Return value:
 //  Boolean - Contact information kind is printed by default
 Function SetPrintDefaultCIKind(CIKind) Export
 	
-	If CIKind = Catalogs.ContactInformationTypes.CounterpartyPostalAddress 
-		Or CIKind = Catalogs.ContactInformationTypes.CounterpartyFax
-		Or CIKind = Catalogs.ContactInformationTypes.CounterpartyOtherInformation
+	If CIKind = Catalogs.ContactInformationKinds.CounterpartyPostalAddress 
+		Or CIKind = Catalogs.ContactInformationKinds.CounterpartyFax
+		Or CIKind = Catalogs.ContactInformationKinds.CounterpartyOtherInformation
 		Then
 			Return False;
 	EndIf;
@@ -11034,7 +10851,7 @@ Procedure ConfigureUserDesktop(SettingsModified = False) Export
 		
 		If IsInRole("FullRights") Then
 			
-			FoundItem = FormsContent.LeftColumn.Find("CommonForm.BeforeWorkWithSystemStartForm");
+			FoundItem = FormsContent.LeftColumn.Find("CommonForm.BeforeBeginningWorkWithSystemForm");
 			If FoundItem = Undefined
 				OR Not (Constants.InitialSettingCompanyDetailsFilled.Get()
 					AND Constants.InitialSettingOpeningBalancesFilled.Get()) Then

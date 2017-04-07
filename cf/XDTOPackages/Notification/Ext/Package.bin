@@ -15,9 +15,6 @@
 	<valueType name="CTDType" base="xs:string" variety="Atomic" length="7">
 		<pattern>[0-9]{7}</pattern>
 	</valueType>
-	<valueType name="KPPType" base="xs:string" variety="Atomic" length="9">
-		<pattern>([0-9]{1}[1-9]{1}|[1-9]{1}[0-9]{1})[0-9]{7}</pattern>
-	</valueType>
 	<valueType name="SONOType" base="xs:string" variety="Atomic" length="4">
 		<pattern>[0-9]{4}</pattern>
 	</valueType>
@@ -114,7 +111,6 @@
 			<typeDef xsi:type="ValueType" base="xs:string" variety="Atomic" minLength="1" maxLength="1000"/>
 		</property>
 		<property xmlns:d3p1="DP_IZVPOL" name="TINLP" type="d3p1:TINLEType" lowerBound="1" form="Attribute"/>
-		<property xmlns:d3p1="DP_IZVPOL" name="KPP" type="d3p1:KPPType" lowerBound="1" form="Attribute"/>
 		<property xmlns:d3p1="DP_IZVPOL" name="INITIALSResp" type="d3p1:NameAndSurnameOfType" lowerBound="0"/>
 	</objectType>
 </package>

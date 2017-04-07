@@ -394,17 +394,3 @@ Procedure OnOpen(Cancel)
 	ChangeVisibleEnabled();
 	
 EndProcedure
-
-
-
-
-
-
-
-
-
-
-
-
-
-

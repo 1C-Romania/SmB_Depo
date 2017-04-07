@@ -2163,293 +2163,6 @@ Function DeleteGenerateFileAct501Customer(LinkToED) Export
 	
 EndFunction
 
-// Generates the electronic document Invoice by reference to IB document.
-//
-// Parameters:
-//  ObjectReference - Reference to IB object based on which it
-//  is required to generate an electronic document, EDSign - Boolean, a flag showing that the structure of electronic document attributes shall be returned.
-//
-Function GenerateInvoiceFTS(ObjectReference, EDExchangeSettings, ASignOfED = True) Export
-	
-	ReturnValue = Undefined;
-	
-	IsCorrectingSF = ElectronicDocumentsOverridable.IsCorrectingDocument(ObjectReference);
-	
-	// We will create and will fill structure of the electronic document.
-	EDStructure = New Structure;
-	If IsCorrectingSF Then
-		EDStructure.Insert("EDKind",     Enums.EDKinds.CorrectiveInvoiceNote);
-	Else
-		EDStructure.Insert("EDKind",     Enums.EDKinds.CustomerInvoiceNote);
-	EndIf;
-	EDStructure.Insert("EDDirection", Enums.EDDirections.Outgoing);
-	EDStructure.Insert("Sender",   EDExchangeSettings.CompanyID);
-	EDStructure.Insert("Recipient",    EDExchangeSettings.CounterpartyID);
-	EDStructure.Insert("EDVersionNumber", ElectronicDocumentsService.EDVersionNumberByOwner(ObjectReference));
-	EDStructure.Insert("EDNumber",       ReturnEDId(ObjectReference, EDStructure.Sender, EDStructure.EDVersionNumber));
-	EDStructure.Insert("EDDate",        CurrentSessionDate());
-	EDStructure.Insert("EDOwner",    ObjectReference);
-	EDStructure.Insert("SenderDocumentNumber", ElectronicDocumentsOverridable.GetDocumentPrintNumber(ObjectReference));
-	EDStructure.Insert("SenderDocumentDate",  ObjectReference.Date);
-	EDStructure.Insert("Company",   EDExchangeSettings.Company);
-	EDStructure.Insert("Counterparty",    EDExchangeSettings.Counterparty);
-	EDStructure.Insert("EDFProfileSettings", EDExchangeSettings.EDFProfileSettings);
-	EDStructure.Insert("EDAgreement",  EDExchangeSettings.EDAgreement);
-	EDStructure.Insert("UUID",   New UUID);
-	
-	// Generate parameters structure for invoice and fill it in.
-	SenderIsIndividual = ElectronicDocumentsOverridable.ThisIsInd(EDExchangeSettings.Company);
-	DirectoryAddress = ElectronicDocumentsService.WorkingDirectory(, ObjectReference.UUID());
-	ErrorText = "";
-	GenerationResult = False;
-	
-	If IsCorrectingSF Then
-		DataTree = CommonUseED.DocumentTree("CorrectiveInvoiceNote");
-		ElectronicDocumentsOverridable.FillInDataInCorrectionInvoiceFTS(ObjectReference, EDStructure, DataTree);
-		EDStructure.Insert("CTD", "1115108");
-		EDStructure.Insert("PrefixFileId", "ON_KORSFAKT");
-	Else
-		DataTree = CommonUseED.DocumentTree("CustomerInvoiceNote");
-		ElectronicDocumentsOverridable.FillInDataByInvoiceFTS(ObjectReference, EDStructure, DataTree);
-		EDStructure.Insert("CTD", "1115101");
-		EDStructure.Insert("PrefixFileId", "ON_SFAKT");
-	EndIf;
-	
-	ErrorText = "";
-	CheckFillObligatoryAttributesRecursively(DataTree, ErrorText);
-	
-	If Not ValueIsFilled(ErrorText) Then
-		
-		AddFTSServiceFields(DataTree, EDStructure);
-		
-		RowOptionalData = DataTree.Rows.Find("AdditData.Signed", "FullPath", True);
-		// Send parameter "OperationKind" of the document through the mechanism of additional parameters.
-		If CommonUseED.AttributeExistsInTree(DataTree, "OperationKind") Then
-			If ValueIsFilled(TreeAttributeValue(DataTree, "OperationKind")) Then
-				OperationKind = TreeAttributeValue(DataTree, "OperationKind");
-				AddValueToTree(RowOptionalData, "AddData.DigitallySigned.OperationKind", XMLString(OperationKind));
-			EndIf;
-		EndIf;
-		If ValueIsFilled(TreeAttributeValue(DataTree, "CurrencyCode")) Then
-			CurrencyCode = TreeAttributeValue(DataTree, "CurrencyCode");
-			AddValueToTree(RowOptionalData, "AddData.DigitallySigned.CurrencyCode", XMLString(CurrencyCode));
-		EndIf;
-			
-		AdditDataStructure = New Structure;
-		RowDocumentsBases = DataTree.Rows.Find("BasisDocuments", "FullPath");
-		// Parse supporting documents.
-		If ValueIsFilled(RowDocumentsBases.Value) Then
-			BasisDocumentsParametersTable = GetBasisDocumentsParameters(RowDocumentsBases.Value);
-			
-			For Each String IN BasisDocumentsParametersTable Do
-				AddValueToTree(RowOptionalData, "AddData.DigitallySigned.BasisDocumentKind", String.EDKind);
-				AddValueToTree(RowOptionalData, "AddData.DigitallySigned.BasisDocumentNumber",
-					String.SenderDocumentNumber);
-				AddValueToTree(RowOptionalData, "AddData.DigitallySigned.BasisDocumentDate",
-					Format(String.SenderDocumentDate, "DLF=D"));
-				AddValueToTree(RowOptionalData, "AddData.DigitallySigned.IDEDDocumentFoundation", String.Description);
-			EndDo;
-		EndIf;
-		
-		// Add information about transaction document to AddData
-		Attribute = TreeAttributeValue(DataTree, "TransactionDocumentDescription", False);
-		If ValueIsFilled(Attribute) Then
-			AddValueToTree(RowOptionalData, "AddData.DigitallySigned.TransactionDocumentDescription", Attribute);
-			Attribute = TreeAttributeValue(DataTree, "TransactionDocumentNumber", False);
-			If ValueIsFilled(Attribute) Then
-				AddValueToTree(RowOptionalData, "AddData.DigitallySigned.TransactionDocumentNumber", Attribute);
-			EndIf;
-			Attribute = TreeAttributeValue(DataTree, "TransactionDocumentDate", False);
-			If ValueIsFilled(Attribute) Then
-				AddValueToTree(RowOptionalData, "AddData.DigitallySigned.TransactionDocumentDate", Attribute);
-			EndIf;
-		EndIf;
-		
-		StringProductsTable = DataTree.Rows.Find("ProductsTable", "FullPath");
-
-		For Each Product IN StringProductsTable.Rows Do
-			RowOptionalData = Product.Rows.Find("ProductsTable.LineNumber.AdditionalInformationDigitallySigned", "FullPath", True);
-			BasisDocument = TreeAttributeValue(Product, "ProductsTable.LineNumber.BasisDocument");
-			If ValueIsFilled(BasisDocument) Then
-				BasisDocumentsParametersTable = GetBasisDocumentsParameters(BasisDocument);
-				For Each String IN BasisDocumentsParametersTable Do
-					AddValueToTree(RowOptionalData, "AdditionalDataSigned.BasisDocumentKind", String.EDKind);
-					AddValueToTree(RowOptionalData,
-											"AdditDataSigned.BasisDocumentNumber",
-											String.SenderDocumentNumber);
-					AddValueToTree(RowOptionalData,
-											"AdditDataSigned.BasisDocumentDate",
-											Format(String.SenderDocumentDate, "DLF=D"));
-					AddValueToTree(RowOptionalData, "AdditDataSigned.BasisDocumentIDED", String.Description);
-				EndDo;
-			EndIf;
-			ID = TreeAttributeValue(Product, "ProductsTable.LineNumber.ProductIdOfCounterparty");
-			If Not ValueIsFilled(ID) Then
-				ProductsAndServices = TreeAttributeValue(Product, "ProductsTable.LineNumber.ProductsAndServices");
-				ProductID = ProductsAndServices.UUID();
-				Characteristic = TreeAttributeValue(Product, "ProductsTable.LineNumber.Characteristic");
-				CharacteristicID = ?(ValueIsFilled(Characteristic), Characteristic.UUID(), "");
-				Package = TreeAttributeValue(Product, "ProductsTable.LineNumber.Package");
-				IDPackage = ?(ValueIsFilled(Package), Package.UUID(), "");
-				
-				ID = String(ProductID) + "#" + String(CharacteristicID) + "#" + String(IDPackage);
-			EndIf;
-			AddValueToTree(RowOptionalData, "AdditDataSigned.ID", ID);
-		EndDo;
-		
-		DirectoryAddress = ElectronicDocumentsService.WorkingDirectory(, ObjectReference.UUID());
-		InsertValueIntoTree(DataTree, "FullFileName", DirectoryAddress + TreeAttributeValue(DataTree, "IdFile") + ".xml");
-		IdEDF = TreeAttributeValue(DataTree, "EDFOperatorAttributes.EDFId");
-		If Mid(IdEDF, 2, 2) = "BE" Then
-			InsertValueIntoTree(DataTree, "EDFOperatorAttributes.EDFId", Left(IdEDF, 1) + "EB");
-		EndIf;
-		
-		If IsCorrectingSF Then
-			GenerationResult = GenerateCorrectionInvoiceFTSCML(DataTree);
-		Else
-			RowOptionalData = DataTree.Rows.Find("AdditData.Signed", "FullPath", True);
-			InvoiceKind = TreeAttributeValue(DataTree, "InvoiceKind");
-			If ValueIsFilled(InvoiceKind) Then
-				AddValueToTree(RowOptionalData, "AddData.DigitallySigned.InvoiceKind", XMLString(InvoiceKind));
-			EndIf;
-			GenerationResult = GenerateInvoiceFTSCML(DataTree);
-		EndIf;
-	EndIf;
-	
-	If GenerationResult AND ASignOfED Then
-		ParametersStructure = New Structure;
-		EDStructure.Insert("DocumentAmount", TreeAttributeValue(DataTree, "TotalDue.AmountWithVATTotal"));
-		If ValueIsFilled(TreeAttributeValue(DataTree, "CoveringNote")) Then
-			EDStructure.Insert("AdditionalInformation", TreeAttributeValue(DataTree, "CoveringNote"));
-		EndIf;
-		ParametersStructure.Insert("EDStructure", EDStructure);
-		ParametersStructure.Insert("EDKind", EDStructure.EDKind);
-		ParametersStructure.Insert("FullFileName", TreeAttributeValue(DataTree, "FullFileName"));
-		ParametersStructure.Insert("UUID", TreeAttributeValue(DataTree, "UUID"));
-		If CommonUseED.AttributeExistsInTree(DataTree, "AdditFileFullName") Then
-			ParametersStructure.Insert("AdditFileFullName", TreeAttributeValue(DataTree, "AdditFileFullName"));
-			ParametersStructure.Insert("AdditFileIdentifier", TreeAttributeValue(DataTree, "AdditFileIdentifier"));
-		EndIf;
-		ReturnValue = ParametersStructure;
-	EndIf;
-	
-	If ValueIsFilled(ErrorText) Then
-		MessagePattern = NStr("en='During the generation %1 the
-		|following  errors occurred: %2';ru='При формировании %1 возникли следующие ошибки: %2'");
-		MessageText = StringFunctionsClientServer.SubstituteParametersInString(MessagePattern,
-			EDStructure.EDKind, ErrorText);
-		CommonUseClientServer.MessageToUser(MessageText);
-	EndIf;
-	
-	Return ReturnValue;
-	
-EndFunction
-
-// Generates the electronic document Invoice by reference to IB document.
-//
-// Parameters:
-//  ObjectReference - Reference to IB object based on which it
-//  is required to generate an electronic document, EDSign - Boolean, a flag showing that the structure of electronic document attributes shall be returned.
-//
-Function DeleteGenerateInvoice(ObjectReference, EDExchangeSettings, ASignOfED = True) Export
-	
-	ReturnValue = Undefined;
-	
-	IsCorrectingSF = ElectronicDocumentsOverridable.IsCorrectingDocument(ObjectReference);
-	
-	// We will create and will fill structure of the electronic document.
-	EDStructure = New Structure;
-	If IsCorrectingSF Then
-		EDStructure.Insert("EDKind",     Enums.EDKinds.CorrectiveInvoiceNote);
-	Else
-		EDStructure.Insert("EDKind",     Enums.EDKinds.CustomerInvoiceNote);
-	EndIf;
-	EDStructure.Insert("EDDirection", Enums.EDDirections.Outgoing);
-	EDStructure.Insert("Sender",   EDExchangeSettings.CompanyID);
-	EDStructure.Insert("Recipient",    EDExchangeSettings.CounterpartyID);
-	EDStructure.Insert("EDVersionNumber", ElectronicDocumentsService.EDVersionNumberByOwner(ObjectReference));
-	EDStructure.Insert("EDNumber",       ReturnEDId(ObjectReference, EDStructure.Sender, EDStructure.EDVersionNumber));
-	EDStructure.Insert("EDDate",        CurrentSessionDate());
-	EDStructure.Insert("EDOwner",    ObjectReference);
-	EDStructure.Insert("SenderDocumentNumber", ElectronicDocumentsOverridable.GetDocumentPrintNumber(ObjectReference));
-	EDStructure.Insert("SenderDocumentDate",  ObjectReference.Date);
-	EDStructure.Insert("Company",   EDExchangeSettings.Company);
-	EDStructure.Insert("Counterparty",    EDExchangeSettings.Counterparty);
-	EDStructure.Insert("EDFProfileSettings", EDExchangeSettings.EDFProfileSettings);
-	EDStructure.Insert("EDAgreement",  EDExchangeSettings.EDAgreement);
-	EDStructure.Insert("UUID",   New UUID);
-	
-	// Generate parameters structure for invoice and fill it in.
-	SenderIsIndividual = ElectronicDocumentsOverridable.ThisIsInd(EDExchangeSettings.Company);
-	ParametersStructure = ESFParametersStructure(IsCorrectingSF, SenderIsIndividual);
-	DirectoryAddress = ElectronicDocumentsService.WorkingDirectory(, ObjectReference.UUID());
-	ErrorText = "";
-	GenerationResult = False;
-	
-	If IsCorrectingSF Then
-		ElectronicDocumentsOverridable.PrepareDataByAdjustmentInvoice(ObjectReference, EDStructure, ParametersStructure);
-	Else
-		ElectronicDocumentsOverridable.PrepareDataByInvoice(ObjectReference, EDStructure, ParametersStructure);
-	EndIf;
-
-	If CheckRequiredFieldsFilling(ObjectReference, ParametersStructure, ErrorText) Then
-		BasisDocumentsParametersTable = GetBasisDocumentsParameters(ParametersStructure.BasisDocuments);
-		BasisDocuments = New Array;
-		For Each String IN BasisDocumentsParametersTable Do
-			BasisDocument  = New Structure;
-			BasisDocument.Insert("BasisDocumentKind",   String.EDKind);
-			BasisDocument.Insert("BasisDocumentNumber", String.SenderDocumentNumber);
-			BasisDocument.Insert("BasisDocumentDate",  Format(String.SenderDocumentDate, "DLF=D"));
-			BasisDocument.Insert("IDEDDocumentFoundation",  String.Description);
-			
-			BasisDocuments.Add(BasisDocument);
-		EndDo;
-		AdditDataStructure = New Structure;
-		AdditDataStructure.Insert("BasisDocuments", BasisDocuments);
-		
-		ElectronicDocuments.AddDataToAdditDataTree(ParametersStructure, AdditDataStructure, "Header", True);
-		
-		FTSServiceFieldsStructure(ParametersStructure);
-		If IsCorrectingSF Then
-			EDStructure.Insert("CTD", "1115108");
-			EDStructure.Insert("PrefixFileId", "ON_KORSFAKT");
-			FillFTSServiceFieldsStructure(EDStructure, ParametersStructure);
-			ParametersStructure.Insert("FullFileName", DirectoryAddress + ParametersStructure.IdFile + ".xml");
-			GenerationResult = DeleteGenerateCorrectionInvoiceCML(ParametersStructure);
-		Else
-			EDStructure.Insert("CTD", "1115101");
-			EDStructure.Insert("PrefixFileId", "ON_SFAKT");
-			FillFTSServiceFieldsStructure(EDStructure, ParametersStructure);
-			ParametersStructure.Insert("FullFileName", DirectoryAddress + ParametersStructure.IdFile + ".xml");
-			If Mid(ParametersStructure.TINLP, 6, 2) = "16" Then
-				ParametersStructure.TINLP = Left(ParametersStructure.TINLP, 5) + "61" + Mid(ParametersStructure.TINLP, 8);
-			EndIf;
-			GenerationResult = DeleteGenerateInvoiceCML(ParametersStructure);
-		EndIf;
-	EndIf;
-	
-	If GenerationResult AND ASignOfED Then
-		If IsCorrectingSF Then
-			EDStructure.Insert("DocumentAmount", ParametersStructure.ProductsTable.Total("Amount"));
-		Else
-			EDStructure.Insert("DocumentAmount", ParametersStructure.AmountVATAll);
-		EndIf;
-		ParametersStructure.Insert("EDStructure", EDStructure);
-		ReturnValue = ParametersStructure;
-	EndIf;
-	
-	If ValueIsFilled(ErrorText) Then
-		MessagePattern = NStr("en='During the generation %1 the
-		|following  errors occurred: %2';ru='При формировании %1 возникли следующие ошибки: %2'");
-		MessageText = StringFunctionsClientServer.SubstituteParametersInString(MessagePattern,
-			EDStructure.EDKind, ErrorText);
-		CommonUseClientServer.MessageToUser(MessageText);
-	EndIf;
-	
-	Return ReturnValue;
-	
-EndFunction
-
 // Generates the electronic document of principal report by reference to IB document.
 //
 // Parameters:
@@ -3338,8 +3051,6 @@ Procedure ParseCounterpartyAttributesFile(FileReference, ReturnStructure, ParseE
 	ReturnStructure.Insert("BankForSettlementsPresentation");
 	ReturnStructure.Insert("CounterpartyKind");
 	ReturnStructure.Insert("TIN");
-	ReturnStructure.Insert("KPP");
-	ReturnStructure.Insert("CodeByOKPO");
 	ReturnStructure.Insert("CounterpartyDescription");
 	ReturnStructure.Insert("LegalAddress");
 	ReturnStructure.Insert("LegalAddressFieldsValues");
@@ -3429,14 +3140,6 @@ Procedure ParseCounterpartyAttributesFile(FileReference, ReturnStructure, ParseE
 					If TINProperty <> Undefined Then
 						ReturnStructure.TIN = DataVal.Get(TINProperty);
 					EndIf;
-					PropertyKPP = DataVal.Properties().Get("KPP");
-					If PropertyKPP <> Undefined Then
-						ReturnStructure.KPP = DataVal.Get(PropertyKPP);
-					EndIf;
-					PropertyARBOC = DataVal.Properties().Get("OKPO");
-					If PropertyARBOC <> Undefined Then
-						ReturnStructure.CodeByOKPO = DataVal.Get(PropertyARBOC);
-					EndIf;
 					PropertyOfName = DataVal.Properties().Get("OfficialName");
 					If PropertyOfName <> Undefined Then
 						ReturnStructure.CounterpartyDescription = DataVal.Get(PropertyOfName);
@@ -3499,12 +3202,6 @@ Procedure ParseCounterpartyAttributesFile(FileReference, ReturnStructure, ParseE
 					TINProperty = DataVal.Properties().Get("TIN");
 					If TINProperty <> Undefined Then
 						ReturnStructure.TIN = DataVal.Get(TINProperty);
-					EndIf;
-					
-					PropertyARBOC = DataVal.Properties().Get("OKPO");
-					If PropertyARBOC <> Undefined Then
-						CodeByOKPO = DataVal.Get(PropertyARBOC);
-						ReturnStructure.CodeByOKPO = DataVal.Get(PropertyARBOC);
 					EndIf;
 					
 					PropertyOfName = DataVal.Properties().Get("FullDescr");
@@ -3761,15 +3458,7 @@ Function ReadCMLFileHeaderByXDTO(FileName) Export
 				Add1CNameSpaceToExternalEDFile(XMLObject, ED, FileName);
 			EndIf;
 			
-			If Find(ED.IdFile, "ON_SFAKT") > 0 Then
-				ED = XDTOFactory.ReadXML(XMLObject, GetCMLValueType("File", "SFAKT"));
-				EDKind = Enums.EDKinds.CustomerInvoiceNote;
-				SellerSign = True;
-			ElsIf Find(ED.IdFile, "ON_KORSFAKT") > 0 Then // adjusting invoice
-				ED = XDTOFactory.ReadXML(XMLObject, GetCMLValueType("File", "KORSFAKT"));
-				EDKind = Enums.EDKinds.CorrectiveInvoiceNote;
-				SellerSign = True;
-			ElsIf Find(ED.IdFile, "OKORDOC") > 0 Then // correction torg-12 vendor title
+			If Find(ED.IdFile, "OKORDOC") > 0 Then // correction torg-12 vendor title
 				ED = XDTOFactory.ReadXML(XMLObject, GetCMLValueType("File", "OKORDOC"));
 				EDKind = Enums.EDKinds.AgreementAboutCostChangeSender;
 				SellerSign = True;
@@ -4198,11 +3887,7 @@ Function DetermineEDTypeByOwnerEDType(LinkToED) Export
 			ReturnedType = Undefined;
 		EndIf;
 	Else
-		If LinkToED.EDKind = Enums.EDKinds.CustomerInvoiceNote
-		OR LinkToED.EDKind = Enums.EDKinds.CorrectiveInvoiceNote Then
-		
-			ReturnedType = Enums.EDVersionElementTypes.NAREI;
-		ElsIf LinkToED.EDKind = Enums.EDKinds.NotificationAboutClarification Then
+		If LinkToED.EDKind = Enums.EDKinds.NotificationAboutClarification Then
 			
 			ReturnedType = Enums.EDVersionElementTypes.NRNCEI;
 		ElsIf LinkToED.EDKind = Enums.EDKinds.NotificationAboutReception
@@ -4346,18 +4031,6 @@ Function EDPrintForm(StructureFileParser, EDDirection, ID = Undefined, Subordina
 			
 			EDDataToPrint = GetSupplierOrderDataToPrint(ObjectString, ParseTree);
 			FillInTabularDocumentOrderToSupplier_ED(SpreadsheetDocument, EDDataToPrint);
-			
-		ElsIf ObjectString.EDKind = Enums.EDKinds.CustomerInvoiceNote Then
-			
-			EDDataToPrint = GetInvoiceDataToPrint(ObjectString, ParseTree);
-			FillInTabularDocumentInvoice_ED(SpreadsheetDocument, EDDataToPrint);
-			SpreadsheetDocument.PageOrientation = PageOrientation.Landscape;
-			
-		ElsIf ObjectString.EDKind = Enums.EDKinds.CorrectiveInvoiceNote Then
-			
-			EDDataToPrint = GetCorrectiveInvoiceNoteDataToPrint(ObjectString, ParseTree);
-			FillInTabularDocumentCorrectionInvoice_ED(SpreadsheetDocument, EDDataToPrint);
-			SpreadsheetDocument.PageOrientation = PageOrientation.Landscape;
 			
 		ElsIf ObjectString.EDKind = Enums.EDKinds.PriceList Then
 			
@@ -5992,10 +5665,8 @@ Function GenerateAct501PerformerFTSCML(DataTree)
 				Else
 					Description = TreeAttributeValue(DataTree, "Customer.ParticipantType.LegalEntity.CompanyDescription");
 					TIN = TreeAttributeValue(DataTree, "Customer.ParticipantType.LegalEntity.TIN");
-					KPP = TreeAttributeValue(DataTree, "Customer.ParticipantType.LegalEntity.KPP");
 					AddValueToTree(RowOptionalData, "AddData.DigitallySigned.Customer", Description);
 					AddValueToTree(RowOptionalData, "AddData.DigitallySigned.CustomerTIN", TIN);
-					AddValueToTree(RowOptionalData, "AddData.DigitallySigned.PPCCustomer", KPP);
 				EndIf;
 			EndIf;
 		Else
@@ -7976,7 +7647,6 @@ Function DeteteFormAct501CML(ParametersStructure)
 			Else
 				AdditDataStructure.Insert("Customer",    ParametersStructure.Customer.CompanyDescription);
 				AdditDataStructure.Insert("CustomerTIN", ParametersStructure.Customer.TIN);
-				AdditDataStructure.Insert("PPCCustomer", ParametersStructure.Customer.KPP);
 			EndIf;
 			ElectronicDocuments.AddDataToAdditDataTree(ParametersStructure, AdditDataStructure, "Header", True);
 		Else
@@ -9077,8 +8747,7 @@ Function GenerateReportAboutComissionGoodsSalesCML(DataTree)
 						AttributeValues.AttributeValue.Add(AttributeValue);
 						
 						AttributeValue = GetCMLObjectType("AttributeValue", TargetNamespaceSchema);
-						FillXDTOProperty(AttributeValue, "Description", "CustomerKPP", True, ErrorText);
-						AttributeValue.Value.Add(AddData.KPP);
+						FillXDTOProperty(AttributeValue, "Description", True, ErrorText);
 						AttributeValues.AttributeValue.Add(AttributeValue);
 						Product.AdditionalAttributeValues = AttributeValues;
 					EndIf;
@@ -10775,21 +10444,19 @@ Procedure FillFTSServiceFieldsStructure(EDStructure, ParametersStructure)
 	ParametersStructure.CTD = EDStructure.CTD;
 	ParametersStructure.UUID = EDStructure.UUID;
 	
-	If EDStructure.EDKind <> Enums.EDKinds.CustomerInvoiceNote Then
-		If EDStructure.EDKind = Enums.EDKinds.TORG12Customer
-			OR EDStructure.EDKind = Enums.EDKinds.TORG12Seller Then
-			
-			ParametersStructure.DescFirstDock = "Goods sale";
-			ParametersStructure.RCMDFirstDoc = "0330212";
-			ParametersStructure.NumForm = "TORG-12";
-		ElsIf EDStructure.EDKind = Enums.EDKinds.ActCustomer
-			OR EDStructure.EDKind = Enums.EDKinds.ActPerformer Then
-			
-			ParametersStructure.DescFirstDock = "Act of work completion (services rendered)";
-		ElsIf EDStructure.EDKind = Enums.EDKinds.AgreementAboutCostChangeRecipient Then
-			
-			ParametersStructure.NumForm = "Correction document recipient";
-		EndIf;
+	If EDStructure.EDKind = Enums.EDKinds.TORG12Customer
+		OR EDStructure.EDKind = Enums.EDKinds.TORG12Seller Then
+		
+		ParametersStructure.DescFirstDock = "Goods sale";
+		ParametersStructure.RCMDFirstDoc = "0330212";
+		ParametersStructure.NumForm = "TORG-12";
+	ElsIf EDStructure.EDKind = Enums.EDKinds.ActCustomer
+		OR EDStructure.EDKind = Enums.EDKinds.ActPerformer Then
+		
+		ParametersStructure.DescFirstDock = "Act of work completion (services rendered)";
+	ElsIf EDStructure.EDKind = Enums.EDKinds.AgreementAboutCostChangeRecipient Then
+		
+		ParametersStructure.NumForm = "Correction document recipient";
 	EndIf;
 	YYYYMMDD = StrReplace(Format(CurDateTime, "DF=yyyy-MM-dd"), "-", "");
 	FileStructure = New Structure("Prefix, RecipientID, SenderID, YYYYMMDD, UUID",
@@ -10873,10 +10540,8 @@ Function ExchangeParticipantAttributesStructureFTS()
 	ParticipantStructure = New Structure;
 	
 	ParticipantStructure.Insert("ThisIsInd");
-	ParticipantStructure.Insert("OKATOCode");
 	ParticipantStructure.Insert("CompanyDescription");
 	ParticipantStructure.Insert("TIN");
-	ParticipantStructure.Insert("KPP");
 	ParticipantStructure.Insert("CodeRCLF");
 	ParticipantStructure.Insert("Surname");
 	ParticipantStructure.Insert("Name");
@@ -10991,7 +10656,6 @@ Function StructureParametersOnReportOfCommissionGoodsSales()
 	AdditionalAttributesForTablesProducts.Insert("VATRate");
 	AdditionalAttributesForTablesProducts.Insert("CustomerDescription");
 	AdditionalAttributesForTablesProducts.Insert("CustomerTIN");
-	AdditionalAttributesForTablesProducts.Insert("CustomerKPP");
 	AdditionalAttributesForTablesProducts.Insert("CustomerFactAddress", AddressStructureFTS());
 	AdditionalAttributesForTablesProducts.Insert("CustomerLegAddress", AddressStructureFTS());
 	ParametersStructure.Insert("AdditionalAttributesForTablesProducts", AdditionalAttributesForTablesProducts);
@@ -11809,7 +11473,6 @@ Function FillParticipantDataFTSCML(ParticipantXDTO, ParticipantParametersStructu
 			PrLP = GetCMLObjectType("ParticipantType.IdPr.PrLP", TargetNamespaceSchema);
 			FillXDTOProperty(PrLP, "DescEnt", ParticipantParametersStructure.CompanyDescription,  ,ErrorText);
 			FillXDTOProperty(PrLP, "TINLP", ParticipantParametersStructure.TIN, , ErrorText);
-			FillXDTOProperty(PrLP, "KPP", ParticipantParametersStructure.KPP, , ErrorText);
 			FillXDTOProperty(IdPr, "PrLP", PrLP, , ErrorText);
 			If TargetNamespaceSchema = "IAKTPRM2" Then
 				PrPP = GetCMLObjectType("ParticipantType.IdPr.PrPP", TargetNamespaceSchema);
@@ -11822,11 +11485,6 @@ Function FillParticipantDataFTSCML(ParticipantXDTO, ParticipantParametersStructu
 			Description = ParticipantParametersStructure.CompanyDescription;
 		EndIf;
 		FillXDTOProperty(ParticipantXDTO, "IdPr", IdPr, , ErrorText);
-		DataFilled = True;
-	EndIf;
-	
-	If ValueIsFilled(ParticipantParametersStructure.OKATOCode) Then
-		FillXDTOProperty(ParticipantXDTO, "OKPO", ParticipantParametersStructure.OKATOCode, , ErrorText);
 		DataFilled = True;
 	EndIf;
 	
@@ -11918,7 +11576,6 @@ Function FillParticipantDataFTSForESFCML(ParticipantXDTO, ParticipantParametersS
 			PrLP = GetCMLObjectType("PrPurchSalesType.IdPr.PrLP", TargetNamespaceSchema);
 			FillXDTOProperty(PrLP, "DescEnt", ParticipantParametersStructure.CompanyDescription,  ,ErrorText);
 			FillXDTOProperty(PrLP, "TINLP", ParticipantParametersStructure.TIN, , ErrorText);
-			FillXDTOProperty(PrLP, "KPP", ParticipantParametersStructure.KPP, , ErrorText);
 			FillXDTOProperty(IdPr, "PrLP", PrLP, , ErrorText);
 		EndIf;
 		FillXDTOProperty(ParticipantXDTO, "IdPr", IdPr, , ErrorText);
@@ -11966,12 +11623,6 @@ Procedure GenerateDataByCounterpartyCML(Counterparty, ParametersStructure, Count
 	
 	FillXDTOProperty(CounterpartyAttributesXDTO, FullDescrName, FullDescr, True, ErrorText);
 	FillXDTOProperty(CounterpartyAttributesXDTO, "TIN", DataLegalIndividual.TIN, , ErrorText);
-	
-	If Not ThisIsInd Then
-		// There is KPP only in address of a LegalEntity
-		FillXDTOProperty(CounterpartyAttributesXDTO, "KPP", DataLegalIndividual.KPP, , ErrorText);
-		FillXDTOProperty(CounterpartyAttributesXDTO, "OKPO", DataLegalIndividual.CodeByOKPO, , ErrorText);
-	EndIf;
 	
 	// Legal entity.address or registration address
 	If ValueIsFilled(DataLegalIndividual.LegalAddress) Then
@@ -12037,21 +11688,21 @@ Procedure GenerateDataByCounterpartyCML(Counterparty, ParametersStructure, Count
 			For Each RowOfContact in ContactsTable Do
 				Contact = GetCMLObjectType("ContactInformation", SchemaVersion);
 				ErrorText = "";
-				If RowOfContact.Type = ElectronicDocumentsOverridable.FindRefToObject("ContactInformationTypes",
+				If RowOfContact.Type = ElectronicDocumentsOverridable.FindRefToObject("ContactInformationKinds",
 					"CompanyEmail") Then
 						
 					Type = GetCMLTypeValue("ContactType", "Mail");
 					FillXDTOProperty(Contact, "Type", Type, True, ErrorText);
 					FillXDTOProperty(Contact, "Comment", RowOfContact.Comment, , ErrorText);
 					FillXDTOProperty(Contact, "Value", RowOfContact.Value, True, ErrorText);
-				ElsIf RowOfContact.Type = ElectronicDocumentsOverridable.FindRefToObject("ContactInformationTypes",
+				ElsIf RowOfContact.Type = ElectronicDocumentsOverridable.FindRefToObject("ContactInformationKinds",
 					"CompanyPhone") Then
 					
 					Type = GetCMLTypeValue("ContactType", "Work phone");
 					FillXDTOProperty(Contact, "Type",Type,True, ErrorText);
 					FillXDTOProperty(Contact, "Comment", RowOfContact.Comment, , ErrorText);
 					FillXDTOProperty(Contact, "Value", RowOfContact.Value, True, ErrorText);
-				ElsIf RowOfContact.Type = ElectronicDocumentsOverridable.FindRefToObject("ContactInformationTypes",
+				ElsIf RowOfContact.Type = ElectronicDocumentsOverridable.FindRefToObject("ContactInformationKinds",
 					"CounterpartyFax") Then
 					
 					Type = GetCMLTypeValue("ContactType", "Fax");
@@ -13698,13 +13349,10 @@ Procedure ReadDirectoryXDTO(ED, ParseTree, NewED, Error)
 		If Upper(CurProperty.Name) = Upper("ID") Then 
 			
 			CounterpartyId = DataVal;
-			// Parse ID for TIN and KPP
+			// Parse ID for TIN
 			SearchStructure = ParseCounterpartyID(CounterpartyId);
 			If SearchStructure.Property("TIN") Then
 				CounterpartyAttributes.Insert("TIN", SearchStructure.TIN);
-			EndIf;
-			If SearchStructure.Property("KPP") Then
-				CounterpartyAttributes.Insert("KPP", SearchStructure.KPP);
 			EndIf;
 			
 		ElsIf Upper(CurProperty.Name) = Upper("LegalEntity") OR Upper(CurProperty.Name) = Upper("Ind") Then
@@ -13735,7 +13383,7 @@ Procedure ReadDirectoryXDTO(ED, ParseTree, NewED, Error)
 	AppliedCatalogName = ElectronicDocumentsServiceCallServer.GetAppliedCatalogName("Counterparties");
 	Counterparty = ElectronicDocumentsOverridable.FindRefToObject(AppliedCatalogName, CounterpartyId,
 		CounterpartyAttributes, ED.Directory.ID);
-	FoundString = FindCreateStringInParsedTree(FoundTypeInTree, CounterpartyId, "TIN+KPP: " + CounterpartyId,
+	FoundString = FindCreateStringInParsedTree(FoundTypeInTree, CounterpartyId, "TIN: " + CounterpartyId,
 		Counterparty, CounterpartyAttributes, ParseTree, Error);
 	AddObjectHeaderAttribute(NewED, "Counterparty", FoundString.RowIndex);
 	
@@ -13967,13 +13615,10 @@ Procedure DeleteReadPriceXDTO(ED, ParseTree, NewED, Error)
 		If Upper(CurProperty.Name) = Upper("ID") Then
 			
 			CounterpartyId = DataVal;
-			// Parse ID for TIN and KPP.
+			// Parse ID for TIN.
 			SearchStructure = ParseCounterpartyID(CounterpartyId);
 			If SearchStructure.Property("TIN") Then
 				CounterpartyAttributes.Insert("TIN", SearchStructure.TIN);
-			EndIf;
-			If SearchStructure.Property("KPP") Then
-				CounterpartyAttributes.Insert("KPP", SearchStructure.KPP);
 			EndIf;
 			
 		ElsIf Upper(CurProperty.Name) = Upper("LegalEntity") OR Upper(CurProperty.Name) = Upper("Ind") Then
@@ -14002,7 +13647,7 @@ Procedure DeleteReadPriceXDTO(ED, ParseTree, NewED, Error)
 	
 	FoundTypeInTree = FoundCreateObjectTypeInParseTree(ParseTree, "Counterparties");
 	Counterparty = ElectronicDocumentsOverridable.FindRefToObject("Counterparties", CounterpartyId, CounterpartyAttributes, ED.ID);
-	FoundString = FindCreateStringInParsedTree(FoundTypeInTree, CounterpartyId, "TIN+KPP: " + CounterpartyId,
+	FoundString = FindCreateStringInParsedTree(FoundTypeInTree, CounterpartyId, "TIN: " + CounterpartyId,
 		Counterparty, CounterpartyAttributes, ParseTree, Error);
 	AddObjectHeaderAttribute(NewED, "Counterparty", FoundString.RowIndex);
 	AddObjectHeaderAttribute(NewED, "GeneratingDate", ED.ValidFrom);
@@ -15101,420 +14746,6 @@ Procedure DeleteReadReportOnComissionGoodsSalesXDTO(ED, ParseTree, NewED, Error)
 	
 EndProcedure
 
-Procedure ReadAccountInvoiceXDTO(ED, ParseTree, NewED, Error)
-	
-	NewED.EDKind = Enums.EDKinds.CustomerInvoiceNote;
-	
-	AddObjectHeaderAttribute(NewED, "Number", ED.Document.PrInvoice.InvNumber);
-	AddObjectHeaderAttribute(NewED, "DocumentID", ED.IdFile);
-	AddObjectHeaderAttribute(NewED, "Date", DateFromString(ED.Document.PrInvoice.DateInv));
-	AddObjectHeaderAttribute(NewED, "CurCode", ED.Document.PrInvoice.CodeRCC);
-	If Not ED.Document.PrInvoice.CorInv = Undefined Then
-		AddObjectHeaderAttribute(NewED, "CorrectionNumber", ED.Document.PrInvoice.CorInv.NumCorInv);
-		AddObjectHeaderAttribute(NewED, "DateOfCorrection", DateFromString(ED.Document.PrInvoice.CorInv.DateCorInv));
-	EndIf;
-	
-	If Not ED.Document.PrInvoice.CargoFrom = Undefined Then
-		If Not ED.Document.PrInvoice.CargoFrom.CargoShpd = Undefined Then
-			If Not ED.Document.PrInvoice.CargoFrom.CargoShpd.NameGop.DescEnt = Undefined Then
-				AddObjectHeaderAttribute(NewED, "Consignor", ED.Document.PrInvoice.CargoFrom.CargoShpd.NameGop.DescEnt);
-			Else
-				AddObjectHeaderAttribute(NewED, "Consignor",
-				ED.Document.PrInvoice.CargoFrom.CargoShpd.NameGop.NameAndSurnameIP.Surname + " " + ED.Document.PrInvoice.CargoFrom.CargoShpd.NameGop.NameAndSurnameIP.Name
-					+ " " + ED.Document.PrInvoice.CargoFrom.CargoShpd.NameGop.NameAndSurnameIP.Patronymic);
-			EndIf;
-			If Not ED.Document.PrInvoice.CargoFrom.CargoShpd.Address.AddrFRN = Undefined Then
-				AddObjectHeaderAttribute(NewED, "ShipperAddress", ED.Document.PrInvoice.CargoFrom.CargoShpd.Address.AddrFRN.AdrText);
-				AddObjectHeaderAttribute(NewED, "ShipperCountryCode", ED.Document.PrInvoice.CargoFrom.CargoShpd.Address.AddrFRN.StrCode);
-			Else
-				AddObjectHeaderAttribute(NewED, "ShipperAddress", CompositeAddress(ED.Document.PrInvoice.CargoFrom.CargoShpd.Address.AdrRF));
-			EndIf
-		ElsIf Not ED.Document.PrInvoice.CargoFrom.Same = Undefined Then
-			AddObjectHeaderAttribute(NewED, "Consignor", "the same");
-		EndIf;
-	EndIf;
-	
-	If Not ED.Document.PrInvoice.CargoRece = Undefined Then
-		If Not ED.Document.PrInvoice.CargoRece.NameGop.DescEnt = Undefined Then
-			AddObjectHeaderAttribute(NewED, "Consignee", ED.Document.PrInvoice.CargoRece.NameGop.DescEnt);
-		Else
-			AddObjectHeaderAttribute(
-			NewED,
-			"Consignee",
-			ED.Document.PrInvoice.CargoRece.NameGop.NameAndSurnameIP.Surname + " " + ED.Document.PrInvoice.CargoRece.NameGop.NameAndSurnameIP.Name
-				+ " " + ED.Document.PrInvoice.CargoRece.NameGop.NameAndSurnameIP.Patronymic);
-		EndIf;
-		
-		If Not ED.Document.PrInvoice.CargoRece.Address.AddrFRN = Undefined Then
-			AddObjectHeaderAttribute(NewED, "ConsigneeAddress", ED.Document.PrInvoice.CargoRece.Address.AddrFRN.AdrText);
-			AddObjectHeaderAttribute(NewED, "ConsigneeCountryCode", ED.Document.PrInvoice.CargoRece.Address.AddrFRN.StrCode);
-		Else
-			AddObjectHeaderAttribute(NewED, "ConsigneeAddress", CompositeAddress(ED.Document.PrInvoice.CargoRece.Address.AdrRF));
-		EndIf
-	EndIf;
-	
-	AdditDataTree = Undefined;
-	TreeRow = NewED.Rows.Find("AdditDataTree", "Attribute");
-	If TreeRow <> Undefined AND TypeOf(TreeRow.AttributeValue) = Type("ValueTree") Then
-		AdditDataTree = TreeRow.AttributeValue;
-	EndIf;
-	InfFul = ED.Document.PrInvoice.InfFul;
-	If InfFul <> Undefined AND InfFul.TextInf <> Undefined AND Find(InfFul.TextInf, "xml") = 0 Then
-		ReadInfPol(InfFul.TextInf, AdditDataTree, "Header");
-	EndIf;
-	
-	Agent = Undefined;
-	CommissionInv = False;
-	If TypeOf(AdditDataTree) = Type("ValueTree") Then
-		FillHeaderByAdditData(AdditDataTree, NewED, Error);
-		CommissionInv = FillInAgentDataFromAdditData(ParseTree, NewED, "SFAKT", Error);
-		If Error Then
-			Return;
-		EndIf;
-	EndIf;
-	
-	Seller = ED.Document.PrInvoice.PrSale;
-	Customer = ED.Document.PrInvoice.PrCustomer;
-	AddObjectHeaderAttribute(NewED, "IssuedByPrincipal", CommissionInv);
-	If NewED.EDDirection = Enums.EDDirections.Outgoing
-		OR NewED.EDDirection = Enums.EDDirections.Intercompany Then
-		ReadCounterpartyData(Seller, ED, ParseTree, NewED, Error, "Seller");
-		ReadCounterpartyData(Customer, ED, ParseTree, NewED, Error, "Customer");
-	ElsIf NewED.EDDirection = Enums.EDDirections.Incoming Then
-		ReadCounterpartyData(Seller, ED, ParseTree, NewED, Error, "Customer");
-		If CommissionInv Then
-			ReadCounterpartyData(Customer, ED, ParseTree, NewED, Error, "CommissionCustomer");
-		Else
-			ReadCounterpartyData(Customer, ED, ParseTree, NewED, Error, "Seller");
-		EndIf;
-	EndIf;
-	
-	Company = GetEDHeaderAttribute(NewED, "Company", ParseTree);
-	Structure = New Structure("Company", Company);
-	If TypeOf(AdditDataTree) = Type("ValueTree") Then
-		If ValueIsFilled(Company) Then
-			BasisDocuments = NewED.Rows.Find("BasisDocuments", "Attribute", True);
-			IDEDDocumentFoundation = NewED.Rows.Find("IDEDDocumentFoundation", "Attribute", True);
-			If BasisDocuments <> Undefined Then
-				For Each String IN BasisDocuments.Rows Do
-					BasisDocumentParameters = String.AttributeValue;
-					If BasisDocumentParameters.Property("IDEDDocumentFoundation", IDEDDocumentFoundation)
-						AND ValueIsFilled(IDEDDocumentFoundation) Then
-						
-						BasisDocument = GetBasisDocument(IDEDDocumentFoundation, Structure);
-						If BasisDocument <> Undefined Then
-							String.ObjectReference = BasisDocument;
-						EndIf;
-					EndIf;
-				EndDo;
-			ElsIf IDEDDocumentFoundation <> Undefined Then
-				BasisDocument = GetBasisDocument(IDEDDocumentFoundation.AttributeValue, Structure);
-				If BasisDocument <> Undefined Then
-					BasisParameters = New Structure("BasisDocumentIDED,
-						|BasisDocumentKind, BasisDocumentNumber,  BasisDocumentDate");
-					For Each Item IN BasisParameters Do
-						AttributeString = NewED.Rows.Find(Item.Key, "Attribute", True);
-						BasisParameters[Item.Key] = AttributeString.AttributeValue;
-					EndDo;
-					NewRow = NewED.Rows.Add();
-					NewRow.Attribute = "BasisDocuments";
-					AddObjectHeaderAttribute(NewRow, "BasisDocuments", BasisParameters, BasisDocument);
-				EndIf;
-			EndIf;
-		EndIf;
-	EndIf;
-	
-	If Not ED.Document.PrInvoice.PrIND = Undefined AND ED.Document.PrInvoice.PrIND.Count() > 0 Then
-		PaymentDocuments = "";
-		FirstItem = True;
-		For Each RowOfPayment IN ED.Document.PrInvoice.PrIND Do
-			PaymentDocuments = PaymentDocuments + ?(FirstItem,"",", No ") + RowOfPayment.NumberPRD + " dated " + RowOfPayment.DatePRD;
-			FirstItem = False;
-		EndDo;
-		AddObjectHeaderAttribute(NewED, "PaymentDocument", PaymentDocuments);
-	EndIf;
-	
-	If Not ED.Document.Signer.Properties().Get("CO") = Undefined
-		AND Not ED.Document.Signer.CO = Undefined Then
-		
-		AddObjectHeaderAttribute(NewED, "SignatoryIE", ED.Document.Signer.CO.Initials.Surname + " "
-			+ ED.Document.Signer.CO.Initials.Name + " " + ED.Document.Signer.CO.Initials.Patronymic);
-		AddObjectHeaderAttribute(NewED, "SignerTINInd", ED.Document.Signer.CO.TINInd);
-		AddObjectHeaderAttribute(NewED, "SignerPrStateRegIE", ED.Document.Signer.CO.PrFedRegSN);
-	ElsIf Not ED.Document.Signer.Properties().Get("LegalEntity") = Undefined
-		AND Not ED.Document.Signer.LegalEntity = Undefined Then
-		
-		AddObjectHeaderAttribute(NewED, "SignatoryLP", ED.Document.Signer.LegalEntity.Initials.Surname + " "
-			+ ED.Document.Signer.LegalEntity.Initials.Name + " " + ED.Document.Signer.LegalEntity.Initials.Patronymic);
-		AddObjectHeaderAttribute(NewED, "SignerTINLP", ED.Document.Signer.LegalEntity.TINLP);
-	EndIf;
-	
-	AddObjectHeaderAttribute(NewED, "StGoodsWithoutVAT",ED.Document.TablInv.TotalPai.StGoodsWithoutVATTotal);
-	AddObjectHeaderAttribute(NewED, "StGoodAcTax", ED.Document.TablInv.TotalPai.StGoodsAcTaxTotal);
-	AddObjectHeaderAttribute(NewED, "DocumentAmount", ED.Document.TablInv.TotalPai.StGoodsAcTaxTotal);
-	AddObjectHeaderAttribute(NewED, "AmountVAT",     VATAmountSFBringToRequiredFormat(
-		ED.Document.TablInv.TotalPai.AmountCasTotal.AmountVAT));
-	
-	For Each Product IN ED.Document.TablInv.InfoInv Do
-		
-		ListTS = New ValueList;
-		ListTS.Add(Product.NumRow,         "NumRow");
-		ListTS.Add(Product.DescProd,        "DescProd");
-		ListTS.Add(Product.OKEI_Tov,       "OKEI_Tov");
-		ListTS.Add(Product.QuantIt,         "QuantIt");
-		ListTS.Add(Product.PriceTov,        "PriceTov");
-		ListTS.Add(Product.StGoodsWithoutVAT,    "StGoodsWithoutVAT");
-		ListTS.Add(Product.StGoodAcTax,     "StGoodAcTax");
-		ListTS.Add(Product.TaxVal.TaxValMag, "TaxValMag");
-		ListTS.Add(Product.TaxVal.TaxValType, "TaxValType");
-		ListTS.Add(Product.Excise.AmountExcise, "AmountExcise");
-		ListTS.Add(VATAmountSFBringToRequiredFormat(Product.AmountCas.AmountVAT), "AmountVAT");
-		If ValueIsFilled(Product.OKEI_Tov) Then
-			ListTS.Add(Product.OKEI_Tov,   "OKEI_Tov");
-		EndIf;
-		
-		If ValueIsFilled(Product.InfFullStr) Then
-			// IN inf.field xml-string of Relevant format
-			InfFul = Product.InfFullStr;
-			ReadInfPol(InfFul, AdditDataTree, "Products", Product.NumRow);
-			FillTSRowByAdditData(AdditDataTree, ListTS, Product.NumRow, "Products", Error);
-		EndIf;
-		
-		If Not Product.TDNumber = Undefined AND Product.TDNumber.Count() > 0 Then
-			NumbersCD = "";
-			For Each TDString IN Product.TDNumber Do
-				NumbersCD = NumbersCD + TDString + ", ";
-			EndDo;
-			ListTS.Add(NumbersCD, "TDNumber");
-		EndIf;
-		
-		If Not Product.CodeOrig = Undefined AND Product.CodeOrig.Count() > 0 Then
-			ListTS.Add(Product.CodeOrig[0], "CodeOrig");
-		EndIf;
-		
-		AddObjectTSAttributes(NewED, "TSRow", ListTS);
-	EndDo;
-	
-	TreeRow = NewED.Rows.Find("AdditDataTree", "Attribute");
-	If TreeRow = Undefined Then
-		AddObjectHeaderAttribute(NewED, "AdditDataTree", AdditDataTree);
-	EndIf;
-	
-EndProcedure
-
-Procedure ReadCorrectiveInvoiceNoteXDTO(ED, ParseTree, NewED, Error)
-	
-	NewED.EDKind = Enums.EDKinds.CorrectiveInvoiceNote;
-	NewED.ObjectDescription = "TrueUp";
-	
-	AddObjectHeaderAttribute(NewED, "Number", ED.Document.PrCInv.NumberCInv);
-	AddObjectHeaderAttribute(NewED, "Date", DateFromString(ED.Document.PrCInv.DateCInv));
-	AddObjectHeaderAttribute(NewED, "InvoiceNumber", ED.Document.PrCInv.InvNumber);
-	AddObjectHeaderAttribute(NewED, "InvoiceDate", DateFromString(ED.Document.PrCInv.DateInv));
-	AddObjectHeaderAttribute(NewED, "CurCode", ED.Document.PrCInv.CodeRCC);
-	AddObjectHeaderAttribute(NewED, "DocumentID", ED.IdFile);
-	If Not ED.Document.PrCInv.Properties().Get("CorCInv") = Undefined
-		AND Not ED.Document.PrCInv.CorCInv = Undefined Then
-		
-		AddObjectHeaderAttribute(NewED, "CorrectionNumber", ED.Document.PrCInv.CorCInv.NumCorToInv);
-		AddObjectHeaderAttribute(NewED, "DateOfCorrection", DateFromString(ED.Document.PrCInv.CorCInv.DateCorCInv));
-	EndIf;
-	If Not ED.Document.PrCInv.Properties().Get("CorInv") = Undefined
-		AND Not ED.Document.PrCInv.CorInv = Undefined Then
-		AddObjectHeaderAttribute(NewED, "InvoiceCorrectionNumber", ED.Document.PrCInv.CorInv.NumCorInv);
-		AddObjectHeaderAttribute(NewED, "InvoiceCorrectionDate", DateFromString(ED.Document.PrCInv.CorInv.DateCorInv));
-	EndIf;
-	
-	AdditDataTree = Undefined;
-	TreeRow = NewED.Rows.Find("AdditDataTree", "Attribute");
-	If TreeRow <> Undefined AND TypeOf(TreeRow.AttributeValue) = Type("ValueTree") Then
-		AdditDataTree = TreeRow.AttributeValue;
-	EndIf;
-	InfFul = ED.Document.PrCInv.InfFul;
-	If InfFul <> Undefined AND InfFul.TextInf <> Undefined AND Find(InfFul.TextInf, "xml") = 0 Then
-		ReadInfPol(InfFul.TextInf, AdditDataTree, "Header");
-	EndIf;
-	
-	Agent = Undefined;
-	CommissionInv = False;
-	If TypeOf(AdditDataTree) = Type("ValueTree") Then
-		FillHeaderByAdditData(AdditDataTree, NewED, Error);
-		CommissionInv = FillInAgentDataFromAdditData(ParseTree, NewED, "KORSFAKT", Error);
-		If Error Then
-			Return;
-		EndIf;
-	EndIf;
-	
-	Seller = ED.Document.PrCInv.PrSale;
-	Customer = ED.Document.PrCInv.PrCustomer;
-	AddObjectHeaderAttribute(NewED, "IssuedByPrincipal", CommissionInv);
-	If NewED.EDDirection = Enums.EDDirections.Outgoing
-		OR NewED.EDDirection = Enums.EDDirections.Intercompany Then
-		ReadCounterpartyData(Seller, ED, ParseTree, NewED, Error, "Seller");
-		ReadCounterpartyData(Customer, ED, ParseTree, NewED, Error, "Customer");
-	ElsIf NewED.EDDirection = Enums.EDDirections.Incoming Then
-		ReadCounterpartyData(Seller, ED, ParseTree, NewED, Error, "Customer");
-		If CommissionInv Then
-			ReadCounterpartyData(Customer, ED, ParseTree, NewED, Error, "CommissionCustomer");
-		Else
-			ReadCounterpartyData(Customer, ED, ParseTree, NewED, Error, "Seller");
-		EndIf;
-	EndIf;
-	
-	Company = GetEDHeaderAttribute(NewED, "Company", ParseTree);
-	Structure = New Structure("Company", Company);
-	
-	If TypeOf(AdditDataTree) = Type("ValueTree") Then
-		FillHeaderByAdditData(AdditDataTree, NewED, Error);
-		
-		If ValueIsFilled(Company) Then
-			BasisDocuments = NewED.Rows.Find("BasisDocuments", "Attribute", True);
-			IDEDDocumentFoundation = NewED.Rows.Find("IDEDDocumentFoundation", "Attribute", True);
-			If BasisDocuments <> Undefined Then
-				For Each String IN BasisDocuments.Rows Do
-					BasisDocumentParameters = String.AttributeValue;
-					If BasisDocumentParameters.Property("IDEDDocumentFoundation", IDEDDocumentFoundation)
-						AND ValueIsFilled(IDEDDocumentFoundation) Then
-						
-						BasisDocument = GetBasisDocument(IDEDDocumentFoundation, Structure);
-						If BasisDocument <> Undefined Then
-							String.ObjectReference = BasisDocument;
-						EndIf;
-					EndIf;
-				EndDo;
-			ElsIf IDEDDocumentFoundation <> Undefined Then
-				BasisDocument = GetBasisDocument(IDEDDocumentFoundation.AttributeValue, Structure);
-				If BasisDocument <> Undefined Then
-					BasisParameters = New Structure("BasisDocumentIDED,
-						|BasisDocumentKind, BasisDocumentNumber,  BasisDocumentDate");
-					For Each Item IN BasisParameters Do
-						AttributeString = NewED.Rows.Find(Item.Key, "Attribute", True);
-						BasisParameters[Item.Key] = AttributeString.AttributeValue;
-					EndDo;
-					NewRow = NewED.Rows.Add();
-					NewRow.Attribute = "BasisDocuments";
-					AddObjectHeaderAttribute(NewRow, "BasisDocuments", BasisParameters, BasisDocument);
-				EndIf;
-			EndIf;
-		EndIf;
-	EndIf;
-	
-	If Not ED.Document.Signer.Properties().Get("CO") = Undefined
-		AND Not ED.Document.Signer.CO = Undefined Then
-		
-		AddObjectHeaderAttribute(NewED, "SignatoryIE", ED.Document.Signer.CO.Initials.Surname + " "
-			+ ED.Document.Signer.CO.Initials.Name + " " + ED.Document.Signer.CO.Initials.Patronymic);
-		AddObjectHeaderAttribute(NewED, "SignerTINInd", ED.Document.Signer.CO.TINInd);
-		AddObjectHeaderAttribute(NewED, "SignerPrStateRegIE", ED.Document.Signer.CO.PrFedRegSN);
-	ElsIf Not ED.Document.Signer.Properties().Get("LegalEntity") = Undefined
-		AND Not ED.Document.Signer.LegalEntity = Undefined Then
-		
-		AddObjectHeaderAttribute(NewED, "SignatoryLP", ED.Document.Signer.LegalEntity.Initials.Surname + " "
-			+ ED.Document.Signer.LegalEntity.Initials.Name + " " + ED.Document.Signer.LegalEntity.Initials.Patronymic);
-		AddObjectHeaderAttribute(NewED, "SignerTINLP", ED.Document.Signer.LegalEntity.TINLP);
-	EndIf;
-	
-	If Not ED.Document.TablCInv.Properties().Get("TotalIncr") = Undefined
-		AND Not ED.Document.TablCInv.TotalIncr = Undefined Then
-		AddObjectHeaderAttribute(NewED, "StGoodsWithoutVATInc", ED.Document.TablCInv.TotalIncr.StGoodsWithoutVATTotal);
-		AddObjectHeaderAttribute(NewED, "StGoodsTaxTotalInc", ED.Document.TablCInv.TotalIncr.StGoodsAcTaxTotal);
-		AddObjectHeaderAttribute(NewED, "AmountVATIncr", VATAmountSFBringToRequiredFormat(
-			ED.Document.TablCInv.TotalIncr.AmountCas.AmountVAT));
-	EndIf;
-	
-	If Not ED.Document.TablCInv.Properties().Get("TotalDecr") = Undefined
-		AND Not ED.Document.TablCInv.TotalDecr = Undefined Then
-		
-		AddObjectHeaderAttribute(NewED, "StGoodsVATTotalDec", ED.Document.TablCInv.TotalDecr.StGoodsWithoutVATTotal);
-		AddObjectHeaderAttribute(NewED, "StGoodsAcTaxTotalDec", ED.Document.TablCInv.TotalDecr.StGoodsAcTaxTotal);
-		AddObjectHeaderAttribute(NewED, "AmountVATDecr", VATAmountSFBringToRequiredFormat(
-			ED.Document.TablCInv.TotalDecr.AmountCas.AmountVAT));
-	EndIf;
-	
-	DocumentAmount = 0;
-	
-	For Each Product IN ED.Document.TablCInv.InfoInv Do
-		
-		ListTS = New ValueList;
-		ListTS.Add(Product.NumRow, "NumRow");
-		ListTS.Add(Product.DescProd, "DescProd");
-		If Not Product.Properties().Get("OKEI_GoodsBefore") = Undefined Then
-			If ValueIsFilled(Product.OKEI_GoodsBefore) Then
-				ListTS.Add(Product.OKEI_GoodsBefore, "OKEI_GoodsBefore");
-			EndIf;
-		EndIf;
-		If Not Product.Properties().Get("OKEI_ProdAfter") = Undefined Then
-			If ValueIsFilled(Product.OKEI_ProdAfter) Then
-				ListTS.Add(Product.OKEI_ProdAfter, "OKEI_ProdAfter");
-			EndIf;
-		EndIf;
-		If Not Product.Properties().Get("QuantItBefore") = Undefined Then
-			ListTS.Add(Product.QuantItBefore, "QuantItBefore");
-		EndIf;
-		If Not Product.Properties().Get("NumItAfter") = Undefined Then
-			ListTS.Add(Product.NumItAfter, "NumItAfter");
-		EndIf;
-		If Not Product.Properties().Get("PriceTovBef") = Undefined Then
-			ListTS.Add(Product.PriceTovBef, "PriceTovBef");
-		EndIf;
-		If Not Product.Properties().Get("PriceTovAfter") = Undefined Then
-			ListTS.Add(Product.PriceTovAfter, "PriceTovAfter");
-		EndIf;
-		
-		If Not Product.Properties().Get("StGoodsWithoutVAT") = Undefined
-			AND Not Product.StGoodsWithoutVAT = Undefined Then
-			ListTS.Add(Product.StGoodsWithoutVAT.PricBeforeChan, "StGoodsVATBeforeChange");
-			ListTS.Add(Product.StGoodsWithoutVAT.PricAfterChan, "StGoodsWithoutVATAfterChange");
-			If Not Product.StGoodsWithoutVAT.Properties().Get("PricIncr") = Undefined Then
-				ListTS.Add(Product.StGoodsWithoutVAT.PricIncr, "StGoodsWithoutVATInc");
-			EndIf;
-			If Not Product.StGoodsWithoutVAT.Properties().Get("PricDecr") = Undefined Then
-				ListTS.Add(Product.StGoodsWithoutVAT.PricDecr, "StGoodsWithoutVATDec");
-			EndIf;
-		EndIf;
-		
-		ListTS.Add(Product.ExciseTo.AmountExcise, "ExciseTo");
-		ListTS.Add(Product.ExciseAfter.AmountExcise, "ExciseAfter");
-		ListTS.Add(Product.ExciseDiff.AmountIncr, "ExciseIncr");
-		ListTS.Add(Product.ExciseDiff.AmountMult, "ExciseDecr");
-		ListTS.Add(Product.TaxValBefore.TaxValMag, "TaxValMagBefore");
-		ListTS.Add(Product.TaxValBefore.TaxValType, "TaxValTypeBefore");
-		ListTS.Add(Product.TaxValAfter.TaxValMag, "TaxValMagAfter");
-		ListTS.Add(Product.TaxValAfter.TaxValType, "TaxValTypeAfter");
-		ListTS.Add(VATAmountSFBringToRequiredFormat(Product.AmountCasBefore.AmountVAT), "AmountVATBefore");
-		ListTS.Add(VATAmountSFBringToRequiredFormat(Product.AmountCasAfter.AmountVAT), "AmountVATAfter");
-		ListTS.Add(Product.AmountCasDiff.AmountIncr, "AmountVATIncr");
-		ListTS.Add(Product.AmountCasDiff.AmountMult, "AmountVATDecr");
-		ListTS.Add(Product.StGoodAcTax.PricBeforeChan, "StGoosAcTaxBeforeChange");
-		ListTS.Add(Product.StGoodAcTax.PricAfterChan, "StGoodsAcTaxAfterChange");
-		DocumentAmount = DocumentAmount
-						+ ?(ValueIsFilled(Product.StGoodAcTax.PricAfterChan), Product.StGoodAcTax.PricAfterChan, 0);
-		If Not Product.StGoodAcTax.Properties().Get("PricIncr") = Undefined Then
-			ListTS.Add(Product.StGoodAcTax.PricIncr, "StGoodsAcTaxInc");
-		EndIf;
-		If Not Product.StGoodAcTax.Properties().Get("PricDecr") = Undefined Then
-			ListTS.Add(Product.StGoodAcTax.PricDecr, "StGoodsAcTaxDec");
-		EndIf;
-		
-		If ValueIsFilled(Product.InfFullStr) Then
-			// IN inf.field xml-string of Relevant format
-			InfFul = Product.InfFullStr;
-			ReadInfPol(InfFul, AdditDataTree, "Products", Product.NumRow);
-			FillTSRowByAdditData(AdditDataTree, ListTS, Product.NumRow, "Products", Error);
-		EndIf;
-		
-		AddObjectTSAttributes(NewED, "TSRow", ListTS);
-	EndDo;
-	
-	TreeRow = NewED.Rows.Find("AdditDataTree", "Attribute");
-	If TreeRow = Undefined Then
-		AddObjectHeaderAttribute(NewED, "AdditDataTree", AdditDataTree);
-	EndIf;
-	
-	AddObjectHeaderAttribute(NewED, "DocumentAmount", DocumentAmount);
-	
-EndProcedure
-
 Procedure ReadCorrectingDocumentXDTO(ED, ParseTree, NewED, Error)
 	
 	NewED.EDKind = Enums.EDKinds.AgreementAboutCostChangeSender;
@@ -16045,7 +15276,6 @@ Procedure ReadCompanyDetailsXDTO(ED, ParseTree, NewED, Error)
 	NewED.EDKind = "CompanyAttributes";
 
 	AddObjectHeaderAttribute(NewED, "TIN",						ED.TIN);
-	AddObjectHeaderAttribute(NewED, "KPP",						ED.KPP);
 	AddObjectHeaderAttribute(NewED, "OKPO",						ED.OKPO);
 	AddObjectHeaderAttribute(NewED, "Description",				ED.Description);
 	AddObjectHeaderAttribute(NewED, "OfficialName",	ED.OfficialName);
@@ -16106,21 +15336,19 @@ Function FillInAgentDataFromAdditData(ParseTree, NewED, TargetNamespaceSchema, E
 	EndIf;
 	If ValueIsFilled(AgentName) Then
 		// From application solutions with BED, version 1.1.15.3 and less data about commission agent
-		// can come in the form of data set CommissionAgentName, CommissionAgentTIN, CommissionAgentKPP.
+		// can come in the form of data set CommissionAgentName, CommissionAgentTIN.
 		CommissionInv = True;
 		If NewED.EDDirection = Enums.EDDirections.Incoming AND Not AgentAdded Then
 			CounterpartyAttributes = New Structure;
 			CounterpartyAttributes.Insert("FullDescr", AgentName.AttributeValue);
 			TINString = NewED.Rows.Find("TINCommissionAgent", "Attribute", True);
 			CounterpartyAttributes.Insert("TIN", ?(ValueIsFilled(TINString), TINString.AttributeValue, ""));
-			KPPString = NewED.Rows.Find("CommissionAgentKPP", "Attribute", True);
-			CounterpartyAttributes.Insert("KPP", ?(ValueIsFilled(KPPString), KPPString.AttributeValue, ""));
-			CounterpartyId = CounterpartyAttributes.TIN + ?(ValueIsFilled(CounterpartyAttributes.KPP), CounterpartyAttributes.KPP, "");
+			CounterpartyId = CounterpartyAttributes.TIN;
 			CounterpartyKind = "Companies";
 			AttributeName = "Company";
 			FoundTypeInTree = FoundCreateObjectTypeInParseTree(ParseTree, CounterpartyKind);
 			Counterparty = ElectronicDocumentsOverridable.FindRefToObject(CounterpartyKind, CounterpartyId, CounterpartyAttributes);
-			FoundString = FindCreateStringInParsedTree(FoundTypeInTree, CounterpartyId, "TIN+KPP: " + CounterpartyId,
+			FoundString = FindCreateStringInParsedTree(FoundTypeInTree, CounterpartyId, "TIN: " + CounterpartyId,
 				Counterparty, CounterpartyAttributes, ParseTree, Error);
 			AddObjectHeaderAttribute(NewED, AttributeName, FoundString.RowIndex);
 		EndIf;
@@ -16263,10 +15491,6 @@ Function GetDataFromFile(ParametersStructure, ParseTree, EDDirection = Undefined
 		EndIf;
 		ParametersStructure.Insert("Counterparty", GetEDHeaderAttribute(NewED, "Counterparty", ParseTree));
 		
-		If NewED.EDKind = Enums.EDKinds.CustomerInvoiceNote Then
-			ParametersStructure.Insert("IDEDDocumentFoundation", GetEDHeaderAttribute(NewED, "IDEDDocumentFoundation", ParseTree));
-		EndIf;
-		
 	EndIf;
 	ParametersStructure.Insert("Imported", Not RecordingError);
 	
@@ -16277,7 +15501,7 @@ EndFunction
 // Parse string structure of "TIN_KPP" kind
 //
 // Returns:
-//  Structure of parameters with TIN and KPP
+//  Structure of parameters with TIN
 //
 Function ParseCounterpartyID(Val RowID)
 	
@@ -16286,14 +15510,11 @@ Function ParseCounterpartyID(Val RowID)
 	SeparatorPosition1 = Find(RowID, "_");
 	If SeparatorPosition1 > 0 Then
 		TIN = Left(RowID, SeparatorPosition1 - 1);
-		KPP = Mid(RowID, SeparatorPosition1 + 1, StrLen(RowID) - SeparatorPosition1);
 	ElsIf StrLen(RowID) > 0 Then
 		TIN = TrimAll(RowID);
-		KPP = "";
 	EndIf;
 	
 	SearchStructure.Insert("TIN", TIN);
-	SearchStructure.Insert("KPP", KPP);
 	
 	Return SearchStructure;
 	
@@ -16360,13 +15581,7 @@ Function ReadFileCMLbyXDTO(FileName, ParseTree, NewED, ShowErrors = False)
 					Add1CNameSpaceToExternalEDFile(XMLObject, ED, FileName);
 				EndIf;
 				
-				If Find(ED.IdFile, "ON_SFAKT") > 0 Then
-					ED = XDTOFactory.ReadXML(XMLObject, GetCMLValueType("File", "SFAKT"));
-					ReadAccountInvoiceXDTO(ED, ParseTree, NewED, Error);
-				ElsIf Find(ED.IdFile, "ON_KORSFAKT") > 0 Then
-					ED = XDTOFactory.ReadXML(XMLObject, GetCMLValueType("File", "KORSFAKT"));
-					ReadCorrectiveInvoiceNoteXDTO(ED, ParseTree, NewED, Error);
-				ElsIf Find(ED.IdFile, "OTORG12") > 0 Then
+				If Find(ED.IdFile, "OTORG12") > 0 Then
 					ED = XDTOFactory.ReadXML(XMLObject, GetCMLValueType("File", "OTORG12"));
 					ReadTORG12XDTO(ED, ParseTree, NewED, Error);
 				ElsIf Find(ED.IdFile, "PTORG12") > 0 Then
@@ -16679,12 +15894,11 @@ Procedure ReadCounterpartyData(Item, ED, ParseTree, NewED, Error, Role = "")
 			If Item.IdPr.PrLP <> Undefined AND Not Item.IdPr.PrLP.DescEnt = "---" Then
 				CounterpartyAttributes.Insert("FullDescr", Item.IdPr.PrLP.DescEnt);
 				CounterpartyAttributes.Insert("TIN", Item.IdPr.PrLP.TINLP);
-				CounterpartyAttributes.Insert("KPP", Item.IdPr.PrLP.KPP);
 				If Item.IdPr.PrLP.Properties().Get("RCOLF") <> Undefined Then
 					CounterpartyAttributes.Insert("RCOLF", Item.IdPr.PrLP.RCOLF);
 				EndIf;
 				If ValueIsFilled(Item.IdPr.PrLP.TINLP) Then
-					CounterpartyId = Item.IdPr.PrLP.TINLP + Item.IdPr.PrLP.KPP;
+					CounterpartyId = Item.IdPr.PrLP.TINLP;
 				EndIf;
 				CounterpartyAttributes.Insert("LegalEntityIndividual", ElectronicDocumentsReUse.FindEnumeration("LegalEntityIndividual", "LegalEntity"));
 			ElsIf Item.IdPr.PrPP <> Undefined Then
@@ -16785,11 +15999,11 @@ Procedure ReadCounterpartyData(Item, ED, ParseTree, NewED, Error, Role = "")
 				For Each Contact in DataVal.Contact Do
 					Kind = Undefined;
 					If Contact.Type = "Mail" Then
-						Kind = ElectronicDocumentsOverridable.FindRefToObject("ContactInformationTypes","CounterpartyEmail");
+						Kind = ElectronicDocumentsOverridable.FindRefToObject("ContactInformationKinds","CounterpartyEmail");
 					ElsIf Contact.Type = "Work phone" Then
-						Kind = ElectronicDocumentsOverridable.FindRefToObject("ContactInformationTypes","CounterpartyPhone");
+						Kind = ElectronicDocumentsOverridable.FindRefToObject("ContactInformationKinds","CounterpartyPhone");
 					ElsIf Contact.Type = "Fax" Then
-						Kind = ElectronicDocumentsOverridable.FindRefToObject("ContactInformationTypes","CounterpartyFax");
+						Kind = ElectronicDocumentsOverridable.FindRefToObject("ContactInformationKinds","CounterpartyFax");
 					EndIf;
 					If ValueIsFilled(Kind) Then // add only if there are kinds of contact information in the receiving configuration
 						NewCont = ContactsTable.Add();
@@ -16808,7 +16022,7 @@ Procedure ReadCounterpartyData(Item, ED, ParseTree, NewED, Error, Role = "")
 	FoundTypeInTree = FoundCreateObjectTypeInParseTree(ParseTree, CounterpartyKind);
 	Counterparty = ElectronicDocumentsOverridable.FindRefToObject(CounterpartyKind, CounterpartyId, CounterpartyAttributes);
 			
-	FoundString = FindCreateStringInParsedTree(FoundTypeInTree, CounterpartyId, "TIN+KPP: "+CounterpartyId,
+	FoundString = FindCreateStringInParsedTree(FoundTypeInTree, CounterpartyId, "TIN: "+CounterpartyId,
 		Counterparty, CounterpartyAttributes, ParseTree, Error);
 	AddObjectHeaderAttribute(NewED, AttributeName, FoundString.RowIndex);
 	
@@ -19658,10 +18872,6 @@ Function ConsumerDataFromAdditData(AdditDataTree)
 			If ConsumerDataStructure.Property("CustomerTIN", CustomerTIN) Then
 				Customer.Insert("TIN", CustomerTIN);
 			EndIf;
-			KPPCustomer = "";
-			If ConsumerDataStructure.Property("PPCCustomer", KPPCustomer) Then
-				Customer.Insert("KPP", KPPCustomer);
-			EndIf;
 			Customer.Insert("LegalEntityIndividual", ElectronicDocumentsReUse.FindEnumeration("LegalEntityIndividual", "LegalEntity"));
 		Else // Ind
 			SurnameConsumer = "";
@@ -19966,13 +19176,10 @@ Procedure ReadCounterpartyDataCML(Item, ED, ParseTree, NewED, Error, Role = "", 
 		If Upper(CurProperty.Name) = Upper("ID") Then
 			
 			CounterpartyId = DataVal;
-			// Parse ID for TIN and KPP
+			// Parse ID for TIN
 			SearchStructure = ParseCounterpartyID(CounterpartyId);
 			If SearchStructure.Property("TIN") Then
 				CounterpartyAttributes.Insert("TIN", SearchStructure.TIN);
-			EndIf;
-			If SearchStructure.Property("KPP") Then
-				CounterpartyAttributes.Insert("KPP", SearchStructure.KPP);
 			EndIf;
 			
 			// IN case of commission trade, there may be
@@ -20044,11 +19251,11 @@ Procedure ReadCounterpartyDataCML(Item, ED, ParseTree, NewED, Error, Role = "", 
 			For Each Contact in DataVal.Contact Do
 				Kind = Undefined;
 				If Contact.Type = "Mail" Then
-					Kind = ElectronicDocumentsOverridable.FindRefToObject("ContactInformationTypes","CounterpartyEmail");
+					Kind = ElectronicDocumentsOverridable.FindRefToObject("ContactInformationKinds","CounterpartyEmail");
 				ElsIf Contact.Type = "Work phone" Then
-					Kind = ElectronicDocumentsOverridable.FindRefToObject("ContactInformationTypes","CounterpartyPhone");
+					Kind = ElectronicDocumentsOverridable.FindRefToObject("ContactInformationKinds","CounterpartyPhone");
 				ElsIf Contact.Type = "Fax" Then
-					Kind = ElectronicDocumentsOverridable.FindRefToObject("ContactInformationTypes","CounterpartyFax");
+					Kind = ElectronicDocumentsOverridable.FindRefToObject("ContactInformationKinds","CounterpartyFax");
 				EndIf;
 				If ValueIsFilled(Kind) Then // add only if there are kinds of contact information in the receiving configuration
 					NewCont = ContactsTable.Add();
@@ -20067,7 +19274,7 @@ Procedure ReadCounterpartyDataCML(Item, ED, ParseTree, NewED, Error, Role = "", 
 	
 	FoundTypeInTree = FoundCreateObjectTypeInParseTree(ParseTree, CounterpartyKind);
 	Counterparty = ElectronicDocumentsOverridable.FindRefToObject(CounterpartyKind, CounterpartyId, CounterpartyAttributes);
-	FoundString = FindCreateStringInParsedTree(FoundTypeInTree, CounterpartyId, "TIN+KPP: " + CounterpartyId,
+	FoundString = FindCreateStringInParsedTree(FoundTypeInTree, CounterpartyId, "TIN: " + CounterpartyId,
 		Counterparty, CounterpartyAttributes, ParseTree, Error);
 	If Role <> "CommissionGoodsBuyer" Then
 		AddObjectHeaderAttribute(NewED, AttributeName, FoundString.RowIndex);
@@ -20344,11 +19551,11 @@ Procedure FillInHeaderAttributesCostCorrection(PrintInfo, Template, SpreadsheetD
 		
 	TemplateArea.Parameters.VendorPresentation = ElectronicDocumentsOverridable.CompaniesDescriptionFull(
 		PrintInfo.InfoAboutVendor,
-		"FullDescr,TIN,KPP,LegalAddress,PhoneNumbers,AccountNo,Bank,BIN");
+		"FullDescr,TIN,LegalAddress,PhoneNumbers,AccountNo,Bank,BIN");
 	
 	TemplateArea.Parameters.PayerPresentation = ElectronicDocumentsOverridable.CompaniesDescriptionFull(
 		PrintInfo.InfoAboutCustomer,
-		"FullDescr,TIN,KPP,LegalAddress,PhoneNumbers,AccountNo,Bank,BIN");
+		"FullDescr,TIN,LegalAddress,PhoneNumbers,AccountNo,Bank,BIN");
 		
 	SpreadsheetDocument.Put(TemplateArea);
 
@@ -20364,8 +19571,6 @@ Function GetConsignmentDataToPrint(ObjectString, ParseTree)
 	InfoAboutCounterparty = New Structure;
 	InfoAboutCounterparty.Insert("FullDescr",	GetParsedTreeStringAttributeValue(ParseTree, ObjectString, "Counterparty.FullDescr"));
 	InfoAboutCounterparty.Insert("TIN", 				GetParsedTreeStringAttributeValue(ParseTree, ObjectString, "Counterparty.TIN"));
-	InfoAboutCounterparty.Insert("KPP", 				GetParsedTreeStringAttributeValue(ParseTree, ObjectString, "Counterparty.KPP"));
-	InfoAboutCounterparty.Insert("CodeByOKPO",			GetParsedTreeStringAttributeValue(ParseTree, ObjectString, "Counterparty.OKPO"));
 	InfoAboutCounterparty.Insert("LegalAddress",	GetParsedTreeStringAttributeValue(ParseTree, ObjectString, "Counterparty.LegalAddress_Presentation"));
 	InfoAboutCounterparty.Insert("ActualAddress",	GetParsedTreeStringAttributeValue(ParseTree, ObjectString, "Counterparty.ActualAddress_Presentation"));
 	InfoAboutCounterparty.Insert("AccountNo",			GetParsedTreeStringAttributeValue(ParseTree, ObjectString, "CounterpartyBankAcc.AccountNumber"));
@@ -20377,8 +19582,6 @@ Function GetConsignmentDataToPrint(ObjectString, ParseTree)
 	InformationAboutCompany = New Structure;
 	InformationAboutCompany.Insert("FullDescr",	GetParsedTreeStringAttributeValue(ParseTree, ObjectString, "Company.FullDescr"));
 	InformationAboutCompany.Insert("TIN", 				GetParsedTreeStringAttributeValue(ParseTree, ObjectString, "Company.TIN"));
-	InformationAboutCompany.Insert("KPP", 				GetParsedTreeStringAttributeValue(ParseTree, ObjectString, "Company.KPP"));
-	InformationAboutCompany.Insert("CodeByOKPO", 			GetParsedTreeStringAttributeValue(ParseTree, ObjectString, "Company.OKPO"));
 	InformationAboutCompany.Insert("LegalAddress",	GetParsedTreeStringAttributeValue(ParseTree, ObjectString, "Company.LegalAddress_Presentation"));
 	InformationAboutCompany.Insert("ActualAddress",	GetParsedTreeStringAttributeValue(ParseTree, ObjectString, "Company.ActualAddress_Presentation"));
 	InformationAboutCompany.Insert("AccountNo",			GetParsedTreeStringAttributeValue(ParseTree, ObjectString, "CompanyBankAcc.AccountNumber"));
@@ -20413,8 +19616,6 @@ Function GetConsignmentDataToPrint(ObjectString, ParseTree)
 	InfoAboutShipper = New Structure;
 	InfoAboutShipper.Insert("FullDescr", GetParsedTreeStringAttributeValue(ParseTree, ObjectString, "Consignor.FullDescr"));
 	InfoAboutShipper.Insert("TIN", 				 GetParsedTreeStringAttributeValue(ParseTree, ObjectString, "Consignor.TIN"));
-	InfoAboutShipper.Insert("KPP", 				 GetParsedTreeStringAttributeValue(ParseTree, ObjectString, "Consignor.KPP"));
-	InfoAboutShipper.Insert("CodeByOKPO", 		 GetParsedTreeStringAttributeValue(ParseTree, ObjectString, "Consignor.OKPO"));
 	InfoAboutShipper.Insert("LegalAddress",	 GetParsedTreeStringAttributeValue(ParseTree, ObjectString, "Consignor.LegalAddress_Presentation"));
 	InfoAboutShipper.Insert("ActualAddress",	 GetParsedTreeStringAttributeValue(ParseTree, ObjectString, "Consignor.ActualAddress_Presentation"));
 	InfoAboutShipper.Insert("AccountNo",		 GetParsedTreeStringAttributeValue(ParseTree, ObjectString, "ConsignorBankAccount.AccountNumber"));
@@ -20428,8 +19629,6 @@ Function GetConsignmentDataToPrint(ObjectString, ParseTree)
 	InfoAboutConsignee = New Structure;
 	InfoAboutConsignee.Insert("FullDescr",	GetParsedTreeStringAttributeValue(ParseTree, ObjectString, "Consignee.FullDescr"));
 	InfoAboutConsignee.Insert("TIN", 			   	GetParsedTreeStringAttributeValue(ParseTree, ObjectString, "Consignee.TIN"));
-	InfoAboutConsignee.Insert("KPP", 			   	GetParsedTreeStringAttributeValue(ParseTree, ObjectString, "Consignee.KPP"));
-	InfoAboutConsignee.Insert("CodeByOKPO", 		 	GetParsedTreeStringAttributeValue(ParseTree, ObjectString, "Consignee.OKPO"));
 	InfoAboutConsignee.Insert("LegalAddress",	GetParsedTreeStringAttributeValue(ParseTree, ObjectString, "Consignee.LegalAddress_Presentation"));
 	InfoAboutConsignee.Insert("ActualAddress",	GetParsedTreeStringAttributeValue(ParseTree, ObjectString, "Consignee.ActualAddress_Presentation"));
 	InfoAboutConsignee.Insert("AccountNo",		 	GetParsedTreeStringAttributeValue(ParseTree, ObjectString, "ConsigneeBankAccount.AccountNumber"));
@@ -20779,19 +19978,19 @@ Procedure FillHeaderAttributesTORG12(PrintInfo, Template, SpreadsheetDocument)
 	
 	TemplateArea.Parameters.CompanyPresentation = ElectronicDocumentsOverridable.CompaniesDescriptionFull(
 		PrintInfo.InfoAboutShipper,
-		"FullDescr,TIN,KPP,ActualAddress,PhoneNumbers,AccountNo,Bank,BIN,CorrAccount");
+		"FullDescr,TIN,ActualAddress,PhoneNumbers,AccountNo,Bank,BIN,CorrAccount");
 	
 	TemplateArea.Parameters.PresentationOfConsignee = ElectronicDocumentsOverridable.CompaniesDescriptionFull(
 		PrintInfo.InfoAboutConsignee,
-		"FullDescr,TIN,KPP,ActualAddress,PhoneNumbers,AccountNo,Bank,BIN,CorrAccount");
+		"FullDescr,TIN,ActualAddress,PhoneNumbers,AccountNo,Bank,BIN,CorrAccount");
 		
 	TemplateArea.Parameters.VendorPresentation = ElectronicDocumentsOverridable.CompaniesDescriptionFull(
 		PrintInfo.InfoAboutVendor,
-		"FullDescr,TIN,KPP,LegalAddress,PhoneNumbers,AccountNo,Bank,BIN");
+		"FullDescr,TIN,LegalAddress,PhoneNumbers,AccountNo,Bank,BIN");
 	
 	TemplateArea.Parameters.PayerPresentation = ElectronicDocumentsOverridable.CompaniesDescriptionFull(
 		PrintInfo.InfoAboutCustomer,
-		"FullDescr,TIN,KPP,LegalAddress,PhoneNumbers,AccountNo,Bank,BIN");
+		"FullDescr,TIN,LegalAddress,PhoneNumbers,AccountNo,Bank,BIN");
 		
 	TemplateArea.Parameters.ShippingAddress = PrintInfo.ShippingAddress;
 	
@@ -20881,10 +20080,6 @@ Function GetOrderBillDataToPrint(ObjectString, ParseTree, Type = "Account")
 		ObjectString, "Counterparty.FullDescr"));
 	InfoAboutCounterparty.Insert("TIN",                GetParsedTreeStringAttributeValue(ParseTree,
 		ObjectString, "Counterparty.TIN"));
-	InfoAboutCounterparty.Insert("KPP",                GetParsedTreeStringAttributeValue(ParseTree,
-		ObjectString, "Counterparty.KPP"));
-	InfoAboutCounterparty.Insert("CodeByOKPO",          GetParsedTreeStringAttributeValue(ParseTree,
-		ObjectString, "Counterparty.OKPO"));
 	InfoAboutCounterparty.Insert("LegalAddress",   GetParsedTreeStringAttributeValue(ParseTree,
 		ObjectString, "Counterparty.LegalAddress_Presentation"));
 	InfoAboutCounterparty.Insert("ActualAddress",   GetParsedTreeStringAttributeValue(ParseTree,
@@ -20901,10 +20096,6 @@ Function GetOrderBillDataToPrint(ObjectString, ParseTree, Type = "Account")
 		ObjectString, "Company.FullDescr"));
 	InformationAboutCompany.Insert("TIN",                GetParsedTreeStringAttributeValue(ParseTree,
 		ObjectString, "Company.TIN"));
-	InformationAboutCompany.Insert("KPP",                GetParsedTreeStringAttributeValue(ParseTree,
-		ObjectString, "Company.KPP"));
-	InformationAboutCompany.Insert("CodeByOKPO",          GetParsedTreeStringAttributeValue(ParseTree,
-		ObjectString, "Company.OKPO"));
 	InformationAboutCompany.Insert("LegalAddress",   GetParsedTreeStringAttributeValue(ParseTree,
 		ObjectString, "Company.LegalAddress_Presentation"));
 	InformationAboutCompany.Insert("ActualAddress",   GetParsedTreeStringAttributeValue(ParseTree,
@@ -21412,7 +20603,6 @@ Procedure FillHeaderAttributesInvoiceOrder(PrintInfo, Template, SpreadsheetDocum
 		EndIf;
 		
 		TemplateArea.Parameters.TIN = InfoAboutVendor.TIN;
-		TemplateArea.Parameters.KPP = InfoAboutVendor.KPP;
 		
 		If ValueIsFilled(PrintInfo.Header.CorrespondentBank) Then
 			TemplateArea.Parameters.RecipientBankBIC               = PrintInfo.Header.BankBICCorrespondent;
@@ -21451,13 +20641,13 @@ Procedure FillHeaderAttributesInvoiceOrder(PrintInfo, Template, SpreadsheetDocum
 	
 	TemplateArea.Parameters.TextSupplier = ?(Type = "Account", NStr("en='Vendor:';ru='Поставщик:'"), NStr("en='Performer:';ru='Исполнитель:'"));
 	TemplateArea.Parameters.VendorPresentation = ElectronicDocumentsOverridable.CompaniesDescriptionFull(InfoAboutVendor,
-		"FullDescr,TIN,KPP,LegalAddress,PhoneNumbers,");
+		"FullDescr,TIN,LegalAddress,PhoneNumbers,");
 	SpreadsheetDocument.Put(TemplateArea);
 	
 	TemplateArea = Template.GetArea("Customer");
 	TemplateArea.Parameters.TextCustomer         = ?(Type = "Account", NStr("en='Customer:';ru='Покупатель:'"), NStr("en='Customer:';ru='Покупатель:'"));
 	TemplateArea.Parameters.RecipientPresentation = ElectronicDocumentsOverridable.CompaniesDescriptionFull(InfoAboutRecipient,
-		"FullDescr,TIN,KPP,LegalAddress,PhoneNumbers,");
+		"FullDescr,TIN,LegalAddress,PhoneNumbers,");
 	SpreadsheetDocument.Put(TemplateArea);
 	
 	If Type = "Account" Then
@@ -21511,8 +20701,6 @@ Function GetSupplierOrderDataToPrint(ObjectString, ParseTree)
 		ObjectString, "Company.FullDescr"));
 	InformationAboutCompany.Insert("TIN",                GetParsedTreeStringAttributeValue(ParseTree,
 		ObjectString, "Company.TIN"));
-	InformationAboutCompany.Insert("KPP",                GetParsedTreeStringAttributeValue(ParseTree,
-		ObjectString, "Company.KPP"));
 	InformationAboutCompany.Insert("LegalAddress",   GetParsedTreeStringAttributeValue(ParseTree,
 		ObjectString, "Company.LegalAddress_Presentation"));
 	
@@ -21527,8 +20715,6 @@ Function GetSupplierOrderDataToPrint(ObjectString, ParseTree)
 		ObjectString, "Counterparty.FullDescr"));
 	InfoAboutCounterparty.Insert("TIN",                GetParsedTreeStringAttributeValue(ParseTree,
 		ObjectString, "Counterparty.TIN"));
-	InfoAboutCounterparty.Insert("KPP",                GetParsedTreeStringAttributeValue(ParseTree,
-		ObjectString, "Counterparty.KPP"));
 	InfoAboutCounterparty.Insert("LegalAddress",   GetParsedTreeStringAttributeValue(ParseTree,
 		ObjectString, "Counterparty.LegalAddress_Presentation"));
 	
@@ -21679,11 +20865,11 @@ Procedure FillInTabularDocumentOrderToSupplier_ED(SpreadsheetDocument, PrintInfo
 	TemplateArea = Template.GetArea("Vendor");
 	
 	TemplateArea.Parameters.VendorPresentation = ElectronicDocumentsOverridable.CompaniesDescriptionFull(
-		PrintInfo.Header.InfoAboutVendor, "FullDescr,TIN,KPP,LegalAddress,PhoneNumbers,");
+		PrintInfo.Header.InfoAboutVendor, "FullDescr,TIN,LegalAddress,PhoneNumbers,");
 	SpreadsheetDocument.Put(TemplateArea);
 	TemplateArea = Template.GetArea("Customer");
 	TemplateArea.Parameters.RecipientPresentation = ElectronicDocumentsOverridable.CompaniesDescriptionFull(
-		PrintInfo.Header.InfoAboutCustomer, "FullDescr,TIN,KPP,LegalAddress,PhoneNumbers,");
+		PrintInfo.Header.InfoAboutCustomer, "FullDescr,TIN,LegalAddress,PhoneNumbers,");
 	SpreadsheetDocument.Put(TemplateArea);
 	
 	AreaAddressDelivery = Template.GetArea("ShippingAddress");
@@ -21896,8 +21082,6 @@ Function GetInvoiceDataToPrint(ObjectString, ParseTree)
 	InfoAboutCounterparty = New Structure;
 	InfoAboutCounterparty.Insert("FullDescr",	GetParsedTreeStringAttributeValue(ParseTree, ObjectString, "Counterparty.FullDescr"));
 	InfoAboutCounterparty.Insert("TIN", 				GetParsedTreeStringAttributeValue(ParseTree, ObjectString, "Counterparty.TIN"));
-	InfoAboutCounterparty.Insert("KPP", 				GetParsedTreeStringAttributeValue(ParseTree, ObjectString, "Counterparty.KPP"));
-	InfoAboutCounterparty.Insert("CodeByOKPO",			GetParsedTreeStringAttributeValue(ParseTree, ObjectString, "Counterparty.OKPO"));
 	InfoAboutCounterparty.Insert("LegalAddress",	GetParsedTreeStringAttributeValue(ParseTree, ObjectString, "Counterparty.LegalAddress_Presentation"));
 	InfoAboutCounterparty.Insert("ActualAddress",	GetParsedTreeStringAttributeValue(ParseTree, ObjectString, "Counterparty.ActualAddress_Presentation"));
 	InfoAboutCounterparty.Insert("AccountNo",			GetParsedTreeStringAttributeValue(ParseTree, ObjectString, "CounterpartyBankAcc.AccountNumber"));
@@ -21921,8 +21105,6 @@ Function GetInvoiceDataToPrint(ObjectString, ParseTree)
 	InformationAboutCompany = New Structure;
 	InformationAboutCompany.Insert("FullDescr",	GetParsedTreeStringAttributeValue(ParseTree, ObjectString, CompanyAttrName + ".FullDescr"));
 	InformationAboutCompany.Insert("TIN", 				GetParsedTreeStringAttributeValue(ParseTree, ObjectString, CompanyAttrName + ".TIN"));
-	InformationAboutCompany.Insert("KPP", 				GetParsedTreeStringAttributeValue(ParseTree, ObjectString, CompanyAttrName + ".KPP"));
-	InformationAboutCompany.Insert("CodeByOKPO", 			GetParsedTreeStringAttributeValue(ParseTree, ObjectString, CompanyAttrName + ".OKPO"));
 	InformationAboutCompany.Insert("LegalAddress",	GetParsedTreeStringAttributeValue(ParseTree, ObjectString, CompanyAttrName + ".LegalAddress_Display"));
 	InformationAboutCompany.Insert("ActualAddress",	GetParsedTreeStringAttributeValue(ParseTree, ObjectString, CompanyAttrName + ".ActualAddress_Display"));
 	InformationAboutCompany.Insert("AccountNo",			GetParsedTreeStringAttributeValue(ParseTree, ObjectString, BankAccountName + ".AccountNo"));
@@ -21958,8 +21140,7 @@ Function GetInvoiceDataToPrint(ObjectString, ParseTree)
 	FillingDataHeader.Insert("VendorAddress", "Address: " + FillingDataHeader.InfoAboutVendor.LegalAddress);
 	
 	TIN = FillingDataHeader.InfoAboutVendor.TIN;
-	KPP = FillingDataHeader.InfoAboutVendor.KPP;
-	FillingDataHeader.Insert("VendorTIN", NStr("en='TIN/KPP seller:';ru='TIN/KPP seller:'") + " " + TIN + ?(ValueIsFilled(KPP), "/" + KPP, ""));
+	FillingDataHeader.Insert("VendorTIN", NStr("en='TIN seller:';ru='TIN seller:'") + " " + TIN);
 	
 	If ValueIsFilled(InfoAboutShipper.FullDescr) Then
 		FillingDataHeader.Insert("PresentationOfShipper", NStr("en='Consignor and its address:';ru='Грузоотправитель и его адрес:'") + " "
@@ -21983,8 +21164,7 @@ Function GetInvoiceDataToPrint(ObjectString, ParseTree)
 	FillingDataHeader.Insert("CustomerAddress", NStr("en='Address:';ru='Адрес:'") + " "+ FillingDataHeader.InfoAboutCustomer.LegalAddress);
 	
 	TIN = FillingDataHeader.InfoAboutCustomer.TIN;
-	KPP = FillingDataHeader.InfoAboutCustomer.KPP;
-	FillingDataHeader.Insert("TINOfHBuyer", NStr("en='TIN/KPP customer:';ru='TIN/KPP customer:'") + " "  + TIN + ?(ValueIsFilled(KPP), "/" + KPP, ""));
+	FillingDataHeader.Insert("TINOfHBuyer", NStr("en='TIN customer:';ru='TIN customer:'") + " "  + TIN);
 	
 	CurrencyCode = GetParsedTreeStringAttributeValue(ParseTree, ObjectString, "CurCode");
 	TextCurrency = StringFunctionsClientServer.SubstituteParametersInString(NStr("en='Currency: code %1';ru='Валюта: код %1'"), CurrencyCode);
@@ -22054,128 +21234,6 @@ Function GetInvoiceDataToPrint(ObjectString, ParseTree)
 	
 EndFunction
 
-// Procedure populates the tabular document "Invoice".
-//
-Procedure FillInTabularDocumentInvoice_ED(SpreadsheetDocument, PrintInfo)
-	
-	Template = Catalogs.EDAttachedFiles.GetTemplate("ED_CustomerInvoiceNote1137");
-	
-	TableHeader = Template.GetArea("Header");
-	TableHeader.Parameters.Fill(PrintInfo.Header);
-	SpreadsheetDocument.Put(TableHeader);
-	
-	// Display table title.
-	TableTitle = Template.GetArea("TableTitle|TableMainData");
-	SpreadsheetDocument.Put(TableTitle);
-	RowData = StructureStringData(1);
-	
-	// Create array to check output.
-	OutputedAreasArray = New Array;
-	
-	// Display multiline part of the document.
-	TemplateArea  = Template.GetArea("Row|TableMainData");
-	AreaTotalAmount   = Template.GetArea("Total");
-	FooterArea = Template.GetArea("Footer");
-	
-	AdditDataTree = Undefined;
-	If PrintInfo.Property("AdditDataTree", AdditDataTree) AND TypeOf(AdditDataTree) <> Type("ValueTree") Then
-		AdditDataTree = Undefined;
-	EndIf;
-	
-	AdditDataTableRows = New ValueTable;
-	AdditDataTableRows.Columns.Add("NumberStr");
-	AdditDataTableRows.Columns.Add("DigitallySignedData");
-	AdditDataTableRows.Columns.Add("UnDigitallySignedData");
-	
-	AdditDataExistanceStructure = GenerateStringsAdditData(AdditDataTree, "Products", AdditDataTableRows);
-	
-	If AdditDataTableRows.Count() > 0 Then
-		AreaTitleTablesDD = Template.GetArea("TableHeader|TableAdditData");
-		AreaTemplateDD           = Template.GetArea("Row|TableAdditData");
-		AreaTableTitleDDSES = Template.GetArea("TableTitle|TableWithEDSAdditData");
-		DDSESTemplateArea           = Template.GetArea("Row|TableWithEDSAdditData");
-		AreaTableTitleDDBWithoutES = Template.GetArea("TableTitle|TableWithoutEDSAdditData");
-		TemplateAreaDDWithoutES           = Template.GetArea("Row|TableWithoutEDSAdditData");
-		If AdditDataExistanceStructure.AreDigitallySigned AND AdditDataExistanceStructure.AreNotDigitallySigned Then
-			SpreadsheetDocument.Join(AreaTitleTablesDD);
-		Else
-			If AdditDataExistanceStructure.AreDigitallySigned Then
-				SpreadsheetDocument.Join(AreaTableTitleDDSES);
-			EndIf;
-			If AdditDataExistanceStructure.AreNotDigitallySigned Then
-				SpreadsheetDocument.Join(AreaTableTitleDDBWithoutES);
-			EndIf;
-		EndIf;
-	EndIf;
-	
-	Products = PrintInfo.Products;
-	LineCount = Products.Count();
-	For Each ProductsRow IN Products Do
-		
-		RowData.Number = RowData.Number + 1;
-		
-		OutputedAreasArray.Clear();
-		OutputedAreasArray.Add(TemplateArea);
-		
-		If RowData.Number = LineCount Then
-			OutputedAreasArray.Add(AreaTotalAmount);
-			OutputedAreasArray.Add(FooterArea);
-		EndIf;
-		
-		If Not SpreadsheetDocumentFitsPage(SpreadsheetDocument, OutputedAreasArray) Then
-			SpreadsheetDocument.PutHorizontalPageBreak();
-			SpreadsheetDocument.Put(TableTitle);
-			If AdditDataExistanceStructure.AreDigitallySigned AND AdditDataExistanceStructure.AreNotDigitallySigned Then
-				SpreadsheetDocument.Join(AreaTitleTablesDD);
-			Else
-				If AdditDataExistanceStructure.AreDigitallySigned Then
-					SpreadsheetDocument.Join(AreaTableTitleDDSES);
-				EndIf;
-				If AdditDataExistanceStructure.AreNotDigitallySigned Then
-					SpreadsheetDocument.Join(AreaTableTitleDDBWithoutES);
-				EndIf;
-			EndIf;
-		EndIf;
-		
-		If ProductsRow.CountryOfOriginCode = "643" Then
-			ProductsRow.CountryOfOriginCode = "--";
-		EndIf;
-		
-		TemplateArea.Parameters.Fill(ProductsRow);
-		
-		PutDashesInRowEmptyFieldsInvoice(TemplateArea);
-		SpreadsheetDocument.Put(TemplateArea);
-		If AdditDataTableRows.Count() > 0 Then
-			ADTableString = AdditDataTableRows.Find(String(RowData.Number), "NumberStr");
-			If ADTableString <> Undefined Then
-				If AdditDataExistanceStructure.AreDigitallySigned AND AdditDataExistanceStructure.AreNotDigitallySigned Then
-					AreaTemplateDD.Parameters.DigitallySigned = ADTableString.DigitallySignedData;
-					AreaTemplateDD.Parameters.Unsigned = ADTableString.UnDigitallySignedData;
-					SpreadsheetDocument.Join(AreaTemplateDD);
-				Else
-					If AdditDataExistanceStructure.AreDigitallySigned Then
-						DDSESTemplateArea.Parameters.DigitallySigned = ADTableString.DigitallySignedData;
-						SpreadsheetDocument.Join(DDSESTemplateArea);
-					EndIf;
-					If AdditDataExistanceStructure.AreNotDigitallySigned Then
-						TemplateAreaDDWithoutES.Parameters.Unsigned = ADTableString.UnDigitallySignedData;
-						SpreadsheetDocument.Join(TemplateAreaDDWithoutES);
-					EndIf;
-				EndIf;
-			EndIf;
-		EndIf;
-		
-	EndDo;
-	
-	AreaTotalAmount.Parameters.Fill(PrintInfo.Header);
-	SpreadsheetDocument.Put(AreaTotalAmount);
-	FooterArea.Parameters.Fill(PrintInfo.Header);
-	SpreadsheetDocument.Put(FooterArea);
-	
-	FillHeaderAdditData(AdditDataTree, Template, SpreadsheetDocument);
-	
-EndProcedure
-
 ////////////////////////////////////////////////////////////////////////////////
 // Work with CORRECTION INVOICE
 
@@ -22206,8 +21264,6 @@ Function GetCorrectiveInvoiceNoteDataToPrint(ObjectString, ParseTree)
 	InfoAboutCounterparty = New Structure;
 	InfoAboutCounterparty.Insert("FullDescr",	GetParsedTreeStringAttributeValue(ParseTree, ObjectString, "Counterparty.FullDescr"));
 	InfoAboutCounterparty.Insert("TIN", 				GetParsedTreeStringAttributeValue(ParseTree, ObjectString, "Counterparty.TIN"));
-	InfoAboutCounterparty.Insert("KPP", 				GetParsedTreeStringAttributeValue(ParseTree, ObjectString, "Counterparty.KPP"));
-	InfoAboutCounterparty.Insert("CodeByOKPO",			GetParsedTreeStringAttributeValue(ParseTree, ObjectString, "Counterparty.OKPO"));
 	InfoAboutCounterparty.Insert("LegalAddress",	GetParsedTreeStringAttributeValue(ParseTree, ObjectString, "Counterparty.LegalAddress_Presentation"));
 	InfoAboutCounterparty.Insert("ActualAddress",	GetParsedTreeStringAttributeValue(ParseTree, ObjectString, "Counterparty.ActualAddress_Presentation"));
 	InfoAboutCounterparty.Insert("AccountNo",			GetParsedTreeStringAttributeValue(ParseTree, ObjectString, "CounterpartyBankAcc.AccountNumber"));
@@ -22231,8 +21287,6 @@ Function GetCorrectiveInvoiceNoteDataToPrint(ObjectString, ParseTree)
 	InformationAboutCompany = New Structure;
 	InformationAboutCompany.Insert("FullDescr",	GetParsedTreeStringAttributeValue(ParseTree, ObjectString, CompanyAttrName + ".FullDescr"));
 	InformationAboutCompany.Insert("TIN", 				GetParsedTreeStringAttributeValue(ParseTree, ObjectString, CompanyAttrName + ".TIN"));
-	InformationAboutCompany.Insert("KPP", 				GetParsedTreeStringAttributeValue(ParseTree, ObjectString, CompanyAttrName + ".KPP"));
-	InformationAboutCompany.Insert("CodeByOKPO", 			GetParsedTreeStringAttributeValue(ParseTree, ObjectString, CompanyAttrName + ".OKPO"));
 	InformationAboutCompany.Insert("LegalAddress",	GetParsedTreeStringAttributeValue(ParseTree, ObjectString, CompanyAttrName + ".LegalAddress_Display"));
 	InformationAboutCompany.Insert("ActualAddress",	GetParsedTreeStringAttributeValue(ParseTree, ObjectString, CompanyAttrName + ".ActualAddress_Display"));
 	InformationAboutCompany.Insert("AccountNo",			GetParsedTreeStringAttributeValue(ParseTree, ObjectString, BankAccountName +".AccountNo"));
@@ -22252,15 +21306,13 @@ Function GetCorrectiveInvoiceNoteDataToPrint(ObjectString, ParseTree)
 	FillingDataHeader.Insert("VendorAddress", "Address: " + FillingDataHeader.InfoAboutVendor.LegalAddress);
 		
 	TIN = FillingDataHeader.InfoAboutVendor.TIN;
-	KPP = FillingDataHeader.InfoAboutVendor.KPP;
-	FillingDataHeader.Insert("VendorTIN", "TIN/KPP seller: " + TIN + ?(ValueIsFilled(KPP), "/" + KPP, ""));
+	FillingDataHeader.Insert("VendorTIN", "TIN seller: " + TIN);
 	
 	FillingDataHeader.Insert("CustomerPresentation","Customer: " + FillingDataHeader.InfoAboutCustomer.FullDescr);
 	FillingDataHeader.Insert("CustomerAddress", "Address: " + FillingDataHeader.InfoAboutCustomer.LegalAddress);
 		
 	TIN = FillingDataHeader.InfoAboutCustomer.TIN;
-	KPP = FillingDataHeader.InfoAboutCustomer.KPP;
-	FillingDataHeader.Insert("TINOfHBuyer", "TIN/KPP customer: " + TIN + ?(ValueIsFilled(KPP), "/" + KPP, ""));
+	FillingDataHeader.Insert("TINOfHBuyer", "TIN customer: " + TIN);
 	
 	CurrencyCode = GetParsedTreeStringAttributeValue(ParseTree, ObjectString, "CurCode");
 	TextCurrency = StringFunctionsClientServer.SubstituteParametersInString("Currency: code %1", CurrencyCode);
@@ -22489,7 +21541,6 @@ Function GetCorrectingDocumentDataToPrint(ObjectString, ParseTree)
 	InfoAboutCounterparty = New Structure;
 	InfoAboutCounterparty.Insert("FullDescr",	GetParsedTreeStringAttributeValue(ParseTree, ObjectString, "Counterparty.FullDescr"));
 	InfoAboutCounterparty.Insert("TIN", 				GetParsedTreeStringAttributeValue(ParseTree, ObjectString, "Counterparty.TIN"));
-	InfoAboutCounterparty.Insert("CodeByOKPO",			GetParsedTreeStringAttributeValue(ParseTree, ObjectString, "Counterparty.OKPO"));
 	InfoAboutCounterparty.Insert("LegalAddress",	GetParsedTreeStringAttributeValue(ParseTree, ObjectString, "Counterparty.LegalAddress_Presentation"));
 	InfoAboutCounterparty.Insert("ActualAddress",	GetParsedTreeStringAttributeValue(ParseTree, ObjectString, "Counterparty.ActualAddress_Presentation"));
 	InfoAboutCounterparty.Insert("AccountNo",			GetParsedTreeStringAttributeValue(ParseTree, ObjectString, "CounterpartyBankAcc.AccountNumber"));
@@ -22508,7 +21559,6 @@ Function GetCorrectingDocumentDataToPrint(ObjectString, ParseTree)
 	InformationAboutCompany = New Structure;
 	InformationAboutCompany.Insert("FullDescr",	GetParsedTreeStringAttributeValue(ParseTree, ObjectString, "Company.FullDescr"));
 	InformationAboutCompany.Insert("TIN", 				GetParsedTreeStringAttributeValue(ParseTree, ObjectString, "Company.TIN"));
-	InformationAboutCompany.Insert("CodeByOKPO", 			GetParsedTreeStringAttributeValue(ParseTree, ObjectString, "Company.OKPO"));
 	InformationAboutCompany.Insert("LegalAddress",	GetParsedTreeStringAttributeValue(ParseTree, ObjectString, "Company.LegalAddress_Presentation"));
 	InformationAboutCompany.Insert("ActualAddress",	GetParsedTreeStringAttributeValue(ParseTree, ObjectString, "Company.ActualAddress_Presentation"));
 	InformationAboutCompany.Insert("AccountNo",			GetParsedTreeStringAttributeValue(ParseTree, ObjectString, "CompanyBankAcc.AccountNumber"));
@@ -22527,7 +21577,6 @@ Function GetCorrectingDocumentDataToPrint(ObjectString, ParseTree)
 	InfoAboutShipper = New Structure;
 	InfoAboutShipper.Insert("FullDescr", GetParsedTreeStringAttributeValue(ParseTree, ObjectString, "Consignor.FullDescr"));
 	InfoAboutShipper.Insert("TIN", 				 GetParsedTreeStringAttributeValue(ParseTree, ObjectString, "Consignor.TIN"));
-	InfoAboutShipper.Insert("CodeByOKPO", 		 GetParsedTreeStringAttributeValue(ParseTree, ObjectString, "Consignor.OKPO"));
 	InfoAboutShipper.Insert("LegalAddress",	 GetParsedTreeStringAttributeValue(ParseTree, ObjectString, "Consignor.LegalAddress_Presentation"));
 	InfoAboutShipper.Insert("ActualAddress",	 GetParsedTreeStringAttributeValue(ParseTree, ObjectString, "Consignor.ActualAddress_Presentation"));
 	InfoAboutShipper.Insert("AccountNo",		 GetParsedTreeStringAttributeValue(ParseTree, ObjectString, "ConsignorBankAccount.AccountNumber"));
@@ -22541,7 +21590,6 @@ Function GetCorrectingDocumentDataToPrint(ObjectString, ParseTree)
 	InfoAboutConsignee = New Structure;
 	InfoAboutConsignee.Insert("FullDescr",	GetParsedTreeStringAttributeValue(ParseTree, ObjectString, "Consignee.FullDescr"));
 	InfoAboutConsignee.Insert("TIN", 			   	GetParsedTreeStringAttributeValue(ParseTree, ObjectString, "Consignee.TIN"));
-	InfoAboutConsignee.Insert("CodeByOKPO", 		 	GetParsedTreeStringAttributeValue(ParseTree, ObjectString, "Consignee.OKPO"));
 	InfoAboutConsignee.Insert("LegalAddress",	GetParsedTreeStringAttributeValue(ParseTree, ObjectString, "Consignee.LegalAddress_Presentation"));
 	InfoAboutConsignee.Insert("ActualAddress",	GetParsedTreeStringAttributeValue(ParseTree, ObjectString, "Consignee.ActualAddress_Presentation"));
 	InfoAboutConsignee.Insert("AccountNo",		 	GetParsedTreeStringAttributeValue(ParseTree, ObjectString, "ConsigneeBankAccount.AccountNumber"));
@@ -22553,12 +21601,9 @@ Function GetCorrectingDocumentDataToPrint(ObjectString, ParseTree)
 	FillingDataHeader.Insert("InfoAboutConsignee", InfoAboutConsignee);
 	
 	FillingDataHeader.Insert("DepartmentsPresentation", GetParsedTreeStringAttributeValue(ParseTree, ObjectString, "Consignor.StructuralDepartment"));
-	FillingDataHeader.Insert("CompanyByOKPO", 		 FillingDataHeader.InfoAboutVendor.CodeByOKPO);
 	
 	FillingDataHeader.Insert("VendorPresentation",	GetParsedTreeStringAttributeValue(ParseTree, ObjectString, "Counterparty.Name"));
-	FillingDataHeader.Insert("VendorByOKPO",			GetParsedTreeStringAttributeValue(ParseTree, ObjectString, "Counterparty.OKPO"));
 	FillingDataHeader.Insert("PayerPresentation",	"");
-	FillingDataHeader.Insert("PayerByRCEO",			FillingDataHeader.InfoAboutCustomer.CodeByOKPO);
 
 	FillingDataHeader.Insert("BasisNumber", GetParsedTreeStringAttributeValue(ParseTree, ObjectString, "NumberByCustomerData"));
 	FillingDataHeader.Insert("BasisDate", GetParsedTreeStringAttributeValue(ParseTree, ObjectString, "DateByCustomerData"));
@@ -22978,10 +22023,9 @@ Function DataStructureCounterparty(ObjectString, ParseTree, ParticipantType, Ban
 	Structure.Insert("Presentation", 	?(ValueIsFilled(Description), Description, FullDescr));
 	Structure.Insert("FullDescr",?(ValueIsFilled(FullDescr), FullDescr, Description));
 	Structure.Insert("TIN",				GetParsedTreeStringAttributeValue(ParseTree, ObjectString, ParticipantType + ".TIN"));
-	Structure.Insert("KPP",				GetParsedTreeStringAttributeValue(ParseTree, ObjectString, ParticipantType + ".KPP"));
 	Structure.Insert("LegalAddress",	GetParsedTreeStringAttributeValue(ParseTree, ObjectString, ParticipantType + ".LegalAddress_Display"));
 	Structure.Insert("ActualAddress",	GetParsedTreeStringAttributeValue(ParseTree, ObjectString, ParticipantType + ".ActualAddress_Display"));
-	Kind = ElectronicDocumentsOverridable.FindRefToObject("ContactInformationTypes","CounterpartyPhone");
+	Kind = ElectronicDocumentsOverridable.FindRefToObject("ContactInformationKinds","CounterpartyPhone");
 	If ValueIsFilled(Kind) Then
 		Structure.Insert("PhoneNumbers",			GetParsedTreeStringAttributeValue(ParseTree, ObjectString, ParticipantType + "." + Kind));
 	EndIf;
@@ -23181,15 +22225,15 @@ Procedure FillSpreadsheetDocumentDeedOfAssignment(SpreadsheetDocument, PrintInfo
 	
 	TemplateArea.Parameters.PresentationLicensor = ElectronicDocumentsOverridable.CompaniesDescriptionFull(
 		Header.InfoAboutLicensor,
-		"FullDescr,TIN,KPP,ActualAddress,PhoneNumbers,AccountNo,Bank,BIN,CorrAccount");
+		"FullDescr,TIN,ActualAddress,PhoneNumbers,AccountNo,Bank,BIN,CorrAccount");
 	
 	TemplateArea.Parameters.PresentationLicensee = ElectronicDocumentsOverridable.CompaniesDescriptionFull(
 		Header.InfoAboutLicensee,
-		"FullDescr,TIN,KPP,ActualAddress,PhoneNumbers,AccountNo,Bank,BIN,CorrAccount");
+		"FullDescr,TIN,ActualAddress,PhoneNumbers,AccountNo,Bank,BIN,CorrAccount");
 	
 	TemplateArea.Parameters.PayerPresentation = ElectronicDocumentsOverridable.CompaniesDescriptionFull(
 		Header.InfoAboutPayer,
-		"FullDescr,TIN,KPP,LegalAddress,PhoneNumbers,AccountNo,Bank,BIN");
+		"FullDescr,TIN,LegalAddress,PhoneNumbers,AccountNo,Bank,BIN");
 		
 	If ValueIsFilled(Header.TransferConditions) Then
 		TemplateArea.Areas.TransferConditionsArea.Text = Header.TransferConditions;
@@ -23323,8 +22367,6 @@ Function GetGoodsListDataToPrint(ObjectString, ParseTree)
 		ObjectString, "Counterparty.OfficialName"));
 	InfoAboutVendor.Insert("TIN", GetParsedTreeStringAttributeValue(ParseTree, ObjectString,
 		"Counterparty.TIN"));
-	InfoAboutVendor.Insert("KPP", GetParsedTreeStringAttributeValue(ParseTree, ObjectString,
-		"Counterparty.KPP"));
 	
 	FillingDataHeader.Insert("InfoAboutVendor", InfoAboutVendor);
 	FillingDataHeader.Insert("GeneratingDate", GetParsedTreeStringAttributeValue(ParseTree,
@@ -23504,12 +22546,8 @@ Function GetAcceptanceCertificatesDataToPrint(ObjectString, ParseTree)
 	InfoAboutCounterparty = New Structure;
 	InfoAboutCounterparty.Insert("FullDescr", GetParsedTreeStringAttributeValue(ParseTree,
 		ObjectString, "Counterparty.FullDescr"));
-	InfoAboutCounterparty.Insert("KPP",                GetParsedTreeStringAttributeValue(ParseTree,
-		ObjectString, "Counterparty.KPP"));
 	InfoAboutCounterparty.Insert("TIN",                GetParsedTreeStringAttributeValue(ParseTree,
 		ObjectString, "Counterparty.TIN"));
-	InfoAboutCounterparty.Insert("CodeByOKPO",          GetParsedTreeStringAttributeValue(ParseTree,
-		ObjectString, "Counterparty.OKPO"));
 	InfoAboutCounterparty.Insert("LegalAddress",   GetParsedTreeStringAttributeValue(ParseTree,
 		ObjectString, "Counterparty.LegalAddress_Presentation"));
 	InfoAboutCounterparty.Insert("ActualAddress",   GetParsedTreeStringAttributeValue(ParseTree,
@@ -23534,10 +22572,6 @@ Function GetAcceptanceCertificatesDataToPrint(ObjectString, ParseTree)
 		"Company.FullDescr"));
 	InformationAboutCompany.Insert("TIN",                GetParsedTreeStringAttributeValue(ParseTree, ObjectString,
 		"Company.TIN"));
-	InformationAboutCompany.Insert("KPP",                GetParsedTreeStringAttributeValue(ParseTree, ObjectString,
-		"Company.KPP"));
-	InformationAboutCompany.Insert("CodeByOKPO",          GetParsedTreeStringAttributeValue(ParseTree, ObjectString,
-		"Company.OKPO"));
 	InformationAboutCompany.Insert("LegalAddress",   GetParsedTreeStringAttributeValue(ParseTree, ObjectString,
 		"Company.LegalAddress_Presentation"));
 	InformationAboutCompany.Insert("ActualAddress",   GetParsedTreeStringAttributeValue(ParseTree, ObjectString,
@@ -23737,9 +22771,6 @@ Procedure FillInTabularDocumentAcceptanceCertificate_ED(SpreadsheetDocument, Pri
 	TemplateArea.Parameters.PerformerPresentation = PrintInfo.Header.InfoAboutVendor.FullDescr;
 	TemplateArea.Parameters.PerformerLegAddress       = PrintInfo.Header.InfoAboutVendor.LegalAddress;
 	TemplateArea.Parameters.PerformerTIN           = PrintInfo.Header.InfoAboutVendor.TIN;
-	If ValueIsFilled(PrintInfo.Header.InfoAboutVendor.KPP) Then
-		TemplateArea.Parameters.PerformerKPP       = "Tax Registration Reason Code (KPP):  " + PrintInfo.Header.InfoAboutVendor.KPP;
-	EndIf;
 	TemplateArea.Parameters.PerformerBankAccount = PrintInfo.Header.InfoAboutVendor.BankAccount;
 	TemplateArea.Parameters.ExecutorBalancedAccount       = PrintInfo.Header.InfoAboutVendor.BalancedAccount;
 	TemplateArea.Parameters.AssigneeBank          = PrintInfo.Header.InfoAboutVendor.Bank;
@@ -23747,9 +22778,6 @@ Procedure FillInTabularDocumentAcceptanceCertificate_ED(SpreadsheetDocument, Pri
 	TemplateArea.Parameters.ConsumerPresentation   = PrintInfo.Header.InfoAboutCustomer.FullDescr;
 	TemplateArea.Parameters.ConsumerLegAddress         = PrintInfo.Header.InfoAboutCustomer.LegalAddress;
 	TemplateArea.Parameters.CustomerTIN             = PrintInfo.Header.InfoAboutCustomer.TIN;
-	If ValueIsFilled(PrintInfo.Header.InfoAboutCustomer.KPP) Then
-		TemplateArea.Parameters.KPPCustomer         = "Tax Registration Reason Code (KPP):  " + PrintInfo.Header.InfoAboutCustomer.KPP;
-	EndIf;
 	TemplateArea.Parameters.ConsumerBankAccount   = PrintInfo.Header.InfoAboutCustomer.BankAccount;
 	TemplateArea.Parameters.ConsumerBalancedAccount         = PrintInfo.Header.InfoAboutCustomer.BalancedAccount;
 	TemplateArea.Parameters.ConsumerBank            = PrintInfo.Header.InfoAboutCustomer.Bank;
@@ -23767,8 +22795,6 @@ Function GetAct501DataToPrint(ObjectString, ParseTree)
 	InfoAboutCounterparty = New Structure;
 	InfoAboutCounterparty.Insert("FullDescr", 
 								  GetParsedTreeStringAttributeValue(ParseTree, ObjectString, "Counterparty.FullDescr"));
-	InfoAboutCounterparty.Insert("KPP",
-								  GetParsedTreeStringAttributeValue(ParseTree, ObjectString, "Counterparty.KPP"));
 	InfoAboutCounterparty.Insert("TIN",
 								  GetParsedTreeStringAttributeValue(ParseTree, ObjectString, "Counterparty.TIN"));
 	LegalAddress = GetParsedTreeStringAttributeValue(ParseTree,
@@ -23802,8 +22828,6 @@ Function GetAct501DataToPrint(ObjectString, ParseTree)
 	InformationAboutCompany.Insert("FullDescr", FullDescr);
 	InformationAboutCompany.Insert("TIN",
 								  GetParsedTreeStringAttributeValue(ParseTree, ObjectString, "Company.TIN"));
-	InformationAboutCompany.Insert("KPP",
-								  GetParsedTreeStringAttributeValue(ParseTree, ObjectString, "Company.KPP"));
 	LegalAddress = GetParsedTreeStringAttributeValue(ParseTree,
 																	ObjectString,
 																	"Company.LegalAddress_Presentation");
@@ -24072,10 +23096,6 @@ Procedure FillTableDocumentAct501(SpreadsheetDocument, PrintInfo, ConsumerData)
 	AreaTemplatePerformer.Parameters.PerformerPresentation = PrintInfo.Header.InfoAboutVendor.FullDescr;
 	AreaTemplatePerformer.Parameters.PerformerLegAddress       = PrintInfo.Header.InfoAboutVendor.LegalAddress;
 	AreaTemplatePerformer.Parameters.PerformerTIN           = PrintInfo.Header.InfoAboutVendor.TIN;
-	If ValueIsFilled(PrintInfo.Header.InfoAboutVendor.KPP) Then
-		AreaTemplatePerformer.Parameters.PerformerKPP       = PrintInfo.Header.InfoAboutVendor.KPP;
-	EndIf;
-	
 	AreaTemplatePerformer.Parameters.PerformerBankAccount = PrintInfo.Header.InfoAboutVendor.BankAccount;
 	AreaTemplatePerformer.Parameters.AssigneeBank          = PrintInfo.Header.InfoAboutVendor.Bank;
 	AreaTemplatePerformer.Parameters.PerformerBIC           = PrintInfo.Header.InfoAboutVendor.BIN;
@@ -24096,9 +23116,6 @@ Procedure FillTableDocumentAct501(SpreadsheetDocument, PrintInfo, ConsumerData)
 	
 	TemplateArea.Parameters.ConsumerPresentation   = PrintInfo.Header.InfoAboutCustomer.FullDescr;
 	TemplateArea.Parameters.CustomerTIN             = PrintInfo.Header.InfoAboutCustomer.TIN;
-	If ValueIsFilled(PrintInfo.Header.InfoAboutCustomer.KPP) Then
-		TemplateArea.Parameters.KPPCustomer         = PrintInfo.Header.InfoAboutCustomer.KPP;
-	EndIf;
 	
 	TemplateArea.Parameters.ConsumerBankAccount = PrintInfo.Header.InfoAboutCustomer.BankAccount;
 	TemplateArea.Parameters.ConsumerBank          = PrintInfo.Header.InfoAboutCustomer.Bank;
@@ -24126,8 +23143,6 @@ Function GetReportDataAboutComissionGoodsSalesToPrint(ObjectString, ParseTree)
 		"Company.FullDescr"));
 	InfoAboutPrincipal.Insert("TIN",                GetParsedTreeStringAttributeValue(ParseTree, ObjectString,
 		"Company.TIN"));
-	InfoAboutPrincipal.Insert("CodeByOKPO",          GetParsedTreeStringAttributeValue(ParseTree, ObjectString,
-		"Company.OKPO"));
 	InfoAboutPrincipal.Insert("LegalAddress",   GetParsedTreeStringAttributeValue(ParseTree, ObjectString,
 		"Company.LegalAddress_Presentation"));
 	InfoAboutPrincipal.Insert("ActualAddress",   GetParsedTreeStringAttributeValue(ParseTree, ObjectString,
@@ -24144,8 +23159,6 @@ Function GetReportDataAboutComissionGoodsSalesToPrint(ObjectString, ParseTree)
 		ObjectString, "Counterparty.FullDescr"));
 	InfoAboutAgent.Insert("TIN",                GetParsedTreeStringAttributeValue(ParseTree,
 		ObjectString, "Counterparty.TIN"));
-	InfoAboutAgent.Insert("CodeByOKPO",          GetParsedTreeStringAttributeValue(ParseTree,
-		ObjectString, "Counterparty.OKPO"));
 	InfoAboutAgent.Insert("LegalAddress",   GetParsedTreeStringAttributeValue(ParseTree,
 		ObjectString, "Counterparty.LegalAddress_Presentation"));
 	InfoAboutAgent.Insert("ActualAddress",   GetParsedTreeStringAttributeValue(ParseTree,
@@ -24379,8 +23392,6 @@ Function GetReportDataAboutComissionGoodsWriteOffToPrint(ObjectString, ParseTree
 		ObjectString, "Company.FullDescr"));
 	InfoAboutPrincipal.Insert("TIN",                GetParsedTreeStringAttributeValue(ParseTree,
 		ObjectString, "Company.TIN"));
-	InfoAboutPrincipal.Insert("CodeByOKPO",          GetParsedTreeStringAttributeValue(ParseTree,
-		ObjectString, "Company.OKPO"));
 	InfoAboutPrincipal.Insert("LegalAddress",   GetParsedTreeStringAttributeValue(ParseTree,
 		ObjectString, "Company.LegalAddress_Presentation"));
 	InfoAboutPrincipal.Insert("ActualAddress",   GetParsedTreeStringAttributeValue(ParseTree,
@@ -24397,8 +23408,6 @@ Function GetReportDataAboutComissionGoodsWriteOffToPrint(ObjectString, ParseTree
 		ObjectString, "Counterparty.FullDescr"));
 	InfoAboutAgent.Insert("TIN",                GetParsedTreeStringAttributeValue(ParseTree,
 		ObjectString, "Counterparty.TIN"));
-	InfoAboutAgent.Insert("CodeByOKPO",          GetParsedTreeStringAttributeValue(ParseTree,
-		ObjectString, "Counterparty.OKPO"));
 	InfoAboutAgent.Insert("LegalAddress",   GetParsedTreeStringAttributeValue(ParseTree,
 		ObjectString, "Counterparty.LegalAddress_Presentation"));
 	InfoAboutAgent.Insert("ActualAddress",   GetParsedTreeStringAttributeValue(ParseTree,
@@ -24606,9 +23615,6 @@ Function GetCompanyDetailsForPrinting(ObjectString, ParseTree)
 	TIN = GetParsedTreeStringAttributeValue(ParseTree, ObjectString, "TIN");
 	CompanyAttributes.Insert("TIN", TIN);
 
-	KPP = GetParsedTreeStringAttributeValue(ParseTree, ObjectString, "KPP");
-	CompanyAttributes.Insert("KPP", KPP);
-	
 	OfficialName = GetParsedTreeStringAttributeValue(ParseTree, ObjectString, "OfficialName");
 	CompanyAttributes.Insert("OfficialName", OfficialName);
 	
@@ -24878,19 +23884,17 @@ Function GetEDExchangeParticipantData(ExchangeParticipant)
 	
 	If ExchangeParticipant.Properties().Get("SenLP") <> Undefined Then
 		
-		ReturnValue = ExchangeParticipant.SenLP.DescEnt + ", " + ExchangeParticipant.SenLP.TINLP + "/"
-			+ ExchangeParticipant.SenLP.KPP;
+		ReturnValue = ExchangeParticipant.SenLP.DescEnt + ", " + ExchangeParticipant.SenLP.TINLP;
 	ElsIf ExchangeParticipant.Properties().Get("RecLP") <> Undefined Then
 		
-		ReturnValue = ExchangeParticipant.RecLP.DescEnt + ", " + ExchangeParticipant.RecLP.TINLP + "/"
-			+ ExchangeParticipant.RecLP.KPP;
+		ReturnValue = ExchangeParticipant.RecLP.DescEnt + ", " + ExchangeParticipant.RecLP.TINLP;
 	ElsIf ExchangeParticipant.Properties().Get("SenIP") <> Undefined Then
 		
 		ReturnValue = TrimAll(ExchangeParticipant.SenIP.Initials.Surname + " " + ExchangeParticipant.SenIP.Initials.Name + " "
 			+ ExchangeParticipant.SenIP.Initials.Patronymic) + ", " + ExchangeParticipant.SenIP.TINInd;
 		ElsIf ExchangeParticipant.Properties().Get("LegalEntity") <> Undefined AND ExchangeParticipant.LegalEntity <> Undefined Then
 		
-		ReturnValue = ExchangeParticipant.LegalEntity.DescEnt + ", " + ExchangeParticipant.LegalEntity.TINLP + "/" + ExchangeParticipant.LegalEntity.KPP;
+		ReturnValue = ExchangeParticipant.LegalEntity.DescEnt + ", " + ExchangeParticipant.LegalEntity.TINLP;
 	ElsIf ExchangeParticipant.Properties().Get("CO") <> Undefined AND ExchangeParticipant.CO <> Undefined Then
 		
 		ReturnValue = TrimAll(ExchangeParticipant.CO.Initials.Surname + " " + ExchangeParticipant.CO.Initials.Name + " "
@@ -25145,8 +24149,6 @@ Procedure GenerateDataByEDFParticipant(EDFParticipant, Tree, ParticipantKindOfED
 		FillXDTOProperty(CounterpartyAttributes, "DescEnt", Attribute, True, ErrorText);
 		Attribute = TreeAttributeValue(Tree, ParticipantKindOfEDO + ".ParticipantType.LegalEntity.TIN");
 		FillXDTOProperty(CounterpartyAttributes, "TINLP", Attribute, True, ErrorText);
-		Attribute = TreeAttributeValue(Tree, ParticipantKindOfEDO + ".ParticipantType.LegalEntity.KPP");
-		FillXDTOProperty(CounterpartyAttributes, "KPP", Attribute, True, ErrorText);
 		FillXDTOProperty(EDFParticipant, "LegalEntity", CounterpartyAttributes, True, ErrorText);
 	EndIf;
 	
@@ -25340,7 +24342,7 @@ EndFunction
 Function PrepareDataByServiceDocument(ObjectReference, EDStructure, Tree)
 	
 	CommonUseED.FillTreeAttributeValue(Tree, "FileID", EDStructure.FileID);
-	CommonUseED.FillTreeAttributeValue(Tree, "ApplicationVersion", NStr("en='1C:Enterprise 8';ru='1С:Предприятие 8'"));
+	CommonUseED.FillTreeAttributeValue(Tree, "ApplicationVersion", NStr("en='1C:Enterprise 8';ru='1C:Enterprise 8'"));
 	CommonUseED.FillTreeAttributeValue(Tree, "Sender.EDFParticipantId", EDStructure.SenderID);
 	CommonUseED.FillTreeAttributeValue(Tree, "Recipient.EDFParticipantId", EDStructure.RecipientID);
 	If EDStructure.EDKind = Enums.EDKinds.CancellationOffer Then
@@ -25383,7 +24385,6 @@ Function PrepareDataByServiceDocument(ObjectReference, EDStructure, Tree)
 			Else
 				Path = "Recipient.ParticipantType.LegalEntity";
 				CommonUseED.FillTreeAttributeValue(Tree, Path + ".TIN", DataLegalIndividual.TIN);
-				CommonUseED.FillTreeAttributeValue(Tree, Path + ".KPP", DataLegalIndividual.KPP);
 				CommonUseED.FillTreeAttributeValue(Tree, Path + ".CompanyName", FullDescr);
 			EndIf;
 		EndIf;
@@ -25407,7 +24408,6 @@ Function PrepareDataByServiceDocument(ObjectReference, EDStructure, Tree)
 		Else
 			Path = "Sender.ParticipantType.LegalEntity";
 			CommonUseED.FillTreeAttributeValue(Tree, Path + ".TIN", DataLegalIndividual.TIN);
-			CommonUseED.FillTreeAttributeValue(Tree, Path + ".KPP", DataLegalIndividual.KPP);
 			CommonUseED.FillTreeAttributeValue(Tree, Path + ".CompanyName", FullDescr);
 		EndIf;
 		
@@ -26164,7 +25164,6 @@ Procedure ReadStatementXDTO(ED, ParseTree, NewED, Error)
 		EndIf;
 		
 		PaymentAttributes.Add(PaymentItem.PayerAttributes.PayerTIN, "PayerTIN");
-		PaymentAttributes.Add(PaymentItem.PayerAttributes.PayerKPP, "PayerKPP");
 		PaymentAttributes.Add(PaymentItem.PayerAttributes.PayerBank1, "PayerBankName");
 		PaymentAttributes.Add(PaymentItem.PayerAttributes.PayerBank2, "PayerBankCity");
 		PaymentAttributes.Add(PaymentItem.PayerAttributes.PayerBIC, "PayerBankBIC");
@@ -26194,7 +25193,6 @@ Procedure ReadStatementXDTO(ED, ParseTree, NewED, Error)
 		EndIf;
 		
 		PaymentAttributes.Add(PaymentItem.RecipientAttributes.PayeeTIN, "PayeeTIN");
-		PaymentAttributes.Add(PaymentItem.RecipientAttributes.PayeeKPP, "PayeeKPP");
 		PaymentAttributes.Add(PaymentItem.RecipientAttributes.PayeeBank1, "RecipientBankName");
 		PaymentAttributes.Add(PaymentItem.RecipientAttributes.PayeeBank2, "PayeeBankCity");
 		PaymentAttributes.Add(PaymentItem.RecipientAttributes.PayeeBIK, "PayeeBankBIC");
@@ -26315,7 +25313,6 @@ Procedure ReadPaymentOrderXDTO(ED, ParseTree, NewED, Error)
 		AddObjectHeaderAttribute(NewED, "PayerBankCorrAccount",     PayerAttributes.PayerBankAcc);
 	EndIf;
 	AddObjectHeaderAttribute(NewED, "PayerTIN",      PayerAttributes.PayerTIN);
-	AddObjectHeaderAttribute(NewED, "PayerKPP",      PayerAttributes.PayerKPP);
 	AddObjectHeaderAttribute(NewED, "PayerBalancedAccount",  PayerAttributes.PayerBalancedAccount);
 	AddObjectHeaderAttribute(NewED, "PayerBankAcc",     PayerAttributes.PayerAccount);
 	
@@ -26339,7 +25336,6 @@ Procedure ReadPaymentOrderXDTO(ED, ParseTree, NewED, Error)
 		AddObjectHeaderAttribute(NewED, "RecipientBankCorrAccount", RecipientAttributes.PayeeBankAcc);
 	EndIf;
 	AddObjectHeaderAttribute(NewED, "PayeeTIN", RecipientAttributes.PayeeTIN);
-	AddObjectHeaderAttribute(NewED, "PayeeKPP", RecipientAttributes.PayeeKPP);
 	AddObjectHeaderAttribute(NewED, "PayeeBalancedAccount", RecipientAttributes.PayeeBalancedAccount);
 	AddObjectHeaderAttribute(NewED, "PayeeBankAcc", RecipientAttributes.PayeeAccount);
 
@@ -26384,15 +25380,10 @@ Function GeneratePaymentOrderCML(DataTree)
 		PayerBankAcc = TreeAttributeValue(DataTree, "PayerDetails.BankAcc");
 		FillXDTOProperty(PayerAttributes, "PayerAccount", PayerBankAcc, True, ErrorText);
 		
-		PayerKPP = TreeAttributeValue(DataTree, "PayerDetails.KPP");
 		PaymentToBudget = TreeAttributeValue(DataTree, "PaymentsToBudget") = True;
 		
-		If Not ValueIsFilled(PayerKPP) AND PaymentToBudget Then
-			PayerKPP = "0";
-		EndIf;
-		
-		If PaymentToBudget OR (ValueIsFilled(PayerKPP) AND Not PayerKPP = "0") Then
-			FillXDTOProperty(PayerAttributes, "PayerKPP", PayerKPP, PaymentToBudget, ErrorText);
+		If PaymentToBudget Then
+			FillXDTOProperty(PayerAttributes, PaymentToBudget, ErrorText);
 		EndIf;
 		
 		PayerTIN = TreeAttributeValue(DataTree, "PayerDetails.TIN");
@@ -26430,16 +25421,6 @@ Function GeneratePaymentOrderCML(DataTree)
 
 		PayeeBankAcc = TreeAttributeValue(DataTree, "RecipientDetails.BankAcc");
 		FillXDTOProperty(RecipientAttributes, "PayeeAccount", PayeeBankAcc, True, ErrorText);
-		
-		PayeeKPP = TreeAttributeValue(DataTree, "RecipientAttributes.KPP");
-				
-		If Not ValueIsFilled(PayeeKPP) AND PaymentToBudget Then
-			PayeeKPP = "0";
-		EndIf;
-		
-		If PaymentToBudget OR (ValueIsFilled(PayeeKPP) AND Not PayeeKPP = "0") Then
-			FillXDTOProperty(RecipientAttributes, "PayeeKPP", PayeeKPP, PaymentToBudget, ErrorText);
-		EndIf;
 		
 		PayeeTIN = TreeAttributeValue(DataTree, "RecipientAttributes.TIN");
 		FillXDTOProperty(RecipientAttributes, "PayeeTIN", PayeeTIN, , ErrorText);
@@ -27485,9 +26466,6 @@ Procedure ReadExtractSberbankXDTO(ED, ParseTree, NewED, Error)
 				DocumentAttributes.Add(Document.DepartmentalInfo.docDate,      "DateIndicator");
 				DocumentAttributes.Add(Document.DepartmentalInfo.docNo,        "NumberIndicator");
 				DocumentAttributes.Add(Document.DepartmentalInfo.drawerStatus, "AuthorStatus");
-				DocumentAttributes.Add(Document.DepartmentalInfo.kpp102,       "PayerKPP");
-				DocumentAttributes.Add(Document.DepartmentalInfo.kpp103,       "PayeeKPP");
-				DocumentAttributes.Add(Document.DepartmentalInfo.okato,        "OKATOCode");
 				DocumentAttributes.Add(Document.DepartmentalInfo.paytReason,   "BasisIndicator");
 				DocumentAttributes.Add(Document.DepartmentalInfo.taxPaytKind,  "TypeIndicator");
 				DocumentAttributes.Add(Document.DepartmentalInfo.taxPeriod,    "PeriodIndicator");
@@ -27564,7 +26542,6 @@ Procedure ReadPaymentOrderSberbankXDTO(ED, ParseTree, NewED, Error)
 		
 		AddObjectHeaderAttribute(NewED, "PayerIndirectPayments", False);
 		AddObjectHeaderAttribute(NewED, "PayerTIN", ED.Payer.tin);
-		AddObjectHeaderAttribute(NewED, "PayerKPP", ED.Payer.kpp);
 		AddObjectHeaderAttribute(NewED, "Amount", ED.AccDoc.docSum);
 		AddObjectHeaderAttribute(NewED, "PayerDescription", ED.Payer.Name);
 		AddObjectHeaderAttribute(NewED, "PayerBankAcc", ED.Payer.PersonalAcc);
@@ -27608,7 +26585,6 @@ Procedure ReadPaymentOrderSberbankXDTO(ED, ParseTree, NewED, Error)
 		AddObjectHeaderAttribute(NewED, "PayeeBankBIC", ED.Payee.Bank.bic);
 		AddObjectHeaderAttribute(NewED, "RecipientBankCorrAccount", ED.Payee.Bank.correspAcc);
 		AddObjectHeaderAttribute(NewED, "PayeeTIN", ED.Payee.tin);
-		AddObjectHeaderAttribute(NewED, "PayeeKPP", ED.Payee.kpp);
 		AddObjectHeaderAttribute(NewED, "PayeeBankAcc", ED.Payee.PersonalAcc);
 		AddObjectHeaderAttribute(NewED, "RecipientDescription", ED.Payee.Name);
 		AddObjectHeaderAttribute(NewED, "OrderOfPriority", ED.AccDoc.priority);
@@ -27685,8 +26661,6 @@ Function GeneratePaymentOrderSberbankCML(DataTree)
 		FillXDTOProperty(Payer, "Name", PayerDescription, True, ErrorText);
 		PayerTIN = TreeAttributeValue(DataTree, "PayerDetails.TIN");
 		FillXDTOProperty(Payer, "tin", PayerTIN, True, ErrorText);
-		PayerKPP = TreeAttributeValue(DataTree, "PayerDetails.KPP");
-		FillXDTOProperty(Payer, "kpp", PayerKPP, , ErrorText);
 		PayerBankAcc = TreeAttributeValue(DataTree, "PayerDetails.BankAcc");
 		FillXDTOProperty(Payer, "personalAcc", PayerBankAcc, True, ErrorText);
 
@@ -27713,8 +26687,6 @@ Function GeneratePaymentOrderSberbankCML(DataTree)
 		FillXDTOProperty(Payee, "Name", RecipientDescription, True, ErrorText);
 		PayeeTIN = TreeAttributeValue(DataTree, "RecipientAttributes.TIN");
 		FillXDTOProperty(Payee, "tin", PayeeTIN, True, ErrorText);
-		PayeeKPP = TreeAttributeValue(DataTree, "RecipientAttributes.KPP");
-		FillXDTOProperty(Payee, "kpp", PayeeKPP, , ErrorText);
 		PayeeBankAcc = TreeAttributeValue(DataTree, "RecipientDetails.BankAcc");
 		FillXDTOProperty(Payee, "personalAcc", PayeeBankAcc, True, ErrorText);
 		
@@ -27740,10 +26712,6 @@ Function GeneratePaymentOrderSberbankCML(DataTree)
 			DepartmentalInfo =  GetCMLObjectType("PayDocRu.DepartmentalInfo",TargetNamespace);
 			AuthorStatus = TreeAttributeValue(DataTree, "PaymentsToBudget.ComposerStatus");
 			FillXDTOProperty(DepartmentalInfo, "drawerStatus", AuthorStatus, True, ErrorText);
-			BKCode = TreeAttributeValue(DataTree, "PaymentsToBudget.KBKIndicator");
-			FillXDTOProperty(DepartmentalInfo, "cbc", BKCode, True, ErrorText);
-			OKATOCode = TreeAttributeValue(DataTree, "PaymentsToBudget.OKTMO");
-			FillXDTOProperty(DepartmentalInfo, "okato", OKATOCode, True, ErrorText);
 			BasisIndicator = TreeAttributeValue(DataTree, "PaymentsToBudget.BasisIndicator");
 			BasisIndicator = ?(ValueIsFilled(BasisIndicator), BasisIndicator, "0");
 			FillXDTOProperty(DepartmentalInfo, "paytReason", BasisIndicator, True, ErrorText);
@@ -27801,9 +26769,7 @@ EndFunction
 //
 Function DetermineEDFileName(EDKind, ObjectReference, Val EDVersion = Undefined)
 	
-	If EDKind = Enums.EDKinds.CustomerInvoiceNote
-		OR EDKind = Enums.EDKinds.CorrectiveInvoiceNote
-		OR EDKind = Enums.EDKinds.TORG12
+	If EDKind = Enums.EDKinds.TORG12
 		OR EDKind = Enums.EDKinds.TORG12Seller
 		OR EDKind = Enums.EDKinds.TORG12Customer
 		OR EDKind = Enums.EDKinds.AcceptanceCertificate
@@ -27836,7 +26802,7 @@ Function DetermineEDFileName(EDKind, ObjectReference, Val EDVersion = Undefined)
 		EndIf;
 		
 		ViewVersion = "";
-		If EDKind <> Enums.EDKinds.CustomerInvoiceNote AND EDKind <> Enums.EDKinds.NotificationAboutReception
+		If EDKind <> Enums.EDKinds.NotificationAboutReception
 			AND EDKind <> Enums.EDKinds.Confirmation AND EDKind <> Enums.EDKinds.NotificationAboutClarification
 			AND EDKind <> Enums.EDKinds.PaymentOrder AND EDKind <> Enums.EDKinds.STATEMENT
 			AND EDKind <> Enums.EDKinds.QueryStatement AND EDKind <> Enums.EDKinds.BankStatement
@@ -28654,7 +27620,6 @@ Function OutgoingInvitationRequestTakskom(TableDataProcessors, AdditParametersSt
 			Contact = GetCMLObjectType(PathToDescription + ".Contact");
 			FillXDTOProperty(Contact, "Name",              CurRow.Description, , ErrorText);
 			FillXDTOProperty(Contact, "Inn",               CurRow.TIN, True, ErrorText);
-			FillXDTOProperty(Contact, "Kpp",               CurRow.KPP, , ErrorText);
 			FillXDTOProperty(Contact, "Email",             CurRow.EMail_Address, True, ErrorText);
 			FillXDTOProperty(Contact, "Comment",           CurRow.InvitationText, , ErrorText);
 			FillXDTOProperty(Contact, "ExternalContactId", CurRow.ExternalCode, , ErrorText);
@@ -28717,10 +27682,6 @@ Procedure ReadContact(Contact, ContactsTable, EDFProfileSettings)
 	String.Changed             = Date(StrReplace(StrReplace(StrReplace(StrReplace(Mid(Contact.State.Changed, 0,
 		Find(Contact.State.Changed, ".") - 1), "-", ""), " ", ""), ":", ""),"T",""));
 		
-	If Contact.Properties().Get("Kpp") <> Undefined AND TypeOf(Contact.Kpp) = Type("String") Then
-		String.KPP = Contact.Kpp;
-	EndIf;
-	
 	If Contact.Properties().Get("ExternalContactId") <> Undefined
 		AND TypeOf(Contact.ExternalContactId) = Type("String") Then
 		
@@ -30208,7 +29169,6 @@ Function GenerateCardTakskomCML(DataTree, ErrorText)
 		FillXDTOProperty(SubscriberSender, "Name",
 			TreeAttributeValue(DataTree, "Sender.Name"), , ErrorText);
 		FillXDTOProperty(SubscriberSender, "Inn", TreeAttributeValue(DataTree, "Sender.TIN"), , ErrorText);
-		FillXDTOProperty(SubscriberSender, "Kpp", TreeAttributeValue(DataTree, "Sender.KPP"), , ErrorText);
 		FillXDTOProperty(SubscriberSender, "ContractNumber",
 			TreeAttributeValue(DataTree, "Sender.ContractNumber"), , ErrorText);
 		
@@ -30230,7 +29190,6 @@ Function GenerateCardTakskomCML(DataTree, ErrorText)
 			FillXDTOProperty(SubscriberReceiver, "Name",
 				TreeAttributeValue(DataTree, "Recipient.Name"), , ErrorText);
 			FillXDTOProperty(SubscriberReceiver, "Inn", TreeAttributeValue(DataTree, "Recipient.TIN"), , ErrorText);
-			FillXDTOProperty(SubscriberReceiver, "Kpp", TreeAttributeValue(DataTree, "Recipient.KPP"), , ErrorText);
 			FillXDTOProperty(SubscriberReceiver, "ContractNumber",
 				TreeAttributeValue(DataTree, "Recipient.ContractNumber"), , ErrorText);
 			PropertyName = "Abonent";
@@ -30636,20 +29595,18 @@ Procedure AddFTSServiceFields(DataTree, EDStructure)
 	InsertValueIntoTree(DataTree, "CTD",     EDStructure.CTD);
 	InsertValueIntoTree(DataTree, "UUID", EDStructure.UUID);
 	
-	If EDStructure.EDKind <> Enums.EDKinds.CustomerInvoiceNote Then
-		If EDStructure.EDKind = Enums.EDKinds.TORG12Customer
-			OR EDStructure.EDKind = Enums.EDKinds.TORG12Seller Then
-			InsertValueIntoTree(DataTree, "DescFirstDock", "Goods sale");
-			InsertValueIntoTree(DataTree, "RCMDFirstDoc", "0330212");
-			InsertValueIntoTree(DataTree, "NumForm",     "TORG-12");
-		ElsIf EDStructure.EDKind = Enums.EDKinds.ActCustomer
-			OR EDStructure.EDKind = Enums.EDKinds.ActPerformer Then
-			
-			InsertValueIntoTree(DataTree, "DescFirstDock", "Act of work completion (services rendered)");
-		ElsIf EDStructure.EDKind = Enums.EDKinds.AgreementAboutCostChangeRecipient Then
-			
-			InsertValueIntoTree(DataTree, "NumForm", "Correction document recipient");
-		EndIf;
+	If EDStructure.EDKind = Enums.EDKinds.TORG12Customer
+		OR EDStructure.EDKind = Enums.EDKinds.TORG12Seller Then
+		InsertValueIntoTree(DataTree, "DescFirstDock", "Goods sale");
+		InsertValueIntoTree(DataTree, "RCMDFirstDoc", "0330212");
+		InsertValueIntoTree(DataTree, "NumForm",     "TORG-12");
+	ElsIf EDStructure.EDKind = Enums.EDKinds.ActCustomer
+		OR EDStructure.EDKind = Enums.EDKinds.ActPerformer Then
+		
+		InsertValueIntoTree(DataTree, "DescFirstDock", "Act of work completion (services rendered)");
+	ElsIf EDStructure.EDKind = Enums.EDKinds.AgreementAboutCostChangeRecipient Then
+		
+		InsertValueIntoTree(DataTree, "NumForm", "Correction document recipient");
 	EndIf;
 	YYYYMMDD = StrReplace(Format(CurDateTime, "DF=yyyy-MM-dd"), "-", "");
 	FileStructure = New Structure("Prefix, RecipientID, SenderID, YYYYMMDD, UUID",
@@ -30760,8 +29717,6 @@ Function FillParticipantDataFTS(ParticipantXDTO, StringTreeData, ErrorText, Targ
 			FillXDTOProperty(PrLP, "DescEnt", Description, , ErrorText);
 			TIN = TreeAttributeValue(StringTreeData, ParticipantKind + ".ParticipantType.LegalEntity.TIN");
 			FillXDTOProperty(PrLP, "TINLP", TIN, , ErrorText);
-			KPP = TreeAttributeValue(StringTreeData, ParticipantKind + ".ParticipantType.LegalEntity.KPP");
-			FillXDTOProperty(PrLP, "KPP", KPP, , ErrorText);
 			FillXDTOProperty(IdPr, "PrLP",  PrLP, , ErrorText);
 			If TargetNamespaceSchema = "IAKTPRM2" Then
 				PrPP = GetCMLObjectType("ParticipantType.IdPr.PrPP", TargetNamespaceSchema);
@@ -31560,7 +30515,6 @@ Function InitExchangeParticipantsDataTable() Export
 	VT.Columns.Add("EDFProfileSettings", TypeDescriptionEDFProfileSettings);
 	VT.Columns.Add("Description",  TypeDescriptionWith255);
 	VT.Columns.Add("TIN",           TypeDescriptionC12);
-	VT.Columns.Add("KPP",           TypeDescriptionWith255);
 	VT.Columns.Add("ID", TypeDescriptionWith255);
 	VT.Columns.Add("InvitationText", TypeDescriptionS1024);
 	VT.Columns.Add("State",     TypeDescriptionParticipantsStatuses);
@@ -31676,13 +30630,10 @@ Procedure DeleteReadDirectoryXDTO(ED, ParseTree, NewED, Error)
 		If Upper(CurProperty.Name) = Upper("ID") Then 
 			
 			CounterpartyId = DataVal;
-			// Parse ID for TIN and KPP
+			// Parse ID for TIN
 			SearchStructure = ParseCounterpartyID(CounterpartyId);
 			If SearchStructure.Property("TIN") Then
 				CounterpartyAttributes.Insert("TIN", SearchStructure.TIN);
-			EndIf;
-			If SearchStructure.Property("KPP") Then
-				CounterpartyAttributes.Insert("KPP", SearchStructure.KPP);
 			EndIf;
 			
 		ElsIf Upper(CurProperty.Name) = Upper("LegalEntity") OR Upper(CurProperty.Name) = Upper("Ind") Then
@@ -31712,7 +30663,7 @@ Procedure DeleteReadDirectoryXDTO(ED, ParseTree, NewED, Error)
 	FoundTypeInTree = FoundCreateObjectTypeInParseTree(ParseTree, "Counterparties");
 	Counterparty = ElectronicDocumentsOverridable.FindRefToObject("Counterparties", CounterpartyId,
 		CounterpartyAttributes, ED.ID);
-	FoundString = FindCreateStringInParsedTree(FoundTypeInTree, CounterpartyId, "TIN+KPP: " + CounterpartyId,
+	FoundString = FindCreateStringInParsedTree(FoundTypeInTree, CounterpartyId, "TIN: " + CounterpartyId,
 		Counterparty, CounterpartyAttributes, ParseTree, Error);
 	AddObjectHeaderAttribute(NewED, "Counterparty", FoundString.RowIndex);
 	AddObjectHeaderAttribute(NewED, "GeneratingDate", ED.GeneratingDate);
@@ -32178,7 +31129,6 @@ Procedure FillCMLParticipantData(Counterparty, StringTreeData, CounterpartyKind,
 	
 	// Attributes are used for the transfer of final buyer data from Commission agent report on sales:
 	TIN = "";
-	KPP = "";
 	Description = "";
 	AddData = New Structure;
 	//
@@ -32199,17 +31149,14 @@ Procedure FillCMLParticipantData(Counterparty, StringTreeData, CounterpartyKind,
 			FillXDTOProperty(Counterparty, "OfficialName", Description, True, ErrorText);
 			TIN = TreeAttributeValue(StringTreeData, CounterpartyKind + ".ParticipantType.LegalEntity.TIN");
 			FillXDTOProperty(Counterparty, "TIN", TIN, True, ErrorText);
-			KPP = TreeAttributeValue(StringTreeData, CounterpartyKind + ".ParticipantType.LegalEntity.KPP");
-			FillXDTOProperty(Counterparty, "KPP", KPP, , ErrorText);
 		EndIf;
 	EndIf;
 	
 	If ValueIsFilled(TIN) Then
-		CounterpartyId = TIN + ?(ValueIsFilled(KPP), "_" + KPP, "");
+		CounterpartyId = TIN;
 		FillXDTOProperty(Counterparty, "ID", CounterpartyId, , ErrorText);
 		AddData.Insert("Description", Description);
 		AddData.Insert("TIN", TIN);
-		AddData.Insert("KPP", KPP);
 		AddData.Insert("ID", CounterpartyId);
 	EndIf;
 	
@@ -32431,12 +31378,6 @@ Procedure PrepareDataByTakskomCard(ElectronicDocument, TaxcomCardTree, Encrypted
 			
 			DocumentKind = "FormalizedConsignmentVendor";
 		EndIf;
-	ElsIf ElectronicDocument.EDKind = Enums.EDKinds.CustomerInvoiceNote Then
-		
-		DocumentKind = "Invoice";
-	ElsIf ElectronicDocument.EDKind = Enums.EDKinds.CorrectiveInvoiceNote Then
-		
-		DocumentKind = "CorrectiveInvoiceNote";
 	ElsIf ElectronicDocument.EDKind = Enums.EDKinds.InvoiceForPayment Then
 		
 		DocumentKind = "Account";
@@ -32520,13 +31461,11 @@ Procedure PrepareDataByTakskomCard(ElectronicDocument, TaxcomCardTree, Encrypted
 	EndIf;
 	
 	DataStructure = ElectronicDocumentsService.AttributesValuesStructure(ElectronicDocument.Company,
-		"Name, TIN, KPP");
+		"Name, TIN");
 	CommonUseED.FillTreeAttributeValue(TaxcomCardTree, "Sender.Name",
 		DataStructure.Description);
 	CommonUseED.FillTreeAttributeValue(TaxcomCardTree, "Sender.TIN",
 		DataStructure.TIN);
-	CommonUseED.FillTreeAttributeValue(TaxcomCardTree, "Sender.KPP",
-		DataStructure.KPP);
 	CommonUseED.FillTreeAttributeValue(TaxcomCardTree, "Sender.ContractNumber",
 		"Contract by default");
 		
@@ -32548,13 +31487,11 @@ Procedure PrepareDataByTakskomCard(ElectronicDocument, TaxcomCardTree, Encrypted
 
 			
 			DataStructure = ElectronicDocumentsService.AttributesValuesStructure(ElectronicDocument.Counterparty,
-				"Name, TIN, KPP");
+				"Name, TIN");
 			CommonUseED.FillTreeAttributeValue(TaxcomCardTree, "Recipient.Name",
 				DataStructure.Description);
 			CommonUseED.FillTreeAttributeValue(TaxcomCardTree, "Recipient.TIN",
 				DataStructure.TIN);
-			CommonUseED.FillTreeAttributeValue(TaxcomCardTree, "Recipient.KPP",
-				DataStructure.KPP);
 			CommonUseED.FillTreeAttributeValue(TaxcomCardTree, "Recipient.ContractNumber",
 				"Contract by default");
 			
@@ -32823,7 +31760,7 @@ Function ParsingTreeBankStatements(TextForParsing) Export
 		+ "PayeeAccount,Recipient,PayeeTIN,Payee1,"
 		+ "PayeeBankAcc,PayeeBank1,PayeeBank2,PayeeBIK,PayeeBalancedAccount,"
 		+ "Payee2,Payee3,Payee4,"
-		+ "AuthorStatus,PayerKPP,PayeeKPP,KBKIndicator,OKATO,BasisIndicator,"
+		+ "AuthorStatus,KBKIndicator,OKATO,BasisIndicator,"
 		+ "PeriodIndicator,NumberIndicator,DateIndicator,TypeIndicator,"
 		+ "Code,"
 		+ "PaymentDestination,"
@@ -33009,8 +31946,6 @@ Function FillInBuyerSellerDataFTSForIR(ParticipantXDTO, StringTreeData, ErrorTex
 			FillXDTOProperty(PrLP, "DescEnt", Description, , ErrorText);
 			TIN = TreeAttributeValue(StringTreeData, ParticipantKind + ".ParticipantType.LegalEntity.TIN");
 			FillXDTOProperty(PrLP, "TINLP", TIN, , ErrorText);
-			KPP = TreeAttributeValue(StringTreeData, ParticipantKind + ".ParticipantType.LegalEntity.KPP");
-			FillXDTOProperty(PrLP, "KPP", KPP, , ErrorText);
 			FillXDTOProperty(IdPr, "PrLP",  PrLP, , ErrorText);
 		EndIf;
 		FillXDTOProperty(ParticipantXDTO, "IdPr", IdPr, , ErrorText);
@@ -33052,15 +31987,12 @@ Procedure PutComissionAgentDataToAdditionalData(DataTree, TargetNamespaceSchema,
 		Name = TreeAttributeValue(DataTree, "Agent.ParticipantType.Individual.Name");
 		Patronymic = TreeAttributeValue(DataTree, "Agent.ParticipantType.Individual.Patronymic");
 		Description = TrimAll(Surname + " " + Name + " " + Patronymic);
-		KPP = "";
 	Else
 		Description = TreeAttributeValue(DataTree, "Agent.ParticipantType.LegalEntity.CompanyDescription");
 		TIN = TreeAttributeValue(DataTree, "Agent.ParticipantType.LegalEntity.TIN");
-		KPP = TreeAttributeValue(DataTree, "Agent.ParticipantType.LegalEntity.KPP");
 	EndIf;
 	AddValueToTree(RowOptionalData, "AddData.DigitallySigned.AgentName", Description);
 	AddValueToTree(RowOptionalData, "AddData.DigitallySigned.TINCommissionAgent", TIN);
-	AddValueToTree(RowOptionalData, "AddData.DigitallySigned.CommissionAgentKPP", KPP);
 	
 EndProcedure
 
@@ -33179,13 +32111,13 @@ Function ImportDocumentSection(PaymentDocumentSection, Import_CurrentRow, Import
 					FillXDTOProperty(Date_Received, "__content", Value);
 					FillXDTOProperty(RecipientAttributes, "Date_Received", Date_Received);
 				ElsIf Tag = Upper("PayerAccount") OR Tag = Upper("Payer")
-						OR Tag = Upper("PayerTIN") OR Tag = Upper("PayerKPP") OR Tag = Upper("Payer1")
+						OR Tag = Upper("PayerTIN") OR Tag = Upper("Payer1")
 						OR Tag = Upper("Payer2") OR Tag = Upper("Payer3") OR Tag = Upper("Payer4")
 						OR Tag = Upper("PayerBankAcc") OR Tag = Upper("PayerBank1") OR Tag = Upper("PayerBank2")
 						OR Tag = Upper("PayerBIC") OR Tag = Upper("PayerBalancedAccount") Then
 					FillXDTOProperty(PayerAttributes, DocumentStructure[Tag], Value);
 				ElsIf Tag = Upper("PayeeAccount") OR Tag = Upper("Recipient")
-						OR Tag = Upper("PayeeTIN") OR Tag = Upper("PayeeKPP") OR Tag = Upper("Payee1")
+						OR Tag = Upper("PayeeTIN") OR Tag = Upper("Payee1")
 						OR Tag = Upper("Payee2") OR Tag = Upper("Payee3") OR Tag = Upper("Payee4")
 						OR Tag = Upper("PayeeBankAcc") OR Tag = Upper("PayeeBank1") OR Tag = Upper("PayeeBank2")
 						OR Tag = Upper("PayeeBIK") OR Tag = Upper("PayeeBalancedAccount") Then
@@ -33851,8 +32783,6 @@ Function GenerateTransferOrderAsync(DataTree)
 		FillXDTOProperty(Sender, "name", PayerDescription, True, ErrorText);
 		PayerTIN = TreeAttributeValue(DataTree, "PayerDetails.TIN");
 		FillXDTOProperty(Sender, "tin", PayerTIN, True, ErrorText);
-		PayerKPP = TreeAttributeValue(DataTree, "PayerDetails.KPP");
-		FillXDTOProperty(Sender, "kpp", PayerKPP, , ErrorText);
 		FillXDTOProperty(ED, "Sender", Sender, True, ErrorText);
 		
 		Recipient = GetCMLObjectType("BankPartyType", TargetNamespace);
@@ -33876,10 +32806,6 @@ Function GenerateTransferOrderAsync(DataTree)
 		FillXDTOProperty(PayerAttributes, "Name", PayerDescription, True, ErrorText);
 		FillXDTOProperty(PayerAttributes, "TIN", PayerTIN, , ErrorText);
 		ThisIsTranferToBudget = TreeAttributeValue(DataTree, "PaymentsToBudget") = True;
-		If Not ValueIsFilled(PayerKPP) AND ThisIsTranferToBudget Then
-			PayerKPP = "0";
-		EndIf;
-		FillXDTOProperty(PayerAttributes, "KPP", PayerKPP, ThisIsTranferToBudget, ErrorText);
 		FillXDTOProperty(PayerAttributes, "Account", PayerBankAcc, True, ErrorText);
 		
 		PayersBank = GetCMLObjectType("BankType", TargetNamespace);
@@ -33897,11 +32823,6 @@ Function GenerateTransferOrderAsync(DataTree)
 		FillXDTOProperty(RecipientAttributes, "Name", RecipientDescription, True, ErrorText);
 		PayeeTIN = TreeAttributeValue(DataTree, "RecipientAttributes.TIN");
 		FillXDTOProperty(RecipientAttributes, "TIN", PayeeTIN, , ErrorText);
-		PayeeKPP = TreeAttributeValue(DataTree, "RecipientAttributes.KPP");
-		If Not ValueIsFilled(PayeeKPP) AND ThisIsTranferToBudget Then
-			PayeeKPP = "0";
-		EndIf;
-		FillXDTOProperty(RecipientAttributes, "KPP", PayeeKPP, ThisIsTranferToBudget, ErrorText);
 		PayeeBankAcc = TreeAttributeValue(DataTree, "RecipientDetails.BankAcc");
 		FillXDTOProperty(RecipientAttributes, "Account", PayeeBankAcc, True, ErrorText);
 		
@@ -34096,7 +33017,6 @@ Procedure ReadStatementAsyncXDTO(ED, ParseTree, NewED, Error)
 		Payer = PayData.Payer;
 		PaymentAttributes.Add(Payer.Name,            "PayerDescription");
 		PaymentAttributes.Add(Payer.TIN,             "PayerTIN");
-		PaymentAttributes.Add(Payer.KPP,             "PayerKPP");
 		PaymentAttributes.Add(Payer.Account,         "PayerAccount");
 		PaymentAttributes.Add(Payer.Bank.BIC,        "PayerBankBIC");
 		PaymentAttributes.Add(Payer.Bank.Name,       "PayerBankName");
@@ -34106,7 +33026,6 @@ Procedure ReadStatementAsyncXDTO(ED, ParseTree, NewED, Error)
 		Payee = PayData.Payee;
 		PaymentAttributes.Add(Payee.Name,            "RecipientDescription");
 		PaymentAttributes.Add(Payee.TIN,             "PayeeTIN");
-		PaymentAttributes.Add(Payee.KPP,             "PayeeKPP");
 		PaymentAttributes.Add(Payee.Account,         "PayeeAccount");
 		PaymentAttributes.Add(Payee.Bank.BIC,        "PayeeBankBIC");
 		PaymentAttributes.Add(Payee.Bank.Name,       "RecipientBankName");
@@ -34219,7 +33138,6 @@ Procedure ReadTransferOrderAsyncXDTO(ED, ParseTree, NewED, Error)
 	Payer = PayData.Payer;
 	AddObjectHeaderAttribute(NewED, "PayerDescription",      Payer.Name);
 	AddObjectHeaderAttribute(NewED, "PayerTIN",               Payer.TIN);
-	AddObjectHeaderAttribute(NewED, "PayerKPP",               Payer.KPP);
 	AddObjectHeaderAttribute(NewED, "PayerBankAcc",          Payer.Account);
 	
 	AddObjectHeaderAttribute(NewED, "PayerBankBIC",          Payer.Bank.BIC);
@@ -34230,7 +33148,6 @@ Procedure ReadTransferOrderAsyncXDTO(ED, ParseTree, NewED, Error)
 	Payee = PayData.Payee;
 	AddObjectHeaderAttribute(NewED, "RecipientDescription",      Payee.Name);
 	AddObjectHeaderAttribute(NewED, "PayeeTIN",               Payee.TIN);
-	AddObjectHeaderAttribute(NewED, "PayeeKPP",               Payee.KPP);
 	AddObjectHeaderAttribute(NewED, "PayeeBankAcc",          Payee.Account);
 	
 	AddObjectHeaderAttribute(NewED, "PayeeBankBIC",          Payee.Bank.BIC);
@@ -34295,7 +33212,6 @@ Procedure ReadQueryOnStateAsyncXDTO(ED, ParseTree, NewED, Error)
 	AddObjectHeaderAttribute(NewED, "ClientID", ED.Sender.id);
 	AddObjectHeaderAttribute(NewED, "ClientDescription", ED.Sender.name);
 	AddObjectHeaderAttribute(NewED, "TIN", ED.Sender.tin);
-	AddObjectHeaderAttribute(NewED, "KPP", ED.Sender.kpp);
 	AddObjectHeaderAttribute(NewED, "BIN", ED.Recipient.bic);
 	AddObjectHeaderAttribute(NewED, "BankDescription", ED.Recipient.name);
 	AddObjectHeaderAttribute(NewED, "SourceDocumentIdentifier", ED.ExtID);
@@ -34314,7 +33230,6 @@ Procedure ReadQueryProbeAsyncXDTO(ED, ParseTree, NewED, Error)
 	AddObjectHeaderAttribute(NewED, "ClientID", ED.Sender.id);
 	AddObjectHeaderAttribute(NewED, "ClientDescription", ED.Sender.name);
 	AddObjectHeaderAttribute(NewED, "TIN", ED.Sender.tin);
-	AddObjectHeaderAttribute(NewED, "KPP", ED.Sender.kpp);
 	AddObjectHeaderAttribute(NewED, "BIN", ED.Recipient.bic);
 	AddObjectHeaderAttribute(NewED, "BankDescription", ED.Recipient.name);
 	
@@ -34332,7 +33247,6 @@ Procedure ReadNotificationOnStateAsyncXDTO(ED, ParseTree, NewED, Error)
 	AddObjectHeaderAttribute(NewED, "ClientID", ED.Recipient.Customer.id);
 	AddObjectHeaderAttribute(NewED, "ClientDescription", ED.Recipient.Customer.name);
 	AddObjectHeaderAttribute(NewED, "TIN", ED.Recipient.Customer.tin);
-	AddObjectHeaderAttribute(NewED, "KPP", ED.Recipient.Customer.kpp);
 	
 	AddObjectHeaderAttribute(NewED, "BIN", ED.Sender.Bank.bic);
 	AddObjectHeaderAttribute(NewED, "BankDescription", ED.Sender.Bank.name);
@@ -35189,11 +34103,7 @@ EndFunction
 
 Procedure FillInIRBySupportingDocuments(InvArray, GroundsArray, EDDirection)
 	
-	If EDDirection = Enums.EDDirections.Outgoing Then
-		InvDocumentName = ElectronicDocumentsReUse.NameAttributeObjectExistanceInAppliedSolution("CustomerInvoiceNoteInMetadata");
-	Else
-		InvDocumentName = ElectronicDocumentsReUse.NameAttributeObjectExistanceInAppliedSolution("InvoiceReceivedInMetadata");
-	EndIf;
+	InvDocumentName = ElectronicDocumentsReUse.NameAttributeObjectExistanceInAppliedSolution("InvoiceReceivedInMetadata");
 	
 	If Not ValueIsFilled(InvDocumentName) Then
 		Return;

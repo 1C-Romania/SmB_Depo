@@ -109,7 +109,7 @@ Function NewUpdateHandlersTable() Export
 	Handlers.Columns.Add("HandlersManagement", New TypeDescription("Boolean"));
 	Handlers.Columns.Add("ExclusiveMode");
 	
-	// "Outdated. Backward match up to edition 2.2".
+	// Outdated. Backward match up to edition 2.2".
 	Handlers.Columns.Add("Optional");
 	
 	Return Handlers;
@@ -319,7 +319,7 @@ Procedure SetSubsystemVersions(SubsystemVersions) Export
 
 	RecordSet = InformationRegisters.SubsystemVersions.CreateRecordSet();
 	
-	For Each Version IN SubsystemVersions Do
+	For Each Version In SubsystemVersions Do
 		NewRecord = RecordSet.Add();
 		NewRecord.SubsystemName = Version.SubsystemName;
 		NewRecord.Version = Version.Version;

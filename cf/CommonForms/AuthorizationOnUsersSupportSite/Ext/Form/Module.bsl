@@ -63,17 +63,3 @@ Procedure SaveAuthenticationData(Val Authentication)
 EndProcedure
 
 #EndRegion
-
-
-
-
-
-
-
-
-
-
-
-
-
-

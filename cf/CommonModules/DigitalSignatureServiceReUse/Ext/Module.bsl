@@ -36,7 +36,7 @@ Function CommonSettings() Export
 	// 1. Contact information subsystem  - Russian address.
 	// 2. Subsystem Address Classifier - state code by name.
 	// 3. Print subsystem - standard printed form for the certificate issue application.
-	// 4. Subsystem Work with counterparties - check TIN, KPP, OGRN, personal accounts by BIC, INILA.
+	// 4. Subsystem Work with counterparties - check TIN, OGRN, personal accounts by BIC, INILA.
 	
 	CommonSettings.Insert("CertificateIssueApplicationAvailable",
 		  CommonUse.SubsystemExists("StandardSubsystems.ContactInformation")

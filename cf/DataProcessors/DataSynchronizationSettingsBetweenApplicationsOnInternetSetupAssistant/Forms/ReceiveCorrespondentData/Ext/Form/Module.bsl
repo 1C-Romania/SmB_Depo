@@ -563,17 +563,3 @@ Procedure DataRetrievalScriptContributor()
 EndProcedure
 
 #EndRegion
-
-
-
-
-
-
-
-
-
-
-
-
-
-

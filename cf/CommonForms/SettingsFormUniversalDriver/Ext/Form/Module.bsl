@@ -476,16 +476,3 @@ Procedure UpdateInformationAboutDriver(FirstLaunch)
 EndProcedure
 
 #EndRegion
-
-
-
-
-
-
-
-
-
-
-
-
-

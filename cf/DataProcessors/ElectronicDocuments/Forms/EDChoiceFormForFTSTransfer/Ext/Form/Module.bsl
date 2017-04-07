@@ -718,9 +718,9 @@ Function CreateImportFile(Val DocumentsTable)
 			FileNameArray.Add(FoundFile.Name);
 		EndDo;
 		
-		CompanyAttributes = CommonUse.ObjectAttributesValues(Company, "TIN, KPP");
+		CompanyAttributes = CommonUse.ObjectAttributesValues(Company, "TIN");
 		TIN = TrimAll(CompanyAttributes.TIN);
-		SenderID = TIN + ?(StrLen(TIN) = 12, "", TrimAll(CompanyAttributes.KPP));
+		SenderID = TIN;
 		IDImport = Format(CurrentSessionDate(), "DF=YyyyMMddHHMMss");
 		FileName = "EDI_" + SenderID + "_" + IDImport;
 		FileName = CommonUseClientServer.ReplaceProhibitedCharsInFileName(FileName);
@@ -755,7 +755,7 @@ EndFunction
 Function ImportDescriptionFile(Company, VTInventory, DirectoryAddress)
 	
 	ErrorText = "";
-	CompanyAttributes = CommonUse.ObjectAttributesValues(Company, "Name, TIN, KPP");
+	CompanyAttributes = CommonUse.ObjectAttributesValues(Company, "Name, TIN");
 	TIN = TrimAll(CompanyAttributes.TIN);
 	TargetNamespaceSchema = "Import2Statements";
 	Try
@@ -771,9 +771,6 @@ Function ImportDescriptionFile(Company, VTInventory, DirectoryAddress)
 		
 		ElectronicDocumentsInternal.FillXDTOProperty(SvCompany, "Description", CompanyAttributes.Description, True, ErrorText);
 		ElectronicDocumentsInternal.FillXDTOProperty(SvCompany, "TIN", CompanyAttributes.TIN, True, ErrorText);
-		If StrLen(CompanyAttributes.TIN) = 10 Then
-			ElectronicDocumentsInternal.FillXDTOProperty(SvCompany, "KPP", CompanyAttributes.KPP, True, ErrorText);
-		EndIf;
 		ElectronicDocumentsInternal.FillXDTOProperty(File, "Company", SvCompany, True, ErrorText);
 		
 		SvCounterparties = ElectronicDocumentsInternal.GetCMLObjectType("File.Counterparties", TargetNamespaceSchema);
@@ -783,14 +780,10 @@ Function ImportDescriptionFile(Company, VTInventory, DirectoryAddress)
 			If InventoryString.Counterparty <> Counterparty Then
 				svCounterparty = ElectronicDocumentsInternal.GetCMLObjectType("File.Counterparties.Counterparty", TargetNamespaceSchema);
 				Counterparty = InventoryString.Counterparty;
-				CounterpartyAttributes = CommonUse.ObjectAttributesValues(Counterparty, "Name, TIN, KPP");
-				CounterpartID = CounterpartyAttributes.TIN + CounterpartyAttributes.KPP;
+				CounterpartyAttributes = CommonUse.ObjectAttributesValues(Counterparty, "Name, TIN");
 				ElectronicDocumentsInternal.FillXDTOProperty(svCounterparty, "ID", CounterpartID, True, ErrorText);
 				ElectronicDocumentsInternal.FillXDTOProperty(svCounterparty, "Description", CounterpartyAttributes.Description, True, ErrorText);
 				ElectronicDocumentsInternal.FillXDTOProperty(svCounterparty, "TIN", CounterpartyAttributes.TIN, True, ErrorText);
-				If StrLen(CounterpartyAttributes.TIN) = 10 Then
-					ElectronicDocumentsInternal.FillXDTOProperty(svCounterparty, "KPP", CounterpartyAttributes.KPP, True, ErrorText);
-				EndIf;
 				SvCounterparties.Counterparty.Add(svCounterparty);
 			EndIf;
 			SvDocument = ElectronicDocumentsInternal.GetCMLObjectType("File.Document", TargetNamespaceSchema);
@@ -875,14 +868,10 @@ EndFunction
 Function DocumentKindByEDKind(EDKind)
 	
 	DocumentKind = Undefined;
-	If EDKind = Enums.EDKinds.CustomerInvoiceNote Then
-		DocumentKind = "01";
-	ElsIf EDKind = Enums.EDKinds.ActPerformer Then
+	If EDKind = Enums.EDKinds.ActPerformer Then
 		DocumentKind = "02";
 	ElsIf EDKind = Enums.EDKinds.TORG12Seller Then
 		DocumentKind = "03";
-	ElsIf EDKind = Enums.EDKinds.CorrectiveInvoiceNote Then
-		DocumentKind = "04";
 	EndIf;
 	
 	Return DocumentKind;
@@ -893,14 +882,10 @@ EndFunction
 Function CTDOnEDKind(EDKind)
 	
 	CTD = Undefined;
-	If EDKind = Enums.EDKinds.CustomerInvoiceNote Then
-		CTD = "1115101";
-	ElsIf EDKind = Enums.EDKinds.ActPerformer Then
+	If EDKind = Enums.EDKinds.ActPerformer Then
 		CTD = "1175006";
 	ElsIf EDKind = Enums.EDKinds.TORG12Seller Then
 		CTD = "1175004";
-	ElsIf EDKind = Enums.EDKinds.CorrectiveInvoiceNote Then
-		CTD = "1115108";
 	EndIf;
 	
 	Return CTD;
@@ -951,10 +936,6 @@ Function EDKindByString(EDKind)
 	EDKindByString = Undefined;
 	If EDKind = PredefinedValue("Enum.EDKinds.ActPerformer") Then
 		EDKindByString = "AcceptanceCertificate";
-	ElsIf EDKind = PredefinedValue("Enum.EDKinds.CorrectiveInvoiceNote") Then
-		EDKindByString = "CorrectiveInvoiceNote";
-	ElsIf EDKind = PredefinedValue("Enum.EDKinds.CustomerInvoiceNote") Then
-		EDKindByString = "CustomerInvoiceNote";
 	ElsIf EDKind = PredefinedValue("Enum.EDKinds.TORG12Seller") Then
 		EDKindByString = "TORG12DeliveryNote";
 	EndIf;
@@ -971,10 +952,6 @@ Function EDKindByEnumeration(EDKind)
 		ReturnedEDKind = EDKind;
 	ElsIf EDKind = "AcceptanceCertificate" Then
 		ReturnedEDKind = Enums.EDKinds.ActPerformer;
-	ElsIf EDKind = "CorrectiveInvoiceNote" Then
-		ReturnedEDKind = Enums.EDKinds.CorrectiveInvoiceNote;
-	ElsIf EDKind = "CustomerInvoiceNote" Then
-		ReturnedEDKind = Enums.EDKinds.CustomerInvoiceNote;
 	ElsIf EDKind = "TORG12DeliveryNote" Then
 		ReturnedEDKind = Enums.EDKinds.TORG12Seller;
 	EndIf;
@@ -989,8 +966,6 @@ Function EDKindsArray()
 	EDKindsArray = New Array;
 	EDKindsArray.Add(Enums.EDKinds.TORG12Seller);
 	EDKindsArray.Add(Enums.EDKinds.ActPerformer);
-	EDKindsArray.Add(Enums.EDKinds.CustomerInvoiceNote);
-	EDKindsArray.Add(Enums.EDKinds.CorrectiveInvoiceNote);
 	
 	Return EDKindsArray;
 	
@@ -1095,16 +1070,3 @@ Procedure Exporting()
 	EndIf;
 	
 EndProcedure
-
-
-
-
-
-
-
-
-
-
-
-
-

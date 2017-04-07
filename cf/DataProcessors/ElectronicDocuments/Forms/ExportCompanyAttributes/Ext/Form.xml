@@ -48,7 +48,7 @@
 				</v8:item>
 				<v8:item>
 					<v8:lang>ru</v8:lang>
-					<v8:content>Наименование</v8:content>
+					<v8:content>Description</v8:content>
 				</v8:item>
 			</Title>
 			<ContextMenu name="CompanyDescriptionFullContextMenu" id="6"/>
@@ -58,26 +58,6 @@
 			<DataPath>TIN</DataPath>
 			<ContextMenu name="TINContextMenu" id="8"/>
 			<ExtendedTooltip name="TINExtendedTooltip" id="74"/>
-		</LabelField>
-		<LabelField name="KPP" id="68">
-			<DataPath>KPP</DataPath>
-			<ContextMenu name="KPPContextMenu" id="69"/>
-			<ExtendedTooltip name="KPPExtendedTooltip" id="75"/>
-		</LabelField>
-		<LabelField name="OKPO" id="13">
-			<DataPath>OKPO</DataPath>
-			<Title>
-				<v8:item>
-					<v8:lang>en</v8:lang>
-					<v8:content>OKPO</v8:content>
-				</v8:item>
-				<v8:item>
-					<v8:lang>ru</v8:lang>
-					<v8:content>ОКПО</v8:content>
-				</v8:item>
-			</Title>
-			<ContextMenu name="RBCOContextMenu" id="14"/>
-			<ExtendedTooltip name="RBOKExtendedTooltip" id="76"/>
 		</LabelField>
 		<UsualGroup name="GroupHead" id="21">
 			<EnableContentChange>true</EnableContentChange>
@@ -483,6 +463,10 @@
 					<v8:lang>en</v8:lang>
 					<v8:content>Company</v8:content>
 				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Контрагент</v8:content>
+				</v8:item>
 			</Title>
 			<Type>
 				<v8:Type>cfg:CatalogRef.Companies</v8:Type>
@@ -507,25 +491,6 @@
 				</v8:StringQualifiers>
 			</Type>
 			<FillCheck>ShowError</FillCheck>
-		</Attribute>
-		<Attribute name="OKPO" id="6">
-			<Title>
-				<v8:item>
-					<v8:lang>en</v8:lang>
-					<v8:content>OKPO</v8:content>
-				</v8:item>
-				<v8:item>
-					<v8:lang>ru</v8:lang>
-					<v8:content>ОКПО</v8:content>
-				</v8:item>
-			</Title>
-			<Type>
-				<v8:Type>xs:string</v8:Type>
-				<v8:StringQualifiers>
-					<v8:Length>10</v8:Length>
-					<v8:AllowedLength>Variable</v8:AllowedLength>
-				</v8:StringQualifiers>
-			</Type>
 		</Attribute>
 		<Attribute name="Head" id="8">
 			<Title>
@@ -673,7 +638,7 @@
 				</v8:item>
 				<v8:item>
 					<v8:lang>ru</v8:lang>
-					<v8:content>Наименование</v8:content>
+					<v8:content>Description</v8:content>
 				</v8:item>
 			</Title>
 			<Type>
@@ -879,25 +844,6 @@
 				<v8:Type>xs:string</v8:Type>
 				<v8:StringQualifiers>
 					<v8:Length>0</v8:Length>
-					<v8:AllowedLength>Variable</v8:AllowedLength>
-				</v8:StringQualifiers>
-			</Type>
-		</Attribute>
-		<Attribute name="KPP" id="22">
-			<Title>
-				<v8:item>
-					<v8:lang>en</v8:lang>
-					<v8:content>KPP</v8:content>
-				</v8:item>
-				<v8:item>
-					<v8:lang>ru</v8:lang>
-					<v8:content>КПП</v8:content>
-				</v8:item>
-			</Title>
-			<Type>
-				<v8:Type>xs:string</v8:Type>
-				<v8:StringQualifiers>
-					<v8:Length>9</v8:Length>
 					<v8:AllowedLength>Variable</v8:AllowedLength>
 				</v8:StringQualifiers>
 			</Type>

@@ -46,16 +46,3 @@ Procedure ChooseAndClose(Command)
 EndProcedure
 
 #EndRegion
-
-
-
-
-
-
-
-
-
-
-
-
-

@@ -115,9 +115,7 @@ Procedure RefreshEDVersion(ElectronicDocument, ForcedVersionStateChange = False,
 
 				NewSetRecord.EDVersionState = ElectronicDocumentsService.DetermineVersionStateByEDStatus(ElectronicDocument, PackageFormatVersion);
 				SummaryInfByStatusStructure = DetermineSummaryInformationByEDStatus(ElectronicDocument);
-				If (ElectronicDocument.EDKind = Enums.EDKinds.CustomerInvoiceNote
-						OR ElectronicDocument.EDKind = Enums.EDKinds.CorrectiveInvoiceNote)
-					AND (NewSetRecord.EDVersionState = Enums.EDVersionsStates.ExchangeCompleted
+				If (NewSetRecord.EDVersionState = Enums.EDVersionsStates.ExchangeCompleted
 						Or NewSetRecord.EDVersionState = Enums.EDVersionsStates.ExchangeCompletedWithCorrection)
 					AND Not(SummaryInfByStatusStructure.FromOurSide = Enums.EDConsolidatedStates.AllExecuted
 						AND SummaryInfByStatusStructure.FromOtherPartySide = Enums.EDConsolidatedStates.AllExecuted) Then
@@ -892,12 +890,7 @@ Function AddDataByEDPackage(EDPackage,
 					
 					EDOwner = "";
 					If ValueIsFilled(AddedFile) Then
-						If EDFileStructure.EDKind = Enums.EDKinds.CustomerInvoiceNote
-						OR EDFileStructure.EDKind = Enums.EDKinds.CorrectiveInvoiceNote Then
-							VersionPointTypeED = Enums.EDVersionElementTypes.ESF;
-						Else
-							VersionPointTypeED = Enums.EDVersionElementTypes.PrimaryED;
-						EndIf;
+						VersionPointTypeED = Enums.EDVersionElementTypes.PrimaryED;
 						
 						// Determine 1C schedule version by the schedule code.
 						EDFScheduleVersion = Enums.Exchange1CRegulationsVersion.Version10;
@@ -1377,9 +1370,7 @@ Function EDPackagesSending(Val ArrayPackageED, Val CertificatesAgreementsAndPara
 				If Selection.Count() > 0 AND Selection.Next() Then
 					ElectronicDocument = Selection.ElectronicDocument;
 					EDParameters = CommonUse.ObjectAttributesValues(ElectronicDocument, "EDKind, Name");
-					If (EDParameters.EDKind = Enums.EDKinds.CustomerInvoiceNote
-						  OR EDParameters.EDKind = Enums.EDKinds.CorrectiveInvoiceNote)
-						AND Not Find(EDParameters.Description, "AL") > 0 Then
+					If Not Find(EDParameters.Description, "AL") > 0 Then
 						
 						SendingResult = SendingResult + CountToSend;
 						RollbackTransaction();
@@ -1847,8 +1838,6 @@ Function IsWorkingESF(RefToOwner) Export
 	|WHERE
 	|	EDStates.ObjectReference = &RefToOwner
 	|	AND EDStates.ElectronicDocument <> VALUE(Catalog.EDAttachedFiles.EmptyRef)
-	|	AND (EDStates.ElectronicDocument.EDKind = VALUE(Enum.EDKinds.CustomerInvoiceNote)
-	|			OR EDStates.ElectronicDocument.EDKind = VALUE(Enum.EDKinds.CorrectiveInvoiceNote))
 	|	AND EDStates.ElectronicDocument.EDStatus <> VALUE(Enum.EDStatuses.Rejected)";
 	
 	Query.SetParameter("RefToOwner", RefToOwner);
@@ -1921,17 +1910,7 @@ Function EDStateText(RefToOwner, Hyperlink) Export
 	If ValueIsFilled(RefToOwner) Then
 		If GetFunctionalOptionValue("UseEDExchange") Then
 			
-			IssuedInvoiceName = ElectronicDocumentsReUse.NameAttributeObjectExistanceInAppliedSolution(
-			"CustomerInvoiceNoteInMetadata");
-			NameAccountsInvoiceReceived = ElectronicDocumentsReUse.NameAttributeObjectExistanceInAppliedSolution(
-			"InvoiceReceivedInMetadata");
-			If IssuedInvoiceName <> Undefined
-				AND TypeOf(RefToOwner) = Type("DocumentRef." + IssuedInvoiceName)
-				OR NameAccountsInvoiceReceived <> Undefined
-				AND TypeOf(RefToOwner) = Type("DocumentRef." + NameAccountsInvoiceReceived) Then
-				
-				EDStateText = GetTextEDSummaryState(RefToOwner);
-			ElsIf TypeOf(RefToOwner) = Type("CatalogRef.EDUsageAgreements") Then
+			If TypeOf(RefToOwner) = Type("CatalogRef.EDUsageAgreements") Then
 				Hyperlink = True;
 				Return EDStateText;
 			Else
@@ -2002,19 +1981,6 @@ Function ThisIsServiceDocument(ElectronicDocument) Export
 	EndIf;
 	
 	Return ReturnValue;
-	
-EndFunction
-
-Function ThisIsInvoiceReceived(ElectronicDocument) Export
-	
-	Result = False;
-	EDKind = CommonUse.ObjectAttributeValue(ElectronicDocument, "EDKind");
-	If EDKind = Enums.EDKinds.CustomerInvoiceNote
-		Or EDKind = Enums.EDKinds.CorrectiveInvoiceNote Then
-		Result = True;
-	EndIf;
-	
-	Return Result;
 	
 EndFunction
 
@@ -2133,8 +2099,6 @@ Function GetFileBinaryData(ED, SignatureCertificate) Export
 			OR EDParameters.EDKind = Enums.EDKinds.ActCustomer
 			OR EDParameters.EDKind = Enums.EDKinds.TORG12Seller
 			OR EDParameters.EDKind = Enums.EDKinds.TORG12Customer
-			OR EDParameters.EDKind = Enums.EDKinds.CustomerInvoiceNote
-			OR EDParameters.EDKind = Enums.EDKinds.CorrectiveInvoiceNote
 			OR EDParameters.EDKind = Enums.EDKinds.AgreementAboutCostChangeSender
 			OR EDParameters.EDKind = Enums.EDKinds.AgreementAboutCostChangeRecipient Then
 			
@@ -2365,18 +2329,6 @@ Function PerformActionsByED(Val RefsToObjectArray,
 			|AND (EDStates.EDVersionState = VALUE(Enum.EDVersionsState.Rejected) 
 			|OR EDStates.EDVersionsState = VALUE(Enum.EDVersionsState.TransferError))))";
 			
-		Else
-			IssuedInvoiceName = ElectronicDocumentsReUse.NameAttributeObjectExistanceInAppliedSolution(
-				"CustomerInvoiceNoteInMetadata");
-			If IssuedInvoiceName <> Undefined Then
-				
-				QueryTextCreateED = QueryTextCreateED + " WHERE (CASE
-				|WHEN RefArray.ObjectRef REFS Document." + IssuedInvoiceName + "
-				|THEN EDStates.ObjectReference IS NULL
-				|OR EDStates.ElectronicDocument.EDStatus = VALUE(Enum.EDStatuses.Rejected)
-				|OR EDStates.ElectronicDocument.EDStatus = VALUE(Enum.EDStatuses.RejectedByReceiver)
-				|OR EDStates.EDVersionState = VALUE(Enum.EDVersionsStates.NotFormed) ELSE TRUE END)";
-			EndIf;
 		EndIf;
 				
 		Query.Text = QueryTextCreateED;
@@ -2508,8 +2460,7 @@ Function PerformActionsByED(Val RefsToObjectArray,
 					CommitTransaction();
 				EndIf;
 				
-				If LinkToED.EDKind = Enums.EDKinds.CustomerInvoiceNote
-					AND LinkToED.EDDirection = Enums.EDDirections.Incoming Then
+				If LinkToED.EDDirection = Enums.EDDirections.Incoming Then
 					ApprovedCIN.Add(LinkToED);
 				EndIf;
 				
@@ -2795,8 +2746,6 @@ Function PerformActionsByED(Val RefsToObjectArray,
 		Query.SetParameter("EmptyUser",   Catalogs.Users.EmptyRef());
 		Query.SetParameter("UseDS",      UseDS);
 		EDKindsArray = New Array;
-		EDKindsArray.Add(Enums.EDKinds.CustomerInvoiceNote);
-		EDKindsArray.Add(Enums.EDKinds.CorrectiveInvoiceNote);
 		Query.SetParameter("EDKindsAccountsInvoice", EDKindsArray);
 		ExchangeWithAuthorization = New Array;
 		ExchangeWithAuthorization.Add(Enums.EDExchangeMethods.ThroughEDFOperatorTaxcom);
@@ -5074,7 +5023,7 @@ Function SendEDStatusQuery(Val AuthorizationParameters, ED) Export
 	SenderName = CommonUse.GetAttributeValue(
 		AgreementAttributes.Company, AttributeCompanyName);
 	ClientApplicationVersion = ElectronicDocumentsReUse.ClientApplicationVersionForBank();
-	CompanyAttributes = CommonUse.ObjectAttributesValues(AgreementAttributes.Company, "TIN, KPP");
+	CompanyAttributes = CommonUse.ObjectAttributesValues(AgreementAttributes.Company, "TIN");
 	BankingDetails = CommonUse.ObjectAttributesValues(AgreementAttributes.Counterparty, "Code, description");
 	TargetNamespace = ElectronicDocumentsService.AsynchronousExchangeWithBanksNamespace();
 	AsynchronousExchangeWithBanksSchemeVersion = ElectronicDocumentsService.AsynchronousExchangeWithBanksSchemeVersion();
@@ -5102,7 +5051,6 @@ Function SendEDStatusQuery(Val AuthorizationParameters, ED) Export
 			Sender, "name", SenderName, True, ErrorText);
 		ElectronicDocumentsInternal.FillXDTOProperty(
 			Sender, "tin", CompanyAttributes.TIN, True, ErrorText);
-		ElectronicDocumentsInternal.FillXDTOProperty(Sender, "kpp", CompanyAttributes.KPP, , ErrorText);
 		ElectronicDocumentsInternal.FillXDTOProperty(EDStateQuery, "Sender", Sender, True, ErrorText);
 		
 		Recipient = ElectronicDocumentsInternal.GetCMLObjectType("BankPartyType", TargetNamespace);
@@ -5211,7 +5159,7 @@ Procedure SendQueryProbeToBank(Val EDAgreement, Val SessionID, QueryPosted) Expo
 	SenderName = CommonUse.GetAttributeValue(
 		AgreementAttributes.Company, AttributeCompanyName);
 	ClientApplicationVersion = ElectronicDocumentsReUse.ClientApplicationVersionForBank();
-	CompanyAttributes = CommonUse.ObjectAttributesValues(AgreementAttributes.Company, "TIN, KPP");
+	CompanyAttributes = CommonUse.ObjectAttributesValues(AgreementAttributes.Company, "TIN");
 	BankingDetails = CommonUse.ObjectAttributesValues(AgreementAttributes.Counterparty, "Code, description");
 	TargetNamespace = ElectronicDocumentsService.AsynchronousExchangeWithBanksNamespace();
 	
@@ -5234,7 +5182,6 @@ Procedure SendQueryProbeToBank(Val EDAgreement, Val SessionID, QueryPosted) Expo
 			Sender, "name", SenderName, True, ErrorText);
 		ElectronicDocumentsInternal.FillXDTOProperty(
 			Sender, "tin", CompanyAttributes.TIN, True, ErrorText);
-		ElectronicDocumentsInternal.FillXDTOProperty(Sender, "kpp", CompanyAttributes.KPP, , ErrorText);
 		ElectronicDocumentsInternal.FillXDTOProperty(QueryProbe, "Sender", Sender, True, ErrorText);
 		
 		Recipient = ElectronicDocumentsInternal.GetCMLObjectType("BankPartyType", TargetNamespace);
@@ -6047,9 +5994,6 @@ Function Digest(FileName, EDAgreement) Export
 		PayeeTIN = ElectronicDocumentsInternal.GetParsedTreeStringAttributeValue(
 														ParseTree, ObjectString, "PayeeTIN");
 		FillingData.Add(PayeeTIN, "Payee.TIN");
-		PayeeKPP = ElectronicDocumentsInternal.GetParsedTreeStringAttributeValue(
-														ParseTree, ObjectString, "PayeeKPP");
-		FillingData.Add(PayeeKPP, "Payee.KPP");
 		PayeeText = ElectronicDocumentsInternal.GetParsedTreeStringAttributeValue(
 														ParseTree, ObjectString, "RecipientDescription");
 		FillingData.Add(PayeeText, "Payee.Name");
@@ -6077,9 +6021,6 @@ Function Digest(FileName, EDAgreement) Export
 		PayerTIN = ElectronicDocumentsInternal.GetParsedTreeStringAttributeValue(
 														ParseTree, ObjectString, "PayerTIN");
 		FillingData.Add(PayerTIN, "Payer.TIN");
-		PayerKPP = ElectronicDocumentsInternal.GetParsedTreeStringAttributeValue(
-														ParseTree, ObjectString, "PayerKPP");
-		FillingData.Add(PayerKPP, "Payer.KPP");
 		PayerText = ElectronicDocumentsInternal.GetParsedTreeStringAttributeValue(
 														ParseTree, ObjectString, "PayerDescription");
 		FillingData.Add(PayerText, "Payer.Name");
@@ -6536,19 +6477,6 @@ Function Digest(FileName, EDAgreement) Export
 																	TSRow,
 																	"AuthorStatus");
 			FillingDataRows.Add(IndicatorStatusOfTaxpayer, "DepartmentalInfo.DrawerStatus=");
-			KPP102 = ElectronicDocumentsInternal.GetParsedTreeStringAttributeValue(
-																	ParseTree,
-																	TSRow,
-																	"PayerKPP");
-			FillingDataRows.Add(KPP102, "DepartmentalInfo.Kpp102=");
-			KPP103 = ElectronicDocumentsInternal.GetParsedTreeStringAttributeValue(
-																	ParseTree,
-																	TSRow,
-																	"PayeeKPP");
-			FillingDataRows.Add(KPP103, "DepartmentalInfo.Kpp103=");
-			FillingDataRows.Add(
-				ElectronicDocumentsInternal.GetParsedTreeStringAttributeValue(ParseTree, TSRow, "OKATOCode"),
-				"DepartmentalInfo.Okato=");
 			IndicatorPaymentReasons = ElectronicDocumentsInternal.GetParsedTreeStringAttributeValue(
 																	ParseTree,
 																	TSRow,
@@ -8001,9 +7929,7 @@ Procedure DeleteInaccessibleForGeneratingEDObjects(RefArray)
 	|WHERE
 	|	EDStates.ObjectReference IN(&RefArray)
 	|	AND CASE
-	|			WHEN EDStates.ElectronicDocument.EDKind = VALUE(Enum.EDKinds.CustomerInvoiceNote)
-	|					OR EDStates.ElectronicDocument.EDKind = VALUE(Enum.EDKinds.CorrectiveInvoiceNote)
-	|					OR EDStates.ElectronicDocument.EDKind = VALUE(Enum.EDKinds.PaymentOrder)
+	|			WHEN EDStates.ElectronicDocument.EDKind = VALUE(Enum.EDKinds.PaymentOrder)
 	|				THEN EDStates.ElectronicDocument.EDStatus <> VALUE(Enum.EDStatuses.Rejected)
 	|						AND EDStates.ElectronicDocument.EDStatus <> VALUE(Enum.EDVersionsStates.NotFormed)
 	|			ELSE Not(EDStates.ElectronicDocument.EDStatus = VALUE(Enum.EDStatuses.Created)
@@ -8043,199 +7969,83 @@ Function DetermineSummaryInformationByEDStatus(LinkToED) Export
 		Enums.EDConsolidatedStates.NoActionsNeeded, Enums.EDConsolidatedStates.NoActionsNeeded);
 	If LinkToED <> Undefined Then
 		
-		If EDParameters.EDKind <> Enums.EDKinds.CustomerInvoiceNote
-		   AND EDParameters.EDKind <> Enums.EDKinds.CorrectiveInvoiceNote Then
+		If EDParameters.EDStatus = Enums.EDStatuses.Created
+			OR EDParameters.EDStatus = Enums.EDStatuses.Approved
+			OR EDParameters.EDStatus = Enums.EDStatuses.DigitallySigned
+			OR EDParameters.EDStatus = Enums.EDStatuses.Received
+			OR EDParameters.EDStatus = Enums.EDStatuses.PreparedToSending
+			OR EDParameters.EDStatus = Enums.EDStatuses.ConfirmationPrepared Then
 			
-			If EDParameters.EDStatus = Enums.EDStatuses.Created
-				OR EDParameters.EDStatus = Enums.EDStatuses.Approved
-				OR EDParameters.EDStatus = Enums.EDStatuses.DigitallySigned
-				OR EDParameters.EDStatus = Enums.EDStatuses.Received
-				OR EDParameters.EDStatus = Enums.EDStatuses.PreparedToSending
-				OR EDParameters.EDStatus = Enums.EDStatuses.ConfirmationPrepared Then
+			ActionsStructure.FromOurSide = Enums.EDConsolidatedStates.ActionsNeeded;
+			
+			// If exchange is direct and response ED to the sent ED is received, then no actions are required on your part.
+			If EDParameters.EDStatus = Enums.EDStatuses.Received
+				AND ValueIsFilled(EDParameters.ElectronicDocumentOwner) Then
 				
-				ActionsStructure.FromOurSide = Enums.EDConsolidatedStates.ActionsNeeded;
-				
-				// If exchange is direct and response ED to the sent ED is received, then no actions are required on your part.
-				If EDParameters.EDStatus = Enums.EDStatuses.Received
-					AND ValueIsFilled(EDParameters.ElectronicDocumentOwner) Then
+				EDExchangeMethod = CommonUse.ObjectAttributeValue(EDParameters.EDFProfileSettings, "EDExchangeMethod");
+				If EDExchangeMethod = Enums.EDExchangeMethods.ThroughDirectory
+					OR EDExchangeMethod = Enums.EDExchangeMethods.ThroughFTP Then
 					
-					EDExchangeMethod = CommonUse.ObjectAttributeValue(EDParameters.EDFProfileSettings, "EDExchangeMethod");
-					If EDExchangeMethod = Enums.EDExchangeMethods.ThroughDirectory
-						OR EDExchangeMethod = Enums.EDExchangeMethods.ThroughFTP Then
-						
-						ActionsStructure.FromOurSide = Enums.EDConsolidatedStates.NoActionsNeeded;
-					EndIf;
-				EndIf;
-			EndIf;
-			
-			If EDParameters.EDStatus = Enums.EDStatuses.TransferedToOperator
-				OR EDParameters.EDStatus = Enums.EDStatuses.Sent Then
-				
-				ActionsStructure.FromOtherPartySide = Enums.EDConsolidatedStates.ActionsNeeded;
-			EndIf;
-			
-			If (EDParameters.EDFScheduleVersion = Enums.Exchange1CRegulationsVersion.Version20
-				AND (EDParameters.EDKind = Enums.EDKinds.TORG12Customer
-					OR EDParameters.EDKind = Enums.EDKinds.ActCustomer
-					OR EDParameters.EDKind = Enums.EDKinds.AgreementAboutCostChangeRecipient))
-				OR (NOT EDParameters.EDFScheduleVersion = Enums.Exchange1CRegulationsVersion.Version20
-					AND EDParameters.EDKind = Enums.EDKinds.NotificationAboutReception) Then
-				
-				EDStatus = Undefined;
-				If ElectronicDocumentsService.HasUnsentConfirmation(EDParameters.FileOwner, EDStatus) Then
-					ActionsStructure.FromOurSide = Enums.EDConsolidatedStates.ActionsNeeded;
-				Else
 					ActionsStructure.FromOurSide = Enums.EDConsolidatedStates.NoActionsNeeded;
-				EndIf;
-				
-			EndIf;
-			
-			If EDParameters.EDStatus = Enums.EDStatuses.TransferedToOperator
-				 AND (EDParameters.EDKind = Enums.EDKinds.ActCustomer
-					OR EDParameters.EDKind = Enums.EDKinds.TORG12Customer
-					OR EDParameters.EDKind = Enums.EDKinds.AgreementAboutCostChangeRecipient) Then
-				ActionsStructure.FromOtherPartySide = Enums.EDConsolidatedStates.NoActionsNeeded;
-			EndIf;
-			
-			If EDParameters.EDStatus = Enums.EDStatuses.Delivered
-				AND EDParameters.EDDirection = Enums.EDDirections.Outgoing
-				AND (EDParameters.EDKind = Enums.EDKinds.AcceptanceCertificate
-					OR EDParameters.EDKind = Enums.EDKinds.RightsDelegationAct
-					OR EDParameters.EDKind = Enums.EDKinds.ProductsReturnBetweenCompanies
-					OR EDParameters.EDKind = Enums.EDKinds.ProductsDirectory
-					OR EDParameters.EDKind = Enums.EDKinds.ComissionGoodsSalesReport
-					OR EDParameters.EDKind = Enums.EDKinds.ComissionGoodsWriteOffReport
-					OR EDParameters.EDKind = Enums.EDKinds.GoodsTransferBetweenCompanies
-					OR EDParameters.EDKind = Enums.EDKinds.PriceList
-					OR EDParameters.EDKind = Enums.EDKinds.AgreementAboutCostChangeSender
-					OR EDParameters.EDKind = Enums.EDKinds.ActPerformer
-					OR EDParameters.EDKind = Enums.EDKinds.TORG12
-					OR EDParameters.EDKind = Enums.EDKinds.TORG12Seller
-					OR EDParameters.EDKind = Enums.EDKinds.ProductOrder
-					OR EDParameters.EDKind = Enums.EDKinds.ResponseToOrder) Then
-				ActionsStructure.FromOtherPartySide = Enums.EDConsolidatedStates.ActionsNeeded;
-			EndIf;
-			
-			If EDParameters.EDStatus = Enums.EDStatuses.CancellationOfferReceived Then
-				ActionsStructure.FromOurSide = Enums.EDConsolidatedStates.ActionsNeeded;
-			ElsIf EDParameters.EDStatus = Enums.EDStatuses.CancellationOfferCreated
-				OR EDParameters.EDStatus = Enums.EDStatuses.CancellationOfferSent Then
-				ActionsStructure.FromOtherPartySide = Enums.EDConsolidatedStates.ActionsNeeded;
-			EndIf;
-			
-		Else
-			EDKindsArray = New Array;
-			ArrayOfSlaveED = New Array;
-			EDKindsArray.Add(LinkToED);
-			SelectSubordinatedED(EDKindsArray, ArrayOfSlaveED);
-			
-			FlagsStructure = New Structure;
-			FlagsStructure.Insert("DirectionESF",   EDParameters.EDDirection);
-			FlagsStructure.Insert("StatusESF",        EDParameters.EDStatus);
-			FlagsStructure.Insert("SentIPUU",    False);
-			FlagsStructure.Insert("ESFSent",     (EDParameters.EDStatus = Enums.EDStatuses.TransferedToOperator
-				OR EDParameters.EDStatus = Enums.EDStatuses.Sent
-				OR EDParameters.EDStatus = Enums.EDStatuses.Delivered));
-			FlagsStructure.Insert("RDCReceived",       False);
-			FlagsStructure.Insert("SDCReceived",       False);
-			FlagsStructure.Insert("PDOIPReceived",     False);
-			FlagsStructure.Insert("NAREISent",   False);
-			FlagsStructure.Insert("NAREIReceived",     False);
-			FlagsStructure.Insert("IPUUReceived",      False);
-			FlagsStructure.Insert("IPUUSent",    False);
-			FlagsStructure.Insert("IPPDPSent",   False);
-			FlagsStructure.Insert("NRCDDSent",   False);
-			FlagsStructure.Insert("IPPDOIPSent", False);
-			FlagsStructure.Insert("UUSent",      False);
-			
-			For Each Item IN ArrayOfSlaveED Do
-				If Item.VersionPointTypeED = Enums.EDVersionElementTypes.EIRDC Then
-					
-					FlagsStructure.RDCReceived = True;
-				ElsIf Item.VersionPointTypeED = Enums.EDVersionElementTypes.EISDC Then
-					
-					FlagsStructure.SDCReceived = True;
-				ElsIf Item.VersionPointTypeED = Enums.EDVersionElementTypes.SDANAREIC Then
-					
-					FlagsStructure.PDOIPReceived = True;
-				ElsIf Item.VersionPointTypeED = Enums.EDVersionElementTypes.NAREI Then
-					
-					If Item.EDStatus = Enums.EDStatuses.Sent Then
-						FlagsStructure.NAREISent = True;
-					ElsIf Item.EDStatus = Enums.EDStatuses.Received Then
-						FlagsStructure.NAREIReceived = True;
-					EndIf;
-					
-				ElsIf Item.VersionPointTypeED = Enums.EDVersionElementTypes.NRNCEI Then
-					
-					If Item.EDStatus = Enums.EDStatuses.Sent Then
-						FlagsStructure.IPUUSent = True;
-					Else
-						FlagsStructure.IPUUReceived = True;
-					EndIf;
-					
-				ElsIf Item.VersionPointTypeED = Enums.EDVersionElementTypes.NRCDREI Then
-					
-					If Item.EDStatus = Enums.EDStatuses.Sent Then
-						FlagsStructure.IPPDPSent = True;
-					EndIf;
-					
-				ElsIf Item.VersionPointTypeED = Enums.EDVersionElementTypes.NRCDDEI Then
-					
-					If Item.EDStatus = Enums.EDStatuses.Sent Then
-						FlagsStructure.NRCDDSent = True;
-					EndIf;
-					
-				ElsIf Item.VersionPointTypeED = Enums.EDVersionElementTypes.NRCDDNREI Then
-					
-					If Item.EDStatus = Enums.EDStatuses.Sent Then
-						FlagsStructure.IPPDOIPSent = True;
-					EndIf;
-					
-				ElsIf Item.VersionPointTypeED = Enums.EDVersionElementTypes.NAEIC Then
-					
-					If Item.EDStatus = Enums.EDStatuses.Sent Then
-						FlagsStructure.UUSent = True;
-					EndIf;
-				EndIf;
-			EndDo;
-			
-			If EDParameters.EDDirection = Enums.EDDirections.Outgoing Then
-				
-				If EDParameters.EDStatus = Enums.EDStatuses.RejectedByReceiver
-					OR Not FlagsStructure.ESFSent OR FlagsStructure.RDCReceived AND Not FlagsStructure.IPPDPSent Then
-					
-					ActionsStructure.FromOurSide = Enums.EDConsolidatedStates.ActionsNeeded;
-				EndIf;
-				
-				If EDParameters.EDStatus = Enums.EDStatuses.RejectedByReceiver Then
-					
-					ActionsStructure.FromOtherPartySide = Enums.EDConsolidatedStates.Rejected;
-				ElsIf (EDParameters.EDStatus = Enums.EDStatuses.TransferedToOperator
-					OR EDParameters.EDStatus = Enums.EDStatuses.Sent)
-					AND (NOT FlagsStructure.RDCReceived OR Not FlagsStructure.NAREIReceived) Then
-					
-					ActionsStructure.FromOtherPartySide = Enums.EDConsolidatedStates.ActionsNeeded;
-				EndIf;
-			Else
-				If EDParameters.EDStatus = Enums.EDStatuses.Rejected AND FlagsStructure.UUSent Then
-					
-					ActionsStructure.FromOurSide = Enums.EDConsolidatedStates.Rejected;
-				ElsIf FlagsStructure.SDCReceived AND Not FlagsStructure.NRCDDSent
-					OR EDParameters.EDStatus = Enums.EDStatuses.Received
-					OR EDParameters.EDStatus = Enums.EDStatuses.Approved AND Not FlagsStructure.NAREISent Then
-					
-					ActionsStructure.FromOurSide = Enums.EDConsolidatedStates.ActionsNeeded;
-				EndIf;
-				
-				If EDParameters.EDStatus = Enums.EDStatuses.Rejected OR Not FlagsStructure.SDCReceived
-					OR FlagsStructure.NAREISent AND Not FlagsStructure.PDOIPReceived
-					OR EDParameters.EDStatus = Enums.EDStatuses.Rejected AND Not FlagsStructure.IPUUReceived Then
-					
-					ActionsStructure.FromOtherPartySide = Enums.EDConsolidatedStates.ActionsNeeded;
 				EndIf;
 			EndIf;
 		EndIf;
+		
+		If EDParameters.EDStatus = Enums.EDStatuses.TransferedToOperator
+			OR EDParameters.EDStatus = Enums.EDStatuses.Sent Then
+			
+			ActionsStructure.FromOtherPartySide = Enums.EDConsolidatedStates.ActionsNeeded;
+		EndIf;
+		
+		If (EDParameters.EDFScheduleVersion = Enums.Exchange1CRegulationsVersion.Version20
+			AND (EDParameters.EDKind = Enums.EDKinds.TORG12Customer
+			OR EDParameters.EDKind = Enums.EDKinds.ActCustomer
+			OR EDParameters.EDKind = Enums.EDKinds.AgreementAboutCostChangeRecipient))
+			OR (NOT EDParameters.EDFScheduleVersion = Enums.Exchange1CRegulationsVersion.Version20
+			AND EDParameters.EDKind = Enums.EDKinds.NotificationAboutReception) Then
+			
+			EDStatus = Undefined;
+			If ElectronicDocumentsService.HasUnsentConfirmation(EDParameters.FileOwner, EDStatus) Then
+				ActionsStructure.FromOurSide = Enums.EDConsolidatedStates.ActionsNeeded;
+			Else
+				ActionsStructure.FromOurSide = Enums.EDConsolidatedStates.NoActionsNeeded;
+			EndIf;
+			
+		EndIf;
+		
+		If EDParameters.EDStatus = Enums.EDStatuses.TransferedToOperator
+			AND (EDParameters.EDKind = Enums.EDKinds.ActCustomer
+			OR EDParameters.EDKind = Enums.EDKinds.TORG12Customer
+			OR EDParameters.EDKind = Enums.EDKinds.AgreementAboutCostChangeRecipient) Then
+			ActionsStructure.FromOtherPartySide = Enums.EDConsolidatedStates.NoActionsNeeded;
+		EndIf;
+		
+		If EDParameters.EDStatus = Enums.EDStatuses.Delivered
+			AND EDParameters.EDDirection = Enums.EDDirections.Outgoing
+			AND (EDParameters.EDKind = Enums.EDKinds.AcceptanceCertificate
+			OR EDParameters.EDKind = Enums.EDKinds.RightsDelegationAct
+			OR EDParameters.EDKind = Enums.EDKinds.ProductsReturnBetweenCompanies
+			OR EDParameters.EDKind = Enums.EDKinds.ProductsDirectory
+			OR EDParameters.EDKind = Enums.EDKinds.ComissionGoodsSalesReport
+			OR EDParameters.EDKind = Enums.EDKinds.ComissionGoodsWriteOffReport
+			OR EDParameters.EDKind = Enums.EDKinds.GoodsTransferBetweenCompanies
+			OR EDParameters.EDKind = Enums.EDKinds.PriceList
+			OR EDParameters.EDKind = Enums.EDKinds.AgreementAboutCostChangeSender
+			OR EDParameters.EDKind = Enums.EDKinds.ActPerformer
+			OR EDParameters.EDKind = Enums.EDKinds.TORG12
+			OR EDParameters.EDKind = Enums.EDKinds.TORG12Seller
+			OR EDParameters.EDKind = Enums.EDKinds.ProductOrder
+			OR EDParameters.EDKind = Enums.EDKinds.ResponseToOrder) Then
+			ActionsStructure.FromOtherPartySide = Enums.EDConsolidatedStates.ActionsNeeded;
+		EndIf;
+		
+		If EDParameters.EDStatus = Enums.EDStatuses.CancellationOfferReceived Then
+			ActionsStructure.FromOurSide = Enums.EDConsolidatedStates.ActionsNeeded;
+		ElsIf EDParameters.EDStatus = Enums.EDStatuses.CancellationOfferCreated
+			OR EDParameters.EDStatus = Enums.EDStatuses.CancellationOfferSent Then
+			ActionsStructure.FromOtherPartySide = Enums.EDConsolidatedStates.ActionsNeeded;
+		EndIf;
+			
 	EndIf;
 	
 	If ActionsStructure.FromOtherPartySide = Enums.EDConsolidatedStates.NoActionsNeeded
@@ -8464,7 +8274,6 @@ Function CanVoidThisED(Val LinkToED) Export
 			|			AND (EDSubordinate.EDKind IN (&EDResponseTitlesKinds))
 			|WHERE
 			|	Not EDAttachedFiles.EDStatus IN (&ExceptionStatusesList)
-			|	AND Not EDAttachedFiles.EDKind IN (&ExceptionKindsList)
 			|	AND Not EDAttachedFiles.DeletionMark
 			|	AND EDAttachedFiles.Ref = &Ref
 			|	AND CASE
@@ -8474,9 +8283,6 @@ Function CanVoidThisED(Val LinkToED) Export
 			|			ELSE FALSE
 			|		END";
 		
-		ExceptionsKindsArray = New Array;
-		ExceptionsKindsArray.Add(Enums.EDKinds.CustomerInvoiceNote);
-		ExceptionsKindsArray.Add(Enums.EDKinds.CorrectiveInvoiceNote);
 		ExceptionStatusesArray = New Array;
 		ExceptionStatusesArray.Add(Enums.EDStatuses.CancellationOfferCreated);
 		ExceptionStatusesArray.Add(Enums.EDStatuses.CancellationOfferReceived);
@@ -8484,7 +8290,6 @@ Function CanVoidThisED(Val LinkToED) Export
 		ExceptionStatusesArray.Add(Enums.EDStatuses.Rejected);
 		ExceptionStatusesArray.Add(Enums.EDStatuses.RejectedByReceiver);
 		Query.SetParameter("Ref", LinkToED);
-		Query.SetParameter("ExceptionKindsList", ExceptionsKindsArray);
 		Query.SetParameter("ExceptionStatusesList", ExceptionStatusesArray);
 		Query.SetParameter("EDAttachedFilesEmptyRef", Catalogs.EDAttachedFiles.EmptyRef());
 		EDResponseTitlesKinds = New Array;
@@ -8573,12 +8378,6 @@ EndProcedure
 Function IsResponseDocument(ElectronicDocument) 
 	
 	Result = False;
-	If ElectronicDocument.EDKind = Enums.EDKinds.TORG12Customer
-		Or ElectronicDocument.EDKind = Enums.EDKinds.CustomerInvoiceNote Then
-		
-		Result = True;
-		
-	EndIf;
 	
 	Return Result;
 		
@@ -8788,21 +8587,7 @@ Procedure DetermineUnprocessedObjects(ObjectsSettings, ArrayOfUncultivatedObject
 	|			OR EDStates.EDVersionState = VALUE(Enum.EDVersionsStates.ExchangeCompletedWithCorrection)
 	|			OR EDStates.EDVersionState = VALUE(Enum.EDVersionsStates.PaymentExecuted)
 	|			OR EDStates.EDVersionState = VALUE(Enum.EDVersionsStates.NotificationAboutReceivingExpected)
-	|			OR &CustomerInvoiceNote
 	|			OR &PaymentOrder)";
-	
-	IssuedInvoiceName = ElectronicDocumentsReUse.NameAttributeObjectExistanceInAppliedSolution(
-																	"CustomerInvoiceNoteInMetadata");
-	If IssuedInvoiceName <> Undefined Then
-		
-		Query.Text = StrReplace(
-							Query.Text,
-							"&CustomerInvoiceNote",
-							"EDStates.ObjectRef REFS Document." + IssuedInvoiceName + "
-		|						AND (EDStates.EDVersionState = VALUE(Enum.EDVersionsStates.NotificationAboutReceivingExpected) OR EDStates.EDVersionState = VALUE(Enum.EDVersionsState.ExchangeComplete) OR EDStates.EDVersionState = VALUE(Enum.EDVersionsStates.ExchangeCompleteWithCorrection) OR EDStates.EDVersionsState = VALUE(Enum.EDVersionsStates.Rejected))");
-	Else
-		Query.Text = StrReplace(Query.Text, "&CustomerInvoiceNote", "FALSE");
-	EndIf;
 	
 	PaymentOrderName = ElectronicDocumentsReUse.NameAttributeObjectExistanceInAppliedSolution(
 																	"PaymentOrderInMetadata");
@@ -8906,26 +8691,17 @@ Function BasisED(LinkToED, EDDirection) Export
 	
 	EDStructure = ElectronicDocumentsInternal.ParseDataFile(ParametersStructure);
 	
-	If LinkToED.EDKind = Enums.EDKinds.CustomerInvoiceNote Then
-		
-		BaseID = EDStructure.IDEDDocumentFoundation;
-		BasisED = RefEDByID(BaseID, EDDirection);
-
-	Else
-		
-		AdditDataTree = Undefined;
-		If Not EDStructure.Property("AdditDataTree", AdditDataTree) Then 
-			Return Undefined;
-		EndIf;
-		
-		BaseDocumentString = EDStructure.AdditDataTree.Rows.Find("IDEDDocumentFoundation", , True);
-		If BaseDocumentString = Undefined Then
-			Return Undefined;
-		EndIf;
-		
-		BasisED = RefEDByID(BaseDocumentString.AttributeValue, EDDirection);
-		
+	AdditDataTree = Undefined;
+	If Not EDStructure.Property("AdditDataTree", AdditDataTree) Then 
+		Return Undefined;
 	EndIf;
+	
+	BaseDocumentString = EDStructure.AdditDataTree.Rows.Find("IDEDDocumentFoundation", , True);
+	If BaseDocumentString = Undefined Then
+		Return Undefined;
+	EndIf;
+	
+	BasisED = RefEDByID(BaseDocumentString.AttributeValue, EDDirection);
 	
 	Return BasisED;
 		
@@ -8939,11 +8715,7 @@ Function ThisIsCorrectionDocument(AddedFile) Export
 	Result = False;
 	
 	If (AddedFile.EDKind = Enums.EDKinds.TORG12Seller 
-			Or AddedFile.EDKind = Enums.EDKinds.TORG12Customer)
-			
-			Or (AddedFile.EDKind = Enums.EDKinds.NotificationAboutReception
-				AND ValueIsFilled(AddedFile.ElectronicDocumentOwner)
-				AND AddedFile.ElectronicDocumentOwner.EDKind = Enums.EDKinds.CustomerInvoiceNote) Then
+			Or AddedFile.EDKind = Enums.EDKinds.TORG12Customer) Then
 				
 		Result = True;
 	EndIf;
@@ -11259,14 +11031,7 @@ Function GenerateServiceED(EDKindsArray, EDKind, CorrectionText = "") Export
 			ElsIf EDKind = Enums.EDKinds.CancellationOffer Then
 				VersionPointTypeED = Enums.EDVersionElementTypes.ATA;
 			Else
-				If LinkToED.EDKind = Enums.EDKinds.CustomerInvoiceNote
-				OR LinkToED.EDKind = Enums.EDKinds.CorrectiveInvoiceNote Then
-				
-					VersionPointTypeED = Enums.EDVersionElementTypes.NAEIC;
-				Else
-					
-					VersionPointTypeED = Enums.EDVersionElementTypes.NAC;
-				EndIf;
+				VersionPointTypeED = Enums.EDVersionElementTypes.NAC;
 			EndIf;
 			ParametersStructure.Insert("VersionPointTypeED",         VersionPointTypeED);
 			ParametersStructure.Insert("SenderDocumentDate",    FileCreationDate);
@@ -11649,7 +11414,7 @@ Function StatementQueriesArrayAsync(EDAgreement, Company, Bank, CompanyID, Start
 		AttributeCompanyName = "Description";
 	EndIf;
 	SenderName = CommonUse.GetAttributeValue(Company, AttributeCompanyName);
-	CompanyAttributes = CommonUse.ObjectAttributesValues(Company, "TIN, KPP");
+	CompanyAttributes = CommonUse.ObjectAttributesValues(Company, "TIN");
 	BankingDetails = CommonUse.ObjectAttributesValues(Bank, "Code, description");
 	TargetNamespace = ElectronicDocumentsService.AsynchronousExchangeWithBanksNamespace();
 	
@@ -11672,7 +11437,6 @@ Function StatementQueriesArrayAsync(EDAgreement, Company, Bank, CompanyID, Start
 			ElectronicDocumentsInternal.FillXDTOProperty(Sender, "id", CompanyID, True, ErrorText);
 			ElectronicDocumentsInternal.FillXDTOProperty(Sender, "name", SenderName, , ErrorText);
 			ElectronicDocumentsInternal.FillXDTOProperty(Sender, "tin", CompanyAttributes.TIN, , ErrorText);
-			ElectronicDocumentsInternal.FillXDTOProperty(Sender, "kpp", CompanyAttributes.KPP, , ErrorText);
 			ElectronicDocumentsInternal.FillXDTOProperty(ED, "Sender", Sender, True, ErrorText);
 			
 			Recipient = ElectronicDocumentsInternal.GetCMLObjectType("BankPartyType", TargetNamespace);

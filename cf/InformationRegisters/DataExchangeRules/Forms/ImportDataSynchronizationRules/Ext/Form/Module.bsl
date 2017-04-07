@@ -63,7 +63,7 @@ Procedure OnOpen(Cancel)
 		
 		SuggestionText = NStr("en='To open a directory, you need to set an extension of working with files.';ru='Для открытия каталога необходимо необходимо установить расширение работы с файлами.'");
 		Notification = New NotifyDescription("AfterWorksWithFilesExpansionCheck", ThisForm, AdditionalParameters);
-		CommonUseClient.ShowQuestionAboutFileOperationsExtensionSetting(Notification, SuggestionText);
+		CommonUseClient.ShowFileSystemExtensionInstallationQuestion(Notification, SuggestionText);
 		
 	Else
 		SetInformationTitleAboutReceipt(AdditionalParameters);

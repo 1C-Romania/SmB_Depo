@@ -41,7 +41,6 @@ Function LegalEntityDetailsByTIN(Val TIN) Export
 	FillLegalEntityNames(XDTODataObject, LegalEntityDetails);
 	
 	LegalEntityDetails.RegistrationNumber = XDTODataObject.OGRN;
-	LegalEntityDetails.KPP = XDTODataObject.KPP;
 	
 	LegalEntityDetails.RegistrationDate = XDTODataObject.LegalEntityNameInfo.LegalEntityFormationDate;
 	
@@ -217,7 +216,6 @@ Function NewLegalEntityDetails()
 	// Filled out based on LEGAL ENTITIES data
 	
 	DetailsOfLegalEntity.Insert("TIN");                         // String, 10
-	DetailsOfLegalEntity.Insert("KPP");                         // String, 9
 	DetailsOfLegalEntity.Insert("Description");                // String, 0
 	DetailsOfLegalEntity.Insert("DescriptionFull");          // String, 0
 	DetailsOfLegalEntity.Insert("AbbreviatedName");     // String, 0
@@ -568,7 +566,7 @@ Procedure FillInLegalAddress(XDTODataObject, Attributes)
 		KI.Content.Country = XDTODataObject.InfoAddress.Address.Country;
 		KI.Content.Content = AddressRF_KI;
 		KI.Presentation = ContactInformationManagement.PresentationContactInformation(
-			KI, Catalogs.ContactInformationTypes.CounterpartyLegalAddress);
+			KI, Catalogs.ContactInformationKinds.CounterpartyLegalAddress);
 		
 		CIStructure = NewContactInformation();
 		CIStructure.ContactInformation = XDTOObjectSerialization(KI);
@@ -613,7 +611,7 @@ Procedure FillInManagerAndPhoneNumber(XDTODataObject, Attributes)
 						KI.Content.Number     = InformationAboutPosition.PhoneNumber;
 					EndIf;
 					KI.Presentation = ContactInformationManagement.PresentationContactInformation(
-						KI, Catalogs.ContactInformationTypes.CounterpartyPhone);
+						KI, Catalogs.ContactInformationKinds.CounterpartyPhone);
 					CIStructure = NewContactInformation();
 					CIStructure.ContactInformation = XDTOObjectSerialization(KI);
 					CIStructure.Presentation = KI.Presentation;

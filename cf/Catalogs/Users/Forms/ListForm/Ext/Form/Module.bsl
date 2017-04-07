@@ -925,17 +925,3 @@ Procedure RefreshDataCompositionParameterValue(Val OwnerOfParameters,
 EndProcedure
 
 #EndRegion
-
-
-
-
-
-
-
-
-
-
-
-
-
-

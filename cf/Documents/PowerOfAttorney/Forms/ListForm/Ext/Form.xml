@@ -189,9 +189,13 @@
 							<v8:lang>en</v8:lang>
 							<v8:content>Company</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Организация</v8:content>
+						</v8:item>
 					</Title>
-					<ContextMenu name="CounterpartyContextMenu" id="9"/>
-					<ExtendedTooltip name="CounterpartyExtendedTooltip" id="33"/>
+					<ContextMenu name="CompanyContextMenu" id="9"/>
+					<ExtendedTooltip name="CompanyExtendedTooltip" id="33"/>
 				</LabelField>
 				<LabelField name="Ind" id="12">
 					<DataPath>List.Ind</DataPath>
@@ -240,24 +244,6 @@
 					</Title>
 					<ContextMenu name="ContractContextMenu" id="17"/>
 					<ExtendedTooltip name="ContractExtendedTooltip" id="36"/>
-				</LabelField>
-				<LabelField name="" id="18">
-					<DataPath>List</DataPath>
-					<UserVisible>
-						<xr:Common>false</xr:Common>
-					</UserVisible>
-					<Title>
-						<v8:item>
-							<v8:lang>en</v8:lang>
-							<v8:content>Basis</v8:content>
-						</v8:item>
-						<v8:item>
-							<v8:lang>ru</v8:lang>
-							<v8:content>Основание</v8:content>
-						</v8:item>
-					</Title>
-					<ContextMenu name="ContextMenu" id="19"/>
-					<ExtendedTooltip name="ExtendedTooltip" id="37"/>
 				</LabelField>
 				<LabelField name="ActivityDate" id="20">
 					<DataPath>List.ActivityDate</DataPath>

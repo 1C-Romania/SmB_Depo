@@ -233,17 +233,3 @@ Procedure SetDataDesign()
 EndProcedure
 
 #EndRegion
-
-
-
-
-
-
-
-
-
-
-
-
-
-

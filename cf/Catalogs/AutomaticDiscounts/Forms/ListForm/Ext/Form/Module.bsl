@@ -187,17 +187,3 @@ Procedure DiscountsJointApplicationOptionOnChangeAtServer(SharedUsageVariantOfDi
 EndProcedure
 
 #EndRegion
-
-
-
-
-
-
-
-
-
-
-
-
-
-

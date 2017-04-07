@@ -347,8 +347,8 @@ Procedure FillBySettlementsReconciliation(FillingData)
 		NewRow = Parties.Add();
 		NewRow.Contact = ContactPerson;
 		
-		HowToContactPhone = ContactInformationManagement.GetObjectContactInformation(ContactPerson, Catalogs.ContactInformationTypes.ContactPersonPhone);
-		HowToContactEmail = ContactInformationManagement.GetObjectContactInformation(ContactPerson, Catalogs.ContactInformationTypes.ContactPersonEmail);
+		HowToContactPhone = ContactInformationManagement.GetObjectContactInformation(ContactPerson, Catalogs.ContactInformationKinds.ContactPersonPhone);
+		HowToContactEmail = ContactInformationManagement.GetObjectContactInformation(ContactPerson, Catalogs.ContactInformationKinds.ContactPersonEmail);
 		
 		If IsBlankString(HowToContactPhone) Then
 			NewRow.HowToContact = TrimAll(HowToContactEmail);
@@ -537,7 +537,7 @@ Function GetHowToContact(Contact, DocumentEventType)
 		CITypes.Add(Enums.ContactInformationTypes.Phone);
 	EndIf;
 	
-	CITable = ContactInformationManagement.ContactInformationOfObjects(Contacts, CITypes);
+	CITable = ContactInformationManagement.ObjectsContactInformation(Contacts, CITypes);
 	CITable.Sort("Type DESC");
 	For Each CIRow IN CITable Do
 		Result = "" + Result + ?(Result = "", "", ", ") + CIRow.Presentation;

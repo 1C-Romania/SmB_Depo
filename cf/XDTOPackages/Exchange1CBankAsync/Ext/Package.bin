@@ -56,9 +56,6 @@
 	<objectType name="CustomerDetailsType">
 		<property name="Name" type="xs:string"/>
 		<property name="TIN" type="xs:string" lowerBound="0"/>
-		<property name="KPP" lowerBound="0">
-			<typeDef xsi:type="ValueType" base="xs:string" variety="Atomic" minLength="1" maxLength="9"/>
-		</property>
 		<property xmlns:d3p1="http://bank.1c.ru/XMLSchema" name="Account" type="d3p1:AccNumType"/>
 		<property xmlns:d3p1="http://bank.1c.ru/XMLSchema" name="Bank" type="d3p1:BankType"/>
 	</objectType>
@@ -69,9 +66,6 @@
 		</property>
 		<property name="tin" lowerBound="0" form="Attribute">
 			<typeDef xsi:type="ValueType" base="xs:string" variety="Atomic" minLength="10" maxLength="12"/>
-		</property>
-		<property name="kpp" lowerBound="0" form="Attribute">
-			<typeDef xsi:type="ValueType" base="xs:string" variety="Atomic" length="9"/>
 		</property>
 	</objectType>
 	<objectType name="DigestType">

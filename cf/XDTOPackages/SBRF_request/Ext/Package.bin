@@ -61,9 +61,6 @@
 	<valueType name="InnType" base="xs:string" variety="Atomic" maxLength="12">
 		<pattern>[0-9]{10,12}</pattern>
 	</valueType>
-	<valueType name="KppType" base="xs:string" variety="Atomic" maxLength="9">
-		<pattern>[0-9]{5}[0-9A-Za-z]{1}[0-9]{3}</pattern>
-	</valueType>
 	<valueType name="Max140Text" base="xs:string" variety="Atomic" maxLength="140"/>
 	<valueType name="Max210Text" base="xs:string" variety="Atomic" minLength="1" maxLength="210"/>
 	<valueType name="Max35Text" base="xs:string" variety="Atomic" minLength="1" maxLength="35"/>
@@ -671,7 +668,6 @@
 				<property name="Inn_Kpp">
 					<typeDef xsi:type="ObjectType">
 						<property xmlns:d7p1="http://www.bssys.com/en/" name="tin" type="d7p1:InnType" lowerBound="0" form="Attribute"/>
-						<property xmlns:d7p1="http://www.bssys.com/en/" name="kpp" type="d7p1:KppType" lowerBound="0" form="Attribute"/>
 					</typeDef>
 				</property>
 			</typeDef>
@@ -756,7 +752,6 @@
 				<property name="Inn_Kpp">
 					<typeDef xsi:type="ObjectType">
 						<property xmlns:d7p1="http://www.bssys.com/en/" name="tin" type="d7p1:InnType" lowerBound="0" form="Attribute"/>
-						<property xmlns:d7p1="http://www.bssys.com/en/" name="kpp" type="d7p1:KppType" lowerBound="0" form="Attribute"/>
 					</typeDef>
 				</property>
 			</typeDef>
@@ -1109,7 +1104,6 @@
 		</property>
 	</objectType>
 	<objectType name="OrgData">
-		<property xmlns:d3p1="http://www.bssys.com/en/" name="kpp" type="d3p1:KppType" lowerBound="0" form="Attribute"/>
 		<property xmlns:d3p1="http://www.bssys.com/en/" name="okato" type="d3p1:OkatoType" lowerBound="0" form="Attribute"/>
 		<property xmlns:d3p1="http://www.bssys.com/en/" name="tin" type="d3p1:InnType" lowerBound="1" form="Attribute"/>
 		<property name="orgName" lowerBound="1" form="Attribute">
@@ -1260,7 +1254,6 @@
 		<property name="personalAcc" lowerBound="0" form="Attribute">
 			<typeDef xmlns:d4p1="http://www.bssys.com/en/" xsi:type="ValueType" base="d4p1:AccNumType" variety="Atomic" length="20"/>
 		</property>
-		<property xmlns:d3p1="http://www.bssys.com/en/" name="kpp" type="d3p1:KppType" lowerBound="0" form="Attribute"/>
 		<property name="tin" lowerBound="0" form="Attribute">
 			<typeDef xmlns:d4p1="http://www.bssys.com/en/" xsi:type="ValueType" base="d4p1:InnType" variety="Atomic">
 				<pattern>[0-9]{5,12}</pattern>
@@ -1280,7 +1273,6 @@
 				<pattern>[0-9]{5,12}</pattern>
 			</typeDef>
 		</property>
-		<property xmlns:d3p1="http://www.bssys.com/en/" name="kpp" type="d3p1:KppType" lowerBound="0" form="Attribute"/>
 		<property xmlns:d3p1="http://www.bssys.com/en/" name="personalAcc" type="d3p1:AccNumType" lowerBound="1" form="Attribute"/>
 		<property name="Name">
 			<typeDef xsi:type="ValueType" base="xs:string" variety="Atomic" maxLength="160"/>

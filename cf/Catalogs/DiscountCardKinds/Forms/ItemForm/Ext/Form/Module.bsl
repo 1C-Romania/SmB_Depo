@@ -210,16 +210,3 @@ Procedure VisibleManagementAtServer()
 EndProcedure
 
 #EndRegion
-
-
-
-
-
-
-
-
-
-
-
-
-

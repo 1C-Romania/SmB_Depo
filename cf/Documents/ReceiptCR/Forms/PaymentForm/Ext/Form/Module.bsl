@@ -1423,16 +1423,3 @@ Procedure CopyTableDataInReceiverFromSourceAtClient(Receiver, Source);
 EndProcedure
 
 #EndRegion
-
-
-
-
-
-
-
-
-
-
-
-
-

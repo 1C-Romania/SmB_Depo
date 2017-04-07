@@ -632,6 +632,10 @@
 							<v8:lang>en</v8:lang>
 							<v8:content>Company</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Организация</v8:content>
+						</v8:item>
 					</Synonym>
 					<Comment/>
 					<Type>
@@ -2125,7 +2129,7 @@
 							</Synonym>
 							<Comment/>
 							<Type>
-								<v8:Type>cfg:CatalogRef.ContactInformationTypes</v8:Type>
+								<v8:Type>cfg:CatalogRef.ContactInformationKinds</v8:Type>
 							</Type>
 							<PasswordMode>false</PasswordMode>
 							<Format/>
@@ -2214,7 +2218,7 @@
 					</Attribute>
 					<Attribute uuid="e8707eb3-6c5f-44ef-84aa-07b0376ab196">
 						<Properties>
-							<Name>FieldsValues</Name>
+							<Name>FieldValues</Name>
 							<Synonym>
 								<v8:item>
 									<v8:lang>en</v8:lang>
@@ -2320,11 +2324,11 @@
 					</Attribute>
 					<Attribute uuid="77c1af75-d10c-432f-98e7-8cc28c888107">
 						<Properties>
-							<Name>State</Name>
+							<Name>Region</Name>
 							<Synonym>
 								<v8:item>
 									<v8:lang>en</v8:lang>
-									<v8:content>State</v8:content>
+									<v8:content>Region</v8:content>
 								</v8:item>
 								<v8:item>
 									<v8:lang>ru</v8:lang>
@@ -2426,7 +2430,7 @@
 					</Attribute>
 					<Attribute uuid="91b69288-1b46-4cf5-be5e-e625af9b4811">
 						<Properties>
-							<Name>EMail_Address</Name>
+							<Name>EmailAddress</Name>
 							<Synonym>
 								<v8:item>
 									<v8:lang>en</v8:lang>
@@ -2585,7 +2589,7 @@
 					</Attribute>
 					<Attribute uuid="032a7655-91a9-4429-a9c1-e5ad236e5995">
 						<Properties>
-							<Name>PhoneNumberNoCodes</Name>
+							<Name>PhoneNumberWithoutCodes</Name>
 							<Synonym>
 								<v8:item>
 									<v8:lang>en</v8:lang>

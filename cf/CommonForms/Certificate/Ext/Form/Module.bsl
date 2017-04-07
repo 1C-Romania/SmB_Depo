@@ -112,22 +112,22 @@ Procedure FillSubjectProperties(Certificate)
 	Collection = DigitalSignatureClientServer.CertificateSubjectProperties(Certificate);
 	
 	PropertiesPresentation = New ValueList;
-	PropertiesPresentation.Add("CommonName",         NStr("en='Common name';ru='Общее имя'"));
-	PropertiesPresentation.Add("Country",           NStr("en='Country';ru='Страна'"));
-	PropertiesPresentation.Add("Region",           NStr("en='Region';ru='Регион'"));
-	PropertiesPresentation.Add("Settlement",  NStr("en='Settlement';ru='НаселПункт'"));
-	PropertiesPresentation.Add("Street",            NStr("en='Street';ru='Улица'"));
-	PropertiesPresentation.Add("Company",      NStr("en = 'Company'"));
-	PropertiesPresentation.Add("Department",    NStr("en='Department';ru='Подразделение'"));
-	PropertiesPresentation.Add("Position",        NStr("en='Position';ru='Position'"));
-	PropertiesPresentation.Add("Email", NStr("en='Email';ru='Электронное письмо'"));
-	PropertiesPresentation.Add("OGRN",             NStr("en='OGRN';ru='ОГРН'"));
-	PropertiesPresentation.Add("OGRNIP",           NStr("en='OGRNIP';ru='ОГРНИП'"));
-	PropertiesPresentation.Add("INILA",            NStr("en='INILA';ru='СНИЛС'"));
-	PropertiesPresentation.Add("TIN",              NStr("en='TIN';ru='ИНН'"));
-	PropertiesPresentation.Add("Surname",          NStr("en='Surname';ru='Фамилия'"));
-	PropertiesPresentation.Add("Name",              NStr("en='Name';ru='Имя'"));
-	PropertiesPresentation.Add("Patronymic",         NStr("en='Patronymic';ru='Отчество'"));
+	PropertiesPresentation.Add("CommonName",	NStr("en='Common name';ru='Общее имя'"));
+	PropertiesPresentation.Add("Country",		NStr("en='Country';ru='Страна'"));
+	PropertiesPresentation.Add("Region",		NStr("en='Region';ru='Регион'"));
+	PropertiesPresentation.Add("Settlement",	NStr("en='Settlement';ru='НаселПункт'"));
+	PropertiesPresentation.Add("Street",		NStr("en='Street';ru='Улица'"));
+	PropertiesPresentation.Add("Company",		NStr("en='Company';ru='Организация'"));
+	PropertiesPresentation.Add("Department",	NStr("en='Department';ru='Подразделение'"));
+	PropertiesPresentation.Add("Position",		NStr("en='Position';ru='Position'"));
+	PropertiesPresentation.Add("Email",			NStr("en='Email';ru='Электронное письмо'"));
+	PropertiesPresentation.Add("OGRN",			NStr("en='OGRN';ru='ОГРН'"));
+	PropertiesPresentation.Add("OGRNIP",		NStr("en='OGRNIP';ru='ОГРНИП'"));
+	PropertiesPresentation.Add("INILA",			NStr("en='INILA';ru='СНИЛС'"));
+	PropertiesPresentation.Add("TIN",			NStr("en='TIN';ru='ИНН'"));
+	PropertiesPresentation.Add("Surname",		NStr("en='Surname';ru='Фамилия'"));
+	PropertiesPresentation.Add("Name",			NStr("en='Name';ru='Имя'"));
+	PropertiesPresentation.Add("Patronymic",	NStr("en='Patronymic';ru='Отчество'"));
 	
 	For Each ItemOfList IN PropertiesPresentation Do
 		If Not ValueIsFilled(Collection[ItemOfList.Value]) Then
@@ -146,16 +146,16 @@ Procedure FillIssuerProperties(Certificate)
 	Collection = DigitalSignatureClientServer.CertificateIssuerProperties(Certificate);
 	
 	PropertiesPresentation = New ValueList;
-	PropertiesPresentation.Add("CommonName",NStr("en='Common name';ru='Общее имя'"));
-	PropertiesPresentation.Add("Country",   NStr("en='Country';ru='Страна'"));
-	PropertiesPresentation.Add("Region",    NStr("en='Region';ru='Регион'"));
-	PropertiesPresentation.Add("Settlement",NStr("en='Settlement';ru='НаселПункт'"));
-	PropertiesPresentation.Add("Street",    NStr("en='Street';ru='Улица'"));
-	PropertiesPresentation.Add("Company",   NStr("en='Company';ru='Организация'"));
-	PropertiesPresentation.Add("Department",  NStr("en='Department';ru='Подразделение'"));
-	PropertiesPresentation.Add("Email",		NStr("en='Email';ru='Электронное письмо'"));
-	PropertiesPresentation.Add("OGRN",      NStr("en='OGRN';ru='ОГРН'"));
-	PropertiesPresentation.Add("TIN",       NStr("en='TIN';ru='ИНН'"));
+	PropertiesPresentation.Add("CommonName",	NStr("en='Common name';ru='Общее имя'"));
+	PropertiesPresentation.Add("Country",		NStr("en='Country';ru='Страна'"));
+	PropertiesPresentation.Add("Region",		NStr("en='Region';ru='Регион'"));
+	PropertiesPresentation.Add("Settlement",	NStr("en='Settlement';ru='НаселПункт'"));
+	PropertiesPresentation.Add("Street",		NStr("en='Street';ru='Улица'"));
+	PropertiesPresentation.Add("Company",		NStr("en='Company';ru='Организация'"));
+	PropertiesPresentation.Add("Department",	NStr("en='Department';ru='Подразделение'"));
+	PropertiesPresentation.Add("Email",			NStr("en='Email';ru='Электронное письмо'"));
+	PropertiesPresentation.Add("OGRN",			NStr("en='OGRN';ru='ОГРН'"));
+	PropertiesPresentation.Add("TIN",			NStr("en='TIN';ru='ИНН'"));
 	
 	For Each ItemOfList IN PropertiesPresentation Do
 		If Not ValueIsFilled(Collection[ItemOfList.Value]) Then
@@ -296,17 +296,3 @@ Function CertificateAddress(RefsThumbprint, FormID = Undefined)
 EndFunction
 
 #EndRegion
-
-
-
-
-
-
-
-
-
-
-
-
-
-

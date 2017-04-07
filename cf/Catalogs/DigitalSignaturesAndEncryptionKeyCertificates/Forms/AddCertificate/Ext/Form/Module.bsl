@@ -143,17 +143,3 @@ Procedure SetCommandsContentForEncryptionOnly(Form)
 EndProcedure
 
 #EndRegion
-
-
-
-
-
-
-
-
-
-
-
-
-
-

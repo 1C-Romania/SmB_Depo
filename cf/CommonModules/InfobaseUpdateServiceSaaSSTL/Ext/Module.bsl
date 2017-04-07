@@ -56,7 +56,7 @@ Procedure BeforeDataImport(Container) Export
 	
 	Try
 		
-		For Each SubsystemVersion IN SubsystemVersions Do
+		For Each SubsystemVersion In SubsystemVersions Do
 			InfobaseUpdateService.SetIBVersion(SubsystemVersion.Key, SubsystemVersion.Value, (SubsystemVersion.Key = Metadata.Name));
 		EndDo;
 		

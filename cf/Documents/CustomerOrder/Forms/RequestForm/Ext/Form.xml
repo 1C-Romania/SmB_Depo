@@ -1047,8 +1047,8 @@
 									<ChildItems>
 										<InputField name="Company" id="53">
 											<DataPath>Object.Company</DataPath>
-											<ContextMenu name="CounterpartyContextMenu" id="54"/>
-											<ExtendedTooltip name="CounterpartyExtendedTooltip" id="225"/>
+											<ContextMenu name="CompanyContextMenu" id="54"/>
+											<ExtendedTooltip name="CompanyExtendedTooltip" id="225"/>
 											<Events>
 												<Event name="OnChange">CompanyOnChange</Event>
 											</Events>
@@ -1731,7 +1731,12 @@
 				</v8:item>
 			</Title>
 			<Type>
-				<v8:TypeId>7df51630-43b5-4ce5-9c6d-05075e9da985</v8:TypeId>
+				<v8:Type>xs:decimal</v8:Type>
+				<v8:NumberQualifiers>
+					<v8:Digits>10</v8:Digits>
+					<v8:FractionDigits>0</v8:FractionDigits>
+					<v8:AllowedSign>Nonnegative</v8:AllowedSign>
+				</v8:NumberQualifiers>
 			</Type>
 		</Attribute>
 		<Attribute name="RateNationalCurrency" id="29">
@@ -1746,7 +1751,12 @@
 				</v8:item>
 			</Title>
 			<Type>
-				<v8:TypeId>68e59cac-a032-48d5-8f3f-dc6a3fc54686</v8:TypeId>
+				<v8:Type>xs:decimal</v8:Type>
+				<v8:NumberQualifiers>
+					<v8:Digits>10</v8:Digits>
+					<v8:FractionDigits>4</v8:FractionDigits>
+					<v8:AllowedSign>Nonnegative</v8:AllowedSign>
+				</v8:NumberQualifiers>
 			</Type>
 		</Attribute>
 		<Attribute name="NationalCurrency" id="30">
@@ -2408,13 +2418,13 @@
 				<DefaultVisible>false</DefaultVisible>
 			</Item>
 			<Item>
-				<Command>Document.CustomerInvoiceNote.StandardCommand.CreateBasedOn</Command>
+				<Command>2:bc0f80db-2084-4ebc-8fab-df30c343112b</Command>
 				<Type>Auto</Type>
 				<Index>22</Index>
 				<DefaultVisible>false</DefaultVisible>
 			</Item>
 			<Item>
-				<Command>Document.CustomerOrder.Command.InvoiceWithCCDCreateBasedOn</Command>
+				<Command>0:37e02458-4631-460d-a422-85daae2b10ea</Command>
 				<Type>Auto</Type>
 				<Index>21</Index>
 				<DefaultVisible>false</DefaultVisible>

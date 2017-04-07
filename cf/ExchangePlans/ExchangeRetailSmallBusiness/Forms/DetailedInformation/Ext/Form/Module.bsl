@@ -13,17 +13,3 @@ Procedure OnCreateAtServer(Cancel, StandardProcessing)
 	Title = NStr("en='Information about data synchronization with 1C:Standard subsystem library';ru='Информация о синхронизации данных с 1С:Библиотека стандартных подсистем'");
 
 EndProcedure
-
-
-
-
-
-
-
-
-
-
-
-
-
-

@@ -266,7 +266,6 @@
 				<xr:Item xsi:type="xr:MDObjectRef">Document.CustomerInvoice</xr:Item>
 				<xr:Item xsi:type="xr:MDObjectRef">Document.AgentReport</xr:Item>
 				<xr:Item xsi:type="xr:MDObjectRef">Document.AcceptanceCertificate</xr:Item>
-				<xr:Item xsi:type="xr:MDObjectRef">Document.CustomerInvoiceNote</xr:Item>
 				<xr:Item xsi:type="xr:MDObjectRef">Document.ProcessingReport</xr:Item>
 				<xr:Item xsi:type="xr:MDObjectRef">Document.CustomerOrder</xr:Item>
 			</BasedOn>
@@ -330,6 +329,10 @@
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>Company</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Организация</v8:content>
 						</v8:item>
 					</Synonym>
 					<Comment/>
@@ -767,7 +770,6 @@
 						<v8:Type>cfg:DocumentRef.CustomerInvoice</v8:Type>
 						<v8:Type>cfg:DocumentRef.AgentReport</v8:Type>
 						<v8:Type>cfg:DocumentRef.AcceptanceCertificate</v8:Type>
-						<v8:Type>cfg:DocumentRef.CustomerInvoiceNote</v8:Type>
 						<v8:Type>cfg:DocumentRef.CustomerOrder</v8:Type>
 					</Type>
 					<PasswordMode>false</PasswordMode>

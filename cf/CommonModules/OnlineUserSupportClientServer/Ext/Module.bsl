@@ -1728,7 +1728,7 @@ Function StructureMechanismStop(ServerCommand) Export
 	
 EndFunction
 
-// Convert the Change business-process command to the external presentation.
+// Convert the Change business process command to the external presentation.
 //
 Function StructureServerResponseOnBusinessProcessTransfer(ServerCommand) Export
 	
@@ -2616,7 +2616,7 @@ EndFunction
 // LaunchLocation - String - entry point to the business process.
 //
 // Returns:
-// Boolean - True if the business-process processes
+// Boolean - True if the business process processes
 // 	OSL using the base functionality, False - otherwise.
 //
 Function ThisIsBaseBusinessProcess(LaunchLocation) Export

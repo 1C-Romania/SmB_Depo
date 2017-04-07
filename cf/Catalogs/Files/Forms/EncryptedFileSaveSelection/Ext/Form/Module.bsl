@@ -38,17 +38,3 @@ Procedure SaveFile(Command)
 EndProcedure
 
 #EndRegion
-
-
-
-
-
-
-
-
-
-
-
-
-
-

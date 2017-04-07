@@ -191,7 +191,7 @@
 	<objectType name="AddressList">
 		<property name="Item" lowerBound="0" upperBound="-1">
 			<typeDef xsi:type="ObjectType">
-				<property xmlns:d5p1="http://www.v8.1c.ru/ssl/contactinfo" name="Address" type="d5p1:AddressRF"/>
+				<property xmlns:d5p1="http://www.v8.1c.ru/ssl/contactinfo" name="Address" type="d5p1:AddressUS"/>
 				<property xmlns:d5p1="http://www.v8.1c.ru/ssl/AddressSystem" name="Levels" type="d5p1:Levels" lowerBound="0" upperBound="1" nillable="true" form="Attribute"/>
 				<property xmlns:d5p1="http://www.v8.1c.ru/ssl/AddressSystem" name="ID" type="d5p1:UUID" lowerBound="0" nillable="false" form="Attribute"/>
 			</typeDef>

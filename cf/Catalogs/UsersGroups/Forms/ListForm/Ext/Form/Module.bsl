@@ -70,17 +70,3 @@ Procedure CustomizeOrderFoldersAllUsers(List)
 EndProcedure
 
 #EndRegion
-
-
-
-
-
-
-
-
-
-
-
-
-
-

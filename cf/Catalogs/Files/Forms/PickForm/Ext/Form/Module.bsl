@@ -76,17 +76,3 @@ Procedure IdleProcessing()
 EndProcedure
 
 #EndRegion
-
-
-
-
-
-
-
-
-
-
-
-
-
-

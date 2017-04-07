@@ -1241,16 +1241,3 @@ Function GetContactChoiceList(val SearchString)
 EndFunction
 
 #EndRegion
-
-
-
-
-
-
-
-
-
-
-
-
-

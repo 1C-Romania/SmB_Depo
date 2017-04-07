@@ -158,7 +158,6 @@
 	</AutoCommandBar>
 	<Events>
 		<Event name="AfterWrite">AfterWrite</Event>
-		<Event name="ChoiceProcessing">ChoiceProcessing</Event>
 		<Event name="AfterWriteAtServer">AfterWriteAtServer</Event>
 		<Event name="NotificationProcessing">NotificationProcessing</Event>
 		<Event name="OnReadAtServer">OnReadAtServer</Event>
@@ -309,27 +308,27 @@
 														<Autofill>false</Autofill>
 													</ContextMenu>
 													<ExtendedTooltip name="VALStatusExtendedTooltip" id="1273">
-														<Title formatted="false">
+														<Title formatted="true">
 															<v8:item>
 																<v8:lang>en</v8:lang>
-																<v8:content>Order state is a set of parameters that define an order status,
+																<v8:content>&lt;b&gt;Order state&lt;/&gt; is a set of parameters that define an order status,
 for example, whether the order is complete or only awaiting appointment. It is determined by its state. 
 
 The status which was established for the order defines the behavior of the document. 
 
-The following states are defined: 
+&lt;b&gt;The following &lt;/&gt;&lt;b&gt;states are defined:&lt;/&gt; 
 
-• In progress - order data will be reflected in the account. 
-• Completed -set by a user on order fulfillment. 
-• Canceled - the order is not reflected in the account.
+• &lt;b&gt;In progress&lt;/&gt; - order data will be reflected in the account. 
+• &lt;b&gt;Completed&lt;/&gt; -set by a user on order fulfillment. 
+• &lt;b&gt;Canceled&lt;/&gt; - the order is not reflected in the account.
 
 Quick filter and color assignment for document view by status are available for orders list. 
 
-Vendor color assignment for order state is determined in Settings - Accounting settings - Sales.</v8:content>
+Vendor color assignment for order state is determined in &lt;link SalesAccountingSettings&gt;Settings - Accounting settings - Sales&lt;/&gt;.</v8:content>
 															</v8:item>
 															<v8:item>
 																<v8:lang>ru</v8:lang>
-																<v8:content>"Состояние заказа" - это набор параметров, определяющих статус, в котором каждый момент времени находится заказ, например, выполнен ли заказ или только ожидает назначения, определяется его состоянием.   Состояние, которое было установлено для заказа, определяет поведение документа.   Определены следующие состояния:  • "В работе"    – данные заказа будут отражаться в учете.  • "Выполнен" – устанавливается пользователем при выполнении заказа.  • "Отменен"    – заказ не отражается в учете.  Для списка заказов доступен быстрый отбор и назначение цвета представлению документа по состояниям.   Назначение цвета для состояния заказа поставщику определяется в разделе Настройки - Настройки учета - Продажи.</v8:content>
+																<v8:content>«Состояние заказа» - это набор параметров, определяющих статус, в котором каждый момент времени находится заказ, например, выполнен ли заказ или только ожидает назначения, определяется его состоянием.   Состояние, которое было установлено для заказа, определяет поведение документа.   Определены следующие состояния:  • В работе    – данные заказа будут отражаться в учете.  • Выполнен – устанавливается пользователем при выполнении заказа.  • Отменен    – заказ не отражается в учете.  Для списка заказов доступен быстрый отбор и назначение цвета представлению документа по состояниям.   Назначение цвета для состояния заказа поставщику определяется в разделе Настройки - Настройки учета - Продажи.</v8:content>
 															</v8:item>
 														</Title>
 														<Events>
@@ -390,29 +389,29 @@ Vendor color assignment for order state is determined in Settings - Accounting s
 													<TextEdit>false</TextEdit>
 													<ContextMenu name="WOOrderStateContextMenu" id="184"/>
 													<ExtendedTooltip name="WOOrderStateExtendedTooltip" id="778">
-														<Title formatted="false">
+														<Title formatted="true">
 															<v8:item>
 																<v8:lang>en</v8:lang>
-																<v8:content>Order state is a set of parameters that define an order status, for example, whether the order is complete or only awaiting appointment. It is determined by its state. User can create any convenient conditions for statuses value work.
+																<v8:content>&lt;b&gt;Order state&lt;/&gt; is a set of parameters that define an order status, for example, whether the order is complete or only awaiting appointment. It is determined by its state. User can create any convenient conditions for statuses value work.
 
-Each state is assigned with a status
+&lt;b&gt;Each state &lt;/&gt;&lt;b&gt;is assigned with a status&lt;/&gt;
 
 
-• Opened –vorder will play the role of the advance application. 
-• In progress - order data will be reflected in the account. 
-• Completed -set by a user on order fulfillment. To close the order which has a Completed status you should select the Closed check box. 
+&lt;b&gt;• &lt;/&gt;&lt;b&gt;Opened &lt;/&gt;–vorder will play the role of the advance application. 
+• &lt;b&gt;In progress&lt;/&gt; - order data will be reflected in the account. 
+• &lt;b&gt;Completed&lt;/&gt; -set by a user on order fulfillment. To close the order which has a Completed status you should select the &lt;b&gt;Closed&lt;/&gt; check box. 
 
-To cancel an order with states "Opened" or "In progress", select the Closed check box. 
+To cancel an order with states "Opened" or "In progress", select the &lt;b&gt;Closed&lt;/&gt; check box. 
 
 Quick filter and color assignment for document view by status are available for orders list. 
 Content of the states list is determined by the contents of Customers orders states catalog. 
-Reference is available on the eponymous hyperlink in the form Settings - Accounting settings - Sales Status by default for new customer order is determined in the user settings.
+Reference is available on the eponymous hyperlink in the form &lt;link SalesAccountingSettings&gt;Settings&lt;/&gt; &lt;link SalesAccountingSettings&gt;- Accounting settings - Sales&lt;/&gt; Status by default for new customer order is determined in the user settings.
 
 </v8:content>
 															</v8:item>
 															<v8:item>
 																<v8:lang>ru</v8:lang>
-																<v8:content>"Состояние заказа" - это набор параметров, определяющих статус, в котором каждый момент времени находится заказ, например, выполнен ли заказ или только ожидает назначения, определяется его состоянием. Пользователь может создать любые удобные для работы значения состояний.  Каждому состоянию присваивается статус:  • "Открыт" – заказ будет играть роль предварительной заявки.  • "В работе" – данные заказа будут отражаться в учете.  • "Выполнен" – устанавливается пользователем при выполнении заказа. Для закрытия заказа, имеющего состояние "Выполнен", следует установить флажок "Закрыт".   Для отмены заказа, имеющего состояние "Открыт" или "В работе", следует установить флажок "Закрыт".   Для списка заказов доступен быстрый отбор и назначение цвета представлению документа по состояниям.  Состав списка состояний определяется содержимым справочника "Состояния заказов покупателей".  Справочник доступен по одноименной гиперссылке в форме Настройки - Настройки учета - Продажи  Состояние по умолчанию для нового заказа покупателя определяется в настройках пользователя.</v8:content>
+																<v8:content>«Состояние заказа» - это набор параметров, определяющих статус, в котором каждый момент времени находится заказ, например, выполнен ли заказ или только ожидает назначения, определяется его состоянием. Пользователь может создать любые удобные для работы значения состояний.  Каждому состоянию присваивается статус:  • Открыт – заказ будет играть роль предварительной заявки.  • В работе – данные заказа будут отражаться в учете.  • Выполнен – устанавливается пользователем при выполнении заказа. Для закрытия заказа, имеющего состояние «Выполнен», следует установить флажок «Закрыт».   Для отмены заказа, имеющего состояние «Открыт» или «В работе», следует установить флажок «Закрыт».   Для списка заказов доступен быстрый отбор и назначение цвета представлению документа по состояниям.  Состав списка состояний определяется содержимым справочника «Состояния заказов покупателей».  Справочник доступен по одноименной гиперссылке в форме Настройки - Настройки учета - Продажи  Состояние по умолчанию для нового заказа покупателя определяется в настройках пользователя.</v8:content>
 															</v8:item>
 														</Title>
 														<Events>
@@ -783,11 +782,15 @@ Reference is available on the eponymous hyperlink in the form Settings - Account
 									<DataPath>Object.Comment</DataPath>
 									<TitleLocation>None</TitleLocation>
 									<EditMode>EnterOnInput</EditMode>
+									<AutoMaxWidth>false</AutoMaxWidth>
+									<MaxWidth>51</MaxWidth>
+									<AutoMaxHeight>false</AutoMaxHeight>
+									<MaxHeight>3</MaxHeight>
 									<MultiLine>true</MultiLine>
 									<InputHint>
 										<v8:item>
 											<v8:lang>en</v8:lang>
-											<v8:content>Here you can write important information about the request</v8:content>
+											<v8:content>Here you can write important information about the order</v8:content>
 										</v8:item>
 										<v8:item>
 											<v8:lang>ru</v8:lang>
@@ -3430,15 +3433,6 @@ Reference is available on the eponymous hyperlink in the form Settings - Account
 			<ShowTitle>false</ShowTitle>
 			<ExtendedTooltip name="WOFooterExtendedTooltip" id="953"/>
 			<ChildItems>
-				<LabelField name="InvoiceText" id="464">
-					<DataPath>InvoiceText</DataPath>
-					<Hiperlink>true</Hiperlink>
-					<ContextMenu name="InvoiceTextContextMenu" id="465"/>
-					<ExtendedTooltip name="InvoiceTextExtendedTooltip" id="956"/>
-					<Events>
-						<Event name="Click">InvoiceNoteTextClick</Event>
-					</Events>
-				</LabelField>
 				<UsualGroup name="ValTotals" id="329">
 					<Title>
 						<v8:item>
@@ -3836,7 +3830,12 @@ Reference is available on the eponymous hyperlink in the form Settings - Account
 				</v8:item>
 			</Title>
 			<Type>
-				<v8:TypeId>7df51630-43b5-4ce5-9c6d-05075e9da985</v8:TypeId>
+				<v8:Type>xs:decimal</v8:Type>
+				<v8:NumberQualifiers>
+					<v8:Digits>10</v8:Digits>
+					<v8:FractionDigits>0</v8:FractionDigits>
+					<v8:AllowedSign>Nonnegative</v8:AllowedSign>
+				</v8:NumberQualifiers>
 			</Type>
 		</Attribute>
 		<Attribute name="RateNationalCurrency" id="10">
@@ -3851,7 +3850,12 @@ Reference is available on the eponymous hyperlink in the form Settings - Account
 				</v8:item>
 			</Title>
 			<Type>
-				<v8:TypeId>68e59cac-a032-48d5-8f3f-dc6a3fc54686</v8:TypeId>
+				<v8:Type>xs:decimal</v8:Type>
+				<v8:NumberQualifiers>
+					<v8:Digits>10</v8:Digits>
+					<v8:FractionDigits>4</v8:FractionDigits>
+					<v8:AllowedSign>Nonnegative</v8:AllowedSign>
+				</v8:NumberQualifiers>
 			</Type>
 		</Attribute>
 		<Attribute name="NationalCurrency" id="11">
@@ -4855,7 +4859,7 @@ Reference is available on the eponymous hyperlink in the form Settings - Account
 				<xr:Value name="Role.UsePeripherals">false</xr:Value>
 				<xr:Value name="Role.UseEMailAccounts">false</xr:Value>
 				<xr:Value name="Role.UpdateDataBaseConfiguration">false</xr:Value>
-				<xr:Value name="Role.PersonalDataProcessingConsentPreparation">false</xr:Value>
+				<xr:Value name="6f9fba85-7c04-4e07-bc93-8ad79cbdca85">false</xr:Value>
 				<xr:Value name="Role.FullRights">true</xr:Value>
 				<xr:Value name="Role.CheckForAvailableConfigurationUpdates">false</xr:Value>
 				<xr:Value name="Role.ViewEventLogMonitor">false</xr:Value>
@@ -5021,7 +5025,7 @@ Reference is available on the eponymous hyperlink in the form Settings - Account
 				<xr:Value name="Role.UsePeripherals">false</xr:Value>
 				<xr:Value name="Role.UseEMailAccounts">false</xr:Value>
 				<xr:Value name="Role.UpdateDataBaseConfiguration">false</xr:Value>
-				<xr:Value name="Role.PersonalDataProcessingConsentPreparation">false</xr:Value>
+				<xr:Value name="6f9fba85-7c04-4e07-bc93-8ad79cbdca85">false</xr:Value>
 				<xr:Value name="Role.FullRights">true</xr:Value>
 				<xr:Value name="Role.CheckForAvailableConfigurationUpdates">false</xr:Value>
 				<xr:Value name="Role.ViewEventLogMonitor">false</xr:Value>
@@ -5127,7 +5131,7 @@ Reference is available on the eponymous hyperlink in the form Settings - Account
 				<xr:Value name="Role.UsePeripherals">false</xr:Value>
 				<xr:Value name="Role.UseEMailAccounts">false</xr:Value>
 				<xr:Value name="Role.UpdateDataBaseConfiguration">false</xr:Value>
-				<xr:Value name="Role.PersonalDataProcessingConsentPreparation">false</xr:Value>
+				<xr:Value name="6f9fba85-7c04-4e07-bc93-8ad79cbdca85">false</xr:Value>
 				<xr:Value name="Role.FullRights">true</xr:Value>
 				<xr:Value name="Role.CheckForAvailableConfigurationUpdates">false</xr:Value>
 				<xr:Value name="Role.ViewEventLogMonitor">false</xr:Value>
@@ -5233,7 +5237,7 @@ Reference is available on the eponymous hyperlink in the form Settings - Account
 				<xr:Value name="Role.UsePeripherals">false</xr:Value>
 				<xr:Value name="Role.UseEMailAccounts">false</xr:Value>
 				<xr:Value name="Role.UpdateDataBaseConfiguration">false</xr:Value>
-				<xr:Value name="Role.PersonalDataProcessingConsentPreparation">false</xr:Value>
+				<xr:Value name="6f9fba85-7c04-4e07-bc93-8ad79cbdca85">false</xr:Value>
 				<xr:Value name="Role.FullRights">true</xr:Value>
 				<xr:Value name="Role.CheckForAvailableConfigurationUpdates">false</xr:Value>
 				<xr:Value name="Role.ViewEventLogMonitor">false</xr:Value>

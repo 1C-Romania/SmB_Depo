@@ -311,17 +311,3 @@ Procedure WaitHandlerOpenStatement()
 EndProcedure
 
 #EndRegion
-
-
-
-
-
-
-
-
-
-
-
-
-
-

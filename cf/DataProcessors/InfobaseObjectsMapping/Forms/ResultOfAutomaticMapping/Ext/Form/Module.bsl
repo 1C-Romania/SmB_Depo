@@ -562,17 +562,3 @@ Procedure ScriptAutoMappingObjects()
 EndProcedure
 
 #EndRegion
-
-
-
-
-
-
-
-
-
-
-
-
-
-

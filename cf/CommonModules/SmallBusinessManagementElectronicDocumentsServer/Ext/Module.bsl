@@ -89,59 +89,6 @@ Function GetTSRowsData(FillingData, ParseTree) Export
 	
 EndFunction
 
-Function ParseSFTabularSectionString(FillingData, ParseTree, ProductsAndServicesOwner) Export
-	
-	CorrespondenceFieldED_and_CWT = GetFieldsForInvoiceCorrespondence();
-	TabularSectionRowsFields = New Structure;
-	
-	For Each DataRow IN FillingData Do
-		
-		If Upper(DataRow.Attribute) = Upper("ID") Then
-			
-			If Not ValueIsFilled(DataRow.AttributeValue)
-				OR Not ValueIsFilled(ProductsAndServicesOwner) Then
-				Continue;
-			EndIf;
-			
-			StructureAdditionalAttributes = New Structure;
-			StructureAdditionalAttributes.Insert("ID", DataRow.AttributeValue);
-			StructureAdditionalAttributes.Insert("Owner", ProductsAndServicesOwner);
-			
-			SuppliersProductsAndServices 	= ElectronicDocumentsOverridable.FindRefToObject("SuppliersProductsAndServices", , StructureAdditionalAttributes);
-			If ValueIsFilled(SuppliersProductsAndServices) Then
-				TabularSectionRowsFields.Insert("ProductsAndServices", 	SuppliersProductsAndServices.ProductsAndServices);
-				TabularSectionRowsFields.Insert("Characteristic", SuppliersProductsAndServices.Characteristic);
-			EndIf;
-			
-		ElsIf Upper(DataRow.Attribute) = Upper("OKEI_Tov") Then
-			
-			TabularSectionRowsFields.Insert(
-				CorrespondenceFieldED_and_CWT.Get(DataRow.Attribute),
-				ElectronicDocumentsOverridable.FindRefToObject("UOM", DataRow.AttributeValue)
-				);
-				
-		ElsIf Upper(DataRow.Attribute) = Upper("TaxValMag") Then
-			
-			TabularSectionRowsFields.Insert(
-				CorrespondenceFieldED_and_CWT.Get(DataRow.Attribute),
-				ElectronicDocumentsOverridable.EnumerationValueVATRate(DataRow.AttributeValue)
-				);
-			
-		Else
-			
-			DocumentTabularSectionFieldName = CorrespondenceFieldED_and_CWT.Get(DataRow.Attribute);
-			If DocumentTabularSectionFieldName <> Undefined Then
-				TabularSectionRowsFields.Insert(DocumentTabularSectionFieldName, DataRow.AttributeValue);
-			EndIf;
-			
-		EndIf;
-		
-	EndDo;
-	
-	Return TabularSectionRowsFields;
-	
-EndFunction
-
 Function GetAttributeValue(TreeRow, AttributeName, IncludeSubordinated = False, ParseTree = Undefined) Export
 	
 	Result = Undefined;
@@ -275,89 +222,6 @@ Function PrepareStructureForGoodsServicesReceipt(StringForImport, ParseTree, Thi
 	DataForObject.Insert("Expenses", Expenses);
 	
 	Return DataForObject;
-	
-EndFunction
-
-Function PrepareStructureForInvoice(StringForImport, ParseTree) Export
-	
-	BasisDocumentsArray = New Array;
-	Inventory = Documents.SupplierInvoiceNote.CreateDocument().Inventory.Unload();
-	
-	FillingDataHeader = New Structure;
-	FillingDataHeader.Insert("IncomingDocumentNumber", 	GetAttributeValue(StringForImport, "Number"));
-	FillingDataHeader.Insert("IncomingDocumentDate", 	GetAttributeValue(StringForImport, "Date"));
-	
-	InvoiceNumber = GetAttributeValue(StringForImport, "InvoiceNumber");
-	If ValueIsFilled(InvoiceNumber) Then
-		
-		// ATTENTION! Exchange of the corrective invoices in SB is not supported.
-		
-	Else
-		
-		FillingDataHeader.Insert("InvoiceKind", 	Enums.OperationKindsSupplierInvoiceNote.Receipt);
-		FillingDataHeader.Insert("DocumentAmount", 	GetAttributeValue(StringForImport, "StGoodAcTax"));
-		
-	EndIf;
-	
-	FillingDataHeader.Insert("DocumentCurrency", 
-		ElectronicDocumentsOverridable.FindRefToObject("Currencies", GetAttributeValue(StringForImport, "CurCode")));
-	
-	// Information about company
-	Company = GetAttributeValue(StringForImport, "Company", True, ParseTree);
-	FillingDataHeader.Insert("Company", Company);
-	
-	Counterparty = GetAttributeValue(StringForImport, "Counterparty", True, ParseTree);
-	FillingDataHeader.Insert("Counterparty", Counterparty);
-	
-	For Each AttributeString IN StringForImport.Rows Do
-		
-		If AttributeString.Attribute = "BasisDocuments" Then
-			
-			For Each String IN AttributeString.Rows Do
-				BasisDocumentsArray.Add(String.ObjectReference);
-			EndDo;
-			
-		//There are subordinate lines, it means the TS with products has arrived
-		ElsIf AttributeString.Rows.Count() > 0 Then 
-			
-			// Add the table section line
-			DataForFillingTSRow = ParseSFTabularSectionString(AttributeString.Rows, ParseTree, Counterparty);
-			
-			NewRow = Inventory.Add();
-			FillPropertyValues(NewRow, DataForFillingTSRow);
-			
-			If DataForFillingTSRow.Property("CodeOrig")
-				AND ValueIsFilled(DataForFillingTSRow.CodeOrig)
-				AND DataForFillingTSRow.CodeOrig <> "643" Then
-				
-				NewRow.CountryOfOrigin = Catalogs.WorldCountries.FindByCode(DataForFillingTSRow.CodeOrig);
-			EndIf;
-			
-			If DataForFillingTSRow.Property("TDNumber")
-				AND ValueIsFilled(DataForFillingTSRow.TDNumber) Then
-				
-				CCDNo = Catalogs.CCDNumbers.FindByCode(StrReplace(DataForFillingTSRow.TDNumber, ",", ""));
-				If Not ValueIsFilled(CCDNo) Then
-					Try
-						NewNumbeCCD = Catalogs.CCDNumbers.CreateItem();
-						NewNumbeCCD.Code = TrimAll(DataForFillingTSRow.TDNumber);
-						NewNumbeCCD.Write();
-						
-						CCDNo = NewNumbeCCD.Ref;
-					Except
-					EndTry;
-				EndIf;
-				NewRow.CCDNo = CCDNo;
-			EndIf;
-			
-		EndIf;
-		
-	EndDo;
-	
-	FillingDataHeader.Insert("BasisDocumentsArray", BasisDocumentsArray);
-	FillingDataHeader.Insert("Inventory", Inventory);
-	
-	Return FillingDataHeader;
 	
 EndFunction
 
@@ -514,10 +378,6 @@ Function FindDocument(EDKind, Counterparty, IBAttributes = Undefined, Counterpar
 		
 		Query.Text = StrReplace(Query.Text, "&IndicateQueryDocumentKind", "Document.PurchaseOrder");
 		
-	ElsIf EDKind = Enums.EDKinds.CustomerInvoiceNote Then
-		
-		Query.Text = StrReplace(Query.Text, "&IndicateQueryDocumentKind", "Document.SupplierInvoice");
-		
 	EndIf;
 	
 	FoundDoc = SearchDocumentForDetails(IBAttributes, Query);
@@ -616,95 +476,6 @@ Function FoundCreateProductsServicesReceipt(StringForImport, ParseTree, RefToOwn
 			Metadata.Documents.PurchaseOrder, 
 			RefToOwner, 
 			DetailErrorDescription(ErrorInfo()));
-		Raise;
-		
-	EndTry;
-	
-	Return DocumentObject.Ref;
-	
-EndFunction
-
-Function FoundCreateInvoice(StringForImport, ParseTree, RefToOwner = Undefined) Export
-	
-	DataForExport = PrepareStructureForInvoice(StringForImport, ParseTree);
-	
-	WriteMode = DocumentWriteMode.Write;
-	DocumentDate = CurrentSessionDate();
-	
-	Try
-		
-		If ValueIsFilled(RefToOwner) Then
-			
-			If RefToOwner.Posted Then 
-				Raise NStr("en='Filling according to the ED is possible only for the unposted document';ru='Заполнение на основании ЭД возможно только для непроведенного документа'");
-			EndIf;
-			
-			DocumentObject = RefToOwner.GetObject();
-			DocumentDate = DocumentObject.Date;
-			
-		Else
-			
-			SetPrivilegedMode(True);
-			DocumentObject = Documents.SupplierInvoiceNote.CreateDocument();
-			
-		EndIf;
-		
-		DocumentObject.DataExchange.Load = True; 
-		DocumentObject.AdditionalProperties.Insert("IsAgreement", True);
-		
-		// Filling in the base document
-		BasisDocument = Undefined;
-		If DataForExport.BasisDocumentsArray.Count() > 0 Then
-			BasisDocument = DataForExport.BasisDocumentsArray[0];
-		EndIf;
-		
-		If Not ValueIsFilled(BasisDocument) Then
-			BasisDocumentIncomingNumber = GetAttributeValue(StringForImport, "BasisDocumentIncomingNumber");
-			If ValueIsFilled(BasisDocumentIncomingNumber) Then
-				DocumentObject.BasisDocument = FindDocument(
-					Enums.EDKinds.CustomerInvoiceNote, 
-					DataForExport.Counterparty, 
-					,
-					New Structure("IncomingDocumentNumber", BasisDocumentIncomingNumber));
-			EndIf;
-		EndIf;
-		
-		If ValueIsFilled(BasisDocument) Then
-			DocumentObject.BasisDocument = BasisDocument;
-			DataForExport.Insert("FillDocument", BasisDocument);
-		EndIf;
-		
-		DocumentObject.Fill(DataForExport);
-		RefillingHeaderAttributesValues(DocumentObject, DataForExport);
-		
-		DocumentObject.Date = DocumentDate;
-		
-		If ValueIsFilled(DocumentObject.BasisDocument)
-			AND ValueIsFilled(DocumentObject.BasisDocument.Contract) Then
-			
-			DocumentObject.Contract = DocumentObject.BasisDocument.Contract;
-			
-		EndIf;
-		
-		If Not ValueIsFilled(DocumentObject.Contract)
-			OR DocumentObject.Contract.SettlementsCurrency <> DocumentObject.DocumentCurrency Then
-			FillCounterpartyContract(DocumentObject);
-		EndIf;
-		
-		If DocumentObject.IsNew() Then
-			DocumentObject.SetNewNumber();
-		EndIf;
-		
-		DocumentObject.Write(WriteMode);
-		
-	Except
-		
-		WriteLogEvent(NStr("en='Filling on the ED basis';ru='Заполнение на основании ЭД'"),
-			EventLogLevel.Error, 
-			Metadata.Documents.SupplierInvoiceNote, 
-			RefToOwner, 
-			DetailErrorDescription(ErrorInfo()));
-			
 		Raise;
 		
 	EndTry;
@@ -1117,7 +888,6 @@ Procedure ProductsAndServicesAttributesFillingForAlcoholicProductsAccounting(Pro
 	
 	PropertyStructure.Insert("AlcoholicProductsKindCode");
 	PropertyStructure.Insert("ManufacturerImporterTIN");
-	PropertyStructure.Insert("ManufacturerImporterKPP");
 	PropertyStructure.Insert("VolumeDAL");
 	
 	PropertiesForDeletion = New Array;
@@ -1155,12 +925,10 @@ Procedure ProductsAndServicesAttributesFillingForAlcoholicProductsAccounting(Pro
 	|FROM
 	|	Catalog.Counterparties AS Counterparties
 	|WHERE
-	|	&ManufacturerImporterTIN <> Undefined AND Counterparties.TIN = &ManufacturerImporterTIN
-	|	AND Counterparties.KPP = &ManufacturerImporterKPP";
+	|	&ManufacturerImporterTIN <> Undefined AND Counterparties.TIN = &ManufacturerImporterTIN";
 	
 	Query.SetParameter("AlcoholicProductsKindCode", PropertyStructure.AlcoholicProductsKindCode);
 	Query.SetParameter("ManufacturerImporterTIN", ?(ValueIsFilled(PropertyStructure.ManufacturerImporterTIN), PropertyStructure.ManufacturerImporterTIN, Undefined));
-	Query.SetParameter("ManufacturerImporterKPP", PropertyStructure.ManufacturerImporterKPP);
 	
 	ResultsArray = Query.ExecuteBatch();
 	
@@ -1190,20 +958,6 @@ Procedure ProductsAndServicesAttributesFillingForAlcoholicProductsAccounting(Pro
 	EndIf;
 
 EndProcedure
-
-// Determines whether the object is a corrective invoice
-//
-// Parameters:
-//  ObjectReference - DocumentRef.CustomerInvoiceNote
-//
-// Returns:
-//  Boolean
-//
-Function IsCorrectiveInvoiceNote(ObjectReference) Export
-	
-	Return False;
-	
-EndFunction
 
 // It returns the structure for opening the form of ProductsAndServices matching
 //
@@ -1262,8 +1016,7 @@ Procedure GetCompanyAttributes(Company, ReturnStructure) Export
 	"SELECT
 	|	Companies.Description 		AS Description,
 	|	Companies.DescriptionFull 	AS DescriptionFull,
-	|	Companies.TIN 				AS TIN,
-	|	Companies.KPP 				AS KPP
+	|	Companies.TIN 				AS TIN
 	|FROM
 	|	Catalog.Companies AS Companies
 	|WHERE
@@ -1275,7 +1028,6 @@ Procedure GetCompanyAttributes(Company, ReturnStructure) Export
 		ReturnStructure.Description 			= Selection.Description;
 		ReturnStructure.DescriptionFull 	= Selection.DescriptionFull;
 		ReturnStructure.TIN 					= Selection.TIN;
-		ReturnStructure.KPP 					= Selection.KPP;
 	EndIf;
 	
 EndProcedure
@@ -1795,14 +1547,12 @@ EndProcedure
 
 Procedure FillExchangeParticipantInfo(ParticipantStructure, Participant, InfoAboutParticipant, AddressKind = "Legal") Export
 	
-	ParticipantStructure.Insert("OKATOCode",					InfoAboutParticipant.CodeByOKPO);
 	ParticipantStructure.Insert("CompanyDescription",	InfoAboutParticipant.FullDescr);
 	ParticipantStructure.Insert("TIN",						InfoAboutParticipant.TIN);
-	ParticipantStructure.Insert("KPP",						InfoAboutParticipant.KPP);
 	ParticipantStructure.Insert("CodeRCLF",					"");
-	ParticipantStructure.Insert("ThisIsInd",				InfoAboutParticipant.LegalEntityIndividual <> Enums.LegalEntityIndividual.LegalEntity);
+	ParticipantStructure.Insert("ThisIsInd",				InfoAboutParticipant.LegalEntityIndividual <> Enums.CounterpartyKinds.LegalEntity);
 	
-	If InfoAboutParticipant.LegalEntityIndividual <> Enums.LegalEntityIndividual.LegalEntity Then
+	If InfoAboutParticipant.LegalEntityIndividual <> Enums.CounterpartyKinds.LegalEntity Then
 		
 		FillSNPAndPosition(ParticipantStructure, InfoAboutParticipant.FullDescr);
 		
@@ -1858,29 +1608,6 @@ Procedure FillAddressInListTypesAddressov(AddressesTypesList, ParticipantAddress
 	EndIf;
 	
 EndProcedure
-
-// Get mapping of add. data structure fields and fields of the SupplierInvoiceNote document table field
-//
-Function GetFieldsForInvoiceCorrespondence() Export
-	
-	CorrespondenceFieldED_and_CWT = New Map;
-	
-	CorrespondenceFieldED_and_CWT.Insert("ID", "ProductsAndServices");
-	CorrespondenceFieldED_and_CWT.Insert("ID", "Characteristic");
-	CorrespondenceFieldED_and_CWT.Insert("Description", "Content");
-	CorrespondenceFieldED_and_CWT.Insert("QuantIt", "Quantity");
-	CorrespondenceFieldED_and_CWT.Insert("OKEI_Tov", "MeasurementUnit");	// If it is not found by the code, we take it from the card.
-	CorrespondenceFieldED_and_CWT.Insert("PriceTov", "Price"); 
-	CorrespondenceFieldED_and_CWT.Insert("StGoodsWithoutVAT", "Amount"); 
-	CorrespondenceFieldED_and_CWT.Insert("TaxValMag", "VATRate");			// VAT rate amount in a string
-	CorrespondenceFieldED_and_CWT.Insert("AmountVAT", "VATAmount"); 
-	CorrespondenceFieldED_and_CWT.Insert("StGoodAcTax", "Total");
-	CorrespondenceFieldED_and_CWT.Insert("CodeOrig", "CodeOrig");
-	CorrespondenceFieldED_and_CWT.Insert("TDNumber", "TDNumber");
-	
-	Return CorrespondenceFieldED_and_CWT ;
-	
-EndFunction // GetFieldsCorrespondenceForInvoiceNote()
 
 // The function generates a structure with ProductsAndServices data to transfer it to add. data
 //
@@ -2112,15 +1839,11 @@ EndProcedure
 
 Procedure ParticipantDataFill(DataTree, InfoAboutParticipant, ParticipantKind, AddressKind = "Structured", TreeRootItem = "") Export
 	
-	If InfoAboutParticipant.LegalEntityIndividual = Enums.LegalEntityIndividual.LegalEntity Then
+	If InfoAboutParticipant.LegalEntityIndividual = Enums.CounterpartyKinds.LegalEntity Then
 		CommonUseED.FillTreeAttributeValue(
 									DataTree,
 									ParticipantKind + ".ParticipantType.LegalEntity.TIN",
 									InfoAboutParticipant.TIN);
-		CommonUseED.FillTreeAttributeValue(
-									DataTree,
-									ParticipantKind + ".ParticipantType.LegalEntity.KPP",
-									InfoAboutParticipant.KPP);
 		CommonUseED.FillTreeAttributeValue(
 									DataTree,
 									ParticipantKind + ".ParticipantType.LegalEntity.CompanyDescription",
@@ -2217,7 +1940,7 @@ EndProcedure
 
 Procedure FillCargoSenderRecipientData(DataTree, InfoAboutParticipant, ParticipantKind, AddressKind = "Structured") Export
 	
-	If InfoAboutParticipant.LegalEntityIndividual = Enums.LegalEntityIndividual.LegalEntity Then
+	If InfoAboutParticipant.LegalEntityIndividual = Enums.CounterpartyKinds.LegalEntity Then
 		CommonUseED.FillTreeAttributeValue(
 			DataTree,
 			ParticipantKind + ".Description.CompanyDescription",
@@ -2547,8 +2270,8 @@ Function GetDeliveryAddress(Counterparty) Export
 
 	ShippingAddress = "";
 	
-	PurposeOfCI = Catalogs.ContactInformationTypes.CatalogCounterparties;
-	ShippingAddressKindOfCI = Catalogs.ContactInformationTypes.FindByDescription("Shipping address", True, PurposeOfCI);
+	PurposeOfCI = Catalogs.ContactInformationKinds.CatalogCounterparties;
+	ShippingAddressKindOfCI = Catalogs.ContactInformationKinds.FindByDescription("Shipping address", True, PurposeOfCI);
 	If ValueIsFilled(ShippingAddressKindOfCI) Then
 		ShippingAddress = SmallBusinessServer.GetContactInformation(Counterparty, ShippingAddressKindOfCI);
 	EndIf;
@@ -2576,10 +2299,10 @@ Function GetAddressOfContactInformation(Owner, AddressType = "Legal") Export
 	|	AND ContactInformation.Kind = &AddressKind";
 	
 	If TypeOf(Owner) = Type("CatalogRef.Companies") Then
-		AddressKind = Catalogs.ContactInformationTypes["Company" + AddressType + "Address"].Ref;
+		AddressKind = Catalogs.ContactInformationKinds["Company" + AddressType + "Address"].Ref;
 		Query.Text = StrReplace(Query.Text, "%CatalogName%", "Companies");
 	ElsIf TypeOf(Owner) = Type("CatalogRef.Counterparties") Then
-		AddressKind = Catalogs.ContactInformationTypes["Counterparty" + AddressType + "Address"].Ref;
+		AddressKind = Catalogs.ContactInformationKinds["Counterparty" + AddressType + "Address"].Ref;
 		Query.Text = StrReplace(Query.Text, "%CatalogName%", "Counterparties");
 	EndIf;
 	
@@ -2618,10 +2341,10 @@ Function GetPhoneFromContactInformation(Owner) Export
 	|	AND ContactInformation.Kind = &KindOfPhone";
 	
 	If TypeOf(Owner) = Type("CatalogRef.Companies") Then
-		KindOfPhone = Catalogs.ContactInformationTypes["CompanyPhone"].Ref;
+		KindOfPhone = Catalogs.ContactInformationKinds["CompanyPhone"].Ref;
 		Query.Text = StrReplace(Query.Text, "%CatalogName%", "Companies");
 	ElsIf TypeOf(Owner) = Type("CatalogRef.Counterparties") Then
-		KindOfPhone = Catalogs.ContactInformationTypes["CounterpartyPhone"].Ref;
+		KindOfPhone = Catalogs.ContactInformationKinds["CounterpartyPhone"].Ref;
 		Query.Text = StrReplace(Query.Text, "%CatalogName%", "Counterparties");
 	EndIf;
 	

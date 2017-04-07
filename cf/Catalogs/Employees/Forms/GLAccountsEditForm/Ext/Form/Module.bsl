@@ -152,17 +152,3 @@ Procedure NotifyAboutSettlementAccountChange()
 	Notify("AccountsChangedEmployees", ParameterStructure);
 	
 EndProcedure
-
-
-
-
-
-
-
-
-
-
-
-
-
-

@@ -56,16 +56,3 @@ Procedure ReportPrintEnd(DeviceIdentifier, Parameters) Export
 EndProcedure
 
 #EndRegion
-
-
-
-
-
-
-
-
-
-
-
-
-

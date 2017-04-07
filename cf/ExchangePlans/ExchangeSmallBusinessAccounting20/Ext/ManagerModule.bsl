@@ -662,11 +662,6 @@ Procedure RegisterRelatedDocuments(Exporting, Object, ORR, Recipients) Export
 		
 	ElsIf TypeOf(Object) = Type("DocumentObject.AgentReport") Then
 		
-		For Each TabularSectionRow IN Object.Customers Do
-			NewRow = RelatedDocuments.Add();
-			NewRow.Document = TabularSectionRow.CustomerInvoiceNote;
-		EndDo;
-		
 		For Each TabularSectionRow IN Object.Prepayment Do
 			NewRow = RelatedDocuments.Add();
 			NewRow.Document = TabularSectionRow.Document;
@@ -734,25 +729,6 @@ Procedure RegisterRelatedDocuments(Exporting, Object, ORR, Recipients) Export
 			NewRow = RelatedDocuments.Add();
 			NewRow.Document = TabularSectionRow.Document;
 		EndDo;
-		
-	ElsIf TypeOf(Object) = Type("DocumentObject.CustomerInvoiceNote") Then
-		
-		If ValueIsFilled(Object.BasisDocument) Then
-			NewRow = RelatedDocuments.Add();
-			NewRow.Document = Object.BasisDocument;
-		EndIf;
-		
-		For Each TabularSectionRow IN Object.BasisDocuments Do
-			NewRow = RelatedDocuments.Add();
-			NewRow.Document = TabularSectionRow.BasisDocument;
-		EndDo;
-		
-	ElsIf TypeOf(Object) = Type("DocumentObject.SupplierInvoiceNote") Then
-		
-		If ValueIsFilled(Object.BasisDocument) Then
-			NewRow = RelatedDocuments.Add();
-			NewRow.Document = Object.BasisDocument;
-		EndIf;
 		
 	EndIf;
 	

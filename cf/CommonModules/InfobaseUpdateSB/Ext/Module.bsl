@@ -28,7 +28,7 @@
 Procedure OnAddSubsystem(Definition) Export
 	
 	Definition.Name	= "SmallBusiness";
-	Definition.Version = "1.5.3.38";
+	Definition.Version = "1.5.3.44";
 	
 EndProcedure
 
@@ -550,23 +550,15 @@ EndFunction // FindCreateCurrency()
 //
 Function FillVATRatesFirstLaunch()
 
+	// 5%
+	VATRate = Catalogs.VATRates.CreateItem();
+	VATRate.Description = "5%";
+	VATRate.Rate = 5;
+	VATRate.Write();
+	
 	// 10%
 	VATRate = Catalogs.VATRates.CreateItem();
 	VATRate.Description = "10%";
-	VATRate.Rate = 10;
-	VATRate.Write();
-	
-	// 18% / 118%
-	VATRate = Catalogs.VATRates.CreateItem();
-	VATRate.Description = "18% / 118%";
-	VATRate.Calculated = True;
-	VATRate.Rate = 18;
-	VATRate.Write();
-	
-	// 10% / 110%
-	VATRate = Catalogs.VATRates.CreateItem();
-	VATRate.Description = "10% / 110%";
-	VATRate.Calculated = True;
 	VATRate.Rate = 10;
 	VATRate.Write();
 	
@@ -576,6 +568,12 @@ Function FillVATRatesFirstLaunch()
 	VATRate.Rate = 0;
 	VATRate.Write();
 	
+	// 18%
+	VATRate = Catalogs.VATRates.CreateItem();
+	VATRate.Description = "18%";
+	VATRate.Rate = 18;	
+	VATRate.Write();
+
 	// Without VAT
 	VATRate = Catalogs.VATRates.CreateItem();
 	VATRate.Description = "Without VAT";
@@ -583,12 +581,6 @@ Function FillVATRatesFirstLaunch()
 	VATRate.Rate = 0;
 	VATRate.Write(); 
 	
-	// 18%
-	VATRate = Catalogs.VATRates.CreateItem();
-	VATRate.Description = "18%";
-	VATRate.Rate = 18;	
-	VATRate.Write();
-
 	Return VATRate.Ref;
 
 EndFunction // FillVATRatesFirstLaunch()
@@ -1159,27 +1151,6 @@ Procedure FillFilterUserSettings()
 	
 EndProcedure // FillCustomSelectionSettings()
 
-//(25) Procedure updates/fills in the predefined CI kinds.
-// 
-// For catalogs:
-// - Counterparty
-// - Ind. person
-// - Contact persons
-// 
-// "Companies" catalog is updated/filled in with SSL mechanism.
-//
-Procedure RefreshPredefinedKindsOfContact()
-	
-	// Update CI kinds
-	SmallBusinessServer.RefreshPredefinedKindsOfContractualPartnerContactInformation();
-	SmallBusinessServer.RefreshPredefinedKindsOfContactInformationOfIndividual();
-	SmallBusinessServer.RefreshPredefinedKindsOfContactInformationContactPerson();
-	SmallBusinessServer.UpdatePredefinedStructuralUnitsContactInformationTypes();
-	
-	EnableMultipleContactInformationSSLInput();
-	
-EndProcedure
-
 //(27) Procedure removes the registration of the basic qualifiers
 // changes that must be exported only if they are assigned with references to them in other exported object.
 //
@@ -1343,388 +1314,7 @@ Procedure WriteCatalogObject(CatalogObject, Inform = False) Export
 
 EndProcedure
 
-// Procedure updates CI kinds and allows to enter multiple values for some CI kinds.
-//
-Procedure EnableMultipleContactInformationSSLInput()
-	
-	// Companies
-	ContactInformationManagement.RefreshContactInformationKind(Catalogs.ContactInformationTypes.CompanyPhone,			Enums.ContactInformationTypes.Phone,
-		NStr("en=""Company's phone"";ru='Телефон организации'"), True, False, False, 3, False);
-	ContactInformationManagement.RefreshContactInformationKind(Catalogs.ContactInformationTypes.CompanyFax,				Enums.ContactInformationTypes.Fax,
-		NStr("en=""Company's fax"";ru='Факс организации'"), True, False, False, 4, False);
-	ContactInformationManagement.RefreshContactInformationKind(Catalogs.ContactInformationTypes.CompanyEmail,				Enums.ContactInformationTypes.EmailAddress,
-		NStr("en='Counterparty email address';ru='Адрес электронной почты контрагента'"), True, False, False, 5, False);
-	ContactInformationManagement.RefreshContactInformationKind(Catalogs.ContactInformationTypes.CompanyOtherInformation,	Enums.ContactInformationTypes.Another,
-		NStr("en='Any other contact information';ru='Любая другая контактная информация'"), True, False, False, 7, False);
-	
-EndProcedure // EnableMultipleContactInformationInput()
-
 // End. Procedures supporting the first start
-
-//Procedure checks whether TIN and KPP
-//are entered correctly Takes
-//the Pass parameters structure - structure
-// Mandatory
-//	structure
-//	keys
-//	TIN
-//	KPP
-//	IsLegalEntity NoTINErrors NoKPPErrors
-//
-//Returns a structure with variable set of keys only with the values corresponding to the check result.
-Function CheckTINKPPCorrectness(Val ParametersStructure) Export
-	
-	ReturnStructure = New Structure;
-	
-	If ParametersStructure.CheckTIN Then
-		
-		ReturnStructure.Insert("TINEnteredCorrectly",               True);
-		ReturnStructure.Insert("ExtendedTINPresentation",      ParametersStructure.TIN);
-		ReturnStructure.Insert("LabelExplanationsOfIncorrectTIN", "");
-		ReturnStructure.Insert("EmptyTIN",                        False);
-		ReturnStructure.Insert("NoErrorsByTIN",                   ParametersStructure.CheckTIN);
-		
-		TIN      = TrimR(ParametersStructure.TIN);
-		TINLength = StrLen(TIN);
-	
-		If Not ValueIsFilled(TIN) Then
-			
-			ReturnStructure.TINEnteredCorrectly = False;
-			
-			ReturnStructure.EmptyTIN = True;
-			
-			ReturnStructure.NoErrorsByTIN = False;
-			
-		EndIf;
-		
-		If ReturnStructure.NoErrorsByTIN Then
-		
-			If ParametersStructure.ThisIsLegalEntity = Undefined Then
-				
-				ReturnStructure.TINEnteredCorrectly = False;
-				ReturnStructure.LabelExplanationsOfIncorrectTIN = NStr("en='Unknown counterparty kind. Specify counterparty kind';ru='Неизвестен вид контрагента. Укажите вид контрагента'");
-				
-				ReturnStructure.NoErrorsByTIN = False;
-				
-			EndIf;
-			
-			If ReturnStructure.NoErrorsByTIN Then
-				
-				If ParametersStructure.ThisIsLegalEntity AND TINLength <> 10 Then
-					
-					ReturnStructure.TINEnteredCorrectly = False;
-					
-					ReturnStructure.LabelExplanationsOfIncorrectTIN = NStr("en='TIN of legal entity should consist of 10 digits';ru='ИНН юридического лица должен состоять из 10 цифр'");
-					
-					TextForIncorrectTIN = NStr("en='%
-		|TIN does not contain 10 digits';ru='%1
-		|ИНН содержит не 10 цифр'");
-					
-					ReturnStructure.ExtendedTINPresentation = StringFunctionsClientServer.SubstituteParametersInString(TextForIncorrectTIN, TIN);
-					
-					ReturnStructure.NoErrorsByTIN = False;
-					
-				ElsIf Not ParametersStructure.ThisIsLegalEntity AND TINLength <> 12 Then
-					
-					ReturnStructure.TINEnteredCorrectly = False;
-					
-					ReturnStructure.LabelExplanationsOfIncorrectTIN = NStr("en='Individual’s TIN should consist of 12 digits.';ru='ИНН физического лица должен состоять из 12 цифр'");
-					
-					TextForIncorrectTIN = NStr("en='%
-		|TIN does not contain 12 digits';ru='%1
-		|ИНН содержит не 12 цифр'");
-					
-					ReturnStructure.ExtendedTINPresentation = StringFunctionsClientServer.SubstituteParametersInString(TextForIncorrectTIN, TIN);
-					
-					ReturnStructure.NoErrorsByTIN = False;
-					
-				EndIf;
-				
-				If ReturnStructure.NoErrorsByTIN Then
-				
-					If Not StringFunctionsClientServer.OnlyNumbersInString(TIN) Then
-						
-						ReturnStructure.TINEnteredCorrectly = False;
-						
-						ReturnStructure.LabelExplanationsOfIncorrectTIN = NStr("en='TIN should include only digits';ru='ИНН должен включать только цифры'");
-						
-						TextForIncorrectTIN = NStr("en='%
-		|TIN includes not only digits';ru='%1
-		|ИНН содержит не только цифры'");
-						
-						ReturnStructure.ExtendedTINPresentation = StringFunctionsClientServer.SubstituteParametersInString(TextForIncorrectTIN, TIN);
-						
-						ReturnStructure.NoErrorsByTIN = False;
-						
-					EndIf;
-					
-					If ReturnStructure.NoErrorsByTIN Then
-					
-						If ParametersStructure.ThisIsLegalEntity Then
-							
-							CheckSum = 0;
-							
-							For N = 1 To 9 Do
-								
-								If N = 1 Then
-									Factor = 2;
-								ElsIf N = 2 Then
-									Factor = 4;
-								ElsIf N = 3 Then
-									Factor = 10;
-								ElsIf N = 4 Then
-									Factor = 3;
-								ElsIf N = 5 Then
-									Factor = 5;
-								ElsIf N = 6 Then
-									Factor = 9;
-								ElsIf N = 7 Then
-									Factor = 4;
-								ElsIf N = 8 Then
-									Factor = 6;
-								ElsIf N = 9 Then
-									Factor = 8;
-								EndIf;
-								
-								Digit = Number(Mid(TIN, N, 1));
-								CheckSum = CheckSum + Digit * Factor;
-								
-							EndDo;
-							
-							CheckDigit = (CheckSum %11) %10;
-							
-							If CheckDigit <> Number(Mid(TIN, 10, 1)) or CheckSum = 0 Then
-								
-								ReturnStructure.TINEnteredCorrectly = False;
-								
-								ReturnStructure.LabelExplanationsOfIncorrectTIN = NStr("en=""Legal entity's TIN is incorrect"";ru='ИНН юридического лица введен некорректно'");
-								
-								TextForIncorrectTIN = NStr("en='%1
-		|TIN does not correspond to the format';ru='%1
-		|ИНН не соответствует формату'");
-								
-								ReturnStructure.ExtendedTINPresentation = StringFunctionsClientServer.SubstituteParametersInString(TextForIncorrectTIN, TIN);
-								
-								ReturnStructure.NoErrorsByTIN = False;
-								
-							EndIf;
-							
-						Else
-							
-							CheckSum11 = 0;
-							CheckSum12 = 0;
-							
-							For N=1 To 11 Do
-								
-								// Calculation of multipliers for 11th and 12th digits
-								If N = 1 Then
-									Factor11 = 7;
-									Factor12 = 3;
-								ElsIf N = 2 Then
-									Factor11 = 2;
-									Factor12 = 7;
-								ElsIf N = 3 Then
-									Factor11 = 4;
-									Factor12 = 2;
-								ElsIf N = 4 Then
-									Factor11 = 10;
-									Factor12 = 4;
-								ElsIf N = 5 Then
-									Factor11 = 3;
-									Factor12 = 10;
-								ElsIf N = 6 Then
-									Factor11 = 5;
-									Factor12 = 3;
-								ElsIf N = 7 Then
-									Factor11 = 9;
-									Factor12 = 5;
-								ElsIf N = 8 Then
-									Factor11 = 4;
-									Factor12 = 9;
-								ElsIf N = 9 Then
-									Factor11 = 6;
-									Factor12 = 4;
-								ElsIf N = 10 Then
-									Factor11 = 8;
-									Factor12 = 6;
-								ElsIf N = 11 Then
-									Factor11 = 0;
-									Factor12 = 8;
-								EndIf;
-								
-								Digit = Number(Mid(TIN, N, 1));
-								CheckSum11 = CheckSum11 + Digit * Factor11;
-								CheckSum12 = CheckSum12 + Digit * Factor12;
-								
-							EndDo;
-							
-							CheckDigit11 = (CheckSum11 %11) %10;
-							CheckDigit12 = (CheckSum12 %11) %10;
-							
-							If CheckDigit11 <> Number(Mid(TIN,11,1)) OR CheckDigit12 <> Number(Mid(TIN,12,1)) or (CheckSum11 = 0 and CheckSum12 = 0) Then
-								
-								ReturnStructure.TINEnteredCorrectly = False;
-								
-								ReturnStructure.LabelExplanationsOfIncorrectTIN = NStr("en=""Individual's TIN is incorrect"";ru='ИНН физического лица введен некорректно'");
-								
-								TextForIncorrectTIN = NStr("en='%1
-		|TIN does not correspond to the format';ru='%1
-		|ИНН не соответствует формату'");
-								
-								ReturnStructure.ExtendedTINPresentation = StringFunctionsClientServer.SubstituteParametersInString(TextForIncorrectTIN, TIN);
-								
-								ReturnStructure.NoErrorsByTIN = False;
-								
-							EndIf;
-							
-						EndIf;
-						
-					EndIf;
-					
-				EndIf;
-				
-			EndIf;
-			
-		EndIf;	
-		
-	EndIf;
-	
-	If ParametersStructure.CheckKPP Then
-		
-		ReturnStructure.Insert("KPPEnteredCorrectly",               True);
-		ReturnStructure.Insert("ExtendedKPPPresentation",      ParametersStructure.KPP);
-		ReturnStructure.Insert("LabelExplanationsOfIncorrectKPP", "");
-		ReturnStructure.Insert("EmptyKPP",                        False);
-		ReturnStructure.Insert("NoErrorsByKPP",                   ParametersStructure.CheckKPP);
-		
-		If ParametersStructure.ThisIsLegalEntity = Undefined Then
-			
-			ReturnStructure.KPPEnteredCorrectly = False;
-			
-			ReturnStructure.LabelExplanationsOfIncorrectKPP = NStr("en='Unknown counterparty kind. Specify counterparty kind';ru='Неизвестен вид контрагента. Укажите вид контрагента'");
-			
-			ReturnStructure.NoErrorsByKPP = False;
-			
-		ElsIf Not ParametersStructure.ThisIsLegalEntity Then
-			ReturnStructure.NoErrorsByKPP = False;
-		EndIf;
-		
-		If ReturnStructure.NoErrorsByKPP Then
-		
-			KPP = TrimR(ParametersStructure.KPP);
-			KPPLength = StrLen(KPP);
-			
-			If Not ValueIsFilled(KPP) Then
-				
-				ReturnStructure.KPPEnteredCorrectly = False;
-				
-				ReturnStructure.EmptyKPP = True;
-				
-				ReturnStructure.NoErrorsByKPP = False;
-				
-			EndIf;
-			
-			If ReturnStructure.NoErrorsByKPP Then
-			
-				If KPPLength <> 9 Then
-					
-					ReturnStructure.KPPEnteredCorrectly = False;
-					
-					ReturnStructure.LabelExplanationsOfIncorrectKPP  = NStr("en='KPP should contain 9 digits';ru='""КПП"" должен содержать 9 цифр'");
-					
-					TextForIncorrectKPP = NStr("en='&1
-		|KPP does not contain 9 digits';ru='%1
-		|КПП содержит не 9 цифр'");
-					
-					ReturnStructure.ExtendedKPPPresentation = StringFunctionsClientServer.SubstituteParametersInString(TextForIncorrectKPP, KPP);
-					
-					ReturnStructure.NoErrorsByKPP = False;
-					
-				EndIf;
-				
-				If ReturnStructure.NoErrorsByKPP Then
-				
-					If Not StringFunctionsClientServer.OnlyNumbersInString(KPP) Then
-						
-						ReturnStructure.KPPEnteredCorrectly = False;
-						
-						ReturnStructure.LabelExplanationsOfIncorrectKPP = NStr("en='KPP should include only digits';ru='КПП должен включать только цифры'");
-						
-						TextForIncorrectKPP = NStr("en='%
-		|KPP includes not only digits';ru='%1
-		|КПП содержит не только цифры'");
-						
-						ReturnStructure.ExtendedKPPPresentation = StringFunctionsClientServer.SubstituteParametersInString(TextForIncorrectKPP, KPP);
-						
-						ReturnStructure.NoErrorsByKPP = False;
-						
-					EndIf;
-					
-					If ReturnStructure.NoErrorsByKPP Then
-					
-						ControlPart = Mid(KPP, 5, 2);
-						
-						SeparateDepartmentFlag = ControlPart = "02"
-						//Registration with the taxpayer - a Russian company at the location of its separate department depending on the department type 
-							or ControlPart = "03" //Registration with the taxpayer - a Russian company at the location of its branch that does not act as taxes and receipts payment organization 
-							or ControlPart = "04" //Registration with the taxpayer - a Russian company at the location of its separate department depending on the department type 
-							or ControlPart = "05" //Registration with the taxpayer - a Russian company at the location of its separate department depending on the department type
-							or ControlPart = "30" //Russian company - the tax agent not considered as a taxpayer
-							or ControlPart = "31" //Registration with the taxpayer - a Russian company at the location of a separate subdepartment in respect of which no registration procedure is not executed under paragraph 3 of Article 55 of the Russian Federation Civil Code that acts as taxes and receipts payment organization 
-							or ControlPart = "32" //Registration with the taxpayer - a Russian company at the location of a separate subdepartment in respect of which no registration procedure is executed under paragraph 3 of Article 55 of the Russian Federation Civil Code that does not act as taxes and receipts payment organization 
-							or ControlPart = "43" //Registration with the Russian company at the location of its branch (similar to the old codes "02", "03" - Ministry of Finance Notification dated 6/2/2008 No. BH-6-6/396@ Concerning the application of "SPPUNO" directory code) 
-							or ControlPart = "44" //Registration with the Russian company at the location of its representative office (similar to the old codes "04", "05" - Ministry of Finance Notification dated 6/2/2008 No. BH-6-6/396@ Concerning the application of "SPPUNO" directory code) 
-							or ControlPart = "45";//Registration with the Russian company at the location of its separate department (similar to the old codes "31", "32" - Ministry of Finance Notification dated 6/2/2008 No. BH-6-6/396@ Concerning the application of "SPPUNO" directory code)
-							
-						MainDepartmentFlag = ControlPart = "01" 
-							or ControlPart = "50" //At the place of registration as the largest taxpayer
-							or ControlPart = "51" //Registration with foreign companies’ branches 
-							or ControlPart = "52" //Registration with foreign companies departments in the Russian Federation established by the foreign organization branch in a foreign country 
-							or ControlPart = "60" //Registration with foreign embassies
-							or ControlPart = "61" //Registration with the foreign countries consulates
-							or ControlPart = "62" //Registration with the representative office similar to diplomatic
-							or ControlPart = "63" //Registration with the international companies
-							or ControlPart = "70" //Registration with foreign and international companies that own real estate in the Russian Federation, except for vehicles belonging to the real estate
-							or ControlPart = "71" //Registration with foreign and international companies with vehicles in the Russian Federation not related to the real estate
-							or ControlPart = "72" //Registration with foreign and international companies with marine transport in the Russian Federation
-							or ControlPart = "73" //Registration with foreign and international companies with river transport in the Russian Federation
-							or ControlPart = "74" //Registration with foreign and international companies with aerial vehicles in the Russian Federation
-							or ControlPart = "75" //Registration with foreign and international companies with space crafts in the Russian Federation
-							or ControlPart = "80" //Registration of foreign and international companies as rouble accounts of the "C" (current) types are opened in banks
-							or ControlPart = "81" //Registration of foreign and international companies as accounts of the "I" (investment) types are opened in banks
-							or ControlPart = "82" //registration of foreign and international companies as accounts of the "S" (special) types are opened in banks
-							or ControlPart = "83" //Registration of foreign and international companies as accounts of the "C" (current) types in the foreign currency are opened in the banks
-							or ControlPart = "84";//Registration of foreign and international companies as correspondent accounts are opened in the banks 
-						
-						If Not MainDepartmentFlag and Not SeparateDepartmentFlag Then
-							
-							ReturnStructure.KPPEnteredCorrectly = False;
-							
-							ReturnStructure.LabelExplanationsOfIncorrectKPP = NStr("en='KPP does not correspond to format';ru='КПП не соответствует формату'");
-							
-							TextForIncorrectKPP = NStr("en='%
-		|KPP does not correspond to the format';ru='%1
-		|КПП не соответствует формату'");
-							
-							ReturnStructure.ExtendedKPPPresentation = StringFunctionsClientServer.SubstituteParametersInString(TextForIncorrectKPP, KPP);
-							
-							ReturnStructure.NoErrorsByKPP = False;
-							
-						EndIf;
-						
-					EndIf;
-					
-				EndIf;
-				
-			EndIf;
-			
-		EndIf;	
-		
-	EndIf;
-	
-	Return ReturnStructure;
-	
-EndFunction	
 
 ///////////////////////////////////////////////////////////////////////////////
 // First start handlers (SB)
@@ -1742,21 +1332,23 @@ Procedure FirstLaunch() Export
 	Constants.ActivityKind.Set(Enums.CompanyActivityKinds.TradeAndServices);
 	Constants.FunctionalOptionUseWorkSubsystem.Set(True);
 	
-	OthersBusinessActivityRefs = Catalogs.BusinessActivities.Other;
-	OthersBusinessActivity = OthersBusinessActivityRefs.GetObject();
-	OthersBusinessActivity.GLAccountRevenueFromSales = ChartsOfAccounts.Managerial.OtherIncome;
-	OthersBusinessActivity.GLAccountCostOfSales = ChartsOfAccounts.Managerial.OtherExpenses;
-	OthersBusinessActivity.ProfitGLAccount = ChartsOfAccounts.Managerial.ProfitsAndLossesWithoutProfitTax;
+	OthersBusinessActivityRefs	= Catalogs.BusinessActivities.Other;
+	OthersBusinessActivity								= OthersBusinessActivityRefs.GetObject();
+	OthersBusinessActivity.GLAccountRevenueFromSales	= ChartsOfAccounts.Managerial.OtherIncome;
+	OthersBusinessActivity.GLAccountCostOfSales			= ChartsOfAccounts.Managerial.OtherExpenses;
+	OthersBusinessActivity.ProfitGLAccount				= ChartsOfAccounts.Managerial.ProfitsAndLossesWithoutProfitTax;
 	OthersBusinessActivity.Write();
 	
-	IsMainBusinessActivityReference = Catalogs.BusinessActivities.MainActivity;
-	IsMainBusinessActivity = IsMainBusinessActivityReference.GetObject();
-	IsMainBusinessActivity.GLAccountRevenueFromSales = ChartsOfAccounts.Managerial.SalesRevenue;
-	IsMainBusinessActivity.GLAccountCostOfSales = ChartsOfAccounts.Managerial.CostOfGoodsSold;
-	IsMainBusinessActivity.ProfitGLAccount = ChartsOfAccounts.Managerial.ProfitsAndLossesWithoutProfitTax;
+	IsMainBusinessActivityReference	= Catalogs.BusinessActivities.MainActivity;
+	IsMainBusinessActivity								= IsMainBusinessActivityReference.GetObject();
+	IsMainBusinessActivity.GLAccountRevenueFromSales	= ChartsOfAccounts.Managerial.SalesRevenue;
+	IsMainBusinessActivity.GLAccountCostOfSales			= ChartsOfAccounts.Managerial.CostOfGoodsSold;
+	IsMainBusinessActivity.ProfitGLAccount				= ChartsOfAccounts.Managerial.ProfitsAndLossesWithoutProfitTax;
 	IsMainBusinessActivity.Write();
 	
-	// 3. Fill the Calendar under BusinessCalendar.
+	Constants.HomeCountry.Set(Catalogs.WorldCountries.Russia);
+	
+	// 7. Fill the Calendar under BusinessCalendar.
 	Calendar = SmallBusinessServer.GetCalendarByProductionCalendaRF(); 
 	If Calendar = Undefined Then
 		
@@ -1765,25 +1357,27 @@ Procedure FirstLaunch() Export
 		
 	EndIf;
 	
-	// 4. Fill in companies.
-	OurCompanyRef = Catalogs.Companies.MainCompany;
+	// 8. Fill in companies.
+	OurCompanyRef	= Catalogs.Companies.MainCompany;
+	OurCompany		= OurCompanyRef.Ref;
 	
-	// 5. Fill in departments.
-	MainDepartmentReference = Catalogs.StructuralUnits.MainDepartment;
-	MainDepartment = MainDepartmentReference.GetObject();
-	MainDepartment.Company = OurCompanyRef;
-	MainDepartment.StructuralUnitType = Enums.StructuralUnitsTypes.Department;
+	// 9. Fill in departments.
+	MainDepartmentReference	= Catalogs.StructuralUnits.MainDepartment;
+	MainDepartment						= MainDepartmentReference.GetObject();
+	MainDepartment.Company				= OurCompany.Ref;
+	MainDepartment.StructuralUnitType	= Enums.StructuralUnitsTypes.Department;
 	MainDepartment.Write();
 	
-	// 6. Fill in the main warehouse.
-	MainWarehouseReference = Catalogs.StructuralUnits.MainWarehouse;
-	MainWarehouse = MainWarehouseReference.GetObject();
-	MainWarehouse.StructuralUnitType = Enums.StructuralUnitsTypes.Warehouse;
-	MainWarehouse.Company = OurCompanyRef;
+	// 10. Fill in the main warehouse.
+	MainWarehouseReference	= Catalogs.StructuralUnits.MainWarehouse;
+	MainWarehouse						= MainWarehouseReference.GetObject();
+	MainWarehouse.StructuralUnitType	= Enums.StructuralUnitsTypes.Warehouse;
+	MainWarehouse.Company				= OurCompany.Ref;
 	MainWarehouse.Write();
 	
-	// 7. Fill in constants.
-	Constants.ControlBalancesOnPosting.Set(true);
+	// 12. Fill in constants.
+	Constants.ControlBalancesOnPosting.Set(True);
+	Constants.FunctionalOptionUseVAT.Set(True);
 	
 	If Not CommonUseReUse.CanUseSeparatedData() Then
 		
@@ -1797,81 +1391,79 @@ Procedure FirstLaunch() Export
 		Constants.DistributedInformationBaseNodePrefix.Set(DataExchangeOverridable.InfobasePrefixByDefault());
 	EndIf;
 	
-	// 8. Fill in planning period.
+	// 13. Fill in planning period.
 	FillPlanningPeriodFirstLaunch();
 	
-	// 9. Fill in classifier of the working time use.
-	//FillClassifierOfWorkingTimeUsage();
-	
-	// 10. Fill in calculation and accruals kinds parameters.
+	// 15. Fill in calculation and accruals kinds parameters.
 	FillCalculationParametersAndAccrualKinds();
 	
-	// 11. Fill in properties sets.
+	// 16. Fill in properties sets.
 	MainNYReference = Catalogs.ProductsAndServicesCategories.MainGroup;
 	MainNG = MainNYReference.GetObject();
 	MainNG.Write();
+	MainNG.Write();
 	
-	// 12. Fill in attributes of the predefined measurement units.
+	// 17. Fill in attributes of the predefined measurement units.
 		
 	// Piece.
 	PcsRefs = Catalogs.UOMClassifier.pcs;
 	PcsObject = PcsRefs.GetObject();
-	PcsObject.DescriptionFull = "Piece";
-	PcsObject.InternationalAbbreviation = "PCE";
+	PcsObject.DescriptionFull			= "Piece";
+	PcsObject.InternationalAbbreviation	= "PCE";
 	PcsObject.Write();
 	
 	// Hour.
 	hRef = Catalogs.UOMClassifier.h;
 	chObject = hRef.GetObject();
-	chObject.DescriptionFull = "Hour";
-	chObject.InternationalAbbreviation = "HUR";
+	chObject.DescriptionFull			= "Hour";
+	chObject.InternationalAbbreviation	= "HUR";
 	chObject.Write();
 	
-	// 13. Fill in customer orders states.
+	// 18. Fill in customer orders states.
 	OpenOrderState = Catalogs.CustomerOrderStates.Open;
-	OpenOrderStateObject = OpenOrderState.GetObject();
-	OpenOrderStateObject.OrderStatus = Enums.OrderStatuses.Open;
+	OpenOrderStateObject				= OpenOrderState.GetObject();
+	OpenOrderStateObject.OrderStatus	= Enums.OrderStatuses.Open;
 	OpenOrderStateObject.Write();
 	
 	PlannedObjectOrderStatus = Catalogs.CustomerOrderStates.CreateItem();
-	PlannedObjectOrderStatus.Description = "In process";
-	PlannedObjectOrderStatus.OrderStatus = Enums.OrderStatuses.InProcess;
+	PlannedObjectOrderStatus.Description	= "In process";
+	PlannedObjectOrderStatus.OrderStatus	= Enums.OrderStatuses.InProcess;
 	PlannedObjectOrderStatus.Write();
 	
 	Constants.CustomerOrdersInProgressStatus.Set(PlannedObjectOrderStatus.Ref);
 	
-	CompletedOrderStateObject = Catalogs.CustomerOrderStates.CreateItem();
-	CompletedOrderStateObject.Description = "Completed";
-	CompletedOrderStateObject.OrderStatus = Enums.OrderStatuses.Completed;
 	Color = StyleColors.PastEvent;
-	CompletedOrderStateObject.Color = New ValueStorage(Color);
+	CompletedOrderStateObject = Catalogs.CustomerOrderStates.CreateItem();
+	CompletedOrderStateObject.Description	= "Completed";
+	CompletedOrderStateObject.OrderStatus	= Enums.OrderStatuses.Completed;
+	CompletedOrderStateObject.Color			= New ValueStorage(Color);
 	CompletedOrderStateObject.Write();
 	
 	Constants.CustomerOrdersCompletedStatus.Set(CompletedOrderStateObject.Ref);
 	
-	// 14. Purchase orders.
+	// 19. Purchase orders.
 	OpenOrderState = Catalogs.PurchaseOrderStates.Open;
-	OpenOrderStateObject = OpenOrderState.GetObject();
-	OpenOrderStateObject.OrderStatus = Enums.OrderStatuses.Open;
+	OpenOrderStateObject				= OpenOrderState.GetObject();
+	OpenOrderStateObject.OrderStatus	= Enums.OrderStatuses.Open;
 	OpenOrderStateObject.Write();
 	
 	PlannedObjectOrderStatus = Catalogs.PurchaseOrderStates.CreateItem();
-	PlannedObjectOrderStatus.Description = "In process";
-	PlannedObjectOrderStatus.OrderStatus = Enums.OrderStatuses.InProcess;
+	PlannedObjectOrderStatus.Description	= "In process";
+	PlannedObjectOrderStatus.OrderStatus	= Enums.OrderStatuses.InProcess;
 	PlannedObjectOrderStatus.Write();
 	
 	Constants.PurchaseOrdersInProgressStatus.Set(PlannedObjectOrderStatus.Ref);
 	
-	CompletedOrderStateObject = Catalogs.PurchaseOrderStates.CreateItem();
-	CompletedOrderStateObject.Description = "Completed";
-	CompletedOrderStateObject.OrderStatus = Enums.OrderStatuses.Completed;
 	Color = StyleColors.PastEvent;
-	CompletedOrderStateObject.Color = New ValueStorage(Color);
+	CompletedOrderStateObject = Catalogs.PurchaseOrderStates.CreateItem();
+	CompletedOrderStateObject.Description	= "Completed";
+	CompletedOrderStateObject.OrderStatus	= Enums.OrderStatuses.Completed;
+	CompletedOrderStateObject.Color			= New ValueStorage(Color);
 	CompletedOrderStateObject.Write();
 	
 	Constants.PurchaseOrdersCompletedStatus.Set(CompletedOrderStateObject.Ref);
 	
-	// 15. Fill in production orders states.
+	// 20. Fill in production orders states.
 	OpenOrderState = Catalogs.ProductionOrderStates.Open;
 	OpenOrderStateObject = OpenOrderState.GetObject();
 	OpenOrderStateObject.OrderStatus = Enums.OrderStatuses.Open;
@@ -1893,41 +1485,41 @@ Procedure FirstLaunch() Export
 
 	Constants.ProductionOrdersCompletedStatus.Set(CompletedOrderStateObject.Ref);
 	
-	// 16. Set the date of movements change by order warehouse.
+	// 21. Set the date of movements change by order warehouse.
 	Constants.UpdateDateToRelease_1_2_1.Set("19800101");
 	
-	// 17. Set a balances control flag when the CR receipts are given.
+	// 22. Set a balances control flag when the CR receipts are given.
 	Constants.ControlBalancesDuringCreationCRReceipts.Set(True);
 	
-	// 18. Selection settings
+	// 23. Selection settings
 	FillFilterUserSettings();
 	
-	// 19. Constant PlannedTotalsOptimizationDate
+	// 24. Constant PlannedTotalsOptimizationDate
 	Constants.PlannedTotalsOptimizationDate.Set(EndOfMonth(AddMonth(CurrentSessionDate(), 1)));
 	
-	// 20. Contact information
-	RefreshPredefinedKindsOfContact();
+	// 25. Contact information
+	ContactInformationSB.SetPropertiesPredefinedContactInformationKinds();
 	
-	// 21. Price-list constants.
+	// 26. Price-list constants.
 	Constants.PriceListShowCode.Set(Enums.YesNo.Yes);
 	Constants.PriceListShowFullDescr.Set(Enums.YesNo.No);
 	Constants.PriceListUseProductsAndServicesHierarchy.Set(True);
 	Constants.FormPriceListByAvailabilityInWarehouses.Set(False);
 	
-	// 22. Registration
+	// 28. Registration
 	DeleteChangeRegistrationOfBaseClassifiers();
 	
-	// 23. Constant.CustomerInvoiceNote1137UsageBegin
-	Constants.CustomerInvoiceNote1137UsageBegin.Set(Date(2012, 04, 01));
-	
-	// 24. Constant.OffsetAdvancesDebtsAutomatically
+	// 29. Fill in contracts forms.
+	FillContractsForms();
+
+	// 31. Constant.OffsetAdvancesDebtsAutomatically
 	Constants.OffsetAdvancesDebtsAutomatically.Set(Enums.YesNo.No);
 	
-	// 25. Fill in contracts forms.
-	FillContractsForms();
-	
-	// 26. BPO
+	// 32. BPO
 	EquipmentManagerServerCallOverridable.RefreshSuppliedDrivers();
+	
+	// 33. Fill customer acquisition channels.
+	Catalogs.CustomerAcquisitionChannels.FillAvailableCustomerAcquisitionChannels();
 	
 	CommitTransaction();
 	
@@ -1937,62 +1529,73 @@ Procedure DefaultFirstLaunch() Export
 	
 	BeginTransaction();
 	
-	// 1. Fill tax type
+	// 1. We will load chart of accounts.
+	// It fills chart of accounts from template
+	FillManagerialChartOfAccountsByDefault();
+	
+	// 3. Fill in taxes kinds.
 	FillTaxTypesFirstLaunch();
 	
-	// 2. Fill in currencies.
-	USDRef = FindCreateCurrency("643", "rub.", "Russian ruble", "ruble, ruble, rubles, M, kopek, kopek, kopeks, F, 2");
+	// 4. Fill in currencies.
+	DefaultCurrency	= FindCreateCurrency("840", "USD", "US dollar", "dollar, dollar, dollars, M, cent, cent, cents, m, 2");
+	EURRef			= FindCreateCurrency("978", "EUR", "Euro", "euro, euro, euros, M, cent, cent, cents, m, 2");
 	
-	// 3. Fill in VAT rates.
-	DefaultRateVAT = FillVATRatesFirstLaunch();
+	// 5. Fill in VAT rates.
+	WithoutVAT	= FillVATRatesFirstLaunch();
 	
-	// 4. Fill petty cashes.
-	PettyCashRouble = Catalogs.PettyCashes.CreateItem();
-	PettyCashRouble.Description = "Main petty cash";
-	PettyCashRouble.CurrencyByDefault = USDRef;
-	PettyCashRouble.GLAccount = ChartsOfAccounts.Managerial.PettyCash;
-	PettyCashRouble.Write();
+	// 6. Fill petty cashes.
+	PettyCashDefault = Catalogs.PettyCashes.CreateItem();
+	PettyCashDefault.Description		= NStr("ru = 'Основная касса'; en = 'Main petty cash'");
+	PettyCashDefault.CurrencyByDefault	= DefaultCurrency;
+	PettyCashDefault.GLAccount			= ChartsOfAccounts.Managerial.PettyCash;
+	PettyCashDefault.Write();
 	
-	// 5. Fill in companies.
-	OurCompanyRef = Catalogs.Companies.MainCompany;
-	OurCompany = OurCompanyRef.GetObject();
-	OurCompany.DescriptionFull       = "LLC ""Our company""";
-	OurCompany.Prefix                = "OF-";
-	OurCompany.LegalEntityIndividual = Enums.LegalEntityIndividual.LegalEntity;
-	OurCompany.IncludeVATInPrice     = True;
-	OurCompany.PettyCashByDefault    = PettyCashRouble.Ref;
-	OurCompany.DefaultVATRate        = DefaultRateVAT;
-	OurCompany.BusinessCalendar      = SmallBusinessServer.GetCalendarByProductionCalendaRF();
+	// 8. Fill in companies.
+	OurCompanyRef	= Catalogs.Companies.MainCompany;
+	OurCompany							= OurCompanyRef.GetObject();
+	OurCompany.DescriptionFull			= NStr("ru = 'ООО ""Наша фирма""'; en = 'LLC ""Our company""'");
+	OurCompany.Prefix					= NStr("ru = 'НФ-'; en = 'OF-'");
+	OurCompany.LegalEntityIndividual	= Enums.CounterpartyKinds.LegalEntity;
+	OurCompany.IncludeVATInPrice		= False;
+	OurCompany.PettyCashByDefault		= PettyCashDefault.Ref;
+	OurCompany.DefaultVATRate			= WithoutVAT;
+	OurCompany.BusinessCalendar      	= SmallBusinessServer.GetCalendarByProductionCalendaRF();
 	OurCompany.Write();
 	
-	// 6. Fill in prices kinds.
+	// 11. Fill in prices kinds.
 	// Wholesale.
 	WholesaleRef = Catalogs.PriceKinds.Wholesale;
-	Wholesale = WholesaleRef.GetObject();
-	Wholesale.PriceCurrency = USDRef;
-	Wholesale.PriceIncludesVAT = True;
-	Wholesale.RoundingOrder = Enums.RoundingMethods.Round1;
-	Wholesale.RoundUp = False;
-	Wholesale.PriceFormat = "ND=15; NFD=2";
+	Wholesale					= WholesaleRef.GetObject();
+	Wholesale.PriceCurrency		= DefaultCurrency;
+	Wholesale.PriceIncludesVAT	= False;
+	Wholesale.RoundingOrder		= Enums.RoundingMethods.Round1;
+	Wholesale.RoundUp			= False;
+	Wholesale.PriceFormat		= "ND=15; NFD=2";
 	Wholesale.Write();
 	
 	// Accountable.
 	AccountingReference = Catalogs.PriceKinds.Accounting;
-	Accounting = AccountingReference.GetObject();
-	Accounting.PriceCurrency = USDRef;
-	Accounting.PriceIncludesVAT = True;
-	Accounting.RoundingOrder = Enums.RoundingMethods.Round1;
-	Accounting.RoundUp = False;
-	Accounting.PriceFormat = "ND=15; NFD=2";
+	Accounting					= AccountingReference.GetObject();
+	Accounting.PriceCurrency	= DefaultCurrency;
+	Accounting.PriceIncludesVAT	= False;
+	Accounting.RoundingOrder	= Enums.RoundingMethods.Round1;
+	Accounting.RoundUp			= False;
+	Accounting.PriceFormat		= "ND=15; NFD=2";
 	Accounting.Write();
 	
-	// 7. Fill in constants.
-	Constants.AccountingCurrency.Set(USDRef);
-	Constants.NationalCurrency.Set(USDRef);
+	// 12. Fill in constants.
+	Constants.AccountingCurrency.Set(DefaultCurrency);
+	Constants.NationalCurrency.Set(DefaultCurrency);
 	
-	// 8. Fill in classifier of the working time use.
+	// 14. Fill in classifier of the working time use.
 	FillClassifierOfWorkingTimeUsage();
 	
 	CommitTransaction();
 	
 EndProcedure // FirstLaunch()
+
+Procedure FillManagerialChartOfAccountsByDefault()
+
+	AccountingServer.FillChartOfAccountsByDefault();
+
+EndProcedure

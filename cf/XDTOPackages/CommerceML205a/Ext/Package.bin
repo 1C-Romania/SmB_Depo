@@ -294,9 +294,6 @@
 		<property name="TIN" lowerBound="0">
 			<typeDef xsi:type="ValueType" base="xs:string" variety="Atomic" minLength="10" maxLength="12"/>
 		</property>
-		<property name="KPP" lowerBound="0">
-			<typeDef xsi:type="ValueType" base="xs:string" variety="Atomic" length="9"/>
-		</property>
 		<property xmlns:d3p1="urn:1C.ru:commerceml_205" name="DefaultActivityKind" type="d3p1:Description" lowerBound="0"/>
 		<property name="EGRPO" type="xs:string" lowerBound="0"/>
 		<property name="OKVED" type="xs:string" lowerBound="0"/>

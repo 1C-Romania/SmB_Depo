@@ -14,15 +14,6 @@ EndProcedure
 &AtServer
 Procedure SetFormFrom2014Year()
 	
-	If Not ValueIsFilled(Object.Date)
-	    OR Object.Date >= '20140101' Then // OKTMO acts in any case from 01/01/2014
-		Items.OKATOCode.Title = "OKTMO code";
-		Items.OKATOCode.ToolTip = "OKTMO code - territories (settlement) on which funds are raised";
-	Else
-		Items.OKATOCode.Title = "OKATO Code";
-		Items.OKATOCode.ToolTip = "Payments collector OKATO code";
-	EndIf;
-	
 	If (ValueIsFilled(Object.Date) AND Object.Date >= SmallBusinessClientServer.StartApplyPaymetID())
 	 OR (NOT ValueIsFilled(Object.Date) AND CurrentDate() >= SmallBusinessClientServer.StartApplyPaymetID()) Then
 		Items.PaymentIdentifier.WarningOnEditRepresentation = WarningOnEditRepresentation.Auto;
@@ -75,9 +66,9 @@ EndProcedure
 Procedure FillPayerText(StructureData)
 	
 	If Object.OperationKind = PredefinedValue("Enum.OperationKindsPaymentOrder.TaxTransfer")
-		AND ValueIsFilled(StructureData.PayerDescriptionOnTaxTransfer) Then
+		AND ValueIsFilled(StructureData.DescriptionFull) Then
 		
-		Object.PayerText = StructureData.PayerDescriptionOnTaxTransfer;
+		Object.PayerText = StructureData.DescriptionFull;
 		
 	ElsIf IsBlankString(StructureData.CorrespondentText) Then
 		
@@ -223,7 +214,7 @@ Procedure GeneratePaymentDestination(UpdateAmount = False)
 		TextVAT = StrReplace(TextVAT, "%VATAmount%", String(Format(Object.VATAmount, "ND=15; NFD=2; NDS=-; NZ=0-00; NG=")));
 	EndIf;
 	
-	TextPaymentDestination = NStr("en='%TextDestination% Amount %TextAmount% %VATRateValue% %TextVAT%';ru='%ТекстНазначение% Сумма %ТекстСумма% %ЗначениеСтавкиНДС% %ТекстНДС%'"
+	TextPaymentDestination = NStr("en='%TextDestination% Amount %TextAmount% %VATRateValue% %TextVAT%';ru='%TextDestination% Сумма %TextAmount% %VATRateValue% %TextVAT%'"
 	);
 	TextPaymentDestination = StrReplace(TextPaymentDestination, "%TextDestination%", TextDestination);
 	TextPaymentDestination = StrReplace(TextPaymentDestination, "%TextAmount%", TextAmount);
@@ -288,12 +279,6 @@ Function GetCompanyDataOnChange(Company, BankAccount, Counterparty, Counterparty
 	
 	StructureData.Insert("Counterparty", 				SmallBusinessServer.GetCompany(Company));
 	StructureData.Insert("DescriptionFull",		Company.DescriptionFull);
-	StructureData.Insert("PayerDescriptionOnTaxTransfer", Company.PayerDescriptionOnTaxTransfer);
-	If Period >= '20140101' Then // OKTMO acts in any case from 01/01/2014
-		StructureData.Insert("OKATOCode", 			Company.CodebyOKTMO);
-	Else
-		StructureData.Insert("OKATOCode", 			Company.CodeByOKATO);
-	EndIf;
 	
 	//  Company bank account
 	ValueForStructure	= ?(BankAccount.Owner = Company, BankAccount, Company.BankAccountByDefault);
@@ -309,7 +294,7 @@ Function GetCompanyDataOnChange(Company, BankAccount, Counterparty, Counterparty
 	
 	StructureData.Insert("CorrespondentText", 	Company.BankAccountByDefault.CorrespondentText);
 	StructureData.Insert("PayerTIN", 			Company.TIN);
-	StructureData.Insert("ThisIsInd", 				Company.LegalEntityIndividual = Enums.LegalEntityIndividual.Ind);
+	StructureData.Insert("ThisIsInd", 				Company.LegalEntityIndividual = Enums.CounterpartyKinds.Individual);
 	
 	StructureData.Insert("TextBankForSettlements", GetTextBankForSettlement(StructureData.BankAccount));
 	
@@ -325,7 +310,6 @@ Function GetDataCompanyAccountOnChange(Company, AccountOfCompany, CurrencyBefore
 	StructureData = New Structure();
 	StructureData.Insert("CorrespondentText", AccountOfCompany.CorrespondentText);
 	StructureData.Insert("DescriptionFull", ?(ValueIsFilled(AccountOfCompany), AccountOfCompany.Owner.DescriptionFull, ""));
-	StructureData.Insert("PayerDescriptionOnTaxTransfer", ?(ValueIsFilled(AccountOfCompany), AccountOfCompany.Owner.PayerDescriptionOnTaxTransfer, ""));
 	StructureData.Insert("CashCurrency", AccountOfCompany.CashCurrency);
 	
 	StructureData.Insert(
@@ -558,7 +542,7 @@ Procedure OnCreateAtServer(Cancel, StandardProcessing)
 	EndIf;
 	
 	Counterparty = SmallBusinessServer.GetCompany(Object.Company);
-	ThisIsInd = Object.Company.LegalEntityIndividual = Enums.LegalEntityIndividual.Ind;
+	ThisIsInd = Object.Company.LegalEntityIndividual = Enums.CounterpartyKinds.Individual;
 	WithoutTaxVAT = Object.VATRate.NotTaxable;
 	
 	If Not ValueIsFilled(Object.Ref)
@@ -577,8 +561,8 @@ Procedure OnCreateAtServer(Cancel, StandardProcessing)
 		EndIf;
 		If Not ValueIsFilled(Object.PayerText) Then
 			StructureData = New Structure(
-				"PayerDescriptionOnTaxTransfer, CorrespondentText, DescriptionFull, TextBankForSettlements",
-				Object.Company.PayerDescriptionOnTaxTransfer, Object.BankAccount.CorrespondentText,
+				"CorrespondentText, DescriptionFull, TextBankForSettlements",
+				Object.BankAccount.CorrespondentText,
 				Object.Company.DescriptionFull, GetTextBankForSettlement(Object.BankAccount)
 			);
 			FillPayerText(StructureData);
@@ -697,7 +681,6 @@ Procedure OnCreateAtServer(Cancel, StandardProcessing)
 	SetFormFrom2015Year();
 	
 	SetVisibleDependendingOnTransferIntoBudgetKind();
-	SmallBusinessClientServer.SetPictureForComment(Items.Additionally, Object.Comment);
 	
 	// StandardSubsystems.AdditionalReportsAndDataProcessors
 	AdditionalReportsAndDataProcessors.OnCreateAtServer(ThisForm);
@@ -813,13 +796,7 @@ Procedure CompanyOnChange(Item)
 	
 	ThisIsInd = StructureData.ThisIsInd;
 	
-	If ValueIsFilled(Object.Company) Then
-		If String(Object.OperationKind) = "Tax payment" Then
-			Object.OKATOCode = StructureData.OKATOCode;
-		Else
-			Object.OKATOCode = "";
-		EndIf;
-	Else
+	If Not ValueIsFilled(Object.Company) Then
 		Object.BankAccount = "";
 	EndIf;
 	
@@ -946,17 +923,13 @@ Procedure OperationKindOnChange(Item)
 	StructureData = GetCompanyDataOnChange(Object.Company, Object.BankAccount, Object.Counterparty, Object.CounterpartyAccount, Object.OperationKind, Object.Date);
 	
 	If Object.OperationKind = PredefinedValue("Enum.OperationKindsPaymentOrder.TaxTransfer") Then
-		Object.BKCode = "";
-		Object.OKATOCode = StructureData.OKATOCode;
 		Object.TransferToBudgetKind = PredefinedValue("Enum.BudgetTransferKinds.TaxPayment");
 		Object.VATRate = Undefined;
 		Object.VATAmount = Undefined;
 		FillPaymentToBudgetByDefaultAttributes();
 		Object.PaymentIdentifier = "";
-		Items.PaymentIdentifier.Title = "WIN";
+		Items.PaymentIdentifier.Title = "UIN";
 	Else
-		Object.BKCode  = "";
-		Object.OKATOCode = "";
 		Object.AuthorStatus = "";
 		Object.BasisIndicator = "";
 		Object.TypeIndicator = "";
@@ -972,8 +945,8 @@ Procedure OperationKindOnChange(Item)
 	EndIf;
 	
 	If Object.OperationKind = PredefinedValue("Enum.OperationKindsPaymentOrder.TaxTransfer")
-	   AND ValueIsFilled(StructureData.PayerDescriptionOnTaxTransfer) Then
-		Object.PayerText = StructureData.PayerDescriptionOnTaxTransfer;
+	   AND ValueIsFilled(StructureData.DescriptionFull) Then
+		Object.PayerText = StructureData.DescriptionFull;
 	Else
 		Object.PayerText = ?(
 			ValueIsFilled(StructureData.CorrespondentText),
@@ -1171,22 +1144,6 @@ Procedure BasisDocumentOnChange(Item)
 	
 EndProcedure // BasisDocumentOnChange()
 
-// Procedure - OnChange event handler of the Comment input field.
-//
-&AtClient
-Procedure CommentOnChange(Item)
-	
-	AttachIdleHandler("Attachable_SetPictureForComment", 0.5, True);
-	
-EndProcedure // CommentOnChange()
-
-&AtClient
-Procedure Attachable_SetPictureForComment()
-	
-	SmallBusinessClientServer.SetPictureForComment(Items.Additionally, Object.Comment);
-	
-EndProcedure
-
 #Region LibrariesHandlers
 
 // StandardSubsystems.AdditionalReportsAndDataProcessors
@@ -1214,16 +1171,3 @@ EndProcedure
 // End StandardSubsystems.Printing
 
 #EndRegion
-
-
-
-
-
-
-
-
-
-
-
-
-

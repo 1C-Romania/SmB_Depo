@@ -1,18 +1,66 @@
 ﻿
-#Region FormEventsHandlers
+#Region FormEventHandlers
 
-// Procedure - OnCreateAtServer event handler.
-//
 &AtServer
 Procedure OnCreateAtServer(Cancel, StandardProcessing)
 	
-	InformationCenterServer.OutputContextReferences(ThisForm, Items.InformationReferences);
+	If Parameters.Property("Autotest") Then
+		Return;
+	EndIf;
 	
-	ContactsClassification.RefreshPeriodsFilterValues(ThisForm);
-	ContactsClassification.RefreshTagFilterValues(ThisForm);
-	ContactsClassification.RefreshSegmentsFilterValues(ThisForm);
+	If Parameters.AdditionalParameters.Property("OperationKind") Then
+		Relationship = ContactsClassification.CounterpartyRelationshipTypeByOperationKind(Parameters.AdditionalParameters.OperationKind);
+		FilterCustomer			= Relationship.Customer;
+		FilterSupplier			= Relationship.Supplier;
+		FilterOtherRelationship	= Relationship.OtherRelationship;
+	EndIf;
 	
-	SetVisibleAndEnabled();
+	If Parameters.Filter.Property("Customer") Then
+		FilterCustomer = Parameters.Filter.Customer;
+		Parameters.Filter.Delete("Customer");
+	EndIf;
+	
+	If Parameters.Filter.Property("Supplier") Then
+		FilterSupplier = Parameters.Filter.Supplier;
+		Parameters.Filter.Delete("Supplier");
+	EndIf;
+	
+	If Parameters.Filter.Property("OtherRelationship") Then
+		FilterOtherRelationship = Parameters.Filter.OtherRelationship;
+		Parameters.Filter.Delete("OtherRelationship");
+	EndIf;
+	
+	SetFilterBusinessRelationship(ThisObject, "Customer",			FilterCustomer);
+	SetFilterBusinessRelationship(ThisObject, "Supplier",			FilterSupplier);
+	SetFilterBusinessRelationship(ThisObject, "OtherRelationship",	FilterOtherRelationship);
+	SetFormTitle(ThisObject);
+	
+	ReadHierarchy();
+	
+	// Establish the form settings for the case of the opening in choice mode
+	Items.List.ChoiceMode		= Parameters.ChoiceMode;
+	Items.List.MultipleChoice	= ?(Parameters.CloseOnChoice = Undefined, False, Not Parameters.CloseOnChoice);
+	If Parameters.ChoiceMode Then
+		PurposeUseKey = "ChoicePick";
+		WindowOpeningMode = FormWindowOpeningMode.LockOwnerWindow;
+	Else
+		PurposeUseKey = "List";
+	EndIf;
+	
+	Items.FilterHierarchyContextMenuIncludingNested.Check = CommonUse.FormDataSettingsStorageImport(
+		FormName,
+		"IncludingNested",
+		False
+	);
+	
+	// SB.ListFilter
+	FormFilterOption = FilterOptionForSetting();
+	WorkWithFilters.RestoreFilterSettings(ThisObject, List,,,New Structure("FilterPeriod", "CreationDate"), FormFilterOption);
+	// End SB.ListFilter
+	
+	// SB.ContactInformationPanel
+	ContactInformationPanelSB.OnCreateAtServer(ThisObject, "ContactInformation");
+	// End SB.ContactInformationPanel
 	
 	// StandardSubsystems.AdditionalReportsAndDataProcessors
 	AdditionalReportsAndDataProcessors.OnCreateAtServer(ThisForm);
@@ -22,70 +70,173 @@ Procedure OnCreateAtServer(Cancel, StandardProcessing)
 	DataImportFromExternalSources.OnCreateAtServer(Metadata.Catalogs.Counterparties, DataLoadSettings, ThisObject);
 	// End StandardSubsystems.DataImportFromExternalSource
 	
+	// StandardSubsystems.GroupObjectsChanging
+	CanEdit = AccessRight("Edit", Metadata.Catalogs.Counterparties);
+	Items.ListBatchObjectChanging.Visible = CanEdit;
+	// End StandardSubsystems.GroupObjectsChanging
+	
 	// StandardSubsystems.Printing
-	PrintManagement.OnCreateAtServer(ThisForm, Items.ImportantCommandsGroup);
+	PrintManagement.OnCreateAtServer(ThisForm, Items.SubmenuPrint);
 	// End StandardSubsystems.Printing
 	
 EndProcedure // OnCreateAtServer()
 
-// Procedure - event handler NotificationProcessing.
-//
+&AtClient
+Procedure OnClose()
+	
+	//SB.ListFilter
+	SaveFilterSettings();
+	//End SB.ListFilter
+
+EndProcedure
+
 &AtClient
 Procedure NotificationProcessing(EventName, Parameter, Source)
 	
-	If EventName = "AfterWriteTag" Or EventName = "AfterSegmentWriting" Then
-		RefreshSelectionValuesPanelServer(EventName);
+	If EventName = "Write_CounterpartyGroup" Then
+		
+		ReadHierarchy();
+		
 	EndIf;
+	
+	// SB.ContactInformationPanel
+	If ContactInformationPanelSBClient.ProcessNotifications(ThisObject, EventName, Parameter) Then
+		RefreshContactInformationPanelServer();
+	EndIf;
+	// End SB.ContactInformationPanel
 	
 EndProcedure
 
 #EndRegion
 
-#Region FormAttributesEventsHandlers
+#Region FormItemEventHandlers
 
-// Procedure - event handler OnChange field FulltextSearchString.
-//
 &AtClient
-Procedure FullTextSearchStringOnChange(Item)
+Procedure FilterCustomerOnChange(Item)
 	
-	RunSearch();
+	SetFilterBusinessRelationship(ThisObject, "Customer", FilterCustomer);
+	SetFormTitle(ThisObject);
 	
-EndProcedure // FullTextSearchStringOnChange()
+EndProcedure
 
-// Procedure - event handler Click inscription SelectionBasis.
-//
 &AtClient
-Procedure BasisSelectClick(Item, StandardProcessing)
+Procedure FilterSupplierOnChange(Item)
+	
+	SetFilterBusinessRelationship(ThisObject, "Supplier", FilterSupplier);
+	SetFormTitle(ThisObject);
+	
+EndProcedure
+
+&AtClient
+Procedure FilterOtherRelationshipOnChange(Item)
+	
+	SetFilterBusinessRelationship(ThisObject, "OtherRelationship", FilterOtherRelationship);
+	SetFormTitle(ThisObject);
+	
+EndProcedure
+
+&AtClient
+Procedure PeriodPresentationClick(Item, StandardProcessing)
 	
 	StandardProcessing = False;
-	Basis = Bases.FindRows(New Structure("Counterparty", Items.List.CurrentRow));
-	If Basis.Count() > 0 Then
-		ShowValue(Undefined,Basis[0].Ref);
+	WorkWithFiltersClient.PeriodPresentationSelectPeriod(ThisObject, "List", "CreationDate");
+	
+EndProcedure
+
+&AtClient
+Procedure FilterTagChoiceProcessing(Item, SelectedValue, StandardProcessing)
+	
+	If Not ValueIsFilled(SelectedValue) Then
+		Return;
 	EndIf;
 	
-EndProcedure // SelectionBasisClick()
+	SetLabelAndListFilter("Tags.Tag", Item.Parent.Name, SelectedValue);
+	SelectedValue = Undefined;
+	
+EndProcedure
 
-// Procedure - handler of the OnActivateRow list events.
-//
+&AtClient
+Procedure FilterSegmentChoiceProcessing(Item, SelectedValue, StandardProcessing)
+	
+	If Not ValueIsFilled(SelectedValue) Then
+		Return;
+	EndIf;
+	
+	StandardProcessing = False;
+	SetFilterBySegmentsAtServer(SelectedValue);
+	
+EndProcedure
+
+&AtClient
+Procedure FilterResponsibleChoiceProcessing(Item, SelectedValue, StandardProcessing)
+	
+	If Not ValueIsFilled(SelectedValue) Then
+		Return;
+	EndIf;
+	
+	SetLabelAndListFilter("Responsible", Item.Parent.Name, SelectedValue);
+	SelectedValue = Undefined;
+	
+EndProcedure
+
+&AtClient
+Procedure CollapseExpandFiltesPanelClick(Item)
+	
+	NewValueVisible = Not Items.FilterSettingsAndAddInfo.Visible;
+	WorkWithFiltersClient.CollapseExpandFiltesPanel(ThisObject, NewValueVisible);
+	
+EndProcedure
+
+#EndRegion
+
+#Region FormItemEventHandlersFormTableList
+
 &AtClient
 Procedure ListOnActivateRow(Item)
 	
-	If Item.CurrentData <> Undefined
-		AND Item.CurrentData.Property("IsFolder")
-		AND Not Item.CurrentData.IsFolder Then
+	If TypeOf(Item.CurrentRow) <> Type("DynamicalListGroupRow") Then
 		
-		AttachIdleHandler("HandleIncreasedRowsList", 0.2, True);
+		CounterpartyCurrentRow = ?(Item.CurrentData = Undefined, Undefined, Item.CurrentData.Ref);
+		If CounterpartyCurrentRow <> CurrentCounterparty Then
+		
+			CurrentCounterparty = CounterpartyCurrentRow;
+			AttachIdleHandler("HandleActivateListRow", 0.2, True);
+		EndIf;
 		
 	EndIf;
 	
-EndProcedure // ListOnActivateRow()
+EndProcedure
 
 &AtClient
-Procedure ListBeforeAddRow(Item, Cancel, Copy, Parent, Group)
+Procedure ListBeforeAddRow(Item, Cancel, Clone, Parent, Folder, Parameter)
 	
-	If Not Group Then
+	If Not Folder Then
 		KeyOperation = "FormCreatingCounterparties";
 		PerformanceEstimationClientServer.StartTimeMeasurement(KeyOperation);
+	EndIf;
+
+	If Not Clone And Not Folder Then
+		
+		Cancel = False;
+		
+		FillingValues = New Structure;
+		FillingValues.Insert("Customer",			FilterCustomer);
+		FillingValues.Insert("Supplier",			FilterSupplier);
+		FillingValues.Insert("OtherRelationship",	FilterOtherRelationship);
+		
+		FiltersByParent = CommonUseClientServer.FindFilterItemsAndGroups(List.Filter, "Parent");
+		If FiltersByParent.Count() > 0
+			And FiltersByParent[0].Use
+			And ValueIsFilled(FiltersByParent[0].RightValue) Then
+			
+			FillingValues.Insert("Parent",	FiltersByParent[0].RightValue);
+		EndIf;
+		
+		FormParameters = New Structure;
+		FormParameters.Insert("FillingValues", FillingValues);
+		
+		OpenForm("Catalog.Counterparties.ObjectForm", FormParameters, Item);
+		
 	EndIf;
 
 EndProcedure
@@ -93,390 +244,553 @@ EndProcedure
 &AtClient
 Procedure ListBeforeRowChange(Item, Cancel)
 	
-	If Not Item.CurrentData.IsFolder Then
-		KeyOperation = "FormOpeningCounterparties";
-		PerformanceEstimationClientServer.StartTimeMeasurement(KeyOperation);
-	EndIf;
+	//If Not Item.CurrentData.IsFolder Then
+	//	KeyOperation = "FormOpeningCounterparties";
+	//	PerformanceEstimationClientServer.StartTimeMeasurement(KeyOperation);
+	//EndIf;
 	
 EndProcedure
 
-// Procedure - handler of clicking the SendEmailToCounterparty button.
-//
 &AtClient
-Procedure SendEmailToCounterparty(Item, StandardProcessing)
+Procedure ListNewWriteProcessing(NewObject, Source, StandardProcessing)
+	
+	CurrentItem = Items.List;
+	
+EndProcedure
+
+#EndRegion
+
+#Region FormItemEventHandlersFormTableFilterHierarchy
+
+&AtClient
+Procedure FilterHierarchyOnActivateRow(Item)
+	
+	SetFilterByHierarchy(ThisObject);
+	
+EndProcedure
+
+&AtClient
+Procedure FilterHierarchyDragStart(Item, DragParameters, Perform)
+	
+	If Item.CurrentRow = Undefined Then
+		Executing = False;
+		Return;
+	EndIf;
+	
+	HierarchyRow = FilterHierarchy.FindByID(Item.CurrentRow);
+	If HierarchyRow = Undefined
+		Or HierarchyRow.CounterpartyGroup = "All"
+		Or HierarchyRow.CounterpartyGroup = "WithoutGroup" Then
+		
+		Executing = False;
+		Return;
+	EndIf;
+	
+	DragParameters.Value = CommonUseClientServer.ValueInArray(HierarchyRow.CounterpartyGroup);
+	
+EndProcedure
+
+&AtClient
+Procedure FilterHierarchyDragCheck(Item, DragParameters, StandardProcessing, Row, Field)
 	
 	StandardProcessing = False;
 	
-	ListCurrentData = Items.List.CurrentData;
-	If ListCurrentData = Undefined Then
+	If Row = Undefined Then
+		DragParameters.Action = DragAction.Cancel;
 		Return;
 	EndIf;
 	
-	Recipients = New Array;
-	If ValueIsFilled(CounterpartyInformationES) Then
-		StructureRecipient = New Structure;
-		StructureRecipient.Insert("Presentation", ListCurrentData.Ref);
-		StructureRecipient.Insert("Address", CounterpartyInformationES);
-		Recipients.Add(StructureRecipient);
+	HierarchyRow = FilterHierarchy.FindByID(Row);
+	If HierarchyRow = Undefined Or HierarchyRow.CounterpartyGroup = "All" Then
+		DragParameters.Action = DragAction.Cancel;
+		Return;
 	EndIf;
 	
-	SendingParameters = New Structure;
-	SendingParameters.Insert("Recipient", Recipients);
+	DragParameters.AllowedActions	= DragAllowedActions.Move;
+	DragParameters.Action			= DragAction.Move;
 	
-	EmailOperationsClient.CreateNewEmail(SendingParameters);
-	
-EndProcedure // SendEmailToCounterparty()
+EndProcedure
 
-// Procedure - handler of clicking the SendEmailToContactPerson button.
-//
 &AtClient
-Procedure SendEmailToContactPerson(Item, StandardProcessing)
+Procedure FilterHierarchyDrag(Item, DragParameters, StandardProcessing, Row, Field)
 	
 	StandardProcessing = False;
 	
-	ListCurrentData = Items.List.CurrentData;
-	If ListCurrentData = Undefined Then
+	If TypeOf(DragParameters.Value) <> Type("Array")
+		Or DragParameters.Value.Count() = 0
+		Or TypeOf(DragParameters.Value[0]) <> Type("CatalogRef.Counterparties")Then
+		
 		Return;
 	EndIf;
 	
-	Recipients = New Array;
-	If ValueIsFilled(ContactPersonESInformation) Then
-		StructureRecipient = New Structure;
-		StructureRecipient.Insert("Presentation", ListCurrentData.ContactPerson);
-		StructureRecipient.Insert("Address", ContactPersonESInformation);
-		Recipients.Add(StructureRecipient);
+	If Row = Undefined Then
+		Return;
 	EndIf;
 	
-	SendingParameters = New Structure;
-	SendingParameters.Insert("Recipient", Recipients);
-	
-	EmailOperationsClient.CreateNewEmail(SendingParameters);
-	
-EndProcedure // SendEmailToContactPerson()
-
-&AtClient
-Procedure FilterCreatedTodayClick(Item)
-	
-	Check = ContactsClassificationClient.CreatedFilterClick(ThisForm, "List", "Today", Item);
-	
-EndProcedure
-
-&AtClient
-Procedure FilterCreatedOver3DaysClick(Item)
-	
-	Check = ContactsClassificationClient.CreatedFilterClick(ThisForm, "List", "3Days", Item);
-	
-EndProcedure
-
-&AtClient
-Procedure FilterCreatedOverWeekClick(Item)
-	
-	Check = ContactsClassificationClient.CreatedFilterClick(ThisForm, "List", "Week", Item);
-	
-EndProcedure
-
-&AtClient
-Procedure FilterCreatedOverMonthClick(Item)
-	
-	Check = ContactsClassificationClient.CreatedFilterClick(ThisForm, "List", "Month", Item);
-	
-EndProcedure
-
-&AtClient
-Procedure FilterCreatedOnChange(Item)
-	
-	Check = ContactsClassificationClient.CreatedFilterClick(ThisForm, "List", "Custom", Item);
-	
-EndProcedure
-
-&AtClient
-Procedure Attachable_TagFilterClick(Item, StandardProcessing)
-	
-	Check = ContactsClassificationClient.TagFilterClick(ThisForm, "List", Item, StandardProcessing);
-	If Not Check = Undefined Then
-		ChangeServerElementColor(Check, Item.Name);
+	HierarchyRow = FilterHierarchy.FindByID(Row);
+	If HierarchyRow = Undefined Or HierarchyRow.CounterpartyGroup = "All" Then
+		Return;
 	EndIf;
 	
-EndProcedure
-
-&AtClient
-Procedure Attachable_SegmentFilterClick(Item, StandardProcessing)
-	
-	Check = ContactsClassificationClient.SegmentFilterClick(ThisForm, "List", Item, StandardProcessing);
-	If Not Check = Undefined Then
-		ChangeServerElementColor(Check, Item.Name);
-	EndIf;
-	
-EndProcedure
-
-&AtClient
-Procedure Attachable_ClickOnInformationLink(Item)
-	
-	InformationCenterClient.ClickOnInformationLink(ThisForm, Item);
-	
-EndProcedure
-
-&AtClient
-Procedure Attachable_ReferenceClickAllInformationLinks(Item)
-	
-	InformationCenterClient.ReferenceClickAllInformationLinks(ThisForm.FormName);
+	NewGroup = ?(HierarchyRow.CounterpartyGroup = "WithoutGroup", PredefinedValue("Catalog.Counterparties.EmptyRef"), HierarchyRow.CounterpartyGroup);
+	HierarchyDragServer(DragParameters.Value, NewGroup);
 	
 EndProcedure
 
 #EndRegion
 
-#Region FormCommandsHandlers
+#Region FormCommandHandlers
 
-// Procedure - click handler on the hyperlink DocumentsByCounterparty.
-//
 &AtClient
-Procedure OpenDocumentsOnCounterparty(Command)
+Procedure HierarchyChange(Command)
 	
-	CurrentDataOfList = Items.List.CurrentData;
-	If CurrentDataOfList = Undefined OR CurrentDataOfList.IsFolder Then
-		WarningText = NStr("en='Command can not be executed for the specified object';ru='Команда не может быть выполнена для указанного объекта!'");
-		ShowMessageBox(Undefined,WarningText);
+	If Items.FilterHierarchy.CurrentData = Undefined
+		Or TypeOf(Items.FilterHierarchy.CurrentData.CounterpartyGroup) <> Type("CatalogRef.Counterparties")
+		Or Not ValueIsFilled(Items.FilterHierarchy.CurrentData.CounterpartyGroup) Then
+		
 		Return;
 	EndIf;
 	
-	FilterStructure = New Structure("Counterparty", CurrentDataOfList.Ref);
-	FormParameters = New Structure("SettingKey, Filter, GenerateOnOpen, OpeningMode", "Counterparty", FilterStructure, True, FormWindowOpeningMode.LockOwnerWindow);
+	ShowValue(Undefined, Items.FilterHierarchy.CurrentData.CounterpartyGroup);
 	
-	OpenForm("DataProcessor.DocumentsByCounterparty.Form.DocumentsByCounterparty", FormParameters, ThisForm);
-	
-EndProcedure // OpenDocumentsByCounterparty()
+EndProcedure
 
-// Procedure - click handler on the hyperlink Events.
-//
 &AtClient
-Procedure OpenEventsByCounterparty(Command)
+Procedure HierarchyCreateGroup(Command)
 	
-	CurrentDataOfList = Items.List.CurrentData;
-	If CurrentDataOfList = Undefined OR CurrentDataOfList.IsFolder Then
-		WarningText = NStr("en='Command can not be executed for the specified object';ru='Команда не может быть выполнена для указанного объекта!'");
-		ShowMessageBox(Undefined,WarningText);
+	If Items.FilterHierarchy.CurrentData = Undefined Then
 		Return;
 	EndIf;
 	
-	FilterStructure = New Structure;
-	FilterStructure.Insert("Counterparty", CurrentDataOfList.Ref);
+	FillingValues = New Structure;
+	If TypeOf(Items.FilterHierarchy.CurrentData.CounterpartyGroup) = Type("CatalogRef.Counterparties") Then
+		FillingValues.Insert("Parent", Items.FilterHierarchy.CurrentData.CounterpartyGroup);
+	EndIf;
 	
-	FormParameters = New Structure("InformationPanel", FilterStructure);
-	FormParameters.Insert("OpeningMode", FormWindowOpeningMode.LockOwnerWindow);
-	
-	OpenForm("Document.Event.ListForm", FormParameters, ThisForm);
-	
-EndProcedure // OpenEventsByCounterparty()
-
-&AtClient
-Procedure ChangeSelected(Command)
-	
-	GroupObjectsChangeClient.ChangeSelected(Items.List);
+	OpenForm("Catalog.Counterparties.FolderForm",
+		New Structure("FillingValues, IsFolder", FillingValues, True),
+		Items.List);
 	
 EndProcedure
 
 &AtClient
-Procedure FilterPeriod(Command)
+Procedure HierarchyCopy(Command)
 	
-	ContactsClassificationClient.SelectFilterVariant(ThisForm, Command);
+	If Items.FilterHierarchy.CurrentData = Undefined
+		Or TypeOf(Items.FilterHierarchy.CurrentData.CounterpartyGroup) <> Type("CatalogRef.Counterparties")
+		Or Not ValueIsFilled(Items.FilterHierarchy.CurrentData.CounterpartyGroup) Then
+		
+		Return;
+	EndIf;
+	
+	OpenForm("Catalog.Counterparties.FolderForm",
+		New Structure("CopyingValue, IsFolder", Items.FilterHierarchy.CurrentData.CounterpartyGroup, True),
+		Items.List);
 	
 EndProcedure
 
 &AtClient
-Procedure FilterTags(Command)
+Procedure HierarchySetDeletionMark(Command)
 	
-	ContactsClassificationClient.SelectFilterVariant(ThisForm, Command);
+	If Items.FilterHierarchy.CurrentData = Undefined
+		Or TypeOf(Items.FilterHierarchy.CurrentData.CounterpartyGroup) <> Type("CatalogRef.Counterparties")
+		Or Not ValueIsFilled(Items.FilterHierarchy.CurrentData.CounterpartyGroup) Then
+		
+		Return;
+	EndIf;
+	
+	DeletionMark = ChangeGroupDeletionMarkServer(Items.FilterHierarchy.CurrentData.GetID());
+	
+	NotificationText = StrTemplate(NStr("ru='Пометка удаления %1'; en = 'Deletion mark %1'"),
+		?(DeletionMark, NStr("ru='установлена'; en = 'is set'"), NStr("ru='снята'; en = 'is removed'")));
+		
+	ShowUserNotification(
+		NotificationText,
+		GetURL(Items.FilterHierarchy.CurrentData.CounterpartyGroup),
+		Items.FilterHierarchy.CurrentData.CounterpartyGroup,
+		PictureLib.Information32);
+		
+	Items.List.Refresh();;
 	
 EndProcedure
 
 &AtClient
-Procedure FilterSegments(Command)
+Procedure HierarchyIncludingNested(Command)
 	
-	ContactsClassificationClient.SelectFilterVariant(ThisForm, Command);
+	Items.FilterHierarchyContextMenuIncludingNested.Check = Not Items.FilterHierarchyContextMenuIncludingNested.Check;
+	SetFilterByHierarchy(ThisObject);
 	
 EndProcedure
 
 #EndRegion
 
-#Region CommonUseProceduresAndFunctions
+#Region Hierarchy
 
-// Procedure of the list string activation processing.
-//
-&AtClient
-Procedure HandleIncreasedRowsList()
-	
-	If UseFullTextSearch Then
-		If SmallBusinessClient.PositioningIsCorrect(ThisForm) AND AdvancedSearch Then
-			SmallBusinessClient.FillBasisRow(ThisForm);
-			Items.ChoiceBasis.Visible = True;
-		Else
-			ChoiceBasis = "";
-			Items.ChoiceBasis.Visible = False;
-		EndIf;
-	EndIf;
-	
-	InfPanelParameters = New Structure("CIAttribute, Counterparty, ContactPerson", "Ref");
-	SmallBusinessClient.InfoPanelProcessListRowActivation(ThisForm, InfPanelParameters);
-	
-EndProcedure // HandleListStringActivation()
-
-// Procedure sets availability of the form items.
-//
-// Parameters:
-//  No.
-//
 &AtServer
-Procedure SetVisibleAndEnabled()
+Procedure ReadHierarchy()
 	
-	UseFullTextSearch = GetFunctionalOption("UseFullTextSearch");
-	If UseFullTextSearch Then
+	Query = New Query;
+	Query.Text = 
+		"SELECT ALLOWED
+		|	CASE
+		|		WHEN Counterparties.DeletionMark
+		|			THEN 1
+		|		ELSE 0
+		|	END AS IconIndex,
+		|	Counterparties.Ref AS CounterpartyGroup,
+		|	PRESENTATION(Counterparties.Ref) AS GroupPresentation
+		|FROM
+		|	Catalog.Counterparties AS Counterparties
+		|WHERE
+		|	Counterparties.IsFolder = TRUE
+		|
+		|ORDER BY
+		|	Counterparties.Ref HIERARCHY
+		|AUTOORDER";
+	
+	Tree = Query.Execute().Unload(QueryResultIteration.ByGroupsWithHierarchy);
+	ValueToFormAttribute(Tree, "FilterHierarchy");
+	
+	CollectionItems = FilterHierarchy.GetItems();
+	
+	TreeRow = CollectionItems.Insert(0);
+	TreeRow.IconIndex			= -1;
+	TreeRow.CounterpartyGroup	= "All";
+	TreeRow.GroupPresentation	= NStr("ru='<Все группы>'; en = '<All groups>'");
+	
+	TreeRow = CollectionItems.Add();
+	TreeRow.IconIndex			= -1;
+	TreeRow.CounterpartyGroup	= "WithoutGroup";
+	TreeRow.GroupPresentation	= NStr("ru='<Нет группы>'; en = '<No group>'");
+	
+EndProcedure
+	
+&AtClientAtServerNoContext
+Procedure SetFilterByHierarchy(Form)
+	
+	Items = Form.Items;
+	If Items.FilterHierarchy.CurrentData = Undefined Then
+		Return;
+	EndIf;
+	
+	IsFilterByGroup = TypeOf(Items.FilterHierarchy.CurrentData.CounterpartyGroup) = Type("CatalogRef.Counterparties");
+	
+	Items.FilterHierarchyContextMenuHierarchyChange.Enabled				= IsFilterByGroup;
+	Items.FilterHierarchyContextMenuHierarchyCopy.Enabled				= IsFilterByGroup;
+	Items.FilterHierarchyContextMenuHierarchySetDeletionMark.Enabled	= IsFilterByGroup;
+	
+	RightValue	= Undefined;
+	Compare		= DataCompositionComparisonType.Equal;
+	Use			= True;
+	
+	If IsFilterByGroup Then
 		
-		AdvancedSearch = False;
-		FileInfobase = CommonUse.FileInfobase();
-		FulltextSearchIndexActual = FullTextSearchServer.SearchIndexTrue();
-		SmallBusinessServer.Import("FindHistoryOfCounterparties", Items.FulltextSearchString.ChoiceList);
+		If Items.FilterHierarchyContextMenuIncludingNested.Check Then
+			Compare = DataCompositionComparisonType.InHierarchy;
+		EndIf;
+		RightValue = Items.FilterHierarchy.CurrentData.CounterpartyGroup;
 		
-		Items.SearchVariants.CurrentPage = Items.FulltextSearchGroup;
+	ElsIf Items.FilterHierarchy.CurrentData.CounterpartyGroup = "All" Then
+		
+		Use = False;
+		
+	ElsIf Items.FilterHierarchy.CurrentData.CounterpartyGroup = "WithoutGroup" Then
+		
+		RightValue = PredefinedValue("Catalog.Counterparties.EmptyRef");
+		
+	EndIf;
+	
+	CommonUseClientServer.SetFilterDynamicListItem(
+		Form.List,
+		"Parent",
+		RightValue,
+		Compare,
+		,
+		Use
+	);
+	
+EndProcedure
+
+&AtServerNoContext
+Function ChangeDeletionMark(Counterparty)
+	
+	CounterpartyObject = Counterparty.GetObject();
+	CounterpartyObject.SetDeletionMark(Not CounterpartyObject.DeletionMark, True);
+	
+	Return CounterpartyObject.DeletionMark;
+	
+EndFunction
+
+&AtServer
+Function  ChangeGroupDeletionMarkServer(CurrentRowID)
+	
+	CurrentTreeRow = FilterHierarchy.FindByID(CurrentRowID);
+	DeletionMark = ChangeDeletionMark(CurrentTreeRow.CounterpartyGroup);
+	ChangeIconRecursively(CurrentTreeRow, DeletionMark);
+	
+	Return DeletionMark;
+	
+EndFunction
+
+&AtServer
+Procedure ChangeIconRecursively(TreeRow, DeletionMark)
+	
+	TreeRow.IconIndex = ?(DeletionMark, 1, 0);
+	
+	TreeRows = TreeRow.GetItems();
+	For Each ChildRow In TreeRows Do
+		ChangeIconRecursively(ChildRow, DeletionMark);
+	EndDo;
+	
+EndProcedure
+
+&AtServer
+Процедура HierarchyDragServer(CounterpartiesArray, NewGroup)
+	
+	SetNewCounterpartiesGroup(CounterpartiesArray, NewGroup);
+	
+	If CounterpartiesArray[0].IsFolder Then
+		
+		ReadHierarchy();
+		
+		RowID = 0;
+		CommonUseClientServer.GetTreeRowIDByFieldValue(
+			"CounterpartyGroup",
+			RowID,
+			FilterHierarchy.GetItems(),
+			CounterpartiesArray[0],
+			False
+		);
+		Items.FilterHierarchy.CurrentRow = RowID;
 		
 	Else
 		
-		Items.SearchVariants.CurrentPage = Items.StandardSearchGroup;
+		Items.List.Refresh();
 		
 	EndIf;
 	
-EndProcedure // SetVisibleAndEnabled()
-
-&AtServer
-Procedure ChangeServerElementColor(Check, ItemName)
-	
-	ContactsClassification.ChangeSelectionItemColor(ThisForm, Check, ItemName);
-	
 EndProcedure
 
-&AtServer
-Procedure RefreshSelectionValuesPanelServer(EventName)
+&AtServerNoContext
+Procedure SetNewCounterpartiesGroup(CounterpartiesArray, NewGroup)
 	
-	If EventName = "AfterWriteTag" Then
-		ContactsClassification.RefreshTagFilterValues(ThisForm);
-	ElsIf EventName = "AfterSegmentWriting" Then
-		ContactsClassification.RefreshSegmentsFilterValues(ThisForm);
-	EndIf;
+	For Each Counterparty In CounterpartiesArray Do
+		CounterpartyObject = Counterparty.GetObject();
+		CounterpartyObject.Parent = NewGroup;
+		CounterpartyObject.Write();
+	EndDo;
 	
 EndProcedure
 
 #EndRegion
 
-#Region FullTextSearch
+#Region ServiceProceduresAndFunctions
 
-// Procedure executes the index and fulltext search relevance check of counterparties.
-//
 &AtClient
-Procedure RunSearch()
+Procedure HandleActivateListRow()
 	
-	// We will remember display mode before search application
-	If Not AdvancedSearch Then
-		ViewModeBeforeFulltextSearchApplying = String(Items.List.Representation);
-	EndIf;
+	RefreshContactInformationPanelServer();
 	
-	// If the search string is filled execute search
-	If Not IsBlankString(FulltextSearchString) Then
-		
-		CheckIndexOfFullTextSearch();
-		
-	Else // Clear search
-		
-		// Restore the list
-		AdvancedSearch = False;
-		SmallBusinessClient.RecoverListDisplayingAfterFulltextSearch(ThisForm);
-		
-		// Delete filters by search
-		CommonUseClientServer.SetFilterItem(List.Filter, "Search", Undefined, DataCompositionComparisonType.Equal,,False);
-		ChoiceBasis = "";
-		Items.ChoiceBasis.Visible = False;
-		
-	EndIf;
-	
-EndProcedure // ExecuteSearch()
+EndProcedure
 
-// Procedure executes relevance check of the fulltext search index.
-//
-&AtClient
-Procedure CheckIndexOfFullTextSearch()
+&AtClientAtServerNoContext
+Procedure SetFilterBusinessRelationship(Form, FieldName, Use)
 	
-	If Not FulltextSearchIndexActual AND FileInfobase Then
+	NumberChanged = CommonUseClientServer.ChangeFilterItems(
+		Form.List.SettingsComposer.FixedSettings.Filter,
+		FieldName,
+		,
+		True,
+		DataCompositionComparisonType.Equal,
+		Use,
+		DataCompositionSettingsItemViewMode.Inaccessible);
 		
-		// If index is updated less than 2 hours ago then update automatically
-		If SmallBusinessServer.SearchIndexUpdateAutomatically() Then
-			RefreshFullTextSearchIndex();
-		Else
-			Notification = New NotifyDescription("CheckIndexFullTextSearchEnd",ThisForm);
-			ShowQueryBox(Notification,NStr("en='Full text search index is irrelevant. Update index?';ru='Индекс полнотекстового поиска неактуален. Обновить индекс?'"), QuestionDialogMode.YesNo);
+	If NumberChanged = 0 Then
+		
+		GroupBusinessRelationship = CommonUseClientServer.FindFilterItemByPresentation(
+			Form.List.SettingsComposer.FixedSettings.Filter.Items, "BusinessRelationship");
+		
+		If GroupBusinessRelationship = Undefined Then
+			GroupBusinessRelationship = CommonUseClientServer.CreateGroupOfFilterItems(
+				Form.List.SettingsComposer.FixedSettings.Filter.Items,
+				"BusinessRelationship",
+				DataCompositionFilterItemsGroupType.OrGroup);
 		EndIf;
 		
-		Return;
-		
-	EndIf;
-	
-	ExecuteFullTextSearch();
-	
-EndProcedure // CheckIndexOfFullTextSearch()
-
-&AtClient
-Procedure CheckIndexFullTextSearchEnd(Result,Parameters) Export
-	
-	If Result = DialogReturnCode.Yes Then
-		AttachIdleHandler("RefreshFullTextSearchIndex", 0.2, True);
+		CommonUseClientServer.AddCompositionItem(
+			GroupBusinessRelationship,
+			FieldName,
+			DataCompositionComparisonType.Equal,
+			True,
+			,
+			Use,
+			DataCompositionSettingsItemViewMode.Inaccessible);
+			
 	EndIf;
 	
 EndProcedure
 
-// Procedure updates the indexes of fulltext search.
-//
-&AtClient
-Procedure RefreshFullTextSearchIndex()
+&AtClientAtServerNoContext
+Procedure SetFormTitle(Form)
 	
-	Status(NStr("en='Full text search index is updating...';ru='Идет обновление индекса полнотекстового поиска...'"));
-	SmallBusinessServer.RefreshFullTextSearchIndex();
-	FulltextSearchIndexActual = True;
-	Status(NStr("en='Updating of the full text search index is completed...';ru='Обновление индекса полнотекстового поиска завершено...'"));
+	RelationshipKinds = New Array;
 	
-	ExecuteFullTextSearch();
-	
-EndProcedure // UpdatehFullTextSearchIndex()
-
-// Procedure executes a fulltext counterparty search.
-//
-&AtClient
-Procedure ExecuteFullTextSearch()
-	
-	AdvancedSearch = True;
-	ErrorText = FindCounterpartiesFulltextSearch();
-	If ErrorText = Undefined Then
-		
-		SmallBusinessClient.FillBasisRow(ThisForm);
-		Items.ChoiceBasis.Visible = True;
-		
-	ElsIf ErrorText = NStr("en='Nothing found';ru='Ничего не найдено'") Then
-		
-		ChoiceBasis = NStr("en='No counterparties have been found';ru='Не найдено ни одного контрагента'");
-		Items.ChoiceBasis.Visible = True;
-		
-	Else
-		
-		ShowUserNotification(ErrorText);
-		
+	If Form.FilterCustomer Then
+		RelationshipKinds.Add(NStr("ru='Покупатели'; en = 'Customers'"));
 	EndIf;
 	
-EndProcedure // ExecuteFullTextSearch()
+	If Form.FilterSupplier Then
+		RelationshipKinds.Add(NStr("ru='Поставщики'; en = 'Suppliers'"));
+	EndIf;
+	
+	If Form.FilterOtherRelationship Then
+		RelationshipKinds.Add(NStr("ru='Прочие отношения'; en = 'Other relationship'"));
+	EndIf;
+	
+	Title = NStr("ru='Контрагенты'; en = 'Counterparties'");
+	
+	If RelationshipKinds.Count() > 0 Then
+		Title = Title + ": ";
+		For Each Kind In RelationshipKinds Do
+			Title = Title + Kind + ", ";
+		EndDo;
+		StringFunctionsClientServer.DeleteLatestCharInRow(Title, 2);
+	EndIf;
+	
+	Form.Title = Title;
+	
+EndProcedure
 
-// Function returns full text search result.
-//
+&AtServerNoContext
+Function SegmentCounterparties(Segment)
+	
+	SegmentCounterparties = New Array;
+	
+	SegmentContent = Catalogs.Segments.GetSegmentComposition(Segment);
+	CommonUseClientServer.SupplementArray(SegmentCounterparties, SegmentContent, True);
+	
+	Return SegmentCounterparties;
+
+EndFunction
+
+&AtClient
+Procedure CreateEventByCounterparty(EventTypeName, Counterparty)
+	
+	FillingValues = New Structure;
+	FillingValues.Insert("EventType", PredefinedValue("Enum.EventTypes." + EventTypeName));
+	FillingValues.Insert("Counterparty", Counterparty);
+	
+	FormParameters = New Structure;
+	FormParameters.Insert("FillingValues", FillingValues);
+	
+	OpenForm("Document.Event.ObjectForm", FormParameters, ThisObject);
+	
+EndProcedure
+
+#EndRegion
+
+#Region ContactInformationPanel
+
 &AtServer
-Function FindCounterpartiesFulltextSearch()
+Procedure RefreshContactInformationPanelServer()
 	
-	Return SmallBusinessServer.FindCounterpartiesFulltextSearch(ThisForm);
+	ContactInformationPanelSB.RefreshPanelData(ThisObject, CurrentCounterparty);
 	
-EndFunction // FindCounterpartiesFulltextSearch()
+EndProcedure
+
+&AtClient
+Procedure Attachable_ContactInformationPanelDataSelection(Item, SelectedRow, Field, StandardProcessing)
+	
+	ContactInformationPanelSBClient.ContactInformationPanelDataSelection(ThisObject, Item, SelectedRow, Field, StandardProcessing);
+	
+EndProcedure
+
+&AtClient
+Procedure Attachable_ContactInformationPanelDataOnActivateRow(Item)
+	
+	ContactInformationPanelSBClient.ContactInformationPanelDataOnActivateRow(ThisObject, Item);
+	
+EndProcedure
+
+&AtClient
+Procedure Attachable_ContactInformationPanelDataExecuteCommand(Command)
+	
+	ContactInformationPanelSBClient.ExecuteCommand(ThisObject, Command);
+	
+EndProcedure
+
+#EndRegion
+
+#Region FilterLabel
+
+&AtServer
+Procedure SetFilterBySegmentsAtServer(SelectedValue)
+	
+	GroupName = Items.FilterSegment.Parent.Name;
+	
+	SegmentCounterparties = SegmentCounterparties(SelectedValue);
+	SetLabelAndListFilter("Ref", GroupName, SegmentCounterparties, String(SelectedValue));
+	SelectedValue = Undefined;
+	
+EndProcedure
+
+&AtServer
+Procedure SetLabelAndListFilter(ListFilterFieldName, GroupLabelParent, SelectedValue, ValuePresentation="")
+	
+	If ValuePresentation="" Then
+		ValuePresentation=String(SelectedValue);
+	EndIf; 
+	
+	WorkWithFilters.AttachFilterLabel(ThisObject, ListFilterFieldName, GroupLabelParent, SelectedValue, ValuePresentation);
+	WorkWithFilters.SetListFilter(ThisObject, List, ListFilterFieldName,,True);
+	
+EndProcedure
+
+&AtClient
+Procedure Attachable_LabelURLProcessing(Item, URLFS, StandardProcessing)
+	
+	StandardProcessing = False;
+	
+	LabelID = Mid(Item.Name, StrLen("Label_")+1);
+	DeleteFilterLabel(LabelID);
+	
+EndProcedure
+
+&AtServer
+Procedure DeleteFilterLabel(LabelID)
+	
+	WorkWithFilters.DeleteFilterLabelServer(ThisObject, List, LabelID);
+
+EndProcedure
+
+&AtServer
+Function FilterOptionForSetting()
+	
+	If FilterCustomer And Not FilterSupplier Then
+		FormFiltersOption = "Customers";
+	ElsIf Not FilterCustomer And FilterSupplier Then
+		FormFiltersOption = "Suppliers";
+	Else
+		FormFiltersOption = "";
+	EndIf; 
+
+	Return FormFiltersOption;
+	
+EndFunction
+
+&AtServer
+Procedure SaveFilterSettings()
+	
+	FormFiltersOption = FilterOptionForSetting();
+	WorkWithFilters.SaveFilterSettings(ThisObject,,,FormFiltersOption);
+	
+	CommonUse.FormDataSettingsStorageSave(
+		FormName,
+		"IncludingNested",
+		Items.FilterHierarchyContextMenuIncludingNested.Check
+	);
+	
+EndProcedure
 
 #EndRegion
 
@@ -557,7 +871,7 @@ Procedure ProcessPreparedData(ImportResult)
 				CatalogItem.DescriptionFull = TableRow.CounterpartyDescription;
 				FillPropertyValues(CatalogItem, TableRow, , "Parent");
 				
-				CatalogItem.LegalEntityIndividual = ?(TableRow.ThisIsInd, Enums.LegalEntityIndividual.Ind, Enums.LegalEntityIndividual.LegalEntity);
+				CatalogItem.LegalEntityIndividual = ?(TableRow.ThisIsInd, Enums.CounterpartyKinds.Individual, Enums.CounterpartyKinds.LegalEntity);
 				
 				If Not IsBlankString(TableRow.TIN_KPP) Then
 					
@@ -568,7 +882,6 @@ Procedure ProcessPreparedData(ImportResult)
 					Separators.Add("|");
 					
 					TIN = "";
-					KPP = "";
 					
 					For Each SeparatorValue IN Separators Do
 						
@@ -580,32 +893,30 @@ Procedure ProcessPreparedData(ImportResult)
 						EndIf;
 						
 						TIN = Left(TableRow.TIN_KPP, SeparatorPosition - 1);
-						KPP = Mid(TableRow.TIN_KPP, SeparatorPosition + 1);
 						
 					EndDo;
 					
-					If IsBlankString(TIN) AND IsBlankString(KPP) Then
+					If IsBlankString(TIN) Then
 						
 						TIN = TableRow.TIN_KPP;
 						
 					EndIf;
 					
 					CatalogItem.TIN = TIN;
-					CatalogItem.KPP = KPP;
 					
 				EndIf;
 				
 				If Not IsBlankString(TableRow.Phone) Then
 					
 					PhoneStructure = New Structure("Presentation, Comment", TableRow.Phone, NStr("en='It is imported from external source';ru='Загружено из внешнего источника'"));
-					ContactInformationManagement.FillContactInformationObject(CatalogItem, Catalogs.ContactInformationTypes.CounterpartyPhone, PhoneStructure);
+					ContactInformationManagement.FillContactInformationObject(CatalogItem, Catalogs.ContactInformationKinds.CounterpartyPhone, PhoneStructure);
 					
 				EndIf;
 				
 				If Not IsBlankString(TableRow.EMail_Address) Then
 					
 					StructureEmail = New Structure("Presentation", TableRow.EMail_Address);
-					ContactInformationManagement.FillContactInformationObject(CatalogItem, Catalogs.ContactInformationTypes.CounterpartyEmail, StructureEmail);
+					ContactInformationManagement.FillContactInformationObject(CatalogItem, Catalogs.ContactInformationKinds.CounterpartyEmail, StructureEmail);
 					
 				EndIf;
 				
@@ -634,17 +945,11 @@ Procedure Attachable_ExecutePrintCommand(Command)
 EndProcedure
 // End StandardSubsystems.Printing
 
+&AtClient
+Procedure ChangeSelected(Command)
+	
+	GroupObjectsChangeClient.ChangeSelected(Items.List);
+	
+EndProcedure
+
 #EndRegion
-
-
-
-
-
-
-
-
-
-
-
-
-

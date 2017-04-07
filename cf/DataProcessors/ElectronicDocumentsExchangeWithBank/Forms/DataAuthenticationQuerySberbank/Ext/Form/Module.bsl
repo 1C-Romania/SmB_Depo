@@ -52,17 +52,3 @@ Procedure Cancel(Command)
 	Close(Undefined);
 	
 EndProcedure
-
-
-
-
-
-
-
-
-
-
-
-
-
-

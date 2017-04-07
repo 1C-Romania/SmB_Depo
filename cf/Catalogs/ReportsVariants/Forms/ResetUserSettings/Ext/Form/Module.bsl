@@ -91,17 +91,3 @@ Function AreUserSettings(OptionsArray)
 EndFunction
 
 #EndRegion
-
-
-
-
-
-
-
-
-
-
-
-
-
-

@@ -101,17 +101,3 @@ Function SelectedFormatSettings()
 EndFunction
 
 #EndRegion
-
-
-
-
-
-
-
-
-
-
-
-
-
-

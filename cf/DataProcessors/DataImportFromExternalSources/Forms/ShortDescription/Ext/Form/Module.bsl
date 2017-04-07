@@ -49,16 +49,3 @@ Procedure ShortDescriptionOnClick(Item, EventData, StandardProcessing)
 	EndIf;
 	
 EndProcedure
-
-
-
-
-
-
-
-
-
-
-
-
-

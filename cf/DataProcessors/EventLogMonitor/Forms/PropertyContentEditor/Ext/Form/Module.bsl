@@ -392,17 +392,3 @@ Function FullNameOfServiceUser(InfobaseUserID)
 EndFunction
 
 #EndRegion
-
-
-
-
-
-
-
-
-
-
-
-
-
-

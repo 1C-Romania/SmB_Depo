@@ -801,6 +801,7 @@ Procedure OnFillingKindsOfRestrictionsRightsOfMetadataObjects(Definition) Export
 		|InformationRegister.VersionStoredFiles.Read.Object.BusinessProcess.Task
 		|";
 	EndIf;
+
 	
 EndProcedure
 

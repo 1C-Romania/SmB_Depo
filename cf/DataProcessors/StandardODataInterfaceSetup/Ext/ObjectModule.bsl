@@ -26,7 +26,7 @@ Function InitializeDataToSetupStandardODataInterface() Export
 	AddTreeRootString("AccumulationRegister", NStr("en='Accumulation registers';ru='Регистры накопления'"), 10, PictureLib.AccumulationRegister);
 	AddTreeRootString("AccountingRegister", NStr("en='Accounting registers';ru='Регистры бухгалтерии'"), 11, PictureLib.AccountingRegister);
 	AddTreeRootString("CalculationRegister", NStr("en='Calculation registers';ru='Регистры расчета'"), 12, PictureLib.CalculationRegister);
-	AddTreeRootString("BusinessProcess", NStr("en='Business-processes';ru='Деловые процессы'"), 13, PictureLib.BusinessProcess);
+	AddTreeRootString("BusinessProcess", NStr("en='Business processes';ru='Деловые процессы'"), 13, PictureLib.BusinessProcess);
 	AddTreeRootString("Task", NStr("en='Tasks';ru='Задания'"), 14, PictureLib.Task);
 	AddTreeRootString("ExchangePlan", NStr("en='Exchange plans';ru='Планы обмена'"), 15, PictureLib.ExchangePlan);
 	

@@ -17,7 +17,7 @@ Function RulesDescription() Export
 	
 	Rules = New ValueTree;
 	Rules.Columns.Add("Name",							New TypeDescription("String", New StringQualifiers(50)));
-	Rules.Columns.Add("DynamicRuleKey",	New TypeDescription("ChartOfCharacteristicTypesRef.AdditionalAttributesAndInformation,CatalogRef.ContactInformationTypes"));
+	Rules.Columns.Add("DynamicRuleKey",	New TypeDescription("ChartOfCharacteristicTypesRef.AdditionalAttributesAndInformation,CatalogRef.ContactInformationKinds"));
 	Rules.Columns.Add("Presentation",				New TypeDescription("String", New StringQualifiers(100)));
 	Rules.Columns.Add("IsFolder",					New TypeDescription("Boolean"));
 	Rules.Columns.Add("MultipleUse",	New TypeDescription("Boolean"));
@@ -169,17 +169,17 @@ Function GetAvailableFilterRules() Export
 	Query = New Query;
 	Query.Text = 
 	"SELECT
-	|	ContactInformationTypes.Type,
-	|	ContactInformationTypes.Ref,
-	|	ContactInformationTypes.Description
+	|	ContactInformationKinds.Type,
+	|	ContactInformationKinds.Ref,
+	|	ContactInformationKinds.Description
 	|FROM
-	|	Catalog.ContactInformationTypes AS ContactInformationTypes
+	|	Catalog.ContactInformationKinds AS ContactInformationKinds
 	|WHERE
-	|	ContactInformationTypes.DeletionMark = FALSE
-	|	AND ContactInformationTypes.Parent = VALUE(Catalog.ContactInformationTypes.CatalogCounterparties)
+	|	ContactInformationKinds.DeletionMark = FALSE
+	|	AND ContactInformationKinds.Parent = VALUE(Catalog.ContactInformationKinds.CatalogCounterparties)
 	|
 	|ORDER BY
-	|	ContactInformationTypes.AdditionalOrderingAttribute";
+	|	ContactInformationKinds.AdditionalOrderingAttribute";
 	
 	Selection = Query.Execute().Select();
 	

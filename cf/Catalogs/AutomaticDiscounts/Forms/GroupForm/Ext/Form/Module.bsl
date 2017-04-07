@@ -43,17 +43,3 @@ Procedure SharedUsageVariantOfDiscountChargeOnChange(Item)
 EndProcedure
 
 #EndRegion
-
-
-
-
-
-
-
-
-
-
-
-
-
-

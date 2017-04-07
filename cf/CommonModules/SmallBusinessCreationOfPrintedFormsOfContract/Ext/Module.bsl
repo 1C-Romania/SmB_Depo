@@ -240,19 +240,19 @@ Function GetParameterValue(Object, Document = Undefined, Parameter, Presentation
 		ParameterValue = "";
 		For Each String IN Company.ContactInformation Do 
 			
-			If String.Type = Catalogs.ContactInformationTypes.CompanyLegalAddress Then 
+			If String.Type = Catalogs.ContactInformationKinds.CompanyLegalAddress Then 
 				ParameterValue = String.Presentation;
 				
 			EndIf;
 		EndDo;
 		ParameterValue = ?(ParameterValue <> "", ParameterValue, "");
 		
-	ElsIf Parameter = Parameters.CompanyFactAddress Then
+	ElsIf Parameter = Parameters.CompanyActualAddress Then
 		
 		ParameterValue = "";
 		For Each String IN Company.ContactInformation Do 
 			
-			If String.Type = Catalogs.ContactInformationTypes.CompanyFactAddress Then 
+			If String.Type = Catalogs.ContactInformationKinds.CompanyActualAddress Then 
 				ParameterValue = String.Presentation;
 			EndIf;
 		EndDo;
@@ -263,7 +263,7 @@ Function GetParameterValue(Object, Document = Undefined, Parameter, Presentation
 		ParameterValue = "";
 		For Each String IN Company.ContactInformation Do 
 			
-			If String.Type = Catalogs.ContactInformationTypes.CompanyPhone Then 
+			If String.Type = Catalogs.ContactInformationKinds.CompanyPhone Then 
 				ParameterValue = String.Presentation;
 			EndIf;
 		EndDo;
@@ -274,7 +274,7 @@ Function GetParameterValue(Object, Document = Undefined, Parameter, Presentation
 		ParameterValue = "";
 		For Each String IN Company.ContactInformation Do 
 			
-			If String.Type = Catalogs.ContactInformationTypes.CounterpartyFax Then 
+			If String.Type = Catalogs.ContactInformationKinds.CounterpartyFax Then 
 				ParameterValue = String.Presentation;
 			EndIf;
 		EndDo;
@@ -285,7 +285,7 @@ Function GetParameterValue(Object, Document = Undefined, Parameter, Presentation
 		ParameterValue = "";
 		For Each String IN Company.ContactInformation Do 
 			
-			If String.Type = Catalogs.ContactInformationTypes.CompanyEmail Then 
+			If String.Type = Catalogs.ContactInformationKinds.CompanyEmail Then 
 				ParameterValue = String.Presentation;
 			EndIf;
 		EndDo;
@@ -296,7 +296,7 @@ Function GetParameterValue(Object, Document = Undefined, Parameter, Presentation
 		ParameterValue = "";
 		For Each String IN Company.ContactInformation Do 
 			
-			If String.Type = Catalogs.ContactInformationTypes.CounterpartyPostalAddress Then 
+			If String.Type = Catalogs.ContactInformationKinds.CounterpartyPostalAddress Then 
 				ParameterValue = String.Presentation;
 			EndIf;
 		EndDo;
@@ -307,7 +307,7 @@ Function GetParameterValue(Object, Document = Undefined, Parameter, Presentation
 		ParameterValue = "";
 		For Each String IN Object.Owner.ContactInformation Do 
 			
-			If String.Type = Catalogs.ContactInformationTypes.CounterpartyLegalAddress Then 
+			If String.Type = Catalogs.ContactInformationKinds.CounterpartyLegalAddress Then 
 				ParameterValue = String.Presentation;
 			EndIf;
 		EndDo;
@@ -318,7 +318,7 @@ Function GetParameterValue(Object, Document = Undefined, Parameter, Presentation
 		ParameterValue = "";
 		For Each String IN Object.Owner.ContactInformation Do 
 			
-			If String.Type = Catalogs.ContactInformationTypes.CounterpartyFactAddress Then 
+			If String.Type = Catalogs.ContactInformationKinds.CounterpartyActualAddress Then 
 				ParameterValue = String.Presentation;
 			EndIf;
 		EndDo;
@@ -329,7 +329,7 @@ Function GetParameterValue(Object, Document = Undefined, Parameter, Presentation
 		ParameterValue = "";
 		For Each String IN Object.Owner.ContactInformation Do 
 			
-			If String.Type = Catalogs.ContactInformationTypes.CounterpartyPhone Then 
+			If String.Type = Catalogs.ContactInformationKinds.CounterpartyPhone Then 
 				ParameterValue = String.Presentation;
 			EndIf;
 		EndDo;
@@ -340,7 +340,7 @@ Function GetParameterValue(Object, Document = Undefined, Parameter, Presentation
 		ParameterValue = "";
 		For Each String IN Object.Owner.ContactInformation Do 
 			
-			If String.Type = Catalogs.ContactInformationTypes.CounterpartyFax Then 
+			If String.Type = Catalogs.ContactInformationKinds.CounterpartyFax Then 
 				ParameterValue = String.Presentation;
 			EndIf;
 		EndDo;
@@ -351,7 +351,7 @@ Function GetParameterValue(Object, Document = Undefined, Parameter, Presentation
 		ParameterValue = "";
 		For Each String IN Object.Owner.ContactInformation Do 
 			
-			If String.Type = Catalogs.ContactInformationTypes.CounterpartyEmail Then 
+			If String.Type = Catalogs.ContactInformationKinds.CounterpartyEmail Then 
 				ParameterValue = String.Presentation;
 			EndIf;
 		EndDo;
@@ -362,7 +362,7 @@ Function GetParameterValue(Object, Document = Undefined, Parameter, Presentation
 		ParameterValue = "";
 		For Each String IN Object.Owner.ContactInformation Do 
 			
-			If String.Type = Catalogs.ContactInformationTypes.CounterpartyPostalAddress Then 
+			If String.Type = Catalogs.ContactInformationKinds.CounterpartyPostalAddress Then 
 				ParameterValue = String.Presentation;
 			EndIf;
 		EndDo;
@@ -378,36 +378,6 @@ Function GetParameterValue(Object, Document = Undefined, Parameter, Presentation
 		ParameterValue = ?(Company.TIN <> "",
 					Company.TIN, "");
 		
-	ElsIf Parameter = Parameters.CounterpartyCRR Then
-		
-		ParameterValue = ?(Object.Owner.KPP <> "",
-					Object.Owner.KPP, "");
-		
-	ElsIf Parameter = Parameters.CompanyKPP Then
-		
-		ParameterValue = ?(Company.KPP <> "",
-					Company.KPP, "");
-		
-	ElsIf Parameter = Parameters.CompanyOKTMO Then
-		
-		ParameterValue = ?(Company.CodebyRNCMT <> "",
-					Company.CodebyRNCMT, "");
-		
-	ElsIf Parameter = Parameters.CompanyOKATO Then
-		
-		ParameterValue = ?(Company.CodeByOKATO <> "",
-					Company.CodeByOKATO, "");
-		
-	ElsIf Parameter = Parameters.CounterpartyRNCBO Then
-		
-		ParameterValue = ?(Object.Owner.CodeByOKPO <> "",
-					Object.Owner.CodeByOKPO, "");
-		
-	ElsIf Parameter = Parameters.CompanyRNCBO Then
-		
-		ParameterValue = ?(Company.CodeByOKPO <> "",
-					Company.CodeByOKPO, "");
-					
 	ElsIf Parameter = Parameters.CompanyHead Then
 		
 		ResponsiblePersons = SmallBusinessServer.OrganizationalUnitsResponsiblePersons(Company, CurrentDate());

@@ -105,17 +105,3 @@ Procedure ResourcesListAfterDeleteRow(Item)
 	Notify("Record_EnterpriseResourcesKinds");
 	
 EndProcedure // ResourcesListAfterDeleteRow()
-
-
-
-
-
-
-
-
-
-
-
-
-
-

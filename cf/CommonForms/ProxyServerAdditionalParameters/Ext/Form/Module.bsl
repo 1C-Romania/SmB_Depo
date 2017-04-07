@@ -205,17 +205,3 @@ Function InadmissibleCharactersInString(CheckedString, AllowedChars)
 EndFunction
 
 #EndRegion
-
-
-
-
-
-
-
-
-
-
-
-
-
-

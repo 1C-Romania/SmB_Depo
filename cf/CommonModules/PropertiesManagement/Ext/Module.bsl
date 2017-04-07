@@ -35,7 +35,7 @@
 //
 //    * CommandBarItemName - String - name of form group to which the button will be added.
 //            EditAdditionalAttributesContent. If item name is
-//            not specified, then standard group "Form" is used.CommandBar.
+//            not specified, then standard group "Form" is used.CommandBar".
 //
 //    * HideDeleted - Boolean - set/disable the mode of hiding deleted items.
 //            If the parameter is not specified but the object is specified and

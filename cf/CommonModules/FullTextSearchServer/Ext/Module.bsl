@@ -90,7 +90,7 @@ Procedure AtFillingToDoList(CurrentWorks) Export
 	// Exception, CurrentDate() should be used.
 	DaysSinceLastUpdate = Int((CurrentDate() - UpdateDateIndex)/60/60/24);
 	
-	Section = Metadata.Subsystems["SetupAndAdministration"];
+	Section = Metadata.Subsystems["Administration"];
 	IDFullTextSearch = "FullTextSearchInData" + StrReplace(Section.FullName(), ".", "");
 	Work = CurrentWorks.Add();
 	Work.ID  = IDFullTextSearch;

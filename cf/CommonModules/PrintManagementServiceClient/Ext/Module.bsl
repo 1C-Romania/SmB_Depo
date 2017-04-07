@@ -253,7 +253,7 @@ EndFunction
 Procedure ShowQuestionAboutFileOperationsExtensionSetting(NOTifyDescription) Export
 	#If WebClient Then
 		MessageText = NStr("en='To continue printing, you need to set an extension for 1C:Enterprise web client.';ru='Для продолжения печати необходимо установить расширение для веб-клиента 1С:Предприятие.'");
-		CommonUseClient.ShowQuestionAboutFileOperationsExtensionSetting(NOTifyDescription, MessageText, False);
+		CommonUseClient.ShowFileSystemExtensionInstallationQuestion(NOTifyDescription, MessageText, False);
 		Return;
 	#EndIf
 	ExecuteNotifyProcessing(NOTifyDescription, True);

@@ -189,8 +189,8 @@ Procedure FillVATRateByVATTaxation()
 	
 	If Object.VATTaxation = Enums.VATTaxationTypes.TaxableByVAT Then
 		
-		Items.GoodsVatRate.Visible = True;
-		Items.ProductsSumVAT.Visible = True;
+		Items.ProductsVATRate.Visible = True;
+		Items.ProductsVATAmount.Visible = True;
 		Items.ProductsTotal.Visible = True;
 		
 		For Each TabularSectionRow IN Object.Products Do
@@ -211,8 +211,8 @@ Procedure FillVATRateByVATTaxation()
 		
 	Else
 		
-		Items.GoodsVatRate.Visible = False;
-		Items.ProductsSumVAT.Visible = False;
+		Items.ProductsVATRate.Visible = False;
+		Items.ProductsVATAmount.Visible = False;
 		Items.ProductsTotal.Visible = False;
 		
 		If Object.VATTaxation = Enums.VATTaxationTypes.NotTaxableByVAT Then	
@@ -569,67 +569,41 @@ Function GenerateLabelPricesAndCurrency(LabelStructure)
 	// Currency.
 	If LabelStructure.CurrencyTransactionsAccounting Then
 		If ValueIsFilled(LabelStructure.DocumentCurrency) Then
-			//===============================
-			//©# (Begin)	AlekS [2016-09-13]
-			//LabelText = NStr("en='%Currency%';ru='%Вал%'");
-			//LabelText = StrReplace(LabelText, "%Currency%", TrimAll(String(LabelStructure.DocumentCurrency)));
-			LabelText = TrimAll(String(LabelStructure.DocumentCurrency));
-			//©# (End)		AlekS [2016-09-13]
-			//===============================
+			LabelText = NStr("en='%Currency%';ru='%Currency%'");
+			LabelText = StrReplace(LabelText, "%Currency%", TrimAll(String(LabelStructure.DocumentCurrency)));
 		EndIf;
 	EndIf;
 	
 	// Prices kind.
 	If ValueIsFilled(LabelStructure.PriceKind) Then
-		//===============================
-		//©# (Begin)	AlekS [2016-09-13]
-		//If IsBlankString(LabelText) Then
-		//	LabelText = LabelText + NStr("en='%PriceKind%';ru='%PriceKind%'");
-		//Else
-		//	LabelText = LabelText + NStr("en=' • %PriceKind%';ru=' • %ВидЦен%'");
-		//EndIf;
-		//LabelText = StrReplace(LabelText, "%PriceKind%", TrimAll(String(LabelStructure.PriceKind)));
-		LabelText = LabelText + " • " + TrimAll(String(LabelStructure.PriceKind));
-		//©# (End)		AlekS [2016-09-13]
-		//===============================
+		If IsBlankString(LabelText) Then
+			LabelText = LabelText + NStr("en='%PriceKind%';ru='%PriceKind%'");
+		Else	
+			LabelText = LabelText + NStr("en=' • %PriceKind%';ru=' • %PriceKind%'");
+		EndIf;
+		LabelText = StrReplace(LabelText, "%PriceKind%", TrimAll(String(LabelStructure.PriceKind)));
 	EndIf;
 	
 	// Margins discount kind.
 	If ValueIsFilled(LabelStructure.DiscountKind) Then
-		//===============================
-		//©# (Begin)	AlekS [2016-09-13]
-		//If IsBlankString(LabelText) Then
-		//	LabelText = LabelText + NStr("en='%DiscountMarkupKind%';ru='%ВидСкидкиНаценки%'");
-		//Else
-		//	LabelText = LabelText + NStr("en=' • %MarkupDiscountKind%';ru=' • %ВидСкидкиНаценки%'");
-		//EndIf;
-		//LabelText = StrReplace(LabelText, "%DiscountMarkupKind%", TrimAll(String(LabelStructure.DiscountKind)));
-		LabelText = LabelText + " • " + TrimAll(String(LabelStructure.DiscountKind));
-		//©# (End)		AlekS [2016-09-13]
-		//===============================
+		If IsBlankString(LabelText) Then
+			LabelText = LabelText + NStr("en='%DiscountMarkupKind%';ru='%DiscountMarkupKind%'");
+		Else
+			LabelText = LabelText + NStr("en=' • %MarkupDiscountKind%';ru=' • %DiscountMarkupKind%'");
+		EndIf;
+		LabelText = StrReplace(LabelText, "%DiscountMarkupKind%", TrimAll(String(LabelStructure.DiscountKind)));
 	EndIf;
 	
 	// VAT taxation.
 	If ValueIsFilled(LabelStructure.VATTaxation) Then
-		//If IsBlankString(LabelText) Then
-		//	LabelText = LabelText + NStr("en='%VATTaxation%';ru='%VATTaxation%'");
-		//Else
-		//	LabelText = LabelText + NStr("en=' • %VATTaxation%';ru=' • %НалогообложениеНДС%'");
-		//EndIf;
-		//LabelText = StrReplace(LabelText, "%VATTaxation%", TrimAll(String(LabelStructure.VATTaxation)));
-		LabelText = LabelText + " • " + TrimAll(String(LabelStructure.VATTaxation));
-		//©# (End)		AlekS [2016-09-13]
-		//===============================
+		If IsBlankString(LabelText) Then
+			LabelText = LabelText + NStr("en='%VATTaxation%';ru='%VATTaxation%'");
+		Else
+			LabelText = LabelText + NStr("en=' • %VATTaxation%';ru=' • %VATTaxation%'");
+		EndIf;
+		LabelText = StrReplace(LabelText, "%VATTaxation%", TrimAll(String(LabelStructure.VATTaxation)));
 	EndIf;
 	
-	
-//===============================
-//©# (Begin)	AlekS [2016-09-13]
-//
-//  THIS FLAG HAS NO CHANCE TO BE SHOWED - need attention !   8-(
-//
-//©# (End)		AlekS [2016-09-13]
-//===============================
 	// Flag showing that amount includes VAT.
 	If IsBlankString(LabelText) Then	
 		If LabelStructure.AmountIncludesVAT Then	
@@ -1291,12 +1265,12 @@ Procedure OnCreateAtServer(Cancel, StandardProcessing)
 	   AND Not ValueIsFilled(Parameters.CopyingValue) Then
 		FillVATRateByCompanyVATTaxation();
 	ElsIf Object.VATTaxation = Enums.VATTaxationTypes.TaxableByVAT Then
-		Items.GoodsVatRate.Visible = True;
-		Items.ProductsSumVAT.Visible = True;
+		Items.ProductsVATRate.Visible = True;
+		Items.ProductsVATAmount.Visible = True;
 		Items.ProductsTotal.Visible = True;
 	Else
-		Items.GoodsVatRate.Visible = False;
-		Items.ProductsSumVAT.Visible = False;
+		Items.ProductsVATRate.Visible = False;
+		Items.ProductsVATAmount.Visible = False;
 		Items.ProductsTotal.Visible = False;
 	EndIf;
 	
@@ -1306,8 +1280,6 @@ Procedure OnCreateAtServer(Cancel, StandardProcessing)
 	PricesAndCurrency = GenerateLabelPricesAndCurrency(LabelStructure);
 	
 	Items.Cell.Visible = Not Object.StructuralUnit.OrderWarehouse;
-	
-	SmallBusinessServer.SetTextAboutInvoice(ThisForm);
 	
 	// Filling in responsible persons for new documents
 	If Not ValueIsFilled(Object.Ref) Then
@@ -1477,19 +1449,6 @@ Procedure AfterWrite(WriteParameters)
 	
 	Notify("NotificationAboutChangingDebt");
 	
-	If Not InvoiceText = "Enter invoice note"
-		AND ?(NOT UpdateSubordinatedInvoice = Undefined, UpdateSubordinatedInvoice, False) Then
-		
-		QuestionText = NStr("en='Changes were made in the document.
-		|Is it required to fill in the subordinate invoice once again?';ru='В документе были произведены изменения.
-		|Требуется ли повторно заполнить подчиненный Счет-фактуру?'");
-		
-		NotifyDescription = New NotifyDescription("DefineNecessityToFillSubordinateInvoiceNote", ThisObject);
-		
-		ShowQueryBox(NOTifyDescription, QuestionText, QuestionDialogMode.YesNo);
-		
-	EndIf;
-	
 EndProcedure // AfterWrite()
 
 &AtClient
@@ -1514,13 +1473,7 @@ Procedure NotificationProcessing(EventName, Parameter, Source)
 	EndIf;
 	// End Peripherals
 	
-	If EventName = "RefreshOfTextAboutInvoice"
-		AND TypeOf(Parameter) = Type("Structure")
-		AND Parameter.BasisDocument = Object.Ref Then
-		
-		InvoiceText = Parameter.Presentation;
-		
-	ElsIf EventName = "AfterRecordingOfCounterparty"
+	If EventName = "AfterRecordingOfCounterparty"
 		AND ValueIsFilled(Parameter)
 		AND Object.Counterparty = Parameter Then
 		
@@ -1555,18 +1508,6 @@ Procedure NotificationProcessing(EventName, Parameter, Source)
 	EndIf;
 	
 EndProcedure // NotificationProcessing()
-
-// Procedure - selection handler.
-//
-&AtClient
-Procedure ChoiceProcessing(ValueSelected, ChoiceSource)
-	
-	If ChoiceSource.FormName = "Document.CustomerInvoiceNote.Form.DocumentForm" Then
-		InvoiceText = ValueSelected;
-		
-	EndIf;
-	
-EndProcedure
 
  ////////////////////////////////////////////////////////////////////////////////
 // PROCEDURE - ACTIONS OF THE FORM COMMAND PANELS
@@ -1649,16 +1590,6 @@ Procedure EditPrepaymentOffsetEnd(Result, AdditionalParameters) Export
     EndIf;
 
 EndProcedure // EditPrepaymentOffset()
-
-// Procedure - clicking handler on the hyperlink InvoiceText.
-//
-&AtClient
-Procedure InvoiceNoteTextClick(Item, StandardProcessing)
-	
-	StandardProcessing = False;
-	SmallBusinessClient.OpenInvoice(ThisForm);
-	
-EndProcedure
 
 // Procedure - command handler FillByReserve of the ChangeReserve submenu.
 //
@@ -1995,7 +1926,7 @@ EndProcedure // ProductsCharacteristicOnChange()
 &AtClient
 // Procedure - event handler AutoPick of the Content input field.
 //
-Procedure ProductionContentAutoPick(Item, Text, ChoiceData, Parameters, Wait, StandardProcessing)
+Procedure ProductsContentAutoPick(Item, Text, ChoiceData, Parameters, Wait, StandardProcessing)
 	
 	If Wait = 0 Then
 		
@@ -2115,7 +2046,7 @@ EndProcedure  // ProductsVATRateOnChange()
 &AtClient
 // Procedure - event handler OnChange of the VATRate input field.
 //
-Procedure ProductsAmountVATOnChange(Item)
+Procedure ProductsVATAmountOnChange(Item)
 	
 	TabularSectionRow = Items.Products.CurrentData;
 	
@@ -2287,7 +2218,7 @@ Procedure PrepaymentAccountsAmountOnChange(Item)
 EndProcedure
 
 &AtClient
-Procedure PrepaymentRateOnChange(Item)
+Procedure PrepaymentExchangeRateOnChange(Item)
 	
 	TabularSectionRow = Items.Prepayment.CurrentData;
 	
@@ -2576,20 +2507,6 @@ Procedure DefineDocumentRecalculateNeedByContractTerms(ClosingResult, Additional
 	EndIf;
 	
 EndProcedure // DefineDocumentRecalculateNeedByContractTerms()
-
-&AtClient
-// Procedure-handler response on question about filling of subordinate document Invoice
-//
-Procedure DefineNecessityToFillSubordinateInvoiceNote(ClosingResult, AdditionalParameters) Export
-	
-	If ClosingResult = DialogReturnCode.Yes Then
-		
-		SmallBusinessServer.ChangeSubordinateInvoice(Object.Ref);
-		Notify("UpdateIBDocumentAfterFilling");
-		
-	EndIf;
-	
-EndProcedure // DefineNecessityToFillSubordinateInvoiceNote()
 
 #EndRegion
 
@@ -3015,7 +2932,7 @@ EndProcedure
 &AtClient
 Procedure GoodsChoice(Item, SelectedRow, Field, StandardProcessing)
 	
-	If (Item.CurrentItem = Items.ProductsAutomaticDiscountPercent OR Item.CurrentItem = Items.GoodsAutomaticDiscountAmount)
+	If (Item.CurrentItem = Items.ProductsAutomaticDiscountPercent OR Item.CurrentItem = Items.ProductsAutomaticDiscountAmount)
 		AND Not ReadOnly Then
 		
 		StandardProcessing = False;

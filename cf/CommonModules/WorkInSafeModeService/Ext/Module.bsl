@@ -126,23 +126,23 @@ Function ExternalComponentsKitFilesControlSums(Val TemplateName) Export
 		
 	Else
 		Raise StringFunctionsClientServer.SubstituteParametersInString(
-			NStr("en='Failed to generate a permission to use"
-"an external component: incorrect template name %1!';ru='Не удалось сформировать разрешение"
-"на использование внешней компоненты: некорректное имя макета %1!'"), TemplateName);
+			NStr("en='Failed to generate a permission to use
+		|an external component: incorrect template name %1!';ru='Не удалось сформировать разрешение
+		|на использование внешней компоненты: некорректное имя макета %1!'"), TemplateName);
 	EndIf;
 	
 	If Template = Undefined Then
 		Raise StringFunctionsClientServer.SubstituteParametersInString(
-			NStr("en='Failed to generate the permission to use"
-"the external component delivered with the template 1%: template% 1 is not found in the configuration content!';ru='Не удалось сформировать разрешение"
-"на использование внешней компоненты, поставляемой в макете %1: макет %1 не обнаружден в составе конфигурации!'"), TemplateName);
+			NStr("en='Failed to generate the permission to use
+		|the external component delivered with the template 1%: template% 1 is not found in the configuration content!';ru='Не удалось сформировать разрешение
+		|на использование внешней компоненты, поставляемой в макете %1: макет %1 не обнаружден в составе конфигурации!'"), TemplateName);
 	EndIf;
 	
 	If Metadata.FindByFullName(TemplateName).TemplateType <> Metadata.ObjectProperties.TemplateType.BinaryData Then
 		Raise StringFunctionsClientServer.SubstituteParametersInString(
-			NStr("en='Failed to generate a permission for the"
-"use of the external component: template %1 does not contain binary data!';ru='Не удалось сформировать разрешение"
-"на использование внешней компоненты: макет %1 не содержит двоичных данных!'"), TemplateName);
+			NStr("en='Failed to generate a permission for the
+		|use of the external component: template %1 does not contain binary data!';ru='Не удалось сформировать разрешение
+		|на использование внешней компоненты: макет %1 не содержит двоичных данных!'"), TemplateName);
 	EndIf;
 	
 	TempFile = GetTempFileName("zip");
@@ -162,9 +162,9 @@ Function ExternalComponentsKitFilesControlSums(Val TemplateName) Export
 	
 	If IsBlankString(ManifestFile) Then
 		Raise StringFunctionsClientServer.SubstituteParametersInString(
-			NStr("en='Failed to generate the permission to use"
-"the external component delivered with the template %1: file MANIFEST.XML is not found in the archive!';ru='Не удалось сформировать разрешение"
-"на использование внешней компоненты, поставляемой в макете %1: в архиве не обнаружен файл MANIFEST.XML!'"), TemplateName);
+			NStr("en='Failed to generate the permission to use
+		|the external component delivered with the template %1: file MANIFEST.XML is not found in the archive!';ru='Не удалось сформировать разрешение
+		|на использование внешней компоненты, поставляемой в макете %1: в архиве не обнаружен файл MANIFEST.XML!'"), TemplateName);
 	EndIf;
 	
 	ReadStream = New XMLReader();

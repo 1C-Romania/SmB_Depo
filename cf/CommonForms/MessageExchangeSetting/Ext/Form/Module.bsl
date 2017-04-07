@@ -285,17 +285,3 @@ Procedure DetailedAtServer()
 EndProcedure
 
 #EndRegion
-
-
-
-
-
-
-
-
-
-
-
-
-
-

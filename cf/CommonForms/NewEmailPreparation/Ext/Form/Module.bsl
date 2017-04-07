@@ -228,17 +228,3 @@ Function SetChoiceForAllRecipients(Selection)
 EndFunction
 
 #EndRegion
-
-
-
-
-
-
-
-
-
-
-
-
-
-

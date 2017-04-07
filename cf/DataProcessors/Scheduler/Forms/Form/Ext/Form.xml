@@ -851,6 +851,10 @@
 																<v8:lang>en</v8:lang>
 																<v8:content>Change</v8:content>
 															</v8:item>
+															<v8:item>
+																<v8:lang>ru</v8:lang>
+																<v8:content>Изменить</v8:content>
+															</v8:item>
 														</Title>
 														<ToolTip>
 															<v8:item>
@@ -1001,7 +1005,7 @@
 											</SearchControlAddition>
 											<ChildItems>
 												<LabelField name="ListDate" id="144">
-													<DataPath>List.Date</DataPath>
+													<DataPath>15/17</DataPath>
 													<Title>
 														<v8:item>
 															<v8:lang>en</v8:lang>
@@ -1029,7 +1033,7 @@
 													<ExtendedTooltip name="DateListExtendedTooltip" id="395"/>
 												</LabelField>
 												<LabelField name="ListNumber" id="148">
-													<DataPath>List.Number</DataPath>
+													<DataPath>15/39</DataPath>
 													<Title>
 														<v8:item>
 															<v8:lang>en</v8:lang>
@@ -1037,7 +1041,7 @@
 														</v8:item>
 														<v8:item>
 															<v8:lang>ru</v8:lang>
-															<v8:content>Номер</v8:content>
+															<v8:content>Number</v8:content>
 														</v8:item>
 													</Title>
 													<Width>10</Width>
@@ -1046,14 +1050,14 @@
 													<ExtendedTooltip name="NumberListExtendedTooltip" id="396"/>
 												</LabelField>
 												<LabelField name="ListOrderState" id="186">
-													<DataPath>List.OrderState</DataPath>
+													<DataPath>15/62</DataPath>
 													<Width>12</Width>
 													<HorizontalStretch>false</HorizontalStretch>
 													<ContextMenu name="ListOrderStateContextMenu" id="187"/>
 													<ExtendedTooltip name="OrderStateListExtendedTooltip" id="398"/>
 												</LabelField>
 												<LabelField name="ListOrderStatus" id="322">
-													<DataPath>List.OrderState</DataPath>
+													<DataPath>15/62</DataPath>
 													<Title>
 														<v8:item>
 															<v8:lang>en</v8:lang>
@@ -1070,7 +1074,7 @@
 													<ExtendedTooltip name="ListOrderStatusExtendedTooltip" id="399"/>
 												</LabelField>
 												<LabelField name="ListStart" id="188">
-													<DataPath>List.Start</DataPath>
+													<DataPath>15/93</DataPath>
 													<Width>10</Width>
 													<Height>2</Height>
 													<HorizontalStretch>false</HorizontalStretch>
@@ -1078,7 +1082,7 @@
 													<ExtendedTooltip name="ListStartExtendedTooltip" id="401"/>
 												</LabelField>
 												<LabelField name="ListFinish" id="198">
-													<DataPath>List.Finish</DataPath>
+													<DataPath>15/112</DataPath>
 													<Width>10</Width>
 													<Height>2</Height>
 													<HorizontalStretch>false</HorizontalStretch>
@@ -1086,27 +1090,27 @@
 													<ExtendedTooltip name="ListFinishExtendedTooltip" id="402"/>
 												</LabelField>
 												<LabelField name="ListProductsAndServices" id="176">
-													<DataPath>List.ProductsAndServices</DataPath>
+													<DataPath>15/139</DataPath>
 													<Width>20</Width>
 													<Height>2</Height>
 													<ContextMenu name="ListProductsAndServicesContextMenu" id="177"/>
 													<ExtendedTooltip name="ListProductsAndServicesExtendedTooltip" id="403"/>
 												</LabelField>
 												<LabelField name="ListKeyResources" id="168">
-													<DataPath>List.KeyResources</DataPath>
+													<DataPath>15/159</DataPath>
 													<Width>20</Width>
 													<Height>2</Height>
 													<ContextMenu name="KeyResourcesListContextMenu" id="169"/>
 													<ExtendedTooltip name="ListKeyResourcesExtendedTooltip" id="404"/>
 												</LabelField>
 												<LabelField name="ListCounterparty" id="172">
-													<DataPath>List.Counterparty</DataPath>
+													<DataPath>15/166</DataPath>
 													<Width>20</Width>
 													<ContextMenu name="ListCounterpartyContextMenu" id="173"/>
 													<ExtendedTooltip name="ListCounterpartyExtendedTooltip" id="405"/>
 												</LabelField>
 												<LabelField name="ListCustomerOrder" id="166">
-													<DataPath>List.CustomerOrder</DataPath>
+													<DataPath>15/181</DataPath>
 													<UserVisible>
 														<xr:Common>false</xr:Common>
 													</UserVisible>
@@ -1115,14 +1119,14 @@
 													<ExtendedTooltip name="CustomerOrderListExtendedTooltip" id="406"/>
 												</LabelField>
 												<LabelField name="OperationKindsList" id="158">
-													<DataPath>List.OperationKind</DataPath>
+													<DataPath>15/199</DataPath>
 													<Width>12</Width>
 													<HorizontalStretch>false</HorizontalStretch>
 													<ContextMenu name="ListOperationTypeContextMenu" id="159"/>
 													<ExtendedTooltip name="ListOperationTypeExtendedTooltip" id="397"/>
 												</LabelField>
 												<LabelField name="ListCompanies" id="178">
-													<DataPath>List.Company</DataPath>
+													<DataPath>15/202</DataPath>
 													<UserVisible>
 														<xr:Common>false</xr:Common>
 													</UserVisible>
@@ -1131,7 +1135,7 @@
 													<ExtendedTooltip name="ListCompanyExtendedTooltip" id="400"/>
 												</LabelField>
 												<CheckBoxField name="ListIsClosed" id="200">
-													<DataPath>List.Closed</DataPath>
+													<DataPath>15/204</DataPath>
 													<TitleLocation>None</TitleLocation>
 													<HeaderPicture>
 														<xr:Ref>CommonPicture.LockFile</xr:Ref>
@@ -1142,7 +1146,7 @@
 													<ExtendedTooltip name="ListClosedExtendedTooltip" id="394"/>
 												</CheckBoxField>
 												<LabelField name="ListDepartment" id="182">
-													<DataPath>List.Department</DataPath>
+													<DataPath>15/309</DataPath>
 													<UserVisible>
 														<xr:Common>false</xr:Common>
 													</UserVisible>
@@ -1150,7 +1154,7 @@
 													<ExtendedTooltip name="ListDepartmentExtendedTooltip" id="407"/>
 												</LabelField>
 												<LabelField name="ListResponsible" id="180">
-													<DataPath>List.Responsible</DataPath>
+													<DataPath>15/239</DataPath>
 													<UserVisible>
 														<xr:Common>false</xr:Common>
 													</UserVisible>
@@ -1158,7 +1162,7 @@
 													<ExtendedTooltip name="ListResponsibleExtendedTooltip" id="408"/>
 												</LabelField>
 												<LabelField name="ListAuthor" id="156">
-													<DataPath>List.Author</DataPath>
+													<DataPath>15/240</DataPath>
 													<UserVisible>
 														<xr:Common>false</xr:Common>
 													</UserVisible>
@@ -1249,7 +1253,7 @@
 															<ExtendedTooltip name="InformationAboutCounterpartyExtendedTooltip" id="411"/>
 															<ChildItems>
 																<LabelField name="InformationCounterparty" id="100">
-																	<DataPath>Items.List.CurrentData.Counterparty</DataPath>
+																	<DataPath>33:02023637-7868-4a5f-8576-835a76e0c9ba/166</DataPath>
 																	<ReadOnly>true</ReadOnly>
 																	<Title>
 																		<v8:item>
@@ -1267,7 +1271,7 @@
 																	<ExtendedTooltip name="InformationCounterpartyExtendedTooltip" id="412"/>
 																</LabelField>
 																<InputField name="InformationCounterpartyPhone" id="106">
-																	<DataPath>Items.List.CurrentData.CounterpartyPhone</DataPath>
+																	<DataPath>33:02023637-7868-4a5f-8576-835a76e0c9ba/249</DataPath>
 																	<ReadOnly>true</ReadOnly>
 																	<Title>
 																		<v8:item>
@@ -1312,7 +1316,7 @@
 																	<ExtendedTooltip name="CounterpartyEmailExtendedTooltip" id="414"/>
 																	<ChildItems>
 																		<LabelField name="InformationCounterpartyEmail" id="110">
-																			<DataPath>Items.List.CurrentData.CounterpartyEmail</DataPath>
+																			<DataPath>33:02023637-7868-4a5f-8576-835a76e0c9ba/253</DataPath>
 																			<ReadOnly>true</ReadOnly>
 																			<Title>
 																				<v8:item>
@@ -1367,7 +1371,7 @@
 															<ExtendedTooltip name="InformationAboutContactPersonExtendedTooltip" id="421"/>
 															<ChildItems>
 																<LabelField name="InformationContactPerson" id="102">
-																	<DataPath>Items.List.CurrentData.ContactPerson</DataPath>
+																	<DataPath>33:02023637-7868-4a5f-8576-835a76e0c9ba/254</DataPath>
 																	<ReadOnly>true</ReadOnly>
 																	<Title>
 																		<v8:item>
@@ -1385,7 +1389,7 @@
 																	<ExtendedTooltip name="InformationContactExtendedTooltip" id="422"/>
 																</LabelField>
 																<InputField name="InformationContactPersonPhoneNumber" id="104">
-																	<DataPath>Items.List.CurrentData.ContactPersonPhone</DataPath>
+																	<DataPath>33:02023637-7868-4a5f-8576-835a76e0c9ba/256</DataPath>
 																	<ReadOnly>true</ReadOnly>
 																	<Title>
 																		<v8:item>
@@ -1430,7 +1434,7 @@
 																	<ExtendedTooltip name="ContactPersonEmailExtendedTooltip" id="424"/>
 																	<ChildItems>
 																		<LabelField name="InformationContactPersonEmail" id="108">
-																			<DataPath>Items.List.CurrentData.ContactPersonEmail</DataPath>
+																			<DataPath>33:02023637-7868-4a5f-8576-835a76e0c9ba/257</DataPath>
 																			<ReadOnly>true</ReadOnly>
 																			<Title>
 																				<v8:item>
@@ -1458,7 +1462,7 @@
 													</ChildItems>
 												</UsualGroup>
 												<InputField name="ListCounterpartyShippingAddress" id="499">
-													<DataPath>Items.List.CurrentData.CounterpartyShippingAddress</DataPath>
+													<DataPath>33:02023637-7868-4a5f-8576-835a76e0c9ba/263</DataPath>
 													<ReadOnly>true</ReadOnly>
 													<Title>
 														<v8:item>
@@ -1504,7 +1508,7 @@
 													<ExtendedTooltip name="AddressListDetailsExtendedTooltip" id="498"/>
 													<ChildItems>
 														<InputField name="InformationCounterpartyFactAddress" id="116">
-															<DataPath>Items.List.CurrentData.CounterpartyOtherInformation</DataPath>
+															<DataPath>33:02023637-7868-4a5f-8576-835a76e0c9ba/267</DataPath>
 															<UserVisible>
 																<xr:Common>false</xr:Common>
 															</UserVisible>
@@ -1530,7 +1534,7 @@
 															<ExtendedTooltip name="InformationCounterpartyFactAddressExtendedTooltip" id="417"/>
 														</InputField>
 														<InputField name="InformationCounterpartyLegalAddress" id="118">
-															<DataPath>Items.List.CurrentData.CounterpartyFax</DataPath>
+															<DataPath>33:02023637-7868-4a5f-8576-835a76e0c9ba/269</DataPath>
 															<UserVisible>
 																<xr:Common>false</xr:Common>
 															</UserVisible>
@@ -1556,7 +1560,7 @@
 															<ExtendedTooltip name="InformationCounterpartyLegalAddressExtendedTooltip" id="418"/>
 														</InputField>
 														<InputField name="InformationCounterpartyPostalAddress" id="120">
-															<DataPath>Items.List.CurrentData.CounterpartyPostalAddress</DataPath>
+															<DataPath>33:02023637-7868-4a5f-8576-835a76e0c9ba/272</DataPath>
 															<UserVisible>
 																<xr:Common>false</xr:Common>
 															</UserVisible>
@@ -1582,7 +1586,7 @@
 															<ExtendedTooltip name="InformationCounterpartyPostalAddressExtendedTooltip" id="419"/>
 														</InputField>
 														<InputField name="InformationCounterpartyOtherInformation" id="122">
-															<DataPath>Items.List.CurrentData.CounterpartyOtherInformation</DataPath>
+															<DataPath>33:02023637-7868-4a5f-8576-835a76e0c9ba/267</DataPath>
 															<UserVisible>
 																<xr:Common>false</xr:Common>
 															</UserVisible>
@@ -2523,13 +2527,13 @@
 				<v8:Type>cfg:DynamicList</v8:Type>
 			</Type>
 			<UseAlways>
-				<Field>List.WorkOdrerState</Field>
-				<Field>List.ProductionOrderStatus</Field>
-				<Field>List.ProductionOrderState</Field>
-				<Field>List.OrderState</Field>
-				<Field>List.JobOrderStatus</Field>
-				<Field>List.Counterparty</Field>
-				<Field>List.ContactPerson</Field>
+				<Field>15/62</Field>
+				<Field>15/305</Field>
+				<Field>15/301</Field>
+				<Field>15/293</Field>
+				<Field>15/284</Field>
+				<Field>15/254</Field>
+				<Field>15/166</Field>
 			</UseAlways>
 			<Settings xsi:type="DynamicList">
 				<ManualQuery>true</ManualQuery>
@@ -2637,70 +2641,70 @@ FROM
 					THEN DocumentJournalResourcesPlanningDocuments.CustomerOrder.Counterparty = CounterpartyEmail.Ref
 				ELSE DocumentJournalResourcesPlanningDocuments.Counterparty = CounterpartyEmail.Ref
 			END)
-			AND (CounterpartyEmail.Type = VALUE(Catalog.ContactInformationTypes.CounterpartyEmail))
+			AND (CounterpartyEmail.Type = VALUE(Catalog.ContactInformationKinds.CounterpartyEmail))
 		LEFT JOIN Catalog.Counterparties.ContactInformation AS CounterpartyPhone
 		ON (CASE
 				WHEN DocumentJournalResourcesPlanningDocuments.Type = Type(Document.ProductionOrder)
 					THEN DocumentJournalResourcesPlanningDocuments.CustomerOrder.Counterparty = CounterpartyPhone.Ref
 				ELSE DocumentJournalResourcesPlanningDocuments.Counterparty = CounterpartyPhone.Ref
 			END)
-			AND (CounterpartyPhone.Type = VALUE(Catalog.ContactInformationTypes.CounterpartyPhone))
+			AND (CounterpartyPhone.Type = VALUE(Catalog.ContactInformationKinds.CounterpartyPhone))
 		LEFT JOIN Catalog.Counterparties.ContactInformation AS CounterpartyFax
 		ON (CASE
 				WHEN DocumentJournalResourcesPlanningDocuments.Type = Type(Document.ProductionOrder)
 					THEN DocumentJournalResourcesPlanningDocuments.CustomerOrder.Counterparty = CounterpartyFax.Ref
 				ELSE DocumentJournalResourcesPlanningDocuments.Counterparty = CounterpartyFax.Ref
 			END)
-			AND (CounterpartyFax.Type = VALUE(Catalog.ContactInformationTypes.CounterpartyFax))
+			AND (CounterpartyFax.Type = VALUE(Catalog.ContactInformationKinds.CounterpartyFax))
 		LEFT JOIN Catalog.Counterparties.ContactInformation AS CounterpartyFactAddress
 		ON (CASE
 				WHEN DocumentJournalResourcesPlanningDocuments.Type = Type(Document.ProductionOrder)
 					THEN DocumentJournalResourcesPlanningDocuments.CustomerOrder.Counterparty = CounterpartyFactAddress.Ref
 				ELSE DocumentJournalResourcesPlanningDocuments.Counterparty = CounterpartyFactAddress.Ref
 			END)
-			AND (CounterpartyFactAddress.Type = VALUE(Catalog.ContactInformationTypes.CounterpartyFactAddress))
+			AND (CounterpartyFactAddress.Type = VALUE(Catalog.ContactInformationKinds.CounterpartyFactAddress))
 		LEFT JOIN Catalog.Counterparties.ContactInformation AS CounterpartyLegalAddress
 		ON (CASE
 				WHEN DocumentJournalResourcesPlanningDocuments.Type = Type(Document.ProductionOrder)
 					THEN DocumentJournalResourcesPlanningDocuments.CustomerOrder.Counterparty = CounterpartyLegalAddress.Ref
 				ELSE DocumentJournalResourcesPlanningDocuments.Counterparty = CounterpartyLegalAddress.Ref
 			END)
-			AND (CounterpartyLegalAddress.Type = VALUE(Catalog.ContactInformationTypes.CounterpartyLegalAddress))
+			AND (CounterpartyLegalAddress.Type = VALUE(Catalog.ContactInformationKinds.CounterpartyLegalAddress))
 		LEFT JOIN Catalog.Counterparties.ContactInformation AS CounterpartyPostalAddress
 		ON (CASE
 				WHEN DocumentJournalResourcesPlanningDocuments.Type = Type(Document.ProductionOrder)
 					THEN DocumentJournalResourcesPlanningDocuments.CustomerOrder.Counterparty = CounterpartyPostalAddress.Ref
 				ELSE DocumentJournalResourcesPlanningDocuments.Counterparty = CounterpartyPostalAddress.Ref
 			END)
-			AND (CounterpartyPostalAddress.Type = VALUE(Catalog.ContactInformationTypes.CounterpartyPostalAddress))
+			AND (CounterpartyPostalAddress.Type = VALUE(Catalog.ContactInformationKinds.CounterpartyPostalAddress))
 		LEFT JOIN Catalog.Counterparties.ContactInformation AS CounterpartyShippingAddress
 		ON (CASE
 				WHEN DocumentJournalResourcesPlanningDocuments.Type = Type(Document.ProductionOrder)
 					THEN DocumentJournalResourcesPlanningDocuments.CustomerOrder.Counterparty = CounterpartyShippingAddress.Ref
 				ELSE DocumentJournalResourcesPlanningDocuments.Counterparty = CounterpartyShippingAddress.Ref
 			END)
-			AND (CounterpartyShippingAddress.Type = VALUE(Catalog.ContactInformationTypes.CounterpartyShippingAddress))
+			AND (CounterpartyShippingAddress.Type = VALUE(Catalog.ContactInformationKinds.CounterpartyShippingAddress))
 		LEFT JOIN Catalog.Counterparties.ContactInformation AS CounterpartyOtherInformation
 		ON (CASE
 				WHEN DocumentJournalResourcesPlanningDocuments.Type = Type(Document.ProductionOrder)
 					THEN DocumentJournalResourcesPlanningDocuments.CustomerOrder.Counterparty = CounterpartyOtherInformation.Ref
 				ELSE DocumentJournalResourcesPlanningDocuments.Counterparty = CounterpartyOtherInformation.Ref
 			END)
-			AND (CounterpartyOtherInformation.Type = VALUE(Catalog.ContactInformationTypes.CounterpartyOtherInformation))
+			AND (CounterpartyOtherInformation.Type = VALUE(Catalog.ContactInformationKinds.CounterpartyOtherInformation))
 		LEFT JOIN Catalog.ContactPersons.ContactInformation AS ContactPersonEmail
 		ON (CASE
 				WHEN DocumentJournalResourcesPlanningDocuments.Type = Type(Document.ProductionOrder)
 					THEN DocumentJournalResourcesPlanningDocuments.CustomerOrder.Counterparty.ContactPerson = ContactPersonEmail.Ref
 				ELSE DocumentJournalResourcesPlanningDocuments.Counterparty.ContactPerson = ContactPersonEmail.Ref
 			END)
-			AND (ContactPersonEmail.Type = VALUE(Catalog.ContactInformationTypes.ContactPersonEmail))
+			AND (ContactPersonEmail.Type = VALUE(Catalog.ContactInformationKinds.ContactPersonEmail))
 		LEFT JOIN Catalog.ContactPersons.ContactInformation AS ContactPersonPhone
 		ON (CASE
 				WHEN DocumentJournalResourcesPlanningDocuments.Type = Type(Document.ProductionOrder)
 					THEN DocumentJournalResourcesPlanningDocuments.CustomerOrder.Counterparty.ContactPerson = ContactPersonPhone.Ref
 				ELSE DocumentJournalResourcesPlanningDocuments.Counterparty.ContactPerson = ContactPersonPhone.Ref
 			END)
-			AND (ContactPersonPhone.Type = VALUE(Catalog.ContactInformationTypes.ContactPersonPhone))
+			AND (ContactPersonPhone.Type = VALUE(Catalog.ContactInformationKinds.ContactPersonPhone))
 WHERE
 	CASE
 			WHEN DocumentJournalResourcesPlanningDocuments.Type = Type(Document.CustomerOrder)

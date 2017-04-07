@@ -70,17 +70,3 @@ Procedure RefreshExplanationLabelText()
 EndProcedure
 
 #EndRegion
-
-
-
-
-
-
-
-
-
-
-
-
-
-

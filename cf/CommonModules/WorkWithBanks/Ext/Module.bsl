@@ -34,11 +34,6 @@ EndProcedure
 // See details of the same procedure in the StandardSubsystemsServer module.
 Procedure OnAddHandlersOfServiceEvents(ClientHandlers, ServerHandlers) Export
 	
-	// CLIENT HANDLERS.
-	
-	ClientHandlers["StandardSubsystems.BasicFunctionality\AfterSystemOperationStart"].Add(
-		"WorkWithBanksClient");
-	
 	// SERVERSIDE HANDLERS.
 	
 	ServerHandlers["StandardSubsystems.BasicFunctionality\OnAddWorkParametersClientOnStart"].Add(
@@ -158,22 +153,6 @@ Procedure AtFillingToDoList(CurrentWorks) Export
 	If Sections = Undefined Then
 		Return; // Interface of work with banks is not submitted to the user command interface.
 	EndIf;
-	
-	For Each Section In Sections Do
-		
-		IdentifierBanks = "BanksClassifier" + StrReplace(Section.FullName(), ".", "");
-		Work = CurrentWorks.Add();
-		Work.ID  = IdentifierBanks;
-		Work.ThereIsWork       = Result.ClassifierObsolete;
-		Work.Important         = Result.ClassifierOverdue;
-		Work.Presentation  = NStr("en='Banks classifier is outdated';ru='Классификатор банков устарел'");
-		Work.ToolTip      = StringFunctionsClientServer.SubstituteParametersInString(
-			NStr("en='Last update %1 ago';ru='Последнее обновление %1 назад'"), Result.OverdueAmountAsString);
-		Work.Form          = "Catalog.RFBankClassifier.Form.ImportClassifier";
-		Work.FormParameters = New Structure("OpenFromList", True);
-		Work.Owner       = Section;
-		
-	EndDo;
 	
 EndProcedure
 

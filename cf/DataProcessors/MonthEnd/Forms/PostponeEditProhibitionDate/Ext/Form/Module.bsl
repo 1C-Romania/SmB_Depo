@@ -31,17 +31,3 @@ Procedure SetDoNotAskAnyMore(YesNoSettingVariant)
 	EndIf;
 	
 EndProcedure
-
-
-
-
-
-
-
-
-
-
-
-
-
-

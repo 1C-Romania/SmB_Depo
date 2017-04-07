@@ -30,12 +30,12 @@
 				</InputField>
 			</ChildItems>
 		</UsualGroup>
-		<InputField name="DescriptionFull" id="5">
-			<DataPath>Object.DescriptionFull</DataPath>
+		<InputField name="LongDescription" id="5">
+			<DataPath>Object.LongDescription</DataPath>
 			<Title>
 				<v8:item>
 					<v8:lang>en</v8:lang>
-					<v8:content>Full description</v8:content>
+					<v8:content>Long description</v8:content>
 				</v8:item>
 				<v8:item>
 					<v8:lang>ru</v8:lang>
@@ -43,8 +43,8 @@
 				</v8:item>
 			</Title>
 			<Wrap>false</Wrap>
-			<ContextMenu name="DescriptionFull_ContextMenu" id="6"/>
-			<ExtendedTooltip name="FullNameExtendedTooltip" id="16"/>
+			<ContextMenu name="LongDescriptionContextMenu" id="6"/>
+			<ExtendedTooltip name="LongDescriptionExtendedTooltip" id="16"/>
 		</InputField>
 		<UsualGroup name="AlphaCodesGroup" id="12">
 			<Title>

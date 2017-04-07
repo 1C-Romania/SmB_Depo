@@ -62,11 +62,6 @@ Procedure OnAddUpdateHandlers(Handlers) Export
 	Handler.InitialFilling = False;
 	
 	Handler = Handlers.Add();
-	Handler.Version = "1.1.5.1";
-	Handler.Procedure = "InfobaseUpdateED.ProcessAdjustingInvoiceNotes";
-	Handler.InitialFilling = False;
-	
-	Handler = Handlers.Add();
 	Handler.Version = "1.1.6.3";
 	Handler.Procedure = "Catalogs.EDUsageAgreements.FillFormatsVersions";
 	Handler.InitialFilling = False;
@@ -461,66 +456,6 @@ Procedure FillWorksWithCryptographyContext() Export
 	
 EndProcedure
 
-// ED new kind is added - correction customer invoice note
-Procedure ProcessAdjustingInvoiceNotes() Export
-	
-	Query = New Query;
-	Query.Text = "SELECT
-	               |	EDAttachedFiles.Ref
-	               |FROM
-	               |	Catalog.EDAttachedFiles AS EDAttachedFiles
-	               |WHERE
-	               |	EDAttachedFiles.Description LIKE ""ON_KORSFAKT%""
-	               |	AND EDAttachedFiles.EDKind = VALUE(Enum.EDKinds.CustomerInvoiceNote)";
-	Selection = Query.Execute().Select();
-	While Selection.Next() Do
-		Object = Selection.Ref.GetObject();
-		Object.EDKind = Enums.EDKinds.CorrectiveInvoiceNote;
-		InfobaseUpdate.WriteObject(Object);
-	EndDo;
-	
-	//Query = New Query;
-	//Query.Text = "SELECT
-	//               |	CertificatesDSDocumentKinds.Ref
-	//               |INTO CertificatesExceptions
-	//               |FROM
-	//               |	Catalog.DeleteDSCertificates.DocumentKinds AS CertificatesDSDocumentKinds
-	//               |WHERE
-	//               |	CertificatesDSDocumentKinds.DocumentKind = VALUE(Enum.EDKinds.CorrectiveInvoiceNote)
-	//               |	AND CertificatesDSDocumentKinds.UseToSign
-	//               |	AND Not CertificatesDSDocumentKinds.Ref.DeletionMark
-	//               |	AND Not CertificatesDSDocumentKinds.Ref.Revoked
-	//               |;
-	//               |
-	//               |////////////////////////////////////////////////////////////////////////////////
-	//               |SELECT
-	//               |	CertificatesDSDocumentKinds.Ref
-	//               |FROM
-	//               |	Catalog.DeleteDSCertificates.DocumentKinds AS CertificatesDSDocumentKinds
-	//               |WHERE
-	//               |	CertificatesDSDocumentKinds.DocumentKind = VALUE(Enum.EDKinds.CustomerInvoiceNote)
-	//               |	AND CertificatesDSDocumentKinds.UseToSign
-	//               |	AND Not CertificatesDSDocumentKinds.Ref.DeletionMark
-	//               |	AND Not CertificatesDSDocumentKinds.Ref.Revoked
-	//               |	AND Not CertificatesDSDocumentKinds.Ref In
-	//               |				(SELECT
-	//               |					CertificatesExceptions.Ref
-	//               |				FROM
-	//               |					CertificatesExceptions)";
-	//Selection = Query.Execute().Select();
-	//While Selection.Next() Do
-	//	Certificate = Selection.Ref.GetObject();
-	//	RowCorrInvoice = Certificate.DocumentKinds.Find(Enums.EDKinds.CorrectiveInvoiceNote, "DocumentKind");
-	//	If RowCorrInvoice = Undefined Then
-	//		RowCorrInvoice = Certificate.DocumentKinds.Add();
-	//		RowCorrInvoice.DocumentKind = Enums.EDKinds.CorrectiveInvoiceNote;
-	//	EndIf;
-	//	RowCorrInvoice.UseToSign = True;
-	//	InfobaseUpdate.WriteObject(Certificate);
-	//EndDo;
-	
-EndProcedure
-
 // New EDFProfileSettings catalog appeared.
 Procedure FillDataAboutEDFProfileSettings() Export
 	
@@ -541,8 +476,7 @@ Procedure FillDataAboutEDFProfileSettings() Export
 	While Selection.Next() Do
 		EDFSetup = Selection.Ref.GetObject();
 		EDFSetup.SetDeletionMark(True);
-		EDFSetup.Comment = NStr("en='##EDF setting is automatically marked for deletion during updating.';
-								|ru='##Настройка ЭДО помечена на удаление автоматически при обновлении.'");
+		EDFSetup.Comment = NStr("en='##EDF setting is automatically marked for deletion during updating.';ru='##Настройка ЭДО помечена на удаление автоматически при обновлении.'");
 		InfobaseUpdate.WriteObject(EDFSetup);
 	EndDo;
 	
@@ -624,14 +558,6 @@ Procedure FillDataAboutEDFProfileSettings() Export
 						NewRow.UseDS = True;
 					EndIf;
 					
-					If (EnumValue = Enums.EDKinds.CustomerInvoiceNote
-						OR EnumValue = Enums.EDKinds.CorrectiveInvoiceNote)
-						AND Selection.EDExchangeMethod <> Enums.EDExchangeMethods.ThroughEDFOperatorTaxcom Then
-						
-						NewRow.ToForm = False;
-						NewRow.UseDS = False;
-						
-					EndIf;
 					// Put exchange format version to new agreements of the direct exchange.
 					FormatVersion = "CML 4.02";
 					If EnumValue = Enums.EDKinds.RandomED Then
@@ -641,9 +567,7 @@ Procedure FillDataAboutEDFProfileSettings() Export
 						OR EnumValue = Enums.EDKinds.TORG12Customer
 						OR EnumValue = Enums.EDKinds.TORG12Seller
 						OR EnumValue = Enums.EDKinds.AgreementAboutCostChangeSender
-						OR EnumValue = Enums.EDKinds.AgreementAboutCostChangeRecipient
-						OR EnumValue = Enums.EDKinds.CustomerInvoiceNote
-						OR EnumValue = Enums.EDKinds.CorrectiveInvoiceNote Then
+						OR EnumValue = Enums.EDKinds.AgreementAboutCostChangeRecipient Then
 						FormatVersion = NStr("en='Federal Tax Service 5.01';ru='ФНС 5.01'");
 					ElsIf EnumValue = Enums.EDKinds.RightsDelegationAct Then
 						FormatVersion = "CML 2.08";
@@ -824,34 +748,6 @@ Procedure FillDataAboutEDFProfileSettings() Export
 		EDFSetup.OutgoingDocuments.Load(EDSourceTable);
 		
 		// Add missing documents to TS outgoing documents for the direct exchange.
-		Filter = New Structure;
-		Filter.Insert("OutgoingDocument", Enums.EDKinds.CustomerInvoiceNote);
-		FoundStrings = EDFSetup.OutgoingDocuments.FindRows(Filter);
-		If FoundStrings.Count() = 0 Then
-			String = EDFSetup.OutgoingDocuments.Add();
-			String.OutgoingDocument        = Enums.EDKinds.CustomerInvoiceNote;
-			String.ToForm              = False;
-			String.UseDS          = False;
-			String.FormatVersion            = NStr("en='Federal Tax Service 5.01';ru='ФНС 5.01'");
-			String.EDFProfileSettings       = Selection.EDFProfileSettings;
-			String.EDExchangeMethod           = Selection.EDExchangeMethod;
-			String.CompanyID = Selection.CompanyID;
-			String.CounterpartyID = Selection.CounterpartyID;
-		EndIf;
-		Filter = New Structure;
-		Filter.Insert("OutgoingDocument", Enums.EDKinds.CorrectiveInvoiceNote);
-		FoundStrings = EDFSetup.OutgoingDocuments.FindRows(Filter);
-		If FoundStrings.Count() = 0 Then
-			String = EDFSetup.OutgoingDocuments.Add();
-			String.OutgoingDocument        = Enums.EDKinds.CorrectiveInvoiceNote;
-			String.ToForm              = False;
-			String.UseDS          = False;
-			String.FormatVersion            = NStr("en='Federal Tax Service 5.01';ru='ФНС 5.01'");
-			String.EDFProfileSettings       = Selection.EDFProfileSettings;
-			String.EDExchangeMethod           = Selection.EDExchangeMethod;
-			String.CompanyID = Selection.CompanyID;
-			String.CounterpartyID = Selection.CounterpartyID;
-		EndIf;
 		
 		EDFSetup.OutgoingDocuments.Sort("OutgoingDocument");
 		
@@ -985,29 +881,6 @@ Procedure FillDataAboutEDFProfileSettings() Export
 				SettingsProfileParameters = CommonUse.ObjectAttributesValues(EDFProfileSettings,
 					"CompanyID, EDExchangeMethod");
 				
-				Filter = New Structure;
-				Filter.Insert("OutgoingDocument", Enums.EDKinds.CustomerInvoiceNote);
-				FoundStrings = EDFSetup.OutgoingDocuments.FindRows(Filter);
-				For Each String IN FoundStrings Do
-					String.ToForm              = True;
-					String.UseDS          = True;
-					String.EDFProfileSettings       = EDFProfileSettings;
-					String.EDExchangeMethod           = SettingsProfileParameters.EDExchangeMethod;
-					String.CompanyID = SettingsProfileParameters.CompanyID;
-					String.CounterpartyID = ParticipantsSelection.ID;
-				EndDo;
-				
-				Filter = New Structure;
-				Filter.Insert("OutgoingDocument", Enums.EDKinds.CorrectiveInvoiceNote);
-				FoundStrings = EDFSetup.OutgoingDocuments.FindRows(Filter);
-				For Each String IN FoundStrings Do
-					String.ToForm              = True;
-					String.UseDS          = True;
-					String.EDFProfileSettings       = EDFProfileSettings;
-					String.EDExchangeMethod           = SettingsProfileParameters.EDExchangeMethod;
-					String.CompanyID = SettingsProfileParameters.CompanyID;
-					String.CounterpartyID = ParticipantsSelection.ID;
-				EndDo;
 			Else
 				Filter = New Structure;
 				Filter.Insert("EDFProfileSettings", EDFProfileSettings);

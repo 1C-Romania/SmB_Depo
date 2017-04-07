@@ -45,17 +45,3 @@ Procedure ListSelection(Item, SelectedRow, Field, StandardProcessing)
 EndProcedure
 
 #EndRegion
-
-
-
-
-
-
-
-
-
-
-
-
-
-

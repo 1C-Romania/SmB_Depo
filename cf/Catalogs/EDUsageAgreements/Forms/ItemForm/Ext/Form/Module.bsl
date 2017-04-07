@@ -373,19 +373,6 @@ Procedure OutgoingDocumentsOnChange(Item)
 		InAgreementCatalogIsUsed = Item.CurrentData.ToForm;
 	EndIf;
 	
-	If (Item.CurrentData.OutgoingDocument = PredefinedValue("Enum.EDKinds.CustomerInvoiceNote")
-		OR Item.CurrentData.OutgoingDocument = PredefinedValue("Enum.EDKinds.CorrectiveInvoiceNote"))
-		AND Item.CurrentData.EDExchangeMethod <> PredefinedValue("Enum.EDExchangeMethods.ThroughEDFOperatorTaxcom") Then
-		
-		Item.CurrentData.ToForm = False;
-		Item.CurrentData.UseDS = False;
-		
-		MessagePattern = NStr("en='You can send the %1 document through the EDF operator only.';ru='Отправка документа %1 возможна только через оператора ЭДО.'");
-		MessageText = StringFunctionsClientServer.SubstituteParametersInString(MessagePattern,
-			Item.CurrentData.OutgoingDocument);
-		CommonUseClientServer.MessageToUser(MessageText);
-	EndIf;
-	
 	FormManagement(ThisObject);
 	
 EndProcedure
@@ -929,13 +916,11 @@ Procedure SetIdentifier(CatalogName, IdentifierSourceRef, SearchIdentifier)
 	
 	If CatalogName = "Counterparties" Then
 		AttributeNameCounterpartyTIN = ElectronicDocumentsReUse.NameAttributeObjectExistanceInAppliedSolution("CounterpartyTIN");
-		AttributeNameCounterpartyKPP = ElectronicDocumentsReUse.NameAttributeObjectExistanceInAppliedSolution("CounterpartyCRR");
 		
 		CounterpartyParameters = CommonUse.ObjectAttributesValues(IdentifierSourceRef,
-			AttributeNameCounterpartyTIN + ", " + AttributeNameCounterpartyKPP);
+			AttributeNameCounterpartyTIN);
 		
-		RowFill = String(CounterpartyParameters[AttributeNameCounterpartyTIN])
-			+ "_" + String(CounterpartyParameters[AttributeNameCounterpartyKPP]);
+		RowFill = String(CounterpartyParameters[AttributeNameCounterpartyTIN]);
 		If Right(RowFill, 1) = "_" Then
 			RowFill = StrReplace(RowFill, "_", "");
 		EndIf;
@@ -1361,17 +1346,3 @@ Procedure AddCertificateWH(ValueSelected)
 EndProcedure
 
 #EndRegion
-
-
-
-
-
-
-
-
-
-
-
-
-
-

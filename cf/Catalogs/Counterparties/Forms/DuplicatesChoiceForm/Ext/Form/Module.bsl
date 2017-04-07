@@ -5,15 +5,8 @@
 Procedure OnCreateAtServer(Cancel, StandardProcessing)
 	
 	DoublesList.Parameters.SetParameterValue("TIN", TrimAll(Parameters.TIN));
-	DoublesList.Parameters.SetParameterValue("KPP", TrimAll(Parameters.KPP));
 	
-	If Not Parameters.ThisIsLegalEntity Then
-		Items.ListKPP.Visible = False;
-	EndIf;
-	
-	ThisForm.Title =  ?(ValueIsFilled(Parameters.KPP), 
-							NStr("en='Duplicates list by TIN and KPP';ru='Список дублей по ИНН и КПП'"), 
-							NStr("en='Duplicates list by TIN';ru='Список дублей по ИНН'"));
+	ThisForm.Title =  NStr("en='Duplicates list by TIN';ru='Список дублей по ИНН'");
 	
 EndProcedure
 
@@ -114,17 +107,3 @@ Function GetCounterpartyDocumentsCount(Counterparty)
 	EndIf;
 
 EndFunction
-
-
-
-
-
-
-
-
-
-
-
-
-
-

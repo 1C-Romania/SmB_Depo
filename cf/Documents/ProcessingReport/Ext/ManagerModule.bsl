@@ -2319,19 +2319,19 @@ Function PrintForm(ObjectsArray, PrintObjects, TemplateName)
 				EndIf;		
 				
 				TemplateArea = Template.GetArea("Title");
-				TemplateArea.Parameters.HeaderText = "Act No. "
+				TemplateArea.Parameters.HeaderText = "Act # "
 				                                        + DocumentNumber
-				                                        + " from "
+				                                        + " dated "
 				                                        + Format(Header.DocumentDate, "DLF=DD");
 				
 				SpreadsheetDocument.Put(TemplateArea);
 				
 				TemplateArea = Template.GetArea("Vendor");
-				TemplateArea.Parameters.VendorPresentation = SmallBusinessServer.CompaniesDescriptionFull(InfoAboutCompany, "FullDescr,TIN,KPP,LegalAddress,PhoneNumbers,");
+				TemplateArea.Parameters.VendorPresentation = SmallBusinessServer.CompaniesDescriptionFull(InfoAboutCompany, "FullDescr,TIN,LegalAddress,PhoneNumbers,");
 				SpreadsheetDocument.Put(TemplateArea);
 				
 				TemplateArea = Template.GetArea("Customer");
-				TemplateArea.Parameters.RecipientPresentation = SmallBusinessServer.CompaniesDescriptionFull(InfoAboutCounterparty, "FullDescr,TIN,KPP,LegalAddress,PhoneNumbers,");
+				TemplateArea.Parameters.RecipientPresentation = SmallBusinessServer.CompaniesDescriptionFull(InfoAboutCounterparty, "FullDescr,TIN,LegalAddress,PhoneNumbers,");
 				SpreadsheetDocument.Put(TemplateArea);
 				
 				AreDiscounts = Header.Products.Unload().Total("IsDiscount") <> 0;
@@ -2552,11 +2552,15 @@ EndFunction // PrintForm()
 Procedure Print(ObjectsArray, PrintParameters, PrintFormsCollection, PrintObjects, OutputParameters) Export
 	
 	If PrintManagement.NeedToPrintTemplate(PrintFormsCollection, "Act") Then
+		
 		PrintManagement.OutputSpreadsheetDocumentToCollection(PrintFormsCollection, "Act", "Processing Service Report", PrintForm(ObjectsArray, PrintObjects, "Act"));
+		
 	EndIf;
 	
 	If PrintManagement.NeedToPrintTemplate(PrintFormsCollection, "MerchandiseFillingForm") Then
+		
 		PrintManagement.OutputSpreadsheetDocumentToCollection(PrintFormsCollection, "MerchandiseFillingForm", "Merchandise filling form", PrintForm(ObjectsArray, PrintObjects, "MerchandiseFillingForm"));
+		
 	EndIf;
 	
 	// parameters of sending printing forms by email

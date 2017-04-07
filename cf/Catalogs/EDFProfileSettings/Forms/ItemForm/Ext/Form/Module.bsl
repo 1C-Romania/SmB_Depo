@@ -338,19 +338,6 @@ Procedure OutgoingDocumentsOnChange(Item)
 		Item.CurrentData.UseDS = Item.CurrentData.ToForm;
 	EndIf;
 	
-	If (Item.CurrentData.OutgoingDocument = PredefinedValue("Enum.EDKinds.CustomerInvoiceNote")
-		OR Item.CurrentData.OutgoingDocument = PredefinedValue("Enum.EDKinds.CorrectiveInvoiceNote"))
-		AND Object.EDExchangeMethod <> PredefinedValue("Enum.EDExchangeMethods.ThroughEDFOperatorTaxcom") Then
-		
-		Item.CurrentData.ToForm = False;
-		Item.CurrentData.UseDS = False;
-		
-		MessagePattern = NStr("en='You can send the %1 document through the EDF operator only.';ru='Отправка документа %1 возможна только через оператора ЭДО.'");
-		MessageText = StringFunctionsClientServer.SubstituteParametersInString(MessagePattern,
-			Item.CurrentData.OutgoingDocument);
-		CommonUseClientServer.MessageToUser(MessageText);
-	EndIf;
-	
 	FormManagement(ThisObject);
 	
 EndProcedure
@@ -805,17 +792,3 @@ EndProcedure
 
 
 #EndRegion
-
-
-
-
-
-
-
-
-
-
-
-
-
-

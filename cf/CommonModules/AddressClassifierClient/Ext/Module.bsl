@@ -124,7 +124,7 @@ Procedure ChooseDirectory(Val Form, Val DataPath, Val Title = Undefined, Standar
 	
 	ContinuationAlert.AdditionalParameters.Insert("CompletionAlert",   CompletionAlert);
 	
-	CommonUseClient.ShowQuestionAboutFileOperationsExtensionSetting(ContinuationAlert, , False);
+	CommonUseClient.ShowFileSystemExtensionInstallationQuestion(ContinuationAlert, , False);
 EndProcedure
 
 // End of a directory modeless selection.

@@ -111,17 +111,3 @@ Procedure Pick(Command)
 	OpenForm("Catalog.PriceKinds.ChoiceForm", New Structure("Multiselect, ChoiceMode, CloseOnChoice", True, True, False), ThisForm);
 	
 EndProcedure // Pick()
-
-
-
-
-
-
-
-
-
-
-
-
-
-

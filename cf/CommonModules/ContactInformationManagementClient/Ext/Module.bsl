@@ -1,20 +1,22 @@
 ﻿////////////////////////////////////////////////////////////////////////////////
-// The Contact information subsystem.
+// Contact information subsystem.
 //
 ////////////////////////////////////////////////////////////////////////////////
 
-#Region ProgramInterface
+#Region SubsystemsLibrary 
 
-// Handler of event OnChange of the contact information field of the form.
-// It is called from connected actions when implementing subsystem "Contact information".
+#Region Interface
+
+// Handler of the OnChange event of a contact information form field.
+// It is called from the attachable actions enabled while embedding the Contact information subsystem.
 //
 // Parameters:
-//     Form             - ManagedForm - Form of the contact information owner.
-//     Item           - FormField        - Form item that contains a contact information presentation.
-//     IsTabularSection - Boolean           - Shows that the item is a part of the form table.
+//     Form             - ManagedForm - contact information owner form.
+//     Item             - FormField   - form item containing contact information presentation.
+//     IsTabularSection - Boolean     - flag specifying that the item is contained in a form table.
 //
 Procedure PresentationOnChange(Form, Item, IsTabularSection = False) Export
-
+	
 	IsTabularSection = IsTabularSection(Item);
 	
 	If IsTabularSection Then
@@ -26,8 +28,8 @@ Procedure PresentationOnChange(Form, Item, IsTabularSection = False) Export
 		FillingData = Form;
 	EndIf;
 	
-	// If it is clearing, then reset the presentation.
-	RowData = GetAdditionalValuesString(Form, Item, IsTabularSection);
+	// Clearing presentation if clearing is required
+	RowData = GetAdditionalValueString(Form, Item, IsTabularSection);
 	If RowData = Undefined Then 
 		Return;
 	EndIf;
@@ -36,33 +38,33 @@ Procedure PresentationOnChange(Form, Item, IsTabularSection = False) Export
 	If IsBlankString(Text) Then
 		FillingData[Item.Name] = "";
 		If IsTabularSection Then
-			FillingData[Item.Name + "FieldsValues"] = "";
+			FillingData[Item.Name + "FieldValues"] = "";
 		EndIf;
 		RowData.Presentation = "";
-		RowData.FieldsValues = Undefined;
+		RowData.FieldValues = Undefined;
 		Return;
 	EndIf;
 	
-	RowData.FieldsValues = ContactInformationManagementServiceServerCall.PresentationXMLContactInformation(Text, RowData.Type);
+	RowData.FieldValues = ContactInformationInternalServerCall.ContactInformationParsingXML(Text, RowData.Kind);
 	RowData.Presentation = Text;
 	
 	If IsTabularSection Then
-		FillingData[Item.Name + "FieldsValues"] = RowData.FieldsValues;
+		FillingData[Item.Name + "FieldValues"] = RowData.FieldValues;
 	EndIf;
 	
 EndProcedure
 
-// Handler of event StartChoice of the contact information form field.
-// It is called from connected actions when implementing subsystem "Contact information".
+// Handler of the StartChoice event of a contact information form field.
+// It is called from the attachable actions enabled while embedding the Contact information subsystem.
 //
 // Parameters:
-//     Form                - ManagedForm - Form of the contact information owner.
-//     Item              - FormField        - Form item that contains a contact information presentation.
-//     Modified   - Boolean           - Set flag of the form modification.
-//     StandardProcessing - Boolean           - Set flag of the standard data processor of the form event.
+//     Form               - ManagedForm - contact information owner form.
+//     Item               - FormField   - form item containing contact information presentation.
+//     Modified           - Boolean     - flag specifying that the form was modified.
+//     StandardProcessing - Boolean     - flag specifying that standard processing is required for form event.
 //
 // Returns:
-//     Undefined
+//     Undefined.
 //
 Function PresentationStartChoice(Form, Item, Modified = True, StandardProcessing = False) Export
 	StandardProcessing = False;
@@ -81,9 +83,9 @@ Function PresentationStartChoice(Form, Item, Modified = True, StandardProcessing
 		FillingData = Form;
 	EndIf;
 	
-	RowData = GetAdditionalValuesString(Form, Item, IsTabularSection);
+	RowData = GetAdditionalValueString(Form, Item, IsTabularSection);
 	
-	// If the field is changed and does not correspond with the attribute, then make them similar.
+	// Setting presentation equal to the attribute if the presentation was modified directly in the form field and no longer matches the attribute
 	If FillingData[Item.Name] <> Item.EditText Then
 		FillingData[Item.Name] = Item.EditText;
 		PresentationOnChange(Form, Item, IsTabularSection);
@@ -92,14 +94,14 @@ Function PresentationStartChoice(Form, Item, Modified = True, StandardProcessing
 	
 	OpenParameters = New Structure;
 	OpenParameters.Insert("ContactInformationKind", RowData.Kind);
-	OpenParameters.Insert("FieldsValues", RowData.FieldsValues);
+	OpenParameters.Insert("FieldValues", RowData.FieldValues);
 	OpenParameters.Insert("Presentation", Item.EditText);
 	
 	If Not IsTabularSection Then
 		OpenParameters.Insert("Comment", RowData.Comment);
 	EndIf;
 	
-	Notification = New NotifyDescription("PresentationStartChoiceEnd", ThisObject, New Structure);
+	Notification = New NotifyDescription("PresentationStartChoiceCompletion", ThisObject, New Structure);
 	Notification.AdditionalParameters.Insert("FillingData",  FillingData);
 	Notification.AdditionalParameters.Insert("IsTabularSection", IsTabularSection);
 	Notification.AdditionalParameters.Insert("RowData",      RowData);
@@ -107,325 +109,280 @@ Function PresentationStartChoice(Form, Item, Modified = True, StandardProcessing
 	Notification.AdditionalParameters.Insert("Result",         Result);
 	Notification.AdditionalParameters.Insert("Form",             Form);
 	
-	OpenContactInformationForm(OpenParameters,, Notification);
+	OpenContactInformationForm(OpenParameters, , , , Notification);
 	
 	Return Undefined;
 EndFunction
 
-// Handler of event Clearing fields of the contact information form.
-// It is called from connected actions when implementing subsystem "Contact information".
+// Handler of the Clearing event for a contact information form field.
+// It is called from the attachable actions enabled while embedding the Contact information subsystem.
 //
 // Parameters:
-//     Form        - ManagedForm - Form of the contact information owner.
-//     AttributeName - String           - Form attribute name that is associated with the contact information presentation.
+//     Form          - ManagedForm - contact information owner form.
+//     AttributeName - String      - name of form attribute used for contact information presentation.
 //
 // Returns:
-//     Undefined
+//     Undefined.
 //
-Function ClearingPresentation(Val Form, Val AttributeName) Export
+Function PresentationClearing(Val Form, Val AttributeName) Export
 	
 	Result = New Structure("AttributeName", AttributeName);
-	FoundString = Form.ContactInformationAdditionalAttributeInfo.FindRows(Result)[0];
-	FoundString.FieldsValues = "";
-	FoundString.Presentation = "";
-	FoundString.Comment   = "";
+	FoundRow = Form.ContactInformationAdditionalAttributeInfo.FindRows(Result)[0];
+	FoundRow.FieldValues = "";
+	FoundRow.Presentation = "";
+	FoundRow.Comment   = "";
 	
 	Form[AttributeName] = "";
 	Form.Modified = True;
 	
-	RefreshFormContactInformation(Form, Result);
+	UpdateFormContactInformation(Form, Result);
 	Return Undefined;
 EndFunction
 
-// Handler of the command related to the contact information (write an email, open the address, etc.)
-// It is called from connected actions when implementing subsystem "Contact information".
+// Handler of contact information-related commands (create an email message, open an address, and so on).
+// It is called from the attachable actions enabled while embedding the Contact information subsystem.
 //
 // Parameters:
-//     Form      - ManagedForm - Form of the contact information owner.
-//     CommandName - String           - Name of the automatically generated action command.
+//     Form        - ManagedForm - contact information owner form.
+//     CommandName - String      - name of automatically generated action command.
 //
 // Returns:
-//     Undefined
+//     Undefined.
 //
-Function LinkCommand(Val Form, Val CommandName) Export
+Function AttachableCommand(Val Form, Val CommandName) Export
 	
 	If CommandName = "ContactInformationAddInputField" Then
-		Notification = New NotifyDescription("AddContactInformationInputFieldEnd", ThisObject, New Structure);
+		Notification = New NotifyDescription("ContactInformationAddInputFieldCompletion", ThisObject, New Structure);
 			
 		Notification.AdditionalParameters.Insert("Form", Form);
-		Form.ShowChooseFromMenu(Notification, Form.ContactInformationParameters.AddedItemsList, Form.Items.ContactInformationAddInputField);
+		Form.ShowChooseFromMenu(Notification, Form.AddedContactInformationItemList, Form.Items.ContactInformationAddInputField);
 		Return Undefined;
 		
 	ElsIf Left(CommandName, 7) = "Command" Then
 		AttributeName = StrReplace(CommandName, "Command", "");
-		CommandContextMenu = False;
+		ContextMenuCommand = False;
 		
 	Else
 		AttributeName = StrReplace(CommandName, "ContextMenu", "");
-		CommandContextMenu = True;
+		ContextMenuCommand = True;
 		
 	EndIf;
 	
 	Result = New Structure("AttributeName", AttributeName);
-	FoundString = Form.ContactInformationAdditionalAttributeInfo.FindRows(Result)[0];
-	ContactInformationType = FoundString.Type;
+	FoundRow = Form.ContactInformationAdditionalAttributeInfo.FindRows(Result)[0];
+	ContactInformationType = FoundRow.Type;
 	
-	If CommandContextMenu Then
-		EnterComment(Form, AttributeName, FoundString, Result);
+	If ContextMenuCommand Then
+		EnterComment(Form, AttributeName, FoundRow, Result);
 		
 	ElsIf ContactInformationType = PredefinedValue("Enum.ContactInformationTypes.Address") Then
-		FillAddress(Form, AttributeName, FoundString, Result);
+		FillAddress(Form, AttributeName, FoundRow, Result);
 		
 	ElsIf ContactInformationType = PredefinedValue("Enum.ContactInformationTypes.EmailAddress") Then
-		MailAddress = Form.Items[AttributeName].EditText;
-		// SB. Begin
-		SmallBusinessClient.CreateEmail("", MailAddress, ContactInformationType, Form.Object);
-		Return Undefined;
-		// SB. End
-		CreateEmail("", MailAddress, ContactInformationType);
+		EmailAddress = Form.Items[AttributeName].EditText;
+		CreateEmailMessage("", EmailAddress, ContactInformationType);
 		
 	ElsIf ContactInformationType = PredefinedValue("Enum.ContactInformationTypes.WebPage") Then
-		RefAddress = Form.Items[AttributeName].EditText;
-		GotoWebLink("", RefAddress, ContactInformationType);
+		ReferenceAddress = Form.Items[AttributeName].EditText;
+		GoToWebLink("", ReferenceAddress, ContactInformationType);
 		
 	EndIf;
 	
 	Return Undefined;
 EndFunction
 
-// Opening an address form of the contact information form.
-// It is called from connected actions when implementing subsystem "Contact information".
+// Opens the address input form for the contact information form.
+// It is called from the attachable actions enabled while embedding the Contact information subsystem.
 //
 // Parameters:
-//     Form     - ManagedForm - Form of the contact information owner.
-//     Result - Arbitrary     - Data passed by the command handler.
+//     Form   - ManagedForm - contact information owner form.
+//     Result - Arbitrary   - data passed by command handler.
 //
-Procedure OpenAddressEntryForm(Form, Result) Export
+Procedure OpenAddressInputForm(Form, Result) Export
 	
 	If Result <> Undefined Then
 		
-		If Result.Property("AddressesFormItem") Then
-			PresentationStartChoice(Form, Form.Items[Result.AddressesFormItem]);
+		If Result.Property("AddressFormItem") Then
+			PresentationStartChoice(Form, Form.Items[Result.AddressFormItem]);
 		EndIf;
 		
 	EndIf;
 	
 EndProcedure
 
-// Handler of a possible update of the contact information form.
-// It is called from connected actions when implementing subsystem "Contact information".
+// Handler of the refresh operation for the contact information form.
+// It is called from the attachable actions enabled while embedding the Contact information subsystem.
 //
 // Parameters:
-//     Form     - ManagedForm - Form of the contact information owner.
-//     Result - Arbitrary     - Data passed by the command handler.
+//     Form   - ManagedForm - contact information owner form.
+//     Result - Arbitrary   - data passed by command handler.
 //
-Procedure ControlUpdateForms(Form, Result) Export
+Procedure FormRefreshControl(Form, Result) Export
 	
-	// Analysis of reverse call of the input address form.
-	OpenAddressEntryForm(Form, Result);
+	// Address input form callback analysis
+	OpenAddressInputForm(Form, Result);
 	
 EndProcedure
 
-// Handler of event ChoiceProcessing of the world country. 
-// Automatically creates a new item in the WorldCountries catalog after selection.
+// Handler of the ChoiceProcessing event for world countries. 
+// Implements functionality for automated creation of WorldCountries catalog item based on user choice.
 //
 // Parameters:
-//     Item              - FormField    - Item that contains a world country being edited.
-//     ValueSelected    - Arbitrary - Selection value.
-//     StandardProcessing - Boolean       - Set flag of the standard data processor of the form event.
+//     Item               - FormField - item containing the world country to be edited.
+//     SelectedValue      - Arbitrary - selected value.
+//     StandardProcessing - Boolean   - flag specifying that standard processing is required for the form event.
 //
-Procedure WorldCountryChoiceProcessing(Item, ValueSelected, StandardProcessing) Export
+Procedure WorldCountryChoiceProcessing(Item, SelectedValue, StandardProcessing) Export
 	If Not StandardProcessing Then 
 		Return;
 	EndIf;
 	
-	TypeOfSelected = TypeOf(ValueSelected);
-	If TypeOfSelected = Type("Array") Then
-		ConversionList = New Map;
-		For IndexOf = 0 To ValueSelected.UBound() Do
-			Data = ValueSelected[IndexOf];
-			If TypeOf(Data) = Type("Structure") AND Data.Property("Code") Then
-				ConversionList.Insert(IndexOf, Data.Code);
+	SelectedValueType = TypeOf(SelectedValue);
+	If SelectedValueType = Type("Array") Then
+		TransformationList = New Map;
+		For Index = 0 To SelectedValue.UBound() Do
+			Data = SelectedValue[Index];
+			If TypeOf(Data) = Type("Structure") And Data.Property("Code") Then
+				TransformationList.Insert(Index, Data.Code);
 			EndIf;
 		EndDo;
 		
-		If ConversionList.Count() > 0 Then
-			ContactInformationManagementServiceServerCall.CollectionOfWorldCountriesAccordingToClassifier(ConversionList);
-			For Each KeyValue In ConversionList Do
-				ValueSelected[KeyValue.Key] = KeyValue.Value;
+		If TransformationList.Count() > 0 Then
+			ContactInformationInternalServerCall.WorldCountryCollectionByClassifier(TransformationList);
+			For Each KeyValue In TransformationList Do
+				SelectedValue[KeyValue.Key] = KeyValue.Value;
 			EndDo;
 		EndIf;
 		
-	ElsIf TypeOfSelected = Type("Structure") AND ValueSelected.Property("Code") Then
-		ValueSelected = ContactInformationManagementServiceServerCall.WorldCountryAccordingToClassifier(ValueSelected.Code);
+	ElsIf SelectedValueType = Type("Structure") And SelectedValue.Property("Code") Then
+		SelectedValue = ContactInformationInternalServerCall.WorldCountriesByClassifier(SelectedValue.Code);
 		
 	EndIf;
 	
 EndProcedure
 
-// Constructor for a structure of parameters to open the contact information form.
+// Constructor used to create a structure with contact information form opening parameters.
 //
 //  Parameters:
-//      ContactInformationKind - CatalogRef.ContactInformationTypes - kind of the
-//  information being edited, Value                - String - serialized value of the contact information fields.
-//      Presentation           - String - optional presentation.
+//      ContactInformationKind - CatalogRef.ContactInformationKinds - contact information kind to be edited.
+//      Value                  - String - serialized value of contact information fields.
+//      Presentation           - String - presentation (optional).
 //
-Function ContactInformationFormParameters(ContactInformationKind, Value, Presentation = Undefined, 
-	Comment = Undefined) Export
-	
-	Return New Structure("ContactInformationKind, FieldsValues, Presentation, Comment",
+Function ContactInformationFormParameters(ContactInformationKind, Value, Presentation = Undefined, Comment = Undefined) Export
+	Return New Structure("ContactInformationKind, FieldValues, Presentation, Comment",
 		ContactInformationKind, Value, Presentation, Comment);
-		
 EndFunction
 
-// Opens a relevant contact information form for editing or read-only.
+// Opens a contact information form for editing or viewing.
 //
 //  Parameters:
-//      Parameters    - Arbitrary - ContactInformationFormParameters function result.
-//      Owner     - Arbitrary - parameter for the form being opened.
-//      Notification   - NotifyDescription - for processing the form closure.
+//      Parameters   - Arbitrary         - result of ContactInformationFormParameters function.
+//      Owner        - Arbitrary         - form parameter.
+//      Uniqueness   - Arbitrary         - form parameter.
+//      Window       - Arbitrary         - form parameter.
+//      Notification - NotifyDescription - used to process form closing.
 //
-//  Return value: required form.
+//  Returns: the requested contact information form.
 //
-Function OpenContactInformationForm(Parameters, Owner = Undefined, Notification = Undefined) Export
-	
+Function OpenContactInformationForm(Parameters, Owner = Undefined, Uniqueness = Undefined, Window = Undefined, Notification = Undefined) Export
 	InformationKind = Parameters.ContactInformationKind;
 	
-	OpenableFormName = ContactInformationManagementClientServerReUse.FormInputNameContactInformation(InformationKind);
-	If OpenableFormName = Undefined Then
-		Raise NStr("en = 'Non-processed address type: """ + InformationKind + """'");
+	NameOfFormToOpen = ContactInformationClientServerCached.ContactInformationInputFormName(InformationKind);
+	If NameOfFormToOpen = Undefined Then
+		Raise NStr("ru = 'Тип адреса не может быть обработан: """ + InformationKind + """'; en = 'Address type cannot be processed: """ + InformationKind + """'");
 	EndIf;
 	
 	If Not Parameters.Property("Title") Then
-		Parameters.Insert("Title", String(ContactInformationManagementServiceServerCall.TypeKindContactInformation(InformationKind)));
+		Parameters.Insert("Title", String(ContactInformationInternalServerCall.ContactInformationKindType(InformationKind)));
 	EndIf;
 	
 	Parameters.Insert("OpenByScenario", True);
 	
-	Return OpenForm(OpenableFormName, Parameters, Owner,,,, Notification);
+	Return OpenForm(NameOfFormToOpen, Parameters, Owner, Uniqueness, Window, , Notification);
 EndFunction
 
-// UseModality
-
-//  Outdated. You shall use OpenContactInformationForm
-//
-//  Modally opens a relevant contact information form for editing or read-only
+// Creates a contact information email.
 //
 //  Parameters:
-//      Parameters    - Arbitrary - ContactInformationFormParameters
-//      function result Owner     - Arbitrary - parameter for
-//      the form being opened Uniqueness - Arbitrary - parameter for
-//      the form being opened Window         - Arbitrary - parameter for the form being opened
+//    FieldValues  - String, Structure, Map, Value list - contact information.
+//    Presentation - String - presentation. Used if unable to extract presentation 
+//                   from FieldValues parameter (Presentation field not available).
+//    ExpectedKind - CatalogRef.ContactInformationKinds, EnumRef.ContactInformationTypes, Structure.
+//                   Used to determine type if it cannot be extracted from FieldValues parameter.
 //
-//  Return value: edited result or Undefined if it is refused to edit
-//
-Function OpenContactInformationFormModally(Parameters, Owner = Undefined, Uniqueness = Undefined, Window = Undefined) Export
+Procedure CreateEmailMessage(Val FieldValues, Val Presentation = "", ExpectedKind = Undefined) Export
 	
-	InformationKind = Parameters.ContactInformationKind;
-	
-	OpenableFormName = ContactInformationManagementClientServerReUse.FormInputNameContactInformation(InformationKind);
-	If OpenableFormName = Undefined Then
-		Raise NStr("en = 'Non-processed address type: """ + InformationKind + """'");
-	EndIf;
-	
-	If Not Parameters.Property("Title") Then
-		Parameters.Insert("Title", String(ContactInformationManagementServiceServerCall.TypeKindContactInformation(InformationKind)));
-	EndIf;
-	
-	Parameters.Insert("OpenByScenario", True);
-	Return OpenFormModal(OpenableFormName, Parameters, Owner);
-	
-EndFunction
-
-// End ModalityUse
-
-// Creates email by contact information.
-//
-//  Parameters:
-//    FieldsValues - String, Structure, Match, ValuesList - contact information.
-//    Presentation - String  - presentation. Used if it is impossible to determine presentation from parameter.
-//                    FieldsValues (there is no "Presentation" field).
-//    ExpectedKind  - CatalogRef.ContactInformationTypes, EnumRef.ContactInformationTypes,
-//                    Structure Used to determine a type if it can not be calculated by field FieldsValues.
-//
-Procedure CreateEmail(Val FieldsValues, Val Presentation = "", ExpectedKind = Undefined) Export
-	
-	ContactInformation = ContactInformationManagementServiceServerCall.CastContactInformationXML(
-		New Structure("FieldsValues, Presentation, ContactInformationKind", FieldsValues, Presentation, ExpectedKind));
-		
+	ContactInformation = ContactInformationInternalServerCall.TransformContactInformationXML(
+		New Structure("FieldValues, Presentation, ContactInformationKind", FieldValues, Presentation, ExpectedKind));
 	InformationType = ContactInformation.ContactInformationType;
+	
 	If InformationType <> PredefinedValue("Enum.ContactInformationTypes.EmailAddress") Then
-		Raise StrReplace(NStr("en='You can not create email by contact information with the type ""%1""';ru='Нельзя создать письмо по контактной информацию с типом ""%1""'"),
+		Raise StrReplace(NStr("ru = 'Нельзя создать письмо по контактной информацию с типом ""%1""'; en = 'Cannot create a contact information email for ""%1"" type'"),
 			"%1", InformationType);
-	EndIf;
+	EndIf;	
 	
-	If FieldsValues = "" AND IsBlankString(Presentation) Then
-		ShowMessageBox(,NStr("en='Enter an email address to send the email.';ru='Для отправки письма необходимо ввести адрес электронной почты.'"));
-		Return;
-	EndIf;
+	XMLData = ContactInformation.XMLData;
 	
-	XMLData = ContactInformation.DataXML;
-	MailAddress = ContactInformationManagementServiceServerCall.RowCompositionContactInformation(XMLData);
-	If TypeOf(MailAddress) <> Type("String") Then
-		Raise NStr("en='Error of the email address obtaining, incorrect type of the contact details';ru='Ошибка получения адреса электронной почты, неверный тип контактной информации'");
+	EmailAddress = ContactInformationInternalServerCall.ContactInformationContentString(XMLData);
+	If TypeOf(EmailAddress) <> Type("String") Then
+		Raise NStr("ru = 'Ошибка получения адреса электронной почты, неверный тип контактной информации'; en = 'Email address retrieval error, invalid contact information type'");
 	EndIf;
 	
 	If CommonUseClient.SubsystemExists("StandardSubsystems.EmailOperations") Then
-		ModuleWorkWithPostalMailClient = CommonUseClient.CommonModule("EmailOperationsClient");
+		EmailOperationsModuleClient = CommonUseClient.CommonModule("EmailOperationsClient");
 		
-		SendingParameters = New Structure("Recipient", MailAddress);
-		ModuleWorkWithPostalMailClient.CreateNewEmail(SendingParameters);
+		SendingParameters = New Structure("Recipient", EmailAddress);
+		EmailOperationsModuleClient.CreateNewEmailMessage(SendingParameters);
 		Return; 
 	EndIf;
 	
-	// No email subsystem, run the system one.
-	Notification = New NotifyDescription("CreateEmailByContactInformationEnd", ThisObject, MailAddress);
-	SuggestionText = NStr("en='To send email, you should install extension for work with files.';ru='Для отправки письма необходимо установить расширение для работы с файлами.'");
-	CommonUseClient.CheckFileOperationsExtensionConnected(Notification, SuggestionText);
-	
+	// No email subsystem, using the platform notification
+	Notification = New NotifyDescription("CreateContactInformationEmailCompletion", ThisObject, EmailAddress);
+	SuggestionText = NStr("ru = 'Для отправки письма необходимо установить расширение для работы с файлами.'; en = 'To be able to send email messages, you need to install the file system extension.'");
+	CommonUseClient.CheckFileSystemExtensionAttached(Notification, SuggestionText);
 EndProcedure
 
-// Opens a reference by contact information.
+// Opens a contact information reference.
 //
 // Parameters:
-//    FieldsValues - String, Structure, Match, ValuesList - contact information.
-//    Presentation - String  - presentation. Used if it is impossible to determine presentation from parameter.
-//                    FieldsValues (there is no "Presentation" field).
-//    ExpectedKind  - CatalogRef.ContactInformationTypes, EnumRef.ContactInformationTypes,
-//                    Structure Used to determine a type if it can not be calculated by field FieldsValues.
+//    FieldValues  - String, Structure, Map, Value list - contact information.
+//    Presentation - String - presentation. Used if unable to extract presentation 
+//                   from FieldValues parameter (Presentation field not available).
+//    ExpectedKind - CatalogRef.ContactInformationKinds, EnumRef.ContactInformationTypes, Structure.
+//                   Used to determine type if it cannot be extracted from FieldValues parameter.
 //
-Procedure GotoWebLink(Val FieldsValues, Val Presentation = "", ExpectedKind = Undefined) Export
+Procedure GoToWebLink(Val FieldValues, Val Presentation = "", ExpectedKind = Undefined) Export
 	
-	ContactInformation = ContactInformationManagementServiceServerCall.CastContactInformationXML(
-		New Structure("FieldsValues, Presentation, ContactInformationKind", FieldsValues, Presentation, ExpectedKind));
+	ContactInformation = ContactInformationInternalServerCall.TransformContactInformationXML(
+		New Structure("FieldValues, Presentation, ContactInformationKind", FieldValues, Presentation, ExpectedKind));
 	InformationType = ContactInformation.ContactInformationType;
 	
 	If InformationType <> PredefinedValue("Enum.ContactInformationTypes.WebPage") Then
-		Raise StrReplace(NStr("en='Cannot open a reference by contact information of type ""%1""';ru='Нельзя открыть ссылку по контактной информации с типом ""%1""'"),
+		Raise StrReplace(NStr("ru = 'Нельзя открыть ссылку по контактной информации с типом ""%1""; en = 'Cannot open a contact information reference for ""%1"" type'"),
 			"%1", InformationType);
 	EndIf;
 		
-	XMLData = ContactInformation.DataXML;
+	XMLData = ContactInformation.XMLData;
 
-	RefAddress = ContactInformationManagementServiceServerCall.RowCompositionContactInformation(XMLData);
-	If TypeOf(RefAddress) <> Type("String") Then
-		Raise NStr("en='Error of the link receiving, invalid type of contact information';ru='Ошибка получения ссылки, неверный тип контактной информации'");
+	ReferenceAddress = ContactInformationInternalServerCall.ContactInformationContentString(XMLData);
+	If TypeOf(ReferenceAddress) <> Type("String") Then
+		Raise NStr("ru = 'Ошибка получения ссылки, неверный тип контактной информации'; en = 'Reference retrieval error, invalid contact information type'");
 	EndIf;
 	
-	If Find(RefAddress, "://") > 0 Then
-		GotoURL(RefAddress);
+	If Find(ReferenceAddress, "://") > 0 Then
+		GoToWebLink(ReferenceAddress);
 	Else
-		GotoURL("http://" + RefAddress);
+		GoToWebLink("http://" + ReferenceAddress);
 	EndIf;
 EndProcedure
 
 #EndRegion
 
-#Region ServiceProgramInterface
+#Region InternalInterface
 
-// End modeless dialogs.
-Procedure PresentationStartChoiceEnd(Val ClosingResult, Val AdditionalParameters) Export
-	If TypeOf(ClosingResult) <> Type("Structure") Then
+// Nonmodal dialog completion
+Procedure PresentationStartChoiceCompletion(Val CloseResult, Val AdditionalParameters) Export
+	If TypeOf(CloseResult) <> Type("Structure") Then
 		Return;
 	EndIf;
 	
@@ -435,104 +392,113 @@ Procedure PresentationStartChoiceEnd(Val ClosingResult, Val AdditionalParameters
 	Item          = AdditionalParameters.Item;
 	Form            = AdditionalParameters.Form;
 	
-	PresentationText = ClosingResult.Presentation;
+	PresentationText = CloseResult.Presentation;
 	
 	If AdditionalParameters.IsTabularSection Then
-		FillingData[Item.Name + "FieldsValues"] = ClosingResult.ContactInformation;
+		FillingData[Item.Name + "FieldValues"] = CloseResult.ContactInformation;
 		
 	Else
-		If IsBlankString(RowData.Comment) AND Not IsBlankString(ClosingResult.Comment) Then
-			Result.Insert("IsAddingComment", True);
+		If IsBlankString(RowData.Comment) And Not IsBlankString(CloseResult.Comment) Then
+			Result.Insert("IsCommentAddition", True);
 			
-		ElsIf Not IsBlankString(RowData.Comment) AND IsBlankString(ClosingResult.Comment) Then
-			Result.Insert("IsAddingComment", False);
+		ElsIf Not IsBlankString(RowData.Comment) And IsBlankString(CloseResult.Comment) Then
+			Result.Insert("IsCommentAddition", False);
 			
 		Else
 			If Not IsBlankString(RowData.Comment) Then
-				Form.Items["Comment" + Item.Name].Title = ClosingResult.Comment;
+				Form.Items["Comment" + Item.Name].Title = CloseResult.Comment;
 			EndIf;
 			
 		EndIf;
 		
 		RowData.Presentation = PresentationText;
-		RowData.FieldsValues = ClosingResult.ContactInformation;
-		RowData.Comment   = ClosingResult.Comment;
+		RowData.FieldValues = CloseResult.ContactInformation;
+		RowData.Comment   = CloseResult.Comment;
 	EndIf;
 	
 	FillingData[Item.Name] = PresentationText;
 	
 	Form.Modified = True;
-	RefreshFormContactInformation(Form, Result);
+	UpdateFormContactInformation(Form, Result);
 EndProcedure
 
-// End modeless dialogs.
-Procedure AddContactInformationInputFieldEnd(Val SelectedItem, Val AdditionalParameters) Export
+// Nonmodal dialog completion
+Procedure ContactInformationAddInputFieldCompletion(Val SelectedItem, Val AdditionalParameters) Export
 	If SelectedItem = Undefined Then
-		// Refusal to select
+		// Canceling selection
 		Return;
 	EndIf;
 	
-	Result = New Structure("AddedKind", SelectedItem.Value);
+	Result = New Structure("KindToAdd", SelectedItem.Value);
 	
-	RefreshFormContactInformation(AdditionalParameters.Form, Result);
+	UpdateFormContactInformation(AdditionalParameters.Form, Result);
 EndProcedure
 
-//  The StartChoice event handler for a street.
+//  StartChoice event handler for streets.
 //
 //  Parameters:
-//      Owner                       - Arbitrary - form item that is calling.
-//      SettlementIdentifier - UUID - restriction by a locality.
-//      CurrentValue                - UUID, Row - current value - either
-//                                       a classifier code or a text.
-//      AdditionalParameters        - Structure - additional parameter structure.
+//      Item                     - Arbitrary      - form item used to call the handler.
+//      SettlementClassifierCode - Number         - settlement restriction.
+//      CurrentValue             - Number, String - current value (classifier code, or text).
+//      FormParameters           - Structure      - additional parameter structure for the item picking form (optional).
 //
-Procedure StartChoiceStreet(Owner, SettlementIdentifier, CurrentValue, AdditionalParameters) Export
+Procedure StreetStartChoice(Item, SettlementClassifierCode, CurrentValue, FormParameters = Undefined) Export
+	Option = ContactInformationClientServer.UsedAddressClassifier();
 	
-	If Not CommonUseClient.SubsystemExists("StandardSubsystems.AddressClassifier") Then
-		Return;
+	If Option = "AC" Then
+		StreetStartChoiceAddressClassifier(Item, SettlementClassifierCode, CurrentValue, FormParameters);
 	EndIf;
 	
-	HideObsoleteAddresses = Undefined;
-	AdditionalParameters.Property("HideObsoleteAddresses", HideObsoleteAddresses);
-	If HideObsoleteAddresses = Undefined Then
-		HideObsoleteAddresses = False;
-	EndIf;
-	
-	Parameters = New Structure;
-	Parameters.Insert("Parent", SettlementIdentifier);
-	Parameters.Insert("PresentationStreet", CurrentValue);
-	Parameters.Insert("Level",  7);
-	Parameters.Insert("HideObsoleteAddresses",        HideObsoleteAddresses);
-	
-	OpenForm("DataProcessor.InputContactInformation.Form.SelectStreet", Parameters, Owner, 
-		,,,, FormWindowOpeningMode.LockOwnerWindow);
+	// No classifier subsystem
 EndProcedure
 
-//  Handler of event StartChoice for the address item (RF territorial entity, district, city, etc.)
+//  StartChoice event handler for an address item (state, county, city, and so on).
 //
 //  Parameters:
-//      Item        - Arbitrary - form item that is calling.
-//      CodePartsAddress - Number - identifier of the processed address part, it depends on the classifier.
-//      PartsAddresses    - Arbitrary - values for other address parts, depends on the classifier.
-//      FormParameters - Structure - optional  additional parameter structure for the selection form.
+//      Item            - Arbitrary - form item used to call the handler.
+//      AddressPartCode - Number    - ID of the processed address part, may vary depending on the classifier.
+//      AddressParts    - Arbitrary - values of other address parts, may vary depending on the classifier.
+//      FormParameters  - Structure - additional parameter structure for the item picking form (optional).
 //
-Procedure StartChoiceItemAddress(Item, CodePartsAddress, PartsAddresses, FormParameters = Undefined) Export
+Procedure AddressItemStartChoice(Item, AddressPartCode, AddressParts, FormParameters = Undefined) Export
+	Option = ContactInformationClientServer.UsedAddressClassifier();
 	
-	If CommonUseClient.SubsystemExists("StandardSubsystems.AddressClassifier") Then
-		StartChoiceItemAddressesCLADR(Item, CodePartsAddress, PartsAddresses, FormParameters);
+	If Option = "AC" Then
+		AddressItemStartChoiceAddressClassifier(Item, AddressPartCode, AddressParts, FormParameters);
 	EndIf;
 	
+	// No classifier subsystem
 EndProcedure
 
-//  Offers to export the address classifier.
+//  Returns the full name of a settlement. 
+//  Settlement is a synthetic field storing any address unit greater than street.
 //
 //  Parameters:
-//      Text  - String        - Additional offer text.
-//      State - Number, String - Code or state name for import.
+//      AddressParts - Arbitrary - values of address parts, may vary depending on the classifier.
 //
-Procedure OfferExportClassifier(Val Text = "", Val State = Undefined) Export
+Function SettlementNameByAddressParts(AddressParts) Export
+	Option = ContactInformationClientServer.UsedAddressClassifier();
 	
-	If Not CommonUseClient.SubsystemExists("StandardSubsystems.AddressClassifier") Then
+	If Option = "AC" Then
+		Return SettlementNameByAddressPartsAddressClassifier(AddressParts)
+	EndIf;
+	
+	// No classifier subsystem
+	Return "";
+EndFunction
+
+//  Suggests importing the address classifier.
+//
+//  Parameters:
+//      Text  - String         - Additional suggestion text.
+//      State - Number, String - Code or name of the state to be imported.
+//
+Procedure ClassifierImportSuggestion(Val Text = "", Val State = Undefined) Export
+	
+	Option = ContactInformationClientServer.UsedAddressClassifier();
+	
+	If Option <> "AC" Then
+		// No classifier subsystem
 		Return;
 	EndIf;
 	
@@ -543,16 +509,18 @@ Procedure OfferExportClassifier(Val Text = "", Val State = Undefined) Export
 		ImportParameters.Insert("StateCodeForImport", State);
 		
 	ElsIf StateParameterType = Type("String") Then
-		ImportParameters.Insert("StateNameForImporting", State);
+		ImportParameters.Insert("StateNameForImport", State);
+		
 	EndIf;
 	
-	Notification = New NotifyDescription("OfferExportClassifierEnd", ThisObject, ImportParameters);
-	OpenForm("DataProcessor.InputContactInformation.Form.AddressClassifierExport", ImportParameters, ThisObject,,,, Notification, FormWindowOpeningMode.LockOwnerWindow);
-	
+	TitleText = NStr("ru = 'Подтверждение'; en = 'Confirmation'");
+	QuestionText   = TrimAll(Text + Chars.LF + NStr("ru = 'Загрузить адресный классификатор?'; en = 'Import address classifier now?'") );
+
+	Notification = New NotifyDescription("ClassifierImportSuggestionCompletion", ThisObject, ImportParameters);
+	ShowQueryBox(Notification, QuestionText, QuestionDialogMode.YesNo,,,TitleText);
 EndProcedure
 
-Procedure OfferExportClassifierEnd(Val QuestionResult, Val AdditionalParameters) Export
-	
+Procedure ClassifierImportSuggestionCompletion(Val QuestionResult, Val AdditionalParameters) Export
 	If QuestionResult <> DialogReturnCode.Yes Then
 		Return;
 	EndIf;
@@ -564,49 +532,61 @@ EndProcedure
 //
 Procedure ImportAddressClassifier(Val AdditionalParameters = Undefined) Export
 	
-	If CommonUseClient.SubsystemExists("StandardSubsystems.AddressClassifier") Then
-		ModuleAddressClassifierClient = CommonUseClient.CommonModule("AddressClassifierClient");
-		ModuleAddressClassifierClient.ImportAddressClassifier(AdditionalParameters);
+	Option = ContactInformationClientServer.UsedAddressClassifier();
+	
+	If Option = "AC" Then
+		AddressClassifierModule = AddressClassifierClientModule();
+		AddressClassifierModule.ImportAddressClassifier(AdditionalParameters);
 	EndIf;
 	
+	// No classifier subsystem
 EndProcedure
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////
 
-// End of a modal dialog of an email creation.
-Procedure CreateEmailByContactInformationEnd(Action, MailAddress) Export
+// Completes the modal dialog for email creation.
+Procedure CreateContactInformationEmailCompletion(Action, EmailAddress) Export
 	
-	NotifyDescription = New NotifyDescription("CreateEmailByContactInformationAfterLaunchApplications", ThisObject);
-	BeginRunningApplication(NotifyDescription, "mailto:" + MailAddress);
+	RunApp("mailto:" + EmailAddress);
 	
 EndProcedure
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////
-// CLADR implementation
+// Address classifier implementation.
 //
 
-Function ClientModuleCLADR()
+Function AddressClassifierClientModule()
 	
 	Return CommonUseClient.CommonModule("AddressClassifierClient");
 
 EndFunction
 
-Procedure StartChoiceItemAddressesCLADR(Item, CodePartsAddress, PartsAddresses, Parameters = Undefined)
+Procedure StreetStartChoiceAddressClassifier(Item, SettlementClassifierCode, CurrentValue, Parameters = Undefined)
+	FormParameters = ?(Parameters = Undefined, New Structure, Parameters);
 	
-	CodeAttribute = Upper(CodePartsAddress);
-	If CodeAttribute = "REGION" Then
+	FormParameters.Insert("Level", 5);
+	FormParameters.Insert("Street",   String(CurrentValue));
+	
+	AddressClassifierModule = AddressClassifierClientModule();
+	AddressClassifierModule.OpenACSelectionForm(FormParameters, Item);
+EndProcedure
+
+Procedure AddressItemStartChoiceAddressClassifier(Item, AddressPartCode, AddressParts, Parameters = Undefined)
+	
+	AttributeCode = Upper(AddressPartCode);
+	If AttributeCode = "STATE" Then
 		Level = 1;
 		
-	ElsIf CodeAttribute = "district" Then
+	ElsIf AttributeCode = "COUNTY" Then
 		Level = 2;
 		
-	ElsIf CodeAttribute = "CITY" Then
+	ElsIf AttributeCode = "CITY" Then
 		Level = 3;
 		
-	ElsIf CodeAttribute = "Settlement" Then
+	ElsIf AttributeCode = "SETTLEMENT" Then
 		Level = 4;
 		
-	ElsIf CodeAttribute = "Street" Then
+	ElsIf AttributeCode = "STREET" Then
 		Level = 5;
 		
 	Else
@@ -616,58 +596,75 @@ Procedure StartChoiceItemAddressesCLADR(Item, CodePartsAddress, PartsAddresses, 
 	
 	FormParameters = ?(Parameters = Undefined, New Structure, Parameters);
 	
-	FormParameters.Insert("State", PartsAddresses.State.Value);
-	If PartsAddresses.State.Property("ClassifierCode") Then
-		FormParameters.Insert("ClassifierStateCode", PartsAddresses.State.ClassifierCode);
+	FormParameters.Insert("State", AddressParts.State.Value);
+	If AddressParts.State.Property("ClassifierCode") Then
+		FormParameters.Insert("StateClassifierCode", AddressParts.State.ClassifierCode);
 	EndIf;
 	
-	FormParameters.Insert("Region", PartsAddresses.Region.Value);
-	If PartsAddresses.Region.Property("ClassifierCode") Then
-		FormParameters.Insert("RegionCodeClassifier", PartsAddresses.Region.ClassifierCode);
+	FormParameters.Insert("County", AddressParts.County.Value);
+	If AddressParts.County.Property("ClassifierCode") Then
+		FormParameters.Insert("CountyClassifierCode", AddressParts.County.ClassifierCode);
 	EndIf;
 	
-	FormParameters.Insert("City", PartsAddresses.City.Value);
-	If PartsAddresses.City.Property("ClassifierCode") Then
-		FormParameters.Insert("CityCodeClassifier", PartsAddresses.City.ClassifierCode);
+	FormParameters.Insert("City", AddressParts.City.Value);
+	If AddressParts.City.Property("ClassifierCode") Then
+		FormParameters.Insert("CityClassifierCode", AddressParts.City.ClassifierCode);
 	EndIf;
 	
-	FormParameters.Insert("Settlement", PartsAddresses.Settlement.Value);
-	If PartsAddresses.Settlement.Property("ClassifierCode") Then
-		FormParameters.Insert("SettlementCodeClassifier", PartsAddresses.Settlement.ClassifierCode);
+	FormParameters.Insert("Settlement", AddressParts.Settlement.Value);
+	If AddressParts.Settlement.Property("ClassifierCode") Then
+		FormParameters.Insert("SettlementClassifierCode", AddressParts.Settlement.ClassifierCode);
 	EndIf;
 	
 	FormParameters.Insert("Level", Level);
 	
-	ModuleCLADR = ClientModuleCLADR();
-	ModuleCLADR.OpenChoiceFormCLADR(FormParameters, Item);
+	AddressClassifierModule = AddressClassifierClientModule();
+	AddressClassifierModule.OpenACSelectionForm(FormParameters, Item);
 EndProcedure
+
+Function SettlementNameByAddressPartsAddressClassifier(AddressParts)
+	Return ContactInformationClientServer.FullDescr(
+		ValueOrDescription(AddressParts.Settlement), "", 
+		ValueOrDescription(AddressParts.City), "", 
+		ValueOrDescription(AddressParts.County), "", 
+		ValueOrDescription(AddressParts.State), "", );
+EndFunction
+
+////////////////////////////////////////////////////////////////////////////////////////////////////
+
+Function ValueOrDescription(AddressPart)
+	If IsBlankString(AddressPart.Value) Then
+		Return TrimAll("" + AddressPart.Description + " " + AddressPart.Abbr);
+	EndIf;
+	Return AddressPart.Value;
+EndFunction
 
 #EndRegion
 
-#Region ServiceProceduresAndFunctions
+#Region InternalProceduresAndFunctions
 
-// Returns a string of additional values by an attribute name.
+// Returns a string of additional values by attribute name.
 //
 // Parameters:
-//    Form   - ManagedForm - passed form.
-//    Item - FormDataStructureWithCollection - form data.
+//    Form - ManagedForm                    - passed form.
+//    Item - FormDataStructureAndCollection - form data.
 //
 // Returns:
-//    CollectionRow - found data.
-//    Undefined    - when there is no data.
+//    CollectionRow - data found.
+//    Undefined     - if no data is available.
 //
-Function GetAdditionalValuesString(Form, Item, IsTabularSection = False)
+Function GetAdditionalValueString(Form, Item, IsTabularSection = False)
 	
 	Filter = New Structure("AttributeName", Item.Name);
 	Rows = Form.ContactInformationAdditionalAttributeInfo.FindRows(Filter);
 	RowData = ?(Rows.Count() = 0, Undefined, Rows[0]);
 	
-	If IsTabularSection AND RowData <> Undefined Then
+	If IsTabularSection And RowData <> Undefined Then
 		
-		PathToRow = Form.Items[Form.CurrentItem.Name].CurrentData;
+		PathToString = Form.Items[Form.CurrentItem.Name].CurrentData;
 		
-		RowData.Presentation = PathToRow[Item.Name];
-		RowData.FieldsValues = PathToRow[Item.Name + "FieldsValues"];
+		RowData.Presentation = PathToString[Item.Name];
+		RowData.FieldValues = PathToString[Item.Name + "FieldValues"];
 		
 	EndIf;
 	
@@ -675,123 +672,121 @@ Function GetAdditionalValuesString(Form, Item, IsTabularSection = False)
 	
 EndFunction
 
-// Creates a string presentation of the phone number.
+// Generates a string presentation of a phone number.
 //
 // Parameters:
-//    CountryCode     - String - country code.
-//    CityCode     - String - city code.
+//    CountryCode - String - country code.
+//    AreaCode    - String - area code.
 //    PhoneNumber - String - phone number.
-//    Supplementary    - String - extension.
-//    Comment   - String - comment.
+//    Extension   - String - extension.
+//    Comment     - String - comment.
 //
 // Returns:
-//    String - phone presentation.
+//    String - phone number presentation.
 //
-Function GeneratePhonePresentation(CountryCode, CityCode, PhoneNumber, Supplementary, Comment) Export
+Function GeneratePhonePresentation(CountryCode, AreaCode, PhoneNumber, Extension, Comment) Export
 	
 	Presentation = ContactInformationManagementClientServer.GeneratePhonePresentation(
-	CountryCode, CityCode, PhoneNumber, Supplementary, Comment);
+	CountryCode, AreaCode, PhoneNumber, Extension, Comment);
 	
 	Return Presentation;
 	
 EndFunction
 
-// Fills out an address with a different address.
-Procedure FillAddress(Val Form, Val AttributeName, Val FoundString, Val Result)
+// Fills an address with another address.
+Procedure FillAddress(Val Form, Val AttributeName, Val FoundRow, Val Result)
 	
-	// All rows - addresses,
+	// All strings are addresses
 	AllRows = Form.ContactInformationAdditionalAttributeInfo;
-	FoundStrings = AllRows.FindRows( New Structure("Type, ThisAttributeOfTabularSection", FoundString.Type, False) );
-	FoundStrings.Delete( FoundStrings.Find(FoundString) );
+	FoundRows = AllRows.FindRows( New Structure("Type, IsTabularSectionAttribute", FoundRow.Type, False) );
+	FoundRows.Delete( FoundRows.Find(FoundRow) );
 	
-	FieldsForAnalysisValues = New Array;
-	For Each Address In FoundStrings Do
-		FieldsForAnalysisValues.Add(New Structure("Identifier, Presentation, FieldsValue, AddressKind",
-			Address.GetID(), Address.Presentation, Address.FieldsValues, Address.Kind));
+	FieldValuesForAnalysis = New Array;
+	For Each Address In FoundRows Do
+		FieldValuesForAnalysis.Add(New Structure("ID, Presentation, FieldValues, AddressKind",
+			Address.GetID(), Address.Presentation, Address.FieldValues, Address.Kind));
 	EndDo;
 	
-	AddressesForFilling = ContactInformationManagementServiceServerCall.AddressesAvailableForCopying(FieldsForAnalysisValues, FoundString.Kind);
+	AddressesForFilling = ContactInformationInternalServerCall.AddressesAvailableForCopying(FieldValuesForAnalysis, FoundRow.Kind);
 		
 	If AddressesForFilling.Count() = 0 Then
-		ShowMessageBox(, NStr("en='Not to type an address several times, you can copy and paste the typed value into the field.';ru='Для того чтобы не вводить один и тот же адрес несколько раз, можно скопировать в это поле значение, ранее введенное в соседнем поле.'")
-			,, NStr("en='Copying an address';ru='Копирование адреса'"));
 		Return;
 	EndIf;
 	
-	Notification = New NotifyDescription("FillAddressEnd", ThisObject, New Structure);
+	Notification = New NotifyDescription("FillAddressCompletion", ThisObject, New Structure);
 	Notification.AdditionalParameters.Insert("Form", Form);
-	Notification.AdditionalParameters.Insert("FoundString", FoundString);
+	Notification.AdditionalParameters.Insert("FoundRow", FoundRow);
 	Notification.AdditionalParameters.Insert("AttributeName",    AttributeName);
 	Notification.AdditionalParameters.Insert("Result",       Result);
 	
 	Form.ShowChooseFromMenu(Notification, AddressesForFilling, Form.Items["Command" + AttributeName]);
 EndProcedure
 
-// End a modeless dialog.
-Procedure FillAddressEnd(Val SelectedItem, Val AdditionalParameters) Export
+// Completes a nonmodal dialog.
+Procedure FillAddressCompletion(Val SelectedItem, Val AdditionalParameters) Export
 	If SelectedItem = Undefined Then
 		Return;
 	EndIf;
 	
 	AllRows = AdditionalParameters.Form.ContactInformationAdditionalAttributeInfo;
-	RowSource = AllRows.FindByID(SelectedItem.Value);
-	If RowSource = Undefined Then
+	SourceRow = AllRows.FindByID(SelectedItem.Value);
+	If SourceRow = Undefined Then
 		Return;
 	EndIf;
 		
-	AdditionalParameters.FoundString.FieldsValues = RowSource.FieldsValues;
-	AdditionalParameters.FoundString.Presentation = RowSource.Presentation;
-	AdditionalParameters.FoundString.Comment   = RowSource.Comment;
+	AdditionalParameters.FoundRow.FieldValues = SourceRow.FieldValues;
+	AdditionalParameters.FoundRow.Presentation = SourceRow.Presentation;
+	AdditionalParameters.FoundRow.Comment   = SourceRow.Comment;
 		
-	AdditionalParameters.Form[AdditionalParameters.AttributeName] = RowSource.Presentation;
+	AdditionalParameters.Form[AdditionalParameters.AttributeName] = SourceRow.Presentation;
 		
 	AdditionalParameters.Form.Modified = True;
-	RefreshFormContactInformation(AdditionalParameters.Form, AdditionalParameters.Result);
+	UpdateFormContactInformation(AdditionalParameters.Form, AdditionalParameters.Result);
 
 EndProcedure
 
-// Enter a comment from the context menu.
-Procedure EnterComment(Val Form, Val AttributeName, Val FoundString, Val Result)
-	Comment = FoundString.Comment;
+// Processes entering a comment using the context menu.
+Procedure EnterComment(Val Form, Val AttributeName, Val FoundRow, Val Result)
+	Comment = FoundRow.Comment;
 	
-	Notification = New NotifyDescription("EnterCommentEnd", ThisObject, New Structure);
+	Notification = New NotifyDescription("EnterCommentCompletion", ThisObject, New Structure);
 	Notification.AdditionalParameters.Insert("Form", Form);
-	Notification.AdditionalParameters.Insert("AttributeNameComment", "Comment" + AttributeName);
-	Notification.AdditionalParameters.Insert("FoundString", FoundString);
+	Notification.AdditionalParameters.Insert("CommentAttributeName", "Comment" + AttributeName);
+	Notification.AdditionalParameters.Insert("FoundRow", FoundRow);
 	Notification.AdditionalParameters.Insert("PreviousComment", Comment);
 	Notification.AdditionalParameters.Insert("Result", Result);
 	
 	CommonUseClient.ShowMultilineTextEditingForm(Notification, Comment, 
-		NStr("en='Comment';ru='Примечание'"));
+		NStr("ru = 'Комментарий'; en = 'Comment'"));
 EndProcedure
 
-// End a modeless dialog.
-Procedure EnterCommentEnd(Val Comment, Val AdditionalParameters) Export
+// Completes a nonmodal dialog.
+Procedure EnterCommentCompletion(Val Comment, Val AdditionalParameters) Export
 	If Comment = Undefined Or Comment = AdditionalParameters.PreviousComment Then
-		// Refuse to enter or no changes.
+		// Input canceled, or no changes
 		Return;
 	EndIf;
 	
 	CommentWasEmpty  = IsBlankString(AdditionalParameters.PreviousComment);
-	CommentIsEmpty = IsBlankString(Comment);
+	CommentBecameEmpty = IsBlankString(Comment);
 	
-	AdditionalParameters.FoundString.Comment = Comment;
+	AdditionalParameters.FoundRow.Comment = Comment;
 	
-	If CommentWasEmpty AND Not CommentIsEmpty Then
-		AdditionalParameters.Result.Insert("IsAddingComment", True);
-	ElsIf Not CommentWasEmpty AND CommentIsEmpty Then
-		AdditionalParameters.Result.Insert("IsAddingComment", False);
+	If CommentWasEmpty And Not CommentBecameEmpty Then
+		AdditionalParameters.Result.Insert("IsCommentAddition", True);
+	ElsIf Not CommentWasEmpty And CommentBecameEmpty Then
+		AdditionalParameters.Result.Insert("IsCommentAddition", False);
 	Else
-		Item = AdditionalParameters.Form.Items[AdditionalParameters.AttributeNameComment];
+		Item = AdditionalParameters.Form.Items[AdditionalParameters.CommentAttributeName];
 		Item.Title = Comment;
 	EndIf;
 	
 	AdditionalParameters.Form.Modified = True;
-	RefreshFormContactInformation(AdditionalParameters.Form, AdditionalParameters.Result)
+	UpdateFormContactInformation(AdditionalParameters.Form, AdditionalParameters.Result)
 EndProcedure
 
-// Context call
-Procedure RefreshFormContactInformation(Form, Result)
+// Context call.
+Procedure UpdateFormContactInformation(Form, Result)
 
 	Form.RefreshContactInformation(Result);
 	
@@ -816,6 +811,26 @@ Function IsTabularSection(Item)
 EndFunction
 
 ////////////////////////////////////////////////////////////////////////////////
+// Handlers of conditional calls of other subsystems.
+
+// Opens the address classifier import form.
+//
+Procedure OnAddressClassifierImport() Export
+	
+	If CommonUseClient.SubsystemExists("StandardSubsystems.AddressClassifier") Then
+		AddressClassifierClientModule = CommonUseClient.CommonModule("AddressClassifierClient");
+		AddressClassifierClientModule.ImportAddressClassifier();
+	EndIf;
+	
+EndProcedure
+
+#EndRegion
+
+#EndRegion
+
+#Region SmallBusiness
+	
+////////////////////////////////////////////////////////////////////////////////
 // Handlers of the conditional calls into other subsystems.
 
 // Opens an import form of the address classifier.
@@ -832,5 +847,261 @@ EndProcedure
 Procedure CreateEmailByContactInformationAfterLaunchApplications(ReturnCode, AdditionalParameters) Export
 	// Action is not required
 EndProcedure
+
+Function URLEncode(String) 
+	Result = "";
+	CharSet = "0123456789ABCDEF";
+	For CharNumber = 1 To StrLen(String) Do
+		CharCode = CharCode(String, CharNumber);
+		Char = Mid(String, CharNumber, 1);
+		
+		// skip A..Z, a..z, 0..9
+		If Find("ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789", Char) > 0 Then // chars -_.!~*\() encode as unsafe  
+			Result = Result + Char;
+			Continue;
+		EndIf;
+		
+		If Char = " " Then
+			Result = Result + "+";
+			Continue;
+		EndIf;
+		
+		If CharCode <= 127 Then // 0x007F
+			Result = Result + BaytPresentation(CharCode);
+		ElsIf CharCode <= 2047 Then // 0x07FF 
+			Result = Result 
+					  + BaytPresentation(
+					  					   BinaryArrayToNumber(
+																BitwiseOR(
+																			 NumberToBinaryArray(192,8),
+																			 NumberToBinaryArray(Int(CharCode / Pow(2,6)),8)))); // 0xc0 | (ch >> 6)
+			Result = Result 
+					  + BaytPresentation(
+					  					   BinaryArrayToNumber(
+										   						BitwiseOR(
+																			 NumberToBinaryArray(128,8),
+																			 BitwiseAnd(
+																			 			NumberToBinaryArray(CharCode,8),
+																						NumberToBinaryArray(63,8)))));  //0x80 | (ch & 0x3F)
+		Else  // 0x7FF < ch <= 0xFFFF
+			Result = Result 
+					  + BaytPresentation	(
+					  						 BinaryArrayToNumber(
+																  BitwiseOR(
+																			   NumberToBinaryArray(224,8), 
+																			   NumberToBinaryArray(Int(CharCode / Pow(2,12)),8)))); // 0xe0 | (ch >> 12)
+											
+			Result = Result 
+					  + BaytPresentation(
+					  					   BinaryArrayToNumber(
+										   						BitwiseOR(
+																			 NumberToBinaryArray(128,8),
+																			 BitwiseAnd(
+																			 			NumberToBinaryArray(Int(CharCode / Pow(2,6)),8),
+																						NumberToBinaryArray(63,8)))));  //0x80 | ((ch >> 6) & 0x3F)
+											
+			Result = Result 
+					  + BaytPresentation(
+					  					   BinaryArrayToNumber(
+										   						BitwiseOR(
+																			 NumberToBinaryArray(128,8),
+																			 BitwiseAnd(
+																			 			NumberToBinaryArray(CharCode,8),
+																						NumberToBinaryArray(63,8)))));  //0x80 | (ch & 0x3F)
+								
+		EndIf;
+	EndDo;
+	Return Result;
+EndFunction
+
+Function BaytPresentation(Val Bayt)
+	Result = "";
+	CharString = "0123456789ABCDEF";
+	For Counter = 1 To 2 Do
+		Result = Mid(CharString, Bayt % 16 + 1, 1) + Result;
+		Bayt = Int(Bayt / 16);
+	EndDo;
+	Return "%" + Result;
+EndFunction
+
+Function NumberToBinaryArray(Val Number, Val AllRanks = 32)
+	Result = New Array;
+	CurrentRank = 0;
+	While CurrentRank < AllRanks Do
+		CurrentRank = CurrentRank + 1;
+		Result.Add(Boolean(Number % 2));
+		Number = Int(Number / 2);
+	EndDo;
+	Return Result;
+EndFunction
+
+Function BinaryArrayToNumber(Array)
+	Result = 0;
+	For RankNumber = -(Array.Count()-1) To 0 Do
+		Result = Result * 2 + Number(Array[-RankNumber]);
+	EndDo;
+	Return Result;
+EndFunction
+
+Function BitwiseAnd(BinaryArray1, BinaryArray2)
+	Result = New Array;
+	For Index = 0 To BinaryArray1.Count()-1 Do
+		Result.Add(BinaryArray1[Index] And BinaryArray2[Index]);
+	EndDo;	
+	Return Result;
+EndFunction
+
+Function BitwiseOR(BinaryArray1, BinaryArray2)
+	Result = New Array;
+	For Index = 0 To BinaryArray1.Count()-1 Do
+		Result.Add(BinaryArray1[Index] Or BinaryArray2[Index]);
+	EndDo;	
+	Return Result;
+EndFunction
+
+// UseModality
+
+//  Outdated. You shall use OpenContactInformationForm
+//
+//  Modally opens a relevant contact information form for editing or read-only
+//
+//  Parameters:
+//      Parameters    - Arbitrary - ContactInformationFormParameters
+//      function result Owner     - Arbitrary - parameter for
+//      the form being opened Uniqueness - Arbitrary - parameter for
+//      the form being opened Window         - Arbitrary - parameter for the form being opened
+//
+//  Return value: edited result or Undefined if it is refused to edit
+//
+Function OpenContactInformationFormModally(Parameters, Owner = Undefined, Uniqueness = Undefined, Window = Undefined) Export
+	
+	InformationKind = Parameters.ContactInformationKind;
+	
+	OpenableFormName = ContactInformationManagementClientServerReUse.FormInputNameContactInformation(InformationKind);
+	If OpenableFormName = Undefined Then
+		Raise NStr("ru = 'Необработанный тип адреса: """ + InformationKind + """'; en = 'Non-processed address type: """ + InformationKind + """'");
+	EndIf;
+	
+	If Not Parameters.Property("Title") Then
+		Parameters.Insert("Title", String(ContactInformationManagementServiceServerCall.TypeKindContactInformation(InformationKind)));
+	EndIf;
+	
+	Parameters.Insert("OpenByScenario", True);
+	Return OpenFormModal(OpenableFormName, Parameters, Owner);
+	
+EndFunction
+
+// End ModalityUse
+
+// It shows the address in the browser on maps Google.
+//
+// Parameters:
+//  Address			 - String - Text of the address.
+//  MapServiceName	 - String - Name mapping service in which you need to show address: GoogleMaps.
+//
+Procedure ShowAddressOnMap(Address, MapServiceName) Export
+	
+	AddressCoded = URLEncode(Address);
+	
+	LaunchString = "https://maps.google.ru/?q=" + AddressCoded;
+	
+	GotoURL(LaunchString);
+	
+EndProcedure
+
+#Region ServiceInterface
+
+Procedure AfterLaunchApplication(SelectedItem, Parameters) Export
+	// Stub procedure, because for BeginRunningApplication requires a notification handler.
+EndProcedure
+
+#EndRegion
+
+#Region ServiceProceduresAndFunctions
+
+Procedure AfterSelectionFromMenuSkype(SelectedItem, Parameters) Export
+	
+	If SelectedItem = Undefined Then
+		Return;
+	EndIf;
+	
+	#If Not WebClient Then
+		If IsBlankString(TelephonySoftwareIsInstalled("skype")) Then
+			ShowMessageBox(Undefined, NStr("ru = 'Для совершения звонка по Skype требуется установить программу.'; en = 'To make a call on Skype is required to install the program.'"));
+			Return;
+		EndIf;
+	#EndIf
+	
+	LaunchString = "skype:" + Parameters.LoginSkype;
+	If SelectedItem.Value = "Call" Then
+		LaunchString = LaunchString + "?call";
+	ElsIf SelectedItem.Value = "StartChat" Then
+		LaunchString = LaunchString + "?chat";
+	Else
+		LaunchString = LaunchString + "?userinfo";
+	EndIf;
+	
+	Notify = New NotifyDescription("LaunchSkype", ThisObject, LaunchString);
+	MessageText = NStr("ru = 'Для запуска Skype необходимо установить расширение работы с файлами.'; en = 'To start Skype, you must install the extension work with files.'");
+	CommonUseClient.ShowFileSystemExtensionInstallationQuestion(Notify, MessageText);
+
+EndProcedure
+
+Procedure LaunchSkype(ExtensionAttached, LaunchString) Export
+	
+	If ExtensionAttached Then
+		Notify = New NotifyDescription("AfterLaunchApplication", ThisObject);
+		BeginRunningApplication(Notify, LaunchString);
+	EndIf;
+	
+EndProcedure
+
+// Check whether the telephony software is installed on your computer.
+//  Checking is only possible in a thin client for Windows.
+//
+// Parameters:
+//  ProtocolName - String - Name verifiable URI protocol, options "skype", "tel", "sip".
+//                          If not specified, then checked all the protocols. 
+// 
+// Returned value:
+//  String - the name of the available URI protocol is registered in the registry. An empty string - if the protocol is not available.
+//  Uncertain if the check is not possible.
+//
+Function TelephonySoftwareIsInstalled(ProtocolName = Undefined)
+	
+	If CommonUseClientServer.IsWindowsClient() Then
+		If ValueIsFilled(ProtocolName) Then
+			Return ?(ProtocolNameRegisteredInRegister(ProtocolName), ProtocolName, "");
+		Else
+			ProtocolList = New Array;
+			ProtocolList.Add("tel");
+			ProtocolList.Add("sip");
+			ProtocolList.Add("skype");
+			For Each ProtocolName In ProtocolList Do
+				If ProtocolNameRegisteredInRegister(ProtocolName) Then
+					Return ProtocolName;
+				EndIf;
+			EndDo;
+			Return Undefined;
+		EndIf;
+	EndIf;
+	
+	Return "";
+	
+EndFunction
+
+Function ProtocolNameRegisteredInRegister(ProtocolName)
+	
+	Try
+		Shell = New COMObject("Wscript.Shell");
+		Result = Shell.RegRead("HKEY_CLASSES_ROOT\" + ProtocolName + "\");
+	Except
+		Return False;
+	EndTry;
+	Return True;
+	
+EndFunction
+
+#EndRegion
 
 #EndRegion

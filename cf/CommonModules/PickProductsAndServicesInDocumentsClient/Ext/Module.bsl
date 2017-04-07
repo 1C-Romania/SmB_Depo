@@ -168,13 +168,7 @@ EndProcedure
 
 Procedure FillDocumentTaxationParameters(OwnerForm, SelectionParameters)
 	
-	If OwnerForm.FormName = "Document.CustomerInvoiceNote.Form.DocumentForm" 
-		OR OwnerForm.FormName = "Document.SupplierInvoiceNote.Form.DocumentForm" Then
-		
-		SelectionParameters.Insert("VATTaxation", PredefinedValue("Enum.VATTaxationTypes.TaxableByVAT"));
-		SelectionParameters.Insert("AmountIncludesVAT", False);
-		
-	ElsIf OwnerForm.FormName = "Document.InventoryTransfer.Form.DocumentForm" Then
+	If OwnerForm.FormName = "Document.InventoryTransfer.Form.DocumentForm" Then
 		// You do not need to fill attribute for transfer.
 		
 	Else
@@ -221,31 +215,12 @@ Procedure FillPriceKinds(OwnerForm, ChoiceFormFullName, SelectionParameters)
 	If ChoiceFormFullName = "DataProcessor.PickingReceipt.Form.CartPriceBalanceReserveCharacteristic" Then
 	// Prices kind for receipt
 		
-		If OwnerForm.FormName = "Document.SupplierInvoiceNote.Form.DocumentForm" Then
-		// Define the prices kinds for entry. documents without an explicit CounterpartyPriceKind attribute
-			
-			CounterpartyPriceKind = PickProductsAndServicesInDocumentsOverridable.PriceKindCustomerInvoiceNotes(OwnerForm.ThisObject.Object.Counterparty, OwnerForm.ThisObject.Object.Contract, True);
-			SelectionParameters.Insert("CounterpartyPriceKind", CounterpartyPriceKind);
-			
-		Else
-			
-			SelectionParameters.Insert("CounterpartyPriceKind", OwnerForm.ThisObject.Object.CounterpartyPriceKind);
-			
-		EndIf;
+		SelectionParameters.Insert("CounterpartyPriceKind", OwnerForm.ThisObject.Object.CounterpartyPriceKind);
 		
 	ElsIf ChoiceFormFullName = "DataProcessor.PickingSales.Form.CartPriceBalanceReserveCharacteristic" Then
 	// Prices kind for realization
 		
-		If OwnerForm.FormName = "Document.CustomerInvoiceNote.Form.DocumentForm" Then
-			
-			PriceKind = PickProductsAndServicesInDocumentsOverridable.PriceKindCustomerInvoiceNotes(OwnerForm.ThisObject.Object.Counterparty, OwnerForm.ThisObject.Object.Contract, False);
-			SelectionParameters.Insert("PriceKind", PriceKind);
-			
-		Else
-			
-			SelectionParameters.Insert("PriceKind", OwnerForm.ThisObject.Object.PriceKind);
-			
-		EndIf;
+		SelectionParameters.Insert("PriceKind", OwnerForm.ThisObject.Object.PriceKind);
 		
 	EndIf;
 	

@@ -23,7 +23,6 @@
 //    * ShortName  - String - (return value) company short name.
 //    * DescriptionFull       - String - (return value) company short name.
 //    * TIN                      - String - (return value) company TIN.
-//    * KPP                      - String - (return value) company KPP.
 //    * OGRN                     - String - (return value) company OGRN.
 //    * BankAccount            - String - (return value) main account of company for contract.
 //    * BIC                      - String - (return value) account bank BIC.
@@ -155,7 +154,6 @@ EndProcedure
 //                      a legal entity, True - specified partner is an individual entrepreneur.
 //
 //    * TIN           - String - (return value) partner TIN.
-//    * KPP           - String - (return value) KPP partner.
 //
 Procedure OnFillPartnerDetailsInApplicationForCertificate(Parameters) Export
 	

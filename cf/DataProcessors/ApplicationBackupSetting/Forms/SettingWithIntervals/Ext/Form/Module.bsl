@@ -254,17 +254,3 @@ Procedure SetStandardSettingsAtServer()
 EndProcedure
 
 #EndRegion
-
-
-
-
-
-
-
-
-
-
-
-
-
-

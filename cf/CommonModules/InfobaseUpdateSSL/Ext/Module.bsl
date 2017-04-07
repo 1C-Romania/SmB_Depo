@@ -75,7 +75,7 @@ EndProcedure
 Procedure BeforeInformationBaseUpdating() Export
 	
 	// Handlers of this event for SSL subsystems are added through the subscription to service event:
-	// StandardSubsystems.IBVersionUpdate\BeforeInformationBaseUpdate.
+	// StandardSubsystems.IBVersionUpdate\BeforeInformationBaseUpdate".
 	//
 	// Handler procedures of this event of all SSL subsystems have the same name
 	// as this procedure but they are placed in their own subsystems.

@@ -274,10 +274,14 @@
 							<v8:lang>en</v8:lang>
 							<v8:content>Company</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Организация</v8:content>
+						</v8:item>
 					</Title>
 					<Width>20</Width>
-					<ContextMenu name="CounterpartyContextMenu" id="9"/>
-					<ExtendedTooltip name="CounterpartyExtendedTooltip" id="52"/>
+					<ContextMenu name="CompanyContextMenu" id="9"/>
+					<ExtendedTooltip name="CompanyExtendedTooltip" id="52"/>
 				</LabelField>
 				<CheckBoxField name="Closed" id="38">
 					<DataPath>List.Closed</DataPath>

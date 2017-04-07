@@ -303,24 +303,6 @@ Function GetContractKindsListForDocument(Document, OperationKind = Undefined, Ta
 		ContractKindsList.Add(Enums.ContractKinds.WithAgent);
 		ContractKindsList.Add(Enums.ContractKinds.FromPrincipal);
 		
-	ElsIf TypeOf(Document) = Type("DocumentRef.CustomerInvoiceNote") Then
-		
-		If OperationKind = Enums.OperationKindsCustomerInvoiceNote.OnPrincipalAdvance Then
-			ContractKindsList.Add(Enums.ContractKinds.FromPrincipal);
-		Else
-			ContractKindsList.Add(Enums.ContractKinds.WithCustomer);
-			ContractKindsList.Add(Enums.ContractKinds.WithVendor);
-			ContractKindsList.Add(Enums.ContractKinds.WithAgent);
-			ContractKindsList.Add(Enums.ContractKinds.FromPrincipal);
-		EndIf;
-		
-	ElsIf TypeOf(Document) = Type("DocumentRef.SupplierInvoiceNote") Then
-		
-		ContractKindsList.Add(Enums.ContractKinds.WithCustomer);
-		ContractKindsList.Add(Enums.ContractKinds.WithVendor);
-		ContractKindsList.Add(Enums.ContractKinds.WithAgent);
-		ContractKindsList.Add(Enums.ContractKinds.FromPrincipal);
-		
 	EndIf;
 	
 	Return ContractKindsList;

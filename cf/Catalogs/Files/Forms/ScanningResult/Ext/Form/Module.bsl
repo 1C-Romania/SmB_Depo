@@ -882,17 +882,3 @@ Procedure SaveScannerParameters(PermissionNumber, ChromaticityNumber, ClientID)
 EndProcedure
 
 #EndRegion
-
-
-
-
-
-
-
-
-
-
-
-
-
-

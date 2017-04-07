@@ -1324,90 +1324,62 @@ Function GenerateLabelPricesAndCurrency(LabelStructure)
 	// Currency.
 	If LabelStructure.CurrencyTransactionsAccounting Then
 		If ValueIsFilled(LabelStructure.DocumentCurrency) Then
-			//===============================
-			//©# (Begin)	AlekS [2016-09-13]
-			//LabelText = NStr("en='%Currency%';ru='%Вал%'");
-			//LabelText = StrReplace(LabelText, "%Currency%", TrimAll(String(LabelStructure.DocumentCurrency)));
-			LabelText = TrimAll(String(LabelStructure.DocumentCurrency));
-			//©# (End)		AlekS [2016-09-13]
-			//===============================
+			LabelText = NStr("en='%Currency%';ru='%Currency%'");
+			LabelText = StrReplace(LabelText, "%Currency%", TrimAll(String(LabelStructure.DocumentCurrency)));
 		EndIf;
 	EndIf;
 	
 	// Prices kind.
 	If ValueIsFilled(LabelStructure.PriceKind) Then
-		//===============================
-		//©# (Begin)	AlekS [2016-09-13]
-		//If IsBlankString(LabelText) Then
-		//	LabelText = LabelText + NStr("en='%PriceKind%';ru='%PriceKind%'");
-		//Else
-		//	LabelText = LabelText + NStr("en=' • %PriceKind%';ru=' • %ВидЦен%'");
-		//EndIf;
-		//LabelText = StrReplace(LabelText, "%PriceKind%", TrimAll(String(LabelStructure.PriceKind)));
-		LabelText = LabelText + " • " + TrimAll(String(LabelStructure.PriceKind));
-		//©# (End)		AlekS [2016-09-13]
-		//===============================
+		If IsBlankString(LabelText) Then
+			LabelText = LabelText + NStr("en='%PriceKind%';ru='%PriceKind%'");
+		Else
+			LabelText = LabelText + NStr("en=' • %PriceKind%';ru=' • %PriceKind%'");
+		EndIf;
+		LabelText = StrReplace(LabelText, "%PriceKind%", TrimAll(String(LabelStructure.PriceKind)));
 	EndIf;
 	
 	// Margins discount kind.
 	If ValueIsFilled(LabelStructure.DiscountKind) Then
-		//===============================
-		//©# (Begin)	AlekS [2016-09-13]
-		//If IsBlankString(LabelText) Then
-		//	LabelText = LabelText + NStr("en='%DiscountMarkupKind%';ru='%ВидСкидкиНаценки%'");
-		//Else
-		//	LabelText = LabelText + NStr("en=' • %MarkupDiscountKind%';ru=' • %ВидСкидкиНаценки%'");
-		//EndIf;
-		//LabelText = StrReplace(LabelText, "%DiscountMarkupKind%", TrimAll(String(LabelStructure.DiscountKind)));
-		LabelText = LabelText + " • " + TrimAll(String(LabelStructure.DiscountKind));
-		//©# (End)		AlekS [2016-09-13]
-		//===============================
+		If IsBlankString(LabelText) Then
+			LabelText = LabelText + NStr("en='%DiscountMarkupKind%';ru='%DiscountMarkupKind%'");
+		Else
+			LabelText = LabelText + NStr("en=' • %MarkupDiscountKind%';ru=' • %DiscountMarkupKind%'");
+		EndIf;
+		LabelText = StrReplace(LabelText, "%DiscountMarkupKind%", TrimAll(String(LabelStructure.DiscountKind)));
 	EndIf;
 	
 	// Discount card.
 	If ValueIsFilled(LabelStructure.DiscountCard) Then
-		//===============================
-		//©# (Begin)	AlekS [2016-09-13]
-		//If IsBlankString(LabelText) Then
-		//	LabelText = LabelText + NStr("en='%DiscountCard%';ru='%ДисконтнаяКарта%'");
-		//Else
-		//	LabelText = LabelText + NStr("en=' • %DiscountCard%';ru=' • %ДисконтнаяКарта%'");
-		//EndIf;
-		//LabelText = StrReplace(LabelText, "%DiscountCard%", String(LabelStructure.DiscountPercentByDiscountCard)+"% by map"); //ShortLP(String(LabelStructure.DiscountCard)));
-		LabelText = LabelText + " • " + String(LabelStructure.DiscountPercentByDiscountCard) + 
-							NStr("en='% by card';ru='% по карте'"); 
-		//©# (End)		AlekS [2016-09-13]
-		//===============================
+		If IsBlankString(LabelText) Then
+			LabelText = LabelText + NStr("en='%DiscountCard%';ru='%DiscountCard%'");
+		Else
+			LabelText = LabelText + NStr("en=' • %DiscountCard%';ru=' • %DiscountCard%'");
+		EndIf;
+		LabelText = StrReplace(LabelText, "%DiscountCard%", String(LabelStructure.DiscountPercentByDiscountCard)+"% by map"); //ShortLP(String(LabelStructure.DiscountCard)));
 	EndIf;	
 	
-	// VAT taxation.
-	If ValueIsFilled(LabelStructure.VATTaxation) Then
-		//If IsBlankString(LabelText) Then
-		//	LabelText = LabelText + NStr("en='%VATTaxation%';ru='%VATTaxation%'");
-		//Else
-		//	LabelText = LabelText + NStr("en=' • %VATTaxation%';ru=' • %НалогообложениеНДС%'");
-		//EndIf;
-		//LabelText = StrReplace(LabelText, "%VATTaxation%", TrimAll(String(LabelStructure.VATTaxation)));
-		LabelText = LabelText + " • " + TrimAll(String(LabelStructure.VATTaxation));
-		//©# (End)		AlekS [2016-09-13]
-		//===============================
-	EndIf;
+	If SmallBusinessServer.GetFunctionalOptionValue("UseVAT") Then
 	
-	
-//===============================
-//©# (Begin)	AlekS [2016-09-13]
-//
-//  THIS FLAG HAS NO CHANCE TO BE SHOWED - need attention !   8-(
-//
-//©# (End)		AlekS [2016-09-13]
-//===============================
-	// Flag showing that amount includes VAT.
-	If IsBlankString(LabelText) Then	
-		If LabelStructure.AmountIncludesVAT Then	
-			LabelText = NStr("en='Amount includes VAT';ru='Сумма включает НДС'");
-		Else
-			LabelText = NStr("en='Amount does not include VAT';ru='Сумма не включает НДС'");
+		// VAT taxation.
+		If ValueIsFilled(LabelStructure.VATTaxation) Then
+			If IsBlankString(LabelText) Then
+				LabelText = LabelText + NStr("en='%VATTaxation%';ru='%VATTaxation%'");
+			Else
+				LabelText = LabelText + NStr("en=' • %VATTaxation%';ru=' • %VATTaxation%'");
+			EndIf;
+			LabelText = StrReplace(LabelText, "%VATTaxation%", TrimAll(String(LabelStructure.VATTaxation)));
 		EndIf;
+		
+		// Flag showing that amount includes VAT.
+		If IsBlankString(LabelText) Then	
+			If LabelStructure.AmountIncludesVAT Then	
+				LabelText = NStr("en='Amount includes VAT';ru='Сумма включает НДС'");
+			Else
+				LabelText = NStr("en='Amount does not include VAT';ru='Сумма не включает НДС'");
+			EndIf;
+		EndIf;
+	
 	EndIf;
 	
 	Return LabelText;
@@ -2669,7 +2641,6 @@ Procedure EditPrepaymentOffset(Command)
 		"AddressPrepaymentInStorage,
 		|Pick,
 		|IsOrder,
-		|ThereIsOrder,
 		|OrderInHeader,
 		|Company,
 		|Order,
@@ -2888,9 +2859,7 @@ Procedure OnCreateAtServer(Cancel, StandardProcessing)
 	PickProductsAndServicesInDocuments.AssignPickForm(SelectionOpenParameters, Object.Ref.Metadata().Name, "Inventory");
 	// End PickProductsAndServicesInDocuments
 	
-	// Footer, invoice
-	SmallBusinessServer.SetTextAboutInvoice(ThisForm);
-	
+	// Footer
 	TotalAmount = Object.Works.Total("Total") + Object.Inventory.Total("Total");
 	TotalVATAmount = Object.Works.Total("VATAmount") + Object.Inventory.Total("VATAmount");
 	
@@ -3067,18 +3036,6 @@ Procedure AfterWrite(WriteParameters)
 		
 		Notify("NotificationAboutChangingDebt");
 		
-		If Not InvoiceText = "Enter invoice note" Then
-			
-			QuestionText = NStr("en='Changes were made in the document. 
-		|Is it required to fill in the subordinate invoice once again?';ru='В документе были произведены изменения. 
-		|Требуется ли повторно заполнить подчиненный Счет-фактуру?'");
-				
-			NotifyDescription = New NotifyDescription("DefineNecessityToFillSubordinateInvoiceNote", ThisObject);
-			
-			ShowQueryBox(NOTifyDescription, QuestionText, QuestionDialogMode.YesNo, 0);
-			
-		EndIf;
-		
 	EndIf;
 	
 EndProcedure // AfterWrite()
@@ -3247,21 +3204,7 @@ Procedure NotificationProcessing(EventName, Parameter, Source)
 	EndIf;
 	// End DiscountCards
 	
-	// Subsystem 'ElectronicDocuments'
-	If EventName = "UpdateIBDocumentAfterFilling" Then
-		
-		ThisForm.Read();
-		
-	EndIf;
-	// End "ElectronicDocuments" subsystem
-	
-	If EventName = "RefreshOfTextAboutInvoice" 
-		AND TypeOf(Parameter) = Type("Structure") 
-		AND Parameter.BasisDocument = Object.Ref Then
-		
-		InvoiceText = Parameter.Presentation;
-		
-	ElsIf EventName = "AfterRecordingOfCounterparty" 
+	If EventName = "AfterRecordingOfCounterparty" 
 		AND ValueIsFilled(Parameter)
 		AND Object.Counterparty = Parameter Then
 		
@@ -3334,17 +3277,6 @@ Procedure NotificationProcessing(EventName, Parameter, Source)
 	EndIf;
 
 EndProcedure // NotificationProcessing()
-
-// Procedure - selection handler.
-//
-&AtClient
-Procedure ChoiceProcessing(ValueSelected, ChoiceSource)
-	
-	If ChoiceSource.FormName = "Document.CustomerInvoiceNote.Form.DocumentForm" Then
-		InvoiceText = ValueSelected;
-	EndIf;
-	
-EndProcedure
 
 #EndRegion
 
@@ -3872,16 +3804,6 @@ Procedure OWEditInList(Command)
 	OWSetPossibilityOfEditInList();
 	
 EndProcedure // EditByList()
-
-// Procedure - clicking handler on the hyperlink InvoiceText.
-//
-&AtClient
-Procedure InvoiceNoteTextClick(Item, StandardProcessing)
-	
-	StandardProcessing = False;
-	SmallBusinessClient.OpenInvoice(ThisForm);
-	
-EndProcedure
 
 // Procedure - command handler DocumentSetting.
 //
@@ -6077,8 +5999,7 @@ Procedure DefineNewCurrencyRateSettingNeed(ClosingResult, AdditionalParameters) 
 			CurrencyTransactionsAccounting, 
 			Object.VATTaxation, 
 			Object.DiscountCard, 
-			Object.DiscountPercentByDiscountCard
-			);
+			Object.DiscountPercentByDiscountCard);
 		
 		PricesAndCurrency = GenerateLabelPricesAndCurrency(LabelStructure);
 		
@@ -6113,20 +6034,6 @@ Procedure DefineDocumentRecalculateNeedByContractTerms(ClosingResult, Additional
 	EndIf;
 	
 EndProcedure // DefineDocumentRecalculateNeedByContractTerms()
-
-&AtClient
-// Procedure-handler response on question about filling of subordinate document Invoice
-//
-Procedure DefineNecessityToFillSubordinateInvoiceNote(ClosingResult, AdditionalParameters) Export
-	
-	If ClosingResult = DialogReturnCode.Yes Then
-		
-		SmallBusinessServer.ChangeSubordinateInvoice(Object.Ref);
-		Notify("UpdateIBDocumentAfterFilling");
-		
-	EndIf;
-	
-EndProcedure // DefineNecessityToFillSubordinateInvoiceNote()
 
 #EndRegion
 

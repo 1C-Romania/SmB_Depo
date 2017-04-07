@@ -673,7 +673,7 @@ Procedure ShowFilePlace(EndProcessor, FormID, InitialFileName, DialogueParameter
 	Parameters.Insert("DialogueParameters", DialogueParameters);
 	
 	NotifyDescription = New NotifyDescription("ShowFilePlaceWhenConnectingFileExtensions", ThisObject, Parameters);
-	CommonUseClient.ShowQuestionAboutFileOperationsExtensionSetting(NOTifyDescription);
+	CommonUseClient.ShowFileSystemExtensionInstallationQuestion(NOTifyDescription);
 EndProcedure
 
 // Open a dialog box to enter a username and password of Online support.
@@ -2104,7 +2104,7 @@ Procedure OpenOnExitMessageForm(Parameters)
 		FormParameters = New Structure;
 		FormParameters.Insert("Warnings", Warnings);
 		
-		FormName = "CommonForm.ExitWarnings";
+		FormName = "CommonForm.WarningOnWorkCompletion";
 		
 		If Warnings.Count() = 1 Then
 			If Not IsBlankString(Warnings[0].FlagText) Then 

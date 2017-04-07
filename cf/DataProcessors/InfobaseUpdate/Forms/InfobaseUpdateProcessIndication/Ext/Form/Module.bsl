@@ -716,17 +716,3 @@ Procedure SetSessionParametersFromBackgroundJob()
 EndProcedure
 
 #EndRegion
-
-
-
-
-
-
-
-
-
-
-
-
-
-

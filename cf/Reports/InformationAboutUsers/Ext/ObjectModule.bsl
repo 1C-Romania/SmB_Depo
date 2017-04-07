@@ -149,11 +149,11 @@ Function ContactInformation(Settings)
 		Return Contacts;
 	EndIf;
 	
-	ContactInformationTypes = New Array;
-	ContactInformationTypes.Add(Catalogs["ContactInformationTypes"].UserEmail);
-	ContactInformationTypes.Add(Catalogs["ContactInformationTypes"].UserPhone);
+	ContactInformationKinds = New Array;
+	ContactInformationKinds.Add(Catalogs["ContactInformationKinds"].UserEmail);
+	ContactInformationKinds.Add(Catalogs["ContactInformationKinds"].UserPhone);
 	Query = New Query;
-	Query.SetParameter("ContactInformationTypes", ContactInformationTypes);
+	Query.SetParameter("ContactInformationKinds", ContactInformationKinds);
 	Query.Text =
 	"SELECT
 	|	UsersContactInformation.Ref AS Ref,
@@ -162,7 +162,7 @@ Function ContactInformation(Settings)
 	|FROM
 	|	Catalog.Users.ContactInformation AS UsersContactInformation
 	|WHERE
-	|	UsersContactInformation.Type IN (&ContactInformationTypes)
+	|	UsersContactInformation.Type IN (&ContactInformationKinds)
 	|
 	|ORDER BY
 	|	UsersContactInformation.Ref,
@@ -189,11 +189,11 @@ Function ContactInformation(Settings)
 			EmailAddresses = "";
 			CurrentRef = Selection.Ref;
 		EndIf;
-		If Selection.Type = Catalogs["ContactInformationTypes"].UserPhone Then
+		If Selection.Type = Catalogs["ContactInformationKinds"].UserPhone Then
 			PhoneNumbers = PhoneNumbers + ?(ValueIsFilled(PhoneNumbers), ", ", "");
 			PhoneNumbers = PhoneNumbers + Selection.Presentation;
 		EndIf;
-		If Selection.Type = Catalogs["ContactInformationTypes"].UserEmail Then
+		If Selection.Type = Catalogs["ContactInformationKinds"].UserEmail Then
 			EmailAddresses = EmailAddresses + ?(ValueIsFilled(EmailAddresses), ", ", "");
 			EmailAddresses = EmailAddresses + Selection.Presentation;
 		EndIf;

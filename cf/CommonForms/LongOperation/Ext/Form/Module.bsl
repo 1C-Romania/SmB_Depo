@@ -33,17 +33,3 @@ Procedure OnCloseAtServer()
 EndProcedure
 
 #EndRegion
-
-
-
-
-
-
-
-
-
-
-
-
-
-

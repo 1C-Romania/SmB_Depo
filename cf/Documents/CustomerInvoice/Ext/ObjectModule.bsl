@@ -1,10 +1,7 @@
 ﻿#If Server Or ThickClientOrdinaryApplication Or ExternalConnection Then
 
-///////////////////////////////////////////////////////////////////////////////
-// PROCEDURES OF FILLING THE DOCUMENT
+#Region DocumentFillingProcedures
 
-// Procedure fills advances.
-//
 Procedure FillPrepayment() Export
 	
 	OrderInHeader = (CustomerOrderPosition = Enums.AttributePositionOnForm.InHeader);
@@ -206,13 +203,30 @@ Procedure FillPrepayment() Export
 	
 EndProcedure // FillPrepayment()
 
-// Procedure of filling the document on the basis of the supplier invoice.
-//
-// Parameters:
-// BasisDocument - DocumentRef.SupplierInvoice - supplier
-// invoice FillingData - Structure - Document filling data
-//	
-Procedure FillByPurchaseInvoice(FillingData, Operation = "")
+Procedure FillByStructure(FillingData) Export
+	
+	If FillingData.Property("Basis")
+		And TypeOf(FillingData.Basis) = Type("DocumentRef.CustomerOrder")
+		And CommonUse.ObjectAttributeValue(FillingData.Basis, "OperationKind") = Enums.OperationKindsCustomerOrder.JobOrder
+		Then
+		Raise NStr("ru = 'Нельзя ввести Расходную накладную на основании заказ-наряда!'; en = 'You can not create Customer order on the basis of Job order!'");
+	EndIf;
+	
+	If FillingData.Property("ArrayCustomerOrders") Then
+		FillByCustomerOrder(FillingData);
+	EndIf;
+	
+	If FillingData.Property("BasisDocumentSale") Then
+		FillBySupplierInvoice(FillingData.BasisDocumentSale, "Sale");
+	EndIf;
+	
+	If FillingData.Property("BasisDocumentReturn") Then
+		FillBySupplierInvoice(FillingData.BasisDocumentReturn, "Return");
+	EndIf;
+	
+EndProcedure
+
+Procedure FillBySupplierInvoice(FillingData, Operation = "") Export
 	
 	// Filling out a document header.
 	If Operation = "Sale" Then
@@ -220,9 +234,10 @@ Procedure FillByPurchaseInvoice(FillingData, Operation = "")
 			OR FillingData.OperationKind = Enums.OperationKindsSupplierInvoice.ReceptionForCommission Then
 			OperationKind = Enums.OperationKindsCustomerInvoice.SaleToCustomer;
 		Else
-			ErrorMessage = NStr("en='Cannot input ""Sale to customer"" operation on the basis of the operation ""%OperationKind""!';ru='Невозможен ввод операции ""Продажа покупателю"" на основании операции - ""%ВидОперации""!'");
-			ErrorMessage = StrReplace(ErrorMessage, "%OperationKind", FillingData.OperationKind);
-			Raise ErrorMessage;
+			TextExclusion = StringFunctionsClientServer.SubstituteParametersInString(
+			NStr("ru = 'Невозможен ввод операции ""Продажа покупателю"" на основании операции - ""%1""!'; en = 'Can not enter the operation "" Sale to customer "" on the basis of the operation - ""% 1 ""!'"),
+			FillingData.OperationKind);
+			Raise TextExclusion;
 		EndIf;
 	ElsIf Operation = "Return" Then
 				
@@ -334,13 +349,7 @@ Procedure FillByPurchaseInvoice(FillingData, Operation = "")
 	
 EndProcedure // FillBySupplierInvoice()
 
-// Procedure of filling the document on the basis of the supplier invoice.
-//
-// Parameters:
-// BasisDocument - DocumentRef.SupplierInvoice - supplier
-// invoice FillingData - Structure - Document filling data
-//	
-Procedure FillByCustomerOrder(FillingData)
+Procedure FillByCustomerOrder(FillingData) Export
 	
 	// Document basis and document setting.
 	OrdersArray = New Array;
@@ -625,13 +634,7 @@ Procedure FillByCustomerOrder(FillingData)
 	
 EndProcedure // FillByCustomerOrder()
 
-// Procedure of filling the document on the basis of the supplier invoice.
-//
-// Parameters:
-// BasisDocument - DocumentRef.SupplierInvoice - supplier
-// invoice FillingData - Structure - Document filling data
-//	
-Procedure FillByPurchaseOrder(FillingData)
+Procedure FillByPurchaseOrder(FillingData) Export
 	
 	If SmallBusinessReUse.AttributeInHeader("CustomerOrderPositionInShipmentDocuments") Then
 		Order = FillingData.Ref;
@@ -668,11 +671,6 @@ Procedure FillByPurchaseOrder(FillingData)
 	
 EndProcedure // FillByPurchaseOrder()
 
-// Procedure of document filling based on purchase order.
-//
-// Parameters:
-// FillingData - Structure - Document filling data
-//	
 Procedure FillByPurchaseOrderForProcessing(FillingData)
 	
 	Query = New Query;
@@ -793,11 +791,6 @@ Procedure FillByPurchaseOrderForProcessing(FillingData)
 	
 EndProcedure // FillByPurchaseOrderForProcessing()
 
-// Procedure of document filling based on purchase order.
-//
-// Parameters:
-// FillingData - Structure - Document filling data
-//	
 Procedure FillByPurchaseOrderForPurchase(FillingData)
 	
 	Query = New Query;
@@ -924,13 +917,7 @@ Procedure FillByPurchaseOrderForPurchase(FillingData)
 	
 EndProcedure // FillByPurchaseOrderForPurchase()
 
-// Procedure of filling the document on the basis of the supplier invoice.
-//
-// Parameters:
-// BasisDocument - DocumentRef.SupplierInvoice - supplier
-// invoice FillingData - Structure - Document filling data
-//	
-Procedure FillByInvoiceForPayment(FillingData)
+Procedure FillByInvoiceForPayment(FillingData) Export
 	
 	// Filling out a document header.
 	ThisObject.BasisDocument = FillingData.Ref;
@@ -1012,8 +999,6 @@ Procedure FillByInvoiceForPayment(FillingData)
 	
 EndProcedure // FillByInvoiceForPayment()
 
-// Procedure fills out the Quantity by reserves under order column.
-//
 Procedure FillColumnReserveByReserves() Export
 	
 	Inventory.LoadColumn(New Array(Inventory.Count()), "Reserve");
@@ -1154,72 +1139,23 @@ Procedure FillColumnReserveByReserves() Export
 	
 EndProcedure // FillColumnReserveByReserves()
 
-// Posting cancellation procedure of the subordinate customer invoice note
-//
-Procedure SubordinatedInvoiceControl()
-	
-	InvoiceStructure = SmallBusinessServer.GetSubordinateInvoice(Ref);
-	If Not InvoiceStructure = Undefined Then
-		
-		CustomerInvoiceNote	 = InvoiceStructure.Ref;
-		If CustomerInvoiceNote.Posted Then
-			
-			MessageText = NStr("en='As there are no register records of the %CurrentDocumentPresentation% document, undo the posting of %InvoicePresentation%.';ru='В связи с отсутствием движений у документа %ПредставлениеТекущегоДокумента% распроводится счет фактура %ПредставлениеСчетФактуры%.'");
-			MessageText = StrReplace(MessageText, "%CurrentDocumentPresentation%", """Sales invoice No " + Number + " dated " + Format(Date, "DF=dd.MM.yyyy") + """");
-			MessageText = StrReplace(MessageText, "%InvoicePresentation%", """Customer invoice note (issued) No " + InvoiceStructure.Number + " dated " + InvoiceStructure.Date + """");
-			
-			CommonUseClientServer.MessageToUser(MessageText);
-			
-			InvoiceObject = CustomerInvoiceNote.GetObject();
-			InvoiceObject.Write(DocumentWriteMode.UndoPosting);
-			
-		EndIf;
-		
-	EndIf;
-	
-EndProcedure //SubordinateInvoiceControl()
+#EndRegion
 
-////////////////////////////////////////////////////////////////////////////////
-// EVENT HANDLERS
+#Region EventHandlers
 
-// Procedure - handler of the FillingProcessor event.
-//
 Procedure Filling(FillingData, StandardProcessing) Export
 	
-	If Not ValueIsFilled(FillingData) Then
-		Return;
-	EndIf;
+	FillingStrategy = New Map;
+	FillingStrategy[Type("Structure")]						= "FillByStructure";
+	FillingStrategy[Type("DocumentRef.SupplierInvoice")]	= "FillBySupplierInvoice";
+	FillingStrategy[Type("DocumentRef.CustomerOrder")]		= "FillByCustomerOrder";
+	FillingStrategy[Type("DocumentRef.PurchaseOrder")]		= "FillByPurchaseOrder";
+	FillingStrategy[Type("DocumentRef.InvoiceForPayment")]	= "FillByInvoiceForPayment";
 	
-	If (TypeOf(FillingData) = Type("DocumentRef.CustomerOrder")
-		AND FillingData.OperationKind = Enums.OperationKindsCustomerOrder.JobOrder)
-		OR (TypeOf(FillingData) = Type("Structure") AND FillingData.Property("Basis")
-		AND FillingData.Basis.OperationKind = Enums.OperationKindsCustomerOrder.JobOrder) Then
-		
-		Raise NStr("en='Expense Invoice can not be entered on the basis of Job order!';ru='Нельзя ввести Расходную накладную на основании заказ-наряда!'");
-		
-	ElsIf TypeOf(FillingData) = Type("DocumentRef.SupplierInvoice") Then
-		FillByPurchaseInvoice(FillingData);
-	ElsIf TypeOf(FillingData) = Type("DocumentRef.CustomerOrder") 
-		OR (TypeOf(FillingData) = Type("Structure") AND FillingData.Property("ArrayOfCustomerOrders")) Then
-		FillByCustomerOrder(FillingData);
-	ElsIf TypeOf(FillingData) = Type("DocumentRef.PurchaseOrder") Then
-		FillByPurchaseOrder(FillingData);
-	ElsIf TypeOf(FillingData) = Type("DocumentRef.InvoiceForPayment") Then
-		FillByInvoiceForPayment(FillingData);
-	ElsIf TypeOf(FillingData) = Type("Structure")
-		AND FillingData.Property("BasisDocumentSale") Then
-		FillByPurchaseInvoice(FillingData.BasisDocumentSale, "Sale");
-	ElsIf TypeOf(FillingData) = Type("Structure")
-		AND FillingData.Property("BasisDocumentReturn") Then
-		FillByPurchaseInvoice(FillingData.BasisDocumentReturn, "Return");
-	ElsIf TypeOf(FillingData) = Type("Structure") Then
-		FillPropertyValues(ThisObject, FillingData);
-	EndIf;
+	ObjectFillingSB.FillDocument(ThisObject, FillingData, FillingStrategy);
 	
-EndProcedure // FillingProcessor()
+EndProcedure // Filling()
 
-// Procedure - event handler BeforeWrite object.
-//
 Procedure BeforeWrite(Cancel, WriteMode, PostingMode)
 	
 	If DataExchange.Load Then
@@ -1247,8 +1183,6 @@ Procedure BeforeWrite(Cancel, WriteMode, PostingMode)
 	
 EndProcedure // BeforeWrite()
 
-// Procedure - event handler FillCheckProcessing object.
-//
 Procedure FillCheckProcessing(Cancel, CheckedAttributes)
 	
 	If OperationKind = Enums.OperationKindsCustomerInvoice.SaleToCustomer Then
@@ -1373,8 +1307,6 @@ Procedure FillCheckProcessing(Cancel, CheckedAttributes)
 	
 EndProcedure // FillCheckProcessing()
 
-// Procedure - event handler Posting object.
-//
 Procedure Posting(Cancel, PostingMode)
 	
 	// Initialization of additional properties for document posting.
@@ -1431,8 +1363,6 @@ Procedure Posting(Cancel, PostingMode)
 	
 EndProcedure // Posting()
 
-// Procedure - event handler UndoPosting object.
-//
 Procedure UndoPosting(Cancel)
 	
 	// Initialization of additional properties for document posting
@@ -1447,22 +1377,15 @@ Procedure UndoPosting(Cancel)
 	// Control of occurrence of a negative balance.
 	Documents.CustomerInvoice.RunControl(Ref, AdditionalProperties, Cancel, True);
 	
-	// Subordinate customer invoice note
-	If Not Cancel Then
-		
-		SubordinatedInvoiceControl();
-		
-	EndIf;
-	
 EndProcedure // UndoPosting()
 
-// Procedure - event handler of the OnCopy object.
-//
 Procedure OnCopy(CopiedObject)
 	
 	SmallBusinessManagementElectronicDocumentsServer.ClearIncomingDocumentDateNumber(ThisObject);
 	Prepayment.Clear();
 	
 EndProcedure // OnCopy()
+
+#EndRegion
 
 #EndIf

@@ -60,17 +60,3 @@ Procedure CreateCondition()
 EndProcedure
 
 #EndRegion
-
-
-
-
-
-
-
-
-
-
-
-
-
-

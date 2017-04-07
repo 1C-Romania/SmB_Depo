@@ -323,17 +323,3 @@ Function DetectOutputGroup(SubsystemPresentation)
 EndFunction
 
 #EndRegion
-
-
-
-
-
-
-
-
-
-
-
-
-
-

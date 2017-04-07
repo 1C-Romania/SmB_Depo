@@ -352,17 +352,3 @@ Function UsedTransportsOfExchangeMessages(Val InfobaseNode)
 EndFunction
 
 #EndRegion
-
-
-
-
-
-
-
-
-
-
-
-
-
-

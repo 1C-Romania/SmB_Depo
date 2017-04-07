@@ -93,17 +93,3 @@ Procedure ListNewWriteProcessing(NewObject, Source, StandardProcessing)
 	
 EndProcedure // ListNewWriteDataProcessor()
 // 
-
-
-
-
-
-
-
-
-
-
-
-
-
-

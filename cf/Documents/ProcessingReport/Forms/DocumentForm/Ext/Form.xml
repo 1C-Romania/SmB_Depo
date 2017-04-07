@@ -91,7 +91,6 @@
 	</AutoCommandBar>
 	<Events>
 		<Event name="AfterWrite">AfterWrite</Event>
-		<Event name="ChoiceProcessing">ChoiceProcessing</Event>
 		<Event name="AfterWriteAtServer">AfterWriteAtServer</Event>
 		<Event name="NotificationProcessing">NotificationProcessing</Event>
 		<Event name="OnReadAtServer">OnReadAtServer</Event>
@@ -521,7 +520,7 @@
 										<Event name="OnChange">ProductsCharacteristicOnChange</Event>
 									</Events>
 								</InputField>
-								<InputField name="ProductionContent" id="126">
+								<InputField name="ProductsContent" id="126">
 									<DataPath>Object.Products.Content</DataPath>
 									<UserVisible>
 										<xr:Common>false</xr:Common>
@@ -530,10 +529,10 @@
 									<Width>20</Width>
 									<DropListButton>true</DropListButton>
 									<ChoiceListButton>true</ChoiceListButton>
-									<ContextMenu name="ProductionContentContextMenu" id="127"/>
+									<ContextMenu name="ProductsContentContextMenu" id="127"/>
 									<ExtendedTooltip name="ProductsContentExtendedTooltip" id="182"/>
 									<Events>
-										<Event name="AutoComplete">ProductionContentAutoPick</Event>
+										<Event name="AutoComplete">ProductsContentAutoPick</Event>
 									</Events>
 								</InputField>
 								<InputField name="ProductsBatch" id="35">
@@ -609,7 +608,7 @@
 									<ContextMenu name="ProductsAutomaticDiscountPercentContextMenu" id="350"/>
 									<ExtendedTooltip name="ProductsAutomaticDiscountPercentExtendedTooltip" id="351"/>
 								</InputField>
-								<InputField name="GoodsAutomaticDiscountAmount" id="352">
+								<InputField name="ProductsAutomaticDiscountAmount" id="352">
 									<DataPath>Object.Products.AutomaticDiscountAmount</DataPath>
 									<UserVisible>
 										<xr:Common>false</xr:Common>
@@ -620,7 +619,7 @@
 									<ContextMenu name="ProductsAutomaticDiscountAmountContextMenu" id="353"/>
 									<ExtendedTooltip name="ProductsAutomaticDiscountAmountExtendedTooltip" id="354"/>
 								</InputField>
-								<InputField name="ProductsSum" id="45">
+								<InputField name="ProductsAmount" id="45">
 									<DataPath>Object.Products.Amount</DataPath>
 									<SkipOnInput>true</SkipOnInput>
 									<EditMode>EnterOnInput</EditMode>
@@ -628,35 +627,35 @@
 									<Wrap>false</Wrap>
 									<AutoChoiceIncomplete>true</AutoChoiceIncomplete>
 									<AutoMarkIncomplete>true</AutoMarkIncomplete>
-									<ContextMenu name="ProductsSumContextMenu" id="46"/>
+									<ContextMenu name="ProductsAmountContextMenu" id="46"/>
 									<ExtendedTooltip name="ProductsAmountExtendedTooltip" id="189"/>
 									<Events>
 										<Event name="OnChange">ProductsAmountOnChange</Event>
 									</Events>
 								</InputField>
-								<InputField name="GoodsVatRate" id="47">
+								<InputField name="ProductsVATRate" id="47">
 									<DataPath>Object.Products.VATRate</DataPath>
 									<SkipOnInput>true</SkipOnInput>
 									<EditMode>EnterOnInput</EditMode>
 									<Width>8</Width>
 									<HorizontalStretch>false</HorizontalStretch>
 									<Wrap>false</Wrap>
-									<ContextMenu name="ProductsRateVATContextMenu" id="48"/>
-									<ExtendedTooltip name="ProductsRateVATExtendedTooltip" id="190"/>
+									<ContextMenu name="ProductsVATRateContextMenu" id="48"/>
+									<ExtendedTooltip name="ProductsVATRateExtendedTooltip" id="190"/>
 									<Events>
 										<Event name="OnChange">ProductsVATRateOnChange</Event>
 									</Events>
 								</InputField>
-								<InputField name="ProductsSumVAT" id="49">
+								<InputField name="ProductsVATAmount" id="49">
 									<DataPath>Object.Products.VATAmount</DataPath>
 									<SkipOnInput>true</SkipOnInput>
 									<EditMode>EnterOnInput</EditMode>
 									<Width>10</Width>
 									<Wrap>false</Wrap>
-									<ContextMenu name="ProductsSumVATContextMenu" id="50"/>
-									<ExtendedTooltip name="ProductsSumVATExtendedTooltip" id="191"/>
+									<ContextMenu name="ProductsVATAmountContextMenu" id="50"/>
+									<ExtendedTooltip name="ProductsVATAmountExtendedTooltip" id="191"/>
 									<Events>
-										<Event name="OnChange">ProductsAmountVATOnChange</Event>
+										<Event name="OnChange">ProductsVATAmountOnChange</Event>
 									</Events>
 								</InputField>
 								<InputField name="ProductsTotal" id="51">
@@ -1116,7 +1115,7 @@
 									<ContextMenu name="PrepaymentRateContextMenu" id="309"/>
 									<ExtendedTooltip name="PrepaymentExchangeRateExtendedTooltip" id="310"/>
 									<Events>
-										<Event name="OnChange">PrepaymentRateOnChange</Event>
+										<Event name="OnChange">PrepaymentExchangeRateOnChange</Event>
 									</Events>
 								</InputField>
 								<InputField name="PrepaymentMultiplicity" id="311">
@@ -1356,15 +1355,6 @@
 			<ShowTitle>false</ShowTitle>
 			<ExtendedTooltip name="FooterExtendedTooltip" id="224"/>
 			<ChildItems>
-				<LabelField name="InvoiceText" id="141">
-					<DataPath>InvoiceText</DataPath>
-					<Hiperlink>true</Hiperlink>
-					<ContextMenu name="InvoiceTextContextMenu" id="142"/>
-					<ExtendedTooltip name="InvoiceTextExtendedTooltip" id="227"/>
-					<Events>
-						<Event name="Click">InvoiceNoteTextClick</Event>
-					</Events>
-				</LabelField>
 				<UsualGroup name="Totals" id="88">
 					<Title>
 						<v8:item>
@@ -1722,7 +1712,12 @@
 				</v8:item>
 			</Title>
 			<Type>
-				<v8:TypeId>7df51630-43b5-4ce5-9c6d-05075e9da985</v8:TypeId>
+				<v8:Type>xs:decimal</v8:Type>
+				<v8:NumberQualifiers>
+					<v8:Digits>10</v8:Digits>
+					<v8:FractionDigits>0</v8:FractionDigits>
+					<v8:AllowedSign>Nonnegative</v8:AllowedSign>
+				</v8:NumberQualifiers>
 			</Type>
 		</Attribute>
 		<Attribute name="RateNationalCurrency" id="12">
@@ -1737,7 +1732,12 @@
 				</v8:item>
 			</Title>
 			<Type>
-				<v8:TypeId>68e59cac-a032-48d5-8f3f-dc6a3fc54686</v8:TypeId>
+				<v8:Type>xs:decimal</v8:Type>
+				<v8:NumberQualifiers>
+					<v8:Digits>10</v8:Digits>
+					<v8:FractionDigits>4</v8:FractionDigits>
+					<v8:AllowedSign>Nonnegative</v8:AllowedSign>
+				</v8:NumberQualifiers>
 			</Type>
 		</Attribute>
 		<Attribute name="NationalCurrency" id="13">
@@ -2421,7 +2421,7 @@
 				<Index>1</Index>
 			</Item>
 			<Item>
-				<Command>Document.ProcessingReport.Command.InvoiceWithCCDCreateBasedOn</Command>
+				<Command>0:075dcc4c-bd47-420a-a1c7-2a74d8c6ee29</Command>
 				<Type>Auto</Type>
 				<Index>3</Index>
 			</Item>

@@ -14,17 +14,3 @@ Procedure MoveItemDown(Command)
 	ItemOrderSetupClient.MoveItemDownExecute(List, Items.List);
 	
 EndProcedure
-
-
-
-
-
-
-
-
-
-
-
-
-
-

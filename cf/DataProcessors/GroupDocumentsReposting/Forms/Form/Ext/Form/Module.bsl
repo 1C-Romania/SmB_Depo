@@ -392,17 +392,3 @@ Procedure RadioButtonOnChange(Item)
 	SetPeriodLabel();
 	
 EndProcedure
-
-
-
-
-
-
-
-
-
-
-
-
-
-

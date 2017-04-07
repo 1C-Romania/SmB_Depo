@@ -81,17 +81,3 @@ Procedure NotifyAboutSettlementAccountChange()
 	Notify("GLAccountChangedPOSTerminals", ParameterStructure);
 	
 EndProcedure
-
-
-
-
-
-
-
-
-
-
-
-
-
-

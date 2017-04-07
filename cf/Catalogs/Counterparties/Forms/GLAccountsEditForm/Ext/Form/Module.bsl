@@ -164,17 +164,3 @@ Procedure NotifyAboutSettlementAccountChange()
 EndProcedure
 
 #EndRegion
-
-
-
-
-
-
-
-
-
-
-
-
-
-

@@ -153,17 +153,3 @@ Procedure NotifyAboutSettlementAccountChange()
 	Notify("ProductsAndServicesAccountsChanged", ParameterStructure);
 	
 EndProcedure
-
-
-
-
-
-
-
-
-
-
-
-
-
-

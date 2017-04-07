@@ -9,17 +9,3 @@ Procedure OnCreateAtServer(Cancel, StandardProcessing)
 	Title = NStr("en='Information about data synchronization with ""1C: Accounting 8, ed. 3.0""';ru='Информация о синхронизации данных с ""1C: Бухгалтерия предприятия 8, ред. 3.0""'");
 	
 EndProcedure
-
-
-
-
-
-
-
-
-
-
-
-
-
-

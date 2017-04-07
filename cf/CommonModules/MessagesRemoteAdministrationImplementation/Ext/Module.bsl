@@ -751,7 +751,7 @@ EndFunction
 
 Procedure RefreshEmailAddress(Val UserObject, Val Address, Val EmailAddressStructure)
 	
-	CIKind = Catalogs.ContactInformationTypes.UserEmail;
+	CIKind = Catalogs.ContactInformationKinds.UserEmail;
 	
 	TabularSectionRow = UserObject.ContactInformation.Find(CIKind, "Kind");
 	If EmailAddressStructure = Undefined Then
@@ -780,7 +780,7 @@ EndProcedure
 
 Procedure UpdatePhone(Val UserObject, Val Phone)
 	
-	CIKind = Catalogs.ContactInformationTypes.UserPhone;
+	CIKind = Catalogs.ContactInformationKinds.UserPhone;
 	
 	TabularSectionRow = UserObject.ContactInformation.Find(CIKind, "Kind");
 	If TabularSectionRow = Undefined Then

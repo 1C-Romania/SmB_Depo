@@ -1,5 +1,7 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
 <Form xmlns="http://v8.1c.ru/8.3/xcf/logform" xmlns:app="http://v8.1c.ru/8.2/managed-application/core" xmlns:cfg="http://v8.1c.ru/8.1/data/enterprise/current-config" xmlns:dcscor="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:dcsset="http://v8.1c.ru/8.1/data-composition-system/settings" xmlns:ent="http://v8.1c.ru/8.1/data/enterprise" xmlns:lf="http://v8.1c.ru/8.2/managed-application/logform" xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows" xmlns:xr="http://v8.1c.ru/8.3/xcf/readable" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.2">
+	<Width>51</Width>
+	<WindowOpeningMode>LockOwnerWindow</WindowOpeningMode>
 	<VerticalScroll>useIfNecessary</VerticalScroll>
 	<UseForFoldersAndItems>Items</UseForFoldersAndItems>
 	<AutoCommandBar name="FormCommandBar" id="-1">
@@ -32,25 +34,6 @@
 						<CommandName>CommonCommand.Remind</CommandName>
 						<DataPath>Object.Ref</DataPath>
 						<ExtendedTooltip name="FormCommonCommandRemindExtendedTooltip" id="72"/>
-					</Button>
-					<Button name="FormSendEmailToContactPerson" id="34">
-						<Type>CommandBarButton</Type>
-						<CommandName>Form.Command.SendEmailToContactPerson</CommandName>
-						<Picture>
-							<xr:Ref>CommonPicture.Email</xr:Ref>
-							<xr:LoadTransparent>true</xr:LoadTransparent>
-						</Picture>
-						<Title>
-							<v8:item>
-								<v8:lang>en</v8:lang>
-								<v8:content>Send email</v8:content>
-							</v8:item>
-							<v8:item>
-								<v8:lang>ru</v8:lang>
-								<v8:content>Отправить email</v8:content>
-							</v8:item>
-						</Title>
-						<ExtendedTooltip name="FormSendEmailToContactPersonExtendedTooltip" id="35"/>
 					</Button>
 				</ChildItems>
 			</ButtonGroup>
@@ -103,6 +86,7 @@
 		</ChildItems>
 	</AutoCommandBar>
 	<Events>
+		<Event name="AfterWrite">AfterWrite</Event>
 		<Event name="NotificationProcessing">NotificationProcessing</Event>
 		<Event name="OnReadAtServer">OnReadAtServer</Event>
 		<Event name="OnCreateAtServer">OnCreateAtServer</Event>
@@ -110,30 +94,228 @@
 		<Event name="FillCheckProcessingAtServer">FillCheckProcessingAtServer</Event>
 	</Events>
 	<ChildItems>
-		<UsualGroup name="CodeOwner" id="13">
+		<UsualGroup name="MainAttributes" id="82">
 			<Title>
 				<v8:item>
 					<v8:lang>en</v8:lang>
-					<v8:content>Owner code</v8:content>
+					<v8:content>Main attributes</v8:content>
 				</v8:item>
 				<v8:item>
 					<v8:lang>ru</v8:lang>
-					<v8:content>Владелец код</v8:content>
+					<v8:content>Основные реквизиты</v8:content>
+				</v8:item>
+			</Title>
+			<Group>Vertical</Group>
+			<Representation>None</Representation>
+			<ShowTitle>false</ShowTitle>
+			<ExtendedTooltip name="MainAttributesExtendedTooltip" id="83"/>
+			<ChildItems>
+				<InputField name="Owner" id="5">
+					<DataPath>Object.Owner</DataPath>
+					<EditMode>EnterOnInput</EditMode>
+					<OpenButton>false</OpenButton>
+					<ContextMenu name="OwnerContextMenu" id="6"/>
+					<ExtendedTooltip name="OwnerExtendedTooltip" id="39"/>
+				</InputField>
+				<InputField name="Description" id="3">
+					<DataPath>Object.Description</DataPath>
+					<EditMode>EnterOnInput</EditMode>
+					<ContextMenu name="DescriptionContextMenu" id="4"/>
+					<ExtendedTooltip name="DescriptionExtendedTooltip" id="41"/>
+				</InputField>
+				<InputField name="Position" id="79">
+					<DataPath>Object.Position</DataPath>
+					<ContextMenu name="AppointmentContextMenu" id="80"/>
+					<ExtendedTooltip name="PositionExtendedTooltip" id="81"/>
+				</InputField>
+				<UsualGroup name="ContactPersonRoles" id="84">
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Contact person roles</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Роли контактного лица</v8:content>
+						</v8:item>
+					</Title>
+					<Group>Vertical</Group>
+					<Representation>None</Representation>
+					<ShowTitle>false</ShowTitle>
+					<ExtendedTooltip name="ContactPersonRolesExtendedTooltip" id="85"/>
+					<ChildItems>
+						<InputField name="RoleInputField" id="86">
+							<DataPath>RoleInputField</DataPath>
+							<ToolTip>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Roles of the contact person at the company's classification.</v8:content>
+								</v8:item>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Роль контактного лица по классификации компании.</v8:content>
+								</v8:item>
+							</ToolTip>
+							<DropListButton>false</DropListButton>
+							<ChoiceButton>true</ChoiceButton>
+							<ChoiceButtonRepresentation>ShowInInputField</ChoiceButtonRepresentation>
+							<OpenButton>false</OpenButton>
+							<InputHint>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Add role (50 characters)</v8:content>
+								</v8:item>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Добавить роль (50 символов)</v8:content>
+								</v8:item>
+							</InputHint>
+							<ContextMenu name="RoleInputFieldContextMenu" id="87"/>
+							<ExtendedTooltip name="RoleInputFieldExtendedTooltip" id="88"/>
+							<Events>
+								<Event name="TextEditEnd">RoleInputFieldTextEditEnd</Event>
+								<Event name="ChoiceProcessing">RoleInputFieldChoiceProcessing</Event>
+							</Events>
+						</InputField>
+						<UsualGroup name="RolesAndIndent" id="89">
+							<Title>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Roles and indent</v8:content>
+								</v8:item>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Роли и отступ</v8:content>
+								</v8:item>
+							</Title>
+							<Group>Horizontal</Group>
+							<Representation>None</Representation>
+							<ShowTitle>false</ShowTitle>
+							<ExtendedTooltip name="RolesAndIndentExtendedTooltip" id="90"/>
+							<ChildItems>
+								<LabelDecoration name="RolesIndent" id="91">
+									<Width>9</Width>
+									<HorizontalStretch>false</HorizontalStretch>
+									<ContextMenu name="RolesIndentContextMenu" id="92"/>
+									<ExtendedTooltip name="RolesIndentExtendedTooltip" id="93"/>
+								</LabelDecoration>
+								<LabelDecoration name="RolesCloud" id="94">
+									<ContextMenu name="RolesCloudContextMenu" id="95"/>
+									<ExtendedTooltip name="RolesCloudExtendedTooltip" id="96"/>
+									<Events>
+										<Event name="URLProcessing">RolesCloudURLProcessing</Event>
+									</Events>
+								</LabelDecoration>
+							</ChildItems>
+						</UsualGroup>
+					</ChildItems>
+				</UsualGroup>
+			</ChildItems>
+		</UsualGroup>
+		<UsualGroup name="ContactInformation" id="97">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Contact information</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Контактная информация</v8:content>
+				</v8:item>
+			</Title>
+			<Group>Vertical</Group>
+			<Representation>None</Representation>
+			<ShowTitle>false</ShowTitle>
+			<ExtendedTooltip name="ContactInformationExtendedTooltip" id="98"/>
+		</UsualGroup>
+		<UsualGroup name="DateOfBirthGender" id="99">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Date of birth gender</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Дата рождения пол</v8:content>
 				</v8:item>
 			</Title>
 			<Group>Horizontal</Group>
 			<Representation>None</Representation>
 			<ShowTitle>false</ShowTitle>
-			<ExtendedTooltip name="CodeOwnerExtendedTooltip" id="38"/>
+			<ExtendedTooltip name="DateOfBirthGenderExtendedTooltip" id="100"/>
 			<ChildItems>
-				<InputField name="Owner" id="5">
-					<DataPath>Object.Owner</DataPath>
-					<SkipOnInput>true</SkipOnInput>
-					<EditMode>EnterOnInput</EditMode>
-					<OpenButton>false</OpenButton>
-					<ChoiceFoldersAndItems>Items</ChoiceFoldersAndItems>
-					<ContextMenu name="OwnerContextMenu" id="6"/>
-					<ExtendedTooltip name="OwnerExtendedTooltip" id="39"/>
+				<InputField name="DateOfBirth" id="101">
+					<DataPath>Object.DateOfBirth</DataPath>
+					<ContextMenu name="DateOfBirthContextMenu" id="102"/>
+					<ExtendedTooltip name="DateOfBirthExtendedTooltip" id="103"/>
+				</InputField>
+				<RadioButtonField name="Gender" id="104">
+					<DataPath>Object.Gender</DataPath>
+					<RadioButtonType>Auto</RadioButtonType>
+					<ChoiceList>
+						<xr:Item>
+							<xr:Presentation/>
+							<xr:CheckState>0</xr:CheckState>
+							<xr:Value xsi:type="FormChoiceListDesTimeValue">
+								<Presentation>
+									<v8:item>
+										<v8:lang>en</v8:lang>
+										<v8:content>Male</v8:content>
+									</v8:item>
+									<v8:item>
+										<v8:lang>ru</v8:lang>
+										<v8:content>Мужской</v8:content>
+									</v8:item>
+								</Presentation>
+								<Value xsi:type="xr:DesignTimeRef">Enum.IndividualGender.EnumValue.Male</Value>
+							</xr:Value>
+						</xr:Item>
+						<xr:Item>
+							<xr:Presentation/>
+							<xr:CheckState>0</xr:CheckState>
+							<xr:Value xsi:type="FormChoiceListDesTimeValue">
+								<Presentation>
+									<v8:item>
+										<v8:lang>en</v8:lang>
+										<v8:content>Female</v8:content>
+									</v8:item>
+									<v8:item>
+										<v8:lang>ru</v8:lang>
+										<v8:content>Женский</v8:content>
+									</v8:item>
+								</Presentation>
+								<Value xsi:type="xr:DesignTimeRef">Enum.IndividualGender.EnumValue.Female</Value>
+							</xr:Value>
+						</xr:Item>
+					</ChoiceList>
+					<ContextMenu name="GenderContextMenu" id="105"/>
+					<ExtendedTooltip name="GenderExtendedTooltip" id="106"/>
+				</RadioButtonField>
+			</ChildItems>
+		</UsualGroup>
+		<UsualGroup name="CreatedCode" id="13">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Created code</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Создан код</v8:content>
+				</v8:item>
+			</Title>
+			<Group>Horizontal</Group>
+			<Representation>None</Representation>
+			<ShowTitle>false</ShowTitle>
+			<ExtendedTooltip name="CreatedCodeExtendedTooltip" id="38"/>
+			<ChildItems>
+				<InputField name="CreationDate" id="18">
+					<DataPath>Object.CreationDate</DataPath>
+					<ReadOnly>true</ReadOnly>
+					<Width>10</Width>
+					<HorizontalStretch>false</HorizontalStretch>
+					<ContextMenu name="CreationDateContextMenu" id="19"/>
+					<ExtendedTooltip name="CreationDateExtendedTooltip" id="45"/>
 				</InputField>
 				<InputField name="Code" id="1">
 					<DataPath>Object.Code</DataPath>
@@ -146,282 +328,98 @@
 				</InputField>
 			</ChildItems>
 		</UsualGroup>
-		<InputField name="Description" id="3">
-			<DataPath>Object.Description</DataPath>
+		<InputField name="Comment" id="11">
+			<DataPath>Object.Comment</DataPath>
+			<TitleLocation>Left</TitleLocation>
 			<EditMode>EnterOnInput</EditMode>
-			<ContextMenu name="DescriptionContextMenu" id="4"/>
-			<ExtendedTooltip name="DescriptionExtendedTooltip" id="41"/>
-		</InputField>
-		<InputField name="Position" id="79">
-			<DataPath>Object.Position</DataPath>
-			<ContextMenu name="AppointmentContextMenu" id="80"/>
-			<ExtendedTooltip name="PositionExtendedTooltip" id="81"/>
-		</InputField>
-		<Pages name="FormPagesGroup" id="22">
-			<Title>
+			<InputHint>
 				<v8:item>
 					<v8:lang>en</v8:lang>
-					<v8:content>Group form pages</v8:content>
+					<v8:content>Any additional information</v8:content>
 				</v8:item>
 				<v8:item>
 					<v8:lang>ru</v8:lang>
-					<v8:content>Группа страницы формы</v8:content>
+					<v8:content>Любая дополнительная информация</v8:content>
+				</v8:item>
+			</InputHint>
+			<ContextMenu name="CommentContextMenu" id="12"/>
+			<ExtendedTooltip name="CommentExtendedTooltip" id="53"/>
+		</InputField>
+		<UsualGroup name="ResponsibleInvalid" id="107">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Responsible invalid</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Ответственный недействительный</v8:content>
 				</v8:item>
 			</Title>
 			<ToolTip>
 				<v8:item>
 					<v8:lang>en</v8:lang>
-					<v8:content>Form pages</v8:content>
+					<v8:content>Responsible invalid</v8:content>
 				</v8:item>
 				<v8:item>
 					<v8:lang>ru</v8:lang>
-					<v8:content>Страницы формы</v8:content>
-				</v8:item>
-			</ToolTip>
-			<ExtendedTooltip name="GroupFormPagesExtendedTooltip" id="36"/>
-			<ChildItems>
-				<Page name="GroupContactInformation" id="14">
-					<Title>
-						<v8:item>
-							<v8:lang>en</v8:lang>
-							<v8:content>Addresses</v8:content>
-						</v8:item>
-						<v8:item>
-							<v8:lang>ru</v8:lang>
-							<v8:content>Адреса</v8:content>
-						</v8:item>
-					</Title>
-					<ToolTip>
-						<v8:item>
-							<v8:lang>en</v8:lang>
-							<v8:content>Group contact information</v8:content>
-						</v8:item>
-						<v8:item>
-							<v8:lang>ru</v8:lang>
-							<v8:content>Группа контактная информация</v8:content>
-						</v8:item>
-					</ToolTip>
-					<ExtendedTooltip name="ContactInformationGroupExtendedTooltip" id="50"/>
-				</Page>
-				<Page name="FolderContactRoles" id="24">
-					<Title>
-						<v8:item>
-							<v8:lang>en</v8:lang>
-							<v8:content>Roles</v8:content>
-						</v8:item>
-						<v8:item>
-							<v8:lang>ru</v8:lang>
-							<v8:content>Роли</v8:content>
-						</v8:item>
-					</Title>
-					<ToolTip>
-						<v8:item>
-							<v8:lang>en</v8:lang>
-							<v8:content>Contact person roles</v8:content>
-						</v8:item>
-						<v8:item>
-							<v8:lang>ru</v8:lang>
-							<v8:content>Роли контактного лица</v8:content>
-						</v8:item>
-					</ToolTip>
-					<ExtendedTooltip name="FolderContactRolesExtendedTooltip" id="47"/>
-					<ChildItems>
-						<Table name="ContactPersonRoles" id="25">
-							<SkipOnInput>false</SkipOnInput>
-							<HeightInTableRows>3</HeightInTableRows>
-							<Header>false</Header>
-							<AutoInsertNewRow>true</AutoInsertNewRow>
-							<EnableStartDrag>true</EnableStartDrag>
-							<EnableDrag>true</EnableDrag>
-							<DataPath>Object.ContactPersonRoles</DataPath>
-							<SearchStringLocation>None</SearchStringLocation>
-							<ViewStatusLocation>None</ViewStatusLocation>
-							<SearchControlLocation>None</SearchControlLocation>
-							<RowFilter xsi:nil="true"/>
-							<ContextMenu name="RolesOfContactPersonContextMenu" id="26"/>
-							<AutoCommandBar name="RolesOfContactPersonCommandBar" id="27"/>
-							<ExtendedTooltip name="RolesOfContactPersonExtendedTooltip" id="48"/>
-							<SearchStringAddition name="ContactPersonRolesSearchString" id="54">
-								<AdditionSource>
-									<Item>ContactPersonRoles</Item>
-									<Type>SearchStringRepresentation</Type>
-								</AdditionSource>
-								<ContextMenu name="ContactPersonRolesSearchStringContextMenu" id="55"/>
-								<ExtendedTooltip name="ContactPersonRolesSearchStringExtendedTooltip" id="56"/>
-							</SearchStringAddition>
-							<ViewStatusAddition name="ContactPersonRolesViewStatus" id="57">
-								<AdditionSource>
-									<Item>ContactPersonRoles</Item>
-									<Type>ViewStatusRepresentation</Type>
-								</AdditionSource>
-								<ContextMenu name="ContactPersonRolesViewStatusContextMenu" id="58"/>
-								<ExtendedTooltip name="ContactPersonRolesViewStatusExtendedTooltip" id="59"/>
-							</ViewStatusAddition>
-							<SearchControlAddition name="ContactPersonRolesSearchManagement" id="60">
-								<AdditionSource>
-									<Item>ContactPersonRoles</Item>
-									<Type>SearchControl</Type>
-								</AdditionSource>
-								<ContextMenu name="ContactPersonRolesSearchManagementContextMenu" id="61"/>
-								<ExtendedTooltip name="ContactPersonRolesSearchManagementExtendedTooltip" id="62"/>
-							</SearchControlAddition>
-							<ChildItems>
-								<InputField name="RolesOfContactPersonForRoleOfContactPerson" id="30">
-									<DataPath>Object.ContactPersonRoles.ContactPersonRole</DataPath>
-									<EditMode>EnterOnInput</EditMode>
-									<ContextMenu name="RolesOfContactPersonForRoleOfContactPersonContextMenu" id="31"/>
-									<ExtendedTooltip name="RolesOfContactPersonForRoleOfContactPersonExtendedTooltip" id="49"/>
-								</InputField>
-							</ChildItems>
-						</Table>
-					</ChildItems>
-				</Page>
-				<Page name="GroupAdditional" id="32">
-					<Title>
-						<v8:item>
-							<v8:lang>en</v8:lang>
-							<v8:content>Additionally</v8:content>
-						</v8:item>
-						<v8:item>
-							<v8:lang>ru</v8:lang>
-							<v8:content>Дополнительно</v8:content>
-						</v8:item>
-					</Title>
-					<ToolTip>
-						<v8:item>
-							<v8:lang>en</v8:lang>
-							<v8:content>Comment</v8:content>
-						</v8:item>
-						<v8:item>
-							<v8:lang>ru</v8:lang>
-							<v8:content>Примечание</v8:content>
-						</v8:item>
-					</ToolTip>
-					<ExtendedTooltip name="GroupAdditionalExtendedTooltip" id="52"/>
-					<ChildItems>
-						<InputField name="Comment" id="11">
-							<DataPath>Object.Comment</DataPath>
-							<TitleLocation>None</TitleLocation>
-							<EditMode>EnterOnInput</EditMode>
-							<InputHint>
-								<v8:item>
-									<v8:lang>en</v8:lang>
-									<v8:content>Comment</v8:content>
-								</v8:item>
-								<v8:item>
-									<v8:lang>ru</v8:lang>
-									<v8:content>Примечание</v8:content>
-								</v8:item>
-							</InputHint>
-							<ContextMenu name="CommentContextMenu" id="12"/>
-							<ExtendedTooltip name="CommentExtendedTooltip" id="53"/>
-						</InputField>
-						<InputField name="Ind" id="9">
-							<DataPath>Object.Ind</DataPath>
-							<EditMode>EnterOnInput</EditMode>
-							<ContextMenu name="IndividualContextMenu" id="10"/>
-							<ExtendedTooltip name="IndividualExtendedTooltip" id="42"/>
-						</InputField>
-						<InputField name="Responsible" id="15">
-							<DataPath>Object.Responsible</DataPath>
-							<ContextMenu name="ResponsibleContextMenu" id="16"/>
-							<ExtendedTooltip name="ResponsibleExtendedTooltip" id="43"/>
-						</InputField>
-						<UsualGroup name="Footer" id="63">
-							<Title>
-								<v8:item>
-									<v8:lang>en</v8:lang>
-									<v8:content>Footer</v8:content>
-								</v8:item>
-								<v8:item>
-									<v8:lang>ru</v8:lang>
-									<v8:content>Подвал</v8:content>
-								</v8:item>
-							</Title>
-							<ToolTip>
-								<v8:item>
-									<v8:lang>en</v8:lang>
-									<v8:content>Footer</v8:content>
-								</v8:item>
-								<v8:item>
-									<v8:lang>ru</v8:lang>
-									<v8:content>Подвал</v8:content>
-								</v8:item>
-							</ToolTip>
-							<Group>Horizontal</Group>
-							<Representation>None</Representation>
-							<ShowTitle>false</ShowTitle>
-							<ExtendedTooltip name="FooterExtendedTooltip" id="64"/>
-							<ChildItems>
-								<InputField name="ConnectionRegistrationDate" id="18">
-									<DataPath>Object.ConnectionRegistrationDate</DataPath>
-									<Width>10</Width>
-									<HorizontalStretch>false</HorizontalStretch>
-									<ContextMenu name="RelationRegistrationDateContextMenu" id="19"/>
-									<ExtendedTooltip name="RelationRegistrationDateExtendedTooltip" id="45"/>
-								</InputField>
-								<InputField name="ConnectionStopDate" id="20">
-									<DataPath>Object.ConnectionStopDate</DataPath>
-									<Width>10</Width>
-									<HorizontalStretch>false</HorizontalStretch>
-									<ContextMenu name="RelationEndDateContextMenu" id="21"/>
-									<ExtendedTooltip name="RelationEndDateExtendedTooltip" id="46"/>
-								</InputField>
-							</ChildItems>
-						</UsualGroup>
-					</ChildItems>
-				</Page>
-				<Page name="AdditionalAttributesPage" id="33">
-					<Title>
-						<v8:item>
-							<v8:lang>en</v8:lang>
-							<v8:content>Additional attributes</v8:content>
-						</v8:item>
-						<v8:item>
-							<v8:lang>ru</v8:lang>
-							<v8:content>Дополнительные реквизиты объекта</v8:content>
-						</v8:item>
-					</Title>
-					<ToolTip>
-						<v8:item>
-							<v8:lang>en</v8:lang>
-							<v8:content>Additional attributes</v8:content>
-						</v8:item>
-						<v8:item>
-							<v8:lang>ru</v8:lang>
-							<v8:content>Дополнительные реквизиты объекта</v8:content>
-						</v8:item>
-					</ToolTip>
-					<HorizontalStretch>true</HorizontalStretch>
-					<ExtendedTooltip name="AdditionalAttributesPageExtendedTooltip" id="51"/>
-				</Page>
-			</ChildItems>
-		</Pages>
-		<UsualGroup name="GroupLinkWithCounterparty" id="17">
-			<Title>
-				<v8:item>
-					<v8:lang>en</v8:lang>
-					<v8:content>Connection with counterparty</v8:content>
-				</v8:item>
-				<v8:item>
-					<v8:lang>ru</v8:lang>
-					<v8:content>Связь с контрагентом</v8:content>
-				</v8:item>
-			</Title>
-			<ToolTip>
-				<v8:item>
-					<v8:lang>en</v8:lang>
-					<v8:content>Connection with counterparty</v8:content>
-				</v8:item>
-				<v8:item>
-					<v8:lang>ru</v8:lang>
-					<v8:content>Связь с контрагентом</v8:content>
+					<v8:content>Ответственный недействительный</v8:content>
 				</v8:item>
 			</ToolTip>
 			<Group>Horizontal</Group>
 			<Representation>None</Representation>
 			<ShowTitle>false</ShowTitle>
-			<ExtendedTooltip name="GroupLinkWithCounterpartyExtendedTooltip" id="44"/>
+			<ExtendedTooltip name="ResponsibleInvalidExtendedTooltip" id="108"/>
+			<ChildItems>
+				<InputField name="Responsible" id="15">
+					<DataPath>Object.Responsible</DataPath>
+					<AutoMaxWidth>false</AutoMaxWidth>
+					<MaxWidth>24</MaxWidth>
+					<OpenButton>false</OpenButton>
+					<ContextMenu name="ResponsibleContextMenu" id="16"/>
+					<ExtendedTooltip name="ResponsibleExtendedTooltip" id="43"/>
+				</InputField>
+				<CheckBoxField name="Invalid" id="109">
+					<DataPath>Object.Invalid</DataPath>
+					<ToolTipRepresentation>Button</ToolTipRepresentation>
+					<CheckBoxType>Auto</CheckBoxType>
+					<ContextMenu name="InvalidContextMenu" id="110"/>
+					<ExtendedTooltip name="InvalidExtendedTooltip" id="111">
+						<Title formatted="true">
+							<v8:item>
+								<v8:lang>en</v8:lang>
+								<v8:content>Contact person marked as invalid, hiding from all the program lists, but you can see its details.
+To display the invalid list of contacts, you must enable the "Show invalid" from the submenu "More".</v8:content>
+							</v8:item>
+						</Title>
+					</ExtendedTooltip>
+				</CheckBoxField>
+			</ChildItems>
+		</UsualGroup>
+		<UsualGroup name="AdditionalAttributes" id="33">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Additional attributes</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Дополнительные реквизиты объекта</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Additional attributes</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Дополнительные реквизиты объекта</v8:content>
+				</v8:item>
+			</ToolTip>
+			<HorizontalStretch>true</HorizontalStretch>
+			<Group>Vertical</Group>
+			<ExtendedTooltip name="AdditionalAttributesExtendedTooltip" id="51"/>
 		</UsualGroup>
 	</ChildItems>
 	<Attributes>
@@ -432,47 +430,103 @@
 			<MainAttribute>true</MainAttribute>
 			<SavedData>true</SavedData>
 		</Attribute>
-		<Attribute name="SystemEmailAccount" id="2">
+		<Attribute name="RoleInputField" id="2">
 			<Title>
 				<v8:item>
 					<v8:lang>en</v8:lang>
-					<v8:content>System account of email</v8:content>
+					<v8:content>Roles</v8:content>
 				</v8:item>
 				<v8:item>
 					<v8:lang>ru</v8:lang>
-					<v8:content>Системная учетная запись электронной почты</v8:content>
+					<v8:content>Роли</v8:content>
 				</v8:item>
 			</Title>
 			<Type>
-				<v8:Type>cfg:CatalogRef.EmailAccounts</v8:Type>
+				<v8:Type>cfg:CatalogRef.ContactPersonsRoles</v8:Type>
 			</Type>
 		</Attribute>
-	</Attributes>
-	<Commands>
-		<Command name="SendEmailToContactPerson" id="1">
+		<Attribute name="RolesData" id="3">
 			<Title>
 				<v8:item>
 					<v8:lang>en</v8:lang>
-					<v8:content>Send email to contact person</v8:content>
+					<v8:content>Roles data</v8:content>
 				</v8:item>
 				<v8:item>
 					<v8:lang>ru</v8:lang>
-					<v8:content>Отправить email контактному лицу</v8:content>
+					<v8:content>Данные ролей</v8:content>
 				</v8:item>
 			</Title>
-			<ToolTip>
-				<v8:item>
-					<v8:lang>en</v8:lang>
-					<v8:content>Send email to contact person</v8:content>
-				</v8:item>
-				<v8:item>
-					<v8:lang>ru</v8:lang>
-					<v8:content>Отправить email контактному лицу</v8:content>
-				</v8:item>
-			</ToolTip>
-			<Action>SendEmailToContactPerson</Action>
-		</Command>
-	</Commands>
+			<Type>
+				<v8:Type>v8:ValueTable</v8:Type>
+			</Type>
+			<SavedData>true</SavedData>
+			<Columns>
+				<Column name="Role" id="1">
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Role</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Роль</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>cfg:CatalogRef.ContactPersonsRoles</v8:Type>
+					</Type>
+				</Column>
+				<Column name="RolePresentation" id="2">
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Role presentation</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Представление роли</v8:content>
+						</v8:item>
+					</Title>
+					<Type/>
+				</Column>
+				<Column name="RoleLength" id="3">
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Role length</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Длина роли</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>xs:decimal</v8:Type>
+						<v8:NumberQualifiers>
+							<v8:Digits>2</v8:Digits>
+							<v8:FractionDigits>0</v8:FractionDigits>
+							<v8:AllowedSign>Any</v8:AllowedSign>
+						</v8:NumberQualifiers>
+					</Type>
+				</Column>
+				<Column name="DeletionMark" id="4">
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Deletion mark</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Пометка удаления</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>xs:boolean</v8:Type>
+					</Type>
+				</Column>
+			</Columns>
+		</Attribute>
+	</Attributes>
 	<CommandInterface>
 		<NavigationPanel>
 			<Item>

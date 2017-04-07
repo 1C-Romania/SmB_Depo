@@ -74,17 +74,3 @@ Procedure WriteUpdatesReceiveLegalityConfirmation()
 EndProcedure
 
 #EndRegion
-
-
-
-
-
-
-
-
-
-
-
-
-
-

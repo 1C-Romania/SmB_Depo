@@ -188,17 +188,3 @@ Function TechnicalParametersText(OnStart)
 EndFunction
 
 #EndRegion
-
-
-
-
-
-
-
-
-
-
-
-
-
-

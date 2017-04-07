@@ -228,17 +228,3 @@ EndProcedure
 Procedure NotificationProcessing(EventName, Parameter, Source)
 	
 EndProcedure
-
-
-
-
-
-
-
-
-
-
-
-
-
-

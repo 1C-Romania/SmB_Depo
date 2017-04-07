@@ -102,17 +102,3 @@ Procedure SetLeadingEndPointAtServer(Cancel, FillError)
 EndProcedure
 
 #EndRegion
-
-
-
-
-
-
-
-
-
-
-
-
-
-

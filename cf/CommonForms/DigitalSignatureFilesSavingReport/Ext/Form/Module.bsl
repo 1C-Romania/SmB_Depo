@@ -34,17 +34,3 @@ Procedure OpenFolderWithFilesEnd(ReturnCode, Context) Export
 EndProcedure
 
 #EndRegion
-
-
-
-
-
-
-
-
-
-
-
-
-
-

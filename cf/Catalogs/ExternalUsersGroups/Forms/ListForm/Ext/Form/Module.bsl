@@ -68,17 +68,3 @@ Procedure CustomizeOrderGroupsAllExternalUsers(List)
 EndProcedure
 
 #EndRegion
-
-
-
-
-
-
-
-
-
-
-
-
-
-

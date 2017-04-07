@@ -208,17 +208,3 @@ Function AllSelectedItems()
 EndFunction	
 
 #EndRegion
-
-
-
-
-
-
-
-
-
-
-
-
-
-

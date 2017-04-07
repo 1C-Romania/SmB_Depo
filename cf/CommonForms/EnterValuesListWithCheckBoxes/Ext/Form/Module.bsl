@@ -231,16 +231,3 @@ Procedure InsertFromClipboardEnd(FoundObjects, ExecuteParameters) Export
 EndProcedure
 
 #EndRegion
-
-
-
-
-
-
-
-
-
-
-
-
-

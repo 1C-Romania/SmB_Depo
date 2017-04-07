@@ -672,9 +672,6 @@ EndFunction
 // 	* PayeeTIN       - Payee TIN                  - Max. 12 characters;
 // 	* PayerTIN      - Payer's TIN                         - Max. 12 characters;
 // 	* CompilerStatus   - Status of the Payment Document's Author - Max. 2 symbols;
-// 	* PayeeKPP       - Payee KPP                  - Max. 9 symbols.
-// 	* BKCode               - KBK                                     - Max. 20 characters;
-// 	* OKTMOCode            - OKTMOCode code                            - Max. 11 symbols;
 // 	* BasisIndicator - Tax basis            - Max. 2 symbols;
 // 	* PeriodIndicator   - Fiscal Period                        - Max. 10 symbols;
 // 	* NumberIndicator    - Document No.                         - Max. 15 symbols;
@@ -916,7 +913,7 @@ Procedure AtFillingToDoList(CurrentWorks) Export
 	Work.ID = "PrintFormsTemplates";
 	Work.ThereIsWork      = OutputToDo AND QuantityCustomLayouts > 0;
 	Work.Presentation = NStr("en='Print form templates';ru='Макеты печатных форм'");
-	Work.Count    = QuantityCustomLayouts;
+	Work.Quantity    = QuantityCustomLayouts;
 	Work.Form         = "InformationRegister.UserPrintTemplates.Form.PrintingFormsChecking";
 	Work.Owner      = "CheckCompatibilityWithCurrentVersion";
 	
@@ -1594,9 +1591,6 @@ Function PresentationsAndAttributesStructure()
 	ReturnStructure.Insert("PayeeTIN",       "PayeeTIN");
 	ReturnStructure.Insert("PayerTIN",      "PayerTIN");
 	ReturnStructure.Insert("AuthorStatus",   "DrawerStatus");
-	ReturnStructure.Insert("PayeeKPP",       "KPP");
-	ReturnStructure.Insert("BKCode",               "CBC");
-	ReturnStructure.Insert("OKTMOCode",            "OKTMO");
 	ReturnStructure.Insert("BasisIndicator", "PaytReason");
 	ReturnStructure.Insert("PeriodIndicator",   "TaxPeriod");
 	ReturnStructure.Insert("NumberIndicator",    "DocNo");
@@ -1679,9 +1673,6 @@ Procedure AddAdditionalAttributes(DataStructure)
 	DataStructure.Insert("PayeeTIN");
 	DataStructure.Insert("PayerTIN");
 	DataStructure.Insert("AuthorStatus");
-	DataStructure.Insert("PayeeKPP");
-	DataStructure.Insert("BKCode");
-	DataStructure.Insert("OKTMOCode");
 	DataStructure.Insert("BasisIndicator");
 	DataStructure.Insert("PeriodIndicator");
 	DataStructure.Insert("NumberIndicator");

@@ -624,16 +624,3 @@ Procedure RefreshWidgetLoss()
 EndProcedure
 
 #EndRegion
-
-
-
-
-
-
-
-
-
-
-
-
-

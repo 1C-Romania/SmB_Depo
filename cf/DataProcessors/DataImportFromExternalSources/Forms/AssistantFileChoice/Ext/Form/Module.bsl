@@ -1209,17 +1209,3 @@ Procedure TableOfGoToByScript()
 EndProcedure
 
 #EndRegion
-
-
-
-
-
-
-
-
-
-
-
-
-
-

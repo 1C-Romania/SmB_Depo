@@ -567,7 +567,7 @@ Make sure that the automatic data matching is perfomed correctly.</v8:content>
 											<Type>CommandBarButton</Type>
 											<OnlyInAllActions>false</OnlyInAllActions>
 											<CommandName>Form.Command.ExecuteDataImportForRow</CommandName>
-											<ExtendedTooltip name="ExecuteDataImportForRowExtendedTooltip" id="760"/>
+											<ExtendedTooltip name="ImportDataExecuteForStringsExtendedTooltip" id="760"/>
 										</Button>
 									</ChildItems>
 								</ButtonGroup>
@@ -4964,6 +4964,10 @@ Please wait...</v8:content>
 							<v8:lang>en</v8:lang>
 							<v8:content>Company</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Контрагент</v8:content>
+						</v8:item>
 					</Title>
 					<Type>
 						<v8:Type>cfg:CatalogRef.Companies</v8:Type>
@@ -5250,6 +5254,10 @@ Please wait...</v8:content>
 				<v8:item>
 					<v8:lang>en</v8:lang>
 					<v8:content>Change</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Изменить</v8:content>
 				</v8:item>
 			</Title>
 			<ToolTip>

@@ -130,16 +130,3 @@ Procedure StatementGoTo(Command)
 EndProcedure // StatementGoTo()
 
 #EndRegion
-
-
-
-
-
-
-
-
-
-
-
-
-

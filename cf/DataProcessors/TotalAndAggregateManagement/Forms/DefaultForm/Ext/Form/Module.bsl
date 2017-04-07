@@ -1472,17 +1472,3 @@ Procedure ReadInformationOnRegisters()
 EndProcedure
 
 #EndRegion
-
-
-
-
-
-
-
-
-
-
-
-
-
-

@@ -40,22 +40,22 @@ Procedure OnCreateAtServer(Cancel, StandardProcessing)
 	AdditionalReportsAndDataProcessors.OnCreateAtServer(ThisForm);
 	// End StandardSubsystems.AdditionalReportsAndDataProcessors
 	
-EndProcedure // OnCreateAtServer()
+	// StandardSubsystems.Printing
+	PrintManagement.OnCreateAtServer(ThisForm, Items.GroupPrintCommand);
+	// End StandardSubsystems.Printing
 
+EndProcedure
 
+#Region LibrariesHandlers
 
+// StandardSubsystems.Printing
+&AtClient
+Procedure Attachable_ExecutePrintCommand(Command)
+	PrintManagementClient.ExecuteConnectedPrintCommand(Command, ThisObject, Items.List);
+EndProcedure
+// End StandardSubsystems.Printing
 
-
-
-
-
-
-
-
-
-
-
-
+#EndRegion
 
 
 

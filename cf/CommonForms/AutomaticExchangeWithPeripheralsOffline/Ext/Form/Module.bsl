@@ -247,17 +247,3 @@ Function IsEquipmentForExchange()
 	Return Equipment.FindRows(New Structure("ExecuteExchange", True)).Count() > 0;
 	
 EndFunction
-
-
-
-
-
-
-
-
-
-
-
-
-
-

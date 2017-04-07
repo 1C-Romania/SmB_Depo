@@ -382,17 +382,3 @@ Procedure WriteCertificateToCatalog()
 EndProcedure
 
 #EndRegion
-
-
-
-
-
-
-
-
-
-
-
-
-
-

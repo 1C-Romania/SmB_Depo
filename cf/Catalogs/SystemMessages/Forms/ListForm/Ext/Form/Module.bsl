@@ -178,17 +178,3 @@ Procedure DeleteMessageDirectly(Val Messages)
 EndProcedure
 
 #EndRegion
-
-
-
-
-
-
-
-
-
-
-
-
-
-

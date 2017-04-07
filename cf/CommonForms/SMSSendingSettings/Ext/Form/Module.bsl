@@ -22,17 +22,3 @@ Procedure DescriptionMTSServiceClick(Item)
 EndProcedure
 
 #EndRegion
-
-
-
-
-
-
-
-
-
-
-
-
-
-

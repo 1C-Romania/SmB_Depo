@@ -135,6 +135,10 @@
 							<v8:lang>en</v8:lang>
 							<v8:content>Company</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Организация</v8:content>
+						</v8:item>
 					</InputHint>
 					<ContextMenu name="FilterCompanyContextMenu" id="46"/>
 					<ExtendedTooltip name="FilterCompanyExtendedTooltip" id="135"/>
@@ -684,10 +688,14 @@
 											<v8:lang>en</v8:lang>
 											<v8:content>Company</v8:content>
 										</v8:item>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Организация</v8:content>
+										</v8:item>
 									</Title>
 									<Width>20</Width>
-									<ContextMenu name="CounterpartyContextMenu" id="9"/>
-									<ExtendedTooltip name="CounterpartyExtendedTooltip" id="163"/>
+									<ContextMenu name="CompanyContextMenu" id="9"/>
+									<ExtendedTooltip name="CompanyExtendedTooltip" id="163"/>
 								</LabelField>
 								<CheckBoxField name="Closed" id="34">
 									<DataPath>List.Closed</DataPath>
@@ -1141,8 +1149,8 @@
 											<MultiLine>true</MultiLine>
 											<BackColor>style:FormBackColor</BackColor>
 											<BorderColor>style:FormBackColor</BorderColor>
-											<ContextMenu name="ListDetailsCounterpartyFactAddressContextMenu" id="101"/>
-											<ExtendedTooltip name="ListDetailsCounterpartyFactAddressExtendedTooltip" id="187"/>
+											<ContextMenu name="DetailsListCounterpartyFactAddressContextMenu" id="101"/>
+											<ExtendedTooltip name="DetailsListCounterpartyFactAddressExtendedTooltip" id="187"/>
 										</InputField>
 										<InputField name="ListDetailsCounterpartyLegalAddress" id="102">
 											<DataPath>CounterpartyLegalAddressInformation</DataPath>
@@ -1500,6 +1508,10 @@
 				<v8:item>
 					<v8:lang>en</v8:lang>
 					<v8:content>Company</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Организация</v8:content>
 				</v8:item>
 			</Title>
 			<Type>

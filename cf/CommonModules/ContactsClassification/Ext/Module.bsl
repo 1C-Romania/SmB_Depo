@@ -344,3 +344,117 @@ Procedure ChangeSelectionItemColor(Form, Mark, ItemName) Export
 EndProcedure
 
 #EndRegion
+
+#Region Counterparties
+
+Function CounterpartyRelationshipTypeByOperationKind(OperationKind) Export
+	
+	Result = New Structure("Customer, Supplier, OtherRelationship", False, False, False);
+	
+	If TypeOf(OperationKind) = Type("EnumRef.OperationKindsSupplierInvoice") Then
+		
+		If OperationKind = Enums.OperationKindsSupplierInvoice.ReceiptFromVendor Then
+			Result.Supplier = True;
+		ElsIf OperationKind = Enums.OperationKindsSupplierInvoice.ReceptionForCommission Then
+			Result.Supplier = True;
+		ElsIf OperationKind = Enums.OperationKindsSupplierInvoice.ReceptionIntoProcessing Then
+			Result.Customer = True;
+		ElsIf OperationKind = Enums.OperationKindsSupplierInvoice.ReceptionForSafeCustody Then
+			Result.Customer = True;
+		ElsIf OperationKind = Enums.OperationKindsSupplierInvoice.ReturnFromCustomer Then
+			Result.Customer = True;
+		ElsIf OperationKind = Enums.OperationKindsSupplierInvoice.ReturnFromAgent Then
+			Result.Customer = True;
+		ElsIf OperationKind = Enums.OperationKindsSupplierInvoice.ReturnFromSubcontractor Then
+			Result.Supplier = True;
+		ElsIf OperationKind = Enums.OperationKindsSupplierInvoice.ReturnFromSafeCustody Then
+			Result.Customer = True;
+		EndIf;
+		
+	ElsIf TypeOf(OperationKind) = Type("EnumRef.OperationKindsCustomerInvoice") Then
+		
+		If OperationKind = Enums.OperationKindsCustomerInvoice.SaleToCustomer Then
+			Result.Customer = True;
+		ElsIf OperationKind = Enums.OperationKindsCustomerInvoice.TransferForCommission Then
+			Result.Customer = True;
+		ElsIf OperationKind = Enums.OperationKindsCustomerInvoice.TransferToProcessing Then
+			Result.Supplier = True;
+		ElsIf OperationKind = Enums.OperationKindsCustomerInvoice.TransferForSafeCustody Then
+			Result.Supplier = True;
+		ElsIf OperationKind = Enums.OperationKindsCustomerInvoice.ReturnToVendor Then
+			Result.Supplier = True;
+		ElsIf OperationKind = Enums.OperationKindsCustomerInvoice.ReturnToPrincipal Then
+			Result.Supplier = True;
+		ElsIf OperationKind = Enums.OperationKindsCustomerInvoice.ReturnFromProcessing Then
+			Result.Customer = True;
+		ElsIf OperationKind = Enums.OperationKindsCustomerInvoice.ReturnFromSafeCustody Then
+			Result.Customer = True;
+		EndIf;
+		
+	ElsIf TypeOf(OperationKind) = Type("EnumRef.OperationKindsCashReceipt") Then
+		
+		If OperationKind = Enums.OperationKindsCashReceipt.FromCustomer Then
+			Result.Customer = True;
+		ElsIf OperationKind = Enums.OperationKindsCashReceipt.FromVendor Then
+			Result.Supplier = True;
+		ElsIf OperationKind = Enums.OperationKindsCashReceipt.Other Then
+			Result.OtherRelationship = True;
+		ElsIf OperationKind = Enums.OperationKindsCashReceipt.LoanPayment Then
+			Result.OtherRelationship = True;
+		EndIf;
+		
+	ElsIf TypeOf(OperationKind) = Type("EnumRef.OperationKindsCashPayment") Then
+		
+		If OperationKind = Enums.OperationKindsCashPayment.ToCustomer Then
+			Result.Customer = True;
+		ElsIf OperationKind = Enums.OperationKindsCashPayment.Vendor Then
+			Result.Supplier = True;
+		ElsIf OperationKind = Enums.OperationKindsCashPayment.OtherSettlements Then
+			Result.OtherRelationship = True;
+		ElsIf OperationKind = Enums.OperationKindsCashPayment.LoanPayment Then
+			Result.OtherRelationship = True;
+		EndIf;
+		
+	ElsIf TypeOf(OperationKind) = Type("EnumRef.OperationKindsPaymentReceipt") Then
+		
+		If OperationKind = Enums.OperationKindsPaymentReceipt.FromCustomer Then
+			Result.Customer = True;
+		ElsIf OperationKind = Enums.OperationKindsPaymentReceipt.FromVendor Then
+			Result.Supplier = True;
+		ElsIf OperationKind = Enums.OperationKindsPaymentReceipt.OtherSettlements Then
+			Result.OtherRelationship = True;
+		ElsIf OperationKind = Enums.OperationKindsPaymentReceipt.LoanPayment Then
+			Result.OtherRelationship = True;
+		EndIf;
+		
+	ElsIf TypeOf(OperationKind) = Type("EnumRef.OperationKindsPaymentExpense") Then
+		
+		If OperationKind = Enums.OperationKindsPaymentExpense.ToCustomer Then
+			Result.Customer = True;
+		ElsIf OperationKind = Enums.OperationKindsPaymentExpense.Vendor Then
+			Result.Supplier = True;
+		ElsIf OperationKind = Enums.OperationKindsPaymentExpense.OtherSettlements Then
+			Result.OtherRelationship = True;
+		ElsIf OperationKind = Enums.OperationKindsPaymentExpense.LoanPayment Then
+			Result.OtherRelationship = True;
+		EndIf;
+		
+	ElsIf TypeOf(OperationKind) = Type("EnumRef.OperationKindsNetting") Then
+		
+		If OperationKind = Enums.OperationKindsNetting.CustomerDebtAssignment Then
+			Result.Customer = True;
+		ElsIf OperationKind = Enums.OperationKindsNetting.DebtAssignmentToVendor Then
+			Result.Supplier = True;
+		ElsIf OperationKind = Enums.OperationKindsNetting.CustomerDebtAdjustment Then
+			Result.Customer = True;
+		ElsIf OperationKind = Enums.OperationKindsNetting.VendorDebtAdjustment Then
+			Result.Supplier = True;
+		EndIf;
+		
+	EndIf;
+	
+	Return Result;
+	
+EndFunction
+
+#EndRegion

@@ -387,17 +387,3 @@ Procedure LabelOpenListOfUnpaidOrdersClick(Item)
 	
 EndProcedure // LabelOpenListOfUnpaidOrdersClick()
 // 
-
-
-
-
-
-
-
-
-
-
-
-
-
-

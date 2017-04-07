@@ -100,17 +100,3 @@ Function CurrentGroupInList(CurrentRef)
 EndFunction
 
 #EndRegion
-
-
-
-
-
-
-
-
-
-
-
-
-
-

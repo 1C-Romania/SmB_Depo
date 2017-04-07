@@ -72,16 +72,3 @@ Procedure OpenScheduleEnd(NewSchedule, CurrentData) Export
 EndProcedure
 
 #EndRegion
-
-
-
-
-
-
-
-
-
-
-
-
-

@@ -167,16 +167,3 @@ Procedure Attachable_ExecutePrintCommand(Command)
 	PrintManagementClient.ExecuteConnectedPrintCommand(Command, ThisObject, Items.List.CurrentData);
 EndProcedure
 // End StandardSubsystems.Printing
-
-
-
-
-
-
-
-
-
-
-
-
-

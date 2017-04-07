@@ -85,62 +85,6 @@
 			<field>Ind</field>
 		</field>
 		<field xsi:type="DataSetFieldField">
-			<dataPath>AddressForInformation</dataPath>
-			<field>AddressForInformation</field>
-			<title xsi:type="v8:LocalStringType">
-				<v8:item>
-					<v8:lang>en</v8:lang>
-					<v8:content>Informing address</v8:content>
-				</v8:item>
-				<v8:item>
-					<v8:lang>ru</v8:lang>
-					<v8:content>Адрес для информирования</v8:content>
-				</v8:item>
-			</title>
-		</field>
-		<field xsi:type="DataSetFieldField">
-			<dataPath>AddressOutsideOfRUSSIANFEDERATION</dataPath>
-			<field>AddressOutsideOfRUSSIANFEDERATION</field>
-			<title xsi:type="v8:LocalStringType">
-				<v8:item>
-					<v8:lang>en</v8:lang>
-					<v8:content>Address outside RF</v8:content>
-				</v8:item>
-				<v8:item>
-					<v8:lang>ru</v8:lang>
-					<v8:content>Адрес за пределами РФ</v8:content>
-				</v8:item>
-			</title>
-		</field>
-		<field xsi:type="DataSetFieldField">
-			<dataPath>AddressByRegistration</dataPath>
-			<field>AddressByRegistration</field>
-			<title xsi:type="v8:LocalStringType">
-				<v8:item>
-					<v8:lang>en</v8:lang>
-					<v8:content>Registration address</v8:content>
-				</v8:item>
-				<v8:item>
-					<v8:lang>ru</v8:lang>
-					<v8:content>Адрес по прописке</v8:content>
-				</v8:item>
-			</title>
-		</field>
-		<field xsi:type="DataSetFieldField">
-			<dataPath>AddressOfResidence</dataPath>
-			<field>AddressOfResidence</field>
-			<title xsi:type="v8:LocalStringType">
-				<v8:item>
-					<v8:lang>en</v8:lang>
-					<v8:content>Residential address</v8:content>
-				</v8:item>
-				<v8:item>
-					<v8:lang>ru</v8:lang>
-					<v8:content>Адрес проживания</v8:content>
-				</v8:item>
-			</title>
-		</field>
-		<field xsi:type="DataSetFieldField">
 			<dataPath>OtherContactInformation</dataPath>
 			<field>OtherContactInformation</field>
 			<title xsi:type="v8:LocalStringType">
@@ -300,6 +244,26 @@
 				</v8:item>
 			</title>
 		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>IndividualPostalAddress</dataPath>
+			<field>IndividualPostalAddress</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Individual postal address</v8:content>
+				</v8:item>
+			</title>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>IndividualActualAddress</dataPath>
+			<field>IndividualActualAddress</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Individual actual address</v8:content>
+				</v8:item>
+			</title>
+		</field>
 		<dataSource>DataSource1</dataSource>
 		<query>SELECT ALLOWED
 	Employees.Parent AS GroupEmployee,
@@ -310,10 +274,8 @@
 	Employees.Ind.Parent AS GroupNaturalPersons,
 	Employees.Ind.BirthDate AS BirthDate,
 	Employees.Ind.Gender AS Gender,
-	TabAddressForinformation.Presentation AS AddressForInformation,
-	TabAddressAbroadRF.Presentation AS AddressOutsideOfRUSSIANFEDERATION,
-	TAbAddressByRegistration.Presentation AS AddressByRegistration,
-	ResidentialAddressTab.Presentation AS AddressOfResidence,
+	TabPostalAddress.Presentation AS IndividualPostalAddress,
+	TabActualAddress.Presentation AS IndividualActualAddress,
 	TabAnother.Presentation AS OtherContactInformation,
 	TabPhone.Presentation AS Phone,
 	EmployeesSliceLast.Recorder AS PersonnelRecordsRecorder,
@@ -341,24 +303,18 @@
 	IndividualsDocumentsSliceLast.IsIdentityDocument
 FROM
 	Catalog.Employees AS Employees
-		LEFT JOIN Catalog.Individuals.ContactInformation AS TabAddressForinformation
-		ON Employees.Ind.Ref = TabAddressForinformation.Ref
-			AND (TabAddressForinformation.Type = VALUE(Catalog.ContactInformationTypes.IndividuaAddressForlInformation))
-		LEFT JOIN Catalog.Individuals.ContactInformation AS TabAddressAbroadRF
-		ON Employees.Ind.Ref = TabAddressAbroadRF.Ref
-			AND (TabAddressAbroadRF.Type = VALUE(Catalog.ContactInformationTypes.IndividualAddressOutsideRF))
-		LEFT JOIN Catalog.Individuals.ContactInformation AS TAbAddressByRegistration
-		ON Employees.Ind.Ref = TAbAddressByRegistration.Ref
-			AND (TAbAddressByRegistration.Type = VALUE(Catalog.ContactInformationTypes.IndividualAddressByRegistration))
-		LEFT JOIN Catalog.Individuals.ContactInformation AS ResidentialAddressTab
-		ON Employees.Ind.Ref = ResidentialAddressTab.Ref
-			AND (ResidentialAddressTab.Type = VALUE(Catalog.ContactInformationTypes.IndividualPlaceOfResidence))
+		LEFT JOIN Catalog.Individuals.ContactInformation AS TabActualAddress
+		ON Employees.Ind.Ref = TabActualAddress.Ref
+			AND (TabActualAddress.Type = VALUE(Catalog.ContactInformationKinds.IndividualActualAddress))
+		LEFT JOIN Catalog.Individuals.ContactInformation AS TabPostalAddress
+		ON Employees.Ind.Ref = TabPostalAddress.Ref
+			AND (TabPostalAddress.Type = VALUE(Catalog.ContactInformationKinds.IndividualPostalAddress))
 		LEFT JOIN Catalog.Individuals.ContactInformation AS TabPhone
 		ON Employees.Ind.Ref = TabPhone.Ref
-			AND (TabPhone.Type = VALUE(Catalog.ContactInformationTypes.IndividualPhone))
+			AND (TabPhone.Type = VALUE(Catalog.ContactInformationKinds.IndividualPhone))
 		LEFT JOIN Catalog.Individuals.ContactInformation AS TabAnother
 		ON Employees.Ind.Ref = TabAnother.Ref
-			AND (TabAnother.Type = VALUE(Catalog.ContactInformationTypes.OtherIndInfo))
+			AND (TabAnother.Type = VALUE(Catalog.ContactInformationKinds.IndividualOtherInformation))
 		LEFT JOIN InformationRegister.Employees.SliceLast AS EmployeesSliceLast
 		ON Employees.Ref = EmployeesSliceLast.Employee
 		LEFT JOIN InformationRegister.IndividualsDescriptionFull.SliceLast AS IndividualsDescriptionFullSliceLast

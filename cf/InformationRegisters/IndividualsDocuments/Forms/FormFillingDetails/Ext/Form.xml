@@ -1,0 +1,165 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<Form xmlns="http://v8.1c.ru/8.3/xcf/logform" xmlns:app="http://v8.1c.ru/8.2/managed-application/core" xmlns:cfg="http://v8.1c.ru/8.1/data/enterprise/current-config" xmlns:dcscor="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:dcsset="http://v8.1c.ru/8.1/data-composition-system/settings" xmlns:ent="http://v8.1c.ru/8.1/data/enterprise" xmlns:lf="http://v8.1c.ru/8.2/managed-application/logform" xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows" xmlns:xr="http://v8.1c.ru/8.3/xcf/readable" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.2">
+	<Title>
+		<v8:item>
+			<v8:lang>en</v8:lang>
+			<v8:content>Individual's document</v8:content>
+		</v8:item>
+		<v8:item>
+			<v8:lang>ru</v8:lang>
+			<v8:content>Документ физического лица</v8:content>
+		</v8:item>
+	</Title>
+	<WindowOpeningMode>LockOwnerWindow</WindowOpeningMode>
+	<AutoTitle>false</AutoTitle>
+	<CommandBarLocation>Top</CommandBarLocation>
+	<VerticalScroll>useIfNecessary</VerticalScroll>
+	<AutoCommandBar name="FormCommandBar" id="-1"/>
+	<Events>
+		<Event name="AfterWrite">AfterWrite</Event>
+		<Event name="OnCreateAtServer">OnCreateAtServer</Event>
+	</Events>
+	<ChildItems>
+		<InputField name="DocumentKind" id="1">
+			<DataPath>Record.DocumentKind</DataPath>
+			<DefaultItem>true</DefaultItem>
+			<SkipOnInput>true</SkipOnInput>
+			<OpenButton>false</OpenButton>
+			<ContextMenu name="DocumentKindContextMenu" id="2"/>
+			<ExtendedTooltip name="DocumentKindExtendedTooltip" id="3"/>
+			<Events>
+				<Event name="OnChange">DocumentKindOnChange</Event>
+			</Events>
+		</InputField>
+		<UsualGroup name="GroupSeriesAndNumber" id="4">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Series and number</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Серия и номер</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Series and number</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Серия и номер</v8:content>
+				</v8:item>
+			</ToolTip>
+			<HorizontalStretch>false</HorizontalStretch>
+			<Group>Horizontal</Group>
+			<Representation>None</Representation>
+			<United>false</United>
+			<ShowTitle>false</ShowTitle>
+			<ExtendedTooltip name="GroupSeriesAndNumberExtendedTooltip" id="5"/>
+			<ChildItems>
+				<UsualGroup name="GroupNestedSeriesNumber" id="6">
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Group nested series number</v8:content>
+						</v8:item>
+					</Title>
+					<ToolTip>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Group nested series number</v8:content>
+						</v8:item>
+					</ToolTip>
+					<Group>Horizontal</Group>
+					<Representation>None</Representation>
+					<ShowTitle>false</ShowTitle>
+					<ExtendedTooltip name="GroupNestedSeriesNumberExtendedTooltip" id="7"/>
+					<ChildItems>
+						<InputField name="Series" id="8">
+							<DataPath>Record.Series</DataPath>
+							<ContextMenu name="SeriesContextMenu" id="9"/>
+							<ExtendedTooltip name="SeriesExtendedTooltip" id="10"/>
+						</InputField>
+						<InputField name="Number" id="11">
+							<DataPath>Record.Number</DataPath>
+							<ContextMenu name="NumberContextMenu" id="12"/>
+							<ExtendedTooltip name="NumberExtendedTooltip" id="13"/>
+						</InputField>
+					</ChildItems>
+				</UsualGroup>
+			</ChildItems>
+		</UsualGroup>
+		<UsualGroup name="GroupIssueDateAndValidatePeriod" id="14">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Issue date and validate period</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Дата выдачи и срок действия</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Issue date and validate period</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Дата выдачи и срок действия</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Group>Horizontal</Group>
+			<Representation>None</Representation>
+			<ShowTitle>false</ShowTitle>
+			<ExtendedTooltip name="GroupIssueDateAndValidatePeriodExtendedTooltip" id="15"/>
+			<ChildItems>
+				<InputField name="IssueDate" id="16">
+					<DataPath>Record.IssueDate</DataPath>
+					<ContextMenu name="IssueDateContextMenu" id="17"/>
+					<ExtendedTooltip name="IssueDateExtendedTooltip" id="18"/>
+				</InputField>
+				<InputField name="ValidityPeriod" id="19">
+					<DataPath>Record.ValidityPeriod</DataPath>
+					<ContextMenu name="ValidityPeriodContextMenu" id="20"/>
+					<ExtendedTooltip name="ValidityPeriodExtendedTooltip" id="21"/>
+				</InputField>
+			</ChildItems>
+		</UsualGroup>
+		<InputField name="WhoIssued" id="22">
+			<DataPath>Record.WhoIssued</DataPath>
+			<ContextMenu name="WhoIssuedContextMenu" id="23"/>
+			<ExtendedTooltip name="WhoIssuedExtendedTooltip" id="24"/>
+		</InputField>
+		<InputField name="DepartmentCode" id="25">
+			<DataPath>Record.DepartmentCode</DataPath>
+			<ContextMenu name="DepartmentCodeContextMenu" id="26"/>
+			<ExtendedTooltip name="DepartmentCodeExtendedTooltip" id="27"/>
+		</InputField>
+		<CheckBoxField name="IsIdentityDocument" id="28">
+			<DataPath>Record.IsIdentityDocument</DataPath>
+			<Visible>false</Visible>
+			<CheckBoxType>Auto</CheckBoxType>
+			<ContextMenu name="IsIdentityDocumentContextMenu" id="29"/>
+			<ExtendedTooltip name="IsIdentityDocumentExtendedTooltip" id="30"/>
+		</CheckBoxField>
+	</ChildItems>
+	<Attributes>
+		<Attribute name="Record" id="1">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Record</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>cfg:InformationRegisterRecordManager.IndividualsDocuments</v8:Type>
+			</Type>
+			<MainAttribute>true</MainAttribute>
+			<SavedData>true</SavedData>
+		</Attribute>
+	</Attributes>
+</Form>

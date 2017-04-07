@@ -1893,154 +1893,6 @@ Function PrintForm(ObjectsArray, PrintObjects, TemplateName)
 			TemplateArea.Parameters.Fill(ParameterValues);
 			SpreadsheetDocument.Put(TemplateArea);
 			
-		ElsIf TemplateName = "M11" Then
-			
-			Query.Text = 
-			"SELECT
-			|	InventoryTransfer.Date AS DocumentDate,
-			|	InventoryTransfer.Company AS Company,
-			|	InventoryTransfer.StructuralUnit AS Sender,
-			|	InventoryTransfer.StructuralUnitPayee AS Recipient,
-			|	InventoryTransfer.GLExpenseAccount.Code AS CorrAccount,
-			|	InventoryTransfer.Number,
-			|	InventoryTransfer.Company.Prefix AS Prefix,
-			|	InventoryTransfer.Released,
-			|	InventoryTransfer.ReleasedPosition
-			|FROM
-			|	Document.InventoryTransfer AS InventoryTransfer
-			|WHERE
-			|	InventoryTransfer.Ref = &CurrentDocument
-			|;
-			|
-			|////////////////////////////////////////////////////////////////////////////////
-			|SELECT
-			|	InventoryTransfer.LineNumber AS LineNumber,
-			|	InventoryTransfer.ProductsAndServices AS ReferenceProductsAndServices,
-			|	InventoryTransfer.Characteristic AS RefCharacteristic,
-			|	InventoryTransfer.ProductsAndServices.DescriptionFull AS InventoryItem,
-			|	InventoryTransfer.ProductsAndServices.SKU AS SKU,
-			|	InventoryTransfer.Quantity AS Quantity,
-			|	InventoryTransfer.Reserve AS Reserve,
-			|	InventoryTransfer.CustomerOrder AS CustomerOrder,
-			|	InventoryTransfer.Characteristic,
-			|	InventoryTransfer.MeasurementUnit.Description,
-			|	InventoryTransfer.MeasurementUnit.Code,
-			|	InventoryTransfer.ProductsAndServices.InventoryGLAccount.Code AS Account,
-			|	InventoryTransfer.ProductsAndServices.Code AS ProductsAndServicesNumber
-			|INTO DocumentTable
-			|FROM
-			|	Document.InventoryTransfer.Inventory AS InventoryTransfer
-			|WHERE
-			|	InventoryTransfer.Ref = &CurrentDocument
-			|;
-			|
-			|////////////////////////////////////////////////////////////////////////////////
-			|SELECT
-			|	DocumentTable.LineNumber,
-			|	DocumentTable.ReferenceProductsAndServices,
-			|	DocumentTable.RefCharacteristic,
-			|	DocumentTable.InventoryItem,
-			|	DocumentTable.SKU,
-			|	DocumentTable.Quantity,
-			|	DocumentTable.Reserve,
-			|	DocumentTable.CustomerOrder,
-			|	DocumentTable.Characteristic,
-			|	DocumentTable.MeasurementUnitDescription,
-			|	DocumentTable.MeasurementUnitCode,
-			|	DocumentTable.Account,
-			|	DocumentTable.ProductsAndServicesNumber,
-			|	CASE
-			|		WHEN &CurrencyPriceKind = NationalCurrency.Value
-			|			THEN ISNULL(ProductsAndServicesPricesSliceLast.Price, 0)
-			|		ELSE ISNULL(ProductsAndServicesPricesSliceLast.Price, 0) * CurrencyRatesSliceLast.ExchangeRate / CurrencyRatesSliceLast.Multiplicity
-			|	END AS Price,
-			|	CASE
-			|		WHEN &CurrencyPriceKind = NationalCurrency.Value
-			|			THEN ISNULL(ProductsAndServicesPricesSliceLast.Price * DocumentTable.Quantity, 0)
-			|		ELSE ISNULL(ProductsAndServicesPricesSliceLast.Price * DocumentTable.Quantity, 0) * CurrencyRatesSliceLast.ExchangeRate / CurrencyRatesSliceLast.Multiplicity
-			|	END AS Amount
-			|FROM
-			|	DocumentTable AS DocumentTable
-			|		LEFT JOIN InformationRegister.ProductsAndServicesPrices.SliceLast(
-			|				&DocumentDate,
-			|				Actuality
-			|					AND PriceKind = &PriceKind) AS ProductsAndServicesPricesSliceLast
-			|		ON DocumentTable.ReferenceProductsAndServices = ProductsAndServicesPricesSliceLast.ProductsAndServices
-			|			AND DocumentTable.RefCharacteristic = ProductsAndServicesPricesSliceLast.Characteristic,
-			|	InformationRegister.CurrencyRates.SliceLast(&DocumentDate, Currency = &CurrencyPriceKind) AS CurrencyRatesSliceLast,
-			|	Constant.NationalCurrency AS NationalCurrency
-			|
-			|ORDER BY
-			|	DocumentTable.LineNumber";
-			
-			RetailDocumentKind = CurrentDocument.StructuralUnitPayee.RetailPriceKind;
-			
-			If Not ValueIsFilled(RetailDocumentKind) Then
-				
-				RetailDocumentKind = Catalogs.PriceKinds.Accounting;
-				
-			EndIf;
-			
-			Query.SetParameter("PriceKind", 			RetailDocumentKind);
-			Query.SetParameter("CurrencyPriceKind", 		?(ValueIsFilled(RetailDocumentKind.PriceCurrency), RetailDocumentKind.PriceCurrency, Constants.NationalCurrency.Get()));
-			Query.SetParameter("DocumentDate", 		CurrentDocument.Date);
-			
-			ResultsArray = Query.ExecuteBatch();
-			
-			Header = ResultsArray[0].Select();
-			Header.Next();
-			
-			LinesSelectionInventory = ResultsArray[2].Select();
-			
-			SpreadsheetDocument.PrintParametersName = "PRINT_PARAMETERS_InventoryTransfer_InventoryTransfer_M11";
-			
-			Template = PrintManagement.PrintedFormsTemplate("Document.InventoryTransfer.PF_MXL_M11");
-			
-			InfoAboutCompany = SmallBusinessServer.InfoAboutLegalEntityIndividual(Header.Company, Header.DocumentDate);
-			
-			If Header.DocumentDate < Date('20110101') Then
-				DocumentNumber = SmallBusinessServer.GetNumberForPrinting(Header.Number, Header.Prefix);
-			Else
-				DocumentNumber = ObjectPrefixationClientServer.GetNumberForPrinting(Header.Number, True, True);
-			EndIf;
-			
-			TemplateArea = Template.GetArea("Header");
-			TemplateArea.Parameters.Title =
-				"REQUISITION-INVOICE No "
-			  + DocumentNumber
-			  + " from "
-			  + Format(Header.DocumentDate, "DLF=DD");
-			
-			TemplateArea.Parameters.Fill(Header);
-			TemplateArea.Parameters.OKATOCode                  = InfoAboutCompany.CodeByOKPO;
-			TemplateArea.Parameters.CompanyPresentation = SmallBusinessServer.CompaniesDescriptionFull(InfoAboutCompany);
-			TemplateArea.Parameters.CompilationDate          = Format(Header.DocumentDate, "DF=dd.MM.yy");
-			
-			SpreadsheetDocument.Put(TemplateArea);
-			
-			TemplateArea = Template.GetArea("String");
-			
-			While LinesSelectionInventory.Next() Do
-			
-				TemplateArea.Parameters.Fill(LinesSelectionInventory);
-				TemplateArea.Parameters.InventoryItem = SmallBusinessServer.GetProductsAndServicesPresentationForPrinting(LinesSelectionInventory.InventoryItem, LinesSelectionInventory.Characteristic, LinesSelectionInventory.SKU);
-				
-				SpreadsheetDocument.Put(TemplateArea);
-				
-			EndDo;
-			
-			TemplateArea = Template.GetArea("Footer");
-			
-			ParameterValues = New Structure;
-			
-			SNPReleaseMade = "";
-			SmallBusinessServer.SurnameInitialsByName(SNPReleaseMade, String(Header.Released));
-			ParameterValues.Insert("SNPReleaseMade", SNPReleaseMade);
-			ParameterValues.Insert("ReleaseMadePosition", Header.ReleasedPosition);
-			
-			TemplateArea.Parameters.Fill(ParameterValues);
-			SpreadsheetDocument.Put(TemplateArea);
-			
 		ElsIf TemplateName = "MerchandiseFillingFormSender" Then
 			
 			Query.Text = 
@@ -2272,20 +2124,22 @@ EndFunction // PrintForm()
 //
 Procedure Print(ObjectsArray, PrintParameters, PrintFormsCollection, PrintObjects, OutputParameters) Export
 	
-	If PrintManagement.NeedToPrintTemplate(PrintFormsCollection, "M11") Then
-		PrintManagement.OutputSpreadsheetDocumentToCollection(PrintFormsCollection, "M11", "M-11", PrintForm(ObjectsArray, PrintObjects, "M11"));
-	EndIf;
-	
 	If PrintManagement.NeedToPrintTemplate(PrintFormsCollection, "InventoryTransfer") Then
+		
 		PrintManagement.OutputSpreadsheetDocumentToCollection(PrintFormsCollection, "InventoryTransfer", "Inventory transfer", PrintForm(ObjectsArray, PrintObjects, "InventoryTransfer"));
+		
 	EndIf;
 	
 	If PrintManagement.NeedToPrintTemplate(PrintFormsCollection, "MerchandiseFillingFormSender") Then
+		
 		PrintManagement.OutputSpreadsheetDocumentToCollection(PrintFormsCollection, "MerchandiseFillingFormSender", "Merchandise filling form", PrintForm(ObjectsArray, PrintObjects, "MerchandiseFillingFormSender"));
+		
 	EndIf;
 	
 	If PrintManagement.NeedToPrintTemplate(PrintFormsCollection, "MerchandiseFillingFormRecipient") Then
+		
 		PrintManagement.OutputSpreadsheetDocumentToCollection(PrintFormsCollection, "MerchandiseFillingFormRecipient", "Merchandise filling form", PrintForm(ObjectsArray, PrintObjects, "MerchandiseFillingFormRecipient"));
+		
 	EndIf;
 	
 	// parameters of sending printing forms by email
@@ -2299,13 +2153,6 @@ EndProcedure
 //   PrintCommands - ValueTable - see fields' content in the PrintManagement.CreatePrintCommandsCollection function.
 //
 Procedure AddPrintCommands(PrintCommands) Export
-	
-	PrintCommand = PrintCommands.Add();
-	PrintCommand.ID = "M11";
-	PrintCommand.Presentation = NStr("en='M11 (Shipment request)';ru='М11 (Требование-накладная)'");
-	PrintCommand.FormsList = "DocumentForm,ListForm";
-	PrintCommand.CheckPostingBeforePrint = False;
-	PrintCommand.Order = 4;
 	
 	PrintCommand = PrintCommands.Add();
 	PrintCommand.ID = "InventoryTransfer";

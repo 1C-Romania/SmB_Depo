@@ -577,7 +577,7 @@ EndProcedure
 Function LegalEntityIndividualPresentation(LegalEntityIndividual)
 	
 	LegalEntityIndividualData = ElectronicDocumentsOverridable.GetDataLegalIndividual(LegalEntityIndividual);
-	LegalEntityIndividualPresentation = ElectronicDocumentsOverridable.CompaniesDescriptionFull(LegalEntityIndividualData,"FullDescr,TIN,KPP");
+	LegalEntityIndividualPresentation = ElectronicDocumentsOverridable.CompaniesDescriptionFull(LegalEntityIndividualData,"FullDescr,TIN");
 	
 	Return LegalEntityIndividualPresentation;
 	
@@ -688,9 +688,7 @@ Function EDDataFile(LinkToED)
 				OR LinkToED.EDKind = Enums.EDKinds.NotificationAboutClarification
 				OR LinkToED.EDKind = Enums.EDKinds.TORG12Seller
 				OR LinkToED.EDKind = Enums.EDKinds.ActPerformer
-				OR LinkToED.EDKind = Enums.EDKinds.AgreementAboutCostChangeSender
-				OR LinkToED.EDKind = Enums.EDKinds.CustomerInvoiceNote
-				OR LinkToED.EDKind = Enums.EDKinds.CorrectiveInvoiceNote Then
+				OR LinkToED.EDKind = Enums.EDKinds.AgreementAboutCostChangeSender Then
 			
 				DataFileName = FileName;
 				

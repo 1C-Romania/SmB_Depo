@@ -1,9 +1,18 @@
 ﻿#If Server Or ThickClientOrdinaryApplication Or ExternalConnection Then
 
-Var RefTreaty;		 // IN variable new ref for contract creation is stored.
-Var ContactPersonRef; // The variable stores the reference for creation of a new contact person.
-
 #Region EventsHandlers
+
+Procedure Filling(FillingData, FillingText, StandardProcessing)
+	
+	If TypeOf(FillingData) = Type("Structure") And Not IsFolder Then
+		
+		FillPropertyValues(ThisObject, FillingData);
+		
+	EndIf;
+	
+	FillByDefault();
+	
+EndProcedure
 
 Procedure FillCheckProcessing(Cancel, CheckedAttributes)
 	
@@ -17,102 +26,213 @@ Procedure FillCheckProcessing(Cancel, CheckedAttributes)
 	
 EndProcedure
 
-// Procedure - BeforeWrite event handler.
-//
 Procedure BeforeWrite(Cancel)
 	
-	AdditionalProperties.Insert("YouNeedToWriteInRegisterOnWrite", False);
+	// 1. Actions which are always executed, including the exchange of data
 	
+	AdditionalProperties.Insert("NeedToWriteInRegisterOnWrite", False);
+	
+	// No execute action in the data exchange
 	If DataExchange.Load Then
 		Return;
 	EndIf;
 	
+	If Not IsNew() Then
+		CheckChangePossibility(Cancel);
+	EndIf;
+	
+	If Cancel Then
+		Return;
+	EndIf;
+	
+	If Not (AdditionalProperties.Property("RegisterCounterpartyDuplicates") And AdditionalProperties.RegisterCounterpartyDuplicates = False) Then
+		RegisterCounterpartyDuplicates();
+	EndIf;
+		
 	If Not IsFolder AND IsNew() Then
 		CreationDate = CurrentDate();
 	EndIf;
+	If Not IsFolder Then
+		GenerateBasicInformation();
+	EndIf;
 	
+
 	RefTreaty = Undefined;
 	
-	// It is required to fill main contract
+	// Fill default contract: substitute any existing or create a new
 	If Not IsFolder AND Not ValueIsFilled(ContractByDefault) Then
 		
-		If IsNew() Then
+		NeedCreateContract	= True;
+		
+		If Not IsNew() Then
 			
-			// Create a ref to the contract which will
-			// be created after counterparty write and write it in attribute ContractByDefault
-			RefTreaty = Catalogs.CounterpartyContracts.GetRef();
-			ContractByDefault = RefTreaty;
-			
-		Else
-			
-			// Try to find already created contract
-			Query = New Query(
-			"SELECT
-			|	CounterpartyContracts.Ref AS Contract
-			|FROM
-			|	Catalog.CounterpartyContracts AS CounterpartyContracts
-			|WHERE
-			|	CounterpartyContracts.Owner = &Owner");
+			Query = New Query;
+			Query.Text = 
+				"SELECT TOP 1
+				|	CounterpartyContracts.Ref AS Contract
+				|FROM
+				|	Catalog.CounterpartyContracts AS CounterpartyContracts
+				|WHERE
+				|	CounterpartyContracts.Owner = &Owner
+				|	AND CounterpartyContracts.DeletionMark = FALSE
+				|
+				|ORDER BY
+				|	CounterpartyContracts.ContractNo DESC";
 			
 			Query.SetParameter("Owner", Ref);
-			Selection = Query.Execute().Select();
 			
-			If Selection.Next() Then
-				// If found, then we take the first one found
+			QueryResult = Query.Execute();
+			
+			If Not QueryResult.IsEmpty() Then
+				
+				Selection = QueryResult.Select();
+				Selection.Next();
 				ContractByDefault = Selection.Contract;
-			Else
-				// If didn't find - create new
-				ContractByDefault = CreateDefaultContract();
+				
+				NeedCreateContract = False;
+				
 			EndIf;
 			
 		EndIf;
 		
+		If NeedCreateContract Then
+			ContractByDefault = Catalogs.CounterpartyContracts.GetRef();
+			AdditionalProperties.Insert("NewMainContract", ContractByDefault);
+		EndIf;
+		
 	EndIf;
 	
-	If Not IsFolder
-		AND AdditionalProperties.Property("ContactPersonData")
-		AND TypeOf(AdditionalProperties.ContactPersonData) = Type("Structure") Then
-		
-		ContactPersonRef = Catalogs.ContactPersons.GetRef();
-		ContactPerson = ContactPersonRef;
-		
-	EndIf;
+	BringDataToConsistentState();
 	
 EndProcedure // BeforeWrite()
 
-// Procedure - event handler OnWrite.
-//
 Procedure OnWrite(Cancel)
 	
-	If AdditionalProperties.YouNeedToWriteInRegisterOnWrite Then
-		Catalogs.Counterparties.ExecuteRegisterRecordsOnRegisterTakes(Ref, TIN, KPP, False);
+	If AdditionalProperties.NeedToWriteInRegisterOnWrite Then
+		Catalogs.Counterparties.ExecuteRegisterRecordsOnRegisterTakes(Ref, TIN, False);
 	EndIf;
 	
 	If DataExchange.Load Then
 		Return;
 	EndIf;
 	
-	// Create the counterparty contract by reference created in event BeforeWrite
-	If RefTreaty <> Undefined Then
-		CreateDefaultContract();
+	// Create a counterparty contract by reference created in the event BeforeWrite()
+	If Not IsFolder And AdditionalProperties.Property("NewMainContract") Then
+		
+		ContractObject = Catalogs.CounterpartyContracts.CreateItem();
+		ContractObject.Fill(Ref);
+		
+		ContractObject.SetNewObjectRef(AdditionalProperties.NewMainContract);
+		ContractObject.Write();
+		
+		AdditionalProperties.Delete("NewMainContract");
+		
 	EndIf;
 	
-	// Create a contact person by reference created in event BeforeWrite
-	If ContactPersonRef <> Undefined Then
-		CreateContactPersonByStRegistriesData();
-	EndIf;
-	
-EndProcedure // OnRecord()
+EndProcedure // OnWrite()
 
-// Event handler OnCopy
-//
 Procedure OnCopy(CopiedObject)
 	
 	If Not IsFolder Then
-		TIN = "";
-		BankAccountByDefault = Undefined;
-		ContractByDefault = Undefined;
+		BankAccountByDefault	= Undefined;
+		ContractByDefault		= Undefined;
+		ContactPerson			= Undefined;
 	EndIf;
+	
+EndProcedure
+
+Procedure BeforeDelete(Cancel)
+	
+	If DataExchange.Load Then
+		Return;
+	EndIf;
+	
+	DeleteDuplicateRegistrationBeforeDelete();
+	
+EndProcedure
+
+#EndRegion
+
+#Region Interface
+
+// Procedure fills an auxiliary attribute "BasicInformation"
+//
+Procedure GenerateBasicInformation() Export
+	
+	RowsArray = New Array;
+	
+	If Not IsBlankString(DescriptionFull) Then
+		RowsArray.Add(DescriptionFull);
+	EndIf;
+	
+	If Not IsBlankString(TIN) Then
+		RowsArray.Add(NStr("ru='ИНН'; en = 'TIN'") + " " + TIN);
+	EndIf;
+	
+	CI = ContactInformation.Unload();
+	CI.Sort("Kind");
+	For Each RowCI In CI Do
+		If IsBlankString(RowCI.Presentation) Then
+			Continue;
+		EndIf;
+		RowsArray.Add(RowCI.Presentation);
+	EndDo;
+	
+	If AdditionalProperties.Property("BasicInformationContactPersons") Then
+		
+		CommonUseClientServer.SupplementArray(RowsArray, AdditionalProperties.BasicInformationContactPersons);
+		
+	Else
+		
+		Query = New Query;
+		Query.Text = 
+			"SELECT
+			|	ContactPersons.Description AS Description,
+			|	ContactPersons.ContactInformation.(
+			|		Presentation AS Presentation,
+			|		Kind AS KindCI
+			|	)
+			|FROM
+			|	Catalog.ContactPersons AS ContactPersons
+			|WHERE
+			|	ContactPersons.Owner = &Counterparty
+			|	AND ContactPersons.DeletionMark = FALSE
+			|
+			|ORDER BY
+			|	Description,
+			|	KindCI";
+		
+		Query.SetParameter("Counterparty", Ref);
+		
+		SelectionCP = Query.Execute().Select();
+		While SelectionCP.Next() Do
+			
+			If RowsArray.Count() > 0 Then
+				RowsArray.Add(Chars.LF);
+			EndIf;
+			RowsArray.Add(SelectionCP.Description);
+			
+			SelectionCI = SelectionCP.ContactInformation.Select();
+			While SelectionCI.Next() Do
+				If IsBlankString(SelectionCI.Presentation) Then
+					Continue;
+				EndIf;
+				RowsArray.Add(SelectionCI.Presentation);
+			EndDo;
+			
+		EndDo;
+		
+	EndIf;
+	
+	If Not IsBlankString(Comment) Then
+		RowsArray.Add(Comment);
+	EndIf;
+	
+	If ValueIsFilled(Responsible) Then
+		RowsArray.Add(CommonUse.ObjectAttributeValue(Responsible, "Description"));
+	EndIf;
+	
+	BasicInformation = StrConcat(RowsArray, Chars.LF);
 	
 EndProcedure
 
@@ -120,93 +240,211 @@ EndProcedure
 
 #Region ServiceProceduresAndFunctions
 
-// The function creates a new default contract.
+Procedure FillByDefault()
+	
+	If IsFolder Then
+		Return;
+	EndIf;
+	
+	If Not ValueIsFilled(Responsible) Then
+		Responsible = SmallBusinessReUse.GetValueByDefaultUser(Users.CurrentUser(), "MainResponsible");
+	EndIf;
+	
+EndProcedure
+
+// Procedure checks the TIN correctness and fixes the counterparty duplicate existence
 //
-Function CreateDefaultContract()
+Procedure RegisterCounterpartyDuplicates()
 	
-	SetPrivilegedMode(True);
-	
-	NewContract = Catalogs.CounterpartyContracts.CreateItem();
-	
-	If RefTreaty <> Undefined Then
-		NewContract.SetNewObjectRef(RefTreaty);
+	If IsFolder Then
+		Return;
 	EndIf;
 	
-	CompanyByDefault = SmallBusinessReUse.GetValueByDefaultUser(UsersClientServer.AuthorizedUser(), "MainCompany");
-	If Not ValueIsFilled(CompanyByDefault) Then
-		CompanyByDefault = Catalogs.Companies.MainCompany;
-	EndIf;
+	NeedToCheck = IsNew();
 	
-	NewContract.Description		= "Main contract";
-	NewContract.SettlementsCurrency		= Constants.NationalCurrency.Get();
-	NewContract.Company		= CompanyByDefault;
-	NewContract.ContractKind		= Enums.ContractKinds.WithCustomer;
-	NewContract.PriceKind				= Catalogs.PriceKinds.GetMainKindOfSalePrices();
-	NewContract.Owner			= Ref;
-	NewContract.VendorPaymentDueDate = Constants.VendorPaymentDueDate.Get();
-	NewContract.CustomerPaymentDueDate = Constants.CustomerPaymentDueDate.Get();
+	IsLegalEntity = LegalEntityIndividual = Enums.CounterpartyKinds.LegalEntity;
 	
-	// Let's fill in the type of counterparty's prices
-	NewCounterpartyPriceKind = Catalogs.CounterpartyPriceKind.CounterpartyDefaultPriceKind(Ref);
+	TINModified = NeedToCheck;
 	
-	If Not ValueIsFilled(NewCounterpartyPriceKind) Then 
+	If Not NeedToCheck Then
 		
-		NewCounterpartyPriceKind = Catalogs.CounterpartyPriceKind.FindAnyFirstKindOfCounterpartyPrice(Ref);
-		
-		If Not ValueIsFilled(NewCounterpartyPriceKind) Then
+		PreviousValueStructure = CommonUse.ObjectAttributesValues(Ref, 
+																  "TIN,
+																  |LegalEntityIndividual");
+																			  
+		If Not PreviousValueStructure.TIN = TIN 
+			Or Not PreviousValueStructure.LegalEntityIndividual = LegalEntityIndividual Then
 			
-			NewCounterpartyPriceKind = Catalogs.CounterpartyPriceKind.CreateCounterpartyPriceKind(Ref, NewContract.SettlementsCurrency);
+			NeedToCheck = True; 
+			
+		EndIf;
+		
+		TINModified = Not PreviousValueStructure.TIN = TIN;
+		
+		WasLegalEntity = PreviousValueStructure.LegalEntityIndividual = Enums.CounterpartyKinds.LegalEntity;
+		
+		If NeedToCheck Then
+			
+			If Not PreviousValueStructure.TIN = TIN Then
+			
+				Block = New DataLock;
+				
+				If Not PreviousValueStructure.TIN = TIN Then
+			
+					LockItemStillTIN = Block.Add("InformationRegister.CounterpartyDuplicatesExist");
+					LockItemStillTIN.SetValue("TIN", PreviousValueStructure.TIN);
+					LockItemStillTIN.Mode = DataLockMode.Exclusive;
+					
+				EndIf;
+				
+				Block.Lock();
+				
+			EndIf;
+			
+			PreviousDuplicateArray = Catalogs.Counterparties.HasRecordsInDuplicatesRegister(TrimAll(PreviousValueStructure.TIN), Ref);
+		Else
+			PreviousDuplicateArray = New Array;
+		EndIf;
+		
+	Else
+		
+		PreviousDuplicateArray = New Array;
+		
+	EndIf;
+	
+	If NeedToCheck Then
+		
+		If TINModified Then
+			
+			Block = New DataLock;
+			LockItemByTIN = Block.Add("InformationRegister.CounterpartyDuplicatesExist");
+			LockItemByTIN.SetValue("TIN", TIN);
+			LockItemByTIN.Mode = DataLockMode.Exclusive;
+			
+			Block.Lock();
+			
+			DuplicateArray = Catalogs.Counterparties.CheckCatalogDuplicatesCounterpartiesByTIN(TrimAll(TIN), Ref, True);
+																								
+			If DuplicateArray.Count() > 0 Then
+				
+				// For new item reference will be available only OnWrite, there also we will write.
+				AdditionalProperties.NeedToWriteInRegisterOnWrite = True;
+				
+				For Each ArrayElement IN DuplicateArray Do
+					Catalogs.Counterparties.ExecuteRegisterRecordsOnRegisterTakes(ArrayElement, TIN, False);
+				EndDo;
+				
+			EndIf;
+			
+			If PreviousDuplicateArray.Count() > 0 Then
+				
+				Catalogs.Counterparties.ExecuteRegisterRecordsOnRegisterTakes(Ref, PreviousValueStructure.TIN, True);
+				
+				If PreviousDuplicateArray.Count() = 1 Then
+					Catalogs.Counterparties.ExecuteRegisterRecordsOnRegisterTakes(PreviousDuplicateArray[0], PreviousValueStructure.TIN, True);
+				EndIf;
+				
+			EndIf;
+			
+		Else
+			
+			If PreviousDuplicateArray.Count() > 0 Then
+				
+				Catalogs.Counterparties.ExecuteRegisterRecordsOnRegisterTakes(Ref, PreviousValueStructure.TIN, True);
+			
+				If PreviousDuplicateArray.Count() = 1 Then
+					Catalogs.Counterparties.ExecuteRegisterRecordsOnRegisterTakes(PreviousDuplicateArray[0], PreviousValueStructure.TIN, True);
+				EndIf;
+				
+			EndIf;
 			
 		EndIf;
 		
 	EndIf;
 	
-	NewContract.CounterpartyPriceKind = NewCounterpartyPriceKind;
-	
-	NewContract.Write();
-	
-	SetPrivilegedMode(False);
-	
-	Return NewContract.Ref;
-	
-EndFunction // CreateDefaultContract()
+EndProcedure
 
-// See description in the comments to the same name procedure in module AccessManagement.
+// Procedure clears the register CounterpartyDuplicateExist
 //
-Procedure FillAccessValueSets(Table) Export
+Procedure DeleteDuplicateRegistrationBeforeDelete()
 	
-	// Restriction logic:
-	// Read, Change: object is allowed by access type CounterpartyAccessGroups.
+	DuplicateArray = Catalogs.Counterparties.HasRecordsInDuplicatesRegister(TrimAll(TIN), Ref);
 	
-	String = Table.Add();
-	String.AccessValue = Ref;
+	If DuplicateArray.Count() = 1 Then
+		
+		Block = New DataLock;
+		LockItemStillTIN = Block.Add("InformationRegister.CounterpartyDuplicatesExist");
+		LockItemStillTIN.SetValue("TIN", TIN);
+		LockItemStillTIN.Mode = DataLockMode.Exclusive;
+		
+		Block.Lock();
+		
+		Catalogs.Counterparties.ExecuteRegisterRecordsOnRegisterTakes(DuplicateArray[0], TIN, True);
+		
+	EndIf;
 	
 EndProcedure
 
-// Function creates a contact person by data of common government registries.
+// The procedure checks the consistency of the data in IB
 //
-Function CreateContactPersonByStRegistriesData()
+// Parameters:
+//  Cancel	 - 	Boolean - Establish True in the case of inconsistent data
+//
+Procedure CheckChangePossibility(Cancel)
 	
-	DataCL = AdditionalProperties.ContactPersonData;
+	// Barring changes in analysts account for mutual counterparty if movements on registers settlements.
 	
-	NewContactPerson = Catalogs.ContactPersons.CreateItem();
-	If ContactPersonRef <> Undefined Then
-		NewContactPerson.SetNewObjectRef(ContactPersonRef);
+	PreviousValues = CommonUse.ObjectAttributesValues(Ref,
+		"DoOperationsByContracts,DoOperationsByDocuments,DoOperationsByOrders");
+		
+	If DoOperationsByContracts <> PreviousValues.DoOperationsByContracts
+		Or DoOperationsByDocuments <> PreviousValues.DoOperationsByDocuments
+		Or DoOperationsByOrders <> PreviousValues.DoOperationsByOrders Then
+		
+		Query = New Query;
+		Query.Text = 
+		"SELECT TOP 1
+		|	AccountsReceivable.Counterparty
+		|FROM
+		|	AccumulationRegister.AccountsReceivable AS AccountsReceivable
+		|WHERE
+		|	AccountsReceivable.Counterparty = &Counterparty
+		|
+		|UNION ALL
+		|
+		|SELECT TOP 1
+		|	AccountsPayable.Counterparty
+		|FROM
+		|	AccumulationRegister.AccountsPayable AS AccountsPayable
+		|WHERE
+		|	AccountsPayable.Counterparty = &Counterparty";
+		
+		Query.SetParameter("Counterparty", Ref);
+		
+		SetPrivilegedMode(True);
+		QueryResult = Query.Execute();
+		SetPrivilegedMode(False);
+		
+		If Not QueryResult.IsEmpty() Then
+			MessageText = NStr("ru = 'В базе присутствуют движения по взаиморасчетам с контрагентом. Изменение аналитики учета взаиморасчетов запрещено.'; en = 'The database contains posting of Settlement with the counterparty. Changing is prohibited.'");
+			SmallBusinessServer.ShowMessageAboutError(ThisObject, MessageText,,,, Cancel);
+		EndIf;
+		
 	EndIf;
 	
-	FillPropertyValues(NewContactPerson, DataCL);
-	NewContactPerson.Owner = Ref;
-	NewContactPerson.ConnectionRegistrationDate = CurrentDate();
-	NewContactPerson.Responsible = SmallBusinessReUse.GetValueByDefaultUser(Users.CurrentUser(), "MainResponsible");
-	NewContactPerson.Description = DataCL.Surname
-	+ ?(ValueIsFilled(DataCL.Name), " " + DataCL.Name, "")
-	+ ?(ValueIsFilled(DataCL.Patronymic), " " + DataCL.Patronymic, "");
+EndProcedure
+
+// Procedure coordinates the state some attributes of the object depending on the other
+//
+Procedure BringDataToConsistentState()
 	
-	NewContactPerson.Write();
+	If LegalEntityIndividual = Enums.CounterpartyKinds.LegalEntity Then
+		
+		Individual = Catalogs.Individuals.EmptyRef();
+		
+	EndIf;
 	
-	Return NewContactPerson.Ref;
-	
-EndFunction
+EndProcedure
 
 #EndRegion
 

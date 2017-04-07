@@ -317,7 +317,7 @@ Procedure ExtensionControlWorksWithFile(Val SuggestionText, Val SourceCode, Val 
 	Notification.AdditionalParameters.Insert("ImportingSourceCode", SourceCode);
 	Notification.AdditionalParameters.Insert("ImportAddress",        SourceAddress);
 	
-	CommonUseClient.ShowQuestionAboutFileOperationsExtensionSetting(Notification, SuggestionText, False);
+	CommonUseClient.ShowFileSystemExtensionInstallationQuestion(Notification, SuggestionText, False);
 EndProcedure
 
 // End of the dialog offering the extension to work with files.
@@ -687,7 +687,7 @@ Procedure RunBackgroundImportingAtServer(Val CodesOfStates, Val ImportingFilesDe
 		);
 	Except
 		ErrorText = NStr("en='Failed to import the address data from the files.';ru='Не удается загрузить адресные сведения из файлов.'");
-		ErrorText = ErrorText + NStr("en='It is necessary to save files from the ""1C"" site http://its.1c.en/export/fias to the disk and then export to the application.';ru='Необходимо сохранить файлы с сайта ""1С"" http://its.1c.ru/download/fias на диск, а затем загрузить в программу.'") + Chars.LF;
+		ErrorText = ErrorText + NStr("en='It is necessary to save files from the 1C site http://its.1c.en/export/fias to the disk and then export to the application.';ru='Необходимо сохранить файлы с сайта «1С» http://its.1c.ru/download/fias на диск, а затем загрузить в программу.'") + Chars.LF;
 		ErrorText = ErrorText + NStr("en='Technical information:';ru='Техническая информация:'") + Chars.LF + BriefErrorDescription(ErrorInfo());
 		ParametersOfLongOperation.Error = ErrorText;
 		Return;

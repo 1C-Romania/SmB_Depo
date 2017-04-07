@@ -454,17 +454,3 @@ Procedure DeleteVariantOnServer(Ref, PictureIndex)
 EndProcedure
 
 #EndRegion
-
-
-
-
-
-
-
-
-
-
-
-
-
-

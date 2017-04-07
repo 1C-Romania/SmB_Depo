@@ -1757,17 +1757,3 @@ EndProcedure // CartPriceBalanceReserveCharacteristicMeasurementUnitSelectionPro
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-

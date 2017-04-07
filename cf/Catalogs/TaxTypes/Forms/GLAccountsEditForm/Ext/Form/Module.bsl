@@ -96,17 +96,3 @@ Procedure GLAccountForReimbursementOnChange(Item)
 	NotifyAccountChange();
 	
 EndProcedure
-
-
-
-
-
-
-
-
-
-
-
-
-
-

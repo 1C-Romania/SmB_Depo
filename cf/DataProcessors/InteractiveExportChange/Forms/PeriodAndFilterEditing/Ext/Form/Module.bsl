@@ -94,17 +94,3 @@ Function ChoiceResult()
 EndFunction
 
 #EndRegion
-
-
-
-
-
-
-
-
-
-
-
-
-
-

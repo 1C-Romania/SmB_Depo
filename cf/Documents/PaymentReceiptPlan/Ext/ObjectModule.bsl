@@ -173,45 +173,6 @@ EndProcedure // FillByAcceptanceCertificate()
 // Parameters:
 // FillingData - Structure - Data on filling the document.
 //	
-Procedure FillByInvoiceNote(FillingData)
-	
-	Query = New Query();
-	
-	Query.SetParameter("Ref", FillingData);
-	Query.SetParameter("Date", CurrentDate());
-	
-	// Fill document header data.
-	Query.Text =
-	"SELECT
-	|	VALUE(Enum.OperationKindsCashReceipt.FromCustomer) AS OperationKind,
-	|	&Ref AS BasisDocument,
-	|	DocumentTable.Company AS Company,
-	|	DocumentTable.DocumentCurrency AS DocumentCurrency,
-	|	DocumentTable.Counterparty AS Counterparty,
-	|	DocumentTable.Contract AS Contract,
-	|	DocumentTable.DocumentAmount AS DocumentAmount
-	|FROM
-	|	Document.CustomerInvoiceNote AS DocumentTable
-	|WHERE
-	|	DocumentTable.Ref = &Ref";
-	
-	QueryResult = Query.Execute();
-	
-	If Not QueryResult.IsEmpty() Then
-		
-		Selection = QueryResult.Select();
-		Selection.Next();
-		FillPropertyValues(ThisObject, Selection);
-		
-	EndIf;
-	
-EndProcedure // FillByInvoiceNote()
-
-// Procedure of filling the document on the basis.
-//
-// Parameters:
-// FillingData - Structure - Data on filling the document.
-//	
 Procedure FillByProcessingReport(FillingData)
 	
 	Query = New Query();
@@ -261,8 +222,6 @@ Procedure Filling(FillingData, StandardProcessing)
 		FillBySalesInvoice(FillingData);
 	ElsIf TypeOf(FillingData) = Type("DocumentRef.AcceptanceCertificate") Then
 		FillByAcceptanceCertificate(FillingData);
-	ElsIf TypeOf(FillingData) = Type("DocumentRef.CustomerInvoiceNote") Then
-		FillByInvoiceNote(FillingData);
 	ElsIf TypeOf(FillingData) = Type("DocumentRef.ProcessingReport") Then
 		FillByProcessingReport(FillingData);
 	EndIf;

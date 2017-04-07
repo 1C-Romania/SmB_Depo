@@ -62,7 +62,7 @@
 				<xr:Item xsi:type="xr:MDObjectRef">Enum.ReportOutputMethod</xr:Item>
 				<xr:Item xsi:type="xr:MDObjectRef">Enum.ResponsiblePersonTypes</xr:Item>
 				<xr:Item xsi:type="xr:MDObjectRef">Enum.StructuralUnitsTypes</xr:Item>
-				<xr:Item xsi:type="xr:MDObjectRef">Enum.LegalEntityIndividual</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">Enum.CounterpartyKinds</xr:Item>
 				<xr:Item xsi:type="xr:MDObjectRef">Report.DocumentRegisterRecords</xr:Item>
 				<xr:Item xsi:type="xr:MDObjectRef">Catalog.Specifications</xr:Item>
 				<xr:Item xsi:type="xr:MDObjectRef">Constant.FunctionalOptionUsePeripherals</xr:Item>
@@ -76,7 +76,6 @@
 				<xr:Item xsi:type="xr:MDObjectRef">Constant.UpdateDateToRelease_1_2_1</xr:Item>
 				<xr:Item xsi:type="xr:MDObjectRef">Enum.CostingBases</xr:Item>
 				<xr:Item xsi:type="xr:MDObjectRef">Enum.MonthOutputTypesInDocumentDate</xr:Item>
-				<xr:Item xsi:type="xr:MDObjectRef">Enum.KPPIndicationVariants</xr:Item>
 				<xr:Item xsi:type="xr:MDObjectRef">Enum.ContractKinds</xr:Item>
 				<xr:Item xsi:type="xr:MDObjectRef">Enum.OperationKindsNetting</xr:Item>
 				<xr:Item xsi:type="xr:MDObjectRef">Enum.OperationKindsWorkOrder</xr:Item>
@@ -96,8 +95,6 @@
 				<xr:Item xsi:type="xr:MDObjectRef">Enum.OperationKindsCustomerInvoice</xr:Item>
 				<xr:Item xsi:type="xr:MDObjectRef">Enum.OperationKindsPaymentExpense</xr:Item>
 				<xr:Item xsi:type="xr:MDObjectRef">Enum.OperationKindsInventoryAssembly</xr:Item>
-				<xr:Item xsi:type="xr:MDObjectRef">Enum.OperationKindsCustomerInvoiceNote</xr:Item>
-				<xr:Item xsi:type="xr:MDObjectRef">Enum.OperationKindsSupplierInvoiceNote</xr:Item>
 				<xr:Item xsi:type="xr:MDObjectRef">Enum.BudgetTransferKinds</xr:Item>
 				<xr:Item xsi:type="xr:MDObjectRef">Enum.DebitCredit</xr:Item>
 				<xr:Item xsi:type="xr:MDObjectRef">Enum.InventoryValuationMethods</xr:Item>
@@ -265,7 +262,6 @@
 				<xr:Item xsi:type="xr:MDObjectRef">Catalog.CounterpartiesAccessGroups</xr:Item>
 				<xr:Item xsi:type="xr:MDObjectRef">Constant.DeleteEnterInformationForDeclarationsOnAlcoholicProducts</xr:Item>
 				<xr:Item xsi:type="xr:MDObjectRef">Enum.DeleteLicenseKindsOnAlcoholicProducts</xr:Item>
-				<xr:Item xsi:type="xr:MDObjectRef">Catalog.DeleteAlcoholicProductsKinds</xr:Item>
 				<xr:Item xsi:type="xr:MDObjectRef">Catalog.AlcoholicProductsKinds</xr:Item>
 				<xr:Item xsi:type="xr:MDObjectRef">Catalog.AlcoholicProductsVendorLicenses</xr:Item>
 				<xr:Item xsi:type="xr:MDObjectRef">Enum.LicenseKindsOnAlcoholicProducts</xr:Item>
@@ -273,6 +269,7 @@
 				<xr:Item xsi:type="xr:MDObjectRef">Constant.FunctionalOptionUseBankCharges</xr:Item>
 				<xr:Item xsi:type="xr:MDObjectRef">Constant.FunctionalOptionUseVAT</xr:Item>
 				<xr:Item xsi:type="xr:MDObjectRef">Constant.HomeCountry</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">AccumulationRegister.BankCharges</xr:Item>
 			</Content>
 		</Properties>
 		<ChildObjects/>
