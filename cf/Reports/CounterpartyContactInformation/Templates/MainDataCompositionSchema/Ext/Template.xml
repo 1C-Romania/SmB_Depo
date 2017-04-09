@@ -172,58 +172,6 @@ WHERE
 	ContactPersons.Owner = &amp;Counterparty
 	</query>
 	</dataSet>
-	<dataSet xsi:type="DataSetQuery">
-		<name>DataSet3</name>
-		<field xsi:type="DataSetFieldNestedDataSet">
-			<dataPath>ContactInformationOfIndividual</dataPath>
-			<field>ContactInformationOfIndividual</field>
-		</field>
-		<field xsi:type="DataSetFieldField">
-			<dataPath>ContactInformationOfIndividual.Kind</dataPath>
-			<field>ContactInformationOfIndividual.Kind</field>
-		</field>
-		<field xsi:type="DataSetFieldField">
-			<dataPath>ContactInformationOfIndividual.Presentation</dataPath>
-			<field>ContactInformationOfIndividual.Presentation</field>
-		</field>
-		<field xsi:type="DataSetFieldField">
-			<dataPath>ContactInformationOfIndividual.Ref</dataPath>
-			<field>ContactInformationOfIndividual.Ref</field>
-		</field>
-		<field xsi:type="DataSetFieldField">
-			<dataPath>ContactInformationOfIndividual.Type</dataPath>
-			<field>ContactInformationOfIndividual.Type</field>
-		</field>
-		<field xsi:type="DataSetFieldField">
-			<dataPath>Ind</dataPath>
-			<field>Ind</field>
-		</field>
-		<field xsi:type="DataSetFieldField">
-			<dataPath>IndContactPerson</dataPath>
-			<field>IndContactPerson</field>
-		</field>
-		<field xsi:type="DataSetFieldField">
-			<dataPath>CounterpartyInd</dataPath>
-			<field>CounterpartyInd</field>
-		</field>
-		<dataSource>DataSource1</dataSource>
-		<query>SELECT
-	ContactPersons.Owner AS CounterpartyInd,
-	ContactPersons.Ref AS IndContactPerson,
-	ContactPersons.Ind,
-	ContactPersons.Ind.ContactInformation.(
-		Ref AS Ref,
-		Type AS Type,
-		Kind AS Kind,
-		PRESENTATION(Kind) AS KindPresentation,
-		Presentation AS Presentation
-	) AS ContactInformationOfIndividual
-	FROM
-	Catalog.ContactPersons AS ContactPersons
-	WHERE
-	(Not ContactPersons.Ind = VALUE(Catalog.Individuals.EmptyRef))
-		AND ContactPersons.Owner = &amp;Counterparty</query>
-	</dataSet>
 	<parameter>
 		<name>Counterparty</name>
 		<title xsi:type="v8:LocalStringType">
@@ -1027,75 +975,6 @@ WHERE
 						</dcsset:item>
 						<dcsset:item xsi:type="dcsset:GroupItemField">
 							<dcsset:field>ContactInformationOfContactPerson.Presentation</dcsset:field>
-							<dcsset:groupType>Items</dcsset:groupType>
-							<dcsset:periodAdditionType>None</dcsset:periodAdditionType>
-							<dcsset:periodAdditionBegin xsi:type="xs:dateTime">0001-01-01T00:00:00</dcsset:periodAdditionBegin>
-							<dcsset:periodAdditionEnd xsi:type="xs:dateTime">0001-01-01T00:00:00</dcsset:periodAdditionEnd>
-						</dcsset:item>
-					</dcsset:groupItems>
-					<dcsset:order>
-						<dcsset:item xsi:type="dcsset:OrderItemAuto"/>
-					</dcsset:order>
-					<dcsset:selection>
-						<dcsset:item xsi:type="dcsset:SelectedItemAuto"/>
-					</dcsset:selection>
-				</dcsset:item>
-			</dcsset:item>
-			<dcsset:item xsi:type="dcsset:StructureItemGroup">
-				<dcsset:name>NatPerson</dcsset:name>
-				<dcsset:groupItems>
-					<dcsset:item xsi:type="dcsset:GroupItemField">
-						<dcsset:field>Ind</dcsset:field>
-						<dcsset:groupType>Items</dcsset:groupType>
-						<dcsset:periodAdditionType>None</dcsset:periodAdditionType>
-						<dcsset:periodAdditionBegin xsi:type="xs:dateTime">0001-01-01T00:00:00</dcsset:periodAdditionBegin>
-						<dcsset:periodAdditionEnd xsi:type="xs:dateTime">0001-01-01T00:00:00</dcsset:periodAdditionEnd>
-					</dcsset:item>
-					<dcsset:item xsi:type="dcsset:GroupItemField">
-						<dcsset:field>IndContactPerson</dcsset:field>
-						<dcsset:groupType>Items</dcsset:groupType>
-						<dcsset:periodAdditionType>None</dcsset:periodAdditionType>
-						<dcsset:periodAdditionBegin xsi:type="xs:dateTime">0001-01-01T00:00:00</dcsset:periodAdditionBegin>
-						<dcsset:periodAdditionEnd xsi:type="xs:dateTime">0001-01-01T00:00:00</dcsset:periodAdditionEnd>
-					</dcsset:item>
-				</dcsset:groupItems>
-				<dcsset:order>
-					<dcsset:item xsi:type="dcsset:OrderItemAuto"/>
-				</dcsset:order>
-				<dcsset:selection>
-					<dcsset:item xsi:type="dcsset:SelectedItemAuto"/>
-				</dcsset:selection>
-				<dcsset:outputParameters>
-					<dcscor:item xsi:type="dcsset:SettingsParameterValue">
-						<dcscor:parameter>TitleOutput</dcscor:parameter>
-						<dcscor:value xsi:type="dcsset:DataCompositionTextOutputType">Output</dcscor:value>
-					</dcscor:item>
-					<dcscor:item xsi:type="dcsset:SettingsParameterValue">
-						<dcscor:parameter>Title</dcscor:parameter>
-						<dcscor:value xsi:type="v8:LocalStringType">
-							<v8:item>
-								<v8:lang>en</v8:lang>
-								<v8:content>Individuals</v8:content>
-							</v8:item>
-							<v8:item>
-								<v8:lang>ru</v8:lang>
-								<v8:content>Физические лица</v8:content>
-							</v8:item>
-						</dcscor:value>
-					</dcscor:item>
-				</dcsset:outputParameters>
-				<dcsset:item xsi:type="dcsset:StructureItemGroup">
-					<dcsset:name>DetailsOfContactInformationOfIndividuals</dcsset:name>
-					<dcsset:groupItems>
-						<dcsset:item xsi:type="dcsset:GroupItemField">
-							<dcsset:field>ContactInformationOfIndividual.Kind</dcsset:field>
-							<dcsset:groupType>Items</dcsset:groupType>
-							<dcsset:periodAdditionType>None</dcsset:periodAdditionType>
-							<dcsset:periodAdditionBegin xsi:type="xs:dateTime">0001-01-01T00:00:00</dcsset:periodAdditionBegin>
-							<dcsset:periodAdditionEnd xsi:type="xs:dateTime">0001-01-01T00:00:00</dcsset:periodAdditionEnd>
-						</dcsset:item>
-						<dcsset:item xsi:type="dcsset:GroupItemField">
-							<dcsset:field>ContactInformationOfIndividual.Presentation</dcsset:field>
 							<dcsset:groupType>Items</dcsset:groupType>
 							<dcsset:periodAdditionType>None</dcsset:periodAdditionType>
 							<dcsset:periodAdditionBegin xsi:type="xs:dateTime">0001-01-01T00:00:00</dcsset:periodAdditionBegin>
