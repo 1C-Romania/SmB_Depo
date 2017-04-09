@@ -1056,7 +1056,12 @@ EndProcedure
 &AtClient
 Procedure Attachable_ExecutePrintCommand(Command)
 	
-	PrintManagementClient.ExecuteConnectedPrintCommand(Command, ThisObject, Object);
+	PrintManagementClient.ExecutePrintCommand(
+		"Catalog.Companies",
+		"PreviewPrintedFormProformaInvoice",
+		CommonUseClientServer.ValueInArray(Object.Ref),
+		ThisObject,
+		New Structure);
 	
 EndProcedure
 // End StandardSubsystems.Printing

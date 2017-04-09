@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
-<Form xmlns="http://v8.1c.ru/8.3/xcf/logform" xmlns:app="http://v8.1c.ru/8.2/managed-application/core" xmlns:cfg="http://v8.1c.ru/8.1/data/enterprise/current-config" xmlns:dcscor="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:dcsset="http://v8.1c.ru/8.1/data-composition-system/settings" xmlns:ent="http://v8.1c.ru/8.1/data/enterprise" xmlns:lf="http://v8.1c.ru/8.2/managed-application/logform" xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows" xmlns:xr="http://v8.1c.ru/8.3/xcf/readable" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.2">
+<Form xmlns="http://v8.1c.ru/8.3/xcf/logform" xmlns:app="http://v8.1c.ru/8.2/managed-application/core" xmlns:cfg="http://v8.1c.ru/8.1/data/enterprise/current-config" xmlns:dcscor="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:dcsset="http://v8.1c.ru/8.1/data-composition-system/settings" xmlns:ent="http://v8.1c.ru/8.1/data/enterprise" xmlns:lf="http://v8.1c.ru/8.2/managed-application/logform" xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows" xmlns:xr="http://v8.1c.ru/8.3/xcf/readable" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.4">
 	<Title>
 		<v8:item>
 			<v8:lang>en</v8:lang>
@@ -789,7 +789,7 @@
 											<ExtendedTooltip name="EDToProcessingCompanyExtendedTooltip" id="886"/>
 										</LabelField>
 										<LabelField name="EDToProcessingEDOwner" id="507">
-											<DataPath>15/1</DataPath>
+											<DataPath/>
 											<Visible>false</Visible>
 											<ContextMenu name="EDToProcessingEDOWnerContextMenu" id="508"/>
 											<ExtendedTooltip name="EDToProcessingEDOwnerExtendedTooltip" id="887"/>
@@ -883,7 +883,7 @@
 									<v8:content>Страница утвердить</v8:content>
 								</v8:item>
 							</ToolTip>
-							<TitleDataPath>178:02023637-7868-4a5f-8576-835a76e0c9ba/16</TitleDataPath>
+							<TitleDataPath/>
 							<ExtendedTooltip name="PageApproveExtendedTooltip" id="892"/>
 							<ChildItems>
 								<LabelDecoration name="DecorationApprove" id="623">
@@ -1334,7 +1334,7 @@
 											<ExtendedTooltip name="EDOnSigningCounterpartyExtendedTooltip" id="925"/>
 										</LabelField>
 										<LabelField name="EDOnSigningOwnerED" id="505">
-											<DataPath>13/1</DataPath>
+											<DataPath/>
 											<Visible>false</Visible>
 											<ContextMenu name="EDOnSigningOwnerEDContextMenu" id="506"/>
 											<ExtendedTooltip name="EDEDOwnerSigningOnExtendedTooltip" id="926"/>
@@ -1533,7 +1533,7 @@
 											<ExtendedTooltip name="EDForCorrectionEDTypeExtendedTooltip" id="949"/>
 										</LabelField>
 										<LabelField name="EDOnCorrectionEDOwner" id="683">
-											<DataPath>5/2</DataPath>
+											<DataPath/>
 											<ContextMenu name="EDForCorrectionEDOWnerContextMenu" id="684"/>
 											<ExtendedTooltip name="EDOnFixOwnerExtendedTooltip" id="950"/>
 										</LabelField>
@@ -1578,7 +1578,7 @@
 											<ExtendedTooltip name="EDForCorrectionResponsibleExtendedTooltip" id="956"/>
 										</LabelField>
 										<LabelField name="EDEDPatchVersionStatus" id="701">
-											<DataPath>5/11</DataPath>
+											<DataPath/>
 											<ContextMenu name="EDForCorrectionEDVersionStateContextMenu" id="702"/>
 											<ExtendedTooltip name="EDOnFixEDVersionStateExtendedTooltip" id="957"/>
 										</LabelField>
@@ -2110,7 +2110,7 @@
 											<ExtendedTooltip name="DocumentsOnControlObjectRefCompanyExtendedTooltip" id="974"/>
 										</LabelField>
 										<LabelField name="DocumentsOnControlObjectRef" id="473">
-											<DataPath>17/3</DataPath>
+											<DataPath/>
 											<Visible>false</Visible>
 											<ContextMenu name="DocumentsOnControlReferenceForContextMenuObject" id="474"/>
 											<ExtendedTooltip name="DocumentsOnControlObjectRefExtendedTooltip" id="975"/>
@@ -4426,9 +4426,7 @@ WHERE
 			<Type>
 				<v8:Type>cfg:DynamicList</v8:Type>
 			</Type>
-			<UseAlways>
-				<Field>10/12</Field>
-			</UseAlways>
+			<UseAlways/>
 			<Settings xsi:type="DynamicList">
 				<ManualQuery>true</ManualQuery>
 				<DynamicDataRead>true</DynamicDataRead>
@@ -4534,9 +4532,7 @@ WHERE
 			<Type>
 				<v8:Type>cfg:DynamicList</v8:Type>
 			</Type>
-			<UseAlways>
-				<Field>16/12</Field>
-			</UseAlways>
+			<UseAlways/>
 			<Settings xsi:type="DynamicList">
 				<ManualQuery>true</ManualQuery>
 				<DynamicDataRead>true</DynamicDataRead>
@@ -4586,9 +4582,7 @@ WHERE
 			<Type>
 				<v8:Type>cfg:DynamicList</v8:Type>
 			</Type>
-			<UseAlways>
-				<Field>18/12</Field>
-			</UseAlways>
+			<UseAlways/>
 			<Settings xsi:type="DynamicList">
 				<ManualQuery>true</ManualQuery>
 				<DynamicDataRead>true</DynamicDataRead>

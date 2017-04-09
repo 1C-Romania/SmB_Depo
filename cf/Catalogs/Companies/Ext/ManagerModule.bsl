@@ -160,38 +160,41 @@ EndFunction // GenerateFaxPrintWorkAssistant()
 //
 // It is called from the "Company" card to view logos placing
 //
-Function PrintPreviewInvoicesForPayment(ObjectsArray, PrintObjects, TemplateName) Export
+Function PreviewPrintedFormProformaInvoice(ObjectsArray, PrintObjects, TemplateName) Export
 	
 	Var Errors;
+	
+	UseVAT	= GetFunctionalOption("UseVAT");
 	
 	Company = ObjectsArray[0];
 	
 	SpreadsheetDocument = New SpreadsheetDocument;
 	
-	ValueDates = CurrentSessionDate();
+	DateValue = CurrentSessionDate();
 	
 	Header = New Structure;
-	Header.Insert("AmountIncludesVAT",	True);
-	Header.Insert("DocumentCurrency",	Constants.NationalCurrency.Get());
-	Header.Insert("DocumentDate",		ValueDates);
-	Header.Insert("Number", 			"00000000001");
-	Header.Insert("Company", 		Company);
-	Header.Insert("BankAccount",	Company.BankAccountByDefault);
-	Header.Insert("Prefix", 			Company.Prefix);
-	Header.Insert("RecipientPresentation", "Field contains customer information: full name, TIN, legal address, phones.");
+	Header.Insert("AmountIncludesVAT",		True);
+	Header.Insert("DocumentCurrency",		Constants.NationalCurrency.Get());
+	Header.Insert("Currency",				Constants.NationalCurrency.Get());
+	Header.Insert("DocumentDate",			DateValue);
+	Header.Insert("DocumentNumber",			"00000000001");
+	Header.Insert("Company",				Company);
+	Header.Insert("BankAccount",			Company.BankAccountByDefault);
+	Header.Insert("Prefix",					Company.Prefix);
+	Header.Insert("CustomerPresentation",	NStr("ru = 'Поле содержит информацию покупателя: полное наименование, ИНН, юридический адрес, телефоны.'; en = 'Field contains customer information: legal name, TIN, legal address, phones.'"));
 	
 	Inventory = New Structure;
-	Inventory.Insert("LineNumber",			1);
-	Inventory.Insert("InventoryItem",				"Inventory for a preview");
-	Inventory.Insert("SKU",				"SKU-0000001");
-	Inventory.Insert("MeasurementUnit",		Catalogs.UOMClassifier.pcs);
-	Inventory.Insert("Quantity",			1);
+	Inventory.Insert("LineNumber",				1);
+	Inventory.Insert("ProductDescription",		NStr("ru = 'Запас для предварительного просмотра'; en = 'Inventory for preview'"));
+	Inventory.Insert("SKU",						NStr("ru = 'АРТ-0000001'; en = 'SKU-0000001'"));
+	Inventory.Insert("UnitOfMeasure",			Catalogs.UOMClassifier.pcs);
+	Inventory.Insert("Quantity",				1);
 	Inventory.Insert("Price",					118);
-	Inventory.Insert("Amount",				118);
+	Inventory.Insert("Amount",					118);
 	Inventory.Insert("VATAmount",				18);
 	Inventory.Insert("TotalVAT",				18);
-	Inventory.Insert("VAT", 					"Including VAT:");
-	Inventory.Insert("Characteristic",		Catalogs.ProductsAndServicesCharacteristics.EmptyRef());
+	Inventory.Insert("VAT",						NStr("ru = 'В том числе НДС:'; en = 'Including VAT:'"));
+	Inventory.Insert("Characteristic",			Catalogs.ProductsAndServicesCharacteristics.EmptyRef());
 	Inventory.Insert("DiscountMarkupPercent",	0);
 	
 	FirstLineNumber = SpreadsheetDocument.TableHeight + 1;
@@ -200,7 +203,7 @@ Function PrintPreviewInvoicesForPayment(ObjectsArray, PrintObjects, TemplateName
 	
 	Template = PrintManagement.PrintedFormsTemplate("Document.InvoiceForPayment.PF_MXL_" + TemplateName);
 	
-	InfoAboutCompany = SmallBusinessServer.InfoAboutLegalEntityIndividual(Header.Company, Header.DocumentDate, , ?(ValueIsFilled(Header.BankAccount), Header.BankAccount, Undefined));
+	InfoAboutCompany	= SmallBusinessServer.InfoAboutLegalEntityIndividual(Header.Company, Header.DocumentDate, , ?(ValueIsFilled(Header.BankAccount), Header.BankAccount, Undefined));
 	
 	//If user template is used - there were no such sections
 	If Template.Areas.Find("TitleWithLogo") <> Undefined
@@ -209,6 +212,7 @@ Function PrintPreviewInvoicesForPayment(ObjectsArray, PrintObjects, TemplateName
 		If ValueIsFilled(Company.LogoFile) Then
 			
 			TemplateArea = Template.GetArea("TitleWithLogo");
+			TemplateArea.Parameters.Fill(Header);
 			
 			PictureData = AttachedFiles.GetFileBinaryData(Company.LogoFile);
 			If ValueIsFilled(PictureData) Then
@@ -220,6 +224,7 @@ Function PrintPreviewInvoicesForPayment(ObjectsArray, PrintObjects, TemplateName
 		Else // If images are not selected, print regular header
 			
 			TemplateArea = Template.GetArea("TitleWithoutLogo");
+			TemplateArea.Parameters.Fill(Header);
 			
 		EndIf;
 		
@@ -232,70 +237,57 @@ Function PrintPreviewInvoicesForPayment(ObjectsArray, PrintObjects, TemplateName
 		
 	EndIf;
 	
-	TemplateArea = Template.GetArea("InvoiceHeader");
-	If ValueIsFilled(InfoAboutCompany.Bank) Then
-		TemplateArea.Parameters.RecipientBankPresentation = InfoAboutCompany.Bank.Description + " " + InfoAboutCompany.Bank.City;
-	EndIf; 
+	TemplateArea = Template.GetArea("InvoiceHeaderVendor");
 	
-	TemplateArea.Parameters.TIN = InfoAboutCompany.TIN;
-	TemplateArea.Parameters.VendorPresentation = ?(IsBlankString(InfoAboutCompany.CorrespondentText), InfoAboutCompany.FullDescr, InfoAboutCompany.CorrespondentText);;
-	TemplateArea.Parameters.RecipientBankBIC = InfoAboutCompany.BIN;
-	TemplateArea.Parameters.RecipientBankAccountPresentation = InfoAboutCompany.CorrAccount;
-	TemplateArea.Parameters.RecipientAccountPresentation = InfoAboutCompany.AccountNo;
+	TemplateArea.Parameters.Fill(Header);
+	
+	VendorPresentation	= SmallBusinessServer.CompaniesDescriptionFull(InfoAboutCompany, "FullDescr");
+	
+	TemplateArea.Parameters.VendorPresentation	= VendorPresentation;
+	TemplateArea.Parameters.VendorAddress		= SmallBusinessServer.CompaniesDescriptionFull(InfoAboutCompany, "LegalAddress");
+	TemplateArea.Parameters.VendorPhoneFax		= SmallBusinessServer.CompaniesDescriptionFull(InfoAboutCompany, "PhoneNumbers,Fax");
+	TemplateArea.Parameters.VendorEmail			= SmallBusinessServer.CompaniesDescriptionFull(InfoAboutCompany, "Email");
+	
+	TemplateArea.Parameters.BankPresentation	=  SmallBusinessServer.CompaniesDescriptionFull(InfoAboutCompany, "Bank", False);
+	TemplateArea.Parameters.BankAccountNumber	=  SmallBusinessServer.CompaniesDescriptionFull(InfoAboutCompany, "AccountNo", False);
+	TemplateArea.Parameters.BankIBAN			=  SmallBusinessServer.CompaniesDescriptionFull(InfoAboutCompany, "IBAN", False);
+	TemplateArea.Parameters.BankSWIFT			=  SmallBusinessServer.CompaniesDescriptionFull(InfoAboutCompany, "SWIFT", False);
+	
+	CorrespondentText	= SmallBusinessServer.CompaniesDescriptionFull(InfoAboutCompany, "CorrespondentText", False);
+	TemplateArea.Parameters.BankBeneficiary		=  ?(ValueIsFilled(CorrespondentText), CorrespondentText, VendorPresentation);
 	
 	SpreadsheetDocument.Put(TemplateArea);
 	
-	If Header.DocumentDate < Date('20110101') Then
-		DocumentNumber = SmallBusinessServer.GetNumberForPrinting(Header.Number, Header.Prefix);
-	Else
-		DocumentNumber = ObjectPrefixationClientServer.GetNumberForPrinting(Header.Number, True, True);
-	EndIf;		
-	
-	TemplateArea = Template.GetArea("Title");
-	TemplateArea.Parameters.HeaderText = "Invoice for payment # "
-											+ DocumentNumber
-											+ " from "
-											+ Format(Header.DocumentDate, "DLF=DD");
-											
-	SpreadsheetDocument.Put(TemplateArea);
-	
-	TemplateArea = Template.GetArea("Vendor");
-	TemplateArea.Parameters.VendorPresentation = SmallBusinessServer.CompaniesDescriptionFull(InfoAboutCompany, "FullDescr,TIN,LegalAddress,PhoneNumbers,");
-	SpreadsheetDocument.Put(TemplateArea);
-	
-	TemplateArea = Template.GetArea("Customer");
+	TemplateArea = Template.GetArea("InvoiceHeaderCustomer");
 	TemplateArea.Parameters.Fill(Header);
 	SpreadsheetDocument.Put(TemplateArea);
 
 	TemplateArea = Template.GetArea("TableHeader");
+	TemplateArea.Parameters.Fill(Header);
 	SpreadsheetDocument.Put(TemplateArea);
 	
-	TemplateArea = Template.GetArea("String");
+	TemplateArea = Template.GetArea("TableRow");
 	TemplateArea.Parameters.Fill(Inventory);
 	SpreadsheetDocument.Put(TemplateArea);
 	
 	TemplateArea = Template.GetArea("Total");
+	TemplateArea.Parameters.Fill(Header);
 	TemplateArea.Parameters.Total = SmallBusinessServer.AmountsFormat(Inventory.Amount);
 	SpreadsheetDocument.Put(TemplateArea);
 	
-	TemplateArea = Template.GetArea("TotalVAT");
-	TemplateArea.Parameters.Fill(Inventory);
-	SpreadsheetDocument.Put(TemplateArea);
+	If UseVAT Then
+		
+		TemplateArea = Template.GetArea("TotalVAT");
+		TemplateArea.Parameters.Fill(Inventory);
+		SpreadsheetDocument.Put(TemplateArea);
+		
+	EndIf;
 	
-	TemplateArea = Template.GetArea("AmountInWords");
-	TemplateArea.Parameters.TotalRow = "Total titles "
-											+ String(Inventory.Quantity)
-											+ ", in the amount of "
-											+ SmallBusinessServer.AmountsFormat(Inventory.Amount, Header.DocumentCurrency);
-																				
-	TemplateArea.Parameters.AmountInWords = WorkWithCurrencyRates.GenerateAmountInWords(Inventory.Amount, Header.DocumentCurrency);
-	SpreadsheetDocument.Put(TemplateArea);
-	
-	If Template.Areas.Find("InvoiceFooterWithFaxPrint") <> Undefined Then
+	If Template.Areas.Find("InvoiceFooterWithSignature") <> Undefined Then
 		
 		If ValueIsFilled(Company.FileFacsimilePrinting) Then
 			
-			TemplateArea = Template.GetArea("InvoiceFooterWithFaxPrint");
+			TemplateArea = Template.GetArea("InvoiceFooterWithSignature");
 			
 			PictureData = AttachedFiles.GetFileBinaryData(Company.FileFacsimilePrinting);
 			If ValueIsFilled(PictureData) Then
@@ -306,7 +298,7 @@ Function PrintPreviewInvoicesForPayment(ObjectsArray, PrintObjects, TemplateName
 			
 		Else
 			
-			TemplateArea = Template.GetArea("AccountFooter");
+			TemplateArea = Template.GetArea("InvoiceFooter");
 			TemplateArea.Parameters.Fill(Header);
 			
 		EndIf;
@@ -456,9 +448,9 @@ Procedure Print(ObjectsArray,
 		
 	EndIf;
 	
-	If PrintManagement.NeedToPrintTemplate(PrintFormsCollection, "PreviewPrintedFormsInvoiceForPayment") Then
+	If PrintManagement.NeedToPrintTemplate(PrintFormsCollection, "PreviewPrintedFormProformaInvoice") Then
 		
-		PrintManagement.OutputSpreadsheetDocumentToCollection(PrintFormsCollection, "PreviewPrintedFormsInvoiceForPayment", "Invoice for payment", PrintPreviewInvoicesForPayment(ObjectsArray, PrintObjects, "InvoiceForPayment"));
+		PrintManagement.OutputSpreadsheetDocumentToCollection(PrintFormsCollection, "PreviewPrintedFormProformaInvoice", "Proforma invoice", PreviewPrintedFormProformaInvoice(ObjectsArray, PrintObjects, "ProformaInvoice"));
 		
 	EndIf;
 	

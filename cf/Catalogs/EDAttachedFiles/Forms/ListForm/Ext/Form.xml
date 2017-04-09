@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
-<Form xmlns="http://v8.1c.ru/8.3/xcf/logform" xmlns:app="http://v8.1c.ru/8.2/managed-application/core" xmlns:cfg="http://v8.1c.ru/8.1/data/enterprise/current-config" xmlns:dcscor="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:dcsset="http://v8.1c.ru/8.1/data-composition-system/settings" xmlns:ent="http://v8.1c.ru/8.1/data/enterprise" xmlns:lf="http://v8.1c.ru/8.2/managed-application/logform" xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows" xmlns:xr="http://v8.1c.ru/8.3/xcf/readable" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.2">
+<Form xmlns="http://v8.1c.ru/8.3/xcf/logform" xmlns:app="http://v8.1c.ru/8.2/managed-application/core" xmlns:cfg="http://v8.1c.ru/8.1/data/enterprise/current-config" xmlns:dcscor="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:dcsset="http://v8.1c.ru/8.1/data-composition-system/settings" xmlns:ent="http://v8.1c.ru/8.1/data/enterprise" xmlns:lf="http://v8.1c.ru/8.2/managed-application/logform" xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows" xmlns:xr="http://v8.1c.ru/8.3/xcf/readable" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.4">
 	<CommandBarLocation>None</CommandBarLocation>
 	<VerticalScroll>useIfNecessary</VerticalScroll>
 	<AutoCommandBar name="FormCommandBar" id="-1"/>
@@ -130,7 +130,7 @@
 					<ExtendedTooltip name="ResponsibleExtendedTooltip" id="103"/>
 				</LabelField>
 				<CheckBoxField name="DigitallySigned" id="22">
-					<DataPath>1/19</DataPath>
+					<DataPath/>
 					<CheckBoxType>Auto</CheckBoxType>
 					<ContextMenu name="DigitallySignedContextMenu" id="23"/>
 					<ExtendedTooltip name="DigitallySignedExtendedTooltip" id="104"/>
@@ -156,7 +156,7 @@
 					<ExtendedTooltip name="EditExtendedTooltip" id="108"/>
 				</LabelField>
 				<LabelField name="ImportStatus" id="58">
-					<DataPath>1/54</DataPath>
+					<DataPath/>
 					<ContextMenu name="ImportStatusContextMenu" id="59"/>
 					<ExtendedTooltip name="ImportStatusExtendedTooltip" id="109"/>
 				</LabelField>
@@ -227,12 +227,12 @@
 					<ExtendedTooltip name="EDStatusExtendedTooltip" id="120"/>
 				</LabelField>
 				<LabelField name="EDComplectElementType" id="54">
-					<DataPath>1/36</DataPath>
+					<DataPath/>
 					<ContextMenu name="PointTypeKitEDContextMenu" id="55"/>
 					<ExtendedTooltip name="PointTypeKitEDExtendedTooltip" id="121"/>
 				</LabelField>
 				<LabelField name="EDComplectNumber" id="48">
-					<DataPath>1/15</DataPath>
+					<DataPath/>
 					<ContextMenu name="KitNumberEDContextMenu" id="49"/>
 					<ExtendedTooltip name="KitNumberEDExtendedTooltip" id="122"/>
 				</LabelField>
@@ -273,7 +273,7 @@
 					<ExtendedTooltip name="DateDocumentSenderExtendedTooltip" id="129"/>
 				</LabelField>
 				<LabelField name="EDOperator" id="46">
-					<DataPath>1/16</DataPath>
+					<DataPath/>
 					<ContextMenu name="EDOperatorContextMenu" id="47"/>
 					<ExtendedTooltip name="OperatorEDExtendedTooltip" id="130"/>
 				</LabelField>

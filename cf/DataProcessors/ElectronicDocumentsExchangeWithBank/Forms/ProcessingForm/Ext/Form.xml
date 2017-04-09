@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
-<Form xmlns="http://v8.1c.ru/8.3/xcf/logform" xmlns:app="http://v8.1c.ru/8.2/managed-application/core" xmlns:cfg="http://v8.1c.ru/8.1/data/enterprise/current-config" xmlns:dcscor="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:dcsset="http://v8.1c.ru/8.1/data-composition-system/settings" xmlns:ent="http://v8.1c.ru/8.1/data/enterprise" xmlns:lf="http://v8.1c.ru/8.2/managed-application/logform" xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows" xmlns:xr="http://v8.1c.ru/8.3/xcf/readable" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.2">
+<Form xmlns="http://v8.1c.ru/8.3/xcf/logform" xmlns:app="http://v8.1c.ru/8.2/managed-application/core" xmlns:cfg="http://v8.1c.ru/8.1/data/enterprise/current-config" xmlns:dcscor="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:dcsset="http://v8.1c.ru/8.1/data-composition-system/settings" xmlns:ent="http://v8.1c.ru/8.1/data/enterprise" xmlns:lf="http://v8.1c.ru/8.2/managed-application/logform" xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows" xmlns:xr="http://v8.1c.ru/8.3/xcf/readable" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.4">
 	<Title>
 		<v8:item>
 			<v8:lang>en</v8:lang>
@@ -816,47 +816,47 @@
 													</SearchControlAddition>
 													<ChildItems>
 														<LabelField name="PaymentOrdersInProcessingDate" id="134">
-															<DataPath>5/1</DataPath>
+															<DataPath/>
 															<ContextMenu name="PaymentOrdersInProcessingDateContextMenu" id="135"/>
 															<ExtendedTooltip name="PaymentOrdersInProcessingDateExtendedTooltip" id="257"/>
 														</LabelField>
 														<LabelField name="PaymentOrdersInProcessingEDStatus" id="142">
-															<DataPath>5/5</DataPath>
+															<DataPath/>
 															<ContextMenu name="PaymentOrdersInProcessingEDStatusContextMenu" id="143"/>
 															<ExtendedTooltip name="PaymentOrdersInProcessingEDStatusExtendedTooltip" id="258"/>
 														</LabelField>
 														<LabelField name="PaymentOrdersInProcessingRecipient" id="140">
-															<DataPath>5/4</DataPath>
+															<DataPath/>
 															<ContextMenu name="PaymentOrdersInProcessingRecipientContextMenu" id="141"/>
 															<ExtendedTooltip name="PaymentOrdersInProcessingRecipientExtendedTooltip" id="259"/>
 														</LabelField>
 														<LabelField name="PaymentOrdersInProcessingDocumentSum" id="144">
-															<DataPath>5/6</DataPath>
+															<DataPath/>
 															<ContextMenu name="PaymentOrdersInProcessingDocumentSumContextMenu" id="145"/>
 															<ExtendedTooltip name="PaymentOrdersInProcessingDocumentSumExtendedTooltip" id="260"/>
 														</LabelField>
 														<LabelField name="PaymentOrdersInProcessingPaymentDestination" id="136">
-															<DataPath>5/2</DataPath>
+															<DataPath/>
 															<ContextMenu name="PaymentOrdersInProcessingPaymentDestinationContextMenu" id="137"/>
 															<ExtendedTooltip name="PaymentOrdersInProcessingPaymentDestinationExtendedTooltip" id="261"/>
 														</LabelField>
 														<LabelField name="PaymentOrdersInProcessingNumber" id="138">
-															<DataPath>5/3</DataPath>
+															<DataPath/>
 															<ContextMenu name="PaymentOrdersInProcessingNumberContextMenu" id="139"/>
 															<ExtendedTooltip name="PaymentOrdersInProcessingNumberExtendedTooltip" id="262"/>
 														</LabelField>
 														<LabelField name="PaymentOrdersInProcessingCompanyAccount" id="146">
-															<DataPath>5/7</DataPath>
+															<DataPath/>
 															<ContextMenu name="PaymentOrdersInProcessingCompanyAccountContextMenu" id="147"/>
 															<ExtendedTooltip name="PaymentOrdersInProcessingCompanyAccountExtendedTooltip" id="263"/>
 														</LabelField>
 														<LabelField name="PaymentOrdersInProcessingRecipientsAccount" id="148">
-															<DataPath>5/8</DataPath>
+															<DataPath/>
 															<ContextMenu name="PaymentOrdersInProcessingRecipientsAccountContextMenu" id="149"/>
 															<ExtendedTooltip name="PaymentOrdersInProcessingRecipientsAccountExtendedTooltip" id="264"/>
 														</LabelField>
 														<LabelField name="PaymentOrdersInProcessingElectronicDocument" id="150">
-															<DataPath>5/9</DataPath>
+															<DataPath/>
 															<ContextMenu name="PaymentOrdersInProcessingElectronicDocumentContextMenu" id="151"/>
 															<ExtendedTooltip name="PaymentOrdersInProcessingElectronicDocumentExtendedTooltip" id="265"/>
 														</LabelField>
@@ -1761,9 +1761,7 @@ WHERE
 			<Type>
 				<v8:Type>cfg:DynamicList</v8:Type>
 			</Type>
-			<UseAlways>
-				<Field>5/10</Field>
-			</UseAlways>
+			<UseAlways/>
 			<Settings xsi:type="DynamicList">
 				<ManualQuery>true</ManualQuery>
 				<DynamicDataRead>true</DynamicDataRead>

@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
-<Form xmlns="http://v8.1c.ru/8.3/xcf/logform" xmlns:app="http://v8.1c.ru/8.2/managed-application/core" xmlns:cfg="http://v8.1c.ru/8.1/data/enterprise/current-config" xmlns:dcscor="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:dcsset="http://v8.1c.ru/8.1/data-composition-system/settings" xmlns:ent="http://v8.1c.ru/8.1/data/enterprise" xmlns:lf="http://v8.1c.ru/8.2/managed-application/logform" xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows" xmlns:xr="http://v8.1c.ru/8.3/xcf/readable" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.2">
+<Form xmlns="http://v8.1c.ru/8.3/xcf/logform" xmlns:app="http://v8.1c.ru/8.2/managed-application/core" xmlns:cfg="http://v8.1c.ru/8.1/data/enterprise/current-config" xmlns:dcscor="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:dcsset="http://v8.1c.ru/8.1/data-composition-system/settings" xmlns:ent="http://v8.1c.ru/8.1/data/enterprise" xmlns:lf="http://v8.1c.ru/8.2/managed-application/logform" xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows" xmlns:xr="http://v8.1c.ru/8.3/xcf/readable" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.4">
 	<VerticalScroll>useIfNecessary</VerticalScroll>
 	<AutoCommandBar name="FormCommandBar" id="-1"/>
 	<ChildItems>
@@ -63,13 +63,13 @@
 					<ExtendedTooltip name="Group1ExtendedTooltip" id="24"/>
 					<ChildItems>
 						<LabelField name="DataArea" id="4">
-							<DataPath>1/3</DataPath>
+							<DataPath/>
 							<DefaultItem>true</DefaultItem>
 							<ContextMenu name="DataAreaContextMenu" id="5"/>
 							<ExtendedTooltip name="DataAreaExtendedTooltip" id="25"/>
 						</LabelField>
 						<LabelField name="Presentation" id="16">
-							<DataPath>1/7</DataPath>
+							<DataPath/>
 							<TitleLocation>None</TitleLocation>
 							<ContextMenu name="PresentationContextMenu" id="17"/>
 							<ExtendedTooltip name="PresentationExtendedTooltip" id="26"/>
@@ -77,42 +77,42 @@
 					</ChildItems>
 				</ColumnGroup>
 				<LabelField name="Status" id="6">
-					<DataPath>1/6</DataPath>
+					<DataPath/>
 					<DefaultItem>true</DefaultItem>
 					<ContextMenu name="StateContextMenu" id="7"/>
 					<ExtendedTooltip name="StateExtendedTooltip" id="27"/>
 				</LabelField>
 				<LabelField name="Repeat" id="8">
-					<DataPath>1/5</DataPath>
+					<DataPath/>
 					<DefaultItem>true</DefaultItem>
 					<ContextMenu name="RepeatContextMenu" id="9"/>
 					<ExtendedTooltip name="RepeatExtendedTooltip" id="28"/>
 				</LabelField>
 				<CheckBoxField name="ProcessingError" id="12">
-					<DataPath>1/4</DataPath>
+					<DataPath/>
 					<DefaultItem>true</DefaultItem>
 					<CheckBoxType>Auto</CheckBoxType>
 					<ContextMenu name="ProcessingErrorContextMenu" id="13"/>
 					<ExtendedTooltip name="ProcessingErrorExtendedTooltip" id="29"/>
 				</CheckBoxField>
 				<LabelField name="TimeZone" id="19">
-					<DataPath>1/9</DataPath>
+					<DataPath/>
 					<ContextMenu name="TimezoneContextMenu" id="20"/>
 					<ExtendedTooltip name="TimezoneExtendedTooltip" id="30"/>
 				</LabelField>
 				<LabelField name="Prefix" id="21">
-					<DataPath>1/10</DataPath>
+					<DataPath/>
 					<ContextMenu name="PrefixContextMenu" id="22"/>
 					<ExtendedTooltip name="PrefixExtendedTooltip" id="31"/>
 				</LabelField>
 				<LabelField name="ExportID" id="10">
-					<DataPath>1/2</DataPath>
+					<DataPath/>
 					<DefaultItem>true</DefaultItem>
 					<ContextMenu name="ExportIDContextMenu" id="11"/>
 					<ExtendedTooltip name="ExportIDExtendedTooltip" id="32"/>
 				</LabelField>
 				<LabelField name="Variant" id="14">
-					<DataPath>1/1</DataPath>
+					<DataPath/>
 					<DefaultItem>true</DefaultItem>
 					<ContextMenu name="VariantContextMenu" id="15"/>
 					<ExtendedTooltip name="VariantExtendedTooltip" id="33"/>

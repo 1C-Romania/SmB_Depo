@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
-<Form xmlns="http://v8.1c.ru/8.3/xcf/logform" xmlns:app="http://v8.1c.ru/8.2/managed-application/core" xmlns:cfg="http://v8.1c.ru/8.1/data/enterprise/current-config" xmlns:dcscor="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:dcsset="http://v8.1c.ru/8.1/data-composition-system/settings" xmlns:ent="http://v8.1c.ru/8.1/data/enterprise" xmlns:lf="http://v8.1c.ru/8.2/managed-application/logform" xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows" xmlns:xr="http://v8.1c.ru/8.3/xcf/readable" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.2">
+<Form xmlns="http://v8.1c.ru/8.3/xcf/logform" xmlns:app="http://v8.1c.ru/8.2/managed-application/core" xmlns:cfg="http://v8.1c.ru/8.1/data/enterprise/current-config" xmlns:dcscor="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:dcsset="http://v8.1c.ru/8.1/data-composition-system/settings" xmlns:ent="http://v8.1c.ru/8.1/data/enterprise" xmlns:lf="http://v8.1c.ru/8.2/managed-application/logform" xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows" xmlns:xr="http://v8.1c.ru/8.3/xcf/readable" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.4">
 	<VerticalScroll>useIfNecessary</VerticalScroll>
 	<UseForFoldersAndItems>Items</UseForFoldersAndItems>
 	<AutoCommandBar name="FormCommandBar" id="-1">
@@ -782,7 +782,7 @@
 													<Title formatted="false">
 														<v8:item>
 															<v8:lang>en</v8:lang>
-															<v8:content>Logo will be used in the print form of the "Invoice for payment" document and price lists which are generated out of the counterparties cards.</v8:content>
+															<v8:content>Logo will be used in the print form of the "Proforma invoice" document and price lists which are generated out of the counterparties cards.</v8:content>
 														</v8:item>
 														<v8:item>
 															<v8:lang>ru</v8:lang>
@@ -795,7 +795,7 @@
 												</LabelDecoration>
 												<Button name="CatalogOfPrintPreviewAccount" id="87">
 													<Type>Hyperlink</Type>
-													<CommandName>Form.Command.PreviewPrintedFormsInvoiceForPayment1</CommandName>
+													<CommandName>Form.Command.PreviewPrintedFormProformaInvoice</CommandName>
 													<ExtendedTooltip name="CatalogOfPrintPreviewAccountExtendedTooltip" id="156"/>
 												</Button>
 											</ChildItems>
@@ -1543,27 +1543,17 @@
 			</ToolTip>
 			<Action>Attachable_ExecutePrintCommand</Action>
 		</Command>
-		<Command name="PreviewPrintedFormsInvoiceForPayment1" id="12">
+		<Command name="PreviewPrintedFormProformaInvoice" id="12">
 			<Title>
 				<v8:item>
 					<v8:lang>en</v8:lang>
-					<v8:content>Preview of the "Account for payment" print form</v8:content>
+					<v8:content>Preview of the Proforma invoice print form</v8:content>
 				</v8:item>
 				<v8:item>
 					<v8:lang>ru</v8:lang>
 					<v8:content>Предварительный просмотр печатной формы "Счет на оплату"</v8:content>
 				</v8:item>
 			</Title>
-			<ToolTip>
-				<v8:item>
-					<v8:lang>en</v8:lang>
-					<v8:content>Preview printed from of invoice for payment1</v8:content>
-				</v8:item>
-				<v8:item>
-					<v8:lang>ru</v8:lang>
-					<v8:content>Предварительный просмотр печатной формы счет на оплату1</v8:content>
-				</v8:item>
-			</ToolTip>
 			<Action>Attachable_ExecutePrintCommand</Action>
 		</Command>
 	</Commands>
