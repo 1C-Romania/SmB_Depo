@@ -250,7 +250,6 @@ Function PreviewPrintedFormProformaInvoice(ObjectsArray, PrintObjects, TemplateN
 	
 	TemplateArea.Parameters.BankPresentation	=  SmallBusinessServer.CompaniesDescriptionFull(InfoAboutCompany, "Bank", False);
 	TemplateArea.Parameters.BankAccountNumber	=  SmallBusinessServer.CompaniesDescriptionFull(InfoAboutCompany, "AccountNo", False);
-	TemplateArea.Parameters.BankIBAN			=  SmallBusinessServer.CompaniesDescriptionFull(InfoAboutCompany, "IBAN", False);
 	TemplateArea.Parameters.BankSWIFT			=  SmallBusinessServer.CompaniesDescriptionFull(InfoAboutCompany, "SWIFT", False);
 	
 	CorrespondentText	= SmallBusinessServer.CompaniesDescriptionFull(InfoAboutCompany, "CorrespondentText", False);
@@ -370,7 +369,6 @@ Function PrintCompanyCard(ObjectsArray, PrintObjects)
 			Area.Parameters.SWIFT		= InfoAboutCompany.SWIFT;
 			Area.Parameters.CorrAccount	= InfoAboutCompany.CorrAccount;
 			Area.Parameters.Bank		= InfoAboutCompany.Bank;
-			Area.Parameters.IBAN		= InfoAboutCompany.IBAN;
 			SpreadsheetDocument.Put(Area);
 		EndIf;
 		
@@ -437,7 +435,7 @@ Procedure Print(ObjectsArray,
 		PrintManagement.OutputSpreadsheetDocumentToCollection(
 			PrintFormsCollection,
 			"CompanyAttributes",
-			NStr("ru='Реквизиты организации'; en = 'Company attributes'"),
+			NStr("ru = 'Реквизиты организации'; en = 'Company attributes'"),
 			PrintCompanyCard(ObjectsArray, PrintObjects));
 		
 	EndIf;

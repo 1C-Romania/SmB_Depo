@@ -364,6 +364,18 @@ EndProcedure
 #Region FormCommandsHandlers
 
 &AtClient
+Procedure PreviewPrintedFormProformaInvoice(Command)
+	
+	PrintManagementClient.ExecutePrintCommand(
+		"Catalog.Companies",
+		"PreviewPrintedFormProformaInvoice",
+		CommonUseClientServer.ValueInArray(Object.Ref),
+		ThisObject,
+		New Structure);
+	
+EndProcedure
+
+&AtClient
 Procedure AddImageLogo(Command)
 	
 	If Not ValueIsFilled(Object.Ref) Then
@@ -1056,12 +1068,7 @@ EndProcedure
 &AtClient
 Procedure Attachable_ExecutePrintCommand(Command)
 	
-	PrintManagementClient.ExecutePrintCommand(
-		"Catalog.Companies",
-		"PreviewPrintedFormProformaInvoice",
-		CommonUseClientServer.ValueInArray(Object.Ref),
-		ThisObject,
-		New Structure);
+	PrintManagementClient.ExecuteConnectedPrintCommand(Command, ThisObject, Object);
 	
 EndProcedure
 // End StandardSubsystems.Printing

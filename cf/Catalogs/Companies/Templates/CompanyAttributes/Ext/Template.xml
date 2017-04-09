@@ -204,15 +204,15 @@
 	<rowsItem>
 		<index>5</index>
 		<row>
-			<formatIndex>9</formatIndex>
+			<formatIndex>6</formatIndex>
 			<c>
 				<c>
-					<f>10</f>
+					<f>7</f>
 				</c>
 			</c>
 			<c>
 				<c>
-					<f>11</f>
+					<f>9</f>
 				</c>
 			</c>
 		</row>
@@ -254,33 +254,6 @@
 					<tl>
 						<v8:item>
 							<v8:lang>ru</v8:lang>
-							<v8:content>IBAN:</v8:content>
-						</v8:item>
-						<v8:item>
-							<v8:lang>en</v8:lang>
-							<v8:content>IBAN:</v8:content>
-						</v8:item>
-					</tl>
-				</c>
-			</c>
-			<c>
-				<c>
-					<f>8</f>
-					<parameter>IBAN</parameter>
-				</c>
-			</c>
-		</row>
-	</rowsItem>
-	<rowsItem>
-		<index>8</index>
-		<row>
-			<formatIndex>6</formatIndex>
-			<c>
-				<c>
-					<f>7</f>
-					<tl>
-						<v8:item>
-							<v8:lang>ru</v8:lang>
 							<v8:content>Банк:</v8:content>
 						</v8:item>
 						<v8:item>
@@ -299,7 +272,7 @@
 		</row>
 	</rowsItem>
 	<rowsItem>
-		<index>9</index>
+		<index>8</index>
 		<row>
 			<formatIndex>6</formatIndex>
 			<c>
@@ -326,7 +299,7 @@
 		</row>
 	</rowsItem>
 	<rowsItem>
-		<index>10</index>
+		<index>9</index>
 		<row>
 			<formatIndex>6</formatIndex>
 			<c>
@@ -353,23 +326,23 @@
 		</row>
 	</rowsItem>
 	<rowsItem>
-		<index>11</index>
+		<index>10</index>
 		<row>
-			<formatIndex>9</formatIndex>
+			<formatIndex>6</formatIndex>
 			<c>
 				<c>
-					<f>10</f>
+					<f>7</f>
 				</c>
 			</c>
 			<c>
 				<c>
-					<f>11</f>
+					<f>9</f>
 				</c>
 			</c>
 		</row>
 	</rowsItem>
 	<rowsItem>
-		<index>12</index>
+		<index>11</index>
 		<row>
 			<formatIndex>6</formatIndex>
 			<c>
@@ -396,7 +369,7 @@
 		</row>
 	</rowsItem>
 	<rowsItem>
-		<index>13</index>
+		<index>12</index>
 		<row>
 			<formatIndex>6</formatIndex>
 			<c>
@@ -423,7 +396,7 @@
 		</row>
 	</rowsItem>
 	<rowsItem>
-		<index>14</index>
+		<index>13</index>
 		<row>
 			<formatIndex>6</formatIndex>
 			<c>
@@ -450,9 +423,9 @@
 		</row>
 	</rowsItem>
 	<templateMode>true</templateMode>
-	<defaultFormatIndex>12</defaultFormatIndex>
-	<height>15</height>
-	<vgRows>15</vgRows>
+	<defaultFormatIndex>10</defaultFormatIndex>
+	<height>14</height>
+	<vgRows>14</vgRows>
 	<merge>
 		<r>1</r>
 		<c>0</c>
@@ -463,7 +436,7 @@
 		<area>
 			<type>Rows</type>
 			<beginRow>5</beginRow>
-			<endRow>10</endRow>
+			<endRow>9</endRow>
 			<beginColumn>-1</beginColumn>
 			<endColumn>-1</endColumn>
 		</area>
@@ -482,8 +455,8 @@
 		<name>IndividualAddress</name>
 		<area>
 			<type>Rows</type>
-			<beginRow>13</beginRow>
-			<endRow>13</endRow>
+			<beginRow>12</beginRow>
+			<endRow>12</endRow>
 			<beginColumn>-1</beginColumn>
 			<endColumn>-1</endColumn>
 		</area>
@@ -492,8 +465,8 @@
 		<name>LegalAddress</name>
 		<area>
 			<type>Rows</type>
-			<beginRow>12</beginRow>
-			<endRow>12</endRow>
+			<beginRow>11</beginRow>
+			<endRow>11</endRow>
 			<beginColumn>-1</beginColumn>
 			<endColumn>-1</endColumn>
 		</area>
@@ -502,8 +475,8 @@
 		<name>Phone</name>
 		<area>
 			<type>Rows</type>
-			<beginRow>14</beginRow>
-			<endRow>14</endRow>
+			<beginRow>13</beginRow>
+			<endRow>13</endRow>
 			<beginColumn>-1</beginColumn>
 			<endColumn>-1</endColumn>
 		</area>
@@ -522,8 +495,8 @@
 		<name>Separator</name>
 		<area>
 			<type>Rows</type>
-			<beginRow>11</beginRow>
-			<endRow>11</endRow>
+			<beginRow>10</beginRow>
+			<endRow>10</endRow>
 			<beginColumn>-1</beginColumn>
 			<endColumn>-1</endColumn>
 		</area>
@@ -561,11 +534,10 @@
 		<pagePlacementAlternation>Auto</pagePlacementAlternation>
 	</printSettings>
 	<font faceName="Arial" height="16" bold="false" italic="false" underline="false" strikeout="false" kind="Absolute" scale="100"/>
-	<font faceName="Arial" height="16" bold="true" italic="false" underline="false" strikeout="false" kind="Absolute" scale="100"/>
+	<font faceName="Calibri" height="16" bold="true" italic="false" underline="false" strikeout="false" kind="Absolute" scale="100"/>
 	<font faceName="Arial" height="8" bold="true" italic="false" underline="false" strikeout="false" kind="Absolute" scale="100"/>
-	<font faceName="Arial" height="12" bold="false" italic="false" underline="false" strikeout="false" kind="Absolute" scale="100"/>
-	<font faceName="Arial" height="12" bold="true" italic="false" underline="false" strikeout="false" kind="Absolute" scale="100"/>
-	<font faceName="Arial" height="8" bold="false" italic="false" underline="false" strikeout="false" kind="Absolute" scale="100"/>
+	<font faceName="Calibri" height="10" bold="false" italic="false" underline="false" strikeout="false" kind="Absolute" scale="100"/>
+	<font faceName="Calibri" height="10" bold="true" italic="false" underline="false" strikeout="false" kind="Absolute" scale="100"/>
 	<format>
 		<width>224</width>
 	</format>
@@ -579,6 +551,7 @@
 		<font>1</font>
 		<width>384</width>
 		<horizontalAlignment>Left</horizontalAlignment>
+		<textColor>#4B5A60</textColor>
 		<textPlacement>Wrap</textPlacement>
 		<fillType>Parameter</fillType>
 	</format>
@@ -587,31 +560,27 @@
 	</format>
 	<format>
 		<font>3</font>
+		<textColor>#4B5A60</textColor>
 	</format>
 	<format>
 		<font>3</font>
 		<horizontalAlignment>Left</horizontalAlignment>
 		<verticalAlignment>Top</verticalAlignment>
+		<textColor>#4B5A60</textColor>
 	</format>
 	<format>
 		<font>4</font>
 		<width>481</width>
 		<verticalAlignment>Bottom</verticalAlignment>
+		<textColor>#4B5A60</textColor>
 		<textPlacement>Wrap</textPlacement>
 		<fillType>Parameter</fillType>
 	</format>
 	<format>
-		<font>5</font>
-	</format>
-	<format>
-		<font>5</font>
-		<horizontalAlignment>Left</horizontalAlignment>
-		<verticalAlignment>Top</verticalAlignment>
-	</format>
-	<format>
-		<font>2</font>
+		<font>4</font>
 		<width>481</width>
 		<verticalAlignment>Bottom</verticalAlignment>
+		<textColor>#4B5A60</textColor>
 		<textPlacement>Wrap</textPlacement>
 	</format>
 	<format>

@@ -313,14 +313,14 @@ EndProcedure
 // Continuation of the SelectFileOnDriveAndPlaceIntoStorage procedure.
 Procedure SelectFileOnDriveAndPlaceIntoStorageExtensionRequested(FileOperationsExtensionConnected, AdditionalParameters) Export
 	
-	FileData = AdditionalParameters.FileData;
-	FormID = AdditionalParameters.FormID;
+	FileData	= AdditionalParameters.FileData;
+	FormID		= AdditionalParameters.FormID;
 	
 	If FileOperationsExtensionConnected Then
 		FileChoice = New FileDialog(FileDialogMode.Open);
-		FileChoice.Multiselect = False;
-		FileChoice.FullFileName = FileData.Description + "." + FileData.Extension;
-		FileChoice.Extension = FileData.Extension;
+		FileChoice.Multiselect	= False;
+		FileChoice.FullFileName	= FileData.Description + "." + FileData.Extension;
+		FileChoice.DefaultExt	= FileData.Extension;
 		FileChoice.Filter = StringFunctionsClientServer.SubstituteParametersInString(
 			NStr("en='All files (*.%1)|*.%1';ru='Все файлы (*.%1)|*.%1'"), FileData.Extension);
 		
