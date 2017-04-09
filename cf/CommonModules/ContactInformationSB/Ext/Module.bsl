@@ -234,7 +234,7 @@ Procedure AddContactInformation(Form, AddingKind, SetShowInFormAlways = False) E
 	
 	If SetShowInFormAlways Then
 		SetFlagShowInFormAlways(AddingKind);
-		FindedRows = Form.ContactPersonContactInformationKindProperties.FindRows(New Structure("Kind", AddingKind));
+		FindedRows = Form.ContactInformationKindProperties.FindRows(New Structure("Kind", AddingKind));
 		If FindedRows.Count() > 0 Then
 			FindedRows[0].ShowInFormAlways = True;
 		EndIf;
