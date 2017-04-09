@@ -266,14 +266,12 @@ Function PrintProformaInvoice(ObjectsArray, PrintObjects, TemplateName, Signatur
 		If AreDiscounts Then
 			
 			TemplateArea = Template.GetArea("TableHeaderWithDiscount");
-			TemplateArea.Parameters.Currency	= Header.DocumentCurrency;
 			SpreadsheetDocument.Put(TemplateArea);
 			TemplateArea = Template.GetArea("TableRowWithDiscount");
 			
 		Else
 			
 			TemplateArea = Template.GetArea("TableHeader");
-			TemplateArea.Parameters.Currency	= Header.DocumentCurrency;
 			SpreadsheetDocument.Put(TemplateArea);
 			TemplateArea = Template.GetArea("TableRow");
 			
@@ -314,29 +312,36 @@ Function PrintProformaInvoice(ObjectsArray, PrintObjects, TemplateName, Signatur
 			
 			SpreadsheetDocument.Put(TemplateArea);
 			
-			Amount		= Amount		+ LinesSelectionInventory.Amount;
+			Amount		= Amount	+ LinesSelectionInventory.Amount;
 			VATAmount	= VATAmount	+ LinesSelectionInventory.VATAmount;
 			Total		= Total 	+ LinesSelectionInventory.Total;
 			
 		EndDo;
 		
-		TemplateArea = Template.GetArea("Total");
-		TemplateArea.Parameters.Total		= SmallBusinessServer.AmountsFormat(Amount);
-		TemplateArea.Parameters.Currency	= Header.DocumentCurrency;
+		TemplateArea = Template.GetArea("Subtotal");
+		TemplateArea.Parameters.TitleSubtotal	= ?(UseVAT, NStr("ru = 'СУММА'; en = 'SUBTOTAL'"), NStr("ru = 'ИТОГО'; en = 'TOTAL'"));
+		TemplateArea.Parameters.Amount			= SmallBusinessServer.AmountsFormat(Amount);
+		TemplateArea.Parameters.Currency		= Header.DocumentCurrency;
 		SpreadsheetDocument.Put(TemplateArea);
-	
+		
 		If UseVAT Then
 			
 			TemplateArea = Template.GetArea("TotalVAT");
+			TemplateArea.Parameters.Currency	= Header.DocumentCurrency;
 			If VATAmount = 0 Then
-				TemplateArea.Parameters.VAT = "Without tax (VAT)";
+				TemplateArea.Parameters.VAT = NStr("ru = 'Без налога (НДС)'; en = 'Without tax (VAT)'");
 				TemplateArea.Parameters.TotalVAT = "-";
 			Else
-				TemplateArea.Parameters.VAT = ?(Header.AmountIncludesVAT, "Including VAT:", "VAT Amount:");
+				TemplateArea.Parameters.VAT = ?(Header.AmountIncludesVAT, NStr("ru = 'В том числе НДС'; en = 'Including VAT'"), NStr("ru = 'Сумма НДС'; en = 'VAT'"));
 				TemplateArea.Parameters.TotalVAT = SmallBusinessServer.AmountsFormat(VATAmount);
 			EndIf; 
 			SpreadsheetDocument.Put(TemplateArea);
-		
+			
+			TemplateArea = Template.GetArea("Total");
+			TemplateArea.Parameters.Total			= SmallBusinessServer.AmountsFormat(Total);
+			TemplateArea.Parameters.Currency		= Header.DocumentCurrency;
+			SpreadsheetDocument.Put(TemplateArea);
+			
 		EndIf;
 		
 		If Signature Then

@@ -173,7 +173,7 @@ Function PreviewPrintedFormProformaInvoice(ObjectsArray, PrintObjects, TemplateN
 	DateValue = CurrentSessionDate();
 	
 	Header = New Structure;
-	Header.Insert("AmountIncludesVAT",		True);
+	Header.Insert("AmountIncludesVAT",		False);
 	Header.Insert("DocumentCurrency",		Constants.NationalCurrency.Get());
 	Header.Insert("Currency",				Constants.NationalCurrency.Get());
 	Header.Insert("DocumentDate",			DateValue);
@@ -189,11 +189,11 @@ Function PreviewPrintedFormProformaInvoice(ObjectsArray, PrintObjects, TemplateN
 	Inventory.Insert("SKU",						NStr("ru = 'АРТ-0000001'; en = 'SKU-0000001'"));
 	Inventory.Insert("UnitOfMeasure",			Catalogs.UOMClassifier.pcs);
 	Inventory.Insert("Quantity",				1);
-	Inventory.Insert("Price",					118);
-	Inventory.Insert("Amount",					118);
-	Inventory.Insert("VATAmount",				18);
+	Inventory.Insert("Price",					100);
+	Inventory.Insert("Amount",					100);
 	Inventory.Insert("TotalVAT",				18);
-	Inventory.Insert("VAT",						NStr("ru = 'В том числе НДС:'; en = 'Including VAT:'"));
+	Inventory.Insert("Total",					118);
+	Inventory.Insert("VATAmount",				NStr("ru = 'Сумма НДС'; en = 'VAT'"));
 	Inventory.Insert("Characteristic",			Catalogs.ProductsAndServicesCharacteristics.EmptyRef());
 	Inventory.Insert("DiscountMarkupPercent",	0);
 	
@@ -262,22 +262,29 @@ Function PreviewPrintedFormProformaInvoice(ObjectsArray, PrintObjects, TemplateN
 	SpreadsheetDocument.Put(TemplateArea);
 
 	TemplateArea = Template.GetArea("TableHeader");
-	TemplateArea.Parameters.Fill(Header);
 	SpreadsheetDocument.Put(TemplateArea);
 	
 	TemplateArea = Template.GetArea("TableRow");
 	TemplateArea.Parameters.Fill(Inventory);
 	SpreadsheetDocument.Put(TemplateArea);
 	
-	TemplateArea = Template.GetArea("Total");
+	TemplateArea = Template.GetArea("Subtotal");
 	TemplateArea.Parameters.Fill(Header);
-	TemplateArea.Parameters.Total = SmallBusinessServer.AmountsFormat(Inventory.Amount);
+	TemplateArea.Parameters.TitleSubtotal	= ?(UseVAT, NStr("ru = 'СУММА'; en = 'SUBTOTAL'"), NStr("ru = 'ИТОГО'; en = 'TOTAL'"));
+	TemplateArea.Parameters.Amount			= SmallBusinessServer.AmountsFormat(Inventory.Amount);
 	SpreadsheetDocument.Put(TemplateArea);
 	
 	If UseVAT Then
 		
 		TemplateArea = Template.GetArea("TotalVAT");
-		TemplateArea.Parameters.Fill(Inventory);
+		TemplateArea.Parameters.VAT				= Inventory.VATAmount;
+		TemplateArea.Parameters.TotalVAT		= SmallBusinessServer.AmountsFormat(Inventory.TotalVAT);;
+		TemplateArea.Parameters.Currency		= Header.DocumentCurrency;
+		SpreadsheetDocument.Put(TemplateArea);
+		
+		TemplateArea = Template.GetArea("Total");
+		TemplateArea.Parameters.Total			= SmallBusinessServer.AmountsFormat(Inventory.Total);
+		TemplateArea.Parameters.Currency		= Header.DocumentCurrency;
 		SpreadsheetDocument.Put(TemplateArea);
 		
 	EndIf;
