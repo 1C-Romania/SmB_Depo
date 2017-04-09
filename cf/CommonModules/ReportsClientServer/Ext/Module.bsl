@@ -1703,7 +1703,7 @@ Function CopyRecursive(Node, WhatCopy, WhereInsert, IndexOf, Map) Export
 		If ParametersOfCopying.HasSelection Then
 			//   Selection
 			//   (DataLayoutSelectedFields) Selection.Items (DataLayoutSelectedFieldsCollection)
-			FillPropertyValues(NewRow.Choice, WhatCopy.Choice, , "SelectionAvailableFields, Items");
+			FillPropertyValues(NewRow.Selection, WhatCopy.Selection, , "SelectionAvailableFields, Items");
 			NestedCollection = WhatCopy.Selection.Items;
 			If NestedCollection.Count() > 0 Then
 				NewNestedCollection = NewRow.Selection.Items;
@@ -1785,7 +1785,7 @@ Function CopyRecursive(Node, WhatCopy, WhereInsert, IndexOf, Map) Export
 		If ParametersOfCopying.HasOrder Then
 			//   Order
 			//   (DataLayoutOrder) Order.Items (DataLayoutOrderItemsCollection)
-			FillPropertyValues(NewRow.Order, WhatCopy.Order, , "AvailableOrderFileds, Items");
+			FillPropertyValues(NewRow.Order, WhatCopy.Order, , "OrderAvailableFields, Items");
 			NestedCollection = WhatCopy.Order.Items;
 			If NestedCollection.Count() > 0 Then
 				NewNestedCollection = NewRow.Order.Items;
@@ -1812,7 +1812,7 @@ Function CopyRecursive(Node, WhatCopy, WhereInsert, IndexOf, Map) Export
 		If ParametersOfCopying.HasConditionalDesign Then
 			//   ConditionalDesign
 			//   (DataLayoutConditionalDesign) ConditionalDesign.Items (DataLayoutConditionalDesignItemsCollection)
-			FillPropertyValues(NewRow.ConditionalAppearance, WhatCopy.ConditionalAppearance, , "AvailableFilterFields, AvailableFieldsFields, Items");
+			FillPropertyValues(NewRow.ConditionalAppearance, WhatCopy.ConditionalAppearance, , "FilterAvailableFields, FieldsAvailableFields, Items");
 			NestedCollection = WhatCopy.ConditionalAppearance.Items;
 			If NestedCollection.Count() > 0 Then
 				NewNestedCollection = NewRow.ConditionalAppearance.Items;
