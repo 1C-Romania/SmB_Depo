@@ -1809,7 +1809,7 @@ Procedure FillCheckProcessing(Cancel, CheckedAttributes)
 		SmallBusinessServer.DeleteAttributeBeingChecked(CheckedAttributes, "PaymentDetails.AdvanceFlag");
 		SmallBusinessServer.DeleteAttributeBeingChecked(CheckedAttributes, "PaymentDetails.SettlementsAmount");
 		SmallBusinessServer.DeleteAttributeBeingChecked(CheckedAttributes, "PaymentDetails.ExchangeRate");
-		SmallBusinessServer.DeleteAttributeBeingChecked(CheckedAttributes, "PaymentDetails.UnitConversionFactor");
+		SmallBusinessServer.DeleteAttributeBeingChecked(CheckedAttributes, "PaymentDetails.Multiplicity");
 		SmallBusinessServer.DeleteAttributeBeingChecked(CheckedAttributes, "PaymentDetails.VATRate");
 		
 	ElsIf OperationKind = Enums.OperationKindsCashReceipt.RetailIncome Then
@@ -1824,7 +1824,7 @@ Procedure FillCheckProcessing(Cancel, CheckedAttributes)
 		SmallBusinessServer.DeleteAttributeBeingChecked(CheckedAttributes, "PaymentDetails.Contract");
 		SmallBusinessServer.DeleteAttributeBeingChecked(CheckedAttributes, "PaymentDetails.SettlementsAmount");
 		SmallBusinessServer.DeleteAttributeBeingChecked(CheckedAttributes, "PaymentDetails.ExchangeRate");
-		SmallBusinessServer.DeleteAttributeBeingChecked(CheckedAttributes, "PaymentDetails.UnitConversionFactor");
+		SmallBusinessServer.DeleteAttributeBeingChecked(CheckedAttributes, "PaymentDetails.Multiplicity");
 		SmallBusinessServer.DeleteAttributeBeingChecked(CheckedAttributes, "AccountingAmount");
 		SmallBusinessServer.DeleteAttributeBeingChecked(CheckedAttributes, "ExchangeRate");
 		SmallBusinessServer.DeleteAttributeBeingChecked(CheckedAttributes, "Multiplicity");
@@ -1855,7 +1855,7 @@ Procedure FillCheckProcessing(Cancel, CheckedAttributes)
 		SmallBusinessServer.DeleteAttributeBeingChecked(CheckedAttributes, "PaymentDetails.Contract");
 		SmallBusinessServer.DeleteAttributeBeingChecked(CheckedAttributes, "PaymentDetails.SettlementsAmount");
 		SmallBusinessServer.DeleteAttributeBeingChecked(CheckedAttributes, "PaymentDetails.ExchangeRate");
-		SmallBusinessServer.DeleteAttributeBeingChecked(CheckedAttributes, "PaymentDetails.UnitConversionFactor");
+		SmallBusinessServer.DeleteAttributeBeingChecked(CheckedAttributes, "PaymentDetails.Multiplicity");
 		SmallBusinessServer.DeleteAttributeBeingChecked(CheckedAttributes, "AccountingAmount");
 		SmallBusinessServer.DeleteAttributeBeingChecked(CheckedAttributes, "ExchangeRate");
 		SmallBusinessServer.DeleteAttributeBeingChecked(CheckedAttributes, "Multiplicity");
@@ -1893,7 +1893,7 @@ Procedure FillCheckProcessing(Cancel, CheckedAttributes)
 		SmallBusinessServer.DeleteAttributeBeingChecked(CheckedAttributes, "PaymentDetails.AdvanceFlag");
 		SmallBusinessServer.DeleteAttributeBeingChecked(CheckedAttributes, "PaymentDetails.SettlementsAmount");
 		SmallBusinessServer.DeleteAttributeBeingChecked(CheckedAttributes, "PaymentDetails.ExchangeRate");
-		SmallBusinessServer.DeleteAttributeBeingChecked(CheckedAttributes, "PaymentDetails.UnitConversionFactor");
+		SmallBusinessServer.DeleteAttributeBeingChecked(CheckedAttributes, "PaymentDetails.Multiplicity");
 		SmallBusinessServer.DeleteAttributeBeingChecked(CheckedAttributes, "PaymentDetails.VATRate");
 		
 	ElsIf OperationKind = Enums.OperationKindsCashReceipt.CurrencyPurchase Then
@@ -1910,7 +1910,7 @@ Procedure FillCheckProcessing(Cancel, CheckedAttributes)
 		SmallBusinessServer.DeleteAttributeBeingChecked(CheckedAttributes, "PaymentDetails.AdvanceFlag");
 		SmallBusinessServer.DeleteAttributeBeingChecked(CheckedAttributes, "PaymentDetails.SettlementsAmount");
 		SmallBusinessServer.DeleteAttributeBeingChecked(CheckedAttributes, "PaymentDetails.ExchangeRate");
-		SmallBusinessServer.DeleteAttributeBeingChecked(CheckedAttributes, "PaymentDetails.UnitConversionFactor");
+		SmallBusinessServer.DeleteAttributeBeingChecked(CheckedAttributes, "PaymentDetails.Multiplicity");
 		SmallBusinessServer.DeleteAttributeBeingChecked(CheckedAttributes, "PaymentDetails.VATRate");
 		
 	// Other settlements
