@@ -64,7 +64,7 @@ EndProcedure
 Procedure FillByDefault()
 	
 	If Not ValueIsFilled(BusinessCalendar) Then
-		BusinessCalendar = SmallBusinessServer.GetCalendarByProductionCalendarUAE();
+		BusinessCalendar = SmallBusinessServer.GetCalendarByProductionCalendaRF();
 	EndIf;
 	
 	If Not ValueIsFilled(DefaultVATRate) Then
