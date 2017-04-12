@@ -66,7 +66,7 @@
 			<ExtendedTooltip name="HeaderExtendedTooltip" id="171"/>
 			<ChildItems>
 				<LabelField name="SubsidiaryCompany" id="120">
-					<DataPath>SubsidiaryCompany</DataPath>
+					<DataPath>Company</DataPath>
 					<TitleLocation>None</TitleLocation>
 					<ContextMenu name="SubsidiaryCompanyContextMenu" id="121"/>
 					<ExtendedTooltip name="SubsidiaryCompanyExtendedTooltip" id="172"/>
@@ -971,15 +971,15 @@
 				<v8:Type>xs:boolean</v8:Type>
 			</Type>
 		</Attribute>
-		<Attribute name="SubsidiaryCompany" id="6">
+		<Attribute name="Company" id="6">
 			<Title>
 				<v8:item>
 					<v8:lang>en</v8:lang>
-					<v8:content>SubsidiaryCompany</v8:content>
+					<v8:content>Company</v8:content>
 				</v8:item>
 				<v8:item>
 					<v8:lang>ru</v8:lang>
-					<v8:content>Компания</v8:content>
+					<v8:content>Организация</v8:content>
 				</v8:item>
 			</Title>
 			<Type>

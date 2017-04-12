@@ -1779,15 +1779,15 @@
 				</v8:DateQualifiers>
 			</Type>
 		</Attribute>
-		<Attribute name="SubsidiaryCompany" id="4">
+		<Attribute name="Company" id="4">
 			<Title>
 				<v8:item>
 					<v8:lang>en</v8:lang>
-					<v8:content>SubsidiaryCompany</v8:content>
+					<v8:content>Company</v8:content>
 				</v8:item>
 				<v8:item>
 					<v8:lang>ru</v8:lang>
-					<v8:content>Компания</v8:content>
+					<v8:content>Организация</v8:content>
 				</v8:item>
 			</Title>
 			<Type>
@@ -2054,28 +2054,6 @@
 			<Type>
 				<v8:Type>xs:boolean</v8:Type>
 			</Type>
-		</Attribute>
-		<Attribute name="EDStateText" id="29">
-			<Title>
-				<v8:item>
-					<v8:lang>en</v8:lang>
-					<v8:content>ED state</v8:content>
-				</v8:item>
-				<v8:item>
-					<v8:lang>ru</v8:lang>
-					<v8:content>Состояние ЭД</v8:content>
-				</v8:item>
-			</Title>
-			<Type>
-				<v8:Type>xs:string</v8:Type>
-				<v8:StringQualifiers>
-					<v8:Length>0</v8:Length>
-					<v8:AllowedLength>Variable</v8:AllowedLength>
-				</v8:StringQualifiers>
-			</Type>
-			<FunctionalOptions>
-				<Item>FunctionalOption.UseEDExchange</Item>
-			</FunctionalOptions>
 		</Attribute>
 		<Attribute name="SelectionOpenParameters" id="5">
 			<Title>

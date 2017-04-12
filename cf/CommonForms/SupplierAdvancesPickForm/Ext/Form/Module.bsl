@@ -71,7 +71,7 @@ EndProcedure // CalculateAmountsTotal()
 Procedure OnCreateAtServer(Cancel, StandardProcessing)
 	
 	Counterparty = Parameters.Counterparty;
-	SubsidiaryCompany = Parameters.SubsidiaryCompany;
+	Company = Parameters.Company;
 	Contract = Parameters.Contract;
 	ExchangeRate = Parameters.ExchangeRate;
 	Multiplicity = Parameters.Multiplicity;
@@ -693,7 +693,7 @@ Procedure FillPrepayment()
 		Query.SetParameter("OrdersArray", OrdersList.Unload().UnloadColumn("Order"));
 	EndIf;
 	
-	Query.SetParameter("Company", Counterparty);
+	Query.SetParameter("Company", Company);
 	Query.SetParameter("Counterparty", Counterparty);
 	Query.SetParameter("Contract", Contract);
 	Query.SetParameter("Period", Date);
@@ -927,7 +927,7 @@ Procedure FillAdvances()
 	
 	Query.Text = QueryText;
 	
-	Query.SetParameter("Company", Counterparty);
+	Query.SetParameter("Company", Company);
 	Query.SetParameter("Counterparty", Counterparty);
 	Query.SetParameter("Contract", Contract);
 	Query.SetParameter("Period", Date);

@@ -142,7 +142,7 @@ Procedure FillPrepayment(CurrentObject)
 	
 	Query.SetParameter("Order", ?(CounterpartyDoSettlementsByOrders, CurrentObject.Ref, Documents.CustomerOrder.EmptyRef()));
 	
-	Query.SetParameter("Company", Counterparty);
+	Query.SetParameter("Company", Company);
 	Query.SetParameter("Counterparty", CurrentObject.Counterparty);
 	Query.SetParameter("Contract", CurrentObject.Contract);
 	Query.SetParameter("Period", CurrentObject.Date);
@@ -460,7 +460,7 @@ EndFunction // GetDataDateOnChange()
 Function GetCompanyDataOnChange()
 	
 	StructureData = New Structure();
-	StructureData.Insert("Counterparty", SmallBusinessServer.GetCompany(Object.Company));
+	StructureData.Insert("Company", SmallBusinessServer.GetCompany(Object.Company));
 	StructureData.Insert("BankAccount", Object.Company.BankAccountByDefault);
 	StructureData.Insert("BankAccountCashAssetsCurrency", Object.Company.BankAccountByDefault.CashCurrency);
 	
@@ -1021,7 +1021,7 @@ Procedure ProcessChangesOnButtonPricesAndCurrencies(Val SettlementsCurrencyBefor
 	ParametersStructure.Insert("IncludeVATInPrice", Object.IncludeVATInPrice);
 	ParametersStructure.Insert("Counterparty", Object.Counterparty);
 	ParametersStructure.Insert("Contract", Object.Contract);
-	ParametersStructure.Insert("Company",	Counterparty); 
+	ParametersStructure.Insert("Company",	Company); 
 	ParametersStructure.Insert("DocumentDate", Object.Date);
 	ParametersStructure.Insert("RefillPrices", RefillPrices);
 	ParametersStructure.Insert("RecalculatePrices", RecalculatePrices);
@@ -1045,7 +1045,7 @@ Procedure RefillTabularSectionPricesByPriceKind()
 	DocumentTabularSection = New Array;
 
 	DataStructure.Insert("Date",				Object.Date);
-	DataStructure.Insert("Company",			Counterparty);
+	DataStructure.Insert("Company",			Company);
 	DataStructure.Insert("PriceKind",				Object.PriceKind);
 	DataStructure.Insert("DocumentCurrency",		Object.DocumentCurrency);
 	DataStructure.Insert("AmountIncludesVAT",	Object.AmountIncludesVAT);
@@ -2040,7 +2040,7 @@ Procedure InventoryPick(Command)
 	SelectionParameters = New Structure;
 	
 	SelectionParameters.Insert("Period", 				Object.Date);
-	SelectionParameters.Insert("Company", 			Counterparty);
+	SelectionParameters.Insert("Company", 			Company);
 	SelectionParameters.Insert("SpecificationsUsed", True);
 	
 	If FunctionalOptionInventoryReservation Then
@@ -2110,7 +2110,7 @@ Procedure WorkSelection(Command)
 	SelectionParameters = New Structure;
 	
 	SelectionParameters.Insert("Period", 				Object.Date);
-	SelectionParameters.Insert("Company", 			Counterparty);
+	SelectionParameters.Insert("Company", 			Company);
 	SelectionParameters.Insert("DiscountMarkupKind", 		Object.DiscountMarkupKind);
 	SelectionParameters.Insert("DiscountCard", Object.DiscountCard);
 	SelectionParameters.Insert("DiscountPercentByDiscountCard", Object.DiscountPercentByDiscountCard);
@@ -2158,7 +2158,7 @@ Procedure MaterialsPick(Command)
 	SelectionParameters = New Structure;
 	
 	SelectionParameters.Insert("Period", 		Object.Date);
-	SelectionParameters.Insert("Company",	Counterparty);
+	SelectionParameters.Insert("Company",	Company);
 	
 	ProductsAndServicesType = New ValueList;
 	For Each ArrayElement IN Items["WO" + TabularSectionName + "ProductsAndServices"].ChoiceParameters Do
@@ -2325,7 +2325,7 @@ Procedure OWMaterialsPick(Command)
 	SelectionParameters = New Structure;
 	
 	SelectionParameters.Insert("Period", 					Object.Date);
-	SelectionParameters.Insert("Company", 				Counterparty);
+	SelectionParameters.Insert("Company", 				Company);
 	SelectionParameters.Insert("ReservationUsed", True);
 	
 	SelectionParameters.Insert("StructuralUnit", 		Object.StructuralUnitReserve);
@@ -2656,7 +2656,7 @@ Procedure EditPrepaymentOffset(Command)
 		True, // Pick
 		False, // IsOrder
 		True, // OrderInHeader
-		Counterparty, // Counterparty
+		Company, // Company
 		?(CounterpartyDoSettlementsByOrders, Object.Ref, Undefined), // Order
 		Object.Date, // Date
 		Object.Ref, // Ref
@@ -2755,7 +2755,7 @@ Procedure OnCreateAtServer(Cancel, StandardProcessing)
 		DocumentDate = CurrentDate();
 	EndIf;
 	
-	Counterparty = SmallBusinessServer.GetCompany(Object.Company);
+	Company = SmallBusinessServer.GetCompany(Object.Company);
 	Counterparty = Object.Counterparty;
 	Contract = Object.Contract;
 	CounterpartyContractParameters.Property("SettlementsCurrency", SettlementsCurrency);
@@ -4226,7 +4226,7 @@ Procedure CompanyOnChange(Item)
 	// Company change event data processor.
 	Object.Number = "";
 	StructureData = GetCompanyDataOnChange();
-	Counterparty = StructureData.Counterparty;
+	Company = StructureData.Company;
 	If Object.DocumentCurrency = StructureData.BankAccountCashAssetsCurrency Then
 		Object.BankAccount = StructureData.BankAccount;
 	EndIf;
@@ -5099,7 +5099,7 @@ Procedure WorksWorkKindOnChange(Item)
 		TabularSectionRow = Items.Works.CurrentData;
 		
 		StructureData = New Structure;
-		StructureData.Insert("Company", 		Counterparty);
+		StructureData.Insert("Company", 		Company);
 		StructureData.Insert("ProductsAndServices", 		TabularSectionRow.ProductsAndServices);
 		StructureData.Insert("Characteristic", 		TabularSectionRow.Characteristic);
 		StructureData.Insert("WorkKind", 			TabularSectionRow.WorkKind);
@@ -5415,7 +5415,7 @@ Procedure PerformersEmployeeOnChange(Item)
 	
 	StructureData = New Structure;
 	StructureData.Insert("ToDate", Object.Date);
-	StructureData.Insert("Company", Counterparty);
+	StructureData.Insert("Company", Company);
 	StructureData.Insert("DocumentCurrency", Object.DocumentCurrency);
 	StructureData.Insert("Employee", TabularSectionRow.Employee);
 	
@@ -5439,7 +5439,7 @@ Procedure OWCustomerMaterialsProductsAndServicesOnChange(Item)
 	TabularSectionRow = Items.WOConsumerMaterials.CurrentData;
 	
 	StructureData = New Structure;
-	StructureData.Insert("Company", Counterparty);
+	StructureData.Insert("Company", Company);
 	StructureData.Insert("ProductsAndServices", TabularSectionRow.ProductsAndServices);
 	StructureData.Insert("Characteristic", TabularSectionRow.Characteristic);
 	

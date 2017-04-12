@@ -1,11 +1,1212 @@
-﻿&AtClient
-Var UpdateSubordinatedInvoice;
+﻿
+#Region FormEventHandlers
 
-////////////////////////////////////////////////////////////////////////////////
-// GENERAL PURPOSE PROCEDURES AND FUNCTIONS
+&AtServer
+Procedure OnCreateAtServer(Cancel, StandardProcessing)
+	
+	// Form attributes setting.
+	DocumentDate = Object.Date;
+	If Not ValueIsFilled(DocumentDate) Then
+		DocumentDate = CurrentDate();
+	EndIf;
+	
+	Company			= SmallBusinessServer.GetCompany(Object.Company);
+	Counterparty	= Object.Counterparty;
+	Contract		= Object.Contract;
+	If ValueIsFilled(Contract) Then
+		SettlementCurrency = CommonUse.ObjectAttributeValue(Contract, "SettlementsCurrency");
+	EndIf;
+	Order				= Object.Order;
+	NationalCurrency	= SmallBusinessReUse.GetNationalCurrency();
+	StructureByCurrency	= InformationRegisters.CurrencyRates.GetLast(Object.Date, New Structure("Currency", NationalCurrency));
+	ExchangeRateNationalCurrency	= StructureByCurrency.ExchangeRate;
+	MultiplicityNationalCurrency	= StructureByCurrency.Multiplicity;
+	
+	If Not ValueIsFilled(Object.Ref) Then
+		If Parameters.Property("OperationKindReturn") Then
+			Object.OperationKind = PredefinedValue("Enum.OperationKindsCustomerInvoice.ReturnToVendor");
+		EndIf;
+		If Not ValueIsFilled(Parameters.Basis) AND Not ValueIsFilled(Parameters.CopyingValue) Then
+			FillVATRateByCompanyVATTaxation();
+		EndIf;
+		If Not ValueIsFilled(Object.Order) And Parameters.Property("Basis") And TypeOf(Parameters.Basis)=Type("DocumentRef.InventoryTransfer") Then
+			For Each RowInventory In Object.Inventory Do
+				WorkWithProductsServer.FillDataInTabularSectionRow(Object, "Inventory", RowInventory);
+			EndDo;
+		EndIf;
+	EndIf;
+	GetOperationKindsStructure();
+	
+	// Generate price and currency label.
+	CurrencyTransactionsAccounting	= GetFunctionalOption("CurrencyTransactionsAccounting");
+	LabelStructure		= New Structure("PriceKind, DiscountKind, DocumentCurrency, SettlementsCurrency, Rate, RateNationalCurrency, AmountIncludesVAT, CurrencyTransactionsAccounting, VATTaxation, DiscountCard, DiscountPercentByDiscountCard", Object.PriceKind, Object.DiscountMarkupKind, Object.DocumentCurrency, SettlementCurrency, Object.ExchangeRate, ExchangeRateNationalCurrency, Object.AmountIncludesVAT, CurrencyTransactionsAccounting, Object.VATTaxation, Object.DiscountCard, Object.DiscountPercentByDiscountCard);
+	PricesAndCurrency	= GenerateLabelPricesAndCurrency(LabelStructure);
+	
+	SetVisibleAndEnabled();
+	
+	// Attribute visible set from user settings
+	SetVisibleFromUserSettings(); 
+	
+	Items.Cell.Visible	= Not Object.StructuralUnit.OrderWarehouse;
+	
+	User = Users.CurrentUser();
+	
+	SettingValue	= SmallBusinessReUse.GetValueByDefaultUser(User, "MainWarehouse");
+	MainWarehouse	= ?(ValueIsFilled(SettingValue), SettingValue, Catalogs.StructuralUnits.MainWarehouse);
+	
+	// Setting contract visible.
+	SetContractVisible();
+	
+	// Department setting
+	If Not GetFunctionalOption("AccountingBySeveralDepartments") Then
+		Items.AdditionallyRightColumn.United = True;
+	EndIf;
+	
+	// PickProductsAndServicesInDocuments
+	PickProductsAndServicesInDocuments.AssignPickForm(SelectionOpenParameters, Object.Ref.Metadata().Name, "Inventory");
+	// End PickProductsAndServicesInDocuments
+	
+	// AutomaticDiscounts.
+	AutomaticDiscountsOnCreateAtServer();
+	OperationKindSaleToCustomer = PredefinedValue("Enum.OperationKindsCustomerInvoice.SaleToCustomer");
+	
+	// StandardSubsystems.ObjectVersioning
+	ObjectVersioning.OnCreateAtServer(ThisForm);
+	// End StandardSubsystems.ObjectVersioning
+	
+	// StandardSubsystems.AdditionalReportsAndDataProcessors
+	AdditionalReportsAndDataProcessors.OnCreateAtServer(ThisForm);
+	// End StandardSubsystems.AdditionalReportsAndDataProcessors
+	
+	// StandardSubsystems.Printing
+	PrintManagement.OnCreateAtServer(ThisForm, Items.ImportantCommandsGroup);
+	// End StandardSubsystems.Printing
+	
+	// StandardSubsystems.Properties
+	PropertiesManagement.OnCreateAtServer(ThisForm, Object, "AdditionalAttributesGroup");
+	// End StandardSubsystems.Properties
+	
+	// Peripherals
+	UsePeripherals = SmallBusinessReUse.UsePeripherals();
+	ListOfElectronicScales = EquipmentManagerServerCall.GetEquipmentList("ElectronicScales", , EquipmentManagerServerCall.GetClientWorkplace());
+	If ListOfElectronicScales.Count() = 0 Then
+		// There are no connected scales.
+		Items.InventoryGetWeight.Visible = False;
+	EndIf;
+	Items.InventoryImportDataFromDCT.Visible = UsePeripherals;
+	// End Peripherals
+	
+EndProcedure
 
-// Procedure calls the data processor for document filling by basis.
+&AtClient
+Procedure OnOpen(Cancel)
+	
+	// Peripherals
+	EquipmentManagerClientOverridable.StartConnectingEquipmentOnFormOpen(ThisForm, "BarCodeScanner");
+	// End Peripherals
+	
+EndProcedure
+
+&AtClient
+Procedure OnClose()
+
+	// AutomaticDiscounts
+	// Display message about discount calculation if you click the "Post and close" or form closes by the cross with change saving.
+	If UseAutomaticDiscounts AND DiscountsCalculatedBeforeWrite Then
+		ShowUserNotification(NStr("ru = 'Изменение'; en = 'Change:'"), 
+									GetURL(Object.Ref), 
+									String(Object.Ref) + NStr("ru = '. Автоматические скидки (наценки) рассчитаны!'; en = '. Automatic discounts (markups) are calculated!'"), 
+									PictureLib.Information32);
+	EndIf;
+	// End AutomaticDiscounts
+	
+	// Peripherals
+	EquipmentManagerClientOverridable.StartDisablingEquipmentOnCloseForm(ThisForm);
+	// End Peripherals
+	
+EndProcedure
+
+&AtClient
+Procedure NotificationProcessing(EventName, Parameter, Source)
+	
+	// Peripherals
+	If Source = "Peripherals"
+		AND IsInputAvailable() AND Not DiscountCardRead Then
+		If EventName = "ScanData" Then
+			//Transform preliminary to the expected format
+			Data = New Array();
+			If Parameter[1] = Undefined Then
+				Data.Add(New Structure("Barcode, Quantity", Parameter[0], 1)); // Get a barcode from the basic data
+			Else
+				Data.Add(New Structure("Barcode, Quantity", Parameter[1][1], 1)); // Get a barcode from the additional data
+			EndIf;
+			
+			BarcodesReceived(Data);
+		EndIf;
+	EndIf;
+	// End Peripherals
+	
+	// DiscountCards
+	If DiscountCardRead Then
+		DiscountCardRead = False;
+	EndIf;
+	// End DiscountCards
+	
+	If EventName = "Write_Counterparty" 
+		AND ValueIsFilled(Parameter)
+		AND Object.Counterparty = Parameter Then
+			
+		SetContractVisible();
+		
+	ElsIf EventName = "SelectionIsMade" 
+		AND ValueIsFilled(Parameter) 
+		//Check for the form owner
+		AND Source <> New UUID("00000000-0000-0000-0000-000000000000")
+		AND Source = UUID
+		Then
+		
+		InventoryAddressInStorage	= Parameter;
+		
+		GetInventoryFromStorage(InventoryAddressInStorage, "Inventory", True, True);
+		
+	EndIf;
+	
+	// Properties subsystem
+	If PropertiesManagementClient.ProcessAlerts(ThisForm, EventName, Parameter) Then
+		
+		UpdateAdditionalAttributesItems();
+		
+	EndIf;
+	
+EndProcedure
+
+&AtServer
+Procedure OnReadAtServer(CurrentObject)
+	
+	ChangeProhibitionDates.ObjectOnReadAtServer(ThisForm, CurrentObject);
+	
+	// StandardSubsystems.Properties
+	PropertiesManagement.OnReadAtServer(ThisForm, CurrentObject);
+	// End StandardSubsystems.Properties
+	
+EndProcedure
+
+&AtClient
+Procedure BeforeWrite(Cancel, WriteParameters)
+	
+	// StandardSubsystems.PerformanceEstimation
+	If WriteParameters.WriteMode = DocumentWriteMode.Posting Then
+		PerformanceEstimationClientServer.StartTimeMeasurement("DocumentCustomerInvoicePositing");
+	EndIf;
+	// StandardSubsystems.PerformanceEstimation
+	
+	// AutomaticDiscounts
+	DiscountsCalculatedBeforeWrite = False;
+	// If the document is being posted, we check whether the discounts are calculated.
+	If UseAutomaticDiscounts AND Object.OperationKind = OperationKindSaleToCustomer Then
+		If Not Object.DiscountsAreCalculated AND DiscountsChanged() Then
+			CalculateDiscountsMarkupsClient();
+			CalculatedDiscounts = True;
+			
+			Message = New UserMessage;
+			Message.Text	= NStr("ru = 'Рассчитаны автоматические скидки (наценки)!'; en = 'Automatic discounts (markups) are calculated!'");
+			Message.DataKey	= Object.Ref;
+			Message.Message();
+			
+			DiscountsCalculatedBeforeWrite	= True;
+		Else
+			Object.DiscountsAreCalculated	= True;
+			RefreshImageAutoDiscountsAfterWrite	= True;
+		EndIf;
+	EndIf;
+	// End AutomaticDiscounts
+	
+EndProcedure
+
+&AtServer
+Procedure BeforeWriteAtServer(Cancel, CurrentObject, WriteParameters)
+	
+	If WriteParameters.WriteMode = DocumentWriteMode.Posting Then
+		
+		MessageText = "";
+		CheckContractToDocumentConditionAccordance(MessageText, Object.Contract, Object.Ref, Object.Company, Object.Counterparty, Object.OperationKind, Cancel);
+		
+		If MessageText <> "" Then
+			
+			Message = New UserMessage;
+			Message.Text = ?(Cancel, NStr("ru = 'Документ не проведен! ';en = 'Document is not posted! '") + MessageText, MessageText);
+			
+			If Cancel Then
+				Message.DataPath	= "Object";
+				Message.Field		= "Contract";
+				Message.Message();
+				Return;
+			Else
+				Message.Message();
+			EndIf;
+		EndIf;
+		
+		If SmallBusinessReUse.GetAdvanceOffsettingSettingValue() = PredefinedValue("Enum.YesNo.Yes")
+			AND CurrentObject.OperationKind = PredefinedValue("Enum.OperationKindsCustomerInvoice.SaleToCustomer")
+			AND CurrentObject.Prepayment.Count() = 0 Then
+			FillPrepayment(CurrentObject);
+		EndIf;
+		
+	EndIf;
+	
+	// StandardSubsystems.Properties
+	PropertiesManagement.BeforeWriteAtServer(ThisForm, CurrentObject);
+	// End StandardSubsystems.Properties
+	
+EndProcedure
+
+&AtServer
+Procedure AfterWriteAtServer(CurrentObject, WriteParameters)
+	
+	// AutomaticDiscounts
+	If RefreshImageAutoDiscountsAfterWrite Then
+		Items.InventoryCalculateDiscountsMarkups.Picture = PictureLib.Refresh;
+		RefreshImageAutoDiscountsAfterWrite = False;
+	EndIf;
+	// End AutomaticDiscounts
+	
+EndProcedure
+
+&AtClient
+Procedure AfterWrite(WriteParameters)
+	
+	OrderIsFilled = False;
+	FilledOrderReturn = False;
+	For Each TSRow IN Object.Inventory Do
+		If ValueIsFilled(TSRow.Order) Then
+			If TypeOf(TSRow.Order) = Type("DocumentRef.CustomerOrder") Then
+				OrderIsFilled = True;
+			Else
+				FilledOrderReturn = True;
+			EndIf;
+			Break;
+		EndIf;		
+	EndDo;	
+	
+	If OrderIsFilled Then
+		Notify("Record_CustomerInvoice", Object.Ref);
+	EndIf;
+	
+	If FilledOrderReturn Then
+		Notify("Record_CustomerInvoiceReturn", Object.Ref);
+	EndIf;
+	
+	Notify("NotificationAboutChangingDebt");
+	
+EndProcedure
+
+&AtServer
+Procedure FillCheckProcessingAtServer(Cancel, CheckedAttributes)
+	
+	// StandardSubsystems.Properties
+	PropertiesManagement.FillCheckProcessing(ThisForm, Cancel, CheckedAttributes);
+	// End StandardSubsystems.Properties
+	
+EndProcedure
+
+#EndRegion
+
+#Region FormItemEventHandlersHeader
+
+&AtClient
+Procedure DateOnChange(Item)
+	
+	// Date change event processor.
+	DateBeforeChange	= DocumentDate;
+	DocumentDate = Object.Date;
+	If Object.Date <> DateBeforeChange Then
+		StructureData = GetDataDateOnChange(DateBeforeChange, SettlementCurrency);
+		If StructureData.DATEDIFF <> 0 Then
+			Object.Number = "";
+		EndIf;
+		
+		If ValueIsFilled(SettlementCurrency) Then
+			RecalculateExchangeRateMultiplicitySettlementCurrency(StructureData);
+		EndIf;	
+		
+		// Generate price and currency label.
+		LabelStructure = New Structure("PriceKind, DiscountKind, DocumentCurrency, SettlementsCurrency, ExchangeRate, RateNationalCurrency, AmountIncludesVAT, CurrencyTransactionsAccounting, VATTaxation, DiscountCard, DiscountPercentByDiscountCard", Object.PriceKind, Object.DiscountMarkupKind, Object.DocumentCurrency, SettlementCurrency, Object.ExchangeRate, ExchangeRateNationalCurrency, Object.AmountIncludesVAT, CurrencyTransactionsAccounting, Object.VATTaxation, Object.DiscountCard, Object.DiscountPercentByDiscountCard);
+		PricesAndCurrency = GenerateLabelPricesAndCurrency(LabelStructure);
+		
+		// DiscountCards
+		// In this procedure call not modal window of question is occurred.
+		RecalculateDiscountPercentAtDocumentDateChange();
+		// End DiscountCards		
+	EndIf;
+	
+	// AutomaticDiscounts
+	DocumentDateChangedManually = True;
+	ClearCheckboxDiscountsAreCalculatedClient("DateOnChange");
+
+EndProcedure
+
+&AtClient
+Procedure CompanyOnChange(Item)
+
+	// Company change event data processor.
+	Object.BankAccount	= "";
+	Object.Number	= "";
+	StructureData	= GetDataCompanyOnChange();
+	Company			= StructureData.Company;
+	
+	Object.Head				= StructureData.Head;
+	Object.HeadPosition		= StructureData.HeadPosition;
+	Object.ChiefAccountant	= StructureData.ChiefAccountant;
+	Object.Released			= StructureData.Released;
+	Object.ReleasedPosition	= StructureData.ReleasedPosition;
+	
+	Object.Contract = GetContractByDefault(Object.Ref, Object.Counterparty, Object.Company, Object.OperationKind);
+	ProcessContractChange();
+	
+	// Generate price and currency label.
+	LabelStructure = New Structure("PriceKind, DiscountKind, DocumentCurrency, SettlementsCurrency, ExchangeRate, RateNationalCurrency, AmountIncludesVAT, CurrencyTransactionsAccounting, VATTaxation, DiscountCard, DiscountPercentByDiscountCard", Object.PriceKind, Object.DiscountMarkupKind, Object.DocumentCurrency, SettlementCurrency, Object.ExchangeRate, ExchangeRateNationalCurrency, Object.AmountIncludesVAT, CurrencyTransactionsAccounting, Object.VATTaxation, Object.DiscountCard, Object.DiscountPercentByDiscountCard);
+	PricesAndCurrency = GenerateLabelPricesAndCurrency(LabelStructure);
+	
+EndProcedure
+
+&AtClient
+Procedure OperationKindOnChange(Item)
+	
+	SetVisibleAndEnabled(True);
+	Object.Prepayment.Clear();
+	
+	If Object.OperationKind = PredefinedValue("Enum.OperationKindsCustomerInvoice.SaleToCustomer") Then
+		Items.Department.AutoChoiceIncomplete = True;
+		Items.Department.AutoMarkIncomplete = True;
+	Else
+		Items.Department.AutoChoiceIncomplete = False;
+		Items.Department.AutoMarkIncomplete = False;
+		ClearMarkIncomplete();
+	EndIf;
+	
+	Object.Contract = GetContractByDefault(Object.Ref, Object.Counterparty, Object.Company, Object.OperationKind);
+	ProcessContractChange();
+	
+	// Generate price and currency label.
+	LabelStructure = New Structure("PriceKind, DiscountKind, DocumentCurrency, SettlementsCurrency, ExchangeRate, RateNationalCurrency, AmountIncludesVAT, CurrencyTransactionsAccounting, VATTaxation, DiscountCard, DiscountPercentByDiscountCard", Object.PriceKind, Object.DiscountMarkupKind, Object.DocumentCurrency, SettlementCurrency, Object.ExchangeRate, ExchangeRateNationalCurrency, Object.AmountIncludesVAT, CurrencyTransactionsAccounting, Object.VATTaxation, Object.DiscountCard, Object.DiscountPercentByDiscountCard);
+	PricesAndCurrency = GenerateLabelPricesAndCurrency(LabelStructure);
+	
+EndProcedure
+
+&AtClient
+Procedure StructuralUnitOnChange(Item)
+	
+	SetCellVisible("Cell", Object.StructuralUnit);
+	
+EndProcedure
+
+&AtClient
+Procedure CounterpartyOnChange(Item)
+	
+	CounterpartyBeforeChange = Counterparty;
+	CounterpartyDoSettlementsByOrdersBeforeChange = CounterpartyDoSettlementsByOrders;
+	Counterparty = Object.Counterparty;
+	
+	If CounterpartyBeforeChange <> Object.Counterparty Then
+		
+		Object.CounterpartyBankAcc	= Undefined;
+		Object.ShippingAddress		= "";
+		Object.StampBase			= "";
+		
+		ContractVisibleBeforeChange = Items.Contract.Visible;
+		
+		StructureData = GetDataCounterpartyOnChange(Object.Date, Object.DocumentCurrency, Object.Counterparty, Object.Company);
+		
+		// Discount cards (
+		StructureData.Insert("CallFromProcedureAtCounterpartyChange", True);
+		// ) Discount cards.
+		
+		Object.Contract = StructureData.Contract;
+		ContractBeforeChange = Contract;
+		Contract = Object.Contract;
+		
+		If Object.Prepayment.Count() > 0
+			AND Object.Contract <> ContractBeforeChange Then
+			
+			DocumentParameters = New Structure;
+			DocumentParameters.Insert("CounterpartyChange", True);
+			DocumentParameters.Insert("ContractData", StructureData);
+			DocumentParameters.Insert("CounterpartyBeforeChange", CounterpartyBeforeChange);
+			DocumentParameters.Insert("CounterpartyDoSettlementsByOrdersBeforeChange", CounterpartyDoSettlementsByOrdersBeforeChange);
+			DocumentParameters.Insert("ContractVisibleBeforeChange", ContractVisibleBeforeChange);
+			DocumentParameters.Insert("ContractBeforeChange", ContractBeforeChange);
+			
+			NotifyDescription = New NotifyDescription("PrepaymentClearingQuestionEnd", ThisObject, DocumentParameters);
+			QuestionText = NStr("en='Prepayment set-off will be cleared, do you want to continue?';ru='Зачет предоплаты будет очищен, продолжить?'");
+			
+			ShowQueryBox(NOTifyDescription, QuestionText, QuestionDialogMode.YesNo);
+			Return;
+		EndIf;
+		
+		ProcessContractConditionsChange(StructureData, ContractBeforeChange);
+		
+	Else
+		
+		Object.Contract	= Contract; // Restore the cleared contract automatically.
+		Object.Order	= Items.Order.TypeRestriction.AdjustValue(Order);;
+		
+	EndIf;
+	
+	Order = Object.Order;
+	
+	// AutomaticDiscounts
+	ClearCheckboxDiscountsAreCalculatedClient("CounterpartyOnChange");
+	
+EndProcedure
+
+&AtClient
+Procedure ContractOnChange(Item)
+	
+	ProcessContractChange();
+	
+EndProcedure
+
+&AtClient
+Procedure ContractStartChoice(Item, ChoiceData, StandardProcessing)
+	
+	If Not ValueIsFilled(Object.OperationKind) Then
+		Return;
+	EndIf;
+	
+	FormParameters = GetChoiceFormParameters(Object.Ref, Object.Company, Object.Counterparty, Object.Contract, Object.OperationKind);
+	If FormParameters.ControlContractChoice Then
+		
+		StandardProcessing = False;
+		OpenForm("Catalog.CounterpartyContracts.Form.ChoiceForm", FormParameters, Item);
+		
+	EndIf;
+	
+EndProcedure
+
+&AtClient
+Procedure OrderOnChange(Item)
+	
+	If Object.Prepayment.Count() > 0
+	   AND Object.Order <> Order
+	   AND Object.OperationKind = PredefinedValue("Enum.OperationKindsCustomerInvoice.SaleToCustomer") Then
+		Mode = QuestionDialogMode.YesNo;
+		Response = Undefined;
+
+		ShowQueryBox(New NotifyDescription("OrderOnChangeEnd", ThisObject), NStr("en='Prepayment set-off will be cleared, do you want to continue?';ru='Зачет предоплаты будет очищен, продолжить?'"), Mode, 0);
+        Return;
+	EndIf;
+	
+	OrderOnChangeFragment();
+	
+EndProcedure
+
+&AtClient
+Procedure OrderOnChangeEnd(Result, AdditionalParameters) Export
+    
+    Response = Result;
+    If Response = DialogReturnCode.Yes Then
+        Object.Prepayment.Clear();
+    Else
+		Object.Order	= Items.Order.TypeRestriction.AdjustValue(Order);;
+        Return;
+    EndIf;
+    
+    OrderOnChangeFragment();
+
+EndProcedure
+
+&AtClient
+Procedure OrderOnChangeFragment()
+    
+    Order = Object.Order;
+
+	// AutomaticDiscounts
+	ClearCheckboxDiscountsAreCalculatedClient("OrderOnChange");
+	// End AutomaticDiscounts
+	
+EndProcedure
+
+#EndRegion
+
+#Region FormItemEventHandlersFormTableInventory
+
+&AtClient
+Procedure InventoryProductsAndServicesOnChange(Item)
+	
+	TabularSectionRow = Items.Inventory.CurrentData;
+	
+	StructureData = New Structure();
+	StructureData.Insert("Company"				, Object.Company);
+	StructureData.Insert("ProductsAndServices"	, TabularSectionRow.ProductsAndServices);
+	StructureData.Insert("Characteristic"		, TabularSectionRow.Characteristic);
+	StructureData.Insert("VATTaxation"			, Object.VATTaxation);
+	
+	If ValueIsFilled(Object.PriceKind) Then
+		
+		StructureData.Insert("ProcessingDate"		, Object.Date);
+		StructureData.Insert("DocumentCurrency"		, Object.DocumentCurrency);
+		StructureData.Insert("AmountIncludesVAT"	, Object.AmountIncludesVAT);
+		StructureData.Insert("PriceKind"			, Object.PriceKind);
+		StructureData.Insert("Factor"				, 1);
+		StructureData.Insert("DiscountMarkupKind"	, Object.DiscountMarkupKind);
+	
+	EndIf;
+	
+	// DiscountCards
+	StructureData.Insert("DiscountCard", Object.DiscountCard);
+	StructureData.Insert("DiscountPercentByDiscountCard", Object.DiscountPercentByDiscountCard);
+	// End DiscountCards
+	
+	StructureData = GetDataProductsAndServicesOnChange(StructureData);
+	
+	TabularSectionRow.MeasurementUnit		= StructureData.MeasurementUnit;
+	TabularSectionRow.Quantity				= 1;
+	TabularSectionRow.Price					= StructureData.Price;
+	TabularSectionRow.DiscountMarkupPercent	= StructureData.DiscountMarkupPercent;
+	TabularSectionRow.VATRate				= StructureData.VATRate;
+	TabularSectionRow.Content				= "";
+	
+	TabularSectionRow.ProductsAndServicesTypeInventory = StructureData.IsInventoryItem;
+	
+	CalculateAmountInTabularSectionLine();
+	
+EndProcedure // InventoryProductsAndServicesOnChange()
+
+&AtClient
+Procedure InventoryCharacteristicOnChange(Item)
+	
+	TabularSectionRow = Items.Inventory.CurrentData;
+		
+	StructureData = New Structure;
+	StructureData.Insert("ProductsAndServices",	TabularSectionRow.ProductsAndServices);
+	StructureData.Insert("Characteristic",		TabularSectionRow.Characteristic);
+		
+	If ValueIsFilled(Object.PriceKind) Then
+		
+		StructureData.Insert("ProcessingDate",		Object.Date);
+		StructureData.Insert("DocumentCurrency",	Object.DocumentCurrency);
+		StructureData.Insert("AmountIncludesVAT",	Object.AmountIncludesVAT);
+		
+		StructureData.Insert("VATRate", 			TabularSectionRow.VATRate);
+		StructureData.Insert("Price",			 	TabularSectionRow.Price);
+		
+		StructureData.Insert("PriceKind",		Object.PriceKind);
+		StructureData.Insert("MeasurementUnit",	TabularSectionRow.MeasurementUnit);
+		
+	EndIf;
+				
+	StructureData = GetDataCharacteristicOnChange(StructureData);
+	
+	TabularSectionRow.Price		= StructureData.Price;
+	TabularSectionRow.Content	= "";
+			
+	CalculateAmountInTabularSectionLine();
+	
+EndProcedure // InventoryCharacteristicOnChange()
+
+&AtClient
+Procedure InventoryContentAutoComplete(Item, Text, ChoiceData, Parameters, Wait, StandardProcessing)
+	
+	If Wait = 0 Then
+		
+		StandardProcessing = False;
+		
+		TabularSectionRow	= Items.Inventory.CurrentData;
+		ContentPattern		= SmallBusinessServer.GetContentText(TabularSectionRow.ProductsAndServices, TabularSectionRow.Characteristic);
+		
+		ChoiceData = New ValueList;
+		ChoiceData.Add(ContentPattern);
+		
+	EndIf;
+	
+EndProcedure
+
+&AtClient
+Procedure InventoryQuantityOnChange(Item)
+	
+	CalculateAmountInTabularSectionLine();
+	
+EndProcedure
+
+&AtClient
+Procedure InventoryMeasurementUnitChoiceProcessing(Item, ValueSelected, StandardProcessing)
+	
+	TabularSectionRow = Items.Inventory.CurrentData;
+	
+	If TabularSectionRow.MeasurementUnit = ValueSelected 
+		OR TabularSectionRow.Price = 0 Then
+		Return;
+	EndIf;
+	
+	CurrentFactor = 0;
+	If TypeOf(TabularSectionRow.MeasurementUnit) = Type("CatalogRef.UOMClassifier") Then
+		CurrentFactor = 1;
+	EndIf;
+	
+	Factor = 0;
+	If TypeOf(ValueSelected) = Type("CatalogRef.UOMClassifier") Then
+		Factor = 1;
+	EndIf;
+	
+	If CurrentFactor = 0 AND Factor = 0 Then
+		StructureData = GetDataMeasurementUnitOnChange(TabularSectionRow.MeasurementUnit, ValueSelected);
+	ElsIf CurrentFactor = 0 Then
+		StructureData = GetDataMeasurementUnitOnChange(TabularSectionRow.MeasurementUnit);
+	ElsIf Factor = 0 Then
+		StructureData = GetDataMeasurementUnitOnChange(,ValueSelected);
+	ElsIf CurrentFactor = 1 AND Factor = 1 Then
+		StructureData = New Structure("CurrentFactor, Factor", 1, 1);
+	EndIf;
+	
+	// Price.
+	If StructureData.CurrentFactor <> 0 Then
+		TabularSectionRow.Price = TabularSectionRow.Price * StructureData.Factor / StructureData.CurrentFactor;
+	EndIf;
+	
+	CalculateAmountInTabularSectionLine();
+	
+EndProcedure // InventoryMeasurementUnitChoiceProcessing()
+
+&AtClient
+Procedure InventoryPriceOnChange(Item)
+	
+	CalculateAmountInTabularSectionLine();
+	
+EndProcedure // InventoryPriceOnChange()
+
+&AtClient
+Procedure InventoryDiscountMarkupPercentOnChange(Item)
+	
+	CalculateAmountInTabularSectionLine();
+	
+EndProcedure // InventoryDiscountMarkupPercentOnChange()
+
+&AtClient
+Procedure InventoryAmountOnChange(Item)
+	
+	TabularSectionRow = Items.Inventory.CurrentData;
+	
+	// Price.
+	If TabularSectionRow.Quantity <> 0 Then
+		TabularSectionRow.Price = TabularSectionRow.Amount / TabularSectionRow.Quantity;
+	EndIf;
+	
+	// Discount.
+	If TabularSectionRow.DiscountMarkupPercent = 100 Then
+		TabularSectionRow.Price = 0;
+	ElsIf TabularSectionRow.DiscountMarkupPercent <> 0 AND TabularSectionRow.Quantity <> 0 Then
+		TabularSectionRow.Price = TabularSectionRow.Amount / ((1 - TabularSectionRow.DiscountMarkupPercent / 100) * TabularSectionRow.Quantity);
+	EndIf;
+	
+	CalculateVATAmount(TabularSectionRow);
+	TabularSectionRow.Total = TabularSectionRow.Amount + ?(Object.AmountIncludesVAT, 0, TabularSectionRow.VATAmount);
+	
+	// AutomaticDiscounts.
+	ClearCheckboxDiscountsAreCalculatedClient("CalculateAmountInTabularSectionLine", "Amount");
+	
+	TabularSectionRow.AutomaticDiscountsPercent = 0;
+	TabularSectionRow.AutomaticDiscountAmount = 0;
+	TabularSectionRow.TotalDiscountAmountIsMoreThanAmount = False;
+	// End AutomaticDiscounts
+	
+EndProcedure // InventoryAmountOnChange()
+
+&AtClient
+Procedure InventoryVATRateOnChange(Item)
+	
+	TabularSectionRow = Items.Inventory.CurrentData;
+	
+	CalculateVATAmount(TabularSectionRow);
+	TabularSectionRow.Total = TabularSectionRow.Amount + ?(Object.AmountIncludesVAT, 0, TabularSectionRow.VATAmount);
+	
+EndProcedure // InventoryVATRateOnChange()
+
+&AtClient
+Procedure InventoryVATAmountOnChange(Item)
+	
+	TabularSectionRow = Items.Inventory.CurrentData;
+	
+	TabularSectionRow.Total = TabularSectionRow.Amount + ?(Object.AmountIncludesVAT, 0, TabularSectionRow.VATAmount);	
+	
+EndProcedure // InventoryVATAmountOnChange()
+
+#EndRegion
+
+#Region FormItemEventHandlersFormTablePrepayment
+
+&AtClient
+Procedure PrepaymentSettlementsAmountOnChange(Item)
+	
+	TablePartRow = Items.Prepayment.CurrentData;
+		
+	TablePartRow.ExchangeRate = ?(
+		TablePartRow.ExchangeRate = 0,
+			?(Object.ExchangeRate = 0,
+			1,
+			Object.ExchangeRate),
+		TablePartRow.ExchangeRate
+	);
+	
+	TablePartRow.Multiplicity = ?(
+		TablePartRow.Multiplicity = 0,
+			?(Object.Multiplicity = 0,
+			1,
+			Object.Multiplicity),
+		TablePartRow.Multiplicity
+	);
+	
+	TablePartRow.PaymentAmount = SmallBusinessClient.RecalculateFromCurrencyToCurrency(
+		TablePartRow.SettlementsAmount,
+		TablePartRow.ExchangeRate,
+		?(Object.DocumentCurrency = NationalCurrency, ExchangeRateNationalCurrency, Object.ExchangeRate),
+		TablePartRow.Multiplicity,
+		?(Object.DocumentCurrency = NationalCurrency, MultiplicityNationalCurrency, Object.Multiplicity)
+	);
+
+EndProcedure
+
+&AtClient
+Procedure PrepaymentPaymentAmountOnChange(Item)
+	
+	TablePartRow = Items.Prepayment.CurrentData;
+	
+	TablePartRow.ExchangeRate = ?(
+		TablePartRow.ExchangeRate = 0,
+		1,
+		TablePartRow.ExchangeRate
+	);
+	
+	TablePartRow.Multiplicity = 1;
+	
+	TablePartRow.ExchangeRate =
+		?(TablePartRow.SettlementsAmount = 0,
+			1,
+			TablePartRow.PaymentAmount
+		  / TablePartRow.SettlementsAmount
+		  * Object.ExchangeRate
+	);
+	
+EndProcedure
+
+&AtClient
+Procedure PrepaymentDocumentOnChange(Item)
+	
+	TablePartRow = Items.Prepayment.CurrentData;
+	
+	If ValueIsFilled(TablePartRow.Document) Then
+		
+		StructureData = GetDataDocumentOnChange(TablePartRow.Document);
+		
+		TablePartRow.SettlementsAmount = StructureData.SettlementsAmount;
+		
+		TablePartRow.ExchangeRate = 
+			?(TablePartRow.ExchangeRate = 0,
+				?(Object.ExchangeRate = 0,
+				1,
+				Object.ExchangeRate),
+			TablePartRow.ExchangeRate
+		);
+		
+		TablePartRow.Multiplicity =
+			?(TablePartRow.Multiplicity = 0,
+				?(Object.Multiplicity = 0,
+				1,
+				Object.Multiplicity),
+			TablePartRow.Multiplicity
+		);
+			
+		TablePartRow.PaymentAmount = SmallBusinessClient.RecalculateFromCurrencyToCurrency(
+			TablePartRow.SettlementsAmount,
+			TablePartRow.ExchangeRate,
+			?(Object.DocumentCurrency = NationalCurrency, ExchangeRateNationalCurrency, Object.ExchangeRate),
+			TablePartRow.Multiplicity,
+			?(Object.DocumentCurrency = NationalCurrency, MultiplicityNationalCurrency, Object.Multiplicity)
+		);
+		
+	EndIf;
+	
+EndProcedure
+
+&AtServerNoContext
+Function GetDataDocumentOnChange(Document)
+	
+	StructureData = New Structure();
+	
+	StructureData.Insert("SettlementsAmount", Document.PaymentDetails.Total("SettlementsAmount"));
+	
+	Return StructureData;
+	
+EndFunction // GetDataDocumentOnChange()
+
+&AtClient
+Procedure PrepaymentExchangeRateOnChange(Item)
+	
+	TablePartRow = Items.Prepayment.CurrentData;
+	
+	TablePartRow.ExchangeRate = ?(
+		TablePartRow.ExchangeRate = 0,
+		1,
+		TablePartRow.ExchangeRate
+	);
+	
+	TablePartRow.Multiplicity = ?(
+		TablePartRow.Multiplicity = 0,
+		1,
+		TablePartRow.Multiplicity
+	);
+	
+	TablePartRow.PaymentAmount = SmallBusinessClient.RecalculateFromCurrencyToCurrency(
+		TablePartRow.SettlementsAmount,
+		TablePartRow.ExchangeRate,
+		?(Object.DocumentCurrency = NationalCurrency, ExchangeRateNationalCurrency, Object.ExchangeRate),
+		TablePartRow.Multiplicity,
+		?(Object.DocumentCurrency = NationalCurrency, MultiplicityNationalCurrency, Object.Multiplicity)
+	);
+	
+EndProcedure
+
+&AtClient
+Procedure PrepaymentMultiplicityOnChange(Item)
+	
+	TablePartRow = Items.Prepayment.CurrentData;
+	
+	TablePartRow.ExchangeRate = ?(
+		TablePartRow.ExchangeRate = 0,
+		1,
+		TablePartRow.ExchangeRate
+	);
+	
+	TablePartRow.Multiplicity = ?(
+		TablePartRow.Multiplicity = 0,
+		1,
+		TablePartRow.Multiplicity
+	);
+	
+	TablePartRow.PaymentAmount = SmallBusinessClient.RecalculateFromCurrencyToCurrency(
+		TablePartRow.SettlementsAmount,
+		TablePartRow.ExchangeRate,
+		?(Object.DocumentCurrency = NationalCurrency, ExchangeRateNationalCurrency, Object.ExchangeRate),
+		TablePartRow.Multiplicity,
+		?(Object.DocumentCurrency = NationalCurrency, MultiplicityNationalCurrency, Object.Multiplicity)
+	);
+	
+EndProcedure
+
+#EndRegion
+
+#Region TableEventHandlers
+	
+&AtClient
+Procedure EditPricesAndCurrency(Item, StandardProcessing)
+	
+	StandardProcessing = False;
+	ProcessChangesOnButtonPricesAndCurrencies(Object.DocumentCurrency);
+	Modified = True;
+	
+EndProcedure // EditPricesAndCurrency()
+
+&AtClient
+Procedure FillByBasis(Command)
+	
+	Response = Undefined;
+
+	
+	ShowQueryBox(New NotifyDescription("FillByBasisEnd", ThisObject), NStr("en='Document will be completely refilled by ""Basis""! Continue?';ru='Документ будет полностью перезаполнен по ""Основанию""! Продолжить?'"), QuestionDialogMode.YesNo, 0);
+	
+EndProcedure
+
+&AtClient
+Procedure FillByBasisEnd(Result, AdditionalParameters) Export
+    
+    Response = Result;
+    If Response = DialogReturnCode.Yes Then
+        FillByDocument(Object.BasisDocument);
+        SetVisibleAndEnabled();
+    EndIf;
+
+EndProcedure // FillByBasis()
+
+&AtClient
+Procedure FillByOrder(Command)
+	
+	Response = Undefined;
+
+	
+	ShowQueryBox(New NotifyDescription("FillByOrderEnd", ThisObject), NStr("en='The document will be completely refilled by ""Order""! Continue?';ru='Документ будет полностью перезаполнен по ""Заказу""! Продолжить выполнение операции?'"), QuestionDialogMode.YesNo, 0);
+	
+EndProcedure
+
+&AtClient
+Procedure FillByOrderEnd(Result, AdditionalParameters) Export
+    
+    Response = Result;
+    If Response = DialogReturnCode.Yes Then
+        FillByDocument(Object.Order);
+        SetVisibleAndEnabled();
+    EndIf;
+
+EndProcedure // FillByOrder()
+
+&AtClient
+Procedure EditPrepaymentOffset(Command)
+	
+	If Not ValueIsFilled(Object.Counterparty) Then
+		ShowMessageBox(, NStr("en='Specify the counterparty first.';ru='Укажите вначале контрагента!'"));
+		Return;
+	EndIf;
+	
+	If Not ValueIsFilled(Object.Contract) Then
+		ShowMessageBox(, NStr("en='Specify the counterparty contract first.';ru='Укажите вначале договор контрагента!'"));
+		Return;
+	EndIf;
+	
+	OrdersArray = New Array;
+	For Each CurItem IN Object.Inventory Do
+		OrderStructure = New Structure("Order, Total");
+		OrderStructure.Order = ?(CurItem.Order = Undefined, PredefinedValue("Document.CustomerOrder.EmptyRef"), CurItem.Order);
+		OrderStructure.Total = CurItem.Total;
+		OrdersArray.Add(OrderStructure);
+	EndDo;
+	
+	AddressPrepaymentInStorage = PlacePrepaymentToStorage();
+	SelectionParameters = New Structure(
+		"AddressPrepaymentInStorage,
+		|Pick,
+		|IsOrder,
+		|OrderInHeader,
+		|Company,
+		|Order,
+		|Date,
+		|Ref,
+		|Counterparty,
+		|Contract,
+		|ExchangeRate,
+		|Multiplicity,
+		|DocumentCurrency,
+		|DocumentAmount",
+		AddressPrepaymentInStorage, // AddressPrepaymentInStorage
+		?(Object.OperationKind = PredefinedValue("Enum.OperationKindsCustomerInvoice.SaleToCustomer"), True, False), // Pick
+		True, // IsOrder
+		OrderInHeader, // OrderInHeader
+		Company, // Counterparty
+		?(CounterpartyDoSettlementsByOrders, ?(OrderInHeader, Object.Order, OrdersArray), Undefined), // Order
+		Object.Date, // Date
+		Object.Ref, // Ref
+		Object.Counterparty, // Counterparty
+		Object.Contract, // Contract
+		Object.ExchangeRate, // ExchangeRate
+		Object.Multiplicity, // Multiplicity
+		Object.DocumentCurrency, // DocumentCurrency
+		Object.Inventory.Total("Total") // DocumentAmount
+	);
+	
+	If Object.OperationKind = PredefinedValue("Enum.OperationKindsCustomerInvoice.SaleToCustomer") Then
+		ReturnCode = Undefined;
+
+		OpenForm("CommonForm.CustomerAdvancesPickForm", SelectionParameters,,,,, New NotifyDescription("EditPrepaymentOffsetEnd1", ThisObject, New Structure("AddressPrepaymentInStorage, SelectionParameters", AddressPrepaymentInStorage, SelectionParameters)));
+        Return;
+	ElsIf Object.OperationKind = PredefinedValue("Enum.OperationKindsCustomerInvoice.ReturnToVendor") Then
+		OpenForm("CommonForm.SupplierAdvancesPickForm", SelectionParameters,,,,, New NotifyDescription("EditPrepaymentOffsetEnd", ThisObject, New Structure("AddressPrepaymentInStorage", AddressPrepaymentInStorage)));
+        Return;
+	EndIf;
+	
+	EditPrepaymentOffsetFragment1(AddressPrepaymentInStorage, ReturnCode);
+EndProcedure
+
+&AtClient
+Procedure EditPrepaymentOffsetEnd1(Result, AdditionalParameters) Export
+    
+    AddressPrepaymentInStorage = AdditionalParameters.AddressPrepaymentInStorage;
+    SelectionParameters = AdditionalParameters.SelectionParameters;
+    
+    
+    ReturnCode = Result;
+    
+    EditPrepaymentOffsetFragment1(AddressPrepaymentInStorage, ReturnCode);
+
+EndProcedure
+
+&AtClient
+Procedure EditPrepaymentOffsetFragment1(Val AddressPrepaymentInStorage, Val ReturnCode)
+    
+    EditPrepaymentOffsetFragment(AddressPrepaymentInStorage, ReturnCode);
+
+EndProcedure
+
+&AtClient
+Procedure EditPrepaymentOffsetEnd(Result, AdditionalParameters) Export
+    
+    AddressPrepaymentInStorage = AdditionalParameters.AddressPrepaymentInStorage;
+    
+    
+    ReturnCode = Result;
+    
+    EditPrepaymentOffsetFragment(AddressPrepaymentInStorage, ReturnCode);
+
+EndProcedure
+
+&AtClient
+Procedure EditPrepaymentOffsetFragment(Val AddressPrepaymentInStorage, Val ReturnCode)
+    
+    If (Object.OperationKind = PredefinedValue("Enum.OperationKindsCustomerInvoice.SaleToCustomer")
+        OR Object.OperationKind = PredefinedValue("Enum.OperationKindsCustomerInvoice.ReturnToVendor"))
+        AND (ReturnCode = DialogReturnCode.OK) Then
+        GetPrepaymentFromStorage(AddressPrepaymentInStorage);
+    EndIf;
+
+EndProcedure // EditPrepaymentOffset()
+
+// Peripherals
+// Procedure - command handler of the tabular section command panel.
 //
+&AtClient
+Procedure SearchByBarcode(Command)
+	
+	CurBarcode = "";
+	ShowInputValue(New NotifyDescription("SearchByBarcodeEnd", ThisObject, New Structure("CurBarcode", CurBarcode)), CurBarcode, NStr("en='Enter barcode';ru='Введите штрихкод'"));
+
+EndProcedure
+
+&AtClient
+Procedure SearchByBarcodeEnd(Result, AdditionalParameters) Export
+    
+    CurBarcode = ?(Result = Undefined, AdditionalParameters.CurBarcode, Result);
+    
+    
+    If Not IsBlankString(CurBarcode) Then
+        BarcodesReceived(New Structure("Barcode, Quantity", CurBarcode, 1));
+    EndIf;
+
+EndProcedure // SearchByBarcode()
+
+// Procedure - event handler Action of the GetWeight command
+//
+&AtClient
+Procedure GetWeight(Command)
+	
+	TabularSectionRow = Items.Inventory.CurrentData;
+	
+	If TabularSectionRow = Undefined Then
+		
+		ShowMessageBox(Undefined, NStr("en='It is required to select a line to get weight for it.';ru='Необходимо выбрать строку, для которой необходимо получить вес.'"));
+		
+	ElsIf EquipmentManagerClient.RefreshClientWorkplace() Then // Checks if the operator's workplace is specified
+		
+		NotifyDescription = New NotifyDescription("GetWeightEnd", ThisObject, TabularSectionRow);
+		EquipmentManagerClient.StartWeightReceivingFromElectronicScales(NOTifyDescription, UUID);
+		
+	EndIf;
+	
+EndProcedure // GetWeight()
+
+&AtClient
+Procedure GetWeightEnd(Weight, Parameters) Export
+	
+	TabularSectionRow = Parameters;
+	
+	If Not Weight = Undefined Then
+		If Weight = 0 Then
+			MessageText = NStr("en='Electronic scales returned zero weight.';ru='Электронные весы вернули нулевой вес.'");
+			CommonUseClientServer.MessageToUser(MessageText);
+		Else
+			// Weight is received.
+			TabularSectionRow.Quantity = Weight;
+			CalculateAmountInTabularSectionLine(TabularSectionRow);
+		EndIf;
+	EndIf;
+	
+EndProcedure
+
+// Procedure - ImportDataFromDTC command handler.
+//
+&AtClient
+Procedure ImportDataFromDCT(Command)
+	
+	NotificationsAtImportFromDCT = New NotifyDescription("ImportFromDCTEnd", ThisObject);
+	EquipmentManagerClient.StartImportDataFromDCT(NotificationsAtImportFromDCT, UUID);
+	
+EndProcedure // ImportDataFromDCT()
+
+&AtClient
+Procedure ImportFromDCTEnd(Result, Parameters) Export
+	
+	If TypeOf(Result) = Type("Array") 
+	   AND Result.Count() > 0 Then
+		BarcodesReceived(Result);
+	EndIf;
+	
+EndProcedure
+// End Peripherals
+
+&AtClient
+Procedure DocumentSetting(Command)
+	
+	// 1. Form parameter structure to fill "Document setting" form.
+	ParametersStructure = New Structure;
+	ParametersStructure.Insert("CustomerOrderPositionInShipmentDocuments", 	Object.CustomerOrderPosition);
+	ParametersStructure.Insert("WereMadeChanges",							False);
+	
+	StructureDocumentSetting = Undefined;
+
+	
+	OpenForm("CommonForm.DocumentSetting", ParametersStructure,,,,, New NotifyDescription("DocumentSettingEnd", ThisObject));
+	
+EndProcedure
+
+&AtClient
+Procedure DocumentSettingEnd(Result, AdditionalParameters) Export
+    
+    // 2. Open the form "Prices and Currency".
+    StructureDocumentSetting = Result;
+    
+    // 3. Apply changes made in "Document setting" form.
+    If TypeOf(StructureDocumentSetting) = Type("Structure") AND StructureDocumentSetting.WereMadeChanges Then
+        
+        Object.CustomerOrderPosition = StructureDocumentSetting.CustomerOrderPositionInShipmentDocuments;
+        SetVisibleFromUserSettings();
+        
+    EndIf;
+
+EndProcedure
+
+&AtClient
+Procedure ChangeReserveFillByReserves(Command)
+	
+	If Object.Inventory.Count() = 0 Then
+		Message = New UserMessage;
+		Message.Text = NStr("en='Table part ""Products and services"" is not filled!';ru='Табличная часть ""Запасы и услуги"" не заполнена!'");
+		Message.Message();
+		Return;
+	EndIf;
+	
+	FillColumnReserveByReservesAtServer();
+	
+EndProcedure // ChangeReserveFillByReserves()
+
+&AtClient
+Procedure ChangeReserveClearReserve(Command)
+	
+	If Object.Inventory.Count() = 0 Then
+		Message = New UserMessage;
+		Message.Text = NStr("en='Table part ""Products and services"" is not filled!';ru='Табличная часть ""Запасы и услуги"" не заполнена!'");
+		Message.Message();
+		Return;
+	EndIf;
+	
+	For Each TabularSectionRow IN Object.Inventory Do
+		
+		If TabularSectionRow.ProductsAndServicesTypeInventory Then
+			TabularSectionRow.Reserve = 0;
+		EndIf;
+		
+	EndDo;
+	
+EndProcedure // ChangeReserveFillByBalances()
+
+#EndRegion
+
+#Region ServiceProceduresAndFunctions
+
 &AtServer
 Procedure FillByDocument(BasisDocument)
 	
@@ -32,13 +1233,11 @@ Procedure FillByDocument(BasisDocument)
 	
 EndProcedure // FillByDocument()
 
-// It receives data set from server for the DateOnChange procedure.
-//
 &AtServer
 Function GetDataDateOnChange(DateBeforeChange, SettlementsCurrency)
 	
 	DATEDIFF = SmallBusinessServer.CheckDocumentNumber(Object.Ref, Object.Date, DateBeforeChange);
-	CurrencyRateRepetition = InformationRegisters.CurrencyRates.GetLast(Object.Date, New Structure("Currency", SettlementsCurrency));
+	CurrencyRateRepetition = InformationRegisters.CurrencyRates.GetLast(Object.Date, New Structure("Currency", SettlementCurrency));
 		
 	StructureData = New Structure;
 	
@@ -57,13 +1256,11 @@ Function GetDataDateOnChange(DateBeforeChange, SettlementsCurrency)
 	
 EndFunction // GetDataDateOnChange()
 
-// Gets data set from server.
-//
 &AtServer
-Function GetCompanyDataOnChange()
+Function GetDataCompanyOnChange()
 	
 	StructureData = New Structure();
-	StructureData.Insert("Counterparty", SmallBusinessServer.GetCompany(Object.Company));
+	StructureData.Insert("Company", SmallBusinessServer.GetCompany(Object.Company));
 	
 	ResponsiblePersons		= SmallBusinessServer.OrganizationalUnitsResponsiblePersons(Object.Company, Object.Date);
 	
@@ -77,10 +1274,8 @@ Function GetCompanyDataOnChange()
 	
 	Return StructureData;
 	
-EndFunction // GetCompanyDataOnChange()
+EndFunction // GetDataCompanyOnChange()
 
-// Receives the set of data from the server for the ProductsAndServicesOnChange procedure.
-//
 &AtServerNoContext
 Function GetDataProductsAndServicesOnChange(StructureData)
 	
@@ -126,8 +1321,6 @@ Function GetDataProductsAndServicesOnChange(StructureData)
 	
 EndFunction // ReceiveDataProductsAndServicesOnChange()
 
-// It receives data set from server for the CharacteristicOnChange procedure.
-//
 &AtServerNoContext
 Function GetDataCharacteristicOnChange(StructureData)
 	
@@ -152,8 +1345,6 @@ Function GetDataCharacteristicOnChange(StructureData)
 	
 EndFunction // GetDataCharacteristicOnChange()
 
-// Gets the data set from the server for procedure MeasurementUnitOnChange.
-//
 &AtServerNoContext
 Function GetDataMeasurementUnitOnChange(CurrentMeasurementUnit = Undefined, MeasurementUnit = Undefined)
 	
@@ -175,8 +1366,6 @@ Function GetDataMeasurementUnitOnChange(CurrentMeasurementUnit = Undefined, Meas
 	
 EndFunction // GetDataMeasurementUnitOnChange()
 
-// It receives data set from the server for the CounterpartyOnChange procedure.
-//
 &AtServer
 Function GetDataCounterpartyOnChange(Date, DocumentCurrency, Counterparty, Company)
 	
@@ -187,6 +1376,11 @@ Function GetDataCounterpartyOnChange(Date, DocumentCurrency, Counterparty, Compa
 	StructureData.Insert(
 		"Contract",
 		ContractByDefault
+	);
+		
+	StructureData.Insert(
+		"ContractDescription",
+		ContractByDefault.Description
 	);
 		
 	StructureData.Insert(
@@ -225,13 +1419,15 @@ Function GetDataCounterpartyOnChange(Date, DocumentCurrency, Counterparty, Compa
 	
 EndFunction // GetDataCounterpartyOnChange()
 
-// It receives data set from server for the ContractOnChange procedure.
-//
 &AtServerNoContext
 Function GetDataContractOnChange(Date, DocumentCurrency, Contract)
 		
 	StructureData = New Structure();
 	
+	StructureData.Insert(
+		"ContractDescription",
+		Contract.Description
+	);
 	StructureData.Insert(
 		"SettlementsCurrency",
 		Contract.SettlementsCurrency
@@ -266,9 +1462,6 @@ Function GetDataContractOnChange(Date, DocumentCurrency, Contract)
 	
 EndFunction // GetDataContractOnChange()
 
-// Procedure fills VAT Rate in tabular section
-// by company taxation system.
-// 
 &AtServer
 Procedure FillVATRateByCompanyVATTaxation()
 	
@@ -291,10 +1484,8 @@ Procedure FillVATRateByCompanyVATTaxation()
 		FillVATRateByVATTaxation();
 	EndIf;
 	
-EndProcedure // FillVATRateByVATTaxation()
+EndProcedure // FillVATRateByCompanyVATTaxation()
 
-// Procedure fills the VAT rate in the tabular section according to the taxation system.
-// 
 &AtServer
 Procedure FillVATRateByVATTaxation()
 	
@@ -345,21 +1536,17 @@ Procedure FillVATRateByVATTaxation()
 	
 EndProcedure // FillVATRateByVATTaxation()	
 
-// VAT amount is calculated in the row of tabular section.
-//
 &AtClient
-Procedure CalculateVATSUM(TabularSectionRow)
+Procedure CalculateVATAmount(TablePartRow)
 	
-	VATRate = SmallBusinessReUse.GetVATRateValue(TabularSectionRow.VATRate);
+	VATRate = SmallBusinessReUse.GetVATRateValue(TablePartRow.VATRate);
 	
-	TabularSectionRow.VATAmount = ?(Object.AmountIncludesVAT, 
-									  TabularSectionRow.Amount - (TabularSectionRow.Amount) / ((VATRate + 100) / 100),
-									  TabularSectionRow.Amount * VATRate / 100);
+	TablePartRow.VATAmount = ?(Object.AmountIncludesVAT, 
+									  TablePartRow.Amount - (TablePartRow.Amount) / ((VATRate + 100) / 100),
+									  TablePartRow.Amount * VATRate / 100);
 	
 EndProcedure // CalculateVATAmount()
 
-// Procedure calculates the amount in the row of tabular section.
-//
 &AtClient
 Procedure CalculateAmountInTabularSectionLine(TabularSectionRow = Undefined, ResetFlagDiscountsAreCalculated = True)
 	
@@ -380,7 +1567,7 @@ Procedure CalculateAmountInTabularSectionLine(TabularSectionRow = Undefined, Res
 		
 	EndIf;
 	
-	CalculateVATSUM(TabularSectionRow);
+	CalculateVATAmount(TabularSectionRow);
 	TabularSectionRow.Total = TabularSectionRow.Amount + ?(Object.AmountIncludesVAT, 0, TabularSectionRow.VATAmount);
 	
 	// AutomaticDiscounts.
@@ -395,9 +1582,6 @@ Procedure CalculateAmountInTabularSectionLine(TabularSectionRow = Undefined, Res
 	
 EndProcedure // CalculateAmountInTabularSectionLine()
 
-// Procedure recalculates the rate and multiplicity of
-// settlement currency when document date change.
-//
 &AtClient
 Procedure RecalculateExchangeRateMultiplicitySettlementCurrency(StructureData)
 	
@@ -407,8 +1591,8 @@ Procedure RecalculateExchangeRateMultiplicitySettlementCurrency(StructureData)
 	If Object.ExchangeRate <> NewExchangeRate
 		OR Object.Multiplicity <> NewRatio Then
 		
-		CurrencyRateInLetters = String(Object.Multiplicity) + " " + TrimAll(SettlementsCurrency) + " = " + String(Object.ExchangeRate) + " " + TrimAll(NationalCurrency);
-		RateNewCurrenciesInLetters = String(NewRatio) + " " + TrimAll(SettlementsCurrency) + " = " + String(NewExchangeRate) + " " + TrimAll(NationalCurrency);
+		CurrencyRateInLetters = String(Object.Multiplicity) + " " + TrimAll(SettlementCurrency) + " = " + String(Object.ExchangeRate) + " " + TrimAll(NationalCurrency);
+		RateNewCurrenciesInLetters = String(NewRatio) + " " + TrimAll(SettlementCurrency) + " = " + String(NewExchangeRate) + " " + TrimAll(NationalCurrency);
 		
 		QuestionParameters = New Structure;
 		QuestionParameters.Insert("NewExchangeRate", NewExchangeRate);
@@ -416,7 +1600,8 @@ Procedure RecalculateExchangeRateMultiplicitySettlementCurrency(StructureData)
 		
 		NotifyDescription = New NotifyDescription("QuestionOnRecalculatingPaymentCurrencyRateConversionFactorEnd", ThisObject, QuestionParameters);
 		
-		QuestionText = NStr("en = 'As of the date of document the settlement currency (" + CurrencyRateInLetters + ") exchange rate was specified.
+		QuestionText = NStr("ru = 'На дату документа у валюты расчетов (" + CurrencyRateInLetters + ") был задан курс.
+									|Установить курс расчетов (" + RateNewCurrenciesInLetters + ") в соответствии с курсом валюты?'; en = 'As of the date of document the settlement currency (" + CurrencyRateInLetters + ") exchange rate was specified.
 									|Set the settlements rate (" + RateNewCurrenciesInLetters + ") according to exchange rate?'");
 		
 		ShowQueryBox(NOTifyDescription, QuestionText, QuestionDialogMode.YesNo);
@@ -425,8 +1610,6 @@ Procedure RecalculateExchangeRateMultiplicitySettlementCurrency(StructureData)
 	
 EndProcedure // RecalculateRateAccountCurrencyRepetition()
 
-// Performs the actions after a response to the question on recalculation of rate and conversion factor of payment currency.
-//
 &AtClient
 Procedure QuestionOnRecalculatingPaymentCurrencyRateConversionFactorEnd(Result, AdditionalParameters) Export
 
@@ -439,42 +1622,38 @@ Procedure QuestionOnRecalculatingPaymentCurrencyRateConversionFactorEnd(Result, 
 			TabularSectionRow.PaymentAmount = SmallBusinessClient.RecalculateFromCurrencyToCurrency(
 				TabularSectionRow.SettlementsAmount,
 				TabularSectionRow.ExchangeRate,
-				?(Object.DocumentCurrency = NationalCurrency, RateNationalCurrency, Object.ExchangeRate),
+				?(Object.DocumentCurrency = NationalCurrency, ExchangeRateNationalCurrency, Object.ExchangeRate),
 				TabularSectionRow.Multiplicity,
-				?(Object.DocumentCurrency = NationalCurrency, RepetitionNationalCurrency, Object.Multiplicity));
+				?(Object.DocumentCurrency = NationalCurrency, MultiplicityNationalCurrency, Object.Multiplicity));
 		EndDo;
 			
 		// Generate price and currency label.
-		LabelStructure = New Structure("PriceKind, DiscountKind, DocumentCurrency, SettlementsCurrency, Rate, RateNationalCurrency, AmountIncludesVAT, CurrencyTransactionsAccounting, VATTaxation, DiscountCard, DiscountPercentByDiscountCard", Object.PriceKind, Object.DiscountMarkupKind, Object.DocumentCurrency, SettlementsCurrency, Object.ExchangeRate, RateNationalCurrency, Object.AmountIncludesVAT, CurrencyTransactionsAccounting, Object.VATTaxation, Object.DiscountCard, Object.DiscountPercentByDiscountCard);
+		LabelStructure = New Structure("PriceKind, DiscountKind, DocumentCurrency, SettlementsCurrency, Rate, RateNationalCurrency, AmountIncludesVAT, CurrencyTransactionsAccounting, VATTaxation, DiscountCard, DiscountPercentByDiscountCard", Object.PriceKind, Object.DiscountMarkupKind, Object.DocumentCurrency, SettlementCurrency, Object.ExchangeRate, ExchangeRateNationalCurrency, Object.AmountIncludesVAT, CurrencyTransactionsAccounting, Object.VATTaxation, Object.DiscountCard, Object.DiscountPercentByDiscountCard);
 		PricesAndCurrency = GenerateLabelPricesAndCurrency(LabelStructure);
 		
 	EndIf;
 
 EndProcedure
 
-// Procedure executes recalculate in the document tabular section
-// after changes in "Prices and currency" form.Column recalculation is executed:
-// price, discount, amount, VAT amount, total.
-//
 &AtClient
 Procedure ProcessChangesOnButtonPricesAndCurrencies(Val SettlementsCurrencyBeforeChange, RefillPrices = False, RecalculatePrices = False, WarningText = "")
 	
 	// 1. Form parameter structure to fill the "Prices and Currency" form.
 	ParametersStructure = New Structure;
-	ParametersStructure.Insert("DocumentCurrency",		  Object.DocumentCurrency);
-	ParametersStructure.Insert("ExchangeRate",				  Object.ExchangeRate);
-	ParametersStructure.Insert("Multiplicity",			  Object.Multiplicity);
-	ParametersStructure.Insert("VATTaxation",	  Object.VATTaxation);
-	ParametersStructure.Insert("AmountIncludesVAT",	  Object.AmountIncludesVAT);
-	ParametersStructure.Insert("IncludeVATInPrice", Object.IncludeVATInPrice);
-	ParametersStructure.Insert("Counterparty",			  Object.Counterparty);
-	ParametersStructure.Insert("Contract",				  Object.Contract);
-	ParametersStructure.Insert("Company",			  Counterparty);
-	ParametersStructure.Insert("DocumentDate",		  Object.Date);
-	ParametersStructure.Insert("RefillPrices",	  RefillPrices);
-	ParametersStructure.Insert("RecalculatePrices",		  RecalculatePrices);
-	ParametersStructure.Insert("WereMadeChanges",  False);
-	ParametersStructure.Insert("WarningText",   WarningText);
+	ParametersStructure.Insert("DocumentCurrency",	Object.DocumentCurrency);
+	ParametersStructure.Insert("ExchangeRate",		Object.ExchangeRate);
+	ParametersStructure.Insert("Multiplicity",		Object.Multiplicity);
+	ParametersStructure.Insert("VATTaxation",		Object.VATTaxation);
+	ParametersStructure.Insert("AmountIncludesVAT",	Object.AmountIncludesVAT);
+	ParametersStructure.Insert("IncludeVATInPrice",	Object.IncludeVATInPrice);
+	ParametersStructure.Insert("Counterparty",		Object.Counterparty);
+	ParametersStructure.Insert("Contract",			Object.Contract);
+	ParametersStructure.Insert("Company",			Company);
+	ParametersStructure.Insert("DocumentDate",		Object.Date);
+	ParametersStructure.Insert("RefillPrices",		RefillPrices);
+	ParametersStructure.Insert("RecalculatePrices",	RecalculatePrices);
+	ParametersStructure.Insert("WereMadeChanges",	False);
+	ParametersStructure.Insert("WarningText",		WarningText);
 	
 	If Object.OperationKind = PredefinedValue("Enum.OperationKindsCustomerInvoice.SaleToCustomer")
 	 OR Object.OperationKind = PredefinedValue("Enum.OperationKindsCustomerInvoice.TransferForCommission")
@@ -496,8 +1675,6 @@ Procedure ProcessChangesOnButtonPricesAndCurrencies(Val SettlementsCurrencyBefor
 EndProcedure // ProcessChangesByButtonPricesAndCurrencies()
 
 &AtClient
-// Procedure-handler of the result of opening the "Prices and currencies" form
-//
 Procedure OpenPricesAndCurrencyFormEnd(ClosingResult, AdditionalParameters) Export
 	
 	StructurePricesAndCurrency = ClosingResult;
@@ -557,9 +1734,9 @@ Procedure OpenPricesAndCurrencyFormEnd(ClosingResult, AdditionalParameters) Expo
 			TabularSectionRow.PaymentAmount = SmallBusinessClient.RecalculateFromCurrencyToCurrency(
 				TabularSectionRow.SettlementsAmount,
 				TabularSectionRow.ExchangeRate,
-				?(Object.DocumentCurrency = NationalCurrency, RateNationalCurrency, Object.ExchangeRate),
+				?(Object.DocumentCurrency = NationalCurrency, ExchangeRateNationalCurrency, Object.ExchangeRate),
 				TabularSectionRow.Multiplicity,
-				?(Object.DocumentCurrency = NationalCurrency, RepetitionNationalCurrency, Object.Multiplicity));  
+				?(Object.DocumentCurrency = NationalCurrency, MultiplicityNationalCurrency, Object.Multiplicity));  
 		EndDo;
 		
 		// AutomaticDiscounts
@@ -574,9 +1751,9 @@ Procedure OpenPricesAndCurrencyFormEnd(ClosingResult, AdditionalParameters) Expo
 		Object.PriceKind, 
 		Object.DiscountMarkupKind, 
 		Object.DocumentCurrency, 
-		SettlementsCurrency, 
+		SettlementCurrency, 
 		Object.ExchangeRate, 
-		RateNationalCurrency, 
+		ExchangeRateNationalCurrency, 
 		Object.AmountIncludesVAT, 
 		CurrencyTransactionsAccounting, 
 		Object.VATTaxation,
@@ -587,8 +1764,6 @@ Procedure OpenPricesAndCurrencyFormEnd(ClosingResult, AdditionalParameters) Expo
 	
 EndProcedure // OpenPricesAndCurrencyFormEnd()
 
-// Function returns the label text "Prices and currency".
-//
 &AtClientAtServerNoContext
 Function GenerateLabelPricesAndCurrency(LabelStructure)
 	
@@ -850,11 +2025,8 @@ Procedure BarcodesAreReceivedFragment(UnknownBarcodes) Export
 	EndDo;
 	
 EndProcedure
-
 // End Peripherals
 
-// The procedure fills in column Reserve by reserves for the order.
-//
 &AtServer
 Procedure FillColumnReserveByReservesAtServer()
 	
@@ -864,8 +2036,6 @@ Procedure FillColumnReserveByReservesAtServer()
 	
 EndProcedure // FillColumnReserveByReservesAtServer()
 
-// Procedure sets the contract visible depending on the parameter set to the counterparty.
-//
 &AtServer
 Procedure SetContractVisible()
 	
@@ -885,8 +2055,6 @@ Procedure SetContractVisible()
 	
 EndProcedure // SetContractVisible()
 
-// Checks the match of the "Company" and "ContractKind" contract attributes to the terms of the document.
-//
 &AtServerNoContext
 Procedure CheckContractToDocumentConditionAccordance(MessageText, Contract, Document, Company, Counterparty, OperationKind, Cancel)
 	
@@ -907,8 +2075,6 @@ Procedure CheckContractToDocumentConditionAccordance(MessageText, Contract, Docu
 	
 EndProcedure
 
-// It gets counterparty contract selection form parameter structure.
-//
 &AtServerNoContext
 Function GetChoiceFormParameters(Document, Company, Counterparty, Contract, OperationKind)
 	
@@ -925,8 +2091,6 @@ Function GetChoiceFormParameters(Document, Company, Counterparty, Contract, Oper
 	
 EndFunction
 
-// Gets the default contract depending on the settlements method.
-//
 &AtServerNoContext
 Function GetContractByDefault(Document, Counterparty, Company, OperationKind)
 	
@@ -943,8 +2107,6 @@ Function GetContractByDefault(Document, Counterparty, Company, OperationKind)
 	
 EndFunction
 
-// Performs actions when counterparty contract is changed.
-//
 &AtClient
 Procedure ProcessContractChange()
 	
@@ -970,11 +2132,11 @@ Procedure ProcessContractChange()
 			Return;
 		EndIf;
 		
-		HandleContractConditionsChange(ContractData, ContractBeforeChange);
+		ProcessContractConditionsChange(ContractData, ContractBeforeChange);
 		
 	Else
 		
-		Object.Order = Order;
+		Object.Order = Items.Order.TypeRestriction.AdjustValue(Order);
 		
 	EndIf;
 	
@@ -982,8 +2144,6 @@ Procedure ProcessContractChange()
 	
 EndProcedure
 
-// Performs the actions after a response to the question about prepayment clearing.
-//
 &AtClient
 Procedure PrepaymentClearingQuestionEnd(Result, AdditionalParameters) Export
 	
@@ -1004,26 +2164,24 @@ Procedure PrepaymentClearingQuestionEnd(Result, AdditionalParameters) Export
 		Return;
 	EndIf;
 	
-	HandleContractConditionsChange(AdditionalParameters.ContractData, ContractBeforeChange);
+	ProcessContractConditionsChange(AdditionalParameters.ContractData, ContractBeforeChange);
 
 EndProcedure
 
-// The procedure handles the change of attributes of Price kind and Settlement currency documents.
-//
 &AtClient
-Procedure HandleContractConditionsChange(ContractData, ContractBeforeChange)
+Procedure ProcessContractConditionsChange(ContractData, ContractBeforeChange)
 	
 	Object.StampBase = NStr("en='Contract: ';ru='Договор: '") + String(Object.Contract);
 	
-	SettlementsCurrencyBeforeChange = SettlementsCurrency;
-	SettlementsCurrency = ContractData.SettlementsCurrency;
+	SettlementsCurrencyBeforeChange = SettlementCurrency;
+	SettlementCurrency = ContractData.SettlementsCurrency;
 	
 	If Not ContractData.AmountIncludesVAT = Undefined Then
 		Object.AmountIncludesVAT = ContractData.AmountIncludesVAT;
 	EndIf;
 	
 	If ValueIsFilled(Object.Contract) Then 
-		Object.ExchangeRate      = ?(ContractData.SettlementsCurrencyRateRepetition.ExchangeRate = 0, 1, ContractData.SettlementsCurrencyRateRepetition.ExchangeRate);
+		Object.ExchangeRate	= ?(ContractData.SettlementsCurrencyRateRepetition.ExchangeRate = 0, 1, ContractData.SettlementsCurrencyRateRepetition.ExchangeRate);
 		Object.Multiplicity = ?(ContractData.SettlementsCurrencyRateRepetition.Multiplicity = 0, 1, ContractData.SettlementsCurrencyRateRepetition.Multiplicity);
 	EndIf;
 	
@@ -1056,7 +2214,7 @@ Procedure HandleContractConditionsChange(ContractData, ContractBeforeChange)
 		EndIf; 
 	EndIf;
 	
-	OpenFormPricesAndCurrencies = (ValueIsFilled(Object.Contract) AND ValueIsFilled(SettlementsCurrency)
+	OpenFormPricesAndCurrencies = (ValueIsFilled(Object.Contract) AND ValueIsFilled(SettlementCurrency)
 		AND Object.Contract <> ContractBeforeChange AND SettlementsCurrencyBeforeChange <> ContractData.SettlementsCurrency)
 		AND Object.DocumentCurrency <> ContractData.SettlementsCurrency
 		AND Object.Inventory.Count() > 0;
@@ -1066,7 +2224,7 @@ Procedure HandleContractConditionsChange(ContractData, ContractBeforeChange)
 	DocumentParameters.Insert("SettlementsCurrencyBeforeChange", SettlementsCurrencyBeforeChange);
 	DocumentParameters.Insert("ContractData", ContractData);
 	
-	Object.DocumentCurrency = SettlementsCurrency;
+	Object.DocumentCurrency = SettlementCurrency;
 	If OpenFormPricesAndCurrencies Then
 		
 		WarningText = "";
@@ -1089,9 +2247,9 @@ Procedure HandleContractConditionsChange(ContractData, ContractBeforeChange)
 		LabelStructure = 
 			New Structure("DocumentCurrency, SettlementsCurrency, ExchangeRate, RateNationalCurrency, AmountIncludesVAT, CurrencyTransactionsAccounting, PriceKind, DiscountKind, VATTaxation, DiscountCard, DiscountPercentByDiscountCard", 
 				Object.DocumentCurrency, 
-				SettlementsCurrency, 
+				SettlementCurrency, 
 				Object.ExchangeRate, 
-				RateNationalCurrency, 
+				ExchangeRateNationalCurrency, 
 				Object.AmountIncludesVAT, 
 				CurrencyTransactionsAccounting, 
 				Object.PriceKind, 
@@ -1118,9 +2276,9 @@ Procedure HandleContractConditionsChange(ContractData, ContractBeforeChange)
 		LabelStructure = 
 			New Structure("DocumentCurrency, SettlementsCurrency, ExchangeRate, RateNationalCurrency, AmountIncludesVAT, CurrencyTransactionsAccounting, PriceKind, DiscountKind, VATTaxation, DiscountCard, DiscountPercentByDiscountCard", 
 				Object.DocumentCurrency, 
-				SettlementsCurrency, 
+				SettlementCurrency, 
 				Object.ExchangeRate, 
-				RateNationalCurrency, 
+				ExchangeRateNationalCurrency, 
 				Object.AmountIncludesVAT, 
 				CurrencyTransactionsAccounting, 
 				Object.PriceKind, 
@@ -1138,11 +2296,9 @@ Procedure HandleContractConditionsChange(ContractData, ContractBeforeChange)
 		CurRow.Order = Undefined;
 	EndDo;
 	
-EndProcedure // HandleContractConditionsChange()
+EndProcedure // ProcessContractConditionsChange()
 
 &AtClient
-// Procedure-handler of a response to the question on recalculation of the document by the kind of prices and discounts.
-//
 Procedure RecalculationQuestionByPriceKindEnd(Result, AdditionalParameters) Export
 	
 	If Result = DialogReturnCode.Yes Then
@@ -1153,11 +2309,17 @@ Procedure RecalculationQuestionByPriceKindEnd(Result, AdditionalParameters) Expo
 	
 EndProcedure // DefineDocumentRecalculateNeedByContractTerms()
 
-////////////////////////////////////////////////////////////////////////////////
-// PROCEDURES FOR WORK WITH THE SELECTION
+&AtServer
+Procedure FillPrepayment(CurrentObject)
+	
+	CurrentObject.FillPrepayment();
+	
+EndProcedure // FillPrepayment()
 
-// Procedure - event handler Action of the Pick command
-//
+#EndRegion
+
+#Region WorkWithPick
+	
 &AtClient
 Procedure Pick(Command)
 	
@@ -1172,19 +2334,19 @@ Procedure Pick(Command)
 	
 	SelectionParameters = New Structure;
 	
-	SelectionParameters.Insert("Period",					Object.Date);
-	SelectionParameters.Insert("Company",			Counterparty);
-	SelectionParameters.Insert("StructuralUnit",		Object.StructuralUnit);
-	SelectionParameters.Insert("DiscountMarkupKind",		Object.DiscountMarkupKind);
-	SelectionParameters.Insert("DiscountPercentByDiscountCard", Object.DiscountPercentByDiscountCard);
-	SelectionParameters.Insert("PriceKind",					Object.PriceKind);
-	SelectionParameters.Insert("Currency",					Object.DocumentCurrency);
-	SelectionParameters.Insert("VATTaxation",		Object.VATTaxation);
-	SelectionParameters.Insert("AmountIncludesVAT",		Object.AmountIncludesVAT);
-	SelectionParameters.Insert("DocumentOrganization",	Object.Company);
-	SelectionParameters.Insert("AvailablePriceChanging",	Not Items.InventoryPrice.ReadOnly);
+	SelectionParameters.Insert("Period",						Object.Date);
+	SelectionParameters.Insert("Company",						Company);
+	SelectionParameters.Insert("StructuralUnit",				Object.StructuralUnit);
+	SelectionParameters.Insert("DiscountMarkupKind",			Object.DiscountMarkupKind);
+	SelectionParameters.Insert("DiscountPercentByDiscountCard",	Object.DiscountPercentByDiscountCard);
+	SelectionParameters.Insert("PriceKind",						Object.PriceKind);
+	SelectionParameters.Insert("Currency",						Object.DocumentCurrency);
+	SelectionParameters.Insert("VATTaxation",					Object.VATTaxation);
+	SelectionParameters.Insert("AmountIncludesVAT",				Object.AmountIncludesVAT);
+	SelectionParameters.Insert("DocumentOrganization",			Object.Company);
+	SelectionParameters.Insert("AvailablePriceChanging",		Not Items.InventoryPrice.ReadOnly);
 	
-	SelectionParameters.Insert("Cell", 				Object.Cell);
+	SelectionParameters.Insert("Cell",	Object.Cell);
 	
 	If Object.OperationKind = PredefinedValue("Enum.OperationKindsCustomerInvoice.SaleToCustomer")
 	 OR Object.OperationKind = PredefinedValue("Enum.OperationKindsCustomerInvoice.TransferForCommission") Then
@@ -1234,8 +2396,6 @@ Procedure Pick(Command)
 	
 EndProcedure // ExecutePick()
 
-// Function gets a product list from the temporary storage
-//
 &AtServer
 Procedure GetInventoryFromStorage(InventoryAddressInStorage, TabularSectionName, AreCharacteristics, AreBatches)
 	
@@ -1261,8 +2421,6 @@ Procedure GetInventoryFromStorage(InventoryAddressInStorage, TabularSectionName,
 
 EndProcedure // GetInventoryFromStorage()
 
-// Function places the list of advances into temporary storage and returns the address
-//
 &AtServer
 Function PlacePrepaymentToStorage()
 	
@@ -1279,8 +2437,6 @@ Function PlacePrepaymentToStorage()
 	
 EndFunction // PlacePrepaymentToStorage()
 
-// Function gets the list of advances from the temporary storage
-//
 &AtServer
 Procedure GetPrepaymentFromStorage(AddressPrepaymentInStorage)
 	
@@ -1289,14 +2445,10 @@ Procedure GetPrepaymentFromStorage(AddressPrepaymentInStorage)
 	
 EndProcedure // GetPrepaymentFromStorage()
 
-////////////////////////////////////////////////////////////////////////////////
-// PROCEDURES AND FUNCTIONS FOR CONTROL OF THE FORM APPEARANCE
+#EndRegion
 
-// Procedure sets availability of the form items.
-//
-// Parameters:
-//  No.
-//
+#Region FormViewManagement
+	
 &AtServer
 Procedure SetVisibleAndEnabled(ChangedTypeOperations = False)
 	
@@ -1318,6 +2470,8 @@ Procedure SetVisibleAndEnabled(ChangedTypeOperations = False)
 	
 	Items.Order.TypeRestriction = ValidTypes;
 	Items.Inventory.ChildItems.InventoryOrder.TypeRestriction = ValidTypes;
+	
+	Items.PricesAndCurrency.MaxWidth	= 34;
 	
 	// Generate price and currency label.
 	
@@ -1372,7 +2526,7 @@ Procedure SetVisibleAndEnabled(ChangedTypeOperations = False)
 		// End DiscountCards
 	EndIf;
 	
-	LabelStructure = New Structure("PriceKind, DiscountKind, DocumentCurrency, SettlementsCurrency, Rate, RateNationalCurrency, AmountIncludesVAT, CurrencyTransactionsAccounting, VATTaxation, DiscountCard, DiscountPercentByDiscountCard", Object.PriceKind, Object.DiscountMarkupKind, Object.DocumentCurrency, SettlementsCurrency, Object.ExchangeRate, RateNationalCurrency, Object.AmountIncludesVAT, CurrencyTransactionsAccounting, Object.VATTaxation, Object.DiscountCard, Object.DiscountPercentByDiscountCard);
+	LabelStructure = New Structure("PriceKind, DiscountKind, DocumentCurrency, SettlementsCurrency, Rate, RateNationalCurrency, AmountIncludesVAT, CurrencyTransactionsAccounting, VATTaxation, DiscountCard, DiscountPercentByDiscountCard", Object.PriceKind, Object.DiscountMarkupKind, Object.DocumentCurrency, SettlementCurrency, Object.ExchangeRate, ExchangeRateNationalCurrency, Object.AmountIncludesVAT, CurrencyTransactionsAccounting, Object.VATTaxation, Object.DiscountCard, Object.DiscountPercentByDiscountCard);
 	PricesAndCurrency = GenerateLabelPricesAndCurrency(LabelStructure);
 	
 	// ProductsAndServices.
@@ -1502,7 +2656,7 @@ Procedure SetVisibleAndEnabled(ChangedTypeOperations = False)
 		Items.GroupPrepayment.Visible = False;
 	EndIf;
 	
-	// Order when responsible location.
+	// Order when safe storage.
 	If Object.OperationKind = PredefinedValue("Enum.OperationKindsCustomerInvoice.TransferForSafeCustody")
 	 OR Object.OperationKind = PredefinedValue("Enum.OperationKindsCustomerInvoice.ReturnFromSafeCustody") Then
 		Items.Order.Visible = False;
@@ -1587,18 +2741,25 @@ Procedure SetVisibleAndEnabled(ChangedTypeOperations = False)
 	// Price accessibility setup for editing.
 	AllowedEditDocumentPrices = SmallBusinessAccessManagementReUse.AllowedEditDocumentPrices();
 	
-	Items.InventoryPrice.ReadOnly 				   = Not AllowedEditDocumentPrices;
-	Items.InventoryDiscountPercentMargin.ReadOnly = Not AllowedEditDocumentPrices;
-	Items.InventoryAmount.ReadOnly 			   = Not AllowedEditDocumentPrices;
-	Items.InventoryVATAmount.ReadOnly 			   = Not AllowedEditDocumentPrices;
+	Items.InventoryPrice.ReadOnly					= Not AllowedEditDocumentPrices;
+	Items.InventoryDiscountPercentMargin.ReadOnly	= Not AllowedEditDocumentPrices;
+	Items.InventoryAmount.ReadOnly					= Not AllowedEditDocumentPrices;
+	Items.InventoryVATAmount.ReadOnly				= Not AllowedEditDocumentPrices;
+	
+	// Set Counterparty title: Customer or Supplier
+	If Object.OperationKind = PredefinedValue("Enum.OperationKindsCustomerInvoice.SaleToCustomer")
+		Or Object.OperationKind = PredefinedValue("Enum.OperationKindsCustomerInvoice.TransferForCommission")
+		Or Object.OperationKind = PredefinedValue("Enum.OperationKindsCustomerInvoice.ReturnFromProcessing")
+		Or Not ValueIsFilled(Object.OperationKind) Then
+		Items.Counterparty.Title = NStr("ru = 'Покупатель'; en = 'Customer'");
+	ElsIf Object.OperationKind = PredefinedValue("Enum.OperationKindsCustomerInvoice.TransferForSafeCustody") Then
+		Items.Counterparty.Title = NStr("ru = 'Получатель'; en = 'Recipient'");
+	Else	
+		Items.Counterparty.Title = NStr("ru = 'Поставщик'; en = 'Supplier'");
+	EndIf;
 	
 EndProcedure // SetVisibleAndEnabled()
 
-// Procedure sets the form item visible.
-//
-// Parameters:
-//  No.
-//
 &AtServer
 Procedure SetVisibleFromUserSettings()
 	
@@ -1611,8 +2772,6 @@ Procedure SetVisibleFromUserSettings()
 	
 EndProcedure // SetVisibleFromUserSettings()
 
-// Receives the flag of Order warehouse.
-//
 &AtServer
 Procedure SetCellVisible(CellName, Warehouse)
 	
@@ -1620,8 +2779,6 @@ Procedure SetCellVisible(CellName, Warehouse)
 		
 EndProcedure // SetCellVisible()	
 
-// Procedure is forming the mapping of operation kinds.
-//
 &AtServer
 Procedure GetOperationKindsStructure()
 	
@@ -1661,1198 +2818,635 @@ Procedure GetOperationKindsStructure()
 	
 EndProcedure // GetOperationKindsStructure()
 
-////////////////////////////////////////////////////////////////////////////////
-// PROCEDURE - FORM EVENT HANDLERS
+#EndRegion
 
-// Procedure - OnCreateAtServer event handler.
-//
-&AtServer
-Procedure OnCreateAtServer(Cancel, StandardProcessing)
+#Region AutomaticDiscounts
+
+&AtClient
+Procedure CalculateDiscountsMarkups(Command)
 	
-	SmallBusinessServer.FillDocumentHeader(
-		Object,
-		,
-		Parameters.CopyingValue,
-		Parameters.Basis,
-		PostingIsAllowed,
-		Parameters.FillingValues
-	);
-	
-	CounterpartyContractParameters = New Structure;
-	If Not ValueIsFilled(Object.Ref)
-		AND ValueIsFilled(Object.Counterparty)
-		AND Not ValueIsFilled(Parameters.CopyingValue) Then
-		If Not ValueIsFilled(Object.Contract) Then
-			ContractParametersByDefault = CommonUse.ObjectAttributesValues(Object.Counterparty, "ContractByDefault");
-			Object.Contract = ContractParametersByDefault;
+	If Object.Inventory.Count() = 0 Then
+		If Object.DiscountsMarkups.Count() > 0 Then
+			Object.DiscountsMarkups.Clear();
 		EndIf;
-		If ValueIsFilled(Object.Contract) Then
-			Object.StampBase = NStr("en='Contract: ';ru='Договор: '") + String(Object.Contract);
-			CounterpartyContractParameters = CommonUse.ObjectAttributesValues(Object.Contract, "SettlementsCurrency, DiscountMarkupKind, PriceKind");
-			If Object.DocumentCurrency <> CounterpartyContractParameters.SettlementsCurrency Then
-				Object.DocumentCurrency = CounterpartyContractParameters.SettlementsCurrency;
-				SettlementsCurrencyRateRepetition = InformationRegisters.CurrencyRates.GetLast(Object.Date, New Structure("Currency", CounterpartyContractParameters.SettlementsCurrency));
-				Object.ExchangeRate      = ?(SettlementsCurrencyRateRepetition.ExchangeRate = 0, 1, SettlementsCurrencyRateRepetition.ExchangeRate);
-				Object.Multiplicity = ?(SettlementsCurrencyRateRepetition.Multiplicity = 0, 1, SettlementsCurrencyRateRepetition.Multiplicity);
-			EndIf;
-			
-			If Not ValueIsFilled(Object.PriceKind) Then // Filled with either copying or typing based on
-				
-				Object.PriceKind = CounterpartyContractParameters.PriceKind;
-				
-			EndIf;
-			
-			If Not ValueIsFilled(Object.DiscountMarkupKind) Then // Filled with either copying or typing based on
-				
-				Object.DiscountMarkupKind = CounterpartyContractParameters.DiscountMarkupKind;
-				
-			EndIf;
-			
-		EndIf;
-	Else
-		CounterpartyContractParameters = CommonUse.ObjectAttributesValues(Object.Contract, "SettlementsCurrency");
-	EndIf;
-	
-	// Form attributes setting.
-	DocumentDate = Object.Date;
-	If Not ValueIsFilled(DocumentDate) Then
-		DocumentDate = CurrentDate();
-	EndIf;
-	
-	Counterparty = SmallBusinessServer.GetCompany(Object.Company);
-	Counterparty = Object.Counterparty;
-	Contract = Object.Contract;
-	Order = Object.Order;
-	CounterpartyContractParameters.Property("SettlementsCurrency", SettlementsCurrency);
-	NationalCurrency = SmallBusinessReUse.GetNationalCurrency();
-	StructureByCurrency = InformationRegisters.CurrencyRates.GetLast(Object.Date, New Structure("Currency", NationalCurrency));
-	RateNationalCurrency = StructureByCurrency.ExchangeRate;
-	RepetitionNationalCurrency = StructureByCurrency.Multiplicity;
-	
-	If Not ValueIsFilled(Object.Ref) Then
-		If Parameters.Property("OperationKindReturn") Then
-			Object.OperationKind = PredefinedValue("Enum.OperationKindsCustomerInvoice.ReturnToVendor");
-		EndIf;
-		If Not ValueIsFilled(Parameters.Basis) AND Not ValueIsFilled(Parameters.CopyingValue) Then
-			FillVATRateByCompanyVATTaxation();
-		EndIf;
-	EndIf;
-		
-	GetOperationKindsStructure();
-	
-	// Filling in responsible persons for new documents
-	If Not ValueIsFilled(Object.Ref) Then
-		
-		ResponsiblePersons		= SmallBusinessServer.OrganizationalUnitsResponsiblePersons(Object.Company, Object.Date);
-		
-		Object.Head		= ResponsiblePersons.Head;
-		Object.HeadPosition = ResponsiblePersons.HeadPositionRefs;
-		Object.ChiefAccountant = ResponsiblePersons.ChiefAccountant;
-		Object.Released			= ResponsiblePersons.WarehouseMan;
-		Object.ReleasedPosition= ResponsiblePersons.WarehouseManPositionRef;
-		
-	EndIf;
-	
-	// Generate price and currency label.
-	CurrencyTransactionsAccounting = GetFunctionalOption("CurrencyTransactionsAccounting");
-	LabelStructure = New Structure("PriceKind, DiscountKind, DocumentCurrency, SettlementsCurrency, Rate, RateNationalCurrency, AmountIncludesVAT, CurrencyTransactionsAccounting, VATTaxation, DiscountCard, DiscountPercentByDiscountCard", Object.PriceKind, Object.DiscountMarkupKind, Object.DocumentCurrency, SettlementsCurrency, Object.ExchangeRate, RateNationalCurrency, Object.AmountIncludesVAT, CurrencyTransactionsAccounting, Object.VATTaxation, Object.DiscountCard, Object.DiscountPercentByDiscountCard);
-	PricesAndCurrency = GenerateLabelPricesAndCurrency(LabelStructure);
-	
-	SetVisibleAndEnabled();
-	
-	// Attribute visible set from user settings
-	SetVisibleFromUserSettings(); 
-	
-	Items.Cell.Visible = Not Object.StructuralUnit.OrderWarehouse;
-	
-	User = Users.CurrentUser();
-	
-	SettingValue = SmallBusinessReUse.GetValueByDefaultUser(User, "MainWarehouse");
-	MainWarehouse = ?(ValueIsFilled(SettingValue), SettingValue, Catalogs.StructuralUnits.MainWarehouse);
-	
-	SmallBusinessClientServer.SetPictureForComment(Items.GroupAdditional, Object.Comment);
-	
-	// Setting contract visible.
-	SetContractVisible();
-	
-	// PickProductsAndServicesInDocuments
-	PickProductsAndServicesInDocuments.AssignPickForm(SelectionOpenParameters, Object.Ref.Metadata().Name, "Inventory");
-	// End PickProductsAndServicesInDocuments
-	
-	// AutomaticDiscounts.
-	AutomaticDiscountsOnCreateAtServer();
-	OperationKindSaleToCustomer = PredefinedValue("Enum.OperationKindsCustomerInvoice.SaleToCustomer");
-	
-	// StandardSubsystems.ObjectVersioning
-	ObjectVersioning.OnCreateAtServer(ThisForm);
-	// End StandardSubsystems.ObjectVersioning
-	
-	// StandardSubsystems.AdditionalReportsAndDataProcessors
-	AdditionalReportsAndDataProcessors.OnCreateAtServer(ThisForm);
-	// End StandardSubsystems.AdditionalReportsAndDataProcessors
-	
-	// StandardSubsystems.Printing
-	PrintManagement.OnCreateAtServer(ThisForm, Items.ImportantCommandsGroup);
-	// End StandardSubsystems.Printing
-	
-	// StandardSubsystems.Properties
-	PropertiesManagement.OnCreateAtServer(ThisForm, Object, "AdditionalAttributesGroup");
-	// End StandardSubsystems.Properties
-	
-	// Peripherals
-	UsePeripherals = SmallBusinessReUse.UsePeripherals();
-	ListOfElectronicScales = EquipmentManagerServerCall.GetEquipmentList("ElectronicScales", , EquipmentManagerServerCall.GetClientWorkplace());
-	If ListOfElectronicScales.Count() = 0 Then
-		// There are no connected scales.
-		Items.InventoryGetWeight.Visible = False;
-	EndIf;
-	Items.InventoryImportDataFromDCT.Visible = UsePeripherals;
-	// End Peripherals
-	
-EndProcedure // OnCreateAtServer()
-
-// Procedure - OnReadAtServer event handler.
-//
-&AtServer
-Procedure OnReadAtServer(CurrentObject)
-	
-	ChangeProhibitionDates.ObjectOnReadAtServer(ThisForm, CurrentObject);
-	
-	// StandardSubsystems.Properties
-	PropertiesManagement.OnReadAtServer(ThisForm, CurrentObject);
-	// End StandardSubsystems.Properties
-	
-EndProcedure // OnReadAtServer()
-
-// Procedure - event handler of the form BeforeWrite
-//
-&AtClient
-Procedure BeforeWrite(Cancel, WriteParameters)
-	
-	// StandardSubsystems.PerformanceEstimation
-	PerformanceEstimationClientServer.StartTimeMeasurement("DocumentCustomerInvoicePositing");
-	// StandardSubsystems.PerformanceEstimation
-	
-	UpdateSubordinatedInvoice = Modified;
-	
-	// AutomaticDiscounts
-	DiscountsCalculatedBeforeWrite = False;
-	// If the document is being posted, we check whether the discounts are calculated.
-	If UseAutomaticDiscounts AND Object.OperationKind = OperationKindSaleToCustomer Then
-		If Not Object.DiscountsAreCalculated AND DiscountsChanged() Then
-			CalculateDiscountsMarkupsClient();
-			CalculatedDiscounts = True;
-			
-			Message = New UserMessage;
-			Message.Text = "Automatic discounts (markups) are calculated!";
-			Message.DataKey = Object.Ref;
-			Message.Message();
-			
-			DiscountsCalculatedBeforeWrite = True;
-		Else
-			Object.DiscountsAreCalculated = True;
-			RefreshImageAutoDiscountsAfterWrite = True;
-		EndIf;
-	EndIf;
-	// End AutomaticDiscounts
-	
-EndProcedure
-
-// Procedure - handler of the AfterWriteAtServer event.
-//
-&AtServer
-Procedure AfterWriteAtServer(CurrentObject, WriteParameters)
-	
-	// AutomaticDiscounts
-	If RefreshImageAutoDiscountsAfterWrite Then
-		Items.InventoryCalculateDiscountsMarkups.Picture = PictureLib.Refresh;
-		RefreshImageAutoDiscountsAfterWrite = False;
-	EndIf;
-	// End AutomaticDiscounts
-	
-	PerformanceEstimationClientServer.StartTimeMeasurement("CustomerInvoiceDocumentAfterWritingOnServer");
-	
-EndProcedure // AfterWriteOnServer()
-
-// Procedure fills advances.
-//
-&AtServer
-Procedure FillPrepayment(CurrentObject)
-	
-	CurrentObject.FillPrepayment();
-	
-EndProcedure // FillPrepayment()
-
-// Procedure - event handler BeforeWriteAtServer form.
-//
-&AtServer
-Procedure BeforeWriteAtServer(Cancel, CurrentObject, WriteParameters)
-	
-	If WriteParameters.WriteMode = DocumentWriteMode.Posting Then
-		
-		MessageText = "";
-		CheckContractToDocumentConditionAccordance(MessageText, Object.Contract, Object.Ref, Object.Company, Object.Counterparty, Object.OperationKind, Cancel);
-		
-		If MessageText <> "" Then
-			
-			Message = New UserMessage;
-			Message.Text = ?(Cancel, NStr("en='Document is not posted! ';ru='Документ не проведен! '") + MessageText, MessageText);
-			
-			If Cancel Then
-				Message.DataPath = "Object";
-				Message.Field = "Contract";
-				Message.Message();
-				Return;
-			Else
-				Message.Message();
-			EndIf;
-		EndIf;
-		
-		If SmallBusinessReUse.GetAdvanceOffsettingSettingValue() = PredefinedValue("Enum.YesNo.Yes")
-			AND CurrentObject.OperationKind = PredefinedValue("Enum.OperationKindsCustomerInvoice.SaleToCustomer")
-			AND CurrentObject.Prepayment.Count() = 0 Then
-			FillPrepayment(CurrentObject);
-		EndIf;
-		
-	EndIf;
-	
-	// "Properties" mechanism handler
-	PropertiesManagement.BeforeWriteAtServer(ThisForm, CurrentObject);
-	// "Properties" mechanism handler
-	
-EndProcedure // BeforeWriteAtServer()
-
-&AtServer
-// Procedure-handler of the FillCheckProcessingAtServer event.
-//
-Procedure FillCheckProcessingAtServer(Cancel, CheckedAttributes)
-	
-	// StandardSubsystems.Properties
-	PropertiesManagement.FillCheckProcessing(ThisForm, Cancel, CheckedAttributes);
-	// End StandardSubsystems.Properties
-	
-EndProcedure // FillCheckProcessingAtServer()
-
-// Procedure - event handler AfterWriting.
-//
-&AtClient
-Procedure AfterWrite(WriteParameters)
-	
-	OrderIsFilled = False;
-	FilledOrderReturn = False;
-	For Each TSRow IN Object.Inventory Do
-		If ValueIsFilled(TSRow.Order) Then
-			If TypeOf(TSRow.Order) = Type("DocumentRef.CustomerOrder") Then
-				OrderIsFilled = True;
-			Else
-				FilledOrderReturn = True;
-			EndIf;
-			Break;
-		EndIf;		
-	EndDo;	
-	
-	If OrderIsFilled Then
-		Notify("Record_CustomerInvoice", Object.Ref);
-	EndIf;
-	
-	If FilledOrderReturn Then
-		Notify("Record_CustomerInvoiceReturn", Object.Ref);
-	EndIf;
-	
-	Notify("NotificationAboutChangingDebt");
-	
-EndProcedure // AfterWrite()
-
-// Procedure - event handler OnOpen.
-//
-&AtClient
-Procedure OnOpen(Cancel)
-	
-	// Peripherals
-	EquipmentManagerClientOverridable.StartConnectingEquipmentOnFormOpen(ThisForm, "BarCodeScanner");
-	// End Peripherals
-	
-EndProcedure // OnOpen()
-
-// Procedure - event handler OnClose.
-//
-&AtClient
-Procedure OnClose()
-
-	// AutomaticDiscounts
-	// Display message about discount calculation if you click the "Post and close" or form closes by the cross with change saving.
-	If UseAutomaticDiscounts AND DiscountsCalculatedBeforeWrite Then
-		ShowUserNotification("Update:", 
-										GetURL(Object.Ref), 
-										String(Object.Ref)+". Automatic discounts (markups) are calculated!", 
-										PictureLib.Information32);
-	EndIf;
-	// End AutomaticDiscounts
-	
-	// Peripherals
-	EquipmentManagerClientOverridable.StartDisablingEquipmentOnCloseForm(ThisForm);
-	// End Peripherals
-	
-EndProcedure // OnClose()
-
-// Procedure - event handler of the form NotificationProcessing.
-//
-&AtClient
-Procedure NotificationProcessing(EventName, Parameter, Source)
-	
-	// Properties subsystem
-	If PropertiesManagementClient.ProcessAlerts(ThisForm, EventName, Parameter) Then
-		
-		UpdateAdditionalAttributesItems();
-		
-	EndIf;
-	
-	// Peripherals
-	If Source = "Peripherals"
-		AND IsInputAvailable() AND Not DiscountCardRead Then
-		If EventName = "ScanData" Then
-			//Transform preliminary to the expected format
-			Data = New Array();
-			If Parameter[1] = Undefined Then
-				Data.Add(New Structure("Barcode, Quantity", Parameter[0], 1)); // Get a barcode from the basic data
-			Else
-				Data.Add(New Structure("Barcode, Quantity", Parameter[1][1], 1)); // Get a barcode from the additional data
-			EndIf;
-			
-			BarcodesReceived(Data);
-		EndIf;
-	EndIf;
-	// End Peripherals
-	
-	// DiscountCards
-	If DiscountCardRead Then
-		DiscountCardRead = False;
-	EndIf;
-	// End DiscountCards
-	
-	If EventName = "AfterRecordingOfCounterparty" 
-		AND ValueIsFilled(Parameter)
-		AND Object.Counterparty = Parameter Then
-			
-		SetContractVisible();
-		
-	ElsIf EventName = "SelectionIsMade" 
-		AND ValueIsFilled(Parameter) 
-		//Check for the form owner
-		AND Source <> New UUID("00000000-0000-0000-0000-000000000000")
-		AND Source = UUID
-		Then
-		
-		InventoryAddressInStorage	= Parameter;
-		
-		GetInventoryFromStorage(InventoryAddressInStorage, "Inventory", True, True);
-		
-	EndIf;
-	
-EndProcedure // NotificationProcessing()
-
-////////////////////////////////////////////////////////////////////////////////
-// PROCEDURE - ACTIONS OF THE FORM COMMAND PANELS
-
-// Procedure is called by clicking the PricesCurrency button of the command bar tabular field.
-//
-&AtClient
-Procedure EditPricesAndCurrency(Item, StandardProcessing)
-	
-	StandardProcessing = False;
-	ProcessChangesOnButtonPricesAndCurrencies(Object.DocumentCurrency);
-	Modified = True;
-	
-EndProcedure // EditPricesAndCurrency()
-
-// You can call the procedure by clicking
-// the button "FillByBasis" of the tabular field command panel.
-//
-&AtClient
-Procedure FillByBasis(Command)
-	
-	Response = Undefined;
-
-	
-	ShowQueryBox(New NotifyDescription("FillByBasisEnd", ThisObject), NStr("en='Document will be completely refilled by ""Basis""! Continue?';ru='Документ будет полностью перезаполнен по ""Основанию""! Продолжить?'"), QuestionDialogMode.YesNo, 0);
-	
-EndProcedure
-
-&AtClient
-Procedure FillByBasisEnd(Result, AdditionalParameters) Export
-    
-    Response = Result;
-    If Response = DialogReturnCode.Yes Then
-        FillByDocument(Object.BasisDocument);
-        SetVisibleAndEnabled();
-    EndIf;
-
-EndProcedure // FillByBasis()
-
-// You can call the procedure by clicking
-// the button "FillByOrder" of the tabular field command panel.
-//
-&AtClient
-Procedure FillByOrder(Command)
-	
-	Response = Undefined;
-
-	
-	ShowQueryBox(New NotifyDescription("FillEndByOrder", ThisObject), NStr("en='The document will be completely refilled by ""Order""! Continue?';ru='Документ будет полностью перезаполнен по ""Заказу""! Продолжить выполнение операции?'"), QuestionDialogMode.YesNo, 0);
-	
-EndProcedure
-
-&AtClient
-Procedure FillEndByOrder(Result, AdditionalParameters) Export
-    
-    Response = Result;
-    If Response = DialogReturnCode.Yes Then
-        FillByDocument(Object.Order);
-        SetVisibleAndEnabled();
-    EndIf;
-
-EndProcedure // FillByOrder()
-
-// Procedure - command handler of the tabular section command panel.
-//
-&AtClient
-Procedure EditPrepaymentOffset(Command)
-	
-	If Not ValueIsFilled(Object.Counterparty) Then
-		ShowMessageBox(, NStr("en='Specify the counterparty first.';ru='Укажите вначале контрагента!'"));
 		Return;
 	EndIf;
 	
-	If Not ValueIsFilled(Object.Contract) Then
-		ShowMessageBox(, NStr("en='Specify the counterparty contract first.';ru='Укажите вначале договор контрагента!'"));
-		Return;
-	EndIf;
+	CalculateDiscountsMarkupsClient();
+	
+EndProcedure
+
+&AtServer
+Procedure CalculateMarkupsDiscountsForOrderServer()
+
+	DiscountsMarkupsServer.FillLinkingKeysInSpreadsheetPartProducts(Object, "Inventory");
 	
 	OrdersArray = New Array;
-	For Each CurItem IN Object.Inventory Do
-		OrderStructure = New Structure("Order, Total");
-		OrderStructure.Order = ?(CurItem.Order = Undefined, PredefinedValue("Document.CustomerOrder.EmptyRef"), CurItem.Order);
-		OrderStructure.Total = CurItem.Total;
-		OrdersArray.Add(OrderStructure);
+	
+	If Not ValueIsFilled(Object.CustomerOrderPosition) Then
+		CustomerOrderPosition = SmallBusinessReUse.GetValueOfSetting("CustomerOrderPositionInShipmentDocuments");
+		If Not ValueIsFilled(Object.CustomerOrderPosition) Then
+			CustomerOrderPosition = Enums.AttributePositionOnForm.InHeader;
+		EndIf;
+	Else
+		CustomerOrderPosition = Object.CustomerOrderPosition;
+	EndIf;
+	If CustomerOrderPosition = Enums.AttributePositionOnForm.InHeader Then
+		OrdersArray.Add(Object.Order);
+	Else
+		OrdersGO = Object.Inventory.Unload(, "Order");
+		OrdersGO.GroupBy("Order");
+		OrdersArray = OrdersGO.UnloadColumn("Order");
+	EndIf;
+	
+	Query = New Query;
+	Query.Text =
+	"SELECT
+	|	DiscountsMarkups.Ref AS Order,
+	|	DiscountsMarkups.DiscountMarkup AS DiscountMarkup,
+	|	DiscountsMarkups.Amount AS AutomaticDiscountAmount,
+	|	CASE
+	|		WHEN CustomerOrderInventory.ProductsAndServices.ProductsAndServicesType = VALUE(Enum.ProductsAndServicesTypes.InventoryItem)
+	|			THEN TRUE
+	|		ELSE FALSE
+	|	END AS ProductsAndServicesTypeInventory,
+	|	CASE
+	|		WHEN VALUETYPE(CustomerOrderInventory.MeasurementUnit) = Type(Catalog.UOMClassifier)
+	|			THEN 1
+	|		ELSE CustomerOrderInventory.MeasurementUnit.Factor
+	|	END AS Factor,
+	|	CustomerOrderInventory.ProductsAndServices,
+	|	CustomerOrderInventory.Characteristic,
+	|	CustomerOrderInventory.MeasurementUnit,
+	|	CustomerOrderInventory.Quantity
+	|FROM
+	|	Document.CustomerOrder.DiscountsMarkups AS DiscountsMarkups
+	|		INNER JOIN Document.CustomerOrder.Inventory AS CustomerOrderInventory
+	|		ON DiscountsMarkups.Ref = CustomerOrderInventory.Ref
+	|			AND DiscountsMarkups.ConnectionKey = CustomerOrderInventory.ConnectionKey
+	|WHERE
+	|	DiscountsMarkups.Ref IN(&OrdersArray)";
+	
+	Query.SetParameter("OrdersArray", OrdersArray);
+	
+	ResultsArray = Query.ExecuteBatch();
+	
+	OrderDiscountsMarkups = ResultsArray[0].Unload();
+	
+	Object.DiscountsMarkups.Clear();
+	For Each CurrentDocumentRow IN Object.Inventory Do
+		CurrentDocumentRow.AutomaticDiscountsPercent = 0;
+		CurrentDocumentRow.AutomaticDiscountAmount = 0;
 	EndDo;
 	
-	AddressPrepaymentInStorage = PlacePrepaymentToStorage();
-	SelectionParameters = New Structure(
-		"AddressPrepaymentInStorage,
-		|Pick,
-		|IsOrder,
-		|OrderInHeader,
-		|SubsidiaryCompany,
-		|Order,
-		|Date,
-		|Ref,
-		|Counterparty,
-		|Contract,
-		|ExchangeRate,
-		|Multiplicity,
-		|DocumentCurrency,
-		|DocumentAmount",
-		AddressPrepaymentInStorage, // AddressPrepaymentInStorage
-		?(Object.OperationKind = PredefinedValue("Enum.OperationKindsCustomerInvoice.SaleToCustomer"), True, False), // Pick
-		True, // IsOrder
-		OrderInHeader, // OrderInHeader
-		Counterparty, // Counterparty
-		?(CounterpartyDoSettlementsByOrders, ?(OrderInHeader, Object.Order, OrdersArray), Undefined), // Order
-		Object.Date, // Date
-		Object.Ref, // Ref
-		Object.Counterparty, // Counterparty
-		Object.Contract, // Contract
-		Object.ExchangeRate, // ExchangeRate
-		Object.Multiplicity, // Multiplicity
-		Object.DocumentCurrency, // DocumentCurrency
-		Object.Inventory.Total("Total") // DocumentAmount
-	);
+	DiscountsMarkupsCalculationResult = Object.DiscountsMarkups.Unload();
 	
-	If Object.OperationKind = PredefinedValue("Enum.OperationKindsCustomerInvoice.SaleToCustomer") Then
-		ReturnCode = Undefined;
+	For Each CurrentOrderRow IN OrderDiscountsMarkups Do
+		
+		StructureForSearch = New Structure;
+		StructureForSearch.Insert("Order", CurrentOrderRow.Order);
+		StructureForSearch.Insert("ProductsAndServices", CurrentOrderRow.ProductsAndServices);
+		StructureForSearch.Insert("Characteristic", CurrentOrderRow.Characteristic);
+		
+		DocumentRowsArray = Object.Inventory.FindRows(StructureForSearch);
+		If DocumentRowsArray.Count() = 0 Then
+			Continue;
+		EndIf;
+		
+		QuantityInOrder = CurrentOrderRow.Quantity * CurrentOrderRow.Factor;
+		Distributed = 0;
+		For Each CurrentDocumentRow IN DocumentRowsArray Do
+			QuantityToWriteOff = CurrentDocumentRow.Quantity * 
+									?(TypeOf(CurrentDocumentRow.MeasurementUnit) = Type("CatalogRef.UOMClassifier"), 1, CurrentDocumentRow.MeasurementUnit.Factor);
+			
+			RecalculateAmounts = QuantityInOrder <> QuantityToWriteOff;
+			DiscountRecalculationCoefficient = ?(RecalculateAmounts, QuantityToWriteOff / QuantityInOrder, 1);
+			If DiscountRecalculationCoefficient <> 1 Then
+				CurrentAutomaticDiscountAmount = ROUND(CurrentOrderRow.AutomaticDiscountAmount * DiscountRecalculationCoefficient,2);
+			Else
+				CurrentAutomaticDiscountAmount = CurrentOrderRow.AutomaticDiscountAmount;
+			EndIf;
+			
+			DiscountString = DiscountsMarkupsCalculationResult.Add();
+			FillPropertyValues(DiscountString, CurrentOrderRow);
+			DiscountString.Amount = CurrentAutomaticDiscountAmount;
+			DiscountString.ConnectionKey = CurrentDocumentRow.ConnectionKey;
+			
+			CurrentOrderRow.AutomaticDiscountAmount = CurrentOrderRow.AutomaticDiscountAmount - CurrentAutomaticDiscountAmount;
+			QuantityInOrder = QuantityInOrder - QuantityToWriteOff;
+			If QuantityInOrder <=0 Or CurrentOrderRow.AutomaticDiscountAmount <=0 Then
+				Break;
+			EndIf;
+		EndDo;
+		
+	EndDo;
+	
+	DiscountsMarkupsServer.ApplyDiscountCalculationResultToObject(Object, "Inventory", DiscountsMarkupsCalculationResult);
+	
+EndProcedure
 
-		OpenForm("CommonForm.CustomerAdvancesPickForm", SelectionParameters,,,,, New NotifyDescription("EditPrepaymentOffsetEnd1", ThisObject, New Structure("AddressPrepaymentInStorage, SelectionParameters", AddressPrepaymentInStorage, SelectionParameters)));
-        Return;
-	ElsIf Object.OperationKind = PredefinedValue("Enum.OperationKindsCustomerInvoice.ReturnToVendor") Then
-		OpenForm("CommonForm.SupplierAdvancesPickForm", SelectionParameters,,,,, New NotifyDescription("EditPrepaymentOffsetEnd", ThisObject, New Structure("AddressPrepaymentInStorage", AddressPrepaymentInStorage)));
-        Return;
+&AtClient
+Procedure CalculateDiscountsMarkupsClient()
+	
+	ParameterStructure = New Structure;
+	ParameterStructure.Insert("ApplyToObject",                True);
+	ParameterStructure.Insert("OnlyPreliminaryCalculation",      False);
+	
+	If EquipmentManagerClient.RefreshClientWorkplace() Then // Checks if the operator's workplace is specified
+		Workplace = EquipmentManagerClientReUse.GetClientWorkplace();
+	Else
+		Workplace = ""
 	EndIf;
 	
-	EditPrepaymentOffsetFragment1(AddressPrepaymentInStorage, ReturnCode);
+	ParameterStructure.Insert("Workplace", Workplace);
+	
+	CalculateDiscountsMarkupsOnServer(ParameterStructure);
+		
 EndProcedure
 
-&AtClient
-Procedure EditPrepaymentOffsetEnd1(Result, AdditionalParameters) Export
-    
-    AddressPrepaymentInStorage = AdditionalParameters.AddressPrepaymentInStorage;
-    SelectionParameters = AdditionalParameters.SelectionParameters;
-    
-    
-    ReturnCode = Result;
-    
-    EditPrepaymentOffsetFragment1(AddressPrepaymentInStorage, ReturnCode);
-
-EndProcedure
-
-&AtClient
-Procedure EditPrepaymentOffsetFragment1(Val AddressPrepaymentInStorage, Val ReturnCode)
-    
-    EditPrepaymentOffsetFragment(AddressPrepaymentInStorage, ReturnCode);
-
-EndProcedure
-
-&AtClient
-Procedure EditPrepaymentOffsetEnd(Result, AdditionalParameters) Export
-    
-    AddressPrepaymentInStorage = AdditionalParameters.AddressPrepaymentInStorage;
-    
-    
-    ReturnCode = Result;
-    
-    EditPrepaymentOffsetFragment(AddressPrepaymentInStorage, ReturnCode);
-
-EndProcedure
-
-&AtClient
-Procedure EditPrepaymentOffsetFragment(Val AddressPrepaymentInStorage, Val ReturnCode)
-    
-    If (Object.OperationKind = PredefinedValue("Enum.OperationKindsCustomerInvoice.SaleToCustomer")
-        OR Object.OperationKind = PredefinedValue("Enum.OperationKindsCustomerInvoice.ReturnToVendor"))
-        AND (ReturnCode = DialogReturnCode.OK) Then
-        GetPrepaymentFromStorage(AddressPrepaymentInStorage);
-    EndIf;
-
-EndProcedure // EditPrepaymentOffset()
-
-// Peripherals
-// Procedure - command handler of the tabular section command panel.
+// Function compares discount calculating data on current moment with data of the discount last calculation in document.
+// If discounts changed the function returns the value True.
 //
-&AtClient
-Procedure SearchByBarcode(Command)
+&AtServer
+Function DiscountsChanged()
 	
-	CurBarcode = "";
-	ShowInputValue(New NotifyDescription("SearchByBarcodeEnd", ThisObject, New Structure("CurBarcode", CurBarcode)), CurBarcode, NStr("en='Enter barcode';ru='Введите штрихкод'"));
-
-EndProcedure
-
-&AtClient
-Procedure SearchByBarcodeEnd(Result, AdditionalParameters) Export
-    
-    CurBarcode = ?(Result = Undefined, AdditionalParameters.CurBarcode, Result);
-    
-    
-    If Not IsBlankString(CurBarcode) Then
-        BarcodesReceived(New Structure("Barcode, Quantity", CurBarcode, 1));
-    EndIf;
-
-EndProcedure // SearchByBarcode()
-
-// Procedure - event handler Action of the GetWeight command
-//
-&AtClient
-Procedure GetWeight(Command)
+	ParameterStructure = New Structure;
+	ParameterStructure.Insert("ApplyToObject",                False);
+	ParameterStructure.Insert("OnlyPreliminaryCalculation",      False);
 	
-	TabularSectionRow = Items.Inventory.CurrentData;
+	AppliedDiscounts = DiscountsMarkupsServerOverridable.Calculate(Object, ParameterStructure);
 	
-	If TabularSectionRow = Undefined Then
+	DiscountsChanged = False;
+	
+	LineCount = AppliedDiscounts.TableDiscountsMarkups.Count();
+	If LineCount <> Object.DiscountsMarkups.Count() Then
+		DiscountsChanged = True;
+	Else
 		
-		ShowMessageBox(Undefined, NStr("en='It is required to select a line to get weight for it.';ru='Необходимо выбрать строку, для которой необходимо получить вес.'"));
+		If Object.Inventory.Total("AutomaticDiscountAmount") <> Object.DiscountsMarkups.Total("Amount") Then
+			DiscountsChanged = True;
+		EndIf;
 		
-	ElsIf EquipmentManagerClient.RefreshClientWorkplace() Then // Checks if the operator's workplace is specified
-		
-		NotifyDescription = New NotifyDescription("GetWeightEnd", ThisObject, TabularSectionRow);
-		EquipmentManagerClient.StartWeightReceivingFromElectronicScales(NOTifyDescription, UUID);
+		If Not DiscountsChanged Then
+			For LineNumber = 1 To LineCount Do
+				If    Object.DiscountsMarkups[LineNumber-1].Amount <> AppliedDiscounts.TableDiscountsMarkups[LineNumber-1].Amount
+					OR Object.DiscountsMarkups[LineNumber-1].ConnectionKey <> AppliedDiscounts.TableDiscountsMarkups[LineNumber-1].ConnectionKey
+					OR Object.DiscountsMarkups[LineNumber-1].DiscountMarkup <> AppliedDiscounts.TableDiscountsMarkups[LineNumber-1].DiscountMarkup Then
+					DiscountsChanged = True;
+					Break;
+				EndIf;
+			EndDo;
+		EndIf;
 		
 	EndIf;
 	
-EndProcedure // GetWeight()
+	If DiscountsChanged Then
+		AddressDiscountsAppliedInTemporaryStorage = PutToTempStorage(AppliedDiscounts, UUID);
+	EndIf;
+	
+	Return DiscountsChanged;
+	
+EndFunction
 
-&AtClient
-Procedure GetWeightEnd(Weight, Parameters) Export
+&AtServer
+Function GetAutomaticDiscountCalculationParametersStructureServer()
+
+	OrderParametersStructure = New Structure("ImplementationByOrders, SalesExceedingOrder", False, False);
 	
-	TabularSectionRow = Parameters;
-	
-	If Not Weight = Undefined Then
-		If Weight = 0 Then
-			MessageText = NStr("en='Electronic scales returned zero weight.';ru='Электронные весы вернули нулевой вес.'");
-			CommonUseClientServer.MessageToUser(MessageText);
+	If Not ValueIsFilled(Object.CustomerOrderPosition) Then
+		CustomerOrderPosition = SmallBusinessReUse.GetValueOfSetting("CustomerOrderPositionInShipmentDocuments");
+		If Not ValueIsFilled(CustomerOrderPosition) Then
+			CustomerOrderPosition = Enums.AttributePositionOnForm.InHeader;
+		EndIf;
+	Else
+		CustomerOrderPosition = Object.CustomerOrderPosition;
+	EndIf;
+	If CustomerOrderPosition = Enums.AttributePositionOnForm.InHeader Then
+		If ValueIsFilled(Object.Order) Then
+			OrderParametersStructure.ImplementationByOrders = True;
 		Else
-			// Weight is received.
-			TabularSectionRow.Quantity = Weight;
-			CalculateAmountInTabularSectionLine(TabularSectionRow);
+			OrderParametersStructure.ImplementationByOrders = False;
 		EndIf;
-	EndIf;
-	
-EndProcedure
-
-// Procedure - ImportDataFromDTC command handler.
-//
-&AtClient
-Procedure ImportDataFromDCT(Command)
-	
-	NotificationsAtImportFromDCT = New NotifyDescription("ImportFromDCTEnd", ThisObject);
-	EquipmentManagerClient.StartImportDataFromDCT(NotificationsAtImportFromDCT, UUID);
-	
-EndProcedure // ImportDataFromDCT()
-
-&AtClient
-Procedure ImportFromDCTEnd(Result, Parameters) Export
-	
-	If TypeOf(Result) = Type("Array") 
-	   AND Result.Count() > 0 Then
-		BarcodesReceived(Result);
-	EndIf;
-	
-EndProcedure
-
-// Procedure - command handler DocumentSetting.
-//
-&AtClient
-Procedure DocumentSetting(Command)
-	
-	// 1. Form parameter structure to fill "Document setting" form.
-	ParametersStructure = New Structure;
-	ParametersStructure.Insert("CustomerOrderPositionInShipmentDocuments", 	Object.CustomerOrderPosition);
-	ParametersStructure.Insert("WereMadeChanges", 						False);
-	
-	StructureDocumentSetting = Undefined;
-
-	
-	OpenForm("CommonForm.DocumentSetting", ParametersStructure,,,,, New NotifyDescription("DocumentSettingEnd", ThisObject));
-	
-EndProcedure
-
-&AtClient
-Procedure DocumentSettingEnd(Result, AdditionalParameters) Export
-    
-    // 2. Open the form "Prices and Currency".
-    StructureDocumentSetting = Result;
-    
-    // 3. Apply changes made in "Document setting" form.
-    If TypeOf(StructureDocumentSetting) = Type("Structure") AND StructureDocumentSetting.WereMadeChanges Then
-        
-        Object.CustomerOrderPosition = StructureDocumentSetting.CustomerOrderPositionInShipmentDocuments;
-        SetVisibleFromUserSettings();
-        
-    EndIf;
-
-EndProcedure
-
-// Procedure - command handler FillByReserve of the ChangeReserve submenu.
-//
-&AtClient
-Procedure ChangeReserveFillByReserves(Command)
-	
-	If Object.Inventory.Count() = 0 Then
-		Message = New UserMessage;
-		Message.Text = NStr("en='Tabular section ""Inventory and services"" is not filled!';ru='Табличная часть ""Запасы и услуги"" не заполнена!'");
-		Message.Message();
-		Return;
-	EndIf;
-	
-	FillColumnReserveByReservesAtServer();
-	
-EndProcedure // ChangeReserveFillByReserves()
-
-// Procedure - command handler ClearReserve of the ChangeReserve submenu.
-//
-&AtClient
-Procedure ChangeReserveClearReserve(Command)
-	
-	If Object.Inventory.Count() = 0 Then
-		Message = New UserMessage;
-		Message.Text = NStr("en='Tabular section ""Inventory and services"" is not filled!';ru='Табличная часть ""Запасы и услуги"" не заполнена!'");
-		Message.Message();
-		Return;
-	EndIf;
-	
-	For Each TabularSectionRow IN Object.Inventory Do
+		OrderParametersStructure.SalesExceedingOrder = False;
+	Else
+		Query = New Query;
+		Query.Text = 
+			"SELECT
+			|	CustomerInvoiceInventory.Order AS Order
+			|INTO TU_Inventory
+			|FROM
+			|	&Inventory AS CustomerInvoiceInventory
+			|;
+			|
+			|////////////////////////////////////////////////////////////////////////////////
+			|SELECT
+			|	TU_Inventory.Order AS Order
+			|FROM
+			|	TU_Inventory AS TU_Inventory
+			|
+			|GROUP BY
+			|	TU_Inventory.Order";
 		
-		If TabularSectionRow.ProductsAndServicesTypeInventory Then
-			TabularSectionRow.Reserve = 0;
+		Query.SetParameter("Inventory", Object.Inventory.Unload());
+		QueryResult = Query.Execute();
+		
+		Selection = QueryResult.Select();
+		
+		While Selection.Next() Do
+			If ValueIsFilled(Selection.Order) Then
+				OrderParametersStructure.ImplementationByOrders = True;
+			Else
+				OrderParametersStructure.SalesExceedingOrder = True;
+			EndIf;
+		EndDo;
+	EndIf;
+	
+	Return OrderParametersStructure;
+	
+EndFunction // ThereAreOrdersInTS()
+
+&AtServer
+Procedure CalculateDiscountsMarkupsOnServer(ParameterStructure)
+	
+	OrderParametersStructure = GetAutomaticDiscountCalculationParametersStructureServer(); // If there are orders in TS "Goods", then for such rows the automatic discount shall be calculated by the order.
+	If OrderParametersStructure.ImplementationByOrders Then
+		CalculateMarkupsDiscountsForOrderServer();
+		If OrderParametersStructure.SalesExceedingOrder Then
+			ParameterStructure.Insert("SalesExceedingOrder", True);
+			AppliedDiscounts = DiscountsMarkupsServerOverridable.Calculate(Object, ParameterStructure);
+		Else
+			ParameterStructure.Insert("ApplyToObject", False);
+			AppliedDiscounts = DiscountsMarkupsServerOverridable.Calculate(Object, ParameterStructure);
 		EndIf;
-		
+	Else
+		AppliedDiscounts = DiscountsMarkupsServerOverridable.Calculate(Object, ParameterStructure);
+	EndIf;
+	
+	AddressDiscountsAppliedInTemporaryStorage = PutToTempStorage(AppliedDiscounts, UUID);
+	
+	Modified = True;
+	
+	DiscountsMarkupsServerOverridable.UpdateDiscountDisplay(Object, "Inventory");
+	
+	If Not Object.DiscountsAreCalculated Then
+	
+		Object.DiscountsAreCalculated = True;
+	
+	EndIf;
+	
+	Items.InventoryCalculateDiscountsMarkups.Picture = PictureLib.Refresh;
+	
+	ThereAreManualDiscounts = Constants.FunctionalOptionUseDiscountsMarkups.Get();
+	For Each CurrentRow IN Object.Inventory Do
+		ManualDiscountCurAmount = ?(ThereAreManualDiscounts, CurrentRow.Price * CurrentRow.Quantity * CurrentRow.DiscountMarkupPercent / 100, 0);
+		CurAmountDiscounts = ManualDiscountCurAmount + CurrentRow.AutomaticDiscountAmount;
+		If CurAmountDiscounts >= CurrentRow.Amount AND CurrentRow.Price > 0 Then
+			CurrentRow.TotalDiscountAmountIsMoreThanAmount = True;
+		Else
+			CurrentRow.TotalDiscountAmountIsMoreThanAmount = False;
+		EndIf;
 	EndDo;
-	
-EndProcedure // ChangeReserveFillByBalances()
 
-////////////////////////////////////////////////////////////////////////////////
-// PROCEDURE - EVENT HANDLERS OF HEADER ATTRIBUTES
+EndProcedure
 
-// Procedure - event handler OnChange of the Date input field.
-// IN procedure situation is determined when date change document is
-// into document numbering another period and in this case
-// assigns to the document new unique number.
-// Overrides the corresponding form parameter.
-//
 &AtClient
-Procedure DateOnChange(Item)
+Procedure OpenInformationAboutDiscounts(Command)
 	
-	// Date change event DataProcessor.
-	DateBeforeChange = DocumentDate;
-	DocumentDate = Object.Date;
-	If Object.Date <> DateBeforeChange Then
-		StructureData = GetDataDateOnChange(DateBeforeChange, SettlementsCurrency);
-		If StructureData.DATEDIFF <> 0 Then
-			Object.Number = "";
-		EndIf;
-		
-		If ValueIsFilled(SettlementsCurrency) Then
-			RecalculateExchangeRateMultiplicitySettlementCurrency(StructureData);
-		EndIf;	
-		
-		// Generate price and currency label.
-		LabelStructure = New Structure("PriceKind, DiscountKind, DocumentCurrency, SettlementsCurrency, ExchangeRate, RateNationalCurrency, AmountIncludesVAT, CurrencyTransactionsAccounting, VATTaxation, DiscountCard, DiscountPercentByDiscountCard", Object.PriceKind, Object.DiscountMarkupKind, Object.DocumentCurrency, SettlementsCurrency, Object.ExchangeRate, RateNationalCurrency, Object.AmountIncludesVAT, CurrencyTransactionsAccounting, Object.VATTaxation, Object.DiscountCard, Object.DiscountPercentByDiscountCard);
-		PricesAndCurrency = GenerateLabelPricesAndCurrency(LabelStructure);
-		
-		// DiscountCards
-		// IN this procedure call not modal window of question is occurred.
-		RecalculateDiscountPercentAtDocumentDateChange();
-		// End DiscountCards		
-	EndIf;
+	CurrentData = Items.Inventory.CurrentData;
 	
-	// AutomaticDiscounts
-	DocumentDateChangedManually = True;
-	ClearCheckboxDiscountsAreCalculatedClient("DateOnChange");
-
-EndProcedure // DateOnChange()
-
-// Procedure - event handler OnChange of the Company input field.
-// IN procedure is executed document
-// number clearing and also make parameter set of the form functional options.
-// Overrides the corresponding form parameter.
-//
-&AtClient
-Procedure CompanyOnChange(Item)
-
-	// Company change event data processor.
-	Object.BankAccount = "";
-	Object.Number = "";
-	StructureData = GetCompanyDataOnChange();
-	Counterparty = StructureData.Counterparty;
-	
-	Object.Head		= StructureData.Head;
-	Object.HeadPosition = StructureData.HeadPosition;
-	Object.ChiefAccountant = StructureData.ChiefAccountant;
-	Object.Released			= StructureData.Released;
-	Object.ReleasedPosition= StructureData.ReleasedPosition;
-	
-	Object.Contract = GetContractByDefault(Object.Ref, Object.Counterparty, Object.Company, Object.OperationKind);
-	ProcessContractChange();
-	
-	// Generate price and currency label.
-	LabelStructure = New Structure("PriceKind, DiscountKind, DocumentCurrency, SettlementsCurrency, ExchangeRate, RateNationalCurrency, AmountIncludesVAT, CurrencyTransactionsAccounting, VATTaxation, DiscountCard, DiscountPercentByDiscountCard", Object.PriceKind, Object.DiscountMarkupKind, Object.DocumentCurrency, SettlementsCurrency, Object.ExchangeRate, RateNationalCurrency, Object.AmountIncludesVAT, CurrencyTransactionsAccounting, Object.VATTaxation, Object.DiscountCard, Object.DiscountPercentByDiscountCard);
-	PricesAndCurrency = GenerateLabelPricesAndCurrency(LabelStructure);
-	
-EndProcedure // CompanyOnChange()
-
-// Procedure - event handler OnChange of the OperationKind input field.
-//
-&AtClient
-Procedure OperationKindOnChange(Item)
-	
-	SetVisibleAndEnabled(True);
-	Object.Prepayment.Clear();
-	
-	If Object.OperationKind = PredefinedValue("Enum.OperationKindsCustomerInvoice.SaleToCustomer") Then
-		Items.Department.AutoChoiceIncomplete = True;
-		Items.Department.AutoMarkIncomplete = True;
-	Else
-		Items.Department.AutoChoiceIncomplete = False;
-		Items.Department.AutoMarkIncomplete = False;
-		ClearMarkIncomplete();
-	EndIf;
-	
-	Object.Contract = GetContractByDefault(Object.Ref, Object.Counterparty, Object.Company, Object.OperationKind);
-	ProcessContractChange();
-	
-	// Generate price and currency label.
-	LabelStructure = New Structure("PriceKind, DiscountKind, DocumentCurrency, SettlementsCurrency, ExchangeRate, RateNationalCurrency, AmountIncludesVAT, CurrencyTransactionsAccounting, VATTaxation, DiscountCard, DiscountPercentByDiscountCard", Object.PriceKind, Object.DiscountMarkupKind, Object.DocumentCurrency, SettlementsCurrency, Object.ExchangeRate, RateNationalCurrency, Object.AmountIncludesVAT, CurrencyTransactionsAccounting, Object.VATTaxation, Object.DiscountCard, Object.DiscountPercentByDiscountCard);
-	PricesAndCurrency = GenerateLabelPricesAndCurrency(LabelStructure);
-	
-EndProcedure // OperationKindOnChange()
-
-// Procedure - event handler OnChange of the StructuralUnit input field.
-//
-&AtClient
-Procedure StructuralUnitOnChange(Item)
-	
-	SetCellVisible("Cell", Object.StructuralUnit);
-	
-EndProcedure // StructuralUnitOnChange()
-
-// Procedure - event handler OnChange of the Counterparty input field.
-// Clears the contract and tabular section.
-//
-&AtClient
-Procedure CounterpartyOnChange(Item)
-	
-	CounterpartyBeforeChange = Counterparty;
-	CounterpartyDoSettlementsByOrdersBeforeChange = CounterpartyDoSettlementsByOrders;
-	Counterparty = Object.Counterparty;
-	
-	If CounterpartyBeforeChange <> Object.Counterparty Then
-		
-		Object.CounterpartyBankAcc = Undefined;
-		Object.ShippingAddress = "";
-		Object.StampBase = "";
-		
-		ContractVisibleBeforeChange = Items.Contract.Visible;
-		
-		StructureData = GetDataCounterpartyOnChange(Object.Date, Object.DocumentCurrency, Object.Counterparty, Object.Company);
-		// Discount cards (
-		StructureData.Insert("CallFromProcedureAtCounterpartyChange", True);
-		// ) Discount cards.
-		
-		Object.Contract = StructureData.Contract;
-		ContractBeforeChange = Contract;
-		Contract = Object.Contract;
-		
-		If Object.Prepayment.Count() > 0
-			AND Object.Contract <> ContractBeforeChange Then
-			
-			DocumentParameters = New Structure;
-			DocumentParameters.Insert("CounterpartyChange", True);
-			DocumentParameters.Insert("ContractData", StructureData);
-			DocumentParameters.Insert("CounterpartyBeforeChange", CounterpartyBeforeChange);
-			DocumentParameters.Insert("CounterpartyDoSettlementsByOrdersBeforeChange", CounterpartyDoSettlementsByOrdersBeforeChange);
-			DocumentParameters.Insert("ContractVisibleBeforeChange", ContractVisibleBeforeChange);
-			DocumentParameters.Insert("ContractBeforeChange", ContractBeforeChange);
-			
-			NotifyDescription = New NotifyDescription("PrepaymentClearingQuestionEnd", ThisObject, DocumentParameters);
-			QuestionText = NStr("en='Prepayment set-off will be cleared, do you want to continue?';ru='Зачет предоплаты будет очищен, продолжить?'");
-			
-			ShowQueryBox(NOTifyDescription, QuestionText, QuestionDialogMode.YesNo);
-			Return;
-		EndIf;
-		
-		HandleContractConditionsChange(StructureData, ContractBeforeChange);
-		
-	Else
-		
-		Object.Contract = Contract; // Restore the cleared contract automatically.
-		Object.Order = Order;
-		
-	EndIf;
-	
-	Order = Object.Order;
-	
-	// AutomaticDiscounts
-	ClearCheckboxDiscountsAreCalculatedClient("CounterpartyOnChange");
-	
-EndProcedure // CounterpartyOnChange()
-
-// Procedure - event handler OnChange of the Contract input field.
-// Fills form attributes - exchange rate and multiplicity.
-//
-&AtClient
-Procedure ContractOnChange(Item)
-	
-	ProcessContractChange();
-	
-EndProcedure // ContractOnChange()
-
-// Procedure - event handler StartChoice of the Contract input field.
-//
-&AtClient
-Procedure ContractStartChoice(Item, ChoiceData, StandardProcessing)
-	
-	If Not ValueIsFilled(Object.OperationKind) Then
+	If CurrentData = Undefined Then
 		Return;
 	EndIf;
 	
-	FormParameters = GetChoiceFormParameters(Object.Ref, Object.Company, Object.Counterparty, Object.Contract, Object.OperationKind);
-	If FormParameters.ControlContractChoice Then
+	OpenInformationAboutDiscountsClient()
+	
+EndProcedure
+
+&AtClient
+Procedure OpenInformationAboutDiscountsClient()
+	
+	ParameterStructure = New Structure;
+	ParameterStructure.Insert("ApplyToObject",                True);
+	ParameterStructure.Insert("OnlyPreliminaryCalculation",      False);
+	
+	ParameterStructure.Insert("OnlyMessagesAfterRegistration",   False);
+	
+	If EquipmentManagerClient.RefreshClientWorkplace() Then // Checks if the operator's workplace is specified
+		Workplace = EquipmentManagerClientReUse.GetClientWorkplace();
+	Else
+		Workplace = ""
+	EndIf;
+	
+	ParameterStructure.Insert("Workplace", Workplace);
+	
+	If Not Object.DiscountsAreCalculated Then
+		QuestionText = NStr("en='Discounts (markups) are not calculated, calculate?';ru='Скидки (наценки) не рассчитаны, рассчитать?'");
+		
+		AdditionalParameters = New Structure; 
+		AdditionalParameters.Insert("ParameterStructure", ParameterStructure);
+		NotificationHandler = New NotifyDescription("NotificationQueryCalculateDiscounts", ThisObject, AdditionalParameters);
+		ShowQueryBox(NotificationHandler, QuestionText, QuestionDialogMode.YesNo);
+	Else
+		CalculateDiscountsCompleteQuestionDataProcessor(ParameterStructure);
+	EndIf;
+	
+EndProcedure
+
+&AtClient
+Procedure NotificationQueryCalculateDiscounts(QuestionResult, AdditionalParameters) Export
+	
+	If QuestionResult = DialogReturnCode.No Then
+		Return;
+	EndIf;
+	ParameterStructure = AdditionalParameters.ParameterStructure;
+	CalculateDiscountsMarkupsOnServer(ParameterStructure);
+	CalculateDiscountsCompleteQuestionDataProcessor(ParameterStructure);
+	
+EndProcedure
+
+&AtClient
+Procedure CalculateDiscountsCompleteQuestionDataProcessor(ParameterStructure)
+	
+	If Not ValueIsFilled(AddressDiscountsAppliedInTemporaryStorage) Then
+		CalculateDiscountsMarkupsClient();
+	EndIf;
+	
+	CurrentData = Items.Inventory.CurrentData;
+	MarkupsDiscountsClient.OpenFormAppliedDiscounts(CurrentData, Object, ThisObject);
+	
+EndProcedure
+
+&AtClient
+Procedure InventorySelection(Item, SelectedRow, Field, StandardProcessing)
+	
+	If Item.CurrentItem = Items.InventoryAutomaticDiscountPercent
+		AND Not ReadOnly Then
 		
 		StandardProcessing = False;
-		OpenForm("Catalog.CounterpartyContracts.Form.ChoiceForm", FormParameters, Item);
+		OpenInformationAboutDiscountsClient()
 		
 	EndIf;
 	
 EndProcedure
 
-// Procedure - event handler OnChange of the input field Order.
-//
 &AtClient
-Procedure OrderOnChange(Item)
+Procedure InventoryOnStartEdit(Item, NewRow, Copy)
 	
-	If Object.Prepayment.Count() > 0
-	   AND Object.Order <> Order
-	   AND Object.OperationKind = PredefinedValue("Enum.OperationKindsCustomerInvoice.SaleToCustomer") Then
-		Mode = QuestionDialogMode.YesNo;
-		Response = Undefined;
-
-		ShowQueryBox(New NotifyDescription("OrderOnChangeEnd", ThisObject), NStr("en='Prepayment set-off will be cleared, do you want to continue?';ru='Зачет предоплаты будет очищен, продолжить?'"), Mode, 0);
-        Return;
-	EndIf;
-	
-	OrderOnChangeFragment();
-EndProcedure
-
-&AtClient
-Procedure OrderOnChangeEnd(Result, AdditionalParameters) Export
-    
-    Response = Result;
-    If Response = DialogReturnCode.Yes Then
-        Object.Prepayment.Clear();
-    Else
-        Object.Order = Order;
-        Return;
-    EndIf;
-    
-    OrderOnChangeFragment();
-
-EndProcedure
-
-&AtClient
-Procedure OrderOnChangeFragment()
-    
-    Order = Object.Order;
-
 	// AutomaticDiscounts
-	ClearCheckboxDiscountsAreCalculatedClient("OrderOnChange");
+	If NewRow AND Copy Then
+		Item.CurrentData.AutomaticDiscountsPercent = 0;
+		Item.CurrentData.AutomaticDiscountAmount = 0;
+		CalculateAmountInTabularSectionLine();
+	EndIf;
 	// End AutomaticDiscounts
 	
 EndProcedure
 
-////////////////////////////////////////////////////////////////////////////////
-// PROCEDURE - EVENT HANDLERS OF THE INVENTORY TABULAR SECTION ATTRIBUTES
-
-// Procedure - event handler OnChange of the ProductsAndServices input field.
-//
-&AtClient
-Procedure InventoryProductsAndServicesOnChange(Item)
+&AtServer
+Function ResetFlagDiscountsAreCalculatedServer(Action, SPColumn = "")
 	
-	TabularSectionRow = Items.Inventory.CurrentData;
-	
-	StructureData = New Structure();
-	StructureData.Insert("Company", Object.Company);
-	StructureData.Insert("ProductsAndServices", TabularSectionRow.ProductsAndServices);
-	StructureData.Insert("Characteristic", TabularSectionRow.Characteristic);
-	StructureData.Insert("VATTaxation", Object.VATTaxation);
-	
-	If ValueIsFilled(Object.PriceKind) Then
-		
-		StructureData.Insert("ProcessingDate",	 Object.Date);
-		StructureData.Insert("DocumentCurrency",  Object.DocumentCurrency);
-		StructureData.Insert("AmountIncludesVAT", Object.AmountIncludesVAT);
-		StructureData.Insert("PriceKind", Object.PriceKind);
-		StructureData.Insert("Factor", 1);
-		StructureData.Insert("DiscountMarkupKind", Object.DiscountMarkupKind);
-	
+	RecalculationIsRequired = False;
+	If Object.OperationKind = OperationKindSaleToCustomer Then
+		If UseAutomaticDiscounts AND Object.Inventory.Count() > 0 AND (Object.DiscountsAreCalculated OR InstalledGrayColor) Then
+			RecalculationIsRequired = ResetFlagDiscountsAreCalculated(Action, SPColumn);
+		EndIf;
 	EndIf;
+	Return RecalculationIsRequired;
 	
-	// DiscountCards
-	StructureData.Insert("DiscountCard", Object.DiscountCard);
-	StructureData.Insert("DiscountPercentByDiscountCard", Object.DiscountPercentByDiscountCard);
-	// End DiscountCards
-	
-	StructureData = GetDataProductsAndServicesOnChange(StructureData);
-	
-	TabularSectionRow.MeasurementUnit = StructureData.MeasurementUnit;
-	TabularSectionRow.Quantity = 1;
-	TabularSectionRow.Price = StructureData.Price;
-	TabularSectionRow.DiscountMarkupPercent = StructureData.DiscountMarkupPercent;
-	TabularSectionRow.VATRate = StructureData.VATRate;
-	TabularSectionRow.Content = "";
-	
-	TabularSectionRow.ProductsAndServicesTypeInventory = StructureData.IsInventoryItem;
-	
-	CalculateAmountInTabularSectionLine();
-	
-EndProcedure // InventoryProductsAndServicesOnChange()
+EndFunction
 
-// Procedure - event handler OnChange of the Characteristic input field.
-//
 &AtClient
-Procedure InventoryCharacteristicOnChange(Item)
+Function ClearCheckboxDiscountsAreCalculatedClient(Action, SPColumn = "")
 	
-	TabularSectionRow = Items.Inventory.CurrentData;
-		
-	StructureData = New Structure;
-	StructureData.Insert("ProductsAndServices",	 TabularSectionRow.ProductsAndServices);
-	StructureData.Insert("Characteristic",	 TabularSectionRow.Characteristic);
-		
-	If ValueIsFilled(Object.PriceKind) Then
-		
-		StructureData.Insert("ProcessingDate",	 	Object.Date);
-		StructureData.Insert("DocumentCurrency",	 	Object.DocumentCurrency);
-		StructureData.Insert("AmountIncludesVAT", 	Object.AmountIncludesVAT);
-		
-		StructureData.Insert("VATRate", 			TabularSectionRow.VATRate);
-		StructureData.Insert("Price",			 	TabularSectionRow.Price);
-		
-		StructureData.Insert("PriceKind", Object.PriceKind);
-		StructureData.Insert("MeasurementUnit", TabularSectionRow.MeasurementUnit);
-		
+	RecalculationIsRequired = False;
+	If Object.OperationKind = OperationKindSaleToCustomer Then
+		If UseAutomaticDiscounts AND Object.Inventory.Count() > 0 AND (Object.DiscountsAreCalculated OR InstalledGrayColor) Then
+			RecalculationIsRequired = ResetFlagDiscountsAreCalculated(Action, SPColumn);
+		EndIf;
 	EndIf;
-				
-	StructureData = GetDataCharacteristicOnChange(StructureData);
+	Return RecalculationIsRequired;
 	
-	TabularSectionRow.Price = StructureData.Price;
-	TabularSectionRow.Content = "";
-			
-	CalculateAmountInTabularSectionLine();
-	
-EndProcedure // InventoryCharacteristicOnChange()
+EndFunction
 
-// Procedure - event handler AutoPick of the Content input field.
-//
-&AtClient
-Procedure InventoryContentAutoComplete(Item, Text, ChoiceData, Parameters, Wait, StandardProcessing)
+&AtServer
+Function ResetFlagDiscountsAreCalculated(Action, SPColumn = "")
 	
-	If Wait = 0 Then
-		
-		StandardProcessing = False;
-		
-		TabularSectionRow = Items.Inventory.CurrentData;
-		ContentPattern = SmallBusinessServer.GetContentText(TabularSectionRow.ProductsAndServices, TabularSectionRow.Characteristic);
-		
-		ChoiceData = New ValueList;
-		ChoiceData.Add(ContentPattern);
-		
+	Return DiscountsMarkupsServer.ResetFlagDiscountsAreCalculated(ThisObject, Action, SPColumn);
+	
+EndFunction
+
+&AtServer
+Procedure AutomaticDiscountsOnCreateAtServer()
+	
+	InstalledGrayColor = False;
+	UseAutomaticDiscounts = GetFunctionalOption("UseAutomaticDiscountsMarkups");
+	If UseAutomaticDiscounts Then
+		If Object.Inventory.Count() = 0 Then
+			Items.InventoryCalculateDiscountsMarkups.Picture = PictureLib.UpdateGray;
+			InstalledGrayColor = True;
+		ElsIf Not Object.DiscountsAreCalculated Then
+			Object.DiscountsAreCalculated = False;
+			Items.InventoryCalculateDiscountsMarkups.Picture = PictureLib.UpdateRed;
+		Else
+			Items.InventoryCalculateDiscountsMarkups.Picture = PictureLib.Refresh;
+		EndIf;
 	EndIf;
 	
 EndProcedure
 
-// Procedure - event handler OnChange of the Count input field.
-//
 &AtClient
-Procedure InventoryQuantityOnChange(Item)
-	
-	CalculateAmountInTabularSectionLine();
-	
-EndProcedure // InventoryQuantityOnChange()
-
-// Procedure - event handler ChoiceProcessing of the MeasurementUnit input field.
-//
-&AtClient
-Procedure InventoryMeasurementUnitChoiceProcessing(Item, ValueSelected, StandardProcessing)
-	
-	TabularSectionRow = Items.Inventory.CurrentData;
-	
-	If TabularSectionRow.MeasurementUnit = ValueSelected 
-		OR TabularSectionRow.Price = 0 Then
-		Return;
-	EndIf;
-	
-	CurrentFactor = 0;
-	If TypeOf(TabularSectionRow.MeasurementUnit) = Type("CatalogRef.UOMClassifier") Then
-		CurrentFactor = 1;
-	EndIf;
-	
-	Factor = 0;
-	If TypeOf(ValueSelected) = Type("CatalogRef.UOMClassifier") Then
-		Factor = 1;
-	EndIf;
-	
-	If CurrentFactor = 0 AND Factor = 0 Then
-		StructureData = GetDataMeasurementUnitOnChange(TabularSectionRow.MeasurementUnit, ValueSelected);
-	ElsIf CurrentFactor = 0 Then
-		StructureData = GetDataMeasurementUnitOnChange(TabularSectionRow.MeasurementUnit);
-	ElsIf Factor = 0 Then
-		StructureData = GetDataMeasurementUnitOnChange(,ValueSelected);
-	ElsIf CurrentFactor = 1 AND Factor = 1 Then
-		StructureData = New Structure("CurrentFactor, Factor", 1, 1);
-	EndIf;
-	
-	// Price.
-	If StructureData.CurrentFactor <> 0 Then
-		TabularSectionRow.Price = TabularSectionRow.Price * StructureData.Factor / StructureData.CurrentFactor;
-	EndIf;
-	
-	CalculateAmountInTabularSectionLine();
-	
-EndProcedure // InventoryMeasurementUnitChoiceProcessing()
-
-// Procedure - event handler OnChange of the Price input field.
-//
-&AtClient
-Procedure InventoryPriceOnChange(Item)
-	
-	CalculateAmountInTabularSectionLine();
-	
-EndProcedure // InventoryPriceOnChange()
-
-// Procedure - event handler OnChange of the DiscountMarkupPercent input field.
-//
-&AtClient
-Procedure InventoryDiscountMarkupPercentOnChange(Item)
-	
-	CalculateAmountInTabularSectionLine();
-	
-EndProcedure // InventoryDiscountMarkupPercentOnChange()
-
-// Procedure - event handler OnChange of the Amount input field.
-//
-&AtClient
-Procedure InventoryAmountOnChange(Item)
-	
-	TabularSectionRow = Items.Inventory.CurrentData;
-	
-	// Price.
-	If TabularSectionRow.Quantity <> 0 Then
-		TabularSectionRow.Price = TabularSectionRow.Amount / TabularSectionRow.Quantity;
-	EndIf;
-	
-	// Discount.
-	If TabularSectionRow.DiscountMarkupPercent = 100 Then
-		TabularSectionRow.Price = 0;
-	ElsIf TabularSectionRow.DiscountMarkupPercent <> 0 AND TabularSectionRow.Quantity <> 0 Then
-		TabularSectionRow.Price = TabularSectionRow.Amount / ((1 - TabularSectionRow.DiscountMarkupPercent / 100) * TabularSectionRow.Quantity);
-	EndIf;
-	
-	CalculateVATSUM(TabularSectionRow);
-	TabularSectionRow.Total = TabularSectionRow.Amount + ?(Object.AmountIncludesVAT, 0, TabularSectionRow.VATAmount);
+Procedure InventoryAfterDeleteRow(Item)
 	
 	// AutomaticDiscounts.
-	ClearCheckboxDiscountsAreCalculatedClient("CalculateAmountInTabularSectionLine", "Amount");
-	
-	TabularSectionRow.AutomaticDiscountsPercent = 0;
-	TabularSectionRow.AutomaticDiscountAmount = 0;
-	TabularSectionRow.TotalDiscountAmountIsMoreThanAmount = False;
-	// End AutomaticDiscounts
-	
-EndProcedure // InventoryAmountOnChange()
-
-// Procedure - event handler OnChange of the VATRate input field.
-//
-&AtClient
-Procedure InventoryVATRateOnChange(Item)
-	
-	TabularSectionRow = Items.Inventory.CurrentData;
-	
-	CalculateVATSUM(TabularSectionRow);
-	TabularSectionRow.Total = TabularSectionRow.Amount + ?(Object.AmountIncludesVAT, 0, TabularSectionRow.VATAmount);
-	
-EndProcedure // InventoryVATRateOnChange()
-
-// Procedure - event handler OnChange of the VATRate input field.
-//
-&AtClient
-Procedure InventoryVATAmountOnChange(Item)
-	
-	TabularSectionRow = Items.Inventory.CurrentData;
-	
-	TabularSectionRow.Total = TabularSectionRow.Amount + ?(Object.AmountIncludesVAT, 0, TabularSectionRow.VATAmount);	
-	
-EndProcedure // InventoryVATAmountOnChange()
-
-// Procedure - OnChange event handler of the Comment input field.
-//
-&AtClient
-Procedure CommentOnChange(Item)
-	
-	AttachIdleHandler("Attachable_SetPictureForComment", 0.5, True);
-	
-EndProcedure // CommentOnChange()
-
-&AtClient
-Procedure Attachable_SetPictureForComment()
-	
-	SmallBusinessClientServer.SetPictureForComment(Items.GroupAdditional, Object.Comment);
+	ClearCheckboxDiscountsAreCalculatedClient("DeleteRow");
 	
 EndProcedure
+
+&AtClient
+Procedure InventoryOrderOnChange(Item)
+	
+	// AutomaticDiscounts
+	If ClearCheckboxDiscountsAreCalculatedClient("InventoryOrderOnChange") Then
+		CalculateAmountInTabularSectionLine(Undefined, False);
+	EndIf;
+	// End AutomaticDiscounts
+	
+EndProcedure
+
+#EndRegion
+
+#Region DiscountCards
+
+&AtClient
+Procedure DiscountCardIsSelected(DiscountCard)
+
+	DiscountCardOwner = GetDiscountCardOwner(DiscountCard);
+	If Object.Counterparty.IsEmpty() AND Not DiscountCardOwner.IsEmpty() Then
+		Object.Counterparty = DiscountCardOwner;
+		CounterpartyOnChange(Items.Counterparty);
+		
+		ShowUserNotification(
+			NStr("en='Counterparty is filled and discount card is read';ru='Заполнен контрагент и считана дисконтная карта'"),
+			GetURL(DiscountCard),
+			StringFunctionsClientServer.SubstituteParametersInString(NStr("en='The counterparty is filled out in the document and discount card %1 is read';ru='В документе заполнен контрагент и считана дисконтная карта %1'"), DiscountCard),
+			PictureLib.Information32);
+	ElsIf Object.Counterparty <> DiscountCardOwner AND Not DiscountCardOwner.IsEmpty() Then
+		
+		CommonUseClientServer.MessageToUser(
+			NStr("en='Discount card is not read. Discount card owner does not match with a counterparty in the document.';ru='Дисконтная карта не считана. Владелец дисконтной карты не совпадает с контрагентом в документе.'"),
+			,
+			"Counterparty",
+			"Object");
+		
+		Return;
+	Else
+		ShowUserNotification(
+			NStr("en='Discount card read';ru='Считана дисконтная карта'"),
+			GetURL(DiscountCard),
+			StringFunctionsClientServer.SubstituteParametersInString(NStr("en='Discount card %1 is read';ru='Считана дисконтная карта %1'"), DiscountCard),
+			PictureLib.Information32);
+	EndIf;
+	
+	DiscountCardIsSelectedAdditionally(DiscountCard);
+		
+EndProcedure
+
+&AtClient
+Procedure DiscountCardIsSelectedAdditionally(DiscountCard)
+	
+	If Not Modified Then
+		Modified = True;
+	EndIf;
+	
+	Object.DiscountCard = DiscountCard;
+	Object.DiscountPercentByDiscountCard = SmallBusinessServer.CalculateDiscountPercentByDiscountCard(Object.Date, DiscountCard);
+	
+	LabelStructure = New Structure("PriceKind, DiscountKind, DocumentCurrency, SettlementsCurrency, ExchangeRate, RateNationalCurrency, AmountIncludesVAT, CurrencyTransactionsAccounting, VATTaxation, DiscountCard, DiscountPercentByDiscountCard",
+			Object.PriceKind,
+			Object.DiscountMarkupKind,
+			Object.DocumentCurrency,
+			SettlementCurrency,
+			Object.ExchangeRate,
+			ExchangeRateNationalCurrency,
+			Object.AmountIncludesVAT,
+			CurrencyTransactionsAccounting,
+			Object.VATTaxation,
+			Object.DiscountCard,
+			Object.DiscountPercentByDiscountCard);
+			
+	PricesAndCurrency = GenerateLabelPricesAndCurrency(LabelStructure);
+		
+	If Object.Inventory.Count() > 0 Then
+		Text = NStr("en='Refill discounts in all rows?';ru='Перезаполнить скидки во всех строках?'");
+		Notification = New NotifyDescription("DiscountCardIsSelectedAdditionallyEnd", ThisObject);
+		ShowQueryBox(Notification, Text, QuestionDialogMode.YesNo, , DialogReturnCode.Yes);
+	EndIf;
+
+EndProcedure
+
+&AtClient
+Procedure DiscountCardIsSelectedAdditionallyEnd(QuestionResult, AdditionalParameters) Export
+
+	If QuestionResult = DialogReturnCode.Yes Then
+		SmallBusinessClient.RefillDiscountsTablePartAfterDiscountCardRead(ThisForm, "Inventory");
+	EndIf;
+	
+	// AutomaticDiscounts
+	ClearCheckboxDiscountsAreCalculatedClient("DiscountRecalculationByDiscountCard");
+	
+EndProcedure
+
+&AtServerNoContext
+Function GetDiscountCardOwner(DiscountCard)
+	
+	Return DiscountCard.CardOwner;
+	
+EndFunction
+
+&AtServerNoContext
+Function ThisDiscountCardWithFixedDiscount(DiscountCard)
+	
+	Return DiscountCard.Owner.DiscountKindForDiscountCards = Enums.DiscountKindsForDiscountCards.FixedDiscount;
+	
+EndFunction
+
+&AtClient
+Procedure RecalculateDiscountPercentAtDocumentDateChange()
+	
+	If Object.DiscountCard.IsEmpty() OR ThisDiscountCardWithFixedDiscount(Object.DiscountCard) Then
+		Return;
+	EndIf;
+	
+	PreDiscountPercentByDiscountCard = Object.DiscountPercentByDiscountCard;
+	NewDiscountPercentByDiscountCard = SmallBusinessServer.CalculateDiscountPercentByDiscountCard(Object.Date, Object.DiscountCard);
+	
+	If PreDiscountPercentByDiscountCard <> NewDiscountPercentByDiscountCard Then
+		
+		If Object.Inventory.Count() > 0 Then
+			Text = NStr("en = 'Change the percent of discount of the progressive discount card with "+PreDiscountPercentByDiscountCard+"% on "+NewDiscountPercentByDiscountCard+"% and refill discounts in all rows?'");
+			
+			AdditionalParameters = New Structure("NewDiscountPercentByDiscountCard, RecalculateTP", NewDiscountPercentByDiscountCard, True);
+			Notification = New NotifyDescription("RecalculateDiscountPercentAtDocumentDateChangeEnd", ThisObject, AdditionalParameters);
+		Else
+			Text = NStr("en = 'Change the percent of discount of the progressive discount card with "+PreDiscountPercentByDiscountCard+"% on "+NewDiscountPercentByDiscountCard+"%?'");
+			
+			AdditionalParameters = New Structure("NewDiscountPercentByDiscountCard, RecalculateTP", NewDiscountPercentByDiscountCard, False);
+			Notification = New NotifyDescription("RecalculateDiscountPercentAtDocumentDateChangeEnd", ThisObject, AdditionalParameters);
+		EndIf;
+		ShowQueryBox(Notification, Text, QuestionDialogMode.YesNo, , DialogReturnCode.Yes);
+	EndIf;
+	
+EndProcedure
+
+&AtClient
+Procedure RecalculateDiscountPercentAtDocumentDateChangeEnd(QuestionResult, AdditionalParameters) Export
+
+	If QuestionResult = DialogReturnCode.Yes Then
+		Object.DiscountPercentByDiscountCard = AdditionalParameters.NewDiscountPercentByDiscountCard;
+		
+		LabelStructure = New Structure("PriceKind, DiscountKind, DocumentCurrency, SettlementsCurrency, ExchangeRate, RateNationalCurrency, AmountIncludesVAT, CurrencyTransactionsAccounting, VATTaxation, DiscountCard, DiscountPercentByDiscountCard",
+				Object.PriceKind,
+				Object.DiscountMarkupKind,
+				Object.DocumentCurrency,
+				SettlementCurrency,
+				Object.ExchangeRate,
+				ExchangeRateNationalCurrency,
+				Object.AmountIncludesVAT,
+				CurrencyTransactionsAccounting,
+				Object.VATTaxation,
+				Object.DiscountCard,
+				Object.DiscountPercentByDiscountCard);
+				
+		PricesAndCurrency = GenerateLabelPricesAndCurrency(LabelStructure);
+		
+		If AdditionalParameters.RecalculateTP Then
+			SmallBusinessClient.RefillDiscountsTablePartAfterDiscountCardRead(ThisForm, "Inventory");
+		EndIf;
+				
+	EndIf;
+	
+EndProcedure
+
+&AtClient
+Procedure ReadDiscountCardClick(Item)
+	
+	ParametersStructure = New Structure("Counterparty", Object.Counterparty);
+	NotifyDescription = New NotifyDescription("ReadDiscountCardClickEnd", ThisObject);
+	OpenForm("Catalog.DiscountCards.Form.ReadingDiscountCard", ParametersStructure, ThisForm, , , , NotifyDescription, FormWindowOpeningMode.LockOwnerWindow);	
+	
+EndProcedure
+
+&AtClient
+Procedure ReadDiscountCardClickEnd(ReturnParameters, Parameters) Export
+
+	If TypeOf(ReturnParameters) = Type("Structure") Then
+		DiscountCardRead = ReturnParameters.DiscountCardRead;
+		DiscountCardIsSelected(ReturnParameters.DiscountCard);
+	EndIf;
+
+EndProcedure
+
+#EndRegion
 
 #Region LibrariesHandlers
 
@@ -2982,684 +3576,6 @@ Procedure Attachable_ReferenceClickAllInformationLinks(Item)
 EndProcedure
 
 #EndRegion
-
-#Region DiscountCards
-
-// Procedure - selection handler of discount card, beginning.
-//
-&AtClient
-Procedure DiscountCardIsSelected(DiscountCard)
-
-	DiscountCardOwner = GetDiscountCardOwner(DiscountCard);
-	If Object.Counterparty.IsEmpty() AND Not DiscountCardOwner.IsEmpty() Then
-		Object.Counterparty = DiscountCardOwner;
-		CounterpartyOnChange(Items.Counterparty);
-		
-		ShowUserNotification(
-			NStr("en='Counterparty is filled and discount card is read';ru='Заполнен контрагент и считана дисконтная карта'"),
-			GetURL(DiscountCard),
-			StringFunctionsClientServer.SubstituteParametersInString(NStr("en='The counterparty is filled out in the document and discount card %1 is read';ru='В документе заполнен контрагент и считана дисконтная карта %1'"), DiscountCard),
-			PictureLib.Information32);
-	ElsIf Object.Counterparty <> DiscountCardOwner AND Not DiscountCardOwner.IsEmpty() Then
-		
-		CommonUseClientServer.MessageToUser(
-			NStr("en='Discount card is not read. Discount card owner does not match with a counterparty in the document.';ru='Дисконтная карта не считана. Владелец дисконтной карты не совпадает с контрагентом в документе.'"),
-			,
-			"Counterparty",
-			"Object");
-		
-		Return;
-	Else
-		ShowUserNotification(
-			NStr("en='Discount card read';ru='Считана дисконтная карта'"),
-			GetURL(DiscountCard),
-			StringFunctionsClientServer.SubstituteParametersInString(NStr("en='Discount card %1 is read';ru='Считана дисконтная карта %1'"), DiscountCard),
-			PictureLib.Information32);
-	EndIf;
-	
-	DiscountCardIsSelectedAdditionally(DiscountCard);
-		
-EndProcedure
-
-// Procedure - selection handler of discount card, end.
-//
-&AtClient
-Procedure DiscountCardIsSelectedAdditionally(DiscountCard)
-	
-	If Not Modified Then
-		Modified = True;
-	EndIf;
-	
-	Object.DiscountCard = DiscountCard;
-	Object.DiscountPercentByDiscountCard = SmallBusinessServer.CalculateDiscountPercentByDiscountCard(Object.Date, DiscountCard);
-	
-	LabelStructure = New Structure("PriceKind, DiscountKind, DocumentCurrency, SettlementsCurrency, ExchangeRate, RateNationalCurrency, AmountIncludesVAT, CurrencyTransactionsAccounting, VATTaxation, DiscountCard, DiscountPercentByDiscountCard",
-			Object.PriceKind,
-			Object.DiscountMarkupKind,
-			Object.DocumentCurrency,
-			SettlementsCurrency,
-			Object.ExchangeRate,
-			RateNationalCurrency,
-			Object.AmountIncludesVAT,
-			CurrencyTransactionsAccounting,
-			Object.VATTaxation,
-			Object.DiscountCard,
-			Object.DiscountPercentByDiscountCard);
-			
-	PricesAndCurrency = GenerateLabelPricesAndCurrency(LabelStructure);
-		
-	If Object.Inventory.Count() > 0 Then
-		Text = NStr("en='Refill discounts in all rows?';ru='Перезаполнить скидки во всех строках?'");
-		Notification = New NotifyDescription("DiscountCardIsSelectedAdditionallyEnd", ThisObject);
-		ShowQueryBox(Notification, Text, QuestionDialogMode.YesNo, , DialogReturnCode.Yes);
-	EndIf;
-
-EndProcedure
-
-// Procedure - selection handler of discount card, end.
-//
-&AtClient
-Procedure DiscountCardIsSelectedAdditionallyEnd(QuestionResult, AdditionalParameters) Export
-
-	If QuestionResult = DialogReturnCode.Yes Then
-		SmallBusinessClient.RefillDiscountsTablePartAfterDiscountCardRead(ThisForm, "Inventory");
-	EndIf;
-	
-	// AutomaticDiscounts
-	ClearCheckboxDiscountsAreCalculatedClient("DiscountRecalculationByDiscountCard");
-	
-EndProcedure
-
-// Function returns the discount card owner.
-//
-&AtServerNoContext
-Function GetDiscountCardOwner(DiscountCard)
-	
-	Return DiscountCard.CardOwner;
-	
-EndFunction
-
-// Function returns True if the discount card, which is passed as the parameter, is fixed.
-//
-&AtServerNoContext
-Function ThisDiscountCardWithFixedDiscount(DiscountCard)
-	
-	Return DiscountCard.Owner.DiscountKindForDiscountCards = Enums.DiscountKindsForDiscountCards.FixedDiscount;
-	
-EndFunction
-
-// Procedure executes only for ACCUMULATIVE discount cards.
-// Procedure calculates document discounts after document date change. Recalculation is executed if
-// the discount percent by selected discount card changed. 
-//
-&AtClient
-Procedure RecalculateDiscountPercentAtDocumentDateChange()
-	
-	If Object.DiscountCard.IsEmpty() OR ThisDiscountCardWithFixedDiscount(Object.DiscountCard) Then
-		Return;
-	EndIf;
-	
-	PreDiscountPercentByDiscountCard = Object.DiscountPercentByDiscountCard;
-	NewDiscountPercentByDiscountCard = SmallBusinessServer.CalculateDiscountPercentByDiscountCard(Object.Date, Object.DiscountCard);
-	
-	If PreDiscountPercentByDiscountCard <> NewDiscountPercentByDiscountCard Then
-		
-		If Object.Inventory.Count() > 0 Then
-			Text = NStr("en = 'Change the percent of discount of the progressive discount card with "+PreDiscountPercentByDiscountCard+"% on "+NewDiscountPercentByDiscountCard+"% and refill discounts in all rows?'");
-			
-			AdditionalParameters = New Structure("NewDiscountPercentByDiscountCard, RecalculateTP", NewDiscountPercentByDiscountCard, True);
-			Notification = New NotifyDescription("RecalculateDiscountPercentAtDocumentDateChangeEnd", ThisObject, AdditionalParameters);
-		Else
-			Text = NStr("en = 'Change the percent of discount of the progressive discount card with "+PreDiscountPercentByDiscountCard+"% on "+NewDiscountPercentByDiscountCard+"%?'");
-			
-			AdditionalParameters = New Structure("NewDiscountPercentByDiscountCard, RecalculateTP", NewDiscountPercentByDiscountCard, False);
-			Notification = New NotifyDescription("RecalculateDiscountPercentAtDocumentDateChangeEnd", ThisObject, AdditionalParameters);
-		EndIf;
-		ShowQueryBox(Notification, Text, QuestionDialogMode.YesNo, , DialogReturnCode.Yes);
-	EndIf;
-	
-EndProcedure
-
-// Procedure executes only for ACCUMULATIVE discount cards.
-// Procedure calculates document discounts after document date change. Recalculation is executed if
-// the discount percent by selected discount card changed. 
-//
-&AtClient
-Procedure RecalculateDiscountPercentAtDocumentDateChangeEnd(QuestionResult, AdditionalParameters) Export
-
-	If QuestionResult = DialogReturnCode.Yes Then
-		Object.DiscountPercentByDiscountCard = AdditionalParameters.NewDiscountPercentByDiscountCard;
-		
-		LabelStructure = New Structure("PriceKind, DiscountKind, DocumentCurrency, SettlementsCurrency, ExchangeRate, RateNationalCurrency, AmountIncludesVAT, CurrencyTransactionsAccounting, VATTaxation, DiscountCard, DiscountPercentByDiscountCard",
-				Object.PriceKind,
-				Object.DiscountMarkupKind,
-				Object.DocumentCurrency,
-				SettlementsCurrency,
-				Object.ExchangeRate,
-				RateNationalCurrency,
-				Object.AmountIncludesVAT,
-				CurrencyTransactionsAccounting,
-				Object.VATTaxation,
-				Object.DiscountCard,
-				Object.DiscountPercentByDiscountCard);
-				
-		PricesAndCurrency = GenerateLabelPricesAndCurrency(LabelStructure);
-		
-		If AdditionalParameters.RecalculateTP Then
-			SmallBusinessClient.RefillDiscountsTablePartAfterDiscountCardRead(ThisForm, "Inventory");
-		EndIf;
-				
-	EndIf;
-	
-EndProcedure
-
-// Procedure - Command handler ReadDiscountCard forms.
-//
-&AtClient
-Procedure ReadDiscountCardClick(Item)
-	
-	ParametersStructure = New Structure("Counterparty", Object.Counterparty);
-	NotifyDescription = New NotifyDescription("ReadDiscountCardClickEnd", ThisObject);
-	OpenForm("Catalog.DiscountCards.Form.ReadingDiscountCard", ParametersStructure, ThisForm, , , , NotifyDescription, FormWindowOpeningMode.LockOwnerWindow);	
-	
-EndProcedure
-
-// Final part of procedure - of command handler ReadDiscountCard forms.
-// Is called after read form closing of discount card.
-//
-&AtClient
-Procedure ReadDiscountCardClickEnd(ReturnParameters, Parameters) Export
-
-	If TypeOf(ReturnParameters) = Type("Structure") Then
-		DiscountCardRead = ReturnParameters.DiscountCardRead;
-		DiscountCardIsSelected(ReturnParameters.DiscountCard);
-	EndIf;
-
-EndProcedure
-
-#EndRegion
-
-#Region AutomaticDiscounts
-
-// Procedure - form command handler CalculateDiscountsMarkups.
-//
-&AtClient
-Procedure CalculateDiscountsMarkups(Command)
-	
-	If Object.Inventory.Count() = 0 Then
-		If Object.DiscountsMarkups.Count() > 0 Then
-			Object.DiscountsMarkups.Clear();
-		EndIf;
-		Return;
-	EndIf;
-	
-	CalculateDiscountsMarkupsClient();
-	
-EndProcedure
-
-&AtServer
-Procedure CalculateMarkupsDiscountsForOrderServer()
-
-	DiscountsMarkupsServer.FillLinkingKeysInSpreadsheetPartProducts(Object, "Inventory");
-	
-	OrdersArray = New Array;
-	
-	If Not ValueIsFilled(Object.CustomerOrderPosition) Then
-		CustomerOrderPosition = SmallBusinessReUse.GetValueOfSetting("CustomerOrderPositionInShipmentDocuments");
-		If Not ValueIsFilled(Object.CustomerOrderPosition) Then
-			CustomerOrderPosition = Enums.AttributePositionOnForm.InHeader;
-		EndIf;
-	Else
-		CustomerOrderPosition = Object.CustomerOrderPosition;
-	EndIf;
-	If CustomerOrderPosition = Enums.AttributePositionOnForm.InHeader Then
-		OrdersArray.Add(Object.Order);
-	Else
-		OrdersGO = Object.Inventory.Unload(, "Order");
-		OrdersGO.GroupBy("Order");
-		OrdersArray = OrdersGO.UnloadColumn("Order");
-	EndIf;
-	
-	Query = New Query;
-	Query.Text =
-	"SELECT
-	|	DiscountsMarkups.Ref AS Order,
-	|	DiscountsMarkups.DiscountMarkup AS DiscountMarkup,
-	|	DiscountsMarkups.Amount AS AutomaticDiscountAmount,
-	|	CASE
-	|		WHEN CustomerOrderInventory.ProductsAndServices.ProductsAndServicesType = VALUE(Enum.ProductsAndServicesTypes.InventoryItem)
-	|			THEN TRUE
-	|		ELSE FALSE
-	|	END AS ProductsAndServicesTypeInventory,
-	|	CASE
-	|		WHEN VALUETYPE(CustomerOrderInventory.MeasurementUnit) = Type(Catalog.UOMClassifier)
-	|			THEN 1
-	|		ELSE CustomerOrderInventory.MeasurementUnit.Factor
-	|	END AS Factor,
-	|	CustomerOrderInventory.ProductsAndServices,
-	|	CustomerOrderInventory.Characteristic,
-	|	CustomerOrderInventory.MeasurementUnit,
-	|	CustomerOrderInventory.Quantity
-	|FROM
-	|	Document.CustomerOrder.DiscountsMarkups AS DiscountsMarkups
-	|		INNER JOIN Document.CustomerOrder.Inventory AS CustomerOrderInventory
-	|		ON DiscountsMarkups.Ref = CustomerOrderInventory.Ref
-	|			AND DiscountsMarkups.ConnectionKey = CustomerOrderInventory.ConnectionKey
-	|WHERE
-	|	DiscountsMarkups.Ref IN(&OrdersArray)";
-	
-	Query.SetParameter("OrdersArray", OrdersArray);
-	
-	ResultsArray = Query.ExecuteBatch();
-	
-	OrderDiscountsMarkups = ResultsArray[0].Unload();
-	
-	Object.DiscountsMarkups.Clear();
-	For Each CurrentDocumentRow IN Object.Inventory Do
-		CurrentDocumentRow.AutomaticDiscountsPercent = 0;
-		CurrentDocumentRow.AutomaticDiscountAmount = 0;
-	EndDo;
-	
-	DiscountsMarkupsCalculationResult = Object.DiscountsMarkups.Unload();
-	
-	For Each CurrentOrderRow IN OrderDiscountsMarkups Do
-		
-		StructureForSearch = New Structure;
-		StructureForSearch.Insert("Order", CurrentOrderRow.Order);
-		StructureForSearch.Insert("ProductsAndServices", CurrentOrderRow.ProductsAndServices);
-		StructureForSearch.Insert("Characteristic", CurrentOrderRow.Characteristic);
-		
-		DocumentRowsArray = Object.Inventory.FindRows(StructureForSearch);
-		If DocumentRowsArray.Count() = 0 Then
-			Continue;
-		EndIf;
-		
-		QuantityInOrder = CurrentOrderRow.Quantity * CurrentOrderRow.Factor;
-		Distributed = 0;
-		For Each CurrentDocumentRow IN DocumentRowsArray Do
-			QuantityToWriteOff = CurrentDocumentRow.Quantity * 
-									?(TypeOf(CurrentDocumentRow.MeasurementUnit) = Type("CatalogRef.UOMClassifier"), 1, CurrentDocumentRow.MeasurementUnit.Factor);
-			
-			RecalculateAmounts = QuantityInOrder <> QuantityToWriteOff;
-			DiscountRecalculationCoefficient = ?(RecalculateAmounts, QuantityToWriteOff / QuantityInOrder, 1);
-			If DiscountRecalculationCoefficient <> 1 Then
-				CurrentAutomaticDiscountAmount = ROUND(CurrentOrderRow.AutomaticDiscountAmount * DiscountRecalculationCoefficient,2);
-			Else
-				CurrentAutomaticDiscountAmount = CurrentOrderRow.AutomaticDiscountAmount;
-			EndIf;
-			
-			DiscountString = DiscountsMarkupsCalculationResult.Add();
-			FillPropertyValues(DiscountString, CurrentOrderRow);
-			DiscountString.Amount = CurrentAutomaticDiscountAmount;
-			DiscountString.ConnectionKey = CurrentDocumentRow.ConnectionKey;
-			
-			CurrentOrderRow.AutomaticDiscountAmount = CurrentOrderRow.AutomaticDiscountAmount - CurrentAutomaticDiscountAmount;
-			QuantityInOrder = QuantityInOrder - QuantityToWriteOff;
-			If QuantityInOrder <=0 Or CurrentOrderRow.AutomaticDiscountAmount <=0 Then
-				Break;
-			EndIf;
-		EndDo;
-		
-	EndDo;
-	
-	DiscountsMarkupsServer.ApplyDiscountCalculationResultToObject(Object, "Inventory", DiscountsMarkupsCalculationResult);
-	
-EndProcedure
-
-// Procedure calculates discounts by document.
-//
-&AtClient
-Procedure CalculateDiscountsMarkupsClient()
-	
-	ParameterStructure = New Structure;
-	ParameterStructure.Insert("ApplyToObject",                True);
-	ParameterStructure.Insert("OnlyPreliminaryCalculation",      False);
-	
-	If EquipmentManagerClient.RefreshClientWorkplace() Then // Checks if the operator's workplace is specified
-		Workplace = EquipmentManagerClientReUse.GetClientWorkplace();
-	Else
-		Workplace = ""
-	EndIf;
-	
-	ParameterStructure.Insert("Workplace", Workplace);
-	
-	CalculateDiscountsMarkupsOnServer(ParameterStructure);
-		
-EndProcedure
-
-// Function compares discount calculating data on current moment with data of the discount last calculation in document.
-// If discounts changed the function returns the value True.
-//
-&AtServer
-Function DiscountsChanged()
-	
-	ParameterStructure = New Structure;
-	ParameterStructure.Insert("ApplyToObject",                False);
-	ParameterStructure.Insert("OnlyPreliminaryCalculation",      False);
-	
-	AppliedDiscounts = DiscountsMarkupsServerOverridable.Calculate(Object, ParameterStructure);
-	
-	DiscountsChanged = False;
-	
-	LineCount = AppliedDiscounts.TableDiscountsMarkups.Count();
-	If LineCount <> Object.DiscountsMarkups.Count() Then
-		DiscountsChanged = True;
-	Else
-		
-		If Object.Inventory.Total("AutomaticDiscountAmount") <> Object.DiscountsMarkups.Total("Amount") Then
-			DiscountsChanged = True;
-		EndIf;
-		
-		If Not DiscountsChanged Then
-			For LineNumber = 1 To LineCount Do
-				If    Object.DiscountsMarkups[LineNumber-1].Amount <> AppliedDiscounts.TableDiscountsMarkups[LineNumber-1].Amount
-					OR Object.DiscountsMarkups[LineNumber-1].ConnectionKey <> AppliedDiscounts.TableDiscountsMarkups[LineNumber-1].ConnectionKey
-					OR Object.DiscountsMarkups[LineNumber-1].DiscountMarkup <> AppliedDiscounts.TableDiscountsMarkups[LineNumber-1].DiscountMarkup Then
-					DiscountsChanged = True;
-					Break;
-				EndIf;
-			EndDo;
-		EndIf;
-		
-	EndIf;
-	
-	If DiscountsChanged Then
-		AddressDiscountsAppliedInTemporaryStorage = PutToTempStorage(AppliedDiscounts, UUID);
-	EndIf;
-	
-	Return DiscountsChanged;
-	
-EndFunction
-
-&AtServer
-Function GetAutomaticDiscountCalculationParametersStructureServer()
-
-	OrderParametersStructure = New Structure("ImplementationByOrders, SalesExceedingOrder", False, False);
-	
-	If Not ValueIsFilled(Object.CustomerOrderPosition) Then
-		CustomerOrderPosition = SmallBusinessReUse.GetValueOfSetting("CustomerOrderPositionInShipmentDocuments");
-		If Not ValueIsFilled(CustomerOrderPosition) Then
-			CustomerOrderPosition = Enums.AttributePositionOnForm.InHeader;
-		EndIf;
-	Else
-		CustomerOrderPosition = Object.CustomerOrderPosition;
-	EndIf;
-	If CustomerOrderPosition = Enums.AttributePositionOnForm.InHeader Then
-		If ValueIsFilled(Object.Order) Then
-			OrderParametersStructure.ImplementationByOrders = True;
-		Else
-			OrderParametersStructure.ImplementationByOrders = False;
-		EndIf;
-		OrderParametersStructure.SalesExceedingOrder = False;
-	Else
-		Query = New Query;
-		Query.Text = 
-			"SELECT
-			|	CustomerInvoiceInventory.Order AS Order
-			|INTO TU_Inventory
-			|FROM
-			|	&Inventory AS CustomerInvoiceInventory
-			|;
-			|
-			|////////////////////////////////////////////////////////////////////////////////
-			|SELECT
-			|	TU_Inventory.Order AS Order
-			|FROM
-			|	TU_Inventory AS TU_Inventory
-			|
-			|GROUP BY
-			|	TU_Inventory.Order";
-		
-		Query.SetParameter("Inventory", Object.Inventory.Unload());
-		QueryResult = Query.Execute();
-		
-		Selection = QueryResult.Select();
-		
-		While Selection.Next() Do
-			If ValueIsFilled(Selection.Order) Then
-				OrderParametersStructure.ImplementationByOrders = True;
-			Else
-				OrderParametersStructure.SalesExceedingOrder = True;
-			EndIf;
-		EndDo;
-	EndIf;
-	
-	Return OrderParametersStructure;
-	
-EndFunction // ThereAreOrdersInTS()
-
-// Procedure calculates discounts by document.
-//
-&AtServer
-Procedure CalculateDiscountsMarkupsOnServer(ParameterStructure)
-	
-	OrderParametersStructure = GetAutomaticDiscountCalculationParametersStructureServer(); // If there are orders in TS "Goods", then for such rows the automatic discount shall be calculated by the order.
-	If OrderParametersStructure.ImplementationByOrders Then
-		CalculateMarkupsDiscountsForOrderServer();
-		If OrderParametersStructure.SalesExceedingOrder Then
-			ParameterStructure.Insert("SalesExceedingOrder", True);
-			AppliedDiscounts = DiscountsMarkupsServerOverridable.Calculate(Object, ParameterStructure);
-		Else
-			ParameterStructure.Insert("ApplyToObject", False);
-			AppliedDiscounts = DiscountsMarkupsServerOverridable.Calculate(Object, ParameterStructure);
-		EndIf;
-	Else
-		AppliedDiscounts = DiscountsMarkupsServerOverridable.Calculate(Object, ParameterStructure);
-	EndIf;
-	
-	AddressDiscountsAppliedInTemporaryStorage = PutToTempStorage(AppliedDiscounts, UUID);
-	
-	Modified = True;
-	
-	DiscountsMarkupsServerOverridable.UpdateDiscountDisplay(Object, "Inventory");
-	
-	If Not Object.DiscountsAreCalculated Then
-	
-		Object.DiscountsAreCalculated = True;
-	
-	EndIf;
-	
-	Items.InventoryCalculateDiscountsMarkups.Picture = PictureLib.Refresh;
-	
-	ThereAreManualDiscounts = Constants.FunctionalOptionUseDiscountsMarkups.Get();
-	For Each CurrentRow IN Object.Inventory Do
-		ManualDiscountCurAmount = ?(ThereAreManualDiscounts, CurrentRow.Price * CurrentRow.Quantity * CurrentRow.DiscountMarkupPercent / 100, 0);
-		CurAmountDiscounts = ManualDiscountCurAmount + CurrentRow.AutomaticDiscountAmount;
-		If CurAmountDiscounts >= CurrentRow.Amount AND CurrentRow.Price > 0 Then
-			CurrentRow.TotalDiscountAmountIsMoreThanAmount = True;
-		Else
-			CurrentRow.TotalDiscountAmountIsMoreThanAmount = False;
-		EndIf;
-	EndDo;
-
-EndProcedure
-
-// Procedure - command handler "OpenInformationAboutDiscounts".
-//
-&AtClient
-Procedure OpenInformationAboutDiscounts(Command)
-	
-	CurrentData = Items.Inventory.CurrentData;
-	
-	If CurrentData = Undefined Then
-		Return;
-	EndIf;
-	
-	OpenInformationAboutDiscountsClient()
-	
-EndProcedure
-
-// Procedure opens a common form for information analysis about discounts by current row.
-//
-&AtClient
-Procedure OpenInformationAboutDiscountsClient()
-	
-	ParameterStructure = New Structure;
-	ParameterStructure.Insert("ApplyToObject",                True);
-	ParameterStructure.Insert("OnlyPreliminaryCalculation",      False);
-	
-	ParameterStructure.Insert("OnlyMessagesAfterRegistration",   False);
-	
-	If EquipmentManagerClient.RefreshClientWorkplace() Then // Checks if the operator's workplace is specified
-		Workplace = EquipmentManagerClientReUse.GetClientWorkplace();
-	Else
-		Workplace = ""
-	EndIf;
-	
-	ParameterStructure.Insert("Workplace", Workplace);
-	
-	If Not Object.DiscountsAreCalculated Then
-		QuestionText = NStr("en='Discounts (markups) are not calculated, calculate?';ru='Скидки (наценки) не рассчитаны, рассчитать?'");
-		
-		AdditionalParameters = New Structure; 
-		AdditionalParameters.Insert("ParameterStructure", ParameterStructure);
-		NotificationHandler = New NotifyDescription("NotificationQueryCalculateDiscounts", ThisObject, AdditionalParameters);
-		ShowQueryBox(NotificationHandler, QuestionText, QuestionDialogMode.YesNo);
-	Else
-		CalculateDiscountsCompleteQuestionDataProcessor(ParameterStructure);
-	EndIf;
-	
-EndProcedure
-
-// End modeless window opening "ShowQuestion()". Procedure opens a common form for information analysis about discounts by current row.
-//
-&AtClient
-Procedure NotificationQueryCalculateDiscounts(QuestionResult, AdditionalParameters) Export
-	
-	If QuestionResult = DialogReturnCode.No Then
-		Return;
-	EndIf;
-	ParameterStructure = AdditionalParameters.ParameterStructure;
-	CalculateDiscountsMarkupsOnServer(ParameterStructure);
-	CalculateDiscountsCompleteQuestionDataProcessor(ParameterStructure);
-	
-EndProcedure
-
-// Procedure opens a common form for information analysis about discounts by current row after calculation of automatic discounts (if it was necessary).
-//
-&AtClient
-Procedure CalculateDiscountsCompleteQuestionDataProcessor(ParameterStructure)
-	
-	If Not ValueIsFilled(AddressDiscountsAppliedInTemporaryStorage) Then
-		CalculateDiscountsMarkupsClient();
-	EndIf;
-	
-	CurrentData = Items.Inventory.CurrentData;
-	MarkupsDiscountsClient.OpenFormAppliedDiscounts(CurrentData, Object, ThisObject);
-	
-EndProcedure
-
-// Procedure - event handler Table parts selection Inventory.
-//
-&AtClient
-Procedure InventorySelection(Item, SelectedRow, Field, StandardProcessing)
-	
-	If Item.CurrentItem = Items.InventoryAutomaticDiscountPercent
-		AND Not ReadOnly Then
-		
-		StandardProcessing = False;
-		OpenInformationAboutDiscountsClient()
-		
-	EndIf;
-	
-EndProcedure
-
-// Procedure - event handler OnStartEdit tabular section Inventory forms.
-//
-&AtClient
-Procedure InventoryOnStartEdit(Item, NewRow, Copy)
-	
-	// AutomaticDiscounts
-	If NewRow AND Copy Then
-		Item.CurrentData.AutomaticDiscountsPercent = 0;
-		Item.CurrentData.AutomaticDiscountAmount = 0;
-		CalculateAmountInTabularSectionLine();
-	EndIf;
-	// End AutomaticDiscounts
-	
-EndProcedure
-
-// Function clears checkbox "DiscountsAreCalculated" if it is necessary and returns True if it is required to recalculate discounts.
-//
-&AtServer
-Function ResetFlagDiscountsAreCalculatedServer(Action, SPColumn = "")
-	
-	RecalculationIsRequired = False;
-	If Object.OperationKind = OperationKindSaleToCustomer Then
-		If UseAutomaticDiscounts AND Object.Inventory.Count() > 0 AND (Object.DiscountsAreCalculated OR InstalledGrayColor) Then
-			RecalculationIsRequired = ResetFlagDiscountsAreCalculated(Action, SPColumn);
-		EndIf;
-	EndIf;
-	Return RecalculationIsRequired;
-	
-EndFunction
-
-// Function clears checkbox "DiscountsAreCalculated" if it is necessary and returns True if it is required to recalculate discounts.
-//
-&AtClient
-Function ClearCheckboxDiscountsAreCalculatedClient(Action, SPColumn = "")
-	
-	RecalculationIsRequired = False;
-	If Object.OperationKind = OperationKindSaleToCustomer Then
-		If UseAutomaticDiscounts AND Object.Inventory.Count() > 0 AND (Object.DiscountsAreCalculated OR InstalledGrayColor) Then
-			RecalculationIsRequired = ResetFlagDiscountsAreCalculated(Action, SPColumn);
-		EndIf;
-	EndIf;
-	Return RecalculationIsRequired;
-	
-EndFunction
-
-// Function clears checkbox DiscountsAreCalculated if it is necessary and returns True if it is required to recalculate discounts.
-//
-&AtServer
-Function ResetFlagDiscountsAreCalculated(Action, SPColumn = "")
-	
-	Return DiscountsMarkupsServer.ResetFlagDiscountsAreCalculated(ThisObject, Action, SPColumn);
-	
-EndFunction
-
-// Procedure executes necessary actions when creating the form on server.
-//
-&AtServer
-Procedure AutomaticDiscountsOnCreateAtServer()
-	
-	InstalledGrayColor = False;
-	UseAutomaticDiscounts = GetFunctionalOption("UseAutomaticDiscountsMarkups");
-	If UseAutomaticDiscounts Then
-		If Object.Inventory.Count() = 0 Then
-			Items.InventoryCalculateDiscountsMarkups.Picture = PictureLib.UpdateGray;
-			InstalledGrayColor = True;
-		ElsIf Not Object.DiscountsAreCalculated Then
-			Object.DiscountsAreCalculated = False;
-			Items.InventoryCalculateDiscountsMarkups.Picture = PictureLib.UpdateRed;
-		Else
-			Items.InventoryCalculateDiscountsMarkups.Picture = PictureLib.Refresh;
-		EndIf;
-	EndIf;
-	
-EndProcedure
-
-&AtClient
-Procedure InventoryAfterDeleteRow(Item)
-	
-	// AutomaticDiscounts.
-	ClearCheckboxDiscountsAreCalculatedClient("DeleteRow");
-	
-EndProcedure
-
-&AtClient
-Procedure InventoryOrderOnChange(Item)
-	
-	// AutomaticDiscounts
-	If ClearCheckboxDiscountsAreCalculatedClient("InventoryOrderOnChange") Then
-		CalculateAmountInTabularSectionLine(Undefined, False);
-	EndIf;
-	// End AutomaticDiscounts
-	
-EndProcedure
-
-#EndRegion
-
 
 //Rise { Aghabekyan 2017-02-11
 #Region CopyPasteRows

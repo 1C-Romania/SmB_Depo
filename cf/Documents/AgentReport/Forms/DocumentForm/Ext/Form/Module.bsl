@@ -121,7 +121,7 @@ Function GetCompanyDataOnChange()
 	
 	StructureData = New Structure();
 	
-	StructureData.Insert("Counterparty", SmallBusinessServer.GetCompany(Object.Company));
+	StructureData.Insert("Company", SmallBusinessServer.GetCompany(Object.Company));
 	StructureData.Insert("VATRate", Object.Company.DefaultVATRate);
 	
 	FillVATRateByCompanyVATTaxation();
@@ -461,7 +461,7 @@ Procedure ProcessChangesOnButtonPricesAndCurrencies(Val SettlementsCurrencyBefor
 	ParametersStructure.Insert("IncludeVATInPrice",Object.IncludeVATInPrice);
 	ParametersStructure.Insert("Counterparty",			Object.Counterparty);
 	ParametersStructure.Insert("Contract",				Object.Contract);
-	ParametersStructure.Insert("Company",			Counterparty);
+	ParametersStructure.Insert("Company",			Company);
 	ParametersStructure.Insert("DocumentDate",		Object.Date);
 	ParametersStructure.Insert("RefillPrices",	RefillPrices);
 	ParametersStructure.Insert("RecalculatePrices",		RecalculatePrices);
@@ -906,7 +906,7 @@ Procedure Pick(Command)
 	SelectionParameters	= New Structure;
 	
 	SelectionParameters.Insert("Period",					Object.Date);
-	SelectionParameters.Insert("Company",			Counterparty);
+	SelectionParameters.Insert("Company",			Company);
 	SelectionParameters.Insert("PriceKind",					Object.PriceKind);
 	SelectionParameters.Insert("Currency",					Object.DocumentCurrency);
 	SelectionParameters.Insert("AmountIncludesVAT",		Object.AmountIncludesVAT);
@@ -982,7 +982,7 @@ Procedure SelectionByBalances(Command)
 		|Contract,
 		|DocumentCurrency,
 		|DocumentDate",
-		Counterparty,
+		Company,
 		Object.Counterparty,
 		Object.Contract,
 		Object.DocumentCurrency,
@@ -1149,7 +1149,7 @@ Procedure OnCreateAtServer(Cancel, StandardProcessing)
 		DocumentDate = CurrentDate();
 	EndIf;
 	
-	Counterparty = SmallBusinessServer.GetCompany(Object.Company);
+	Company = SmallBusinessServer.GetCompany(Object.Company);
 	Counterparty = Object.Counterparty;
 	Contract = Object.Contract;
 	SettlementsCurrency = Object.Contract.SettlementsCurrency;
@@ -1179,7 +1179,7 @@ Procedure OnCreateAtServer(Cancel, StandardProcessing)
 	LabelStructure = New Structure("PriceKind, DocumentCurrency, SettlementsCurrency, ExchangeRate, RateNationalCurrency, AmountIncludesVAT, CurrencyTransactionsAccounting, VATTaxation", Object.PriceKind, Object.DocumentCurrency, SettlementsCurrency, Object.ExchangeRate, RateNationalCurrency, Object.AmountIncludesVAT, CurrencyTransactionsAccounting, Object.VATTaxation);
 	PricesAndCurrency = GenerateLabelPricesAndCurrency(LabelStructure);
 	
-	Object.VATCommissionFeePercent = SubsidiaryCompany.DefaultVATRate;
+	Object.VATCommissionFeePercent = Company.DefaultVATRate;
 	
 	
 	// Setting contract visible.
@@ -1428,7 +1428,7 @@ Procedure EditPrepaymentOffset(Command)
 		|Pick,
 		|IsOrder,
 		|OrderInHeader,
-		|SubsidiaryCompany,
+		|Company,
 		|Order,
 		|Date,
 		|Ref,
@@ -1442,7 +1442,7 @@ Procedure EditPrepaymentOffset(Command)
 		True, // Pick
 		True, // IsOrder
 		False, // OrderInHeader
-		Counterparty, // Counterparty
+		Company, // Company
 		?(CounterpartyDoSettlementsByOrders, OrdersArray, Undefined), // Order
 		Object.Date, // Date
 		Object.Ref, // Ref
@@ -1645,7 +1645,7 @@ Procedure CompanyOnChange(Item)
 	// Company change event data processor.
 	Object.Number = "";
 	StructureData = GetCompanyDataOnChange();
-	Counterparty = StructureData.Counterparty;
+	Company = StructureData.Company;
 	Object.VATCommissionFeePercent = StructureData.VATRate;
 	
 	LabelStructure = New Structure("PriceKind, DocumentCurrency, SettlementsCurrency, ExchangeRate, RateNationalCurrency, AmountIncludesVAT, CurrencyTransactionsAccounting, VATTaxation", Object.PriceKind, Object.DocumentCurrency, SettlementsCurrency, Object.ExchangeRate, RateNationalCurrency, Object.AmountIncludesVAT, CurrencyTransactionsAccounting, Object.VATTaxation);

@@ -139,7 +139,7 @@ Procedure ProcessChangesOnButtonPricesAndCurrencies(Val SettlementsCurrencyBefor
 	ParametersStructure.Insert("VATTaxation",	  Object.VATTaxation);
 	ParametersStructure.Insert("AmountIncludesVAT",	  Object.AmountIncludesVAT);
 	ParametersStructure.Insert("IncludeVATInPrice", Object.IncludeVATInPrice);
-	ParametersStructure.Insert("Company",			  Counterparty);
+	ParametersStructure.Insert("Company",			  Company);
 	ParametersStructure.Insert("DocumentDate",		  Object.Date);
 	ParametersStructure.Insert("RefillPrices",	  RefillPrices);
 	ParametersStructure.Insert("RecalculatePrices",		  RecalculatePrices);
@@ -233,7 +233,7 @@ Function GetCompanyDataOnChange()
 	
 	StructureData = New Structure();
 	
-	StructureData.Insert("Counterparty", SmallBusinessServer.GetCompany(Object.Company));
+	StructureData.Insert("Company", SmallBusinessServer.GetCompany(Object.Company));
 	
 	FillVATRateByCompanyVATTaxation();
 	
@@ -831,7 +831,7 @@ Procedure OnCreateAtServer(Cancel, StandardProcessing)
 		DocumentDate = CurrentDate();
 	EndIf;
 	
-	Counterparty = SmallBusinessServer.GetCompany(Object.Company);
+	Company = SmallBusinessServer.GetCompany(Object.Company);
 	
 	StructureByCurrencyDocument = InformationRegisters.CurrencyRates.GetLast(Object.Date, New Structure("Currency", Object.DocumentCurrency));
 	
@@ -974,7 +974,7 @@ Procedure PrepaymentSetoffExecute(Command)
 		|Pick,
 		|IsOrder,
 		|OrderInHeader,
-		|SubsidiaryCompany,
+		|Company,
 		|Date,
 		|Ref,
 		|Counterparty,
@@ -987,7 +987,7 @@ Procedure PrepaymentSetoffExecute(Command)
 		True, // Pick
 		False, // IsOrder
 		False, // OrderInHeader
-		Counterparty, // Counterparty
+		Company, // Company
 		Object.Date, // Date
 		Object.Ref, // Ref
 		Object.Counterparty, // Counterparty
@@ -1063,7 +1063,7 @@ Procedure CompanyOnChange(Item)
 	// Company change event data processor.
 	Object.Number = "";
 	StructureData = GetCompanyDataOnChange();
-	Counterparty = StructureData.Counterparty;
+	Company = StructureData.Company;
 	
 	LabelStructure = New Structure("DocumentCurrency, SettlementsCurrency, ExchangeRate, RateNationalCurrency, AmountIncludesVAT, CurrencyTransactionsAccounting, VATTaxation", Object.DocumentCurrency, SettlementsCurrency, Object.ExchangeRate, RateNationalCurrency, Object.AmountIncludesVAT, CurrencyTransactionsAccounting, Object.VATTaxation);
 	PricesAndCurrency = GenerateLabelPricesAndCurrency(LabelStructure);
@@ -1259,7 +1259,7 @@ Procedure CalculateEnd(Result, AdditionalParameters) Export
     EndIf;
     
     AddressFixedAssetsInStorage = PlaceFixedAssetsToStorage();
-    CalculateDepreciation(AddressFixedAssetsInStorage, Object.Date, Counterparty);
+    CalculateDepreciation(AddressFixedAssetsInStorage, Object.Date, Company);
     GetFixedAssetsFromStorage(AddressFixedAssetsInStorage);
 
 EndProcedure // Calculate()

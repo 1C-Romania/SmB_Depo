@@ -71,18 +71,18 @@ EndProcedure // CalculateAmountsTotal()
 &AtServer
 Procedure OnCreateAtServer(Cancel, StandardProcessing)
 	
-	SubsidiaryCompany= Parameters.SubsidiaryCompany;
-	Counterparty = Parameters.Counterparty;
-	Contract = Parameters.Contract;
-	ExchangeRate = Parameters.ExchangeRate;
-	Multiplicity = Parameters.Multiplicity;
-	DocumentCurrency = Parameters.DocumentCurrency;
-	SettlementsCurrency = Parameters.Contract.SettlementsCurrency;
-	IsOrder = Parameters.IsOrder;
-	OrderInHeader = Parameters.OrderInHeader;
-	Ref = Parameters.Ref;
-	Date = Parameters.Date;
-	DocumentAmount = Parameters.DocumentAmount;
+	Company				= Parameters.Company;
+	Counterparty		= Parameters.Counterparty;
+	Contract			= Parameters.Contract;
+	ExchangeRate		= Parameters.ExchangeRate;
+	Multiplicity		= Parameters.Multiplicity;
+	DocumentCurrency	= Parameters.DocumentCurrency;
+	SettlementsCurrency	= Parameters.Contract.SettlementsCurrency;
+	IsOrder				= Parameters.IsOrder;
+	OrderInHeader		= Parameters.OrderInHeader;
+	Ref					= Parameters.Ref;
+	Date				= Parameters.Date;
+	DocumentAmount		= Parameters.DocumentAmount;
 	CurrencyTransactionsAccounting = Constants.FunctionalCurrencyTransactionsAccounting.Get();
 	AddressPrepaymentInStorage = Parameters.AddressPrepaymentInStorage;
 	ThisSelection = Parameters.Pick;
@@ -691,7 +691,7 @@ Procedure FillPrepayment()
 		Query.SetParameter("OrdersArray", OrdersList.Unload().UnloadColumn("Order"));
 	EndIf;
 	
-	Query.SetParameter("Company", Counterparty);
+	Query.SetParameter("Company", Company);
 	Query.SetParameter("Counterparty", Counterparty);
 	Query.SetParameter("Contract", Contract);
 	Query.SetParameter("Period", Date);
@@ -923,7 +923,7 @@ Procedure FillAdvances()
 	
 	Query.Text = QueryText;
 	
-	Query.SetParameter("Company", Counterparty);
+	Query.SetParameter("Company", Company);
 	Query.SetParameter("Counterparty", Counterparty);
 	Query.SetParameter("Contract", Contract);
 	Query.SetParameter("Period", Date);

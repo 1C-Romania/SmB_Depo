@@ -152,7 +152,7 @@ EndFunction // GetDataDateOnChange()
 Function GetCompanyDataOnChange()
 	
 	StructureData = New Structure();
-	StructureData.Insert("Counterparty", SmallBusinessServer.GetCompany(Object.Company));
+	StructureData.Insert("Company", SmallBusinessServer.GetCompany(Object.Company));
 	
 	FillVATRateByCompanyVATTaxation();
 	
@@ -525,7 +525,7 @@ Procedure ProcessChangesOnButtonPricesAndCurrencies(Val SettlementsCurrencyBefor
 	ParametersStructure.Insert("IncludeVATInPrice", Object.IncludeVATInPrice);
 	ParametersStructure.Insert("Counterparty",			  Object.Counterparty);
 	ParametersStructure.Insert("Contract",				  Object.Contract);
-	ParametersStructure.Insert("Company",			  Counterparty);
+	ParametersStructure.Insert("Company",			  Company);
 	ParametersStructure.Insert("DocumentDate",		  Object.Date);
 	ParametersStructure.Insert("RefillPrices",	  RefillPrices);
 	ParametersStructure.Insert("RecalculatePrices",		  RecalculatePrices);
@@ -1008,7 +1008,7 @@ Procedure InventoryPick(Command)
 	SelectionParameters = New Structure;
 	
 	SelectionParameters.Insert("Period", 				Object.Date);
-	SelectionParameters.Insert("Company", 			Counterparty);
+	SelectionParameters.Insert("Company", 			Company);
 	SelectionParameters.Insert("StructuralUnit", 	Object.StructuralUnit);
 	SelectionParameters.Insert("PriceKind",					Object.PriceKind);
 	SelectionParameters.Insert("Currency",					Object.DocumentCurrency);
@@ -1063,7 +1063,7 @@ Procedure DisposalsPick(Command)
 	SelectionParameters = New Structure;
 	
 	SelectionParameters.Insert("Period", 				Object.Date);
-	SelectionParameters.Insert("Company", 			Counterparty);
+	SelectionParameters.Insert("Company", 			Company);
 	SelectionParameters.Insert("StructuralUnit", 	Object.StructuralUnit);
 	
 	SelectionParameters.Insert("ThisIsReceiptDocument",	True);
@@ -1253,7 +1253,7 @@ Procedure OnCreateAtServer(Cancel, StandardProcessing)
 		DocumentDate = CurrentDate();
 	EndIf;
 	
-	Counterparty = SmallBusinessServer.GetCompany(Object.Company);
+	Company = SmallBusinessServer.GetCompany(Object.Company);
 	Counterparty = Object.Counterparty;
 	Contract = Object.Contract;
 	Order = Object.BasisDocument;
@@ -1603,7 +1603,7 @@ Procedure CompanyOnChange(Item)
 	// Company change event data processor.
 	Object.Number = "";
 	StructureData = GetCompanyDataOnChange();
-	Counterparty = StructureData.Counterparty;
+	Company = StructureData.Company;
 	
 	LabelStructure = New Structure("PriceKind, DocumentCurrency, SettlementsCurrency, ExchangeRate, RateNationalCurrency, AmountIncludesVAT, CurrencyTransactionsAccounting, VATTaxation", Object.PriceKind, Object.DocumentCurrency, SettlementsCurrency, Object.ExchangeRate, RateNationalCurrency, Object.AmountIncludesVAT, CurrencyTransactionsAccounting, Object.VATTaxation);
 	PricesAndCurrency = GenerateLabelPricesAndCurrency(LabelStructure);
@@ -2158,7 +2158,7 @@ Procedure EditPrepaymentOffset(Command)
 		True, // Pick
 		False, // IsOrder
 		True, // OrderInHeader
-		Counterparty, // Counterparty
+		Company, // Company
 		?(CounterpartyDoSettlementsByOrders, Object.BasisDocument, Undefined), // Order
 		Object.Date, // Date
 		Object.Ref, // Ref

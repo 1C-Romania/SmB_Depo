@@ -1,7 +1,4 @@
-﻿&AtClient
-Var UpdateSubordinatedInvoice;
-
-////////////////////////////////////////////////////////////////////////////////
+﻿////////////////////////////////////////////////////////////////////////////////
 // GENERAL PURPOSE PROCEDURES AND FUNCTIONS
 
 &AtServer
@@ -84,7 +81,7 @@ Function GetCompanyDataOnChange()
 	
 	StructureData = New Structure;
 	
-	StructureData.Insert("Counterparty", SmallBusinessServer.GetCompany(Object.Company));
+	StructureData.Insert("Company", SmallBusinessServer.GetCompany(Object.Company));
 	
 	FillVATRateByCompanyVATTaxation();
 	
@@ -471,7 +468,7 @@ Procedure ProcessChangesOnButtonPricesAndCurrencies(Val SettlementsCurrencyBefor
 	ParametersStructure.Insert("IncludeVATInPrice", Object.IncludeVATInPrice);
 	ParametersStructure.Insert("Counterparty",			  Object.Counterparty);
 	ParametersStructure.Insert("Contract",				  Object.Contract);
-	ParametersStructure.Insert("Company",			  Counterparty);
+	ParametersStructure.Insert("Company",			  Company);
 	ParametersStructure.Insert("DocumentDate",		  Object.Date);
 	ParametersStructure.Insert("RefillPrices",	  RefillPrices);
 	ParametersStructure.Insert("RecalculatePrices",		  RecalculatePrices);
@@ -989,7 +986,7 @@ Procedure Pick(Command)
 	SelectionParameters = New Structure;
 	
 	SelectionParameters.Insert("Period",					Object.Date);
-	SelectionParameters.Insert("Company",			Counterparty);
+	SelectionParameters.Insert("Company",			Company);
 	SelectionParameters.Insert("PriceKind",					Object.PriceKind);
 	SelectionParameters.Insert("DiscountMarkupKind",		Object.DiscountMarkupKind);
 	SelectionParameters.Insert("DiscountPercentByDiscountCard", Object.DiscountPercentByDiscountCard);
@@ -1107,7 +1104,7 @@ Procedure OnCreateAtServer(Cancel, StandardProcessing)
 		DocumentDate = CurrentDate();
 	EndIf;
 	
-	Counterparty = SmallBusinessServer.GetCompany(Object.Company);
+	Company = SmallBusinessServer.GetCompany(Object.Company);
 	Counterparty = Object.Counterparty;
 	Contract = Object.Contract;
 	Order = Object.CustomerOrder;
@@ -1214,8 +1211,6 @@ Procedure BeforeWrite(Cancel, WriteParameters)
 		EndIf;
 	EndIf;
 	// End AutomaticDiscounts
-	
-	UpdateSubordinatedInvoice = Modified;
 	
 EndProcedure
 
@@ -1454,7 +1449,7 @@ Procedure EditPrepaymentOffset(Command)
 		|Pick,
 		|IsOrder,
 		|OrderInHeader,
-		|SubsidiaryCompany,
+		|Company,
 		|Order,
 		|Date,
 		|Ref,
@@ -1468,7 +1463,7 @@ Procedure EditPrepaymentOffset(Command)
 		True, // Pick
 		True, // IsOrder
 		OrderInHeader, // OrderInHeader
-		Counterparty, // Counterparty
+		Company, // Company
 		?(CounterpartyDoSettlementsByOrders, ?(OrderInHeader, Object.CustomerOrder, OrdersArray), Undefined), // Order
 		Object.Date, // Date
 		Object.Ref, // Ref
@@ -1583,7 +1578,7 @@ Procedure CompanyOnChange(Item)
 	// Company change event data processor.
 	Object.Number = "";
 	StructureData = GetCompanyDataOnChange();
-	Counterparty = StructureData.Counterparty;
+	Company = StructureData.Company;
 	
 	Object.Contract = GetContractByDefault(Object.Ref, Object.Counterparty, Object.Company);
 	ProcessContractChange();

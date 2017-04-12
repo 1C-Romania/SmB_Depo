@@ -362,16 +362,6 @@
 								<InputField name="Date" id="82">
 									<DataPath>Object.Date</DataPath>
 									<SkipOnInput>true</SkipOnInput>
-									<Title>
-										<v8:item>
-											<v8:lang>en</v8:lang>
-											<v8:content>dated</v8:content>
-										</v8:item>
-										<v8:item>
-											<v8:lang>ru</v8:lang>
-											<v8:content>от</v8:content>
-										</v8:item>
-									</Title>
 									<Width>15</Width>
 									<HorizontalStretch>false</HorizontalStretch>
 									<Wrap>false</Wrap>
@@ -1008,6 +998,9 @@
 									<Width>20</Width>
 									<ContextMenu name="PrepaymentDocumentContextMenu" id="266"/>
 									<ExtendedTooltip name="PrepaymentDocumentExtendedTooltip" id="267"/>
+									<Events>
+										<Event name="OnChange">PrepaymentDocumentOnChange</Event>
+									</Events>
 								</InputField>
 								<InputField name="PrepaymentOrder" id="268">
 									<DataPath>Object.Prepayment.Order</DataPath>
@@ -1022,6 +1015,9 @@
 									<Width>13</Width>
 									<ContextMenu name="PrepaymentSettlementsAmountContextMenu" id="272"/>
 									<ExtendedTooltip name="PrepaymentSettlementsAmountExtendedTooltip" id="273"/>
+									<Events>
+										<Event name="OnChange">PrepaymentSettlementsAmountOnChange</Event>
+									</Events>
 								</InputField>
 								<InputField name="PrepaymentExchangeRate" id="274">
 									<DataPath>Object.Prepayment.ExchangeRate</DataPath>
@@ -1029,18 +1025,27 @@
 									<Width>6</Width>
 									<ContextMenu name="PrepaymentRateContextMenu" id="275"/>
 									<ExtendedTooltip name="PrepaymentExchangeRateExtendedTooltip" id="276"/>
+									<Events>
+										<Event name="OnChange">PrepaymentExchangeRateOnChange</Event>
+									</Events>
 								</InputField>
 								<InputField name="PrepaymentMultiplicity" id="277">
 									<DataPath>Object.Prepayment.Multiplicity</DataPath>
 									<EditMode>EnterOnInput</EditMode>
 									<ContextMenu name="PrepaymentMultiplicityContextMenu" id="278"/>
 									<ExtendedTooltip name="PrepaymentMultiplicityExtendedTooltip" id="279"/>
+									<Events>
+										<Event name="OnChange">PrepaymentMultiplicityOnChange</Event>
+									</Events>
 								</InputField>
 								<InputField name="PrepaymentPaymentAmount" id="280">
 									<DataPath>Object.Prepayment.PaymentAmount</DataPath>
 									<EditMode>EnterOnInput</EditMode>
 									<ContextMenu name="PrepaymentPaymentAmountContextMenu" id="281"/>
 									<ExtendedTooltip name="PrepaymentPaymentAmountExtendedTooltip" id="282"/>
+									<Events>
+										<Event name="OnChange">PrepaymentPaymentAmountOnChange</Event>
+									</Events>
 								</InputField>
 							</ChildItems>
 						</Table>
@@ -1576,15 +1581,15 @@
 				</v8:DateQualifiers>
 			</Type>
 		</Attribute>
-		<Attribute name="SubsidiaryCompany" id="5">
+		<Attribute name="Company" id="5">
 			<Title>
 				<v8:item>
 					<v8:lang>en</v8:lang>
-					<v8:content>SubsidiaryCompany</v8:content>
+					<v8:content>Company</v8:content>
 				</v8:item>
 				<v8:item>
 					<v8:lang>ru</v8:lang>
-					<v8:content>Компания</v8:content>
+					<v8:content>Организация</v8:content>
 				</v8:item>
 			</Title>
 			<Type>
@@ -1615,7 +1620,7 @@
 				</v8:item>
 				<v8:item>
 					<v8:lang>ru</v8:lang>
-					<v8:content>Контакт</v8:content>
+					<v8:content>Договор</v8:content>
 				</v8:item>
 			</Title>
 			<Type>
@@ -1645,14 +1650,14 @@
 				</v8:item>
 				<v8:item>
 					<v8:lang>ru</v8:lang>
-					<v8:content>Контрагенты</v8:content>
+					<v8:content>Контрагент</v8:content>
 				</v8:item>
 			</Title>
 			<Type>
 				<v8:Type>cfg:CatalogRef.Counterparties</v8:Type>
 			</Type>
 		</Attribute>
-		<Attribute name="RepetitionNationalCurrency" id="13">
+		<Attribute name="MultiplicityNationalCurrency" id="13">
 			<Title>
 				<v8:item>
 					<v8:lang>en</v8:lang>
@@ -1672,7 +1677,7 @@
 				</v8:NumberQualifiers>
 			</Type>
 		</Attribute>
-		<Attribute name="RateNationalCurrency" id="14">
+		<Attribute name="ExchangeRateNationalCurrency" id="14">
 			<Title>
 				<v8:item>
 					<v8:lang>en</v8:lang>
@@ -1707,11 +1712,11 @@
 				<v8:Type>cfg:CatalogRef.Currencies</v8:Type>
 			</Type>
 		</Attribute>
-		<Attribute name="SettlementsCurrency" id="16">
+		<Attribute name="SettlementCurrency" id="16">
 			<Title>
 				<v8:item>
 					<v8:lang>en</v8:lang>
-					<v8:content>Settlements currency</v8:content>
+					<v8:content>Settlement currency</v8:content>
 				</v8:item>
 				<v8:item>
 					<v8:lang>ru</v8:lang>
