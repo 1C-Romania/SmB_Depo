@@ -62,7 +62,7 @@ Function GetAvailableFilterRules() Export
 	NewRule.Presentation = Metadata.Catalogs.Counterparties.Attributes.LegalEntityIndividual.Synonym;
 	NewRule.IsFolder = False;
 	NewRule.MultipleUse = False;
-	NewRule.ValueProperties.Insert("TypeRestriction", New TypeDescription("EnumRef.LegalEntityIndividual"));
+	NewRule.ValueProperties.Insert("TypeRestriction", New TypeDescription("EnumRef.CounterpartyKinds"));
 	NewRule.ValueProperties.Insert("ChoiceFoldersAndItems", FoldersAndItems.Auto);
 	AddComparisonTypes(NewRule, "Equal");
 	
