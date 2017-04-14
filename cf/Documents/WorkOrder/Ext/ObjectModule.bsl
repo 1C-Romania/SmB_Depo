@@ -32,9 +32,9 @@ Procedure Filling(FillingData, StandardProcessing) Export
 	If TypeOf(FillingData) = Type("DocumentRef.Event") Then
 	
 		Event = FillingData.Ref;
-		If FillingData.Parties.Count() > 0 Then
+		If FillingData.Participants.Count() > 0 Then
 			NewRow = Works.Add();
-			NewRow.Customer = FillingData.Parties[0].Contact;
+			NewRow.Customer = FillingData.Participants[0].Contact;
 		EndIf;
 		
 	ElsIf TypeOf(FillingData) = Type("DocumentRef.CustomerOrder")

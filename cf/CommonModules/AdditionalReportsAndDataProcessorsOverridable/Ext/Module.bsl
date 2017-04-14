@@ -21,6 +21,7 @@
 //
 Procedure GetSectionsWithAdditionalInformationProcessors(Sections) Export
 	
+	Sections.Add(Metadata.Subsystems.CRM);
 	Sections.Add(Metadata.Subsystems.MarketingAndSales);
 	Sections.Add(Metadata.Subsystems.InventoryAndPurchasing);
 	Sections.Add(Metadata.Subsystems.Services);
@@ -49,6 +50,7 @@ EndProcedure
 //
 Procedure GetSectionsWithAdditionalReports(Sections) Export
 	
+	Sections.Add(Metadata.Subsystems.CRM);
 	Sections.Add(Metadata.Subsystems.MarketingAndSales);
 	Sections.Add(Metadata.Subsystems.InventoryAndPurchasing);
 	Sections.Add(Metadata.Subsystems.Services);

@@ -2,8 +2,8 @@
 &AtServer
 Procedure GetFillParameters(FillStructure, CommandParameter)
 	
-	If CommandParameter.Parties.Count() > 0 AND TypeOf(CommandParameter.Parties[0].Contact) = Type("CatalogRef.Counterparties") Then
-		FillStructure.Insert("Counterparty", CommandParameter.Parties[0].Contact);
+	If CommandParameter.Participants.Count() > 0 AND TypeOf(CommandParameter.Participants[0].Contact) = Type("CatalogRef.Counterparties") Then
+		FillStructure.Insert("Counterparty", CommandParameter.Participants[0].Contact);
 		FillStructure.Insert("Contract", FillStructure.Counterparty.ContractByDefault);
 	EndIf;
 	FillStructure.Insert("OperationKind", Enums.OperationKindsCustomerOrder.JobOrder);

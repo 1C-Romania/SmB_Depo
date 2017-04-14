@@ -783,7 +783,7 @@ Procedure RenameEventFieldsCounterparty(RenamedFields)
 	"SELECT TOP 1
 	|	EventParticipants.Contact AS Counterparty
 	|FROM
-	|	Document.Event.Parties AS EventParticipants
+	|	Document.Event.Participants AS EventParticipants
 	|WHERE
 	|	EventParticipants.Contact REFS Catalog.Counterparties
 	|	AND EventParticipants.Ref = &Ref");

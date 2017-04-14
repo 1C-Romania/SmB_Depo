@@ -905,11 +905,18 @@ EndFunction
 //   Arbitrary - Value of the structure property. DefaultValue if the structure does not contain the specified property.
 //
 Function StructureProperty(Structure, Key, DefaultValue = Undefined) Export
-	If Structure.Property(Key) Then
-		Return Structure[Key];
+	
+	If Structure = Undefined Then
+		Return Undefined;
+	EndIf;
+	
+	Result = DefaultValue;
+	If Structure.Property(Key, Result) Then
+		Return Result;
 	Else
 		Return DefaultValue;
 	EndIf;
+	
 EndFunction
 
 // Returns COM-class name for work with 1C:Enterprise 8 via COM-connection.

@@ -3,8 +3,8 @@
 Procedure CommandProcessing(CommandParameter, CommandExecuteParameters)
 	
 	FormParameters = New Structure;
-	FormParameters.Insert("EventType", PredefinedValue("Enum.EventTypes.PrivateMeeting"));
-	FormParameters.Insert("PurposeUseKey", "PrivateMeetings");
+	FormParameters.Insert("EventType", PredefinedValue("Enum.EventTypes.PersonalMeeting"));
+	FormParameters.Insert("PurposeUseKey", "PersonalMeetings");
 	
 	OpenForm("Document.Event.ListForm",
 		FormParameters,

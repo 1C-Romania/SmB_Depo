@@ -35,21 +35,6 @@
 						<DataPath>Object.Ref</DataPath>
 						<ExtendedTooltip name="FormCommonCommandRemindExtendedTooltip" id="293"/>
 					</Button>
-					<Button name="FormSendEmailToCounterparty" id="72">
-						<Type>CommandBarButton</Type>
-						<CommandName>Form.Command.SendEmailToCounterparty</CommandName>
-						<Title>
-							<v8:item>
-								<v8:lang>en</v8:lang>
-								<v8:content>Send email</v8:content>
-							</v8:item>
-							<v8:item>
-								<v8:lang>ru</v8:lang>
-								<v8:content>Отправить email</v8:content>
-							</v8:item>
-						</Title>
-						<ExtendedTooltip name="FormSendByEmailToCounterpartyExtendedTooltip" id="91"/>
-					</Button>
 				</ChildItems>
 			</ButtonGroup>
 			<ButtonGroup name="GroupGlobalCommands" id="278">
@@ -324,140 +309,198 @@
 							<ContextMenu name="StateContextMenu" id="156"/>
 							<ExtendedTooltip name="StatusExtendedTooltip" id="157"/>
 						</InputField>
-						<UsualGroup name="Begin" id="158">
+						<UsualGroup name="Period" id="297">
 							<Title>
 								<v8:item>
 									<v8:lang>en</v8:lang>
-									<v8:content>Begin</v8:content>
+									<v8:content>Period</v8:content>
 								</v8:item>
 								<v8:item>
 									<v8:lang>ru</v8:lang>
-									<v8:content>Начало</v8:content>
+									<v8:content>Период</v8:content>
 								</v8:item>
 							</Title>
-							<ToolTip>
-								<v8:item>
-									<v8:lang>en</v8:lang>
-									<v8:content>Begin</v8:content>
-								</v8:item>
-								<v8:item>
-									<v8:lang>ru</v8:lang>
-									<v8:content>Начало</v8:content>
-								</v8:item>
-							</ToolTip>
 							<Group>Horizontal</Group>
 							<Representation>None</Representation>
 							<ShowTitle>false</ShowTitle>
-							<ExtendedTooltip name="BeginExtendedTooltip" id="159"/>
+							<ExtendedTooltip name="PeriodExtendedTooltip" id="298"/>
 							<ChildItems>
-								<InputField name="EventBeginTime" id="160">
-									<DataPath>Object.EventBegin</DataPath>
-									<SkipOnInput>true</SkipOnInput>
-									<Width>8</Width>
-									<HorizontalStretch>false</HorizontalStretch>
-									<DropListButton>true</DropListButton>
-									<ChoiceButton>false</ChoiceButton>
-									<EditFormat>
+								<UsualGroup name="PeriodDate" id="299">
+									<Title>
 										<v8:item>
 											<v8:lang>en</v8:lang>
-											<v8:content>DF=HH:mm</v8:content>
+											<v8:content>Period date</v8:content>
 										</v8:item>
 										<v8:item>
 											<v8:lang>ru</v8:lang>
-											<v8:content>ДФ=HH:mm</v8:content>
+											<v8:content>Период дата</v8:content>
 										</v8:item>
-									</EditFormat>
-									<ContextMenu name="EventBeginEndTimeContextMenu" id="161"/>
-									<ExtendedTooltip name="EventBeginTimeExtendedTooltip" id="162"/>
-								</InputField>
-								<InputField name="EventBeginDate" id="163">
-									<DataPath>Object.EventBegin</DataPath>
-									<TitleLocation>None</TitleLocation>
-									<HorizontalStretch>true</HorizontalStretch>
-									<EditFormat>
+									</Title>
+									<Group>Vertical</Group>
+									<Representation>None</Representation>
+									<ShowTitle>false</ShowTitle>
+									<ExtendedTooltip name="PeriodDateExtendedTooltip" id="300"/>
+									<ChildItems>
+										<InputField name="EventBeginDate" id="163">
+											<DataPath>Object.EventBegin</DataPath>
+											<Title>
+												<v8:item>
+													<v8:lang>en</v8:lang>
+													<v8:content>Begin</v8:content>
+												</v8:item>
+												<v8:item>
+													<v8:lang>ru</v8:lang>
+													<v8:content>Начало</v8:content>
+												</v8:item>
+											</Title>
+											<Width>11</Width>
+											<HorizontalStretch>false</HorizontalStretch>
+											<SpinButton>true</SpinButton>
+											<EditFormat>
+												<v8:item>
+													<v8:lang>en</v8:lang>
+													<v8:content>DF=dd.MM.yyyy</v8:content>
+												</v8:item>
+												<v8:item>
+													<v8:lang>ru</v8:lang>
+													<v8:content>DF=MM/dd/yyyy</v8:content>
+												</v8:item>
+											</EditFormat>
+											<ContextMenu name="EventBeginDateContextMenu" id="164"/>
+											<ExtendedTooltip name="EventBeginDateExtendedTooltip" id="165"/>
+											<Events>
+												<Event name="OnChange">EventBeginDateOnChange</Event>
+											</Events>
+										</InputField>
+										<InputField name="EventEndingDate" id="171">
+											<DataPath>Object.EventEnding</DataPath>
+											<Title>
+												<v8:item>
+													<v8:lang>en</v8:lang>
+													<v8:content>End</v8:content>
+												</v8:item>
+												<v8:item>
+													<v8:lang>ru</v8:lang>
+													<v8:content>Окончание</v8:content>
+												</v8:item>
+											</Title>
+											<Width>11</Width>
+											<HorizontalStretch>false</HorizontalStretch>
+											<SpinButton>true</SpinButton>
+											<EditFormat>
+												<v8:item>
+													<v8:lang>en</v8:lang>
+													<v8:content>DF=dd.MM.yyyy</v8:content>
+												</v8:item>
+												<v8:item>
+													<v8:lang>ru</v8:lang>
+													<v8:content>DF=MM/dd/yyyy</v8:content>
+												</v8:item>
+											</EditFormat>
+											<ContextMenu name="EventEndingDateContextMenu" id="172"/>
+											<ExtendedTooltip name="EventEndingDateExtendedTooltip" id="173"/>
+											<Events>
+												<Event name="OnChange">EventEndDateOnChange</Event>
+											</Events>
+										</InputField>
+									</ChildItems>
+								</UsualGroup>
+								<UsualGroup name="PeriodTime" id="301">
+									<Title>
 										<v8:item>
 											<v8:lang>en</v8:lang>
-											<v8:content>DF=MM/dd/yyyy</v8:content>
+											<v8:content>Period time</v8:content>
 										</v8:item>
 										<v8:item>
 											<v8:lang>ru</v8:lang>
-											<v8:content>DF=MM/dd/yyyy</v8:content>
+											<v8:content>Период время</v8:content>
 										</v8:item>
-									</EditFormat>
-									<ContextMenu name="EventBeginDateContextMenu" id="164"/>
-									<ExtendedTooltip name="EventBeginDateExtendedTooltip" id="165"/>
-									<Events>
-										<Event name="OnChange">EventBeginDateOnChange</Event>
-									</Events>
-								</InputField>
-							</ChildItems>
-						</UsualGroup>
-						<UsualGroup name="End" id="166">
-							<Title>
-								<v8:item>
-									<v8:lang>en</v8:lang>
-									<v8:content>End</v8:content>
-								</v8:item>
-								<v8:item>
-									<v8:lang>ru</v8:lang>
-									<v8:content>Окончание</v8:content>
-								</v8:item>
-							</Title>
-							<ToolTip>
-								<v8:item>
-									<v8:lang>en</v8:lang>
-									<v8:content>Begin</v8:content>
-								</v8:item>
-								<v8:item>
-									<v8:lang>ru</v8:lang>
-									<v8:content>Начало</v8:content>
-								</v8:item>
-							</ToolTip>
-							<Group>Horizontal</Group>
-							<Representation>None</Representation>
-							<ShowTitle>false</ShowTitle>
-							<ExtendedTooltip name="EndingExtendedTooltip" id="167"/>
-							<ChildItems>
-								<InputField name="EventEndTime" id="168">
-									<DataPath>Object.EventEnding</DataPath>
-									<SkipOnInput>true</SkipOnInput>
-									<Width>8</Width>
-									<HorizontalStretch>false</HorizontalStretch>
-									<DropListButton>true</DropListButton>
-									<ChoiceButton>false</ChoiceButton>
-									<EditFormat>
+									</Title>
+									<Group>Vertical</Group>
+									<Representation>None</Representation>
+									<ShowTitle>false</ShowTitle>
+									<ExtendedTooltip name="PeriodTimeExtendedTooltip" id="302"/>
+									<ChildItems>
+										<InputField name="EventBeginTime" id="160">
+											<DataPath>Object.EventBegin</DataPath>
+											<SkipOnInput>true</SkipOnInput>
+											<TitleLocation>None</TitleLocation>
+											<Width>8</Width>
+											<HorizontalStretch>false</HorizontalStretch>
+											<DropListButton>true</DropListButton>
+											<ChoiceButton>false</ChoiceButton>
+											<SpinButton>true</SpinButton>
+											<EditFormat>
+												<v8:item>
+													<v8:lang>en</v8:lang>
+													<v8:content>DF=HH:mm</v8:content>
+												</v8:item>
+												<v8:item>
+													<v8:lang>ru</v8:lang>
+													<v8:content>ДФ=HH:mm</v8:content>
+												</v8:item>
+											</EditFormat>
+											<ContextMenu name="EventBeginEndTimeContextMenu" id="161"/>
+											<ExtendedTooltip name="EventBeginTimeExtendedTooltip" id="162"/>
+											<Events>
+												<Event name="OnChange">EventBeginTimeOnChange</Event>
+												<Event name="ChoiceProcessing">EventBeginTimeChoiceProcessing</Event>
+											</Events>
+										</InputField>
+										<InputField name="EventEndTime" id="168">
+											<DataPath>Object.EventEnding</DataPath>
+											<SkipOnInput>true</SkipOnInput>
+											<TitleLocation>None</TitleLocation>
+											<Width>8</Width>
+											<HorizontalStretch>false</HorizontalStretch>
+											<DropListButton>true</DropListButton>
+											<ChoiceButton>false</ChoiceButton>
+											<SpinButton>true</SpinButton>
+											<EditFormat>
+												<v8:item>
+													<v8:lang>en</v8:lang>
+													<v8:content>DF=HH:mm</v8:content>
+												</v8:item>
+												<v8:item>
+													<v8:lang>ru</v8:lang>
+													<v8:content>ДФ=HH:mm</v8:content>
+												</v8:item>
+											</EditFormat>
+											<ContextMenu name="EventEndingEndTimeContextMenu" id="169"/>
+											<ExtendedTooltip name="EventEndTimeExtendedTooltip" id="170"/>
+											<Events>
+												<Event name="OnChange">EventEndTimeOnChange</Event>
+												<Event name="ChoiceProcessing">EventEndTimeChoiceProcessing</Event>
+											</Events>
+										</InputField>
+									</ChildItems>
+								</UsualGroup>
+								<UsualGroup name="PeriodDuration" id="303">
+									<Title>
 										<v8:item>
 											<v8:lang>en</v8:lang>
-											<v8:content>DF=HH:mm</v8:content>
+											<v8:content>Period duration</v8:content>
 										</v8:item>
 										<v8:item>
 											<v8:lang>ru</v8:lang>
-											<v8:content>ДФ=HH:mm</v8:content>
+											<v8:content>Период продолжительность</v8:content>
 										</v8:item>
-									</EditFormat>
-									<ContextMenu name="EventEndingEndTimeContextMenu" id="169"/>
-									<ExtendedTooltip name="EventEndTimeExtendedTooltip" id="170"/>
-								</InputField>
-								<InputField name="EventEndingDate" id="171">
-									<DataPath>Object.EventEnding</DataPath>
-									<TitleLocation>None</TitleLocation>
-									<HorizontalStretch>true</HorizontalStretch>
-									<EditFormat>
-										<v8:item>
-											<v8:lang>en</v8:lang>
-											<v8:content>DF=MM/dd/yyyy</v8:content>
-										</v8:item>
-										<v8:item>
-											<v8:lang>ru</v8:lang>
-											<v8:content>DF=MM/dd/yyyy</v8:content>
-										</v8:item>
-									</EditFormat>
-									<ContextMenu name="EventEndingDateContextMenu" id="172"/>
-									<ExtendedTooltip name="EventEndingDateExtendedTooltip" id="173"/>
-									<Events>
-										<Event name="OnChange">EventEndDateOnChange</Event>
-									</Events>
-								</InputField>
+									</Title>
+									<Group>Vertical</Group>
+									<Representation>None</Representation>
+									<ShowTitle>false</ShowTitle>
+									<ExtendedTooltip name="PeriodDurationExtendedTooltip" id="304"/>
+									<ChildItems>
+										<LabelField name="DurationPresentation" id="305">
+											<DataPath>DurationPresentation</DataPath>
+											<TitleLocation>None</TitleLocation>
+											<Height>2</Height>
+											<VerticalStretch>false</VerticalStretch>
+											<ContextMenu name="DurationPresentationContextMenu" id="306"/>
+											<ExtendedTooltip name="DurationPresentationExtendedTooltip" id="307"/>
+										</LabelField>
+									</ChildItems>
+								</UsualGroup>
 							</ChildItems>
 						</UsualGroup>
 						<InputField name="Project" id="177">
@@ -491,8 +534,8 @@
 							<ShowTitle>false</ShowTitle>
 							<ExtendedTooltip name="GroupBasisExtendedTooltip" id="227"/>
 							<ChildItems>
-								<InputField name="" id="174">
-									<DataPath>Object</DataPath>
+								<InputField name="BasisDocument" id="174">
+									<DataPath>Object.BasisDocument</DataPath>
 									<Title>
 										<v8:item>
 											<v8:lang>en</v8:lang>
@@ -503,8 +546,10 @@
 											<v8:content>Основание</v8:content>
 										</v8:item>
 									</Title>
-									<ContextMenu name="ContextMenu" id="175"/>
-									<ExtendedTooltip name="ExtendedTooltip" id="176"/>
+									<AutoMaxWidth>false</AutoMaxWidth>
+									<MaxWidth>36</MaxWidth>
+									<ContextMenu name="BasisDocumentContextMenu" id="175"/>
+									<ExtendedTooltip name="BasisDocumentExtendedTooltip" id="176"/>
 								</InputField>
 								<Button name="FillByBasis" id="228">
 									<Type>UsualButton</Type>
@@ -548,9 +593,11 @@
 										</v8:item>
 										<v8:item>
 											<v8:lang>ru</v8:lang>
-											<v8:content>Контрагенты</v8:content>
+											<v8:content>Контрагент</v8:content>
 										</v8:item>
 									</Title>
+									<AutoMaxWidth>false</AutoMaxWidth>
+									<MaxWidth>36</MaxWidth>
 									<ChoiceFoldersAndItems>Items</ChoiceFoldersAndItems>
 									<ContextMenu name="CounterpartyContextMenu" id="276"/>
 									<ExtendedTooltip name="CounterpartyExtendedTooltip" id="277"/>
@@ -594,6 +641,8 @@
 								<LabelField name="CounterpartyHowToContact" id="294">
 									<DataPath>CounterpartyHowToContact</DataPath>
 									<TitleLocation>None</TitleLocation>
+									<AutoMaxWidth>false</AutoMaxWidth>
+									<MaxWidth>20</MaxWidth>
 									<HorizontalStretch>true</HorizontalStretch>
 									<ContextMenu name="HowToContactCounterpartyContextMenu" id="295"/>
 									<ExtendedTooltip name="HowToContactCounterpartyExtendedTooltip" id="296"/>
@@ -609,11 +658,11 @@
 				</UsualGroup>
 			</ChildItems>
 		</UsualGroup>
-		<UsualGroup name="GroupParties" id="183">
+		<UsualGroup name="GroupParticipants" id="183">
 			<Title>
 				<v8:item>
 					<v8:lang>en</v8:lang>
-					<v8:content>Group parties</v8:content>
+					<v8:content>Group participants</v8:content>
 				</v8:item>
 				<v8:item>
 					<v8:lang>ru</v8:lang>
@@ -623,7 +672,7 @@
 			<ToolTip>
 				<v8:item>
 					<v8:lang>en</v8:lang>
-					<v8:content>Group parties</v8:content>
+					<v8:content>Group participants</v8:content>
 				</v8:item>
 				<v8:item>
 					<v8:lang>ru</v8:lang>
@@ -633,7 +682,7 @@
 			<Group>Vertical</Group>
 			<Representation>None</Representation>
 			<ShowTitle>false</ShowTitle>
-			<ExtendedTooltip name="GroupPartiesExtendedTooltip" id="184"/>
+			<ExtendedTooltip name="GroupParticipantsExtendedTooltip" id="184"/>
 			<ChildItems>
 				<Table name="Contacts" id="244">
 					<Representation>List</Representation>
@@ -707,7 +756,7 @@
 				</v8:item>
 				<v8:item>
 					<v8:lang>ru</v8:lang>
-					<v8:content>Дополнительные реквизиты объекта</v8:content>
+					<v8:content>Дополнительные реквизиты</v8:content>
 				</v8:item>
 			</Title>
 			<ToolTip>
@@ -754,6 +803,29 @@
 					<ContextMenu name="ResponsibleContextMenu" id="216"/>
 					<ExtendedTooltip name="ResponsibleExtendedTooltip" id="217"/>
 				</InputField>
+				<InputField name="Date" id="3">
+					<DataPath>Object.Date</DataPath>
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Registration date</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Дата регистрации</v8:content>
+						</v8:item>
+					</Title>
+					<TitleTextColor>style:MinorInscriptionText</TitleTextColor>
+					<EditMode>EnterOnInput</EditMode>
+					<Width>14</Width>
+					<HorizontalStretch>false</HorizontalStretch>
+					<TextColor>style:MinorInscriptionText</TextColor>
+					<ContextMenu name="DateContextMenu" id="4"/>
+					<ExtendedTooltip name="DateExtendedTooltip" id="138"/>
+					<Events>
+						<Event name="OnChange">DateOnChange</Event>
+					</Events>
+				</InputField>
 			</ChildItems>
 		</UsualGroup>
 		<UsualGroup name="InformationGroup" id="57">
@@ -794,36 +866,9 @@
 							<v8:content>Автор документа</v8:content>
 						</v8:item>
 					</ToolTip>
-					<Border width="1">
-						<v8ui:style xsi:type="v8ui:ControlBorderType">Single</v8ui:style>
-					</Border>
-					<TextColor>#993300</TextColor>
 					<ContextMenu name="AuthorDocumentContextMenu" id="65"/>
 					<ExtendedTooltip name="DocumentAuthorExtendedTooltip" id="137"/>
 				</LabelField>
-				<InputField name="Date" id="3">
-					<DataPath>Object.Date</DataPath>
-					<Title>
-						<v8:item>
-							<v8:lang>en</v8:lang>
-							<v8:content>Registration date</v8:content>
-						</v8:item>
-						<v8:item>
-							<v8:lang>ru</v8:lang>
-							<v8:content>Дата регистрации</v8:content>
-						</v8:item>
-					</Title>
-					<TitleTextColor>style:MinorInscriptionText</TitleTextColor>
-					<EditMode>EnterOnInput</EditMode>
-					<Width>14</Width>
-					<HorizontalStretch>false</HorizontalStretch>
-					<TextColor>style:MinorInscriptionText</TextColor>
-					<ContextMenu name="DateContextMenu" id="4"/>
-					<ExtendedTooltip name="DateExtendedTooltip" id="138"/>
-					<Events>
-						<Event name="OnChange">DateOnChange</Event>
-					</Events>
-				</InputField>
 			</ChildItems>
 		</UsualGroup>
 	</ChildItems>
@@ -970,7 +1015,7 @@
 				</v8:item>
 				<v8:item>
 					<v8:lang>ru</v8:lang>
-					<v8:content>Контрагенты</v8:content>
+					<v8:content>Контрагент</v8:content>
 				</v8:item>
 			</Title>
 			<Type>
@@ -1000,35 +1045,27 @@
 				</v8:StringQualifiers>
 			</Settings>
 		</Attribute>
-	</Attributes>
-	<Commands>
-		<Command name="SendEmailToCounterparty" id="1">
+		<Attribute name="DurationPresentation" id="13">
 			<Title>
 				<v8:item>
 					<v8:lang>en</v8:lang>
-					<v8:content>Send email to counterparty</v8:content>
+					<v8:content>Duration presentation</v8:content>
 				</v8:item>
 				<v8:item>
 					<v8:lang>ru</v8:lang>
-					<v8:content>Отправить email контрагенту</v8:content>
+					<v8:content>Представление продолжительности</v8:content>
 				</v8:item>
 			</Title>
-			<ToolTip>
-				<v8:item>
-					<v8:lang>en</v8:lang>
-					<v8:content>Send email to counterparty</v8:content>
-				</v8:item>
-				<v8:item>
-					<v8:lang>ru</v8:lang>
-					<v8:content>Отправить email контрагенту</v8:content>
-				</v8:item>
-			</ToolTip>
-			<Picture>
-				<xr:Ref>CommonPicture.SendByEmail</xr:Ref>
-				<xr:LoadTransparent>true</xr:LoadTransparent>
-			</Picture>
-			<Action>SendEmailToCounterparty</Action>
-		</Command>
+			<Type>
+				<v8:Type>xs:string</v8:Type>
+				<v8:StringQualifiers>
+					<v8:Length>0</v8:Length>
+					<v8:AllowedLength>Variable</v8:AllowedLength>
+				</v8:StringQualifiers>
+			</Type>
+		</Attribute>
+	</Attributes>
+	<Commands>
 		<Command name="FillByBasis" id="2">
 			<Title>
 				<v8:item>

@@ -41,6 +41,33 @@ Procedure SetPictureForComment(GroupAdditional, Comment) Export
 	
 EndProcedure
 
+Function PluralForm(Word1, Word2, Word3, Val IntegerNumber) Export
+	
+	// Change the sign of an integer, otherwise negative numbers will be incorrectly converted
+	If IntegerNumber < 0 Then
+		IntegerNumber = -1 * IntegerNumber;
+	EndIf;
+	
+	If IntegerNumber <> Int(IntegerNumber) Then 
+		// For non-integer numbers - always the second form
+		Return Word2;
+	EndIf;
+	
+	// remainder
+	Remainder = IntegerNumber%10;
+	If (IntegerNumber >10) And (IntegerNumber<20) Then
+		// For the second ten - always the third form
+		Return Word3;
+	ElsIf Remainder=1 Then
+		Return Word1;
+	ElsIf (Remainder>1) And (Remainder<5) Then
+		Return Word2;
+	Else
+		Return Word3;
+	EndIf;
+
+EndFunction
+
 ///////////////////////////////////////////////////////////////////////////////// 
 // INTERACTION PROCEDURES AND FUNCTIONS
 

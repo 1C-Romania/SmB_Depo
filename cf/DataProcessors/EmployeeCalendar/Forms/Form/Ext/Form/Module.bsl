@@ -151,7 +151,7 @@ EndProcedure // DisplayContactsManager()
 Function StringIntoEnumeration(FilterEventType)
 	
 	If FilterEventType = "Personal meeting" Then
-		Return Enums.EventTypes.PrivateMeeting;
+		Return Enums.EventTypes.PersonalMeeting;
 	ElsIf FilterEventType = "Other" Then
 		Return Enums.EventTypes.Other;
 	ElsIf FilterEventType = "Phone call" Then
@@ -210,10 +210,10 @@ Procedure RepresentMyAgenda()
 	|		1 AS LineNumber,
 	|		Event.Ref AS Ref,
 	|		CASE
-	|			WHEN VALUETYPE(EventParties.Contact) <> Type(Catalog.Counterparties)
-	|					OR EventParties.Contact = VALUE(Catalog.Counterparties.EmptyRef)
+	|			WHEN VALUETYPE(EventParticipants.Contact) <> TYPE(Catalog.Counterparties)
+	|					OR EventParticipants.Contact = VALUE(Catalog.Counterparties.EmptyRef)
 	|				THEN ""<Not specified>""
-	|			ELSE PRESENTATION(EventParties.Contact)
+	|			ELSE PRESENTATION(EventParticipants.Contact)
 	|		END AS CounterpartyPresentation,
 	|		CASE
 	|			WHEN Event.Subject = """"
@@ -221,9 +221,9 @@ Procedure RepresentMyAgenda()
 	|			ELSE Event.Subject
 	|		END AS Subject,
 	|		CASE
-	|			WHEN (CAST(Event.Content AS String(255))) = """"
+	|			WHEN (CAST(Event.Content AS STRING(255))) = """"
 	|				THEN ""<Content is not specified>""
-	|			ELSE CAST(Event.Content AS String(255))
+	|			ELSE CAST(Event.Content AS STRING(255))
 	|		END AS Content,
 	|		Event.Responsible AS Responsible,
 	|		UNDEFINED AS ProductsAndServicesPresentation,
@@ -236,11 +236,11 @@ Procedure RepresentMyAgenda()
 	|		UNDEFINED AS Closed
 	|	FROM
 	|		Document.Event AS Event
-	|			LEFT JOIN Document.Event.Parties AS EventParties
-	|			ON Event.Ref = EventParties.Ref
-	|				AND (EventParties.LineNumber = 1)
+	|			LEFT JOIN Document.Event.Participants AS EventParticipants
+	|			ON Event.Ref = EventParticipants.Ref
+	|				AND (EventParticipants.LineNumber = 1)
 	|	WHERE
-	|		Event.Responsible In
+	|		Event.Responsible IN
 	|				(SELECT
 	|					UserEmployees.Employee
 	|				FROM
@@ -253,7 +253,7 @@ Procedure RepresentMyAgenda()
 	|		AND (&EventType = VALUE(Enum.EventTypes.EmptyRef)
 	|				OR Event.EventType = &EventType)
 	|		AND (&Counterparty = VALUE(Catalog.Counterparties.EmptyRef)
-	|				OR EventParties.Contact = &Counterparty)
+	|				OR EventParticipants.Contact = &Counterparty)
 	|	
 	|	UNION ALL
 	|	
@@ -267,12 +267,12 @@ Procedure RepresentMyAgenda()
 	|		UNDEFINED,
 	|		JobOrderWorks.Ref.Employee,
 	|		PRESENTATION(JobOrderWorks.ProductsAndServices),
-	|		CAST(JobOrderWorks.Comment AS String(255)),
-	|		CAST(JobOrderWorks.Ref.Comment AS String(255)),
+	|		CAST(JobOrderWorks.Comment AS STRING(255)),
+	|		CAST(JobOrderWorks.Ref.Comment AS STRING(255)),
 	|		PRESENTATION(JobOrderWorks.Customer),
 	|		JobOrderWorks.Day,
-	|		DATEADD(JobOrderWorks.Day, Second, hour(JobOrderWorks.BeginTime) * 3600 + MINUTE(JobOrderWorks.BeginTime) * 60 + Second(JobOrderWorks.BeginTime)),
-	|		DATEADD(JobOrderWorks.Day, Second, hour(JobOrderWorks.EndTime) * 3600 + MINUTE(JobOrderWorks.EndTime) * 60 + Second(JobOrderWorks.EndTime)),
+	|		DATEADD(JobOrderWorks.Day, SECOND, HOUR(JobOrderWorks.BeginTime) * 3600 + MINUTE(JobOrderWorks.BeginTime) * 60 + SECOND(JobOrderWorks.BeginTime)),
+	|		DATEADD(JobOrderWorks.Day, SECOND, HOUR(JobOrderWorks.EndTime) * 3600 + MINUTE(JobOrderWorks.EndTime) * 60 + SECOND(JobOrderWorks.EndTime)),
 	|		CASE
 	|			WHEN JobOrderWorks.Ref.State = VALUE(Catalog.EventStates.Completed)
 	|				THEN TRUE
@@ -282,13 +282,13 @@ Procedure RepresentMyAgenda()
 	|		Document.WorkOrder.Works AS JobOrderWorks
 	|	WHERE
 	|		JobOrderWorks.Ref.Posted = TRUE
-	|		AND JobOrderWorks.Ref.Employee In
+	|		AND JobOrderWorks.Ref.Employee IN
 	|				(SELECT
 	|					UserEmployees.Employee
 	|				FROM
 	|					UserEmployees)
-	|		AND DATEADD(JobOrderWorks.Day, Second, hour(JobOrderWorks.BeginTime) * 3600 + MINUTE(JobOrderWorks.BeginTime) * 60 + Second(JobOrderWorks.BeginTime)) >= &BeginTime
-	|		AND DATEADD(JobOrderWorks.Day, Second, hour(JobOrderWorks.EndTime) * 3600 + MINUTE(JobOrderWorks.EndTime) * 60 + Second(JobOrderWorks.EndTime)) <= &EndTime
+	|		AND DATEADD(JobOrderWorks.Day, SECOND, HOUR(JobOrderWorks.BeginTime) * 3600 + MINUTE(JobOrderWorks.BeginTime) * 60 + SECOND(JobOrderWorks.BeginTime)) >= &BeginTime
+	|		AND DATEADD(JobOrderWorks.Day, SECOND, HOUR(JobOrderWorks.EndTime) * 3600 + MINUTE(JobOrderWorks.EndTime) * 60 + SECOND(JobOrderWorks.EndTime)) <= &EndTime
 	|		AND (&Counterparty = VALUE(Catalog.Counterparties.EmptyRef)
 	|				OR JobOrderWorks.Customer = &Counterparty)
 	|		AND (&EventType = VALUE(Enum.EventTypes.EmptyRef)
@@ -501,10 +501,10 @@ Procedure RepresentScheduleDay()
 	|			1 AS LineNumber,
 	|			Event.Ref AS Ref,
 	|			CASE
-	|				WHEN VALUETYPE(EventParties.Contact) <> Type(Catalog.Counterparties)
-	|						OR EventParties.Contact = VALUE(Catalog.Counterparties.EmptyRef)
+	|				WHEN VALUETYPE(EventParticipants.Contact) <> TYPE(Catalog.Counterparties)
+	|						OR EventParticipants.Contact = VALUE(Catalog.Counterparties.EmptyRef)
 	|					THEN ""<Not specified>""
-	|				ELSE PRESENTATION(EventParties.Contact)
+	|				ELSE PRESENTATION(EventParticipants.Contact)
 	|			END AS CounterpartyPresentation,
 	|			CASE
 	|				WHEN Event.Subject = """"
@@ -512,9 +512,9 @@ Procedure RepresentScheduleDay()
 	|				ELSE Event.Subject
 	|			END AS Subject,
 	|			CASE
-	|				WHEN (CAST(Event.Content AS String(255))) = """"
+	|				WHEN (CAST(Event.Content AS STRING(255))) = """"
 	|					THEN ""<Content is not specified>""
-	|				ELSE CAST(Event.Content AS String(255))
+	|				ELSE CAST(Event.Content AS STRING(255))
 	|			END AS Content,
 	|			Event.Responsible AS Responsible,
 	|			UNDEFINED AS ProductsAndServicesPresentation,
@@ -527,11 +527,11 @@ Procedure RepresentScheduleDay()
 	|			UNDEFINED AS Closed
 	|		FROM
 	|			Document.Event AS Event
-	|				LEFT JOIN Document.Event.Parties AS EventParties
-	|				ON Event.Ref = EventParties.Ref
-	|					AND (EventParties.LineNumber = 1)
+	|				LEFT JOIN Document.Event.Participants AS EventParticipants
+	|				ON Event.Ref = EventParticipants.Ref
+	|					AND (EventParticipants.LineNumber = 1)
 	|		WHERE
-	|			Event.Responsible IN (&EmployeesList)
+	|			Event.Responsible IN(&EmployeesList)
 	|			AND Event.DeletionMark = FALSE
 	|			AND Event.EventBegin >= &BeginTime
 	|			AND Event.EventBegin <= &EndTime
@@ -540,7 +540,7 @@ Procedure RepresentScheduleDay()
 	|			AND (&EventType = VALUE(Enum.EventTypes.EmptyRef)
 	|					OR Event.EventType = &EventType)
 	|			AND (&Counterparty = VALUE(Catalog.Counterparties.EmptyRef)
-	|					OR EventParties.Contact = &Counterparty)
+	|					OR EventParticipants.Contact = &Counterparty)
 	|		
 	|		UNION ALL
 	|		
@@ -554,12 +554,12 @@ Procedure RepresentScheduleDay()
 	|			UNDEFINED,
 	|			JobOrderWorks.Ref.Employee,
 	|			PRESENTATION(JobOrderWorks.ProductsAndServices),
-	|			CAST(JobOrderWorks.Comment AS String(255)),
-	|			CAST(JobOrderWorks.Ref.Comment AS String(255)),
+	|			CAST(JobOrderWorks.Comment AS STRING(255)),
+	|			CAST(JobOrderWorks.Ref.Comment AS STRING(255)),
 	|			PRESENTATION(JobOrderWorks.Customer),
 	|			JobOrderWorks.Day,
-	|			DATEADD(JobOrderWorks.Day, Second, hour(JobOrderWorks.BeginTime) * 3600 + MINUTE(JobOrderWorks.BeginTime) * 60 + Second(JobOrderWorks.BeginTime)),
-	|			DATEADD(JobOrderWorks.Day, Second, hour(JobOrderWorks.EndTime) * 3600 + MINUTE(JobOrderWorks.EndTime) * 60 + Second(JobOrderWorks.EndTime)),
+	|			DATEADD(JobOrderWorks.Day, SECOND, HOUR(JobOrderWorks.BeginTime) * 3600 + MINUTE(JobOrderWorks.BeginTime) * 60 + SECOND(JobOrderWorks.BeginTime)),
+	|			DATEADD(JobOrderWorks.Day, SECOND, HOUR(JobOrderWorks.EndTime) * 3600 + MINUTE(JobOrderWorks.EndTime) * 60 + SECOND(JobOrderWorks.EndTime)),
 	|			CASE
 	|				WHEN JobOrderWorks.Ref.State = VALUE(Catalog.EventStates.Completed)
 	|					THEN TRUE
@@ -569,9 +569,9 @@ Procedure RepresentScheduleDay()
 	|			Document.WorkOrder.Works AS JobOrderWorks
 	|		WHERE
 	|			JobOrderWorks.Ref.Posted = TRUE
-	|			AND JobOrderWorks.Ref.Employee IN (&EmployeesList)
-	|			AND DATEADD(JobOrderWorks.Day, Second, hour(JobOrderWorks.BeginTime) * 3600 + MINUTE(JobOrderWorks.BeginTime) * 60 + Second(JobOrderWorks.BeginTime)) >= &BeginTime
-	|			AND DATEADD(JobOrderWorks.Day, Second, hour(JobOrderWorks.EndTime) * 3600 + MINUTE(JobOrderWorks.EndTime) * 60 + Second(JobOrderWorks.EndTime)) <= &EndTime
+	|			AND JobOrderWorks.Ref.Employee IN(&EmployeesList)
+	|			AND DATEADD(JobOrderWorks.Day, SECOND, HOUR(JobOrderWorks.BeginTime) * 3600 + MINUTE(JobOrderWorks.BeginTime) * 60 + SECOND(JobOrderWorks.BeginTime)) >= &BeginTime
+	|			AND DATEADD(JobOrderWorks.Day, SECOND, HOUR(JobOrderWorks.EndTime) * 3600 + MINUTE(JobOrderWorks.EndTime) * 60 + SECOND(JobOrderWorks.EndTime)) <= &EndTime
 	|			AND (&Counterparty = VALUE(Catalog.Counterparties.EmptyRef)
 	|					OR JobOrderWorks.Customer = &Counterparty)
 	|			AND (&EventType = VALUE(Enum.EventTypes.EmptyRef)
@@ -608,7 +608,7 @@ Procedure RepresentScheduleDay()
 	|		LEFT JOIN InformationRegister.DeviationFromResourcesWorkSchedules AS DeviationFromResourcesWorkSchedules
 	|		ON RecourcesWorkScheduleSliceLast.EnterpriseResource = DeviationFromResourcesWorkSchedules.EnterpriseResource
 	|			AND (YEAR(RecourcesWorkScheduleSliceLast.Period) = DeviationFromResourcesWorkSchedules.Year)
-	|			AND (DeviationFromResourcesWorkSchedules.Day = BEGINOFPERIOD(&DateOfSchedule, Day))
+	|			AND (DeviationFromResourcesWorkSchedules.Day = BEGINOFPERIOD(&DateOfSchedule, DAY))
 	|WHERE
 	|	WorkSchedules.Year = YEAR(&DateOfSchedule)
 	|	AND WorkSchedules.BeginTime >= &BeginTime
@@ -897,10 +897,10 @@ Procedure RepresentScheduleMonth()
 	|			1 AS LineNumber,
 	|			Event.Ref AS Ref,
 	|			CASE
-	|				WHEN VALUETYPE(EventParties.Contact) <> Type(Catalog.Counterparties)
-	|						OR EventParties.Contact = VALUE(Catalog.Counterparties.EmptyRef)
+	|				WHEN VALUETYPE(EventParticipants.Contact) <> TYPE(Catalog.Counterparties)
+	|						OR EventParticipants.Contact = VALUE(Catalog.Counterparties.EmptyRef)
 	|					THEN ""<Not specified>""
-	|				ELSE PRESENTATION(EventParties.Contact)
+	|				ELSE PRESENTATION(EventParticipants.Contact)
 	|			END AS CounterpartyPresentation,
 	|			CASE
 	|				WHEN Event.Subject = """"
@@ -908,9 +908,9 @@ Procedure RepresentScheduleMonth()
 	|				ELSE Event.Subject
 	|			END AS Subject,
 	|			CASE
-	|				WHEN (CAST(Event.Content AS String(255))) = """"
+	|				WHEN (CAST(Event.Content AS STRING(255))) = """"
 	|					THEN ""<Content is not specified>""
-	|				ELSE CAST(Event.Content AS String(255))
+	|				ELSE CAST(Event.Content AS STRING(255))
 	|			END AS Content,
 	|			Event.Responsible AS Responsible,
 	|			UNDEFINED AS ProductsAndServicesPresentation,
@@ -923,11 +923,11 @@ Procedure RepresentScheduleMonth()
 	|			UNDEFINED AS Closed
 	|		FROM
 	|			Document.Event AS Event
-	|				LEFT JOIN Document.Event.Parties AS EventParties
-	|				ON Event.Ref = EventParties.Ref
-	|					AND (EventParties.LineNumber = 1)
+	|				LEFT JOIN Document.Event.Participants AS EventParticipants
+	|				ON Event.Ref = EventParticipants.Ref
+	|					AND (EventParticipants.LineNumber = 1)
 	|		WHERE
-	|			Event.Responsible IN (&EmployeesList)
+	|			Event.Responsible IN(&EmployeesList)
 	|			AND Event.DeletionMark = FALSE
 	|			AND Event.EventBegin >= &BeginOfPeriod
 	|			AND Event.EventBegin <= &EndOfPeriod
@@ -936,7 +936,7 @@ Procedure RepresentScheduleMonth()
 	|			AND (&EventType = VALUE(Enum.EventTypes.EmptyRef)
 	|					OR Event.EventType = &EventType)
 	|			AND (&Counterparty = VALUE(Catalog.Counterparties.EmptyRef)
-	|					OR EventParties.Contact = &Counterparty)
+	|					OR EventParticipants.Contact = &Counterparty)
 	|		
 	|		UNION ALL
 	|		
@@ -954,8 +954,8 @@ Procedure RepresentScheduleMonth()
 	|				ELSE 1
 	|			END,
 	|			CASE
-	|				WHEN (NOT JobOrderWorks.Ref.State = VALUE(Catalog.EventStates.Completed))
-	|						AND DATEADD(JobOrderWorks.Day, Second, hour(JobOrderWorks.EndTime) * 3600 + MINUTE(JobOrderWorks.EndTime) * 60 + Second(JobOrderWorks.EndTime)) > &DateOfSchedule
+	|				WHEN NOT JobOrderWorks.Ref.State = VALUE(Catalog.EventStates.Completed)
+	|						AND DATEADD(JobOrderWorks.Day, SECOND, HOUR(JobOrderWorks.EndTime) * 3600 + MINUTE(JobOrderWorks.EndTime) * 60 + SECOND(JobOrderWorks.EndTime)) > &DateOfSchedule
 	|					THEN 1
 	|				ELSE 0
 	|			END,
@@ -968,12 +968,12 @@ Procedure RepresentScheduleMonth()
 	|			UNDEFINED,
 	|			JobOrderWorks.Ref.Employee,
 	|			PRESENTATION(JobOrderWorks.ProductsAndServices),
-	|			CAST(JobOrderWorks.Comment AS String(255)),
-	|			CAST(JobOrderWorks.Ref.Comment AS String(255)),
+	|			CAST(JobOrderWorks.Comment AS STRING(255)),
+	|			CAST(JobOrderWorks.Ref.Comment AS STRING(255)),
 	|			PRESENTATION(JobOrderWorks.Customer),
 	|			JobOrderWorks.Day,
-	|			DATEADD(JobOrderWorks.Day, Second, hour(JobOrderWorks.BeginTime) * 3600 + MINUTE(JobOrderWorks.EndTime) * 60 + Second(JobOrderWorks.EndTime)),
-	|			DATEADD(JobOrderWorks.Day, Second, hour(JobOrderWorks.EndTime) * 3600 + MINUTE(JobOrderWorks.EndTime) * 60 + Second(JobOrderWorks.EndTime)),
+	|			DATEADD(JobOrderWorks.Day, SECOND, HOUR(JobOrderWorks.BeginTime) * 3600 + MINUTE(JobOrderWorks.EndTime) * 60 + SECOND(JobOrderWorks.EndTime)),
+	|			DATEADD(JobOrderWorks.Day, SECOND, HOUR(JobOrderWorks.EndTime) * 3600 + MINUTE(JobOrderWorks.EndTime) * 60 + SECOND(JobOrderWorks.EndTime)),
 	|			CASE
 	|				WHEN JobOrderWorks.Ref.State = VALUE(Catalog.EventStates.Completed)
 	|					THEN TRUE
@@ -983,8 +983,8 @@ Procedure RepresentScheduleMonth()
 	|			Document.WorkOrder.Works AS JobOrderWorks
 	|		WHERE
 	|			JobOrderWorks.Ref.Posted = TRUE
-	|			AND DATEADD(JobOrderWorks.Day, Second, hour(JobOrderWorks.BeginTime) * 3600 + MINUTE(JobOrderWorks.EndTime) * 60 + Second(JobOrderWorks.EndTime)) >= &BeginOfPeriod
-	|			AND DATEADD(JobOrderWorks.Day, Second, hour(JobOrderWorks.EndTime) * 3600 + MINUTE(JobOrderWorks.EndTime) * 60 + Second(JobOrderWorks.EndTime)) <= &EndOfPeriod
+	|			AND DATEADD(JobOrderWorks.Day, SECOND, HOUR(JobOrderWorks.BeginTime) * 3600 + MINUTE(JobOrderWorks.EndTime) * 60 + SECOND(JobOrderWorks.EndTime)) >= &BeginOfPeriod
+	|			AND DATEADD(JobOrderWorks.Day, SECOND, HOUR(JobOrderWorks.EndTime) * 3600 + MINUTE(JobOrderWorks.EndTime) * 60 + SECOND(JobOrderWorks.EndTime)) <= &EndOfPeriod
 	|			AND JobOrderWorks.Ref.Employee IN(&EmployeesList)
 	|			AND (&Counterparty = VALUE(Catalog.Counterparties.EmptyRef)
 	|					OR JobOrderWorks.Customer = &Counterparty)
@@ -1194,10 +1194,10 @@ Procedure RepresentScheduleWeek()
 	|			1 AS LineNumber,
 	|			Event.Ref AS Ref,
 	|			CASE
-	|				WHEN VALUETYPE(EventParties.Contact) <> Type(Catalog.Counterparties)
-	|						OR EventParties.Contact = VALUE(Catalog.Counterparties.EmptyRef)
+	|				WHEN VALUETYPE(EventParticipants.Contact) <> TYPE(Catalog.Counterparties)
+	|						OR EventParticipants.Contact = VALUE(Catalog.Counterparties.EmptyRef)
 	|					THEN ""<Not specified>""
-	|				ELSE PRESENTATION(EventParties.Contact)
+	|				ELSE PRESENTATION(EventParticipants.Contact)
 	|			END AS CounterpartyPresentation,
 	|			CASE
 	|				WHEN Event.Subject = """"
@@ -1205,9 +1205,9 @@ Procedure RepresentScheduleWeek()
 	|				ELSE Event.Subject
 	|			END AS Subject,
 	|			CASE
-	|				WHEN (CAST(Event.Content AS String(255))) = """"
+	|				WHEN (CAST(Event.Content AS STRING(255))) = """"
 	|					THEN ""<Content is not specified>""
-	|				ELSE CAST(Event.Content AS String(255))
+	|				ELSE CAST(Event.Content AS STRING(255))
 	|			END AS Content,
 	|			Event.Responsible AS Responsible,
 	|			UNDEFINED AS ProductsAndServicesPresentation,
@@ -1220,9 +1220,9 @@ Procedure RepresentScheduleWeek()
 	|			UNDEFINED AS Closed
 	|		FROM
 	|			Document.Event AS Event
-	|				LEFT JOIN Document.Event.Parties AS EventParties
-	|				ON Event.Ref = EventParties.Ref
-	|					AND (EventParties.LineNumber = 1)
+	|				LEFT JOIN Document.Event.Participants AS EventParticipants
+	|				ON Event.Ref = EventParticipants.Ref
+	|					AND (EventParticipants.LineNumber = 1)
 	|		WHERE
 	|			Event.Responsible IN(&EmployeesList)
 	|			AND Event.DeletionMark = FALSE
@@ -1233,7 +1233,7 @@ Procedure RepresentScheduleWeek()
 	|			AND (&EventType = VALUE(Enum.EventTypes.EmptyRef)
 	|					OR Event.EventType = &EventType)
 	|			AND (&Counterparty = VALUE(Catalog.Counterparties.EmptyRef)
-	|					OR EventParties.Contact = &Counterparty)
+	|					OR EventParticipants.Contact = &Counterparty)
 	|		
 	|		UNION ALL
 	|		
@@ -1251,8 +1251,8 @@ Procedure RepresentScheduleWeek()
 	|				ELSE 1
 	|			END,
 	|			CASE
-	|				WHEN Not JobOrderWorks.Ref.State = VALUE(Catalog.EventStates.Completed)
-	|						AND DATEADD(JobOrderWorks.Day, Second, hour(JobOrderWorks.EndTime) * 3600 + MINUTE(JobOrderWorks.EndTime) * 60 + Second(JobOrderWorks.EndTime)) > &DateOfSchedule
+	|				WHEN NOT JobOrderWorks.Ref.State = VALUE(Catalog.EventStates.Completed)
+	|						AND DATEADD(JobOrderWorks.Day, SECOND, HOUR(JobOrderWorks.EndTime) * 3600 + MINUTE(JobOrderWorks.EndTime) * 60 + SECOND(JobOrderWorks.EndTime)) > &DateOfSchedule
 	|					THEN 1
 	|				ELSE 0
 	|			END,
@@ -1265,12 +1265,12 @@ Procedure RepresentScheduleWeek()
 	|			UNDEFINED,
 	|			JobOrderWorks.Ref.Employee,
 	|			PRESENTATION(JobOrderWorks.ProductsAndServices),
-	|			CAST(JobOrderWorks.Comment AS String(255)),
-	|			CAST(JobOrderWorks.Ref.Comment AS String(255)),
+	|			CAST(JobOrderWorks.Comment AS STRING(255)),
+	|			CAST(JobOrderWorks.Ref.Comment AS STRING(255)),
 	|			PRESENTATION(JobOrderWorks.Customer),
 	|			JobOrderWorks.Day,
-	|			DATEADD(JobOrderWorks.Day, Second, hour(JobOrderWorks.BeginTime) * 3600 + MINUTE(JobOrderWorks.EndTime) * 60 + Second(JobOrderWorks.EndTime)),
-	|			DATEADD(JobOrderWorks.Day, Second, hour(JobOrderWorks.EndTime) * 3600 + MINUTE(JobOrderWorks.EndTime) * 60 + Second(JobOrderWorks.EndTime)),
+	|			DATEADD(JobOrderWorks.Day, SECOND, HOUR(JobOrderWorks.BeginTime) * 3600 + MINUTE(JobOrderWorks.EndTime) * 60 + SECOND(JobOrderWorks.EndTime)),
+	|			DATEADD(JobOrderWorks.Day, SECOND, HOUR(JobOrderWorks.EndTime) * 3600 + MINUTE(JobOrderWorks.EndTime) * 60 + SECOND(JobOrderWorks.EndTime)),
 	|			CASE
 	|				WHEN JobOrderWorks.Ref.State = VALUE(Catalog.EventStates.Completed)
 	|					THEN TRUE
@@ -1280,8 +1280,8 @@ Procedure RepresentScheduleWeek()
 	|			Document.WorkOrder.Works AS JobOrderWorks
 	|		WHERE
 	|			JobOrderWorks.Ref.Posted = TRUE
-	|			AND DATEADD(JobOrderWorks.Day, Second, hour(JobOrderWorks.BeginTime) * 3600 + MINUTE(JobOrderWorks.EndTime) * 60 + Second(JobOrderWorks.EndTime)) >= &BeginOfPeriod
-	|			AND DATEADD(JobOrderWorks.Day, Second, hour(JobOrderWorks.EndTime) * 3600 + MINUTE(JobOrderWorks.EndTime) * 60 + Second(JobOrderWorks.EndTime)) <= &EndOfPeriod
+	|			AND DATEADD(JobOrderWorks.Day, SECOND, HOUR(JobOrderWorks.BeginTime) * 3600 + MINUTE(JobOrderWorks.EndTime) * 60 + SECOND(JobOrderWorks.EndTime)) >= &BeginOfPeriod
+	|			AND DATEADD(JobOrderWorks.Day, SECOND, HOUR(JobOrderWorks.EndTime) * 3600 + MINUTE(JobOrderWorks.EndTime) * 60 + SECOND(JobOrderWorks.EndTime)) <= &EndOfPeriod
 	|			AND JobOrderWorks.Ref.Employee IN(&EmployeesList)
 	|			AND (&Counterparty = VALUE(Catalog.Counterparties.EmptyRef)
 	|					OR JobOrderWorks.Customer = &Counterparty)

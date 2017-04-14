@@ -21,15 +21,13 @@ Var NormalizedPostalAddress; // Converted mail address
 
 #Region FormEventsHandlers
 
-// Procedure - OnCreateAtServer event handler.
-//
 &AtServer
 Procedure OnCreateAtServer(Cancel, StandardProcessing)
 	
 	TypeArray = New Array;
 	TypeArray.Add(Type("String"));
-	Items.ContactRecipients.TypeRestriction = New TypeDescription(TypeArray, New StringQualifiers(100));
-	Items.Subject.TypeRestriction 			   = New TypeDescription(TypeArray, New StringQualifiers(200));
+	Items.ContactRecipients.TypeRestriction	= New TypeDescription(TypeArray, New StringQualifiers(100));
+	Items.Subject.TypeRestriction			= New TypeDescription(TypeArray, New StringQualifiers(200));
 	
 	If Parameters.Key.IsEmpty() Then
 		FillNewEmailDefault();
@@ -55,8 +53,6 @@ Procedure OnCreateAtServer(Cancel, StandardProcessing)
 	
 EndProcedure
 
-// Procedure - event handler ChoiceProcessing.
-//
 &AtClient
 Procedure ChoiceProcessing(ValueSelected, ChoiceSource)
 	
@@ -68,8 +64,6 @@ Procedure ChoiceProcessing(ValueSelected, ChoiceSource)
 	
 EndProcedure
 
-// Procedure - event handler NotificationProcessing.
-//
 &AtClient
 Procedure NotificationProcessing(EventName, Parameter, Source)
 	
@@ -81,8 +75,6 @@ Procedure NotificationProcessing(EventName, Parameter, Source)
 	
 EndProcedure
 
-// Procedure - OnReadAtServer event handler.
-//
 &AtServer
 Procedure OnReadAtServer(CurrentObject)
 	
@@ -127,8 +119,6 @@ Procedure OnReadAtServer(CurrentObject)
 	
 EndProcedure
 
-// Procedure - event handler BeforeWriteAtServer.
-//
 &AtServer
 Procedure BeforeWriteAtServer(Cancel, CurrentObject, WriteParameters)
 	
@@ -163,8 +153,6 @@ Procedure BeforeWriteAtServer(Cancel, CurrentObject, WriteParameters)
 	
 EndProcedure
 
-// Procedure - event handler OnWriteAtServer.
-//
 &AtServer
 Procedure OnWriteAtServer(Cancel, CurrentObject, WriteParameters)
 	
@@ -335,7 +323,7 @@ Procedure RecipientsContactStartChoice(Item, ChoiceData, StandardProcessing)
 	FormParameters = New Structure;
 	FormParameters.Insert("CIType", "EmailAddress");
 	If ValueIsFilled(Items.Recipients.CurrentData.Contact) Then
-		Contact = Object.Parties.FindByID(Items.Recipients.CurrentRow).Contact;
+		Contact = Object.Participants.FindByID(Items.Recipients.CurrentRow).Contact;
 		If TypeOf(Contact) = Type("CatalogRef.Counterparties") Then
 			FormParameters.Insert("CurrentCounterparty", Contact);
 		EndIf;
@@ -352,7 +340,7 @@ Procedure ContactRecipientsOpen(Item, StandardProcessing)
 	
 	StandardProcessing = False;
 	If ValueIsFilled(Items.Recipients.CurrentData.Contact) Then
-		Contact = Object.Parties.FindByID(Items.Recipients.CurrentRow).Contact;
+		Contact = Object.Participants.FindByID(Items.Recipients.CurrentRow).Contact;
 		ShowValue(,Contact);
 	EndIf;
 	
@@ -369,7 +357,7 @@ Procedure RecipientsContactChoiceProcessing(Item, ValueSelected, StandardProcess
 	If TypeOf(ValueSelected) = Type("CatalogRef.Counterparties") Or TypeOf(ValueSelected) = Type("CatalogRef.ContactPersons") Then
 	// Selection is implemented by automatic selection mechanism
 		
-		Object.Parties.FindByID(Items.Recipients.CurrentRow).Contact = ValueSelected;
+		Object.Participants.FindByID(Items.Recipients.CurrentRow).Contact = ValueSelected;
 		
 	EndIf;
 	
@@ -465,7 +453,7 @@ Procedure Send(Command)
 	ClearMessages();
 	
 	RecipientEmailAddress = "";
-	For Each Recipient IN Object.Parties Do
+	For Each Recipient IN Object.Participants Do
 		RecipientEmailAddress = RecipientEmailAddress + Recipient.HowToContact + "; ";
 	EndDo;
 	
@@ -635,18 +623,18 @@ Procedure HandlePassedParameters(Parameters, Cancel)
 	If TypeOf(Parameters.Whom) = Type("ValueList") Then
 		RecipientEmailAddress = "";
 		For Each ItemEmail IN Parameters.Whom Do
-			NewRow = Object.Parties.Add();
+			NewRow = Object.Participants.Add();
 			NewRow.HowToContact = ItemEmail.Value;
 			If ValueIsFilled(ItemEmail.Presentation) Then
 				NewRow.Contact = ItemEmail.Presentation;
 			EndIf;
 		EndDo;
 	ElsIf TypeOf(Parameters.Whom) = Type("String") Then
-		NewRow = Object.Parties.Add();
+		NewRow = Object.Participants.Add();
 		NewRow.HowToContact = Parameters.Whom;
 	ElsIf TypeOf(Parameters.Whom) = Type("Array") Then
 		For Each StructureRecipient IN Parameters.Whom Do
-			NewRow = Object.Parties.Add();
+			NewRow = Object.Participants.Add();
 			NewRow.Contact = StructureRecipient.Presentation;
 			NewRow.HowToContact = StructureRecipient.Address;
 		EndDo;
@@ -799,10 +787,10 @@ Procedure FillContactsByAddressBook(AddressInStorage)
 	For Each SelectedRow IN RecipientsTable Do
 		
 		If CurrentRowDataProcessor Then
-			RowParticipants = Object.Parties.FindByID(Items.Recipients.CurrentRow);
+			RowParticipants = Object.Participants.FindByID(Items.Recipients.CurrentRow);
 			CurrentRowDataProcessor = False;
 		Else
-			RowParticipants = Object.Parties.Add();
+			RowParticipants = Object.Participants.Add();
 		EndIf;
 		
 		RowParticipants.Contact = SelectedRow.Contact;

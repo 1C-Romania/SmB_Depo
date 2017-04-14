@@ -2454,6 +2454,7 @@ CommonCommands\ReportByMovements.xml-->CommonCommands\ReportByMovements.xml
 CommonCommands\ReportsPanelAdministration.xml-->CommonCommands\ReportsPanelAdministration.xml
 CommonCommands\ReportsPanelSetupAndAdministration.xml-->CommonCommands\ReportsPanelSetupAndAdministration.xml
 CommonCommands\ReportsPanel_Analysis.xml-->CommonCommands\ReportsPanel_Analysis.xml
+CommonCommands\ReportsPanel_CRM.xml-->CommonCommands\ReportsPanel_CRM.xml
 CommonCommands\ReportsPanel_Enterprise.xml-->CommonCommands\ReportsPanel_Enterprise.xml
 CommonCommands\ReportsPanel_Finances.xml-->CommonCommands\ReportsPanel_Finances.xml
 CommonCommands\ReportsPanel_InventoryAndPurchasing.xml-->CommonCommands\ReportsPanel_InventoryAndPurchasing.xml
@@ -2607,6 +2608,7 @@ CommonCommands\ReportByMovements\Ext\CommandModule.bsl-->CommonCommands\ReportBy
 CommonCommands\ReportsPanelAdministration\Ext\CommandModule.bsl-->CommonCommands\ReportsPanelAdministration\Ext\CommandModule.bsl
 CommonCommands\ReportsPanelSetupAndAdministration\Ext\CommandModule.bsl-->CommonCommands\ReportsPanelSetupAndAdministration\Ext\CommandModule.bsl
 CommonCommands\ReportsPanel_Analysis\Ext\CommandModule.bsl-->CommonCommands\ReportsPanel_Analysis\Ext\CommandModule.bsl
+CommonCommands\ReportsPanel_CRM\Ext\CommandModule.bsl-->CommonCommands\ReportsPanel_CRM\Ext\CommandModule.bsl
 CommonCommands\ReportsPanel_Enterprise\Ext\CommandModule.bsl-->CommonCommands\ReportsPanel_Enterprise\Ext\CommandModule.bsl
 CommonCommands\ReportsPanel_Finances\Ext\CommandModule.bsl-->CommonCommands\ReportsPanel_Finances\Ext\CommandModule.bsl
 CommonCommands\ReportsPanel_InventoryAndPurchasing\Ext\CommandModule.bsl-->CommonCommands\ReportsPanel_InventoryAndPurchasing\Ext\CommandModule.bsl
@@ -3270,6 +3272,7 @@ CommonModules\EmailOperations.xml-->CommonModules\EmailOperations.xml
 CommonModules\EmailOperationsClient.xml-->CommonModules\EmailOperationsClient.xml
 CommonModules\EmailOperationsServerCall.xml-->CommonModules\EmailOperationsServerCall.xml
 CommonModules\EmailOperationsService.xml-->CommonModules\EmailOperationsService.xml
+CommonModules\EmailSBClientServer.xml-->CommonModules\EmailSBClientServer.xml
 CommonModules\EquipmentManagerClient.xml-->CommonModules\EquipmentManagerClient.xml
 CommonModules\EquipmentManagerClientOverridable.xml-->CommonModules\EquipmentManagerClientOverridable.xml
 CommonModules\EquipmentManagerClientReUse.xml-->CommonModules\EquipmentManagerClientReUse.xml
@@ -3281,6 +3284,7 @@ CommonModules\EventLogMonitor.xml-->CommonModules\EventLogMonitor.xml
 CommonModules\EventLogMonitorAnalysisService.xml-->CommonModules\EventLogMonitorAnalysisService.xml
 CommonModules\EventLogMonitorClient.xml-->CommonModules\EventLogMonitorClient.xml
 CommonModules\EventLogMonitorServerCall.xml-->CommonModules\EventLogMonitorServerCall.xml
+CommonModules\EventsSBClientServer.xml-->CommonModules\EventsSBClientServer.xml
 CommonModules\ExchangeMobileApplicationOverridable.xml-->CommonModules\ExchangeMobileApplicationOverridable.xml
 CommonModules\ExchangeWithSite.xml-->CommonModules\ExchangeWithSite.xml
 CommonModules\ExchangeWithSiteReUse.xml-->CommonModules\ExchangeWithSiteReUse.xml
@@ -3795,6 +3799,7 @@ CommonModules\EmailOperations\Ext\Module.bsl-->CommonModules\EmailOperations\Ext
 CommonModules\EmailOperationsClient\Ext\Module.bsl-->CommonModules\EmailOperationsClient\Ext\Module.bsl
 CommonModules\EmailOperationsServerCall\Ext\Module.bsl-->CommonModules\EmailOperationsServerCall\Ext\Module.bsl
 CommonModules\EmailOperationsService\Ext\Module.bsl-->CommonModules\EmailOperationsService\Ext\Module.bsl
+CommonModules\EmailSBClientServer\Ext\Module.bsl-->CommonModules\EmailSBClientServer\Ext\Module.bsl
 CommonModules\EquipmentManagerClient\Ext\Module.bsl-->CommonModules\EquipmentManagerClient\Ext\Module.bsl
 CommonModules\EquipmentManagerClientOverridable\Ext\Module.bsl-->CommonModules\EquipmentManagerClientOverridable\Ext\Module.bsl
 CommonModules\EquipmentManagerClientReUse\Ext\Module.bsl-->CommonModules\EquipmentManagerClientReUse\Ext\Module.bsl
@@ -3806,6 +3811,7 @@ CommonModules\EventLogMonitor\Ext\Module.bsl-->CommonModules\EventLogMonitor\Ext
 CommonModules\EventLogMonitorAnalysisService\Ext\Module.bsl-->CommonModules\EventLogMonitorAnalysisService\Ext\Module.bsl
 CommonModules\EventLogMonitorClient\Ext\Module.bsl-->CommonModules\EventLogMonitorClient\Ext\Module.bsl
 CommonModules\EventLogMonitorServerCall\Ext\Module.bsl-->CommonModules\EventLogMonitorServerCall\Ext\Module.bsl
+CommonModules\EventsSBClientServer\Ext\Module.bsl-->CommonModules\EventsSBClientServer\Ext\Module.bsl
 CommonModules\ExchangeMobileApplicationOverridable\Ext\Module.bsl-->CommonModules\ExchangeMobileApplicationOverridable\Ext\Module.bsl
 CommonModules\ExchangeWithSite\Ext\Module.bsl-->CommonModules\ExchangeWithSite\Ext\Module.bsl
 CommonModules\ExchangeWithSiteReUse\Ext\Module.bsl-->CommonModules\ExchangeWithSiteReUse\Ext\Module.bsl
@@ -4265,6 +4271,7 @@ CommonPictures\EndEditFile.xml-->CommonPictures\EndEditFile.xml
 CommonPictures\Error32.xml-->CommonPictures\Error32.xml
 CommonPictures\Errors16AreNoticed.xml-->CommonPictures\Errors16AreNoticed.xml
 CommonPictures\ErrorsNotNoticed16.xml-->CommonPictures\ErrorsNotNoticed16.xml
+CommonPictures\EventCollection.xml-->CommonPictures\EventCollection.xml
 CommonPictures\EventLogMonitorNote.xml-->CommonPictures\EventLogMonitorNote.xml
 CommonPictures\EventsList.xml-->CommonPictures\EventsList.xml
 CommonPictures\ExchangePlanNodeIcons.xml-->CommonPictures\ExchangePlanNodeIcons.xml
@@ -4824,6 +4831,8 @@ CommonPictures\Errors16AreNoticed\Ext\Picture.xml-->CommonPictures\Errors16AreNo
 CommonPictures\Errors16AreNoticed\Ext\Picture\Picture.png-->CommonPictures\Errors16AreNoticed\Ext\Picture\Picture.png
 CommonPictures\ErrorsNotNoticed16\Ext\Picture.xml-->CommonPictures\ErrorsNotNoticed16\Ext\Picture.xml
 CommonPictures\ErrorsNotNoticed16\Ext\Picture\Picture.png-->CommonPictures\ErrorsNotNoticed16\Ext\Picture\Picture.png
+CommonPictures\EventCollection\Ext\Picture.xml-->CommonPictures\EventCollection\Ext\Picture.xml
+CommonPictures\EventCollection\Ext\Picture\Picture.png-->CommonPictures\EventCollection\Ext\Picture\Picture.png
 CommonPictures\EventLogMonitorNote\Ext\Picture.xml-->CommonPictures\EventLogMonitorNote\Ext\Picture.xml
 CommonPictures\EventLogMonitorNote\Ext\Picture\Picture.png-->CommonPictures\EventLogMonitorNote\Ext\Picture\Picture.png
 CommonPictures\EventsList\Ext\Picture.xml-->CommonPictures\EventsList\Ext\Picture.xml
@@ -8026,8 +8035,8 @@ Documents\Event\Commands\CommandJobOrderCreateBasedOn\Ext\CommandModule.bsl-->Do
 Documents\Event\Commands\Email\Ext\CommandModule.bsl-->Documents\Event\Commands\Email\Ext\CommandModule.bsl
 Documents\Event\Commands\OpenEventByBasis\Ext\CommandModule.bsl-->Documents\Event\Commands\OpenEventByBasis\Ext\CommandModule.bsl
 Documents\Event\Commands\OtherEvents\Ext\CommandModule.bsl-->Documents\Event\Commands\OtherEvents\Ext\CommandModule.bsl
+Documents\Event\Commands\PersonalMeetings\Ext\CommandModule.bsl-->Documents\Event\Commands\PersonalMeetings\Ext\CommandModule.bsl
 Documents\Event\Commands\PhoneCalls\Ext\CommandModule.bsl-->Documents\Event\Commands\PhoneCalls\Ext\CommandModule.bsl
-Documents\Event\Commands\PrivateMeetings\Ext\CommandModule.bsl-->Documents\Event\Commands\PrivateMeetings\Ext\CommandModule.bsl
 Documents\Event\Ext\Help.xml-->Documents\Event\Ext\Help.xml
 Documents\Event\Ext\ManagerModule.bsl-->Documents\Event\Ext\ManagerModule.bsl
 Documents\Event\Ext\ObjectModule.bsl-->Documents\Event\Ext\ObjectModule.bsl
@@ -8809,6 +8818,7 @@ Documents\TransferBetweenCells\Templates\PF_MXL_TransferBetweenCells.xml-->Docum
 Documents\TransferBetweenCells\Templates\PF_MXL_TransferBetweenCells\Ext\Template.xml-->Documents\TransferBetweenCells\Templates\PF_MXL_TransferBetweenCells\Ext\Template.xml
 Documents\WorkOrder\Commands\CommandEventCreateBasedOn\Ext\CommandModule.bsl-->Documents\WorkOrder\Commands\CommandEventCreateBasedOn\Ext\CommandModule.bsl
 Documents\WorkOrder\Commands\EnterTimeTracking\Ext\CommandModule.bsl-->Documents\WorkOrder\Commands\EnterTimeTracking\Ext\CommandModule.bsl
+Documents\WorkOrder\Commands\OpenWorOrdersListSectionMain\Ext\CommandModule.bsl-->Documents\WorkOrder\Commands\OpenWorOrdersListSectionMain\Ext\CommandModule.bsl
 Documents\WorkOrder\Ext\Help.xml-->Documents\WorkOrder\Ext\Help.xml
 Documents\WorkOrder\Ext\ManagerModule.bsl-->Documents\WorkOrder\Ext\ManagerModule.bsl
 Documents\WorkOrder\Ext\ObjectModule.bsl-->Documents\WorkOrder\Ext\ObjectModule.bsl
@@ -11364,6 +11374,7 @@ Subsystems\Analysis\Subsystems\Production\Ext\CommandInterface.xml-->Subsystems\
 Subsystems\Analysis\Subsystems\Sales\Ext\CommandInterface.xml-->Subsystems\Analysis\Subsystems\Sales\Ext\CommandInterface.xml
 Subsystems\Analysis\Subsystems\Warehouse\Ext\CommandInterface.xml-->Subsystems\Analysis\Subsystems\Warehouse\Ext\CommandInterface.xml
 Subsystems\CRM\Ext\CommandInterface.xml-->Subsystems\CRM\Ext\CommandInterface.xml
+Subsystems\CRM\Subsystems\Analytics.xml-->Subsystems\CRM\Subsystems\Analytics.xml
 Subsystems\CRM\Subsystems\CRMSubsection.xml-->Subsystems\CRM\Subsystems\CRMSubsection.xml
 Subsystems\CRM\Subsystems\Events.xml-->Subsystems\CRM\Subsystems\Events.xml
 Subsystems\CRM\Subsystems\OrdersAndInvoices.xml-->Subsystems\CRM\Subsystems\OrdersAndInvoices.xml

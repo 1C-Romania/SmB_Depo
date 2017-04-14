@@ -299,7 +299,7 @@
 							<ExtendedTooltip name="GroupLowerRowColumnsExtendedTooltip" id="112"/>
 							<ChildItems>
 								<LabelField name="MembersList" id="113">
-									<DataPath>List.MembersList</DataPath>
+									<DataPath>~List.MembersList</DataPath>
 									<Title>
 										<v8:item>
 											<v8:lang>en</v8:lang>
@@ -357,17 +357,17 @@
 	DocumentEvent.Author AS Author,
 	DocumentEvent.Responsible AS Responsible,
 	DocumentEvent.PointInTime AS PointInTime,
-	DocumentEvent.MembersList AS MembersList,
-	DocumentEvent.Parties.(
+	DocumentEvent.ParticipantsList AS ParticipantsList,
+	DocumentEvent.Participants.(
 		Ref,
 		LineNumber,
 		Contact,
 		HowToContact
-	) AS TSParticipants
-	FROM
+	) AS TPParticipants
+FROM
 	Document.Event AS DocumentEvent
-	{WHERE
-		(DocumentEvent.Parties.Contact = &amp;Contact)}</QueryText>
+{WHERE
+	(DocumentEvent.Participants.Contact = &amp;Contact)}</QueryText>
 				<MainTable>Document.Event</MainTable>
 				<ListSettings>
 					<dcsset:filter>

@@ -105,14 +105,14 @@ ELSE 3 END</dcscom:expression>
 		<dataSource>DataSource1</dataSource>
 		<query>SELECT ALLOWED
 	CASE
-		WHEN BEGINOFPERIOD(Event.EventEnding, Day) &lt; BEGINOFPERIOD(&amp;CurrentDate, Day)
+		WHEN BEGINOFPERIOD(Event.EventEnding, DAY) &lt; BEGINOFPERIOD(&amp;CurrentDate, DAY)
 			THEN "Overdue"
-		WHEN BEGINOFPERIOD(Event.EventBegin, Day) = BEGINOFPERIOD(&amp;CurrentDate, Day)
+		WHEN BEGINOFPERIOD(Event.EventBegin, DAY) = BEGINOFPERIOD(&amp;CurrentDate, DAY)
 			THEN "For today"
 		ELSE "Planned"
 	END AS Status,
 	CASE
-		WHEN BEGINOFPERIOD(Event.EventEnding, Day) &lt; BEGINOFPERIOD(&amp;CurrentDate, Day)
+		WHEN BEGINOFPERIOD(Event.EventEnding, DAY) &lt; BEGINOFPERIOD(&amp;CurrentDate, DAY)
 			THEN Event.EventEnding
 		ELSE Event.EventBegin
 	END AS EventDate,
@@ -121,18 +121,18 @@ ELSE 3 END</dcscom:expression>
 	Event.State AS State,
 	Event.Subject AS Subject,
 	Event.Content AS Content,
-	ISNULL(EventParties.Contact, VALUE(Catalog.Counterparties.EmptyRef)) AS Counterparty,
+	ISNULL(EventParticipants.Contact, VALUE(Catalog.Counterparties.EmptyRef)) AS Counterparty,
 	Event.Responsible AS Responsible,
 	Event.EventEnding AS EndDate,
 	Event.EventBegin AS StartDate
-	FROM
+FROM
 	Document.Event AS Event
-		LEFT JOIN Document.Event.Parties AS EventParties
-		ON Event.Ref = EventParties.Ref
-			AND (EventParties.LineNumber = 1)
-	WHERE
+		LEFT JOIN Document.Event.Participants AS EventParticipants
+		ON Event.Ref = EventParticipants.Ref
+			AND (EventParticipants.LineNumber = 1)
+WHERE
 	Event.EventBegin &lt; &amp;EndOfPeriod
-		AND Not Event.DeletionMark</query>
+	AND NOT Event.DeletionMark</query>
 	</dataSet>
 	<parameter>
 		<name>EndOfPeriod</name>

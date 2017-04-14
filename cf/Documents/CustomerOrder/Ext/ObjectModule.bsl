@@ -982,8 +982,8 @@ Procedure Filling(FillingData, StandardProcessing) Export
 	ElsIf TypeOf(FillingData) = Type("DocumentRef.Event") Then
 	
 		Event = FillingData.Ref;
-		If FillingData.Parties.Count() > 0 AND TypeOf(FillingData.Parties[0].Contact) = Type("CatalogRef.Counterparties") Then
-			Counterparty = FillingData.Parties[0].Contact;
+		If FillingData.Participants.Count() > 0 AND TypeOf(FillingData.Participants[0].Contact) = Type("CatalogRef.Counterparties") Then
+			Counterparty = FillingData.Participants[0].Contact;
 			Contract = Counterparty.ContractByDefault;
 		EndIf;
 		

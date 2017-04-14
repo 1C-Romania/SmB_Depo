@@ -140,7 +140,7 @@
 			<AutoInsertNewRow>true</AutoInsertNewRow>
 			<AutoAddIncomplete>true</AutoAddIncomplete>
 			<EnableDrag>true</EnableDrag>
-			<DataPath>Object.Parties</DataPath>
+			<DataPath>Object.Participants</DataPath>
 			<RowFilter xsi:nil="true"/>
 			<ContextMenu name="RecipientsContextMenu" id="232"/>
 			<AutoCommandBar name="RecipientCommandPanel" id="233"/>
@@ -171,7 +171,7 @@
 			</SearchControlAddition>
 			<ChildItems>
 				<InputField name="ContactRecipients" id="314">
-					<DataPath>Object.Parties.Contact</DataPath>
+					<DataPath>Object.Participants.Contact</DataPath>
 					<EditMode>EnterOnInput</EditMode>
 					<Width>37</Width>
 					<ChoiceButton>true</ChoiceButton>
@@ -185,7 +185,7 @@
 					</Events>
 				</InputField>
 				<InputField name="RecipientsHowToContact" id="317">
-					<DataPath>Object.Parties.HowToContact</DataPath>
+					<DataPath>Object.Participants.HowToContact</DataPath>
 					<Title>
 						<v8:item>
 							<v8:lang>en</v8:lang>
@@ -212,7 +212,7 @@
 					<ExtendedTooltip name="RecipientsHowToContactExtendedTooltip" id="319"/>
 				</InputField>
 				<InputField name="RecipientsDeliveryStatus" id="333">
-					<DataPath>Object.Parties.DeliveryStatus</DataPath>
+					<DataPath>Object.Participants.DeliveryStatus</DataPath>
 					<ReadOnly>true</ReadOnly>
 					<EditMode>EnterOnInput</EditMode>
 					<ContextMenu name="RecipientsDeliveryStatusContextMenu" id="334"/>

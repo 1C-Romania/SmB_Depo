@@ -1,37 +1,27 @@
-﻿#Region FormEventsHandlers
+﻿
+#Region FormEventHandlers
 
-// Procedure - OnCreateAtServer event handler.
-//
 &AtServer
 Procedure OnCreateAtServer(Cancel, StandardProcessing)
 	
-	TypeArray = New Array;
-	TypeArray.Add(Type("String"));
-	Items.ContactsContact.TypeRestriction = New TypeDescription(TypeArray, New StringQualifiers(100));
-	Items.Subject.TypeRestriction			 = New TypeDescription(TypeArray, New StringQualifiers(200));
+	Items.ContactsContact.TypeRestriction	= New TypeDescription("String",, New StringQualifiers(100));
+	Items.Subject.TypeRestriction			= New TypeDescription("String",, New StringQualifiers(200));
 	
-	SmallBusinessServer.FillDocumentHeader(
-		Object,
-		,
-		Parameters.CopyingValue,
-		Parameters.Basis,
-		PostingIsAllowed
-	);
-	
-	If Parameters.Key.IsEmpty() Then
+	If ValueIsFilled(Object.Ref) Then
+		DocumentDate = Object.Date;
+	Else
 		ReadAttributes(Object);
 		AutoTitle = False;
-		Title = "Event: " + Object.EventType + " (create)";
-		DocumentDate = CurrentDate();
-	Else
-		DocumentDate = Object.Date;
+		Title = StrTemplate(
+		NStr("ru = 'Событие: %1 (создание)'; en = 'Event: %1 (create)'"),
+		Object.EventType);
+		DocumentDate = CurrentSessionDate();
 	EndIf;
 	
 	NotifyWorkCalendar = False;
 	
-	// Filling time selection list
-	SmallBusinessClientServer.FillListByList(GetListSelectTime(Object.EventBegin),Items.EventBeginTime.ChoiceList);
-	SmallBusinessClientServer.FillListByList(GetListSelectTime(Object.EventEnding),Items.EventEndTime.ChoiceList);
+	EventsSBClientServer.FillTimeChoiceList(Items.EventBeginTime);
+	EventsSBClientServer.FillTimeChoiceList(Items.EventEndTime);
 	
 	// Subject history for automatic selection
 	ImportSubjectHistoryByString();
@@ -48,10 +38,17 @@ Procedure OnCreateAtServer(Cancel, StandardProcessing)
 	AdditionalReportsAndDataProcessors.OnCreateAtServer(ThisForm);
 	// End StandardSubsystems.AdditionalReportsAndDataProcessors
 	
-EndProcedure // OnCreateAtServer()
+EndProcedure
 
-// Procedure - event handler NotificationProcessing.
-//
+&AtClient
+Procedure OnClose()
+	
+	If NotifyWorkCalendar Then
+		Notify("EventChanged", Object.Responsible);
+	EndIf;
+	
+EndProcedure
+
 &AtClient
 Procedure NotificationProcessing(EventName, Parameter, Source)
 	
@@ -63,19 +60,6 @@ Procedure NotificationProcessing(EventName, Parameter, Source)
 	
 EndProcedure
 
-// Procedure - event handler OnClose.
-//
-&AtClient
-Procedure OnClose()
-	
-	If NotifyWorkCalendar Then
-		Notify("EventChanged", Object.Responsible);
-	EndIf;
-	
-EndProcedure
-
-// Procedure - event handler NewWriteDataProcessor.
-//
 &AtClient
 Procedure NewWriteProcessing(NewObject, Source, StandardProcessing)
 	
@@ -94,8 +78,6 @@ Procedure NewWriteProcessing(NewObject, Source, StandardProcessing)
 	
 EndProcedure
 
-// Procedure - OnReadAtServer event handler.
-//
 &AtServer
 Procedure OnReadAtServer(CurrentObject)
 	
@@ -107,8 +89,6 @@ Procedure OnReadAtServer(CurrentObject)
 	
 EndProcedure
 
-// Procedure - event handler BeforeWriteAtServer.
-//
 &AtServer
 Procedure BeforeWriteAtServer(Cancel, CurrentObject, WriteParameters)
 	
@@ -137,8 +117,6 @@ Procedure BeforeWriteAtServer(Cancel, CurrentObject, WriteParameters)
 	
 EndProcedure
 
-// Procedure - event handler AfterWriting.
-//
 &AtClient
 Procedure AfterWrite(WriteParameters)
 	
@@ -147,15 +125,13 @@ Procedure AfterWrite(WriteParameters)
 	
 EndProcedure
 
-// Procedure - event handler FillCheckProcessingAtServer.
-//
 &AtServer
 Procedure FillCheckProcessingAtServer(Cancel, CheckedAttributes)
 	
 	For Each RowContacts IN Contacts Do
 		If Not ValueIsFilled(RowContacts.Contact) Then
 			CommonUseClientServer.MessageToUser(
-				CommonUseClientServer.TextFillingErrors("Column", "Filling", "Contact", Contacts.IndexOf(RowContacts) + 1, "Parties"),
+				CommonUseClientServer.TextFillingErrors("Column", "Filling", "Contact", Contacts.IndexOf(RowContacts) + 1, "Participants"),
 				,
 				StringFunctionsClientServer.SubstituteParametersInString("Contacts[%1].Contact", Contacts.IndexOf(RowContacts)),
 				,
@@ -172,12 +148,8 @@ EndProcedure
 
 #EndRegion
 
-#Region FormAttributesEventsHandlers
+#Region FormItemEventHandlers
 
-// Procedure - event handler OnChange of the Date input field.
-// The procedure defines the situation, when after changing the date of the document, the document appears in the other period of document numbering, and in this case the procedure assigns a new unique number to the document.
-// Overrides the corresponding form parameter.
-//
 &AtClient
 Procedure DateOnChange(Item)
 	
@@ -193,26 +165,48 @@ Procedure DateOnChange(Item)
 	
 EndProcedure
 
-// Procedure - event handler OnChange input field EventBeginDate.
-//
+&AtClient
+Procedure EventBeginTimeOnChange(Item)
+	
+	FormDurationPresentation(ThisObject);
+	
+EndProcedure
+
+&AtClient
+Procedure EventBeginTimeChoiceProcessing(Item, SelectedValue, StandardProcessing)
+	
+	SelectedValue = BegOfDay(Object.EventBegin) + (SelectedValue - BegOfDay(SelectedValue));
+	
+EndProcedure
+
 &AtClient
 Procedure EventBeginDateOnChange(Item)
 	
-	SmallBusinessClientServer.FillListByList(GetListSelectTime(Object.EventBegin),Items.EventBeginTime.ChoiceList);
+	FormDurationPresentation(ThisObject);
 	
 EndProcedure
 
-// Procedure - event handler OnChange input field EventEndingDate.
-//
+&AtClient
+Procedure EventEndTimeOnChange(Item)
+	
+	FormDurationPresentation(ThisObject);
+	
+EndProcedure
+
+&AtClient
+Procedure EventEndTimeChoiceProcessing(Item, SelectedValue, StandardProcessing)
+	
+	SelectedValue = BegOfDay(Object.EventEnding) + (SelectedValue - BegOfDay(SelectedValue));
+	
+EndProcedure
+
 &AtClient
 Procedure EventEndDateOnChange(Item)
 	
-	SmallBusinessClientServer.FillListByList(GetListSelectTime(Object.EventBegin),Items.EventBeginTime.ChoiceList);
+	FormDurationPresentation(ThisObject);
 	
 EndProcedure
 
-// Procedure - event handler OnChange of the Counterparty input field.
-//
 &AtClient
 Procedure CounterpartyOnChange(Item)
 	
@@ -220,8 +214,6 @@ Procedure CounterpartyOnChange(Item)
 	
 EndProcedure
 
-// Procedure - event handler SelectionStart input field Subject.
-//
 &AtClient
 Procedure SubjectStartChoice(Item, ChoiceData, StandardProcessing)
 	
@@ -236,8 +228,6 @@ Procedure SubjectStartChoice(Item, ChoiceData, StandardProcessing)
 	
 EndProcedure
 
-// Procedure - event handler SelectionDataProcessor input field Subject.
-//
 &AtClient
 Procedure SubjectChoiceProcessing(Item, ValueSelected, StandardProcessing)
 	
@@ -251,8 +241,6 @@ Procedure SubjectChoiceProcessing(Item, ValueSelected, StandardProcessing)
 	
 EndProcedure
 
-// Procedure - event handler AutoPick input field Subject.
-//
 &AtClient
 Procedure SubjectAutoSelection(Item, Text, ChoiceData, Parameters, Wait, StandardProcessing)
 	
@@ -265,8 +253,6 @@ Procedure SubjectAutoSelection(Item, Text, ChoiceData, Parameters, Wait, Standar
 	
 EndProcedure
 
-// Procedure - event handler SelectionStart of item ContactsContact.
-//
 &AtClient
 Procedure ContactsContactStartChoice(Item, ChoiceData, StandardProcessing)
 	
@@ -280,13 +266,12 @@ Procedure ContactsContactStartChoice(Item, ChoiceData, StandardProcessing)
 	FormParameters = New Structure;
 	FormParameters.Insert("Filter", New Structure("Owner",Counterparty));
 	FormParameters.Insert("CurrentRow", Items.Contacts.CurrentData.Contact);
+	FormParameters.Insert("ChoiceMode", True);
 	
 	OpenForm("Catalog.ContactPersons.ChoiceForm", FormParameters, Item);
 	
 EndProcedure
 
-// Procedure - events handler Open item ContactsContact.
-//
 &AtClient
 Procedure ContactsContactOpen(Item, StandardProcessing)
 	
@@ -298,8 +283,6 @@ Procedure ContactsContactOpen(Item, StandardProcessing)
 	
 EndProcedure
 
-// Procedure - event handler SelectionDataProcessor of item ContactsContact.
-//
 &AtClient
 Procedure ContactsContactChoiceProcessing(Item, ValueSelected, StandardProcessing)
 	
@@ -316,8 +299,6 @@ Procedure ContactsContactChoiceProcessing(Item, ValueSelected, StandardProcessin
 	
 EndProcedure
 
-// Procedure - event handler AutoPick of item ContactsContact.
-//
 &AtClient
 Procedure ContactsContactAutoPick(Item, Text, ChoiceData, Parameters, Wait, StandardProcessing)
 	
@@ -332,18 +313,19 @@ EndProcedure
 
 #Region FormCommandsHandlers
 
-// Procedure - command handler FillByBasis.
-//
 &AtClient
 Procedure FillByBasis(Command)
+	
+	If Not ValueIsFilled(Object.BasisDocument) Then
+		ShowMessageBox(Undefined, NStr("ru='Не указано основание для заполнения.'; en = 'The basis for filling is not specified.'"));
+		Возврат;
+	КонецЕсли;
 	
 	ShowQueryBox(New NotifyDescription("FillByBasisEnd", ThisObject),
 		NStr("en='Document will be completely refilled by ""Basis""! Continue?';ru='Документ будет полностью перезаполнен по ""Основанию""! Продолжить?'"), QuestionDialogMode.YesNo, 0);
 		
 EndProcedure
 
-// Procedure - command handler FillContent.
-//
 &AtClient
 Procedure FillContent(Command)
 	
@@ -353,8 +335,6 @@ Procedure FillContent(Command)
 	
 EndProcedure
 
-// Procedure - command handler FillByCounterparty.
-//
 &AtClient
 Procedure FillByCounterparty(Command)
 	
@@ -367,8 +347,6 @@ Procedure FillByCounterparty(Command)
 	
 EndProcedure
 
-// Procedure - command handler CreateContact.
-//
 &AtClient
 Procedure CreateContact(Command)
 	
@@ -379,50 +357,21 @@ Procedure CreateContact(Command)
 	
 EndProcedure
 
-// Procedure - command handler SendEmailToCounterparty.
-//
-&AtClient
-Procedure SendEmailToCounterparty(Command)
-	
-	ListOfEmailAddresses = GetEmailCounterparty(Object.Ref);
-	
-	If Object.Ref.IsEmpty() Or Modified Then
-		
-		ListOfEmailAddresses	= New ValueList;
-		NotificationText = NStr("en='Event is not written.';ru='Событие не записано.'");
-		NotificationExplanation = NStr("en='Electronic addresses
-		|list will be blank.';ru='Список электронных адресов
-		|будет пуст.'");
-		ShowUserNotification(NotificationText, , NotificationExplanation, PictureLib.Information32);
-		
-	Else
-		
-		ListOfEmailAddresses = GetEmailCounterparty(Object.Ref);
-		
-	EndIf;
-	
-	SendingParameters = New Structure("Recipient, Subject, Text", ListOfEmailAddresses, Object.Subject, Object.Content);
-	EmailOperationsClient.CreateNewEmail(SendingParameters);
-	
-EndProcedure
-
 #EndRegion
 
-#Region CommonUseProceduresAndFunctions
+#Region ServiceProceduresAndFunctions
 
-// Procedure synchronizes the data object with form attributes.
-//
 &AtServer
 Procedure ReadAttributes(Object)
 	
 	Contacts.Clear();
 	FirstRow = True;
 	
-	For Each RowParticipants IN Object.Parties Do
+	For Each RowParticipants IN Object.Participants Do
 		
 		If FirstRow Then
-			Counterparty = RowParticipants.Contact;
-			HowToContact = RowParticipants.HowToContact;
+			Counterparty				= RowParticipants.Contact;
+			CounterpartyHowToContact	= RowParticipants.HowToContact;
 			FirstRow = False;
 			Continue;
 		EndIf;
@@ -434,27 +383,21 @@ Procedure ReadAttributes(Object)
 	
 EndProcedure
 
-// Procedure synchronizes the data object with form attributes.
-//
 &AtServer
 Procedure WriteAttributes(Object)
 	
-	Object.Parties.Clear();
+	Object.Participants.Clear();
 	
-	RowParticipants = Object.Parties.Add();
+	RowParticipants = Object.Participants.Add();
 	RowParticipants.Contact = Counterparty;
 	RowParticipants.HowToContact = CounterpartyHowToContact;
 	
 	For Each RowContacts IN Contacts Do
-		FillPropertyValues(Object.Parties.Add(), RowContacts);
+		FillPropertyValues(Object.Participants.Add(), RowContacts);
 	EndDo;
 	
 EndProcedure
 
-// Function returns parameter structure for contact person.
-//
-// Parameters:
-//  ContactPerson	 - CatalogRef.ContactPersons	 - Contact person reference
 &AtServerNoContext
 Function GetContactPersonParameters(ContactPerson)
 	
@@ -466,62 +409,14 @@ Function GetContactPersonParameters(ContactPerson)
 	
 EndFunction
 
-// Function - Get how to contact
-//
-// Parameters:
-//  Contact				 - CatalogRef.Counterparties, CatalogRef.ContactPersons	 - Contact
-//  reference ThisIsEMail - Boolean	 - for emails only email addresses
-// returned value:
-//  String - value to connect with contact
 &AtServerNoContext
-Function GetHowToContact(Contact, ThisIsEMail = False)
+Function GetHowToContact(Contact, IsEmail = False)
 	
-	Result = "";
-	
-	Contacts = New Array;
-	Contacts.Add(Contact);
-	
-	CITypes = New Array;
-	CITypes.Add(Enums.ContactInformationTypes.EmailAddress);
-	If Not ThisIsEMail Then
-		CITypes.Add(Enums.ContactInformationTypes.Phone);
-	EndIf;
-	
-	CITable = ContactInformationManagement.ObjectsContactInformation(Contacts, CITypes);
-	CITable.Sort("Type DESC");
-	For Each CIRow IN CITable Do
-		Result = "" + Result + ?(Result = "", "", ", ") + CIRow.Presentation;
-	EndDo;
-	
-	Return Result;
+	Return Documents.Event.GetHowToContact(Contact, IsEmail);
 	
 EndFunction
 
-// Procedure allows to get list for time selection broken by hours.
-//
-&AtClientAtServerNoContext
-Function GetListSelectTime(DateForChoice)
-	
-	WorkingDayBeginning    = BegOfDay(DateForChoice);
-	WorkingDayEnd = BegOfHour(EndOfDay(DateForChoice));
-	
-	TimeList = New ValueList;
-	
-	ListTime = WorkingDayBeginning;
-	While BegOfHour(ListTime) <= WorkingDayEnd Do
-		
-		TimeList.Add(ListTime, Format(ListTime,"DF=HH:mm; DP=00:00"));
-		ListTime = ListTime + 3600;
-		
-	EndDo;
-	
-	Return TimeList;
-	
-EndFunction // GetTimeChoiceList()
-
 &AtServerNoContext
-// It receives data set from server for the DateOnChange procedure.
-//
 Function GetDataDateOnChange(DocumentRef, DateNew, DateBeforeChange)
 	
 	StructureData = New Structure();
@@ -529,92 +424,7 @@ Function GetDataDateOnChange(DocumentRef, DateNew, DateBeforeChange)
 	
 	Return StructureData;
 	
-EndFunction // GetDataDateOnChange()
-
-// It gets EMail by sent link
-// 
-// RefOnCurrentDocument - references on the current document if the document is not written then it returns Undefined. If the document is written then it returns value list "ElectronicAddressList"
-//
-// List format:
-// 	Presentation - recipient
-// 	name value      - Mail address
-//
-&AtServerNoContext
-Function GetEmailCounterparty(RefOnCurrentDocument)
-	
-	Result = New Array;
-	MailAddressArray = New Array;
-	StructureRecipient = New Structure("Presentation, Address", 
-		?(RefOnCurrentDocument.Parties.Count() = 0, Undefined, RefOnCurrentDocument.Parties[0].Contact));
-	
-	Query	 		= New Query;
-	Query.SetParameter("Ref", RefOnCurrentDocument);
-	
-	Query.Text	= 
-	"SELECT
-	|	ContactPersonsContactInformation.Ref AS Contact,
-	|	ContactPersonsContactInformation.EMail_Address,
-	|	1 AS Order
-	|FROM
-	|	Catalog.ContactPersons.ContactInformation AS ContactPersonsContactInformation
-	|WHERE
-	|	ContactPersonsContactInformation.Ref In
-	|			(SELECT
-	|				EventParties.Contact
-	|			FROM
-	|				Document.Event.Parties AS EventParties
-	|			WHERE
-	|				EventParties.Ref = &Ref
-	|				AND EventParties.LineNumber <> 1)
-	|
-	|UNION ALL
-	|
-	|SELECT TOP 1
-	|	CounterpartiesContactInformation.Ref,
-	|	CounterpartiesContactInformation.EMail_Address,
-	|	2
-	|FROM
-	|	Catalog.Counterparties.ContactInformation AS CounterpartiesContactInformation
-	|WHERE
-	|	CounterpartiesContactInformation.Ref In
-	|			(SELECT
-	|				EventParties.Contact
-	|			FROM
-	|				Document.Event.Parties AS EventParties
-	|			WHERE
-	|				EventParties.Ref = &Ref
-	|				AND EventParties.LineNumber = 1)
-	|
-	|ORDER BY
-	|	Order";
-	
-	SelectionFromQuery					= Query.Execute().Select();
-	AddCounterpartyEmailAddress = True;
-	
-	While SelectionFromQuery.Next() Do
-		
-		If Not ValueIsFilled(SelectionFromQuery.EMail_Address) 
-			OR (SelectionFromQuery.Order = 2 AND Not AddCounterpartyEmailAddress) Then
-			
-			Continue;
-			
-		EndIf;
-		
-		If MailAddressArray.Find(SelectionFromQuery.EMail_Address) = Undefined Then
-			
-			MailAddressArray.Add(SelectionFromQuery.EMail_Address);
-			AddCounterpartyEmailAddress = False;
-			
-		EndIf;
-		
-	EndDo;
-	
-	StructureRecipient.Address = StringFunctionsClientServer.GetStringFromSubstringArray(MailAddressArray, "; ");
-	Result.Add(StructureRecipient);
-	
-	Return Result;
-	
-EndFunction //GetEMAILCounterparty()
+EndFunction
 
 &AtServer
 Procedure CounterpartyOnChangeServer()
@@ -630,12 +440,6 @@ Procedure CounterpartyOnChangeServer()
 	
 EndProcedure
 
-#EndRegion
-
-#Region ProceduresAndFunctionsForAutomaticSelections
-
-// Procedure imports the event subject automatic selection history.
-//
 &AtServer
 Procedure ImportSubjectHistoryByString()
 	
@@ -644,12 +448,8 @@ Procedure ImportSubjectHistoryByString()
 		SubjectRowHistory.LoadValues(ListChoiceOfTopics);
 	EndIf;
 	
-EndProcedure // ImportEventSubjectChoiceList()
+EndProcedure
 
-// Procedure fills subject selection data.
-//
-// Parameters:
-//  SearchString - String	 - The SubjectHistoryByRow text being typed - ValueList	 - Used subjects in the row form
 &AtServerNoContext
 Function GetSubjectChoiceList(val SearchString, val SubjectRowHistory)
 	
@@ -663,7 +463,7 @@ Function GetSubjectChoiceList(val SearchString, val SubjectRowHistory)
 	SubjectSelectionData = Catalogs.EventsSubjects.GetChoiceData(ChoiceParameters);
 	
 	For Each ItemOfList IN SubjectSelectionData Do
-		ListChoiceOfTopics.Add(ItemOfList.Value, New FormattedString(ItemOfList.Presentation, " (event subject)"));
+		ListChoiceOfTopics.Add(ItemOfList.Value, New FormattedString(ItemOfList.Presentation, NStr("ru = ' (тема события)'; en = ' (event subject)'")));
 	EndDo;
 	
 	For Each HistoryItem IN SubjectRowHistory Do
@@ -677,10 +477,6 @@ Function GetSubjectChoiceList(val SearchString, val SubjectRowHistory)
 	
 EndFunction
 
-// Procedure fills contact selection data.
-//
-// Parameters:
-//  SearchString - String	 - Text being typed
 &AtServerNoContext
 Function GetContactChoiceList(val SearchString, Counterparty)
 	
@@ -698,8 +494,6 @@ EndFunction
 
 #Region SecondaryDataFilling
 
-// Procedure fills the event content from the subject template.
-//
 &AtClient
 Procedure FillContentEvents(EventSubject)
 	
@@ -733,16 +527,14 @@ Procedure FillEventContentFragment(Val EventSubject)
 	
 	Object.Content = GetContentSubject(EventSubject);
 	
-EndProcedure // FillEventContent()
+EndProcedure
 
-// Function returns the content by selected subject.
-//
 &AtServerNoContext
 Function GetContentSubject(EventSubject)
 	
 	Return EventSubject.Content;
 	
-EndFunction // GetSubjectContent()
+EndFunction
 
 &AtClient
 Procedure FillByCounterpartyEnd(Result, AdditionalParameters) Export
@@ -758,20 +550,18 @@ Procedure FillByCounterpartyFragment(Val Response)
 		FillByCounterpartyServer(Counterparty);
 	EndIf;
 	
-EndProcedure // FillByCounterparty()
+EndProcedure
 
-// Procedure calls the data processor for document filling by basis.
-//
 &AtServer
 Procedure FillByCounterpartyServer(Counterparty)
 	
 	Document = FormAttributeToValue("Object");
-	Document.Fill(New Structure("FillBasis, EventType", Counterparty, Object.EventType));
+	Document.Fill(New Structure("FillingBasis, EventType", Counterparty, Object.EventType));
 	ValueToFormAttribute(Document, "Object");
 	
 	ReadAttributes(Object);
 	
-EndProcedure // FillPartisipantsByCounterparty()
+EndProcedure
 
 &AtClient
 Procedure FillByBasisEnd(Result, AdditionalParameters) Export
@@ -780,20 +570,82 @@ Procedure FillByBasisEnd(Result, AdditionalParameters) Export
 		FillByBasisServer(Object.BasisDocument);
 	EndIf;
 	
-EndProcedure // FillByBasis()
+EndProcedure
 
-// Procedure calls the data processor for document filling by basis.
-//
 &AtServer
 Procedure FillByBasisServer(BasisDocument)
 	
 	DocumentObject = FormAttributeToValue("Object");
-	DocumentObject.Fill(New Structure("FillBasis, EventType", BasisDocument, Object.EventType));
+	DocumentObject.Fill(New Structure("FillingBasis, EventType, Responsible", BasisDocument, Object.EventType, Object.Responsible));
 	ValueToFormAttribute(DocumentObject, "Object");
 	
 	ReadAttributes(DocumentObject);
 	
-EndProcedure // FillByDocument()
+EndProcedure
+
+&AtClientAtServerNoContext
+Procedure FormDurationPresentation(Form)
+	
+	Form.DurationPresentation = "";
+	
+	Begin	= Form.Object.EventBegin;
+	End		= Form.Object.EventEnding;
+	
+	If Not ValueIsFilled(Begin)
+		Or Not ValueIsFilled(End) Then
+		
+		Return;
+	EndIf;
+	
+	DurationSec = End - Begin;
+	
+	Days = Int(DurationSec / 86400);
+	CaptionDays = SmallBusinessClientServer.PluralForm(
+		NStr("ru = 'день'; en = 'day'"),
+		NStr("ru = 'дня'; en = 'day'"),
+		NStr("ru = 'дней'; en = 'days'"),
+		Days
+	);
+	
+	Hours = Int((DurationSec - Days * 86400) / 3600);
+	CaptionHours = SmallBusinessClientServer.PluralForm(
+		NStr("ru = 'час'; en = 'hour'"),
+		NStr("ru = 'часа'; en = 'hour'"),
+		NStr("ru = 'часов'; en = 'hours'"),
+		Hours
+	);
+	
+	Minutes = Int((DurationSec - Days * 86400 - Hours * 3600) / 60);
+	CaptionMinutes = SmallBusinessClientServer.PluralForm(
+		NStr("ru = 'минута'; en = 'minute'"),
+		NStr("ru = 'минуты'; en = 'minute'"),
+		NStr("ru = 'минут'; en = 'minutes'"),
+		Minutes
+	);
+	
+	If Days > 0 Тогда 
+		Form.DurationPresentation = Form.DurationPresentation + String(Days) + " " + CaptionDays;
+	EndIf;
+	
+	If Hours > 0 Then 
+		
+		If Days > 0 Then
+			Form.DurationPresentation = Form.DurationPresentation + " ";
+		EndIf;
+		
+		Form.DurationPresentation = Form.DurationPresentation + String(Hours) + " " + CaptionHours;
+	EndIf;
+	
+	If Minutes > 0 Then 
+		
+		If Days > 0 Or Hours > 0 Then
+			Form.DurationPresentation = Form.DurationPresentation + " ";
+		EndIf;
+		
+		Form.DurationPresentation = Form.DurationPresentation + String(Minutes) + " " + CaptionMinutes;
+	EndIf;
+	
+EndProcedure
 
 #EndRegion
 
@@ -829,6 +681,7 @@ EndProcedure
 Procedure AdditionalReportsAndProcessingsExecuteAllocatedCommandAtServer(ItemName, ExecutionResult)
 	AdditionalReportsAndDataProcessors.ExecuteAllocatedCommandAtServer(ThisForm, ItemName, ExecutionResult);
 EndProcedure
+
 // End StandardSubsystems.AdditionalReportsAndDataProcessors
 
 #EndRegion

@@ -342,6 +342,51 @@ EndProcedure
 #Region FormCommandHandlers
 
 &AtClient
+Procedure SMS(Command)
+	
+	If Items.List.CurrentData <> Undefined And ValueIsFilled(Items.List.CurrentData.Ref) Then
+		CreateEventByCounterparty("SMS", Items.List.CurrentData.Ref);
+	EndIf;
+	
+EndProcedure
+
+&AtClient
+Procedure PersonalMeeting(Command)
+	
+	If Items.List.CurrentData <> Undefined And ValueIsFilled(Items.List.CurrentData.Ref) Then
+		CreateEventByCounterparty("PersonalMeeting", Items.List.CurrentData.Ref);
+	EndIf;
+	
+EndProcedure
+
+&AtClient
+Procedure Other(Command)
+	
+	If Items.List.CurrentData <> Undefined And ValueIsFilled(Items.List.CurrentData.Ref) Then
+		CreateEventByCounterparty("Other", Items.List.CurrentData.Ref);
+	EndIf;
+	
+EndProcedure
+
+&AtClient
+Procedure PhoneCall(Command)
+	
+	If Items.List.CurrentData <> Undefined And ValueIsFilled(Items.List.CurrentData.Ref) Then
+		CreateEventByCounterparty("PhoneCall", Items.List.CurrentData.Ref);
+	EndIf;
+	
+EndProcedure
+
+&AtClient
+Procedure Email(Command)
+	
+	If Items.List.CurrentData <> Undefined And ValueIsFilled(Items.List.CurrentData.Ref) Then
+		CreateEventByCounterparty("Email", Items.List.CurrentData.Ref);
+	EndIf;
+	
+EndProcedure
+
+&AtClient
 Procedure HierarchyChange(Command)
 	
 	If Items.FilterHierarchy.CurrentData = Undefined

@@ -62,7 +62,16 @@
 					<xr:PasswordMode>false</xr:PasswordMode>
 					<xr:MarkNegatives>false</xr:MarkNegatives>
 					<xr:MinValue xsi:nil="true"/>
-					<xr:Synonym/>
+					<xr:Synonym>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Posted</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Проведен</v8:content>
+						</v8:item>
+					</xr:Synonym>
 					<xr:Comment/>
 					<xr:FullTextSearch>Use</xr:FullTextSearch>
 					<xr:ChoiceParameterLinks/>
@@ -87,7 +96,16 @@
 					<xr:PasswordMode>false</xr:PasswordMode>
 					<xr:MarkNegatives>false</xr:MarkNegatives>
 					<xr:MinValue xsi:nil="true"/>
-					<xr:Synonym/>
+					<xr:Synonym>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Ref</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Ссылка</v8:content>
+						</v8:item>
+					</xr:Synonym>
 					<xr:Comment/>
 					<xr:FullTextSearch>Use</xr:FullTextSearch>
 					<xr:ChoiceParameterLinks/>
@@ -112,7 +130,16 @@
 					<xr:PasswordMode>false</xr:PasswordMode>
 					<xr:MarkNegatives>false</xr:MarkNegatives>
 					<xr:MinValue xsi:nil="true"/>
-					<xr:Synonym/>
+					<xr:Synonym>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Deletion mark</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Пометка удаления</v8:content>
+						</v8:item>
+					</xr:Synonym>
 					<xr:Comment/>
 					<xr:FullTextSearch>Use</xr:FullTextSearch>
 					<xr:ChoiceParameterLinks/>
@@ -137,7 +164,16 @@
 					<xr:PasswordMode>false</xr:PasswordMode>
 					<xr:MarkNegatives>false</xr:MarkNegatives>
 					<xr:MinValue xsi:nil="true"/>
-					<xr:Synonym/>
+					<xr:Synonym>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Date</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Дата</v8:content>
+						</v8:item>
+					</xr:Synonym>
 					<xr:Comment/>
 					<xr:FullTextSearch>Use</xr:FullTextSearch>
 					<xr:ChoiceParameterLinks/>
@@ -162,7 +198,16 @@
 					<xr:PasswordMode>false</xr:PasswordMode>
 					<xr:MarkNegatives>false</xr:MarkNegatives>
 					<xr:MinValue xsi:nil="true"/>
-					<xr:Synonym/>
+					<xr:Synonym>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Number</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Номер</v8:content>
+						</v8:item>
+					</xr:Synonym>
 					<xr:Comment/>
 					<xr:FullTextSearch>Use</xr:FullTextSearch>
 					<xr:ChoiceParameterLinks/>
@@ -219,6 +264,7 @@
 				<xr:Item xsi:type="xr:MDObjectRef">Catalog.ContactPersons</xr:Item>
 				<xr:Item xsi:type="xr:MDObjectRef">Document.SupplierInvoiceForPayment</xr:Item>
 				<xr:Item xsi:type="xr:MDObjectRef">Document.SettlementsReconciliation</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">Document.ProductionOrder</xr:Item>
 			</BasedOn>
 			<InputByString>
 				<xr:Field>Document.Event.StandardAttribute.Number</xr:Field>
@@ -345,11 +391,11 @@
 					<ToolTip>
 						<v8:item>
 							<v8:lang>en</v8:lang>
-							<v8:content>Classification of the event and task category</v8:content>
+							<v8:content>Event category classification</v8:content>
 						</v8:item>
 						<v8:item>
 							<v8:lang>ru</v8:lang>
-							<v8:content>Классификация категории события и задания</v8:content>
+							<v8:content>Классификация категории события</v8:content>
 						</v8:item>
 					</ToolTip>
 					<MarkNegatives>false</MarkNegatives>
@@ -361,6 +407,57 @@
 					<FillFromFillingValue>false</FillFromFillingValue>
 					<FillValue xsi:type="xr:DesignTimeRef">Catalog.EventStates.Planned</FillValue>
 					<FillChecking>ShowError</FillChecking>
+					<ChoiceFoldersAndItems>Items</ChoiceFoldersAndItems>
+					<ChoiceParameterLinks/>
+					<ChoiceParameters/>
+					<QuickChoice>Auto</QuickChoice>
+					<CreateOnInput>Auto</CreateOnInput>
+					<ChoiceForm/>
+					<LinkByType/>
+					<ChoiceHistoryOnInput>Auto</ChoiceHistoryOnInput>
+					<Indexing>DontIndex</Indexing>
+					<FullTextSearch>Use</FullTextSearch>
+				</Properties>
+			</Attribute>
+			<Attribute uuid="f9a0d435-0a6b-4700-bf68-6f89499ea8fb">
+				<Properties>
+					<Name>IncomingOutgoingEvent</Name>
+					<Synonym>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Incoming, outgoing event</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Входящее, исходящее событие</v8:content>
+						</v8:item>
+					</Synonym>
+					<Comment/>
+					<Type>
+						<v8:Type>cfg:EnumRef.IncomingOutgoingEvent</v8:Type>
+					</Type>
+					<PasswordMode>false</PasswordMode>
+					<Format/>
+					<EditFormat/>
+					<ToolTip>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Flag: incoming, outgoing event</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Признак: входящее, исходящее событие</v8:content>
+						</v8:item>
+					</ToolTip>
+					<MarkNegatives>false</MarkNegatives>
+					<Mask/>
+					<MultiLine>false</MultiLine>
+					<ExtendedEdit>false</ExtendedEdit>
+					<MinValue xsi:nil="true"/>
+					<MaxValue xsi:nil="true"/>
+					<FillFromFillingValue>false</FillFromFillingValue>
+					<FillValue xsi:type="xr:DesignTimeRef">Enum.IncomingOutgoingEvent.EnumValue.Incoming</FillValue>
+					<FillChecking>DontCheck</FillChecking>
 					<ChoiceFoldersAndItems>Items</ChoiceFoldersAndItems>
 					<ChoiceParameterLinks/>
 					<ChoiceParameters/>
@@ -439,7 +536,7 @@
 						</v8:item>
 						<v8:item>
 							<v8:lang>ru</v8:lang>
-							<v8:content>Состав</v8:content>
+							<v8:content>Содержание</v8:content>
 						</v8:item>
 					</Synonym>
 					<Comment/>
@@ -490,7 +587,7 @@
 					<Synonym>
 						<v8:item>
 							<v8:lang>en</v8:lang>
-							<v8:content>HTML contents</v8:content>
+							<v8:content>Content HTML</v8:content>
 						</v8:item>
 						<v8:item>
 							<v8:lang>ru</v8:lang>
@@ -540,17 +637,26 @@
 						</v8:item>
 						<v8:item>
 							<v8:lang>ru</v8:lang>
-							<v8:content>Images HTML</v8:content>
+							<v8:content>Картинки HTML</v8:content>
 						</v8:item>
 					</Synonym>
-					<Comment>Structure of formatted document pictures</Comment>
+					<Comment>The structure of pictures of the formatted document</Comment>
 					<Type>
 						<v8:Type>v8:ValueStorage</v8:Type>
 					</Type>
 					<PasswordMode>false</PasswordMode>
 					<Format/>
 					<EditFormat/>
-					<ToolTip/>
+					<ToolTip>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>The structure of pictures of the formatted document</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Структура картинок форматированного документа</v8:content>
+						</v8:item>
+					</ToolTip>
 					<MarkNegatives>false</MarkNegatives>
 					<Mask/>
 					<MultiLine>false</MultiLine>
@@ -582,7 +688,7 @@
 						</v8:item>
 						<v8:item>
 							<v8:lang>ru</v8:lang>
-							<v8:content>Документ основания</v8:content>
+							<v8:content>Документ основание</v8:content>
 						</v8:item>
 					</Synonym>
 					<Comment/>
@@ -597,6 +703,7 @@
 						<v8:Type>cfg:DocumentRef.ProcessingReport</v8:Type>
 						<v8:Type>cfg:DocumentRef.CashReceipt</v8:Type>
 						<v8:Type>cfg:DocumentRef.CustomerOrder</v8:Type>
+						<v8:Type>cfg:DocumentRef.ProductionOrder</v8:Type>
 						<v8:Type>cfg:DocumentRef.InvoiceForPayment</v8:Type>
 						<v8:Type>cfg:DocumentRef.Event</v8:Type>
 						<v8:Type>cfg:DocumentRef.SubcontractorReport</v8:Type>
@@ -796,7 +903,7 @@
 						</v8:item>
 						<v8:item>
 							<v8:lang>ru</v8:lang>
-							<v8:content>Ответственный менеджер</v8:content>
+							<v8:content>Ответственный</v8:content>
 						</v8:item>
 					</Synonym>
 					<Comment/>
@@ -839,11 +946,11 @@
 			</Attribute>
 			<Attribute uuid="ce2cceef-57e5-4fff-88da-a4ed86873ead">
 				<Properties>
-					<Name>MembersList</Name>
+					<Name>ParticipantsList</Name>
 					<Synonym>
 						<v8:item>
 							<v8:lang>en</v8:lang>
-							<v8:content>Members list</v8:content>
+							<v8:content>Participants list</v8:content>
 						</v8:item>
 						<v8:item>
 							<v8:lang>ru</v8:lang>
@@ -902,7 +1009,7 @@
 						</v8:item>
 						<v8:item>
 							<v8:lang>ru</v8:lang>
-							<v8:content>Ведомость составил</v8:content>
+							<v8:content>Автор</v8:content>
 						</v8:item>
 					</Synonym>
 					<Comment/>
@@ -985,64 +1092,13 @@
 					<FullTextSearch>Use</FullTextSearch>
 				</Properties>
 			</Attribute>
-			<Attribute uuid="f9a0d435-0a6b-4700-bf68-6f89499ea8fb">
-				<Properties>
-					<Name>IncomingOutgoingEvent</Name>
-					<Synonym>
-						<v8:item>
-							<v8:lang>en</v8:lang>
-							<v8:content>Incoming, Outgoing Event</v8:content>
-						</v8:item>
-						<v8:item>
-							<v8:lang>ru</v8:lang>
-							<v8:content>Входящее, исходящее событие</v8:content>
-						</v8:item>
-					</Synonym>
-					<Comment/>
-					<Type>
-						<v8:Type>cfg:EnumRef.IncomingOutgoingEvent</v8:Type>
-					</Type>
-					<PasswordMode>false</PasswordMode>
-					<Format/>
-					<EditFormat/>
-					<ToolTip>
-						<v8:item>
-							<v8:lang>en</v8:lang>
-							<v8:content>Incoming outgoing event flag</v8:content>
-						</v8:item>
-						<v8:item>
-							<v8:lang>ru</v8:lang>
-							<v8:content>Признак: входящее, исходящее событие</v8:content>
-						</v8:item>
-					</ToolTip>
-					<MarkNegatives>false</MarkNegatives>
-					<Mask/>
-					<MultiLine>false</MultiLine>
-					<ExtendedEdit>false</ExtendedEdit>
-					<MinValue xsi:nil="true"/>
-					<MaxValue xsi:nil="true"/>
-					<FillFromFillingValue>false</FillFromFillingValue>
-					<FillValue xsi:type="xr:DesignTimeRef">Enum.IncomingOutgoingEvent.EnumValue.Incoming</FillValue>
-					<FillChecking>DontCheck</FillChecking>
-					<ChoiceFoldersAndItems>Items</ChoiceFoldersAndItems>
-					<ChoiceParameterLinks/>
-					<ChoiceParameters/>
-					<QuickChoice>Auto</QuickChoice>
-					<CreateOnInput>Auto</CreateOnInput>
-					<ChoiceForm/>
-					<LinkByType/>
-					<ChoiceHistoryOnInput>Auto</ChoiceHistoryOnInput>
-					<Indexing>DontIndex</Indexing>
-					<FullTextSearch>Use</FullTextSearch>
-				</Properties>
-			</Attribute>
 			<Attribute uuid="823a076f-ec13-4ef8-8647-73873a20b492">
 				<Properties>
 					<Name>UserAccount</Name>
 					<Synonym>
 						<v8:item>
 							<v8:lang>en</v8:lang>
-							<v8:content>Profile</v8:content>
+							<v8:content>Account</v8:content>
 						</v8:item>
 						<v8:item>
 							<v8:lang>ru</v8:lang>
@@ -1214,7 +1270,7 @@
 								</v8:item>
 								<v8:item>
 									<v8:lang>ru</v8:lang>
-									<v8:content>Документ основания</v8:content>
+									<v8:content>Документ основание</v8:content>
 								</v8:item>
 							</Synonym>
 							<Comment/>
@@ -1229,6 +1285,7 @@
 								<v8:Type>cfg:DocumentRef.ProcessingReport</v8:Type>
 								<v8:Type>cfg:DocumentRef.CashReceipt</v8:Type>
 								<v8:Type>cfg:DocumentRef.CustomerOrder</v8:Type>
+								<v8:Type>cfg:DocumentRef.ProductionOrder</v8:Type>
 								<v8:Type>cfg:DocumentRef.InvoiceForPayment</v8:Type>
 								<v8:Type>cfg:DocumentRef.Event</v8:Type>
 								<v8:Type>cfg:DocumentRef.SubcontractorReport</v8:Type>
@@ -1267,21 +1324,21 @@
 			</TabularSection>
 			<TabularSection uuid="80bbb358-f129-4b0d-9001-73a6a9334a92">
 				<InternalInfo>
-					<xr:GeneratedType name="DocumentTabularSection.Event.Parties" category="TabularSection">
+					<xr:GeneratedType name="DocumentTabularSection.Event.Participants" category="TabularSection">
 						<xr:TypeId>bef8d5c1-2421-4b85-9f25-e371a1387659</xr:TypeId>
 						<xr:ValueId>1524c44a-62b4-48ad-b58b-e3a622c7bec4</xr:ValueId>
 					</xr:GeneratedType>
-					<xr:GeneratedType name="DocumentTabularSectionRow.Event.Parties" category="TabularSectionRow">
+					<xr:GeneratedType name="DocumentTabularSectionRow.Event.Participants" category="TabularSectionRow">
 						<xr:TypeId>c0b12b61-e1d8-4706-b967-4e0fe0be9a60</xr:TypeId>
 						<xr:ValueId>8d04046f-e00c-4bc8-a043-28338e9db2b4</xr:ValueId>
 					</xr:GeneratedType>
 				</InternalInfo>
 				<Properties>
-					<Name>Parties</Name>
+					<Name>Participants</Name>
 					<Synonym>
 						<v8:item>
 							<v8:lang>en</v8:lang>
-							<v8:content>Parties</v8:content>
+							<v8:content>Participants</v8:content>
 						</v8:item>
 						<v8:item>
 							<v8:lang>ru</v8:lang>
@@ -1339,7 +1396,7 @@
 								</v8:item>
 								<v8:item>
 									<v8:lang>ru</v8:lang>
-									<v8:content>Контактное лицо</v8:content>
+									<v8:content>Контакт</v8:content>
 								</v8:item>
 							</Synonym>
 							<Comment/>
@@ -1496,7 +1553,7 @@
 							<Synonym>
 								<v8:item>
 									<v8:lang>en</v8:lang>
-									<v8:content>Message identifier</v8:content>
+									<v8:content>Message ID</v8:content>
 								</v8:item>
 								<v8:item>
 									<v8:lang>ru</v8:lang>
@@ -1614,7 +1671,7 @@
 						</v8:item>
 						<v8:item>
 							<v8:lang>ru</v8:lang>
-							<v8:content>Дополнительные реквизиты объекта</v8:content>
+							<v8:content>Дополнительные реквизиты</v8:content>
 						</v8:item>
 					</Synonym>
 					<Comment/>
@@ -1890,7 +1947,7 @@
 			</Command>
 			<Command uuid="9a72a371-1d5e-4658-a7fb-84b0205d5dec">
 				<Properties>
-					<Name>PrivateMeetings</Name>
+					<Name>PersonalMeetings</Name>
 					<Synonym>
 						<v8:item>
 							<v8:lang>en</v8:lang>

@@ -65,11 +65,11 @@ EndProcedure
 Function GetOperationKindMapToForms() Export
 
 	EventForms = New Map;
-	EventForms.Insert(Enums.EventTypes.Email, "EmailForm");
-	EventForms.Insert(Enums.EventTypes.SMS,      "MessagesSMSForm");
-	EventForms.Insert(Enums.EventTypes.PhoneCall,  "EventForm");
-	EventForms.Insert(Enums.EventTypes.PrivateMeeting,     "EventForm");
-	EventForms.Insert(Enums.EventTypes.Other,            "EventForm");
+	EventForms.Insert(Enums.EventTypes.Email, 			"EmailForm");
+	EventForms.Insert(Enums.EventTypes.SMS,				"MessagesSMSForm");
+	EventForms.Insert(Enums.EventTypes.PhoneCall,		"EventForm");
+	EventForms.Insert(Enums.EventTypes.PersonalMeeting,	"EventForm");
+	EventForms.Insert(Enums.EventTypes.Other,			"EventForm");
 	
 	Return EventForms;
 
@@ -90,6 +90,63 @@ Procedure AddPrintCommands(PrintCommands) Export
 	
 EndProcedure
 
+#EndRegion
+
+#Region Interface
+
+Function GetHowToContact(Contact, IsEmail = False) Export
+	
+	Result = "";
+	
+	Contacts = New Array;
+	Contacts.Add(Contact);
+	
+	TypesCI = New Array;
+	TypesCI.Add(Enums.ContactInformationTypes.EmailAddress);
+	If Not IsEmail Then
+		TypesCI.Add(Enums.ContactInformationTypes.Phone);
+	EndIf;
+	
+	TableCI = ContactInformationManagement.ObjectsContactInformation(Contacts, TypesCI);
+	TableCI.Sort("Type DESC");
+	For Each RowCI In TableCI Do
+		Result = "" + Result + ?(Result = "", "", ", ") + RowCI.Presentation;
+	EndDo;
+	
+	Return Result;
+	
+EndFunction
+
+#EndRegion
+
+#Region EmailSB
+
+Function SubjectWithResponsePrefix(Subject, Command) Export
+	
+	If Command = EmailSBClientServer.CommandReply() Then
+		
+		If StrStartWith(Upper(Subject), "RE:") Then
+			Return Subject;
+		EndIf;
+		
+		Return StrTemplate("Re: %1", Subject);
+		
+	ElsIf Command = EmailSBClientServer.CommandForward() Then
+		
+		If StrStartWith(Upper(Subject), "Fw:") Then
+			Return Subject;
+		EndIf;
+		
+		Return StrTemplate("Fw: %1", Subject);
+		
+	Else
+		
+		Return Subject;
+		
+	EndIf;
+	
+EndFunction
+	
 #EndRegion
 
 #EndIf

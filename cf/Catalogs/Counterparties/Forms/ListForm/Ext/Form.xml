@@ -436,6 +436,46 @@
 										</Button>
 									</ChildItems>
 								</Popup>
+								<Popup name="SubMenuEvents" id="473">
+									<Title>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Events</v8:content>
+										</v8:item>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>События</v8:content>
+										</v8:item>
+									</Title>
+									<ExtendedTooltip name="SubMenuEventsExtendedTooltip" id="474"/>
+									<ChildItems>
+										<Button name="PhoneCall" id="475">
+											<Type>CommandBarButton</Type>
+											<CommandName>Form.Command.PhoneCall</CommandName>
+											<ExtendedTooltip name="PhoneCallExtendedTooltip" id="476"/>
+										</Button>
+										<Button name="Email" id="477">
+											<Type>CommandBarButton</Type>
+											<CommandName>Form.Command.Email</CommandName>
+											<ExtendedTooltip name="EmailExtendedTooltip" id="478"/>
+										</Button>
+										<Button name="SMS" id="479">
+											<Type>CommandBarButton</Type>
+											<CommandName>Form.Command.SMS</CommandName>
+											<ExtendedTooltip name="SMSExtendedTooltip" id="480"/>
+										</Button>
+										<Button name="PersonalMeeting" id="481">
+											<Type>CommandBarButton</Type>
+											<CommandName>Form.Command.PersonalMeeting</CommandName>
+											<ExtendedTooltip name="PersonalMeetingExtendedTooltip" id="482"/>
+										</Button>
+										<Button name="Other" id="483">
+											<Type>CommandBarButton</Type>
+											<CommandName>Form.Command.Other</CommandName>
+											<ExtendedTooltip name="OtherExtendedTooltip" id="484"/>
+										</Button>
+									</ChildItems>
+								</Popup>
 							</ChildItems>
 						</ButtonGroup>
 						<ButtonGroup name="GlobalCommands" id="242">
@@ -1883,6 +1923,121 @@ WHERE
 				<xr:LoadTransparent>true</xr:LoadTransparent>
 			</Picture>
 			<Action>HierarchySetDeletionMark</Action>
+		</Command>
+		<Command name="PhoneCall" id="13">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Phone call</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Телефонный звонок</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Phone call</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Телефонный звонок</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>PhoneCall</Action>
+		</Command>
+		<Command name="Email" id="14">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Email</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Электронное письмо</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Email</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Электронное письмо</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>Email</Action>
+		</Command>
+		<Command name="SMS" id="15">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>SMS</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>SMS</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>SMS</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>SMS</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>SMS</Action>
+		</Command>
+		<Command name="PersonalMeeting" id="16">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Personal meeting</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Личная встреча</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Personal meeting</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Личная встреча</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>PersonalMeeting</Action>
+		</Command>
+		<Command name="Other" id="17">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Other</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Прочее</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Other</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Прочее</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>Other</Action>
 		</Command>
 	</Commands>
 	<CommandInterface>

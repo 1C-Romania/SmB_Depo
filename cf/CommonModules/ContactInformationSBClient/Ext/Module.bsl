@@ -142,7 +142,7 @@ Function EventTypeByContactInformationType(TypeCI) Export
 	If TypeCI = PredefinedValue("Enum.ContactInformationTypes.Skype") Then
 		EventType = PredefinedValue("Enum.EventTypes.Other");
 	ElsIf TypeCI = PredefinedValue("Enum.ContactInformationTypes.Address") Then
-		EventType = PredefinedValue("Enum.EventTypes.PrivateMeeting");
+		EventType = PredefinedValue("Enum.EventTypes.PersonalMeeting");
 	ElsIf TypeCI = PredefinedValue("Enum.ContactInformationTypes.EmailAddress") Then
 		EventType = PredefinedValue("Enum.EventTypes.Email");
 	ElsIf TypeCI = PredefinedValue("Enum.ContactInformationTypes.WebPage") Then

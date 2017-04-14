@@ -577,7 +577,7 @@ Function SendEmailMailing()
 			Event.Subject = Object.Subject;
 			Event.Responsible = Object.Responsible;
 			Event.Author = Object.Author;
-			RowParticipants = Event.Parties.Add();
+			RowParticipants = Event.Participants.Add();
 			FillPropertyValues(RowParticipants, RecipientRow);
 			Event.Write();
 			
@@ -642,7 +642,7 @@ Function SendSMSMailing()
 			Event.Responsible = Object.Responsible;
 			Event.Author = Object.Author;
 			
-			RowParticipants = Event.Parties.Add();
+			RowParticipants = Event.Participants.Add();
 			FillPropertyValues(RowParticipants, RecipientRow);
 			
 			Event.Write();

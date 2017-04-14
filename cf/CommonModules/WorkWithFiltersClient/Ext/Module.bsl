@@ -18,6 +18,52 @@ Procedure PeriodPresentationSelectPeriod(Form, FilterListName="List", FieldFilte
 	
 EndProcedure
 
+Procedure PeriodPresentationClickCompleted(NewPeriod, Parameters) Export
+	
+	If NewPeriod = Undefined Then
+		Return;
+	EndIf;
+	Form			= Parameters.Form;
+	FilterListName	= Parameters.FilterListName;
+	FieldFilterName	= Parameters.FieldFilterName;
+	
+	If Parameters.Property("StructureItemNames") Then
+	
+		If TypeOf(NewPeriod)=Type("StandardPeriod") Then
+			Form[Parameters.StructureItemNames.FilterPeriod] = NewPeriod;
+		ElsIf TypeOf(NewPeriod)=Type("Date") Then
+			Form[Parameters.StructureItemNames.FilterPeriod].EndDate = NewPeriod;
+		EndIf;
+		
+		Form[Parameters.StructureItemNames.PeriodPresentation] = WorkWithFiltersClientServer.RefreshPeriodPresentation(Form[Parameters.StructureItemNames.FilterPeriod]);
+		WorkWithFiltersClientServer.SetFilterByPeriod(
+			Form[FilterListName].SettingsComposer.Settings.Filter, 
+			Form[Parameters.StructureItemNames.FilterPeriod].StartDate, 
+			Form[Parameters.StructureItemNames.FilterPeriod].EndDate, FieldFilterName);
+			
+		If Parameters.StructureItemNames.Property("NotificationEvent") Then
+			Notify(Parameters.StructureItemNames.NotificationEvent);
+		EndIf;
+			
+	Else
+		
+		If TypeOf(NewPeriod)=Type("StandardPeriod") Then
+			Form.FilterPeriod = NewPeriod;
+		ElsIf TypeOf(NewPeriod)=Type("Date") Then
+			Form.FilterPeriod.EndDate = NewPeriod;
+		EndIf;
+		
+		Form.PeriodPresentation = WorkWithFiltersClientServer.RefreshPeriodPresentation(Form.FilterPeriod);
+		WorkWithFiltersClientServer.SetFilterByPeriod(Form[FilterListName].SettingsComposer.Settings.Filter, Form.FilterPeriod.StartDate, Form.FilterPeriod.EndDate, FieldFilterName);
+		
+	EndIf;
+	
+	#If WebClient Then
+		Form.RefreshDataRepresentation();
+	#EndIf 
+
+EndProcedure
+
 Procedure CollapseExpandFiltesPanel(Form, Visible, StructureItemNames = Undefined) Export
 	
 	InterfaceTaxi = True;

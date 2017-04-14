@@ -8,6 +8,14 @@ Procedure AttachFilterLabel(Form, FilterFieldName, GroupParentName, Label, Label
 	
 EndProcedure
 
+Procedure AttachFilterLabelsFromArray(Form, FilterFieldName, GroupParentName, LabelsArray) Export
+	
+	For Each LabelValue In LabelsArray Do
+		WorkWithFilters.CreateLabelItems(Form, FilterFieldName, GroupParentName, LabelValue, String(LabelValue));
+	EndDo;
+	
+EndProcedure
+
 Procedure CreateLabelItems(Form, FilterFieldName, GroupParentName, Label, LabelDescription, ListName = "", QueryParameterName="", TPNameLabelData = "LabelData") Export
 	
 	Items = Form.Items;

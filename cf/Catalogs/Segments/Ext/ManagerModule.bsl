@@ -671,19 +671,18 @@ Function GenerateQueryOnRules(Segment) Export
 			If NewSource = Undefined Then
 				
 				NewSource = Operator.Sources.Add(Type("QuerySchemaNestedQuery"), "EventsForPeriod");
-				NewSource.Source.Query.SetQueryText("
-					|SELECT ALLOWED
-					|	EventParties.Contact AS Counterparty,
-					|	COUNT(DISTINCT EventParties.Ref) AS EventsCount,
-					|	MAX(EventParties.Ref.Date) AS LastEventDate
-					|FROM
-					|	Document.Event.Parties AS EventParties
-					|WHERE
-					|	EventParties.Ref.DeletionMark = FALSE
-					|	AND EventParties.Contact REFS Catalog.Counterparties
-					|
-					|GROUP BY
-					|	EventParties.Contact");
+				NewSource.Source.Query.SetQueryText("SELECT ALLOWED
+				                                    |	EventParticipants.Contact AS Counterparty,
+				                                    |	COUNT(DISTINCT EventParticipants.Ref) AS EventsCount,
+				                                    |	MAX(EventParticipants.Ref.Date) AS LastEventDate
+				                                    |FROM
+				                                    |	Document.Event.Participants AS EventParticipants
+				                                    |WHERE
+				                                    |	EventParticipants.Ref.DeletionMark = FALSE
+				                                    |	AND EventParticipants.Contact REFS Catalog.Counterparties
+				                                    |
+				                                    |GROUP BY
+				                                    |	EventParticipants.Contact");
 				
 				NewSource.Joins.Clear();
 				Operator.Sources[0].Joins.Add("EventsForPeriod", "Counterparties.Ref = EventsForPeriod.Counterparty");

@@ -85,7 +85,7 @@ EndFunction
 Function EventTypeByContactInformationType(IconIndex)
 	
 	If IconIndex = 12 Then
-		EventType = PredefinedValue("Enum.EventTypes.PrivateMeeting");
+		EventType = PredefinedValue("Enum.EventTypes.PersonalMeeting");
 	ElsIf IconIndex = 8 Then
 		EventType = PredefinedValue("Enum.EventTypes.Email");
 	ElsIf IconIndex = 9 Then

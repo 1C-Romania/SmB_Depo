@@ -99,7 +99,7 @@ EndProcedure
 &AtClient
 Procedure BeforeClose(Cancel, StandardProcessing)
 	If SettingMode Then
-		SaveUserSettings();
+		SaveCustomSettings();
 	EndIf;
 EndProcedure
 
@@ -533,7 +533,7 @@ Procedure RefreshReportsPanel(Val Event = "")
 	EndIf;
 	
 	// Save custom settings.
-	SaveUserSettings();
+	SaveCustomSettings();
 	
 	// Reset the last added item number.
 	For Each TableRow In ApplicationSubsystems Do
@@ -579,7 +579,7 @@ Procedure ClearFormFromAddedItems()
 EndProcedure
 
 &AtServer
-Procedure SaveUserSettings()
+Procedure SaveCustomSettings()
 	If AddedVariants.Count() = 0 Then
 		Return;
 	EndIf;
@@ -2044,16 +2044,3 @@ Function AddEmptyDecoration(FillingParameters, IntoGroup)
 EndFunction
 
 #EndRegion
-
-
-
-
-
-
-
-
-
-
-
-
-

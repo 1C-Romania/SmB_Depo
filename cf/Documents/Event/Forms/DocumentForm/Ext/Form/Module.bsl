@@ -1,4 +1,5 @@
-﻿#Region FormEventsHandlers
+﻿
+#Region FormEventHandlers
 
 &AtServer
 Procedure OnCreateAtServer(Cancel, StandardProcessing)
@@ -14,6 +15,19 @@ Procedure OnReadAtServer(CurrentObject)
 	
 	PrepareFormOnServer();
 	
+EndProcedure
+
+#EndRegion
+
+#Region FormItemEventHandlers
+
+&AtClient
+Procedure ListOperationsTypesChoice(Item, SelectedRow, Field, StandardProcessing)
+	
+	TableRow = ListOperationsTypes.FindByID(SelectedRow);
+	
+	OpenDocumentKind(TableRow.Value);
+
 EndProcedure
 
 #EndRegion
@@ -40,13 +54,13 @@ EndProcedure
 &AtServer
 Procedure PrepareFormOnServer()
 	
-	CopyingValue = Parameters.CopyingValue;
-	FillingValues  = Parameters.FillingValues;
-	Basis           = ?(Parameters.Basis = Undefined, Undefined, New Structure("FillBasis", Parameters.Basis));
+	CopyingValue	= Parameters.CopyingValue;
+	FillingValues	= Parameters.FillingValues;
+	Basis           = ?(Parameters.Basis = Undefined, Undefined, New Structure("FillingBasis", Parameters.Basis));
 	
-	Parameters.CopyingValue	= Undefined;
+	Parameters.CopyingValue		= Undefined;
 	Parameters.FillingValues	= Undefined;
-	Parameters.Basis				= Undefined;
+	Parameters.Basis			= Undefined;
 	
 	DocumentForms = New FixedMap(
 		Documents.Event.GetOperationKindMapToForms());
@@ -73,9 +87,6 @@ Function GetOperationKindList()
 	
 	EnumValues = Metadata.Enums.EventTypes.EnumValues;
 	For Each EnumValue IN EnumValues Do
-		If Upper(Left(EnumValue.Name, 7)) = Upper("Delete") Then
-			Continue;
-		EndIf;
 		CurrentOperationKind = Enums.EventTypes[EnumValue.Name];
 		ListOperationsTypes.Add(CurrentOperationKind, String(CurrentOperationKind));
 	EndDo;
@@ -85,21 +96,12 @@ Function GetOperationKindList()
 EndFunction
 
 &AtClient
-Procedure ListOperationsTypesChoice(Item, SelectedRow, Field, StandardProcessing)
-	
-	TableRow = ListOperationsTypes.FindByID(SelectedRow);
-	
-	OpenDocumentKind(TableRow.Value);
-
-EndProcedure
-
-&AtClient
 Procedure OpenDocumentKind(SelectedEventType)
 	
 	If Basis = Undefined Then
-		FillingValues.Insert("EventType",		SelectedEventType);
+		FillingValues.Insert("EventType",	SelectedEventType);
 	Else
-		Basis.Insert("EventType",				SelectedEventType);
+		Basis.Insert("EventType",			SelectedEventType);
 	EndIf;
 	
 	ParametersStructure = New Structure;

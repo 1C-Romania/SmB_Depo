@@ -105,11 +105,11 @@ EndProcedure
 &AtServer
 Procedure FillCheckProcessingAtServer(Cancel, CheckedAttributes)
 	
-	If Object.Parties.Count() = 0 Then
+	If Object.Participants.Count() = 0 Then
 		CommonUseClientServer.MessageToUser(
 			NStr("en='Recipient list is not filled.';ru='Список получателей не заполнен.'"),
 			,
-			"Object.Parties",
+			"Object.Participants",
 			,
 			Cancel);
 	EndIf;
@@ -181,7 +181,7 @@ Procedure RecipientsContactStartChoice(Item, ChoiceData, StandardProcessing)
 	FormParameters = New Structure;
 	FormParameters.Insert("CIType", "Phone");
 	If ValueIsFilled(Items.Recipients.CurrentData.Contact) Then
-		Contact = Object.Parties.FindByID(Items.Recipients.CurrentRow).Contact;
+		Contact = Object.Participants.FindByID(Items.Recipients.CurrentRow).Contact;
 		If TypeOf(Contact) = Type("CatalogRef.Counterparties") Then
 			FormParameters.Insert("CurrentCounterparty", Contact);
 		EndIf;
@@ -202,7 +202,7 @@ Procedure RecipientsContactChoiceProcessing(Item, ValueSelected, StandardProcess
 	If TypeOf(ValueSelected) = Type("CatalogRef.Counterparties") Or TypeOf(ValueSelected) = Type("CatalogRef.ContactPersons") Then
 	// Selection is implemented by automatic selection mechanism
 		
-		Object.Parties.FindByID(Items.Recipients.CurrentRow).Contact = ValueSelected;
+		Object.Participants.FindByID(Items.Recipients.CurrentRow).Contact = ValueSelected;
 		
 	EndIf;
 	
@@ -317,13 +317,13 @@ Procedure HandlePassedParameters(Parameters, Cancel)
 		
 		If TypeOf(Parameters.Recipients) = Type("String") AND Not IsBlankString(Parameters.Recipients) Then
 			
-			NewRow = Object.Parties.Add();
+			NewRow = Object.Participants.Add();
 			NewRow.HowToContact = Parameters.Whom;
 			
 		ElsIf TypeOf(Parameters.Recipients) = Type("ValueList") Then
 			
 			For Each ItemOfList IN Parameters.Recipients Do
-				NewRow = Object.Parties.Add();
+				NewRow = Object.Participants.Add();
 				NewRow.Contact = ItemOfList.Presentation;
 				NewRow.HowToContact  = ItemOfList.Value;
 			EndDo;
@@ -364,13 +364,13 @@ EndFunction
 &AtServer
 Procedure CheckAndConvertRecipientNumbers(Cancel)
 	
-	For Each Recipient IN Object.Parties Do
+	For Each Recipient IN Object.Participants Do
 		
 		If IsBlankString(Recipient.HowToContact) Then
 			CommonUseClientServer.MessageToUser(
 				NStr("en='""Phone number"" field is not filled.';ru='Поле ""Номер телефона"" не заполнено.'"),
 				,
-				CommonUseClientServer.PathToTabularSection("Object.Parties", Recipient.LineNumber, "HowToContact"),
+				CommonUseClientServer.PathToTabularSection("Object.Participants", Recipient.LineNumber, "HowToContact"),
 				,
 				Cancel);
 			Continue;
@@ -380,7 +380,7 @@ Procedure CheckAndConvertRecipientNumbers(Cancel)
 			CommonUseClientServer.MessageToUser(
 				NStr("en='Only one phone number should be specified.';ru='Должен быть указан только один номер телефона.'"),
 				,
-				CommonUseClientServer.PathToTabularSection("Object.Parties", Recipient.LineNumber, "HowToContact"),
+				CommonUseClientServer.PathToTabularSection("Object.Participants", Recipient.LineNumber, "HowToContact"),
 				,
 				Cancel);
 			Continue;
@@ -393,7 +393,7 @@ Procedure CheckAndConvertRecipientNumbers(Cancel)
 			CommonUseClientServer.MessageToUser(
 				NStr("en='Incorrect format of phone number.';ru='Неверный формат номера телефона.'"),
 				,
-				CommonUseClientServer.PathToTabularSection("Object.Parties", Recipient.LineNumber, "HowToContact"),
+				CommonUseClientServer.PathToTabularSection("Object.Participants", Recipient.LineNumber, "HowToContact"),
 				,
 				Cancel);
 			Continue;
@@ -443,11 +443,11 @@ EndProcedure
 &AtServer
 Function ExecuteSMSSending()
 	
-	ArrayOfNumbers     = Object.Parties.Unload(,"NumberForSending").UnloadColumn("NumberForSending");
+	ArrayOfNumbers     = Object.Participants.Unload(,"NumberForSending").UnloadColumn("NumberForSending");
 	SendingResult = SendingSMS.SendSMS(ArrayOfNumbers, Object.Content, Object.SMSSenderName, SendTransliterated);
 	
 	For Each SentMessage IN SendingResult.SentMessages Do
-		For Each FoundString IN Object.Parties.FindRows(New Structure("NumberForSending", SentMessage.RecipientNumber)) Do
+		For Each FoundString IN Object.Participants.FindRows(New Structure("NumberForSending", SentMessage.RecipientNumber)) Do
 			FoundString.MessageID = SentMessage.MessageID;
 			FoundString.DeliveryStatus         = Enums.SMSMessageStates.Outgoing;
 		EndDo;
@@ -460,7 +460,7 @@ EndFunction
 &AtServer
 Procedure UpdateDeliveryStatusesAtServer()
 	
-	For Each Recipient IN Object.Parties Do
+	For Each Recipient IN Object.Participants Do
 		
 		DeliveryStatus = SendingSMS.DeliveryStatus(Recipient.MessageID);
 		Recipient.DeliveryStatus = SmallBusinessInteractions.MapSMSDeliveryStatus(DeliveryStatus);
@@ -490,10 +490,10 @@ Procedure FillContactsByAddressBook(AddressInStorage)
 	For Each SelectedRow IN RecipientsTable Do
 		
 		If CurrentRowDataProcessor Then
-			RowParticipants = Object.Parties.FindByID(Items.Recipients.CurrentRow);
+			RowParticipants = Object.Participants.FindByID(Items.Recipients.CurrentRow);
 			CurrentRowDataProcessor = False;
 		Else
-			RowParticipants = Object.Parties.Add();
+			RowParticipants = Object.Participants.Add();
 		EndIf;
 		
 		RowParticipants.Contact = SelectedRow.Contact;

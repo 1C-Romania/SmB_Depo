@@ -1,155 +1,61 @@
 ﻿#If Server Or ThickClientOrdinaryApplication Or ExternalConnection Then
 
-#Region EventsHandlers
+#Region EventHandlers
 
-// Procedure - handler of the FillingProcessor event.
-//
-// Parameters:
-//  FillingData	 - Structure	 - For execution of the FillIn() method,
-//  the structure should contain StandardProcessing - 	 - 
 Procedure Filling(FillingData, StandardProcessing)
 	
-	If TypeOf(FillingData) <> Type("Structure") Or Not FillingData.Property("EventType") Then
-	// Opening the preform of event type selection
+	If DataExchange.Load Then
 		Return;
 	EndIf;
 	
-	EventType = FillingData.EventType;
+	ObjectFillingSB.FillDocument(ThisObject, FillingData, "FillingHandler");
 	
-	If Not EventType = Enums.EventTypes.Email AND Not EventType = Enums.EventTypes.SMS Then
-		If FillingData.Property("EventBegin") Then
-			EventBegin = FillingData.EventBegin;
-		Else
-			EventBegin = CurrentDate();
-		EndIf;
-		If FillingData.Property("EventEnding") Then
-			EventEnding = FillingData.EventEnding;
-		Else
-			EventEnding = EventBegin + 1800;
-		EndIf;
-		FillingData.Property("Responsible", Responsible);
-	EndIf;
-	
-	If Not FillingData.Property("FillBasis") Then
-	// Creating a new event without a basis
-		Return;
-	EndIf;
-	
-	If TypeOf(FillingData.FillBasis) = Type("CatalogRef.Counterparties") Then
-		
-		If FillingData.FillBasis.IsFolder Then
-			Raise NStr("en='Unable to select counterparty group.';ru='Нельзя выбирать группу контрагентов.'");
-		EndIf;
-		
-		FillInByCounterparty(FillingData.FillBasis);
-		
-	ElsIf TypeOf(FillingData.FillBasis) = Type("CatalogRef.ContactPersons") Then
-		FillByContactPersons(FillingData.FillBasis);
-		
-	ElsIf TypeOf(FillingData.FillBasis) = Type("DocumentRef.Event") Then
-		FillByEvent(FillingData.FillBasis);
-		
-	ElsIf TypeOf(FillingData.FillBasis) = Type("DocumentRef.WorkOrder") Then
-		FillByJobOrder(FillingData.FillBasis);
-		
-	ElsIf TypeOf(FillingData.FillBasis) = Type("DocumentRef.CustomerOrder") Then
-		FillByCustomerOrder(FillingData.FillBasis);
-		
-	ElsIf TypeOf(FillingData.FillBasis) = Type("DocumentRef.SettlementsReconciliation") Then
-		FillBySettlementsReconciliation(FillingData.FillBasis);
-		
-	ElsIf TypeOf(FillingData.FillBasis) = Type("Structure")
-		AND FillingData.FillBasis.Property("Basis")
-		AND TypeOf(FillingData.FillBasis.Basis)= Type("DocumentRef.WorkOrder") Then
-		FillByCurrentRowWorkOrders(FillingData.FillBasis);
-		
-	ElsIf CheckTypeOfFillingData(FillingData.FillBasis) Then
-		
-		BasisDocuments.Clear();
-		If EventType = Enums.EventTypes.Email Then
-			RowDocumentsBases = BasisDocuments.Add();
-			RowDocumentsBases.BasisDocument = FillingData.FillBasis.Ref;
-		Else
-			BasisDocument = FillingData.FillBasis.Ref;
-		EndIf;
-		
-		Parties.Clear();
-		RowParticipants = Parties.Add();
-		RowParticipants.Contact = FillingData.FillBasis.Counterparty;
-		RowParticipants.HowToContact = GetHowToContact(RowParticipants.Contact, EventType);
-		
-	ElsIf TypeOf(FillingData.FillBasis) = Type("Structure")
-		AND FillingData.FillBasis.Property("BasisDocument") 
-		AND CheckTypeOfFillingData(FillingData.FillBasis.BasisDocument) Then
-		
-		BasisDocuments.Clear();
-		If EventType = Enums.EventTypes.Email Then
-			RowDocumentsBases = BasisDocuments.Add();
-			RowDocumentsBases.BasisDocument = FillingData.FillBasis.BasisDocument;
-		Else
-			BasisDocument = FillingData.FillBasis.BasisDocument;
-		EndIf;
-		
-		Parties.Clear();
-		RowParticipants = Parties.Add();
-		RowParticipants.Contact = FillingData.FillBasis.BasisDocument.Counterparty;
-		RowParticipants.HowToContact = GetHowToContact(RowParticipants.Contact, EventType);
-		
-	ElsIf TypeOf(FillingData.FillBasis) = Type("Structure") Then
-		
-		FillPropertyValues(ThisObject, FillingData.FillBasis);
-		
-		If FillingData.FillBasis.Property("Counterparty") AND ValueIsFilled(FillingData.FillBasis.Counterparty) Then
-			Parties.Clear();
-			RowParticipants = Parties.Add();
-			RowParticipants.Contact = FillingData.FillBasis.Counterparty;
-			RowParticipants.HowToContact = GetHowToContact(RowParticipants.Contact, EventType);
-		EndIf;
-		
-	EndIf;
-	
-EndProcedure // FillingProcessor()
+EndProcedure
 
-// Procedure - BeforeWrite event handler.
-//
 Procedure BeforeWrite(Cancel, WriteMode, PostingMode)
 	
 	If DataExchange.Load Then
 		Return;
 	EndIf;
 	
-	MembersList = "";
-	For Each Participant IN Parties Do
-		MembersList = MembersList + ?(MembersList = "","","; ")
-			+ Participant.Contact + ?(IsBlankString(Participant.HowToContact), "", " <" + Participant.HowToContact + ">");
-	EndDo;
+	FillAttributeParticipantsList();
+	FillPresentation();
 	
-EndProcedure // BeforeWrite()
+EndProcedure
 
-// Procedure - event handler  AtCopy.
-//
 Procedure OnCopy(CopiedObject)
 	
+	If DataExchange.Load Then
+		Return;
+	EndIf;
+	
+	If EventType = Enums.EventTypes.Email
+		And IncomingOutgoingEvent = Enums.IncomingOutgoingEvent.Incoming Then
+		Raise NStr("ru = 'Копирование входящего письма невозможно.'; en = 'You can not copy an incoming message.'");
+	EndIf;
+	
 	If EventType = Enums.EventTypes.Email Or EventType = Enums.EventTypes.SMS Then
-		EventBegin = '00010101';
-		EventEnding = '00010101';
+		EventBegin	= '00010101';
+		EventEnding	= '00010101';
 	Else
-		EventBegin = CurrentDate();
+		EventBegin = CurrentSessionDate();
 		EventBegin = BegOfHour(EventBegin) + ?(Minute(EventBegin) < 30, 1800, 3600);
 		EventEnding = EventBegin + 1800;
 	EndIf;
 	
-EndProcedure // OnCopy()
+EndProcedure
 
-// Procedure - FillCheckProcessing event handler.
-//
 Procedure FillCheckProcessing(Cancel, CheckedAttributes)
+	
+	If DataExchange.Load Then
+		Return;
+	EndIf;
 	
 	If EventEnding < EventBegin Then
 		CommonUseClientServer.MessageToUser(
-			NStr("en='End date can not be less than start date.';ru='Дата окончания не может быть меньше даты начала.'"),
+			NStr("ru = 'Дата окончания не может быть меньше даты начала.'; en = 'The end date can not be less than the start date.'"),
 			ThisObject,
-			"EndDate",
+			"EventEnding",
 			,
 			Cancel
 		);
@@ -157,23 +63,195 @@ Procedure FillCheckProcessing(Cancel, CheckedAttributes)
 	
 	// For the form of other events its own table of contacts is implemented
 	If Not (EventType = Enums.EventTypes.Email Or EventType = Enums.EventTypes.SMS) Then
-		CheckedAttributes.Delete(CheckedAttributes.Find("Parties.Contact"));
+		CheckedAttributes.Delete(CheckedAttributes.Find("Participants.Contact"));
 	EndIf;
 	
-EndProcedure // FillCheckProcessing()
+EndProcedure
 
 #EndRegion
 
-#Region FillProceduresAndFunctions
-
-// The procedure of document completion on the basis of a counterparty.
-//
-// Parameters:
-// Counterparty - CatalogRef.Counterparties - counterparty.
-//	
-Procedure FillInByCounterparty(Counterparty)
+#Region Interface
 	
-	Parties.Clear();
+Procedure FillAttributeParticipantsList() Export
+	
+	ParticipantsList = "";
+	For Each Participant In Participants Do
+		ParticipantsList = ParticipantsList + ?(ParticipantsList = "","","; ")
+			+ Participant.Contact + ?(IsBlankString(Participant.HowToContact), "", " <" + Participant.HowToContact + ">");
+	EndDo;
+	
+EndProcedure
+
+#EndRegion
+
+#Region DocumentFillingProcedures
+
+Procedure FillingHandler(FillingData) Export
+	
+	If TypeOf(FillingData) <> Type("Structure") Then
+		Return;
+	EndIf;
+	
+	If Not FillingData.Property("EventType") Then
+		Return;
+	EndIf;
+	
+	EventType = FillingData.EventType;
+	
+	If EventType <> Enums.EventTypes.Email
+		And EventType <> Enums.EventTypes.SMS Then
+		
+		If Not ValueIsFilled(EventBegin) Or Not ValueIsFilled(EventEnding) Then
+			If FillingData.Property("EventBegin") Then
+				EventBegin = FillingData.EventBegin;
+			Else
+				EventBegin = CurrentSessionDate();
+			EndIf;
+			If FillingData.Property("EventEnding") Then
+				EventEnding = FillingData.EventEnding;
+			Else
+				EventEnding = EventBegin + 1800;
+			EndIf;
+		EndIf;
+		
+	EndIf;
+	
+	If FillingData.Property("Counterparty")
+		And TypeOf(FillingData.Counterparty) = Type("CatalogRef.Counterparties") Then
+		FillByCounterparty(FillingData.Counterparty);
+	EndIf;
+	
+	If FillingData.Property("Contact") Then
+		
+		If TypeOf(FillingData.Contact) = Type("CatalogRef.ContactPersons") Then
+			ParticipantsRow = Participants.Add();
+			ParticipantsRow.Contact = CommonUse.ObjectAttributeValue(FillingData.Contact, "Owner");
+		EndIf;
+		
+		ParticipantsRow = Participants.Add();
+		ParticipantsRow.Contact = FillingData.Contact;
+		
+		If FillingData.Property("ValueCI") Then
+			ParticipantsRow.HowToContact = FillingData.ValueCI;
+		EndIf;
+		
+	EndIf;
+	
+	If FillingData.EventType = Enums.EventTypes.PhoneCall
+		And FillingData.Property("PhoneNumber") Then
+		
+		ThisObject.Content = StrTemplate(NStr("ru='Звонок с номера: %1.'; en = 'Call from number:%1.'"), FillingData.PhoneNumber);
+	EndIf;
+	
+	If Not FillingData.Property("FillingBasis") Then
+		// Create a new event without basis
+		FillByDefault();
+		Return;
+	EndIf;
+	
+	If TypeOf(FillingData.FillingBasis) = Type("CatalogRef.Counterparties") Then
+		
+		FillByCounterparty(FillingData.FillingBasis);
+		
+	ElsIf TypeOf(FillingData.FillingBasis) = Type("CatalogRef.ContactPersons") Then
+		
+		FillByContactPerson(FillingData.FillingBasis);
+		
+	ElsIf TypeOf(FillingData.FillingBasis) = Type("DocumentRef.Event") Then
+		
+		FillByEvent(FillingData);
+		
+	ElsIf TypeOf(FillingData.FillingBasis) = Type("DocumentRef.WorkOrder") Then
+		
+		FillByWorkOrder(FillingData.FillingBasis);
+		
+	ElsIf TypeOf(FillingData.FillingBasis) = Type("DocumentRef.CustomerOrder") Then
+		
+		FillByCustomerOrder(FillingData.FillingBasis);
+		
+	ElsIf TypeOf(FillingData.FillingBasis) = Type("DocumentRef.ProductionOrder") Then
+		
+		FillByProductionOrder(FillingData.FillingBasis);
+		
+	ElsIf TypeOf(FillingData.FillingBasis) = Type("DocumentRef.SettlementsReconciliation") Then
+		
+		FillBySettlementsReconciliation(FillingData.FillingBasis);
+		
+	ElsIf TypeOf(FillingData.FillingBasis) = Type("Structure") Then
+		
+		FillByStructure(FillingData.FillingBasis);
+		
+	ElsIf AvailableTypeForGeneratingOnBase(FillingData.FillingBasis) Then
+		
+		BasisDocuments.Clear();
+		If EventType = Enums.EventTypes.Email Then
+			BasisDocumentsRow = BasisDocuments.Add();
+			BasisDocumentsRow.BasisDocument = FillingData.FillingBasis;
+		Else
+			BasisDocument = FillingData.FillingBasis;
+		EndIf;
+		
+		Participants.Clear();
+		ParticipantsRow = Participants.Add();
+		ParticipantsRow.Contact = FillingData.FillingBasis.Counterparty;
+		FillHowToContact();
+		
+	EndIf;
+	
+	FillByDefault();
+	
+EndProcedure
+
+Procedure FillByStructure(FillingBasis)
+	
+	FillPropertyValues(ThisObject, FillingBasis);
+	
+	If FillingBasis.Property("Basis")
+		And TypeOf(FillingBasis.Basis)= Type("DocumentRef.WorkOrder") Then
+		
+		FillByCurrentRowWorkOrder(FillingBasis);
+		Return;
+		
+	EndIf;
+	
+	If FillingBasis.Property("BasisDocument")
+		And AvailableTypeForGeneratingOnBase(FillingBasis.BasisDocument) Then
+		
+		BasisDocuments.Clear();
+		If EventType = Enums.EventTypes.Email Then
+			BasisDocumentsRow = BasisDocuments.Add();
+			BasisDocumentsRow.BasisDocument = FillingBasis.BasisDocument;
+		Else
+			BasisDocument = FillingBasis.BasisDocument;
+		EndIf;
+		
+	EndIf;
+	
+	If FillingBasis.Property("Contact") And ValueIsFilled(FillingBasis.Contact) Then
+		
+		Participants.Clear();
+		
+		If TypeOf(FillingBasis.Contact) = Type("CatalogRef.ContactPersons") Then
+			ParticipantsRow = Participants.Add();
+			ParticipantsRow.Contact = FillingBasis.Contact.Owner;
+		EndIf;
+		
+		ParticipantsRow = Participants.Add();
+		ParticipantsRow.Contact = FillingBasis.Contact;
+		
+		FillHowToContact();
+		
+	EndIf;
+	
+EndProcedure
+
+Procedure FillByCounterparty(Counterparty)
+	
+	If Counterparty.IsFolder Then
+		Raise NStr("ru = 'Нельзя выбирать группу контрагентов.'; en = 'You can not select a group of counterparties.'");
+	EndIf;
+	
+	Participants.Clear();
 	
 	Query = New Query;
 	Query.Text = 
@@ -193,32 +271,26 @@ Procedure FillInByCounterparty(Counterparty)
 	Selection = Query.Execute().Select();
 	
 	While Selection.Next() Do
-		RowParticipants = Parties.Add();
-		RowParticipants.Contact = Selection.Ref;
-		RowParticipants.HowToContact = GetHowToContact(RowParticipants.Contact, EventType);
+		ParticipantsRow	= Participants.Add();
+		ParticipantsRow.Contact	= Selection.Ref;
 	EndDo;
 	
-	RowParticipants = Parties.Insert(0);
+	RowParticipants = Participants.Insert(0);
 	RowParticipants.Contact = Counterparty;
-	RowParticipants.HowToContact = GetHowToContact(RowParticipants.Contact, EventType);
+	FillHowToContact();
 	
-EndProcedure // FillByContactPersons()
+EndProcedure
 
-// The procedure of document completion on the basis of a contact person.
-//
-// Parameters:
-// ContactPerson	 - CatalogRef.ContactPersons - contact person.
-//	
-Procedure FillByContactPersons(ContactPerson)
+Procedure FillByContactPerson(ContactPerson)
 	
-	Parties.Clear();
+	Participants.Clear();
 	
-	CITypes = New Array;
+	TypesCI = New Array;
 	If Not EventType = Enums.EventTypes.SMS Then
-		CITypes.Add(Enums.ContactInformationTypes.EmailAddress);
+		TypesCI.Add(Enums.ContactInformationTypes.EmailAddress);
 	EndIf;
 	If Not EventType = Enums.EventTypes.Email Then
-		CITypes.Add(Enums.ContactInformationTypes.Phone);
+		TypesCI.Add(Enums.ContactInformationTypes.Phone);
 	EndIf;
 	
 	Query = New Query;
@@ -234,7 +306,7 @@ Procedure FillByContactPersons(ContactPerson)
 		|	Catalog.Counterparties.ContactInformation AS CounterpartiesContactInformation
 		|WHERE
 		|	CounterpartiesContactInformation.Ref = &Counterparty
-		|	AND CounterpartiesContactInformation.Type IN(&CITypes)
+		|	AND CounterpartiesContactInformation.Type IN(&TypesCI)
 		|
 		|ORDER BY
 		|	Order,
@@ -253,7 +325,7 @@ Procedure FillByContactPersons(ContactPerson)
 		|	Catalog.ContactPersons.ContactInformation AS ContactPersonsContactInformation
 		|WHERE
 		|	ContactPersonsContactInformation.Ref = &ContactPerson
-		|	AND ContactPersonsContactInformation.Type IN(&CITypes)
+		|	AND ContactPersonsContactInformation.Type IN(&TypesCI)
 		|
 		|ORDER BY
 		|	Order,
@@ -261,7 +333,7 @@ Procedure FillByContactPersons(ContactPerson)
 	
 	Query.SetParameter("Counterparty", ContactPerson.Owner);
 	Query.SetParameter("ContactPerson", ContactPerson);
-	Query.SetParameter("CITypes", CITypes);
+	Query.SetParameter("TypesCI", TypesCI);
 	
 	ResultsArray = Query.ExecuteBatch();
 	
@@ -272,7 +344,7 @@ Procedure FillByContactPersons(ContactPerson)
 		HowToContact = HowToContact + ?(HowToContact = "", "", ", ") + Selection.Presentation;
 	EndDo;
 	
-	RowParticipants = Parties.Add();
+	RowParticipants = Participants.Add();
 	RowParticipants.Contact = ContactPerson.Owner;
 	RowParticipants.HowToContact = HowToContact;
 	
@@ -283,68 +355,72 @@ Procedure FillByContactPersons(ContactPerson)
 		HowToContact = HowToContact + ?(HowToContact = "", "", ", ") + Selection.Presentation;
 	EndDo;
 	
-	RowParticipants = Parties.Add();
+	RowParticipants = Participants.Add();
 	RowParticipants.Contact = ContactPerson;
 	RowParticipants.HowToContact = HowToContact;
 	
-EndProcedure // FillByContactPersons()
+EndProcedure
 
-// The procedure of document completion on the basis of an event.
-//
-// Parameters:
-// Event - DocumentRef.Event - Event
-//	
-Procedure FillByEvent(Event)
+Procedure FillByEvent(FillingData)
 	
-	Parties.Clear();
+	Participants.Clear();
 	
-	Query = New Query;
-	Query.Text = 
+	// Filling participants
+	If CommonUseClientServer.StructureProperty(
+		FillingData,
+		"Command",
+		EmailSBClientServer.CommandReply()) = EmailSBClientServer.CommandReply() Then
+		
+		Query = New Query(
 		"SELECT
-		|	EventParties.Ref,
-		|	EventParties.Contact,
-		|	EventParties.HowToContact
+		|	EventParticipants.Contact AS Contact,
+		|	EventParticipants.HowToContact AS HowToContact
 		|FROM
-		|	Document.Event.Parties AS EventParties
+		|	Document.Event.Participants AS EventParticipants
 		|WHERE
-		|	EventParties.Ref = &Ref
+		|	EventParticipants.Ref = &Ref
 		|
 		|ORDER BY
-		|	EventParties.LineNumber";
+		|	EventParticipants.LineNumber");
 		
-	Query.SetParameter("Ref", Event);
-	
-	Selection = Query.Execute().Select();
-	
-	While Selection.Next() Do
-		RowParticipants = Parties.Add();
-		FillPropertyValues(RowParticipants, Selection);
-	EndDo;
-	
+		Query.SetParameter("Ref", FillingData.FillingBasis);
+		
+		Selection = Query.Execute().Select();
+		
+		While Selection.Next() Do
+			ParticipantsRow = Participants.Add();
+			ParticipantsRow.Contact			= Selection.Contact;
+			ParticipantsRow.HowToContact	= Selection.HowToContact;
+		EndDo;
+		
+	EndIf;
+		
+	// Filling of basis documents
 	BasisDocuments.Clear();
 	If EventType = Enums.EventTypes.Email Then
-		RowDocumentsBases = BasisDocuments.Add();
-		RowDocumentsBases.BasisDocument = Event;
+		BasisDocumentsRow = BasisDocuments.Add();
+		BasisDocumentsRow.BasisDocument = FillingData.FillingBasis;
+		FillEmailSubject(FillingData);
 	Else
-		BasisDocument = Event;
+		BasisDocument = FillingData.FillingBasis;
 	EndIf;
 	
-EndProcedure // FillByEvent()
+	UserAccount = CommonUse.ObjectAttributeValue(FillingData.FillingBasis, "UserAccount");
+	
+EndProcedure
 
-// The procedure of document completion on the basis of settlements reconciliation.
-//
 Procedure FillBySettlementsReconciliation(FillingData)
 	
 	IncomingOutgoingEvent = Enums.IncomingOutgoingEvent.Outgoing;
 	BasisDocument = FillingData.Ref;
 	Counterparty = FillingData.Counterparty;
 	
-	Parties.Clear();
+	Participants.Clear();
 	If ValueIsFilled(BasisDocument.CounterpartyRepresentative) Then
 		
 		ContactPerson = BasisDocument.CounterpartyRepresentative;
 		
-		NewRow = Parties.Add();
+		NewRow = Participants.Add();
 		NewRow.Contact = ContactPerson;
 		
 		HowToContactPhone = ContactInformationManagement.GetObjectContactInformation(ContactPerson, Catalogs.ContactInformationKinds.ContactPersonPhone);
@@ -368,14 +444,9 @@ Procedure FillBySettlementsReconciliation(FillingData)
 	
 EndProcedure // FillBySettlementsReconciliation()
 
-// The procedure of document completion on the basis of a work order.
-//
-// Parameters:
-// WorkOrder - DocumentRef.WorkOrder. - job.
-//	
-Procedure FillByJobOrder(WorkOrder)
+Procedure FillByWorkOrder(WorkOrder)
 	
-	Parties.Clear();
+	Participants.Clear();
 	
 	// Filling out a document header.
 	Query = New Query;
@@ -384,16 +455,16 @@ Procedure FillByJobOrder(WorkOrder)
 	Query.Text =
 	"SELECT TOP 1
 	|	CASE
-	|		WHEN VALUETYPE(Works.Customer) = Type(Catalog.Counterparties)
+	|		WHEN VALUETYPE(Works.Customer) = TYPE(Catalog.Counterparties)
 	|			THEN Works.Customer
-	|		WHEN VALUETYPE(Works.Customer) = Type(Catalog.CounterpartyContracts)
+	|		WHEN VALUETYPE(Works.Customer) = TYPE(Catalog.CounterpartyContracts)
 	|			THEN Works.Customer.Owner
-	|		WHEN VALUETYPE(Works.Customer) = Type(Document.CustomerOrder)
+	|		WHEN VALUETYPE(Works.Customer) = TYPE(Document.CustomerOrder)
 	|			THEN Works.Customer.Counterparty
 	|		ELSE VALUE(Catalog.Counterparties.EmptyRef)
 	|	END AS Counterparty,
-	|	Works.BeginTime AS BeginTime,
-	|	Works.EndTime AS EndTime,
+	|	Works.BeginTime AS EventBegin,
+	|	Works.EndTime AS EventEnding,
 	|	Works.Day AS Day
 	|FROM
 	|	Document.WorkOrder.Works AS Works
@@ -408,12 +479,11 @@ Procedure FillByJobOrder(WorkOrder)
 		Selection.Next();
 		FillPropertyValues(ThisObject, Selection);
 		
-		EventBegin = BegOfDay(Selection.Day) + Hour(Selection.BeginTime) * 60 * 60 + Minute(Selection.BeginTime) * 60;
-		EventEnding = BegOfDay(Selection.Day) + Hour(Selection.EndTime) * 60 * 60 + Minute(Selection.EndTime) * 60;
-		
-		RowParticipants = Parties.Add();
-		RowParticipants.Contact = Selection.Counterparty;
-		RowParticipants.HowToContact = GetHowToContact(RowParticipants.Contact, EventType);
+		If ValueIsFilled(Selection.Counterparty) Then
+			ParticipantsRow = Participants.Add();
+			ParticipantsRow.Contact = Selection.Counterparty;
+			FillHowToContact();
+		EndIf;
 		
 	EndIf;
 	
@@ -425,13 +495,8 @@ Procedure FillByJobOrder(WorkOrder)
 		BasisDocument = WorkOrder;
 	EndIf;
 	
-EndProcedure // FillByJobOrder()
+EndProcedure // FillByWorkOrder()
 
-// Procedure of document filling based on customer order.
-//
-// Parameters:
-// CustomerOrder - DocumentRef.CustomerOrder - customer order.
-//	
 Procedure FillByCustomerOrder(CustomerOrder)
 	
 	BasisDocuments.Clear();
@@ -443,109 +508,173 @@ Procedure FillByCustomerOrder(CustomerOrder)
 	EndIf;
 	Project = CustomerOrder.Project;
 	
-	Parties.Clear();
-	RowParticipants = Parties.Add();
+	Participants.Clear();
+	RowParticipants = Participants.Add();
 	RowParticipants.Contact = CustomerOrder.Counterparty;
-	RowParticipants.HowToContact = GetHowToContact(RowParticipants.Contact, EventType);
+	FillHowToContact();
 	
 EndProcedure // FillByCustomerOrder()
 
-// The procedure of document completion on the basis of a work order.
-//
-// Parameters:
-// FillStructure - structure - structure with filling data.
-//	
-Procedure FillByCurrentRowWorkOrders(FillStructure)
+Procedure FillByProductionOrder(ProductionOrder)
 	
-	Parties.Clear();
+	BasisDocuments.Clear();
+	If EventType = Enums.EventTypes.Email Then
+		BasisDocumentsRow = BasisDocuments.Add();
+		BasisDocumentsRow.BasisDocument = ProductionOrder;
+	Else
+		BasisDocument = ProductionOrder;
+	EndIf;
+	
+	If EventType <> Enums.EventTypes.Email
+		И EventType <> Enums.EventTypes.SMS Then
+		
+		EventBegin	= ProductionOrder.Start;
+		EventEnding	= ProductionOrder.Finish;
+	EndIf;
+	
+EndProcedure
+
+Procedure FillByCurrentRowWorkOrder(FillingStructure)
+	
+	Participants.Clear();
 	BasisDocuments.Clear();
 	If EventType = Enums.EventTypes.Email Then
 		RowDocumentsBases = BasisDocuments.Add();
-		RowDocumentsBases.BasisDocument = FillStructure.Basis;
+		RowDocumentsBases.BasisDocument = FillingStructure.Basis;
 	Else
-		BasisDocument = FillStructure.Basis;
+		BasisDocument = FillingStructure.Basis;
 	EndIf;
 	
-	If TypeOf(FillStructure.Customer) = Type("CatalogRef.Counterparties") Then
-		RowParticipants = Parties.Add();
-		RowParticipants.Contact = FillStructure.Customer;
-	ElsIf TypeOf(FillStructure.Customer) = Type("CatalogRef.CounterpartyContracts") Then
-		RowParticipants = Parties.Add();
-		RowParticipants.Contact = FillStructure.Customer.Owner;
-	ElsIf TypeOf(FillStructure.Customer) = Type("DocumentRef.CustomerOrder") Then
-		RowParticipants = Parties.Add();
-		RowParticipants.Contact = FillStructure.Customer.Counterparty;
+	If TypeOf(FillingStructure.Customer) = Type("CatalogRef.Counterparties") Then
+		RowParticipants = Participants.Add();
+		RowParticipants.Contact = FillingStructure.Customer;
+	ElsIf TypeOf(FillingStructure.Customer) = Type("CatalogRef.CounterpartyContracts") Then
+		RowParticipants = Participants.Add();
+		RowParticipants.Contact = FillingStructure.Customer.Owner;
+	ElsIf TypeOf(FillingStructure.Customer) = Type("DocumentRef.CustomerOrder") Then
+		RowParticipants = Participants.Add();
+		RowParticipants.Contact = FillingStructure.Customer.Counterparty;
 	EndIf;
 	
-	If RowParticipants <> Undefined AND ValueIsFilled(RowParticipants.Contact) Then
-		RowParticipants.HowToContact = GetHowToContact(RowParticipants.Contact, EventType);
+	If RowParticipants <> Undefined And ValueIsFilled(RowParticipants.Contact) Then
+		FillHowToContact();
 	EndIf;
 	
-	EventBegin = BegOfDay(FillStructure.Day) + Hour(FillStructure.BeginTime) * 60 * 60 + Minute(FillStructure.BeginTime) * 60;
-	EventEnding = BegOfDay(FillStructure.Day) + Hour(FillStructure.EndTime) * 60 * 60 + Minute(FillStructure.EndTime) * 60;
+	EventBegin	= FillingStructure.EventBegin;
+	EventEnding	= FillingStructure.EventEnding;
 	
 	Responsible = SmallBusinessReUse.GetValueByDefaultUser(Users.CurrentUser(), "MainResponsible");
 	
 EndProcedure // FillByCurrentRowWorkOrders()
 
-// The function checks the value type of the basis document.
-//
-Function CheckTypeOfFillingData(BasisDocument)
+Procedure FillHowToContact()
 	
-	If TypeOf(BasisDocument) = Type("DocumentRef.PurchaseOrder")
-		OR TypeOf(BasisDocument) = Type("DocumentRef.SupplierInvoice")
-		OR TypeOf(BasisDocument) = Type("DocumentRef.CustomerInvoice")
-		OR TypeOf(BasisDocument) = Type("DocumentRef.InvoiceForPayment")
-		OR TypeOf(BasisDocument) = Type("DocumentRef.SupplierInvoiceForPayment")
-		OR TypeOf(BasisDocument) = Type("DocumentRef.PaymentExpense")
-		OR TypeOf(BasisDocument) = Type("DocumentRef.CashPayment")
-		OR TypeOf(BasisDocument) = Type("DocumentRef.PaymentReceipt")
-		OR TypeOf(BasisDocument) = Type("DocumentRef.CashReceipt")
-		OR TypeOf(BasisDocument) = Type("DocumentRef.PaymentOrder")
-		OR TypeOf(BasisDocument) = Type("DocumentRef.AgentReport")
-		OR TypeOf(BasisDocument) = Type("DocumentRef.ReportToPrincipal")
-		OR TypeOf(BasisDocument) = Type("DocumentRef.ProcessingReport")
-		OR TypeOf(BasisDocument) = Type("DocumentRef.SubcontractorReport")
-		OR TypeOf(BasisDocument) = Type("DocumentRef.AcceptanceCertificate") Then
+	Counterparties = Participants.UnloadColumn("Contact");
+	CommonUseClientServer.DeleteAllTypeOccurrencesFromArray(Counterparties, Type("String"));
+	ContactPersons = CommonUseClientServer.CopyArray(Counterparties);
+	CommonUseClientServer.DeleteAllTypeOccurrencesFromArray(Counterparties, Type("CatalogRef.ContactPersons"));
+	CommonUseClientServer.DeleteAllTypeOccurrencesFromArray(ContactPersons, Type("CatalogRef.Counterparties"));
+	
+	TypesCI = New Array;
+	If Not EventType = Enums.EventTypes.SMS And Not EventType = Enums.EventTypes.PhoneCall Then
+		TypesCI.Add(Enums.ContactInformationTypes.EmailAddress);
+	EndIf;
+	If Not EventType = Enums.EventTypes.Email Then
+		TypesCI.Add(Enums.ContactInformationTypes.Phone);
+	EndIf;
+	
+	If Counterparties.Count() > 0 Then
+		TableCI_Counterparties = ContactInformationManagement.ObjectsContactInformation(Counterparties, TypesCI);
+		TableCI_Counterparties.Sort("Object Asc, Type Desc");
+	EndIf;
+	
+	If ContactPersons.Count() > 0 Then
+		TableCI_ContactPersons = ContactInformationManagement.ObjectsContactInformation(ContactPersons, TypesCI);
+		TableCI_ContactPersons.Sort("Object Asc, Type Desc");
+	EndIf;
+	
+	Filter = New Structure("Object");
+	Index = 0;
+	
+	While Index <= Participants.Count()-1 Do
 		
-		Return True
+		CurRow = Participants[Index];
+		Filter.Object = CurRow.Contact;
+		RowsCI = New Array;
 		
-	EndIf;
-	
-	Return False;
-	
-EndFunction // CheckValueTypeFillingData(BasisDoc)
-
-// The function receives the value of "how to contact" attribute.
-//
-// Parameters:
-//  Contact				 - CatalogRef.Counterparties, CatalogRef.ContactPersons	 - reference
-// to the contact Return value:
-//  String - value to connect with contact
-Function GetHowToContact(Contact, DocumentEventType)
-	
-	Result = "";
-	
-	Contacts = New Array;
-	Contacts.Add(Contact);
-	
-	CITypes = New Array;
-	If Not DocumentEventType = Enums.EventTypes.SMS Then
-		CITypes.Add(Enums.ContactInformationTypes.EmailAddress);
-	EndIf;
-	If Not DocumentEventType = Enums.EventTypes.Email Then
-		CITypes.Add(Enums.ContactInformationTypes.Phone);
-	EndIf;
-	
-	CITable = ContactInformationManagement.ObjectsContactInformation(Contacts, CITypes);
-	CITable.Sort("Type DESC");
-	For Each CIRow IN CITable Do
-		Result = "" + Result + ?(Result = "", "", ", ") + CIRow.Presentation;
+		If TypeOf(CurRow.Contact) = Type("CatalogRef.Counterparties") And TableCI_Counterparties <> Undefined And TableCI_Counterparties.Count() > 0 Then
+			RowsCI = TableCI_Counterparties.FindRows(Filter);
+		ElsIf TypeOf(CurRow.Contact) = Type("CatalogRef.ContactPersons") And TableCI_ContactPersons <> Undefined And TableCI_ContactPersons.Count() > 0 Then
+			RowsCI = TableCI_ContactPersons.FindRows(Filter);
+		EndIf;
+		
+		// For SMS, each phone on a new line
+		// For other types of events, we display the contact information in one line
+		
+		If EventType = Enums.EventTypes.SMS Then
+			FirstValueCI = True;
+			For Each RowCI In RowsCI Do
+				If Not FirstValueCI Then
+					Index = Index + 1;
+					CurRow = Participants.Insert(Index);
+					CurRow.Contact = Filter.Object;
+				EndIf;
+				CurRow.HowToContact = RowCI.Presentation;
+				FirstValueCI = False;
+			EndDo;
+		Else
+			For Each RowCI In RowsCI Do
+				CurRow.HowToContact = "" + CurRow.HowToContact + ?(CurRow.HowToContact = "", "", ", ") + RowCI.Presentation;
+			EndDo;
+		EndIf;
+		
+		Index = Index + 1;
+		
 	EndDo;
 	
-	Return Result;
+EndProcedure
+
+Function AvailableTypeForGeneratingOnBase(DocBasis)
+	
+	Return CommonUse.IsObjectAttribute(
+	"Counterparty",
+	DocBasis.Metadata());
 	
 EndFunction
+
+#EndRegion
+
+#Region InterfaceEmployeeCalendar
+
+Procedure FillByDefault()
+	
+	
+EndProcedure
+
+#EndRegion
+
+#Region ServiceProceduresAndFunctionsEmail
+
+Procedure FillEmailSubject(FillingData)
+	
+	EventAttributesValues = CommonUse.ObjectAttributesValues(FillingData.FillingBasis, "Subject, IncomingOutgoingEvent");
+	If EventAttributesValues.IncomingOutgoingEvent <> Enums.IncomingOutgoingEvent.Incoming Then
+		Return;
+	EndIf;
+	
+	Subject = Documents.Event.SubjectWithResponsePrefix(
+	EventAttributesValues.Subject,
+	CommonUseClientServer.StructureProperty(
+	FillingData,
+	"Command",
+	EmailSBClientServer.CommandReply()));
+
+EndProcedure
+
+Procedure FillPresentation()
+	
+	
+EndProcedure
 
 #EndRegion
 

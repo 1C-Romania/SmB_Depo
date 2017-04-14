@@ -1,57 +1,62 @@
 ﻿
-#Region FormEventsHandlers
+#Region FormEventHandlers
 
-// Procedure - event handler OnCreateAtServer of the form.
-//
 &AtServer
 Procedure OnCreateAtServer(Cancel, StandardProcessing)
 	
 	PaintList();
 	
 	SetFilterCurrentWorks();
-	SetFilterInformationPanel();
+	SetFilterEventType();
+	
+	If Parameters.Property("Contact") And ValueIsFilled(Parameters.Contact) Then
+		ContextContact	= Parameters.Contact;
+		CommonUseClientServer.SetFilterDynamicListItem(List, "TPParticipants.Contact", Parameters.Contact);
+		Items.FilterCounterparty.Visible = False;
+	EndIf;
+	
+	If Parameters.Property("BasisDocument") And ValueIsFilled(Parameters.BasisDocument) Then
+		FilterBasis = Parameters.BasisDocument;
+		CommonUseClientServer.SetFilterDynamicListItem(List, "BasisDocument", FilterBasis);
+	EndIf;
+	
+	ContextOpening = Parameters.Property("CurrentWorks") Or Parameters.Property("Contact") Or Parameters.Property("BasisDocument");
+	
+	If Not ContextOpening Then
+		
+		// SB.ListFilters
+		WorkWithFilters.RestoreFilterSettings(ThisObject, List,,,,FilterEventType);
+		// End SB.ListFilters
+		
+	EndIf;
+	
+	PeriodPresentation = WorkWithFiltersClientServer.RefreshPeriodPresentation(FilterPeriod);
+	
+	// SB.ContactInformationPanel
+	ContactInformationPanelSB.OnCreateAtServer(ThisObject, "ContactInformation");
+	// End SB.ContactInformationPanel
 	
 	// StandardSubsystems.AdditionalReportsAndDataProcessors
 	AdditionalReportsAndDataProcessors.OnCreateAtServer(ThisForm);
 	// End StandardSubsystems.AdditionalReportsAndDataProcessors
 	
 	// StandardSubsystems.Printing
-	PrintManagement.OnCreateAtServer(ThisForm, Items.ImportantCommandsGroup);
+	PrintManagement.OnCreateAtServer(ThisForm, Items.GroupImportantCommands);
 	// End StandardSubsystems.Printing
 	
-EndProcedure // OnCreateAtServer()
+EndProcedure
 
-&AtServer
-// Procedure - form event handler BeforeImportDataFromSettingsAtServer.
-//
-Procedure BeforeImportDataFromSettingsAtServer(Settings)
+&AtClient
+Procedure OnClose()
 	
-	If Parameters.Property("CurrentWorks") 
-		OR Parameters.Property("InformationPanel") Then
-		
-		Settings.Delete("FilterCounterparty");
-		Settings.Delete("FilterState");
-		Settings.Delete("FilterEmployee");
-		Settings.Delete("FilterEventType");
-		
-	Else
-		
-		FilterCounterparty = Settings.Get("FilterCounterparty");
-		FilterState = Settings.Get("FilterState");
-		FilterEmployee = Settings.Get("FilterEmployee");
-		FilterEventType = Settings.Get("FilterEventType");
-		
-		CommonUseClientServer.SetDynamicListParameter(List, "Contact", FilterCounterparty, ValueIsFilled(FilterCounterparty));
-		SmallBusinessClientServer.SetListFilterItem(List, "State", FilterState, ValueIsFilled(FilterState));
-		SmallBusinessClientServer.SetListFilterItem(List, "Responsible", FilterEmployee, ValueIsFilled(FilterEmployee));
-		SmallBusinessClientServer.SetListFilterItem(List, "EventType", FilterEventType, ValueIsFilled(FilterEventType));
-		
-	EndIf;
+	If Not ContextOpening Then
+		//SB.ListFilter
+		SaveFilterSettings();
+		//End SB.ListFilter
+	EndIf; 
 	
-EndProcedure // BeforeImportDataFromSettingsAtServer()
+EndProcedure
 
-// Procedure - handler of form notification.
-//
 &AtClient
 Procedure NotificationProcessing(EventName, Parameter, Source)
 	
@@ -59,106 +64,188 @@ Procedure NotificationProcessing(EventName, Parameter, Source)
 		PaintList();
 	EndIf;
 	
+	// SB.ContactInformationPanel
+	If ContactInformationPanelSBClient.ProcessNotifications(ThisObject, EventName, Parameter) Then
+		RefreshContactInformationPanelServer();
+	EndIf;
+	// End SB.ContactInformationPanel
+	
 EndProcedure
 
 #EndRegion
 
-#Region CommandFormPanelsActionProcedures
+#Region FormItemEventHandlers
 
-// Procedure - event handler OnChange input field FilterCounterparty.
-//
 &AtClient
-Procedure FilterCounterpartyOnChange(Item)
+Procedure ListOnActivateRow(Item)
 	
-	Contacts = GetCounterpartyContacts(FilterCounterparty);
-	CommonUseClientServer.SetDynamicListParameter(List, "Contacts", Contacts, Contacts.Count() > 0);
-	
-EndProcedure // CounterpartyOnChange()
-
-// Procedure - handler of event OnChange of input field FilterEmployee.
-//
-&AtClient
-Procedure FilterEmployeeOnChange(Item)
-	
-	SmallBusinessClientServer.SetListFilterItem(List, "Responsible", FilterEmployee, ValueIsFilled(FilterEmployee));
-	
-EndProcedure // FilterEmployeeOnChange()
-
-// Procedure - handler of event OnChange of input field FilterEventType.
-//
-&AtClient
-Procedure FilterEventTypeOnChange(Item)
-	
-	SmallBusinessClientServer.SetListFilterItem(List, "EventType", FilterEventType, ValueIsFilled(FilterEventType));
-	
-EndProcedure // FilterEventTypeOnChange()
-
-// Procedure - event handler OnChange input field FilterState.
-//
-&AtClient
-Procedure FilterStateOnChange(Item)
-	
-	SmallBusinessClientServer.SetListFilterItem(List, "State", FilterState, ValueIsFilled(FilterState));
-	
-EndProcedure // FilterStateOnChange()
-
-// Procedure - Create [EventType] event handler.
-//
-&AtClient
-Procedure CreateEvent(Command)
-	
-	FilledValue = New Structure;
-	FilledValue.Insert("EventType", PredefinedValue("Enum.EventTypes." + Mid(Command.Name, 7)));
-	If ValueIsFilled(FilterBasis) Then
-		FilledValue.Insert("FillBasis", FilterBasis);
-	ElsIf ValueIsFilled(FilterContactPerson) Then
-		FilledValue.Insert("FillBasis", FilterContactPerson);
-	Else
-		FilledValue.Insert("FillBasis", New Structure("Counterparty, Responsible, State", FilterCounterparty, FilterEmployee, FilterState));
+	If TypeOf(Item.CurrentRow) <> Type("DynamicalListGroupRow") Then
+		
+		AttachIdleHandler("HandleActivateListRow", 0.2, True);
+		
 	EndIf;
 	
-	FormParameters = New Structure;
-	FormParameters.Insert("FillingValues", FilledValue);
-	
-	OpenForm("Document.Event.ObjectForm", FormParameters, ThisForm);
-	
 EndProcedure
 
-#EndRegion
-
-#Region DynamicListEventHandlers
-
-// Procedure - BeforeAddingBegin event handler of List dynamic list.
-//
 &AtClient
 Procedure ListBeforeAddRow(Item, Cancel, Copy, Parent, Group)
 	
+	FillingValue = New Structure;
+	If ValueIsFilled(Parameters.EventType) Then
+		FillingValue.Insert("EventType", Parameters.EventType);
+	EndIf;
+	FormParameters = New Structure;
+	
 	If ValueIsFilled(FilterBasis) Then
 		
 		Cancel = True;
 		
-		FormParameters = New Structure;
-		FormParameters.Insert("Basis", FilterBasis);
+		FillingValue.Insert("FillingBasis", FilterBasis);
+		FormParameters.Insert("FillingValues", FillingValue);
 		OpenForm("Document.Event.ObjectForm", FormParameters);
 		
-	ElsIf ValueIsFilled(FilterContactPerson) Then
-			
+	ElsIf ValueIsFilled(ContextContact) Then
+		
 		Cancel = True;
 		
-		FormParameters = New Structure;
-		FormParameters.Insert("Basis", FilterContactPerson);
+		FillingValue.Insert("FillingBasis", ContextContact);
+		FormParameters.Insert("FillingValues", FillingValue);
 		OpenForm("Document.Event.ObjectForm", FormParameters);
+		
+	Else
+		
+		FilterByCounterparty = GetFilterByCounterparty();
+		
+		If FilterByCounterparty <> Undefined Then
+			
+			Cancel = True;
+			
+			FillingValue.Insert("FillingBasis", FilterByCounterparty);
+			FormParameters.Insert("FillingValues", FillingValue);
+			OpenForm("Document.Event.ObjectForm", FormParameters);
+			
+		EndIf;
 		
 	EndIf;
 	
-EndProcedure // ListBeforeAddStart()
+EndProcedure
+
+&AtClient
+Procedure PeriodPresentationClick(Item, StandardProcessing)
+	
+	StandardProcessing = False;
+	WorkWithFiltersClient.PeriodPresentationSelectPeriod(ThisObject, , "EventBegin");
+	
+EndProcedure
+
+&AtClient
+Procedure FilterCounterpartyChoiceProcessing(Item, SelectedValue, StandardProcessing)
+	
+	If Not ValueIsFilled(SelectedValue) Then
+		Return;
+	EndIf;
+	
+	CounterpartyContacts = GetCounterpartyContacts(SelectedValue);
+	
+	SetLabelAndListFilter("TPParticipants.Contact", Item.Parent.Name, CounterpartyContacts, String(SelectedValue));
+	SelectedValue = Undefined;
+	
+EndProcedure
+
+&AtClient
+Procedure FilterResponsibleChoiceProcessing(Item, SelectedValue, StandardProcessing)
+	
+	If Not ValueIsFilled(SelectedValue) Then
+		Return;
+	EndIf;
+	
+	SetLabelAndListFilter("Responsible", Item.Parent.Name, SelectedValue);
+	SelectedValue = Undefined;
+	
+EndProcedure
+
+&AtClient
+Procedure FilterEventTypeChoiceProcessing(Item, SelectedValue, StandardProcessing)
+	
+	If Not ValueIsFilled(SelectedValue) Then
+		Return;
+	EndIf;
+	
+	SetLabelAndListFilter("EventType", Item.Parent.Name, SelectedValue);
+	SelectedValue = Undefined;
+	
+EndProcedure
+
+&AtClient
+Procedure FilterStateChoiceProcessing(Item, SelectedValue, StandardProcessing)
+	
+	If Not ValueIsFilled(SelectedValue) Then
+		Return;
+	EndIf;
+	
+	SetLabelAndListFilter("State", Item.Parent.Name, SelectedValue);
+	SelectedValue = Undefined;
+	
+EndProcedure
+
+&AtClient
+Procedure FilterProjectChoiceProcessing(Item, SelectedValue, StandardProcessing)
+	
+	If Not ValueIsFilled(SelectedValue) Then
+		Return;
+	EndIf;
+	
+	SetLabelAndListFilter("Project", Item.Parent.Name, SelectedValue);
+	SelectedValue = Undefined;
+	
+EndProcedure
+
+&AtClient
+Procedure CollapseExpandFiltesPanelClick(Item)
+	
+	NewValueVisible = Not Items.FilterSettingsAndAddInfo.Visible;
+	WorkWithFiltersClient.CollapseExpandFiltesPanel(ThisObject, NewValueVisible);
+	
+EndProcedure
 
 #EndRegion
 
-#Region CommonUseProceduresAndFunctions
+#Region FormCommandHandlers
 
-// Procedure colors list.
-//
+&AtClient
+Procedure CreateEvent(Command)
+	
+	FillingValue = New Structure;
+	FillingValue.Insert("EventType", PredefinedValue("Enum.EventTypes." + Mid(Command.Name, 7)));
+	If ValueIsFilled(FilterBasis) Then
+		FillingValue.Insert("FillingBasis", FilterBasis);
+	ElsIf ValueIsFilled(ContextContact) Then
+		FillingValue.Insert("FillingBasis", ContextContact);
+	Else
+		FillingValue.Insert("FillingBasis", New Structure);
+		If ValueIsFilled(FilterResponsible) Then
+			FillingValue.FillingBasis.Insert("Responsible", FilterResponsible);
+		EndIf;
+		If ValueIsFilled(FilterState) Then
+			FillingValue.FillingBasis.Insert("State", FilterState);
+		EndIf;
+		FilterByCounterparty = GetFilterByCounterparty();
+		If ValueIsFilled(FilterByCounterparty) Then
+			FillingValue.FillingBasis.Insert("Contact", FilterByCounterparty);
+		EndIf;
+	EndIf;
+	
+	FormParameters = New Structure;
+	FormParameters.Insert("FillingValues", FillingValue);
+	
+	OpenForm("Document.Event.ObjectForm", FormParameters, ThisObject);
+	
+EndProcedure
+
+#EndRegion
+
+#Region CommonProceduresAndFunctions
+
 &AtServer
 Procedure PaintList()
 	
@@ -192,111 +279,144 @@ Procedure PaintList()
 		ConditionalAppearanceItem.Appearance.SetParameterValue("TextColor", BackColor);
 		ConditionalAppearanceItem.ViewMode = DataCompositionSettingsItemViewMode.Inaccessible;
 		ConditionalAppearanceItem.UserSettingID = "Preset";
-		ConditionalAppearanceItem.Presentation = "By event state " + SelectionEventStates.Description;
+		ConditionalAppearanceItem.Presentation = NStr("ru = 'По состоянию события '; en = 'By event state '") + SelectionEventStates.Description;
 	
 	EndDo;
 	
-EndProcedure // PaintList()
+EndProcedure
 
 &AtServer
-// Procedure sets filter in the list table for section To-do list.
-//
 Procedure SetFilterCurrentWorks()
 	
 	If Not Parameters.Property("CurrentWorks") Then
 		Return;
 	EndIf;
 	
-	ListOfState = New ValueList;
-	ListOfState.Add(Catalogs.EventStates.Canceled);
-	ListOfState.Add(Catalogs.EventStates.Completed);
-	SmallBusinessClientServer.SetListFilterItem(List, "State", ListOfState, True, DataCompositionComparisonType.NotInList);
+	AutoTitle	= False;
+	Title		= NStr("ru='События'; en = 'Events'");
+	CurDate		= CurrentSessionDate();
 	
-	FormHeaderText = "";
+	CommonUseClientServer.SetFilterDynamicListItem(
+		List,
+		"DeletionMark",
+		False
+	);
+	
+	StateList = New ValueList;
+	StateList.Add(Catalogs.EventStates.Canceled);
+	StateList.Add(Catalogs.EventStates.Completed);
+	
+	Query = New Query;
+	Query.Text = 
+		"SELECT
+		|	EventStates.Ref
+		|FROM
+		|	Catalog.EventStates AS EventStates
+		|WHERE
+		|	EventStates.DeletionMark = FALSE
+		|	AND NOT EventStates.Ref IN (&StateList)";
+	
+	Query.SetParameter("StateList", StateList);
+	Selection = Query.Execute().Select();
+	StateList.Clear();
+	
+	While Selection.Next() Do
+		StateList.Add(Selection.Ref);
+	EndDo;
+	
+	WorkWithFilters.AttachFilterLabelsFromArray(ThisObject, "State", "States", StateList);
+	WorkWithFilters.SetListFilter(ThisObject, List, "State");
+	
+	WorkWithFilters.AttachFilterLabelsFromArray(ThisObject, "Responsible", "Responsibles", SmallBusinessServer.GetUserEmployees());
+	WorkWithFilters.SetListFilter(ThisObject, List, "Responsible");
+	
 	If Parameters.Property("PastPerformance") Then
-		FormHeaderText = "Events: overdue";
-		SmallBusinessClientServer.SetListFilterItem(List, "EventBegin", Date('00010101'), True, DataCompositionComparisonType.NotEqual);
-		SmallBusinessClientServer.SetListFilterItem(List, "EventEnding", CurrentSessionDate(), True, DataCompositionComparisonType.Less);
+		
+		Title = Title + ": " + NStr("ru='просрочено выполнение'; en = 'overdue'");
+		SmallBusinessClientServer.SetListFilterItem(
+			List, 
+			"EventBegin", 
+			Date('00010101'), 
+			True, 
+			DataCompositionComparisonType.NotEqual
+		);
+		SmallBusinessClientServer.SetListFilterItem(
+			List, 
+			"EventEnding", 
+			CurrentSessionDate(), 
+			True, 
+			DataCompositionComparisonType.Less
+		);
+		Items.PeriodPresentation.Visible	= False;
+		
+	ElsIf Parameters.Property("ForToday") Then
+		
+		Title = Title + ": " + NStr("ru='на сегодня'; en = 'for today'");
+		SmallBusinessClientServer.SetListFilterItem(
+			List, 
+			"EventBegin", 
+			EndOfDay(CurrentSessionDate()), 
+			True, 
+			DataCompositionComparisonType.LessOrEqual);
+		SmallBusinessClientServer.SetListFilterItem(
+			List, 
+			"EventEnding", 
+			CurrentSessionDate(), 
+			True, 
+			DataCompositionComparisonType.GreaterOrEqual);
+		Items.PeriodPresentation.Visible	= False;
+		
+	ElsIf Parameters.Property("InProcess") Then
+		
+		Title = Title + ": " + NStr("ru='в работе'; en = 'in process'");
+		
 	EndIf;
 	
-	If Parameters.Property("ForToday") Then
-		FormHeaderText = "Events: for today";
-		SmallBusinessClientServer.SetListFilterItem(List, "EventBegin", EndOfDay(CurrentSessionDate()), True, DataCompositionComparisonType.LessOrEqual);
-		SmallBusinessClientServer.SetListFilterItem(List, "EventEnding", CurrentSessionDate(), True, DataCompositionComparisonType.GreaterOrEqual);
+	If Items.PeriodPresentation.Visible Then
+		PeriodPresentation = WorkWithFiltersClientServer.RefreshPeriodPresentation(FilterPeriod);
 	EndIf;
 	
-	If Parameters.Property("Planned") Then
-		FormHeaderText = "Events: planned";
-	EndIf;
-	
-	If Parameters.Property("Responsible") Then
-		SmallBusinessClientServer.SetListFilterItem(List, "Responsible", Parameters.Responsible.List, True, DataCompositionComparisonType.InList);
-		FormHeaderText = FormHeaderText + ", responsible " + Parameters.Responsible.Initials;
-	EndIf;
-	
-	If Not IsBlankString(FormHeaderText) Then
-		AutoTitle = False;
-		Title = FormHeaderText;
-	EndIf;
-	
-	Items.FilterEmployee.Visible = False;
-	Items.FilterState.Visible = False;
+	WorkWithFilters.RefreshLabelItems(ThisObject);
 	
 EndProcedure // SetFilterCurrentWorks()
 
 &AtServer
-// The procedure sets the filter in the table of list for the information panel.
-//
-Procedure SetFilterInformationPanel()
+Procedure SetFilterEventType()
 	
-	If Not Parameters.Property("InformationPanel") Then
+	If Not ValueIsFilled(Parameters.EventType) Then
 		Return;
-	EndIf;
-	
-	InformationPanel = Parameters.InformationPanel;
-	If InformationPanel.Property("Counterparty") Then
-		
-		FilterCounterparty = InformationPanel.Counterparty;
-		Contacts = GetCounterpartyContacts(FilterCounterparty);
-		CommonUseClientServer.SetDynamicListParameter(List, "Contacts", Contacts, Contacts.Count() > 0);
-		
-	EndIf;
-	
-	If InformationPanel.Property("ContactPerson") Then
-		
-		FilterContactPerson = InformationPanel.ContactPerson;
-		Contacts = New Array;
-		Contacts.Add(FilterContactPerson);
-		CommonUseClientServer.SetDynamicListParameter(List, "Contacts", Contacts, ValueIsFilled(FilterContactPerson));
-		
-		ThisForm.AutoTitle = False;
-		ThisForm.Title = NStr("en=' Event (contact person: ';ru=' Событие (контактное лицо: '") + String(InformationPanel.ContactPerson) + ")";
-		
-		Items.FilterCounterparty.Visible = False;
-		
-		
-	ElsIf InformationPanel.Property("BasisOrderAccounts") Then
-		
-		FilterBasis = InformationPanel.BasisOrderAccounts;
-		CommonUseClientServer.SetDynamicListParameter(List, "BasisDocument", FilterBasis, ValueIsFilled(FilterBasis));
-		
-		ThisForm.AutoTitle = False;
-		ThisForm.Title = NStr("en=' Event (basis: ';ru=' Событие (основание: '") + String(InformationPanel.BasisOrderAccounts) + ")";
-		
-		Items.FilterCounterparty.Visible = False;
-		
 	Else
-		
-		ThisForm.AutoTitle = True;
-		Items.FilterCounterparty.Visible = True;
-		
+		FilterEventType = Parameters.EventType;
 	EndIf;
 	
-	If Parameters.Property("OpeningMode") Then
-		WindowOpeningMode = Parameters.OpeningMode;
+	AutoTitle = False;
+	Items.FilterEventType.Visible	= False;
+	Items.ListGroupCreate.Visible	= False;
+	Items.FormCreate.Visible		= True;
+	
+	CommonUseClientServer.SetFilterDynamicListItem(
+		List,
+		"EventType",
+		Parameters.EventType
+	);
+	
+	Items.IncomingOutgoing.Visible	= Parameters.EventType <> Enums.EventTypes.SMS;
+	Items.Projects.Visible			= Not (Parameters.EventType = Enums.EventTypes.SMS
+														Or Parameters.EventType = Enums.EventTypes.Email);
+														
+	If Parameters.EventType = Enums.EventTypes.PhoneCall Then
+		Title = NStr("ru='События: телефонные звонки'; en = 'Events: phone calls'");
+	ElsIf Parameters.EventType = Enums.EventTypes.Email Then
+		Title = NStr("ru='События: электронные письма'; en = 'Events: emails'");
+	ElsIf Parameters.EventType = Enums.EventTypes.SMS Then
+		Title = NStr("ru='События: сообщения SMS'; en = 'Events: SMS'");
+	ElsIf Parameters.EventType = Enums.EventTypes.PersonalMeeting Then
+		Title = NStr("ru='События: личные встречи'; en = 'Events: personal meetings'");
+	ElsIf Parameters.EventType = Enums.EventTypes.Other Then
+		Title = NStr("ru='События: прочие'; en = 'Events: other'");
 	EndIf;
 	
-EndProcedure // SetFilterCurrentWorks()
+EndProcedure
 
 &AtServerNoContext
 Function GetCounterpartyContacts(Counterparty)
@@ -329,6 +449,156 @@ Function GetCounterpartyContacts(Counterparty)
 	Return Contacts;
 	
 EndFunction
+
+&AtClient
+Procedure HandleActivateListRow()
+	
+	RefreshContactInformationPanelServer();
+	
+EndProcedure
+
+&AtClient
+Function GetFilterByCounterparty()
+	
+	FindedRows = LabelData.FindRows(New Structure("FilterFieldName", "TPParticipants.Contact"));
+	FilterByCounterparty = Undefined;
+	
+	For Each FindedRow In FindedRows Do
+		If TypeOf(FindedRow.Label) = Type("ValueList") Then
+			For Each ListItem In FindedRow.Label Do
+				If TypeOf(ListItem.Value) = Type("CatalogRef.Counterparties") Then
+					FilterByCounterparty = ListItem.Value;
+					Break;
+				EndIf;
+			EndDo;
+		EndIf;
+	EndDo;
+	
+	Return FilterByCounterparty;
+	
+EndFunction
+
+#EndRegion
+
+#Region ContactInformationPanel
+
+&AtServer
+Procedure RefreshContactInformationPanelServer()
+	
+	Query = New Query;
+	Query.Text = 
+	"SELECT ALLOWED TOP 1
+	|	Counterparties.Ref AS Counterparty
+	|FROM
+	|	Document.Event.Participants AS EventParticipants
+	|		INNER JOIN Catalog.Counterparties AS Counterparties
+	|		ON EventParticipants.Contact = Counterparties.Ref
+	|WHERE
+	|	EventParticipants.Ref = &Event";
+	
+	Query.SetParameter("Event", Items.List.CurrentRow);
+	
+	Selection = Query.Execute().Select();
+	If Selection.Next() Then
+		ContactInformationPanelSB.RefreshPanelData(ThisObject, Selection.Counterparty);
+	EndIf;
+	
+EndProcedure
+
+&AtClient
+Procedure Attachable_ContactInformationPanelDataSelection(Item, SelectedRow, Field, StandardProcessing)
+	
+	ContactInformationPanelSBClient.ContactInformationPanelDataSelection(ThisObject, Item, SelectedRow, Field, StandardProcessing);
+	
+EndProcedure
+
+&AtClient
+Procedure Attachable_ContactInformationPanelDataOnActivateRow(Item)
+	
+	ContactInformationPanelSBClient.ContactInformationPanelDataOnActivateRow(ThisObject, Item);
+	
+EndProcedure
+
+&AtClient
+Procedure Attachable_ContactInformationPanelDataExecuteCommand(Command)
+	
+	ContactInformationPanelSBClient.ExecuteCommand(ThisObject, Command);
+	
+EndProcedure
+
+#EndRegion
+
+#Region FilterLabel
+
+&AtServer
+Procedure SetLabelAndListFilter(ListFilterFieldName, GroupLabelParent, SelectedValue, ValuePresentation="")
+	
+	If ValuePresentation="" Then
+		ValuePresentation=String(SelectedValue);
+	EndIf; 
+	
+	WorkWithFilters.AttachFilterLabel(ThisObject, ListFilterFieldName, GroupLabelParent, SelectedValue, ValuePresentation);
+	WorkWithFilters.SetListFilter(ThisObject, List, ListFilterFieldName,,True);
+	
+EndProcedure
+
+&AtClient
+Procedure Attachable_LabelURLProcessing(Item, URLFS, StandardProcessing)
+	
+	StandardProcessing = False;
+	
+	LabelID = Mid(Item.Name, StrLen("Label_")+1);
+	DeleteFilterLabel(LabelID);
+	
+EndProcedure
+
+&AtServer
+Procedure DeleteFilterLabel(LabelID)
+	
+	WorkWithFilters.DeleteFilterLabelServer(ThisObject, List, LabelID);
+
+EndProcedure
+
+&AtServer
+Procedure SaveFilterSettings()
+	
+	WorkWithFilters.SaveFilterSettings(ThisObject,,,FilterEventType);
+	
+EndProcedure
+
+#EndRegion
+
+#Region EmailSB
+	
+&AtClient
+Procedure FilterIncomingOutgoingOnChange(Item)
+	
+	SetFilterIncomingOutgoing();
+	
+EndProcedure
+
+&AtClient
+Procedure FilterAccountChoiceProcessing(Item, SelectedValue, StandardProcessing)
+	
+	If Not ValueIsFilled(SelectedValue) Then
+		Return;
+	EndIf;
+	
+	SetLabelAndListFilter("UserAccount", Item.Parent.Name, SelectedValue);
+	SelectedValue = Undefined;
+
+EndProcedure
+
+&AtServer
+Procedure SetFilterIncomingOutgoing()
+	
+	If ValueIsFilled(FilterIncomingOutgoing) Then
+		SmallBusinessClientServer.SetListFilterItem(List, "IncomingOutgoing", FilterIncomingOutgoing);
+	Else
+		SmallBusinessClientServer.DeleteListFilterItem(List, "IncomingOutgoing");
+	EndIf;
+	
+EndProcedure
 
 #EndRegion
 
