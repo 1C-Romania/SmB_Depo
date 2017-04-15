@@ -90,7 +90,7 @@ Procedure FillCheckProcessing(Cancel, CheckedAttributes)
 		
 		For Each CurrentRowExpenses In Expenses Do
 			If CurrentRowExpenses.GLExpenseAccount.TypeOfAccount = Enums.GLAccountsTypes.Debitors 
-				Or CurrentRowExpenses.GLExpenseAccount.TypeOfAccount = Correspondence.TypeOfAccount <> Enums.GLAccountsTypes.Creditors Then
+				Or CurrentRowExpenses.GLExpenseAccount.TypeOfAccount = Enums.GLAccountsTypes.Creditors Then
 				
 				If CurrentRowExpenses.Counterparty.IsEmpty() Then
 					MessageText = NStr("ru = 'Укажите контрагента в строке %LineNumber% списка ""Расходы"".'; en = 'Specify the counterparty in the line %LineNumber% of the list ""Expenses""'");
