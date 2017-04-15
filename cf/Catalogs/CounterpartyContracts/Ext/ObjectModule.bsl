@@ -7,17 +7,23 @@ Procedure Filling(FillingData, FillingText, StandardProcessing)
 	If TypeOf(FillingData) = Type("CatalogRef.Counterparties") Then
 		// Program filling by method Fill()
 		
-		StandardProcessing = False;
+		StandardProcessing	= False;
+		AttributesValues	= CommonUse.ObjectAttributesValues(FillingData, "Customer,Supplier,OtherRelationship");
 		
 		CompanyByDefault = SmallBusinessReUse.GetValueByDefaultUser(UsersClientServer.AuthorizedUser(), "MainCompany");
 		If Not ValueIsFilled(CompanyByDefault) Then
 			CompanyByDefault = Catalogs.Companies.MainCompany;
 		EndIf;
 		
-		Description				= "Main contract";
+		Description				= NStr("ru = 'Основной договор'; en = 'Main contract'");
 		SettlementsCurrency		= Constants.NationalCurrency.Get();
 		Company					= CompanyByDefault;
 		ContractKind			= Enums.ContractKinds.WithCustomer;
+		If AttributesValues.Supplier And Not AttributesValues.Customer Then
+			ContractKind		= Enums.ContractKinds.WithVendor;
+		ElsIf AttributesValues.OtherRelationship And Not AttributesValues.Customer And Not AttributesValues.Supplier Then
+			ContractKind		= Enums.ContractKinds.Other;
+		EndIf;
 		PriceKind				= Catalogs.PriceKinds.GetMainKindOfSalePrices();
 		Owner					= FillingData;
 		VendorPaymentDueDate	= Constants.VendorPaymentDueDate.Get();
