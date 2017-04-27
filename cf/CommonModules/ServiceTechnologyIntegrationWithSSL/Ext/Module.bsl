@@ -292,13 +292,13 @@ Function InfobaseUserWithFullAccess(User = Undefined,
 EndFunction
 
 ////////////////////////////////////////////////////////////////////////////////
-// Integration with 1CBuhphone
+// Integration with 1C-Connect
 
-// See IntegrationWith1CBuhphone.OnCreateAtServer()
+// See IntegrationWith1CConnect.OnCreateAtServer()
 //
-Procedure IntegrationWith1CBuhphoneOnCreateAtServer(Item) Export
+Procedure IntegrationWith1CConnectOnCreateAtServer(Item) Export
 	
-	IntegrationWith1CBuhphone.OnCreateAtServer(Item);
+	IntegrationWith1CConnect.OnCreateAtServer(Item);
 	
 EndProcedure
 

@@ -228,9 +228,9 @@ Procedure OpenDSToolTip(Command)
 EndProcedure
 
 &AtClient
-Procedure OpenLinkTo1CBuhphoneItem(Command)
+Procedure OpenLinkTo1CConnectItem(Command)
 	
-	ElectronicDocumentsServiceClient.OpenStatement1CBuhphone();
+	ElectronicDocumentsServiceClient.OpenStatement1CConnect();
 	
 EndProcedure
 

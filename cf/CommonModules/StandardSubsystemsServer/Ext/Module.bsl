@@ -401,9 +401,9 @@ Procedure OnAddHandlersOfServiceEvents(ClientHandlers, ServerHandlers) Export
 		ModuleUserNotesService.OnAddHandlersOfServiceEvents(ClientHandlers, ServerHandlers);
 	EndIf;
 	
-	If CommonUse.SubsystemExists("StandardSubsystems.IntegrationWith1CBuhphone") Then
-		IntegrationModule1CBuhphone = CommonUse.CommonModule("IntegrationWith1CBuhphone");
-		IntegrationModule1CBuhphone.OnAddHandlersOfServiceEvents(ClientHandlers, ServerHandlers);
+	If CommonUse.SubsystemExists("StandardSubsystems.IntegrationWith1CConnect") Then
+		IntegrationModule1CConnect = CommonUse.CommonModule("IntegrationWith1CConnect");
+		IntegrationModule1CConnect.OnAddHandlersOfServiceEvents(ClientHandlers, ServerHandlers);
 	EndIf;
 	
 	If CommonUse.SubsystemExists("StandardSubsystems.InformationOnStart") Then

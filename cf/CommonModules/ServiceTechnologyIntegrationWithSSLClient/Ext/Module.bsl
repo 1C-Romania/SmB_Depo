@@ -6,10 +6,10 @@
 ////////////////////////////////////////////////////////////////////////////////
 // INTERNAL INTERFACE
 
-// See IntegrationWith1CBuhphoneClient.NotificationProcessing()
+// See IntegrationWith1CConnectClient.NotificationProcessing()
 //
-Procedure IntegrationWith1CBuhphoneClientNotificationProcessing(EventName, Item) Export
+Procedure IntegrationWith1CConnectClientNotificationProcessing(EventName, Item) Export
 	
-	IntegrationWith1CBuhphoneClient.NotificationProcessing(EventName, Item);
+	IntegrationWith1CConnectClient.NotificationProcessing(EventName, Item);
 	
 EndProcedure

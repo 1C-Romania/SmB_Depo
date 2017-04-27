@@ -95,7 +95,7 @@ Procedure FillDataServiceSupport(ServiceSupportPhoneNumber, ServiceSupportEmailA
 
 EndProcedure
 
-Procedure OpenStatement1CBuhphone() Export
+Procedure OpenStatement1CConnect() Export
 	
 	GotoURL("");
 	

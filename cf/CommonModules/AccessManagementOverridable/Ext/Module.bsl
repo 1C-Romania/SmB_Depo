@@ -86,7 +86,7 @@ Procedure WhenFillingOutProfileGroupsAccessProvided(ProfileDescriptions, UpdateP
 	ProfileDescription.Roles.Add("AdditionalInformationChange");
 	ProfileDescription.Roles.Add("ChangePrintFormsTemplates");
 	ProfileDescription.Roles.Add("EditCurrentUser");
-	ProfileDescription.Roles.Add("IntegrationWith1CBuhphone");
+	ProfileDescription.Roles.Add("IntegrationWith1CConnect");
 	ProfileDescription.Roles.Add("ReportsVariantsUsage");
 	ProfileDescription.Roles.Add("UseGlobalAdditionalReportsAndDataProcessors");
 	ProfileDescription.Roles.Add("UseAdditionalReportsAndDataProcessors");
@@ -226,7 +226,7 @@ Procedure WhenFillingOutProfileGroupsAccessProvided(ProfileDescriptions, UpdateP
 	ProfileDescription.Roles.Add("AdditionalInformationChange");
 	ProfileDescription.Roles.Add("ChangePrintFormsTemplates");
 	ProfileDescription.Roles.Add("EditCurrentUser");
-	ProfileDescription.Roles.Add("IntegrationWith1CBuhphone");
+	ProfileDescription.Roles.Add("IntegrationWith1CConnect");
 	ProfileDescription.Roles.Add("ReportsVariantsUsage");
 	ProfileDescription.Roles.Add("UseGlobalAdditionalReportsAndDataProcessors");
 	ProfileDescription.Roles.Add("UseAdditionalReportsAndDataProcessors");
@@ -332,7 +332,7 @@ Procedure WhenFillingOutProfileGroupsAccessProvided(ProfileDescriptions, UpdateP
 	ProfileDescription.Roles.Add("AdditionalInformationChange");
 	ProfileDescription.Roles.Add("ChangePrintFormsTemplates");
 	ProfileDescription.Roles.Add("EditCurrentUser");
-	ProfileDescription.Roles.Add("IntegrationWith1CBuhphone");
+	ProfileDescription.Roles.Add("IntegrationWith1CConnect");
 	ProfileDescription.Roles.Add("ReportsVariantsUsage");
 	ProfileDescription.Roles.Add("UseGlobalAdditionalReportsAndDataProcessors");
 	ProfileDescription.Roles.Add("UseAdditionalReportsAndDataProcessors");
@@ -416,7 +416,7 @@ Procedure WhenFillingOutProfileGroupsAccessProvided(ProfileDescriptions, UpdateP
 	ProfileDescription.Roles.Add("AdditionalInformationChange");
 	ProfileDescription.Roles.Add("ChangePrintFormsTemplates");
 	ProfileDescription.Roles.Add("EditCurrentUser");
-	ProfileDescription.Roles.Add("IntegrationWith1CBuhphone");
+	ProfileDescription.Roles.Add("IntegrationWith1CConnect");
 	ProfileDescription.Roles.Add("ReportsVariantsUsage");
 	ProfileDescription.Roles.Add("UseGlobalAdditionalReportsAndDataProcessors");
 	ProfileDescription.Roles.Add("UseAdditionalReportsAndDataProcessors");
@@ -499,7 +499,7 @@ Procedure WhenFillingOutProfileGroupsAccessProvided(ProfileDescriptions, UpdateP
 	ProfileDescription.Roles.Add("AdditionalInformationChange");
 	ProfileDescription.Roles.Add("ChangePrintFormsTemplates");
 	ProfileDescription.Roles.Add("EditCurrentUser");
-	ProfileDescription.Roles.Add("IntegrationWith1CBuhphone");
+	ProfileDescription.Roles.Add("IntegrationWith1CConnect");
 	ProfileDescription.Roles.Add("ReportsVariantsUsage");
 	ProfileDescription.Roles.Add("UseGlobalAdditionalReportsAndDataProcessors");
 	ProfileDescription.Roles.Add("UseAdditionalReportsAndDataProcessors");

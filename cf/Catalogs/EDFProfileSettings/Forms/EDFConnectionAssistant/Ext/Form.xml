@@ -462,10 +462,10 @@ You can get it in your account settings of the EDF operator. ID should consist o
 											<ContextMenu name="ServiceSupportEmailAddressContextMenu" id="723"/>
 											<ExtendedTooltip name="ServiceSupportEmailAddressExtendedTooltip" id="724"/>
 										</InputField>
-										<Button name="Button1CBuhphone" id="725">
+										<Button name="Button1CConnect" id="725">
 											<Type>Hyperlink</Type>
-											<CommandName>Form.Command.OpenLinkTo1CBuhphoneItem</CommandName>
-											<ExtendedTooltip name="Button1CBuhphoneExtendedTooltip" id="726"/>
+											<CommandName>Form.Command.OpenLinkTo1CConnectItem</CommandName>
+											<ExtendedTooltip name="Button1CConnectExtendedTooltip" id="726"/>
 										</Button>
 									</ChildItems>
 								</UsualGroup>
@@ -2257,11 +2257,11 @@ You can get it in your account settings of the EDF operator. ID should consist o
 			</ToolTip>
 			<Action>OpenDSToolTip</Action>
 		</Command>
-		<Command name="OpenLinkTo1CBuhphoneItem" id="2">
+		<Command name="OpenLinkTo1CConnectItem" id="2">
 			<Title>
 				<v8:item>
 					<v8:lang>en</v8:lang>
-					<v8:content>1CBuhphone</v8:content>
+					<v8:content>1CConnect</v8:content>
 				</v8:item>
 				<v8:item>
 					<v8:lang>ru</v8:lang>
@@ -2271,14 +2271,14 @@ You can get it in your account settings of the EDF operator. ID should consist o
 			<ToolTip>
 				<v8:item>
 					<v8:lang>en</v8:lang>
-					<v8:content>Open an item on 1C Buhphone service at ITS</v8:content>
+					<v8:content>Open an item on 1C Connect service at ITS</v8:content>
 				</v8:item>
 				<v8:item>
 					<v8:lang>ru</v8:lang>
 					<v8:content>Открыть статью на ИТС по сервису 1С-Бухфон</v8:content>
 				</v8:item>
 			</ToolTip>
-			<Action>OpenLinkTo1CBuhphoneItem</Action>
+			<Action>OpenLinkTo1CConnectItem</Action>
 		</Command>
 	</Commands>
 </Form>
