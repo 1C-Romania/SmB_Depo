@@ -351,8 +351,7 @@ EndFunction
 //      FieldMap - The KeyAndValue object collection where.
 //                          Key - source path to the field data, Value - path 
 //                          for result. For Example for replacements fields of type.
-//                          "Ref.Name"
-//                          -> "RegistrationObject.name″ the New structure must be passed("Ref", "RegistrationObject").
+//                          "Ref.Name" -> "RegistrationObject.name" the New structure must be passed("Ref", "RegistrationObject").
 //
 Procedure AddCompositionFilterValues(ItemsOfReceiver, SourceItems, FieldMap = Undefined) Export
 	
@@ -431,8 +430,11 @@ EndProcedure
 //  Parameters:
 //      ExchangeNode - ExchangePlanRef - exchange node for return settings. If it is not pointed,
 //  then the current value of the InfobaseNode attribute is used.
-//      Variants - Array             - if it is pointed, then we filter
-//                                      restorable settings by variants 0 - without filter, 1 - filter all documents, 2 - detailed, 3 - node script.
+//      Variants - Array             - if it is pointed, then we filter restorable settings by variants 
+//										0 - without filter, 
+//										1 - filter all documents, 
+//										2 - detailed, 
+//										3 - node script.
 //
 //  Returns:
 //      ValueList - Possible settings.
@@ -462,8 +464,12 @@ EndFunction
 //
 //  Parameters:
 //      Presentation       - String - restored setting presentation.
-//      Variants            - Array - if it is pointed, then we filter
-//                                     restorable settings by variants 0 - without filter, 1 - filter all documents, 2 - detailed, 3 - node script.
+//      Variants            - Array - if it is pointed, then we filter restorable settings by variants 
+//								0 - without filter, 
+//								1 - filter all documents, 
+//								2 - detailed, 
+//								3 - node script.
+//
 //      AddressOfFormStore - String, UUID - unnecessary address for saving.
 //
 // Returns:
@@ -548,8 +554,8 @@ EndProcedure
 //
 // Parameters:
 //      FullMetadataName - String, ValueTree is table name (for example "Catalog.Currency")
-//                            or name
-//                            of a predefined group (for example "AllDocuments") or value tree describing the group.
+//                            	or a predefined group name (for example "AllDocuments") 
+//								or value tree describing the group.
 //
 // Returns:
 //      Array - Metadata name.
@@ -658,9 +664,8 @@ Procedure AddSetIntoDataCompositionSchema(DataCompositionSchema, TableName, Pres
 	Set.Query = "
 		|SELECT 
 		|   Ref
-		|FROM 
-		|   " + TableName + "
-		|";
+		|FROM " + TableName;
+	
 	Set.AutoFillAvailableFields = True;
 	Set.DataSource = DataCompositionSchema.DataSources[0].Name;
 	Set.Name = "Set" + Format(DataCompositionSchema.DataSets.Count()-1, "NZ=; NG=");
@@ -695,12 +700,12 @@ EndProcedure
 //
 //  Parameters:
 //      ListOfMetadataNames - Array - Metadata names (value trees of restriction
-//                                      groups,
-//                                      the "all documents" or "all INE" service identifiers) which will be built a schema for. 
+//                                      groups, the "all documents" or "all INE" service identifiers) 
+//										which will be built a schema for. 
 //                                      If it is not specified, then for all the node content.
 //
 //      LimitUseOfSelection - Boolean - the flag means that composition will
-//                                                  be initialized for export item selection only.
+//                                      be initialized for export item selection only.
 //
 //      AddressConservationScheme - String, UUID - temporary storage address 
 //                              for composition schema saving.
@@ -761,8 +766,7 @@ Function InitializeComposer(ListOfMetadataNames = Undefined, LimitUseOfSelection
 				|	RegistrationObject TYPE(" + FullMetadataName + ") AS ObjectRegistrationType,
 				|	&ReasonForRegistrationAutomatically AS ReasonForRegistration
 				|FROM
-				|	" + FullMetadataName + ".Changes AS " + SetName + "_Changes
-				|";
+				|	" + FullMetadataName + ".Changes AS " + SetName + "_Changes";
 		EndIf;
 		
 		SetName = "Quantity_" + SetNameByMetadata;
@@ -771,13 +775,9 @@ Function InitializeComposer(ListOfMetadataNames = Undefined, LimitUseOfSelection
 			Set.AutoFillAvailableFields = True;
 			Set.DataSource = DataSource;
 			Set.Name = SetName;
-			Set.Query = "
-				|SELECT ALLOWED
-				|	Type(" + FullMetadataName + ")     AS Type,
-				|	COUNT(" + SetName + ".Ref)
-				|AS GeneralItemQuantity FROM
-				|	" + FullMetadataName + " AS " + SetName + "
-				|";
+			Set.Query = "SELECT ALLOWED	Type(" + FullMetadataName + ") AS Type, COUNT(" + 
+						SetName + ".Ref) AS GeneralItemQuantity FROM" + 
+						FullMetadataName + " AS " + SetName;
 		EndIf;
 		
 	EndDo;
@@ -828,8 +828,7 @@ Function InitializeComposer(ListOfMetadataNames = Undefined, LimitUseOfSelection
 					|	TYPE(" + NameOfAddedTables + ") AS ObjectRegistrationType,
 					|	&ReasonForRegistrationAdvanced   AS ReasonForRegistration
 					|FROM
-					|	" + NameOfAddedTables + " AS " + SetName + "
-					|";
+					|	" + NameOfAddedTables + " AS " + SetName;
 					
 				// We add additional sets for getting data of their filter tabular sections.
 				AddingParameters = New Structure;
@@ -952,7 +951,8 @@ Procedure AddAdditionalSetsOfTabularLayoutParts(SourceItems, AddingParameters)
 	ObjectMetadata = Metadata.FindByFullName(NameOfAddedTables);
 	If ObjectMetadata = Undefined Then
 		Raise StringFunctionsClientServer.SubstituteParametersInString(
-			NStr("en='The %1 incorrect name of metadata for registration at the %2 node';ru='Некорректное имя метаданных ""%1"" для регистрации на узле ""%2""'"),
+			NStr("en='The %1 incorrect name of metadata for registration at the %2 node';
+			     |ru='Некорректное имя метаданных %1 для регистрации на узле %2'"),
 				NameOfAddedTables, InfobaseNode);
 	EndIf;
 		
@@ -1012,8 +1012,7 @@ Procedure AddAdditionalSetsOfTabularLayoutParts(SourceItems, AddingParameters)
 			|	ObjectRegistrationType, &ReasonForRegistrationAdvanced AS ReasonForRegistration
 			|	" + AllTabularSectionFields.QueryFields +  "
 			|IN
-			|	" + NameOfAddedTables + "." + TableName + "
-			|";
+			|	" + NameOfAddedTables + "." + TableName;
 			
 		For Each FieldName IN AllTabularSectionFields.NamesOfFields Do
 			Field = Set.Fields.Find(FieldName);
@@ -1130,9 +1129,7 @@ EndProcedure
 
 Function AttributesTabularSectionForQuery(Val MetaTabularSection, Val Prefix = "")
 	
-	QueryFields = ", LineNumber AS " + Prefix + "StringNumber,
-	              |Ref AS " + Prefix + "Ref
-	              |";
+	QueryFields = ", LineNumber AS " + Prefix + "StringNumber, Ref AS " + Prefix + "Ref";
 	
 	NamesOfFields  = New Array;
 	NamesOfFields.Add(Prefix + "LineNumber");

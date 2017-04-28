@@ -61,7 +61,7 @@ Var StringType;                  // Type("String")
 Var BooleanType;                  // Type("Boolean")
 Var NumberType;                   // Type("Number")
 Var DateType;                    // Type("Date")
-Var UUIDType; // Type("UUID")
+Var UUIDType;                    // Type("UUID")
 Var ValueStorageType;       // Type("ValueStorage")
 Var BinaryDataType;          // Type("BinaryData")
 Var AccumulationRecordTypeType;   // Type("AccrualMovementKind")
@@ -108,7 +108,7 @@ Var AdditionalSearchParameterMap;
 Var TypeAndObjectNameMap;
 Var EmptyTypeValueMap;
 Var TypeDescriptionMap;
-Var ConversionRulesMap; // Match to determine object conversion rule by the object type.
+Var ConversionRulesMap;                            // Match to determine object conversion rule by the object type.
 Var MessageNumberField;
 Var ReceivedMessageNumberField;
 Var EnableDocumentPosting;
@@ -3262,7 +3262,8 @@ EndProcedure
 //  Object           - object of the XMLReading type from which reading is executed.
 //  Type              - received value type.
 //  SearchByProperty - for reference types a property can be specified
-//                     according to which you should search for an object: "Code", "Name", <AttributeName>, "Name" (predefined value).
+//                     according to which you should search for an object: 
+//						"Code", "Name", <AttributeName>, "Name" (predefined value).
 //
 // Returns:
 //  Xml-item value reduced to the corresponding type.
@@ -3370,13 +3371,13 @@ Function OpenExportFile()
 	Try
 		ExchangeFile.Open(ExchangeFileName, TextEncoding.UTF8);
 	Except
-		ErrorPresentation = StringFunctionsClientServer.SubstituteParametersInString(NStr("en='An error occurred while opening file for exchange message writing.
-		|File name ""%1"".
-		|Error
-		|description: %2';ru='Ошибка при открытии файла для записи сообщения обмена.
-		|Имя файла ""%1"".
-		|Описание
-		|ошибки: %2'"),
+		ErrorPresentation = StringFunctionsClientServer.SubstituteParametersInString(
+								NStr("en='An error occurred while opening file for exchange message writing.
+										|File name %1.
+										|Error description: %2';
+								     |ru='Ошибка при открытии файла для записи сообщения обмена.
+										|Имя файла %1.
+										|Описание ошибки: %2'"),
 			String(ExchangeFileName),
 			DetailErrorDescription(ErrorInfo())
 		);
@@ -5968,14 +5969,13 @@ Procedure StartMessageReader(MessageReader, DataAnalysis = False)
 	Except
 		Raise StringFunctionsClientServer.SubstituteParametersInString(
 			NStr("en='Setting lock on data exchange error.
-		|Data exchange may be performed by another session.
-		|
-		|Details:
-		|%1';ru='Ошибка установки блокировки на обмен данными.
-		|Возможно, обмен данными выполняется другим сеансом.
-		|
-		|Подробности:
-		|%1'"),
+					|Data exchange may be performed by another session.
+					|
+					|Details: %1';
+				 |ru='Ошибка установки блокировки на обмен данными.
+					|Возможно, обмен данными выполняется другим сеансом.
+					|
+					|Подробности: %1'"),
 			BriefErrorDescription(ErrorInfo())
 		);
 	EndTry;
@@ -6180,11 +6180,10 @@ Function DefineIfThereAreRegisterRecordsByDocument(DocumentRef)
 		// First 1 AccumulationRegister.ProductsInWarehouses FROM AccumulationRegister.ProductsInWarehouses WHERE Recorder = &Recorder
 		
 		// Register name equal to Row(200), see below.
-		QueryText = QueryText + "
-		|" + ?(QueryText = "", "", "UNION ALL ") + "
-		|SELECT TOP 1 CAST(""" + RegisterRecord.FullName() 
-		+  """ AS String(200)) AS Name FROM " + RegisterRecord.FullName() 
-		+ " WHERE Recorder = &Recorder";
+		QueryText = QueryText + "|" + ?(QueryText = "", "", "UNION ALL ") + 
+								"|SELECT TOP 1 CAST(""" + RegisterRecord.FullName() +  
+								""" AS String(200)) AS Name FROM " + RegisterRecord.FullName() + 
+								" WHERE Recorder = &Recorder";
 		
 		// If the request has more than 256 tables - break it into
 		// two parts (variant of a document with posting in 512 registers is unreal).
@@ -6217,10 +6216,10 @@ Function DefineIfThereAreRegisterRecordsByDocument(DocumentRef)
 			Continue;
 		EndIf;
 		
-		QueryText = QueryText + "
-		|" + ?(QueryText = "", "", "UNION ALL ") + "
-		|SELECT TOP 1 """ + RegisterRecord.FullName() +  """ AS Name IN " 
-		+ RegisterRecord.FullName() + " WHERE Recorder = &Recorder";	
+		QueryText = QueryText + "|" + ?(QueryText = "", "", "UNION ALL ") + 
+							"|SELECT TOP 1 """ + RegisterRecord.FullName() +  
+							""" AS Name IN " + RegisterRecord.FullName() + 
+							" WHERE Recorder = &Recorder";	
 		
 		
 	EndDo;
@@ -6295,9 +6294,7 @@ Procedure DeleteDocumentRegisterRecords(DocumentObject)
 			RegisterRecordRow.RecordSet.Write();
 		Except
 			// RlS or subsystem of the change prohibition date may have worked.
-			ErrorMessage = NStr("en='Operation is
-		|not executed: %1 %2';ru='Операция
-		|не выполнена: %1 %2'");
+			ErrorMessage = NStr("en='Operation is not executed: %1 %2';ru='Операция не выполнена: %1 %2'");
 			ErrorMessage = StringFunctionsClientServer.SubstituteParametersInString(ErrorMessage,
 				RegisterRecordRow.Name, BriefErrorDescription(ErrorInfo()));
 			Raise ErrorMessage;
@@ -6332,11 +6329,10 @@ Function DefineIfThereIsDocumentRegistrationInSequence(DocumentObject)
 	
 	For Each Sequence IN DocumentObject.BelongingToSequences Do
 		// IN the query we get names of users, in which the document is registered.
-		QueryText = QueryText + "
-		|" + ?(QueryText = "", "", "UNION ALL ") + "
-		|SELECT """ + Sequence.Metadata().Name 
-		+  """ AS Name IN " + Sequence.Metadata().FullName()  
-		+ " WHERE Recorder = &Recorder";
+		QueryText = QueryText + "|" + ?(QueryText = "", "", "UNION ALL ") + 
+							"|SELECT """ + Sequence.Metadata().Name +  
+							""" AS Name IN " + Sequence.Metadata().FullName()  + 
+							" WHERE Recorder = &Recorder";
 		
 	EndDo;
 	
@@ -6624,29 +6620,18 @@ Procedure SetObjectSearchAttributes(FoundObject, SearchProperties, SearchPropert
 						
 			If Not ShouldCompareWithCurrentAttributes
 				OR FoundObject.DeletionMark <> Value Then
-							
 				FoundObject.DeletionMark = Value;
-							
 			EndIf;
-						
 		Else
 				
 			// Set different attributes.
-			
 			If FoundObject[Name] <> NULL Then
-			
 				If Not ShouldCompareWithCurrentAttributes
 					OR FoundObject[Name] <> Value Then
-						
 					FoundObject[Name] = Value;
-					
-						
 				EndIf;
-				
 			EndIf;
-				
 		EndIf;
-					
 	EndDo;
 	
 EndProcedure
@@ -6954,15 +6939,10 @@ Function FindItemUsingQuery(PropertyStructure, SearchProperties, ObjectType = Un
 		PropertyUsedInSearchCount = PropertyUsedInSearchCount + 1;
 		
 		If OpenEndedString Then
-			
 			QueryText = QueryText + ?(PropertyUsedInSearchCount > 1, " AND ", "") + ParameterName + " LIKE &" + ParameterName;
-			
 		Else
-			
 			QueryText = QueryText + ?(PropertyUsedInSearchCount > 1, " AND ", "") + ParameterName + " = &" + ParameterName;
-			
 		EndIf;
-		
 	EndDo;
 	
 	If PropertyUsedInSearchCount = 0 Then
@@ -6992,7 +6972,7 @@ EndFunction
 // Determines object conversion rule (OCR) by the receiver object type.
 // 
 // Parameters:
-//  RefTypeAsString - String - object type in a string presentation, for example, "CatalogRef.ProductsAndServices.
+//  RefTypeAsString - String - object type in a string presentation, for example, "CatalogRef.ProductsAndServices."
 // 
 // Returns:
 //  MatchValue = Object conversion rule.

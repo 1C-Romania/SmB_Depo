@@ -238,7 +238,7 @@ Function DocumentAlreadyRemoved(ExecuteParameters, Ref)
 	If Information.Type <> "DOCUMENT" Then
 		Return False; // Not a document.
 	EndIf;
-	Query = New Query("SELECT TOP 1 1 FROM "+ Information.FullName +" Where Ref = &Ref");
+	Query = New Query("SELECT TOP 1 1 FROM " + Information.FullName + " Where Ref = &Ref");
 	Query.SetParameter("Ref", Ref);
 	Return Query.Execute().IsEmpty();
 EndFunction
@@ -510,7 +510,7 @@ EndProcedure
 // Checks that there is a link in the exceptions.
 Function LinkInLinkSearchExceptions(ExecuteParameters, TableRow)
 	// Definition of excluding rule for metadata object preventing the deletion:
-	// For the registers (so called "non-object tables″) - array of attributes for search in the records of the register.
+	// For the registers (so called "non-object tables") - array of attributes for search in the records of the register.
 	// For reference types (so-called "object tables") - ready query for search in the attributes.
 	Rule = ExecuteParameters.ExcludingRules[TableRow.FindMetadata]; // Cache.
 	If Rule = Undefined Then
@@ -593,10 +593,9 @@ Function GenerateExcludingRule(ExecuteParameters, TableRow)
 				"SELECT TOP 1
 				|	1
 				|FROM
-				|	"+ FullTableName +" AS
-				|Table
-				|WHERE Table.Ref
-				|	= &FoundRef AND (";
+				|	"+ FullTableName +" AS Table
+				|WHERE Table.Ref = &FoundRef 
+				|	AND (";
 			Else
 				NestedSelectText = NestedSelectText + Chars.LF + Chars.Tab + Chars.Tab + "OR ";
 			EndIf;

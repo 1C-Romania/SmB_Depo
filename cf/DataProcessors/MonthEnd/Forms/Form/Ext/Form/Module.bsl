@@ -1193,7 +1193,7 @@ EndProcedure
 // LongActions
 
 &AtClient
-// Procedure-handler of the command "Abort month closing in long Operations
+// Procedure-handler of the command "Abort month closing in long Operations"
 //
 Procedure AbortClosingMonthInLongOperation(Command)
 	

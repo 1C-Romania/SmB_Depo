@@ -92,7 +92,7 @@ Procedure MessageToUser(
 	
 EndProcedure
 
-// Adds a user's new error to the errors
+// Adds a user''s new error to the errors
 // list for the further sending using the TellUserAboutErrors() procedure.
 //  Used in procedures FillCheckProcessing.
 //
@@ -108,7 +108,7 @@ EndProcedure
 //                    for example, NStr("en='User is not selected.';ru='Пользователь не выбран.'").
 //
 //  ErrorsGroup    - Arbitrary - used to select either text for
-//                    one mistake, or text for multiple errors, for example, the Object name.Users".
+//                    one mistake, or text for multiple errors, for example, the Object name.Users.
 //                    It the value is not filled in, the text for one error is used.
 //
 //  LineNumber     - Number - value from 0 ... , defining the row number that
@@ -1892,7 +1892,7 @@ EndFunction
 //  IMPORTANT: Function returns the structures array where
 //         one field (any) can be empty. It can
 //         be used by the various subsystems
-//         for its own match of a user's name to an email address. That is why
+//         for its own match of a user''s name to an email address. That is why
 //         before the immediate sending it is required to check whether the field of postal addresses is filled in.
 //
 Function ParseStringWithPostalAddresses(Val EmailAddressString, CallingException = True) Export
