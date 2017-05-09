@@ -2595,18 +2595,6 @@ Procedure ExportAdditionSimplifiedCommonPeriodDocumentsClearing(Item, StandardPr
 EndProcedure
 
 &AtClient
-Procedure OpenFilterFormByCompanies(Command)
-	
-	FormParameters = New Structure();
-	FormParameters.Insert("CompaniesArray", GetArraySelectedCompanies());
-	
-	OpenForm("ExchangePlan.ExchangeSmallBusinessAccounting30.Form.ChoiceFormCompanies",
-		FormParameters,
-		ThisForm);
-		
-EndProcedure
-
-&AtClient
 Procedure CompanyFilterClean(Command)
 	
 	HeaderText = NStr("en='Confirmation';ru='Подтверждение'");
@@ -3118,10 +3106,8 @@ Procedure UpdateFilterByCompanies(AddressOfObject="")
 	CompaniesSelected = ArraySelectedCompanies.Count() > 0;
 	If Not CompaniesSelected Then
 		Text = NStr("en='Select companies ';ru='Выбрать организации '");
-	ElsIf SelectAllCompanies() Then
-		Text = NStr("en='All companies ';ru='Все организации '");
 	Else
-		Text = ExchangePlans.ExchangeSmallBusinessAccounting30.ShortPresentationOfCollectionsOfValues(ArraySelectedCompanies);
+		Text = NStr("en='All companies ';ru='Все организации '");
 	EndIf;
 	
 	Items.OpenFilterFormByCompanies.Title = Text;
