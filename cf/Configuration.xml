@@ -1338,7 +1338,6 @@
 			<CommonModule>DataExchangeClient</CommonModule>
 			<CommonModule>DataExchangeClientServer</CommonModule>
 			<CommonModule>DataExchangeEvents</CommonModule>
-			<CommonModule>DataExchangeEventsOP</CommonModule>
 			<CommonModule>DataExchangeEventsSB</CommonModule>
 			<CommonModule>DataExchangeExternalConnection</CommonModule>
 			<CommonModule>DataExchangeGlobal</CommonModule>
@@ -1740,7 +1739,6 @@
 			<CommonModule>WorkWithScannerClient</CommonModule>
 			<CommonAttribute>DataAreaAuxiliaryData</CommonAttribute>
 			<CommonAttribute>DataAreaBasicData</CommonAttribute>
-			<ExchangePlan>ExchangeSmallBusinessEntrepreneurReporting</ExchangePlan>
 			<ExchangePlan>ExchangeSmallBusinessSite</ExchangePlan>
 			<ExchangePlan>ExchangeWithPeripheralsOffline</ExchangePlan>
 			<ExchangePlan>MessageExchange</ExchangePlan>
@@ -1864,9 +1862,6 @@
 			<EventSubscription>ExchangeMobileApplicationOnDocumentWrite</EventSubscription>
 			<EventSubscription>ExchangeMobileApplicationOnRegisterWrite</EventSubscription>
 			<EventSubscription>ExchangeMobileApplicationOnWrite</EventSubscription>
-			<EventSubscription>ExchangeSmallBusinessEntrepreneurReportingRegisterChange</EventSubscription>
-			<EventSubscription>ExchangeSmallBusinessEntrepreneurReportingRegisterDeletion</EventSubscription>
-			<EventSubscription>ExchangeSmallBusinessEntrepreneurReportingRegisterDocumentChange</EventSubscription>
 			<EventSubscription>ExchangeWithSiteBeforeRegisterRecord</EventSubscription>
 			<EventSubscription>ExchangeWithSiteOnObjectWrite</EventSubscription>
 			<EventSubscription>ExecuteActionsAfterGettingNodeDataInDistributedInfobase</EventSubscription>
@@ -3103,9 +3098,6 @@
 			<DataProcessor>HandlersExportAtRetail</DataProcessor>
 			<DataProcessor>HandlersImportFromRetail</DataProcessor>
 			<DataProcessor>ImportFromSpreadsheet</DataProcessor>
-			<DataProcessor>ImportHandlersFromAccountingBySubsidiaryCompany30</DataProcessor>
-			<DataProcessor>ImportHandlersFromEntrepreneurReporting</DataProcessor>
-			<DataProcessor>ImportHandlersFromTradeManagement103</DataProcessor>
 			<DataProcessor>InfobaseBackup</DataProcessor>
 			<DataProcessor>InfobaseBackupSetup</DataProcessor>
 			<DataProcessor>InfobaseObjectsConversion</DataProcessor>
