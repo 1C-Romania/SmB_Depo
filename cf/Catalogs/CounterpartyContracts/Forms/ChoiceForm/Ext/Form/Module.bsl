@@ -80,7 +80,6 @@ Procedure OnCreateAtServer(Cancel, StandardProcessing)
 	Parameters.Property("ContractKinds", ContractKinds);
 	
 	If Not SmallBusinessReUse.CounterpartyContractsControlNeeded() Then
-		Items.ListCompanies.Visible = False;
 		ControlCorrespondenceWithDocument = False;
 	Else
 		ControlCorrespondenceWithDocument = ControlContractChoice;

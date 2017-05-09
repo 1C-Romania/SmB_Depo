@@ -1010,7 +1010,7 @@ Procedure Print(ObjectsArray, PrintParameters, PrintFormsCollection, PrintObject
 	
 	If PrintManagement.NeedToPrintTemplate(PrintFormsCollection, "PriceList") Then
 		
-		PrintManagement.OutputSpreadsheetDocumentToCollection(PrintFormsCollection, "PriceList", "PRICE-SHEET", PrintForm(ObjectsArray, PrintObjects));
+		PrintManagement.OutputSpreadsheetDocumentToCollection(PrintFormsCollection, "PriceList", "Price list", PrintForm(ObjectsArray, PrintObjects));
 		
 	EndIf;
 	
@@ -1022,7 +1022,7 @@ Procedure Print(ObjectsArray, PrintParameters, PrintFormsCollection, PrintObject
 	ArrayOfRecipients.Add(ObjectsArray[0]);
 	
 	OutputParameters.SendingParameters.Recipient = Recipients;
-	OutputParameters.SendingParameters.Subject = "PRICE-SHEET """ + GetDefaultCompany(ObjectsArray[0]).Description + """ dated " + CurrentSessionDate() + ". Generated " + UsersClientServer.AuthorizedUser() + ".";
+	OutputParameters.SendingParameters.Subject = "Price list """ + GetDefaultCompany(ObjectsArray[0]).Description + """ from " + CurrentSessionDate() + ". Generated " + UsersClientServer.AuthorizedUser() + ".";
 	SmallBusinessServer.FillSendingParameters(OutputParameters.SendingParameters, ArrayOfRecipients, PrintFormsCollection);
 	
 EndProcedure // Print()
@@ -1033,19 +1033,7 @@ EndProcedure // Print()
 //   PrintCommands - ValueTable - see fields' content in the PrintManagement.CreatePrintCommandsCollection function.
 //
 Procedure AddPrintCommands(PrintCommands) Export
-	
-	If IsInRole("AddChangeSalesSubsystem")
-		OR IsInRole("FullRights") Then
-		
-		PrintCommand = PrintCommands.Add();
-		PrintCommand.ID = "PriceList";
-		PrintCommand.Presentation = NStr("en='PRICE-SHEET';ru='ПРАЙС-ЛИСТ'");
-		PrintCommand.FormsList = "ItemForm,ListForm,CounterpartiesListForm";
-		PrintCommand.CheckPostingBeforePrint = False;
-		PrintCommand.Order = 1;
-		
-	EndIf;
-	
+
 EndProcedure
 
 #EndRegion

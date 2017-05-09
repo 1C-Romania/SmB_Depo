@@ -207,7 +207,7 @@ Procedure AttachRoleAtServer(Role)
 	
 	RoleData = CommonUse.ObjectAttributesValues(Role, "Description, DeletionMark");
 	
-	RolesRow = RoleData.Add();
+	RolesRow = RolesData.Add();
 	URLFS = "Role_" + RolesRow.GetID();
 	
 	RolesRow.Role				= Role;

@@ -371,6 +371,12 @@
 											</Title>
 											<ExtendedTooltip name="DocumentCustomerOrderGenerateExtendedTooltip" id="466"/>
 										</Button>
+										<Button name="CatalogCounterpartiesCommandJobOrderCreateBasedOn" id="485">
+											<Type>CommandBarButton</Type>
+											<CommandName>Catalog.Counterparties.Command.CommandWorkOrderCreateBasedOn</CommandName>
+											<DataPath>Items.List.CurrentData.Ref</DataPath>
+											<ExtendedTooltip name="CatalogCounterpartiesCommandJobOrderCreateBasedOnExtendedTooltip" id="486"/>
+										</Button>
 										<Button name="DocumentCustomerInvoiceGenerate" id="463">
 											<Type>CommandBarButton</Type>
 											<CommandName>Document.CustomerInvoice.StandardCommand.CreateBasedOn</CommandName>
@@ -386,6 +392,22 @@
 												</v8:item>
 											</Title>
 											<ExtendedTooltip name="DocumentCustomerInvoiceGenerateExtendedTooltip" id="464"/>
+										</Button>
+										<Button name="DocumentAcceptanceCertificateCreateBasedOn" id="487">
+											<Type>CommandBarButton</Type>
+											<CommandName>Document.AcceptanceCertificate.StandardCommand.CreateBasedOn</CommandName>
+											<DataPath>Items.List.CurrentData.Ref</DataPath>
+											<Title>
+												<v8:item>
+													<v8:lang>ru</v8:lang>
+													<v8:content>Акт выполненных работ</v8:content>
+												</v8:item>
+												<v8:item>
+													<v8:lang>en</v8:lang>
+													<v8:content>Completion certificate</v8:content>
+												</v8:item>
+											</Title>
+											<ExtendedTooltip name="DocumentAcceptanceCertificateCreateBasedOnExtendedTooltip" id="488"/>
 										</Button>
 									</ChildItems>
 								</Popup>
@@ -687,15 +709,6 @@
 							</UserVisible>
 							<ContextMenu name="CustomerAcquisitionChannelContextMenu" id="340"/>
 							<ExtendedTooltip name="CustomerAcquisitionChannelExtendedTooltip" id="341"/>
-						</LabelField>
-						<LabelField name="Individual" id="141">
-							<DataPath>List.Individual</DataPath>
-							<UserVisible>
-								<xr:Common>false</xr:Common>
-							</UserVisible>
-							<Width>25</Width>
-							<ContextMenu name="IndividualContextMenu" id="142"/>
-							<ExtendedTooltip name="IndividualExtendedTooltip" id="172"/>
 						</LabelField>
 						<LabelField name="CreationDate" id="275">
 							<DataPath>List.CreationDate</DataPath>
@@ -1226,7 +1239,6 @@
 	Counterparties.RegistrationNumber,
 	Counterparties.BankAccountByDefault,
 	Counterparties.ContractByDefault,
-	Counterparties.Individual,
 	Counterparties.Responsible,
 	Counterparties.ContactPerson AS ContactPerson,
 	Counterparties.AccessGroup,
@@ -2083,7 +2095,7 @@ WHERE
 				</Visible>
 			</Item>
 			<Item>
-				<Command>Catalog.Counterparties.Command.CommandJobOrderCreateBasedOn</Command>
+				<Command>Catalog.Counterparties.Command.CommandWorkOrderCreateBasedOn</Command>
 				<Type>Auto</Type>
 				<DefaultVisible>false</DefaultVisible>
 				<Visible>
@@ -2108,6 +2120,22 @@ WHERE
 			</Item>
 			<Item>
 				<Command>Document.ReportToPrincipal.StandardCommand.CreateBasedOn</Command>
+				<Type>Auto</Type>
+				<DefaultVisible>false</DefaultVisible>
+				<Visible>
+					<xr:Common>false</xr:Common>
+				</Visible>
+			</Item>
+			<Item>
+				<Command>Document.AcceptanceCertificate.StandardCommand.CreateBasedOn</Command>
+				<Type>Auto</Type>
+				<DefaultVisible>false</DefaultVisible>
+				<Visible>
+					<xr:Common>false</xr:Common>
+				</Visible>
+			</Item>
+			<Item>
+				<Command>Document.SupplierInvoice.StandardCommand.CreateBasedOn</Command>
 				<Type>Auto</Type>
 				<DefaultVisible>false</DefaultVisible>
 				<Visible>

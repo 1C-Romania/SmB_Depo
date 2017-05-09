@@ -1,6 +1,5 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
 <Form xmlns="http://v8.1c.ru/8.3/xcf/logform" xmlns:app="http://v8.1c.ru/8.2/managed-application/core" xmlns:cfg="http://v8.1c.ru/8.1/data/enterprise/current-config" xmlns:dcscor="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:dcsset="http://v8.1c.ru/8.1/data-composition-system/settings" xmlns:ent="http://v8.1c.ru/8.1/data/enterprise" xmlns:lf="http://v8.1c.ru/8.2/managed-application/logform" xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows" xmlns:xr="http://v8.1c.ru/8.3/xcf/readable" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.4">
-	<VerticalScroll>useIfNecessary</VerticalScroll>
 	<UseForFoldersAndItems>Items</UseForFoldersAndItems>
 	<AutoCommandBar name="FormCommandBar" id="-1">
 		<Autofill>false</Autofill>
@@ -125,228 +124,175 @@
 	</AutoCommandBar>
 	<Events>
 		<Event name="AfterWrite">AfterWrite</Event>
+		<Event name="AfterWriteAtServer">AfterWriteAtServer</Event>
 		<Event name="NotificationProcessing">NotificationProcessing</Event>
 		<Event name="OnReadAtServer">OnReadAtServer</Event>
 		<Event name="OnOpen">OnOpen</Event>
 		<Event name="BeforeWrite">BeforeWrite</Event>
 		<Event name="OnCreateAtServer">OnCreateAtServer</Event>
 		<Event name="BeforeWriteAtServer">BeforeWriteAtServer</Event>
-		<Event name="OnWriteAtServer">OnWriteAtServer</Event>
 		<Event name="FillCheckProcessingAtServer">FillCheckProcessingAtServer</Event>
 	</Events>
 	<ChildItems>
-		<UsualGroup name="FormColumns" id="324">
+		<Pages name="GroupPages" id="414">
 			<Title>
 				<v8:item>
 					<v8:lang>en</v8:lang>
-					<v8:content>Form columns</v8:content>
-				</v8:item>
-				<v8:item>
-					<v8:lang>ru</v8:lang>
-					<v8:content>Колонки формы</v8:content>
+					<v8:content>Group pages</v8:content>
 				</v8:item>
 			</Title>
-			<Group>Horizontal</Group>
-			<Representation>None</Representation>
-			<ShowTitle>false</ShowTitle>
-			<ExtendedTooltip name="FormColumnsExtendedTooltip" id="325"/>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Group pages</v8:content>
+				</v8:item>
+			</ToolTip>
+			<ExtendedTooltip name="GroupPagesExtendedTooltip" id="415"/>
 			<ChildItems>
-				<UsualGroup name="ColumnLeft" id="326">
+				<Page name="GroupGeneralInfo" id="416">
 					<Title>
 						<v8:item>
 							<v8:lang>en</v8:lang>
-							<v8:content>Column left</v8:content>
+							<v8:content>General info</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Общая информация</v8:content>
 						</v8:item>
 					</Title>
-					<Group>Vertical</Group>
-					<Representation>None</Representation>
-					<ShowTitle>false</ShowTitle>
-					<ExtendedTooltip name="ColumnLeftExtendedTooltip" id="327"/>
+					<ToolTip>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>General info</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Общая информация</v8:content>
+						</v8:item>
+					</ToolTip>
+					<ExtendedTooltip name="GroupGeneralInfoExtendedTooltip" id="417"/>
 					<ChildItems>
-						<UsualGroup name="AllContacts" id="349">
+						<InputField name="DescriptionFull" id="7">
+							<DataPath>Object.DescriptionFull</DataPath>
 							<Title>
 								<v8:item>
 									<v8:lang>en</v8:lang>
-									<v8:content>Contacts</v8:content>
+									<v8:content>Legal name</v8:content>
 								</v8:item>
 								<v8:item>
 									<v8:lang>ru</v8:lang>
-									<v8:content>Контакты</v8:content>
+									<v8:content>Публичное наименование</v8:content>
 								</v8:item>
 							</Title>
-							<Group>Vertical</Group>
-							<Behavior>Collapsible</Behavior>
-							<ControlRepresentation>Picture</ControlRepresentation>
-							<ExtendedTooltip name="AllContactsExtendedTooltip" id="350"/>
-							<ChildItems>
-								<UsualGroup name="Contact_0" id="351">
-									<Group>Vertical</Group>
-									<ShowTitle>false</ShowTitle>
-									<ExtendedTooltip name="Contact_0ExtendedTooltip" id="352"/>
-									<ChildItems>
-										<InputField name="ContactDescription_0" id="353">
-											<DataPath>ContactPersonsData[0].Description</DataPath>
-											<DefaultItem>true</DefaultItem>
-											<TitleLocation>None</TitleLocation>
-											<AutoMaxWidth>false</AutoMaxWidth>
-											<MaxWidth>52</MaxWidth>
-											<InputHint>
-												<v8:item>
-													<v8:lang>en</v8:lang>
-													<v8:content>Name Surname</v8:content>
-												</v8:item>
-												<v8:item>
-													<v8:lang>ru</v8:lang>
-													<v8:content>Имя Фамилия</v8:content>
-												</v8:item>
-											</InputHint>
-											<ContextMenu name="ContactDescription_0ContextMenu" id="354"/>
-											<ExtendedTooltip name="ContactDescription_0ExtendedTooltip" id="355"/>
-										</InputField>
-										<UsualGroup name="ContactContactInformation_0" id="356">
-											<Title>
-												<v8:item>
-													<v8:lang>en</v8:lang>
-													<v8:content>Contact information</v8:content>
-												</v8:item>
-												<v8:item>
-													<v8:lang>ru</v8:lang>
-													<v8:content>Контактная информация</v8:content>
-												</v8:item>
-											</Title>
-											<ToolTip>
-												<v8:item>
-													<v8:lang>en</v8:lang>
-													<v8:content>Contact information</v8:content>
-												</v8:item>
-												<v8:item>
-													<v8:lang>ru</v8:lang>
-													<v8:content>Контактная информация</v8:content>
-												</v8:item>
-											</ToolTip>
-											<Group>Vertical</Group>
-											<Representation>None</Representation>
-											<ShowTitle>false</ShowTitle>
-											<ExtendedTooltip name="ContactContactInformation_0ExtendedTooltip" id="357"/>
-										</UsualGroup>
-										<UsualGroup name="ContactAddingCommands_0" id="358">
-											<Title>
-												<v8:item>
-													<v8:lang>en</v8:lang>
-													<v8:content>Contact adding commands 0</v8:content>
-												</v8:item>
-											</Title>
-											<Group>Horizontal</Group>
-											<Representation>None</Representation>
-											<ShowTitle>false</ShowTitle>
-											<ExtendedTooltip name="ContactAddingCommands_0ExtendedTooltip" id="359"/>
-											<ChildItems>
-												<LabelDecoration name="AddingCommandsStretching_0" id="360">
-													<AutoMaxWidth>false</AutoMaxWidth>
-													<MaxWidth>10</MaxWidth>
-													<ContextMenu name="AddingCommandsStretching_0ContextMenu" id="361"/>
-													<ExtendedTooltip name="AddingCommandsStretching_0ExtendedTooltip" id="362"/>
-												</LabelDecoration>
-												<Button name="AddFieldsContactPerson" id="363">
-													<Type>UsualButton</Type>
-													<GroupHorizontalAlign>Right</GroupHorizontalAlign>
-													<CommandName>Form.Command.AddFieldsContactPerson</CommandName>
-													<TextColor>style:ReportsVariantsGroupColor</TextColor>
-													<ExtendedTooltip name="AddFieldsContactPersonExtendedTooltip" id="364"/>
-												</Button>
-												<Button name="AddFieldContactPersonContactInformation_0" id="365">
-													<Type>UsualButton</Type>
-													<GroupHorizontalAlign>Right</GroupHorizontalAlign>
-													<CommandName>Form.Command.AddFieldContactPersonContactInformation</CommandName>
-													<ExtendedTooltip name="AddFieldContactPersonContactInformation_0ExtendedTooltip" id="366"/>
-												</Button>
-											</ChildItems>
-										</UsualGroup>
-									</ChildItems>
-								</UsualGroup>
-							</ChildItems>
-						</UsualGroup>
-						<UsualGroup name="Counterparty" id="328">
+							<EditMode>EnterOnInput</EditMode>
+							<AutoMaxWidth>false</AutoMaxWidth>
+							<MaxWidth>57</MaxWidth>
+							<AutoMaxHeight>false</AutoMaxHeight>
+							<Wrap>false</Wrap>
+							<ContextMenu name="DescriptionFullContextMenu" id="8"/>
+							<ExtendedTooltip name="DescriptionFullExtendedTooltip" id="105"/>
+							<Events>
+								<Event name="OnChange">DescriptionFullOnChange</Event>
+							</Events>
+						</InputField>
+						<InputField name="Description" id="3">
+							<DataPath>Object.Description</DataPath>
 							<Title>
 								<v8:item>
 									<v8:lang>en</v8:lang>
-									<v8:content>Counterparty</v8:content>
+									<v8:content>Presentation in application</v8:content>
 								</v8:item>
 								<v8:item>
 									<v8:lang>ru</v8:lang>
-									<v8:content>Компания</v8:content>
+									<v8:content>Представление в программе</v8:content>
 								</v8:item>
 							</Title>
-							<Group>Vertical</Group>
-							<ExtendedTooltip name="CounterpartyExtendedTooltip" id="329"/>
+							<EditMode>EnterOnInput</EditMode>
+							<AutoMaxWidth>false</AutoMaxWidth>
+							<MaxWidth>57</MaxWidth>
+							<Wrap>false</Wrap>
+							<InputHint>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>For example, Our company LLC</v8:content>
+								</v8:item>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Например, Ромашка ООО</v8:content>
+								</v8:item>
+							</InputHint>
+							<ContextMenu name="DescriptionContextMenu" id="4"/>
+							<ExtendedTooltip name="DescriptionExtendedTooltip" id="104"/>
+						</InputField>
+						<InputField name="ContactPerson" id="437">
+							<DataPath>Object.ContactPerson</DataPath>
+							<AutoMaxWidth>false</AutoMaxWidth>
+							<MaxWidth>57</MaxWidth>
+							<DropListButton>false</DropListButton>
+							<ChoiceButton>true</ChoiceButton>
+							<ChoiceButtonRepresentation>ShowInInputField</ChoiceButtonRepresentation>
+							<ContextMenu name="ContactPersonContextMenu" id="438"/>
+							<ExtendedTooltip name="ContactPersonExtendedTooltip" id="439"/>
+						</InputField>
+						<UsualGroup name="CustomerSupplierOther" id="397">
+							<Title>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Customer supplier other</v8:content>
+								</v8:item>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Покупатель поставщик прочие</v8:content>
+								</v8:item>
+							</Title>
+							<Group>Horizontal</Group>
+							<Representation>None</Representation>
+							<ShowTitle>false</ShowTitle>
+							<ExtendedTooltip name="CustomerSupplierOtherExtendedTooltip" id="398"/>
 							<ChildItems>
-								<InputField name="DescriptionFull" id="7">
-									<DataPath>Object.DescriptionFull</DataPath>
-									<TitleLocation>None</TitleLocation>
-									<EditMode>EnterOnInput</EditMode>
-									<AutoMaxWidth>false</AutoMaxWidth>
-									<MaxWidth>52</MaxWidth>
-									<AutoMaxHeight>false</AutoMaxHeight>
-									<MaxHeight>2</MaxHeight>
-									<Wrap>false</Wrap>
-									<MultiLine>true</MultiLine>
-									<InputHint>
-										<v8:item>
-											<v8:lang>en</v8:lang>
-											<v8:content>Legal name</v8:content>
-										</v8:item>
-										<v8:item>
-											<v8:lang>ru</v8:lang>
-											<v8:content>Юридическое название</v8:content>
-										</v8:item>
-									</InputHint>
-									<ContextMenu name="FullNameContextMenu" id="8"/>
-									<ExtendedTooltip name="FullNameExtendedTooltip" id="105"/>
+								<CheckBoxField name="Customer" id="402">
+									<DataPath>Object.Customer</DataPath>
+									<TitleLocation>Right</TitleLocation>
+									<CheckBoxType>Auto</CheckBoxType>
+									<ContextMenu name="CustomerContextMenu" id="403"/>
+									<ExtendedTooltip name="CustomerExtendedTooltip" id="404"/>
 									<Events>
-										<Event name="OnChange">DescriptionFullOnChange</Event>
+										<Event name="OnChange">CustomerOnChange</Event>
 									</Events>
-								</InputField>
-								<UsualGroup name="ContactInformation" id="386">
-									<Title>
-										<v8:item>
-											<v8:lang>en</v8:lang>
-											<v8:content>Contact information</v8:content>
-										</v8:item>
-										<v8:item>
-											<v8:lang>ru</v8:lang>
-											<v8:content>Контактная информация</v8:content>
-										</v8:item>
-									</Title>
-									<Group>Vertical</Group>
-									<Representation>None</Representation>
-									<ShowTitle>false</ShowTitle>
-									<ExtendedTooltip name="ContactInformationExtendedTooltip" id="387"/>
-								</UsualGroup>
+								</CheckBoxField>
+								<CheckBoxField name="Supplier" id="405">
+									<DataPath>Object.Supplier</DataPath>
+									<TitleLocation>Right</TitleLocation>
+									<CheckBoxType>Auto</CheckBoxType>
+									<ContextMenu name="SupplierContextMenu" id="406"/>
+									<ExtendedTooltip name="SupplierExtendedTooltip" id="407"/>
+								</CheckBoxField>
+								<CheckBoxField name="OtherRelationship" id="408">
+									<DataPath>Object.OtherRelationship</DataPath>
+									<TitleLocation>Right</TitleLocation>
+									<CheckBoxType>Auto</CheckBoxType>
+									<ContextMenu name="OtherRelationshipContextMenu" id="409"/>
+									<ExtendedTooltip name="OtherRelationshipExtendedTooltip" id="410"/>
+								</CheckBoxField>
 							</ChildItems>
 						</UsualGroup>
-						<UsualGroup name="LegalInformation" id="339">
+						<UsualGroup name="GroupLegalForm" id="459">
 							<Title>
 								<v8:item>
 									<v8:lang>en</v8:lang>
-									<v8:content>Legal information</v8:content>
-								</v8:item>
-								<v8:item>
-									<v8:lang>ru</v8:lang>
-									<v8:content>Юридические данные</v8:content>
+									<v8:content>Group legal form</v8:content>
 								</v8:item>
 							</Title>
 							<ToolTip>
 								<v8:item>
 									<v8:lang>en</v8:lang>
-									<v8:content>Legal information</v8:content>
+									<v8:content>Group legal form</v8:content>
 								</v8:item>
 							</ToolTip>
-							<Group>Vertical</Group>
-							<Behavior>Collapsible</Behavior>
-							<Collapsed>true</Collapsed>
-							<ControlRepresentation>Picture</ControlRepresentation>
-							<ShowLeftMargin>false</ShowLeftMargin>
-							<ExtendedTooltip name="LegalInformationExtendedTooltip" id="340"/>
+							<Group>Horizontal</Group>
+							<Representation>None</Representation>
+							<ShowTitle>false</ShowTitle>
+							<ExtendedTooltip name="GroupLegalFormExtendedTooltip" id="460"/>
 							<ChildItems>
 								<RadioButtonField name="LegalEntityIndividual" id="9">
 									<DataPath>Object.LegalEntityIndividual</DataPath>
@@ -397,90 +343,463 @@
 										<Event name="OnChange">LegalEntityIndividualOnChange</Event>
 									</Events>
 								</RadioButtonField>
-								<InputField name="Individual" id="79">
-									<DataPath>Object.Individual</DataPath>
-									<EditMode>EnterOnInput</EditMode>
-									<Width>18</Width>
-									<Wrap>false</Wrap>
-									<ContextMenu name="IndividualContextMenu" id="80"/>
-									<ExtendedTooltip name="IndividualExtendedTooltip" id="113"/>
-								</InputField>
-								<InputField name="TIN" id="155">
-									<DataPath>Object.TIN</DataPath>
-									<TitleLocation>Left</TitleLocation>
-									<Width>11</Width>
+								<InputField name="LegalForm" id="461">
+									<DataPath>Object.LegalForm</DataPath>
 									<AutoMaxWidth>false</AutoMaxWidth>
-									<MaxWidth>11</MaxWidth>
+									<MaxWidth>28</MaxWidth>
+									<ContextMenu name="LegalFormContextMenu" id="462"/>
+									<ExtendedTooltip name="LegalFormExtendedTooltip" id="463"/>
+								</InputField>
+							</ChildItems>
+						</UsualGroup>
+						<UsualGroup name="GroupIndividual" id="427">
+							<Group>Horizontal</Group>
+							<Representation>None</Representation>
+							<ShowTitle>false</ShowTitle>
+							<ExtendedTooltip name="GroupIndividualExtendedTooltip" id="428"/>
+							<ChildItems>
+								<InputField name="DateOfBirth" id="429">
+									<DataPath>Object.DateOfBirth</DataPath>
+									<ContextMenu name="DateOfBirthContextMenu" id="430"/>
+									<ExtendedTooltip name="DateOfBirthExtendedTooltip" id="431"/>
+								</InputField>
+								<InputField name="Gender" id="432">
+									<DataPath>Object.Gender</DataPath>
+									<Width>13</Width>
 									<HorizontalStretch>false</HorizontalStretch>
-									<EditTextUpdate>OnValueChange</EditTextUpdate>
-									<ContextMenu name="TINContextMenu" id="156"/>
-									<ExtendedTooltip name="TINExtendedTooltip" id="157"/>
-									<Events>
-										<Event name="OnChange">TINOnChange</Event>
-									</Events>
+									<ContextMenu name="GenderContextMenu" id="433"/>
+									<ExtendedTooltip name="GenderExtendedTooltip" id="434"/>
 								</InputField>
-								<InputField name="RegistrationNumber" id="391">
-									<DataPath>Object.RegistrationNumber</DataPath>
-									<AutoMaxWidth>false</AutoMaxWidth>
-									<MaxWidth>11</MaxWidth>
-									<ContextMenu name="RegistrationNumberContextMenu" id="392"/>
-									<ExtendedTooltip name="RegistrationNumberExtendedTooltip" id="393"/>
-								</InputField>
-								<InputField name="RegistrationCountry" id="411">
-									<DataPath>Object.RegistrationCountry</DataPath>
+							</ChildItems>
+						</UsualGroup>
+						<UsualGroup name="GroupOtherInfo" id="440">
+							<Title>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Group other info</v8:content>
+								</v8:item>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Группа прочие сведения</v8:content>
+								</v8:item>
+							</Title>
+							<ToolTip>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Group other info</v8:content>
+								</v8:item>
+							</ToolTip>
+							<Group>Horizontal</Group>
+							<Representation>None</Representation>
+							<ShowTitle>false</ShowTitle>
+							<ExtendedTooltip name="GroupOtherInfoExtendedTooltip" id="441"/>
+							<ChildItems>
+								<UsualGroup name="GroupParentResponsible" id="442">
 									<Title>
 										<v8:item>
-											<v8:lang>ru</v8:lang>
-											<v8:content>Регистрация</v8:content>
+											<v8:lang>en</v8:lang>
+											<v8:content>Group parent responsible</v8:content>
 										</v8:item>
 										<v8:item>
-											<v8:lang>en</v8:lang>
-											<v8:content>Registration</v8:content>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Группа родитель ответственный</v8:content>
 										</v8:item>
 									</Title>
 									<ToolTip>
 										<v8:item>
 											<v8:lang>en</v8:lang>
-											<v8:content>Country in which the counterparty is registered.</v8:content>
+											<v8:content>Group parent responsible</v8:content>
 										</v8:item>
 										<v8:item>
 											<v8:lang>ru</v8:lang>
-											<v8:content>Страна, в которой зарегистрирован контрагент.</v8:content>
+											<v8:content>Группа родитель ответственный</v8:content>
 										</v8:item>
 									</ToolTip>
-									<Width>27</Width>
-									<AutoMaxWidth>false</AutoMaxWidth>
-									<MaxWidth>35</MaxWidth>
-									<OpenButton>false</OpenButton>
-									<ContextMenu name="RegistrationCountryContextMenu" id="412"/>
-									<ExtendedTooltip name="RegistrationCountryExtendedTooltip" id="413"/>
-								</InputField>
-								<LabelField name="DataChecksPresentation" id="388">
-									<DataPath>DataChecksPresentation</DataPath>
+									<Group>Vertical</Group>
+									<Representation>None</Representation>
+									<ShowTitle>false</ShowTitle>
+									<ExtendedTooltip name="GroupParentResponsibleExtendedTooltip" id="443"/>
+									<ChildItems>
+										<InputField name="Parent" id="5">
+											<DataPath>Object.Parent</DataPath>
+											<SkipOnInput>true</SkipOnInput>
+											<Title>
+												<v8:item>
+													<v8:lang>en</v8:lang>
+													<v8:content>In group</v8:content>
+												</v8:item>
+												<v8:item>
+													<v8:lang>ru</v8:lang>
+													<v8:content>В группе</v8:content>
+												</v8:item>
+											</Title>
+											<EditMode>EnterOnInput</EditMode>
+											<AutoMaxWidth>false</AutoMaxWidth>
+											<MaxWidth>28</MaxWidth>
+											<Wrap>false</Wrap>
+											<OpenButton>false</OpenButton>
+											<ContextMenu name="ParentContextMenu" id="6"/>
+											<ExtendedTooltip name="ParentExtendedTooltip" id="102"/>
+										</InputField>
+										<InputField name="Responsible" id="50">
+											<DataPath>Object.Responsible</DataPath>
+											<TitleLocation>Left</TitleLocation>
+											<AutoMaxWidth>false</AutoMaxWidth>
+											<MaxWidth>28</MaxWidth>
+											<OpenButton>false</OpenButton>
+											<ContextMenu name="ResponsibleContextMenu" id="51"/>
+											<ExtendedTooltip name="ResponsibleExtendedTooltip" id="148"/>
+										</InputField>
+									</ChildItems>
+								</UsualGroup>
+								<UsualGroup name="GroupAccess" id="444">
 									<Title>
 										<v8:item>
 											<v8:lang>en</v8:lang>
-											<v8:content>Data check</v8:content>
+											<v8:content>Group access</v8:content>
 										</v8:item>
 										<v8:item>
 											<v8:lang>ru</v8:lang>
-											<v8:content>Проверка данных</v8:content>
+											<v8:content>Группа доступ</v8:content>
 										</v8:item>
 									</Title>
-									<TitleLocation>None</TitleLocation>
-									<Width>41</Width>
-									<AutoMaxWidth>false</AutoMaxWidth>
-									<MaxWidth>41</MaxWidth>
-									<HorizontalStretch>false</HorizontalStretch>
-									<VerticalStretch>false</VerticalStretch>
-									<ContextMenu name="DataChecksPresentationContextMenu" id="389"/>
-									<ExtendedTooltip name="DataChecksPresentationExtendedTooltip" id="390"/>
-									<Events>
-										<Event name="URLProcessing">DataChecksPresentationURLProcessing</Event>
-									</Events>
-								</LabelField>
+									<ToolTip>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Group access</v8:content>
+										</v8:item>
+									</ToolTip>
+									<Group>Vertical</Group>
+									<Representation>None</Representation>
+									<ShowTitle>false</ShowTitle>
+									<ExtendedTooltip name="GroupAccessExtendedTooltip" id="445"/>
+									<ChildItems>
+										<InputField name="AccessGroup" id="313">
+											<DataPath>Object.AccessGroup</DataPath>
+											<Title>
+												<v8:item>
+													<v8:lang>en</v8:lang>
+													<v8:content>Access</v8:content>
+												</v8:item>
+												<v8:item>
+													<v8:lang>ru</v8:lang>
+													<v8:content>Доступ</v8:content>
+												</v8:item>
+											</Title>
+											<AutoMaxWidth>false</AutoMaxWidth>
+											<MaxWidth>28</MaxWidth>
+											<OpenButton>false</OpenButton>
+											<ContextMenu name="AccessGroupContextMenu" id="314"/>
+											<ExtendedTooltip name="AccessGroupExtendedTooltip" id="315"/>
+										</InputField>
+									</ChildItems>
+								</UsualGroup>
 							</ChildItems>
 						</UsualGroup>
+						<UsualGroup name="GroupChannelTags" id="446">
+							<Title>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Group channel tags</v8:content>
+								</v8:item>
+							</Title>
+							<ToolTip>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Group channel tags</v8:content>
+								</v8:item>
+							</ToolTip>
+							<Group>Horizontal</Group>
+							<Representation>None</Representation>
+							<ShowTitle>false</ShowTitle>
+							<ExtendedTooltip name="GroupChannelTagsExtendedTooltip" id="447"/>
+							<ChildItems>
+								<UsualGroup name="GroupChannel" id="448">
+									<Title>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Group channel</v8:content>
+										</v8:item>
+									</Title>
+									<ToolTip>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Group channel</v8:content>
+										</v8:item>
+									</ToolTip>
+									<Group>Vertical</Group>
+									<Representation>None</Representation>
+									<ShowTitle>false</ShowTitle>
+									<ExtendedTooltip name="GroupChannelExtendedTooltip" id="449"/>
+									<ChildItems>
+										<InputField name="CustomerAcquisitionChannel" id="394">
+											<DataPath>Object.CustomerAcquisitionChannel</DataPath>
+											<AutoMaxWidth>false</AutoMaxWidth>
+											<MaxWidth>28</MaxWidth>
+											<OpenButton>false</OpenButton>
+											<InputHint>
+												<v8:item>
+													<v8:lang>en</v8:lang>
+													<v8:content>Customer acquisition channel</v8:content>
+												</v8:item>
+												<v8:item>
+													<v8:lang>ru</v8:lang>
+													<v8:content>Источник привлечения покупателя</v8:content>
+												</v8:item>
+											</InputHint>
+											<ContextMenu name="CustomerAcquisitionChannelContextMenu" id="395"/>
+											<ExtendedTooltip name="CustomerAcquisitionChannelExtendedTooltip" id="396"/>
+										</InputField>
+									</ChildItems>
+								</UsualGroup>
+								<UsualGroup name="GroupTags" id="450">
+									<Title>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Group tags</v8:content>
+										</v8:item>
+									</Title>
+									<ToolTip>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Group tags</v8:content>
+										</v8:item>
+									</ToolTip>
+									<Group>Vertical</Group>
+									<Representation>None</Representation>
+									<ShowTitle>false</ShowTitle>
+									<ExtendedTooltip name="GroupTagsExtendedTooltip" id="451"/>
+									<ChildItems>
+										<UsualGroup name="Tags" id="373">
+											<Title>
+												<v8:item>
+													<v8:lang>en</v8:lang>
+													<v8:content>Tags</v8:content>
+												</v8:item>
+												<v8:item>
+													<v8:lang>ru</v8:lang>
+													<v8:content>Теги</v8:content>
+												</v8:item>
+											</Title>
+											<ToolTip>
+												<v8:item>
+													<v8:lang>en</v8:lang>
+													<v8:content>Tags</v8:content>
+												</v8:item>
+											</ToolTip>
+											<Group>Vertical</Group>
+											<Representation>None</Representation>
+											<ShowTitle>false</ShowTitle>
+											<ExtendedTooltip name="TagsExtendedTooltip" id="374"/>
+											<ChildItems>
+												<InputField name="TagInputField" id="375">
+													<DataPath>TagInputField</DataPath>
+													<AutoMaxWidth>false</AutoMaxWidth>
+													<MaxWidth>28</MaxWidth>
+													<DropListButton>false</DropListButton>
+													<ChoiceButton>true</ChoiceButton>
+													<ChoiceButtonRepresentation>ShowInInputField</ChoiceButtonRepresentation>
+													<OpenButton>false</OpenButton>
+													<InputHint>
+														<v8:item>
+															<v8:lang>en</v8:lang>
+															<v8:content>Attach tag (25 characters)</v8:content>
+														</v8:item>
+														<v8:item>
+															<v8:lang>ru</v8:lang>
+															<v8:content>Прикрепить тег (25 символов)</v8:content>
+														</v8:item>
+													</InputHint>
+													<ContextMenu name="TagInputFieldContextMenu" id="376"/>
+													<ExtendedTooltip name="TagInputFieldExtendedTooltip" id="377"/>
+													<Events>
+														<Event name="TextEditEnd">TagInputFieldTextEditEnd</Event>
+														<Event name="ChoiceProcessing">TagInputFieldChoiceProcessing</Event>
+													</Events>
+												</InputField>
+												<UsualGroup name="TagsAndIndent" id="378">
+													<Title>
+														<v8:item>
+															<v8:lang>en</v8:lang>
+															<v8:content>Tags and indent</v8:content>
+														</v8:item>
+														<v8:item>
+															<v8:lang>ru</v8:lang>
+															<v8:content>Теги и отступ</v8:content>
+														</v8:item>
+													</Title>
+													<ToolTip>
+														<v8:item>
+															<v8:lang>en</v8:lang>
+															<v8:content>Tags and indent</v8:content>
+														</v8:item>
+														<v8:item>
+															<v8:lang>ru</v8:lang>
+															<v8:content>Теги и отступ</v8:content>
+														</v8:item>
+													</ToolTip>
+													<Group>Horizontal</Group>
+													<Representation>None</Representation>
+													<ShowTitle>false</ShowTitle>
+													<ExtendedTooltip name="TagsAndIndentExtendedTooltip" id="379"/>
+													<ChildItems>
+														<LabelDecoration name="TagsIndent" id="380">
+															<Width>9</Width>
+															<HorizontalStretch>false</HorizontalStretch>
+															<ContextMenu name="TagsIndentContextMenu" id="381"/>
+															<ExtendedTooltip name="TagsIndentExtendedTooltip" id="382"/>
+														</LabelDecoration>
+														<LabelDecoration name="TagsCloud" id="383">
+															<ContextMenu name="TagsCloudContextMenu" id="384"/>
+															<ExtendedTooltip name="TagsCloudExtendedTooltip" id="385"/>
+															<Events>
+																<Event name="URLProcessing">TagsCloudURLProcessing</Event>
+															</Events>
+														</LabelDecoration>
+													</ChildItems>
+												</UsualGroup>
+											</ChildItems>
+										</UsualGroup>
+										<UsualGroup name="CreatedCode" id="337">
+											<Title>
+												<v8:item>
+													<v8:lang>en</v8:lang>
+													<v8:content>Created code</v8:content>
+												</v8:item>
+												<v8:item>
+													<v8:lang>ru</v8:lang>
+													<v8:content>Создан код</v8:content>
+												</v8:item>
+											</Title>
+											<ToolTip>
+												<v8:item>
+													<v8:lang>en</v8:lang>
+													<v8:content>Created code</v8:content>
+												</v8:item>
+												<v8:item>
+													<v8:lang>ru</v8:lang>
+													<v8:content>Создан код</v8:content>
+												</v8:item>
+											</ToolTip>
+											<Group>Horizontal</Group>
+											<Representation>None</Representation>
+											<ShowTitle>false</ShowTitle>
+											<ExtendedTooltip name="CreatedCodeExtendedTooltip" id="338"/>
+											<ChildItems>
+												<InputField name="CreationDate" id="316">
+													<DataPath>Object.CreationDate</DataPath>
+													<ReadOnly>true</ReadOnly>
+													<ContextMenu name="CreationDateContextMenu" id="317"/>
+													<ExtendedTooltip name="CreationDateExtendedTooltip" id="318"/>
+												</InputField>
+												<InputField name="Code" id="1">
+													<DataPath>Object.Code</DataPath>
+													<EditMode>EnterOnInput</EditMode>
+													<Width>9</Width>
+													<Wrap>false</Wrap>
+													<ContextMenu name="CodeContextMenu" id="2"/>
+													<ExtendedTooltip name="CodeExtendedTooltip" id="103"/>
+												</InputField>
+											</ChildItems>
+										</UsualGroup>
+									</ChildItems>
+								</UsualGroup>
+							</ChildItems>
+						</UsualGroup>
+					</ChildItems>
+				</Page>
+				<Page name="GroupSettlements" id="454">
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Settlements, codes</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Расчеты, коды</v8:content>
+						</v8:item>
+					</Title>
+					<ToolTip>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Settlements, codes</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Расчеты, коды</v8:content>
+						</v8:item>
+					</ToolTip>
+					<ExtendedTooltip name="GroupSettlementsExtendedTooltip" id="455"/>
+					<ChildItems>
+						<InputField name="TIN" id="155">
+							<DataPath>Object.TIN</DataPath>
+							<TitleLocation>Left</TitleLocation>
+							<AutoMaxWidth>false</AutoMaxWidth>
+							<MaxWidth>15</MaxWidth>
+							<HorizontalStretch>false</HorizontalStretch>
+							<EditTextUpdate>OnValueChange</EditTextUpdate>
+							<ContextMenu name="TINContextMenu" id="156"/>
+							<ExtendedTooltip name="TINExtendedTooltip" id="157"/>
+							<Events>
+								<Event name="OnChange">TINOnChange</Event>
+							</Events>
+						</InputField>
+						<InputField name="VATNumber" id="456">
+							<DataPath>Object.VATNumber</DataPath>
+							<AutoMaxWidth>false</AutoMaxWidth>
+							<MaxWidth>15</MaxWidth>
+							<ContextMenu name="VATNumberContextMenu" id="457"/>
+							<ExtendedTooltip name="VATNumberExtendedTooltip" id="458"/>
+						</InputField>
+						<InputField name="RegistrationNumber" id="391">
+							<DataPath>Object.RegistrationNumber</DataPath>
+							<AutoMaxWidth>false</AutoMaxWidth>
+							<MaxWidth>15</MaxWidth>
+							<ContextMenu name="RegistrationNumberContextMenu" id="392"/>
+							<ExtendedTooltip name="RegistrationNumberExtendedTooltip" id="393"/>
+						</InputField>
+						<InputField name="RegistrationCountry" id="411">
+							<DataPath>Object.RegistrationCountry</DataPath>
+							<ToolTip>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Country in which the counterparty is registered.</v8:content>
+								</v8:item>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Страна, в которой зарегистрирован контрагент.</v8:content>
+								</v8:item>
+							</ToolTip>
+							<AutoMaxWidth>false</AutoMaxWidth>
+							<MaxWidth>28</MaxWidth>
+							<OpenButton>false</OpenButton>
+							<ContextMenu name="RegistrationCountryContextMenu" id="412"/>
+							<ExtendedTooltip name="RegistrationCountryExtendedTooltip" id="413"/>
+						</InputField>
+						<LabelField name="DataChecksPresentation" id="388">
+							<DataPath>DataChecksPresentation</DataPath>
+							<Title>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Data check</v8:content>
+								</v8:item>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Проверка данных</v8:content>
+								</v8:item>
+							</Title>
+							<TitleLocation>None</TitleLocation>
+							<Width>41</Width>
+							<AutoMaxWidth>false</AutoMaxWidth>
+							<MaxWidth>41</MaxWidth>
+							<HorizontalStretch>false</HorizontalStretch>
+							<VerticalStretch>false</VerticalStretch>
+							<ContextMenu name="DataChecksPresentationContextMenu" id="389"/>
+							<ExtendedTooltip name="DataChecksPresentationExtendedTooltip" id="390"/>
+							<Events>
+								<Event name="URLProcessing">DataChecksPresentationURLProcessing</Event>
+							</Events>
+						</LabelField>
 						<UsualGroup name="Settlements" id="341">
 							<Title>
 								<v8:item>
@@ -499,7 +818,6 @@
 								</v8:item>
 							</ToolTip>
 							<Group>Vertical</Group>
-							<Behavior>Collapsible</Behavior>
 							<Collapsed>true</Collapsed>
 							<ControlRepresentation>Picture</ControlRepresentation>
 							<ShowLeftMargin>false</ShowLeftMargin>
@@ -584,444 +902,200 @@
 							</ChildItems>
 						</UsualGroup>
 					</ChildItems>
-				</UsualGroup>
-				<LabelDecoration name="NoSeparator" id="332">
-					<HorizontalStretch>false</HorizontalStretch>
-					<ContextMenu name="NoSeparatorContextMenu" id="333"/>
-					<ExtendedTooltip name="NoSeparatorExtendedTooltip" id="334"/>
-				</LabelDecoration>
-				<UsualGroup name="ColumnRight" id="330">
+				</Page>
+				<Page name="GroupContactInformation" id="452">
 					<Title>
 						<v8:item>
 							<v8:lang>en</v8:lang>
-							<v8:content>Column right</v8:content>
+							<v8:content>Addresses, phones</v8:content>
 						</v8:item>
 						<v8:item>
 							<v8:lang>ru</v8:lang>
-							<v8:content>Колонка справа</v8:content>
+							<v8:content>Адреса, телефоны</v8:content>
 						</v8:item>
 					</Title>
-					<Group>Vertical</Group>
-					<Representation>None</Representation>
-					<ShowTitle>false</ShowTitle>
-					<ExtendedTooltip name="ColumnRightExtendedTooltip" id="331"/>
+					<ToolTip>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Addresses, phones</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Адреса, телефоны</v8:content>
+						</v8:item>
+					</ToolTip>
+					<ExtendedTooltip name="GroupContactInformationExtendedTooltip" id="453"/>
 					<ChildItems>
-						<UsualGroup name="PresentationInApplication" id="335">
+						<UsualGroup name="ContactInformation" id="386">
 							<Title>
 								<v8:item>
 									<v8:lang>en</v8:lang>
-									<v8:content>Presentation</v8:content>
+									<v8:content>Contact information</v8:content>
 								</v8:item>
 								<v8:item>
 									<v8:lang>ru</v8:lang>
-									<v8:content>Представление</v8:content>
+									<v8:content>Контактная информация</v8:content>
 								</v8:item>
 							</Title>
 							<Group>Vertical</Group>
-							<ExtendedTooltip name="PresentationInApplicationExtendedTooltip" id="336"/>
-							<ChildItems>
-								<InputField name="Description" id="3">
-									<DataPath>Object.Description</DataPath>
-									<Title>
-										<v8:item>
-											<v8:lang>en</v8:lang>
-											<v8:content>In application</v8:content>
-										</v8:item>
-										<v8:item>
-											<v8:lang>ru</v8:lang>
-											<v8:content>В программе</v8:content>
-										</v8:item>
-									</Title>
-									<EditMode>EnterOnInput</EditMode>
-									<Width>30</Width>
-									<Wrap>false</Wrap>
-									<InputHint>
-										<v8:item>
-											<v8:lang>en</v8:lang>
-											<v8:content>For example, Our company LLC</v8:content>
-										</v8:item>
-										<v8:item>
-											<v8:lang>ru</v8:lang>
-											<v8:content>Например, Ромашка ООО</v8:content>
-										</v8:item>
-									</InputHint>
-									<ContextMenu name="DescriptionContextMenu" id="4"/>
-									<ExtendedTooltip name="DescriptionExtendedTooltip" id="104"/>
-								</InputField>
-								<InputField name="Parent" id="5">
-									<DataPath>Object.Parent</DataPath>
-									<SkipOnInput>true</SkipOnInput>
-									<Title>
-										<v8:item>
-											<v8:lang>en</v8:lang>
-											<v8:content>In group</v8:content>
-										</v8:item>
-										<v8:item>
-											<v8:lang>ru</v8:lang>
-											<v8:content>В группе</v8:content>
-										</v8:item>
-									</Title>
-									<EditMode>EnterOnInput</EditMode>
-									<Wrap>false</Wrap>
-									<OpenButton>false</OpenButton>
-									<ContextMenu name="ParentContextMenu" id="6"/>
-									<ExtendedTooltip name="ParentExtendedTooltip" id="102"/>
-								</InputField>
-								<UsualGroup name="CreatedCode" id="337">
-									<Title>
-										<v8:item>
-											<v8:lang>en</v8:lang>
-											<v8:content>Created code</v8:content>
-										</v8:item>
-										<v8:item>
-											<v8:lang>ru</v8:lang>
-											<v8:content>Создан код</v8:content>
-										</v8:item>
-									</Title>
-									<ToolTip>
-										<v8:item>
-											<v8:lang>en</v8:lang>
-											<v8:content>Created code</v8:content>
-										</v8:item>
-										<v8:item>
-											<v8:lang>ru</v8:lang>
-											<v8:content>Создан код</v8:content>
-										</v8:item>
-									</ToolTip>
-									<Group>Horizontal</Group>
-									<Representation>None</Representation>
-									<ShowTitle>false</ShowTitle>
-									<ExtendedTooltip name="CreatedCodeExtendedTooltip" id="338"/>
-									<ChildItems>
-										<InputField name="CreationDate" id="316">
-											<DataPath>Object.CreationDate</DataPath>
-											<ReadOnly>true</ReadOnly>
-											<ContextMenu name="CreationDateContextMenu" id="317"/>
-											<ExtendedTooltip name="CreationDateExtendedTooltip" id="318"/>
-										</InputField>
-										<InputField name="Code" id="1">
-											<DataPath>Object.Code</DataPath>
-											<EditMode>EnterOnInput</EditMode>
-											<Width>9</Width>
-											<Wrap>false</Wrap>
-											<ContextMenu name="CodeContextMenu" id="2"/>
-											<ExtendedTooltip name="CodeExtendedTooltip" id="103"/>
-										</InputField>
-									</ChildItems>
-								</UsualGroup>
-								<UsualGroup name="TagsColumns" id="367">
-									<Title>
-										<v8:item>
-											<v8:lang>en</v8:lang>
-											<v8:content>Tags columns</v8:content>
-										</v8:item>
-										<v8:item>
-											<v8:lang>ru</v8:lang>
-											<v8:content>Колонки тегов</v8:content>
-										</v8:item>
-									</Title>
-									<Group>Horizontal</Group>
-									<Representation>None</Representation>
-									<ShowTitle>false</ShowTitle>
-									<ExtendedTooltip name="TagsColumnsExtendedTooltip" id="368"/>
-								</UsualGroup>
-								<UsualGroup name="TagsColumnRight" id="369">
-									<Title>
-										<v8:item>
-											<v8:lang>en</v8:lang>
-											<v8:content>Tags column right</v8:content>
-										</v8:item>
-										<v8:item>
-											<v8:lang>ru</v8:lang>
-											<v8:content>Колонка тегов справа</v8:content>
-										</v8:item>
-									</Title>
-									<Group>Vertical</Group>
-									<Representation>None</Representation>
-									<ShowTitle>false</ShowTitle>
-									<ExtendedTooltip name="TagsColumnRightExtendedTooltip" id="370"/>
-									<ChildItems>
-										<UsualGroup name="TagsRows" id="371">
-											<EnableContentChange>true</EnableContentChange>
-											<Title>
-												<v8:item>
-													<v8:lang>en</v8:lang>
-													<v8:content>Tags rows</v8:content>
-												</v8:item>
-												<v8:item>
-													<v8:lang>ru</v8:lang>
-													<v8:content>Строки тегов</v8:content>
-												</v8:item>
-											</Title>
-											<Group>Vertical</Group>
-											<Representation>None</Representation>
-											<ShowTitle>false</ShowTitle>
-											<ExtendedTooltip name="TagsRowsExtendedTooltip" id="372"/>
-										</UsualGroup>
-									</ChildItems>
-								</UsualGroup>
-								<UsualGroup name="Tags" id="373">
-									<Title>
-										<v8:item>
-											<v8:lang>en</v8:lang>
-											<v8:content>Tags</v8:content>
-										</v8:item>
-										<v8:item>
-											<v8:lang>ru</v8:lang>
-											<v8:content>Теги</v8:content>
-										</v8:item>
-									</Title>
-									<ToolTip>
-										<v8:item>
-											<v8:lang>en</v8:lang>
-											<v8:content>Tags</v8:content>
-										</v8:item>
-									</ToolTip>
-									<Group>Vertical</Group>
-									<Representation>None</Representation>
-									<ShowTitle>false</ShowTitle>
-									<ExtendedTooltip name="TagsExtendedTooltip" id="374"/>
-									<ChildItems>
-										<InputField name="TagInputField" id="375">
-											<DataPath>TagInputField</DataPath>
-											<DropListButton>false</DropListButton>
-											<ChoiceButton>true</ChoiceButton>
-											<ChoiceButtonRepresentation>ShowInInputField</ChoiceButtonRepresentation>
-											<OpenButton>false</OpenButton>
-											<InputHint>
-												<v8:item>
-													<v8:lang>en</v8:lang>
-													<v8:content>Attach tag (25 characters)</v8:content>
-												</v8:item>
-												<v8:item>
-													<v8:lang>ru</v8:lang>
-													<v8:content>Прикрепить тег (25 символов)</v8:content>
-												</v8:item>
-											</InputHint>
-											<ContextMenu name="TagInputFieldContextMenu" id="376"/>
-											<ExtendedTooltip name="TagInputFieldExtendedTooltip" id="377"/>
-											<Events>
-												<Event name="TextEditEnd">TagInputFieldTextEditEnd</Event>
-												<Event name="ChoiceProcessing">TagInputFieldChoiceProcessing</Event>
-											</Events>
-										</InputField>
-										<UsualGroup name="TagsAndIndent" id="378">
-											<Title>
-												<v8:item>
-													<v8:lang>en</v8:lang>
-													<v8:content>Tags and indent</v8:content>
-												</v8:item>
-												<v8:item>
-													<v8:lang>ru</v8:lang>
-													<v8:content>Теги и отступ</v8:content>
-												</v8:item>
-											</Title>
-											<ToolTip>
-												<v8:item>
-													<v8:lang>en</v8:lang>
-													<v8:content>Tags and indent</v8:content>
-												</v8:item>
-												<v8:item>
-													<v8:lang>ru</v8:lang>
-													<v8:content>Теги и отступ</v8:content>
-												</v8:item>
-											</ToolTip>
-											<Group>Horizontal</Group>
-											<Representation>None</Representation>
-											<ShowTitle>false</ShowTitle>
-											<ExtendedTooltip name="TagsAndIndentExtendedTooltip" id="379"/>
-											<ChildItems>
-												<LabelDecoration name="TagsIndent" id="380">
-													<Width>9</Width>
-													<HorizontalStretch>false</HorizontalStretch>
-													<ContextMenu name="TagsIndentContextMenu" id="381"/>
-													<ExtendedTooltip name="TagsIndentExtendedTooltip" id="382"/>
-												</LabelDecoration>
-												<LabelDecoration name="TagsCloud" id="383">
-													<ContextMenu name="TagsCloudContextMenu" id="384"/>
-													<ExtendedTooltip name="TagsCloudExtendedTooltip" id="385"/>
-													<Events>
-														<Event name="URLProcessing">TagsCloudURLProcessing</Event>
-													</Events>
-												</LabelDecoration>
-											</ChildItems>
-										</UsualGroup>
-									</ChildItems>
-								</UsualGroup>
-							</ChildItems>
+							<Representation>None</Representation>
+							<ShowTitle>false</ShowTitle>
+							<ExtendedTooltip name="ContactInformationExtendedTooltip" id="387"/>
 						</UsualGroup>
-						<UsualGroup name="Details" id="345">
+					</ChildItems>
+				</Page>
+				<Page name="GroupAdditionally" id="464">
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Additionally</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Дополнительно</v8:content>
+						</v8:item>
+					</Title>
+					<ToolTip>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Additionally</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Дополнительно</v8:content>
+						</v8:item>
+					</ToolTip>
+					<ExtendedTooltip name="GroupAdditionallyExtendedTooltip" id="465"/>
+					<ChildItems>
+						<UsualGroup name="GroupActivityTypes" id="485">
 							<Title>
 								<v8:item>
 									<v8:lang>en</v8:lang>
-									<v8:content>Details</v8:content>
+									<v8:content>Activity types</v8:content>
 								</v8:item>
 								<v8:item>
 									<v8:lang>ru</v8:lang>
-									<v8:content>Детали</v8:content>
+									<v8:content>Виды деятельности</v8:content>
 								</v8:item>
 							</Title>
-							<Group>Vertical</Group>
-							<ThroughAlign>Use</ThroughAlign>
-							<ExtendedTooltip name="DetailsExtendedTooltip" id="346"/>
+							<ToolTip>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Activity types</v8:content>
+								</v8:item>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Виды деятельности</v8:content>
+								</v8:item>
+							</ToolTip>
+							<ExtendedTooltip name="GroupActivityTypesExtendedTooltip" id="486"/>
 							<ChildItems>
-								<UsualGroup name="CustomerSupplierOther" id="397">
-									<Title>
-										<v8:item>
-											<v8:lang>en</v8:lang>
-											<v8:content>Customer supplier other</v8:content>
-										</v8:item>
-										<v8:item>
-											<v8:lang>ru</v8:lang>
-											<v8:content>Покупатель поставщик прочие</v8:content>
-										</v8:item>
-									</Title>
-									<Group>Horizontal</Group>
-									<Representation>None</Representation>
-									<ShowTitle>false</ShowTitle>
-									<ExtendedTooltip name="CustomerSupplierOtherExtendedTooltip" id="398"/>
+								<Table name="ActivityTypes" id="466">
+									<EnableStartDrag>true</EnableStartDrag>
+									<EnableDrag>true</EnableDrag>
+									<DataPath>Object.ActivityTypes</DataPath>
+									<RowFilter xsi:nil="true"/>
+									<ContextMenu name="ActivityTypesContextMenu" id="467"/>
+									<AutoCommandBar name="ActivityTypesCommandBar" id="468"/>
+									<ExtendedTooltip name="ActivityTypesExtendedTooltip" id="469"/>
+									<SearchStringAddition name="ActivityTypesSearchString" id="470">
+										<AdditionSource>
+											<Item>ActivityTypes</Item>
+											<Type>SearchStringRepresentation</Type>
+										</AdditionSource>
+										<ContextMenu name="ActivityTypesSearchStringContextMenu" id="471"/>
+										<ExtendedTooltip name="ActivityTypesSearchStringExtendedTooltip" id="472"/>
+									</SearchStringAddition>
+									<ViewStatusAddition name="ActivityTypesViewStatus" id="473">
+										<AdditionSource>
+											<Item>ActivityTypes</Item>
+											<Type>ViewStatusRepresentation</Type>
+										</AdditionSource>
+										<ContextMenu name="ActivityTypesViewStatusContextMenu" id="474"/>
+										<ExtendedTooltip name="ActivityTypesViewStatusExtendedTooltip" id="475"/>
+									</ViewStatusAddition>
+									<SearchControlAddition name="ActivityTypesSearchControl" id="476">
+										<AdditionSource>
+											<Item>ActivityTypes</Item>
+											<Type>SearchControl</Type>
+										</AdditionSource>
+										<ContextMenu name="ActivityTypesSearchControlContextMenu" id="477"/>
+										<ExtendedTooltip name="ActivityTypesSearchControlExtendedTooltip" id="478"/>
+									</SearchControlAddition>
 									<ChildItems>
-										<LabelDecoration name="CustomerSupplierOtherIndent" id="399">
-											<Width>7</Width>
-											<HorizontalStretch>false</HorizontalStretch>
-											<ContextMenu name="CustomerSupplierOtherIndentContextMenu" id="400"/>
-											<ExtendedTooltip name="CustomerSupplierOtherIndentExtendedTooltip" id="401"/>
-										</LabelDecoration>
-										<CheckBoxField name="Customer" id="402">
-											<DataPath>Object.Customer</DataPath>
-											<TitleLocation>Right</TitleLocation>
-											<CheckBoxType>Auto</CheckBoxType>
-											<ContextMenu name="CustomerContextMenu" id="403"/>
-											<ExtendedTooltip name="CustomerExtendedTooltip" id="404"/>
-											<Events>
-												<Event name="OnChange">CustomerOnChange</Event>
-											</Events>
-										</CheckBoxField>
-										<CheckBoxField name="Supplier" id="405">
-											<DataPath>Object.Supplier</DataPath>
-											<TitleLocation>Right</TitleLocation>
-											<CheckBoxType>Auto</CheckBoxType>
-											<ContextMenu name="SupplierContextMenu" id="406"/>
-											<ExtendedTooltip name="SupplierExtendedTooltip" id="407"/>
-										</CheckBoxField>
-										<CheckBoxField name="OtherRelationship" id="408">
-											<DataPath>Object.OtherRelationship</DataPath>
-											<TitleLocation>Right</TitleLocation>
-											<CheckBoxType>Auto</CheckBoxType>
-											<ContextMenu name="OtherRelationshipContextMenu" id="409"/>
-											<ExtendedTooltip name="OtherRelationshipExtendedTooltip" id="410"/>
-										</CheckBoxField>
+										<LabelField name="ActivityTypesLineNumber" id="479">
+											<DataPath>Object.ActivityTypes.LineNumber</DataPath>
+											<EditMode>EnterOnInput</EditMode>
+											<ContextMenu name="ActivityTypesLineNumberContextMenu" id="480"/>
+											<ExtendedTooltip name="ActivityTypesLineNumberExtendedTooltip" id="481"/>
+										</LabelField>
+										<InputField name="ActivityTypesActivityType" id="482">
+											<DataPath>Object.ActivityTypes.ActivityType</DataPath>
+											<EditMode>EnterOnInput</EditMode>
+											<ContextMenu name="ActivityTypesActivityTypeContextMenu" id="483"/>
+											<ExtendedTooltip name="ActivityTypesActivityTypeExtendedTooltip" id="484"/>
+										</InputField>
 									</ChildItems>
-								</UsualGroup>
-								<InputField name="CustomerAcquisitionChannel" id="394">
-									<DataPath>Object.CustomerAcquisitionChannel</DataPath>
-									<OpenButton>false</OpenButton>
-									<InputHint>
-										<v8:item>
-											<v8:lang>en</v8:lang>
-											<v8:content>Customer acquisition channel</v8:content>
-										</v8:item>
-										<v8:item>
-											<v8:lang>ru</v8:lang>
-											<v8:content>Источник привлечения покупателя</v8:content>
-										</v8:item>
-									</InputHint>
-									<ContextMenu name="CustomerAcquisitionChannelContextMenu" id="395"/>
-									<ExtendedTooltip name="CustomerAcquisitionChannelExtendedTooltip" id="396"/>
-								</InputField>
-								<InputField name="Comment" id="46">
-									<DataPath>Object.Comment</DataPath>
-									<Title>
-										<v8:item>
-											<v8:lang>en</v8:lang>
-											<v8:content>Notes</v8:content>
-										</v8:item>
-										<v8:item>
-											<v8:lang>ru</v8:lang>
-											<v8:content>Заметки</v8:content>
-										</v8:item>
-									</Title>
-									<TitleLocation>Left</TitleLocation>
-									<ToolTip>
-										<v8:item>
-											<v8:lang>en</v8:lang>
-											<v8:content>Any additional information</v8:content>
-										</v8:item>
-										<v8:item>
-											<v8:lang>ru</v8:lang>
-											<v8:content>Любая дополнительная информация</v8:content>
-										</v8:item>
-									</ToolTip>
-									<Height>3</Height>
-									<VerticalStretch>false</VerticalStretch>
-									<MultiLine>true</MultiLine>
-									<InputHint>
-										<v8:item>
-											<v8:lang>en</v8:lang>
-											<v8:content>Any additional information</v8:content>
-										</v8:item>
-										<v8:item>
-											<v8:lang>ru</v8:lang>
-											<v8:content>Любая дополнительная информация</v8:content>
-										</v8:item>
-									</InputHint>
-									<ContextMenu name="CommentContextMenu" id="47"/>
-									<ExtendedTooltip name="CommentExtendedTooltip" id="147"/>
-								</InputField>
-								<InputField name="Responsible" id="50">
-									<DataPath>Object.Responsible</DataPath>
-									<TitleLocation>Left</TitleLocation>
-									<OpenButton>false</OpenButton>
-									<ContextMenu name="ResponsibleContextMenu" id="51"/>
-									<ExtendedTooltip name="ResponsibleExtendedTooltip" id="148"/>
-								</InputField>
-								<InputField name="AccessGroup" id="313">
-									<DataPath>Object.AccessGroup</DataPath>
-									<Title>
-										<v8:item>
-											<v8:lang>en</v8:lang>
-											<v8:content>Access</v8:content>
-										</v8:item>
-										<v8:item>
-											<v8:lang>ru</v8:lang>
-											<v8:content>Доступ</v8:content>
-										</v8:item>
-									</Title>
-									<OpenButton>false</OpenButton>
-									<ContextMenu name="AccessGroupContextMenu" id="314"/>
-									<ExtendedTooltip name="AccessGroupExtendedTooltip" id="315"/>
-								</InputField>
-								<UsualGroup name="AdditionalAttributes" id="44">
-									<Title>
-										<v8:item>
-											<v8:lang>en</v8:lang>
-											<v8:content>Additional attributes</v8:content>
-										</v8:item>
-										<v8:item>
-											<v8:lang>ru</v8:lang>
-											<v8:content>Дополнительные реквизиты</v8:content>
-										</v8:item>
-									</Title>
-									<ToolTip>
-										<v8:item>
-											<v8:lang>en</v8:lang>
-											<v8:content>Additional attributes</v8:content>
-										</v8:item>
-										<v8:item>
-											<v8:lang>ru</v8:lang>
-											<v8:content>Дополнительные реквизиты</v8:content>
-										</v8:item>
-									</ToolTip>
-									<Group>Vertical</Group>
-									<Representation>NormalSeparation</Representation>
-									<ExtendedTooltip name="AdditionalAttributesExtendedTooltip" id="145"/>
-								</UsualGroup>
+								</Table>
 							</ChildItems>
 						</UsualGroup>
 					</ChildItems>
-				</UsualGroup>
+				</Page>
+				<Page name="GroupAdditionalAttributes" id="44">
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Additional attributes</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Дополнительные реквизиты</v8:content>
+						</v8:item>
+					</Title>
+					<ToolTip>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Additional attributes</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Дополнительные реквизиты</v8:content>
+						</v8:item>
+					</ToolTip>
+					<ExtendedTooltip name="GroupAdditionalAttributesExtendedTooltip" id="145"/>
+				</Page>
+				<Page name="GroupComment" id="435">
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Comment</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Комментарий</v8:content>
+						</v8:item>
+					</Title>
+					<ToolTip>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Group comment</v8:content>
+						</v8:item>
+					</ToolTip>
+					<ExtendedTooltip name="GroupCommentExtendedTooltip" id="436"/>
+					<ChildItems>
+						<InputField name="Comment" id="46">
+							<DataPath>Object.Comment</DataPath>
+							<TitleLocation>None</TitleLocation>
+							<AutoMaxWidth>false</AutoMaxWidth>
+							<VerticalStretch>true</VerticalStretch>
+							<MultiLine>true</MultiLine>
+							<ContextMenu name="CommentContextMenu" id="47"/>
+							<ExtendedTooltip name="CommentExtendedTooltip" id="147"/>
+						</InputField>
+					</ChildItems>
+				</Page>
 			</ChildItems>
-		</UsualGroup>
+		</Pages>
 	</ChildItems>
 	<Attributes>
 		<Attribute name="Object" id="1">
@@ -1499,32 +1573,6 @@
 			</Picture>
 			<Action>SendEmailToCounterparty</Action>
 		</Command>
-		<Command name="AddFieldsContactPerson" id="1">
-			<Title>
-				<v8:item>
-					<v8:lang>en</v8:lang>
-					<v8:content>+ contact</v8:content>
-				</v8:item>
-				<v8:item>
-					<v8:lang>ru</v8:lang>
-					<v8:content>+ контакт</v8:content>
-				</v8:item>
-			</Title>
-			<Action>AddFieldsContactPerson</Action>
-		</Command>
-		<Command name="AddFieldContactPersonContactInformation" id="2">
-			<Title>
-				<v8:item>
-					<v8:lang>en</v8:lang>
-					<v8:content>+ phone, address</v8:content>
-				</v8:item>
-				<v8:item>
-					<v8:lang>ru</v8:lang>
-					<v8:content>+ телефон, адрес</v8:content>
-				</v8:item>
-			</Title>
-			<Action>AddFieldContactPersonContactInformation</Action>
-		</Command>
 	</Commands>
 	<CommandInterface>
 		<NavigationPanel>
@@ -1537,7 +1585,7 @@
 				<Command>Catalog.BankAccounts.StandardCommand.OpenByValue</Command>
 				<Type>Auto</Type>
 				<CommandGroup>FormNavigationPanelImportant</CommandGroup>
-				<Index>4</Index>
+				<Index>5</Index>
 			</Item>
 			<Item>
 				<Command>Catalog.CounterpartyPriceKind.StandardCommand.OpenByValue</Command>
@@ -1549,12 +1597,13 @@
 				<Command>Catalog.CounterpartyContracts.StandardCommand.OpenByValue</Command>
 				<Type>Auto</Type>
 				<CommandGroup>FormNavigationPanelImportant</CommandGroup>
-				<Index>2</Index>
+				<Index>4</Index>
 			</Item>
 			<Item>
 				<Command>DataProcessor.DocumentsByCounterparty.Command.DocumentsByCounterparty</Command>
 				<Type>Auto</Type>
 				<CommandGroup>FormNavigationPanelImportant</CommandGroup>
+				<Index>2</Index>
 			</Item>
 			<Item>
 				<Command>Catalog.ContactPersons.StandardCommand.OpenByValue</Command>
@@ -1570,7 +1619,7 @@
 				<Command>Catalog.Counterparties.Command.Events</Command>
 				<Type>Auto</Type>
 				<CommandGroup>FormNavigationPanelImportant</CommandGroup>
-				<Index>5</Index>
+				<Index>6</Index>
 			</Item>
 			<Item>
 				<Command>0:31c54807-ed91-4db0-b9ed-a8606cfdf565</Command>
@@ -1623,7 +1672,6 @@
 				<Command>Catalog.ContactPersons.Command.CounterpartyContactPersons</Command>
 				<Type>Auto</Type>
 				<CommandGroup>FormNavigationPanelImportant</CommandGroup>
-				<Index>6</Index>
 			</Item>
 			<Item>
 				<Command>Catalog.Counterparties.Command.OpenContactInformationForm</Command>
@@ -1740,7 +1788,7 @@
 				</Visible>
 			</Item>
 			<Item>
-				<Command>Catalog.Counterparties.Command.CommandJobOrderCreateBasedOn</Command>
+				<Command>Catalog.Counterparties.Command.CommandWorkOrderCreateBasedOn</Command>
 				<Type>Auto</Type>
 				<DefaultVisible>false</DefaultVisible>
 				<Visible>

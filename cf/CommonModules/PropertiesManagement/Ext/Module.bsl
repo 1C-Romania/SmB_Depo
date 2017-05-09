@@ -8,40 +8,32 @@
 ////////////////////////////////////////////////////////////////////////////////
 // Procedures and functions for standard processing of additional attributes.
 
-// Creates basic attributes and form fields necessary for operation.
-// Fills in additional attributes if used.
-// Called from handler OnCreateAtServer of object form with properties.
+// Creates necessary for work basic attributes and fields on the form.
+// Fills additional attributes if used.
+// Is called from the OnCreateAtServer handler of the form of the object with properties.
 // 
 // Parameters:
-//  Form - ManagedForm - in which additional attributes will be displayed.
+//   Form        - ManagedForm - in which additional attributes will display.
 //
-//  AdditionalParameters - Undefined - all additional parameters have default values.
-//                          - Structure - with optional properties:
+//   Object      - Undefined - the object will be received from the Object attribute of the form.
+//               - FormDataStructure - by object type.
 //
-//    * Object - FormDataStructure - by object type.
+//   ItemForPlacementName - String - name of the form group in which properties will be placed.
 //
-//    * ItemNameForPlacement - String - name of form group to which the properties will be allocated.
+//   ArbitraryObject - Boolean - if True then a table with description of additional attributes is created on the form
+//                               The Object parameter is ignored, additional attributes are not created or filled.
 //
-//    * RandomObject - Boolean - if True, then the table of additional attributes
-//            description is created in the form, parameter Object is ignored, additional attributes are not created and completed.
+//                               It is required when a single form is used sequentially to view or edit
+//                               additional attributes of items in the container (including different types).
 //
-//            It is necessary when one form is consistently used for
-//            viewing or editing of additional attributes of dirrerent objects (including different types).
+//                               After performing OnCreateAtServer, FillAdditionalAttributesInForm() 
+//                               should be called to add and fill additional attributes.
+//                               To save changes, CopyValuesFromFormAttributesToObject should be called
+//                               and UpdateAdditionalAttributeItems should be called to update the content.
 //
-//            After executing OnCreateAtServer, you should
-//            call FillInAdditionalAttributesInForm() to add and fill in additional attributes.
-//            To save changes, call TransferValuesFromFormAttributesToObject();
-//            to update the content of attributes, call UpdateAdditionalAttributesItems().
-//
-//    * CommandBarItemName - String - name of form group to which the button will be added.
-//            EditAdditionalAttributesContent. If item name is
-//            not specified, then standard group "Form" is used.CommandBar
-//
-//    * HideDeleted - Boolean - set/disable the mode of hiding deleted items.
-//            If the parameter is not specified but the object is specified and
-//            property Reference is not filled, then initial value is set to True, otherwise False.
-//            When procedure BeforeWritingOnServer is called in the mode of
-//            deleted items hiding, deleted values are cleared (not transferred back to the object) and mode HideDeleted is set to False.
+//   CommandPanelItemName - String - is the form item group name in which an 
+//                               EditAdditionalAttributeContent button will be added. If the item 
+//                               name is not specified, a standard group "Form.CommandBar" will be used.
 //
 Procedure OnCreateAtServer(Form, AdditionalParameters = Undefined,
 			Outdated3 = "", Outdated4 = False, Outdated5 = "") Export

@@ -92,34 +92,31 @@ Procedure MessageToUser(
 	
 EndProcedure
 
-// Adds a user''s new error to the errors
-// list for the further sending using the TellUserAboutErrors() procedure.
-//  Used in procedures FillCheckProcessing.
+// Adds the error to the error list that will be displayed to the user with the
+// ShowErrorsToUser() procedure.
+// It is used in FillCheckProcessing procedures.
 //
 // Parameters:
-//  Errors          - Undefined - new list will be created,
-//                  - Value set during the first call of this procedure with the Undefined value.
-//
-//  ErrorField      - String - value that is specified in the Object field in the UserMessage property.
-//                    It should contain %1 for auto input of the row number.
-//                    For example, "Object.TIN" or "Object.Users[%1].User".
-//
-//  SingleErrorText - String - text Errors for case, When ErrorsGroup in collections only One,
-//                    for example, NStr("en='User is not selected.';ru='Пользователь не выбран.'").
-//
-//  ErrorsGroup    - Arbitrary - used to select either text for
-//                    one mistake, or text for multiple errors, for example, the Object name.Users.
-//                    It the value is not filled in, the text for one error is used.
-//
-//  LineNumber     - Number - value from 0 ... , defining the row number that
-//                    should be input to the ErrorField row and to the TextForSeveralErrors text (input LineNumber +1).
-//
-//  SeveralErrorText - String - text Errors for case, When added some errors From similar
-//                    property ErrorsGroup, for example, NStr("en='User in the row %1 is not selected.';ru='Пользователь в строке %1 не выбран.'").
-//
-//  RowIndex    - Undefined - matches the LineNumber parameter value.
-//                    Number - value from 0 ... , specifying the row number that
-//                    should be input to the ErrorField row.
+// Errors           - Undefined - new list will be created,
+//                  - value that is set at the first call of this procedure with the Undefined
+//                    value.
+// ErrorField       - String - value that is specified in the Field property of the UserMessage
+//                    object. If you want a row number to be included, it must contain %1.
+//                    For example, "Object.Description" or "Object.Users[%1].User".
+// SingleErrorText  - String - error message, it is used if there is only one ErrorGroup in the 
+//                    collection, for example, NStr("en = 'User is not selected.'").
+// ErrorGroup       - Arbitrary - it is used to choose between the single error text and the
+//                    several error text, for example, the "Object.Users" name.
+//                    If this value is not filled, the single error text should be used.
+// LineNumber       - Number - numbering starts with 0, it specifies the row number, that must
+//                    be included in the ErrorField string and in the SeveralErrorText
+//                    (LineNumber + 1 is substituted).
+// SeveralErrorText - String - error message, it is used if several errors with the same 
+//                    ErrorGroup property is added, for example, NStr("en = 'User in the row   
+//                    %1 is not selected.'").
+// LineIndex        - Undefined - matches the LineNumber parameter value.
+// Number           - value starts with 0, defines the number of the row to be substituted into
+//                    the ErrorField.
 //
 Procedure AddUserError(Errors, ErrorField, SingleErrorText, ErrorsGroup, LineNumber = 0, SeveralErrorText = "", RowIndex = Undefined) Export
 	
@@ -809,14 +806,12 @@ Function CompareVersions(Val VersionString1, Val VersionString2) Export
 	Version1 = StringFunctionsClientServer.DecomposeStringIntoSubstringsArray(Row1, ".");
 	If Version1.Count() <> 4 Then
 		Raise StringFunctionsClientServer.SubstituteParametersInString(
-			NStr("en='Wrong format of the VersionRow1 parameter: %1';
-				 |ru='Неправильный формат параметра СтрокаВерсии1: %1'"), VersionString1);
+			NStr("en = 'Invalid version string format: %1'; ru = 'Неправильный формат параметра СтрокаВерсии1: %1'"), VersionString1);
 	EndIf;
 	Version2 = StringFunctionsClientServer.DecomposeStringIntoSubstringsArray(Row2, ".");
 	If Version2.Count() <> 4 Then
 		Raise StringFunctionsClientServer.SubstituteParametersInString(
-	    	NStr("en='Wrong format of the VersionRow2 parameter: %1';
-				 |ru='Неправильный формат параметра СтрокаВерсии2: %1'"), VersionString2);
+	    	NStr("en = 'Invalid version string format: %1'; ru = 'Неправильный формат параметра СтрокаВерсии2: %1'"), VersionString2);
 	EndIf;
 	
 	Result = 0;
@@ -1892,7 +1887,7 @@ EndFunction
 //  IMPORTANT: Function returns the structures array where
 //         one field (any) can be empty. It can
 //         be used by the various subsystems
-//         for its own match of a user''s name to an email address. That is why
+//         for its own match of a user name to an email address. That is why
 //         before the immediate sending it is required to check whether the field of postal addresses is filled in.
 //
 Function ParseStringWithPostalAddresses(Val EmailAddressString, CallingException = True) Export

@@ -178,51 +178,43 @@ Procedure GenerateBasicInformation() Export
 		RowsArray.Add(RowCI.Presentation);
 	EndDo;
 	
-	If AdditionalProperties.Property("BasicInformationContactPersons") Then
+	Query = New Query;
+	Query.Text = 
+	"SELECT
+	|	ContactPersons.Description AS Description,
+	|	ContactPersons.ContactInformation.(
+	|		Presentation AS Presentation,
+	|		Kind AS KindCI
+	|	)
+	|FROM
+	|	Catalog.ContactPersons AS ContactPersons
+	|WHERE
+	|	ContactPersons.Owner = &Counterparty
+	|	AND ContactPersons.DeletionMark = FALSE
+	|
+	|ORDER BY
+	|	Description,
+	|	KindCI";
+	
+	Query.SetParameter("Counterparty", Ref);
+	
+	SelectionCP = Query.Execute().Select();
+	While SelectionCP.Next() Do
 		
-		CommonUseClientServer.SupplementArray(RowsArray, AdditionalProperties.BasicInformationContactPersons);
+		If RowsArray.Count() > 0 Then
+			RowsArray.Add(Chars.LF);
+		EndIf;
+		RowsArray.Add(SelectionCP.Description);
 		
-	Else
-		
-		Query = New Query;
-		Query.Text = 
-			"SELECT
-			|	ContactPersons.Description AS Description,
-			|	ContactPersons.ContactInformation.(
-			|		Presentation AS Presentation,
-			|		Kind AS KindCI
-			|	)
-			|FROM
-			|	Catalog.ContactPersons AS ContactPersons
-			|WHERE
-			|	ContactPersons.Owner = &Counterparty
-			|	AND ContactPersons.DeletionMark = FALSE
-			|
-			|ORDER BY
-			|	Description,
-			|	KindCI";
-		
-		Query.SetParameter("Counterparty", Ref);
-		
-		SelectionCP = Query.Execute().Select();
-		While SelectionCP.Next() Do
-			
-			If RowsArray.Count() > 0 Then
-				RowsArray.Add(Chars.LF);
+		SelectionCI = SelectionCP.ContactInformation.Select();
+		While SelectionCI.Next() Do
+			If IsBlankString(SelectionCI.Presentation) Then
+				Continue;
 			EndIf;
-			RowsArray.Add(SelectionCP.Description);
-			
-			SelectionCI = SelectionCP.ContactInformation.Select();
-			While SelectionCI.Next() Do
-				If IsBlankString(SelectionCI.Presentation) Then
-					Continue;
-				EndIf;
-				RowsArray.Add(SelectionCI.Presentation);
-			EndDo;
-			
+			RowsArray.Add(SelectionCI.Presentation);
 		EndDo;
 		
-	EndIf;
+	EndDo;
 	
 	If Not IsBlankString(Comment) Then
 		RowsArray.Add(Comment);
@@ -438,9 +430,9 @@ EndProcedure
 //
 Procedure BringDataToConsistentState()
 	
-	If LegalEntityIndividual = Enums.CounterpartyKinds.LegalEntity Then
+	If LegalEntityIndividual = Enums.CounterpartyKinds.Individual Then
 		
-		Individual = Catalogs.Individuals.EmptyRef();
+		LegalForm = Catalogs.LegalForms.EmptyRef();
 		
 	EndIf;
 	

@@ -12,12 +12,6 @@ Procedure OnCreateAtServer(Cancel, StandardProcessing)
 		
 	EndIf;
 	
-	If Not SmallBusinessReUse.CounterpartyContractsControlNeeded() Then
-		
-		Items.ListCompanies.Visible = False;
-		
-	EndIf;
-	
 	// StandardSubsystems.AdditionalReportsAndDataProcessors
 	AdditionalReportsAndDataProcessors.OnCreateAtServer(ThisForm);
 	// End StandardSubsystems.AdditionalReportsAndDataProcessors

@@ -41,10 +41,10 @@ Procedure PresentationCIOnChange(Form, Item) Export
 		DataCI.FieldValues = ContactInformationSBServerCall.ContactInformationXMLByPresentation(DataCI.Presentation, DataCI.Kind);
 	EndIf;
 	
-	If DataCI.Type = PredefinedValue("Enum.ContactInformationTypes.Address") Then
-		ContactInformationSBClientServer.FillChoiceListAddresses(Form);
-	EndIf;
-	
+	//If DataCI.Type = PredefinedValue("Enum.ContactInformationTypes.Address") Then
+	//	ContactInformationSBClientServer.FillChoiceListAddresses(Form);
+	//EndIf;
+	//
 EndProcedure
 
 Procedure PresentationCIStartChoice(Form, Item, ChoiceData, StandardProcessing, ClosingDialogNotify = Undefined) Export
@@ -87,9 +87,9 @@ Procedure PresentationCIClearing(Form, Item, StandardProcessing) Export
 	DataCI = Form.ContactInformation[IndexCI];
 	DataCI.FieldValues = "";
 	
-	If DataCI.Type = PredefinedValue("Enum.ContactInformationTypes.Address") Then
-		ContactInformationSBClientServer.FillChoiceListAddresses(Form);
-	EndIf;
+	//If DataCI.Type = PredefinedValue("Enum.ContactInformationTypes.Address") Then
+	//	ContactInformationSBClientServer.FillChoiceListAddresses(Form);
+	//EndIf;
 	
 EndProcedure
 
@@ -209,10 +209,10 @@ Procedure ValueCIEditingInDialogEnd(ClosingResult, AdditionalParameters) Export
 	
 	AdditionalParameters.Form.Modified = True;
 	
-	If DataCI.Type = PredefinedValue("Enum.ContactInformationTypes.Address") Then
-		ContactInformationSBClientServer.FillChoiceListAddresses(AdditionalParameters.Form);
-	EndIf;
-	
+	//If DataCI.Type = PredefinedValue("Enum.ContactInformationTypes.Address") Then
+	//	ContactInformationSBClientServer.FillChoiceListAddresses(AdditionalParameters.Form);
+	//EndIf;
+	//
 	If AdditionalParameters.Property("ClosingDialogNotify") Then
 		ExecuteNotifyProcessing(AdditionalParameters.ClosingDialogNotify, ClosingResult.Presentation);
 	EndIf;

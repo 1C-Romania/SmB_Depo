@@ -264,6 +264,12 @@
 							<Representation>NormalSeparation</Representation>
 							<ExtendedTooltip name="CounterpartiesExtendedTooltip" id="103"/>
 							<ChildItems>
+								<Button name="CatalogActivityTypesActivityTypes" id="184">
+									<Type>Hyperlink</Type>
+									<CommandName>Catalog.ActivityTypes.Command.ActivityTypes</CommandName>
+									<TextColor>style:FormTextColor</TextColor>
+									<ExtendedTooltip name="CatalogActivityTypesActivityTypesExtendedTooltip" id="185"/>
+								</Button>
 								<Button name="CatalogCounterpartiesOpenList" id="49">
 									<Type>Hyperlink</Type>
 									<CommandName>Catalog.Counterparties.StandardCommand.OpenList</CommandName>
@@ -291,6 +297,28 @@
 										</v8:item>
 									</Title>
 									<ExtendedTooltip name="CatalogContractFormsOpenContractFormsListExtendedTooltip" id="136"/>
+								</Button>
+								<Button name="CatalogCounterpartyContractTypesCounterpartyContractTypes" id="182">
+									<Type>Hyperlink</Type>
+									<CommandName>Catalog.CounterpartyContractTypes.Command.CounterpartyContractTypes</CommandName>
+									<TextColor>style:FormTextColor</TextColor>
+									<Title>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Contract types</v8:content>
+										</v8:item>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Типы контрактов</v8:content>
+										</v8:item>
+									</Title>
+									<ExtendedTooltip name="CatalogCounterpartyContractTypesCounterpartyContractTypesExtendedTooltip" id="183"/>
+								</Button>
+								<Button name="CatalogLegalFormsLegalForms" id="186">
+									<Type>Hyperlink</Type>
+									<CommandName>Catalog.LegalForms.Command.LegalForms</CommandName>
+									<TextColor>style:FormTextColor</TextColor>
+									<ExtendedTooltip name="CatalogLegalFormsLegalFormsExtendedTooltip" id="187"/>
 								</Button>
 							</ChildItems>
 						</UsualGroup>
@@ -642,6 +670,12 @@
 									<CommandName>Catalog.Banks.StandardCommand.OpenList</CommandName>
 									<TextColor>style:FormTextColor</TextColor>
 									<ExtendedTooltip name="CatalogBanksOpenListExtendedTooltip" id="133"/>
+								</Button>
+								<Button name="CatalogDocumentKindsDocumentKinds" id="188">
+									<Type>Hyperlink</Type>
+									<CommandName>Catalog.DocumentKinds.Command.DocumentKinds</CommandName>
+									<TextColor>style:FormTextColor</TextColor>
+									<ExtendedTooltip name="CatalogDocumentKindsDocumentKindsExtendedTooltip" id="189"/>
 								</Button>
 								<Button name="CatalogWorldCountriesOpenList" id="82">
 									<Type>Hyperlink</Type>

@@ -1,124 +1,19 @@
-﻿////////////////////////////////////////////////////////////////////////////////
-// SERVICE PROCEDURES AND FUNCTIONS
-
-// StandardSubsystems.AdditionalReportsAndDataProcessors
+﻿
+#Region FormEventHadlers
 
 &AtServer
-Procedure AdditionalReportsAndProcessingsExecuteAllocatedCommandAtServer(ItemName, ExecutionResult)
-	
-	AdditionalReportsAndDataProcessors.ExecuteAllocatedCommandAtServer(ThisForm, ItemName, ExecutionResult);
-	
-EndProcedure
-
-// End StandardSubsystems.AdditionalReportsAndDataProcessors
-
-////////////////////////////////////////////////////////////////////////////////
-// GENERAL PURPOSE PROCEDURES AND FUNCTIONS
-
-// The procedure fills in the counterparty price kind depending on the contract kind.
-//
-// ContractKind - EnumRef.ContractsKinds
-// Counterparty - Catalog.Counterparties
-//
-&AtServer
-Procedure FillCounterpartyPriceKind()
-	
-	SetPrivilegedMode(True);
-	
-	Query = New Query("Select Allowed * From Catalog.CounterpartyPriceKind AS CounterpartyPrices WHERE CounterpartyPrices.Owner = &Owner AND NOT CounterpartyPrices.DeletionMark");
-	Query.SetParameter("Owner", Object.Owner);
-	QueryResult = Query.Execute();
-	
-	If Not QueryResult.IsEmpty() Then 
-		
-		Selection = QueryResult.Select();
-		Selection.Next();
-		Object.CounterpartyPriceKind = Selection.Ref;
-		
-	EndIf;
-	
-	SetPrivilegedMode(False);
-	
-EndProcedure // GetElementParametersByContractKind()
-
-// The procedure fills in the counterparty price kind depending on the contract kind.
-//
-// ContractKind - EnumRef.ContractsKinds
-// Counterparty - Catalog.Counterparties
-//
-&AtServer
-Procedure FillKindPrices(IsNew = False)
-	
-	If IsNew Then
-		
-		PriceKindSales = SmallBusinessReUse.GetValueByDefaultUser(UsersClientServer.AuthorizedUser(), "MainPriceKindSales");
-		
-		If ValueIsFilled(PriceKindSales) Then
-			
-			Object.PriceKind = PriceKindSales;
-			
-		EndIf;
-		
-	EndIf;
-	
-EndProcedure // FillKindPrices()
-
-&AtClientAtServerNoContext
-// Procedure is the contract name of numbers and a date of the contract.
-//
-Function GenerateDescription(ContractNo, ContractDate, SettlementsCurrency)
-	
-	TextName = NStr("en='# %ContractNo% from %ContractDate% (%SettlementsCurrency%)';ru='№ %НомерДоговора% от %ДатаДоговора% (%ВалютаРасчетов%)'");
-	TextName = StrReplace(TextName, "%ContractNo%", TrimAll(ContractNo));
-	TextName = StrReplace(TextName, "%ContractDate%", ?(ValueIsFilled(ContractDate), TrimAll(String(Format(ContractDate, "DF=dd.MM.yyyy"))), ""));
-	TextName = StrReplace(TextName, "%SettlementsCurrency%", TrimAll(String(SettlementsCurrency)));
-	
-	Return TextName;
-	
-EndFunction // GenerateDescription()
-
-&AtClient
-// Procedure sets availability of the form items.
-//
-Procedure SetItemsVisible()
-	
-	If Object.SettlementsCurrency = NationalCurrency Then
-		Items.SettlementsInStandardUnits.Visible = False;
-		Object.SettlementsInStandardUnits = False;
-	Else
-		Items.SettlementsInStandardUnits.Visible = True;
-	EndIf;
-	
-EndProcedure // SetItemsAvailability()
-
-&AtServer
-// Procedure is forming mapping of contract kinds.
-//
-Procedure SetChoiceListOfContractKinds()
-	
-	If Constants.FunctionalOptionTransferGoodsOnCommission.Get() Then
-		Items.ContractKind.ChoiceList.Add(Enums.ContractKinds.WithAgent);
-	EndIf;
-	
-	If Constants.FunctionalOptionReceiveGoodsOnCommission.Get() Then
-		Items.ContractKind.ChoiceList.Add(Enums.ContractKinds.FromPrincipal);
-	EndIf;	
-	
-EndProcedure // SetContractKindsChoiceList()
-
-////////////////////////////////////////////////////////////////////////////////
-// PROCEDURE - FORM EVENT HANDLERS
-
-&AtServer
-// Procedure - OnCreateAtServer event handler.
-//
 Procedure OnCreateAtServer(Cancel, StandardProcessing)
 	
-	NationalCurrency = Constants.NationalCurrency.Get();
+	Description	= Object.Description;
+	
+	SetFormConditionalAppearance();
+	
+	NationalCurrency	= Constants.NationalCurrency.Get();
+	FixedContractAmount	= (Object.Amount <> 0);
 	
 	If Object.Ref.IsEmpty() Then
 		
-		FillKindPrices(True);
+		FillPriceKind(True);
 		FillCounterpartyPriceKind();
 		
 		If Not ValueIsFilled(Object.Company) Then
@@ -132,56 +27,42 @@ Procedure OnCreateAtServer(Cancel, StandardProcessing)
 			
 		EndIf;
 		
-		Object.VendorPaymentDueDate = Constants.VendorPaymentDueDate.Get();
-		Object.CustomerPaymentDueDate = Constants.CustomerPaymentDueDate.Get();
+		Object.VendorPaymentDueDate		= Constants.VendorPaymentDueDate.Get();
+		Object.CustomerPaymentDueDate	= Constants.CustomerPaymentDueDate.Get();
 		
 		If Not ValueIsFilled(Object.SettlementsCurrency) Then
-			Object.SettlementsCurrency = NationalCurrency;
+			Object.SettlementsCurrency	= NationalCurrency;
 		EndIf;
 		
 		If Not IsBlankString(Parameters.FillingText) Then
-			Object.ContractNo = Parameters.FillingText;
-			Object.Description = GenerateDescription(Object.ContractNo, Object.ContractDate, Object.SettlementsCurrency);
+			Object.ContractNo	= Parameters.FillingText;
+			Object.Description	= GenerateDescription(Object.ContractNo, Object.ContractDate, Object.SettlementsCurrency);
 		EndIf;
 		
 	EndIf;
 	
-	If Object.SettlementsCurrency = NationalCurrency Then
-		Items.SettlementsInStandardUnits.Visible = False;
-		Object.SettlementsInStandardUnits = False;
-	Else
-		Items.SettlementsInStandardUnits.Visible = True;
-	EndIf;
-	
-	UseDataExchange = True;
-	If Not SmallBusinessReUse.CounterpartyContractsControlNeeded() Then
-		
-		Items.Company.Visible	= False;
-		Items.ContractKind.Visible	= False;
-		UseDataExchange 		= False;
-		
-	EndIf;
-	
-	SetChoiceListOfContractKinds();
+	SetContractKindsChoiceList();
 	
 	If ValueIsFilled(Object.DiscountMarkupKind) Then
-		Items.PriceKind.AutoChoiceIncomplete = True;
-		Items.PriceKind.AutoMarkIncomplete = True;
+		Items.PriceKind.AutoChoiceIncomplete	= True;
+		Items.PriceKind.AutoMarkIncomplete		= True;
 	Else
-		Items.PriceKind.AutoChoiceIncomplete = False;
-		Items.PriceKind.AutoMarkIncomplete = False;
+		Items.PriceKind.AutoChoiceIncomplete	= False;
+		Items.PriceKind.AutoMarkIncomplete		= False;
 	EndIf;
 	
 	If Parameters.Property("Document") Then 
-		ThisForm.OpeningDocument = Parameters.Document;
+		ThisForm.OpeningDocument	= Parameters.Document;
 	Else
-		ThisForm.OpeningDocument = Undefined;
+		ThisForm.OpeningDocument	= Undefined;
 	EndIf;
 	
 	GetBlankParameters();
-	ThisForm.ShowDocumentBeginning = True;
-	ThisForm.DocumentCreated = False;
+	ThisForm.ShowDocumentBeginning	= True;
+	ThisForm.DocumentCreated		= False;
 	GenerateAndShowContract();
+	
+	SmallBusinessClientServer.SetPictureForComment(Items.GroupComment, Object.Comment);
 	
 	// StandardSubsystems.AdditionalReportsAndDataProcessors
 	AdditionalReportsAndDataProcessors.OnCreateAtServer(ThisForm);
@@ -199,28 +80,26 @@ Procedure OnCreateAtServer(Cancel, StandardProcessing)
 	PrintManagement.OnCreateAtServer(ThisForm, Items.ImportantCommandsGroup);
 	// End StandardSubsystems.Printing
 	
-EndProcedure // OnCreateAtServer()
+EndProcedure
+
+&AtClient
+Procedure OnOpen(Cancel)
+	
+	FormManagement();
+	
+EndProcedure
 
 &AtServer
-// Event handler procedure OnReadAtServer
-//
 Procedure OnReadAtServer(CurrentObject)
 	
 	// StandardSubsystems.Properties
 	PropertiesManagement.OnReadAtServer(ThisForm, CurrentObject);
 	// End StandardSubsystems.Properties
 	
-EndProcedure // OnReadAtServer()
+EndProcedure
 
 &AtClient
-// Procedure-handler of the NotificationProcessing event.
-//
 Procedure NotificationProcessing(EventName, Parameter, Source)
-	
-	// Mechanism handler "Properties".
-	If PropertiesManagementClient.ProcessAlerts(ThisForm, EventName, Parameter) Then
-		UpdateAdditionalAttributesItems();
-	EndIf;
 	
 	If EventName = "PredefinedTemplateRestoration" Then 
 		If Parameter = Object.ContractForm Then 
@@ -244,89 +123,110 @@ Procedure NotificationProcessing(EventName, Parameter, Source)
 		EndIf;
 	EndIf;
 	
-EndProcedure // NotificationProcessing()
+	// StandardSubsystems.Properties
+	If PropertiesManagementClient.ProcessAlerts(ThisForm, EventName, Parameter) Then
+		UpdateAdditionalAttributesItems();
+	EndIf;
+	// End StandardSubsystems.Properties
+	
+EndProcedure
 
 &AtServer
-// Procedure-handler of the OnCreateAtServer event.
-// Performs initial attributes forms filling.
-//
 Procedure BeforeWriteAtServer(Cancel, CurrentObject, WriteParameters)
 	
 	// Mechanism handler "Properties".
 	PropertiesManagement.BeforeWriteAtServer(ThisForm, CurrentObject);
 	
-EndProcedure // BeforeWriteAtServer()
+EndProcedure
+
+&AtServer
+Procedure AfterWriteAtServer(CurrentObject, WriteParameters)
+	
+	SmallBusinessClientServer.SetPictureForComment(Items.GroupComment, Object.Comment);
+	
+	// Handler of the subsystem prohibiting the object attribute editing.
+	ObjectsAttributesEditProhibition.LockAttributes(ThisForm);
+	
+EndProcedure
+
+&AtServer
+Procedure FillCheckProcessingAtServer(Cancel, CheckedAttributes)
+	
+	If FixedContractAmount And Object.Amount = 0 Then
+		
+		ErrorText = NStr("ru='Не заполнена сумма договора.'; en = 'The contract amount is not filled.'");
+		CommonUseClientServer.MessageToUser(
+			ErrorText,
+			Object.Ref,
+			"Object.Amount",
+			,
+			Cancel);
+	EndIf;
+	
+EndProcedure
+
+#EndRegion
+
+#Region FormItemEventHadlers
 
 &AtClient
-// Procedure - handler of event OnChange of Settlement currency input field.
-//
-Procedure SettlementsCurrencyOnChange(Item)
-	
-	Object.Description = GenerateDescription(Object.ContractNo, Object.ContractDate, Object.SettlementsCurrency);
-	SetItemsVisible();
-	
-EndProcedure // SettlementsCurrencyOnChange()
-
-&AtClient
-// Procedure - handler of event OnChange of input field ContractNo.
-//
 Procedure ContractNoOnChange(Item)
 	
 	Object.Description = GenerateDescription(Object.ContractNo, Object.ContractDate, Object.SettlementsCurrency);
 	
-EndProcedure // ContractNoOnChange()
+EndProcedure
 
 &AtClient
-// Procedure - handler of event OnChange of input field ContractDate.
-//
 Procedure ContractDateOnChange(Item)
 	
 	Object.Description = GenerateDescription(Object.ContractNo, Object.ContractDate, Object.SettlementsCurrency);
 	
-EndProcedure // ContractDateOnChange()
+EndProcedure
 
 &AtClient
-// Procedure - handler of event OnChange of input field DiscountMarkupKind.
-//
+Procedure SettlementsCurrencyOnChange(Item)
+	
+	Object.Description = GenerateDescription(Object.ContractNo, Object.ContractDate, Object.SettlementsCurrency);
+	
+EndProcedure
+
+&AtClient
 Procedure DiscountMarkupKindOnChange(Item)
 	
 	If ValueIsFilled(Object.DiscountMarkupKind) Then
-		Items.PriceKind.AutoChoiceIncomplete = True;
-		Items.PriceKind.AutoMarkIncomplete = True;	
+		Items.PriceKind.AutoChoiceIncomplete	= True;
+		Items.PriceKind.AutoMarkIncomplete		= True;	
 	Else
-		Items.PriceKind.AutoChoiceIncomplete = False;
-		Items.PriceKind.AutoMarkIncomplete = False;
+		Items.PriceKind.AutoChoiceIncomplete	= False;
+		Items.PriceKind.AutoMarkIncomplete		= False;
 		ClearMarkIncomplete();
 	EndIf;
 	
 EndProcedure
 
 &AtClient
-// Procedure - handler of event Clearing input field DiscountMarkupKind.
-//
 Procedure DiscountMarkupKindClear(Item, StandardProcessing)
 	
 	If ValueIsFilled(Object.DiscountMarkupKind) Then
-		Items.PriceKind.AutoChoiceIncomplete = True;
-		Items.PriceKind.AutoMarkIncomplete = True;	
+		Items.PriceKind.AutoChoiceIncomplete	= True;
+		Items.PriceKind.AutoMarkIncomplete		= True;	
 	Else
-		Items.PriceKind.AutoChoiceIncomplete = False;
-		Items.PriceKind.AutoMarkIncomplete = False;
+		Items.PriceKind.AutoChoiceIncomplete	= False;
+		Items.PriceKind.AutoMarkIncomplete		= False;
 		ClearMarkIncomplete();
 	EndIf;
 	
 EndProcedure
 
 &AtClient
-// Procedure - OnCurrentPageChange event handler. 
-//
-Procedure PagesGroupOnCurrentPageChange(Item, CurrentPage)
+Procedure PagesOnCurrentPageChange(Item, CurrentPage)
+	
 	Items.ContractForm.AutoMarkIncomplete = False;
 	If ThisForm.Modified Then
 		ThisForm.DocumentCreated = False;
 	EndIf;
 	
-	If Items.GroupPages.CurrentPage = Items.GroupPrintContract
+	If Items.Pages.CurrentPage = Items.GroupPrintContract
 		AND Not ThisForm.DocumentCreated Then 
 		
 		GenerateAndShowContract();
@@ -335,8 +235,16 @@ Procedure PagesGroupOnCurrentPageChange(Item, CurrentPage)
 EndProcedure
 
 &AtClient
-// Procedure - handler of event SelectionDataProcessor of input field ContractForm.
-//
+Procedure ContractFormOnChange(Item)
+	
+	If Item.EditText = "" Then
+		ThisForm.DocumentCreated = False;
+		GenerateAndShowContract();
+	EndIf;
+	
+EndProcedure
+
+&AtClient
 Procedure ContractFormChoiceDataProcessor(Item, ValueSelected, StandardProcessing)
 	
 	If ValueIsFilled(Object.ContractForm) Then
@@ -358,20 +266,6 @@ Procedure ContractFormChoiceDataProcessor(Item, ValueSelected, StandardProcessin
 EndProcedure
 
 &AtClient
-// Procedure - handler of event OnChange of input field ContractForm.
-//
-Procedure ContractFormOnChange(Item)
-	
-	If Item.EditText = "" Then
-		ThisForm.DocumentCreated = False;
-		GenerateAndShowContract();
-	EndIf;
-	
-EndProcedure
-
-&AtClient
-// Procedure - handler of event OnActivateCell values table EditableParameters.
-//
 Procedure EditableParametersOnActivateCell(Item)
 	
 	If ValueIsFilled(Object.ContractForm) Then
@@ -386,8 +280,6 @@ Procedure EditableParametersOnActivateCell(Item)
 EndProcedure
 
 &AtClient
-// Procedure - handler of event OnChange of input field EditableParametersParameterValue.
-//
 Procedure EditableParametersParameterValueOnChange(Item)
 	
 	ParameterValue = Item.EditText;
@@ -395,82 +287,145 @@ Procedure EditableParametersParameterValueOnChange(Item)
 	
 EndProcedure
 
+&AtClient
+Procedure FixedContractAmountOnChange(Item)
+	
+	If Not FixedContractAmount Then
+		Object.Amount = 0;
+	EndIf;
+	
+	FormManagement();
+	
+EndProcedure
 
-////////////////////////////////////////////////////////////////////////////////
-// FORM COMMAND HANDLERS
+#EndRegion
 
-// StandardSubsystems.AdditionalReportsAndDataProcessors
+#Region FormCommandsHandlers
 
 &AtClient
-Procedure Attachable_ExecuteAssignedCommand(Command)
+Procedure SetInterval(Command)
 	
-	If Not AdditionalReportsAndDataProcessorsClient.ExecuteAllocatedCommandAtClient(ThisForm, Command.Name) Then
-		ExecutionResult = Undefined;
-		AdditionalReportsAndProcessingsExecuteAllocatedCommandAtServer(Command.Name, ExecutionResult);
-		AdditionalReportsAndDataProcessorsClient.ShowCommandExecutionResult(ThisForm, ExecutionResult);
+	Dialog = New StandardPeriodEditDialog();
+	Dialog.Period.StartDate	= Object.ValidityStartDate;
+	Dialog.Period.EndDate	= Object.ValidityEndDate;
+	
+	NotifyDescription = New NotifyDescription("SetIntervalCompleted", ThisObject);
+	Dialog.Show(NotifyDescription);
+	
+EndProcedure
+
+&AtClient
+Procedure SetIntervalCompleted(Result, AdditionalParameters) Export
+	
+	If Result <> Undefined Then
+		
+		Object.ValidityStartDate	= Result.StartDate;
+		Object.ValidityEndDate		= Result.EndDate;
+		
 	EndIf;
 	
 EndProcedure
 
-// End StandardSubsystems.AdditionalReportsAndDataProcessors
+#EndRegion
 
-// StandardSubsystems.Printing
+#Region ServiceProceduresAndFunctions
+
 &AtClient
-Procedure Attachable_ExecutePrintCommand(Command)
-	PrintManagementClient.ExecuteConnectedPrintCommand(Command, ThisObject, Object);
-EndProcedure
-// End StandardSubsystems.Printing
-
-////////////////////////////////////////////////////////////////////////////////
-// PROPERTY MECHANISM PROCEDURES
-
-// Procedure - handler of event Run of command EditPropertiesContent.
-//
-&AtClient
-Procedure Attachable_EditContentOfProperties(Command)
+Procedure FormManagement()
 	
-	PropertiesManagementClient.EditContentOfProperties(ThisForm, Object.Ref);
-	
-EndProcedure // Attachable_EditPropertyContent()
-
-// Procedure updates additional attributes items.
-//
-&AtServer
-Procedure UpdateAdditionalAttributesItems()
-	
-	PropertiesManagement.UpdateAdditionalAttributesItems(ThisForm, FormAttributeToValue("Object"));
-	
-EndProcedure // UpdateAdditionalAttributesItems()
-
-// Procedure-handler  of the AfterWriteOnServer event.
-//
-&AtServer
-Procedure AfterWriteAtServer(CurrentObject, WriteParameters)
-	
-	// Handler of the subsystem prohibiting the object attribute editing.
-	ObjectsAttributesEditProhibition.LockAttributes(ThisForm);
+	Items.Amount.Enabled			= FixedContractAmount;
+	Items.Amount.AutoMarkIncomplete	= FixedContractAmount;
 	
 EndProcedure
 
-// Procedure allows editing object attributes.
-//
-&AtClient
-Procedure Attachable_AuthorizeObjectDetailsEditing(Command)
+&AtServer
+Procedure FillCounterpartyPriceKind()
 	
-	ObjectsAttributesEditProhibitionClient.AuthorizeObjectDetailsEditing(ThisForm);
+	SetPrivilegedMode(True);
 	
-	//If ObjectsAttributesEditProhibitionClient.EnableObjectDetailsEditing(ThisForm)
-	//	Then ObjectsAttributesEditProhibitionClient.SetEnableFormItems(ThisForm);
-	//EndIf;
+	Query = New Query("SELECT ALLOWED * FROM Catalog.CounterpartyPriceKind AS CounterpartyPrices WHERE CounterpartyPrices.Owner = &Owner AND NOT CounterpartyPrices.DeletionMark");
+	Query.SetParameter("Owner", Object.Owner);
+	QueryResult = Query.Execute();
 	
-EndProcedure // Attachable_AllowObjectAttributeEditing()
+	If Not QueryResult.IsEmpty() Then 
+		
+		Selection = QueryResult.Select();
+		Selection.Next();
+		Object.CounterpartyPriceKind = Selection.Ref;
+		
+	EndIf;
+	
+	SetPrivilegedMode(False);
+	
+EndProcedure
 
-////////////////////////////////////////////////////////////////////////////////
-// CONTRACTS PRINT MECHANISM PROCEDURES
+&AtServer
+Procedure FillPriceKind(IsNew = False)
+	
+	If IsNew Then
+		
+		PriceKindSales = SmallBusinessReUse.GetValueByDefaultUser(UsersClientServer.AuthorizedUser(), "MainPriceKindSales");
+		
+		If ValueIsFilled(PriceKindSales) Then
+			
+			Object.PriceKind = PriceKindSales;
+			
+		EndIf;
+		
+	EndIf;
+	
+EndProcedure
 
-// Procedure requeries and sets HTML text of
-// generated contract text and writes in the values table edited parameters.
-//
+&AtClientAtServerNoContext
+Function GenerateDescription(ContractNo, ContractDate, SettlementsCurrency)
+	
+	TextName = NStr("ru='№ %ContractNo% от %ContractDate% (%SettlementsCurrency%)'; en='# %ContractNo% from %ContractDate% (%SettlementsCurrency%)'");
+	TextName = StrReplace(TextName, "%ContractNo%", TrimAll(ContractNo));
+	TextName = StrReplace(TextName, "%ContractDate%", ?(ValueIsFilled(ContractDate), TrimAll(String(Format(ContractDate, "DF=dd.MM.yyyy"))), ""));
+	TextName = StrReplace(TextName, "%SettlementsCurrency%", TrimAll(String(SettlementsCurrency)));
+	
+	Return TextName;
+	
+EndFunction
+
+&AtServer
+Procedure SetContractKindsChoiceList()
+	
+	If Constants.FunctionalOptionTransferGoodsOnCommission.Get() Then
+		Items.ContractKind.ChoiceList.Add(Enums.ContractKinds.WithAgent);
+	EndIf;
+	
+	If Constants.FunctionalOptionReceiveGoodsOnCommission.Get() Then
+		Items.ContractKind.ChoiceList.Add(Enums.ContractKinds.FromPrincipal);
+	EndIf;	
+	
+EndProcedure
+
+&AtServer
+Procedure SetFormConditionalAppearance()
+	
+	ConditionalAppearance.Items.Clear();
+	
+	// Print the contract. If the parameter is blank - display its title in the tooltip.
+	Item = ConditionalAppearance.Items.Add();
+	
+	ItemField = Item.Fields.Items.Add();
+	ItemField.Field = New DataCompositionField(Items.EditableParametersValue.Name);
+	
+	ItemFilter = Item.Filter.Items.Add(Type("DataCompositionFilterItem"));
+	ItemFilter.LeftValue		= New DataCompositionField("EditableParameters.ValueIsFilled");
+	ItemFilter.ComparisonType	= DataCompositionComparisonType.Equal;
+	ItemFilter.RightValue		= False;
+	
+	Item.Appearance.SetParameterValue("TextColor", StyleColors.UnavailableCellTextColor);
+	Item.Appearance.SetParameterValue("Text", New DataCompositionField("EditableParameters.Presentation"));
+	
+EndProcedure
+
+#EndRegion
+	
+#Region PrintContract
+	
 &AtServer
 Procedure GenerateAndShowContract()
 	
@@ -531,8 +486,8 @@ EndProcedure
 Procedure GetBlankParameters()
 	
 	FilterParameters = New Structure("FormRefs", Object.ContractForm);
-	ObjectEditedParameters = Object.EditableParameters.FindRows(FilterParameters);
-	ObjectInfobaseParameters = Object.InfobaseParameters.FindRows(FilterParameters);
+	ObjectEditedParameters		= Object.EditableParameters.FindRows(FilterParameters);
+	ObjectInfobaseParameters	= Object.InfobaseParameters.FindRows(FilterParameters);
 	
 	For Each Parameter IN ObjectEditedParameters Do
 		FilterParameters = New Structure("ID", Parameter.ID);
@@ -552,9 +507,9 @@ Procedure GetBlankParameters()
 			Continue;
 		EndIf;
 		NewRow = Object.EditableParameters.Add();
-		NewRow.FormRefs = Object.ContractForm;
-		NewRow.Presentation = Parameter.Presentation;
-		NewRow.ID = Parameter.ID;
+		NewRow.FormRefs		= Object.ContractForm;
+		NewRow.Presentation	= Parameter.Presentation;
+		NewRow.ID			= Parameter.ID;
 	EndDo;
 	
 	For Each Parameter IN ObjectInfobaseParameters Do
@@ -577,10 +532,10 @@ Procedure GetBlankParameters()
 			Continue;
 		EndIf;
 		NewRow = Object.InfobaseParameters.Add();
-		NewRow.FormRefs = Object.ContractForm;
-		NewRow.Presentation = Parameter.Presentation;
-		NewRow.ID = Parameter.ID;
-		NewRow.Parameter = Parameter.Parameter;
+		NewRow.FormRefs		= Object.ContractForm;
+		NewRow.Presentation	= Parameter.Presentation;
+		NewRow.ID			= Parameter.ID;
+		NewRow.Parameter	= Parameter.Parameter;
 	EndDo;
 	
 EndProcedure
@@ -758,11 +713,65 @@ Procedure SetAndWriteParameterValue(ParameterValue, WriteValue)
 	
 EndProcedure
 
+#EndRegion
 
+#Region LibrariesHandlers
 
+// StandardSubsystems.AdditionalReportsAndDataProcessors
+&AtServer
+Procedure AdditionalReportsAndProcessingsExecuteAllocatedCommandAtServer(ItemName, ExecutionResult)
+	
+	AdditionalReportsAndDataProcessors.ExecuteAllocatedCommandAtServer(ThisForm, ItemName, ExecutionResult);
+	
+EndProcedure
+// End StandardSubsystems.AdditionalReportsAndDataProcessors
 
+// StandardSubsystems.AdditionalReportsAndDataProcessors
+&AtClient
+Procedure Attachable_ExecuteAssignedCommand(Command)
+	
+	If Not AdditionalReportsAndDataProcessorsClient.ExecuteAllocatedCommandAtClient(ThisForm, Command.Name) Then
+		ExecutionResult = Undefined;
+		AdditionalReportsAndProcessingsExecuteAllocatedCommandAtServer(Command.Name, ExecutionResult);
+		AdditionalReportsAndDataProcessorsClient.ShowCommandExecutionResult(ThisForm, ExecutionResult);
+	EndIf;
+	
+EndProcedure
+// End StandardSubsystems.AdditionalReportsAndDataProcessors
 
+// StandardSubsystems.Printing
+&AtClient
+Procedure Attachable_ExecutePrintCommand(Command)
+	PrintManagementClient.ExecuteConnectedPrintCommand(Command, ThisObject, Object);
+EndProcedure
+// End StandardSubsystems.Printing
 
+// StandardSubsystems.Properties
+&AtClient
+Procedure Attachable_EditContentOfProperties(Command)
+	
+	PropertiesManagementClient.EditContentOfProperties(ThisForm, Object.Ref);
+	
+EndProcedure // Attachable_EditPropertyContent()
 
+&AtServer
+Procedure UpdateAdditionalAttributesItems()
+	
+	PropertiesManagement.UpdateAdditionalAttributesItems(ThisForm, FormAttributeToValue("Object"));
+	
+EndProcedure // UpdateAdditionalAttributesItems()
 
+&AtClient
+Procedure Attachable_AuthorizeObjectDetailsEditing(Command)
+	
+	ObjectsAttributesEditProhibitionClient.AuthorizeObjectDetailsEditing(ThisForm);
+	
+	//If ObjectsAttributesEditProhibitionClient.EnableObjectDetailsEditing(ThisForm)
+	//	Then ObjectsAttributesEditProhibitionClient.SetEnableFormItems(ThisForm);
+	//EndIf;
+	
+EndProcedure // Attachable_AllowObjectAttributeEditing()
 
+// End StandardSubsystems.Properties
+
+#EndRegion

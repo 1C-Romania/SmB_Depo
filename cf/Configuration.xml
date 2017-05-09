@@ -2023,6 +2023,7 @@
 			<FunctionalOption>UseCommonAdditionalAttributesAndInformation</FunctionalOption>
 			<FunctionalOption>UseCommonAdditionalValues</FunctionalOption>
 			<FunctionalOption>UseCounterpartiesAccessGroups</FunctionalOption>
+			<FunctionalOption>UseCounterpartyContractTypes</FunctionalOption>
 			<FunctionalOption>UseCustomerOrderStates</FunctionalOption>
 			<FunctionalOption>UseDataSynchronization</FunctionalOption>
 			<FunctionalOption>UseDataSynchronizationInLocalMode</FunctionalOption>
@@ -2340,6 +2341,7 @@
 			<Constant>FunctionalOptionUseBatches</Constant>
 			<Constant>FunctionalOptionUseBudgeting</Constant>
 			<Constant>FunctionalOptionUseCharacteristics</Constant>
+			<Constant>FunctionalOptionUseCounterpartyContractTypes</Constant>
 			<Constant>FunctionalOptionUseDiscountCards</Constant>
 			<Constant>FunctionalOptionUseDiscountsMarkups</Constant>
 			<Constant>FunctionalOptionUseExchangeWithSites</Constant>
@@ -2573,6 +2575,7 @@
 			<Catalog>AccessGroups</Catalog>
 			<Catalog>AccessGroupsProfiles</Catalog>
 			<Catalog>AccrualAndDeductionKinds</Catalog>
+			<Catalog>ActivityTypes</Catalog>
 			<Catalog>AdditionalAttributesAndInformationSets</Catalog>
 			<Catalog>AdditionalReportsAndDataProcessors</Catalog>
 			<Catalog>AlcoholicProductsKinds</Catalog>
@@ -2602,6 +2605,7 @@
 			<Catalog>CounterpartiesAttachedFiles</Catalog>
 			<Catalog>CounterpartyContracts</Catalog>
 			<Catalog>CounterpartyContractsAttachedFiles</Catalog>
+			<Catalog>CounterpartyContractTypes</Catalog>
 			<Catalog>CounterpartyPriceKind</Catalog>
 			<Catalog>Currencies</Catalog>
 			<Catalog>CustomerAcquisitionChannels</Catalog>
@@ -2615,6 +2619,7 @@
 			<Catalog>DiscountCards</Catalog>
 			<Catalog>DiscountCardsTemplates</Catalog>
 			<Catalog>DiscountsMarkupsProvidingConditions</Catalog>
+			<Catalog>DocumentKinds</Catalog>
 			<Catalog>EDAttachedFiles</Catalog>
 			<Catalog>EDFProfileSettings</Catalog>
 			<Catalog>EDUsageAgreements</Catalog>
@@ -2637,6 +2642,7 @@
 			<Catalog>FullPathsToForms</Catalog>
 			<Catalog>HardwareDrivers</Catalog>
 			<Catalog>Individuals</Catalog>
+			<Catalog>IndividualsAttachedFiles</Catalog>
 			<Catalog>IndividualsDocumentsKinds</Catalog>
 			<Catalog>InfoCentreInformationTypes</Catalog>
 			<Catalog>InformationCenterCommonData</Catalog>
@@ -2647,6 +2653,9 @@
 			<Catalog>KeyOperations</Catalog>
 			<Catalog>KeyResources</Catalog>
 			<Catalog>LabelsAndTagsTemplates</Catalog>
+			<Catalog>LegalDocuments</Catalog>
+			<Catalog>LegalDocumentsAttachedFiles</Catalog>
+			<Catalog>LegalForms</Catalog>
 			<Catalog>MagneticCardsTemplates</Catalog>
 			<Catalog>MarkupAndDiscountKinds</Catalog>
 			<Catalog>MetadataObjectIDs</Catalog>
@@ -2819,6 +2828,7 @@
 			<Enum>ContractsWithCounterpartiesTemplatesParameters</Enum>
 			<Enum>CostingBases</Enum>
 			<Enum>CounterpartiesIdentificationMethods</Enum>
+			<Enum>CounterpartyContractStatuses</Enum>
 			<Enum>CounterpartyKinds</Enum>
 			<Enum>CurrencyRateSetMethods</Enum>
 			<Enum>DataAreaStatuses</Enum>

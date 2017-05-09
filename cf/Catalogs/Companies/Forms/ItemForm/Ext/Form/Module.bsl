@@ -23,8 +23,6 @@ Procedure OnCreateAtServer(Cancel, StandardProcessing)
 		ContactInformationSB.OnCreateOnReadAtServer(ThisObject);
 		// End SB.ContactInformation
 		
-		SetAllTitlesCollapsedDisplay(ThisObject);
-		
 		If ValueIsFilled(Object.Individual) Then
 			ReadIndividual(Object.Individual);
 		EndIf;
@@ -52,7 +50,7 @@ Procedure OnCreateAtServer(Cancel, StandardProcessing)
 	// End StandardSubsystems.Printing
 	
 	// StandardSubsystems.Properties
-	PropertiesManagement.OnCreateAtServer(ThisForm, Object, "AdditionalAttributes");
+	PropertiesManagement.OnCreateAtServer(ThisForm, Object, "GroupAdditionalAttributes");
 	// End StandardSubsystems.Properties
 	
 EndProcedure
@@ -91,7 +89,6 @@ Procedure NotificationProcessing(EventName, Parameter, Source)
 	If EventName = "SettingMainAccount" And Parameter.Owner = Object.Ref Then
 		
 		Object.BankAccountByDefault = Parameter.NewMainAccount;
-		ReadBankAccountByDefault(Object.BankAccountByDefault);
 		If Not Modified Then
 			Write();
 		EndIf;
@@ -99,9 +96,9 @@ Procedure NotificationProcessing(EventName, Parameter, Source)
 		
 	ElsIf EventName = "Record_AttachedFile" Then
 		
-		Modified	= True;
 		If WorkWithLogo Then
 			
+			Modified	= True;
 			Object.LogoFile = ?(TypeOf(Source) = Type("Array"), Source[0], Source);
 			BinaryPictureData = SmallBusinessServer.ReferenceToBinaryFileData(Object.LogoFile, UUID);
 			If BinaryPictureData <> Undefined Then
@@ -111,6 +108,7 @@ Procedure NotificationProcessing(EventName, Parameter, Source)
 			
 		ElsIf WorkWithFacsimile Then
 			
+			Modified	= True;
 			Object.FileFacsimilePrinting = ?(TypeOf(Source) = Type("Array"), Source[0], Source);
 			BinaryPictureData = SmallBusinessServer.ReferenceToBinaryFileData(Object.FileFacsimilePrinting, UUID);
 			If BinaryPictureData <> Undefined Then
@@ -156,16 +154,11 @@ Procedure OnReadAtServer(CurrentObject)
 		ReadIndividual(CurrentObject.Individual);
 	EndIf;
 	
-	ReadBankAccountByDefault(CurrentObject.BankAccountByDefault);
-	
 	GenerateDescriptionAutomatically	= IsBlankString(Object.Description);
 	
 	// SB.ContactInformation
 	ContactInformationSB.OnCreateOnReadAtServer(ThisObject);
 	// End SB.ContactInformation
-	
-	// The algorithm of formation of the contact header information depends on the legal address. It should be called after SB.ContactInformation
-	SetAllTitlesCollapsedDisplay(ThisObject);
 	
 	// StandardSubsystems.Properties
 	PropertiesManagement.OnReadAtServer(ThisForm, CurrentObject);
@@ -179,9 +172,6 @@ Procedure BeforeWriteAtServer(Cancel, CurrentObject, WriteParameters)
 	// Save previous values for further analysis
 	CurrentObject.AdditionalProperties.Insert("PreviousCompanyKind", CommonUse.ObjectAttributeValue(CurrentObject.Ref, "LegalEntityIndividual"));
 	CurrentObject.AdditionalProperties.Insert("IsNew", CurrentObject.IsNew());
-	
-	// Fill main bank account
-	SetBankAccountByDefault(CurrentObject);
 	
 	// An individual will be created in OnWrite()
 	If CurrentObject.LegalEntityIndividual = Enums.CounterpartyKinds.Individual And Not ValueIsFilled(CurrentObject.Individual) Then
@@ -201,7 +191,6 @@ EndProcedure // BeforeWriteAtServer()
 &AtServer
 Procedure OnWriteAtServer(Cancel, CurrentObject, WriteParameters)
 	
-	WriteBankAccountByDefault(CurrentObject);
 	WriteIndividual(CurrentObject);
 	
 EndProcedure
@@ -211,7 +200,6 @@ Procedure AfterWriteAtServer(CurrentObject, WriteParameters)
 	
 	ReadIndividual(CurrentObject.Individual);
 	
-	SetAllTitlesCollapsedDisplay(ThisObject);
 	FormManagement(ThisObject);
 	
 EndProcedure
@@ -237,16 +225,6 @@ Procedure FillCheckProcessingAtServer(Cancel, CheckedAttributes)
 			MessageText = NStr("ru = 'Не заполнено ФИО'; en = 'Is not filled full name'");
 			CommonUseClientServer.MessageToUser(MessageText, ,	"Surname", "IndividualFullName", Cancel);
 		EndIf;
-	EndIf;
-	
-	If Not IsBlankString(MainAccount_Number) And Not ValueIsFilled(MainAccount_Bank) Then
-		MessageText = CommonUseClientServer.TextFillingErrors(, "Filling", NStr("ru = 'Банк'; en = 'Bank'"));
-		CommonUseClientServer.MessageToUser(MessageText, , "MainAccount_Bank", , Cancel);
-	EndIf;
-	
-	If ValueIsFilled(MainAccount_Bank) And IsBlankString(MainAccount_Number) Then
-		MessageText = CommonUseClientServer.TextFillingErrors(, "Filling", NStr("ru = 'Номер счета'; en = 'Account number'"));
-		CommonUseClientServer.MessageToUser(MessageText, , "MainAccount_Number", , Cancel);
 	EndIf;
 	
 	// SB.ContactInformation
@@ -297,43 +275,6 @@ Procedure IndividualFullNameOnChange(Item)
 	If Not LockIndividualOnEdit() Then
 		Return;
 	EndIf;
-	
-EndProcedure
-
-&AtClient
-Procedure BankStartChoice(Item, ChoiceData, StandardProcessing)
-	
-	StandardProcessing = False;
-	OpenForm("Catalog.Banks.ChoiceForm",, Item);
-	
-EndProcedure
-
-&AtClient
-Procedure BankCreating(Item, StandardProcessing)
-	
-	StandardProcessing = False;
-	OpenForm("Catalog.Banks.ObjectForm",, Item);
-	
-EndProcedure
-
-&AtClient
-Procedure PettyCashByDefaultOnChange(Item)
-	
-	SetTitlePettyCash(ThisObject);
-	
-EndProcedure
-
-&AtClient
-Procedure TINOnChange(Item)
-	
-	SetTitleLegalData(ThisObject);
-	
-EndProcedure
-
-&AtClient
-Procedure RegistrationNumberOnChange(Item)
-	
-	SetTitleLegalData(ThisObject);
 	
 EndProcedure
 
@@ -491,118 +432,14 @@ Procedure FormManagement(Form)
 	If Object.LegalEntityIndividual = PredefinedValue("Enum.CounterpartyKinds.LegalEntity") Then
 		
 		Items.GroupFullName.Visible	= False;
+		Items.LegalForm.Visible		= True;
+		
 	Else
 		
 		Items.GroupFullName.Visible	= True;
-	EndIf;
-	
-EndProcedure
-
-#EndRegion
-
-#Region BankAccountByDefault
-
-&AtServer
-Procedure ReadBankAccountByDefault(BankAccountByDefault)
-	
-	If ValueIsFilled(BankAccountByDefault) Then
-		AttributesValues = CommonUse.ObjectAttributesValues(BankAccountByDefault, "Bank, AccountNo");
-		MainAccount_Bank	= AttributesValues.Bank;
-		MainAccount_Number	= AttributesValues.AccountNo;
-	EndIf;
-	
-EndProcedure
-
-&AtServer
-Procedure SetBankAccountByDefault(CurrentObject)
-	
-	If Not ValueIsFilled(MainAccount_Bank)
-		Or IsBlankString(MainAccount_Number) Then
-		
-		Return;
-	EndIf;
-	
-	If CurrentObject.IsNew() Then
-	// If a new company, it is necessary to create a new bank account
-		NeedCreateNew = True;
-	Else
-	// For existing company, it is necessary to check the bank account with the same key fields
-	
-		Query = New Query;
-		Query.Text = "SELECT TOP 1
-		             |	BankAccounts.Ref
-		             |FROM
-		             |	Catalog.BankAccounts AS BankAccounts
-		             |WHERE
-		             |	BankAccounts.Owner = &Owner
-		             |	AND BankAccounts.Bank = &Bank
-		             |	AND BankAccounts.AccountNo = &AccountNo";
-		
-		Query.SetParameter("Owner",		CurrentObject.Ref);
-		Query.SetParameter("Bank",		MainAccount_Bank);
-		Query.SetParameter("AccountNo",	MainAccount_Number);
-		
-		SetPrivilegedMode(True);
-		QueryResult = Query.Execute();
-		SetPrivilegedMode(False);
-		
-		If QueryResult.IsEmpty() Then
-			// No bank account with such key fields
-			If ValueIsFilled(CurrentObject.BankAccountByDefault) Then
-				// Modifies an existing main account
-				NeedCreateNew = False;
-			Else
-				// A new
-				NeedCreateNew = True;
-			EndIf;
-		Else
-			// The bank account is, set it as the main
-			NeedCreateNew = False;
-			
-			Selection = QueryResult.Select();
-			Selection.Next();
-			CurrentObject.BankAccountByDefault = Selection.Ref;
-		EndIf;
+		Items.LegalForm.Visible		= False;
 		
 	EndIf;
-	
-	If NeedCreateNew Then
-		CurrentObject.BankAccountByDefault = Catalogs.BankAccounts.GetRef();
-	EndIf;
-	
-EndProcedure
-
-&AtServer
-Procedure WriteBankAccountByDefault(CurrentObject)
-	
-	If Not ValueIsFilled(MainAccount_Bank)
-		Or IsBlankString(MainAccount_Number) Then
-		
-		Return;
-	EndIf;
-	
-	SetPrivilegedMode(True);
-	
-	BankAccountObject = CurrentObject.BankAccountByDefault.GetObject();
-	
-	If BankAccountObject = Undefined Then
-		
-		// Creating
-		BankAccountObject = Catalogs.BankAccounts.CreateItem();
-		BankAccountObject.SetNewObjectRef(CurrentObject.BankAccountByDefault);
-		BankAccountObject.Fill(CurrentObject.Ref);
-		
-	EndIf;
-	
-	// Alteration
-	BankAccountObject.Bank = MainAccount_Bank;
-	BankAccountObject.AccountNo = MainAccount_Number;
-	BankAccountObject.GenerateDescription();
-	
-	// Record object
-	BankAccountObject.Write();
-	
-	SetPrivilegedMode(False);
 	
 EndProcedure
 
@@ -941,102 +778,6 @@ EndProcedure
 Procedure Attachable_ContactInformationSBExecuteCommand(Command)
 	
 	ContactInformationSBClient.ExecuteCommand(ThisObject, Command);
-	
-EndProcedure
-
-#EndRegion
-
-#Region TitlesCollapsedDisplay
-
-&AtClientAtServerNoContext
-Procedure SetAllTitlesCollapsedDisplay(Form)
-	
-	SetTitleLegalData(Form);
-	SetTitleBankAccount(Form);
-	SetTitlePettyCash(Form);
-	SetTitleContactInformation(Form);
-	
-EndProcedure
-
-&AtClientAtServerNoContext
-Procedure SetTitleLegalData(Form)
-	
-	Object = Form.Object;
-	DynamicParameters = New Array;
-	
-	If Not IsBlankString(Object.TIN) Then
-		DynamicParameters.Add(NStr("ru='ИНН'; en = 'TIN'") + " " + Object.TIN);
-	EndIf;
-	
-	If Not IsBlankString(Object.RegistrationNumber) Then
-		DynamicParameters.Add(NStr("ru='ОГРН'; en = 'Reg. number'") + " " + Object.RegistrationNumber);
-	EndIf;
-	
-	SetTitleCollapsedDisplay(Form, "LegalData", DynamicParameters);
-	
-EndProcedure
-
-&AtClientAtServerNoContext
-Procedure SetTitleBankAccount(Form)
-	
-	Object = Form.Object;
-	DynamicParameters = New Array;
-	
-	If ValueIsFilled(Object.BankAccountByDefault) Then
-		DynamicParameters.Add(Object.BankAccountByDefault);
-	EndIf;
-	
-	SetTitleCollapsedDisplay(Form, "MainBankAccount", DynamicParameters);
-	
-EndProcedure
-
-&AtClientAtServerNoContext
-Procedure SetTitlePettyCash(Form)
-	
-	Object = Form.Object;
-	DynamicParameters = New Array;
-	
-	If ValueIsFilled(Object.PettyCashByDefault) Then
-		DynamicParameters.Add(Object.PettyCashByDefault);
-	EndIf;
-	
-	SetTitleCollapsedDisplay(Form, "MainPettyCash", DynamicParameters);
-	
-EndProcedure
-
-&AtClientAtServerNoContext
-Procedure SetTitleContactInformation(Form)
-	
-	Object = Form.Object;
-	DynamicParameters = New Array;
-	
-	LegalAddress = ContactInformationSBClientServer.GetContactInformationValue(Form, PredefinedValue("Catalog.ContactInformationKinds.CompanyLegalAddress"));
-	If ValueIsFilled(LegalAddress) Then
-		DynamicParameters.Add(LegalAddress);
-	EndIf;
-	
-	Phone = ContactInformationSBClientServer.GetContactInformationValue(Form, PredefinedValue("Catalog.ContactInformationKinds.CompanyPhone"));
-	If ValueIsFilled(Phone) Then
-		DynamicParameters.Add(NStr("ru='тел.:'; en = 'tel.:'") + " " + Phone);
-	EndIf;
-	
-	SetTitleCollapsedDisplay(Form, "ContactInformation", DynamicParameters);
-	
-EndProcedure
-
-&AtClientAtServerNoContext
-Procedure SetTitleCollapsedDisplay(Form, GroupName, DynamicParameters)
-	
-	TitleText = Form.Items[GroupName].Title;
-	If DynamicParameters.Count() > 0 Then
-		TitleText = TitleText + ": ";
-		For Each Parameter In DynamicParameters Do
-			TitleText = TitleText + Parameter + ", ";
-		EndDo;
-		StringFunctionsClientServer.DeleteLatestCharInRow(TitleText, 2);
-	EndIf;
-	
-	Form.Items[GroupName].CollapsedRepresentationTitle = TitleText;
 	
 EndProcedure
 

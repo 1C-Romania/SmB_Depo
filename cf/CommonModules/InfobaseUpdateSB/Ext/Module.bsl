@@ -1590,6 +1590,9 @@ Procedure DefaultFirstLaunch() Export
 	// 14. Fill in classifier of the working time use.
 	FillClassifierOfWorkingTimeUsage();
 	
+	// 34. Fill legal forms
+	Catalogs.LegalForms.FillAvailableLegalForms();
+	
 	CommitTransaction();
 	
 EndProcedure // FirstLaunch()

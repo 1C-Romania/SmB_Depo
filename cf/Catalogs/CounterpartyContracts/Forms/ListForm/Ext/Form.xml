@@ -164,28 +164,47 @@
 				<Event name="BeforeRowChange">ListBeforeRowChange</Event>
 			</Events>
 			<ChildItems>
-				<LabelField name="ListDescription" id="4">
-					<DataPath>List.Description</DataPath>
-					<DefaultItem>true</DefaultItem>
+				<PictureField name="ListFiles" id="92">
+					<DataPath>List.IconPictureIndex</DataPath>
 					<Title>
 						<v8:item>
 							<v8:lang>en</v8:lang>
-							<v8:content>Description</v8:content>
+							<v8:content>Files</v8:content>
 						</v8:item>
 						<v8:item>
 							<v8:lang>ru</v8:lang>
-							<v8:content>Наименование</v8:content>
+							<v8:content>Файлы</v8:content>
 						</v8:item>
 					</Title>
-					<ContextMenu name="ListNameContextMenu" id="5"/>
-					<ExtendedTooltip name="ListNameExtendedTooltip" id="38"/>
-				</LabelField>
+					<TitleLocation>None</TitleLocation>
+					<ToolTip>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Files</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Файлы</v8:content>
+						</v8:item>
+					</ToolTip>
+					<HeaderPicture>
+						<xr:Ref>CommonPicture.PaperClip</xr:Ref>
+						<xr:LoadTransparent>true</xr:LoadTransparent>
+					</HeaderPicture>
+					<Width>2</Width>
+					<ValuesPicture>
+						<xr:Ref>CommonPicture.PaperClipCollection</xr:Ref>
+						<xr:LoadTransparent>true</xr:LoadTransparent>
+					</ValuesPicture>
+					<ContextMenu name="ListFilesContextMenu" id="93"/>
+					<ExtendedTooltip name="ListFilesExtendedTooltip" id="94"/>
+				</PictureField>
 				<LabelField name="ListContractNumber" id="30">
 					<DataPath>List.ContractNo</DataPath>
 					<UserVisible>
 						<xr:Common>false</xr:Common>
 					</UserVisible>
-					<Width>11</Width>
+					<Width>10</Width>
 					<HorizontalStretch>false</HorizontalStretch>
 					<ContextMenu name="ListContractNumberContextMenu" id="31"/>
 					<ExtendedTooltip name="ListContractNumberExtendedTooltip" id="39"/>
@@ -205,101 +224,92 @@
 							<v8:content>Дата</v8:content>
 						</v8:item>
 					</Title>
-					<Width>10</Width>
+					<Width>14</Width>
 					<HorizontalStretch>false</HorizontalStretch>
 					<ContextMenu name="ListContractDateContextMenu" id="15"/>
 					<ExtendedTooltip name="ListContractDateExtendedTooltip" id="41"/>
 				</LabelField>
-				<ColumnGroup name="CurrencySU" id="55">
+				<LabelField name="ListDescription" id="4">
+					<DataPath>List.Description</DataPath>
+					<DefaultItem>true</DefaultItem>
 					<Title>
 						<v8:item>
 							<v8:lang>en</v8:lang>
-							<v8:content>Currency, s.u.</v8:content>
+							<v8:content>Description</v8:content>
 						</v8:item>
 						<v8:item>
 							<v8:lang>ru</v8:lang>
-							<v8:content>Валюта, у.е.</v8:content>
+							<v8:content>Наименование</v8:content>
+						</v8:item>
+					</Title>
+					<Width>16</Width>
+					<ContextMenu name="ListNameContextMenu" id="5"/>
+					<ExtendedTooltip name="ListNameExtendedTooltip" id="38"/>
+				</LabelField>
+				<LabelField name="ListStatus" id="89">
+					<DataPath>List.Status</DataPath>
+					<Width>12</Width>
+					<HorizontalStretch>false</HorizontalStretch>
+					<ContextMenu name="ListStatusContextMenu" id="90"/>
+					<ExtendedTooltip name="ListStatusExtendedTooltip" id="91"/>
+				</LabelField>
+				<LabelField name="ListValidityStartDate" id="74">
+					<DataPath>List.ValidityStartDate</DataPath>
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Effective from</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Действует с</v8:content>
+						</v8:item>
+					</Title>
+					<ContextMenu name="ListValidityStartDateContextMenu" id="75"/>
+					<ExtendedTooltip name="ListValidityStartDateExtendedTooltip" id="76"/>
+				</LabelField>
+				<LabelField name="ListValidityEndDate" id="77">
+					<DataPath>List.ValidityEndDate</DataPath>
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Effective to</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Действует по</v8:content>
+						</v8:item>
+					</Title>
+					<ContextMenu name="ListValidityEndDateContextMenu" id="78"/>
+					<ExtendedTooltip name="ListValidityEndDateExtendedTooltip" id="79"/>
+				</LabelField>
+				<LabelField name="ListSettlementsCurrency" id="12">
+					<DataPath>List.SettlementsCurrency</DataPath>
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Currency</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Валюта</v8:content>
 						</v8:item>
 					</Title>
 					<ToolTip>
 						<v8:item>
 							<v8:lang>en</v8:lang>
-							<v8:content>SU Currency</v8:content>
+							<v8:content>Settlements currency</v8:content>
 						</v8:item>
 						<v8:item>
 							<v8:lang>ru</v8:lang>
-							<v8:content>Валюта УЕ</v8:content>
+							<v8:content>Валюта расчетов</v8:content>
 						</v8:item>
 					</ToolTip>
-					<Group>InCell</Group>
-					<ExtendedTooltip name="CurrencySUExtendedTooltip" id="56"/>
-					<ChildItems>
-						<LabelField name="ListSettlementsCurrency" id="12">
-							<DataPath>List.SettlementsCurrency</DataPath>
-							<Title>
-								<v8:item>
-									<v8:lang>en</v8:lang>
-									<v8:content>Currency</v8:content>
-								</v8:item>
-								<v8:item>
-									<v8:lang>ru</v8:lang>
-									<v8:content>Вал.</v8:content>
-								</v8:item>
-							</Title>
-							<ToolTip>
-								<v8:item>
-									<v8:lang>en</v8:lang>
-									<v8:content>Settlements currency</v8:content>
-								</v8:item>
-								<v8:item>
-									<v8:lang>ru</v8:lang>
-									<v8:content>Валюта расчетов</v8:content>
-								</v8:item>
-							</ToolTip>
-							<Width>7</Width>
-							<HorizontalStretch>false</HorizontalStretch>
-							<ContextMenu name="ListSettlementsCurrencyContextMenu" id="13"/>
-							<ExtendedTooltip name="ListSettlementsCurrencyExtendedTooltip" id="40"/>
-						</LabelField>
-						<InputField name="ListList.SettlementsInStandardUnits" id="20">
-							<DataPath>List.SettlementsInStandardUnits</DataPath>
-							<Title>
-								<v8:item>
-									<v8:lang>en</v8:lang>
-									<v8:content>Calculations in Cur</v8:content>
-								</v8:item>
-								<v8:item>
-									<v8:lang>ru</v8:lang>
-									<v8:content>Расчеты в у.е.</v8:content>
-								</v8:item>
-							</Title>
-							<ShowInHeader>false</ShowInHeader>
-							<Width>1</Width>
-							<Format>
-								<v8:item>
-									<v8:lang>en</v8:lang>
-									<v8:content>BF=; BT=s.u.</v8:content>
-								</v8:item>
-								<v8:item>
-									<v8:lang>ru</v8:lang>
-									<v8:content>БЛ=; БИ=у.е.</v8:content>
-								</v8:item>
-							</Format>
-							<EditFormat>
-								<v8:item>
-									<v8:lang>en</v8:lang>
-									<v8:content>BF=; BT=s.u.</v8:content>
-								</v8:item>
-								<v8:item>
-									<v8:lang>ru</v8:lang>
-									<v8:content>БЛ=; БИ=у.е.</v8:content>
-								</v8:item>
-							</EditFormat>
-							<ContextMenu name="ListPaymentsInEquivalentUnitsContextMenu" id="21"/>
-							<ExtendedTooltip name="ListPaymentsInEquivalentUnitsExtendedTooltip" id="44"/>
-						</InputField>
-					</ChildItems>
-				</ColumnGroup>
+					<Width>7</Width>
+					<HorizontalStretch>false</HorizontalStretch>
+					<ContextMenu name="ListSettlementsCurrencyContextMenu" id="13"/>
+					<ExtendedTooltip name="ListSettlementsCurrencyExtendedTooltip" id="40"/>
+				</LabelField>
 				<LabelField name="ListOwner" id="8">
 					<DataPath>List.Owner</DataPath>
 					<UserVisible>
@@ -312,7 +322,7 @@
 						</v8:item>
 						<v8:item>
 							<v8:lang>ru</v8:lang>
-							<v8:content>Контрагенты</v8:content>
+							<v8:content>Контрагент</v8:content>
 						</v8:item>
 					</Title>
 					<Width>15</Width>
@@ -320,7 +330,7 @@
 					<ContextMenu name="OwnerListContextMenu" id="9"/>
 					<ExtendedTooltip name="ListOwnerExtendedTooltip" id="42"/>
 				</LabelField>
-				<LabelField name="ListCompanies" id="16">
+				<LabelField name="ListCompany" id="16">
 					<DataPath>List.Company</DataPath>
 					<UserVisible>
 						<xr:Common>false</xr:Common>
@@ -337,6 +347,30 @@
 					</Title>
 					<ContextMenu name="ListCompanyContextMenu" id="17"/>
 					<ExtendedTooltip name="ListCompanyExtendedTooltip" id="43"/>
+				</LabelField>
+				<LabelField name="ListContractKind" id="83">
+					<DataPath>List.ContractKind</DataPath>
+					<UserVisible>
+						<xr:Common>false</xr:Common>
+					</UserVisible>
+					<ContextMenu name="ListContractKindContextMenu" id="84"/>
+					<ExtendedTooltip name="ListContractKindExtendedTooltip" id="85"/>
+				</LabelField>
+				<LabelField name="ListContractType" id="86">
+					<DataPath>List.ContractType</DataPath>
+					<UserVisible>
+						<xr:Common>false</xr:Common>
+					</UserVisible>
+					<ContextMenu name="ListContractTypeContextMenu" id="87"/>
+					<ExtendedTooltip name="ListContractTypeExtendedTooltip" id="88"/>
+				</LabelField>
+				<LabelField name="ListResponsible" id="80">
+					<DataPath>List.Responsible</DataPath>
+					<UserVisible>
+						<xr:Common>false</xr:Common>
+					</UserVisible>
+					<ContextMenu name="ListResponsibleContextMenu" id="81"/>
+					<ExtendedTooltip name="ListResponsibleExtendedTooltip" id="82"/>
 				</LabelField>
 				<LabelField name="ListCode" id="6">
 					<DataPath>List.Code</DataPath>
@@ -378,8 +412,48 @@
 				<Field>List.Owner</Field>
 			</UseAlways>
 			<Settings xsi:type="DynamicList">
-				<ManualQuery>false</ManualQuery>
+				<ManualQuery>true</ManualQuery>
 				<DynamicDataRead>true</DynamicDataRead>
+				<QueryText>SELECT
+	CatalogCounterpartyContracts.Ref,
+	CatalogCounterpartyContracts.DeletionMark,
+	CatalogCounterpartyContracts.Owner,
+	CatalogCounterpartyContracts.Parent,
+	CatalogCounterpartyContracts.Code,
+	CatalogCounterpartyContracts.Description,
+	CatalogCounterpartyContracts.SettlementsCurrency,
+	CatalogCounterpartyContracts.ContractDate,
+	CatalogCounterpartyContracts.Company,
+	CatalogCounterpartyContracts.SettlementsInStandardUnits,
+	CatalogCounterpartyContracts.ContractNo,
+	CatalogCounterpartyContracts.CustomerPaymentDueDate,
+	CatalogCounterpartyContracts.VendorPaymentDueDate,
+	CatalogCounterpartyContracts.ContractKind,
+	CatalogCounterpartyContracts.PriceKind,
+	CatalogCounterpartyContracts.CounterpartyPriceKind,
+	CatalogCounterpartyContracts.DiscountMarkupKind,
+	CatalogCounterpartyContracts.ContractForm,
+	CatalogCounterpartyContracts.Amount,
+	CatalogCounterpartyContracts.BusinessActivity,
+	CatalogCounterpartyContracts.CashFlowItem,
+	CatalogCounterpartyContracts.Comment,
+	CatalogCounterpartyContracts.ContactPerson,
+	CatalogCounterpartyContracts.ContractType,
+	CatalogCounterpartyContracts.CounterpartyBankAccount,
+	CatalogCounterpartyContracts.Department,
+	CatalogCounterpartyContracts.Responsible,
+	CatalogCounterpartyContracts.Status,
+	CatalogCounterpartyContracts.ValidityStartDate,
+	CatalogCounterpartyContracts.ValidityEndDate,
+	CASE
+		WHEN AttachedFilesExist.HasFiles
+			THEN 1
+		ELSE 0
+	END AS IconPictureIndex
+FROM
+	Catalog.CounterpartyContracts AS CatalogCounterpartyContracts
+		LEFT JOIN InformationRegister.AttachedFilesExist AS AttachedFilesExist
+		ON CatalogCounterpartyContracts.Ref = AttachedFilesExist.ObjectWithFiles</QueryText>
 				<MainTable>Catalog.CounterpartyContracts</MainTable>
 				<ListSettings>
 					<dcsset:filter>

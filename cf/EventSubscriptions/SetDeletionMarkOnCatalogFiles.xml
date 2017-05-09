@@ -18,9 +18,11 @@
 				<v8:Type>cfg:CatalogObject.FileFolders</v8:Type>
 				<v8:Type>cfg:CatalogObject.Counterparties</v8:Type>
 				<v8:Type>cfg:CatalogObject.CounterpartyContracts</v8:Type>
+				<v8:Type>cfg:CatalogObject.Individuals</v8:Type>
 				<v8:Type>cfg:CatalogObject.ProductsAndServices</v8:Type>
 				<v8:Type>cfg:CatalogObject.Specifications</v8:Type>
 				<v8:Type>cfg:CatalogObject.Companies</v8:Type>
+				<v8:Type>cfg:CatalogObject.LegalDocuments</v8:Type>
 			</Source>
 			<Event>BeforeWrite</Event>
 			<Handler>CommonModule.FileOperations.SetDeletionMarkOfFilesBeforeWrite</Handler>

@@ -178,25 +178,22 @@ Function GetParameterValue(Object, Document = Undefined, Parameter, Presentation
 		
 	ElsIf Parameter = Parameters.ContactPersonOfCounterparty Then
 		
-		ParameterValue = ?(ValueIsFilled(Object.Owner.ContactPerson.Ind),
-					Object.Owner.ContactPerson.Ind.Description, "");
+		ParameterValue = ?(ValueIsFilled(Object.Owner.ContactPerson),
+					Object.Owner.ContactPerson.Description, "");
 		
 	ElsIf Parameter = Parameters.ContactPersonOfCounterpartyInitials Then
 		
-		ContactPerson = Object.Owner.ContactPerson.Ind;
-		
-		Selection = InformationRegisters.IndividualsDescriptionFull.Select(,, New Structure("Ind", ContactPerson));
-		If Selection.Next() Then
-			Name = Selection.Name;
-			Patronymic = Selection.Patronymic;
-			Surname = Selection.Surname;
-		Else
+		ContactPerson = Object.Owner.ContactPerson;
+		If Not ValueIsFilled(ContactPerson) Then
 			Return "";
 		EndIf;
 		
-		Case = CaseParameter(PresentationParameter);
+		NameParts	= IndividualsClientServer.NameParts(ContactPerson.Description);
+		Surname		= NameParts.Surname;
+		
+		Case	= CaseParameter(PresentationParameter);
 		DeclineValue(Parameter, Surname, Case);
-		Initials = Surname + " " + Mid(Name, 1, 1) + ". " + Mid(Patronymic, 1, 1) + ".";
+		Initials	= SmallBusinessServer.GetSurnameNamePatronymic(Surname, NameParts.Name, NameParts.Patronymic, True);
 		
 		Return Initials;
 		

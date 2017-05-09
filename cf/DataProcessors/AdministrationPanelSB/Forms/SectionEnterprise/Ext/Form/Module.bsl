@@ -560,3 +560,10 @@ Procedure FunctionalOptionUseVATOnChange(Item)
 	Attachable_OnAttributeChange(Item);
 	
 EndProcedure
+
+&AtClient
+Procedure FunctionalOptionUseCounterpartyContractTypesOnChange(Item)
+	
+	Attachable_OnAttributeChange(Item);
+	
+EndProcedure

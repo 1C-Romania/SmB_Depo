@@ -3,6 +3,47 @@
 //
 ////////////////////////////////////////////////////////////////////////////////
 
+#Region Interface
+	
+// Decompose the full name into the structure.
+//
+// Parameters:
+//  FullName - String - full name.
+//
+// Returned value:
+//  Structure - collection with properties:
+//   * Surname		- String;
+//   * Name			- String;
+//   * Patronymic	- String.
+//
+Function NameParts(FullName) Export
+	
+	Result = New Structure("Surname,Name,Patronymic");
+	
+	NameParts = StrSplit(FullName, " ", False);
+	
+	If NameParts.Count() >= 1 Then
+		Result.Surname = NameParts[0];
+	EndIf;
+	
+	If NameParts.Count() >= 2 Then
+		Result.Name = NameParts[1];
+	EndIf;
+	
+	If NameParts.Count() >= 3 Then
+		Result.Patronymic = NameParts[2];
+	EndIf;
+	
+	If NameParts.Count() > 3 Then
+		Result.Patronymic = Result.Patronymic + " " + NameParts[3];
+	EndIf;
+	
+	Return Result;
+	
+EndFunction
+
+#EndRegion
+
 #Region ProgramInterface
 
 // Function decomposes Initials into structure.

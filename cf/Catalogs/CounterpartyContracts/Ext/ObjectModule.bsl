@@ -5,31 +5,16 @@
 Procedure Filling(FillingData, FillingText, StandardProcessing)
 	
 	If TypeOf(FillingData) = Type("CatalogRef.Counterparties") Then
-		// Program filling by method Fill()
 		
-		StandardProcessing	= False;
-		AttributesValues	= CommonUse.ObjectAttributesValues(FillingData, "Customer,Supplier,OtherRelationship");
+		FillByCounterparty(FillingData);
 		
-		CompanyByDefault = SmallBusinessReUse.GetValueByDefaultUser(UsersClientServer.AuthorizedUser(), "MainCompany");
-		If Not ValueIsFilled(CompanyByDefault) Then
-			CompanyByDefault = Catalogs.Companies.MainCompany;
-		EndIf;
+	ElsIf TypeOf(FillingData) = Type("Structure") Then
 		
-		Description				= NStr("ru = 'Основной договор'; en = 'Main contract'");
-		SettlementsCurrency		= Constants.NationalCurrency.Get();
-		Company					= CompanyByDefault;
-		ContractKind			= Enums.ContractKinds.WithCustomer;
-		If AttributesValues.Supplier And Not AttributesValues.Customer Then
-			ContractKind		= Enums.ContractKinds.WithVendor;
-		ElsIf AttributesValues.OtherRelationship And Not AttributesValues.Customer And Not AttributesValues.Supplier Then
-			ContractKind		= Enums.ContractKinds.Other;
-		EndIf;
-		PriceKind				= Catalogs.PriceKinds.GetMainKindOfSalePrices();
-		Owner					= FillingData;
-		VendorPaymentDueDate	= Constants.VendorPaymentDueDate.Get();
-		CustomerPaymentDueDate	= Constants.CustomerPaymentDueDate.Get();
+		FillByStructure(FillingData);
 		
 	EndIf;
+	
+	FillByDefault();
 	
 EndProcedure
 
@@ -88,6 +73,78 @@ Procedure BeforeWrite(Cancel)
 	
 	If ValueIsFilled(Ref) Then
 		AdditionalProperties.Insert("DeletionMark", Ref.DeletionMark);
+	EndIf;
+	
+EndProcedure
+
+#EndRegion
+
+#Region FillingProcedures
+
+Procedure FillByCounterparty(FillingData)
+	
+	AttributesValues	= CommonUse.ObjectAttributesValues(FillingData, "Customer,Supplier,OtherRelationship, BankAccountByDefault");
+	
+	CompanyByDefault = SmallBusinessReUse.GetValueByDefaultUser(Users.CurrentUser(), "MainCompany");
+	If Not ValueIsFilled(CompanyByDefault) Then
+		CompanyByDefault = Catalogs.Companies.MainCompany;
+	EndIf;
+	
+	Description				= NStr("ru = 'Основной договор'; en = 'Main contract'");
+	SettlementsCurrency		= Constants.NationalCurrency.Get();
+	Company					= CompanyByDefault;
+	ContractKind			= Enums.ContractKinds.WithCustomer;
+	CashFlowItem			= Catalogs.CashFlowItems.PaymentFromCustomers;
+	If AttributesValues.Supplier And Not AttributesValues.Customer Then
+		ContractKind		= Enums.ContractKinds.WithVendor;
+		CashFlowItem		= Catalogs.CashFlowItems.PaymentToVendor;
+	ElsIf AttributesValues.OtherRelationship And Not AttributesValues.Customer And Not AttributesValues.Supplier Then
+		ContractKind		= Enums.ContractKinds.Other;
+		CashFlowItem		= Catalogs.CashFlowItems.Other;
+	EndIf;
+	PriceKind				= Catalogs.PriceKinds.GetMainKindOfSalePrices();
+	Owner					= FillingData;
+	VendorPaymentDueDate	= Constants.VendorPaymentDueDate.Get();
+	CustomerPaymentDueDate	= Constants.CustomerPaymentDueDate.Get(); 
+	CounterpartyBankAccount	= AttributesValues.BankAccountByDefault;
+	Status					= Enums.CounterpartyContractStatuses.Active;
+	
+EndProcedure
+
+Procedure FillByStructure(FillingData)
+
+	If FillingData.Property("Owner") And ValueIsFilled(FillingData.Owner) Then
+		
+		FillByCounterparty(FillingData.Owner);
+		
+	EndIf;
+	
+
+EndProcedure
+
+#EndRegion
+
+#Region ServiceProceduresAndFunctions
+
+Procedure FillByDefault()
+	
+	If IsFolder Then
+		Return;
+	EndIf;
+	
+	If Not ValueIsFilled(Responsible) Then
+		Responsible = SmallBusinessReUse.GetValueByDefaultUser(Users.CurrentUser(), "MainResponsible");
+	EndIf;
+	
+	If Not ValueIsFilled(Department) Then
+		Department = SmallBusinessReUse.GetValueByDefaultUser(Users.CurrentUser(), "MainDepartment");
+		If Not ValueIsFilled(Department) Then
+			Department	= Catalogs.StructuralUnits.MainDepartment;	
+		EndIf;
+	EndIf;
+	
+	If Not ValueIsFilled(BusinessActivity) Then
+		BusinessActivity	= Catalogs.BusinessActivities.MainActivity;	
 	EndIf;
 	
 EndProcedure

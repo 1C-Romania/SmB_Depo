@@ -1367,14 +1367,15 @@ Procedure ExecuteObjectRegistrationRulesForExchangePlansTryExcept(ArrayOfNodesRe
 	
 EndProcedure
 
-// It receives the array of the exchange plan nodes for which the check box "Always export" is selected.
+// Returns the array of exchange plan nodes with "Always export" flag value set to True.
 //
 // Parameters:
-//  ExchangePlanName    - String - name of an exchange plan as metadata object according to which the nodes are defined.
-//  FlagAttributeName - String - name of the exchange plan attribute according to which a filter of nodes selection is set.
+//  ExchangePlanName  - String - name of the exchange plan used to determine exchange plan nodes
+//                      (as it is specified in Designer mode).
+//  FlagAttributeName - String - name of the exchange plan attribute used to create a node selection filter.
 //
 // Returns:
-//  Array - Exchange plan nodes array for which the "Always export» flag is set".
+//  Array - array that contains exchange plan nodes with "Export always" flag set to True.
 //
 Function GetNodesArrayForRegistrationAlwaysExport(Val ExchangePlanName, Val FlagAttributeName) Export
 	

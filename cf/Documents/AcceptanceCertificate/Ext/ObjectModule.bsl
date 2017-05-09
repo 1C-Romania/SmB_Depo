@@ -539,6 +539,14 @@ Procedure FillByInvoiceForPayment(FillingData)
 	
 EndProcedure // FillByInvoiceForPayment()
 
+Procedure FillByStructure(FillingData) Export 
+	
+	If FillingData.Property("ArrayCustomerOrders") Then
+		FillByCustomerOrder(FillingData);
+	EndIf;
+	
+EndProcedure
+
 ////////////////////////////////////////////////////////////////////////////////
 // EVENT HANDLERS
 
@@ -637,30 +645,14 @@ EndProcedure // FillCheckProcessing()
 //
 Procedure Filling(FillingData, StandardProcessing) Export
 	
-	If Not ValueIsFilled(FillingData) Then
-		Return;
-	EndIf;
+	FillingStrategy = New Map;
+	FillingStrategy[Type("Structure")]						= "FillByStructure";
+	FillingStrategy[Type("DocumentRef.CustomerOrder")]		= "FillByCustomerOrder";
+	FillingStrategy[Type("DocumentRef.InvoiceForPayment")]	= "FillByInvoiceForPayment";
 	
-	If TypeOf(FillingData) = Type("DocumentRef.CustomerOrder") Then
-		If FillingData.OperationKind = Enums.OperationKindsCustomerOrder.JobOrder Then
-			Raise NStr("en='Unable to generate Acceptance certificate based on the job order.';ru='Нельзя ввести Акт выполненных работ на основании заказ-наряда!'");;
-		EndIf;
-		FillByCustomerOrder(FillingData);
-	ElsIf TypeOf(FillingData) = Type("Structure") AND FillingData.Property("ArrayOfCustomerOrders") Then
-		FillByCustomerOrder(FillingData);
-	ElsIf TypeOf(FillingData) = Type("DocumentRef.InvoiceForPayment") Then
-		BasisOfInvoiceForPayment = FillingData.BasisDocument;
-		If TypeOf(BasisOfInvoiceForPayment) = Type("DocumentRef.CustomerOrder") Then
-			If BasisOfInvoiceForPayment.OperationKind = Enums.OperationKindsCustomerOrder.JobOrder Then
-				Raise NStr("en='Unable to generate Acceptance certificate based on the invoice for payment issued for the Job order.';ru='Нельзя ввести Акт выполненных работ на основании Счета на оплату, выписанного на Заказ-наряд!'");;
-			EndIf;
-		EndIf;
-		FillByInvoiceForPayment(FillingData);
-	ElsIf TypeOf(FillingData) = Type("Structure") Then
-		FillPropertyValues(ThisObject, FillingData);
-	EndIf;
+	ObjectFillingSB.FillDocument(ThisObject, FillingData, FillingStrategy);
 	
-EndProcedure // FillingProcessor()
+EndProcedure // Filling()
 
 // Procedure - event handler BeforeWrite object.
 //

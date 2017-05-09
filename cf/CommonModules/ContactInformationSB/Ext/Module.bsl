@@ -219,7 +219,7 @@ Procedure RefreshContactInformationItems(Form, WidthKindField = 8) Export
 		
 	EndDo;
 	
-	ContactInformationSBClientServer.FillChoiceListAddresses(Form);
+	//ContactInformationSBClientServer.FillChoiceListAddresses(Form);
 	
 EndProcedure
 
