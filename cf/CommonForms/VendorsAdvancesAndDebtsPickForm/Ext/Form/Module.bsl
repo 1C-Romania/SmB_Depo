@@ -116,18 +116,18 @@ EndProcedure // CalculateAmountsTotal()
 &AtServer
 Procedure OnCreateAtServer(Cancel, StandardProcessing)
 	
-	Counterparty = Parameters.Counterparty;
-	SubsidiaryCompany = Parameters.SubsidiaryCompany;
-	Ref = Parameters.Ref;
-	Date = Parameters.Date;
+	Company			= Parameters.Company;
+	Counterparty	= Parameters.Counterparty;
+	Ref				= Parameters.Ref;
+	Date			= Parameters.Date;
 	CurrencyTransactionsAccounting = Constants.FunctionalCurrencyTransactionsAccounting.Get();
 	
-	Items.AdvancesDebtsListDocument.Visible = Counterparty.DoOperationsByDocuments;
-	Items.AdvancesDebtsListOrder.Visible = Counterparty.DoOperationsByOrders;
-	Items.AdvancesDebtsListContract.Visible = Counterparty.DoOperationsByContracts;
-	Items.ListFilteredAdvancesAndDebtsDocument.Visible = Counterparty.DoOperationsByDocuments;
-	Items.ListFilteredAdvancesAndDebtsOrder.Visible = Counterparty.DoOperationsByOrders;
-	Items.ListFilteredAdvancesAndDebtsContract.Visible = Counterparty.DoOperationsByContracts;
+	Items.AdvancesDebtsListDocument.Visible				= Counterparty.DoOperationsByDocuments;
+	Items.AdvancesDebtsListOrder.Visible				= Counterparty.DoOperationsByOrders;
+	Items.AdvancesDebtsListContract.Visible				= Counterparty.DoOperationsByContracts;
+	Items.ListFilteredAdvancesAndDebtsDocument.Visible	= Counterparty.DoOperationsByDocuments;
+	Items.ListFilteredAdvancesAndDebtsOrder.Visible		= Counterparty.DoOperationsByOrders;
+	Items.ListFilteredAdvancesAndDebtsContract.Visible	= Counterparty.DoOperationsByContracts;
 	
 	AddressListFilteredAdvancesAndDebtsInStorage = Parameters.AddressDebitorInStorage;
 	
@@ -577,7 +577,7 @@ Procedure FillAdvancesAndDebts()
 	|ORDER BY
 	|	DocumentDate";
 	
-	Query.SetParameter("Company", Counterparty);
+	Query.SetParameter("Company", Company);
 	Query.SetParameter("Counterparty", Counterparty);
 	Query.SetParameter("Period", Date);
 	Query.SetParameter("Ref", Ref);

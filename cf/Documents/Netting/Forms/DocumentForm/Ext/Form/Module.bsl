@@ -81,7 +81,7 @@ Function GetCompanyDataOnChange(Company)
 	
 	StructureData = New Structure();
 	StructureData.Insert(
-		"SubsidiaryCompany",
+		"Company",
 		SmallBusinessServer.GetCompany(Company)
 	);
 	
@@ -424,7 +424,7 @@ Procedure OnCreateAtServer(Cancel, StandardProcessing)
 	Counterparty = Object.CounterpartySource;
 	CounterpartyRecipient = Object.Counterparty;
 	
-	SubsidiaryCompany = SmallBusinessServer.GetCompany(Object.Company);
+	Company = SmallBusinessServer.GetCompany(Object.Company);
 	
 	StructureByCurrency = InformationRegisters.CurrencyRates.GetLast(Object.Date, New Structure("Currency", Constants.AccountingCurrency.Get()));
 	ExchangeRate = ?(StructureByCurrency.ExchangeRate = 0, 1, StructureByCurrency.ExchangeRate);
@@ -709,7 +709,7 @@ Procedure CompanyOnChange(Item)
 	// Company change event data processor.
 	Object.Number = "";
 	StructureData = GetCompanyDataOnChange(Object.Company);
-	SubsidiaryCompany = StructureData.SubsidiaryCompany;
+	Company = StructureData.Company;
 	
 EndProcedure // CompanyOnChange()
 
@@ -1045,12 +1045,12 @@ Procedure PickAccountsReceivable(Command)
 	
 	SelectionParameters = New Structure(
 		"AddressDebitorInStorage,
-		|SubsidiaryCompany,
+		|Company,
 		|Date,
 		|Counterparty,
 		|Ref",
 		AddressDebitorInStorage,
-		SubsidiaryCompany,
+		Company,
 		Object.Date,
 		Object.CounterpartySource,
 		Object.Ref
@@ -1127,12 +1127,12 @@ Procedure PickVendorSettlements(Command)
 	
 	SelectionParameters = New Structure(
 		"AddressDebitorInStorage,
-		|SubsidiaryCompany,
+		|Company,
 		|Date,
 		|Counterparty,
 		|Ref",
 		AddressCreditorInStorage,
-		SubsidiaryCompany,
+		Company,
 		Object.Date,
 		?(Object.OperationKind = PredefinedValue("Enum.OperationKindsNetting.DebtAssignmentToVendor"), Object.CounterpartySource, Object.Counterparty),
 		Object.Ref

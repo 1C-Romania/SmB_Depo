@@ -116,10 +116,10 @@ EndProcedure // CalculateAmountsTotal()
 &AtServer
 Procedure OnCreateAtServer(Cancel, StandardProcessing)
 	
-	Counterparty = Parameters.Counterparty;
-	SubsidiaryCompany = Parameters.SubsidiaryCompany;
-	Date = Parameters.Date;
-	Ref = Parameters.Ref;
+	Company			= Parameters.Company;
+	Counterparty	= Parameters.Counterparty;
+	Date			= Parameters.Date;
+	Ref				= Parameters.Ref;
 	CurrencyTransactionsAccounting = Constants.FunctionalCurrencyTransactionsAccounting.Get();
 	
 	Items.AdvancesDebtsListDocument.Visible = Counterparty.DoOperationsByDocuments;
@@ -577,7 +577,7 @@ Procedure FillAdvancesAndDebts()
 	|ORDER BY
 	|	DocumentDate";
 	
-	Query.SetParameter("Company", Counterparty);
+	Query.SetParameter("Company", Company);
 	Query.SetParameter("Counterparty", Counterparty);
 	Query.SetParameter("Period", Date);
 	Query.SetParameter("Ref", Ref);
