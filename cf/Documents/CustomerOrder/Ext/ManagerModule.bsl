@@ -1,5 +1,113 @@
 ﻿#If Server Or ThickClientOrdinaryApplication Or ExternalConnection Then
 
+#Region EventHandlers
+
+Procedure FormGetProcessing(FormKind, Parameters, SelectedForm, AdditionalInformation, StandardProcessing)
+	
+	OperationKind = Undefined;
+	
+	If FormKind = "DocumentForm" Or FormKind = "ObjectForm" Then
+		
+		If Parameters.Property("Key") AND ValueIsFilled(Parameters.Key) Then
+			OperationKind = CommonUse.ObjectAttributeValue(Parameters.Key, "OperationKind");
+		EndIf;
+		
+		// If the document is copied, you receive the kind of operation from copied document.
+		If Not ValueIsFilled(OperationKind) Then
+			If Parameters.Property("CopyingValue")
+				AND ValueIsFilled(Parameters.CopyingValue) Then
+				OperationKind = CommonUse.ObjectAttributeValue(Parameters.CopyingValue, "OperationKind");
+			EndIf;
+		EndIf;
+		
+		If Not ValueIsFilled(OperationKind) Then
+			If Parameters.Property("FillingValues") 
+				AND TypeOf(Parameters.FillingValues) = Type("Structure") Then
+				If Parameters.FillingValues.Property("OperationKind") Then
+					OperationKind = Parameters.FillingValues.OperationKind;
+				EndIf;
+			EndIf;
+		EndIf;
+		
+		StandardProcessing = False;
+		CustomerOrderForms = GetOperationKindMapToForms();
+		SelectedForm = CustomerOrderForms[OperationKind];
+		If SelectedForm = Undefined Then
+			SelectedForm = "DocumentForm";
+		EndIf;
+		
+	ElsIf FormKind = "ListForm" Then
+		
+		If Parameters.Property("WorkOrder") Then
+			OperationKind = Enums.OperationKindsCustomerOrder.JobOrder;
+		EndIf;
+		
+		// If a selection is set, then you receive operation kind from selection.
+		If Not ValueIsFilled(OperationKind) Then
+			If Parameters.Property("Filter") AND Parameters.Filter.Property("OperationKind")
+				AND TypeOf(Parameters.Filter.OperationKind) = Type("EnumRef.OperationKindsCustomerOrder") Then
+				OperationKind = Parameters.Filter.OperationKind;
+			EndIf;
+		EndIf;
+		
+		StandardProcessing = False;
+		CustomerOrderForms = GetOperationKindMapToForms(True);
+		SelectedForm = CustomerOrderForms[OperationKind];
+		If SelectedForm = Undefined Then
+			SelectedForm = "ListForm";
+		EndIf;
+		
+	EndIf;
+	
+EndProcedure
+
+Procedure PresentationFieldsGetProcessing(Fields, StandardProcessing)
+	
+	StandardProcessing = False;
+	Fields.Add("Ref");
+	Fields.Add("Date");
+	Fields.Add("Number");
+	Fields.Add("OperationKind");
+	Fields.Add("Posted");
+	Fields.Add("DeletionMark");
+	
+EndProcedure
+
+Procedure PresentationGetProcessing(Data, Presentation, StandardProcessing)
+	
+	If Data.Number = Null Then
+		Return;
+	EndIf;
+	
+	StandardProcessing = False;
+	
+	If Data.Posted Then
+		State = "";
+	Else
+		If Data.DeletionMark Then
+			State = NStr("ru = '(удален)'; en = '(deleted)'");
+		ElsIf Data.Property("Posted") AND Not Data.Posted Then
+			State = NStr("ru = '(не проведен)'; en = '(not posted)'");
+		EndIf;
+	EndIf;
+	
+	If Data.OperationKind = PredefinedValue("Enum.OperationKindsCustomerOrder.JobOrder") Then
+		TitlePresentation = NStr("ru = 'Заказ-наряд'; en = 'Work order'");
+	Else
+		TitlePresentation = NStr("ru = 'Заказ покупателя'; en = 'Customer order'");
+	EndIf;
+	
+	Presentation = StringFunctionsClientServer.SubstituteParametersInString(
+		NStr("ru = '%1 %2 от %3 %4'; en = '%1 %2 from %3 %4'"),
+		TitlePresentation,
+		?(Data.Property("Number"), ObjectPrefixationClientServer.GetNumberForPrinting(Data.Number, True, True), ""),
+		Format(Data.Date, "DLF=D"),
+		State);
+	
+EndProcedure
+
+#EndRegion
+
 // Generates a table of values that contains the data for the register.
 // Saves the tables of values in the properties of the structure "AdditionalProperties".
 //
@@ -5135,13 +5243,13 @@ Function GetOperationKindMapToForms(ListForms = False) Export
 	
 	If ListForms Then
 		
-		CustomerOrderForms.Insert(Enums.OperationKindsCustomerOrder.JobOrder,			"FormJobOrderList");
+		CustomerOrderForms.Insert(Enums.OperationKindsCustomerOrder.JobOrder,			"ListFormWorkOrder");
 		CustomerOrderForms.Insert(Enums.OperationKindsCustomerOrder.OrderForSale,		"ListForm");
 		CustomerOrderForms.Insert(Enums.OperationKindsCustomerOrder.OrderForProcessing, "ListForm");
 		
 	Else
 		
-		CustomerOrderForms.Insert(Enums.OperationKindsCustomerOrder.JobOrder,			"FormJobOrder");
+		CustomerOrderForms.Insert(Enums.OperationKindsCustomerOrder.JobOrder,			"FormWorkOrder");
 		CustomerOrderForms.Insert(Enums.OperationKindsCustomerOrder.OrderForSale,		"DocumentForm");
 		CustomerOrderForms.Insert(Enums.OperationKindsCustomerOrder.OrderForProcessing, "DocumentForm");
 		
@@ -5605,120 +5713,6 @@ Procedure CheckAbilityOfEnteringByCustomerOrder(FillingData, AttributeValues) Ex
 	EndIf;
 	
 EndProcedure // CheckPossibilityToInputBasedOnCustomerOrder()
-
-#Region EventsHandlers
-
-// Predefines a standard presentation of a reference.
-//
-Procedure PresentationFieldsReceiveDataProcessor(Fields, StandardProcessing)
-	
-	StandardProcessing = False;
-	Fields.Add("Ref");
-	Fields.Add("Date");
-	Fields.Add("Number");
-	Fields.Add("OperationKind");
-	Fields.Add("Posted");
-	Fields.Add("DeletionMark");
-	
-EndProcedure // PresentationFieldsReceiptDataProcessor()
-
-// Predefines a standard presentation of a reference.
-//
-Procedure PresentationReceiveDataProcessor(Data, Presentation, StandardProcessing)
-	
-	If Data.Number = Null Then
-		Return;
-	EndIf;
-	
-	StandardProcessing = False;
-	
-	If Data.Posted Then
-		State = "";
-	Else
-		If Data.DeletionMark Then
-			State = NStr("en='(deleted)';ru='(удален)'");
-		ElsIf Data.Property("Posted") AND Not Data.Posted Then
-			State = NStr("en='(not posted)';ru='(не проведен)'");
-		EndIf;
-	EndIf;
-	
-	If Data.OperationKind = PredefinedValue("Enum.OperationKindsCustomerOrder.JobOrder") Then
-		TitlePresentation = NStr("en='Job-order';ru='Порядок работы'");
-	Else
-		TitlePresentation = NStr("en='Customer order';ru='Заказ покупателя'");
-	EndIf;
-	
-	Presentation = StringFunctionsClientServer.SubstituteParametersInString(
-		NStr("en='%1 %2 from %3 %4';ru='%1 %2 от %3 %4'"),
-		TitlePresentation,
-		?(Data.Property("Number"), ObjectPrefixationClientServer.GetNumberForPrinting(Data.Number, True, True), ""),
-		Format(Data.Date, "DLF=D"),
-		State);
-	
-	EndProcedure // PresentationReceiptDataProcessor()
-
-// Overrides the choice of a form depending on operation kind.
-//
-Procedure FormGetProcessing(FormKind, Parameters, SelectedForm, AdditionalInformation, StandardProcessing)
-	
-	OperationKind = Undefined;
-	
-	If FormKind = "DocumentForm" Or FormKind = "ObjectForm" Then
-		
-		If Parameters.Property("Key") AND ValueIsFilled(Parameters.Key) Then
-			OperationKind = CommonUse.ObjectAttributeValue(Parameters.Key, "OperationKind");
-		EndIf;
-		
-		// If the document is copied, you receive the kind of operation from copied document.
-		If Not ValueIsFilled(OperationKind) Then
-			If Parameters.Property("CopyingValue")
-				AND ValueIsFilled(Parameters.CopyingValue) Then
-				OperationKind = CommonUse.ObjectAttributeValue(Parameters.CopyingValue, "OperationKind");
-			EndIf;
-		EndIf;
-		
-		If Not ValueIsFilled(OperationKind) Then
-			If Parameters.Property("FillingValues") 
-				AND TypeOf(Parameters.FillingValues) = Type("Structure") Then
-				If Parameters.FillingValues.Property("OperationKind") Then
-					OperationKind = Parameters.FillingValues.OperationKind;
-				EndIf;
-			EndIf;
-		EndIf;
-		
-		StandardProcessing = False;
-		CustomerOrderForms = GetOperationKindMapToForms();
-		SelectedForm = CustomerOrderForms[OperationKind];
-		If SelectedForm = Undefined Then
-			SelectedForm = "DocumentForm";
-		EndIf;
-		
-	ElsIf FormKind = "ListForm" Then
-		
-		If Parameters.Property("JobOrder") Then
-			OperationKind = Enums.OperationKindsCustomerOrder.JobOrder;
-		EndIf;
-		
-		// If a selection is set, then you receive operation kind from selection.
-		If Not ValueIsFilled(OperationKind) Then
-			If Parameters.Property("Filter") AND Parameters.Filter.Property("OperationKind")
-				AND TypeOf(Parameters.Filter.OperationKind) = Type("EnumRef.OperationKindsCustomerOrder") Then
-				OperationKind = Parameters.Filter.OperationKind;
-			EndIf;
-		EndIf;
-		
-		StandardProcessing = False;
-		CustomerOrderForms = GetOperationKindMapToForms(True);
-		SelectedForm = CustomerOrderForms[OperationKind];
-		If SelectedForm = Undefined Then
-			SelectedForm = "ListForm";
-		EndIf;
-		
-	EndIf;
-	
-EndProcedure
-
-#EndRegion
 
 #Region PrintInterface
 
@@ -7325,7 +7319,7 @@ Procedure AddPrintCommands(PrintCommands) Export
 	PrintCommand = PrintCommands.Add();
 	PrintCommand.ID = "CustomerOrderTemplate,JobOrder,ServicesAcceptanceCertificate,ServicesAcceptanceCertificateDetailed,CustomerInvoice,ProformaInvoice,ProformaInvoiceWithSignature";
 	PrintCommand.Presentation = NStr("en='Custom kit of documents';ru='Настраиваемый комплект документов'");
-	PrintCommand.FormsList = "FormJobOrder,FormJobOrderList,ShipmentDocumentsListForm,PaymentDocumentsListForm";
+	PrintCommand.FormsList = "FormWorkOrder,ListFormWorkOrder,ShipmentDocumentsListForm,PaymentDocumentsListForm";
 	PrintCommand.CheckPostingBeforePrint = False;
 	PrintCommand.PlaceProperties = "GroupImportantCommandsJobOrder";
 	PrintCommand.Order = 51;
@@ -7335,7 +7329,7 @@ Procedure AddPrintCommands(PrintCommands) Export
 	PrintCommand = PrintCommands.Add();
 	PrintCommand.ID = "CustomerOrderTemplate";
 	PrintCommand.Presentation = NStr("en='Customer order';ru='Заказ покупателя'");
-	PrintCommand.FormsList = "FormJobOrder,FormJobOrderList,ShipmentDocumentsListForm,PaymentDocumentsListForm";
+	PrintCommand.FormsList = "FormWorkOrder,ListFormWorkOrder,ShipmentDocumentsListForm,PaymentDocumentsListForm";
 	PrintCommand.CheckPostingBeforePrint = False;
 	PrintCommand.PlaceProperties = "GroupImportantCommandsJobOrder";
 	PrintCommand.Order = 54;
@@ -7344,7 +7338,7 @@ Procedure AddPrintCommands(PrintCommands) Export
 	PrintCommand = PrintCommands.Add();
 	PrintCommand.ID = "JobOrder";
 	PrintCommand.Presentation = NStr("en='Job-order';ru='Порядок работы'");
-	PrintCommand.FormsList = "FormJobOrder,FormJobOrderList,ShipmentDocumentsListForm,PaymentDocumentsListForm";
+	PrintCommand.FormsList = "FormWorkOrder,ListFormWorkOrder,ShipmentDocumentsListForm,PaymentDocumentsListForm";
 	PrintCommand.CheckPostingBeforePrint = False;
 	PrintCommand.PlaceProperties = "GroupImportantCommandsJobOrder";
 	PrintCommand.Order = 57;
@@ -7353,7 +7347,7 @@ Procedure AddPrintCommands(PrintCommands) Export
 	PrintCommand = PrintCommands.Add();
 	PrintCommand.ID = "ServicesAcceptanceCertificate";
 	PrintCommand.Presentation = NStr("en='Services acceptance certificate';ru='Акт выполненных работ'");
-	PrintCommand.FormsList = "FormJobOrder,FormJobOrderList,ShipmentDocumentsListForm,PaymentDocumentsListForm";
+	PrintCommand.FormsList = "FormWorkOrder,ListFormWorkOrder,ShipmentDocumentsListForm,PaymentDocumentsListForm";
 	PrintCommand.CheckPostingBeforePrint = False;
 	PrintCommand.PlaceProperties = "GroupImportantCommandsJobOrder";
 	PrintCommand.Order = 60;
@@ -7362,7 +7356,7 @@ Procedure AddPrintCommands(PrintCommands) Export
 	PrintCommand = PrintCommands.Add();
 	PrintCommand.ID = "ServicesAcceptanceCertificateDetailed";
 	PrintCommand.Presentation = NStr("en='Services acceptance certificate (detailed)';ru='Акт об оказании услуг (подробно)'");
-	PrintCommand.FormsList = "FormJobOrder,FormJobOrderList,ShipmentDocumentsListForm,PaymentDocumentsListForm";
+	PrintCommand.FormsList = "FormWorkOrder,ListFormWorkOrder,ShipmentDocumentsListForm,PaymentDocumentsListForm";
 	PrintCommand.CheckPostingBeforePrint = False;
 	PrintCommand.PlaceProperties = "GroupImportantCommandsJobOrder";
 	PrintCommand.Order = 63;
@@ -7371,7 +7365,7 @@ Procedure AddPrintCommands(PrintCommands) Export
 	PrintCommand = PrintCommands.Add();
 	PrintCommand.ID							= "CustomerInvoice";
 	PrintCommand.Presentation				= NStr("en = 'Customer invoice'; ru = 'Расходная накладная'");
-	PrintCommand.FormsList					= "FormJobOrder,FormJobOrderList,ShipmentDocumentsListForm,PaymentDocumentsListForm";
+	PrintCommand.FormsList					= "FormWorkOrder,ListFormWorkOrder,ShipmentDocumentsListForm,PaymentDocumentsListForm";
 	PrintCommand.CheckPostingBeforePrint	= False;
 	PrintCommand.PlaceProperties			= "GroupImportantCommandsJobOrder";
 	PrintCommand.Order						= 66;
@@ -7380,7 +7374,7 @@ Procedure AddPrintCommands(PrintCommands) Export
 	PrintCommand = PrintCommands.Add();
 	PrintCommand.ID							= "ProformaInvoice";
 	PrintCommand.Presentation				= NStr("ru = 'Счет на оплату'; en = 'Proforma invoice'");
-	PrintCommand.FormsList					= "FormJobOrder,FormJobOrderList,ShipmentDocumentsListForm,PaymentDocumentsListForm";
+	PrintCommand.FormsList					= "FormWorkOrder,ListFormWorkOrder,ShipmentDocumentsListForm,PaymentDocumentsListForm";
 	PrintCommand.CheckPostingBeforePrint	= False;
 	PrintCommand.PlaceProperties			= "GroupImportantCommandsJobOrder";
 	PrintCommand.Order						= 72;
@@ -7389,7 +7383,7 @@ Procedure AddPrintCommands(PrintCommands) Export
 	PrintCommand = PrintCommands.Add();
 	PrintCommand.ID							= "ProformaInvoiceWithSignature";
 	PrintCommand.Presentation				= NStr("ru = 'Счет на оплату (с подписями)'; en = 'Proforma invoice (with signature)'");
-	PrintCommand.FormsList					= "FormJobOrder,FormJobOrderList,ShipmentDocumentsListForm,PaymentDocumentsListForm";
+	PrintCommand.FormsList					= "FormWorkOrder,ListFormWorkOrder,ShipmentDocumentsListForm,PaymentDocumentsListForm";
 	PrintCommand.CheckPostingBeforePrint	= False;
 	PrintCommand.PlaceProperties			= "GroupImportantCommandsJobOrder";
 	PrintCommand.Order						= 78;
@@ -7399,7 +7393,7 @@ Procedure AddPrintCommands(PrintCommands) Export
 	PrintCommand.Handler = "SmallBusinessClient.GenerateContractForms";
 	PrintCommand.ID = "ContractForm";
 	PrintCommand.Presentation = NStr("en='Contract form';ru='Бланк договора'");
-	PrintCommand.FormsList = "FormJobOrder,FormJobOrderList,ShipmentDocumentsListForm,PaymentDocumentsListForm";
+	PrintCommand.FormsList = "FormWorkOrder,ListFormWorkOrder,ShipmentDocumentsListForm,PaymentDocumentsListForm";
 	PrintCommand.CheckPostingBeforePrint = False;
 	PrintCommand.PlaceProperties = "GroupImportantCommandsJobOrder";
 	PrintCommand.Order = 96;

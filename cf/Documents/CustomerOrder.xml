@@ -2766,8 +2766,8 @@ Recalculation of the tabular section of the document on changing the discount ty
 			<Form>DocumentForm</Form>
 			<Form>ChoiceForm</Form>
 			<Form>ListForm</Form>
-			<Form>FormJobOrder</Form>
-			<Form>FormJobOrderList</Form>
+			<Form>FormWorkOrder</Form>
+			<Form>ListFormWorkOrder</Form>
 			<Form>RequestForm</Form>
 			<Form>ShipmentDocumentsListForm</Form>
 			<Form>PaymentDocumentsListForm</Form>
@@ -4954,7 +4954,7 @@ Recalculation of the tabular section of the document on changing the discount ty
 							<ToolTip>
 								<v8:item>
 									<v8:lang>en</v8:lang>
-									<v8:content>ProductsAndServices price</v8:content>
+									<v8:content>Product or service price</v8:content>
 								</v8:item>
 								<v8:item>
 									<v8:lang>ru</v8:lang>
@@ -5304,7 +5304,7 @@ Recalculation of the tabular section of the document on changing the discount ty
 							<Synonym>
 								<v8:item>
 									<v8:lang>en</v8:lang>
-									<v8:content>Communication key</v8:content>
+									<v8:content>Connection key</v8:content>
 								</v8:item>
 								<v8:item>
 									<v8:lang>ru</v8:lang>
@@ -5326,7 +5326,7 @@ Recalculation of the tabular section of the document on changing the discount ty
 							<ToolTip>
 								<v8:item>
 									<v8:lang>en</v8:lang>
-									<v8:content>Communication key</v8:content>
+									<v8:content>Connection key</v8:content>
 								</v8:item>
 								<v8:item>
 									<v8:lang>ru</v8:lang>
@@ -5362,7 +5362,7 @@ Recalculation of the tabular section of the document on changing the discount ty
 								</v8:item>
 								<v8:item>
 									<v8:lang>ru</v8:lang>
-									<v8:content>Multiplicity</v8:content>
+									<v8:content>Кратность</v8:content>
 								</v8:item>
 							</Synonym>
 							<Comment/>
@@ -5596,7 +5596,7 @@ Recalculation of the tabular section of the document on changing the discount ty
 							<ToolTip>
 								<v8:item>
 									<v8:lang>en</v8:lang>
-									<v8:content>Communication key</v8:content>
+									<v8:content>Connection key</v8:content>
 								</v8:item>
 								<v8:item>
 									<v8:lang>ru</v8:lang>
@@ -6082,7 +6082,7 @@ Recalculation of the tabular section of the document on changing the discount ty
 							<Synonym>
 								<v8:item>
 									<v8:lang>en</v8:lang>
-									<v8:content>Communication key</v8:content>
+									<v8:content>Connection key</v8:content>
 								</v8:item>
 								<v8:item>
 									<v8:lang>ru</v8:lang>
@@ -6104,7 +6104,7 @@ Recalculation of the tabular section of the document on changing the discount ty
 							<ToolTip>
 								<v8:item>
 									<v8:lang>en</v8:lang>
-									<v8:content>Communication key</v8:content>
+									<v8:content>Connection key</v8:content>
 								</v8:item>
 								<v8:item>
 									<v8:lang>ru</v8:lang>
@@ -6136,11 +6136,11 @@ Recalculation of the tabular section of the document on changing the discount ty
 							<Synonym>
 								<v8:item>
 									<v8:lang>en</v8:lang>
-									<v8:content>Products and services</v8:content>
+									<v8:content>Material</v8:content>
 								</v8:item>
 								<v8:item>
 									<v8:lang>ru</v8:lang>
-									<v8:content>Продукция и услуги</v8:content>
+									<v8:content>Номенклатура</v8:content>
 								</v8:item>
 							</Synonym>
 							<Comment/>
@@ -6153,7 +6153,8 @@ Recalculation of the tabular section of the document on changing the discount ty
 							<ToolTip>
 								<v8:item>
 									<v8:lang>en</v8:lang>
-									<v8:content>Raw material, non-finished good</v8:content>
+									<v8:content>Raw material, semifinished product
+</v8:content>
 								</v8:item>
 								<v8:item>
 									<v8:lang>ru</v8:lang>
@@ -6193,7 +6194,7 @@ Recalculation of the tabular section of the document on changing the discount ty
 								</v8:item>
 								<v8:item>
 									<v8:lang>ru</v8:lang>
-									<v8:content>Characteristic</v8:content>
+									<v8:content>Характеристика</v8:content>
 								</v8:item>
 							</Synonym>
 							<Comment/>
@@ -6478,7 +6479,7 @@ Recalculation of the tabular section of the document on changing the discount ty
 								</v8:item>
 								<v8:item>
 									<v8:lang>ru</v8:lang>
-									<v8:content>Единицы измерения</v8:content>
+									<v8:content>Ед.</v8:content>
 								</v8:item>
 							</Synonym>
 							<Comment/>
@@ -7913,15 +7914,15 @@ Recalculation of the tabular section of the document on changing the discount ty
 			</Command>
 			<Command uuid="4890b0ae-f27a-47f1-aa62-0092f1b77757">
 				<Properties>
-					<Name>OpenJobOrders</Name>
+					<Name>OpenWorkOrders</Name>
 					<Synonym>
 						<v8:item>
 							<v8:lang>en</v8:lang>
-							<v8:content>Job orders</v8:content>
+							<v8:content>Work orders</v8:content>
 						</v8:item>
 						<v8:item>
 							<v8:lang>ru</v8:lang>
-							<v8:content>Задания на работу</v8:content>
+							<v8:content>Заказ-наряды</v8:content>
 						</v8:item>
 					</Synonym>
 					<Comment/>
@@ -7961,11 +7962,11 @@ Recalculation of the tabular section of the document on changing the discount ty
 			</Command>
 			<Command uuid="a15eef28-cfde-4a53-a5e0-27e264e4a982">
 				<Properties>
-					<Name>OpenJobOrdersForPayment</Name>
+					<Name>OpenWorkOrdersForPayment</Name>
 					<Synonym>
 						<v8:item>
 							<v8:lang>en</v8:lang>
-							<v8:content>Pay the Job orders</v8:content>
+							<v8:content>Pay for work orders</v8:content>
 						</v8:item>
 						<v8:item>
 							<v8:lang>ru</v8:lang>
@@ -7985,11 +7986,11 @@ Recalculation of the tabular section of the document on changing the discount ty
 			</Command>
 			<Command uuid="ab5c661c-12f8-45ad-8f5e-d4e23e961eed">
 				<Properties>
-					<Name>CreateNewJobOrder</Name>
+					<Name>CreateNewWorkOrder</Name>
 					<Synonym>
 						<v8:item>
 							<v8:lang>en</v8:lang>
-							<v8:content>Create new Job order</v8:content>
+							<v8:content>Create new Work order</v8:content>
 						</v8:item>
 						<v8:item>
 							<v8:lang>ru</v8:lang>

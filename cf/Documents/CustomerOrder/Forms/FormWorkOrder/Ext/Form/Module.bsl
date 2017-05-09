@@ -827,8 +827,8 @@ Procedure FillVATRateByVATTaxation()
 			
 		EndDo;
 		
-		Items.OWWorksVATRate.Visible = True;
-		Items.OWWorksAmountVAT.Visible = True;
+		Items.WOWorksVATRate.Visible = True;
+		Items.WOWorksAmountVAT.Visible = True;
 		Items.WOWorksTotal.Visible = True;
 		
 		For Each TabularSectionRow IN Object.Works Do
@@ -870,8 +870,8 @@ Procedure FillVATRateByVATTaxation()
 			
 		EndDo;
 		
-		Items.OWWorksVATRate.Visible = False;
-		Items.OWWorksAmountVAT.Visible = False;
+		Items.WOWorksVATRate.Visible = False;
+		Items.WOWorksAmountVAT.Visible = False;
 		Items.WOWorksTotal.Visible = False;
 		
 		For Each TabularSectionRow IN Object.Works Do
@@ -1656,7 +1656,7 @@ Procedure FillBySpecificationsAtServer(BySpecification, RequiredQuantity, UsedMe
 			
 			NewRow = Object.Materials.Add();
 			FillPropertyValues(NewRow, Selection);
-			NewRow.ConnectionKey = Items.OWMaterials.RowFilter["ConnectionKey"];
+			NewRow.ConnectionKey = Items.WOMaterials.RowFilter["ConnectionKey"];
 			
 		EndIf;
 		
@@ -1868,7 +1868,7 @@ EndProcedure // FillTabularSectionPerformersByTeamsOnServer()
 // Procedure fills the column Reserve by free balances on stock.
 //
 &AtServer
-Procedure OWGoodsFillColumnReserveByBalancesAtServer()
+Procedure WOGoodsFillColumnReserveByBalancesAtServer()
 	
 	Document = FormAttributeToValue("Object");
 	Document.GoodsFillColumnReserveByBalances();
@@ -1879,7 +1879,7 @@ EndProcedure // WOGoodsFillColumnReserveByBalancesOnServer()
 // Procedure fills the column Reserve by free balances on stock.
 //
 &AtServer
-Procedure OWGoodsFillColumnReserveByReservesAtServer()
+Procedure WOGoodsFillColumnReserveByReservesAtServer()
 	
 	Document = FormAttributeToValue("Object");
 	Document.GoodsFillColumnReserveByReserves();
@@ -1890,7 +1890,7 @@ EndProcedure // WOGoodsFillColumnReserveByReservesOnServer()
 // Procedure fills the column Reserve by free balances on stock.
 //
 &AtServer
-Procedure OWMaterialsFillColumnReserveByBalancesAtServer(MaterialsConnectionKey = Undefined)
+Procedure WOMaterialsFillColumnReserveByBalancesAtServer(MaterialsConnectionKey = Undefined)
 	
 	Document = FormAttributeToValue("Object");
 	Document.MaterialsFillColumnReserveByBalances(MaterialsConnectionKey);
@@ -1901,7 +1901,7 @@ EndProcedure // WOMaterialsFillColumnReserveByBalancesOnServer()
 // Procedure fills the column Reserve by free balances on stock.
 //
 &AtServer
-Procedure OWMaterialsFillColumnReserveByReservesAtServer(MaterialsConnectionKey = Undefined)
+Procedure WOMaterialsFillColumnReserveByReservesAtServer(MaterialsConnectionKey = Undefined)
 	
 	Document = FormAttributeToValue("Object");
 	Document.MaterialsFillColumnReserveByReserves(MaterialsConnectionKey);
@@ -2124,10 +2124,10 @@ Procedure WorkSelection(Command)
 	SelectionParameters.Insert("PriceKindsByWorkKinds", 		Object.PriceKind);
 	SelectionParameters.Insert("VATTaxation", 	Object.VATTaxation);
 	SelectionParameters.Insert("ShowPriceColumn", 	False);
-	SelectionParameters.Insert("AvailablePriceChanging",	Not Items.ValWorksPrice.ReadOnly);
+	SelectionParameters.Insert("AvailablePriceChanging",	Not Items.WOWorksPrice.ReadOnly);
 	
 	ProductsAndServicesType = New ValueList;
-	For Each ArrayElement IN Items.ValWorksProductsAndServices.ChoiceParameters Do
+	For Each ArrayElement IN Items.WOWorksProductsAndServices.ChoiceParameters Do
 		If ArrayElement.Name = "Filter.ProductsAndServicesType" Then
 			If TypeOf(ArrayElement.Value) = Type("FixedArray") Then
 				For Each FixArrayItem IN ArrayElement.Value Do
@@ -2306,7 +2306,7 @@ EndProcedure // GetPrepaymentFromStorage()
 &AtClient
 // Procedure - event handler Action of the Pick command
 //
-Procedure OWMaterialsPick(Command)
+Procedure WOMaterialsPick(Command)
 	
 	TabularSectionRow = Items.Works.CurrentData;
 	
@@ -2317,7 +2317,7 @@ Procedure OWMaterialsPick(Command)
 		Return;
 	EndIf;
 	
-	TabularSectionName = "OWMaterials";
+	TabularSectionName = "WOMaterials";
 	SelectionMarker = "Works";
 	
 	PickupForMaterialsInWorks = True;
@@ -2354,7 +2354,7 @@ EndProcedure // WOMaterialsPick()
 &AtServer
 // Function gets a product list from the temporary storage
 //
-Procedure OWMaterialsGetInventoryFromStorage(InventoryAddressInStorage, TabularSectionName, AreCharacteristics, AreBatches)
+Procedure WOMaterialsGetInventoryFromStorage(InventoryAddressInStorage, TabularSectionName, AreCharacteristics, AreBatches)
 	
 	TableForImport = GetFromTempStorage(InventoryAddressInStorage);
 	
@@ -2362,7 +2362,7 @@ Procedure OWMaterialsGetInventoryFromStorage(InventoryAddressInStorage, TabularS
 		
 		NewRow = Object.Materials.Add();
 		FillPropertyValues(NewRow, ImportRow);
-		NewRow.ConnectionKey = Items.OWMaterials.RowFilter["ConnectionKey"];
+		NewRow.ConnectionKey = Items.WOMaterials.RowFilter["ConnectionKey"];
 		
 		NewRow.ReserveShipment = NewRow.Reserve;
 		
@@ -2407,15 +2407,15 @@ Procedure SetVisibleAndEnabledFromState()
 		Items.InventoryChangeReserveFillByBalances.Visible = False;
 		Items.InventoryChangeReserveFillByReserves.Visible = True;
 		
-		Items.OWMaterialsReserve.Visible = False;
-		Items.ValMaterialsReserveShipment.Visible = True;
+		Items.WOMaterialsReserve.Visible = False;
+		Items.WOMaterialsReserveShipment.Visible = True;
 		
 		Items.MaterialsChangeReserveFillByBalances.Visible = False;
 		Items.MaterialsChangeReserveFillByBalancesForAll.Visible = False;
 		Items.MaterialsChangeReserveFillByReserves.Visible = True;
 		Items.MaterialsChangeReserveFillByReservesForAll.Visible = True;
 		
-		Items.VALoupPrepayment.Enabled = True;
+		Items.WOGroupPrepayment.Enabled = True;
 		
 	Else
 		
@@ -2425,8 +2425,8 @@ Procedure SetVisibleAndEnabledFromState()
 		Items.InventoryChangeReserveFillByBalances.Visible = True;
 		Items.InventoryChangeReserveFillByReserves.Visible = False;
 		
-		Items.OWMaterialsReserve.Visible = True;
-		Items.ValMaterialsReserveShipment.Visible = False;
+		Items.WOMaterialsReserve.Visible = True;
+		Items.WOMaterialsReserveShipment.Visible = False;
 		
 		Items.MaterialsChangeReserveFillByBalances.Visible = True;
 		Items.MaterialsChangeReserveFillByBalancesForAll.Visible = True;
@@ -2441,7 +2441,7 @@ Procedure SetVisibleAndEnabledFromState()
 			StringMaterials.ReserveShipment = StringMaterials.Reserve;
 		EndDo;
 		
-		Items.VALoupPrepayment.Enabled = False;
+		Items.WOGroupPrepayment.Enabled = False;
 		
 		If Object.Prepayment.Count() > 0 Then
 			Object.Prepayment.Clear();
@@ -2481,7 +2481,7 @@ EndProcedure // SetVisibleAndEnabledFromSchedulePayment()
 Procedure SetVisibleByFOUseSubsystemPayroll()
 	
 	// Salary.
-	Items.OWGroupPerformers.Visible = UseSubsystemPayroll;
+	Items.WOGroupPerformers.Visible = UseSubsystemPayroll;
 	
 EndProcedure // SetVisibleByFOUseSubsystemPayroll()
 
@@ -2494,21 +2494,21 @@ EndProcedure // SetVisibleByFOUseSubsystemPayroll()
 Procedure SetVisibleFromUserSettings()
 	
 	If Object.WorkKindPosition = PredefinedValue("Enum.AttributePositionOnForm.InHeader") Then
-		Items.OWWorkKind.Visible = True;
-		Items.OWWorksWorkKind.Visible = False;
+		Items.WOWorkKind.Visible = True;
+		Items.WOWorksWorkKind.Visible = False;
 		Items.TableWorksWorkKind.Visible = False;
 		WorkKindInHeader = True;
 	Else
-		Items.OWWorkKind.Visible = False;
-		Items.OWWorksWorkKind.Visible = True;
+		Items.WOWorkKind.Visible = False;
+		Items.WOWorksWorkKind.Visible = True;
 		Items.TableWorksWorkKind.Visible = True;
 		WorkKindInHeader = False;
 	EndIf;
 	
 	If Object.UseProducts Then
-		Items.VALGroupInventory.Visible = True;
+		Items.WOGroupInventory.Visible = True;
 	Else
-		Items.VALGroupInventory.Visible = False;
+		Items.WOGroupInventory.Visible = False;
 	EndIf;
 	
 	If Object.UseConsumerMaterials Then
@@ -2518,19 +2518,19 @@ Procedure SetVisibleFromUserSettings()
 	EndIf;
 	
 	If Object.UseMaterials Then
-		Items.OWMaterials.Visible = True
+		Items.WOMaterials.Visible = True
 	Else
-		Items.OWMaterials.Visible = False;
+		Items.WOMaterials.Visible = False;
 	EndIf;
 	
 	If Object.UsePerformerSalaries 
 		AND UseSubsystemPayroll Then
 		
-		Items.OWGroupPerformers.Visible = True
+		Items.WOGroupPerformers.Visible = True
 		
 	Else
 		
-		Items.OWGroupPerformers.Visible = False;
+		Items.WOGroupPerformers.Visible = False;
 		
 	EndIf;
 	
@@ -2697,12 +2697,12 @@ Procedure SetContractVisible()
 		CalculationParametersWithCounterparty = CommonUse.ObjectAttributesValues(Object.Counterparty, "DoOperationsByOrders, DoOperationsByContracts");
 		
 		CounterpartyDoSettlementsByOrders = CalculationParametersWithCounterparty.DoOperationsByOrders;
-		Items.OWContract.Visible = CalculationParametersWithCounterparty.DoOperationsByContracts;
+		Items.WOContract.Visible = CalculationParametersWithCounterparty.DoOperationsByContracts;
 		
 	Else
 		
 		CounterpartyDoSettlementsByOrders = False;
-		Items.OWContract.Visible = False;
+		Items.WOContract.Visible = False;
 		
 	EndIf;
 	
@@ -2811,8 +2811,8 @@ Procedure OnCreateAtServer(Cancel, StandardProcessing)
 		Items.InventoryVATRate.Visible = True;
 		Items.InventoryVATAmount.Visible = True;
 		Items.InventoryAmountTotal.Visible = True;
-		Items.OWWorksVATRate.Visible = True;
-		Items.OWWorksAmountVAT.Visible = True;
+		Items.WOWorksVATRate.Visible = True;
+		Items.WOWorksAmountVAT.Visible = True;
 		Items.WOWorksTotal.Visible = True;
 		Items.WOPaymentCalendarPaymentVATAmount.Visible = True;
 		Items.WOListPaymentCalendarVATAmountPayments.Visible = True;
@@ -2820,8 +2820,8 @@ Procedure OnCreateAtServer(Cancel, StandardProcessing)
 		Items.InventoryVATRate.Visible = False;
 		Items.InventoryVATAmount.Visible = False;
 		Items.InventoryAmountTotal.Visible = False;
-		Items.OWWorksVATRate.Visible = False;
-		Items.OWWorksAmountVAT.Visible = False;
+		Items.WOWorksVATRate.Visible = False;
+		Items.WOWorksAmountVAT.Visible = False;
 		Items.WOWorksTotal.Visible = False;
 		Items.WOPaymentCalendarPaymentVATAmount.Visible = False;
 		Items.WOListPaymentCalendarVATAmountPayments.Visible = False;
@@ -2841,7 +2841,7 @@ Procedure OnCreateAtServer(Cancel, StandardProcessing)
 	// FO Use Payroll subsystem.
 	SetVisibleByFOUseSubsystemPayroll();
 	
-	Items.VALoupPrepayment.Enabled = Object.OrderState.OrderStatus = PredefinedValue("Enum.OrderStatuses.Completed");
+	Items.WOGroupPrepayment.Enabled = Object.OrderState.OrderStatus = PredefinedValue("Enum.OrderStatuses.Completed");
 	Items.OWSchedulePay.Enabled = Object.OrderState.OrderStatus <> PredefinedValue("Enum.OrderStatuses.Open");
 	
 	// If the document is opened from pick, fill the tabular section products
@@ -2866,13 +2866,13 @@ Procedure OnCreateAtServer(Cancel, StandardProcessing)
 	// Form title setting.
 	If Not ValueIsFilled(Object.Ref) Then
 		AutoTitle = False;
-		Title = "Job order (Creation)";
+		Title = NStr("ru = 'Заказ-наряд (Создание)'; en = 'Work order (Create)'");
 	EndIf;
 	
 	// Status.
 	If Not GetFunctionalOption("UseCustomerOrderStates") Then
 		
-		Items.OWGroupState.Visible = False;
+		Items.WOGroupState.Visible = False;
 		
 		InProcessStatus = SmallBusinessReUse.GetStatusInProcessOfCustomerOrders();
 		CompletedStatus = SmallBusinessReUse.GetStatusCompletedCustomerOrders();
@@ -2890,7 +2890,7 @@ Procedure OnCreateAtServer(Cancel, StandardProcessing)
 		
 	Else
 		
-		Items.OWGroupStatuses.Visible = False;
+		Items.WOGroupStatuses.Visible = False;
 		
 	EndIf;
 	
@@ -2915,10 +2915,10 @@ Procedure OnCreateAtServer(Cancel, StandardProcessing)
 	// Price accessibility setup for editing.
 	AllowedEditDocumentPrices = SmallBusinessAccessManagementReUse.AllowedEditDocumentPrices();
 	
-	Items.ValWorksPrice.ReadOnly 				  = Not AllowedEditDocumentPrices;
-	Items.WOWorksPercentDiscountMarkup.ReadOnly  = Not AllowedEditDocumentPrices;
-	Items.ValWorksAmount.ReadOnly 				  = Not AllowedEditDocumentPrices;
-	Items.OWWorksAmountVAT.ReadOnly 			  = Not AllowedEditDocumentPrices;
+	Items.WOWorksPrice.ReadOnly 				  = Not AllowedEditDocumentPrices;
+	Items.WOWorksDiscountMarkupPercent.ReadOnly  = Not AllowedEditDocumentPrices;
+	Items.WOWorksAmount.ReadOnly 				  = Not AllowedEditDocumentPrices;
+	Items.WOWorksAmountVAT.ReadOnly 			  = Not AllowedEditDocumentPrices;
 	
 	Items.InventoryPrice.ReadOnly 					  = Not AllowedEditDocumentPrices;
 	Items.InventoryDiscountPercentMargin.ReadOnly	  = Not AllowedEditDocumentPrices;
@@ -3116,7 +3116,7 @@ Procedure BeforeWriteAtServer(Cancel, CurrentObject, WriteParameters)
 		EndIf;
 		
 		If SmallBusinessReUse.GetAdvanceOffsettingSettingValue() = PredefinedValue("Enum.YesNo.Yes")
-			AND Items.VALoupPrepayment.Enabled
+			AND Items.WOGroupPrepayment.Enabled
 			AND CurrentObject.Prepayment.Count() = 0 Then
 			FillPrepayment(CurrentObject);
 		EndIf;
@@ -3224,10 +3224,10 @@ Procedure NotificationProcessing(EventName, Parameter, Source)
 			
 			If PickupForMaterialsInWorks Then
 				
-				TabularSectionName 	= "OWMaterials";
+				TabularSectionName 	= "WOMaterials";
 				AreBatches 			= True;
 				
-				OWMaterialsGetInventoryFromStorage(InventoryAddressInStorage, TabularSectionName, AreCharacteristics, AreBatches);
+				WOMaterialsGetInventoryFromStorage(InventoryAddressInStorage, TabularSectionName, AreCharacteristics, AreBatches);
 				
 				FilterStr = New FixedStructure("ConnectionKey", Items[TabularSectionName].RowFilter["ConnectionKey"]);
 				Items[TabularSectionName].RowFilter = FilterStr;
@@ -3359,7 +3359,7 @@ EndProcedure
 // Procedure - event handler Action of the GetWeight command
 //
 &AtClient
-Procedure OWGetWeight(Command)
+Procedure WOGetWeight(Command)
 	
 	TabularSectionRow = Items.Inventory.CurrentData;
 	GetWeightForTabularSectionRow(TabularSectionRow);
@@ -3406,7 +3406,7 @@ Procedure FillBySpecification(Command)
 		Return;
 	EndIf;
 	
-	SearchResult = Object.Materials.FindRows(New Structure("ConnectionKey", Items.OWMaterials.RowFilter["ConnectionKey"]));
+	SearchResult = Object.Materials.FindRows(New Structure("ConnectionKey", Items.WOMaterials.RowFilter["ConnectionKey"]));
 	
 	If SearchResult.Count() <> 0 Then
 		
@@ -3452,8 +3452,8 @@ Procedure FillBySpecificationFragment(Val SearchResult)
 	CurrentTSLine = Items.Works.CurrentData;
 	FillBySpecificationsAtServer(CurrentTSLine.Specification, CurrentTSLine.Multiplicity);
 	
-	FilterStr = New FixedStructure("ConnectionKey", Items.OWMaterials.RowFilter["ConnectionKey"]);
-	Items.OWMaterials.RowFilter = FilterStr;
+	FilterStr = New FixedStructure("ConnectionKey", Items.WOMaterials.RowFilter["ConnectionKey"]);
+	Items.WOMaterials.RowFilter = FilterStr;
 	
 EndProcedure // FillBySpecification()
 
@@ -3509,7 +3509,7 @@ Procedure FillMaterialsFromAllSpecificationsFragment()
 	
 	// For the WEB we will repeat pick, what it is correct to display the following PM
 	TabularSectionName = "Works";
-	SmallBusinessClient.SetFilterOnSubordinateTabularSection(ThisForm, "OWMaterials");
+	SmallBusinessClient.SetFilterOnSubordinateTabularSection(ThisForm, "WOMaterials");
 	SmallBusinessClient.SetFilterOnSubordinateTabularSection(ThisForm, "Performers");
 	
 EndProcedure //FillMaterialsFromAllSpecifications()
@@ -3799,7 +3799,7 @@ EndProcedure // FillByTeamsForAllWorks()
 // Procedure - EditByList command handler.
 //
 &AtClient
-Procedure OWEditInList(Command)
+Procedure WOEditInList(Command)
 	
 	OWSetPossibilityOfEditInList();
 	
@@ -3863,7 +3863,7 @@ EndProcedure
 // Procedure - command handler FillByBalance submenu ChangeReserve.
 //
 &AtClient
-Procedure OWChangeGoodsReserveFillByBalances(Command)
+Procedure WOChangeGoodsReserveFillByBalances(Command)
 	
 	If Object.Inventory.Count() = 0 Then
 		Message = New UserMessage;
@@ -3872,14 +3872,14 @@ Procedure OWChangeGoodsReserveFillByBalances(Command)
 		Return;
 	EndIf;
 	
-	OWGoodsFillColumnReserveByBalancesAtServer();
+	WOGoodsFillColumnReserveByBalancesAtServer();
 	
 EndProcedure // WOChangeGoodsReserveFillByBalances()
 
 // Procedure - command handler FillByReserve of the ChangeReserve submenu.
 //
 &AtClient
-Procedure OWChangeGoodsReserveFillByReserves(Command)
+Procedure WOChangeGoodsReserveFillByReserves(Command)
 	
 	If Object.Inventory.Count() = 0 Then
 		Message = New UserMessage;
@@ -3888,14 +3888,14 @@ Procedure OWChangeGoodsReserveFillByReserves(Command)
 		Return;
 	EndIf;
 	
-	OWGoodsFillColumnReserveByReservesAtServer();
+	WOGoodsFillColumnReserveByReservesAtServer();
 	
 EndProcedure // WOChangeGoodsReserveFillByReserves()
 
 // Procedure - command handler ClearReserve of the ChangeReserve submenu.
 //
 &AtClient
-Procedure OWChangeProductsReserveClearReserve(Command)
+Procedure WOChangeProductsReserveClearReserve(Command)
 	
 	If Object.Inventory.Count() = 0 Then
 		Message = New UserMessage;
@@ -3922,7 +3922,7 @@ EndProcedure // WOChangeProductsReserveClearReserve()
 // Procedure - command handler FillByBalance submenu ChangeReserve.
 //
 &AtClient
-Procedure OWChangeMaterialsReserveFillByBalances(Command)
+Procedure WOChangeMaterialsReserveFillByBalances(Command)
 	
 	CurrentTSLine = Items.Works.CurrentData;
 	
@@ -3933,7 +3933,7 @@ Procedure OWChangeMaterialsReserveFillByBalances(Command)
 		Return;
 	EndIf;
 	
-	MaterialsConnectionKey = Items.OWMaterials.RowFilter["ConnectionKey"];
+	MaterialsConnectionKey = Items.WOMaterials.RowFilter["ConnectionKey"];
 	SearchResult = Object.Materials.FindRows(New Structure("ConnectionKey", MaterialsConnectionKey));
 	If SearchResult.Count() = 0 Then
 		Message = New UserMessage;
@@ -3942,16 +3942,16 @@ Procedure OWChangeMaterialsReserveFillByBalances(Command)
 		Return;
 	EndIf;
 	
-	OWMaterialsFillColumnReserveByBalancesAtServer(MaterialsConnectionKey);
+	WOMaterialsFillColumnReserveByBalancesAtServer(MaterialsConnectionKey);
 	
-	SmallBusinessClient.SetFilterOnSubordinateTabularSection(ThisForm, "OWMaterials");
+	SmallBusinessClient.SetFilterOnSubordinateTabularSection(ThisForm, "WOMaterials");
 	
 EndProcedure // WOChangeMaterialsReserveFillByBalances()
 
 // Procedure - command handler FillByBalance submenu ChangeReserve.
 //
 &AtClient
-Procedure OWChangeMaterialsReserveFillByBalancesForAll(Command)
+Procedure WOChangeMaterialsReserveFillByBalancesForAll(Command)
 	
 	If Object.Materials.Count() = 0 Then
 		Message = New UserMessage;
@@ -3986,16 +3986,16 @@ EndProcedure
 &AtClient
 Procedure WOChangeMaterialsReserveFillByBalancesForAllFragment()
 	
-	OWMaterialsFillColumnReserveByBalancesAtServer();
+	WOMaterialsFillColumnReserveByBalancesAtServer();
 	
-	SmallBusinessClient.SetFilterOnSubordinateTabularSection(ThisForm, "OWMaterials");
+	SmallBusinessClient.SetFilterOnSubordinateTabularSection(ThisForm, "WOMaterials");
 	
 EndProcedure // WOChangeMaterialsReserveFillByBalancesForAll()
 
 // Procedure - command handler FillByReserve of the ChangeReserve submenu.
 //
 &AtClient
-Procedure OWChangeMaterialsReserveFillByReserves(Command)
+Procedure WOChangeMaterialsReserveFillByReserves(Command)
 	
 	CurrentTSLine = Items.Works.CurrentData;
 	
@@ -4006,7 +4006,7 @@ Procedure OWChangeMaterialsReserveFillByReserves(Command)
 		Return;
 	EndIf;
 	
-	MaterialsConnectionKey = Items.OWMaterials.RowFilter["ConnectionKey"];
+	MaterialsConnectionKey = Items.WOMaterials.RowFilter["ConnectionKey"];
 	SearchResult = Object.Materials.FindRows(New Structure("ConnectionKey", MaterialsConnectionKey));
 	If SearchResult.Count() = 0 Then
 		Message = New UserMessage;
@@ -4015,16 +4015,16 @@ Procedure OWChangeMaterialsReserveFillByReserves(Command)
 		Return;
 	EndIf;
 	
-	OWMaterialsFillColumnReserveByReservesAtServer(MaterialsConnectionKey);
+	WOMaterialsFillColumnReserveByReservesAtServer(MaterialsConnectionKey);
 	
-	SmallBusinessClient.SetFilterOnSubordinateTabularSection(ThisForm, "OWMaterials");
+	SmallBusinessClient.SetFilterOnSubordinateTabularSection(ThisForm, "WOMaterials");
 	
 EndProcedure // WOChangeMaterialsReserveFillByReserves()
 
 // Procedure - command handler FillByReserve of the ChangeReserve submenu.
 //
 &AtClient
-Procedure OWChangeMaterialsReserveFillByReservesForAll(Command)
+Procedure WOChangeMaterialsReserveFillByReservesForAll(Command)
 	
 	If Object.Materials.Count() = 0 Then
 		Message = New UserMessage;
@@ -4059,16 +4059,16 @@ EndProcedure
 &AtClient
 Procedure WOChangeMaterialsReserveFillByReservesForAllFragment()
 	
-	OWMaterialsFillColumnReserveByReservesAtServer();
+	WOMaterialsFillColumnReserveByReservesAtServer();
 	
-	SmallBusinessClient.SetFilterOnSubordinateTabularSection(ThisForm, "OWMaterials");
+	SmallBusinessClient.SetFilterOnSubordinateTabularSection(ThisForm, "WOMaterials");
 	
 EndProcedure // WOChangeMaterialsReserveFillByReservesForAll()
 
 // Procedure - command handler ClearReserve of the ChangeReserve submenu.
 //
 &AtClient
-Procedure OWChangeMaterialsReserveClearReserve(Command)
+Procedure WOChangeMaterialsReserveClearReserve(Command)
 	
 	CurrentTSLine = Items.Works.CurrentData;
 	
@@ -4079,7 +4079,7 @@ Procedure OWChangeMaterialsReserveClearReserve(Command)
 		Return;
 	EndIf;
 	
-	SearchResult = Object.Materials.FindRows(New Structure("ConnectionKey", Items.OWMaterials.RowFilter["ConnectionKey"]));
+	SearchResult = Object.Materials.FindRows(New Structure("ConnectionKey", Items.WOMaterials.RowFilter["ConnectionKey"]));
 	If SearchResult.Count() = 0 Then
 		Message = New UserMessage;
 		Message.Text = NStr("en='Tabular section ""Materials"" is not filled!';ru='Табличная часть ""Материалы"" не заполнена!'");
@@ -4099,7 +4099,7 @@ EndProcedure // WOChangeMaterialsReserveClearReserve()
 // Procedure - command handler ClearReserve of the ChangeReserve submenu.
 //
 &AtClient
-Procedure OWChangeMaterialsReserveClearReserveForAll(Command)
+Procedure WOChangeMaterialsReserveClearReserveForAll(Command)
 	
 	If Object.Materials.Count() = 0 Then
 		Message = New UserMessage;
@@ -4381,7 +4381,7 @@ EndProcedure // WorksProductsAndServicesOnChange()
 // Procedure - event handler OnChange input field CashAssetsType.
 //
 &AtClient
-Procedure OWCashAssetsTypeOnChange(Item)
+Procedure CashAssetsTypeOnChange(Item)
 	
 	OWSetCurrentPage();
 	
@@ -4840,11 +4840,11 @@ EndProcedure // WOProductsReserveShipmentOnChange()
 Procedure WorksOnActivateRow(Item)
 	
 	TabularSectionName = "Works";
-	SmallBusinessClient.SetFilterOnSubordinateTabularSection(ThisForm, "OWMaterials");
+	SmallBusinessClient.SetFilterOnSubordinateTabularSection(ThisForm, "WOMaterials");
 	
 	TabularSectionRow = Items.Works.CurrentData;
 	If TabularSectionRow <> Undefined Then
-		Items.OWWorkMaterials.Enabled = Not TabularSectionRow.ProductsAndServicesTypeService;
+		Items.WOWorkMaterials.Enabled = Not TabularSectionRow.ProductsAndServicesTypeService;
 	EndIf;
 	
 EndProcedure // WorksOnActivateRow()
@@ -4868,13 +4868,13 @@ Procedure WorksOnStartEdit(Item, NewRow, Copy)
 	If NewRow Then
 		
 		SmallBusinessClient.AddConnectionKeyToTabularSectionLine(ThisForm);
-		SmallBusinessClient.SetFilterOnSubordinateTabularSection(ThisForm, "OWMaterials");
+		SmallBusinessClient.SetFilterOnSubordinateTabularSection(ThisForm, "WOMaterials");
 		
 	EndIf;
 	
 	TabularSectionRow = Items.Works.CurrentData;
 	If TabularSectionRow <> Undefined Then
-		Items.OWWorkMaterials.Enabled = Not TabularSectionRow.ProductsAndServicesTypeService;
+		Items.WOWorkMaterials.Enabled = Not TabularSectionRow.ProductsAndServicesTypeService;
 	EndIf;
 	
 	// AutomaticDiscounts
@@ -4940,7 +4940,7 @@ Procedure WorksBeforeDelete(Item, Cancel)
 	
 	TabularSectionRow = Items.Works.CurrentData;
 	If TabularSectionRow <> Undefined Then
-		Items.OWWorkMaterials.Enabled = Not TabularSectionRow.ProductsAndServicesTypeService;
+		Items.WOWorkMaterials.Enabled = Not TabularSectionRow.ProductsAndServicesTypeService;
 	EndIf;
 	
 EndProcedure // WorksBeforeDeletion()
@@ -5017,7 +5017,7 @@ Procedure WorksProductsAndServicesOnChange(Item)
 	TabularSectionRow.ProductsAndServicesTypeService = StructureData.IsService;
 	
 	If TabularSectionRow <> Undefined Then
-		Items.OWWorkMaterials.Enabled = Not TabularSectionRow.ProductsAndServicesTypeService;
+		Items.WOWorkMaterials.Enabled = Not TabularSectionRow.ProductsAndServicesTypeService;
 	EndIf;
 	
 	CalculateAmountInTabularSectionLine("Works");
@@ -5290,7 +5290,7 @@ EndProcedure // WorksAmountVATOnChange()
 // Procedure - event handler BeforeAddStart tabular section Materials.
 //
 &AtClient
-Procedure OWMaterialsBeforeAddRow(Item, Cancel, Copy, Parent, Group)
+Procedure WOMaterialsBeforeAddRow(Item, Cancel, Copy, Parent, Group)
 	
 	TabularSectionName = "Works";
 	Cancel = SmallBusinessClient.BeforeAddToSubordinateTabularSection(ThisForm, Item.Name);
@@ -5300,7 +5300,7 @@ EndProcedure // WOMaterialsBeforeAddStart()
 // Procedure - event handler OnStartEdit tabular section Materials.
 //
 &AtClient
-Procedure OWMaterialsOnStartEdit(Item, NewRow, Copy)
+Procedure WOMaterialsOnStartEdit(Item, NewRow, Copy)
 	
 	TabularSectionName = "Works";
 	If NewRow Then
@@ -5361,9 +5361,9 @@ EndProcedure // PerformersOnStartEdit()
 // Procedure - event handler OnChange of the ProductsAndServices input field.
 //
 &AtClient
-Procedure OWMaterialsProductsAndServicesOnChange(Item)
+Procedure WOMaterialsProductsAndServicesOnChange(Item)
 	
-	TabularSectionRow = Items.OWMaterials.CurrentData;
+	TabularSectionRow = Items.WOMaterials.CurrentData;
 	
 	StructureData = New Structure;
 	StructureData.Insert("ProductsAndServices", TabularSectionRow.ProductsAndServices);
@@ -5380,9 +5380,9 @@ EndProcedure // WOMaterialsProductsAndServicesOnChange()
 // Procedure - event handler OnChange input field Reserve.
 //
 &AtClient
-Procedure OWMaterialsReserveOnChange(Item)
+Procedure WOMaterialsReserveOnChange(Item)
 	
-	TabularSectionRow = Items.OWMaterials.CurrentData;
+	TabularSectionRow = Items.WOMaterials.CurrentData;
 	TabularSectionRow.ReserveShipment = TabularSectionRow.Reserve;
 	
 EndProcedure // WOMaterialsReserveOnChange()
@@ -5390,9 +5390,9 @@ EndProcedure // WOMaterialsReserveOnChange()
 // Procedure - event handler OnChange input field ReserveShipment.
 //
 &AtClient
-Procedure OWMaterialsReserveShipmentOnChange(Item)
+Procedure WOMaterialsReserveShipmentOnChange(Item)
 	
-	TabularSectionRow = Items.OWMaterials.CurrentData;
+	TabularSectionRow = Items.WOMaterials.CurrentData;
 	
 	If TabularSectionRow.ReserveShipment < TabularSectionRow.Reserve Then
 		
@@ -6094,7 +6094,7 @@ Procedure DiscountCardIsSelected(DiscountCard)
 	DiscountCardOwner = GetDiscountCardOwner(DiscountCard);
 	If Object.Counterparty.IsEmpty() AND Not DiscountCardOwner.IsEmpty() Then
 		Object.Counterparty = DiscountCardOwner;
-		CounterpartyOnChange(Items.ValCounterparty);
+		CounterpartyOnChange(Items.WOCounterparty);
 		
 		ShowUserNotification(
 			NStr("en='Counterparty is filled and discount card is read';ru='Заполнен контрагент и считана дисконтная карта'"),
@@ -6540,7 +6540,7 @@ EndProcedure
 &AtClient
 Procedure ChoiceWorks(Item, SelectedRow, Field, StandardProcessing)
 	
-	If (Item.CurrentItem = Items.WOWorksAutomaticDiscountPercent OR Item.CurrentItem = Items.VALWorksAutomaticDiscountAmount)
+	If (Item.CurrentItem = Items.WOWorksAutomaticDiscountPercent OR Item.CurrentItem = Items.WOWorksAutomaticDiscountAmount)
 		AND Not ReadOnly Then
 		
 		StandardProcessing = False;

@@ -4,12 +4,17 @@ Procedure CommandProcessing(CommandParameter, CommandExecuteParameters)
 	
 	If CommandExecuteParameters.Window = Undefined Then
 		Source = Undefined;
-		Uniqueness = "JobOrder";
+		Uniqueness = "WorkOrder";
 	Else
 		Source = CommandExecuteParameters.Source;
 		Uniqueness = CommandExecuteParameters.Uniqueness;
 	EndIf;
 	
-	OpenForm("Document.CustomerOrder.ListForm", New Structure("JobOrder", True), Source, Uniqueness, CommandExecuteParameters.Window);
+	OpenForm("Document.CustomerOrder.ListForm", 
+		New Structure("WorkOrder", True), 
+		Source, 
+		Uniqueness, 
+		CommandExecuteParameters.Window
+	);
 	
 EndProcedure // CommandProcessing()

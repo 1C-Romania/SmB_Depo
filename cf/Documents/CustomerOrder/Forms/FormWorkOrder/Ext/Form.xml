@@ -170,7 +170,7 @@
 		<Event name="FillCheckProcessingAtServer">FillCheckProcessingAtServer</Event>
 	</Events>
 	<ChildItems>
-		<Pages name="OWPages" id="198">
+		<Pages name="WOPages" id="198">
 			<Title>
 				<v8:item>
 					<v8:lang>en</v8:lang>
@@ -193,7 +193,7 @@
 			</ToolTip>
 			<ExtendedTooltip name="WOPagesExtendedTooltip" id="797"/>
 			<ChildItems>
-				<Page name="ValMain" id="1217">
+				<Page name="WOMain" id="1217">
 					<Title>
 						<v8:item>
 							<v8:lang>en</v8:lang>
@@ -214,9 +214,9 @@
 							<v8:content>Основные</v8:content>
 						</v8:item>
 					</ToolTip>
-					<ExtendedTooltip name="VALMainExtendedTooltip" id="1218"/>
+					<ExtendedTooltip name="WOMainExtendedTooltip" id="1218"/>
 					<ChildItems>
-						<UsualGroup name="ValHeader" id="1269">
+						<UsualGroup name="WOHeader" id="1269">
 							<Title>
 								<v8:item>
 									<v8:lang>en</v8:lang>
@@ -240,9 +240,9 @@
 							<Group>Horizontal</Group>
 							<Representation>None</Representation>
 							<ShowTitle>false</ShowTitle>
-							<ExtendedTooltip name="VALHeaderExtendedTooltip" id="1270"/>
+							<ExtendedTooltip name="WOHeaderExtendedTooltip" id="1270"/>
 							<ChildItems>
-								<UsualGroup name="ValLeftColumn" id="162">
+								<UsualGroup name="WOLeftColumn" id="162">
 									<Title>
 										<v8:item>
 											<v8:lang>en</v8:lang>
@@ -268,7 +268,7 @@
 									<ShowTitle>false</ShowTitle>
 									<ExtendedTooltip name="WOLeftColumnExtendedTooltip" id="783"/>
 									<ChildItems>
-										<UsualGroup name="OWGroupStatuses" id="621">
+										<UsualGroup name="WOGroupStatuses" id="621">
 											<Title>
 												<v8:item>
 													<v8:lang>en</v8:lang>
@@ -341,7 +341,7 @@ Vendor color assignment for order state is determined in &lt;link SalesAccountin
 												</InputField>
 											</ChildItems>
 										</UsualGroup>
-										<UsualGroup name="OWGroupState" id="417">
+										<UsualGroup name="WOGroupState" id="417">
 											<Title>
 												<v8:item>
 													<v8:lang>en</v8:lang>
@@ -422,7 +422,7 @@ Reference is available on the eponymous hyperlink in the form &lt;link SalesAcco
 														<Event name="OnChange">OWOrderStatusOnChange</Event>
 													</Events>
 												</InputField>
-												<CheckBoxField name="ValClosed" id="418">
+												<CheckBoxField name="WOClosed" id="418">
 													<DataPath>Object.Closed</DataPath>
 													<SkipOnInput>true</SkipOnInput>
 													<TitleLocation>Right</TitleLocation>
@@ -432,7 +432,7 @@ Reference is available on the eponymous hyperlink in the form &lt;link SalesAcco
 												</CheckBoxField>
 											</ChildItems>
 										</UsualGroup>
-										<InputField name="ValCounterparty" id="170">
+										<InputField name="WOCounterparty" id="170">
 											<DataPath>Object.Counterparty</DataPath>
 											<DefaultItem>true</DefaultItem>
 											<EditMode>EnterOnInput</EditMode>
@@ -442,7 +442,7 @@ Reference is available on the eponymous hyperlink in the form &lt;link SalesAcco
 												<Event name="OnChange">CounterpartyOnChange</Event>
 											</Events>
 										</InputField>
-										<InputField name="OWContract" id="172">
+										<InputField name="WOContract" id="172">
 											<DataPath>Object.Contract</DataPath>
 											<SkipOnInput>true</SkipOnInput>
 											<EditMode>EnterOnInput</EditMode>
@@ -453,23 +453,7 @@ Reference is available on the eponymous hyperlink in the form &lt;link SalesAcco
 												<Event name="StartChoice">ContractStartChoice</Event>
 											</Events>
 										</InputField>
-										<InputField name="ValProject" id="174">
-											<DataPath>Object.Project</DataPath>
-											<EditMode>EnterOnInput</EditMode>
-											<ContextMenu name="WOProjectContextMenu" id="175"/>
-											<ExtendedTooltip name="WOProjectExtendedTooltip" id="942"/>
-										</InputField>
-										<UsualGroup name="WOStartFinishGroup" id="185">
-											<Title>
-												<v8:item>
-													<v8:lang>en</v8:lang>
-													<v8:content>Start and Finish Work</v8:content>
-												</v8:item>
-												<v8:item>
-													<v8:lang>ru</v8:lang>
-													<v8:content>Начало и окончание работ</v8:content>
-												</v8:item>
-											</Title>
+										<UsualGroup name="WOGroupStartSummary" id="185">
 											<ToolTip>
 												<v8:item>
 													<v8:lang>en</v8:lang>
@@ -483,12 +467,13 @@ Reference is available on the eponymous hyperlink in the form &lt;link SalesAcco
 											<Group>Horizontal</Group>
 											<Representation>None</Representation>
 											<ShowTitle>false</ShowTitle>
-											<ExtendedTooltip name="WOGroupStartFinishExtendedTooltip" id="943"/>
+											<ExtendedTooltip name="WOGroupStartSummaryExtendedTooltip" id="943"/>
 											<ChildItems>
-												<InputField name="ValStart" id="186">
+												<InputField name="WOStart" id="186">
 													<DataPath>Object.Start</DataPath>
 													<EditMode>EnterOnInput</EditMode>
-													<Width>12</Width>
+													<AutoMaxWidth>false</AutoMaxWidth>
+													<MaxWidth>14</MaxWidth>
 													<HorizontalStretch>false</HorizontalStretch>
 													<ContextMenu name="WOStartContextMenu" id="187"/>
 													<ExtendedTooltip name="WOStartExtendedTooltip" id="944"/>
@@ -496,19 +481,20 @@ Reference is available on the eponymous hyperlink in the form &lt;link SalesAcco
 														<Event name="OnChange">WOStartOnChange</Event>
 													</Events>
 												</InputField>
-												<InputField name="ValFinish" id="188">
-													<DataPath>Object.Finish</DataPath>
-													<EditMode>EnterOnInput</EditMode>
-													<Width>12</Width>
-													<HorizontalStretch>false</HorizontalStretch>
-													<ContextMenu name="WOFinishContextMenu" id="189"/>
-													<ExtendedTooltip name="WOFinishExtendedTooltip" id="945"/>
-													<Events>
-														<Event name="OnChange">WOFinishOnChange</Event>
-													</Events>
-												</InputField>
 											</ChildItems>
 										</UsualGroup>
+										<InputField name="WOFinish" id="188">
+											<DataPath>Object.Finish</DataPath>
+											<EditMode>EnterOnInput</EditMode>
+											<AutoMaxWidth>false</AutoMaxWidth>
+											<MaxWidth>14</MaxWidth>
+											<HorizontalStretch>false</HorizontalStretch>
+											<ContextMenu name="WOFinishContextMenu" id="189"/>
+											<ExtendedTooltip name="WOFinishExtendedTooltip" id="945"/>
+											<Events>
+												<Event name="OnChange">WOFinishOnChange</Event>
+											</Events>
+										</InputField>
 									</ChildItems>
 								</UsualGroup>
 								<UsualGroup name="WORightColumn" id="176">
@@ -585,16 +571,6 @@ Reference is available on the eponymous hyperlink in the form &lt;link SalesAcco
 												<InputField name="ValDate" id="166">
 													<DataPath>Object.Date</DataPath>
 													<SkipOnInput>true</SkipOnInput>
-													<Title>
-														<v8:item>
-															<v8:lang>en</v8:lang>
-															<v8:content>dated</v8:content>
-														</v8:item>
-														<v8:item>
-															<v8:lang>ru</v8:lang>
-															<v8:content>от</v8:content>
-														</v8:item>
-													</Title>
 													<EditMode>EnterOnInput</EditMode>
 													<Width>15</Width>
 													<HorizontalStretch>false</HorizontalStretch>
@@ -754,7 +730,7 @@ Reference is available on the eponymous hyperlink in the form &lt;link SalesAcco
 								</UsualGroup>
 							</ChildItems>
 						</UsualGroup>
-						<UsualGroup name="VALGroupComment" id="1267">
+						<UsualGroup name="WOGroupComment" id="1267">
 							<Title>
 								<v8:item>
 									<v8:lang>en</v8:lang>
@@ -778,7 +754,7 @@ Reference is available on the eponymous hyperlink in the form &lt;link SalesAcco
 							<Group>Vertical</Group>
 							<ExtendedTooltip name="WOGroupCommentExtendedTooltip" id="1268"/>
 							<ChildItems>
-								<InputField name="ValComment" id="325">
+								<InputField name="WOComment" id="325">
 									<DataPath>Object.Comment</DataPath>
 									<TitleLocation>None</TitleLocation>
 									<EditMode>EnterOnInput</EditMode>
@@ -804,7 +780,7 @@ Reference is available on the eponymous hyperlink in the form &lt;link SalesAcco
 						</UsualGroup>
 					</ChildItems>
 				</Page>
-				<Page name="OWGroupWork" id="199">
+				<Page name="WOGroupWork" id="199">
 					<Title>
 						<v8:item>
 							<v8:lang>en</v8:lang>
@@ -827,15 +803,15 @@ Reference is available on the eponymous hyperlink in the form &lt;link SalesAcco
 					</ToolTip>
 					<VerticalStretch>true</VerticalStretch>
 					<TitleDataPath>Object.Works.RowsCount</TitleDataPath>
-					<ExtendedTooltip name="WOGroupWorksExtendedTooltip" id="798"/>
+					<ExtendedTooltip name="WOGroupWorkExtendedTooltip" id="798"/>
 					<ChildItems>
-						<InputField name="OWWorkKind" id="200">
+						<InputField name="WOWorkKind" id="200">
 							<DataPath>Object.WorkKind</DataPath>
 							<EditMode>EnterOnInput</EditMode>
 							<Width>35</Width>
 							<HorizontalStretch>false</HorizontalStretch>
-							<ContextMenu name="WOWorksKindsContextMenu" id="201"/>
-							<ExtendedTooltip name="WOWorksTypeExtendedTooltip" id="799"/>
+							<ContextMenu name="WOWorkKindContextMenu" id="201"/>
+							<ExtendedTooltip name="WOWorkKindExtendedTooltip" id="799"/>
 							<Events>
 								<Event name="OnChange">WorkKindOnChange</Event>
 							</Events>
@@ -929,18 +905,18 @@ Reference is available on the eponymous hyperlink in the form &lt;link SalesAcco
 									<ContextMenu name="WOWorksLineNumberContextMenu" id="346"/>
 									<ExtendedTooltip name="WOWorksLineNumberExtendedTooltip" id="802"/>
 								</LabelField>
-								<InputField name="OWWorksWorkKind" id="347">
+								<InputField name="WOWorksWorkKind" id="347">
 									<DataPath>Object.Works.WorkKind</DataPath>
 									<EditMode>EnterOnInput</EditMode>
 									<FixingInTable>Left</FixingInTable>
 									<Width>20</Width>
-									<ContextMenu name="WOWorksWorkTypeContextMenu" id="348"/>
-									<ExtendedTooltip name="WOWorksWorkTypeExtendedTooltip" id="803"/>
+									<ContextMenu name="WOWorksWorkKindContextMenu" id="348"/>
+									<ExtendedTooltip name="WOWorksWorkKindExtendedTooltip" id="803"/>
 									<Events>
 										<Event name="OnChange">WorksWorkKindOnChange</Event>
 									</Events>
 								</InputField>
-								<InputField name="ValWorksProductsAndServices" id="349">
+								<InputField name="WOWorksProductsAndServices" id="349">
 									<DataPath>Object.Works.ProductsAndServices</DataPath>
 									<EditMode>EnterOnInput</EditMode>
 									<FixingInTable>Left</FixingInTable>
@@ -962,7 +938,7 @@ Reference is available on the eponymous hyperlink in the form &lt;link SalesAcco
 										<Event name="OnChange">WorksCharacteristicOnChange</Event>
 									</Events>
 								</InputField>
-								<InputField name="OWWorksContent" id="369">
+								<InputField name="WOWorksContent" id="369">
 									<DataPath>Object.Works.Content</DataPath>
 									<UserVisible>
 										<xr:Common>false</xr:Common>
@@ -997,7 +973,7 @@ Reference is available on the eponymous hyperlink in the form &lt;link SalesAcco
 										<Event name="OnChange">WorksRepetitionOnChange</Event>
 									</Events>
 								</InputField>
-								<InputField name="WOWorksRate" id="450">
+								<InputField name="WOWorksFactor" id="450">
 									<DataPath>Object.Works.Factor</DataPath>
 									<EditMode>EnterOnInput</EditMode>
 									<Width>11</Width>
@@ -1007,7 +983,7 @@ Reference is available on the eponymous hyperlink in the form &lt;link SalesAcco
 										<Event name="OnChange">WorksFactorOnChange</Event>
 									</Events>
 								</InputField>
-								<InputField name="ValWorksPrice" id="357">
+								<InputField name="WOWorksPrice" id="357">
 									<DataPath>Object.Works.Price</DataPath>
 									<EditMode>EnterOnInput</EditMode>
 									<Width>10</Width>
@@ -1017,7 +993,7 @@ Reference is available on the eponymous hyperlink in the form &lt;link SalesAcco
 										<Event name="OnChange">WorksPriceOnChange</Event>
 									</Events>
 								</InputField>
-								<InputField name="WOWorksPercentDiscountMarkup" id="361">
+								<InputField name="WOWorksDiscountMarkupPercent" id="361">
 									<DataPath>Object.Works.DiscountMarkupPercent</DataPath>
 									<EditMode>EnterOnInput</EditMode>
 									<Width>9</Width>
@@ -1034,7 +1010,7 @@ Reference is available on the eponymous hyperlink in the form &lt;link SalesAcco
 									<ContextMenu name="WOWorksAutomaticDiscountPercentContextMenu" id="1326"/>
 									<ExtendedTooltip name="WOWorksAutomaticDiscountPercentExtendedTooltip" id="1327"/>
 								</InputField>
-								<InputField name="VALWorksAutomaticDiscountAmount" id="1328">
+								<InputField name="WOWorksAutomaticDiscountAmount" id="1328">
 									<DataPath>Object.Works.AutomaticDiscountAmount</DataPath>
 									<UserVisible>
 										<xr:Common>false</xr:Common>
@@ -1044,7 +1020,7 @@ Reference is available on the eponymous hyperlink in the form &lt;link SalesAcco
 									<ContextMenu name="WOWorksAutomaticDiscountAmountContextMenu" id="1329"/>
 									<ExtendedTooltip name="WOWorksAutomaticDiscountAmountExtendedTooltip" id="1330"/>
 								</InputField>
-								<InputField name="ValWorksAmount" id="359">
+								<InputField name="WOWorksAmount" id="359">
 									<DataPath>Object.Works.Amount</DataPath>
 									<SkipOnInput>true</SkipOnInput>
 									<EditMode>EnterOnInput</EditMode>
@@ -1057,7 +1033,7 @@ Reference is available on the eponymous hyperlink in the form &lt;link SalesAcco
 										<Event name="OnChange">WorksAmountOnChange</Event>
 									</Events>
 								</InputField>
-								<InputField name="OWWorksVATRate" id="363">
+								<InputField name="WOWorksVATRate" id="363">
 									<DataPath>Object.Works.VATRate</DataPath>
 									<SkipOnInput>true</SkipOnInput>
 									<EditMode>EnterOnInput</EditMode>
@@ -1069,13 +1045,13 @@ Reference is available on the eponymous hyperlink in the form &lt;link SalesAcco
 										<Event name="OnChange">WorksVATRateOnChange</Event>
 									</Events>
 								</InputField>
-								<InputField name="OWWorksAmountVAT" id="365">
+								<InputField name="WOWorksAmountVAT" id="365">
 									<DataPath>Object.Works.VATAmount</DataPath>
 									<SkipOnInput>true</SkipOnInput>
 									<EditMode>EnterOnInput</EditMode>
 									<Width>10</Width>
-									<ContextMenu name="WOWorksVATAmountContextMenu" id="366"/>
-									<ExtendedTooltip name="WOWorksVATAmountExtendedTooltip" id="814"/>
+									<ContextMenu name="WOWorksAmountVATContextMenu" id="366"/>
+									<ExtendedTooltip name="WOWorksAmountVATExtendedTooltip" id="814"/>
 									<Events>
 										<Event name="OnChange">WorksAmountVATOnChange</Event>
 									</Events>
@@ -1089,16 +1065,16 @@ Reference is available on the eponymous hyperlink in the form &lt;link SalesAcco
 									<ContextMenu name="WOWorksTotalContextMenu" id="368"/>
 									<ExtendedTooltip name="WOWorksTotalExtendedTooltip" id="815"/>
 								</InputField>
-								<InputField name="WorksSpecification" id="470">
+								<InputField name="WOWorksSpecification" id="470">
 									<DataPath>Object.Works.Specification</DataPath>
 									<EditMode>EnterOnInput</EditMode>
 									<Width>20</Width>
-									<ContextMenu name="WorksSpecificationContextMenu" id="471"/>
-									<ExtendedTooltip name="WorksSpecificationExtendedTooltip" id="816"/>
+									<ContextMenu name="WOWorksSpecificationContextMenu" id="471"/>
+									<ExtendedTooltip name="WOWorksSpecificationExtendedTooltip" id="816"/>
 								</InputField>
 							</ChildItems>
 						</Table>
-						<UsualGroup name="OWWorkMaterials" id="493">
+						<UsualGroup name="WOWorkMaterials" id="493">
 							<Title>
 								<v8:item>
 									<v8:lang>en</v8:lang>
@@ -1123,7 +1099,7 @@ Reference is available on the eponymous hyperlink in the form &lt;link SalesAcco
 							<TitleDataPath>Object.Materials.RowsCount</TitleDataPath>
 							<ExtendedTooltip name="WOWorkMaterialsExtendedTooltip" id="817"/>
 							<ChildItems>
-								<Table name="OWMaterials" id="473">
+								<Table name="WOMaterials" id="473">
 									<HeightInTableRows>4</HeightInTableRows>
 									<AutoInsertNewRow>true</AutoInsertNewRow>
 									<EnableStartDrag>true</EnableStartDrag>
@@ -1134,11 +1110,11 @@ Reference is available on the eponymous hyperlink in the form &lt;link SalesAcco
 									<SearchControlLocation>None</SearchControlLocation>
 									<RowFilter xsi:nil="true"/>
 									<ContextMenu name="WOMaterialsContextMenu" id="474"/>
-									<AutoCommandBar name="WOMaterialsCommandPanel" id="475">
+									<AutoCommandBar name="WOMaterialsCommandBar" id="475">
 										<ChildItems>
 											<Button name="WOMaterialsWOMaterialsPickup" id="542">
 												<Type>CommandBarButton</Type>
-												<CommandName>Form.Command.OWMaterialsPick</CommandName>
+												<CommandName>Form.Command.WOMaterialsPick</CommandName>
 												<ExtendedTooltip name="WOMaterialsWOMaterialsPickupExtendedTooltip" id="818"/>
 											</Button>
 											<Popup name="WOMaterialsGroupFill" id="599">
@@ -1175,7 +1151,7 @@ Reference is available on the eponymous hyperlink in the form &lt;link SalesAcco
 														<Title>
 															<v8:item>
 																<v8:lang>en</v8:lang>
-																<v8:content>From all works specifications</v8:content>
+																<v8:content>By specifications of all works</v8:content>
 															</v8:item>
 															<v8:item>
 																<v8:lang>ru</v8:lang>
@@ -1257,12 +1233,12 @@ Reference is available on the eponymous hyperlink in the form &lt;link SalesAcco
 														<ChildItems>
 															<Button name="MaterialsChangeReserveFillByBalances" id="727">
 																<Type>CommandBarButton</Type>
-																<CommandName>Form.Command.OWChangeMaterialsReserveFillByBalances</CommandName>
+																<CommandName>Form.Command.WOChangeMaterialsReserveFillByBalances</CommandName>
 																<ExtendedTooltip name="MaterialsChangeReserveFillByBalanceExtendedTooltip" id="825"/>
 															</Button>
 															<Button name="MaterialsChangeReserveFillByBalancesForAll" id="734">
 																<Type>CommandBarButton</Type>
-																<CommandName>Form.Command.OWChangeMaterialsReserveFillByBalancesForAll</CommandName>
+																<CommandName>Form.Command.WOChangeMaterialsReserveFillByBalancesForAll</CommandName>
 																<ExtendedTooltip name="MaterialsChangeReserveFillByBalanceForAllExtendedTooltip" id="826"/>
 															</Button>
 														</ChildItems>
@@ -1292,12 +1268,12 @@ Reference is available on the eponymous hyperlink in the form &lt;link SalesAcco
 														<ChildItems>
 															<Button name="MaterialsChangeReserveFillByReserves" id="725">
 																<Type>CommandBarButton</Type>
-																<CommandName>Form.Command.OWChangeMaterialsReserveFillByReserves</CommandName>
+																<CommandName>Form.Command.WOChangeMaterialsReserveFillByReserves</CommandName>
 																<ExtendedTooltip name="MaterialsChangeReserveFillByReservesExtendedTooltip" id="828"/>
 															</Button>
 															<Button name="MaterialsChangeReserveFillByReservesForAll" id="735">
 																<Type>CommandBarButton</Type>
-																<CommandName>Form.Command.OWChangeMaterialsReserveFillByReservesForAll</CommandName>
+																<CommandName>Form.Command.WOChangeMaterialsReserveFillByReservesForAll</CommandName>
 																<ExtendedTooltip name="MaterialsChangeReserveFillByReservesForAllExtendedTooltip" id="829"/>
 															</Button>
 														</ChildItems>
@@ -1327,12 +1303,12 @@ Reference is available on the eponymous hyperlink in the form &lt;link SalesAcco
 														<ChildItems>
 															<Button name="MaterialsChangeReserveClearReserve" id="726">
 																<Type>CommandBarButton</Type>
-																<CommandName>Form.Command.OWChangeMaterialsReserveClearReserve</CommandName>
+																<CommandName>Form.Command.WOChangeMaterialsReserveClearReserve</CommandName>
 																<ExtendedTooltip name="MaterialsChangeReserveClearReserveExtendedTooltip" id="831"/>
 															</Button>
 															<Button name="MaterialsChangeReserveClearReserveForAll" id="736">
 																<Type>CommandBarButton</Type>
-																<CommandName>Form.Command.OWChangeMaterialsReserveClearReserveForAll</CommandName>
+																<CommandName>Form.Command.WOChangeMaterialsReserveClearReserveForAll</CommandName>
 																<ExtendedTooltip name="MaterialsChangeReserveClearReserveForAllExtendedTooltip" id="832"/>
 															</Button>
 														</ChildItems>
@@ -1342,33 +1318,33 @@ Reference is available on the eponymous hyperlink in the form &lt;link SalesAcco
 										</ChildItems>
 									</AutoCommandBar>
 									<ExtendedTooltip name="WOMaterialsExtendedTooltip" id="833"/>
-									<SearchStringAddition name="VALMaterialsSearchString" id="1109">
+									<SearchStringAddition name="WOMaterialsSearchString" id="1109">
 										<AdditionSource>
-											<Item>OWMaterials</Item>
+											<Item>WOMaterials</Item>
 											<Type>SearchStringRepresentation</Type>
 										</AdditionSource>
 										<ContextMenu name="WOMaterialsSearchStringContextMenu" id="1110"/>
 										<ExtendedTooltip name="WOMaterialsSearchStringExtendedTooltip" id="1111"/>
 									</SearchStringAddition>
-									<ViewStatusAddition name="VALMaterialsViewStatus" id="1112">
+									<ViewStatusAddition name="WOMaterialsViewStatus" id="1112">
 										<AdditionSource>
-											<Item>OWMaterials</Item>
+											<Item>WOMaterials</Item>
 											<Type>ViewStatusRepresentation</Type>
 										</AdditionSource>
 										<ContextMenu name="WOMaterialsViewStatusContextMenu" id="1113"/>
 										<ExtendedTooltip name="WOMaterialsViewStatusExtendedTooltip" id="1114"/>
 									</ViewStatusAddition>
-									<SearchControlAddition name="VALMaterialsSearchManagement" id="1115">
+									<SearchControlAddition name="WOMaterialsSearchControl" id="1115">
 										<AdditionSource>
-											<Item>OWMaterials</Item>
+											<Item>WOMaterials</Item>
 											<Type>SearchControl</Type>
 										</AdditionSource>
-										<ContextMenu name="WOMaterialsSearchManagementContextMenu" id="1116"/>
-										<ExtendedTooltip name="WOMaterialsSearchManagementExtendedTooltip" id="1117"/>
+										<ContextMenu name="WOMaterialsSearchControlContextMenu" id="1116"/>
+										<ExtendedTooltip name="WOMaterialsSearchControlExtendedTooltip" id="1117"/>
 									</SearchControlAddition>
 									<Events>
-										<Event name="BeforeAddRow">OWMaterialsBeforeAddRow</Event>
-										<Event name="OnStartEdit">OWMaterialsOnStartEdit</Event>
+										<Event name="BeforeAddRow">WOMaterialsBeforeAddRow</Event>
+										<Event name="OnStartEdit">WOMaterialsOnStartEdit</Event>
 									</Events>
 									<ChildItems>
 										<LabelField name="WOMaterialsLineNumber" id="476">
@@ -1383,7 +1359,7 @@ Reference is available on the eponymous hyperlink in the form &lt;link SalesAcco
 											<ContextMenu name="WOMaterialsProductsAndServicesContextMenu" id="479"/>
 											<ExtendedTooltip name="WOMaterialsProductsAndServicesExtendedTooltip" id="835"/>
 											<Events>
-												<Event name="OnChange">OWMaterialsProductsAndServicesOnChange</Event>
+												<Event name="OnChange">WOMaterialsProductsAndServicesOnChange</Event>
 											</Events>
 										</InputField>
 										<InputField name="WOMaterialsCharacteristic" id="480">
@@ -1405,22 +1381,22 @@ Reference is available on the eponymous hyperlink in the form &lt;link SalesAcco
 											<ContextMenu name="WOMaterialsQuantityContextMenu" id="485"/>
 											<ExtendedTooltip name="WOMaterialsQuantityExtendedTooltip" id="838"/>
 										</InputField>
-										<InputField name="OWMaterialsReserve" id="486">
+										<InputField name="WOMaterialsReserve" id="486">
 											<DataPath>Object.Materials.Reserve</DataPath>
 											<EditMode>EnterOnInput</EditMode>
 											<ContextMenu name="WOMaterialsReserveContextMenu" id="487"/>
 											<ExtendedTooltip name="WOMaterialsReserveExtendedTooltip" id="839"/>
 											<Events>
-												<Event name="OnChange">OWMaterialsReserveOnChange</Event>
+												<Event name="OnChange">WOMaterialsReserveOnChange</Event>
 											</Events>
 										</InputField>
-										<InputField name="ValMaterialsReserveShipment" id="549">
+										<InputField name="WOMaterialsReserveShipment" id="549">
 											<DataPath>Object.Materials.ReserveShipment</DataPath>
 											<EditMode>EnterOnInput</EditMode>
 											<ContextMenu name="WOMaterialsReserveShipmentContextMenu" id="550"/>
 											<ExtendedTooltip name="WOMaterialsReserveShipmentExtendedTooltip" id="840"/>
 											<Events>
-												<Event name="OnChange">OWMaterialsReserveShipmentOnChange</Event>
+												<Event name="OnChange">WOMaterialsReserveShipmentOnChange</Event>
 											</Events>
 										</InputField>
 										<InputField name="WOMaterialsMeasurementUnit" id="488">
@@ -1441,7 +1417,7 @@ Reference is available on the eponymous hyperlink in the form &lt;link SalesAcco
 						</UsualGroup>
 					</ChildItems>
 				</Page>
-				<Page name="VALGroupInventory" id="237">
+				<Page name="WOGroupInventory" id="237">
 					<Title>
 						<v8:item>
 							<v8:lang>en</v8:lang>
@@ -1463,7 +1439,7 @@ Reference is available on the eponymous hyperlink in the form &lt;link SalesAcco
 						</v8:item>
 					</ToolTip>
 					<TitleDataPath>Object.Inventory.RowsCount</TitleDataPath>
-					<ExtendedTooltip name="VALGroupInventoryExtendedTooltip" id="842"/>
+					<ExtendedTooltip name="WOGroupInventoryExtendedTooltip" id="842"/>
 					<ChildItems>
 						<Table name="Inventory" id="238">
 							<Representation>List</Representation>
@@ -1523,7 +1499,7 @@ Reference is available on the eponymous hyperlink in the form &lt;link SalesAcco
 									</Button>
 									<Button name="InventoryGetWeight" id="574">
 										<Type>CommandBarButton</Type>
-										<CommandName>Form.Command.OWGetWeight</CommandName>
+										<CommandName>Form.Command.WOGetWeight</CommandName>
 										<ExtendedTooltip name="InventoryGetWeightExtendedTooltip" id="845"/>
 									</Button>
 									<Button name="InventoryPick" id="267">
@@ -1557,17 +1533,17 @@ Reference is available on the eponymous hyperlink in the form &lt;link SalesAcco
 										<ChildItems>
 											<Button name="InventoryChangeReserveFillByBalances" id="730">
 												<Type>CommandBarButton</Type>
-												<CommandName>Form.Command.OWChangeGoodsReserveFillByBalances</CommandName>
+												<CommandName>Form.Command.WOChangeGoodsReserveFillByBalances</CommandName>
 												<ExtendedTooltip name="InventoryChangeReserveFillByBalancesExtendedTooltip" id="848"/>
 											</Button>
 											<Button name="InventoryChangeReserveFillByReserves" id="731">
 												<Type>CommandBarButton</Type>
-												<CommandName>Form.Command.OWChangeGoodsReserveFillByReserves</CommandName>
+												<CommandName>Form.Command.WOChangeGoodsReserveFillByReserves</CommandName>
 												<ExtendedTooltip name="InventoryChangeReserveFillByReservesExtendedTooltip" id="849"/>
 											</Button>
 											<Button name="InventoryChangeReserveClearReserve" id="732">
 												<Type>CommandBarButton</Type>
-												<CommandName>Form.Command.OWChangeProductsReserveClearReserve</CommandName>
+												<CommandName>Form.Command.WOChangeProductsReserveClearReserve</CommandName>
 												<ExtendedTooltip name="InventoryChangeReserveClearReserveExtendedTooltip" id="850"/>
 											</Button>
 										</ChildItems>
@@ -1968,7 +1944,7 @@ Reference is available on the eponymous hyperlink in the form &lt;link SalesAcco
 						</Table>
 					</ChildItems>
 				</Page>
-				<Page name="VALoupPrepayment" id="1228">
+				<Page name="WOGroupPrepayment" id="1228">
 					<Title>
 						<v8:item>
 							<v8:lang>en</v8:lang>
@@ -2324,7 +2300,7 @@ Reference is available on the eponymous hyperlink in the form &lt;link SalesAcco
 						</Table>
 					</ChildItems>
 				</Page>
-				<Page name="OWGroupPerformers" id="670">
+				<Page name="WOGroupPerformers" id="670">
 					<Title>
 						<v8:item>
 							<v8:lang>en</v8:lang>
@@ -2346,7 +2322,7 @@ Reference is available on the eponymous hyperlink in the form &lt;link SalesAcco
 						</v8:item>
 					</ToolTip>
 					<TitleDataPath>Object.Performers.RowsCount</TitleDataPath>
-					<ExtendedTooltip name="WOGroupExecutorsExtendedTooltip" id="907"/>
+					<ExtendedTooltip name="WOGroupPerformersExtendedTooltip" id="907"/>
 					<ChildItems>
 						<UsualGroup name="WOTableWork" id="708">
 							<Title>
@@ -2854,13 +2830,23 @@ Reference is available on the eponymous hyperlink in the form &lt;link SalesAcco
 										</v8:item>
 									</Title>
 									<EditMode>EnterOnInput</EditMode>
-									<RadioButtonType>Auto</RadioButtonType>
+									<RadioButtonType>Tumbler</RadioButtonType>
+									<EqualColumnsWidth>true</EqualColumnsWidth>
 									<ChoiceList>
 										<xr:Item>
 											<xr:Presentation/>
 											<xr:CheckState>0</xr:CheckState>
 											<xr:Value xsi:type="FormChoiceListDesTimeValue">
-												<Presentation/>
+												<Presentation>
+													<v8:item>
+														<v8:lang>en</v8:lang>
+														<v8:content>Cash</v8:content>
+													</v8:item>
+													<v8:item>
+														<v8:lang>ru</v8:lang>
+														<v8:content>Наличные</v8:content>
+													</v8:item>
+												</Presentation>
 												<Value xsi:type="xr:DesignTimeRef">Enum.CashAssetTypes.EnumValue.Cash</Value>
 											</xr:Value>
 										</xr:Item>
@@ -2868,7 +2854,16 @@ Reference is available on the eponymous hyperlink in the form &lt;link SalesAcco
 											<xr:Presentation/>
 											<xr:CheckState>0</xr:CheckState>
 											<xr:Value xsi:type="FormChoiceListDesTimeValue">
-												<Presentation/>
+												<Presentation>
+													<v8:item>
+														<v8:lang>en</v8:lang>
+														<v8:content>Non-cash</v8:content>
+													</v8:item>
+													<v8:item>
+														<v8:lang>ru</v8:lang>
+														<v8:content>Безналичные</v8:content>
+													</v8:item>
+												</Presentation>
 												<Value xsi:type="xr:DesignTimeRef">Enum.CashAssetTypes.EnumValue.Noncash</Value>
 											</xr:Value>
 										</xr:Item>
@@ -2883,7 +2878,7 @@ Reference is available on the eponymous hyperlink in the form &lt;link SalesAcco
 													</v8:item>
 													<v8:item>
 														<v8:lang>ru</v8:lang>
-														<v8:content>Неопределено</v8:content>
+														<v8:content>Не задан</v8:content>
 													</v8:item>
 												</Presentation>
 												<Value xsi:type="xr:DesignTimeRef">Enum.CashAssetTypes.EmptyRef</Value>
@@ -2893,7 +2888,7 @@ Reference is available on the eponymous hyperlink in the form &lt;link SalesAcco
 									<ContextMenu name="WOCashAssetsTypeContextMenu" id="285"/>
 									<ExtendedTooltip name="WOCashAssetsTypeExtendedTooltip" id="877"/>
 									<Events>
-										<Event name="OnChange">OWCashAssetsTypeOnChange</Event>
+										<Event name="OnChange">CashAssetsTypeOnChange</Event>
 									</Events>
 								</RadioButtonField>
 								<CommandBar name="ValGroupPanel" id="286">
@@ -2922,7 +2917,7 @@ Reference is available on the eponymous hyperlink in the form &lt;link SalesAcco
 										<Button name="OWEditInList" id="287">
 											<Type>CommandBarButton</Type>
 											<SkipOnInput>false</SkipOnInput>
-											<CommandName>Form.Command.OWEditInList</CommandName>
+											<CommandName>Form.Command.WOEditInList</CommandName>
 											<ExtendedTooltip name="WOEditInListExtendedTooltip" id="879"/>
 										</Button>
 									</ChildItems>
@@ -3012,7 +3007,7 @@ Reference is available on the eponymous hyperlink in the form &lt;link SalesAcco
 									</ToolTip>
 									<ExtendedTooltip name="WOPageCashBoxExtendedTooltip" id="883"/>
 									<ChildItems>
-										<InputField name="ValCash" id="293">
+										<InputField name="WOPettyCash" id="293">
 											<DataPath>Object.PettyCash</DataPath>
 											<EditMode>EnterOnInput</EditMode>
 											<Width>35</Width>
@@ -3238,7 +3233,7 @@ Reference is available on the eponymous hyperlink in the form &lt;link SalesAcco
 						</Pages>
 					</ChildItems>
 				</Page>
-				<Page name="VALGroupAdditional" id="425">
+				<Page name="WOGroupAdditional" id="425">
 					<Title>
 						<v8:item>
 							<v8:lang>en</v8:lang>
@@ -3259,7 +3254,7 @@ Reference is available on the eponymous hyperlink in the form &lt;link SalesAcco
 							<v8:content>Дополнительно</v8:content>
 						</v8:item>
 					</ToolTip>
-					<ExtendedTooltip name="WOGroupAdditionallyExtendedTooltip" id="941"/>
+					<ExtendedTooltip name="WOGroupAdditionalExtendedTooltip" id="941"/>
 					<ChildItems>
 						<UsualGroup name="WOAdditionally" id="1219">
 							<Title>
@@ -3287,7 +3282,7 @@ Reference is available on the eponymous hyperlink in the form &lt;link SalesAcco
 							<ShowTitle>false</ShowTitle>
 							<ExtendedTooltip name="VALAdditionallyExtendedTooltip" id="1220"/>
 							<ChildItems>
-								<UsualGroup name="VALAdditionallyLeftColumn" id="1221">
+								<UsualGroup name="WOAdditionallyLeftColumn" id="1221">
 									<Title>
 										<v8:item>
 											<v8:lang>en</v8:lang>
@@ -3313,6 +3308,12 @@ Reference is available on the eponymous hyperlink in the form &lt;link SalesAcco
 									<ShowTitle>false</ShowTitle>
 									<ExtendedTooltip name="WOAdditionallyLeftColumnExtendedTooltip" id="1222"/>
 									<ChildItems>
+										<InputField name="WOProject" id="174">
+											<DataPath>Object.Project</DataPath>
+											<EditMode>EnterOnInput</EditMode>
+											<ContextMenu name="WOProjectContextMenu" id="175"/>
+											<ExtendedTooltip name="WOProjectExtendedTooltip" id="942"/>
+										</InputField>
 										<InputField name="WOSalesStructuralUnit" id="321">
 											<DataPath>Object.SalesStructuralUnit</DataPath>
 											<EditMode>EnterOnInput</EditMode>
@@ -3322,15 +3323,9 @@ Reference is available on the eponymous hyperlink in the form &lt;link SalesAcco
 												<Event name="OnChange">SalesStructuralUnitOnChange</Event>
 											</Events>
 										</InputField>
-										<InputField name="WOResponsible" id="323">
-											<DataPath>Object.Responsible</DataPath>
-											<EditMode>EnterOnInput</EditMode>
-											<ContextMenu name="WOResponsibleContextMenu" id="324"/>
-											<ExtendedTooltip name="WOResponsibleExtendedTooltip" id="951"/>
-										</InputField>
 									</ChildItems>
 								</UsualGroup>
-								<UsualGroup name="VALAdditionallyRightColumn" id="1223">
+								<UsualGroup name="WOAdditionallyRightColumn" id="1223">
 									<Title>
 										<v8:item>
 											<v8:lang>en</v8:lang>
@@ -3356,7 +3351,13 @@ Reference is available on the eponymous hyperlink in the form &lt;link SalesAcco
 									<ShowTitle>false</ShowTitle>
 									<ExtendedTooltip name="WOAdditionallyRightColumnExtendedTooltip" id="1224"/>
 									<ChildItems>
-										<LabelField name="VALDocumentAuthor" id="1225">
+										<InputField name="WOResponsible" id="323">
+											<DataPath>Object.Responsible</DataPath>
+											<EditMode>EnterOnInput</EditMode>
+											<ContextMenu name="WOResponsibleContextMenu" id="324"/>
+											<ExtendedTooltip name="WOResponsibleExtendedTooltip" id="951"/>
+										</InputField>
+										<LabelField name="WODocumentAuthor" id="1225">
 											<DataPath>Object.Author</DataPath>
 											<ToolTip>
 												<v8:item>
@@ -3368,11 +3369,7 @@ Reference is available on the eponymous hyperlink in the form &lt;link SalesAcco
 													<v8:content>Автор документа</v8:content>
 												</v8:item>
 											</ToolTip>
-											<Border width="1">
-												<v8ui:style xsi:type="v8ui:ControlBorderType">Single</v8ui:style>
-											</Border>
-											<TextColor>#993300</TextColor>
-											<ContextMenu name="VALAuthorDocumentContextMenu" id="1226"/>
+											<ContextMenu name="WODocumentAuthorContextMenu" id="1226"/>
 											<ExtendedTooltip name="WODocumentAuthorExtendedTooltip" id="1227"/>
 										</LabelField>
 									</ChildItems>
@@ -3408,7 +3405,7 @@ Reference is available on the eponymous hyperlink in the form &lt;link SalesAcco
 				</Page>
 			</ChildItems>
 		</Pages>
-		<UsualGroup name="ValFooter" id="319">
+		<UsualGroup name="WOFooter" id="319">
 			<Title>
 				<v8:item>
 					<v8:lang>en</v8:lang>
@@ -3433,7 +3430,7 @@ Reference is available on the eponymous hyperlink in the form &lt;link SalesAcco
 			<ShowTitle>false</ShowTitle>
 			<ExtendedTooltip name="WOFooterExtendedTooltip" id="953"/>
 			<ChildItems>
-				<UsualGroup name="ValTotals" id="329">
+				<UsualGroup name="WOTotals" id="329">
 					<Title>
 						<v8:item>
 							<v8:lang>en</v8:lang>
@@ -3460,7 +3457,7 @@ Reference is available on the eponymous hyperlink in the form &lt;link SalesAcco
 					<BackColor>style:TotalsGroupBackground</BackColor>
 					<ExtendedTooltip name="WOTotalsExtendedTooltip" id="959"/>
 					<ChildItems>
-						<InputField name="VALPrepaymentTotalSettlementsAmount" id="1302">
+						<InputField name="WOPrepaymentTotalSettlementsAmount" id="1302">
 							<DataPath>Object.Prepayment.TotalSettlementsAmount</DataPath>
 							<Title>
 								<v8:item>
@@ -3479,10 +3476,10 @@ Reference is available on the eponymous hyperlink in the form &lt;link SalesAcco
 							<SpinButton>false</SpinButton>
 							<OpenButton>false</OpenButton>
 							<CreateButton>false</CreateButton>
-							<ContextMenu name="WOPrepaymentTotalAccountsAmountContextMenu" id="1303"/>
+							<ContextMenu name="WOPrepaymentTotalSettlementsAmountContextMenu" id="1303"/>
 							<ExtendedTooltip name="WOPrepaymentTotalSettlementsAmountExtendedTooltip" id="1304"/>
 						</InputField>
-						<LabelField name="VALContractSettlementsCurrency" id="1305">
+						<LabelField name="WOContractSettlementsCurrency" id="1305">
 							<DataPath>Object.Contract.SettlementsCurrency</DataPath>
 							<TitleLocation>None</TitleLocation>
 							<Width>3</Width>
@@ -3490,7 +3487,7 @@ Reference is available on the eponymous hyperlink in the form &lt;link SalesAcco
 							<ContextMenu name="WOContractSettlementsCurrencyContextMenu" id="1306"/>
 							<ExtendedTooltip name="WOContractSettlementsCurrencyExtendedTooltip" id="1307"/>
 						</LabelField>
-						<InputField name="ValVATAmountTotal" id="335">
+						<InputField name="WOVATAmountTotal" id="335">
 							<DataPath>TotalVATAmount</DataPath>
 							<ReadOnly>true</ReadOnly>
 							<Title>
@@ -3509,7 +3506,7 @@ Reference is available on the eponymous hyperlink in the form &lt;link SalesAcco
 							<ContextMenu name="WOVATAmountTotalContextMenu" id="336"/>
 							<ExtendedTooltip name="WOVATAmountTotalExtendedTooltip" id="963"/>
 						</InputField>
-						<InputField name="ValGrandTotal" id="330">
+						<InputField name="WOGrandTotal" id="330">
 							<DataPath>TotalAmount</DataPath>
 							<ReadOnly>true</ReadOnly>
 							<Title>
@@ -3525,8 +3522,8 @@ Reference is available on the eponymous hyperlink in the form &lt;link SalesAcco
 							<EditMode>EnterOnInput</EditMode>
 							<Width>9</Width>
 							<HorizontalStretch>false</HorizontalStretch>
-							<ContextMenu name="WOTotalAllContextMenu" id="331"/>
-							<ExtendedTooltip name="WOTotalAllExtendedTooltip" id="960"/>
+							<ContextMenu name="WOGrandTotalContextMenu" id="331"/>
+							<ExtendedTooltip name="WOGrandTotalExtendedTooltip" id="960"/>
 						</InputField>
 						<LabelField name="WODocumenCurrency2" id="332">
 							<DataPath>Object.DocumentCurrency</DataPath>
@@ -4614,7 +4611,7 @@ Reference is available on the eponymous hyperlink in the form &lt;link SalesAcco
 			<Representation>Text</Representation>
 			<ModifiesSavedData>true</ModifiesSavedData>
 		</Command>
-		<Command name="OWEditInList" id="7">
+		<Command name="WOEditInList" id="7">
 			<Title>
 				<v8:item>
 					<v8:lang>en</v8:lang>
@@ -4635,7 +4632,7 @@ Reference is available on the eponymous hyperlink in the form &lt;link SalesAcco
 					<v8:content>Редактировать списком</v8:content>
 				</v8:item>
 			</ToolTip>
-			<Action>OWEditInList</Action>
+			<Action>WOEditInList</Action>
 		</Command>
 		<Command name="WorkSelection" id="8">
 			<Title>
@@ -4691,7 +4688,7 @@ Reference is available on the eponymous hyperlink in the form &lt;link SalesAcco
 			<Representation>TextPicture</Representation>
 			<ModifiesSavedData>true</ModifiesSavedData>
 		</Command>
-		<Command name="OWMaterialsPick" id="10">
+		<Command name="WOMaterialsPick" id="10">
 			<Title>
 				<v8:item>
 					<v8:lang>en</v8:lang>
@@ -4713,14 +4710,14 @@ Reference is available on the eponymous hyperlink in the form &lt;link SalesAcco
 				</v8:item>
 			</ToolTip>
 			<Shortcut>F8</Shortcut>
-			<Action>OWMaterialsPick</Action>
+			<Action>WOMaterialsPick</Action>
 			<ModifiesSavedData>true</ModifiesSavedData>
 		</Command>
 		<Command name="FillBySpecification" id="11">
 			<Title>
 				<v8:item>
 					<v8:lang>en</v8:lang>
-					<v8:content>by specification</v8:content>
+					<v8:content>By specification of the current work</v8:content>
 				</v8:item>
 				<v8:item>
 					<v8:lang>ru</v8:lang>
@@ -4745,7 +4742,7 @@ Reference is available on the eponymous hyperlink in the form &lt;link SalesAcco
 			<Representation>TextPicture</Representation>
 			<ModifiesSavedData>true</ModifiesSavedData>
 		</Command>
-		<Command name="OWGetWeight" id="12">
+		<Command name="WOGetWeight" id="12">
 			<Title>
 				<v8:item>
 					<v8:lang>en</v8:lang>
@@ -4770,7 +4767,7 @@ Reference is available on the eponymous hyperlink in the form &lt;link SalesAcco
 				<xr:Ref>CommonPicture.GetWeight</xr:Ref>
 				<xr:LoadTransparent>true</xr:LoadTransparent>
 			</Picture>
-			<Action>OWGetWeight</Action>
+			<Action>WOGetWeight</Action>
 			<FunctionalOptions>
 				<Item>FunctionalOption.UsePeripherals</Item>
 			</FunctionalOptions>
@@ -5263,7 +5260,7 @@ Reference is available on the eponymous hyperlink in the form &lt;link SalesAcco
 			<Representation>TextPicture</Representation>
 			<ModifiesSavedData>true</ModifiesSavedData>
 		</Command>
-		<Command name="OWChangeMaterialsReserveClearReserve" id="32">
+		<Command name="WOChangeMaterialsReserveClearReserve" id="32">
 			<Title>
 				<v8:item>
 					<v8:lang>en</v8:lang>
@@ -5284,13 +5281,13 @@ Reference is available on the eponymous hyperlink in the form &lt;link SalesAcco
 					<v8:content>Очистить колонку Резерв</v8:content>
 				</v8:item>
 			</ToolTip>
-			<Action>OWChangeMaterialsReserveClearReserve</Action>
+			<Action>WOChangeMaterialsReserveClearReserve</Action>
 			<FunctionalOptions>
 				<Item>FunctionalOption.InventoryReservation</Item>
 			</FunctionalOptions>
 			<ModifiesSavedData>true</ModifiesSavedData>
 		</Command>
-		<Command name="OWChangeMaterialsReserveFillByBalances" id="33">
+		<Command name="WOChangeMaterialsReserveFillByBalances" id="33">
 			<Title>
 				<v8:item>
 					<v8:lang>en</v8:lang>
@@ -5311,13 +5308,13 @@ Reference is available on the eponymous hyperlink in the form &lt;link SalesAcco
 					<v8:content>Заполнить резерв по свободным остаткам на складе</v8:content>
 				</v8:item>
 			</ToolTip>
-			<Action>OWChangeMaterialsReserveFillByBalances</Action>
+			<Action>WOChangeMaterialsReserveFillByBalances</Action>
 			<FunctionalOptions>
 				<Item>FunctionalOption.InventoryReservation</Item>
 			</FunctionalOptions>
 			<ModifiesSavedData>true</ModifiesSavedData>
 		</Command>
-		<Command name="OWChangeMaterialsReserveFillByReserves" id="34">
+		<Command name="WOChangeMaterialsReserveFillByReserves" id="34">
 			<Title>
 				<v8:item>
 					<v8:lang>en</v8:lang>
@@ -5338,13 +5335,13 @@ Reference is available on the eponymous hyperlink in the form &lt;link SalesAcco
 					<v8:content>Заполнить резерв по резервам на складе</v8:content>
 				</v8:item>
 			</ToolTip>
-			<Action>OWChangeMaterialsReserveFillByReserves</Action>
+			<Action>WOChangeMaterialsReserveFillByReserves</Action>
 			<FunctionalOptions>
 				<Item>FunctionalOption.InventoryReservation</Item>
 			</FunctionalOptions>
 			<ModifiesSavedData>true</ModifiesSavedData>
 		</Command>
-		<Command name="OWChangeGoodsReserveFillByBalances" id="36">
+		<Command name="WOChangeGoodsReserveFillByBalances" id="36">
 			<Title>
 				<v8:item>
 					<v8:lang>en</v8:lang>
@@ -5365,13 +5362,13 @@ Reference is available on the eponymous hyperlink in the form &lt;link SalesAcco
 					<v8:content>Заполнить резерв по свободным остаткам на складе</v8:content>
 				</v8:item>
 			</ToolTip>
-			<Action>OWChangeGoodsReserveFillByBalances</Action>
+			<Action>WOChangeGoodsReserveFillByBalances</Action>
 			<FunctionalOptions>
 				<Item>FunctionalOption.InventoryReservation</Item>
 			</FunctionalOptions>
 			<ModifiesSavedData>true</ModifiesSavedData>
 		</Command>
-		<Command name="OWChangeGoodsReserveFillByReserves" id="37">
+		<Command name="WOChangeGoodsReserveFillByReserves" id="37">
 			<Title>
 				<v8:item>
 					<v8:lang>en</v8:lang>
@@ -5392,13 +5389,13 @@ Reference is available on the eponymous hyperlink in the form &lt;link SalesAcco
 					<v8:content>Заполнить резерв по резервам на складе</v8:content>
 				</v8:item>
 			</ToolTip>
-			<Action>OWChangeGoodsReserveFillByReserves</Action>
+			<Action>WOChangeGoodsReserveFillByReserves</Action>
 			<FunctionalOptions>
 				<Item>FunctionalOption.InventoryReservation</Item>
 			</FunctionalOptions>
 			<ModifiesSavedData>true</ModifiesSavedData>
 		</Command>
-		<Command name="OWChangeProductsReserveClearReserve" id="38">
+		<Command name="WOChangeProductsReserveClearReserve" id="38">
 			<Title>
 				<v8:item>
 					<v8:lang>en</v8:lang>
@@ -5419,13 +5416,13 @@ Reference is available on the eponymous hyperlink in the form &lt;link SalesAcco
 					<v8:content>Очистить колонку Резерв</v8:content>
 				</v8:item>
 			</ToolTip>
-			<Action>OWChangeProductsReserveClearReserve</Action>
+			<Action>WOChangeProductsReserveClearReserve</Action>
 			<FunctionalOptions>
 				<Item>FunctionalOption.InventoryReservation</Item>
 			</FunctionalOptions>
 			<ModifiesSavedData>true</ModifiesSavedData>
 		</Command>
-		<Command name="OWChangeMaterialsReserveFillByBalancesForAll" id="40">
+		<Command name="WOChangeMaterialsReserveFillByBalancesForAll" id="40">
 			<Title>
 				<v8:item>
 					<v8:lang>en</v8:lang>
@@ -5446,13 +5443,13 @@ Reference is available on the eponymous hyperlink in the form &lt;link SalesAcco
 					<v8:content>Заполнить резерв по свободным остаткам на складе</v8:content>
 				</v8:item>
 			</ToolTip>
-			<Action>OWChangeMaterialsReserveFillByBalancesForAll</Action>
+			<Action>WOChangeMaterialsReserveFillByBalancesForAll</Action>
 			<FunctionalOptions>
 				<Item>FunctionalOption.InventoryReservation</Item>
 			</FunctionalOptions>
 			<ModifiesSavedData>true</ModifiesSavedData>
 		</Command>
-		<Command name="OWChangeMaterialsReserveFillByReservesForAll" id="41">
+		<Command name="WOChangeMaterialsReserveFillByReservesForAll" id="41">
 			<Title>
 				<v8:item>
 					<v8:lang>en</v8:lang>
@@ -5473,13 +5470,13 @@ Reference is available on the eponymous hyperlink in the form &lt;link SalesAcco
 					<v8:content>Заполнить резерв по резервам на складе</v8:content>
 				</v8:item>
 			</ToolTip>
-			<Action>OWChangeMaterialsReserveFillByReservesForAll</Action>
+			<Action>WOChangeMaterialsReserveFillByReservesForAll</Action>
 			<FunctionalOptions>
 				<Item>FunctionalOption.InventoryReservation</Item>
 			</FunctionalOptions>
 			<ModifiesSavedData>true</ModifiesSavedData>
 		</Command>
-		<Command name="OWChangeMaterialsReserveClearReserveForAll" id="42">
+		<Command name="WOChangeMaterialsReserveClearReserveForAll" id="42">
 			<Title>
 				<v8:item>
 					<v8:lang>en</v8:lang>
@@ -5500,7 +5497,7 @@ Reference is available on the eponymous hyperlink in the form &lt;link SalesAcco
 					<v8:content>Очистить колонку Резерв</v8:content>
 				</v8:item>
 			</ToolTip>
-			<Action>OWChangeMaterialsReserveClearReserveForAll</Action>
+			<Action>WOChangeMaterialsReserveClearReserveForAll</Action>
 			<FunctionalOptions>
 				<Item>FunctionalOption.InventoryReservation</Item>
 			</FunctionalOptions>
