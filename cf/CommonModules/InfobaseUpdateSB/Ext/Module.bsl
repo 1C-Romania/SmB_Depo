@@ -1151,54 +1151,6 @@ Procedure FillFilterUserSettings()
 	
 EndProcedure // FillCustomSelectionSettings()
 
-//(27) Procedure removes the registration of the basic qualifiers
-// changes that must be exported only if they are assigned with references to them in other exported object.
-//
-Procedure DeleteChangeRegistrationOfBaseClassifiers()
-
-	Query = New Query;
-	Query.Text =
-	"SELECT
-	|	ExchangeSmallBusinessAccounting20.Ref AS ExchangeNode
-	|FROM
-	|	ExchangePlan.ExchangeSmallBusinessAccounting20 AS ExchangeSmallBusinessAccounting20
-	|WHERE
-	|	ExchangeSmallBusinessAccounting20.Ref <> &ThisNodeBP20
-	|;
-	|
-	|////////////////////////////////////////////////////////////////////////////////
-	|SELECT
-	|	ExchangeSmallBusinessAccounting30.Ref AS ExchangeNode
-	|FROM
-	|	ExchangePlan.ExchangeSmallBusinessAccounting30 AS ExchangeSmallBusinessAccounting30
-	|WHERE
-	|	ExchangeSmallBusinessAccounting30.Ref <> &ThisNodeBP30";
-	
-	Query.SetParameter("ThisNodeBP20", ExchangePlans.ExchangeSmallBusinessAccounting20.ThisNode());
-	Query.SetParameter("ThisNodeBP30", ExchangePlans.ExchangeSmallBusinessAccounting30.ThisNode());
-	
-	ResultsArray = Query.ExecuteBatch();
-	NodesExchangeSBP20 = ResultsArray[0].Unload().UnloadColumn("ExchangeNode");
-	NodesExchangeWithBP30 = ResultsArray[1].Unload().UnloadColumn("ExchangeNode");
-	
-	Try
-		ExchangePlans.DeleteChangeRecords(NodesExchangeSBP20, Metadata.Catalogs.Banks);
-		ExchangePlans.DeleteChangeRecords(NodesExchangeSBP20, Metadata.Catalogs.Currencies);
-		ExchangePlans.DeleteChangeRecords(NodesExchangeSBP20, Metadata.Catalogs.UOMClassifier);
-		ExchangePlans.DeleteChangeRecords(NodesExchangeSBP20, Metadata.Catalogs.WorldCountries);
-	Except
-	EndTry;
-	
-	Try
-		ExchangePlans.DeleteChangeRecords(NodesExchangeWithBP30, Metadata.Catalogs.Banks);
-		ExchangePlans.DeleteChangeRecords(NodesExchangeWithBP30, Metadata.Catalogs.Currencies);
-		ExchangePlans.DeleteChangeRecords(NodesExchangeWithBP30, Metadata.Catalogs.UOMClassifier);
-		ExchangePlans.DeleteChangeRecords(NodesExchangeWithBP30, Metadata.Catalogs.WorldCountries);
-	Except
-	EndTry;
-
-EndProcedure // DeleteBasicClassifiersChangeRegistration()
-
 //(29) procedure fills in contracts forms from layout.
 //
 Procedure FillContractsForms()
@@ -1505,9 +1457,6 @@ Procedure FirstLaunch() Export
 	Constants.PriceListShowFullDescr.Set(Enums.YesNo.No);
 	Constants.PriceListUseProductsAndServicesHierarchy.Set(True);
 	Constants.FormPriceListByAvailabilityInWarehouses.Set(False);
-	
-	// 28. Registration
-	DeleteChangeRegistrationOfBaseClassifiers();
 	
 	// 29. Fill in contracts forms.
 	FillContractsForms();

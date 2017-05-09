@@ -1741,7 +1741,6 @@
 			<CommonModule>WorkWithScannerClient</CommonModule>
 			<CommonAttribute>DataAreaAuxiliaryData</CommonAttribute>
 			<CommonAttribute>DataAreaBasicData</CommonAttribute>
-			<ExchangePlan>ExchangeSmallBusinessAccounting20</ExchangePlan>
 			<ExchangePlan>ExchangeSmallBusinessAccounting30</ExchangePlan>
 			<ExchangePlan>ExchangeSmallBusinessEntrepreneurReporting</ExchangePlan>
 			<ExchangePlan>ExchangeSmallBusinessSite</ExchangePlan>
@@ -1859,10 +1858,6 @@
 			<EventSubscription>ContactInformationTypesResetOrderingAttributeValue</EventSubscription>
 			<EventSubscription>CopyFileVersionAttributesToFile</EventSubscription>
 			<EventSubscription>CreateExchangeNodeWithOfflinePeripherals</EventSubscription>
-			<EventSubscription>DataExchangeSmallBusinessAccounting20BeforeDeletion</EventSubscription>
-			<EventSubscription>DataExchangeSmallBusinessAccounting20BeforeWrite</EventSubscription>
-			<EventSubscription>DataExchangeSmallBusinessAccounting20BeforeWriteDocument</EventSubscription>
-			<EventSubscription>DataExchangeSmallBusinessAccounting20BeforeWriteRegister</EventSubscription>
 			<EventSubscription>DisableAutomaticDataSynchronization</EventSubscription>
 			<EventSubscription>DisablePredefinedItemsDeletion</EventSubscription>
 			<EventSubscription>DisablePredefinedItemsDeletionMarkup</EventSubscription>
@@ -2149,17 +2144,13 @@
 			<CommonCommand>DataSynchronizationSaaS</CommonCommand>
 			<CommonCommand>DeleteAnalysisReportPaymentCalendar</CommonCommand>
 			<CommonCommand>DeleteAnalysisReportSales</CommonCommand>
-			<CommonCommand>DeleteSynchronizationSetting</CommonCommand>
 			<CommonCommand>Dependencies</CommonCommand>
 			<CommonCommand>DonwloadDataToFile</CommonCommand>
 			<CommonCommand>EDFSettingsWithFilter</CommonCommand>
 			<CommonCommand>ExchangeWithPeripheralsOffline</CommonCommand>
-			<CommonCommand>ExecuteDataExchange</CommonCommand>
-			<CommonCommand>ExecuteDataExchangeInteractively</CommonCommand>
 			<CommonCommand>ExportDirectoryInFile</CommonCommand>
 			<CommonCommand>FilesInVolume</CommonCommand>
 			<CommonCommand>FiscalRegisterManagement</CommonCommand>
-			<CommonCommand>GetSecondInfobaseDataExchangeSettings</CommonCommand>
 			<CommonCommand>GoToDataExportEventsEventLogMonitor</CommonCommand>
 			<CommonCommand>GoToDataImportEventsEventLogMonitor</CommonCommand>
 			<CommonCommand>ImportRefillObjectFromFile</CommonCommand>
@@ -2179,8 +2170,6 @@
 			<CommonCommand>OpenCurrencies</CommonCommand>
 			<CommonCommand>OpenDataExchange</CommonCommand>
 			<CommonCommand>OpenDataExchangeResults</CommonCommand>
-			<CommonCommand>OpenDataExchangesScripts</CommonCommand>
-			<CommonCommand>OpenDataSynchronizationRules</CommonCommand>
 			<CommonCommand>OpenEnteringOpeningBalances</CommonCommand>
 			<CommonCommand>OpenInformationCenter</CommonCommand>
 			<CommonCommand>OpenInventory</CommonCommand>
@@ -2211,7 +2200,6 @@
 			<CommonCommand>ReportsPanel_Services</CommonCommand>
 			<CommonCommand>ReportsPanelAdministration</CommonCommand>
 			<CommonCommand>ReportsPanelSetupAndAdministration</CommonCommand>
-			<CommonCommand>SentDataContent</CommonCommand>
 			<CommonCommand>SetRights</CommonCommand>
 			<CommonCommand>ShowBackupResult</CommonCommand>
 			<CommonCommand>SystemEMailAccountSetup</CommonCommand>

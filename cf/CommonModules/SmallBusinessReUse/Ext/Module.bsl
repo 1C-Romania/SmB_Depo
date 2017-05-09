@@ -225,31 +225,7 @@ EndFunction
 //
 Function ExchangeWithBookkeepingConfigured() Export
 	
-	SetPrivilegedMode(True);
-	
-	Query = New Query;
-	Query.Text =
-	"SELECT TOP 1 1
-	|FROM
-	|	ExchangePlan.ExchangeSmallBusinessAccounting20 AS ExchangeSmallBusinessAccounting20
-	|WHERE
-	|	ExchangeSmallBusinessAccounting20.Ref <> &ThisNodeBP20
-	|	AND ExchangeSmallBusinessAccounting20.Code <> """"
-	|
-	|UNION ALL
-	|
-	|SELECT TOP 1 1
-	|FROM
-	|	ExchangePlan.ExchangeSmallBusinessAccounting30 AS ExchangeSmallBusinessAccounting30
-	|WHERE
-	|	ExchangeSmallBusinessAccounting30.Ref <> &ThisNodeBP30
-	|	AND ExchangeSmallBusinessAccounting30.Code <> """"";
-	
-	Query.SetParameter("ThisNodeBP20", ExchangePlans.ExchangeSmallBusinessAccounting20.ThisNode());
-	Query.SetParameter("ThisNodeBP30", ExchangePlans.ExchangeSmallBusinessAccounting30.ThisNode());
-	
-	Result = Query.Execute();
-	Return Not Result.IsEmpty();
+	Return False;
 	
 EndFunction
 

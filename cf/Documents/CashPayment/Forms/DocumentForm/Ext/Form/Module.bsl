@@ -243,25 +243,6 @@ Procedure BeforeWrite(Cancel, WriteParameters)
 	PerformanceEstimationClientServer.StartTimeMeasurement("DocumentCashPaymentPosting");
 	// StandardSubsystems.PerformanceEstimation
 	
-	If Modified 
-		AND Object.Ref.IsEmpty() 
-		AND ThereAreNodesRecipients() Then
-		
-		Cancel = True;
-		NotifyDescription = New NotifyDescription("BeforeWriteEnd", ThisObject, New Structure("WriteParameters", WriteParameters));
-		
-		QuestionText = StringFunctionsClientServer.SubstituteParametersInString(
-			NStr("en='While using the exchange you should reflect operation ""%1"" in ""Enterprise accounting"".
-		|
-		|Do you want to cancel the document record?';ru='При использовании обмена операцию ""%1"" рекомендуется отражать в ""Бухгалтерии предприятия"".
-		|
-		|Отменить запись документа?'"),
-			String(OperationKind));
-			
-		ShowQueryBox(NOTifyDescription, QuestionText, QuestionDialogMode.YesNo,, DialogReturnCode.Yes);		
-		
-	EndIf;
-	
 EndProcedure // BeforeWrite()
 
 &AtServer
@@ -1840,45 +1821,6 @@ Function GetContractByDefault(Document, Counterparty, Company, OperationKind)
 	
 EndFunction
 
-// Determines whether there are recipient nodes for document while using exchange.
-//
-&AtServer
-Function ThereAreNodesRecipients()
-	
-	NodesFound = False;
-	
-	If Object.OperationKind <> Enums.OperationKindsCashPayment.Salary
-		AND Object.OperationKind <> Enums.OperationKindsCashPayment.SalaryForEmployee
-		AND Object.OperationKind <> Enums.OperationKindsCashPayment.Taxes
-		OR Not SmallBusinessReUse.ExchangeWithBookkeepingConfigured() Then
-		
-		Return NodesFound;
-	EndIf;
-	
-	ArrayOfNamesExchangePlans = New Array;
-	
-	If GetFunctionalOption("WorkInLocalMode") Then
-		ArrayOfNamesExchangePlans.Add(Metadata.ExchangePlans.ExchangeSmallBusinessAccounting20.Name);
-	EndIf;
-	
-	ArrayOfNamesExchangePlans.Add(Metadata.ExchangePlans.ExchangeSmallBusinessAccounting30.Name);
-	
-	For Each ExchangePlanName IN ArrayOfNamesExchangePlans Do
-		
-		DocumentObject = FormAttributeToValue("Object");
-		
-		NodesRecipients = DataExchangeEvents.DefineRecipients(DocumentObject, ExchangePlanName);
-		If NodesRecipients.Count() > 0 Then
-			NodesFound = True;
-			Break;
-		EndIf;
-		
-	EndDo;
-	
-	Return NodesFound;
-	
-EndFunction // ThereAreNodesRecipients()
-
 // Checks whether document is approved or not.
 //
 &AtServerNoContext
@@ -2047,17 +1989,6 @@ Procedure ClearAttributesNotRelatedToOperation()
 	EndIf;
 	
 EndProcedure // ClearAttributesNotRelatedToOperation()
-
-////////////////////////////////////////////////////////////////////////////////
-// PROCEDURE - FORM EVENT HANDLERS
-
-&AtClient
-Procedure BeforeWriteEnd(Result, AdditionalParameters) Export
-	If Result = DialogReturnCode.No Then
-		Modified = False;
-		Write(AdditionalParameters.WriteParameters);
-	EndIf;
-EndProcedure // BeforeWriteEnd()
 
 ////////////////////////////////////////////////////////////////////////////////
 // PROCEDURE - ACTIONS OF THE FORM COMMAND PANELS
