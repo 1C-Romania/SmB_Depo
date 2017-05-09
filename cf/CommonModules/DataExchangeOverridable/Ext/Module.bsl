@@ -33,14 +33,6 @@ Procedure GetExchangePlans(SubsystemExchangePlans) Export
 	
 	SetPrivilegedMode(True);
 	
-	If GetFunctionalOption("WorkInLocalMode") Then
-		SubsystemExchangePlans.Add(Metadata.ExchangePlans.ExchangeSmallBusinessAccounting20);
-	EndIf;
-	
-	SubsystemExchangePlans.Add(Metadata.ExchangePlans.ExchangeRetailSmallBusiness);
-	SubsystemExchangePlans.Add(Metadata.ExchangePlans.ExchangeSmallBusinessAccounting30);
-	SubsystemExchangePlans.Add(Metadata.ExchangePlans.ExchangeSmallBusinessEntrepreneurReporting);
-	
 EndProcedure
 
 // Handler during data exporting.
@@ -172,63 +164,6 @@ EndProcedure
 //  Value by default - True.
 //
 Procedure InitialDataExportChangeRecord(Val Recipient, StandardProcessing, Filter) Export
-	
-	If    TypeOf(Recipient) = Type("ExchangePlanRef.ExchangeSmallBusinessAccounting20")
-		OR TypeOf(Recipient) = Type("ExchangePlanRef.ExchangeSmallBusinessAccounting30") Then
-		
-		StandardProcessing = False;
-		
-		Filter = New Array;
-		
-		AttributeValues = CommonUse.ObjectAttributesValues(Recipient, "UseDocumentTypeFilter, ManualExchange, DocumentKinds");
-		If AttributeValues.ManualExchange
-			OR AttributeValues.UseDocumentTypesFilter Then
-			
-			For Each ContentItem IN Recipient.Metadata().Content Do
-				If Metadata.Catalogs.Contains(ContentItem.Metadata) Then
-					Filter.Add(ContentItem.Metadata);
-				EndIf;
-			EndDo;
-			
-			If AttributeValues.UseDocumentTypesFilter Then
-				
-				For Each TabularSectionRow IN Recipient.DocumentKinds Do
-					MetadataObject = Metadata.Documents.Find(TabularSectionRow.MetadataObjectName);
-					If MetadataObject <> Undefined Then
-						Filter.Add(MetadataObject);
-					EndIf;
-				EndDo;
-				
-			EndIf;
-			
-		Else
-			
-			For Each ContentItem IN Recipient.Metadata().Content Do
-				Filter.Add(ContentItem.Metadata);
-			EndDo;
-			
-		EndIf;
-		
-		MetadataQualifiers = New Array;
-		MetadataQualifiers.Add(Metadata.Catalogs.Banks);
-		MetadataQualifiers.Add(Metadata.Catalogs.Currencies);
-		MetadataQualifiers.Add(Metadata.Catalogs.UOMClassifier);
-		MetadataQualifiers.Add(Metadata.Catalogs.WorldCountries);
-		
-		For Each ArrayElement IN MetadataQualifiers Do
-			FoundItem = Filter.Find(ArrayElement);
-			If FoundItem <> Undefined Then
-				Filter.Delete(FoundItem);
-			EndIf;
-		EndDo;
-		
-		AttributeValues = CommonUse.ObjectAttributesValues(Recipient, "UseCompanyFilter, DocumentsExportingStartDate, Companies");
-		
-		Companies = ?(AttributeValues.UseCompaniesFilter, AttributeValues.Companies.Unload().UnloadColumn("Company"), Undefined);
-		
-		DataExchangeServer.RegisterDataByExportStartDateAndCounterparty(Recipient, AttributeValues.DocumentsDumpStartDate, Companies, Filter);
-		
-	EndIf;
 	
 EndProcedure
 
