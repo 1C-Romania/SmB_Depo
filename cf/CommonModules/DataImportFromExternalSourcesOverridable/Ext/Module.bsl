@@ -1012,7 +1012,7 @@ Procedure MapOrderByNumberDate(Order, DocumentTypeName, Counterparty, Number_Inc
 		
 	EndIf;
 	
-	Query.Text = Query.Text + " SORT BY Order.Date Desc";
+	Query.Text = Query.Text + " ORDER BY Order.Date Desc";
 	Selection = Query.Execute().Select();
 	If Selection.Next() Then
 		
@@ -1123,7 +1123,7 @@ Procedure MapAccountingDocumentByNumberDate(Document, DocumentTypeName, Counterp
 		
 	EndIf;
 	
-	Query.Text = Query.Text + " SORT BY AccountsDocument.Date Desc";
+	Query.Text = Query.Text + " ORDER BY AccountingDocument.Date Desc";
 	Selection = Query.Execute().Select();
 	If Selection.Next() Then
 		
@@ -1160,7 +1160,7 @@ Procedure MapAccountByNumberDate(Account, Counterparty, Number_IncomingData, Dat
 		
 	EndIf;
 	
-	Query.Text = Query.Text + " SORT BY Account.Date Desc";
+	Query.Text = Query.Text + " ORDER BY Account.Date Desc";
 	Selection = Query.Execute().Select();
 	If Selection.Next() Then
 		
