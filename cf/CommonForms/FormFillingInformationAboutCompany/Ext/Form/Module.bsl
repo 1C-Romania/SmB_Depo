@@ -52,7 +52,7 @@ Procedure WriteFormChanges(FinishEntering = False)
 	
 	If ValueIsFilled(ChiefAccountant.Description) Then
 		If ChiefAccountant.Description = Chiefexecutive.Description
-		 OR ChiefAccountant.Ref = Chiefexecutive.Ref Then
+		 OR (ChiefAccountant.Ref <> Catalogs.Employees.EmptyRef() AND ChiefAccountant.Ref = Chiefexecutive.Ref) Then
 			ChiefAccountantObject = ChiefExecutiveObject;
 		Else
 			ChiefAccountantObject = FormAttributeToValue("ChiefAccountant");
@@ -75,10 +75,10 @@ Procedure WriteFormChanges(FinishEntering = False)
 	
 	If ValueIsFilled(Cashier.Description) Then
 		If Cashier.Description = Chiefexecutive.Description
-		 OR Cashier.Ref = Chiefexecutive.Ref Then
+		 OR (Cashier.Ref <> Catalogs.Employees.EmptyRef() AND Cashier.Ref = Chiefexecutive.Ref) Then
 			CashierObject = ChiefExecutiveObject;
 		ElsIf Cashier.Description = ChiefAccountant.Description
-		 OR Cashier.Ref = ChiefAccountant.Ref Then
+		 OR (Cashier.Ref <> Catalogs.Employees.EmptyRef() AND Cashier.Ref = ChiefAccountant.Ref) Then
 			CashierObject = ChiefAccountantObject;
 		Else
 			CashierObject = FormAttributeToValue("Cashier");
@@ -101,13 +101,13 @@ Procedure WriteFormChanges(FinishEntering = False)
 	
 	If ValueIsFilled(WarehouseMan.Description) Then
 		If WarehouseMan.Description = Chiefexecutive.Description
-		 OR WarehouseMan.Ref = Chiefexecutive.Ref Then
+		 OR (WarehouseMan.Ref <> Catalogs.Employees.EmptyRef() AND WarehouseMan.Ref = Chiefexecutive.Ref) Then
 			WarehouseManObject = ChiefExecutiveObject;
 		ElsIf WarehouseMan.Description = ChiefAccountant.Description
-		 OR WarehouseMan.Ref = ChiefAccountant.Ref Then
+		 OR (WarehouseMan.Ref <> Catalogs.Employees.EmptyRef() AND WarehouseMan.Ref = ChiefAccountant.Ref) Then
 			WarehouseManObject = ChiefAccountantObject;
 		ElsIf WarehouseMan.Description = Cashier.Description
-		 OR WarehouseMan.Ref = Cashier.Ref Then
+		 OR (WarehouseMan.Ref <> Catalogs.Employees.EmptyRef() AND WarehouseMan.Ref = Cashier.Ref) Then
 			WarehouseManObject = CashierObject;
 		Else
 			WarehouseManObject = FormAttributeToValue("WarehouseMan");
