@@ -85,10 +85,7 @@ EndFunction // CreateMatchFromString()
 &AtServer
 Procedure DataLoadFromFile()
 	
-	//( elmi #17 (112-00003) 
-	//FormAttributeToValue("Object").Load(ImportTitle);
 	FormAttributeToValue("Object").Import(ImportTitle);
-    //) elmi  
 	
 EndProcedure // DataLoadFromFile()
 
@@ -223,8 +220,8 @@ Function GenerateMapOfItemsBeingImported()
 	ImportExportable = CreateMapFromString(
 		Upper("Number,Date,Amount,PaymentKind,PayKind,StatementDate,StatementTime,StatementContent,DateCredited,Date_Received,"
 		   + "PayerAccount,Payer,PayerTIN,Payer1,PayerBankAcc,PayerBank1,PayerBank2,PayerBIC,PayerBalancedAccount,Payer2,Payer3,Payer4,"
-		   + "PayeeAccount,Recipient,PayeeTIN,Payee1,PayeeBankAcc,PayeeBank1,PayeeBank2,PayeeBIK,PayeeBalancedAccount,Payee2,Payee3,Payee4,"
-		   + "AuthorStatus,PayerKPP,PayeeKPP,KBKIndicator,OKATO,BasisIndicator,PeriodIndicator,NumberIndicator,DateIndicator,TypeIndicator,"
+		   + "PayeeAccount,Recipient,PayeeTIN,Payee1,PayeeBankAcc,PayeeBank1,PayeeBank2,PayeeBIC,PayeeBalancedAccount,Payee2,Payee3,Payee4,"
+		   + "AuthorStatus,PayerRegistrationNumber,PayeeRegistrationNumber,KBKIndicator,BasisIndicator,PeriodIndicator,NumberIndicator,DateIndicator,TypeIndicator,"
 		   + "PaymentDestination,PaymentDestination1,PaymentDestination2,PaymentDestination3,PaymentDestination4,PaymentDestination5,PaymentDestination6,"
 		   + "OrderOfPriority,PaymentDueDate,PaymentCondition1,PaymentCondition2,PaymentCondition3,AcceptanceTerm,LetterOfCreditType,PaymentByRepr,AdditionalConditions,NumberVendorAccount,DocSendingDate,Code"
 		)
@@ -246,7 +243,7 @@ Procedure GenerateMapsOFNotEmptyItemsOnImport(ImportIsNotEmpty, ImportBlankPayme
 	// According to issuer status it is defined that the payment is - tax.
 	ImportBlankPaymentOrderBudget = CreateMapFromString(
 		"Number,Date,Amount,PayerAccount,PayerTIN,PayeeAccount,PayeeTIN,"
-	  + "AuthorStatus,PayerKPP,PayeeKPP,KBKIndicator,OKATO,BasisIndicator,"
+	  + "AuthorStatus,PayerRegistrationNumber,PayeeRegistrationNumber,KBKIndicator,BasisIndicator,"
 	  + "PeriodIndicator,NumberIndicator,DateIndicator,TypeIndicator"
 	);
 	
@@ -373,7 +370,7 @@ Procedure CheckForBlankImportValue(ImportRow, PropertyName, PresentationProperti
 	
 	If ImportIsNotEmpty[0][PropertyName] = True Then
 		If Not ValueIsFilled(ImportRow[PropertyName]) Then
-			RowRemark = NStr("en='""%PropertyName%"" is not filled!';ru='Не заполнено ""%ИмяСвойства%""!'");
+			RowRemark = NStr("en='""%PropertyName%"" is not filled!';ru='Не заполнено ""%PropertyName%""!'");
 			RowRemark = StrReplace(RowRemark, "%PropertyName%", PropertyName);
 			AddComment(ImportRow, 3, RowRemark);
 		EndIf;
@@ -505,10 +502,8 @@ Procedure RecognizeDataInDocumentRow(DocumentRow)
 		|	&DateDoc And PaymentDocuments.BankAccount
 		|	= &BankAccount And PaymentDocuments.Company = &Company";
 		
-		//( elmi #17 (112-00003)
-		//QuerySearchDocument.SetParameter("DocDate", DocDate);
-		  QuerySearchDocument.SetParameter("DateDoc", DocDate);
-		//) elmi
+
+		QuerySearchDocument.SetParameter("DateDoc", DocDate);
 		QuerySearchDocument.SetParameter("Company", Object.Company);
 		QuerySearchDocument.SetParameter("BankAccount", Object.BankAccount);
 		Result = QuerySearchDocument.Execute().Select();
@@ -531,7 +526,7 @@ Procedure RecognizeDataInDocumentRow(DocumentRow)
 		EndDo;
 		
 		If QuantityDoc > 1 Then
-			RowRemark = NStr("en='Several (%QuantityDoc%) corresponding documents have been found in the infobase!';ru='В информационной базе найдено несколько(%КоличествоДок%) соответствующих документов!'");
+			RowRemark = NStr("en='Several (%QuantityDoc%) corresponding documents have been found in the infobase!';ru='В информационной базе найдено несколько(%QuantityDoc%) соответствующих документов!'");
 			RowRemark = StrReplace(RowRemark, "%QuantityDoc%", QuantityDoc);
 			AddComment(DocumentRow, 1, RowRemark);
 		EndIf;
@@ -582,31 +577,31 @@ Procedure RecognizeDataInDocumentRow(DocumentRow)
 		DocumentRow.BankAccount = Object.BankAccount;
 	EndIf;
 	
-	// 6) We define the counterparty bank account
+	// 6) We define the counterparty bank account    //!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 	If Not ValueIsFilled(DocumentRow.CounterpartyAccount) Then
 		AccountSearchQuery = New Query;
 		If CompanyPayer(DocumentKind) Then
 			CounterpartyAccount = DocumentRow.PayeeAccount;
-			TINCounterparty = DocumentRow.PayeeTIN;
-			CounterpartyCRR = DocumentRow.PayeeKPP;
+			CounterpartyTIN = DocumentRow.PayeeTIN;
+			CounterpartyRegistrationNumber = DocumentRow.PayeeRegistrationNumber;
 			If ValueIsFilled(DocumentRow.Payee1) Then
 				CounterpartyName = DocumentRow.Payee1;
 			Else
-				CounterpartyName = DocumentRow.Recipient;
+				CounterpartyName = DocumentRow.Payee;
 			EndIf;
 			AccountSearchQuery.SetParameter("AccountNo", DocumentRow.PayeeAccount);
 		Else
 			AccountSearchQuery.SetParameter("AccountNo", DocumentRow.PayerAccount);
 			CounterpartyAccount = DocumentRow.PayerAccount;
-			TINCounterparty = DocumentRow.PayerTIN;
-			CounterpartyCRR = DocumentRow.PayerKPP;
+			CounterpartyTIN = DocumentRow.PayerTIN;
+			CounterpartyRegistrationNumber = DocumentRow.PayerRegistrationNumber;
 			If DocumentRow.Payer1 <> "" Then
 				CounterpartyName = DocumentRow.Payer1;
 			Else
 				CounterpartyName = DocumentRow.Payer;
 			EndIf;
 		EndIf;
-		AccountSearchQuery.SetParameter("TINCounterparty", TINCounterparty);
+		AccountSearchQuery.SetParameter("CounterpartyTIN", CounterpartyTIN);
 		AccountSearchQuery.Text = 
 		"SELECT ALLOWED
 		|	BankAccounts.Owner,
@@ -616,8 +611,8 @@ Procedure RecognizeDataInDocumentRow(DocumentRow)
 		|	Catalog.BankAccounts AS BankAccounts
 		|WHERE
 		|	BankAccounts.Owner REFS Catalog.Counterparties 
-		|	" + ?(NOT IsBlankString(TINCounterparty), "AND BankAccounts.Owner.TIN = &TINCounterparty", "") + "
-		|	And BankAccount.AccountNumber = &AccountNumber";
+		|	" + ?(NOT IsBlankString(CounterpartyTIN), "AND BankAccounts.Owner.TIN = &CounterpartyTIN", "") + "
+		|	And BankAccounts.AccountNo = &AccountNo";
 		
 		SearchSelection = AccountSearchQuery.Execute().Select();
 		Counterparty = Catalogs.Counterparties.EmptyRef();
@@ -626,7 +621,7 @@ Procedure RecognizeDataInDocumentRow(DocumentRow)
 			DocumentRow.CounterpartyAccount = SearchSelection.Ref;
 			Counterparty = SearchSelection.Owner;
 		Else
-			RowRemark = NStr("en='Counterparty account is not found (%CounterpartyAccount%).';ru='Не найден счет контрагента (%СчетКонтрагента%).'");
+			RowRemark = NStr("en='Counterparty account is not found (%CounterpartyAccount%).';ru='Не найден счет контрагента (%CounterpartyAccount%).'");
 			RowRemark = StrReplace(RowRemark, "%CounterpartyAccount%", CounterpartyAccount);
 			AddComment(DocumentRow, 2, RowRemark);
 			StringGLCounterpartyAccount = NStr("en='Not found (%CounterpartyAccount%).';ru='Не найден (%AccountOfCompany%).'");
@@ -635,7 +630,7 @@ Procedure RecognizeDataInDocumentRow(DocumentRow)
 		EndIf;
 		
 		If SearchSelection.Count() > 1 Then
-			RowRemark = NStr("en='The several (%Quantity%) same banking accounts have been found in the infobase!';ru='В информационной базе найдено несколько(%Количество%) одинаковых банковских счетов!'");
+			RowRemark = NStr("en='The several (%Quantity%) same banking accounts have been found in the infobase!';ru='В информационной базе найдено несколько(%Quantity%) одинаковых банковских счетов!'");
 			RowRemark = StrReplace(RowRemark, "%Quantity%", SearchSelection.Count());
 			AddComment(DocumentRow, 1, RowRemark);
 		EndIf;
@@ -645,36 +640,45 @@ Procedure RecognizeDataInDocumentRow(DocumentRow)
 	If Not ValueIsFilled(DocumentRow.Counterparty) Then
 		If ValueIsFilled(Counterparty) Then
 			DocumentRow.Counterparty = Counterparty;
-		ElsIf Not IsBlankString(TINCounterparty) Then
+		ElsIf Not IsBlankString(CounterpartyTIN) or Not IsBlankString(CounterpartyRegistrationNumber) or Not IsBlankString(CounterpartyName) Then
 			
 			DocumentRow.Counterparty = Counterparty;
 			QuerySearchCounterparty = New Query(
 			"SELECT ALLOWED
 			|	Counterparties.Ref,
 			|	Counterparties.TIN,
-			|	Counterparties.Description,
-			|	Counterparties.KPP
+			|	Counterparties.RegistrationNumber,
+			|	Counterparties.Description
 			|FROM
 			|	Catalog.Counterparties AS Counterparties
 			|WHERE
-			|	Counterparties.TIN = &CounterpartyTIN");
+			|	Counterparties.TIN = &CounterpartyTIN or Counterparties.RegistrationNumber = &CounterpartyRegistrationNumber or Counterparties.Description = &CounterpartyName");
 			
-			QuerySearchCounterparty.SetParameter("CounterpartyTIN", TINCounterparty);
+			QuerySearchCounterparty.SetParameter("CounterpartyTIN", CounterpartyTIN);
+			QuerySearchCounterparty.SetParameter("CounterpartyRegistrationNumber", CounterpartyRegistrationNumber);
+			QuerySearchCounterparty.SetParameter("CounterpartyName", CounterpartyName);
 			SearchSelection = QuerySearchCounterparty.Execute().Unload();
 			
-			// We find counterparty by TIN if there is CRR then we use it while finding too.
+			// We find counterparty by TIN .
 			FilterParameters = New Structure;
-			FilterParameters.Insert("TIN", TINCounterparty);
-			If Not IsBlankString(CounterpartyCRR) Then
-				FilterParameters.Insert("KPP", CounterpartyCRR);
+			If Not IsBlankString(CounterpartyTIN) Then
+				FilterParameters.Insert("TIN", CounterpartyTIN);
 			EndIf;
 			FoundsCounterparties = SearchSelection.FindRows(FilterParameters);
 			
-			// If we did not find either by TIN or by CRR then we try to find by TIN only.
+			// If we did not find by TIN then we try to find by RegistrationNumber.
 			If FoundsCounterparties.Count() = 0
-			AND Not IsBlankString(CounterpartyCRR) Then
+			AND Not IsBlankString(CounterpartyRegistrationNumber) Then
 				FilterParameters = New Structure;
-				FilterParameters.Insert("TIN", TINCounterparty);
+				FilterParameters.Insert("Description", CounterpartyName);
+				FoundsCounterparties = SearchSelection.FindRows(FilterParameters);
+			EndIf;
+			
+			// If we did not find by RegistrationNumber then we try to find by Description.
+			If FoundsCounterparties.Count() = 0
+			AND Not IsBlankString(CounterpartyName) Then
+				FilterParameters = New Structure;
+				FilterParameters.Insert("RegistrationNumber", CounterpartyRegistrationNumber);
 				FoundsCounterparties = SearchSelection.FindRows(FilterParameters);
 			EndIf;
 			
@@ -683,23 +687,23 @@ Procedure RecognizeDataInDocumentRow(DocumentRow)
 			EndIf;
 			
 			If FoundsCounterparties.Count() > 1 Then
-				RowRemark = NStr("en='Several (%Quantity%) same TIN counterparties have been found in the infobase!';ru='В информационной базе найдено несколько(%Количество%) контрагентов с одинаковым ИНН!'");
+				RowRemark = NStr("en='Several (%Quantity%) same TIN counterparties have been found in the infobase!';ru='В информационной базе найдено несколько(%Quantity%) контрагентов с одинаковым ИНН!'");
 				RowRemark = StrReplace(RowRemark, "%Quantity%", FoundsCounterparties.Count());
 				AddComment(DocumentRow, 2, RowRemark);
 			ElsIf FoundsCounterparties.Count() = 0 Then
 				RowRemark = NStr("en='Counterparty is not found (%CounterpartyName%,TIN %TINCounterparty%).';ru='Не найден контрагент (%CounterpartyName%, ИНН %TINCounterparty%).'");
 				RowRemark = StrReplace(RowRemark, "%CounterpartyName%", CounterpartyName);
-				RowRemark = StrReplace(RowRemark, "%TINCounterparty%", TINCounterparty);
+				RowRemark = StrReplace(RowRemark, "%TINCounterparty%", CounterpartyTIN);
 				AddComment(DocumentRow, 2, RowRemark);
 				StringCounterparty = NStr("en='Not found (%CounterpartyName%, TIN, %TINCounterparty%).';ru='Не найден (%CounterpartyName%, ИНН %TINCounterparty%).'");
 				StringCounterparty = StrReplace(StringCounterparty, "%CounterpartyName%", CounterpartyName);
-				StringCounterparty = StrReplace(StringCounterparty, "%TINCounterparty%", TINCounterparty);
+				StringCounterparty = StrReplace(StringCounterparty, "%TINCounterparty%", CounterpartyTIN);
 				DocumentRow.Counterparty = StringGLCounterpartyAccount;
 			EndIf;
 			
 		Else
-			AddComment(DocumentRow, 2, NStr("en='The TIN of the counterparty is not specified. ';ru='Не указан ИНН контрагента. '"));
-			StringCounterparty = NStr("en='Not found (%CounterpartyName%, TIN is not specified).';ru='Не найден (%ИмяКонтрагента%, не указан ИНН).'");
+			AddComment(DocumentRow, 2, NStr("en='The TIN,Reg.No or Name of the counterparty is not specified. ';ru='Не указан ни ИНН, ни Рег.Номер, ни имя контрагента. '"));
+			StringCounterparty = NStr("en='Not found (%CounterpartyName%, TIN, Reg.No or Name is not specified).';ru='Не найден (%CounterpartyName%, не указан ИННРег.Номер, Имя).'");
 			StringCounterparty = StrReplace(StringCounterparty, "%CounterpartyName%", CounterpartyName);
 			DocumentRow.Counterparty = StringCounterparty;
 		EndIf;
@@ -743,7 +747,7 @@ Procedure RecognizeDataInDocumentRow(DocumentRow)
 			DocumentRow.AmountDebited = Amount;
 		EndIf;
 	Else
-		RowRemark = NStr("en='Incorrect document amount (%Buffer%) is specified!';ru='Указана неверная сумма документа(%Буфер%)!'");
+		RowRemark = NStr("en='Incorrect document amount (%Buffer%) is specified!';ru='Указана неверная сумма документа(%Buffer%)!'");
 		RowRemark = StrReplace(RowRemark, "%Buffer%", Buffer);
 		AddComment(DocumentRow, 4, RowRemark);
 	EndIf;
@@ -860,7 +864,7 @@ Procedure ListOfNotFound(DocumentRow, BankAccount, CounterpartyTable)
 	IsFoundCounterparty = TypeOf(DocumentRow.Counterparty) <> Type("String");
 	IsFoundAccount       = TypeOf(DocumentRow.CounterpartyAccount) <> Type("String");
 	
-	CounterpartyType = ?(DocumentRow.PayerAccount = BankAccount.AccountNo, "RECIPIENT", "Payer");
+	CounterpartyType = ?(DocumentRow.PayerAccount = BankAccount.AccountNo, "Payee", "Payer");
 	
 	If ValueIsFilled(DocumentRow[CounterpartyType + "TIN"]) Then
 		FoundRecordAboutCounterparty = FindTreeItem(CounterpartyTable.GetItems(), "Value", DocumentRow[CounterpartyType + "TIN"]);
@@ -883,7 +887,7 @@ Procedure ListOfNotFound(DocumentRow, BankAccount, CounterpartyTable)
 		
 		AddNewAttributeDescription("Description", End, CounterpartyType, NewCounterparty.GetItems(), DocumentRow);
 		AddNewAttributeDescription("TIN"		  , "TIN"	 , CounterpartyType, NewCounterparty.GetItems(), DocumentRow);
-		AddNewAttributeDescription("KPP"		  , "KPP"	 , CounterpartyType, NewCounterparty.GetItems(), DocumentRow);
+		AddNewAttributeDescription("RegistrationNumber", "RegistrationNumber", CounterpartyType, NewCounterparty.GetItems(), DocumentRow);
 		
 		If IsFoundCounterparty Then
 			NewCounterparty.Attribute = DocumentRow.Counterparty;
@@ -937,6 +941,156 @@ EndProcedure // NotFoundList()
 //
 &AtServer
 Function FillDocumentsForImport(ImportTextForParsing)
+	
+	CounterpartyTable.GetItems().Clear();
+	
+	// We prepare the data processing structures.
+	DocumentsForImport = Object.Import.Unload();
+	
+	ImportExportable = GenerateMapOfItemsBeingImported();
+	
+	ImportIsNotEmpty = Undefined;
+	ImportBlankPaymentOrder = Undefined;
+	ImportBlankPaymentOrderBudget = Undefined;
+	
+	BankAccountsToImport = Object.ImportBankAccounts.Unload();
+	
+	GenerateMapsOFNotEmptyItemsOnImport(
+		ImportIsNotEmpty,
+		ImportBlankPaymentOrder,
+		ImportBlankPaymentOrderBudget
+	);
+	SettlementsAccountsTags = CreateMapFromString(
+		Upper("StartDate,EndDate,BankAcc,OpeningBalance,DebitedTotal,CreditedTotal,ClosingBalance,ENDBANKACC")
+	);
+	TagsHeader = CreateMapFromString(
+		Upper("FormatVersion,Encoding,Sender,Recipient,CreationDate,CreationTime,StartDate,EndDate")
+	);
+	StructureTitle = New Structure(
+		Upper("FormatVersion,Encoding,Sender,Recipient,CreationDate,CreationTime,StartDate,EndDate")
+	);
+	ImportTitle = StructureTitle;
+	ImportExchangeSign = False;
+	IsFoundEndFile = False;
+	ImportDocumentsKinds = New Array;
+	BankAccountsToImport.Clear();
+	DocumentsForImport.Clear();
+	
+	// We fill the primary data structure.               //АТ здесь начинается разбор текста файла импорта.
+	
+	If ValueIsFilled(Object.ExternalDataProcessor) Then
+
+		ParametersOfDataProcessor = New Structure("CommandID, AdditionalInformationProcessorRef, BankAccount, ImportTextForParsing, DocumentsForImport" ); 
+		
+		//Обязательные параметры дополнительных отчетов и обработок
+		ParametersOfDataProcessor.CommandID                           = "ImportFromClientBankExternalDP";
+		ParametersOfDataProcessor.AdditionalInformationProcessorRef   = Object.ExternalDataProcessor;
+		
+		//Параметры для внешней обработки обмена с банком
+		ParametersOfDataProcessor.BankAccount                     	  = Object.BankAccount;  		//bank account
+		ParametersOfDataProcessor.ImportTextForParsing                = ImportTextForParsing;
+		
+		//Возвращаемые значения
+		//ParametersOfDataProcessor.StartPeriod = Date(1,1,1);
+		//ParametersOfDataProcessor.EndPeriod   = Date(1,1,1);
+		ParametersOfDataProcessor.DocumentsForImport                  = DocumentsForImport; //Table of documents
+		
+		AdditionalReportsAndDataProcessors.RunCommand( ParametersOfDataProcessor ); //Вызываем обработку и заполняем возвращаемые значения в ParametersOfDataProcessor
+					
+		WarningText = ParametersOfDataProcessor.ExecutionResult.OutputMessages.Text;
+
+		If ValueIsFilled(WarningText) Then
+			
+			Message = New UserMessage();
+		    MessageText = NSTR("ru='Ошибка: ';en='Error: '")+WarningText;
+			//Message.Field = "Nomenclature[10].Count";
+		    Message.Text = MessageText;
+			//Message.SetData(DataObject);
+		    Message.Message();
+			return MessageText;
+		
+		EndIf;
+	
+	Else
+		BankAccountsToImport.Clear();
+		DocumentsForImport.Clear();
+		MessageText = NStr("en='External Data Processor is not assigned!';ru='Не назначена внешняя обработка загрузки!'");
+		SmallBusinessServer.ShowMessageAboutError(ThisForm, MessageText);
+		return MessageText;
+	EndIf;
+	
+	//AT begin Обрабатываем загруженные внешней обработкой документы
+	// We sequentially process each imported string.
+	LineNumber = 0;
+	For Each DocumentRow IN DocumentsForImport Do
+		
+		// We recognize attributes.
+		// If in the file there are statements of payment documents of several
+		// accounts, then we recognize and display only those that
+		// were exported according to the specified bank account.
+		If DocumentRow.PayerAccount = Object.BankAccount.AccountNo
+		 OR DocumentRow.PayeeAccount = Object.BankAccount.AccountNo Then
+			RecognizeDataInDocumentRow(DocumentRow);
+			LineNumber = LineNumber + 1;
+			DocumentRow.LineNumber = LineNumber;
+			
+			// Each attribute (= column) should be checked for empty value.
+			For Each LoadColumn IN DocumentsForImport.Columns Do
+				CheckForBlankImportValue(
+					DocumentRow,
+					LoadColumn.Name,
+					LoadColumn.Title,
+					ImportIsNotEmpty
+				);
+			EndDo;
+			
+			If TypeOf(DocumentRow.Counterparty) = Type("String")
+			 OR TypeOf(DocumentRow.CounterpartyAccount) = Type("String") Then
+				
+				// We add attributes in tabular section for further use.
+				ListOfNotFound(DocumentRow, Object.BankAccount, CounterpartyTable);
+				
+			EndIf;
+			
+		Else
+			
+			// We mark other items for further deletion.
+			DocumentRow.LineNumber = 0;
+			
+		EndIf;
+	EndDo;
+	
+	// We delete unnecessary rows from a table.
+	Quantity = DocumentsForImport.Count() - 1;
+	For Ct = 0 to Quantity Do
+		If DocumentsForImport[Quantity - Ct].LineNumber = 0 Then
+			DocumentsForImport.Delete(Quantity - Ct);
+		EndIf;
+	EndDo;
+	//AT end
+	
+	
+	
+	//АТ Здесь начинается обработка полученных документов 
+	For Each DocumentRow IN DocumentsForImport Do
+		DocumentRow.Import = IsBlankString(DocumentRow.ErrorsDescriptionFull);
+		DocumentRow.PaymentDestination = TrimAll(DocumentRow.PaymentDestination);
+		DocumentRow.PictureNumber = ?(IsBlankString(DocumentRow.ErrorsDescriptionFull), 0, 1);
+		DocumentRow.AdvanceFlag = True;
+		FillAmountsAllocatedAtServer(DocumentRow);
+	EndDo;
+	
+	Object.Import.Clear();
+	Object.Import.Load(DocumentsForImport);
+	
+	Object.ImportBankAccounts.Clear();
+	Object.ImportBankAccounts.Load(BankAccountsToImport);
+	
+	Return "";
+	
+EndFunction // FillDocumentsForImport()
+
+Function FillDocumentsForImportOLD(ImportTextForParsing)
 	
 	CounterpartyTable.GetItems().Clear();
 	
@@ -1165,6 +1319,16 @@ Function ReadFile(PathToFileFromSetting)
 	
 	If Object.Encoding = "DOS" Then
 		Codin = TextEncoding.OEM;
+	//AT begin
+	ElsIf Object.Encoding = "OEM" Then
+		Codin = TextEncoding.OEM;
+	ElsIf Object.Encoding = "ANSI" or Object.Encoding = "Windows" Then
+		Codin = TextEncoding.ANSI;
+	ElsIf Object.Encoding = "UTF8" Then
+		Codin = TextEncoding.UTF8;
+	ElsIf Object.Encoding = "UTF16" Then
+		Codin = TextEncoding.UTF16;
+	//AT end
 	Else
 		Codin = TextEncoding.ANSI;
 	EndIf;
@@ -1180,12 +1344,6 @@ Function ReadFile(PathToFileFromSetting)
 	
 	If ReadStream.LineCount() < 1 Then
 		MessageText = NStr("en='There is no data in the file!';ru='В файле нет данных!'");
-		SmallBusinessClient.ShowMessageAboutError(ThisForm, MessageText);
-		Return Undefined;
-	EndIf;
-	
-	If TrimAll(ReadStream.GetLine(1)) <> "1CClientBankExchange" Then
-		MessageText = NStr("en='Specified file is not file of exchange or specified code is incorrect!';ru='Указанный файл не является файлом обмена или неверно указана кодировка!'");
 		SmallBusinessClient.ShowMessageAboutError(ThisForm, MessageText);
 		Return Undefined;
 	EndIf;
@@ -1252,10 +1410,6 @@ EndFunction // ReadElectronicBankStatement()
 &AtClient
 Procedure ReadDataFromFile()
 	
-	//( elmi #17 (112-00003) 
-	ExternalDataProcessorRefs = GetExternalDataProcessor(Object.BankAccount);  
-	//) elmi
-	
 	If ValueIsFilled(DirectExchangeWithBanksAgreement) Then
 		
 		If Not ValueIsFilled(BankElectronicStatement) Then
@@ -1276,37 +1430,6 @@ Procedure ReadDataFromFile()
 			
 		EndIf;
 		
-	//( elmi #17 (112-00003) 
-	ElsIf  ValueIsFilled(ExternalDataProcessorRefs) Then
-		
-		ParametersOfDataProcessor = New Structure("CommandID, AdditionalInformationProcessorRef, ArrayOfPurposes, PathToFile, ExecutionResult"); 
-		ParametersOfDataProcessor.CommandID                           = "ImportFromClientBankExternalDP";
-		ParametersOfDataProcessor.AdditionalInformationProcessorRef   = ExternalDataProcessorRefs;
-		ParametersOfDataProcessor.ArrayOfPurposes                     = Object.BankAccount;
-		ParametersOfDataProcessor.PathToFile                          = Object.ImportFile;
-		ParametersOfDataProcessor.ExecutionResult                     = New Structure("ImportStream, WarningText, ListOfNotFound" );
-		
-		RunCommandOnServer( ParametersOfDataProcessor);
-		
-		WarningText = "";
-		Result = ParametersOfDataProcessor.ExecutionResult;
-		
-		If Result <> Undefined Then
-			If ValueIsFilled(Result.WarningText) Then
-				WarningText = Result.WarningText;
-			Else	
-				If Result.Property("ImportStream") Then 
-					FillTableFromExternalDataProcessor( Result.ImportStream );
-					Items.NotFoundAttributes.Visible = (CounterpartyTable.GetItems().Count() > 0);
-				Else
-					WarningText = НСтр("en = 'Error in data import!';ru='Ошибка в данных импорта!'");
-				EndIf	
-			EndIF;		
-		Else	  
-			WarningText = НСтр("en='The file of downloading contains no data!';ru='Файл загрузки не содержит данных'");
-		EndIf;
-    //) elmi
-		
 	Else
 		
 		// We get source data.
@@ -1322,15 +1445,6 @@ Procedure ReadDataFromFile()
 		WarningText = FillDocumentsForImport(ImportTextForParsing);
 		
 	EndIf;
-	
-	//If ImportTextForParsing = Undefined Then
-	//	MessageText = NStr("en='Import file does not contain data!';ru='Файл загрузки не содержит данных!'");
-	//	SmallBusinessClient.ShowMessageAboutError(ThisForm, MessageText);
-	//	Return;
-	//EndIf;
-	//WarningText = FillDocumentsForImport(ImportTextForParsing);
-	
-	//) elmi
 	
 	If ValueIsFilled(WarningText) Then
 		ShowMessageBox(Undefined,WarningText);
@@ -1431,7 +1545,7 @@ Procedure OnCreateAtServer(Cancel, StandardProcessing)
 	EndIf;
 	
 	If Parameters.Property("Application") Then
-		Object.Application = Parameters.Application;
+		Object.ExternalDataProcessor = Parameters.Application;
 	EndIf;
 	
 	If Not ValueIsFilled(Object.StartPeriod) Then
@@ -1467,7 +1581,7 @@ Procedure OnCreateAtServer(Cancel, StandardProcessing)
 	
 	
 	If Parameters.Property("AddressOfFileForProcessing") Then
-		ImportFile = GetFromTempStorage(Parameters.AddressOfFileForProcessing);
+		ImportFile = GetFromTempStorage(Parameters.AddressOfFileForProcessing);   //!!!!!
 		If TypeOf(ImportFile) = Type("BinaryData") Then
 			Try
 				TempFileName = GetTempFileName("txt");
@@ -1481,53 +1595,16 @@ Procedure OnCreateAtServer(Cancel, StandardProcessing)
 				EventLogLevel.Error,
 				,
 				,
-				StringFunctionsClientServer.SubstituteParametersInString(
+				StringFunctionsClientServer.PlaceParametersIntoString(
 				NStr("en='The temporary file saving to the disk is failed by reason: %1';ru='Не удалось сохранение временного файла на диск по причине: %1'"),
 				ErrorDescription()));
 				Return;
 			EndTry;
 		EndIf;
-		ImportFile = StrReplace(StrReplace(ImportFile, "e","e"), "E", "E");
-		ReadStream.SetText(ImportFile);
 		
-		//( elmi #17 (112-00003) 
-		//WarningText = FillDocumentsForImport(ImportFile);
+		ReadStream.SetText(ImportFile);                                       //!!!!!
 		
-		ExternalDataProcessorRefs = Object.BankAccount.ExternalDataProcessor;  
-		
-		If  ValueIsFilled(ExternalDataProcessorRefs) Then
-			
-			ParametersOfDataProcessor = New Structure("CommandID, AdditionalInformationProcessorRef, ArrayOfPurposes, PathToFile, ExecutionResult"); 
-			ParametersOfDataProcessor.CommandID                           = "ImportFromClientBankExternalDP";
-			ParametersOfDataProcessor.AdditionalInformationProcessorRef   = ExternalDataProcessorRefs;
-			ParametersOfDataProcessor.ArrayOfPurposes                     = Object.BankAccount;
-			ParametersOfDataProcessor.PathToFile                          = Object.ImportFile;
-			ParametersOfDataProcessor.ExecutionResult                     = New Structure("ImportStream, WarningText, ListOfNotFound" );
-			
-			RunCommandOnServer( ParametersOfDataProcessor);
-			
-			WarningText="";
-			Result = ParametersOfDataProcessor.ExecutionResult;
-			
-			If Result <> Undefined Then
-			   If ValueIsFilled(Result.WarningText) Then
-						WarningText = Result.WarningText;
-			   Else	
-				    If Result.Property("ImportStream") Then 
-				        FillTableFromExternalDataProcessor( Result.ImportStream );
-					    Items.NotFoundAttributes.Visible = (CounterpartyTable.GetItems().Count() > 0);
-					Else
-						WarningText = НСтр("en = 'Error in data import!';ru='Ошибка в данных импорта!'");
-					EndIf	
-			   EndIF;		
-			Else	  
-				WarningText = НСтр("en='The file of downloading contains no data!';ru='Файл загрузки не содержит данных'");
-			EndIf;
-			
-		Else	 
-			WarningText = FillDocumentsForImport(ImportFile);
-		EndIf;	 
-		//) elmi	 
+		WarningText = FillDocumentsForImport(ImportFile);
 		
 		Items.NotFoundAttributes.Visible = (CounterpartyTable.GetItems().Count() > 0);
 		
@@ -1537,7 +1614,7 @@ Procedure OnCreateAtServer(Cancel, StandardProcessing)
 		DirectExchangeWithBanksAgreement = Parameters.DirectExchangeWithBanksAgreement;
 		If ValueIsFilled(DirectExchangeWithBanksAgreement) Then
 			TemplateText = NStr("en='The direct exchange agreement is effectife from %1: bank statement will be imported to 1C:Small Business directly from the bank';ru='С %1 действует соглашение о прямом обмене: банковская выписка будет загружена в 1С:Управление небольшой фирмой напрямую из банка'");
-			LabelText = StringFunctionsClientServer.SubstituteParametersInString(TemplateText, CommonUse.GetAttributeValue(DirectExchangeWithBanksAgreement, "Counterparty"));
+			LabelText = StringFunctionsClientServer.PlaceParametersIntoString(TemplateText, CommonUse.GetAttributeValue(DirectExchangeWithBanksAgreement, "Counterparty"));
 			DirectMessageExchange = LabelText;
 		EndIf;
 	EndIf;
@@ -1656,53 +1733,6 @@ Procedure ImportExecute(Command)
 	If Object.Import.Count() > 0 Then
 		
 		DataLoadFromFile();
-		
-		If FileOperationsExtensionConnected Then
-			
-			//( elmi #17 (112-00003)  
-			ExternalDataProcessorRefs = GetExternalDataProcessor(Object.BankAccount);  
-			
-			If  ValueIsFilled(ExternalDataProcessorRefs) Then      // Table refresh.
-				
-				ParametersOfDataProcessor = New Structure("CommandID, AdditionalInformationProcessorRef, ArrayOfPurposes, PathToFile, ExecutionResult"); 
-				ParametersOfDataProcessor.CommandID                           = "ImportFromClientBankExternalDP";
-				ParametersOfDataProcessor.AdditionalInformationProcessorRef   = ExternalDataProcessorRefs;
-				ParametersOfDataProcessor.ArrayOfPurposes                     = Object.BankAccount;
-				ParametersOfDataProcessor.PathToFile                          = Object.ImportFile;
-				ParametersOfDataProcessor.ExecutionResult                     = New Structure("ImportStream, WarningText" );
-				
-				RunCommandOnServer( ParametersOfDataProcessor);
-				
-				WarningText = "";
-				Result = ParametersOfDataProcessor.ExecutionResult;
-								
-				If Result <> Undefined Then
-					If ValueIsFilled(Result.WarningText) Then
-						WarningText = Result.WarningText;
-					Else	
-						If Result.Property("ImportStream") Then 
-							FillTableFromExternalDataProcessor( Result.ImportStream );
-							Items.NotFoundAttributes.Visible = (CounterpartyTable.GetItems().Count() > 0);
-						Else
-							WarningText = НСтр("en = 'Error in data import!';ru='Ошибка в данных импорта!'");
-						EndIf	
-					EndIF;		
-				Else	  
-					WarningText = НСтр("en='The file of downloading contains no data!';ru='Файл загрузки не содержит данных'");
-				EndIf;
-			//) elmi	 
-				
-			Else	 
-				WarningText = FillDocumentsForImport(ReadStream.GetText()); // Table refresh.
-				
-			EndIf;	 
-			
-		EndIf;
-		
-		//( elmi #17 (112-00003) 
-		//ShowMessageBox(Undefined,NStr("en='Importing of the payment documents has been completed';ru='Загрузка платежных документов завершена.'"));
-		ShowMessageBox(Undefined, ?( ValueIsFilled(WarningText), WarningText ,NStr("en = 'Importing of the payment documents has been completed';ru='Загрузка платежных документов завершена.'")));
-		//) elmi
 		
 	Else
 		
@@ -1871,8 +1901,8 @@ Procedure Setting(Command)
 	
 	OpenForm("DataProcessor.ClientBank.Form.FormSetting",
 		New Structure(
-			"Script, FormatVersion, Application, PostImported, FillDebtsAutomatically, DirectExchangeWithBanksAgreement, UUID",
-			Object.Encoding, Object.FormatVersion, Object.Application, Object.PostImported, Object.FillDebtsAutomatically, DirectExchangeWithBanksAgreement, UUID
+			"Script, FormatVersion, ExternalDataProcessor, PostImported, FillDebtsAutomatically, DirectExchangeWithBanksAgreement, UUID",
+			Object.Encoding, Object.FormatVersion, Object.ExternalDataProcessor, Object.PostImported, Object.FillDebtsAutomatically, DirectExchangeWithBanksAgreement, UUID
 		)
 	);
 	
@@ -1885,7 +1915,7 @@ Procedure NotificationProcessing(EventName, Parameter, Source)
 	
 	If EventName = "SettingsChange" + UUID Then
 		Object.Encoding = Parameter.Encoding;
-		Object.Application = Parameter.Application;
+		Object.ExternalDataProcessor = Parameter.DataProcessor;
 		Object.FormatVersion = Parameter.FormatVersion;
 		Object.PostImported = Parameter.PostImported;
 		Object.FillDebtsAutomatically = Parameter.FillDebtsAutomatically;
@@ -1906,20 +1936,6 @@ Procedure ChoiceProcessing(ValueSelected, ChoiceSource)
 	EndIf;
 	
 EndProcedure
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 //( elmi #17 (112-00003) 
 &AtServer
@@ -1950,20 +1966,11 @@ FormAttributeToValue("Object");
 EndProcedure
 //) elmi
 
-//( elmi #17 (112-00003) 
-&AtServer
-Function  GetExternalDataProcessor(Account)
-	
-	    Return Account.ExternalDataProcessor;
-	     
-EndFunction
-//) elmi
-
 //( elmi #17 (112-00003)	
 &AtServer
 Procedure RunCommandOnServer(ParametersDataProcessors) Export
 	
-AdditionalReportsAndDataProcessors.RunCommand( ParametersDataProcessors );
+	AdditionalReportsAndDataProcessors.RunCommand( ParametersDataProcessors );
 	
 EndProcedure	
 //) elmi

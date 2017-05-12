@@ -77,112 +77,8 @@
 					<ShowTitle>false</ShowTitle>
 					<ExtendedTooltip name="GroupExchangeThroughFileExtendedTooltip" id="56"/>
 					<ChildItems>
-						<RadioButtonField name="Encoding" id="3">
+						<InputField name="Encoding" id="3">
 							<DataPath>Encoding</DataPath>
-							<RadioButtonType>Auto</RadioButtonType>
-							<ChoiceList>
-								<xr:Item>
-									<xr:Presentation/>
-									<xr:CheckState>0</xr:CheckState>
-									<xr:Value xsi:type="FormChoiceListDesTimeValue">
-										<Presentation>
-											<v8:item>
-												<v8:lang>en</v8:lang>
-												<v8:content>Windows</v8:content>
-											</v8:item>
-											<v8:item>
-												<v8:lang>ru</v8:lang>
-												<v8:content>Windows</v8:content>
-											</v8:item>
-										</Presentation>
-										<Value xsi:type="xs:string">Windows</Value>
-									</xr:Value>
-								</xr:Item>
-								<xr:Item>
-									<xr:Presentation/>
-									<xr:CheckState>0</xr:CheckState>
-									<xr:Value xsi:type="FormChoiceListDesTimeValue">
-										<Presentation>
-											<v8:item>
-												<v8:lang>en</v8:lang>
-												<v8:content>DOS</v8:content>
-											</v8:item>
-											<v8:item>
-												<v8:lang>ru</v8:lang>
-												<v8:content>DOS</v8:content>
-											</v8:item>
-										</Presentation>
-										<Value xsi:type="xs:string">DOS</Value>
-									</xr:Value>
-								</xr:Item>
-							</ChoiceList>
-							<ContextMenu name="EncodingContextMenu" id="4"/>
-							<ExtendedTooltip name="EncodingExtendedTooltip" id="38"/>
-						</RadioButtonField>
-						<RadioButtonField name="FormatVersion" id="50">
-							<DataPath>FormatVersion</DataPath>
-							<RadioButtonType>Auto</RadioButtonType>
-							<ChoiceList>
-								<xr:Item>
-									<xr:Presentation/>
-									<xr:CheckState>0</xr:CheckState>
-									<xr:Value xsi:type="FormChoiceListDesTimeValue">
-										<Presentation>
-											<v8:item>
-												<v8:lang>en</v8:lang>
-												<v8:content>1.01</v8:content>
-											</v8:item>
-											<v8:item>
-												<v8:lang>ru</v8:lang>
-												<v8:content>1.01</v8:content>
-											</v8:item>
-										</Presentation>
-										<Value xsi:type="xs:string">1.01</Value>
-									</xr:Value>
-								</xr:Item>
-								<xr:Item>
-									<xr:Presentation/>
-									<xr:CheckState>0</xr:CheckState>
-									<xr:Value xsi:type="FormChoiceListDesTimeValue">
-										<Presentation>
-											<v8:item>
-												<v8:lang>en</v8:lang>
-												<v8:content>1.02</v8:content>
-											</v8:item>
-											<v8:item>
-												<v8:lang>ru</v8:lang>
-												<v8:content>1.02</v8:content>
-											</v8:item>
-										</Presentation>
-										<Value xsi:type="xs:string">1.02</Value>
-									</xr:Value>
-								</xr:Item>
-								<xr:Item>
-									<xr:Presentation/>
-									<xr:CheckState>0</xr:CheckState>
-									<xr:Value xsi:type="FormChoiceListDesTimeValue">
-										<Presentation>
-											<v8:item>
-												<v8:lang>en</v8:lang>
-												<v8:content>1.03</v8:content>
-											</v8:item>
-											<v8:item>
-												<v8:lang>ru</v8:lang>
-												<v8:content>1.03</v8:content>
-											</v8:item>
-										</Presentation>
-										<Value xsi:type="xs:string">1.03</Value>
-									</xr:Value>
-								</xr:Item>
-							</ChoiceList>
-							<ContextMenu name="FormatVersionContextMenu" id="51"/>
-							<ExtendedTooltip name="FormatVersionExtendedTooltip" id="52"/>
-						</RadioButtonField>
-						<InputField name="Application" id="5">
-							<DataPath>Application</DataPath>
-							<Width>27</Width>
-							<HorizontalStretch>false</HorizontalStretch>
-							<Wrap>false</Wrap>
 							<ListChoiceMode>true</ListChoiceMode>
 							<ChoiceList>
 								<xr:Item>
@@ -192,14 +88,14 @@
 										<Presentation>
 											<v8:item>
 												<v8:lang>en</v8:lang>
-												<v8:content>DiasoftCLIENT 4x4 for Windows DiaSoft</v8:content>
+												<v8:content>OEM</v8:content>
 											</v8:item>
 											<v8:item>
 												<v8:lang>ru</v8:lang>
-												<v8:content>DiasoftCLIENT 4x4 for Windows Диасофт</v8:content>
+												<v8:content>Windows</v8:content>
 											</v8:item>
 										</Presentation>
-										<Value xsi:type="xs:string">DiasoftCLIENT 4x4 for Windows DiaSoft</Value>
+										<Value xsi:type="xs:string">OEM</Value>
 									</xr:Value>
 								</xr:Item>
 								<xr:Item>
@@ -209,14 +105,14 @@
 										<Presentation>
 											<v8:item>
 												<v8:lang>en</v8:lang>
-												<v8:content>Client-Bank RFK</v8:content>
+												<v8:content>ANSI</v8:content>
 											</v8:item>
 											<v8:item>
 												<v8:lang>ru</v8:lang>
-												<v8:content>Клиент-Банк РФК</v8:content>
+												<v8:content>DOS</v8:content>
 											</v8:item>
 										</Presentation>
-										<Value xsi:type="xs:string">Client-Bank RFK</Value>
+										<Value xsi:type="xs:string">ANSI</Value>
 									</xr:Value>
 								</xr:Item>
 								<xr:Item>
@@ -226,14 +122,10 @@
 										<Presentation>
 											<v8:item>
 												<v8:lang>en</v8:lang>
-												<v8:content>LanVisit DOS 4.90 Lanit</v8:content>
-											</v8:item>
-											<v8:item>
-												<v8:lang>ru</v8:lang>
-												<v8:content>LanVisit DOS 4.90 Ланит</v8:content>
+												<v8:content>UNF-8</v8:content>
 											</v8:item>
 										</Presentation>
-										<Value xsi:type="xs:string">LanVisit DOS 4.90 Lanit</Value>
+										<Value xsi:type="xs:string">UTF8</Value>
 									</xr:Value>
 								</xr:Item>
 								<xr:Item>
@@ -243,421 +135,25 @@
 										<Presentation>
 											<v8:item>
 												<v8:lang>en</v8:lang>
-												<v8:content>DBO BS-Client v.3 BSS</v8:content>
-											</v8:item>
-											<v8:item>
-												<v8:lang>ru</v8:lang>
-												<v8:content>ДБО BS-Client v.3 BSS</v8:content>
+												<v8:content>UTF-16</v8:content>
 											</v8:item>
 										</Presentation>
-										<Value xsi:type="xs:string">DBO BS-Client v.3 BSS</Value>
-									</xr:Value>
-								</xr:Item>
-								<xr:Item>
-									<xr:Presentation/>
-									<xr:CheckState>0</xr:CheckState>
-									<xr:Value xsi:type="FormChoiceListDesTimeValue">
-										<Presentation>
-											<v8:item>
-												<v8:lang>en</v8:lang>
-												<v8:content>TIVAL client-bank system</v8:content>
-											</v8:item>
-											<v8:item>
-												<v8:lang>ru</v8:lang>
-												<v8:content>Система клиент-банк TIVAL</v8:content>
-											</v8:item>
-										</Presentation>
-										<Value xsi:type="xs:string">TIVAL client-bank system</Value>
-									</xr:Value>
-								</xr:Item>
-								<xr:Item>
-									<xr:Presentation/>
-									<xr:CheckState>0</xr:CheckState>
-									<xr:Value xsi:type="FormChoiceListDesTimeValue">
-										<Presentation>
-											<v8:item>
-												<v8:lang>en</v8:lang>
-												<v8:content>Client of the bank Interbank v.5.1.R-Style Software Lab</v8:content>
-											</v8:item>
-											<v8:item>
-												<v8:lang>ru</v8:lang>
-												<v8:content>Клиент банка InterBank v.5.1 R-Style Software Lab</v8:content>
-											</v8:item>
-										</Presentation>
-										<Value xsi:type="xs:string">Client of the bank Interbank v.5.1.R-Style Software Lab</Value>
-									</xr:Value>
-								</xr:Item>
-								<xr:Item>
-									<xr:Presentation/>
-									<xr:CheckState>0</xr:CheckState>
-									<xr:Value xsi:type="FormChoiceListDesTimeValue">
-										<Presentation>
-											<v8:item>
-												<v8:lang>en</v8:lang>
-												<v8:content>"Electronic client" AKB Autobank</v8:content>
-											</v8:item>
-											<v8:item>
-												<v8:lang>ru</v8:lang>
-												<v8:content>"Электронный клиент" АКБ Автобанк</v8:content>
-											</v8:item>
-										</Presentation>
-										<Value xsi:type="xs:string">"Electronic client" AKB Autobank</Value>
-									</xr:Value>
-								</xr:Item>
-								<xr:Item>
-									<xr:Presentation/>
-									<xr:CheckState>0</xr:CheckState>
-									<xr:Value xsi:type="FormChoiceListDesTimeValue">
-										<Presentation>
-											<v8:item>
-												<v8:lang>en</v8:lang>
-												<v8:content>"Client-TELEBANK" AOZT Step Ap</v8:content>
-											</v8:item>
-											<v8:item>
-												<v8:lang>ru</v8:lang>
-												<v8:content>"Клиент-ТЕЛЕБАНК" АОЗТ Степ Ап</v8:content>
-											</v8:item>
-										</Presentation>
-										<Value xsi:type="xs:string">"Client-TELEBANK" AOZT Step Ap</Value>
-									</xr:Value>
-								</xr:Item>
-								<xr:Item>
-									<xr:Presentation/>
-									<xr:CheckState>0</xr:CheckState>
-									<xr:Value xsi:type="FormChoiceListDesTimeValue">
-										<Presentation>
-											<v8:item>
-												<v8:lang>en</v8:lang>
-												<v8:content>INIST Client-Bank ZAO INIST</v8:content>
-											</v8:item>
-											<v8:item>
-												<v8:lang>ru</v8:lang>
-												<v8:content>ИНИСТ Банк-Клиент ЗАО ИНИСТ</v8:content>
-											</v8:item>
-										</Presentation>
-										<Value xsi:type="xs:string">INIST Client-Bank ZAO INIST</Value>
-									</xr:Value>
-								</xr:Item>
-								<xr:Item>
-									<xr:Presentation/>
-									<xr:CheckState>0</xr:CheckState>
-									<xr:Value xsi:type="FormChoiceListDesTimeValue">
-										<Presentation>
-											<v8:item>
-												<v8:lang>en</v8:lang>
-												<v8:content>Client-Bank MIB</v8:content>
-											</v8:item>
-											<v8:item>
-												<v8:lang>ru</v8:lang>
-												<v8:content>Клиент-банк МИБ</v8:content>
-											</v8:item>
-										</Presentation>
-										<Value xsi:type="xs:string">Client-Bank MIB</Value>
-									</xr:Value>
-								</xr:Item>
-								<xr:Item>
-									<xr:Presentation/>
-									<xr:CheckState>0</xr:CheckState>
-									<xr:Value xsi:type="FormChoiceListDesTimeValue">
-										<Presentation>
-											<v8:item>
-												<v8:lang>en</v8:lang>
-												<v8:content>"BClient" Client-Bank System</v8:content>
-											</v8:item>
-											<v8:item>
-												<v8:lang>ru</v8:lang>
-												<v8:content>Система Клиент-Банк "BClient"</v8:content>
-											</v8:item>
-										</Presentation>
-										<Value xsi:type="xs:string">"BClient" Client-Bank System</Value>
-									</xr:Value>
-								</xr:Item>
-								<xr:Item>
-									<xr:Presentation/>
-									<xr:CheckState>0</xr:CheckState>
-									<xr:Value xsi:type="FormChoiceListDesTimeValue">
-										<Presentation>
-											<v8:item>
-												<v8:lang>en</v8:lang>
-												<v8:content>"QuickPay" electronic banking by CJSC of Quorum</v8:content>
-											</v8:item>
-											<v8:item>
-												<v8:lang>ru</v8:lang>
-												<v8:content>Система электронных расчетов QuickPay ЗАО АО Кворум</v8:content>
-											</v8:item>
-										</Presentation>
-										<Value xsi:type="xs:string">"QuickPay" electronic banking by CJSC of Quorum</Value>
-									</xr:Value>
-								</xr:Item>
-								<xr:Item>
-									<xr:Presentation/>
-									<xr:CheckState>0</xr:CheckState>
-									<xr:Value xsi:type="FormChoiceListDesTimeValue">
-										<Presentation>
-											<v8:item>
-												<v8:lang>en</v8:lang>
-												<v8:content>Courier payment documents exchange system. AOZT AstraSoft</v8:content>
-											</v8:item>
-											<v8:item>
-												<v8:lang>ru</v8:lang>
-												<v8:content>Комплекс обмена платежными документами Курьер. АОЗТ АстраСофт</v8:content>
-											</v8:item>
-										</Presentation>
-										<Value xsi:type="xs:string">Courier payment documents exchange system. AOZT AstraSoft</Value>
-									</xr:Value>
-								</xr:Item>
-								<xr:Item>
-									<xr:Presentation/>
-									<xr:CheckState>0</xr:CheckState>
-									<xr:Value xsi:type="FormChoiceListDesTimeValue">
-										<Presentation>
-											<v8:item>
-												<v8:lang>en</v8:lang>
-												<v8:content>WinClient of MPI-Bank company</v8:content>
-											</v8:item>
-											<v8:item>
-												<v8:lang>ru</v8:lang>
-												<v8:content>WinClient фирмы МПИ-Банк</v8:content>
-											</v8:item>
-										</Presentation>
-										<Value xsi:type="xs:string">WinClient of MPI-Bank company</Value>
-									</xr:Value>
-								</xr:Item>
-								<xr:Item>
-									<xr:Presentation/>
-									<xr:CheckState>0</xr:CheckState>
-									<xr:Value xsi:type="FormChoiceListDesTimeValue">
-										<Presentation>
-											<v8:item>
-												<v8:lang>en</v8:lang>
-												<v8:content>"Client-Bank Plus" system, "Uralvneshtorgbank" JSC</v8:content>
-											</v8:item>
-											<v8:item>
-												<v8:lang>ru</v8:lang>
-												<v8:content>Система "Клиент-Банк Плюс" ОАО "Уралвнешторгбанка"</v8:content>
-											</v8:item>
-										</Presentation>
-										<Value xsi:type="xs:string">"Client-Bank Plus" system, "Uralvneshtorgbank" JSC</Value>
-									</xr:Value>
-								</xr:Item>
-								<xr:Item>
-									<xr:Presentation/>
-									<xr:CheckState>0</xr:CheckState>
-									<xr:Value xsi:type="FormChoiceListDesTimeValue">
-										<Presentation>
-											<v8:item>
-												<v8:lang>en</v8:lang>
-												<v8:content>"MailBank" system developed by "System technologies" Minsk</v8:content>
-											</v8:item>
-											<v8:item>
-												<v8:lang>ru</v8:lang>
-												<v8:content>Система "MailBank" фирмы "Системные технологии" Минск</v8:content>
-											</v8:item>
-										</Presentation>
-										<Value xsi:type="xs:string">"MailBank" system developed by "System technologies" Minsk</Value>
-									</xr:Value>
-								</xr:Item>
-								<xr:Item>
-									<xr:Presentation/>
-									<xr:CheckState>0</xr:CheckState>
-									<xr:Value xsi:type="FormChoiceListDesTimeValue">
-										<Presentation>
-											<v8:item>
-												<v8:lang>en</v8:lang>
-												<v8:content>On-Soft Bank-Client SB "LOKO-BANK"</v8:content>
-											</v8:item>
-											<v8:item>
-												<v8:lang>ru</v8:lang>
-												<v8:content>On-Soft Клиент-Банк КБ "ЛОКО-Банк"</v8:content>
-											</v8:item>
-										</Presentation>
-										<Value xsi:type="xs:string">On-Soft Bank-Client SB "LOKO-BANK"</Value>
-									</xr:Value>
-								</xr:Item>
-								<xr:Item>
-									<xr:Presentation/>
-									<xr:CheckState>0</xr:CheckState>
-									<xr:Value xsi:type="FormChoiceListDesTimeValue">
-										<Presentation>
-											<v8:item>
-												<v8:lang>en</v8:lang>
-												<v8:content>ARM "Client" AC "Client-Sberbank" Sberbank of Russia</v8:content>
-											</v8:item>
-											<v8:item>
-												<v8:lang>ru</v8:lang>
-												<v8:content>АРМ "Клиент" АС "Клиент-Сбербанк" Сбербанка России</v8:content>
-											</v8:item>
-										</Presentation>
-										<Value xsi:type="xs:string">ARM "Client" AC "Client-Sberbank" Sberbank of Russia</Value>
-									</xr:Value>
-								</xr:Item>
-								<xr:Item>
-									<xr:Presentation/>
-									<xr:CheckState>0</xr:CheckState>
-									<xr:Value xsi:type="FormChoiceListDesTimeValue">
-										<Presentation>
-											<v8:item>
-												<v8:lang>en</v8:lang>
-												<v8:content>'iBank 2' system LLC 'BIFIT'</v8:content>
-											</v8:item>
-											<v8:item>
-												<v8:lang>ru</v8:lang>
-												<v8:content>Система "iBank 2" ООО "БИФИТ"</v8:content>
-											</v8:item>
-										</Presentation>
-										<Value xsi:type="xs:string">'iBank 2' system LLC 'BIFIT'</Value>
-									</xr:Value>
-								</xr:Item>
-								<xr:Item>
-									<xr:Presentation/>
-									<xr:CheckState>0</xr:CheckState>
-									<xr:Value xsi:type="FormChoiceListDesTimeValue">
-										<Presentation>
-											<v8:item>
-												<v8:lang>en</v8:lang>
-												<v8:content>"Yugo-Vostok Online" JSC BANK "SOUTH-EAST"</v8:content>
-											</v8:item>
-											<v8:item>
-												<v8:lang>ru</v8:lang>
-												<v8:content>"Yugo-Vostok Online" ОАО БАНК "ЮГО-ВОСТОК"</v8:content>
-											</v8:item>
-										</Presentation>
-										<Value xsi:type="xs:string">"Yugo-Vostok Online" JSC BANK "SOUTH-EAST"</Value>
-									</xr:Value>
-								</xr:Item>
-								<xr:Item>
-									<xr:Presentation/>
-									<xr:CheckState>0</xr:CheckState>
-									<xr:Value xsi:type="FormChoiceListDesTimeValue">
-										<Presentation>
-											<v8:item>
-												<v8:lang>en</v8:lang>
-												<v8:content>Client-Bank AKB "Lefko-Bank"</v8:content>
-											</v8:item>
-											<v8:item>
-												<v8:lang>ru</v8:lang>
-												<v8:content>Банк-клиент АКБ "Лефко-Банк"</v8:content>
-											</v8:item>
-										</Presentation>
-										<Value xsi:type="xs:string">Client-Bank AKB "Lefko-Bank"</Value>
-									</xr:Value>
-								</xr:Item>
-								<xr:Item>
-									<xr:Presentation/>
-									<xr:CheckState>0</xr:CheckState>
-									<xr:Value xsi:type="FormChoiceListDesTimeValue">
-										<Presentation>
-											<v8:item>
-												<v8:lang>en</v8:lang>
-												<v8:content>Client-Bank JSCB "Sofia"</v8:content>
-											</v8:item>
-											<v8:item>
-												<v8:lang>ru</v8:lang>
-												<v8:content>Система Банк-Клиент АКБ "София"</v8:content>
-											</v8:item>
-										</Presentation>
-										<Value xsi:type="xs:string">Client-Bank JSCB "Sofia"</Value>
-									</xr:Value>
-								</xr:Item>
-								<xr:Item>
-									<xr:Presentation/>
-									<xr:CheckState>0</xr:CheckState>
-									<xr:Value xsi:type="FormChoiceListDesTimeValue">
-										<Presentation>
-											<v8:item>
-												<v8:lang>en</v8:lang>
-												<v8:content>Client-Bank "BARS" by "Onix capital"</v8:content>
-											</v8:item>
-											<v8:item>
-												<v8:lang>ru</v8:lang>
-												<v8:content>Клиент-банк "BARS" фирмы "Оникс Капитал"</v8:content>
-											</v8:item>
-										</Presentation>
-										<Value xsi:type="xs:string">Client-Bank "BARS" by "Onix capital"</Value>
-									</xr:Value>
-								</xr:Item>
-								<xr:Item>
-									<xr:Presentation/>
-									<xr:CheckState>0</xr:CheckState>
-									<xr:Value xsi:type="FormChoiceListDesTimeValue">
-										<Presentation>
-											<v8:item>
-												<v8:lang>en</v8:lang>
-												<v8:content>"Client-Bank" system, "Ukraine-Client" APM</v8:content>
-											</v8:item>
-											<v8:item>
-												<v8:lang>ru</v8:lang>
-												<v8:content>Система "Клиент-Банк" АРМ "Украина-Клиент"</v8:content>
-											</v8:item>
-										</Presentation>
-										<Value xsi:type="xs:string">"Client-Bank" system, "Ukraine-Client" APM</Value>
-									</xr:Value>
-								</xr:Item>
-								<xr:Item>
-									<xr:Presentation/>
-									<xr:CheckState>0</xr:CheckState>
-									<xr:Value xsi:type="FormChoiceListDesTimeValue">
-										<Presentation>
-											<v8:item>
-												<v8:lang>en</v8:lang>
-												<v8:content>"AWP remote SPED client" by VKF AO "TuranAlem Bank"</v8:content>
-											</v8:item>
-											<v8:item>
-												<v8:lang>ru</v8:lang>
-												<v8:content>"АРМ удаленного клиента СПЭД" ВКФ АО "Банк ТуранАлем"</v8:content>
-											</v8:item>
-										</Presentation>
-										<Value xsi:type="xs:string">"AWP remote SPED client" by VKF AO "TuranAlem Bank"</Value>
-									</xr:Value>
-								</xr:Item>
-								<xr:Item>
-									<xr:Presentation/>
-									<xr:CheckState>0</xr:CheckState>
-									<xr:Value xsi:type="FormChoiceListDesTimeValue">
-										<Presentation>
-											<v8:item>
-												<v8:lang>en</v8:lang>
-												<v8:content>"Electronic office" of "IMPEKSBANK"</v8:content>
-											</v8:item>
-											<v8:item>
-												<v8:lang>ru</v8:lang>
-												<v8:content>"Электронный Офис" фирмы "ИМПЭКСБАНК"</v8:content>
-											</v8:item>
-										</Presentation>
-										<Value xsi:type="xs:string">"Electronic office" of "IMPEKSBANK"</Value>
-									</xr:Value>
-								</xr:Item>
-								<xr:Item>
-									<xr:Presentation/>
-									<xr:CheckState>0</xr:CheckState>
-									<xr:Value xsi:type="FormChoiceListDesTimeValue">
-										<Presentation>
-											<v8:item>
-												<v8:lang>en</v8:lang>
-												<v8:content>FIDAVISTA</v8:content>
-											</v8:item>
-										</Presentation>
-										<Value xsi:type="xs:string">FIDAVISTA</Value>
-									</xr:Value>
-								</xr:Item>
-								<xr:Item>
-									<xr:Presentation/>
-									<xr:CheckState>0</xr:CheckState>
-									<xr:Value xsi:type="FormChoiceListDesTimeValue">
-										<Presentation>
-											<v8:item>
-												<v8:lang>en</v8:lang>
-												<v8:content>SEPA</v8:content>
-											</v8:item>
-										</Presentation>
-										<Value xsi:type="xs:string">SEPA</Value>
+										<Value xsi:type="xs:string">UTF16</Value>
 									</xr:Value>
 								</xr:Item>
 							</ChoiceList>
-							<ChoiceListButton>false</ChoiceListButton>
-							<DropListWidth>50</DropListWidth>
-							<ContextMenu name="ApplicationContextMenu" id="6"/>
-							<ExtendedTooltip name="ApplicationExtendedTooltip" id="39"/>
+							<ContextMenu name="EncodingContextMenu" id="4"/>
+							<ExtendedTooltip name="EncodingExtendedTooltip" id="38"/>
+						</InputField>
+						<InputField name="FormatVersion" id="83">
+							<DataPath>FormatVersion</DataPath>
+							<ContextMenu name="FormatVersionContextMenu" id="84"/>
+							<ExtendedTooltip name="FormatVersionExtendedTooltip" id="85"/>
+						</InputField>
+						<InputField name="ExternalDataProcessor" id="80">
+							<DataPath>ExternalDataProcessor</DataPath>
+							<ContextMenu name="ExternalDataProcessorContextMenu" id="81"/>
+							<ExtendedTooltip name="ExternalDataProcessorExtendedTooltip" id="82"/>
 						</InputField>
 					</ChildItems>
 				</Page>
@@ -847,23 +343,19 @@
 				</v8:StringQualifiers>
 			</Type>
 		</Attribute>
-		<Attribute name="Application" id="3">
+		<Attribute name="ExternalDataProcessor" id="3">
 			<Title>
 				<v8:item>
 					<v8:lang>en</v8:lang>
-					<v8:content>Application name</v8:content>
+					<v8:content>External data processors name</v8:content>
 				</v8:item>
 				<v8:item>
 					<v8:lang>ru</v8:lang>
-					<v8:content>Имя приложения</v8:content>
+					<v8:content>Имя внешней обработки</v8:content>
 				</v8:item>
 			</Title>
 			<Type>
-				<v8:Type>xs:string</v8:Type>
-				<v8:StringQualifiers>
-					<v8:Length>254</v8:Length>
-					<v8:AllowedLength>Variable</v8:AllowedLength>
-				</v8:StringQualifiers>
+				<v8:Type>cfg:CatalogRef.AdditionalReportsAndDataProcessors</v8:Type>
 			</Type>
 		</Attribute>
 		<Attribute name="CFItemIncoming" id="4">

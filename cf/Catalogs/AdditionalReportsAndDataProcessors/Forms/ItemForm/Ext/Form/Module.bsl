@@ -76,7 +76,19 @@ Procedure OnOpen(Cancel)
 		AttachIdleHandler("UpdateFromFileStart", 0.1, True);
 	EndIf;
 	
+	//АТ elmi
+	Items.FileNameForDebugging.Visible = SetFileNameForDebuggingVisibility();
+	
 EndProcedure
+
+	
+//АТ 
+&AtServer
+Function SetFileNameForDebuggingVisibility()
+	
+	Return IsInRole("UseGlobalAdditionalReportsAndDataProcessors") or IsInRole("FullRights");
+	
+EndFunction
 
 &AtClient
 Procedure ChoiceProcessing(ValueSelected, ChoiceSource)
@@ -1393,5 +1405,26 @@ Function GetPermissionsTable()
 	Return GetFromTempStorage(PermissionAdress);
 	
 EndFunction
+
+&AtClient
+//АТ elmi
+Procedure FileNameForDebuggingStartChoice(Item, ChoiceData, StandardProcessing)
+	Mode = FileDialogMode.Open;
+	OpeningFileDialogue = New FileDialog(Mode);
+	OpeningFileDialogue.FullFileName = "";
+	Filter = "EPF (*.epf)|*.epf|ERF (*.erf)|*.erf";
+	OpeningFileDialogue.Filter = Filter;
+	OpeningFileDialogue.Multiselect = False;
+	OpeningFileDialogue.Title = NSTR("en='Select file for debugging'; ru='Выберите файл для отладки'");
+	If OpeningFileDialogue.Choose() Then
+	    FilesArray = OpeningFileDialogue.SelectedFiles;
+	    For Each FileName In FilesArray Do
+	        Object.FileNameForDebugging = FileName;
+	        return;
+	    EndDo;
+	Else
+	    DoMessageBox( NSTR("en='File is not selected!';'ru='Файл не выбран'"));
+	EndIf;
+EndProcedure
 
 #EndRegion

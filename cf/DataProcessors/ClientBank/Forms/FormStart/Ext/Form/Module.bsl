@@ -23,7 +23,8 @@ Procedure LoadFromFile(Command)
 			Object.CFItemOutgoing,
 			Object.PostImported,
 			Object.FillDebtsAutomatically,
-			Object.Application,
+			//AT Object.Application,
+			Object.ExternalDataProcessor, //AT 
 			Object.Encoding,
 			Object.FormatVersion
 		);
@@ -40,11 +41,13 @@ Procedure SaveNewTasks(Command)
 	OpenForm(
 		"DataProcessor.ClientBank.Form.FormExport",
 		New Structure(
-			"Company, BankAccountOfTheCompany, ExportFile, Application, Script, FormatVersion, DirectExchangeWithBanksAgreement",
+			//AT "Company, BankAccountOfTheCompany, ExportFile, Application, Script, FormatVersion, DirectExchangeWithBanksAgreement",
+			"Company, BankAccountOfTheCompany, ExportFile, ExternalDataProcessor, Script, FormatVersion, DirectExchangeWithBanksAgreement", //AT 
 			Object.Company,
 			Object.BankAccount,
 			Object.ExportFile,
-			Object.Application,
+			//AT Object.Application,
+			Object.ExternalDataProcessor,//AT 
 			Object.Encoding,
 			Object.FormatVersion,
 			DirectExchangeWithBanksAgreement
@@ -83,7 +86,8 @@ Procedure SaveFormSettings()
 	Settings = New Map;
 	Settings.Insert("ImportFile", Object.ImportFile);
 	Settings.Insert("ExportFile", Object.ExportFile);
-	Settings.Insert("Application", Object.Application);
+	//AT Settings.Insert("Application", Object.Application);
+	Settings.Insert("ExternalDataProcessor", Object.ExternalDataProcessor); //AT
 	Settings.Insert("CFItemOutgoing", Object.CFItemOutgoing);
 	Settings.Insert("CFItemIncoming", Object.CFItemIncoming);
 	Settings.Insert("PostImported", Object.PostImported);
@@ -100,7 +104,7 @@ EndProcedure // SaveFormSettings()
 &AtClient
 Procedure FilterByAccountClick(Item)
 	
-	Filter = New Structure("IsCounterpartyAccount", True);
+	Filter = New Structure("IsCompanyAccount", True);
 	OpenForm("Catalog.BankAccounts.Form.ChoiceFormWithoutOwner", New Structure("CurrentRow, Filter", Object.BankAccount, Filter), ThisForm);
 	
 EndProcedure // FilterByAccountClick()
@@ -133,7 +137,8 @@ Procedure ImportFormSettings()
 	If Settings <> Undefined Then
 		Object.ExportFile = Settings.Get("ExportFile");
 		Object.ImportFile = Settings.Get("ImportFile");
-		Object.Application = Settings.Get("Application");
+		//AT Object.Application = Settings.Get("Application");
+		Object.ExternalDataProcessor = Settings.Get("ExternalDataProcessor");  //AT
 		Object.CFItemOutgoing = Settings.Get("CFItemOutgoing");
 		Object.CFItemIncoming = Settings.Get("CFItemIncoming");
 		Object.PostImported = Settings.Get("PostImported");
@@ -253,9 +258,13 @@ EndProcedure // ByAllAccounts()
 Procedure Settings(Command)
 	
 	OpenForm("DataProcessor.ClientBank.Form.FormSetting",
+	    //AT
+		//New Structure(
+		//	"Script, Application, FormatVersion, CFItemIncoming, CFItemOutgoing, PostImported, FillDebtsAutomatically, DirectExchangeWithBanksAgreement, UUID, ExportFile, ImportFile",
+		//	Object.Encoding, Object.Application, Object.FormatVersion, Object.CFItemIncoming, Object.CFItemOutgoing, Object.PostImported, Object.FillDebtsAutomatically, DirectExchangeWithBanksAgreement, UUID, Object.ExportFile, Object.ImportFile
 		New Structure(
-			"Script, Application, FormatVersion, CFItemIncoming, CFItemOutgoing, PostImported, FillDebtsAutomatically, DirectExchangeWithBanksAgreement, UUID, ExportFile, ImportFile",
-			Object.Encoding, Object.Application, Object.FormatVersion, Object.CFItemIncoming, Object.CFItemOutgoing, Object.PostImported, Object.FillDebtsAutomatically, DirectExchangeWithBanksAgreement, UUID, Object.ExportFile, Object.ImportFile
+			"Encoding, ExternalDataProcessor, FormatVersion, CFItemIncoming, CFItemOutgoing, PostImported, FillDebtsAutomatically, DirectExchangeWithBanksAgreement, UUID, ExportFile, ImportFile",
+			Object.Encoding, Object.ExternalDataProcessor, Object.FormatVersion, Object.CFItemIncoming, Object.CFItemOutgoing, Object.PostImported, Object.FillDebtsAutomatically, DirectExchangeWithBanksAgreement, UUID, Object.ExportFile, Object.ImportFile
 		)
 	);
 	
@@ -271,7 +280,8 @@ Procedure NotificationProcessing(EventName, Parameter, Source)
 		Object.ExportFile = Parameter.ExportFile;
 		Object.Encoding = Parameter.Encoding;
 		Object.FormatVersion = Parameter.FormatVersion;
-		Object.Application = Parameter.Application;
+		//AT Object.Application = Parameter.Application;
+		Object.ExternalDataProcessor = Parameter.ExternalDataProcessor; //AT
 		Object.CFItemIncoming = Parameter.CFItemIncoming;
 		Object.CFItemOutgoing = Parameter.CFItemOutgoing;
 		Object.PostImported = Parameter.PostImported;

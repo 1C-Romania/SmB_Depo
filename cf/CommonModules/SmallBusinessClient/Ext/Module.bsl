@@ -1369,7 +1369,7 @@ Procedure ImportDataFromStatementFile(
 		PostImported = False,
 		FillDebtsAutomatically = False,
 		Application = "",
-		Encoding = "Windows",
+		Encoding = "UTF-8",
 		FormatVersion = "1.02") Export
 		
 	CFItemIncoming = ?(ValueIsFilled(CFItemIncoming), CFItemIncoming, PredefinedValue("Catalog.CashFlowItems.PaymentFromCustomers"));
@@ -1413,7 +1413,7 @@ Procedure EnableFileOperationsExtensionEnd(Attached, AdditionalParameters) Expor
 		Else // If there are no settings, then file opening dialog.
 			Dialog = New FileDialog(FileDialogMode.Open);
 			Dialog.Title = NStr("en='Select file for import...';ru='Выберите файл для загрузки...'");
-			Dialog.Filter = NStr("en='Files of exchange with 1C (*.txt)|*.txt|All files (*.*)|*.*';ru='Файлы обмена с 1С (*.txt)|*.txt|Все файлы (*.*)|*.*'");
+			Dialog.Filter = NStr("en='Files of exchange with 1C (*.xml)|*.xml|Files of exchange with 1C (*.txt)|*.txt|All files (*.*)|*.*';ru='Файлы обмена с 1С (*.xml)|*.xml|Файлы обмена с 1С (*.txt)|*.txt|Все файлы (*.*)|*.*'");
 			Dialog.FullFileName = AdditionalParameters.PathToFile1;
 			Notification = New NotifyDescription("FileOpeningDialogEnd", ThisObject, AdditionalParameters);
 			Dialog.Show(Notification);
@@ -1424,7 +1424,7 @@ Procedure EnableFileOperationsExtensionEnd(Attached, AdditionalParameters) Expor
 		
 		NotifyDescription = New NotifyDescription("ImportDataFromFileStatementsEnd", ThisObject, AdditionalParameters);
 		BeginPutFile(NOTifyDescription, AdditionalParameters.AddressInStorage, AdditionalParameters.PathToFile1, True, AdditionalParameters.FormID);
-		Return
+		Return;
 		
 	#If Not WebClient Then
 	EndIf;
@@ -1451,6 +1451,16 @@ Procedure ReadTextDocument(AdditionalParameters)
 	
 	If AdditionalParameters.Encoding = "DOS" Then
 		Codin = TextEncoding.OEM;
+	//AT begin
+	ElsIf AdditionalParameters.Encoding = "OEM" Then
+		Codin = TextEncoding.OEM;
+	ElsIf AdditionalParameters.Encoding = "ANSI" or AdditionalParameters.Encoding = "Windows" Then
+		Codin = TextEncoding.ANSI;
+	ElsIf AdditionalParameters.Encoding = "UTF8" Then
+		Codin = TextEncoding.UTF8;
+	ElsIf AdditionalParameters.Encoding = "UTF16" Then
+		Codin = TextEncoding.UTF16;
+	//AT end
 	Else
 		Codin = TextEncoding.ANSI;
 	EndIf;

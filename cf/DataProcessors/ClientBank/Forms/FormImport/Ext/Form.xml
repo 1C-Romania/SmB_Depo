@@ -582,14 +582,14 @@
 											<ContextMenu name="ImportSumDebitedContextMenu" id="214"/>
 											<ExtendedTooltip name="ImportSumDebitedExtendedTooltip" id="475"/>
 										</InputField>
-										<InputField name="ImportAmountWrittenOff" id="211">
+										<InputField name="ImportAmountCredited" id="211">
 											<DataPath>Object.Import.AmountCredited</DataPath>
 											<ReadOnly>true</ReadOnly>
 											<FooterDataPath>Object.Import.TotalAmountWriteOffAllocated</FooterDataPath>
 											<Width>10</Width>
 											<Wrap>false</Wrap>
-											<ContextMenu name="ImportAmountWrittenOffContextMenu" id="212"/>
-											<ExtendedTooltip name="ImportAmountWrittenOffExtendedTooltip" id="476"/>
+											<ContextMenu name="ImportAmountCreditedContextMenu" id="212"/>
+											<ExtendedTooltip name="ImportAmountCreditedExtendedTooltip" id="476"/>
 										</InputField>
 										<InputField name="ImportTableDocument" id="590">
 											<DataPath>Object.Import.Document</DataPath>
@@ -1050,11 +1050,11 @@
 			<MainAttribute>true</MainAttribute>
 			<Save>
 				<Field>Object.ImportFile</Field>
+				<Field>Object.ExternalDataProcessor</Field>
 				<Field>Object.ExportFile</Field>
 				<Field>Object.Encoding</Field>
 				<Field>Object.CFItemOutgoing</Field>
 				<Field>Object.CFItemIncoming</Field>
-				<Field>Object.Application</Field>
 			</Save>
 			<Columns>
 				<AdditionalColumns table="Object.Import"/>
@@ -1485,7 +1485,7 @@
 				</v8:item>
 				<v8:item>
 					<v8:lang>ru</v8:lang>
-					<v8:content>Сформировать отчет</v8:content>
+					<v8:content>Создать контрагентов</v8:content>
 				</v8:item>
 			</Title>
 			<ToolTip>

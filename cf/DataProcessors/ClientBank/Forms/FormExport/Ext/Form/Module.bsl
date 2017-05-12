@@ -16,11 +16,11 @@ Procedure ImportFormSettings()
 	
 	If Settings <> Undefined Then
 		
-		Object.Application = Settings.Get("Application");
+		Object.ExternalDataProcessor = Settings.Get("ExternalDataProcessor");
 		Object.Encoding = Settings.Get("Encoding");
 		Object.FormatVersion = Settings.Get("FormatVersion");
 		If Not ValueIsFilled(Object.Encoding) Then
-			Object.Encoding = "Windows";
+			Object.Encoding = "ANSI";
 		EndIf;
 		If Not ValueIsFilled(Object.FormatVersion) Then
 			Object.FormatVersion = "1.02";
@@ -56,9 +56,9 @@ Function CheckFillOfFormAttributes(DirectExchangeWithBanks = False)
 	EndIf;
 	
 	If Not DirectExchangeWithBanks Then
-		If Not ValueIsFilled(Object.Application) Then
-			MessageText = NStr("en='Receiver application is not filled out.';ru='Не заполнена программа приемник!'");
-			SmallBusinessClient.ShowMessageAboutError(ThisForm, MessageText, , , "Application", CheckResultOk);
+		If Not ValueIsFilled(Object.ExternalDataProcessor) Then
+			MessageText = NStr("en='Receiver Data Processor is not filled out.';ru='Не заполнена обработка приемник!'");
+			SmallBusinessClient.ShowMessageAboutError(ThisForm, MessageText, , , "ExternalDataProcessor", CheckResultOk);
 		EndIf;
 		If Not ValueIsFilled(Object.Encoding) Then
 			MessageText = NStr("en='Encoding is required!';ru='Не заполнена кодировка!'");
@@ -92,7 +92,7 @@ Function CheckForCorrectnessAndBlankExportValue(DocumentRow)
 	AttributesPaymentDocumentExportTNRPayer = Payer + "BankAccount," + Payer + "SettlementBank," + Payer + "BankCity," + Payer + "BankPCBIC";
 	AttributesPaymentDocumentExportRecipient = Recipient + "Account," + Recipient + "," + Recipient + "TIN";
 	AttributesPaymentDocumentExportTNRRecipient = Recipient + "BankAccount," + Recipient + "SettlementBank," + Recipient + "BankCity," + Recipient + "BankPCBIC";
-	AttributesExDockPlBudgetPayment = "AuthorStatus,BasisIndicator,PeriodIndicator,NumberIndicator,DateIndicator,TypeIndicator";
+	AttributesExDockPlBudgetPayment = "AuthorStatus,PayerRegistrationNumber,PayeeRegistrationNumber,BasisIndicator,PeriodIndicator,NumberIndicator,DateIndicator,TypeIndicator";
 	
 	StringAttributes = "%AttributesPaymentDocumentExportBasic%,%AttributesPaymentDocumentExportPayer%,%AttributesPaymentDocumentExportTNRPayer%%AttributesPaymentDocumentExportRecipient%,%AttributesPaymentDocumentExportTNRRecipient%";
 	StringAttributes = StrReplace(StringAttributes, "%AttributesPaymentDocumentExportBasic%", AttributesPaymentDocumentExportBasic);
@@ -119,7 +119,7 @@ EndFunction // CheckForCorrectnessAndBlankExportValue()
 Procedure CheckForBlankExportValue(RowExporting, PropertyName)
 	
 	If Not ValueIsFilled(RowExporting[TrimAll(PropertyName)]) Then
-		RowRemark = NStr("en='""%PropertyName%"" is not filled!';ru='Не заполнено ""%ИмяСвойства%""!'");
+		RowRemark = NStr("en='""%PropertyName%"" is not filled!';ru='Не заполнено ""%PropertyName%""!'");
 		RowRemark = StrReplace(RowRemark, "%PropertyName%", PropertyName);
 		AddComment(RowExporting, 3, RowRemark);
 		SetReadiness(RowExporting.Readiness, 4);
@@ -150,8 +150,6 @@ Function CheckTaxAttributesFill(RowExporting)
 	
 	Error = New ValueList();
 	P101 = TrimAll(RowExporting.AuthorStatus);
-	P104 = TrimAll(RowExporting.BKCode);
-	P105 = TrimAll(RowExporting.OKATOCode);
 	P106 = TrimAll(RowExporting.BasisIndicator);
 	P107 = ?(
 		IsBlankString(TrimAll(StrReplace(RowExporting.PeriodIndicator , ".", ""))) = 1,
@@ -177,31 +175,6 @@ Function CheckTaxAttributesFill(RowExporting)
 			3,
 			NStr("en='Invalid value of the Preparer status attribute field for payments to budget on the ""Fund transfer to the budget"" tab.';ru='Неверное значение поля реквизита для платежей в бюджет ""Статус составителя"" на закладке ""Перечисление в бюджет"".'")
 		);
-		SetReadiness(RowExporting.Readiness, 4);
-	EndIf;
-	If Not(SmallBusinessClientServer.EmptyBCCAllowed(RowExporting.TransferToBudgetKind, RowExporting.CounterpartyAccountNo, RowExporting.Date))
-		 AND (StrReplace(P104, "0", "") = "") AND (Find("06, 07", P101) = 0) Then
-		AddComment(
-			RowExporting,
-			3,
-			NStr("en='The BCC field on the ""Fund transfer to the budget"" tab is not filled in.';ru='Не заполнено поле ""КБК"" на закладке ""Перечисление в бюджет"".'")
-		);
-		SetReadiness(RowExporting.Readiness, 4);
-	EndIf;
-	If IsBlankString(P105) Then
-		If RowExporting.Date >= '20140101' Then // OKTMO acts in any case from 01/01/2014 
-			AddComment(
-				RowExporting,
-				3,
-				NStr("en='The OKTMO code field on the ""Fund transfer to the budget"" tab is not filled in.';ru='Не заполнено поле ""Код ОКТМО"" на закладке ""Перечисление в бюджет"".'")
-			);
-		Else
-			AddComment(
-				RowExporting,
-				3,
-				NStr("en='The OKATO code field on the ""Fund transfer to the budget"" tab is not filled in.';ru='Не заполнено поле ""Код ОКАТО"" на закладке ""Перечисление в бюджет"".'")
-			);
-		EndIf;
 		SetReadiness(RowExporting.Readiness, 4);
 	EndIf;
 	
@@ -485,11 +458,6 @@ Procedure FillDump()
 	|	PaymentOrder.PaymentDestination,
 	|	PaymentOrder.PaymentKind,
 	|	PaymentOrder.Ref AS Document,
-	|	PaymentOrder.DateIndicator,
-	|	PaymentOrder.NumberIndicator,
-	|	PaymentOrder.BasisIndicator,
-	|	PaymentOrder.TypeIndicator,
-	|	PaymentOrder.PeriodIndicator,
 	|	PaymentOrder.AuthorStatus,
 	|	PaymentOrder.DocumentAmount,
 	|	PaymentOrder.Counterparty,
@@ -497,14 +465,11 @@ Procedure FillDump()
 	|	PaymentOrder.PaymentPriority,
 	|	PaymentOrder.PayerText,
 	|	PaymentOrder.PayeeText,
-	|	PaymentOrder.TransferToBudgetKind,
 	|	PaymentOrder.PayerTIN AS PayerTIN,
 	|	PaymentOrder.PayeeTIN AS PayeeTIN,
-	|	PaymentOrder.BKCode,
-	|	PaymentOrder.OKATOCode,
 	|	PaymentOrder.Company.DescriptionFull AS Company,
-	|	PaymentOrder.Company.PayerDescriptionOnTaxTransfer AS CompanyTaxTransfer,
 	|	PaymentOrder.Company.TIN AS CompanyTIN,
+	|	PaymentOrder.Company.RegistrationNumber AS CompanyRegistrationNumber,
 	|	PaymentOrder.BankAccount AS CompanyAccount,
 	|	PaymentOrder.BankAccount.AccountNo AS CompanyAccountNo,
 	|	PaymentOrder.BankAccount.Bank.Code AS CompanyBankBIC,
@@ -516,6 +481,7 @@ Procedure FillDump()
 	|	PaymentOrder.BankAccount.AccountsBank.Code AS CompanyBankProcessingCenterBIC,
 	|	PaymentOrder.BankAccount.AccountsBank.CorrAccount AS CompanyBankProcessingCenterCorrAccount,
 	|	PaymentOrder.Counterparty.TIN AS CounterpartyTIN,
+	|	PaymentOrder.Counterparty.RegistrationNumber AS CounterpartyRegistrationNumber,
 	|	PaymentOrder.CounterpartyAccount AS CounterpartyAccount,
 	|	PaymentOrder.CounterpartyAccount.AccountNo AS CounterpartyAccountNo,
 	|	PaymentOrder.CounterpartyAccount.Bank AS CounterpartyBank,
@@ -529,7 +495,7 @@ Procedure FillDump()
 	|	PaymentOrder.PaymentIdentifier AS PaymentIdentifier,
 	|	ISNULL(EDStates.EDVersionState, VALUE(Enum.EDVersionsStates.EmptyRef)) AS EDStatus,
 	|	""Payment order"" AS DocumentKind,
-	|	CAST("""" AS String(255)) AS ErrorsDescriptionFull,
+	|	CAST("""" AS STRING(255)) AS ErrorsDescriptionFull,
 	|	0 AS Readiness,
 	|	0 AS PictureNumber,
 	|	0 AS DocumentAmountAllocated,
@@ -541,7 +507,7 @@ Procedure FillDump()
 	|WHERE
 	|	PaymentOrder.Company = &Company
 	|	AND PaymentOrder.BankAccount = &BankAccount
-	|	AND PaymentOrder.Date between &StartPeriod AND &EndPeriod
+	|	AND PaymentOrder.Date BETWEEN &StartPeriod AND &EndPeriod
 	|	AND PaymentOrder.DeletionMark = FALSE
 	|
 	|ORDER BY
@@ -628,10 +594,8 @@ Procedure SaveExportFile(DumpStream)
 		// We check those documents that were successfully exported.
 		If Result <> Undefined Then
 			If Result Then
-				//( elmi #17 (112-00003) 
-				//For Each SectionRow IN Object.Export Do
+				
 				For Each SectionRow IN Object.Exporting Do
-				//) elmi
 				
 					If SectionRow.Readiness = - 2 Then
 						SectionRow.Readiness = - 1;
@@ -716,7 +680,7 @@ Procedure FormManagementOnServer()
 		AND ValueIsFilled(DirectExchangeWithBanksAgreement) Then
 		
 		TemplateText = NStr("en='Direct exchange agreement acts from %1: payment orders will be sent in bank by 1C:Company';ru='С %1 действует соглашение о прямом обмене: платежные поручения будут отправлены в банк из 1С:Управление небольшой фирмой'");
-		LabelText = StringFunctionsClientServer.SubstituteParametersInString(TemplateText, CommonUse.GetAttributeValue(DirectExchangeWithBanksAgreement, "Counterparty"));
+		LabelText = StringFunctionsClientServer.PlaceParametersIntoString(TemplateText, CommonUse.GetAttributeValue(DirectExchangeWithBanksAgreement, "Counterparty"));
 		DirectMessageExchange = LabelText;
 	EndIf;
 
@@ -748,8 +712,8 @@ Procedure OnCreateAtServer(Cancel, StandardProcessing)
 		Object.ExportFile = Parameters.ExportFile;
 	EndIf;
 	
-	If Parameters.Property("Application") Then
-		Object.Application = Parameters.Application;
+	If Parameters.Property("ExternalDataProcessor") Then
+		Object.ExternalDataProcessor = Parameters.ExternalDataProcessor;
 	EndIf;
 	
 	If Parameters.Property("Encoding") Then
@@ -782,7 +746,7 @@ Procedure OnCreateAtServer(Cancel, StandardProcessing)
 	EndIf;
 	
 	If Not ValueIsFilled(Object.Encoding) Then
-		Object.Encoding = "Windows";
+		Object.Encoding = "ANSI";
 	EndIf;
 	
 	If Not ValueIsFilled(Object.FormatVersion) Then
@@ -839,53 +803,55 @@ Procedure ExportExecute(Command)
 	If Object.Exporting.Count() > 0 Then
 		
 		//( elmi #17 (112-00003) 
-		ExternalDataProcessorRefs = GetExternalDataProcessor(Object.BankAccount);
-		
-		If ValueIsFilled(ExternalDataProcessorRefs) Then
-   		
-			ArrayOfPurposes  = New  Array;
-		    ArrayOfPurposes.Insert(0, Object.BankAccount); 
+		//AT ExternalDataProcessorRefs = GetExternalDataProcessor(Object.BankAccount);
+		//ExternalDataProcessorRefs = Object.DataProcessor;
+		//
+		//If ValueIsFilled(ExternalDataProcessorRefs) Then
+		//  
+		//	ArrayOfPurposes  = New  Array;
+		//    ArrayOfPurposes.Insert(0, Object.BankAccount); 
 
-			ExportArray  =  PutToTempStorage(UpLoadTSExporting(), UUID);
-			
-			ParametersOfDataProcessor = New Structure("CommandID, AdditionalInformationProcessorRef, ArrayOfPurposes, ExportArray, ExecutionResult" ); 
-    	    ParametersOfDataProcessor.CommandID                           = "ExportFromClientBankExternalDP";
-	        ParametersOfDataProcessor.AdditionalInformationProcessorRef   = ExternalDataProcessorRefs;
-	        ParametersOfDataProcessor.ArrayOfPurposes                     = Object.BankAccount;
-	        ParametersOfDataProcessor.ExportArray                         = ExportArray;
-            ParametersOfDataProcessor.ExecutionResult                     = New Structure("ExportAddress, WarningText" );
-			
-			RunCommandOnServer( ParametersOfDataProcessor);
-			
-			WarningText = "";
-		    Result = ParametersOfDataProcessor.ExecutionResult;
-		
-			If Result <> Undefined Then
-				If ValueIsFilled(Result.WarningText) Then
-				   WarningText = Result.WarningText;
-				Else	
-					If ValueIsFilled(Result.ExportAddress)  Тогда 
-						SaveExportFile(Result.ExportAddress);
-					Else
-						WarningText = НСтр("en = 'Error in data export!',ru='Ошибка в данных экспорта!'");
-					EndIF;	
-				EndIF;		
-			Else	  
-				WarningText = NStr("en='Export document list is empty.
-		|Verify the correctness of the specified banking account and the export period.';ru='Список документов для выгрузки пуст.
-		|Проверьте правильность указанного банковского счета и периода выгрузки.'");
-			EndIf;
-			
-			If ValueIsFilled(WarningText) Then
-          		ShowMessageBox(Undefined,WarningText);
-	        EndIf;
-        //) elmi
-		
-	    Else 
+		//	ExportArray  =  PutToTempStorage(UpLoadTSExporting(), UUID);
+		//	
+		//	ParametersOfDataProcessor = New Structure("CommandID, AdditionalInformationProcessorRef, ArrayOfPurposes, ExportArray, ExecutionResult" ); 
+		//    ParametersOfDataProcessor.CommandID                           = "ExportFromClientBankExternalDP";
+		//    ParametersOfDataProcessor.AdditionalInformationProcessorRef   = ExternalDataProcessorRefs;
+		//    ParametersOfDataProcessor.ArrayOfPurposes                     = Object.BankAccount;
+		//    ParametersOfDataProcessor.ExportArray                         = ExportArray;
+		//    ParametersOfDataProcessor.ExecutionResult                     = New Structure("ExportAddress, WarningText" );
+		//	
+		//	RunCommandOnServer( ParametersOfDataProcessor);
+		//	
+		//	WarningText = "";
+		//    Result = ParametersOfDataProcessor.ExecutionResult;
+		//
+		//	If Result <> Undefined Then
+		//		If ValueIsFilled(Result.WarningText) Then
+		//		   WarningText = Result.WarningText;
+		//		Else	
+		//			If ValueIsFilled(Result.ExportAddress)  Тогда 
+		//				SaveExportFile(Result.ExportAddress);
+		//			Else
+		//				WarningText = НСтр("en = 'Error in data export!',ru='Ошибка в данных экспорта!'");
+		//			EndIF;	
+		//		EndIF;		
+		//	Else	  
+		//		WarningText = NStr("en='Export document list is empty.
+		//|Verify the correctness of the specified banking account and the export period.';ru='Список документов для выгрузки пуст.
+		//|Проверьте правильность указанного банковского счета и периода выгрузки.'");
+		//	EndIf;
+		//	
+		//	If ValueIsFilled(WarningText) Then
+		//  		ShowMessageBox(Undefined,WarningText);
+		//    EndIf;
+		////) elmi
+		//
+		//Else 
 	    	DumpStream = DonwloadDataToFile();
-		    SaveExportFile(DumpStream);
-			
-		EndIf;	
+			If DumpStream <> Undefined Then
+		    	SaveExportFile(DumpStream);
+			EndIf;
+		//EndIf;	
 	Else
 		
 		ShowMessageBox(Undefined,
@@ -957,7 +923,7 @@ EndProcedure // ExportRefreshExecute()
 &AtClient
 Procedure DumpMarkAllRun(Command)
 	
-	SetFlags(Object.Export, "Exporting", True);
+	SetFlags(Object.Exporting, "Exporting", True);
 	
 EndProcedure // ExportMarkAllRun()
 
@@ -966,7 +932,7 @@ EndProcedure // ExportMarkAllRun()
 &AtClient
 Procedure DumpUnmarkAllRun(Command)
 	
-	SetFlags(Object.Export, "Exporting", False);
+	SetFlags(Object.Exporting, "Exporting", False);
 	
 EndProcedure // ExportUnmarkAllRun()
 
@@ -1051,8 +1017,8 @@ Procedure Setting(Command)
 	
 	OpenForm("DataProcessor.ClientBank.Form.FormSetting",
 		New Structure(
-			"Script, Application, FormatVersion, DirectExchangeWithBanksAgreement, UUID",
-			Object.Encoding, Object.Application, Object.FormatVersion, DirectExchangeWithBanksAgreement, UUID
+			"Script, ExternalDataProcessor, FormatVersion, DirectExchangeWithBanksAgreement, UUID",
+			Object.Encoding, Object.ExternalDataProcessor, Object.FormatVersion, DirectExchangeWithBanksAgreement, UUID
 		)
 	);
 	
@@ -1065,7 +1031,7 @@ Procedure NotificationProcessing(EventName, Parameter, Source)
 	
 	If EventName = "SettingsChange" + UUID Then
 		Object.Encoding = Parameter.Encoding;
-		Object.Application = Parameter.Application;
+		Object.ExternalDataProcessor = Parameter.ExternalDataProcessor;
 		Object.FormatVersion = Parameter.FormatVersion;
 	ElsIf EventName = "RefreshStateED" Then
 		FillDump();
@@ -1102,20 +1068,6 @@ Procedure DowloadingExportOnChange(Item)
 	
 EndProcedure // DowloadingExportOnChange()
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 //( elmi #17 (112-00003) 
 &AtServer
 Function UpLoadTSExporting ()
@@ -1123,7 +1075,6 @@ Function UpLoadTSExporting ()
 VT = Object.Exporting.Unload();
 
 Return  TransformValueTableIntoArrayOfStructure(VT);
-
 
 EndFunction	
 //) elmi
@@ -1151,17 +1102,6 @@ Function TransformValueTableIntoArrayOfStructure(vtData) Export
     
 EndFunction
 //) elmi
-
-
-//( elmi #17 (112-00003) 
-&AtServer
-Function  GetExternalDataProcessor(Account)
-	
-	    Return Account.ExternalDataProcessor;
-	     
-EndFunction
-//) elmi
-
 
 //elmi #17 (112-00003)	
 &AtServer

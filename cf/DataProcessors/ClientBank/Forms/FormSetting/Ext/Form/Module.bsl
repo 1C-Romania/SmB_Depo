@@ -15,10 +15,10 @@ Procedure OnCreateAtServer(Cancel, StandardProcessing)
 		Items.FormatVersion.Visible = False;
 	EndIf;
 	
-	If Parameters.Property("Application") Then
-		Application = Parameters.Application;
+	If Parameters.Property("ExternalDataProcessor") Then
+		ExternalDataProcessor = Parameters.ExternalDataProcessor;
 	Else
-		Items.Application.Visible = False;
+		Items.ExternalDataProcessor.Visible = False;
 	EndIf;
 	
 	If Parameters.Property("CFItemOutgoing") Then
@@ -63,7 +63,7 @@ Procedure OnCreateAtServer(Cancel, StandardProcessing)
 		LabelText = NStr("en='The direct exchange agreement is signed with bank %1.
 		|The signed payment orders and bank statement request are sent from 1C:Small Business.';ru='С банком %1 действует соглашение о прямом обмене.
 		|Отправка подписанных платежных поручений и запрос банковской выписки осуществляется из 1С:Управление небольшой фирмой.'");
-		DirectMessageExchange = StringFunctionsClientServer.SubstituteParametersInString(
+		DirectMessageExchange = StringFunctionsClientServer.PlaceParametersIntoString(
 			LabelText, CommonUse.GetAttributeValue(DirectExchangeWithBanksAgreement, "Counterparty"));
 			
 		Items.ImportFile.Visible = False;
@@ -85,9 +85,9 @@ Procedure Ok(Command)
 	ReturnParameters = New Structure(
 	//( elmi #17 (112-00003) 
 	//"Script, Application, CFItemIncoming, CFItemOutgoing, PostImported, FillDebtsAutomatically, ExportFile, ImportFile, FormatVersion",
-	"Encoding, Application, CFItemIncoming, CFItemOutgoing, PostImported, FillDebtsAutomatically, ExportFile, ImportFile, FormatVersion",
+	"Encoding, ExternalDataProcessor, CFItemIncoming, CFItemOutgoing, PostImported, FillDebtsAutomatically, ExportFile, ImportFile, FormatVersion",
 	//) elmi
-	Encoding, Application, CFItemIncoming, CFItemOutgoing, PostImported, FillDebtsAutomatically, ExportFile, ImportFile, FormatVersion
+	Encoding, ExternalDataProcessor, CFItemIncoming, CFItemOutgoing, PostImported, FillDebtsAutomatically, ExportFile, ImportFile, FormatVersion
 	);
 	Notify("SettingsChange" + IDOwner, ReturnParameters);
 	Close();
@@ -125,10 +125,7 @@ Procedure BeginEnableExtensionFileOperationsEnd(Attached, AdditionalParameters) 
 	
 	FileOpeningDialog = New FileDialog(Mode);
 	FileOpeningDialog.FullFileName = ImportFile;
-	//( elmi #17 (112-00003) 
-	//Filter = "Text file(*.txt)|*.txt";
-	Filter = "Text file(*.txt)|*.txt|Xml file(*.xml)|*.xml|";
-    //) elmi
+	Filter = "Text file(*.txt)|*.txt|Xml file(*.xml)|*.xml|(*.*)|*.*|";
 	FileOpeningDialog.Filter = Filter;
 	FileOpeningDialog.Multiselect = False;
 	FileOpeningDialog.Title = NStr("en='Select the file';ru='Выберите файл'");

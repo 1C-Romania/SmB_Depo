@@ -99,7 +99,29 @@ Function ConnectExternalDataProcessor(Ref) Export
 	
 	WriteNote(Ref, NStr("en='Enabling, SafeMode = ""%1"".';ru='Подключение, БезопасныйРежим = ""%1"".'"), SafeMode);
 	
-	DataProcessorName = Manager.Connect(AddressInTemporaryStorage, , SafeMode);
+	//( elmi для обеспечения возможности отладки дополнительных отчетов и обработок. Отладка возможна только в файл серверном варианте запуска
+	If Ref.Publication = Enums.AdditionalReportsAndDataProcessorsPublicationOptions.DebugMode and ValueIsFilled(ref.FileNameForDebugging) Then
+		
+		FileOnDisk = New File(ref.FileNameForDebugging);
+		If FileOnDisk.Exist() Then 
+		
+			
+			DataProcessorName = Manager.Create(ref.FileNameForDebugging, Ложь);
+			DataProcessorName = Ref.ObjectName;
+			
+		Else
+			DataProcessorName = Manager.Connect(AddressInTemporaryStorage, , SafeMode);
+
+		EndIf;
+		
+	Else
+	//( elmi 
+		
+		DataProcessorName = Manager.Connect(AddressInTemporaryStorage, , SafeMode);
+
+	//( elmi 
+	EndIf;
+	//) elmi 
 	
 	Return DataProcessorName;
 	

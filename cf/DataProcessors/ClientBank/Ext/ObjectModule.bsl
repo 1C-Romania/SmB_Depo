@@ -80,12 +80,12 @@ EndProcedure // CalculateSettlementsRateAndAmount()
 Function GetObjectPresentation(Object)
 	
 	If TypeOf(Object) = Type("DocumentObject.PaymentReceipt") Then
-		NameObject = NStr("en='The ""Payment receipt"" document # %Number% dated %Date%';ru='документ ""Расход со счета"" № %Номер% от %Дата%'"
+		NameObject = NStr("en='The ""Payment receipt"" document # %Number% dated %Date%';ru='документ ""Поступление на счет"" № %Number% от %Date%'"
 		);
 		NameObject = StrReplace(NameObject, "%Number%", String(TrimAll(Object.Number)));
 		NameObject = StrReplace(NameObject, "%Date%", String(Object.Date));
 	ElsIf TypeOf(Object) = Type("DocumentObject.PaymentExpense") Then
-		NameObject = NStr("en='The ""Payment expense"" document # %Number% dated %Date%';ru='документ ""Поступление на счет"" № %Номер% от %Дата%'"
+		NameObject = NStr("en='The ""Payment expense"" document # %Number% dated %Date%';ru='документ ""Расход со счета"" № %Number% от %Date%'"
 		);
 		NameObject = StrReplace(NameObject, "%Number%", String(TrimAll(Object.Number)));
 		NameObject = StrReplace(NameObject, "%Date%", String(Object.Date));
@@ -179,7 +179,7 @@ Procedure FillAttributesPaymentExpense(ObjectOfDocument, SourceData, IsNewDocume
 		If SourceData.OperationKind = Enums.OperationKindsPaymentExpense.ToCustomer Then
 			ObjectOfDocument.VATTaxation = SmallBusinessServer.VATTaxation(Company, , SourceData.DocDate);
 		Else
-			ObjectOfDocument.VATTaxation = Enums.VATTaxationTypes.TaxableByVAT;
+			ObjectOfDocument.VATTaxation = Enums.VATTaxationTypes.TaxableByVAT;          //????????????
 		EndIf;
 	EndIf;
 	
@@ -767,15 +767,15 @@ Function CreateCounterparty(StringCounterparty = Undefined) Export
 		NewItem.Description = StringCounterparty.Presentation;
 		NewItem.DescriptionFull = StringCounterparty.Presentation;
 		NewItem.TIN = StringCounterparty.GetItems()[1].Value;
-		NewItem.KPP = StringCounterparty.GetItems()[2].Value;
+		NewItem.RegistrationNumber = StringCounterparty.GetItems()[2].Value;
 		
 		
 		//( elmi #17 (112-00003) 
 		//If StrLen(NewItem.TIN) = 12 Then
 		//	NewItem.LegalEntityIndividual = Enums.LegalEntityIndividual.Ind;
 		//Else
-			NewItem.LegalEntityIndividual = Enums.LegalEntityIndividual.LegalEntity;
-		//EndIf;
+			NewItem.LegalEntityIndividual = Enums.CounterpartyKinds.LegalEntity;
+		//EndIf;    
 		//) elmi #17 (112-00003) 
 		
 		NewItem.GLAccountCustomerSettlements = ChartsOfAccounts.Managerial.AccountsReceivable;
@@ -799,7 +799,7 @@ Function CreateCounterparty(StringCounterparty = Undefined) Export
 	
 	If ReportAboutGeneratedCounterparty Then
 		
-		Message = New UserMessage;
+		Message = New UserMessage;                        
 		
 		Message.Text = StringFunctionsClientServer.SubstituteParametersInString(NStr("en='Counterparty (%1) is created.';ru='Контрагент (%1) создан.'"), StringCounterparty.Presentation);
 		
@@ -950,23 +950,23 @@ Procedure Import(ImportTitle) Export
 	DocumentsForImport.Indexes.Add("Document");
 	
 	//( elmi  #17 (112-00003) (
-	If ImportTitle <> Undefined Then
-	//) elmi 	
-		
-		Result = GetDateFromString(IntervalBeginExport, ImportTitle.StartDate);
-		If Not ValueIsFilled(Result) Then
-			MessageText  = NStr("en='In the import file title there is invalid date of the period beginning! File can not be imported!';ru='В заголовке файла загрузки неверно указана дата начала интервала! Файл не может быть загружен!'");
-			SmallBusinessServer.ShowMessageAboutError(ThisObject, MessageText);
-			Return;
-		EndIf;
-		Result = GetDateFromString(ExportIntervalEnd, ImportTitle.EndDate);
-		If Not ValueIsFilled(Result) Then
-			MessageText = NStr("en='The header of the imported file has a wrong date of the beginning of the period!';ru='В заголовке файла импорта неверно указана дата окончания интервала!'");
-			SmallBusinessServer.ShowMessageAboutError(ThisObject, MessageText);
-		EndIf;
-	
-	//( elmi  #17 (112-00003) 
-	EndIf;
+	//If ImportTitle <> Undefined Then
+	////) elmi 	
+	//	
+	//	Result = GetDateFromString(IntervalBeginExport, ImportTitle.StartDate);
+	//	If Not ValueIsFilled(Result) Then
+	//		MessageText  = NStr("en='In the import file title there is invalid date of the period beginning! File can not be imported!';ru='В заголовке файла загрузки неверно указана дата начала интервала! Файл не может быть загружен!'");
+	//		SmallBusinessServer.ShowMessageAboutError(ThisObject, MessageText);
+	//		Return;
+	//	EndIf;
+	//	Result = GetDateFromString(ExportIntervalEnd, ImportTitle.EndDate);
+	//	If Not ValueIsFilled(Result) Then
+	//		MessageText = NStr("en='The header of the imported file has a wrong date of the beginning of the period!';ru='В заголовке файла импорта неверно указана дата окончания интервала!'");
+	//		SmallBusinessServer.ShowMessageAboutError(ThisObject, MessageText);
+	//	EndIf;
+	//
+	////( elmi  #17 (112-00003) 
+	//EndIf;
 	//) elmi 
 	
 	// We import the marked document sections.
@@ -1017,8 +1017,8 @@ Procedure Import(ImportTitle) Export
 				EndIf; 
 			Else
 				MessageText = NStr("en='The %Operation% payment document No. %Number% from %Date%
-		|can not be imported: %CheckResult%!';ru='Платежный документ ""%Операция%"" №%Номер% от %Дата%
-		|не может быть загружен: %РезультатПроверки%!'"
+		|can not be imported: %CheckResult%!';ru='Платежный документ ""%Operation%"" №%Number% от %Date%
+		|не может быть загружен: %CheckResult%!'"
 				);
 				MessageText = StrReplace(MessageText, "%Operation%", SectionRow.Operation);
 				MessageText = StrReplace(MessageText, "%Number%", SectionRow.Number);
@@ -1144,91 +1144,48 @@ Procedure FillExportValue(RowExporting, SelectionForExport)
 		RowExporting.PayeeBankAcc = SelectionForExport[Recipient + "BankAcc"];
 		RowExporting.PayeeBank1    = SelectionForExport[Recipient + "SettlementBank"];
 		RowExporting.PayeeBank2    = SelectionForExport[Recipient + "BankPCCity"];
-		RowExporting.PayeeBIK      = SelectionForExport[Recipient + "BankPCBIC"];
+		RowExporting.PayeeBIC      = SelectionForExport[Recipient + "BankPCBIC"];
 		RowExporting.PayeeBalancedAccount  = SelectionForExport[Recipient + "CorrAccountRCBank"];
 	Else
 		RowExporting.PayeeBankAcc = SelectionForExport[Recipient + "AccountNo"];
 		RowExporting.PayeeBank1    = SelectionForExport[Recipient + "Bank"];
 		RowExporting.PayeeBank2    = SelectionForExport[Recipient + "BankCity"];
-		RowExporting.PayeeBIK      = SelectionForExport[Recipient + "BankBIC"];
+		RowExporting.PayeeBIC      = SelectionForExport[Recipient + "BankBIC"];
 		RowExporting.PayeeBalancedAccount  = SelectionForExport[Recipient + "BankAcc"];
 	EndIf;
 	
 	// PayerKPP.
-	If Not ValueIsFilled(RowExporting.PayerKPP) Then
-		RowExporting.PayerKPP = SelectionForExport.PayerKPP;
+	If Not ValueIsFilled(RowExporting.PayerRegistrationNumber) Then
+		RowExporting.PayerRegistrationNumber = SelectionForExport.PayerRegistrationNumber;
 	EndIf;
 	
 	// PayeeKPP.
-	If Not ValueIsFilled(RowExporting.PayeeKPP) Then
-		RowExporting.PayeeKPP = SelectionForExport.PayeeKPP;
+	If Not ValueIsFilled(RowExporting.PayeeRegistrationNumber) Then
+		RowExporting.PayeeRegistrationNumber = SelectionForExport.PayeeRegistrationNumber;
 	EndIf;
 	
-	// AuthorStatus, PayerKPP, PayeeKPP,
-	// KBKIndicator, OKATO, BasisIndicator, PeriodIndicator,
-	// NumberIndicator, DateIndicator, TypeIndicator.
+	// AuthorStatus, PayerRegistrationNumber, PayeeRegistrationNumber,
 	If SelectionForExport.OperationKind = Enums.OperationKindsPaymentOrder.TaxTransfer Then
 		RowExporting.AuthorStatus = SelectionForExport.AuthorStatus;
 		If IsBlankString(RowExporting.AuthorStatus) Then
 			RowExporting.AuthorStatus = "0";
 		EndIf;
-		If Not ValueIsFilled(RowExporting.PayerKPP) Then
-			RowExporting.PayerKPP = SelectionForExport.PayerKPP;
+		If Not ValueIsFilled(RowExporting.PayerRegistrationNumber) Then
+			RowExporting.PayerRegistrationNumber = SelectionForExport.PayerRegistrationNumber;
 		EndIf;
-		If Not ValueIsFilled(RowExporting.PayerKPP) Then
-			RowExporting.PayerKPP = "0";
+		If Not ValueIsFilled(RowExporting.PayerRegistrationNumber) Then
+			RowExporting.PayerRegistrationNumber = "0";
 		EndIf;
-		If Not ValueIsFilled(RowExporting.PayeeKPP) Then
-			RowExporting.PayeeKPP = SelectionForExport.PayeeKPP;
+		If Not ValueIsFilled(RowExporting.PayeeRegistrationNumber) Then
+			RowExporting.PayeeRegistrationNumber = SelectionForExport.PayeeRegistrationNumber;
 		EndIf;
-		If Not ValueIsFilled(RowExporting.PayeeKPP) Then
-			RowExporting.PayeeKPP = "0";
-		EndIf;
-		RowExporting.KBKIndicator = SelectionForExport.BKCode;
-		RowExporting.OKATO         = SelectionForExport.OKATOCode;
-		If IsBlankString(SelectionForExport.BasisIndicator) Then
-			RowExporting.BasisIndicator = "0";
-		Else
-			RowExporting.BasisIndicator = SelectionForExport.BasisIndicator;
-		EndIf;
-		If IsBlankString(SelectionForExport.PeriodIndicator) OR (SelectionForExport.PeriodIndicator = "  . .    ") Then
-			RowExporting.PeriodIndicator = "0";
-		Else
-			RowExporting.PeriodIndicator = SelectionForExport.PeriodIndicator;
-		EndIf;
-		If IsBlankString(SelectionForExport.NumberIndicator) Then
-			RowExporting.NumberIndicator = "0";
-		Else
-			RowExporting.NumberIndicator = SelectionForExport.NumberIndicator;
-		EndIf;
-		If Not ValueIsFilled(SelectionForExport.DateIndicator) Then
-			RowExporting.DateIndicator = "0";
-		Else
-			RowExporting.DateIndicator = Format(SelectionForExport.DateIndicator,"DLF=D");
-		EndIf;
-		TypeIndicatorIsProvidedByExchangeStandards = RowExporting.Property("TypeIndicator");
-		TypeIndicatorIsNotExported = SelectionForExport.Date >= '20150101'; // Ministry of Finance order No 126n from 30.10.2014.
-		If TypeIndicatorIsProvidedByExchangeStandards Then
-			If TypeIndicatorIsNotExported OR IsBlankString(SelectionForExport.TypeIndicator) Then
-				RowExporting.TypeIndicator = "0";
-			Else
-				RowExporting.TypeIndicator = SelectionForExport.TypeIndicator;
-			EndIf;
+		If Not ValueIsFilled(RowExporting.PayeeRegistrationNumber) Then
+			RowExporting.PayeeRegistrationNumber = "0";
 		EndIf;
 	EndIf;
 	
 	CodeIsProvidedByExchangeStandards = RowExporting.Property("Code");
 	CodeIsExportedInSeparateField = (SelectionForExport.Date >= '20140331');
-	If CodeIsExportedInSeparateField AND CodeIsProvidedByExchangeStandards Then
-		
-		If SelectionForExport.OperationKind = Enums.OperationKindsPaymentOrder.TaxTransfer
-			AND IsBlankString(SelectionForExport.PaymentIdentifier) Then
-			RowExporting.Code = "0"; // requirements 107n
-		Else
-			RowExporting.Code = SelectionForExport.PaymentIdentifier; // only requirements 383-P
-		EndIf;
-		
-	EndIf;
 	
 	// OrderOfPriority.
 	RowExporting.OrderOfPriority = "" + SelectionForExport.PaymentPriority;
@@ -1287,52 +1244,44 @@ Function Unload(FileOperationsExtensionConnected, UniqueKey) Export
 	DocumentsForExport = Exporting.Unload();
 	DumpStream = New TextDocument();
 	
-	If Encoding = "DOS" Then
+	If Encoding = "OEM" Then
 		DumpStream.SetFileType(TextEncoding.OEM);
-	Else
+	ElsIf Encoding = "ANSI" Then
 		DumpStream.SetFileType(TextEncoding.ANSI);
+	ElsIf Encoding = "UTF8" Then
+		DumpStream.SetFileType(TextEncoding.UTF8);
+	ElsIf Encoding = "UTF16" Then
+		DumpStream.SetFileType(TextEncoding.UTF16);
 	EndIf;
 	
-	// We form a title.
-	DumpStream.AddLine("1CClientBankExchange");
-	DumpStream.AddLine("FormatVersion=" + FormatVersion); // Supported versions are "1.01" and "1.02"
-	DumpStream.AddLine("Encoding=" + Encoding);
-	DumpStream.AddLine("Sender=" + Metadata.Synonym);
-	DumpStream.AddLine("Recipient=" + Application);
-	DumpStream.AddLine("CreationDate=" + Format(CurrentDate(), "DLF=D"));
-	DumpStream.AddLine("CreationTime=" + Format(CurrentDate(), "DLF=In"));
-	DumpStream.AddLine("StartDate=" + Format(StartPeriod, "DLF=D"));
-	DumpStream.AddLine("EndDate=" + Format(EndPeriod, "DLF=D"));
-	DumpStream.AddLine("BankAcc=" + BankAccount.AccountNo);
-	DumpStream.AddLine("Document = Payment Order");
+	ParametersOfDataProcessor = New Structure("CommandID, AdditionalInformationProcessorRef, BankAccount, DocumentsForExport, ExportAddress" ); 
 	
-	// We display the marked document sections.
-	For Each SectionRow IN DocumentsForExport Do
-		If Not(SectionRow.Exporting)Then
-			Continue;
-		EndIf;
-		Buffer = GetSectionDocument(SectionRow, DocumentsForExport.Columns);
-		CountTermSection = StrLineCount(Buffer);
-		For Ct = 1 To CountTermSection Do
-			DumpStream.AddLine(StrGetLine(Buffer, Ct));
-		EndDo;
-		SectionRow.Readiness = - 2;
-	EndDo;
+	//Обязательные параметры дополнительных отчетов и обработок
+	ParametersOfDataProcessor.CommandID                           = "ExportFromClientBankExternalDP";
+	ParametersOfDataProcessor.AdditionalInformationProcessorRef   = ExternalDataProcessor;
 	
-	DumpStream.AddLine("EndFile");
+	//Параметры для внешней обработки обмена с банком
+	ParametersOfDataProcessor.BankAccount                     	  = BankAccount;  		//bank account
+	ParametersOfDataProcessor.DocumentsForExport                  = DocumentsForExport; //Table of documents
 	
-	//If FileOperationsExtensionConnected
-	//	Then DumpStream Return;
-	//Else
-		TempFileName = GetTempFileName("txt");
-		If Encoding = "DOS" Then
-			DumpStream.Write(TempFileName, TextEncoding.OEM);
-		Else
-			DumpStream.Write(TempFileName, TextEncoding.ANSI);
-		EndIf;
-		Address = PutToTempStorage(New BinaryData(TempFileName), UniqueKey);
-		Return Address;
-	//EndIf;
+	//Возвращаемые значения
+	ParametersOfDataProcessor.ExportAddress                       = Неопределено;
+	
+	AdditionalReportsAndDataProcessors.RunCommand( ParametersOfDataProcessor );
+				
+	WarningText = ParametersOfDataProcessor.ExecutionResult.OutputMessages.Text;
+
+	If ValueIsFilled(WarningText) Then
+		
+		Message = New UserMessage();
+	    Message.Text = NSTR("ru='Ошибка: ';en='Error: '")+WarningText;
+		//Message.Field = "Nomenclature[10].Count";
+		//Message.SetData(DataObject);
+	    Message.Message();
+	
+	EndIf;
+	
+	Return ParametersOfDataProcessor.ExportAddress;
 	
 EndFunction // Export()
 
@@ -1427,23 +1376,13 @@ Function GenerateExportStructure()
 	StructureOfExports.Insert( "PayeeBankAcc",    ""); // "Correspondent account of payee bank",
 	StructureOfExports.Insert( "PayeeBank1",       ""); // "Payee's bank processing center",
 	StructureOfExports.Insert( "PayeeBank2",       ""); // "City of the payee's bank processing center",
-	StructureOfExports.Insert( "PayeeBIK",         ""); // "BIC of the payee's bank processing center",
+	StructureOfExports.Insert( "PayeeBIC",         ""); // "BIC of the payee's bank processing center",
 	StructureOfExports.Insert( "PayeeBalancedAccount",     ""); // "Correspondent account of payee's bank processing center",
 	StructureOfExports.Insert( "PaymentKind",            ""); // "Payment type",
 	StructureOfExports.Insert( "PayKind",             ""); // "Pay type",
 	StructureOfExports.Insert( "AuthorStatus",     ""); // "Author Status",
-	StructureOfExports.Insert( "PayerKPP",         ""); // "Payer KPP",
-	StructureOfExports.Insert( "PayeeKPP",         ""); // "Payee KPP",
-	StructureOfExports.Insert( "KBKIndicator",         ""); // "Indicator KBK",
-	StructureOfExports.Insert( "OKATO",                 ""); // "OKATO",
-	StructureOfExports.Insert( "BasisIndicator",   ""); // "Basis indicator",
-	StructureOfExports.Insert( "PeriodIndicator",     ""); // "Indicator of beg. period",
-	StructureOfExports.Insert( "NumberIndicator",      ""); // "Document number indicator",
-	StructureOfExports.Insert( "DateIndicator",        ""); // "Document date indicator",
-	
-	If FormatVersion < "1.03" Then // From 01.01.2015 is not used
-		StructureOfExports.Insert("TypeIndicator",     ""); // "Indicator of payment type"
-	EndIf;
+	StructureOfExports.Insert( "PayerRegistrationNumber",         ""); // "Payer KPP",
+	StructureOfExports.Insert( "PayeeRegistrationNumber",         ""); // "Payee KPP",
 	
 	StructureOfExports.Insert( "OrderOfPriority",           ""); // "Payment priority",
 	StructureOfExports.Insert( "PaymentDestination",     ""); // "Payment purpose",

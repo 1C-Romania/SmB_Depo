@@ -1451,6 +1451,15 @@ safe mode setting, will be created for additional report or data processors.</v8
 							<ContextMenu name="GroupContextMenu" id="46"/>
 							<ExtendedTooltip name="GroupExtendedTooltip" id="237"/>
 						</InputField>
+						<InputField name="FileNameForDebugging" id="386">
+							<DataPath>Object.FileNameForDebugging</DataPath>
+							<ChoiceButton>true</ChoiceButton>
+							<ContextMenu name="FileNameForDebuggingContextMenu" id="387"/>
+							<ExtendedTooltip name="FileNameForDebuggingExtendedTooltip" id="388"/>
+							<Events>
+								<Event name="StartChoice">FileNameForDebuggingStartChoice</Event>
+							</Events>
+						</InputField>
 					</ChildItems>
 				</Page>
 			</ChildItems>
