@@ -162,7 +162,6 @@
 		<Event name="NotificationProcessing">NotificationProcessing</Event>
 		<Event name="OnReadAtServer">OnReadAtServer</Event>
 		<Event name="OnOpen">OnOpen</Event>
-		<Event name="BeforeClose">BeforeClose</Event>
 		<Event name="BeforeWrite">BeforeWrite</Event>
 		<Event name="BeforeWriteAtServer">BeforeWriteAtServer</Event>
 		<Event name="OnCreateAtServer">OnCreateAtServer</Event>
@@ -170,6 +169,385 @@
 		<Event name="FillCheckProcessingAtServer">FillCheckProcessingAtServer</Event>
 	</Events>
 	<ChildItems>
+		<UsualGroup name="Header" id="1364">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Header</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Шапка</v8:content>
+				</v8:item>
+			</Title>
+			<Group>Horizontal</Group>
+			<HorizontalSpacing>Double</HorizontalSpacing>
+			<Representation>None</Representation>
+			<ShowTitle>false</ShowTitle>
+			<ExtendedTooltip name="HeaderExtendedTooltip" id="1365"/>
+			<ChildItems>
+				<UsualGroup name="HeaderLeft" id="1366">
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Header left</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Шапка лево</v8:content>
+						</v8:item>
+					</Title>
+					<Group>Vertical</Group>
+					<HorizontalSpacing>Single</HorizontalSpacing>
+					<Representation>None</Representation>
+					<United>false</United>
+					<ShowTitle>false</ShowTitle>
+					<ExtendedTooltip name="HeaderLeftExtendedTooltip" id="1367"/>
+					<ChildItems>
+						<UsualGroup name="GroupStatuses" id="601">
+							<Title>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Statuses</v8:content>
+								</v8:item>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Статусы</v8:content>
+								</v8:item>
+							</Title>
+							<ToolTip>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Statuses</v8:content>
+								</v8:item>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Статусы</v8:content>
+								</v8:item>
+							</ToolTip>
+							<Group>Horizontal</Group>
+							<Representation>None</Representation>
+							<ShowTitle>false</ShowTitle>
+							<ExtendedTooltip name="GroupStatusExtendedTooltip" id="970"/>
+							<ChildItems>
+								<InputField name="Status" id="1214">
+									<DataPath>Status</DataPath>
+									<SkipOnInput>true</SkipOnInput>
+									<ToolTipRepresentation>Button</ToolTipRepresentation>
+									<Width>15</Width>
+									<HorizontalStretch>false</HorizontalStretch>
+									<DropListButton>true</DropListButton>
+									<AutoChoiceIncomplete>true</AutoChoiceIncomplete>
+									<AutoMarkIncomplete>true</AutoMarkIncomplete>
+									<TextEdit>false</TextEdit>
+									<ContextMenu name="StateContextMenu" id="1215">
+										<Autofill>false</Autofill>
+									</ContextMenu>
+									<ExtendedTooltip name="StatusExtendedTooltip" id="1216">
+										<Title formatted="true">
+											<v8:item>
+												<v8:lang>en</v8:lang>
+												<v8:content>&lt;b&gt;Order state&lt;/&gt; is a set of parameters that define an order status,
+for example, whether the order is complete or only awaiting appointment. It is determined by its state. 
+
+The status which was established for the order defines the behavior of the document. 
+
+&lt;b&gt;The following &lt;/&gt;&lt;b&gt;states are defined:&lt;/&gt;
+
+• &lt;b&gt;In progress&lt;/&gt; - order data will be reflected in the account. 
+• &lt;b&gt;Completed&lt;/&gt; -set by a user on order fulfillment. 
+• &lt;b&gt;Canceled&lt;/&gt; - the order is not reflected in the account.
+
+Quick filter and color assignment for document view by status are available for orders list. 
+
+Vendor color assignment for order state is determined in &lt;link SalesAccountingSettings&gt; Settings - Accounting settings - Sales&lt;/&gt;.</v8:content>
+											</v8:item>
+											<v8:item>
+												<v8:lang>ru</v8:lang>
+												<v8:content>«Состояние заказа» - это набор параметров, определяющих статус, в котором каждый момент времени находится заказ, например, выполнен ли заказ или только ожидает назначения, определяется его состоянием.    Состояние, которое было установлено для заказа, определяет поведение документа.  Определены следующие состояния:  • В работе – данные заказа будут отражаться в учете.  • Выполнен – устанавливается пользователем при выполнении заказа.  • Отменен - заказ не отражается в учете.  Для списка заказов доступен быстрый отбор и назначение цвета представлению документа по состояниям.  Назначение цвета для состояния заказа поставщику определяется в разделе Настройки - Настройки учета - Производство.</v8:content>
+											</v8:item>
+										</Title>
+										<Events>
+											<Event name="URLProcessing">StatusExtendedTooltipNavigationLinkProcessing</Event>
+										</Events>
+									</ExtendedTooltip>
+									<Events>
+										<Event name="OnChange">StatusOnChange</Event>
+									</Events>
+								</InputField>
+							</ChildItems>
+						</UsualGroup>
+						<UsualGroup name="StateGroup" id="429">
+							<Title>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Group state</v8:content>
+								</v8:item>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Группа состояние</v8:content>
+								</v8:item>
+							</Title>
+							<ToolTip>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Group state</v8:content>
+								</v8:item>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Группа состояние</v8:content>
+								</v8:item>
+							</ToolTip>
+							<Group>Horizontal</Group>
+							<Representation>None</Representation>
+							<ShowTitle>false</ShowTitle>
+							<ExtendedTooltip name="StateGroupExtendedTooltip" id="989"/>
+							<ChildItems>
+								<InputField name="OrderState" id="430">
+									<DataPath>Object.OrderState</DataPath>
+									<SkipOnInput>true</SkipOnInput>
+									<Title>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>State</v8:content>
+										</v8:item>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Состояние</v8:content>
+										</v8:item>
+									</Title>
+									<ToolTipRepresentation>Button</ToolTipRepresentation>
+									<EditMode>EnterOnInput</EditMode>
+									<Width>15</Width>
+									<HorizontalStretch>false</HorizontalStretch>
+									<OpenButton>false</OpenButton>
+									<TextEdit>false</TextEdit>
+									<ContextMenu name="OrderStateContextMenu" id="431"/>
+									<ExtendedTooltip name="OrderStateExtendedTooltip" id="990">
+										<Title formatted="true">
+											<v8:item>
+												<v8:lang>en</v8:lang>
+												<v8:content>&lt;b&gt;Order state&lt;/&gt; is a set of parameters that define an order status, for example, whether the order is complete or only awaiting appointment. It is determined by its state. User can create any convenient conditions for statuses value work.
+
+&lt;b&gt;Each state is assigned with a status&lt;/&gt;
+
+
+&lt;b&gt;• &lt;/&gt;&lt;b&gt;Opened &lt;/&gt;–vorder will play the role of the advance application. 
+• &lt;b&gt;In progress&lt;/&gt; - order data will be reflected in the account. 
+• &lt;b&gt;Completed&lt;/&gt; -set by a user on order fulfillment. To close the order which has a Completed status you should select the &lt;b&gt;Closed&lt;/&gt; check box. 
+
+To cancel an order with states "Opened" or "In progress", select the &lt;b&gt;Closed&lt;/&gt; check box. 
+
+Quick filter and color assignment for document view by status are available for orders list. 
+Content of the states list is determined by the contents of Customers orders states catalog. 
+Reference is available on the eponymous hyperlink in the form &lt;link SalesAccountingSettings&gt;Settings&lt;/&gt; &lt;link SalesAccountingSettings&gt;- Accounting settings - Sales&lt;/&gt; Status by default for new customer order is determined in the user settings.</v8:content>
+											</v8:item>
+											<v8:item>
+												<v8:lang>ru</v8:lang>
+												<v8:content>«Состояние заказа» - это набор параметров, определяющих статус, в котором каждый момент времени находится заказ, например, выполнен ли заказ или только ожидает назначения, определяется его состоянием. Пользователь может создать любые удобные для работы значения состояний.  Каждому состоянию присваивается статус:  • Открыт – заказ будет играть роль предварительной заявки.  • В работе – данные заказа будут отражаться в учете.  • Выполнен – устанавливается пользователем при выполнении заказа. Для закрытия заказа, имеющего состояние «Выполнен», следует установить флажок «Закрыт».   Для отмены заказа, имеющего состояние «Открыт» или «В работе», следует установить флажок «Закрыт».   Для списка заказов доступен быстрый отбор и назначение цвета представлению документа по состояниям.  Состав списка состояний определяется содержимым справочника «Состояния заказов покупателей».  Справочник доступен по одноименной гиперссылке в форме Настройки - Настройки учета - Продажи  Состояние по умолчанию для нового заказа покупателя определяется в настройках пользователя.</v8:content>
+											</v8:item>
+										</Title>
+										<Events>
+											<Event name="URLProcessing">StatusExtendedTooltipNavigationLinkProcessing</Event>
+										</Events>
+									</ExtendedTooltip>
+								</InputField>
+								<CheckBoxField name="Closed" id="432">
+									<DataPath>Object.Closed</DataPath>
+									<SkipOnInput>true</SkipOnInput>
+									<TitleLocation>Right</TitleLocation>
+									<CheckBoxType>Auto</CheckBoxType>
+									<ContextMenu name="CloseContextMenu" id="433"/>
+									<ExtendedTooltip name="ClosedExtendedTooltip" id="991"/>
+								</CheckBoxField>
+							</ChildItems>
+						</UsualGroup>
+						<InputField name="Counterparty" id="3">
+							<DataPath>Object.Counterparty</DataPath>
+							<EditMode>EnterOnInput</EditMode>
+							<Wrap>false</Wrap>
+							<ContextMenu name="CounterpartyContextMenu" id="4"/>
+							<ExtendedTooltip name="CounterpartyExtendedTooltip" id="1005"/>
+							<Events>
+								<Event name="OnChange">CounterpartyOnChange</Event>
+							</Events>
+						</InputField>
+						<InputField name="Contract" id="5">
+							<DataPath>Object.Contract</DataPath>
+							<EditMode>EnterOnInput</EditMode>
+							<Wrap>false</Wrap>
+							<ContextMenu name="ContractContextMenu" id="6"/>
+							<ExtendedTooltip name="ContractExtendedTooltip" id="1007"/>
+							<Events>
+								<Event name="OnChange">ContractOnChange</Event>
+								<Event name="StartChoice">ContractStartChoice</Event>
+							</Events>
+						</InputField>
+						<InputField name="ShipmentDate" id="7">
+							<DataPath>Object.ShipmentDate</DataPath>
+							<EditMode>EnterOnInput</EditMode>
+							<Width>15</Width>
+							<HorizontalStretch>false</HorizontalStretch>
+							<Wrap>false</Wrap>
+							<ContextMenu name="DispatchDateContextMenu" id="8"/>
+							<ExtendedTooltip name="DispatchDateExtendedTooltip" id="1009"/>
+						</InputField>
+					</ChildItems>
+				</UsualGroup>
+				<UsualGroup name="HeaderRight" id="1368">
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Header right</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Шапка право</v8:content>
+						</v8:item>
+					</Title>
+					<Width>25</Width>
+					<Group>Vertical</Group>
+					<HorizontalSpacing>Single</HorizontalSpacing>
+					<Representation>None</Representation>
+					<United>false</United>
+					<ShowTitle>false</ShowTitle>
+					<ExtendedTooltip name="HeaderRightExtendedTooltip" id="1369"/>
+					<ChildItems>
+						<UsualGroup name="NumberDate" id="86">
+							<Title>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Number, Date</v8:content>
+								</v8:item>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Номер, дата документа</v8:content>
+								</v8:item>
+							</Title>
+							<ToolTip>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Number, Date</v8:content>
+								</v8:item>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Номер, дата документа</v8:content>
+								</v8:item>
+							</ToolTip>
+							<Group>Horizontal</Group>
+							<Representation>None</Representation>
+							<ShowTitle>false</ShowTitle>
+							<ExtendedTooltip name="NumberDateExtendedTooltip" id="996"/>
+							<ChildItems>
+								<InputField name="Number" id="87">
+									<DataPath>Object.Number</DataPath>
+									<AutoMaxWidth>false</AutoMaxWidth>
+									<MaxWidth>10</MaxWidth>
+									<HorizontalStretch>false</HorizontalStretch>
+									<Wrap>false</Wrap>
+									<InputHint>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>&lt;Auto&gt;</v8:content>
+										</v8:item>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>&lt;Auto&gt;</v8:content>
+										</v8:item>
+									</InputHint>
+									<ContextMenu name="NumberContextMenu" id="88"/>
+									<ExtendedTooltip name="NumberExtendedTooltip" id="997"/>
+								</InputField>
+								<InputField name="Date" id="89">
+									<DataPath>Object.Date</DataPath>
+									<SkipOnInput>true</SkipOnInput>
+									<AutoMaxWidth>false</AutoMaxWidth>
+									<MaxWidth>14</MaxWidth>
+									<HorizontalStretch>false</HorizontalStretch>
+									<Wrap>false</Wrap>
+									<ContextMenu name="DateContextMenu" id="90"/>
+									<ExtendedTooltip name="DateExtendedTooltip" id="998"/>
+									<Events>
+										<Event name="OnChange">DateOnChange</Event>
+									</Events>
+								</InputField>
+							</ChildItems>
+						</UsualGroup>
+						<InputField name="OperationKind" id="93">
+							<DataPath>Object.OperationKind</DataPath>
+							<SkipOnInput>true</SkipOnInput>
+							<Wrap>false</Wrap>
+							<ListChoiceMode>true</ListChoiceMode>
+							<ChoiceListButton>false</ChoiceListButton>
+							<ContextMenu name="OperationTypeContextMenu" id="94"/>
+							<ExtendedTooltip name="OperationTypeExtendedTooltip" id="1002"/>
+							<Events>
+								<Event name="OnChange">OperationKindOnChange</Event>
+							</Events>
+						</InputField>
+						<InputField name="Company" id="91">
+							<DataPath>Object.Company</DataPath>
+							<SkipOnInput>true</SkipOnInput>
+							<Wrap>false</Wrap>
+							<ContextMenu name="CompanyContextMenu" id="92"/>
+							<ExtendedTooltip name="CompanyExtendedTooltip" id="999"/>
+							<Events>
+								<Event name="OnChange">CompanyOnChange</Event>
+							</Events>
+						</InputField>
+						<UsualGroup name="GroupPricesAndCurrency" id="1308">
+							<Title>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Group prices and currency</v8:content>
+								</v8:item>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Группа цены и валюта</v8:content>
+								</v8:item>
+							</Title>
+							<ToolTip>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Group prices and currency</v8:content>
+								</v8:item>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Группа цены и валюта</v8:content>
+								</v8:item>
+							</ToolTip>
+							<Group>Horizontal</Group>
+							<Representation>None</Representation>
+							<ShowTitle>false</ShowTitle>
+							<ExtendedTooltip name="GroupPricesAndCurrencyExtendedTooltip" id="1309"/>
+							<ChildItems>
+								<LabelField name="PricesAndCurrency" id="68">
+									<DataPath>PricesAndCurrency</DataPath>
+									<TitleLocation>None</TitleLocation>
+									<HorizontalAlign>Center</HorizontalAlign>
+									<Hiperlink>true</Hiperlink>
+									<Border width="1">
+										<v8ui:style xsi:type="v8ui:ControlBorderType">Single</v8ui:style>
+									</Border>
+									<BorderColor>style:BorderColorGroupPricesAndCurrencies</BorderColor>
+									<ContextMenu name="PricesAndCurrencyContextMenu" id="69"/>
+									<ExtendedTooltip name="PricesAndCurrencyExtendedTooltip" id="1013"/>
+									<Events>
+										<Event name="Click">EditPricesAndCurrency</Event>
+									</Events>
+								</LabelField>
+								<Button name="ReadDiscountCard" id="1315">
+									<Type>UsualButton</Type>
+									<Representation>Picture</Representation>
+									<CommandName>Form.Command.ReadDiscountCard</CommandName>
+									<ExtendedTooltip name="ReadDiscountCardExtendedTooltip" id="1316"/>
+								</Button>
+							</ChildItems>
+						</UsualGroup>
+					</ChildItems>
+				</UsualGroup>
+			</ChildItems>
+		</UsualGroup>
 		<Pages name="Pages" id="1199">
 			<Title>
 				<v8:item>
@@ -193,520 +571,11 @@
 			</ToolTip>
 			<ExtendedTooltip name="PagesExtendedTooltip" id="1200"/>
 			<ChildItems>
-				<Page name="Main" id="1201">
+				<Page name="PageInventory" id="15">
 					<Title>
 						<v8:item>
 							<v8:lang>en</v8:lang>
-							<v8:content>Main</v8:content>
-						</v8:item>
-						<v8:item>
-							<v8:lang>ru</v8:lang>
-							<v8:content>Основные</v8:content>
-						</v8:item>
-					</Title>
-					<ToolTip>
-						<v8:item>
-							<v8:lang>en</v8:lang>
-							<v8:content>Main</v8:content>
-						</v8:item>
-						<v8:item>
-							<v8:lang>ru</v8:lang>
-							<v8:content>Основные</v8:content>
-						</v8:item>
-					</ToolTip>
-					<ExtendedTooltip name="MainExtendedTooltip" id="1202"/>
-					<ChildItems>
-						<UsualGroup name="Header" id="1">
-							<Title>
-								<v8:item>
-									<v8:lang>en</v8:lang>
-									<v8:content>Header</v8:content>
-								</v8:item>
-								<v8:item>
-									<v8:lang>ru</v8:lang>
-									<v8:content>Шапка</v8:content>
-								</v8:item>
-							</Title>
-							<HorizontalStretch>true</HorizontalStretch>
-							<Group>Horizontal</Group>
-							<Representation>None</Representation>
-							<ShowTitle>false</ShowTitle>
-							<ExtendedTooltip name="HeaderExtendedTooltip" id="994"/>
-							<ChildItems>
-								<UsualGroup name="LeftColumn" id="2">
-									<Title>
-										<v8:item>
-											<v8:lang>en</v8:lang>
-											<v8:content>Left column</v8:content>
-										</v8:item>
-										<v8:item>
-											<v8:lang>ru</v8:lang>
-											<v8:content>Левая колонка</v8:content>
-										</v8:item>
-									</Title>
-									<Group>Vertical</Group>
-									<Representation>None</Representation>
-									<ShowTitle>false</ShowTitle>
-									<ExtendedTooltip name="LeftColumnExtendedTooltip" id="995"/>
-									<ChildItems>
-										<UsualGroup name="GroupStatuses" id="601">
-											<Title>
-												<v8:item>
-													<v8:lang>en</v8:lang>
-													<v8:content>Statuses</v8:content>
-												</v8:item>
-												<v8:item>
-													<v8:lang>ru</v8:lang>
-													<v8:content>Статусы</v8:content>
-												</v8:item>
-											</Title>
-											<ToolTip>
-												<v8:item>
-													<v8:lang>en</v8:lang>
-													<v8:content>Statuses</v8:content>
-												</v8:item>
-												<v8:item>
-													<v8:lang>ru</v8:lang>
-													<v8:content>Статусы</v8:content>
-												</v8:item>
-											</ToolTip>
-											<Group>Horizontal</Group>
-											<Representation>None</Representation>
-											<ShowTitle>false</ShowTitle>
-											<ExtendedTooltip name="GroupStatusExtendedTooltip" id="970"/>
-											<ChildItems>
-												<InputField name="Status" id="1214">
-													<DataPath>Status</DataPath>
-													<SkipOnInput>true</SkipOnInput>
-													<ToolTipRepresentation>Button</ToolTipRepresentation>
-													<Width>15</Width>
-													<HorizontalStretch>false</HorizontalStretch>
-													<DropListButton>true</DropListButton>
-													<AutoChoiceIncomplete>true</AutoChoiceIncomplete>
-													<AutoMarkIncomplete>true</AutoMarkIncomplete>
-													<TextEdit>false</TextEdit>
-													<ContextMenu name="StateContextMenu" id="1215">
-														<Autofill>false</Autofill>
-													</ContextMenu>
-													<ExtendedTooltip name="StatusExtendedTooltip" id="1216">
-														<Title formatted="true">
-															<v8:item>
-																<v8:lang>en</v8:lang>
-																<v8:content>&lt;b&gt;Order state&lt;/&gt; is a set of parameters that define an order status,
-for example, whether the order is complete or only awaiting appointment. It is determined by its state. 
-
-The status which was established for the order defines the behavior of the document. 
-
-&lt;b&gt;The following &lt;/&gt;&lt;b&gt;states are defined:&lt;/&gt;
-
-• &lt;b&gt;In progress&lt;/&gt; - order data will be reflected in the account. 
-• &lt;b&gt;Completed&lt;/&gt; -set by a user on order fulfillment. 
-• &lt;b&gt;Canceled&lt;/&gt; - the order is not reflected in the account.
-
-Quick filter and color assignment for document view by status are available for orders list. 
-
-Vendor color assignment for order state is determined in &lt;link SalesAccountingSettings&gt; Settings - Accounting settings - Sales&lt;/&gt;.</v8:content>
-															</v8:item>
-															<v8:item>
-																<v8:lang>ru</v8:lang>
-																<v8:content>«Состояние заказа» - это набор параметров, определяющих статус, в котором каждый момент времени находится заказ, например, выполнен ли заказ или только ожидает назначения, определяется его состоянием.    Состояние, которое было установлено для заказа, определяет поведение документа.  Определены следующие состояния:  • В работе – данные заказа будут отражаться в учете.  • Выполнен – устанавливается пользователем при выполнении заказа.  • Отменен - заказ не отражается в учете.  Для списка заказов доступен быстрый отбор и назначение цвета представлению документа по состояниям.  Назначение цвета для состояния заказа поставщику определяется в разделе Настройки - Настройки учета - Производство.</v8:content>
-															</v8:item>
-														</Title>
-														<Events>
-															<Event name="URLProcessing">StatusExtendedTooltipNavigationLinkProcessing</Event>
-														</Events>
-													</ExtendedTooltip>
-													<Events>
-														<Event name="OnChange">StatusOnChange</Event>
-													</Events>
-												</InputField>
-											</ChildItems>
-										</UsualGroup>
-										<UsualGroup name="StateGroup" id="429">
-											<Title>
-												<v8:item>
-													<v8:lang>en</v8:lang>
-													<v8:content>Group state</v8:content>
-												</v8:item>
-												<v8:item>
-													<v8:lang>ru</v8:lang>
-													<v8:content>Группа состояние</v8:content>
-												</v8:item>
-											</Title>
-											<ToolTip>
-												<v8:item>
-													<v8:lang>en</v8:lang>
-													<v8:content>Group state</v8:content>
-												</v8:item>
-												<v8:item>
-													<v8:lang>ru</v8:lang>
-													<v8:content>Группа состояние</v8:content>
-												</v8:item>
-											</ToolTip>
-											<Group>Horizontal</Group>
-											<Representation>None</Representation>
-											<ShowTitle>false</ShowTitle>
-											<ExtendedTooltip name="StateGroupExtendedTooltip" id="989"/>
-											<ChildItems>
-												<InputField name="OrderState" id="430">
-													<DataPath>Object.OrderState</DataPath>
-													<SkipOnInput>true</SkipOnInput>
-													<Title>
-														<v8:item>
-															<v8:lang>en</v8:lang>
-															<v8:content>State</v8:content>
-														</v8:item>
-														<v8:item>
-															<v8:lang>ru</v8:lang>
-															<v8:content>Состояние</v8:content>
-														</v8:item>
-													</Title>
-													<ToolTipRepresentation>Button</ToolTipRepresentation>
-													<EditMode>EnterOnInput</EditMode>
-													<Width>15</Width>
-													<HorizontalStretch>false</HorizontalStretch>
-													<OpenButton>false</OpenButton>
-													<TextEdit>false</TextEdit>
-													<ContextMenu name="OrderStateContextMenu" id="431"/>
-													<ExtendedTooltip name="OrderStateExtendedTooltip" id="990">
-														<Title formatted="true">
-															<v8:item>
-																<v8:lang>en</v8:lang>
-																<v8:content>&lt;b&gt;Order state&lt;/&gt; is a set of parameters that define an order status, for example, whether the order is complete or only awaiting appointment. It is determined by its state. User can create any convenient conditions for statuses value work.
-
-&lt;b&gt;Each state is assigned with a status&lt;/&gt;
-
-
-&lt;b&gt;• &lt;/&gt;&lt;b&gt;Opened &lt;/&gt;–vorder will play the role of the advance application. 
-• &lt;b&gt;In progress&lt;/&gt; - order data will be reflected in the account. 
-• &lt;b&gt;Completed&lt;/&gt; -set by a user on order fulfillment. To close the order which has a Completed status you should select the &lt;b&gt;Closed&lt;/&gt; check box. 
-
-To cancel an order with states "Opened" or "In progress", select the &lt;b&gt;Closed&lt;/&gt; check box. 
-
-Quick filter and color assignment for document view by status are available for orders list. 
-Content of the states list is determined by the contents of Customers orders states catalog. 
-Reference is available on the eponymous hyperlink in the form &lt;link SalesAccountingSettings&gt;Settings&lt;/&gt; &lt;link SalesAccountingSettings&gt;- Accounting settings - Sales&lt;/&gt; Status by default for new customer order is determined in the user settings.</v8:content>
-															</v8:item>
-															<v8:item>
-																<v8:lang>ru</v8:lang>
-																<v8:content>«Состояние заказа» - это набор параметров, определяющих статус, в котором каждый момент времени находится заказ, например, выполнен ли заказ или только ожидает назначения, определяется его состоянием. Пользователь может создать любые удобные для работы значения состояний.  Каждому состоянию присваивается статус:  • Открыт – заказ будет играть роль предварительной заявки.  • В работе – данные заказа будут отражаться в учете.  • Выполнен – устанавливается пользователем при выполнении заказа. Для закрытия заказа, имеющего состояние «Выполнен», следует установить флажок «Закрыт».   Для отмены заказа, имеющего состояние «Открыт» или «В работе», следует установить флажок «Закрыт».   Для списка заказов доступен быстрый отбор и назначение цвета представлению документа по состояниям.  Состав списка состояний определяется содержимым справочника «Состояния заказов покупателей».  Справочник доступен по одноименной гиперссылке в форме Настройки - Настройки учета - Продажи  Состояние по умолчанию для нового заказа покупателя определяется в настройках пользователя.</v8:content>
-															</v8:item>
-														</Title>
-														<Events>
-															<Event name="URLProcessing">StatusExtendedTooltipNavigationLinkProcessing</Event>
-														</Events>
-													</ExtendedTooltip>
-													<Events>
-														<Event name="OnChange">OrderStateOnChange</Event>
-													</Events>
-												</InputField>
-												<CheckBoxField name="Closed" id="432">
-													<DataPath>Object.Closed</DataPath>
-													<SkipOnInput>true</SkipOnInput>
-													<TitleLocation>Right</TitleLocation>
-													<CheckBoxType>Auto</CheckBoxType>
-													<ContextMenu name="CloseContextMenu" id="433"/>
-													<ExtendedTooltip name="ClosedExtendedTooltip" id="991"/>
-												</CheckBoxField>
-											</ChildItems>
-										</UsualGroup>
-										<InputField name="Counterparty" id="3">
-											<DataPath>Object.Counterparty</DataPath>
-											<EditMode>EnterOnInput</EditMode>
-											<Wrap>false</Wrap>
-											<ContextMenu name="CounterpartyContextMenu" id="4"/>
-											<ExtendedTooltip name="CounterpartyExtendedTooltip" id="1005"/>
-											<Events>
-												<Event name="OnChange">CounterpartyOnChange</Event>
-											</Events>
-										</InputField>
-										<Button name="ShowCounterpartyInformation" id="1300">
-											<Type>Hyperlink</Type>
-											<SkipOnInput>true</SkipOnInput>
-											<CommandName>Form.Command.ShowCounterpartyInformation</CommandName>
-											<ExtendedTooltip name="ShowCounterpartyInformationExtendedTooltip" id="1301"/>
-										</Button>
-										<InputField name="Contract" id="5">
-											<DataPath>Object.Contract</DataPath>
-											<EditMode>EnterOnInput</EditMode>
-											<Wrap>false</Wrap>
-											<ContextMenu name="ContractContextMenu" id="6"/>
-											<ExtendedTooltip name="ContractExtendedTooltip" id="1007"/>
-											<Events>
-												<Event name="OnChange">ContractOnChange</Event>
-												<Event name="StartChoice">ContractStartChoice</Event>
-											</Events>
-										</InputField>
-										<InputField name="Project" id="10">
-											<DataPath>Object.Project</DataPath>
-											<EditMode>EnterOnInput</EditMode>
-											<Wrap>false</Wrap>
-											<ContextMenu name="ProjectContextMenu" id="11"/>
-											<ExtendedTooltip name="ProjectExtendedTooltip" id="1074"/>
-										</InputField>
-										<InputField name="ShipmentDate" id="7">
-											<DataPath>Object.ShipmentDate</DataPath>
-											<EditMode>EnterOnInput</EditMode>
-											<Width>15</Width>
-											<HorizontalStretch>false</HorizontalStretch>
-											<Wrap>false</Wrap>
-											<ContextMenu name="DispatchDateContextMenu" id="8"/>
-											<ExtendedTooltip name="DispatchDateExtendedTooltip" id="1009"/>
-										</InputField>
-									</ChildItems>
-								</UsualGroup>
-								<UsualGroup name="RightColumn" id="9">
-									<Title>
-										<v8:item>
-											<v8:lang>en</v8:lang>
-											<v8:content>Right column</v8:content>
-										</v8:item>
-										<v8:item>
-											<v8:lang>ru</v8:lang>
-											<v8:content>Правая колонка</v8:content>
-										</v8:item>
-									</Title>
-									<Group>Vertical</Group>
-									<Representation>None</Representation>
-									<ShowTitle>false</ShowTitle>
-									<ExtendedTooltip name="RightColumnExtendedTooltip" id="1000"/>
-									<ChildItems>
-										<UsualGroup name="NumberDate" id="86">
-											<Title>
-												<v8:item>
-													<v8:lang>en</v8:lang>
-													<v8:content>Number, Date</v8:content>
-												</v8:item>
-												<v8:item>
-													<v8:lang>ru</v8:lang>
-													<v8:content>Номер, дата документа</v8:content>
-												</v8:item>
-											</Title>
-											<ToolTip>
-												<v8:item>
-													<v8:lang>en</v8:lang>
-													<v8:content>Number, Date</v8:content>
-												</v8:item>
-												<v8:item>
-													<v8:lang>ru</v8:lang>
-													<v8:content>Номер, дата документа</v8:content>
-												</v8:item>
-											</ToolTip>
-											<Group>Horizontal</Group>
-											<Representation>None</Representation>
-											<ShowTitle>false</ShowTitle>
-											<ExtendedTooltip name="NumberDateExtendedTooltip" id="996"/>
-											<ChildItems>
-												<InputField name="Number" id="87">
-													<DataPath>Object.Number</DataPath>
-													<Width>10</Width>
-													<HorizontalStretch>false</HorizontalStretch>
-													<Wrap>false</Wrap>
-													<InputHint>
-														<v8:item>
-															<v8:lang>en</v8:lang>
-															<v8:content>&lt;Auto&gt;</v8:content>
-														</v8:item>
-														<v8:item>
-															<v8:lang>ru</v8:lang>
-															<v8:content>&lt;Auto&gt;</v8:content>
-														</v8:item>
-													</InputHint>
-													<ContextMenu name="NumberContextMenu" id="88"/>
-													<ExtendedTooltip name="NumberExtendedTooltip" id="997"/>
-												</InputField>
-												<InputField name="Date" id="89">
-													<DataPath>Object.Date</DataPath>
-													<SkipOnInput>true</SkipOnInput>
-													<Title>
-														<v8:item>
-															<v8:lang>en</v8:lang>
-															<v8:content>dated</v8:content>
-														</v8:item>
-														<v8:item>
-															<v8:lang>ru</v8:lang>
-															<v8:content>от</v8:content>
-														</v8:item>
-													</Title>
-													<Width>15</Width>
-													<HorizontalStretch>false</HorizontalStretch>
-													<Wrap>false</Wrap>
-													<ContextMenu name="DateContextMenu" id="90"/>
-													<ExtendedTooltip name="DateExtendedTooltip" id="998"/>
-													<Events>
-														<Event name="OnChange">DateOnChange</Event>
-													</Events>
-												</InputField>
-											</ChildItems>
-										</UsualGroup>
-										<UsualGroup name="GroupOperationAndCompany" id="1310">
-											<Title>
-												<v8:item>
-													<v8:lang>en</v8:lang>
-													<v8:content>Group operation and company</v8:content>
-												</v8:item>
-												<v8:item>
-													<v8:lang>ru</v8:lang>
-													<v8:content>Группа операция и организация</v8:content>
-												</v8:item>
-											</Title>
-											<ToolTip>
-												<v8:item>
-													<v8:lang>en</v8:lang>
-													<v8:content>Group operation and company</v8:content>
-												</v8:item>
-												<v8:item>
-													<v8:lang>ru</v8:lang>
-													<v8:content>Группа операция и организация</v8:content>
-												</v8:item>
-											</ToolTip>
-											<Group>Vertical</Group>
-											<Representation>None</Representation>
-											<ShowTitle>false</ShowTitle>
-											<ExtendedTooltip name="GroupOperationAndCompanyExtendedTooltip" id="1311"/>
-										</UsualGroup>
-										<InputField name="OperationKind" id="93">
-											<DataPath>Object.OperationKind</DataPath>
-											<SkipOnInput>true</SkipOnInput>
-											<Wrap>false</Wrap>
-											<ListChoiceMode>true</ListChoiceMode>
-											<ChoiceList>
-												<xr:Item>
-													<xr:Presentation/>
-													<xr:CheckState>0</xr:CheckState>
-													<xr:Value xsi:type="FormChoiceListDesTimeValue">
-														<Presentation/>
-														<Value xsi:type="xr:DesignTimeRef">Enum.OperationKindsCustomerOrder.EnumValue.OrderForSale</Value>
-													</xr:Value>
-												</xr:Item>
-											</ChoiceList>
-											<ChoiceListButton>false</ChoiceListButton>
-											<BackColor>style:MasterFieldBackground</BackColor>
-											<ContextMenu name="OperationTypeContextMenu" id="94"/>
-											<ExtendedTooltip name="OperationTypeExtendedTooltip" id="1002"/>
-											<Events>
-												<Event name="OnChange">OperationKindOnChange</Event>
-											</Events>
-										</InputField>
-										<InputField name="Company" id="91">
-											<DataPath>Object.Company</DataPath>
-											<SkipOnInput>true</SkipOnInput>
-											<Wrap>false</Wrap>
-											<ContextMenu name="CompanyContextMenu" id="92"/>
-											<ExtendedTooltip name="CompanyExtendedTooltip" id="999"/>
-											<Events>
-												<Event name="OnChange">CompanyOnChange</Event>
-											</Events>
-										</InputField>
-										<UsualGroup name="GroupPricesAndCurrency" id="1308">
-											<Title>
-												<v8:item>
-													<v8:lang>en</v8:lang>
-													<v8:content>Group prices and currency</v8:content>
-												</v8:item>
-												<v8:item>
-													<v8:lang>ru</v8:lang>
-													<v8:content>Группа цены и валюта</v8:content>
-												</v8:item>
-											</Title>
-											<ToolTip>
-												<v8:item>
-													<v8:lang>en</v8:lang>
-													<v8:content>Group prices and currency</v8:content>
-												</v8:item>
-												<v8:item>
-													<v8:lang>ru</v8:lang>
-													<v8:content>Группа цены и валюта</v8:content>
-												</v8:item>
-											</ToolTip>
-											<Group>Horizontal</Group>
-											<Representation>None</Representation>
-											<ShowTitle>false</ShowTitle>
-											<ExtendedTooltip name="GroupPricesAndCurrencyExtendedTooltip" id="1309"/>
-											<ChildItems>
-												<LabelField name="PricesAndCurrency" id="68">
-													<DataPath>PricesAndCurrency</DataPath>
-													<TitleLocation>None</TitleLocation>
-													<HorizontalAlign>Center</HorizontalAlign>
-													<Hiperlink>true</Hiperlink>
-													<Border width="1">
-														<v8ui:style xsi:type="v8ui:ControlBorderType">Single</v8ui:style>
-													</Border>
-													<BorderColor>style:BorderColorGroupPricesAndCurrencies</BorderColor>
-													<ContextMenu name="PricesAndCurrencyContextMenu" id="69"/>
-													<ExtendedTooltip name="PricesAndCurrencyExtendedTooltip" id="1013"/>
-													<Events>
-														<Event name="Click">EditPricesAndCurrency</Event>
-													</Events>
-												</LabelField>
-												<Button name="ReadDiscountCard" id="1315">
-													<Type>UsualButton</Type>
-													<Representation>Picture</Representation>
-													<CommandName>Form.Command.ReadDiscountCard</CommandName>
-													<ExtendedTooltip name="ReadDiscountCardExtendedTooltip" id="1316"/>
-												</Button>
-											</ChildItems>
-										</UsualGroup>
-										<UsualGroup name="SchedulePaymentAndDiscountCard" id="1306">
-											<Title>
-												<v8:item>
-													<v8:lang>en</v8:lang>
-													<v8:content>Schedule payment and discount card</v8:content>
-												</v8:item>
-												<v8:item>
-													<v8:lang>ru</v8:lang>
-													<v8:content>Запланировать оплату и дисконтная карта</v8:content>
-												</v8:item>
-											</Title>
-											<ToolTip>
-												<v8:item>
-													<v8:lang>en</v8:lang>
-													<v8:content>Schedule payment and discount card</v8:content>
-												</v8:item>
-												<v8:item>
-													<v8:lang>ru</v8:lang>
-													<v8:content>Запланировать оплату и дисконтная карта</v8:content>
-												</v8:item>
-											</ToolTip>
-											<Group>Horizontal</Group>
-											<Representation>None</Representation>
-											<ShowTitle>false</ShowTitle>
-											<ExtendedTooltip name="SchedulePaymentAndDiscountCardExtendedTooltip" id="1307"/>
-											<ChildItems>
-												<CheckBoxField name="SchedulePayment" id="111">
-													<DataPath>Object.SchedulePayment</DataPath>
-													<SkipOnInput>true</SkipOnInput>
-													<Title>
-														<v8:item>
-															<v8:lang>en</v8:lang>
-															<v8:content>Schedule payment</v8:content>
-														</v8:item>
-														<v8:item>
-															<v8:lang>ru</v8:lang>
-															<v8:content>Запланировать оплату</v8:content>
-														</v8:item>
-													</Title>
-													<TitleLocation>Right</TitleLocation>
-													<CheckBoxType>Auto</CheckBoxType>
-													<ContextMenu name="PlanPaymentContextMenu" id="112"/>
-													<ExtendedTooltip name="PlanPaymentExtendedTooltip" id="1010"/>
-													<Events>
-														<Event name="OnChange">SchedulePayOnChange</Event>
-													</Events>
-												</CheckBoxField>
-											</ChildItems>
-										</UsualGroup>
-									</ChildItems>
-								</UsualGroup>
-							</ChildItems>
-						</UsualGroup>
-					</ChildItems>
-				</Page>
-				<Page name="GroupInventory" id="15">
-					<Title>
-						<v8:item>
-							<v8:lang>en</v8:lang>
-							<v8:content>Goods, services</v8:content>
+							<v8:content>Products, services</v8:content>
 						</v8:item>
 						<v8:item>
 							<v8:lang>ru</v8:lang>
@@ -714,7 +583,7 @@ Reference is available on the eponymous hyperlink in the form &lt;link SalesAcco
 						</v8:item>
 					</Title>
 					<TitleDataPath>Object.Inventory.RowsCount</TitleDataPath>
-					<ExtendedTooltip name="InventoryGroupExtendedTooltip" id="1016"/>
+					<ExtendedTooltip name="PageInventoryExtendedTooltip" id="1016"/>
 					<ChildItems>
 						<Table name="Inventory" id="16">
 							<Representation>List</Representation>
@@ -770,7 +639,7 @@ Reference is available on the eponymous hyperlink in the form &lt;link SalesAcco
 										<CommandName>Form.Command.InventoryPick</CommandName>
 										<ExtendedTooltip name="InventoryPickExtendedTooltip" id="1020"/>
 									</Button>
-									<Popup name="InventoryChangeReserve" id="719">
+									<Popup name="InventoryCommandsChangeReserve" id="719">
 										<Title>
 											<v8:item>
 												<v8:lang>en</v8:lang>
@@ -784,14 +653,14 @@ Reference is available on the eponymous hyperlink in the form &lt;link SalesAcco
 										<ToolTip>
 											<v8:item>
 												<v8:lang>en</v8:lang>
-												<v8:content>Inventory change reserve</v8:content>
+												<v8:content>Inventory commands change reserve</v8:content>
 											</v8:item>
 											<v8:item>
 												<v8:lang>ru</v8:lang>
 												<v8:content>Изменить колонку резерв</v8:content>
 											</v8:item>
 										</ToolTip>
-										<ExtendedTooltip name="InventoryChangeInventoryExtendedTooltip" id="1021"/>
+										<ExtendedTooltip name="InventoryCommandsChangeReserveExtendedTooltip" id="1021"/>
 										<ChildItems>
 											<Button name="InventoryChangeReserveFillByBalances" id="721">
 												<Type>CommandBarButton</Type>
@@ -1032,13 +901,13 @@ Reference is available on the eponymous hyperlink in the form &lt;link SalesAcco
 									<ContextMenu name="InventoryAmountTotalContextMenu" id="42"/>
 									<ExtendedTooltip name="InventoryAmountTotalExtendedTooltip" id="1038"/>
 								</InputField>
-								<InputField name="WarehouseDateOfShipment" id="43">
+								<InputField name="InventoryShipmentDate" id="43">
 									<DataPath>Object.Inventory.ShipmentDate</DataPath>
 									<EditMode>EnterOnInput</EditMode>
 									<Width>11</Width>
 									<Wrap>false</Wrap>
-									<ContextMenu name="InventoryDateOfShipmentContextMenu" id="44"/>
-									<ExtendedTooltip name="InventoryDateOfShipmentExtendedTooltip" id="1039"/>
+									<ContextMenu name="InventoryShipmentDateContextMenu" id="44"/>
+									<ExtendedTooltip name="InventoryShipmentDateExtendedTooltip" id="1039"/>
 								</InputField>
 								<InputField name="InventorySpecification" id="82">
 									<DataPath>Object.Inventory.Specification</DataPath>
@@ -1050,17 +919,9 @@ Reference is available on the eponymous hyperlink in the form &lt;link SalesAcco
 								</InputField>
 							</ChildItems>
 						</Table>
-						<InputField name="StructuralUnitReserve" id="106">
-							<DataPath>Object.StructuralUnitReserve</DataPath>
-							<Width>35</Width>
-							<HorizontalStretch>false</HorizontalStretch>
-							<Wrap>false</Wrap>
-							<ContextMenu name="StructuralUnitOfReserveContextMenu" id="107"/>
-							<ExtendedTooltip name="StructuralUnitOfReserveExtendedTooltip" id="1075"/>
-						</InputField>
 					</ChildItems>
 				</Page>
-				<Page name="GroupMaterials" id="49">
+				<Page name="PageConsumerMaterials" id="49">
 					<Title>
 						<v8:item>
 							<v8:lang>en</v8:lang>
@@ -1071,10 +932,16 @@ Reference is available on the eponymous hyperlink in the form &lt;link SalesAcco
 							<v8:content>Материалы заказчика</v8:content>
 						</v8:item>
 					</Title>
+					<ToolTip>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Page consumer materials</v8:content>
+						</v8:item>
+					</ToolTip>
 					<TitleDataPath>Object.ConsumerMaterials.RowsCount</TitleDataPath>
-					<ExtendedTooltip name="GroupMaterialsExtendedTooltip" id="1041"/>
+					<ExtendedTooltip name="PageConsumerMaterialsExtendedTooltip" id="1041"/>
 					<ChildItems>
-						<Table name="Materials" id="50">
+						<Table name="ConsumerMaterials" id="50">
 							<Representation>List</Representation>
 							<SkipOnInput>false</SkipOnInput>
 							<AutoInsertNewRow>true</AutoInsertNewRow>
@@ -1085,8 +952,8 @@ Reference is available on the eponymous hyperlink in the form &lt;link SalesAcco
 							<ViewStatusLocation>None</ViewStatusLocation>
 							<SearchControlLocation>None</SearchControlLocation>
 							<RowFilter xsi:nil="true"/>
-							<ContextMenu name="MaterialsContextMenu" id="51"/>
-							<AutoCommandBar name="MaterialsCommandPanel" id="52">
+							<ContextMenu name="ConsumerMaterialsContextMenu" id="51"/>
+							<AutoCommandBar name="ConsumerMaterialsCommandBar" id="52">
 								<ChildItems>
 									<Button name="MaterialsMaterialsPickup" id="85">
 										<Type>CommandBarButton</Type>
@@ -1096,70 +963,70 @@ Reference is available on the eponymous hyperlink in the form &lt;link SalesAcco
 									</Button>
 								</ChildItems>
 							</AutoCommandBar>
-							<ExtendedTooltip name="MaterialsExtendedTooltip" id="1043"/>
-							<SearchStringAddition name="MaterialsSearchString" id="1181">
+							<ExtendedTooltip name="ConsumerMaterialsExtendedTooltip" id="1043"/>
+							<SearchStringAddition name="ConsumerMaterialsSearchString" id="1181">
 								<AdditionSource>
-									<Item>Materials</Item>
+									<Item>ConsumerMaterials</Item>
 									<Type>SearchStringRepresentation</Type>
 								</AdditionSource>
-								<ContextMenu name="MaterialsSearchStringContextMenu" id="1182"/>
-								<ExtendedTooltip name="MaterialsSearchStringExtendedTooltip" id="1183"/>
+								<ContextMenu name="ConsumerMaterialsSearchStringContextMenu" id="1182"/>
+								<ExtendedTooltip name="ConsumerMaterialsSearchStringExtendedTooltip" id="1183"/>
 							</SearchStringAddition>
-							<ViewStatusAddition name="MaterialsViewStatus" id="1184">
+							<ViewStatusAddition name="ConsumerMaterialsViewStatus" id="1184">
 								<AdditionSource>
-									<Item>Materials</Item>
+									<Item>ConsumerMaterials</Item>
 									<Type>ViewStatusRepresentation</Type>
 								</AdditionSource>
-								<ContextMenu name="MaterialsViewStatusContextMenu" id="1185"/>
-								<ExtendedTooltip name="MaterialsViewStatusExtendedTooltip" id="1186"/>
+								<ContextMenu name="ConsumerMaterialsViewStatusContextMenu" id="1185"/>
+								<ExtendedTooltip name="ConsumerMaterialsViewStatusExtendedTooltip" id="1186"/>
 							</ViewStatusAddition>
-							<SearchControlAddition name="MaterialsSearchManagement" id="1187">
+							<SearchControlAddition name="ConsumerMaterialsSearchControl" id="1187">
 								<AdditionSource>
-									<Item>Materials</Item>
+									<Item>ConsumerMaterials</Item>
 									<Type>SearchControl</Type>
 								</AdditionSource>
-								<ContextMenu name="MaterialsSearchManagementContextMenu" id="1188"/>
-								<ExtendedTooltip name="MaterialsSearchManagementExtendedTooltip" id="1189"/>
+								<ContextMenu name="ConsumerMaterialsSearchControlContextMenu" id="1188"/>
+								<ExtendedTooltip name="ConsumerMaterialsSearchControlExtendedTooltip" id="1189"/>
 							</SearchControlAddition>
 							<ChildItems>
-								<InputField name="LineNumberMaterials" id="53">
+								<InputField name="ConsumerMaterialsLineNumber" id="53">
 									<DataPath>Object.ConsumerMaterials.LineNumber</DataPath>
 									<EditMode>EnterOnInput</EditMode>
 									<Width>4</Width>
 									<HorizontalStretch>false</HorizontalStretch>
 									<Wrap>false</Wrap>
-									<ContextMenu name="MaterialsLineNumberContextMenu" id="54"/>
-									<ExtendedTooltip name="MaterialsLineNumberExtendedTooltip" id="1044"/>
+									<ContextMenu name="ConsumerMaterialsLineNumberContextMenu" id="54"/>
+									<ExtendedTooltip name="ConsumerMaterialsLineNumberExtendedTooltip" id="1044"/>
 								</InputField>
-								<InputField name="MaterialsProductsAndServices" id="55">
+								<InputField name="ConsumerMaterialsProductsAndServices" id="55">
 									<DataPath>Object.ConsumerMaterials.ProductsAndServices</DataPath>
 									<EditMode>EnterOnInput</EditMode>
 									<Width>20</Width>
 									<Wrap>false</Wrap>
-									<ContextMenu name="MaterialsProductsAndServicesContextMenu" id="56"/>
-									<ExtendedTooltip name="MaterialsProductsAndServicesExtendedTooltip" id="1045"/>
+									<ContextMenu name="ConsumerMaterialsProductsAndServicesContextMenu" id="56"/>
+									<ExtendedTooltip name="ConsumerMaterialsProductsAndServicesExtendedTooltip" id="1045"/>
 									<Events>
-										<Event name="OnChange">MaterialsProductsAndServicesOnChange</Event>
+										<Event name="OnChange">ConsumerMaterialsProductsAndServicesOnChange</Event>
 									</Events>
 								</InputField>
-								<InputField name="MaterialsCharacteristic" id="57">
+								<InputField name="ConsumerMaterialsCharacteristic" id="57">
 									<DataPath>Object.ConsumerMaterials.Characteristic</DataPath>
 									<EditMode>EnterOnInput</EditMode>
 									<Width>20</Width>
 									<Wrap>false</Wrap>
 									<CreateButton>false</CreateButton>
-									<ContextMenu name="MaterialsCharacteristicContextMenu" id="58"/>
-									<ExtendedTooltip name="MaterialsCharacteristicExtendedTooltip" id="1046"/>
+									<ContextMenu name="ConsumerMaterialsCharacteristicContextMenu" id="58"/>
+									<ExtendedTooltip name="ConsumerMaterialsCharacteristicExtendedTooltip" id="1046"/>
 								</InputField>
-								<InputField name="MaterialsQuantity" id="59">
+								<InputField name="ConsumerMaterialsQuantity" id="59">
 									<DataPath>Object.ConsumerMaterials.Quantity</DataPath>
 									<EditMode>EnterOnInput</EditMode>
 									<Width>10</Width>
 									<Wrap>false</Wrap>
-									<ContextMenu name="MaterialsQuantityContextMenu" id="60"/>
-									<ExtendedTooltip name="MaterialsQuantityExtendedTooltip" id="1047"/>
+									<ContextMenu name="ConsumerMaterialsQuantityContextMenu" id="60"/>
+									<ExtendedTooltip name="ConsumerMaterialsQuantityExtendedTooltip" id="1047"/>
 								</InputField>
-								<InputField name="MaterialsMeasurementUnit" id="61">
+								<InputField name="ConsumerMaterialsMeasurementUnit" id="61">
 									<DataPath>Object.ConsumerMaterials.MeasurementUnit</DataPath>
 									<EditMode>EnterOnInput</EditMode>
 									<Width>6</Width>
@@ -1170,23 +1037,23 @@ Reference is available on the eponymous hyperlink in the form &lt;link SalesAcco
 									<OpenButton>false</OpenButton>
 									<ChooseType>false</ChooseType>
 									<ChoiceListButton>true</ChoiceListButton>
-									<ContextMenu name="MaterialsMeasurementUnitContextMenu" id="62"/>
-									<ExtendedTooltip name="MaterialsMeasurementUnitExtendedTooltip" id="1048"/>
+									<ContextMenu name="ConsumerMaterialsMeasurementUnitContextMenu" id="62"/>
+									<ExtendedTooltip name="ConsumerMaterialsMeasurementUnitExtendedTooltip" id="1048"/>
 								</InputField>
-								<InputField name="MaterialsReceiptDate" id="100">
+								<InputField name="ConsumerMaterialsReceiptDate" id="100">
 									<DataPath>Object.ConsumerMaterials.ReceiptDate</DataPath>
 									<EditMode>EnterOnInput</EditMode>
 									<Width>13</Width>
 									<HorizontalStretch>false</HorizontalStretch>
 									<Wrap>false</Wrap>
-									<ContextMenu name="MaterialsReceiptDateContextMenu" id="101"/>
-									<ExtendedTooltip name="MaterialsReceiptDateExtendedTooltip" id="1049"/>
+									<ContextMenu name="ConsumerMaterialsReceiptDateContextMenu" id="101"/>
+									<ExtendedTooltip name="ConsumerMaterialsReceiptDateExtendedTooltip" id="1049"/>
 								</InputField>
 							</ChildItems>
 						</Table>
 					</ChildItems>
 				</Page>
-				<Page name="GroupPaymentsCalendar" id="113">
+				<Page name="PagePaymentCalendar" id="113">
 					<Title>
 						<v8:item>
 							<v8:lang>en</v8:lang>
@@ -1200,40 +1067,31 @@ Reference is available on the eponymous hyperlink in the form &lt;link SalesAcco
 					<ToolTip>
 						<v8:item>
 							<v8:lang>en</v8:lang>
-							<v8:content>Group payments calendar</v8:content>
+							<v8:content>Page payment calendar</v8:content>
 						</v8:item>
 						<v8:item>
 							<v8:lang>ru</v8:lang>
 							<v8:content>Группа платежный календарь</v8:content>
 						</v8:item>
 					</ToolTip>
-					<ExtendedTooltip name="GroupBillingCalendarExtendedTooltip" id="1050"/>
+					<ExtendedTooltip name="PagePaymentCalendarExtendedTooltip" id="1050"/>
 					<ChildItems>
-						<UsualGroup name="GroupEditList" id="156">
+						<UsualGroup name="PaymentCalendarHeader" id="156">
 							<Title>
 								<v8:item>
 									<v8:lang>en</v8:lang>
-									<v8:content>Group edit in list</v8:content>
+									<v8:content>Payment calendar header</v8:content>
 								</v8:item>
 								<v8:item>
 									<v8:lang>ru</v8:lang>
-									<v8:content>Группа редактировать списком</v8:content>
+									<v8:content>Платежный календарь шапка</v8:content>
 								</v8:item>
 							</Title>
-							<ToolTip>
-								<v8:item>
-									<v8:lang>en</v8:lang>
-									<v8:content>Group edit in list</v8:content>
-								</v8:item>
-								<v8:item>
-									<v8:lang>ru</v8:lang>
-									<v8:content>Группа редактировать списком</v8:content>
-								</v8:item>
-							</ToolTip>
 							<Group>Horizontal</Group>
 							<Representation>None</Representation>
 							<ShowTitle>false</ShowTitle>
-							<ExtendedTooltip name="GroupEditListExtendedTooltip" id="1051"/>
+							<ThroughAlign>DontUse</ThroughAlign>
+							<ExtendedTooltip name="PaymentCalendarHeaderExtendedTooltip" id="1051"/>
 							<ChildItems>
 								<RadioButtonField name="CashAssetsType" id="114">
 									<DataPath>Object.CashAssetsType</DataPath>
@@ -1247,13 +1105,23 @@ Reference is available on the eponymous hyperlink in the form &lt;link SalesAcco
 											<v8:content>Способ оплаты</v8:content>
 										</v8:item>
 									</Title>
-									<RadioButtonType>Auto</RadioButtonType>
+									<RadioButtonType>Tumbler</RadioButtonType>
+									<EqualColumnsWidth>true</EqualColumnsWidth>
 									<ChoiceList>
 										<xr:Item>
 											<xr:Presentation/>
 											<xr:CheckState>0</xr:CheckState>
 											<xr:Value xsi:type="FormChoiceListDesTimeValue">
-												<Presentation/>
+												<Presentation>
+													<v8:item>
+														<v8:lang>en</v8:lang>
+														<v8:content>Cash</v8:content>
+													</v8:item>
+													<v8:item>
+														<v8:lang>ru</v8:lang>
+														<v8:content>Наличные</v8:content>
+													</v8:item>
+												</Presentation>
 												<Value xsi:type="xr:DesignTimeRef">Enum.CashAssetTypes.EnumValue.Cash</Value>
 											</xr:Value>
 										</xr:Item>
@@ -1261,7 +1129,16 @@ Reference is available on the eponymous hyperlink in the form &lt;link SalesAcco
 											<xr:Presentation/>
 											<xr:CheckState>0</xr:CheckState>
 											<xr:Value xsi:type="FormChoiceListDesTimeValue">
-												<Presentation/>
+												<Presentation>
+													<v8:item>
+														<v8:lang>en</v8:lang>
+														<v8:content>Non-cash</v8:content>
+													</v8:item>
+													<v8:item>
+														<v8:lang>ru</v8:lang>
+														<v8:content>Безналичные</v8:content>
+													</v8:item>
+												</Presentation>
 												<Value xsi:type="xr:DesignTimeRef">Enum.CashAssetTypes.EnumValue.Noncash</Value>
 											</xr:Value>
 										</xr:Item>
@@ -1276,7 +1153,7 @@ Reference is available on the eponymous hyperlink in the form &lt;link SalesAcco
 													</v8:item>
 													<v8:item>
 														<v8:lang>ru</v8:lang>
-														<v8:content>Неопределено</v8:content>
+														<v8:content>Не задан</v8:content>
 													</v8:item>
 												</Presentation>
 												<Value xsi:type="xr:DesignTimeRef">Enum.CashAssetTypes.EmptyRef</Value>
@@ -1289,7 +1166,25 @@ Reference is available on the eponymous hyperlink in the form &lt;link SalesAcco
 										<Event name="OnChange">CashAssetsTypeOnChange</Event>
 									</Events>
 								</RadioButtonField>
-								<CommandBar name="GroupPanel" id="157">
+								<InputField name="BankAccount" id="124">
+									<DataPath>Object.BankAccount</DataPath>
+									<ContextMenu name="BankAccountContextMenu" id="125"/>
+									<ExtendedTooltip name="BankAccountExtendedTooltip" id="1057"/>
+									<Events>
+										<Event name="OnChange">BankAccountOnChange</Event>
+										<Event name="StartChoice">BankAccountStartChoice</Event>
+									</Events>
+								</InputField>
+								<InputField name="PettyCash" id="122">
+									<DataPath>Object.PettyCash</DataPath>
+									<Visible>false</Visible>
+									<ContextMenu name="TicketBoxContextMenu" id="123"/>
+									<ExtendedTooltip name="PettyCashExtendedTooltip" id="1059"/>
+									<Events>
+										<Event name="OnChange">PettyCashOnChange</Event>
+									</Events>
+								</InputField>
+								<CommandBar name="PaymentCalendarCommandBarList" id="157">
 									<Title>
 										<v8:item>
 											<v8:lang>en</v8:lang>
@@ -1310,7 +1205,7 @@ Reference is available on the eponymous hyperlink in the form &lt;link SalesAcco
 											<v8:content>Группа панель</v8:content>
 										</v8:item>
 									</ToolTip>
-									<ExtendedTooltip name="PanelGroupExtendedTooltip" id="1053"/>
+									<ExtendedTooltip name="PaymentCalendarCommandBarListExtendedTooltip" id="1053"/>
 									<ChildItems>
 										<Button name="EditInList" id="152">
 											<Type>CommandBarButton</Type>
@@ -1322,316 +1217,210 @@ Reference is available on the eponymous hyperlink in the form &lt;link SalesAcco
 								</CommandBar>
 							</ChildItems>
 						</UsualGroup>
-						<Pages name="CashboxBankAccount" id="126">
+						<UsualGroup name="PaymentCalendarAsString" id="154">
 							<Title>
 								<v8:item>
 									<v8:lang>en</v8:lang>
-									<v8:content>Petty cash bank account</v8:content>
+									<v8:content>Group payments calendar string</v8:content>
 								</v8:item>
 								<v8:item>
 									<v8:lang>ru</v8:lang>
-									<v8:content>Касса банковский счет</v8:content>
+									<v8:content>Группа платежный календарь строкой</v8:content>
 								</v8:item>
 							</Title>
 							<ToolTip>
 								<v8:item>
-									<v8:lang>en</v8:lang>
-									<v8:content>Petty cash bank account</v8:content>
-								</v8:item>
-								<v8:item>
 									<v8:lang>ru</v8:lang>
-									<v8:content>Касса банковский счет</v8:content>
+									<v8:content>Группа платежный календарь строкой</v8:content>
 								</v8:item>
 							</ToolTip>
-							<PagesRepresentation>None</PagesRepresentation>
-							<ExtendedTooltip name="CashBoxBankAccountExtendedTooltip" id="1055"/>
+							<Group>Vertical</Group>
+							<Representation>None</Representation>
+							<ShowTitle>false</ShowTitle>
+							<ExtendedTooltip name="PaymentCalendarAsStringExtendedTooltip" id="1061"/>
 							<ChildItems>
-								<Page name="PageBankAccount" id="127">
+								<CheckBoxField name="SchedulePayment" id="111">
+									<DataPath>Object.SchedulePayment</DataPath>
+									<SkipOnInput>true</SkipOnInput>
 									<Title>
 										<v8:item>
 											<v8:lang>en</v8:lang>
-											<v8:content>OWPage bank account</v8:content>
+											<v8:content>Schedule payment</v8:content>
 										</v8:item>
 										<v8:item>
 											<v8:lang>ru</v8:lang>
-											<v8:content>Страница банковский счет</v8:content>
+											<v8:content>Запланировать оплату</v8:content>
 										</v8:item>
 									</Title>
-									<ToolTip>
-										<v8:item>
-											<v8:lang>en</v8:lang>
-											<v8:content>OWPage bank account</v8:content>
-										</v8:item>
-										<v8:item>
-											<v8:lang>ru</v8:lang>
-											<v8:content>Страница банковский счет</v8:content>
-										</v8:item>
-									</ToolTip>
-									<ExtendedTooltip name="PageBankAccountExtendedTooltip" id="1056"/>
-									<ChildItems>
-										<InputField name="BankAccount" id="124">
-											<DataPath>Object.BankAccount</DataPath>
-											<Width>35</Width>
-											<HorizontalStretch>false</HorizontalStretch>
-											<ContextMenu name="BankAccountContextMenu" id="125"/>
-											<ExtendedTooltip name="BankAccountExtendedTooltip" id="1057"/>
-											<Events>
-												<Event name="StartChoice">BankAccountStartChoice</Event>
-											</Events>
-										</InputField>
-									</ChildItems>
-								</Page>
-								<Page name="PagePettyCash" id="128">
+									<TitleLocation>Right</TitleLocation>
+									<CheckBoxType>Auto</CheckBoxType>
+									<ContextMenu name="PlanPaymentContextMenu" id="112"/>
+									<ExtendedTooltip name="PlanPaymentExtendedTooltip" id="1010"/>
+									<Events>
+										<Event name="OnChange">SchedulePaymentOnChange</Event>
+									</Events>
+								</CheckBoxField>
+								<UsualGroup name="PaymentCalendarFields" id="1362">
 									<Title>
 										<v8:item>
 											<v8:lang>en</v8:lang>
-											<v8:content>Petty cash page</v8:content>
+											<v8:content>Payment calendar fields</v8:content>
 										</v8:item>
 										<v8:item>
 											<v8:lang>ru</v8:lang>
-											<v8:content>Страница касса</v8:content>
+											<v8:content>Платежный календарь поля</v8:content>
 										</v8:item>
 									</Title>
-									<ToolTip>
-										<v8:item>
-											<v8:lang>en</v8:lang>
-											<v8:content>Petty cash page</v8:content>
-										</v8:item>
-										<v8:item>
-											<v8:lang>ru</v8:lang>
-											<v8:content>Страница касса</v8:content>
-										</v8:item>
-									</ToolTip>
-									<ExtendedTooltip name="PagePettyCashExtendedTooltip" id="1058"/>
-									<ChildItems>
-										<InputField name="PettyCash" id="122">
-											<DataPath>Object.PettyCash</DataPath>
-											<Width>35</Width>
-											<HorizontalStretch>false</HorizontalStretch>
-											<ContextMenu name="TicketBoxContextMenu" id="123"/>
-											<ExtendedTooltip name="PettyCashExtendedTooltip" id="1059"/>
-										</InputField>
-									</ChildItems>
-								</Page>
-							</ChildItems>
-						</Pages>
-						<Pages name="GroupPaymentCalendarListString" id="153">
-							<Title>
-								<v8:item>
-									<v8:lang>en</v8:lang>
-									<v8:content>Group payments calendar list / string</v8:content>
-								</v8:item>
-								<v8:item>
-									<v8:lang>ru</v8:lang>
-									<v8:content>Группа платежный календарь списком / строкой</v8:content>
-								</v8:item>
-							</Title>
-							<ToolTip>
-								<v8:item>
-									<v8:lang>en</v8:lang>
-									<v8:content>Group payments calendar list string</v8:content>
-								</v8:item>
-								<v8:item>
-									<v8:lang>ru</v8:lang>
-									<v8:content>Группа платежный календарь списком строкой</v8:content>
-								</v8:item>
-							</ToolTip>
-							<PagesRepresentation>None</PagesRepresentation>
-							<ExtendedTooltip name="GroupPaymentCalendarListStringExtendedTooltip" id="1060"/>
-							<ChildItems>
-								<Page name="GroupBillingCalendarString" id="154">
-									<Title>
-										<v8:item>
-											<v8:lang>en</v8:lang>
-											<v8:content>Group payments calendar string</v8:content>
-										</v8:item>
-										<v8:item>
-											<v8:lang>ru</v8:lang>
-											<v8:content>Группа платежный календарь строкой</v8:content>
-										</v8:item>
-									</Title>
-									<ToolTip>
-										<v8:item>
-											<v8:lang>en</v8:lang>
-											<v8:content>Group payments calendar string</v8:content>
-										</v8:item>
-										<v8:item>
-											<v8:lang>ru</v8:lang>
-											<v8:content>Группа платежный календарь строкой</v8:content>
-										</v8:item>
-									</ToolTip>
-									<ExtendedTooltip name="GroupBillingCalendarStringExtendedTooltip" id="1061"/>
+									<Group>Vertical</Group>
+									<Representation>None</Representation>
+									<ShowTitle>false</ShowTitle>
+									<ExtendedTooltip name="PaymentCalendarFieldsExtendedTooltip" id="1363"/>
 									<ChildItems>
 										<InputField name="PaymentCalendarPaymentDate" id="144">
-											<DataPath>Items.PaymentCalendar.CurrentData.PayDate</DataPath>
+											<DataPath>Items.ListPaymentCalendar.CurrentData.PayDate</DataPath>
 											<Width>15</Width>
 											<HorizontalStretch>false</HorizontalStretch>
 											<ContextMenu name="PaymentCalendarPaymentDateContextMenu" id="145"/>
 											<ExtendedTooltip name="PaymentCalendarPaymentDateExtendedTooltip" id="1062"/>
 										</InputField>
 										<InputField name="PaymentCalendarPaymentPercent" id="146">
-											<DataPath>Items.PaymentCalendar.CurrentData.PaymentPercentage</DataPath>
+											<DataPath>Items.ListPaymentCalendar.CurrentData.PaymentPercentage</DataPath>
 											<Width>15</Width>
 											<HorizontalStretch>false</HorizontalStretch>
 											<ContextMenu name="PaymentCalendarPaymentPercentContextMenu" id="147"/>
 											<ExtendedTooltip name="PaymentCalendarPaymentPercentExtendedTooltip" id="1063"/>
 											<Events>
-												<Event name="OnChange">PaymentCalendarPaymentPercentageOnChange</Event>
+												<Event name="OnChange">ListPaymentCalendarPaymentPercentageOnChange</Event>
 											</Events>
 										</InputField>
-										<InputField name="PaymentCalendarTotalPayment" id="148">
-											<DataPath>Items.PaymentCalendar.CurrentData.PaymentAmount</DataPath>
+										<InputField name="PaymentCalendarPaymentAmount" id="148">
+											<DataPath>Items.ListPaymentCalendar.CurrentData.PaymentAmount</DataPath>
 											<Width>15</Width>
 											<HorizontalStretch>false</HorizontalStretch>
 											<ContextMenu name="PaymentCalendarPaymentAmountContextMenu" id="149"/>
-											<ExtendedTooltip name="PaymentcalendarPaymentAmountExtendedTooltip" id="1064"/>
+											<ExtendedTooltip name="PaymentCalendarPaymentAmountExtendedTooltip" id="1064"/>
 											<Events>
-												<Event name="OnChange">PaymentCalendarPaymentSumOnChange</Event>
+												<Event name="OnChange">ListPaymentCalendarPaymentAmountOnChange</Event>
 											</Events>
 										</InputField>
 										<InputField name="PaymentCalendarPayVATAmount" id="150">
-											<DataPath>Items.PaymentCalendar.CurrentData.PayVATAmount</DataPath>
+											<DataPath>Items.ListPaymentCalendar.CurrentData.PayVATAmount</DataPath>
 											<Width>15</Width>
 											<HorizontalStretch>false</HorizontalStretch>
 											<ContextMenu name="PaymentCalendarVATAmountPaymentsContextMenu" id="151"/>
 											<ExtendedTooltip name="PaymentCalendarVATAmountPaymentsExtendedTooltip" id="1065"/>
 											<Events>
-												<Event name="OnChange">PaymentCalendarPayVATAmountOnChange</Event>
+												<Event name="OnChange">ListPaymentCalendarPayVATAmountOnChange</Event>
 											</Events>
 										</InputField>
 									</ChildItems>
-								</Page>
-								<Page name="GroupPaymentCalendarList" id="155">
+								</UsualGroup>
+							</ChildItems>
+						</UsualGroup>
+						<Table name="ListPaymentCalendar" id="131">
+							<SkipOnInput>false</SkipOnInput>
+							<AutoInsertNewRow>true</AutoInsertNewRow>
+							<EnableStartDrag>true</EnableStartDrag>
+							<EnableDrag>true</EnableDrag>
+							<DataPath>Object.PaymentCalendar</DataPath>
+							<SearchStringLocation>None</SearchStringLocation>
+							<ViewStatusLocation>None</ViewStatusLocation>
+							<SearchControlLocation>None</SearchControlLocation>
+							<RowFilter xsi:nil="true"/>
+							<ContextMenu name="ListPaymentCalendarContextMenu" id="132"/>
+							<AutoCommandBar name="ListPaymentCalendarCommandBar" id="133"/>
+							<ExtendedTooltip name="ListPaymentCalendarExtendedTooltip" id="1067"/>
+							<SearchStringAddition name="ListPaymentCalendarSearchString" id="1190">
+								<AdditionSource>
+									<Item>ListPaymentCalendar</Item>
+									<Type>SearchStringRepresentation</Type>
+								</AdditionSource>
+								<ContextMenu name="ListPaymentCalendarSearchStringContextMenu" id="1191"/>
+								<ExtendedTooltip name="ListPaymentCalendarSearchStringExtendedTooltip" id="1192"/>
+							</SearchStringAddition>
+							<ViewStatusAddition name="ListPaymentCalendarViewStatus" id="1193">
+								<AdditionSource>
+									<Item>ListPaymentCalendar</Item>
+									<Type>ViewStatusRepresentation</Type>
+								</AdditionSource>
+								<ContextMenu name="ListPaymentCalendarViewStatusContextMenu" id="1194"/>
+								<ExtendedTooltip name="ListPaymentCalendarViewStatusExtendedTooltip" id="1195"/>
+							</ViewStatusAddition>
+							<SearchControlAddition name="ListPaymentCalendarSearchControl" id="1196">
+								<AdditionSource>
+									<Item>ListPaymentCalendar</Item>
+									<Type>SearchControl</Type>
+								</AdditionSource>
+								<ContextMenu name="ListPaymentCalendarSearchControlContextMenu" id="1197"/>
+								<ExtendedTooltip name="ListPaymentCalendarSearchControlExtendedTooltip" id="1198"/>
+							</SearchControlAddition>
+							<Events>
+								<Event name="BeforeDeleteRow">PaymentCalendarBeforeDelete</Event>
+								<Event name="OnStartEdit">PaymentCalendarOnStartEdit</Event>
+							</Events>
+							<ChildItems>
+								<LabelField name="ListPaymentCalendarLineNumber" id="134">
+									<DataPath>Object.PaymentCalendar.LineNumber</DataPath>
+									<EditMode>EnterOnInput</EditMode>
+									<Width>4</Width>
+									<HorizontalStretch>false</HorizontalStretch>
+									<ContextMenu name="ListPaymentCalendarLineNumberContextMenu" id="135"/>
+									<ExtendedTooltip name="ListPaymentCalendarLineNumberExtendedTooltip" id="1068"/>
+								</LabelField>
+								<InputField name="ListPaymentCalendarPayDates" id="136">
+									<DataPath>Object.PaymentCalendar.PayDate</DataPath>
+									<EditMode>EnterOnInput</EditMode>
+									<Width>10</Width>
+									<HorizontalStretch>false</HorizontalStretch>
+									<ContextMenu name="ListPaymentCalendarPayDatesContextMenu" id="137"/>
+									<ExtendedTooltip name="ListPaymentCalendarPayDatesExtendedTooltip" id="1069"/>
+								</InputField>
+								<InputField name="ListPaymentCalendarPaymentPercentage" id="138">
+									<DataPath>Object.PaymentCalendar.PaymentPercentage</DataPath>
 									<Title>
 										<v8:item>
 											<v8:lang>en</v8:lang>
-											<v8:content>Group payments calendar list</v8:content>
+											<v8:content>payment %</v8:content>
 										</v8:item>
 										<v8:item>
 											<v8:lang>ru</v8:lang>
-											<v8:content>Группа платежный календарь списком</v8:content>
+											<v8:content>% оплаты</v8:content>
 										</v8:item>
 									</Title>
-									<ToolTip>
-										<v8:item>
-											<v8:lang>en</v8:lang>
-											<v8:content>Group payments calendar list</v8:content>
-										</v8:item>
-										<v8:item>
-											<v8:lang>ru</v8:lang>
-											<v8:content>Группа платежный календарь списком</v8:content>
-										</v8:item>
-									</ToolTip>
-									<ExtendedTooltip name="GroupPaymentCalendarListExtendedTooltip" id="1066"/>
-									<ChildItems>
-										<Table name="PaymentCalendar" id="131">
-											<SkipOnInput>false</SkipOnInput>
-											<AutoInsertNewRow>true</AutoInsertNewRow>
-											<EnableStartDrag>true</EnableStartDrag>
-											<EnableDrag>true</EnableDrag>
-											<DataPath>Object.PaymentCalendar</DataPath>
-											<SearchStringLocation>None</SearchStringLocation>
-											<ViewStatusLocation>None</ViewStatusLocation>
-											<SearchControlLocation>None</SearchControlLocation>
-											<RowFilter xsi:nil="true"/>
-											<ContextMenu name="PaymentCalendarContextMenu" id="132"/>
-											<AutoCommandBar name="PaymentCalendarCommandPanel" id="133"/>
-											<ExtendedTooltip name="PaymentCalendarExtendedTooltip" id="1067"/>
-											<SearchStringAddition name="PaymentCalendarSearchString" id="1190">
-												<AdditionSource>
-													<Item>PaymentCalendar</Item>
-													<Type>SearchStringRepresentation</Type>
-												</AdditionSource>
-												<ContextMenu name="PaymentCalendarSearchStringContextMenu" id="1191"/>
-												<ExtendedTooltip name="PaymentCalendarSearchStringExtendedTooltip" id="1192"/>
-											</SearchStringAddition>
-											<ViewStatusAddition name="PaymentCalendarViewStatus" id="1193">
-												<AdditionSource>
-													<Item>PaymentCalendar</Item>
-													<Type>ViewStatusRepresentation</Type>
-												</AdditionSource>
-												<ContextMenu name="PaymentCalendarViewStatusContextMenu" id="1194"/>
-												<ExtendedTooltip name="PaymentCalendarViewStatusExtendedTooltip" id="1195"/>
-											</ViewStatusAddition>
-											<SearchControlAddition name="PaymentCalendarSearchManagement" id="1196">
-												<AdditionSource>
-													<Item>PaymentCalendar</Item>
-													<Type>SearchControl</Type>
-												</AdditionSource>
-												<ContextMenu name="PaymentCalendarSearchManagementContextMenu" id="1197"/>
-												<ExtendedTooltip name="PaymentCalendarSearchManagementExtendedTooltip" id="1198"/>
-											</SearchControlAddition>
-											<Events>
-												<Event name="BeforeDeleteRow">PaymentCalendarBeforeDelete</Event>
-												<Event name="OnStartEdit">PaymentCalendarOnStartEdit</Event>
-											</Events>
-											<ChildItems>
-												<LabelField name="ListPaymentCalendarLineNumber" id="134">
-													<DataPath>Object.PaymentCalendar.LineNumber</DataPath>
-													<EditMode>EnterOnInput</EditMode>
-													<Width>4</Width>
-													<HorizontalStretch>false</HorizontalStretch>
-													<ContextMenu name="ListPaymentCalendarLineNumberContextMenu" id="135"/>
-													<ExtendedTooltip name="ListPaymentCalendarLineNumberExtendedTooltip" id="1068"/>
-												</LabelField>
-												<InputField name="ListPaymentCalendarPayDates" id="136">
-													<DataPath>Object.PaymentCalendar.PayDate</DataPath>
-													<EditMode>EnterOnInput</EditMode>
-													<Width>10</Width>
-													<HorizontalStretch>false</HorizontalStretch>
-													<ContextMenu name="ListPaymentCalendarPayDatesContextMenu" id="137"/>
-													<ExtendedTooltip name="ListPaymentCalendarPayDatesExtendedTooltip" id="1069"/>
-												</InputField>
-												<InputField name="ListPaymentCalendarPercentOfPayment" id="138">
-													<DataPath>Object.PaymentCalendar.PaymentPercentage</DataPath>
-													<Title>
-														<v8:item>
-															<v8:lang>en</v8:lang>
-															<v8:content>payment %</v8:content>
-														</v8:item>
-														<v8:item>
-															<v8:lang>ru</v8:lang>
-															<v8:content>% оплаты</v8:content>
-														</v8:item>
-													</Title>
-													<EditMode>EnterOnInput</EditMode>
-													<Width>8</Width>
-													<HorizontalStretch>false</HorizontalStretch>
-													<ContextMenu name="ListPaymentCalendarPercentOfPaymentContextMenu" id="139"/>
-													<ExtendedTooltip name="ListPaymentCalendarPercentOfPaymentExtendedTooltip" id="1070"/>
-													<Events>
-														<Event name="OnChange">ListPaymentCalendarPaymentPercentageOnChange</Event>
-													</Events>
-												</InputField>
-												<InputField name="ListPaymentCalendarTotalPayment" id="140">
-													<DataPath>Object.PaymentCalendar.PaymentAmount</DataPath>
-													<EditMode>EnterOnInput</EditMode>
-													<Width>12</Width>
-													<ContextMenu name="ListPaymentCalendarAmountPaymentsContextMenu" id="141"/>
-													<ExtendedTooltip name="ListPaymentCalendarAmountPaymentsExtendedTooltip" id="1071"/>
-													<Events>
-														<Event name="OnChange">ListPaymentCalendarPaymentSumOnChange</Event>
-													</Events>
-												</InputField>
-												<InputField name="ListPaymentsCalendarSumVatOfPayment" id="142">
-													<DataPath>Object.PaymentCalendar.PayVATAmount</DataPath>
-													<EditMode>EnterOnInput</EditMode>
-													<Width>12</Width>
-													<ContextMenu name="ListPaymentsCalendarSumVatOfPaymentContextMenu" id="143"/>
-													<ExtendedTooltip name="ListPaymentsCalendarSumVatOfPaymentExtendedTooltip" id="1072"/>
-													<Events>
-														<Event name="OnChange">ListPaymentCalendarPayVATAmountOnChange</Event>
-													</Events>
-												</InputField>
-											</ChildItems>
-										</Table>
-									</ChildItems>
-								</Page>
+									<EditMode>EnterOnInput</EditMode>
+									<Width>8</Width>
+									<HorizontalStretch>false</HorizontalStretch>
+									<ContextMenu name="ListPaymentCalendarPaymentPercentageContextMenu" id="139"/>
+									<ExtendedTooltip name="ListPaymentCalendarPaymentPercentageExtendedTooltip" id="1070"/>
+									<Events>
+										<Event name="OnChange">ListPaymentCalendarPaymentPercentageOnChange</Event>
+									</Events>
+								</InputField>
+								<InputField name="ListPaymentCalendarPaymentAmount" id="140">
+									<DataPath>Object.PaymentCalendar.PaymentAmount</DataPath>
+									<EditMode>EnterOnInput</EditMode>
+									<Width>12</Width>
+									<ContextMenu name="ListPaymentCalendarPaymentAmountContextMenu" id="141"/>
+									<ExtendedTooltip name="ListPaymentCalendarPaymentAmountExtendedTooltip" id="1071"/>
+									<Events>
+										<Event name="OnChange">ListPaymentCalendarPaymentAmountOnChange</Event>
+									</Events>
+								</InputField>
+								<InputField name="ListPaymentCalendarPayVATAmount" id="142">
+									<DataPath>Object.PaymentCalendar.PayVATAmount</DataPath>
+									<EditMode>EnterOnInput</EditMode>
+									<Width>12</Width>
+									<ContextMenu name="ListPaymentCalendarPayVATAmountContextMenu" id="143"/>
+									<ExtendedTooltip name="ListPaymentCalendarPayVATAmountExtendedTooltip" id="1072"/>
+									<Events>
+										<Event name="OnChange">ListPaymentCalendarPayVATAmountOnChange</Event>
+									</Events>
+								</InputField>
 							</ChildItems>
-						</Pages>
+						</Table>
 					</ChildItems>
 				</Page>
-				<Page name="GroupAdditional" id="445">
+				<Page name="PageAdditionally" id="445">
 					<Title>
 						<v8:item>
 							<v8:lang>en</v8:lang>
@@ -1644,21 +1433,18 @@ Reference is available on the eponymous hyperlink in the form &lt;link SalesAcco
 					</Title>
 					<ToolTip>
 						<v8:item>
-							<v8:lang>en</v8:lang>
-							<v8:content>Group additional</v8:content>
-						</v8:item>
-						<v8:item>
 							<v8:lang>ru</v8:lang>
 							<v8:content>Группа дополнительно</v8:content>
 						</v8:item>
 					</ToolTip>
-					<ExtendedTooltip name="GroupAdditionalExtendedTooltip" id="1073"/>
+					<HorizontalSpacing>Double</HorizontalSpacing>
+					<ExtendedTooltip name="PageAdditionallyExtendedTooltip" id="1073"/>
 					<ChildItems>
-						<UsualGroup name="Additionally" id="1210">
+						<UsualGroup name="AdditionallyHeader" id="1210">
 							<Title>
 								<v8:item>
 									<v8:lang>en</v8:lang>
-									<v8:content>Additionally</v8:content>
+									<v8:content>Additionally header</v8:content>
 								</v8:item>
 								<v8:item>
 									<v8:lang>ru</v8:lang>
@@ -1667,10 +1453,6 @@ Reference is available on the eponymous hyperlink in the form &lt;link SalesAcco
 							</Title>
 							<ToolTip>
 								<v8:item>
-									<v8:lang>en</v8:lang>
-									<v8:content>Additionally</v8:content>
-								</v8:item>
-								<v8:item>
 									<v8:lang>ru</v8:lang>
 									<v8:content>Дополнительно</v8:content>
 								</v8:item>
@@ -1678,13 +1460,13 @@ Reference is available on the eponymous hyperlink in the form &lt;link SalesAcco
 							<Group>Horizontal</Group>
 							<Representation>None</Representation>
 							<ShowTitle>false</ShowTitle>
-							<ExtendedTooltip name="AdditionallyExtendedTooltip" id="1211"/>
+							<ExtendedTooltip name="AdditionallyHeaderExtendedTooltip" id="1211"/>
 							<ChildItems>
-								<UsualGroup name="AdditionallyLeftColumn" id="1206">
+								<UsualGroup name="AdditionallyLeft" id="1206">
 									<Title>
 										<v8:item>
 											<v8:lang>en</v8:lang>
-											<v8:content>Additionally left column</v8:content>
+											<v8:content>Additionally left</v8:content>
 										</v8:item>
 										<v8:item>
 											<v8:lang>ru</v8:lang>
@@ -1694,7 +1476,7 @@ Reference is available on the eponymous hyperlink in the form &lt;link SalesAcco
 									<ToolTip>
 										<v8:item>
 											<v8:lang>en</v8:lang>
-											<v8:content>Additionally left column</v8:content>
+											<v8:content>Additionally left</v8:content>
 										</v8:item>
 										<v8:item>
 											<v8:lang>ru</v8:lang>
@@ -1704,23 +1486,30 @@ Reference is available on the eponymous hyperlink in the form &lt;link SalesAcco
 									<Group>Vertical</Group>
 									<Representation>None</Representation>
 									<ShowTitle>false</ShowTitle>
-									<ExtendedTooltip name="AdditionallyLeftColumnExtendedTooltip" id="1207"/>
+									<ExtendedTooltip name="AdditionallyLeftExtendedTooltip" id="1207"/>
 									<ChildItems>
+										<InputField name="Project" id="10">
+											<DataPath>Object.Project</DataPath>
+											<EditMode>EnterOnInput</EditMode>
+											<Wrap>false</Wrap>
+											<ContextMenu name="ProjectContextMenu" id="11"/>
+											<ExtendedTooltip name="ProjectExtendedTooltip" id="1074"/>
+										</InputField>
+										<InputField name="StructuralUnitReserve" id="106">
+											<DataPath>Object.StructuralUnitReserve</DataPath>
+											<Wrap>false</Wrap>
+											<ContextMenu name="StructuralUnitOfReserveContextMenu" id="107"/>
+											<ExtendedTooltip name="StructuralUnitOfReserveExtendedTooltip" id="1075"/>
+										</InputField>
 										<InputField name="SalesStructuralUnit" id="95">
 											<DataPath>Object.SalesStructuralUnit</DataPath>
 											<Wrap>false</Wrap>
 											<ContextMenu name="SalesStructuralUnitContextMenu" id="96"/>
 											<ExtendedTooltip name="SalesStructuralUnitExtendedTooltip" id="1077"/>
 										</InputField>
-										<InputField name="Responsible" id="97">
-											<DataPath>Object.Responsible</DataPath>
-											<Wrap>false</Wrap>
-											<ContextMenu name="ResponsibleContextMenu" id="98"/>
-											<ExtendedTooltip name="ResponsibleExtendedTooltip" id="1078"/>
-										</InputField>
 									</ChildItems>
 								</UsualGroup>
-								<UsualGroup name="AdditionallyRightColumn" id="1208">
+								<UsualGroup name="AdditionallyRight" id="1208">
 									<Title>
 										<v8:item>
 											<v8:lang>en</v8:lang>
@@ -1731,11 +1520,23 @@ Reference is available on the eponymous hyperlink in the form &lt;link SalesAcco
 											<v8:content>Правая колонка</v8:content>
 										</v8:item>
 									</Title>
+									<ToolTip>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Additionally right</v8:content>
+										</v8:item>
+									</ToolTip>
 									<Group>Vertical</Group>
 									<Representation>None</Representation>
 									<ShowTitle>false</ShowTitle>
-									<ExtendedTooltip name="AdditionallyRightColumnExtendedTooltip" id="1209"/>
+									<ExtendedTooltip name="AdditionallyRightExtendedTooltip" id="1209"/>
 									<ChildItems>
+										<InputField name="Responsible" id="97">
+											<DataPath>Object.Responsible</DataPath>
+											<Wrap>false</Wrap>
+											<ContextMenu name="ResponsibleContextMenu" id="98"/>
+											<ExtendedTooltip name="ResponsibleExtendedTooltip" id="1078"/>
+										</InputField>
 										<LabelField name="DocumentAuthor" id="441">
 											<DataPath>Object.Author</DataPath>
 											<ToolTip>
@@ -1748,10 +1549,6 @@ Reference is available on the eponymous hyperlink in the form &lt;link SalesAcco
 													<v8:content>Автор документа</v8:content>
 												</v8:item>
 											</ToolTip>
-											<Border width="1">
-												<v8ui:style xsi:type="v8ui:ControlBorderType">Single</v8ui:style>
-											</Border>
-											<TextColor>#993300</TextColor>
 											<ContextMenu name="AuthorDocumentContextMenu" id="442"/>
 											<ExtendedTooltip name="DocumentAuthorExtendedTooltip" id="1095"/>
 										</LabelField>
@@ -1826,19 +1623,6 @@ Reference is available on the eponymous hyperlink in the form &lt;link SalesAcco
 					<ContextMenu name="CommentContextMenu" id="13"/>
 					<ExtendedTooltip name="CommentExtendedTooltip" id="1081"/>
 				</InputField>
-				<LabelField name="EDStatus" id="751">
-					<DataPath>EDStateText</DataPath>
-					<ContextMenu name="EDStatusContextMenu" id="752"/>
-					<ExtendedTooltip name="StateEDExtendedTooltip" id="1090"/>
-					<Events>
-						<Event name="Click">EDStateClick</Event>
-					</Events>
-				</LabelField>
-				<LabelDecoration name="IndentED" id="1203">
-					<HorizontalStretch>true</HorizontalStretch>
-					<ContextMenu name="IndentEDContextMenu" id="1204"/>
-					<ExtendedTooltip name="IndentEDExtendedTooltip" id="1205"/>
-				</LabelDecoration>
 				<UsualGroup name="Totals" id="72">
 					<ToolTip>
 						<v8:item>
@@ -1915,30 +1699,6 @@ Reference is available on the eponymous hyperlink in the form &lt;link SalesAcco
 					</ChildItems>
 				</UsualGroup>
 			</ChildItems>
-		</UsualGroup>
-		<UsualGroup name="InformationReferences" id="753">
-			<Title>
-				<v8:item>
-					<v8:lang>en</v8:lang>
-					<v8:content>Information references</v8:content>
-				</v8:item>
-				<v8:item>
-					<v8:lang>ru</v8:lang>
-					<v8:content>Информационные ссылки</v8:content>
-				</v8:item>
-			</Title>
-			<ToolTip>
-				<v8:item>
-					<v8:lang>en</v8:lang>
-					<v8:content>Information references</v8:content>
-				</v8:item>
-				<v8:item>
-					<v8:lang>ru</v8:lang>
-					<v8:content>Информационные ссылки</v8:content>
-				</v8:item>
-			</ToolTip>
-			<Group>Vertical</Group>
-			<ExtendedTooltip name="InformationLinksExtendedTooltip" id="755"/>
 		</UsualGroup>
 	</ChildItems>
 	<Attributes>
@@ -2193,7 +1953,7 @@ Reference is available on the eponymous hyperlink in the form &lt;link SalesAcco
 				<v8:Type>cfg:CatalogRef.Counterparties</v8:Type>
 			</Type>
 		</Attribute>
-		<Attribute name="RepetitionNationalCurrency" id="9">
+		<Attribute name="NationalCurrencyMultiplicity" id="9">
 			<Title>
 				<v8:item>
 					<v8:lang>en</v8:lang>
@@ -2213,7 +1973,7 @@ Reference is available on the eponymous hyperlink in the form &lt;link SalesAcco
 				</v8:NumberQualifiers>
 			</Type>
 		</Attribute>
-		<Attribute name="RateNationalCurrency" id="10">
+		<Attribute name="NationalCurrencyExchangeRate" id="10">
 			<Title>
 				<v8:item>
 					<v8:lang>en</v8:lang>
@@ -2342,21 +2102,6 @@ Reference is available on the eponymous hyperlink in the form &lt;link SalesAcco
 				<v8:Type>xs:boolean</v8:Type>
 			</Type>
 		</Attribute>
-		<Attribute name="DocumentModified" id="24">
-			<Title>
-				<v8:item>
-					<v8:lang>en</v8:lang>
-					<v8:content>Document is modified</v8:content>
-				</v8:item>
-				<v8:item>
-					<v8:lang>ru</v8:lang>
-					<v8:content>Документ модифицирован</v8:content>
-				</v8:item>
-			</Title>
-			<Type>
-				<v8:Type>xs:boolean</v8:Type>
-			</Type>
-		</Attribute>
 		<Attribute name="NotifyWorkCalendar" id="25">
 			<Title>
 				<v8:item>
@@ -2421,15 +2166,15 @@ Reference is available on the eponymous hyperlink in the form &lt;link SalesAcco
 				<v8:Type>cfg:CatalogRef.CustomerOrderStates</v8:Type>
 			</Type>
 		</Attribute>
-		<Attribute name="FunctionalOptionInventoryReservation" id="30">
+		<Attribute name="InventoryReservation" id="30">
 			<Title>
 				<v8:item>
 					<v8:lang>en</v8:lang>
-					<v8:content>Functional option inventory reservation</v8:content>
+					<v8:content>Inventory reservation</v8:content>
 				</v8:item>
 				<v8:item>
 					<v8:lang>ru</v8:lang>
-					<v8:content>Функциональная опция резервирование запасов</v8:content>
+					<v8:content>Резервирование запасов</v8:content>
 				</v8:item>
 			</Title>
 			<Type>
@@ -2469,28 +2214,6 @@ Reference is available on the eponymous hyperlink in the form &lt;link SalesAcco
 					<v8:AllowedLength>Variable</v8:AllowedLength>
 				</v8:StringQualifiers>
 			</Type>
-		</Attribute>
-		<Attribute name="EDStateText" id="33">
-			<Title>
-				<v8:item>
-					<v8:lang>en</v8:lang>
-					<v8:content>ED state</v8:content>
-				</v8:item>
-				<v8:item>
-					<v8:lang>ru</v8:lang>
-					<v8:content>Состояние ЭД</v8:content>
-				</v8:item>
-			</Title>
-			<Type>
-				<v8:Type>xs:string</v8:Type>
-				<v8:StringQualifiers>
-					<v8:Length>0</v8:Length>
-					<v8:AllowedLength>Variable</v8:AllowedLength>
-				</v8:StringQualifiers>
-			</Type>
-			<FunctionalOptions>
-				<Item>FunctionalOption.UseEDExchange</Item>
-			</FunctionalOptions>
 		</Attribute>
 		<Attribute name="SelectionOpenParameters" id="34">
 			<Title>
@@ -2699,6 +2422,74 @@ Reference is available on the eponymous hyperlink in the form &lt;link SalesAcco
 					<v8:Length>0</v8:Length>
 					<v8:AllowedLength>Variable</v8:AllowedLength>
 				</v8:StringQualifiers>
+			</Type>
+		</Attribute>
+		<Attribute name="Company" id="39">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Company</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Организация</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>cfg:CatalogRef.Companies</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="CounterpartyAttributes" id="40">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Counterparty attributes</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Реквизиты контрагента</v8:content>
+				</v8:item>
+			</Title>
+			<Type/>
+		</Attribute>
+		<Attribute name="TotalAmount" id="41">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Total amount</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Итог всего</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:decimal</v8:Type>
+				<v8:NumberQualifiers>
+					<v8:Digits>15</v8:Digits>
+					<v8:FractionDigits>2</v8:FractionDigits>
+					<v8:AllowedSign>Nonnegative</v8:AllowedSign>
+				</v8:NumberQualifiers>
+			</Type>
+		</Attribute>
+		<Attribute name="TotalVATAmount" id="42">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Total VAT amount</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Итог сумма НДС</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:decimal</v8:Type>
+				<v8:NumberQualifiers>
+					<v8:Digits>15</v8:Digits>
+					<v8:FractionDigits>2</v8:FractionDigits>
+					<v8:AllowedSign>Nonnegative</v8:AllowedSign>
+				</v8:NumberQualifiers>
 			</Type>
 		</Attribute>
 		<ConditionalAppearance>
@@ -3086,29 +2877,6 @@ Reference is available on the eponymous hyperlink in the form &lt;link SalesAcco
 				<Item>FunctionalOption.InventoryReservation</Item>
 			</FunctionalOptions>
 			<ModifiesSavedData>true</ModifiesSavedData>
-		</Command>
-		<Command name="ShowCounterpartyInformation" id="2">
-			<Title>
-				<v8:item>
-					<v8:lang>en</v8:lang>
-					<v8:content>Information about counterparty from the website</v8:content>
-				</v8:item>
-				<v8:item>
-					<v8:lang>ru</v8:lang>
-					<v8:content>Информация о контрагенте с сайта</v8:content>
-				</v8:item>
-			</Title>
-			<ToolTip>
-				<v8:item>
-					<v8:lang>en</v8:lang>
-					<v8:content>Show company information from the website</v8:content>
-				</v8:item>
-				<v8:item>
-					<v8:lang>ru</v8:lang>
-					<v8:content>Показать информацию по контрагенту с сайта</v8:content>
-				</v8:item>
-			</ToolTip>
-			<Action>ShowCounterpartyInformation</Action>
 		</Command>
 		<Command name="ReadDiscountCard" id="6">
 			<Title>

@@ -1,938 +1,7 @@
 ﻿#If Server Or ThickClientOrdinaryApplication Or ExternalConnection Then
+	
+#Region EventHandlers
 
-////////////////////////////////////////////////////////////////////////////////
-// EXPORT PROCEDURES AND FUNCTIONS OF DOCUMENT
-
-// Procedure fills tabular section Performers by enterprise resources.
-//
-Procedure FillTabularSectionPerformersByResources(PerformersConnectionKey) Export
-	
-	EmployeeArray	= New Array();
-	ArrayOfTeams 		= New Array();
-	For Each TSRow IN EnterpriseResources Do
-		
-		If ValueIsFilled(TSRow.EnterpriseResource) Then
-			
-			ResourceValue = TSRow.EnterpriseResource.ResourceValue;
-			If TypeOf(ResourceValue) = Type("CatalogRef.Employees") Then
-				
-				EmployeeArray.Add(ResourceValue);
-				
-			ElsIf TypeOf(ResourceValue) = Type("CatalogRef.Teams") Then
-				
-				ArrayOfTeams.Add(ResourceValue);
-				
-			EndIf;
-			
-		EndIf;
-		
-	EndDo;
-	
-	Query = New Query;
-	Query.Text =
-	"SELECT
-	|	EmployeesTable.Employee AS Employee,
-	|	EmployeesTable.Description AS Description,
-	|	AccrualsAndDeductionsPlanSliceLast.AccrualDeductionKind AS AccrualDeductionKind
-	|INTO TemporaryTableEmployeesAndAccrualDeductionSorts
-	|FROM
-	|	(SELECT
-	|		Employees.Ref AS Employee,
-	|		Employees.Description AS Description
-	|	FROM
-	|		Catalog.Employees AS Employees
-	|	WHERE
-	|		Employees.Ref IN(&EmployeeArray)
-	|	
-	|	GROUP BY
-	|		Employees.Ref,
-	|		Employees.Description
-	|	
-	|	UNION
-	|	
-	|	SELECT
-	|		WorkgroupsContent.Employee,
-	|		WorkgroupsContent.Employee.Description
-	|	FROM
-	|		Catalog.Teams.Content AS WorkgroupsContent
-	|	WHERE
-	|		WorkgroupsContent.Ref IN(&ArrayOfTeams)) AS EmployeesTable
-	|		LEFT JOIN InformationRegister.AccrualsAndDeductionsPlan.SliceLast(
-	|				&ToDate,
-	|				Company = &Company
-	|					AND Actuality
-	|					AND AccrualDeductionKind IN (VALUE(Catalog.AccrualAndDeductionKinds.PieceRatePayment), VALUE(Catalog.AccrualAndDeductionKinds.PieceRatePaymentPercent), VALUE(Catalog.AccrualAndDeductionKinds.FixedAmount))) AS AccrualsAndDeductionsPlanSliceLast
-	|		ON EmployeesTable.Employee = AccrualsAndDeductionsPlanSliceLast.Employee
-	|;
-	|
-	|////////////////////////////////////////////////////////////////////////////////
-	|SELECT
-	|	TemporaryTableEmployeesAndAccrualDeductionSorts.Employee AS Employee,
-	|	TemporaryTableEmployeesAndAccrualDeductionSorts.Description AS Description,
-	|	TemporaryTableEmployeesAndAccrualDeductionSorts.AccrualDeductionKind AS AccrualDeductionKind,
-	|	1 AS LPF,
-	|	AccrualsAndDeductionsPlanSliceLast.Amount * AccrualCurrencyRate.ExchangeRate * DocumentCurrencyRate.Multiplicity / (DocumentCurrencyRate.ExchangeRate * AccrualCurrencyRate.Multiplicity) AS AmountAccrualDeduction
-	|FROM
-	|	TemporaryTableEmployeesAndAccrualDeductionSorts AS TemporaryTableEmployeesAndAccrualDeductionSorts
-	|		LEFT JOIN InformationRegister.AccrualsAndDeductionsPlan.SliceLast(
-	|				&ToDate,
-	|				Company = &Company
-	|					AND Actuality) AS AccrualsAndDeductionsPlanSliceLast
-	|		ON TemporaryTableEmployeesAndAccrualDeductionSorts.Employee = AccrualsAndDeductionsPlanSliceLast.Employee
-	|			AND TemporaryTableEmployeesAndAccrualDeductionSorts.AccrualDeductionKind = AccrualsAndDeductionsPlanSliceLast.AccrualDeductionKind
-	|		LEFT JOIN InformationRegister.CurrencyRates.SliceLast(&ToDate, ) AS AccrualCurrencyRate
-	|		ON (AccrualsAndDeductionsPlanSliceLast.Currency = AccrualCurrencyRate.Currency),
-	|	InformationRegister.CurrencyRates.SliceLast(&ToDate, Currency = &DocumentCurrency) AS DocumentCurrencyRate
-	|
-	|ORDER BY
-	|	Description";
-	
-	Query.SetParameter("ToDate", Date);
-	Query.SetParameter("Company", Company);
-	Query.SetParameter("DocumentCurrency", DocumentCurrency);
-	Query.SetParameter("ArrayOfTeams", ArrayOfTeams);
-	Query.SetParameter("EmployeeArray", EmployeeArray);
-	
-	ResultsArray = Query.ExecuteBatch();
-	EmployeesTable = ResultsArray[1].Unload();
-	
-	If PerformersConnectionKey = Undefined Then
-		
-		For Each TabularSectionRow IN Works Do
-			
-			If TabularSectionRow.ProductsAndServices.ProductsAndServicesType = Enums.ProductsAndServicesTypes.Work Then
-				
-				For Each TSRow IN EmployeesTable Do
-					
-					NewRow = Performers.Add();
-					FillPropertyValues(NewRow, TSRow);
-					NewRow.ConnectionKey = TabularSectionRow.ConnectionKey;
-					
-				EndDo;
-				
-			EndIf;
-			
-		EndDo;
-		
-	Else
-		
-		For Each TSRow IN EmployeesTable Do
-			
-			NewRow = Performers.Add();
-			FillPropertyValues(NewRow, TSRow);
-			NewRow.ConnectionKey = PerformersConnectionKey;
-			
-		EndDo;
-		
-	EndIf;
-	
-EndProcedure // FillPerformersTabularSectionByResources()
-
-// Procedure fills the tabular section Performers by teams.
-//
-Procedure FillTabularSectionPerformersByTeams(ArrayOfTeams, PerformersConnectionKey) Export
-	
-	Query = New Query;
-	Query.Text =
-	"SELECT
-	|	WorkgroupsContent.Employee AS Employee,
-	|	WorkgroupsContent.Employee.Description AS Description,
-	|	AccrualsAndDeductionsPlanSliceLast.AccrualDeductionKind AS AccrualDeductionKind
-	|INTO TemporaryTableEmployeesAndAccrualDeductionSorts
-	|FROM
-	|	Catalog.Teams.Content AS WorkgroupsContent
-	|		LEFT JOIN InformationRegister.AccrualsAndDeductionsPlan.SliceLast(
-	|				&ToDate,
-	|				Company = &Company
-	|					AND Actuality
-	|					AND AccrualDeductionKind IN (VALUE(Catalog.AccrualAndDeductionKinds.PieceRatePayment), VALUE(Catalog.AccrualAndDeductionKinds.PieceRatePaymentPercent), VALUE(Catalog.AccrualAndDeductionKinds.FixedAmount))) AS AccrualsAndDeductionsPlanSliceLast
-	|		ON WorkgroupsContent.Employee = AccrualsAndDeductionsPlanSliceLast.Employee
-	|WHERE
-	|	WorkgroupsContent.Ref IN(&ArrayOfTeams)
-	|;
-	|
-	|////////////////////////////////////////////////////////////////////////////////
-	|SELECT
-	|	TemporaryTableEmployeesAndAccrualDeductionSorts.Employee AS Employee,
-	|	TemporaryTableEmployeesAndAccrualDeductionSorts.Description AS Description,
-	|	TemporaryTableEmployeesAndAccrualDeductionSorts.AccrualDeductionKind AS AccrualDeductionKind,
-	|	1 AS LPF,
-	|	AccrualsAndDeductionsPlanSliceLast.Amount * AccrualCurrencyRate.ExchangeRate * DocumentCurrencyRate.Multiplicity / (DocumentCurrencyRate.ExchangeRate * AccrualCurrencyRate.Multiplicity) AS AmountAccrualDeduction
-	|FROM
-	|	TemporaryTableEmployeesAndAccrualDeductionSorts AS TemporaryTableEmployeesAndAccrualDeductionSorts
-	|		LEFT JOIN InformationRegister.AccrualsAndDeductionsPlan.SliceLast(
-	|				&ToDate,
-	|				Company = &Company
-	|					AND Actuality) AS AccrualsAndDeductionsPlanSliceLast
-	|		ON TemporaryTableEmployeesAndAccrualDeductionSorts.Employee = AccrualsAndDeductionsPlanSliceLast.Employee
-	|			AND TemporaryTableEmployeesAndAccrualDeductionSorts.AccrualDeductionKind = AccrualsAndDeductionsPlanSliceLast.AccrualDeductionKind
-	|		LEFT JOIN InformationRegister.CurrencyRates.SliceLast(&ToDate, ) AS AccrualCurrencyRate
-	|		ON (AccrualsAndDeductionsPlanSliceLast.Currency = AccrualCurrencyRate.Currency),
-	|	InformationRegister.CurrencyRates.SliceLast(&ToDate, Currency = &DocumentCurrency) AS DocumentCurrencyRate
-	|
-	|ORDER BY
-	|	Description";
-	
-	Query.SetParameter("ToDate", Date);
-	Query.SetParameter("Company", Company);
-	Query.SetParameter("DocumentCurrency", DocumentCurrency);
-	Query.SetParameter("ArrayOfTeams", ArrayOfTeams);
-	
-	ResultsArray = Query.ExecuteBatch();
-	EmployeesTable = ResultsArray[1].Unload();
-	
-	If PerformersConnectionKey = Undefined Then
-		
-		For Each TabularSectionRow IN Works Do
-			
-			If TabularSectionRow.ProductsAndServices.ProductsAndServicesType = Enums.ProductsAndServicesTypes.Work Then
-				
-				For Each TSRow IN EmployeesTable Do
-					
-					NewRow = Performers.Add();
-					FillPropertyValues(NewRow, TSRow);
-					NewRow.ConnectionKey = TabularSectionRow.ConnectionKey;
-					
-				EndDo;
-				
-			EndIf;
-			
-		EndDo;
-		
-	Else
-		
-		For Each TSRow IN EmployeesTable Do
-			
-			NewRow = Performers.Add();
-			FillPropertyValues(NewRow, TSRow);
-			NewRow.ConnectionKey = PerformersConnectionKey;
-			
-		EndDo;
-		
-	EndIf;
-	
-EndProcedure // FillPerformersTabularSectionByTeams()
-
-// Procedure fills the Quantity column by free balances at warehouse.
-//
-Procedure FillColumnReserveByBalances() Export
-	
-	Inventory.LoadColumn(New Array(Inventory.Count()), "Reserve");
-	
-	TempTablesManager = New TempTablesManager;
-	
-	Query = New Query;
-	Query.TempTablesManager = TempTablesManager;
-	Query.Text =
-	"SELECT
-	|	TableInventory.ProductsAndServices AS ProductsAndServices,
-	|	TableInventory.Characteristic AS Characteristic,
-	|	TableInventory.Batch AS Batch
-	|INTO TemporaryTableInventory
-	|FROM
-	|	&TableInventory AS TableInventory
-	|WHERE
-	|	TableInventory.ProductsAndServicesTypeInventory";
-	
-	Query.SetParameter("TableInventory", Inventory.Unload());
-	Query.Execute();
-	
-	Query.Text =
-	"SELECT
-	|	InventoryBalances.Company AS Company,
-	|	InventoryBalances.StructuralUnit AS StructuralUnit,
-	|	InventoryBalances.GLAccount AS GLAccount,
-	|	InventoryBalances.ProductsAndServices AS ProductsAndServices,
-	|	InventoryBalances.Characteristic AS Characteristic,
-	|	InventoryBalances.Batch AS Batch,
-	|	SUM(InventoryBalances.QuantityBalance) AS QuantityBalance
-	|FROM
-	|	(SELECT
-	|		InventoryBalances.Company AS Company,
-	|		InventoryBalances.StructuralUnit AS StructuralUnit,
-	|		InventoryBalances.GLAccount AS GLAccount,
-	|		InventoryBalances.ProductsAndServices AS ProductsAndServices,
-	|		InventoryBalances.Characteristic AS Characteristic,
-	|		InventoryBalances.Batch AS Batch,
-	|		InventoryBalances.QuantityBalance AS QuantityBalance
-	|	FROM
-	|		AccumulationRegister.Inventory.Balance(
-	|				,
-	|				(Company, StructuralUnit, GLAccount, ProductsAndServices, Characteristic, Batch, CustomerOrder) In
-	|					(SELECT
-	|						&Company,
-	|						&StructuralUnit,
-	|						TableInventory.ProductsAndServices.InventoryGLAccount,
-	|						TableInventory.ProductsAndServices,
-	|						TableInventory.Characteristic,
-	|						TableInventory.Batch,
-	|						VALUE(Document.CustomerOrder.EmptyRef) AS CustomerOrder
-	|					FROM
-	|						TemporaryTableInventory AS TableInventory)) AS InventoryBalances
-	|	
-	|	UNION ALL
-	|	
-	|	SELECT
-	|		DocumentRegisterRecordsInventory.Company,
-	|		DocumentRegisterRecordsInventory.StructuralUnit,
-	|		DocumentRegisterRecordsInventory.GLAccount,
-	|		DocumentRegisterRecordsInventory.ProductsAndServices,
-	|		DocumentRegisterRecordsInventory.Characteristic,
-	|		DocumentRegisterRecordsInventory.Batch,
-	|		CASE
-	|			WHEN DocumentRegisterRecordsInventory.RecordType = VALUE(AccumulationRecordType.Expense)
-	|				THEN ISNULL(DocumentRegisterRecordsInventory.Quantity, 0)
-	|			ELSE -ISNULL(DocumentRegisterRecordsInventory.Quantity, 0)
-	|		END
-	|	FROM
-	|		AccumulationRegister.Inventory AS DocumentRegisterRecordsInventory
-	|	WHERE
-	|		DocumentRegisterRecordsInventory.Recorder = &Ref
-	|		AND DocumentRegisterRecordsInventory.Period <= &Period
-	|		AND DocumentRegisterRecordsInventory.RecordType = VALUE(AccumulationRecordType.Expense)) AS InventoryBalances
-	|
-	|GROUP BY
-	|	InventoryBalances.Company,
-	|	InventoryBalances.StructuralUnit,
-	|	InventoryBalances.GLAccount,
-	|	InventoryBalances.ProductsAndServices,
-	|	InventoryBalances.Characteristic,
-	|	InventoryBalances.Batch";
-	
-	Query.SetParameter("Period", Date);
-	Query.SetParameter("Ref", Ref);
-	Query.SetParameter("Company", SmallBusinessServer.GetCompany(Company));
-	Query.SetParameter("StructuralUnit", StructuralUnitReserve);
-	
-	TableOfPeriods = New ValueTable();
-	TableOfPeriods.Columns.Add("ShipmentDate");
-	TableOfPeriods.Columns.Add("StringInventory");
-	
-	QueryResult = Query.Execute();
-	Selection = QueryResult.Select();
-	While Selection.Next() Do
-		
-		StructureForSearch = New Structure;
-		StructureForSearch.Insert("ProductsAndServices", Selection.ProductsAndServices);
-		StructureForSearch.Insert("Characteristic", Selection.Characteristic);
-		StructureForSearch.Insert("Batch", Selection.Batch);
-		
-		ArrayOfRowsInventory = Inventory.FindRows(StructureForSearch);
-		For Each StringInventory IN ArrayOfRowsInventory Do
-			NewRow = TableOfPeriods.Add();
-			NewRow.ShipmentDate = StringInventory.ShipmentDate;
-			NewRow.StringInventory = StringInventory;
-		EndDo;
-		
-		TotalBalance = Selection.QuantityBalance;
-		TableOfPeriods.Sort("ShipmentDate");
-		For Each TableOfPeriodsRow IN TableOfPeriods Do
-			StringInventory = TableOfPeriodsRow.StringInventory;
-			TotalBalance = ?(TypeOf(StringInventory.MeasurementUnit) = Type("CatalogRef.UOMClassifier"), TotalBalance, TotalBalance / StringInventory.MeasurementUnit.Factor);
-			If StringInventory.Quantity >= TotalBalance Then
-				StringInventory.Reserve = TotalBalance;
-				TotalBalance = 0;
-			Else
-				StringInventory.Reserve = StringInventory.Quantity;
-				TotalBalance = TotalBalance - StringInventory.Quantity;
-				TotalBalance = ?(TypeOf(StringInventory.MeasurementUnit) = Type("CatalogRef.UOMClassifier"), TotalBalance, TotalBalance * StringInventory.MeasurementUnit.Factor);
-			EndIf;
-		EndDo;
-		
-		TableOfPeriods.Clear();
-		
-	EndDo;
-	
-EndProcedure // FillColumnReserveByBalances()
-
-// Procedure fills the Quantity column by free balances at warehouse.
-//
-Procedure GoodsFillColumnReserveByBalances() Export
-	
-	Inventory.LoadColumn(New Array(Inventory.Count()), "Reserve");
-	Inventory.LoadColumn(New Array(Inventory.Count()), "ReserveShipment");
-	
-	TempTablesManager = New TempTablesManager;
-	
-	Query = New Query;
-	Query.TempTablesManager = TempTablesManager;
-	Query.Text =
-	"SELECT
-	|	TableInventory.ProductsAndServices AS ProductsAndServices,
-	|	TableInventory.Characteristic AS Characteristic,
-	|	TableInventory.Batch AS Batch
-	|INTO TemporaryTableInventory
-	|FROM
-	|	&TableInventory AS TableInventory
-	|WHERE
-	|	TableInventory.ProductsAndServicesTypeInventory";
-	
-	Query.SetParameter("TableInventory", Inventory.Unload());
-	Query.Execute();
-	
-	Query.Text =
-	"SELECT
-	|	InventoryBalances.Company AS Company,
-	|	InventoryBalances.StructuralUnit AS StructuralUnit,
-	|	InventoryBalances.GLAccount AS GLAccount,
-	|	InventoryBalances.ProductsAndServices AS ProductsAndServices,
-	|	InventoryBalances.Characteristic AS Characteristic,
-	|	InventoryBalances.Batch AS Batch,
-	|	SUM(InventoryBalances.QuantityBalance) AS QuantityBalance
-	|FROM
-	|	(SELECT
-	|		InventoryBalances.Company AS Company,
-	|		InventoryBalances.StructuralUnit AS StructuralUnit,
-	|		InventoryBalances.GLAccount AS GLAccount,
-	|		InventoryBalances.ProductsAndServices AS ProductsAndServices,
-	|		InventoryBalances.Characteristic AS Characteristic,
-	|		InventoryBalances.Batch AS Batch,
-	|		InventoryBalances.QuantityBalance AS QuantityBalance
-	|	FROM
-	|		AccumulationRegister.Inventory.Balance(
-	|				,
-	|				(Company, StructuralUnit, GLAccount, ProductsAndServices, Characteristic, Batch, CustomerOrder) In
-	|					(SELECT
-	|						&Company,
-	|						&StructuralUnit,
-	|						TableInventory.ProductsAndServices.InventoryGLAccount,
-	|						TableInventory.ProductsAndServices,
-	|						TableInventory.Characteristic,
-	|						TableInventory.Batch,
-	|						VALUE(Document.CustomerOrder.EmptyRef) AS CustomerOrder
-	|					FROM
-	|						TemporaryTableInventory AS TableInventory)) AS InventoryBalances
-	|	
-	|	UNION ALL
-	|	
-	|	SELECT
-	|		DocumentRegisterRecordsInventory.Company,
-	|		DocumentRegisterRecordsInventory.StructuralUnit,
-	|		DocumentRegisterRecordsInventory.GLAccount,
-	|		DocumentRegisterRecordsInventory.ProductsAndServices,
-	|		DocumentRegisterRecordsInventory.Characteristic,
-	|		DocumentRegisterRecordsInventory.Batch,
-	|		CASE
-	|			WHEN DocumentRegisterRecordsInventory.RecordType = VALUE(AccumulationRecordType.Expense)
-	|				THEN ISNULL(DocumentRegisterRecordsInventory.Quantity, 0)
-	|			ELSE -ISNULL(DocumentRegisterRecordsInventory.Quantity, 0)
-	|		END
-	|	FROM
-	|		AccumulationRegister.Inventory AS DocumentRegisterRecordsInventory
-	|	WHERE
-	|		DocumentRegisterRecordsInventory.Recorder = &Ref
-	|		AND DocumentRegisterRecordsInventory.Period <= &Period
-	|		AND DocumentRegisterRecordsInventory.RecordType = VALUE(AccumulationRecordType.Expense)) AS InventoryBalances
-	|
-	|GROUP BY
-	|	InventoryBalances.Company,
-	|	InventoryBalances.StructuralUnit,
-	|	InventoryBalances.GLAccount,
-	|	InventoryBalances.ProductsAndServices,
-	|	InventoryBalances.Characteristic,
-	|	InventoryBalances.Batch";
-	
-	Query.SetParameter("Period", Finish);
-	Query.SetParameter("Ref", Ref);
-	Query.SetParameter("Company", SmallBusinessServer.GetCompany(Company));
-	Query.SetParameter("StructuralUnit", StructuralUnitReserve);
-	
-	QueryResult = Query.Execute();
-	Selection = QueryResult.Select();
-	While Selection.Next() Do
-		
-		StructureForSearch = New Structure;
-		StructureForSearch.Insert("ProductsAndServices", Selection.ProductsAndServices);
-		StructureForSearch.Insert("Characteristic", Selection.Characteristic);
-		StructureForSearch.Insert("Batch", Selection.Batch);
-		
-		TotalBalance = Selection.QuantityBalance;
-		ArrayOfRowsInventory = Inventory.FindRows(StructureForSearch);
-		For Each StringInventory IN ArrayOfRowsInventory Do
-			TotalBalance = ?(TypeOf(StringInventory.MeasurementUnit) = Type("CatalogRef.UOMClassifier"), TotalBalance, TotalBalance / StringInventory.MeasurementUnit.Factor);
-			If StringInventory.Quantity >= TotalBalance Then
-				StringInventory.Reserve = TotalBalance;
-				StringInventory.ReserveShipment = StringInventory.Reserve;
-				TotalBalance = 0;
-			Else
-				StringInventory.Reserve = StringInventory.Quantity;
-				StringInventory.ReserveShipment = StringInventory.Reserve;
-				TotalBalance = TotalBalance - StringInventory.Quantity;
-				TotalBalance = ?(TypeOf(StringInventory.MeasurementUnit) = Type("CatalogRef.UOMClassifier"), TotalBalance, TotalBalance * StringInventory.MeasurementUnit.Factor);
-			EndIf;
-		EndDo;
-		
-	EndDo;
-	
-EndProcedure // GoodsFillReserveColumnByBalances()
-
-// Procedure fills out the Quantity by reserves under order column.
-//
-Procedure GoodsFillColumnReserveByReserves() Export
-	
-	Inventory.LoadColumn(New Array(Inventory.Count()), "ReserveShipment");
-	
-	TempTablesManager = New TempTablesManager;
-	
-	Query = New Query;
-	Query.TempTablesManager = TempTablesManager;
-	Query.Text =
-	"SELECT
-	|	TableInventory.ProductsAndServices AS ProductsAndServices,
-	|	TableInventory.Characteristic AS Characteristic,
-	|	TableInventory.Batch AS Batch,
-	|	&Order AS CustomerOrder
-	|INTO TemporaryTableInventory
-	|FROM
-	|	&TableInventory AS TableInventory
-	|WHERE
-	|	TableInventory.ProductsAndServicesTypeInventory";
-	
-	Query.SetParameter("TableInventory", Inventory.Unload());
-	Query.SetParameter("Order", Ref);
-	Query.Execute();
-	
-	Query.Text =
-	"SELECT
-	|	InventoryBalances.Company AS Company,
-	|	InventoryBalances.StructuralUnit AS StructuralUnit,
-	|	InventoryBalances.GLAccount AS GLAccount,
-	|	InventoryBalances.CustomerOrder AS CustomerOrder,
-	|	InventoryBalances.ProductsAndServices AS ProductsAndServices,
-	|	InventoryBalances.Characteristic AS Characteristic,
-	|	InventoryBalances.Batch AS Batch,
-	|	SUM(InventoryBalances.QuantityBalance) AS QuantityBalance
-	|FROM
-	|	(SELECT
-	|		InventoryBalances.Company AS Company,
-	|		InventoryBalances.StructuralUnit AS StructuralUnit,
-	|		InventoryBalances.GLAccount AS GLAccount,
-	|		InventoryBalances.CustomerOrder AS CustomerOrder,
-	|		InventoryBalances.ProductsAndServices AS ProductsAndServices,
-	|		InventoryBalances.Characteristic AS Characteristic,
-	|		InventoryBalances.Batch AS Batch,
-	|		InventoryBalances.QuantityBalance AS QuantityBalance
-	|	FROM
-	|		AccumulationRegister.Inventory.Balance(
-	|				,
-	|				(Company, StructuralUnit, GLAccount, ProductsAndServices, Characteristic, Batch, CustomerOrder) In
-	|					(SELECT
-	|						&Company,
-	|						&StructuralUnit,
-	|						TableInventory.ProductsAndServices.InventoryGLAccount,
-	|						TableInventory.ProductsAndServices,
-	|						TableInventory.Characteristic,
-	|						TableInventory.Batch,
-	|						TableInventory.CustomerOrder
-	|					FROM
-	|						TemporaryTableInventory AS TableInventory
-	|					WHERE
-	|						TableInventory.CustomerOrder <> VALUE(Document.CustomerOrder.EmptyRef))) AS InventoryBalances
-	|	
-	|	UNION ALL
-	|	
-	|	SELECT
-	|		DocumentRegisterRecordsInventory.Company,
-	|		DocumentRegisterRecordsInventory.StructuralUnit,
-	|		DocumentRegisterRecordsInventory.GLAccount,
-	|		DocumentRegisterRecordsInventory.CustomerOrder,
-	|		DocumentRegisterRecordsInventory.ProductsAndServices,
-	|		DocumentRegisterRecordsInventory.Characteristic,
-	|		DocumentRegisterRecordsInventory.Batch,
-	|		CASE
-	|			WHEN DocumentRegisterRecordsInventory.RecordType = VALUE(AccumulationRecordType.Expense)
-	|				THEN ISNULL(DocumentRegisterRecordsInventory.Quantity, 0)
-	|			ELSE -ISNULL(DocumentRegisterRecordsInventory.Quantity, 0)
-	|		END
-	|	FROM
-	|		AccumulationRegister.Inventory AS DocumentRegisterRecordsInventory
-	|	WHERE
-	|		DocumentRegisterRecordsInventory.Recorder = &Ref
-	|		AND DocumentRegisterRecordsInventory.Period <= &Period
-	|		AND DocumentRegisterRecordsInventory.RecordType = VALUE(AccumulationRecordType.Expense)
-	|		AND DocumentRegisterRecordsInventory.CustomerOrder <> VALUE(Document.CustomerOrder.EmptyRef)) AS InventoryBalances
-	|
-	|GROUP BY
-	|	InventoryBalances.Company,
-	|	InventoryBalances.StructuralUnit,
-	|	InventoryBalances.GLAccount,
-	|	InventoryBalances.CustomerOrder,
-	|	InventoryBalances.ProductsAndServices,
-	|	InventoryBalances.Characteristic,
-	|	InventoryBalances.Batch";
-	
-	Query.SetParameter("Period", Finish);
-	Query.SetParameter("Ref", Ref);
-	Query.SetParameter("Company", SmallBusinessServer.GetCompany(Company));
-	Query.SetParameter("StructuralUnit", StructuralUnitReserve);
-	
-	QueryResult = Query.Execute();
-	Selection = QueryResult.Select();
-	While Selection.Next() Do
-		
-		StructureForSearch = New Structure;
-		StructureForSearch.Insert("ProductsAndServices", Selection.ProductsAndServices);
-		StructureForSearch.Insert("Characteristic", Selection.Characteristic);
-		StructureForSearch.Insert("Batch", Selection.Batch);
-		
-		TotalBalance = Selection.QuantityBalance;
-		ArrayOfRowsInventory = Inventory.FindRows(StructureForSearch);
-		For Each StringInventory IN ArrayOfRowsInventory Do
-			
-			TotalBalance = ?(TypeOf(StringInventory.MeasurementUnit) = Type("CatalogRef.UOMClassifier"), TotalBalance, TotalBalance / StringInventory.MeasurementUnit.Factor);
-			If StringInventory.Quantity >= TotalBalance Then
-				
-				StringInventory.ReserveShipment = TotalBalance;
-				TotalBalance = 0;
-				
-			Else
-				
-				StringInventory.ReserveShipment = StringInventory.Quantity;
-				TotalBalance = TotalBalance - StringInventory.Quantity;
-				TotalBalance = ?(TypeOf(StringInventory.MeasurementUnit) = Type("CatalogRef.UOMClassifier"), TotalBalance, TotalBalance * StringInventory.MeasurementUnit.Factor);
-				
-			EndIf;
-			
-		EndDo;
-		
-	EndDo;
-	
-	For Each TabularSectionRow IN Inventory Do
-		If TabularSectionRow.ReserveShipment < TabularSectionRow.Reserve Then
-			TabularSectionRow.Reserve = TabularSectionRow.ReserveShipment;
-		EndIf;
-	EndDo;
-	
-EndProcedure // GoodsFillReserveColumnByReserves()
-
-// Procedure fills the Quantity column by free balances at warehouse.
-//
-Procedure MaterialsFillColumnReserveByBalances(MaterialsConnectionKey) Export
-	
-	If MaterialsConnectionKey = Undefined Then
-		Materials.LoadColumn(New Array(Materials.Count()), "Reserve");
-		Materials.LoadColumn(New Array(Materials.Count()), "ReserveShipment");
-	Else
-		SearchResult = Materials.FindRows(New Structure("ConnectionKey", MaterialsConnectionKey));
-		For Each TabularSectionRow IN SearchResult Do
-			TabularSectionRow.Reserve = 0;
-			TabularSectionRow.ReserveShipment = 0;
-		EndDo;
-	EndIf;
-	
-	TempTablesManager = New TempTablesManager;
-	
-		Query = New Query;
-	Query.TempTablesManager = TempTablesManager;
-	Query.Text =
-	"SELECT
-	|	TableInventory.ProductsAndServices AS ProductsAndServices,
-	|	TableInventory.Characteristic AS Characteristic,
-	|	TableInventory.Batch AS Batch
-	|INTO TemporaryTableInventory
-	|FROM
-	|	&TableInventory AS TableInventory
-	|WHERE
-	|	CASE
-	|			WHEN &SelectionByKeyLinks
-	|				THEN TableInventory.ConnectionKey = &ConnectionKey
-	|			ELSE TRUE
-	|		END";
-	
-	Query.SetParameter("TableInventory", Materials.Unload());
-	Query.SetParameter("SelectionByKeyLinks", ?(MaterialsConnectionKey = Undefined, False, True));
-	Query.SetParameter("ConnectionKey", MaterialsConnectionKey);
-	Query.Execute();
-	
-	Query.Text =
-	"SELECT
-	|	InventoryBalances.Company AS Company,
-	|	InventoryBalances.StructuralUnit AS StructuralUnit,
-	|	InventoryBalances.GLAccount AS GLAccount,
-	|	InventoryBalances.ProductsAndServices AS ProductsAndServices,
-	|	InventoryBalances.Characteristic AS Characteristic,
-	|	InventoryBalances.Batch AS Batch,
-	|	SUM(InventoryBalances.QuantityBalance) AS QuantityBalance
-	|FROM
-	|	(SELECT
-	|		InventoryBalances.Company AS Company,
-	|		InventoryBalances.StructuralUnit AS StructuralUnit,
-	|		InventoryBalances.GLAccount AS GLAccount,
-	|		InventoryBalances.ProductsAndServices AS ProductsAndServices,
-	|		InventoryBalances.Characteristic AS Characteristic,
-	|		InventoryBalances.Batch AS Batch,
-	|		InventoryBalances.QuantityBalance AS QuantityBalance
-	|	FROM
-	|		AccumulationRegister.Inventory.Balance(
-	|				,
-	|				(Company, StructuralUnit, GLAccount, ProductsAndServices, Characteristic, Batch, CustomerOrder) In
-	|					(SELECT
-	|						&Company,
-	|						&StructuralUnit,
-	|						TableInventory.ProductsAndServices.InventoryGLAccount,
-	|						TableInventory.ProductsAndServices,
-	|						TableInventory.Characteristic,
-	|						TableInventory.Batch,
-	|						VALUE(Document.CustomerOrder.EmptyRef) AS CustomerOrder
-	|					FROM
-	|						TemporaryTableInventory AS TableInventory)) AS InventoryBalances
-	|	
-	|	UNION ALL
-	|	
-	|	SELECT
-	|		DocumentRegisterRecordsInventory.Company,
-	|		DocumentRegisterRecordsInventory.StructuralUnit,
-	|		DocumentRegisterRecordsInventory.GLAccount,
-	|		DocumentRegisterRecordsInventory.ProductsAndServices,
-	|		DocumentRegisterRecordsInventory.Characteristic,
-	|		DocumentRegisterRecordsInventory.Batch,
-	|		CASE
-	|			WHEN DocumentRegisterRecordsInventory.RecordType = VALUE(AccumulationRecordType.Expense)
-	|				THEN ISNULL(DocumentRegisterRecordsInventory.Quantity, 0)
-	|			ELSE -ISNULL(DocumentRegisterRecordsInventory.Quantity, 0)
-	|		END
-	|	FROM
-	|		AccumulationRegister.Inventory AS DocumentRegisterRecordsInventory
-	|	WHERE
-	|		DocumentRegisterRecordsInventory.Recorder = &Ref
-	|		AND DocumentRegisterRecordsInventory.Period <= &Period
-	|		AND DocumentRegisterRecordsInventory.RecordType = VALUE(AccumulationRecordType.Expense)) AS InventoryBalances
-	|
-	|GROUP BY
-	|	InventoryBalances.Company,
-	|	InventoryBalances.StructuralUnit,
-	|	InventoryBalances.GLAccount,
-	|	InventoryBalances.ProductsAndServices,
-	|	InventoryBalances.Characteristic,
-	|	InventoryBalances.Batch";
-	
-	Query.SetParameter("Period", Date);
-	Query.SetParameter("Ref", Ref);
-	Query.SetParameter("Company", SmallBusinessServer.GetCompany(Company));
-	Query.SetParameter("StructuralUnit", StructuralUnitReserve);
-	
-	QueryResult = Query.Execute();
-	Selection = QueryResult.Select();
-	While Selection.Next() Do
-		
-		StructureForSearch = New Structure;
-		If MaterialsConnectionKey <> Undefined Then
-			StructureForSearch.Insert("ConnectionKey", MaterialsConnectionKey);
-		EndIf;
-		StructureForSearch.Insert("ProductsAndServices", Selection.ProductsAndServices);
-		StructureForSearch.Insert("Characteristic", Selection.Characteristic);
-		StructureForSearch.Insert("Batch", Selection.Batch);
-		
-		TotalBalance = Selection.QuantityBalance;
-		ArrayOfRowsInventory = Materials.FindRows(StructureForSearch);
-		For Each StringInventory IN ArrayOfRowsInventory Do
-			TotalBalance = ?(TypeOf(StringInventory.MeasurementUnit) = Type("CatalogRef.UOMClassifier"), TotalBalance, TotalBalance / StringInventory.MeasurementUnit.Factor);
-			If StringInventory.Quantity >= TotalBalance Then
-				StringInventory.Reserve = TotalBalance;
-				StringInventory.ReserveShipment = StringInventory.Reserve;
-				TotalBalance = 0;
-			Else
-				StringInventory.Reserve = StringInventory.Quantity;
-				StringInventory.ReserveShipment = StringInventory.Reserve;
-				TotalBalance = TotalBalance - StringInventory.Quantity;
-				TotalBalance = ?(TypeOf(StringInventory.MeasurementUnit) = Type("CatalogRef.UOMClassifier"), TotalBalance, TotalBalance * StringInventory.MeasurementUnit.Factor);
-			EndIf;
-		EndDo;
-		
-	EndDo;
-	
-EndProcedure // MaterialsFillReserveColumnByBalances()
-
-// Procedure fills out the Quantity by reserves under order column.
-//
-Procedure MaterialsFillColumnReserveByReserves(MaterialsConnectionKey) Export
-	
-	If MaterialsConnectionKey = Undefined Then
-		Materials.LoadColumn(New Array(Materials.Count()), "ReserveShipment");
-	Else
-		SearchResult = Materials.FindRows(New Structure("ConnectionKey", MaterialsConnectionKey));
-		For Each TabularSectionRow IN SearchResult Do
-			TabularSectionRow.ReserveShipment = 0;
-		EndDo;
-	EndIf;
-	
-	TempTablesManager = New TempTablesManager;
-	
-	Query = New Query;
-	Query.TempTablesManager = TempTablesManager;
-	Query.Text =
-	"SELECT
-	|	TableInventory.ProductsAndServices AS ProductsAndServices,
-	|	TableInventory.Characteristic AS Characteristic,
-	|	TableInventory.Batch AS Batch,
-	|	&Order AS CustomerOrder
-	|INTO TemporaryTableInventory
-	|FROM
-	|	&TableInventory AS TableInventory
-	|WHERE
-	|	CASE
-	|			WHEN &SelectionByKeyLinks
-	|				THEN TableInventory.ConnectionKey = &ConnectionKey
-	|			ELSE TRUE
-	|		END";
-	
-	Query.SetParameter("TableInventory", Materials.Unload());
-	Query.SetParameter("SelectionByKeyLinks", ?(MaterialsConnectionKey = Undefined, False, True));
-	Query.SetParameter("ConnectionKey", MaterialsConnectionKey);
-	Query.SetParameter("Order", Ref);
-	Query.Execute();
-	
-	Query.Text =
-	"SELECT
-	|	InventoryBalances.Company AS Company,
-	|	InventoryBalances.StructuralUnit AS StructuralUnit,
-	|	InventoryBalances.GLAccount AS GLAccount,
-	|	InventoryBalances.CustomerOrder AS CustomerOrder,
-	|	InventoryBalances.ProductsAndServices AS ProductsAndServices,
-	|	InventoryBalances.Characteristic AS Characteristic,
-	|	InventoryBalances.Batch AS Batch,
-	|	SUM(InventoryBalances.QuantityBalance) AS QuantityBalance
-	|FROM
-	|	(SELECT
-	|		InventoryBalances.Company AS Company,
-	|		InventoryBalances.StructuralUnit AS StructuralUnit,
-	|		InventoryBalances.GLAccount AS GLAccount,
-	|		InventoryBalances.CustomerOrder AS CustomerOrder,
-	|		InventoryBalances.ProductsAndServices AS ProductsAndServices,
-	|		InventoryBalances.Characteristic AS Characteristic,
-	|		InventoryBalances.Batch AS Batch,
-	|		InventoryBalances.QuantityBalance AS QuantityBalance
-	|	FROM
-	|		AccumulationRegister.Inventory.Balance(
-	|				,
-	|				(Company, StructuralUnit, GLAccount, ProductsAndServices, Characteristic, Batch, CustomerOrder) In
-	|					(SELECT
-	|						&Company,
-	|						&StructuralUnit,
-	|						TableInventory.ProductsAndServices.InventoryGLAccount,
-	|						TableInventory.ProductsAndServices,
-	|						TableInventory.Characteristic,
-	|						TableInventory.Batch,
-	|						TableInventory.CustomerOrder
-	|					FROM
-	|						TemporaryTableInventory AS TableInventory
-	|					WHERE
-	|						TableInventory.CustomerOrder <> VALUE(Document.CustomerOrder.EmptyRef))) AS InventoryBalances
-	|	
-	|	UNION ALL
-	|	
-	|	SELECT
-	|		DocumentRegisterRecordsInventory.Company,
-	|		DocumentRegisterRecordsInventory.StructuralUnit,
-	|		DocumentRegisterRecordsInventory.GLAccount,
-	|		DocumentRegisterRecordsInventory.CustomerOrder,
-	|		DocumentRegisterRecordsInventory.ProductsAndServices,
-	|		DocumentRegisterRecordsInventory.Characteristic,
-	|		DocumentRegisterRecordsInventory.Batch,
-	|		CASE
-	|			WHEN DocumentRegisterRecordsInventory.RecordType = VALUE(AccumulationRecordType.Expense)
-	|				THEN ISNULL(DocumentRegisterRecordsInventory.Quantity, 0)
-	|			ELSE -ISNULL(DocumentRegisterRecordsInventory.Quantity, 0)
-	|		END
-	|	FROM
-	|		AccumulationRegister.Inventory AS DocumentRegisterRecordsInventory
-	|	WHERE
-	|		DocumentRegisterRecordsInventory.Recorder = &Ref
-	|		AND DocumentRegisterRecordsInventory.Period <= &Period
-	|		AND DocumentRegisterRecordsInventory.RecordType = VALUE(AccumulationRecordType.Expense)
-	|		AND DocumentRegisterRecordsInventory.CustomerOrder <> VALUE(Document.CustomerOrder.EmptyRef)) AS InventoryBalances
-	|
-	|GROUP BY
-	|	InventoryBalances.Company,
-	|	InventoryBalances.StructuralUnit,
-	|	InventoryBalances.GLAccount,
-	|	InventoryBalances.CustomerOrder,
-	|	InventoryBalances.ProductsAndServices,
-	|	InventoryBalances.Characteristic,
-	|	InventoryBalances.Batch";
-	
-	Query.SetParameter("Period", Finish);
-	Query.SetParameter("Ref", Ref);
-	Query.SetParameter("Company", SmallBusinessServer.GetCompany(Company));
-	Query.SetParameter("StructuralUnit", StructuralUnitReserve);
-	
-	QueryResult = Query.Execute();
-	Selection = QueryResult.Select();
-	While Selection.Next() Do
-		
-		StructureForSearch = New Structure;
-		If MaterialsConnectionKey <> Undefined Then
-			StructureForSearch.Insert("ConnectionKey", MaterialsConnectionKey);
-		EndIf;
-		StructureForSearch.Insert("ProductsAndServices", Selection.ProductsAndServices);
-		StructureForSearch.Insert("Characteristic", Selection.Characteristic);
-		StructureForSearch.Insert("Batch", Selection.Batch);
-		
-		TotalBalance = Selection.QuantityBalance;
-		ArrayOfRowsInventory = Materials.FindRows(StructureForSearch);
-		For Each StringInventory IN ArrayOfRowsInventory Do
-			
-			TotalBalance = ?(TypeOf(StringInventory.MeasurementUnit) = Type("CatalogRef.UOMClassifier"), TotalBalance, TotalBalance / StringInventory.MeasurementUnit.Factor);
-			If StringInventory.Quantity >= TotalBalance Then
-				
-				StringInventory.ReserveShipment = TotalBalance;
-				TotalBalance = 0;
-				
-			Else
-				
-				StringInventory.ReserveShipment = StringInventory.Quantity;
-				TotalBalance = TotalBalance - StringInventory.Quantity;
-				TotalBalance = ?(TypeOf(StringInventory.MeasurementUnit) = Type("CatalogRef.UOMClassifier"), TotalBalance, TotalBalance * StringInventory.MeasurementUnit.Factor);
-				
-			EndIf;
-			
-		EndDo;
-		
-	EndDo;
-	
-	If MaterialsConnectionKey = Undefined Then
-		For Each TabularSectionRow IN Materials Do
-			If TabularSectionRow.ReserveShipment < TabularSectionRow.Reserve Then
-				TabularSectionRow.Reserve = TabularSectionRow.ReserveShipment;
-			EndIf;
-		EndDo;
-	Else
-		For Each TabularSectionRow IN SearchResult Do
-			If TabularSectionRow.ReserveShipment < TabularSectionRow.Reserve Then
-				TabularSectionRow.Reserve = TabularSectionRow.ReserveShipment;
-			EndIf;
-		EndDo;
-	EndIf;
-	
-EndProcedure // MaterialsFillReserveColumnByReserves()
-
-// Procedure fills document when copying.
-//
-Procedure FillOnCopy()
-	
-	If Constants.UseCustomerOrderStates.Get() Then
-		User = Users.CurrentUser();
-		SettingValue = SmallBusinessReUse.GetValueByDefaultUser(User, "StatusOfNewCustomerOrder");
-		If ValueIsFilled(SettingValue) Then
-			If OrderState <> SettingValue Then
-				OrderState = SettingValue;
-			EndIf;
-		Else
-			OrderState = Catalogs.CustomerOrderStates.Open;
-		EndIf;
-	Else
-		OrderState = Constants.CustomerOrdersInProgressStatus.Get();
-	EndIf;
-	
-	Closed = False;
-	
-EndProcedure // FillOnCopy()
-
-////////////////////////////////////////////////////////////////////////////////
-// EVENT HANDLERS
-
-// Procedure - event handler of the OnCopy object.
-//
 Procedure OnCopy(CopiedObject)
 	
 	SmallBusinessManagementElectronicDocumentsServer.ClearIncomingDocumentDateNumber(ThisObject);
@@ -940,81 +9,51 @@ Procedure OnCopy(CopiedObject)
 	FillOnCopy();
 	Prepayment.Clear();
 
-EndProcedure // OnCopy()
+EndProcedure
 
-// Procedure - event handler FillingProcessor object.
-//
-Procedure Filling(FillingData, StandardProcessing) Export
+Procedure Filling(FillingData, StandardProcessing)
 	
-	If Not ValueIsFilled(FillingData) Then
+	If TypeOf(FillingData) = Type("Structure")
+		And FillingData.Property("OperationKind")
+		And FillingData.OperationKind = Enums.OperationKindsCustomerOrder.JobOrder
+		And FillingData.Property("ProductsAndServices") Then
 		
-		Return;
+		ProductsAndServices = FillingData.ProductsAndServices;
+		TabularSection = New ValueTable;
+		TabularSection.Columns.Add("ProductsAndServices");
+		NewRow = TabularSection.Add();
+		NewRow.ProductsAndServices = ProductsAndServices;
+		
+		If ProductsAndServices.ProductsAndServicesType = Enums.ProductsAndServicesTypes.InventoryItem Then
+			NameTS = "Inventory";
+		ElsIf ProductsAndServices.ProductsAndServicesType = Enums.ProductsAndServicesTypes.Service
+			Or ProductsAndServices.ProductsAndServicesType = Enums.ProductsAndServicesTypes.Work Then
+			NameTS = "Works";
+		Else
+			NameTS = "";
+		EndIf;
+		
+		FillingData = New Structure;
+		If ValueIsFilled(NameTS) Then
+			FillingData.Insert(NameTS, TabularSection);
+		EndIf;
+		If ProductsAndServices.ProductsAndServicesType = Enums.ProductsAndServicesTypes.WorkKind Then
+			FillingData.Insert("WorkKind", ProductsAndServices);
+		EndIf;
+		FillingData.Insert("OperationKind", Enums.OperationKindsCustomerOrder.JobOrder);
 		
 	EndIf;
 
-	If TypeOf(FillingData) = Type("CatalogRef.Counterparties") Then
-		
-		If FillingData.IsFolder Then
-			Raise NStr("en='Unable to select counterparty group.';ru='Нельзя выбирать группу контрагентов.'");
-		EndIf;
-		
-		Counterparty = FillingData;
-		Contract = FillingData.ContractByDefault;
-		
-		DocumentCurrency = Contract.SettlementsCurrency;
-		StructureByCurrency = InformationRegisters.CurrencyRates.GetLast(Date, New Structure("Currency", Contract.SettlementsCurrency));
-		ExchangeRate = StructureByCurrency.ExchangeRate;
-		Multiplicity = StructureByCurrency.Multiplicity;
-		
-		SettingValue = SmallBusinessReUse.GetValueByDefaultUser(Users.CurrentUser(), "MainCompany");
-		If ValueIsFilled(SettingValue) Then
-			If Company <> SettingValue Then
-				Company = SettingValue;
-			EndIf;
-		Else
-			Company = Catalogs.Companies.MainCompany;	
-		EndIf;
-		
-		VATTaxation = SmallBusinessServer.VATTaxation(Company,, Date);
-		
-		Return;
-		
-	ElsIf TypeOf(FillingData) = Type("DocumentRef.Event") Then
-	
-		Event = FillingData.Ref;
-		If FillingData.Participants.Count() > 0 AND TypeOf(FillingData.Participants[0].Contact) = Type("CatalogRef.Counterparties") Then
-			Counterparty = FillingData.Participants[0].Contact;
-			Contract = Counterparty.ContractByDefault;
-		EndIf;
-		
-		DocumentCurrency = Contract.SettlementsCurrency;
-		StructureByCurrency = InformationRegisters.CurrencyRates.GetLast(Date, New Structure("Currency", Contract.SettlementsCurrency));
-		ExchangeRate = StructureByCurrency.ExchangeRate;
-		Multiplicity = StructureByCurrency.Multiplicity;
-		
-		SettingValue = SmallBusinessReUse.GetValueByDefaultUser(Users.CurrentUser(), "MainCompany");
-		If ValueIsFilled(SettingValue) Then
-			If Company <> SettingValue Then
-				Company = SettingValue;
-			EndIf;
-		Else
-			Company = Catalogs.Companies.MainCompany;	
-		EndIf;
-		
-		VATTaxation = SmallBusinessServer.VATTaxation(Company,, Date);
-		
-		Return;	
-		
-	ElsIf TypeOf(FillingData) = Type("Structure") Then
-		
-		FillPropertyValues(ThisObject, FillingData);
-		
+	If CommonUse.ReferenceTypeValue(FillingData) Then
+		ObjectFillingSB.FillDocument(ThisObject, FillingData, "FillingHandler");
+	Else
+		ObjectFillingSB.FillDocument(ThisObject, FillingData);
 	EndIf;
+	
+	FillByDefault();
 	
 EndProcedure
 
-// Procedure - event handler BeforeWrite object.
-//
 Procedure BeforeWrite(Cancel, WriteMode, PostingMode)
 	
 	If DataExchange.Load Then
@@ -1033,9 +72,13 @@ Procedure BeforeWrite(Cancel, WriteMode, PostingMode)
 		If OperationKind = Enums.OperationKindsCustomerOrder.JobOrder Then
 			ShipmentDate = Finish;
 		Else
-			If Inventory.Count() > 0 Then
-				ShipmentDate = Inventory[0].ShipmentDate;
-			EndIf;
+			For Each Row In Inventory Do
+				If Not ValueIsFilled(Row.ShipmentDate) Then
+					Continue;
+				EndIf;
+				ShipmentDate = Row.ShipmentDate;
+				Break;
+			EndDo;
 		EndIf;
 	EndIf;
 	
@@ -1077,8 +120,79 @@ Procedure BeforeWrite(Cancel, WriteMode, PostingMode)
 	
 EndProcedure // BeforeWrite()
 
-// Procedure - event handler FillCheckProcessing object.
-//
+Procedure Posting(Cancel, PostingMode)
+	
+	// Initialization of additional properties for document posting
+	SmallBusinessServer.InitializeAdditionalPropertiesForPosting(Ref, AdditionalProperties);
+	
+	// Initialization of document data
+	PerformanceEstimationClientServer.StartTimeMeasurement("CustomerOrderDocumentPostingInitialization");
+	
+	Documents.CustomerOrder.InitializeDocumentData(Ref, AdditionalProperties, ThisObject);
+	
+	// Preparation of record sets
+	SmallBusinessServer.PrepareRecordSetsForRecording(ThisObject);
+	
+	// Registering in accounting sections
+	PerformanceEstimationClientServer.StartTimeMeasurement("CustomerOrderDocumentPostingActivitiesCreation");
+
+	SmallBusinessServer.ReflectInventoryTransferSchedule(AdditionalProperties, RegisterRecords, Cancel);
+	SmallBusinessServer.ReflectCustomerOrders(AdditionalProperties, RegisterRecords, Cancel);
+	SmallBusinessServer.ReflectInventoryDemand(AdditionalProperties, RegisterRecords, Cancel);
+	SmallBusinessServer.ReflectOrdersPlacement(AdditionalProperties, RegisterRecords, Cancel);
+	SmallBusinessServer.ReflectInventory(AdditionalProperties, RegisterRecords, Cancel);
+	SmallBusinessServer.ReflectPaymentCalendar(AdditionalProperties, RegisterRecords, Cancel);
+	SmallBusinessServer.ReflectInvoicesAndOrdersPayment(AdditionalProperties, RegisterRecords, Cancel);
+	SmallBusinessServer.ReflectProductRelease(AdditionalProperties, RegisterRecords, Cancel);
+	SmallBusinessServer.ReflectAccountsReceivable(AdditionalProperties, RegisterRecords, Cancel);
+	SmallBusinessServer.ReflectIncomeAndExpenses(AdditionalProperties, RegisterRecords, Cancel);
+	SmallBusinessServer.ReflectIncomeAndExpensesCashMethod(AdditionalProperties, RegisterRecords, Cancel);
+	SmallBusinessServer.ReflectIncomeAndExpensesUndistributed(AdditionalProperties, RegisterRecords, Cancel);
+	SmallBusinessServer.ReflectIncomeAndExpensesRetained(AdditionalProperties, RegisterRecords, Cancel);
+	SmallBusinessServer.ReflectInventoryInWarehouses(AdditionalProperties, RegisterRecords, Cancel);
+	SmallBusinessServer.ReflectInventoryForExpenseFromWarehouses(AdditionalProperties, RegisterRecords, Cancel);
+	SmallBusinessServer.ReflectInventoryAccepted(AdditionalProperties, RegisterRecords, Cancel);
+	SmallBusinessServer.ReflectAccrualsAndDeductions(AdditionalProperties, RegisterRecords, Cancel);
+	SmallBusinessServer.ReflectPayrollPayments(AdditionalProperties, RegisterRecords, Cancel);
+	SmallBusinessServer.ReflectSales(AdditionalProperties, RegisterRecords, Cancel);
+	
+	// DiscountCards
+	SmallBusinessServer.ReflectSalesByDiscountCard(AdditionalProperties, RegisterRecords, Cancel);
+	// AutomaticDiscounts
+	SmallBusinessServer.FlipAutomaticDiscountsApplied(AdditionalProperties, RegisterRecords, Cancel);
+	
+	SmallBusinessServer.ReflectManagerial(AdditionalProperties, RegisterRecords, Cancel);
+	
+	// Writing of record sets
+	PerformanceEstimationClientServer.StartTimeMeasurement("CustomerOrderDocumentPostingActivitiesRecord");
+	
+	SmallBusinessServer.WriteRecordSets(ThisObject);
+
+	// Control
+	PerformanceEstimationClientServer.StartTimeMeasurement("CustomerOrderDocumentPostingControl");
+	
+	Documents.CustomerOrder.RunControl(ThisObject, AdditionalProperties, Cancel);
+	
+	AdditionalProperties.ForPosting.StructureTemporaryTables.TempTablesManager.Close();
+	
+EndProcedure
+
+Procedure UndoPosting(Cancel)
+	
+	// Initialization of additional properties to undo document posting
+	SmallBusinessServer.InitializeAdditionalPropertiesForPosting(Ref, AdditionalProperties);
+	
+	// Preparation of record sets
+	SmallBusinessServer.PrepareRecordSetsForRecording(ThisObject);
+	
+	// Writing of record sets
+	SmallBusinessServer.WriteRecordSets(ThisObject);
+	
+	// Control
+	Documents.CustomerOrder.RunControl(ThisObject, AdditionalProperties, Cancel, True);
+	
+EndProcedure
+
 Procedure FillCheckProcessing(Cancel, CheckedAttributes)
 	
 	If DataExchange.Load Then
@@ -1319,81 +433,1100 @@ Procedure FillCheckProcessing(Cancel, CheckedAttributes)
 	
 EndProcedure // FillCheckProcessing()
 
-// Procedure - event handler Posting object.
-//
-Procedure Posting(Cancel, PostingMode)
-	
-	// Initialization of additional properties for document posting
-	SmallBusinessServer.InitializeAdditionalPropertiesForPosting(Ref, AdditionalProperties);
-	
-	// Initialization of document data
-	PerformanceEstimationClientServer.StartTimeMeasurement("CustomerOrderDocumentPostingInitialization");
-	
-	Documents.CustomerOrder.InitializeDocumentData(Ref, AdditionalProperties, ThisObject);
-	
-	// Preparation of record sets
-	SmallBusinessServer.PrepareRecordSetsForRecording(ThisObject);
-	
-	// Registering in accounting sections
-	PerformanceEstimationClientServer.StartTimeMeasurement("CustomerOrderDocumentPostingActivitiesCreation");
+#EndRegion
 
-	SmallBusinessServer.ReflectInventoryTransferSchedule(AdditionalProperties, RegisterRecords, Cancel);
-	SmallBusinessServer.ReflectCustomerOrders(AdditionalProperties, RegisterRecords, Cancel);
-	SmallBusinessServer.ReflectInventoryDemand(AdditionalProperties, RegisterRecords, Cancel);
-	SmallBusinessServer.ReflectOrdersPlacement(AdditionalProperties, RegisterRecords, Cancel);
-	SmallBusinessServer.ReflectInventory(AdditionalProperties, RegisterRecords, Cancel);
-	SmallBusinessServer.ReflectPaymentCalendar(AdditionalProperties, RegisterRecords, Cancel);
-	SmallBusinessServer.ReflectInvoicesAndOrdersPayment(AdditionalProperties, RegisterRecords, Cancel);
-	SmallBusinessServer.ReflectProductRelease(AdditionalProperties, RegisterRecords, Cancel);
-	SmallBusinessServer.ReflectAccountsReceivable(AdditionalProperties, RegisterRecords, Cancel);
-	SmallBusinessServer.ReflectIncomeAndExpenses(AdditionalProperties, RegisterRecords, Cancel);
-	SmallBusinessServer.ReflectIncomeAndExpensesCashMethod(AdditionalProperties, RegisterRecords, Cancel);
-	SmallBusinessServer.ReflectIncomeAndExpensesUndistributed(AdditionalProperties, RegisterRecords, Cancel);
-	SmallBusinessServer.ReflectIncomeAndExpensesRetained(AdditionalProperties, RegisterRecords, Cancel);
-	SmallBusinessServer.ReflectInventoryInWarehouses(AdditionalProperties, RegisterRecords, Cancel);
-	SmallBusinessServer.ReflectInventoryForExpenseFromWarehouses(AdditionalProperties, RegisterRecords, Cancel);
-	SmallBusinessServer.ReflectInventoryAccepted(AdditionalProperties, RegisterRecords, Cancel);
-	SmallBusinessServer.ReflectAccrualsAndDeductions(AdditionalProperties, RegisterRecords, Cancel);
-	SmallBusinessServer.ReflectPayrollPayments(AdditionalProperties, RegisterRecords, Cancel);
-	SmallBusinessServer.ReflectSales(AdditionalProperties, RegisterRecords, Cancel);
-	
-	// DiscountCards
-	SmallBusinessServer.ReflectSalesByDiscountCard(AdditionalProperties, RegisterRecords, Cancel);
-	// AutomaticDiscounts
-	SmallBusinessServer.FlipAutomaticDiscountsApplied(AdditionalProperties, RegisterRecords, Cancel);
-	
-	SmallBusinessServer.ReflectManagerial(AdditionalProperties, RegisterRecords, Cancel);
-	
-	// Writing of record sets
-	PerformanceEstimationClientServer.StartTimeMeasurement("CustomerOrderDocumentPostingActivitiesRecord");
-	
-	SmallBusinessServer.WriteRecordSets(ThisObject);
+#Region DocumentFillingProcedures
 
-	// Control
-	PerformanceEstimationClientServer.StartTimeMeasurement("CustomerOrderDocumentPostingControl");
+Procedure FillingHandler(FillingData) Export
 	
-	Documents.CustomerOrder.RunControl(ThisObject, AdditionalProperties, Cancel);
+	If Not ValueIsFilled(FillingData) Then
+		Return;
+	EndIf;
 	
-	AdditionalProperties.ForPosting.StructureTemporaryTables.TempTablesManager.Close();
+	If Not CommonUse.ReferenceTypeValue(FillingData) Then
+		Return;
+	EndIf;
+	
+	If Not ValueIsFilled(TabularSectionName(FillingData)) Then
+		Return;
+	EndIf;
+	
+	QueryResult = QueryDataForFilling(FillingData).Execute();
+	
+	If QueryResult.IsEmpty() Then
+		Return;
+	EndIf;
+	
+	SelectionHeader = QueryResult.Select();
+	SelectionHeader.Next();
+	
+	FillPropertyValues(ThisObject, SelectionHeader);
+	
+	If DocumentCurrency <> Constants.NationalCurrency.Get() Then
+		CurrencyStructure = InformationRegisters.CurrencyRates.GetLast(Date, New Structure("Currency", Contract.SettlementsCurrency));
+		ExchangeRate = CurrencyStructure.ExchangeRate;
+		Multiplicity = CurrencyStructure.Multiplicity;
+	EndIf;
+	
+	ThisObject.Inventory.Clear();
+	TabularSectionSelection = SelectionHeader[TabularSectionName(FillingData)].Select();
+	While TabularSectionSelection.Next() Do
+		NewRow	= ThisObject.Inventory.Add();
+		FillPropertyValues(NewRow, TabularSectionSelection);
+		NewRow.ProductsAndServicesTypeInventory = (TabularSectionSelection.ProductsAndServicesProductsAndServicesType = Enums.ProductsAndServicesTypes.InventoryItem);
+	EndDo;
+	
+	If GetFunctionalOption("UseAutomaticDiscountsMarkups") Then
+		SelectionDiscountsMarkups = SelectionHeader.DiscountsMarkups.Select();
+		While SelectionDiscountsMarkups.Next() Do
+			FillPropertyValues(ThisObject.DiscountsMarkups.Add(), SelectionDiscountsMarkups);
+		EndDo;
+	EndIf;
+	
+	DocumentAmount = Inventory.Total("Total");
 	
 EndProcedure
 
-// Procedure - event handler UndoPosting object.
-//
-Procedure UndoPosting(Cancel)
+Function QueryDataForFilling(FillingData)
 	
-	// Initialization of additional properties to undo document posting
-	SmallBusinessServer.InitializeAdditionalPropertiesForPosting(Ref, AdditionalProperties);
+	Wizard = New QuerySchema;
+	Batch = Wizard.QueryBatch[0];
+	Batch.SelectAllowed = True;
+	Operator0 = Batch.Operators[0];
+	Operator0.Sources.Add(FillingData.Metadata().FullName());
+	For Each HeaderFieldDescription In HeaderFieldsDescription(FillingData) Do
+		Operator0.SelectedFields.Add(HeaderFieldDescription.Key);
+		If ValueIsFilled(HeaderFieldDescription.Value) Then
+			Batch.Columns[Batch.Columns.Count() - 1].Alias = HeaderFieldDescription.Value;
+		EndIf;
+	EndDo;
 	
-	// Preparation of record sets
-	SmallBusinessServer.PrepareRecordSetsForRecording(ThisObject);
+	For Each CurFieldDescriptionTabularSectionInventory In FieldsDescriptionTabularSectionInventory(FillingData) Do
+		Operator0.SelectedFields.Add(
+		StringFunctionsClientServer.SubstituteParametersInString(
+		"%1.%2",
+		TabularSectionName(FillingData),
+		CurFieldDescriptionTabularSectionInventory.Key));
+		If ValueIsFilled(CurFieldDescriptionTabularSectionInventory.Value) Then
+			Batch.Columns[Batch.Columns.Count() - 1].Alias = CurFieldDescriptionTabularSectionInventory.Value;
+		EndIf;
+	EndDo;
 	
-	// Writing of record sets
-	SmallBusinessServer.WriteRecordSets(ThisObject);
+	If GetFunctionalOption("UseAutomaticDiscountsMarkups") Then
+		Operator0.SelectedFields.Add("DiscountsMarkups.ConnectionKey");
+		Operator0.SelectedFields.Add("DiscountsMarkups.DiscountMarkup");
+		Operator0.SelectedFields.Add("DiscountsMarkups.Amount");
+	EndIf;
 	
-	// Control
-	Documents.CustomerOrder.RunControl(ThisObject, AdditionalProperties, Cancel, True);
+	Operator0.Filter.Add("Ref = &Parameter");
+	
+	Result = New Query(Wizard.GetQueryText());
+	Result.SetParameter("Parameter", FillingData);
+	
+	Return Result;
+	
+EndFunction
+
+Function TabularSectionName(FillingData)
+	
+	TabularSectionNames = New Map;
+	TabularSectionNames[Type("DocumentRef.InvoiceForPayment")] = "Inventory";
+	
+	Return TabularSectionNames[TypeOf(FillingData)];
+	
+EndFunction
+
+Function HeaderFieldsDescription(FillingData)
+	
+	Result = New Map;
+	
+	FillingDataMetadata = FillingData.Metadata();
+	
+	Result.Insert("Ref", "BasisDocument");
+	Result.Insert("Company");
+	Result.Insert("Company.BankAccountByDefault", "BankAccount");
+	
+	AddAttributeIfItIsInDocument(Result, FillingDataMetadata, "DiscountCard");
+	AddAttributeIfItIsInDocument(Result, FillingDataMetadata, "DiscountPercentByDiscountCard");
+	AddAttributeIfItIsInDocument(Result, FillingDataMetadata, "ExchangeRate");
+	AddAttributeIfItIsInDocument(Result, FillingDataMetadata, "Multiplicity");
+	AddAttributeIfItIsInDocument(Result, FillingDataMetadata, "AmountIncludesVAT");
+	AddAttributeIfItIsInDocument(Result, FillingDataMetadata, "VATTaxation");
+	AddAttributeIfItIsInDocument(Result, FillingDataMetadata, "Contract");
+	AddAttributeIfItIsInDocument(Result, FillingDataMetadata, "Counterparty");
+	AddAttributeIfItIsInDocument(Result, FillingDataMetadata, "DocumentCurrency");
+	
+	If GetFunctionalOption("UseAutomaticDiscountsMarkups") Then
+		Result.Insert("DiscountsAreCalculated");
+	EndIf;
+	
+	Return Result;
+	
+EndFunction
+
+Procedure AddAttributeIfItIsInDocument(ResultMap, FillingDataMetadata, AttributeName)
+	
+	If CommonUse.IsObjectAttribute(AttributeName, FillingDataMetadata) Then
+		ResultMap.Insert(AttributeName);
+	EndIf;
 	
 EndProcedure
+
+Function FieldsDescriptionTabularSectionInventory(FillingData)
+	
+	Result = New Map;
+	Result.Insert("ProductsAndServices");
+	Result.Insert("ProductsAndServices.ProductsAndServicesType");
+	Result.Insert("Characteristic");
+	Result.Insert("Content");
+	Result.Insert("MeasurementUnit");
+	Result.Insert("Quantity");
+	Result.Insert("Price");
+	Result.Insert("DiscountMarkupPercent");
+	Result.Insert("Amount");
+	Result.Insert("VATRate");
+	Result.Insert("VATAmount");
+	Result.Insert("Total");
+	If TabularSectionName(FillingData) <> "WorksAndServices" Then
+		Result.Insert("Batch");
+	EndIf;
+	
+	If GetFunctionalOption("UseAutomaticDiscountsMarkups") Then
+		Result.Insert("ConnectionKey");
+		Result.Insert("AutomaticDiscountAmount");
+		Result.Insert("AutomaticDiscountsPercent");
+	EndIf;
+	
+	Return Result;
+	
+EndFunction
+
+Procedure FillTabularSectionPerformersByResources(PerformersConnectionKey) Export
+	
+	EmployeeArray	= New Array();
+	ArrayOfTeams 		= New Array();
+	For Each TSRow IN EnterpriseResources Do
+		
+		If ValueIsFilled(TSRow.EnterpriseResource) Then
+			
+			ResourceValue = TSRow.EnterpriseResource.ResourceValue;
+			If TypeOf(ResourceValue) = Type("CatalogRef.Employees") Then
+				
+				EmployeeArray.Add(ResourceValue);
+				
+			ElsIf TypeOf(ResourceValue) = Type("CatalogRef.Teams") Then
+				
+				ArrayOfTeams.Add(ResourceValue);
+				
+			EndIf;
+			
+		EndIf;
+		
+	EndDo;
+	
+	Query = New Query;
+	Query.Text =
+	"SELECT
+	|	EmployeesTable.Employee AS Employee,
+	|	EmployeesTable.Description AS Description,
+	|	AccrualsAndDeductionsPlanSliceLast.AccrualDeductionKind AS AccrualDeductionKind
+	|INTO TemporaryTableEmployeesAndAccrualDeductionSorts
+	|FROM
+	|	(SELECT
+	|		Employees.Ref AS Employee,
+	|		Employees.Description AS Description
+	|	FROM
+	|		Catalog.Employees AS Employees
+	|	WHERE
+	|		Employees.Ref IN(&EmployeeArray)
+	|	
+	|	GROUP BY
+	|		Employees.Ref,
+	|		Employees.Description
+	|	
+	|	UNION
+	|	
+	|	SELECT
+	|		WorkgroupsContent.Employee,
+	|		WorkgroupsContent.Employee.Description
+	|	FROM
+	|		Catalog.Teams.Content AS WorkgroupsContent
+	|	WHERE
+	|		WorkgroupsContent.Ref IN(&ArrayOfTeams)) AS EmployeesTable
+	|		LEFT JOIN InformationRegister.AccrualsAndDeductionsPlan.SliceLast(
+	|				&ToDate,
+	|				Company = &Company
+	|					AND Actuality
+	|					AND AccrualDeductionKind IN (VALUE(Catalog.AccrualAndDeductionKinds.PieceRatePayment), VALUE(Catalog.AccrualAndDeductionKinds.PieceRatePaymentPercent), VALUE(Catalog.AccrualAndDeductionKinds.FixedAmount))) AS AccrualsAndDeductionsPlanSliceLast
+	|		ON EmployeesTable.Employee = AccrualsAndDeductionsPlanSliceLast.Employee
+	|;
+	|
+	|////////////////////////////////////////////////////////////////////////////////
+	|SELECT
+	|	TemporaryTableEmployeesAndAccrualDeductionSorts.Employee AS Employee,
+	|	TemporaryTableEmployeesAndAccrualDeductionSorts.Description AS Description,
+	|	TemporaryTableEmployeesAndAccrualDeductionSorts.AccrualDeductionKind AS AccrualDeductionKind,
+	|	1 AS LPF,
+	|	AccrualsAndDeductionsPlanSliceLast.Amount * AccrualCurrencyRate.ExchangeRate * DocumentCurrencyRate.Multiplicity / (DocumentCurrencyRate.ExchangeRate * AccrualCurrencyRate.Multiplicity) AS AmountAccrualDeduction
+	|FROM
+	|	TemporaryTableEmployeesAndAccrualDeductionSorts AS TemporaryTableEmployeesAndAccrualDeductionSorts
+	|		LEFT JOIN InformationRegister.AccrualsAndDeductionsPlan.SliceLast(
+	|				&ToDate,
+	|				Company = &Company
+	|					AND Actuality) AS AccrualsAndDeductionsPlanSliceLast
+	|		ON TemporaryTableEmployeesAndAccrualDeductionSorts.Employee = AccrualsAndDeductionsPlanSliceLast.Employee
+	|			AND TemporaryTableEmployeesAndAccrualDeductionSorts.AccrualDeductionKind = AccrualsAndDeductionsPlanSliceLast.AccrualDeductionKind
+	|		LEFT JOIN InformationRegister.CurrencyRates.SliceLast(&ToDate, ) AS AccrualCurrencyRate
+	|		ON (AccrualsAndDeductionsPlanSliceLast.Currency = AccrualCurrencyRate.Currency),
+	|	InformationRegister.CurrencyRates.SliceLast(&ToDate, Currency = &DocumentCurrency) AS DocumentCurrencyRate
+	|
+	|ORDER BY
+	|	Description";
+	
+	Query.SetParameter("ToDate", Date);
+	Query.SetParameter("Company", Company);
+	Query.SetParameter("DocumentCurrency", DocumentCurrency);
+	Query.SetParameter("ArrayOfTeams", ArrayOfTeams);
+	Query.SetParameter("EmployeeArray", EmployeeArray);
+	
+	ResultsArray = Query.ExecuteBatch();
+	EmployeesTable = ResultsArray[1].Unload();
+	
+	If PerformersConnectionKey = Undefined Then
+		
+		For Each TabularSectionRow IN Works Do
+			
+			If TabularSectionRow.ProductsAndServices.ProductsAndServicesType = Enums.ProductsAndServicesTypes.Work Then
+				
+				For Each TSRow IN EmployeesTable Do
+					
+					NewRow = Performers.Add();
+					FillPropertyValues(NewRow, TSRow);
+					NewRow.ConnectionKey = TabularSectionRow.ConnectionKey;
+					
+				EndDo;
+				
+			EndIf;
+			
+		EndDo;
+		
+	Else
+		
+		For Each TSRow IN EmployeesTable Do
+			
+			NewRow = Performers.Add();
+			FillPropertyValues(NewRow, TSRow);
+			NewRow.ConnectionKey = PerformersConnectionKey;
+			
+		EndDo;
+		
+	EndIf;
+	
+EndProcedure // FillPerformersTabularSectionByResources()
+
+Procedure FillTabularSectionPerformersByTeams(ArrayOfTeams, PerformersConnectionKey) Export
+	
+	Query = New Query;
+	Query.Text =
+	"SELECT
+	|	WorkgroupsContent.Employee AS Employee,
+	|	WorkgroupsContent.Employee.Description AS Description,
+	|	AccrualsAndDeductionsPlanSliceLast.AccrualDeductionKind AS AccrualDeductionKind
+	|INTO TemporaryTableEmployeesAndAccrualDeductionSorts
+	|FROM
+	|	Catalog.Teams.Content AS WorkgroupsContent
+	|		LEFT JOIN InformationRegister.AccrualsAndDeductionsPlan.SliceLast(
+	|				&ToDate,
+	|				Company = &Company
+	|					AND Actuality
+	|					AND AccrualDeductionKind IN (VALUE(Catalog.AccrualAndDeductionKinds.PieceRatePayment), VALUE(Catalog.AccrualAndDeductionKinds.PieceRatePaymentPercent), VALUE(Catalog.AccrualAndDeductionKinds.FixedAmount))) AS AccrualsAndDeductionsPlanSliceLast
+	|		ON WorkgroupsContent.Employee = AccrualsAndDeductionsPlanSliceLast.Employee
+	|WHERE
+	|	WorkgroupsContent.Ref IN(&ArrayOfTeams)
+	|;
+	|
+	|////////////////////////////////////////////////////////////////////////////////
+	|SELECT
+	|	TemporaryTableEmployeesAndAccrualDeductionSorts.Employee AS Employee,
+	|	TemporaryTableEmployeesAndAccrualDeductionSorts.Description AS Description,
+	|	TemporaryTableEmployeesAndAccrualDeductionSorts.AccrualDeductionKind AS AccrualDeductionKind,
+	|	1 AS LPF,
+	|	AccrualsAndDeductionsPlanSliceLast.Amount * AccrualCurrencyRate.ExchangeRate * DocumentCurrencyRate.Multiplicity / (DocumentCurrencyRate.ExchangeRate * AccrualCurrencyRate.Multiplicity) AS AmountAccrualDeduction
+	|FROM
+	|	TemporaryTableEmployeesAndAccrualDeductionSorts AS TemporaryTableEmployeesAndAccrualDeductionSorts
+	|		LEFT JOIN InformationRegister.AccrualsAndDeductionsPlan.SliceLast(
+	|				&ToDate,
+	|				Company = &Company
+	|					AND Actuality) AS AccrualsAndDeductionsPlanSliceLast
+	|		ON TemporaryTableEmployeesAndAccrualDeductionSorts.Employee = AccrualsAndDeductionsPlanSliceLast.Employee
+	|			AND TemporaryTableEmployeesAndAccrualDeductionSorts.AccrualDeductionKind = AccrualsAndDeductionsPlanSliceLast.AccrualDeductionKind
+	|		LEFT JOIN InformationRegister.CurrencyRates.SliceLast(&ToDate, ) AS AccrualCurrencyRate
+	|		ON (AccrualsAndDeductionsPlanSliceLast.Currency = AccrualCurrencyRate.Currency),
+	|	InformationRegister.CurrencyRates.SliceLast(&ToDate, Currency = &DocumentCurrency) AS DocumentCurrencyRate
+	|
+	|ORDER BY
+	|	Description";
+	
+	Query.SetParameter("ToDate", Date);
+	Query.SetParameter("Company", Company);
+	Query.SetParameter("DocumentCurrency", DocumentCurrency);
+	Query.SetParameter("ArrayOfTeams", ArrayOfTeams);
+	
+	ResultsArray = Query.ExecuteBatch();
+	EmployeesTable = ResultsArray[1].Unload();
+	
+	If PerformersConnectionKey = Undefined Then
+		
+		For Each TabularSectionRow IN Works Do
+			
+			If TabularSectionRow.ProductsAndServices.ProductsAndServicesType = Enums.ProductsAndServicesTypes.Work Then
+				
+				For Each TSRow IN EmployeesTable Do
+					
+					NewRow = Performers.Add();
+					FillPropertyValues(NewRow, TSRow);
+					NewRow.ConnectionKey = TabularSectionRow.ConnectionKey;
+					
+				EndDo;
+				
+			EndIf;
+			
+		EndDo;
+		
+	Else
+		
+		For Each TSRow IN EmployeesTable Do
+			
+			NewRow = Performers.Add();
+			FillPropertyValues(NewRow, TSRow);
+			NewRow.ConnectionKey = PerformersConnectionKey;
+			
+		EndDo;
+		
+	EndIf;
+	
+EndProcedure // FillPerformersTabularSectionByTeams()
+
+Procedure FillColumnReserveByBalances() Export
+	
+	Inventory.LoadColumn(New Array(Inventory.Count()), "Reserve");
+	
+	TempTablesManager = New TempTablesManager;
+	
+	Query = New Query;
+	Query.TempTablesManager = TempTablesManager;
+	Query.Text =
+	"SELECT
+	|	TableInventory.ProductsAndServices AS ProductsAndServices,
+	|	TableInventory.Characteristic AS Characteristic,
+	|	TableInventory.Batch AS Batch
+	|INTO TemporaryTableInventory
+	|FROM
+	|	&TableInventory AS TableInventory
+	|WHERE
+	|	TableInventory.ProductsAndServicesTypeInventory";
+	
+	Query.SetParameter("TableInventory", Inventory.Unload());
+	Query.Execute();
+	
+	Query.Text =
+	"SELECT
+	|	InventoryBalances.Company AS Company,
+	|	InventoryBalances.StructuralUnit AS StructuralUnit,
+	|	InventoryBalances.GLAccount AS GLAccount,
+	|	InventoryBalances.ProductsAndServices AS ProductsAndServices,
+	|	InventoryBalances.Characteristic AS Characteristic,
+	|	InventoryBalances.Batch AS Batch,
+	|	SUM(InventoryBalances.QuantityBalance) AS QuantityBalance
+	|FROM
+	|	(SELECT
+	|		InventoryBalances.Company AS Company,
+	|		InventoryBalances.StructuralUnit AS StructuralUnit,
+	|		InventoryBalances.GLAccount AS GLAccount,
+	|		InventoryBalances.ProductsAndServices AS ProductsAndServices,
+	|		InventoryBalances.Characteristic AS Characteristic,
+	|		InventoryBalances.Batch AS Batch,
+	|		InventoryBalances.QuantityBalance AS QuantityBalance
+	|	FROM
+	|		AccumulationRegister.Inventory.Balance(
+	|				,
+	|				(Company, StructuralUnit, GLAccount, ProductsAndServices, Characteristic, Batch, CustomerOrder) In
+	|					(SELECT
+	|						&Company,
+	|						&StructuralUnit,
+	|						TableInventory.ProductsAndServices.InventoryGLAccount,
+	|						TableInventory.ProductsAndServices,
+	|						TableInventory.Characteristic,
+	|						TableInventory.Batch,
+	|						VALUE(Document.CustomerOrder.EmptyRef) AS CustomerOrder
+	|					FROM
+	|						TemporaryTableInventory AS TableInventory)) AS InventoryBalances
+	|	
+	|	UNION ALL
+	|	
+	|	SELECT
+	|		DocumentRegisterRecordsInventory.Company,
+	|		DocumentRegisterRecordsInventory.StructuralUnit,
+	|		DocumentRegisterRecordsInventory.GLAccount,
+	|		DocumentRegisterRecordsInventory.ProductsAndServices,
+	|		DocumentRegisterRecordsInventory.Characteristic,
+	|		DocumentRegisterRecordsInventory.Batch,
+	|		CASE
+	|			WHEN DocumentRegisterRecordsInventory.RecordType = VALUE(AccumulationRecordType.Expense)
+	|				THEN ISNULL(DocumentRegisterRecordsInventory.Quantity, 0)
+	|			ELSE -ISNULL(DocumentRegisterRecordsInventory.Quantity, 0)
+	|		END
+	|	FROM
+	|		AccumulationRegister.Inventory AS DocumentRegisterRecordsInventory
+	|	WHERE
+	|		DocumentRegisterRecordsInventory.Recorder = &Ref
+	|		AND DocumentRegisterRecordsInventory.Period <= &Period
+	|		AND DocumentRegisterRecordsInventory.RecordType = VALUE(AccumulationRecordType.Expense)) AS InventoryBalances
+	|
+	|GROUP BY
+	|	InventoryBalances.Company,
+	|	InventoryBalances.StructuralUnit,
+	|	InventoryBalances.GLAccount,
+	|	InventoryBalances.ProductsAndServices,
+	|	InventoryBalances.Characteristic,
+	|	InventoryBalances.Batch";
+	
+	Query.SetParameter("Period", Date);
+	Query.SetParameter("Ref", Ref);
+	Query.SetParameter("Company", SmallBusinessServer.GetCompany(Company));
+	Query.SetParameter("StructuralUnit", StructuralUnitReserve);
+	
+	TableOfPeriods = New ValueTable();
+	TableOfPeriods.Columns.Add("ShipmentDate");
+	TableOfPeriods.Columns.Add("StringInventory");
+	
+	QueryResult = Query.Execute();
+	Selection = QueryResult.Select();
+	While Selection.Next() Do
+		
+		StructureForSearch = New Structure;
+		StructureForSearch.Insert("ProductsAndServices", Selection.ProductsAndServices);
+		StructureForSearch.Insert("Characteristic", Selection.Characteristic);
+		StructureForSearch.Insert("Batch", Selection.Batch);
+		
+		ArrayOfRowsInventory = Inventory.FindRows(StructureForSearch);
+		For Each StringInventory IN ArrayOfRowsInventory Do
+			NewRow = TableOfPeriods.Add();
+			NewRow.ShipmentDate = StringInventory.ShipmentDate;
+			NewRow.StringInventory = StringInventory;
+		EndDo;
+		
+		TotalBalance = Selection.QuantityBalance;
+		TableOfPeriods.Sort("ShipmentDate");
+		For Each TableOfPeriodsRow IN TableOfPeriods Do
+			StringInventory = TableOfPeriodsRow.StringInventory;
+			TotalBalance = ?(TypeOf(StringInventory.MeasurementUnit) = Type("CatalogRef.UOMClassifier"), TotalBalance, TotalBalance / StringInventory.MeasurementUnit.Factor);
+			If StringInventory.Quantity >= TotalBalance Then
+				StringInventory.Reserve = TotalBalance;
+				TotalBalance = 0;
+			Else
+				StringInventory.Reserve = StringInventory.Quantity;
+				TotalBalance = TotalBalance - StringInventory.Quantity;
+				TotalBalance = ?(TypeOf(StringInventory.MeasurementUnit) = Type("CatalogRef.UOMClassifier"), TotalBalance, TotalBalance * StringInventory.MeasurementUnit.Factor);
+			EndIf;
+		EndDo;
+		
+		TableOfPeriods.Clear();
+		
+	EndDo;
+	
+EndProcedure // FillColumnReserveByBalances()
+
+Procedure GoodsFillColumnReserveByBalances() Export
+	
+	Inventory.LoadColumn(New Array(Inventory.Count()), "Reserve");
+	Inventory.LoadColumn(New Array(Inventory.Count()), "ReserveShipment");
+	
+	TempTablesManager = New TempTablesManager;
+	
+	Query = New Query;
+	Query.TempTablesManager = TempTablesManager;
+	Query.Text =
+	"SELECT
+	|	TableInventory.ProductsAndServices AS ProductsAndServices,
+	|	TableInventory.Characteristic AS Characteristic,
+	|	TableInventory.Batch AS Batch
+	|INTO TemporaryTableInventory
+	|FROM
+	|	&TableInventory AS TableInventory
+	|WHERE
+	|	TableInventory.ProductsAndServicesTypeInventory";
+	
+	Query.SetParameter("TableInventory", Inventory.Unload());
+	Query.Execute();
+	
+	Query.Text =
+	"SELECT
+	|	InventoryBalances.Company AS Company,
+	|	InventoryBalances.StructuralUnit AS StructuralUnit,
+	|	InventoryBalances.GLAccount AS GLAccount,
+	|	InventoryBalances.ProductsAndServices AS ProductsAndServices,
+	|	InventoryBalances.Characteristic AS Characteristic,
+	|	InventoryBalances.Batch AS Batch,
+	|	SUM(InventoryBalances.QuantityBalance) AS QuantityBalance
+	|FROM
+	|	(SELECT
+	|		InventoryBalances.Company AS Company,
+	|		InventoryBalances.StructuralUnit AS StructuralUnit,
+	|		InventoryBalances.GLAccount AS GLAccount,
+	|		InventoryBalances.ProductsAndServices AS ProductsAndServices,
+	|		InventoryBalances.Characteristic AS Characteristic,
+	|		InventoryBalances.Batch AS Batch,
+	|		InventoryBalances.QuantityBalance AS QuantityBalance
+	|	FROM
+	|		AccumulationRegister.Inventory.Balance(
+	|				,
+	|				(Company, StructuralUnit, GLAccount, ProductsAndServices, Characteristic, Batch, CustomerOrder) In
+	|					(SELECT
+	|						&Company,
+	|						&StructuralUnit,
+	|						TableInventory.ProductsAndServices.InventoryGLAccount,
+	|						TableInventory.ProductsAndServices,
+	|						TableInventory.Characteristic,
+	|						TableInventory.Batch,
+	|						VALUE(Document.CustomerOrder.EmptyRef) AS CustomerOrder
+	|					FROM
+	|						TemporaryTableInventory AS TableInventory)) AS InventoryBalances
+	|	
+	|	UNION ALL
+	|	
+	|	SELECT
+	|		DocumentRegisterRecordsInventory.Company,
+	|		DocumentRegisterRecordsInventory.StructuralUnit,
+	|		DocumentRegisterRecordsInventory.GLAccount,
+	|		DocumentRegisterRecordsInventory.ProductsAndServices,
+	|		DocumentRegisterRecordsInventory.Characteristic,
+	|		DocumentRegisterRecordsInventory.Batch,
+	|		CASE
+	|			WHEN DocumentRegisterRecordsInventory.RecordType = VALUE(AccumulationRecordType.Expense)
+	|				THEN ISNULL(DocumentRegisterRecordsInventory.Quantity, 0)
+	|			ELSE -ISNULL(DocumentRegisterRecordsInventory.Quantity, 0)
+	|		END
+	|	FROM
+	|		AccumulationRegister.Inventory AS DocumentRegisterRecordsInventory
+	|	WHERE
+	|		DocumentRegisterRecordsInventory.Recorder = &Ref
+	|		AND DocumentRegisterRecordsInventory.Period <= &Period
+	|		AND DocumentRegisterRecordsInventory.RecordType = VALUE(AccumulationRecordType.Expense)) AS InventoryBalances
+	|
+	|GROUP BY
+	|	InventoryBalances.Company,
+	|	InventoryBalances.StructuralUnit,
+	|	InventoryBalances.GLAccount,
+	|	InventoryBalances.ProductsAndServices,
+	|	InventoryBalances.Characteristic,
+	|	InventoryBalances.Batch";
+	
+	Query.SetParameter("Period", Finish);
+	Query.SetParameter("Ref", Ref);
+	Query.SetParameter("Company", SmallBusinessServer.GetCompany(Company));
+	Query.SetParameter("StructuralUnit", StructuralUnitReserve);
+	
+	QueryResult = Query.Execute();
+	Selection = QueryResult.Select();
+	While Selection.Next() Do
+		
+		StructureForSearch = New Structure;
+		StructureForSearch.Insert("ProductsAndServices", Selection.ProductsAndServices);
+		StructureForSearch.Insert("Characteristic", Selection.Characteristic);
+		StructureForSearch.Insert("Batch", Selection.Batch);
+		
+		TotalBalance = Selection.QuantityBalance;
+		ArrayOfRowsInventory = Inventory.FindRows(StructureForSearch);
+		For Each StringInventory IN ArrayOfRowsInventory Do
+			TotalBalance = ?(TypeOf(StringInventory.MeasurementUnit) = Type("CatalogRef.UOMClassifier"), TotalBalance, TotalBalance / StringInventory.MeasurementUnit.Factor);
+			If StringInventory.Quantity >= TotalBalance Then
+				StringInventory.Reserve = TotalBalance;
+				StringInventory.ReserveShipment = StringInventory.Reserve;
+				TotalBalance = 0;
+			Else
+				StringInventory.Reserve = StringInventory.Quantity;
+				StringInventory.ReserveShipment = StringInventory.Reserve;
+				TotalBalance = TotalBalance - StringInventory.Quantity;
+				TotalBalance = ?(TypeOf(StringInventory.MeasurementUnit) = Type("CatalogRef.UOMClassifier"), TotalBalance, TotalBalance * StringInventory.MeasurementUnit.Factor);
+			EndIf;
+		EndDo;
+		
+	EndDo;
+	
+EndProcedure // GoodsFillReserveColumnByBalances()
+
+Procedure GoodsFillColumnReserveByReserves() Export
+	
+	Inventory.LoadColumn(New Array(Inventory.Count()), "ReserveShipment");
+	
+	TempTablesManager = New TempTablesManager;
+	
+	Query = New Query;
+	Query.TempTablesManager = TempTablesManager;
+	Query.Text =
+	"SELECT
+	|	TableInventory.ProductsAndServices AS ProductsAndServices,
+	|	TableInventory.Characteristic AS Characteristic,
+	|	TableInventory.Batch AS Batch,
+	|	&Order AS CustomerOrder
+	|INTO TemporaryTableInventory
+	|FROM
+	|	&TableInventory AS TableInventory
+	|WHERE
+	|	TableInventory.ProductsAndServicesTypeInventory";
+	
+	Query.SetParameter("TableInventory", Inventory.Unload());
+	Query.SetParameter("Order", Ref);
+	Query.Execute();
+	
+	Query.Text =
+	"SELECT
+	|	InventoryBalances.Company AS Company,
+	|	InventoryBalances.StructuralUnit AS StructuralUnit,
+	|	InventoryBalances.GLAccount AS GLAccount,
+	|	InventoryBalances.CustomerOrder AS CustomerOrder,
+	|	InventoryBalances.ProductsAndServices AS ProductsAndServices,
+	|	InventoryBalances.Characteristic AS Characteristic,
+	|	InventoryBalances.Batch AS Batch,
+	|	SUM(InventoryBalances.QuantityBalance) AS QuantityBalance
+	|FROM
+	|	(SELECT
+	|		InventoryBalances.Company AS Company,
+	|		InventoryBalances.StructuralUnit AS StructuralUnit,
+	|		InventoryBalances.GLAccount AS GLAccount,
+	|		InventoryBalances.CustomerOrder AS CustomerOrder,
+	|		InventoryBalances.ProductsAndServices AS ProductsAndServices,
+	|		InventoryBalances.Characteristic AS Characteristic,
+	|		InventoryBalances.Batch AS Batch,
+	|		InventoryBalances.QuantityBalance AS QuantityBalance
+	|	FROM
+	|		AccumulationRegister.Inventory.Balance(
+	|				,
+	|				(Company, StructuralUnit, GLAccount, ProductsAndServices, Characteristic, Batch, CustomerOrder) In
+	|					(SELECT
+	|						&Company,
+	|						&StructuralUnit,
+	|						TableInventory.ProductsAndServices.InventoryGLAccount,
+	|						TableInventory.ProductsAndServices,
+	|						TableInventory.Characteristic,
+	|						TableInventory.Batch,
+	|						TableInventory.CustomerOrder
+	|					FROM
+	|						TemporaryTableInventory AS TableInventory
+	|					WHERE
+	|						TableInventory.CustomerOrder <> VALUE(Document.CustomerOrder.EmptyRef))) AS InventoryBalances
+	|	
+	|	UNION ALL
+	|	
+	|	SELECT
+	|		DocumentRegisterRecordsInventory.Company,
+	|		DocumentRegisterRecordsInventory.StructuralUnit,
+	|		DocumentRegisterRecordsInventory.GLAccount,
+	|		DocumentRegisterRecordsInventory.CustomerOrder,
+	|		DocumentRegisterRecordsInventory.ProductsAndServices,
+	|		DocumentRegisterRecordsInventory.Characteristic,
+	|		DocumentRegisterRecordsInventory.Batch,
+	|		CASE
+	|			WHEN DocumentRegisterRecordsInventory.RecordType = VALUE(AccumulationRecordType.Expense)
+	|				THEN ISNULL(DocumentRegisterRecordsInventory.Quantity, 0)
+	|			ELSE -ISNULL(DocumentRegisterRecordsInventory.Quantity, 0)
+	|		END
+	|	FROM
+	|		AccumulationRegister.Inventory AS DocumentRegisterRecordsInventory
+	|	WHERE
+	|		DocumentRegisterRecordsInventory.Recorder = &Ref
+	|		AND DocumentRegisterRecordsInventory.Period <= &Period
+	|		AND DocumentRegisterRecordsInventory.RecordType = VALUE(AccumulationRecordType.Expense)
+	|		AND DocumentRegisterRecordsInventory.CustomerOrder <> VALUE(Document.CustomerOrder.EmptyRef)) AS InventoryBalances
+	|
+	|GROUP BY
+	|	InventoryBalances.Company,
+	|	InventoryBalances.StructuralUnit,
+	|	InventoryBalances.GLAccount,
+	|	InventoryBalances.CustomerOrder,
+	|	InventoryBalances.ProductsAndServices,
+	|	InventoryBalances.Characteristic,
+	|	InventoryBalances.Batch";
+	
+	Query.SetParameter("Period", Finish);
+	Query.SetParameter("Ref", Ref);
+	Query.SetParameter("Company", SmallBusinessServer.GetCompany(Company));
+	Query.SetParameter("StructuralUnit", StructuralUnitReserve);
+	
+	QueryResult = Query.Execute();
+	Selection = QueryResult.Select();
+	While Selection.Next() Do
+		
+		StructureForSearch = New Structure;
+		StructureForSearch.Insert("ProductsAndServices", Selection.ProductsAndServices);
+		StructureForSearch.Insert("Characteristic", Selection.Characteristic);
+		StructureForSearch.Insert("Batch", Selection.Batch);
+		
+		TotalBalance = Selection.QuantityBalance;
+		ArrayOfRowsInventory = Inventory.FindRows(StructureForSearch);
+		For Each StringInventory IN ArrayOfRowsInventory Do
+			
+			TotalBalance = ?(TypeOf(StringInventory.MeasurementUnit) = Type("CatalogRef.UOMClassifier"), TotalBalance, TotalBalance / StringInventory.MeasurementUnit.Factor);
+			If StringInventory.Quantity >= TotalBalance Then
+				
+				StringInventory.ReserveShipment = TotalBalance;
+				TotalBalance = 0;
+				
+			Else
+				
+				StringInventory.ReserveShipment = StringInventory.Quantity;
+				TotalBalance = TotalBalance - StringInventory.Quantity;
+				TotalBalance = ?(TypeOf(StringInventory.MeasurementUnit) = Type("CatalogRef.UOMClassifier"), TotalBalance, TotalBalance * StringInventory.MeasurementUnit.Factor);
+				
+			EndIf;
+			
+		EndDo;
+		
+	EndDo;
+	
+	For Each TabularSectionRow IN Inventory Do
+		If TabularSectionRow.ReserveShipment < TabularSectionRow.Reserve Then
+			TabularSectionRow.Reserve = TabularSectionRow.ReserveShipment;
+		EndIf;
+	EndDo;
+	
+EndProcedure // GoodsFillReserveColumnByReserves()
+
+Procedure MaterialsFillColumnReserveByBalances(MaterialsConnectionKey) Export
+	
+	If MaterialsConnectionKey = Undefined Then
+		Materials.LoadColumn(New Array(Materials.Count()), "Reserve");
+		Materials.LoadColumn(New Array(Materials.Count()), "ReserveShipment");
+	Else
+		SearchResult = Materials.FindRows(New Structure("ConnectionKey", MaterialsConnectionKey));
+		For Each TabularSectionRow IN SearchResult Do
+			TabularSectionRow.Reserve = 0;
+			TabularSectionRow.ReserveShipment = 0;
+		EndDo;
+	EndIf;
+	
+	TempTablesManager = New TempTablesManager;
+	
+		Query = New Query;
+	Query.TempTablesManager = TempTablesManager;
+	Query.Text =
+	"SELECT
+	|	TableInventory.ProductsAndServices AS ProductsAndServices,
+	|	TableInventory.Characteristic AS Characteristic,
+	|	TableInventory.Batch AS Batch
+	|INTO TemporaryTableInventory
+	|FROM
+	|	&TableInventory AS TableInventory
+	|WHERE
+	|	CASE
+	|			WHEN &SelectionByKeyLinks
+	|				THEN TableInventory.ConnectionKey = &ConnectionKey
+	|			ELSE TRUE
+	|		END";
+	
+	Query.SetParameter("TableInventory", Materials.Unload());
+	Query.SetParameter("SelectionByKeyLinks", ?(MaterialsConnectionKey = Undefined, False, True));
+	Query.SetParameter("ConnectionKey", MaterialsConnectionKey);
+	Query.Execute();
+	
+	Query.Text =
+	"SELECT
+	|	InventoryBalances.Company AS Company,
+	|	InventoryBalances.StructuralUnit AS StructuralUnit,
+	|	InventoryBalances.GLAccount AS GLAccount,
+	|	InventoryBalances.ProductsAndServices AS ProductsAndServices,
+	|	InventoryBalances.Characteristic AS Characteristic,
+	|	InventoryBalances.Batch AS Batch,
+	|	SUM(InventoryBalances.QuantityBalance) AS QuantityBalance
+	|FROM
+	|	(SELECT
+	|		InventoryBalances.Company AS Company,
+	|		InventoryBalances.StructuralUnit AS StructuralUnit,
+	|		InventoryBalances.GLAccount AS GLAccount,
+	|		InventoryBalances.ProductsAndServices AS ProductsAndServices,
+	|		InventoryBalances.Characteristic AS Characteristic,
+	|		InventoryBalances.Batch AS Batch,
+	|		InventoryBalances.QuantityBalance AS QuantityBalance
+	|	FROM
+	|		AccumulationRegister.Inventory.Balance(
+	|				,
+	|				(Company, StructuralUnit, GLAccount, ProductsAndServices, Characteristic, Batch, CustomerOrder) In
+	|					(SELECT
+	|						&Company,
+	|						&StructuralUnit,
+	|						TableInventory.ProductsAndServices.InventoryGLAccount,
+	|						TableInventory.ProductsAndServices,
+	|						TableInventory.Characteristic,
+	|						TableInventory.Batch,
+	|						VALUE(Document.CustomerOrder.EmptyRef) AS CustomerOrder
+	|					FROM
+	|						TemporaryTableInventory AS TableInventory)) AS InventoryBalances
+	|	
+	|	UNION ALL
+	|	
+	|	SELECT
+	|		DocumentRegisterRecordsInventory.Company,
+	|		DocumentRegisterRecordsInventory.StructuralUnit,
+	|		DocumentRegisterRecordsInventory.GLAccount,
+	|		DocumentRegisterRecordsInventory.ProductsAndServices,
+	|		DocumentRegisterRecordsInventory.Characteristic,
+	|		DocumentRegisterRecordsInventory.Batch,
+	|		CASE
+	|			WHEN DocumentRegisterRecordsInventory.RecordType = VALUE(AccumulationRecordType.Expense)
+	|				THEN ISNULL(DocumentRegisterRecordsInventory.Quantity, 0)
+	|			ELSE -ISNULL(DocumentRegisterRecordsInventory.Quantity, 0)
+	|		END
+	|	FROM
+	|		AccumulationRegister.Inventory AS DocumentRegisterRecordsInventory
+	|	WHERE
+	|		DocumentRegisterRecordsInventory.Recorder = &Ref
+	|		AND DocumentRegisterRecordsInventory.Period <= &Period
+	|		AND DocumentRegisterRecordsInventory.RecordType = VALUE(AccumulationRecordType.Expense)) AS InventoryBalances
+	|
+	|GROUP BY
+	|	InventoryBalances.Company,
+	|	InventoryBalances.StructuralUnit,
+	|	InventoryBalances.GLAccount,
+	|	InventoryBalances.ProductsAndServices,
+	|	InventoryBalances.Characteristic,
+	|	InventoryBalances.Batch";
+	
+	Query.SetParameter("Period", Date);
+	Query.SetParameter("Ref", Ref);
+	Query.SetParameter("Company", SmallBusinessServer.GetCompany(Company));
+	Query.SetParameter("StructuralUnit", StructuralUnitReserve);
+	
+	QueryResult = Query.Execute();
+	Selection = QueryResult.Select();
+	While Selection.Next() Do
+		
+		StructureForSearch = New Structure;
+		If MaterialsConnectionKey <> Undefined Then
+			StructureForSearch.Insert("ConnectionKey", MaterialsConnectionKey);
+		EndIf;
+		StructureForSearch.Insert("ProductsAndServices", Selection.ProductsAndServices);
+		StructureForSearch.Insert("Characteristic", Selection.Characteristic);
+		StructureForSearch.Insert("Batch", Selection.Batch);
+		
+		TotalBalance = Selection.QuantityBalance;
+		ArrayOfRowsInventory = Materials.FindRows(StructureForSearch);
+		For Each StringInventory IN ArrayOfRowsInventory Do
+			TotalBalance = ?(TypeOf(StringInventory.MeasurementUnit) = Type("CatalogRef.UOMClassifier"), TotalBalance, TotalBalance / StringInventory.MeasurementUnit.Factor);
+			If StringInventory.Quantity >= TotalBalance Then
+				StringInventory.Reserve = TotalBalance;
+				StringInventory.ReserveShipment = StringInventory.Reserve;
+				TotalBalance = 0;
+			Else
+				StringInventory.Reserve = StringInventory.Quantity;
+				StringInventory.ReserveShipment = StringInventory.Reserve;
+				TotalBalance = TotalBalance - StringInventory.Quantity;
+				TotalBalance = ?(TypeOf(StringInventory.MeasurementUnit) = Type("CatalogRef.UOMClassifier"), TotalBalance, TotalBalance * StringInventory.MeasurementUnit.Factor);
+			EndIf;
+		EndDo;
+		
+	EndDo;
+	
+EndProcedure // MaterialsFillReserveColumnByBalances()
+
+Procedure MaterialsFillColumnReserveByReserves(MaterialsConnectionKey) Export
+	
+	If MaterialsConnectionKey = Undefined Then
+		Materials.LoadColumn(New Array(Materials.Count()), "ReserveShipment");
+	Else
+		SearchResult = Materials.FindRows(New Structure("ConnectionKey", MaterialsConnectionKey));
+		For Each TabularSectionRow IN SearchResult Do
+			TabularSectionRow.ReserveShipment = 0;
+		EndDo;
+	EndIf;
+	
+	TempTablesManager = New TempTablesManager;
+	
+	Query = New Query;
+	Query.TempTablesManager = TempTablesManager;
+	Query.Text =
+	"SELECT
+	|	TableInventory.ProductsAndServices AS ProductsAndServices,
+	|	TableInventory.Characteristic AS Characteristic,
+	|	TableInventory.Batch AS Batch,
+	|	&Order AS CustomerOrder
+	|INTO TemporaryTableInventory
+	|FROM
+	|	&TableInventory AS TableInventory
+	|WHERE
+	|	CASE
+	|			WHEN &SelectionByKeyLinks
+	|				THEN TableInventory.ConnectionKey = &ConnectionKey
+	|			ELSE TRUE
+	|		END";
+	
+	Query.SetParameter("TableInventory", Materials.Unload());
+	Query.SetParameter("SelectionByKeyLinks", ?(MaterialsConnectionKey = Undefined, False, True));
+	Query.SetParameter("ConnectionKey", MaterialsConnectionKey);
+	Query.SetParameter("Order", Ref);
+	Query.Execute();
+	
+	Query.Text =
+	"SELECT
+	|	InventoryBalances.Company AS Company,
+	|	InventoryBalances.StructuralUnit AS StructuralUnit,
+	|	InventoryBalances.GLAccount AS GLAccount,
+	|	InventoryBalances.CustomerOrder AS CustomerOrder,
+	|	InventoryBalances.ProductsAndServices AS ProductsAndServices,
+	|	InventoryBalances.Characteristic AS Characteristic,
+	|	InventoryBalances.Batch AS Batch,
+	|	SUM(InventoryBalances.QuantityBalance) AS QuantityBalance
+	|FROM
+	|	(SELECT
+	|		InventoryBalances.Company AS Company,
+	|		InventoryBalances.StructuralUnit AS StructuralUnit,
+	|		InventoryBalances.GLAccount AS GLAccount,
+	|		InventoryBalances.CustomerOrder AS CustomerOrder,
+	|		InventoryBalances.ProductsAndServices AS ProductsAndServices,
+	|		InventoryBalances.Characteristic AS Characteristic,
+	|		InventoryBalances.Batch AS Batch,
+	|		InventoryBalances.QuantityBalance AS QuantityBalance
+	|	FROM
+	|		AccumulationRegister.Inventory.Balance(
+	|				,
+	|				(Company, StructuralUnit, GLAccount, ProductsAndServices, Characteristic, Batch, CustomerOrder) In
+	|					(SELECT
+	|						&Company,
+	|						&StructuralUnit,
+	|						TableInventory.ProductsAndServices.InventoryGLAccount,
+	|						TableInventory.ProductsAndServices,
+	|						TableInventory.Characteristic,
+	|						TableInventory.Batch,
+	|						TableInventory.CustomerOrder
+	|					FROM
+	|						TemporaryTableInventory AS TableInventory
+	|					WHERE
+	|						TableInventory.CustomerOrder <> VALUE(Document.CustomerOrder.EmptyRef))) AS InventoryBalances
+	|	
+	|	UNION ALL
+	|	
+	|	SELECT
+	|		DocumentRegisterRecordsInventory.Company,
+	|		DocumentRegisterRecordsInventory.StructuralUnit,
+	|		DocumentRegisterRecordsInventory.GLAccount,
+	|		DocumentRegisterRecordsInventory.CustomerOrder,
+	|		DocumentRegisterRecordsInventory.ProductsAndServices,
+	|		DocumentRegisterRecordsInventory.Characteristic,
+	|		DocumentRegisterRecordsInventory.Batch,
+	|		CASE
+	|			WHEN DocumentRegisterRecordsInventory.RecordType = VALUE(AccumulationRecordType.Expense)
+	|				THEN ISNULL(DocumentRegisterRecordsInventory.Quantity, 0)
+	|			ELSE -ISNULL(DocumentRegisterRecordsInventory.Quantity, 0)
+	|		END
+	|	FROM
+	|		AccumulationRegister.Inventory AS DocumentRegisterRecordsInventory
+	|	WHERE
+	|		DocumentRegisterRecordsInventory.Recorder = &Ref
+	|		AND DocumentRegisterRecordsInventory.Period <= &Period
+	|		AND DocumentRegisterRecordsInventory.RecordType = VALUE(AccumulationRecordType.Expense)
+	|		AND DocumentRegisterRecordsInventory.CustomerOrder <> VALUE(Document.CustomerOrder.EmptyRef)) AS InventoryBalances
+	|
+	|GROUP BY
+	|	InventoryBalances.Company,
+	|	InventoryBalances.StructuralUnit,
+	|	InventoryBalances.GLAccount,
+	|	InventoryBalances.CustomerOrder,
+	|	InventoryBalances.ProductsAndServices,
+	|	InventoryBalances.Characteristic,
+	|	InventoryBalances.Batch";
+	
+	Query.SetParameter("Period", Finish);
+	Query.SetParameter("Ref", Ref);
+	Query.SetParameter("Company", SmallBusinessServer.GetCompany(Company));
+	Query.SetParameter("StructuralUnit", StructuralUnitReserve);
+	
+	QueryResult = Query.Execute();
+	Selection = QueryResult.Select();
+	While Selection.Next() Do
+		
+		StructureForSearch = New Structure;
+		If MaterialsConnectionKey <> Undefined Then
+			StructureForSearch.Insert("ConnectionKey", MaterialsConnectionKey);
+		EndIf;
+		StructureForSearch.Insert("ProductsAndServices", Selection.ProductsAndServices);
+		StructureForSearch.Insert("Characteristic", Selection.Characteristic);
+		StructureForSearch.Insert("Batch", Selection.Batch);
+		
+		TotalBalance = Selection.QuantityBalance;
+		ArrayOfRowsInventory = Materials.FindRows(StructureForSearch);
+		For Each StringInventory IN ArrayOfRowsInventory Do
+			
+			TotalBalance = ?(TypeOf(StringInventory.MeasurementUnit) = Type("CatalogRef.UOMClassifier"), TotalBalance, TotalBalance / StringInventory.MeasurementUnit.Factor);
+			If StringInventory.Quantity >= TotalBalance Then
+				
+				StringInventory.ReserveShipment = TotalBalance;
+				TotalBalance = 0;
+				
+			Else
+				
+				StringInventory.ReserveShipment = StringInventory.Quantity;
+				TotalBalance = TotalBalance - StringInventory.Quantity;
+				TotalBalance = ?(TypeOf(StringInventory.MeasurementUnit) = Type("CatalogRef.UOMClassifier"), TotalBalance, TotalBalance * StringInventory.MeasurementUnit.Factor);
+				
+			EndIf;
+			
+		EndDo;
+		
+	EndDo;
+	
+	If MaterialsConnectionKey = Undefined Then
+		For Each TabularSectionRow IN Materials Do
+			If TabularSectionRow.ReserveShipment < TabularSectionRow.Reserve Then
+				TabularSectionRow.Reserve = TabularSectionRow.ReserveShipment;
+			EndIf;
+		EndDo;
+	Else
+		For Each TabularSectionRow IN SearchResult Do
+			If TabularSectionRow.ReserveShipment < TabularSectionRow.Reserve Then
+				TabularSectionRow.Reserve = TabularSectionRow.ReserveShipment;
+			EndIf;
+		EndDo;
+	EndIf;
+	
+EndProcedure // MaterialsFillReserveColumnByReserves()
+
+Procedure FillOnCopy()
+	
+	If Constants.UseCustomerOrderStates.Get() Then
+		User = Users.CurrentUser();
+		SettingValue = SmallBusinessReUse.GetValueByDefaultUser(User, "StatusOfNewCustomerOrder");
+		If ValueIsFilled(SettingValue) Then
+			If OrderState <> SettingValue Then
+				OrderState = SettingValue;
+			EndIf;
+		Else
+			OrderState = Catalogs.CustomerOrderStates.Open;
+		EndIf;
+	Else
+		OrderState = Constants.CustomerOrdersInProgressStatus.Get();
+	EndIf;
+	
+	Closed = False;
+	
+EndProcedure
+
+Procedure FillByDefault()
+
+	If Constants.UseCustomerOrderStates.Get() Then
+		SettingValue = SmallBusinessReUse.GetValueByDefaultUser(Users.CurrentUser(), "StatusOfNewCustomerOrder");
+		If ValueIsFilled(SettingValue) Then
+			If OrderState <> SettingValue Then
+				OrderState = SettingValue;
+			EndIf;
+		Else
+			OrderState = Catalogs.CustomerOrderStates.Open;
+		EndIf;
+	Else
+		OrderState = Constants.CustomerOrdersInProgressStatus.Get();
+	EndIf;
+
+EndProcedure
+
+#EndRegion
 
 #EndIf

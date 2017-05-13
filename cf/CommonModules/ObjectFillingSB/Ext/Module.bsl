@@ -272,7 +272,7 @@ Procedure SupplementValuesFromSettings(FillingData, DocumentObject)
 	SupplementCurrencies(ValuesFromSettings, DocumentObject);
 	SupplementCompany(ValuesFromSettings, DocumentObject);
 	SupplementDepartment(ValuesFromSettings, DocumentObject);
-	SupplementStructuralUnit(ValuesFromSettings, DocumentObject, "MainCompany");
+	SupplementStructuralUnit(ValuesFromSettings, DocumentObject, "MainDepartment");
 	SupplementStructuralUnit(ValuesFromSettings, DocumentObject, "MainWarehouse");
 	SupplementMainResponsible(ValuesFromSettings, DocumentObject);
 	SupplementPriceKind(ValuesFromSettings, DocumentObject);
