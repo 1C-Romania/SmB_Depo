@@ -197,7 +197,7 @@ Procedure ChoiceProcessing(Result, SubordinateForm)
 			SourseFormSuffix = Upper(Mid(SubordinateFormName, DotPosition + 1));
 			If SourseFormSuffix = Upper("ReportSettingsForm")
 				Or SourseFormSuffix = Upper("SettingsForm")
-				Or SourseFormSuffix = Upper("ReportVariantForm")
+				Or SourseFormSuffix = Upper("ReportVariantFormMain")
 				Or SourseFormSuffix = Upper("VariantForm") Then
 				QuickSettingsFill(Result);
 				If Result.Property("Regenerate") AND Result.Regenerate Then
