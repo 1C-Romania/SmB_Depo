@@ -24,7 +24,9 @@ Procedure FillByPurchaseInvoice(FillingData)
 	|	SupplierInvoiceInventory.Characteristic AS Characteristic,
 	|	SupplierInvoiceInventory.Batch AS Batch,
 	|	SupplierInvoiceInventory.MeasurementUnit AS MeasurementUnit,
-	|	SUM(SupplierInvoiceInventory.Quantity) AS Quantity
+	|	SUM(SupplierInvoiceInventory.Quantity) AS Quantity,
+	|	SupplierInvoiceInventory.SerialNumbers,
+	|	SupplierInvoiceInventory.ConnectionKey
 	|FROM
 	|	Document.SupplierInvoice.Inventory AS SupplierInvoiceInventory
 	|WHERE
@@ -34,11 +36,15 @@ Procedure FillByPurchaseInvoice(FillingData)
 	|	SupplierInvoiceInventory.ProductsAndServices,
 	|	SupplierInvoiceInventory.Characteristic,
 	|	SupplierInvoiceInventory.Batch,
-	|	SupplierInvoiceInventory.MeasurementUnit";
+	|	SupplierInvoiceInventory.MeasurementUnit,
+	|	SupplierInvoiceInventory.SerialNumbers,
+	|	SupplierInvoiceInventory.ConnectionKey";
 	
 	Query.SetParameter("BasisDocument", FillingData);
 	
 	Inventory.Load(Query.Execute().Unload());
+	
+	WorkWithSerialNumbers.FillTSSerialNumbersByConnectionKey(ThisObject, FillingData);
 	
 EndProcedure // FillBySupplierInvoice()
 
@@ -58,6 +64,13 @@ Procedure Filling(FillingData, StandardProcessing) Export
 	
 EndProcedure // FillingProcessor()
 
+Procedure FillCheckProcessing(Cancel, CheckedAttributes)
+	
+	// Serial numbers
+	WorkWithSerialNumbers.FillCheckingSerialNumbers(Cancel, Inventory, SerialNumbers, StructuralUnit, ThisObject);
+	
+EndProcedure
+
 // Procedure - event handler Posting object.
 //
 Procedure Posting(Cancel, PostingMode)
@@ -74,6 +87,10 @@ Procedure Posting(Cancel, PostingMode)
 	// Registering in accounting sections
 	SmallBusinessServer.ReflectInventoryInWarehouses(AdditionalProperties, RegisterRecords, Cancel);
 
+	// SerialNumbers
+	SmallBusinessServer.ReflectTheSerialNumbersOfTheGuarantee(AdditionalProperties, RegisterRecords, Cancel);
+	SmallBusinessServer.ReflectTheSerialNumbersBalance(AdditionalProperties, RegisterRecords, Cancel);
+	
 	// Writing of record sets
 	SmallBusinessServer.WriteRecordSets(ThisObject);
 

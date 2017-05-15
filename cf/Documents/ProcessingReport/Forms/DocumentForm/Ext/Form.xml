@@ -481,6 +481,7 @@
 							</SearchControlAddition>
 							<Events>
 								<Event name="Selection">GoodsChoice</Event>
+								<Event name="BeforeDeleteRow">ProductsBeforeDeleteRow</Event>
 								<Event name="OnStartEdit">GoodsOnStartEdit</Event>
 								<Event name="AfterDeleteRow">GoodsAfterDeleteRow</Event>
 							</Events>
@@ -542,6 +543,17 @@
 									<Wrap>false</Wrap>
 									<ContextMenu name="ProductsBatchContextMenu" id="36"/>
 									<ExtendedTooltip name="ProductsBatchExtendedTooltip" id="183"/>
+								</InputField>
+								<InputField name="ProductsSerialNumbers" id="357">
+									<DataPath>Object.Products.SerialNumbers</DataPath>
+									<EditMode>EnterOnInput</EditMode>
+									<Width>20</Width>
+									<ChoiceButton>true</ChoiceButton>
+									<ContextMenu name="ProductsSerialNumbersContextMenu" id="358"/>
+									<ExtendedTooltip name="ProductsSerialNumbersExtendedTooltip" id="359"/>
+									<Events>
+										<Event name="StartChoice">ProductsSerialNumbersStartChoice</Event>
+									</Events>
 								</InputField>
 								<InputField name="ProductsQuantity" id="37">
 									<DataPath>Object.Products.Quantity</DataPath>
@@ -1965,6 +1977,24 @@
 					<v8:AllowedLength>Variable</v8:AllowedLength>
 				</v8:StringQualifiers>
 			</Type>
+		</Attribute>
+		<Attribute name="SerialNumbersBackupTableCopyAddress" id="25">
+			<Type>
+				<v8:Type>xs:string</v8:Type>
+				<v8:StringQualifiers>
+					<v8:Length>0</v8:Length>
+					<v8:AllowedLength>Variable</v8:AllowedLength>
+				</v8:StringQualifiers>
+			</Type>
+		</Attribute>
+		<Attribute name="UseSerialNumbersBalance" id="26">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Use serial numbers balance</v8:content>
+				</v8:item>
+			</Title>
+			<Type/>
 		</Attribute>
 		<ConditionalAppearance>
 			<dcsset:item>

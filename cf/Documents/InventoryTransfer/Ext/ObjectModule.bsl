@@ -178,11 +178,13 @@ Procedure FillByPurchaseInvoice(FillingData)
 	|		Amount,
 	|		VATRate,
 	|		VATAmount,
-	|		Order,
+	|		Inventory.Order,
 	|		Total,
 	|		Cost,
 	|		AmountExpenses,
-	|		Content
+	|		Content,
+	|		SerialNumbers,
+	|		ConnectionKey
 	|	)
 	|FROM
 	|	Document.SupplierInvoice AS DocumentTable
@@ -200,6 +202,8 @@ Procedure FillByPurchaseInvoice(FillingData)
 	FillPropertyValues(ThisObject, Selection);
 	
 	Inventory.Load(Selection.Inventory.Unload());
+	
+	WorkWithSerialNumbers.FillTSSerialNumbersByConnectionKey(ThisObject, FillingData);
 	
 EndProcedure // FillBySupplierInvoice()
 
@@ -749,7 +753,7 @@ Procedure FillCheckProcessing(Cancel, CheckedAttributes)
 			
 			If StringInventory.Reserve > StringInventory.Quantity Then
 				
-				MessageText = NStr("en='In row No.%Number% of the ""Inventory"" tabular section the quantity of items transferred to reserve exceeds the total inventory quantity.';ru='В строке №%Номер% табл. части ""Запасы"" количество передаваемых в резерв позиций превышает общее количество запасов.'");
+				MessageText = NStr("ru = 'В строке №%Номер% табл. части ""Запасы"" количество передаваемых в резерв позиций превышает общее количество запасов.'; en = 'In row No.%Number% of the ""Inventory"" tabular section the quantity of items transferred to reserve exceeds the total inventory quantity.'");
 				MessageText = StrReplace(MessageText, "%Number%", StringInventory.LineNumber);
 				SmallBusinessServer.ShowMessageAboutError(
 					ThisObject,
@@ -765,6 +769,9 @@ Procedure FillCheckProcessing(Cancel, CheckedAttributes)
 		EndDo;
 		
 	EndIf;
+	
+	// Serial numbers
+	WorkWithSerialNumbers.FillCheckingSerialNumbers(Cancel, Inventory, SerialNumbers, StructuralUnit, ThisObject);
 	
 EndProcedure
 
@@ -790,6 +797,10 @@ Procedure Posting(Cancel, PostingMode)
 	SmallBusinessServer.ReflectRetailAmountAccounting(AdditionalProperties, RegisterRecords, Cancel);
 	SmallBusinessServer.ReflectManagerial(AdditionalProperties, RegisterRecords, Cancel);
 
+	// SerialNumbers
+	SmallBusinessServer.ReflectTheSerialNumbersOfTheGuarantee(AdditionalProperties, RegisterRecords, Cancel);
+	SmallBusinessServer.ReflectTheSerialNumbersBalance(AdditionalProperties, RegisterRecords, Cancel);
+	
 	// Writing of record sets
 	SmallBusinessServer.WriteRecordSets(ThisObject);
 

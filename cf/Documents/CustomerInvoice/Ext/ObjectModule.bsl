@@ -346,7 +346,9 @@ Procedure FillBySupplierInvoice(FillingData, Operation = "") Export
 		EndIf;
 		
 	EndDo;
-	
+
+	WorkWithSerialNumbers.FillTSSerialNumbersByConnectionKey(ThisObject, FillingData);
+
 EndProcedure // FillBySupplierInvoice()
 
 Procedure FillByCustomerOrder(FillingData) Export
@@ -1305,6 +1307,9 @@ Procedure FillCheckProcessing(Cancel, CheckedAttributes)
 		SmallBusinessServer.DeleteAttributeBeingChecked(CheckedAttributes, "Contract");
 	EndIf;
 	
+	// Serial numbers
+	WorkWithSerialNumbers.FillCheckingSerialNumbers(Cancel, Inventory, SerialNumbers, StructuralUnit,ThisObject);
+
 EndProcedure // FillCheckProcessing()
 
 Procedure Posting(Cancel, PostingMode)
@@ -1348,6 +1353,10 @@ Procedure Posting(Cancel, PostingMode)
 	SmallBusinessServer.FlipAutomaticDiscountsApplied(AdditionalProperties, RegisterRecords, Cancel);
 
 	SmallBusinessServer.ReflectManagerial(AdditionalProperties, RegisterRecords, Cancel);
+
+	// Serial numbers
+	SmallBusinessServer.ReflectTheSerialNumbersOfTheGuarantee(AdditionalProperties, RegisterRecords, Cancel);
+	SmallBusinessServer.ReflectTheSerialNumbersBalance(AdditionalProperties, RegisterRecords, Cancel);
 
 	// Record of the records sets.
 	PerformanceEstimationClientServer.StartTimeMeasurement("SalesInvoiceDocumentPostingMovementsRecord");

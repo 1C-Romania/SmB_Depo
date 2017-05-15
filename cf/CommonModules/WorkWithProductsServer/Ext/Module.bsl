@@ -172,4 +172,164 @@ Function GetProductDataOnChange(StructureData)
 	
 EndFunction // GetProductDataOnChange()
 
+Function PrintGuaranteeCard(ObjectsArray, PrintObjects) Export
+	
+	Var Errors;
+	
+	SpreadsheetDocument = New SpreadsheetDocument;
+	FirstDocument = True;
+	
+	For Each CurrentDocument In ObjectsArray Do
+	
+		If Not FirstDocument Then
+			SpreadsheetDocument.PutHorizontalPageBreak();
+		EndIf;
+		FirstDocument = False;
+		
+		FirstLineNumber = SpreadsheetDocument.TableHeight + 1;
+		
+		GenerateDocumentGuaranteeCards(SpreadsheetDocument, CurrentDocument, Errors);
+		
+		PrintManagement.SetDocumentPrintArea(SpreadsheetDocument, FirstLineNumber, PrintObjects, CurrentDocument);
+		
+	EndDo;
+	
+	CommonUseClientServer.ShowErrorsToUser(Errors);
+	
+	Return SpreadsheetDocument;
+	
+EndFunction
+
+Function GenerateDocumentGuaranteeCards(SpreadsheetDocument, CurrentDocument, Errors) Export
+	
+	DocumentName = CurrentDocument.Metadata().Name;
+	
+	Query = New Query();
+	Query.SetParameter("CurrentDocument", CurrentDocument);
+	Query.Text = 
+	"SELECT
+	|	PrintDoc.Date AS DocumentDate,
+	|	PrintDoc.Number AS Number,
+	|	PrintDoc.Organization.Prefix AS Prefix,
+	|	PrintDoc.Organization.FileLogo AS FileLogo,
+	|	PrintDoc.Responsible.Ind AS Responsible,
+	|	PrintDoc.Inventory.(
+	|		LineNumber AS LineNumber,
+	|		ProductsAndServices.GuaranteePeriod AS GuaranteePeriod,
+	|		ProductsAndServices.WriteOutTheGuaranteeCard AS WriteOutTheGuaranteeCard,
+	|		CASE
+	|			WHEN (CAST(PrintDoc.Inventory.ProductsAndServices.DescriptionFull AS STRING(100))) = """"
+	|				THEN PrintDoc.Inventory.ProductsAndServices.Description
+	|			ELSE PrintDoc.Inventory.ProductsAndServices.DescriptionFull
+	|		END AS InventoryItem,
+	|		ProductsAndServices.SKU AS SKU,
+	|		ProductsAndServices.Code AS Code,
+	|		MeasurementUnit.Description AS MeasurementUnit,
+	|		Count AS Count,
+	|		Characteristic,
+	|		ProductsAndServices.ProductsAndServicesType AS ProductsAndServicesType,
+	|		ConnectionKey
+	|	),
+	|	PrintDoc.Counterparty,
+	|	PrintDoc.Organization,
+	|	PrintDoc.SerialNumbers.(
+	|		SerialNumber,
+	|		ConnectionKey
+	|	)
+	|FROM
+	|	Document."+DocumentName+" AS PrintDoc
+	|WHERE
+	|	PrintDoc.Ref = &CurrentDocument
+	|	AND PrintDoc.Inventory.ProductsAndServices.WriteOutTheGuaranteeCard
+	|
+	|ORDER BY
+	|	LineNumber";
+	
+	Header = Query.Execute().Select();
+	If Header.Count()=0 Then
+		MessageText = NStr("ru = '__________________
+		|Документ %1.
+		|В документе нет товаров с опцией <Выписывать гарантийный талон>'; en = '__________________
+		|Document %1.
+		|None of the goods in the document with the option <Write out the guarantee card>'");
+		
+		MessageText = StringFunctionsClientServer.SubstituteParametersInString(MessageText, CurrentDocument);
+		CommonUseClientServer.AddUserError(Errors, , MessageText, Undefined);
+		Return Undefined;
+	EndIf;
+	Header.Next();
+	
+	LinesSelectionInventory = Header.Inventory.Select();
+	LinesSelectionSerialNumbers = Header.SerialNumbers.Select();
+	
+	SpreadsheetDocument.PrintParametersName = "PRINT_PARAMETERS_GuaranteeCard";
+	
+	Template = PrintManagement.PrintedFormsTemplate("CommonTemplate.PF_MXL_GuaranteeCard");
+	
+	DocumentNumber = ObjectPrefixationClientServer.GetNumberForPrinting(Header.Number, True, True);
+	
+	If ValueIsFilled(Header.FileLogo) Then
+		
+		TemplateArea = Template.GetArea("TitleLogo");
+		
+		PictureData = AttachedFiles.GetFileBinaryData(Header.FileLogo);
+		If ValueIsFilled(PictureData) Then
+			
+			TemplateArea.Drawings.Logo.Picture = New Picture(PictureData);
+			
+		EndIf;
+		
+	Else // If you have not selected images print normal title
+		
+		TemplateArea = Template.GetArea("Title");
+		
+	EndIf;
+	
+	TemplateArea.Parameters.HeaderText = "Guarantee card  № "
+		+ DocumentNumber
+		+ " dated "
+		+ Format(Header.DocumentDate, "DLF=DD");
+	
+	InfoAboutCompany = SmallBusinessServer.InfoAboutLegalEntityIndividual(Header.Organization, Header.DocumentDate);
+	TemplateArea.Parameters.Organization = SmallBusinessServer.CompaniesDescriptionFull(InfoAboutCompany, "FullDescr,ActualAddress,PhoneNumbers");
+	TemplateArea.Parameters.Counterparty = Header.Counterparty;
+	
+	SpreadsheetDocument.Output(TemplateArea);
+	
+	TemplateArea = Template.GetArea("TableHeader");
+	SpreadsheetDocument.Output(TemplateArea);
+	TemplateArea = Template.GetArea("String");
+	
+	LineNumber = 1;
+	While LinesSelectionInventory.Next() Do
+		
+		If NOT LinesSelectionInventory.ProductsAndServicesType = Enums.ProductsAndServicesTypes.InventoryItem Then
+			Continue;
+		EndIf;
+		
+		TemplateArea.Parameters.Fill(LinesSelectionInventory);
+		TemplateArea.Parameters.LineNumber = LineNumber;
+		
+		StringSerialNumbers = WorkWithSerialNumbers.SerialNumbersStringFromSelection(LinesSelectionSerialNumbers, LinesSelectionInventory.ConnectionKey);
+		TemplateArea.Parameters.InventoryItem = SmallBusinessServer.GetProductsAndServicesPresentationForPrinting(LinesSelectionInventory.InventoryItem, 
+			LinesSelectionInventory.Characteristic, LinesSelectionInventory.SKU, StringSerialNumbers);
+		
+		SpreadsheetDocument.Output(TemplateArea);
+		
+		LineNumber = LineNumber+1;
+		
+	EndDo;
+	
+	TemplateArea = Template.GetArea("Total");
+	SpreadsheetDocument.Output(TemplateArea);
+	
+	TemplateArea = Template.GetArea("Signatures");
+	TemplateArea.Parameters.Fill(Header);
+	SpreadsheetDocument.Output(TemplateArea);
+	
+	SpreadsheetDocument.FitToPage = True;
+	Return SpreadsheetDocument;
+	
+EndFunction
+
 #EndRegion

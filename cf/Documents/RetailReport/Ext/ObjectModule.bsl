@@ -45,12 +45,13 @@ Procedure FillTabularSectionInventoryByGoodsInventoryAtWarehouse(FillingData)
 	|	InventoryReconciliation.MeasurementUnit AS MeasurementUnit,
 	|	MAX(InventoryReconciliation.QuantityAccounting - InventoryReconciliation.Quantity) AS QuantityInventorytakingRejection,
 	|	SUM(CASE
-	|			WHEN RetailReport.Quantity IS NULL 
+	|			WHEN RetailReport.Quantity IS NULL
 	|				THEN 0
 	|			ELSE RetailReport.Quantity
 	|		END) AS QuantityDebited,
 	|	InventoryReconciliation.Price AS Price,
-	|	InventoryReconciliation.ProductsAndServices.VATRate AS VATRate
+	|	InventoryReconciliation.ProductsAndServices.VATRate AS VATRate,
+	|	InventoryReconciliation.ConnectionKey
 	|FROM
 	|	Document.InventoryReconciliation.Inventory AS InventoryReconciliation
 	|		LEFT JOIN Document.RetailReport.Inventory AS RetailReport
@@ -70,7 +71,8 @@ Procedure FillTabularSectionInventoryByGoodsInventoryAtWarehouse(FillingData)
 	|	InventoryReconciliation.Batch,
 	|	InventoryReconciliation.MeasurementUnit,
 	|	InventoryReconciliation.Price,
-	|	InventoryReconciliation.ProductsAndServices.VATRate
+	|	InventoryReconciliation.ProductsAndServices.VATRate,
+	|	InventoryReconciliation.ConnectionKey
 	|
 	|ORDER BY
 	|	LineNumber");
@@ -95,13 +97,9 @@ Procedure FillTabularSectionInventoryByGoodsInventoryAtWarehouse(FillingData)
 			EndIf;
 			
 			TabularSectionRow = Inventory.Add();
-			TabularSectionRow.ProductsAndServices     = Selection.ProductsAndServices;
-			TabularSectionRow.Characteristic   = Selection.Characteristic;
-			TabularSectionRow.Batch 		  = Selection.Batch;
-			TabularSectionRow.MeasurementUnit = Selection.MeasurementUnit;
-			TabularSectionRow.Quantity       = QuantityToReceive;
-			TabularSectionRow.Price             = Selection.Price;
-			TabularSectionRow.Amount 			  = TabularSectionRow.Quantity * TabularSectionRow.Price;
+			FillPropertyValues(TabularSectionRow, Selection);
+			TabularSectionRow.Quantity = QuantityToReceive;
+			TabularSectionRow.Amount   = TabularSectionRow.Quantity * TabularSectionRow.Price;
 			
 			If VATTaxation = Enums.VATTaxationTypes.TaxableByVAT Then
 				
@@ -139,7 +137,7 @@ Procedure FillTabularSectionInventoryByGoodsInventoryAtWarehouse(FillingData)
 	If Inventory.Count() = 0 Then
 		
 		Message = New UserMessage();
-		Message.Text = NStr("en='No data to fill by reconciliation!';ru='Нет данных для заполнения по инвентаризации!'");
+		Message.Text = NStr("ru = 'Нет данных для заполнения по инвентаризации!'; en = 'No data to fill by reconciliation!'");
 		Message.Message();
 		
 		StandardProcessing = False;
@@ -278,7 +276,7 @@ Procedure FillCheckProcessing(Cancel, CheckedAttributes)
 	
 	If PaymentWithPaymentCards.Total("Amount") > DocumentAmount Then
 		
-		ErrorText = NStr("en='Amount of payment by payment cards exceeds document amount';ru='Сумма оплаты платежными картами превышает сумму документа'");
+		ErrorText = NStr("ru = 'Сумма оплаты платежными картами превышает сумму документа'; en = 'Amount of payment by payment cards exceeds document amount'");
 		
 		SmallBusinessServer.ShowMessageAboutError(
 			ThisObject,
@@ -297,7 +295,7 @@ Procedure FillCheckProcessing(Cancel, CheckedAttributes)
 		If OpenedCashCRSession <> Undefined
 		   AND OpenedCashCRSession <> Ref Then
 			
-			ErrorText = NStr("en='For this petty cash %CashShift% is already registered as of %Date%.';ru='По данной кассе на дату %Дата% уже зарегистрирован %КассоваяСмена%'");
+			ErrorText = NStr("ru = 'По данной кассе на дату %Дата% уже зарегистрирован %КассоваяСмена%'; en = 'For this petty cash %CashShift% is already registered as of %Date%'");
 			ErrorText = StrReplace(ErrorText, "%Date%", Date);
 			ErrorText = StrReplace(ErrorText, "%CashCRSession%", OpenedCashCRSession);
 			
@@ -316,7 +314,7 @@ Procedure FillCheckProcessing(Cancel, CheckedAttributes)
 			 AND ValueIsFilled(CashCRSessionStatus)
 			 AND CashCRSessionStatus <> Enums.CashCRSessionStatuses.IsOpen Then
 			
-			ErrorText = NStr("en='Field ""End of Session"" is required';ru='Поле ""Окончание смены"" не заполнено'");
+			ErrorText = NStr("ru = 'Поле ""Окончание смены"" не заполнено'; en = 'Field ""End of Session"" is required'");
 			
 			SmallBusinessServer.ShowMessageAboutError(
 				ThisObject,
@@ -332,7 +330,7 @@ Procedure FillCheckProcessing(Cancel, CheckedAttributes)
 		If ValueIsFilled(CashCRSessionEnd)
 			 AND CashCRSessionEnd < CashCRSessionStart Then
 			
-			ErrorText = NStr("en='The start time of the cash session exceeds the final time of the cash session';ru='Время начала кассовой смены больше времени окончания кассовой смены'");
+			ErrorText = NStr("ru = 'Время начала кассовой смены больше времени окончания кассовой смены'; en = 'The start time of the cash session exceeds the final time of the cash session'");
 			
 			SmallBusinessServer.ShowMessageAboutError(
 				ThisObject,
@@ -350,7 +348,7 @@ Procedure FillCheckProcessing(Cancel, CheckedAttributes)
 			 AND CashCRSessionStatus = Enums.CashCRSessionStatuses.IsOpen
 			 AND CashCRSessionStart <> Date Then
 			
-			ErrorText = NStr("en='The start date of the cash session differs from the document date';ru='Время начала кассовой смены отличается от даты документа'");
+			ErrorText = NStr("ru = 'Время начала кассовой смены отличается от даты документа'; en = 'The start date of the cash session differs from the document date'");
 			
 			SmallBusinessServer.ShowMessageAboutError(
 				ThisObject,
@@ -367,7 +365,7 @@ Procedure FillCheckProcessing(Cancel, CheckedAttributes)
 			 AND CashCRSessionStatus <> Enums.CashCRSessionStatuses.IsOpen
 			 AND CashCRSessionEnd <> Date Then
 			
-			ErrorText = NStr("en='The final time of the cash session differs from the document date';ru='Время окончания кассовой смены отличается от даты документа'");
+			ErrorText = NStr("ru = 'Время окончания кассовой смены отличается от даты документа'; en = 'The final time of the cash session differs from the document date'");
 			
 			SmallBusinessServer.ShowMessageAboutError(
 				ThisObject,
@@ -387,7 +385,7 @@ Procedure FillCheckProcessing(Cancel, CheckedAttributes)
 		For Each StringInventory IN Inventory Do
 			If StringInventory.DiscountMarkupPercent <> 100 
 				AND Not ValueIsFilled(StringInventory.Amount) Then
-				MessageText = NStr("en='Column ""Amount"" is not populated in string %Number% of list ""Inventory"".';ru='Не заполнена колонка ""Сумма"" в строке %Номер% списка ""Запасы"".'");
+				MessageText = NStr("ru = 'Не заполнена колонка ""Сумма"" в строке %Номер% списка ""Запасы"".'; en = 'Column ""Amount"" is not populated in string %Number% of list ""Inventory"".'");
 				MessageText = StrReplace(MessageText, "%Number%", StringInventory.LineNumber);
 				SmallBusinessServer.ShowMessageAboutError(
 					ThisObject,
@@ -400,6 +398,9 @@ Procedure FillCheckProcessing(Cancel, CheckedAttributes)
 			EndIf;
 		EndDo;
 	EndIf;
+	
+	// Serial numbers
+	WorkWithSerialNumbers.FillCheckingSerialNumbers(Cancel, Inventory, SerialNumbers, StructuralUnit, ThisObject);
 	
 EndProcedure // FillCheckProcessing()
 
@@ -428,6 +429,10 @@ Procedure Posting(Cancel, PostingMode)
 	
 	// DiscountCards
 	SmallBusinessServer.ReflectSalesByDiscountCard(AdditionalProperties, RegisterRecords, Cancel);
+	
+	// SerialNumbers
+	SmallBusinessServer.ReflectTheSerialNumbersOfTheGuarantee(AdditionalProperties, RegisterRecords, Cancel);
+	SmallBusinessServer.ReflectTheSerialNumbersBalance(AdditionalProperties, RegisterRecords, Cancel);
 	
 	// AutomaticDiscounts
 	SmallBusinessServer.FlipAutomaticDiscountsApplied(AdditionalProperties, RegisterRecords, Cancel);

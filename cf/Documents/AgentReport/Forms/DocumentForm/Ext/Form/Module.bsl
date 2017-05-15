@@ -5,12 +5,12 @@
 &AtClient
 Var LineCopyInventory;
 
-////////////////////////////////////////////////////////////////////////////////
-// GENERAL PURPOSE PROCEDURES AND FUNCTIONS
+////////////////////////////////////////////////////////////////////////////////GENERAL
+// PURPOSE PROCEDURES AND FUNCTIONS
 
 &AtClient
-// The procedure handles the change of the Price kind and Settlement currency document attributes
-//
+// The procedure handles the change of the Price kind and Settlement currency document
+//attributes
 Procedure ProcessPricesKindAndSettlementsCurrencyChange(DocumentParameters)
 	
 	ContractBeforeChange = DocumentParameters.ContractBeforeChange;
@@ -59,15 +59,15 @@ Procedure ProcessPricesKindAndSettlementsCurrencyChange(DocumentParameters)
 		WarningText = "";
 		If QueryPriceKind AND RecalculationRequired Then
 			
-			WarningText = NStr("en='The counterparty contract allows for the kind of prices other than prescribed in the document! 
-		|Recalculate the document according to the contract?';ru='Договор с контрагентом предусматривает вид цен, отличный от установленного в документе! 
-		|Пересчитать документ в соответствии с договором?'") + Chars.LF + Chars.LF;
+			WarningText = NStr("ru = 'Договор с контрагентом предусматривает вид цен, отличный от установленного в документе! 
+		|Пересчитать документ в соответствии с договором?'; en = 'The counterparty contract allows for the kind of prices other than prescribed in the document! 
+		|Recalculate the document according to the contract?'") + Chars.LF + Chars.LF;
 				
 		EndIf;
 		
-		WarningText = WarningText + NStr("en='Settlement currency of the contract with counterparty changed! 
-		|It is necessary to check the document currency!';ru='Изменилась валюта расчетов по договору с контрагентом! 
-		|Необходимо проверить валюту документа!'");
+		WarningText = WarningText + NStr("ru = 'Изменилась валюта расчетов по договору с контрагентом! 
+		|Необходимо проверить валюту документа!'; en = 'Settlement currency of the contract with counterparty changed! 
+		|It is necessary to check the document currency!'");
 			
 		ProcessChangesOnButtonPricesAndCurrencies(SettlementsCurrencyBeforeChange, True, QueryPriceKind, WarningText);
 		
@@ -75,9 +75,9 @@ Procedure ProcessPricesKindAndSettlementsCurrencyChange(DocumentParameters)
 		
 		If RecalculationRequired Then
 			
-			QuestionText = NStr("en='The counterparty contract allows for the kind of prices other than prescribed in the document! 
-		|Recalculate the document according to the contract?';ru='Договор с контрагентом предусматривает вид цен, отличный от установленного в документе! 
-		|Пересчитать документ в соответствии с договором?'");
+			QuestionText = NStr("ru = 'Договор с контрагентом предусматривает вид цен, отличный от установленного в документе! 
+		|Пересчитать документ в соответствии с договором?'; en = 'The counterparty contract allows for the kind of prices other than prescribed in the document! 
+		|Recalculate the document according to the contract?'");
 				
 			NotifyDescription = New NotifyDescription("DefineDocumentRecalculateNeedByContractTerms", ThisObject, DocumentParameters);
 			
@@ -391,8 +391,8 @@ EndProcedure // CalculateAmountInTabularSectionLine()
 // Calculates the brokerage in the row of the document tabular section
 //
 // Parameters:
-//  TabularSectionRow - String of the document tabular section,
-//
+//  TabularSectionRow - String of the document
+//tabular section,
 &AtClient
 Procedure CalculateCommissionRemuneration(TabularSectionRow)
 	
@@ -411,12 +411,16 @@ Procedure CalculateCommissionRemuneration(TabularSectionRow)
 	TabularSectionRow.BrokerageVATAmount = ?(Object.AmountIncludesVAT,
 													TabularSectionRow.BrokerageAmount - (TabularSectionRow.BrokerageAmount) / ((VATRate + 100) / 100),
 													TabularSectionRow.BrokerageAmount * VATRate / 100);
-	
+													
+	// Serial numbers
+	If UseSerialNumbersBalance<>Undefined Then
+		WorkWithSerialNumbersClientServer.UpdateSerialNumbersQuantity(Object, TabularSectionRow, ,"ConnectionKeySerialNumbers");
+	EndIf;
 	
 EndProcedure // CalculateBrokerage()
 
-// Procedure recalculates the rate and multiplicity of
-// settlement currency when document date change.
+// Procedure recalculates the rate and
+// multiplicity of settlement currency when document date change.
 //
 &AtClient
 Procedure RecalculateExchangeRateMultiplicitySettlementCurrency(StructureData)
@@ -665,11 +669,15 @@ Function FillByBarcodesData(BarcodesData)
 				CalculateCommissionRemuneration(NewRow);
 				Items.Inventory.CurrentRow = NewRow.GetID();
 			Else
-				FoundString = TSRowsArray[0];
-				FoundString.Quantity = FoundString.Quantity + CurBarcode.Quantity;
-				CalculateAmountInTabularSectionLine(FoundString);
-				CalculateCommissionRemuneration(FoundString);
-				Items.Inventory.CurrentRow = FoundString.GetID();
+				NewRow = TSRowsArray[0];
+				NewRow.Quantity = NewRow.Quantity + CurBarcode.Quantity;
+				CalculateAmountInTabularSectionLine(NewRow);
+				CalculateCommissionRemuneration(NewRow);
+				Items.Inventory.CurrentRow = NewRow.GetID();
+			EndIf;
+			
+			If BarcodeData.Property("SerialNumber") AND ValueIsFilled(BarcodeData.SerialNumber) Then
+				WorkWithSerialNumbersClientServer.AddSerialNumberToString(NewRow, BarcodeData.SerialNumber, Object, "ConnectionKeySerialNumbers");
 			EndIf;
 		EndIf;
 	EndDo;
@@ -864,7 +872,7 @@ Procedure ProcessContractChange(ContractData = Undefined)
 		
 		If QueryBoxPrepayment = True Then
 			
-			QuestionText = NStr("en='Prepayment set-off will be cleared, do you want to continue?';ru='Зачет предоплаты будет очищен, продолжить?'");
+			QuestionText = NStr("ru = 'Зачет предоплаты будет очищен, продолжить?'; en = 'Prepayment set-off will be cleared, do you want to continue?'");
 			
 			NotifyDescription = New NotifyDescription("DefineAdvancePaymentOffsetsRefreshNeed", ThisObject, DocumentParameters);
 			ShowQueryBox(NOTifyDescription, QuestionText, QuestionDialogMode.YesNo);
@@ -958,15 +966,15 @@ Procedure SelectionByBalances(Command)
 	Cancel = SmallBusinessClient.BeforeAddToSubordinateTabularSection(ThisForm, "Inventory");
 	
 	If Not ValueIsFilled(Object.Company) Then
-		MessageText = NStr("en='Field ""Company"" is not filled';ru='Поле ""Организация"" не заполнено'");
+		MessageText = NStr("ru = 'Поле ""Организация"" не заполнено'; en = 'Field ""Company"" is not filled'");
 		SmallBusinessClient.ShowMessageAboutError(ThisForm, MessageText,,, "Company", Cancel);
 	EndIf;
 	If Not ValueIsFilled(Object.Counterparty) Then
-		MessageText = NStr("en='Field ""Counterparty"" is not filled';ru='Поле ""Контрагент"" не заполнено'");
+		MessageText = NStr("ru = 'Поле ""Контрагент"" не заполнено'; en = 'Field ""Counterparty"" is not filled'");
 		SmallBusinessClient.ShowMessageAboutError(ThisForm, MessageText,,, "Counterparty", Cancel);
 	EndIf;
 	If Not ValueIsFilled(Object.Contract) Then
-		MessageText = NStr("en='Field ""Contract"" is not filled';ru='Поле ""Договор"" не заполнено'");
+		MessageText = NStr("ru = 'Поле ""Договор"" не заполнено'; en = 'Field ""Contract"" is not filled'");
 		SmallBusinessClient.ShowMessageAboutError(ThisForm, MessageText,,, "Contract", Cancel);
 	EndIf;
 	
@@ -976,8 +984,7 @@ Procedure SelectionByBalances(Command)
 	
 	TabularSectionName = "Inventory";
 	
-	SelectionParameters = New Structure("
-		|Company,
+	SelectionParameters = New Structure("Company,
 		|Counterparty,
 		|Contract,
 		|DocumentCurrency,
@@ -1091,8 +1098,8 @@ Procedure GetPrepaymentFromStorage(AddressPrepaymentInStorage)
 	
 EndProcedure // GetPrepaymentFromStorage()
 
-////////////////////////////////////////////////////////////////////////////////
-// PROCEDURES AND FUNCTIONS FOR CONTROL OF THE FORM APPEARANCE
+////////////////////////////////////////////////////////////////////////////////PROCEDURES
+// AND FUNCTIONS FOR CONTROL OF THE FORM APPEARANCE
 
 // Procedure sets availability of the form items.
 //
@@ -1111,8 +1118,7 @@ Procedure SetVisibleAndEnabled()
 	
 EndProcedure // SetVisibleAndEnabled()
 
-////////////////////////////////////////////////////////////////////////////////
-// PROCEDURE - FORM EVENT HANDLERS
+////////////////////////////////////////////////////////////////////////////////PROCEDURE - FORM EVENT HANDLERS
 
 // Procedure - OnCreateAtServer event handler.
 //
@@ -1211,6 +1217,9 @@ Procedure OnCreateAtServer(Cancel, StandardProcessing)
 	EndIf;
 	Items.InventoryImportDataFromDCT.Visible = UsePeripherals;
 	// End Peripherals
+
+	// Serial numbers
+	UseSerialNumbersBalance = WorkWithSerialNumbers.UseSerialNumbersBalance();
 	
 EndProcedure // OnCreateAtServer()
 
@@ -1347,7 +1356,17 @@ Procedure NotificationProcessing(EventName, Parameter, Source)
 		Items[TabularSectionName].RowFilter = FilterStr;
 		
 		UpdateColumnTotalAtClient();
+	ElsIf EventName = "SerialNumbersSelection"
+		And ValueIsFilled(Parameter) 
+		//Form owner checkup
+		And Source <> New UUID("00000000-0000-0000-0000-000000000000")
+		And Source = UUID
+		Then
 		
+		ChangedCount = GetSerialNumbersFromStorage(Parameter.AddressInTemporaryStorage, Parameter.RowKey);
+		If ChangedCount Then
+			CalculateAmountInTabularSectionLine();
+		EndIf; 	
 	EndIf;
 	
 EndProcedure // NotificationProcessing()
@@ -1463,16 +1482,16 @@ EndProcedure
 
 &AtClient
 Procedure EditPrepaymentOffsetEnd(Result, AdditionalParameters) Export
-    
-    AddressPrepaymentInStorage = AdditionalParameters.AddressPrepaymentInStorage;
-    
-    
-    ReturnCode = Result;
-    
-    If ReturnCode = DialogReturnCode.OK Then
-        GetPrepaymentFromStorage(AddressPrepaymentInStorage);
-    EndIf;
-
+	
+	AddressPrepaymentInStorage = AdditionalParameters.AddressPrepaymentInStorage;
+	
+	
+	ReturnCode = Result;
+	
+	If ReturnCode = DialogReturnCode.OK Then
+		GetPrepaymentFromStorage(AddressPrepaymentInStorage);
+	EndIf;
+	
 EndProcedure // EditPrepaymentOffset()
 
 // Peripherals
@@ -1488,28 +1507,28 @@ Procedure SearchByBarcode(Command)
 	EndIf;
 	
 	CurBarcode = "";
-	ShowInputValue(New NotifyDescription("SearchByBarcodeEnd", ThisObject, New Structure("CurBarcode", CurBarcode)), CurBarcode, NStr("en='Enter barcode';ru='Введите штрихкод'"));
+	ShowInputValue(New NotifyDescription("SearchByBarcodeEnd", ThisObject, New Structure("CurBarcode", CurBarcode)), CurBarcode, NStr("ru = 'Введите штрихкод'; en = 'Enter barcode'"));
 
 EndProcedure
 
 &AtClient
 Procedure SearchByBarcodeEnd(Result, AdditionalParameters) Export
-    
-    CurBarcode = ?(Result = Undefined, AdditionalParameters.CurBarcode, Result);
-    
-    
-    If Not IsBlankString(CurBarcode) Then
-        
-        BarcodesReceived(New Structure("Barcode, Quantity", CurBarcode, 1));
-        
-        TabularSectionName = "Inventory";
-        FilterStr = New FixedStructure("ConnectionKey", Items[TabularSectionName].RowFilter["ConnectionKey"]);
-        Items[TabularSectionName].RowFilter = FilterStr;
-        
-        UpdateColumnTotalAtClient();
-        
-    EndIf;
-
+	
+	CurBarcode = ?(Result = Undefined, AdditionalParameters.CurBarcode, Result);
+	
+	
+	If Not IsBlankString(CurBarcode) Then
+		
+		BarcodesReceived(New Structure("Barcode, Quantity", CurBarcode, 1));
+		
+		TabularSectionName = "Inventory";
+		FilterStr = New FixedStructure("ConnectionKey", Items[TabularSectionName].RowFilter["ConnectionKey"]);
+		Items[TabularSectionName].RowFilter = FilterStr;
+		
+		UpdateColumnTotalAtClient();
+		
+	EndIf;
+	
 EndProcedure // SearchByBarcode()
 
 // Procedure - event handler Action of the GetWeight command
@@ -1665,10 +1684,10 @@ Procedure BrokerageCalculationMethodOnChange(Item)
 		AND ValueIsFilled(Object.CommissionFeePercent) Then
 		If Object.Inventory.Count() > 0 Then
 			Response = Undefined;
-
+			
 			ShowQueryBox(New NotifyDescription("BrokerageCalculationMethodOnChangeEnd", ThisObject), "Calculation method has been changed. Do you want to recalculate the brokerage?",
-							QuestionDialogMode.YesNo, , DialogReturnCode.Yes);
-            Return;
+				QuestionDialogMode.YesNo, , DialogReturnCode.Yes);
+			Return;
 		EndIf;
 	EndIf;
 	
@@ -1714,23 +1733,23 @@ EndProcedure
 
 &AtClient
 Procedure BrokerageVATRateOnChangeEnd(Result, AdditionalParameters) Export
-    
-    Response = Result;
-    
-    If Response = DialogReturnCode.No Then
-        Return;
-    EndIf;
-    
-    VATRate = SmallBusinessReUse.GetVATRateValue(Object.VATCommissionFeePercent);
-    
-    For Each TabularSectionRow IN Object.Inventory Do
-        
-        TabularSectionRow.BrokerageVATAmount = ?(Object.AmountIncludesVAT,
-        TabularSectionRow.BrokerageAmount - (TabularSectionRow.BrokerageAmount) / ((VATRate + 100) / 100),
-        TabularSectionRow.BrokerageAmount * VATRate / 100);
-        
-    EndDo;
-
+	
+	Response = Result;
+	
+	If Response = DialogReturnCode.No Then
+		Return;
+	EndIf;
+	
+	VATRate = SmallBusinessReUse.GetVATRateValue(Object.VATCommissionFeePercent);
+	
+	For Each TabularSectionRow IN Object.Inventory Do
+		
+		TabularSectionRow.BrokerageVATAmount = ?(Object.AmountIncludesVAT,
+		TabularSectionRow.BrokerageAmount - (TabularSectionRow.BrokerageAmount) / ((VATRate + 100) / 100),
+		TabularSectionRow.BrokerageAmount * VATRate / 100);
+		
+	EndDo;
+	
 EndProcedure // BrokerageVATRateOnChange()
 
 // Procedure - event handler OnChange of the BrokeragePercent.
@@ -1748,15 +1767,15 @@ EndProcedure
 
 &AtClient
 Procedure BrokeragePercentOnChangeEnd(Result, AdditionalParameters) Export
-    
-    // We must offer to recalculate brokerage.
-    Response = Result;
-    If Response = DialogReturnCode.Yes Then
-        For Each TabularSectionRow IN Object.Inventory Do
-            CalculateCommissionRemuneration(TabularSectionRow);
-        EndDo;
-    EndIf;
-
+	
+	// We must offer to recalculate brokerage.
+	Response = Result;
+	If Response = DialogReturnCode.Yes Then
+		For Each TabularSectionRow IN Object.Inventory Do
+			CalculateCommissionRemuneration(TabularSectionRow);
+		EndDo;
+	EndIf;
+	
 EndProcedure // BrokeragePercentOnChange()
 
 // Procedure - event handler OnChange of the Counterparty input field.
@@ -1849,13 +1868,25 @@ EndProcedure // CustomersOnStartEdit()
 &AtClient
 Procedure CustomersBeforeDeleteRow(Item, Cancel)
 	
+	// Serial numbers
+	CurrentCustomer = Items.Customers.CurrentData;
+	SearchResult = Object.Inventory.FindRows(New Structure("ConnectionKey", CurrentCustomer.ConnectionKey));
+	For Each StringInventory In SearchResult Do
+		
+		SearchResultSN = Object.SerialNumbers.FindRows(New Structure("ConnectionKey", StringInventory.ConnectionKeySerialNumbers));
+		For Each StrSerialNumbers In SearchResultSN Do
+			IndexToBeDeleted = Object.SerialNumbers.IndexOf(StrSerialNumbers);
+			Object.SerialNumbers.Delete(IndexToBeDeleted);
+		EndDo;
+	EndDo;
+	// Serial numbers
+	
 	TabularSectionName = "Customers";
 	SmallBusinessClient.DeleteRowsOfSubordinateTabularSection(ThisForm, "Inventory");
 	
 EndProcedure // CustomersBeforeDeleteRow()
 
-////////////////////////////////////////////////////////////////////////////////
-// PROCEDURE - EVENT HANDLERS OF THE INVENTORY TABULAR SECTION ATTRIBUTES
+////////////////////////////////////////////////////////////////////////////////PROCEDURE - EVENT HANDLERS OF THE INVENTORY TABULAR SECTION ATTRIBUTES
 
 // Procedure - OnStartEdit event handler of the Inventory tabular section.
 //
@@ -1866,6 +1897,15 @@ Procedure InventoryOnStartEdit(Item, NewRow, Copy)
 	
 	If NewRow Then
 		SmallBusinessClient.AddConnectionKeyToSubordinateTabularSectionLine(ThisForm, Item.Name);
+	EndIf;
+	
+	If NewRow AND Copy Then
+		Item.CurrentData.ConnectionKeySerialNumbers = 0;
+		Item.CurrentData.SerialNumbers = "";
+	EndIf;
+
+	If Item.CurrentItem.Name = "InventorySerialNumbers" Then
+		OpenSerialNumbersSelection();
 	EndIf;
 	
 EndProcedure // InventoryOnStartEdit()
@@ -1939,7 +1979,27 @@ Procedure InventoryProductsAndServicesOnChange(Item)
 	CalculateAmountInTabularSectionLine();
 	CalculateCommissionRemuneration(TabularSectionRow);
 	
+	//Serial numbers
+	WorkWithSerialNumbersClientServer.DeleteSerialNumbersByConnectionKey(Object.SerialNumbers, TabularSectionRow, , UseSerialNumbersBalance);	
+	
 EndProcedure // InventoryProductsAndServicesOnChange()
+
+&AtClient
+Procedure InventoryBeforeDeleteRow(Item, Cancel)
+	
+	// Serial numbers
+	CurrentData = Items.Inventory.CurrentData;
+	WorkWithSerialNumbersClientServer.DeleteSerialNumbersByConnectionKey(Object.SerialNumbers, CurrentData, , UseSerialNumbersBalance);
+	
+EndProcedure
+
+&AtClient
+Procedure InventorySerialNumbersStartChoice(Item, ChoiceData, StandardProcessing)
+	
+	StandardProcessing = False;
+	OpenSerialNumbersSelection();
+	
+EndProcedure
 
 // Procedure - event handler OnChange of the Characteristic input field.
 //
@@ -2494,5 +2554,34 @@ Procedure Attachable_ExecutePrintCommand(Command)
 EndProcedure
 
 // End StandardSubsystems.Printing
+
+#EndRegion
+
+#Region ServiceProceduresAndFunctions
+
+&AtClient
+Procedure OpenSerialNumbersSelection()
+		
+	CurrentDataIdentifier = Items.Inventory.CurrentData.GetID();
+	ParametersOfSerialNumbers = SerialNumberPickParameters(CurrentDataIdentifier);
+	
+	OpenForm("DataProcessor.SerialNumbersSelection.Form", ParametersOfSerialNumbers, ThisObject);
+
+EndProcedure
+
+&AtServer
+Function GetSerialNumbersFromStorage(AddressInTemporaryStorage, RowKey)
+	
+	Modified = True;
+	Return WorkWithSerialNumbers.GetSerialNumbersFromStorage(Object, AddressInTemporaryStorage, RowKey);
+	
+EndFunction
+
+&AtServer
+Function SerialNumberPickParameters(CurrentDataIdentifier)
+	
+	Return WorkWithSerialNumbers.SerialNumberPickParameters(Object, ThisObject.UUID, CurrentDataIdentifier, False);
+	
+EndFunction
 
 #EndRegion

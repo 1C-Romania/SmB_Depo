@@ -962,7 +962,12 @@ Procedure CalculateAmountInTabularSectionLine(TabularSectionName = "Inventory", 
 	TabularSectionRow.TotalDiscountAmountIsMoreThanAmount = False;
 	// End AutomaticDiscounts
 	
-EndProcedure // CalculateAmountInTabularSectionLine()	
+	// Serial numbers
+	If UseSerialNumbersBalance <> Undefined AND TabularSectionName = "Inventory" Then
+		WorkWithSerialNumbersClientServer.UpdateSerialNumbersQuantity(Object, TabularSectionRow);
+	EndIf;
+	
+EndProcedure // CalculateAmountInTabularSectionLine()
 
 // Procedure recalculates amounts in the payment calendar.
 //
@@ -1511,12 +1516,17 @@ Function FillByBarcodesData(BarcodesData)
 				
 			Else
 				
-				FoundString = TSRowsArray[0];
-				FoundString.Quantity = FoundString.Quantity + CurBarcode.Quantity;
-				CalculateAmountInTabularSectionLine( , FoundString);
-				Items.Inventory.CurrentRow = FoundString.GetID();
+				NewRow = TSRowsArray[0];
+				NewRow.Quantity = NewRow.Quantity + CurBarcode.Quantity;
+				CalculateAmountInTabularSectionLine( , NewRow);
+				Items.Inventory.CurrentRow = NewRow.GetID();
 				
 			EndIf;
+			
+			If BarcodeData.Property("SerialNumber") AND ValueIsFilled(BarcodeData.SerialNumber) Then
+				WorkWithSerialNumbersClientServer.AddSerialNumberToString(NewRow, BarcodeData.SerialNumber, Object);
+			EndIf;
+			
 		EndIf;
 	EndDo;
 	
@@ -1865,50 +1875,6 @@ Procedure FillTabularSectionPerformersByTeamsAtServer(ArrayOfTeams, PerformersCo
 	
 EndProcedure // FillTabularSectionPerformersByTeamsOnServer()
 
-// Procedure fills the column Reserve by free balances on stock.
-//
-&AtServer
-Procedure WOGoodsFillColumnReserveByBalancesAtServer()
-	
-	Document = FormAttributeToValue("Object");
-	Document.GoodsFillColumnReserveByBalances();
-	ValueToFormAttribute(Document, "Object");
-	
-EndProcedure // WOGoodsFillColumnReserveByBalancesOnServer()
-
-// Procedure fills the column Reserve by free balances on stock.
-//
-&AtServer
-Procedure WOGoodsFillColumnReserveByReservesAtServer()
-	
-	Document = FormAttributeToValue("Object");
-	Document.GoodsFillColumnReserveByReserves();
-	ValueToFormAttribute(Document, "Object");
-	
-EndProcedure // WOGoodsFillColumnReserveByReservesOnServer()
-
-// Procedure fills the column Reserve by free balances on stock.
-//
-&AtServer
-Procedure WOMaterialsFillColumnReserveByBalancesAtServer(MaterialsConnectionKey = Undefined)
-	
-	Document = FormAttributeToValue("Object");
-	Document.MaterialsFillColumnReserveByBalances(MaterialsConnectionKey);
-	ValueToFormAttribute(Document, "Object");
-	
-EndProcedure // WOMaterialsFillColumnReserveByBalancesOnServer()
-
-// Procedure fills the column Reserve by free balances on stock.
-//
-&AtServer
-Procedure WOMaterialsFillColumnReserveByReservesAtServer(MaterialsConnectionKey = Undefined)
-	
-	Document = FormAttributeToValue("Object");
-	Document.MaterialsFillColumnReserveByReserves(MaterialsConnectionKey);
-	ValueToFormAttribute(Document, "Object");
-	
-EndProcedure // WOMaterialsFillColumnReserveByReservesOnServer()
-
 // Checks the match of the "Company" and "ContractKind" contract attributes to the terms of the document.
 //
 &AtServerNoContext
@@ -2017,6 +1983,50 @@ Procedure ProcessContractChange(ContractData = Undefined)
 	EndIf;
 	
 EndProcedure
+
+// Procedure fills the column Reserve by free balances on stock.
+//
+&AtServer
+Procedure WOGoodsFillColumnReserveByBalancesAtServer()
+	
+	Document = FormAttributeToValue("Object");
+	Document.GoodsFillColumnReserveByBalances();
+	ValueToFormAttribute(Document, "Object");
+	
+EndProcedure // WOGoodsFillColumnReserveByBalancesOnServer()
+
+// Procedure fills the column Reserve by free balances on stock.
+//
+&AtServer
+Procedure WOGoodsFillColumnReserveByReservesAtServer()
+	
+	Document = FormAttributeToValue("Object");
+	Document.GoodsFillColumnReserveByReserves();
+	ValueToFormAttribute(Document, "Object");
+	
+EndProcedure // WOGoodsFillColumnReserveByReservesOnServer()
+
+// Procedure fills the column Reserve by free balances on stock.
+//
+&AtServer
+Procedure WOMaterialsFillColumnReserveByBalancesAtServer(MaterialsConnectionKey = Undefined)
+	
+	Document = FormAttributeToValue("Object");
+	Document.MaterialsFillColumnReserveByBalances(MaterialsConnectionKey);
+	ValueToFormAttribute(Document, "Object");
+	
+EndProcedure // WOMaterialsFillColumnReserveByBalancesOnServer()
+
+// Procedure fills the column Reserve by free balances on stock.
+//
+&AtServer
+Procedure WOMaterialsFillColumnReserveByReservesAtServer(MaterialsConnectionKey = Undefined)
+	
+	Document = FormAttributeToValue("Object");
+	Document.MaterialsFillColumnReserveByReserves(MaterialsConnectionKey);
+	ValueToFormAttribute(Document, "Object");
+	
+EndProcedure // WOMaterialsFillColumnReserveByReservesOnServer()
 
 #EndRegion
 
@@ -2958,6 +2968,9 @@ Procedure OnCreateAtServer(Cancel, StandardProcessing)
 	Items.InventoryImportDataFromDCT.Visible = UsePeripherals;
 	// End Peripherals
 	
+	// Serial numbers
+	UseSerialNumbersBalance = WorkWithSerialNumbers.UseSerialNumbersBalance();
+
 EndProcedure // OnCreateAtServer()
 
 // Procedure - OnReadAtServer event handler.
@@ -3224,7 +3237,7 @@ Procedure NotificationProcessing(EventName, Parameter, Source)
 			
 			If PickupForMaterialsInWorks Then
 				
-				TabularSectionName 	= "WOMaterials";
+				TabularSectionName 	= "OWMaterials";
 				AreBatches 			= True;
 				
 				WOMaterialsGetInventoryFromStorage(InventoryAddressInStorage, TabularSectionName, AreCharacteristics, AreBatches);
@@ -3272,6 +3285,23 @@ Procedure NotificationProcessing(EventName, Parameter, Source)
 			
 			GetInventoryFromStorage(InventoryAddressInStorage, TabularSectionName, AreCharacteristics, AreBatches);
 			
+		EndIf;
+		
+	ElsIf EventName = "SerialNumbersSelection"
+		AND ValueIsFilled(Parameter) 
+		//Form owner checkup
+		AND Source <> New UUID("00000000-0000-0000-0000-000000000000")
+		AND Source = UUID
+		Then
+		
+		If Items.OWPages.CurrentPage = Items.OWGroupWork Then
+			ChangedCount = GetSerialNumbersMaterialsFromStorage(Parameter.AddressInTemporaryStorage, Parameter.RowKey);
+			//Recalculation of the amount not required
+		Else
+			ChangedCount = GetSerialNumbersFromStorage(Parameter.AddressInTemporaryStorage, Parameter.RowKey);
+			If ChangedCount Then
+				CalculateAmountInTabularSectionLine("Inventory");
+			EndIf; 
 		EndIf;
 		
 	EndIf;
@@ -3355,16 +3385,6 @@ Procedure GetWeightEnd(Weight, Parameters) Export
 	EndIf;
 	
 EndProcedure
-
-// Procedure - event handler Action of the GetWeight command
-//
-&AtClient
-Procedure WOGetWeight(Command)
-	
-	TabularSectionRow = Items.Inventory.CurrentData;
-	GetWeightForTabularSectionRow(TabularSectionRow);
-	
-EndProcedure // GetWeight()
 
 // Procedure - ImportDataFromDTC command handler.
 //
@@ -3796,15 +3816,6 @@ Procedure FillByTeamsForAllWorksFragment(Val ArrayOfTeams)
 	
 EndProcedure // FillByTeamsForAllWorks()
 
-// Procedure - EditByList command handler.
-//
-&AtClient
-Procedure WOEditInList(Command)
-	
-	OWSetPossibilityOfEditInList();
-	
-EndProcedure // EditByList()
-
 // Procedure - command handler DocumentSetting.
 //
 &AtClient
@@ -3855,6 +3866,25 @@ Procedure DocumentSettingEnd(Result, AdditionalParameters) Export
 	EndIf;
 	
 EndProcedure
+
+// Procedure - event handler Action of the GetWeight command
+//
+&AtClient
+Procedure WOGetWeight(Command)
+	
+	TabularSectionRow = Items.Inventory.CurrentData;
+	GetWeightForTabularSectionRow(TabularSectionRow);
+	
+EndProcedure // GetWeight()
+
+// Procedure - EditByList command handler.
+//
+&AtClient
+Procedure WOEditInList(Command)
+	
+	OWSetPossibilityOfEditInList();
+	
+EndProcedure // EditByList()
 
 #EndRegion
 
@@ -3919,6 +3949,74 @@ EndProcedure // WOChangeProductsReserveClearReserve()
 
 #Region ChangeReserveMaterials
 
+&AtClient
+Procedure WOChangeMaterialsReserveFillByBalancesForAllEnd(Result, AdditionalParameters) Export
+	
+	Response = Result;
+	If Response = DialogReturnCode.No Then
+		Return;
+	EndIf;
+	
+	WOChangeMaterialsReserveFillByBalancesForAllFragment();
+	
+EndProcedure
+
+&AtClient
+Procedure WOChangeMaterialsReserveFillByBalancesForAllFragment()
+	
+	WOMaterialsFillColumnReserveByBalancesAtServer();
+	
+	SmallBusinessClient.SetFilterOnSubordinateTabularSection(ThisForm, "OWMaterials");
+	
+EndProcedure // WOChangeMaterialsReserveFillByBalancesForAll()
+
+&AtClient
+Procedure WOChangeMaterialsReserveFillByReservesForAllEnd(Result, AdditionalParameters) Export
+	
+	Response = Result;
+	If Response = DialogReturnCode.No Then
+		Return;
+	EndIf;
+	
+	WOChangeMaterialsReserveFillByReservesForAllFragment();
+	
+EndProcedure
+
+&AtClient
+Procedure WOChangeMaterialsReserveFillByReservesForAllFragment()
+	
+	WOMaterialsFillColumnReserveByReservesAtServer();
+	
+	SmallBusinessClient.SetFilterOnSubordinateTabularSection(ThisForm, "OWMaterials");
+	
+EndProcedure // WOChangeMaterialsReserveFillByReservesForAll()
+
+&AtClient
+Procedure WOChangeMaterialsReserveClearReserveForAllEnd(Result, AdditionalParameters) Export
+	
+	Response = Result;
+	If Response = DialogReturnCode.No Then
+		Return;
+	EndIf;
+	
+	WOChangeMaterialsReserveClearReserveForAllFragment();
+	
+EndProcedure
+
+&AtClient
+Procedure WOChangeMaterialsReserveClearReserveForAllFragment()
+	
+	Var TabularSectionRow;
+	
+	For Each TabularSectionRow IN Object.Materials Do
+		
+		TabularSectionRow.Reserve = 0;
+		TabularSectionRow.ReserveShipment = 0;
+		
+	EndDo;
+	
+EndProcedure // WOChangeMaterialsReserveClearReserveForAll()
+
 // Procedure - command handler FillByBalance submenu ChangeReserve.
 //
 &AtClient
@@ -3971,27 +4069,6 @@ Procedure WOChangeMaterialsReserveFillByBalancesForAll(Command)
 	
 EndProcedure
 
-&AtClient
-Procedure WOChangeMaterialsReserveFillByBalancesForAllEnd(Result, AdditionalParameters) Export
-	
-	Response = Result;
-	If Response = DialogReturnCode.No Then
-		Return;
-	EndIf;
-	
-	WOChangeMaterialsReserveFillByBalancesForAllFragment();
-	
-EndProcedure
-
-&AtClient
-Procedure WOChangeMaterialsReserveFillByBalancesForAllFragment()
-	
-	WOMaterialsFillColumnReserveByBalancesAtServer();
-	
-	SmallBusinessClient.SetFilterOnSubordinateTabularSection(ThisForm, "WOMaterials");
-	
-EndProcedure // WOChangeMaterialsReserveFillByBalancesForAll()
-
 // Procedure - command handler FillByReserve of the ChangeReserve submenu.
 //
 &AtClient
@@ -4043,27 +4120,6 @@ Procedure WOChangeMaterialsReserveFillByReservesForAll(Command)
 	WOChangeMaterialsReserveFillByReservesForAllFragment();
 	
 EndProcedure
-
-&AtClient
-Procedure WOChangeMaterialsReserveFillByReservesForAllEnd(Result, AdditionalParameters) Export
-	
-	Response = Result;
-	If Response = DialogReturnCode.No Then
-		Return;
-	EndIf;
-	
-	WOChangeMaterialsReserveFillByReservesForAllFragment();
-	
-EndProcedure
-
-&AtClient
-Procedure WOChangeMaterialsReserveFillByReservesForAllFragment()
-	
-	WOMaterialsFillColumnReserveByReservesAtServer();
-	
-	SmallBusinessClient.SetFilterOnSubordinateTabularSection(ThisForm, "WOMaterials");
-	
-EndProcedure // WOChangeMaterialsReserveFillByReservesForAll()
 
 // Procedure - command handler ClearReserve of the ChangeReserve submenu.
 //
@@ -4118,32 +4174,6 @@ Procedure WOChangeMaterialsReserveClearReserveForAll(Command)
 	WOChangeMaterialsReserveClearReserveForAllFragment();
 	
 EndProcedure
-
-&AtClient
-Procedure WOChangeMaterialsReserveClearReserveForAllEnd(Result, AdditionalParameters) Export
-	
-	Response = Result;
-	If Response = DialogReturnCode.No Then
-		Return;
-	EndIf;
-	
-	WOChangeMaterialsReserveClearReserveForAllFragment();
-	
-EndProcedure
-
-&AtClient
-Procedure WOChangeMaterialsReserveClearReserveForAllFragment()
-	
-	Var TabularSectionRow;
-	
-	For Each TabularSectionRow IN Object.Materials Do
-		
-		TabularSectionRow.Reserve = 0;
-		TabularSectionRow.ReserveShipment = 0;
-		
-	EndDo;
-	
-EndProcedure // WOChangeMaterialsReserveClearReserveForAll()
 
 #EndRegion
 
@@ -4378,15 +4408,6 @@ Procedure WorkKindOnChange(Item)
 	
 EndProcedure // WorksProductsAndServicesOnChange()
 
-// Procedure - event handler OnChange input field CashAssetsType.
-//
-&AtClient
-Procedure CashAssetsTypeOnChange(Item)
-	
-	OWSetCurrentPage();
-	
-EndProcedure // CashAssetsTypeOnChange()
-
 // Procedure - event handler OnChange of the ReflectInPaymentCalendar input field.
 //
 &AtClient
@@ -4514,6 +4535,15 @@ Procedure Attachable_ReferenceClickAllInformationLinks(Item)
 	
 EndProcedure
 
+// Procedure - event handler OnChange input field CashAssetsType.
+//
+&AtClient
+Procedure CashAssetsTypeOnChange(Item)
+	
+	OWSetCurrentPage();
+	
+EndProcedure // CashAssetsTypeOnChange()
+
 #EndRegion
 
 #Region ProceduresEventHandlersTabularSectionAttributesProducts
@@ -4607,6 +4637,9 @@ Procedure ProductsProductsAndServicesOnChange(Item)
 	TabularSectionRow.Content = "";
 	
 	TabularSectionRow.ProductsAndServicesTypeInventory = StructureData.IsInventoryItem;
+	
+	//Serial numbers
+	WorkWithSerialNumbersClientServer.DeleteSerialNumbersByConnectionKey(Object.SerialNumbers, TabularSectionRow,, UseSerialNumbersBalance);
 	
 	CalculateAmountInTabularSectionLine("Inventory");
 	
@@ -5297,6 +5330,16 @@ Procedure WOMaterialsBeforeAddRow(Item, Cancel, Copy, Parent, Group)
 	
 EndProcedure // WOMaterialsBeforeAddStart()
 
+&AtClient
+Procedure WOMaterialsBeforeDeleteRow(Item, Cancel)
+	
+	// Serial numbers
+	CurrentData = Items.WOMaterials.CurrentData;
+	WorkWithSerialNumbersClientServer.DeleteSerialNumbersByConnectionKey(Object.SerialNumbersMaterials,
+		CurrentData, "ConnectionKeySerialNumbers", UseSerialNumbersBalance);
+	
+EndProcedure
+
 // Procedure - event handler OnStartEdit tabular section Materials.
 //
 &AtClient
@@ -5307,7 +5350,17 @@ Procedure WOMaterialsOnStartEdit(Item, NewRow, Copy)
 		SmallBusinessClient.AddConnectionKeyToSubordinateTabularSectionLine(ThisForm, Item.Name);
 	EndIf;
 	
+	If Item.CurrentItem.Name = "OWMaterialsSerialNumbers" Then
+		OpenSelectionMaterialsSerialNumbers();
+	EndIf;
+
 EndProcedure // WOMaterialsOnStartEdit()
+
+&AtClient
+Procedure WOMaterialsSerialNumbersStartChoice(Item, ChoiceData, StandardProcessing)
+	StandardProcessing = False;
+	OpenSelectionMaterialsSerialNumbers();
+EndProcedure
 
 #EndRegion
 
@@ -6533,6 +6586,31 @@ Procedure InventoryOnStartEdit(Item, NewRow, Copy)
 	EndIf;
 	// End AutomaticDiscounts
 	
+	// Serial numbers
+	If NewRow AND Copy Then
+		Item.CurrentData.ConnectionKey = 0;
+		Item.CurrentData.SerialNumbers = "";
+	EndIf;
+	
+	If Item.CurrentItem.Name = "SerialNumbersInventory" Then
+		OpenSerialNumbersSelection();
+	EndIf;
+	
+EndProcedure
+
+&AtClient
+Procedure InventoryBeforeDeleteRow(Item, Cancel)
+	
+	// Serial numbers
+	CurrentData = Items.Inventory.CurrentData;
+	WorkWithSerialNumbersClientServer.DeleteSerialNumbersByConnectionKey(Object.SerialNumbers, CurrentData,, UseSerialNumbersBalance);
+	
+EndProcedure
+
+&AtClient
+Procedure InventorySerialNumbersStartChoice(Item, ChoiceData, StandardProcessing)
+	StandardProcessing = False;
+	OpenSerialNumbersSelection();
 EndProcedure
 
 // Procedure - event handler Table parts selection Works.
@@ -6608,5 +6686,107 @@ Procedure AutomaticDiscountsOnCreateAtServer()
 	EndIf;
 	
 EndProcedure
+
+#EndRegion
+
+#Region SerialNumbers
+
+&AtClient
+Procedure OpenSerialNumbersSelection()
+		
+	CurrentDataIdentifier = Items.Inventory.CurrentData.GetID();
+	ParametersOfSerialNumbers = SerialNumberPickParameters(CurrentDataIdentifier);
+	
+	OpenForm("DataProcessor.SerialNumbersSelection.Form", ParametersOfSerialNumbers, ThisObject);
+
+EndProcedure
+
+&AtClient
+Procedure OpenSelectionMaterialsSerialNumbers()
+	
+	CurrentDataIdentifier = Items.OWMaterials.CurrentData.GetID();
+	ParametersOfSerialNumbers = SerialNumberPickParametersMaterials(CurrentDataIdentifier);
+	
+	OpenForm("DataProcessor.SerialNumbersSelection.Form", ParametersOfSerialNumbers, ThisObject);
+
+EndProcedure
+&AtServer
+Function GetSerialNumbersFromStorage(AddressInTemporaryStorage, RowKey)
+	
+	Modified = True;
+	Return WorkWithSerialNumbers.GetSerialNumbersFromStorage(Object, AddressInTemporaryStorage, RowKey);
+	
+EndFunction
+
+Function GetSerialNumbersMaterialsFromStorage(AddressInTemporaryStorage, RowKey)
+	
+	Modified = True;
+	Return WorkWithSerialNumbers.GetSerialNumbersFromStorage(Object, AddressInTemporaryStorage, RowKey, "Materials", "SerialNumbersMaterials", "ConnectionKeySerialNumbers");
+	
+EndFunction
+
+&AtServer
+Function SerialNumberPickParameters(CurrentDataIdentifier)
+	
+	Return WorkWithSerialNumbers.SerialNumberPickParameters(Object, ThisObject.UUID, CurrentDataIdentifier, False);
+	
+EndFunction
+
+&AtServer
+Function SerialNumberPickParametersMaterials(RowID, PickMode = Undefined, TSName="Materials", TSNameSerialNumbers="SerialNumbersMaterials") Export
+	
+	Return WorkWithSerialNumbers.SerialNumberPickParameters(Object, ThisObject.UUID, RowID, True,
+		"Materials", "SerialNumbersMaterials", "ConnectionKeySerialNumbers");
+	
+EndFunction
+
+&AtServer
+Function PrepareParametersOfSerialNumbersMaterials(DocObject, CurRowData, FormUID, TSName = "Materials", TSNameSerialNumbers="SerialNumbersMaterials") Export
+	
+	FilterSerialNumbersOfCurrentString = New Structure("ConnectionKey", CurRowData.ConnectionKeySerialNumbers);
+	FilterSerialNumbersOfCurrentString = DocObject[TSNameSerialNumbers].FindRows(FilterSerialNumbersOfCurrentString);
+	AddressInTemporaryStorage = PutToTempStorage(DocObject[TSNameSerialNumbers].Unload(FilterSerialNumbersOfCurrentString), FormUID);
+	
+	OpenParameters = New Structure("Inventory, OwnerFormUUID, AddressInTemporaryStorage, DocRef", 
+		New Structure("ConnectionKey, ProductsAndServices, Characteristic, Quantity", 
+			CurRowData.ConnectionKeySerialNumbers, 
+			CurRowData.ProductsAndServices,
+			CurRowData.Characteristic,
+			CurRowData.Count),
+			FormUID,
+			AddressInTemporaryStorage,
+			DocObject.Ref
+			);
+			
+	If DocObject.Property("Company") Then
+		OpenParameters.Insert("Company", DocObject.Company);
+	EndIf; 
+	If CurRowData.Property("StructuralUnit") Then
+		OpenParameters.Insert("StructuralUnit", CurRowData.StructuralUnit);
+	ElsIf DocObject.Property("StructuralUnit") Then
+		OpenParameters.Insert("StructuralUnit", DocObject.StructuralUnit);
+	EndIf; 		
+	If CurRowData.Property("Cell") Then
+		OpenParameters.Insert("Cell", CurRowData.Cell);
+	ElsIf DocObject.Property("Cell") Then
+		OpenParameters.Insert("Cell", DocObject.Cell);
+	EndIf; 		
+	If CurRowData.Property("MeasurementUnit") Then
+		OpenParameters.Inventory.Insert("MeasurementUnit", CurRowData.MeasurementUnit);
+		If TypeOf(CurRowData.MeasurementUnit)=Type("CatalogRef.UOM") Then
+		    OpenParameters.Inventory.Insert("Ratio", CurRowData.MeasurementUnit.Ratio);
+		Else
+			OpenParameters.Inventory.Insert("Ratio", 1);
+		EndIf;
+	EndIf;
+	If CurRowData.Property("Batch") Then
+		OpenParameters.Inventory.Insert("Batch", CurRowData.Batch);
+	Else
+		OpenParameters.Inventory.Insert("Batch", Catalogs.ProductsAndServicesBatches.EmptyRef());
+	EndIf;
+	
+	Return OpenParameters;
+	
+EndFunction
 
 #EndRegion

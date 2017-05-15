@@ -337,7 +337,7 @@ Procedure FillCheckProcessing(Cancel, CheckedAttributes)
 	For Each TSRow IN OtherSections Do
 		If TSRow.Account.Currency
 		AND Not ValueIsFilled(TSRow.Currency) Then
-			MessageText = NStr("en='The ""Currency"" column is not filled for currency account in row No.%LineNumber% of the ""Other sections"" list.';ru='Не заполнена колонка ""Валюта"" для валютного счета в строке %НомерСтроки% списка ""Прочие разделы"".'");
+			MessageText = NStr("ru = 'Не заполнена колонка ""Валюта"" для валютного счета в строке %НомерСтроки% списка ""Прочие разделы"".'; en = '''The ""Currency"" column is not filled for currency account in row No.%LineNumber% of the ""Other sections"" list.'");
 			MessageText = StrReplace(MessageText, "%LineNumber%", String(TSRow.LineNumber));
 			SmallBusinessServer.ShowMessageAboutError(
 				ThisObject,
@@ -350,7 +350,7 @@ Procedure FillCheckProcessing(Cancel, CheckedAttributes)
 		EndIf;
 		If TSRow.Account.Currency
 		AND Not ValueIsFilled(TSRow.AmountCur) Then
-			MessageText = NStr("en='Column ""Amount"" is not filled (cur.)"" for currency account in row No.%LineNumber% of the ""Other sections"" list.';ru='Не заполнена колонка ""Сумма (вал.)"" для валютного счета в строке %НомерСтроки% списка ""Прочие разделы"".'");
+			MessageText = NStr("ru = 'Не заполнена колонка ""Сумма (вал.)"" для валютного счета в строке %НомерСтроки% списка ""Прочие разделы"".'; en = 'Column ""Amount"" is not filled (cur.) for currency account in row No.%LineNumber% of the ""Other sections"" list.'");
 			MessageText = StrReplace(MessageText, "%LineNumber%", String(TSRow.LineNumber));
 			SmallBusinessServer.ShowMessageAboutError(
 				ThisObject,
@@ -367,7 +367,7 @@ Procedure FillCheckProcessing(Cancel, CheckedAttributes)
 		If TSRow.Counterparty.DoOperationsByDocuments
 		AND Not Autogeneration
 		AND Not ValueIsFilled(TSRow.Document) Then
-			MessageText = NStr("en='The ""Calculation"" column is not filled in row No.%LineNumber% of the ""Accounts receivable"" list.';ru='Не заполнена колонка ""Документ расчетов"" в строке %НомерСтроки% списка ""Расчеты с покупателями"".'");
+			MessageText = NStr("ru = 'Не заполнена колонка ""Документ расчетов"" в строке %НомерСтроки% списка ""Расчеты с покупателями"".'; en = 'The ""Calculation"" column is not filled in row No.%LineNumber% of the ""Accounts receivable"" list.'");
 			MessageText = StrReplace(MessageText, "%LineNumber%", String(TSRow.LineNumber));
 			SmallBusinessServer.ShowMessageAboutError(
 				ThisObject,
@@ -384,7 +384,7 @@ Procedure FillCheckProcessing(Cancel, CheckedAttributes)
 		If TSRow.Counterparty.DoOperationsByDocuments
 		AND Not Autogeneration
 		AND Not ValueIsFilled(TSRow.Document) Then
-			MessageText = NStr("en='The ""Calculation"" column is not filled in row No.%LineNumber% of the ""Accounts receivable"" list.';ru='Не заполнена колонка ""Документ расчетов"" в строке %НомерСтроки% списка ""Расчеты с покупателями"".'");
+			MessageText = NStr("ru = 'Не заполнена колонка ""Документ расчетов"" в строке %НомерСтроки% списка ""Расчеты с покупателями"".'; en = 'The ""Calculation"" column is not filled in row No.%LineNumber% of the ""Accounts receivable"" list.'");
 			MessageText = StrReplace(MessageText, "%LineNumber%", String(TSRow.LineNumber));
 			SmallBusinessServer.ShowMessageAboutError(
 				ThisObject,
@@ -395,6 +395,18 @@ Procedure FillCheckProcessing(Cancel, CheckedAttributes)
 				Cancel
 			);
 		EndIf;
+	EndDo;
+	
+	
+	// Serial numbers
+	InventoryWarehouses = Inventory.Unload(,"StructuralUnit");
+	InventoryWarehouses.GroupBy("StructuralUnit","");
+	For Each InventoryWarehouse In InventoryWarehouses Do
+		WarehouseFilter = New Structure("StructuralUnit", InventoryWarehouse.StructuralUnit);
+		RowByWarehouse = Inventory.FindRows(WarehouseFilter);
+		For Each InventoryRow In RowByWarehouse Do
+			WorkWithSerialNumbers.FillCheckingSerialNumbers(Cancel, RowByWarehouse, SerialNumbers, InventoryWarehouse.StructuralUnit, ThisObject);
+		EndDo;
 	EndDo;
 	
 EndProcedure // FillCheckProcessing()
@@ -431,6 +443,16 @@ Procedure Posting(Cancel, PostingMode)
 	
 	If AdditionalProperties.TableForRegisterRecords.Property("TableInventory") Then
 		SmallBusinessServer.ReflectInventory(AdditionalProperties, RegisterRecords, Cancel);
+		
+		// Serial numbers
+		If AdditionalProperties.TableForRegisterRecords.Property("TableSerialNumbersBalance") Then
+			SmallBusinessServer.ReflectTheSerialNumbersBalance(AdditionalProperties, RegisterRecords, Cancel);
+		EndIf;
+		If AdditionalProperties.TableForRegisterRecords.Property("TableSerialNumbersGuarantees") Then
+			SmallBusinessServer.ReflectTheSerialNumbersOfTheGuarantee(AdditionalProperties, RegisterRecords, Cancel);
+		EndIf;
+		// Serial numbers
+		
 	EndIf;
 	
 	If AdditionalProperties.TableForRegisterRecords.Property("TableInventoryTransferred") Then

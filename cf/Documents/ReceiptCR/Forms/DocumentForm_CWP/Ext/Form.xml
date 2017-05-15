@@ -413,6 +413,7 @@
 															<Events>
 																<Event name="OnEditEnd">InventoryOnEditEnd</Event>
 																<Event name="Selection">InventorySelection</Event>
+																<Event name="BeforeDeleteRow">InventoryBeforeDeleteRow</Event>
 																<Event name="OnStartEdit">InventoryOnStartEdit</Event>
 																<Event name="AfterDeleteRow">InventoryAfterDeleteRow</Event>
 																<Event name="OnChange">InventoryOnChange</Event>
@@ -570,6 +571,28 @@
 																						</InputField>
 																					</ChildItems>
 																				</ColumnGroup>
+																				<InputField name="InventorySerialNumbers" id="1990">
+																					<DataPath>Object.Inventory.SerialNumbers</DataPath>
+																					<Title>
+																						<v8:item>
+																							<v8:lang>en</v8:lang>
+																							<v8:content>Serial №</v8:content>
+																						</v8:item>
+																						<v8:item>
+																							<v8:lang>ru</v8:lang>
+																							<v8:content>Серийные №</v8:content>
+																						</v8:item>
+																					</Title>
+																					<EditMode>EnterOnInput</EditMode>
+																					<Width>9</Width>
+																					<HorizontalStretch>false</HorizontalStretch>
+																					<ChoiceButton>true</ChoiceButton>
+																					<ContextMenu name="InventorySerialNumbersContextMenu" id="1991"/>
+																					<ExtendedTooltip name="InventorySerialNumbersExtendedTooltip" id="1992"/>
+																					<Events>
+																						<Event name="StartChoice">InventorySerialNumbersStartChoice</Event>
+																					</Events>
+																				</InputField>
 																				<ColumnGroup name="GroupQuantityAndMeasurementUnit" id="1503">
 																					<Title>
 																						<v8:item>
@@ -5204,6 +5227,19 @@
 					<v8:AllowedLength>Variable</v8:AllowedLength>
 				</v8:StringQualifiers>
 			</Type>
+		</Attribute>
+		<Attribute name="UseSerialNumbersBalance" id="83">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Использовать серийные номера остатки</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Use serial numbers balance</v8:content>
+				</v8:item>
+			</Title>
+			<Type/>
 		</Attribute>
 	</Attributes>
 	<Commands>

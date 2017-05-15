@@ -30,7 +30,7 @@ Procedure InitializeDocumentData(DocumentRefInventoryReceipt, StructureAdditiona
 	|		ELSE VALUE(Catalog.ProductsAndServicesBatches.EmptyRef)
 	|	END AS Batch,
 	|	CASE
-	|		WHEN VALUETYPE(InventoryReceiptInventory.MeasurementUnit) = Type(Catalog.UOMClassifier)
+	|		WHEN VALUETYPE(InventoryReceiptInventory.MeasurementUnit) = TYPE(Catalog.UOMClassifier)
 	|			THEN InventoryReceiptInventory.Quantity
 	|		ELSE InventoryReceiptInventory.Quantity * InventoryReceiptInventory.MeasurementUnit.Factor
 	|	END AS Count,
@@ -68,7 +68,7 @@ Procedure InitializeDocumentData(DocumentRefInventoryReceipt, StructureAdditiona
 	|		ELSE VALUE(Catalog.ProductsAndServicesBatches.EmptyRef)
 	|	END AS Batch,
 	|	CASE
-	|		WHEN VALUETYPE(InventoryReceiptInventory.MeasurementUnit) = Type(Catalog.UOMClassifier)
+	|		WHEN VALUETYPE(InventoryReceiptInventory.MeasurementUnit) = TYPE(Catalog.UOMClassifier)
 	|			THEN InventoryReceiptInventory.Quantity
 	|		ELSE InventoryReceiptInventory.Quantity * InventoryReceiptInventory.MeasurementUnit.Factor
 	|	END AS Count
@@ -98,7 +98,7 @@ Procedure InitializeDocumentData(DocumentRefInventoryReceipt, StructureAdditiona
 	|		ELSE VALUE(Catalog.ProductsAndServicesBatches.EmptyRef)
 	|	END AS Batch,
 	|	CASE
-	|		WHEN VALUETYPE(InventoryReceiptInventory.MeasurementUnit) = Type(Catalog.UOMClassifier)
+	|		WHEN VALUETYPE(InventoryReceiptInventory.MeasurementUnit) = TYPE(Catalog.UOMClassifier)
 	|			THEN InventoryReceiptInventory.Quantity
 	|		ELSE InventoryReceiptInventory.Quantity * InventoryReceiptInventory.MeasurementUnit.Factor
 	|	END AS Count
@@ -164,7 +164,33 @@ Procedure InitializeDocumentData(DocumentRefInventoryReceipt, StructureAdditiona
 	|			THEN InventoryReceiptInventory.ProductsAndServices.InventoryGLAccount
 	|		ELSE InventoryReceiptInventory.ProductsAndServices.ExpensesGLAccount
 	|	END,
-	|	InventoryReceiptInventory.Ref.Correspondence");
+	|	InventoryReceiptInventory.Ref.Correspondence
+	|;
+	|
+	|////////////////////////////////////////////////////////////////////////////////
+	|SELECT
+	|	TableInventory.Ref.Date AS Period,
+	|	VALUE(AccumulationRecordType.Receipt) AS RecordType,
+	|	TableInventory.Ref.Date AS EventDate,
+	|	VALUE(Enum.SerialNumbersOperations.Receipt) AS Operation,
+	|	TableSerialNumbers.SerialNumber AS SerialNumber,
+	|	&Company AS Company,
+	|	TableInventory.ProductsAndServices AS ProductsAndServices,
+	|	TableInventory.Characteristic AS Characteristic,
+	|	TableInventory.Batch AS Batch,
+	|	TableInventory.Ref.StructuralUnit AS StructuralUnit,
+	|	TableInventory.Ref.Cell AS Cell,
+	|	1 AS Quantity
+	|FROM
+	|	Document.InventoryReceipt.Inventory AS TableInventory
+	|		INNER JOIN Document.InventoryReceipt.SerialNumbers AS TableSerialNumbers
+	|		ON TableInventory.Ref = TableSerialNumbers.Ref
+	|			AND TableInventory.ConnectionKey = TableSerialNumbers.ConnectionKey
+	|WHERE
+	|	TableSerialNumbers.Ref = &Ref
+	|	AND TableInventory.Ref = &Ref
+	|	AND &UseSerialNumbers
+	|	AND NOT TableInventory.Ref.StructuralUnit.OrderWarehouse");
 	
 	Query.SetParameter("Ref", DocumentRefInventoryReceipt);
 	Query.SetParameter("Company", StructureAdditionalProperties.ForPosting.Company);
@@ -172,17 +198,27 @@ Procedure InitializeDocumentData(DocumentRefInventoryReceipt, StructureAdditiona
 	Query.SetParameter("AccountingByCells", StructureAdditionalProperties.AccountingPolicy.AccountingByCells);
 	Query.SetParameter("UseBatches", StructureAdditionalProperties.AccountingPolicy.UseBatches);
 	
-	Query.SetParameter("InventoryReceipt", NStr("en='Inventory receiving';ru='Прием запасов'"));
-	Query.SetParameter("RevenueIncomes", NStr("en='Receipt of other income';ru='Поступление прочих доходов'"));
-	Query.SetParameter("OtherIncome", NStr("en='Other inventory receipt';ru='Прочее оприходование запасов'"));
+	Query.SetParameter("InventoryReceipt", NStr("ru = 'Inventory receiving'; en = 'Inventory receiving'"));
+	Query.SetParameter("RevenueIncomes", NStr("ru = 'Поступление прочих доходов'; en = 'Receipt of other income'"));
+	Query.SetParameter("OtherIncome", NStr("ru = 'Прочее оприходование запасов'; en = 'Other inventory receipt'"));
+	
+	Query.SetParameter("UseSerialNumbers", StructureAdditionalProperties.AccountingPolicy.UseSerialNumbers);
 	
 	ResultsArray = Query.ExecuteBatch();
 	
-    StructureAdditionalProperties.TableForRegisterRecords.Insert("TableInventory", ResultsArray[0].Unload());
+	StructureAdditionalProperties.TableForRegisterRecords.Insert("TableInventory", ResultsArray[0].Unload());
 	StructureAdditionalProperties.TableForRegisterRecords.Insert("TableInventoryInWarehouses", ResultsArray[1].Unload());
 	StructureAdditionalProperties.TableForRegisterRecords.Insert("TableInventoryForWarehouses", ResultsArray[2].Unload());
 	StructureAdditionalProperties.TableForRegisterRecords.Insert("TableIncomeAndExpenses", ResultsArray[3].Unload());
 	StructureAdditionalProperties.TableForRegisterRecords.Insert("TableManagerial", ResultsArray[4].Unload());
+	
+	ResultOfAQuery5 = ResultsArray[5].Unload();
+	StructureAdditionalProperties.TableForRegisterRecords.Insert("TableSerialNumbersGuarantees", ResultOfAQuery5);
+	If StructureAdditionalProperties.AccountingPolicy.SerialNumbersBalance Then
+		StructureAdditionalProperties.TableForRegisterRecords.Insert("TableSerialNumbersBalance", ResultOfAQuery5);
+	Else
+		StructureAdditionalProperties.TableForRegisterRecords.Insert("TableSerialNumbersBalance", New ValueTable);
+	EndIf;
 	
 EndProcedure // DocumentDataInitialization()
 
@@ -196,8 +232,8 @@ Procedure RunControl(DocumentRefInventoryReceipt, AdditionalProperties, Cancel, 
 
 	StructureTemporaryTables = AdditionalProperties.ForPosting.StructureTemporaryTables;
 	
-	// If the "InventoryTransferAtWarehouseChange", "RegisterRecordsInventoryChange"
-	// temporary tables contain records, it is necessary to control the sales of goods.
+	// If the "InventoryTransferAtWarehouseChange",
+	// "RegisterRecordsInventoryChange" temporary tables contain records, it is necessary to control the sales of goods.
 	
 	If StructureTemporaryTables.RegisterRecordsInventoryInWarehousesChange
 		OR StructureTemporaryTables.RegisterRecordsInventoryChange Then

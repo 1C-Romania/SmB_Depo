@@ -936,150 +936,189 @@
 									<v8:content>Параметры производства и закупки</v8:content>
 								</v8:item>
 							</ToolTip>
-							<Group>Horizontal</Group>
+							<Group>Vertical</Group>
 							<ExtendedTooltip name="ProductionAndPurchaseParametersExtendedTooltip" id="183"/>
 							<ChildItems>
-								<UsualGroup name="SupplierSpecification" id="110">
-									<Title>
-										<v8:item>
-											<v8:lang>en</v8:lang>
-											<v8:content>Vendor specification</v8:content>
-										</v8:item>
-										<v8:item>
-											<v8:lang>ru</v8:lang>
-											<v8:content>Поставщик спецификация</v8:content>
-										</v8:item>
-									</Title>
-									<ToolTip>
-										<v8:item>
-											<v8:lang>en</v8:lang>
-											<v8:content>Vendor specification</v8:content>
-										</v8:item>
-										<v8:item>
-											<v8:lang>ru</v8:lang>
-											<v8:content>Поставщик спецификация</v8:content>
-										</v8:item>
-									</ToolTip>
-									<Group>Vertical</Group>
+								<UsualGroup name="VerticalGroup" id="263">
+									<Group>Horizontal</Group>
 									<Representation>None</Representation>
 									<ShowTitle>false</ShowTitle>
-									<ExtendedTooltip name="VendorSpecificationExtendedTooltip" id="188"/>
+									<ExtendedTooltip name="VerticalGroupExtendedTooltip" id="264"/>
 									<ChildItems>
-										<InputField name="Vendor" id="115">
-											<DataPath>Object.Vendor</DataPath>
-											<EditMode>EnterOnInput</EditMode>
-											<Width>23</Width>
-											<HorizontalStretch>false</HorizontalStretch>
-											<Wrap>false</Wrap>
-											<ContextMenu name="VendorContextMenu" id="116"/>
-											<ExtendedTooltip name="VendorExtendedTooltip" id="189"/>
-										</InputField>
-										<InputField name="ReplenishmentMethod" id="106">
-											<DataPath>Object.ReplenishmentMethod</DataPath>
-											<EditMode>EnterOnInput</EditMode>
-											<Width>23</Width>
-											<HorizontalStretch>false</HorizontalStretch>
-											<Wrap>false</Wrap>
-											<DropListButton>false</DropListButton>
-											<ListChoiceMode>true</ListChoiceMode>
-											<ChoiceList>
-												<xr:Item>
-													<xr:Presentation/>
-													<xr:CheckState>0</xr:CheckState>
-													<xr:Value xsi:type="FormChoiceListDesTimeValue">
-														<Presentation>
-															<v8:item>
-																<v8:lang>en</v8:lang>
-																<v8:content>Purchase</v8:content>
-															</v8:item>
-															<v8:item>
-																<v8:lang>ru</v8:lang>
-																<v8:content>Purchase</v8:content>
-															</v8:item>
-														</Presentation>
-														<Value xsi:type="xr:DesignTimeRef">Enum.InventoryReplenishmentMethods.EnumValue.Purchase</Value>
-													</xr:Value>
-												</xr:Item>
-											</ChoiceList>
-											<ChoiceListButton>true</ChoiceListButton>
-											<ContextMenu name="ReplenishmentMethodContextMenu" id="107"/>
-											<ExtendedTooltip name="ReplenishmentMethodExtendedTooltip" id="185"/>
-										</InputField>
-										<InputField name="CountryOfOrigin" id="133">
-											<DataPath>Object.CountryOfOrigin</DataPath>
+										<UsualGroup name="SupplierSpecification" id="110">
 											<Title>
 												<v8:item>
 													<v8:lang>en</v8:lang>
-													<v8:content>Country of origin</v8:content>
+													<v8:content>Vendor specification</v8:content>
 												</v8:item>
 												<v8:item>
 													<v8:lang>ru</v8:lang>
-													<v8:content>Страна происхождения</v8:content>
+													<v8:content>Поставщик спецификация</v8:content>
 												</v8:item>
 											</Title>
-											<Width>23</Width>
-											<HorizontalStretch>false</HorizontalStretch>
-											<ContextMenu name="CountryOfOriginContextMenu" id="134"/>
-											<ExtendedTooltip name="CountryOfOriginExtendedTooltip" id="192"/>
-											<Events>
-												<Event name="OnChange">CountryOfOriginOnChange</Event>
-											</Events>
-										</InputField>
+											<ToolTip>
+												<v8:item>
+													<v8:lang>en</v8:lang>
+													<v8:content>Vendor specification</v8:content>
+												</v8:item>
+												<v8:item>
+													<v8:lang>ru</v8:lang>
+													<v8:content>Поставщик спецификация</v8:content>
+												</v8:item>
+											</ToolTip>
+											<Group>Vertical</Group>
+											<Representation>None</Representation>
+											<ShowTitle>false</ShowTitle>
+											<ExtendedTooltip name="VendorSpecificationExtendedTooltip" id="188"/>
+											<ChildItems>
+												<InputField name="Vendor" id="115">
+													<DataPath>Object.Vendor</DataPath>
+													<EditMode>EnterOnInput</EditMode>
+													<Width>23</Width>
+													<HorizontalStretch>false</HorizontalStretch>
+													<Wrap>false</Wrap>
+													<ContextMenu name="VendorContextMenu" id="116"/>
+													<ExtendedTooltip name="VendorExtendedTooltip" id="189"/>
+												</InputField>
+												<InputField name="ReplenishmentMethod" id="106">
+													<DataPath>Object.ReplenishmentMethod</DataPath>
+													<EditMode>EnterOnInput</EditMode>
+													<Width>23</Width>
+													<HorizontalStretch>false</HorizontalStretch>
+													<Wrap>false</Wrap>
+													<DropListButton>false</DropListButton>
+													<ListChoiceMode>true</ListChoiceMode>
+													<ChoiceList>
+														<xr:Item>
+															<xr:Presentation/>
+															<xr:CheckState>0</xr:CheckState>
+															<xr:Value xsi:type="FormChoiceListDesTimeValue">
+																<Presentation>
+																	<v8:item>
+																		<v8:lang>en</v8:lang>
+																		<v8:content>Purchase</v8:content>
+																	</v8:item>
+																	<v8:item>
+																		<v8:lang>ru</v8:lang>
+																		<v8:content>Purchase</v8:content>
+																	</v8:item>
+																</Presentation>
+																<Value xsi:type="xr:DesignTimeRef">Enum.InventoryReplenishmentMethods.EnumValue.Purchase</Value>
+															</xr:Value>
+														</xr:Item>
+													</ChoiceList>
+													<ChoiceListButton>true</ChoiceListButton>
+													<ContextMenu name="ReplenishmentMethodContextMenu" id="107"/>
+													<ExtendedTooltip name="ReplenishmentMethodExtendedTooltip" id="185"/>
+												</InputField>
+												<InputField name="CountryOfOrigin" id="133">
+													<DataPath>Object.CountryOfOrigin</DataPath>
+													<Title>
+														<v8:item>
+															<v8:lang>en</v8:lang>
+															<v8:content>Country of origin</v8:content>
+														</v8:item>
+														<v8:item>
+															<v8:lang>ru</v8:lang>
+															<v8:content>Страна происхождения</v8:content>
+														</v8:item>
+													</Title>
+													<Width>23</Width>
+													<HorizontalStretch>false</HorizontalStretch>
+													<ContextMenu name="CountryOfOriginContextMenu" id="134"/>
+													<ExtendedTooltip name="CountryOfOriginExtendedTooltip" id="192"/>
+													<Events>
+														<Event name="OnChange">CountryOfOriginOnChange</Event>
+													</Events>
+												</InputField>
+											</ChildItems>
+										</UsualGroup>
+										<UsualGroup name="ReplenishmentmentParameters" id="101">
+											<Title>
+												<v8:item>
+													<v8:lang>en</v8:lang>
+													<v8:content>Replenishmentment parameters</v8:content>
+												</v8:item>
+												<v8:item>
+													<v8:lang>ru</v8:lang>
+													<v8:content>Параметры пополнения</v8:content>
+												</v8:item>
+											</Title>
+											<ToolTip>
+												<v8:item>
+													<v8:lang>en</v8:lang>
+													<v8:content>Parameters replenishment</v8:content>
+												</v8:item>
+												<v8:item>
+													<v8:lang>ru</v8:lang>
+													<v8:content>Параметры пополнения запасов.</v8:content>
+												</v8:item>
+											</ToolTip>
+											<Group>Vertical</Group>
+											<Representation>None</Representation>
+											<ShowTitle>false</ShowTitle>
+											<ExtendedTooltip name="ReplenishmentmentParametersExtendedTooltip" id="184"/>
+											<ChildItems>
+												<InputField name="Specification" id="117">
+													<DataPath>Object.Specification</DataPath>
+													<EditMode>EnterOnInput</EditMode>
+													<Width>23</Width>
+													<HorizontalStretch>false</HorizontalStretch>
+													<Wrap>false</Wrap>
+													<ContextMenu name="SpecificationContextMenu" id="118"/>
+													<ExtendedTooltip name="SpecificationExtendedTooltip" id="190"/>
+													<Events>
+														<Event name="StartChoice">SpecificationStartChoice</Event>
+													</Events>
+												</InputField>
+												<InputField name="ReplenishmentDeadline" id="108">
+													<DataPath>Object.ReplenishmentDeadline</DataPath>
+													<EditMode>EnterOnInput</EditMode>
+													<Width>14</Width>
+													<Wrap>false</Wrap>
+													<ContextMenu name="ReplenishmentDeadlineContextMenu" id="109"/>
+													<ExtendedTooltip name="ReplenishmentDeadlineExtendedTooltip" id="186"/>
+												</InputField>
+												<InputField name="TimeNorm" id="120">
+													<DataPath>Object.TimeNorm</DataPath>
+													<Width>14</Width>
+													<Wrap>false</Wrap>
+													<ContextMenu name="TimeNormContextMenu" id="121"/>
+													<ExtendedTooltip name="TimeNormExtendedTooltip" id="187"/>
+												</InputField>
+											</ChildItems>
+										</UsualGroup>
 									</ChildItems>
 								</UsualGroup>
-								<UsualGroup name="ReplenishmentmentParameters" id="101">
+								<UsualGroup name="Guarantee" id="261">
 									<Title>
 										<v8:item>
 											<v8:lang>en</v8:lang>
-											<v8:content>Replenishmentment parameters</v8:content>
-										</v8:item>
-										<v8:item>
-											<v8:lang>ru</v8:lang>
-											<v8:content>Параметры пополнения</v8:content>
+											<v8:content>Guarantee</v8:content>
 										</v8:item>
 									</Title>
 									<ToolTip>
 										<v8:item>
 											<v8:lang>en</v8:lang>
-											<v8:content>Parameters replenishment</v8:content>
-										</v8:item>
-										<v8:item>
-											<v8:lang>ru</v8:lang>
-											<v8:content>Параметры пополнения запасов.</v8:content>
+											<v8:content>Guarantee</v8:content>
 										</v8:item>
 									</ToolTip>
-									<Group>Vertical</Group>
 									<Representation>None</Representation>
 									<ShowTitle>false</ShowTitle>
-									<ExtendedTooltip name="ReplenishmentmentParametersExtendedTooltip" id="184"/>
+									<ExtendedTooltip name="GuaranteeExtendedTooltip" id="262"/>
 									<ChildItems>
-										<InputField name="Specification" id="117">
-											<DataPath>Object.Specification</DataPath>
-											<EditMode>EnterOnInput</EditMode>
-											<Width>23</Width>
-											<HorizontalStretch>false</HorizontalStretch>
-											<Wrap>false</Wrap>
-											<ContextMenu name="SpecificationContextMenu" id="118"/>
-											<ExtendedTooltip name="SpecificationExtendedTooltip" id="190"/>
-											<Events>
-												<Event name="StartChoice">SpecificationStartChoice</Event>
-											</Events>
+										<InputField name="GuaranteePeriod" id="255">
+											<DataPath>Object.GuaranteePeriod</DataPath>
+											<ContextMenu name="GuaranteePeriodContextMenu" id="256"/>
+											<ExtendedTooltip name="GuaranteePeriodExtendedTooltip" id="257"/>
 										</InputField>
-										<InputField name="ReplenishmentDeadline" id="108">
-											<DataPath>Object.ReplenishmentDeadline</DataPath>
-											<EditMode>EnterOnInput</EditMode>
-											<Width>14</Width>
-											<Wrap>false</Wrap>
-											<ContextMenu name="ReplenishmentDeadlineContextMenu" id="109"/>
-											<ExtendedTooltip name="ReplenishmentDeadlineExtendedTooltip" id="186"/>
-										</InputField>
-										<InputField name="TimeNorm" id="120">
-											<DataPath>Object.TimeNorm</DataPath>
-											<Width>14</Width>
-											<Wrap>false</Wrap>
-											<ContextMenu name="TimeNormContextMenu" id="121"/>
-											<ExtendedTooltip name="TimeNormExtendedTooltip" id="187"/>
-										</InputField>
+										<CheckBoxField name="WriteOutTheGuaranteeCard" id="258">
+											<DataPath>Object.WriteOutTheGuaranteeCard</DataPath>
+											<TitleLocation>Right</TitleLocation>
+											<CheckBoxType>Auto</CheckBoxType>
+											<ContextMenu name="WriteOutTheGuaranteeCardContextMenu" id="259"/>
+											<ExtendedTooltip name="WriteOutTheGuaranteeCardExtendedTooltip" id="260"/>
+										</CheckBoxField>
 									</ChildItems>
 								</UsualGroup>
 							</ChildItems>
@@ -1168,6 +1207,13 @@
 									<CheckBoxType>Auto</CheckBoxType>
 									<ContextMenu name="UseBatchContextMenu" id="52"/>
 									<ExtendedTooltip name="UseBatchExtendedTooltip" id="195"/>
+								</CheckBoxField>
+								<CheckBoxField name="UseSerialNumbers" id="252">
+									<DataPath>Object.UseSerialNumbers</DataPath>
+									<TitleLocation>Right</TitleLocation>
+									<CheckBoxType>Auto</CheckBoxType>
+									<ContextMenu name="UseSerialNumbersContextMenu" id="253"/>
+									<ExtendedTooltip name="UseSerialNumbersExtendedTooltip" id="254"/>
 								</CheckBoxField>
 							</ChildItems>
 						</UsualGroup>

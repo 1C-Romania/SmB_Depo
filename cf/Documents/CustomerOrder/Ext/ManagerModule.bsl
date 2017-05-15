@@ -1,113 +1,5 @@
 ﻿#If Server Or ThickClientOrdinaryApplication Or ExternalConnection Then
 
-#Region EventHandlers
-
-Procedure FormGetProcessing(FormKind, Parameters, SelectedForm, AdditionalInformation, StandardProcessing)
-	
-	OperationKind = Undefined;
-	
-	If FormKind = "DocumentForm" Or FormKind = "ObjectForm" Then
-		
-		If Parameters.Property("Key") AND ValueIsFilled(Parameters.Key) Then
-			OperationKind = CommonUse.ObjectAttributeValue(Parameters.Key, "OperationKind");
-		EndIf;
-		
-		// If the document is copied, you receive the kind of operation from copied document.
-		If Not ValueIsFilled(OperationKind) Then
-			If Parameters.Property("CopyingValue")
-				AND ValueIsFilled(Parameters.CopyingValue) Then
-				OperationKind = CommonUse.ObjectAttributeValue(Parameters.CopyingValue, "OperationKind");
-			EndIf;
-		EndIf;
-		
-		If Not ValueIsFilled(OperationKind) Then
-			If Parameters.Property("FillingValues") 
-				AND TypeOf(Parameters.FillingValues) = Type("Structure") Then
-				If Parameters.FillingValues.Property("OperationKind") Then
-					OperationKind = Parameters.FillingValues.OperationKind;
-				EndIf;
-			EndIf;
-		EndIf;
-		
-		StandardProcessing = False;
-		CustomerOrderForms = GetOperationKindMapToForms();
-		SelectedForm = CustomerOrderForms[OperationKind];
-		If SelectedForm = Undefined Then
-			SelectedForm = "DocumentForm";
-		EndIf;
-		
-	ElsIf FormKind = "ListForm" Then
-		
-		If Parameters.Property("WorkOrder") Then
-			OperationKind = Enums.OperationKindsCustomerOrder.JobOrder;
-		EndIf;
-		
-		// If a selection is set, then you receive operation kind from selection.
-		If Not ValueIsFilled(OperationKind) Then
-			If Parameters.Property("Filter") AND Parameters.Filter.Property("OperationKind")
-				AND TypeOf(Parameters.Filter.OperationKind) = Type("EnumRef.OperationKindsCustomerOrder") Then
-				OperationKind = Parameters.Filter.OperationKind;
-			EndIf;
-		EndIf;
-		
-		StandardProcessing = False;
-		CustomerOrderForms = GetOperationKindMapToForms(True);
-		SelectedForm = CustomerOrderForms[OperationKind];
-		If SelectedForm = Undefined Then
-			SelectedForm = "ListForm";
-		EndIf;
-		
-	EndIf;
-	
-EndProcedure
-
-Procedure PresentationFieldsGetProcessing(Fields, StandardProcessing)
-	
-	StandardProcessing = False;
-	Fields.Add("Ref");
-	Fields.Add("Date");
-	Fields.Add("Number");
-	Fields.Add("OperationKind");
-	Fields.Add("Posted");
-	Fields.Add("DeletionMark");
-	
-EndProcedure
-
-Procedure PresentationGetProcessing(Data, Presentation, StandardProcessing)
-	
-	If Data.Number = Null Then
-		Return;
-	EndIf;
-	
-	StandardProcessing = False;
-	
-	If Data.Posted Then
-		State = "";
-	Else
-		If Data.DeletionMark Then
-			State = NStr("ru = '(удален)'; en = '(deleted)'");
-		ElsIf Data.Property("Posted") AND Not Data.Posted Then
-			State = NStr("ru = '(не проведен)'; en = '(not posted)'");
-		EndIf;
-	EndIf;
-	
-	If Data.OperationKind = PredefinedValue("Enum.OperationKindsCustomerOrder.JobOrder") Then
-		TitlePresentation = NStr("ru = 'Заказ-наряд'; en = 'Work order'");
-	Else
-		TitlePresentation = NStr("ru = 'Заказ покупателя'; en = 'Customer order'");
-	EndIf;
-	
-	Presentation = StringFunctionsClientServer.SubstituteParametersInString(
-		NStr("ru = '%1 %2 от %3 %4'; en = '%1 %2 from %3 %4'"),
-		TitlePresentation,
-		?(Data.Property("Number"), ObjectPrefixationClientServer.GetNumberForPrinting(Data.Number, True, True), ""),
-		Format(Data.Date, "DLF=D"),
-		State);
-	
-EndProcedure
-
-#EndRegion
-
 // Generates a table of values that contains the data for the register.
 // Saves the tables of values in the properties of the structure "AdditionalProperties".
 //
@@ -4216,6 +4108,100 @@ Procedure GenerateTableInvoicesAndOrdersPayment(DocumentRefCustomerOrder, Struct
 	
 EndProcedure // GenerateTableInvoicesAndOrdersPayment()
 
+// Generates a table of values that contains the data for the SerialNumbersGuarantees information register.
+// Tables of values saves into the properties of the structure "AdditionalProperties".
+//
+Procedure GenerateTableSerialNumbers(DocumentRef, StructureAdditionalProperties)
+	
+	If DocumentRef.SerialNumbers.Count()=0 AND DocumentRef.SerialNumbersMaterials.Count()=0 Then
+		StructureAdditionalProperties.TableForRegisterRecords.Insert("TableSerialNumbersBalance", New ValueTable);
+		StructureAdditionalProperties.TableForRegisterRecords.Insert("TableSerialNumbersGuarantees", New ValueTable);
+		Return;
+	EndIf;
+	
+	Query = New Query;
+	Query.TempTablesManager = StructureAdditionalProperties.ForPosting.StructureTemporaryTables.TempTablesManager;
+	Query.Text =
+	"SELECT DISTINCT
+	|	SNCommonTable.Period,
+	|	SNCommonTable.RecordType,
+	|	SNCommonTable.EventDate,
+	|	SNCommonTable.Operation,
+	|	SNCommonTable.SerialNumber,
+	|	SNCommonTable.Company,
+	|	SNCommonTable.ProductsAndServices,
+	|	SNCommonTable.Characteristic,
+	|	SNCommonTable.Batch,
+	|	SNCommonTable.StructuralUnit,
+	|	SNCommonTable.Cell,
+	|	SUM(SNCommonTable.Quantity) AS Quantity
+	|FROM
+	|	(SELECT
+	|		TemporaryTableInventory.Period AS Period,
+	|		VALUE(AccumulationRecordType.Expense) AS RecordType,
+	|		TemporaryTableInventory.Period AS EventDate,
+	|		VALUE(Enum.SerialNumbersOperations.Expense) AS Operation,
+	|		SerialNumbers.SerialNumber AS SerialNumber,
+	|		TemporaryTableInventory.Company AS Company,
+	|		TemporaryTableInventory.ProductsAndServices AS ProductsAndServices,
+	|		TemporaryTableInventory.Characteristic AS Characteristic,
+	|		TemporaryTableInventory.Batch AS Batch,
+	|		TemporaryTableInventory.StructuralUnit AS StructuralUnit,
+	|		TemporaryTableInventory.Cell AS Cell,
+	|		1 AS Quantity
+	|	FROM
+	|		TemporaryTableProducts AS TemporaryTableInventory
+	|			INNER JOIN TemporaryTableSerialNumbers AS SerialNumbers
+	|			ON TemporaryTableInventory.ConnectionKey = SerialNumbers.ConnectionKey
+	|	WHERE
+	|		TemporaryTableInventory.OrderStatus = VALUE(Enum.OrderStatuses.Completed)
+	|	
+	|	UNION ALL
+	|	
+	|	SELECT
+	|		TemporaryTableConsumables.Period,
+	|		VALUE(AccumulationRecordType.Expense),
+	|		TemporaryTableConsumables.Period,
+	|		VALUE(Enum.SerialNumbersOperations.Expense),
+	|		SerialNumbers.SerialNumber,
+	|		TemporaryTableConsumables.Company,
+	|		TemporaryTableConsumables.ProductsAndServices,
+	|		TemporaryTableConsumables.Characteristic,
+	|		TemporaryTableConsumables.Batch,
+	|		TemporaryTableConsumables.InventoryStructuralUnit,
+	|		TemporaryTableConsumables.Cell,
+	|		1
+	|	FROM
+	|		TemporaryTableConsumables AS TemporaryTableConsumables
+	|			INNER JOIN TemporaryTableSerialNumbersConsumables AS SerialNumbers
+	|			ON TemporaryTableConsumables.ConnectionKeySerialNumbers = SerialNumbers.ConnectionKey
+	|	WHERE
+	|		TemporaryTableConsumables.OrderStatus = VALUE(Enum.OrderStatuses.Completed)) AS SNCommonTable
+	|
+	|GROUP BY
+	|	SNCommonTable.Period,
+	|	SNCommonTable.EventDate,
+	|	SNCommonTable.Operation,
+	|	SNCommonTable.SerialNumber,
+	|	SNCommonTable.Company,
+	|	SNCommonTable.ProductsAndServices,
+	|	SNCommonTable.Characteristic,
+	|	SNCommonTable.Batch,
+	|	SNCommonTable.StructuralUnit,
+	|	SNCommonTable.Cell,
+	|	SNCommonTable.RecordType";
+	
+	QueryResult = Query.Execute().Unload();
+	
+	StructureAdditionalProperties.TableForRegisterRecords.Insert("TableSerialNumbersGuarantees", QueryResult);
+	If StructureAdditionalProperties.AccountingPolicy.SerialNumbersBalance Then
+		StructureAdditionalProperties.TableForRegisterRecords.Insert("TableSerialNumbersBalance", QueryResult);
+	Else
+		StructureAdditionalProperties.TableForRegisterRecords.Insert("TableSerialNumbersBalance", New ValueTable);
+	EndIf; 
+	
+EndProcedure
+
 #Region DiscountCards
 
 // Generates values table creating data for posting by the SalesByDiscountCards register.
@@ -4668,6 +4654,7 @@ Procedure InitializeDocumentDataJobOrder(DocumentRefCustomerOrder, StructureAddi
 	|	JobOrderMaterials.ProductsAndServices.ProductsAndServicesType AS ProductsAndServicesType,
 	|	JobOrderMaterials.Ref.Start AS Start1,
 	|	JobOrderMaterials.Ref.OrderState.OrderStatus AS OrderStatus
+	|	JobOrderMaterials.ConnectionKeySerialNumbers
 	|INTO TemporaryTableConsumables
 	|FROM
 	|	Document.CustomerOrder.Materials AS JobOrderMaterials
@@ -4881,7 +4868,33 @@ Procedure InitializeDocumentDataJobOrder(DocumentRefCustomerOrder, StructureAddi
 	|	Constant.NationalCurrency AS ConstantNationalCurrency
 	|WHERE
 	|	CustomerOrderDiscountsMarkups.Ref = &Ref
-	|	AND CustomerOrderDiscountsMarkups.Amount <> 0";
+	|	AND CustomerOrderDiscountsMarkups.Amount <> 0
+	|;
+	|
+	|////////////////////////////////////////////////////////////////////////////////
+	|SELECT
+	|	CustomerOrderSerialNumbers.ConnectionKey,
+	|	CustomerOrderSerialNumbers.SerialNumber
+	|INTO TemporaryTableSerialNumbers
+	|FROM
+	|	Document.CustomerOrder.SerialNumbers AS CustomerOrderSerialNumbers
+	|WHERE
+	|	CustomerOrderSerialNumbers.Ref = &Ref
+	|	AND &UseSerialNumbers
+	|	AND NOT CustomerOrderSerialNumbers.Ref.StructuralUnitReserve.OrderWarehouse
+	|;
+	|
+	|////////////////////////////////////////////////////////////////////////////////
+	|SELECT
+	|	CustomerOrderSerialNumbers.ConnectionKey,
+	|	CustomerOrderSerialNumbers.SerialNumber
+	|INTO TemporaryTableSerialNumbersMaterials
+	|FROM
+	|	Document.CustomerOrder.SerialNumbersMaterials AS CustomerOrderSerialNumbers
+	|WHERE
+	|	CustomerOrderSerialNumbers.Ref = &Ref
+	|	AND &UseSerialNumbers
+	|	AND NOT CustomerOrderSerialNumbers.Ref.StructuralUnitReserve.OrderWarehouse";
 	
 	Query.SetParameter("Ref", DocumentRefCustomerOrder);
 	Query.SetParameter("Company", StructureAdditionalProperties.ForPosting.Company);
@@ -4889,7 +4902,9 @@ Procedure InitializeDocumentDataJobOrder(DocumentRefCustomerOrder, StructureAddi
 	Query.SetParameter("UseCharacteristics", StructureAdditionalProperties.AccountingPolicy.UseCharacteristics);
 	Query.SetParameter("UseBatches", StructureAdditionalProperties.AccountingPolicy.UseBatches);
 	Query.SetParameter("AccountingByCells", StructureAdditionalProperties.AccountingPolicy.AccountingByCells);
-	Query.SetParameter("InventoryDistribution", NStr("en='Inventory distribution';ru='Распределение запасов'"));
+	Query.SetParameter("InventoryDistribution", NStr("ru = 'Распределение запасов'; en = 'Inventory distribution'"));
+	
+	Query.SetParameter("UseSerialNumbers", StructureAdditionalProperties.AccountingPolicy.UseSerialNumbers);
 	
 	Query.SetParameter("AccountingCurrency", Constants.AccountingCurrency.Get());
 	Query.SetParameter("CurrencyNational", Constants.NationalCurrency.Get());
@@ -4926,6 +4941,9 @@ Procedure InitializeDocumentDataJobOrder(DocumentRefCustomerOrder, StructureAddi
 	GenerateTableSalesByDiscountCard(DocumentRefCustomerOrder, StructureAdditionalProperties);
 	// AutomaticDiscounts
 	GenerateTableSalesByAutomaticDiscountsApplied(DocumentRefCustomerOrder, StructureAdditionalProperties);
+	
+	// Serial numbers
+	GenerateTableSerialNumbers(DocumentRefCustomerOrder, StructureAdditionalProperties);
 	
 	StructureAdditionalProperties.TableForRegisterRecords.Insert("TableOrdersPlacement", New ValueTable);
 	
@@ -5210,6 +5228,10 @@ Procedure InitializeDocumentDataCustomerOrder(DocumentRefCustomerOrder, Structur
 	// AutomaticDiscounts
 	StructureAdditionalProperties.TableForRegisterRecords.Insert("TableAutomaticDiscountsApplied", New ValueTable);
 	
+	//Serial numbers - only for job order
+	StructureAdditionalProperties.TableForRegisterRecords.Insert("TableSerialNumbersBalance", New ValueTable);
+	StructureAdditionalProperties.TableForRegisterRecords.Insert("TableSerialNumbersGuarantees", New ValueTable);
+	
 	PerformanceEstimationClientServer.StartTimeMeasurement("CustomerOrderDocumentPostingGeneratingCostTable");
 	
 	GenerateTableInventory(DocumentRefCustomerOrder, StructureAdditionalProperties);
@@ -5460,6 +5482,39 @@ Function GenerateQueryTextBalancesAccountsReceivable()
 	
 EndFunction // GenerateQueryTextBalancesAccountsReceivable()
 
+Function GenerateQueryTextBalancesSerialNumbers()
+	
+	RequestText =
+	"SELECT
+	|	RegisterRecordsSerialNumbersChange.LineNumber AS LineNumber,
+	|	RegisterRecordsSerialNumbersChange.SerialNumber AS SerialNumberPresentation,
+	|	RegisterRecordsSerialNumbersChange.StructuralUnit AS StructuralUnitPresentation,
+	|	RegisterRecordsSerialNumbersChange.ProductsAndServices AS ProductsAndServicesPresentation,
+	|	RegisterRecordsSerialNumbersChange.Characteristic AS CharacteristicPresentation,
+	|	RegisterRecordsSerialNumbersChange.Batch AS BatchPresentation,
+	|	RegisterRecordsSerialNumbersChange.Cell AS CellаPresentation,
+	|	SerialNumbersBalance.StructuralUnit.StructuralUnitType AS StructuralUnitType,
+	|	SerialNumbersBalance.ProductsAndServices.MeasurementUnit AS MeasurementUnitPresentation,
+	|	ISNULL(RegisterRecordsSerialNumbersChange.QuantityChange, 0) + ISNULL(SerialNumbersBalance.QuantityBalance, 0) AS BalanceSerialNumbers,
+	|	ISNULL(SerialNumbersBalance.QuantityBalance, 0) AS QuantityBalanceSerialNumbers
+	|FROM
+	|	RegisterRecordsSerialNumbersChange AS RegisterRecordsSerialNumbersChange
+	|		INNER JOIN AccumulationRegister.SerialNumbers.Balance(&ControlTime, ) AS SerialNumbersBalance
+	|		ON RegisterRecordsSerialNumbersChange.StructuralUnit = SerialNumbersBalance.StructuralUnit
+	|			AND RegisterRecordsSerialNumbersChange.ProductsAndServices = SerialNumbersBalance.ProductsAndServices
+	|			AND RegisterRecordsSerialNumbersChange.Characteristic = SerialNumbersBalance.Characteristic
+	|			AND RegisterRecordsSerialNumbersChange.Batch = SerialNumbersBalance.Batch
+	|			AND RegisterRecordsSerialNumbersChange.SerialNumber = SerialNumbersBalance.SerialNumber
+	|			AND RegisterRecordsSerialNumbersChange.Cell = SerialNumbersBalance.Cell
+	|			AND (ISNULL(SerialNumbersBalance.QuantityBalance, 0) < 0)
+	|
+	|ORDER BY
+	|	LineNumber";
+	
+	Return RequestText + GenerateBatchQueryTemplate();
+	
+EndFunction // GenerateQueryTextBalancesSerialNumbers()
+
 // Controls the occurrence of negative balances.
 //
 Procedure RunControl(DocumentObjectCustomerOrder, AdditionalProperties, Cancel, PostingDelete = False) Export
@@ -5474,19 +5529,21 @@ Procedure RunControl(DocumentObjectCustomerOrder, AdditionalProperties, Cancel, 
 	// "RegisterRecordsInventoryChange" "RegisterRecordsCustomerOrdersChange",
 	// "RegisterRecordsInventoryDemandChange", "RegisterRecordsAccountsReceivableChange" contain records, execute
 	// the control of balances.
-	
+		
 	If StructureTemporaryTables.RegisterRecordsInventoryInWarehousesChange
 		OR StructureTemporaryTables.RegisterRecordsInventoryChange
 		OR StructureTemporaryTables.RegisterRecordsCustomerOrdersChange
 		OR StructureTemporaryTables.RegisterRecordsInventoryDemandChange
-		OR StructureTemporaryTables.RegisterRecordsAccountsReceivableChange Then
+		OR StructureTemporaryTables.RegisterRecordsAccountsReceivableChange
+		OR StructureTemporaryTables.RegisterRecordsSerialNumbersChange Then
 		
 		Query = New Query;
 		Query.Text = GenerateQueryTextBalancesInventoryInWarehouses() // [0]
 		+ GenerateQueryTextBalancesInventory() // [1]
 		+ GenerateQueryTextBalancesCustomersOrders() // [2]
 		+ GenerateQueryTextBalancesInventoryDemand() // [3]
-		+ GenerateQueryTextBalancesAccountsReceivable(); // [4]
+		+ GenerateQueryTextBalancesAccountsReceivable() // [4]
+		+ GenerateQueryTextBalancesSerialNumbers(); // [5]
 		
 		Query.TempTablesManager = StructureTemporaryTables.TempTablesManager;
 		Query.SetParameter("ControlTime", AdditionalProperties.ForPosting.ControlTime);
@@ -5521,6 +5578,12 @@ Procedure RunControl(DocumentObjectCustomerOrder, AdditionalProperties, Cancel, 
 		If Not ResultsArray[4].IsEmpty() Then
 			QueryResultSelection = ResultsArray[4].Select();
 			SmallBusinessServer.ShowMessageAboutPostingToAccountsReceivableRegisterErrors(DocumentObjectCustomerOrder, QueryResultSelection, Cancel);
+		EndIf;
+		
+		// Negative balance of serial numbers in the warehouse.
+		If Not ResultsArray[5].IsEmpty() Then
+			QueryResultSelection = ResultsArray[5].Select();
+			SmallBusinessServer.ShowMessageAboutPostingSerialNumbersRegisterErrors(DocumentObjectCustomerOrder, QueryResultSelection, Cancel);
 		EndIf;
 		
 	EndIf;
@@ -5713,6 +5776,10 @@ Procedure CheckAbilityOfEnteringByCustomerOrder(FillingData, AttributeValues) Ex
 	EndIf;
 	
 EndProcedure // CheckPossibilityToInputBasedOnCustomerOrder()
+
+#Region EventsHandlers
+
+#EndRegion
 
 #Region PrintInterface
 
@@ -6559,7 +6626,11 @@ Function PrintCustomerInvoice(ObjectsArray, PrintObjects, TemplateName)
 		|	CustomerOrder.Counterparty AS Counterparty,
 		|	CustomerOrder.AmountIncludesVAT AS AmountIncludesVAT,
 		|	CustomerOrder.DocumentCurrency AS DocumentCurrency,
-		|	CustomerOrder.Company.Prefix AS Prefix
+		|	CustomerOrder.Company.Prefix AS Prefix,
+		|	CustomerOrder.SerialNumbers.(
+		|		SerialNumber,
+		|		ConnectionKey
+		|	)
 		|FROM
 		|	Document.CustomerOrder AS CustomerOrder
 		|WHERE
@@ -6593,7 +6664,8 @@ Function PrintCustomerInvoice(ObjectsArray, PrintObjects, TemplateName)
 		|		ELSE 0
 		|	END AS IsDiscount,
 		|	CustomerOrderInventory.ProductsAndServices.ProductsAndServicesType AS ProductsAndServicesType,
-		|	0 AS Priority
+		|	0 AS Priority,
+		|	CustomerOrderInventory.ConnectionKey
 		|FROM
 		|	Document.CustomerOrder.Inventory AS CustomerOrderInventory
 		|WHERE
@@ -6627,7 +6699,8 @@ Function PrintCustomerInvoice(ObjectsArray, PrintObjects, TemplateName)
 		|		ELSE 0
 		|	END,
 		|	CustomerOrderWorks.ProductsAndServices.ProductsAndServicesType,
-		|	1
+		|	1,
+		|	NULL
 		|FROM
 		|	Document.CustomerOrder.Works AS CustomerOrderWorks
 		|WHERE
@@ -6642,6 +6715,7 @@ Function PrintCustomerInvoice(ObjectsArray, PrintObjects, TemplateName)
 		Header = BatchQueryExecutionResult[0].Select();
 		Header.Next();
 		
+		LinesSelectionSerialNumbers = Header.SerialNumbers.Select();
 		LinesSelectionInventory = BatchQueryExecutionResult[1].Select();
 
 		SpreadsheetDocument.PrintParametersName = "PRINT_PARAMETRS_CustomerOrder_CustomerInvoice";
@@ -6739,8 +6813,9 @@ Function PrintCustomerInvoice(ObjectsArray, PrintObjects, TemplateName)
 			If ValueIsFilled(LinesSelectionInventory.Content) Then
 				TemplateArea.Parameters.ProductDescription = LinesSelectionInventory.Content;
 			Else
+				StringSerialNumbers = WorkWithSerialNumbers.SerialNumbersStringFromSelection(LinesSelectionSerialNumbers, LinesSelectionInventory.ConnectionKey);
 				TemplateArea.Parameters.ProductDescription = SmallBusinessServer.GetProductsAndServicesPresentationForPrinting(LinesSelectionInventory.InventoryItem, 
-																	LinesSelectionInventory.Characteristic, LinesSelectionInventory.SKU);
+																	LinesSelectionInventory.Characteristic, LinesSelectionInventory.SKU, StringSerialNumbers);
 			EndIf;
 																
 			If AreDiscounts Then
@@ -6853,7 +6928,8 @@ Function PrintJobOrder(ObjectsArray, PrintObjects, TemplateName)
 		|				THEN 1
 		|			ELSE 0
 		|		END AS IsDiscount,
-		|		AutomaticDiscountAmount
+		|		AutomaticDiscountAmount,
+		|		ConnectionKey
 		|	),
 		|	CustomerOrder.ConsumerMaterials.(
 		|		LineNumber AS LineNumber,
@@ -6866,6 +6942,10 @@ Function PrintJobOrder(ObjectsArray, PrintObjects, TemplateName)
 		|		MeasurementUnit.Description AS MeasurementUnit,
 		|		Quantity AS Quantity,
 		|		Characteristic
+		|	),
+		|	CustomerOrder.SerialNumbers.(
+		|		SerialNumber,
+		|		ConnectionKey
 		|	)
 		|FROM
 		|	Document.CustomerOrder AS CustomerOrder
@@ -6939,6 +7019,7 @@ Function PrintJobOrder(ObjectsArray, PrintObjects, TemplateName)
 		SelectionRowsWork = QueryResultWork.Select(QueryResultIteration.ByGroups, "ConnectionKey");
 		StringSelectionProducts = Header.Inventory.Select();
 		RowsOfCustomerMaterialsSelection = Header.ConsumerMaterials.Select();
+		LinesSelectionSerialNumbers = Header.SerialNumbers.Select();
 		
 		SpreadsheetDocument.PrintParametersName = "PRINT_PARAMETERS_PF_MXL_OrderCustomerJobOrder";
 		
@@ -7089,8 +7170,9 @@ Function PrintJobOrder(ObjectsArray, PrintObjects, TemplateName)
 				If ValueIsFilled(StringSelectionProducts.Content) Then
 					TemplateArea.Parameters.Product = StringSelectionProducts.Content;
 				Else
+					StringSerialNumbers = WorkWithSerialNumbers.SerialNumbersStringFromSelection(LinesSelectionSerialNumbers, StringSelectionProducts.ConnectionKey);
 					TemplateArea.Parameters.Product = SmallBusinessServer.GetProductsAndServicesPresentationForPrinting(StringSelectionProducts.Product, 
-																		StringSelectionProducts.Characteristic, StringSelectionProducts.SKU);
+																		StringSelectionProducts.Characteristic, StringSelectionProducts.SKU, StringSerialNumbers);
 				EndIf;
 				
 				If AreDiscounts Then
@@ -7211,6 +7293,10 @@ Function PrintForm(ObjectsArray, PrintObjects, TemplateName)
 		
 		Return PrintJobOrder(ObjectsArray, PrintObjects, TemplateName);
 		
+	ElsIf TemplateName = "GuaranteeCard" Then
+		
+		Return WorkWithProductsServer.PrintGuaranteeCard(ObjectsArray, PrintObjects, TemplateName);
+		
 	EndIf;
 	
 EndFunction // PrintForm()
@@ -7255,6 +7341,10 @@ Procedure Print(ObjectsArray, PrintParameters, PrintFormsCollection, PrintObject
 	ElsIf PrintManagement.NeedToPrintTemplate(PrintFormsCollection, "JobOrder") Then
 		
 		PrintManagement.OutputSpreadsheetDocumentToCollection(PrintFormsCollection, "JobOrder", "Job-order", PrintForm(ObjectsArray, PrintObjects, "JobOrder"));
+		
+	ElsIf PrintManagement.NeedToPrintTemplate(PrintFormsCollection, "GuaranteeCard") Then
+		
+		PrintManagement.OutputSpreadsheetDocumentToCollection(PrintFormsCollection, "GuaranteeCard", "Guarantee card", PrintForm(ObjectsArray, PrintObjects, "GuaranteeCard"));
 		
 	EndIf;
 	
@@ -7397,6 +7487,124 @@ Procedure AddPrintCommands(PrintCommands) Export
 	PrintCommand.CheckPostingBeforePrint = False;
 	PrintCommand.PlaceProperties = "GroupImportantCommandsJobOrder";
 	PrintCommand.Order = 96;
+	
+	// Appendix to contract
+	PrintCommand = PrintCommands.Add();
+	PrintCommand.ID = "GuaranteeCard";
+	PrintCommand.Presentation = NStr("ru = 'Гарантийный талон'; en = 'Guarantee card'");
+	PrintCommand.FormsList = "FormJobOrder,FormJobOrderList";
+	PrintCommand.CheckPostingBeforePrint = False;
+	PrintCommand.FunctionalOptions = "UseSerialNumbers";
+	PrintCommand.PlaceProperties = "GroupImportantCommandsJobOrder";
+	PrintCommand.Order = 102;
+	
+EndProcedure
+
+#EndRegion
+
+#Region EventHandlers
+
+Procedure FormGetProcessing(FormKind, Parameters, SelectedForm, AdditionalInformation, StandardProcessing)
+	
+	OperationKind = Undefined;
+	
+	If FormKind = "DocumentForm" Or FormKind = "ObjectForm" Then
+		
+		If Parameters.Property("Key") AND ValueIsFilled(Parameters.Key) Then
+			OperationKind = CommonUse.ObjectAttributeValue(Parameters.Key, "OperationKind");
+		EndIf;
+		
+		// If the document is copied, you receive the kind of operation from copied document.
+		If Not ValueIsFilled(OperationKind) Then
+			If Parameters.Property("CopyingValue")
+				AND ValueIsFilled(Parameters.CopyingValue) Then
+				OperationKind = CommonUse.ObjectAttributeValue(Parameters.CopyingValue, "OperationKind");
+			EndIf;
+		EndIf;
+		
+		If Not ValueIsFilled(OperationKind) Then
+			If Parameters.Property("FillingValues") 
+				AND TypeOf(Parameters.FillingValues) = Type("Structure") Then
+				If Parameters.FillingValues.Property("OperationKind") Then
+					OperationKind = Parameters.FillingValues.OperationKind;
+				EndIf;
+			EndIf;
+		EndIf;
+		
+		StandardProcessing = False;
+		CustomerOrderForms = GetOperationKindMapToForms();
+		SelectedForm = CustomerOrderForms[OperationKind];
+		If SelectedForm = Undefined Then
+			SelectedForm = "DocumentForm";
+		EndIf;
+		
+	ElsIf FormKind = "ListForm" Then
+		
+		If Parameters.Property("WorkOrder") Then
+			OperationKind = Enums.OperationKindsCustomerOrder.JobOrder;
+		EndIf;
+		
+		// If a selection is set, then you receive operation kind from selection.
+		If Not ValueIsFilled(OperationKind) Then
+			If Parameters.Property("Filter") AND Parameters.Filter.Property("OperationKind")
+				AND TypeOf(Parameters.Filter.OperationKind) = Type("EnumRef.OperationKindsCustomerOrder") Then
+				OperationKind = Parameters.Filter.OperationKind;
+			EndIf;
+		EndIf;
+		
+		StandardProcessing = False;
+		CustomerOrderForms = GetOperationKindMapToForms(True);
+		SelectedForm = CustomerOrderForms[OperationKind];
+		If SelectedForm = Undefined Then
+			SelectedForm = "ListForm";
+		EndIf;
+		
+	EndIf;
+	
+EndProcedure
+
+Procedure PresentationFieldsGetProcessing(Fields, StandardProcessing)
+	
+	StandardProcessing = False;
+	Fields.Add("Ref");
+	Fields.Add("Date");
+	Fields.Add("Number");
+	Fields.Add("OperationKind");
+	Fields.Add("Posted");
+	Fields.Add("DeletionMark");
+	
+EndProcedure
+
+Procedure PresentationGetProcessing(Data, Presentation, StandardProcessing)
+	
+	If Data.Number = Null Then
+		Return;
+	EndIf;
+	
+	StandardProcessing = False;
+	
+	If Data.Posted Then
+		State = "";
+	Else
+		If Data.DeletionMark Then
+			State = NStr("ru = '(удален)'; en = '(deleted)'");
+		ElsIf Data.Property("Posted") AND Not Data.Posted Then
+			State = NStr("ru = '(не проведен)'; en = '(not posted)'");
+		EndIf;
+	EndIf;
+	
+	If Data.OperationKind = PredefinedValue("Enum.OperationKindsCustomerOrder.JobOrder") Then
+		TitlePresentation = NStr("ru = 'Заказ-наряд'; en = 'Work order'");
+	Else
+		TitlePresentation = NStr("ru = 'Заказ покупателя'; en = 'Customer order'");
+	EndIf;
+	
+	Presentation = StringFunctionsClientServer.SubstituteParametersInString(
+		NStr("ru = '%1 %2 от %3 %4'; en = '%1 %2 from %3 %4'"),
+		TitlePresentation,
+		?(Data.Property("Number"), ObjectPrefixationClientServer.GetNumberForPrinting(Data.Number, True, True), ""),
+		Format(Data.Date, "DLF=D"),
+		State);
 	
 EndProcedure
 

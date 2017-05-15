@@ -29,14 +29,39 @@ Procedure InitializeDocumentData(DocumentRefGoodsReceipt, StructureAdditionalPro
 	|		ELSE VALUE(Catalog.ProductsAndServicesBatches.EmptyRef)
 	|	END AS Batch,
 	|	CASE
-	|		WHEN VALUETYPE(GoodsReceiptInventory.MeasurementUnit) = Type(Catalog.UOMClassifier)
+	|		WHEN VALUETYPE(GoodsReceiptInventory.MeasurementUnit) = TYPE(Catalog.UOMClassifier)
 	|			THEN GoodsReceiptInventory.Quantity
 	|		ELSE GoodsReceiptInventory.Quantity * GoodsReceiptInventory.MeasurementUnit.Factor
 	|	END AS Quantity
 	|FROM
 	|	Document.GoodsReceipt.Inventory AS GoodsReceiptInventory
 	|WHERE
-	|	GoodsReceiptInventory.Ref = &Ref");
+	|	GoodsReceiptInventory.Ref = &Ref
+	|;
+	|
+	|////////////////////////////////////////////////////////////////////////////////
+	|SELECT
+	|	TableInventory.Ref.Date AS Period,
+	|	VALUE(AccumulationRecordType.Receipt) AS RecordType,
+	|	TableInventory.Ref.Date AS EventDate,
+	|	VALUE(Enum.SerialNumbersOperations.Receipt) AS Operation,
+	|	TableSerialNumbers.SerialNumber AS SerialNumber,
+	|	&Company AS Company,
+	|	TableInventory.ProductsAndServices AS ProductsAndServices,
+	|	TableInventory.Characteristic AS Characteristic,
+	|	TableInventory.Batch AS Batch,
+	|	TableInventory.Ref.StructuralUnit AS StructuralUnit,
+	|	TableInventory.Ref.Cell AS Cell,
+	|	1 AS Quantity
+	|FROM
+	|	Document.GoodsReceipt.Inventory AS TableInventory
+	|		INNER JOIN Document.GoodsReceipt.SerialNumbers AS TableSerialNumbers
+	|		ON TableInventory.Ref = TableSerialNumbers.Ref
+	|			AND TableInventory.ConnectionKey = TableSerialNumbers.ConnectionKey
+	|WHERE
+	|	TableSerialNumbers.Ref = &Ref
+	|	AND &UseSerialNumbers
+	|	AND TableInventory.Ref.StructuralUnit.OrderWarehouse");
 	
 	Query.SetParameter("Ref", DocumentRefGoodsReceipt);
 	Query.SetParameter("Company", StructureAdditionalProperties.ForPosting.Company);
@@ -44,10 +69,21 @@ Procedure InitializeDocumentData(DocumentRefGoodsReceipt, StructureAdditionalPro
 	Query.SetParameter("AccountingByCells", StructureAdditionalProperties.AccountingPolicy.AccountingByCells);
 	Query.SetParameter("UseBatches", StructureAdditionalProperties.AccountingPolicy.UseBatches);
 	
+	Query.SetParameter("UseSerialNumbers", StructureAdditionalProperties.AccountingPolicy.UseSerialNumbers);
+	
 	ResultsArray = Query.ExecuteBatch();
 	
 	StructureAdditionalProperties.TableForRegisterRecords.Insert("TableInventoryInWarehouses", ResultsArray[0].Unload());
 	StructureAdditionalProperties.TableForRegisterRecords.Insert("TableInventoryForWarehouses", ResultsArray[0].Unload());
+	
+	// Serial numbers
+	QueryResult1 = ResultsArray[1].Unload();
+	StructureAdditionalProperties.TableForRegisterRecords.Insert("TableSerialNumbersGuarantees", QueryResult1);
+	If StructureAdditionalProperties.AccountingPolicy.SerialNumbersBalance Then
+		StructureAdditionalProperties.TableForRegisterRecords.Insert("TableSerialNumbersBalance", QueryResult1);
+	Else
+		StructureAdditionalProperties.TableForRegisterRecords.Insert("TableSerialNumbersBalance", New ValueTable);
+	EndIf; 
 	
 	// Creation of document postings.
 	SmallBusinessServer.GenerateTransactionsTable(DocumentRefGoodsReceipt, StructureAdditionalProperties);
@@ -166,7 +202,12 @@ Function PrintForm(ObjectsArray, PrintObjects, TemplateName)
 			|		ProductsAndServices.Code AS Code,
 			|		MeasurementUnit AS StorageUnit,
 			|		Quantity AS Quantity,
-			|		Characteristic
+			|		Characteristic,
+			|		ConnectionKey
+			|	),
+			|	GoodsReceipt.SerialNumbers.(
+			|		PRESENTATION(GoodsReceipt.SerialNumbers.SerialNumber) AS SerialNumber,
+			|		ConnectionKey
 			|	)
 			|FROM
 			|	Document.GoodsReceipt AS GoodsReceipt
@@ -180,6 +221,7 @@ Function PrintForm(ObjectsArray, PrintObjects, TemplateName)
 			Header.Next();
 			
 			LinesSelectionInventory = Header.Inventory.Select();
+			LinesSelectionSerialNumbers = Header.SerialNumbers.Select();
 
 			SpreadsheetDocument.PrintParametersName = "PRINT_PARAMETERS_GoodsReceipt_GoodsReceipt";
                                           
@@ -214,7 +256,9 @@ Function PrintForm(ObjectsArray, PrintObjects, TemplateName)
 			While LinesSelectionInventory.Next() Do
 
 				TemplateArea.Parameters.Fill(LinesSelectionInventory);
-				TemplateArea.Parameters.InventoryItem = SmallBusinessServer.GetProductsAndServicesPresentationForPrinting(LinesSelectionInventory.InventoryItem, LinesSelectionInventory.Characteristic, LinesSelectionInventory.SKU);
+				
+				StringSerialNumbers = WorkWithSerialNumbers.SerialNumbersStringFromSelection(LinesSelectionSerialNumbers, LinesSelectionInventory.ConnectionKey);
+				TemplateArea.Parameters.InventoryItem = SmallBusinessServer.GetProductsAndServicesPresentationForPrinting(LinesSelectionInventory.InventoryItem, LinesSelectionInventory.Characteristic, LinesSelectionInventory.SKU, StringSerialNumbers);
 				
 				SpreadsheetDocument.Put(TemplateArea);
 				
@@ -266,7 +310,7 @@ Function PrintForm(ObjectsArray, PrintObjects, TemplateName)
                                           
 			Template = PrintManagement.PrintedFormsTemplate("Document.GoodsReceipt.PF_MXL_M4");
 						InfoAboutCompany = SmallBusinessServer.InfoAboutLegalEntityIndividual(Header.Company, Header.DocumentDate, ,);
-            			
+            					
 			TemplateAreaHeader              = Template.GetArea("Header");
 			TitleOfDocumentLayoutArea = Template.GetArea("DocumentTitle");
 			TemplateAreaTableHeader   = Template.GetArea("TableTitle");
@@ -378,7 +422,12 @@ Function PrintForm(ObjectsArray, PrintObjects, TemplateName)
 			|		MeasurementUnit.Description AS MeasurementUnit,
 			|		Quantity AS Quantity,
 			|		Characteristic,
-			|		ProductsAndServices.ProductsAndServicesType AS ProductsAndServicesType
+			|		ProductsAndServices.ProductsAndServicesType AS ProductsAndServicesType,
+			|		ConnectionKey
+			|	),
+			|	GoodsReceipt.SerialNumbers.(
+			|		SerialNumber,
+			|		ConnectionKey		
 			|	)
 			|FROM
 			|	Document.GoodsReceipt AS GoodsReceipt
@@ -392,7 +441,8 @@ Function PrintForm(ObjectsArray, PrintObjects, TemplateName)
 			Header.Next();
 			
 			LinesSelectionInventory = Header.Inventory.Select();
-
+			LinesSelectionSerialNumbers = Header.SerialNumbers.Select();
+			
 			SpreadsheetDocument.PrintParametersName = "PRINT_PARAMETERS_CreditSlip_BlankOfGoodsFilling";
                                           
 			Template = PrintManagement.PrintedFormsTemplate("Document.GoodsReceipt.PF_MXL_MerchandiseFillingForm");
@@ -441,8 +491,10 @@ Function PrintForm(ObjectsArray, PrintObjects, TemplateName)
 				EndIf;
 				
 				TemplateArea.Parameters.Fill(LinesSelectionInventory);
+				
+				StringSerialNumbers = WorkWithSerialNumbers.SerialNumbersStringFromSelection(LinesSelectionSerialNumbers, LinesSelectionInventory.ConnectionKey);
 				TemplateArea.Parameters.InventoryItem = SmallBusinessServer.GetProductsAndServicesPresentationForPrinting(LinesSelectionInventory.InventoryItem, 
-																		LinesSelectionInventory.Characteristic, LinesSelectionInventory.SKU);
+																		LinesSelectionInventory.Characteristic, LinesSelectionInventory.SKU, StringSerialNumbers);
 						
 				SpreadsheetDocument.Put(TemplateArea);
 								

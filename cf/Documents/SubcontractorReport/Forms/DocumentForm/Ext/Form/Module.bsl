@@ -1318,6 +1318,9 @@ Procedure OnCreateAtServer(Cancel, StandardProcessing)
 	Items.InventoryImportDataFromDCT.Visible = UsePeripherals;
 	// End Peripherals
 	
+	// Serial numbers
+	UseSerialNumbersBalance = WorkWithSerialNumbers.UseSerialNumbersBalance();
+	
 EndProcedure // OnCreateAtServer()
 
 // Procedure - OnReadAtServer event handler.
@@ -1403,6 +1406,18 @@ Procedure NotificationProcessing(EventName, Parameter, Source)
 		TabularSectionName = ?(Items.Pages.CurrentPage = Items.GroupInventory, "Inventory", "Disposals");
 		
 		GetInventoryFromStorage(InventoryAddressInStorage, TabularSectionName, True, True);
+		
+	ElsIf EventName = "SerialNumbersSelection"
+		AND ValueIsFilled(Parameter) 
+		//Form owner checkup
+		AND Source <> New UUID("00000000-0000-0000-0000-000000000000")
+		AND Source = UUID
+		Then
+		
+		ChangedCount = GetSerialNumbersFromStorage(Parameter.AddressInTemporaryStorage, Parameter.RowKey);
+		If ChangedCount Then
+			CalculateAmountInTabularSectionLine();
+		EndIf;
 		
 	EndIf;
 	
@@ -1626,7 +1641,10 @@ Procedure ProductsAndServicesOnChange(Item)
 	Object.MeasurementUnit = StructureData.MeasurementUnit;
 	Object.Specification = StructureData.Specification;
 	Object.Quantity = 1;
-
+	
+	//Serial numbers
+	Object.SerialNumbers.Clear();
+	
 EndProcedure // ProductsAndServicesOnChange()
 
 // Procedure - event handler OnChange of the Characteristic input field.
@@ -1643,6 +1661,41 @@ Procedure CharacteristicOnChange(Item)
 	Object.Specification = StructureData.Specification;
 	
 EndProcedure // CharacteristicOnChange()
+
+&AtClient
+Procedure SerialNumbersPresentationStartChoice(Item, ChoiceData, StandardProcessing)
+	StandardProcessing = False;
+	ParametersOfSerialNumbers = SerialNumberPickParametersInInputField();
+	OpenForm("DataProcessor.SerialNumbersSelection.Form", ParametersOfSerialNumbers, ThisObject);
+EndProcedure
+
+&AtClient
+Procedure QuantityOnChange(Item)
+	
+		// Serial numbers
+	If TypeOf(Object.MeasurementUnit)=Type("CatalogRef.UOM") Then
+		Ratio = Object.MeasurementUnit.Factor;
+	Else
+		Ratio = 1;
+	EndIf;
+	
+	ProductsQuantity = Object.Count * Ratio;
+
+	If ProductsQuantity < Object.SerialNumbers.Count() AND ProductsQuantity > 0 Then
+		//DeleteRowsArray = New FixedArray(Object[SerialNumbersTabularSectionName].FindRows(New Structure(FieldNameConnectionKey, TabularSectionRow[FieldNameConnectionKey])));
+		For n=ProductsQuantity To Object.SerialNumbers.Count()-1 Do
+			RowDelete = Object.SerialNumbers[n];
+			Object.SerialNumbers.Delete(RowDelete);
+		EndDo;
+	EndIf;
+
+	StringPresentationOfSerialNumbers = "";
+	For Each Str In Object.SerialNumbers Do
+		StringPresentationOfSerialNumbers = StringPresentationOfSerialNumbers + Str.SerialNumber+"; ";
+	EndDo;
+	Object.SerialNumbersPresentation = Left(StringPresentationOfSerialNumbers, Min(StrLen(StringPresentationOfSerialNumbers)-2,150));
+	
+EndProcedure
 
 // Procedure - OnChange event handler of the Expense input field.
 //
@@ -2253,3 +2306,15 @@ EndProcedure
 // End StandardSubsystems.Printing
 
 #EndRegion
+
+Function SerialNumberPickParametersInInputField()
+	
+	Return WorkWithSerialNumbers.SerialNumberPickParametersInInputField(Object, ThisObject.UUID, False);
+	
+EndFunction
+
+Function GetSerialNumbersFromStorage(AddressInTemporaryStorage, RowKey)
+	
+	Return WorkWithSerialNumbers.GetSerialNumbersFromStorageForInputField(Object, AddressInTemporaryStorage);
+	
+EndFunction

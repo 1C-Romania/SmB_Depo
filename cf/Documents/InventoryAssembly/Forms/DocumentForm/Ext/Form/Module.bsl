@@ -237,7 +237,7 @@ Function FillByBarcodesData(BarcodesData)
 		   AND BarcodeData.Count() = 0 Then
 			UnknownBarcodes.Add(CurBarcode);
 		Else
-			TSRowsArray = Object.Inventory.FindRows(New Structure("ProductsAndServices,Characteristic,Batch,MeasurementUnit",BarcodeData.ProductsAndServices,BarcodeData.Characteristic,BarcodeData.Batch,BarcodeData.MeasurementUnit));
+			TSRowsArray = Object.Inventory.FindRows(New Structure("ProductsAndServices, Characteristic, Batch, MeasurementUnit",BarcodeData.ProductsAndServices,BarcodeData.Characteristic,BarcodeData.Batch,BarcodeData.MeasurementUnit));
 			If TSRowsArray.Count() = 0 Then
 				NewRow = Object.Inventory.Add();
 				NewRow.ProductsAndServices = BarcodeData.ProductsAndServices;
@@ -249,9 +249,13 @@ Function FillByBarcodesData(BarcodesData)
 				NewRow.Specification = BarcodeData.StructureProductsAndServicesData.Specification;
 				Items.Inventory.CurrentRow = NewRow.GetID();
 			Else
-				FoundString = TSRowsArray[0];
-				FoundString.Quantity = FoundString.Quantity + CurBarcode.Quantity;
-				Items.Inventory.CurrentRow = FoundString.GetID();
+				NewRow = TSRowsArray[0];
+				NewRow.Quantity = NewRow.Quantity + CurBarcode.Quantity;
+				Items.Inventory.CurrentRow = NewRow.GetID();
+			EndIf;
+			
+			If BarcodeData.Property("SerialNumber") AND ValueIsFilled(BarcodeData.SerialNumber) Then
+				WorkWithSerialNumbersClientServer.AddSerialNumberToString(NewRow, BarcodeData.SerialNumber, Object);
 			EndIf;
 		EndIf;
 	EndDo;
@@ -755,8 +759,7 @@ EndProcedure
 
 // End Peripherals
 
-////////////////////////////////////////////////////////////////////////////////
-// PROCEDURE - FORM EVENT HANDLERS
+////////////////////////////////////////////////////////////////////////////////PROCEDURE - FORM EVENT HANDLERS
 
 // Procedure - OnCreateAtServer event handler.
 //
@@ -804,6 +807,9 @@ Procedure OnCreateAtServer(Cancel, StandardProcessing)
 	EndIf;
 	Items.InventoryImportDataFromDCT.Visible = UsePeripherals;
 	// End Peripherals
+	
+	// Serial numbers
+	UseSerialNumbersBalance = WorkWithSerialNumbers.UseSerialNumbersBalance();
 	
 EndProcedure // OnCreateAtServer()
 
@@ -895,6 +901,19 @@ Procedure NotificationProcessing(EventName, Parameter, Source)
 		EndIf;
 		
 		GetInventoryFromStorage(InventoryAddressInStorage, TabularSectionName, True, True);
+		
+	ElsIf EventName = "SerialNumbersSelection"
+		AND ValueIsFilled(Parameter) 
+		//Form owner checkup
+		AND Source <> New UUID("00000000-0000-0000-0000-000000000000")
+		AND Source = UUID
+		Then
+		
+		If Items.Pages.CurrentPage = Items.TSProducts Then
+			GetProductsSerialNumbersFromStorage(Parameter.AddressInTemporaryStorage, Parameter.RowKey);
+		Else
+			GetSerialNumbersInventoryFromStorage(Parameter.AddressInTemporaryStorage, Parameter.RowKey);
+		EndIf;
 		
 	EndIf;
 	
@@ -1483,8 +1502,7 @@ Procedure CommandToFillBySpecificationFragment()
 
 EndProcedure // CommandFillBySpecification()
 
-////////////////////////////////////////////////////////////////////////////////
-// PROCEDURE - EVENT HANDLERS OF THE PRODUCTS TABULAR SECTION ATTRIBUTES
+////////////////////////////////////////////////////////////////////////////////PROCEDURE - EVENT HANDLERS OF THE PRODUCTS TABULAR SECTION ATTRIBUTES
 
 // Procedure - event handler OnChange of the ProductsAndServices input field.
 //
@@ -1501,6 +1519,9 @@ Procedure ProductsProductsAndServicesOnChange(Item)
 	TabularSectionRow.MeasurementUnit = StructureData.MeasurementUnit;
 	TabularSectionRow.Quantity = 1;
 	TabularSectionRow.Specification = StructureData.Specification;
+	
+	//Serial numbers
+	WorkWithSerialNumbersClientServer.DeleteSerialNumbersByConnectionKey(Object.SerialNumbersProducts, TabularSectionRow, , UseSerialNumbersBalance);
 	
 EndProcedure // ProductsProductsAndServicesOnChange()
 
@@ -1521,8 +1542,7 @@ Procedure ProductsCharacteristicOnChange(Item)
 	
 EndProcedure // ProductsCharacteristicOnChange()
 
-////////////////////////////////////////////////////////////////////////////////
-// PROCEDURE - EVENT HANDLERS OF THE INVENTORY TABULAR SECTION ATTRIBUTES
+////////////////////////////////////////////////////////////////////////////////PROCEDURE - EVENT HANDLERS OF THE INVENTORY TABULAR SECTION ATTRIBUTES
 
 // Procedure - event handler OnChange of the ProductsAndServices input field.
 //
@@ -1541,7 +1561,92 @@ Procedure InventoryProductsAndServicesOnChange(Item)
 	TabularSectionRow.Quantity = 1;
 	TabularSectionRow.CostPercentage = 1;
 	
+	//Serial numbers
+	WorkWithSerialNumbersClientServer.DeleteSerialNumbersByConnectionKey(Object.SerialNumbers, TabularSectionRow, , UseSerialNumbersBalance);
+	
 EndProcedure // InventoryProductsAndServicesOnChange()
+
+&AtClient
+Procedure InventoryQuantityOnChange(Item)
+	
+	// Serial numbers
+	If UseSerialNumbersBalance <> Undefined Then
+		WorkWithSerialNumbersClientServer.UpdateSerialNumbersQuantity(Object, Items.Inventory.CurrentData);
+	EndIf;
+	
+EndProcedure
+
+&AtClient
+Procedure InventoryBeforeDeleteRow(Item, Cancel)
+	
+	// Serial numbers
+	CurrentData = Items.Inventory.CurrentData;
+	WorkWithSerialNumbersClientServer.DeleteSerialNumbersByConnectionKey(Object.SerialNumbers, CurrentData, , UseSerialNumbersBalance);
+
+EndProcedure
+
+&AtClient
+Procedure InventoryOnStartEdit(Item, NewRow, Clone)
+	
+	If NewRow AND Clone Then
+		Item.CurrentData.ConnectionKey = 0;
+		Item.CurrentData.SerialNumbers = "";
+	EndIf;
+	
+	If Item.CurrentItem.Name = "InventorySerialNumbers" Then
+		OpenSerialNumbersSelection("Inventory", "SerialNumbers");
+	EndIf;
+	
+EndProcedure
+
+&AtClient
+Procedure InventorySerialNumbersStartChoice(Item, ChoiceData, StandardProcessing)
+	
+	StandardProcessing = False;
+	OpenSerialNumbersSelection("Inventory", "SerialNumbers");
+	
+EndProcedure
+
+&AtClient
+Procedure ProductsQuantityOnChange(Item)
+	
+	// Serial numbers
+	If UseSerialNumbersBalance<>Undefined Then
+		WorkWithSerialNumbersClientServer.UpdateSerialNumbersQuantity(Object, Items.Products.CurrentData, "SerialNumbersProducts");
+	EndIf;
+	
+EndProcedure
+
+&AtClient
+Procedure ProductsBeforeDeleteRow(Item, Cancel)
+	
+	// Serial numbers
+	CurrentData = Items.Products.CurrentData;
+	WorkWithSerialNumbersClientServer.DeleteSerialNumbersByConnectionKey(Object.SerialNumbersProducts, CurrentData,  ,UseSerialNumbersBalance);
+
+EndProcedure
+
+&AtClient
+Procedure ProductsOnStartEdit(Item, NewRow, Clone)
+	
+	If NewRow AND Clone Then
+		Item.CurrentData.ConnectionKey = 0;
+		Item.CurrentData.SerialNumbers = "";
+	EndIf;
+	
+	If Item.CurrentItem.Name = "ProductsSerialNumbers" Then
+		OpenSerialNumbersSelection("Products","SerialNumbersProducts");
+	EndIf;
+	
+EndProcedure
+
+&AtClient
+Procedure ProductsSerialNumbersStartChoice(Item, ChoiceData, StandardProcessing)
+	
+	StandardProcessing = False;
+	OpenSerialNumbersSelection("Products","SerialNumbersProducts");
+	
+EndProcedure
 
 // Procedure - event handler OnChange of the Characteristic input field.
 //
@@ -1605,5 +1710,53 @@ Procedure Attachable_ExecutePrintCommand(Command)
 EndProcedure
 
 // End StandardSubsystems.Printing
+
+#EndRegion
+
+#Region ServiceProceduresAndFunctions
+
+&AtClient
+Procedure OpenSerialNumbersSelection(NameTSInventory, TSNameSerialNumbers)
+	
+	CurrentDataIdentifier = Items[NameTSInventory].CurrentData.GetID();
+	ParametersOfSerialNumbers = SerialNumberPickParameters(CurrentDataIdentifier, NameTSInventory, TSNameSerialNumbers);
+	// Using field InventoryStructuralUnit for SN selection
+	ParametersOfSerialNumbers.Insert("StructuralUnit", Object.InventoryStructuralUnit);
+	OpenForm("DataProcessor.SerialNumbersSelection.Form", ParametersOfSerialNumbers, ThisObject);
+	
+EndProcedure
+
+&AtServer
+Function GetSerialNumbersInventoryFromStorage(AddressInTemporaryStorage, RowKey)
+	
+	Return WorkWithSerialNumbers.GetSerialNumbersFromStorage(Object, AddressInTemporaryStorage, RowKey, "Inventory", "SerialNumbers");
+	
+EndFunction
+
+&AtServer
+Function GetProductsSerialNumbersFromStorage(AddressInTemporaryStorage, RowKey)
+	
+	ParametersFieldNames = New Structure;
+	ParametersFieldNames.Insert("NameTSInventory", "Products");
+	ParametersFieldNames.Insert("TSNameSerialNumbers", "SerialNumbersProducts");
+	
+	Return WorkWithSerialNumbers.GetSerialNumbersFromStorage(Object, AddressInTemporaryStorage, RowKey, ParametersFieldNames);
+	
+EndFunction
+
+&AtServer
+Function SerialNumberPickParameters(CurrentDataIdentifier, TSName, TSNameSerialNumbers)
+	
+	If TSName = "Inventory" AND Object.OperationKind = PredefinedValue("Enum.OperationKindsInventoryAssembly.Assembly") Then
+		PickMode = True;
+	ElsIf TSName = "Products" AND Object.OperationKind = PredefinedValue("Enum.OperationKindsInventoryAssembly.Disassembly") Then
+		PickMode = True;
+	Else
+		PickMode = False;
+	EndIf;
+	
+	Return WorkWithSerialNumbers.SerialNumberPickParameters(Object, ThisObject.UUID, CurrentDataIdentifier, PickMode, TSName, TSNameSerialNumbers);
+	
+EndFunction
 
 #EndRegion

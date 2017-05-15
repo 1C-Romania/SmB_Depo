@@ -44,6 +44,7 @@ AccumulationRegisters\RetailAmountAccounting.xml-->AccumulationRegisters\RetailA
 AccumulationRegisters\Sales.xml-->AccumulationRegisters\Sales.xml
 AccumulationRegisters\SalesByDiscountCards.xml-->AccumulationRegisters\SalesByDiscountCards.xml
 AccumulationRegisters\SalesTargets.xml-->AccumulationRegisters\SalesTargets.xml
+AccumulationRegisters\SerialNumbers.xml-->AccumulationRegisters\SerialNumbers.xml
 AccumulationRegisters\SettlementsWithOtherCounterparties.xml-->AccumulationRegisters\SettlementsWithOtherCounterparties.xml
 AccumulationRegisters\TaxesSettlements.xml-->AccumulationRegisters\TaxesSettlements.xml
 AccumulationRegisters\Timesheet.xml-->AccumulationRegisters\Timesheet.xml
@@ -96,6 +97,8 @@ AccumulationRegisters\PurchaseOrders\Ext\ManagerModule.bsl-->AccumulationRegiste
 AccumulationRegisters\PurchaseOrders\Ext\RecordSetModule.bsl-->AccumulationRegisters\PurchaseOrders\Ext\RecordSetModule.bsl
 AccumulationRegisters\RetailAmountAccounting\Ext\ManagerModule.bsl-->AccumulationRegisters\RetailAmountAccounting\Ext\ManagerModule.bsl
 AccumulationRegisters\RetailAmountAccounting\Ext\RecordSetModule.bsl-->AccumulationRegisters\RetailAmountAccounting\Ext\RecordSetModule.bsl
+AccumulationRegisters\SerialNumbers\Ext\ManagerModule.bsl-->AccumulationRegisters\SerialNumbers\Ext\ManagerModule.bsl
+AccumulationRegisters\SerialNumbers\Ext\RecordSetModule.bsl-->AccumulationRegisters\SerialNumbers\Ext\RecordSetModule.bsl
 AccumulationRegisters\TaxesSettlements\Ext\ManagerModule.bsl-->AccumulationRegisters\TaxesSettlements\Ext\ManagerModule.bsl
 AccumulationRegisters\TaxesSettlements\Ext\RecordSetModule.bsl-->AccumulationRegisters\TaxesSettlements\Ext\RecordSetModule.bsl
 Catalogs\AccessGroups.xml-->Catalogs\AccessGroups.xml
@@ -212,6 +215,8 @@ Catalogs\QueueJobsTemplates.xml-->Catalogs\QueueJobsTemplates.xml
 Catalogs\ReportsVariants.xml-->Catalogs\ReportsVariants.xml
 Catalogs\RFBankClassifier.xml-->Catalogs\RFBankClassifier.xml
 Catalogs\Segments.xml-->Catalogs\Segments.xml
+Catalogs\SerialNumbers.xml-->Catalogs\SerialNumbers.xml
+Catalogs\SerialNumbersTemplates.xml-->Catalogs\SerialNumbersTemplates.xml
 Catalogs\SettingsCWP.xml-->Catalogs\SettingsCWP.xml
 Catalogs\SettlementsReconciliationAttachedFiles.xml-->Catalogs\SettlementsReconciliationAttachedFiles.xml
 Catalogs\Specifications.xml-->Catalogs\Specifications.xml
@@ -2015,6 +2020,28 @@ Catalogs\Segments\Forms\GroupForm\Ext\Form.xml-->Catalogs\Segments\Forms\GroupFo
 Catalogs\Segments\Forms\ItemForm\Ext\Form.xml-->Catalogs\Segments\Forms\ItemForm\Ext\Form.xml
 Catalogs\Segments\Forms\ItemForm\Ext\Form\Module.bsl-->Catalogs\Segments\Forms\ItemForm\Ext\Form\Module.bsl
 Catalogs\Segments\Forms\ListForm\Ext\Form.xml-->Catalogs\Segments\Forms\ListForm\Ext\Form.xml
+Catalogs\SerialNumbers\Ext\Help.xml-->Catalogs\SerialNumbers\Ext\Help.xml
+Catalogs\SerialNumbers\Ext\ManagerModule.bsl-->Catalogs\SerialNumbers\Ext\ManagerModule.bsl
+Catalogs\SerialNumbers\Ext\ObjectModule.bsl-->Catalogs\SerialNumbers\Ext\ObjectModule.bsl
+Catalogs\SerialNumbers\Ext\Help\ru.html-->Catalogs\SerialNumbers\Ext\Help\ru.html
+Catalogs\SerialNumbers\Forms\ChoiceForm.xml-->Catalogs\SerialNumbers\Forms\ChoiceForm.xml
+Catalogs\SerialNumbers\Forms\ItemForm.xml-->Catalogs\SerialNumbers\Forms\ItemForm.xml
+Catalogs\SerialNumbers\Forms\ListForm.xml-->Catalogs\SerialNumbers\Forms\ListForm.xml
+Catalogs\SerialNumbers\Forms\ChoiceForm\Ext\Form.xml-->Catalogs\SerialNumbers\Forms\ChoiceForm\Ext\Form.xml
+Catalogs\SerialNumbers\Forms\ChoiceForm\Ext\Form\Module.bsl-->Catalogs\SerialNumbers\Forms\ChoiceForm\Ext\Form\Module.bsl
+Catalogs\SerialNumbers\Forms\ItemForm\Ext\Form.xml-->Catalogs\SerialNumbers\Forms\ItemForm\Ext\Form.xml
+Catalogs\SerialNumbers\Forms\ItemForm\Ext\Form\Module.bsl-->Catalogs\SerialNumbers\Forms\ItemForm\Ext\Form\Module.bsl
+Catalogs\SerialNumbers\Forms\ListForm\Ext\Form.xml-->Catalogs\SerialNumbers\Forms\ListForm\Ext\Form.xml
+Catalogs\SerialNumbers\Forms\ListForm\Ext\Form\Module.bsl-->Catalogs\SerialNumbers\Forms\ListForm\Ext\Form\Module.bsl
+Catalogs\SerialNumbersTemplates\Ext\Help.xml-->Catalogs\SerialNumbersTemplates\Ext\Help.xml
+Catalogs\SerialNumbersTemplates\Ext\Help\ru.html-->Catalogs\SerialNumbersTemplates\Ext\Help\ru.html
+Catalogs\SerialNumbersTemplates\Forms\ChoiceForm.xml-->Catalogs\SerialNumbersTemplates\Forms\ChoiceForm.xml
+Catalogs\SerialNumbersTemplates\Forms\ItemForm.xml-->Catalogs\SerialNumbersTemplates\Forms\ItemForm.xml
+Catalogs\SerialNumbersTemplates\Forms\ListForm.xml-->Catalogs\SerialNumbersTemplates\Forms\ListForm.xml
+Catalogs\SerialNumbersTemplates\Forms\ChoiceForm\Ext\Form.xml-->Catalogs\SerialNumbersTemplates\Forms\ChoiceForm\Ext\Form.xml
+Catalogs\SerialNumbersTemplates\Forms\ItemForm\Ext\Form.xml-->Catalogs\SerialNumbersTemplates\Forms\ItemForm\Ext\Form.xml
+Catalogs\SerialNumbersTemplates\Forms\ItemForm\Ext\Form\Module.bsl-->Catalogs\SerialNumbersTemplates\Forms\ItemForm\Ext\Form\Module.bsl
+Catalogs\SerialNumbersTemplates\Forms\ListForm\Ext\Form.xml-->Catalogs\SerialNumbersTemplates\Forms\ListForm\Ext\Form.xml
 Catalogs\SettingsCWP\Ext\Help.xml-->Catalogs\SettingsCWP\Ext\Help.xml
 Catalogs\SettingsCWP\Ext\ObjectModule.bsl-->Catalogs\SettingsCWP\Ext\ObjectModule.bsl
 Catalogs\SettingsCWP\Ext\Help\en.html-->Catalogs\SettingsCWP\Ext\Help\en.html
@@ -3662,6 +3689,8 @@ CommonModules\WorkWithFiltersClientServer.xml-->CommonModules\WorkWithFiltersCli
 CommonModules\WorkWithProductsClientServer.xml-->CommonModules\WorkWithProductsClientServer.xml
 CommonModules\WorkWithProductsServer.xml-->CommonModules\WorkWithProductsServer.xml
 CommonModules\WorkWithScannerClient.xml-->CommonModules\WorkWithScannerClient.xml
+CommonModules\WorkWithSerialNumbers.xml-->CommonModules\WorkWithSerialNumbers.xml
+CommonModules\WorkWithSerialNumbersClientServer.xml-->CommonModules\WorkWithSerialNumbersClientServer.xml
 CommonModules\AccessManagement\Ext\Module.bsl-->CommonModules\AccessManagement\Ext\Module.bsl
 CommonModules\AccessManagementOverridable\Ext\Module.bsl-->CommonModules\AccessManagementOverridable\Ext\Module.bsl
 CommonModules\AccessManagementService\Ext\Module.bsl-->CommonModules\AccessManagementService\Ext\Module.bsl
@@ -4186,6 +4215,8 @@ CommonModules\WorkWithFiltersClientServer\Ext\Module.bsl-->CommonModules\WorkWit
 CommonModules\WorkWithProductsClientServer\Ext\Module.bsl-->CommonModules\WorkWithProductsClientServer\Ext\Module.bsl
 CommonModules\WorkWithProductsServer\Ext\Module.bsl-->CommonModules\WorkWithProductsServer\Ext\Module.bsl
 CommonModules\WorkWithScannerClient\Ext\Module.bsl-->CommonModules\WorkWithScannerClient\Ext\Module.bsl
+CommonModules\WorkWithSerialNumbers\Ext\Module.bsl-->CommonModules\WorkWithSerialNumbers\Ext\Module.bsl
+CommonModules\WorkWithSerialNumbersClientServer\Ext\Module.bsl-->CommonModules\WorkWithSerialNumbersClientServer\Ext\Module.bsl
 CommonPictures\AccessIconsToReportSettings.xml-->CommonPictures\AccessIconsToReportSettings.xml
 CommonPictures\AccountControlResults.xml-->CommonPictures\AccountControlResults.xml
 CommonPictures\AddAdditionalPropertyToKit.xml-->CommonPictures\AddAdditionalPropertyToKit.xml
@@ -5482,6 +5513,7 @@ CommonTemplates\DescriptionFullDeclinationComponent.xml-->CommonTemplates\Descri
 CommonTemplates\GetTreeHandlersUpdate.xml-->CommonTemplates\GetTreeHandlersUpdate.xml
 CommonTemplates\InformationReferences.xml-->CommonTemplates\InformationReferences.xml
 CommonTemplates\InstructionHowToInstallUpdateManually.xml-->CommonTemplates\InstructionHowToInstallUpdateManually.xml
+CommonTemplates\PF_MXL_GuaranteeCard.xml-->CommonTemplates\PF_MXL_GuaranteeCard.xml
 CommonTemplates\QRCodePrintComponent.xml-->CommonTemplates\QRCodePrintComponent.xml
 CommonTemplates\ReportThemeGreen.xml-->CommonTemplates\ReportThemeGreen.xml
 CommonTemplates\SlipReceiptINPAS.xml-->CommonTemplates\SlipReceiptINPAS.xml
@@ -5498,6 +5530,7 @@ CommonTemplates\GetTreeHandlersUpdate\Ext\Template.xml-->CommonTemplates\GetTree
 CommonTemplates\InformationReferences\Ext\Template.txt-->CommonTemplates\InformationReferences\Ext\Template.txt
 CommonTemplates\InstructionHowToInstallUpdateManually\Ext\Template.xml-->CommonTemplates\InstructionHowToInstallUpdateManually\Ext\Template.xml
 CommonTemplates\InstructionHowToInstallUpdateManually\Ext\Template\en.html-->CommonTemplates\InstructionHowToInstallUpdateManually\Ext\Template\en.html
+CommonTemplates\PF_MXL_GuaranteeCard\Ext\Template.xml-->CommonTemplates\PF_MXL_GuaranteeCard\Ext\Template.xml
 CommonTemplates\QRCodePrintComponent\Ext\Template.bin-->CommonTemplates\QRCodePrintComponent\Ext\Template.bin
 CommonTemplates\ReportThemeGreen\Ext\Template.xml-->CommonTemplates\ReportThemeGreen\Ext\Template.xml
 CommonTemplates\SlipReceiptINPAS\Ext\Template.txt-->CommonTemplates\SlipReceiptINPAS\Ext\Template.txt
@@ -5675,6 +5708,7 @@ Constants\ReusableValuesUpdateDateORM.xml-->Constants\ReusableValuesUpdateDateOR
 Constants\RFBanksClassifierVersion.xml-->Constants\RFBanksClassifierVersion.xml
 Constants\ScheduledJobsExecutionSettings.xml-->Constants\ScheduledJobsExecutionSettings.xml
 Constants\SecurityProfilesAreUsed.xml-->Constants\SecurityProfilesAreUsed.xml
+Constants\SerialNumbersBalanceControl.xml-->Constants\SerialNumbersBalanceControl.xml
 Constants\ServiceEventsParameters.xml-->Constants\ServiceEventsParameters.xml
 Constants\ServiceManagerEndPoint.xml-->Constants\ServiceManagerEndPoint.xml
 Constants\ServiceManagerOfficeUserName.xml-->Constants\ServiceManagerOfficeUserName.xml
@@ -5725,6 +5759,7 @@ Constants\UseProductionOrderStates.xml-->Constants\UseProductionOrderStates.xml
 Constants\UsePurchaseOrderStates.xml-->Constants\UsePurchaseOrderStates.xml
 Constants\UsersWorkParameters.xml-->Constants\UsersWorkParameters.xml
 Constants\UseSeparationByDataAreas.xml-->Constants\UseSeparationByDataAreas.xml
+Constants\UseSerialNumbers.xml-->Constants\UseSerialNumbers.xml
 Constants\UseSeveralBusinessCalendars.xml-->Constants\UseSeveralBusinessCalendars.xml
 Constants\UseSeveralCompanies.xml-->Constants\UseSeveralCompanies.xml
 Constants\UseUserReminders.xml-->Constants\UseUserReminders.xml
@@ -5861,6 +5896,7 @@ DataProcessors\ReplaceAndCombineElements.xml-->DataProcessors\ReplaceAndCombineE
 DataProcessors\ScheduledAndBackgroundJobs.xml-->DataProcessors\ScheduledAndBackgroundJobs.xml
 DataProcessors\Scheduler.xml-->DataProcessors\Scheduler.xml
 DataProcessors\SearchAndDeleteDuplicates.xml-->DataProcessors\SearchAndDeleteDuplicates.xml
+DataProcessors\SerialNumbersSelection.xml-->DataProcessors\SerialNumbersSelection.xml
 DataProcessors\SoftwareUpdateLegality.xml-->DataProcessors\SoftwareUpdateLegality.xml
 DataProcessors\StandardODataInterfaceSetup.xml-->DataProcessors\StandardODataInterfaceSetup.xml
 DataProcessors\ToolTipManager.xml-->DataProcessors\ToolTipManager.xml
@@ -7313,6 +7349,9 @@ DataProcessors\SearchAndDeleteDuplicates\Forms\SearchDuplicates\Ext\Form\Items\U
 DataProcessors\SearchAndDeleteDuplicates\Forms\SearchDuplicates\Ext\Form\Items\Warning32\Picture.png-->DataProcessors\SearchAndDeleteDuplicates\Forms\SearchDuplicates\Ext\Form\Items\Warning32\Picture.png
 DataProcessors\SearchAndDeleteDuplicates\Forms\SearchRules\Ext\Form.xml-->DataProcessors\SearchAndDeleteDuplicates\Forms\SearchRules\Ext\Form.xml
 DataProcessors\SearchAndDeleteDuplicates\Forms\SearchRules\Ext\Form\Module.bsl-->DataProcessors\SearchAndDeleteDuplicates\Forms\SearchRules\Ext\Form\Module.bsl
+DataProcessors\SerialNumbersSelection\Forms\Form.xml-->DataProcessors\SerialNumbersSelection\Forms\Form.xml
+DataProcessors\SerialNumbersSelection\Forms\Form\Ext\Form.xml-->DataProcessors\SerialNumbersSelection\Forms\Form\Ext\Form.xml
+DataProcessors\SerialNumbersSelection\Forms\Form\Ext\Form\Module.bsl-->DataProcessors\SerialNumbersSelection\Forms\Form\Ext\Form\Module.bsl
 DataProcessors\SoftwareUpdateLegality\Ext\Help.xml-->DataProcessors\SoftwareUpdateLegality\Ext\Help.xml
 DataProcessors\SoftwareUpdateLegality\Ext\Help\en.html-->DataProcessors\SoftwareUpdateLegality\Ext\Help\en.html
 DataProcessors\SoftwareUpdateLegality\Forms\CheckUpdateReceiveLegality.xml-->DataProcessors\SoftwareUpdateLegality\Forms\CheckUpdateReceiveLegality.xml
@@ -7575,6 +7614,7 @@ DataProcessors\XDTOObjectsConversion\Ext\ObjectModule.bsl-->DataProcessors\XDTOO
 DefinedTypes\AccessValue.xml-->DefinedTypes\AccessValue.xml
 DefinedTypes\ExternalUser.xml-->DefinedTypes\ExternalUser.xml
 DefinedTypes\FilesOwner.xml-->DefinedTypes\FilesOwner.xml
+DefinedTypes\ProductsAndServicesSeries.xml-->DefinedTypes\ProductsAndServicesSeries.xml
 DefinedTypes\RightSettingsOwner.xml-->DefinedTypes\RightSettingsOwner.xml
 DefinedTypes\SafeMode.xml-->DefinedTypes\SafeMode.xml
 DocumentJournals\BankDocuments.xml-->DocumentJournals\BankDocuments.xml
@@ -9027,6 +9067,7 @@ Enums\SaveReportFormats.xml-->Enums\SaveReportFormats.xml
 Enums\ScannedImageResolutions.xml-->Enums\ScannedImageResolutions.xml
 Enums\ScannedImagesFormats.xml-->Enums\ScannedImagesFormats.xml
 Enums\SendingMailingsStages.xml-->Enums\SendingMailingsStages.xml
+Enums\SerialNumbersOperations.xml-->Enums\SerialNumbersOperations.xml
 Enums\SettlementsReconciliationStatuses.xml-->Enums\SettlementsReconciliationStatuses.xml
 Enums\SettlementsTypes.xml-->Enums\SettlementsTypes.xml
 Enums\SMSMessageStates.xml-->Enums\SMSMessageStates.xml
@@ -9248,6 +9289,7 @@ FunctionalOptions\RetailAccounting.xml-->FunctionalOptions\RetailAccounting.xml
 FunctionalOptions\ReusableValuesActualUpdateDateORM.xml-->FunctionalOptions\ReusableValuesActualUpdateDateORM.xml
 FunctionalOptions\SaaS.xml-->FunctionalOptions\SaaS.xml
 FunctionalOptions\SecurityProfilesAreUsed.xml-->FunctionalOptions\SecurityProfilesAreUsed.xml
+FunctionalOptions\SerialNumbersBalanceControl.xml-->FunctionalOptions\SerialNumbersBalanceControl.xml
 FunctionalOptions\ServiceTechnologyInLocalMode.xml-->FunctionalOptions\ServiceTechnologyInLocalMode.xml
 FunctionalOptions\ServiceTechnologyOffline.xml-->FunctionalOptions\ServiceTechnologyOffline.xml
 FunctionalOptions\ServiceTechnologySaaS.xml-->FunctionalOptions\ServiceTechnologySaaS.xml
@@ -9297,6 +9339,7 @@ FunctionalOptions\UseObjectVersioninging.xml-->FunctionalOptions\UseObjectVersio
 FunctionalOptions\UseOrderWarehouse.xml-->FunctionalOptions\UseOrderWarehouse.xml
 FunctionalOptions\UsePeripherals.xml-->FunctionalOptions\UsePeripherals.xml
 FunctionalOptions\UseRelatedObjectCreationAdditionalInformationProcessors.xml-->FunctionalOptions\UseRelatedObjectCreationAdditionalInformationProcessors.xml
+FunctionalOptions\UseSerialNumbers.xml-->FunctionalOptions\UseSerialNumbers.xml
 FunctionalOptions\UseSeveralBusinessCalendars.xml-->FunctionalOptions\UseSeveralBusinessCalendars.xml
 FunctionalOptions\UseSeveralCompanies.xml-->FunctionalOptions\UseSeveralCompanies.xml
 FunctionalOptions\UseSubsystemPayroll.xml-->FunctionalOptions\UseSubsystemPayroll.xml
@@ -9436,6 +9479,7 @@ InformationRegisters\ResponsiblePersons.xml-->InformationRegisters\ResponsiblePe
 InformationRegisters\RolesRights.xml-->InformationRegisters\RolesRights.xml
 InformationRegisters\ScannedFileNumbers.xml-->InformationRegisters\ScannedFileNumbers.xml
 InformationRegisters\SenderSettings.xml-->InformationRegisters\SenderSettings.xml
+InformationRegisters\SerialNumbersGuarantees.xml-->InformationRegisters\SerialNumbersGuarantees.xml
 InformationRegisters\ServiceAddressData.xml-->InformationRegisters\ServiceAddressData.xml
 InformationRegisters\ServiceAutomaticDiscounts.xml-->InformationRegisters\ServiceAutomaticDiscounts.xml
 InformationRegisters\StaffList.xml-->InformationRegisters\StaffList.xml
@@ -9944,6 +9988,9 @@ InformationRegisters\SenderSettings\Forms\ListForm\Ext\Form.xml-->InformationReg
 InformationRegisters\SenderSettings\Forms\ListForm\Ext\Form\Module.bsl-->InformationRegisters\SenderSettings\Forms\ListForm\Ext\Form\Module.bsl
 InformationRegisters\SenderSettings\Forms\RecordForm\Ext\Form.xml-->InformationRegisters\SenderSettings\Forms\RecordForm\Ext\Form.xml
 InformationRegisters\SenderSettings\Forms\RecordForm\Ext\Form\Module.bsl-->InformationRegisters\SenderSettings\Forms\RecordForm\Ext\Form\Module.bsl
+InformationRegisters\SerialNumbersGuarantees\Ext\RecordSetModule.bsl-->InformationRegisters\SerialNumbersGuarantees\Ext\RecordSetModule.bsl
+InformationRegisters\SerialNumbersGuarantees\Forms\ListForm.xml-->InformationRegisters\SerialNumbersGuarantees\Forms\ListForm.xml
+InformationRegisters\SerialNumbersGuarantees\Forms\ListForm\Ext\Form.xml-->InformationRegisters\SerialNumbersGuarantees\Forms\ListForm\Ext\Form.xml
 InformationRegisters\StaffList\Ext\Help.xml-->InformationRegisters\StaffList\Ext\Help.xml
 InformationRegisters\StaffList\Ext\Help\en.html-->InformationRegisters\StaffList\Ext\Help\en.html
 InformationRegisters\StaffList\Forms\ListForm.xml-->InformationRegisters\StaffList\Forms\ListForm.xml
@@ -10145,6 +10192,8 @@ Reports\SalesPlanActualAnalysis.xml-->Reports\SalesPlanActualAnalysis.xml
 Reports\SalesReportTORG29.xml-->Reports\SalesReportTORG29.xml
 Reports\SalesTargets.xml-->Reports\SalesTargets.xml
 Reports\SegmentComposition.xml-->Reports\SegmentComposition.xml
+Reports\SerialNumbersRecords.xml-->Reports\SerialNumbersRecords.xml
+Reports\SerialNumbersWarehouse.xml-->Reports\SerialNumbersWarehouse.xml
 Reports\SettlementsOnOtherOperations.xml-->Reports\SettlementsOnOtherOperations.xml
 Reports\SheetByGoodsOnWarehousesInProductsAndServicesPrices.xml-->Reports\SheetByGoodsOnWarehousesInProductsAndServicesPrices.xml
 Reports\StaffList.xml-->Reports\StaffList.xml
@@ -10734,6 +10783,16 @@ Reports\SegmentComposition\Commands\SegmentComposition\Ext\CommandModule.bsl-->R
 Reports\SegmentComposition\Ext\ObjectModule.bsl-->Reports\SegmentComposition\Ext\ObjectModule.bsl
 Reports\SegmentComposition\Templates\MainDataCompositionSchema.xml-->Reports\SegmentComposition\Templates\MainDataCompositionSchema.xml
 Reports\SegmentComposition\Templates\MainDataCompositionSchema\Ext\Template.xml-->Reports\SegmentComposition\Templates\MainDataCompositionSchema\Ext\Template.xml
+Reports\SerialNumbersRecords\Ext\Help.xml-->Reports\SerialNumbersRecords\Ext\Help.xml
+Reports\SerialNumbersRecords\Ext\ObjectModule.bsl-->Reports\SerialNumbersRecords\Ext\ObjectModule.bsl
+Reports\SerialNumbersRecords\Ext\Help\ru.html-->Reports\SerialNumbersRecords\Ext\Help\ru.html
+Reports\SerialNumbersRecords\Templates\MainDataCompositionSchema.xml-->Reports\SerialNumbersRecords\Templates\MainDataCompositionSchema.xml
+Reports\SerialNumbersRecords\Templates\MainDataCompositionSchema\Ext\Template.xml-->Reports\SerialNumbersRecords\Templates\MainDataCompositionSchema\Ext\Template.xml
+Reports\SerialNumbersWarehouse\Ext\Help.xml-->Reports\SerialNumbersWarehouse\Ext\Help.xml
+Reports\SerialNumbersWarehouse\Ext\ObjectModule.bsl-->Reports\SerialNumbersWarehouse\Ext\ObjectModule.bsl
+Reports\SerialNumbersWarehouse\Ext\Help\ru.html-->Reports\SerialNumbersWarehouse\Ext\Help\ru.html
+Reports\SerialNumbersWarehouse\Templates\MainDataCompositionSchema.xml-->Reports\SerialNumbersWarehouse\Templates\MainDataCompositionSchema.xml
+Reports\SerialNumbersWarehouse\Templates\MainDataCompositionSchema\Ext\Template.xml-->Reports\SerialNumbersWarehouse\Templates\MainDataCompositionSchema\Ext\Template.xml
 Reports\SettlementsOnOtherOperations\Ext\ObjectModule.bsl-->Reports\SettlementsOnOtherOperations\Ext\ObjectModule.bsl
 Reports\SettlementsOnOtherOperations\Templates\MainDataCompositionSchema.xml-->Reports\SettlementsOnOtherOperations\Templates\MainDataCompositionSchema.xml
 Reports\SettlementsOnOtherOperations\Templates\MainDataCompositionSchema\Ext\Template.xml-->Reports\SettlementsOnOtherOperations\Templates\MainDataCompositionSchema\Ext\Template.xml

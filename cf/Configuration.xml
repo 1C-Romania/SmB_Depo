@@ -108,7 +108,7 @@
 				<xr:Item xsi:type="xr:MDObjectRef">Role.SystemAdministrator</xr:Item>
 			</DefaultRoles>
 			<Vendor>1C Company</Vendor>
-			<Version>1.5.3.44</Version>
+			<Version>1.5.3.45</Version>
 			<UpdateCatalogAddress>https://1c-dn.com/user/profile/</UpdateCatalogAddress>
 			<IncludeHelpInContents>true</IncludeHelpInContents>
 			<UseManagedFormInOrdinaryApplication>true</UseManagedFormInOrdinaryApplication>
@@ -510,10 +510,10 @@
 			<DefaultConstantsForm/>
 		</Properties>
 		<ChildObjects>
-			<Language>English</Language>
-			<Language>Azerbaijani</Language>
 			<Language>Armenian</Language>
+			<Language>Azerbaijani</Language>
 			<Language>Bulgarian</Language>
+			<Language>English</Language>
 			<Language>Estonian</Language>
 			<Language>French</Language>
 			<Language>Georgian</Language>
@@ -530,14 +530,14 @@
 			<Language>Spanish</Language>
 			<Language>Swedish</Language>
 			<Language>Turkish</Language>
-			<Subsystem>CRM</Subsystem>
 			<Subsystem>Analysis</Subsystem>
 			<Subsystem>AttachedFilesService</Subsystem>
-			<Subsystem>Finances</Subsystem>
+			<Subsystem>CRM</Subsystem>
 			<Subsystem>DataImportFromExternalSources</Subsystem>
 			<Subsystem>ElectronicInteraction</Subsystem>
 			<Subsystem>Enterprise</Subsystem>
 			<Subsystem>ExchangeWithSites</Subsystem>
+			<Subsystem>Finances</Subsystem>
 			<Subsystem>InventoryAndPurchasing</Subsystem>
 			<Subsystem>KittingAndProduction</Subsystem>
 			<Subsystem>MarketingAndSales</Subsystem>
@@ -674,6 +674,7 @@
 			<CommonPicture>ContactInformationPhone</CommonPicture>
 			<CommonPicture>ContactInformationSkype</CommonPicture>
 			<CommonPicture>ContactInformationWebpage</CommonPicture>
+			<CommonPicture>CopyRows</CommonPicture>
 			<CommonPicture>CounterpartyCollection</CommonPicture>
 			<CommonPicture>CountIsReviewed</CommonPicture>
 			<CommonPicture>CWP_ExpandAdditionalPanel</CommonPicture>
@@ -888,6 +889,7 @@
 			<CommonPicture>PaperClipCollection</CommonPicture>
 			<CommonPicture>ParametersAndFiltersIcons</CommonPicture>
 			<CommonPicture>PartiallyCorrected16</CommonPicture>
+			<CommonPicture>PasteRows</CommonPicture>
 			<CommonPicture>PayrollSection</CommonPicture>
 			<CommonPicture>PDFFormat</CommonPicture>
 			<CommonPicture>PeripheralReportWithoutBlanking</CommonPicture>
@@ -1040,8 +1042,6 @@
 			<CommonPicture>WeekPeriod</CommonPicture>
 			<CommonPicture>WithoutBorder</CommonPicture>
 			<CommonPicture>WorkingDirectoryByDefault</CommonPicture>
-			<CommonPicture>CopyRows</CommonPicture>
-			<CommonPicture>PasteRows</CommonPicture>
 			<CommonPicture>WriteSMS</CommonPicture>
 			<Interface>Administrative</Interface>
 			<Interface>Common</Interface>
@@ -1195,6 +1195,7 @@
 			<CommonTemplate>GetTreeHandlersUpdate</CommonTemplate>
 			<CommonTemplate>InformationReferences</CommonTemplate>
 			<CommonTemplate>InstructionHowToInstallUpdateManually</CommonTemplate>
+			<CommonTemplate>PF_MXL_GuaranteeCard</CommonTemplate>
 			<CommonTemplate>QRCodePrintComponent</CommonTemplate>
 			<CommonTemplate>ReportThemeGreen</CommonTemplate>
 			<CommonTemplate>SlipReceiptINPAS</CommonTemplate>
@@ -1214,10 +1215,8 @@
 			<FilterCriterion>RelatedDocuments</FilterCriterion>
 			<FilterCriterion>SupplierInvoiceForPaymentDocuments</FilterCriterion>
 			<CommonModule>AccessManagement</CommonModule>
-			<CommonModule>AccessManagementOverridable</CommonModule>
-			<CommonModule>AccessManagementService</CommonModule>
 			<CommonModule>AccessManagementServiceClient</CommonModule>
-			<CommonModule>AccessManagementServiceClientServer</CommonModule>
+			<CommonModule>AccessManagementOverridable</CommonModule>
 			<CommonModule>AccessManagementServiceReUse</CommonModule>
 			<CommonModule>AccessManagementServiceSaaS</CommonModule>
 			<CommonModule>AccessManagementServiceSaaSSTL</CommonModule>
@@ -1680,6 +1679,8 @@
 			<CommonModule>StringFunctionsClientServer</CommonModule>
 			<CommonModule>SuppliedData</CommonModule>
 			<CommonModule>SuppliedDataOverridable</CommonModule>
+			<CommonModule>TabularPartCopyClient</CommonModule>
+			<CommonModule>TabularPartCopyServer</CommonModule>
 			<CommonModule>TotalsAndAggregateManagementService</CommonModule>
 			<CommonModule>TranslationXDTO</CommonModule>
 			<CommonModule>TranslationXDTOOverridable</CommonModule>
@@ -1732,11 +1733,13 @@
 			<CommonModule>WorkWithFilters</CommonModule>
 			<CommonModule>WorkWithFiltersClient</CommonModule>
 			<CommonModule>WorkWithFiltersClientServer</CommonModule>
-			<CommonModule>TabularPartCopyClient</CommonModule>
-			<CommonModule>TabularPartCopyServer</CommonModule>
 			<CommonModule>WorkWithProductsClientServer</CommonModule>
 			<CommonModule>WorkWithProductsServer</CommonModule>
 			<CommonModule>WorkWithScannerClient</CommonModule>
+			<CommonModule>AccessManagementService</CommonModule>
+			<CommonModule>AccessManagementServiceClientServer</CommonModule>
+			<CommonModule>WorkWithSerialNumbers</CommonModule>
+			<CommonModule>WorkWithSerialNumbersClientServer</CommonModule>
 			<CommonAttribute>DataAreaAuxiliaryData</CommonAttribute>
 			<CommonAttribute>DataAreaBasicData</CommonAttribute>
 			<ExchangePlan>ExchangeSmallBusinessSite</ExchangePlan>
@@ -1978,6 +1981,7 @@
 			<FunctionalOption>ReusableValuesActualUpdateDateORM</FunctionalOption>
 			<FunctionalOption>SaaS</FunctionalOption>
 			<FunctionalOption>SecurityProfilesAreUsed</FunctionalOption>
+			<FunctionalOption>SerialNumbersBalanceControl</FunctionalOption>
 			<FunctionalOption>ServiceTechnologyInLocalMode</FunctionalOption>
 			<FunctionalOption>ServiceTechnologyOffline</FunctionalOption>
 			<FunctionalOption>ServiceTechnologySaaS</FunctionalOption>
@@ -2000,8 +2004,8 @@
 			<FunctionalOption>UseCharacteristics</FunctionalOption>
 			<FunctionalOption>UseCommonAdditionalAttributesAndInformation</FunctionalOption>
 			<FunctionalOption>UseCommonAdditionalValues</FunctionalOption>
-			<FunctionalOption>UseCounterpartiesAccessGroups</FunctionalOption>
 			<FunctionalOption>UseCounterpartyContractTypes</FunctionalOption>
+			<FunctionalOption>UseCounterpartiesAccessGroups</FunctionalOption>
 			<FunctionalOption>UseCustomerOrderStates</FunctionalOption>
 			<FunctionalOption>UseDataSynchronization</FunctionalOption>
 			<FunctionalOption>UseDataSynchronizationInLocalMode</FunctionalOption>
@@ -2027,6 +2031,7 @@
 			<FunctionalOption>UseOrderWarehouse</FunctionalOption>
 			<FunctionalOption>UsePeripherals</FunctionalOption>
 			<FunctionalOption>UseRelatedObjectCreationAdditionalInformationProcessors</FunctionalOption>
+			<FunctionalOption>UseSerialNumbers</FunctionalOption>
 			<FunctionalOption>UseSeveralBusinessCalendars</FunctionalOption>
 			<FunctionalOption>UseSeveralCompanies</FunctionalOption>
 			<FunctionalOption>UseSubsystemPayroll</FunctionalOption>
@@ -2047,6 +2052,7 @@
 			<DefinedType>AccessValue</DefinedType>
 			<DefinedType>ExternalUser</DefinedType>
 			<DefinedType>FilesOwner</DefinedType>
+			<DefinedType>ProductsAndServicesSeries</DefinedType>
 			<DefinedType>RightSettingsOwner</DefinedType>
 			<DefinedType>SafeMode</DefinedType>
 			<CommonCommand>AccessRights</CommonCommand>
@@ -2177,8 +2183,8 @@
 			<CommonCommand>ProductPageOn1CSite</CommonCommand>
 			<CommonCommand>Remind</CommonCommand>
 			<CommonCommand>ReportByMovements</CommonCommand>
-			<CommonCommand>ReportsPanel_CRM</CommonCommand>
 			<CommonCommand>ReportsPanel_Analysis</CommonCommand>
+			<CommonCommand>ReportsPanel_CRM</CommonCommand>
 			<CommonCommand>ReportsPanel_Enterprise</CommonCommand>
 			<CommonCommand>ReportsPanel_Finances</CommonCommand>
 			<CommonCommand>ReportsPanel_InventoryAndPurchasing</CommonCommand>
@@ -2195,7 +2201,6 @@
 			<CommonCommand>UserInfo</CommonCommand>
 			<CommonCommand>WhatNewsPageInVideoVersion</CommonCommand>
 			<CommonCommand>WriteCertificatePassword</CommonCommand>
-			<CommandGroup>Settings</CommandGroup>
 			<CommandGroup>DataExchangeExecution</CommandGroup>
 			<CommandGroup>DataExchangeParameters</CommandGroup>
 			<CommandGroup>ED</CommandGroup>
@@ -2204,6 +2209,7 @@
 			<CommandGroup>OpeningBalances</CommandGroup>
 			<CommandGroup>Organizer</CommandGroup>
 			<CommandGroup>Print</CommandGroup>
+			<CommandGroup>Settings</CommandGroup>
 			<Constant>AccessLimitationParameters</Constant>
 			<Constant>AccountingBySubsidiaryCompany</Constant>
 			<Constant>AccountingCurrency</Constant>
@@ -2372,6 +2378,7 @@
 			<Constant>RFBanksClassifierVersion</Constant>
 			<Constant>ScheduledJobsExecutionSettings</Constant>
 			<Constant>SecurityProfilesAreUsed</Constant>
+			<Constant>SerialNumbersBalanceControl</Constant>
 			<Constant>ServiceEventsParameters</Constant>
 			<Constant>ServiceManagerEndPoint</Constant>
 			<Constant>ServiceManagerOfficeUserName</Constant>
@@ -2422,6 +2429,7 @@
 			<Constant>UsePurchaseOrderStates</Constant>
 			<Constant>UsersWorkParameters</Constant>
 			<Constant>UseSeparationByDataAreas</Constant>
+			<Constant>UseSerialNumbers</Constant>
 			<Constant>UseSeveralBusinessCalendars</Constant>
 			<Constant>UseSeveralCompanies</Constant>
 			<Constant>UseUserReminders</Constant>
@@ -2653,6 +2661,8 @@
 			<Catalog>ReportsVariants</Catalog>
 			<Catalog>RFBankClassifier</Catalog>
 			<Catalog>Segments</Catalog>
+			<Catalog>SerialNumbers</Catalog>
+			<Catalog>SerialNumbersTemplates</Catalog>
 			<Catalog>SettingsCWP</Catalog>
 			<Catalog>SettlementsReconciliationAttachedFiles</Catalog>
 			<Catalog>Specifications</Catalog>
@@ -2678,10 +2688,10 @@
 			<Catalog>WorkingHoursKinds</Catalog>
 			<Catalog>WorkOrderAttachedFiles</Catalog>
 			<Catalog>Workplaces</Catalog>
-			<Catalog>WorkSchedules</Catalog>
-			<Catalog>WorldCountries</Catalog>
 			<Catalog>FinancialCounterpartyGroups</Catalog>
 			<Catalog>FinancialProductsAndServicesGroups</Catalog>
+			<Catalog>WorkSchedules</Catalog>
+			<Catalog>WorldCountries</Catalog>
 			<Document>AcceptanceCertificate</Document>
 			<Document>AdditionalCosts</Document>
 			<Document>AgentReport</Document>
@@ -2921,6 +2931,7 @@
 			<Enum>ScannedImageResolutions</Enum>
 			<Enum>ScannedImagesFormats</Enum>
 			<Enum>SendingMailingsStages</Enum>
+			<Enum>SerialNumbersOperations</Enum>
 			<Enum>SettlementsReconciliationStatuses</Enum>
 			<Enum>SettlementsTypes</Enum>
 			<Enum>SMSMessageStates</Enum>
@@ -3024,6 +3035,8 @@
 			<Report>SalesReportTORG29</Report>
 			<Report>SalesTargets</Report>
 			<Report>SegmentComposition</Report>
+			<Report>SerialNumbersRecords</Report>
+			<Report>SerialNumbersWarehouse</Report>
 			<Report>SettlementsOnOtherOperations</Report>
 			<Report>SheetByGoodsOnWarehousesInProductsAndServicesPrices</Report>
 			<Report>StaffList</Report>
@@ -3133,6 +3146,7 @@
 			<DataProcessor>ScheduledAndBackgroundJobs</DataProcessor>
 			<DataProcessor>Scheduler</DataProcessor>
 			<DataProcessor>SearchAndDeleteDuplicates</DataProcessor>
+			<DataProcessor>SerialNumbersSelection</DataProcessor>
 			<DataProcessor>SoftwareUpdateLegality</DataProcessor>
 			<DataProcessor>StandardODataInterfaceSetup</DataProcessor>
 			<DataProcessor>ToolTipManager</DataProcessor>
@@ -3265,6 +3279,7 @@
 			<InformationRegister>RolesRights</InformationRegister>
 			<InformationRegister>ScannedFileNumbers</InformationRegister>
 			<InformationRegister>SenderSettings</InformationRegister>
+			<InformationRegister>SerialNumbersGuarantees</InformationRegister>
 			<InformationRegister>ServiceAddressData</InformationRegister>
 			<InformationRegister>ServiceAutomaticDiscounts</InformationRegister>
 			<InformationRegister>StaffList</InformationRegister>
@@ -3335,6 +3350,7 @@
 			<AccumulationRegister>Sales</AccumulationRegister>
 			<AccumulationRegister>SalesByDiscountCards</AccumulationRegister>
 			<AccumulationRegister>SalesTargets</AccumulationRegister>
+			<AccumulationRegister>SerialNumbers</AccumulationRegister>
 			<AccumulationRegister>SettlementsWithOtherCounterparties</AccumulationRegister>
 			<AccumulationRegister>TaxesSettlements</AccumulationRegister>
 			<AccumulationRegister>Timesheet</AccumulationRegister>

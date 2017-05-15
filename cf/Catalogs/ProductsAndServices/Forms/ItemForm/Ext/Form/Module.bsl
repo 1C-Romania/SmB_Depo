@@ -297,6 +297,11 @@ Procedure SetVisibleAndEnabled(OnProductsAndServicesTypeChanged = False)
 	
 	Items.CountryOfOrigin.Visible	 = (Object.ProductsAndServicesType = Enums.ProductsAndServicesTypes.InventoryItem);
 	
+	ItemsVisible = (Object.ProductsAndServicesType = Enums.ProductsAndServicesTypes.InventoryItem);
+	Элементы.UseSerialNumbers.Visible = ItemsVisible;
+	Элементы.GuaranteePeriod.Visible = ItemsVisible;
+	Элементы.WriteOutTheGuaranteeCard.Visible = ItemsVisible;
+	
 	If OnProductsAndServicesTypeChanged Then
 		
 		Object.ReplenishmentDeadline = 0;

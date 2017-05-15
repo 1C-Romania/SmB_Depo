@@ -99,6 +99,15 @@ Procedure Filling(FillingData, StandardProcessing) Export
 	
 EndProcedure // FillingProcessor()
 
+// Procedure - event handler FillCheckProcessing object.
+//
+Procedure FillCheckProcessing(Cancel, CheckedAttributes)
+	
+	// Serial numbers
+	WorkWithSerialNumbers.FillCheckingSerialNumbers(Cancel, Inventory, SerialNumbers, StructuralUnit, ThisObject);
+	
+EndProcedure
+
 // Procedure - event handler Posting object.
 //
 Procedure Posting(Cancel, PostingMode)
@@ -119,6 +128,10 @@ Procedure Posting(Cancel, PostingMode)
 	SmallBusinessServer.ReflectIncomeAndExpenses(AdditionalProperties, RegisterRecords, Cancel);
 	SmallBusinessServer.ReflectManagerial(AdditionalProperties, RegisterRecords, Cancel);
 
+	// SerialNumbers
+	SmallBusinessServer.ReflectTheSerialNumbersOfTheGuarantee(AdditionalProperties, RegisterRecords, Cancel);
+	SmallBusinessServer.ReflectTheSerialNumbersBalance(AdditionalProperties, RegisterRecords, Cancel);
+	
 	// Writing of record sets
 	SmallBusinessServer.WriteRecordSets(ThisObject);
 

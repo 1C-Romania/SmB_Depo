@@ -8,12 +8,11 @@
 //
 Procedure GenerateTableManagerial(DocumentRefAgentReport, StructureAdditionalProperties)
 	
-		
 	//( elmi #11
-    Query = New Query;
+	Query = New Query;
 	Query.TempTablesManager = StructureAdditionalProperties.ForPosting.StructureTemporaryTables.TempTablesManager;
 	Query.Text =
-    "SELECT
+	"SELECT
 	|	Sum(TemporaryTable.VATAmount) AS VATAmount ,
 	|	Sum(TemporaryTable.BrokerageVATAmount) AS BrokerageVATAmount, 
 	|	Sum(TemporaryTable.VATAmountCur) AS VATAmountCur ,
@@ -33,10 +32,10 @@ Procedure GenerateTableManagerial(DocumentRefAgentReport, StructureAdditionalPro
 	BrokerageVATAmountCur = 0;
 	
 	While Selection.Next() Do  
-		  VATAmount    = Selection.VATAmount;
-	      VATAmountCur = Selection.VATAmountCur;
-		  BrokerageVATAmount    = Selection.BrokerageVATAmount;
-	      BrokerageVATAmountCur = Selection.BrokerageVATAmountCur;
+		VATAmount    = Selection.VATAmount;
+		VATAmountCur = Selection.VATAmountCur;
+		BrokerageVATAmount    = Selection.BrokerageVATAmount;
+		BrokerageVATAmountCur = Selection.BrokerageVATAmountCur;
 	EndDo;
     //) elmi
 	
@@ -1299,6 +1298,8 @@ Procedure InitializeDocumentData(DocumentRefAgentReport, StructureAdditionalProp
 	Query.Text =
 	"SELECT
 	|	AgentReportInventory.LineNumber AS LineNumber,
+	|	AgentReportInventory.ConnectionKey AS ConnectionKey,
+	|	AgentReportInventory.ConnectionKeySerialNumbers AS ConnectionKeySerialNumbers,
 	|	AgentReportInventory.Ref AS Document,
 	|	AgentReportInventory.Ref.Date AS Period,
 	|	&Company AS Company,
@@ -1435,7 +1436,7 @@ Procedure InitializeDocumentData(DocumentRefAgentReport, StructureAdditionalProp
 	|						THEN AgentReportInventory.BrokerageVATAmount *  RegCurrencyRates.ExchangeRate * AgentReportInventory.Ref.Multiplicity / (AgentReportInventory.Ref.ExchangeRate * RegCurrencyRates.Multiplicity)
 	|					  ELSE AgentReportInventory.BrokerageVATAmount
 	|				      END
-	|		        END AS NUMBER(15, 2))КАК BrokerageVATAmountCur,
+	|		        END AS NUMBER(15, 2))AS BrokerageVATAmountCur,
 	//) elmi
 	|	AgentReportInventory.CustomerOrder AS CustomerOrder,
 	|	CAST(CASE
@@ -1542,7 +1543,19 @@ Procedure InitializeDocumentData(DocumentRefAgentReport, StructureAdditionalProp
 	|	DocumentTable.Ref.Counterparty.DoOperationsByContracts,
 	|	DocumentTable.Ref.Counterparty.DoOperationsByDocuments,
 	|	DocumentTable.Ref.Counterparty.DoOperationsByOrders,
-	|	DocumentTable.Ref.Counterparty.TrackPaymentsByBills";
+	|	DocumentTable.Ref.Counterparty.TrackPaymentsByBills
+	|;
+	|
+	|////////////////////////////////////////////////////////////////////////////////
+	|SELECT
+	|	AgentReportSerialNumbers.ConnectionKey,
+	|	AgentReportSerialNumbers.SerialNumber
+	|INTO TemporaryTableSerialNumbers
+	|FROM
+	|	Document.AgentReport.SerialNumbers AS AgentReportSerialNumbers
+	|WHERE
+	|	AgentReportSerialNumbers.Ref = &Ref
+	|	AND &UseSerialNumbers";
 	
 	Query.SetParameter("Ref", DocumentRefAgentReport);
 	Query.SetParameter("Company", StructureAdditionalProperties.ForPosting.Company);
@@ -1550,6 +1563,7 @@ Procedure InitializeDocumentData(DocumentRefAgentReport, StructureAdditionalProp
 	Query.SetParameter("UseCharacteristics", StructureAdditionalProperties.AccountingPolicy.UseCharacteristics);
 	Query.SetParameter("UseBatches", StructureAdditionalProperties.AccountingPolicy.UseBatches);
 	
+	Query.SetParameter("UseSerialNumbers", StructureAdditionalProperties.AccountingPolicy.UseSerialNumbers);
 	Query.ExecuteBatch();
 	
 	// Creation of document postings.
@@ -1564,9 +1578,46 @@ Procedure InitializeDocumentData(DocumentRefAgentReport, StructureAdditionalProp
 	GenerateTableIncomeAndExpensesCashMethod(DocumentRefAgentReport, StructureAdditionalProperties);
 	GenerateTableInventory(DocumentRefAgentReport, StructureAdditionalProperties);
 	
+	// Serial numbers
+	GenerateTableSerialNumbers(DocumentRefAgentReport, StructureAdditionalProperties);
+	
 	GenerateTableManagerial(DocumentRefAgentReport, StructureAdditionalProperties);
 	
 EndProcedure // DocumentDataInitialization()
+
+// Generates a table of values that contains the data for the SerialNumbersGuarantees information register.
+// Tables of values saves into the properties of the structure "AdditionalProperties".
+//
+Procedure GenerateTableSerialNumbers(DocumentRef, StructureAdditionalProperties)
+	
+	If DocumentRef.SerialNumbers.Count()=0 Then
+		StructureAdditionalProperties.TableForRegisterRecords.Insert("TableSerialNumbersGuarantees", New ValueTable);
+		Return;
+	EndIf;
+	
+	Query = New Query;
+	Query.TempTablesManager = StructureAdditionalProperties.ForPosting.StructureTemporaryTables.TempTablesManager;
+	Query.Text =
+	"SELECT
+	|	TemporaryTableInventory.Period AS Period,
+	|	VALUE(AccumulationRecordType.Expense) AS RecordType,
+	|	TemporaryTableInventory.Period AS EventDate,
+	|	VALUE(Enum.SerialNumbersOperations.Expense) AS Operation,
+	|	SerialNumbers.SerialNumber AS SerialNumber,
+	|	TemporaryTableInventory.ProductsAndServices AS ProductsAndServices,
+	|	TemporaryTableInventory.Characteristic AS Characteristic,
+	|	TemporaryTableInventory.Batch AS Batch,
+	|	1 AS Quantity
+	|FROM
+	|	TemporaryTableInventory AS TemporaryTableInventory
+	|		INNER JOIN TemporaryTableSerialNumbers AS SerialNumbers
+	|		ON TemporaryTableInventory.ConnectionKeySerialNumbers = SerialNumbers.ConnectionKey";
+	
+	QueryResult = Query.Execute();
+	
+	StructureAdditionalProperties.TableForRegisterRecords.Insert("TableSerialNumbersGuarantees", QueryResult.Unload());
+	
+EndProcedure
 
 // Controls the occurrence of negative balances.
 //

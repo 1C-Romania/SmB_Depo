@@ -2174,6 +2174,8 @@ Procedure GenerateMaterialsDistributionTableAssembly(DocumentRefInventoryAssembl
 	|////////////////////////////////////////////////////////////////////////////////
 	|SELECT
 	|	InventoryAssemblyInventory.LineNumber AS LineNumber,
+	|	InventoryAssemblyInventory.ConnectionKey КАК ConnectionKey,
+	|	InventoryAssemblyInventory.Ref КАК Ref,
 	|	InventoryAssemblyInventory.Ref.Date AS Period,
 	|	InventoryAssemblyInventory.Ref.StructuralUnit AS StructuralUnit,
 	|	InventoryAssemblyInventory.Ref.StructuralUnit.OrderWarehouse AS OrderWarehouse,
@@ -4624,6 +4626,8 @@ Procedure GenerateMaterialsDistributionTableDisassembly(DocumentRefInventoryAsse
 	|////////////////////////////////////////////////////////////////////////////////
 	|SELECT
 	|	InventoryAssemblyInventory.LineNumber AS LineNumber,
+	|	InventoryAssemblyInventory.ConnectionKey AS ConnectionKey,
+	|	InventoryAssemblyInventory.Ref AS Ref,
 	|	InventoryAssemblyInventory.Ref.Date AS Period,
 	|	InventoryAssemblyInventory.Ref.StructuralUnit AS StructuralUnit,
 	|	InventoryAssemblyInventory.Ref.StructuralUnit.OrderWarehouse AS OrderWarehouse,
@@ -5593,8 +5597,8 @@ Procedure GenerateTableOrdersPlacementDisassembly(DocumentRefInventoryAssembly, 
 	
 EndProcedure // GenerateTableProductsPlacementDisassembly()
 
-////////////////////////////////////////////////////////////////////////////////
-// DATA INITIALIZATION
+////////////////////////////////////////////////////////////////////////////////DATA
+// INITIALIZATION
 
 // Initializes the tables of values that contain the data of the document table sections.
 // Saves the tables of values in the properties of the structure "AdditionalProperties".
@@ -5607,6 +5611,8 @@ Procedure InitializeDocumentDataAssembly(DocumentRefInventoryAssembly, Structure
 	"SELECT
 	|	InventoryAssemblyProducts.LineNumber AS LineNumber,
 	|	InventoryAssemblyProducts.Ref.Date AS Period,
+	|	InventoryAssemblyProducts.ConnectionKey AS ConnectionKey,
+	|	InventoryAssemblyProducts.Ref AS Ref,
 	|	&Company AS Company,
 	|	InventoryAssemblyProducts.Ref.StructuralUnit AS StructuralUnit,
 	|	InventoryAssemblyProducts.Ref.StructuralUnit.OrderWarehouse AS OrderWarehouse,
@@ -5679,13 +5685,13 @@ Procedure InitializeDocumentDataAssembly(DocumentRefInventoryAssembly, Structure
 	|		ELSE InventoryAssemblyProducts.Ref.BasisDocument
 	|	END AS SupplySource,
 	|	CASE
-	|		WHEN VALUETYPE(InventoryAssemblyProducts.MeasurementUnit) = Type(Catalog.UOMClassifier)
+	|		WHEN VALUETYPE(InventoryAssemblyProducts.MeasurementUnit) = TYPE(Catalog.UOMClassifier)
 	|			THEN InventoryAssemblyProducts.Quantity
 	|		ELSE InventoryAssemblyProducts.Quantity * InventoryAssemblyProducts.MeasurementUnit.Factor
 	|	END AS Quantity,
 	|	0 AS Amount,
-	|	CAST(&InventoryAssembly AS String(100)) AS ContentOfAccountingRecord,
-	|	CAST(&InventoryAssembly AS String(100)) AS Content,
+	|	CAST(&InventoryAssembly AS STRING(100)) AS ContentOfAccountingRecord,
+	|	CAST(&InventoryAssembly AS STRING(100)) AS Content,
 	|	&UpdateDateToRelease_1_2_1 AS UpdateDateToRelease_1_2_1
 	|INTO TemporaryTableProduction
 	|FROM
@@ -5797,7 +5803,7 @@ Procedure InitializeDocumentDataAssembly(DocumentRefInventoryAssembly, Structure
 	|FROM
 	|	TemporaryTableProduction AS TableProduction
 	|WHERE
-	|	Not TableProduction.OrderWarehouse
+	|	NOT TableProduction.OrderWarehouse
 	|	AND TableProduction.Period >= TableProduction.UpdateDateToRelease_1_2_1
 	|
 	|GROUP BY
@@ -5832,7 +5838,7 @@ Procedure InitializeDocumentDataAssembly(DocumentRefInventoryAssembly, Structure
 	|	TemporaryTableProduction AS TableProduction
 	|WHERE
 	|	TableProduction.OrderWarehouse
-	|	AND Not TableProduction.OrderWarehouseOfProducts
+	|	AND NOT TableProduction.OrderWarehouseOfProducts
 	|	AND TableProduction.Period >= TableProduction.UpdateDateToRelease_1_2_1
 	|
 	|GROUP BY
@@ -6024,20 +6030,72 @@ Procedure InitializeDocumentDataAssembly(DocumentRefInventoryAssembly, Structure
 	|	TableProduction.ProductsAccountCr
 	|
 	|ORDER BY
-	|	CorrLineNumber";
+	|	CorrLineNumber
+	|;
+	|
+	|////////////////////////////////////////////////////////////////////////////////
+	|SELECT
+	|	TableProduction.Period AS Period,
+	|	VALUE(AccumulationRecordType.Receipt) AS RecordType,
+	|	TableProduction.Period AS EventDate,
+	|	VALUE(Enum.SerialNumbersOperations.Receipt) AS Operation,
+	|	TableSerialNumbersProducts.SerialNumber AS SerialNumber,
+	|	&Company AS Company,
+	|	TableProduction.ProductsAndServices AS ProductsAndServices,
+	|	TableProduction.Characteristic AS Characteristic,
+	|	TableProduction.Batch AS Batch,
+	|	TableProduction.ProductsStructuralUnitToWarehouse AS StructuralUnit,
+	|	TableProduction.ProductsCell AS Cell,
+	|	1 AS Quantity
+	|FROM
+	|	TemporaryTableProduction AS TableProduction
+	|		INNER JOIN Document.InventoryAssembly.SerialNumbersProducts AS TableSerialNumbersProducts
+	|		ON TableProduction.Ref = TableSerialNumbersProducts.Ref
+	|			AND TableProduction.ConnectionKey = TableSerialNumbersProducts.ConnectionKey
+	|WHERE
+	|	TableSerialNumbersProducts.Ref = &Ref
+	|	AND &UseSerialNumbers
+	|	AND NOT TableProduction.OrderWarehouseOfProducts
+	|
+	|UNION ALL
+	|
+	|SELECT
+	|	TableInventory.Ref.Date,
+	|	VALUE(AccumulationRecordType.Expense),
+	|	TableInventory.Ref.Date,
+	|	VALUE(Enum.SerialNumbersOperations.Expense),
+	|	TableSerialNumbers.SerialNumber,
+	|	&Company,
+	|	TableInventory.ProductsAndServices,
+	|	TableInventory.Characteristic,
+	|	TableInventory.Batch,
+	|	TableInventory.Ref.InventoryStructuralUnit,
+	|	TableInventory.Ref.CellInventory,
+	|	1
+	|FROM
+	|	Document.InventoryAssembly.Inventory AS TableInventory
+	|		INNER JOIN Document.InventoryAssembly.SerialNumbers AS TableSerialNumbers
+	|		ON TableInventory.Ref = TableSerialNumbers.Ref
+	|			AND TableInventory.ConnectionKey = TableSerialNumbers.ConnectionKey
+	|WHERE
+	|	TableSerialNumbers.Ref = &Ref
+	|	AND &UseSerialNumbers";
+
 	
 	Query.SetParameter("Ref", DocumentRefInventoryAssembly);
 	Query.SetParameter("Company", StructureAdditionalProperties.ForPosting.Company);
 	Query.SetParameter("UseCharacteristics", StructureAdditionalProperties.AccountingPolicy.UseCharacteristics);
 	Query.SetParameter("UseBatches",  StructureAdditionalProperties.AccountingPolicy.UseBatches);
-	Query.SetParameter("AccountingByCells",  StructureAdditionalProperties.AccountingPolicy.AccountingByCells);
-	Query.SetParameter("UseTechOperations",  StructureAdditionalProperties.AccountingPolicy.UseTechOperations);
+	Query.SetParameter("AccountingByCells", StructureAdditionalProperties.AccountingPolicy.AccountingByCells);
+	Query.SetParameter("UseTechOperations", StructureAdditionalProperties.AccountingPolicy.UseTechOperations);
+	
+	Query.SetParameter("UseSerialNumbers", StructureAdditionalProperties.AccountingPolicy.UseSerialNumbers);
 	
 	// Temporarily: change motions by the order warehouse.
 	UpdateDateToRelease_1_2_1 = Constants.UpdateDateToRelease_1_2_1.Get();
 	Query.SetParameter("UpdateDateToRelease_1_2_1", UpdateDateToRelease_1_2_1);
 	
-	Query.SetParameter("InventoryAssembly", NStr("en='Production';ru='Производство'"));
+	Query.SetParameter("InventoryAssembly", NStr("ru = 'Производство'; en = 'Production'"));
 
 	ResultsArray = Query.ExecuteBatch();
 	
@@ -6111,6 +6169,15 @@ Procedure InitializeDocumentDataAssembly(DocumentRefInventoryAssembly, Structure
 	
 	// Disposals.
 	DataInitializationByDisposals(DocumentRefInventoryAssembly, StructureAdditionalProperties);
+	
+	// Serial numbers
+	QueryResult8 = ResultsArray[8].Unload();
+	StructureAdditionalProperties.TableForRegisterRecords.Insert("TableSerialNumbersGuarantees", QueryResult8);
+	If StructureAdditionalProperties.AccountingPolicy.SerialNumbersBalance Then
+		StructureAdditionalProperties.TableForRegisterRecords.Insert("TableSerialNumbersBalance", QueryResult8);
+	Else
+		StructureAdditionalProperties.TableForRegisterRecords.Insert("TableSerialNumbersBalance", New ValueTable);
+	EndIf;
 	
 EndProcedure // InitializeDocumentDataBuild()
 
@@ -6611,7 +6678,56 @@ Procedure InitializeDocumentDataDisassembly(DocumentRefInventoryAssembly, Struct
 	|					THEN InventoryAssemblyProducts.ProductsAndServices.InventoryGLAccount
 	|				ELSE InventoryAssemblyProducts.ProductsAndServices.ExpensesGLAccount
 	|			END
-	|	END";
+	|	END
+	|;
+	|
+	|////////////////////////////////////////////////////////////////////////////////
+	|SELECT
+	|	TableProduction.Period AS Period,
+	|	VALUE(AccumulationRecordType.Receipt) AS RecordType,
+	|	TableProduction.Period AS EventDate,
+	|	VALUE(Enum.SerialNumbersOperations.Receipt) AS Operation,
+	|	TableSerialNumbers.SerialNumber AS SerialNumber,
+	|	&Company AS Company,
+	|	TableProduction.ProductsAndServices AS ProductsAndServices,
+	|	TableProduction.Characteristic AS Characteristic,
+	|	TableProduction.Batch AS Batch,
+	|	TableProduction.ProductsStructuralUnitToWarehouse AS StructuralUnit,
+	|	TableProduction.ProductsCell AS Cell,
+	|	1 AS Quantity
+	|FROM
+	|	TemporaryTableProduction AS TableProduction
+	|		INNER JOIN Document.InventoryAssembly.SerialNumbers AS TableSerialNumbers
+	|		BY TableProduction.Ref = TableSerialNumbers.Ref
+	|			AND TableProduction.ConnectionKey = TableSerialNumbers.ConnectionKey
+	|WHERE
+	|	TableProduction.Ref = &Ref
+	|	AND &UseSerialNumbers
+	|	AND NOT TableProduction.OrderWarehouse
+	|
+	|UNION ALL
+	|
+	|SELECT
+	|	TableInventory.Ref.Date,
+	|	VALUE(AccumulationRecordType.Expense),
+	|	TableInventory.Ref.Date,
+	|	VALUE(Enum.SerialNumbersOperations.Expense),
+	|	TableSerialNumbers.SerialNumber,
+	|	&Company,
+	|	TableInventory.ProductsAndServices,
+	|	TableInventory.Characteristic,
+	|	TableInventory.Batch,
+	|	TableInventory.Ref.InventoryStructuralUnit,
+	|	TableInventory.Ref.CellInventory,
+	|	1
+	|FROM
+	|	Document.InventoryAssembly.Products AS TableInventory
+	|		INNER JOIN Document.InventoryAssembly.SerialNumbersProducts AS TableSerialNumbers
+	|		BY TableInventory.Ref = TableSerialNumbers.Ref
+	|			AND TableInventory.ConnectionKey = TableSerialNumbers.ConnectionKey
+	|WHERE
+	|	TableSerialNumbers.Ref = &Ref
+	|	AND &UseSerialNumbers";
 	
 	Query.SetParameter("Ref", DocumentRefInventoryAssembly);
 	Query.SetParameter("Company", StructureAdditionalProperties.ForPosting.Company);
@@ -6620,11 +6736,13 @@ Procedure InitializeDocumentDataDisassembly(DocumentRefInventoryAssembly, Struct
 	Query.SetParameter("AccountingByCells",  StructureAdditionalProperties.AccountingPolicy.AccountingByCells);
 	Query.SetParameter("UseTechOperations",  StructureAdditionalProperties.AccountingPolicy.UseTechOperations);
 	
+	Query.SetParameter("UseSerialNumbers", StructureAdditionalProperties.AccountingPolicy.UseSerialNumbers);
+	
 	// Temporarily: change motions by the order warehouse.
 	UpdateDateToRelease_1_2_1 = Constants.UpdateDateToRelease_1_2_1.Get();
 	Query.SetParameter("UpdateDateToRelease_1_2_1", UpdateDateToRelease_1_2_1);
 	
-	Query.SetParameter("InventoryAssembly", NStr("en='Production';ru='Производство'"));
+	Query.SetParameter("InventoryAssembly", NStr("ru = 'Производство'; en = 'Production'"));
 
 	ResultsArray = Query.ExecuteBatch();
 	
@@ -6699,6 +6817,20 @@ Procedure InitializeDocumentDataDisassembly(DocumentRefInventoryAssembly, Struct
 	// Disposals.
 	DataInitializationByDisposals(DocumentRefInventoryAssembly, StructureAdditionalProperties);
 	
+	// Serial numbers
+	If StructureAdditionalProperties.TableForRegisterRecords.TableInventoryInWarehouses.Count()>0 Then
+		QueryResult8 = ResultsArray[8].Unload();
+		StructureAdditionalProperties.TableForRegisterRecords.Insert("TableSerialNumbersGuarantees", QueryResult8);
+		If StructureAdditionalProperties.AccountingPolicy.SerialNumbersBalance Then
+			StructureAdditionalProperties.TableForRegisterRecords.Insert("TableSerialNumbersBalance", QueryResult8);
+		Else
+			StructureAdditionalProperties.TableForRegisterRecords.Insert("TableSerialNumbersBalance", New ValueTable);
+		EndIf;
+	Else
+		StructureAdditionalProperties.TableForRegisterRecords.Insert("TableSerialNumbersGuarantees", New ValueTable);
+		StructureAdditionalProperties.TableForRegisterRecords.Insert("TableSerialNumbersBalance", New ValueTable);
+	EndIf;
+	
 EndProcedure // InitializeDocumentDataDisassembly()
 
 // Initializes the tables of values that contain the data of the document table sections.
@@ -6718,8 +6850,8 @@ Procedure InitializeDocumentData(DocumentRefInventoryAssembly, StructureAddition
 	
 EndProcedure // DocumentDataInitialization()
 
-////////////////////////////////////////////////////////////////////////////////
-// BALANCE CONTROL
+////////////////////////////////////////////////////////////////////////////////BALANCE
+// CONTROL
 
 // Controls the occurrence of negative balances.
 //
@@ -6731,15 +6863,16 @@ Procedure RunControl(DocumentRefInventoryAssembly, AdditionalProperties, Cancel,
 
 	StructureTemporaryTables = AdditionalProperties.ForPosting.StructureTemporaryTables;
 	
-	// If the temporary tables
-	// "RegisterRecordsProductionOrdersChange" "RegisterRecordsOrdersPlacementChange"
-	// "RegisterRecordsInventoryChange" contain records, control goods implementation.
+	// If the temporary
+	// tables "RegisterRecordsProductionOrdersChange"
+	// "RegisterRecordsOrdersPlacementChange" "RegisterRecordsInventoryChange" contain records, control goods implementation.
 	
 	If StructureTemporaryTables.RegisterRecordsProductionOrdersChange
 		OR StructureTemporaryTables.RegisterRecordsOrdersPlacementChange
 		OR StructureTemporaryTables.RegisterRecordsInventoryChange
 		OR StructureTemporaryTables.RegisterRecordsInventoryInWarehousesChange
-		OR StructureTemporaryTables.RegisterRecordsInventoryReceivedChange Then
+		OR StructureTemporaryTables.RegisterRecordsInventoryReceivedChange
+		OR StructureTemporaryTables.RegisterRecordsSerialNumbersChange Then
 		
 		Query = New Query(
 		"SELECT
@@ -6758,7 +6891,7 @@ Procedure RunControl(DocumentRefInventoryAssembly, AdditionalProperties, Cancel,
 		|	RegisterRecordsInventoryInWarehousesChange AS RegisterRecordsInventoryInWarehousesChange
 		|		LEFT JOIN AccumulationRegister.InventoryInWarehouses.Balance(
 		|				&ControlTime,
-		|				(Company, StructuralUnit, ProductsAndServices, Characteristic, Batch, Cell) In
+		|				(Company, StructuralUnit, ProductsAndServices, Characteristic, Batch, Cell) IN
 		|					(SELECT
 		|						RegisterRecordsInventoryInWarehousesChange.Company AS Company,
 		|						RegisterRecordsInventoryInWarehousesChange.StructuralUnit AS StructuralUnit,
@@ -6800,7 +6933,7 @@ Procedure RunControl(DocumentRefInventoryAssembly, AdditionalProperties, Cancel,
 		|	RegisterRecordsInventoryChange AS RegisterRecordsInventoryChange
 		|		LEFT JOIN AccumulationRegister.Inventory.Balance(
 		|				&ControlTime,
-		|				(Company, StructuralUnit, GLAccount, ProductsAndServices, Characteristic, Batch, CustomerOrder) In
+		|				(Company, StructuralUnit, GLAccount, ProductsAndServices, Characteristic, Batch, CustomerOrder) IN
 		|					(SELECT
 		|						RegisterRecordsInventoryChange.Company AS Company,
 		|						RegisterRecordsInventoryChange.StructuralUnit AS StructuralUnit,
@@ -6842,7 +6975,7 @@ Procedure RunControl(DocumentRefInventoryAssembly, AdditionalProperties, Cancel,
 		|	RegisterRecordsInventoryReceivedChange AS RegisterRecordsInventoryReceivedChange
 		|		LEFT JOIN AccumulationRegister.InventoryReceived.Balance(
 		|				&ControlTime,
-		|				(Company, ReceptionTransmissionType, ProductsAndServices, Characteristic, Batch, Order) In
+		|				(Company, ReceptionTransmissionType, ProductsAndServices, Characteristic, Batch, Order) IN
 		|					(SELECT
 		|						RegisterRecordsInventoryReceivedChange.Company AS Company,
 		|						VALUE(Enum.ProductsReceiptTransferTypes.ReportByProcessing) AS ReceptionTransmissionType,
@@ -6879,7 +7012,7 @@ Procedure RunControl(DocumentRefInventoryAssembly, AdditionalProperties, Cancel,
 		|	RegisterRecordsProductionOrdersChange AS RegisterRecordsProductionOrdersChange
 		|		LEFT JOIN AccumulationRegister.ProductionOrders.Balance(
 		|				&ControlTime,
-		|				(Company, ProductionOrder, ProductsAndServices, Characteristic) In
+		|				(Company, ProductionOrder, ProductsAndServices, Characteristic) IN
 		|					(SELECT
 		|						RegisterRecordsProductionOrdersChange.Company AS Company,
 		|						RegisterRecordsProductionOrdersChange.ProductionOrder AS ProductionOrder,
@@ -6913,7 +7046,7 @@ Procedure RunControl(DocumentRefInventoryAssembly, AdditionalProperties, Cancel,
 		|	RegisterRecordsOrdersPlacementChange AS RegisterRecordsOrdersPlacementChange
 		|		LEFT JOIN AccumulationRegister.OrdersPlacement.Balance(
 		|				&ControlTime,
-		|				(Company, CustomerOrder, ProductsAndServices, Characteristic, SupplySource) In
+		|				(Company, CustomerOrder, ProductsAndServices, Characteristic, SupplySource) IN
 		|					(SELECT
 		|						RegisterRecordsOrdersPlacementChange.Company AS Company,
 		|						RegisterRecordsOrdersPlacementChange.CustomerOrder AS CustomerOrder,
@@ -6931,6 +7064,34 @@ Procedure RunControl(DocumentRefInventoryAssembly, AdditionalProperties, Cancel,
 		|	ISNULL(OrdersPlacementBalances.QuantityBalance, 0) < 0
 		|
 		|ORDER BY
+		|	LineNumber
+		|;
+		|
+		|////////////////////////////////////////////////////////////////////////////////
+		|SELECT
+		|	RegisterRecordsSerialNumbersChange.LineNumber AS LineNumber,
+		|	RegisterRecordsSerialNumbersChange.SerialNumber AS SerialNumberPresentation,
+		|	RegisterRecordsSerialNumbersChange.StructuralUnit AS StructuralUnitPresentation,
+		|	RegisterRecordsSerialNumbersChange.ProductsAndServices AS ProductsAndServicesPresentation,
+		|	RegisterRecordsSerialNumbersChange.Characteristic AS CharacteristicPresentation,
+		|	RegisterRecordsSerialNumbersChange.Batch AS BatchPresentation,
+		|	RegisterRecordsSerialNumbersChange.Cell AS PresentationCell,
+		|	SerialNumbersBalance.StructuralUnit.StructuralUnitType AS StructuralUnitType,
+		|	SerialNumbersBalance.ProductsAndServices.MeasurementUnit AS MeasurementUnitPresentation,
+		|	ISNULL(RegisterRecordsSerialNumbersChange.QuantityChange, 0) + ISNULL(SerialNumbersBalance.QuantityBalance, 0) AS BalanceSerialNumbers,
+		|	ISNULL(SerialNumbersBalance.QuantityBalance, 0) AS BalanceQuantitySerialNumbers
+		|FROM
+		|	RegisterRecordsSerialNumbersChange AS RegisterRecordsSerialNumbersChange
+		|		INNER JOIN AccumulationRegister.SerialNumbers.Balance(&ControlTime, ) AS SerialNumbersBalance
+		|		ON RegisterRecordsSerialNumbersChange.StructuralUnit = SerialNumbersBalance.StructuralUnit
+		|			AND RegisterRecordsSerialNumbersChange.ProductsAndServices = SerialNumbersBalance.ProductsAndServices
+		|			AND RegisterRecordsSerialNumbersChange.Characteristic = SerialNumbersBalance.Characteristic
+		|			AND RegisterRecordsSerialNumbersChange.Batch = SerialNumbersBalance.Batch
+		|			AND RegisterRecordsSerialNumbersChange.SerialNumber = SerialNumbersBalance.SerialNumber
+		|			AND RegisterRecordsSerialNumbersChange.Cell = SerialNumbersBalance.Cell
+		|			AND (ISNULL(SerialNumbersBalance.QuantityBalance, 0) < 0)
+		|
+		|ORDER BY
 		|	LineNumber");
 		
 		Query.TempTablesManager = StructureTemporaryTables.TempTablesManager;
@@ -6942,7 +7103,8 @@ Procedure RunControl(DocumentRefInventoryAssembly, AdditionalProperties, Cancel,
 			OR Not ResultsArray[1].IsEmpty()
 			OR Not ResultsArray[2].IsEmpty()
 			OR Not ResultsArray[3].IsEmpty()
-			OR Not ResultsArray[4].IsEmpty() Then
+			OR Not ResultsArray[4].IsEmpty()
+			OR Not ResultsArray[5].IsEmpty() Then
 			DocumentObjectInventoryAssembly = DocumentRefInventoryAssembly.GetObject()
 		EndIf;
 		
@@ -6974,6 +7136,12 @@ Procedure RunControl(DocumentRefInventoryAssembly, AdditionalProperties, Cancel,
 		If Not ResultsArray[4].IsEmpty() Then
 			QueryResultSelection = ResultsArray[4].Select();
 			SmallBusinessServer.ShowMessageAboutPostingToOrdersPlacementRegisterErrors(DocumentObjectInventoryAssembly, QueryResultSelection, Cancel);
+		EndIf;
+		
+		// Negative balance of serial numbers in the warehouse.
+		If NOT ResultsArray[5].IsEmpty() Then
+			QueryResultSelection = ResultsArray[5].Select();
+			SmallBusinessServer.ShowMessageAboutPostingSerialNumbersRegisterErrors(DocumentObjectInventoryAssembly, QueryResultSelection, Cancel);
 		EndIf;
 		
 	EndIf;
@@ -7092,7 +7260,7 @@ Function PrintForm(ObjectsArray, PrintObjects, TemplateName)
 			EndIf;
 			
 			TemplateArea = Template.GetArea("Header");
-			TemplateArea.Parameters.Title       = "REQUISITION-INVOICE No "
+			TemplateArea.Parameters.Title       = "REQUISITION-INVOICE No"
 													+ DocumentNumber
 													+ " from "
 													+ Format(Header.DocumentDate, "DLF=DD");
@@ -7226,7 +7394,7 @@ Function PrintForm(ObjectsArray, PrintObjects, TemplateName)
 			RowsOfBasement    = 9;
 			PageNumber   = 1;
 			
-			// Displaying table title
+			// Table Displaying title
 			TableTitle = Template.GetArea("TableTitle");
 			TableTitle.Parameters.PageNumber = "Page " + PageNumber; 
 			SpreadsheetDocument.Put(TableTitle);
@@ -7256,8 +7424,8 @@ Function PrintForm(ObjectsArray, PrintObjects, TemplateName)
 			For Each StringInventory IN LinesSelectionInventory Do
 			
 				Num = Num + 1;
-				//Start a new page if the previous string is
-				//the last one on the page or it is time to transfer the last string to the last page with footer.
+				//Start a new page if the previous
+				//string is the last one on the page or it is time to transfer the last string to the last page with footer.
 				AWholePage = (RowsCaps + Num - 1) / RowsPerPage;
 				
 				If (AWholePage = Int(AWholePage))
@@ -7340,7 +7508,12 @@ Function PrintForm(ObjectsArray, PrintObjects, TemplateName)
 				|		MeasurementUnit.Description AS MeasurementUnit,
 				|		Quantity AS Quantity,
 				|		Characteristic,
-				|		ProductsAndServices.ProductsAndServicesType AS ProductsAndServicesType
+				|		ProductsAndServices.ProductsAndServicesType AS ProductsAndServicesType,
+				|		ConnectionKey
+				|	),
+				|	InventoryAssembly.SerialNumbers.(
+				|		SerialNumber,
+				|		ConnectionKey
 				|	)
 				|FROM
 				|	Document.InventoryAssembly AS InventoryAssembly
@@ -7354,6 +7527,7 @@ Function PrintForm(ObjectsArray, PrintObjects, TemplateName)
 				Header.Next();
 				
 				LinesSelectionInventory = Header.Inventory.Select();
+				LinesSelectionSerialNumbers = Header.SerialNumbers.Select();
 				
 			Else
 				
@@ -7378,7 +7552,12 @@ Function PrintForm(ObjectsArray, PrintObjects, TemplateName)
 				|		MeasurementUnit.Description AS MeasurementUnit,
 				|		Quantity AS Quantity,
 				|		Characteristic AS Characteristic,
-				|		ProductsAndServices.ProductsAndServicesType AS ProductsAndServicesType
+				|		ProductsAndServices.ProductsAndServicesType AS ProductsAndServicesType,
+				|		ConnectionKey
+				|	),
+				|	InventoryAssembly.SerialNumbersProducts.(
+				|		SerialNumber,
+				|		ConnectionKey
 				|	)
 				|FROM
 				|	Document.InventoryAssembly AS InventoryAssembly
@@ -7389,6 +7568,7 @@ Function PrintForm(ObjectsArray, PrintObjects, TemplateName)
 				Header.Next();
 				
 				LinesSelectionInventory = Header.Products.Select();
+				LinesSelectionSerialNumbers = Header.SerialNumbersProducts.Select();
 				
 			EndIf;
 			
@@ -7440,8 +7620,12 @@ Function PrintForm(ObjectsArray, PrintObjects, TemplateName)
 				EndIf;
 				
 				TemplateArea.Parameters.Fill(LinesSelectionInventory);
-				TemplateArea.Parameters.InventoryItem = SmallBusinessServer.GetProductsAndServicesPresentationForPrinting(LinesSelectionInventory.InventoryItem, 
-																		LinesSelectionInventory.Characteristic, LinesSelectionInventory.SKU);
+				StringSerialNumbers = WorkWithSerialNumbers.SerialNumbersStringFromSelection(LinesSelectionSerialNumbers, LinesSelectionInventory.ConnectionKey);
+				TemplateArea.Parameters.InventoryItem = SmallBusinessServer.GetProductsAndServicesPresentationForPrinting(
+					LinesSelectionInventory.InventoryItem,
+					LinesSelectionInventory.Characteristic,
+					LinesSelectionInventory.SKU,
+					StringSerialNumbers);
 					
 				SpreadsheetDocument.Put(TemplateArea);
 				

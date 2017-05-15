@@ -90,6 +90,12 @@ Procedure SetEnabled(AttributePathToData = "")
 			
 		EndIf;
 		
+		If AttributePathToData = "ConstantsSet.UseSerialNumbers" OR AttributePathToData = "" Then
+			
+			CommonUseClientServer.SetFormItemProperty(Items, "SettingsКонтролироватьОстатки", "Enabled", ConstantsSet.UseSerialNumbers);
+			
+		EndIf;
+
 	EndIf;
 	
 EndProcedure
@@ -331,6 +337,37 @@ Function CancellationUncheckFunctionalOptionAccountingInVariousUOM()
 	Return ErrorText;
 	
 EndFunction // CancellationUncheckFunctionalOptionAccountingInVariousUOM()
+
+// Check for the option to uncheck UseSerialNumbers.
+//
+Function CancelRemoveFunctionalOptionUseSerialNumbers() Export
+	
+	ErrorText = "";
+	AreRecords = False;
+	
+	Query = New Query;
+	Query.Text =
+	"SELECT TOP 1
+	|	SerialNumbers.SerialNumber
+	|FROM
+	|	AccumulationRegister.SerialNumbers AS SerialNumbers
+	|WHERE
+	|	SerialNumbers.SerialNumber <> VALUE(Catalog.SerialNumbers.EmptyRef)";
+	
+	QueryResult = Query.Execute();
+	If Not QueryResult.Пустой() Then
+		AreRecords = True;
+	EndIf;
+	
+	If AreRecords Then
+		
+		ErrorText = NStr("en='There are balances by serial numbers in the database! The removal of the flag is prohibited!';ru = 'В базе есть остатки по серийным номерам! Снятие флага запрещено!'");
+		
+	EndIf;
+	
+	Return ErrorText;
+	
+EndFunction // CancelRemoveFunctionalOptionUseSerialNumbers()
 
 // Checks whether it is possible to clear the TransferInventoryOnSafeCustody option.
 //
@@ -964,6 +1001,44 @@ Function ValidateAbilityToChangeAttributeValue(AttributePathToData, Result)
 		
 	EndIf;
 	
+	// Check for the option to uncheck UseSerialNumbers.
+	If AttributePathToData = "ConstantsSet.UseSerialNumbers" Then
+		
+		If Constants.UseSerialNumbers.Get() <> ConstantsSet.UseSerialNumbers 
+			AND (NOT ConstantsSet.UseSerialNumbers) Then
+			
+			ErrorText = CancelRemoveFunctionalOptionUseSerialNumbers();
+			If Not IsBlankString(ErrorText) Then
+				
+				Result.Insert("Field", 				AttributePathToData);
+				Result.Insert("ErrorText", 		ErrorText);
+				Result.Insert("CurrentValue",	True);
+				
+			EndIf;
+			
+		EndIf;
+		
+	EndIf;
+
+	// Check for the option to uncheck SerialNumbersBalanceControl.
+	If AttributePathToData = "ConstantsSet.UseSerialNumbers" Then
+		
+		If Constants.SerialNumbersBalanceControl.Get() <> ConstantsSet.SerialNumbersBalanceControl 
+			AND (NOT ConstantsSet.SerialNumbersBalanceControl) Then
+			
+			ErrorText = CancelRemoveFunctionalOptionUseSerialNumbers();
+			If Not IsBlankString(ErrorText) Then
+				
+				Result.Insert("Field", 				AttributePathToData);
+				Result.Insert("ErrorText", 		ErrorText);
+				Result.Insert("CurrentValue",	True);
+				
+			EndIf;
+			
+		EndIf;
+		
+	EndIf;
+
 EndFunction // CheckAbilityToChangeAttributeValue()
 
 ////////////////////////////////////////////////////////////////////////////////
@@ -1072,6 +1147,24 @@ Procedure FunctionalOptionUseOrderWarehouseOnChange(Item)
 	Attachable_OnAttributeChange(Item);
 	
 EndProcedure // FunctionalOptionUseOrderWarehouseOnChange()
+
+// Procedure - handler of the OnChange event of the FunctionalOptionUseSerialNumbers field.
+//
+&AtClient
+Procedure FunctionalOptionFunctionalOptionUseSerialNumbersOnChange(Item)
+	
+	Attachable_OnAttributeChange(Item);
+	
+EndProcedure // FunctionalOptionFunctionalOptionUseSerialNumbersOnChange()
+
+// Procedure - handler of the OnChange event of the FunctionalOptionSerialNumbersBalanceControl field.
+//
+&AtClient
+Procedure FunctionalOptionSerialNumbersBalanceControlOnChange(Item)
+	
+	Attachable_OnAttributeChange(Item);
+	
+EndProcedure // FunctionalOptionSerialNumbersBalanceControlOnChange()
 
 // Procedure - handler of the CatalogStructuralUnitsWarehouses command.
 //

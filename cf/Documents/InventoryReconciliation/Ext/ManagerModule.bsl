@@ -5,8 +5,8 @@
 // Procedure forms and displays a printable document form by the specified layout.
 //
 // Parameters:
-// SpreadsheetDocument - TabularDocument in which
-// 			   printing form will be displayed.
+// SpreadsheetDocument - TabularDocument
+// 			   in which printing form will be displayed.
 //  TemplateName    - String, printing form layout name.
 //
 Function PrintForm(ObjectsArray, PrintObjects, TemplateName)
@@ -49,7 +49,12 @@ Function PrintForm(ObjectsArray, PrintObjects, TemplateName)
 			|		MeasurementUnit.Description AS MeasurementUnit,
 			|		Quantity AS Quantity,
 			|		Characteristic,
-			|		ProductsAndServices.ProductsAndServicesType AS ProductsAndServicesType
+			|		ProductsAndServices.ProductsAndServicesType AS ProductsAndServicesType,
+			|		ConnectionKey
+			|	),
+			|	InventoryReconciliation.SerialNumbers.(
+			|		SerialNumber,
+			|		ConnectionKey
 			|	)
 			|FROM
 			|	Document.InventoryReconciliation AS InventoryReconciliation
@@ -63,6 +68,7 @@ Function PrintForm(ObjectsArray, PrintObjects, TemplateName)
 			Header.Next();
 			
 			LinesSelectionInventory = Header.Inventory.Select();
+			LinesSelectionSerialNumbers = Header.SerialNumbers.Select();
 			
 			SpreadsheetDocument.PrintParametersName = "PRINT_PARAMETERS_InventoryOfInventory_FormOfFilling";
 			
@@ -75,9 +81,9 @@ Function PrintForm(ObjectsArray, PrintObjects, TemplateName)
 			EndIf;
 			
 			TemplateArea = Template.GetArea("Title");
-			TemplateArea.Parameters.HeaderText = NStr("en='Inventory survey No ';ru='Инвентаризация запасов № '") + 
+			TemplateArea.Parameters.HeaderText = NStr("ru = 'Инвентаризация запасов № '; en = 'Inventory survey No'") + 
 												 DocumentNumber + 
-												 NStr("en=' from ';ru=' от '") + 
+												 NStr("ru = ' от '; en = ' dated '") + 
 												 Format(Header.DocumentDate, "DLF=DD");
 			
 			SpreadsheetDocument.Put(TemplateArea);
@@ -95,9 +101,9 @@ Function PrintForm(ObjectsArray, PrintObjects, TemplateName)
 			EndIf;
 			
 			TemplateArea = Template.GetArea("PrintingTime");
-			TemplateArea.Parameters.PrintingTime = 	NStr("en='Date and time of printing: ';ru='Дата и время печати: '") +
+			TemplateArea.Parameters.PrintingTime = 	NStr("ru = 'Дата и время печати: '; en = 'Date and time of printing: '") +
 													CurrentDate() + 
-													NStr("en='. User: ';ru='. Пользователь: '") + 
+													NStr("ru = '. Пользователь: '; en = '. User: '") + 
 													Users.CurrentUser();
 			SpreadsheetDocument.Put(TemplateArea);
 			
@@ -112,8 +118,10 @@ Function PrintForm(ObjectsArray, PrintObjects, TemplateName)
 				EndIf;
 				
 				TemplateArea.Parameters.Fill(LinesSelectionInventory);
+				
+				StringSerialNumbers = WorkWithSerialNumbers.SerialNumbersStringFromSelection(LinesSelectionSerialNumbers, LinesSelectionInventory.ConnectionKey);
 				TemplateArea.Parameters.InventoryItem = SmallBusinessServer.GetProductsAndServicesPresentationForPrinting(LinesSelectionInventory.InventoryItem, 
-					LinesSelectionInventory.Characteristic, LinesSelectionInventory.SKU);
+					LinesSelectionInventory.Characteristic, LinesSelectionInventory.SKU, StringSerialNumbers);
 				
 				SpreadsheetDocument.Put(TemplateArea);
 				
@@ -179,7 +187,7 @@ Function PrintForm(ObjectsArray, PrintObjects, TemplateName)
 			
 			// Displaying invoice header
 			TemplateArea = Template.GetArea("Title");
-			TemplateArea.Parameters.HeaderText = NStr("en='Inventory survey No ';ru='Инвентаризация запасов № '") + DocumentNumber + NStr("en=' from ';ru=' от '") + Format(Header.DocumentDate, "DLF=DD");
+			TemplateArea.Parameters.HeaderText = NStr("ru = 'Инвентаризация запасов № '; en = 'Inventory survey No'") + DocumentNumber + NStr("ru = ' от '; en = ' dated '") + Format(Header.DocumentDate, "DLF=DD");
 			SpreadsheetDocument.Put(TemplateArea);
 			
 			// Output company and warehouse data

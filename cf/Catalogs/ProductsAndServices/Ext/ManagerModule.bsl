@@ -617,6 +617,22 @@ Procedure MatchImportedDataFromExternalSource(DataMatchingTable, AdditionalParam
 		// Supplier by TIN, Description
 		DataImportFromExternalSourcesOverridable.MapSupplier(FormTableRow.Vendor, FormTableRow.Vendor_IncomingData);
 		
+		// Serial numbers
+		If GetFunctionalOption("UseSerialNumbers") Then
+			
+			DataImportFromExternalSourcesOverridable.ConvertStringToBoolean(FormTableRow.UseSerialNumbers, FormTableRow.UseSerialNumbers_IncomingData);
+			FormTableRow.UseSerialNumbers = Not IsBlankString(FormTableRow.SerialNumber_IncomingData);
+			
+			If ThisStringIsMapped
+				And FormTableRow.UseSerialNumbers Then
+				
+				DataImportFromExternalSourcesOverridable.MapSerialNumber(FormTableRow.ProductsAndServices,
+					FormTableRow.SerialNumber, FormTableRow.SerialNumber_IncomingData);
+				
+			EndIf;
+			
+		EndIf;
+		
 		// Warehouse by description
 		DefaultValue = Catalogs.StructuralUnits.MainWarehouse;
 		WhenDefiningDefaultValue(FormTableRow.ProductsAndServices, "Warehouse", FormTableRow.Warehouse_IncomingData, ThisStringIsMapped, UpdateData, DefaultValue);

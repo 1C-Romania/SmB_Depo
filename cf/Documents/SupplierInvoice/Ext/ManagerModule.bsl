@@ -3559,7 +3559,8 @@ Procedure InitializeDocumentData(DocumentRefPurchaseInvoice, StructureAdditional
 	|						THEN SupplierInvoiceInventory.VATAmount * RegCurrencyRates.ExchangeRate * SupplierInvoiceInventory.Ref.Multiplicity / (SupplierInvoiceInventory.Ref.ExchangeRate * RegCurrencyRates.Multiplicity)
 	|					ELSE SupplierInvoiceInventory.VATAmount
 	|				END
-	|		END AS NUMBER(15, 2)) AS VATAmountCur
+	|		END AS NUMBER(15, 2)) AS VATAmountCur,
+	|	SupplierInvoiceInventory.ConnectionKey AS ConnectionKey
 	|INTO TemporaryTableInventory
 	|FROM
 	|	Document.SupplierInvoice.Inventory AS SupplierInvoiceInventory
@@ -3777,7 +3778,20 @@ Procedure InitializeDocumentData(DocumentRefPurchaseInvoice, StructureAdditional
 	|	DocumentTable.Ref.Counterparty.DoOperationsByContracts,
 	|	DocumentTable.Ref.Counterparty.DoOperationsByDocuments,
 	|	DocumentTable.Ref.Counterparty.DoOperationsByOrders,
-	|	DocumentTable.Ref.Counterparty.TrackPaymentsByBills";
+	|	DocumentTable.Ref.Counterparty.TrackPaymentsByBills
+	|;
+	|
+	|////////////////////////////////////////////////////////////////////////////////
+	|SELECT
+	|	CustomerInvoiceSerialNumbers.ConnectionKey,
+	|	CustomerInvoiceSerialNumbers.SerialNumber
+	|INTO TemporaryTableSerialNumbers
+	|FROM
+	|	Document.SupplierInvoice.SerialNumbers AS CustomerInvoiceSerialNumbers
+	|WHERE
+	|	CustomerInvoiceSerialNumbers.Ref = &Ref 
+	|	AND &UseSerialNumbers
+	|	AND NOT CustomerInvoiceSerialNumbers.Ref.StructuralUnit.OrderWarehouse";
 	
 	Query.SetParameter("Ref", DocumentRefPurchaseInvoice);
 	Query.SetParameter("Company", StructureAdditionalProperties.ForPosting.Company);
@@ -3785,6 +3799,7 @@ Procedure InitializeDocumentData(DocumentRefPurchaseInvoice, StructureAdditional
 	Query.SetParameter("UseCharacteristics", StructureAdditionalProperties.AccountingPolicy.UseCharacteristics);
 	Query.SetParameter("UseBatches", StructureAdditionalProperties.AccountingPolicy.UseBatches);
 	Query.SetParameter("AccountingByCells", StructureAdditionalProperties.AccountingPolicy.AccountingByCells);
+	Query.SetParameter("UseSerialNumbers", StructureAdditionalProperties.AccountingPolicy.UseSerialNumbers);
 	
 	Query.SetParameter("InventoryReceipt", NStr("en='Inventory receiving';ru='Прием запасов'"));
 	Query.SetParameter("InventoryWriteOff", NStr("en='Inventory write off';ru='Списание запасов'"));
@@ -3821,6 +3836,9 @@ Procedure InitializeDocumentData(DocumentRefPurchaseInvoice, StructureAdditional
 	// DiscountCards
 	GenerateTableSalesByDiscountCard(DocumentRefPurchaseInvoice, StructureAdditionalProperties);
 	
+	// Serial numbers
+	GenerateTableSerialNumbers(DocumentRefPurchaseInvoice, StructureAdditionalProperties);	
+
 EndProcedure // DocumentDataInitialization()
 
 // Controls the occurrence of negative balances.
@@ -4970,7 +4988,8 @@ Procedure GenerateSupplierInvoiceWithExpenses(Query, SpreadsheetDocument)
 	|		VATAmount,
 	|		Total,
 	|		Characteristic,
-	|		Content
+	|		Content,
+	|		ConnectionKey
 	|	),
 	|	SupplierInvoice.Expenses.(
 	|		Ref,
@@ -4996,6 +5015,10 @@ Procedure GenerateSupplierInvoiceWithExpenses(Query, SpreadsheetDocument)
 	|		StructuralUnit,
 	|		BusinessActivity,
 	|		Content
+	|	),
+	|	SupplierInvoice.SerialNumbers.(
+	|		SerialNumber,
+	|		ConnectionKey
 	|	)
 	|FROM
 	|	Document.SupplierInvoice AS SupplierInvoice
@@ -5010,7 +5033,8 @@ Procedure GenerateSupplierInvoiceWithExpenses(Query, SpreadsheetDocument)
 	
 	LinesSelectionInventory = Header.Inventory.Select();
 	RowSelectionExpenses = Header.Expenses.Select();
-	
+	LinesSelectionSerialNumbers = Header.SerialNumbers.Select();
+
 	SpreadsheetDocument.PrintParametersName = "PRINT_PARAMETERS_SupplierInvoice_Bill";
 	
 	Template = PrintManagement.GetTemplate("Document.SupplierInvoice.PF_MXL_Bill");
@@ -5059,9 +5083,10 @@ Procedure GenerateSupplierInvoiceWithExpenses(Query, SpreadsheetDocument)
 		If ValueIsFilled(LinesSelectionInventory.Content) Then
 			TemplateArea.Parameters.InventoryItem = LinesSelectionInventory.Content;
 		Else
+			StringSerialNumbers = WorkWithSerialNumbers.SerialNumbersStringFromSelection(LinesSelectionSerialNumbers, LinesSelectionInventory.ConnectionKey);
 			TemplateArea.Parameters.InventoryItem = SmallBusinessServer.GetProductsAndServicesPresentationForPrinting(
 				LinesSelectionInventory.InventoryItem,
-				LinesSelectionInventory.Characteristic, LinesSelectionInventory.SKU
+				LinesSelectionInventory.Characteristic, LinesSelectionInventory.SKU, StringSerialNumbers
 			);
 		EndIf;
 		
@@ -5212,8 +5237,13 @@ Function PrintForm(ObjectsArray, PrintObjects, TemplateName)
 			|		VATAmount,
 			|		Total,
 			|		Characteristic,
-			|		Content
-			|	)
+			|		Content,
+			|		ConnectionKey
+			|	),
+			|	SupplierInvoice.SerialNumbers.(
+			|		SerialNumber,
+			|		ConnectionKey
+			|	)			
 			|FROM
 			|	Document.SupplierInvoice AS SupplierInvoice
 			|WHERE
@@ -5226,6 +5256,7 @@ Function PrintForm(ObjectsArray, PrintObjects, TemplateName)
 			Header.Next();
 			
 			LinesSelectionInventory = Header.Inventory.Select();
+			LinesSelectionSerialNumbers = Header.SerialNumbers.Select();
 			
 			SpreadsheetDocument.PrintParametersName = "PRINT_PARAMETERS_SupplierInvoice_Bill";
 			
@@ -5273,9 +5304,10 @@ Function PrintForm(ObjectsArray, PrintObjects, TemplateName)
 				If ValueIsFilled(LinesSelectionInventory.Content) Then
 					TemplateArea.Parameters.InventoryItem = LinesSelectionInventory.Content;
 				Else
+					StringSerialNumbers = WorkWithSerialNumbers.SerialNumbersStringFromSelection(LinesSelectionSerialNumbers, LinesSelectionInventory.ConnectionKey);
 					TemplateArea.Parameters.InventoryItem = SmallBusinessServer.GetProductsAndServicesPresentationForPrinting(
 						LinesSelectionInventory.InventoryItem,
-						LinesSelectionInventory.Characteristic, LinesSelectionInventory.SKU
+						LinesSelectionInventory.Characteristic, LinesSelectionInventory.SKU, StringSerialNumbers
 					);
 				EndIf;
 				
@@ -5377,7 +5409,8 @@ Function PrintForm(ObjectsArray, PrintObjects, TemplateName)
 			|	ISNULL(ProductsAndServicesPricesSliceLast.Price * SupplierInvoice.Quantity, 0) AS Amount,
 			|	ISNULL(ProductsAndServicesPricesSliceLast.Price * SupplierInvoice.Quantity * SupplierInvoice.VATRate.Rate / 100, 0) AS VATAmount,
 			|	SupplierInvoice.Characteristic AS Characteristic,
-			|	SupplierInvoice.Content AS Content
+			|	SupplierInvoice.Content AS Content,
+			|	SupplierInvoice.ConnectionKey AS ConnectionKey
 			|FROM
 			|	Document.SupplierInvoice.Inventory AS SupplierInvoice
 			|		LEFT JOIN InformationRegister.ProductsAndServicesPrices.SliceLast(
@@ -5392,7 +5425,17 @@ Function PrintForm(ObjectsArray, PrintObjects, TemplateName)
 			|	SupplierInvoice.Ref = &CurrentDocument
 			|
 			|ORDER BY
-			|	LineNumber";
+			|	LineNumber
+			|;
+			|
+			|////////////////////////////////////////////////////////////////////////////////
+			|SELECT
+			|	CustomerInvoiceSerialNumbers.SerialNumber,
+			|	CustomerInvoiceSerialNumbers.ConnectionKey
+			|FROM
+			|	Document.SupplierInvoice.SerialNumbers AS CustomerInvoiceSerialNumbers
+			|WHERE
+			|	CustomerInvoiceSerialNumbers.Ref = &CurrentDocument";
 			
 			Query.SetParameter("PriceKind", CurrentDocument.StructuralUnit.RetailPriceKind);
 			Query.SetParameter("DocumentDate", CurrentDocument.Date);
@@ -5405,6 +5448,7 @@ Function PrintForm(ObjectsArray, PrintObjects, TemplateName)
 			Header.Next();
 			
 			LinesSelectionInventory = ResultsArray[1].Select();
+			LinesSelectionSerialNumbers = ResultsArray[2].Select();
 			
 			SpreadsheetDocument.PrintParametersName = "PRINT_PARAMETERS_SupplierInvoice_Bill";
 			
@@ -5461,10 +5505,12 @@ Function PrintForm(ObjectsArray, PrintObjects, TemplateName)
 				If ValueIsFilled(LinesSelectionInventory.Content) Then
 					TemplateArea.Parameters.InventoryItem = LinesSelectionInventory.Content;
 				Else
+					StringSerialNumbers = WorkWithSerialNumbers.SerialNumbersStringFromSelection(LinesSelectionSerialNumbers, LinesSelectionInventory.ConnectionKey);
 					TemplateArea.Parameters.InventoryItem = SmallBusinessServer.GetProductsAndServicesPresentationForPrinting(
 						LinesSelectionInventory.InventoryItem,
 						LinesSelectionInventory.Characteristic,
-						LinesSelectionInventory.SKU
+						LinesSelectionInventory.SKU,
+						StringSerialNumbers
 					);
 				EndIf;
 				
@@ -5530,7 +5576,12 @@ Function PrintForm(ObjectsArray, PrintObjects, TemplateName)
 			|		MeasurementUnit.Description AS MeasurementUnit,
 			|		Quantity AS Quantity,
 			|		Characteristic,
-			|		ProductsAndServices.ProductsAndServicesType AS ProductsAndServicesType
+			|		ProductsAndServices.ProductsAndServicesType AS ProductsAndServicesType,
+			|		ConnectionKey
+			|	),
+			|	SupplierInvoice.SerialNumbers.(
+			|		SerialNumber,
+			|		ConnectionKey
 			|	)
 			|FROM
 			|	Document.SupplierInvoice AS SupplierInvoice
@@ -5544,6 +5595,7 @@ Function PrintForm(ObjectsArray, PrintObjects, TemplateName)
 			Header.Next();
 			
 			LinesSelectionInventory = Header.Inventory.Select();
+			LinesSelectionSerialNumbers = Header.SerialNumbers.Select();
 			
 			SpreadsheetDocument.PrintParametersName = "PRINT_PARAMETERS_IncomeOrder_FormOfFilling";
 			
@@ -5596,10 +5648,12 @@ Function PrintForm(ObjectsArray, PrintObjects, TemplateName)
 				EndIf;
 				
 				TemplateArea.Parameters.Fill(LinesSelectionInventory);
+				StringSerialNumbers = WorkWithSerialNumbers.SerialNumbersStringFromSelection(LinesSelectionSerialNumbers, LinesSelectionInventory.ConnectionKey);
 				TemplateArea.Parameters.InventoryItem = SmallBusinessServer.GetProductsAndServicesPresentationForPrinting(
 					LinesSelectionInventory.InventoryItem,
 					LinesSelectionInventory.Characteristic,
-					LinesSelectionInventory.SKU
+					LinesSelectionInventory.SKU,
+					StringSerialNumbers
 				);
 				
 				SpreadsheetDocument.Put(TemplateArea);
@@ -5713,6 +5767,54 @@ Procedure AddPrintCommands(PrintCommands) Export
 	EndIf;
 	
 EndProcedure
+
+#EndRegion
+
+#Region WorkWithSerialNumbers
+
+// Generates a table of values that contains the data for the SerialNumbersGuarantees information register.
+// Tables of values saves into the properties of the structure "AdditionalProperties".
+//
+Procedure GenerateTableSerialNumbers(DocumentRef, StructureAdditionalProperties)
+	
+	If DocumentRef.SerialNumbers.Count()=0 Then
+		StructureAdditionalProperties.TableForRegisterRecords.Insert("TableSerialNumbersBalance", New ValueTable);
+		StructureAdditionalProperties.TableForRegisterRecords.Insert("TableSerialNumbersGuarantees", New ValueTable);
+		Return;
+	EndIf;
+	
+	Query = New Query;
+	Query.TempTablesManager = StructureAdditionalProperties.ForPosting.StructureTemporaryTables.TempTablesManager;
+	Query.Text =
+	"SELECT
+	|	TemporaryTableInventory.Period AS Period,
+	|	VALUE(AccumulationRecordType.Receipt) AS RecordType,
+	|	VALUE(Enum.SerialNumbersOperations.Receipt) AS Operation,
+	|	TemporaryTableInventory.Period AS EventDate,
+	|	SerialNumbers.SerialNumber AS SerialNumber,
+	|	TemporaryTableInventory.Company AS Company,
+	|	TemporaryTableInventory.ProductsAndServices AS ProductsAndServices,
+	|	TemporaryTableInventory.Characteristic AS Characteristic,
+	|	TemporaryTableInventory.Batch AS Batch,
+	|	TemporaryTableInventory.StructuralUnit AS StructuralUnit,
+	|	TemporaryTableInventory.Cell AS Cell,
+	|	TemporaryTableInventory.OrderWarehouse AS OrderWarehouse,
+	|	1 AS Quantity
+	|FROM
+	|	TemporaryTableInventory AS TemporaryTableInventory
+	|		INNER JOIN TemporaryTableSerialNumbers AS SerialNumbers
+	|		ON TemporaryTableInventory.ConnectionKey = SerialNumbers.ConnectionKey";
+	
+	QueryResult = Query.Execute().Unload();
+	
+	StructureAdditionalProperties.TableForRegisterRecords.Insert("TableSerialNumbersGuarantees", QueryResult);
+	If StructureAdditionalProperties.AccountingPolicy.SerialNumbersBalance Then
+		StructureAdditionalProperties.TableForRegisterRecords.Insert("TableSerialNumbersBalance", QueryResult);
+	Else
+		StructureAdditionalProperties.TableForRegisterRecords.Insert("TableSerialNumbersBalance", New ValueTable);
+	EndIf; 
+	
+EndProcedure // GenerateTableSerialNumbers()
 
 #EndRegion
 

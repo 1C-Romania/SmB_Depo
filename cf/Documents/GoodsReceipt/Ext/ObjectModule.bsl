@@ -49,7 +49,9 @@ Procedure FillByGoodsExpense(FillingData)
 	|	GoodsExpenseInventory.Characteristic AS Characteristic,
 	|	GoodsExpenseInventory.Batch AS Batch,
 	|	GoodsExpenseInventory.MeasurementUnit AS MeasurementUnit,
-	|	SUM(GoodsExpenseInventory.Quantity) AS Quantity
+	|	SUM(GoodsExpenseInventory.Quantity) AS Quantity,
+	|	GoodsExpenseInventory.SerialNumbers,
+	|	GoodsExpenseInventory.ConnectionKey
 	|FROM
 	|	Document.GoodsExpense.Inventory AS GoodsExpenseInventory
 	|WHERE
@@ -59,7 +61,9 @@ Procedure FillByGoodsExpense(FillingData)
 	|	GoodsExpenseInventory.ProductsAndServices,
 	|	GoodsExpenseInventory.Characteristic,
 	|	GoodsExpenseInventory.Batch,
-	|	GoodsExpenseInventory.MeasurementUnit
+	|	GoodsExpenseInventory.MeasurementUnit,
+	|	GoodsExpenseInventory.SerialNumbers,
+	|	GoodsExpenseInventory.ConnectionKey
 	|
 	|ORDER BY
 	|	LineNumber";
@@ -76,7 +80,9 @@ Procedure FillByGoodsExpense(FillingData)
 		EndDo;
 	EndIf;
 	
-EndProcedure // FillByInvoiceForPayment()
+	WorkWithSerialNumbers.FillTSSerialNumbersByConnectionKey(ThisObject, FillingData);
+	
+EndProcedure // FillByGoodsExpense()
 
 // Procedure of filling the document on the basis of the supplier invoice.
 //
@@ -99,7 +105,9 @@ Procedure FillByPurchaseInvoice(FillingData)
 	|	SupplierInvoiceInventory.Characteristic AS Characteristic,
 	|	SupplierInvoiceInventory.Batch AS Batch,
 	|	SupplierInvoiceInventory.MeasurementUnit AS MeasurementUnit,
-	|	SUM(SupplierInvoiceInventory.Quantity) AS Quantity
+	|	SUM(SupplierInvoiceInventory.Quantity) AS Quantity,
+	|	SupplierInvoiceInventory.SerialNumbers,
+	|	SupplierInvoiceInventory.ConnectionKey
 	|FROM
 	|	Document.SupplierInvoice.Inventory AS SupplierInvoiceInventory
 	|WHERE
@@ -110,7 +118,9 @@ Procedure FillByPurchaseInvoice(FillingData)
 	|	SupplierInvoiceInventory.ProductsAndServices,
 	|	SupplierInvoiceInventory.Characteristic,
 	|	SupplierInvoiceInventory.Batch,
-	|	SupplierInvoiceInventory.MeasurementUnit
+	|	SupplierInvoiceInventory.MeasurementUnit,
+	|	SupplierInvoiceInventory.SerialNumbers,
+	|	SupplierInvoiceInventory.ConnectionKey
 	|
 	|ORDER BY
 	|	LineNumber";
@@ -127,7 +137,9 @@ Procedure FillByPurchaseInvoice(FillingData)
 		EndDo;
 	EndIf;
 	
-EndProcedure // FillBySupplierInvoice()
+	WorkWithSerialNumbers.FillTSSerialNumbersByConnectionKey(ThisObject, FillingData);
+	
+EndProcedure // FillByPurchaseInvoice()
 
 // Procedure of document filling based on inventory receipt.
 //
@@ -150,7 +162,9 @@ Procedure FillByInventoryReceipt(FillingData)
 	|	InventoryReceiptInventory.Characteristic AS Characteristic,
 	|	InventoryReceiptInventory.Batch AS Batch,
 	|	InventoryReceiptInventory.MeasurementUnit AS MeasurementUnit,
-	|	SUM(InventoryReceiptInventory.Quantity) AS Quantity
+	|	SUM(InventoryReceiptInventory.Quantity) AS Quantity,
+	|	InventoryReceiptInventory.SerialNumbers,
+	|	InventoryReceiptInventory.ConnectionKey
 	|FROM
 	|	Document.InventoryReceipt.Inventory AS InventoryReceiptInventory
 	|WHERE
@@ -160,7 +174,9 @@ Procedure FillByInventoryReceipt(FillingData)
 	|	InventoryReceiptInventory.ProductsAndServices,
 	|	InventoryReceiptInventory.Characteristic,
 	|	InventoryReceiptInventory.Batch,
-	|	InventoryReceiptInventory.MeasurementUnit
+	|	InventoryReceiptInventory.MeasurementUnit,
+	|	InventoryReceiptInventory.SerialNumbers,
+	|	InventoryReceiptInventory.ConnectionKey
 	|
 	|ORDER BY
 	|	LineNumber";
@@ -176,6 +192,8 @@ Procedure FillByInventoryReceipt(FillingData)
 			FillPropertyValues(NewRow, Selection);
 		EndDo;
 	EndIf;
+	
+	WorkWithSerialNumbers.FillTSSerialNumbersByConnectionKey(ThisObject, FillingData);
 	
 EndProcedure // FillByInventoryReceipt()
 
@@ -201,7 +219,9 @@ Procedure FillByInventoryTransfer(FillingData)
 	|	InventoryTransferInventory.Characteristic AS Characteristic,
 	|	InventoryTransferInventory.Batch AS Batch,
 	|	InventoryTransferInventory.MeasurementUnit AS MeasurementUnit,
-	|	SUM(InventoryTransferInventory.Quantity) AS Quantity
+	|	SUM(InventoryTransferInventory.Quantity) AS Quantity,
+	|	InventoryTransferInventory.SerialNumbers,
+	|	InventoryTransferInventory.ConnectionKey
 	|FROM
 	|	Document.InventoryTransfer.Inventory AS InventoryTransferInventory
 	|WHERE
@@ -211,7 +231,9 @@ Procedure FillByInventoryTransfer(FillingData)
 	|	InventoryTransferInventory.ProductsAndServices,
 	|	InventoryTransferInventory.Characteristic,
 	|	InventoryTransferInventory.Batch,
-	|	InventoryTransferInventory.MeasurementUnit
+	|	InventoryTransferInventory.MeasurementUnit,
+	|	InventoryTransferInventory.SerialNumbers,
+	|	InventoryTransferInventory.ConnectionKey
 	|
 	|ORDER BY
 	|	LineNumber";
@@ -228,6 +250,8 @@ Procedure FillByInventoryTransfer(FillingData)
 		EndDo;
 	EndIf;
 	
+	WorkWithSerialNumbers.FillTSSerialNumbersByConnectionKey(ThisObject, FillingData);
+
 EndProcedure // FillByInventoryTransfer()
 
 // Procedure of document filling based on subcontractor report.
@@ -251,7 +275,8 @@ Procedure FillBySubcontractorReport(FillingData)
 	|	SubcontractorReport.Characteristic AS Characteristic,
 	|	SubcontractorReport.Batch AS Batch,
 	|	SubcontractorReport.MeasurementUnit AS MeasurementUnit,
-	|	SUM(SubcontractorReport.Quantity) AS Quantity
+	|	SUM(SubcontractorReport.Quantity) AS Quantity,
+	|	SubcontractorReport.SerialNumbersPresentation AS SerialNumbers
 	|FROM
 	|	(SELECT
 	|		0 AS LineNumber,
@@ -259,7 +284,8 @@ Procedure FillBySubcontractorReport(FillingData)
 	|		SubcontractorReport.Characteristic AS Characteristic,
 	|		SubcontractorReport.Batch AS Batch,
 	|		SubcontractorReport.MeasurementUnit AS MeasurementUnit,
-	|		SubcontractorReport.Quantity AS Quantity
+	|		SubcontractorReport.Quantity AS Quantity,
+	|		SubcontractorReport.SerialNumbersPresentation AS SerialNumbersPresentation
 	|	FROM
 	|		Document.SubcontractorReport AS SubcontractorReport
 	|	WHERE
@@ -273,7 +299,8 @@ Procedure FillBySubcontractorReport(FillingData)
 	|		SubcontractorReportDisposals.Characteristic,
 	|		SubcontractorReportDisposals.Batch,
 	|		SubcontractorReportDisposals.MeasurementUnit,
-	|		SubcontractorReportDisposals.Quantity
+	|		SubcontractorReportDisposals.Quantity,
+	|		NULL
 	|	FROM
 	|		Document.SubcontractorReport.Disposals AS SubcontractorReportDisposals
 	|	WHERE
@@ -283,7 +310,8 @@ Procedure FillBySubcontractorReport(FillingData)
 	|	SubcontractorReport.ProductsAndServices,
 	|	SubcontractorReport.Characteristic,
 	|	SubcontractorReport.Batch,
-	|	SubcontractorReport.MeasurementUnit
+	|	SubcontractorReport.MeasurementUnit,
+	|	SubcontractorReport.SerialNumbersPresentation
 	|
 	|ORDER BY
 	|	LineNumber";
@@ -299,6 +327,8 @@ Procedure FillBySubcontractorReport(FillingData)
 			FillPropertyValues(NewRow, Selection);
 		EndDo;
 	EndIf;
+	
+	ThisObject.SerialNumbers.Load(FillingData.SerialNumbers.Unload());
 	
 EndProcedure // FillBySubcontractorReport()
 
@@ -414,14 +444,18 @@ Procedure FillByInventoryAssembly(FillingData)
 	|		Characteristic,
 	|		Batch,
 	|		Quantity,
-	|		MeasurementUnit
+	|		MeasurementUnit,
+	|		SerialNumbers,
+	|		ConnectionKey
 	|	),
 	|	InventoryAssembly.Inventory.(
 	|		ProductsAndServices,
 	|		Characteristic,
 	|		Batch,
 	|		Quantity,
-	|		MeasurementUnit
+	|		MeasurementUnit,
+	|		SerialNumbers,
+	|		ConnectionKey
 	|	),
 	|	InventoryAssembly.Disposals.(
 	|		ProductsAndServices,
@@ -448,6 +482,12 @@ Procedure FillByInventoryAssembly(FillingData)
 				FillPropertyValues(NewRow, TableRow);
 			EndDo;
 		EndDo;
+	EndIf;
+	
+	If AttributeValues.OperationKind = Enums.OperationKindsInventoryAssembly.Disassembly Then
+		WorkWithSerialNumbers.FillTSSerialNumbersByConnectionKey(ThisObject, FillingData);
+	Else
+		WorkWithSerialNumbers.FillTSSerialNumbersByConnectionKey(ThisObject, FillingData, "Products", "SerialNumbersProducts");
 	EndIf;
 	
 EndProcedure // FillByInventoryAssembly()
@@ -481,6 +521,15 @@ Procedure Filling(FillingData, StandardProcessing) Export
 	
 EndProcedure // FillingProcessor()
 
+// Procedure - event handler FillCheckProcessing object.
+//
+Procedure FillCheckProcessing(Cancel, CheckedAttributes)
+		
+	// Serial numbers
+	WorkWithSerialNumbers.FillCheckingSerialNumbers(Cancel, Inventory, SerialNumbers, ThisObject);
+	
+EndProcedure
+
 // Procedure - event handler Posting object.
 //
 Procedure Posting(Cancel, PostingMode)
@@ -498,6 +547,10 @@ Procedure Posting(Cancel, PostingMode)
 	SmallBusinessServer.ReflectInventoryForWarehouses(AdditionalProperties, RegisterRecords, Cancel);
 	SmallBusinessServer.ReflectInventoryInWarehouses(AdditionalProperties, RegisterRecords, Cancel);
 
+	// SerialNumbers
+	SmallBusinessServer.ReflectTheSerialNumbersOfTheGuarantee(AdditionalProperties, RegisterRecords, Cancel);
+	SmallBusinessServer.ReflectTheSerialNumbersBalance(AdditionalProperties, RegisterRecords, Cancel);
+		
 	// Writing of record sets
 	SmallBusinessServer.WriteRecordSets(ThisObject);
 

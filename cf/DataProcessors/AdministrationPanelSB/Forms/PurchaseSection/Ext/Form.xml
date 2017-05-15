@@ -686,6 +686,156 @@ This option is used to split the accounting of inventory in terms of the storage
 						</UsualGroup>
 					</ChildItems>
 				</UsualGroup>
+				<UsualGroup name="Group6" id="358">
+					<Group>Horizontal</Group>
+					<Representation>None</Representation>
+					<ChildItemsWidth>Equal</ChildItemsWidth>
+					<ShowTitle>false</ShowTitle>
+					<ExtendedTooltip name="Group6ExtendedTooltip" id="359"/>
+					<ChildItems>
+						<UsualGroup name="SettingsSerialNumbers" id="360">
+							<Title>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Настройки ордерный склад</v8:content>
+								</v8:item>
+							</Title>
+							<ToolTip>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Order warehouse settings</v8:content>
+								</v8:item>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Настройки ордерный склад</v8:content>
+								</v8:item>
+							</ToolTip>
+							<ToolTipRepresentation>ShowBottom</ToolTipRepresentation>
+							<Group>Horizontal</Group>
+							<Representation>None</Representation>
+							<ShowTitle>false</ShowTitle>
+							<ExtendedTooltip name="SettingsSerialNumbersExtendedTooltip" id="361">
+								<Title formatted="false">
+									<v8:item>
+										<v8:lang>en</v8:lang>
+										<v8:content>This option is used to enable serial numbers.</v8:content>
+									</v8:item>
+									<v8:item>
+										<v8:lang>ru</v8:lang>
+										<v8:content>Опция определяет возможность разделения учета запасов на складской и финансовый. Подробнее можно посмотреть в опциональной справке. </v8:content>
+									</v8:item>
+								</Title>
+							</ExtendedTooltip>
+							<ChildItems>
+								<CheckBoxField name="FunctionalOptionUseSerialNumbers" id="362">
+									<DataPath>ConstantsSet.UseSerialNumbers</DataPath>
+									<Title>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Использовать ордерный склад</v8:content>
+										</v8:item>
+									</Title>
+									<TitleLocation>Right</TitleLocation>
+									<TitleHeight>1</TitleHeight>
+									<ToolTipRepresentation>Button</ToolTipRepresentation>
+									<CheckBoxType>Auto</CheckBoxType>
+									<ContextMenu name="FunctionalOptionUseSerialNumbersContextMenu" id="363"/>
+									<ExtendedTooltip name="FunctionalOptionUseSerialNumbersExtendedTooltip" id="364">
+										<Title formatted="true">
+											<v8:item>
+												<v8:lang>en</v8:lang>
+												<v8:content>&lt;b&gt;Включение позволяет использовать серийные номера товаров, как справочно (для контроля гарантийного срока после продажи), так и для учета остатков в разрезе серийных номеров.
+Серийный номер - уникальный для каждой единицы товара.
+&lt;/&gt;
+Можно использовать 2 режима серийных номеров:
+Справочно: серийные номера можно указывать при необходимости. Целесообразно указывать серийный номер при продаже товара, чтобы зафиксировать факт продажи и начало гарантийного срока.
+Учет остатков: серийные номера обязательны к заполнению во всех документах движения товаров. Ведется контроль остатков в разрезе серийных номеров.</v8:content>
+											</v8:item>
+											<v8:item>
+												<v8:lang>ru</v8:lang>
+												<v8:content>"Использовать ордерный склад (разделение складских и финансовых операций по учету запасов)".   Опция определяет возможность разделения учета запасов на складской и финансовый. Механизм используется, когда по каким-либо причинам необходимо разделить учет запасов на складе и учет запасов в управленческом контуре. Тогда для учета запасов на складе используются приходные и расходные складские ордера, а также документ для отражения перемещения запасов внутри структуры склада (например, для распределения поступивших товаров по полкам и ячейкам или комплектации заказа для отгрузки). Для учета запасов в управленческом контуре используются финансовые документы - расходные накладные, перемещения запасов и т.д.  ВАЖНО! Параметр является ключевым. При наличии в системе учетных данных отключение этой опции невозможно.</v8:content>
+											</v8:item>
+										</Title>
+									</ExtendedTooltip>
+									<Events>
+										<Event name="OnChange">FunctionalOptionFunctionalOptionUseSerialNumbersOnChange</Event>
+									</Events>
+								</CheckBoxField>
+							</ChildItems>
+						</UsualGroup>
+						<UsualGroup name="SettingsКонтролироватьОстатки" id="365">
+							<Title>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Настройки учет по ячейкам</v8:content>
+								</v8:item>
+							</Title>
+							<ToolTip>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Accounting settings by cells</v8:content>
+								</v8:item>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Настройки учет по ячейкам</v8:content>
+								</v8:item>
+							</ToolTip>
+							<ToolTipRepresentation>ShowBottom</ToolTipRepresentation>
+							<Group>Horizontal</Group>
+							<Representation>None</Representation>
+							<ShowTitle>false</ShowTitle>
+							<ExtendedTooltip name="SettingsКонтролироватьОстаткиExtendedTooltip" id="366">
+								<Title formatted="false">
+									<v8:item>
+										<v8:lang>en</v8:lang>
+										<v8:content>The option is used to enable the monitoring of balances by serial numbers.</v8:content>
+									</v8:item>
+									<v8:item>
+										<v8:lang>ru</v8:lang>
+										<v8:content>Учет запасов на складе в разрезе ячеек (проходов, стеллажей, полок и т.д.). Подробнее можно посмотреть в опциональной справке. </v8:content>
+									</v8:item>
+								</Title>
+							</ExtendedTooltip>
+							<ChildItems>
+								<CheckBoxField name="FunctionalOptionSerialNumbersBalanceControl" id="367">
+									<DataPath>ConstantsSet.SerialNumbersBalanceControl</DataPath>
+									<Title>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Учет запасов по ячейкам</v8:content>
+										</v8:item>
+									</Title>
+									<TitleLocation>Right</TitleLocation>
+									<TitleHeight>1</TitleHeight>
+									<ToolTipRepresentation>Button</ToolTipRepresentation>
+									<CheckBoxType>Auto</CheckBoxType>
+									<ContextMenu name="FunctionalOptionSerialNumbersBalanceControlContextMenu" id="368"/>
+									<ExtendedTooltip name="FunctionalOptionSerialNumbersBalanceControlExtendedTooltip" id="369">
+										<Title formatted="true">
+											<v8:item>
+												<v8:lang>en</v8:lang>
+												<v8:content>&lt;b&gt;Контроль остатков запасов с учетом серийных номеров. &lt;/&gt;
+Если контроль остатков ОТКЛЮЧЕН:
+Серийные номера в документах можно указывать произвольно. Достаточно указывать серийные номера в документах продажи товара, чтобы зафиксировать начало гарантийного срока.
+Если контроль остатков ВКЛЮЧЕН:
+Серийные номера нужно обязательно вводить во всех документах. Можно посмотреть, какие серийные номера есть в наличии, в момент подбора товаров или в отчетах.
+ВАЖНО!
+Возможность нельзя отключить после начала работы в программе. Необходимо провести инвентаризацию запасов с учетом серийных номеров.</v8:content>
+											</v8:item>
+											<v8:item>
+												<v8:lang>ru</v8:lang>
+												<v8:content>"Учет запасов на складе в разрезе ячеек (проходов, стеллажей, полок и т.д.)". Опция определяет возможность разделить учет запасов в разрезе структуры мест хранения. Перечень ячеек определяется для каждого склада отдельно. ВАЖНО! Параметр является ключевым. При наличии в системе учетных данных отключение этой опции невозможно.</v8:content>
+											</v8:item>
+										</Title>
+									</ExtendedTooltip>
+									<Events>
+										<Event name="OnChange">FunctionalOptionSerialNumbersBalanceControlOnChange</Event>
+									</Events>
+								</CheckBoxField>
+							</ChildItems>
+						</UsualGroup>
+					</ChildItems>
+				</UsualGroup>
 			</ChildItems>
 		</UsualGroup>
 		<UsualGroup name="SettingsReservation" id="234">

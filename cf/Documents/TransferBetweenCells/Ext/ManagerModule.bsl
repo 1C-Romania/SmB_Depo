@@ -8,6 +8,7 @@ Procedure InitializeDocumentData(DocumentRefTransferBetweenCells, StructureAddit
 	Query = New Query(
 	"SELECT
 	|	InventoryByCellsTransfer.LineNumber AS LineNumber,
+	|	InventoryByCellsTransfer.ConnectionKey AS ConnectionKey,
 	|	VALUE(AccumulationRecordType.Expense) AS RecordType,
 	|	InventoryByCellsTransfer.Ref.Date AS Period,
 	|	&Company AS Company,
@@ -37,12 +38,83 @@ Procedure InitializeDocumentData(DocumentRefTransferBetweenCells, StructureAddit
 	|FROM
 	|	Document.TransferBetweenCells.Inventory AS InventoryByCellsTransfer
 	|WHERE
-	|	InventoryByCellsTransfer.Ref = &Ref");
+	|	InventoryByCellsTransfer.Ref = &Ref
+	|;
+	|
+	|////////////////////////////////////////////////////////////////////////////////
+	|SELECT
+	|	TableInventory.Ref.Date AS EventDate,
+	|	VALUE(Enum.SerialNumbersOperations.Record) AS Operation,
+	|	TableSerialNumbers.SerialNumber AS SerialNumber,
+	|	TableInventory.ProductsAndServices AS ProductsAndServices,
+	|	TableInventory.Characteristic AS Characteristic
+	|FROM
+	|	Document.TransferBetweenCells.Inventory AS TableInventory
+	|		INNER JOIN Document.TransferBetweenCells.SerialNumbers AS TableSerialNumbers
+	|		BY TableInventory.Ref = TableSerialNumbers.Ref
+	|			AND TableInventory.ConnectionKey = TableSerialNumbers.ConnectionKey
+	|WHERE
+	|	TableSerialNumbers.Ref = &Ref
+	|	AND &UseSerialNumbers
+	|;
+	|
+	|////////////////////////////////////////////////////////////////////////////////
+	|SELECT
+	|	TableInventory.Ref.Date AS Period,
+	|	VALUE(AccumulationRecordType.Expense) AS RecordType,
+	|	TableSerialNumbers.SerialNumber AS SerialNumber,
+	|	&Company AS Company,
+	|	TableInventory.ProductsAndServices AS ProductsAndServices,
+	|	TableInventory.Characteristic AS Characteristic,
+	|	TableInventory.Batch AS Batch,
+	|	TableInventory.Ref.StructuralUnit AS StructuralUnit,
+	|	CASE
+	|		WHEN TableInventory.Ref.OperationKind = VALUE(Enum.OperationKindsTransferBetweenCells.FromOneToSeveral)
+	|			THEN TableInventory.Ref.Cell
+	|		ELSE TableInventory.Cell
+	|	END AS Cell,
+	|	1 AS Quantity
+	|FROM
+	|	Document.TransferBetweenCells.Inventory AS TableInventory
+	|		INNER JOIN Document.TransferBetweenCells.SerialNumbers AS TableSerialNumbers
+	|		BY TableInventory.Ref = TableSerialNumbers.Ref
+	|			AND TableInventory.ConnectionKey = TableSerialNumbers.ConnectionKey
+	|WHERE
+	|	TableSerialNumbers.Ref = &Ref
+	|	AND &UseSerialNumbers
+	|
+	|UNION ALL
+	|
+	|SELECT
+	|	TableInventory.Ref.Date,
+	|	VALUE(AccumulationRecordType.Receipt),
+	|	TableSerialNumbers.SerialNumber,
+	|	&Company AS Company,
+	|	TableInventory.ProductsAndServices,
+	|	TableInventory.Characteristic,
+	|	TableInventory.Batch AS Batch,
+	|	TableInventory.Ref.StructuralUnit,
+	|	CASE
+	|		WHEN TableInventory.Ref.OperationKind = VALUE(Enum.OperationKindsTransferBetweenCells.FromOneToSeveral)
+	|			THEN TableInventory.Cell
+	|		ELSE TableInventory.Ref.Cell
+	|	END,
+	|	1
+	|FROM
+	|	Document.TransferBetweenCells.Inventory AS TableInventory
+	|		INNER JOIN Document.TransferBetweenCells.SerialNumbers AS TableSerialNumbers
+	|		BY TableInventory.Ref = TableSerialNumbers.Ref
+	|			AND TableInventory.ConnectionKey = TableSerialNumbers.ConnectionKey
+	|WHERE
+	|	TableSerialNumbers.Ref = &Ref
+	|	AND &UseSerialNumbers");
 	
 	Query.SetParameter("Ref", DocumentRefTransferBetweenCells);
 	Query.SetParameter("Company", StructureAdditionalProperties.ForPosting.Company);
 	Query.SetParameter("UseCharacteristics", StructureAdditionalProperties.AccountingPolicy.UseCharacteristics);
 	Query.SetParameter("UseBatches", StructureAdditionalProperties.AccountingPolicy.UseBatches);
+	
+	Query.SetParameter("UseSerialNumbers", StructureAdditionalProperties.AccountingPolicy.UseSerialNumbers);
 	
 	ResultsArray = Query.ExecuteBatch();
 	
@@ -57,6 +129,14 @@ Procedure InitializeDocumentData(DocumentRefTransferBetweenCells, StructureAddit
 		NewRow.Cell = Selection.CellPayee;
 		
 	EndDo;
+	
+	// Serial numbers
+	StructureAdditionalProperties.TableForRegisterRecords.Insert("TableSerialNumbersGuarantees", ResultsArray[1].Unload());
+	If StructureAdditionalProperties.AccountingPolicy.SerialNumbersBalance Then
+		StructureAdditionalProperties.TableForRegisterRecords.Insert("TableSerialNumbersBalance", ResultsArray[2].Unload());
+	Else
+		StructureAdditionalProperties.TableForRegisterRecords.Insert("TableSerialNumbersBalance", New ValueTable);
+	EndIf;
 	
 EndProcedure // DocumentDataInitialization()
 
@@ -132,8 +212,8 @@ EndProcedure // RunControl()
 
 #Region PrintInterface
 
-// Procedure of generating tabular document
-//
+// Procedure of generating
+//tabular document
 Procedure GenerateInventoryTransferInCells(CurrentDocument, SpreadsheetDocument, TemplateName)
 	
 	FillStructureSection = New Structure;
@@ -142,47 +222,60 @@ Procedure GenerateInventoryTransferInCells(CurrentDocument, SpreadsheetDocument,
 	Query.SetParameter("CurrentDocument", CurrentDocument);
 	Query.Text =
 	"SELECT
-	|	TransferBetweenCells.Number AS DocumentNumber
-	|	,TransferBetweenCells.Date AS DocumentDate
-	|	,TransferBetweenCells.OperationKind AS OperationKind
-	|	,TransferBetweenCells.Company AS Company
-	|	,TransferBetweenCells.Company.Prefix AS Prefix
-	|	,TransferBetweenCells.StructuralUnit AS StructuralUnit
-	|	,TransferBetweenCells.StructuralUnit.FRP AS FRP
-	|	,TransferBetweenCells.Cell AS Cell
+	|	TransferBetweenCells.Number AS DocumentNumber,
+	|	TransferBetweenCells.Date AS DocumentDate,
+	|	TransferBetweenCells.OperationKind AS OperationKind,
+	|	TransferBetweenCells.Company AS Company,
+	|	TransferBetweenCells.Company.Prefix AS Prefix,
+	|	TransferBetweenCells.StructuralUnit AS StructuralUnit,
+	|	TransferBetweenCells.StructuralUnit.FRP AS FRP,
+	|	TransferBetweenCells.Cell AS Cell
 	|FROM
 	|	Document.TransferBetweenCells AS TransferBetweenCells
 	|WHERE
 	|	TransferBetweenCells.Ref = &CurrentDocument
 	|;
+	|
 	|////////////////////////////////////////////////////////////////////////////////
 	|SELECT
-	|	InventoryByCellsTransfer.LineNumber
-	|	,InventoryByCellsTransfer.Cell
-	|	,InventoryByCellsTransfer.ProductsAndServices.Code AS ProductsAndServicesCode
-	|	,InventoryByCellsTransfer.ProductsAndServices.SKU AS ProductsAndServicesSKU
-	|	,InventoryByCellsTransfer.ProductsAndServices
-	|	,InventoryByCellsTransfer.Characteristic
-	|	,Presentation(InventoryByCellsTransfer.Batch) AS Batch
-	|	,InventoryByCellsTransfer.Quantity
-	|	,InventoryByCellsTransfer.MeasurementUnit
+	|	InventoryByCellsTransfer.LineNumber,
+	|	InventoryByCellsTransfer.Cell,
+	|	InventoryByCellsTransfer.ProductsAndServices.Code AS ProductsAndServicesCode,
+	|	InventoryByCellsTransfer.ProductsAndServices.SKU AS ProductsAndServicesSKU,
+	|	InventoryByCellsTransfer.ProductsAndServices,
+	|	InventoryByCellsTransfer.Characteristic,
+	|	PRESENTATION(InventoryByCellsTransfer.Batch) AS Batch,
+	|	InventoryByCellsTransfer.Quantity,
+	|	InventoryByCellsTransfer.MeasurementUnit,
+	|	InventoryByCellsTransfer.ConnectionKey
 	|FROM
 	|	Document.TransferBetweenCells.Inventory AS InventoryByCellsTransfer
 	|WHERE
 	|	InventoryByCellsTransfer.Ref = &CurrentDocument
 	|;
+	|
 	|////////////////////////////////////////////////////////////////////////////////
 	|SELECT
-	|	InventoryByCellsTransfer.Ref
-	|	,Max(InventoryByCellsTransfer.LineNumber) AS PositionsQuantity
-	|	,SUM(InventoryByCellsTransfer.Quantity) AS TotalQuantity
+	|	InventoryByCellsTransfer.Ref,
+	|	MAX(InventoryByCellsTransfer.LineNumber) AS PositionsQuantity,
+	|	SUM(InventoryByCellsTransfer.Quantity) AS TotalQuantity
 	|FROM
 	|	Document.TransferBetweenCells.Inventory AS InventoryByCellsTransfer
 	|WHERE
 	|	InventoryByCellsTransfer.Ref = &CurrentDocument
 	|
 	|GROUP BY
-	|	InventoryByCellsTransfer.Ref";
+	|	InventoryByCellsTransfer.Ref
+	|;
+	|
+	|////////////////////////////////////////////////////////////////////////////////
+	|SELECT
+	|	TransferBetweenCellsSerialNumbers.SerialNumber,
+	|	TransferBetweenCellsSerialNumbers.ConnectionKey
+	|FROM
+	|	Document.TransferBetweenCells.SerialNumbers AS TransferBetweenCellsSerialNumbers
+	|WHERE
+	|	TransferBetweenCellsSerialNumbers.Ref = &CurrentDocument";
 	
 	ExecutionResult = Query.ExecuteBatch();
 	
@@ -193,6 +286,8 @@ Procedure GenerateInventoryTransferInCells(CurrentDocument, SpreadsheetDocument,
 	
 	TotalsSelection = ExecutionResult[2].Select();
 	TotalsSelection.Next();
+	
+	SelectionSerialNumbers = ExecutionResult[3].Select();
 	
 	SpreadsheetDocument.PrintParametersName = "PARAMETERS_PRINT_" + TemplateName + "_" + TemplateName;
 	Template = PrintManagement.PrintedFormsTemplate("Document.TransferBetweenCells." + TemplateName);
@@ -209,7 +304,7 @@ Procedure GenerateInventoryTransferInCells(CurrentDocument, SpreadsheetDocument,
 		
 	EndIf;
 	
-	HeaderText = NStr("en='Inventory transfer between cells No ';ru='Перемещение запасов по ячейкам № '") + DocumentHeader.DocumentNumber + NStr("en=' from ';ru=' от '") + Format(DocumentHeader.DocumentDate, "DLF=DD");
+	HeaderText = NStr("ru = 'Перемещение запасов по ячейкам № '; en = 'Inventory transfer between cells No'") + DocumentHeader.DocumentNumber + NStr("ru = ' от '; en = ' dated '") + Format(DocumentHeader.DocumentDate, "DLF=DD");
 	FillStructureSection.Insert("HeaderText", HeaderText);
 	FillStructureSection.Insert("StructuralUnit", DocumentHeader.StructuralUnit);
 	
@@ -220,7 +315,7 @@ Procedure GenerateInventoryTransferInCells(CurrentDocument, SpreadsheetDocument,
 	TemplateArea = Template.GetArea("TableHeader");
 	FillStructureSection.Clear();
 	
-	FillStructureSection.Insert("TransferKind", NStr("en='Transfer kind: ';ru='Вид перемещения: '") + String(DocumentHeader.OperationKind));
+	FillStructureSection.Insert("TransferKind", NStr("ru = 'Вид перемещения: '; en = 'Transfer kind: '") + String(DocumentHeader.OperationKind));
 	
 	TemplateArea.Parameters.Fill(FillStructureSection);
 	SpreadsheetDocument.Put(TemplateArea);
@@ -239,8 +334,13 @@ Procedure GenerateInventoryTransferInCells(CurrentDocument, SpreadsheetDocument,
 		FillStructureSection.Insert("CellSender", CellSender);
 		FillStructureSection.Insert("CellReceive", CellReceive);
 		
-		PresentationOfProductsAndServices = 
-			SmallBusinessServer.GetProductsAndServicesPresentationForPrinting(TabularSection.ProductsAndServices, TabularSection.Characteristic, TabularSection.ProductsAndServicesSKU);
+		StringSerialNumbers = WorkWithSerialNumbers.SerialNumbersStringFromSelection(SelectionSerialNumbers, TabularSection.ConnectionKey);
+		PresentationOfProductsAndServices = SmallBusinessServer.GetProductsAndServicesPresentationForPrinting(
+			TabularSection.ProductsAndServices,
+			TabularSection.Characteristic,
+			TabularSection.ProductsAndServicesSKU,
+			StringSerialNumbers);
+		
 		FillStructureSection.Insert("PresentationOfProductsAndServices", PresentationOfProductsAndServices);
 		FillStructureSection.Insert("BatchPresentation", TabularSection.Batch);
 		FillStructureSection.Insert("Quantity", TabularSection.Quantity);
@@ -259,19 +359,19 @@ Procedure GenerateInventoryTransferInCells(CurrentDocument, SpreadsheetDocument,
 	
 	If TotalsSelection.TotalQuantity = 0 Then
 		
-		InventoryTransferredCountInWords = NStr("en='Transferred inventories are not specified in the document.';ru='В документе не указаны перемещаемые запасы.'");
+		InventoryTransferredCountInWords = NStr("ru = 'В документе не указаны перемещаемые запасы.'; en = 'Transferred inventories are not specified in the document.'");
 		
 	ElsIf IsMoveFromOneToSeveral Then
 		
-		InventoryTransferredCountInWords = NStr("en='Positions withdrawn from cell ""%1"": %2.
-		|General quantity: %3.';ru='Из ячейки ""%1"" изъято позиций: %2.
-		|Общим количеством: %3.'");
+		InventoryTransferredCountInWords = NStr("ru = 'Из ячейки ""%1"" изъято позиций: %2.
+		|Общим количеством: %3.'; en = 'Positions withdrawn from cell ""%1"": %2.
+		|General quantity: %3'");
 		
 	Else
 		
-		InventoryTransferredCountInWords = NStr("en='Positions delivered to cell ""%1"": %2.
-		|General quantity: %3.';ru='В ячейку ""%1"" поступило позиций: %2.
-		|Общим количеством: %3.'");
+		InventoryTransferredCountInWords = NStr("ru = 'В ячейку ""%1"" поступило позиций: %2.
+		|Общим количеством: %3.'; en = 'Positions delivered to cell ""%1"": %2.
+		|General quantity: %3'");
 		
 	EndIf;
 	

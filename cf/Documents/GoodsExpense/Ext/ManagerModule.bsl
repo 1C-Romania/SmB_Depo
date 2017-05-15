@@ -3,7 +3,7 @@
 // Initializes the tables of values that contain the data of the document table sections.
 // Saves the tables of values in the properties of the structure "AdditionalProperties".
 //
-Procedure InitializeDocumentData(DocumentRefGoodsReceipt, StructureAdditionalProperties) Export
+Procedure InitializeDocumentData(DocumentRefGoodsExpense, StructureAdditionalProperties) Export
 
 	Query = New Query(
 	"SELECT
@@ -29,34 +29,70 @@ Procedure InitializeDocumentData(DocumentRefGoodsReceipt, StructureAdditionalPro
 	|		ELSE VALUE(Catalog.ProductsAndServicesBatches.EmptyRef)
 	|	END AS Batch,
 	|	CASE
-	|		WHEN VALUETYPE(GoodsExpenseInventory.MeasurementUnit) = Type(Catalog.UOMClassifier)
+	|		WHEN VALUETYPE(GoodsExpenseInventory.MeasurementUnit) = TYPE(Catalog.UOMClassifier)
 	|			THEN GoodsExpenseInventory.Quantity
 	|		ELSE GoodsExpenseInventory.Quantity * GoodsExpenseInventory.MeasurementUnit.Factor
 	|	END AS Quantity
 	|FROM
 	|	Document.GoodsExpense.Inventory AS GoodsExpenseInventory
 	|WHERE
-	|	GoodsExpenseInventory.Ref = &Ref");
+	|	GoodsExpenseInventory.Ref = &Ref
+	|;
+	|
+	|////////////////////////////////////////////////////////////////////////////////
+	|SELECT
+	|	TableInventory.Ref.Date AS Period,
+	|	VALUE(AccumulationRecordType.Expense) AS RecordType,
+	|	TableInventory.Ref.Date AS EventDate,
+	|	VALUE(Enum.SerialNumbersOperations.Expense) AS Operation,
+	|	TableSerialNumbers.SerialNumber AS SerialNumber,
+	|	&Company AS Company,
+	|	TableInventory.ProductsAndServices AS ProductsAndServices,
+	|	TableInventory.Characteristic AS Characteristic,
+	|	TableInventory.Batch AS Batch,
+	|	TableInventory.Ref.StructuralUnit AS StructuralUnit,
+	|	TableInventory.Ref.Cell AS Cell,
+	|	1 AS Quantity
+	|FROM
+	|	Document.GoodsExpense.Inventory AS TableInventory
+	|		INNER JOIN Document.GoodsExpense.SerialNumbers AS TableSerialNumbers
+	|		ON TableInventory.Ref = TableSerialNumbers.Ref
+	|			AND TableInventory.ConnectionKey = TableSerialNumbers.ConnectionKey
+	|WHERE
+	|	TableSerialNumbers.Ref = &Ref
+	|	AND TableInventory.Ref = &Ref
+	|	AND &UseSerialNumbers");
 	
-	Query.SetParameter("Ref", DocumentRefGoodsReceipt);
+	Query.SetParameter("Ref", DocumentRefGoodsExpense);
 	Query.SetParameter("Company", StructureAdditionalProperties.ForPosting.Company);
 	Query.SetParameter("UseCharacteristics", StructureAdditionalProperties.AccountingPolicy.UseCharacteristics);
 	Query.SetParameter("AccountingByCells", StructureAdditionalProperties.AccountingPolicy.AccountingByCells);
 	Query.SetParameter("UseBatches", StructureAdditionalProperties.AccountingPolicy.UseBatches);
+	
+	Query.SetParameter("UseSerialNumbers", StructureAdditionalProperties.AccountingPolicy.UseSerialNumbers);
 	
 	ResultsArray = Query.ExecuteBatch();
 	
 	StructureAdditionalProperties.TableForRegisterRecords.Insert("TableInventoryInWarehouses", ResultsArray[0].Unload());
 	StructureAdditionalProperties.TableForRegisterRecords.Insert("TableInventoryForExpenseFromWarehouses", ResultsArray[0].Unload());
 	
+	// Serial numbers
+	QueryResult1 = ResultsArray[1].Unload();
+	StructureAdditionalProperties.TableForRegisterRecords.Insert("TableSerialNumbersGuarantees", QueryResult1);
+	If StructureAdditionalProperties.AccountingPolicy.SerialNumbersBalance Then
+		StructureAdditionalProperties.TableForRegisterRecords.Insert("TableSerialNumbersBalance", QueryResult1);
+	Else
+		StructureAdditionalProperties.TableForRegisterRecords.Insert("TableSerialNumbersBalance", New ValueTable);
+	EndIf; 
+	
 	// Creation of document postings.
-	SmallBusinessServer.GenerateTransactionsTable(DocumentRefGoodsReceipt, StructureAdditionalProperties);
+	SmallBusinessServer.GenerateTransactionsTable(DocumentRefGoodsExpense, StructureAdditionalProperties);
 	
 EndProcedure // DocumentDataInitialization()
 
 // Controls the occurrence of negative balances.
 //
-Procedure RunControl(DocumentRefGoodsReceipt, AdditionalProperties, Cancel, PostingDelete = False) Export
+Procedure RunControl(DocumentRefGoodsExpense, AdditionalProperties, Cancel, PostingDelete = False) Export
 	
 	If Not SmallBusinessServer.RunBalanceControl() Then
 		Return;
@@ -67,7 +103,8 @@ Procedure RunControl(DocumentRefGoodsReceipt, AdditionalProperties, Cancel, Post
 	// If the "InventoryTransferAtWarehouseChange", "RegisterRecordsInventoryChange"
 	// temporary tables contain records, it is necessary to control the sales of goods.
 	
-	If StructureTemporaryTables.RegisterRecordsInventoryInWarehousesChange Then
+	If StructureTemporaryTables.RegisterRecordsInventoryInWarehousesChange
+		OR StructureTemporaryTables.RegisterRecordsSerialNumbersChange Then
 
 		Query = New Query(
 		"SELECT
@@ -86,7 +123,7 @@ Procedure RunControl(DocumentRefGoodsReceipt, AdditionalProperties, Cancel, Post
 		|	RegisterRecordsInventoryInWarehousesChange AS RegisterRecordsInventoryInWarehousesChange
 		|		LEFT JOIN AccumulationRegister.InventoryInWarehouses.Balance(
 		|				&ControlTime,
-		|				(Company, StructuralUnit, ProductsAndServices, Characteristic, Batch, Cell) In
+		|				(Company, StructuralUnit, ProductsAndServices, Characteristic, Batch, Cell) IN
 		|					(SELECT
 		|						RegisterRecordsInventoryInWarehousesChange.Company AS Company,
 		|						RegisterRecordsInventoryInWarehousesChange.StructuralUnit AS StructuralUnit,
@@ -106,6 +143,34 @@ Procedure RunControl(DocumentRefGoodsReceipt, AdditionalProperties, Cancel, Post
 		|	ISNULL(InventoryInWarehousesOfBalance.QuantityBalance, 0) < 0
 		|
 		|ORDER BY
+		|	LineNumber
+		|;
+		|
+		|////////////////////////////////////////////////////////////////////////////////
+		|SELECT
+		|	RegisterRecordsSerialNumbersChange.LineNumber AS LineNumber,
+		|	RegisterRecordsSerialNumbersChange.SerialNumber AS SerialNumberPresentation,
+		|	RegisterRecordsSerialNumbersChange.StructuralUnit AS StructuralUnitPresentation,
+		|	RegisterRecordsSerialNumbersChange.ProductsAndServices AS ProductsAndServicesPresentation,
+		|	RegisterRecordsSerialNumbersChange.Characteristic AS CharacteristicPresentation,
+		|	RegisterRecordsSerialNumbersChange.Batch AS BatchPresentation,
+		|	RegisterRecordsSerialNumbersChange.Cell AS CellаPresentation,
+		|	SerialNumbersBalance.StructuralUnit.StructuralUnitType AS StructuralUnitType,
+		|	SerialNumbersBalance.ProductsAndServices.MeasurementUnit AS MeasurementUnitPresentation,
+		|	ISNULL(RegisterRecordsSerialNumbersChange.QuantityChange, 0) + ISNULL(SerialNumbersBalance.QuantityBalance, 0) AS BalanceSerialNumbers,
+		|	ISNULL(SerialNumbersBalance.QuantityBalance, 0) AS QuantityBalanceSerialNumbers
+		|FROM
+		|	RegisterRecordsSerialNumbersChange AS RegisterRecordsSerialNumbersChange
+		|		INNER JOIN AccumulationRegister.SerialNumbers.Balance(&ControlTime, ) AS SerialNumbersBalance
+		|		ON RegisterRecordsSerialNumbersChange.StructuralUnit = SerialNumbersBalance.StructuralUnit
+		|			AND RegisterRecordsSerialNumbersChange.ProductsAndServices = SerialNumbersBalance.ProductsAndServices
+		|			AND RegisterRecordsSerialNumbersChange.Characteristic = SerialNumbersBalance.Characteristic
+		|			AND RegisterRecordsSerialNumbersChange.Batch = SerialNumbersBalance.Batch
+		|			AND RegisterRecordsSerialNumbersChange.SerialNumber = SerialNumbersBalance.SerialNumber
+		|			AND RegisterRecordsSerialNumbersChange.Cell = SerialNumbersBalance.Cell
+		|			AND (ISNULL(SerialNumbersBalance.QuantityBalance, 0) < 0)
+		|
+		|ORDER BY
 		|	LineNumber");
 
 		Query.TempTablesManager = StructureTemporaryTables.TempTablesManager;
@@ -113,13 +178,22 @@ Procedure RunControl(DocumentRefGoodsReceipt, AdditionalProperties, Cancel, Post
 		
 		ResultsArray = Query.ExecuteBatch();
 		
+		If NOT ResultsArray[0].IsEmpty()
+			OR NOT ResultsArray[1].IsEmpty() Then
+			DocumentObjectGoodsExpense = DocumentRefGoodsExpense.GetObject();
+		EndIf;
+			
 		// Negative balance of inventory in the warehouse.
 		If Not ResultsArray[0].IsEmpty() Then
-			DocumentObjectGoodsReceipt = DocumentRefGoodsReceipt.GetObject();
 			QueryResultSelection = ResultsArray[0].Select();
-			SmallBusinessServer.ShowMessageAboutPostingToInventoryInWarehousesRegisterErrors(DocumentObjectGoodsReceipt, QueryResultSelection, Cancel);
+			SmallBusinessServer.ShowMessageAboutPostingToInventoryInWarehousesRegisterErrors(DocumentObjectGoodsExpense, QueryResultSelection, Cancel);
 		EndIf;
 		
+		// Negative balance of serial numbers in the warehouse.
+		If NOT ResultsArray[1].IsEmpty() Then
+			QueryResultSelection = ResultsArray[1].Select();
+			SmallBusinessServer.ShowMessageAboutPostingSerialNumbersRegisterErrors(DocumentObjectGoodsExpense, QueryResultSelection, Cancel);
+		EndIf;		
 	EndIf;
 	
 EndProcedure // RunControl()
@@ -165,7 +239,12 @@ Function PrintForm(ObjectsArray, PrintObjects, TemplateName)
 			|		ProductsAndServices.Code AS Code,
 			|		MeasurementUnit AS StorageUnit,
 			|		Quantity AS Quantity,
-			|		Characteristic
+			|		Characteristic,
+			|		ConnectionKey
+			|	),
+			|	GoodsExpense.SerialNumbers.(
+			|		SerialNumber,
+			|		ConnectionKey
 			|	)
 			|FROM
 			|	Document.GoodsExpense AS GoodsExpense
@@ -179,6 +258,7 @@ Function PrintForm(ObjectsArray, PrintObjects, TemplateName)
 			Header.Next();
 			
 			LinesSelectionInventory = Header.Inventory.Select();
+			LinesSelectionSerialNumbers = Header.SerialNumbers.Select();
 
 			SpreadsheetDocument.PrintParametersName = "PRINT_PARAMETERS_GoodsExpense_GoodsExpense";
                                           
@@ -214,7 +294,9 @@ Function PrintForm(ObjectsArray, PrintObjects, TemplateName)
 			While LinesSelectionInventory.Next() Do
 
 				TemplateArea.Parameters.Fill(LinesSelectionInventory);
-				TemplateArea.Parameters.InventoryItem = SmallBusinessServer.GetProductsAndServicesPresentationForPrinting(LinesSelectionInventory.InventoryItem, LinesSelectionInventory.Characteristic, LinesSelectionInventory.SKU);
+				
+				StringSerialNumbers = WorkWithSerialNumbers.SerialNumbersStringFromSelection(LinesSelectionSerialNumbers, LinesSelectionInventory.ConnectionKey);
+				TemplateArea.Parameters.InventoryItem = SmallBusinessServer.GetProductsAndServicesPresentationForPrinting(LinesSelectionInventory.InventoryItem, LinesSelectionInventory.Characteristic, LinesSelectionInventory.SKU, StringSerialNumbers);
 				
 				SpreadsheetDocument.Put(TemplateArea);
 				
@@ -244,7 +326,7 @@ Function PrintForm(ObjectsArray, PrintObjects, TemplateName)
 			|		ProductsAndServices.Warehouse AS Warehouse,
 			|		ProductsAndServices.Cell AS Cell,
 			|		CASE
-			|			WHEN (CAST(GoodsExpense.Inventory.ProductsAndServices.DescriptionFull AS String(100))) = """"
+			|			WHEN (CAST(GoodsExpense.Inventory.ProductsAndServices.DescriptionFull AS STRING(100))) = """"
 			|				THEN GoodsExpense.Inventory.ProductsAndServices.Description
 			|			ELSE GoodsExpense.Inventory.ProductsAndServices.DescriptionFull
 			|		END AS InventoryItem,
@@ -253,7 +335,12 @@ Function PrintForm(ObjectsArray, PrintObjects, TemplateName)
 			|		MeasurementUnit.Description AS MeasurementUnit,
 			|		Quantity AS Quantity,
 			|		Characteristic,
-			|		ProductsAndServices.ProductsAndServicesType AS ProductsAndServicesType
+			|		ProductsAndServices.ProductsAndServicesType AS ProductsAndServicesType,
+			|		ConnectionKey
+			|	),
+			|	GoodsExpense.SerialNumbers.(
+			|		SerialNumber,
+			|		ConnectionKey
 			|	)
 			|FROM
 			|	Document.GoodsExpense AS GoodsExpense
@@ -267,6 +354,7 @@ Function PrintForm(ObjectsArray, PrintObjects, TemplateName)
 			Header.Next();
 			
 			LinesSelectionInventory = Header.Inventory.Select();
+			LinesSelectionSerialNumbers = Header.SerialNumbers.Select();
 
 			SpreadsheetDocument.PrintParametersName = "PRINT_PARAMETERS_GoodsExpense_BlankOfGoodsFilling";
                                           
@@ -316,8 +404,10 @@ Function PrintForm(ObjectsArray, PrintObjects, TemplateName)
 				EndIf;	
 					
 				TemplateArea.Parameters.Fill(LinesSelectionInventory);
+				
+				StringSerialNumbers = WorkWithSerialNumbers.SerialNumbersStringFromSelection(LinesSelectionSerialNumbers, LinesSelectionInventory.ConnectionKey);
 				TemplateArea.Parameters.InventoryItem = SmallBusinessServer.GetProductsAndServicesPresentationForPrinting(LinesSelectionInventory.InventoryItem, 
-																		LinesSelectionInventory.Characteristic, LinesSelectionInventory.SKU);
+																		LinesSelectionInventory.Characteristic, LinesSelectionInventory.SKU, StringSerialNumbers);
 							
 				SpreadsheetDocument.Put(TemplateArea);
 								

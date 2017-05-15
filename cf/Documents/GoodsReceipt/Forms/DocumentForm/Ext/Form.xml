@@ -421,6 +421,10 @@
 								<ContextMenu name="InventorySearchManagementContextMenu" id="92"/>
 								<ExtendedTooltip name="InventorySearchControlExtendedTooltip" id="93"/>
 							</SearchControlAddition>
+							<Events>
+								<Event name="BeforeDeleteRow">InventoryBeforeDeleteRow</Event>
+								<Event name="OnStartEdit">InventoryOnStartEdit</Event>
+							</Events>
 							<ChildItems>
 								<InputField name="InventoryLineNumber" id="13">
 									<DataPath>Object.Inventory.LineNumber</DataPath>
@@ -459,6 +463,17 @@
 									<ContextMenu name="InventoryBatchContextMenu" id="20"/>
 									<ExtendedTooltip name="InventoryBatchExtendedTooltip" id="75"/>
 								</InputField>
+								<InputField name="InventorySerialNumbers" id="114">
+									<DataPath>Object.Inventory.SerialNumbers</DataPath>
+									<EditMode>EnterOnInput</EditMode>
+									<Width>20</Width>
+									<ChoiceButton>true</ChoiceButton>
+									<ContextMenu name="InventorySerialNumbersContextMenu" id="115"/>
+									<ExtendedTooltip name="InventorySerialNumbersExtendedTooltip" id="116"/>
+									<Events>
+										<Event name="StartChoice">InventorySerialNumbersStartChoice</Event>
+									</Events>
+								</InputField>
 								<InputField name="InventoryQuantity" id="23">
 									<DataPath>Object.Inventory.Quantity</DataPath>
 									<EditMode>EnterOnInput</EditMode>
@@ -466,6 +481,9 @@
 									<Wrap>false</Wrap>
 									<ContextMenu name="InventoryQuantityContextMenu" id="24"/>
 									<ExtendedTooltip name="InventoryQuantityExtendedTooltip" id="76"/>
+									<Events>
+										<Event name="OnChange">InventoryQuantityOnChange</Event>
+									</Events>
 								</InputField>
 								<InputField name="InventoryMeasurementUnit" id="34">
 									<DataPath>Object.Inventory.MeasurementUnit</DataPath>
@@ -647,6 +665,19 @@
 					<v8:AllowedLength>Variable</v8:AllowedLength>
 				</v8:StringQualifiers>
 			</Type>
+		</Attribute>
+		<Attribute name="UseSerialNumbersBalance" id="7">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Использовать серийные номера остатки</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Use serial numbers balance</v8:content>
+				</v8:item>
+			</Title>
+			<Type/>
 		</Attribute>
 	</Attributes>
 	<Commands>

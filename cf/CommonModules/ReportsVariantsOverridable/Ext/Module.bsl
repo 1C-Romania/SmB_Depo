@@ -885,6 +885,16 @@ Procedure ConfigureReportsVariants(Settings) Export
 	Variant.VisibleByDefault = False;
 	// End Other settlements
 	
+	// Serial numbers
+	Variant = ReportsVariants.VariantDesc(Settings, Metadata.Reports.SerialNumbersRecords, "Default");
+	Variant.Definition = NStr("ru = 'Отчет отображает движения товаров с учетом серийных номеров.'; en = 'The report displays the movement of goods, taking into account the serial numbers.'");
+	
+	Variant = ReportsVariants.VariantDesc(Settings, Metadata.Reports.SerialNumbersWarehouse, "Balance");
+	Variant.Definition = NStr("ru = 'Отчет отображает остаток товаров на складах с детализацией по серийным номерам.'; en = 'The report displays the rest of the goods in the warehouses with the details by serial number.'");
+	Variant = ReportsVariants.VariantDesc(Settings, Metadata.Reports.SerialNumbersWarehouse, "Statement");
+	Variant.Definition = NStr("ru = 'Отчет отображает ведомость движения товаров на складах с детализацией по серийным номерам.'; en = 'The report displays a list of goods movement in warehouses with detailed information on serial numbers.'");
+	// End Serial numbers
+	
 	Variant = ReportsVariants.VariantDesc(Settings, Metadata.Reports.SegmentComposition, "SegmentCompositionContext");
 	Variant.Definition = NStr("en='Report displays the current content of the counterparties segment';ru='Отчет отображает текущий состав сегмента контрагентов'");
 	Variant.Enabled = False;

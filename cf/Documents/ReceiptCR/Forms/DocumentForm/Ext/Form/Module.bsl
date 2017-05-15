@@ -195,11 +195,16 @@ Function FillByBarcodesData(BarcodesData)
 				CalculateAmountInTabularSectionLine(NewRow);
 				Items.Inventory.CurrentRow = NewRow.GetID();
 			Else
-				FoundString = TSRowsArray[0];
-				FoundString.Quantity = FoundString.Quantity + CurBarcode.Quantity;
-				CalculateAmountInTabularSectionLine(FoundString);
-				Items.Inventory.CurrentRow = FoundString.GetID();
+				NewRow = TSRowsArray[0];
+				NewRow.Quantity = NewRow.Quantity + CurBarcode.Quantity;
+				CalculateAmountInTabularSectionLine(NewRow);
+				Items.Inventory.CurrentRow = NewRow.GetID();
 			EndIf;
+			
+			If CurBarcode.Property("SerialNumber") AND ValueIsFilled(CurBarcode.SerialNumber) Then
+				WorkWithSerialNumbersClientServer.AddSerialNumberToString(NewRow, CurBarcode.SerialNumber, Object);
+			EndIf;
+			
 		EndIf;
 	EndDo;
 	
@@ -560,6 +565,11 @@ Procedure CalculateAmountInTabularSectionLine(TabularSectionRow = Undefined)
 		RecalculateDocumentAtClient();
 	EndIf;
 	// End AutomaticDiscounts
+	
+	// Serial numbers
+	If UseSerialNumbersBalance <> Undefined Then
+		WorkWithSerialNumbersClientServer.UpdateSerialNumbersQuantity(Object, TabularSectionRow);
+	EndIf;
 
 EndProcedure // CalculateAmountInTabularSectionLine()
 
@@ -934,8 +944,7 @@ Procedure SetEnabledOfReceiptPrinting()
 	
 EndProcedure // SetReceiptPrintEnabled()
 
-////////////////////////////////////////////////////////////////////////////////
-// PROCEDURE - FORM EVENT HANDLERS
+////////////////////////////////////////////////////////////////////////////////PROCEDURE - FORM EVENT HANDLERS
 
 // Procedure - event handler OnCreateAtServer of the form.
 //
@@ -1030,19 +1039,19 @@ Procedure OnCreateAtServer(Cancel, StandardProcessing)
 	
 	SmallBusinessClientServer.SetPictureForComment(Items.AdvancedPage, Object.Comment);
 	
-	TitleAmountCheque = NStr("en='Receipt amount (%Currency%)';ru='Сумма чека (%Валюта%)'");
+	TitleAmountCheque = NStr("ru = 'Сумма чека (%Валюта%)'; en = 'Receipt amount (%Currency%)'");
 	TitleAmountCheque = StrReplace(TitleAmountCheque, "%Currency%", Object.DocumentCurrency);
 	Items.DocumentAmount.ToolTip = TitleAmountCheque;
 	
-	TitleReceivedCash = NStr("en='Received in cash (%Currency%)';ru='Получено наличными (%Currency%)'");
+	TitleReceivedCash = NStr("ru = 'Получено наличными (%Currency%)'; en = 'Received in cash (%Currency%)'");
 	TitleReceivedCash = StrReplace(TitleReceivedCash, "%Currency%", Object.DocumentCurrency);
 	Items.CashReceived.ToolTip = TitleReceivedCash;
 	
-	TitlePaymentWithPaymentCards = NStr("en='By payment cards (%Currency%)';ru='Платежными картами (%Currency%)'");
+	TitlePaymentWithPaymentCards = NStr("ru = 'Платежными картами (%Currency%)'; en = 'By payment cards (%Currency%)'");
 	TitlePaymentWithPaymentCards = StrReplace(TitlePaymentWithPaymentCards, "%Currency%", Object.DocumentCurrency);
 	Items.PaymentWithPaymentCardsTotalAmount.ToolTip = TitlePaymentWithPaymentCards;
 	
-	TitleAmountPutting = NStr("en='Change (%Currency%)';ru='Сдача (%Currency%)'");
+	TitleAmountPutting = NStr("ru = 'Сдача (%Currency%)'; en = 'Сдача (%Currency%)'");
 	TitleAmountPutting = StrReplace(TitleAmountPutting, "%Currency%", Object.DocumentCurrency);
 	Items.AmountShortChange.ToolTip = TitleAmountPutting;
 
@@ -1063,6 +1072,9 @@ Procedure OnCreateAtServer(Cancel, StandardProcessing)
 	// StandardSubsystems.Printing
 	PrintManagement.OnCreateAtServer(ThisForm, Items.ImportantCommandsGroup);
 	// End StandardSubsystems.Printing
+	
+	// Serial numbers
+	UseSerialNumbersBalance = WorkWithSerialNumbers.UseSerialNumbersBalance();
 	
 EndProcedure // OnCreateAtServer()
 
@@ -1219,6 +1231,18 @@ Procedure NotificationProcessing(EventName, Parameter, Source)
 		GetInventoryFromStorage(InventoryAddressInStorage, "Inventory", True, True);
 		
 		RecalculateDocumentAtClient();
+		
+	ElsIf EventName = "SerialNumbersSelection"
+		AND ValueIsFilled(Parameter) 
+		//Form owner checkup
+		AND Source <> New UUID("00000000-0000-0000-0000-000000000000")
+		AND Source = UUID
+		Then
+		
+		ChangedCount = GetSerialNumbersFromStorage(Parameter.AddressInTemporaryStorage, Parameter.RowKey);
+		If ChangedCount Then
+			CalculateAmountInTabularSectionLine();
+		EndIf; 
 		
 	EndIf;
 	
@@ -2487,8 +2511,7 @@ Procedure StructuralUnitOnChange(Item)
 	
 EndProcedure // StructuralUnitOnChange()
 
-////////////////////////////////////////////////////////////////////////////////
-// PROCEDURE - EVENT HANDLERS OF THE INVENTORY TABULAR SECTION ATTRIBUTES
+////////////////////////////////////////////////////////////////////////////////PROCEDURE - EVENT HANDLERS OF THE INVENTORY TABULAR SECTION ATTRIBUTES
 
 // Procedure - event handler OnChange of the ProductsAndServices input field.
 //
@@ -2529,6 +2552,10 @@ Procedure InventoryProductsAndServicesOnChange(Item)
 	TabularSectionRow.VATRate = StructureData.VATRate;
 	
 	CalculateAmountInTabularSectionLine();
+	
+	//Serial numbers
+	WorkWithSerialNumbersClientServer.DeleteSerialNumbersByConnectionKey(
+		Object.SerialNumbers, TabularSectionRow,, UseSerialNumbersBalance);
 	
 EndProcedure // InventoryProductsAndServicesOnChange()
 
@@ -2727,6 +2754,20 @@ Procedure InventoryAfterDeleteRow(Item)
 	ClearCheckboxDiscountsAreCalculatedClient("DeleteRow");
 	
 EndProcedure // ProductsAfterDeletion()
+
+&AtClient
+Procedure InventorySerialNumbersStartChoice(Item, ChoiceData, StandardProcessing)
+	StandardProcessing = False;
+	OpenSerialNumbersSelection();
+EndProcedure
+
+&AtClient
+Procedure InventoryBeforeDeleteRow(Item, Cancel)
+	// Serial numbers
+	CurrentData = Items.Inventory.CurrentData;
+	WorkWithSerialNumbersClientServer.DeleteSerialNumbersByConnectionKey(
+		Object.SerialNumbers, CurrentData,, UseSerialNumbersBalance);
+EndProcedure
 
 // Procedure - OnChange event handler of the Comment input field.
 //
@@ -3157,6 +3198,15 @@ Procedure InventoryOnStartEdit(Item, NewRow, Copy)
 	EndIf;
 	// End AutomaticDiscounts
 	
+	If NewRow AND Copy Then
+		Item.CurrentData.ConnectionKey = 0;
+		Item.CurrentData.SerialNumbers = "";
+	EndIf;
+	
+	If Item.CurrentItem.Name = "SerialNumbersInventory" Then
+		OpenSerialNumbersSelection();
+	EndIf;
+	
 EndProcedure
 
 // Function clears checkbox "DiscountsAreCalculated" if it is necessary and returns True if it is required to recalculate discounts.
@@ -3260,6 +3310,33 @@ Procedure AfterWriteAtServer(CurrentObject, WriteParameters)
 	EndIf;
 	// End AutomaticDiscounts
 	
+EndProcedure
+
+#EndRegion
+
+#Region WorkWithSerialNumbers
+
+Function SerialNumberPickParameters(CurrentDataIdentifier)
+	
+	Return WorkWithSerialNumbers.SerialNumberPickParameters(Object, ThisObject.UUID, CurrentDataIdentifier);
+	
+EndFunction
+
+Function GetSerialNumbersFromStorage(AddressInTemporaryStorage, RowKey)
+	
+	Modified = True;
+	Return WorkWithSerialNumbers.GetSerialNumbersFromStorage(Object, AddressInTemporaryStorage, RowKey);
+	
+EndFunction
+
+&AtClient
+Procedure OpenSerialNumbersSelection()
+		
+	CurrentDataIdentifier = Items.Inventory.CurrentData.GetID();
+	ParametersOfSerialNumbers = SerialNumberPickParameters(CurrentDataIdentifier);
+	
+	OpenForm("DataProcessor.SerialNumbersSelection.Form", ParametersOfSerialNumbers, ThisObject);
+
 EndProcedure
 
 #EndRegion

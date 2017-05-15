@@ -1344,6 +1344,7 @@ Reference is available on the eponymous hyperlink in the form &lt;link SalesAcco
 									</SearchControlAddition>
 									<Events>
 										<Event name="BeforeAddRow">WOMaterialsBeforeAddRow</Event>
+										<Event name="BeforeDeleteRow">WOMaterialsBeforeDeleteRow</Event>
 										<Event name="OnStartEdit">WOMaterialsOnStartEdit</Event>
 									</Events>
 									<ChildItems>
@@ -1374,6 +1375,17 @@ Reference is available on the eponymous hyperlink in the form &lt;link SalesAcco
 											<EditMode>EnterOnInput</EditMode>
 											<ContextMenu name="WOMaterialsBatchContextMenu" id="483"/>
 											<ExtendedTooltip name="WOMaterialsBatchExtendedTooltip" id="837"/>
+										</InputField>
+										<InputField name="WOMaterialsSerialNumbers" id="1340">
+											<DataPath>Object.Materials.SerialNumbers</DataPath>
+											<EditMode>EnterOnInput</EditMode>
+											<Width>20</Width>
+											<ChoiceButton>true</ChoiceButton>
+											<ContextMenu name="WOMaterialsSerialNumbersContextMenu" id="1341"/>
+											<ExtendedTooltip name="WOMaterialsSerialNumbersExtendedTooltip" id="1342"/>
+											<Events>
+												<Event name="StartChoice">WOMaterialsSerialNumbersStartChoice</Event>
+											</Events>
 										</InputField>
 										<InputField name="WOMaterialsQuantity" id="484">
 											<DataPath>Object.Materials.Quantity</DataPath>
@@ -1584,6 +1596,7 @@ Reference is available on the eponymous hyperlink in the form &lt;link SalesAcco
 								<Event name="OnEditEnd">ProductsOnEditEnd</Event>
 								<Event name="Selection">ProductsSelection</Event>
 								<Event name="BeforeAddRow">ProductsBeforeAddRow</Event>
+								<Event name="BeforeDeleteRow">InventoryBeforeDeleteRow</Event>
 								<Event name="OnStartEdit">InventoryOnStartEdit</Event>
 								<Event name="AfterDeleteRow">ProductsAfterDeletion</Event>
 								<Event name="OnChange">ProductsOnChange</Event>
@@ -1683,6 +1696,17 @@ Reference is available on the eponymous hyperlink in the form &lt;link SalesAcco
 									<Width>20</Width>
 									<ContextMenu name="InventoryBatchContextMenu" id="378"/>
 									<ExtendedTooltip name="InventoryBatchExtendedTooltip" id="856"/>
+								</InputField>
+								<InputField name="InventorySerialNumbers" id="1337">
+									<DataPath>Object.Inventory.SerialNumbers</DataPath>
+									<EditMode>EnterOnInput</EditMode>
+									<Width>20</Width>
+									<ChoiceButton>true</ChoiceButton>
+									<ContextMenu name="InventorySerialNumbersContextMenu" id="1338"/>
+									<ExtendedTooltip name="InventorySerialNumbersExtendedTooltip" id="1339"/>
+									<Events>
+										<Event name="StartChoice">InventorySerialNumbersStartChoice</Event>
+									</Events>
 								</InputField>
 								<InputField name="InventoryQuantity" id="379">
 									<DataPath>Object.Inventory.Quantity</DataPath>
@@ -4339,6 +4363,17 @@ Reference is available on the eponymous hyperlink in the form &lt;link SalesAcco
 					<v8:Length>50</v8:Length>
 					<v8:AllowedLength>Variable</v8:AllowedLength>
 				</v8:StringQualifiers>
+			</Type>
+		</Attribute>
+		<Attribute name="UseSerialNumbersBalance" id="39">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Use serial numbers balance</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:boolean</v8:Type>
 			</Type>
 		</Attribute>
 		<ConditionalAppearance>

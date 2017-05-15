@@ -367,6 +367,10 @@ Procedure FillCheckProcessing(Cancel, CheckedAttributes)
 				
 			EndDo;
 			
+			// Serial numbers
+			WorkWithSerialNumbers.FillCheckingSerialNumbers(Cancel, Inventory, SerialNumbers, ThisObject);
+			WorkWithSerialNumbers.FillCheckingSerialNumbers(Cancel, Materials, SerialNumbersMaterials, ThisObject, "ConnectionKeySerialNumbers");
+			
 		EndIf;
 		
 	EndIf;

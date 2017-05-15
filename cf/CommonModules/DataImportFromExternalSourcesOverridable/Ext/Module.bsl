@@ -789,6 +789,12 @@ Procedure MapOriginCountry(CountryOfOrigin, CountryOfOrigin_IncomingData, Defaul
 	
 EndProcedure
 
+Procedure MapSerialNumber(ProductsAndServicesRef, SerialNumber, SerialNumber_IncomingData) Export
+	
+	SerialNumber = Catalogs.SerialNumbers.FindByDescription(SerialNumber_IncomingData, True, , ProductsAndServicesRef);
+	
+EndProcedure
+
 //:::Purchase order
 Procedure MatchOrder(Order, Order_IncomingData) Export
 	

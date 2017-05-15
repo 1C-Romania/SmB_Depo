@@ -378,6 +378,11 @@ Procedure CalculateAmountInTabularSectionLine(TabularSectionName = "Inventory", 
 		TabularSectionRow.TotalDiscountAmountIsMoreThanAmount = False;
 	EndIf;
 	// End AutomaticDiscounts
+
+	// Serial numbers
+	If UseSerialNumbersBalance <> Undefined AND TabularSectionRow.Property("SerialNumbers") Then
+		WorkWithSerialNumbersClientServer.UpdateSerialNumbersQuantity(Object, TabularSectionRow);
+	EndIf;
 	
 EndProcedure // CalculateAmountInTabularSectionLine()
 
@@ -711,11 +716,16 @@ Function FillByBarcodesData(BarcodesData)
 				CalculateAmountInTabularSectionLine("Inventory", NewRow);
 				Items.Inventory.CurrentRow = NewRow.GetID();
 			Else
-				FoundString = TSRowsArray[0];
-				FoundString.Quantity = FoundString.Quantity + CurBarcode.Quantity;
-				CalculateAmountInTabularSectionLine("Inventory", FoundString);
-				Items.Inventory.CurrentRow = FoundString.GetID();
+				NewRow = TSRowsArray[0];
+				NewRow.Quantity = NewRow.Quantity + CurBarcode.Quantity;
+				CalculateAmountInTabularSectionLine("Inventory", NewRow);
+				Items.Inventory.CurrentRow = NewRow.GetID();
 			EndIf;
+			
+			If BarcodeData.Property("SerialNumber") AND ValueIsFilled(BarcodeData.SerialNumber) Then
+				WorkWithSerialNumbersClientServer.AddSerialNumberToString(NewRow, BarcodeData.SerialNumber, Object);
+			EndIf;
+			
 		EndIf;
 	EndDo;
 	
@@ -971,15 +981,15 @@ Procedure ProductsPick(Command)
 	
 	SelectionParameters = New Structure;
 	
-	SelectionParameters.Insert("Period", 				Object.Date);
-	SelectionParameters.Insert("Company", 			Company);
-	SelectionParameters.Insert("StructuralUnit", 	Object.StructuralUnit);
-	SelectionParameters.Insert("DiscountMarkupKind",	   	Object.DiscountMarkupKind);
-	SelectionParameters.Insert("PriceKind",				   	Object.PriceKind);
-	SelectionParameters.Insert("Currency",				   	Object.DocumentCurrency);
-	SelectionParameters.Insert("VATTaxation",	   	Object.VATTaxation);
-	SelectionParameters.Insert("AmountIncludesVAT",	   	Object.AmountIncludesVAT);
-	SelectionParameters.Insert("DocumentOrganization", 	Object.Company);
+	SelectionParameters.Insert("Period",               Object.Date);
+	SelectionParameters.Insert("Company",              Company);
+	SelectionParameters.Insert("StructuralUnit",       Object.StructuralUnit);
+	SelectionParameters.Insert("DiscountMarkupKind",   Object.DiscountMarkupKind);
+	SelectionParameters.Insert("PriceKind",            Object.PriceKind);
+	SelectionParameters.Insert("Currency",             Object.DocumentCurrency);
+	SelectionParameters.Insert("VATTaxation",          Object.VATTaxation);
+	SelectionParameters.Insert("AmountIncludesVAT",    Object.AmountIncludesVAT);
+	SelectionParameters.Insert("DocumentOrganization", Object.Company);
 	
 	SelectionParameters.Insert("SpecificationsUsed", True);	
 	SelectionParameters.Insert("ReservationUsed", True);
@@ -1227,8 +1237,7 @@ Procedure GetInventoryFromStorage(InventoryAddressInStorage, TabularSectionName,
 	
 EndProcedure // GetInventoryFromStorage()
 
-////////////////////////////////////////////////////////////////////////////////
-// PROCEDURE - FORM EVENT HANDLERS
+////////////////////////////////////////////////////////////////////////////////PROCEDURE - FORM EVENT HANDLERS
 
 &AtServer
 // Procedure - OnCreateAtServer event handler.
@@ -1286,7 +1295,7 @@ Procedure OnCreateAtServer(Cancel, StandardProcessing)
 		
 		If ValueIsFilled(Object.Contract) Then
 			
-			Object.StampBase = NStr("en='Contract: ';ru='Договор: '") + String(Object.Contract);
+			Object.StampBase = NStr("ru = 'Договор: '; en = 'Contract: '") + String(Object.Contract);
 			
 		EndIf;
 		
@@ -1325,6 +1334,9 @@ Procedure OnCreateAtServer(Cancel, StandardProcessing)
 	EndIf;
 	Items.InventoryImportDataFromDCT.Visible = UsePeripherals;
 	// End Peripherals
+	
+	// Serial numbers
+	UseSerialNumbersBalance = WorkWithSerialNumbers.UseSerialNumbersBalance();
 	
 EndProcedure // OnCreateAtServer()
 
@@ -1504,6 +1516,18 @@ Procedure NotificationProcessing(EventName, Parameter, Source)
 		
 		GetInventoryFromStorage(InventoryAddressInStorage, TabularSectionName, True, True);
 		SelectionMarker = "";
+		
+	ElsIf EventName = "SerialNumbersSelection"
+		AND ValueIsFilled(Parameter) 
+		//Form owner checkup
+		AND Source <> New UUID("00000000-0000-0000-0000-000000000000")
+		AND Source = UUID
+		Then
+		
+		ChangedCount = GetSerialNumbersFromStorage(Parameter.AddressInTemporaryStorage, Parameter.RowKey);
+		If ChangedCount Then
+			CalculateAmountInTabularSectionLine("Products");
+		EndIf; 
 		
 	EndIf;
 	
@@ -1846,8 +1870,7 @@ Procedure OrderOnChangeFragment()
 	
 EndProcedure // OrderOnChange()
 
-////////////////////////////////////////////////////////////////////////////////
-// PROCEDURE - EVENT HANDLERS OF THE PRODUCTS TABULAR SECTION ATTRIBUTES
+////////////////////////////////////////////////////////////////////////////////PROCEDURE - EVENT HANDLERS OF THE PRODUCTS TABULAR SECTION ATTRIBUTES
 
 &AtClient
 // Procedure - event handler OnChange of the ProductsAndServices input field.
@@ -1886,6 +1909,9 @@ Procedure ProductsProductsAndServicesOnChange(Item)
 	TabularSectionRow.Specification = StructureData.Specification;
 	
 	CalculateAmountInTabularSectionLine("Products");
+	
+	//Serial numbers
+	WorkWithSerialNumbersClientServer.DeleteSerialNumbersByConnectionKey(Object.SerialNumbers, TabularSectionRow, , UseSerialNumbersBalance);
 	
 EndProcedure // ProductsProductsAndServicesOnChange()
 
@@ -2954,7 +2980,33 @@ Procedure GoodsOnStartEdit(Item, NewRow, Copy)
 		CalculateAmountInTabularSectionLine("Products");
 	EndIf;
 	// End AutomaticDiscounts
+	
+	If NewRow AND Copy Then
+		Item.CurrentData.ConnectionKey = 0;
+		Item.CurrentData.SerialNumbers = "";
+	EndIf;
+	
+	If Item.CurrentItem.Name = "ProductsSerialNumbers" Then
+		OpenSerialNumbersSelection();
+	EndIf;
 
+EndProcedure
+
+&AtClient
+Procedure ProductsBeforeDeleteRow(Item, Cancel)
+	
+	// Serial numbers
+	CurrentData = Items.Products.CurrentData;
+	WorkWithSerialNumbersClientServer.DeleteSerialNumbersByConnectionKey(Object.SerialNumbers, CurrentData, , UseSerialNumbersBalance);
+	
+EndProcedure
+
+&AtClient
+Procedure ProductsSerialNumbersStartChoice(Item, ChoiceData, StandardProcessing)
+	
+	StandardProcessing = False;
+	OpenSerialNumbersSelection();
+	
 EndProcedure
 
 &AtServer
@@ -2968,5 +3020,34 @@ Procedure AfterWriteAtServer(CurrentObject, WriteParameters)
 	// End AutomaticDiscounts
 	
 EndProcedure
+
+#EndRegion
+
+#Region ServiceProceduresAndFunctions
+
+&AtClient
+Procedure OpenSerialNumbersSelection()
+	
+	CurrentDataIdentifier = Items.Products.CurrentData.GetID();
+	ParametersOfSerialNumbers = SerialNumberPickParameters(CurrentDataIdentifier);
+	
+	OpenForm("DataProcessor.SerialNumbersSelection.Form", ParametersOfSerialNumbers, ThisObject);
+	
+EndProcedure
+
+&AtServer
+Function GetSerialNumbersFromStorage(AddressInTemporaryStorage, RowKey)
+	
+	Modified = True;
+	Return WorkWithSerialNumbers.GetSerialNumbersFromStorage(Object, AddressInTemporaryStorage, RowKey, "Products");
+	
+EndFunction
+
+&AtServer
+Function SerialNumberPickParameters(CurrentDataIdentifier)
+	
+	Return WorkWithSerialNumbers.SerialNumberPickParameters(Object, ThisObject.UUID, CurrentDataIdentifier, False, "Products");
+	
+EndFunction
 
 #EndRegion

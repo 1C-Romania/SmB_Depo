@@ -320,7 +320,9 @@ Procedure FillByCustomerInvoice(FillingData) Export
 		EndIf;
 		
 	EndDo;
-		
+	
+	WorkWithSerialNumbers.FillTSSerialNumbersByConnectionKey(ThisObject, FillingData);
+
 EndProcedure // FillBySalesInvoice()
 
 // Procedure of document filling based on customer order.
@@ -670,6 +672,8 @@ Procedure FillByJobOrder(FillingData)
 		EndDo;
 	EndIf;
 	
+	WorkWithSerialNumbers.FillTSSerialNumbersByConnectionKey(ThisObject, FillingData);
+
 EndProcedure // FillByJobOrder()
 
 // Procedure of document filling based on purchase order.
@@ -920,6 +924,8 @@ Procedure FillByGoodsReceipt(FillingData) Export
 		
 	EndDo;
 	
+	WorkWithSerialNumbers.FillTSSerialNumbersByConnectionKey(ThisObject, FillingData);
+		
 EndProcedure // FillByGoodsReceipt()
 
 // Procedure of document filling based on purchase order.
@@ -1039,7 +1045,9 @@ Procedure FillByReceiptCR(FillingData)
 		EndIf;
 		
 	EndDo;
-		
+	
+	WorkWithSerialNumbers.FillTSSerialNumbersByConnectionKey(ThisObject, FillingData);
+
 EndProcedure // FillBySalesInvoice()
 
 #EndRegion
@@ -1244,6 +1252,9 @@ Procedure FillCheckProcessing(Cancel, CheckedAttributes)
 		SmallBusinessServer.DeleteAttributeBeingChecked(CheckedAttributes, "Contract");
 	EndIf;
 	
+	// Serial numbers
+	WorkWithSerialNumbers.FillCheckingSerialNumbers(Cancel, Inventory, SerialNumbers, StructuralUnit, ThisObject);
+	
 EndProcedure // FillCheckProcessing()
 
 Procedure Posting(Cancel, PostingMode)
@@ -1282,6 +1293,10 @@ Procedure Posting(Cancel, PostingMode)
 	// DiscountCards
 	SmallBusinessServer.ReflectSalesByDiscountCard(AdditionalProperties, RegisterRecords, Cancel);
 	
+	// Serial numbers
+	SmallBusinessServer.ReflectTheSerialNumbersOfTheGuarantee(AdditionalProperties, RegisterRecords, Cancel);
+	SmallBusinessServer.ReflectTheSerialNumbersBalance(AdditionalProperties, RegisterRecords, Cancel);
+		
 	// Record of the records sets.
 	SmallBusinessServer.WriteRecordSets(ThisObject);
 	

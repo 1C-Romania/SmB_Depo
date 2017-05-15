@@ -44,7 +44,8 @@ Procedure FillByReceiptCR(Val BasisDocument, FillingData)
 	|		Total,
 	|		AutomaticDiscountsPercent,
 	|		AutomaticDiscountAmount,
-	|		ConnectionKey
+	|		ConnectionKey,
+	|		SerialNumbers
 	|	) AS Inventory,
 	|	ReceiptCR.PaymentWithPaymentCards.(
 	|		ChargeCardKind,
@@ -104,6 +105,8 @@ Procedure FillByReceiptCR(Val BasisDocument, FillingData)
 	
 	ThisObject.Inventory.Load(Selection.Inventory.Unload());
 	ThisObject.PaymentWithPaymentCards.Load(Selection.PaymentWithPaymentCards.Unload());
+	
+	WorkWithSerialNumbers.FillTSSerialNumbersByConnectionKey(ThisObject, FillingData);
 	
 	// AutomaticDiscounts
 	If GetFunctionalOption("UseAutomaticDiscountsMarkups") Then
@@ -191,7 +194,7 @@ Procedure FillCheckProcessing(Cancel, CheckedAttributes)
 	
 	While Selection.Next() Do
 		
-		ErrorText = NStr("en='For this receipt the return has already been entered';ru='Для данного чека уже введен чек на возврат'");
+		ErrorText = NStr("ru = 'Для данного чека уже введен чек на возврат'; en = 'For this receipt the return has already been entered'");
 		
 		SmallBusinessServer.ShowMessageAboutError(
 			ThisObject,
@@ -210,7 +213,7 @@ Procedure FillCheckProcessing(Cancel, CheckedAttributes)
 		
 		If BegOfDay(Selection.Date) <> BegOfDay(Date) Then
 			
-			ErrorText = NStr("en='Return date should correspond to the date of cash register receipt';ru='Дата чека на возврат должна соответствовать дате чека продажи'");
+			ErrorText = NStr("ru = 'Дата чека на возврат должна соответствовать дате чека продажи'; en = 'Return date should correspond to the date of cash register receipt'");
 			
 			SmallBusinessServer.ShowMessageAboutError(
 				ThisObject,
@@ -225,7 +228,7 @@ Procedure FillCheckProcessing(Cancel, CheckedAttributes)
 		
 		If CashCRSession <> Selection.CashCRSession Then
 			
-			ErrorText = NStr("en=""Return receipt's cash session should correspond to original receipt's cash session"";ru='Кассовая смена Чека на возврат должна соответствовать кассовой смене чека продажи'");
+			ErrorText = NStr("ru = 'Кассовая смена Чека на возврат должна соответствовать кассовой смене чека продажи'; en = 'Return receipt''s cash session should correspond to original receipt''s cash session'");
 			
 			SmallBusinessServer.ShowMessageAboutError(
 				ThisObject,
@@ -240,7 +243,7 @@ Procedure FillCheckProcessing(Cancel, CheckedAttributes)
 		
 		If Not Selection.Posted Then
 			
-			ErrorText = NStr("en='Cash receipt was not posted.';ru='Чек ККМ не проведен'");
+			ErrorText = NStr("ru = 'Чек ККМ не проведен'; en = 'Cash register receipt is not posted.'");
 			
 			SmallBusinessServer.ShowMessageAboutError(
 				ThisObject,
@@ -255,7 +258,7 @@ Procedure FillCheckProcessing(Cancel, CheckedAttributes)
 		
 		If Not ValueIsFilled(Selection.ReceiptCRNumber) Then
 			
-			ErrorText = NStr("en='Cash receipt was not issued.';ru='Чек ККМ продажи не пробит'");
+			ErrorText = NStr("ru = 'Чек ККМ продажи не пробит'; en = 'Cash receipt was not issued'");
 			
 			SmallBusinessServer.ShowMessageAboutError(
 				ThisObject,
@@ -268,7 +271,7 @@ Procedure FillCheckProcessing(Cancel, CheckedAttributes)
 			
 		EndIf;
 		
-		ErrorText = NStr("en='Cash session is not opened';ru='Кассовая смена не открыта'");
+		ErrorText = NStr("ru = 'Кассовая смена не открыта'; en = 'Cash session is not opened.'");
 		If Not Documents.RetailReport.SessionIsOpen(CashCRSession, Date, ErrorText) Then
 			
 			
@@ -287,7 +290,7 @@ Procedure FillCheckProcessing(Cancel, CheckedAttributes)
 	
 	If PaymentWithPaymentCards.Count() > 0 AND Not ValueIsFilled(POSTerminal) Then
 		
-		ErrorText = NStr("en='Field ""Terminal"" is empty';ru='Поле ""Эквайринговый терминал"" не заполнено'");
+		ErrorText = NStr("ru = 'Поле ""Эквайринговый терминал"" не заполнено'; en = 'Field ""Terminal"" is empty'");
 		
 		SmallBusinessServer.ShowMessageAboutError(
 			ThisObject,
@@ -299,6 +302,9 @@ Procedure FillCheckProcessing(Cancel, CheckedAttributes)
 		);
 		
 	EndIf;
+	
+	// Serial numbers
+	WorkWithSerialNumbers.FillCheckingSerialNumbers(Cancel, Inventory, SerialNumbers, StructuralUnit, ThisObject);
 	
 EndProcedure // FillCheckProcessing()
 
@@ -377,6 +383,10 @@ Procedure Posting(Cancel, PostingMode)
 	SmallBusinessServer.FlipAutomaticDiscountsApplied(AdditionalProperties, RegisterRecords, Cancel);
 	
 	SmallBusinessServer.ReflectManagerial(AdditionalProperties, RegisterRecords, Cancel);
+	
+	// SerialNumbers
+	SmallBusinessServer.ReflectTheSerialNumbersOfTheGuarantee(AdditionalProperties, RegisterRecords, Cancel);
+	SmallBusinessServer.ReflectTheSerialNumbersBalance(AdditionalProperties, RegisterRecords, Cancel);
 	
 	// Record of the records sets.
 	SmallBusinessServer.WriteRecordSets(ThisObject);

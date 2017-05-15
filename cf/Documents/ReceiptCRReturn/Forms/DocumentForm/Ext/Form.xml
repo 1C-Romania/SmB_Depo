@@ -462,6 +462,7 @@
 							<Events>
 								<Event name="OnEditEnd">InventoryOnEditEnd</Event>
 								<Event name="Selection">InventorySelection</Event>
+								<Event name="BeforeDeleteRow">InventoryBeforeDeleteRow</Event>
 								<Event name="OnStartEdit">InventoryOnStartEdit</Event>
 								<Event name="AfterDeleteRow">InventoryAfterDeleteRow</Event>
 							</Events>
@@ -502,6 +503,17 @@
 									<Width>20</Width>
 									<ContextMenu name="InventoryBatchContextMenu" id="124"/>
 									<ExtendedTooltip name="InventoryBatchExtendedTooltip" id="233"/>
+								</InputField>
+								<InputField name="InventorySerialNumbers" id="350">
+									<DataPath>Object.Inventory.SerialNumbers</DataPath>
+									<EditMode>EnterOnInput</EditMode>
+									<Width>20</Width>
+									<ChoiceButton>true</ChoiceButton>
+									<ContextMenu name="InventorySerialNumbersContextMenu" id="351"/>
+									<ExtendedTooltip name="InventorySerialNumbersExtendedTooltip" id="352"/>
+									<Events>
+										<Event name="StartChoice">InventorySerialNumbersStartChoice</Event>
+									</Events>
 								</InputField>
 								<InputField name="InventoryQuantity" id="125">
 									<DataPath>Object.Inventory.Quantity</DataPath>
@@ -1575,6 +1587,15 @@
 					<v8:AllowedLength>Variable</v8:AllowedLength>
 				</v8:StringQualifiers>
 			</Type>
+		</Attribute>
+		<Attribute name="UseSerialNumbersBalance" id="19">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Use serial numbers balance</v8:content>
+				</v8:item>
+			</Title>
+			<Type/>
 		</Attribute>
 	</Attributes>
 	<Commands>

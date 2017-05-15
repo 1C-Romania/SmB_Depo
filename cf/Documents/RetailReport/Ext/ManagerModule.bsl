@@ -988,6 +988,7 @@ Procedure InitializeDocumentData(DocumentRefReportOnRetailSales, StructureAdditi
 	Query.Text =
 	"SELECT
 	|	RetailSalesReportInventory.LineNumber AS LineNumber,
+	|	RetailSalesReportInventory.ConnectionKey AS ConnectionKey,
 	|	RetailSalesReportInventory.Ref AS Document,
 	|	RetailSalesReportInventory.Ref.InventoryReconciliation AS BasisDocument,
 	|	RetailSalesReportInventory.Ref.Item AS Item,
@@ -1137,13 +1138,27 @@ Procedure InitializeDocumentData(DocumentRefReportOnRetailSales, StructureAdditi
 	|	Constant.NationalCurrency AS ConstantNationalCurrency
 	|WHERE
 	|	RetailSalesReportDiscountsMarkups.Ref = &Ref
-	|	AND RetailSalesReportDiscountsMarkups.Amount <> 0";
+	|	AND RetailSalesReportDiscountsMarkups.Amount <> 0
+	|;
+	|
+	|////////////////////////////////////////////////////////////////////////////////
+	|SELECT
+	|	RetailReportSerialNumbers.ConnectionKey,
+	|	RetailReportSerialNumbers.SerialNumber
+	|INTO TemporaryTableSerialNumbers
+	|FROM
+	|	Document.RetailReport.SerialNumbers AS RetailReportSerialNumbers
+	|WHERE
+	|	RetailReportSerialNumbers.Ref = &Ref
+	|	AND &UseSerialNumbers";
 	
 	Query.SetParameter("Ref", DocumentRefReportOnRetailSales);
 	Query.SetParameter("Company", StructureAdditionalProperties.ForPosting.Company);
 	Query.SetParameter("PointInTime", New Boundary(StructureAdditionalProperties.ForPosting.PointInTime, BoundaryType.Including));
 	Query.SetParameter("UseCharacteristics", StructureAdditionalProperties.AccountingPolicy.UseCharacteristics);
 	Query.SetParameter("UseBatches", StructureAdditionalProperties.AccountingPolicy.UseBatches);
+	
+	Query.SetParameter("UseSerialNumbers", StructureAdditionalProperties.AccountingPolicy.UseSerialNumbers);
 	
 	Query.ExecuteBatch();
 	
@@ -1158,6 +1173,9 @@ Procedure InitializeDocumentData(DocumentRefReportOnRetailSales, StructureAdditi
 	GenerateTableIncomeAndExpensesCashMethod(DocumentRefReportOnRetailSales, StructureAdditionalProperties);
 	GenerateTableInventoryReceived(DocumentRefReportOnRetailSales, StructureAdditionalProperties);
 	
+	// Serial numbers
+	GenerateTableSerialNumbers(DocumentRefReportOnRetailSales, StructureAdditionalProperties);
+	
 	GenerateTableManagerial(DocumentRefReportOnRetailSales, StructureAdditionalProperties);
 	
 	// DiscountCards
@@ -1166,6 +1184,49 @@ Procedure InitializeDocumentData(DocumentRefReportOnRetailSales, StructureAdditi
 	GenerateTableSalesByAutomaticDiscountsApplied(DocumentRefReportOnRetailSales, StructureAdditionalProperties);
 	
 EndProcedure // DocumentDataInitialization()
+
+// Generates a table of values that contains the data for the SerialNumbersGuarantees information register.
+// Tables of values saves into the properties of the structure "AdditionalProperties".
+//
+Procedure GenerateTableSerialNumbers(DocumentRef, StructureAdditionalProperties)
+	
+	If DocumentRef.SerialNumbers.Count()=0 Then
+		StructureAdditionalProperties.TableForRegisterRecords.Insert("TableSerialNumbersBalance", New ValueTable);
+		StructureAdditionalProperties.TableForRegisterRecords.Insert("TableSerialNumbersGuarantees", New ValueTable);
+		Return;
+	EndIf;
+	
+	Query = New Query;
+	Query.TempTablesManager = StructureAdditionalProperties.ForPosting.StructureTemporaryTables.TempTablesManager;
+	Query.Text =
+	"SELECT
+	|	TemporaryTableInventory.Date AS Period,
+	|	VALUE(AccumulationRecordType.Expense) AS RecordType,
+	|	TemporaryTableInventory.Date AS EventDate,
+	|	VALUE(Enum.SerialNumbersOperations.Expense) AS Operation,
+	|	SerialNumbers.SerialNumber AS SerialNumber,
+	|	TemporaryTableInventory.Company AS Company,
+	|	TemporaryTableInventory.ProductsAndServices AS ProductsAndServices,
+	|	TemporaryTableInventory.Characteristic AS Characteristic,
+	|	TemporaryTableInventory.Batch AS Batch,
+	|	TemporaryTableInventory.StructuralUnit AS StructuralUnit,
+	|	TemporaryTableInventory.Cell AS Cell,
+	|	1 AS Quantity
+	|FROM
+	|	TemporaryTableInventory AS TemporaryTableInventory
+	|		INNER JOIN TemporaryTableSerialNumbers AS SerialNumbers
+	|		ON TemporaryTableInventory.ConnectionKey = SerialNumbers.ConnectionKey";
+	
+	QueryResult = Query.Execute().Unload();
+	
+	StructureAdditionalProperties.TableForRegisterRecords.Insert("TableSerialNumbersGuarantees", QueryResult);
+	If StructureAdditionalProperties.AccountingPolicy.SerialNumbersBalance Then
+		StructureAdditionalProperties.TableForRegisterRecords.Insert("TableSerialNumbersBalance", QueryResult);
+	Else
+		StructureAdditionalProperties.TableForRegisterRecords.Insert("TableSerialNumbersBalance", New ValueTable);
+	EndIf; 
+	
+EndProcedure
 
 // Controls the occurrence of negative balances.
 //
@@ -1180,7 +1241,8 @@ Procedure RunControl(DocumentRefReportOnRetailSales, AdditionalProperties, Cance
 	// If temporary tables "RegisterRecordsInventoryChange", control goods implementation.
 	If StructureTemporaryTables.RegisterRecordsInventoryInWarehousesChange
 	 OR StructureTemporaryTables.RegisterRecordsInventoryChange
-	 OR StructureTemporaryTables.RegisterRecordsInventoryReceivedChange Then
+	 OR StructureTemporaryTables.RegisterRecordsInventoryReceivedChange
+	 OR StructureTemporaryTables.RegisterRecordsSerialNumbersChange Then
 		
 		Query = New Query(
 		"SELECT
@@ -1199,7 +1261,7 @@ Procedure RunControl(DocumentRefReportOnRetailSales, AdditionalProperties, Cance
 		|	RegisterRecordsInventoryInWarehousesChange AS RegisterRecordsInventoryInWarehousesChange
 		|		INNER JOIN AccumulationRegister.InventoryInWarehouses.Balance(
 		|				&ControlTime,
-		|				(Company, StructuralUnit, ProductsAndServices, Characteristic, Batch, Cell) In
+		|				(Company, StructuralUnit, ProductsAndServices, Characteristic, Batch, Cell) IN
 		|					(SELECT
 		|						RegisterRecordsInventoryInWarehousesChange.Company AS Company,
 		|						RegisterRecordsInventoryInWarehousesChange.StructuralUnit AS StructuralUnit,
@@ -1240,7 +1302,7 @@ Procedure RunControl(DocumentRefReportOnRetailSales, AdditionalProperties, Cance
 		|	RegisterRecordsInventoryChange AS RegisterRecordsInventoryChange
 		|		INNER JOIN AccumulationRegister.Inventory.Balance(
 		|				&ControlTime,
-		|				(Company, StructuralUnit, GLAccount, ProductsAndServices, Characteristic, Batch, CustomerOrder) In
+		|				(Company, StructuralUnit, GLAccount, ProductsAndServices, Characteristic, Batch, CustomerOrder) IN
 		|					(SELECT
 		|						RegisterRecordsInventoryChange.Company AS Company,
 		|						RegisterRecordsInventoryChange.StructuralUnit AS StructuralUnit,
@@ -1284,7 +1346,7 @@ Procedure RunControl(DocumentRefReportOnRetailSales, AdditionalProperties, Cance
 		|	RegisterRecordsInventoryReceivedChange AS RegisterRecordsInventoryReceivedChange
 		|		INNER JOIN AccumulationRegister.InventoryReceived.Balance(
 		|				&ControlTime,
-		|				(Company, ProductsAndServices, Characteristic, Batch, Counterparty, Contract, Order, ReceptionTransmissionType) In
+		|				(Company, ProductsAndServices, Characteristic, Batch, Counterparty, Contract, Order, ReceptionTransmissionType) IN
 		|					(SELECT
 		|						RegisterRecordsInventoryReceivedChange.Company AS Company,
 		|						RegisterRecordsInventoryReceivedChange.ProductsAndServices AS ProductsAndServices,
@@ -1308,6 +1370,34 @@ Procedure RunControl(DocumentRefReportOnRetailSales, AdditionalProperties, Cance
 		|				OR ISNULL(InventoryReceivedBalances.SettlementsAmountBalance, 0) < 0)
 		|
 		|ORDER BY
+		|	LineNumber
+		|;
+		|
+		|////////////////////////////////////////////////////////////////////////////////
+		|SELECT
+		|	RegisterRecordsSerialNumbersChange.LineNumber AS LineNumber,
+		|	RegisterRecordsSerialNumbersChange.SerialNumber AS SerialNumberPresentation,
+		|	RegisterRecordsSerialNumbersChange.StructuralUnit AS StructuralUnitPresentation,
+		|	RegisterRecordsSerialNumbersChange.ProductsAndServices AS ProductsAndServicesPresentation,
+		|	RegisterRecordsSerialNumbersChange.Characteristic AS CharacteristicPresentation,
+		|	RegisterRecordsSerialNumbersChange.Batch AS BatchPresentation,
+		|	RegisterRecordsSerialNumbersChange.Cell AS PresentationCell,
+		|	SerialNumbersBalance.StructuralUnit.StructuralUnitType AS StructuralUnitType,
+		|	SerialNumbersBalance.ProductsAndServices.MeasurementUnit AS MeasurementUnitPresentation,
+		|	ISNULL(RegisterRecordsSerialNumbersChange.QuantityChange, 0) + ISNULL(SerialNumbersBalance.QuantityBalance, 0) AS BalanceSerialNumbers,
+		|	ISNULL(SerialNumbersBalance.QuantityBalance, 0) AS BalanceQuantitySerialNumbers
+		|FROM
+		|	RegisterRecordsSerialNumbersChange AS RegisterRecordsSerialNumbersChange
+		|		INNER JOIN AccumulationRegister.SerialNumbers.Balance(&ControlTime, ) AS SerialNumbersBalance
+		|		ON RegisterRecordsSerialNumbersChange.StructuralUnit = SerialNumbersBalance.StructuralUnit
+		|			AND RegisterRecordsSerialNumbersChange.ProductsAndServices = SerialNumbersBalance.ProductsAndServices
+		|			AND RegisterRecordsSerialNumbersChange.Characteristic = SerialNumbersBalance.Characteristic
+		|			AND RegisterRecordsSerialNumbersChange.Batch = SerialNumbersBalance.Batch
+		|			AND RegisterRecordsSerialNumbersChange.SerialNumber = SerialNumbersBalance.SerialNumber
+		|			AND RegisterRecordsSerialNumbersChange.Cell = SerialNumbersBalance.Cell
+		|			AND (ISNULL(SerialNumbersBalance.QuantityBalance, 0) < 0)
+		|
+		|ORDER BY
 		|	LineNumber");
 		
 		Query.TempTablesManager = StructureTemporaryTables.TempTablesManager;
@@ -1317,7 +1407,8 @@ Procedure RunControl(DocumentRefReportOnRetailSales, AdditionalProperties, Cance
 		
 		If Not ResultsArray[0].IsEmpty()
 			OR Not ResultsArray[1].IsEmpty()
-			OR Not ResultsArray[2].IsEmpty() Then
+			OR Not ResultsArray[2].IsEmpty()
+			OR Not ResultsArray[3].IsEmpty() Then
 			DocumentRetailReport = DocumentRefReportOnRetailSales.GetObject()
 		EndIf;
 		
@@ -1337,6 +1428,12 @@ Procedure RunControl(DocumentRefReportOnRetailSales, AdditionalProperties, Cance
 		If Not ResultsArray[2].IsEmpty() Then
 			QueryResultSelection = ResultsArray[2].Select();
 			SmallBusinessServer.ShowMessageAboutPostingToInventoryReceivedRegisterErrors(DocumentRetailReport, QueryResultSelection, Cancel);
+		EndIf;
+		
+		// Negative balance of serial numbers in the warehouse.
+		If NOT ResultsArray[3].IsEmpty() Then
+			QueryResultSelection = ResultsArray[4].Select();
+			SmallBusinessServer.ShowMessageAboutPostingSerialNumbersRegisterErrors(DocumentRetailReport, QueryResultSelection, Cancel);
 		EndIf;
 		
 	EndIf;
@@ -1469,7 +1566,7 @@ Function CloseCashCRSession(ObjectCashCRSession) Export
 		|		ReceiptCRInventory.Ref.CashCRSession = &CashCRSession
 		|		AND ReceiptCRInventory.Ref.Posted
 		|		AND ReceiptCRInventory.Ref.ReceiptCRNumber > 0
-		|		AND Not ReceiptCRInventory.Ref.Archival
+		|		AND NOT ReceiptCRInventory.Ref.Archival
 		|	
 		|	UNION ALL
 		|	
@@ -1501,7 +1598,7 @@ Function CloseCashCRSession(ObjectCashCRSession) Export
 		|		ReceiptCRInventory.Ref.CashCRSession = &CashCRSession
 		|		AND ReceiptCRInventory.Ref.Posted
 		|		AND ReceiptCRInventory.Ref.ReceiptCRNumber > 0
-		|		AND Not ReceiptCRInventory.Ref.Archival) AS ReceiptCRInventory
+		|		AND NOT ReceiptCRInventory.Ref.Archival) AS ReceiptCRInventory
 		|
 		|GROUP BY
 		|	ReceiptCRInventory.ProductsAndServices,
@@ -1584,7 +1681,7 @@ Function CloseCashCRSession(ObjectCashCRSession) Export
 		|		ReceiptCRInventory.Ref.CashCRSession = &CashCRSession
 		|		AND ReceiptCRInventory.Ref.Posted
 		|		AND ReceiptCRInventory.Ref.ReceiptCRNumber > 0
-		|		AND Not ReceiptCRInventory.Ref.Archival
+		|		AND NOT ReceiptCRInventory.Ref.Archival
 		|	
 		|	UNION ALL
 		|	
@@ -1596,7 +1693,7 @@ Function CloseCashCRSession(ObjectCashCRSession) Export
 		|		ReceiptCRInventory.Ref.CashCRSession = &CashCRSession
 		|		AND ReceiptCRInventory.Ref.Posted
 		|		AND ReceiptCRInventory.Ref.ReceiptCRNumber > 0
-		|		AND Not ReceiptCRInventory.Ref.Archival) AS ReceiptCRInventory
+		|		AND NOT ReceiptCRInventory.Ref.Archival) AS ReceiptCRInventory
 		|;
 		|
 		|////////////////////////////////////////////////////////////////////////////////
@@ -1646,7 +1743,79 @@ Function CloseCashCRSession(ObjectCashCRSession) Export
 		|GROUP BY
 		|	TU_AutoDiscountsMarkupsJoin.ProductsAndServices,
 		|	TU_AutoDiscountsMarkupsJoin.Characteristic,
-		|	TU_AutoDiscountsMarkupsJoin.DiscountMarkup";
+		|	TU_AutoDiscountsMarkupsJoin.DiscountMarkup
+		|;
+		|
+		|////////////////////////////////////////////////////////////////////////////////
+		|SELECT
+		|	ReceiptCRSalesRefunds.ProductsAndServices AS ProductsAndServices,
+		|	ReceiptCRSalesRefunds.Characteristic AS Characteristic,
+		|	ReceiptCRSalesRefunds.Batch AS Batch,
+		|	ReceiptCRSalesRefunds.MeasurementUnit AS MeasurementUnit,
+		|	ReceiptCRSalesRefunds.Price AS Price,
+		|	ReceiptCRSalesRefunds.DiscountMarkupPercent AS DiscountMarkupPercent,
+		|	ReceiptCRSalesRefunds.VATRate AS VATRate,
+		|	ReceiptCRSalesRefunds.SerialNumber,
+		|	SUM(ReceiptCRSalesRefunds.FlagOfSales) AS FlagOfSales
+		|FROM
+		|	(SELECT
+		|		ReceiptCRInventory.ProductsAndServices AS ProductsAndServices,
+		|		ReceiptCRInventory.Characteristic AS Characteristic,
+		|		ReceiptCRInventory.Batch AS Batch,
+		|		ReceiptCRInventory.MeasurementUnit AS MeasurementUnit,
+		|		ReceiptCRInventory.Price AS Price,
+		|		ReceiptCRInventory.DiscountMarkupPercent AS DiscountMarkupPercent,
+		|		ReceiptCRInventory.VATRate AS VATRate,
+		|		ReceiptCRSerialNumbers.SerialNumber AS SerialNumber,
+		|		1 AS FlagOfSales
+		|	FROM
+		|		Document.ReceiptCR.Inventory AS ReceiptCRInventory
+		|			INNER JOIN Document.ReceiptCR.SerialNumbers AS ReceiptCRSerialNumbers
+		|			ON ReceiptCRInventory.ConnectionKey = ReceiptCRSerialNumbers.ConnectionKey
+		|				AND ReceiptCRInventory.Ref = ReceiptCRSerialNumbers.Ref
+		|	WHERE
+		|		ReceiptCRInventory.Ref.CashCRSession = &CashCRSession
+		|		AND ReceiptCRInventory.Ref.Posted
+		|		AND ReceiptCRInventory.Ref.ReceiptCRNumber > 0
+		|		AND NOT ReceiptCRInventory.Ref.Archival
+		|		AND ReceiptCRSerialNumbers.Ref.CashCRSession = &CashCRSession
+		|	
+		|	UNION ALL
+		|	
+		|	SELECT
+		|		ReceiptCRReturnInventory.ProductsAndServices,
+		|		ReceiptCRReturnInventory.Characteristic,
+		|		ReceiptCRReturnInventory.Batch,
+		|		ReceiptCRReturnInventory.MeasurementUnit,
+		|		ReceiptCRReturnInventory.Price,
+		|		ReceiptCRReturnInventory.DiscountMarkupPercent,
+		|		ReceiptCRReturnInventory.VATRate,
+		|		ReceiptCRReturnSerialNumbers.SerialNumber,
+		|		-1
+		|	FROM
+		|		Document.ReceiptCRReturn.Inventory AS ReceiptCRReturnInventory
+		|			INNER JOIN Document.ReceiptCRReturn.SerialNumbers AS ReceiptCRReturnSerialNumbers
+		|			ON ReceiptCRReturnInventory.ConnectionKey = ReceiptCRReturnSerialNumbers.ConnectionKey
+		|				AND ReceiptCRReturnInventory.Ref = ReceiptCRReturnSerialNumbers.Ref
+		|	WHERE
+		|		ReceiptCRReturnInventory.Ref.CashCRSession = &CashCRSession
+		|		AND ReceiptCRReturnInventory.Ref.Posted
+		|		AND ReceiptCRReturnInventory.Ref.ReceiptCRNumber > 0
+		|		AND NOT ReceiptCRReturnInventory.Ref.Archival
+		|		AND ReceiptCRReturnSerialNumbers.Ref.CashCRSession = &CashCRSession) AS ReceiptCRSalesRefunds
+		|
+		|GROUP BY
+		|	ReceiptCRSalesRefunds.ProductsAndServices,
+		|	ReceiptCRSalesRefunds.Characteristic,
+		|	ReceiptCRSalesRefunds.Batch,
+		|	ReceiptCRSalesRefunds.MeasurementUnit,
+		|	ReceiptCRSalesRefunds.VATRate,
+		|	ReceiptCRSalesRefunds.SerialNumber,
+		|	ReceiptCRSalesRefunds.Price,
+		|	ReceiptCRSalesRefunds.DiscountMarkupPercent
+		|
+		|HAVING
+		|	SUM(ReceiptCRSalesRefunds.FlagOfSales) > 0";
 		
 		Query.TempTablesManager = TempTablesManager;
 		Query.SetParameter("CashCRSession", ObjectCashCRSession.Ref);
@@ -1705,6 +1874,38 @@ Function CloseCashCRSession(ObjectCashCRSession) Export
 		EndIf;
 		// End AutomaticDiscounts
 		
+		// Serial numbers
+		ObjectCashCRSession.SerialNumbers.Clear();
+		WorkWithSerialNumbersClientServer.FillConnectionKeysInTabularSectionProducts(ObjectCashCRSession, "Inventory");
+		If GetFunctionalOption("UseSerialNumbers") Then
+			
+			SerialNumbers = Result[5].Unload();
+			For Each TSRow In ObjectCashCRSession.Inventory Do
+				
+				ConnectionKey = 0;
+				FilterStructure = New Structure("ProductsAndServices, Characteristic, Batch, MeasurementUnit, Price, VATRate");
+				FillPropertyValues(FilterStructure, TSRow);
+				
+				SerialNumbersByFilter = SerialNumbers.FindRows(FilterStructure);
+				
+				If SerialNumbersByFilter.Count()>0 Then
+					
+					ConnectionKey = TSRow.ConnectionKey;
+					
+					For Each Str In SerialNumbersByFilter Do
+						NewRow = ObjectCashCRSession.SerialNumbers.Add();
+						NewRow.ConnectionKey = ConnectionKey;
+						NewRow.SerialNumber = Str.SerialNumber;
+					EndDo;
+				EndIf;
+				
+				WorkWithSerialNumbersClientServer.UpdateStringPresentationOfSerialNumbersOfLine(TSRow, ObjectCashCRSession, "ConnectionKey");
+				
+			EndDo;
+			
+		EndIf;
+		// Serial numbers
+		
 		ClosingDateOfCashCRSession = CurrentDate();
 		ObjectCashCRSession.CashCRSessionStatus    = Enums.CashCRSessionStatuses.Closed;
 		ObjectCashCRSession.Date                   = ClosingDateOfCashCRSession;
@@ -1731,9 +1932,9 @@ Function CloseCashCRSession(ObjectCashCRSession) Export
 		RollbackTransaction();
 		
 		StructureReturns.RetailReport = Undefined;
-		StructureReturns.ErrorDescription = NStr("en='An error occurred while generating retail sales report.
-		|Cash session closing is not completed.';ru='При формировании отчета о розничных продажах произошла ошибка.
-		|Закрытие кассовой смены не выполнено.'"
+		StructureReturns.ErrorDescription = NStr("ru = 'При формировании отчета о розничных продажах произошла ошибка.
+		|Закрытие кассовой смены не выполнено.'; en = 'An error occurred while generating retail sales report.
+		|Cash session closing is not completed.'"
 		);
 		
 	EndTry;
@@ -1849,19 +2050,25 @@ Procedure RunReceiptsBackup(ObjectCashCRSession, ErrorDescription = "") Export
 		ObjectCashCRSession.AdditionalProperties.Insert("DisableObjectChangeRecordMechanism", True);
 		ObjectCashCRSession.Write(DocumentWriteMode.Posting);
 		
+		If WorkWithSerialNumbers.UseSerialNumbersBalance() = True Then
+			Set = AccumulationRegisters.SerialNumbers.CreateRecordSet();
+			Set.Filter.Recorder.Set(ReceiptCRSelection.Ref);
+			Set.Write(True);
+		EndIf;
+		
 		CommitTransaction();
 		
 	Except
 		
 		RollbackTransaction();
 		
-		ErrorDescription = NStr("en='An error occurred while archiving receipts CR.
-		|Receipts CR are not archived.
-		|Additional
-		|description: %AdditionalDetails%';ru='При архивации чеков ККМ произошла ошибка.
+		ErrorDescription = NStr("ru = 'При архивации чеков ККМ произошла ошибка.
 		|Архивация чеков ККМ не выполнена.
 		|Дополнительное
-		|описание: %ДополнительноеОписание%'"
+		|описание: %ДополнительноеОписание%'; en = 'An error occurred while archiving receipts CR.
+		|Receipts CR are not archived.
+		|Additional
+		|description: %AdditionalDetails%'"
 		);
 		ErrorDescription = StrReplace(ErrorDescription, "%AdditionalDetails%", ErrorInfo().Definition);
 
@@ -2260,7 +2467,12 @@ Function GeneratePrintFormOfReportAboutRetailSales(ObjectsArray, PrintObjects)
 		|				THEN 1
 		|			ELSE 0
 		|		END AS IsDiscount,
-		|		AutomaticDiscountAmount
+		|		AutomaticDiscountAmount,
+		|		ConnectionKey
+		|	),
+		|	RetailReport.SerialNumbers.(
+		|		SerialNumber,
+		|		ConnectionKey
 		|	)
 		|FROM
 		|	Document.RetailReport AS RetailReport
@@ -2281,7 +2493,7 @@ Function GeneratePrintFormOfReportAboutRetailSales(ObjectsArray, PrintObjects)
 		// Output invoice header.
 		TemplateArea = Template.GetArea("Title");
 		TemplateArea.Parameters.HeaderText = 
-			"Retail sales report No "
+			"Retail sales report No"
 		  + DocumentNumber
 		  + " from "
 		  + Format(Header.Date, "DLF=DD");
@@ -2329,6 +2541,7 @@ Function GeneratePrintFormOfReportAboutRetailSales(ObjectsArray, PrintObjects)
 		TotalWithoutDiscounts	= 0;
 		
 		LinesSelectionInventory = Header.Inventory.Select();
+		LinesSelectionSerialNumbers = Header.SerialNumbers.Select();
 		While LinesSelectionInventory.Next() Do
 			
 			If Not ValueIsFilled(LinesSelectionInventory.ProductsAndServices) Then
@@ -2340,10 +2553,12 @@ Function GeneratePrintFormOfReportAboutRetailSales(ObjectsArray, PrintObjects)
 			Spreadsheet.Put(NumberArea);
 			
 			DataArea.Parameters.Fill(LinesSelectionInventory);
+			StringSerialNumbers = WorkWithSerialNumbers.SerialNumbersStringFromSelection(LinesSelectionSerialNumbers, LinesSelectionInventory.ConnectionKey);
 			DataArea.Parameters.InventoryItem = SmallBusinessServer.GetProductsAndServicesPresentationForPrinting(
 				LinesSelectionInventory.InventoryItem,
 				LinesSelectionInventory.Characteristic,
-				LinesSelectionInventory.SKU
+				LinesSelectionInventory.SKU,
+				StringSerialNumbers
 			);
 			
 			Spreadsheet.Join(DataArea);

@@ -59,7 +59,9 @@ Procedure FillByProcessingReport(FillingData)
 	|	ProcessingReport.Characteristic AS Characteristic,
 	|	ProcessingReport.Batch AS Batch,
 	|	ProcessingReport.MeasurementUnit AS MeasurementUnit,
-	|	SUM(ProcessingReport.Quantity) AS Quantity
+	|	SUM(ProcessingReport.Quantity) AS Quantity,
+	|	ProcessingReport.SerialNumbers,
+	|	ProcessingReport.ConnectionKey
 	|FROM
 	|	(SELECT
 	|		ProcessingReportProducts.LineNumber AS LineNumber,
@@ -67,7 +69,9 @@ Procedure FillByProcessingReport(FillingData)
 	|		ProcessingReportProducts.Characteristic AS Characteristic,
 	|		ProcessingReportProducts.Batch AS Batch,
 	|		ProcessingReportProducts.MeasurementUnit AS MeasurementUnit,
-	|		ProcessingReportProducts.Quantity AS Quantity
+	|		ProcessingReportProducts.Quantity AS Quantity,
+	|		ProcessingReportProducts.SerialNumbers AS SerialNumbers,
+	|		ProcessingReportProducts.ConnectionKey AS ConnectionKey
 	|	FROM
 	|		Document.ProcessingReport.Products AS ProcessingReportProducts
 	|	WHERE
@@ -81,7 +85,9 @@ Procedure FillByProcessingReport(FillingData)
 	|		ProcessingReportDisposals.Characteristic,
 	|		ProcessingReportDisposals.Batch,
 	|		ProcessingReportDisposals.MeasurementUnit,
-	|		ProcessingReportDisposals.Quantity
+	|		ProcessingReportDisposals.Quantity,
+	|		NULL,
+	|		NULL
 	|	FROM
 	|		Document.ProcessingReport.Disposals AS ProcessingReportDisposals
 	|	WHERE
@@ -91,7 +97,9 @@ Procedure FillByProcessingReport(FillingData)
 	|	ProcessingReport.ProductsAndServices,
 	|	ProcessingReport.Characteristic,
 	|	ProcessingReport.Batch,
-	|	ProcessingReport.MeasurementUnit
+	|	ProcessingReport.MeasurementUnit,
+	|	ProcessingReport.SerialNumbers,
+	|	ProcessingReport.ConnectionKey
 	|
 	|ORDER BY
 	|	LineNumber";
@@ -107,6 +115,8 @@ Procedure FillByProcessingReport(FillingData)
 			FillPropertyValues(NewRow, Selection);
 		EndDo;
 	EndIf;
+	
+	WorkWithSerialNumbers.FillTSSerialNumbersByConnectionKey(ThisObject, FillingData, "Products");
 	
 EndProcedure // FillByProcessingReport()
 
@@ -131,7 +141,9 @@ Procedure FillBySalesInvoice(FillingData)
 	|	CustomerInvoiceInventory.Characteristic AS Characteristic,
 	|	CustomerInvoiceInventory.Batch AS Batch,
 	|	CustomerInvoiceInventory.MeasurementUnit AS MeasurementUnit,
-	|	SUM(CustomerInvoiceInventory.Quantity) AS Quantity
+	|	SUM(CustomerInvoiceInventory.Quantity) AS Quantity,
+	|	CustomerInvoiceInventory.SerialNumbers,
+	|	CustomerInvoiceInventory.ConnectionKey
 	|FROM
 	|	Document.CustomerInvoice.Inventory AS CustomerInvoiceInventory
 	|WHERE
@@ -142,7 +154,9 @@ Procedure FillBySalesInvoice(FillingData)
 	|	CustomerInvoiceInventory.ProductsAndServices,
 	|	CustomerInvoiceInventory.Characteristic,
 	|	CustomerInvoiceInventory.Batch,
-	|	CustomerInvoiceInventory.MeasurementUnit
+	|	CustomerInvoiceInventory.MeasurementUnit,
+	|	CustomerInvoiceInventory.SerialNumbers,
+	|	CustomerInvoiceInventory.ConnectionKey
 	|
 	|ORDER BY
 	|	LineNumber";
@@ -158,6 +172,8 @@ Procedure FillBySalesInvoice(FillingData)
 			FillPropertyValues(NewRow, Selection);
 		EndDo;
 	EndIf;
+	
+	WorkWithSerialNumbers.FillTSSerialNumbersByConnectionKey(ThisObject, FillingData);
 	
 EndProcedure // FillBySalesInvoice()
 
@@ -236,7 +252,9 @@ Procedure FillByInventoryWriteOff(FillingData)
 	|	InventoryWriteOffInventory.Characteristic AS Characteristic,
 	|	InventoryWriteOffInventory.Batch AS Batch,
 	|	InventoryWriteOffInventory.MeasurementUnit AS MeasurementUnit,
-	|	SUM(InventoryWriteOffInventory.Quantity) AS Quantity
+	|	SUM(InventoryWriteOffInventory.Quantity) AS Quantity,
+	|	InventoryWriteOffInventory.SerialNumbers,
+	|	InventoryWriteOffInventory.ConnectionKey
 	|FROM
 	|	Document.InventoryWriteOff.Inventory AS InventoryWriteOffInventory
 	|WHERE
@@ -246,7 +264,9 @@ Procedure FillByInventoryWriteOff(FillingData)
 	|	InventoryWriteOffInventory.ProductsAndServices,
 	|	InventoryWriteOffInventory.Characteristic,
 	|	InventoryWriteOffInventory.Batch,
-	|	InventoryWriteOffInventory.MeasurementUnit
+	|	InventoryWriteOffInventory.MeasurementUnit,
+	|	InventoryWriteOffInventory.SerialNumbers,
+	|	InventoryWriteOffInventory.ConnectionKey
 	|
 	|ORDER BY
 	|	LineNumber";
@@ -262,6 +282,8 @@ Procedure FillByInventoryWriteOff(FillingData)
 			FillPropertyValues(NewRow, Selection);
 		EndDo;
 	EndIf;
+	
+	WorkWithSerialNumbers.FillTSSerialNumbersByConnectionKey(ThisObject, FillingData);
 	
 EndProcedure // FillByInventoryWriteOff()
 
@@ -286,7 +308,9 @@ Procedure FillByInventoryTransfer(FillingData)
 	|	InventoryTransferInventory.Characteristic AS Characteristic,
 	|	InventoryTransferInventory.Batch AS Batch,
 	|	InventoryTransferInventory.MeasurementUnit AS MeasurementUnit,
-	|	SUM(InventoryTransferInventory.Quantity) AS Quantity
+	|	SUM(InventoryTransferInventory.Quantity) AS Quantity,
+	|	InventoryTransferInventory.SerialNumbers,
+	|	InventoryTransferInventory.ConnectionKey
 	|FROM
 	|	Document.InventoryTransfer.Inventory AS InventoryTransferInventory
 	|WHERE
@@ -296,7 +320,9 @@ Procedure FillByInventoryTransfer(FillingData)
 	|	InventoryTransferInventory.ProductsAndServices,
 	|	InventoryTransferInventory.Characteristic,
 	|	InventoryTransferInventory.Batch,
-	|	InventoryTransferInventory.MeasurementUnit
+	|	InventoryTransferInventory.MeasurementUnit,
+	|	InventoryTransferInventory.SerialNumbers,
+	|	InventoryTransferInventory.ConnectionKey
 	|
 	|ORDER BY
 	|	LineNumber";
@@ -312,6 +338,8 @@ Procedure FillByInventoryTransfer(FillingData)
 			FillPropertyValues(NewRow, Selection);
 		EndDo;
 	EndIf;
+	
+	WorkWithSerialNumbers.FillTSSerialNumbersByConnectionKey(ThisObject, FillingData);
 	
 EndProcedure // FillByInventoryTransfer()
 
@@ -336,7 +364,9 @@ Procedure FillByGoodsReceipt(FillingData)
 	|	GoodsReceiptInventory.Characteristic AS Characteristic,
 	|	GoodsReceiptInventory.Batch AS Batch,
 	|	GoodsReceiptInventory.MeasurementUnit AS MeasurementUnit,
-	|	SUM(GoodsReceiptInventory.Quantity) AS Quantity
+	|	SUM(GoodsReceiptInventory.Quantity) AS Quantity,
+	|	GoodsReceiptInventory.SerialNumbers,
+	|	GoodsReceiptInventory.ConnectionKey
 	|FROM
 	|	Document.GoodsReceipt.Inventory AS GoodsReceiptInventory
 	|WHERE
@@ -346,7 +376,9 @@ Procedure FillByGoodsReceipt(FillingData)
 	|	GoodsReceiptInventory.ProductsAndServices,
 	|	GoodsReceiptInventory.Characteristic,
 	|	GoodsReceiptInventory.Batch,
-	|	GoodsReceiptInventory.MeasurementUnit
+	|	GoodsReceiptInventory.MeasurementUnit,
+	|	GoodsReceiptInventory.SerialNumbers,
+	|	GoodsReceiptInventory.ConnectionKey
 	|
 	|ORDER BY
 	|	LineNumber";
@@ -362,6 +394,8 @@ Procedure FillByGoodsReceipt(FillingData)
 			FillPropertyValues(NewRow, Selection);
 		EndDo;
 	EndIf;
+	
+	WorkWithSerialNumbers.FillTSSerialNumbersByConnectionKey(ThisObject, FillingData);
 	
 EndProcedure // FillByGoodsReceipt()
 
@@ -450,6 +484,10 @@ Procedure Posting(Cancel, PostingMode)
 	SmallBusinessServer.ReflectInventoryForExpenseFromWarehouses(AdditionalProperties, RegisterRecords, Cancel);
 	SmallBusinessServer.ReflectInventoryInWarehouses(AdditionalProperties, RegisterRecords, Cancel);
 
+	// SerialNumbers
+	SmallBusinessServer.ReflectTheSerialNumbersOfTheGuarantee(AdditionalProperties, RegisterRecords, Cancel);
+	SmallBusinessServer.ReflectTheSerialNumbersBalance(AdditionalProperties, RegisterRecords, Cancel);
+
 	// Writing of record sets
 	SmallBusinessServer.WriteRecordSets(ThisObject);
 
@@ -475,6 +513,13 @@ Procedure UndoPosting(Cancel)
 
 	// Control
 	Documents.GoodsExpense.RunControl(Ref, AdditionalProperties, Cancel, True);
+	
+EndProcedure
+
+Procedure FillCheckProcessing(Cancel, CheckedAttributes)
+	
+	// Serial numbers
+	WorkWithSerialNumbers.FillCheckingSerialNumbers(Cancel, CheckedAttributes, SerialNumbers, ThisObject);
 	
 EndProcedure
 

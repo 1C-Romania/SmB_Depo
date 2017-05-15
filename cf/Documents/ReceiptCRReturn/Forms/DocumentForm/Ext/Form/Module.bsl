@@ -277,6 +277,11 @@ Procedure CalculateAmountInTabularSectionLine(TabularSectionRow = Undefined)
 		RecalculateDocumentAtClient();
 	EndIf;
 	// End AutomaticDiscounts
+	
+	// Serial numbers
+	If UseSerialNumbersBalance<>Undefined Then
+		WorkWithSerialNumbersClientServer.UpdateSerialNumbersQuantity(Object, TabularSectionRow);
+	EndIf;
 
 EndProcedure // CalculateAmountInTabularSectionLine()
 
@@ -375,8 +380,8 @@ Procedure SetModeReadOnly()
 	
 EndProcedure // SetModeOnlyViewing()
 
-////////////////////////////////////////////////////////////////////////////////
-// FORM EVENT HANDLERS
+////////////////////////////////////////////////////////////////////////////////FORM
+// EVENT HANDLERS
 
 // Procedure - event handler OnCreateAtServer of the form.
 //
@@ -475,6 +480,9 @@ Procedure OnCreateAtServer(Cancel, StandardProcessing)
 	
 	// AutomaticDiscounts.
 	AutomaticDiscountsOnCreateAtServer();
+	
+	// Serial numbers
+	UseSerialNumbersBalance = WorkWithSerialNumbers.UseSerialNumbersBalance();
 
 EndProcedure // OnCreateAtServer()
 
@@ -551,6 +559,17 @@ Procedure NotificationProcessing(EventName, Parameter, Source)
 		For Each CurRow IN Object.Inventory Do
 			CurRow.DiscountAmount = CurRow.Price * CurRow.Quantity - CurRow.Amount;
 		EndDo;
+	ElsIf EventName = "SerialNumbersSelection"
+		AND ValueIsFilled(Parameter) 
+		//Form owner checkup
+		AND Source <> New UUID("00000000-0000-0000-0000-000000000000")
+		AND Source = UUID
+		Then
+		
+		ChangedCount = GetSerialNumbersFromStorage(Parameter.AddressInTemporaryStorage, Parameter.RowKey);
+		If ChangedCount Then
+			CalculateAmountInTabularSectionLine();
+		EndIf; 
 	EndIf;
 	
 EndProcedure
@@ -1349,8 +1368,7 @@ Procedure StructuralUnitOnChange(Item)
 	
 EndProcedure // StructuralUnitOnChange()
 
-////////////////////////////////////////////////////////////////////////////////
-// PROCEDURE - EVENT HANDLERS OF THE INVENTORY TABULAR SECTION ATTRIBUTES
+////////////////////////////////////////////////////////////////////////////////PROCEDURE - EVENT HANDLERS OF THE INVENTORY TABULAR SECTION ATTRIBUTES
 
 // Procedure - event handler OnChange of the ProductsAndServices input field.
 //
@@ -1391,6 +1409,9 @@ Procedure InventoryProductsAndServicesOnChange(Item)
 	TabularSectionRow.VATRate = StructureData.VATRate;
 	
 	CalculateAmountInTabularSectionLine();
+	
+	//Serial numbers
+	WorkWithSerialNumbersClientServer.DeleteSerialNumbersByConnectionKey(Object.SerialNumbers, TabularSectionRow, ,UseSerialNumbersBalance);
 	
 EndProcedure // InventoryProductsAndServicesOnChange()
 
@@ -1875,7 +1896,7 @@ Procedure OpenInformationAboutDiscountsClient()
 	ParameterStructure.Insert("Workplace", Workplace);
 	
 	If Not Object.DiscountsAreCalculated Then
-		QuestionText = NStr("en='Discounts (markups) are not calculated, calculate?';ru='Скидки (наценки) не рассчитаны, рассчитать?'");
+		QuestionText = NStr("ru = 'Скидки (наценки) не рассчитаны, рассчитать?'; en = 'Discounts (markups) are not calculated, calculate?'");
 		
 		AdditionalParameters = New Structure; 
 		AdditionalParameters.Insert("ParameterStructure", ParameterStructure);
@@ -2013,6 +2034,43 @@ Procedure AfterWriteAtServer(CurrentObject, WriteParameters)
 		RefreshImageAutoDiscountsAfterWrite = False;
 	EndIf;
 	// End AutomaticDiscounts
+	
+EndProcedure
+
+#EndRegion
+
+#Region ServiceProceduresAndFunctions
+
+&AtServer
+Function SerialNumberPickParameters(CurrentDataIdentifier)
+	
+	Return WorkWithSerialNumbers.SerialNumberPickParameters(Object, ThisObject.UUID, CurrentDataIdentifier, False);
+	
+EndFunction
+
+&AtServer
+Function GetSerialNumbersFromStorage(AddressInTemporaryStorage, RowKey)
+	
+	Return WorkWithSerialNumbers.GetSerialNumbersFromStorage(Object, AddressInTemporaryStorage, RowKey);
+	
+EndFunction
+
+&AtClient
+Procedure InventoryBeforeDeleteRow(Item, Cancel)
+	
+	// Serial numbers
+	CurrentData = Items.Inventory.CurrentData;
+	WorkWithSerialNumbersClientServer.DeleteSerialNumbersByConnectionKey(Object.SerialNumbers, CurrentData, , UseSerialNumbersBalance);
+	
+EndProcedure
+
+&AtClient
+Procedure InventorySerialNumbersStartChoice(Item, ChoiceData, StandardProcessing)
+	
+	StandardProcessing = False;
+	CurrentDataIdentifier = Items.Inventory.CurrentData.GetID();
+	ParametersOfSerialNumbers = SerialNumberPickParameters(CurrentDataIdentifier);
+	OpenForm("DataProcessor.SerialNumbersSelection.Form", ParametersOfSerialNumbers, ThisObject);
 	
 EndProcedure
 

@@ -484,6 +484,10 @@
 								<ContextMenu name="InventorySearchManagementContextMenu" id="121"/>
 								<ExtendedTooltip name="InventorySearchControlExtendedTooltip" id="122"/>
 							</SearchControlAddition>
+							<Events>
+								<Event name="BeforeDeleteRow">InventoryBeforeDeleteRow</Event>
+								<Event name="OnStartEdit">InventoryOnStartEdit</Event>
+							</Events>
 							<ChildItems>
 								<InputField name="InventoryLineNumber" id="21">
 									<DataPath>Object.Inventory.LineNumber</DataPath>
@@ -525,6 +529,17 @@
 									<Wrap>false</Wrap>
 									<ContextMenu name="InventoryBatchContextMenu" id="28"/>
 									<ExtendedTooltip name="InventoryBatchExtendedTooltip" id="99"/>
+								</InputField>
+								<InputField name="InventorySerialNumbers" id="152">
+									<DataPath>Object.Inventory.SerialNumbers</DataPath>
+									<EditMode>EnterOnInput</EditMode>
+									<Width>20</Width>
+									<ChoiceButton>true</ChoiceButton>
+									<ContextMenu name="InventorySerialNumbersContextMenu" id="153"/>
+									<ExtendedTooltip name="InventorySerialNumbersExtendedTooltip" id="154"/>
+									<Events>
+										<Event name="StartChoice">InventorySerialNumbersStartChoice</Event>
+									</Events>
 								</InputField>
 								<InputField name="InventoryQuantity" id="29">
 									<DataPath>Object.Inventory.Quantity</DataPath>
@@ -735,6 +750,9 @@
 			<UseAlways>
 				<Field>Object.RegisterRecords</Field>
 			</UseAlways>
+			<Columns>
+				<AdditionalColumns table="Object.Inventory"/>
+			</Columns>
 		</Attribute>
 		<Attribute name="DocumentDate" id="3">
 			<Title>
@@ -869,6 +887,15 @@
 					<v8:AllowedLength>Variable</v8:AllowedLength>
 				</v8:StringQualifiers>
 			</Type>
+		</Attribute>
+		<Attribute name="UseSerialNumbersBalance" id="11">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Use serial numbers balance</v8:content>
+				</v8:item>
+			</Title>
+			<Type/>
 		</Attribute>
 	</Attributes>
 	<Commands>

@@ -784,9 +784,8 @@ EndProcedure // FillByCustomerOrder()
 // Procedure for filling the document on the basis of inventory assembly.
 //
 // Parameters:
-// BasisDocument - DocumentRef.SupplierInvoice - supplier invoice 
-// FillingData - Structure - Document filling data
-//	
+// BasisDocument - DocumentRef.SupplierInvoice - supplier invoice FillingData - Structure - Document filling
+//	data
 Procedure FillByInventoryAssembly(FillingData)
 	
 	// Header filling.
@@ -815,6 +814,8 @@ Procedure FillByInventoryAssembly(FillingData)
 	|		ProductsAndServices AS ProductsAndServices,
 	|		Characteristic AS Characteristic,
 	|		Batch AS Batch,
+	|		SerialNumbers AS SerialNumbers,
+	|		ConnectionKey AS ConnectionKey,
 	|		CASE
 	|			WHEN Production.Products.ProductsAndServices.VATRate = VALUE(Catalog.VATRates.EmptyRef)
 	|				THEN Production.Products.Ref.Company.DefaultVATRate
@@ -828,6 +829,8 @@ Procedure FillByInventoryAssembly(FillingData)
 	|		ProductsAndServices AS ProductsAndServices,
 	|		Characteristic AS Characteristic,
 	|		Batch AS Batch,
+	|		SerialNumbers AS SerialNumbers,
+	|		ConnectionKey AS ConnectionKey,
 	|		CASE
 	|			WHEN Production.Inventory.ProductsAndServices.VATRate = VALUE(Catalog.VATRates.EmptyRef)
 	|				THEN Production.Inventory.Ref.Company.DefaultVATRate
@@ -870,6 +873,9 @@ Procedure FillByInventoryAssembly(FillingData)
 			NewRow = Disposals.Add();
 			FillPropertyValues(NewRow, SelectionDisposals);
 		EndDo;
+		
+		WorkWithSerialNumbers.FillTSSerialNumbersByConnectionKey(ThisObject, FillingData, TSProducts);
+		
 	EndIf;
 	
 	// Filling out reserves.
@@ -881,8 +887,8 @@ Procedure FillByInventoryAssembly(FillingData)
 	
 EndProcedure // FillByInventoryAssembly()
 
-////////////////////////////////////////////////////////////////////////////////
-// EVENT HANDLERS
+////////////////////////////////////////////////////////////////////////////////EVENT
+// HANDLERS
 
 // Procedure - event handler FillCheckProcessing object.
 //
@@ -897,7 +903,7 @@ Procedure FillCheckProcessing(Cancel, CheckedAttributes)
 			
 			If StringProducts.Reserve > StringProducts.Quantity Then
 				
-				MessageText = NStr("en='In the row No.%Number% of the ""Products"" tabular section, the quantity of the items shipped from the reserve exceeds the total quantity of inventory.';ru='В строке №%Номер% табл. части ""Продукция"" количество отгружаемых позиций из резерва превышает общее количество запасов.'");
+				MessageText = NStr("ru = 'В строке №%Номер% табл. части ""Продукция"" количество отгружаемых позиций из резерва превышает общее количество запасов.'; en = 'In the row No.%Number% of the ""Products"" tabular section, the quantity of the items shipped from the reserve exceeds the total quantity of inventory.'");
 				MessageText = StrReplace(MessageText, "%Number%", StringProducts.LineNumber);
 				SmallBusinessServer.ShowMessageAboutError(
 					ThisObject,
@@ -926,7 +932,7 @@ Procedure FillCheckProcessing(Cancel, CheckedAttributes)
 			CurAmountDiscounts = ManualDiscountCurAmount + AutomaticDiscountCurAmount;
 			If StringProducts.DiscountMarkupPercent <> 100 AND CurAmountDiscounts < CurAmount
 				AND Not ValueIsFilled(StringProducts.Amount) Then
-				MessageText = NStr("en='Column ""Amount"" in the row %Number% of the ""Products"" list is not filled.';ru='Не заполнена колонка ""Сумма"" в строке %Номер% списка ""Продукция"".'");
+				MessageText = NStr("ru = 'Не заполнена колонка ""Сумма"" в строке %Номер% списка ""Продукция"".'; en = 'Column ""Amount"" in the row %Number% of the ""Products"" list is not filled.'");
 				MessageText = StrReplace(MessageText, "%Number%", StringProducts.LineNumber);
 				SmallBusinessServer.ShowMessageAboutError(
 					ThisObject,
@@ -944,6 +950,9 @@ Procedure FillCheckProcessing(Cancel, CheckedAttributes)
 		SmallBusinessServer.DeleteAttributeBeingChecked(CheckedAttributes, "Contract");
 	EndIf;
 	
+	// Serial numbers
+	WorkWithSerialNumbers.FillCheckingSerialNumbers(Cancel, Products, SerialNumbers, StructuralUnit, ThisObject);
+	
 EndProcedure // FillCheckProcessing()
 
 // Procedure - event handler FillingProcessor object.
@@ -956,7 +965,7 @@ Procedure Filling(FillingData, StandardProcessing)
 	
 	If TypeOf(FillingData) = Type("DocumentRef.CustomerOrder") Then
 		If FillingData.OperationKind = Enums.OperationKindsCustomerOrder.JobOrder Then
-			Raise NStr("en='Unable to keep Report on processing according to the job order!';ru='Нельзя ввести Отчет о переработке на основании заказ-наряда!'");;
+			Raise NStr("ru = 'Нельзя ввести Отчет о переработке на основании заказ-наряда!'; en = 'Unable to keep Report on processing according to the job order!'");;
 		EndIf;
 		FillByCustomerOrder(FillingData);
 	ElsIf TypeOf(FillingData) = Type("DocumentRef.InventoryAssembly") Then
@@ -1009,6 +1018,10 @@ Procedure Posting(Cancel, PostingMode)
 	SmallBusinessServer.ReflectIncomeAndExpensesCashMethod(AdditionalProperties, RegisterRecords, Cancel);
 	SmallBusinessServer.ReflectIncomeAndExpensesUndistributed(AdditionalProperties, RegisterRecords, Cancel);
 	SmallBusinessServer.ReflectIncomeAndExpensesRetained(AdditionalProperties, RegisterRecords, Cancel);
+	
+	// SerialNumbers
+	SmallBusinessServer.ReflectTheSerialNumbersOfTheGuarantee(AdditionalProperties, RegisterRecords, Cancel);
+	SmallBusinessServer.ReflectTheSerialNumbersBalance(AdditionalProperties, RegisterRecords, Cancel);
 	
 	// AutomaticDiscounts
 	SmallBusinessServer.FlipAutomaticDiscountsApplied(AdditionalProperties, RegisterRecords, Cancel);

@@ -384,8 +384,8 @@ EndProcedure // CalculateAmountInTabularSectionLine()
 // Calculates the brokerage in the row of the document tabular section
 //
 // Parameters:
-//  TabularSectionRow - String of the document tabular section,
-//
+//  TabularSectionRow - String of the document
+//tabular section,
 Procedure CalculateCommissionRemuneration(TabularSectionRow)
 
 	If Object.BrokerageCalculationMethod = PredefinedValue("Enum.CommissionFeeCalculationMethods.IsNotCalculating") Then
@@ -409,6 +409,11 @@ Procedure CalculateCommissionRemuneration(TabularSectionRow)
 	TabularSectionRow.BrokerageVATAmount = ?(Object.AmountIncludesVAT, 
 													TabularSectionRow.BrokerageAmount - (TabularSectionRow.BrokerageAmount) / ((VATRate + 100) / 100),
 													TabularSectionRow.BrokerageAmount * VATRate / 100);
+
+	// Serial numbers
+	If UseSerialNumbersBalance <> Undefined Then
+		WorkWithSerialNumbersClientServer.UpdateSerialNumbersQuantity(Object, TabularSectionRow);
+	EndIf;
 
 EndProcedure // CalculateBrokerage()
 
@@ -753,11 +758,15 @@ Function FillByBarcodesData(BarcodesData)
 				CalculateCommissionRemuneration(NewRow);
 				Items.Inventory.CurrentRow = NewRow.GetID();
 			Else
-				FoundString = TSRowsArray[0];
-				FoundString.Quantity = FoundString.Quantity + CurBarcode.Quantity;
-				CalculateAmountInTabularSectionLine(FoundString);
-				CalculateCommissionRemuneration(FoundString);
-				Items.Inventory.CurrentRow = FoundString.GetID();
+				NewRow = TSRowsArray[0];
+				NewRow.Quantity = NewRow.Quantity + CurBarcode.Quantity;
+				CalculateAmountInTabularSectionLine(NewRow);
+				CalculateCommissionRemuneration(NewRow);
+				Items.Inventory.CurrentRow = NewRow.GetID();
+			EndIf;
+			
+			If BarcodeData.Property("SerialNumber") AND ValueIsFilled(BarcodeData.SerialNumber) Then
+				WorkWithSerialNumbersClientServer.AddSerialNumberToString(NewRow, BarcodeData.SerialNumber, Object);
 			EndIf;
 		EndIf;
 	EndDo;
@@ -1895,8 +1904,7 @@ Procedure ContractStartChoice(Item, ChoiceData, StandardProcessing)
 	
 EndProcedure
 
-////////////////////////////////////////////////////////////////////////////////
-// PROCEDURE - TABULAR SECTION ATTRIBUTE EVENT HANDLERS
+////////////////////////////////////////////////////////////////////////////////PROCEDURE - TABULAR SECTION ATTRIBUTE EVENT HANDLERS
 
 &AtClient
 // Procedure - event handler OnChange of the ProductsAndServices input field.
@@ -1947,6 +1955,9 @@ Procedure InventoryProductsAndServicesOnChange(Item)
 	
 	CalculateAmountInTabularSectionLine();
 	CalculateCommissionRemuneration(TabularSectionRow);
+	
+	//Serial numbers
+	WorkWithSerialNumbersClientServer.DeleteSerialNumbersByConnectionKey(Object.SerialNumbers, TabularSectionRow, , UseSerialNumbersBalance);
 	
 EndProcedure // InventoryProductsAndServicesOnChange()
 
@@ -2181,6 +2192,37 @@ Procedure InventoryBrokerageAmountOnChange(Item)
 													TabularSectionRow.BrokerageAmount * VATRate / 100);
 	
 EndProcedure // InventoryBrokerageAmountOnChange(Item)
+
+&AtClient
+Procedure InventorySerialNumbersStartChoice(Item, ChoiceData, StandardProcessing)
+	
+	StandardProcessing = False;
+	OpenSerialNumbersSelection();
+
+EndProcedure
+
+&AtClient
+Procedure InventoryBeforeDeleteRow(Item, Cancel)
+	
+	// Serial numbers
+	CurrentData = Items.Inventory.CurrentData;
+	WorkWithSerialNumbersClientServer.DeleteSerialNumbersByConnectionKey(Object.SerialNumbers, CurrentData, , UseSerialNumbersBalance);
+	
+EndProcedure
+
+&AtClient
+Procedure InventoryOnStartEdit(Item, NewRow, Clone)
+	
+	If NewRow AND Clone Then
+		Item.CurrentData.ConnectionKey = 0;
+		Item.CurrentData.SerialNumbers = "";
+	EndIf;	
+	
+	If Item.CurrentItem.Name = "InventorySerialNumbers" Then
+		OpenSerialNumbersSelection();
+	EndIf;
+	
+EndProcedure
 
 &AtClient
 Procedure PrepaymentAccountsAmountOnChange(Item)
@@ -2482,3 +2524,23 @@ EndProcedure
 
 #EndRegion
 
+#Region ServiceProceduresAndFunctions
+
+&AtClient
+Procedure OpenSerialNumbersSelection()
+		
+	CurrentDataIdentifier = Items.Inventory.CurrentData.GetID();
+	ParametersOfSerialNumbers = SerialNumberPickParameters(CurrentDataIdentifier);
+	
+	OpenForm("DataProcessor.SerialNumbersSelection.Form", ParametersOfSerialNumbers, ThisObject);
+
+EndProcedure
+
+&AtServer
+Function SerialNumberPickParameters(CurrentDataIdentifier)
+	
+	Return WorkWithSerialNumbers.SerialNumberPickParameters(Object, ThisObject.UUID, CurrentDataIdentifier, False);
+	
+EndFunction
+
+#EndRegion

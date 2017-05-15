@@ -2087,8 +2087,8 @@ Procedure DataInitializationAccountsPayable(DocumentRefSubcontractorReport, Stru
 	
 EndProcedure // InitializeDataAccountsPayable()
 
-////////////////////////////////////////////////////////////////////////////////
-// DATA INITIALIZATION
+////////////////////////////////////////////////////////////////////////////////DATA
+// INITIALIZATION
 
 // Initializes the tables of values that contain the data of the document table sections.
 // Saves the tables of values in the properties of the structure "AdditionalProperties".
@@ -2315,7 +2315,29 @@ Procedure InitializeDocumentData(DocumentRefSubcontractorReport, StructureAdditi
 	|	TableProductRelease.Characteristic,
 	|	TableProductRelease.Batch,
 	|	TableProductRelease.CustomerOrder,
-	|	TableProductRelease.Specification";
+	|	TableProductRelease.Specification
+	|;
+	|
+	|////////////////////////////////////////////////////////////////////////////////
+	|SELECT
+	|	SubcontractorReportSerialNumbers.Ref.Date AS Period,
+	|	VALUE(AccumulationRecordType.Receipt) AS RecordType,
+	|	SubcontractorReportSerialNumbers.Ref.Date AS EventDate,
+	|	VALUE(Enum.SerialNumbersOperations.Receipt) AS Operation,
+	|	&Company AS Company,
+	|	SubcontractorReportSerialNumbers.SerialNumber AS SerialNumber,
+	|	SubcontractorReportSerialNumbers.Ref.ProductsAndServices AS ProductsAndServices,
+	|	SubcontractorReportSerialNumbers.Ref.Characteristic AS Characteristic,
+	|	SubcontractorReportSerialNumbers.Ref.Batch AS Batch,
+	|	SubcontractorReportSerialNumbers.Ref.StructuralUnit AS StructuralUnit,
+	|	SubcontractorReportSerialNumbers.Ref.Cell AS Cell,
+	|	1 AS Quantity
+	|FROM
+	|	Document.SubcontractorReport.SerialNumbers AS SubcontractorReportSerialNumbers
+	|WHERE
+	|	SubcontractorReportSerialNumbers.Ref = &Ref 
+	|	AND &UseSerialNumbers
+	|	AND NOT SubcontractorReportSerialNumbers.Ref.StructuralUnit.OrderWarehouse";
 	
 	Query.SetParameter("Ref", DocumentRefSubcontractorReport);
 	Query.SetParameter("Company", StructureAdditionalProperties.ForPosting.Company);
@@ -2323,10 +2345,12 @@ Procedure InitializeDocumentData(DocumentRefSubcontractorReport, StructureAdditi
 	Query.SetParameter("UseBatches",  StructureAdditionalProperties.AccountingPolicy.UseBatches);
 	Query.SetParameter("AccountingByCells",  StructureAdditionalProperties.AccountingPolicy.AccountingByCells);
 	
+	Query.SetParameter("UseSerialNumbers", StructureAdditionalProperties.AccountingPolicy.UseSerialNumbers);
+	
 	// Temporarily: change motions by the order warehouse.
 	Query.SetParameter("UpdateDateToRelease_1_2_1", Constants.UpdateDateToRelease_1_2_1.Get());
 		
-	Query.SetParameter("InventoryAssembly", NStr("en='Production';ru='Производство'"));
+	Query.SetParameter("InventoryAssembly", NStr("ru = 'Производство'; en = 'Production'"));
 
 	ResultsArray = Query.ExecuteBatch();
 	
@@ -2336,6 +2360,15 @@ Procedure InitializeDocumentData(DocumentRefSubcontractorReport, StructureAdditi
 	StructureAdditionalProperties.TableForRegisterRecords.Insert("TableInventoryInWarehouses", ResultsArray[2].Unload());
 	StructureAdditionalProperties.TableForRegisterRecords.Insert("TablePurchaseOrders", ResultsArray[3].Unload());
 	StructureAdditionalProperties.TableForRegisterRecords.Insert("TableProductRelease", ResultsArray[4].Unload());
+	
+	// Serial numbers
+	ResultOfAQuery5 = ResultsArray[5].Unload();
+	StructureAdditionalProperties.TableForRegisterRecords.Insert("TableSerialNumbersGuarantees", ResultOfAQuery5);
+	If StructureAdditionalProperties.AccountingPolicy.SerialNumbersBalance Then
+		StructureAdditionalProperties.TableForRegisterRecords.Insert("TableSerialNumbersBalance", ResultOfAQuery5);
+	Else
+		StructureAdditionalProperties.TableForRegisterRecords.Insert("TableSerialNumbersBalance", New ValueTable);
+	EndIf;
 	
 	// Creation of document postings.
 	SmallBusinessServer.GenerateTransactionsTable(DocumentRefSubcontractorReport, StructureAdditionalProperties);
@@ -2368,8 +2401,8 @@ Procedure InitializeDocumentData(DocumentRefSubcontractorReport, StructureAdditi
 	GenerateTableInventoryForWarehouses(DocumentRefSubcontractorReport, StructureAdditionalProperties);
 	
 	// Accounts payable.
-	//( elmi #11
-	//DataInitializationAccountsPayable(DocumentRefSubcontractorReport, StructureAdditionalProperties);    
+	//( elmi
+	//#11 DataInitializationAccountsPayable(DocumentRefSubcontractorReport, StructureAdditionalProperties);    
 	//) elmi
 	
 	GenerateTableManagerial(DocumentRefSubcontractorReport, StructureAdditionalProperties);

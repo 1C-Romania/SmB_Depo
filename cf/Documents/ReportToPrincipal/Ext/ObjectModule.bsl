@@ -392,9 +392,9 @@ EndProcedure // FillByHeaderAttributes()
 // Procedure of filling the document on the basis of the supplier invoice.
 //
 // Parameters:
-// BasisDocument - DocumentRef.SupplierInvoice - supplier invoice
-// FillingData - Structure - Document filling data
-//	
+// BasisDocument - DocumentRef.SupplierInvoice - supplier
+// invoice FillingData - Structure - Document filling
+//	data
 Procedure FillByPurchaseInvoice(FillingData)
 	
 	Query = New Query;
@@ -447,6 +447,8 @@ Procedure FillByPurchaseInvoice(FillingData)
 			NewRow = Inventory.Add();
 			FillPropertyValues(NewRow, QueryResultSelection);
 		EndDo;
+		
+		WorkWithSerialNumbers.FillTSSerialNumbersByConnectionKey(ThisObject, FillingData);
 		
 	EndIf;
 	
@@ -538,7 +540,7 @@ Procedure FillCheckProcessing(Cancel, CheckedAttributes)
 		If FoundStringInventory = Undefined
 		   AND QuantityInventory > 0
 		   AND Counterparty.DoOperationsByOrders Then
-			MessageText = NStr("en='Advance by order that is different form specified in the tabular section ""Inventory"" can not be accepted!';ru='Нельзя зачесть аванс по заказу отличному от указанных в табличной части ""Запасы""!'");
+			MessageText = NStr("ru = 'Нельзя зачесть аванс по заказу отличному от указанных в табличной части ""Запасы""!'; en = 'Advance by order that is different form specified in the tabular section ""Inventory"" can not be accepted!'");
 			SmallBusinessServer.ShowMessageAboutError(
 				,
 				MessageText,
@@ -553,6 +555,8 @@ Procedure FillCheckProcessing(Cancel, CheckedAttributes)
 	If Not Counterparty.DoOperationsByContracts Then
 		SmallBusinessServer.DeleteAttributeBeingChecked(CheckedAttributes, "Contract");
 	EndIf;
+	
+	// Serial numbers - control is not required
 	
 EndProcedure // FillCheckProcessing()
 
@@ -597,6 +601,9 @@ Procedure Posting(Cancel, PostingMode)
 	SmallBusinessServer.ReflectIncomeAndExpensesRetained(AdditionalProperties, RegisterRecords, Cancel);
 	
 	SmallBusinessServer.ReflectManagerial(AdditionalProperties, RegisterRecords, Cancel);
+	
+	// SerialNumbers
+	SmallBusinessServer.ReflectTheSerialNumbersOfTheGuarantee(AdditionalProperties, RegisterRecords, Cancel);
 	
 	// Record of the records sets.
 	SmallBusinessServer.WriteRecordSets(ThisObject);

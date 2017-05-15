@@ -771,7 +771,7 @@ Procedure FillCheckProcessing(Cancel, CheckedAttributes)
 		
 		If Not ValueIsFilled(CustomerOrder) Then
 			
-			MessageText = NStr("en='Customer order is not specified - reserve source!';ru='Не указан заказ покупателя- источник резерва!'");
+			MessageText = NStr("ru = 'Не указан заказ покупателя- источник резерва!'; en = 'Customer order is not specified - reserve source!'");
 			SmallBusinessServer.ShowMessageAboutError(ThisObject, MessageText,,,"CustomerOrder",Cancel);
 			
 		EndIf;
@@ -786,7 +786,7 @@ Procedure FillCheckProcessing(Cancel, CheckedAttributes)
 				
 				If StringInventory.Reserve > StringInventory.Quantity Then
 					
-					MessageText = NStr("en='In row No.%Number% of the ""Inventory"" tabular section, the number of items for write-off from reserve exceeds the total inventory quantity.';ru='В строке №%Номер% табл. части ""Запасы"" количество позиций к списанию из резерва превышает общее количество запасов.'");
+					MessageText = NStr("ru = 'В строке №%Номер% табл. части ""Запасы"" количество позиций к списанию из резерва превышает общее количество запасов.'; en = 'In row No.%Number% of the ""Inventory"" tabular section, the number of items for write-off from reserve exceeds the total inventory quantity.'");
 					MessageText = StrReplace(MessageText, "%Number%", StringInventory.LineNumber);
 					SmallBusinessServer.ShowMessageAboutError(
 						ThisObject,
@@ -807,7 +807,7 @@ Procedure FillCheckProcessing(Cancel, CheckedAttributes)
 				
 				If StringProducts.Reserve > StringProducts.Quantity Then
 					
-					MessageText = NStr("en='In row No.%Number% of the ""Products"" tabular section the number of items for write-off from reserve exceeds the total inventory quantity.';ru='В строке №%Номер% табл. части ""Продукция"" количество позиций к списанию из резерва превышает общее количество продукции.'");
+					MessageText = NStr("ru = 'В строке №%Номер% табл. части ""Продукция"" количество позиций к списанию из резерва превышает общее количество продукции.'; en = 'In row No.%Number% of the ""Products"" tabular section the number of items for write-off from reserve exceeds the total inventory quantity.'");
 					MessageText = StrReplace(MessageText, "%Number%", StringProducts.LineNumber);
 					SmallBusinessServer.ShowMessageAboutError(
 						ThisObject,
@@ -825,6 +825,10 @@ Procedure FillCheckProcessing(Cancel, CheckedAttributes)
 		EndIf;
 		
 	EndIf;
+	
+	// Serial numbers
+	WorkWithSerialNumbers.FillCheckingSerialNumbers(Cancel, Products, SerialNumbersProducts, StructuralUnit, ThisObject);
+	WorkWithSerialNumbers.FillCheckingSerialNumbers(Cancel, Inventory, SerialNumbers, StructuralUnit, ThisObject);
 	
 EndProcedure // FillCheckProcessing()
 
@@ -852,6 +856,10 @@ Procedure Posting(Cancel, PostingMode)
 	SmallBusinessServer.ReflectProductionOrders(AdditionalProperties, RegisterRecords, Cancel);
 	SmallBusinessServer.ReflectOrdersPlacement(AdditionalProperties, RegisterRecords, Cancel);
 	SmallBusinessServer.ReflectManagerial(AdditionalProperties, RegisterRecords, Cancel);
+	
+	// SerialNumbers
+	SmallBusinessServer.ReflectTheSerialNumbersOfTheGuarantee(AdditionalProperties, RegisterRecords, Cancel);
+	SmallBusinessServer.ReflectTheSerialNumbersBalance(AdditionalProperties, RegisterRecords, Cancel);
 	
 	// Writing of record sets
 	SmallBusinessServer.WriteRecordSets(ThisObject);

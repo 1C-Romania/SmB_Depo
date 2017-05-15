@@ -1458,7 +1458,31 @@ Procedure InitializeInventoryDocumentData(DocumentRefEnterOpeningBalance, Struct
 	|
 	|ORDER BY
 	|	Order,
-	|	LineNumber");
+	|	LineNumber
+	|;
+	|
+	|////////////////////////////////////////////////////////////////////////////////
+	|SELECT
+	|	TableInventory.Ref.Date AS Period,
+	|	TableInventory.Ref.Date AS EventDate,
+	|	VALUE(AccumulationRecordType.Receipt) AS RecordType,
+	|	VALUE(Enum.SerialNumbersOperations.Receipt) AS Operation,
+	|	TableSerialNumbers.SerialNumber AS SerialNumber,
+	|	&Company AS Company,
+	|	TableInventory.ProductsAndServices AS ProductsAndServices,
+	|	TableInventory.Characteristic AS Characteristic,
+	|	TableInventory.Batch AS Batch,
+	|	TableInventory.StructuralUnit AS StructuralUnit,
+	|	TableInventory.Cell AS Cell,
+	|	1 AS Quantity
+	|FROM
+	|	Document.EnterOpeningBalance.Inventory AS TableInventory
+	|		INNER JOIN Document.EnterOpeningBalance.SerialNumbers AS TableSerialNumbers
+	|		ON TableInventory.Ref = TableSerialNumbers.Ref
+	|		AND TableInventory.ConnectionKey = TableSerialNumbers.ConnectionKey
+	|WHERE
+	|	TableInventory.Ref = &Ref AND TableSerialNumbers.Ref = &Ref
+	|	AND &UseSerialNumbers");
 	
 	Query.SetParameter("Ref", DocumentRefEnterOpeningBalance);
 	Query.SetParameter("PointInTime", New Boundary(StructureAdditionalProperties.ForPosting.PointInTime, BoundaryType.Including));
@@ -1467,11 +1491,12 @@ Procedure InitializeInventoryDocumentData(DocumentRefEnterOpeningBalance, Struct
 	Query.SetParameter("UseBatches", StructureAdditionalProperties.AccountingPolicy.UseBatches);
 	Query.SetParameter("AccountingByCells", StructureAdditionalProperties.AccountingPolicy.AccountingByCells);
 	Query.SetParameter("UseReservation", Constants.FunctionalOptionInventoryReservation.Get());
-	Query.SetParameter("InventoryReceipt", NStr("en='Inventory receiving';ru='Прием запасов'"));
-	Query.SetParameter("ExpediturePosting", NStr("en='Expediture posting';ru='Оприходование затрат'"));
-	Query.SetParameter("InventoryAcceptedReceiving", NStr("en='Receipt of received inventory';ru='Оприходование запасов принятых'"));
-	Query.SetParameter("TransferredInventoryReceipt", NStr("en='Receipt of the inventories transferred';ru='Оприходование запасов переданных'"));
-	Query.SetParameter("InventoryReception", NStr("en='Inventory receiving';ru='Прием запасов'"));
+	Query.SetParameter("InventoryReceipt", NStr("ru = 'Прием запасов'; en = 'Inventory receiving'"));
+	Query.SetParameter("ExpediturePosting", NStr("ru = 'Оприходование затрат'; en = 'Expediture posting'"));
+	Query.SetParameter("InventoryAcceptedReceiving", NStr("ru = 'Оприходование запасов принятых'; en = 'Receipt of received inventory'"));
+	Query.SetParameter("TransferredInventoryReceipt", NStr("ru = 'Оприходование запасов переданных'; en = 'Receipt of the inventories transferred'"));
+	Query.SetParameter("InventoryReception", NStr("ru = 'Прием запасов'; en = 'Inventory receiving'"));
+	Query.SetParameter("UseSerialNumbers", StructureAdditionalProperties.AccountingPolicy.UseSerialNumbers);
 	
 	ResultsArray = Query.ExecuteBatch();
 	
@@ -1481,6 +1506,15 @@ Procedure InitializeInventoryDocumentData(DocumentRefEnterOpeningBalance, Struct
 	StructureAdditionalProperties.TableForRegisterRecords.Insert("TableInventoryReceived", ResultsArray[3].Unload());
 	StructureAdditionalProperties.TableForRegisterRecords.Insert("TableInventoryByCCD", ResultsArray[4].Unload());
 	StructureAdditionalProperties.TableForRegisterRecords.Insert("TableManagerial", ResultsArray[5].Unload());
+	
+	// Serial numbers
+	QueryResult = ResultsArray[6].Unload();
+	StructureAdditionalProperties.TableForRegisterRecords.Insert("TableSerialNumbersGuarantees", QueryResult);
+	If StructureAdditionalProperties.AccountingPolicy.SerialNumbersBalance Then
+		StructureAdditionalProperties.TableForRegisterRecords.Insert("TableSerialNumbersBalance", QueryResult);
+	Else
+		StructureAdditionalProperties.TableForRegisterRecords.Insert("TableSerialNumbersBalance", New ValueTable);
+	EndIf;
 
 EndProcedure // DocumentDataInitializationInventory()
 

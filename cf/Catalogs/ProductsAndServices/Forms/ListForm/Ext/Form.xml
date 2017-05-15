@@ -599,7 +599,10 @@
 		TextString
 	),
 	CatalogProductsAndServices.Predefined,
-	CatalogProductsAndServices.PredefinedDataName
+	CatalogProductsAndServices.PredefinedDataName,
+	CatalogProductsAndServices.UseSerialNumbers,
+	CatalogProductsAndServices.GuaranteePeriod,
+	CatalogProductsAndServices.WriteOutTheGuaranteeCard
 FROM
 		Catalog.ProductsAndServices AS CatalogProductsAndServices</QueryText>
 				<MainTable>Catalog.ProductsAndServices</MainTable>

@@ -1136,6 +1136,8 @@ Procedure InitializeDocumentData(DocumentRefReportToCommissioner, StructureAddit
 	Query.Text =
 	"SELECT
 	|	ReportToPrincipalInventory.LineNumber AS LineNumber,
+	|	ReportToPrincipalInventory.ConnectionKey AS ConnectionKey,
+	|	ReportToPrincipalInventory.Ref AS Ref,
 	|	ReportToPrincipalInventory.Ref AS Document,
 	|	ReportToPrincipalInventory.Ref.Date AS Period,
 	|	&Company AS Company,
@@ -1255,13 +1257,13 @@ Procedure InitializeDocumentData(DocumentRefReportToCommissioner, StructureAddit
 	//( elmi #11
 	|	CAST(CASE
 	|			WHEN ReportToPrincipalInventory.Ref.IncludeVATInPrice
-	|				ТОГДА 0
+	|				THEN 0
 	|			ELSE CASE
 	|					WHEN ReportToPrincipalInventory.Ref.DocumentCurrency = ConstantNationalCurrency.Value
 	|						THEN ReportToPrincipalInventory.ReceiptVATAmount * RegCurrencyRates.ExchangeRate * ReportToPrincipalInventory.Ref.Multiplicity / (ReportToPrincipalInventory.Ref.ExchangeRate * RegCurrencyRates.Multiplicity)
 	|					ELSE ReportToPrincipalInventory.ReceiptVATAmount
 	|				END
-	|		END AS NUMBER(15, 2)) КАК CostVATCur,
+	|		END AS NUMBER(15, 2)) AS CostVATCur,
 	|	CAST(CASE
 	|			WHEN ReportToPrincipalInventory.Ref.IncludeVATInPrice
 	|				THEN 0
@@ -1283,13 +1285,13 @@ Procedure InitializeDocumentData(DocumentRefReportToCommissioner, StructureAddit
 	|							THEN ReportToPrincipalInventory.BrokerageAmount * RegCurrencyRates.ExchangeRate * ReportToPrincipalInventory.Ref.Multiplicity / (ReportToPrincipalInventory.Ref.ExchangeRate * RegCurrencyRates.Multiplicity)
 	|						ELSE (ReportToPrincipalInventory.BrokerageAmount + ReportToPrincipalInventory.BrokerageVATAmount) * RegCurrencyRates.ExchangeRate * ReportToPrincipalInventory.Ref.Multiplicity / (ReportToPrincipalInventory.Ref.ExchangeRate * RegCurrencyRates.Multiplicity)
 	|					END 
-	|			ИНАЧЕ CASE
+	|			ELSE CASE
 	|					WHEN ReportToPrincipalInventory.Ref.AmountIncludesVAT
 	|						THEN ReportToPrincipalInventory.BrokerageAmount
 	|					ELSE ReportToPrincipalInventory.BrokerageAmount + ReportToPrincipalInventory.BrokerageVATAmount
 	|				END 
 	|		END AS NUMBER(15, 2)) AS BrokerageAmountCur,
-	|	ReportToPrincipalInventory.ReceiptVATAmount КАК ReceiptVATAmount,
+	|	ReportToPrincipalInventory.ReceiptVATAmount AS ReceiptVATAmount,
 	//) elmi
 	|	ReportToPrincipalInventory.CustomerOrder AS CustomerOrder,
 	|	ReportToPrincipalInventory.PurchaseOrder AS PurchaseOrder,
@@ -1413,13 +1415,27 @@ Procedure InitializeDocumentData(DocumentRefReportToCommissioner, StructureAddit
 	|	DocumentTable.Ref.Counterparty.DoOperationsByContracts,
 	|	DocumentTable.Ref.Counterparty.DoOperationsByDocuments,
 	|	DocumentTable.Ref.Counterparty.DoOperationsByOrders,
-	|	DocumentTable.Ref.Counterparty.TrackPaymentsByBills";
+	|	DocumentTable.Ref.Counterparty.TrackPaymentsByBills
+	|;
+	|
+	|////////////////////////////////////////////////////////////////////////////////
+	|SELECT
+	|	ReportToPrincipalSerialNumbers.ConnectionKey,
+	|	ReportToPrincipalSerialNumbers.SerialNumber
+	|INTO TemporaryTableSerialNumbers
+	|FROM
+	|	Document.ReportToPrincipal.SerialNumbers AS ReportToPrincipalSerialNumbers
+	|WHERE
+	|	ReportToPrincipalSerialNumbers.Ref = &Ref
+	|	AND &UseSerialNumbers";
 	
 	Query.SetParameter("Ref", DocumentRefReportToCommissioner);
 	Query.SetParameter("Company", StructureAdditionalProperties.ForPosting.Company);
 	Query.SetParameter("PointInTime", New Boundary(StructureAdditionalProperties.ForPosting.PointInTime, BoundaryType.Including));
 	Query.SetParameter("UseCharacteristics", StructureAdditionalProperties.AccountingPolicy.UseCharacteristics);
 	Query.SetParameter("UseBatches", StructureAdditionalProperties.AccountingPolicy.UseBatches);
+	
+	Query.SetParameter("UseSerialNumbers", StructureAdditionalProperties.AccountingPolicy.UseSerialNumbers);
 	
 	Query.ExecuteBatch();
 	
@@ -1434,9 +1450,45 @@ Procedure InitializeDocumentData(DocumentRefReportToCommissioner, StructureAddit
 	GenerateTableIncomeAndExpensesUndistributed(DocumentRefReportToCommissioner, StructureAdditionalProperties);
 	GenerateTableIncomeAndExpensesCashMethod(DocumentRefReportToCommissioner, StructureAdditionalProperties);
 	
+	// Serial numbers
+	GenerateTableSerialNumbers(DocumentRefReportToCommissioner, StructureAdditionalProperties);
+	
 	GenerateTableManagerial(DocumentRefReportToCommissioner, StructureAdditionalProperties);
 	
-EndProcedure // DocumentDataInitialization()
+EndProcedure
+
+// Generates a table of values that contains the data for the SerialNumbersGuarantees information register.
+// Tables of values saves into the properties of the structure "AdditionalProperties".
+//
+Procedure GenerateTableSerialNumbers(DocumentRef, StructureAdditionalProperties)
+	
+	If DocumentRef.SerialNumbers.Count()=0 Then
+		StructureAdditionalProperties.TableForRegisterRecords.Insert("TableSerialNumbersGuarantees", New ValueTable);
+		Return;
+	EndIf;
+	
+	Query = New Query;
+	Query.TempTablesManager = StructureAdditionalProperties.ForPosting.StructureTemporaryTables.TempTablesManager;
+	Query.Text =
+	"SELECT
+	|	TemporaryTableInventory.Period AS Period,
+	|	VALUE(AccumulationRecordType.Expense) AS RecordType,
+	|	TemporaryTableInventory.Period AS EventDate,
+	|	VALUE(Enum.SerialNumbersOperations.Expense) AS Operation,		
+	|	SerialNumbers.SerialNumber AS SerialNumber,
+	|	TemporaryTableInventory.ProductsAndServices AS ProductsAndServices,
+	|	TemporaryTableInventory.Characteristic AS Characteristic,
+	|	1 AS Quantity
+	|FROM
+	|	TemporaryTableInventory AS TemporaryTableInventory
+	|		INNER JOIN TemporaryTableSerialNumbers AS SerialNumbers
+	|		BY TemporaryTableInventory.ConnectionKey = SerialNumbers.ConnectionKey";
+	
+	QueryResult = Query.Execute();
+	
+	StructureAdditionalProperties.TableForRegisterRecords.Insert("TableSerialNumbersGuarantees", QueryResult.Unload());
+	
+EndProcedure
 
 // Controls the occurrence of negative balances.
 //

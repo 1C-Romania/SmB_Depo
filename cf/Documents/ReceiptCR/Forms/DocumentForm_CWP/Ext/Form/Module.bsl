@@ -667,7 +667,7 @@ Procedure IssueReceipt(GenerateSalesReceipt = False)
 	If Object.ReceiptCRNumber <> 0
 	AND Not CashCRUseWithoutEquipmentConnection Then
 		
-		MessageText = NStr("en='Check has already been issued on the fiscal record!';ru='Чек уже пробит на фискальном регистраторе!'");
+		MessageText = NStr("ru = 'Чек уже пробит на фискальном регистраторе!'; en = 'Check has already been issued on the fiscal record!'");
 		CommonUseClientServer.MessageToUser(MessageText);
 		Return;
 		
@@ -704,7 +704,7 @@ Procedure IssueReceipt(GenerateSalesReceipt = False)
 						
 						SectionNumber = 1;
 						
-						// Preparation of the product table 
+						// Preparation of the product table
 						ProductsTable = New Array();
 						
 						For Each TSRow IN Object.Inventory Do
@@ -735,7 +735,7 @@ Procedure IssueReceipt(GenerateSalesReceipt = False)
 							
 						EndDo;
 						
-						// Preparation of the payment table 
+						// Preparation of the payment table
 						PaymentsTable = New Array();
 						
 						// Cash
@@ -807,7 +807,7 @@ Procedure IssueReceipt(GenerateSalesReceipt = False)
 								//Write(New Structure("WriteMode", DocumentWriteMode.UndoPosting));
 								
 								FillInDetailsForTSInventoryAtClient();
-								ShowMessageBox(Undefined, NStr("en='Failed to post the document';ru='Не удалось выполнить проведение документа'")); // Asynchronous method!
+								ShowMessageBox(Undefined, NStr("ru = 'Не удалось выполнить проведение документа'; en = 'Failed to post the document'")); // Asynchronous method!
 								Return;
 							EndTry;
 							
@@ -829,13 +829,13 @@ Procedure IssueReceipt(GenerateSalesReceipt = False)
 							
 						Else
 							
-							MessageText = NStr("en='When printing a receipt, an error occurred.
-		|Receipt is not printed on the fiscal register.
-		|Additional
-		|description: %AdditionalDetails%';ru='При печати чека произошла ошибка.
+							MessageText = NStr("ru = 'При печати чека произошла ошибка.
 		|Чек не напечатан на фискальном регистраторе.
 		|Дополнительное
-		|описание: %ДополнительноеОписание%'"
+		|описание: %ДополнительноеОписание%'; en = 'When printing a receipt, an error occurred.
+		|Receipt is not printed on the fiscal register.
+		|Additional
+		|description: %AdditionalDetails%'"
 							);
 							MessageText = StrReplace(
 								MessageText,
@@ -851,13 +851,13 @@ Procedure IssueReceipt(GenerateSalesReceipt = False)
 						
 					Else
 						
-						MessageText = NStr("en='An error occurred when connecting the device.
-		|Receipt is not printed on the fiscal register.
-		|Additional
-		|description: %AdditionalDetails%';ru='При подключении устройства произошла ошибка.
+						MessageText = NStr("ru = 'При подключении устройства произошла ошибка.
 		|Чек не напечатан на фискальном регистраторе.
 		|Дополнительное
-		|описание: %ДополнительноеОписание%'"
+		|описание: %ДополнительноеОписание%'; en = 'An error occurred when connecting the device.
+		|Receipt is not printed on the fiscal register.
+		|Additional
+		|description: %AdditionalDetails%'"
 						);
 						MessageText = StrReplace(MessageText, "%AdditionalDetails%", ErrorDescription);
 						CommonUseClientServer.MessageToUser(MessageText);
@@ -866,14 +866,14 @@ Procedure IssueReceipt(GenerateSalesReceipt = False)
 					
 				Else
 					
-					MessageText = NStr("en='Fiscal registration has not been selected';ru='Не выбран фискальный регистратор'");
+					MessageText = NStr("ru = 'Не выбран фискальный регистратор'; en = 'Fiscal registration has not been selected'");
 					CommonUseClientServer.MessageToUser(MessageText);
 					
 				EndIf;
 				
 			Else
 				
-				MessageText = NStr("en='First, you need to select the workplace of the current session peripherals.';ru='Предварительно необходимо выбрать рабочее место внешнего оборудования текущего сеанса.'");
+				MessageText = NStr("ru = 'Предварительно необходимо выбрать рабочее место внешнего оборудования текущего сеанса.'; en = 'First, you need to select the workplace of the current session peripherals.'");
 				CommonUseClientServer.MessageToUser(MessageText);
 				
 			EndIf;
@@ -895,7 +895,7 @@ Procedure IssueReceipt(GenerateSalesReceipt = False)
 				ShowHideDealAtServer();
 			Except
 				FillInDetailsForTSInventoryAtClient();
-				ShowMessageBox(Undefined,NStr("en='Failed to post the document';ru='Не удалось выполнить проведение документа'")); // Asynchronous method!
+				ShowMessageBox(Undefined,NStr("ru = 'Не удалось выполнить проведение документа'; en = 'Failed to post the document'")); // Asynchronous method!
 				Return;
 			EndTry;
 			
@@ -921,7 +921,7 @@ Procedure IssueReceipt(GenerateSalesReceipt = False)
 		
 		FillInDetailsForTSInventoryAtClient();
 		If ShowMessageBox Then
-			ShowMessageBox(Undefined,NStr("en='Failed to post the document';ru='Не удалось выполнить проведение документа'"));
+			ShowMessageBox(Undefined,NStr("ru = 'Не удалось выполнить проведение документа'; en = 'Failed to post the document'"));
 		EndIf;
 		
 	EndIf;
@@ -2121,7 +2121,7 @@ Procedure OnCreateAtServer(Cancel, StandardProcessing)
 	CashCR = Parameters.CashCR;
 	If Not ValueIsFilled(CashCR) Then
 		Message = New UserMessage();
-		Message.Text = NStr("en='For user Cash Register is not defined!';ru='Для пользователя не определена Касса ККМ!'");
+		Message.Text = NStr("ru = 'Для пользователя не определена Касса ККМ!'; en = 'For user Cash Register is not defined!'");
 		Message.Message();
 		Cancel = True;
 		Return;
@@ -2301,7 +2301,10 @@ Procedure OnCreateAtServer(Cancel, StandardProcessing)
 	// StandardSubsystems.AdditionalReportsAndDataProcessors
 	AdditionalReportsAndDataProcessors.OnCreateAtServer(ThisForm);
 	// End StandardSubsystems.AdditionalReportsAndDataProcessors
-		
+	
+	// Serial numbers
+	UseSerialNumbersBalance = WorkWithSerialNumbers.UseSerialNumbersBalance();
+	
 EndProcedure // OnCreateAtServer()
 
 // Procedure - OnCreateAtServer event handler.
@@ -2527,6 +2530,17 @@ Procedure NotificationProcessing(EventName, Parameter, Source)
 		DocumentNumber = ObjectPrefixationClientServer.GetNumberForPrinting(Parameter.Number, True, True);
 		Items.DecorationReceiptCRForReturn.Title = "Receipt CR on return No"+DocumentNumber+" from "+Format(Parameter.Date, "DF=dd.MM.yyyy");
 		Items.CreateReceiptCRForReturn.TextColor = WebColors.Gray;
+	ElsIf EventName = "SerialNumbersSelection"
+		AND ValueIsFilled(Parameter) 
+		//Form owner checkup
+		AND Source <> New UUID("00000000-0000-0000-0000-000000000000")
+		AND Source = UUID
+		Then
+		
+		ChangedCount = GetSerialNumbersFromStorage(Parameter.AddressInTemporaryStorage, Parameter.RowKey);
+		If ChangedCount Then
+			CalculateAmountInTabularSectionLine();
+		EndIf;
 	EndIf;
 	
 	If EventName = "RefreshFormsAfterZReportIsDone" Then
@@ -3618,6 +3632,9 @@ Procedure InventoryProductsAndServicesOnChange(Item)
 	
 	CalculateAmountInTabularSectionLine();
 	
+	//Serial numbers
+	WorkWithSerialNumbersClientServer.DeleteSerialNumbersByConnectionKey(Object.SerialNumbers, TabularSectionRow,, UseSerialNumbersBalance);
+	
 EndProcedure
 
 // Procedure - event handler OnStartEdit of the Inventory form tabular section.
@@ -3850,6 +3867,24 @@ EndProcedure // InventoryVATAmountOnChange()
 Procedure InventoryOnChange(Item)
 	
 	ShowHideDealAtClient();
+	
+EndProcedure
+
+&AtClient
+Procedure InventoryBeforeDeleteRow(Item, Cancel)
+	
+	CurrentData = Items.Inventory.CurrentData;
+	// Serial numbers
+	WorkWithSerialNumbersClientServer.DeleteSerialNumbersByConnectionKey(
+		Object.SerialNumbers, CurrentData,, UseSerialNumbersBalance);
+	
+EndProcedure
+
+&AtClient
+Procedure InventorySerialNumbersStartChoice(Item, ChoiceData, StandardProcessing)
+	
+	StandardProcessing = False;
+	OpenSerialNumbersSelection();
 	
 EndProcedure
 
@@ -4874,11 +4909,16 @@ Function FillByBarcodesData(BarcodesData)
 				CalculateAmountInTabularSectionLine(NewRow);
 				Items.Inventory.CurrentRow = NewRow.GetID();
 			Else
-				FoundString = TSRowsArray[0];
-				FoundString.Quantity = FoundString.Quantity + CurBarcode.Quantity;
-				CalculateAmountInTabularSectionLine(FoundString);
-				Items.Inventory.CurrentRow = FoundString.GetID();
+				NewRow = TSRowsArray[0];
+				NewRow.Quantity = NewRow.Quantity + CurBarcode.Quantity;
+				CalculateAmountInTabularSectionLine(NewRow);
+				Items.Inventory.CurrentRow = NewRow.GetID();
 			EndIf;
+			
+			If BarcodeData.Property("SerialNumber") AND ValueIsFilled(BarcodeData.SerialNumber) Then
+				WorkWithSerialNumbersClientServer.AddSerialNumberToString(NewRow, BarcodeData.SerialNumber, Object);
+			EndIf;
+			
 		EndIf;
 	EndDo;
 	
@@ -5648,6 +5688,33 @@ Procedure FillInDetailsForTSInventoryAtClient()
 		SetDescriptionForStringTSInventoryAtClient(CurrentRow);
 	EndDo;
 	
+EndProcedure
+
+#EndRegion
+
+#Region WorkWithSerialNumbers
+
+Function SerialNumberPickParameters(CurrentDataIdentifier)
+	
+	Return WorkWithSerialNumbers.SerialNumberPickParameters(Object, ThisObject.UUID, CurrentDataIdentifier);
+	
+EndFunction
+
+Function GetSerialNumbersFromStorage(AddressInTemporaryStorage, RowKey)
+	
+	Modified = True;
+	Return WorkWithSerialNumbers.GetSerialNumbersFromStorage(Object, AddressInTemporaryStorage, RowKey);
+	
+EndFunction
+
+&AtClient
+Procedure OpenSerialNumbersSelection()
+	
+	CurrentDataIdentifier = Items.Inventory.CurrentData.GetID();
+	ParametersOfSerialNumbers = SerialNumberPickParameters(CurrentDataIdentifier);
+	
+	OpenForm("DataProcessor.SerialNumbersSelection.Form", ParametersOfSerialNumbers, ThisObject);
+
 EndProcedure
 
 #EndRegion

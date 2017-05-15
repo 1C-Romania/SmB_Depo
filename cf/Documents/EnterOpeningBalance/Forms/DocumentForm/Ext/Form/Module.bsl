@@ -503,14 +503,13 @@ Function GetChoiceFormParameters(Document, Company, Counterparty, Contract, Oper
 	
 EndFunction
 
-////////////////////////////////////////////////////////////////////////////////
-// PROCEDURE - FORM EVENT HANDLERS
+////////////////////////////////////////////////////////////////////////////////PROCEDURE - FORM EVENT HANDLERS
 
 // Procedure - event handler OnCreateAtServer of the form.
 // The procedure implements
 // - form attribute initialization,
-// - set parameters of the functional form options,
-//
+// - set parameters of the functional form
+//options,
 &AtServer
 Procedure OnCreateAtServer(Cancel, StandardProcessing)
 	
@@ -592,6 +591,9 @@ Procedure OnCreateAtServer(Cancel, StandardProcessing)
 	PrintManagement.OnCreateAtServer(ThisForm, Items.ImportantCommandsGroup);
 	// End StandardSubsystems.Printing
 	
+	// Serial numbers
+	UseSerialNumbersBalance = WorkWithSerialNumbers.UseSerialNumbersBalance();
+	
 EndProcedure // OnCreateAtServer()
 
 // Procedure - event handler OnOpen.
@@ -635,6 +637,15 @@ Procedure NotificationProcessing(EventName, Parameter, Source)
 				EndIf;
 			EndDo;
 		EndIf;
+	ElsIf EventName = "SerialNumbersSelection"
+		AND ValueIsFilled(Parameter) 
+		//Form owner checkup
+		AND Source <> New UUID("00000000-0000-0000-0000-000000000000")
+		AND Source = UUID
+		Then
+		
+		GetSerialNumbersFromStorage(Parameter.AddressInTemporaryStorage, Parameter.RowKey);
+		
 	EndIf;
 	
 EndProcedure // NotificationProcessing()
@@ -808,8 +819,7 @@ Procedure DirectCostOnStartEdit(Item, NewRow, Copy)
 	
 EndProcedure // DirectCostsOnStartEdit()
 
-////////////////////////////////////////////////////////////////////////////////
-// PROCEDURE - INVENTORY TS EVENT HANDLERS
+////////////////////////////////////////////////////////////////////////////////PROCEDURE - INVENTORY TS EVENT HANDLERS
 
 // Procedure - OnStartEdit event handler of the Inventory tabular section.
 //
@@ -826,10 +836,45 @@ Procedure InventoryOnStartEdit(Item, NewRow, Copy)
 		EndIf;
 	EndIf;
 	
+	If NewRow AND Copy Then
+		Item.CurrentData.ConnectionKey = 0;
+		Item.CurrentData.SerialNumbers = "";
+	EndIf;
+	
+	If Item.CurrentItem.Name = "SerialNumbersInventory" Then
+		OpenSerialNumbersSelection();
+	EndIf;
+	
 EndProcedure // InventoryOnStartEdit()
 
-////////////////////////////////////////////////////////////////////////////////
-// PROCEDURE - EVENT HANDLERS OF THE INVENTORY TABULAR SECTION ATTRIBUTES
+&AtClient
+Procedure InventorySerialNumbersStartChoice(Item, ChoiceData, StandardProcessing)
+	
+	StandardProcessing = False;
+	OpenSerialNumbersSelection();
+	
+EndProcedure
+
+&AtClient
+Procedure InventoryBeforeDeleteRow(Item, Cancel)
+	
+	// Serial numbers
+	CurrentData = Items.Inventory.CurrentData;
+	SmallBusinessClientServer.DeleteRowsByConnectionKey(Object.SerialNumbers, CurrentData);
+	
+EndProcedure
+
+&AtClient
+Procedure InventoryQuantityOnChange(Item)
+	
+	// Serial numbers
+	If UseSerialNumbersBalance<>Undefined Then
+		WorkWithSerialNumbersClientServer.UpdateSerialNumbersQuantity(Object, Items.Inventory.CurrentData);
+	EndIf;
+	
+EndProcedure
+
+////////////////////////////////////////////////////////////////////////////////PROCEDURE - EVENT HANDLERS OF THE INVENTORY TABULAR SECTION ATTRIBUTES
 
 // Procedure - event handler OnChange of the ProductsAndServices input field.
 //
@@ -845,6 +890,12 @@ Procedure InventoryProductsAndServicesOnChange(Item)
 	
 	TabularSectionRow.MeasurementUnit = StructureData.MeasurementUnit;
 	TabularSectionRow.Quantity = 1;
+	
+	//Serial numbers
+	If UseSerialNumbersBalance <> Undefined Then
+		WorkWithSerialNumbersClientServer.DeleteSerialNumbersByConnectionKey(Object.SerialNumbers, TabularSectionRow,,UseSerialNumbersBalance);
+	EndIf;
+	//Serial numbers
 	
 EndProcedure // InventoryProductsAndServicesOnChange()
 
@@ -2119,6 +2170,36 @@ EndProcedure
 Procedure Attachable_ExecutePrintCommand(Command)
 	PrintManagementClient.ExecuteConnectedPrintCommand(Command, ThisObject, Object);
 EndProcedure
+
 // End StandardSubsystems.Printing
+
+#EndRegion
+
+#Region ServiceProceduresAndFunctions
+
+&AtClient
+Procedure OpenSerialNumbersSelection()
+		
+	CurrentDataIdentifier = Items.Inventory.CurrentData.GetID();
+	ParametersOfSerialNumbers = SerialNumberPickParameters(CurrentDataIdentifier);
+	
+	OpenForm("DataProcessor.SerialNumbersSelection.Form", ParametersOfSerialNumbers, ThisObject);
+
+EndProcedure
+
+&AtServer
+Function GetSerialNumbersFromStorage(AddressInTemporaryStorage, RowKey)
+	
+	Modified = True;
+	Return WorkWithSerialNumbers.GetSerialNumbersFromStorage(Object, AddressInTemporaryStorage, RowKey);
+	
+EndFunction
+
+&AtServer
+Function SerialNumberPickParameters(CurrentDataIdentifier)
+	
+	Return WorkWithSerialNumbers.SerialNumberPickParameters(Object, ThisObject.UUID, CurrentDataIdentifier, False);
+	
+EndFunction
 
 #EndRegion

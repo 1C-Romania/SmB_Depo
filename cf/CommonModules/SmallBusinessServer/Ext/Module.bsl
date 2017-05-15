@@ -1911,8 +1911,8 @@ Procedure InitializeAdditionalPropertiesForPosting(DocumentRef, StructureAdditio
 	StructureAdditionalProperties.ForPosting.Insert("StructureTemporaryTables", New Structure("TempTablesManager", New TempTablesManager));
 	StructureAdditionalProperties.ForPosting.Insert("DocumentMetadata", DocumentRef.Metadata());
 	
-	// "AccountingPolicy" - structure that contains all values of the accounting policy parameters
-	// for the document time and by the organization selected in the document or by a company (if accounts are kept by a company).
+	// "AccountingPolicy" - structure that contains all values of the
+	// accounting policy parameters for the document time and by the organization selected in the document or by a company (if accounts are kept by a company).
 	StructureAdditionalProperties.Insert("AccountingPolicy", New Structure);
 	
 	// Query that receives document data.
@@ -1961,7 +1961,9 @@ Procedure InitializeAdditionalPropertiesForPosting(DocumentRef, StructureAdditio
 	|	Constants.FunctionalOptionAccountingCashMethodIncomeAndExpenses AS IncomeAndExpensesAccountingCashMethod,
 	|	Constants.FunctionalOptionUseBatches AS UseBatches,
 	|	Constants.FunctionalOptionUseCharacteristics AS UseCharacteristics,
-	|	Constants.FunctionalOptionUseTechOperations AS UseTechOperations
+	|	Constants.FunctionalOptionUseTechOperations AS UseTechOperations,
+	|	Constants.UseSerialNumbers AS UseSerialNumbers,
+	|	Constants.SerialNumbersBalanceControl AS SerialNumbersBalance
 	|FROM
 	|	Constants AS Constants");
 	
@@ -2106,14 +2108,13 @@ Procedure WriteRecordSets(ObjectStructure) Export
 			RecordSet.Write = False;
 			
 		Else
+			
+			RecordSetMetadata = RecordSet.Metadata();
+			If CommonUse.ThisIsAccumulationRegister(RecordSetMetadata)
+				And ThereAreProcedureCreateAnEmptyTemporaryTableUpdate(RecordSetMetadata.FullName()) Then
 				
-			If Metadata.AccumulationRegisters.Contains(RecordSet.Metadata()) Then
-				
-				Try
-					AccumulationRegisters[RecordSet.Metadata().Name].CreateEmptyTemporaryTableChange(ObjectStructure.AdditionalProperties);
-				Except
-				EndTry;
-				
+				ObjectManager = CommonUse.ObjectManagerByFullName(RecordSetMetadata.FullName());
+				ObjectManager.CreateEmptyTemporaryTableChange(ObjectStructure.AdditionalProperties);
 			EndIf;
 			
 		EndIf;
@@ -2121,6 +2122,69 @@ Procedure WriteRecordSets(ObjectStructure) Export
 	EndDo;
 	
 EndProcedure
+
+Function ThereAreProcedureCreateAnEmptyTemporaryTableUpdate(FullNameOfRegister)
+	
+	RegistersWithTheProcedure = New Array;
+	RegistersWithTheProcedure.Add(Metadata.AccumulationRegisters.FixedAssets.FullName());
+	RegistersWithTheProcedure.Add(Metadata.AccumulationRegisters.CashAssets.FullName());
+	RegistersWithTheProcedure.Add(Metadata.AccumulationRegisters.CashInCashRegisters.FullName());
+	RegistersWithTheProcedure.Add(Metadata.AccumulationRegisters.IncomeAndExpensesUndistributed.FullName());
+	RegistersWithTheProcedure.Add(Metadata.AccumulationRegisters.IncomeAndExpensesRetained.FullName());
+	RegistersWithTheProcedure.Add(Metadata.AccumulationRegisters.ProductionOrders.FullName());
+	RegistersWithTheProcedure.Add(Metadata.AccumulationRegisters.CustomerOrders.FullName());
+	RegistersWithTheProcedure.Add(Metadata.AccumulationRegisters.PurchaseOrders.FullName());
+	RegistersWithTheProcedure.Add(Metadata.AccumulationRegisters.Inventory.FullName());
+	RegistersWithTheProcedure.Add(Metadata.AccumulationRegisters.InventoryByCCD.FullName());
+	RegistersWithTheProcedure.Add(Metadata.AccumulationRegisters.InventoryForWarehouses.FullName());
+	RegistersWithTheProcedure.Add(Metadata.AccumulationRegisters.InventoryFromWarehouses.FullName());
+	RegistersWithTheProcedure.Add(Metadata.AccumulationRegisters.InventoryInWarehouses.FullName());
+	RegistersWithTheProcedure.Add(Metadata.AccumulationRegisters.InventoryTransferred.FullName());
+	RegistersWithTheProcedure.Add(Metadata.AccumulationRegisters.InventoryReceived.FullName());
+	RegistersWithTheProcedure.Add(Metadata.AccumulationRegisters.InventoryDemand.FullName());
+	RegistersWithTheProcedure.Add(Metadata.AccumulationRegisters.OrdersPlacement.FullName());
+	RegistersWithTheProcedure.Add(Metadata.AccumulationRegisters.TaxesSettlements.FullName());
+ 	RegistersWithTheProcedure.Add(Metadata.AccumulationRegisters.PayrollPayments.FullName());
+	RegistersWithTheProcedure.Add(Metadata.AccumulationRegisters.AdvanceHolderPayments.FullName());
+	RegistersWithTheProcedure.Add(Metadata.AccumulationRegisters.AccountsReceivable.FullName());
+	RegistersWithTheProcedure.Add(Metadata.AccumulationRegisters.AccountsPayable.FullName());
+	RegistersWithTheProcedure.Add(Metadata.AccumulationRegisters.RetailAmountAccounting.FullName());
+	RegistersWithTheProcedure.Add(Metadata.AccumulationRegisters.SerialNumbers.FullName());
+	
+	Return RegistersWithTheProcedure.Find(FullNameOfRegister) <> Undefined;
+	
+EndFunction
+
+// Checks whether it is possible to clear the UseSerialNumbers option.
+//
+Function CancelRemoveFunctionalOptionUseSerialNumbers() Export
+	
+	ErrorText = "";
+	AreRecords = False;
+	
+	Query = New Query;
+	Query.Text =
+	"SELECT TOP 1
+	|	SerialNumbers.SerialNumber
+	|FROM
+	|	AccumulationRegister.SerialNumbers AS SerialNumbers
+	|WHERE
+	|	SerialNumbers.SerialNumber <> VALUE(Catalog.SerialNumbers.EmptyRef)";
+	
+	QueryResult = Query.Execute();
+	If NOT QueryResult.IsEmpty() Then
+		AreRecords = True;
+	EndIf;
+	
+	If AreRecords Then
+		
+		ErrorText = NStr("ru = 'В базе есть остатки по серийным номерам! Снятие флага запрещено!'; en = 'In the base there are balance serial number! The flag removal is prohibited!'");
+		
+	EndIf;
+	
+	Return ErrorText;
+	
+EndFunction
 
 //////////////////////////////////////////////////////////////////////////////// 
 // REGISTERS MOVEMENTS GENERATING PROCEDURES
@@ -2993,6 +3057,40 @@ Procedure FlipAutomaticDiscountsApplied(AdditionalProperties, RegisterRecords, C
 	MovementsProvidedAutomaticDiscounts = RegisterRecords.AutomaticDiscountsApplied;
 	MovementsProvidedAutomaticDiscounts.Write = True;
 	MovementsProvidedAutomaticDiscounts.Load(TableAutomaticDiscountsApplied);
+	
+EndProcedure // ReflectSales()
+
+#EndRegion
+
+#Region WorkWithSerialNumbers
+
+Procedure ReflectTheSerialNumbersOfTheGuarantee(AdditionalProperties, RegisterRecords, Cancel) Export
+	
+	TableSerialNumbersGuarantees = AdditionalProperties.TableForRegisterRecords.TableSerialNumbersGuarantees;
+	
+	If Cancel
+	 OR TableSerialNumbersGuarantees.Count() = 0 Then
+		Return;
+	EndIf;
+	
+	RegisterRecordsSerialNumbersGuarantees = RegisterRecords.SerialNumbersGuarantees;
+	RegisterRecordsSerialNumbersGuarantees.Write = True;
+	RegisterRecordsSerialNumbersGuarantees.Load(TableSerialNumbersGuarantees);
+	
+EndProcedure
+
+Procedure ReflectTheSerialNumbersBalance(AdditionalProperties, RegisterRecords, Cancel) Export
+	
+	TableSerialNumbersBalance = AdditionalProperties.TableForRegisterRecords.TableSerialNumbersBalance;
+	
+	If Cancel
+	 OR TableSerialNumbersBalance.Count() = 0 Then
+		Return;
+	EndIf;
+	
+	RegisterRecordsSerialNumbersBalance = RegisterRecords.SerialNumbers;
+	RegisterRecordsSerialNumbersBalance.Write = True;
+	RegisterRecordsSerialNumbersBalance.Load(TableSerialNumbersBalance);
 	
 EndProcedure // ReflectSales()
 
@@ -5045,6 +5143,49 @@ Procedure ShowMessageAboutPostingToRetailAmountAccountingRegisterErrors(DocObjec
 	
 EndProcedure // ReportErrorsPostingByRegisterAmountAccountingInRetail()
 
+// Procedure reports errors by the register Serial numbers.
+//
+Procedure ShowMessageAboutPostingSerialNumbersRegisterErrors(DocObject, RecordsSelection, Cancel) Export
+	
+	ErrorTitle = NStr("ru = 'Ошибка:'; en = 'Error:'");
+	MessageTitleTemplate = ErrorTitle + Chars.LF + NStr("ru = 'Не хватает серийных номеров %StructuralUnitType% %StructuralUnitPresentation%'; en = 'Not enough serial numbers %StructuralUnitType% %StructuralUnitPresentation%'");
+	
+	MessagePattern = NStr("ru = 'Номенклатура: %ProductsAndServicesCharacteristicBatch%,
+		|серийный номер %SerialNumber%'; en = 'Product:
+		|%ProductsAndServicesCharacteristicBatch%, serial number %SerialNumber%'");
+		
+	TitleInDetailsShow = True;
+	AccountingBySeveralWarehouses = Constants.FunctionalOptionAccountingByMultipleWarehouses.Get();
+	AccountingBySeveralDivisions = Constants.FunctionalOptionAccountingByMultipleDepartments.Get();
+	While RecordsSelection.Next() Do
+		
+		If TitleInDetailsShow Then
+			If (NOT AccountingBySeveralWarehouses AND RecordsSelection.StructuralUnitType = Enums.StructuralUnitsTypes.Warehouse)
+				OR (NOT AccountingBySeveralDivisions AND RecordsSelection.StructuralUnitType = Enums.StructuralUnitsTypes.Department)Then
+				PresentationOfStructuralUnit = "";
+			Else
+				If WorkWithProductsClientServer.IsObjectAttribute("PresentationCell" , RecordsSelection) Then
+					PresentationOfStructuralUnit = PresentationOfStructuralUnit(RecordsSelection.StructuralUnitPresentation, RecordsSelection.PresentationCell);
+				Else
+					PresentationOfStructuralUnit = PresentationOfStructuralUnit(RecordsSelection.StructuralUnitPresentation);
+				EndIf; 
+				
+			EndIf;
+			MessageTitleText = StrReplace(MessageTitleTemplate, "%StructuralUnitPresentation%", PresentationOfStructuralUnit);
+			MessageTitleText = StrReplace(MessageTitleText, "%StructuralUnitType%", GetStructuralUnitTypePresentation(RecordsSelection.StructuralUnitType));
+			ShowMessageAboutError(DocObject, MessageTitleText, , , , Cancel);
+			TitleInDetailsShow = False;
+		EndIf;
+		
+		PresentationOfProductsAndServices = PresentationOfProductsAndServices(RecordsSelection.ProductsAndServicesPresentation, RecordsSelection.CharacteristicPresentation, RecordsSelection.BatchPresentation);
+		MessageText = StrReplace(MessagePattern, "%ProductsAndServicesCharacteristicBatch%", PresentationOfProductsAndServices);
+		MessageText = StrReplace(MessageText, "%SerialNumber%", String(RecordsSelection.SerialNumberPresentation));
+		ShowMessageAboutError(DocObject, MessageText, , , , Cancel);
+		
+	EndDo;
+	
+EndProcedure
+
 ////////////////////////////////////////////////////////////////////////////////
 // SSM SUBSYSTEMS PROCEDURES AND FUNCTIONS
 
@@ -5721,11 +5862,15 @@ EndProcedure // InitialsEmployeeName()
 
 // Function returns products and services presentation for printing.
 //
-Function GetProductsAndServicesPresentationForPrinting(ProductsAndServices, Characteristic = Undefined, SKU = "")  Export
+Function GetProductsAndServicesPresentationForPrinting(ProductsAndServices, Characteristic = Undefined, SKU = "", SerialNumbers = "")  Export
 
 	AddCharacteristics = "";
-	If Constants.FunctionalOptionUseCharacteristics.Get() AND ValueIsFilled(Characteristic) Then
-		AddCharacteristics = AddCharacteristics + " (" + TrimAll(Characteristic) + ")";
+	If Constants.FunctionalOptionUseCharacteristics.Get() AND ValueIsFilled(Characteristic) AND SerialNumbers<>"" Then
+		AddCharacteristics = AddCharacteristics + " (" + TrimAll(Characteristic) + " " + TrimAll(SerialNumbers) + ")";
+	ElsIf Constants.FunctionalOptionUseCharacteristics.Get() AND ValueIsFilled(Characteristic) Then
+		AddCharacteristics = AddCharacteristics + " (" + TrimAll(Characteristic) + ")";	
+	ElsIf SerialNumbers<>"" Then
+		AddCharacteristics = AddCharacteristics + " (" + TrimAll(SerialNumbers) + ")";	
 	EndIf; 
 	
 	ProductsAndServicesSKUInContent = Constants.ProductsAndServicesSKUInContent.Get();
@@ -5744,11 +5889,20 @@ Function GetProductsAndServicesPresentationForPrinting(ProductsAndServices, Char
 		
 	EndIf;
 	
- 	If AddCharacteristics <> "" OR ValueIsFilled(StringSKU) Then
-		Return TrimAll(ProductsAndServices) + AddCharacteristics + StringSKU;
+	TextInBrackets = "";
+	If AddCharacteristics <> "" AND SerialNumbers <> "" Then
+		TextInBrackets =  " (" + AddCharacteristics + " " + SerialNumbers + ")";
+	ElsIf AddCharacteristics <> "" Then
+		TextInBrackets =  " (" + AddCharacteristics + ")";
+	ElsIf SerialNumbers <> "" Then
+		TextInBrackets = " (" + SerialNumbers + ")";
+	EndIf;
+	
+	If TextInBrackets <> "" OR ValueIsFilled(StringSKU) Then
+		Return TrimAll(ProductsAndServices) + TextInBrackets + StringSKU;
 	Else
-    	Return TrimAll(ProductsAndServices);
-	EndIf;	 
+		Return TrimAll(ProductsAndServices);
+	EndIf;
 
 EndFunction // GetProductsAndServicesPresentationForPrinting()
 

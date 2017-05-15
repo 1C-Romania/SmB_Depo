@@ -1,5 +1,35 @@
 ﻿#If Server Or ThickClientOrdinaryApplication Or ExternalConnection Then
 
+#Region Interface
+
+// Handler filling based on document GoodsReceipt.
+//
+// Parameters:
+//  DocumentRefGoodsReceipt - DocumentRef.GoodsReceipt
+//
+Procedure FillInReceptionAndTransmissionRepair(DocumentRefReceptionAndTransmissionRepair) Export
+	
+	Company = DocumentRefReceptionAndTransmissionRepair.Company;
+	StructuralUnit = DocumentRefReceptionAndTransmissionRepair.StructuralUnit;
+	
+	NewRow = Inventory.Add();
+	FillPropertyValues(NewRow, DocumentRefReceptionAndTransmissionRepair);
+	NewRow.ConnectionKey = 1;
+	NewRow.Count = 1;
+	NewRow.MeasurementUnit = CommonUse.ObjectAttributeValue(NewRow.ProductsAndServices, "MeasurementUnit");
+	
+	If ValueIsFilled(DocumentRefReceptionAndTransmissionRepair.SerialNumber) Then
+		NewRowSN = SerialNumbers.Add();
+		NewRowSN.SerialNumber = DocumentRefReceptionAndTransmissionRepair.SerialNumber;
+		NewRowSN.ConnectionKey = NewRow.ConnectionKey;
+		
+		NewRow.SerialNumbers = WorkWithSerialNumbersClientServer.StringPresentationOfSerialNumbersOfLine(SerialNumbers, NewRowSN.ConnectionKey);
+	EndIf;
+	
+EndProcedure
+
+#EndRegion
+
 #Region ServiceProceduresAndFunctions
 
 // Procedure checks the existence of retail price.
@@ -49,7 +79,7 @@ Procedure CheckExistenceOfRetailPrice(Cancel)
 		
 		While SelectionOfQueryResult.Next() Do
 			
-			MessageText = NStr("en='For products and services %ProductsAndServicesPresentation% in string %LineNumber% of the ""Inventory"" list the retail price is not set!';ru='Для номенклатуры %ПредставлениеНоменклатуры% в строке %НомерСтроки% списка ""Запасы"" не установлена розничная цена!'");
+			MessageText = NStr("ru = 'Для номенклатуры %ПредставлениеНоменклатуры% в строке %НомерСтроки% списка ""Запасы"" не установлена розничная цена!'; en = 'For products and services %ProductsAndServicesPresentation% in string %LineNumber% of the ""Inventory"" list the retail price is not set!'");
 			MessageText = StrReplace(MessageText, "%LineNumber%", String(SelectionOfQueryResult.LineNumber));
 			MessageText = StrReplace(MessageText, "%ProductsAndServicesPresentation%",  SmallBusinessServer.PresentationOfProductsAndServices(SelectionOfQueryResult.ProductsAndServicesPresentation, SelectionOfQueryResult.CharacteristicPresentation, SelectionOfQueryResult.BatchPresentation));
 			SmallBusinessServer.ShowMessageAboutError(
@@ -87,7 +117,7 @@ Procedure Filling(FillingData, StandardProcessing) Export
 		// FO Use Production subsystem.
 		If Not Constants.FunctionalOptionUseSubsystemProduction.Get()
 			AND StructuralUnit.StructuralUnitType = Enums.StructuralUnitsTypes.Department Then
-			Raise NStr("en='You can not enter Inventory receipt basing on the inventory reconciliation, as the Production activity kind is not available!';ru='Нельзя ввести Оприходование запасов на основании инвентеризации запасов, т.к. недоступен вид деятельности Производство!'");
+			Raise NStr("ru = 'Нельзя ввести Оприходование запасов на основании инвентеризации запасов, т.к. недоступен вид деятельности Производство!'; en = 'You can not enter Inventory receipt basing on the inventory reconciliation, as the Production activity kind is not available!'");
 		EndIf;
 		
 		Query = New Query(
@@ -99,7 +129,7 @@ Procedure Filling(FillingData, StandardProcessing) Export
 		|	InventoryReconciliation.MeasurementUnit AS MeasurementUnit,
 		|	MAX(InventoryReconciliation.Quantity - InventoryReconciliation.QuantityAccounting) AS QuantityInventorytakingRejection,
 		|	SUM(CASE
-		|			WHEN InventoryReceipt.Quantity IS NULL 
+		|			WHEN InventoryReceipt.Quantity IS NULL
 		|				THEN 0
 		|			ELSE InventoryReceipt.Quantity
 		|		END) AS QuantityDebited,
@@ -166,7 +196,7 @@ Procedure Filling(FillingData, StandardProcessing) Export
 		
 		If Inventory.Count() = 0 Then
 			
-			Raise NStr("en='No data for posting registration!';ru='Нет данных для оформления оприходования!'");
+			Raise NStr("ru = 'Нет данных для оформления оприходования!'; en = 'No data for posting registration!'");
 			
 		EndIf;
 		
@@ -197,6 +227,11 @@ Procedure FillCheckProcessing(Cancel, CheckedAttributes)
 	
 	// Check existence of retail prices.
 	CheckExistenceOfRetailPrice(Cancel);
+	
+	// Serial numbers
+	If NOT CommonUse.ObjectAttributeValue(StructuralUnit, "OrderWarehouse") = True Then
+		WorkWithSerialNumbers.FillCheckingSerialNumbers(Cancel, Inventory, SerialNumbers, StructuralUnit, ThisObject);
+	EndIf;
 	
 EndProcedure
 
@@ -231,7 +266,11 @@ Procedure Posting(Cancel, PostingMode)
 	SmallBusinessServer.ReflectInventory(AdditionalProperties, RegisterRecords, Cancel);
 	SmallBusinessServer.ReflectIncomeAndExpenses(AdditionalProperties, RegisterRecords, Cancel);
 	SmallBusinessServer.ReflectManagerial(AdditionalProperties, RegisterRecords, Cancel);
-
+	
+	// SerialNumbers
+	SmallBusinessServer.ReflectTheSerialNumbersOfTheGuarantee(AdditionalProperties, RegisterRecords, Cancel);
+	SmallBusinessServer.ReflectTheSerialNumbersBalance(AdditionalProperties, RegisterRecords, Cancel);
+	
 	// Writing of record sets
 	SmallBusinessServer.WriteRecordSets(ThisObject);
 

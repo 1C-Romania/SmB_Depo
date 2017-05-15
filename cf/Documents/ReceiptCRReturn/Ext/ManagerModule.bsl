@@ -664,13 +664,27 @@ Procedure InitializeDocumentData(DocumentRefReceiptCRReturn, StructureAdditional
 	|	Constant.NationalCurrency AS ConstantNationalCurrency
 	|WHERE
 	|	CRReceiptReturnDiscountsMarkups.Ref = &Ref
-	|	AND CRReceiptReturnDiscountsMarkups.Amount <> 0";
+	|	AND CRReceiptReturnDiscountsMarkups.Amount <> 0
+	|;
+	|
+	|////////////////////////////////////////////////////////////////////////////////
+	|SELECT
+	|	ReceiptCRReturnSerialNumbers.ConnectionKey,
+	|	ReceiptCRReturnSerialNumbers.SerialNumber
+	|INTO TemporaryTableSerialNumbers
+	|FROM
+	|	Document.ReceiptCRReturn.SerialNumbers AS ReceiptCRReturnSerialNumbers
+	|WHERE
+	|	ReceiptCRReturnSerialNumbers.Ref = &Ref
+	|	AND &UseSerialNumbers";
 	
 	Query.SetParameter("Ref", DocumentRefReceiptCRReturn);
 	Query.SetParameter("Company", StructureAdditionalProperties.ForPosting.Company);
 	Query.SetParameter("PointInTime", New Boundary(StructureAdditionalProperties.ForPosting.PointInTime, BoundaryType.Including));
 	Query.SetParameter("UseCharacteristics", StructureAdditionalProperties.AccountingPolicy.UseCharacteristics);
 	Query.SetParameter("UseBatches", StructureAdditionalProperties.AccountingPolicy.UseBatches);
+	
+	Query.SetParameter("UseSerialNumbers", StructureAdditionalProperties.AccountingPolicy.UseSerialNumbers);
 	
 	Query.ExecuteBatch();
 	
@@ -688,7 +702,58 @@ Procedure InitializeDocumentData(DocumentRefReceiptCRReturn, StructureAdditional
 	// AutomaticDiscounts
 	GenerateTableSalesByAutomaticDiscountsApplied(DocumentRefReceiptCRReturn, StructureAdditionalProperties);
 	
+	// Serial numbers
+	GenerateTableSerialNumbers(DocumentRefReceiptCRReturn, StructureAdditionalProperties);
+	
 EndProcedure // DocumentDataInitialization()
+
+// Generates a table of values that contains the data for the SerialNumbersGuarantees information register.
+// Tables of values saves into the properties of the structure "AdditionalProperties".
+//
+Procedure GenerateTableSerialNumbers(DocumentRef, StructureAdditionalProperties)
+	
+	If DocumentRef.SerialNumbers.Count()=0 Then
+		StructureAdditionalProperties.TableForRegisterRecords.Insert("TableSerialNumbersBalance", New ValueTable);
+		StructureAdditionalProperties.TableForRegisterRecords.Insert("TableSerialNumbersGuarantees", New ValueTable);
+		Return;
+	EndIf;
+	
+	Query = New Query;
+	Query.TempTablesManager = StructureAdditionalProperties.ForPosting.StructureTemporaryTables.TempTablesManager;
+	Query.Text =
+	"SELECT
+	|	TemporaryTableInventory.Date AS Period,
+	|	VALUE(AccumulationRecordType.Expense) AS RecordType,
+	|	TemporaryTableInventory.Date AS EventDate,
+	|	VALUE(Enum.SerialNumbersOperations.Expense) AS Operation,
+	|	SerialNumbers.SerialNumber AS SerialNumber,
+	|	TemporaryTableInventory.Company AS Company,
+	|	TemporaryTableInventory.ProductsAndServices AS ProductsAndServices,
+	|	TemporaryTableInventory.Characteristic AS Characteristic,
+	|	TemporaryTableInventory.Batch AS Batch,
+	|	TemporaryTableInventory.StructuralUnit AS StructuralUnit,
+	|	TemporaryTableInventory.Cell AS Cell,
+	|	1 AS Quantity
+	|FROM
+	|	TemporaryTableInventory AS TemporaryTableInventory
+	|		INNER JOIN TemporaryTableSerialNumbers AS SerialNumbers
+	|		ON TemporaryTableInventory.ConnectionKey = SerialNumbers.ConnectionKey
+	|			AND (&CheckIssued)
+	|			AND (NOT &Archival)";
+	
+	Query.SetParameter("CheckIssued", StructureAdditionalProperties.ForPosting.CheckIssued);
+	Query.SetParameter("Archival", StructureAdditionalProperties.ForPosting.Archival);
+	
+	QueryResult = Query.Execute().Unload();
+	
+	StructureAdditionalProperties.TableForRegisterRecords.Insert("TableSerialNumbersGuarantees", QueryResult);
+	If StructureAdditionalProperties.AccountingPolicy.SerialNumbersBalance Then
+		StructureAdditionalProperties.TableForRegisterRecords.Insert("TableSerialNumbersBalance", QueryResult);
+	Else
+		StructureAdditionalProperties.TableForRegisterRecords.Insert("TableSerialNumbersBalance", New ValueTable);
+	EndIf; 
+	
+EndProcedure
 
 // Controls the occurrence of negative balances.
 //

@@ -467,6 +467,17 @@
 							<ContextMenu name="BatchContextMenu" id="25"/>
 							<ExtendedTooltip name="BatchExtendedTooltip" id="175"/>
 						</InputField>
+						<InputField name="SerialNumbersPresentation" id="336">
+							<DataPath>Object.SerialNumbersPresentation</DataPath>
+							<Width>35</Width>
+							<HorizontalStretch>false</HorizontalStretch>
+							<ChoiceButton>true</ChoiceButton>
+							<ContextMenu name="SerialNumbersPresentationContextMenu" id="337"/>
+							<ExtendedTooltip name="SerialNumbersPresentationExtendedTooltip" id="338"/>
+							<Events>
+								<Event name="StartChoice">SerialNumbersPresentationStartChoice</Event>
+							</Events>
+						</InputField>
 						<UsualGroup name="GroupQuantityUnits" id="85">
 							<Title>
 								<v8:item>
@@ -501,6 +512,9 @@
 									<Wrap>false</Wrap>
 									<ContextMenu name="QuantityContextMenu" id="27"/>
 									<ExtendedTooltip name="CountExtendedTooltip" id="178"/>
+									<Events>
+										<Event name="OnChange">QuantityOnChange</Event>
+									</Events>
 								</InputField>
 								<InputField name="MeasurementUnit" id="28">
 									<DataPath>Object.MeasurementUnit</DataPath>
@@ -1696,6 +1710,15 @@
 					<v8:AllowedLength>Variable</v8:AllowedLength>
 				</v8:StringQualifiers>
 			</Type>
+		</Attribute>
+		<Attribute name="ИспользоватьСерийныеНомераОстатки" id="20">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Использовать серийные номера остатки</v8:content>
+				</v8:item>
+			</Title>
+			<Type/>
 		</Attribute>
 	</Attributes>
 	<Commands>

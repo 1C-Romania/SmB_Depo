@@ -196,6 +196,7 @@ Procedure InitializeDocumentData(DocumentRefInventoryWriteOff, StructureAddition
 	Query.Text = 
 	"SELECT
 	|	InventoryWriteOffInventory.LineNumber AS LineNumber,
+	|	InventoryWriteOffInventory.ConnectionKey AS ConnectionKey,
 	|	VALUE(AccumulationRecordType.Expense) AS RecordType,
 	|	InventoryWriteOffInventory.Ref AS Ref,
 	|	InventoryWriteOffInventory.Ref.Date AS Period,
@@ -223,7 +224,7 @@ Procedure InitializeDocumentData(DocumentRefInventoryWriteOff, StructureAddition
 	|		ELSE VALUE(Catalog.ProductsAndServicesBatches.EmptyRef)
 	|	END AS Batch,
 	|	CASE
-	|		WHEN VALUETYPE(InventoryWriteOffInventory.MeasurementUnit) = Type(Catalog.UOMClassifier)
+	|		WHEN VALUETYPE(InventoryWriteOffInventory.MeasurementUnit) = TYPE(Catalog.UOMClassifier)
 	|			THEN InventoryWriteOffInventory.Quantity
 	|		ELSE InventoryWriteOffInventory.Quantity * InventoryWriteOffInventory.MeasurementUnit.Factor
 	|	END AS Quantity,
@@ -314,7 +315,33 @@ Procedure InitializeDocumentData(DocumentRefInventoryWriteOff, StructureAddition
 	|FROM
 	|	TemporaryTableInventory AS TableInventory
 	|WHERE
-	|	TableInventory.OrderWarehouse = TRUE";
+	|	TableInventory.OrderWarehouse = TRUE
+	|;
+	|
+	|////////////////////////////////////////////////////////////////////////////////
+	|SELECT
+	|	TableInventory.Ref.Date AS Period,
+	|	VALUE(AccumulationRecordType.Expense) AS RecordType,
+	|	TableInventory.Period AS EventDate,
+	|	VALUE(Enum.SerialNumbersOperations.Expense) AS Operation,
+	|	TableSerialNumbers.SerialNumber AS SerialNumber,
+	|	&Company AS Company,
+	|	TableInventory.ProductsAndServices AS ProductsAndServices,
+	|	TableInventory.Characteristic AS Characteristic,
+	|	TableInventory.Batch AS Batch,
+	|	TableInventory.StructuralUnit AS StructuralUnit,
+	|	TableInventory.Cell AS Cell,
+	|	1 AS Quantity
+	|FROM
+	|	TemporaryTableInventory AS TableInventory
+	|		INNER JOIN Document.InventoryWriteOff.SerialNumbers AS TableSerialNumbers
+	|		ON TableInventory.Ref = TableSerialNumbers.Ref
+	|			AND TableInventory.ConnectionKey = TableSerialNumbers.ConnectionKey
+	|WHERE
+	|	TableSerialNumbers.Ref = &Ref
+	|	AND TableInventory.Ref = &Ref
+	|	AND &UseSerialNumbers
+	|	AND NOT TableInventory.OrderWarehouse";
 	
 	Query.SetParameter("Ref", DocumentRefInventoryWriteOff);
 	Query.SetParameter("Company", StructureAdditionalProperties.ForPosting.Company);
@@ -322,13 +349,24 @@ Procedure InitializeDocumentData(DocumentRefInventoryWriteOff, StructureAddition
 	Query.SetParameter("AccountingByCells", StructureAdditionalProperties.AccountingPolicy.AccountingByCells);
 	Query.SetParameter("UseBatches", StructureAdditionalProperties.AccountingPolicy.UseBatches);
 	
-	Query.SetParameter("InventoryWriteOff", NStr("en='Inventory write off';ru='Списание запасов'"));
+	Query.SetParameter("UseSerialNumbers", StructureAdditionalProperties.AccountingPolicy.UseSerialNumbers);
+
+	Query.SetParameter("InventoryWriteOff", NStr("ru = 'Списание запасов'; en = 'Inventory write off'"));
 	
 	ResultsArray = Query.ExecuteBatch();
 	
     StructureAdditionalProperties.TableForRegisterRecords.Insert("TableInventory", ResultsArray[1].Unload());
 	StructureAdditionalProperties.TableForRegisterRecords.Insert("TableInventoryInWarehouses", ResultsArray[2].Unload());
 	StructureAdditionalProperties.TableForRegisterRecords.Insert("TableInventoryForExpenseFromWarehouses", ResultsArray[3].Unload());
+	
+	// Serial numbers
+	QueryResult4 = ResultsArray[4].Unload();
+	StructureAdditionalProperties.TableForRegisterRecords.Insert("TableSerialNumbersGuarantees", QueryResult4);
+	If StructureAdditionalProperties.AccountingPolicy.SerialNumbersBalance Then
+		StructureAdditionalProperties.TableForRegisterRecords.Insert("TableSerialNumbersBalance", QueryResult4);
+	Else
+		StructureAdditionalProperties.TableForRegisterRecords.Insert("TableSerialNumbersBalance", New ValueTable);
+	EndIf; 
 	
 	// Generate an empty table of postings.
 	SmallBusinessServer.GenerateTransactionsTable(DocumentRefInventoryWriteOff, StructureAdditionalProperties);
@@ -338,30 +376,30 @@ Procedure InitializeDocumentData(DocumentRefInventoryWriteOff, StructureAddition
 	
 	Query = New Query(
 	"SELECT
-	|	InventoryWriteOffInventory.Ref.Date AS Period,
-	|	&Company AS Company,
-	|	VALUE(Catalog.BusinessActivities.Other) AS BusinessActivity,
-	|	&Amount AS AmountExpense,
-	|	&Amount AS Amount,
-	|	InventoryWriteOffInventory.Ref.Correspondence AS GLAccount,
-	|	&ReceiptExpenses AS ContentOfAccountingRecord
-	|FROM
-	|	Document.InventoryWriteOff.Inventory AS InventoryWriteOffInventory
-	|WHERE
-	|	InventoryWriteOffInventory.Ref = &Ref
-	|	AND &Amount > 0
-	|	AND InventoryWriteOffInventory.Ref.Correspondence.TypeOfAccount = VALUE(Enum.GLAccountsTypes.OtherExpenses)
-	|
-	|GROUP BY
+	|	InventoryWriteOffInventory.Ref.Date
+	|	AS Period, &Company
+	|	AS Company, VALUE(Catalog.BusinessActivities.Other)
+	|	AS BusinessActivity, &Amount
+	|	AS AmountExpense, &Amount
+	|	AS Amount, InventoryWriteOffInventory.Ref.Correspondence
+	|	AS GLAccount, &ReceiptExpenses
+	|AS
+	|	ContentOfAccountingRecord FROM Document.InventoryWriteOff.Inventory
+	|AS
+	|	InventoryWriteOffInventory WHERE InventoryWriteOffInventory.Ref
+	|	= &Ref AND &Amount
+	|	> 0 AND InventoryWriteOffInventory.Ref.Correspondence.TypeOfAccount
+	|=
+	|VALUE(Enum.GLAccountsTypes.OtherExpenses) GROUP
+	|	BY
 	|	InventoryWriteOffInventory.Ref,
-	|	InventoryWriteOffInventory.Ref.Date,
-	|	InventoryWriteOffInventory.Ref.Correspondence");
+	|	InventoryWriteOffInventory.Ref.Date, InventoryWriteOffInventory.Ref.Correspondence");
 	
 	Query.SetParameter("Ref", DocumentRefInventoryWriteOff);
 	Query.SetParameter("Company", StructureAdditionalProperties.ForPosting.Company);
 	Query.SetParameter("Amount", StructureAdditionalProperties.TableForRegisterRecords.TableInventory.Total("Amount"));
 	
-	Query.SetParameter("ReceiptExpenses", NStr("en='Other expenses';ru='Прочих затраты (расходы)'"));
+	Query.SetParameter("ReceiptExpenses", NStr("ru = 'Прочих затраты (расходы)'; en = 'Other expenses'"));
 	
 	ResultsArray = Query.ExecuteBatch();
 	
@@ -379,10 +417,11 @@ Procedure RunControl(DocumentRefInventoryWriteOff, AdditionalProperties, Cancel,
 
 	StructureTemporaryTables = AdditionalProperties.ForPosting.StructureTemporaryTables;
 	
-	// If the "InventoryTransferAtWarehouseChange", "RegisterRecordsInventoryChange"
-	// temporary tables contain records, it is necessary to control the sales of goods.
+	// If the "InventoryTransferAtWarehouseChange",
+	// "RegisterRecordsInventoryChange" temporary tables contain records, it is necessary to control the sales of goods.
 	If StructureTemporaryTables.RegisterRecordsInventoryInWarehousesChange
-		OR StructureTemporaryTables.RegisterRecordsInventoryChange Then
+		OR StructureTemporaryTables.RegisterRecordsInventoryChange
+		OR StructureTemporaryTables.RegisterRecordsSerialNumbersChange Then
 		
 		Query = New Query(
 		"SELECT
@@ -401,7 +440,7 @@ Procedure RunControl(DocumentRefInventoryWriteOff, AdditionalProperties, Cancel,
 		|	RegisterRecordsInventoryInWarehousesChange AS RegisterRecordsInventoryInWarehousesChange
 		|		LEFT JOIN AccumulationRegister.InventoryInWarehouses.Balance(
 		|				&ControlTime,
-		|				(Company, StructuralUnit, ProductsAndServices, Characteristic, Batch, Cell) In
+		|				(Company, StructuralUnit, ProductsAndServices, Characteristic, Batch, Cell) IN
 		|					(SELECT
 		|						RegisterRecordsInventoryInWarehousesChange.Company AS Company,
 		|						RegisterRecordsInventoryInWarehousesChange.StructuralUnit AS StructuralUnit,
@@ -443,7 +482,7 @@ Procedure RunControl(DocumentRefInventoryWriteOff, AdditionalProperties, Cancel,
 		|	RegisterRecordsInventoryChange AS RegisterRecordsInventoryChange
 		|		LEFT JOIN AccumulationRegister.Inventory.Balance(
 		|				&ControlTime,
-		|				(Company, StructuralUnit, GLAccount, ProductsAndServices, Characteristic, Batch, CustomerOrder) In
+		|				(Company, StructuralUnit, GLAccount, ProductsAndServices, Characteristic, Batch, CustomerOrder) IN
 		|					(SELECT
 		|						RegisterRecordsInventoryChange.Company AS Company,
 		|						RegisterRecordsInventoryChange.StructuralUnit AS StructuralUnit,
@@ -465,6 +504,34 @@ Procedure RunControl(DocumentRefInventoryWriteOff, AdditionalProperties, Cancel,
 		|	ISNULL(InventoryBalances.QuantityBalance, 0) < 0
 		|
 		|ORDER BY
+		|	LineNumber
+		|;
+		|
+		|////////////////////////////////////////////////////////////////////////////////
+		|SELECT
+		|	RegisterRecordsSerialNumbersChange.LineNumber AS LineNumber,
+		|	RegisterRecordsSerialNumbersChange.SerialNumber AS SerialNumberPresentation,
+		|	RegisterRecordsSerialNumbersChange.StructuralUnit AS StructuralUnitPresentation,
+		|	RegisterRecordsSerialNumbersChange.ProductsAndServices AS ProductsAndServicesPresentation,
+		|	RegisterRecordsSerialNumbersChange.Characteristic AS CharacteristicPresentation,
+		|	RegisterRecordsSerialNumbersChange.Batch AS BatchPresentation,
+		|	RegisterRecordsSerialNumbersChange.Cell AS PresentationCell,
+		|	SerialNumbersBalance.StructuralUnit.StructuralUnitType AS StructuralUnitType,
+		|	SerialNumbersBalance.ProductsAndServices.MeasurementUnit AS MeasurementUnitPresentation,
+		|	ISNULL(RegisterRecordsSerialNumbersChange.QuantityChange, 0) + ISNULL(SerialNumbersBalance.QuantityBalance, 0) AS BalanceSerialNumbers,
+		|	ISNULL(SerialNumbersBalance.QuantityBalance, 0) AS QuantityBalanceSerialNumbers
+		|FROM
+		|	RegisterRecordsSerialNumbersChange AS RegisterRecordsSerialNumbersChange
+		|		INNER JOIN AccumulationRegister.SerialNumbers.Balance(&ControlTime, ) AS SerialNumbersBalance
+		|		ON RegisterRecordsSerialNumbersChange.StructuralUnit = SerialNumbersBalance.StructuralUnit
+		|			AND RegisterRecordsSerialNumbersChange.ProductsAndServices = SerialNumbersBalance.ProductsAndServices
+		|			AND RegisterRecordsSerialNumbersChange.Characteristic = SerialNumbersBalance.Characteristic
+		|			AND RegisterRecordsSerialNumbersChange.Batch = SerialNumbersBalance.Batch
+		|			AND RegisterRecordsSerialNumbersChange.SerialNumber = SerialNumbersBalance.SerialNumber
+		|			AND RegisterRecordsSerialNumbersChange.Cell = SerialNumbersBalance.Cell
+		|			AND (ISNULL(SerialNumbersBalance.QuantityBalance, 0) < 0)
+		|
+		|ORDER BY
 		|	LineNumber");
 		
 		Query.TempTablesManager = StructureTemporaryTables.TempTablesManager;
@@ -473,7 +540,8 @@ Procedure RunControl(DocumentRefInventoryWriteOff, AdditionalProperties, Cancel,
 		ResultsArray = Query.ExecuteBatch();
 		
 		If Not ResultsArray[0].IsEmpty()
-			OR Not ResultsArray[1].IsEmpty() Then
+			OR Not ResultsArray[1].IsEmpty()
+			OR NOT ResultsArray[2].IsEmpty() Then
 			DocumentObjectInventoryWriteOff = DocumentRefInventoryWriteOff.GetObject()
 		EndIf;
 		
@@ -487,6 +555,12 @@ Procedure RunControl(DocumentRefInventoryWriteOff, AdditionalProperties, Cancel,
 		If Not ResultsArray[1].IsEmpty() Then
 			QueryResultSelection = ResultsArray[1].Select();
 			SmallBusinessServer.ShowMessageAboutPostingToInventoryRegisterErrors(DocumentObjectInventoryWriteOff, QueryResultSelection, Cancel);
+		EndIf;
+		
+		// Negative balance of serial numbers in the warehouse.
+		If NOT ResultsArray[2].IsEmpty() Then
+			QueryResultSelection = ResultsArray[2].Select();
+			SmallBusinessServer.ShowMessageAboutPostingSerialNumbersRegisterErrors(DocumentObjectInventoryWriteOff, QueryResultSelection, Cancel);
 		EndIf;
 		
 	EndIf;
@@ -520,7 +594,12 @@ Procedure GenerateMerchandiseFillingForm(SpreadsheetDocument, CurrentDocument)
 	|		MeasurementUnit.Description AS MeasurementUnit,
 	|		Quantity AS Quantity,
 	|		Characteristic,
-	|		ProductsAndServices.ProductsAndServicesType AS ProductsAndServicesType
+	|		ProductsAndServices.ProductsAndServicesType AS ProductsAndServicesType,
+	|		ConnectionKey
+	|	),
+	|	InventoryWriteOff.SerialNumbers.(
+	|		SerialNumber,
+	|		ConnectionKey
 	|	)
 	|FROM
 	|	Document.InventoryWriteOff AS InventoryWriteOff
@@ -534,6 +613,7 @@ Procedure GenerateMerchandiseFillingForm(SpreadsheetDocument, CurrentDocument)
 	Header.Next();
 	
 	LinesSelectionInventory = Header.Inventory.Select();
+	LinesSelectionSerialNumbers = Header.SerialNumbers.Select();
 	
 	SpreadsheetDocument.PrintParametersName = "PRINT_PARAMETERS_InventoryWriteOff_MerchandiseFillingForm";
 	
@@ -546,7 +626,7 @@ Procedure GenerateMerchandiseFillingForm(SpreadsheetDocument, CurrentDocument)
 	EndIf;		
 	
 	TemplateArea = Template.GetArea("Title");
-	TemplateArea.Parameters.HeaderText = "Inventory write off No "
+	TemplateArea.Parameters.HeaderText = "Inventory write off No"
 											+ DocumentNumber
 											+ " from "
 											+ Format(Header.DocumentDate, "DLF=DD");
@@ -583,8 +663,10 @@ Procedure GenerateMerchandiseFillingForm(SpreadsheetDocument, CurrentDocument)
 		EndIf;	
 			
 		TemplateArea.Parameters.Fill(LinesSelectionInventory);
+		
+		StringSerialNumbers = WorkWithSerialNumbers.SerialNumbersStringFromSelection(LinesSelectionSerialNumbers, LinesSelectionInventory.ConnectionKey);
 		TemplateArea.Parameters.InventoryItem = SmallBusinessServer.GetProductsAndServicesPresentationForPrinting(LinesSelectionInventory.InventoryItem, 
-																LinesSelectionInventory.Characteristic, LinesSelectionInventory.SKU);
+																LinesSelectionInventory.Characteristic, LinesSelectionInventory.SKU, StringSerialNumbers);
 								
 		SpreadsheetDocument.Put(TemplateArea);
 						

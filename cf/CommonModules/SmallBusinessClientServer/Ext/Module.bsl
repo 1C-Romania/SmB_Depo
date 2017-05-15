@@ -68,6 +68,43 @@ Function PluralForm(Word1, Word2, Word3, Val IntegerNumber) Export
 
 EndFunction
 
+// Fills the connection key of the
+// document table or data processor.
+Procedure FillConnectionKey(TabularSection, TabularSectionRow, ConnectionAttributeName, TempConnectionKey = 0) Export
+	
+	If NOT ValueIsFilled(TabularSectionRow[ConnectionAttributeName]) Then
+		If TempConnectionKey = 0 Then
+			For Each TSRow In TabularSection Do
+				If TempConnectionKey < TSRow[ConnectionAttributeName] Then
+					TempConnectionKey = TSRow[ConnectionAttributeName];
+				EndIf;
+			EndDo;
+		EndIf;
+		TabularSectionRow[ConnectionAttributeName] = TempConnectionKey + 1;
+	EndIf;
+	
+EndProcedure
+
+// Deletes the rows on the connection key in the
+// document table or data processors.
+Procedure DeleteRowsByConnectionKey(TabularSection, TabularSectionRow, ConnectionAttributeName = "ConnectionKey") Export
+	
+	If TabularSectionRow = Undefined Then
+		Return;
+	EndIf;
+	
+	TheStructureOfTheSearch = New Structure;
+	TheStructureOfTheSearch.Insert(ConnectionAttributeName, TabularSectionRow[ConnectionAttributeName]);
+	
+	RowsToDelete = TabularSection.FindRows(TheStructureOfTheSearch);
+	For Each TableRow In RowsToDelete Do
+		
+		TabularSection.Delete(TableRow);
+		
+	EndDo;
+	
+EndProcedure
+
 ///////////////////////////////////////////////////////////////////////////////// 
 // INTERACTION PROCEDURES AND FUNCTIONS
 

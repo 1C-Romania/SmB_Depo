@@ -79,7 +79,7 @@ Procedure FillCheckProcessing(Cancel, CheckedAttributes)
 	
 	If PaymentWithPaymentCards.Count() > 0 AND Not ValueIsFilled(POSTerminal) Then
 		
-		MessageText = NStr("en='Field ""Terminal"" is empty';ru='Поле ""Эквайринговый терминал"" не заполнено'");
+		MessageText = NStr("ru = 'Поле ""Эквайринговый терминал"" не заполнено'; en = 'Field ""Terminal"" is empty'");
 
 		SmallBusinessServer.ShowMessageAboutError(
 			ThisObject,
@@ -94,7 +94,7 @@ Procedure FillCheckProcessing(Cancel, CheckedAttributes)
 	
 	If PaymentWithPaymentCards.Total("Amount") > DocumentAmount Then
 		
-		MessageText = NStr("en='Amount of payment by payment cards exceeds document amount';ru='Сумма оплаты платежными картами превышает сумму документа'");
+		MessageText = NStr("ru = 'Сумма оплаты платежными картами превышает сумму документа'; en = 'Amount of payment by payment cards exceeds document amount'");
 		
 		SmallBusinessServer.ShowMessageAboutError(
 			ThisObject,
@@ -107,7 +107,7 @@ Procedure FillCheckProcessing(Cancel, CheckedAttributes)
 
 	EndIf;
 	
-	MessageText = NStr("en='Cash session is not opened';ru='Кассовая смена не открыта'");
+	MessageText = NStr("ru = 'Кассовая смена не открыта'; en = 'Cash session is not opened.'");
 	
 	If Not Documents.RetailReport.SessionIsOpen(CashCRSession, Date, MessageText) Then
 		
@@ -121,6 +121,9 @@ Procedure FillCheckProcessing(Cancel, CheckedAttributes)
 		);
 
 	EndIf;
+	
+	// Serial numbers
+	WorkWithSerialNumbers.FillCheckingSerialNumbers(Cancel, Inventory, SerialNumbers, StructuralUnit, ThisObject);
 	
 EndProcedure // FillCheckProcessing()
 
@@ -229,6 +232,10 @@ Procedure Posting(Cancel, PostingMode)
 	SmallBusinessServer.ReflectSalesByDiscountCard(AdditionalProperties, RegisterRecords, Cancel);
 	// AutomaticDiscounts
 	SmallBusinessServer.FlipAutomaticDiscountsApplied(AdditionalProperties, RegisterRecords, Cancel);
+	
+	// SerialNumbers
+	SmallBusinessServer.ReflectTheSerialNumbersOfTheGuarantee(AdditionalProperties, RegisterRecords, Cancel);
+	SmallBusinessServer.ReflectTheSerialNumbersBalance(AdditionalProperties, RegisterRecords, Cancel);
 	
 	// Record of the records sets.
 	SmallBusinessServer.WriteRecordSets(ThisObject);

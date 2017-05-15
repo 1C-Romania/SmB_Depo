@@ -119,10 +119,15 @@ Function FillByBarcodesData(BarcodesData)
 				NewRow.MeasurementUnit = ?(ValueIsFilled(BarcodeData.MeasurementUnit), BarcodeData.MeasurementUnit, BarcodeData.StructureProductsAndServicesData.MeasurementUnit);
 				Items.Inventory.CurrentRow = NewRow.GetID();
 			Else
-				FoundString = TSRowsArray[0];
-				FoundString.Quantity = FoundString.Quantity + CurBarcode.Quantity;
-				Items.Inventory.CurrentRow = FoundString.GetID();
+				NewRow = TSRowsArray[0];
+				NewRow.Quantity = NewRow.Quantity + CurBarcode.Quantity;
+				Items.Inventory.CurrentRow = NewRow.GetID();
 			EndIf;
+			
+			If BarcodeData.Property("SerialNumber") AND ValueIsFilled(BarcodeData.SerialNumber) Then
+				WorkWithSerialNumbersClientServer.AddSerialNumberToString(NewRow, BarcodeData.SerialNumber, ThisObject);
+			EndIf;
+			
 		EndIf;
 	EndDo;
 	
@@ -427,6 +432,9 @@ Procedure OnCreateAtServer(Cancel, StandardProcessing)
 	Items.InventoryImportDataFromDCT.Visible = UsePeripherals;
 	// End Peripherals
 	
+	// Serial numbers
+	UseSerialNumbersBalance = WorkWithSerialNumbers.UseSerialNumbersBalance();
+		
 EndProcedure // OnCreateAtServer()
 
 // Procedure - OnReadAtServer event handler.
@@ -492,6 +500,15 @@ Procedure NotificationProcessing(EventName, Parameter, Source)
 		InventoryAddressInStorage = Parameter;
 		
 		GetInventoryFromStorage(InventoryAddressInStorage, "Inventory", True, True);
+		
+	ElsIf EventName = "SerialNumbersSelection"
+		AND ValueIsFilled(Parameter) 
+		//Form owner checkup
+		AND Source <> New UUID("00000000-0000-0000-0000-000000000000")
+		AND Source = UUID
+		Then
+		
+		GetSerialNumbersFromStorage(Parameter.AddressInTemporaryStorage, Parameter.RowKey);
 		
 	EndIf;
 	
@@ -566,6 +583,22 @@ Procedure Attachable_SetPictureForComment()
 	
 EndProcedure
 
+////////////////////////////////////////////////////////////////////////////////PROCEDURE - TABULAR SECTION ATTRIBUTE EVENT HANDLERS
+
+&AtClient
+Procedure InventoryOnStartEdit(Item, NewRow, Copy)
+	
+	If NewRow AND Copy Then
+		Item.CurrentData.ConnectionKey = 0;
+		Item.CurrentData.SerialNumbers = "";
+	EndIf;	
+	
+	If Item.CurrentItem.Name = "SerialNumbersInventory" Then
+		OpenSerialNumbersSelection();
+	EndIf;
+	
+EndProcedure
+
 ////////////////////////////////////////////////////////////////////////////////
 // PROCEDURE - TABULAR SECTION ATTRIBUTE EVENT HANDLERS
 
@@ -584,8 +617,29 @@ Procedure InventoryProductsAndServicesOnChange(Item)
 	TabularSectionRow.MeasurementUnit = StructureData.MeasurementUnit;
 	TabularSectionRow.Quantity = 1;
 	
+	//Serial numbers
+	WorkWithSerialNumbersClientServer.DeleteSerialNumbersByConnectionKey(Object.SerialNumbers, TabularSectionRow,,UseSerialNumbersBalance);
+	
 EndProcedure // InventoryProductsAndServicesOnChange()
 
+&AtClient
+Procedure InventoryQuantityOnChange(Item)
+	
+	// Serial numbers
+	If UseSerialNumbersBalance<>Undefined Then
+		WorkWithSerialNumbersClientServer.UpdateSerialNumbersQuantity(Object, Items.Inventory.CurrentData);
+	EndIf;
+		
+EndProcedure
+
+&AtClient
+Procedure InventoryBeforeDeleteRow(Item, Cancel)
+	
+	// Serial numbers
+	CurrentData = Items.Inventory.CurrentData;
+	WorkWithSerialNumbersClientServer.DeleteSerialNumbersByConnectionKey(Object.SerialNumbers, CurrentData,,UseSerialNumbersBalance);
+
+EndProcedure
 #Region LibrariesHandlers
 
 // StandardSubsystems.AdditionalReportsAndDataProcessors
@@ -615,5 +669,42 @@ Procedure Attachable_ExecutePrintCommand(Command)
 EndProcedure
 
 // End StandardSubsystems.Printing
+
+#EndRegion
+
+#Region ServiceProceduresAndFunctions
+
+&AtClient
+Procedure InventorySerialNumbersStartChoice(Item, ChoiceData, StandardProcessing)
+		
+	StandardProcessing = False;
+	OpenSerialNumbersSelection();
+	
+EndProcedure
+
+&AtClient
+Procedure OpenSerialNumbersSelection()
+		
+	CurrentDataIdentifier = Items.Inventory.CurrentData.GetID();
+	ParametersOfSerialNumbers = SerialNumberPickParameters(CurrentDataIdentifier);
+	
+	OpenForm("DataProcessor.SerialNumbersSelection.Form", ParametersOfSerialNumbers, ThisObject);
+
+EndProcedure
+
+&AtServer
+Function GetSerialNumbersFromStorage(AddressInTemporaryStorage, RowKey)
+	
+	Modified = True;
+	Return WorkWithSerialNumbers.GetSerialNumbersFromStorage(Object, AddressInTemporaryStorage, RowKey);
+	
+EndFunction
+
+&AtServer
+Function SerialNumberPickParameters(CurrentDataIdentifier)
+	
+	Return WorkWithSerialNumbers.SerialNumberPickParameters(Object, ThisObject.UUID, CurrentDataIdentifier, False);
+	
+EndFunction
 
 #EndRegion

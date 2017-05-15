@@ -1715,6 +1715,7 @@ Procedure InitializeDocumentData(DocumentRefReportAboutRecycling, StructureAddit
 	|////////////////////////////////////////////////////////////////////////////////
 	|SELECT
 	|	ProcessingReportInventory.LineNumber AS LineNumber,
+	|	ProcessingReportInventory.ConnectionKey AS ConnectionKey,
 	|	ProcessingReportInventory.Ref AS Document,
 	|	ProcessingReportInventory.Ref.Date AS Period,
 	|	&Company AS Company,
@@ -1940,7 +1941,20 @@ Procedure InitializeDocumentData(DocumentRefReportAboutRecycling, StructureAddit
 	|	Constant.NationalCurrency AS ConstantNationalCurrency
 	|WHERE
 	|	ProcessingReportDiscountsMarkups.Ref = &Ref
-	|	AND ProcessingReportDiscountsMarkups.Amount <> 0";
+	|	AND ProcessingReportDiscountsMarkups.Amount <> 0
+	|;
+	|
+	|////////////////////////////////////////////////////////////////////////////////
+	|SELECT
+	|	ProcessingReportSerialNumbers.ConnectionKey,
+	|	ProcessingReportSerialNumbers.SerialNumber
+	|INTO TemporaryTableSerialNumbers
+	|FROM
+	|	Document.ProcessingReport.SerialNumbers AS ProcessingReportSerialNumbers
+	|WHERE
+	|	ProcessingReportSerialNumbers.Ref = &Ref
+	|	AND &UseSerialNumbers
+	|	AND NOT ProcessingReportSerialNumbers.Ref.StructuralUnit.OrderWarehouse";
 	
 	Query.SetParameter("Ref", DocumentRefReportAboutRecycling);
 	Query.SetParameter("Company", StructureAdditionalProperties.ForPosting.Company);
@@ -1948,6 +1962,8 @@ Procedure InitializeDocumentData(DocumentRefReportAboutRecycling, StructureAddit
 	Query.SetParameter("UseCharacteristics", StructureAdditionalProperties.AccountingPolicy.UseCharacteristics);
 	Query.SetParameter("UseBatches", StructureAdditionalProperties.AccountingPolicy.UseBatches);
 	Query.SetParameter("AccountingByCells", StructureAdditionalProperties.AccountingPolicy.AccountingByCells);
+	
+	Query.SetParameter("UseSerialNumbers", StructureAdditionalProperties.AccountingPolicy.UseSerialNumbers);
 	
 	Query.ExecuteBatch();
 	
@@ -1971,10 +1987,56 @@ Procedure InitializeDocumentData(DocumentRefReportAboutRecycling, StructureAddit
 	
 	GenerateTableManagerial(DocumentRefReportAboutRecycling, StructureAdditionalProperties);
 	
+	// Serial numbers
+	GenerateTableSerialNumbers(DocumentRefReportAboutRecycling, StructureAdditionalProperties);
+	
 	// AutomaticDiscounts
 	GenerateTableSalesByAutomaticDiscountsApplied(DocumentRefReportAboutRecycling, StructureAdditionalProperties);
 	
 EndProcedure // DocumentDataInitialization()
+
+// Generates a table of values that contains the data for the SerialNumbersGuarantees information register.
+// Tables of values saves into the properties of the structure "AdditionalProperties".
+//
+Procedure GenerateTableSerialNumbers(DocumentRef, StructureAdditionalProperties)
+	
+	If DocumentRef.SerialNumbers.Count()=0 Then
+		StructureAdditionalProperties.TableForRegisterRecords.Insert("TableSerialNumbersBalance", New ValueTable);
+		StructureAdditionalProperties.TableForRegisterRecords.Insert("TableSerialNumbersGuarantees", New ValueTable);
+		Return;
+	EndIf;
+	
+	Query = New Query;
+	Query.TempTablesManager = StructureAdditionalProperties.ForPosting.StructureTemporaryTables.TempTablesManager;
+	Query.Text =
+	"SELECT
+	|	TemporaryTableInventory.Period AS Period,
+	|	VALUE(AccumulationRecordType.Expense) AS RecordType,
+	|	TemporaryTableInventory.Period AS EventDate,
+	|	VALUE(Enum.SerialNumbersOperations.Expense) AS Operation,
+	|	SerialNumbers.SerialNumber AS SerialNumber,
+	|	TemporaryTableInventory.Company AS Company,
+	|	TemporaryTableInventory.ProductsAndServices AS ProductsAndServices,
+	|	TemporaryTableInventory.Characteristic AS Characteristic,
+	|	TemporaryTableInventory.Batch AS Batch,
+	|	TemporaryTableInventory.StructuralUnit AS StructuralUnit,
+	|	TemporaryTableInventory.Cell AS Cell,
+	|	1 AS Quantity
+	|FROM
+	|	TemporaryTableProduction AS TemporaryTableInventory
+	|		INNER JOIN TemporaryTableSerialNumbers AS SerialNumbers
+	|		ON TemporaryTableInventory.ConnectionKey = SerialNumbers.ConnectionKey";
+	
+	QueryResult = Query.Execute().Unload();
+	
+	StructureAdditionalProperties.TableForRegisterRecords.Insert("TableSerialNumbersGuarantees", QueryResult);
+	If StructureAdditionalProperties.AccountingPolicy.SerialNumbersBalance Then
+		StructureAdditionalProperties.TableForRegisterRecords.Insert("TableSerialNumbersBalance", QueryResult);
+	Else
+		StructureAdditionalProperties.TableForRegisterRecords.Insert("TableSerialNumbersBalance", New ValueTable);
+	EndIf; 
+	
+EndProcedure
 
 // Controls the occurrence of negative balances.
 //
@@ -1986,15 +2048,16 @@ Procedure RunControl(DocumentRefReportAboutRecycling, AdditionalProperties, Canc
 	
 	StructureTemporaryTables = AdditionalProperties.ForPosting.StructureTemporaryTables;
 	
-	// If temporary tables "RegisterRecordsInventoryChange", "TransferInventoryInWarehousesChange",
-	// "RegisterRecordsInventoryFromWarehousesChange", "RegisterRecordsInventoryReceivedChange"
-	// contain entries, it is necessary to perform control of product selling.
+	// If temporary tables "RegisterRecordsInventoryChange",
+	// "TransferInventoryInWarehousesChange", "RegisterRecordsInventoryFromWarehousesChange",
+	// "RegisterRecordsInventoryReceivedChange" contain entries, it is necessary to perform control of product selling.
 	
 	If StructureTemporaryTables.RegisterRecordsInventoryChange
 	 OR StructureTemporaryTables.RegisterRecordsInventoryInWarehousesChange
 	 OR StructureTemporaryTables.RegisterRecordsInventoryFromWarehousesChange 
 	 OR StructureTemporaryTables.RegisterRecordsInventoryReceivedChange
-	 OR StructureTemporaryTables.RegisterRecordsAccountsReceivableChange Then
+	 OR StructureTemporaryTables.RegisterRecordsAccountsReceivableChange
+	 OR StructureTemporaryTables.RegisterRecordsSerialNumbersChange Then
 		
 		Query = New Query(
 		"SELECT
@@ -2013,7 +2076,7 @@ Procedure RunControl(DocumentRefReportAboutRecycling, AdditionalProperties, Canc
 		|	RegisterRecordsInventoryInWarehousesChange AS RegisterRecordsInventoryInWarehousesChange
 		|		LEFT JOIN AccumulationRegister.InventoryInWarehouses.Balance(
 		|				&ControlTime,
-		|				(Company, StructuralUnit, ProductsAndServices, Characteristic, Batch, Cell) In
+		|				(Company, StructuralUnit, ProductsAndServices, Characteristic, Batch, Cell) IN
 		|					(SELECT
 		|						RegisterRecordsInventoryInWarehousesChange.Company AS Company,
 		|						RegisterRecordsInventoryInWarehousesChange.StructuralUnit AS StructuralUnit,
@@ -2055,7 +2118,7 @@ Procedure RunControl(DocumentRefReportAboutRecycling, AdditionalProperties, Canc
 		|	RegisterRecordsInventoryChange AS RegisterRecordsInventoryChange
 		|		LEFT JOIN AccumulationRegister.Inventory.Balance(
 		|				&ControlTime,
-		|				(Company, StructuralUnit, GLAccount, ProductsAndServices, Characteristic, Batch, CustomerOrder) In
+		|				(Company, StructuralUnit, GLAccount, ProductsAndServices, Characteristic, Batch, CustomerOrder) IN
 		|					(SELECT
 		|						RegisterRecordsInventoryChange.Company AS Company,
 		|						RegisterRecordsInventoryChange.StructuralUnit AS StructuralUnit,
@@ -2100,7 +2163,7 @@ Procedure RunControl(DocumentRefReportAboutRecycling, AdditionalProperties, Canc
 		|	RegisterRecordsInventoryReceivedChange AS RegisterRecordsInventoryReceivedChange
 		|		LEFT JOIN AccumulationRegister.InventoryReceived.Balance(
 		|				&ControlTime,
-		|				(Company, ProductsAndServices, Characteristic, Batch, Counterparty, Contract, Order, ReceptionTransmissionType) In
+		|				(Company, ProductsAndServices, Characteristic, Batch, Counterparty, Contract, Order, ReceptionTransmissionType) IN
 		|					(SELECT
 		|						RegisterRecordsInventoryReceivedChange.Company AS Company,
 		|						RegisterRecordsInventoryReceivedChange.ProductsAndServices AS ProductsAndServices,
@@ -2154,7 +2217,7 @@ Procedure RunControl(DocumentRefReportAboutRecycling, AdditionalProperties, Canc
 		|	RegisterRecordsAccountsReceivableChange AS RegisterRecordsAccountsReceivableChange
 		|		LEFT JOIN AccumulationRegister.AccountsReceivable.Balance(
 		|				&ControlTime,
-		|				(Company, Counterparty, Contract, Document, Order, SettlementsType) In
+		|				(Company, Counterparty, Contract, Document, Order, SettlementsType) IN
 		|					(SELECT
 		|						RegisterRecordsAccountsReceivableChange.Company AS Company,
 		|						RegisterRecordsAccountsReceivableChange.Counterparty AS Counterparty,
@@ -2178,6 +2241,34 @@ Procedure RunControl(DocumentRefReportAboutRecycling, AdditionalProperties, Canc
 		|		END
 		|
 		|ORDER BY
+		|	LineNumber
+		|;
+		|
+		|////////////////////////////////////////////////////////////////////////////////
+		|SELECT
+		|	RegisterRecordsSerialNumbersChange.LineNumber AS LineNumber,
+		|	RegisterRecordsSerialNumbersChange.SerialNumber AS SerialNumberPresentation,
+		|	RegisterRecordsSerialNumbersChange.StructuralUnit AS StructuralUnitPresentation,
+		|	RegisterRecordsSerialNumbersChange.ProductsAndServices AS ProductsAndServicesPresentation,
+		|	RegisterRecordsSerialNumbersChange.Characteristic AS CharacteristicPresentation,
+		|	RegisterRecordsSerialNumbersChange.Batch AS BatchPresentation,
+		|	RegisterRecordsSerialNumbersChange.Cell AS PresentationCell,
+		|	SerialNumbersBalance.StructuralUnit.StructuralUnitType AS StructuralUnitType,
+		|	SerialNumbersBalance.ProductsAndServices.MeasurementUnit AS MeasurementUnitPresentation,
+		|	ISNULL(RegisterRecordsSerialNumbersChange.QuantityChange, 0) + ISNULL(SerialNumbersBalance.QuantityBalance, 0) AS BalanceSerialNumbers,
+		|	ISNULL(SerialNumbersBalance.QuantityBalance, 0) AS BalanceQuantitySerialNumbers
+		|FROM
+		|	RegisterRecordsSerialNumbersChange AS RegisterRecordsSerialNumbersChange
+		|		INNER JOIN AccumulationRegister.SerialNumbers.Balance(&ControlTime, ) AS SerialNumbersBalance
+		|		ON RegisterRecordsSerialNumbersChange.StructuralUnit = SerialNumbersBalance.StructuralUnit
+		|			AND RegisterRecordsSerialNumbersChange.ProductsAndServices = SerialNumbersBalance.ProductsAndServices
+		|			AND RegisterRecordsSerialNumbersChange.Characteristic = SerialNumbersBalance.Characteristic
+		|			AND RegisterRecordsSerialNumbersChange.Batch = SerialNumbersBalance.Batch
+		|			AND RegisterRecordsSerialNumbersChange.SerialNumber = SerialNumbersBalance.SerialNumber
+		|			AND RegisterRecordsSerialNumbersChange.Cell = SerialNumbersBalance.Cell
+		|			AND (ISNULL(SerialNumbersBalance.QuantityBalance, 0) < 0)
+		|
+		|ORDER BY
 		|	LineNumber");
 		
 		Query.TempTablesManager = StructureTemporaryTables.TempTablesManager;
@@ -2188,7 +2279,8 @@ Procedure RunControl(DocumentRefReportAboutRecycling, AdditionalProperties, Canc
 		If Not ResultsArray[0].IsEmpty()
 			OR Not ResultsArray[1].IsEmpty()
 			OR Not ResultsArray[2].IsEmpty()
-			OR Not ResultsArray[3].IsEmpty() Then
+			OR Not ResultsArray[3].IsEmpty()
+			OR Not ResultsArray[4].IsEmpty() Then
 			DocumentObjectProcessingReport = DocumentRefReportAboutRecycling.GetObject()
 		EndIf;
 		
@@ -2216,14 +2308,20 @@ Procedure RunControl(DocumentRefReportAboutRecycling, AdditionalProperties, Canc
 			SmallBusinessServer.ShowMessageAboutPostingToAccountsReceivableRegisterErrors(DocumentObjectProcessingReport, QueryResultSelection, Cancel);
 		EndIf;
 		
+		// Negative balance of serial numbers in the warehouse.
+		If NOT ResultsArray[4].IsEmpty() Then
+			QueryResultSelection = ResultsArray[4].Select();
+			SmallBusinessServer.ShowMessageAboutPostingSerialNumbersRegisterErrors(DocumentObjectProcessingReport, QueryResultSelection, Cancel);
+		EndIf;
+		
 	EndIf;
 	
 EndProcedure // RunControl()
 
 #Region PrintInterface
 
-// Function checks if the document is posted and calls
-// the procedure of document printing.
+// Function checks if the document is
+// posted and calls the procedure of document printing.
 //
 Function PrintForm(ObjectsArray, PrintObjects, TemplateName)
 	
@@ -2279,7 +2377,12 @@ Function PrintForm(ObjectsArray, PrintObjects, TemplateName)
 			|				THEN 1
 			|			ELSE 0
 			|		END AS IsDiscount,
-			|		AutomaticDiscountAmount
+			|		AutomaticDiscountAmount,
+			|		ConnectionKey
+			|	),
+			|	ProcessingReport.SerialNumbers.(
+			|		SerialNumber,
+			|		ConnectionKey
 			|	)
 			|FROM
 			|	Document.ProcessingReport AS ProcessingReport
@@ -2304,6 +2407,7 @@ Function PrintForm(ObjectsArray, PrintObjects, TemplateName)
 				FirstLineNumber = SpreadsheetDocument.TableHeight + 1;
 				
 				StringSelectionProducts = Header.Products.Select();
+				LinesSelectionSerialNumbers = Header.SerialNumbers.Select();
 				
 				SpreadsheetDocument.PrintParametersName = "PRINTING_PARAMETERS_ReportRecycling_Act";
 				
@@ -2361,8 +2465,12 @@ Function PrintForm(ObjectsArray, PrintObjects, TemplateName)
 					If ValueIsFilled(StringSelectionProducts.Content) Then
 						TemplateArea.Parameters.Product = StringSelectionProducts.Content;
 					Else
-						TemplateArea.Parameters.Product = SmallBusinessServer.GetProductsAndServicesPresentationForPrinting(StringSelectionProducts.Product, 
-																			StringSelectionProducts.Characteristic, StringSelectionProducts.SKU);
+						StringSerialNumbers = WorkWithSerialNumbers.SerialNumbersStringFromSelection(LinesSelectionSerialNumbers, StringSelectionProducts.ConnectionKey);
+						TemplateArea.Parameters.Product = SmallBusinessServer.GetProductsAndServicesPresentationForPrinting(
+							StringSelectionProducts.Product,
+							StringSelectionProducts.Characteristic,
+							StringSelectionProducts.SKU,
+							StringSerialNumbers);
 					EndIf;
 					
 					If AreDiscounts Then
@@ -2454,7 +2562,12 @@ Function PrintForm(ObjectsArray, PrintObjects, TemplateName)
 			|		MeasurementUnit.Description AS MeasurementUnit,
 			|		Quantity AS Quantity,
 			|		Characteristic,
-			|		ProductsAndServices.ProductsAndServicesType AS ProductsAndServicesType
+			|		ProductsAndServices.ProductsAndServicesType AS ProductsAndServicesType,
+			|		ConnectionKey
+			|	),
+			|	ProcessingReport.SerialNumbers.(
+			|		SerialNumber,
+			|		ConnectionKey
 			|	)
 			|FROM
 			|	Document.ProcessingReport AS ProcessingReport
@@ -2468,6 +2581,7 @@ Function PrintForm(ObjectsArray, PrintObjects, TemplateName)
 			Header.Next();
 			
 			LinesSelectionInventory = Header.Products.Select();
+			LinesSelectionSerialNumbers = Header.SerialNumbers.Select();
 			
 			SpreadsheetDocument.PrintParametersName = "PRINT_PARAMETERS_ReportAboutrocessing_FormOfProductContent";
 			
@@ -2517,8 +2631,13 @@ Function PrintForm(ObjectsArray, PrintObjects, TemplateName)
 				EndIf;
 				
 				TemplateArea.Parameters.Fill(LinesSelectionInventory);
-				TemplateArea.Parameters.InventoryItem = SmallBusinessServer.GetProductsAndServicesPresentationForPrinting(LinesSelectionInventory.InventoryItem, 
-																		LinesSelectionInventory.Characteristic, LinesSelectionInventory.SKU);
+				StringSerialNumbers = WorkWithSerialNumbers.SerialNumbersStringFromSelection(LinesSelectionSerialNumbers, LinesSelectionInventory.ConnectionKey);
+				TemplateArea.Parameters.InventoryItem = SmallBusinessServer.GetProductsAndServicesPresentationForPrinting(
+					LinesSelectionInventory.InventoryItem,
+					LinesSelectionInventory.Characteristic,
+					LinesSelectionInventory.SKU,
+					StringSerialNumbers);
+				
 				SpreadsheetDocument.Put(TemplateArea);
 				
 			EndDo;

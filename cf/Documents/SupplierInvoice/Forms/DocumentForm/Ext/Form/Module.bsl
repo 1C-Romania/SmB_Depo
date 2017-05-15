@@ -520,6 +520,11 @@ Procedure CalculateAmountInTabularSectionLine(TabularSectionName, TabularSection
 	CalculateVATSUM(TabularSectionRow);
 	TabularSectionRow.Total = TabularSectionRow.Amount + ?(Object.AmountIncludesVAT, 0, TabularSectionRow.VATAmount);
 	
+	// Serial numbers
+	If UseSerialNumbersBalance<>Undefined AND TabularSectionName="Inventory" Then
+		WorkWithSerialNumbersClientServer.UpdateSerialNumbersQuantity(Object, TabularSectionRow);
+	EndIf;
+	
 EndProcedure // CalculateAmountInTabularSectionLine()
 
 // Procedure recalculates the rate and multiplicity of
@@ -779,11 +784,16 @@ Function FillByBarcodesData(BarcodesData)
 				CalculateAmountInTabularSectionLine("Inventory", NewRow);
 				Items.Inventory.CurrentRow = NewRow.GetID();
 			Else
-				FoundString = TSRowsArray[0];
-				FoundString.Count = FoundString.Count + CurBarcode.Count;
-				CalculateAmountInTabularSectionLine("Inventory", FoundString);
-				Items.Inventory.CurrentRow = FoundString.GetID();
+				NewRow = TSRowsArray[0];
+				NewRow.Count = NewRow.Count + CurBarcode.Count;
+				CalculateAmountInTabularSectionLine("Inventory", NewRow);
+				Items.Inventory.CurrentRow = NewRow.GetID();
 			EndIf;
+			
+			If BarcodeData.Property("SerialNumber") AND ValueIsFilled(BarcodeData.SerialNumber) Then
+				WorkWithSerialNumbersClientServer.AddSerialNumberToString(NewRow, BarcodeData.SerialNumber, Object);
+			EndIf;
+			
 		EndIf;
 	EndDo;
 	
@@ -1713,6 +1723,9 @@ Procedure OnCreateAtServer(Cancel, StandardProcessing)
 	Items.InventoryImportDataFromDCT.Visible = UsePeripherals;
 	// End Peripherals
 	
+	// Serial numbers
+	UseSerialNumbersBalance = WorkWithSerialNumbers.UseSerialNumbersBalance();
+	
 EndProcedure // OnCreateAtServer()
 
 // Procedure - OnReadAtServer event handler.
@@ -1889,6 +1902,18 @@ Procedure NotificationProcessing(EventName, Parameter, Source)
 		GetInventoryFromStorage(InventoryAddressInStorage, TabularSectionName, CurrentPageInventory, CurrentPageInventory);
 		
 		RefreshFormFooter();
+		
+	ElsIf EventName = "SerialNumbersSelection"
+		AND ValueIsFilled(Parameter) 
+		//Form owner checkup
+		AND Source <> New UUID("00000000-0000-0000-0000-000000000000")
+		AND Source = UUID
+		Then
+		
+		ChangedCount = GetSerialNumbersFromStorage(Parameter.AddressInTemporaryStorage, Parameter.RowKey);
+		If ChangedCount Then
+			CalculateAmountInTabularSectionLine("Inventory");
+		EndIf; 		
 		
 	EndIf;
 	
@@ -2578,6 +2603,22 @@ Procedure Attachable_ReferenceClickAllInformationLinks(Item)
 	
 EndProcedure
 
+////////////////////////////////////////////////////////////////////////////////PROCEDURE - EVENT HANDLERS OF TABULAR SECTION INVENTORY
+
+&AtClient
+Procedure InventoryOnStartEdit(Item, NewRow, Copy)
+	
+	If NewRow AND Copy Then
+		Item.CurrentData.ConnectionKey = 0;
+		Item.CurrentData.SerialNumbers = "";
+	EndIf;	
+		
+	If Item.CurrentItem.Name = "SerialNumbersInventory" Then
+		OpenSerialNumbersSelection();
+	EndIf;
+	
+EndProcedure
+
 ////////////////////////////////////////////////////////////////////////////////
 // PROCEDURE - EVENT HANDLERS OF TABULAR SECTION INVENTORY
 
@@ -2606,6 +2647,17 @@ Procedure InventoryBeforeAddRow(Item, Cancel, Copy, Parent, Group)
     EndIf;
 	
 EndProcedure // InventoryBeforeAddStart()
+
+&AtClient
+Procedure InventoryBeforeDeleteRow(Item, Cancel)
+	
+	CurrentData = Items.Inventory.CurrentData;
+	SmallBusinessClientServer.DeleteRowsByConnectionKey(Object.ExciseMarks, CurrentData);
+	
+	// Serial numbers
+	WorkWithSerialNumbersClientServer.DeleteSerialNumbersByConnectionKey(Object.SerialNumbers, CurrentData,,UseSerialNumbersBalance);
+	
+EndProcedure
 
 ////////////////////////////////////////////////////////////////////////////////
 // PROCEDURE - EVENT HANDLERS OF THE INVENTORY TABULAR SECTION ATTRIBUTES
@@ -2641,7 +2693,10 @@ Procedure InventoryProductsAndServicesOnChange(Item)
 	TabularSectionRow.Price = StructureData.Price;
 	TabularSectionRow.VATRate = StructureData.VATRate;
 	TabularSectionRow.Content = "";
-		
+	
+	//Serial numbers
+	WorkWithSerialNumbersClientServer.DeleteSerialNumbersByConnectionKey(Object.SerialNumbers, TabularSectionRow,,UseSerialNumbersBalance);
+	
 	CalculateAmountInTabularSectionLine("Inventory");
 	
 EndProcedure // InventoryProductsAndServicesOnChange()
@@ -3742,6 +3797,44 @@ EndProcedure
 Procedure ExpensesPasteRows(Command)
 	PasteRowsTabularPart("Expenses"); 
 EndProcedure
+
+#EndRegion
+//Rise { Aghabekyan 2017-02-11
+
+#Region ServiceProceduresAndFunctions
+
+&AtClient
+Procedure InventorySerialNumbersStartChoice(Item, ChoiceData, StandardProcessing)
+		
+	StandardProcessing = False;
+	OpenSerialNumbersSelection();
+	
+EndProcedure
+
+&AtClient
+Procedure OpenSerialNumbersSelection()
+		
+	CurrentDataIdentifier = Items.Inventory.CurrentData.GetID();
+	ParametersOfSerialNumbers = SerialNumberPickParameters(CurrentDataIdentifier);
+	
+	OpenForm("DataProcessor.SerialNumbersSelection.Form", ParametersOfSerialNumbers, ThisObject);
+
+EndProcedure
+
+&AtServer
+Function GetSerialNumbersFromStorage(AddressInTemporaryStorage, RowKey)
+	
+	Modified = True;
+	Return WorkWithSerialNumbers.GetSerialNumbersFromStorage(Object, AddressInTemporaryStorage, RowKey);
+	
+EndFunction
+
+&AtServer
+Function SerialNumberPickParameters(CurrentDataIdentifier)
+	
+	Return WorkWithSerialNumbers.SerialNumberPickParameters(Object, ThisObject.UUID, CurrentDataIdentifier, False);
+	
+EndFunction
 
 #EndRegion
 //Rise { Aghabekyan 2017-02-11

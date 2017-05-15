@@ -522,8 +522,8 @@ EndProcedure // FillByPurchaseOrder()
 //
 // Parameters:
 // BasisDocument - DocumentRef.GoodsReceipt - deposit
-// order FillingData - Structure - Document filling data
-//	
+// order FillingData - Structure - Document filling
+//	data
 Procedure FillByGoodsReceipt(FillingData)
 	
 	// Filling out a document header.
@@ -535,11 +535,11 @@ Procedure FillByGoodsReceipt(FillingData)
 	// Filling document tabular section.
 	If FillingData.Inventory.Count() > 0 Then
 		
-		ProductsAndServices = FillingData.Inventory[0].ProductsAndServices;
-		Characteristic = FillingData.Inventory[0].Characteristic;
-		Batch = FillingData.Inventory[0].Batch;
-		MeasurementUnit = FillingData.Inventory[0].MeasurementUnit;
-		Quantity = FillingData.Inventory[0].Quantity;
+		StringInventory_0 = FillingData.Inventory[0];
+		FillPropertyValues(ThisObject, StringInventory_0);
+		
+		WorkWithSerialNumbers.FillTSSerialNumbersInHeader(ThisObject, FillingData, StringInventory_0);
+		
 		Specification = SmallBusinessServer.GetDefaultSpecification(ProductsAndServices, Characteristic);
 		
 	EndIf;
@@ -549,9 +549,9 @@ EndProcedure // FillByGoodsReceipt()
 // Procedure of document filling on the basis of the goods receipt.
 //
 // Parameters:
-// BasisDocument - DocumentRef.GoodsReceipt - deposit order
-// FillingData - Structure - Document filling data
-//	
+// BasisDocument - DocumentRef.GoodsReceipt - deposit
+// order FillingData - Structure - Document filling
+//	data
 Procedure FillBySalesInvoice(FillingData)
 	
 	// Header filling.
@@ -588,7 +588,9 @@ Procedure FillBySalesInvoice(FillingData)
 	|	CustomerInvoiceInventory.Amount AS Amount,
 	|	CustomerInvoiceInventory.VATRate AS VATRate,
 	|	CustomerInvoiceInventory.VATAmount AS VATAmount,
-	|	CustomerInvoiceInventory.Total AS Total
+	|	CustomerInvoiceInventory.Total AS Total,
+	|	CustomerInvoiceInventory.SerialNumbers,
+	|	CustomerInvoiceInventory.ConnectionKey
 	|FROM
 	|	Document.CustomerInvoice.Inventory AS CustomerInvoiceInventory
 	|WHERE
@@ -677,6 +679,9 @@ Procedure FillCheckProcessing(Cancel, CheckedAttributes)
 		SmallBusinessServer.DeleteAttributeBeingChecked(CheckedAttributes, "Contract");
 	EndIf;
 	
+	// Serial numbers
+	WorkWithSerialNumbers.FillCheckingSerialNumbersInInputField(Cancel, ThisObject);
+	
 EndProcedure // FillCheckProcessing()
 
 // Procedure - event handler Posting object.
@@ -706,6 +711,10 @@ Procedure Posting(Cancel, PostingMode)
 	SmallBusinessServer.ReflectIncomeAndExpensesUndistributed(AdditionalProperties, RegisterRecords, Cancel);
 	SmallBusinessServer.ReflectIncomeAndExpensesRetained(AdditionalProperties, RegisterRecords, Cancel);
 	SmallBusinessServer.ReflectManagerial(AdditionalProperties, RegisterRecords, Cancel);
+	
+	// SerialNumbers
+	SmallBusinessServer.ReflectTheSerialNumbersOfTheGuarantee(AdditionalProperties, RegisterRecords, Cancel);
+	SmallBusinessServer.ReflectTheSerialNumbersBalance(AdditionalProperties, RegisterRecords, Cancel);
 
 	// Record of the records sets.
 	SmallBusinessServer.WriteRecordSets(ThisObject);

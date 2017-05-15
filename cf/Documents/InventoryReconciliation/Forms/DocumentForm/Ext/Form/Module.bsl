@@ -1,5 +1,167 @@
-﻿////////////////////////////////////////////////////////////////////////////////
-// GENERAL PURPOSE PROCEDURES AND FUNCTIONS
+﻿
+#Region FormEventHandlers
+
+// Procedure - OnCreateAtServer event handler.
+//
+&AtServer
+Procedure OnCreateAtServer(Cancel, StandardProcessing)
+	
+	SmallBusinessServer.FillDocumentHeader(
+		Object,
+		,
+		Parameters.CopyingValue,
+		Parameters.Basis,
+		PostingIsAllowed,
+		Parameters.FillingValues
+	);
+	
+	// Form attributes setting.
+	DocumentDate = Object.Date;
+	If Not ValueIsFilled(DocumentDate) Then
+		DocumentDate = CurrentDate();
+	EndIf;
+	
+	SubsidiaryCompany = SmallBusinessServer.GetCompany(Object.Company);
+	NationalCurrency = Constants.NationalCurrency.Get();
+	
+	SetCellVisible();
+	
+	// Setting the method of structural unit selection depending on FO.
+	If Not Constants.FunctionalOptionAccountingByMultipleDepartments.Get()
+		AND Not Constants.FunctionalOptionAccountingByMultipleWarehouses.Get() Then
+		
+		Items.StructuralUnit.ListChoiceMode = True;
+		Items.StructuralUnit.ChoiceList.Add(Catalogs.StructuralUnits.MainWarehouse);
+		Items.StructuralUnit.ChoiceList.Add(Catalogs.StructuralUnits.MainDepartment);
+		
+	EndIf;
+	
+	ResetFilterSettings();
+	
+	SmallBusinessClientServer.SetPictureForComment(Items.GroupAdditional, Object.Comment);
+	
+	// StandardSubsystems.AdditionalReportsAndDataProcessors
+	AdditionalReportsAndDataProcessors.OnCreateAtServer(ThisForm);
+	// End StandardSubsystems.AdditionalReportsAndDataProcessors
+	
+	// StandardSubsystems.Printing
+	PrintManagement.OnCreateAtServer(ThisForm, Items.ImportantCommandsGroup);
+	// End StandardSubsystems.Printing
+	
+	// Peripherals
+	UsePeripherals = SmallBusinessReUse.UsePeripherals();
+	ListOfElectronicScales = EquipmentManagerServerCall.GetEquipmentList("ElectronicScales", , EquipmentManagerServerCall.GetClientWorkplace());
+	If ListOfElectronicScales.Count() = 0 Then
+		// There are no connected scales.
+		Items.InventoryGetWeight.Visible = False;
+	EndIf;
+	Items.InventoryImportDataFromDCT.Visible = UsePeripherals;
+	// End Peripherals
+	
+	// Serial numbers
+	UseSerialNumbersBalance = WorkWithSerialNumbers.UseSerialNumbersBalance();
+	
+EndProcedure // OnCreateAtServer()
+
+// Procedure - OnReadAtServer event handler.
+//
+&AtServer
+Procedure OnReadAtServer(CurrentObject)
+	
+	ChangeProhibitionDates.ObjectOnReadAtServer(ThisForm, CurrentObject);
+	
+EndProcedure // OnReadAtServer()
+
+// Procedure - event handler BeforeWriteAtServer.
+//
+&AtServer
+Procedure BeforeWriteAtServer(Cancel, CurrentObject, WriteParameters)
+	
+	FilterSettingsStructure = New Structure;
+	FilterSettingsStructure.Insert("ProductsAndServicesList", ProductsAndServicesList);
+	FilterSettingsStructure.Insert("ListProductsAndServicesGroups", ListProductsAndServicesGroups);
+	FilterSettingsStructure.Insert("ProductsAndServicesGroupsList", ProductsAndServicesGroupsList);
+	
+	CurrentObject.SettingsOfFilters = New ValueStorage(FilterSettingsStructure);
+	
+EndProcedure
+
+// Procedure - event handler OnOpen.
+//
+&AtClient
+Procedure OnOpen(Cancel)
+	
+	UpdateFilterHeaders();
+	
+	// Peripherals
+	EquipmentManagerClientOverridable.StartConnectingEquipmentOnFormOpen(ThisForm, "BarCodeScanner");
+	// End Peripherals
+
+EndProcedure // OnOpen()
+
+// Procedure - event handler OnClose.
+//
+&AtClient
+Procedure OnClose()
+	
+	// Peripherals
+	EquipmentManagerClientOverridable.StartDisablingEquipmentOnCloseForm(ThisForm);
+	// End Peripherals
+	
+EndProcedure // OnClose()
+
+// Procedure - event handler of the form NotificationProcessing.
+//
+&AtClient
+Procedure NotificationProcessing(EventName, Parameter, Source)
+	
+	// Peripherals
+	If Source = "Peripherals"
+	   AND IsInputAvailable() Then
+		If EventName = "ScanData" Then
+			//Transform preliminary to the expected format
+			Data = New Array();
+			If Parameter[1] = Undefined Then
+				Data.Add(New Structure("Barcode, Quantity", Parameter[0], 1)); // Get a barcode from the basic data
+			Else
+				Data.Add(New Structure("Barcode, Quantity", Parameter[1][1], 1)); // Get a barcode from the additional data
+			EndIf;
+			
+			BarcodesReceived(Data);
+		EndIf;
+	EndIf;
+	// End Peripherals
+	
+	If EventName = "SelectionIsMade" 
+		AND ValueIsFilled(Parameter) 
+		//Check for the form owner
+		AND Source <> New UUID("00000000-0000-0000-0000-000000000000")
+		AND Source = UUID
+		Then
+		
+		InventoryAddressInStorage = Parameter;
+		
+		GetInventoryFromStorage(InventoryAddressInStorage, "Inventory", True, True);
+		
+	ElsIf EventName = "SerialNumbersSelection"
+		AND ValueIsFilled(Parameter) 
+		//Form owner checkup
+		AND Source <> New UUID("00000000-0000-0000-0000-000000000000")
+		AND Source = UUID
+		Then
+		
+		ChangedCount = GetSerialNumbersFromStorage(Parameter.AddressInTemporaryStorage, Parameter.RowKey);
+		If ChangedCount Then
+			CalculateAmountInTabularSectionLine();
+		EndIf; 
+	EndIf;
+	
+EndProcedure // NotificationProcessing()
+
+#EndRegion
+
+////////////////////////////////////////////////////////////////////////////////GENERAL
+// PURPOSE PROCEDURES AND FUNCTIONS
 
 // The function returns the query text for the balances at warehouse.
 //
@@ -186,12 +348,13 @@ Function IssueQueryTextAccountsDataInCellInInventory()
 	
 EndFunction // IssueQueryTextAccountsDataInCellInInventory()
 
-// The procedure fills in the "Inventory" tabular section by balance
-// 
+// The procedure fills in the "Inventory" tabular section by
+// balance
 &AtServer
 Procedure FillByBalanceAtWarehouse()
 	
 	Object.Inventory.Clear();
+	Object.SerialNumbers.Clear();
 	
 	ThereIsFilterByProductsAndServices = ProductsAndServicesList.Count() > 0;
 	ThereIsFilterByProductsAndServicesGroups = ListProductsAndServicesGroups.Count() > 0;
@@ -415,6 +578,7 @@ Procedure FillOnlyAccountingData()
 	If ValueIsFilled(Object.Cell) Then
 		
 		Object.Inventory.Clear();
+		Object.SerialNumbers.Clear();
 		
 		Selection = ResultsArray[1].Select();
 		While Selection.Next() Do
@@ -595,15 +759,20 @@ Function FillByBarcodesData(BarcodesData)
 				
 			Else
 				
-				FoundString = TSRowsArray[0];
-				FoundString.Quantity = FoundString.Quantity + CurBarcode.Quantity;
-				FoundString.Amount = FoundString.Quantity * FoundString.Price;
-				Items.Inventory.CurrentRow = FoundString.GetID();
+				NewRow = TSRowsArray[0];
+				NewRow.Quantity = NewRow.Quantity + CurBarcode.Quantity;
+				NewRow.Amount = NewRow.Quantity * NewRow.Price;
+				Items.Inventory.CurrentRow = NewRow.GetID();
 				
 				// Rejection calculation.
-				FoundString.Deviation = FoundString.Quantity - FoundString.QuantityAccounting;
+				NewRow.Deviation = NewRow.Quantity - NewRow.QuantityAccounting;
 				
 			EndIf;
+			
+			If BarcodeData.Property("SerialNumber") AND ValueIsFilled(BarcodeData.SerialNumber) Then
+				WorkWithSerialNumbersClientServer.AddSerialNumberToString(NewRow, BarcodeData.SerialNumber, Object);
+			EndIf;
+			
 		EndIf;
 	EndDo;
 	
@@ -962,159 +1131,12 @@ EndProcedure
 
 // End Peripherals
 
-////////////////////////////////////////////////////////////////////////////////
-// PROCEDURE - FORM EVENT HANDLERS
-
-// Procedure - OnCreateAtServer event handler.
-//
-&AtServer
-Procedure OnCreateAtServer(Cancel, StandardProcessing)
-	
-	SmallBusinessServer.FillDocumentHeader(
-		Object,
-		,
-		Parameters.CopyingValue,
-		Parameters.Basis,
-		PostingIsAllowed,
-		Parameters.FillingValues
-	);
-	
-	// Form attributes setting.
-	DocumentDate = Object.Date;
-	If Not ValueIsFilled(DocumentDate) Then
-		DocumentDate = CurrentDate();
-	EndIf;
-	
-	SubsidiaryCompany = SmallBusinessServer.GetCompany(Object.Company);
-	NationalCurrency = Constants.NationalCurrency.Get();
-	
-	SetCellVisible();
-	
-	// Setting the method of structural unit selection depending on FO.
-	If Not Constants.FunctionalOptionAccountingByMultipleDepartments.Get()
-		AND Not Constants.FunctionalOptionAccountingByMultipleWarehouses.Get() Then
-		
-		Items.StructuralUnit.ListChoiceMode = True;
-		Items.StructuralUnit.ChoiceList.Add(Catalogs.StructuralUnits.MainWarehouse);
-		Items.StructuralUnit.ChoiceList.Add(Catalogs.StructuralUnits.MainDepartment);
-		
-	EndIf;
-	
-	ResetFilterSettings();
-	
-	SmallBusinessClientServer.SetPictureForComment(Items.GroupAdditional, Object.Comment);
-	
-	// StandardSubsystems.AdditionalReportsAndDataProcessors
-	AdditionalReportsAndDataProcessors.OnCreateAtServer(ThisForm);
-	// End StandardSubsystems.AdditionalReportsAndDataProcessors
-	
-	// StandardSubsystems.Printing
-	PrintManagement.OnCreateAtServer(ThisForm, Items.ImportantCommandsGroup);
-	// End StandardSubsystems.Printing
-	
-	// Peripherals
-	UsePeripherals = SmallBusinessReUse.UsePeripherals();
-	ListOfElectronicScales = EquipmentManagerServerCall.GetEquipmentList("ElectronicScales", , EquipmentManagerServerCall.GetClientWorkplace());
-	If ListOfElectronicScales.Count() = 0 Then
-		// There are no connected scales.
-		Items.InventoryGetWeight.Visible = False;
-	EndIf;
-	Items.InventoryImportDataFromDCT.Visible = UsePeripherals;
-	// End Peripherals
-	
-EndProcedure // OnCreateAtServer()
-
-// Procedure - OnReadAtServer event handler.
-//
-&AtServer
-Procedure OnReadAtServer(CurrentObject)
-	
-	ChangeProhibitionDates.ObjectOnReadAtServer(ThisForm, CurrentObject);
-	
-EndProcedure // OnReadAtServer()
-
-// Procedure - event handler BeforeWriteAtServer.
-//
-&AtServer
-Procedure BeforeWriteAtServer(Cancel, CurrentObject, WriteParameters)
-	
-	FilterSettingsStructure = New Structure;
-	FilterSettingsStructure.Insert("ProductsAndServicesList", ProductsAndServicesList);
-	FilterSettingsStructure.Insert("ListProductsAndServicesGroups", ListProductsAndServicesGroups);
-	FilterSettingsStructure.Insert("ProductsAndServicesGroupsList", ProductsAndServicesGroupsList);
-	
-	CurrentObject.SettingsOfFilters = New ValueStorage(FilterSettingsStructure);
-	
-EndProcedure
-
-// Procedure - event handler OnOpen.
-//
-&AtClient
-Procedure OnOpen(Cancel)
-	
-	UpdateFilterHeaders();
-	
-	// Peripherals
-	EquipmentManagerClientOverridable.StartConnectingEquipmentOnFormOpen(ThisForm, "BarCodeScanner");
-	// End Peripherals
-
-EndProcedure // OnOpen()
-
-// Procedure - event handler OnClose.
-//
-&AtClient
-Procedure OnClose()
-	
-	// Peripherals
-	EquipmentManagerClientOverridable.StartDisablingEquipmentOnCloseForm(ThisForm);
-	// End Peripherals
-	
-EndProcedure // OnClose()
-
-// Procedure - event handler of the form NotificationProcessing.
-//
-&AtClient
-Procedure NotificationProcessing(EventName, Parameter, Source)
-	
-	// Peripherals
-	If Source = "Peripherals"
-	   AND IsInputAvailable() Then
-		If EventName = "ScanData" Then
-			//Transform preliminary to the expected format
-			Data = New Array();
-			If Parameter[1] = Undefined Then
-				Data.Add(New Structure("Barcode, Quantity", Parameter[0], 1)); // Get a barcode from the basic data
-			Else
-				Data.Add(New Structure("Barcode, Quantity", Parameter[1][1], 1)); // Get a barcode from the additional data
-			EndIf;
-			
-			BarcodesReceived(Data);
-		EndIf;
-	EndIf;
-	// End Peripherals
-	
-	If EventName = "SelectionIsMade" 
-		AND ValueIsFilled(Parameter) 
-		//Check for the form owner
-		AND Source <> New UUID("00000000-0000-0000-0000-000000000000")
-		AND Source = UUID
-		Then
-		
-		InventoryAddressInStorage = Parameter;
-		
-		GetInventoryFromStorage(InventoryAddressInStorage, "Inventory", True, True);
-		
-	EndIf;
-	
-EndProcedure // NotificationProcessing()
-
-////////////////////////////////////////////////////////////////////////////////
-// PROCEDURE - EVENT HANDLERS OF HEADER ATTRIBUTES
+////////////////////////////////////////////////////////////////////////////////PROCEDURE - EVENT HANDLERS OF HEADER ATTRIBUTES
 
 // Procedure - event handler OnChange of the Date input field.
-// The procedure determines the situation when after changing the date
-// of a document this document is found in another period
-// of documents enumeration, and in this case the procedure assigns new unique number to the document.
+// The procedure determines the situation when after changing the
+// date of a document this document is found in
+// another period of documents enumeration, and in this case the procedure assigns new unique number to the document.
 // Overrides the corresponding form parameter.
 //
 &AtClient
@@ -1348,8 +1370,7 @@ Procedure ClearFilterByProductsAndServicesCategoriesClick(Item)
 	
 EndProcedure
 
-////////////////////////////////////////////////////////////////////////////////
-// PROCEDURE - TABULAR SECTION ATTRIBUTE EVENT HANDLERS
+////////////////////////////////////////////////////////////////////////////////PROCEDURE - TABULAR SECTION ATTRIBUTE EVENT HANDLERS
 
 // Procedure - event handler OnChange of the ProductsAndServices input field.
 //
@@ -1371,6 +1392,9 @@ Procedure InventoryProductsAndServicesOnChange(Item)
 	
 	// Rejection calculation.
 	TabularSectionRow.Deviation = TabularSectionRow.Quantity - TabularSectionRow.QuantityAccounting;
+	
+	//Serial numbers
+	WorkWithSerialNumbersClientServer.DeleteSerialNumbersByConnectionKey(Object.SerialNumbers, TabularSectionRow,,UseSerialNumbersBalance);
 	
 EndProcedure // InventoryProductsAndServicesOnChange()
 
@@ -1417,18 +1441,14 @@ Procedure InventoryMeasurementUnitChoiceProcessing(Item, ValueSelected, Standard
 	
 EndProcedure // InventoryMeasurementUnitChoiceProcessing()
 
-// Procedure - OnChange event handler of the
-// Quantity input field in the Inventory tabular section line.
+// Procedure - OnChange event handler
+// of the Quantity input field in the Inventory tabular section line.
 // Recalculates the amount in the tabular section line.
 //
 &AtClient
 Procedure InventoryQuantityOnChange(Item)
 	
-	TabularSectionRow = Items.Inventory.CurrentData;
-	TabularSectionRow.Amount = TabularSectionRow.Quantity * TabularSectionRow.Price;
-	
-	// Rejection calculation.
-	TabularSectionRow.Deviation = TabularSectionRow.Quantity - TabularSectionRow.QuantityAccounting;
+	CalculateAmountInTabularSectionLine();
 	
 EndProcedure // GoodsUnitNumberOnChange()
 
@@ -1458,6 +1478,41 @@ Procedure InventoryAmountOnChange(Item)
 	
 EndProcedure // InventoryAmountOnChange()
 
+&AtClient
+Procedure InventorySerialNumbersStartChoice(Item, ChoiceData, StandardProcessing)
+	StandardProcessing = False;
+	OpenSerialNumbersSelection();
+EndProcedure
+
+&AtClient
+Procedure InventoryBeforeDeleteRow(Item, Cancel)
+	// Serial numbers
+	CurrentData = Items.Inventory.CurrentData;
+	WorkWithSerialNumbersClientServer.DeleteSerialNumbersByConnectionKey(
+		Object.SerialNumbers, CurrentData,, UseSerialNumbersBalance);
+EndProcedure
+
+&AtClient
+Procedure InventoryOnStartEdit(Item, NewRow, Clone)
+	
+	If NewRow AND Clone Then
+		Item.CurrentData.ConnectionKey = 0;
+		Item.CurrentData.SerialNumbers = "";
+	EndIf;
+
+	If Item.CurrentItem.Name = "InventorySerialNumbers" Then
+		OpenSerialNumbersSelection();
+	EndIf;
+	
+EndProcedure
+
+&AtClient
+Procedure Attachable_SetPictureForComment()
+	
+	SmallBusinessClientServer.SetPictureForComment(Items.GroupAdditional, Object.Comment);
+	
+EndProcedure
+
 // Procedure - OnChange event handler of the Comment input field.
 //
 &AtClient
@@ -1466,13 +1521,6 @@ Procedure CommentOnChange(Item)
 	AttachIdleHandler("Attachable_SetPictureForComment", 0.5, True);
 	
 EndProcedure // CommentOnChange()
-
-&AtClient
-Procedure Attachable_SetPictureForComment()
-	
-	SmallBusinessClientServer.SetPictureForComment(Items.GroupAdditional, Object.Comment);
-	
-EndProcedure
 
 ////////////////////////////////////////////////////////////////////////////////
 // FORM COMMAND HANDLERS
@@ -1562,5 +1610,52 @@ Procedure Attachable_ExecutePrintCommand(Command)
 EndProcedure
 
 // End StandardSubsystems.Printing
+
+#EndRegion
+
+#Region ServiceProceduresAndFunctions
+
+&AtClient
+Procedure OpenSerialNumbersSelection()
+		
+	CurrentDataIdentifier = Items.Inventory.CurrentData.GetID();
+	ParametersOfSerialNumbers = SerialNumberPickParameters(CurrentDataIdentifier);
+	
+	OpenForm("DataProcessor.SerialNumbersSelection.Form", ParametersOfSerialNumbers, ThisObject);
+
+EndProcedure
+
+&AtServer
+Function GetSerialNumbersFromStorage(AddressInTemporaryStorage, RowKey)
+	
+	Modified = True;
+	Return WorkWithSerialNumbers.GetSerialNumbersFromStorage(Object, AddressInTemporaryStorage, RowKey);
+	
+EndFunction
+
+&AtServer
+Function SerialNumberPickParameters(CurrentDataIdentifier)
+	
+	Return WorkWithSerialNumbers.SerialNumberPickParameters(Object, ThisObject.UUID, CurrentDataIdentifier, False);
+	
+EndFunction
+
+&AtClient
+Procedure CalculateAmountInTabularSectionLine(TabularSectionRow = Undefined)
+	
+	If TabularSectionRow = Undefined Then
+		TabularSectionRow = Items.Inventory.CurrentData;
+	EndIf;
+	
+	// Deviation calculation.
+	TabularSectionRow.Deviation = TabularSectionRow.Quantity - TabularSectionRow.QuantityAccounting;
+	TabularSectionRow.Amount = TabularSectionRow.Quantity * TabularSectionRow.Price;
+	
+	// Serial numbers
+	If UseSerialNumbersBalance<>Undefined Then
+		WorkWithSerialNumbersClientServer.UpdateSerialNumbersQuantity(Object, TabularSectionRow);
+	EndIf;
+	
+EndProcedure
 
 #EndRegion

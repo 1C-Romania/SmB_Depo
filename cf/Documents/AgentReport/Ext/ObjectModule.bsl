@@ -234,7 +234,8 @@ Procedure FillBySalesInvoice(FillingData)
 	|	CustomerInvoiceInventory.VATRate AS VATRate,
 	|	CustomerInvoiceInventory.VATAmount AS TransmissionVATAmount,
 	|	CustomerInvoiceInventory.Order AS CustomerOrder,
-	|	0 AS ConnectionKey
+	|	0 AS ConnectionKey,
+	|	CustomerInvoiceInventory.ConnectionKey AS ConnectionKeySerialNumbes
 	|FROM
 	|	Document.CustomerInvoice.Inventory AS CustomerInvoiceInventory
 	|WHERE
@@ -265,6 +266,13 @@ Procedure FillBySalesInvoice(FillingData)
 			NewRow = Inventory.Add();
 			FillPropertyValues(NewRow, QueryResultSelection);
 		EndDo;
+		
+		If GetFunctionalOption("UseSerialNumbers") Then
+			SerialNumbers.Load(FillingData.SerialNumbers.Unload());
+			For Each Str In Inventory Do
+				Str.SerialNumbers = WorkWithSerialNumbersClientServer.StringPresentationOfSerialNumbersOfLine(SerialNumbers, Str.ConnectionKeySerialNumbers);
+			EndDo;
+		EndIf;
 		
 	EndIf;
 	
@@ -380,6 +388,9 @@ Procedure Posting(Cancel, PostingMode)
 	SmallBusinessServer.ReflectIncomeAndExpensesRetained(AdditionalProperties, RegisterRecords, Cancel);
 	SmallBusinessServer.ReflectAccountsReceivable(AdditionalProperties, RegisterRecords, Cancel);
 	SmallBusinessServer.ReflectManagerial(AdditionalProperties, RegisterRecords, Cancel);
+	
+	// SerialNumbers
+	SmallBusinessServer.ReflectTheSerialNumbersOfTheGuarantee(AdditionalProperties, RegisterRecords, Cancel);
 	
 	// Record of the records sets.
 	SmallBusinessServer.WriteRecordSets(ThisObject);

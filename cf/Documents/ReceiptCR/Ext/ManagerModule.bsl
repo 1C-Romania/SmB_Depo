@@ -668,14 +668,27 @@ Procedure InitializeDocumentData(DocumentRefReceiptCR, StructureAdditionalProper
 	|	Constant.NationalCurrency AS ConstantNationalCurrency
 	|WHERE
 	|	ReceiptCRDiscountsMarkups.Ref = &Ref
-	|	AND ReceiptCRDiscountsMarkups.Amount <> 0";
+	|	AND ReceiptCRDiscountsMarkups.Amount <> 0
+	|;
+	|
+	|////////////////////////////////////////////////////////////////////////////////
+	|SELECT
+	|	CustomerInvoiceSerialNumbers.ConnectionKey,
+	|	CustomerInvoiceSerialNumbers.SerialNumber
+	|INTO TemporaryTableSerialNumbers
+	|FROM
+	|	Document.ReceiptCR.SerialNumbers AS CustomerInvoiceSerialNumbers
+	|WHERE
+	|	CustomerInvoiceSerialNumbers.Ref = &Ref
+	|	AND &UseSerialNumbers";
 	
 	Query.SetParameter("Ref", DocumentRefReceiptCR);
 	Query.SetParameter("Company", StructureAdditionalProperties.ForPosting.Company);
 	Query.SetParameter("PointInTime", New Boundary(StructureAdditionalProperties.ForPosting.PointInTime, BoundaryType.Including));
 	Query.SetParameter("UseCharacteristics", StructureAdditionalProperties.AccountingPolicy.UseCharacteristics);
 	Query.SetParameter("UseBatches", StructureAdditionalProperties.AccountingPolicy.UseBatches);
-		
+	Query.SetParameter("UseSerialNumbers", StructureAdditionalProperties.AccountingPolicy.UseSerialNumbers);
+	
 	Query.ExecuteBatch();
 	
 	// Creation of document postings.
@@ -691,6 +704,9 @@ Procedure InitializeDocumentData(DocumentRefReceiptCR, StructureAdditionalProper
 	GenerateTableSalesByDiscountCard(DocumentRefReceiptCR, StructureAdditionalProperties);
 	// AutomaticDiscounts
 	GenerateTableSalesByAutomaticDiscountsApplied(DocumentRefReceiptCR, StructureAdditionalProperties);
+	
+	// Serial numbers
+	GenerateTableSerialNumbers(DocumentRefReceiptCR, StructureAdditionalProperties);
 	
 EndProcedure // DocumentDataInitialization()
 
@@ -708,7 +724,8 @@ Procedure RunControl(DocumentRefReceiptCR, AdditionalProperties, Cancel, Posting
 	
 	// If temporary tables "RegisterRecordsInventoryChange", control goods implementation.
 	If StructureTemporaryTables.RegisterRecordsInventoryInWarehousesChange
-	 OR StructureTemporaryTables.RegisterRecordsCashInCashRegistersChange Then
+		OR StructureTemporaryTables.RegisterRecordsCashInCashRegistersChange
+		OR StructureTemporaryTables.RegisterRecordsSerialNumbersChange Then
 		
 		Query = New Query(
 		"SELECT
@@ -781,7 +798,31 @@ Procedure RunControl(DocumentRefReceiptCR, AdditionalProperties, Cancel, Posting
 		|	ISNULL(CashAssetsInRetailCashesBalances.AmountCurBalance, 0) < 0
 		|
 		|ORDER BY
-		|	LineNumber");
+		|	LineNumber
+		|;
+		|////////////////////////////////////////////////////////////////////////////////
+		|SELECT
+		|	RegisterRecordsSerialNumbersChange.LineNumber AS LineNumber,
+		|	RegisterRecordsSerialNumbersChange.SerialNumber AS SerialNumberPresentation,
+		|	RegisterRecordsSerialNumbersChange.StructuralUnit AS StructuralUnitPresentation,
+		|	RegisterRecordsSerialNumbersChange.ProductsAndServices AS ProductsAndServicesPresentation,
+		|	RegisterRecordsSerialNumbersChange.Characteristic AS CharacteristicPresentation,
+		|	RegisterRecordsSerialNumbersChange.Batch AS BatchPresentation,
+		|	RegisterRecordsSerialNumbersChange.Cell AS PresentationCell,
+		|	SerialNumbersBalance.StructuralUnit.StructuralUnitType AS StructuralUnitType,
+		|	SerialNumbersBalance.ProductsAndServices.MeasurementUnit AS MeasurementUnitPresentation,
+		|	ISNULL(RegisterRecordsSerialNumbersChange.QuantityChange, 0) + ISNULL(SerialNumbersBalance.QuantityBalance, 0) AS BalanceSerialNumbers,
+		|	ISNULL(SerialNumbersBalance.QuantityBalance, 0) AS BalanceQuantitySerialNumbers
+		|FROM
+		|	RegisterRecordsSerialNumbersChange AS RegisterRecordsSerialNumbersChange
+		|		INNER JOIN AccumulationRegister.SerialNumbers.Balance(&ControlTime, ) AS SerialNumbersBalance
+		|		ON RegisterRecordsSerialNumbersChange.StructuralUnit = SerialNumbersBalance.StructuralUnit
+		|			AND RegisterRecordsSerialNumbersChange.ProductsAndServices = SerialNumbersBalance.ProductsAndServices
+		|			AND RegisterRecordsSerialNumbersChange.Characteristic = SerialNumbersBalance.Characteristic
+		|			AND RegisterRecordsSerialNumbersChange.Batch = SerialNumbersBalance.Batch
+		|			AND RegisterRecordsSerialNumbersChange.SerialNumber = SerialNumbersBalance.SerialNumber
+		|			AND RegisterRecordsSerialNumbersChange.Cell = SerialNumbersBalance.Cell
+		|			AND (ISNULL(SerialNumbersBalance.QuantityBalance, 0) < 0)");
 		
 		Query.TempTablesManager = StructureTemporaryTables.TempTablesManager;
 		Query.SetParameter("ControlTime", AdditionalProperties.ForPosting.ControlTime);
@@ -803,6 +844,12 @@ Procedure RunControl(DocumentRefReceiptCR, AdditionalProperties, Cancel, Posting
 		If Not ResultsArray[1].IsEmpty() Then
 			QueryResultSelection = ResultsArray[1].Select();
 			SmallBusinessServer.ErrorMessageOfPostingOnRegisterOfCashAtCashRegisters(DocumentObjectReceiptCR, QueryResultSelection, Cancel);
+		EndIf;
+		
+		// Negative balance of serial numbers in the warehouse.
+		If Not ResultsArray[2].IsEmpty() Then
+			QueryResultSelection = ResultsArray[2].Select();
+			SmallBusinessServer.ShowMessageAboutPostingSerialNumbersRegisterErrors(DocumentObjectReceiptCR, QueryResultSelection, Cancel);
 		EndIf;
 		
 	EndIf;
@@ -947,6 +994,7 @@ Function PrintForm(ObjectsArray, PrintObjects, TemplateName)
 		|		Amount AS Amount,
 		|		VATAmount AS VATAmount,
 		|		Total AS Total,
+		|		ConnectionKey,
 		|		DiscountMarkupPercent,
 		|		CASE
 		|			WHEN DocReceipt.Inventory.DiscountMarkupPercent <> 0
@@ -955,6 +1003,10 @@ Function PrintForm(ObjectsArray, PrintObjects, TemplateName)
 		|			ELSE 0
 		|		END AS IsDiscount,
 		|		AutomaticDiscountAmount
+		|	),
+		|	DocReceipt.SerialNumbers.(
+		|		SerialNumber,
+		|		ConnectionKey
 		|	)
 		|FROM
 		|	Document.ReceiptCR AS DocReceipt
@@ -1023,6 +1075,8 @@ Function PrintForm(ObjectsArray, PrintObjects, TemplateName)
 		TotalWithoutDiscounts	= 0;
 		
 		LinesSelectionInventory = Header.Inventory.Select();
+		LinesSelectionSerialNumbers = Header.SerialNumbers.Select();
+		
 		While LinesSelectionInventory.Next() Do
 			
 			If Not ValueIsFilled(LinesSelectionInventory.ProductsAndServices) Then
@@ -1034,10 +1088,9 @@ Function PrintForm(ObjectsArray, PrintObjects, TemplateName)
 			Spreadsheet.Put(NumberArea);
 			
 			DataArea.Parameters.Fill(LinesSelectionInventory);
+			StringSerialNumbers = WorkWithSerialNumbers.SerialNumbersStringFromSelection(LinesSelectionSerialNumbers, LinesSelectionInventory.ConnectionKey);
 			DataArea.Parameters.InventoryItem = SmallBusinessServer.GetProductsAndServicesPresentationForPrinting(
-				LinesSelectionInventory.InventoryItem,
-				LinesSelectionInventory.Characteristic, LinesSelectionInventory.SKU
-			);
+				LinesSelectionInventory.InventoryItem, LinesSelectionInventory.Characteristic, LinesSelectionInventory.SKU, StringSerialNumbers);
 			
 			Spreadsheet.Join(DataArea);
 			
@@ -1151,6 +1204,13 @@ Procedure Print(ObjectsArray, PrintParameters, PrintFormsCollection, PrintObject
 		
 	EndIf;
 	
+	If PrintManagement.NeedToPrintTemplate(PrintFormsCollection, "GuaranteeCard") Then
+		
+		PrintManagement.OutputSpreadsheetDocumentToCollection(PrintFormsCollection, "GuaranteeCard", "Guarantee card", 
+			WorkWithProductsServer.PrintGuaranteeCard(ObjectsArray, PrintObjects, "GuaranteeCard"));
+		
+	EndIf;
+	
 	// parameters of sending printing forms by email
 	SmallBusinessServer.FillSendingParameters(OutputParameters.SendingParameters, ObjectsArray, PrintFormsCollection);
 	
@@ -1165,10 +1225,70 @@ Procedure AddPrintCommands(PrintCommands) Export
 	
 	PrintCommand = PrintCommands.Add();
 	PrintCommand.ID = "SalesReceipt";
-	PrintCommand.Presentation = NStr("en='Sales receipt';ru='Товарный чек'");
+	PrintCommand.Presentation = NStr("ru = 'Товарный чек'; en = 'Sales receipt'");
 	PrintCommand.FormsList = "DocumentForm,ListForm,DocumentForm_CWP";
 	PrintCommand.CheckPostingBeforePrint = False;
 	PrintCommand.Order = 1;
+	
+	If GetFunctionalOption("UseSerialNumbers") Then
+		PrintCommand = PrintCommands.Add();
+		PrintCommand.ID = "GuaranteeCard";
+		PrintCommand.Presentation = NStr("ru = 'Гарантийный талон'; en = 'Guarantee card'");
+		PrintCommand.FormsList = "DocumentForm,ListForm,DocumentForm_CWP";
+		PrintCommand.CheckPostingBeforePrint = True;
+		PrintCommand.Order = 3;
+	EndIf;
+	
+EndProcedure
+
+#EndRegion
+
+#Region WorkWithSerialNumbers
+
+// Generates a table of values that contains the data for the SerialNumbersGuarantees information register.
+// Tables of values saves into the properties of the structure "AdditionalProperties".
+//
+Procedure GenerateTableSerialNumbers(DocumentRef, StructureAdditionalProperties)
+	
+	If DocumentRef.SerialNumbers.Count()=0 Then
+		StructureAdditionalProperties.TableForRegisterRecords.Insert("TableSerialNumbersBalance", New ValueTable);
+		StructureAdditionalProperties.TableForRegisterRecords.Insert("TableSerialNumbersGuarantees", New ValueTable);
+		Return;
+	EndIf;
+	
+	Query = New Query;
+	Query.TempTablesManager = StructureAdditionalProperties.ForPosting.StructureTemporaryTables.TempTablesManager;
+	Query.Text =
+	"SELECT
+	|	TemporaryTableInventory.Date AS Period,
+	|	VALUE(AccumulationRecordType.Expense) AS RecordType,
+	|	TemporaryTableInventory.Date AS EventDate,
+	|	VALUE(Enum.SerialNumbersOperations.Expense) AS Operation,
+	|	SerialNumbers.SerialNumber AS SerialNumber,
+	|	TemporaryTableInventory.Company AS Company,
+	|	TemporaryTableInventory.ProductsAndServices AS ProductsAndServices,
+	|	TemporaryTableInventory.Characteristic AS Characteristic,
+	|	TemporaryTableInventory.Batch AS Batch,
+	|	TemporaryTableInventory.StructuralUnit AS StructuralUnit,
+	|	TemporaryTableInventory.Cell AS Cell,
+	|	1 AS Quantity
+	|FROM
+	|	TemporaryTableInventory AS TemporaryTableInventory
+	|		INNER JOIN TemporaryTableSerialNumbers AS SerialNumbers
+	|		ON TemporaryTableInventory.ConnectionKey = SerialNumbers.ConnectionKey
+	|			AND (&CheckIssued)
+	|			AND (NOT &Archival)";
+	Query.SetParameter("CheckIssued", StructureAdditionalProperties.ForPosting.CheckIssued);
+	Query.SetParameter("Archival", StructureAdditionalProperties.ForPosting.Archival);
+	
+	QueryResult = Query.Execute().Unload();
+	
+	StructureAdditionalProperties.TableForRegisterRecords.Insert("TableSerialNumbersGuarantees", QueryResult);
+	If StructureAdditionalProperties.AccountingPolicy.SerialNumbersBalance Then
+		StructureAdditionalProperties.TableForRegisterRecords.Insert("TableSerialNumbersBalance", QueryResult);
+	Else
+		StructureAdditionalProperties.TableForRegisterRecords.Insert("TableSerialNumbersBalance", New ValueTable);
+	EndIf; 
 	
 EndProcedure
 

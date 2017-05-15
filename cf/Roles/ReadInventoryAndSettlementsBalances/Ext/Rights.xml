@@ -184,6 +184,17 @@
 		</right>
 	</object>
 	<object>
+		<name>AccumulationRegister.SerialNumbers</name>
+		<right>
+			<name>Read</name>
+			<value>true</value>
+		</right>
+		<right>
+			<name>View</name>
+			<value>true</value>
+		</right>
+	</object>
+	<object>
 		<name>AccumulationRegister.InventoryTransferred</name>
 		<right>
 			<name>Read</name>
@@ -276,6 +287,17 @@ T2 ON T.Order = T2.Ref",
 "CounterpartiesGroup","IsNull(T1.Counterparty, IsNull(T2.Counterparty, Value(Enum.AdditionalAccessValues.AccessPermitted)))","",
 "","","", "","","", "","","", "","","", "","","", "","","", "","","", "","","", "","","", "","","", "","","", "","","", "","","", "","","", "","","" )</condition>
 			</restrictionByCondition>
+		</right>
+		<right>
+			<name>View</name>
+			<value>true</value>
+		</right>
+	</object>
+	<object>
+		<name>InformationRegister.SerialNumbersGuarantees</name>
+		<right>
+			<name>Read</name>
+			<value>true</value>
 		</right>
 		<right>
 			<name>View</name>

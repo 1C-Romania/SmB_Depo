@@ -1,6 +1,6 @@
 ﻿
-////////////////////////////////////////////////////////////////////////////////
-// GENERAL PURPOSE PROCEDURES AND FUNCTIONS
+////////////////////////////////////////////////////////////////////////////////GENERAL
+// PURPOSE PROCEDURES AND FUNCTIONS
 
 // It receives data set from server for the DateOnChange procedure.
 //
@@ -85,7 +85,7 @@ Function GetDataMeasurementUnitOnChange(CurrentMeasurementUnit = Undefined, Meas
 	
 	Return StructureData;
 	
-EndFunction // GetDataMeasurementUnitOnChange()	
+EndFunction // GetDataMeasurementUnitOnChange()
 
 // Procedure calls the data processor for document filling by basis.
 //
@@ -99,8 +99,8 @@ Procedure FillByDocument()
 	
 EndProcedure // FillByDocument()
 
-// Procedure recalculates in the document tabular section after
-// making changes in the "Prices and currency" form. The columns are recalculated as follows: price, amount.
+// Procedure recalculates in the document
+// tabular section after making changes in the "Prices and currency" form. The columns are recalculated as follows: price, amount.
 //
 &AtClient
 Procedure ProcessChangesOnButtonPrices()
@@ -151,10 +151,10 @@ Function GeneratePriceLabel(LabelStructure)
 	
 	// Prices kind.
 	If ValueIsFilled(LabelStructure.PriceKind) Then
-		LabelText = LabelText + NStr("en='%PriceKind%';ru='%PriceKind%'");
+		LabelText = LabelText + NStr("ru = '%PriceKind%'; en = '%PriceKind%'");
 		LabelText = StrReplace(LabelText, "%PriceKind%", TrimAll(String(LabelStructure.PriceKind)));
 	Else
-		LabelText = LabelText + NStr("en='specify kind of prices';ru='указать вид цен'");
+		LabelText = LabelText + NStr("ru = 'указать вид цен'; en = 'specify type prices'");
 	EndIf;
 	
 	Return LabelText;
@@ -312,11 +312,16 @@ Function FillByBarcodesData(BarcodesData)
 				NewRow.Amount = NewRow.Quantity * NewRow.Price;
 				Items.Inventory.CurrentRow = NewRow.GetID();
 			Else
-				FoundString = TSRowsArray[0];
-				FoundString.Quantity = FoundString.Quantity + CurBarcode.Quantity;
-				FoundString.Amount = FoundString.Quantity * FoundString.Price;
-				Items.Inventory.CurrentRow = FoundString.GetID();
+				NewRow = TSRowsArray[0];
+				NewRow.Quantity = NewRow.Quantity + CurBarcode.Quantity;
+				NewRow.Amount = NewRow.Quantity * NewRow.Price;
+				Items.Inventory.CurrentRow = NewRow.GetID();
 			EndIf;
+			
+			If BarcodeData.Property("SerialNumber") AND ValueIsFilled(BarcodeData.SerialNumber) Then
+				WorkWithSerialNumbersClientServer.AddSerialNumberToString(NewRow, BarcodeData.SerialNumber, Object);
+			EndIf;
+			
 		EndIf;
 	EndDo;
 	
@@ -382,7 +387,7 @@ Procedure BarcodesAreReceivedFragment(UnknownBarcodes) Export
 	
 	For Each CurUndefinedBarcode IN UnknownBarcodes Do
 		
-		MessageString = NStr("en='Data by barcode is not found: %1%; quantity: %2%';ru='Данные по штрихкоду не найдены: %1%; количество: %2%'");
+		MessageString = NStr("ru = 'Данные по штрихкоду не найдены: %1%; количество: %2%'; en = 'Data by barcode is not found: %1%; quantity: %2%'");
 		MessageString = StrReplace(MessageString, "%1%", CurUndefinedBarcode.Barcode);
 		MessageString = StrReplace(MessageString, "%2%", CurUndefinedBarcode.Quantity);
 		CommonUseClientServer.MessageToUser(MessageString);
@@ -393,8 +398,8 @@ EndProcedure
 
 // End Peripherals
 
-////////////////////////////////////////////////////////////////////////////////
-// PROCEDURES AND FUNCTIONS FOR CONTROL OF THE FORM APPEARANCE
+////////////////////////////////////////////////////////////////////////////////PROCEDURES
+// AND FUNCTIONS FOR CONTROL OF THE FORM APPEARANCE
 
 // Receives the flag of Order warehouse.
 //
@@ -409,11 +414,11 @@ Procedure SetCellVisible()
 		Items.Cell.Enabled = True;
 	EndIf;
 	
-EndProcedure // SetCellVisible()	
+EndProcedure // SetCellVisible()
 
 &AtServer
-// The procedure sets the form attributes
-// visible on the option Use subsystem Production.
+// The procedure sets the form
+// attributes visible on the option Use subsystem Production.
 //
 // Parameters:
 // No.
@@ -458,11 +463,11 @@ Procedure SetVisibleByFOUseProductionSubsystem()
 	
 EndProcedure // SetVisibleByFDUseProductionSubsystem()
 
-///////////////////////////////////////////////////////////////////////////////
-// PICK BUTTON CLICK PROCERSSING PROCEDURES
+///////////////////////////////////////////////////////////////////////////////PICK
+// BUTTON CLICK PROCERSSING PROCEDURES
 
-// Procedure - event handler Action of the Pick command
-//
+// Procedure - event handler Action of the
+//Pick command
 &AtClient
 Procedure Pick(Command)
 	
@@ -498,8 +503,8 @@ Procedure Pick(Command)
 	
 EndProcedure // ExecutePick()
 
-// Function gets a product list from the temporary storage
-//
+// Function gets a product list from
+//the temporary storage
 &AtServer
 Procedure GetInventoryFromStorage(InventoryAddressInStorage, TabularSectionName, AreCharacteristics, AreBatches)
 	
@@ -522,7 +527,7 @@ EndProcedure // GetInventoryFromStorage()
 Procedure SearchByBarcode(Command)
 	
 	CurBarcode = "";
-	ShowInputValue(New NotifyDescription("SearchByBarcodeEnd", ThisObject, New Structure("CurBarcode", CurBarcode)), CurBarcode, NStr("en='Enter barcode';ru='Введите штрихкод'"));
+	ShowInputValue(New NotifyDescription("SearchByBarcodeEnd", ThisObject, New Structure("CurBarcode", CurBarcode)), CurBarcode, NStr("ru = 'Введите штрихкод'; en = 'Enter barcode'"));
 
 EndProcedure
 
@@ -538,8 +543,8 @@ Procedure SearchByBarcodeEnd(Result, AdditionalParameters) Export
 
 EndProcedure // SearchByBarcode()
 
-// Procedure - event handler Action of the GetWeight command
-//
+// Procedure - event handler Action of the
+//GetWeight command
 &AtClient
 Procedure GetWeight(Command)
 	
@@ -547,7 +552,7 @@ Procedure GetWeight(Command)
 	
 	If TabularSectionRow = Undefined Then
 		
-		ShowMessageBox(Undefined, NStr("en='It is required to select a line to get weight for it.';ru='Необходимо выбрать строку, для которой необходимо получить вес.'"));
+		ShowMessageBox(Undefined, NStr("ru = 'Необходимо выбрать строку, для которой необходимо получить вес.'; en = 'Необходимо выбрать строку, для которой необходимо получить вес.'"));
 		
 	ElsIf EquipmentManagerClient.RefreshClientWorkplace() Then // Checks if the operator's workplace is specified
 		
@@ -565,7 +570,7 @@ Procedure GetWeightEnd(Weight, Parameters) Export
 	
 	If Not Weight = Undefined Then
 		If Weight = 0 Then
-			MessageText = NStr("en='Electronic scales returned zero weight.';ru='Электронные весы вернули нулевой вес.'");
+			MessageText = NStr("ru = 'Электронные весы вернули нулевой вес.'; en = 'Электронные весы вернули нулевой вес.'");
 			CommonUseClientServer.MessageToUser(MessageText);
 		Else
 			// Weight is received.
@@ -598,8 +603,7 @@ EndProcedure
 
 // End Peripherals
 
-////////////////////////////////////////////////////////////////////////////////
-// PROCEDURE - FORM EVENT HANDLERS
+////////////////////////////////////////////////////////////////////////////////PROCEDURE - FORM EVENT HANDLERS
 
 // Procedure - OnCreateAtServer event handler.
 //
@@ -618,13 +622,13 @@ Procedure OnCreateAtServer(Cancel, StandardProcessing)
 	If TypeOf(Parameters.Basis) = Type("DocumentRef.InventoryReconciliation") Then
 		
 		Query = New Query(
-		"SELECT TOP 1
-		|	InventoryReconciliation.Quantity - InventoryReconciliation.QuantityAccounting AS Quantity
-		|FROM
-		|	Document.InventoryReconciliation.Inventory AS InventoryReconciliation
-		|WHERE
-		|	InventoryReconciliation.Ref = &BasisDocument
-		|	AND InventoryReconciliation.Quantity - InventoryReconciliation.QuantityAccounting > 0");
+		"SELECT
+		|	TOP 1 InventoryReconciliation.Quantity - InventoryReconciliation.QuantityAccounting
+		|AS
+		|	Quantity FROM Document.InventoryReconciliation.Inventory
+		|AS
+		|	InventoryReconciliation WHERE InventoryReconciliation.Ref
+		|	= &BasisDocument AND InventoryReconciliation.Quantity - InventoryReconciliation.QuantityAccounting > 0");
 		
 		Query.SetParameter("BasisDocument", Parameters.Basis);
 		
@@ -673,6 +677,9 @@ Procedure OnCreateAtServer(Cancel, StandardProcessing)
 	EndIf;
 	Items.InventoryImportDataFromDCT.Visible = UsePeripherals;
 	// End Peripherals
+
+	// Serial numbers
+	UseSerialNumbersBalance = WorkWithSerialNumbers.UseSerialNumbersBalance();
 	
 EndProcedure // OnCreateAtServer()
 
@@ -743,13 +750,33 @@ Procedure NotificationProcessing(EventName, Parameter, Source)
 		InventoryAddressInStorage = Parameter;
 		
 		GetInventoryFromStorage(InventoryAddressInStorage, "Inventory", True, True);
+	ElsIf EventName = "SerialNumbersSelection"
+		And ValueIsFilled(Parameter) 
+		//Form owner checkup
+		And Source <> New UUID("00000000-0000-0000-0000-000000000000")
+		And Source = UUID
+		Then
 		
+		ChangedCount = GetSerialNumbersFromStorage(Parameter.AddressInTemporaryStorage, Parameter.RowKey);
+		If ChangedCount Then
+			CalculateAmountInTabularSectionLine();
+		EndIf; 
+	ElsIf EventName = "SerialNumbersSelection"
+		AND ValueIsFilled(Parameter) 
+		//Form owner checkup
+		AND Source <> New UUID("00000000-0000-0000-0000-000000000000")
+		AND Source = UUID
+		Then
+		
+		ChangedCount = GetSerialNumbersFromStorage(Parameter.AddressInTemporaryStorage, Parameter.RowKey);
+		If ChangedCount Then
+			CalculateAmountInTabularSectionLine();
+		EndIf;
 	EndIf;
 	
 EndProcedure // NotificationProcessing()
 
-////////////////////////////////////////////////////////////////////////////////
-// PROCEDURE - ACTIONS OF THE FORM COMMAND PANELS
+////////////////////////////////////////////////////////////////////////////////PROCEDURE - ACTIONS OF THE FORM COMMAND PANELS
 
 // Procedure - handler of clicking the FillByBasis button.
 //
@@ -759,7 +786,7 @@ Procedure FillByBasis(Command)
 	Response = Undefined;
 
 	
-	ShowQueryBox(New NotifyDescription("FillByBasisEnd", ThisObject), NStr("en='Document will be completely refilled by ""Basis""! Continue?';ru='Документ будет полностью перезаполнен по ""Основанию""! Продолжить?'"), QuestionDialogMode.YesNo, 0);	
+	ShowQueryBox(New NotifyDescription("FillByBasisEnd", ThisObject), NStr("ru = 'Документ будет полностью перезаполнен по ""Основанию""! Продолжить?'; en = 'The document will be refilled by base document. Continue?'"), QuestionDialogMode.YesNo, 0);	
 
 EndProcedure
 
@@ -774,8 +801,8 @@ Procedure FillByBasisEnd(Result, AdditionalParameters) Export
 EndProcedure  // FillExecute()
 
 &AtClient
-// Procedure is called by clicking "Prices" button
-// with command of tabular section panel.
+// Procedure is called by clicking
+// "Prices" button with command of tabular section panel.
 //
 Procedure EditPrices(Item, StandardProcessing)
 	
@@ -785,13 +812,12 @@ Procedure EditPrices(Item, StandardProcessing)
 	
 EndProcedure // EditPrices()
 
-////////////////////////////////////////////////////////////////////////////////
-// PROCEDURE - EVENT HANDLERS OF HEADER ATTRIBUTES
+////////////////////////////////////////////////////////////////////////////////PROCEDURE - EVENT HANDLERS OF HEADER ATTRIBUTES
 
 // Procedure - event handler OnChange of the Date input field.
-// The procedure determines the situation when after changing the date
-// of a document this document is found in another period
-// of documents enumeration, and in this case the procedure assigns new unique number to the document.
+// The procedure determines the situation when after changing the
+// date of a document this document is found in
+// another period of documents enumeration, and in this case the procedure assigns new unique number to the document.
 // Overrides the corresponding form parameter.
 //
 &AtClient
@@ -810,8 +836,8 @@ Procedure DateOnChange(Item)
 EndProcedure // DateOnChange()
 
 // Procedure - event handler OnChange of the Company input field.
-// IN procedure the document number
-// is cleared, and also the form functional options are configured.
+// IN procedure the document
+// number is cleared, and also the form functional options are configured.
 // Overrides the corresponding form parameter.
 //
 &AtClient
@@ -847,8 +873,7 @@ Procedure StructuralUnitOpening(Item, StandardProcessing)
 	
 EndProcedure // StructuralUnitOpening()
 
-////////////////////////////////////////////////////////////////////////////////
-// PROCEDURE - TABULAR SECTION ATTRIBUTE EVENT HANDLERS
+#Region TabularSectionsHandlers
 
 // Procedure - event handler OnChange of the ProductsAndServices input field.
 //
@@ -947,20 +972,19 @@ Procedure InventoryMeasurementUnitChoiceProcessing(Item, ValueSelected, Standard
 	
 EndProcedure // InventoryMeasurementUnitChoiceProcessing()
 
-// Procedure - OnChange event handler of the
-// Quantity input field in the Inventory tabular section line.
+// Procedure - OnChange event handler
+// of the Quantity input field in the Inventory tabular section line.
 // Recalculates the amount in the tabular section line.
 //
 &AtClient
 Procedure InventoryQuantityOnChange(Item)
 	
-	TabularSectionRow = Items.Inventory.CurrentData;
-	TabularSectionRow.Amount = TabularSectionRow.Quantity * TabularSectionRow.Price;
+	CalculateAmountInTabularSectionLine();
 	
 EndProcedure // GoodsUnitNumberOnChange()
 
-// Procedure - OnChange event handler of the
-// Price input field in the Inventory tabular section line.
+// Procedure - OnChange event handler
+// of the Price input field in the Inventory tabular section line.
 // Recalculates the amounts in the tabular section line.
 //
 &AtClient
@@ -971,8 +995,8 @@ Procedure InventoryPriceOnChange(Item)
 
 EndProcedure
 
-// Procedure - OnChange event handler of the
-// Amount input field in the Inventory tabular section line.
+// Procedure - OnChange event handler
+// of the Amount input field in the Inventory tabular section line.
 // Recalculates prices in the tabular section line.
 //
 &AtClient
@@ -998,6 +1022,39 @@ Procedure Attachable_SetPictureForComment()
 	SmallBusinessClientServer.SetPictureForComment(Items.GroupAdditional, Object.Comment);
 	
 EndProcedure
+
+&AtClient
+Procedure InventoryBeforeDeleteRow(Item, Cancel)
+	
+	// Serial numbers
+	CurrentData = Items.Inventory.CurrentData;
+	WorkWithSerialNumbersClientServer.DeleteSerialNumbersByConnectionKey(Object.SerialNumbers, CurrentData, , UseSerialNumbersBalance);
+	
+EndProcedure
+
+&AtClient
+Procedure InventoryOnStartEdit(Item, NewRow, Clone)
+	
+	If NewRow AND Clone Then
+		Item.CurrentData.ConnectionKey = 0;
+		Item.CurrentData.SerialNumbers = "";
+	EndIf;	
+	
+	If Item.CurrentItem.Name = "InventorySerialNumbers" Then
+		OpenSerialNumbersSelection();
+	EndIf;
+
+EndProcedure
+
+&AtClient
+Procedure InventorySerialNumbersStartChoice(Item, ChoiceData, StandardProcessing)
+	
+	StandardProcessing = False;
+	OpenSerialNumbersSelection();
+	
+EndProcedure
+
+#EndRegion
 
 #Region LibrariesHandlers
 
@@ -1100,13 +1157,42 @@ EndProcedure
 #EndRegion
 //Rise } Aghabekyan 2017-02-11
 
+#Region ServiceProceduresAndFunctions
 
+&AtClient
+Procedure OpenSerialNumbersSelection()
+		
+	CurrentDataIdentifier = Items.Inventory.CurrentData.GetID();
+	ParametersOfSerialNumbers = SerialNumberPickParameters(CurrentDataIdentifier);
+	
+	OpenForm("DataProcessor.SerialNumbersSelection.Form", ParametersOfSerialNumbers, ThisObject);
 
+EndProcedure
 
+&AtServer
+Function GetSerialNumbersFromStorage(AddressInTemporaryStorage, RowKey)
+	
+	Modified = True;
+	Return WorkWithSerialNumbers.GetSerialNumbersFromStorage(Object, AddressInTemporaryStorage, RowKey);
+	
+EndFunction
 
+&AtServer
+Function SerialNumberPickParameters(CurrentDataIdentifier)
+	
+	Return WorkWithSerialNumbers.SerialNumberPickParameters(Object, ThisObject.UUID, CurrentDataIdentifier, False);
+	
+EndFunction
 
+&AtClient
+Procedure CalculateAmountInTabularSectionLine(TabularSectionRow = Undefined)
+	
+	If TabularSectionRow = Undefined Then
+		TabularSectionRow = Items.Inventory.CurrentData;
+	EndIf;
+	
+	TabularSectionRow.Amount = TabularSectionRow.Quantity * TabularSectionRow.Price;
+		
+EndProcedure
 
-
-
-
-
+#EndRegion
