@@ -1215,7 +1215,11 @@ Procedure GenerateTableSerialNumbers(DocumentRef, StructureAdditionalProperties)
 	|FROM
 	|	TemporaryTableInventory AS TemporaryTableInventory
 	|		INNER JOIN TemporaryTableSerialNumbers AS SerialNumbers
-	|		ON TemporaryTableInventory.ConnectionKey = SerialNumbers.ConnectionKey";
+	|		ON TemporaryTableInventory.ConnectionKey = SerialNumbers.ConnectionKey
+	|WHERE
+	|	&CompletePosting";	
+		
+	Query.SetParameter("CompletePosting", StructureAdditionalProperties.ForPosting.CompletePosting);
 	
 	QueryResult = Query.Execute().Unload();
 	

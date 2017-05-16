@@ -723,7 +723,7 @@ Procedure GenerateTableSerialNumbers(DocumentRef, StructureAdditionalProperties)
 	Query.Text =
 	"SELECT
 	|	TemporaryTableInventory.Date AS Period,
-	|	VALUE(AccumulationRecordType.Expense) AS RecordType,
+	|	VALUE(AccumulationRecordType.Receipt) AS RecordType,
 	|	TemporaryTableInventory.Date AS EventDate,
 	|	VALUE(Enum.SerialNumbersOperations.Expense) AS Operation,
 	|	SerialNumbers.SerialNumber AS SerialNumber,
