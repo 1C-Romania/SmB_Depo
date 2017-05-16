@@ -1556,8 +1556,7 @@ Procedure InitializeDocumentData(DocumentRefInventoryTransfer, StructureAddition
 	|	Document.InventoryTransfer.SerialNumbers AS InventoryTransferSerialNumbers
 	|WHERE
 	|	InventoryTransferSerialNumbers.Ref = &Ref
-	|	AND &UseSerialNumbers
-	|	AND NOT InventoryTransferSerialNumbers.Ref.StructuralUnit.OrderWarehouse";
+	|	AND &UseSerialNumbers";
 	
 	Query.SetParameter("Ref", DocumentRefInventoryTransfer);
 	Query.SetParameter("Company", StructureAdditionalProperties.ForPosting.Company);
@@ -1573,7 +1572,7 @@ Procedure InitializeDocumentData(DocumentRefInventoryTransfer, StructureAddition
 	Query.SetParameter("InventoryTransfer", NStr("ru = 'Перемещение запасов'; en = 'Inventory transfer'"));
 	
 	ResultsArray = Query.Execute();
-		
+
 	// Creation of document postings.
 	GenerateTableInventoryInWarehouses(DocumentRefInventoryTransfer, StructureAdditionalProperties);
 	GenerateTableInventoryForExpenseFromWarehouses(DocumentRefInventoryTransfer, StructureAdditionalProperties);
@@ -1616,11 +1615,14 @@ Procedure GenerateTableSerialNumbers(DocumentRef, StructureAdditionalProperties)
 		|	TemporaryTableInventory.StructuralUnit AS StructuralUnit,
 		|	TemporaryTableInventory.Cell AS Cell,
 		|	TemporaryTableInventory.OperationKind AS OperationKind,
-		|	1 AS Quantity
+		|	1 AS Quantity,
+		|	TemporaryTableInventory.OrderWarehouse AS OrderWarehouse
 		|FROM
 		|	TemporaryTableInventory AS TemporaryTableInventory
 		|		INNER JOIN TemporaryTableSerialNumbers AS SerialNumbers
 		|		ON TemporaryTableInventory.ConnectionKey = SerialNumbers.ConnectionKey
+		|WHERE
+		|	NOT TemporaryTableInventory.OrderWarehouse
 		|
 		|UNION ALL
 		|
@@ -1635,13 +1637,15 @@ Procedure GenerateTableSerialNumbers(DocumentRef, StructureAdditionalProperties)
 		|	TemporaryTableInventory.StructuralUnitCorr,
 		|	TemporaryTableInventory.CorrCell,
 		|	TemporaryTableInventory.OperationKind,
-		|	1
+		|	1,
+		|	TemporaryTableInventory.OrderWarehouse
 		|FROM
 		|	TemporaryTableInventory AS TemporaryTableInventory
 		|		INNER JOIN TemporaryTableSerialNumbers AS SerialNumbers
 		|		ON TemporaryTableInventory.ConnectionKey = SerialNumbers.ConnectionKey
 		|WHERE
 		|	NOT TemporaryTableInventory.OperationKind = VALUE(Enum.OperationKindsInventoryTransfer.WriteOffToExpenses)
+		|	AND NOT TemporaryTableInventory.CorrWarrantWarehouse
 		|;
 		|
 		|////////////////////////////////////////////////////////////////////////////////

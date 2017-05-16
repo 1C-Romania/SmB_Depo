@@ -33,7 +33,7 @@ Procedure InitializeDocumentData(DocumentRefInventoryReceipt, StructureAdditiona
 	|		WHEN VALUETYPE(InventoryReceiptInventory.MeasurementUnit) = TYPE(Catalog.UOMClassifier)
 	|			THEN InventoryReceiptInventory.Quantity
 	|		ELSE InventoryReceiptInventory.Quantity * InventoryReceiptInventory.MeasurementUnit.Factor
-	|	END AS Count,
+	|	END AS Quantity,
 	|	TRUE AS FixedCost,
 	|	InventoryReceiptInventory.Amount AS Amount,
 	|	VALUE(AccountingRecordType.Debit) AS RecordKindManagerial,
@@ -71,7 +71,7 @@ Procedure InitializeDocumentData(DocumentRefInventoryReceipt, StructureAdditiona
 	|		WHEN VALUETYPE(InventoryReceiptInventory.MeasurementUnit) = TYPE(Catalog.UOMClassifier)
 	|			THEN InventoryReceiptInventory.Quantity
 	|		ELSE InventoryReceiptInventory.Quantity * InventoryReceiptInventory.MeasurementUnit.Factor
-	|	END AS Count
+	|	END AS Quantity
 	|FROM
 	|	Document.InventoryReceipt.Inventory AS InventoryReceiptInventory
 	|WHERE
@@ -101,7 +101,7 @@ Procedure InitializeDocumentData(DocumentRefInventoryReceipt, StructureAdditiona
 	|		WHEN VALUETYPE(InventoryReceiptInventory.MeasurementUnit) = TYPE(Catalog.UOMClassifier)
 	|			THEN InventoryReceiptInventory.Quantity
 	|		ELSE InventoryReceiptInventory.Quantity * InventoryReceiptInventory.MeasurementUnit.Factor
-	|	END AS Count
+	|	END AS Quantity
 	|FROM
 	|	Document.InventoryReceipt.Inventory AS InventoryReceiptInventory
 	|WHERE

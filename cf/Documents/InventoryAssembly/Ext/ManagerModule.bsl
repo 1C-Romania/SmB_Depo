@@ -6192,6 +6192,8 @@ Procedure InitializeDocumentDataDisassembly(DocumentRefInventoryAssembly, Struct
 	"SELECT
 	|	InventoryAssemblyInventory.LineNumber AS LineNumber,
 	|	InventoryAssemblyInventory.Ref.Date AS Period,
+	|	InventoryAssemblyInventory.Ref AS Ref,
+	|	InventoryAssemblyInventory.ConnectionKey AS ConnectionKey,
 	|	&Company AS Company,
 	|	InventoryAssemblyInventory.Ref.StructuralUnit AS StructuralUnit,
 	|	InventoryAssemblyInventory.Ref.StructuralUnit.OrderWarehouse AS OrderWarehouse,
@@ -6243,13 +6245,13 @@ Procedure InitializeDocumentDataDisassembly(DocumentRefInventoryAssembly, Struct
 	|		ELSE InventoryAssemblyInventory.Ref.BasisDocument
 	|	END AS SupplySource,
 	|	CASE
-	|		WHEN VALUETYPE(InventoryAssemblyInventory.MeasurementUnit) = Type(Catalog.UOMClassifier)
+	|		WHEN VALUETYPE(InventoryAssemblyInventory.MeasurementUnit) = TYPE(Catalog.UOMClassifier)
 	|			THEN InventoryAssemblyInventory.Quantity
 	|		ELSE InventoryAssemblyInventory.Quantity * InventoryAssemblyInventory.MeasurementUnit.Factor
 	|	END AS Quantity,
 	|	0 AS Amount,
-	|	CAST(&InventoryAssembly AS String(100)) AS ContentOfAccountingRecord,
-	|	CAST(&InventoryAssembly AS String(100)) AS Content,
+	|	CAST(&InventoryAssembly AS STRING(100)) AS ContentOfAccountingRecord,
+	|	CAST(&InventoryAssembly AS STRING(100)) AS Content,
 	|	&UpdateDateToRelease_1_2_1 AS UpdateDateToRelease_1_2_1
 	|INTO TemporaryTableProduction
 	|FROM
@@ -6361,7 +6363,7 @@ Procedure InitializeDocumentDataDisassembly(DocumentRefInventoryAssembly, Struct
 	|FROM
 	|	TemporaryTableProduction AS TableProduction
 	|WHERE
-	|	Not TableProduction.OrderWarehouse
+	|	NOT TableProduction.OrderWarehouse
 	|	AND TableProduction.Period >= TableProduction.UpdateDateToRelease_1_2_1
 	|
 	|GROUP BY
@@ -6396,7 +6398,7 @@ Procedure InitializeDocumentDataDisassembly(DocumentRefInventoryAssembly, Struct
 	|	TemporaryTableProduction AS TableProduction
 	|WHERE
 	|	TableProduction.OrderWarehouse
-	|	AND Not TableProduction.OrderWarehouseOfProducts
+	|	AND NOT TableProduction.OrderWarehouseOfProducts
 	|	AND TableProduction.Period >= TableProduction.UpdateDateToRelease_1_2_1
 	|
 	|GROUP BY
@@ -6602,12 +6604,12 @@ Procedure InitializeDocumentDataDisassembly(DocumentRefInventoryAssembly, Struct
 	|	END AS InventoryGLAccount,
 	|	InventoryAssemblyProducts.Specification AS Specification,
 	|	SUM(CASE
-	|			WHEN VALUETYPE(InventoryAssemblyProducts.MeasurementUnit) = Type(Catalog.UOMClassifier)
+	|			WHEN VALUETYPE(InventoryAssemblyProducts.MeasurementUnit) = TYPE(Catalog.UOMClassifier)
 	|				THEN InventoryAssemblyProducts.Quantity
 	|			ELSE InventoryAssemblyProducts.Quantity * InventoryAssemblyProducts.MeasurementUnit.Factor
 	|		END) AS Quantity,
 	|	SUM(CASE
-	|			WHEN VALUETYPE(InventoryAssemblyProducts.MeasurementUnit) = Type(Catalog.UOMClassifier)
+	|			WHEN VALUETYPE(InventoryAssemblyProducts.MeasurementUnit) = TYPE(Catalog.UOMClassifier)
 	|				THEN InventoryAssemblyProducts.Reserve
 	|			ELSE InventoryAssemblyProducts.Reserve * InventoryAssemblyProducts.MeasurementUnit.Factor
 	|		END) AS Reserve,
@@ -6698,7 +6700,7 @@ Procedure InitializeDocumentDataDisassembly(DocumentRefInventoryAssembly, Struct
 	|FROM
 	|	TemporaryTableProduction AS TableProduction
 	|		INNER JOIN Document.InventoryAssembly.SerialNumbers AS TableSerialNumbers
-	|		BY TableProduction.Ref = TableSerialNumbers.Ref
+	|		ON TableProduction.Ref = TableSerialNumbers.Ref
 	|			AND TableProduction.ConnectionKey = TableSerialNumbers.ConnectionKey
 	|WHERE
 	|	TableProduction.Ref = &Ref
@@ -6723,7 +6725,7 @@ Procedure InitializeDocumentDataDisassembly(DocumentRefInventoryAssembly, Struct
 	|FROM
 	|	Document.InventoryAssembly.Products AS TableInventory
 	|		INNER JOIN Document.InventoryAssembly.SerialNumbersProducts AS TableSerialNumbers
-	|		BY TableInventory.Ref = TableSerialNumbers.Ref
+	|		ON TableInventory.Ref = TableSerialNumbers.Ref
 	|			AND TableInventory.ConnectionKey = TableSerialNumbers.ConnectionKey
 	|WHERE
 	|	TableSerialNumbers.Ref = &Ref

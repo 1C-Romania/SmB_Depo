@@ -1729,8 +1729,12 @@ EndProcedure
 &AtServer
 Function GetSerialNumbersInventoryFromStorage(AddressInTemporaryStorage, RowKey)
 	
-	Return WorkWithSerialNumbers.GetSerialNumbersFromStorage(Object, AddressInTemporaryStorage, RowKey, "Inventory", "SerialNumbers");
+	ParametersFieldNames = New Structure;
+	ParametersFieldNames.Insert("NameTSInventory", "Inventory");
+	ParametersFieldNames.Insert("TSNameSerialNumbers", "SerialNumbers");
 	
+	Return WorkWithSerialNumbers.GetSerialNumbersFromStorage(Object, AddressInTemporaryStorage, RowKey, ParametersFieldNames);
+
 EndFunction
 
 &AtServer
