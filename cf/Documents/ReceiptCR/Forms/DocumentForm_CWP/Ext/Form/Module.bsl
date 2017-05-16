@@ -385,6 +385,11 @@ Procedure CalculateAmountInTabularSectionLine(TabularSectionRow = Undefined, Set
 		SetDescriptionForStringTSInventoryAtClient(TabularSectionRow);
 	EndIf;
 	
+	// Serial numbers
+	If UseSerialNumbersBalance <> Undefined Then
+		WorkWithSerialNumbersClientServer.UpdateSerialNumbersQuantity(Object, TabularSectionRow);
+	EndIf;
+	
 EndProcedure // CalculateAmountInTabularSectionLine()
 
 // Procedure calculates discount % in tabular section string.

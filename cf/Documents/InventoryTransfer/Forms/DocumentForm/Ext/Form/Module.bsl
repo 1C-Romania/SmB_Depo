@@ -1679,7 +1679,12 @@ Procedure CalculateAmountInTabularSectionLine(TabularSectionRow = Undefined)
 	EndIf;
 	
 	TabularSectionRow.Amount = TabularSectionRow.Quantity * TabularSectionRow.Price;
-		
+	
+	// Serial numbers
+	If UseSerialNumbersBalance<>Undefined Then
+		WorkWithSerialNumbersClientServer.UpdateSerialNumbersQuantity(Object, TabularSectionRow);
+	EndIf;
+	
 EndProcedure
 
 #EndRegion
