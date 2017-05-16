@@ -3039,7 +3039,10 @@ EndProcedure
 Function GetSerialNumbersFromStorage(AddressInTemporaryStorage, RowKey)
 	
 	Modified = True;
-	Return WorkWithSerialNumbers.GetSerialNumbersFromStorage(Object, AddressInTemporaryStorage, RowKey, "Products");
+	ParametersFieldNames = New Structure;
+	ParametersFieldNames.Insert("NameTSInventory", "Products");
+	
+	Return WorkWithSerialNumbers.GetSerialNumbersFromStorage(Object, AddressInTemporaryStorage, RowKey, ParametersFieldNames);
 	
 EndFunction
 

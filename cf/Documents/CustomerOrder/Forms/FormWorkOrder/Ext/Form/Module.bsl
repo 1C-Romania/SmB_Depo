@@ -6721,7 +6721,13 @@ EndFunction
 Function GetSerialNumbersMaterialsFromStorage(AddressInTemporaryStorage, RowKey)
 	
 	Modified = True;
-	Return WorkWithSerialNumbers.GetSerialNumbersFromStorage(Object, AddressInTemporaryStorage, RowKey, "Materials", "SerialNumbersMaterials", "ConnectionKeySerialNumbers");
+	
+	ParametersFieldNames = New Structure;
+	ParametersFieldNames.Insert("NameTSInventory", "Materials");
+	ParametersFieldNames.Insert("TSNameSerialNumbers", "SerialNumbersMaterials");
+	ParametersFieldNames.Insert("FieldNameConnectionKey", "ConnectionKeySerialNumbers");
+	
+	Return WorkWithSerialNumbers.GetSerialNumbersFromStorage(Object, AddressInTemporaryStorage, RowKey, ParametersFieldNames);
 	
 EndFunction
 
