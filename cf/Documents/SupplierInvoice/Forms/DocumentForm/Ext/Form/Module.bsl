@@ -2652,7 +2652,6 @@ EndProcedure // InventoryBeforeAddStart()
 Procedure InventoryBeforeDeleteRow(Item, Cancel)
 	
 	CurrentData = Items.Inventory.CurrentData;
-	SmallBusinessClientServer.DeleteRowsByConnectionKey(Object.ExciseMarks, CurrentData);
 	
 	// Serial numbers
 	WorkWithSerialNumbersClientServer.DeleteSerialNumbersByConnectionKey(Object.SerialNumbers, CurrentData,,UseSerialNumbersBalance);

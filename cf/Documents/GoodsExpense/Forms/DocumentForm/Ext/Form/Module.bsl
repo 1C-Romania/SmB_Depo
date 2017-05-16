@@ -696,7 +696,7 @@ EndFunction
 &AtServer
 Function SerialNumberPickParameters(CurrentDataIdentifier)
 	
-	Return WorkWithSerialNumbers.SerialNumberPickParameters(Object, ThisObject.UniqueID, CurrentDataIdentifier, False);
+	Return WorkWithSerialNumbers.SerialNumberPickParameters(Object, ThisObject.UUID, CurrentDataIdentifier, False);
 	
 EndFunction
 

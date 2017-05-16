@@ -51,7 +51,7 @@ Procedure InitializeDocumentData(DocumentRefTransferBetweenCells, StructureAddit
 	|FROM
 	|	Document.TransferBetweenCells.Inventory AS TableInventory
 	|		INNER JOIN Document.TransferBetweenCells.SerialNumbers AS TableSerialNumbers
-	|		BY TableInventory.Ref = TableSerialNumbers.Ref
+	|		ON TableInventory.Ref = TableSerialNumbers.Ref
 	|			AND TableInventory.ConnectionKey = TableSerialNumbers.ConnectionKey
 	|WHERE
 	|	TableSerialNumbers.Ref = &Ref
@@ -77,7 +77,7 @@ Procedure InitializeDocumentData(DocumentRefTransferBetweenCells, StructureAddit
 	|FROM
 	|	Document.TransferBetweenCells.Inventory AS TableInventory
 	|		INNER JOIN Document.TransferBetweenCells.SerialNumbers AS TableSerialNumbers
-	|		BY TableInventory.Ref = TableSerialNumbers.Ref
+	|		ON TableInventory.Ref = TableSerialNumbers.Ref
 	|			AND TableInventory.ConnectionKey = TableSerialNumbers.ConnectionKey
 	|WHERE
 	|	TableSerialNumbers.Ref = &Ref
@@ -89,10 +89,10 @@ Procedure InitializeDocumentData(DocumentRefTransferBetweenCells, StructureAddit
 	|	TableInventory.Ref.Date,
 	|	VALUE(AccumulationRecordType.Receipt),
 	|	TableSerialNumbers.SerialNumber,
-	|	&Company AS Company,
+	|	&Company,
 	|	TableInventory.ProductsAndServices,
 	|	TableInventory.Characteristic,
-	|	TableInventory.Batch AS Batch,
+	|	TableInventory.Batch,
 	|	TableInventory.Ref.StructuralUnit,
 	|	CASE
 	|		WHEN TableInventory.Ref.OperationKind = VALUE(Enum.OperationKindsTransferBetweenCells.FromOneToSeveral)
@@ -103,7 +103,7 @@ Procedure InitializeDocumentData(DocumentRefTransferBetweenCells, StructureAddit
 	|FROM
 	|	Document.TransferBetweenCells.Inventory AS TableInventory
 	|		INNER JOIN Document.TransferBetweenCells.SerialNumbers AS TableSerialNumbers
-	|		BY TableInventory.Ref = TableSerialNumbers.Ref
+	|		ON TableInventory.Ref = TableSerialNumbers.Ref
 	|			AND TableInventory.ConnectionKey = TableSerialNumbers.ConnectionKey
 	|WHERE
 	|	TableSerialNumbers.Ref = &Ref

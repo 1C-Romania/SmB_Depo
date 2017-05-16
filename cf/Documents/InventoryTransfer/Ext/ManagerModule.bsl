@@ -1814,8 +1814,8 @@ Procedure RunControl(DocumentRefInventoryTransfer, AdditionalProperties, Cancel,
 		|	RegisterRecordsSerialNumbersChange.Cell AS PresentationCell,
 		|	SerialNumbersBalance.StructuralUnit.StructuralUnitType AS StructuralUnitType,
 		|	SerialNumbersBalance.ProductsAndServices.MeasurementUnit AS MeasurementUnitPresentation,
-		|	ISNULL(RegisterRecordsSerialNumbersChange.QuantityChange, 0) + ISNULL(SerialNumbersBalance.AmountBalance, 0) AS BalanceSerialNumbers,
-		|	ISNULL(SerialNumbersBalance.AmountBalance, 0) AS BalanceQuantitySerialNumbers
+		|	ISNULL(RegisterRecordsSerialNumbersChange.QuantityChange, 0) + ISNULL(SerialNumbersBalance.QuantityBalance, 0) AS BalanceSerialNumbers,
+		|	ISNULL(SerialNumbersBalance.QuantityBalance, 0) AS BalanceQuantitySerialNumbers
 		|FROM
 		|	RegisterRecordsSerialNumbersChange AS RegisterRecordsSerialNumbersChange
 		|		INNER JOIN AccumulationRegister.SerialNumbers.Balance(&ControlTime, ) AS SerialNumbersBalance
@@ -1825,7 +1825,7 @@ Procedure RunControl(DocumentRefInventoryTransfer, AdditionalProperties, Cancel,
 		|			AND RegisterRecordsSerialNumbersChange.Batch = SerialNumbersBalance.Batch
 		|			AND RegisterRecordsSerialNumbersChange.SerialNumber = SerialNumbersBalance.SerialNumber
 		|			AND RegisterRecordsSerialNumbersChange.Cell = SerialNumbersBalance.Cell
-		|			AND (ISNULL(SerialNumbersBalance.AmountBalance, 0) < 0)
+		|			AND (ISNULL(SerialNumbersBalance.QuantityBalance, 0) < 0)
 		|
 		|ORDER BY
 		|	LineNumber");

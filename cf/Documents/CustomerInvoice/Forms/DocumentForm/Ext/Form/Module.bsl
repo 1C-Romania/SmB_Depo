@@ -3236,6 +3236,15 @@ Procedure InventoryOnStartEdit(Item, NewRow, Copy)
 
 EndProcedure
 
+&AtClient
+Procedure InventoryBeforeDeleteRow(Item, Cancel)
+	
+	// Serial numbers
+	CurrentData = Items.Inventory.CurrentData;
+	WorkWithSerialNumbersClientServer.DeleteSerialNumbersByConnectionKey(Object.SerialNumbers, CurrentData,,UseSerialNumbersBalance);
+
+EndProcedure
+
 &AtServer
 Function ResetFlagDiscountsAreCalculatedServer(Action, SPColumn = "")
 	
@@ -3294,10 +3303,6 @@ Procedure InventoryAfterDeleteRow(Item)
 	// AutomaticDiscounts.
 	ClearCheckboxDiscountsAreCalculatedClient("DeleteRow");
 	
-	CurrentData = Items.Inventory.CurrentData;
-	// Serial numbers
-	WorkWithSerialNumbersClientServer.DeleteSerialNumbersByConnectionKey(Object.SerialNumbers, CurrentData,,UseSerialNumbersBalance);
-
 EndProcedure
 
 &AtClient

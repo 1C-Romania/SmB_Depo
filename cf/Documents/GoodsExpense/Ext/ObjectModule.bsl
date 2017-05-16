@@ -519,7 +519,7 @@ EndProcedure
 Procedure FillCheckProcessing(Cancel, CheckedAttributes)
 	
 	// Serial numbers
-	WorkWithSerialNumbers.FillCheckingSerialNumbers(Cancel, CheckedAttributes, SerialNumbers, ThisObject);
+	WorkWithSerialNumbers.FillCheckingSerialNumbers(Cancel, Inventory, SerialNumbers, StructuralUnit, ThisObject);
 	
 EndProcedure
 

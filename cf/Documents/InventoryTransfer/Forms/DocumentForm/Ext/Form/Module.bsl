@@ -1678,7 +1678,7 @@ Procedure CalculateAmountInTabularSectionLine(TabularSectionRow = Undefined)
 		TabularSectionRow = Items.Inventory.CurrentData;
 	EndIf;
 	
-	TabularSectionRow.Amount = TabularSectionRow.Quantity * TabularSectionRow.Price;
+	TabularSectionRow.Amount = TabularSectionRow.Quantity * TabularSectionRow.Cost;
 	
 	// Serial numbers
 	If UseSerialNumbersBalance<>Undefined Then
