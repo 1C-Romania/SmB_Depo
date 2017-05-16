@@ -4173,7 +4173,7 @@ Procedure GenerateTableSerialNumbers(DocumentRef, StructureAdditionalProperties)
 	|		1
 	|	FROM
 	|		TemporaryTableConsumables AS TemporaryTableConsumables
-	|			INNER JOIN TemporaryTableSerialNumbersConsumables AS SerialNumbers
+	|			INNER JOIN TemporaryTableSerialNumbersMaterials AS SerialNumbers
 	|			ON TemporaryTableConsumables.ConnectionKeySerialNumbers = SerialNumbers.ConnectionKey
 	|	WHERE
 	|		TemporaryTableConsumables.OrderStatus = VALUE(Enum.OrderStatuses.Completed)) AS SNCommonTable
@@ -4653,7 +4653,7 @@ Procedure InitializeDocumentDataJobOrder(DocumentRefCustomerOrder, StructureAddi
 	|	CAST(&InventoryDistribution AS String(100)) AS Content,
 	|	JobOrderMaterials.ProductsAndServices.ProductsAndServicesType AS ProductsAndServicesType,
 	|	JobOrderMaterials.Ref.Start AS Start1,
-	|	JobOrderMaterials.Ref.OrderState.OrderStatus AS OrderStatus
+	|	JobOrderMaterials.Ref.OrderState.OrderStatus AS OrderStatus,
 	|	JobOrderMaterials.ConnectionKeySerialNumbers
 	|INTO TemporaryTableConsumables
 	|FROM

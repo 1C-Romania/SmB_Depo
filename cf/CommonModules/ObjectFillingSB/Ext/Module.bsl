@@ -502,11 +502,7 @@ Procedure SupplementJobOrderSettings(ValuesFromSettings, DocumentObject, Filling
 		EndIf;
 		
 		SettingsValue = SmallBusinessReUse.GetValueByDefaultUser(
-		Users.CurrentUser(),
-		StrTemplate(
-		"%1InJobOrder",
-		KeyAndValue.Key),
-		KeyAndValue.Value);
+			Users.CurrentUser(), StrTemplate("%1InJobOrder", KeyAndValue.Key));
 		
 		If ValueIsFilled(SettingsValue) Then
 			ValuesFromSettings.Insert(KeyAndValue.Key, SettingsValue);

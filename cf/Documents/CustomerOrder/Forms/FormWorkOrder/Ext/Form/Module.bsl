@@ -3294,7 +3294,7 @@ Procedure NotificationProcessing(EventName, Parameter, Source)
 		AND Source = UUID
 		Then
 		
-		If Items.OWPages.CurrentPage = Items.OWGroupWork Then
+		If Items.WOPages.CurrentPage = Items.WOGroupWork Then
 			ChangedCount = GetSerialNumbersMaterialsFromStorage(Parameter.AddressInTemporaryStorage, Parameter.RowKey);
 			//Recalculation of the amount not required
 		Else

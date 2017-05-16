@@ -378,6 +378,11 @@ Procedure CalculateAmountInTabularSectionLine(TabularSectionRow = Undefined)
 	// Total.
 	TabularSectionRow.Total = TabularSectionRow.Amount + ?(Object.AmountIncludesVAT, 0, TabularSectionRow.VATAmount);
 	
+	// Serial numbers
+	If UseSerialNumbersBalance <> Undefined Then
+		WorkWithSerialNumbersClientServer.UpdateSerialNumbersQuantity(Object, TabularSectionRow);
+	EndIf;
+	
 EndProcedure // CalculateAmountInTabularSectionLine()	
 
 &AtClient
@@ -409,12 +414,7 @@ Procedure CalculateCommissionRemuneration(TabularSectionRow)
 	TabularSectionRow.BrokerageVATAmount = ?(Object.AmountIncludesVAT, 
 													TabularSectionRow.BrokerageAmount - (TabularSectionRow.BrokerageAmount) / ((VATRate + 100) / 100),
 													TabularSectionRow.BrokerageAmount * VATRate / 100);
-
-	// Serial numbers
-	If UseSerialNumbersBalance <> Undefined Then
-		WorkWithSerialNumbersClientServer.UpdateSerialNumbersQuantity(Object, TabularSectionRow);
-	EndIf;
-
+	
 EndProcedure // CalculateBrokerage()
 
 &AtClient
@@ -1472,6 +1472,18 @@ Procedure NotificationProcessing(EventName, Parameter, Source)
 		InventoryAddressInStorage = Parameter;
 		
 		GetInventoryFromStorage(InventoryAddressInStorage, "Inventory", True, True);
+		
+	ElsIf EventName = "SerialNumbersSelection"
+		AND ValueIsFilled(Parameter)
+		//Form owner checkup
+		AND Source <> New UUID("00000000-0000-0000-0000-000000000000")
+		AND Source = UUID
+		Then
+		
+		ChangedCount = GetSerialNumbersFromStorage(Parameter.AddressInTemporaryStorage, Parameter.RowKey);
+		If ChangedCount Then
+			CalculateAmountInTabularSectionLine();
+		EndIf;
 		
 	EndIf;
 	
@@ -2540,6 +2552,13 @@ EndProcedure
 Function SerialNumberPickParameters(CurrentDataIdentifier)
 	
 	Return WorkWithSerialNumbers.SerialNumberPickParameters(Object, ThisObject.UUID, CurrentDataIdentifier, False);
+	
+EndFunction
+
+Function GetSerialNumbersFromStorage(AddressInTemporaryStorage, RowKey)
+	
+	Modified = True;
+	Return WorkWithSerialNumbers.GetSerialNumbersFromStorage(Object, AddressInTemporaryStorage, RowKey);
 	
 EndFunction
 

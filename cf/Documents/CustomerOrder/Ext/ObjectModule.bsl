@@ -156,6 +156,10 @@ Procedure Posting(Cancel, PostingMode)
 	SmallBusinessServer.ReflectPayrollPayments(AdditionalProperties, RegisterRecords, Cancel);
 	SmallBusinessServer.ReflectSales(AdditionalProperties, RegisterRecords, Cancel);
 	
+	// SerialNumbers
+	SmallBusinessServer.ReflectTheSerialNumbersOfTheGuarantee(AdditionalProperties, RegisterRecords, Cancel);
+	SmallBusinessServer.ReflectTheSerialNumbersBalance(AdditionalProperties, RegisterRecords, Cancel);
+	
 	// DiscountCards
 	SmallBusinessServer.ReflectSalesByDiscountCard(AdditionalProperties, RegisterRecords, Cancel);
 	// AutomaticDiscounts

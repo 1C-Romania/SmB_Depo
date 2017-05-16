@@ -1482,7 +1482,7 @@ Procedure GenerateTableSerialNumbers(DocumentRef, StructureAdditionalProperties)
 	|FROM
 	|	TemporaryTableInventory AS TemporaryTableInventory
 	|		INNER JOIN TemporaryTableSerialNumbers AS SerialNumbers
-	|		BY TemporaryTableInventory.ConnectionKey = SerialNumbers.ConnectionKey";
+	|		ON TemporaryTableInventory.ConnectionKey = SerialNumbers.ConnectionKey";
 	
 	QueryResult = Query.Execute();
 	
