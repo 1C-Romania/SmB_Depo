@@ -1432,7 +1432,7 @@ Procedure RunControl(DocumentRefReportOnRetailSales, AdditionalProperties, Cance
 		
 		// Negative balance of serial numbers in the warehouse.
 		If NOT ResultsArray[3].IsEmpty() Then
-			QueryResultSelection = ResultsArray[4].Select();
+			QueryResultSelection = ResultsArray[3].Select();
 			SmallBusinessServer.ShowMessageAboutPostingSerialNumbersRegisterErrors(DocumentRetailReport, QueryResultSelection, Cancel);
 		EndIf;
 		
