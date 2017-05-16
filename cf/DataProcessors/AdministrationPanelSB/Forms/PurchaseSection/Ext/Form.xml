@@ -732,7 +732,11 @@ This option is used to split the accounting of inventory in terms of the storage
 									<Title>
 										<v8:item>
 											<v8:lang>ru</v8:lang>
-											<v8:content>Использовать ордерный склад</v8:content>
+											<v8:content>Использовать серийные номера</v8:content>
+										</v8:item>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Use serial numbers</v8:content>
 										</v8:item>
 									</Title>
 									<TitleLocation>Right</TitleLocation>
@@ -744,16 +748,17 @@ This option is used to split the accounting of inventory in terms of the storage
 										<Title formatted="true">
 											<v8:item>
 												<v8:lang>en</v8:lang>
+												<v8:content>&lt;b&gt;Enable this option if you need to use serial numbers of goods, both for reference (for monitoring the warranty period after the sale), and for keeping accounts of stock balances by serial numbers.Serial number is unique for each item.
+&lt;/&gt;You can use 2 modes of serial numbers:For reference: serial numbers can be specified if necessary. It is advisable to indicate the serial number when selling goods in order to state the sale and the beginning of the warranty period.Keeping accounts: serial numbers are obligatory for filling in all goods flow documents. Keeping accounts control of stock balances by serial numbers.</v8:content>
+											</v8:item>
+											<v8:item>
+												<v8:lang>ru</v8:lang>
 												<v8:content>&lt;b&gt;Включение позволяет использовать серийные номера товаров, как справочно (для контроля гарантийного срока после продажи), так и для учета остатков в разрезе серийных номеров.
 Серийный номер - уникальный для каждой единицы товара.
 &lt;/&gt;
 Можно использовать 2 режима серийных номеров:
 Справочно: серийные номера можно указывать при необходимости. Целесообразно указывать серийный номер при продаже товара, чтобы зафиксировать факт продажи и начало гарантийного срока.
 Учет остатков: серийные номера обязательны к заполнению во всех документах движения товаров. Ведется контроль остатков в разрезе серийных номеров.</v8:content>
-											</v8:item>
-											<v8:item>
-												<v8:lang>ru</v8:lang>
-												<v8:content>"Использовать ордерный склад (разделение складских и финансовых операций по учету запасов)".   Опция определяет возможность разделения учета запасов на складской и финансовый. Механизм используется, когда по каким-либо причинам необходимо разделить учет запасов на складе и учет запасов в управленческом контуре. Тогда для учета запасов на складе используются приходные и расходные складские ордера, а также документ для отражения перемещения запасов внутри структуры склада (например, для распределения поступивших товаров по полкам и ячейкам или комплектации заказа для отгрузки). Для учета запасов в управленческом контуре используются финансовые документы - расходные накладные, перемещения запасов и т.д.  ВАЖНО! Параметр является ключевым. При наличии в системе учетных данных отключение этой опции невозможно.</v8:content>
 											</v8:item>
 										</Title>
 									</ExtendedTooltip>
@@ -813,7 +818,7 @@ This option is used to split the accounting of inventory in terms of the storage
 									<ExtendedTooltip name="FunctionalOptionSerialNumbersBalanceControlExtendedTooltip" id="369">
 										<Title formatted="true">
 											<v8:item>
-												<v8:lang>en</v8:lang>
+												<v8:lang>ru</v8:lang>
 												<v8:content>&lt;b&gt;Контроль остатков запасов с учетом серийных номеров. &lt;/&gt;
 Если контроль остатков ОТКЛЮЧЕН:
 Серийные номера в документах можно указывать произвольно. Достаточно указывать серийные номера в документах продажи товара, чтобы зафиксировать начало гарантийного срока.
@@ -823,8 +828,9 @@ This option is used to split the accounting of inventory in terms of the storage
 Возможность нельзя отключить после начала работы в программе. Необходимо провести инвентаризацию запасов с учетом серийных номеров.</v8:content>
 											</v8:item>
 											<v8:item>
-												<v8:lang>ru</v8:lang>
-												<v8:content>"Учет запасов на складе в разрезе ячеек (проходов, стеллажей, полок и т.д.)". Опция определяет возможность разделить учет запасов в разрезе структуры мест хранения. Перечень ячеек определяется для каждого склада отдельно. ВАЖНО! Параметр является ключевым. При наличии в системе учетных данных отключение этой опции невозможно.</v8:content>
+												<v8:lang>en</v8:lang>
+												<v8:content>&lt;/&gt;Control of stock balances by serial numbers. &lt;/&gt;If the stock balances control is OFF:Serial numbers in documents can be specified arbitrarily. It is enough to indicate the serial numbers in the sales documents to state the beginning of the warranty period.
+If the stock balances is ON:Serial numbers must always be entered in all documents. You can see what serial numbers are available while picking goods or in reports.IMPORTANT!You can not disable the option after starting to work in the program. It is necessary to inventory stock balances taking into account serial numbers.</v8:content>
 											</v8:item>
 										</Title>
 									</ExtendedTooltip>
@@ -1553,16 +1559,10 @@ It is used for automated insertion of counterparty into the agreement and to det
 				<Field>ConstantsSet.VendorPaymentDueDate</Field>
 				<Field>ConstantsSet.UsePurchaseOrderStates</Field>
 				<Field>ConstantsSet.SubsidiaryCompany</Field>
-				<Field>ConstantsSet.SMSProvider.Ref</Field>
 				<Field>ConstantsSet.PurchaseOrdersInProgressStatus</Field>
 				<Field>ConstantsSet.PurchaseOrdersCompletedStatus</Field>
 				<Field>ConstantsSet.ProductsAndServicesSKUInContent</Field>
-				<Field>ConstantsSet.PriceListShowFullDescr.Ref</Field>
-				<Field>ConstantsSet.PriceListShowCode.Ref</Field>
-				<Field>ConstantsSet.PostponeEditProhibitionDate.Ref</Field>
-				<Field>ConstantsSet.OffsetAdvancesDebtsAutomatically.Ref</Field>
 				<Field>ConstantsSet.NationalCurrency</Field>
-				<Field>ConstantsSet.InfobaseUsageMode.Ref</Field>
 				<Field>ConstantsSet.FunctionalOptionUseBudgeting</Field>
 				<Field>ConstantsSet.FunctionalOptionUseBatches</Field>
 				<Field>ConstantsSet.FunctionalOptionTransferInventoryOnSafeCustody</Field>
@@ -1574,14 +1574,8 @@ It is used for automated insertion of counterparty into the agreement and to det
 				<Field>ConstantsSet.FunctionalOptionAccountingByMultipleWarehouses</Field>
 				<Field>ConstantsSet.FunctionalOptionAccountingByCells</Field>
 				<Field>ConstantsSet.FunctionalCurrencyTransactionsAccounting</Field>
-				<Field>ConstantsSet.ExchangeRateDifferencesCalculationFrequency.Ref</Field>
-				<Field>ConstantsSet.DiscountsMarkupsSharedUsageOptions.Ref</Field>
-				<Field>ConstantsSet.DeleteCryptographyContext.Ref</Field>
-				<Field>ConstantsSet.DeleteContractControllingOnPosting.Ref</Field>
 				<Field>ConstantsSet.ControlBalancesOnPosting</Field>
-				<Field>ConstantsSet.AuthorizationContext.Ref</Field>
 				<Field>ConstantsSet.ArchiveCRReceiptsOnCloseCashCRSession</Field>
-				<Field>ConstantsSet.ActivityKind.Ref</Field>
 				<Field>ConstantsSet.AccountingCurrency</Field>
 				<Field>ConstantsSet.AccountingBySubsidiaryCompany</Field>
 			</UseAlways>
