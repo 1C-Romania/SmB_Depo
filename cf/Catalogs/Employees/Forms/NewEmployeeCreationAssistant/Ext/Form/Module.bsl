@@ -773,7 +773,7 @@ Procedure RunControlStaffSchedule(DataStructure, Errors, Cancel)
 	|		EmployeesSliceLast.Company AS Company,
 	|		EmployeesSliceLast.StructuralUnit AS StructuralUnit,
 	|		EmployeesSliceLast.Position AS Position
-	|	IN
+	|	FROM
 	|		InformationRegister.Employees.SliceLast(&Period, ) AS EmployeesSliceLast
 	|	
 	|	GROUP BY

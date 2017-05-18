@@ -1151,8 +1151,7 @@ Procedure AccrualsDeductionsExpensesAccountStartChoice(Item, ChoiceData, Standar
 	NewArray = New Array;
 	NewParameter = New ChoiceParameter("Filter.TypeOfAccount", New FixedArray(DataStructure.GLAccountsAvailableTypes));
 	NewArray.Add(NewParameter);
-	ChoiceParameters = New FixedArray(NewArray);
-	Items.AccrualsDeductionsExpensesAccount.ChoiceParameters = ChoiceParameters
+	Items.AccrualsDeductionsExpensesAccount.ChoiceParameters = New FixedArray(NewArray);
 	
 EndProcedure
 
