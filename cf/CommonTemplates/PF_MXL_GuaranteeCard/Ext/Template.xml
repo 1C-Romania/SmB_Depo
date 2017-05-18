@@ -343,7 +343,7 @@
 				<i>1</i>
 				<c>
 					<f>5</f>
-					<parameter>ТекстЗаголовка</parameter>
+					<parameter>HeaderText</parameter>
 				</c>
 			</c>
 			<c>
@@ -487,8 +487,8 @@
 				<i>1</i>
 				<c>
 					<f>10</f>
-					<parameter>ТекстПодЗаголовка</parameter>
-					<detailParameter>Ссылка</detailParameter>
+					<parameter>SubtitleText</parameter>
+					<detailParameter>Ref</detailParameter>
 				</c>
 			</c>
 		</row>
@@ -510,6 +510,10 @@
 						<v8:item>
 							<v8:lang>ru</v8:lang>
 							<v8:content>Организация:</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Company:</v8:content>
 						</v8:item>
 					</tl>
 				</c>
@@ -537,8 +541,8 @@
 			<c>
 				<c>
 					<f>12</f>
-					<parameter>Организация</parameter>
-					<detailParameter>Поставщик</detailParameter>
+					<parameter>Company</parameter>
+					<detailParameter>Vendor</detailParameter>
 				</c>
 			</c>
 			<c>
@@ -861,6 +865,10 @@
 							<v8:lang>ru</v8:lang>
 							<v8:content>Покупатель:</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Customer:</v8:content>
+						</v8:item>
 					</tl>
 				</c>
 			</c>
@@ -887,8 +895,8 @@
 			<c>
 				<c>
 					<f>12</f>
-					<parameter>Контрагент</parameter>
-					<detailParameter>Получатель</detailParameter>
+					<parameter>Counterparty</parameter>
+					<detailParameter>Recipient</detailParameter>
 				</c>
 			</c>
 			<c>
@@ -1297,7 +1305,7 @@
 			<c>
 				<c>
 					<f>5</f>
-					<parameter>ТекстЗаголовка</parameter>
+					<parameter>HeaderText</parameter>
 				</c>
 			</c>
 		</row>
@@ -1329,8 +1337,8 @@
 			<c>
 				<c>
 					<f>10</f>
-					<parameter>ТекстПодЗаголовка</parameter>
-					<detailParameter>Ссылка</detailParameter>
+					<parameter>SubtitleText</parameter>
+					<detailParameter>Ref</detailParameter>
 				</c>
 			</c>
 		</row>
@@ -1471,6 +1479,10 @@
 							<v8:lang>ru</v8:lang>
 							<v8:content>Организация:</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Company:</v8:content>
+						</v8:item>
 					</tl>
 				</c>
 			</c>
@@ -1497,8 +1509,8 @@
 			<c>
 				<c>
 					<f>12</f>
-					<parameter>Организация</parameter>
-					<detailParameter>Поставщик</detailParameter>
+					<parameter>Company</parameter>
+					<detailParameter>Vendor</detailParameter>
 				</c>
 			</c>
 			<c>
@@ -1821,6 +1833,10 @@
 							<v8:lang>ru</v8:lang>
 							<v8:content>Покупатель:</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Customer:</v8:content>
+						</v8:item>
 					</tl>
 				</c>
 			</c>
@@ -1847,8 +1863,8 @@
 			<c>
 				<c>
 					<f>12</f>
-					<parameter>Контрагент</parameter>
-					<detailParameter>Получатель</detailParameter>
+					<parameter>Counterparty</parameter>
+					<detailParameter>Recipient</detailParameter>
 				</c>
 			</c>
 			<c>
@@ -2062,6 +2078,10 @@
 							<v8:lang>ru</v8:lang>
 							<v8:content>№</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>#</v8:content>
+						</v8:item>
 					</tl>
 				</c>
 			</c>
@@ -2072,6 +2092,10 @@
 						<v8:item>
 							<v8:lang>ru</v8:lang>
 							<v8:content>Товар</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Product</v8:content>
 						</v8:item>
 					</tl>
 				</c>
@@ -2084,6 +2108,10 @@
 						<v8:item>
 							<v8:lang>ru</v8:lang>
 							<v8:content>Количество</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Quantity</v8:content>
 						</v8:item>
 					</tl>
 				</c>
@@ -2116,6 +2144,11 @@
 							<v8:lang>ru</v8:lang>
 							<v8:content>Срок
  гарантии, мес.</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Guarantee
+ period, months.</v8:content>
 						</v8:item>
 					</tl>
 				</c>
@@ -2266,20 +2299,20 @@
 			<c>
 				<c>
 					<f>31</f>
-					<parameter>НомерСтроки</parameter>
+					<parameter>LineNumber</parameter>
 				</c>
 			</c>
 			<c>
 				<c>
 					<f>32</f>
-					<parameter>Запас</parameter>
+					<parameter>InventoryItem</parameter>
 				</c>
 			</c>
 			<c>
 				<i>26</i>
 				<c>
 					<f>33</f>
-					<parameter>Количество</parameter>
+					<parameter>Quantity</parameter>
 				</c>
 			</c>
 			<c>
@@ -2295,7 +2328,7 @@
 			<c>
 				<c>
 					<f>34</f>
-					<parameter>ЕдиницаИзмерения</parameter>
+					<parameter>MeasurementUnit</parameter>
 				</c>
 			</c>
 			<c>
@@ -2306,7 +2339,7 @@
 			<c>
 				<c>
 					<f>35</f>
-					<parameter>ГарантийныйСрок</parameter>
+					<parameter>GuaranteePeriod</parameter>
 				</c>
 			</c>
 			<c>
@@ -2846,7 +2879,7 @@
 			<c>
 				<c>
 					<f>43</f>
-					<parameter>ТекстДополнительныхУсловий</parameter>
+					<parameter>AdditionalConditionsText</parameter>
 				</c>
 			</c>
 		</row>
@@ -3113,6 +3146,10 @@
 							<v8:lang>ru</v8:lang>
 							<v8:content>Ответственный</v8:content>
 						</v8:item>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Responsible</v8:content>
+						</v8:item>
 					</tl>
 				</c>
 			</c>
@@ -3150,7 +3187,7 @@
 			<c>
 				<c>
 					<f>51</f>
-					<parameter>Ответственный</parameter>
+					<parameter>Responsible</parameter>
 				</c>
 			</c>
 			<c>
@@ -3358,7 +3395,7 @@
 		<w>7</w>
 	</merge>
 	<namedItem xsi:type="NamedItemCells">
-		<name>ДополнительныеУсловия</name>
+		<name>AdditionalConditions</name>
 		<area>
 			<type>Rows</type>
 			<beginRow>27</beginRow>
@@ -3367,42 +3404,12 @@
 			<endColumn>-1</endColumn>
 		</area>
 	</namedItem>
-	<namedItem xsi:type="NamedItemCells">
-		<name>Заголовок</name>
-		<area>
-			<type>Rows</type>
-			<beginRow>0</beginRow>
-			<endRow>8</endRow>
-			<beginColumn>-1</beginColumn>
-			<endColumn>-1</endColumn>
-		</area>
-	</namedItem>
-	<namedItem xsi:type="NamedItemCells">
-		<name>ЗаголовокСЛоготипом</name>
-		<area>
-			<type>Rows</type>
-			<beginRow>11</beginRow>
-			<endRow>18</endRow>
-			<beginColumn>-1</beginColumn>
-			<endColumn>-1</endColumn>
-		</area>
-	</namedItem>
-	<namedItem xsi:type="NamedItemCells">
-		<name>Итого</name>
-		<area>
-			<type>Rows</type>
-			<beginRow>25</beginRow>
-			<endRow>25</endRow>
-			<beginColumn>-1</beginColumn>
-			<endColumn>-1</endColumn>
-		</area>
-	</namedItem>
 	<namedItem xsi:type="NamedItemDrawing">
-		<name>Логотип</name>
+		<name>Logo</name>
 		<drawingID>3</drawingID>
 	</namedItem>
 	<namedItem xsi:type="NamedItemCells">
-		<name>Подписи</name>
+		<name>Signatures</name>
 		<area>
 			<type>Rows</type>
 			<beginRow>29</beginRow>
@@ -3412,7 +3419,7 @@
 		</area>
 	</namedItem>
 	<namedItem xsi:type="NamedItemCells">
-		<name>Строка</name>
+		<name>String</name>
 		<area>
 			<type>Rows</type>
 			<beginRow>23</beginRow>
@@ -3422,11 +3429,41 @@
 		</area>
 	</namedItem>
 	<namedItem xsi:type="NamedItemCells">
-		<name>ШапкаТаблицы</name>
+		<name>TableHeader</name>
 		<area>
 			<type>Rows</type>
 			<beginRow>20</beginRow>
 			<endRow>21</endRow>
+			<beginColumn>-1</beginColumn>
+			<endColumn>-1</endColumn>
+		</area>
+	</namedItem>
+	<namedItem xsi:type="NamedItemCells">
+		<name>Title</name>
+		<area>
+			<type>Rows</type>
+			<beginRow>0</beginRow>
+			<endRow>8</endRow>
+			<beginColumn>-1</beginColumn>
+			<endColumn>-1</endColumn>
+		</area>
+	</namedItem>
+	<namedItem xsi:type="NamedItemCells">
+		<name>TitleLogo</name>
+		<area>
+			<type>Rows</type>
+			<beginRow>11</beginRow>
+			<endRow>18</endRow>
+			<beginColumn>-1</beginColumn>
+			<endColumn>-1</endColumn>
+		</area>
+	</namedItem>
+	<namedItem xsi:type="NamedItemCells">
+		<name>Total</name>
+		<area>
+			<type>Rows</type>
+			<beginRow>25</beginRow>
+			<endRow>25</endRow>
 			<beginColumn>-1</beginColumn>
 			<endColumn>-1</endColumn>
 		</area>
@@ -3637,6 +3674,10 @@
 			<v8:item>
 				<v8:lang>ru</v8:lang>
 				<v8:content>ЧЦ=15; ЧДЦ=3</v8:content>
+			</v8:item>
+			<v8:item>
+				<v8:lang>en</v8:lang>
+				<v8:content>ND=15; NFD=3</v8:content>
 			</v8:item>
 		</format>
 	</format>

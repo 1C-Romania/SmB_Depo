@@ -956,12 +956,12 @@ Function QueryTextDiscountForPurchaseKit(QueryBatch, RefOnAssignmentCondition)
 	|				OR ISNULL(PurchaseKit.Quantity, 0) = 0
 	|			THEN 0
 	|		ELSE CASE
-	|				WHEN (CAST(GoodsQuantity.Count / PurchaseKit.Quantity AS NUMBER(15, 0))) = (CAST(GoodsQuantity.Quantity / PurchaseKit.Quantity AS NUMBER(15, 3)))
-	|					THEN CAST(GoodsQuantity.Count / PurchaseKit.Quantity AS NUMBER(15, 0))
+	|				WHEN (CAST(GoodsQuantity.Quantity / PurchaseKit.Quantity AS NUMBER(15, 0))) = (CAST(GoodsQuantity.Quantity / PurchaseKit.Quantity AS NUMBER(15, 3)))
+	|					THEN CAST(GoodsQuantity.Quantity / PurchaseKit.Quantity AS NUMBER(15, 0))
 	|				ELSE CASE
-	|						WHEN (CAST(GoodsQuantity.Count / PurchaseKit.Count AS NUMBER(15, 0))) * PurchaseKit.Quantity - GoodsQuantity.Quantity >= 0
-	|							THEN (CAST(GoodsQuantity.Count / PurchaseKit.Count AS NUMBER(15, 0))) - 1
-	|						ELSE CAST(GoodsQuantity.Count / PurchaseKit.Count AS NUMBER(15, 0))
+	|						WHEN (CAST(GoodsQuantity.Quantity / PurchaseKit.Quantity AS NUMBER(15, 0))) * PurchaseKit.Quantity - GoodsQuantity.Quantity >= 0
+	|							THEN (CAST(GoodsQuantity.Quantity / PurchaseKit.Quantity AS NUMBER(15, 0))) - 1
+	|						ELSE CAST(GoodsQuantity.Quantity / PurchaseKit.Quantity AS NUMBER(15, 0))
 	|					END
 	|			END
 	|	END AS SetsNumber

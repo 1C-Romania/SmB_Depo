@@ -210,8 +210,8 @@ Function GenerateDocumentGuaranteeCards(SpreadsheetDocument, CurrentDocument, Er
 	"SELECT
 	|	PrintDoc.Date AS DocumentDate,
 	|	PrintDoc.Number AS Number,
-	|	PrintDoc.Organization.Prefix AS Prefix,
-	|	PrintDoc.Organization.FileLogo AS FileLogo,
+	|	PrintDoc.Company.Prefix AS Prefix,
+	|	PrintDoc.Company.LogoFile AS LogoFile,
 	|	PrintDoc.Responsible.Ind AS Responsible,
 	|	PrintDoc.Inventory.(
 	|		LineNumber AS LineNumber,
@@ -225,13 +225,17 @@ Function GenerateDocumentGuaranteeCards(SpreadsheetDocument, CurrentDocument, Er
 	|		ProductsAndServices.SKU AS SKU,
 	|		ProductsAndServices.Code AS Code,
 	|		MeasurementUnit.Description AS MeasurementUnit,
-	|		Count AS Count,
+	|		Quantity AS Quantity,
 	|		Characteristic,
 	|		ProductsAndServices.ProductsAndServicesType AS ProductsAndServicesType,
 	|		ConnectionKey
 	|	),
-	|	PrintDoc.Counterparty,
-	|	PrintDoc.Organization,
+	|	CASE
+	|		WHEN PrintDoc.Ref REFS Document.ReceiptCR
+	|			THEN VALUE(Catalog.Counterparties.EmptyRef)
+	|		ELSE PrintDoc.Company
+	|	END AS Counterparty,
+	|	PrintDoc.Company,
 	|	PrintDoc.SerialNumbers.(
 	|		SerialNumber,
 	|		ConnectionKey
@@ -268,11 +272,11 @@ Function GenerateDocumentGuaranteeCards(SpreadsheetDocument, CurrentDocument, Er
 	
 	DocumentNumber = ObjectPrefixationClientServer.GetNumberForPrinting(Header.Number, True, True);
 	
-	If ValueIsFilled(Header.FileLogo) Then
+	If ValueIsFilled(Header.LogoFile) Then
 		
 		TemplateArea = Template.GetArea("TitleLogo");
 		
-		PictureData = AttachedFiles.GetFileBinaryData(Header.FileLogo);
+		PictureData = AttachedFiles.GetFileBinaryData(Header.LogoFile);
 		If ValueIsFilled(PictureData) Then
 			
 			TemplateArea.Drawings.Logo.Picture = New Picture(PictureData);
@@ -290,14 +294,14 @@ Function GenerateDocumentGuaranteeCards(SpreadsheetDocument, CurrentDocument, Er
 		+ " dated "
 		+ Format(Header.DocumentDate, "DLF=DD");
 	
-	InfoAboutCompany = SmallBusinessServer.InfoAboutLegalEntityIndividual(Header.Organization, Header.DocumentDate);
-	TemplateArea.Parameters.Organization = SmallBusinessServer.CompaniesDescriptionFull(InfoAboutCompany, "FullDescr,ActualAddress,PhoneNumbers");
+	InfoAboutCompany = SmallBusinessServer.InfoAboutLegalEntityIndividual(Header.Company, Header.DocumentDate);
+	TemplateArea.Parameters.Company = SmallBusinessServer.CompaniesDescriptionFull(InfoAboutCompany, "FullDescr,ActualAddress,PhoneNumbers");
 	TemplateArea.Parameters.Counterparty = Header.Counterparty;
 	
-	SpreadsheetDocument.Output(TemplateArea);
+	SpreadsheetDocument.Put(TemplateArea);
 	
 	TemplateArea = Template.GetArea("TableHeader");
-	SpreadsheetDocument.Output(TemplateArea);
+	SpreadsheetDocument.Put(TemplateArea);
 	TemplateArea = Template.GetArea("String");
 	
 	LineNumber = 1;
@@ -314,18 +318,18 @@ Function GenerateDocumentGuaranteeCards(SpreadsheetDocument, CurrentDocument, Er
 		TemplateArea.Parameters.InventoryItem = SmallBusinessServer.GetProductsAndServicesPresentationForPrinting(LinesSelectionInventory.InventoryItem, 
 			LinesSelectionInventory.Characteristic, LinesSelectionInventory.SKU, StringSerialNumbers);
 		
-		SpreadsheetDocument.Output(TemplateArea);
+		SpreadsheetDocument.Put(TemplateArea);
 		
 		LineNumber = LineNumber+1;
 		
 	EndDo;
 	
 	TemplateArea = Template.GetArea("Total");
-	SpreadsheetDocument.Output(TemplateArea);
+	SpreadsheetDocument.Put(TemplateArea);
 	
 	TemplateArea = Template.GetArea("Signatures");
 	TemplateArea.Parameters.Fill(Header);
-	SpreadsheetDocument.Output(TemplateArea);
+	SpreadsheetDocument.Put(TemplateArea);
 	
 	SpreadsheetDocument.FitToPage = True;
 	Return SpreadsheetDocument;

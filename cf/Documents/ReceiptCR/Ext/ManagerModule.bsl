@@ -1207,7 +1207,7 @@ Procedure Print(ObjectsArray, PrintParameters, PrintFormsCollection, PrintObject
 	If PrintManagement.NeedToPrintTemplate(PrintFormsCollection, "GuaranteeCard") Then
 		
 		PrintManagement.OutputSpreadsheetDocumentToCollection(PrintFormsCollection, "GuaranteeCard", "Guarantee card", 
-			WorkWithProductsServer.PrintGuaranteeCard(ObjectsArray, PrintObjects, "GuaranteeCard"));
+			WorkWithProductsServer.PrintGuaranteeCard(ObjectsArray, PrintObjects));
 		
 	EndIf;
 	

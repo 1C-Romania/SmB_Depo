@@ -2255,7 +2255,7 @@ Procedure WarehouseOnChange(Item)
 EndProcedure
 
 &AtClient
-//Procedure - handler of the OnChange event for "Organization" attribute
+//Procedure - handler of the OnChange event for "Company" attribute
 //
 Procedure CompanyOnChange(Item)
 	
