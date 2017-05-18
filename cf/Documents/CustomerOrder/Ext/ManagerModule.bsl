@@ -7295,7 +7295,7 @@ Function PrintForm(ObjectsArray, PrintObjects, TemplateName)
 		
 	ElsIf TemplateName = "GuaranteeCard" Then
 		
-		Return WorkWithProductsServer.PrintGuaranteeCard(ObjectsArray, PrintObjects, TemplateName);
+		Return WorkWithProductsServer.PrintGuaranteeCard(ObjectsArray, PrintObjects);
 		
 	EndIf;
 	
@@ -7407,7 +7407,9 @@ Procedure AddPrintCommands(PrintCommands) Export
 	
 	// Documents set
 	PrintCommand = PrintCommands.Add();
-	PrintCommand.ID = "CustomerOrderTemplate,JobOrder,ServicesAcceptanceCertificate,ServicesAcceptanceCertificateDetailed,CustomerInvoice,ProformaInvoice,ProformaInvoiceWithSignature";
+	IdentifierValue = "CustomerOrderTemplate,JobOrder,ServicesAcceptanceCertificate,ServicesAcceptanceCertificateDetailed,CustomerInvoice,ProformaInvoice,ProformaInvoiceWithSignature,GuaranteeCard";
+	IdentifierValue = StrReplace(IdentifierValue, ",GuaranteeCard", ?(GetFunctionalOption("UseSerialNumbers"), ",GuaranteeCard", ""));
+	PrintCommand.ID = IdentifierValue;
 	PrintCommand.Presentation = NStr("en='Custom kit of documents';ru='Настраиваемый комплект документов'");
 	PrintCommand.FormsList = "FormWorkOrder,ListFormWorkOrder,ShipmentDocumentsListForm,PaymentDocumentsListForm";
 	PrintCommand.CheckPostingBeforePrint = False;

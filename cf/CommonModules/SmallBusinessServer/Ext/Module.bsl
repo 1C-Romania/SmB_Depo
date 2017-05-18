@@ -5865,13 +5865,9 @@ EndProcedure // InitialsEmployeeName()
 Function GetProductsAndServicesPresentationForPrinting(ProductsAndServices, Characteristic = Undefined, SKU = "", SerialNumbers = "")  Export
 
 	AddCharacteristics = "";
-	If Constants.FunctionalOptionUseCharacteristics.Get() AND ValueIsFilled(Characteristic) AND SerialNumbers<>"" Then
-		AddCharacteristics = AddCharacteristics + " (" + TrimAll(Characteristic) + " " + TrimAll(SerialNumbers) + ")";
-	ElsIf Constants.FunctionalOptionUseCharacteristics.Get() AND ValueIsFilled(Characteristic) Then
-		AddCharacteristics = AddCharacteristics + " (" + TrimAll(Characteristic) + ")";	
-	ElsIf SerialNumbers<>"" Then
-		AddCharacteristics = AddCharacteristics + " (" + TrimAll(SerialNumbers) + ")";	
-	EndIf; 
+	If Constants.FunctionalOptionUseCharacteristics.Get() AND ValueIsFilled(Characteristic) Then
+		AddCharacteristics = AddCharacteristics + " (" + TrimAll(Characteristic) + ")";
+	EndIf;
 	
 	ProductsAndServicesSKUInContent = Constants.ProductsAndServicesSKUInContent.Get();
 	If ProductsAndServicesSKUInContent Then

@@ -231,9 +231,9 @@ Function GenerateDocumentGuaranteeCards(SpreadsheetDocument, CurrentDocument, Er
 	|		ConnectionKey
 	|	),
 	|	CASE
-	|		WHEN PrintDoc.Ref REFS Document.ReceiptCR
+	|		WHEN VALUETYPE(&CurrentDocument) = TYPE(Document.ReceiptCR)
 	|			THEN VALUE(Catalog.Counterparties.EmptyRef)
-	|		ELSE PrintDoc.Company
+	|		ELSE PrintDoc.Counterparty
 	|	END AS Counterparty,
 	|	PrintDoc.Company,
 	|	PrintDoc.SerialNumbers.(

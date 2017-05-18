@@ -386,6 +386,11 @@ Procedure CalculateAmountInTabularSectionLine(TabularSectionRow = Undefined)
 	CalculateVATSUM(TabularSectionRow);
 	TabularSectionRow.Total = TabularSectionRow.Amount + ?(Object.AmountIncludesVAT, 0, TabularSectionRow.VATAmount);
 	
+	// Serial numbers
+	If UseSerialNumbersBalance <> Undefined Then
+		WorkWithSerialNumbersClientServer.UpdateSerialNumbersQuantity(Object, TabularSectionRow,, "ConnectionKeySerialNumbers");
+	EndIf;
+	
 EndProcedure // CalculateAmountInTabularSectionLine()
 
 // Calculates the brokerage in the row of the document tabular section
@@ -1980,7 +1985,10 @@ Procedure InventoryProductsAndServicesOnChange(Item)
 	CalculateCommissionRemuneration(TabularSectionRow);
 	
 	//Serial numbers
-	WorkWithSerialNumbersClientServer.DeleteSerialNumbersByConnectionKey(Object.SerialNumbers, TabularSectionRow, , UseSerialNumbersBalance);	
+	For Each SelectedRow In Items.Inventory.SelectedRows Do
+		CurrentRowData = Items.Inventory.RowData(SelectedRow);
+		WorkWithSerialNumbersClientServer.DeleteSerialNumbersByConnectionKey(Object.SerialNumbers, CurrentRowData,, UseSerialNumbersBalance);
+	EndDo;
 	
 EndProcedure // InventoryProductsAndServicesOnChange()
 
@@ -1988,8 +1996,10 @@ EndProcedure // InventoryProductsAndServicesOnChange()
 Procedure InventoryBeforeDeleteRow(Item, Cancel)
 	
 	// Serial numbers
-	CurrentData = Items.Inventory.CurrentData;
-	WorkWithSerialNumbersClientServer.DeleteSerialNumbersByConnectionKey(Object.SerialNumbers, CurrentData, , UseSerialNumbersBalance);
+	For Each SelectedRow In Items.Inventory.SelectedRows Do
+		CurrentRowData = Items.Inventory.RowData(SelectedRow);
+		WorkWithSerialNumbersClientServer.DeleteSerialNumbersByConnectionKey(Object.SerialNumbers, CurrentRowData,,UseSerialNumbersBalance);
+	EndDo;
 	
 EndProcedure
 
@@ -2561,26 +2571,31 @@ EndProcedure
 
 &AtClient
 Procedure OpenSerialNumbersSelection()
-		
+	
 	CurrentDataIdentifier = Items.Inventory.CurrentData.GetID();
 	ParametersOfSerialNumbers = SerialNumberPickParameters(CurrentDataIdentifier);
 	
 	OpenForm("DataProcessor.SerialNumbersSelection.Form", ParametersOfSerialNumbers, ThisObject);
-
+	
 EndProcedure
 
 &AtServer
 Function GetSerialNumbersFromStorage(AddressInTemporaryStorage, RowKey)
 	
 	Modified = True;
-	Return WorkWithSerialNumbers.GetSerialNumbersFromStorage(Object, AddressInTemporaryStorage, RowKey);
+	
+	ParametersFieldNames = New Structure;
+	ParametersFieldNames.Insert("FieldNameConnectionKey", "ConnectionKeySerialNumbers");
+	
+	Return WorkWithSerialNumbers.GetSerialNumbersFromStorage(Object, AddressInTemporaryStorage, RowKey, ParametersFieldNames);
 	
 EndFunction
 
 &AtServer
 Function SerialNumberPickParameters(CurrentDataIdentifier)
 	
-	Return WorkWithSerialNumbers.SerialNumberPickParameters(Object, ThisObject.UUID, CurrentDataIdentifier, False);
+	Return WorkWithSerialNumbers.SerialNumberPickParameters(Object, ThisObject.UUID, CurrentDataIdentifier,
+		False,,, "ConnectionKeySerialNumbers");
 	
 EndFunction
 
