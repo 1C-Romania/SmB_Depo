@@ -1143,7 +1143,7 @@ Function PrintCounterpartyContract(CommandParameter) Export
 		PrintingSource = ContractForm;
 	EndIf;
 	
-	PrintingSource.Items.GroupPages.CurrentPage = PrintingSource.Items.GroupPrintContract;
+	PrintingSource.Items.Pages.CurrentPage = PrintingSource.Items.GroupPrintContract;
 	
 	If CommandParameter.Form.FormName = "Catalog.CounterpartyContracts.Form.ItemForm" Then
 		

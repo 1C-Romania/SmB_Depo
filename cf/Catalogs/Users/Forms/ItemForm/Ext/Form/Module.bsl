@@ -1173,7 +1173,7 @@ Function RefreshContactInformation(Result = Undefined)
 	ModuleContactInformationManagementServer =
 		CommonUse.CommonModule("ContactInformationManagement");
 	
-	Return ModuleContactInformationManagementServer.RefreshContactInformation(
+	Return ModuleContactInformationManagementServer.UpdateContactInformation(
 		ThisObject, Object, Result);
 	
 EndFunction

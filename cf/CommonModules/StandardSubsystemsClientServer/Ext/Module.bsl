@@ -61,8 +61,8 @@ Procedure NotifyDynamicLists(Result, ModifiedObject) Export
 		EndIf;
 		
 		// Adding changed object types.
-		For Each ModifiedObject IN ModifiedObject Do
-			ModifiedObjectType = TypeOf(ModifiedObject);
+		For Each ModifObject IN ModifiedObject Do
+			ModifiedObjectType = TypeOf(ModifObject);
 			If Notification.ReferenceOrType.Find(ModifiedObjectType) = Undefined Then
 				Notification.ReferenceOrType.Add(ModifiedObjectType);
 			EndIf;
