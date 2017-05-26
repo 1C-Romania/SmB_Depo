@@ -377,7 +377,7 @@ Procedure LoadFromFile(ExportableData, ImportParameters, Cancel) Export
 			CatalogItem.Warehouse               = ValueCatalog("StructuralUnits", TableRow.Warehouse, Catalogs.StructuralUnits.MainWarehouse);
 			CatalogItem.PriceGroup        = ValueCatalog("PriceGroups", TableRow.PriceGroup, Catalogs.PriceGroups.EmptyRef());
 			CatalogItem.ProductsAndServicesType      = EnumValue("ProductsAndServicesTypes", TableRow.ProductsAndServicesType);
-			CatalogItem.VATRate            = ValueCatalog("VATRates", TableRow.VATRate, Catalogs.Companies.MainCompany.DefaultVATRate);
+			CatalogItem.VATRate            = ?(Constants.FunctionalOptionUseVAT.Get(),ValueCatalog("VATRates", TableRow.VATRate, Catalogs.Companies.MainCompany.DefaultVATRate),Catalogs.Companies.MainCompany.DefaultVATRate);
 			CatalogItem.Vendor            = ValueCatalog("Counterparties", TableRow.Vendor);
 			CatalogItem.ProductsAndServicesCategory = ValueCatalog("ProductsAndServicesCategories", TableRow.ProductsAndServicesCategory, Catalogs.ProductsAndServicesCategories.MainGroup);
 			CatalogItem.EstimationMethod          = EnumValue("InventoryValuationMethods", TableRow.EstimationMethod,  Enums.InventoryValuationMethods.ByAverage);

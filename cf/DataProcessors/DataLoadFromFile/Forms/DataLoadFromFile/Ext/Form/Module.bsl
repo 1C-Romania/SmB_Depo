@@ -2183,7 +2183,7 @@ Procedure CreateMatchTableByInformationAboutColumns()
 		EndIf;
 		If Column.Name = "MappingObject" Then 
 			NewItem.FixingInTable = FixingInTable.Left;
-			NewItem.BackColor = StyleColors.ManagingFieldBackgroundColor;
+			NewItem.BackColor = StyleColors.MasterFieldBackground;
 			NewItem.HeaderPicture = PictureLib.Change;
 			NewItem.ReadOnly = False;
 			NewItem.EditMode =  ColumnEditMode.Directly;
