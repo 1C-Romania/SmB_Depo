@@ -269,7 +269,7 @@ EndProcedure
 Procedure DeleteUserSettings(ClearedSettings, Sources, UserVariantsReportsTable = Undefined) Export
 	
 	MapStorageSetting = New Map;
-	MapStorageSetting.Insert("ReportSettings", ReportsUserSettingsStorage);
+	MapStorageSetting.Insert("ReportsSettings", ReportsUserSettingsStorage);
 	MapStorageSetting.Insert("ExternalViewSettings", SystemSettingsStorage);
 	MapStorageSetting.Insert("FormsData", FormDataSettingsStorage);
 	MapStorageSetting.Insert("PersonalSettings", CommonSettingsStorage);
