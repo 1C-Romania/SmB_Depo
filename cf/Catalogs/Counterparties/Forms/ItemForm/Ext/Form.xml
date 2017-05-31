@@ -231,8 +231,13 @@
 							<DropListButton>false</DropListButton>
 							<ChoiceButton>true</ChoiceButton>
 							<ChoiceButtonRepresentation>ShowInInputField</ChoiceButtonRepresentation>
+							<CreateButton>false</CreateButton>
+							<TextEdit>false</TextEdit>
 							<ContextMenu name="ContactPersonContextMenu" id="438"/>
 							<ExtendedTooltip name="ContactPersonExtendedTooltip" id="439"/>
+							<Events>
+								<Event name="StartChoice">ContactPersonStartChoice</Event>
+							</Events>
 						</InputField>
 						<UsualGroup name="CustomerSupplierOther" id="397">
 							<Title>

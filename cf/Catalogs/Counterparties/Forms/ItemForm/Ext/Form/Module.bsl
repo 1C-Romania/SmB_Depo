@@ -657,6 +657,16 @@ Procedure UpdateAdditionalAttributesItems()
 	
 EndProcedure // UpdateAdditionalAttributeItems()
 
+&AtClient
+Procedure ContactPersonStartChoice(Item, ChoiceData, StandardProcessing)
+	
+	If Object.Ref.IsEmpty() Then
+		StandardProcessing = False;
+		ShowMessageBox(,NStr("ru = 'Необходимо сохранить текущие данные'; en = 'You must save current data'"));
+	EndIf;
+	
+EndProcedure
+
 // End StandardSubsystems.Properties
 
 #EndRegion
