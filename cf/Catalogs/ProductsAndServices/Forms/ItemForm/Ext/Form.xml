@@ -664,6 +664,11 @@
 							<ShowTitle>false</ShowTitle>
 							<ExtendedTooltip name="RightColumnExtendedTooltip" id="169"/>
 							<ChildItems>
+								<InputField name="FinancialGroup" id="265">
+									<DataPath>Object.FinancialGroup</DataPath>
+									<ContextMenu name="FinancialGroupContextMenu" id="266"/>
+									<ExtendedTooltip name="FinancialGroupExtendedTooltip" id="267"/>
+								</InputField>
 								<InputField name="ProductsAndServicesCategory" id="19">
 									<DataPath>Object.ProductsAndServicesCategory</DataPath>
 									<EditMode>EnterOnInput</EditMode>
