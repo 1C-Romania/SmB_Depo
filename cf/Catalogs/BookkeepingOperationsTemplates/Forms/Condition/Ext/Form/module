@@ -1,0 +1,33 @@
+﻿ 
+////////////////////////////////////////////////////////////////////////////////
+// COMMAND BAR HANDLERS
+
+Procedure ButtonOKOnClick(Control)
+
+	Close(Condition);
+
+EndProcedure
+
+Procedure ConditionStartChoice(Control, StandardProcessing)
+
+	SelectionForm             = Catalogs.BookkeepingOperationsTemplates.GetForm("EditFormula", FormOwner);
+	SelectionForm.FilterByType = False;
+	SelectionForm.Caption   = NStr("en='Record generation condition. Parameter selection';pl='Warunek generacji zapisu. Wybór parametru'");
+
+	SelectionForm.Controls.FilterByType.Visible = False;
+
+	SelectionForm.AlternateFormOwner = FormOwner;
+	SelectionForm.Formula = Condition;
+	
+	
+	SelectionForm.FillParametersTree();
+
+	ReturnFormula = SelectionForm.DoModal();
+
+	If ReturnFormula = Undefined Then
+		Return;
+	EndIf;
+
+	Condition = TrimAll(ReturnFormula);
+
+EndProcedure

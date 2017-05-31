@@ -1,0 +1,149 @@
+﻿
+////////////////////////////////////////////////////////////////////////////////
+// GENERAL PURPOSE PROCEDURES AND FUNCTIONS
+
+Procedure SetFormCaption()
+
+	RecNo        = 1 + FormOwner.Controls.Records.Value.Indexof(TableRow);
+	ThisForm.Caption = Nstr("en='Record Nr';pl='Zapis nr'") + " " + RecNo + ". " + Nstr("en='Parameters settings';pl='Ustawienia parametrów'");
+
+EndProcedure
+
+////////////////////////////////////////////////////////////////////////////////
+// TABLEBOX ParametersTable HANDLERS
+
+Procedure ParametersTableBeforeAddRow(Control, Cancel, Copying)
+
+	Cancel = True;
+
+EndProcedure
+
+Procedure ParametersTableBeforeDeleteRow(Control, Cancel)
+
+	Cancel = True;
+
+EndProcedure
+
+Procedure ParametersTableStartChoice(Control, StandardProcessing)
+
+	StandardProcessing = False;
+	VTRow             = Controls.ParametersTable.CurrentData;
+	ColumnName           = VTRow.Name;
+	ColumnTypes          = Accounting.GetAccountingRecordsColumnType(FormOwner.Metadata(), TableBox, TableRow, ColumnName);
+
+	If ColumnTypes = Undefined Then
+		Return
+	EndIf;
+
+	ValueList = New ValueList;
+	ValueList.Add("<< "+Nstr("en='New parameter';pl='Nowy parametr'")+" >>");
+
+	For each Param In FormOwner.GetParametersArray(ColumnTypes) Do
+		ValueList.Add(Param);
+	EndDo;
+
+	Sel = ChooseFromMenu(ValueList, Control);
+
+	If Sel = Undefined Then
+		Return;
+	ElsIf Sel.Value = "<< "+Nstr("en='New parameter';pl='Nowy parametr'")+" >>" Then
+
+		ParameterForm = Catalogs.BookkeepingOperationsTemplates.GetForm("Parameter", FormOwner);
+
+		ParameterForm.TableRow = VTRow;
+		ParameterForm.FormulasForm  = ThisForm;
+		ParameterForm.Name           = ColumnName;
+		ParameterForm.Presentation = ColumnName;
+		ParameterForm.Type           = ColumnTypes;
+		ParameterForm.Value      = TableRow[ColumnName];
+		ParameterForm.NotRequest = False;
+		ParameterForm.DocumentBase = FormOwner.DocumentBase;
+		ParameterForm.CatalogObject = FormOwner.ThisObject;
+
+		Par = ParameterForm.DoModal();
+
+		If Par = Undefined Then
+			Return
+		EndIf;
+
+		VTRow.Parameter = StrReplace(Par, "Parameters.", "");
+
+	Else
+		VTRow.Parameter = StrReplace(Sel.Value, "Parameters.", "");
+	EndIf;
+
+	VTRow.Set = True;
+
+EndProcedure
+
+////////////////////////////////////////////////////////////////////////////////
+// FORMS HANDLERS
+
+Procedure OnOpen()
+
+	SetFormCaption();
+
+EndProcedure
+
+Procedure ObjectActivationProcessing(ActiveObject, Source)
+
+	SetFormCaption();
+
+EndProcedure
+
+////////////////////////////////////////////////////////////////////////////////
+// CONTROLS HANDLERS 
+
+Procedure ButtonOKOnClick(Control)
+
+	Tab = TableBox;
+
+	For each Row In Controls.ParametersTable.Value Do
+
+		If Not Row.Set Then
+			Continue
+		EndIf;
+
+		If Row.New Then
+
+			If Not FormOwner.NameIsCorrect(Row.Parameter) Then
+				Return
+			EndIf;
+
+			NewParameter = FormOwner.Parameters.Add();
+			NewParameter.Name = Row.Parameter;
+			NewParameter.Presentation = Row.Presentation;
+			NewParameter.Type = New ValueStorage(Accounting.GetAccountingRecordsColumnType(FormOwner.Metadata(), Tab, TableRow, Row.Name));
+
+		Else
+
+			If FormOwner.Parameters.Find(Row.Parameter, "Name") = Undefined Then
+				Domessagebox(Nstr("en='Not found parameter with name';pl='Parametr o nazwie nie został znaleziony'")+": " + Row.Parameter, 6);
+				Return;
+			EndIf;
+
+		EndIf;
+
+		FormOwner.SetFormula(TableBox,TableRow, Row.Name, Row.Parameter);
+
+	EndDo;
+
+	Close();
+
+EndProcedure // ButtonOKOnClick()
+
+Procedure ButtonCheckAllOnClick(Control)
+
+	For each Row In ParametersTable Do
+		Row.Set = True;
+	EndDo;
+
+EndProcedure
+
+Procedure ButtonUncheckAllOnClick(Control)
+
+	For each Row In ParametersTable Do
+		Row.Set = False;
+	EndDo;
+
+EndProcedure

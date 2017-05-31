@@ -1,0 +1,511 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<Form xmlns="http://v8.1c.ru/8.3/xcf/logform" xmlns:app="http://v8.1c.ru/8.2/managed-application/core" xmlns:cfg="http://v8.1c.ru/8.1/data/enterprise/current-config" xmlns:dcscor="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:dcsset="http://v8.1c.ru/8.1/data-composition-system/settings" xmlns:ent="http://v8.1c.ru/8.1/data/enterprise" xmlns:lf="http://v8.1c.ru/8.2/managed-application/logform" xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows" xmlns:xr="http://v8.1c.ru/8.3/xcf/readable" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.4">
+	<WindowOpeningMode>LockWholeInterface</WindowOpeningMode>
+	<AutoTitle>false</AutoTitle>
+	<Group>Horizontal</Group>
+	<CommandBarLocation>Bottom</CommandBarLocation>
+	<UseForFoldersAndItems>Items</UseForFoldersAndItems>
+	<AutoCommandBar name="FormCommandBar" id="-1">
+		<HorizontalAlign>Right</HorizontalAlign>
+		<Autofill>false</Autofill>
+		<ChildItems>
+			<Button name="FormButtonSelect" id="30">
+				<Type>CommandBarButton</Type>
+				<DefaultButton>true</DefaultButton>
+				<CommandName>Form.Command.Select</CommandName>
+				<ExtendedTooltip name="FormButtonSelectExtendedTooltip" id="31"/>
+			</Button>
+			<Button name="FormButtonClose" id="32">
+				<Type>CommandBarButton</Type>
+				<CommandName>Form.StandardCommand.Close</CommandName>
+				<Title>
+					<v8:item>
+						<v8:lang>en</v8:lang>
+						<v8:content>Close</v8:content>
+					</v8:item>
+					<v8:item>
+						<v8:lang>pl</v8:lang>
+						<v8:content>Zamknij</v8:content>
+					</v8:item>
+				</Title>
+				<ExtendedTooltip name="FormButtonCloseExtendedTooltip" id="33"/>
+			</Button>
+		</ChildItems>
+	</AutoCommandBar>
+	<Events>
+		<Event name="OnOpen">OnOpen</Event>
+		<Event name="BeforeClose">BeforeClose</Event>
+		<Event name="OnCreateAtServer">OnCreateAtServer</Event>
+	</Events>
+	<ChildItems>
+		<UsualGroup name="GroupParameters" id="1">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Parameters</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>pl</v8:lang>
+					<v8:content>Parametry</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>pl</v8:lang>
+					<v8:content>Group parameters</v8:content>
+				</v8:item>
+			</ToolTip>
+			<ExtendedTooltip name="GroupParametersExtendedTooltip" id="2"/>
+			<ChildItems>
+				<Table name="ParametersTree" id="5">
+					<Representation>Tree</Representation>
+					<ReadOnly>true</ReadOnly>
+					<ChangeRowSet>false</ChangeRowSet>
+					<ChangeRowOrder>false</ChangeRowOrder>
+					<AutoInsertNewRow>true</AutoInsertNewRow>
+					<EnableStartDrag>true</EnableStartDrag>
+					<EnableDrag>true</EnableDrag>
+					<DataPath>ParametersTree</DataPath>
+					<CommandSet>
+						<ExcludedCommand>HierarchicalList</ExcludedCommand>
+						<ExcludedCommand>Tree</ExcludedCommand>
+						<ExcludedCommand>Copy</ExcludedCommand>
+						<ExcludedCommand>List</ExcludedCommand>
+						<ExcludedCommand>SortListAsc</ExcludedCommand>
+						<ExcludedCommand>MoveUp</ExcludedCommand>
+						<ExcludedCommand>OutputList</ExcludedCommand>
+						<ExcludedCommand>SelectAll</ExcludedCommand>
+						<ExcludedCommand>SortListDesc</ExcludedCommand>
+						<ExcludedCommand>CopyToClipboard</ExcludedCommand>
+						<ExcludedCommand>ShowRowRearrangement</ExcludedCommand>
+						<ExcludedCommand>Delete</ExcludedCommand>
+						<ExcludedCommand>EndEdit</ExcludedCommand>
+						<ExcludedCommand>Add</ExcludedCommand>
+						<ExcludedCommand>Change</ExcludedCommand>
+						<ExcludedCommand>ShowMultipleSelection</ExcludedCommand>
+						<ExcludedCommand>MoveDown</ExcludedCommand>
+					</CommandSet>
+					<ContextMenu name="ParametersTreeContextMenu" id="6"/>
+					<AutoCommandBar name="ParametersTreeCommandBar" id="7">
+						<Autofill>false</Autofill>
+						<ChildItems>
+							<Button name="ParametersTreeButtonSelect" id="34">
+								<Type>CommandBarButton</Type>
+								<CommandName>Form.Command.SelectParameter</CommandName>
+								<ExtendedTooltip name="ParametersTreeButtonSelectExtendedTooltip" id="35"/>
+							</Button>
+							<Button name="ParametersTreeButtonNew" id="36">
+								<Type>CommandBarButton</Type>
+								<CommandName>Form.Command.NewParameter</CommandName>
+								<ExtendedTooltip name="ParametersTreeButtonNewExtendedTooltip" id="37"/>
+							</Button>
+							<Button name="ParametersTreeButtonEdit" id="38">
+								<Type>CommandBarButton</Type>
+								<CommandName>Form.Command.EditParameter</CommandName>
+								<ExtendedTooltip name="ParametersTreeButtonEditExtendedTooltip" id="39"/>
+							</Button>
+						</ChildItems>
+					</AutoCommandBar>
+					<ExtendedTooltip name="ParametersTreeExtendedTooltip" id="8"/>
+					<SearchStringAddition name="ParametersTreeSearchString" id="9">
+						<AdditionSource>
+							<Item>ParametersTree</Item>
+							<Type>SearchStringRepresentation</Type>
+						</AdditionSource>
+						<ContextMenu name="ParametersTreeSearchStringContextMenu" id="10"/>
+						<ExtendedTooltip name="ParametersTreeSearchStringExtendedTooltip" id="11"/>
+					</SearchStringAddition>
+					<ViewStatusAddition name="ParametersTreeViewStatus" id="12">
+						<AdditionSource>
+							<Item>ParametersTree</Item>
+							<Type>ViewStatusRepresentation</Type>
+						</AdditionSource>
+						<ContextMenu name="ParametersTreeViewStatusContextMenu" id="13"/>
+						<ExtendedTooltip name="ParametersTreeViewStatusExtendedTooltip" id="14"/>
+					</ViewStatusAddition>
+					<SearchControlAddition name="ParametersTreeSearchControl" id="15">
+						<AdditionSource>
+							<Item>ParametersTree</Item>
+							<Type>SearchControl</Type>
+						</AdditionSource>
+						<ContextMenu name="ParametersTreeSearchControlContextMenu" id="16"/>
+						<ExtendedTooltip name="ParametersTreeSearchControlExtendedTooltip" id="17"/>
+					</SearchControlAddition>
+					<Events>
+						<Event name="Selection">ParametersTreeSelection</Event>
+						<Event name="OnActivateRow">ParametersTreeOnActivateRow</Event>
+						<Event name="DragStart">ParametersTreeDragStart</Event>
+					</Events>
+					<ChildItems>
+						<InputField name="ParametersTreeParameterPresentation" id="18">
+							<DataPath>ParametersTree.ParameterPresentation</DataPath>
+							<EditMode>EnterOnInput</EditMode>
+							<ContextMenu name="ParametersTreeParameterPresentationContextMenu" id="19"/>
+							<ExtendedTooltip name="ParametersTreeParameterPresentationExtendedTooltip" id="20"/>
+						</InputField>
+						<InputField name="ParametersTreeParameterName" id="21">
+							<DataPath>ParametersTree.ParameterName</DataPath>
+							<UserVisible>
+								<xr:Common>false</xr:Common>
+							</UserVisible>
+							<EditMode>EnterOnInput</EditMode>
+							<ContextMenu name="ParametersTreeParameterNameContextMenu" id="22"/>
+							<ExtendedTooltip name="ParametersTreeParameterNameExtendedTooltip" id="23"/>
+						</InputField>
+					</ChildItems>
+				</Table>
+			</ChildItems>
+		</UsualGroup>
+		<UsualGroup name="GroupFormula" id="3">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Programmistic formula</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>pl</v8:lang>
+					<v8:content>Wzór programistyczny</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>pl</v8:lang>
+					<v8:content>Group formula</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Group>Vertical</Group>
+			<ExtendedTooltip name="GroupFormulaExtendedTooltip" id="4"/>
+			<ChildItems>
+				<LabelDecoration name="LabelInformation" id="27">
+					<AutoMaxWidth>false</AutoMaxWidth>
+					<HorizontalStretch>true</HorizontalStretch>
+					<TextColor>style:InformationTextColor</TextColor>
+					<Title formatted="false">
+						<v8:item>
+							<v8:lang>pl</v8:lang>
+							<v8:content>Wzór musi zawierać tekst na wbudowanym języku.
+CurrentField - zmienna która zwraca wartość bieżącego pola;
+CurrentRecord - bieżący zapis w zestawie zapisów;
+RecordsSet - zestaw zapisów wygenerowanych na podstawie danych dokumentu (lub cały zestaw zapisów dla schematu bez dokumentu podstawy);
+RecordsArrayBySourceRecords - tablica zapisów wygenerowanych na podstawie danych dokumentu zgrupowanych wg zapisów w schemacie księgowania;
+ParametersSet.&lt;ParameterName&gt; - Zestaw parametrów. ParameterName określa parameter w zestawie;</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Formula should contain text on built-in language.
+CurrentField - variable name which returns current field value;
+CurrentRecord - current record in the records set;
+RecordsSet - set of records generated by document's data (or set of all records in case when template does not have document base);
+RecordsArrayBySourceRecords - Array of records of the records set grouped by source record from the bookkeeping template;
+ParametersSet.&lt;ParameterName&gt; - Parameters set. Parameter name specified parameter in set;</v8:content>
+						</v8:item>
+					</Title>
+					<ContextMenu name="LabelInformationContextMenu" id="28"/>
+					<ExtendedTooltip name="LabelInformationExtendedTooltip" id="29"/>
+				</LabelDecoration>
+				<TextDocumentField name="Formula" id="24">
+					<DataPath>Formula</DataPath>
+					<TitleLocation>None</TitleLocation>
+					<Width>1</Width>
+					<Height>1</Height>
+					<ContextMenu name="FormulaContextMenu" id="25"/>
+					<ExtendedTooltip name="FormulaExtendedTooltip" id="26"/>
+				</TextDocumentField>
+			</ChildItems>
+		</UsualGroup>
+	</ChildItems>
+	<Attributes>
+		<Attribute name="ColumnName" id="1">
+			<Title>
+				<v8:item>
+					<v8:lang>pl</v8:lang>
+					<v8:content>Column name</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:string</v8:Type>
+				<v8:StringQualifiers>
+					<v8:Length>0</v8:Length>
+					<v8:AllowedLength>Variable</v8:AllowedLength>
+				</v8:StringQualifiers>
+			</Type>
+		</Attribute>
+		<Attribute name="ColumnTypes" id="2">
+			<Title>
+				<v8:item>
+					<v8:lang>pl</v8:lang>
+					<v8:content>Column types</v8:content>
+				</v8:item>
+			</Title>
+			<Type/>
+		</Attribute>
+		<Attribute name="CurrentRecord" id="3">
+			<Title>
+				<v8:item>
+					<v8:lang>pl</v8:lang>
+					<v8:content>Current record</v8:content>
+				</v8:item>
+			</Title>
+			<Type/>
+		</Attribute>
+		<Attribute name="DocumentBase" id="4">
+			<Title>
+				<v8:item>
+					<v8:lang>pl</v8:lang>
+					<v8:content>Document base</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:TypeSet>cfg:DocumentRef</v8:TypeSet>
+			</Type>
+		</Attribute>
+		<Attribute name="Formula" id="5">
+			<Title>
+				<v8:item>
+					<v8:lang>pl</v8:lang>
+					<v8:content>Formula</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:string</v8:Type>
+				<v8:StringQualifiers>
+					<v8:Length>0</v8:Length>
+					<v8:AllowedLength>Variable</v8:AllowedLength>
+				</v8:StringQualifiers>
+			</Type>
+		</Attribute>
+		<Attribute name="Object" id="6">
+			<Title>
+				<v8:item>
+					<v8:lang>pl</v8:lang>
+					<v8:content>Object</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>cfg:CatalogObject.BookkeepingOperationsTemplates</v8:Type>
+			</Type>
+			<MainAttribute>true</MainAttribute>
+		</Attribute>
+		<Attribute name="ParametersTree" id="7">
+			<Title>
+				<v8:item>
+					<v8:lang>pl</v8:lang>
+					<v8:content>Parameters tree</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>v8:ValueTree</v8:Type>
+			</Type>
+			<Columns>
+				<Column name="ParameterPresentation" id="1">
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Parameter</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>pl</v8:lang>
+							<v8:content>Parametr</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>xs:string</v8:Type>
+						<v8:StringQualifiers>
+							<v8:Length>0</v8:Length>
+							<v8:AllowedLength>Variable</v8:AllowedLength>
+						</v8:StringQualifiers>
+					</Type>
+				</Column>
+				<Column name="ParameterName" id="2">
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Formula</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>pl</v8:lang>
+							<v8:content>Wzór</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>xs:string</v8:Type>
+						<v8:StringQualifiers>
+							<v8:Length>0</v8:Length>
+							<v8:AllowedLength>Variable</v8:AllowedLength>
+						</v8:StringQualifiers>
+					</Type>
+				</Column>
+			</Columns>
+		</Attribute>
+		<Attribute name="TableBox" id="8">
+			<Title>
+				<v8:item>
+					<v8:lang>pl</v8:lang>
+					<v8:content>Table box</v8:content>
+				</v8:item>
+			</Title>
+			<Type/>
+		</Attribute>
+		<Attribute name="TableKind" id="9">
+			<Title>
+				<v8:item>
+					<v8:lang>pl</v8:lang>
+					<v8:content>Table kind</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>cfg:EnumRef.BookkeepingOperationTemplateTableKind</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="TableName" id="10">
+			<Title>
+				<v8:item>
+					<v8:lang>pl</v8:lang>
+					<v8:content>Table name</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:string</v8:Type>
+				<v8:StringQualifiers>
+					<v8:Length>0</v8:Length>
+					<v8:AllowedLength>Variable</v8:AllowedLength>
+				</v8:StringQualifiers>
+			</Type>
+		</Attribute>
+		<Attribute name="OpenedFromWizard" id="12">
+			<Title>
+				<v8:item>
+					<v8:lang>pl</v8:lang>
+					<v8:content>Opened from wizard</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:boolean</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="TableBoxName" id="13">
+			<Title>
+				<v8:item>
+					<v8:lang>pl</v8:lang>
+					<v8:content>Table box name</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:string</v8:Type>
+				<v8:StringQualifiers>
+					<v8:Length>0</v8:Length>
+					<v8:AllowedLength>Variable</v8:AllowedLength>
+				</v8:StringQualifiers>
+			</Type>
+		</Attribute>
+		<Attribute name="RootModified" id="14">
+			<Title>
+				<v8:item>
+					<v8:lang>pl</v8:lang>
+					<v8:content>Root modified</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:boolean</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="ValueSelected" id="15">
+			<Title>
+				<v8:item>
+					<v8:lang>pl</v8:lang>
+					<v8:content>Value selected</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:boolean</v8:Type>
+			</Type>
+		</Attribute>
+	</Attributes>
+	<Commands>
+		<Command name="Select" id="1">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Select</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>pl</v8:lang>
+					<v8:content>Wybierz</v8:content>
+				</v8:item>
+			</Title>
+			<Action>Select</Action>
+		</Command>
+		<Command name="NewParameter" id="2">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>New parameter</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>pl</v8:lang>
+					<v8:content>Nowy parametr</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>pl</v8:lang>
+					<v8:content>New parameter</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Picture>
+				<xr:Ref>StdPicture.CreateListItem</xr:Ref>
+				<xr:LoadTransparent>true</xr:LoadTransparent>
+			</Picture>
+			<Action>NewParameter</Action>
+			<Representation>TextPicture</Representation>
+		</Command>
+		<Command name="SelectParameter" id="3">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Select</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>pl</v8:lang>
+					<v8:content>Wybierz</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>pl</v8:lang>
+					<v8:content>Select parameter</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Picture>
+				<xr:Ref>StdPicture.ChooseValue</xr:Ref>
+				<xr:LoadTransparent>true</xr:LoadTransparent>
+			</Picture>
+			<Action>SelectParameter</Action>
+			<Representation>TextPicture</Representation>
+		</Command>
+		<Command name="EditParameter" id="4">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Edit</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>pl</v8:lang>
+					<v8:content>Edytuj</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>pl</v8:lang>
+					<v8:content>Edit parameter</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Picture>
+				<xr:Ref>StdPicture.Change</xr:Ref>
+				<xr:LoadTransparent>true</xr:LoadTransparent>
+			</Picture>
+			<Action>EditParameter</Action>
+			<Representation>TextPicture</Representation>
+		</Command>
+	</Commands>
+</Form>

@@ -1,0 +1,10 @@
+﻿
+Procedure InformationRegisterListSelection(Control, RowSelected, Column, StandardProcessing)
+	
+	If Column.Name = "Object" OR Column.Name = "User" Then
+		
+		RowSelected[Column.Name].GetForm(,ThisForm,ThisForm).Open();
+		
+	EndIf;	
+	
+EndProcedure

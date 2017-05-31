@@ -1,0 +1,35 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<LinkToBookkeepingData>
+	<Catalogs>
+		<BankAccounts>
+			<Name>BankAccounts</Name>
+			<Datapath></Datapath>
+			<Register>FinancialBankAccounts</Register>
+		</BankAccounts>
+		<AccrualAndDeductionKinds>
+			<Name>AccrualAndDeductionKinds</Name>
+			<Datapath></Datapath>
+			<Register>FinancialAccrualAndDeductionKinds</Register>
+		</AccrualAndDeductionKinds>
+		<PettyCashes>
+			<Name>PettyCashes</Name>
+			<Datapath></Datapath>
+			<Register>FinancialPettyCashes</Register>
+		</PettyCashes>
+		<Counterparties>
+			<Name>Counterparties</Name>
+			<Datapath>FinancialGroup</Datapath>
+			<Register>FinancialCounterpartiesGroups</Register>
+		</Counterparties>
+		<ProductsAndServices>
+			<Name>ProductsAndServices</Name>
+			<Datapath>FinancialGroup</Datapath>
+			<Register>FinancialProductsAndServicesGroups</Register>
+		</ProductsAndServices>
+		<VATRates>
+			<Name>VATRates</Name>
+			<Datapath></Datapath>
+			<Register>FinancialVATRates</Register>
+		</VATRates>
+	</Catalogs>
+</LinkToBookkeepingData>

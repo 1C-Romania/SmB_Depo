@@ -1,0 +1,282 @@
+﻿
+////////////////////////////////////////////////////////////////////////////////
+// PROCEDURES AND FUNCTIONS EXPORT
+
+Procedure FillParametersTree() Export
+
+	Parameters.Rows.Clear();
+
+	If DocumentBase = Undefined Then
+	
+		ParametersRow = Parameters.Rows.Add();
+		ParametersRow.Parameter = "Parameters";
+		
+	Else
+		
+		ParametersRow = Parameters;
+		
+	EndIf;
+	
+	If ColumnTypes = Undefined 
+		AND TableBox <> Undefined 
+		AND TableBox.CurrentColumn <> Undefined Then
+		ColumnTypes  = Accounting.GetAccountingRecordsColumnType(AlternateFormOwner.Metadata(), TableBox);
+	EndIf;
+
+	If FilterByType Then
+
+		ParametersArray = AlternateFormOwner.GetParametersArray(ColumnTypes);
+		For each Param In ParametersArray Do
+			Row = ParametersRow.Rows.Add();
+			Row.Parameter = StrReplace(Param, "Parameters.", "");
+			Row.Formula  = Param;
+		EndDo;
+
+	Else
+
+		For each Param In AlternateFormOwner.Parameters Do
+			Row = ParametersRow.Rows.Add();
+			Row.Parameter = Param.Name;
+			Row.Formula  = Param.Name;
+		EndDo;
+
+	EndIf;
+
+	If DocumentBase = Undefined
+		AND TableBox <> Undefined Then
+		
+		If ParametersRow.Rows.Count() = 0 Then
+			Parameters.Rows.Delete(0);
+		Else
+			Controls.Parameters.Expand(ParametersRow, True);
+		EndIf;
+		
+		For each Rec In AlternateFormOwner[TableBox.Name] Do
+			
+			RecordNumber  = "Record" + (AlternateFormOwner[TableBox.Name].Indexof(Rec)+1);
+			RecordsRow = Parameters.Rows.Add();
+			RecordsRow.Parameter = RecordNumber;
+			
+			For each MDAttribute In Metadata.Catalogs.BookkeepingOperationsTemplates.TabularSections[TableBox.Name].Attributes Do
+				
+				If MDAttribute.Name = "Formulas" 
+					OR MDAttribute.Name = "Condition" 
+					OR MDAttribute.Name = "TableName" 
+					OR MDAttribute.Name = "TableKind" Then
+					Continue
+				EndIf;
+				
+				If (Rec = CurrentRecord) AND (MDAttribute.Name = ColumnName) Then
+					Continue
+				EndIf;
+				
+				ExtDimensionDescription = "";
+				FieldTypes = Accounting.GetAccountingRecordsColumnType(AlternateFormOwner.Metadata(), TableBox, Rec, MDAttribute.Name, ExtDimensionDescription);
+				TempFlag = True;
+				
+				If FilterByType Then
+					
+					TempFlag = False;
+					
+					If FieldTypes = Undefined Then
+						Continue
+					EndIf;
+					
+					For each T In FieldTypes.Types() Do
+						If ColumnTypes.ContainsType(T) Then
+							TempFlag = True;
+							Break;
+						EndIf;
+					EndDo;
+					
+				EndIf;
+				
+				If Not TempFlag Then
+					Continue
+				EndIf;
+				
+				RecordField = RecordsRow.Rows.Add();
+				RecordField.Parameter = MDAttribute.Name + ?((ExtDimensionDescription <> "") AND (ExtDimensionDescription <> MDAttribute.Name), " (", "") + ExtDimensionDescription + ?((ExtDimensionDescription <> "") AND (ExtDimensionDescription<>MDAttribute.Name), ")", "");
+				RecordField.Formula  = RecordNumber + "." + MDAttribute.Name;
+				
+			EndDo;
+			
+			If RecordsRow.Rows.Count() = 0 Then
+				Parameters.Rows.Delete(Parameters.Rows.Count()-1);
+			Else
+				Controls.Parameters.Expand(RecordsRow, True);
+			EndIf;
+			
+		EndDo;
+		
+	EndIf;
+
+EndProcedure // FillParametersTree()
+
+////////////////////////////////////////////////////////////////////////////////
+// GENERAL PURPOSE PROCEDURES AND FUNCTIONS
+
+// Closes form, and returns selected formulas Parameter
+//
+Procedure SetFormula()
+
+	CurrentData = Controls.Parameters.CurrentData;
+	If CurrentData <> Undefined Then
+		Controls.FormulaField.SelectedText = CurrentData.Formula;
+	EndIf;	
+
+	
+EndProcedure
+
+////////////////////////////////////////////////////////////////////////////////
+// FORM ACTIONS HANDLER
+
+Procedure OnOpen()
+
+	CurrentControl = Controls.Parameters;
+	
+	Controls.FormulaField.SetText(Formula);
+
+EndProcedure
+
+////////////////////////////////////////////////////////////////////////////////
+// CONTROLS ACTIONS HANDLERS
+
+Procedure ButtonSelectOnClick(Control)
+
+	Formula = Controls.FormulaField.GetText();
+	
+	Notify("ParameterSelection", Formula, "ParameterSelectionForm");
+
+	Close(Formula);
+
+EndProcedure
+
+Procedure FilterByTypeOnChange(Control)
+
+	FillParametersTree();
+
+EndProcedure
+
+Function OpenParameterSelectionForm(Caption,SourceFormula,IsFormula=True)
+	
+	If IsFormula Then
+		SelectionForm = Catalogs.BookkeepingOperationsTemplates.GetForm("EditFormula", ThisForm);
+	Else
+		SelectionForm = Catalogs.BookkeepingOperationsTemplates.GetForm("ParameterSelection", ThisForm);
+	EndIf;	
+	SelectionForm.DocumentBase = DocumentBase;
+	SelectionForm.FilterByType = FilterByType;
+	SelectionForm.Caption   = Caption;
+	SelectionForm.Controls.FilterByType.Visible = Controls.FilterByType.Visible;
+	SelectionForm.Formula = SourceFormula;
+	SelectionForm.TableBox = TableBox;
+	SelectionForm.AlternateFormOwner = AlternateFormOwner;
+
+	SelectionForm.FillParametersTree();
+
+	Return SelectionForm.DoModal();
+	
+EndFunction	
+
+
+////////////////////////////////////////////////////////////////////////////////
+// TABLE BOX PARAMETERS HANDLERS
+
+Procedure ParametersSelection(Control, SelectedRow, Column, StandardProcessing)
+
+	StandardProcessing = False;
+
+	SetFormula();
+
+EndProcedure
+
+Procedure CommandBarParametersNewParameter(Button)
+	
+	Param = AlternateFormOwner.NewParameter(TableBox, , ColumnName);
+	
+	Close(Param);
+	
+EndProcedure
+
+//////////////////////////////////////////////////////
+/// IF HaNDLERS
+
+
+Procedure ButtonAddIfClick(Control)
+	
+	Controls.FormulaField.SelectedText = "?("+IfCondition+","+IfTrue+","+IfFalse+")";
+	
+EndProcedure
+
+Procedure IfConditionStartChoice(Control, StandardProcessing)
+	IfCondition = OpenParameterSelectionForm(Nstr("en='Choose formula for condition';pl='Wybierz wzór dla warunku'"),IfCondition);
+	FillParametersTree();
+EndProcedure
+
+Procedure IfTrueStartChoice(Control, StandardProcessing)
+	IfTrue = OpenParameterSelectionForm(Nstr("en='Choose formula for true';pl='Wybierz wzór dla prawdy'"),IfTrue);
+	FillParametersTree();
+EndProcedure
+
+Procedure IfFalseStartChoice(Control, StandardProcessing)
+	IfFalse = OpenParameterSelectionForm(Nstr("en='Choose formula for false';pl='Wybierz wzór dla falszy'"),IfFalse);
+	FillParametersTree();
+EndProcedure
+
+//////////////////////////////////////////////////////
+/// IF HaNDLERS
+
+Procedure TypeComparisonParameterStartChoice(Control, StandardProcessing)
+	TypeComparisonParameter = OpenParameterSelectionForm(Nstr("en='Choose parameter';pl='Wybierz parametr'"),TypeComparisonParameter,False);
+	FillParametersTree();
+EndProcedure
+
+Procedure ButtonAddTypeClick(Control)
+	
+	TypeAsString = "";
+	SelectedType = TypeComparisonType.Types()[0];
+	If SelectedType = Type("Date") Then
+		TypeAsString = "Type(""Date"")";
+	ElsIf SelectedType = Type("String") Then
+		TypeAsString = "Type(""String"")";
+	ElsIf SelectedType = Type("Number") Then
+		TypeAsString = "Type(""Number"")";
+	ElsIf SelectedType = Type("Boolean") Then
+		TypeAsString = "Type(""Boolean"")";
+	ElsIf SelectedType = Type("ValueStorage") Then
+		TypeAsString = "Type(""ValueStorage"")";
+	Else
+		EmptyValue = UniversalReports.TypeEmptyValue(SelectedType);
+		MetadataName = EmptyValue.Metadata().Name;
+		If Catalogs.AllRefsType().ContainsType(SelectedType) Then
+			TypeAsString = "TypeOf(Catalogs."+MetadataName+".EmptyRef())";
+		ElsIf Documents.AllRefsType().ContainsType(SelectedType) Then	
+			TypeAsString = "TypeOf(Documents."+MetadataName+".EmptyRef())";
+		ElsIf ChartsOfAccounts.AllRefsType().ContainsType(SelectedType) Then
+			TypeAsString = "TypeOf(ChartsOfAccounts."+MetadataName+".EmptyRef())";
+		ElsIf ChartsOfCalculationTypes.AllRefsType().ContainsType(SelectedType) Then
+			TypeAsString = "TypeOf(ChartsOfCalculationTypes."+MetadataName+".EmptyRef())";
+		ElsIf ChartsOfCharacteristicTypes.AllRefsType().ContainsType(SelectedType) Then
+			TypeAsString = "TypeOf(ChartsOfCharacteristicTypes."+MetadataName+".EmptyRef())";	
+		ElsIf ExchangePlans.AllRefsType().ContainsType(SelectedType) Then
+			TypeAsString = "TypeOf(ExchangePlans."+MetadataName+".EmptyRef())";
+		ElsIf Enums.AllRefsType().ContainsType(SelectedType) Then
+			TypeAsString = "TypeOf(Enums."+MetadataName+".EmptyRef())";
+		EndIf;		
+	EndIf;
+	
+	Controls.FormulaField.SelectedText = "TypeOf("+TypeComparisonParameter+")" + " = " + TypeAsString;
+	
+EndProcedure
+
+
+
+
+
+
+
+
+
+
+

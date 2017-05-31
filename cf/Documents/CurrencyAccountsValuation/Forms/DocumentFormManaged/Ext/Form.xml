@@ -1,0 +1,849 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<Form xmlns="http://v8.1c.ru/8.3/xcf/logform" xmlns:app="http://v8.1c.ru/8.2/managed-application/core" xmlns:cfg="http://v8.1c.ru/8.1/data/enterprise/current-config" xmlns:dcscor="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:dcsset="http://v8.1c.ru/8.1/data-composition-system/settings" xmlns:ent="http://v8.1c.ru/8.1/data/enterprise" xmlns:lf="http://v8.1c.ru/8.2/managed-application/logform" xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows" xmlns:xr="http://v8.1c.ru/8.3/xcf/readable" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.4">
+	<AutoTime>CurrentOrLast</AutoTime>
+	<UsePostingMode>Auto</UsePostingMode>
+	<RepostOnWrite>true</RepostOnWrite>
+	<AutoCommandBar name="FormCommandBar" id="-1">
+		<ChildItems>
+			<Button name="FormCommonCommandEditDocumentsHeader" id="224">
+				<Type>CommandBarButton</Type>
+				<CommandName>CommonCommand.EditDocumentsHeader</CommandName>
+				<ExtendedTooltip name="FormCommonCommandEditDocumentsHeaderExtendedTooltip" id="225"/>
+			</Button>
+		</ChildItems>
+	</AutoCommandBar>
+	<Events>
+		<Event name="AfterWrite">AfterWrite</Event>
+		<Event name="AfterWriteAtServer">AfterWriteAtServer</Event>
+		<Event name="NotificationProcessing">NotificationProcessing</Event>
+		<Event name="OnOpen">OnOpen</Event>
+		<Event name="BeforeWriteAtServer">BeforeWriteAtServer</Event>
+		<Event name="OnCreateAtServer">OnCreateAtServer</Event>
+	</Events>
+	<ChildItems>
+		<UsualGroup name="GroupHeader" id="183">
+			<Title>
+				<v8:item>
+					<v8:lang>pl</v8:lang>
+					<v8:content>Group header</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>pl</v8:lang>
+					<v8:content>Group header</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Group>Horizontal</Group>
+			<Representation>None</Representation>
+			<ShowTitle>false</ShowTitle>
+			<ExtendedTooltip name="GroupHeaderExtendedTooltip" id="184"/>
+			<ChildItems>
+				<UsualGroup name="GroupNumberDate" id="207">
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Group number and date</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>pl</v8:lang>
+							<v8:content>Grupa numer i data</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Группа Номер и Дата</v8:content>
+						</v8:item>
+					</Title>
+					<HorizontalStretch>true</HorizontalStretch>
+					<Group>Horizontal</Group>
+					<Representation>None</Representation>
+					<ShowTitle>false</ShowTitle>
+					<ExtendedTooltip name="GroupNumberDateExtendedTooltip" id="208"/>
+					<ChildItems>
+						<Pages name="GroupNumberPreview" id="209">
+							<PagesRepresentation>None</PagesRepresentation>
+							<ExtendedTooltip name="GroupNumberPreviewExtendedTooltip" id="210"/>
+							<ChildItems>
+								<Page name="PageNumberPreview" id="211">
+									<ShowTitle>false</ShowTitle>
+									<ExtendedTooltip name="PageNumberPreviewExtendedTooltip" id="212"/>
+									<ChildItems>
+										<InputField name="NumberPreview" id="213">
+											<DataPath>NumberPreview</DataPath>
+											<SkipOnInput>true</SkipOnInput>
+											<WarningOnEditRepresentation>DontShow</WarningOnEditRepresentation>
+											<WarningOnEdit>
+												<v8:item>
+													<v8:lang>en</v8:lang>
+													<v8:content>ATTENTION! After changing the number automatic numbering for this document will be disabled! Enable number editing?</v8:content>
+												</v8:item>
+												<v8:item>
+													<v8:lang>pl</v8:lang>
+													<v8:content>UWAGA! Po zmianie numeru numeracja automatyczna tego dokumentu zostanie wyłączona! Włączyć moźliwość zmiany numeru?</v8:content>
+												</v8:item>
+												<v8:item>
+													<v8:lang>ru</v8:lang>
+													<v8:content>ВНИМАНИЕ! После изменения номера автоматическая нумерация документов будет отключена! Разрешить редактирование номера документа?</v8:content>
+												</v8:item>
+											</WarningOnEdit>
+											<ChoiceButton>true</ChoiceButton>
+											<ContextMenu name="NumberPreviewContextMenu" id="214"/>
+											<ExtendedTooltip name="NumberPreviewExtendedTooltip" id="215"/>
+											<Events>
+												<Event name="OnChange">NumberPreviewOnChange</Event>
+												<Event name="StartChoice">NumberPreviewStartChoice</Event>
+											</Events>
+										</InputField>
+									</ChildItems>
+								</Page>
+								<Page name="PageNumber" id="216">
+									<Group>HorizontalIfPossible</Group>
+									<ShowTitle>false</ShowTitle>
+									<ExtendedTooltip name="PageNumberExtendedTooltip" id="217"/>
+									<ChildItems>
+										<InputField name="Number" id="218">
+											<DataPath>Object.Number</DataPath>
+											<WarningOnEditRepresentation>DontShow</WarningOnEditRepresentation>
+											<WarningOnEdit>
+												<v8:item>
+													<v8:lang>en</v8:lang>
+													<v8:content>ATTENTION! After changing the number automatic numbering for this document will be disabled! Enable number editing?</v8:content>
+												</v8:item>
+												<v8:item>
+													<v8:lang>pl</v8:lang>
+													<v8:content>UWAGA! Po zmianie numeru numeracja automatyczna tego dokumentu zostanie wyłączona! Włączyć moźliwość zmiany numeru?</v8:content>
+												</v8:item>
+												<v8:item>
+													<v8:lang>ru</v8:lang>
+													<v8:content>ВНИМАНИЕ! После изменения номера автоматическая нумерация документов будет отключена! Разрешить редактирование номера документа?</v8:content>
+												</v8:item>
+											</WarningOnEdit>
+											<ChoiceButton>true</ChoiceButton>
+											<ContextMenu name="NumberContextMenu" id="219"/>
+											<ExtendedTooltip name="NumberExtendedTooltip" id="220"/>
+											<Events>
+												<Event name="OnChange">NumberPreviewOnChange</Event>
+												<Event name="StartChoice">NumberPreviewStartChoice</Event>
+											</Events>
+										</InputField>
+									</ChildItems>
+								</Page>
+							</ChildItems>
+						</Pages>
+						<InputField name="Date" id="221">
+							<DataPath>Object.Date</DataPath>
+							<ContextMenu name="DateContextMenu" id="222"/>
+							<ExtendedTooltip name="DateExtendedTooltip" id="223"/>
+							<Events>
+								<Event name="OnChange">DateOnChange</Event>
+							</Events>
+						</InputField>
+					</ChildItems>
+				</UsualGroup>
+			</ChildItems>
+		</UsualGroup>
+		<InputField name="PartialJournal" id="19">
+			<DataPath>Object.PartialJournal</DataPath>
+			<EditMode>EnterOnInput</EditMode>
+			<ContextMenu name="PartialJournalContextMenu" id="20"/>
+			<ExtendedTooltip name="PartialJournalExtendedTooltip" id="21"/>
+		</InputField>
+		<Pages name="Pages" id="22">
+			<Title>
+				<v8:item>
+					<v8:lang>pl</v8:lang>
+					<v8:content>Pages</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Закладки</v8:content>
+				</v8:item>
+			</Title>
+			<ExtendedTooltip name="PagesExtendedTooltip" id="23"/>
+			<ChildItems>
+				<Page name="GroupValuation" id="48">
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Documents</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>pl</v8:lang>
+							<v8:content>Dokumenty</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Документы</v8:content>
+						</v8:item>
+					</Title>
+					<ExtendedTooltip name="GroupValuationExtendedTooltip" id="49"/>
+					<ChildItems>
+						<Table name="Valuation" id="50">
+							<Representation>List</Representation>
+							<Footer>true</Footer>
+							<AutoInsertNewRow>true</AutoInsertNewRow>
+							<EnableStartDrag>true</EnableStartDrag>
+							<EnableDrag>true</EnableDrag>
+							<DataPath>Object.Valuation</DataPath>
+							<RowFilter xsi:nil="true"/>
+							<ContextMenu name="ValuationContextMenu" id="51"/>
+							<AutoCommandBar name="ValuationCommandBar" id="52">
+								<ChildItems>
+									<Popup name="Filling" id="171">
+										<Title>
+											<v8:item>
+												<v8:lang>pl</v8:lang>
+												<v8:content>Filling</v8:content>
+											</v8:item>
+										</Title>
+										<ToolTip>
+											<v8:item>
+												<v8:lang>pl</v8:lang>
+												<v8:content>Filling</v8:content>
+											</v8:item>
+										</ToolTip>
+										<ExtendedTooltip name="FillingExtendedTooltip" id="172"/>
+										<ChildItems>
+											<Button name="ValuationFillValuation" id="173">
+												<Type>CommandBarButton</Type>
+												<CommandName>Form.Command.FillValuation</CommandName>
+												<ExtendedTooltip name="ValuationFillValuationExtendedTooltip" id="174"/>
+											</Button>
+										</ChildItems>
+									</Popup>
+								</ChildItems>
+							</AutoCommandBar>
+							<ExtendedTooltip name="ValuationExtendedTooltip" id="53"/>
+							<SearchStringAddition name="ValuationSearchString" id="54">
+								<AdditionSource>
+									<Item>Valuation</Item>
+									<Type>SearchStringRepresentation</Type>
+								</AdditionSource>
+								<ContextMenu name="ValuationSearchStringContextMenu" id="55"/>
+								<ExtendedTooltip name="ValuationSearchStringExtendedTooltip" id="56"/>
+							</SearchStringAddition>
+							<ViewStatusAddition name="ValuationViewStatus" id="57">
+								<AdditionSource>
+									<Item>Valuation</Item>
+									<Type>ViewStatusRepresentation</Type>
+								</AdditionSource>
+								<ContextMenu name="ValuationViewStatusContextMenu" id="58"/>
+								<ExtendedTooltip name="ValuationViewStatusExtendedTooltip" id="59"/>
+							</ViewStatusAddition>
+							<SearchControlAddition name="ValuationSearchControl" id="60">
+								<AdditionSource>
+									<Item>Valuation</Item>
+									<Type>SearchControl</Type>
+								</AdditionSource>
+								<ContextMenu name="ValuationSearchControlContextMenu" id="61"/>
+								<ExtendedTooltip name="ValuationSearchControlExtendedTooltip" id="62"/>
+							</SearchControlAddition>
+							<Events>
+								<Event name="OnStartEdit">ValuationOnStartEdit</Event>
+							</Events>
+							<ChildItems>
+								<LabelField name="ValuationLineNumber" id="63">
+									<DataPath>Object.Valuation.LineNumber</DataPath>
+									<Title>
+										<v8:item>
+											<v8:lang>pl</v8:lang>
+											<v8:content>L.p.</v8:content>
+										</v8:item>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>N</v8:content>
+										</v8:item>
+									</Title>
+									<EditMode>EnterOnInput</EditMode>
+									<ContextMenu name="ValuationLineNumberContextMenu" id="64"/>
+									<ExtendedTooltip name="ValuationLineNumberExtendedTooltip" id="65"/>
+								</LabelField>
+								<InputField name="ValuationAccount_AmountDue" id="69">
+									<DataPath>Object.Valuation.Account_AmountDue</DataPath>
+									<Title>
+										<v8:item>
+											<v8:lang>pl</v8:lang>
+											<v8:content>Konto</v8:content>
+										</v8:item>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Счет</v8:content>
+										</v8:item>
+									</Title>
+									<EditMode>EnterOnInput</EditMode>
+									<ContextMenu name="ValuationAccount_AmountDueContextMenu" id="70"/>
+									<ExtendedTooltip name="ValuationAccount_AmountDueExtendedTooltip" id="71"/>
+									<Events>
+										<Event name="OnChange">ValuationAccount_AmountDueOnChange</Event>
+									</Events>
+								</InputField>
+								<InputField name="ValuationExtDimension1" id="72">
+									<DataPath>Object.Valuation.ExtDimension1</DataPath>
+									<EditMode>EnterOnInput</EditMode>
+									<ContextMenu name="ValuationExtDimension1ContextMenu" id="73"/>
+									<ExtendedTooltip name="ValuationExtDimension1ExtendedTooltip" id="74"/>
+								</InputField>
+								<InputField name="ValuationExtDimension2" id="75">
+									<DataPath>Object.Valuation.ExtDimension2</DataPath>
+									<EditMode>EnterOnInput</EditMode>
+									<ContextMenu name="ValuationExtDimension2ContextMenu" id="76"/>
+									<ExtendedTooltip name="ValuationExtDimension2ExtendedTooltip" id="77"/>
+								</InputField>
+								<InputField name="ValuationExtDimension3" id="78">
+									<DataPath>Object.Valuation.ExtDimension3</DataPath>
+									<EditMode>EnterOnInput</EditMode>
+									<ContextMenu name="ValuationExtDimension3ContextMenu" id="79"/>
+									<ExtendedTooltip name="ValuationExtDimension3ExtendedTooltip" id="80"/>
+								</InputField>
+								<InputField name="ValuationCurrency" id="81">
+									<DataPath>Object.Valuation.Currency</DataPath>
+									<EditMode>EnterOnInput</EditMode>
+									<ContextMenu name="ValuationCurrencyContextMenu" id="82"/>
+									<ExtendedTooltip name="ValuationCurrencyExtendedTooltip" id="83"/>
+								</InputField>
+								<InputField name="ValuationExchangeRate" id="84">
+									<DataPath>Object.Valuation.ExchangeRate</DataPath>
+									<EditMode>EnterOnInput</EditMode>
+									<ContextMenu name="ValuationExchangeRateContextMenu" id="85"/>
+									<ExtendedTooltip name="ValuationExchangeRateExtendedTooltip" id="86"/>
+								</InputField>
+								<InputField name="ValuationAmount" id="87">
+									<DataPath>Object.Valuation.Amount</DataPath>
+									<Title>
+										<v8:item>
+											<v8:lang>pl</v8:lang>
+											<v8:content>Saldo</v8:content>
+										</v8:item>
+									</Title>
+									<EditMode>EnterOnInput</EditMode>
+									<FooterDataPath>Object.Valuation.TotalAmount</FooterDataPath>
+									<FooterFont ref="style:TableBoxFooterFont" kind="StyleItem"/>
+									<ContextMenu name="ValuationAmountContextMenu" id="88"/>
+									<ExtendedTooltip name="ValuationAmountExtendedTooltip" id="89"/>
+								</InputField>
+								<InputField name="ValuationAmountNational" id="90">
+									<DataPath>Object.Valuation.AmountNational</DataPath>
+									<Title>
+										<v8:item>
+											<v8:lang>pl</v8:lang>
+											<v8:content>Saldo (kraj.)</v8:content>
+										</v8:item>
+									</Title>
+									<EditMode>EnterOnInput</EditMode>
+									<FooterDataPath>Object.Valuation.TotalAmountNational</FooterDataPath>
+									<FooterFont ref="style:TableBoxFooterFont" kind="StyleItem"/>
+									<ContextMenu name="ValuationAmountNationalContextMenu" id="91"/>
+									<ExtendedTooltip name="ValuationAmountNationalExtendedTooltip" id="92"/>
+								</InputField>
+								<InputField name="ValuationPostingDate" id="93">
+									<DataPath>Object.Valuation.PostingDate</DataPath>
+									<EditMode>EnterOnInput</EditMode>
+									<ContextMenu name="ValuationPostingDateContextMenu" id="94"/>
+									<ExtendedTooltip name="ValuationPostingDateExtendedTooltip" id="95"/>
+								</InputField>
+								<InputField name="ValuationValuationAmount" id="96">
+									<DataPath>Object.Valuation.ValuationAmount</DataPath>
+									<EditMode>EnterOnInput</EditMode>
+									<FooterDataPath>Object.Valuation.TotalValuationAmount</FooterDataPath>
+									<FooterFont ref="style:TableBoxFooterFont" kind="StyleItem"/>
+									<ContextMenu name="ValuationValuationAmountContextMenu" id="97"/>
+									<ExtendedTooltip name="ValuationValuationAmountExtendedTooltip" id="98"/>
+								</InputField>
+							</ChildItems>
+						</Table>
+					</ChildItems>
+				</Page>
+				<Page name="GroupGeneral" id="163">
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>General</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>pl</v8:lang>
+							<v8:content>Ogólne</v8:content>
+						</v8:item>
+					</Title>
+					<ToolTip>
+						<v8:item>
+							<v8:lang>pl</v8:lang>
+							<v8:content>Group general</v8:content>
+						</v8:item>
+					</ToolTip>
+					<Group>Horizontal</Group>
+					<ExtendedTooltip name="GroupGeneralExtendedTooltip" id="164"/>
+					<ChildItems>
+						<UsualGroup name="GroupExchangeRates" id="24">
+							<Title>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Currency</v8:content>
+								</v8:item>
+								<v8:item>
+									<v8:lang>pl</v8:lang>
+									<v8:content>Waluta</v8:content>
+								</v8:item>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Валюта</v8:content>
+								</v8:item>
+							</Title>
+							<Group>Vertical</Group>
+							<ExtendedTooltip name="GroupExchangeRatesExtendedTooltip" id="25"/>
+							<ChildItems>
+								<Table name="ExchangeRates" id="26">
+									<Representation>List</Representation>
+									<AutoInsertNewRow>true</AutoInsertNewRow>
+									<EnableStartDrag>true</EnableStartDrag>
+									<EnableDrag>true</EnableDrag>
+									<DataPath>Object.ExchangeRates</DataPath>
+									<RowFilter xsi:nil="true"/>
+									<ContextMenu name="ExchangeRatesContextMenu" id="27"/>
+									<AutoCommandBar name="ExchangeRatesCommandBar" id="28">
+										<ChildItems>
+											<Popup name="FillSubmenu" id="175">
+												<Title>
+													<v8:item>
+														<v8:lang>en</v8:lang>
+														<v8:content>Fill</v8:content>
+													</v8:item>
+													<v8:item>
+														<v8:lang>pl</v8:lang>
+														<v8:content>Wypełnij</v8:content>
+													</v8:item>
+												</Title>
+												<ToolTip>
+													<v8:item>
+														<v8:lang>pl</v8:lang>
+														<v8:content>Fill submenu</v8:content>
+													</v8:item>
+												</ToolTip>
+												<ExtendedTooltip name="FillSubmenuExtendedTooltip" id="176"/>
+												<ChildItems>
+													<Button name="ExchangeRatesFillExchangeRates" id="177">
+														<Type>CommandBarButton</Type>
+														<CommandName>Form.Command.FillExchangeRates</CommandName>
+														<ExtendedTooltip name="ExchangeRatesFillExchangeRatesExtendedTooltip" id="178"/>
+													</Button>
+												</ChildItems>
+											</Popup>
+										</ChildItems>
+									</AutoCommandBar>
+									<ExtendedTooltip name="ExchangeRatesExtendedTooltip" id="29"/>
+									<SearchStringAddition name="ExchangeRatesSearchString" id="30">
+										<AdditionSource>
+											<Item>ExchangeRates</Item>
+											<Type>SearchStringRepresentation</Type>
+										</AdditionSource>
+										<ContextMenu name="ExchangeRatesSearchStringContextMenu" id="31"/>
+										<ExtendedTooltip name="ExchangeRatesSearchStringExtendedTooltip" id="32"/>
+									</SearchStringAddition>
+									<ViewStatusAddition name="ExchangeRatesViewStatus" id="33">
+										<AdditionSource>
+											<Item>ExchangeRates</Item>
+											<Type>ViewStatusRepresentation</Type>
+										</AdditionSource>
+										<ContextMenu name="ExchangeRatesViewStatusContextMenu" id="34"/>
+										<ExtendedTooltip name="ExchangeRatesViewStatusExtendedTooltip" id="35"/>
+									</ViewStatusAddition>
+									<SearchControlAddition name="ExchangeRatesSearchControl" id="36">
+										<AdditionSource>
+											<Item>ExchangeRates</Item>
+											<Type>SearchControl</Type>
+										</AdditionSource>
+										<ContextMenu name="ExchangeRatesSearchControlContextMenu" id="37"/>
+										<ExtendedTooltip name="ExchangeRatesSearchControlExtendedTooltip" id="38"/>
+									</SearchControlAddition>
+									<ChildItems>
+										<LabelField name="ExchangeRatesLineNumber" id="39">
+											<DataPath>Object.ExchangeRates.LineNumber</DataPath>
+											<Visible>false</Visible>
+											<EditMode>EnterOnInput</EditMode>
+											<ContextMenu name="ExchangeRatesLineNumberContextMenu" id="40"/>
+											<ExtendedTooltip name="ExchangeRatesLineNumberExtendedTooltip" id="41"/>
+										</LabelField>
+										<InputField name="ExchangeRatesCurrency" id="42">
+											<DataPath>Object.ExchangeRates.Currency</DataPath>
+											<EditMode>EnterOnInput</EditMode>
+											<DropListButton>true</DropListButton>
+											<ContextMenu name="ExchangeRatesCurrencyContextMenu" id="43"/>
+											<ExtendedTooltip name="ExchangeRatesCurrencyExtendedTooltip" id="44"/>
+											<Events>
+												<Event name="OnChange">ExchangeRatesCurrencyOnChange</Event>
+											</Events>
+										</InputField>
+										<InputField name="ExchangeRatesExchangeRate" id="45">
+											<DataPath>Object.ExchangeRates.ExchangeRate</DataPath>
+											<EditMode>EnterOnInput</EditMode>
+											<ContextMenu name="ExchangeRatesExchangeRateContextMenu" id="46"/>
+											<ExtendedTooltip name="ExchangeRatesExchangeRateExtendedTooltip" id="47"/>
+											<Events>
+												<Event name="StartChoice">ExchangeRatesExchangeRateStartChoice</Event>
+											</Events>
+										</InputField>
+									</ChildItems>
+								</Table>
+							</ChildItems>
+						</UsualGroup>
+						<UsualGroup name="GroupAccounts" id="99">
+							<Title>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Accounts</v8:content>
+								</v8:item>
+								<v8:item>
+									<v8:lang>pl</v8:lang>
+									<v8:content>Konta</v8:content>
+								</v8:item>
+							</Title>
+							<Group>Vertical</Group>
+							<ExtendedTooltip name="GroupAccountsExtendedTooltip" id="100"/>
+							<ChildItems>
+								<Table name="Accounts" id="101">
+									<Representation>List</Representation>
+									<AutoInsertNewRow>true</AutoInsertNewRow>
+									<EnableStartDrag>true</EnableStartDrag>
+									<EnableDrag>true</EnableDrag>
+									<DataPath>Object.Accounts</DataPath>
+									<RowFilter xsi:nil="true"/>
+									<ContextMenu name="AccountsContextMenu" id="102"/>
+									<AutoCommandBar name="AccountsCommandBar" id="103">
+										<ChildItems>
+											<Button name="AccountsCheckAll" id="167">
+												<Type>CommandBarButton</Type>
+												<CommandName>Form.Command.AccountsCheckAll</CommandName>
+												<Picture>
+													<xr:Ref>StdPicture.CheckAll</xr:Ref>
+													<xr:LoadTransparent>true</xr:LoadTransparent>
+												</Picture>
+												<ExtendedTooltip name="AccountsCheckAllExtendedTooltip" id="168"/>
+											</Button>
+											<Button name="AccountsUncheckAll" id="165">
+												<Type>CommandBarButton</Type>
+												<CommandName>Form.Command.AccountsUncheckAll</CommandName>
+												<Picture>
+													<xr:Ref>StdPicture.UncheckAll</xr:Ref>
+													<xr:LoadTransparent>true</xr:LoadTransparent>
+												</Picture>
+												<ExtendedTooltip name="AccountsUncheckAllExtendedTooltip" id="166"/>
+											</Button>
+											<Popup name="FillSubmenuAccounts" id="179">
+												<Title>
+													<v8:item>
+														<v8:lang>en</v8:lang>
+														<v8:content>Fill</v8:content>
+													</v8:item>
+													<v8:item>
+														<v8:lang>pl</v8:lang>
+														<v8:content>Wypełnij</v8:content>
+													</v8:item>
+												</Title>
+												<ToolTip>
+													<v8:item>
+														<v8:lang>pl</v8:lang>
+														<v8:content>Fill submenu accounts</v8:content>
+													</v8:item>
+												</ToolTip>
+												<ExtendedTooltip name="FillSubmenuAccountsExtendedTooltip" id="180"/>
+												<ChildItems>
+													<Button name="AccountsFillAccounts" id="181">
+														<Type>CommandBarButton</Type>
+														<CommandName>Form.Command.FillAccounts</CommandName>
+														<ExtendedTooltip name="AccountsFillAccountsExtendedTooltip" id="182"/>
+													</Button>
+												</ChildItems>
+											</Popup>
+										</ChildItems>
+									</AutoCommandBar>
+									<ExtendedTooltip name="AccountsExtendedTooltip" id="104"/>
+									<SearchStringAddition name="AccountsSearchString" id="105">
+										<AdditionSource>
+											<Item>Accounts</Item>
+											<Type>SearchStringRepresentation</Type>
+										</AdditionSource>
+										<ContextMenu name="AccountsSearchStringContextMenu" id="106"/>
+										<ExtendedTooltip name="AccountsSearchStringExtendedTooltip" id="107"/>
+									</SearchStringAddition>
+									<ViewStatusAddition name="AccountsViewStatus" id="108">
+										<AdditionSource>
+											<Item>Accounts</Item>
+											<Type>ViewStatusRepresentation</Type>
+										</AdditionSource>
+										<ContextMenu name="AccountsViewStatusContextMenu" id="109"/>
+										<ExtendedTooltip name="AccountsViewStatusExtendedTooltip" id="110"/>
+									</ViewStatusAddition>
+									<SearchControlAddition name="AccountsSearchControl" id="111">
+										<AdditionSource>
+											<Item>Accounts</Item>
+											<Type>SearchControl</Type>
+										</AdditionSource>
+										<ContextMenu name="AccountsSearchControlContextMenu" id="112"/>
+										<ExtendedTooltip name="AccountsSearchControlExtendedTooltip" id="113"/>
+									</SearchControlAddition>
+									<ChildItems>
+										<LabelField name="AccountsLineNumber" id="114">
+											<DataPath>Object.Accounts.LineNumber</DataPath>
+											<Visible>false</Visible>
+											<EditMode>EnterOnInput</EditMode>
+											<ContextMenu name="AccountsLineNumberContextMenu" id="115"/>
+											<ExtendedTooltip name="AccountsLineNumberExtendedTooltip" id="116"/>
+										</LabelField>
+										<CheckBoxField name="AccountsUseAccount" id="117">
+											<DataPath>Object.Accounts.UseAccount</DataPath>
+											<EditMode>EnterOnInput</EditMode>
+											<CheckBoxType>Auto</CheckBoxType>
+											<ContextMenu name="AccountsUseAccountContextMenu" id="118"/>
+											<ExtendedTooltip name="AccountsUseAccountExtendedTooltip" id="119"/>
+										</CheckBoxField>
+										<InputField name="AccountsAccount_AmountDue" id="120">
+											<DataPath>Object.Accounts.Account_AmountDue</DataPath>
+											<EditMode>EnterOnInput</EditMode>
+											<ContextMenu name="AccountsAccount_AmountDueContextMenu" id="121"/>
+											<ExtendedTooltip name="AccountsAccount_AmountDueExtendedTooltip" id="122"/>
+										</InputField>
+										<InputField name="AccountsAccount_Valuation" id="123">
+											<DataPath>Object.Accounts.Account_Valuation</DataPath>
+											<EditMode>EnterOnInput</EditMode>
+											<ContextMenu name="AccountsAccount_ValuationContextMenu" id="124"/>
+											<ExtendedTooltip name="AccountsAccount_ValuationExtendedTooltip" id="125"/>
+										</InputField>
+									</ChildItems>
+								</Table>
+							</ChildItems>
+						</UsualGroup>
+					</ChildItems>
+				</Page>
+			</ChildItems>
+		</Pages>
+		<UsualGroup name="GroupFooter" id="161">
+			<Title>
+				<v8:item>
+					<v8:lang>pl</v8:lang>
+					<v8:content>Group footer</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Group footer</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>pl</v8:lang>
+					<v8:content>Group footer</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Group footer</v8:content>
+				</v8:item>
+			</ToolTip>
+			<HorizontalStretch>true</HorizontalStretch>
+			<Representation>None</Representation>
+			<ShowTitle>false</ShowTitle>
+			<ExtendedTooltip name="GroupFooterExtendedTooltip" id="162"/>
+			<ChildItems>
+				<LabelField name="Author" id="10">
+					<DataPath>Object.Author</DataPath>
+					<EditMode>EnterOnInput</EditMode>
+					<Hiperlink>true</Hiperlink>
+					<ContextMenu name="AuthorContextMenu" id="11"/>
+					<ExtendedTooltip name="AuthorExtendedTooltip" id="12"/>
+				</LabelField>
+				<InputField name="Comment" id="13">
+					<DataPath>Object.Comment</DataPath>
+					<EditMode>EnterOnInput</EditMode>
+					<HorizontalStretch>true</HorizontalStretch>
+					<ContextMenu name="CommentContextMenu" id="14"/>
+					<ExtendedTooltip name="CommentExtendedTooltip" id="15"/>
+				</InputField>
+			</ChildItems>
+		</UsualGroup>
+	</ChildItems>
+	<Attributes>
+		<Attribute name="Object" id="1">
+			<Type>
+				<v8:Type>cfg:DocumentObject.CurrencyAccountsValuation</v8:Type>
+			</Type>
+			<MainAttribute>true</MainAttribute>
+			<SavedData>true</SavedData>
+			<UseAlways>
+				<Field>Object.RegisterRecords</Field>
+			</UseAlways>
+			<Columns>
+				<AdditionalColumns table="Object.Valuation"/>
+			</Columns>
+		</Attribute>
+		<Attribute name="NumberPreview" id="2">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Number</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>pl</v8:lang>
+					<v8:content>Numer</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Номер</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:string</v8:Type>
+				<v8:StringQualifiers>
+					<v8:Length>0</v8:Length>
+					<v8:AllowedLength>Variable</v8:AllowedLength>
+				</v8:StringQualifiers>
+			</Type>
+		</Attribute>
+		<Attribute name="ShowNumberPreview" id="3">
+			<Title>
+				<v8:item>
+					<v8:lang>pl</v8:lang>
+					<v8:content>Show number preview</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Show number preview</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:boolean</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="WasPosted" id="4">
+			<Type>
+				<v8:Type>xs:boolean</v8:Type>
+			</Type>
+		</Attribute>
+	</Attributes>
+	<Commands>
+		<Command name="AccountsUncheckAll" id="1">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Uncheck all</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>pl</v8:lang>
+					<v8:content>Odznacz wszystkie</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Uncheck all</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>pl</v8:lang>
+					<v8:content>Accounts uncheck all</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>AccountsUncheckAll</Action>
+		</Command>
+		<Command name="AccountsCheckAll" id="2">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Check all</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>pl</v8:lang>
+					<v8:content>Zaznacz wszystkie</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Check all</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>pl</v8:lang>
+					<v8:content>Accounts check all</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>AccountsCheckAll</Action>
+		</Command>
+		<Command name="FillValuation" id="4">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Get accounts balance</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>pl</v8:lang>
+					<v8:content>Pobierz salda kont</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Get accounts balance</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>pl</v8:lang>
+					<v8:content>Pobierz salda kont</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>FillValuation</Action>
+		</Command>
+		<Command name="FillExchangeRates" id="5">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Get exchange rates</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>pl</v8:lang>
+					<v8:content>Pobierz kursy walut</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>pl</v8:lang>
+					<v8:content>Fill exchange rates</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>FillExchangeRates</Action>
+		</Command>
+		<Command name="FillAccounts" id="6">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Get from accounting policy</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>pl</v8:lang>
+					<v8:content>Pobierz z polityki rachunkowości</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>pl</v8:lang>
+					<v8:content>Fill accounts</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>FillAccounts</Action>
+		</Command>
+		<Command name="PostPrintClose" id="3">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Post &amp; close</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>pl</v8:lang>
+					<v8:content>Zatwierdź i zamknji</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Провести и закрыть</v8:content>
+				</v8:item>
+			</Title>
+			<Picture>
+				<xr:Ref>StdPicture.WriteAndClose</xr:Ref>
+				<xr:LoadTransparent>true</xr:LoadTransparent>
+			</Picture>
+			<Action>PostPrintClose</Action>
+		</Command>
+	</Commands>
+</Form>

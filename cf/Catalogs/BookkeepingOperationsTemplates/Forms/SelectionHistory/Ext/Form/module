@@ -1,0 +1,55 @@
+﻿
+////////////////////////////////////////////////////////////////////////////////
+// COMMANDBAR HANDLERS
+
+Procedure MainFormActionsAddOperation(Button)
+
+	Close(Controls.ListOfBookkeepingOperationsTemplatess.CurrentRow.Value);
+
+EndProcedure
+
+Procedure MainFormActionsClearHistoryList(Button)
+
+	SaveValue("ListOfBookkeepingOperationsTemplatess", Undefined);
+
+	Close();
+
+EndProcedure
+
+
+////////////////////////////////////////////////////////////////////////////////
+// ListOfBookkeepingOperationsTemplatess HANDLERS
+
+Procedure ListOfBookkeepingOperationsTemplatessSelection(Control, ListItem)
+	
+	Close(ListItem.Value);
+	
+EndProcedure
+
+////////////////////////////////////////////////////////////////////////////////
+// FORM HANDLERS
+
+Procedure BeforeOpen(Cancel, StandardProcessing)
+
+	ListOfBookkeepingOperationsTemplatess = RestoreValue("ListOfBookkeepingOperationsTemplatess");
+
+	If ListOfBookkeepingOperationsTemplatess = Undefined Then
+
+		Cancel = True;
+
+		Return;
+
+	ElsIf ListOfBookkeepingOperationsTemplatess.Count() = 0 Then
+
+		Cancel = True;
+
+		Return;
+
+	EndIf;
+
+EndProcedure
+
+
+
+
+

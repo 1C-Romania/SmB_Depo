@@ -1,0 +1,128 @@
+﻿Var AvailableListOfDocumentsToBookkeepingPosting;
+Var NewRowAvailableDocumentsList;
+
+Procedure InformationRegisterListOnDataGet(Control, RowAppearances)
+	
+	For Each RowAppearance In RowAppearances Do
+		
+		If RowAppearance.RowData.Object <> Undefined Then
+		
+			RowAppearance.Cells.Object.Text = AvailableListOfDocumentsToBookkeepingPosting.FindByValue(RowAppearance.RowData.Object).Presentation;
+			RowAppearance.Cells.Object.MarkIncomplete = False;
+			
+		Else
+			
+			RowAppearance.Cells.Object.MarkIncomplete = True;
+			
+		EndIf;		
+		
+	EndDo;	
+	
+EndProcedure
+
+Procedure InformationRegisterListBeforeDeleteRow(Control, Cancel)
+	CurrentData = Control.CurrentData;
+	If CurrentData<>Undefined AND CurrentData.Object<>Undefined AND Left(CurrentData.Object.Metadata().Name,1)<>"_" Then
+		DoMessageBox(Nstr("en='Row could not be deleted!';pl='Nie można usunąć ten wiersz!';ru='Нельзя удалить данную строку!'"));
+		Cancel = True;
+	EndIf;	
+EndProcedure
+
+Procedure InformationRegisterListOnStartEdit(Control, NewRow, Clone)
+	ValueList = New ValueList;
+	
+	If NewRow Then
+		ValueList = NewRowAvailableDocumentsList;
+	Else
+		ValueList = FillValueListOfRemainTypes();
+		FoundRow = AvailableListOfDocumentsToBookkeepingPosting.FindByValue(Control.CurrentData.Object);
+		ValueList.Add(FoundRow.Value,FoundRow.Presentation);
+		ValueList.SortByPresentation();
+	EndIf;	
+	
+	Control.Columns.Object.Control.ChoiceList = ValueList;
+	
+EndProcedure
+
+Procedure InformationRegisterListBeforeAddRow(Control, Cancel, Clone)
+	
+	NewRowAvailableDocumentsList = FillValueListOfRemainTypes();
+	
+	If NewRowAvailableDocumentsList.Count() = 0 Then
+		DoMessageBox(Nstr("en='Settings for all available document types was already set. To change something - edit existing rows.';pl='Ustawienia dla wszystkich dostępnych typów dokumentów już zostali stworzone. Dla edycji ustawień trzeba edytowac istniejące wierszy.';ru='Настройки проведения были определены для всех доступных типов документов. Для изменения настроек необходимо изменить существующие строки.'"));
+		Cancel = True;
+	EndIf;	
+	
+EndProcedure
+
+Function FillValueListOfRemainTypes()
+	
+	ValueList = New ValueList;
+	ObjectsValueList = New ValueList;
+
+	RecordSet = InformationRegisters.BookkeepingPostingSettings.CreateRecordSet();
+	RecordSet.Read();
+	ObjectsValueList.LoadValues(RecordSet.UnloadColumn("Object"));
+	
+	For Each Item In AvailableListOfDocumentsToBookkeepingPosting Do
+		If ObjectsValueList.FindByValue(Item.Value) = Undefined Then
+			ValueList.Add(Item.Value,Item.Presentation);
+		EndIf;	
+	EndDo;	
+	
+	ValueList.SortByPresentation();
+	
+	Return ValueList;
+	
+EndFunction	
+
+Procedure FormActionsDefaultFilling(Button)
+	
+	RecordSet = InformationRegisters.BookkeepingPostingSettings.CreateRecordSet();
+	RecordSet.Read();
+	
+	If RecordSet.Count()>0 Then
+		If DoQueryBox(Nstr("en='All existing settings will be replaced! Are you sure you want to continue?';pl='Wszystkie istniejące ustawienia będą nadpisane! Czy napewno chcesz kontynuować?';ru='Все существующие настройки будут перезаписаны! Вы уверены, что хотите продолжить?'"),QuestionDialogMode.YesNo) = DialogReturnCode.Yes Then
+			FillByDefaultFromTemplate(RecordSet);	
+		EndIf;	
+	Else
+		FillByDefaultFromTemplate(RecordSet);
+	EndIf;
+	
+EndProcedure
+
+Procedure FillByDefaultFromTemplate(RecordSet)
+	
+	Template = InformationRegisters.BookkeepingPostingSettings.GetTemplate("DefaultFilling");
+	
+	RecordSet.Clear();
+	
+	For i =1 To Template.TableHeight Do
+		
+		DocumentMetadataName = Template.Area(i,1,i,1).Text;
+		EnumMetadataName = Template.Area(i,2,i,2).Text;
+		
+		Try
+		
+			DocumentEmptyRef = Documents[DocumentMetadataName].EmptyRef();
+			EnumRef = Common.GetEnumValueByName(Enums.BookkeepingPostingTypes,EnumMetadataName);
+		
+		Except
+			
+			Continue;
+		
+		EndTry; 
+		
+		Record = RecordSet.Add();
+		Record.Object = DocumentEmptyRef;
+		Record.BookkeepingPostingType = EnumRef;
+		
+	EndDo;
+	
+	RecordSet.Write();
+	
+EndProcedure	
+
+AvailableListOfDocumentsToBookkeepingPosting = BookkeepingCommon.GetAvailableListOfDocumentsToBookkeepingPosting(True);
+
+AvailableListOfDocumentsToBookkeepingPosting.SortByPresentation();

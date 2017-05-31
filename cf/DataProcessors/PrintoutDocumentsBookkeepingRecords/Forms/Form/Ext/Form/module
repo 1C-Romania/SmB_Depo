@@ -1,0 +1,11 @@
+﻿
+Procedure CommandBarAction(Button)
+	If NOT ValueIsFilled(Document) Then
+		DoMessageBox(NStr("en='Please choose the document, which records You want to see';pl='Wybierz dokument, którego wpisy chcesz zobaczyć'"));
+		Return;
+	EndIf;
+
+	GenerateReport();
+
+EndProcedure
+

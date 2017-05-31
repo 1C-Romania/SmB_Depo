@@ -1,0 +1,82 @@
+﻿
+////////////////////////////////////////////////////////////////////////////////
+// OTHER PROCEDURES AND FUNCTIONS
+
+
+Procedure ChartOfCharacteristicTypesListOnActivateRow(Control)
+	
+	CurrentRow = Controls.ChartOfCharacteristicTypesList.CurrentRow;
+	
+	Controls.FormActions.Buttons.GoToSubmenu.Buttons.Clear();
+
+	If CurrentRow = Undefined Then 
+		Return;
+	EndIf;
+	
+	// list types
+	TypesAsArray = CurrentRow.ValueType.Types();
+	TypesAsValueList = New ValueList;
+	ButtonNumber = 0;
+	For Each Item In TypesAsArray Do
+		TmpPresentation = String(Item);
+		TmpPresentation = StrReplace(TmpPresentation, "Document Ref", NStr("en='Documents';pl='Dokumenty';ru='Документы'"));
+		TmpPresentation = StrReplace(TmpPresentation, "Catalog Ref", NStr("en='Catalog';pl='Katalog';ru='Справочник'"));
+		TmpPresentation = StrReplace(TmpPresentation, "Enumeration Ref", NStr("en = 'Enumeration'; pl = 'Wartości'"));
+		
+		// add to submenu
+		NewAction = New Action("ExtDimensionTypesOpenTypeValues");
+		NewButton = Controls.FormActions.Buttons.GoToSubmenu.Buttons.Add( "SubmenuButton" + String(ButtonNumber), CommandBarButtonType.Action, TmpPresentation, NewAction );
+		ButtonNumber = ButtonNumber + 1;
+	EndDo;
+	
+EndProcedure
+
+Procedure ExtDimensionTypesOpenTypeValues(Button)
+	
+	PressedButtonNumber = Number(Right(Button.Name,1));
+	
+	// list available types
+	CurrentRow = Controls.ChartOfCharacteristicTypesList.CurrentRow;
+	TypesAsArray = CurrentRow.ValueType.Types();
+	ButtonNumber = 0;
+	For Each Item In TypesAsArray Do
+		
+		// open apropriate object browser
+		If ButtonNumber = PressedButtonNumber Then
+			SelectedType = Item;
+			
+			If Documents.AllRefsType().ContainsType(SelectedType) Then
+				For Each Item In Documents Do
+					If SelectedType = TypeOf(Item.EmptyRef()) Then
+						Item.GetListForm(,ThisForm).Open();
+						Break;
+					EndIf;
+				EndDo;
+				
+			ElsIf Catalogs.AllRefsType().ContainsType(SelectedType) Then
+				For Each Item In Catalogs Do
+					If SelectedType = TypeOf(Item.EmptyRef()) Then
+						Item.GetListForm(,ThisForm).Open();
+						Break;
+					EndIf;
+				EndDo;
+				
+			ElsIf Enums.AllRefsType().ContainsType(SelectedType) Then
+				For Each Item In Enums Do
+					If SelectedType = TypeOf(Item.EmptyRef()) Then
+						Item.GetListForm(,ThisForm).Open();
+						Break;
+					EndIf;
+				EndDo;
+			Else
+				ErrorTxt = NStr("en = 'Cannot open a object browser for type ''%s''!'; pl = 'Nie można otworzyć przeglądarki obiektów dla typu ''%s''!'");
+				Common.ErrorMessage( StrReplace(ErrorTxt,"%s",String(SelectedType)) );
+			EndIf;
+			
+			Break;
+		EndIf;
+		
+		ButtonNumber = ButtonNumber + 1;
+	EndDo;
+	
+EndProcedure

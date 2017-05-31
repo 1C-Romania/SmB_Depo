@@ -1,0 +1,28 @@
+﻿
+Procedure OnOpen()
+	
+	If Account.Parent.IsEmpty() Then
+		Controls.PanelMain.CurrentPage = Controls.PanelMain.Pages.TwoVariants;
+		Controls.ParentLevel12.Caption = Controls.ParentLevel12.Caption + " " + Account;
+	Else
+		Controls.PanelMain.CurrentPage = Controls.PanelMain.Pages.ThreeVariants;
+		Controls.ParentLevel1.Caption = Controls.ParentLevel1.Caption + " " + Account.Parent;
+		Controls.ParentLevel2.Caption = Controls.ParentLevel2.Caption + " " + Account;
+	EndIf;
+	
+	ParentLevel = 0;
+	
+EndProcedure
+
+Procedure FormMainActionsOK(Button)
+	
+	If ParentLevel = 0 Then
+		Close(ChartsOfAccounts.Bookkeeping.EmptyRef());
+	ElsIf ParentLevel = 1 Then
+		Close(Account.Parent);
+	Else
+		Close(Account);
+	EndIf;
+	
+EndProcedure
+

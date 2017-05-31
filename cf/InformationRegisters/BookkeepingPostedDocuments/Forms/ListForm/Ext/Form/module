@@ -1,0 +1,24 @@
+﻿
+Var ValueList;
+
+Procedure InformationRegisterListOnRowOutput(Control, RowAppearance, RowData)
+	
+	If RowAppearance.Cells.DocumentType.Value <> Undefined Then
+		KeyAndValue = ValueList.FindByValue(RowAppearance.Cells.DocumentType.Value);
+		If KeyAndValue <> Undefined Then
+			RowAppearance.Cells.DocumentType.Text = KeyAndValue.Presentation;
+		EndIf;
+	EndIf;
+	
+EndProcedure
+
+Procedure InformationRegisterListSelection(Control, RowSelected, Column, StandardProcessing)
+	
+	If ValueIsFilled(RowSelected.Document) Then
+		RowSelected.Document.GetForm().Open();
+	EndIf;
+	
+EndProcedure
+
+
+ValueList = BookkeepingCommon.GetAvailableListOfDocumentsToBookkeepingPosting();

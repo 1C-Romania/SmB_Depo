@@ -1,0 +1,649 @@
+﻿<package xmlns="http://v8.1c.ru/8.1/xdto" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" targetNamespace="http://crd.gov.pl/xml/schematy/dziedzinowe/mf/2016/01/25/eD/DefinicjeTypy/">
+	<valueType name="TKodUS" base="xs:string" variety="Atomic">
+		<enumeration>0202</enumeration>
+		<enumeration>0203</enumeration>
+		<enumeration>0204</enumeration>
+		<enumeration>0205</enumeration>
+		<enumeration>0206</enumeration>
+		<enumeration>0207</enumeration>
+		<enumeration>0208</enumeration>
+		<enumeration>0209</enumeration>
+		<enumeration>0210</enumeration>
+		<enumeration>0211</enumeration>
+		<enumeration>0212</enumeration>
+		<enumeration>0213</enumeration>
+		<enumeration>0214</enumeration>
+		<enumeration>0215</enumeration>
+		<enumeration>0216</enumeration>
+		<enumeration>0217</enumeration>
+		<enumeration>0218</enumeration>
+		<enumeration>0219</enumeration>
+		<enumeration>0220</enumeration>
+		<enumeration>0221</enumeration>
+		<enumeration>0222</enumeration>
+		<enumeration>0223</enumeration>
+		<enumeration>0224</enumeration>
+		<enumeration>0225</enumeration>
+		<enumeration>0226</enumeration>
+		<enumeration>0227</enumeration>
+		<enumeration>0228</enumeration>
+		<enumeration>0229</enumeration>
+		<enumeration>0230</enumeration>
+		<enumeration>0231</enumeration>
+		<enumeration>0232</enumeration>
+		<enumeration>0233</enumeration>
+		<enumeration>0234</enumeration>
+		<enumeration>0271</enumeration>
+		<enumeration>0402</enumeration>
+		<enumeration>0403</enumeration>
+		<enumeration>0404</enumeration>
+		<enumeration>0405</enumeration>
+		<enumeration>0406</enumeration>
+		<enumeration>0407</enumeration>
+		<enumeration>0408</enumeration>
+		<enumeration>0409</enumeration>
+		<enumeration>0410</enumeration>
+		<enumeration>0411</enumeration>
+		<enumeration>0412</enumeration>
+		<enumeration>0413</enumeration>
+		<enumeration>0414</enumeration>
+		<enumeration>0415</enumeration>
+		<enumeration>0416</enumeration>
+		<enumeration>0417</enumeration>
+		<enumeration>0418</enumeration>
+		<enumeration>0419</enumeration>
+		<enumeration>0420</enumeration>
+		<enumeration>0421</enumeration>
+		<enumeration>0422</enumeration>
+		<enumeration>0423</enumeration>
+		<enumeration>0471</enumeration>
+		<enumeration>0602</enumeration>
+		<enumeration>0603</enumeration>
+		<enumeration>0604</enumeration>
+		<enumeration>0605</enumeration>
+		<enumeration>0606</enumeration>
+		<enumeration>0607</enumeration>
+		<enumeration>0608</enumeration>
+		<enumeration>0609</enumeration>
+		<enumeration>0610</enumeration>
+		<enumeration>0611</enumeration>
+		<enumeration>0612</enumeration>
+		<enumeration>0613</enumeration>
+		<enumeration>0614</enumeration>
+		<enumeration>0615</enumeration>
+		<enumeration>0616</enumeration>
+		<enumeration>0617</enumeration>
+		<enumeration>0618</enumeration>
+		<enumeration>0619</enumeration>
+		<enumeration>0620</enumeration>
+		<enumeration>0621</enumeration>
+		<enumeration>0622</enumeration>
+		<enumeration>0671</enumeration>
+		<enumeration>0802</enumeration>
+		<enumeration>0803</enumeration>
+		<enumeration>0804</enumeration>
+		<enumeration>0805</enumeration>
+		<enumeration>0806</enumeration>
+		<enumeration>0807</enumeration>
+		<enumeration>0808</enumeration>
+		<enumeration>0809</enumeration>
+		<enumeration>0810</enumeration>
+		<enumeration>0811</enumeration>
+		<enumeration>0812</enumeration>
+		<enumeration>0813</enumeration>
+		<enumeration>0814</enumeration>
+		<enumeration>0871</enumeration>
+		<enumeration>1002</enumeration>
+		<enumeration>1003</enumeration>
+		<enumeration>1004</enumeration>
+		<enumeration>1005</enumeration>
+		<enumeration>1006</enumeration>
+		<enumeration>1007</enumeration>
+		<enumeration>1008</enumeration>
+		<enumeration>1009</enumeration>
+		<enumeration>1010</enumeration>
+		<enumeration>1011</enumeration>
+		<enumeration>1012</enumeration>
+		<enumeration>1013</enumeration>
+		<enumeration>1014</enumeration>
+		<enumeration>1015</enumeration>
+		<enumeration>1016</enumeration>
+		<enumeration>1017</enumeration>
+		<enumeration>1018</enumeration>
+		<enumeration>1019</enumeration>
+		<enumeration>1020</enumeration>
+		<enumeration>1021</enumeration>
+		<enumeration>1022</enumeration>
+		<enumeration>1023</enumeration>
+		<enumeration>1024</enumeration>
+		<enumeration>1025</enumeration>
+		<enumeration>1026</enumeration>
+		<enumeration>1027</enumeration>
+		<enumeration>1028</enumeration>
+		<enumeration>1029</enumeration>
+		<enumeration>1071</enumeration>
+		<enumeration>1202</enumeration>
+		<enumeration>1203</enumeration>
+		<enumeration>1204</enumeration>
+		<enumeration>1205</enumeration>
+		<enumeration>1206</enumeration>
+		<enumeration>1207</enumeration>
+		<enumeration>1208</enumeration>
+		<enumeration>1209</enumeration>
+		<enumeration>1210</enumeration>
+		<enumeration>1211</enumeration>
+		<enumeration>1212</enumeration>
+		<enumeration>1213</enumeration>
+		<enumeration>1214</enumeration>
+		<enumeration>1215</enumeration>
+		<enumeration>1216</enumeration>
+		<enumeration>1217</enumeration>
+		<enumeration>1218</enumeration>
+		<enumeration>1219</enumeration>
+		<enumeration>1220</enumeration>
+		<enumeration>1221</enumeration>
+		<enumeration>1222</enumeration>
+		<enumeration>1223</enumeration>
+		<enumeration>1224</enumeration>
+		<enumeration>1225</enumeration>
+		<enumeration>1226</enumeration>
+		<enumeration>1227</enumeration>
+		<enumeration>1228</enumeration>
+		<enumeration>1271</enumeration>
+		<enumeration>1402</enumeration>
+		<enumeration>1403</enumeration>
+		<enumeration>1404</enumeration>
+		<enumeration>1405</enumeration>
+		<enumeration>1406</enumeration>
+		<enumeration>1407</enumeration>
+		<enumeration>1408</enumeration>
+		<enumeration>1409</enumeration>
+		<enumeration>1410</enumeration>
+		<enumeration>1411</enumeration>
+		<enumeration>1412</enumeration>
+		<enumeration>1413</enumeration>
+		<enumeration>1414</enumeration>
+		<enumeration>1415</enumeration>
+		<enumeration>1416</enumeration>
+		<enumeration>1417</enumeration>
+		<enumeration>1418</enumeration>
+		<enumeration>1419</enumeration>
+		<enumeration>1420</enumeration>
+		<enumeration>1421</enumeration>
+		<enumeration>1422</enumeration>
+		<enumeration>1423</enumeration>
+		<enumeration>1424</enumeration>
+		<enumeration>1425</enumeration>
+		<enumeration>1426</enumeration>
+		<enumeration>1427</enumeration>
+		<enumeration>1428</enumeration>
+		<enumeration>1429</enumeration>
+		<enumeration>1430</enumeration>
+		<enumeration>1431</enumeration>
+		<enumeration>1432</enumeration>
+		<enumeration>1433</enumeration>
+		<enumeration>1434</enumeration>
+		<enumeration>1435</enumeration>
+		<enumeration>1436</enumeration>
+		<enumeration>1437</enumeration>
+		<enumeration>1438</enumeration>
+		<enumeration>1439</enumeration>
+		<enumeration>1440</enumeration>
+		<enumeration>1441</enumeration>
+		<enumeration>1442</enumeration>
+		<enumeration>1443</enumeration>
+		<enumeration>1444</enumeration>
+		<enumeration>1445</enumeration>
+		<enumeration>1446</enumeration>
+		<enumeration>1447</enumeration>
+		<enumeration>1448</enumeration>
+		<enumeration>1449</enumeration>
+		<enumeration>1471</enumeration>
+		<enumeration>1472</enumeration>
+		<enumeration>1473</enumeration>
+		<enumeration>1602</enumeration>
+		<enumeration>1603</enumeration>
+		<enumeration>1604</enumeration>
+		<enumeration>1605</enumeration>
+		<enumeration>1606</enumeration>
+		<enumeration>1607</enumeration>
+		<enumeration>1608</enumeration>
+		<enumeration>1609</enumeration>
+		<enumeration>1610</enumeration>
+		<enumeration>1611</enumeration>
+		<enumeration>1612</enumeration>
+		<enumeration>1613</enumeration>
+		<enumeration>1671</enumeration>
+		<enumeration>1802</enumeration>
+		<enumeration>1803</enumeration>
+		<enumeration>1804</enumeration>
+		<enumeration>1805</enumeration>
+		<enumeration>1806</enumeration>
+		<enumeration>1807</enumeration>
+		<enumeration>1808</enumeration>
+		<enumeration>1809</enumeration>
+		<enumeration>1810</enumeration>
+		<enumeration>1811</enumeration>
+		<enumeration>1812</enumeration>
+		<enumeration>1813</enumeration>
+		<enumeration>1814</enumeration>
+		<enumeration>1815</enumeration>
+		<enumeration>1816</enumeration>
+		<enumeration>1817</enumeration>
+		<enumeration>1818</enumeration>
+		<enumeration>1819</enumeration>
+		<enumeration>1820</enumeration>
+		<enumeration>1821</enumeration>
+		<enumeration>1822</enumeration>
+		<enumeration>1823</enumeration>
+		<enumeration>1871</enumeration>
+		<enumeration>2002</enumeration>
+		<enumeration>2003</enumeration>
+		<enumeration>2004</enumeration>
+		<enumeration>2005</enumeration>
+		<enumeration>2006</enumeration>
+		<enumeration>2007</enumeration>
+		<enumeration>2008</enumeration>
+		<enumeration>2009</enumeration>
+		<enumeration>2010</enumeration>
+		<enumeration>2011</enumeration>
+		<enumeration>2012</enumeration>
+		<enumeration>2013</enumeration>
+		<enumeration>2014</enumeration>
+		<enumeration>2015</enumeration>
+		<enumeration>2071</enumeration>
+		<enumeration>2202</enumeration>
+		<enumeration>2203</enumeration>
+		<enumeration>2204</enumeration>
+		<enumeration>2205</enumeration>
+		<enumeration>2206</enumeration>
+		<enumeration>2207</enumeration>
+		<enumeration>2208</enumeration>
+		<enumeration>2209</enumeration>
+		<enumeration>2210</enumeration>
+		<enumeration>2211</enumeration>
+		<enumeration>2212</enumeration>
+		<enumeration>2213</enumeration>
+		<enumeration>2214</enumeration>
+		<enumeration>2215</enumeration>
+		<enumeration>2216</enumeration>
+		<enumeration>2217</enumeration>
+		<enumeration>2218</enumeration>
+		<enumeration>2219</enumeration>
+		<enumeration>2220</enumeration>
+		<enumeration>2221</enumeration>
+		<enumeration>2271</enumeration>
+		<enumeration>2402</enumeration>
+		<enumeration>2403</enumeration>
+		<enumeration>2404</enumeration>
+		<enumeration>2405</enumeration>
+		<enumeration>2406</enumeration>
+		<enumeration>2407</enumeration>
+		<enumeration>2408</enumeration>
+		<enumeration>2409</enumeration>
+		<enumeration>2410</enumeration>
+		<enumeration>2411</enumeration>
+		<enumeration>2412</enumeration>
+		<enumeration>2413</enumeration>
+		<enumeration>2414</enumeration>
+		<enumeration>2415</enumeration>
+		<enumeration>2416</enumeration>
+		<enumeration>2417</enumeration>
+		<enumeration>2418</enumeration>
+		<enumeration>2419</enumeration>
+		<enumeration>2420</enumeration>
+		<enumeration>2421</enumeration>
+		<enumeration>2422</enumeration>
+		<enumeration>2423</enumeration>
+		<enumeration>2424</enumeration>
+		<enumeration>2425</enumeration>
+		<enumeration>2426</enumeration>
+		<enumeration>2427</enumeration>
+		<enumeration>2428</enumeration>
+		<enumeration>2429</enumeration>
+		<enumeration>2430</enumeration>
+		<enumeration>2431</enumeration>
+		<enumeration>2432</enumeration>
+		<enumeration>2433</enumeration>
+		<enumeration>2434</enumeration>
+		<enumeration>2435</enumeration>
+		<enumeration>2436</enumeration>
+		<enumeration>2471</enumeration>
+		<enumeration>2472</enumeration>
+		<enumeration>2602</enumeration>
+		<enumeration>2603</enumeration>
+		<enumeration>2604</enumeration>
+		<enumeration>2605</enumeration>
+		<enumeration>2606</enumeration>
+		<enumeration>2607</enumeration>
+		<enumeration>2608</enumeration>
+		<enumeration>2609</enumeration>
+		<enumeration>2610</enumeration>
+		<enumeration>2611</enumeration>
+		<enumeration>2612</enumeration>
+		<enumeration>2613</enumeration>
+		<enumeration>2614</enumeration>
+		<enumeration>2615</enumeration>
+		<enumeration>2671</enumeration>
+		<enumeration>2802</enumeration>
+		<enumeration>2803</enumeration>
+		<enumeration>2804</enumeration>
+		<enumeration>2805</enumeration>
+		<enumeration>2806</enumeration>
+		<enumeration>2807</enumeration>
+		<enumeration>2808</enumeration>
+		<enumeration>2809</enumeration>
+		<enumeration>2810</enumeration>
+		<enumeration>2811</enumeration>
+		<enumeration>2812</enumeration>
+		<enumeration>2813</enumeration>
+		<enumeration>2814</enumeration>
+		<enumeration>2815</enumeration>
+		<enumeration>2816</enumeration>
+		<enumeration>2871</enumeration>
+		<enumeration>3002</enumeration>
+		<enumeration>3003</enumeration>
+		<enumeration>3004</enumeration>
+		<enumeration>3005</enumeration>
+		<enumeration>3006</enumeration>
+		<enumeration>3007</enumeration>
+		<enumeration>3008</enumeration>
+		<enumeration>3009</enumeration>
+		<enumeration>3010</enumeration>
+		<enumeration>3011</enumeration>
+		<enumeration>3012</enumeration>
+		<enumeration>3013</enumeration>
+		<enumeration>3014</enumeration>
+		<enumeration>3015</enumeration>
+		<enumeration>3016</enumeration>
+		<enumeration>3017</enumeration>
+		<enumeration>3018</enumeration>
+		<enumeration>3019</enumeration>
+		<enumeration>3020</enumeration>
+		<enumeration>3021</enumeration>
+		<enumeration>3022</enumeration>
+		<enumeration>3023</enumeration>
+		<enumeration>3025</enumeration>
+		<enumeration>3026</enumeration>
+		<enumeration>3027</enumeration>
+		<enumeration>3028</enumeration>
+		<enumeration>3029</enumeration>
+		<enumeration>3030</enumeration>
+		<enumeration>3031</enumeration>
+		<enumeration>3032</enumeration>
+		<enumeration>3033</enumeration>
+		<enumeration>3034</enumeration>
+		<enumeration>3035</enumeration>
+		<enumeration>3036</enumeration>
+		<enumeration>3037</enumeration>
+		<enumeration>3038</enumeration>
+		<enumeration>3039</enumeration>
+		<enumeration>3071</enumeration>
+		<enumeration>3072</enumeration>
+		<enumeration>3202</enumeration>
+		<enumeration>3203</enumeration>
+		<enumeration>3204</enumeration>
+		<enumeration>3205</enumeration>
+		<enumeration>3206</enumeration>
+		<enumeration>3207</enumeration>
+		<enumeration>3208</enumeration>
+		<enumeration>3209</enumeration>
+		<enumeration>3210</enumeration>
+		<enumeration>3211</enumeration>
+		<enumeration>3212</enumeration>
+		<enumeration>3213</enumeration>
+		<enumeration>3214</enumeration>
+		<enumeration>3215</enumeration>
+		<enumeration>3216</enumeration>
+		<enumeration>3217</enumeration>
+		<enumeration>3218</enumeration>
+		<enumeration>3219</enumeration>
+		<enumeration>3220</enumeration>
+		<enumeration>3271</enumeration>
+	</valueType>
+	<valueType xmlns:d2p1="http://crd.gov.pl/xml/schematy/dziedzinowe/mf/2016/01/25/eD/DefinicjeTypy/" name="TAdresEmail" base="d2p1:TZnakowy" variety="Atomic" whiteSpace="collapse">
+		<pattern>[0-9\p{L}'\.\-_]{1,127}@[0-9\p{L}'\.\-_]{1,127}</pattern>
+	</valueType>
+	<valueType name="TCalkowity" base="xs:int" variety="Atomic" whiteSpace="collapse" totalDigits="14"/>
+	<valueType name="TCelZlozenia" base="xs:byte" variety="Atomic">
+		<enumeration>1</enumeration>
+		<enumeration>2</enumeration>
+	</valueType>
+	<valueType name="TData" base="xs:date" variety="Atomic" minInclusive="1900-01-01" maxInclusive="2030-12-31">
+		<pattern>((\d{4})-(\d{2})-(\d{2}))</pattern>
+	</valueType>
+	<valueType name="TDataCzas" base="xs:dateTime" variety="Atomic" whiteSpace="collapse"/>
+	<valueType name="TImie" base="xs:token" variety="Atomic" minLength="1" maxLength="30"/>
+	<valueType name="TJednAdmin" base="xs:token" variety="Atomic" minLength="1" maxLength="36"/>
+	<valueType name="TKodKrajuUrodzenia" base="xs:string" variety="Atomic" length="2">
+		<pattern>[A-Z]{2}</pattern>
+	</valueType>
+	<valueType name="TKodKrajuWydania" base="xs:string" variety="Atomic" minLength="2" maxLength="3">
+		<pattern>P[A-KM-Z]</pattern>
+		<pattern>[A-OQ-Z][A-Z]</pattern>
+	</valueType>
+	<valueType xmlns:d2p1="http://crd.gov.pl/xml/schematy/dziedzinowe/mf/2016/01/25/eD/DefinicjeTypy/" name="TKodPocztowy" base="d2p1:TZnakowy" variety="Atomic" maxLength="8"/>
+	<valueType name="TKwartal" base="xs:byte" variety="Atomic" minInclusive="1" maxInclusive="4"/>
+	<valueType name="TKwota2" base="xs:decimal" variety="Atomic" whiteSpace="collapse" totalDigits="16" fractionDigits="2"/>
+	<valueType xmlns:d2p1="http://crd.gov.pl/xml/schematy/dziedzinowe/mf/2016/01/25/eD/DefinicjeTypy/" name="TKwota2Nieujemna" base="d2p1:TKwota2" variety="Atomic" minInclusive="0"/>
+	<valueType name="TKwotaC" base="xs:integer" variety="Atomic" totalDigits="14"/>
+	<valueType xmlns:d2p1="http://crd.gov.pl/xml/schematy/dziedzinowe/mf/2016/01/25/eD/DefinicjeTypy/" name="TKwotaCNieujemna" base="d2p1:TKwotaC" variety="Atomic" minInclusive="0"/>
+	<valueType name="TMiejscowosc" base="xs:token" variety="Atomic" minLength="1" maxLength="56"/>
+	<valueType name="TMiesiac" base="xs:byte" variety="Atomic" minInclusive="1" maxInclusive="12"/>
+	<valueType name="TNaturalny" base="xs:nonNegativeInteger" variety="Atomic" whiteSpace="collapse" totalDigits="14"/>
+	<valueType name="TNazwisko" base="xs:token" variety="Atomic" minLength="1" maxLength="81"/>
+	<valueType name="TNrAKC" base="xs:string" variety="Atomic">
+		<pattern>[A-Z]{2}\d{11}</pattern>
+	</valueType>
+	<valueType xmlns:d2p1="http://crd.gov.pl/xml/schematy/dziedzinowe/mf/2016/01/25/eD/DefinicjeTypy/" name="TNrBudynku" base="d2p1:TZnakowy" variety="Atomic" maxLength="9"/>
+	<valueType xmlns:d2p1="http://crd.gov.pl/xml/schematy/dziedzinowe/mf/2016/01/25/eD/DefinicjeTypy/" name="TNrDokumentu" base="d2p1:TZnakowy" variety="Atomic" length="5">
+		<pattern>\d{2}/\d{2}</pattern>
+	</valueType>
+	<valueType name="TNrDokumentuStwierdzajacegoTozsamosc" base="xs:string" variety="Atomic" minLength="1" maxLength="50" whiteSpace="replace"/>
+	<valueType name="TNrIdentyfikacjiPodatkowej" base="xs:string" variety="Atomic" minLength="1" maxLength="30" whiteSpace="replace"/>
+	<valueType name="TNrKRS" base="xs:string" variety="Atomic">
+		<pattern>\d{10}</pattern>
+	</valueType>
+	<valueType xmlns:d2p1="http://crd.gov.pl/xml/schematy/dziedzinowe/mf/2016/01/25/eD/DefinicjeTypy/" name="TNrLokalu" base="d2p1:TZnakowy" variety="Atomic" maxLength="10"/>
+	<valueType name="TNrNIP" base="xs:string" variety="Atomic">
+		<pattern>[1-9]((\d[1-9])|([1-9]\d))\d{7}</pattern>
+	</valueType>
+	<valueType name="TNrPESEL" base="xs:string" variety="Atomic">
+		<pattern>\d{11}</pattern>
+	</valueType>
+	<valueType name="TNrREGON" variety="Union">
+		<typeDef base="xs:string" variety="Atomic">
+			<pattern>\d{9}</pattern>
+		</typeDef>
+		<typeDef base="xs:string" variety="Atomic">
+			<pattern>\d{14}</pattern>
+		</typeDef>
+	</valueType>
+	<valueType name="TProcentowy" base="xs:decimal" variety="Atomic" whiteSpace="collapse" minInclusive="0" maxInclusive="100" totalDigits="5" fractionDigits="2"/>
+	<valueType name="TRok" base="xs:gYear" variety="Atomic" minInclusive="1900" maxInclusive="2030"/>
+	<valueType xmlns:d2p1="http://crd.gov.pl/xml/schematy/dziedzinowe/mf/2016/01/25/eD/DefinicjeTypy/" name="TRzeczywisty" base="d2p1:TKwota2" variety="Atomic" minInclusive="0"/>
+	<valueType name="TTekstowy" base="xs:string" variety="Atomic" minLength="1" maxLength="3500"/>
+	<valueType xmlns:d2p1="http://crd.gov.pl/xml/schematy/dziedzinowe/mf/2016/01/25/eD/DefinicjeTypy/" name="TUlica" base="d2p1:TZnakowy" variety="Atomic" maxLength="65"/>
+	<valueType name="TWybor1" base="xs:byte" variety="Atomic">
+		<enumeration>1</enumeration>
+	</valueType>
+	<valueType name="TWybor1_2" base="xs:byte" variety="Atomic">
+		<enumeration>1</enumeration>
+		<enumeration>2</enumeration>
+	</valueType>
+	<valueType name="TWybor1_3" base="xs:byte" variety="Atomic">
+		<enumeration>1</enumeration>
+		<enumeration>2</enumeration>
+		<enumeration>3</enumeration>
+	</valueType>
+	<valueType name="TZnakowy" base="xs:token" variety="Atomic" minLength="1" maxLength="240"/>
+	<objectType name="TAdres" ordered="false" sequenced="true">
+		<property xmlns:d3p1="http://crd.gov.pl/xml/schematy/dziedzinowe/mf/2016/01/25/eD/DefinicjeTypy/" name="AdresPol" type="d3p1:TAdresPolski" lowerBound="0"/>
+		<property xmlns:d3p1="http://crd.gov.pl/xml/schematy/dziedzinowe/mf/2016/01/25/eD/DefinicjeTypy/" name="AdresZagr" type="d3p1:TAdresZagraniczny" lowerBound="0"/>
+	</objectType>
+	<objectType name="TAdresPolski">
+		<property xmlns:d3p1="http://crd.gov.pl/xml/schematy/dziedzinowe/mf/2013/05/23/eD/KodyCECHKRAJOW/" name="KodKraju" type="d3p1:CountryCode_Type" default="" form="Element"/>
+		<property xmlns:d3p1="http://crd.gov.pl/xml/schematy/dziedzinowe/mf/2016/01/25/eD/DefinicjeTypy/" name="Wojewodztwo" type="d3p1:TJednAdmin"/>
+		<property xmlns:d3p1="http://crd.gov.pl/xml/schematy/dziedzinowe/mf/2016/01/25/eD/DefinicjeTypy/" name="Powiat" type="d3p1:TJednAdmin"/>
+		<property xmlns:d3p1="http://crd.gov.pl/xml/schematy/dziedzinowe/mf/2016/01/25/eD/DefinicjeTypy/" name="Gmina" type="d3p1:TJednAdmin"/>
+		<property xmlns:d3p1="http://crd.gov.pl/xml/schematy/dziedzinowe/mf/2016/01/25/eD/DefinicjeTypy/" name="Ulica" type="d3p1:TUlica" lowerBound="0"/>
+		<property xmlns:d3p1="http://crd.gov.pl/xml/schematy/dziedzinowe/mf/2016/01/25/eD/DefinicjeTypy/" name="NrDomu" type="d3p1:TNrBudynku"/>
+		<property xmlns:d3p1="http://crd.gov.pl/xml/schematy/dziedzinowe/mf/2016/01/25/eD/DefinicjeTypy/" name="NrLokalu" type="d3p1:TNrLokalu" lowerBound="0"/>
+		<property xmlns:d3p1="http://crd.gov.pl/xml/schematy/dziedzinowe/mf/2016/01/25/eD/DefinicjeTypy/" name="Miejscowosc" type="d3p1:TMiejscowosc"/>
+		<property xmlns:d3p1="http://crd.gov.pl/xml/schematy/dziedzinowe/mf/2016/01/25/eD/DefinicjeTypy/" name="KodPocztowy" type="d3p1:TKodPocztowy"/>
+		<property xmlns:d3p1="http://crd.gov.pl/xml/schematy/dziedzinowe/mf/2016/01/25/eD/DefinicjeTypy/" name="Poczta" type="d3p1:TMiejscowosc"/>
+	</objectType>
+	<objectType name="TAdresZagraniczny">
+		<property name="KodKraju">
+			<typeDef xmlns:d4p1="http://crd.gov.pl/xml/schematy/dziedzinowe/mf/2016/01/25/eD/DefinicjeTypy/" xsi:type="ValueType" base="d4p1:TKodKrajuWydania" variety="Atomic">
+				<pattern>P[A-KM-Z]</pattern>
+				<pattern>[A-OQ-Z][A-Z]</pattern>
+			</typeDef>
+		</property>
+		<property xmlns:d3p1="http://crd.gov.pl/xml/schematy/dziedzinowe/mf/2016/01/25/eD/DefinicjeTypy/" name="KodPocztowy" type="d3p1:TKodPocztowy" lowerBound="0"/>
+		<property xmlns:d3p1="http://crd.gov.pl/xml/schematy/dziedzinowe/mf/2016/01/25/eD/DefinicjeTypy/" name="Miejscowosc" type="d3p1:TMiejscowosc"/>
+		<property xmlns:d3p1="http://crd.gov.pl/xml/schematy/dziedzinowe/mf/2016/01/25/eD/DefinicjeTypy/" name="Ulica" type="d3p1:TUlica" lowerBound="0"/>
+		<property xmlns:d3p1="http://crd.gov.pl/xml/schematy/dziedzinowe/mf/2016/01/25/eD/DefinicjeTypy/" name="NrDomu" type="d3p1:TNrBudynku" lowerBound="0"/>
+		<property xmlns:d3p1="http://crd.gov.pl/xml/schematy/dziedzinowe/mf/2016/01/25/eD/DefinicjeTypy/" name="NrLokalu" type="d3p1:TNrLokalu" lowerBound="0"/>
+	</objectType>
+	<objectType name="TIdentyfikatorOsobyFizycznej">
+		<property xmlns:d3p1="http://crd.gov.pl/xml/schematy/dziedzinowe/mf/2016/01/25/eD/DefinicjeTypy/" name="NIP" type="d3p1:TNrNIP"/>
+		<property xmlns:d3p1="http://crd.gov.pl/xml/schematy/dziedzinowe/mf/2016/01/25/eD/DefinicjeTypy/" name="ImiePierwsze" type="d3p1:TImie"/>
+		<property xmlns:d3p1="http://crd.gov.pl/xml/schematy/dziedzinowe/mf/2016/01/25/eD/DefinicjeTypy/" name="Nazwisko" type="d3p1:TNazwisko"/>
+		<property xmlns:d3p1="http://crd.gov.pl/xml/schematy/dziedzinowe/mf/2016/01/25/eD/DefinicjeTypy/" name="DataUrodzenia" type="d3p1:TData"/>
+		<property xmlns:d3p1="http://crd.gov.pl/xml/schematy/dziedzinowe/mf/2016/01/25/eD/DefinicjeTypy/" name="PESEL" type="d3p1:TNrPESEL" lowerBound="0"/>
+	</objectType>
+	<objectType name="TIdentyfikatorOsobyFizycznej1" ordered="false" sequenced="true">
+		<property xmlns:d3p1="http://crd.gov.pl/xml/schematy/dziedzinowe/mf/2016/01/25/eD/DefinicjeTypy/" name="NIP" type="d3p1:TNrNIP" lowerBound="0"/>
+		<property xmlns:d3p1="http://crd.gov.pl/xml/schematy/dziedzinowe/mf/2016/01/25/eD/DefinicjeTypy/" name="PESEL" type="d3p1:TNrPESEL" lowerBound="0"/>
+		<property xmlns:d3p1="http://crd.gov.pl/xml/schematy/dziedzinowe/mf/2016/01/25/eD/DefinicjeTypy/" name="ImiePierwsze" type="d3p1:TImie"/>
+		<property xmlns:d3p1="http://crd.gov.pl/xml/schematy/dziedzinowe/mf/2016/01/25/eD/DefinicjeTypy/" name="Nazwisko" type="d3p1:TNazwisko"/>
+		<property xmlns:d3p1="http://crd.gov.pl/xml/schematy/dziedzinowe/mf/2016/01/25/eD/DefinicjeTypy/" name="DataUrodzenia" type="d3p1:TData"/>
+	</objectType>
+	<objectType name="TIdentyfikatorOsobyFizycznej2">
+		<property xmlns:d3p1="http://crd.gov.pl/xml/schematy/dziedzinowe/mf/2016/01/25/eD/DefinicjeTypy/" name="NIP" type="d3p1:TNrNIP"/>
+		<property xmlns:d3p1="http://crd.gov.pl/xml/schematy/dziedzinowe/mf/2016/01/25/eD/DefinicjeTypy/" name="ImiePierwsze" type="d3p1:TImie"/>
+		<property xmlns:d3p1="http://crd.gov.pl/xml/schematy/dziedzinowe/mf/2016/01/25/eD/DefinicjeTypy/" name="Nazwisko" type="d3p1:TNazwisko"/>
+		<property xmlns:d3p1="http://crd.gov.pl/xml/schematy/dziedzinowe/mf/2016/01/25/eD/DefinicjeTypy/" name="DataUrodzenia" type="d3p1:TData"/>
+	</objectType>
+	<objectType name="TIdentyfikatorOsobyFizycznejPelny">
+		<property xmlns:d3p1="http://crd.gov.pl/xml/schematy/dziedzinowe/mf/2016/01/25/eD/DefinicjeTypy/" name="NIP" type="d3p1:TNrNIP" lowerBound="0"/>
+		<property xmlns:d3p1="http://crd.gov.pl/xml/schematy/dziedzinowe/mf/2016/01/25/eD/DefinicjeTypy/" name="ImiePierwsze" type="d3p1:TImie"/>
+		<property xmlns:d3p1="http://crd.gov.pl/xml/schematy/dziedzinowe/mf/2016/01/25/eD/DefinicjeTypy/" name="Nazwisko" type="d3p1:TNazwisko"/>
+		<property xmlns:d3p1="http://crd.gov.pl/xml/schematy/dziedzinowe/mf/2016/01/25/eD/DefinicjeTypy/" name="DataUrodzenia" type="d3p1:TData"/>
+		<property xmlns:d3p1="http://crd.gov.pl/xml/schematy/dziedzinowe/mf/2016/01/25/eD/DefinicjeTypy/" name="ImieOjca" type="d3p1:TImie"/>
+		<property xmlns:d3p1="http://crd.gov.pl/xml/schematy/dziedzinowe/mf/2016/01/25/eD/DefinicjeTypy/" name="ImieMatki" type="d3p1:TImie"/>
+		<property xmlns:d3p1="http://crd.gov.pl/xml/schematy/dziedzinowe/mf/2016/01/25/eD/DefinicjeTypy/" name="PESEL" type="d3p1:TNrPESEL"/>
+	</objectType>
+	<objectType name="TIdentyfikatorOsobyFizycznejZagranicznej">
+		<property xmlns:d3p1="http://crd.gov.pl/xml/schematy/dziedzinowe/mf/2016/01/25/eD/DefinicjeTypy/" name="ImiePierwsze" type="d3p1:TImie"/>
+		<property xmlns:d3p1="http://crd.gov.pl/xml/schematy/dziedzinowe/mf/2016/01/25/eD/DefinicjeTypy/" name="Nazwisko" type="d3p1:TNazwisko"/>
+		<property xmlns:d3p1="http://crd.gov.pl/xml/schematy/dziedzinowe/mf/2016/01/25/eD/DefinicjeTypy/" name="DataUrodzenia" type="d3p1:TData"/>
+		<property xmlns:d3p1="http://crd.gov.pl/xml/schematy/dziedzinowe/mf/2016/01/25/eD/DefinicjeTypy/" name="MiejsceUrodzenia" type="d3p1:TMiejscowosc"/>
+		<property xmlns:d3p1="http://crd.gov.pl/xml/schematy/dziedzinowe/mf/2016/01/25/eD/DefinicjeTypy/" name="ImieOjca" type="d3p1:TImie" lowerBound="0"/>
+		<property xmlns:d3p1="http://crd.gov.pl/xml/schematy/dziedzinowe/mf/2016/01/25/eD/DefinicjeTypy/" name="ImieMatki" type="d3p1:TImie" lowerBound="0"/>
+		<property xmlns:d3p1="http://crd.gov.pl/xml/schematy/dziedzinowe/mf/2016/01/25/eD/DefinicjeTypy/" name="NIP" type="d3p1:TNrNIP" lowerBound="0"/>
+	</objectType>
+	<objectType name="TIdentyfikatorOsobyNiefizycznej">
+		<property xmlns:d3p1="http://crd.gov.pl/xml/schematy/dziedzinowe/mf/2016/01/25/eD/DefinicjeTypy/" name="NIP" type="d3p1:TNrNIP"/>
+		<property name="PelnaNazwa">
+			<typeDef xsi:type="ValueType" base="xs:token" variety="Atomic" minLength="1" maxLength="240"/>
+		</property>
+		<property xmlns:d3p1="http://crd.gov.pl/xml/schematy/dziedzinowe/mf/2016/01/25/eD/DefinicjeTypy/" name="REGON" type="d3p1:TNrREGON" lowerBound="0"/>
+	</objectType>
+	<objectType name="TIdentyfikatorOsobyNiefizycznejPelny">
+		<property xmlns:d3p1="http://crd.gov.pl/xml/schematy/dziedzinowe/mf/2016/01/25/eD/DefinicjeTypy/" name="NIP" type="d3p1:TNrNIP" lowerBound="0"/>
+		<property name="PelnaNazwa">
+			<typeDef xsi:type="ValueType" base="xs:token" variety="Atomic" minLength="1" maxLength="240"/>
+		</property>
+		<property name="SkroconaNazwa">
+			<typeDef xsi:type="ValueType" base="xs:token" variety="Atomic" minLength="1" maxLength="70"/>
+		</property>
+		<property xmlns:d3p1="http://crd.gov.pl/xml/schematy/dziedzinowe/mf/2016/01/25/eD/DefinicjeTypy/" name="REGON" type="d3p1:TNrREGON"/>
+	</objectType>
+	<objectType name="TIdentyfikatorOsobyNiefizycznejZagranicznej">
+		<property name="PelnaNazwa">
+			<typeDef xsi:type="ValueType" base="xs:token" variety="Atomic" minLength="1" maxLength="240"/>
+		</property>
+		<property name="SkroconaNazwa" lowerBound="0">
+			<typeDef xsi:type="ValueType" base="xs:token" variety="Atomic" minLength="1" maxLength="70"/>
+		</property>
+		<property xmlns:d3p1="http://crd.gov.pl/xml/schematy/dziedzinowe/mf/2016/01/25/eD/DefinicjeTypy/" name="NIP" type="d3p1:TNrNIP" lowerBound="0"/>
+	</objectType>
+	<objectType name="TOsobaFizyczna">
+		<property xmlns:d3p1="http://crd.gov.pl/xml/schematy/dziedzinowe/mf/2016/01/25/eD/DefinicjeTypy/" name="OsobaFizyczna" type="d3p1:TIdentyfikatorOsobyFizycznej"/>
+		<property name="AdresZamieszkania">
+			<typeDef xmlns:d4p1="http://crd.gov.pl/xml/schematy/dziedzinowe/mf/2016/01/25/eD/DefinicjeTypy/" xsi:type="ObjectType" base="d4p1:TAdres">
+				<property name="rodzajAdresu" type="xs:string" lowerBound="1" fixed="true" default="RAD" form="Attribute"/>
+			</typeDef>
+		</property>
+	</objectType>
+	<objectType name="TOsobaFizyczna1">
+		<property xmlns:d3p1="http://crd.gov.pl/xml/schematy/dziedzinowe/mf/2016/01/25/eD/DefinicjeTypy/" name="OsobaFizyczna" type="d3p1:TIdentyfikatorOsobyFizycznej1"/>
+		<property name="AdresZamieszkania">
+			<typeDef xmlns:d4p1="http://crd.gov.pl/xml/schematy/dziedzinowe/mf/2016/01/25/eD/DefinicjeTypy/" xsi:type="ObjectType" base="d4p1:TAdres">
+				<property name="rodzajAdresu" type="xs:string" lowerBound="1" fixed="true" default="RAD" form="Attribute"/>
+			</typeDef>
+		</property>
+	</objectType>
+	<objectType name="TOsobaFizyczna2">
+		<property xmlns:d3p1="http://crd.gov.pl/xml/schematy/dziedzinowe/mf/2016/01/25/eD/DefinicjeTypy/" name="OsobaFizyczna" type="d3p1:TIdentyfikatorOsobyFizycznej2"/>
+		<property name="AdresZamieszkania">
+			<typeDef xmlns:d4p1="http://crd.gov.pl/xml/schematy/dziedzinowe/mf/2016/01/25/eD/DefinicjeTypy/" xsi:type="ObjectType" base="d4p1:TAdres">
+				<property name="rodzajAdresu" type="xs:string" lowerBound="1" fixed="true" default="RAD" form="Attribute"/>
+			</typeDef>
+		</property>
+	</objectType>
+	<objectType name="TOsobaFizycznaPelna">
+		<property xmlns:d3p1="http://crd.gov.pl/xml/schematy/dziedzinowe/mf/2016/01/25/eD/DefinicjeTypy/" name="OsobaFizyczna" type="d3p1:TIdentyfikatorOsobyFizycznejPelny"/>
+		<property name="AdresZamieszkania">
+			<typeDef xmlns:d4p1="http://crd.gov.pl/xml/schematy/dziedzinowe/mf/2016/01/25/eD/DefinicjeTypy/" xsi:type="ObjectType" base="d4p1:TAdres">
+				<property name="rodzajAdresu" type="xs:string" lowerBound="1" fixed="true" default="RAD" form="Attribute"/>
+			</typeDef>
+		</property>
+	</objectType>
+	<objectType name="TOsobaNiefizyczna">
+		<property xmlns:d3p1="http://crd.gov.pl/xml/schematy/dziedzinowe/mf/2016/01/25/eD/DefinicjeTypy/" name="OsobaNiefizyczna" type="d3p1:TIdentyfikatorOsobyNiefizycznej"/>
+		<property name="AdresSiedziby">
+			<typeDef xmlns:d4p1="http://crd.gov.pl/xml/schematy/dziedzinowe/mf/2016/01/25/eD/DefinicjeTypy/" xsi:type="ObjectType" base="d4p1:TAdres">
+				<property name="rodzajAdresu" type="xs:string" lowerBound="1" fixed="true" default="RAD" form="Attribute"/>
+			</typeDef>
+		</property>
+	</objectType>
+	<objectType name="TOsobaNiefizycznaPelna">
+		<property xmlns:d3p1="http://crd.gov.pl/xml/schematy/dziedzinowe/mf/2016/01/25/eD/DefinicjeTypy/" name="OsobaNiefizyczna" type="d3p1:TIdentyfikatorOsobyNiefizycznejPelny"/>
+		<property name="AdresSiedziby">
+			<typeDef xmlns:d4p1="http://crd.gov.pl/xml/schematy/dziedzinowe/mf/2016/01/25/eD/DefinicjeTypy/" xsi:type="ObjectType" base="d4p1:TAdres">
+				<property name="rodzajAdresu" type="xs:string" lowerBound="1" fixed="true" default="RAD" form="Attribute"/>
+			</typeDef>
+		</property>
+	</objectType>
+	<objectType xmlns:d2p1="http://crd.gov.pl/xml/schematy/dziedzinowe/mf/2016/01/25/eD/DefinicjeTypy/" name="TPodmiotDowolny" base="d2p1:TPodmiotDowolnyBezAdresu">
+		<property name="AdresZamieszkaniaSiedziby">
+			<typeDef xsi:type="ObjectType" base="d2p1:TAdres">
+				<property name="rodzajAdresu" type="xs:string" lowerBound="1" fixed="true" default="RAD" form="Attribute"/>
+			</typeDef>
+		</property>
+	</objectType>
+	<objectType name="TPodmiotDowolnyBezAdresu" ordered="false" sequenced="true">
+		<property xmlns:d3p1="http://crd.gov.pl/xml/schematy/dziedzinowe/mf/2016/01/25/eD/DefinicjeTypy/" name="OsobaFizyczna" type="d3p1:TIdentyfikatorOsobyFizycznej" lowerBound="0"/>
+		<property xmlns:d3p1="http://crd.gov.pl/xml/schematy/dziedzinowe/mf/2016/01/25/eD/DefinicjeTypy/" name="OsobaNiefizyczna" type="d3p1:TIdentyfikatorOsobyNiefizycznej" lowerBound="0"/>
+	</objectType>
+	<objectType name="TPodmiotDowolnyBezAdresu1" ordered="false" sequenced="true">
+		<property xmlns:d3p1="http://crd.gov.pl/xml/schematy/dziedzinowe/mf/2016/01/25/eD/DefinicjeTypy/" name="OsobaFizyczna" type="d3p1:TIdentyfikatorOsobyFizycznej1" lowerBound="0"/>
+		<property xmlns:d3p1="http://crd.gov.pl/xml/schematy/dziedzinowe/mf/2016/01/25/eD/DefinicjeTypy/" name="OsobaNiefizyczna" type="d3p1:TIdentyfikatorOsobyNiefizycznej" lowerBound="0"/>
+	</objectType>
+	<objectType name="TPodmiotDowolnyBezAdresu2" ordered="false" sequenced="true">
+		<property xmlns:d3p1="http://crd.gov.pl/xml/schematy/dziedzinowe/mf/2016/01/25/eD/DefinicjeTypy/" name="OsobaFizyczna" type="d3p1:TIdentyfikatorOsobyFizycznej2" lowerBound="0"/>
+		<property xmlns:d3p1="http://crd.gov.pl/xml/schematy/dziedzinowe/mf/2016/01/25/eD/DefinicjeTypy/" name="OsobaNiefizyczna" type="d3p1:TIdentyfikatorOsobyNiefizycznej" lowerBound="0"/>
+	</objectType>
+	<objectType name="TPodmiotDowolnyPelny" ordered="false" sequenced="true">
+		<property xmlns:d3p1="http://crd.gov.pl/xml/schematy/dziedzinowe/mf/2016/01/25/eD/DefinicjeTypy/" name="OsobaFizyczna" type="d3p1:TIdentyfikatorOsobyFizycznejPelny" lowerBound="0"/>
+		<property xmlns:d3p1="http://crd.gov.pl/xml/schematy/dziedzinowe/mf/2016/01/25/eD/DefinicjeTypy/" name="OsobaNiefizyczna" type="d3p1:TIdentyfikatorOsobyNiefizycznejPelny" lowerBound="0"/>
+		<property name="AdresZamieszkaniaSiedziby">
+			<typeDef xmlns:d4p1="http://crd.gov.pl/xml/schematy/dziedzinowe/mf/2016/01/25/eD/DefinicjeTypy/" xsi:type="ObjectType" base="d4p1:TAdres">
+				<property name="rodzajAdresu" type="xs:string" lowerBound="1" fixed="true" default="RAD" form="Attribute"/>
+			</typeDef>
+		</property>
+	</objectType>
+</package>

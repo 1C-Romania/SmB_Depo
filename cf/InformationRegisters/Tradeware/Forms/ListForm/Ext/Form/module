@@ -1,0 +1,63 @@
+﻿
+Procedure InformationRegisterListBeforeEditEnd(Control, NewRow, CancelEdit, Cancel)
+	
+	If CancelEdit Then
+		Return;
+	EndIf;
+
+	CurrentData = Control.CurrentData;
+
+	If NOT ValueIsFilled(CurrentData.Model) Then
+		Domessagebox(Nstr("en = 'Model of tradeware is not specified!'; pl = 'Model urządzenia handlowego nie jest określony!'"));
+		Cancel = True;
+		Return;
+	EndIf;
+
+	If NewRow Then
+		CurrentData.Identifier = Upper(New UUID());
+		If IsBlankString(CurrentData.Computer) Then
+			CurrentData.Computer   = GetTradewareServer().GetTradewareComputerName();
+		EndIf;	
+		CurrentData.Parameters = CurrentData.Model.Parameters;
+	EndIf;
+
+	
+EndProcedure
+
+// Opens parameters form
+Procedure FormActionsParameters(Button)
+	
+	CurrentControl = Controls.InformationRegisterList;
+	CurrentData = CurrentControl.CurrentData;
+
+	If CurrentData = Undefined Then
+		Domessagebox(Nstr("en = 'Please select row with model which you want to set up.'; pl = 'Wybierz wiersz zawierający model, który chcesz ustawić.'"));
+		Return;
+	EndIf;
+
+	Processor = Undefined;
+	Error    = TradeWare.GetTradeWareServiceProcessor(CurrentData.Model, Processor);
+	If NOT ValueIsFilled(Error) Then
+		
+		Set = InformationRegisters.Tradeware.CreateRecordSet();
+		Set.Filter.Identifier.Set(CurrentControl.CurrentRow.Identifier);
+		Set.Read();
+
+		Parameters = ?(IsBlankString(Set[0].Parameters),
+		              New Structure(),
+		              ValueFromStringInternal(Set[0].Parameters));
+		Processor.SetUpDevice(CurrentData.Model, Parameters);
+		Set[0].Parameters = ValueToStringInternal(Parameters);
+		Set.Write();
+	Else
+		Domessagebox(Nstr("en='An error occurs during opening setting form for model:';pl='Powstał błąd przy otwieraniu formatki ustawień dla modelu:'") + GetTradewareServer().GetTradeWareErrorText(Error));
+	EndIf;
+
+	
+EndProcedure
+
+Procedure InformationRegisterListOnEditEnd(Control, NewRow, CancelEdit)
+	If NewRow Then
+		FormActionsParameters(Undefined);
+	EndIf;
+EndProcedure

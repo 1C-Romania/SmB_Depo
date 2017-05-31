@@ -1,0 +1,1279 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<Form xmlns="http://v8.1c.ru/8.3/xcf/logform" xmlns:app="http://v8.1c.ru/8.2/managed-application/core" xmlns:cfg="http://v8.1c.ru/8.1/data/enterprise/current-config" xmlns:dcscor="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:dcsset="http://v8.1c.ru/8.1/data-composition-system/settings" xmlns:ent="http://v8.1c.ru/8.1/data/enterprise" xmlns:lf="http://v8.1c.ru/8.2/managed-application/logform" xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows" xmlns:xr="http://v8.1c.ru/8.3/xcf/readable" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.4">
+	<Group>Horizontal</Group>
+	<CommandBarLocation>Bottom</CommandBarLocation>
+	<VerticalScroll>useIfNecessary</VerticalScroll>
+	<AutoCommandBar name="FormCommandBar" id="-1">
+		<HorizontalAlign>Right</HorizontalAlign>
+		<ChildItems>
+			<Button name="FormApplySettings" id="50">
+				<Type>CommandBarButton</Type>
+				<DefaultButton>true</DefaultButton>
+				<CommandName>Form.Command.ApplySettings</CommandName>
+				<ExtendedTooltip name="FormApplySettingsExtendedTooltip" id="67"/>
+			</Button>
+			<Button name="FormClose" id="42">
+				<Type>CommandBarButton</Type>
+				<Representation>PictureAndText</Representation>
+				<CommandName>Form.StandardCommand.Close</CommandName>
+				<ExtendedTooltip name="FormCloseExtendedTooltip" id="68"/>
+			</Button>
+		</ChildItems>
+	</AutoCommandBar>
+	<Events>
+		<Event name="ChoiceProcessing">ChoiceProcessing</Event>
+		<Event name="OnOpen">OnOpen</Event>
+		<Event name="OnCreateAtServer">OnCreateAtServer</Event>
+		<Event name="FillCheckProcessingAtServer">FillCheckProcessingAtServer</Event>
+	</Events>
+	<ChildItems>
+		<UsualGroup name="GroupLeft" id="1">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Documents types filtr</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>pl</v8:lang>
+					<v8:content>Filtr po typach dokumentów</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Отбор по типу документа</v8:content>
+				</v8:item>
+			</Title>
+			<TitleFont ref="sys:DefaultGUIFont" bold="true" italic="false" underline="true" strikeout="false" kind="WindowsFont"/>
+			<HorizontalStretch>true</HorizontalStretch>
+			<Group>Vertical</Group>
+			<Representation>None</Representation>
+			<ExtendedTooltip name="GroupLeftExtendedTooltip" id="69"/>
+			<ChildItems>
+				<Table name="DocumentListBox" id="3">
+					<Representation>List</Representation>
+					<TitleLocation>Auto</TitleLocation>
+					<ChangeRowSet>false</ChangeRowSet>
+					<ChangeRowOrder>false</ChangeRowOrder>
+					<SelectionMode>SingleRow</SelectionMode>
+					<RowSelectionMode>Row</RowSelectionMode>
+					<Header>false</Header>
+					<HorizontalLines>false</HorizontalLines>
+					<VerticalLines>false</VerticalLines>
+					<DataPath>DocumentListBox</DataPath>
+					<RowPictureDataPath>DocumentListBox.Picture</RowPictureDataPath>
+					<CommandSet>
+						<ExcludedCommand>Pickup</ExcludedCommand>
+						<ExcludedCommand>CopyToClipboard</ExcludedCommand>
+						<ExcludedCommand>Change</ExcludedCommand>
+					</CommandSet>
+					<SearchStringLocation>None</SearchStringLocation>
+					<ViewStatusLocation>None</ViewStatusLocation>
+					<SearchControlLocation>None</SearchControlLocation>
+					<ContextMenu name="DocumentListBoxContextMenu" id="4"/>
+					<AutoCommandBar name="DocumentListBoxCommandBar" id="5"/>
+					<ExtendedTooltip name="DocumentListBoxExtendedTooltip" id="70"/>
+					<SearchStringAddition name="DocumentListBoxSearchString" id="71">
+						<AdditionSource>
+							<Item>DocumentListBox</Item>
+							<Type>SearchStringRepresentation</Type>
+						</AdditionSource>
+						<ContextMenu name="DocumentListBoxSearchStringContextMenu" id="72"/>
+						<ExtendedTooltip name="DocumentListBoxSearchStringExtendedTooltip" id="73"/>
+					</SearchStringAddition>
+					<ViewStatusAddition name="DocumentListBoxViewStatus" id="74">
+						<AdditionSource>
+							<Item>DocumentListBox</Item>
+							<Type>ViewStatusRepresentation</Type>
+						</AdditionSource>
+						<ContextMenu name="DocumentListBoxViewStatusContextMenu" id="75"/>
+						<ExtendedTooltip name="DocumentListBoxViewStatusExtendedTooltip" id="76"/>
+					</ViewStatusAddition>
+					<SearchControlAddition name="DocumentListBoxSearchControl" id="77">
+						<AdditionSource>
+							<Item>DocumentListBox</Item>
+							<Type>SearchControl</Type>
+						</AdditionSource>
+						<ContextMenu name="DocumentListBoxSearchControlContextMenu" id="78"/>
+						<ExtendedTooltip name="DocumentListBoxSearchControlExtendedTooltip" id="79"/>
+					</SearchControlAddition>
+					<ChildItems>
+						<ColumnGroup name="DocumentListBoxGroup" id="10">
+							<Title>
+								<v8:item>
+									<v8:lang>pl</v8:lang>
+									<v8:content>Document list box group</v8:content>
+								</v8:item>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Document list box group</v8:content>
+								</v8:item>
+							</Title>
+							<ToolTip>
+								<v8:item>
+									<v8:lang>pl</v8:lang>
+									<v8:content>Document list box group</v8:content>
+								</v8:item>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Document list box group</v8:content>
+								</v8:item>
+							</ToolTip>
+							<Group>Horizontal</Group>
+							<ExtendedTooltip name="DocumentListBoxGroupExtendedTooltip" id="80"/>
+							<ChildItems>
+								<CheckBoxField name="DocumentListBoxCheck" id="8">
+									<DataPath>DocumentListBox.Check</DataPath>
+									<EditMode>EnterOnInput</EditMode>
+									<CheckBoxType>Auto</CheckBoxType>
+									<ContextMenu name="DocumentListBoxCheckContextMenu" id="9"/>
+									<ExtendedTooltip name="DocumentListBoxCheckExtendedTooltip" id="81"/>
+									<Events>
+										<Event name="OnChange">DocumentListBoxCheckOnChange</Event>
+									</Events>
+								</CheckBoxField>
+								<InputField name="DocumentListBoxValue" id="6">
+									<DataPath>DocumentListBox.Value</DataPath>
+									<ReadOnly>true</ReadOnly>
+									<EditMode>EnterOnInput</EditMode>
+									<ContextMenu name="DocumentListBoxValueContextMenu" id="7"/>
+									<ExtendedTooltip name="DocumentListBoxValueExtendedTooltip" id="82"/>
+								</InputField>
+							</ChildItems>
+						</ColumnGroup>
+					</ChildItems>
+				</Table>
+			</ChildItems>
+		</UsualGroup>
+		<UsualGroup name="GroupRight" id="58">
+			<Title>
+				<v8:item>
+					<v8:lang>pl</v8:lang>
+					<v8:content>Group right</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Group right</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>pl</v8:lang>
+					<v8:content>Group right</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Group right</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Group>Vertical</Group>
+			<Representation>None</Representation>
+			<ShowTitle>false</ShowTitle>
+			<ExtendedTooltip name="GroupRightExtendedTooltip" id="83"/>
+			<ChildItems>
+				<RadioButtonField name="ChooseFromList" id="64">
+					<DataPath>ChooseFromList</DataPath>
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Choose documents</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>pl</v8:lang>
+							<v8:content>Wybierz dokumenty</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Выбрать документы</v8:content>
+						</v8:item>
+					</Title>
+					<RadioButtonType>Auto</RadioButtonType>
+					<ChoiceList>
+						<xr:Item>
+							<xr:Presentation/>
+							<xr:CheckState>0</xr:CheckState>
+							<xr:Value xsi:type="FormChoiceListDesTimeValue">
+								<Presentation>
+									<v8:item>
+										<v8:lang>en</v8:lang>
+										<v8:content>by filter</v8:content>
+									</v8:item>
+									<v8:item>
+										<v8:lang>pl</v8:lang>
+										<v8:content>wg filtru</v8:content>
+									</v8:item>
+									<v8:item>
+										<v8:lang>ru</v8:lang>
+										<v8:content>с учетом отбора</v8:content>
+									</v8:item>
+								</Presentation>
+								<Value xsi:type="xs:decimal">0</Value>
+							</xr:Value>
+						</xr:Item>
+						<xr:Item>
+							<xr:Presentation/>
+							<xr:CheckState>0</xr:CheckState>
+							<xr:Value xsi:type="FormChoiceListDesTimeValue">
+								<Presentation>
+									<v8:item>
+										<v8:lang>en</v8:lang>
+										<v8:content>from list</v8:content>
+									</v8:item>
+									<v8:item>
+										<v8:lang>pl</v8:lang>
+										<v8:content>z listy</v8:content>
+									</v8:item>
+									<v8:item>
+										<v8:lang>ru</v8:lang>
+										<v8:content>из списка</v8:content>
+									</v8:item>
+								</Presentation>
+								<Value xsi:type="xs:decimal">1</Value>
+							</xr:Value>
+						</xr:Item>
+					</ChoiceList>
+					<ContextMenu name="ChooseFromListContextMenu" id="65"/>
+					<ExtendedTooltip name="ChooseFromListExtendedTooltip" id="84"/>
+					<Events>
+						<Event name="OnChange">ChooseFromListOnChange</Event>
+					</Events>
+				</RadioButtonField>
+				<Pages name="GroupTabs" id="51">
+					<Title>
+						<v8:item>
+							<v8:lang>pl</v8:lang>
+							<v8:content>Group tabs</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Group tabs</v8:content>
+						</v8:item>
+					</Title>
+					<ToolTip>
+						<v8:item>
+							<v8:lang>pl</v8:lang>
+							<v8:content>Group tabs</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Group tabs</v8:content>
+						</v8:item>
+					</ToolTip>
+					<PagesRepresentation>None</PagesRepresentation>
+					<ExtendedTooltip name="GroupTabsExtendedTooltip" id="85"/>
+					<ChildItems>
+						<Page name="GroupFilter" id="2">
+							<Title>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Filter</v8:content>
+								</v8:item>
+								<v8:item>
+									<v8:lang>pl</v8:lang>
+									<v8:content>Filtruj</v8:content>
+								</v8:item>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Отбор</v8:content>
+								</v8:item>
+							</Title>
+							<ExtendedTooltip name="GroupFilterExtendedTooltip" id="86"/>
+							<ChildItems>
+								<UsualGroup name="DocumentsStatusesGroup" id="13">
+									<Title>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Show documents with bookkeeping statuses</v8:content>
+										</v8:item>
+										<v8:item>
+											<v8:lang>pl</v8:lang>
+											<v8:content>Pokazuj dokumenty ze statusami księgowania</v8:content>
+										</v8:item>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Показать документы со статусами проведения</v8:content>
+										</v8:item>
+									</Title>
+									<TitleFont ref="sys:DefaultGUIFont" bold="true" italic="false" underline="true" strikeout="false" kind="WindowsFont"/>
+									<HorizontalStretch>true</HorizontalStretch>
+									<Group>Vertical</Group>
+									<Representation>None</Representation>
+									<ExtendedTooltip name="DocumentsStatusesGroupExtendedTooltip" id="87"/>
+									<ChildItems>
+										<RadioButtonField name="DisplayedDocumentsStatus" id="14">
+											<DataPath>DisplayedDocumentsStatus</DataPath>
+											<TitleLocation>None</TitleLocation>
+											<RadioButtonType>Auto</RadioButtonType>
+											<ColumnsCount>1</ColumnsCount>
+											<ChoiceList>
+												<xr:Item>
+													<xr:Presentation/>
+													<xr:CheckState>0</xr:CheckState>
+													<xr:Value xsi:type="FormChoiceListDesTimeValue">
+														<Presentation>
+															<v8:item>
+																<v8:lang>en</v8:lang>
+																<v8:content>Not posted (to post)</v8:content>
+															</v8:item>
+															<v8:item>
+																<v8:lang>pl</v8:lang>
+																<v8:content>Nie zaksięgowane (do zaksięgowania)</v8:content>
+															</v8:item>
+															<v8:item>
+																<v8:lang>ru</v8:lang>
+																<v8:content>Непроведенные (к проведению)</v8:content>
+															</v8:item>
+														</Presentation>
+														<Value xsi:type="xr:DesignTimeRef">Enum.DocumentBookkeepingStatus.EnumValue.NotBookkeepingPosted</Value>
+													</xr:Value>
+												</xr:Item>
+												<xr:Item>
+													<xr:Presentation/>
+													<xr:CheckState>0</xr:CheckState>
+													<xr:Value xsi:type="FormChoiceListDesTimeValue">
+														<Presentation>
+															<v8:item>
+																<v8:lang>en</v8:lang>
+																<v8:content>Posted (to verify)</v8:content>
+															</v8:item>
+															<v8:item>
+																<v8:lang>pl</v8:lang>
+																<v8:content>Zaksięgowane (do sprawdzenia)</v8:content>
+															</v8:item>
+															<v8:item>
+																<v8:lang>ru</v8:lang>
+																<v8:content>Проведенные (к проверке)</v8:content>
+															</v8:item>
+														</Presentation>
+														<Value xsi:type="xr:DesignTimeRef">Enum.DocumentBookkeepingStatus.EnumValue.BookkeepingPosted</Value>
+													</xr:Value>
+												</xr:Item>
+												<xr:Item>
+													<xr:Presentation/>
+													<xr:CheckState>0</xr:CheckState>
+													<xr:Value xsi:type="FormChoiceListDesTimeValue">
+														<Presentation>
+															<v8:item>
+																<v8:lang>en</v8:lang>
+																<v8:content>Shouldn't post</v8:content>
+															</v8:item>
+															<v8:item>
+																<v8:lang>pl</v8:lang>
+																<v8:content>Nie księgują się</v8:content>
+															</v8:item>
+															<v8:item>
+																<v8:lang>ru</v8:lang>
+																<v8:content>Не проводятся</v8:content>
+															</v8:item>
+														</Presentation>
+														<Value xsi:type="xr:DesignTimeRef">Enum.DocumentBookkeepingStatus.EnumValue.BookkeepingPostingIsNotAllowed</Value>
+													</xr:Value>
+												</xr:Item>
+											</ChoiceList>
+											<ContextMenu name="DisplayedDocumentsStatusContextMenu" id="15"/>
+											<ExtendedTooltip name="DisplayedDocumentsStatusExtendedTooltip" id="88"/>
+											<Events>
+												<Event name="OnChange">DisplayedDocumentsStatusOnChange</Event>
+											</Events>
+										</RadioButtonField>
+									</ChildItems>
+								</UsualGroup>
+								<UsualGroup name="FilterGroup" id="16">
+									<Title>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Documents filtr</v8:content>
+										</v8:item>
+										<v8:item>
+											<v8:lang>pl</v8:lang>
+											<v8:content>Filtruj dokumenty</v8:content>
+										</v8:item>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Отобрать документы</v8:content>
+										</v8:item>
+									</Title>
+									<TitleFont ref="sys:DefaultGUIFont" bold="true" italic="false" underline="true" strikeout="false" kind="WindowsFont"/>
+									<HorizontalStretch>true</HorizontalStretch>
+									<Group>Vertical</Group>
+									<Representation>None</Representation>
+									<ExtendedTooltip name="FilterGroupExtendedTooltip" id="89"/>
+									<ChildItems>
+										<InputField name="Company" id="11">
+											<DataPath>Company</DataPath>
+											<ContextMenu name="CompanyContextMenu" id="12"/>
+											<ExtendedTooltip name="CompanyExtendedTooltip" id="90"/>
+										</InputField>
+										<UsualGroup name="PeriodGroup" id="44">
+											<Title>
+												<v8:item>
+													<v8:lang>pl</v8:lang>
+													<v8:content>Period group</v8:content>
+												</v8:item>
+												<v8:item>
+													<v8:lang>ru</v8:lang>
+													<v8:content>Period group</v8:content>
+												</v8:item>
+											</Title>
+											<Group>Horizontal</Group>
+											<Representation>None</Representation>
+											<ShowTitle>false</ShowTitle>
+											<ExtendedTooltip name="PeriodGroupExtendedTooltip" id="91"/>
+											<ChildItems>
+												<InputField name="DateFrom" id="45">
+													<DataPath>DateFrom</DataPath>
+													<Title>
+														<v8:item>
+															<v8:lang>ru</v8:lang>
+															<v8:content>Период с</v8:content>
+														</v8:item>
+													</Title>
+													<ContextMenu name="DateFromContextMenu" id="46"/>
+													<ExtendedTooltip name="DateFromExtendedTooltip" id="92"/>
+												</InputField>
+												<InputField name="DateTo" id="47">
+													<DataPath>DateTo</DataPath>
+													<Title>
+														<v8:item>
+															<v8:lang>en</v8:lang>
+															<v8:content>to</v8:content>
+														</v8:item>
+														<v8:item>
+															<v8:lang>pl</v8:lang>
+															<v8:content>do</v8:content>
+														</v8:item>
+														<v8:item>
+															<v8:lang>ru</v8:lang>
+															<v8:content>по</v8:content>
+														</v8:item>
+													</Title>
+													<ContextMenu name="DateToContextMenu" id="48"/>
+													<ExtendedTooltip name="DateToExtendedTooltip" id="93"/>
+												</InputField>
+												<Button name="PeriodButton" id="49">
+													<Type>UsualButton</Type>
+													<CommandName>Form.Command.PeriodSetting</CommandName>
+													<ExtendedTooltip name="PeriodButtonExtendedTooltip" id="94"/>
+												</Button>
+											</ChildItems>
+										</UsualGroup>
+										<InputField name="PartialJournal" id="19">
+											<DataPath>PartialJournal</DataPath>
+											<ContextMenu name="PartialJournalContextMenu" id="20"/>
+											<ExtendedTooltip name="PartialJournalExtendedTooltip" id="95"/>
+										</InputField>
+									</ChildItems>
+								</UsualGroup>
+								<RadioButtonField name="ManualBookkeepingOperation" id="21">
+									<DataPath>ManualBookkeepingOperation</DataPath>
+									<TitleLocation>None</TitleLocation>
+									<RadioButtonType>Auto</RadioButtonType>
+									<ColumnsCount>1</ColumnsCount>
+									<ChoiceList>
+										<xr:Item>
+											<xr:Presentation/>
+											<xr:CheckState>0</xr:CheckState>
+											<xr:Value xsi:type="FormChoiceListDesTimeValue">
+												<Presentation>
+													<v8:item>
+														<v8:lang>en</v8:lang>
+														<v8:content>All</v8:content>
+													</v8:item>
+													<v8:item>
+														<v8:lang>pl</v8:lang>
+														<v8:content>Wszystkie</v8:content>
+													</v8:item>
+													<v8:item>
+														<v8:lang>ru</v8:lang>
+														<v8:content>Все</v8:content>
+													</v8:item>
+												</Presentation>
+												<Value xsi:type="xs:decimal">0</Value>
+											</xr:Value>
+										</xr:Item>
+										<xr:Item>
+											<xr:Presentation/>
+											<xr:CheckState>0</xr:CheckState>
+											<xr:Value xsi:type="FormChoiceListDesTimeValue">
+												<Presentation>
+													<v8:item>
+														<v8:lang>en</v8:lang>
+														<v8:content>Without manual changes</v8:content>
+													</v8:item>
+													<v8:item>
+														<v8:lang>pl</v8:lang>
+														<v8:content>Bez ręcznych zmian</v8:content>
+													</v8:item>
+													<v8:item>
+														<v8:lang>ru</v8:lang>
+														<v8:content>Без ручных изменений</v8:content>
+													</v8:item>
+												</Presentation>
+												<Value xsi:type="xs:decimal">1</Value>
+											</xr:Value>
+										</xr:Item>
+										<xr:Item>
+											<xr:Presentation/>
+											<xr:CheckState>0</xr:CheckState>
+											<xr:Value xsi:type="FormChoiceListDesTimeValue">
+												<Presentation>
+													<v8:item>
+														<v8:lang>en</v8:lang>
+														<v8:content>With manual changes</v8:content>
+													</v8:item>
+													<v8:item>
+														<v8:lang>pl</v8:lang>
+														<v8:content>Z ręcznymi zmianami</v8:content>
+													</v8:item>
+													<v8:item>
+														<v8:lang>ru</v8:lang>
+														<v8:content>С ручными изменениями</v8:content>
+													</v8:item>
+												</Presentation>
+												<Value xsi:type="xs:decimal">2</Value>
+											</xr:Value>
+										</xr:Item>
+									</ChoiceList>
+									<ContextMenu name="ManualBookkeepingOperationContextMenu" id="22"/>
+									<ExtendedTooltip name="ManualBookkeepingOperationExtendedTooltip" id="96"/>
+								</RadioButtonField>
+								<UsualGroup name="SortGroup" id="23">
+									<Title>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Documents sorting</v8:content>
+										</v8:item>
+										<v8:item>
+											<v8:lang>pl</v8:lang>
+											<v8:content>Sortuj dokumenty</v8:content>
+										</v8:item>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Сортировать документы</v8:content>
+										</v8:item>
+									</Title>
+									<TitleFont ref="sys:DefaultGUIFont" bold="true" italic="false" underline="true" strikeout="false" kind="WindowsFont"/>
+									<HorizontalStretch>true</HorizontalStretch>
+									<Group>Vertical</Group>
+									<Representation>None</Representation>
+									<ExtendedTooltip name="SortGroupExtendedTooltip" id="97"/>
+									<ChildItems>
+										<RadioButtonField name="SortingMethod" id="24">
+											<DataPath>SortingMethod</DataPath>
+											<TitleLocation>None</TitleLocation>
+											<RadioButtonType>Auto</RadioButtonType>
+											<ColumnsCount>1</ColumnsCount>
+											<ChoiceList>
+												<xr:Item>
+													<xr:Presentation/>
+													<xr:CheckState>0</xr:CheckState>
+													<xr:Value xsi:type="FormChoiceListDesTimeValue">
+														<Presentation>
+															<v8:item>
+																<v8:lang>en</v8:lang>
+																<v8:content>By document's date</v8:content>
+															</v8:item>
+															<v8:item>
+																<v8:lang>pl</v8:lang>
+																<v8:content>Wg daty dokumentu</v8:content>
+															</v8:item>
+															<v8:item>
+																<v8:lang>ru</v8:lang>
+																<v8:content>По дате документа</v8:content>
+															</v8:item>
+														</Presentation>
+														<Value xsi:type="xs:decimal">0</Value>
+													</xr:Value>
+												</xr:Item>
+												<xr:Item>
+													<xr:Presentation/>
+													<xr:CheckState>0</xr:CheckState>
+													<xr:Value xsi:type="FormChoiceListDesTimeValue">
+														<Presentation>
+															<v8:item>
+																<v8:lang>en</v8:lang>
+																<v8:content>By document's type and date</v8:content>
+															</v8:item>
+															<v8:item>
+																<v8:lang>pl</v8:lang>
+																<v8:content>Wg typu i daty dokumentu</v8:content>
+															</v8:item>
+															<v8:item>
+																<v8:lang>ru</v8:lang>
+																<v8:content>По типу и дате документа</v8:content>
+															</v8:item>
+														</Presentation>
+														<Value xsi:type="xs:decimal">1</Value>
+													</xr:Value>
+												</xr:Item>
+											</ChoiceList>
+											<ContextMenu name="SortingMethodContextMenu" id="25"/>
+											<ExtendedTooltip name="SortingMethodExtendedTooltip" id="98"/>
+										</RadioButtonField>
+									</ChildItems>
+								</UsualGroup>
+								<UsualGroup name="OtherSettingsGroup" id="26">
+									<Title>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Other settings</v8:content>
+										</v8:item>
+										<v8:item>
+											<v8:lang>pl</v8:lang>
+											<v8:content>Pozostałe ustawienia</v8:content>
+										</v8:item>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Расширенная настройка</v8:content>
+										</v8:item>
+									</Title>
+									<TitleFont ref="sys:DefaultGUIFont" bold="true" italic="false" underline="true" strikeout="false" kind="WindowsFont"/>
+									<HorizontalStretch>true</HorizontalStretch>
+									<Group>Vertical</Group>
+									<Representation>None</Representation>
+									<ExtendedTooltip name="OtherSettingsGroupExtendedTooltip" id="99"/>
+									<ChildItems>
+										<UsualGroup name="DynamicFilterGroup" id="36">
+											<Group>Vertical</Group>
+											<Representation>None</Representation>
+											<ShowTitle>false</ShowTitle>
+											<ExtendedTooltip name="DynamicFilterGroupExtendedTooltip" id="100"/>
+											<ChildItems>
+												<CheckBoxField name="DynamicFilter" id="27">
+													<DataPath>DynamicFilter</DataPath>
+													<TitleLocation>Right</TitleLocation>
+													<CheckBoxType>Auto</CheckBoxType>
+													<ContextMenu name="DynamicFilterContextMenu" id="28"/>
+													<ExtendedTooltip name="DynamicFilterExtendedTooltip" id="101"/>
+												</CheckBoxField>
+												<LabelDecoration name="DecorationDynamicFilter" id="37">
+													<Width>35</Width>
+													<Height>3</Height>
+													<TextColor>style:InformationTextColor</TextColor>
+													<Title formatted="false">
+														<v8:item>
+															<v8:lang>en</v8:lang>
+															<v8:content>If you choose this option, the list of documents will filter dinamically on change status. In other case only after you press Refresh.</v8:content>
+														</v8:item>
+														<v8:item>
+															<v8:lang>pl</v8:lang>
+															<v8:content>Jeżeli ta opcja jest zaznaczona, to oznacza, że lista dokumentów będzie filtrowana od razu po zmianie statusu. W przeciwnym przypadku dopiero po nacisnięciu Odśwież.</v8:content>
+														</v8:item>
+														<v8:item>
+															<v8:lang>ru</v8:lang>
+															<v8:content>Если выбрана данная опция, то список документов будет динамически отфильтрован сразу после изменения статуса. В противном случае только после нажатия "Обновить".</v8:content>
+														</v8:item>
+													</Title>
+													<ContextMenu name="DecorationDynamicFilterContextMenu" id="38"/>
+													<ExtendedTooltip name="DecorationDynamicFilterExtendedTooltip" id="102"/>
+												</LabelDecoration>
+											</ChildItems>
+										</UsualGroup>
+										<UsualGroup name="TopXGroup" id="39">
+											<Group>Vertical</Group>
+											<Representation>None</Representation>
+											<ShowTitle>false</ShowTitle>
+											<ExtendedTooltip name="TopXGroupExtendedTooltip" id="103"/>
+											<ChildItems>
+												<UsualGroup name="TopXGroupLine" id="33">
+													<Group>Horizontal</Group>
+													<Representation>None</Representation>
+													<ShowTitle>false</ShowTitle>
+													<ExtendedTooltip name="TopXGroupLineExtendedTooltip" id="104"/>
+													<ChildItems>
+														<CheckBoxField name="SelectTopX" id="29">
+															<DataPath>SelectTopX</DataPath>
+															<TitleLocation>Right</TitleLocation>
+															<CheckBoxType>Auto</CheckBoxType>
+															<ContextMenu name="SelectTopXContextMenu" id="30"/>
+															<ExtendedTooltip name="SelectTopXExtendedTooltip" id="105"/>
+															<Events>
+																<Event name="OnChange">SelectTopXOnChange</Event>
+															</Events>
+														</CheckBoxField>
+														<InputField name="TopSelectionNumber" id="31">
+															<DataPath>TopSelectionNumber</DataPath>
+															<TitleLocation>None</TitleLocation>
+															<SpinButton>true</SpinButton>
+															<ContextMenu name="TopSelectionNumberContextMenu" id="32"/>
+															<ExtendedTooltip name="TopSelectionNumberExtendedTooltip" id="106"/>
+														</InputField>
+														<LabelDecoration name="DecorationTopXLine" id="34">
+															<Title formatted="false">
+																<v8:item>
+																	<v8:lang>en</v8:lang>
+																	<v8:content>documents</v8:content>
+																</v8:item>
+																<v8:item>
+																	<v8:lang>pl</v8:lang>
+																	<v8:content>dokumentów</v8:content>
+																</v8:item>
+																<v8:item>
+																	<v8:lang>ru</v8:lang>
+																	<v8:content>документов</v8:content>
+																</v8:item>
+															</Title>
+															<ContextMenu name="DecorationTopXLineContextMenu" id="35"/>
+															<ExtendedTooltip name="DecorationTopXLineExtendedTooltip" id="107"/>
+														</LabelDecoration>
+													</ChildItems>
+												</UsualGroup>
+												<LabelDecoration name="DecorationTopX" id="40">
+													<Width>35</Width>
+													<Height>2</Height>
+													<TextColor>style:InformationTextColor</TextColor>
+													<Title formatted="false">
+														<v8:item>
+															<v8:lang>pl</v8:lang>
+															<v8:content>Pozwala ograniczyć ilość wybieranych dokumentów, aby zmniejszyć obciążenie komputera i połączenia sieciowego.</v8:content>
+														</v8:item>
+														<v8:item>
+															<v8:lang>ru</v8:lang>
+															<v8:content>Позволяет ограничить количество выбранных документов для уменьшения нагрузки на компьютер и сеть.</v8:content>
+														</v8:item>
+													</Title>
+													<ContextMenu name="DecorationTopXContextMenu" id="41"/>
+													<ExtendedTooltip name="DecorationTopXExtendedTooltip" id="108"/>
+												</LabelDecoration>
+											</ChildItems>
+										</UsualGroup>
+									</ChildItems>
+								</UsualGroup>
+							</ChildItems>
+						</Page>
+						<Page name="GroupChooseFromList" id="52">
+							<Title>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Choose from list</v8:content>
+								</v8:item>
+								<v8:item>
+									<v8:lang>pl</v8:lang>
+									<v8:content>Wybierz z listy</v8:content>
+								</v8:item>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Выбрать из списка</v8:content>
+								</v8:item>
+							</Title>
+							<ToolTip>
+								<v8:item>
+									<v8:lang>pl</v8:lang>
+									<v8:content>Group choose from list</v8:content>
+								</v8:item>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Group choose from list</v8:content>
+								</v8:item>
+							</ToolTip>
+							<ExtendedTooltip name="GroupChooseFromListExtendedTooltip" id="109"/>
+							<ChildItems>
+								<Table name="ChoosenDocumentsFromList" id="59">
+									<Representation>List</Representation>
+									<Header>false</Header>
+									<HorizontalLines>false</HorizontalLines>
+									<VerticalLines>false</VerticalLines>
+									<AutoInsertNewRow>true</AutoInsertNewRow>
+									<DataPath>ChoosenDocumentsFromList</DataPath>
+									<RowPictureDataPath>ChoosenDocumentsFromList.Picture</RowPictureDataPath>
+									<CommandSet>
+										<ExcludedCommand>CheckAll</ExcludedCommand>
+										<ExcludedCommand>SortListAsc</ExcludedCommand>
+										<ExcludedCommand>MoveUp</ExcludedCommand>
+										<ExcludedCommand>UncheckAll</ExcludedCommand>
+										<ExcludedCommand>SelectAll</ExcludedCommand>
+										<ExcludedCommand>SortListDesc</ExcludedCommand>
+										<ExcludedCommand>Pickup</ExcludedCommand>
+										<ExcludedCommand>CopyToClipboard</ExcludedCommand>
+										<ExcludedCommand>MoveDown</ExcludedCommand>
+									</CommandSet>
+									<SearchStringLocation>None</SearchStringLocation>
+									<ViewStatusLocation>None</ViewStatusLocation>
+									<SearchControlLocation>None</SearchControlLocation>
+									<ContextMenu name="ChoosenDocumentsFromListContextMenu" id="60"/>
+									<AutoCommandBar name="ChoosenDocumentsFromListCommandBar" id="61">
+										<ChildItems>
+											<Button name="ChoosenDocumentsFromListLoadFromSpreadsheet" id="66">
+												<Type>CommandBarButton</Type>
+												<CommandName>Form.Command.LoadFromSpreadsheet</CommandName>
+												<ExtendedTooltip name="ChoosenDocumentsFromListLoadFromSpreadsheetExtendedTooltip" id="110"/>
+											</Button>
+										</ChildItems>
+									</AutoCommandBar>
+									<ExtendedTooltip name="ChoosenDocumentsFromListExtendedTooltip" id="111"/>
+									<SearchStringAddition name="ChoosenDocumentsFromListSearchString" id="112">
+										<AdditionSource>
+											<Item>ChoosenDocumentsFromList</Item>
+											<Type>SearchStringRepresentation</Type>
+										</AdditionSource>
+										<ContextMenu name="ChoosenDocumentsFromListSearchStringContextMenu" id="113"/>
+										<ExtendedTooltip name="ChoosenDocumentsFromListSearchStringExtendedTooltip" id="114"/>
+									</SearchStringAddition>
+									<ViewStatusAddition name="ChoosenDocumentsFromListViewStatus" id="115">
+										<AdditionSource>
+											<Item>ChoosenDocumentsFromList</Item>
+											<Type>ViewStatusRepresentation</Type>
+										</AdditionSource>
+										<ContextMenu name="ChoosenDocumentsFromListViewStatusContextMenu" id="116"/>
+										<ExtendedTooltip name="ChoosenDocumentsFromListViewStatusExtendedTooltip" id="117"/>
+									</ViewStatusAddition>
+									<SearchControlAddition name="ChoosenDocumentsFromListSearchControl" id="118">
+										<AdditionSource>
+											<Item>ChoosenDocumentsFromList</Item>
+											<Type>SearchControl</Type>
+										</AdditionSource>
+										<ContextMenu name="ChoosenDocumentsFromListSearchControlContextMenu" id="119"/>
+										<ExtendedTooltip name="ChoosenDocumentsFromListSearchControlExtendedTooltip" id="120"/>
+									</SearchControlAddition>
+									<ChildItems>
+										<InputField name="ChoosenDocumentsFromListValue" id="62">
+											<DataPath>ChoosenDocumentsFromList.Value</DataPath>
+											<EditMode>EnterOnInput</EditMode>
+											<AutoChoiceIncomplete>true</AutoChoiceIncomplete>
+											<AutoMarkIncomplete>true</AutoMarkIncomplete>
+											<ContextMenu name="ChoosenDocumentsFromListValueContextMenu" id="63"/>
+											<ExtendedTooltip name="ChoosenDocumentsFromListValueExtendedTooltip" id="121"/>
+										</InputField>
+									</ChildItems>
+								</Table>
+							</ChildItems>
+						</Page>
+					</ChildItems>
+				</Pages>
+			</ChildItems>
+		</UsualGroup>
+	</ChildItems>
+	<Attributes>
+		<Attribute name="DocumentListBox" id="2">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Documents types filtr</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>pl</v8:lang>
+					<v8:content>Filtr po typach dokumentów</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Отбор по типу документа</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>v8:ValueListType</v8:Type>
+			</Type>
+			<SavedData>true</SavedData>
+		</Attribute>
+		<Attribute name="Company" id="1">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Company</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>pl</v8:lang>
+					<v8:content>Firma</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Организация</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>cfg:CatalogRef.Companies</v8:Type>
+			</Type>
+			<SavedData>true</SavedData>
+			<FillCheck>ShowError</FillCheck>
+		</Attribute>
+		<Attribute name="DateFrom" id="3">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Date from</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>pl</v8:lang>
+					<v8:content>Data od</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Дата от</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:dateTime</v8:Type>
+				<v8:DateQualifiers>
+					<v8:DateFractions>Date</v8:DateFractions>
+				</v8:DateQualifiers>
+			</Type>
+			<SavedData>true</SavedData>
+		</Attribute>
+		<Attribute name="DateTo" id="4">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Date to</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>pl</v8:lang>
+					<v8:content>Data do</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Дата по</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:dateTime</v8:Type>
+				<v8:DateQualifiers>
+					<v8:DateFractions>Date</v8:DateFractions>
+				</v8:DateQualifiers>
+			</Type>
+			<SavedData>true</SavedData>
+		</Attribute>
+		<Attribute name="DisplayedDocumentsStatus" id="5">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Displayed documents status</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>pl</v8:lang>
+					<v8:content>Pokazuj dokumenty ze statusem</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Показать документы со статусом</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>cfg:EnumRef.DocumentBookkeepingStatus</v8:Type>
+			</Type>
+			<SavedData>true</SavedData>
+			<FillCheck>ShowError</FillCheck>
+		</Attribute>
+		<Attribute name="StandardPeriod" id="6">
+			<Title>
+				<v8:item>
+					<v8:lang>pl</v8:lang>
+					<v8:content>Standard period</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Standard period</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>v8:StandardPeriod</v8:Type>
+			</Type>
+			<SavedData>true</SavedData>
+		</Attribute>
+		<Attribute name="PartialJournal" id="7">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Partial journal</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>pl</v8:lang>
+					<v8:content>Dziennik częściowy</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Детальный журнал</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:string</v8:Type>
+				<v8:StringQualifiers>
+					<v8:Length>0</v8:Length>
+					<v8:AllowedLength>Variable</v8:AllowedLength>
+				</v8:StringQualifiers>
+			</Type>
+			<SavedData>true</SavedData>
+		</Attribute>
+		<Attribute name="ManualBookkeepingOperation" id="8">
+			<Title>
+				<v8:item>
+					<v8:lang>pl</v8:lang>
+					<v8:content>Manual bookkeeping operation</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Manual bookkeeping operation</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:decimal</v8:Type>
+				<v8:NumberQualifiers>
+					<v8:Digits>1</v8:Digits>
+					<v8:FractionDigits>0</v8:FractionDigits>
+					<v8:AllowedSign>Any</v8:AllowedSign>
+				</v8:NumberQualifiers>
+			</Type>
+			<SavedData>true</SavedData>
+		</Attribute>
+		<Attribute name="SortingMethod" id="9">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Sorting method</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>pl</v8:lang>
+					<v8:content>Sposób sortowania</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Метод сортировки</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:decimal</v8:Type>
+				<v8:NumberQualifiers>
+					<v8:Digits>1</v8:Digits>
+					<v8:FractionDigits>0</v8:FractionDigits>
+					<v8:AllowedSign>Nonnegative</v8:AllowedSign>
+				</v8:NumberQualifiers>
+			</Type>
+			<SavedData>true</SavedData>
+		</Attribute>
+		<Attribute name="DynamicFilter" id="10">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Dynamic filter</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>pl</v8:lang>
+					<v8:content>Filtruj dynamicznie</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Динамический фильтр</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:boolean</v8:Type>
+			</Type>
+			<SavedData>true</SavedData>
+		</Attribute>
+		<Attribute name="SelectTopX" id="11">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Select top X</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>pl</v8:lang>
+					<v8:content>Wybierz pierwsze</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Выбрать первые</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:boolean</v8:Type>
+			</Type>
+			<SavedData>true</SavedData>
+		</Attribute>
+		<Attribute name="TopSelectionNumber" id="12">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Top selection number</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>pl</v8:lang>
+					<v8:content>Ilość pierwszych do wyboru</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Количество первых выбранных</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:decimal</v8:Type>
+				<v8:NumberQualifiers>
+					<v8:Digits>4</v8:Digits>
+					<v8:FractionDigits>0</v8:FractionDigits>
+					<v8:AllowedSign>Nonnegative</v8:AllowedSign>
+				</v8:NumberQualifiers>
+			</Type>
+			<SavedData>true</SavedData>
+		</Attribute>
+		<Attribute name="DocumentTypes" id="13">
+			<Title>
+				<v8:item>
+					<v8:lang>pl</v8:lang>
+					<v8:content>Document types</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Document types</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>v8:TypeDescription</v8:Type>
+			</Type>
+			<SavedData>true</SavedData>
+		</Attribute>
+		<Attribute name="OnlyChoosenTypes" id="14">
+			<Title>
+				<v8:item>
+					<v8:lang>pl</v8:lang>
+					<v8:content>Only choosen types</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Only choosen types</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:boolean</v8:Type>
+			</Type>
+			<SavedData>true</SavedData>
+		</Attribute>
+		<Attribute name="ParametersStructure" id="15">
+			<Title>
+				<v8:item>
+					<v8:lang>pl</v8:lang>
+					<v8:content>Parameters structure</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Parameters structure</v8:content>
+				</v8:item>
+			</Title>
+			<Type/>
+			<SavedData>true</SavedData>
+		</Attribute>
+		<Attribute name="ChoosenDocumentsFromList" id="16">
+			<Title>
+				<v8:item>
+					<v8:lang>pl</v8:lang>
+					<v8:content>Choosen documents from list</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Choosen documents from list</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>v8:ValueListType</v8:Type>
+			</Type>
+			<SavedData>true</SavedData>
+			<Settings xsi:type="v8:TypeDescription">
+				<v8:TypeSet>cfg:DocumentRef</v8:TypeSet>
+			</Settings>
+		</Attribute>
+		<Attribute name="ChooseFromList" id="17">
+			<Title>
+				<v8:item>
+					<v8:lang>pl</v8:lang>
+					<v8:content>Choose from list</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Choose from list</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:decimal</v8:Type>
+				<v8:NumberQualifiers>
+					<v8:Digits>1</v8:Digits>
+					<v8:FractionDigits>0</v8:FractionDigits>
+					<v8:AllowedSign>Nonnegative</v8:AllowedSign>
+				</v8:NumberQualifiers>
+			</Type>
+		</Attribute>
+	</Attributes>
+	<Commands>
+		<Command name="PeriodSetting" id="1">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>...</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>pl</v8:lang>
+					<v8:content>...</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>...</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Set period</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>pl</v8:lang>
+					<v8:content>Ustaw okres</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Установить период</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>PeriodSetting</Action>
+		</Command>
+		<Command name="ApplySettings" id="2">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>OK</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>pl</v8:lang>
+					<v8:content>OK</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>ОК</v8:content>
+				</v8:item>
+			</Title>
+			<Picture>
+				<xr:Ref>StdPicture.WriteAndClose</xr:Ref>
+				<xr:LoadTransparent>true</xr:LoadTransparent>
+			</Picture>
+			<Action>ApplySettings</Action>
+			<Representation>TextPicture</Representation>
+		</Command>
+		<Command name="LoadFromSpreadsheet" id="3">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Load from spreadsheet</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>pl</v8:lang>
+					<v8:content>Załaduj z arkusza</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Загрузить из табличного документа</v8:content>
+				</v8:item>
+			</Title>
+			<Picture>
+				<xr:Ref>CommonPicture.LoadingFromSpreadsheet</xr:Ref>
+				<xr:LoadTransparent>true</xr:LoadTransparent>
+				<xr:TransparentPixel x="4" y="13"/>
+			</Picture>
+			<Action>LoadFromSpreadsheet</Action>
+		</Command>
+	</Commands>
+	<Parameters>
+		<Parameter name="TempStorageAddress">
+			<Type>
+				<v8:Type>xs:string</v8:Type>
+				<v8:StringQualifiers>
+					<v8:Length>0</v8:Length>
+					<v8:AllowedLength>Variable</v8:AllowedLength>
+				</v8:StringQualifiers>
+			</Type>
+			<KeyParameter>true</KeyParameter>
+		</Parameter>
+	</Parameters>
+</Form>

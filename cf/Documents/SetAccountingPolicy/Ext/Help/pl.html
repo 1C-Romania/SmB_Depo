@@ -1,0 +1,32 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN"><html><head><meta content="text/html; charset=utf-8" http-equiv="Content-Type"></meta><link rel="stylesheet" type="text/css" href="v8help://service_book/service_style"></link><meta name="GENERATOR" content="MSHTML 11.00.9600.17278"></meta></head><body>
+<p class="MsoNormal" style="MARGIN: 0cm 0cm 0pt">Dokument pozwala na ustalenie podstawowych parametrów używanych podczas księgowania. Wliczamy tu: sposoby księgowania dodatkowych kosztów towarów, kurs wymiany walut dla księgowania dokumentów zakupu i sprzedaży, metodę wyliczania VAT-u, określenie czy firma będzie używać budżet, jeśli tak - to jaka będzie jego waluta. Istnieje również ustalenie kontroli wprowadzania faktur zakupu wg budżetu (można ustalić tu Typy kwoty z faktury). Ważnym obowiązkowym elementem ustalania polityki rachunkowości skład ten wchodzą również metody wyceny rozchodu zapasów dla poszczególnych grup księgowych pozycji.</p>
+<h3>Atrybuty</h3>
+<table bordercolor="#a9a9a9" cellspacing="0" bordercolordark="#ffffff" cellpadding="5" width="100%" border="1"><tbody><tr valign="top"><td width="30%"><strong>Autor</strong></td>
+<td>Osoba wystawiąjąca dokument.</td></tr><tr valign="top"><td width="30%"><strong>Data</strong></td>
+<td>
+<p class="MsoNormal" style="MARGIN: 0cm 0cm 0pt">Data dokumentu. </p></td></tr><tr valign="top"><td width="30%"><strong>Domyślny kierunek wydania towarów</strong></td>
+<td>Kierunki ruchów kosztu towarów. Dostępne są predefiniowane elementy: Przyjęcie zewnętrzne (zakup), Kompletacja, Dekompletacja, Rozchód wewnętrzny towarów, Przychód wewnętrzny towarów, Wydanie zewnętrzne (zwrot zakupu), Wydanie zewnętrzne (sprzedaż), Przyjęcie zewnętrzne (zwrot sprzedaży) oraz Pozostałe koszty operacyjne. Można dodawać także inne kierunki ruchów kosztu towarów.</td></tr><tr valign="top"><td width="30%"><strong>Firma</strong></td>
+<td>
+<p>Firma wystawiająca dokument.</p></td></tr><tr valign="top"><td width="30%"><strong>Komentarz</strong></td>
+<td>
+<p>Pole opisu do umieszczenia dodatkowych informacji na temat dokumentu. </p></td></tr><tr valign="top"><td width="30%"><strong>Kontrolować wprowadzenie faktur zakupu wg budżetu</strong></td>
+<td>
+<p>Pozwala na kontrolę faktur zakupu z operacjami budżetowymi.</p></td></tr><tr valign="top"><td width="30%"><strong>Kurs wymiany walut dla księgowania zakupu i sprzedaży</strong></td>
+<td>
+<p class="MsoNormal" style="MARGIN: 0cm 0cm 0pt">Wartość kursu w walucie księgowania zakupu i sprzedaży.</p></td></tr><tr valign="top"><td width="30%"><strong>Metoda wyliczania VAT</strong></td>
+<td>
+<p>Metoda, wg której wyliczana jest wartość podatku VAT dla danego dokumentu. Dostępne są opcje: wg każdego wiersza dokumentu oraz wg całej kwoty dokumentu.</p></td></tr><tr valign="top"><td width="30%"><strong>Numer</strong></td>
+<td>
+<p class="MsoNormal" style="MARGIN: 0cm 0cm 0pt">Numer nadawany automatycznie dla danego rodzaju dokumentów. </p></td></tr><tr valign="top"><td width="30%"><strong>Sposób księgowania dodatkowych kosztów towarów po średniej</strong></td>
+<td>Sposób księgowania dodatkowych kosztów towarów (dotyczy tylko metody kalkulacji kosztów - średniej ceny ważonej). Przykładowo są Przyjęcia zewnętrzne  oraz Wydania zewnętrzne po danej cenie, natomiast cena na Fakturze zakupu jest wyższa. Powstają wtedy dodatkowe koszty towarów. Można je księgować wg jednego z trzech sposobów: Wg towarów wydanych minus saldo początkowe , Wg towarów wydanych oraz Wg salda kończowego. </td></tr><tr valign="top"><td width="30%"><strong>Typ kwot z faktury dla kontroli budżetowej</strong></td>
+<td>Typ kwoty z faktury: Brutto lub Netto</td></tr><tr valign="top"><td width="30%"><strong>Używać budżet</strong></td>
+<td>
+<p>Zaznaczenie pola wyboru "Używać budżet" dodaje do odpowiednich formularzy dokumentów (np. faktur zakupu) zakładki i pola potrzebne przy używaniu budżetu.</p></td></tr><tr valign="top"><td width="30%"><strong>Waluta budżetu</strong></td>
+<td>Ustalenie waluty, w której będzie rozliczany budżet.</td></tr></tbody></table><h3>Część tabelaryczna Metody kalkulacji kosztów towarów</h3>Metody wyceny rozchodu zapasów - procedury obliczeniowe mające na celu ustalenie wielkości jednostkowych kosztów wytworzenia produktu. 
+<table bordercolor="#a9a9a9" cellspacing="0" bordercolordark="#ffffff" cellpadding="5" width="100%" border="1"><tbody><tr valign="top"><td width="30%"><strong>Grupa księgowa pozycji</strong></td>
+<td>Typ: towary lub usługi.</td></tr><tr valign="top"><td width="30%"><strong>Sposób kalkulacji kosztów</strong></td>
+<td>
+<p>Sposoby wyceny rozchodu zapasów: FIFO, LIFO, Średnia</p>
+<p>FIFO - First In First Out - tzw. kolejka. Dowody rozchodów są wyceniane na podstawie pierwszej dostawy, która znajduje się w magazynie a po jej wyczerpaniu na podstawie dostawy następnej. Metoda ta jest stosowana najczęściej i jest najlepsza w przypadku szybkiej rotacji materiałów.</p>
+<p>LIFO - rozchody wycenia się na podstawie ostatniej dostawy, która zalega w magazynie, a po ich wyczerpaniu według cen dostawy, która była wcześniej. Metoda ta jest najlepsza w warunkach inflacji. </p>
+<p>Średnia - polega na przyjęciu ceny przeciętnej. Po każdej dostawie ustala się cenę średnia,którą można policzyć ze wzoru: <br><b>(wartość stanu poprzedniego + ostatni przychód materiałów) / ilość odpowiadająca tym wartościom</b> <br></p></td></tr></tbody></table></body></html>

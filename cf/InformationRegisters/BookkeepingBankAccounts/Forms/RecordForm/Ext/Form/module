@@ -1,0 +1,51 @@
+﻿Var ResourcesForQuery;
+Var InfomationRegisterName;
+Var ChoiceFromList;
+Var PeriodBeforeChoice;
+Var DummyCancel;
+
+
+Procedure BeforeOpen(Cancel, StandardProcessing)
+	
+	BookkeepingCommon.BeforeOpenForCatalogsWithBookkeepingInformationRegisters(IsOpeningViaCatalog,Cancel, ThisForm, FormOwner, InfomationRegisterName, ResourcesForQuery)
+		
+EndProcedure
+
+
+Procedure UserSave(Button)
+	
+	BookkeepingCommon.UserSaveForCatalogsWithBookkeepingInformationRegisters( IsOpeningViaCatalog, ThisForm, FormOwner, InfomationRegisterName, ResourcesForQuery);	
+	BookkeepingCommon.BeforeOpenForCatalogsWithBookkeepingInformationRegisters(IsOpeningViaCatalog,DummyCancel, ThisForm, FormOwner, InfomationRegisterName, ResourcesForQuery, Period, PeriodBeforeChoice, True);
+	
+EndProcedure
+
+Procedure UserSaveAndClose(Button)
+	
+	BookkeepingCommon.UserSaveForCatalogsWithBookkeepingInformationRegisters ( IsOpeningViaCatalog, ThisForm, FormOwner, InfomationRegisterName, ResourcesForQuery);	
+	Close();
+	
+EndProcedure
+
+
+Procedure PeriodStartListChoice(Control, StandardProcessing)
+	ChoiceFromList = True;
+	PeriodBeforeChoice = Period;
+EndProcedure
+
+
+Procedure PeriodOnChange(Control)
+	If ChoiceFromList = True Then
+		BookkeepingCommon.BeforeOpenForCatalogsWithBookkeepingInformationRegisters(IsOpeningViaCatalog,DummyCancel,ThisForm, FormOwner, InfomationRegisterName, ResourcesForQuery, Period, PeriodBeforeChoice)
+	EndIf;
+	ChoiceFromList = False;
+EndProcedure
+
+
+
+Procedure ListBox1Selection(Control, ListItem)
+	BookkeepingCommon.BeforeOpenForCatalogsWithBookkeepingInformationRegisters(IsOpeningViaCatalog, DummyCancel, ThisForm, FormOwner, InfomationRegisterName, ResourcesForQuery, ListItem.Value, PeriodBeforeChoice, True)
+EndProcedure
+
+
+
+ChoiceFromList = False;

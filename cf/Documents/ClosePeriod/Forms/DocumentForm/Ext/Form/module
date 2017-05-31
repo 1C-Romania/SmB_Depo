@@ -1,0 +1,231 @@
+﻿Var IsModified;
+
+////////////////////////////////////////////////////////////////////////////////
+// PROCEDURES - EVENTS PROCESSING OF THE FORM
+
+Procedure OnOpen()
+	
+	Common.CommonDocumentFormOnOpenBegin(ThisForm,ThisObject);
+	
+	If IsNew() Then
+		CommonAtServer.FillDocumentHeader(ThisObject);		
+		
+		// Showing number presentation with prefixes.
+		Controls.Number.Data = "";
+		Controls.Number.Value = DocumentsPostingAndNumbering.GetDocumentAutoNumberPresentation(ThisObject);
+		FinancialYear = BookkeepingCommon.GetFinancialYear(CurrentDate());
+		PostingDate = FinancialYear.DateTo;
+		
+	EndIf;
+	
+	BookkeepingCommon.AllowAccountsExtDimensions(RetainedEarningsAccount, "RetainedEarningsExtDimension", Controls);
+	BookkeepingCommon.AllowAccountsExtDimensions(PeriodEndClosingAccount, "PeriodEndClosingExtDimension", Controls);
+	
+	Common.CommonDocumentFormOnOpenEnd(ThisForm,ThisObject);
+	UpdateDialog();
+	
+EndProcedure
+
+Procedure BeforeWrite(Cancel, WriteMode, PostingMode)
+	
+	If Controls.Number.Data = "" Then
+		Number = "";
+	EndIf;
+	
+	If WriteMode = DocumentWriteMode.Posting Then
+		AdditionalProperties.Insert("EditingInForm", ThisForm);
+	EndIf;
+	
+	IsModified = Dialogs.FillIsModifiedField(ThisForm, WriteMode, IsModified);
+
+EndProcedure
+
+Procedure AfterWrite()
+	
+	If Controls.Number.Data = "" Then
+		Controls.Number.Data = "Number";
+	EndIf;
+
+	UpdateDialog();
+	Printouts.PerformPrintOnPostAndPrintAndClose(ThisForm);
+	
+EndProcedure
+
+////////////////////////////////////////////////////////////////////////////////
+// PROCEDURES - EVENTS PROCESSING OF ATTRIBUTES OF HEADER
+
+Procedure NumberStartChoice(Control, StandardProcessing)
+	
+	DocumentsPostingAndNumbering.OnStartChangeDocumentAutoNumber(ThisForm);
+	
+EndProcedure
+
+Procedure DateOnChange(Control)
+	
+	Common.CommonDateOnChange(Control,ThisForm,ThisObject);
+	UpdateDialog();
+EndProcedure
+
+Procedure CompanyOnChange(Control)
+	
+	If Controls.Number.Data = "" Then
+		Controls.Number.Value = DocumentsPostingAndNumbering.GetDocumentAutoNumberPresentation(ThisObject);
+	EndIf;
+	
+EndProcedure
+
+Procedure BeforeClose(Cancel, StandardProcessing)
+	
+	Cancel = Dialogs.CheckDocumentModificate(ThisObject, ThisForm, IsModified);
+	
+EndProcedure
+
+Procedure ClosePeriodRecordSelection(Control, RowSelected, Column, StandardProcessing)
+	
+	If Column = Control.Columns.Account Then
+		
+		If ValueIsFilled(RowSelected[Column.Data]) Then
+			RowSelected[Column.Data].GetForm(,Control,Control).Open();
+		EndIf;	
+		
+	EndIf;	
+	
+EndProcedure
+
+Procedure FinancialYearOnChange(Control)
+	If ValueIsFilled(FinancialYear) Then
+		PostingDate = FinancialYear.DateTo;	
+	EndIf;
+	
+EndProcedure	
+
+
+Procedure PeriodEndClosingAccountOnChange(Control)
+	
+	BookkeepingCommon.AllowAccountsExtDimensions(PeriodEndClosingAccount, "PeriodEndClosingExtDimension", Controls);
+	DialogsAtServer.CheckAccountsExtDimensions(PeriodEndClosingAccount, "PeriodEndClosingExtDimension", ThisObject);
+	
+EndProcedure
+
+Procedure RetainedEarningsAccountOnChange(Control)
+	BookkeepingCommon.AllowAccountsExtDimensions(RetainedEarningsAccount, "RetainedEarningsExtDimension", Controls);
+	DialogsAtServer.CheckAccountsExtDimensions(RetainedEarningsAccount, "RetainedEarningsExtDimension", ThisObject);
+EndProcedure
+
+////////////////////////////////////////////////////////////////////////////////
+// OTHER PROCEDURES AND FUNCTIONS
+
+Procedure UpdateDialog()
+	
+	Dialogs.SetFormMainActionsButtonsProperties(ThisForm);
+	
+EndProcedure // UpdateDialog()
+
+Procedure FillItems() Export
+	
+	Cancel = False;
+	
+	If ValueIsNotFilled(FinancialYear) OR ValueIsNotFilled(PostingDate) Then
+		Alerts.AddAlert( NStr("en = 'You must fill financial year and posting date.'; pl = 'Aby wypełnić tabelę nalezy wybrać rok finansowy oraz datę księgowania.'"), Enums.AlertType.Error, Cancel, ThisObject);	
+	EndIf;
+		
+	If Cancel Then
+		Return;
+	EndIf;
+
+	If ClosePeriodRecords.Count() Then
+		ReplacePreviousLinesAnswer = DoQueryBox(NStr("en='Do you want to replace existing rows? (''No'' would add new rows under existing ones)'; pl='Czy chcesz zastąpić istniejące wiersze? (Po wybraniu ''Nie'' nowe wiersze zostaną dodane pod istniejącymi)';"), QuestionDialogMode.YesNo);
+		ReplacePreviousLines = ?(ReplacePreviousLinesAnswer = DialogReturnCode.Yes, True, False);
+	Else
+		ReplacePreviousLines = False;
+	EndIf;
+	
+	If ReplacePreviousLines And Not DocumentsTabularPartsProcessing.TabularPartCanBeFilled(ClosePeriodRecords, ThisObject.Posted) Then
+		Return;
+	EndIf;
+
+	Query = New Query;
+	Query.Text = "SELECT
+	             |	BookkeepingBalance.Account,
+	             |	BookkeepingBalance.ExtDimension1,
+	             |	BookkeepingBalance.ExtDimension2,
+	             |	BookkeepingBalance.ExtDimension3,
+	             |	BookkeepingBalance.AmountBalanceDr AS AmountDr,
+	             |	BookkeepingBalance.AmountBalanceCr AS AmountCr,
+	             |	BookkeepingBalance.Currency,
+	             |	BookkeepingBalance.CurrencyAmountBalance
+	             |FROM
+	             |	AccountingRegister.Bookkeeping.Balance(&PostingDate, Account.Resultant, , Company = &Company) AS BookkeepingBalance";
+	
+	Query.SetParameter("Company",Company);
+	Query.SetParameter("PostingDate",Date(Year(PostingDate), Month(PostingDate), Day(PostingDate), 23, 59, 50));
+	
+	Selection = Query.Execute().Select();
+	ClosePeriodRecords.Clear();
+	
+	While Selection.Next() Do
+		NewRow = ClosePeriodRecords.Add();
+		FillPropertyValues(NewRow,Selection);
+		// Warning!!! Inverted..for closing accounts
+		NewRow.AmountCr = Selection.AmountDr;
+		NewRow.AmountDr = Selection.AmountCr;
+		NewRow.CurrencyAmount = abs(Selection.CurrencyAmountBalance);
+		
+	EndDo;	
+				
+	If ClosePeriodRecords.Count()=0 Then
+		Alerts.AddAlert(NStr("en = 'Resultant account''s balance is missing'; pl = 'Brak sald na kontach wynikowych na datę księgowania.'"), Enums.AlertType.Error, Cancel, ThisObject);	
+		If Cancel Then
+			Return;
+		EndIf;
+	EndIf;
+	
+EndProcedure
+
+Procedure RefreshDisplay()
+	
+	TotalAmountDr = FormatAmount(ClosePeriodRecords.Total("AmountDr"));
+	TotalAmountCr = FormatAmount(ClosePeriodRecords.Total("AmountCr"));
+	TotalAmountDifference = FormatAmount(ClosePeriodRecords.Total("AmountDr") - ClosePeriodRecords.Total("AmountCr"));
+	
+EndProcedure
+
+Procedure FormActionsFillItems();
+	FillItems();
+EndProcedure
+
+Procedure FormActionsNestedStructure(Button)
+	Dialogs.ShowSlaveDocuments(Ref);
+EndProcedure
+
+Procedure FormActionsShowRegisterRecords(Button)
+	Dialogs.ShowRegistersRecords(ThisForm,Ref);
+EndProcedure
+
+Procedure FormMainActionsQuickPrint(Button)
+	Printouts.CallPrintoutSettingsForm(ThisForm);
+EndProcedure
+
+Procedure FormActionsPrint(Button)
+	
+	Printouts.CallPrintoutSettingsForm(ThisForm,True);
+
+EndProcedure
+
+Procedure PostAndPrintAndClose(Button)
+	
+	AdditionalProperties.Insert("PostAndPrintAndClose");
+	If WriteInForm(DocumentWriteMode.Posting) Then
+		Close();
+	EndIf;
+	
+EndProcedure	
+
+Procedure FormActionsShowRegisterRecordsBookkeeping(Button)
+	Dialogs.ShowDocumentsRecordsBookkeeping(Ref);
+EndProcedure
+
+Procedure FormActionsShowBookkeepingOperation(Button)
+	Dialogs.ShowBookkeepingOperation(Ref);
+EndProcedure
+

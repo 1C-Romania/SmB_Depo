@@ -1,0 +1,1064 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<Form xmlns="http://v8.1c.ru/8.3/xcf/logform" xmlns:app="http://v8.1c.ru/8.2/managed-application/core" xmlns:cfg="http://v8.1c.ru/8.1/data/enterprise/current-config" xmlns:dcscor="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:dcsset="http://v8.1c.ru/8.1/data-composition-system/settings" xmlns:ent="http://v8.1c.ru/8.1/data/enterprise" xmlns:lf="http://v8.1c.ru/8.2/managed-application/logform" xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows" xmlns:xr="http://v8.1c.ru/8.3/xcf/readable" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.4">
+	<AutoTime>CurrentOrLast</AutoTime>
+	<UsePostingMode>Auto</UsePostingMode>
+	<RepostOnWrite>true</RepostOnWrite>
+	<AutoCommandBar name="FormCommandBar" id="-1">
+		<ChildItems>
+			<Button name="FormCommonCommandEditHeader" id="142">
+				<Type>CommandBarButton</Type>
+				<OnlyInAllActions>true</OnlyInAllActions>
+				<CommandName>CommonCommand.EditDocumentsHeader</CommandName>
+				<ExtendedTooltip name="FormCommonCommandEditHeaderExtendedTooltip" id="143"/>
+			</Button>
+		</ChildItems>
+	</AutoCommandBar>
+	<Events>
+		<Event name="AfterWrite">AfterWrite</Event>
+		<Event name="AfterWriteAtServer">AfterWriteAtServer</Event>
+		<Event name="NotificationProcessing">NotificationProcessing</Event>
+		<Event name="OnOpen">OnOpen</Event>
+		<Event name="BeforeWriteAtServer">BeforeWriteAtServer</Event>
+		<Event name="OnCreateAtServer">OnCreateAtServer</Event>
+	</Events>
+	<ChildItems>
+		<UsualGroup name="GroupHeader" id="152">
+			<Title>
+				<v8:item>
+					<v8:lang>pl</v8:lang>
+					<v8:content>Group header</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>pl</v8:lang>
+					<v8:content>Group header</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Group>Horizontal</Group>
+			<Representation>None</Representation>
+			<ShowTitle>false</ShowTitle>
+			<ExtendedTooltip name="GroupHeaderExtendedTooltip" id="153"/>
+			<ChildItems>
+				<UsualGroup name="GroupNumberDate" id="176">
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Group number and date</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>pl</v8:lang>
+							<v8:content>Grupa numer i data</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Группа Номер и Дата</v8:content>
+						</v8:item>
+					</Title>
+					<HorizontalStretch>true</HorizontalStretch>
+					<Group>Horizontal</Group>
+					<Representation>None</Representation>
+					<ShowTitle>false</ShowTitle>
+					<ExtendedTooltip name="GroupNumberDateExtendedTooltip" id="177"/>
+					<ChildItems>
+						<Pages name="GroupNumberPreview" id="178">
+							<PagesRepresentation>None</PagesRepresentation>
+							<ExtendedTooltip name="GroupNumberPreviewExtendedTooltip" id="179"/>
+							<ChildItems>
+								<Page name="PageNumberPreview" id="180">
+									<ShowTitle>false</ShowTitle>
+									<ExtendedTooltip name="PageNumberPreviewExtendedTooltip" id="181"/>
+									<ChildItems>
+										<InputField name="NumberPreview" id="182">
+											<DataPath>NumberPreview</DataPath>
+											<SkipOnInput>true</SkipOnInput>
+											<WarningOnEditRepresentation>DontShow</WarningOnEditRepresentation>
+											<WarningOnEdit>
+												<v8:item>
+													<v8:lang>en</v8:lang>
+													<v8:content>ATTENTION! After changing the number automatic numbering for this document will be disabled! Enable number editing?</v8:content>
+												</v8:item>
+												<v8:item>
+													<v8:lang>pl</v8:lang>
+													<v8:content>UWAGA! Po zmianie numeru numeracja automatyczna tego dokumentu zostanie wyłączona! Włączyć moźliwość zmiany numeru?</v8:content>
+												</v8:item>
+												<v8:item>
+													<v8:lang>ru</v8:lang>
+													<v8:content>ВНИМАНИЕ! После изменения номера автоматическая нумерация документов будет отключена! Разрешить редактирование номера документа?</v8:content>
+												</v8:item>
+											</WarningOnEdit>
+											<ChoiceButton>true</ChoiceButton>
+											<ContextMenu name="NumberPreviewContextMenu" id="183"/>
+											<ExtendedTooltip name="NumberPreviewExtendedTooltip" id="184"/>
+											<Events>
+												<Event name="OnChange">NumberPreviewOnChange</Event>
+												<Event name="StartChoice">NumberPreviewStartChoice</Event>
+											</Events>
+										</InputField>
+									</ChildItems>
+								</Page>
+								<Page name="PageNumber" id="185">
+									<Group>HorizontalIfPossible</Group>
+									<ShowTitle>false</ShowTitle>
+									<ExtendedTooltip name="PageNumberExtendedTooltip" id="186"/>
+									<ChildItems>
+										<InputField name="Number" id="187">
+											<DataPath>Object.Number</DataPath>
+											<WarningOnEditRepresentation>DontShow</WarningOnEditRepresentation>
+											<WarningOnEdit>
+												<v8:item>
+													<v8:lang>en</v8:lang>
+													<v8:content>ATTENTION! After changing the number automatic numbering for this document will be disabled! Enable number editing?</v8:content>
+												</v8:item>
+												<v8:item>
+													<v8:lang>pl</v8:lang>
+													<v8:content>UWAGA! Po zmianie numeru numeracja automatyczna tego dokumentu zostanie wyłączona! Włączyć moźliwość zmiany numeru?</v8:content>
+												</v8:item>
+												<v8:item>
+													<v8:lang>ru</v8:lang>
+													<v8:content>ВНИМАНИЕ! После изменения номера автоматическая нумерация документов будет отключена! Разрешить редактирование номера документа?</v8:content>
+												</v8:item>
+											</WarningOnEdit>
+											<ChoiceButton>true</ChoiceButton>
+											<ContextMenu name="NumberContextMenu" id="188"/>
+											<ExtendedTooltip name="NumberExtendedTooltip" id="189"/>
+											<Events>
+												<Event name="OnChange">NumberPreviewOnChange</Event>
+												<Event name="StartChoice">NumberPreviewStartChoice</Event>
+											</Events>
+										</InputField>
+									</ChildItems>
+								</Page>
+							</ChildItems>
+						</Pages>
+						<InputField name="Date" id="190">
+							<DataPath>Object.Date</DataPath>
+							<ContextMenu name="DateContextMenu" id="191"/>
+							<ExtendedTooltip name="DateExtendedTooltip" id="192"/>
+							<Events>
+								<Event name="OnChange">DateOnChange</Event>
+							</Events>
+						</InputField>
+					</ChildItems>
+				</UsualGroup>
+			</ChildItems>
+		</UsualGroup>
+		<UsualGroup name="GroupHeaderData" id="120">
+			<Title>
+				<v8:item>
+					<v8:lang>pl</v8:lang>
+					<v8:content>Group header data</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>pl</v8:lang>
+					<v8:content>Group header data</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Group>Horizontal</Group>
+			<ShowTitle>false</ShowTitle>
+			<ExtendedTooltip name="GroupHeaderDataExtendedTooltip" id="121"/>
+			<ChildItems>
+				<UsualGroup name="GroupheaderLeft" id="116">
+					<Title>
+						<v8:item>
+							<v8:lang>pl</v8:lang>
+							<v8:content>Groupheader left</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Groupheader left</v8:content>
+						</v8:item>
+					</Title>
+					<ToolTip>
+						<v8:item>
+							<v8:lang>pl</v8:lang>
+							<v8:content>Groupheader left</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Groupheader left</v8:content>
+						</v8:item>
+					</ToolTip>
+					<HorizontalStretch>true</HorizontalStretch>
+					<VerticalStretch>true</VerticalStretch>
+					<Group>Vertical</Group>
+					<ShowTitle>false</ShowTitle>
+					<ExtendedTooltip name="GroupheaderLeftExtendedTooltip" id="117"/>
+					<ChildItems>
+						<InputField name="FinancialYear" id="16">
+							<DataPath>Object.FinancialYear</DataPath>
+							<ToolTip>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Employee</v8:content>
+								</v8:item>
+								<v8:item>
+									<v8:lang>pl</v8:lang>
+									<v8:content>Pracownik</v8:content>
+								</v8:item>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Сотрудник</v8:content>
+								</v8:item>
+							</ToolTip>
+							<EditMode>EnterOnInput</EditMode>
+							<HorizontalStretch>true</HorizontalStretch>
+							<ContextMenu name="FinancialYearContextMenu" id="17"/>
+							<ExtendedTooltip name="FinancialYearExtendedTooltip" id="18"/>
+							<Events>
+								<Event name="OnChange">FinancialYearOnChange</Event>
+							</Events>
+						</InputField>
+						<InputField name="PostingDate" id="34">
+							<DataPath>Object.PostingDate</DataPath>
+							<EditMode>EnterOnInput</EditMode>
+							<HorizontalStretch>true</HorizontalStretch>
+							<ContextMenu name="PostingDateContextMenu" id="35"/>
+							<ExtendedTooltip name="PostingDateExtendedTooltip" id="36"/>
+						</InputField>
+					</ChildItems>
+				</UsualGroup>
+				<UsualGroup name="GroupheaderRight" id="122">
+					<Title>
+						<v8:item>
+							<v8:lang>pl</v8:lang>
+							<v8:content>Groupheader right</v8:content>
+						</v8:item>
+					</Title>
+					<ToolTip>
+						<v8:item>
+							<v8:lang>pl</v8:lang>
+							<v8:content>Groupheader right</v8:content>
+						</v8:item>
+					</ToolTip>
+					<Group>Vertical</Group>
+					<ShowTitle>false</ShowTitle>
+					<ExtendedTooltip name="GroupheaderRightExtendedTooltip" id="123"/>
+					<ChildItems>
+						<InputField name="PartialJournal" id="19">
+							<DataPath>Object.PartialJournal</DataPath>
+							<ToolTip>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Partial journal</v8:content>
+								</v8:item>
+								<v8:item>
+									<v8:lang>pl</v8:lang>
+									<v8:content>Dziennik częściowy</v8:content>
+								</v8:item>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Детальный журнал</v8:content>
+								</v8:item>
+							</ToolTip>
+							<EditMode>EnterOnInput</EditMode>
+							<HorizontalStretch>true</HorizontalStretch>
+							<ContextMenu name="PartialJournalContextMenu" id="20"/>
+							<ExtendedTooltip name="PartialJournalExtendedTooltip" id="21"/>
+						</InputField>
+					</ChildItems>
+				</UsualGroup>
+			</ChildItems>
+		</UsualGroup>
+		<Pages name="GroupStr" id="89">
+			<Title>
+				<v8:item>
+					<v8:lang>pl</v8:lang>
+					<v8:content>Group str</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>pl</v8:lang>
+					<v8:content>Group str</v8:content>
+				</v8:item>
+			</ToolTip>
+			<ExtendedTooltip name="GroupStrExtendedTooltip" id="90"/>
+			<ChildItems>
+				<Page name="ClosePeriod" id="91">
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Close period</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>pl</v8:lang>
+							<v8:content>Zamknięcie okresu</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>ClosePeriod</v8:content>
+						</v8:item>
+					</Title>
+					<ToolTip>
+						<v8:item>
+							<v8:lang>pl</v8:lang>
+							<v8:content>Close period</v8:content>
+						</v8:item>
+					</ToolTip>
+					<ExtendedTooltip name="ClosePeriodExtendedTooltip" id="92"/>
+					<ChildItems>
+						<Table name="ClosePeriodRecords" id="49">
+							<Representation>List</Representation>
+							<ChangeRowSet>false</ChangeRowSet>
+							<AutoInsertNewRow>true</AutoInsertNewRow>
+							<EnableStartDrag>true</EnableStartDrag>
+							<EnableDrag>true</EnableDrag>
+							<DataPath>Object.ClosePeriodRecords</DataPath>
+							<CommandSet>
+								<ExcludedCommand>Copy</ExcludedCommand>
+								<ExcludedCommand>ShowRowRearrangement</ExcludedCommand>
+								<ExcludedCommand>Delete</ExcludedCommand>
+								<ExcludedCommand>EndEdit</ExcludedCommand>
+								<ExcludedCommand>Add</ExcludedCommand>
+								<ExcludedCommand>Change</ExcludedCommand>
+							</CommandSet>
+							<RowFilter xsi:nil="true"/>
+							<ContextMenu name="ClosePeriodRecordsContextMenu" id="50"/>
+							<AutoCommandBar name="ClosePeriodRecordsCommandBar" id="51">
+								<ChildItems>
+									<Button name="ClosePeriodRecordsFillItems" id="144">
+										<Type>CommandBarButton</Type>
+										<CommandName>Form.Command.Fill</CommandName>
+										<Title>
+											<v8:item>
+												<v8:lang>pl</v8:lang>
+												<v8:content>Wypełnij</v8:content>
+											</v8:item>
+										</Title>
+										<ExtendedTooltip name="ClosePeriodRecordsFillItemsExtendedTooltip" id="145"/>
+									</Button>
+								</ChildItems>
+							</AutoCommandBar>
+							<ExtendedTooltip name="ClosePeriodRecordsExtendedTooltip" id="52"/>
+							<SearchStringAddition name="ClosePeriodRecordsSearchString" id="53">
+								<AdditionSource>
+									<Item>ClosePeriodRecords</Item>
+									<Type>SearchStringRepresentation</Type>
+								</AdditionSource>
+								<ContextMenu name="ClosePeriodRecordsSearchStringContextMenu" id="54"/>
+								<ExtendedTooltip name="ClosePeriodRecordsSearchStringExtendedTooltip" id="55"/>
+							</SearchStringAddition>
+							<ViewStatusAddition name="ClosePeriodRecordsViewStatus" id="56">
+								<AdditionSource>
+									<Item>ClosePeriodRecords</Item>
+									<Type>ViewStatusRepresentation</Type>
+								</AdditionSource>
+								<ContextMenu name="ClosePeriodRecordsViewStatusContextMenu" id="57"/>
+								<ExtendedTooltip name="ClosePeriodRecordsViewStatusExtendedTooltip" id="58"/>
+							</ViewStatusAddition>
+							<SearchControlAddition name="ClosePeriodRecordsSearchControl" id="59">
+								<AdditionSource>
+									<Item>ClosePeriodRecords</Item>
+									<Type>SearchControl</Type>
+								</AdditionSource>
+								<ContextMenu name="ClosePeriodRecordsSearchControlContextMenu" id="60"/>
+								<ExtendedTooltip name="ClosePeriodRecordsSearchControlExtendedTooltip" id="61"/>
+							</SearchControlAddition>
+							<Events>
+								<Event name="Selection">ClosePeriodRecordsSelection</Event>
+							</Events>
+							<ChildItems>
+								<LabelField name="ClosePeriodRecordsLineNumber" id="62">
+									<DataPath>Object.ClosePeriodRecords.LineNumber</DataPath>
+									<ReadOnly>true</ReadOnly>
+									<Title>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>N</v8:content>
+										</v8:item>
+										<v8:item>
+											<v8:lang>pl</v8:lang>
+											<v8:content>Lp.</v8:content>
+										</v8:item>
+									</Title>
+									<EditMode>EnterOnInput</EditMode>
+									<ContextMenu name="ClosePeriodRecordsLineNumberContextMenu" id="63"/>
+									<ExtendedTooltip name="ClosePeriodRecordsLineNumberExtendedTooltip" id="64"/>
+								</LabelField>
+								<InputField name="ClosePeriodRecordsAccount" id="65">
+									<DataPath>Object.ClosePeriodRecords.Account</DataPath>
+									<ReadOnly>true</ReadOnly>
+									<Title>
+										<v8:item>
+											<v8:lang>corr</v8:lang>
+											<v8:content>Account</v8:content>
+										</v8:item>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Account</v8:content>
+										</v8:item>
+										<v8:item>
+											<v8:lang>pl</v8:lang>
+											<v8:content>Konto</v8:content>
+										</v8:item>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Счет</v8:content>
+										</v8:item>
+									</Title>
+									<EditMode>EnterOnInput</EditMode>
+									<FooterText>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Total:</v8:content>
+										</v8:item>
+										<v8:item>
+											<v8:lang>pl</v8:lang>
+											<v8:content>Razem:</v8:content>
+										</v8:item>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Итого:</v8:content>
+										</v8:item>
+									</FooterText>
+									<FooterFont ref="style:TableBoxFooterFont" kind="StyleItem"/>
+									<ContextMenu name="ClosePeriodRecordsAccountContextMenu" id="66"/>
+									<ExtendedTooltip name="ClosePeriodRecordsAccountExtendedTooltip" id="67"/>
+								</InputField>
+								<ColumnGroup name="ClosePeriodRecordsGroup1" id="138">
+									<ExtendedTooltip name="ClosePeriodRecordsGroup1ExtendedTooltip" id="139"/>
+									<ChildItems>
+										<InputField name="ClosePeriodRecordsExtDimension1" id="74">
+											<DataPath>Object.ClosePeriodRecords.ExtDimension1</DataPath>
+											<ReadOnly>true</ReadOnly>
+											<Title>
+												<v8:item>
+													<v8:lang>corr</v8:lang>
+													<v8:content>ExtDimension1</v8:content>
+												</v8:item>
+												<v8:item>
+													<v8:lang>en</v8:lang>
+													<v8:content>Extra dimension 1</v8:content>
+												</v8:item>
+												<v8:item>
+													<v8:lang>pl</v8:lang>
+													<v8:content>Analityka 1</v8:content>
+												</v8:item>
+												<v8:item>
+													<v8:lang>ru</v8:lang>
+													<v8:content>Аналитика 1</v8:content>
+												</v8:item>
+											</Title>
+											<EditMode>EnterOnInput</EditMode>
+											<ContextMenu name="ClosePeriodRecordsExtDimension1ContextMenu" id="75"/>
+											<ExtendedTooltip name="ClosePeriodRecordsExtDimension1ExtendedTooltip" id="76"/>
+										</InputField>
+										<InputField name="ClosePeriodRecordsExtDimension2" id="77">
+											<DataPath>Object.ClosePeriodRecords.ExtDimension2</DataPath>
+											<ReadOnly>true</ReadOnly>
+											<Title>
+												<v8:item>
+													<v8:lang>corr</v8:lang>
+													<v8:content>ExtDimension2</v8:content>
+												</v8:item>
+												<v8:item>
+													<v8:lang>en</v8:lang>
+													<v8:content>Extra dimension 2</v8:content>
+												</v8:item>
+												<v8:item>
+													<v8:lang>pl</v8:lang>
+													<v8:content>Analityka 2</v8:content>
+												</v8:item>
+												<v8:item>
+													<v8:lang>ru</v8:lang>
+													<v8:content>Аналитика 2</v8:content>
+												</v8:item>
+											</Title>
+											<EditMode>EnterOnInput</EditMode>
+											<ContextMenu name="ClosePeriodRecordsExtDimension2ContextMenu" id="78"/>
+											<ExtendedTooltip name="ClosePeriodRecordsExtDimension2ExtendedTooltip" id="79"/>
+										</InputField>
+										<InputField name="ClosePeriodRecordsExtDimension3" id="80">
+											<DataPath>Object.ClosePeriodRecords.ExtDimension3</DataPath>
+											<ReadOnly>true</ReadOnly>
+											<Title>
+												<v8:item>
+													<v8:lang>corr</v8:lang>
+													<v8:content>ExtDimension3</v8:content>
+												</v8:item>
+												<v8:item>
+													<v8:lang>en</v8:lang>
+													<v8:content>Extra dimension 3</v8:content>
+												</v8:item>
+												<v8:item>
+													<v8:lang>pl</v8:lang>
+													<v8:content>Analityka 3</v8:content>
+												</v8:item>
+												<v8:item>
+													<v8:lang>ru</v8:lang>
+													<v8:content>Аналитика 3</v8:content>
+												</v8:item>
+											</Title>
+											<EditMode>EnterOnInput</EditMode>
+											<ContextMenu name="ClosePeriodRecordsExtDimension3ContextMenu" id="81"/>
+											<ExtendedTooltip name="ClosePeriodRecordsExtDimension3ExtendedTooltip" id="82"/>
+										</InputField>
+									</ChildItems>
+								</ColumnGroup>
+								<ColumnGroup name="ClosePeriodRecordsGroup2" id="140">
+									<ExtendedTooltip name="ClosePeriodRecordsGroup2ExtendedTooltip" id="141"/>
+									<ChildItems>
+										<InputField name="ClosePeriodRecordsCurrency" id="83">
+											<DataPath>Object.ClosePeriodRecords.Currency</DataPath>
+											<ReadOnly>true</ReadOnly>
+											<Title>
+												<v8:item>
+													<v8:lang>corr</v8:lang>
+													<v8:content>Currency</v8:content>
+												</v8:item>
+												<v8:item>
+													<v8:lang>en</v8:lang>
+													<v8:content>Currency</v8:content>
+												</v8:item>
+												<v8:item>
+													<v8:lang>pl</v8:lang>
+													<v8:content>Waluta</v8:content>
+												</v8:item>
+												<v8:item>
+													<v8:lang>ru</v8:lang>
+													<v8:content>Валюта</v8:content>
+												</v8:item>
+											</Title>
+											<EditMode>EnterOnInput</EditMode>
+											<ContextMenu name="ClosePeriodRecordsCurrencyContextMenu" id="84"/>
+											<ExtendedTooltip name="ClosePeriodRecordsCurrencyExtendedTooltip" id="85"/>
+										</InputField>
+										<InputField name="ClosePeriodRecordsCurrencyAmount" id="86">
+											<DataPath>Object.ClosePeriodRecords.CurrencyAmount</DataPath>
+											<ReadOnly>true</ReadOnly>
+											<Title>
+												<v8:item>
+													<v8:lang>corr</v8:lang>
+													<v8:content>CurrencyAmount</v8:content>
+												</v8:item>
+												<v8:item>
+													<v8:lang>en</v8:lang>
+													<v8:content>Currency amount</v8:content>
+												</v8:item>
+												<v8:item>
+													<v8:lang>pl</v8:lang>
+													<v8:content>Kwota walutowa</v8:content>
+												</v8:item>
+											</Title>
+											<EditMode>EnterOnInput</EditMode>
+											<ContextMenu name="ClosePeriodRecordsCurrencyAmountContextMenu" id="87"/>
+											<ExtendedTooltip name="ClosePeriodRecordsCurrencyAmountExtendedTooltip" id="88"/>
+										</InputField>
+									</ChildItems>
+								</ColumnGroup>
+								<InputField name="ClosePeriodRecordsAmountDr" id="71">
+									<DataPath>Object.ClosePeriodRecords.AmountDr</DataPath>
+									<ReadOnly>true</ReadOnly>
+									<Title>
+										<v8:item>
+											<v8:lang>corr</v8:lang>
+											<v8:content>AmountDr</v8:content>
+										</v8:item>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Amount Dr</v8:content>
+										</v8:item>
+										<v8:item>
+											<v8:lang>pl</v8:lang>
+											<v8:content>Kwota Wn</v8:content>
+										</v8:item>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Сумма Дт</v8:content>
+										</v8:item>
+									</Title>
+									<EditMode>EnterOnInput</EditMode>
+									<FooterDataPath>Object.ClosePeriodRecords.TotalAmountDr</FooterDataPath>
+									<FooterFont ref="style:TableBoxFooterFont" kind="StyleItem"/>
+									<ContextMenu name="ClosePeriodRecordsAmountDrContextMenu" id="72"/>
+									<ExtendedTooltip name="ClosePeriodRecordsAmountDrExtendedTooltip" id="73"/>
+								</InputField>
+								<InputField name="ClosePeriodRecordsAmountCr" id="68">
+									<DataPath>Object.ClosePeriodRecords.AmountCr</DataPath>
+									<ReadOnly>true</ReadOnly>
+									<Title>
+										<v8:item>
+											<v8:lang>corr</v8:lang>
+											<v8:content>AmountCr</v8:content>
+										</v8:item>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Amount Cr</v8:content>
+										</v8:item>
+										<v8:item>
+											<v8:lang>pl</v8:lang>
+											<v8:content>Kwota Ma</v8:content>
+										</v8:item>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Сумма Кт</v8:content>
+										</v8:item>
+									</Title>
+									<EditMode>EnterOnInput</EditMode>
+									<FooterDataPath>Object.ClosePeriodRecords.TotalAmountCr</FooterDataPath>
+									<FooterFont ref="style:TableBoxFooterFont" kind="StyleItem"/>
+									<ContextMenu name="ClosePeriodRecordsAmountCrContextMenu" id="69"/>
+									<ExtendedTooltip name="ClosePeriodRecordsAmountCrExtendedTooltip" id="70"/>
+								</InputField>
+							</ChildItems>
+						</Table>
+					</ChildItems>
+				</Page>
+				<Page name="OpeningPeriod" id="93">
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Opening period</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>pl</v8:lang>
+							<v8:content>Otwarcie okresu</v8:content>
+						</v8:item>
+					</Title>
+					<ToolTip>
+						<v8:item>
+							<v8:lang>pl</v8:lang>
+							<v8:content>Opening period</v8:content>
+						</v8:item>
+					</ToolTip>
+					<Group>Horizontal</Group>
+					<ExtendedTooltip name="OpeningPeriodExtendedTooltip" id="94"/>
+					<ChildItems>
+						<UsualGroup name="GroupBoxPeriodEndClosingAccount" id="95">
+							<Title>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Group box period end closing account</v8:content>
+								</v8:item>
+								<v8:item>
+									<v8:lang>pl</v8:lang>
+									<v8:content>Konto wyniku finansowego</v8:content>
+								</v8:item>
+							</Title>
+							<ToolTip>
+								<v8:item>
+									<v8:lang>pl</v8:lang>
+									<v8:content>Group box period end closing account</v8:content>
+								</v8:item>
+							</ToolTip>
+							<Group>Vertical</Group>
+							<ExtendedTooltip name="GroupBoxPeriodEndClosingAccountExtendedTooltip" id="96"/>
+							<ChildItems>
+								<InputField name="PeriodEndClosingAccount" id="22">
+									<DataPath>Object.PeriodEndClosingAccount</DataPath>
+									<Title>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Account</v8:content>
+										</v8:item>
+										<v8:item>
+											<v8:lang>pl</v8:lang>
+											<v8:content>Konto</v8:content>
+										</v8:item>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Счет</v8:content>
+										</v8:item>
+									</Title>
+									<EditMode>EnterOnInput</EditMode>
+									<ContextMenu name="PeriodEndClosingAccountContextMenu" id="23"/>
+									<ExtendedTooltip name="PeriodEndClosingAccountExtendedTooltip" id="24"/>
+									<Events>
+										<Event name="OnChange">PeriodEndClosingAccountOnChange</Event>
+									</Events>
+								</InputField>
+								<InputField name="PeriodEndClosingExtDimension1" id="25">
+									<DataPath>Object.PeriodEndClosingExtDimension1</DataPath>
+									<Title>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Ext. dimension 1</v8:content>
+										</v8:item>
+										<v8:item>
+											<v8:lang>pl</v8:lang>
+											<v8:content>Analityka 1</v8:content>
+										</v8:item>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Аналитика 1</v8:content>
+										</v8:item>
+									</Title>
+									<EditMode>EnterOnInput</EditMode>
+									<ContextMenu name="PeriodEndClosingExtDimension1ContextMenu" id="26"/>
+									<ExtendedTooltip name="PeriodEndClosingExtDimension1ExtendedTooltip" id="27"/>
+								</InputField>
+								<InputField name="PeriodEndClosingExtDimension2" id="28">
+									<DataPath>Object.PeriodEndClosingExtDimension2</DataPath>
+									<Title>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Ext. dimension 2</v8:content>
+										</v8:item>
+										<v8:item>
+											<v8:lang>pl</v8:lang>
+											<v8:content>Analityka 2</v8:content>
+										</v8:item>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Аналитика 2</v8:content>
+										</v8:item>
+									</Title>
+									<EditMode>EnterOnInput</EditMode>
+									<ContextMenu name="PeriodEndClosingExtDimension2ContextMenu" id="29"/>
+									<ExtendedTooltip name="PeriodEndClosingExtDimension2ExtendedTooltip" id="30"/>
+								</InputField>
+								<InputField name="PeriodEndClosingExtDimension3" id="31">
+									<DataPath>Object.PeriodEndClosingExtDimension3</DataPath>
+									<Title>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Ext. dimension 3</v8:content>
+										</v8:item>
+										<v8:item>
+											<v8:lang>pl</v8:lang>
+											<v8:content>Analityka 3</v8:content>
+										</v8:item>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Аналитика 3</v8:content>
+										</v8:item>
+									</Title>
+									<EditMode>EnterOnInput</EditMode>
+									<ContextMenu name="PeriodEndClosingExtDimension3ContextMenu" id="32"/>
+									<ExtendedTooltip name="PeriodEndClosingExtDimension3ExtendedTooltip" id="33"/>
+								</InputField>
+							</ChildItems>
+						</UsualGroup>
+						<UsualGroup name="GroupBoxRetainedEarningsAccount" id="97">
+							<Title>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Group box retained earnings account</v8:content>
+								</v8:item>
+								<v8:item>
+									<v8:lang>pl</v8:lang>
+									<v8:content>Konto rozliczenia wyniku finansowego</v8:content>
+								</v8:item>
+							</Title>
+							<ToolTip>
+								<v8:item>
+									<v8:lang>pl</v8:lang>
+									<v8:content>Group box retained earnings account</v8:content>
+								</v8:item>
+							</ToolTip>
+							<ExtendedTooltip name="GroupBoxRetainedEarningsAccountExtendedTooltip" id="98"/>
+							<ChildItems>
+								<InputField name="RetainedEarningsAccount" id="37">
+									<DataPath>Object.RetainedEarningsAccount</DataPath>
+									<Title>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Account</v8:content>
+										</v8:item>
+										<v8:item>
+											<v8:lang>pl</v8:lang>
+											<v8:content>Konto</v8:content>
+										</v8:item>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Счет</v8:content>
+										</v8:item>
+									</Title>
+									<EditMode>EnterOnInput</EditMode>
+									<ContextMenu name="RetainedEarningsAccountContextMenu" id="38"/>
+									<ExtendedTooltip name="RetainedEarningsAccountExtendedTooltip" id="39"/>
+									<Events>
+										<Event name="OnChange">RetainedEarningsAccountOnChange</Event>
+									</Events>
+								</InputField>
+								<InputField name="RetainedEarningsExtDimension1" id="40">
+									<DataPath>Object.RetainedEarningsExtDimension1</DataPath>
+									<Title>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Ext. dimension 1</v8:content>
+										</v8:item>
+										<v8:item>
+											<v8:lang>pl</v8:lang>
+											<v8:content>Analityka 1</v8:content>
+										</v8:item>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Аналитика 1</v8:content>
+										</v8:item>
+									</Title>
+									<EditMode>EnterOnInput</EditMode>
+									<ContextMenu name="RetainedEarningsExtDimension1ContextMenu" id="41"/>
+									<ExtendedTooltip name="RetainedEarningsExtDimension1ExtendedTooltip" id="42"/>
+								</InputField>
+								<InputField name="RetainedEarningsExtDimension2" id="43">
+									<DataPath>Object.RetainedEarningsExtDimension2</DataPath>
+									<Title>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Ext. dimension 2</v8:content>
+										</v8:item>
+										<v8:item>
+											<v8:lang>pl</v8:lang>
+											<v8:content>Analityka 2</v8:content>
+										</v8:item>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Аналитика 2</v8:content>
+										</v8:item>
+									</Title>
+									<EditMode>EnterOnInput</EditMode>
+									<ContextMenu name="RetainedEarningsExtDimension2ContextMenu" id="44"/>
+									<ExtendedTooltip name="RetainedEarningsExtDimension2ExtendedTooltip" id="45"/>
+								</InputField>
+								<InputField name="RetainedEarningsExtDimension3" id="46">
+									<DataPath>Object.RetainedEarningsExtDimension3</DataPath>
+									<Title>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Ext. dimension 3</v8:content>
+										</v8:item>
+										<v8:item>
+											<v8:lang>pl</v8:lang>
+											<v8:content>Analityka 3</v8:content>
+										</v8:item>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Аналитика 3</v8:content>
+										</v8:item>
+									</Title>
+									<EditMode>EnterOnInput</EditMode>
+									<ContextMenu name="RetainedEarningsExtDimension3ContextMenu" id="47"/>
+									<ExtendedTooltip name="RetainedEarningsExtDimension3ExtendedTooltip" id="48"/>
+								</InputField>
+							</ChildItems>
+						</UsualGroup>
+					</ChildItems>
+				</Page>
+			</ChildItems>
+		</Pages>
+		<UsualGroup name="GroupTotal" id="108">
+			<ToolTip>
+				<v8:item>
+					<v8:lang>pl</v8:lang>
+					<v8:content>Group total</v8:content>
+				</v8:item>
+			</ToolTip>
+			<GroupHorizontalAlign>Right</GroupHorizontalAlign>
+			<Group>Horizontal</Group>
+			<ShowTitle>false</ShowTitle>
+			<ExtendedTooltip name="GroupTotalExtendedTooltip" id="109"/>
+			<ChildItems>
+				<InputField name="ClosePeriodRecordsTotalAmountCr" id="146">
+					<DataPath>Object.ClosePeriodRecords.TotalAmountCr</DataPath>
+					<ReadOnly>true</ReadOnly>
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Total amount Cr</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>pl</v8:lang>
+							<v8:content>Razem kwota Ma</v8:content>
+						</v8:item>
+					</Title>
+					<TitleFont ref="sys:DefaultGUIFont" bold="true" italic="false" underline="false" strikeout="false" kind="WindowsFont"/>
+					<ContextMenu name="ClosePeriodRecordsTotalAmountCrContextMenu" id="147"/>
+					<ExtendedTooltip name="ClosePeriodRecordsTotalAmountCrExtendedTooltip" id="148"/>
+				</InputField>
+				<InputField name="ClosePeriodRecordsTotalAmountDr" id="149">
+					<DataPath>Object.ClosePeriodRecords.TotalAmountDr</DataPath>
+					<ReadOnly>true</ReadOnly>
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Total amount Dr</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>pl</v8:lang>
+							<v8:content>Razem kwota Wn</v8:content>
+						</v8:item>
+					</Title>
+					<TitleFont ref="sys:DefaultGUIFont" bold="true" italic="false" underline="false" strikeout="false" kind="WindowsFont"/>
+					<ContextMenu name="ClosePeriodRecordsTotalAmountDrContextMenu" id="150"/>
+					<ExtendedTooltip name="ClosePeriodRecordsTotalAmountDrExtendedTooltip" id="151"/>
+				</InputField>
+				<InputField name="TotalAmountDifference" id="102">
+					<DataPath>TotalAmountDifference</DataPath>
+					<ReadOnly>true</ReadOnly>
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Difference</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>pl</v8:lang>
+							<v8:content>Róznica</v8:content>
+						</v8:item>
+					</Title>
+					<TitleFont ref="sys:DefaultGUIFont" bold="true" italic="false" underline="false" strikeout="false" kind="WindowsFont"/>
+					<ContextMenu name="TotalAmountDifferenceContextMenu" id="103"/>
+					<ExtendedTooltip name="TotalAmountDifferenceExtendedTooltip" id="104"/>
+				</InputField>
+			</ChildItems>
+		</UsualGroup>
+		<UsualGroup name="FooterGroup" id="110">
+			<Title>
+				<v8:item>
+					<v8:lang>pl</v8:lang>
+					<v8:content>Footer group</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Footer group</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>pl</v8:lang>
+					<v8:content>Footer group</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Footer group</v8:content>
+				</v8:item>
+			</ToolTip>
+			<ShowTitle>false</ShowTitle>
+			<ExtendedTooltip name="FooterGroupExtendedTooltip" id="111"/>
+			<ChildItems>
+				<LabelField name="Author" id="7">
+					<DataPath>Object.Author</DataPath>
+					<EditMode>EnterOnInput</EditMode>
+					<Hiperlink>true</Hiperlink>
+					<ContextMenu name="AuthorContextMenu" id="8"/>
+					<ExtendedTooltip name="AuthorExtendedTooltip" id="9"/>
+				</LabelField>
+				<InputField name="Comment" id="10">
+					<DataPath>Object.Comment</DataPath>
+					<EditMode>EnterOnInput</EditMode>
+					<ContextMenu name="CommentContextMenu" id="11"/>
+					<ExtendedTooltip name="CommentExtendedTooltip" id="12"/>
+				</InputField>
+			</ChildItems>
+		</UsualGroup>
+	</ChildItems>
+	<Attributes>
+		<Attribute name="Object" id="1">
+			<Type>
+				<v8:Type>cfg:DocumentObject.ClosePeriod</v8:Type>
+			</Type>
+			<MainAttribute>true</MainAttribute>
+			<SavedData>true</SavedData>
+			<UseAlways>
+				<Field>Object.RegisterRecords</Field>
+			</UseAlways>
+			<Columns>
+				<AdditionalColumns table="Object.ClosePeriodRecords"/>
+			</Columns>
+		</Attribute>
+		<Attribute name="TotalAmountDifference" id="3">
+			<Title>
+				<v8:item>
+					<v8:lang>pl</v8:lang>
+					<v8:content>Total amount difference</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:decimal</v8:Type>
+				<v8:NumberQualifiers>
+					<v8:Digits>15</v8:Digits>
+					<v8:FractionDigits>2</v8:FractionDigits>
+					<v8:AllowedSign>Any</v8:AllowedSign>
+				</v8:NumberQualifiers>
+			</Type>
+		</Attribute>
+		<Attribute name="ShowNumberPreview" id="4">
+			<Title>
+				<v8:item>
+					<v8:lang>pl</v8:lang>
+					<v8:content>Show number preview</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Show number preview</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:boolean</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="NumberPreview" id="5">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Number</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>pl</v8:lang>
+					<v8:content>Numer</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Номер</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:string</v8:Type>
+				<v8:StringQualifiers>
+					<v8:Length>0</v8:Length>
+					<v8:AllowedLength>Variable</v8:AllowedLength>
+				</v8:StringQualifiers>
+			</Type>
+		</Attribute>
+		<Attribute name="WasPosted" id="6">
+			<Type>
+				<v8:Type>xs:boolean</v8:Type>
+			</Type>
+		</Attribute>
+	</Attributes>
+	<Commands>
+		<Command name="Fill" id="1">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Fill</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>pl</v8:lang>
+					<v8:content>Wypełnij</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>pl</v8:lang>
+					<v8:content>Fill</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>Fill</Action>
+		</Command>
+		<Command name="PostPrintClose" id="3">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Post &amp; close</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>pl</v8:lang>
+					<v8:content>Zatwierdź i zamknji</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Провести и закрыть</v8:content>
+				</v8:item>
+			</Title>
+			<Picture>
+				<xr:Ref>StdPicture.WriteAndClose</xr:Ref>
+				<xr:LoadTransparent>true</xr:LoadTransparent>
+			</Picture>
+			<Action>PostPrintClose</Action>
+		</Command>
+	</Commands>
+</Form>

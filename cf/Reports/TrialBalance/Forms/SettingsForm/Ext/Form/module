@@ -1,0 +1,325 @@
+﻿
+Procedure BeforeOpen(Cancel, StandardProcessing)
+	SetSettingsFormDataLink(Controls.TotalsRules);
+EndProcedure
+
+Procedure OnOpen()
+	
+	UpdateTemplateReportFormOnComposer(SettingsComposer, ThisForm);
+
+EndProcedure
+
+//////////////////////////////////////////////////////////////////////////////////
+
+Procedure ButtonPeriodSettingClick(Control)
+	
+	TemplateReports.SetupPeriod(PeriodSettings, BeginPeriod, EndPeriod);
+	TemplateReports.UpdatePeriodParametersOnForm(SettingsComposer, ThisForm);
+	
+EndProcedure
+
+Procedure FormMainActionsOK(Button)
+	Close(True);
+EndProcedure
+
+Procedure CompanyOnChange(Control)
+	UpdateCompanyParametersOnForm(SettingsComposer, ThisForm);
+EndProcedure
+
+Procedure FinancialYearOnChange(Control)
+	
+	If FinancialYear.IsEmpty() Then
+		FinancialYearDateFrom = '00010101000000';
+		FinancialYearDateTo = '00010101000000';
+	Else	
+		FinancialYearDateFrom = BegOfDay(FinancialYear.DateFrom);
+		FinancialYearDateTo = EndOfDay(FinancialYear.DateTo);
+	EndIf;	
+	
+	TemplateReports.SetParameter(SettingsComposer,"BeginOfYear",FinancialYearDateFrom);
+
+EndProcedure
+
+Procedure TextBoxPeriodOnChange(Control)
+	
+	TemplateReports.UpdatePeriodParametersOnForm(SettingsComposer, ThisForm);
+	
+EndProcedure
+
+//////////////////////////////////////////////////////////////////////////////////
+
+Procedure UpdateTemplateReportFormOnComposer(SettingsComposer, ReportForm) Export
+	
+	// Period parameters
+	BeginPeriodParameterValue = SettingsComposer.Settings.DataParameters.FindParameterValue(New DataCompositionParameter("BeginOfPeriod"));
+	EndPeriodParameterValue = SettingsComposer.Settings.DataParameters.FindParameterValue(New DataCompositionParameter("EndOfPeriod"));
+	CompanyParameterValue = SettingsComposer.Settings.DataParameters.FindParameterValue(New DataCompositionParameter("Company"));
+	
+	ReportForm.BeginPeriod = BeginPeriodParameterValue.Value;
+	ReportForm.EndPeriod = EndPeriodParameterValue.Value;
+	ReportForm.Company = CompanyParameterValue.Value;
+	
+EndProcedure
+
+Procedure UpdateCompanyParametersOnForm(SettingsComposer, Form) Export
+	
+	CompanyParameterValue = SettingsComposer.Settings.DataParameters.FindParameterValue(New DataCompositionParameter("Company"));
+	
+	If CompanyParameterValue <> Undefined Then
+		CompanyParameterValue.Value = Form.Company;
+	EndIf;
+	
+EndProcedure
+
+//////////////////////////////////////////////////////////////////////////////////////
+////////////////////////////// TotalsRules
+
+Procedure TotalsRulesAccountOnChange(Control)
+	
+	HandlerOnAccountChange(Controls.TotalsRules, True);
+	
+EndProcedure
+
+Procedure TotalsRulesExtDimensionPresentationStartChoice(Control, StandardProcessing)
+	
+	ExtDimensionEditingHandler(Control, Controls.TotalsRules.CurrentData);
+	
+EndProcedure
+
+Procedure TotalsRulesExtDimensionPresentationChoiceProcessing(Control, ValueSelected, StandardProcessing)
+	ExtDimensionChoiceProcessing(ValueSelected, Controls.TotalsRules, StandardProcessing);
+EndProcedure
+
+Procedure TotalsRulesExtDimensionPresentationClearing(Control, StandardProcessing)
+	StandardProcessing = False;
+	ExtDimensionTableBoxClearingHandler(Controls.TotalsRules);
+	FillFields(Controls.TotalsRules.CurrentData);
+EndProcedure
+
+//////////////////////////////////////////////////////////////////////////////////////
+////////// SplittedBalanceRules
+
+Procedure SplittedBalanceRulesAccountOnChange(Control)
+	
+	HandlerOnAccountChange(Controls.SplittedBalanceRules, True);
+	
+EndProcedure
+
+Procedure SplittedBalanceRulesExtDimensionPresentationStartChoice(Control, StandardProcessing)
+	
+	ExtDimensionEditingHandler(Control, Controls.SplittedBalanceRules.CurrentData);
+	
+EndProcedure
+
+Procedure SplittedBalanceRulesExtDimensionPresentationClearing(Control, StandardProcessing)
+	
+	ExtDimensionTableBoxClearingHandler(Controls.SplittedBalanceRules);
+	
+EndProcedure
+
+Procedure SplittedBalanceRulesExtDimensionPresentationChoiceProcessing(Control, ValueSelected, StandardProcessing)
+	
+	ExtDimensionChoiceProcessing(ValueSelected, Controls.SplittedBalanceRules, StandardProcessing);
+	
+EndProcedure
+
+Procedure MainFormActionsOK(Button)
+	
+	TemplateReports.UpdatePeriodParametersOnForm(SettingsComposer, ThisForm);
+	
+	CompanyParameter = SettingsComposer.Settings.DataParameters.FindParameterValue(New DataCompositionParameter("Company"));
+	CompanyParameter.Use = True;
+	CompanyParameter.Value = Company;
+	
+	Close();
+	
+EndProcedure
+
+/////////////////////////////////////////////////////////////////////////////////////////////////////////
+/// GLOBAL Procedures
+
+Procedure ExtDimensionEditingHandler(Control, EditedTableCurrentData) Export
+	
+	If EditedTableCurrentData = Undefined Then
+		Return;
+	EndIf;
+	
+	Account = EditedTableCurrentData.Account;
+	If NOT ValueIsFilled(Account) Then
+		Domessagebox(NStr("en='Choose an account!';pl='Wybierz konto!'"));
+		Return;
+	EndIf;
+		
+	ExtDimensionEditing(Control, EditedTableCurrentData.ExtDimensionTurnover);
+	
+EndProcedure
+
+Procedure ExtDimensionChoiceProcessing(SelectedValue, TableBox, StandardProcessing) Export
+
+	StandardProcessing = False;
+	CurrentData = TableBox.CurrentData;
+	If CurrentData = Undefined Then
+		Return;
+	EndIf;
+	
+	CurrentData.ExtDimensionTurnover = SelectedValue;
+
+	ExtDimensionPresentation = "";
+	
+	For Each Row In SelectedValue Do 
+
+		ExtDimensionPresentation = ExtDimensionPresentation + Row.Presentation + ": " + Row.Balance +", ";
+		
+	EndDo;
+
+	CurrentData.ExtDimensionPresentation  = Mid(ExtDimensionPresentation,1, StrLen(ExtDimensionPresentation)-2);
+
+EndProcedure
+
+Procedure ExtDimensionTableBoxClearingHandler(TableBox) Export
+
+	If TableBox.CurrentData = Undefined Then
+		Return;
+	EndIf;
+
+	ClearSettingsDataByExtDimensionsForCurrentRowSettings(TableBox.CurrentData);
+	
+EndProcedure
+
+Procedure HandlerOnAccountChange(TableBox, Val SplittedBalanceTableBox) Export
+
+	EditedRow = TableBox.CurrentData; 
+	
+	If EditedRow = Undefined Then
+		Return;
+	EndIf;
+
+	Account = EditedRow.Account;
+	
+	FoundRows = TotalsRules.FindRows(New Structure("Account",Account));
+	If FoundRows.Count()>1 Then
+		DoMessageBox("" + Account + " - " + Nstr("en='This account was already choosen!';pl='Takie konto już zostało wybrane!'"));
+		EditedRow.Account = Undefined;
+		Return;
+	EndIf;	
+	
+	ClearSettingsDataByExtDimensionsForCurrentRowSettings(EditedRow);
+	
+	// Flag shows that account has been found and method to expand account
+	FoundExpandMethod = False;
+
+	
+	If ValueIsFilled(Account) Then
+		
+		SelectionByAccount = ChartsOfAccounts[Account.Metadata().Name].Select(Account);
+		If SelectionByAccount.Next() Then
+			
+			
+			FoundExpandMethod = True;
+			
+		EndIf;
+
+		FillFields(EditedRow,FoundExpandMethod);
+
+		If NOT FoundExpandMethod Then
+			
+			Domessagebox("" + Account + " - " + NStr("corr = '// Bookkeeping account'; en = 'this account doesn''t have neither subaccounts, no ext dimensions.'; pl = 'konto nie ma ani subkont, ani analityki.'"));
+			EditedRow.Account = Undefined;
+			
+		EndIf;
+
+	EndIf;
+	
+EndProcedure
+
+Procedure FillFields(EditedRow,FoundExpandMethod = False)
+	
+	Account = EditedRow.Account;
+	
+	EditedRow.ExtDimensionPresentation = "";
+	
+	If Account.Currency Then
+		AddExtDimensionIntoSelectedTable(EditedRow, "Currency", Nstr("en='Currency';pl='Waluta'"));
+	Endif;
+	
+	If Account.ExtDimensionTypes.Count() > 0 Then
+		
+		For Each ExtDimensionType In Account.ExtDimensionTypes Do
+			
+			AddExtDimensionIntoSelectedTable(EditedRow, "ExtDimension" + String(ExtDimensionType.LineNumber), String(ExtDimensionType.ExtDimensionType));
+			
+		EndDo;
+		EditedRow.ExtDimensionPresentation = Mid(EditedRow.ExtDimensionPresentation, 1,StrLen(EditedRow.ExtDimensionPresentation)-2);
+		FoundExpandMethod = True;
+	EndIf;
+	
+EndProcedure	
+
+// Editing ExtDimension
+Procedure ExtDimensionEditing(Control, ExtDimensionList) Export
+    	
+	Form = GetCommonForm("ExtDimensionSettingsForm", Control);
+	
+	Form.List = ExtDimensionList;
+	
+	Form.ChoiceMode = True;
+	
+	Form.DoModal();
+	
+EndProcedure
+
+//procedure adds new value of ext dimension into list of selected
+Procedure AddExtDimensionIntoSelectedTable(ExtDimensionSelectionTable, Val ExtDimensionName, Val ExtDimensionPresentation)
+	
+	NewRowByExtDimensions = ExtDimensionSelectionTable.ExtDimensionTurnover.Add();
+			
+	NewRowByExtDimensions.Name = ExtDimensionName;
+	NewRowByExtDimensions.Presentation = ExtDimensionPresentation;
+	NewRowByExtDimensions.Balance = Enums.AccountDetailingTypes.NotSplitted;
+			
+	ExtDimensionSelectionTable.ExtDimensionPresentation = ExtDimensionSelectionTable.ExtDimensionPresentation + ExtDimensionPresentation + ": " + NewRowByExtDimensions.Balance +", ";
+	
+EndProcedure
+
+//procedure clears turnovers data by extdimension 
+Procedure ClearSettingsDataByExtDimensionsForCurrentRowSettings(EditedRow)
+	
+	EditedRow.ExtDimensionTurnover.Clear();
+	
+	If EditedRow.ExtDimensionTurnover.Columns.Count() = 0 Then
+		
+		TypeDescriptionString = Common.GetStringTypeDescription(100);
+
+		EditedRow.ExtDimensionTurnover.Columns.Add("Name",           TypeDescriptionString);
+		EditedRow.ExtDimensionTurnover.Columns.Add("Presentation", TypeDescriptionString);
+		EditedRow.ExtDimensionTurnover.Columns.Add("Balance");
+		
+	EndIf;
+	
+EndProcedure
+
+Procedure SetSettingsFormDataLink(TotalsRules) Export
+	
+	If TotalsRules <> Undefined Then
+		TotalsRules.Columns.Account.Data = "Account";
+		TotalsRules.Columns.Account.Control.ChoiceButton = True;
+		TotalsRules.Columns.Account.Control.ClearButton = False;
+		TotalsRules.Columns.ExtDimensionPresentation.Control.ClearButton = True;
+	EndIf;
+			
+EndProcedure
+
+Procedure TotalsRulesOnStartEdit(Control, NewRow, Clone)
+	
+	If NewRow ANd Clone Then
+		Control.CurrentRow.Account = Undefined;
+	EndIf;	
+	
+EndProcedure
+
+
+
+
+
+
+

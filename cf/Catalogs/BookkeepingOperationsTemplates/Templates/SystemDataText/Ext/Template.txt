@@ -1,0 +1,3871 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<DataCompositionSchema xmlns="http://v8.1c.ru/8.1/data-composition-system/schema" xmlns:dcscom="http://v8.1c.ru/8.1/data-composition-system/common" xmlns:dcscor="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:dcsset="http://v8.1c.ru/8.1/data-composition-system/settings" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+	<dataSource>
+		<name>DataSource1</name>
+		<dataSourceType>Local</dataSourceType>
+	</dataSource>
+	<dataSet xsi:type="DataSetUnion">
+		<name>SystemData</name>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>Account_AccountsWithOtherPersons</dataPath>
+			<field>Account_AccountsWithOtherPersons</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Account Settlements with other persons</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>pl</v8:lang>
+					<v8:content>Konto rozrachunków z pozostałymi osobami</v8:content>
+				</v8:item>
+			</title>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>Account_CostSettlement</dataPath>
+			<field>Account_CostSettlement</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Account cost settlement</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>pl</v8:lang>
+					<v8:content>Konto rozliczenia kosztów</v8:content>
+				</v8:item>
+			</title>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>Account_FixedAssetsUnderContstruction</dataPath>
+			<field>Account_FixedAssetsUnderContstruction</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Account fixed assets under contstruction</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>pl</v8:lang>
+					<v8:content>Konto środków trwałych w budowie</v8:content>
+				</v8:item>
+			</title>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>Account_PositiveExchangeRateDifferences</dataPath>
+			<field>Account_PositiveExchangeRateDifferences</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Account positive exchange rate differences</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>pl</v8:lang>
+					<v8:content>Konto dodatnich różnić kursowych</v8:content>
+				</v8:item>
+			</title>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>CostDifferences.Negative.Account_PurchaseCreditNoteNegativeCostDifferences</dataPath>
+			<field>Account_PurchaseCreditNoteNegativeCostDifferences</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Account purchase credit note negative cost differences</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>pl</v8:lang>
+					<v8:content>Konto ujemych różnic kosztów dla korekt zakupu</v8:content>
+				</v8:item>
+			</title>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>CostDifferences.Positive.Account_PurchaseCreditNotePositiveCostDifferences</dataPath>
+			<field>Account_PurchaseCreditNotePositiveCostDifferences</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Account purchase credit note positive cost differences</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>pl</v8:lang>
+					<v8:content>Konto dodatnich różnic kosztów dla korekt zakupu</v8:content>
+				</v8:item>
+			</title>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>ExchangeRateForCalculatingSalesAndPurchase</dataPath>
+			<field>ExchangeRateForCalculatingSalesAndPurchase</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Exchange rate for calculating sales and purchase</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>pl</v8:lang>
+					<v8:content>Kurs wymiany dla sprzedaży i zakupów</v8:content>
+				</v8:item>
+			</title>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>Payroll.Payroll_Account_PublicSettlements</dataPath>
+			<field>Payroll_Account_PublicSettlements</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Account public settlements</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>pl</v8:lang>
+					<v8:content>Konto rozrachunków publiczno prawnych</v8:content>
+				</v8:item>
+			</title>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>Payroll.Payroll_CostArticle_EmployeesBenefits</dataPath>
+			<field>Payroll_CostArticle_EmployeesBenefits</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Employees benefits cost article</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>pl</v8:lang>
+					<v8:content>Rodzaj kosztu świadczenia dla pracowników</v8:content>
+				</v8:item>
+			</title>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>Payroll.Payroll_CostArticle_Salaries</dataPath>
+			<field>Payroll_CostArticle_Salaries</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Salaries cost article</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>pl</v8:lang>
+					<v8:content>Rodzaj kosztu pensji</v8:content>
+				</v8:item>
+			</title>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>Payroll.Payroll_IllnessToBonus</dataPath>
+			<field>Payroll_IllnessToBonus</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Illness to bonus</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>pl</v8:lang>
+					<v8:content>Premia składnikiem podstawy zasiłku chorobowego</v8:content>
+				</v8:item>
+			</title>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>Payroll.Payroll_Settlements_HealthIns</dataPath>
+			<field>Payroll_Settlements_HealthIns</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Health insurance</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>pl</v8:lang>
+					<v8:content>Ubezpieczenie zdrowotne</v8:content>
+				</v8:item>
+			</title>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>Payroll.Payroll_Settlements_IncomeTax</dataPath>
+			<field>Payroll_Settlements_IncomeTax</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Income tax</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>pl</v8:lang>
+					<v8:content>Podatek dochodowy</v8:content>
+				</v8:item>
+			</title>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>Payroll.Payroll_Settlements_SocialIns</dataPath>
+			<field>Payroll_Settlements_SocialIns</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Social insurance</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>pl</v8:lang>
+					<v8:content>Ubezpieczenie społeczne</v8:content>
+				</v8:item>
+			</title>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>Payroll.Payroll_Settlements_ZUSFPFGSP</dataPath>
+			<field>Payroll_Settlements_ZUSFPFGSP</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>ZUS FP FGSP</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>pl</v8:lang>
+					<v8:content>ZUS, FP, FGŚP</v8:content>
+				</v8:item>
+			</title>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>CostDifferences.Negative.PurchaseCreditNoteNegativeExtDimension1</dataPath>
+			<field>PurchaseCreditNoteNegativeExtDimension1</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Ext dimension 1</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>pl</v8:lang>
+					<v8:content>Analityka 1</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Аналитика 1</v8:content>
+				</v8:item>
+			</title>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>CostDifferences.Negative.PurchaseCreditNoteNegativeExtDimension2</dataPath>
+			<field>PurchaseCreditNoteNegativeExtDimension2</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Ext dimension 2</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>pl</v8:lang>
+					<v8:content>Analityka 2</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Аналитика 2</v8:content>
+				</v8:item>
+			</title>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>CostDifferences.Negative.PurchaseCreditNoteNegativeExtDimension3</dataPath>
+			<field>PurchaseCreditNoteNegativeExtDimension3</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Ext dimension 3</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>pl</v8:lang>
+					<v8:content>Analityka 3</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Аналитика 3</v8:content>
+				</v8:item>
+			</title>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>CostDifferences.Positive.PurchaseCreditNotePositiveExtDimension1</dataPath>
+			<field>PurchaseCreditNotePositiveExtDimension1</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Ext dimension 1</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>pl</v8:lang>
+					<v8:content>Analityka 1</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Аналитика 1</v8:content>
+				</v8:item>
+			</title>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>CostDifferences.Positive.PurchaseCreditNotePositiveExtDimension2</dataPath>
+			<field>PurchaseCreditNotePositiveExtDimension2</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Ext dimension 2</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>pl</v8:lang>
+					<v8:content>Analityka 2</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Аналитика 2</v8:content>
+				</v8:item>
+			</title>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>CostDifferences.Positive.PurchaseCreditNotePositiveExtDimension3</dataPath>
+			<field>PurchaseCreditNotePositiveExtDimension3</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Ext dimension 3</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>pl</v8:lang>
+					<v8:content>Analityka 3</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Аналитика 3</v8:content>
+				</v8:item>
+			</title>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>VATCalculationMethod</dataPath>
+			<field>VATCalculationMethod</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>VAT calculation method for sales documents</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>pl</v8:lang>
+					<v8:content>Metoda wyliczenia VAT dla dokumentów sprzedaży</v8:content>
+				</v8:item>
+			</title>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>GoodsIssue.Account_GoodsIssue</dataPath>
+			<field>Account_GoodsIssue</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Account</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>pl</v8:lang>
+					<v8:content>Konto</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Счет</v8:content>
+				</v8:item>
+			</title>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>GoodsReceipt.Account_GoodsReceipt</dataPath>
+			<field>Account_GoodsReceipt</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Account</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>pl</v8:lang>
+					<v8:content>Konto</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Счет</v8:content>
+				</v8:item>
+			</title>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>GoodsIssue.GoodsIssueExtDimension1</dataPath>
+			<field>GoodsIssueExtDimension1</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Ext dimension 1</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>pl</v8:lang>
+					<v8:content>Analityka 1</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Аналитика 1</v8:content>
+				</v8:item>
+			</title>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>GoodsIssue.GoodsIssueExtDimension2</dataPath>
+			<field>GoodsIssueExtDimension2</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Ext dimension 2</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>pl</v8:lang>
+					<v8:content>Analityka 2</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Аналитика 2</v8:content>
+				</v8:item>
+			</title>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>GoodsIssue.GoodsIssueExtDimension3</dataPath>
+			<field>GoodsIssueExtDimension3</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Ext dimension 3</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>pl</v8:lang>
+					<v8:content>Analityka 3</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Аналитика 3</v8:content>
+				</v8:item>
+			</title>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>GoodsReceipt.GoodsReceiptExtDimension1</dataPath>
+			<field>GoodsReceiptExtDimension1</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Ext dimension 1</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>pl</v8:lang>
+					<v8:content>Analityka 1</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Аналитика 1</v8:content>
+				</v8:item>
+			</title>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>GoodsReceipt.GoodsReceiptExtDimension2</dataPath>
+			<field>GoodsReceiptExtDimension2</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Ext dimension 2</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>pl</v8:lang>
+					<v8:content>Analityka 2</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Аналитика 2</v8:content>
+				</v8:item>
+			</title>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>GoodsReceipt.GoodsReceiptExtDimension3</dataPath>
+			<field>GoodsReceiptExtDimension3</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Ext dimension 3</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>pl</v8:lang>
+					<v8:content>Analityka 3</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Аналитика 3</v8:content>
+				</v8:item>
+			</title>
+		</field>
+		<field xsi:type="DataSetFieldFolder">
+			<dataPath>GoodsIssue</dataPath>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Goods issue</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>pl</v8:lang>
+					<v8:content>Wydanie towarów</v8:content>
+				</v8:item>
+			</title>
+		</field>
+		<field xsi:type="DataSetFieldFolder">
+			<dataPath>GoodsReceipt</dataPath>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Goods receipt</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>pl</v8:lang>
+					<v8:content>Przyjęcie towarów</v8:content>
+				</v8:item>
+			</title>
+		</field>
+		<field xsi:type="DataSetFieldFolder">
+			<dataPath>Payroll</dataPath>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Payroll</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>pl</v8:lang>
+					<v8:content>Płace</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Платежные ведомости</v8:content>
+				</v8:item>
+			</title>
+		</field>
+		<field xsi:type="DataSetFieldFolder">
+			<dataPath>MaterialsConsumptionDuringProduction</dataPath>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Materials consumption during production</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>pl</v8:lang>
+					<v8:content>Zużycie materiałów przy produkcji</v8:content>
+				</v8:item>
+			</title>
+		</field>
+		<field xsi:type="DataSetFieldFolder">
+			<dataPath>CostDifferences</dataPath>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Cost differences</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>pl</v8:lang>
+					<v8:content>Różnice kosztów</v8:content>
+				</v8:item>
+			</title>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>ExchangeRateDifferences.Account</dataPath>
+			<field>Account</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Account</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>pl</v8:lang>
+					<v8:content>Konto</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Счет</v8:content>
+				</v8:item>
+			</title>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>ExchangeRateDifferences.ExtDimension1</dataPath>
+			<field>ExtDimension1</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Ext dimension1</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>pl</v8:lang>
+					<v8:content>Analityka 1</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Аналитика 1</v8:content>
+				</v8:item>
+			</title>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>ExchangeRateDifferences.ExtDimension2</dataPath>
+			<field>ExtDimension2</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Ext dimension2</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>pl</v8:lang>
+					<v8:content>Analityka 2</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Аналитика 2</v8:content>
+				</v8:item>
+			</title>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>ExchangeRateDifferences.ExtDimension3</dataPath>
+			<field>ExtDimension3</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Ext dimension3</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>pl</v8:lang>
+					<v8:content>Analityka 3</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Аналитика 3</v8:content>
+				</v8:item>
+			</title>
+		</field>
+		<field xsi:type="DataSetFieldFolder">
+			<dataPath>ExchangeRateDifferences</dataPath>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Exchange rate differences</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>pl</v8:lang>
+					<v8:content>Różnice kursowe</v8:content>
+				</v8:item>
+			</title>
+		</field>
+		<field xsi:type="DataSetFieldFolder">
+			<dataPath>CostDifferences.Negative</dataPath>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Negative</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>pl</v8:lang>
+					<v8:content>Ujemne</v8:content>
+				</v8:item>
+			</title>
+		</field>
+		<field xsi:type="DataSetFieldFolder">
+			<dataPath>CostDifferences.Positive</dataPath>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Positive</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>pl</v8:lang>
+					<v8:content>Dodatnie</v8:content>
+				</v8:item>
+			</title>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>Account_DeferredIncomesSettlements</dataPath>
+			<field>Account_DeferredIncomesSettlements</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Account deferred incomes settlements</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>pl</v8:lang>
+					<v8:content>Konto rozliczenia międzyokresowego przychodów</v8:content>
+				</v8:item>
+			</title>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>Account_PrepaymentsToSuppliersSettlements</dataPath>
+			<field>Account_PrepaymentsToSuppliersSettlements</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Account prepayments to suppliers settlements</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>pl</v8:lang>
+					<v8:content>Konto rozliczenia zaliczek do dostawców</v8:content>
+				</v8:item>
+			</title>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>Account_EmployeesSalariesSettlements</dataPath>
+			<field>Account_EmployeesSalariesSettlements</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Account employees salaries settlements</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>pl</v8:lang>
+					<v8:content>Konto rozrachunków z pracownikami z tytułu wynagrodzień</v8:content>
+				</v8:item>
+			</title>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>Account_OtherSettlementsWithEmployees</dataPath>
+			<field>Account_OtherSettlementsWithEmployees</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Account other settlements with employees</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>pl</v8:lang>
+					<v8:content>Konto pozostałych rozrachunków z pracownikami</v8:content>
+				</v8:item>
+			</title>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>MaterialsConsumptionDuringProduction.Account_MaterialsConsumptionDuringProduction</dataPath>
+			<field>Account_MaterialsConsumptionDuringProduction</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Account</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>pl</v8:lang>
+					<v8:content>Konto</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Счет</v8:content>
+				</v8:item>
+			</title>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>MaterialsConsumptionDuringProduction.MaterialsConsumptionDuringProductionExtDimension1</dataPath>
+			<field>MaterialsConsumptionDuringProductionExtDimension1</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>pl</v8:lang>
+					<v8:content>Analityka 1</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Ext dimension1</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Аналитика 1</v8:content>
+				</v8:item>
+			</title>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>MaterialsConsumptionDuringProduction.MaterialsConsumptionDuringProductionExtDimension2</dataPath>
+			<field>MaterialsConsumptionDuringProductionExtDimension2</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>pl</v8:lang>
+					<v8:content>Analityka 2</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Ext dimension2</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Аналитика 2</v8:content>
+				</v8:item>
+			</title>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>MaterialsConsumptionDuringProduction.MaterialsConsumptionDuringProductionExtDimension3</dataPath>
+			<field>MaterialsConsumptionDuringProductionExtDimension3</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>pl</v8:lang>
+					<v8:content>Analityka 3</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Ext dimension3</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Аналитика 3</v8:content>
+				</v8:item>
+			</title>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>PurchasePrepaymentInvoiceSettlement.Account_PurchasePrepaymentInvoiceSettlement</dataPath>
+			<field>Account_PurchasePrepaymentInvoiceSettlement</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Account</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>pl</v8:lang>
+					<v8:content>Konto</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Счет</v8:content>
+				</v8:item>
+			</title>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>PurchasePrepaymentInvoiceSettlement.Account_PurchasePrepaymentInvoiceSettlementExtDimension1</dataPath>
+			<field>Account_PurchasePrepaymentInvoiceSettlementExtDimension1</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>pl</v8:lang>
+					<v8:content>Analityka 1</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Ext dimension 1</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Аналитика 1</v8:content>
+				</v8:item>
+			</title>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>PurchasePrepaymentInvoiceSettlement.Account_PurchasePrepaymentInvoiceSettlementExtDimension2</dataPath>
+			<field>Account_PurchasePrepaymentInvoiceSettlementExtDimension2</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>pl</v8:lang>
+					<v8:content>Analityka 2</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Ext dimension 2</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Аналитика 2</v8:content>
+				</v8:item>
+			</title>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>PurchasePrepaymentInvoiceSettlement.Account_PurchasePrepaymentInvoiceSettlementExtDimension3</dataPath>
+			<field>Account_PurchasePrepaymentInvoiceSettlementExtDimension3</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>pl</v8:lang>
+					<v8:content>Analityka 3</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Ext dimension 3</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Аналитика 3</v8:content>
+				</v8:item>
+			</title>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>SalesPrepaymentInvoiceSettlement.Account_SalesPrepaymentInvoiceSettlement</dataPath>
+			<field>Account_SalesPrepaymentInvoiceSettlement</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Account</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>pl</v8:lang>
+					<v8:content>Konto</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Счет</v8:content>
+				</v8:item>
+			</title>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>SalesPrepaymentInvoiceSettlement.Account_SalesPrepaymentInvoiceSettlementExtDimension1</dataPath>
+			<field>Account_SalesPrepaymentInvoiceSettlementExtDimension1</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>pl</v8:lang>
+					<v8:content>Analityka 1</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Ext dimension 1</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Аналитика 1</v8:content>
+				</v8:item>
+			</title>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>SalesPrepaymentInvoiceSettlement.Account_SalesPrepaymentInvoiceSettlementExtDimension2</dataPath>
+			<field>Account_SalesPrepaymentInvoiceSettlementExtDimension2</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>pl</v8:lang>
+					<v8:content>Analityka 2</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Ext dimension 2</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Аналитика 2</v8:content>
+				</v8:item>
+			</title>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>SalesPrepaymentInvoiceSettlement.Account_SalesPrepaymentInvoiceSettlementExtDimension3</dataPath>
+			<field>Account_SalesPrepaymentInvoiceSettlementExtDimension3</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>pl</v8:lang>
+					<v8:content>Analityka 3</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Ext dimension 3</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Аналитика 3</v8:content>
+				</v8:item>
+			</title>
+		</field>
+		<field xsi:type="DataSetFieldFolder">
+			<dataPath>SalesPrepaymentInvoiceSettlement</dataPath>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Sales prepayment invoice settlement</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>pl</v8:lang>
+					<v8:content>Rozliczenie faktur zaliczkowych sprzedaży</v8:content>
+				</v8:item>
+			</title>
+		</field>
+		<field xsi:type="DataSetFieldFolder">
+			<dataPath>PurchasePrepaymentInvoiceSettlement</dataPath>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Purchase prepayment invoice settlement</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>pl</v8:lang>
+					<v8:content>Rozliczenie faktur zaliczkowych zakupu</v8:content>
+				</v8:item>
+			</title>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>Account_SalesCreditNoteVAT</dataPath>
+			<field>Account_SalesCreditNoteVAT</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Account Sales credit note VAT</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>pl</v8:lang>
+					<v8:content>Konto VAT dla faktur korygujących sprzedaży</v8:content>
+				</v8:item>
+			</title>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>Constants.NationalCurrency</dataPath>
+			<field>NationalCurrency</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>National currency</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>pl</v8:lang>
+					<v8:content>Waluta krajowa</v8:content>
+				</v8:item>
+			</title>
+		</field>
+		<field xsi:type="DataSetFieldFolder">
+			<dataPath>Constants</dataPath>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Constants</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>pl</v8:lang>
+					<v8:content>Stałe</v8:content>
+				</v8:item>
+			</title>
+		</field>
+		<field xsi:type="DataSetFieldFolder">
+			<dataPath>GeneralRounding</dataPath>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>General rounding</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>pl</v8:lang>
+					<v8:content>Ogólne zaokrąglenia</v8:content>
+				</v8:item>
+			</title>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>GeneralRounding.GeneralRoundingAccount</dataPath>
+			<field>GeneralRoundingAccount</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Account</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>pl</v8:lang>
+					<v8:content>Konto</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Счет</v8:content>
+				</v8:item>
+			</title>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>GeneralRounding.GeneralRoundingExtDimension1</dataPath>
+			<field>GeneralRoundingExtDimension1</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Ext dimension 1</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>pl</v8:lang>
+					<v8:content>Analityka 1</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Аналитика 1</v8:content>
+				</v8:item>
+			</title>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>GeneralRounding.GeneralRoundingExtDimension2</dataPath>
+			<field>GeneralRoundingExtDimension2</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>pl</v8:lang>
+					<v8:content>Analityka 2</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Ext dimension 2</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Аналитика 2</v8:content>
+				</v8:item>
+			</title>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>GeneralRounding.GeneralRoundingExtDimension3</dataPath>
+			<field>GeneralRoundingExtDimension3</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>pl</v8:lang>
+					<v8:content>Analityka 3</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Ext dimension 3</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Аналитика 3</v8:content>
+				</v8:item>
+			</title>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>DeleteShowCommandAdditionalPrintForms</dataPath>
+			<field>DeleteShowCommandAdditionalPrintForms</field>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>LastClientSessionStartDate</dataPath>
+			<field>LastClientSessionStartDate</field>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>DiscountsMarkupsSharedUsageOptions</dataPath>
+			<field>DiscountsMarkupsSharedUsageOptions</field>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>InfobaseAdministrationParameters</dataPath>
+			<field>InfobaseAdministrationParameters</field>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>UseDataSynchronizationSaaS</dataPath>
+			<field>UseDataSynchronizationSaaS</field>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>PriceListShowFullDescr</dataPath>
+			<field>PriceListShowFullDescr</field>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>FunctionalOptionTransferInventoryOnSafeCustody</dataPath>
+			<field>FunctionalOptionTransferInventoryOnSafeCustody</field>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>UseExchangeWithPeripheralsOffline</dataPath>
+			<field>UseExchangeWithPeripheralsOffline</field>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>ControlBalancesDuringCreationCRReceipts</dataPath>
+			<field>ControlBalancesDuringCreationCRReceipts</field>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>ServiceEventsParameters</dataPath>
+			<field>ServiceEventsParameters</field>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>FunctionalCurrencyTransactionsAccounting</dataPath>
+			<field>FunctionalCurrencyTransactionsAccounting</field>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>DeleteDSProviderType</dataPath>
+			<field>DeleteDSProviderType</field>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>ProductionOrdersInProgressStatus</dataPath>
+			<field>ProductionOrdersInProgressStatus</field>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>ExchangeRateDifferencesCalculationFrequency</dataPath>
+			<field>ExchangeRateDifferencesCalculationFrequency</field>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>AdditionalReportsAndDataProcessorsProceduralTasksMinIntervalSaaS</dataPath>
+			<field>AdditionalReportsAndDataProcessorsProceduralTasksMinIntervalSaaS</field>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>ActivityKind</dataPath>
+			<field>ActivityKind</field>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>NationalLanguage</dataPath>
+			<field>NationalLanguage</field>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>InitialSettingOpeningBalancesFilled</dataPath>
+			<field>InitialSettingOpeningBalancesFilled</field>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>UseCustomerOrderStates</dataPath>
+			<field>UseCustomerOrderStates</field>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>AutomaticallyConfigurePermissionsInSecurityProfiles</dataPath>
+			<field>AutomaticallyConfigurePermissionsInSecurityProfiles</field>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>FunctionalOptionAccountingRetail</dataPath>
+			<field>FunctionalOptionAccountingRetail</field>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>LimitAccessOnRecordsLevel</dataPath>
+			<field>LimitAccessOnRecordsLevel</field>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>SystemChangesDescribeSections</dataPath>
+			<field>SystemChangesDescribeSections</field>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>DataAreasPrefix</dataPath>
+			<field>DataAreasPrefix</field>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>MasterNode</dataPath>
+			<field>MasterNode</field>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>InfobaseSecurityProfile</dataPath>
+			<field>InfobaseSecurityProfile</field>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>StandardInterfaceUserOData</dataPath>
+			<field>StandardInterfaceUserOData</field>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>AccountingBySubsidiaryCompany</dataPath>
+			<field>AccountingBySubsidiaryCompany</field>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>InformationCentreConferenceUserName</dataPath>
+			<field>InformationCentreConferenceUserName</field>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>FunctionalOptionAccountingFixedAssets</dataPath>
+			<field>FunctionalOptionAccountingFixedAssets</field>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>FunctionalOptionUseExchangeWithSites</dataPath>
+			<field>FunctionalOptionUseExchangeWithSites</field>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>AddressClassifierDataSource</dataPath>
+			<field>AddressClassifierDataSource</field>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>BackupParameters</dataPath>
+			<field>BackupParameters</field>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>ConferenceManagementAddress</dataPath>
+			<field>ConferenceManagementAddress</field>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>FunctionalOptionUseSubsystemProduction</dataPath>
+			<field>FunctionalOptionUseSubsystemProduction</field>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>DeleteFunctionalOptionReceiptDateInTabularSection</dataPath>
+			<field>DeleteFunctionalOptionReceiptDateInTabularSection</field>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>EDOperationContext</dataPath>
+			<field>EDOperationContext</field>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>DataImportTransactionItemCount</dataPath>
+			<field>DataImportTransactionItemCount</field>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>ControlApplicationExternalAddress</dataPath>
+			<field>ControlApplicationExternalAddress</field>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>AddressPublicationsInformationBaseOnWeb</dataPath>
+			<field>AddressPublicationsInformationBaseOnWeb</field>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>FunctionalOptionReceiveGoodsOnCommission</dataPath>
+			<field>FunctionalOptionReceiveGoodsOnCommission</field>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>FunctionalOptionAccountingByMultipleCompanies</dataPath>
+			<field>FunctionalOptionAccountingByMultipleCompanies</field>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>InfobaseUsageMode</dataPath>
+			<field>InfobaseUsageMode</field>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>DeleteContractControllingOnPosting</dataPath>
+			<field>DeleteContractControllingOnPosting</field>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>BookkeepingFunctionalityConstant</dataPath>
+			<field>BookkeepingFunctionalityConstant</field>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>UseDataSynchronizationInLocalMode</dataPath>
+			<field>UseDataSynchronizationInLocalMode</field>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>UseSeparationByDataAreas</dataPath>
+			<field>UseSeparationByDataAreas</field>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>FunctionalOptionAccountingInVariousUOM</dataPath>
+			<field>FunctionalOptionAccountingInVariousUOM</field>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>VendorPaymentDueDate</dataPath>
+			<field>VendorPaymentDueDate</field>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>DeleteEnterInformationForDeclarationsOnAlcoholicProducts</dataPath>
+			<field>DeleteEnterInformationForDeclarationsOnAlcoholicProducts</field>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>SystemTitle</dataPath>
+			<field>SystemTitle</field>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>PerformanceRatingRecordPeriod</dataPath>
+			<field>PerformanceRatingRecordPeriod</field>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>DeleteFunctionalOptionOrderOnShipmentInTabularSection</dataPath>
+			<field>DeleteFunctionalOptionOrderOnShipmentInTabularSection</field>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>ProductsAndServicesSKUInContent</dataPath>
+			<field>ProductsAndServicesSKUInContent</field>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>FilesExchangeDirectorySaaS</dataPath>
+			<field>FilesExchangeDirectorySaaS</field>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>UseDataSynchronization</dataPath>
+			<field>UseDataSynchronization</field>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>UseEDExchange</dataPath>
+			<field>UseEDExchange</field>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>DeleteFunctionalOptionShipDateInTabularSection</dataPath>
+			<field>DeleteFunctionalOptionShipDateInTabularSection</field>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>SubordinatedDIBNodeSettingsFinished</dataPath>
+			<field>SubordinatedDIBNodeSettingsFinished</field>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>CustomerInvoiceNote1137UsageBegin</dataPath>
+			<field>CustomerInvoiceNote1137UsageBegin</field>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>UseSeveralCompanies</dataPath>
+			<field>UseSeveralCompanies</field>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>ProhibitImportFilesByExtension</dataPath>
+			<field>ProhibitImportFilesByExtension</field>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>DataAreaKey</dataPath>
+			<field>DataAreaKey</field>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>LastPerformanceMeasurementUpdateDateUTC</dataPath>
+			<field>LastPerformanceMeasurementUpdateDateUTC</field>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>CustomerOrdersCompletedStatus</dataPath>
+			<field>CustomerOrdersCompletedStatus</field>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>UseUsersGroups</dataPath>
+			<field>UseUsersGroups</field>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>DataAreaPresentation</dataPath>
+			<field>DataAreaPresentation</field>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>SMSProvider</dataPath>
+			<field>SMSProvider</field>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>MaximumFileSize</dataPath>
+			<field>MaximumFileSize</field>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>AuthorizationContext</dataPath>
+			<field>AuthorizationContext</field>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>AccessLimitationParameters</dataPath>
+			<field>AccessLimitationParameters</field>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>ServiceManagerOfficeUserName</dataPath>
+			<field>ServiceManagerOfficeUserName</field>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>PrefixForExchangeWithSite</dataPath>
+			<field>PrefixForExchangeWithSite</field>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>UseExternalUsers</dataPath>
+			<field>UseExternalUsers</field>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>FunctionalOptionAccountingDoIncomeTax</dataPath>
+			<field>FunctionalOptionAccountingDoIncomeTax</field>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>DataExchangeMessageFromMainNode</dataPath>
+			<field>DataExchangeMessageFromMainNode</field>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>ReportVariantParameters</dataPath>
+			<field>ReportVariantParameters</field>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>ConfigurationUpdateStatus</dataPath>
+			<field>ConfigurationUpdateStatus</field>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>FunctionalOptionTransferGoodsOnCommission</dataPath>
+			<field>FunctionalOptionTransferGoodsOnCommission</field>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>ThisIsOfflineWorkplace</dataPath>
+			<field>ThisIsOfflineWorkplace</field>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>FunctionalOptionUseOrderWarehouse</dataPath>
+			<field>FunctionalOptionUseOrderWarehouse</field>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>FunctionalOptionUseDiscountsMarkups</dataPath>
+			<field>FunctionalOptionUseDiscountsMarkups</field>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>PurchaseOrdersCompletedStatus</dataPath>
+			<field>PurchaseOrdersCompletedStatus</field>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>DeleteSignAlgorithm</dataPath>
+			<field>DeleteSignAlgorithm</field>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>ControlBalancesOnPosting</dataPath>
+			<field>ControlBalancesOnPosting</field>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>FunctionalOptionAccountingByCells</dataPath>
+			<field>FunctionalOptionAccountingByCells</field>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>UseObjectVersioning</dataPath>
+			<field>UseObjectVersioning</field>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>PlannedTotalsOptimizationDate</dataPath>
+			<field>PlannedTotalsOptimizationDate</field>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>FunctionalOptionUseBudgeting</dataPath>
+			<field>FunctionalOptionUseBudgeting</field>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>DistributedInformationBaseNodePrefix</dataPath>
+			<field>DistributedInformationBaseNodePrefix</field>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>UseCounterpartiesAccessGroups</dataPath>
+			<field>UseCounterpartiesAccessGroups</field>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>UseAdditionalAttributesAndInformation</dataPath>
+			<field>UseAdditionalAttributesAndInformation</field>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>DeleteEncryptionAlgorithm</dataPath>
+			<field>DeleteEncryptionAlgorithm</field>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>DeleteHashAlgorithm</dataPath>
+			<field>DeleteHashAlgorithm</field>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>VerifyDigitalSignaturesAtServer</dataPath>
+			<field>VerifyDigitalSignaturesAtServer</field>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>InfobaseIdentifier</dataPath>
+			<field>InfobaseIdentifier</field>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>PriceListShowCode</dataPath>
+			<field>PriceListShowCode</field>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>SynchronizeDataWithApplicationInInternetOnApplicationStart</dataPath>
+			<field>SynchronizeDataWithApplicationInInternetOnApplicationStart</field>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>DoNotUseSeveralCompanies</dataPath>
+			<field>DoNotUseSeveralCompanies</field>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>OffsetAdvancesDebtsAutomatically</dataPath>
+			<field>OffsetAdvancesDebtsAutomatically</field>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>DeleteFunctionalOptionOrderOnTransferInTabularSection</dataPath>
+			<field>DeleteFunctionalOptionOrderOnTransferInTabularSection</field>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>ScheduledJobsExecutionSettings</dataPath>
+			<field>ScheduledJobsExecutionSettings</field>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>FileExtensionListOpenDocument</dataPath>
+			<field>FileExtensionListOpenDocument</field>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>DoNotPostDocumentsWithIncorrectContracts</dataPath>
+			<field>DoNotPostDocumentsWithIncorrectContracts</field>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>CurrencyQuotationType</dataPath>
+			<field>CurrencyQuotationType</field>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>DeleteFunctionalOptionOrderOnShipmentInHeader</dataPath>
+			<field>DeleteFunctionalOptionOrderOnShipmentInHeader</field>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>DataChangesRecorded</dataPath>
+			<field>DataChangesRecorded</field>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>SynchronizeDataWithApplicationInInternetOnApplicationEnd</dataPath>
+			<field>SynchronizeDataWithApplicationInInternetOnApplicationEnd</field>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>DataExchangeMessagesDirectoryForLinux</dataPath>
+			<field>DataExchangeMessagesDirectoryForLinux</field>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>UsersWorkParameters</dataPath>
+			<field>UsersWorkParameters</field>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>HomeCountry</dataPath>
+			<field>HomeCountry</field>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>AllowAdditionalReportsAndDataProcessorsPerformByProceduralTasksSaaS</dataPath>
+			<field>AllowAdditionalReportsAndDataProcessorsPerformByProceduralTasksSaaS</field>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>InformationCenterConferenceUserPassword</dataPath>
+			<field>InformationCenterConferenceUserPassword</field>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>DataAreasOpenDocumentFileExtensionList</dataPath>
+			<field>DataAreasOpenDocumentFileExtensionList</field>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>ServiceManagerOfficeUserPassword</dataPath>
+			<field>ServiceManagerOfficeUserPassword</field>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>CopyDataAreasFromPrototype</dataPath>
+			<field>CopyDataAreasFromPrototype</field>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>ServiceManagerEndPoint</dataPath>
+			<field>ServiceManagerEndPoint</field>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>ExtractFileTextsAtServer</dataPath>
+			<field>ExtractFileTextsAtServer</field>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>RetryDataExportExchangeMessagesBeforeStart</dataPath>
+			<field>RetryDataExportExchangeMessagesBeforeStart</field>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>UseAdditionalReportsAndDataProcessors</dataPath>
+			<field>UseAdditionalReportsAndDataProcessors</field>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>ProductionOrdersCompletedStatus</dataPath>
+			<field>ProductionOrdersCompletedStatus</field>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>RFBanksClassifierVersion</dataPath>
+			<field>RFBanksClassifierVersion</field>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>ConnectionToOUSServiceFromServer</dataPath>
+			<field>ConnectionToOUSServiceFromServer</field>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>CreateDigitalSignaturesAtServer</dataPath>
+			<field>CreateDigitalSignaturesAtServer</field>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>FunctionalOptionTransferRawMaterialsForProcessing</dataPath>
+			<field>FunctionalOptionTransferRawMaterialsForProcessing</field>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>FunctionalOptionAccountingByMultipleWarehouses</dataPath>
+			<field>FunctionalOptionAccountingByMultipleWarehouses</field>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>FunctionalOptionUseSubsystemPayroll</dataPath>
+			<field>FunctionalOptionUseSubsystemPayroll</field>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>UseAdditionalReportsDirectoryAndDataprocessorsSaaS</dataPath>
+			<field>UseAdditionalReportsDirectoryAndDataprocessorsSaaS</field>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>SupportServiceSoftwareInterfaceUserPassword</dataPath>
+			<field>SupportServiceSoftwareInterfaceUserPassword</field>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>FunctionalOptionUseBatches</dataPath>
+			<field>FunctionalOptionUseBatches</field>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>DeleteUnissuedReceiptsOnCloseCashCRSession</dataPath>
+			<field>DeleteUnissuedReceiptsOnCloseCashCRSession</field>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>EnterInformationForDeclarationsOnAlcoholicProducts</dataPath>
+			<field>EnterInformationForDeclarationsOnAlcoholicProducts</field>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>InternalServiceManagerURL</dataPath>
+			<field>InternalServiceManagerURL</field>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>SecurityProfilesAreUsed</dataPath>
+			<field>SecurityProfilesAreUsed</field>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>UseElectronicDocumentsDelayedSending</dataPath>
+			<field>UseElectronicDocumentsDelayedSending</field>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>AddressForAccountPasswordRecovery</dataPath>
+			<field>AddressForAccountPasswordRecovery</field>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>FunctionalOptionTolling</dataPath>
+			<field>FunctionalOptionTolling</field>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>UseProductionOrderStates</dataPath>
+			<field>UseProductionOrderStates</field>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>UseEncryption</dataPath>
+			<field>UseEncryption</field>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>FunctionalOptionAccountingByProjects</dataPath>
+			<field>FunctionalOptionAccountingByProjects</field>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>UseCounterpartiesVerification</dataPath>
+			<field>UseCounterpartiesVerification</field>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>FunctionalOptionAccountingByMultipleBusinessActivities</dataPath>
+			<field>FunctionalOptionAccountingByMultipleBusinessActivities</field>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>UpdateDateToRelease_1_2_1</dataPath>
+			<field>UpdateDateToRelease_1_2_1</field>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>FunctionalOptionPlanEnterpriseResourcesImporting</dataPath>
+			<field>FunctionalOptionPlanEnterpriseResourcesImporting</field>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>SubsidiaryCompany</dataPath>
+			<field>SubsidiaryCompany</field>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>FunctionalOptionUseJobSharing</dataPath>
+			<field>FunctionalOptionUseJobSharing</field>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>ProxyServerSetting</dataPath>
+			<field>ProxyServerSetting</field>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>FunctionalOptionUseCharacteristics</dataPath>
+			<field>FunctionalOptionUseCharacteristics</field>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>OfflineSaaS</dataPath>
+			<field>OfflineSaaS</field>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>UseCommonAdditionalAttributesAndInformation</dataPath>
+			<field>UseCommonAdditionalAttributesAndInformation</field>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>SupportServiceSoftwareInterfaceUserName</dataPath>
+			<field>SupportServiceSoftwareInterfaceUserName</field>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>UseEDExchangeWithBanks</dataPath>
+			<field>UseEDExchangeWithBanks</field>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>UpdateDateToRelease_1_4_1</dataPath>
+			<field>UpdateDateToRelease_1_4_1</field>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>UseDigitalSignatures</dataPath>
+			<field>UseDigitalSignatures</field>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>FunctionalOptionUseVAT</dataPath>
+			<field>FunctionalOptionUseVAT</field>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>DeleteFunctionalOptionOrderOnTransferInHeader</dataPath>
+			<field>DeleteFunctionalOptionOrderOnTransferInHeader</field>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>CustomerOrdersInProgressStatus</dataPath>
+			<field>CustomerOrdersInProgressStatus</field>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>FunctionalOptionAccountingByMultipleDepartments</dataPath>
+			<field>FunctionalOptionAccountingByMultipleDepartments</field>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>InitialSettingCompanyDetailsFilled</dataPath>
+			<field>InitialSettingCompanyDetailsFilled</field>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>FunctionalOptionPaymentCalendar</dataPath>
+			<field>FunctionalOptionPaymentCalendar</field>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>DeleteFunctionalOptionKindOfWorkInTabularSection</dataPath>
+			<field>DeleteFunctionalOptionKindOfWorkInTabularSection</field>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>DeleteFunctionalOptionOrderOnReceptionInTabularSection</dataPath>
+			<field>DeleteFunctionalOptionOrderOnReceptionInTabularSection</field>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>ActiveBackgroundJobMaxExecutionTime</dataPath>
+			<field>ActiveBackgroundJobMaxExecutionTime</field>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>FunctionalOptionAccountingCashMethodIncomeAndExpenses</dataPath>
+			<field>FunctionalOptionAccountingCashMethodIncomeAndExpenses</field>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>AccountingCurrency</dataPath>
+			<field>AccountingCurrency</field>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>DataAreaTimeZone</dataPath>
+			<field>DataAreaTimeZone</field>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>TextFileExtensionsList</dataPath>
+			<field>TextFileExtensionsList</field>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>ProhibitedExtensionsList</dataPath>
+			<field>ProhibitedExtensionsList</field>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>FunctionalOptionUsePeripherals</dataPath>
+			<field>FunctionalOptionUsePeripherals</field>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>DeleteDSProvider</dataPath>
+			<field>DeleteDSProvider</field>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>FileTransferBlockSize</dataPath>
+			<field>FileTransferBlockSize</field>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>LoginForSendingSMS</dataPath>
+			<field>LoginForSendingSMS</field>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>ConnectionTimeoutToOnlineSupportService</dataPath>
+			<field>ConnectionTimeoutToOnlineSupportService</field>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>UseFullTextSearch</dataPath>
+			<field>UseFullTextSearch</field>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>TotalsAndAggregatesParameters</dataPath>
+			<field>TotalsAndAggregatesParameters</field>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>StoreFilesInVolumesOnHardDisk</dataPath>
+			<field>StoreFilesInVolumesOnHardDisk</field>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>UseUserReminders</dataPath>
+			<field>UseUserReminders</field>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>LastOfflineWorkplacePrefix</dataPath>
+			<field>LastOfflineWorkplacePrefix</field>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>DeleteCryptographyContext</dataPath>
+			<field>DeleteCryptographyContext</field>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>DeleteFunctionalOptionKindOfWorkInHeader</dataPath>
+			<field>DeleteFunctionalOptionKindOfWorkInHeader</field>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>RecipientsEventLogMonitorReport</dataPath>
+			<field>RecipientsEventLogMonitorReport</field>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>PriceListUseProductsAndServicesHierarchy</dataPath>
+			<field>PriceListUseProductsAndServicesHierarchy</field>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>UseDataSynchronizationSaaSWithLocalApplication</dataPath>
+			<field>UseDataSynchronizationSaaSWithLocalApplication</field>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>ExecutePerformanceMeasurements</dataPath>
+			<field>ExecutePerformanceMeasurements</field>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>FunctionalOptionUseAutomaticDiscountsMarkups</dataPath>
+			<field>FunctionalOptionUseAutomaticDiscountsMarkups</field>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>MaxDataAreaFileSize</dataPath>
+			<field>MaxDataAreaFileSize</field>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>DetailInfobaseUpdateInEventLogMonitor</dataPath>
+			<field>DetailInfobaseUpdateInEventLogMonitor</field>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>FunctionalOptionUseBankCharges</dataPath>
+			<field>FunctionalOptionUseBankCharges</field>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>PostponeEditProhibitionDate</dataPath>
+			<field>PostponeEditProhibitionDate</field>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>UseIntegrationWith1CBuhphone</dataPath>
+			<field>UseIntegrationWith1CBuhphone</field>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>CustomerPaymentDueDate</dataPath>
+			<field>CustomerPaymentDueDate</field>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>UseDataSynchronizationSaaSWithApplicationInInternet</dataPath>
+			<field>UseDataSynchronizationSaaSWithApplicationInInternet</field>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>FormPriceListByAvailabilityInWarehouses</dataPath>
+			<field>FormPriceListByAvailabilityInWarehouses</field>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>FunctionalOptionInventoryReservation</dataPath>
+			<field>FunctionalOptionInventoryReservation</field>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>DontUseSeparationByDataAreas</dataPath>
+			<field>DontUseSeparationByDataAreas</field>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>FilesExchangeDirectoryInLinuxSaaS</dataPath>
+			<field>FilesExchangeDirectoryInLinuxSaaS</field>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>FunctionalOptionDoStaffSchedule</dataPath>
+			<field>FunctionalOptionDoStaffSchedule</field>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>DeleteFunctionalOptionShipDateInHeader</dataPath>
+			<field>DeleteFunctionalOptionShipDateInHeader</field>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>UseSeveralBusinessCalendars</dataPath>
+			<field>UseSeveralBusinessCalendars</field>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>FunctionalOptionUseWorkSubsystem</dataPath>
+			<field>FunctionalOptionUseWorkSubsystem</field>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>ActiveBackgroundJobMaxCount</dataPath>
+			<field>ActiveBackgroundJobMaxCount</field>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>LockMessageOnConfigurationUpdate</dataPath>
+			<field>LockMessageOnConfigurationUpdate</field>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>AdditionalAttributesAndInformationParameters</dataPath>
+			<field>AdditionalAttributesAndInformationParameters</field>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>PasswordForSendingSMS</dataPath>
+			<field>PasswordForSendingSMS</field>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>DeleteFunctionalOptionReceiptDateInHeader</dataPath>
+			<field>DeleteFunctionalOptionReceiptDateInHeader</field>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>ReusableValuesUpdateDateORM</dataPath>
+			<field>ReusableValuesUpdateDateORM</field>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>FunctionalOptionUseDiscountCards</dataPath>
+			<field>FunctionalOptionUseDiscountCards</field>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>ExecuteBackupDataArea</dataPath>
+			<field>ExecuteBackupDataArea</field>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>InstantMessageSendingLocked</dataPath>
+			<field>InstantMessageSendingLocked</field>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>AdditionalReportsAndDataProcessorsIndependentUseSaaS</dataPath>
+			<field>AdditionalReportsAndDataProcessorsIndependentUseSaaS</field>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>SupportServiceSoftwareInterfaceAddress</dataPath>
+			<field>SupportServiceSoftwareInterfaceAddress</field>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>DataExchangeMessagesDirectoryForWindows</dataPath>
+			<field>DataExchangeMessagesDirectoryForWindows</field>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>UsePurchaseOrderStates</dataPath>
+			<field>UsePurchaseOrderStates</field>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>DeleteFunctionalOptionOrderOnReceptionInHeader</dataPath>
+			<field>DeleteFunctionalOptionOrderOnReceptionInHeader</field>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>PurchaseOrdersInProgressStatus</dataPath>
+			<field>PurchaseOrdersInProgressStatus</field>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>UseEDExchangeBetweenCompanies</dataPath>
+			<field>UseEDExchangeBetweenCompanies</field>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>SubordinatedDIBNodeSetup</dataPath>
+			<field>SubordinatedDIBNodeSetup</field>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>UseCommonAdditionalValues</dataPath>
+			<field>UseCommonAdditionalValues</field>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>InfobaseUpdateData</dataPath>
+			<field>InfobaseUpdateData</field>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>Constants.ThereAreAutomaticDiscounts</dataPath>
+			<field>ThereAreAutomaticDiscounts</field>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>ProhibitedDataAreaFileExtensionList</dataPath>
+			<field>ProhibitedDataAreaFileExtensionList</field>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>Constants.BackupSupport</dataPath>
+			<field>BackupSupport</field>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>FunctionalOptionTakingInventoryOnResponsibleStorage</dataPath>
+			<field>FunctionalOptionTakingInventoryOnResponsibleStorage</field>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>Constants.ImportDataExchangeMessage</dataPath>
+			<field>ImportDataExchangeMessage</field>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>Constants.ArchiveCRReceiptsOnCloseCashCRSession</dataPath>
+			<field>ArchiveCRReceiptsOnCloseCashCRSession</field>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>Constants.FunctionalOptionUseTechOperations</dataPath>
+			<field>FunctionalOptionUseTechOperations</field>
+		</field>
+		<item xsi:type="DataSetQuery">
+			<name>GeneralPolicy</name>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>Account_AccountsWithOtherPersons</dataPath>
+				<field>Account_AccountsWithOtherPersons</field>
+				<title xsi:type="v8:LocalStringType">
+					<v8:item>
+						<v8:lang>pl</v8:lang>
+						<v8:content>Account accounts with other persons</v8:content>
+					</v8:item>
+				</title>
+			</field>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>Account_CostSettlement</dataPath>
+				<field>Account_CostSettlement</field>
+				<title xsi:type="v8:LocalStringType">
+					<v8:item>
+						<v8:lang>pl</v8:lang>
+						<v8:content>Account cost settlement</v8:content>
+					</v8:item>
+				</title>
+			</field>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>Account_FixedAssetsUnderContstruction</dataPath>
+				<field>Account_FixedAssetsUnderContstruction</field>
+				<title xsi:type="v8:LocalStringType">
+					<v8:item>
+						<v8:lang>pl</v8:lang>
+						<v8:content>Account fixed assets under contstruction</v8:content>
+					</v8:item>
+				</title>
+			</field>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>Account_PositiveExchangeRateDifferences</dataPath>
+				<field>Account_PositiveExchangeRateDifferences</field>
+				<title xsi:type="v8:LocalStringType">
+					<v8:item>
+						<v8:lang>pl</v8:lang>
+						<v8:content>Account positive exchange rate differences</v8:content>
+					</v8:item>
+				</title>
+			</field>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>Account_PurchaseCreditNoteNegativeCostDifferences</dataPath>
+				<field>Account_PurchaseCreditNoteNegativeCostDifferences</field>
+				<title xsi:type="v8:LocalStringType">
+					<v8:item>
+						<v8:lang>pl</v8:lang>
+						<v8:content>Account purchase credit note negative cost differences</v8:content>
+					</v8:item>
+				</title>
+			</field>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>Account_PurchaseCreditNotePositiveCostDifferences</dataPath>
+				<field>Account_PurchaseCreditNotePositiveCostDifferences</field>
+				<title xsi:type="v8:LocalStringType">
+					<v8:item>
+						<v8:lang>pl</v8:lang>
+						<v8:content>Account purchase credit note positive cost differences</v8:content>
+					</v8:item>
+				</title>
+			</field>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>ExchangeRateForCalculatingSalesAndPurchase</dataPath>
+				<field>ExchangeRateForCalculatingSalesAndPurchase</field>
+				<title xsi:type="v8:LocalStringType">
+					<v8:item>
+						<v8:lang>pl</v8:lang>
+						<v8:content>Exchange rate for calculating sales and purchase</v8:content>
+					</v8:item>
+				</title>
+			</field>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>Payroll_Account_PublicSettlements</dataPath>
+				<field>Payroll_Account_PublicSettlements</field>
+				<title xsi:type="v8:LocalStringType">
+					<v8:item>
+						<v8:lang>pl</v8:lang>
+						<v8:content>Payroll account public settlements</v8:content>
+					</v8:item>
+				</title>
+			</field>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>Payroll_CostArticle_EmployeesBenefits</dataPath>
+				<field>Payroll_CostArticle_EmployeesBenefits</field>
+				<title xsi:type="v8:LocalStringType">
+					<v8:item>
+						<v8:lang>pl</v8:lang>
+						<v8:content>Payroll cost article employees benefits</v8:content>
+					</v8:item>
+				</title>
+			</field>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>Payroll_CostArticle_Salaries</dataPath>
+				<field>Payroll_CostArticle_Salaries</field>
+				<title xsi:type="v8:LocalStringType">
+					<v8:item>
+						<v8:lang>pl</v8:lang>
+						<v8:content>Payroll cost article salaries</v8:content>
+					</v8:item>
+				</title>
+			</field>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>Payroll_IllnessToBonus</dataPath>
+				<field>Payroll_IllnessToBonus</field>
+				<title xsi:type="v8:LocalStringType">
+					<v8:item>
+						<v8:lang>pl</v8:lang>
+						<v8:content>Payroll illness to bonus</v8:content>
+					</v8:item>
+				</title>
+			</field>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>Payroll_Settlements_HealthIns</dataPath>
+				<field>Payroll_Settlements_HealthIns</field>
+				<title xsi:type="v8:LocalStringType">
+					<v8:item>
+						<v8:lang>pl</v8:lang>
+						<v8:content>Payroll settlements health ins</v8:content>
+					</v8:item>
+				</title>
+			</field>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>Payroll_Settlements_IncomeTax</dataPath>
+				<field>Payroll_Settlements_IncomeTax</field>
+				<title xsi:type="v8:LocalStringType">
+					<v8:item>
+						<v8:lang>pl</v8:lang>
+						<v8:content>Payroll settlements income tax</v8:content>
+					</v8:item>
+				</title>
+			</field>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>Payroll_Settlements_SocialIns</dataPath>
+				<field>Payroll_Settlements_SocialIns</field>
+				<title xsi:type="v8:LocalStringType">
+					<v8:item>
+						<v8:lang>pl</v8:lang>
+						<v8:content>Payroll settlements social ins</v8:content>
+					</v8:item>
+				</title>
+			</field>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>Payroll_Settlements_ZUSFPFGSP</dataPath>
+				<field>Payroll_Settlements_ZUSFPFGSP</field>
+				<title xsi:type="v8:LocalStringType">
+					<v8:item>
+						<v8:lang>pl</v8:lang>
+						<v8:content>Payroll settlements ZUSFPFGSP</v8:content>
+					</v8:item>
+				</title>
+			</field>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>PurchaseCreditNoteNegativeExtDimension1</dataPath>
+				<field>PurchaseCreditNoteNegativeExtDimension1</field>
+				<title xsi:type="v8:LocalStringType">
+					<v8:item>
+						<v8:lang>pl</v8:lang>
+						<v8:content>Purchase credit note negative ext dimension1</v8:content>
+					</v8:item>
+				</title>
+			</field>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>PurchaseCreditNoteNegativeExtDimension2</dataPath>
+				<field>PurchaseCreditNoteNegativeExtDimension2</field>
+				<title xsi:type="v8:LocalStringType">
+					<v8:item>
+						<v8:lang>pl</v8:lang>
+						<v8:content>Purchase credit note negative ext dimension2</v8:content>
+					</v8:item>
+				</title>
+			</field>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>PurchaseCreditNoteNegativeExtDimension3</dataPath>
+				<field>PurchaseCreditNoteNegativeExtDimension3</field>
+				<title xsi:type="v8:LocalStringType">
+					<v8:item>
+						<v8:lang>pl</v8:lang>
+						<v8:content>Purchase credit note negative ext dimension3</v8:content>
+					</v8:item>
+				</title>
+			</field>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>PurchaseCreditNotePositiveExtDimension1</dataPath>
+				<field>PurchaseCreditNotePositiveExtDimension1</field>
+				<title xsi:type="v8:LocalStringType">
+					<v8:item>
+						<v8:lang>pl</v8:lang>
+						<v8:content>Purchase credit note positive ext dimension1</v8:content>
+					</v8:item>
+				</title>
+			</field>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>PurchaseCreditNotePositiveExtDimension2</dataPath>
+				<field>PurchaseCreditNotePositiveExtDimension2</field>
+				<title xsi:type="v8:LocalStringType">
+					<v8:item>
+						<v8:lang>pl</v8:lang>
+						<v8:content>Purchase credit note positive ext dimension2</v8:content>
+					</v8:item>
+				</title>
+			</field>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>PurchaseCreditNotePositiveExtDimension3</dataPath>
+				<field>PurchaseCreditNotePositiveExtDimension3</field>
+				<title xsi:type="v8:LocalStringType">
+					<v8:item>
+						<v8:lang>pl</v8:lang>
+						<v8:content>Purchase credit note positive ext dimension3</v8:content>
+					</v8:item>
+				</title>
+			</field>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>VATCalculationMethod</dataPath>
+				<field>VATCalculationMethod</field>
+				<title xsi:type="v8:LocalStringType">
+					<v8:item>
+						<v8:lang>en</v8:lang>
+						<v8:content>VATCalculation method</v8:content>
+					</v8:item>
+					<v8:item>
+						<v8:lang>pl</v8:lang>
+						<v8:content>MetodaObliczaniaVAT</v8:content>
+					</v8:item>
+				</title>
+			</field>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>Account_DeferredIncomesSettlements</dataPath>
+				<field>Account_DeferredIncomesSettlements</field>
+				<title xsi:type="v8:LocalStringType">
+					<v8:item>
+						<v8:lang>pl</v8:lang>
+						<v8:content>Account deferred incomes settlements</v8:content>
+					</v8:item>
+				</title>
+			</field>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>Account_PrepaymentsToSuppliersSettlements</dataPath>
+				<field>Account_PrepaymentsToSuppliersSettlements</field>
+				<title xsi:type="v8:LocalStringType">
+					<v8:item>
+						<v8:lang>pl</v8:lang>
+						<v8:content>Account prepayments to suppliers settlements</v8:content>
+					</v8:item>
+				</title>
+			</field>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>Account_EmployeesSalariesSettlements</dataPath>
+				<field>Account_EmployeesSalariesSettlements</field>
+				<title xsi:type="v8:LocalStringType">
+					<v8:item>
+						<v8:lang>pl</v8:lang>
+						<v8:content>Account employees salaries settlements</v8:content>
+					</v8:item>
+				</title>
+			</field>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>Account_OtherSettlementsWithEmployees</dataPath>
+				<field>Account_OtherSettlementsWithEmployees</field>
+				<title xsi:type="v8:LocalStringType">
+					<v8:item>
+						<v8:lang>pl</v8:lang>
+						<v8:content>Account other settlements with employees</v8:content>
+					</v8:item>
+				</title>
+			</field>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>Account_MaterialsConsumptionDuringProduction</dataPath>
+				<field>Account_MaterialsConsumptionDuringProduction</field>
+				<title xsi:type="v8:LocalStringType">
+					<v8:item>
+						<v8:lang>pl</v8:lang>
+						<v8:content>Account materials consumption during production</v8:content>
+					</v8:item>
+				</title>
+			</field>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>MaterialsConsumptionDuringProductionExtDimension1</dataPath>
+				<field>MaterialsConsumptionDuringProductionExtDimension1</field>
+				<title xsi:type="v8:LocalStringType">
+					<v8:item>
+						<v8:lang>pl</v8:lang>
+						<v8:content>Materials consumption during production ext dimension1</v8:content>
+					</v8:item>
+				</title>
+			</field>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>MaterialsConsumptionDuringProductionExtDimension2</dataPath>
+				<field>MaterialsConsumptionDuringProductionExtDimension2</field>
+				<title xsi:type="v8:LocalStringType">
+					<v8:item>
+						<v8:lang>pl</v8:lang>
+						<v8:content>Materials consumption during production ext dimension2</v8:content>
+					</v8:item>
+				</title>
+			</field>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>MaterialsConsumptionDuringProductionExtDimension3</dataPath>
+				<field>MaterialsConsumptionDuringProductionExtDimension3</field>
+				<title xsi:type="v8:LocalStringType">
+					<v8:item>
+						<v8:lang>pl</v8:lang>
+						<v8:content>Materials consumption during production ext dimension3</v8:content>
+					</v8:item>
+				</title>
+			</field>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>Account_PurchasePrepaymentInvoiceSettlement</dataPath>
+				<field>Account_PurchasePrepaymentInvoiceSettlement</field>
+				<title xsi:type="v8:LocalStringType">
+					<v8:item>
+						<v8:lang>pl</v8:lang>
+						<v8:content>Account purchase prepayment invoice settlement</v8:content>
+					</v8:item>
+				</title>
+			</field>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>Account_PurchasePrepaymentInvoiceSettlementExtDimension1</dataPath>
+				<field>Account_PurchasePrepaymentInvoiceSettlementExtDimension1</field>
+				<title xsi:type="v8:LocalStringType">
+					<v8:item>
+						<v8:lang>pl</v8:lang>
+						<v8:content>Account purchase prepayment invoice settlement ext dimension1</v8:content>
+					</v8:item>
+				</title>
+			</field>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>Account_PurchasePrepaymentInvoiceSettlementExtDimension2</dataPath>
+				<field>Account_PurchasePrepaymentInvoiceSettlementExtDimension2</field>
+				<title xsi:type="v8:LocalStringType">
+					<v8:item>
+						<v8:lang>pl</v8:lang>
+						<v8:content>Account purchase prepayment invoice settlement ext dimension2</v8:content>
+					</v8:item>
+				</title>
+			</field>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>Account_PurchasePrepaymentInvoiceSettlementExtDimension3</dataPath>
+				<field>Account_PurchasePrepaymentInvoiceSettlementExtDimension3</field>
+				<title xsi:type="v8:LocalStringType">
+					<v8:item>
+						<v8:lang>pl</v8:lang>
+						<v8:content>Account purchase prepayment invoice settlement ext dimension3</v8:content>
+					</v8:item>
+				</title>
+			</field>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>Account_SalesPrepaymentInvoiceSettlement</dataPath>
+				<field>Account_SalesPrepaymentInvoiceSettlement</field>
+				<title xsi:type="v8:LocalStringType">
+					<v8:item>
+						<v8:lang>pl</v8:lang>
+						<v8:content>Account sales prepayment invoice settlement</v8:content>
+					</v8:item>
+				</title>
+			</field>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>Account_SalesPrepaymentInvoiceSettlementExtDimension1</dataPath>
+				<field>Account_SalesPrepaymentInvoiceSettlementExtDimension1</field>
+				<title xsi:type="v8:LocalStringType">
+					<v8:item>
+						<v8:lang>pl</v8:lang>
+						<v8:content>Account sales prepayment invoice settlement ext dimension1</v8:content>
+					</v8:item>
+				</title>
+			</field>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>Account_SalesPrepaymentInvoiceSettlementExtDimension2</dataPath>
+				<field>Account_SalesPrepaymentInvoiceSettlementExtDimension2</field>
+				<title xsi:type="v8:LocalStringType">
+					<v8:item>
+						<v8:lang>pl</v8:lang>
+						<v8:content>Account sales prepayment invoice settlement ext dimension2</v8:content>
+					</v8:item>
+				</title>
+			</field>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>Account_SalesPrepaymentInvoiceSettlementExtDimension3</dataPath>
+				<field>Account_SalesPrepaymentInvoiceSettlementExtDimension3</field>
+				<title xsi:type="v8:LocalStringType">
+					<v8:item>
+						<v8:lang>pl</v8:lang>
+						<v8:content>Account sales prepayment invoice settlement ext dimension3</v8:content>
+					</v8:item>
+				</title>
+			</field>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>Account_SalesCreditNoteVAT</dataPath>
+				<field>Account_SalesCreditNoteVAT</field>
+				<title xsi:type="v8:LocalStringType">
+					<v8:item>
+						<v8:lang>pl</v8:lang>
+						<v8:content>Account sales credit note VAT</v8:content>
+					</v8:item>
+				</title>
+			</field>
+			<dataSource>DataSource1</dataSource>
+			<query>SELECT
+	BookkeepingAccountingPolicyGeneralSliceLast.Account_AccountsWithOtherPersons,
+	BookkeepingAccountingPolicyGeneralSliceLast.Account_MaterialsConsumptionDuringProduction,
+	BookkeepingAccountingPolicyGeneralSliceLast.Account_CostSettlement,
+	BookkeepingAccountingPolicyGeneralSliceLast.Account_FixedAssetsUnderContstruction,
+	BookkeepingAccountingPolicyGeneralSliceLast.Account_PositiveExchangeRateDifferences,
+	BookkeepingAccountingPolicyGeneralSliceLast.Account_PurchaseCreditNoteNegativeCostDifferences,
+	BookkeepingAccountingPolicyGeneralSliceLast.Account_PurchaseCreditNotePositiveCostDifferences,
+	BookkeepingAccountingPolicyGeneralSliceLast.MaterialsConsumptionDuringProductionExtDimension1,
+	BookkeepingAccountingPolicyGeneralSliceLast.MaterialsConsumptionDuringProductionExtDimension2,
+	BookkeepingAccountingPolicyGeneralSliceLast.MaterialsConsumptionDuringProductionExtDimension3,
+	BookkeepingAccountingPolicyGeneralSliceLast.ExchangeRateForCalculatingSalesAndPurchase,
+	BookkeepingAccountingPolicyGeneralSliceLast.Payroll_Account_PublicSettlements,
+	BookkeepingAccountingPolicyGeneralSliceLast.Payroll_CostArticle_EmployeesBenefits,
+	BookkeepingAccountingPolicyGeneralSliceLast.Payroll_CostArticle_Salaries,
+	BookkeepingAccountingPolicyGeneralSliceLast.Payroll_Settlements_HealthIns,
+	BookkeepingAccountingPolicyGeneralSliceLast.Payroll_Settlements_IncomeTax,
+	BookkeepingAccountingPolicyGeneralSliceLast.Payroll_Settlements_SocialIns,
+	BookkeepingAccountingPolicyGeneralSliceLast.Payroll_Settlements_ZUSFPFGSP,
+	BookkeepingAccountingPolicyGeneralSliceLast.PurchaseCreditNoteNegativeExtDimension1,
+	BookkeepingAccountingPolicyGeneralSliceLast.PurchaseCreditNoteNegativeExtDimension2,
+	BookkeepingAccountingPolicyGeneralSliceLast.PurchaseCreditNoteNegativeExtDimension3,
+	BookkeepingAccountingPolicyGeneralSliceLast.PurchaseCreditNotePositiveExtDimension1,
+	BookkeepingAccountingPolicyGeneralSliceLast.PurchaseCreditNotePositiveExtDimension2,
+	BookkeepingAccountingPolicyGeneralSliceLast.PurchaseCreditNotePositiveExtDimension3,
+	BookkeepingAccountingPolicyGeneralSliceLast.VATCalculationMethod,
+	BookkeepingAccountingPolicyGeneralSliceLast.Payroll_IllnessToBonus,
+	BookkeepingAccountingPolicyGeneralSliceLast.Account_DeferredIncomesSettlements,
+	BookkeepingAccountingPolicyGeneralSliceLast.Account_PrepaymentsToSuppliersSettlements,
+	BookkeepingAccountingPolicyGeneralSliceLast.Account_EmployeesSalariesSettlements,
+	BookkeepingAccountingPolicyGeneralSliceLast.Account_OtherSettlementsWithEmployees,
+	BookkeepingAccountingPolicyGeneralSliceLast.Account_PurchasePrepaymentInvoiceSettlement,
+	BookkeepingAccountingPolicyGeneralSliceLast.Account_PurchasePrepaymentInvoiceSettlementExtDimension1,
+	BookkeepingAccountingPolicyGeneralSliceLast.Account_PurchasePrepaymentInvoiceSettlementExtDimension2,
+	BookkeepingAccountingPolicyGeneralSliceLast.Account_PurchasePrepaymentInvoiceSettlementExtDimension3,
+	BookkeepingAccountingPolicyGeneralSliceLast.Account_SalesPrepaymentInvoiceSettlement,
+	BookkeepingAccountingPolicyGeneralSliceLast.Account_SalesPrepaymentInvoiceSettlementExtDimension1,
+	BookkeepingAccountingPolicyGeneralSliceLast.Account_SalesPrepaymentInvoiceSettlementExtDimension2,
+	BookkeepingAccountingPolicyGeneralSliceLast.Account_SalesPrepaymentInvoiceSettlementExtDimension3,
+	BookkeepingAccountingPolicyGeneralSliceLast.Account_SalesCreditNoteVAT
+FROM
+	InformationRegister.BookkeepingAccountingPolicyGeneral.SliceLast(&amp;Period, Company = &amp;Company) AS BookkeepingAccountingPolicyGeneralSliceLast</query>
+		</item>
+		<item xsi:type="DataSetQuery">
+			<name>DefaultAccountGoodsInventoryMovements</name>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>Account_GoodsIssue</dataPath>
+				<field>Account_GoodsIssue</field>
+				<title xsi:type="v8:LocalStringType">
+					<v8:item>
+						<v8:lang>pl</v8:lang>
+						<v8:content>Account goods issue</v8:content>
+					</v8:item>
+				</title>
+			</field>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>Account_GoodsReceipt</dataPath>
+				<field>Account_GoodsReceipt</field>
+				<title xsi:type="v8:LocalStringType">
+					<v8:item>
+						<v8:lang>pl</v8:lang>
+						<v8:content>Account goods receipt</v8:content>
+					</v8:item>
+				</title>
+			</field>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>GoodsIssueExtDimension1</dataPath>
+				<field>GoodsIssueExtDimension1</field>
+				<title xsi:type="v8:LocalStringType">
+					<v8:item>
+						<v8:lang>pl</v8:lang>
+						<v8:content>Goods issue ext dimension1</v8:content>
+					</v8:item>
+				</title>
+			</field>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>GoodsIssueExtDimension2</dataPath>
+				<field>GoodsIssueExtDimension2</field>
+				<title xsi:type="v8:LocalStringType">
+					<v8:item>
+						<v8:lang>pl</v8:lang>
+						<v8:content>Goods issue ext dimension2</v8:content>
+					</v8:item>
+				</title>
+			</field>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>GoodsIssueExtDimension3</dataPath>
+				<field>GoodsIssueExtDimension3</field>
+				<title xsi:type="v8:LocalStringType">
+					<v8:item>
+						<v8:lang>pl</v8:lang>
+						<v8:content>Goods issue ext dimension3</v8:content>
+					</v8:item>
+				</title>
+			</field>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>GoodsReceiptExtDimension1</dataPath>
+				<field>GoodsReceiptExtDimension1</field>
+				<title xsi:type="v8:LocalStringType">
+					<v8:item>
+						<v8:lang>pl</v8:lang>
+						<v8:content>Goods receipt ext dimension1</v8:content>
+					</v8:item>
+				</title>
+			</field>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>GoodsReceiptExtDimension2</dataPath>
+				<field>GoodsReceiptExtDimension2</field>
+				<title xsi:type="v8:LocalStringType">
+					<v8:item>
+						<v8:lang>pl</v8:lang>
+						<v8:content>Goods receipt ext dimension2</v8:content>
+					</v8:item>
+				</title>
+			</field>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>GoodsReceiptExtDimension3</dataPath>
+				<field>GoodsReceiptExtDimension3</field>
+				<title xsi:type="v8:LocalStringType">
+					<v8:item>
+						<v8:lang>pl</v8:lang>
+						<v8:content>Goods receipt ext dimension3</v8:content>
+					</v8:item>
+				</title>
+			</field>
+			<dataSource>DataSource1</dataSource>
+			<query>SELECT
+	BookkeepingDefaultAccountGoodsInventoryMovementsSliceLast.Account_GoodsReceipt,
+	BookkeepingDefaultAccountGoodsInventoryMovementsSliceLast.GoodsReceiptExtDimension1,
+	BookkeepingDefaultAccountGoodsInventoryMovementsSliceLast.GoodsReceiptExtDimension2,
+	BookkeepingDefaultAccountGoodsInventoryMovementsSliceLast.GoodsReceiptExtDimension3,
+	BookkeepingDefaultAccountGoodsInventoryMovementsSliceLast.Account_GoodsIssue,
+	BookkeepingDefaultAccountGoodsInventoryMovementsSliceLast.GoodsIssueExtDimension1,
+	BookkeepingDefaultAccountGoodsInventoryMovementsSliceLast.GoodsIssueExtDimension2,
+	BookkeepingDefaultAccountGoodsInventoryMovementsSliceLast.GoodsIssueExtDimension3
+FROM
+	InformationRegister.BookkeepingDefaultAccountGoodsInventoryMovements.SliceLast(&amp;Period, Company = &amp;Company) AS BookkeepingDefaultAccountGoodsInventoryMovementsSliceLast</query>
+		</item>
+		<item xsi:type="DataSetQuery">
+			<name>ExchangeRateDifferences</name>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>Account</dataPath>
+				<field>Account</field>
+				<title xsi:type="v8:LocalStringType">
+					<v8:item>
+						<v8:lang>pl</v8:lang>
+						<v8:content>Account</v8:content>
+					</v8:item>
+					<v8:item>
+						<v8:lang>ru</v8:lang>
+						<v8:content>Счет</v8:content>
+					</v8:item>
+				</title>
+			</field>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>ExtDimension1</dataPath>
+				<field>ExtDimension1</field>
+				<title xsi:type="v8:LocalStringType">
+					<v8:item>
+						<v8:lang>pl</v8:lang>
+						<v8:content>Ext dimension1</v8:content>
+					</v8:item>
+				</title>
+			</field>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>ExtDimension2</dataPath>
+				<field>ExtDimension2</field>
+				<title xsi:type="v8:LocalStringType">
+					<v8:item>
+						<v8:lang>pl</v8:lang>
+						<v8:content>Ext dimension2</v8:content>
+					</v8:item>
+				</title>
+			</field>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>ExtDimension3</dataPath>
+				<field>ExtDimension3</field>
+				<title xsi:type="v8:LocalStringType">
+					<v8:item>
+						<v8:lang>pl</v8:lang>
+						<v8:content>Ext dimension3</v8:content>
+					</v8:item>
+				</title>
+			</field>
+			<dataSource>DataSource1</dataSource>
+			<query>SELECT
+	BookkeepingAccountingPolicyExchangeRateDifferenceSliceLast.Account,
+	BookkeepingAccountingPolicyExchangeRateDifferenceSliceLast.ExtDimension1,
+	BookkeepingAccountingPolicyExchangeRateDifferenceSliceLast.ExtDimension2,
+	BookkeepingAccountingPolicyExchangeRateDifferenceSliceLast.ExtDimension3
+FROM
+	InformationRegister.BookkeepingAccountingPolicyExchangeRateDifference.SliceLast(
+			&amp;Period,
+			Company = &amp;Company
+				AND CarriedOut = &amp;CarriedOut
+				AND Sign = &amp;Sign
+				AND GroupKind = &amp;GroupKind) AS BookkeepingAccountingPolicyExchangeRateDifferenceSliceLast</query>
+		</item>
+		<item xsi:type="DataSetQuery">
+			<name>Constants</name>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>NationalCurrency</dataPath>
+				<field>NationalCurrency</field>
+				<title xsi:type="v8:LocalStringType">
+					<v8:item>
+						<v8:lang>pl</v8:lang>
+						<v8:content>National currency</v8:content>
+					</v8:item>
+					<v8:item>
+						<v8:lang>ru</v8:lang>
+						<v8:content>National currency</v8:content>
+					</v8:item>
+				</title>
+			</field>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>DeleteShowCommandAdditionalPrintForms</dataPath>
+				<field>DeleteShowCommandAdditionalPrintForms</field>
+			</field>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>LastClientSessionStartDate</dataPath>
+				<field>LastClientSessionStartDate</field>
+			</field>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>DiscountsMarkupsSharedUsageOptions</dataPath>
+				<field>DiscountsMarkupsSharedUsageOptions</field>
+			</field>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>InfobaseAdministrationParameters</dataPath>
+				<field>InfobaseAdministrationParameters</field>
+			</field>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>UseDataSynchronizationSaaS</dataPath>
+				<field>UseDataSynchronizationSaaS</field>
+			</field>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>PriceListShowFullDescr</dataPath>
+				<field>PriceListShowFullDescr</field>
+			</field>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>FunctionalOptionTransferInventoryOnSafeCustody</dataPath>
+				<field>FunctionalOptionTransferInventoryOnSafeCustody</field>
+			</field>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>UseExchangeWithPeripheralsOffline</dataPath>
+				<field>UseExchangeWithPeripheralsOffline</field>
+			</field>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>ControlBalancesDuringCreationCRReceipts</dataPath>
+				<field>ControlBalancesDuringCreationCRReceipts</field>
+			</field>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>ServiceEventsParameters</dataPath>
+				<field>ServiceEventsParameters</field>
+			</field>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>FunctionalCurrencyTransactionsAccounting</dataPath>
+				<field>FunctionalCurrencyTransactionsAccounting</field>
+			</field>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>DeleteDSProviderType</dataPath>
+				<field>DeleteDSProviderType</field>
+			</field>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>ProductionOrdersInProgressStatus</dataPath>
+				<field>ProductionOrdersInProgressStatus</field>
+			</field>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>ExchangeRateDifferencesCalculationFrequency</dataPath>
+				<field>ExchangeRateDifferencesCalculationFrequency</field>
+			</field>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>AdditionalReportsAndDataProcessorsProceduralTasksMinIntervalSaaS</dataPath>
+				<field>AdditionalReportsAndDataProcessorsProceduralTasksMinIntervalSaaS</field>
+			</field>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>ActivityKind</dataPath>
+				<field>ActivityKind</field>
+			</field>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>NationalLanguage</dataPath>
+				<field>NationalLanguage</field>
+			</field>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>InitialSettingOpeningBalancesFilled</dataPath>
+				<field>InitialSettingOpeningBalancesFilled</field>
+			</field>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>UseCustomerOrderStates</dataPath>
+				<field>UseCustomerOrderStates</field>
+			</field>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>AutomaticallyConfigurePermissionsInSecurityProfiles</dataPath>
+				<field>AutomaticallyConfigurePermissionsInSecurityProfiles</field>
+			</field>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>FunctionalOptionAccountingRetail</dataPath>
+				<field>FunctionalOptionAccountingRetail</field>
+			</field>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>LimitAccessOnRecordsLevel</dataPath>
+				<field>LimitAccessOnRecordsLevel</field>
+			</field>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>SystemChangesDescribeSections</dataPath>
+				<field>SystemChangesDescribeSections</field>
+			</field>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>DataAreasPrefix</dataPath>
+				<field>DataAreasPrefix</field>
+			</field>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>MasterNode</dataPath>
+				<field>MasterNode</field>
+			</field>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>InfobaseSecurityProfile</dataPath>
+				<field>InfobaseSecurityProfile</field>
+			</field>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>StandardInterfaceUserOData</dataPath>
+				<field>StandardInterfaceUserOData</field>
+			</field>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>AccountingBySubsidiaryCompany</dataPath>
+				<field>AccountingBySubsidiaryCompany</field>
+			</field>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>InformationCentreConferenceUserName</dataPath>
+				<field>InformationCentreConferenceUserName</field>
+			</field>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>FunctionalOptionAccountingFixedAssets</dataPath>
+				<field>FunctionalOptionAccountingFixedAssets</field>
+			</field>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>FunctionalOptionUseExchangeWithSites</dataPath>
+				<field>FunctionalOptionUseExchangeWithSites</field>
+			</field>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>AddressClassifierDataSource</dataPath>
+				<field>AddressClassifierDataSource</field>
+			</field>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>BackupParameters</dataPath>
+				<field>BackupParameters</field>
+			</field>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>ConferenceManagementAddress</dataPath>
+				<field>ConferenceManagementAddress</field>
+			</field>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>FunctionalOptionUseSubsystemProduction</dataPath>
+				<field>FunctionalOptionUseSubsystemProduction</field>
+			</field>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>DeleteFunctionalOptionReceiptDateInTabularSection</dataPath>
+				<field>DeleteFunctionalOptionReceiptDateInTabularSection</field>
+			</field>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>EDOperationContext</dataPath>
+				<field>EDOperationContext</field>
+			</field>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>DataImportTransactionItemCount</dataPath>
+				<field>DataImportTransactionItemCount</field>
+			</field>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>ControlApplicationExternalAddress</dataPath>
+				<field>ControlApplicationExternalAddress</field>
+			</field>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>AddressPublicationsInformationBaseOnWeb</dataPath>
+				<field>AddressPublicationsInformationBaseOnWeb</field>
+			</field>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>FunctionalOptionReceiveGoodsOnCommission</dataPath>
+				<field>FunctionalOptionReceiveGoodsOnCommission</field>
+			</field>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>FunctionalOptionAccountingByMultipleCompanies</dataPath>
+				<field>FunctionalOptionAccountingByMultipleCompanies</field>
+			</field>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>InfobaseUsageMode</dataPath>
+				<field>InfobaseUsageMode</field>
+			</field>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>DeleteContractControllingOnPosting</dataPath>
+				<field>DeleteContractControllingOnPosting</field>
+			</field>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>BookkeepingFunctionalityConstant</dataPath>
+				<field>BookkeepingFunctionalityConstant</field>
+			</field>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>UseDataSynchronizationInLocalMode</dataPath>
+				<field>UseDataSynchronizationInLocalMode</field>
+			</field>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>UseSeparationByDataAreas</dataPath>
+				<field>UseSeparationByDataAreas</field>
+			</field>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>FunctionalOptionAccountingInVariousUOM</dataPath>
+				<field>FunctionalOptionAccountingInVariousUOM</field>
+			</field>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>VendorPaymentDueDate</dataPath>
+				<field>VendorPaymentDueDate</field>
+			</field>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>DeleteEnterInformationForDeclarationsOnAlcoholicProducts</dataPath>
+				<field>DeleteEnterInformationForDeclarationsOnAlcoholicProducts</field>
+			</field>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>SystemTitle</dataPath>
+				<field>SystemTitle</field>
+			</field>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>PerformanceRatingRecordPeriod</dataPath>
+				<field>PerformanceRatingRecordPeriod</field>
+			</field>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>DeleteFunctionalOptionOrderOnShipmentInTabularSection</dataPath>
+				<field>DeleteFunctionalOptionOrderOnShipmentInTabularSection</field>
+			</field>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>ProductsAndServicesSKUInContent</dataPath>
+				<field>ProductsAndServicesSKUInContent</field>
+			</field>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>FilesExchangeDirectorySaaS</dataPath>
+				<field>FilesExchangeDirectorySaaS</field>
+			</field>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>UseDataSynchronization</dataPath>
+				<field>UseDataSynchronization</field>
+			</field>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>UseEDExchange</dataPath>
+				<field>UseEDExchange</field>
+			</field>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>DeleteFunctionalOptionShipDateInTabularSection</dataPath>
+				<field>DeleteFunctionalOptionShipDateInTabularSection</field>
+			</field>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>SubordinatedDIBNodeSettingsFinished</dataPath>
+				<field>SubordinatedDIBNodeSettingsFinished</field>
+			</field>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>CustomerInvoiceNote1137UsageBegin</dataPath>
+				<field>CustomerInvoiceNote1137UsageBegin</field>
+			</field>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>UseSeveralCompanies</dataPath>
+				<field>UseSeveralCompanies</field>
+			</field>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>ProhibitImportFilesByExtension</dataPath>
+				<field>ProhibitImportFilesByExtension</field>
+			</field>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>DataAreaKey</dataPath>
+				<field>DataAreaKey</field>
+			</field>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>LastPerformanceMeasurementUpdateDateUTC</dataPath>
+				<field>LastPerformanceMeasurementUpdateDateUTC</field>
+			</field>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>CustomerOrdersCompletedStatus</dataPath>
+				<field>CustomerOrdersCompletedStatus</field>
+			</field>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>UseUsersGroups</dataPath>
+				<field>UseUsersGroups</field>
+			</field>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>DataAreaPresentation</dataPath>
+				<field>DataAreaPresentation</field>
+			</field>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>SMSProvider</dataPath>
+				<field>SMSProvider</field>
+			</field>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>MaximumFileSize</dataPath>
+				<field>MaximumFileSize</field>
+			</field>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>AuthorizationContext</dataPath>
+				<field>AuthorizationContext</field>
+			</field>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>AccessLimitationParameters</dataPath>
+				<field>AccessLimitationParameters</field>
+			</field>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>ServiceManagerOfficeUserName</dataPath>
+				<field>ServiceManagerOfficeUserName</field>
+			</field>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>PrefixForExchangeWithSite</dataPath>
+				<field>PrefixForExchangeWithSite</field>
+			</field>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>UseExternalUsers</dataPath>
+				<field>UseExternalUsers</field>
+			</field>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>FunctionalOptionAccountingDoIncomeTax</dataPath>
+				<field>FunctionalOptionAccountingDoIncomeTax</field>
+			</field>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>DataExchangeMessageFromMainNode</dataPath>
+				<field>DataExchangeMessageFromMainNode</field>
+			</field>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>ReportVariantParameters</dataPath>
+				<field>ReportVariantParameters</field>
+			</field>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>ConfigurationUpdateStatus</dataPath>
+				<field>ConfigurationUpdateStatus</field>
+			</field>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>FunctionalOptionTransferGoodsOnCommission</dataPath>
+				<field>FunctionalOptionTransferGoodsOnCommission</field>
+			</field>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>ThisIsOfflineWorkplace</dataPath>
+				<field>ThisIsOfflineWorkplace</field>
+			</field>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>FunctionalOptionUseOrderWarehouse</dataPath>
+				<field>FunctionalOptionUseOrderWarehouse</field>
+			</field>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>FunctionalOptionUseDiscountsMarkups</dataPath>
+				<field>FunctionalOptionUseDiscountsMarkups</field>
+			</field>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>PurchaseOrdersCompletedStatus</dataPath>
+				<field>PurchaseOrdersCompletedStatus</field>
+			</field>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>DeleteSignAlgorithm</dataPath>
+				<field>DeleteSignAlgorithm</field>
+			</field>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>ControlBalancesOnPosting</dataPath>
+				<field>ControlBalancesOnPosting</field>
+			</field>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>FunctionalOptionAccountingByCells</dataPath>
+				<field>FunctionalOptionAccountingByCells</field>
+			</field>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>UseObjectVersioning</dataPath>
+				<field>UseObjectVersioning</field>
+			</field>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>PlannedTotalsOptimizationDate</dataPath>
+				<field>PlannedTotalsOptimizationDate</field>
+			</field>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>FunctionalOptionUseBudgeting</dataPath>
+				<field>FunctionalOptionUseBudgeting</field>
+			</field>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>DistributedInformationBaseNodePrefix</dataPath>
+				<field>DistributedInformationBaseNodePrefix</field>
+			</field>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>UseCounterpartiesAccessGroups</dataPath>
+				<field>UseCounterpartiesAccessGroups</field>
+			</field>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>UseAdditionalAttributesAndInformation</dataPath>
+				<field>UseAdditionalAttributesAndInformation</field>
+			</field>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>DeleteEncryptionAlgorithm</dataPath>
+				<field>DeleteEncryptionAlgorithm</field>
+			</field>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>DeleteHashAlgorithm</dataPath>
+				<field>DeleteHashAlgorithm</field>
+			</field>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>VerifyDigitalSignaturesAtServer</dataPath>
+				<field>VerifyDigitalSignaturesAtServer</field>
+			</field>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>InfobaseIdentifier</dataPath>
+				<field>InfobaseIdentifier</field>
+			</field>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>PriceListShowCode</dataPath>
+				<field>PriceListShowCode</field>
+			</field>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>SynchronizeDataWithApplicationInInternetOnApplicationStart</dataPath>
+				<field>SynchronizeDataWithApplicationInInternetOnApplicationStart</field>
+			</field>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>DoNotUseSeveralCompanies</dataPath>
+				<field>DoNotUseSeveralCompanies</field>
+			</field>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>OffsetAdvancesDebtsAutomatically</dataPath>
+				<field>OffsetAdvancesDebtsAutomatically</field>
+			</field>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>DeleteFunctionalOptionOrderOnTransferInTabularSection</dataPath>
+				<field>DeleteFunctionalOptionOrderOnTransferInTabularSection</field>
+			</field>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>ScheduledJobsExecutionSettings</dataPath>
+				<field>ScheduledJobsExecutionSettings</field>
+			</field>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>FileExtensionListOpenDocument</dataPath>
+				<field>FileExtensionListOpenDocument</field>
+			</field>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>DoNotPostDocumentsWithIncorrectContracts</dataPath>
+				<field>DoNotPostDocumentsWithIncorrectContracts</field>
+			</field>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>CurrencyQuotationType</dataPath>
+				<field>CurrencyQuotationType</field>
+			</field>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>DeleteFunctionalOptionOrderOnShipmentInHeader</dataPath>
+				<field>DeleteFunctionalOptionOrderOnShipmentInHeader</field>
+			</field>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>DataChangesRecorded</dataPath>
+				<field>DataChangesRecorded</field>
+			</field>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>SynchronizeDataWithApplicationInInternetOnApplicationEnd</dataPath>
+				<field>SynchronizeDataWithApplicationInInternetOnApplicationEnd</field>
+			</field>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>DataExchangeMessagesDirectoryForLinux</dataPath>
+				<field>DataExchangeMessagesDirectoryForLinux</field>
+			</field>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>UsersWorkParameters</dataPath>
+				<field>UsersWorkParameters</field>
+			</field>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>HomeCountry</dataPath>
+				<field>HomeCountry</field>
+			</field>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>AllowAdditionalReportsAndDataProcessorsPerformByProceduralTasksSaaS</dataPath>
+				<field>AllowAdditionalReportsAndDataProcessorsPerformByProceduralTasksSaaS</field>
+			</field>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>InformationCenterConferenceUserPassword</dataPath>
+				<field>InformationCenterConferenceUserPassword</field>
+			</field>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>DataAreasOpenDocumentFileExtensionList</dataPath>
+				<field>DataAreasOpenDocumentFileExtensionList</field>
+			</field>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>ServiceManagerOfficeUserPassword</dataPath>
+				<field>ServiceManagerOfficeUserPassword</field>
+			</field>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>CopyDataAreasFromPrototype</dataPath>
+				<field>CopyDataAreasFromPrototype</field>
+			</field>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>ServiceManagerEndPoint</dataPath>
+				<field>ServiceManagerEndPoint</field>
+			</field>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>ExtractFileTextsAtServer</dataPath>
+				<field>ExtractFileTextsAtServer</field>
+			</field>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>RetryDataExportExchangeMessagesBeforeStart</dataPath>
+				<field>RetryDataExportExchangeMessagesBeforeStart</field>
+			</field>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>UseAdditionalReportsAndDataProcessors</dataPath>
+				<field>UseAdditionalReportsAndDataProcessors</field>
+			</field>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>ProductionOrdersCompletedStatus</dataPath>
+				<field>ProductionOrdersCompletedStatus</field>
+			</field>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>RFBanksClassifierVersion</dataPath>
+				<field>RFBanksClassifierVersion</field>
+			</field>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>ConnectionToOUSServiceFromServer</dataPath>
+				<field>ConnectionToOUSServiceFromServer</field>
+			</field>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>CreateDigitalSignaturesAtServer</dataPath>
+				<field>CreateDigitalSignaturesAtServer</field>
+			</field>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>FunctionalOptionTransferRawMaterialsForProcessing</dataPath>
+				<field>FunctionalOptionTransferRawMaterialsForProcessing</field>
+			</field>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>FunctionalOptionAccountingByMultipleWarehouses</dataPath>
+				<field>FunctionalOptionAccountingByMultipleWarehouses</field>
+			</field>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>FunctionalOptionUseSubsystemPayroll</dataPath>
+				<field>FunctionalOptionUseSubsystemPayroll</field>
+			</field>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>UseAdditionalReportsDirectoryAndDataprocessorsSaaS</dataPath>
+				<field>UseAdditionalReportsDirectoryAndDataprocessorsSaaS</field>
+			</field>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>SupportServiceSoftwareInterfaceUserPassword</dataPath>
+				<field>SupportServiceSoftwareInterfaceUserPassword</field>
+			</field>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>FunctionalOptionUseBatches</dataPath>
+				<field>FunctionalOptionUseBatches</field>
+			</field>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>DeleteUnissuedReceiptsOnCloseCashCRSession</dataPath>
+				<field>DeleteUnissuedReceiptsOnCloseCashCRSession</field>
+			</field>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>EnterInformationForDeclarationsOnAlcoholicProducts</dataPath>
+				<field>EnterInformationForDeclarationsOnAlcoholicProducts</field>
+			</field>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>InternalServiceManagerURL</dataPath>
+				<field>InternalServiceManagerURL</field>
+			</field>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>SecurityProfilesAreUsed</dataPath>
+				<field>SecurityProfilesAreUsed</field>
+			</field>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>UseElectronicDocumentsDelayedSending</dataPath>
+				<field>UseElectronicDocumentsDelayedSending</field>
+			</field>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>AddressForAccountPasswordRecovery</dataPath>
+				<field>AddressForAccountPasswordRecovery</field>
+			</field>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>FunctionalOptionTolling</dataPath>
+				<field>FunctionalOptionTolling</field>
+			</field>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>UseProductionOrderStates</dataPath>
+				<field>UseProductionOrderStates</field>
+			</field>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>UseEncryption</dataPath>
+				<field>UseEncryption</field>
+			</field>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>FunctionalOptionAccountingByProjects</dataPath>
+				<field>FunctionalOptionAccountingByProjects</field>
+			</field>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>UseCounterpartiesVerification</dataPath>
+				<field>UseCounterpartiesVerification</field>
+			</field>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>FunctionalOptionAccountingByMultipleBusinessActivities</dataPath>
+				<field>FunctionalOptionAccountingByMultipleBusinessActivities</field>
+			</field>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>UpdateDateToRelease_1_2_1</dataPath>
+				<field>UpdateDateToRelease_1_2_1</field>
+			</field>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>FunctionalOptionPlanEnterpriseResourcesImporting</dataPath>
+				<field>FunctionalOptionPlanEnterpriseResourcesImporting</field>
+			</field>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>SubsidiaryCompany</dataPath>
+				<field>SubsidiaryCompany</field>
+			</field>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>FunctionalOptionUseJobSharing</dataPath>
+				<field>FunctionalOptionUseJobSharing</field>
+			</field>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>ProxyServerSetting</dataPath>
+				<field>ProxyServerSetting</field>
+			</field>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>FunctionalOptionUseCharacteristics</dataPath>
+				<field>FunctionalOptionUseCharacteristics</field>
+			</field>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>OfflineSaaS</dataPath>
+				<field>OfflineSaaS</field>
+			</field>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>UseCommonAdditionalAttributesAndInformation</dataPath>
+				<field>UseCommonAdditionalAttributesAndInformation</field>
+			</field>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>SupportServiceSoftwareInterfaceUserName</dataPath>
+				<field>SupportServiceSoftwareInterfaceUserName</field>
+			</field>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>UseEDExchangeWithBanks</dataPath>
+				<field>UseEDExchangeWithBanks</field>
+			</field>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>UpdateDateToRelease_1_4_1</dataPath>
+				<field>UpdateDateToRelease_1_4_1</field>
+			</field>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>UseDigitalSignatures</dataPath>
+				<field>UseDigitalSignatures</field>
+			</field>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>FunctionalOptionUseVAT</dataPath>
+				<field>FunctionalOptionUseVAT</field>
+			</field>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>DeleteFunctionalOptionOrderOnTransferInHeader</dataPath>
+				<field>DeleteFunctionalOptionOrderOnTransferInHeader</field>
+			</field>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>CustomerOrdersInProgressStatus</dataPath>
+				<field>CustomerOrdersInProgressStatus</field>
+			</field>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>FunctionalOptionAccountingByMultipleDepartments</dataPath>
+				<field>FunctionalOptionAccountingByMultipleDepartments</field>
+			</field>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>InitialSettingCompanyDetailsFilled</dataPath>
+				<field>InitialSettingCompanyDetailsFilled</field>
+			</field>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>FunctionalOptionPaymentCalendar</dataPath>
+				<field>FunctionalOptionPaymentCalendar</field>
+			</field>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>DeleteFunctionalOptionKindOfWorkInTabularSection</dataPath>
+				<field>DeleteFunctionalOptionKindOfWorkInTabularSection</field>
+			</field>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>DeleteFunctionalOptionOrderOnReceptionInTabularSection</dataPath>
+				<field>DeleteFunctionalOptionOrderOnReceptionInTabularSection</field>
+			</field>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>ActiveBackgroundJobMaxExecutionTime</dataPath>
+				<field>ActiveBackgroundJobMaxExecutionTime</field>
+			</field>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>FunctionalOptionAccountingCashMethodIncomeAndExpenses</dataPath>
+				<field>FunctionalOptionAccountingCashMethodIncomeAndExpenses</field>
+			</field>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>AccountingCurrency</dataPath>
+				<field>AccountingCurrency</field>
+			</field>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>DataAreaTimeZone</dataPath>
+				<field>DataAreaTimeZone</field>
+			</field>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>TextFileExtensionsList</dataPath>
+				<field>TextFileExtensionsList</field>
+			</field>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>ProhibitedExtensionsList</dataPath>
+				<field>ProhibitedExtensionsList</field>
+			</field>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>FunctionalOptionUsePeripherals</dataPath>
+				<field>FunctionalOptionUsePeripherals</field>
+			</field>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>DeleteDSProvider</dataPath>
+				<field>DeleteDSProvider</field>
+			</field>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>FileTransferBlockSize</dataPath>
+				<field>FileTransferBlockSize</field>
+			</field>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>LoginForSendingSMS</dataPath>
+				<field>LoginForSendingSMS</field>
+			</field>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>ConnectionTimeoutToOnlineSupportService</dataPath>
+				<field>ConnectionTimeoutToOnlineSupportService</field>
+			</field>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>UseFullTextSearch</dataPath>
+				<field>UseFullTextSearch</field>
+			</field>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>TotalsAndAggregatesParameters</dataPath>
+				<field>TotalsAndAggregatesParameters</field>
+			</field>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>StoreFilesInVolumesOnHardDisk</dataPath>
+				<field>StoreFilesInVolumesOnHardDisk</field>
+			</field>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>UseUserReminders</dataPath>
+				<field>UseUserReminders</field>
+			</field>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>LastOfflineWorkplacePrefix</dataPath>
+				<field>LastOfflineWorkplacePrefix</field>
+			</field>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>DeleteCryptographyContext</dataPath>
+				<field>DeleteCryptographyContext</field>
+			</field>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>DeleteFunctionalOptionKindOfWorkInHeader</dataPath>
+				<field>DeleteFunctionalOptionKindOfWorkInHeader</field>
+			</field>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>RecipientsEventLogMonitorReport</dataPath>
+				<field>RecipientsEventLogMonitorReport</field>
+			</field>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>PriceListUseProductsAndServicesHierarchy</dataPath>
+				<field>PriceListUseProductsAndServicesHierarchy</field>
+			</field>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>UseDataSynchronizationSaaSWithLocalApplication</dataPath>
+				<field>UseDataSynchronizationSaaSWithLocalApplication</field>
+			</field>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>ExecutePerformanceMeasurements</dataPath>
+				<field>ExecutePerformanceMeasurements</field>
+			</field>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>FunctionalOptionUseAutomaticDiscountsMarkups</dataPath>
+				<field>FunctionalOptionUseAutomaticDiscountsMarkups</field>
+			</field>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>MaxDataAreaFileSize</dataPath>
+				<field>MaxDataAreaFileSize</field>
+			</field>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>DetailInfobaseUpdateInEventLogMonitor</dataPath>
+				<field>DetailInfobaseUpdateInEventLogMonitor</field>
+			</field>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>FunctionalOptionUseBankCharges</dataPath>
+				<field>FunctionalOptionUseBankCharges</field>
+			</field>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>PostponeEditProhibitionDate</dataPath>
+				<field>PostponeEditProhibitionDate</field>
+			</field>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>UseIntegrationWith1CBuhphone</dataPath>
+				<field>UseIntegrationWith1CBuhphone</field>
+			</field>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>CustomerPaymentDueDate</dataPath>
+				<field>CustomerPaymentDueDate</field>
+			</field>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>UseDataSynchronizationSaaSWithApplicationInInternet</dataPath>
+				<field>UseDataSynchronizationSaaSWithApplicationInInternet</field>
+			</field>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>FormPriceListByAvailabilityInWarehouses</dataPath>
+				<field>FormPriceListByAvailabilityInWarehouses</field>
+			</field>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>FunctionalOptionInventoryReservation</dataPath>
+				<field>FunctionalOptionInventoryReservation</field>
+			</field>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>DontUseSeparationByDataAreas</dataPath>
+				<field>DontUseSeparationByDataAreas</field>
+			</field>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>FilesExchangeDirectoryInLinuxSaaS</dataPath>
+				<field>FilesExchangeDirectoryInLinuxSaaS</field>
+			</field>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>FunctionalOptionDoStaffSchedule</dataPath>
+				<field>FunctionalOptionDoStaffSchedule</field>
+			</field>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>DeleteFunctionalOptionShipDateInHeader</dataPath>
+				<field>DeleteFunctionalOptionShipDateInHeader</field>
+			</field>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>UseSeveralBusinessCalendars</dataPath>
+				<field>UseSeveralBusinessCalendars</field>
+			</field>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>FunctionalOptionUseWorkSubsystem</dataPath>
+				<field>FunctionalOptionUseWorkSubsystem</field>
+			</field>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>ActiveBackgroundJobMaxCount</dataPath>
+				<field>ActiveBackgroundJobMaxCount</field>
+			</field>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>LockMessageOnConfigurationUpdate</dataPath>
+				<field>LockMessageOnConfigurationUpdate</field>
+			</field>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>AdditionalAttributesAndInformationParameters</dataPath>
+				<field>AdditionalAttributesAndInformationParameters</field>
+			</field>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>PasswordForSendingSMS</dataPath>
+				<field>PasswordForSendingSMS</field>
+			</field>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>DeleteFunctionalOptionReceiptDateInHeader</dataPath>
+				<field>DeleteFunctionalOptionReceiptDateInHeader</field>
+			</field>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>ReusableValuesUpdateDateORM</dataPath>
+				<field>ReusableValuesUpdateDateORM</field>
+			</field>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>FunctionalOptionUseDiscountCards</dataPath>
+				<field>FunctionalOptionUseDiscountCards</field>
+			</field>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>ExecuteBackupDataArea</dataPath>
+				<field>ExecuteBackupDataArea</field>
+			</field>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>InstantMessageSendingLocked</dataPath>
+				<field>InstantMessageSendingLocked</field>
+			</field>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>AdditionalReportsAndDataProcessorsIndependentUseSaaS</dataPath>
+				<field>AdditionalReportsAndDataProcessorsIndependentUseSaaS</field>
+			</field>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>SupportServiceSoftwareInterfaceAddress</dataPath>
+				<field>SupportServiceSoftwareInterfaceAddress</field>
+			</field>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>DataExchangeMessagesDirectoryForWindows</dataPath>
+				<field>DataExchangeMessagesDirectoryForWindows</field>
+			</field>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>UsePurchaseOrderStates</dataPath>
+				<field>UsePurchaseOrderStates</field>
+			</field>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>DeleteFunctionalOptionOrderOnReceptionInHeader</dataPath>
+				<field>DeleteFunctionalOptionOrderOnReceptionInHeader</field>
+			</field>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>PurchaseOrdersInProgressStatus</dataPath>
+				<field>PurchaseOrdersInProgressStatus</field>
+			</field>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>UseEDExchangeBetweenCompanies</dataPath>
+				<field>UseEDExchangeBetweenCompanies</field>
+			</field>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>SubordinatedDIBNodeSetup</dataPath>
+				<field>SubordinatedDIBNodeSetup</field>
+			</field>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>UseCommonAdditionalValues</dataPath>
+				<field>UseCommonAdditionalValues</field>
+			</field>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>InfobaseUpdateData</dataPath>
+				<field>InfobaseUpdateData</field>
+			</field>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>ThereAreAutomaticDiscounts</dataPath>
+				<field>ThereAreAutomaticDiscounts</field>
+			</field>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>ProhibitedDataAreaFileExtensionList</dataPath>
+				<field>ProhibitedDataAreaFileExtensionList</field>
+			</field>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>BackupSupport</dataPath>
+				<field>BackupSupport</field>
+			</field>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>FunctionalOptionTakingInventoryOnResponsibleStorage</dataPath>
+				<field>FunctionalOptionTakingInventoryOnResponsibleStorage</field>
+			</field>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>ImportDataExchangeMessage</dataPath>
+				<field>ImportDataExchangeMessage</field>
+			</field>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>ArchiveCRReceiptsOnCloseCashCRSession</dataPath>
+				<field>ArchiveCRReceiptsOnCloseCashCRSession</field>
+			</field>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>FunctionalOptionUseTechOperations</dataPath>
+				<field>FunctionalOptionUseTechOperations</field>
+			</field>
+			<dataSource>DataSource1</dataSource>
+			<query>SELECT
+	Constants.BookkeepingFunctionalityConstant,
+	Constants.AccountingCurrency,
+	Constants.AccountingBySubsidiaryCompany,
+	Constants.AccessLimitationParameters,
+	Constants.ActiveBackgroundJobMaxExecutionTime,
+	Constants.ActivityKind,
+	Constants.AdditionalAttributesAndInformationParameters,
+	Constants.AdditionalReportsAndDataProcessorsIndependentUseSaaS,
+	Constants.AdditionalReportsAndDataProcessorsProceduralTasksMinIntervalSaaS,
+	Constants.AddressClassifierDataSource,
+	Constants.AddressForAccountPasswordRecovery,
+	Constants.AddressPublicationsInformationBaseOnWeb,
+	Constants.AllowAdditionalReportsAndDataProcessorsPerformByProceduralTasksSaaS,
+	Constants.ArchiveCRReceiptsOnCloseCashCRSession,
+	Constants.AuthorizationContext,
+	Constants.AutomaticallyConfigurePermissionsInSecurityProfiles,
+	Constants.BackupParameters,
+	Constants.BackupSupport,
+	Constants.ConferenceManagementAddress,
+	Constants.ConfigurationUpdateStatus,
+	Constants.ConnectionTimeoutToOnlineSupportService,
+	Constants.ConnectionToOUSServiceFromServer,
+	Constants.ControlApplicationExternalAddress,
+	Constants.ControlBalancesDuringCreationCRReceipts,
+	Constants.ControlBalancesOnPosting,
+	Constants.CopyDataAreasFromPrototype,
+	Constants.CreateDigitalSignaturesAtServer,
+	Constants.CustomerInvoiceNote1137UsageBegin,
+	Constants.CustomerOrdersCompletedStatus,
+	Constants.CustomerOrdersInProgressStatus,
+	Constants.CustomerPaymentDueDate,
+	Constants.DataAreaKey,
+	Constants.DataAreaPresentation,
+	Constants.DataAreasOpenDocumentFileExtensionList,
+	Constants.DataAreasPrefix,
+	Constants.DataAreaTimeZone,
+	Constants.DataChangesRecorded,
+	Constants.DataExchangeMessageFromMainNode,
+	Constants.DataExchangeMessagesDirectoryForLinux,
+	Constants.DataExchangeMessagesDirectoryForWindows,
+	Constants.DataImportTransactionItemCount,
+	Constants.DeleteContractControllingOnPosting,
+	Constants.DeleteCryptographyContext,
+	Constants.DeleteDSProvider,
+	Constants.DeleteDSProviderType,
+	Constants.DeleteEncryptionAlgorithm,
+	Constants.DeleteEnterInformationForDeclarationsOnAlcoholicProducts,
+	Constants.DeleteFunctionalOptionKindOfWorkInHeader,
+	Constants.DeleteFunctionalOptionKindOfWorkInTabularSection,
+	Constants.DeleteFunctionalOptionOrderOnReceptionInHeader,
+	Constants.DeleteFunctionalOptionOrderOnReceptionInTabularSection,
+	Constants.DeleteFunctionalOptionOrderOnShipmentInHeader,
+	Constants.DeleteFunctionalOptionOrderOnShipmentInTabularSection,
+	Constants.DeleteFunctionalOptionOrderOnTransferInHeader,
+	Constants.DeleteFunctionalOptionOrderOnTransferInTabularSection,
+	Constants.DeleteFunctionalOptionReceiptDateInHeader,
+	Constants.DeleteFunctionalOptionReceiptDateInTabularSection,
+	Constants.DeleteFunctionalOptionShipDateInHeader,
+	Constants.DeleteFunctionalOptionShipDateInTabularSection,
+	Constants.DeleteHashAlgorithm,
+	Constants.DeleteShowCommandAdditionalPrintForms,
+	Constants.DeleteSignAlgorithm,
+	Constants.DeleteUnissuedReceiptsOnCloseCashCRSession,
+	Constants.DetailInfobaseUpdateInEventLogMonitor,
+	Constants.DiscountsMarkupsSharedUsageOptions,
+	Constants.DistributedInformationBaseNodePrefix,
+	Constants.DoNotPostDocumentsWithIncorrectContracts,
+	Constants.DoNotUseSeveralCompanies,
+	Constants.DontUseSeparationByDataAreas,
+	Constants.EDOperationContext,
+	Constants.EnterInformationForDeclarationsOnAlcoholicProducts,
+	Constants.ExchangeRateDifferencesCalculationFrequency,
+	Constants.ExecuteBackupDataArea,
+	Constants.ExecutePerformanceMeasurements,
+	Constants.ExtractFileTextsAtServer,
+	Constants.FileExtensionListOpenDocument,
+	Constants.FilesExchangeDirectoryInLinuxSaaS,
+	Constants.FilesExchangeDirectorySaaS,
+	Constants.FileTransferBlockSize,
+	Constants.FormPriceListByAvailabilityInWarehouses,
+	Constants.FunctionalCurrencyTransactionsAccounting,
+	Constants.FunctionalOptionAccountingByCells,
+	Constants.FunctionalOptionAccountingByMultipleBusinessActivities,
+	Constants.FunctionalOptionAccountingByMultipleCompanies,
+	Constants.FunctionalOptionAccountingByMultipleDepartments,
+	Constants.FunctionalOptionAccountingByMultipleWarehouses,
+	Constants.FunctionalOptionAccountingByProjects,
+	Constants.FunctionalOptionAccountingCashMethodIncomeAndExpenses,
+	Constants.FunctionalOptionAccountingDoIncomeTax,
+	Constants.FunctionalOptionAccountingFixedAssets,
+	Constants.FunctionalOptionAccountingInVariousUOM,
+	Constants.FunctionalOptionAccountingRetail,
+	Constants.FunctionalOptionDoStaffSchedule,
+	Constants.FunctionalOptionInventoryReservation,
+	Constants.FunctionalOptionPaymentCalendar,
+	Constants.FunctionalOptionPlanEnterpriseResourcesImporting,
+	Constants.FunctionalOptionReceiveGoodsOnCommission,
+	Constants.FunctionalOptionTakingInventoryOnResponsibleStorage,
+	Constants.FunctionalOptionTolling,
+	Constants.FunctionalOptionTransferGoodsOnCommission,
+	Constants.FunctionalOptionTransferInventoryOnSafeCustody,
+	Constants.FunctionalOptionTransferRawMaterialsForProcessing,
+	Constants.FunctionalOptionUseAutomaticDiscountsMarkups,
+	Constants.FunctionalOptionUseBankCharges,
+	Constants.FunctionalOptionUseBatches,
+	Constants.FunctionalOptionUseBudgeting,
+	Constants.FunctionalOptionUseCharacteristics,
+	Constants.FunctionalOptionUseDiscountCards,
+	Constants.FunctionalOptionUseDiscountsMarkups,
+	Constants.FunctionalOptionUseExchangeWithSites,
+	Constants.FunctionalOptionUseJobSharing,
+	Constants.FunctionalOptionUseOrderWarehouse,
+	Constants.FunctionalOptionUsePeripherals,
+	Constants.FunctionalOptionUseSubsystemPayroll,
+	Constants.FunctionalOptionUseSubsystemProduction,
+	Constants.FunctionalOptionUseTechOperations,
+	Constants.FunctionalOptionUseVAT,
+	Constants.FunctionalOptionUseWorkSubsystem,
+	Constants.HomeCountry,
+	Constants.ImportDataExchangeMessage,
+	Constants.InfobaseAdministrationParameters,
+	Constants.InfobaseIdentifier,
+	Constants.InfobaseSecurityProfile,
+	Constants.InfobaseUpdateData,
+	Constants.InfobaseUsageMode,
+	Constants.InformationCenterConferenceUserPassword,
+	Constants.InformationCentreConferenceUserName,
+	Constants.InitialSettingCompanyDetailsFilled,
+	Constants.InitialSettingOpeningBalancesFilled,
+	Constants.InstantMessageSendingLocked,
+	Constants.InternalServiceManagerURL,
+	Constants.LastClientSessionStartDate,
+	Constants.LastOfflineWorkplacePrefix,
+	Constants.LastPerformanceMeasurementUpdateDateUTC,
+	Constants.LimitAccessOnRecordsLevel,
+	Constants.LockMessageOnConfigurationUpdate,
+	Constants.LoginForSendingSMS,
+	Constants.MasterNode,
+	Constants.MaxDataAreaFileSize,
+	Constants.MaximumFileSize,
+	Constants.ActiveBackgroundJobMaxCount,
+	Constants.OfflineSaaS,
+	Constants.OffsetAdvancesDebtsAutomatically,
+	Constants.PasswordForSendingSMS,
+	Constants.PerformanceRatingRecordPeriod,
+	Constants.PlannedTotalsOptimizationDate,
+	Constants.PostponeEditProhibitionDate,
+	Constants.PrefixForExchangeWithSite,
+	Constants.PriceListShowCode,
+	Constants.PriceListShowFullDescr,
+	Constants.PriceListUseProductsAndServicesHierarchy,
+	Constants.ProductionOrdersCompletedStatus,
+	Constants.ProductionOrdersInProgressStatus,
+	Constants.ProductsAndServicesSKUInContent,
+	Constants.ProhibitedDataAreaFileExtensionList,
+	Constants.ProhibitedExtensionsList,
+	Constants.ProhibitImportFilesByExtension,
+	Constants.ProxyServerSetting,
+	Constants.PurchaseOrdersCompletedStatus,
+	Constants.PurchaseOrdersInProgressStatus,
+	Constants.RecipientsEventLogMonitorReport,
+	Constants.ReportVariantParameters,
+	Constants.RetryDataExportExchangeMessagesBeforeStart,
+	Constants.ReusableValuesUpdateDateORM,
+	Constants.RFBanksClassifierVersion,
+	Constants.ScheduledJobsExecutionSettings,
+	Constants.SecurityProfilesAreUsed,
+	Constants.ServiceEventsParameters,
+	Constants.ServiceManagerEndPoint,
+	Constants.ServiceManagerOfficeUserName,
+	Constants.ServiceManagerOfficeUserPassword,
+	Constants.SMSProvider,
+	Constants.StandardInterfaceUserOData,
+	Constants.StoreFilesInVolumesOnHardDisk,
+	Constants.SubordinatedDIBNodeSettingsFinished,
+	Constants.SubordinatedDIBNodeSetup,
+	Constants.SubsidiaryCompany,
+	Constants.SupportServiceSoftwareInterfaceAddress,
+	Constants.SupportServiceSoftwareInterfaceUserName,
+	Constants.SupportServiceSoftwareInterfaceUserPassword,
+	Constants.SynchronizeDataWithApplicationInInternetOnApplicationEnd,
+	Constants.SynchronizeDataWithApplicationInInternetOnApplicationStart,
+	Constants.SystemChangesDescribeSections,
+	Constants.SystemTitle,
+	Constants.TextFileExtensionsList,
+	Constants.ThereAreAutomaticDiscounts,
+	Constants.ThisIsOfflineWorkplace,
+	Constants.TotalsAndAggregatesParameters,
+	Constants.UpdateDateToRelease_1_2_1,
+	Constants.UpdateDateToRelease_1_4_1,
+	Constants.UseAdditionalAttributesAndInformation,
+	Constants.UseAdditionalReportsAndDataProcessors,
+	Constants.UseAdditionalReportsDirectoryAndDataprocessorsSaaS,
+	Constants.UseCommonAdditionalAttributesAndInformation,
+	Constants.UseCommonAdditionalValues,
+	Constants.UseCounterpartiesAccessGroups,
+	Constants.UseCustomerOrderStates,
+	Constants.UseDataSynchronization,
+	Constants.UseDataSynchronizationInLocalMode,
+	Constants.UseDataSynchronizationSaaS,
+	Constants.UseDataSynchronizationSaaSWithApplicationInInternet,
+	Constants.UseDataSynchronizationSaaSWithLocalApplication,
+	Constants.UseDigitalSignatures,
+	Constants.UseEDExchange,
+	Constants.UseEDExchangeBetweenCompanies,
+	Constants.UseEDExchangeWithBanks,
+	Constants.UseElectronicDocumentsDelayedSending,
+	Constants.UseEncryption,
+	Constants.UseExchangeWithPeripheralsOffline,
+	Constants.UseExternalUsers,
+	Constants.UseFullTextSearch,
+	Constants.UseIntegrationWith1CBuhphone,
+	Constants.UseObjectVersioning,
+	Constants.UseProductionOrderStates,
+	Constants.UsePurchaseOrderStates,
+	Constants.UsersWorkParameters,
+	Constants.UseSeparationByDataAreas,
+	Constants.UseSeveralBusinessCalendars,
+	Constants.UseSeveralCompanies,
+	Constants.UseUserReminders,
+	Constants.UseUsersGroups,
+	Constants.VendorPaymentDueDate,
+	Constants.VerifyDigitalSignaturesAtServer,
+	Constants.NationalCurrency,
+	Constants.NationalLanguage,
+	Constants.UseCounterpartiesVerification,
+	Constants.CurrencyQuotationType
+FROM
+	Constants AS Constants</query>
+		</item>
+		<item xsi:type="DataSetQuery">
+			<name>GeneralRounding</name>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>GeneralRoundingAccount</dataPath>
+				<field>GeneralRoundingAccount</field>
+			</field>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>GeneralRoundingExtDimension1</dataPath>
+				<field>GeneralRoundingExtDimension1</field>
+			</field>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>GeneralRoundingExtDimension2</dataPath>
+				<field>GeneralRoundingExtDimension2</field>
+			</field>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>GeneralRoundingExtDimension3</dataPath>
+				<field>GeneralRoundingExtDimension3</field>
+			</field>
+			<dataSource>DataSource1</dataSource>
+			<query>SELECT
+	BookkeepingAccountingPolicyGeneralRoundingSliceLast.Account AS GeneralRoundingAccount,
+	BookkeepingAccountingPolicyGeneralRoundingSliceLast.ExtDimension1 AS GeneralRoundingExtDimension1,
+	BookkeepingAccountingPolicyGeneralRoundingSliceLast.ExtDimension2 AS GeneralRoundingExtDimension2,
+	BookkeepingAccountingPolicyGeneralRoundingSliceLast.ExtDimension3 AS GeneralRoundingExtDimension3
+FROM
+	InformationRegister.BookkeepingAccountingPolicyGeneralRounding.SliceLast(
+			&amp;Period,
+			Company = &amp;Company
+				AND Sign = &amp;Sign) AS BookkeepingAccountingPolicyGeneralRoundingSliceLast</query>
+		</item>
+	</dataSet>
+	<parameter>
+		<name>Company</name>
+		<title xsi:type="v8:LocalStringType">
+			<v8:item>
+				<v8:lang>pl</v8:lang>
+				<v8:content>Company</v8:content>
+			</v8:item>
+			<v8:item>
+				<v8:lang>ru</v8:lang>
+				<v8:content>Организация</v8:content>
+			</v8:item>
+		</title>
+		<valueType>
+			<v8:Type xmlns:d4p1="http://v8.1c.ru/8.1/data/enterprise/current-config">d4p1:CatalogRef.Companies</v8:Type>
+		</valueType>
+		<value xsi:type="dcscor:DesignTimeValue">Catalog.Companies.EmptyRef</value>
+		<useRestriction>false</useRestriction>
+		<availableAsField>false</availableAsField>
+	</parameter>
+	<parameter>
+		<name>Period</name>
+		<title xsi:type="v8:LocalStringType">
+			<v8:item>
+				<v8:lang>pl</v8:lang>
+				<v8:content>Period</v8:content>
+			</v8:item>
+			<v8:item>
+				<v8:lang>ru</v8:lang>
+				<v8:content>Период</v8:content>
+			</v8:item>
+		</title>
+		<valueType>
+			<v8:Type>xs:dateTime</v8:Type>
+			<v8:DateQualifiers>
+				<v8:DateFractions>DateTime</v8:DateFractions>
+			</v8:DateQualifiers>
+		</valueType>
+		<value xsi:type="xs:dateTime">0001-01-01T00:00:00</value>
+		<useRestriction>false</useRestriction>
+		<availableAsField>false</availableAsField>
+	</parameter>
+	<parameter>
+		<name>CarriedOut</name>
+		<title xsi:type="v8:LocalStringType">
+			<v8:item>
+				<v8:lang>pl</v8:lang>
+				<v8:content>Carried out</v8:content>
+			</v8:item>
+		</title>
+		<valueType>
+			<v8:Type>xs:boolean</v8:Type>
+		</valueType>
+		<value xsi:type="xs:boolean">false</value>
+		<useRestriction>false</useRestriction>
+		<availableAsField>false</availableAsField>
+	</parameter>
+	<parameter>
+		<name>GroupKind</name>
+		<title xsi:type="v8:LocalStringType">
+			<v8:item>
+				<v8:lang>pl</v8:lang>
+				<v8:content>Group kind</v8:content>
+			</v8:item>
+		</title>
+		<valueType>
+			<v8:Type xmlns:d4p1="http://v8.1c.ru/8.1/data/enterprise/current-config">d4p1:EnumRef.ExchangeRateDifferenceGroup</v8:Type>
+		</valueType>
+		<value xsi:type="dcscor:DesignTimeValue">Enum.ExchangeRateDifferenceGroup.EmptyRef</value>
+		<useRestriction>false</useRestriction>
+		<availableAsField>false</availableAsField>
+	</parameter>
+	<parameter>
+		<name>Sign</name>
+		<title xsi:type="v8:LocalStringType">
+			<v8:item>
+				<v8:lang>pl</v8:lang>
+				<v8:content>Sign</v8:content>
+			</v8:item>
+		</title>
+		<valueType>
+			<v8:Type xmlns:d4p1="http://v8.1c.ru/8.1/data/enterprise/current-config">d4p1:EnumRef.ExchangeRateDifferenceSign</v8:Type>
+		</valueType>
+		<value xsi:type="dcscor:DesignTimeValue">Enum.ExchangeRateDifferenceSign.EmptyRef</value>
+		<useRestriction>false</useRestriction>
+		<availableAsField>false</availableAsField>
+	</parameter>
+	<settingsVariant>
+		<dcsset:name>Default</dcsset:name>
+		<dcsset:presentation xsi:type="xs:string">Podstawowy</dcsset:presentation>
+		<dcsset:settings xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows">
+			<dcsset:item xsi:type="dcsset:StructureItemGroup">
+				<dcsset:order>
+					<dcsset:item xsi:type="dcsset:OrderItemAuto"/>
+				</dcsset:order>
+				<dcsset:selection>
+					<dcsset:item xsi:type="dcsset:SelectedItemAuto"/>
+				</dcsset:selection>
+			</dcsset:item>
+		</dcsset:settings>
+	</settingsVariant>
+</DataCompositionSchema>

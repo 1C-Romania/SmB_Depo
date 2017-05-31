@@ -1,0 +1,214 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<Form xmlns="http://v8.1c.ru/8.3/xcf/logform" xmlns:app="http://v8.1c.ru/8.2/managed-application/core" xmlns:cfg="http://v8.1c.ru/8.1/data/enterprise/current-config" xmlns:dcscor="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:dcsset="http://v8.1c.ru/8.1/data-composition-system/settings" xmlns:ent="http://v8.1c.ru/8.1/data/enterprise" xmlns:lf="http://v8.1c.ru/8.2/managed-application/logform" xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows" xmlns:xr="http://v8.1c.ru/8.3/xcf/readable" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.4">
+	<Title>
+		<v8:item>
+			<v8:lang>en</v8:lang>
+			<v8:content>Balance types and detailing</v8:content>
+		</v8:item>
+		<v8:item>
+			<v8:lang>pl</v8:lang>
+			<v8:content>Typy sald oraz precyzowanie</v8:content>
+		</v8:item>
+		<v8:item>
+			<v8:lang>ru</v8:lang>
+			<v8:content>Виды остатков и детализация</v8:content>
+		</v8:item>
+	</Title>
+	<WindowOpeningMode>LockWholeInterface</WindowOpeningMode>
+	<AutoTitle>false</AutoTitle>
+	<AutoCommandBar name="FormCommandBar" id="-1">
+		<Autofill>false</Autofill>
+	</AutoCommandBar>
+	<Events>
+		<Event name="OnCreateAtServer">OnCreateAtServer</Event>
+	</Events>
+	<ChildItems>
+		<Table name="List" id="1">
+			<Representation>List</Representation>
+			<ChangeRowSet>false</ChangeRowSet>
+			<AutoInsertNewRow>true</AutoInsertNewRow>
+			<EnableStartDrag>true</EnableStartDrag>
+			<EnableDrag>true</EnableDrag>
+			<DataPath>List</DataPath>
+			<RowFilter xsi:nil="true"/>
+			<ContextMenu name="ListContextMenu" id="2"/>
+			<AutoCommandBar name="ListCommandBar" id="3">
+				<Autofill>false</Autofill>
+			</AutoCommandBar>
+			<ExtendedTooltip name="ListExtendedTooltip" id="4"/>
+			<SearchStringAddition name="ListSearchString" id="5">
+				<AdditionSource>
+					<Item>List</Item>
+					<Type>SearchStringRepresentation</Type>
+				</AdditionSource>
+				<ContextMenu name="ListSearchStringContextMenu" id="6"/>
+				<ExtendedTooltip name="ListSearchStringExtendedTooltip" id="7"/>
+			</SearchStringAddition>
+			<ViewStatusAddition name="ListViewStatus" id="8">
+				<AdditionSource>
+					<Item>List</Item>
+					<Type>ViewStatusRepresentation</Type>
+				</AdditionSource>
+				<ContextMenu name="ListViewStatusContextMenu" id="9"/>
+				<ExtendedTooltip name="ListViewStatusExtendedTooltip" id="10"/>
+			</ViewStatusAddition>
+			<SearchControlAddition name="ListSearchControl" id="11">
+				<AdditionSource>
+					<Item>List</Item>
+					<Type>SearchControl</Type>
+				</AdditionSource>
+				<ContextMenu name="ListSearchControlContextMenu" id="12"/>
+				<ExtendedTooltip name="ListSearchControlExtendedTooltip" id="13"/>
+			</SearchControlAddition>
+			<Events>
+				<Event name="BeforeDeleteRow">ListBeforeDeleteRow</Event>
+				<Event name="AfterDeleteRow">ListAfterDeleteRow</Event>
+			</Events>
+			<ChildItems>
+				<InputField name="ListPresentation" id="14">
+					<DataPath>List.Presentation</DataPath>
+					<EditMode>EnterOnInput</EditMode>
+					<ContextMenu name="ListPresentationContextMenu" id="15"/>
+					<ExtendedTooltip name="ListPresentationExtendedTooltip" id="16"/>
+				</InputField>
+				<InputField name="ListName" id="17">
+					<DataPath>List.Name</DataPath>
+					<EditMode>EnterOnInput</EditMode>
+					<ContextMenu name="ListNameContextMenu" id="18"/>
+					<ExtendedTooltip name="ListNameExtendedTooltip" id="19"/>
+				</InputField>
+				<InputField name="ListBalance" id="20">
+					<DataPath>List.Balance</DataPath>
+					<EditMode>EnterOnInput</EditMode>
+					<ContextMenu name="ListBalanceContextMenu" id="21"/>
+					<ExtendedTooltip name="ListBalanceExtendedTooltip" id="22"/>
+				</InputField>
+			</ChildItems>
+		</Table>
+		<UsualGroup name="GroupokClose" id="30">
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Groupok close</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Representation>None</Representation>
+			<ShowTitle>false</ShowTitle>
+			<ExtendedTooltip name="GroupokCloseExtendedTooltip" id="31"/>
+			<ChildItems>
+				<LabelDecoration name="Decoration1" id="27">
+					<HorizontalStretch>true</HorizontalStretch>
+					<ContextMenu name="Decoration1ContextMenu" id="28"/>
+					<ExtendedTooltip name="Decoration1ExtendedTooltip" id="29"/>
+				</LabelDecoration>
+				<Button name="Ok" id="32">
+					<Type>UsualButton</Type>
+					<CommandName>Form.Command.Ok</CommandName>
+					<ExtendedTooltip name="OkExtendedTooltip" id="33"/>
+				</Button>
+				<Button name="Close" id="23">
+					<Type>UsualButton</Type>
+					<CommandName>Form.StandardCommand.Close</CommandName>
+					<ExtendedTooltip name="CloseExtendedTooltip" id="24"/>
+				</Button>
+			</ChildItems>
+		</UsualGroup>
+	</ChildItems>
+	<Attributes>
+		<Attribute name="List" id="1">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>List</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>v8:ValueTable</v8:Type>
+			</Type>
+			<Columns>
+				<Column name="Presentation" id="1">
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Field</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>pl</v8:lang>
+							<v8:content>Pole</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Поле</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>xs:string</v8:Type>
+						<v8:StringQualifiers>
+							<v8:Length>0</v8:Length>
+							<v8:AllowedLength>Variable</v8:AllowedLength>
+						</v8:StringQualifiers>
+					</Type>
+				</Column>
+				<Column name="Name" id="2">
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Name</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Наименование</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>xs:string</v8:Type>
+						<v8:StringQualifiers>
+							<v8:Length>0</v8:Length>
+							<v8:AllowedLength>Variable</v8:AllowedLength>
+						</v8:StringQualifiers>
+					</Type>
+				</Column>
+				<Column name="Balance" id="3">
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Balance</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Способ детализации</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>cfg:EnumRef.AccountDetailingTypes</v8:Type>
+					</Type>
+				</Column>
+			</Columns>
+		</Attribute>
+	</Attributes>
+	<Commands>
+		<Command name="Ok" id="1">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Ok</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>pl</v8:lang>
+					<v8:content>Ok</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>ОК</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Ok</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>Ok</Action>
+		</Command>
+	</Commands>
+</Form>

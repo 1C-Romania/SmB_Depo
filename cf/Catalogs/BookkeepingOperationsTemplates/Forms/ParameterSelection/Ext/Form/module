@@ -1,0 +1,85 @@
+﻿
+////////////////////////////////////////////////////////////////////////////////
+// PROCEDURES AND FUNCTIONS EXPORT
+
+Procedure FillParametersTree() Export
+
+	Object.FillParametersTree(Controls.Parameters,TableKind,TableName,FilterByType,TypeRestriction,TableBox,CurrentRecord,ColumnName,True);
+	
+EndProcedure // FillParametersTree()
+
+////////////////////////////////////////////////////////////////////////////////
+// FORM ACTIONS HANDLER
+
+Procedure OnOpen()
+
+	CurrentControl = Controls.Parameters;	
+	
+	If NOT IsBlankString(Formula) Then
+		FoundRows = Parameters.Rows.FindRows(New Structure("ParameterName",Formula),True);
+		If FoundRows.Count()>0 Then
+			Controls.Parameters.CurrentRow = FoundRows[0];
+		EndIf;	
+	EndIf;
+
+EndProcedure
+
+////////////////////////////////////////////////////////////////////////////////
+// CONTROLS ACTIONS HANDLERS
+
+Procedure ButtonSelectOnClick(Control)
+	
+	CurrentData = Controls.Parameters.CurrentData;
+
+	If CurrentData = Undefined Then
+		DoMessageBox(Nstr("en = 'Please, choose parameter!'; pl = 'Należy wybrać parametr!'"));
+	Else
+		Close(CurrentData.ParameterName);
+	EndIf;	
+
+EndProcedure
+
+Procedure FilterByTypeOnChange(Control)
+
+	FillParametersTree();
+
+EndProcedure
+
+////////////////////////////////////////////////////////////////////////////////
+// TABLE BOX PARAMETERS HANDLERS
+
+Procedure ParametersSelection(Control, SelectedRow, Column, StandardProcessing)
+
+	StandardProcessing = False;
+	
+	Close(SelectedRow.ParameterName);
+
+EndProcedure
+
+Procedure ParametersOnActivateRow(Control)
+	
+	CurrentData = Controls.Parameters.CurrentData;
+	Controls.CommandBarParameters.Buttons.Edit.Enabled = CurrentData <> Undefined AND Find(Controls.Parameters.CurrentData.ParameterName,".") = 0 AND CurrentData.Rows.Count()=0;
+	
+EndProcedure
+
+Procedure CommandBarParametersNewParameter(Button)
+	
+	Param = Object.NewParameter(TableBox,,,ThisForm);
+	
+	If Param<>Undefined Then
+		FillParametersTree();
+	EndIf;	
+	
+EndProcedure
+
+Procedure CommandBarParametersEdit(Button)
+	
+	If Controls.Parameters.CurrentData<>Undefined Then
+		If Find(Controls.Parameters.CurrentData.ParameterName,".") = 0 Then
+			Object.EditParameter(Controls.Parameters.CurrentData.ParameterName);
+			FillParametersTree();
+		EndIf;	
+	EndIf;
+	
+EndProcedure

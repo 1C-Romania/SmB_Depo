@@ -1,0 +1,220 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<DataCompositionSchema xmlns="http://v8.1c.ru/8.1/data-composition-system/schema" xmlns:dcscom="http://v8.1c.ru/8.1/data-composition-system/common" xmlns:dcscor="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:dcsset="http://v8.1c.ru/8.1/data-composition-system/settings" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+	<dataSource>
+		<name>DataSource1</name>
+		<dataSourceType>Local</dataSourceType>
+	</dataSource>
+	<dataSet xsi:type="DataSetQuery">
+		<name>BankAccounts</name>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>Object</dataPath>
+			<field>Object</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>pl</v8:lang>
+					<v8:content>Object</v8:content>
+				</v8:item>
+			</title>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>Period</dataPath>
+			<field>Period</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>pl</v8:lang>
+					<v8:content>Okres</v8:content>
+				</v8:item>
+			</title>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>Account_InputVAT</dataPath>
+			<field>Account_InputVAT</field>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>Account_OutputVAT</dataPath>
+			<field>Account_OutputVAT</field>
+		</field>
+		<dataSource>DataSource1</dataSource>
+		<query>SELECT
+	_REGISTER_.Period,
+	_REGISTER_.Object,
+	_REGISTER_.Account_InputVAT,
+	_REGISTER_.Account_OutputVAT
+FROM
+	Catalog.VATRates AS _OBJECT_
+		{LEFT JOIN InformationRegister.FinancialVATRates.SliceLast(&amp;Period, ) AS _REGISTER_
+		ON _OBJECT_.Ref = _REGISTER_.Object}</query>
+	</dataSet>
+	<dataSet xsi:type="DataSetQuery">
+		<name>Counterparties</name>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>Account_Receivable</dataPath>
+			<field>Account_Receivable</field>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>Account_PrepaymentForSupplier</dataPath>
+			<field>Account_PrepaymentForSupplier</field>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>Object</dataPath>
+			<field>Object</field>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>Period</dataPath>
+			<field>Period</field>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>Account_Payable</dataPath>
+			<field>Account_Payable</field>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>Account_PrepaymentForCustomer</dataPath>
+			<field>Account_PrepaymentForCustomer</field>
+		</field>
+		<dataSource>DataSource1</dataSource>
+		<query>SELECT
+	_REGISTER_.Period,
+	_REGISTER_.Object,
+	_REGISTER_.Account_Receivable,
+	_REGISTER_.Account_PrepaymentForCustomer,
+	_REGISTER_.Account_Payable,
+	_REGISTER_.Account_PrepaymentForSupplier
+FROM
+	Catalog.Counterparties AS _OBJECT_
+		{LEFT JOIN InformationRegister.FinancialCounterpartiesGroups.SliceLast(&amp;Period, ) AS _REGISTER_
+		ON _OBJECT_.FinancialGroup = _REGISTER_.Object}</query>
+	</dataSet>
+	<dataSet xsi:type="DataSetQuery">
+		<name>PettyCashes</name>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>Object</dataPath>
+			<field>Object</field>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>Period</dataPath>
+			<field>Period</field>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>Account_CashForCashDesk</dataPath>
+			<field>Account_CashForCashDesk</field>
+		</field>
+		<dataSource>DataSource1</dataSource>
+		<query>SELECT
+	_REGISTER_.Period,
+	_REGISTER_.Object,
+	_REGISTER_.Account_CashForCashDesk
+FROM
+	Catalog.PettyCashes AS _OBJECT_
+		{LEFT JOIN InformationRegister.FinancialPettyCashes.SliceLast(&amp;Period, ) AS _REGISTER_
+		ON _OBJECT_.Ref = _REGISTER_.Object}</query>
+	</dataSet>
+	<dataSet xsi:type="DataSetQuery">
+		<name>VatRates</name>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>Object</dataPath>
+			<field>Object</field>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>Period</dataPath>
+			<field>Period</field>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>Account_InputVAT</dataPath>
+			<field>Account_InputVAT</field>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>Account_OutputVAT</dataPath>
+			<field>Account_OutputVAT</field>
+		</field>
+		<dataSource>DataSource1</dataSource>
+		<query>SELECT
+	_REGISTER_.Period,
+	_REGISTER_.Object,
+	_REGISTER_.Account_InputVAT,
+	_REGISTER_.Account_OutputVAT
+FROM
+	Catalog.VATRates AS _OBJECT_
+		{LEFT JOIN InformationRegister.FinancialVATRates.SliceLast(&amp;Period, ) AS _REGISTER_
+		ON _OBJECT_.Ref = _REGISTER_.Object}</query>
+	</dataSet>
+	<dataSet xsi:type="DataSetQuery">
+		<name>ProductsAndServices</name>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>Object</dataPath>
+			<field>Object</field>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>Period</dataPath>
+			<field>Period</field>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>Account_SalesCosts</dataPath>
+			<field>Account_SalesCosts</field>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>Account_CostOfGoods</dataPath>
+			<field>Account_CostOfGoods</field>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>Account_SalesAmount</dataPath>
+			<field>Account_SalesAmount</field>
+		</field>
+		<dataSource>DataSource1</dataSource>
+		<query>SELECT
+	_REGISTER_.Period,
+	_REGISTER_.Object,
+	_REGISTER_.Account_SalesAmount,
+	_REGISTER_.Account_SalesCosts,
+	_REGISTER_.Account_CostOfGoods
+FROM
+	Catalog.ProductsAndServices AS _OBJECT_
+		{LEFT JOIN InformationRegister.FinancialProductsAndServicesGroups.SliceLast(&amp;Period, ) AS _REGISTER_
+		ON _OBJECT_.FinancialGroup = _REGISTER_.Object}</query>
+	</dataSet>
+	<dataSet xsi:type="DataSetQuery">
+		<name>AccrualAndDeductionKinds</name>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>Object</dataPath>
+			<field>Object</field>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>Period</dataPath>
+			<field>Period</field>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>Account_Costs</dataPath>
+			<field>Account_Costs</field>
+		</field>
+		<dataSource>DataSource1</dataSource>
+		<query>SELECT
+	_REGISTER_.Period,
+	_REGISTER_.Object,
+	_REGISTER_.Account_Costs
+FROM
+	Catalog.AccrualAndDeductionKinds AS _OBJECT_
+		{LEFT JOIN InformationRegister.FinancialAccrualAndDeductionKinds.SliceLast(&amp;Period, ) AS _REGISTER_
+		ON _OBJECT_.Ref = _REGISTER_.Object}</query>
+	</dataSet>
+	<parameter>
+		<name>Period</name>
+		<title xsi:type="v8:LocalStringType">
+			<v8:item>
+				<v8:lang>en</v8:lang>
+				<v8:content>Period</v8:content>
+			</v8:item>
+		</title>
+		<valueType>
+			<v8:Type>xs:dateTime</v8:Type>
+			<v8:DateQualifiers>
+				<v8:DateFractions>DateTime</v8:DateFractions>
+			</v8:DateQualifiers>
+		</valueType>
+		<value xsi:type="xs:dateTime">0001-01-01T00:00:00</value>
+		<useRestriction>false</useRestriction>
+	</parameter>
+	<settingsVariant>
+		<dcsset:name>Default</dcsset:name>
+		<dcsset:presentation xsi:type="xs:string">Podstawowy</dcsset:presentation>
+		<dcsset:settings xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows"/>
+	</settingsVariant>
+</DataCompositionSchema>

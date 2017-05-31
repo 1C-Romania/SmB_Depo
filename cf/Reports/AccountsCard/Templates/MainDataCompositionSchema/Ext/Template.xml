@@ -1,0 +1,1594 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<DataCompositionSchema xmlns="http://v8.1c.ru/8.1/data-composition-system/schema" xmlns:dcscom="http://v8.1c.ru/8.1/data-composition-system/common" xmlns:dcscor="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:dcsset="http://v8.1c.ru/8.1/data-composition-system/settings" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+	<dataSource>
+		<name>DataSource1</name>
+		<dataSourceType>Local</dataSourceType>
+	</dataSource>
+	<dataSet xsi:type="DataSetUnion">
+		<name>DataSet3</name>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>Account</dataPath>
+			<field>Account</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Account</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>pl</v8:lang>
+					<v8:content>Konto</v8:content>
+				</v8:item>
+			</title>
+			<useRestriction>
+				<condition>true</condition>
+				<group>true</group>
+				<order>true</order>
+			</useRestriction>
+			<attributeUseRestriction>
+				<condition>true</condition>
+				<group>true</group>
+				<order>true</order>
+			</attributeUseRestriction>
+			<role>
+				<dcscom:dimension>true</dcscom:dimension>
+			</role>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>AmountCr</dataPath>
+			<field>AmountCr</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Amount Cr</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>pl</v8:lang>
+					<v8:content>Kwota Ma</v8:content>
+				</v8:item>
+			</title>
+			<useRestriction>
+				<condition>true</condition>
+				<group>true</group>
+				<order>true</order>
+			</useRestriction>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>AmountDr</dataPath>
+			<field>AmountDr</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Amount Dr</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>pl</v8:lang>
+					<v8:content>Kwota Wn</v8:content>
+				</v8:item>
+			</title>
+			<useRestriction>
+				<condition>true</condition>
+				<group>true</group>
+				<order>true</order>
+			</useRestriction>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>Company</dataPath>
+			<field>Company</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Company</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>pl</v8:lang>
+					<v8:content>Firma</v8:content>
+				</v8:item>
+			</title>
+			<useRestriction>
+				<condition>true</condition>
+			</useRestriction>
+			<attributeUseRestriction>
+				<condition>true</condition>
+			</attributeUseRestriction>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>Currency</dataPath>
+			<field>Currency</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Currency</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>pl</v8:lang>
+					<v8:content>Waluta</v8:content>
+				</v8:item>
+			</title>
+			<useRestriction>
+				<condition>true</condition>
+				<group>true</group>
+				<order>true</order>
+			</useRestriction>
+			<attributeUseRestriction>
+				<condition>true</condition>
+				<group>true</group>
+				<order>true</order>
+			</attributeUseRestriction>
+			<role>
+				<dcscom:dimension>true</dcscom:dimension>
+				<dcscom:ignoreNullValues>true</dcscom:ignoreNullValues>
+			</role>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>CurrencyAmount</dataPath>
+			<field>CurrencyAmount</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Currency amount</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>pl</v8:lang>
+					<v8:content>Kwota w walucie</v8:content>
+				</v8:item>
+			</title>
+			<useRestriction>
+				<condition>true</condition>
+				<group>true</group>
+				<order>true</order>
+			</useRestriction>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>Description</dataPath>
+			<field>Description</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Description</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>pl</v8:lang>
+					<v8:content>Opis</v8:content>
+				</v8:item>
+			</title>
+			<useRestriction>
+				<condition>true</condition>
+				<group>true</group>
+				<order>true</order>
+			</useRestriction>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>ExtDimension1</dataPath>
+			<field>ExtDimension1</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Ext dimension 1</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>pl</v8:lang>
+					<v8:content>Analityka 1</v8:content>
+				</v8:item>
+			</title>
+			<useRestriction>
+				<condition>true</condition>
+				<group>true</group>
+				<order>true</order>
+			</useRestriction>
+			<attributeUseRestriction>
+				<condition>true</condition>
+				<group>true</group>
+				<order>true</order>
+			</attributeUseRestriction>
+			<role>
+				<dcscom:dimension>true</dcscom:dimension>
+				<dcscom:ignoreNullValues>true</dcscom:ignoreNullValues>
+			</role>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>ExtDimension2</dataPath>
+			<field>ExtDimension2</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Ext dimension 2</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>pl</v8:lang>
+					<v8:content>Analityka 2</v8:content>
+				</v8:item>
+			</title>
+			<useRestriction>
+				<condition>true</condition>
+				<group>true</group>
+				<order>true</order>
+			</useRestriction>
+			<attributeUseRestriction>
+				<condition>true</condition>
+				<group>true</group>
+				<order>true</order>
+			</attributeUseRestriction>
+			<role>
+				<dcscom:dimension>true</dcscom:dimension>
+				<dcscom:ignoreNullValues>true</dcscom:ignoreNullValues>
+			</role>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>ExtDimension3</dataPath>
+			<field>ExtDimension3</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Ext dimension 3</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>pl</v8:lang>
+					<v8:content>Analityka 3</v8:content>
+				</v8:item>
+			</title>
+			<useRestriction>
+				<condition>true</condition>
+				<group>true</group>
+				<order>true</order>
+			</useRestriction>
+			<attributeUseRestriction>
+				<condition>true</condition>
+				<group>true</group>
+				<order>true</order>
+			</attributeUseRestriction>
+			<role>
+				<dcscom:dimension>true</dcscom:dimension>
+				<dcscom:ignoreNullValues>true</dcscom:ignoreNullValues>
+			</role>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>ExtDimensionType1</dataPath>
+			<field>ExtDimensionType1</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>pl</v8:lang>
+					<v8:content>Rodzaj analityki1</v8:content>
+				</v8:item>
+			</title>
+			<useRestriction>
+				<field>true</field>
+				<condition>true</condition>
+				<group>true</group>
+				<order>true</order>
+			</useRestriction>
+			<attributeUseRestriction>
+				<field>true</field>
+				<condition>true</condition>
+				<group>true</group>
+				<order>true</order>
+			</attributeUseRestriction>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>ExtDimensionType2</dataPath>
+			<field>ExtDimensionType2</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>pl</v8:lang>
+					<v8:content>Rodzaj analityki2</v8:content>
+				</v8:item>
+			</title>
+			<useRestriction>
+				<field>true</field>
+				<condition>true</condition>
+				<group>true</group>
+				<order>true</order>
+			</useRestriction>
+			<attributeUseRestriction>
+				<field>true</field>
+				<condition>true</condition>
+				<group>true</group>
+				<order>true</order>
+			</attributeUseRestriction>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>ExtDimensionType3</dataPath>
+			<field>ExtDimensionType3</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>pl</v8:lang>
+					<v8:content>Rodzaj analityki3</v8:content>
+				</v8:item>
+			</title>
+			<useRestriction>
+				<field>true</field>
+				<condition>true</condition>
+				<group>true</group>
+				<order>true</order>
+			</useRestriction>
+			<attributeUseRestriction>
+				<field>true</field>
+				<condition>true</condition>
+				<group>true</group>
+				<order>true</order>
+			</attributeUseRestriction>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>Period</dataPath>
+			<field>Period</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Period</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>pl</v8:lang>
+					<v8:content>Okres</v8:content>
+				</v8:item>
+			</title>
+			<useRestriction>
+				<condition>true</condition>
+				<group>true</group>
+				<order>true</order>
+			</useRestriction>
+			<role>
+				<dcscom:periodNumber>2</dcscom:periodNumber>
+				<dcscom:periodType>Main</dcscom:periodType>
+			</role>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>Recorder</dataPath>
+			<field>Recorder</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Recorder</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>pl</v8:lang>
+					<v8:content>Rejestrator</v8:content>
+				</v8:item>
+			</title>
+			<useRestriction>
+				<condition>true</condition>
+				<group>true</group>
+				<order>true</order>
+			</useRestriction>
+			<attributeUseRestriction>
+				<condition>true</condition>
+				<group>true</group>
+				<order>true</order>
+			</attributeUseRestriction>
+			<role>
+				<dcscom:periodNumber>1</dcscom:periodNumber>
+				<dcscom:periodType>Main</dcscom:periodType>
+			</role>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>RecordType</dataPath>
+			<field>RecordType</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Record type</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>pl</v8:lang>
+					<v8:content>Rodzaj ruchu</v8:content>
+				</v8:item>
+			</title>
+			<useRestriction>
+				<condition>true</condition>
+				<group>true</group>
+				<order>true</order>
+			</useRestriction>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>AmountBalance</dataPath>
+			<field>AmountBalance</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>pl</v8:lang>
+					<v8:content>Amount balance</v8:content>
+				</v8:item>
+			</title>
+			<useRestriction>
+				<condition>true</condition>
+				<group>true</group>
+				<order>true</order>
+			</useRestriction>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>AmountBalanceCr</dataPath>
+			<field>AmountBalanceCr</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>pl</v8:lang>
+					<v8:content>Amount balance cr</v8:content>
+				</v8:item>
+			</title>
+			<useRestriction>
+				<condition>true</condition>
+				<group>true</group>
+				<order>true</order>
+			</useRestriction>
+			<role>
+				<dcscom:balance>true</dcscom:balance>
+				<dcscom:balanceGroupName>AmountBalance</dcscom:balanceGroupName>
+				<dcscom:balanceType>None</dcscom:balanceType>
+				<dcscom:accountingBalanceType>Credit</dcscom:accountingBalanceType>
+			</role>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>AmountBalanceDr</dataPath>
+			<field>AmountBalanceDr</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>pl</v8:lang>
+					<v8:content>Amount balance dr</v8:content>
+				</v8:item>
+			</title>
+			<useRestriction>
+				<condition>true</condition>
+				<group>true</group>
+				<order>true</order>
+			</useRestriction>
+			<role>
+				<dcscom:balance>true</dcscom:balance>
+				<dcscom:balanceGroupName>AmountBalance</dcscom:balanceGroupName>
+				<dcscom:balanceType>None</dcscom:balanceType>
+				<dcscom:accountingBalanceType>Debit</dcscom:accountingBalanceType>
+			</role>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>CurrencyAmountBalance</dataPath>
+			<field>CurrencyAmountBalance</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>pl</v8:lang>
+					<v8:content>Currency amount balance</v8:content>
+				</v8:item>
+			</title>
+			<useRestriction>
+				<condition>true</condition>
+				<group>true</group>
+				<order>true</order>
+			</useRestriction>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>InitialDocumentDate</dataPath>
+			<field>InitialDocumentDate</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>pl</v8:lang>
+					<v8:content>Initial document date</v8:content>
+				</v8:item>
+			</title>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>InitialDocumentNumber</dataPath>
+			<field>InitialDocumentNumber</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>pl</v8:lang>
+					<v8:content>Initial document number</v8:content>
+				</v8:item>
+			</title>
+		</field>
+		<item xsi:type="DataSetQuery">
+			<name>DataSet1</name>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>Account</dataPath>
+				<field>Account</field>
+				<title xsi:type="v8:LocalStringType">
+					<v8:item>
+						<v8:lang>en</v8:lang>
+						<v8:content>Account</v8:content>
+					</v8:item>
+					<v8:item>
+						<v8:lang>pl</v8:lang>
+						<v8:content>Konto</v8:content>
+					</v8:item>
+				</title>
+				<useRestriction>
+					<condition>true</condition>
+					<group>true</group>
+					<order>true</order>
+				</useRestriction>
+				<attributeUseRestriction>
+					<condition>true</condition>
+					<group>true</group>
+					<order>true</order>
+				</attributeUseRestriction>
+				<role>
+					<dcscom:dimension>true</dcscom:dimension>
+				</role>
+			</field>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>AmountCr</dataPath>
+				<field>AmountCr</field>
+				<title xsi:type="v8:LocalStringType">
+					<v8:item>
+						<v8:lang>en</v8:lang>
+						<v8:content>Amount Cr</v8:content>
+					</v8:item>
+					<v8:item>
+						<v8:lang>pl</v8:lang>
+						<v8:content>Kwota Ma</v8:content>
+					</v8:item>
+				</title>
+				<useRestriction>
+					<condition>true</condition>
+					<group>true</group>
+					<order>true</order>
+				</useRestriction>
+			</field>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>AmountDr</dataPath>
+				<field>AmountDr</field>
+				<title xsi:type="v8:LocalStringType">
+					<v8:item>
+						<v8:lang>en</v8:lang>
+						<v8:content>Amount Dr</v8:content>
+					</v8:item>
+					<v8:item>
+						<v8:lang>pl</v8:lang>
+						<v8:content>Kwota Wn</v8:content>
+					</v8:item>
+				</title>
+				<useRestriction>
+					<condition>true</condition>
+					<group>true</group>
+					<order>true</order>
+				</useRestriction>
+			</field>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>Company</dataPath>
+				<field>Company</field>
+				<title xsi:type="v8:LocalStringType">
+					<v8:item>
+						<v8:lang>en</v8:lang>
+						<v8:content>Company</v8:content>
+					</v8:item>
+					<v8:item>
+						<v8:lang>pl</v8:lang>
+						<v8:content>Firma</v8:content>
+					</v8:item>
+				</title>
+				<useRestriction>
+					<condition>true</condition>
+				</useRestriction>
+				<attributeUseRestriction>
+					<condition>true</condition>
+				</attributeUseRestriction>
+			</field>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>Currency</dataPath>
+				<field>Currency</field>
+				<title xsi:type="v8:LocalStringType">
+					<v8:item>
+						<v8:lang>en</v8:lang>
+						<v8:content>Currency</v8:content>
+					</v8:item>
+					<v8:item>
+						<v8:lang>pl</v8:lang>
+						<v8:content>Waluta</v8:content>
+					</v8:item>
+				</title>
+				<role>
+					<dcscom:dimension>true</dcscom:dimension>
+					<dcscom:ignoreNullValues>true</dcscom:ignoreNullValues>
+				</role>
+			</field>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>CurrencyAmount</dataPath>
+				<field>CurrencyAmount</field>
+				<title xsi:type="v8:LocalStringType">
+					<v8:item>
+						<v8:lang>en</v8:lang>
+						<v8:content>Currency amount</v8:content>
+					</v8:item>
+					<v8:item>
+						<v8:lang>pl</v8:lang>
+						<v8:content>Kwota w walucie</v8:content>
+					</v8:item>
+				</title>
+				<useRestriction>
+					<condition>true</condition>
+					<group>true</group>
+					<order>true</order>
+				</useRestriction>
+			</field>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>Description</dataPath>
+				<field>Description</field>
+				<title xsi:type="v8:LocalStringType">
+					<v8:item>
+						<v8:lang>en</v8:lang>
+						<v8:content>Description</v8:content>
+					</v8:item>
+					<v8:item>
+						<v8:lang>pl</v8:lang>
+						<v8:content>Opis</v8:content>
+					</v8:item>
+				</title>
+				<useRestriction>
+					<condition>true</condition>
+					<group>true</group>
+					<order>true</order>
+				</useRestriction>
+			</field>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>ExtDimension1</dataPath>
+				<field>ExtDimension1</field>
+				<title xsi:type="v8:LocalStringType">
+					<v8:item>
+						<v8:lang>en</v8:lang>
+						<v8:content>Ext dimension 1</v8:content>
+					</v8:item>
+					<v8:item>
+						<v8:lang>pl</v8:lang>
+						<v8:content>Analityka 1</v8:content>
+					</v8:item>
+				</title>
+				<useRestriction>
+					<group>true</group>
+					<order>true</order>
+				</useRestriction>
+				<attributeUseRestriction>
+					<group>true</group>
+					<order>true</order>
+				</attributeUseRestriction>
+				<role>
+					<dcscom:dimension>true</dcscom:dimension>
+					<dcscom:ignoreNullValues>true</dcscom:ignoreNullValues>
+				</role>
+			</field>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>ExtDimension2</dataPath>
+				<field>ExtDimension2</field>
+				<title xsi:type="v8:LocalStringType">
+					<v8:item>
+						<v8:lang>en</v8:lang>
+						<v8:content>Ext dimension 2</v8:content>
+					</v8:item>
+					<v8:item>
+						<v8:lang>pl</v8:lang>
+						<v8:content>Analityka 2</v8:content>
+					</v8:item>
+				</title>
+				<useRestriction>
+					<group>true</group>
+					<order>true</order>
+				</useRestriction>
+				<attributeUseRestriction>
+					<group>true</group>
+					<order>true</order>
+				</attributeUseRestriction>
+				<role>
+					<dcscom:dimension>true</dcscom:dimension>
+					<dcscom:ignoreNullValues>true</dcscom:ignoreNullValues>
+				</role>
+			</field>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>ExtDimension3</dataPath>
+				<field>ExtDimension3</field>
+				<title xsi:type="v8:LocalStringType">
+					<v8:item>
+						<v8:lang>en</v8:lang>
+						<v8:content>Ext dimension 3</v8:content>
+					</v8:item>
+					<v8:item>
+						<v8:lang>pl</v8:lang>
+						<v8:content>Analityka 3</v8:content>
+					</v8:item>
+				</title>
+				<useRestriction>
+					<group>true</group>
+					<order>true</order>
+				</useRestriction>
+				<attributeUseRestriction>
+					<group>true</group>
+					<order>true</order>
+				</attributeUseRestriction>
+				<role>
+					<dcscom:dimension>true</dcscom:dimension>
+					<dcscom:ignoreNullValues>true</dcscom:ignoreNullValues>
+				</role>
+			</field>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>ExtDimensionType1</dataPath>
+				<field>ExtDimensionType1</field>
+				<title xsi:type="v8:LocalStringType">
+					<v8:item>
+						<v8:lang>pl</v8:lang>
+						<v8:content>Rodzaj analityki1</v8:content>
+					</v8:item>
+				</title>
+				<useRestriction>
+					<field>true</field>
+					<condition>true</condition>
+					<group>true</group>
+					<order>true</order>
+				</useRestriction>
+				<attributeUseRestriction>
+					<field>true</field>
+					<condition>true</condition>
+					<group>true</group>
+					<order>true</order>
+				</attributeUseRestriction>
+			</field>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>ExtDimensionType2</dataPath>
+				<field>ExtDimensionType2</field>
+				<title xsi:type="v8:LocalStringType">
+					<v8:item>
+						<v8:lang>pl</v8:lang>
+						<v8:content>Rodzaj analityki2</v8:content>
+					</v8:item>
+				</title>
+				<useRestriction>
+					<field>true</field>
+					<condition>true</condition>
+					<group>true</group>
+					<order>true</order>
+				</useRestriction>
+				<attributeUseRestriction>
+					<field>true</field>
+					<condition>true</condition>
+					<group>true</group>
+					<order>true</order>
+				</attributeUseRestriction>
+			</field>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>ExtDimensionType3</dataPath>
+				<field>ExtDimensionType3</field>
+				<title xsi:type="v8:LocalStringType">
+					<v8:item>
+						<v8:lang>pl</v8:lang>
+						<v8:content>Rodzaj analityki3</v8:content>
+					</v8:item>
+				</title>
+				<useRestriction>
+					<field>true</field>
+					<condition>true</condition>
+					<group>true</group>
+					<order>true</order>
+				</useRestriction>
+				<attributeUseRestriction>
+					<field>true</field>
+					<condition>true</condition>
+					<group>true</group>
+					<order>true</order>
+				</attributeUseRestriction>
+			</field>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>Period</dataPath>
+				<field>Period</field>
+				<title xsi:type="v8:LocalStringType">
+					<v8:item>
+						<v8:lang>en</v8:lang>
+						<v8:content>Period</v8:content>
+					</v8:item>
+					<v8:item>
+						<v8:lang>pl</v8:lang>
+						<v8:content>Okres</v8:content>
+					</v8:item>
+				</title>
+				<useRestriction>
+					<condition>true</condition>
+					<group>true</group>
+					<order>true</order>
+				</useRestriction>
+				<role>
+					<dcscom:periodNumber>2</dcscom:periodNumber>
+					<dcscom:periodType>Main</dcscom:periodType>
+				</role>
+			</field>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>Recorder</dataPath>
+				<field>Recorder</field>
+				<title xsi:type="v8:LocalStringType">
+					<v8:item>
+						<v8:lang>en</v8:lang>
+						<v8:content>Recorder</v8:content>
+					</v8:item>
+					<v8:item>
+						<v8:lang>pl</v8:lang>
+						<v8:content>Rejestrator</v8:content>
+					</v8:item>
+				</title>
+				<useRestriction>
+					<condition>true</condition>
+					<group>true</group>
+					<order>true</order>
+				</useRestriction>
+				<attributeUseRestriction>
+					<condition>true</condition>
+					<group>true</group>
+					<order>true</order>
+				</attributeUseRestriction>
+				<role>
+					<dcscom:periodNumber>1</dcscom:periodNumber>
+					<dcscom:periodType>Main</dcscom:periodType>
+				</role>
+			</field>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>RecordType</dataPath>
+				<field>RecordType</field>
+				<title xsi:type="v8:LocalStringType">
+					<v8:item>
+						<v8:lang>en</v8:lang>
+						<v8:content>Record type</v8:content>
+					</v8:item>
+					<v8:item>
+						<v8:lang>pl</v8:lang>
+						<v8:content>Rodzaj ruchu</v8:content>
+					</v8:item>
+				</title>
+				<useRestriction>
+					<condition>true</condition>
+					<group>true</group>
+					<order>true</order>
+				</useRestriction>
+			</field>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>InitialDocumentDate</dataPath>
+				<field>InitialDocumentDate</field>
+				<title xsi:type="v8:LocalStringType">
+					<v8:item>
+						<v8:lang>pl</v8:lang>
+						<v8:content>Initial document date</v8:content>
+					</v8:item>
+				</title>
+			</field>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>InitialDocumentNumber</dataPath>
+				<field>InitialDocumentNumber</field>
+				<title xsi:type="v8:LocalStringType">
+					<v8:item>
+						<v8:lang>pl</v8:lang>
+						<v8:content>Initial document number</v8:content>
+					</v8:item>
+				</title>
+			</field>
+			<dataSource>DataSource1</dataSource>
+			<query>SELECT
+	BookkeepingRecordsWithExtDimensions.Period AS Period,
+	BookkeepingRecordsWithExtDimensions.Recorder AS Recorder,
+	BookkeepingRecordsWithExtDimensions.Account AS Account,
+	BookkeepingRecordsWithExtDimensions.ExtDimensionType1,
+	BookkeepingRecordsWithExtDimensions.ExtDimensionType2,
+	BookkeepingRecordsWithExtDimensions.ExtDimensionType3,
+	BookkeepingRecordsWithExtDimensions.AmountDr,
+	BookkeepingRecordsWithExtDimensions.AmountCr,
+	BookkeepingRecordsWithExtDimensions.RecordType,
+	BookkeepingRecordsWithExtDimensions.ExtDimension1,
+	BookkeepingRecordsWithExtDimensions.ExtDimension2,
+	BookkeepingRecordsWithExtDimensions.ExtDimension3,
+	BookkeepingRecordsWithExtDimensions.Currency,
+	BookkeepingRecordsWithExtDimensions.CurrencyAmount,
+	BookkeepingRecordsWithExtDimensions.Description,
+	CASE
+		WHEN BookkeepingRecordsWithExtDimensions.Recorder REFS Document.BookkeepingOperation
+			THEN CASE
+					WHEN BookkeepingRecordsWithExtDimensions.Recorder.OperationType = VALUE(Enum.OperationTypesBookkeepingOperation.BasedOnDocument)
+						THEN BookkeepingRecordsWithExtDimensions.Recorder.DocumentBase
+					WHEN BookkeepingRecordsWithExtDimensions.Recorder.OperationType = VALUE(Enum.OperationTypesBookkeepingOperation.Any)
+							OR BookkeepingRecordsWithExtDimensions.Recorder.OperationType = VALUE(Enum.OperationTypesBookkeepingOperation.AnyWithRecordsGeneration)
+						THEN BookkeepingRecordsWithExtDimensions.Recorder.InitialDocumentNumber
+					ELSE ""
+				END
+		ELSE ""
+	END AS InitialDocumentNumber,
+	CASE
+		WHEN BookkeepingRecordsWithExtDimensions.Recorder REFS Document.BookkeepingOperation
+			THEN CASE
+					WHEN BookkeepingRecordsWithExtDimensions.Recorder.OperationType = VALUE(Enum.OperationTypesBookkeepingOperation.BasedOnDocument)
+						THEN BookkeepingRecordsWithExtDimensions.Recorder.DocumentBase
+					WHEN BookkeepingRecordsWithExtDimensions.Recorder.OperationType = VALUE(Enum.OperationTypesBookkeepingOperation.Any)
+							OR BookkeepingRecordsWithExtDimensions.Recorder.OperationType = VALUE(Enum.OperationTypesBookkeepingOperation.AnyWithRecordsGeneration)
+						THEN BookkeepingRecordsWithExtDimensions.Recorder.InitialDocumentDate
+					ELSE ""
+				END
+		ELSE ""
+	END AS InitialDocumentDate
+FROM
+	AccountingRegister.Bookkeeping.RecordsWithExtDimensions(
+			{(&amp;BeginOfPeriod)},
+			{(&amp;EndOfPeriodBoundary)},
+			Account = &amp;Account
+				AND Company = &amp;Company,
+			,
+			) AS BookkeepingRecordsWithExtDimensions
+
+ORDER BY
+	Period</query>
+		</item>
+		<item xsi:type="DataSetQuery">
+			<name>DataSet2</name>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>Account</dataPath>
+				<field>Account</field>
+				<title xsi:type="v8:LocalStringType">
+					<v8:item>
+						<v8:lang>en</v8:lang>
+						<v8:content>Account</v8:content>
+					</v8:item>
+					<v8:item>
+						<v8:lang>pl</v8:lang>
+						<v8:content>Konto</v8:content>
+					</v8:item>
+				</title>
+				<useRestriction>
+					<condition>true</condition>
+				</useRestriction>
+				<attributeUseRestriction>
+					<condition>true</condition>
+				</attributeUseRestriction>
+			</field>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>AmountBalance</dataPath>
+				<field>AmountBalance</field>
+				<title xsi:type="v8:LocalStringType">
+					<v8:item>
+						<v8:lang>pl</v8:lang>
+						<v8:content>Amount balance</v8:content>
+					</v8:item>
+				</title>
+				<useRestriction>
+					<condition>true</condition>
+					<group>true</group>
+					<order>true</order>
+				</useRestriction>
+			</field>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>AmountBalanceCr</dataPath>
+				<field>AmountBalanceCr</field>
+				<title xsi:type="v8:LocalStringType">
+					<v8:item>
+						<v8:lang>pl</v8:lang>
+						<v8:content>Amount balance cr</v8:content>
+					</v8:item>
+				</title>
+				<useRestriction>
+					<condition>true</condition>
+					<group>true</group>
+					<order>true</order>
+				</useRestriction>
+				<role>
+					<dcscom:balance>true</dcscom:balance>
+					<dcscom:balanceGroupName>AmountBalance</dcscom:balanceGroupName>
+					<dcscom:balanceType>None</dcscom:balanceType>
+					<dcscom:accountingBalanceType>Credit</dcscom:accountingBalanceType>
+				</role>
+			</field>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>AmountBalanceDr</dataPath>
+				<field>AmountBalanceDr</field>
+				<title xsi:type="v8:LocalStringType">
+					<v8:item>
+						<v8:lang>pl</v8:lang>
+						<v8:content>Amount balance dr</v8:content>
+					</v8:item>
+				</title>
+				<useRestriction>
+					<condition>true</condition>
+					<group>true</group>
+					<order>true</order>
+				</useRestriction>
+				<role>
+					<dcscom:balance>true</dcscom:balance>
+					<dcscom:balanceGroupName>AmountBalance</dcscom:balanceGroupName>
+					<dcscom:balanceType>None</dcscom:balanceType>
+					<dcscom:accountingBalanceType>Debit</dcscom:accountingBalanceType>
+				</role>
+			</field>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>Company</dataPath>
+				<field>Company</field>
+				<title xsi:type="v8:LocalStringType">
+					<v8:item>
+						<v8:lang>pl</v8:lang>
+						<v8:content>Company</v8:content>
+					</v8:item>
+				</title>
+				<useRestriction>
+					<condition>true</condition>
+				</useRestriction>
+				<attributeUseRestriction>
+					<condition>true</condition>
+				</attributeUseRestriction>
+			</field>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>Currency</dataPath>
+				<field>Currency</field>
+				<title xsi:type="v8:LocalStringType">
+					<v8:item>
+						<v8:lang>pl</v8:lang>
+						<v8:content>Currency</v8:content>
+					</v8:item>
+				</title>
+			</field>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>CurrencyAmountBalance</dataPath>
+				<field>CurrencyAmountBalance</field>
+				<title xsi:type="v8:LocalStringType">
+					<v8:item>
+						<v8:lang>pl</v8:lang>
+						<v8:content>Currency amount balance</v8:content>
+					</v8:item>
+				</title>
+				<useRestriction>
+					<condition>true</condition>
+					<group>true</group>
+					<order>true</order>
+				</useRestriction>
+			</field>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>ExtDimension1</dataPath>
+				<field>ExtDimension1</field>
+				<title xsi:type="v8:LocalStringType">
+					<v8:item>
+						<v8:lang>pl</v8:lang>
+						<v8:content>Ext dimension1</v8:content>
+					</v8:item>
+				</title>
+				<useRestriction>
+					<group>true</group>
+					<order>true</order>
+				</useRestriction>
+				<attributeUseRestriction>
+					<group>true</group>
+					<order>true</order>
+				</attributeUseRestriction>
+				<role>
+					<dcscom:dimension>true</dcscom:dimension>
+					<dcscom:ignoreNullValues>true</dcscom:ignoreNullValues>
+				</role>
+			</field>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>ExtDimension2</dataPath>
+				<field>ExtDimension2</field>
+				<title xsi:type="v8:LocalStringType">
+					<v8:item>
+						<v8:lang>pl</v8:lang>
+						<v8:content>Ext dimension2</v8:content>
+					</v8:item>
+				</title>
+				<useRestriction>
+					<group>true</group>
+					<order>true</order>
+				</useRestriction>
+				<attributeUseRestriction>
+					<group>true</group>
+					<order>true</order>
+				</attributeUseRestriction>
+				<role>
+					<dcscom:dimension>true</dcscom:dimension>
+					<dcscom:ignoreNullValues>true</dcscom:ignoreNullValues>
+				</role>
+			</field>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>ExtDimension3</dataPath>
+				<field>ExtDimension3</field>
+				<title xsi:type="v8:LocalStringType">
+					<v8:item>
+						<v8:lang>pl</v8:lang>
+						<v8:content>Ext dimension3</v8:content>
+					</v8:item>
+				</title>
+				<useRestriction>
+					<group>true</group>
+					<order>true</order>
+				</useRestriction>
+				<attributeUseRestriction>
+					<group>true</group>
+					<order>true</order>
+				</attributeUseRestriction>
+				<role>
+					<dcscom:dimension>true</dcscom:dimension>
+					<dcscom:ignoreNullValues>true</dcscom:ignoreNullValues>
+				</role>
+			</field>
+			<dataSource>DataSource1</dataSource>
+			<query>SELECT
+	BookkeepingBalance.AmountBalance,
+	BookkeepingBalance.AmountBalanceDr,
+	BookkeepingBalance.AmountBalanceCr,
+	BookkeepingBalance.CurrencyAmountBalance,
+	BookkeepingBalance.ExtDimension1,
+	BookkeepingBalance.ExtDimension2,
+	BookkeepingBalance.ExtDimension3
+FROM
+	AccountingRegister.Bookkeeping.Balance({(&amp;BeginOfPeriod)}, Account = &amp;Account, , Company = &amp;Company) AS BookkeepingBalance</query>
+		</item>
+		<item xsi:type="DataSetQuery">
+			<name>DataSet3</name>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>Account</dataPath>
+				<field>Account</field>
+				<title xsi:type="v8:LocalStringType">
+					<v8:item>
+						<v8:lang>pl</v8:lang>
+						<v8:content>Konto</v8:content>
+					</v8:item>
+				</title>
+				<useRestriction>
+					<condition>true</condition>
+				</useRestriction>
+				<attributeUseRestriction>
+					<condition>true</condition>
+				</attributeUseRestriction>
+			</field>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>AmountBalance</dataPath>
+				<field>AmountBalance</field>
+				<title xsi:type="v8:LocalStringType">
+					<v8:item>
+						<v8:lang>pl</v8:lang>
+						<v8:content>Amount balance</v8:content>
+					</v8:item>
+				</title>
+				<useRestriction>
+					<condition>true</condition>
+					<group>true</group>
+					<order>true</order>
+				</useRestriction>
+			</field>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>AmountBalanceCr</dataPath>
+				<field>AmountBalanceCr</field>
+				<title xsi:type="v8:LocalStringType">
+					<v8:item>
+						<v8:lang>pl</v8:lang>
+						<v8:content>Amount balance cr</v8:content>
+					</v8:item>
+				</title>
+				<useRestriction>
+					<condition>true</condition>
+					<group>true</group>
+					<order>true</order>
+				</useRestriction>
+				<role>
+					<dcscom:balance>true</dcscom:balance>
+					<dcscom:balanceGroupName>AmountBalance</dcscom:balanceGroupName>
+					<dcscom:balanceType>None</dcscom:balanceType>
+					<dcscom:accountingBalanceType>Credit</dcscom:accountingBalanceType>
+				</role>
+			</field>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>AmountBalanceDr</dataPath>
+				<field>AmountBalanceDr</field>
+				<title xsi:type="v8:LocalStringType">
+					<v8:item>
+						<v8:lang>pl</v8:lang>
+						<v8:content>Amount balance dr</v8:content>
+					</v8:item>
+				</title>
+				<useRestriction>
+					<condition>true</condition>
+					<group>true</group>
+					<order>true</order>
+				</useRestriction>
+				<role>
+					<dcscom:balance>true</dcscom:balance>
+					<dcscom:balanceGroupName>AmountBalance</dcscom:balanceGroupName>
+					<dcscom:balanceType>None</dcscom:balanceType>
+					<dcscom:accountingBalanceType>Debit</dcscom:accountingBalanceType>
+				</role>
+			</field>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>Company</dataPath>
+				<field>Company</field>
+				<title xsi:type="v8:LocalStringType">
+					<v8:item>
+						<v8:lang>pl</v8:lang>
+						<v8:content>Company</v8:content>
+					</v8:item>
+				</title>
+				<useRestriction>
+					<condition>true</condition>
+				</useRestriction>
+				<attributeUseRestriction>
+					<condition>true</condition>
+				</attributeUseRestriction>
+			</field>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>Currency</dataPath>
+				<field>Currency</field>
+				<title xsi:type="v8:LocalStringType">
+					<v8:item>
+						<v8:lang>pl</v8:lang>
+						<v8:content>Currency</v8:content>
+					</v8:item>
+				</title>
+			</field>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>CurrencyAmountBalance</dataPath>
+				<field>CurrencyAmountBalance</field>
+				<title xsi:type="v8:LocalStringType">
+					<v8:item>
+						<v8:lang>pl</v8:lang>
+						<v8:content>Currency amount balance</v8:content>
+					</v8:item>
+				</title>
+				<useRestriction>
+					<condition>true</condition>
+					<group>true</group>
+					<order>true</order>
+				</useRestriction>
+			</field>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>ExtDimension1</dataPath>
+				<field>ExtDimension1</field>
+				<title xsi:type="v8:LocalStringType">
+					<v8:item>
+						<v8:lang>pl</v8:lang>
+						<v8:content>Analityka1</v8:content>
+					</v8:item>
+				</title>
+				<useRestriction>
+					<group>true</group>
+					<order>true</order>
+				</useRestriction>
+				<attributeUseRestriction>
+					<group>true</group>
+					<order>true</order>
+				</attributeUseRestriction>
+				<role>
+					<dcscom:dimension>true</dcscom:dimension>
+					<dcscom:ignoreNullValues>true</dcscom:ignoreNullValues>
+				</role>
+			</field>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>ExtDimension2</dataPath>
+				<field>ExtDimension2</field>
+				<title xsi:type="v8:LocalStringType">
+					<v8:item>
+						<v8:lang>pl</v8:lang>
+						<v8:content>Analityka2</v8:content>
+					</v8:item>
+				</title>
+				<useRestriction>
+					<group>true</group>
+					<order>true</order>
+				</useRestriction>
+				<attributeUseRestriction>
+					<group>true</group>
+					<order>true</order>
+				</attributeUseRestriction>
+				<role>
+					<dcscom:dimension>true</dcscom:dimension>
+					<dcscom:ignoreNullValues>true</dcscom:ignoreNullValues>
+				</role>
+			</field>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>ExtDimension3</dataPath>
+				<field>ExtDimension3</field>
+				<title xsi:type="v8:LocalStringType">
+					<v8:item>
+						<v8:lang>pl</v8:lang>
+						<v8:content>Analityka3</v8:content>
+					</v8:item>
+				</title>
+				<useRestriction>
+					<group>true</group>
+					<order>true</order>
+				</useRestriction>
+				<attributeUseRestriction>
+					<group>true</group>
+					<order>true</order>
+				</attributeUseRestriction>
+				<role>
+					<dcscom:dimension>true</dcscom:dimension>
+					<dcscom:ignoreNullValues>true</dcscom:ignoreNullValues>
+				</role>
+			</field>
+			<dataSource>DataSource1</dataSource>
+			<query>SELECT
+	BookkeepingBalance.AmountBalance,
+	BookkeepingBalance.AmountBalanceDr,
+	BookkeepingBalance.AmountBalanceCr,
+	BookkeepingBalance.CurrencyAmountBalance,
+	BookkeepingBalance.ExtDimension1,
+	BookkeepingBalance.ExtDimension2,
+	BookkeepingBalance.ExtDimension3
+FROM
+	AccountingRegister.Bookkeeping.Balance({(&amp;EndOfPeriodBoundary)}, Account = &amp;Account, , Company = &amp;Company) AS BookkeepingBalance</query>
+		</item>
+	</dataSet>
+	<totalField>
+		<dataPath>AmountBalance</dataPath>
+		<expression>Sum(AmountBalance)</expression>
+	</totalField>
+	<totalField>
+		<dataPath>AmountBalanceCr</dataPath>
+		<expression>Sum(AmountBalanceCr)</expression>
+	</totalField>
+	<totalField>
+		<dataPath>AmountBalanceDr</dataPath>
+		<expression>Sum(AmountBalanceDr)</expression>
+	</totalField>
+	<totalField>
+		<dataPath>AmountCr</dataPath>
+		<expression>Sum(AmountCr)</expression>
+	</totalField>
+	<totalField>
+		<dataPath>AmountDr</dataPath>
+		<expression>Sum(AmountDr)</expression>
+	</totalField>
+	<totalField>
+		<dataPath>CurrencyAmount</dataPath>
+		<expression>Sum(CurrencyAmount)</expression>
+	</totalField>
+	<totalField>
+		<dataPath>CurrencyAmountBalance</dataPath>
+		<expression>Sum(CurrencyAmountBalance)</expression>
+	</totalField>
+	<parameter>
+		<name>BeginOfPeriod</name>
+		<title xsi:type="v8:LocalStringType">
+			<v8:item>
+				<v8:lang>pl</v8:lang>
+				<v8:content>Begin of period</v8:content>
+			</v8:item>
+		</title>
+		<valueType>
+			<v8:Type>xs:dateTime</v8:Type>
+			<v8:DateQualifiers>
+				<v8:DateFractions>DateTime</v8:DateFractions>
+			</v8:DateQualifiers>
+		</valueType>
+		<value xsi:type="xs:dateTime">0001-01-01T00:00:00</value>
+		<useRestriction>false</useRestriction>
+		<availableAsField>false</availableAsField>
+	</parameter>
+	<parameter>
+		<name>EndOfPeriod</name>
+		<title xsi:type="v8:LocalStringType">
+			<v8:item>
+				<v8:lang>pl</v8:lang>
+				<v8:content>End of period</v8:content>
+			</v8:item>
+		</title>
+		<valueType>
+			<v8:Type>xs:dateTime</v8:Type>
+			<v8:DateQualifiers>
+				<v8:DateFractions>DateTime</v8:DateFractions>
+			</v8:DateQualifiers>
+		</valueType>
+		<value xsi:type="xs:dateTime">0001-01-01T00:00:00</value>
+		<useRestriction>false</useRestriction>
+		<availableAsField>false</availableAsField>
+	</parameter>
+	<parameter>
+		<name>Company</name>
+		<title xsi:type="v8:LocalStringType">
+			<v8:item>
+				<v8:lang>pl</v8:lang>
+				<v8:content>Company</v8:content>
+			</v8:item>
+		</title>
+		<value xsi:type="dcscor:DesignTimeValue">Catalog.Companies.EmptyRef</value>
+		<useRestriction>false</useRestriction>
+		<availableAsField>false</availableAsField>
+		<denyIncompleteValues>true</denyIncompleteValues>
+	</parameter>
+	<parameter>
+		<name>Account</name>
+		<title xsi:type="v8:LocalStringType">
+			<v8:item>
+				<v8:lang>pl</v8:lang>
+				<v8:content>Account</v8:content>
+			</v8:item>
+		</title>
+		<valueType>
+			<v8:Type xmlns:d4p1="http://v8.1c.ru/8.1/data/enterprise/current-config">d4p1:ChartOfAccountsRef.Bookkeeping</v8:Type>
+		</valueType>
+		<value xsi:type="dcscor:DesignTimeValue">ChartOfAccounts.Bookkeeping.EmptyRef</value>
+		<useRestriction>false</useRestriction>
+		<availableAsField>false</availableAsField>
+		<denyIncompleteValues>true</denyIncompleteValues>
+	</parameter>
+	<parameter>
+		<name>OutputPageTotals</name>
+		<title xsi:type="v8:LocalStringType">
+			<v8:item>
+				<v8:lang>pl</v8:lang>
+				<v8:content>Output page totals</v8:content>
+			</v8:item>
+		</title>
+		<valueType>
+			<v8:Type>xs:boolean</v8:Type>
+		</valueType>
+		<value xsi:type="xs:boolean">false</value>
+		<useRestriction>false</useRestriction>
+		<availableAsField>false</availableAsField>
+	</parameter>
+	<parameter>
+		<name>ShowClosePeriodRecords</name>
+		<title xsi:type="v8:LocalStringType">
+			<v8:item>
+				<v8:lang>pl</v8:lang>
+				<v8:content>Show close period records</v8:content>
+			</v8:item>
+		</title>
+		<valueType>
+			<v8:Type>xs:boolean</v8:Type>
+		</valueType>
+		<value xsi:type="xs:boolean">false</value>
+		<useRestriction>false</useRestriction>
+		<availableAsField>false</availableAsField>
+	</parameter>
+	<parameter>
+		<name>ShowQuickFilter</name>
+		<title xsi:type="v8:LocalStringType">
+			<v8:item>
+				<v8:lang>pl</v8:lang>
+				<v8:content>Show quick filter</v8:content>
+			</v8:item>
+		</title>
+		<valueType>
+			<v8:Type>xs:boolean</v8:Type>
+		</valueType>
+		<value xsi:type="xs:boolean">true</value>
+		<useRestriction>false</useRestriction>
+		<availableAsField>false</availableAsField>
+	</parameter>
+	<parameter>
+		<name>NegativeInRed</name>
+		<title xsi:type="v8:LocalStringType">
+			<v8:item>
+				<v8:lang>pl</v8:lang>
+				<v8:content>Negative in red</v8:content>
+			</v8:item>
+		</title>
+		<valueType>
+			<v8:Type>xs:boolean</v8:Type>
+		</valueType>
+		<value xsi:type="xs:boolean">true</value>
+		<useRestriction>false</useRestriction>
+		<availableAsField>false</availableAsField>
+	</parameter>
+	<parameter>
+		<name>EndOfPeriodBoundary</name>
+		<title xsi:type="v8:LocalStringType">
+			<v8:item>
+				<v8:lang>pl</v8:lang>
+				<v8:content>End of period boundary</v8:content>
+			</v8:item>
+		</title>
+		<valueType>
+			<v8:Type>xs:dateTime</v8:Type>
+			<v8:DateQualifiers>
+				<v8:DateFractions>DateTime</v8:DateFractions>
+			</v8:DateQualifiers>
+		</valueType>
+		<value xsi:type="xs:dateTime">0001-01-01T00:00:00</value>
+		<useRestriction>false</useRestriction>
+		<expression>TemplateReports.CreateBoundaryFromValue(&amp;EndOfPeriod)</expression>
+		<availableAsField>false</availableAsField>
+	</parameter>
+	<parameter>
+		<name>Top</name>
+		<title xsi:type="v8:LocalStringType">
+			<v8:item>
+				<v8:lang>pl</v8:lang>
+				<v8:content>Top</v8:content>
+			</v8:item>
+		</title>
+		<valueType>
+			<v8:Type>xs:decimal</v8:Type>
+			<v8:NumberQualifiers>
+				<v8:Digits>0</v8:Digits>
+				<v8:FractionDigits>0</v8:FractionDigits>
+				<v8:AllowedSign>Any</v8:AllowedSign>
+			</v8:NumberQualifiers>
+		</valueType>
+		<value xsi:type="xs:decimal">0</value>
+		<useRestriction>false</useRestriction>
+	</parameter>
+	<settingsVariant>
+		<dcsset:name>Default</dcsset:name>
+		<dcsset:presentation xsi:type="xs:string">Podstawowy</dcsset:presentation>
+		<dcsset:settings xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows">
+			<dcsset:selection>
+				<dcsset:item xsi:type="dcsset:SelectedItemField">
+					<dcsset:field>ExtDimension1</dcsset:field>
+				</dcsset:item>
+				<dcsset:item xsi:type="dcsset:SelectedItemField">
+					<dcsset:field>ExtDimension2</dcsset:field>
+				</dcsset:item>
+				<dcsset:item xsi:type="dcsset:SelectedItemField">
+					<dcsset:field>ExtDimension3</dcsset:field>
+				</dcsset:item>
+				<dcsset:item xsi:type="dcsset:SelectedItemField">
+					<dcsset:field>Account</dcsset:field>
+				</dcsset:item>
+				<dcsset:item xsi:type="dcsset:SelectedItemField">
+					<dcsset:field>Period</dcsset:field>
+				</dcsset:item>
+				<dcsset:item xsi:type="dcsset:SelectedItemField">
+					<dcsset:field>Description</dcsset:field>
+				</dcsset:item>
+				<dcsset:item xsi:type="dcsset:SelectedItemField">
+					<dcsset:field>InitialDocumentNumber</dcsset:field>
+				</dcsset:item>
+				<dcsset:item xsi:type="dcsset:SelectedItemField">
+					<dcsset:field>InitialDocumentDate</dcsset:field>
+				</dcsset:item>
+				<dcsset:item xsi:type="dcsset:SelectedItemField">
+					<dcsset:field>Recorder</dcsset:field>
+				</dcsset:item>
+				<dcsset:item xsi:type="dcsset:SelectedItemField">
+					<dcsset:field>RecordType</dcsset:field>
+				</dcsset:item>
+				<dcsset:item xsi:type="dcsset:SelectedItemField">
+					<dcsset:field>Currency</dcsset:field>
+				</dcsset:item>
+				<dcsset:item xsi:type="dcsset:SelectedItemField">
+					<dcsset:field>AmountCr</dcsset:field>
+				</dcsset:item>
+				<dcsset:item xsi:type="dcsset:SelectedItemField">
+					<dcsset:field>CurrencyAmount</dcsset:field>
+				</dcsset:item>
+				<dcsset:item xsi:type="dcsset:SelectedItemField">
+					<dcsset:field>AmountDr</dcsset:field>
+				</dcsset:item>
+				<dcsset:item xsi:type="dcsset:SelectedItemField">
+					<dcsset:field>AmountBalance</dcsset:field>
+				</dcsset:item>
+				<dcsset:item xsi:type="dcsset:SelectedItemField">
+					<dcsset:field>AmountBalanceCr</dcsset:field>
+				</dcsset:item>
+				<dcsset:item xsi:type="dcsset:SelectedItemField">
+					<dcsset:field>AmountBalanceDr</dcsset:field>
+				</dcsset:item>
+				<dcsset:item xsi:type="dcsset:SelectedItemField">
+					<dcsset:field>CurrencyAmountBalance</dcsset:field>
+				</dcsset:item>
+			</dcsset:selection>
+			<dcsset:dataParameters>
+				<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+					<dcscor:parameter>BeginOfPeriod</dcscor:parameter>
+					<dcscor:value xsi:type="xs:dateTime">0001-01-01T00:00:00</dcscor:value>
+				</dcscor:item>
+				<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+					<dcscor:parameter>EndOfPeriod</dcscor:parameter>
+					<dcscor:value xsi:type="xs:dateTime">0001-01-01T00:00:00</dcscor:value>
+				</dcscor:item>
+				<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+					<dcscor:parameter>Company</dcscor:parameter>
+					<dcscor:value xsi:type="dcscor:DesignTimeValue">Catalog.Companies.EmptyRef</dcscor:value>
+				</dcscor:item>
+				<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+					<dcscor:parameter>Account</dcscor:parameter>
+					<dcscor:value xsi:type="dcscor:DesignTimeValue">ChartOfAccounts.Bookkeeping.EmptyRef</dcscor:value>
+				</dcscor:item>
+				<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+					<dcscor:parameter>OutputPageTotals</dcscor:parameter>
+					<dcscor:value xsi:type="xs:boolean">false</dcscor:value>
+				</dcscor:item>
+				<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+					<dcscor:parameter>ShowClosePeriodRecords</dcscor:parameter>
+					<dcscor:value xsi:type="xs:boolean">false</dcscor:value>
+				</dcscor:item>
+				<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+					<dcscor:parameter>ShowQuickFilter</dcscor:parameter>
+					<dcscor:value xsi:type="xs:boolean">true</dcscor:value>
+				</dcscor:item>
+				<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+					<dcscor:parameter>NegativeInRed</dcscor:parameter>
+					<dcscor:value xsi:type="xs:boolean">true</dcscor:value>
+				</dcscor:item>
+				<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+					<dcscor:parameter>EndOfPeriodBoundary</dcscor:parameter>
+					<dcscor:value xsi:type="xs:dateTime">0001-01-01T00:00:00</dcscor:value>
+				</dcscor:item>
+			</dcsset:dataParameters>
+			<dcsset:item xsi:type="dcsset:StructureItemGroup">
+				<dcsset:order>
+					<dcsset:item xsi:type="dcsset:OrderItemAuto"/>
+				</dcsset:order>
+				<dcsset:selection>
+					<dcsset:item xsi:type="dcsset:SelectedItemAuto"/>
+				</dcsset:selection>
+			</dcsset:item>
+		</dcsset:settings>
+	</settingsVariant>
+</DataCompositionSchema>

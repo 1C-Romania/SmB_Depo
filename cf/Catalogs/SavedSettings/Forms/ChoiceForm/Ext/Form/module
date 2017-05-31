@@ -1,0 +1,178 @@
+﻿////////////////////////////////////////////////////////////////////////////////
+// FORM EVENT HANDLERS
+
+Procedure OnOpen()
+
+	ObjectName = Mid(Filter.SetupObject.Value, Find(Filter.SetupObject.Value, ".") + 1);
+	ObjectMetadata = Metadata.Reports.Find(ObjectName);
+	If ObjectMetadata<>Undefined Then
+		ObjectSynonym = Metadata.Reports.Find(ObjectName).Synonym;
+	Else
+		ObjectSynonym = "";
+	EndIf;	
+	// Set form caption.
+	If SettingSavingMode Then
+		ThisForm.Caption = Nstr("en='Save settings for""';pl='Zapisz ustawienia dla""'") + " " + ObjectSynonym + """";
+	Else
+		ThisForm.Caption = Nstr("en='Choose settings for""';pl='Wybierz ustawienia dla""'")+ " " + ObjectSynonym + """";
+	EndIf;
+	
+	// Set filter by user
+	Filter.Owner.Use = True;
+	Filter.Owner.ComparisonType  = ComparisonType.InList;
+	Filter.Owner.Value.Add(SessionParameters.CurrentUser);
+	Filter.Owner.Value.Add(Catalogs.UsersGroups.AllUsers);
+	Query = New Query();
+	Query.Text = "SELECT DISTINCT
+	             |	UsersGroupsGroupUsers.Ref
+	             |FROM
+	             |	Catalog.UsersGroups.GroupUsers AS UsersGroupsGroupUsers
+	             |WHERE
+	             |	(UsersGroupsGroupUsers.User = &User
+	             |			OR UsersGroupsGroupUsers.Ref.GroupAdministrator = &User)";
+	Query.SetParameter("User",SessionParameters.CurrentUser);
+	Selection = Query.Execute().Select();
+	While Selection.Next() Do
+		
+		Filter.Owner.Value.Add(Selection.Ref);
+		
+	EndDo;
+	
+	Filter.DeletionMark.Set(False);
+	
+	// Set filter and order avaliability
+	SettingsSaving.SetFilterAvailability(Controls.CatalogListSavedSettings, "IsFolder, SetupObject, SettingsType" + ?(IsInRole(Metadata.Roles.Role_SystemSettings) OR IsInRole(Metadata.Roles.Right_Administration_ConfigurationAdministration),"",", Owner"));
+	SettingsSaving.SetOrderAvailability(Controls.CatalogListSavedSettings);
+	
+	// List kind settings
+	SettingsSaving.SetupListKind(Controls.CatalogListSavedSettings,SessionParameters.CurrentUser);
+	RefreshListKind(Controls.FromActions.Buttons.ListKind.Check);
+	
+	If IsInRole(Metadata.Roles.Role_SystemSettings) OR IsInRole(Metadata.Roles.Right_Administration_ConfigurationAdministration)
+		OR NOT SettingSavingMode Then
+		Controls.FromActions.Buttons.ActionAllUserSettings.Enabled = True;
+	EndIf;	
+	
+EndProcedure
+
+
+Procedure FromActionsActionAllUserSettings(Button)
+	
+	AllUserSettings = NOT AllUserSettings;
+	Controls.FromActions.Buttons.ActionAllUserSettings.Check = AllUserSettings;
+	
+	If AllUserSettings Then
+		Filter.Owner.Use = False;
+	Else
+		
+		// Set filter by user
+		Filter.Owner.Use = True;
+		Filter.Owner.ComparisonType  = ComparisonType.InList;
+		Filter.Owner.Value.Add(SessionParameters.CurrentUser);
+		Filter.Owner.Value.Add(Catalogs.UsersGroups.AllUsers);
+		Query = New Query();
+		Query.Text = "SELECT DISTINCT
+		|	UsersGroupsGroupUsers.Ref
+		|FROM
+		|	Catalog.UsersGroups.GroupUsers AS UsersGroupsGroupUsers
+		|WHERE
+		|	(UsersGroupsGroupUsers.User = &User
+		|			OR UsersGroupsGroupUsers.Ref.GroupAdministrator = &User)";
+		Query.SetParameter("User",SessionParameters.CurrentUser);
+		Selection = Query.Execute().Select();
+		While Selection.Next() Do
+			
+			Filter.Owner.Value.Add(Selection.Ref);
+			
+		EndDo;
+	EndIf;
+	
+EndProcedure
+
+
+////////////////////////////////////////////////////////////////////////////////
+// LIST EVENTS HANDLERS
+
+Procedure CatalogListSavedSettingsOnStartEdit(Control, NewRow)
+	
+	If NewRow Then
+		
+		CurrentData = Controls.CatalogListSavedSettings.CurrentData;
+		
+		CurrentData.Owner       = SessionParameters.CurrentUser;
+		CurrentData.SetupObject = Filter.SetupObject.Value;
+		CurrentData.SettingType = Enums.SettingsTypes.ReportSettings;
+		
+	EndIf;
+	
+EndProcedure
+
+Procedure CatalogListSavedSettingsValueChoice(Control, StandardProcessing, Value)
+	
+	If ValueIsNotFilled(Controls.CatalogListSavedSettings.CurrentRow)
+	 OR Controls.CatalogListSavedSettings.CurrentRow.IsFolder Then
+		StandardProcessing = False;
+		Return;
+	EndIf;
+	
+	If DontApplySetting Then 
+		Return;
+	EndIf;	
+	
+	If TypeOf(FormOwner) = Type("Form") Then
+		FormOwner.SavedSetting = Controls.CatalogListSavedSettings.CurrentRow;
+		If SettingSavingMode Then
+			FormOwner.SaveSettings();
+		Else
+			FormOwner.ApplySetting();
+		EndIf;
+	EndIf;
+	
+EndProcedure
+
+Procedure CatalogListSavedSettingsOnEditEnd(Control, NewRow, CancelEdit)
+	
+	If Controls.CatalogListSavedSettings.CurrentRow = Undefined OR Controls.CatalogListSavedSettings.CurrentRow.IsFolder Then
+		Return;
+	EndIf;
+	
+	If TypeOf(FormOwner) = Type("Form")
+		AND Controls.CatalogListSavedSettings.CurrentRow.SettingsStorage.Get() = Undefined 
+		AND SettingSavingMode Then
+		FormOwner.SavedSetting = Controls.CatalogListSavedSettings.CurrentRow;
+		FormOwner.SaveSettings();
+	EndIf;
+
+	
+EndProcedure
+
+Procedure CatalogListSavedSettingsBeforeAddRow(Control, Cancel, Clone, Parent, IsFolder)
+	
+	If NOT SettingSavingMode Then
+		Answer = Doquerybox(Nstr("en='In setting choice mode adding of new item is unavailable!';pl='W trybie wyboru ustawień dodanie nowego ustawienia jest niemożliwe'"), QuestionDialogMode.OK);
+		Cancel = True;
+		Return;
+	EndIf;
+
+	
+EndProcedure
+
+Procedure FromActionsListKind(Button)
+	
+	Button.Check = Not Button.Check;
+	
+	RefreshListKind(Button.Check);
+	
+EndProcedure
+
+Procedure RefreshListKind(Check)
+	
+	Controls.CatalogListSavedSettings.Tree = Check;
+	Controls.CatalogListSavedSettings.HierarchicalView = Check;
+	
+EndProcedure
+
+
+
+
+

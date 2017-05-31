@@ -1,0 +1,42 @@
+﻿
+Procedure OnOpen()
+	
+	Dialogs.AddFormMainActionsBookkeepingButton(ThisForm);
+	
+EndProcedure
+
+Procedure FormActionsShowRegisterRecordsBookkeeping(Button)
+	If Controls.DocumentList.CurrentData <> Undefined Then
+		Dialogs.ShowDocumentsRecordsBookkeeping(Controls.DocumentList.CurrentData.Ref);
+	EndIf;
+EndProcedure
+
+Procedure FormActionsShowBookkeepingOperation(Button)
+	If Controls.DocumentList.CurrentData <> Undefined Then
+		Dialogs.ShowBookkeepingOperation(Controls.DocumentList.CurrentData.Ref);
+	EndIf;
+EndProcedure
+
+Procedure FormActionsNestedStructure(Button)
+	If Controls.DocumentList.CurrentData <> Undefined Then
+		Dialogs.ShowSlaveDocuments(Controls.DocumentList.CurrentData.Ref);
+	EndIf;
+EndProcedure
+
+Procedure FormActionsShowRegisterRecords(Button)
+	If Controls.DocumentList.CurrentData <> Undefined Then
+		Dialogs.ShowRegistersRecords(ThisForm,Controls.DocumentList.CurrentData.Ref);
+	EndIf;
+EndProcedure
+
+Procedure SetFilter(Document, FilterStructure) Export
+	
+	For Each KeyAndValue In FilterStructure Do
+		Filter[KeyAndValue.Key].Set(KeyAndValue.Value);
+	EndDo;	
+	
+	If Document <> Undefined Then
+		Controls.DocumentList.CurrentRow = Document;
+	EndIf;
+	
+EndProcedure

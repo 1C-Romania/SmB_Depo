@@ -12,6 +12,10 @@ Procedure SessionParametersSetting(SessionParameterNames)
 	ServiceTechnology.PerformActionsAtSettingSessionParameters(SessionParameterNames);
 	// End ServiceTechnology
 	
+	// by Jack 28.03.2017
+	SessionParameters.IsBookkeepingAvailable = Constants.BookkeepingFunctionalityConstant.Get();
+
+	
 EndProcedure
 
 #EndRegion

@@ -1,0 +1,8 @@
+﻿
+Procedure AccountingRegisterListOnRowOutput(Control, RowAppearance, RowData)
+	
+	If RowData.RecordType = AccountingRecordType.Debit Then
+		RowAppearance.Cells.Amount.Align = HorizontalAlign.Left;
+	EndIf;
+	
+EndProcedure

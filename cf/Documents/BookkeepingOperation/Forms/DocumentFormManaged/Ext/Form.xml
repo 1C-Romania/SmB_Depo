@@ -1,0 +1,2050 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<Form xmlns="http://v8.1c.ru/8.3/xcf/logform" xmlns:app="http://v8.1c.ru/8.2/managed-application/core" xmlns:cfg="http://v8.1c.ru/8.1/data/enterprise/current-config" xmlns:dcscor="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:dcsset="http://v8.1c.ru/8.1/data-composition-system/settings" xmlns:ent="http://v8.1c.ru/8.1/data/enterprise" xmlns:lf="http://v8.1c.ru/8.2/managed-application/logform" xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows" xmlns:xr="http://v8.1c.ru/8.3/xcf/readable" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.4">
+	<AutoTitle>false</AutoTitle>
+	<AutoTime>CurrentOrLast</AutoTime>
+	<UsePostingMode>Auto</UsePostingMode>
+	<RepostOnWrite>true</RepostOnWrite>
+	<AutoCommandBar name="FormCommandBar" id="-1">
+		<ChildItems>
+			<Button name="FormCommonCommandEditDocumentsHeader" id="391">
+				<Type>CommandBarButton</Type>
+				<CommandName>CommonCommand.EditDocumentsHeader</CommandName>
+				<ExtendedTooltip name="FormCommonCommandEditDocumentsHeaderExtendedTooltip" id="392"/>
+			</Button>
+			<Button name="FormButtonPrint" id="345">
+				<Type>CommandBarButton</Type>
+				<CommandName>Form.Command.PrintBookkeepingOperation</CommandName>
+				<ExtendedTooltip name="FormButtonPrintExtendedTooltip" id="346"/>
+			</Button>
+		</ChildItems>
+	</AutoCommandBar>
+	<Events>
+		<Event name="AfterWrite">AfterWrite</Event>
+		<Event name="AfterWriteAtServer">AfterWriteAtServer</Event>
+		<Event name="NotificationProcessing">NotificationProcessing</Event>
+		<Event name="OnReadAtServer">OnReadAtServer</Event>
+		<Event name="OnOpen">OnOpen</Event>
+		<Event name="BeforeClose">BeforeClose</Event>
+		<Event name="BeforeWriteAtServer">BeforeWriteAtServer</Event>
+		<Event name="OnCreateAtServer">OnCreateAtServer</Event>
+	</Events>
+	<ChildItems>
+		<UsualGroup name="GroupHeader" id="81">
+			<ToolTipRepresentation>None</ToolTipRepresentation>
+			<Group>Horizontal</Group>
+			<ShowTitle>false</ShowTitle>
+			<ExtendedTooltip name="GroupHeaderExtendedTooltip" id="82"/>
+			<ChildItems>
+				<UsualGroup name="GroupHeaderLeft" id="83">
+					<Title>
+						<v8:item>
+							<v8:lang>pl</v8:lang>
+							<v8:content>Group header left</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Group header left</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Группа Заголовок (слева)</v8:content>
+						</v8:item>
+					</Title>
+					<ToolTip>
+						<v8:item>
+							<v8:lang>pl</v8:lang>
+							<v8:content>Group header left</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Group header left</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Группа Заголовок (слева)</v8:content>
+						</v8:item>
+					</ToolTip>
+					<ToolTipRepresentation>None</ToolTipRepresentation>
+					<Width>50</Width>
+					<Group>Vertical</Group>
+					<ShowTitle>false</ShowTitle>
+					<ExtendedTooltip name="GroupHeaderLeftExtendedTooltip" id="84"/>
+					<ChildItems>
+						<UsualGroup name="GroupNumberDate" id="374">
+							<Title>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Group number and date</v8:content>
+								</v8:item>
+								<v8:item>
+									<v8:lang>pl</v8:lang>
+									<v8:content>Grupa numer i data</v8:content>
+								</v8:item>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Группа Номер и Дата</v8:content>
+								</v8:item>
+							</Title>
+							<HorizontalStretch>true</HorizontalStretch>
+							<Group>Horizontal</Group>
+							<Representation>None</Representation>
+							<ShowTitle>false</ShowTitle>
+							<ExtendedTooltip name="GroupNumberDateExtendedTooltip" id="375"/>
+							<ChildItems>
+								<Pages name="GroupNumberPreview" id="376">
+									<PagesRepresentation>None</PagesRepresentation>
+									<ExtendedTooltip name="GroupNumberPreviewExtendedTooltip" id="377"/>
+									<ChildItems>
+										<Page name="PageNumberPreview" id="378">
+											<ShowTitle>false</ShowTitle>
+											<ExtendedTooltip name="PageNumberPreviewExtendedTooltip" id="379"/>
+											<ChildItems>
+												<InputField name="NumberPreview" id="380">
+													<DataPath>NumberPreview</DataPath>
+													<SkipOnInput>true</SkipOnInput>
+													<WarningOnEditRepresentation>DontShow</WarningOnEditRepresentation>
+													<WarningOnEdit>
+														<v8:item>
+															<v8:lang>en</v8:lang>
+															<v8:content>ATTENTION! After changing the number automatic numbering for this document will be disabled! Enable number editing?</v8:content>
+														</v8:item>
+														<v8:item>
+															<v8:lang>pl</v8:lang>
+															<v8:content>UWAGA! Po zmianie numeru numeracja automatyczna tego dokumentu zostanie wyłączona! Włączyć moźliwość zmiany numeru?</v8:content>
+														</v8:item>
+														<v8:item>
+															<v8:lang>ru</v8:lang>
+															<v8:content>ВНИМАНИЕ! После изменения номера автоматическая нумерация документов будет отключена! Разрешить редактирование номера документа?</v8:content>
+														</v8:item>
+													</WarningOnEdit>
+													<ChoiceButton>true</ChoiceButton>
+													<ContextMenu name="NumberPreviewContextMenu" id="381"/>
+													<ExtendedTooltip name="NumberPreviewExtendedTooltip" id="382"/>
+													<Events>
+														<Event name="OnChange">NumberPreviewOnChange</Event>
+														<Event name="StartChoice">NumberPreviewStartChoice</Event>
+													</Events>
+												</InputField>
+											</ChildItems>
+										</Page>
+										<Page name="PageNumber" id="383">
+											<Group>HorizontalIfPossible</Group>
+											<ShowTitle>false</ShowTitle>
+											<ExtendedTooltip name="PageNumberExtendedTooltip" id="384"/>
+											<ChildItems>
+												<InputField name="Number" id="385">
+													<DataPath>Object.Number</DataPath>
+													<WarningOnEditRepresentation>DontShow</WarningOnEditRepresentation>
+													<WarningOnEdit>
+														<v8:item>
+															<v8:lang>en</v8:lang>
+															<v8:content>ATTENTION! After changing the number automatic numbering for this document will be disabled! Enable number editing?</v8:content>
+														</v8:item>
+														<v8:item>
+															<v8:lang>pl</v8:lang>
+															<v8:content>UWAGA! Po zmianie numeru numeracja automatyczna tego dokumentu zostanie wyłączona! Włączyć moźliwość zmiany numeru?</v8:content>
+														</v8:item>
+														<v8:item>
+															<v8:lang>ru</v8:lang>
+															<v8:content>ВНИМАНИЕ! После изменения номера автоматическая нумерация документов будет отключена! Разрешить редактирование номера документа?</v8:content>
+														</v8:item>
+													</WarningOnEdit>
+													<ChoiceButton>true</ChoiceButton>
+													<ContextMenu name="NumberContextMenu" id="386"/>
+													<ExtendedTooltip name="NumberExtendedTooltip" id="387"/>
+													<Events>
+														<Event name="OnChange">NumberPreviewOnChange</Event>
+														<Event name="StartChoice">NumberPreviewStartChoice</Event>
+													</Events>
+												</InputField>
+											</ChildItems>
+										</Page>
+									</ChildItems>
+								</Pages>
+								<InputField name="Date" id="388">
+									<DataPath>Object.Date</DataPath>
+									<ContextMenu name="DateContextMenu" id="389"/>
+									<ExtendedTooltip name="DateExtendedTooltip" id="390"/>
+									<Events>
+										<Event name="OnChange">DateOnChange</Event>
+									</Events>
+								</InputField>
+							</ChildItems>
+						</UsualGroup>
+						<InputField name="OperationType" id="99">
+							<DataPath>Object.OperationType</DataPath>
+							<AutoMaxWidth>false</AutoMaxWidth>
+							<DropListButton>true</DropListButton>
+							<ContextMenu name="OperationTypeContextMenu" id="100"/>
+							<ExtendedTooltip name="OperationTypeExtendedTooltip" id="101"/>
+							<Events>
+								<Event name="OnChange">OperationTypeOnChange</Event>
+							</Events>
+						</InputField>
+						<UsualGroup name="GroupBookkeepingTemplate" id="284">
+							<Title>
+								<v8:item>
+									<v8:lang>pl</v8:lang>
+									<v8:content>Group bookkeeping template</v8:content>
+								</v8:item>
+							</Title>
+							<ToolTip>
+								<v8:item>
+									<v8:lang>pl</v8:lang>
+									<v8:content>Group bookkeeping template</v8:content>
+								</v8:item>
+							</ToolTip>
+							<Group>Horizontal</Group>
+							<Representation>None</Representation>
+							<ShowTitle>false</ShowTitle>
+							<ExtendedTooltip name="GroupBookkeepingTemplateExtendedTooltip" id="285"/>
+							<ChildItems>
+								<InputField name="BookkeepingOperationsTemplate" id="88">
+									<DataPath>Object.BookkeepingOperationsTemplate</DataPath>
+									<Title>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Book. template</v8:content>
+										</v8:item>
+										<v8:item>
+											<v8:lang>pl</v8:lang>
+											<v8:content>Schemat księg.</v8:content>
+										</v8:item>
+									</Title>
+									<AutoMaxWidth>false</AutoMaxWidth>
+									<DropListButton>false</DropListButton>
+									<ChoiceButton>true</ChoiceButton>
+									<ChoiceButtonRepresentation>ShowInDropListAndInInputField</ChoiceButtonRepresentation>
+									<ChoiceForm>Catalog.BookkeepingOperationsTemplates.Form.ListFormManaged</ChoiceForm>
+									<ContextMenu name="BookkeepingOperationsTemplateContextMenu" id="89"/>
+									<ExtendedTooltip name="BookkeepingOperationsTemplateExtendedTooltip" id="90"/>
+									<Events>
+										<Event name="OnChange">BookkeepingOperationsTemplateOnChange</Event>
+										<Event name="StartChoice">BookkeepingOperationsTemplateStartChoice</Event>
+										<Event name="Clearing">BookkeepingOperationsTemplateClearing</Event>
+									</Events>
+								</InputField>
+								<Button name="ButtonFillAllRecords" id="286">
+									<Type>UsualButton</Type>
+									<Representation>PictureAndText</Representation>
+									<AutoMaxWidth>false</AutoMaxWidth>
+									<CommandName>Form.Command.FillAllRecords</CommandName>
+									<ExtendedTooltip name="ButtonFillAllRecordsExtendedTooltip" id="287"/>
+								</Button>
+							</ChildItems>
+						</UsualGroup>
+						<UsualGroup name="GroupCurrencyExchange" id="140">
+							<Title>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Group currency exchange</v8:content>
+								</v8:item>
+							</Title>
+							<ToolTip>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Group currency exchange</v8:content>
+								</v8:item>
+							</ToolTip>
+							<Group>Horizontal</Group>
+							<ShowTitle>false</ShowTitle>
+							<ThroughAlign>Use</ThroughAlign>
+							<ExtendedTooltip name="GroupCurrencyExchangeExtendedTooltip" id="141"/>
+							<ChildItems>
+								<InputField name="Currency" id="142">
+									<DataPath>Object.Currency</DataPath>
+									<AutoMaxWidth>false</AutoMaxWidth>
+									<DropListButton>false</DropListButton>
+									<ChoiceButton>true</ChoiceButton>
+									<ChoiceButtonRepresentation>ShowInDropListAndInInputField</ChoiceButtonRepresentation>
+									<ContextMenu name="CurrencyContextMenu" id="143"/>
+									<ExtendedTooltip name="CurrencyExtendedTooltip" id="144"/>
+									<Events>
+										<Event name="OnChange">CurrencyOnChange</Event>
+									</Events>
+								</InputField>
+								<InputField name="ExchangeRate" id="145">
+									<DataPath>Object.ExchangeRate</DataPath>
+									<Title>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Rate</v8:content>
+										</v8:item>
+										<v8:item>
+											<v8:lang>pl</v8:lang>
+											<v8:content>Kurs</v8:content>
+										</v8:item>
+									</Title>
+									<AutoMaxWidth>false</AutoMaxWidth>
+									<ContextMenu name="ExchangeRateContextMenu" id="146"/>
+									<ExtendedTooltip name="ExchangeRateExtendedTooltip" id="147"/>
+									<Events>
+										<Event name="OnChange">ExchangeRateOnChange</Event>
+										<Event name="StartChoice">ExchangeRateStartChoice</Event>
+									</Events>
+								</InputField>
+							</ChildItems>
+						</UsualGroup>
+					</ChildItems>
+				</UsualGroup>
+				<UsualGroup name="GroupHeaderRight" id="91">
+					<Title>
+						<v8:item>
+							<v8:lang>pl</v8:lang>
+							<v8:content>Groupheader left</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Groupheader left</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Groupheader left</v8:content>
+						</v8:item>
+					</Title>
+					<ToolTip>
+						<v8:item>
+							<v8:lang>pl</v8:lang>
+							<v8:content>Group header right</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Group header right</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Группа Заголовок (справа)</v8:content>
+						</v8:item>
+					</ToolTip>
+					<ToolTipRepresentation>None</ToolTipRepresentation>
+					<Group>Vertical</Group>
+					<ShowTitle>false</ShowTitle>
+					<ExtendedTooltip name="GroupHeaderRightExtendedTooltip" id="92"/>
+					<ChildItems>
+						<InputField name="DocumentBase" id="93">
+							<DataPath>Object.DocumentBase</DataPath>
+							<AutoMaxWidth>false</AutoMaxWidth>
+							<DropListButton>false</DropListButton>
+							<ChoiceButton>true</ChoiceButton>
+							<ChoiceButtonRepresentation>ShowInDropListAndInInputField</ChoiceButtonRepresentation>
+							<OpenButton>true</OpenButton>
+							<ChoiceParameterLinks>
+								<xr:Link>
+									<xr:Name>Filter.Company</xr:Name>
+									<xr:DataPath xsi:type="xs:string">1/0:c7cd5a00-810b-4854-a527-c470fe124264</xr:DataPath>
+									<xr:ValueChange>Clear</xr:ValueChange>
+								</xr:Link>
+								<xr:Link>
+									<xr:Name>Filter.Customer</xr:Name>
+									<xr:DataPath xsi:type="xs:string">1/0:4c2d503b-d078-4b4f-9450-a937438d3f34</xr:DataPath>
+									<xr:ValueChange>Clear</xr:ValueChange>
+								</xr:Link>
+								<xr:Link>
+									<xr:Name>Filter.DeliveryPoint</xr:Name>
+									<xr:DataPath xsi:type="xs:string">1/0:ffb4a142-9a9a-41c5-b2e0-2c9c4d19520f</xr:DataPath>
+									<xr:ValueChange>Clear</xr:ValueChange>
+								</xr:Link>
+							</ChoiceParameterLinks>
+							<Font ref="style:NormalTextFont" kind="StyleItem"/>
+							<ContextMenu name="DocumentBaseContextMenu" id="94"/>
+							<ExtendedTooltip name="DocumentBaseExtendedTooltip" id="95"/>
+							<Events>
+								<Event name="OnChange">DocumentBaseOnChange</Event>
+								<Event name="StartChoice">DocumentBaseStartChoice</Event>
+							</Events>
+						</InputField>
+						<UsualGroup name="GroupBasedOn" id="343">
+							<Title>
+								<v8:item>
+									<v8:lang>pl</v8:lang>
+									<v8:content>Group based on</v8:content>
+								</v8:item>
+							</Title>
+							<ToolTip>
+								<v8:item>
+									<v8:lang>pl</v8:lang>
+									<v8:content>Group based on</v8:content>
+								</v8:item>
+							</ToolTip>
+							<Group>Horizontal</Group>
+							<Representation>None</Representation>
+							<ShowTitle>false</ShowTitle>
+							<ExtendedTooltip name="GroupBasedOnExtendedTooltip" id="344"/>
+							<ChildItems>
+								<InputField name="InitialDocumentNumber" id="314">
+									<DataPath>Object.InitialDocumentNumber</DataPath>
+									<AutoMaxWidth>false</AutoMaxWidth>
+									<ContextMenu name="InitialDocumentNumberContextMenu" id="315"/>
+									<ExtendedTooltip name="InitialDocumentNumberExtendedTooltip" id="316"/>
+								</InputField>
+								<InputField name="InitialDocumentDate" id="317">
+									<DataPath>Object.InitialDocumentDate</DataPath>
+									<AutoMaxWidth>false</AutoMaxWidth>
+									<ContextMenu name="InitialDocumentDateContextMenu" id="318"/>
+									<ExtendedTooltip name="InitialDocumentDateExtendedTooltip" id="319"/>
+								</InputField>
+							</ChildItems>
+						</UsualGroup>
+						<InputField name="Description" id="134">
+							<DataPath>Object.Description</DataPath>
+							<AutoMaxWidth>false</AutoMaxWidth>
+							<ContextMenu name="DescriptionContextMenu" id="135"/>
+							<ExtendedTooltip name="DescriptionExtendedTooltip" id="136"/>
+						</InputField>
+						<InputField name="PartialJournal" id="137">
+							<DataPath>Object.PartialJournal</DataPath>
+							<AutoMaxWidth>false</AutoMaxWidth>
+							<DropListButton>false</DropListButton>
+							<ChoiceButton>true</ChoiceButton>
+							<ChoiceButtonRepresentation>ShowInDropListAndInInputField</ChoiceButtonRepresentation>
+							<ContextMenu name="PartialJournalContextMenu" id="138"/>
+							<ExtendedTooltip name="PartialJournalExtendedTooltip" id="139"/>
+							<Events>
+								<Event name="OnChange">PartialJournalOnChange</Event>
+							</Events>
+						</InputField>
+					</ChildItems>
+				</UsualGroup>
+			</ChildItems>
+		</UsualGroup>
+		<Pages name="Pages" id="11">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Pages</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>pl</v8:lang>
+					<v8:content>Strony</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Закладки</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>pl</v8:lang>
+					<v8:content>Strony</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Pages</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Закладки</v8:content>
+				</v8:item>
+			</ToolTip>
+			<ExtendedTooltip name="PagesExtendedTooltip" id="12"/>
+			<ChildItems>
+				<Page name="GroupRecords" id="13">
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Bookkeeping records</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>pl</v8:lang>
+							<v8:content>Dekrety księgowe</v8:content>
+						</v8:item>
+					</Title>
+					<ToolTip>
+						<v8:item>
+							<v8:lang>pl</v8:lang>
+							<v8:content>Group VATLines</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Group records</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Группа НДС по позициям номенклатуры</v8:content>
+						</v8:item>
+					</ToolTip>
+					<TitleDataPath>Object.Records.RowsCount</TitleDataPath>
+					<ExtendedTooltip name="GroupRecordsExtendedTooltip" id="14"/>
+					<ChildItems>
+						<Table name="Records" id="15">
+							<AutoInsertNewRow>true</AutoInsertNewRow>
+							<EnableStartDrag>true</EnableStartDrag>
+							<EnableDrag>true</EnableDrag>
+							<DataPath>Object.Records</DataPath>
+							<RowFilter xsi:nil="true"/>
+							<ContextMenu name="RecordsContextMenu" id="16"/>
+							<AutoCommandBar name="RecordsCommandBar" id="17">
+								<ChildItems>
+									<Popup name="RecordsFilling" id="288">
+										<Title>
+											<v8:item>
+												<v8:lang>en</v8:lang>
+												<v8:content>Filling</v8:content>
+											</v8:item>
+											<v8:item>
+												<v8:lang>pl</v8:lang>
+												<v8:content>Wypełnianie</v8:content>
+											</v8:item>
+											<v8:item>
+												<v8:lang>ru</v8:lang>
+												<v8:content>Заполнение</v8:content>
+											</v8:item>
+										</Title>
+										<ToolTip>
+											<v8:item>
+												<v8:lang>pl</v8:lang>
+												<v8:content>Records filling</v8:content>
+											</v8:item>
+										</ToolTip>
+										<ExtendedTooltip name="RecordsFillingExtendedTooltip" id="289"/>
+										<ChildItems>
+											<Button name="ButtonGenerateRecordsFromBookkeepingOperationsTemplates" id="294">
+												<Type>CommandBarButton</Type>
+												<CommandName>Form.Command.CommandGenerateRecordsFromBookkeepingOperationsTemplates</CommandName>
+												<ExtendedTooltip name="ButtonGenerateRecordsFromBookkeepingOperationsTemplatesExtendedTooltip" id="295"/>
+											</Button>
+											<Button name="ButtonRecordsLoadingFromSpreadsheet" id="296">
+												<Type>CommandBarButton</Type>
+												<CommandName>0</CommandName>
+												<Picture>
+													<xr:Ref>CommonPicture.LoadingFromSpreadsheet</xr:Ref>
+													<xr:LoadTransparent>true</xr:LoadTransparent>
+												</Picture>
+												<ExtendedTooltip name="ButtonRecordsLoadingFromSpreadsheetExtendedTooltip" id="297"/>
+											</Button>
+										</ChildItems>
+									</Popup>
+									<Button name="ButtonRecordsAllowChanges" id="298">
+										<Type>CommandBarButton</Type>
+										<CommandName>Form.Command.CommandAllowChanges</CommandName>
+										<ExtendedTooltip name="ButtonRecordsAllowChangesExtendedTooltip" id="299"/>
+									</Button>
+								</ChildItems>
+							</AutoCommandBar>
+							<ExtendedTooltip name="RecordsExtendedTooltip" id="18"/>
+							<SearchStringAddition name="RecordsSearchString" id="19">
+								<AdditionSource>
+									<Item>Records</Item>
+									<Type>SearchStringRepresentation</Type>
+								</AdditionSource>
+								<ContextMenu name="RecordsSearchStringContextMenu" id="20"/>
+								<ExtendedTooltip name="RecordsSearchStringExtendedTooltip" id="21"/>
+							</SearchStringAddition>
+							<ViewStatusAddition name="RecordsViewStatus" id="22">
+								<AdditionSource>
+									<Item>Records</Item>
+									<Type>ViewStatusRepresentation</Type>
+								</AdditionSource>
+								<ContextMenu name="RecordsViewStatusContextMenu" id="23"/>
+								<ExtendedTooltip name="RecordsViewStatusExtendedTooltip" id="24"/>
+							</ViewStatusAddition>
+							<SearchControlAddition name="RecordsSearchControl" id="25">
+								<AdditionSource>
+									<Item>Records</Item>
+									<Type>SearchControl</Type>
+								</AdditionSource>
+								<ContextMenu name="RecordsSearchControlContextMenu" id="26"/>
+								<ExtendedTooltip name="RecordsSearchControlExtendedTooltip" id="27"/>
+							</SearchControlAddition>
+							<Events>
+								<Event name="OnEditEnd">RecordsOnEditEnd</Event>
+								<Event name="BeforeDeleteRow">RecordsBeforeDeleteRow</Event>
+								<Event name="OnActivateRow">RecordsOnActivateRow</Event>
+								<Event name="BeforeRowChange">RecordsBeforeRowChange</Event>
+								<Event name="OnStartEdit">RecordsOnStartEdit</Event>
+								<Event name="AfterDeleteRow">RecordsAfterDeleteRow</Event>
+							</Events>
+							<ChildItems>
+								<PictureField name="RecordsIcon" id="337">
+									<DataPath>Object.Records.Icon</DataPath>
+									<TitleLocation>None</TitleLocation>
+									<EditMode>EnterOnInput</EditMode>
+									<FixingInTable>Left</FixingInTable>
+									<Width>1</Width>
+									<AutoMaxWidth>false</AutoMaxWidth>
+									<MaxWidth>1</MaxWidth>
+									<HorizontalStretch>false</HorizontalStretch>
+									<ContextMenu name="RecordsIconContextMenu" id="338"/>
+									<ExtendedTooltip name="RecordsIconExtendedTooltip" id="339"/>
+								</PictureField>
+								<LabelField name="RecordsLineNumber" id="148">
+									<DataPath>Object.Records.LineNumber</DataPath>
+									<EditMode>EnterOnInput</EditMode>
+									<FixingInTable>Left</FixingInTable>
+									<Width>3</Width>
+									<AutoMaxWidth>false</AutoMaxWidth>
+									<MaxWidth>3</MaxWidth>
+									<HorizontalStretch>false</HorizontalStretch>
+									<ContextMenu name="RecordsLineNumberContextMenu" id="149"/>
+									<ExtendedTooltip name="RecordsLineNumberExtendedTooltip" id="150"/>
+								</LabelField>
+								<InputField name="RecordsAccount" id="151">
+									<DataPath>Object.Records.Account</DataPath>
+									<EditMode>EnterOnInput</EditMode>
+									<FixingInTable>Left</FixingInTable>
+									<Width>8</Width>
+									<DropListButton>false</DropListButton>
+									<ChoiceButton>true</ChoiceButton>
+									<ChoiceButtonRepresentation>ShowInDropListAndInInputField</ChoiceButtonRepresentation>
+									<ContextMenu name="RecordsAccountContextMenu" id="152"/>
+									<ExtendedTooltip name="RecordsAccountExtendedTooltip" id="153"/>
+									<Events>
+										<Event name="OnChange">RecordsAccountOnChange</Event>
+									</Events>
+								</InputField>
+								<ColumnGroup name="RecordsGroupExtDimensionType" id="372">
+									<UserVisible>
+										<xr:Common>false</xr:Common>
+									</UserVisible>
+									<EnableContentChange>true</EnableContentChange>
+									<Title>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Records group ext dimension type</v8:content>
+										</v8:item>
+										<v8:item>
+											<v8:lang>pl</v8:lang>
+											<v8:content>Records group ext dimension type</v8:content>
+										</v8:item>
+									</Title>
+									<ToolTip>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Records group ext dimension type</v8:content>
+										</v8:item>
+										<v8:item>
+											<v8:lang>pl</v8:lang>
+											<v8:content>Records group ext dimension type</v8:content>
+										</v8:item>
+									</ToolTip>
+									<ExtendedTooltip name="RecordsGroupExtDimensionTypeExtendedTooltip" id="373"/>
+									<ChildItems>
+										<LabelField name="RecordsAccountExtDimension1Type" id="273">
+											<DataPath>Object.Records.Account.ExtDimension1Type</DataPath>
+											<Title>
+												<v8:item>
+													<v8:lang>en</v8:lang>
+													<v8:content>Ext dimension 1 type</v8:content>
+												</v8:item>
+												<v8:item>
+													<v8:lang>pl</v8:lang>
+													<v8:content>Typ analityki 1</v8:content>
+												</v8:item>
+											</Title>
+											<EditMode>EnterOnInput</EditMode>
+											<ContextMenu name="RecordsAccountExtDimension1TypeContextMenu" id="274"/>
+											<ExtendedTooltip name="RecordsAccountExtDimension1TypeExtendedTooltip" id="275"/>
+										</LabelField>
+										<LabelField name="RecordsAccountExtDimension2Type" id="278">
+											<DataPath>Object.Records.Account.ExtDimension2Type</DataPath>
+											<Title>
+												<v8:item>
+													<v8:lang>en</v8:lang>
+													<v8:content>Ext dimension 2 type</v8:content>
+												</v8:item>
+												<v8:item>
+													<v8:lang>pl</v8:lang>
+													<v8:content>Typ analityki 2</v8:content>
+												</v8:item>
+											</Title>
+											<EditMode>EnterOnInput</EditMode>
+											<ContextMenu name="RecordsAccountExtDimension2TypeContextMenu" id="279"/>
+											<ExtendedTooltip name="RecordsAccountExtDimension2TypeExtendedTooltip" id="280"/>
+										</LabelField>
+										<LabelField name="RecordsAccountExtDimension3Type" id="281">
+											<DataPath>Object.Records.Account.ExtDimension3Type</DataPath>
+											<Title>
+												<v8:item>
+													<v8:lang>en</v8:lang>
+													<v8:content>Ext dimension 3 type</v8:content>
+												</v8:item>
+												<v8:item>
+													<v8:lang>pl</v8:lang>
+													<v8:content>Typ analityki 3</v8:content>
+												</v8:item>
+											</Title>
+											<EditMode>EnterOnInput</EditMode>
+											<ContextMenu name="RecordsAccountExtDimension3TypeContextMenu" id="282"/>
+											<ExtendedTooltip name="RecordsAccountExtDimension3TypeExtendedTooltip" id="283"/>
+										</LabelField>
+									</ChildItems>
+								</ColumnGroup>
+								<ColumnGroup name="RecordsGroupExtDimension" id="154">
+									<EnableContentChange>true</EnableContentChange>
+									<Title>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Records group ext dimension</v8:content>
+										</v8:item>
+									</Title>
+									<ToolTip>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Records group ext dimension</v8:content>
+										</v8:item>
+									</ToolTip>
+									<FixingInTable>Left</FixingInTable>
+									<ExtendedTooltip name="RecordsGroupExtDimensionExtendedTooltip" id="155"/>
+									<ChildItems>
+										<InputField name="RecordsExtDimension1" id="156">
+											<DataPath>Object.Records.ExtDimension1</DataPath>
+											<Title>
+												<v8:item>
+													<v8:lang>en</v8:lang>
+													<v8:content>Ext dimensions </v8:content>
+												</v8:item>
+												<v8:item>
+													<v8:lang>pl</v8:lang>
+													<v8:content>Analityki</v8:content>
+												</v8:item>
+											</Title>
+											<EditMode>EnterOnInput</EditMode>
+											<DropListButton>false</DropListButton>
+											<ChoiceButton>true</ChoiceButton>
+											<ChoiceButtonRepresentation>ShowInDropListAndInInputField</ChoiceButtonRepresentation>
+											<CreateButton>false</CreateButton>
+											<ChoiceHistoryOnInput>DontUse</ChoiceHistoryOnInput>
+											<ContextMenu name="RecordsExtDimension1ContextMenu" id="157"/>
+											<ExtendedTooltip name="RecordsExtDimension1ExtendedTooltip" id="158"/>
+										</InputField>
+										<InputField name="RecordsExtDimension2" id="340">
+											<DataPath>Object.Records.ExtDimension2</DataPath>
+											<EditMode>EnterOnInput</EditMode>
+											<ShowInHeader>false</ShowInHeader>
+											<DropListButton>false</DropListButton>
+											<ChoiceButton>true</ChoiceButton>
+											<ChoiceButtonRepresentation>ShowInDropListAndInInputField</ChoiceButtonRepresentation>
+											<CreateButton>false</CreateButton>
+											<ChoiceHistoryOnInput>DontUse</ChoiceHistoryOnInput>
+											<ContextMenu name="RecordsExtDimension2ContextMenu" id="341"/>
+											<ExtendedTooltip name="RecordsExtDimension2ExtendedTooltip" id="342"/>
+										</InputField>
+										<InputField name="RecordsExtDimension3" id="162">
+											<DataPath>Object.Records.ExtDimension3</DataPath>
+											<EditMode>EnterOnInput</EditMode>
+											<ShowInHeader>false</ShowInHeader>
+											<DropListButton>false</DropListButton>
+											<ChoiceButton>true</ChoiceButton>
+											<ChoiceButtonRepresentation>ShowInDropListAndInInputField</ChoiceButtonRepresentation>
+											<CreateButton>false</CreateButton>
+											<ChoiceHistoryOnInput>DontUse</ChoiceHistoryOnInput>
+											<ContextMenu name="RecordsExtDimension3ContextMenu" id="163"/>
+											<ExtendedTooltip name="RecordsExtDimension3ExtendedTooltip" id="164"/>
+										</InputField>
+									</ChildItems>
+								</ColumnGroup>
+								<ColumnGroup name="RecordsGroupCurrency" id="202">
+									<Title>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Records group currency</v8:content>
+										</v8:item>
+									</Title>
+									<ToolTip>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Records group currency</v8:content>
+										</v8:item>
+									</ToolTip>
+									<ExtendedTooltip name="RecordsGroupCurrencyExtendedTooltip" id="203"/>
+									<ChildItems>
+										<InputField name="RecordsCurrency" id="204">
+											<DataPath>Object.Records.Currency</DataPath>
+											<EditMode>EnterOnInput</EditMode>
+											<Width>12</Width>
+											<AutoMaxWidth>false</AutoMaxWidth>
+											<MaxWidth>12</MaxWidth>
+											<HorizontalStretch>false</HorizontalStretch>
+											<ContextMenu name="RecordsCurrencyContextMenu" id="205"/>
+											<ExtendedTooltip name="RecordsCurrencyExtendedTooltip" id="206"/>
+										</InputField>
+										<InputField name="RecordsCurrencyAmount" id="207">
+											<DataPath>Object.Records.CurrencyAmount</DataPath>
+											<EditMode>Directly</EditMode>
+											<Width>12</Width>
+											<AutoMaxWidth>false</AutoMaxWidth>
+											<MaxWidth>12</MaxWidth>
+											<HorizontalStretch>false</HorizontalStretch>
+											<QuickChoice>false</QuickChoice>
+											<ChooseType>false</ChooseType>
+											<ChoiceHistoryOnInput>DontUse</ChoiceHistoryOnInput>
+											<ContextMenu name="RecordsCurrencyAmountContextMenu" id="208"/>
+											<ExtendedTooltip name="RecordsCurrencyAmountExtendedTooltip" id="209"/>
+											<Events>
+												<Event name="OnChange">RecordsCurrencyAmountOnChange</Event>
+												<Event name="StartChoice">RecordsCurrencyAmountStartChoice</Event>
+											</Events>
+										</InputField>
+									</ChildItems>
+								</ColumnGroup>
+								<ColumnGroup name="RecordsGroupAmountDescription" id="210">
+									<Title>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Records group amount description</v8:content>
+										</v8:item>
+									</Title>
+									<ToolTip>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Records group amount description</v8:content>
+										</v8:item>
+									</ToolTip>
+									<ExtendedTooltip name="RecordsGroupAmountDescriptionExtendedTooltip" id="211"/>
+									<ChildItems>
+										<ColumnGroup name="RecordsGroupAmount" id="221">
+											<Title>
+												<v8:item>
+													<v8:lang>en</v8:lang>
+													<v8:content>Records group amount</v8:content>
+												</v8:item>
+											</Title>
+											<ToolTip>
+												<v8:item>
+													<v8:lang>en</v8:lang>
+													<v8:content>Records group amount</v8:content>
+												</v8:item>
+											</ToolTip>
+											<Group>Horizontal</Group>
+											<ExtendedTooltip name="RecordsGroupAmountExtendedTooltip" id="222"/>
+											<ChildItems>
+												<InputField name="RecordsAmountDr" id="212">
+													<DataPath>Object.Records.AmountDr</DataPath>
+													<EditMode>EnterOnInput</EditMode>
+													<Width>12</Width>
+													<AutoMaxWidth>false</AutoMaxWidth>
+													<MaxWidth>12</MaxWidth>
+													<HorizontalStretch>false</HorizontalStretch>
+													<ContextMenu name="RecordsAmountDrContextMenu" id="213"/>
+													<ExtendedTooltip name="RecordsAmountDrExtendedTooltip" id="214"/>
+													<Events>
+														<Event name="OnChange">RecordsAmountDrOnChange</Event>
+														<Event name="StartChoice">RecordsAmountDrStartChoice</Event>
+													</Events>
+												</InputField>
+												<InputField name="RecordsAmountCr" id="215">
+													<DataPath>Object.Records.AmountCr</DataPath>
+													<EditMode>EnterOnInput</EditMode>
+													<Width>12</Width>
+													<AutoMaxWidth>false</AutoMaxWidth>
+													<MaxWidth>12</MaxWidth>
+													<HorizontalStretch>false</HorizontalStretch>
+													<ContextMenu name="RecordsAmountCrContextMenu" id="216"/>
+													<ExtendedTooltip name="RecordsAmountCrExtendedTooltip" id="217"/>
+													<Events>
+														<Event name="OnChange">RecordsAmountCrOnChange</Event>
+														<Event name="StartChoice">RecordsAmountCrStartChoice</Event>
+													</Events>
+												</InputField>
+											</ChildItems>
+										</ColumnGroup>
+									</ChildItems>
+								</ColumnGroup>
+								<InputField name="RecordsDescription" id="218">
+									<DataPath>Object.Records.Description</DataPath>
+									<EditMode>EnterOnInput</EditMode>
+									<ContextMenu name="RecordsDescriptionContextMenu" id="219"/>
+									<ExtendedTooltip name="RecordsDescriptionExtendedTooltip" id="220"/>
+								</InputField>
+								<InputField name="RecordsType" id="223">
+									<DataPath>Object.Records.Type</DataPath>
+									<ReadOnly>true</ReadOnly>
+									<EditMode>EnterOnInput</EditMode>
+									<Width>12</Width>
+									<AutoMaxWidth>false</AutoMaxWidth>
+									<MaxWidth>12</MaxWidth>
+									<HorizontalStretch>false</HorizontalStretch>
+									<ContextMenu name="RecordsTypeContextMenu" id="224"/>
+									<ExtendedTooltip name="RecordsTypeExtendedTooltip" id="225"/>
+								</InputField>
+							</ChildItems>
+						</Table>
+					</ChildItems>
+				</Page>
+				<Page name="GroupPurchaseVATRecords" id="48">
+					<EnableContentChange>true</EnableContentChange>
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Purchase VAT Records</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>pl</v8:lang>
+							<v8:content>Zapisy VAT zakupu</v8:content>
+						</v8:item>
+					</Title>
+					<ToolTip>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Group purchase VATRecords</v8:content>
+						</v8:item>
+					</ToolTip>
+					<Group>Horizontal</Group>
+					<TitleDataPath>Object.PurchaseVATRecords.RowsCount</TitleDataPath>
+					<ExtendedTooltip name="GroupPurchaseVATRecordsExtendedTooltip" id="49"/>
+					<ChildItems>
+						<Table name="PurchaseVATRecords" id="165">
+							<Footer>true</Footer>
+							<AutoInsertNewRow>true</AutoInsertNewRow>
+							<EnableStartDrag>true</EnableStartDrag>
+							<EnableDrag>true</EnableDrag>
+							<DataPath>Object.PurchaseVATRecords</DataPath>
+							<RowFilter xsi:nil="true"/>
+							<ContextMenu name="PurchaseVATRecordsContextMenu" id="166"/>
+							<AutoCommandBar name="PurchaseVATRecordsCommandBar" id="167">
+								<ChildItems>
+									<Popup name="PurchaseVATFilling" id="290">
+										<Title>
+											<v8:item>
+												<v8:lang>en</v8:lang>
+												<v8:content>Filling</v8:content>
+											</v8:item>
+											<v8:item>
+												<v8:lang>pl</v8:lang>
+												<v8:content>Wypełnianie</v8:content>
+											</v8:item>
+											<v8:item>
+												<v8:lang>ru</v8:lang>
+												<v8:content>Заполнение</v8:content>
+											</v8:item>
+										</Title>
+										<ToolTip>
+											<v8:item>
+												<v8:lang>pl</v8:lang>
+												<v8:content>Filling</v8:content>
+											</v8:item>
+										</ToolTip>
+										<ExtendedTooltip name="PurchaseVATFillingExtendedTooltip" id="291"/>
+										<ChildItems>
+											<Button name="ButtonGeneratePurchaseVATRecordsFromBookkeepingOperationsTemplates" id="300">
+												<Type>CommandBarButton</Type>
+												<CommandName>Form.Command.CommandGeneratePurchaseVATRecordsFromBookkeepingOperationsTemplates</CommandName>
+												<ExtendedTooltip name="ButtonGeneratePurchaseVATRecordsFromBookkeepingOperationsTemplatesExtendedTooltip" id="301"/>
+											</Button>
+											<Button name="ButtonPurchaseVATLoadingFromSpreadsheet" id="302">
+												<Type>CommandBarButton</Type>
+												<Enabled>false</Enabled>
+												<CommandName>0</CommandName>
+												<Picture>
+													<xr:Ref>CommonPicture.LoadingFromSpreadsheet</xr:Ref>
+													<xr:LoadTransparent>true</xr:LoadTransparent>
+												</Picture>
+												<ExtendedTooltip name="ButtonPurchaseVATLoadingFromSpreadsheetExtendedTooltip" id="303"/>
+											</Button>
+										</ChildItems>
+									</Popup>
+									<Button name="ButtonPurchaseVATAllowChanges" id="304">
+										<Type>CommandBarButton</Type>
+										<CommandName>Form.Command.CommandAllowChanges</CommandName>
+										<ExtendedTooltip name="ButtonPurchaseVATAllowChangesExtendedTooltip" id="305"/>
+									</Button>
+								</ChildItems>
+							</AutoCommandBar>
+							<ExtendedTooltip name="PurchaseVATRecordsExtendedTooltip" id="168"/>
+							<SearchStringAddition name="PurchaseVATRecordsSearchString" id="169">
+								<AdditionSource>
+									<Item>PurchaseVATRecords</Item>
+									<Type>SearchStringRepresentation</Type>
+								</AdditionSource>
+								<ContextMenu name="PurchaseVATRecordsSearchStringContextMenu" id="170"/>
+								<ExtendedTooltip name="PurchaseVATRecordsSearchStringExtendedTooltip" id="171"/>
+							</SearchStringAddition>
+							<ViewStatusAddition name="PurchaseVATRecordsViewStatus" id="172">
+								<AdditionSource>
+									<Item>PurchaseVATRecords</Item>
+									<Type>ViewStatusRepresentation</Type>
+								</AdditionSource>
+								<ContextMenu name="PurchaseVATRecordsViewStatusContextMenu" id="173"/>
+								<ExtendedTooltip name="PurchaseVATRecordsViewStatusExtendedTooltip" id="174"/>
+							</ViewStatusAddition>
+							<SearchControlAddition name="PurchaseVATRecordsSearchControl" id="175">
+								<AdditionSource>
+									<Item>PurchaseVATRecords</Item>
+									<Type>SearchControl</Type>
+								</AdditionSource>
+								<ContextMenu name="PurchaseVATRecordsSearchControlContextMenu" id="176"/>
+								<ExtendedTooltip name="PurchaseVATRecordsSearchControlExtendedTooltip" id="177"/>
+							</SearchControlAddition>
+							<Events>
+								<Event name="OnEditEnd">PurchaseVATRecordsOnEditEnd</Event>
+								<Event name="BeforeDeleteRow">PurchaseVATRecordsBeforeDeleteRow</Event>
+								<Event name="BeforeRowChange">PurchaseVATRecordsBeforeRowChange</Event>
+								<Event name="OnStartEdit">PurchaseVATRecordsOnStartEdit</Event>
+								<Event name="AfterDeleteRow">PurchaseVATRecordsAfterDeleteRow</Event>
+							</Events>
+							<ChildItems>
+								<LabelField name="PurchaseVATRecordsLineNumber" id="178">
+									<DataPath>Object.PurchaseVATRecords.LineNumber</DataPath>
+									<EditMode>EnterOnInput</EditMode>
+									<ContextMenu name="PurchaseVATRecordsLineNumberContextMenu" id="179"/>
+									<ExtendedTooltip name="PurchaseVATRecordsLineNumberExtendedTooltip" id="180"/>
+								</LabelField>
+								<InputField name="PurchaseVATRecordsPeriod" id="190">
+									<DataPath>Object.PurchaseVATRecords.Period</DataPath>
+									<EditMode>EnterOnInput</EditMode>
+									<ContextMenu name="PurchaseVATRecordsPeriodContextMenu" id="191"/>
+									<ExtendedTooltip name="PurchaseVATRecordsPeriodExtendedTooltip" id="192"/>
+								</InputField>
+								<InputField name="PurchaseVATRecordsDocument" id="181">
+									<DataPath>Object.PurchaseVATRecords.Document</DataPath>
+									<EditMode>EnterOnInput</EditMode>
+									<ContextMenu name="PurchaseVATRecordsDocumentContextMenu" id="182"/>
+									<ExtendedTooltip name="PurchaseVATRecordsDocumentExtendedTooltip" id="183"/>
+								</InputField>
+								<InputField name="PurchaseVATRecordsPartner" id="187">
+									<DataPath>Object.PurchaseVATRecords.Partner</DataPath>
+									<EditMode>EnterOnInput</EditMode>
+									<ContextMenu name="PurchaseVATRecordsPartnerContextMenu" id="188"/>
+									<ExtendedTooltip name="PurchaseVATRecordsPartnerExtendedTooltip" id="189"/>
+								</InputField>
+								<InputField name="PurchaseVATRecordsNetAmount" id="184">
+									<DataPath>Object.PurchaseVATRecords.NetAmount</DataPath>
+									<EditMode>EnterOnInput</EditMode>
+									<FooterDataPath>Object.PurchaseVATRecords.TotalNetAmount</FooterDataPath>
+									<FooterFont ref="style:NormalTextFont" bold="true" italic="false" underline="false" strikeout="false" kind="StyleItem"/>
+									<ContextMenu name="PurchaseVATRecordsNetAmountContextMenu" id="185"/>
+									<ExtendedTooltip name="PurchaseVATRecordsNetAmountExtendedTooltip" id="186"/>
+									<Events>
+										<Event name="OnChange">PurchaseVATRecordsNetAmountOnChange</Event>
+									</Events>
+								</InputField>
+								<InputField name="PurchaseVATRecordsVATRate" id="196">
+									<DataPath>Object.PurchaseVATRecords.VATRate</DataPath>
+									<EditMode>EnterOnInput</EditMode>
+									<ContextMenu name="PurchaseVATRecordsVATRateContextMenu" id="197"/>
+									<ExtendedTooltip name="PurchaseVATRecordsVATRateExtendedTooltip" id="198"/>
+									<Events>
+										<Event name="OnChange">PurchaseVATRecordsVATRateOnChange</Event>
+									</Events>
+								</InputField>
+								<InputField name="PurchaseVATRecordsVAT" id="193">
+									<DataPath>Object.PurchaseVATRecords.VAT</DataPath>
+									<EditMode>EnterOnInput</EditMode>
+									<FooterDataPath>Object.PurchaseVATRecords.TotalVAT</FooterDataPath>
+									<FooterFont ref="style:NormalTextFont" bold="true" italic="false" underline="false" strikeout="false" kind="StyleItem"/>
+									<ContextMenu name="PurchaseVATRecordsVATContextMenu" id="194"/>
+									<ExtendedTooltip name="PurchaseVATRecordsVATExtendedTooltip" id="195"/>
+								</InputField>
+								<InputField name="PurchaseVATRecordsGrossAmount" id="334">
+									<DataPath>Object.PurchaseVATRecords.GrossAmount</DataPath>
+									<ReadOnly>true</ReadOnly>
+									<EditMode>EnterOnInput</EditMode>
+									<FooterFont ref="style:NormalTextFont" bold="true" italic="false" underline="false" strikeout="false" kind="StyleItem"/>
+									<FooterHorizontalAlign>Right</FooterHorizontalAlign>
+									<ContextMenu name="PurchaseVATRecordsGrossAmountContextMenu" id="335"/>
+									<ExtendedTooltip name="PurchaseVATRecordsGrossAmountExtendedTooltip" id="336"/>
+								</InputField>
+								<InputField name="PurchaseVATRecordsType" id="199">
+									<DataPath>Object.PurchaseVATRecords.Type</DataPath>
+									<ReadOnly>true</ReadOnly>
+									<EditMode>EnterOnInput</EditMode>
+									<ContextMenu name="PurchaseVATRecordsTypeContextMenu" id="200"/>
+									<ExtendedTooltip name="PurchaseVATRecordsTypeExtendedTooltip" id="201"/>
+								</InputField>
+							</ChildItems>
+						</Table>
+					</ChildItems>
+				</Page>
+				<Page name="GroupSalesVATRecords" id="226">
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Sales VAT records</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>pl</v8:lang>
+							<v8:content>Zapisy VAT sprzedaży</v8:content>
+						</v8:item>
+					</Title>
+					<ToolTip>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Group sales VATRecords</v8:content>
+						</v8:item>
+					</ToolTip>
+					<TitleDataPath>Object.SalesVATRecords.RowsCount</TitleDataPath>
+					<ExtendedTooltip name="GroupSalesVATRecordsExtendedTooltip" id="227"/>
+					<ChildItems>
+						<Table name="SalesVATRecords" id="228">
+							<Footer>true</Footer>
+							<AutoInsertNewRow>true</AutoInsertNewRow>
+							<EnableStartDrag>true</EnableStartDrag>
+							<EnableDrag>true</EnableDrag>
+							<DataPath>Object.SalesVATRecords</DataPath>
+							<RowFilter xsi:nil="true"/>
+							<ContextMenu name="SalesVATRecordsContextMenu" id="229"/>
+							<AutoCommandBar name="SalesVATRecordsCommandBar" id="230">
+								<ChildItems>
+									<Popup name="SalesVATFilling" id="292">
+										<Title>
+											<v8:item>
+												<v8:lang>en</v8:lang>
+												<v8:content>Filling</v8:content>
+											</v8:item>
+											<v8:item>
+												<v8:lang>pl</v8:lang>
+												<v8:content>Wypełnianie</v8:content>
+											</v8:item>
+											<v8:item>
+												<v8:lang>ru</v8:lang>
+												<v8:content>Заполнение</v8:content>
+											</v8:item>
+										</Title>
+										<ToolTip>
+											<v8:item>
+												<v8:lang>pl</v8:lang>
+												<v8:content>Filling</v8:content>
+											</v8:item>
+										</ToolTip>
+										<ExtendedTooltip name="SalesVATFillingExtendedTooltip" id="293"/>
+										<ChildItems>
+											<Button name="ButtonGenerateSalesVATRecordsFromBookkeepingOperationsTemplates" id="306">
+												<Type>CommandBarButton</Type>
+												<CommandName>Form.Command.CommandGenerateSalesVATRecordsFromBookkeepingOperationsTemplates</CommandName>
+												<ExtendedTooltip name="ButtonGenerateSalesVATRecordsFromBookkeepingOperationsTemplatesExtendedTooltip" id="307"/>
+											</Button>
+											<Button name="ButtonSalesVATLoadingFromSpreadsheet" id="308">
+												<Type>CommandBarButton</Type>
+												<Enabled>false</Enabled>
+												<CommandName>0</CommandName>
+												<Picture>
+													<xr:Ref>CommonPicture.LoadingFromSpreadsheet</xr:Ref>
+													<xr:LoadTransparent>true</xr:LoadTransparent>
+												</Picture>
+												<ExtendedTooltip name="ButtonSalesVATLoadingFromSpreadsheetExtendedTooltip" id="309"/>
+											</Button>
+										</ChildItems>
+									</Popup>
+									<Button name="ButtonSalesVATAllowChanges" id="310">
+										<Type>CommandBarButton</Type>
+										<CommandName>Form.Command.CommandAllowChanges</CommandName>
+										<ExtendedTooltip name="ButtonSalesVATAllowChangesExtendedTooltip" id="311"/>
+									</Button>
+								</ChildItems>
+							</AutoCommandBar>
+							<ExtendedTooltip name="SalesVATRecordsExtendedTooltip" id="231"/>
+							<SearchStringAddition name="SalesVATRecordsSearchString" id="232">
+								<AdditionSource>
+									<Item>SalesVATRecords</Item>
+									<Type>SearchStringRepresentation</Type>
+								</AdditionSource>
+								<ContextMenu name="SalesVATRecordsSearchStringContextMenu" id="233"/>
+								<ExtendedTooltip name="SalesVATRecordsSearchStringExtendedTooltip" id="234"/>
+							</SearchStringAddition>
+							<ViewStatusAddition name="SalesVATRecordsViewStatus" id="235">
+								<AdditionSource>
+									<Item>SalesVATRecords</Item>
+									<Type>ViewStatusRepresentation</Type>
+								</AdditionSource>
+								<ContextMenu name="SalesVATRecordsViewStatusContextMenu" id="236"/>
+								<ExtendedTooltip name="SalesVATRecordsViewStatusExtendedTooltip" id="237"/>
+							</ViewStatusAddition>
+							<SearchControlAddition name="SalesVATRecordsSearchControl" id="238">
+								<AdditionSource>
+									<Item>SalesVATRecords</Item>
+									<Type>SearchControl</Type>
+								</AdditionSource>
+								<ContextMenu name="SalesVATRecordsSearchControlContextMenu" id="239"/>
+								<ExtendedTooltip name="SalesVATRecordsSearchControlExtendedTooltip" id="240"/>
+							</SearchControlAddition>
+							<Events>
+								<Event name="OnEditEnd">SalesVATRecordsOnEditEnd</Event>
+								<Event name="BeforeDeleteRow">SalesVATRecordsBeforeDeleteRow</Event>
+								<Event name="BeforeRowChange">SalesVATRecordsBeforeRowChange</Event>
+								<Event name="OnStartEdit">SalesVATRecordsOnStartEdit</Event>
+								<Event name="AfterDeleteRow">SalesVATRecordsAfterDeleteRow</Event>
+							</Events>
+							<ChildItems>
+								<LabelField name="SalesVATRecordsLineNumber" id="241">
+									<DataPath>Object.SalesVATRecords.LineNumber</DataPath>
+									<EditMode>EnterOnInput</EditMode>
+									<ContextMenu name="SalesVATRecordsLineNumberContextMenu" id="242"/>
+									<ExtendedTooltip name="SalesVATRecordsLineNumberExtendedTooltip" id="243"/>
+								</LabelField>
+								<InputField name="SalesVATRecordsPeriod" id="253">
+									<DataPath>Object.SalesVATRecords.Period</DataPath>
+									<EditMode>EnterOnInput</EditMode>
+									<ContextMenu name="SalesVATRecordsPeriodContextMenu" id="254"/>
+									<ExtendedTooltip name="SalesVATRecordsPeriodExtendedTooltip" id="255"/>
+								</InputField>
+								<InputField name="SalesVATRecordsDocument" id="244">
+									<DataPath>Object.SalesVATRecords.Document</DataPath>
+									<EditMode>EnterOnInput</EditMode>
+									<ContextMenu name="SalesVATRecordsDocumentContextMenu" id="245"/>
+									<ExtendedTooltip name="SalesVATRecordsDocumentExtendedTooltip" id="246"/>
+								</InputField>
+								<InputField name="SalesVATRecordsPartner" id="250">
+									<DataPath>Object.SalesVATRecords.Partner</DataPath>
+									<EditMode>EnterOnInput</EditMode>
+									<ContextMenu name="SalesVATRecordsPartnerContextMenu" id="251"/>
+									<ExtendedTooltip name="SalesVATRecordsPartnerExtendedTooltip" id="252"/>
+								</InputField>
+								<InputField name="SalesVATRecordsNetAmount" id="247">
+									<DataPath>Object.SalesVATRecords.NetAmount</DataPath>
+									<EditMode>EnterOnInput</EditMode>
+									<FooterDataPath>Object.SalesVATRecords.TotalNetAmount</FooterDataPath>
+									<FooterFont ref="style:NormalTextFont" bold="true" italic="false" underline="false" strikeout="false" kind="StyleItem"/>
+									<ContextMenu name="SalesVATRecordsNetAmountContextMenu" id="248"/>
+									<ExtendedTooltip name="SalesVATRecordsNetAmountExtendedTooltip" id="249"/>
+									<Events>
+										<Event name="OnChange">SalesVATRecordsNetAmountOnChange</Event>
+									</Events>
+								</InputField>
+								<InputField name="SalesVATRecordsVATRate" id="259">
+									<DataPath>Object.SalesVATRecords.VATRate</DataPath>
+									<EditMode>EnterOnInput</EditMode>
+									<ContextMenu name="SalesVATRecordsVATRateContextMenu" id="260"/>
+									<ExtendedTooltip name="SalesVATRecordsVATRateExtendedTooltip" id="261"/>
+									<Events>
+										<Event name="OnChange">SalesVATRecordsVATRateOnChange</Event>
+									</Events>
+								</InputField>
+								<InputField name="SalesVATRecordsVAT" id="256">
+									<DataPath>Object.SalesVATRecords.VAT</DataPath>
+									<EditMode>EnterOnInput</EditMode>
+									<FooterDataPath>Object.SalesVATRecords.TotalVAT</FooterDataPath>
+									<FooterFont ref="style:NormalTextFont" bold="true" italic="false" underline="false" strikeout="false" kind="StyleItem"/>
+									<ContextMenu name="SalesVATRecordsVATContextMenu" id="257"/>
+									<ExtendedTooltip name="SalesVATRecordsVATExtendedTooltip" id="258"/>
+								</InputField>
+								<InputField name="SalesVATRecordsGrossAmount" id="331">
+									<DataPath>Object.SalesVATRecords.GrossAmount</DataPath>
+									<ReadOnly>true</ReadOnly>
+									<EditMode>EnterOnInput</EditMode>
+									<FooterFont ref="style:NormalTextFont" bold="true" italic="false" underline="false" strikeout="false" kind="StyleItem"/>
+									<FooterHorizontalAlign>Right</FooterHorizontalAlign>
+									<ContextMenu name="SalesVATRecordsGrossAmountContextMenu" id="332"/>
+									<ExtendedTooltip name="SalesVATRecordsGrossAmountExtendedTooltip" id="333"/>
+								</InputField>
+								<InputField name="SalesVATRecordsType" id="262">
+									<DataPath>Object.SalesVATRecords.Type</DataPath>
+									<ReadOnly>true</ReadOnly>
+									<EditMode>EnterOnInput</EditMode>
+									<ContextMenu name="SalesVATRecordsTypeContextMenu" id="263"/>
+									<ExtendedTooltip name="SalesVATRecordsTypeExtendedTooltip" id="264"/>
+								</InputField>
+							</ChildItems>
+						</Table>
+					</ChildItems>
+				</Page>
+				<Page name="GroupGeneral" id="265">
+					<Visible>false</Visible>
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>General</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>pl</v8:lang>
+							<v8:content>Ogólne</v8:content>
+						</v8:item>
+					</Title>
+					<ToolTip>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Group general</v8:content>
+						</v8:item>
+					</ToolTip>
+					<ExtendedTooltip name="GroupGeneralExtendedTooltip" id="266"/>
+					<ChildItems>
+						<CheckBoxField name="GroupRecordsCheckBox" id="267">
+							<DataPath>Object.GroupRecords</DataPath>
+							<TitleLocation>Right</TitleLocation>
+							<CheckBoxType>Auto</CheckBoxType>
+							<ContextMenu name="GroupRecordsCheckBoxContextMenu" id="268"/>
+							<ExtendedTooltip name="GroupRecordsCheckBoxExtendedTooltip" id="269"/>
+						</CheckBoxField>
+						<CheckBoxField name="Manual" id="270">
+							<DataPath>Object.Manual</DataPath>
+							<Title>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Allow changes</v8:content>
+								</v8:item>
+								<v8:item>
+									<v8:lang>pl</v8:lang>
+									<v8:content>Pozwól na zmiany</v8:content>
+								</v8:item>
+							</Title>
+							<TitleLocation>Right</TitleLocation>
+							<CheckBoxType>Auto</CheckBoxType>
+							<ContextMenu name="ManualContextMenu" id="271"/>
+							<ExtendedTooltip name="ManualExtendedTooltip" id="272"/>
+						</CheckBoxField>
+					</ChildItems>
+				</Page>
+			</ChildItems>
+		</Pages>
+		<UsualGroup name="GroupTotals" id="320">
+			<Title>
+				<v8:item>
+					<v8:lang>pl</v8:lang>
+					<v8:content>Group totals</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Группа Итого</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>pl</v8:lang>
+					<v8:content>Group totals</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Группа Итого</v8:content>
+				</v8:item>
+			</ToolTip>
+			<GroupHorizontalAlign>Right</GroupHorizontalAlign>
+			<Representation>None</Representation>
+			<ShowTitle>false</ShowTitle>
+			<ExtendedTooltip name="GroupTotalsExtendedTooltip" id="321"/>
+			<ChildItems>
+				<InputField name="TotalAmountDr" id="328">
+					<DataPath>Object.Records.TotalAmountDr</DataPath>
+					<ReadOnly>true</ReadOnly>
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Total amount Dr</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>pl</v8:lang>
+							<v8:content>Razem kwota Wn</v8:content>
+						</v8:item>
+					</Title>
+					<TitleFont ref="sys:DefaultGUIFont" bold="true" italic="false" underline="false" strikeout="false" kind="WindowsFont"/>
+					<ContextMenu name="TotalAmountDrContextMenu" id="329"/>
+					<ExtendedTooltip name="TotalAmountDrExtendedTooltip" id="330"/>
+				</InputField>
+				<InputField name="TotalAmountCr" id="322">
+					<DataPath>Object.Records.TotalAmountCr</DataPath>
+					<ReadOnly>true</ReadOnly>
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Total amount Cr</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>pl</v8:lang>
+							<v8:content>Razem kwota Ma</v8:content>
+						</v8:item>
+					</Title>
+					<TitleFont ref="sys:DefaultGUIFont" bold="true" italic="false" underline="false" strikeout="false" kind="WindowsFont"/>
+					<ContextMenu name="TotalAmountCrContextMenu" id="323"/>
+					<ExtendedTooltip name="TotalAmountCrExtendedTooltip" id="324"/>
+				</InputField>
+				<InputField name="TotalAmountDifference" id="325">
+					<DataPath>TotalAmountDifference</DataPath>
+					<ReadOnly>true</ReadOnly>
+					<TitleFont ref="sys:DefaultGUIFont" bold="true" italic="false" underline="false" strikeout="false" kind="WindowsFont"/>
+					<ContextMenu name="TotalAmountDifferenceContextMenu" id="326"/>
+					<ExtendedTooltip name="TotalAmountDifferenceExtendedTooltip" id="327"/>
+				</InputField>
+			</ChildItems>
+		</UsualGroup>
+		<UsualGroup name="GroupFooter" id="3">
+			<EnableContentChange>true</EnableContentChange>
+			<Group>Horizontal</Group>
+			<Representation>None</Representation>
+			<ChildItemsWidth>Equal</ChildItemsWidth>
+			<ShowTitle>false</ShowTitle>
+			<ExtendedTooltip name="GroupFooterExtendedTooltip" id="4"/>
+			<ChildItems>
+				<LabelField name="Author" id="5">
+					<DataPath>Object.Author</DataPath>
+					<ReadOnly>true</ReadOnly>
+					<EditMode>EnterOnInput</EditMode>
+					<Hiperlink>true</Hiperlink>
+					<ContextMenu name="AuthorContextMenu" id="6"/>
+					<ExtendedTooltip name="AuthorExtendedTooltip" id="7"/>
+				</LabelField>
+				<InputField name="Comment" id="8">
+					<DataPath>Object.Comment</DataPath>
+					<EditMode>EnterOnInput</EditMode>
+					<AutoMaxWidth>false</AutoMaxWidth>
+					<ContextMenu name="CommentContextMenu" id="9"/>
+					<ExtendedTooltip name="CommentExtendedTooltip" id="10"/>
+				</InputField>
+			</ChildItems>
+		</UsualGroup>
+	</ChildItems>
+	<Attributes>
+		<Attribute name="Object" id="1">
+			<Type>
+				<v8:Type>cfg:DocumentObject.BookkeepingOperation</v8:Type>
+			</Type>
+			<MainAttribute>true</MainAttribute>
+			<SavedData>true</SavedData>
+			<UseAlways>
+				<Field>Object.RegisterRecords</Field>
+			</UseAlways>
+			<Columns>
+				<AdditionalColumns table="Object.Records">
+					<Column name="Icon" id="1">
+						<Type>
+							<v8:Type>v8ui:Picture</v8:Type>
+						</Type>
+					</Column>
+					<Column name="ExtDimensionMandatory1" id="2">
+						<Title>
+							<v8:item>
+								<v8:lang>pl</v8:lang>
+								<v8:content>Ext dimension mandatory1</v8:content>
+							</v8:item>
+						</Title>
+						<Type>
+							<v8:Type>xs:boolean</v8:Type>
+						</Type>
+					</Column>
+					<Column name="ExtDimensionMandatory2" id="3">
+						<Title>
+							<v8:item>
+								<v8:lang>pl</v8:lang>
+								<v8:content>Ext dimension mandatory2</v8:content>
+							</v8:item>
+						</Title>
+						<Type>
+							<v8:Type>xs:boolean</v8:Type>
+						</Type>
+					</Column>
+					<Column name="ExtDimensionMandatory3" id="4">
+						<Title>
+							<v8:item>
+								<v8:lang>pl</v8:lang>
+								<v8:content>Ext dimension mandatory3</v8:content>
+							</v8:item>
+						</Title>
+						<Type>
+							<v8:Type>xs:boolean</v8:Type>
+						</Type>
+					</Column>
+					<Column name="ExtDimensionExist1" id="5">
+						<Title>
+							<v8:item>
+								<v8:lang>pl</v8:lang>
+								<v8:content>ExtDimension1Exist</v8:content>
+							</v8:item>
+						</Title>
+						<Type>
+							<v8:Type>xs:boolean</v8:Type>
+						</Type>
+					</Column>
+					<Column name="ExtDimensionExist2" id="6">
+						<Title>
+							<v8:item>
+								<v8:lang>pl</v8:lang>
+								<v8:content>Ext dimension exist2</v8:content>
+							</v8:item>
+						</Title>
+						<Type>
+							<v8:Type>xs:boolean</v8:Type>
+						</Type>
+					</Column>
+					<Column name="ExtDimensionExist3" id="7">
+						<Title>
+							<v8:item>
+								<v8:lang>pl</v8:lang>
+								<v8:content>Ext dimension exist3</v8:content>
+							</v8:item>
+						</Title>
+						<Type>
+							<v8:Type>xs:boolean</v8:Type>
+						</Type>
+					</Column>
+					<Column name="AccountCurrency" id="8">
+						<Title>
+							<v8:item>
+								<v8:lang>pl</v8:lang>
+								<v8:content>Account currency</v8:content>
+							</v8:item>
+						</Title>
+						<Type>
+							<v8:Type>xs:boolean</v8:Type>
+						</Type>
+					</Column>
+				</AdditionalColumns>
+				<AdditionalColumns table="Object.PurchaseVATRecords">
+					<Column name="GrossAmount" id="1">
+						<Title>
+							<v8:item>
+								<v8:lang>en</v8:lang>
+								<v8:content>Gross amount</v8:content>
+							</v8:item>
+							<v8:item>
+								<v8:lang>pl</v8:lang>
+								<v8:content>Kwota brutto</v8:content>
+							</v8:item>
+							<v8:item>
+								<v8:lang>ru</v8:lang>
+								<v8:content>Сумма брутто</v8:content>
+							</v8:item>
+						</Title>
+						<Type>
+							<v8:Type>xs:decimal</v8:Type>
+							<v8:NumberQualifiers>
+								<v8:Digits>15</v8:Digits>
+								<v8:FractionDigits>2</v8:FractionDigits>
+								<v8:AllowedSign>Any</v8:AllowedSign>
+							</v8:NumberQualifiers>
+						</Type>
+					</Column>
+				</AdditionalColumns>
+				<AdditionalColumns table="Object.SalesVATRecords">
+					<Column name="GrossAmount" id="1">
+						<Title>
+							<v8:item>
+								<v8:lang>en</v8:lang>
+								<v8:content>Gross amount</v8:content>
+							</v8:item>
+							<v8:item>
+								<v8:lang>pl</v8:lang>
+								<v8:content>Kwota brutto</v8:content>
+							</v8:item>
+							<v8:item>
+								<v8:lang>ru</v8:lang>
+								<v8:content>Сумма брутто</v8:content>
+							</v8:item>
+						</Title>
+						<Type>
+							<v8:Type>xs:decimal</v8:Type>
+							<v8:NumberQualifiers>
+								<v8:Digits>15</v8:Digits>
+								<v8:FractionDigits>2</v8:FractionDigits>
+								<v8:AllowedSign>Any</v8:AllowedSign>
+							</v8:NumberQualifiers>
+						</Type>
+					</Column>
+				</AdditionalColumns>
+			</Columns>
+		</Attribute>
+		<Attribute name="InitialDocumentBase" id="2">
+			<Title>
+				<v8:item>
+					<v8:lang>pl</v8:lang>
+					<v8:content>Initial document base</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:TypeSet>cfg:DocumentRef</v8:TypeSet>
+			</Type>
+		</Attribute>
+		<Attribute name="IsEmulated" id="3">
+			<Title>
+				<v8:item>
+					<v8:lang>pl</v8:lang>
+					<v8:content>Is emulated</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:boolean</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="TotalAmountCr" id="4">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Total amount Cr</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>pl</v8:lang>
+					<v8:content>Razem kwota Ma</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:decimal</v8:Type>
+				<v8:NumberQualifiers>
+					<v8:Digits>15</v8:Digits>
+					<v8:FractionDigits>2</v8:FractionDigits>
+					<v8:AllowedSign>Any</v8:AllowedSign>
+				</v8:NumberQualifiers>
+			</Type>
+		</Attribute>
+		<Attribute name="TotalAmountDr" id="5">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Total amount Dr</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>pl</v8:lang>
+					<v8:content>Razem kwota Wn</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:decimal</v8:Type>
+				<v8:NumberQualifiers>
+					<v8:Digits>15</v8:Digits>
+					<v8:FractionDigits>2</v8:FractionDigits>
+					<v8:AllowedSign>Any</v8:AllowedSign>
+				</v8:NumberQualifiers>
+			</Type>
+		</Attribute>
+		<Attribute name="TotalAmountDifference" id="6">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Difference</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>pl</v8:lang>
+					<v8:content>Róznica</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:decimal</v8:Type>
+				<v8:NumberQualifiers>
+					<v8:Digits>15</v8:Digits>
+					<v8:FractionDigits>2</v8:FractionDigits>
+					<v8:AllowedSign>Any</v8:AllowedSign>
+				</v8:NumberQualifiers>
+			</Type>
+		</Attribute>
+		<Attribute name="NumberPreview" id="10">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Number</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>pl</v8:lang>
+					<v8:content>Numer</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Номер</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:string</v8:Type>
+				<v8:StringQualifiers>
+					<v8:Length>0</v8:Length>
+					<v8:AllowedLength>Variable</v8:AllowedLength>
+				</v8:StringQualifiers>
+			</Type>
+		</Attribute>
+		<Attribute name="ShowNumberPreview" id="12">
+			<Title>
+				<v8:item>
+					<v8:lang>pl</v8:lang>
+					<v8:content>Show number preview</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Show number preview</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:boolean</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="WasPosted" id="13">
+			<Type>
+				<v8:Type>xs:boolean</v8:Type>
+			</Type>
+		</Attribute>
+		<ConditionalAppearance>
+			<dcsset:item>
+				<dcsset:selection>
+					<dcsset:item>
+						<dcsset:field>RecordsAccountExtDimension1Type</dcsset:field>
+					</dcsset:item>
+				</dcsset:selection>
+				<dcsset:filter>
+					<dcsset:item xsi:type="dcsset:FilterItemComparison">
+						<dcsset:left xsi:type="dcscor:Field">Object.Records.ExtDimensionMandatory1</dcsset:left>
+						<dcsset:comparisonType>Equal</dcsset:comparisonType>
+						<dcsset:right xsi:type="xs:boolean">false</dcsset:right>
+					</dcsset:item>
+				</dcsset:filter>
+				<dcsset:appearance>
+					<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+						<dcscor:parameter>TextColor</dcscor:parameter>
+						<dcscor:value xsi:type="v8ui:Color">web:MediumGray</dcscor:value>
+					</dcscor:item>
+				</dcsset:appearance>
+			</dcsset:item>
+			<dcsset:item>
+				<dcsset:selection>
+					<dcsset:item>
+						<dcsset:field>RecordsAccountExtDimension2Type</dcsset:field>
+					</dcsset:item>
+				</dcsset:selection>
+				<dcsset:filter>
+					<dcsset:item xsi:type="dcsset:FilterItemComparison">
+						<dcsset:left xsi:type="dcscor:Field">Object.Records.ExtDimensionMandatory2</dcsset:left>
+						<dcsset:comparisonType>Equal</dcsset:comparisonType>
+						<dcsset:right xsi:type="xs:boolean">false</dcsset:right>
+					</dcsset:item>
+				</dcsset:filter>
+				<dcsset:appearance>
+					<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+						<dcscor:parameter>TextColor</dcscor:parameter>
+						<dcscor:value xsi:type="v8ui:Color">web:MediumGray</dcscor:value>
+					</dcscor:item>
+				</dcsset:appearance>
+			</dcsset:item>
+			<dcsset:item>
+				<dcsset:selection>
+					<dcsset:item>
+						<dcsset:field>RecordsAccountExtDimension3Type</dcsset:field>
+					</dcsset:item>
+				</dcsset:selection>
+				<dcsset:filter>
+					<dcsset:item xsi:type="dcsset:FilterItemComparison">
+						<dcsset:left xsi:type="dcscor:Field">Object.Records.ExtDimensionMandatory3</dcsset:left>
+						<dcsset:comparisonType>Equal</dcsset:comparisonType>
+						<dcsset:right xsi:type="xs:boolean">false</dcsset:right>
+					</dcsset:item>
+				</dcsset:filter>
+				<dcsset:appearance>
+					<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+						<dcscor:parameter>TextColor</dcscor:parameter>
+						<dcscor:value xsi:type="v8ui:Color">web:MediumGray</dcscor:value>
+					</dcscor:item>
+				</dcsset:appearance>
+			</dcsset:item>
+			<dcsset:item>
+				<dcsset:selection>
+					<dcsset:item>
+						<dcsset:field>RecordsExtDimension1</dcsset:field>
+					</dcsset:item>
+				</dcsset:selection>
+				<dcsset:filter>
+					<dcsset:item xsi:type="dcsset:FilterItemComparison">
+						<dcsset:left xsi:type="dcscor:Field">Object.Records.ExtDimensionMandatory1</dcsset:left>
+						<dcsset:comparisonType>Equal</dcsset:comparisonType>
+						<dcsset:right xsi:type="xs:boolean">true</dcsset:right>
+					</dcsset:item>
+					<dcsset:item xsi:type="dcsset:FilterItemComparison">
+						<dcsset:left xsi:type="dcscor:Field">Object.Records.ExtDimension1</dcsset:left>
+						<dcsset:comparisonType>NotFilled</dcsset:comparisonType>
+					</dcsset:item>
+				</dcsset:filter>
+				<dcsset:appearance>
+					<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+						<dcscor:parameter>MarkIncomplete</dcscor:parameter>
+						<dcscor:value xsi:type="xs:boolean">true</dcscor:value>
+					</dcscor:item>
+				</dcsset:appearance>
+			</dcsset:item>
+			<dcsset:item>
+				<dcsset:selection>
+					<dcsset:item>
+						<dcsset:field>RecordsExtDimension2</dcsset:field>
+					</dcsset:item>
+				</dcsset:selection>
+				<dcsset:filter>
+					<dcsset:item xsi:type="dcsset:FilterItemComparison">
+						<dcsset:left xsi:type="dcscor:Field">Object.Records.ExtDimensionMandatory2</dcsset:left>
+						<dcsset:comparisonType>Equal</dcsset:comparisonType>
+						<dcsset:right xsi:type="xs:boolean">true</dcsset:right>
+					</dcsset:item>
+					<dcsset:item xsi:type="dcsset:FilterItemComparison">
+						<dcsset:left xsi:type="dcscor:Field">Object.Records.ExtDimension2</dcsset:left>
+						<dcsset:comparisonType>NotFilled</dcsset:comparisonType>
+					</dcsset:item>
+				</dcsset:filter>
+				<dcsset:appearance>
+					<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+						<dcscor:parameter>MarkIncomplete</dcscor:parameter>
+						<dcscor:value xsi:type="xs:boolean">true</dcscor:value>
+					</dcscor:item>
+				</dcsset:appearance>
+			</dcsset:item>
+			<dcsset:item>
+				<dcsset:selection>
+					<dcsset:item>
+						<dcsset:field>RecordsExtDimension3</dcsset:field>
+					</dcsset:item>
+				</dcsset:selection>
+				<dcsset:filter>
+					<dcsset:item xsi:type="dcsset:FilterItemComparison">
+						<dcsset:left xsi:type="dcscor:Field">Object.Records.ExtDimensionMandatory3</dcsset:left>
+						<dcsset:comparisonType>Equal</dcsset:comparisonType>
+						<dcsset:right xsi:type="xs:boolean">true</dcsset:right>
+					</dcsset:item>
+					<dcsset:item xsi:type="dcsset:FilterItemComparison">
+						<dcsset:left xsi:type="dcscor:Field">Object.Records.ExtDimension3</dcsset:left>
+						<dcsset:comparisonType>NotFilled</dcsset:comparisonType>
+					</dcsset:item>
+				</dcsset:filter>
+				<dcsset:appearance>
+					<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+						<dcscor:parameter>MarkIncomplete</dcscor:parameter>
+						<dcscor:value xsi:type="xs:boolean">true</dcscor:value>
+					</dcscor:item>
+				</dcsset:appearance>
+			</dcsset:item>
+			<dcsset:item>
+				<dcsset:selection>
+					<dcsset:item>
+						<dcsset:field>RecordsExtDimension2</dcsset:field>
+					</dcsset:item>
+				</dcsset:selection>
+				<dcsset:filter>
+					<dcsset:item xsi:type="dcsset:FilterItemComparison">
+						<dcsset:left xsi:type="dcscor:Field">Object.Records.ExtDimensionExist2</dcsset:left>
+						<dcsset:comparisonType>Equal</dcsset:comparisonType>
+						<dcsset:right xsi:type="xs:boolean">false</dcsset:right>
+					</dcsset:item>
+				</dcsset:filter>
+				<dcsset:appearance>
+					<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+						<dcscor:parameter>Visible</dcscor:parameter>
+						<dcscor:value xsi:type="xs:boolean">false</dcscor:value>
+					</dcscor:item>
+				</dcsset:appearance>
+			</dcsset:item>
+			<dcsset:item>
+				<dcsset:selection>
+					<dcsset:item>
+						<dcsset:field>RecordsExtDimension3</dcsset:field>
+					</dcsset:item>
+				</dcsset:selection>
+				<dcsset:filter>
+					<dcsset:item xsi:type="dcsset:FilterItemComparison">
+						<dcsset:left xsi:type="dcscor:Field">Object.Records.ExtDimensionExist3</dcsset:left>
+						<dcsset:comparisonType>Equal</dcsset:comparisonType>
+						<dcsset:right xsi:type="xs:boolean">false</dcsset:right>
+					</dcsset:item>
+				</dcsset:filter>
+				<dcsset:appearance>
+					<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+						<dcscor:parameter>Visible</dcscor:parameter>
+						<dcscor:value xsi:type="xs:boolean">false</dcscor:value>
+					</dcscor:item>
+				</dcsset:appearance>
+			</dcsset:item>
+			<dcsset:item>
+				<dcsset:selection>
+					<dcsset:item>
+						<dcsset:field>RecordsCurrency</dcsset:field>
+					</dcsset:item>
+					<dcsset:item>
+						<dcsset:field>RecordsCurrencyAmount</dcsset:field>
+					</dcsset:item>
+				</dcsset:selection>
+				<dcsset:filter>
+					<dcsset:item xsi:type="dcsset:FilterItemComparison">
+						<dcsset:left xsi:type="dcscor:Field">Object.Records.AccountCurrency</dcsset:left>
+						<dcsset:comparisonType>Equal</dcsset:comparisonType>
+						<dcsset:right xsi:type="xs:boolean">false</dcsset:right>
+					</dcsset:item>
+				</dcsset:filter>
+				<dcsset:appearance>
+					<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+						<dcscor:parameter>Enabled</dcscor:parameter>
+						<dcscor:value xsi:type="xs:boolean">false</dcscor:value>
+					</dcscor:item>
+				</dcsset:appearance>
+			</dcsset:item>
+		</ConditionalAppearance>
+	</Attributes>
+	<Commands>
+		<Command name="PostPrintClose" id="1">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Post &amp; close</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>pl</v8:lang>
+					<v8:content>Zatwierdź i zamknji</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Провести и закрыть</v8:content>
+				</v8:item>
+			</Title>
+			<Picture>
+				<xr:Ref>StdPicture.WriteAndClose</xr:Ref>
+				<xr:LoadTransparent>true</xr:LoadTransparent>
+			</Picture>
+			<Action>PostPrintClose</Action>
+		</Command>
+		<Command name="FillAllRecords" id="2">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Fill</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>pl</v8:lang>
+					<v8:content>Wypełnij</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>pl</v8:lang>
+					<v8:content>Fill all records</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Picture>
+				<xr:Ref>CommonPicture.Generate</xr:Ref>
+				<xr:LoadTransparent>true</xr:LoadTransparent>
+			</Picture>
+			<Action>FillAllRecords</Action>
+		</Command>
+		<Command name="CommandGenerateRecordsFromBookkeepingOperationsTemplates" id="3">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Generate records</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>pl</v8:lang>
+					<v8:content>Generuj zapisy</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Generate records from bookkeeping operation template</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>pl</v8:lang>
+					<v8:content>Generuj zapisy ze schematu księgowania</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Picture>
+				<xr:Ref>CommonPicture.Generate</xr:Ref>
+				<xr:LoadTransparent>true</xr:LoadTransparent>
+			</Picture>
+			<Action>CommandGenerateRecordsFromBookkeepingOperationsTemplates</Action>
+			<Representation>TextPicture</Representation>
+		</Command>
+		<Command name="CommandAllowChanges" id="4">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Allow changes</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>pl</v8:lang>
+					<v8:content>Pozwól na zmiany</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Allow changes in tabular sections</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>pl</v8:lang>
+					<v8:content>Pozwól na zmiany w części tabelarycznych</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Picture>
+				<xr:Ref>CommonPicture.AllowChanges</xr:Ref>
+				<xr:LoadTransparent>true</xr:LoadTransparent>
+			</Picture>
+			<Action>CommandAllowChanges</Action>
+			<Representation>TextPicture</Representation>
+		</Command>
+		<Command name="CommandGeneratePurchaseVATRecordsFromBookkeepingOperationsTemplates" id="5">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Generate records</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>pl</v8:lang>
+					<v8:content>Generuj zapisy</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Generate records from bookkeeping operation template</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>pl</v8:lang>
+					<v8:content>Generuj zapisy ze schematu księgowania</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Picture>
+				<xr:Ref>CommonPicture.Generate</xr:Ref>
+				<xr:LoadTransparent>true</xr:LoadTransparent>
+			</Picture>
+			<Action>CommandGeneratePurchaseVATRecordsFromBookkeepingOperationsTemplates</Action>
+			<Representation>TextPicture</Representation>
+		</Command>
+		<Command name="CommandGenerateSalesVATRecordsFromBookkeepingOperationsTemplates" id="6">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Generate records</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>pl</v8:lang>
+					<v8:content>Generuj zapisy</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Generate records from bookkeeping operation template</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>pl</v8:lang>
+					<v8:content>Generuj zapisy ze schematu księgowania</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Picture>
+				<xr:Ref>CommonPicture.Generate</xr:Ref>
+				<xr:LoadTransparent>true</xr:LoadTransparent>
+			</Picture>
+			<Action>CommandGenerateSalesVATRecordsFromBookkeepingOperationsTemplates</Action>
+			<Representation>TextPicture</Representation>
+		</Command>
+		<Command name="PrintBookkeepingOperation" id="7">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Print</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>pl</v8:lang>
+					<v8:content>Drukuj</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Печать</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>pl</v8:lang>
+					<v8:content>Print bookkeeping operation</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Picture>
+				<xr:Ref>StdPicture.DebitCredit</xr:Ref>
+				<xr:LoadTransparent>true</xr:LoadTransparent>
+			</Picture>
+			<Action>PrintBookkeepingOperation</Action>
+		</Command>
+	</Commands>
+	<CommandInterface>
+		<NavigationPanel>
+			<Item>
+				<Command>0</Command>
+				<Type>Auto</Type>
+				<DefaultVisible>false</DefaultVisible>
+				<Visible>
+					<xr:Common>false</xr:Common>
+				</Visible>
+			</Item>
+			<Item>
+				<Command>0:2b48d0ca-8b1f-4dfb-811f-ef4fc68a77e7</Command>
+				<Type>Auto</Type>
+				<DefaultVisible>false</DefaultVisible>
+				<Visible>
+					<xr:Common>false</xr:Common>
+				</Visible>
+			</Item>
+		</NavigationPanel>
+	</CommandInterface>
+</Form>

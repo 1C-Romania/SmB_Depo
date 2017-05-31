@@ -1,0 +1,118 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<Form xmlns="http://v8.1c.ru/8.3/xcf/logform" xmlns:app="http://v8.1c.ru/8.2/managed-application/core" xmlns:cfg="http://v8.1c.ru/8.1/data/enterprise/current-config" xmlns:dcscor="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:dcsset="http://v8.1c.ru/8.1/data-composition-system/settings" xmlns:ent="http://v8.1c.ru/8.1/data/enterprise" xmlns:lf="http://v8.1c.ru/8.2/managed-application/logform" xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows" xmlns:xr="http://v8.1c.ru/8.3/xcf/readable" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.4">
+	<WindowOpeningMode>LockOwnerWindow</WindowOpeningMode>
+	<UseForFoldersAndItems>Items</UseForFoldersAndItems>
+	<AutoCommandBar name="FormCommandBar" id="-1"/>
+	<ChildItems>
+		<InputField name="Description" id="1">
+			<DataPath>Object.Description</DataPath>
+			<EditMode>EnterOnInput</EditMode>
+			<ContextMenu name="DescriptionContextMenu" id="2"/>
+			<ExtendedTooltip name="DescriptionExtendedTooltip" id="3"/>
+		</InputField>
+		<InputField name="Owner" id="4">
+			<DataPath>Object.Owner</DataPath>
+			<EditMode>EnterOnInput</EditMode>
+			<ContextMenu name="OwnerContextMenu" id="5"/>
+			<ExtendedTooltip name="OwnerExtendedTooltip" id="6"/>
+		</InputField>
+		<UsualGroup name="GroupTechnicalData" id="31">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Technical information</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>pl</v8:lang>
+					<v8:content>Informacja techniczna</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Техническая информация</v8:content>
+				</v8:item>
+			</Title>
+			<Group>Vertical</Group>
+			<Behavior>Collapsible</Behavior>
+			<Collapsed>true</Collapsed>
+			<Representation>None</Representation>
+			<ExtendedTooltip name="GroupTechnicalDataExtendedTooltip" id="32"/>
+			<ChildItems>
+				<InputField name="SetupObject" id="13">
+					<DataPath>Object.SetupObject</DataPath>
+					<ReadOnly>true</ReadOnly>
+					<EditMode>EnterOnInput</EditMode>
+					<ContextMenu name="SetupObjectContextMenu" id="14"/>
+					<ExtendedTooltip name="SetupObjectExtendedTooltip" id="15"/>
+				</InputField>
+				<InputField name="SettingsKey" id="28">
+					<DataPath>Object.SettingsKey</DataPath>
+					<ReadOnly>true</ReadOnly>
+					<EditMode>EnterOnInput</EditMode>
+					<ContextMenu name="SettingsKeyContextMenu" id="29"/>
+					<ExtendedTooltip name="SettingsKeyExtendedTooltip" id="30"/>
+				</InputField>
+				<InputField name="SettingType" id="10">
+					<DataPath>Object.SettingType</DataPath>
+					<ReadOnly>true</ReadOnly>
+					<EditMode>EnterOnInput</EditMode>
+					<ContextMenu name="SettingTypeContextMenu" id="11"/>
+					<ExtendedTooltip name="SettingTypeExtendedTooltip" id="12"/>
+				</InputField>
+				<CheckBoxField name="SaveAutomatically" id="16">
+					<DataPath>Object.SaveAutomatically</DataPath>
+					<ReadOnly>true</ReadOnly>
+					<EditMode>EnterOnInput</EditMode>
+					<CheckBoxType>Auto</CheckBoxType>
+					<ContextMenu name="SaveAutomaticallyContextMenu" id="17"/>
+					<ExtendedTooltip name="SaveAutomaticallyExtendedTooltip" id="18"/>
+				</CheckBoxField>
+				<CheckBoxField name="UseOnOpen" id="19">
+					<DataPath>Object.UseOnOpen</DataPath>
+					<ReadOnly>true</ReadOnly>
+					<EditMode>EnterOnInput</EditMode>
+					<CheckBoxType>Auto</CheckBoxType>
+					<ContextMenu name="UseOnOpenContextMenu" id="20"/>
+					<ExtendedTooltip name="UseOnOpenExtendedTooltip" id="21"/>
+				</CheckBoxField>
+				<CheckBoxField name="SavePeriod" id="22">
+					<DataPath>Object.SavePeriod</DataPath>
+					<ReadOnly>true</ReadOnly>
+					<EditMode>EnterOnInput</EditMode>
+					<CheckBoxType>Auto</CheckBoxType>
+					<ContextMenu name="SavePeriodContextMenu" id="23"/>
+					<ExtendedTooltip name="SavePeriodExtendedTooltip" id="24"/>
+				</CheckBoxField>
+				<CheckBoxField name="OpenOnStart" id="25">
+					<DataPath>Object.OpenOnStart</DataPath>
+					<ReadOnly>true</ReadOnly>
+					<EditMode>EnterOnInput</EditMode>
+					<CheckBoxType>Auto</CheckBoxType>
+					<ContextMenu name="OpenOnStartContextMenu" id="26"/>
+					<ExtendedTooltip name="OpenOnStartExtendedTooltip" id="27"/>
+				</CheckBoxField>
+			</ChildItems>
+		</UsualGroup>
+	</ChildItems>
+	<Attributes>
+		<Attribute name="Object" id="1">
+			<Type>
+				<v8:Type>cfg:CatalogObject.SavedSettings</v8:Type>
+			</Type>
+			<MainAttribute>true</MainAttribute>
+			<SavedData>true</SavedData>
+		</Attribute>
+	</Attributes>
+	<CommandInterface>
+		<NavigationPanel>
+			<Item>
+				<Command>0</Command>
+				<Type>Auto</Type>
+				<CommandGroup>FormNavigationPanelGoTo</CommandGroup>
+				<DefaultVisible>false</DefaultVisible>
+				<Visible>
+					<xr:Common>false</xr:Common>
+				</Visible>
+			</Item>
+		</NavigationPanel>
+	</CommandInterface>
+</Form>

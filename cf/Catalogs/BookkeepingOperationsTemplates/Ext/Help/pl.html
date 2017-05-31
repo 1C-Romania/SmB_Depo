@@ -1,0 +1,96 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN"><html><head><meta content="text/html; charset=utf-8" http-equiv="Content-Type"></meta><link rel="stylesheet" type="text/css" href="v8help://service_book/service_style"></link><meta name="GENERATOR" content="MSHTML 11.00.9600.17278"></meta></head><body>
+<p>Katalog zawierający listę schematów księgowania.</p>
+<p>Schemat księgowania - specjalny obiekt pozwolający na wygenerowanie dekretów księgowych na podstawie defenicij zrobionych przez użytkownika.</p>
+<p>Mechanizm ten należy używać dla generacji dekretów dla:</p>
+<p>a) dowodów księgowych zrobionych na podstawie dokumentów.</p>
+<p>b) operacji księgowych, które nie są operacjami standardowymi, ale spotykają się dość często przy prowadzeniu rachunkowości bieżącej firmy. Przykładem może być nie stadnardowe rozksięgowanie kosztów, lub różnić kursowych.</p>
+<p>Definicję schematu należy zacząć od wyboru dokumentu podstawy oraz dodatkowego filtrowania (a), jeśli jest to potrzebne lub zostawic dokument podstawe pustym (b).</p>
+<p>Dalej trzeba przejść do definiowania zapisów. Zapisy można definiować dla:</p>
+<p>1) Rejestru księgowego (dekretacje księgowe);</p>
+<p>2) Rejestru VAT sprzedaży</p>
+<p>3) Rejestru VAT zakupu</p>
+<p>Dla każdego zapisu należy zdefiniować zawartości niezbędnych pól.</p>
+<p>Pole może zawierać:</p>
+<p>a) wartość, wpisana na sztywno. Na przykład konto = 010;</p>
+<p>b) parameter, wartość parametru zostanie wyliczona podczas generowania schematu w zależności od typu parametru.</p>
+<p>c) wzór, prosty wzór zawierający parametry, operatory oraz wartości.</p>
+<p>d) wzór programistyczny, skomplikowany wzór zaleca się używać tylko przez doświadoczonyh użytkowników, wdrożeniowców, programistów. Te wzór wyróżnia się bardziej skomplikowanym syntaksysem oraz większymi możliwościami.</p>
+<p>Dla zapisu jest możliwość wskazania warunku przy nastąpeniu którego zapis musi zaistniać. </p>
+<p>Warunek wskazuje się w postaci wzóru.</p>
+<p>W przypadku schematu na podstawie dokumentu podstawy każdy zdefiniowany zapis powinnien być podpięty do tabeli danych.</p>
+<p>Można wymienić następujące rodzaje tabel:</p>
+<p>1) Dane dokumentu podstawy</p>
+<p>2) Dane części tabelarycznych dokumentu podstawy</p>
+<p>3) Zapisy w rejestrach zrobione przez dokument podstawę</p>
+<p>Trzeba zwrócić szczególną uwagę na 2 i 3 rodzaje. Jeśli zapis został zdefiniowany do jedenej z tych tabel to ten zapis będzie powtórzony tyle razy ile razy zawiera tabela.</p>
+<p>Przykład: Dokument zawiera część tabelaryczną "VAT sprzedaży" z kwotami i stawkami VAT użytymi w dokumencie (np. faktura sprzedaży) i trzeba zrobić wpis do rejestru VAT sprzedaży. Z poziomu definicji schematu nie wiadomo ile wierszy ze stawkami VAT będzie zawierać ten czy owy dokument. Czyli nie ma możliwości stworzenia jakieś ilości predefiniowanych wpisów. Stworzenie jedenego zapisu podpiętego do tabeli "VAT sprzedaży" rozwiązuje ten problem. Bo podczas generowania dekretów księgowych zdefiniowany zapis zostanie powtórzony tyle razy ile jest wierszy w tabeli "VAT sprzedaży".</p>
+<p>Stworzenie parametrów pod czas definiowania zapisów schematu.</p>
+<p>Parametr może być:</p>
+<p>- wartością</p>
+<p>- wartością z tabeli do której został podpięty definiowany zapis</p>
+<p>- wartością z danych polityki rachunkowości systemu</p>
+<p>Korzystanie z parametrów w polach jest bardziej zalecane niż korzystanie z wartości. Na przykład jeśli definiujemy schemat który korzysta z danych polityki rachunkowości, to przy zmiane polityki rachunkowości w następnyn roku schemat zaaktualni się automatycznie, przy czym dokumenty księgowane wstecz będą korzystać z polityki rachunkowości za poprzedni rok, a dokumenty księgowane na bieżąco będą korzystać z aktualnej polityki rachunkowości.</p>
+<p>W schemacie może istnieć kilka parametrów o jednakowej nazwie podpiętych do różnych tabel.</p>
+<p>Reguły definiowania wzorów.</p>
+<p>Wzórem jest połączenie parametrów, operatorów oraz wartości. Parametry użyte we wzorze powinne znajdować wewnątrz nawiasów kwadratowych (np [Kwota netto]). Wartości podają się w takim formacie jaki jest dla nich domyślny (liczba - 5, ciąg znaków - "tekst", data - '20090505'). Wzór zawsze zwraca jedną wartość, może to być również wartość logiczna.</p>
+<p>Przykład: [Kwota netto] + [Kwota VAT]</p>
+<p>Przykład: [Kwota netto] &gt; [Kwota VAT]</p>
+<p>Przykład: [Kwota netto] &lt;= 0</p>
+<p>Reguły definiowania wzorów programistycznych.</p>
+<p>Wzór programistyczny daje więcej możliwości dostępu do wartości, na przykład z poziomu wzoru programistycznego jest dostęp do wszystkich zapisów tabeli na postawie której definiuje się zapis. Wartość która powinna być zwrócona należy wpisać do zmiennej CurrentField. Zmienna CurrentRecord jest bieżącym zapisem w zestawie zapisów, jego danymi należy operować. Dostęp do parametrów odbywa się poprzez ParametersSet.<parametername>. Dostęp do zapisów już wygenerowanych odbywa się poprzez RecordsSet[RecordNumber].</parametername></p>
+<p>Przykład: </p>
+<p>Query = New Query;</p>
+<p>Query.Text = "SELECT</p>
+<p>| SUM(SalesInvoiceVATLines.VAT) AS VAT</p>
+<p>|FROM</p>
+<p>| Document.SalesInvoice.VATLines AS SalesInvoiceVATLines</p>
+<p>|WHERE</p>
+<p>| SalesInvoiceVATLines.Ref = &amp;Ref";</p>
+<p>Query.SetParameter("Ref",ParametersSet.P1); // P1 - Faktura sprzedaży</p>
+<p>QueryResult = Query.Execute();</p>
+<p>If NOT QueryResult.IsEmpty() Then</p>
+<p>Selection = QueryResult.Select();</p>
+<p>Selection.Next();</p>
+<p>CurrentField = Selection.VAT;</p>
+<p>Else</p>
+<p>CurrentField = 0;</p>
+<p>EndIf; </p>
+<p></p>
+<h3>Atrybuty</h3>
+<table bordercolor="#a9a9a9" cellspacing="0" bordercolordark="#ffffff" cellpadding="5" width="95%" border="1"><tbody><tr valign="top"><td width="30%"><strong>Autor</strong></td>
+<td>
+<p>Użytkownik tworzący element katalogu</p></td></tr><tr valign="top"><td width="30%"><strong>Długi opis</strong></td>
+<td>
+<p>Długi (pełny) opis elementu. Służy głównie dla wyświetlania elementu w formularzach wydruku bądź oficjalnych dokumentach i raportach.</p></td></tr><tr valign="top"><td width="30%"><strong>Dokument podstawa</strong></td>
+<td>
+<p>Określa opcje dostępne przy tworzeniu schematu.</p>
+<p>Jeśli dokument podstawa jest wybrany wtedy wewnątrz schematu można korzystać z danych dokumentu, danych częśći tabelarycznych dokumentu, rejstrów do których piszę dokument. Oraz można ustawić dodatkowe filtrowanie wg danych dokumentu.</p>
+<p>Jeśli dokument podstawa nie jest wybrany wtedy w schemacie można korzystać tylko z parametrów, wartości których powinni być zdefiniowane podczas tworzenia schematu lub podczas tworzenia dowodu księgowania na podstawie schematu.</p></td></tr><tr valign="top"><td width="30%"><strong>Dziennik częściowy</strong></td>
+<td>
+<p>Dziennik częściowy do którego należy lub będzie należał dowód księgowy stworzony na podstawie schematu</p></td></tr><tr valign="top"><td width="30%"><strong>Filtr</strong></td>
+<td>
+<p>Dodatkowy filtr wg danych dokumentu podstawy</p></td></tr><tr valign="top"><td width="30%"><strong>Grupa</strong></td>
+<td>
+<p>Zaszeregowanie do jakiej grupy ma należeć dany element.</p></td></tr><tr valign="top"><td width="30%"><strong>Grupuj zapisy</strong></td>
+<td>
+<p>Cecha wskazująca że należy grupować wygenerowane dekretacje dla dowodu księgowego.</p>
+<p>Grupowanie oznacza że dwa różnych dekreta o takich samych polach: konto, analitykach, opis, waluta oraz strona dekretu (Wn lub Ma) zostaną połączone w jeden dekret, a wartości kwot (Wn lub Ma) zostaną zsumowane.</p></td></tr><tr valign="top"><td width="30%"><strong>Kod</strong></td>
+<td>
+<p>Kod nadawany jest przez system automatycznie w kolejności tworzenia elementów. Jest unikalny i służy dla jednowartościowej identyfikacji elementów, gdy Opisy kilku mogą być podobne.</p></td></tr><tr valign="top"><td width="30%"><strong>Nazwa pliku</strong></td>
+<td>
+<p>Nazwa pliku z którego został załadowany schemat, jeśli schemat jest przedstawiony w postaci obróbki zewnętrznej</p></td></tr><tr valign="top"><td width="30%"><strong>Opis</strong></td>
+<td>
+<p>Opis (nazwa) elementu. Służy głównie dla wyświetlania elementu na listach.</p></td></tr><tr valign="top"><td width="30%"><strong>Opis dla DK</strong></td>
+<td>
+<p>Opis dla dowodu księgowego, który zostanie stworzony na podstawie schematu</p></td></tr><tr valign="top"><td width="30%"><strong>Schemat księgowania w postaci obróbki</strong></td>
+<td>
+<p>Pole które zawiera wewnętrzną obróbkę, jeśli schemat został stworzony na jej podstawie</p></td></tr><tr valign="top"><td width="30%"><strong>Tryb roboczy</strong></td>
+<td>
+<p>Cecha pokazująca że schemat jest w trybie roboczym, i na podstawie tego schematu nie może być zaksięgowany nowy dokument, a tylko przeksięgowany już istniejący.</p></td></tr><tr valign="top"><td width="30%"><strong>Typ</strong></td>
+<td>
+<p>Typ schematu.</p>
+<p>Możliwe wartości:</p>
+<p>Zwykły - schemat został stworzony za pomocą wpisywania schematów dekretów.</p>
+<p>W postaci obróbki - schemat został stworzony na podstawie wewnętrznej lub zewnętrznej obróbki.</p></td></tr><tr valign="top"><td width="30%"><strong>Wewnętrzna obróbka</strong></td>
+<td>
+<p>Cecha pokazująca czy schemat jest przedstawiony jako zewnętrzna lub wewnętrzna obróbka</p></td></tr></tbody></table></body></html>

@@ -1,0 +1,14 @@
+﻿///////////////////////////////////////////////////////////////////////////////
+// PROCEDURES - FOR POSTING
+
+Procedure ButtonYesClick(Control)
+	
+	Close(DialogReturnCode.Yes);
+	
+EndProcedure
+
+Procedure ButtonNoClick(Control)
+	
+	Close(DialogReturnCode.No);
+	
+EndProcedure

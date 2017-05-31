@@ -1,0 +1,110 @@
+﻿
+Procedure OnOpen()
+	
+	If DontAllowToCheckBoxShowOnlyAvailable Then
+		
+		Controls.PanelShowOnlyAvailable.Collapse = ControlCollapseMode.Top; 
+	
+	EndIf;	
+	
+	If GoToCurrentRow 
+		AND TablesList.Rows.Count() > 0 Then
+		
+		FoundRows = TablesList.Rows.FindRows(New Structure("TableName, TableKind", TableName, TableKind), True);
+		If FoundRows.Count() > 0 Then
+			
+			Controls.TablesList.CurrentRow = FoundRows[0];
+			
+		EndIf;
+		
+	EndIf;	
+		
+EndProcedure
+
+Procedure FormMainActionsOK(Button)
+	
+	SelectRow(Controls.TablesList.CurrentData);
+	
+EndProcedure
+
+Procedure TablesListSelection(Control, RowSelected, Column, StandardProcessing)
+	
+	SelectRow(RowSelected);
+	
+EndProcedure
+
+Procedure TablesListOnDataGet(Control, RowAppearances)
+	
+	For Each RowAppearance In RowAppearances Do
+		
+		If RowAppearance.RowData.Availability = False Then
+				
+			RowAppearance.Cells.TableSynonym.BackColor = StyleColors.BlueColor;
+				
+		EndIf;	
+		
+	EndDo;	
+	
+EndProcedure
+
+Procedure CheckBoxShowOnlyAvailableOnChange(Control)
+	
+	RefillTableList(TablesListSource.Rows, TablesList.Rows, CheckBoxShowOnlyAvailable);
+	For Each Row In TablesList.Rows Do
+		Controls.TablesList.Expand(Row,True);
+	EndDo;	
+	
+EndProcedure
+
+/////////////////////////////////////////////////////////////////////////////////////////////////
+
+Procedure SelectRow(SelectedRow)
+	
+	If SelectedRow <> Undefined AND SelectedRow.Rows.Count()=0 AND SelectedRow.Availability <> False Then
+		
+		ReturnStructure = New Structure("TableName, TableKind, TableSynonym, TablePicture", SelectedRow.TableName, SelectedRow.TableKind, SelectedRow.TableSynonym, SelectedRow.TablePicture);
+		Close(ReturnStructure);
+		
+	Else
+		
+		If SelectedRow.Availability = False Then
+			
+			DoMessageBox(Nstr("en = 'Current table was already selected!'; pl = 'Wybrana tabela już została wybrana!'"));
+			
+		Else	
+		
+			DoMessageBox(Nstr("en = 'Current row is a group and could not be selected!'; pl = 'Wybrany wiersz jest grupą i nie może być wybrany!'"));
+			
+		EndIf;
+
+	EndIf;	
+	
+EndProcedure	
+
+Procedure RefillTableList(RowsSource,RowsDestination,CheckBoxShowOnlyAvailable)
+	
+	RowsDestination.Clear();
+	
+	For Each Row In RowsSource Do
+		
+		If CheckBoxShowOnlyAvailable AND Row.Availability = False Then
+		
+			Continue;
+			
+		Else
+			
+			NewRow = RowsDestination.Add();
+			FillPropertyValues(NewRow,Row);
+			
+			If Row.Rows.Count()>0 Then
+				
+				RefillTableList(Row.Rows,NewRow.Rows,CheckBoxShowOnlyAvailable);
+				
+			EndIf;	
+			
+		EndIf;
+		
+	EndDo;	
+	
+EndProcedure	
+

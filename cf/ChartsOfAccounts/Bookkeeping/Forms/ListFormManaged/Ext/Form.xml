@@ -1,0 +1,408 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<Form xmlns="http://v8.1c.ru/8.3/xcf/logform" xmlns:app="http://v8.1c.ru/8.2/managed-application/core" xmlns:cfg="http://v8.1c.ru/8.1/data/enterprise/current-config" xmlns:dcscor="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:dcsset="http://v8.1c.ru/8.1/data-composition-system/settings" xmlns:ent="http://v8.1c.ru/8.1/data/enterprise" xmlns:lf="http://v8.1c.ru/8.2/managed-application/logform" xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows" xmlns:xr="http://v8.1c.ru/8.3/xcf/readable" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.4">
+	<AutoCommandBar name="FormCommandBar" id="-1">
+		<Autofill>false</Autofill>
+	</AutoCommandBar>
+	<Events>
+		<Event name="ChoiceProcessing">ChoiceProcessing</Event>
+		<Event name="OnOpen">OnOpen</Event>
+		<Event name="OnCreateAtServer">OnCreateAtServer</Event>
+	</Events>
+	<ChildItems>
+		<UsualGroup name="GroupTop" id="93">
+			<Title>
+				<v8:item>
+					<v8:lang>pl</v8:lang>
+					<v8:content>Group top</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Group top</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>pl</v8:lang>
+					<v8:content>Group top</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Group top</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Representation>None</Representation>
+			<ShowTitle>false</ShowTitle>
+			<ExtendedTooltip name="GroupTopExtendedTooltip" id="94"/>
+			<ChildItems>
+				<InputField name="YearValidity" id="90">
+					<DataPath>YearValidity</DataPath>
+					<ContextMenu name="YearValidityContextMenu" id="91"/>
+					<ExtendedTooltip name="YearValidityExtendedTooltip" id="92"/>
+					<Events>
+						<Event name="OnChange">YearValidityOnChange</Event>
+					</Events>
+				</InputField>
+				<CommandBar name="GroupCommandBar" id="95">
+					<Title>
+						<v8:item>
+							<v8:lang>pl</v8:lang>
+							<v8:content>Group command bar</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Group command bar</v8:content>
+						</v8:item>
+					</Title>
+					<ToolTip>
+						<v8:item>
+							<v8:lang>pl</v8:lang>
+							<v8:content>Group command bar</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Group command bar</v8:content>
+						</v8:item>
+					</ToolTip>
+					<CommandSource>Item.List</CommandSource>
+					<ExtendedTooltip name="GroupCommandBarExtendedTooltip" id="96"/>
+					<ChildItems>
+						<Button name="FormButtonPrintOut" id="88">
+							<Type>CommandBarButton</Type>
+							<CommandName>Form.Command.CommandPrintOut</CommandName>
+							<ExtendedTooltip name="FormButtonPrintOutExtendedTooltip" id="89"/>
+						</Button>
+					</ChildItems>
+				</CommandBar>
+			</ChildItems>
+		</UsualGroup>
+		<UsualGroup name="ListSettingsComposerUserSettings" id="1">
+			<Title>
+				<v8:item>
+					<v8:lang>pl</v8:lang>
+					<v8:content>Группа пользовательских настроек</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Группа пользовательских настроек</v8:content>
+				</v8:item>
+			</Title>
+			<VerticalStretch>false</VerticalStretch>
+			<Group>Vertical</Group>
+			<ShowTitle>false</ShowTitle>
+			<ExtendedTooltip name="ListSettingsComposerUserSettingsExtendedTooltip" id="2"/>
+		</UsualGroup>
+		<Table name="List" id="3">
+			<Representation>List</Representation>
+			<CommandBarLocation>None</CommandBarLocation>
+			<UseAlternationRowColor>true</UseAlternationRowColor>
+			<EnableStartDrag>true</EnableStartDrag>
+			<EnableDrag>true</EnableDrag>
+			<DataPath>List</DataPath>
+			<RowPictureDataPath>List.DefaultPicture</RowPictureDataPath>
+			<AutoRefresh>false</AutoRefresh>
+			<AutoRefreshPeriod>60</AutoRefreshPeriod>
+			<Period>
+				<v8:variant xsi:type="v8:StandardPeriodVariant">Custom</v8:variant>
+				<v8:startDate>0001-01-01T00:00:00</v8:startDate>
+				<v8:endDate>0001-01-01T00:00:00</v8:endDate>
+			</Period>
+			<ChoiceFoldersAndItems>Items</ChoiceFoldersAndItems>
+			<RestoreCurrentRow>false</RestoreCurrentRow>
+			<TopLevelParent xsi:nil="true"/>
+			<ShowRoot>true</ShowRoot>
+			<AllowRootChoice>false</AllowRootChoice>
+			<UpdateOnDataChange>Auto</UpdateOnDataChange>
+			<ContextMenu name="ListContextMenu" id="4"/>
+			<AutoCommandBar name="ListCommandBar" id="5"/>
+			<ExtendedTooltip name="ListExtendedTooltip" id="6"/>
+			<SearchStringAddition name="ListSearchString" id="7">
+				<AdditionSource>
+					<Item>List</Item>
+					<Type>SearchStringRepresentation</Type>
+				</AdditionSource>
+				<ContextMenu name="ListSearchStringContextMenu" id="8"/>
+				<ExtendedTooltip name="ListSearchStringExtendedTooltip" id="9"/>
+			</SearchStringAddition>
+			<ViewStatusAddition name="ListViewStatus" id="10">
+				<AdditionSource>
+					<Item>List</Item>
+					<Type>ViewStatusRepresentation</Type>
+				</AdditionSource>
+				<ContextMenu name="ListViewStatusContextMenu" id="11"/>
+				<ExtendedTooltip name="ListViewStatusExtendedTooltip" id="12"/>
+			</ViewStatusAddition>
+			<SearchControlAddition name="ListSearchControl" id="13">
+				<AdditionSource>
+					<Item>List</Item>
+					<Type>SearchControl</Type>
+				</AdditionSource>
+				<ContextMenu name="ListSearchControlContextMenu" id="14"/>
+				<ExtendedTooltip name="ListSearchControlExtendedTooltip" id="15"/>
+			</SearchControlAddition>
+			<Events>
+				<Event name="Selection">ListSelection</Event>
+				<Event name="BeforeAddRow">ListBeforeAddRow</Event>
+			</Events>
+			<ChildItems>
+				<LabelField name="Code" id="16">
+					<DataPath>List.Code</DataPath>
+					<ContextMenu name="CodeContextMenu" id="17"/>
+					<ExtendedTooltip name="CodeExtendedTooltip" id="18"/>
+				</LabelField>
+				<LabelField name="AdditionalView" id="76">
+					<DataPath>List.AdditionalView</DataPath>
+					<ContextMenu name="AdditionalViewContextMenu" id="77"/>
+					<ExtendedTooltip name="AdditionalViewExtendedTooltip" id="78"/>
+				</LabelField>
+				<LabelField name="Description" id="19">
+					<DataPath>List.Description</DataPath>
+					<ContextMenu name="DescriptionContextMenu" id="20"/>
+					<ExtendedTooltip name="DescriptionExtendedTooltip" id="21"/>
+				</LabelField>
+				<LabelField name="BalanceType" id="43">
+					<DataPath>List.BalanceType</DataPath>
+					<ContextMenu name="BalanceTypeContextMenu" id="44"/>
+					<ExtendedTooltip name="BalanceTypeExtendedTooltip" id="45"/>
+				</LabelField>
+				<LabelField name="BalanceSide" id="40">
+					<DataPath>List.BalanceSide</DataPath>
+					<UserVisible>
+						<xr:Common>false</xr:Common>
+					</UserVisible>
+					<ContextMenu name="BalanceSideContextMenu" id="41"/>
+					<ExtendedTooltip name="BalanceSideExtendedTooltip" id="42"/>
+				</LabelField>
+				<LabelField name="Purpose" id="55">
+					<DataPath>List.Purpose</DataPath>
+					<UserVisible>
+						<xr:Common>false</xr:Common>
+					</UserVisible>
+					<ContextMenu name="PurposeContextMenu" id="56"/>
+					<ExtendedTooltip name="PurposeExtendedTooltip" id="57"/>
+				</LabelField>
+				<CheckBoxField name="Currency" id="28">
+					<DataPath>List.Currency</DataPath>
+					<CheckBoxType>Auto</CheckBoxType>
+					<ContextMenu name="CurrencyContextMenu" id="29"/>
+					<ExtendedTooltip name="CurrencyExtendedTooltip" id="30"/>
+				</CheckBoxField>
+				<LabelField name="ExtDimension1Type" id="58">
+					<DataPath>List.ExtDimension1Type</DataPath>
+					<ContextMenu name="ExtDimension1TypeContextMenu" id="59"/>
+					<ExtendedTooltip name="ExtDimension1TypeExtendedTooltip" id="60"/>
+				</LabelField>
+				<CheckBoxField name="ExtDimension1Mandatory" id="61">
+					<DataPath>List.ExtDimension1Mandatory</DataPath>
+					<Visible>false</Visible>
+					<CheckBoxType>Auto</CheckBoxType>
+					<ContextMenu name="ExtDimension1MandatoryContextMenu" id="62"/>
+					<ExtendedTooltip name="ExtDimension1MandatoryExtendedTooltip" id="63"/>
+				</CheckBoxField>
+				<LabelField name="ExtDimension2Type" id="64">
+					<DataPath>List.ExtDimension2Type</DataPath>
+					<ContextMenu name="ExtDimension2TypeContextMenu" id="65"/>
+					<ExtendedTooltip name="ExtDimension2TypeExtendedTooltip" id="66"/>
+				</LabelField>
+				<CheckBoxField name="ExtDimension2Mandatory" id="67">
+					<DataPath>List.ExtDimension2Mandatory</DataPath>
+					<Visible>false</Visible>
+					<CheckBoxType>Auto</CheckBoxType>
+					<ContextMenu name="ExtDimension2MandatoryContextMenu" id="68"/>
+					<ExtendedTooltip name="ExtDimension2MandatoryExtendedTooltip" id="69"/>
+				</CheckBoxField>
+				<LabelField name="ExtDimension3Type" id="70">
+					<DataPath>List.ExtDimension3Type</DataPath>
+					<ContextMenu name="ExtDimension3TypeContextMenu" id="71"/>
+					<ExtendedTooltip name="ExtDimension3TypeExtendedTooltip" id="72"/>
+				</LabelField>
+				<CheckBoxField name="ExtDimension3Mandatory" id="73">
+					<DataPath>List.ExtDimension3Mandatory</DataPath>
+					<Visible>false</Visible>
+					<CheckBoxType>Auto</CheckBoxType>
+					<ContextMenu name="ExtDimension3MandatoryContextMenu" id="74"/>
+					<ExtendedTooltip name="ExtDimension3MandatoryExtendedTooltip" id="75"/>
+				</CheckBoxField>
+			</ChildItems>
+		</Table>
+	</ChildItems>
+	<Attributes>
+		<Attribute name="List" id="1">
+			<Type>
+				<v8:Type>cfg:DynamicList</v8:Type>
+			</Type>
+			<MainAttribute>true</MainAttribute>
+			<Settings xsi:type="DynamicList">
+				<ManualQuery>false</ManualQuery>
+				<DynamicDataRead>true</DynamicDataRead>
+				<MainTable>ChartOfAccounts.Bookkeeping</MainTable>
+				<AutoSaveUserSettings>false</AutoSaveUserSettings>
+				<ListSettings>
+					<dcsset:filter>
+						<dcsset:viewMode>Normal</dcsset:viewMode>
+						<dcsset:userSettingID>dfcece9d-5077-440b-b6b3-45a5cb4538eb</dcsset:userSettingID>
+					</dcsset:filter>
+					<dcsset:order>
+						<dcsset:item xsi:type="dcsset:OrderItemField">
+							<dcsset:field>AdditionalView</dcsset:field>
+							<dcsset:orderType>Asc</dcsset:orderType>
+						</dcsset:item>
+						<dcsset:viewMode>Normal</dcsset:viewMode>
+						<dcsset:userSettingID>88619765-ccb3-46c6-ac52-38e9c992ebd4</dcsset:userSettingID>
+					</dcsset:order>
+					<dcsset:conditionalAppearance>
+						<dcsset:viewMode>Normal</dcsset:viewMode>
+						<dcsset:userSettingID>b75fecce-942b-4aed-abc9-e6a02e460fb3</dcsset:userSettingID>
+					</dcsset:conditionalAppearance>
+					<dcsset:itemsViewMode>Normal</dcsset:itemsViewMode>
+					<dcsset:itemsUserSettingID>911b6018-f537-43e8-a417-da56b22f9aec</dcsset:itemsUserSettingID>
+				</ListSettings>
+			</Settings>
+		</Attribute>
+		<Attribute name="YearValidity" id="2">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Year validity</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>pl</v8:lang>
+					<v8:content>Rok ważności</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Срок действия</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>cfg:CatalogRef.FinancialYears</v8:Type>
+			</Type>
+		</Attribute>
+		<ConditionalAppearance>
+			<dcsset:item>
+				<dcsset:selection>
+					<dcsset:item>
+						<dcsset:field>ExtDimension1Type</dcsset:field>
+					</dcsset:item>
+				</dcsset:selection>
+				<dcsset:filter>
+					<dcsset:item xsi:type="dcsset:FilterItemComparison">
+						<dcsset:left xsi:type="dcscor:Field">List.ExtDimension1Mandatory</dcsset:left>
+						<dcsset:comparisonType>Equal</dcsset:comparisonType>
+						<dcsset:right xsi:type="xs:boolean">false</dcsset:right>
+					</dcsset:item>
+				</dcsset:filter>
+				<dcsset:appearance>
+					<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+						<dcscor:parameter>TextColor</dcscor:parameter>
+						<dcscor:value xsi:type="v8ui:Color">web:MediumGray</dcscor:value>
+					</dcscor:item>
+				</dcsset:appearance>
+			</dcsset:item>
+			<dcsset:item>
+				<dcsset:selection>
+					<dcsset:item>
+						<dcsset:field>ExtDimension2Type</dcsset:field>
+					</dcsset:item>
+				</dcsset:selection>
+				<dcsset:filter>
+					<dcsset:item xsi:type="dcsset:FilterItemComparison">
+						<dcsset:left xsi:type="dcscor:Field">List.ExtDimension2Mandatory</dcsset:left>
+						<dcsset:comparisonType>Equal</dcsset:comparisonType>
+						<dcsset:right xsi:type="xs:boolean">false</dcsset:right>
+					</dcsset:item>
+				</dcsset:filter>
+				<dcsset:appearance>
+					<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+						<dcscor:parameter>TextColor</dcscor:parameter>
+						<dcscor:value xsi:type="v8ui:Color">web:MediumGray</dcscor:value>
+					</dcscor:item>
+				</dcsset:appearance>
+			</dcsset:item>
+			<dcsset:item>
+				<dcsset:selection>
+					<dcsset:item>
+						<dcsset:field>ExtDimension3Type</dcsset:field>
+					</dcsset:item>
+				</dcsset:selection>
+				<dcsset:filter>
+					<dcsset:item xsi:type="dcsset:FilterItemComparison">
+						<dcsset:left xsi:type="dcscor:Field">List.ExtDimension3Mandatory</dcsset:left>
+						<dcsset:comparisonType>Equal</dcsset:comparisonType>
+						<dcsset:right xsi:type="xs:boolean">false</dcsset:right>
+					</dcsset:item>
+				</dcsset:filter>
+				<dcsset:appearance>
+					<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+						<dcscor:parameter>TextColor</dcscor:parameter>
+						<dcscor:value xsi:type="v8ui:Color">web:MediumGray</dcscor:value>
+					</dcscor:item>
+				</dcsset:appearance>
+			</dcsset:item>
+			<dcsset:item>
+				<dcsset:selection>
+					<dcsset:item>
+						<dcsset:field>List</dcsset:field>
+					</dcsset:item>
+				</dcsset:selection>
+				<dcsset:filter>
+					<dcsset:item xsi:type="dcsset:FilterItemComparison">
+						<dcsset:left xsi:type="dcscor:Field">List.BalanceType</dcsset:left>
+						<dcsset:comparisonType>Equal</dcsset:comparisonType>
+						<dcsset:right xsi:type="dcscor:DesignTimeValue">Enum.AccountBalanceTypes.Result</dcsset:right>
+					</dcsset:item>
+				</dcsset:filter>
+				<dcsset:appearance>
+					<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+						<dcscor:parameter>BackColor</dcscor:parameter>
+						<dcscor:value xsi:type="v8ui:Color">style:BlueColor</dcscor:value>
+					</dcscor:item>
+				</dcsset:appearance>
+			</dcsset:item>
+			<dcsset:item>
+				<dcsset:selection>
+					<dcsset:item>
+						<dcsset:field>List</dcsset:field>
+					</dcsset:item>
+				</dcsset:selection>
+				<dcsset:filter>
+					<dcsset:item xsi:type="dcsset:FilterItemComparison">
+						<dcsset:left xsi:type="dcscor:Field">List.BalanceType</dcsset:left>
+						<dcsset:comparisonType>Equal</dcsset:comparisonType>
+						<dcsset:right xsi:type="dcscor:DesignTimeValue">Enum.AccountBalanceTypes.OffBalance</dcsset:right>
+					</dcsset:item>
+				</dcsset:filter>
+				<dcsset:appearance>
+					<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+						<dcscor:parameter>BackColor</dcscor:parameter>
+						<dcscor:value xsi:type="v8ui:Color">style:YellowColor</dcscor:value>
+					</dcscor:item>
+				</dcsset:appearance>
+			</dcsset:item>
+		</ConditionalAppearance>
+	</Attributes>
+	<Commands>
+		<Command name="CommandPrintOut" id="1">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Print out</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>pl</v8:lang>
+					<v8:content>Wydruk</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>pl</v8:lang>
+					<v8:content>Command print out</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Command print out</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>CommandPrintOut</Action>
+		</Command>
+	</Commands>
+</Form>

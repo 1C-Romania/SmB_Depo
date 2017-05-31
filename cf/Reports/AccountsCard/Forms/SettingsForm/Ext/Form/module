@@ -1,0 +1,78 @@
+﻿
+Procedure OnOpen()
+	
+	UpdateTemplateReportFormOnComposer(SettingsComposer, ThisForm);
+
+EndProcedure
+
+//////////////////////////////////////////////////////////////////////////////////
+
+Procedure ButtonPeriodSettingClick(Control)
+	
+	TemplateReports.SetupPeriod(PeriodSettings, BeginPeriod, EndPeriod);
+	TemplateReports.UpdatePeriodParametersOnForm(SettingsComposer, ThisForm);
+	
+EndProcedure
+
+Procedure FormMainActionsOK(Button)
+	Close(True);
+EndProcedure
+
+Procedure CompanyOnChange(Control)
+	UpdateCompanyParametersOnForm(SettingsComposer, ThisForm);
+EndProcedure
+
+Procedure AccountOnChange(Control)
+	UpdateAccountParametersOnForm(SettingsComposer, ThisForm);
+    DataCompositionSchemaAdress = "";	
+	ReportObject.UpdateSettingsComposerDependencesOnAccount(Account,SettingsComposer, ThisForm, DataCompositionSchemaAdress);
+EndProcedure
+
+Procedure TextBoxPeriodOnChange(Control)
+	
+	TemplateReports.UpdatePeriodParametersOnForm(SettingsComposer, ThisForm);
+	
+EndProcedure
+
+//////////////////////////////////////////////////////////////////////////////////
+
+Procedure UpdateTemplateReportFormOnComposer(SettingsComposer, ReportForm) Export
+	
+	// Period parameters
+	BeginPeriodParameterValue = SettingsComposer.Settings.DataParameters.FindParameterValue(New DataCompositionParameter("BeginOfPeriod"));
+	EndPeriodParameterValue = SettingsComposer.Settings.DataParameters.FindParameterValue(New DataCompositionParameter("EndOfPeriod"));
+	CompanyParameterValue = SettingsComposer.Settings.DataParameters.FindParameterValue(New DataCompositionParameter("Company"));
+	AccountParameterValue = SettingsComposer.Settings.DataParameters.FindParameterValue(New DataCompositionParameter("Account"));
+	
+	ReportForm.BeginPeriod = BeginPeriodParameterValue.Value;
+	ReportForm.EndPeriod = EndPeriodParameterValue.Value;
+	ReportForm.Company = CompanyParameterValue.Value;
+	ReportForm.Account = AccountParameterValue.Value;
+	
+EndProcedure
+
+Procedure UpdateCompanyParametersOnForm(SettingsComposer, Form) Export
+	
+	CompanyParameterValue = SettingsComposer.Settings.DataParameters.FindParameterValue(New DataCompositionParameter("Company"));
+	
+	If CompanyParameterValue <> Undefined Then
+		CompanyParameterValue.Value = Form.Company;
+	EndIf;
+	
+EndProcedure
+
+Procedure UpdateAccountParametersOnForm(SettingsComposer, Form) Export
+	
+	AccountParameterValue = SettingsComposer.Settings.DataParameters.FindParameterValue(New DataCompositionParameter("Account"));
+	
+	If AccountParameterValue <> Undefined Then
+		AccountParameterValue.Value = Form.Account;
+	EndIf;
+	
+EndProcedure
+
+
+
+
+
+

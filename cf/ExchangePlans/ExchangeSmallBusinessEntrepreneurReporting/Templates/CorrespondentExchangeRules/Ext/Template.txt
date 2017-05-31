@@ -1,0 +1,612 @@
+﻿<ExchangeRules>
+	<FormatVersion CompatibilityMode="CompatibilityWithSSL21Mode">2.01</FormatVersion>
+	<ID>cf69a3d0-f344-417d-8c04-0f636443830a    </ID>
+	<Description>StatementsOfEmployer --&gt; SmallBusiness</Description>
+	<CreationDateTime>2014-05-28T11:29:47</CreationDateTime>
+	<Source PlatformVersion="8.0" ConfigurationVersion="2.0.3.18" ConfigurationSynonym="Entrepreneur accounting, edition 2.0">StatementsOfEmployer</Source>
+	<Receiver PlatformVersion="8.0" ConfigurationVersion="1.5.2.1" ConfigurationSynonym="Small Business, version 1.5">SmallBusiness</Receiver>
+	<Parameters/>
+	<DataProcessors/>
+	<ObjectConversionRules>
+		<Group>
+			<Code>Catalogs</Code>
+			<Description>Catalogs</Description>
+			<Order>50</Order>
+			<Rule>
+				<Code>Companies</Code>
+				<Description>Catalog: Taxpayers</Description>
+				<Order>50</Order>
+				<SynchronizeByID>true</SynchronizeByID>
+				<Source>CatalogRef.Companies</Source>
+				<Receiver>CatalogRef.Companies</Receiver>
+				<Properties>
+					<Property>
+						<Code>1</Code>
+						<Description>TIN --&gt; TIN</Description>
+						<Order>50</Order>
+						<Source Name="TIN" Kind="Attribute" Type="String"/>
+						<Receiver Name="TIN" Kind="Attribute" Type="String"/>
+					</Property>
+					<Property>
+						<Code>5</Code>
+						<Description>Description --&gt; Description</Description>
+						<Order>250</Order>
+						<Source Name="Description" Kind="Property" Type="String"/>
+						<Receiver Name="Description" Kind="Property" Type="String"/>
+					</Property>
+					<Property>
+						<Code>6</Code>
+						<Description>DescriptionFull --&gt; DescriptionFull</Description>
+						<Order>300</Order>
+						<Source Name="DescriptionFull" Kind="Attribute" Type="String"/>
+						<Receiver Name="DescriptionFull" Kind="Attribute" Type="String"/>
+					</Property>
+					<Property>
+						<Code>7</Code>
+						<Description>DeletionMark --&gt; DeletionMark</Description>
+						<Order>350</Order>
+						<Source Name="DeletionMark" Kind="Property" Type="Boolean"/>
+						<Receiver Name="DeletionMark" Kind="Property" Type="Boolean"/>
+					</Property>
+					<Property>
+						<Code>8</Code>
+						<Description>Prefix --&gt; Prefix</Description>
+						<Order>400</Order>
+						<Source Name="Prefix" Kind="Attribute" Type="String"/>
+						<Receiver Name="Prefix" Kind="Attribute" Type="String"/>
+					</Property>
+					<Property>
+						<Code>9</Code>
+						<Description>CertificateIssueDate --&gt; CertificateIssueDate</Description>
+						<Order>450</Order>
+						<Source Name="CertificateIssueDate" Kind="Attribute" Type="Date"/>
+						<Receiver Name="CertificateIssueDate" Kind="Attribute" Type="Date"/>
+					</Property>
+					<Property>
+						<Code>10</Code>
+						<Description>CertificateSeriesNumber --&gt; CertificateSeriesNumber</Description>
+						<Order>500</Order>
+						<Source Name="CertificateSeriesNumber" Kind="Attribute" Type="String"/>
+						<Receiver Name="CertificateSeriesNumber" Kind="Attribute" Type="String"/>
+					</Property>
+					<Group>
+						<Code>11</Code>
+						<Description>ContactInformation --&gt; ContactInformation</Description>
+						<Order>550</Order>
+						<Source Name="ContactInformation" Kind="TabularSection"/>
+						<Receiver Name="ContactInformation" Kind="TabularSection"/>
+						<Property>
+							<Code>12</Code>
+							<Description>EMail_Address --&gt; EMail_Address</Description>
+							<Order>50</Order>
+							<Source Name="EMail_Address" Kind="Attribute" Type="String"/>
+							<Receiver Name="EMail_Address" Kind="Attribute" Type="String"/>
+						</Property>
+						<Property>
+							<Code>13</Code>
+							<Description>Kind --&gt; Kind</Description>
+							<Order>100</Order>
+							<Source Name="Kind" Kind="Attribute" Type="CatalogRef.ContactInformationTypes"/>
+							<Receiver Name="Kind" Kind="Attribute" Type="CatalogRef.ContactInformationTypes"/>
+							<ConversionRuleCode>ContactInformationTypes                          </ConversionRuleCode>
+						</Property>
+						<Property>
+							<Code>14</Code>
+							<Description>City --&gt; City</Description>
+							<Order>150</Order>
+							<Source Name="City" Kind="Attribute" Type="String"/>
+							<Receiver Name="City" Kind="Attribute" Type="String"/>
+						</Property>
+						<Property>
+							<Code>15</Code>
+							<Description>ServerDomainName --&gt; ServerDomainName</Description>
+							<Order>200</Order>
+							<Source Name="ServerDomainName" Kind="Attribute" Type="String"/>
+							<Receiver Name="ServerDomainName" Kind="Attribute" Type="String"/>
+						</Property>
+						<Property>
+							<Code>16</Code>
+							<Description>FieldsValues --&gt; FieldsValues</Description>
+							<Order>250</Order>
+							<Source Name="FieldsValues" Kind="Attribute" Type="String"/>
+							<Receiver Name="FieldsValues" Kind="Attribute" Type="String"/>
+							<OnExport>Value = ContactInformationManagement.PreviousFormatContactInformationXML(Value, True);</OnExport>
+						</Property>
+						<Property>
+							<Code>17</Code>
+							<Description>PhoneNumber --&gt; PhoneNumber</Description>
+							<Order>300</Order>
+							<Source Name="PhoneNumber" Kind="Attribute" Type="String"/>
+							<Receiver Name="PhoneNumber" Kind="Attribute" Type="String"/>
+						</Property>
+						<Property>
+							<Code>18</Code>
+							<Description>PhoneNumberNoCodes --&gt; PhoneNumberNoCodes</Description>
+							<Order>350</Order>
+							<Source Name="PhoneNumberNoCodes" Kind="Attribute" Type="String"/>
+							<Receiver Name="PhoneNumberNoCodes" Kind="Attribute" Type="String"/>
+						</Property>
+						<Property>
+							<Code>19</Code>
+							<Description>Presentation --&gt; Presentation</Description>
+							<Order>400</Order>
+							<Source Name="Presentation" Kind="Attribute" Type="String"/>
+							<Receiver Name="Presentation" Kind="Attribute" Type="String"/>
+						</Property>
+						<Property>
+							<Code>20</Code>
+							<Description>Region --&gt; Region</Description>
+							<Order>450</Order>
+							<Source Name="Region" Kind="Attribute" Type="String"/>
+							<Receiver Name="Region" Kind="Attribute" Type="String"/>
+						</Property>
+						<Property>
+							<Code>21</Code>
+							<Description>Country --&gt; Country</Description>
+							<Order>500</Order>
+							<Source Name="Country" Kind="Attribute" Type="String"/>
+							<Receiver Name="Country" Kind="Attribute" Type="String"/>
+						</Property>
+						<Property>
+							<Code>22</Code>
+							<Description>Type --&gt; Type</Description>
+							<Order>550</Order>
+							<Source Name="Type" Kind="Attribute" Type="EnumRef.ContactInformationTypes"/>
+							<Receiver Name="Type" Kind="Attribute" Type="EnumRef.ContactInformationTypes"/>
+							<ConversionRuleCode>ContactInformationTypes                          </ConversionRuleCode>
+						</Property>
+					</Group>
+					<Property Search="true">
+						<Code>23</Code>
+						<Description> --&gt; Code</Description>
+						<Order>600</Order>
+						<Source Name="" Kind=""/>
+						<Receiver Name="Code" Kind="Property" Type="String"/>
+					</Property>
+				</Properties>
+				<Values/>
+			</Rule>
+			<Rule>
+				<Code>ContactInformationTypes</Code>
+				<Description>Catalog: Kinds contact information</Description>
+				<Order>100</Order>
+				<SynchronizeByID>true</SynchronizeByID>
+				<SearchBySearchFieldsIfNotFoundByID>true</SearchBySearchFieldsIfNotFoundByID>
+				<Source>CatalogRef.ContactInformationTypes</Source>
+				<Receiver>CatalogRef.ContactInformationTypes</Receiver>
+				<Properties>
+					<Property Search="true">
+						<Code>1</Code>
+						<Description>Description --&gt; Description</Description>
+						<Order>50</Order>
+						<Source Name="Description" Kind="Property" Type="String"/>
+						<Receiver Name="Description" Kind="Property" Type="String"/>
+					</Property>
+					<Property>
+						<Code>2</Code>
+						<Description>Parent --&gt; Parent</Description>
+						<Order>100</Order>
+						<Source Name="Parent" Kind="Property" Type="CatalogRef.ContactInformationTypes"/>
+						<Receiver Name="Parent" Kind="Property" Type="CatalogRef.ContactInformationTypes"/>
+						<ConversionRuleCode>ContactInformationTypes                          </ConversionRuleCode>
+					</Property>
+					<Property Search="true" Required="true">
+						<Code>3</Code>
+						<Description>IsFolder --&gt; IsFolder</Description>
+						<Order>150</Order>
+						<Source Name="IsFolder" Kind="Property" Type="Boolean"/>
+						<Receiver Name="IsFolder" Kind="Property" Type="Boolean"/>
+					</Property>
+				</Properties>
+				<Values>
+					<Value>
+						<Code>1</Code>
+						<Description>CounterpartyEmail --&gt; CounterpartyEmail</Description>
+						<Order>50</Order>
+						<Source>CounterpartyEmail</Source>
+						<Receiver>CounterpartyEmail</Receiver>
+					</Value>
+					<Value>
+						<Code>2</Code>
+						<Description>UserEmail --&gt; UserEmail</Description>
+						<Order>100</Order>
+						<Source>UserEmail</Source>
+						<Receiver>UserEmail</Receiver>
+					</Value>
+					<Value>
+						<Code>3</Code>
+						<Description>CounterpartyOtherInformation --&gt; AnotherInformationCo</Description>
+						<Order>150</Order>
+						<Source>CounterpartyOtherInformation</Source>
+						<Receiver>CounterpartyOtherInformation</Receiver>
+					</Value>
+					<Value>
+						<Code>4</Code>
+						<Description>CounterpartyPostalAddress --&gt; CounterpartyAddress</Description>
+						<Order>200</Order>
+						<Source>CounterpartyPostalAddress</Source>
+						<Receiver>CounterpartyPostalAddress</Receiver>
+					</Value>
+					<Value>
+						<Code>5</Code>
+						<Description>CatalogCounterparties --&gt; CatalogCounterparties</Description>
+						<Order>250</Order>
+						<Source>CatalogCounterparties</Source>
+						<Receiver>CatalogCounterparties</Receiver>
+					</Value>
+					<Value>
+						<Code>6</Code>
+						<Description>CatalogCompanies --&gt; CatalogCompanies</Description>
+						<Order>300</Order>
+						<Source>CatalogCompanies</Source>
+						<Receiver>CatalogCompanies</Receiver>
+					</Value>
+					<Value>
+						<Code>7</Code>
+						<Description>CatalogUsers --&gt; CatalogUsers</Description>
+						<Order>350</Order>
+						<Source>CatalogUsers</Source>
+						<Receiver>CatalogUsers</Receiver>
+					</Value>
+					<Value>
+						<Code>8</Code>
+						<Description>CounterpartyPhone --&gt; CounterpartyPhone</Description>
+						<Order>400</Order>
+						<Source>CounterpartyPhone</Source>
+						<Receiver>CounterpartyPhone</Receiver>
+					</Value>
+					<Value>
+						<Code>9</Code>
+						<Description>CompanyPhone --&gt; CompanyPhone</Description>
+						<Order>450</Order>
+						<Source>CompanyPhone</Source>
+						<Receiver>CompanyPhone</Receiver>
+					</Value>
+					<Value>
+						<Code>10</Code>
+						<Description>CounterpartyFax --&gt; CounterpartyFax</Description>
+						<Order>500</Order>
+						<Source>CounterpartyFax</Source>
+						<Receiver>CounterpartyFax</Receiver>
+					</Value>
+					<Value>
+						<Code>11</Code>
+						<Description>CounterpartyFactAddress --&gt; CounterpartyFactAddress</Description>
+						<Order>550</Order>
+						<Source>CounterpartyFactAddress</Source>
+						<Receiver>CounterpartyFactAddress</Receiver>
+					</Value>
+					<Value>
+						<Code>12</Code>
+						<Description>CounterpartyLegalAddress --&gt; CounterpartyLegalAddress</Description>
+						<Order>600</Order>
+						<Source>CounterpartyLegalAddress</Source>
+						<Receiver>CounterpartyLegalAddress</Receiver>
+					</Value>
+					<Value>
+						<Code>13</Code>
+						<Description>CounterpartyLegalAddress --&gt; CounterpartyLegalAddress</Description>
+						<Order>650</Order>
+						<Source>CounterpartyLegalAddress</Source>
+						<Receiver>CounterpartyLegalAddress</Receiver>
+					</Value>
+				</Values>
+			</Rule>
+			<Rule>
+				<Code>Banks</Code>
+				<Description>Catalog: Banks</Description>
+				<Order>150</Order>
+				<SynchronizeByID>true</SynchronizeByID>
+				<SearchBySearchFieldsIfNotFoundByID>true</SearchBySearchFieldsIfNotFoundByID>
+				<Source>CatalogRef.Banks</Source>
+				<Receiver>CatalogRef.Banks</Receiver>
+				<Properties>
+					<Property>
+						<Code>1</Code>
+						<Description>Address --&gt; Address</Description>
+						<Order>50</Order>
+						<Source Name="Address" Kind="Attribute" Type="String"/>
+						<Receiver Name="Address" Kind="Attribute" Type="String"/>
+					</Property>
+					<Property>
+						<Code>2</Code>
+						<Description>City --&gt; City</Description>
+						<Order>100</Order>
+						<Source Name="City" Kind="Attribute" Type="String"/>
+						<Receiver Name="City" Kind="Attribute" Type="String"/>
+					</Property>
+					<Property Search="true">
+						<Code>3</Code>
+						<Description>Code --&gt; Code</Description>
+						<Order>150</Order>
+						<Source Name="Code" Kind="Property" Type="String"/>
+						<Receiver Name="Code" Kind="Property" Type="String"/>
+					</Property>
+					<Property>
+						<Code>4</Code>
+						<Description>CorrAccount --&gt; CorrAccount</Description>
+						<Order>200</Order>
+						<Source Name="CorrAccount" Kind="Attribute" Type="String"/>
+						<Receiver Name="CorrAccount" Kind="Attribute" Type="String"/>
+					</Property>
+					<Property>
+						<Code>5</Code>
+						<Description>Description --&gt; Description</Description>
+						<Order>250</Order>
+						<Source Name="Description" Kind="Property" Type="String"/>
+						<Receiver Name="Description" Kind="Property" Type="String"/>
+					</Property>
+					<Property>
+						<Code>6</Code>
+						<Description>DeletionMark --&gt; DeletionMark</Description>
+						<Order>300</Order>
+						<Source Name="DeletionMark" Kind="Property" Type="Boolean"/>
+						<Receiver Name="DeletionMark" Kind="Property" Type="Boolean"/>
+					</Property>
+					<Property>
+						<Code>7</Code>
+						<Description>PhoneNumbers --&gt; PhoneNumbers</Description>
+						<Order>350</Order>
+						<Source Name="PhoneNumbers" Kind="Attribute" Type="String"/>
+						<Receiver Name="PhoneNumbers" Kind="Attribute" Type="String"/>
+					</Property>
+					<Property Search="true" Required="true">
+						<Code>8</Code>
+						<Description> --&gt; IsFolder</Description>
+						<Order>400</Order>
+						<Source Name="" Kind=""/>
+						<Receiver Name="IsFolder" Kind="Property" Type="Boolean"/>
+					</Property>
+				</Properties>
+				<Values/>
+			</Rule>
+			<Rule>
+				<Code>BankAccounts</Code>
+				<Description>Catalog: Bank account</Description>
+				<Order>200</Order>
+				<SynchronizeByID>true</SynchronizeByID>
+				<SearchBySearchFieldsIfNotFoundByID>true</SearchBySearchFieldsIfNotFoundByID>
+				<Source>CatalogRef.BankAccounts</Source>
+				<Receiver>CatalogRef.BankAccounts</Receiver>
+				<Properties>
+					<Property>
+						<Code>1</Code>
+						<Description>Bank --&gt; Bank</Description>
+						<Order>50</Order>
+						<Source Name="Bank" Kind="Attribute" Type="CatalogRef.Banks"/>
+						<Receiver Name="Bank" Kind="Attribute" Type="CatalogRef.Banks"/>
+						<ConversionRuleCode>Banks                                             </ConversionRuleCode>
+					</Property>
+					<Property>
+						<Code>2</Code>
+						<Description>AccountsBank --&gt; AccountsBank</Description>
+						<Order>100</Order>
+						<Source Name="AccountsBank" Kind="Attribute" Type="CatalogRef.Banks"/>
+						<Receiver Name="AccountsBank" Kind="Attribute" Type="CatalogRef.Banks"/>
+						<ConversionRuleCode>Banks                                             </ConversionRuleCode>
+					</Property>
+					<Property>
+						<Code>3</Code>
+						<Description>MonthOutputOption --&gt; MonthOutputOption</Description>
+						<Order>150</Order>
+						<Source Name="MonthOutputOption" Kind="Attribute" Type="EnumRef.MonthInDocumentDateOutputVariants"/>
+						<Receiver Name="MonthOutputOption" Kind="Attribute" Type="EnumRef.MonthInDocumentDateOutputVariants"/>
+						<ConversionRuleCode>MonthOutputTypesInDocumentDate                </ConversionRuleCode>
+					</Property>
+					<Property Search="true">
+						<Code>4</Code>
+						<Description>Owner --&gt; Owner</Description>
+						<Order>200</Order>
+						<Source Name="Owner" Kind="Property"/>
+						<Receiver Name="Owner" Kind="Property"/>
+					</Property>
+					<Property>
+						<Code>5</Code>
+						<Description>ClosingDate --&gt; ClosingDate</Description>
+						<Order>250</Order>
+						<Source Name="ClosingDate" Kind="Attribute" Type="Date"/>
+						<Receiver Name="ClosingDate" Kind="Attribute" Type="Date"/>
+					</Property>
+					<Property>
+						<Code>6</Code>
+						<Description>OpeningDate --&gt; OpeningDate</Description>
+						<Order>300</Order>
+						<Source Name="OpeningDate" Kind="Attribute" Type="Date"/>
+						<Receiver Name="OpeningDate" Kind="Attribute" Type="Date"/>
+					</Property>
+					<Property Search="true">
+						<Code>7</Code>
+						<Description>Code --&gt; Code</Description>
+						<Order>350</Order>
+						<Source Name="Code" Kind="Property" Type="String"/>
+						<Receiver Name="Code" Kind="Property" Type="String"/>
+					</Property>
+					<Property>
+						<Code>8</Code>
+						<Description>Description --&gt; Description</Description>
+						<Order>400</Order>
+						<Source Name="Description" Kind="Property" Type="String"/>
+						<Receiver Name="Description" Kind="Property" Type="String"/>
+					</Property>
+					<Property>
+						<Code>9</Code>
+						<Description>AccountNo --&gt; AccountNo</Description>
+						<Order>450</Order>
+						<Source Name="AccountNo" Kind="Attribute" Type="String"/>
+						<Receiver Name="AccountNo" Kind="Attribute" Type="String"/>
+					</Property>
+					<Property>
+						<Code>10</Code>
+						<Description>DeletionMark --&gt; DeletionMark</Description>
+						<Order>500</Order>
+						<Source Name="DeletionMark" Kind="Property" Type="Boolean"/>
+						<Receiver Name="DeletionMark" Kind="Property" Type="Boolean"/>
+					</Property>
+					<Property>
+						<Code>11</Code>
+						<Description>CorrespondentText --&gt; CorrespondentText</Description>
+						<Order>550</Order>
+						<Source Name="CorrespondentText" Kind="Attribute" Type="String"/>
+						<Receiver Name="CorrespondentText" Kind="Attribute" Type="String"/>
+					</Property>
+					<Property>
+						<Code>12</Code>
+						<Description>DestinationText --&gt; DestinationText</Description>
+						<Order>600</Order>
+						<Source Name="DestinationText" Kind="Attribute" Type="String"/>
+						<Receiver Name="DestinationText" Kind="Attribute" Type="String"/>
+					</Property>
+				</Properties>
+				<Values/>
+			</Rule>
+			<Rule>
+				<Code>Counterparties</Code>
+				<Description>Catalog: Counterparties</Description>
+				<Order>250</Order>
+				<SynchronizeByID>true</SynchronizeByID>
+				<SearchBySearchFieldsIfNotFoundByID>true</SearchBySearchFieldsIfNotFoundByID>
+				<Source>CatalogRef.Counterparties</Source>
+				<Receiver>CatalogRef.Counterparties</Receiver>
+				<Properties>
+					<Property Search="true">
+						<Code>1</Code>
+						<Description>Code --&gt; Code</Description>
+						<Order>50</Order>
+						<Source Name="Code" Kind="Property" Type="String"/>
+						<Receiver Name="Code" Kind="Property" Type="String"/>
+					</Property>
+					<Property>
+						<Code>2</Code>
+						<Description>Description --&gt; Description</Description>
+						<Order>100</Order>
+						<Source Name="Description" Kind="Property" Type="String"/>
+						<Receiver Name="Description" Kind="Property" Type="String"/>
+					</Property>
+					<Property>
+						<Code>3</Code>
+						<Description>Parent --&gt; Parent</Description>
+						<Order>150</Order>
+						<Source Name="Parent" Kind="Property" Type="CatalogRef.Counterparties"/>
+						<Receiver Name="Parent" Kind="Property" Type="CatalogRef.Counterparties"/>
+						<ConversionRuleCode>Counterparties                                       </ConversionRuleCode>
+					</Property>
+					<Property Search="true" Required="true">
+						<Code>4</Code>
+						<Description>IsFolder --&gt; IsFolder</Description>
+						<Order>200</Order>
+						<Source Name="IsFolder" Kind="Property" Type="Boolean"/>
+						<Receiver Name="IsFolder" Kind="Property" Type="Boolean"/>
+					</Property>
+				</Properties>
+				<Values/>
+			</Rule>
+		</Group>
+		<Group>
+			<Code>Enums</Code>
+			<Description>Enums</Description>
+			<Order>100</Order>
+			<Rule>
+				<Code>ContactInformationTypes</Code>
+				<Description>Enum: Types contact information</Description>
+				<Order>50</Order>
+				<Source>EnumRef.ContactInformationTypes</Source>
+				<Receiver>EnumRef.ContactInformationTypes</Receiver>
+				<Properties/>
+				<Values>
+					<Value>
+						<Code>1</Code>
+						<Description>Address --&gt; Address</Description>
+						<Order>50</Order>
+						<Source>Address</Source>
+						<Receiver>Address</Receiver>
+					</Value>
+					<Value>
+						<Code>2</Code>
+						<Description>EmailAddress --&gt; EmailAddress</Description>
+						<Order>100</Order>
+						<Source>EmailAddress</Source>
+						<Receiver>EmailAddress</Receiver>
+					</Value>
+					<Value>
+						<Code>3</Code>
+						<Description>WebPage --&gt; WebPage</Description>
+						<Order>150</Order>
+						<Source>WebPage</Source>
+						<Receiver>WebPage</Receiver>
+					</Value>
+					<Value>
+						<Code>4</Code>
+						<Description>Another --&gt; Another</Description>
+						<Order>200</Order>
+						<Source>Another</Source>
+						<Receiver>Another</Receiver>
+					</Value>
+					<Value>
+						<Code>5</Code>
+						<Description>Phone --&gt; Phone</Description>
+						<Order>250</Order>
+						<Source>Phone</Source>
+						<Receiver>Phone</Receiver>
+					</Value>
+					<Value>
+						<Code>6</Code>
+						<Description>Fax --&gt; Fax</Description>
+						<Order>300</Order>
+						<Source>Fax</Source>
+						<Receiver>Fax</Receiver>
+					</Value>
+				</Values>
+			</Rule>
+			<Rule>
+				<Code>MonthOutputTypesInDocumentDate</Code>
+				<Description>Enum: Variants output month in date document</Description>
+				<Order>100</Order>
+				<Source>EnumRef.MonthOutputTypesInDocumentDate</Source>
+				<Receiver>EnumRef.MonthOutputTypesInDocumentDate</Receiver>
+				<Properties/>
+				<Values>
+					<Value>
+						<Code>1</Code>
+						<Description>InWords --&gt; InWords</Description>
+						<Order>50</Order>
+						<Source>InWords</Source>
+						<Receiver>InWords</Receiver>
+					</Value>
+					<Value>
+						<Code>2</Code>
+						<Description>Number --&gt; Number</Description>
+						<Order>100</Order>
+						<Source>Number</Source>
+						<Receiver>Number</Receiver>
+					</Value>
+				</Values>
+			</Rule>
+		</Group>
+	</ObjectConversionRules>
+	<DataUnloadRules>
+		<Group Disable="false">
+			<Code>Catalogs</Code>
+			<Description>Catalogs</Description>
+			<Order>50</Order>
+			<Rule Disable="false">
+				<Code>Banks</Code>
+				<Description>Banks</Description>
+				<Order>50</Order>
+				<ConversionRuleCode>Banks                                             </ConversionRuleCode>
+				<DataSelectionVariant>StandardSelection</DataSelectionVariant>
+				<SelectionObject>CatalogRef.Banks</SelectionObject>
+			</Rule>
+			<Rule Disable="false">
+				<Code>BankAccounts</Code>
+				<Description>BankAccounts</Description>
+				<Order>100</Order>
+				<ConversionRuleCode>BankAccounts                                   </ConversionRuleCode>
+				<DataSelectionVariant>StandardSelection</DataSelectionVariant>
+				<SelectionObject>CatalogRef.BankAccounts</SelectionObject>
+			</Rule>
+		</Group>
+	</DataUnloadRules>
+	<DataClearingRules/>
+	<Algorithms/>
+	<Queries/>
+</ExchangeRules>

@@ -1,0 +1,66 @@
+﻿
+////////////////////////////////////////////////////////////////////////////////
+// COMMAND BAR HANDLERS
+
+Procedure ButtonAddOperationOnClick(Control)
+	
+	If Controls.List.CurrentRow = Undefined Then
+		Return;
+	EndIf;
+	
+	Ref = Controls.List.CurrentData.Ref;
+	
+	If Ref.Type = Enums.BookkeepingOperationTemplateTypes.AsDataProcessor Then
+		
+		If Ref.InternalDataProcessor Then
+			
+			DataProcessor = DataProcessors[Ref.FileName].Create();
+			
+		Else
+			
+			BinaryData = Ref.OperationTemplateAsDataProcessor.Get();
+			TempFileName = GetTempFileName("epf");
+			BinaryData.Write(TempFileName);
+			DataProcessor = ExternalDataProcessors.Create(TempFileName);
+			
+		EndIf;
+		
+		DataProcessor.Perform(Ref);
+		
+	ElsIf Ref.Type = Enums.BookkeepingOperationTemplateTypes.Normal Then
+		
+		NewForm = Documents.BookkeepingOperation.GetNewDocumentForm();
+		NewForm.Fill(Ref);
+		NewForm.Open();
+		
+	EndIf;
+	
+EndProcedure
+
+Procedure BookkeepingOperationsTemplatessSelectionHistoryOnClick(Button)
+	
+	Form = Catalogs.BookkeepingOperationsTemplates.GetForm("SelectionHistory");
+	BookkeepingOperationsTemplates    = Form.DoModal();
+	
+	If BookkeepingOperationsTemplates = Undefined Then
+		Return;
+	EndIf;
+	
+	NewForm = Documents.BookkeepingOperation.GetNewDocumentForm();
+	NewForm.Fill(BookkeepingOperationsTemplates);
+	NewForm.Open();
+	
+EndProcedure
+
+Procedure ListOnDataGet(Control, RowAppearances)
+	
+	For Each RowAppearance In RowAppearances Do
+		
+		If RowAppearance.RowData.DocumentBase <> Undefined AND NOT RowAppearance.RowData.IsFolder Then
+			RowAppearance.Cells.DocumentBase.Text = RowAppearance.RowData.DocumentBase.Metadata().Synonym;
+		EndIf;
+		
+	EndDo;
+	
+EndProcedure
+

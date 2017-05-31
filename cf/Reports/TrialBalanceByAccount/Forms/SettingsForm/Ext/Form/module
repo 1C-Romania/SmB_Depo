@@ -1,0 +1,271 @@
+﻿
+Procedure OnOpen()
+	
+	InitializeSettingsComposer();
+	
+	UpdateTemplateReportFormOnComposer(SettingsComposer, ThisForm);
+
+EndProcedure
+
+//////////////////////////////////////////////////////////////////////////////////
+
+Procedure ButtonPeriodSettingClick(Control)
+	
+	TemplateReports.SetupPeriod(PeriodSettings, BeginPeriod, EndPeriod);
+	TemplateReports.UpdatePeriodParametersOnForm(SettingsComposer, ThisForm);
+	
+EndProcedure
+
+Procedure FormMainActionsOK(Button)
+	FillReportsSettingsComposer(ReportObject.SettingsComposer);
+	Close(True);
+EndProcedure
+
+Procedure CompanyOnChange(Control)
+	UpdateCompanyParametersOnForm(SettingsComposer, ThisForm);
+EndProcedure
+
+Procedure FinancialYearOnChange(Control)
+	
+	If FinancialYear.IsEmpty() Then
+		FinancialYearDateFrom = '00010101000000';
+		FinancialYearDateTo = '00010101000000';
+	Else	
+		FinancialYearDateFrom = BegOfDay(FinancialYear.DateFrom);
+		FinancialYearDateTo = EndOfDay(FinancialYear.DateTo);
+	EndIf;	
+	
+	TemplateReports.SetParameter(SettingsComposer,"BeginOfYear",FinancialYearDateFrom);
+
+EndProcedure
+
+Procedure AccountOnChange(Control)
+	UpdateAccountParametersOnForm(SettingsComposer, ThisForm);
+	ReportObject.UpdateSettingsComposerDependencesOnAccount(Account,SettingsComposer);
+EndProcedure
+
+Procedure RowGroupsBeforeEditEnd(Control, NewRow, CancelEdit, Cancel)
+	
+	If Control.CurrentRow.Field =  New DataCompositionField("") AND NOT CancelEdit then
+		Domessagebox(Nstr("en='Column of field is not filled.';pl='Nie została wypełniona kolumna pola.'"));
+		Cancel = true;
+	EndIf;
+
+EndProcedure
+
+Procedure TextBoxPeriodOnChange(Control)
+	
+	TemplateReports.UpdatePeriodParametersOnForm(SettingsComposer, ThisForm);
+	
+EndProcedure
+
+//////////////////////////////////////////////////////////////////////////////////
+
+Procedure UpdateTemplateReportFormOnComposer(SettingsComposer, ReportForm) Export
+	
+	// Period parameters
+	BeginPeriodParameterValue = SettingsComposer.Settings.DataParameters.FindParameterValue(New DataCompositionParameter("BeginOfPeriod"));
+	EndPeriodParameterValue = SettingsComposer.Settings.DataParameters.FindParameterValue(New DataCompositionParameter("EndOfPeriod"));
+	CompanyParameterValue = SettingsComposer.Settings.DataParameters.FindParameterValue(New DataCompositionParameter("Company"));
+	
+	ReportForm.BeginPeriod = BeginPeriodParameterValue.Value;
+	ReportForm.EndPeriod = EndPeriodParameterValue.Value;
+	ReportForm.Company = CompanyParameterValue.Value;
+	
+EndProcedure
+
+Procedure UpdateCompanyParametersOnForm(SettingsComposer, Form) Export
+	
+	CompanyParameterValue = SettingsComposer.Settings.DataParameters.FindParameterValue(New DataCompositionParameter("Company"));
+	
+	If CompanyParameterValue <> Undefined Then
+		CompanyParameterValue.Value = Form.Company;
+	EndIf;
+	
+EndProcedure
+
+Procedure UpdateAccountParametersOnForm(SettingsComposer, Form) Export
+	
+	AccountParameterValue = SettingsComposer.Settings.DataParameters.FindParameterValue(New DataCompositionParameter("Account"));
+	
+	If AccountParameterValue <> Undefined Then
+		AccountParameterValue.Value = Form.Account;
+	EndIf;
+	
+EndProcedure
+
+Procedure AddFieldsGroups(Item, UserItem, StructureType = "Rows", FirstDimension = True)
+	
+	// Add rows
+	If StructureType = "GroupFields" Then
+		UserRows = UserItem;
+	Else
+		// add fake group without group fields
+		UserRows = UserItem[StructureType].Add();
+	EndIf;
+	
+	If FirstDimension Then
+		Controls.SettingHiddenRowGroups.CurrentRow = UserRows;
+	Else
+		Controls.SettingsHiddenColumnsGroups.CurrentRow = UserRows;
+	EndIf;
+	
+	// If exists at leasts one row with one group field
+	If StructureType = "GroupFields" Then
+		Group = Item;
+		IsGroups = True;
+	ElsIf StructureType <> "GroupFields"
+		AND Item[StructureType].Count() > 0 Then
+		// Get first group
+		Group = Item[StructureType][0];
+		IsGroups = True;
+	Else
+		IsGroups = False;
+	EndIf;
+	
+	While IsGroups Do
+		// If there is no group fields then, in report used detail records
+		If Group.GroupFields.Items.Count() = 0 Then
+			OutputDetailRecords = True;
+			Break;
+		EndIf;
+		// Determine first field in next group and add in users group fields
+		GroupField = Group.GroupFields.Items[0];
+		UserGroupField = UserRows.GroupFields.Items.Add(Type("DataCompositionGroupField"));
+		FillPropertyValues(UserGroupField, GroupField);
+		If Group.Structure.Count() = 0 Then
+			Break;
+		Else
+			// go to next level down by groups
+			Group = Group.Structure[0];
+		EndIf;
+	EndDo;
+	
+EndProcedure
+
+Procedure AddGroups(ReportItem, Item, StructureType)
+	
+	// Add into composer rowgroups table
+	If StructureType = "GroupFields" Then
+		ItemRows = Item;
+		ReportItem.GroupFields.Items.Clear();
+		ReportItem.Structure.Clear();
+	Else
+		ItemRows = Item[StructureType][0];
+		ReportItem[StructureType].Clear();
+	EndIf;
+	
+	If ItemRows.GroupFields.Items.Count() <> 0 Then
+		If StructureType = "GroupFields" Then
+			NewRow = ReportItem;
+		Else
+			NewRow = ReportItem[StructureType].Add();
+		EndIf;
+	Else
+		If StructureType = "GroupFields" Then
+			NewRow = ReportItem;
+		Else
+			NewRow = ReportItem[StructureType];
+		EndIf;
+	EndIf;
+	
+	If StructureType = "GroupFields" AND ItemRows.GroupFields.Items.Count() = 0 Then
+		NewRow = ReportItem.Parent;
+		ReportItem.Parent.Structure.Delete(ReportItem);
+	EndIf;
+		
+	For each RowGroups In ItemRows.GroupFields.Items Do
+		NewGroupField = NewRow.GroupFields.Items.Add(Type("DataCompositionGroupField"));
+		FillPropertyValues(NewGroupField, RowGroups);
+		TemplateReports.AddAutoSelectedField(NewRow);
+		TemplateReports.AddOrderAutoItem(NewRow);
+		If ItemRows.GroupFields.Items.Indexof(RowGroups) = ItemRows.GroupFields.Items.Count() - 1 Then
+			Break;
+		EndIf;
+		If StructureType = "GroupFields" Then
+			NewRow = NewRow.Structure.Add(Type("DataCompositionGroup"));
+		Else
+			NewRow = NewRow.Structure.Add();
+		EndIf;
+	EndDo;
+	
+	// Detail records printing processing
+	If (StructureType = "Rows" OR StructureType = "GroupFields") Then
+		If StructureType = "GroupFields" Then
+			NewRow = NewRow.Structure.Add(Type("DataCompositionGroup"));
+		Else
+			If TypeOf(NewRow) = Type("DataCompositionTableGroup") Then
+				NewRow = NewRow.Structure.Add();
+			Else
+				NewRow = NewRow.Add();
+			EndIf;
+		EndIf;
+		TemplateReports.AddAutoSelectedField(NewRow);
+	EndIf;
+	
+EndProcedure
+
+Procedure InitializeSettingsComposer()
+	
+	SettingsComposer = New DataCompositionSettingsComposer;
+	SettingsComposer.Initialize(New DataCompositionAvailableSettingsSource(ReportObject.DataCompositionSchema));
+	
+	If ReportObject.SettingsComposer.Settings.Structure.Count() = 0 Then
+		ReportObject.SettingsComposer.Settings.Structure.Add(Type("DataCompositionGroup"));
+	EndIf;
+	
+	// Report composer settings
+	ReportItem = ReportObject.SettingsComposer.Settings.Structure[0];
+	ReportItemType = TypeOf(ReportItem);
+	ReportItemPresentation = TemplateReports.GetPresentationByStructureItem(ReportItem);
+	
+	Item = SettingsComposer.Settings.Structure.Add(ReportItemType);
+	
+	Controls.SettingsHiddenControl.CurrentRow = Item;
+	
+	// Copy settings to composer from report composer
+	TemplateReports.CopyItems(SettingsComposer.Settings.Selection,         ReportObject.SettingsComposer.Settings.Selection);
+	TemplateReports.CopyItems(SettingsComposer.Settings.Filter,         ReportObject.SettingsComposer.Settings.Filter);
+	TemplateReports.CopyItems(SettingsComposer.Settings.Order,       ReportObject.SettingsComposer.Settings.Order);
+	TemplateReports.CopyItems(SettingsComposer.Settings.ConditionalAppearance, ReportObject.SettingsComposer.Settings.ConditionalAppearance, False);
+	TemplateReports.CopyItems(SettingsComposer.Settings.UserFields, ReportObject.SettingsComposer.Settings.UserFields);
+	TemplateReports.FillItems(SettingsComposer.Settings.DataParameters, ReportObject.SettingsComposer.Settings.DataParameters);
+	TemplateReports.FillItems(SettingsComposer.Settings.OutputParameters, ReportObject.SettingsComposer.Settings.OutputParameters);
+		
+	AddFieldsGroups(ReportItem, Item, "GroupFields", True);
+
+EndProcedure
+
+Procedure FillReportsSettingsComposer(DestinationSettingsComposer)
+	
+	DestinationSettingsComposer.Settings.Structure.Clear();
+	
+	Item = SettingsComposer.Settings.Structure[0];
+	ItemType = TypeOf(Item);
+	
+	ReportItem = DestinationSettingsComposer.Settings.Structure.Add(ItemType);
+	If ItemType = Type("DataCompositionChart") Then
+		TemplateReports.AddAutoSelectedField(ReportItem);
+	EndIf;
+	
+	// Copy setting to composer from report composer
+	TemplateReports.CopyItems(DestinationSettingsComposer.Settings.Selection, SettingsComposer.Settings.Selection);
+	TemplateReports.CopyItems(DestinationSettingsComposer.Settings.Filter, SettingsComposer.Settings.Filter);
+	TemplateReports.CopyItems(DestinationSettingsComposer.Settings.Order, SettingsComposer.Settings.Order);
+	TemplateReports.CopyItems(DestinationSettingsComposer.Settings.ConditionalAppearance, SettingsComposer.Settings.ConditionalAppearance, False);
+	TemplateReports.CopyItems(DestinationSettingsComposer.Settings.UserFields, SettingsComposer.Settings.UserFields);
+	TemplateReports.FillItems(DestinationSettingsComposer.Settings.DataParameters, SettingsComposer.Settings.DataParameters);
+	TemplateReports.FillItems(DestinationSettingsComposer.Settings.OutputParameters, SettingsComposer.Settings.OutputParameters);
+		
+	AddGroups(ReportItem, Item, "GroupFields");
+		
+		
+EndProcedure
+
+
+
+
+
+
+
+

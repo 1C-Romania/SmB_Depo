@@ -1,0 +1,237 @@
+﻿Procedure BeforeOpen(Cancel, StandardProcessing)
+		
+	If Not IsDetailProcessing 
+	   AND Not SettingsSaving.FillSettingsOnReportOpening(ReportObject) Then
+		ReportInitialization();
+		InitPeriodValue();
+	EndIf;
+
+	TemplateReports.AssignToFormUniqueID(ThisForm);
+	TemplateReports.UpdateTemplateReportFormOnComposer(ReportObject, ThisForm);
+	UpdateAdditionalControlOnComposer(ReportObject, ThisForm);
+	TemplateReports.TemplateReportFormControlsPresentationManging(ReportObject, ThisForm);
+	
+EndProcedure
+
+Procedure OnOpen()
+	
+	If GenerateOnOpen Then
+		SettingsComposer.LoadSettings(SettingsOfComposerOnOpenData);
+		InitPeriodValue();
+		TemplateReports.UpdateTemplateReportFormOnComposer(ReportObject, ThisForm);
+		UpdateAdditionalControlOnComposer(ReportObject, ThisForm);
+		RefreshReport();
+		GenerateOnOpen = False;
+	EndIf;	
+    DataCompositionSchemaAdress = "";
+	UpdateSettingsComposerDependencesOnAccount(Account,SettingsComposer, ThisForm, DataCompositionSchemaAdress);
+	
+EndProcedure
+
+Procedure FormActionsSettings(Button)
+	
+	EditReportSettings();
+	
+EndProcedure
+
+Procedure FormActionsGenerate(Button)
+	
+	RefreshReport();
+	
+EndProcedure
+
+Procedure FormActionsHeader(Button)
+	
+	Button.Check = Not Button.Check;
+	TemplateReports.TemplateReportFormControlsPresentationManging(ReportObject, ThisForm);
+	TemplateReports.TemplateReportHeaderPresentationManaging(ReportObject, ThisForm.Controls.Result);
+	
+EndProcedure
+
+Procedure FormActionsOpenInNewWindow(Button)
+	
+	TemplateReports.OpenTemplateReportInNewWindow(ReportObject, ThisForm);
+	
+EndProcedure
+
+Procedure FormActionsRestoreSettings(Button)
+	
+	SettingsSaving.SelectFormSetting(SavedSetting, ThisForm, "ReportObject." + ReportObject.Metadata().Name, False);
+	TemplateReports.UpdateTemplateReportFormOnComposer(ReportObject, ThisForm);
+	TemplateReports.UpdateTemplateReportHeader(ReportObject, ThisForm);
+	
+EndProcedure
+
+Procedure FormActionsSaveValues(Button)
+	
+	SettingsSaving.SelectFormSetting(SavedSetting, ThisForm, "ReportObject." + ReportObject.Metadata().Name, True);
+	TemplateReports.UpdateTemplateReportHeader(ReportObject, ThisForm);
+	
+EndProcedure
+
+Procedure FormActionsFilter(Button)
+	
+	Button.Check = Not Button.Check;
+	ShowQuickFilter = Button.Check;
+	TemplateReports.TemplateReportFormControlsPresentationManging(ReportObject, ThisForm);
+	TemplateReports.TemplateReportChangesProcessingInFormReport(ReportObject, ThisForm);
+	
+EndProcedure
+
+Procedure RefreshDisplay()
+	
+	TemplateReports.UpdateTemplateReportHeader(ReportObject, ThisForm);
+	
+EndProcedure
+
+Procedure ButtonPeriodSettingClick(Control)
+	
+	TemplateReports.SetupPeriod(PeriodSettings, BeginPeriod, EndPeriod);
+	TemplateReports.UpdatePeriodParametersOnForm(SettingsComposer, ThisForm);
+	TemplateReports.TemplateReportChangesProcessingInFormReport(ReportObject, ThisForm);
+	
+EndProcedure
+
+Procedure TextBoxPeriodOnChange(Control)
+	
+	TemplateReports.UpdatePeriodParametersOnForm(SettingsComposer, ThisForm);
+	TemplateReports.TemplateReportChangesProcessingInFormReport(ReportObject, ThisForm);
+	
+EndProcedure
+
+Procedure CompanyOnChange(Control)
+	UpdateCompanyParametersOnForm(SettingsComposer, ThisForm);
+	TemplateReports.TemplateReportChangesProcessingInFormReport(ReportObject, ThisForm);
+EndProcedure
+
+Procedure AccountOnChange(Control)
+	UpdateAccountParameterOnForm(SettingsComposer, ThisForm);
+	FilterButton = Controls.FormActions.Buttons.Filter;
+	DataCompositionSchemaAdress = "";
+	If UpdateSettingsComposerDependencesOnAccount(Account,SettingsComposer, ThisForm, DataCompositionSchemaAdress) 
+		AND NOT FilterButton.Check Then
+		FormActionsFilter(FilterButton);
+	EndIf;	
+	TemplateReports.TemplateReportChangesProcessingInFormReport(ReportObject, ThisForm);
+EndProcedure
+
+Procedure ResultDetailProcessing(Control, Details, StandardProcessing)
+	
+	
+EndProcedure
+
+Procedure FormActionsPrint(Button)
+	
+	TemplateReports.PrintTemplateReport(Controls.Result);
+	
+EndProcedure
+
+Procedure RefreshReport() Export
+	
+	GenerateReport(ThisForm.Controls.Result, ThisForm.DetailsData);
+	
+EndProcedure
+
+Procedure TableBoxFilterOnEditEnd(Control, NewRow, CancelEditing)
+	
+	TemplateReports.TemplateReportChangesProcessingInFormReport(ReportObject, ThisForm);
+	
+EndProcedure
+
+Procedure InitPeriodValue()
+	
+	BeginOfPeriod_Param = TemplateReports.SetParameter(SettingsComposer,"BeginOfPeriod");
+	If BeginOfPeriod_Param <> Undefined AND BeginOfPeriod_Param.Value = '00010101' Then
+		TemplateReports.SetParameter(SettingsComposer,"BeginOfPeriod",CommonAtServer.GetUserSettingsValue("ReportsGeneralStartDate",SessionParameters.CurrentUser));
+	EndIf;	
+	
+	TemplateReports.SetParameter(SettingsComposer,"EndOfPeriod");
+	TemplateReports.SetParameter(SettingsComposer,"Period");	
+	
+EndProcedure
+
+Procedure FormActionsSendReportByEmail(Button)
+	
+	Printouts.SendReportByEMail(Nstr("en='Report';pl='Raport'") + " " + ReportObject.SettingsComposer.Settings.OutputParameters.FindParameterValue(New DataCompositionParameter("Title")).Value,Nstr("en='Report';pl='Raport'") + " " + ReportObject.SettingsComposer.Settings.OutputParameters.FindParameterValue(New DataCompositionParameter("Title")).Value,Controls.Result);
+	
+EndProcedure
+
+Procedure FormActionsSaveAndOpenAsXLS(Button)
+	TempXLSFile = Printouts.SaveReportAsXLS(Controls.Result,Nstr("en='Report';pl='Raport'") + " " +ThisForm.Caption);
+	If NOT IsBlankString(TempXLSFile) Then
+		RunApp(TempXLSFile,,False);
+	EndIf;	
+EndProcedure
+
+Procedure FormActionsSaveAsXLS(Button)
+	
+	TempXLSFile = Printouts.SaveReportAsXLS(Controls.Result,Nstr("en='Report';pl='Raport'") + " " +ThisForm.Caption,,True);
+	
+EndProcedure
+
+Procedure FormActionsSaveAndOpenAsPDF(Button)
+	Printouts.SaveReportAsPDF(Controls.Result,Nstr("en='Report';pl='Raport'") + " " +ThisForm.Caption,,,True);
+EndProcedure
+
+Procedure FormActionsSaveAsPDF(Button)
+	Printouts.SaveReportAsPDF(Controls.Result,Nstr("en='Report';pl='Raport'") + " " +ThisForm.Caption,,True);
+EndProcedure
+
+Function EditReportSettings()
+	
+	SavedSettings = SettingsComposer.GetSettings();
+	SettingsForm = GetForm("SettingsForm");
+	SettingsForm.SettingsComposer = SettingsComposer;
+	SettingsForm.NegativeInRed = NegativeInRed;
+	SettingsForm.OutputPageTotals = OutputPageTotals;
+	SettingsForm.ShowClosePeriodRecords = ShowClosePeriodRecords;
+	SettingsForm.ReportObject = ThisObject;
+	If SettingsForm.DoModal() = True Then
+		NegativeInRed = SettingsForm.NegativeInRed;
+		OutputPageTotals = SettingsForm.OutputPageTotals;
+		ShowClosePeriodRecords = SettingsForm.ShowClosePeriodRecords;
+		TemplateReports.UpdateTemplateReportFormOnComposer(ReportObject, ThisForm);
+		UpdateAdditionalControlOnComposer(ReportObject, ThisForm);
+	Else
+		SettingsComposer.LoadSettings(SavedSettings);
+	EndIf;	
+		
+EndFunction	
+
+Procedure UpdateCompanyParametersOnForm(SettingsComposer, Form) Export
+	
+	CompanyParameterValue = SettingsComposer.Settings.DataParameters.FindParameterValue(New DataCompositionParameter("Company"));
+	
+	If CompanyParameterValue <> Undefined Then
+		CompanyParameterValue.Value = Company;
+	EndIf;
+	
+EndProcedure
+
+Procedure UpdateAccountParameterOnForm(SettingsComposer, Form) Export
+	
+	AccountParameterValue = SettingsComposer.Settings.DataParameters.FindParameterValue(New DataCompositionParameter("Account"));
+		
+	If AccountParameterValue <> Undefined Then
+		AccountParameterValue.Value = Account;
+	EndIf;
+	
+EndProcedure
+
+Procedure UpdateAdditionalControlOnComposer(ReportObject, ReportForm) Export
+	
+	CompanyParameterValue = ReportObject.SettingsComposer.Settings.DataParameters.FindParameterValue(New DataCompositionParameter("Company"));	
+	ReportForm.Company = CompanyParameterValue.Value;
+
+	AccountParameterValue = SettingsComposer.Settings.DataParameters.FindParameterValue(New DataCompositionParameter("Account"));
+	ReportForm.Account = AccountParameterValue.Value;
+	
+EndProcedure
+
+Procedure TableBoxFilterDragCheck(Control, DragParameters, StandardProcessing, Row, Column)
+	TemplateReports.FilterDragCheck(SettingsComposer, Control, DragParameters, StandardProcessing, Row, Column);
+EndProcedure
+
+Procedure TableBoxFilterDrag(Control, DragParameters, StandardProcessing, Row, Column)
+	TemplateReports.FilterDrag(SettingsComposer,Control, DragParameters, StandardProcessing, Row, Column);
+EndProcedure

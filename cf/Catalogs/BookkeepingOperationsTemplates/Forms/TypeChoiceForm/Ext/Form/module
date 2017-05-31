@@ -1,0 +1,199 @@
+﻿Var ArrayOfMarkedItems;
+
+Procedure OnOpen()
+	
+	GetAvailableTypesTree(TypeDescription);
+	If ArrayOfMarkedItems.Count()>1 Then
+		CompoundDataType = True;
+	EndIf;	
+	If ArrayOfMarkedItems.Count()>0 Then
+		Controls.AvailableTypes.CurrentRow = ArrayOfMarkedItems[0].Value;
+	EndIf;	
+	
+EndProcedure
+
+Procedure CompoundDataTypeOnChange(Control)
+	
+	If NOT CompoundDataType Then
+		ClearMarks(ArrayOfMarkedItems, True);
+	EndIf;	
+	
+EndProcedure
+
+Procedure AvailableTypesOnEditEnd(Control, NewRow, CancelEdit)
+	
+	CurrentData = Control.CurrentData;	
+	If CurrentData.Mark Then
+		
+		If NOT CompoundDataType AND ArrayOfMarkedItems.Count()>0 Then
+			
+			ClearMarks(ArrayOfMarkedItems);
+			
+		EndIf;
+		
+		ArrayOfMarkedItems.Add(Control.CurrentRow);
+		
+	Else
+		ArrayOfMarkedItems.Delete(ArrayOfMarkedItems.FindByValue(Control.CurrentRow));
+	EndIf;	
+	
+EndProcedure
+
+Procedure FormMainActionsOK(Button)
+	
+	TypesArray = New Array();
+	
+	For Each ArrayOfMarkedItemsItem In ArrayOfMarkedItems Do
+		
+		For Each Type In ArrayOfMarkedItemsItem.Value.Value.Types() Do
+			
+			TypesArray.Add(Type);
+			
+		EndDo;	
+		
+	EndDo;
+	
+	If TypesArray.Count() = 0 Then
+		DoMessageBox(Nstr("en = 'At least one type should be selected!'; pl = 'Przynajmniej jeden typ powinien byc wybrany!'"),,Nstr("en='Choose type';pl='Wybierz typ'"));
+	Else
+		TypeDescription = New TypeDescription(TypesArray);
+		Close(True);
+	
+	EndIf;
+	
+EndProcedure
+
+/////////////////////////////////////////////////////////////////////////////
+
+Function AddTreeRow(Parent,Presentation,Val Value,Picture=Undefined,TypeDescriptionToSetMarks)
+	
+	Mark = False;
+	
+	If TypeOf(Value) <> Type("TypeDescription") Then
+		Array = New Array;
+		Array.Add(Value);
+		TypeDescriptionValue = New TypeDescription(Array);
+		If TypeDescriptionToSetMarks <> Undefined 
+			AND TypeDescriptionToSetMarks.ContainsType(Value)
+			AND ((TypeOf(Parent) = Type("ValueTreeRow") AND NOT Parent.Mark)
+			OR TypeOf(Parent) = Type("ValueTree")) Then
+			Mark = True;
+		EndIf;	
+	Else
+		TypeDescriptionValue = Value;
+		If TypeDescriptionToSetMarks <> Undefined Then
+			NotAllRefs = False;
+			For Each Type In Value.Types() Do
+				
+				If NOT TypeDescriptionToSetMarks.ContainsType(Type) Then
+					
+					NotAllRefs = True;
+					Break;
+					
+				EndIf;	
+				
+			EndDo;	
+			
+			If NOT NotAllRefs Then
+				Mark = True;
+			EndIf;	
+		EndIf;
+		
+	EndIf;	
+	
+	NewRow = Parent.Rows.Add();
+	NewRow.Presentation = Presentation;
+	NewRow.Value = TypeDescriptionValue;
+	NewRow.Mark = Mark;
+	NewRow.Icon = Picture;
+	
+	If Mark Then
+		ArrayOfMarkedItems.Add(NewRow);
+	EndIf;	
+	
+	Return NewRow;
+	
+EndFunction	
+
+Function AddFolderWithContentToTypesTree(TypeDescriptionToSetMarks, MetadataGroup, DataGroup,FolderPresentation,Picture)
+	
+	LocalAvailableTypesChoiceList = New ValueList;
+	For Each MetadataGroupItem In MetadataGroup Do
+		LocalAvailableTypesChoiceList.Add(TypeOf(DataGroup[MetadataGroupItem.Name].EmptyRef()),MetadataGroupItem.Synonym,,Picture);
+	EndDo;	
+	LocalAvailableTypesChoiceList.SortByPresentation();
+	
+	ParentFolder = AddTreeRow(AvailableTypes,FolderPresentation,DataGroup.AllRefsType(),Picture,TypeDescriptionToSetMarks);
+	
+	NeedToExpand = False;
+	For Each SortedItem In LocalAvailableTypesChoiceList Do
+		NewRow = AddTreeRow(ParentFolder,SortedItem.Presentation,SortedItem.Value,SortedItem.Picture,TypeDescriptionToSetMarks);
+		If NewRow.Mark Then
+			NeedToExpand = True;
+		EndIf;	
+	EndDo;
+	
+	If NeedToExpand Then
+		Controls.AvailableTypes.Expand(ParentFolder);
+	EndIf;	
+	
+EndFunction	
+
+Function GetAvailableTypesTree(TypeDescriptionToSetMarks) Export
+	
+	AvailableTypes.Rows.Clear();
+	
+	AddTreeRow(AvailableTypes,String(Type("Number")),Type("Number"),,TypeDescriptionToSetMarks);
+	AddTreeRow(AvailableTypes,String(Type("String")),Type("String"),,TypeDescriptionToSetMarks);
+	AddTreeRow(AvailableTypes,String(Type("Date")),Type("Date"),,TypeDescriptionToSetMarks);
+	AddTreeRow(AvailableTypes,String(Type("Boolean")),Type("Boolean"),,TypeDescriptionToSetMarks);
+	AddTreeRow(AvailableTypes,Nstr("en='Account type';pl='Typ konta'"),Type("AccountType"),,TypeDescriptionToSetMarks);
+	AddTreeRow(AvailableTypes,Nstr("en='Accounting record type';pl='Typ księgowego zapisu'"),Type("AccountingRecordType"),,TypeDescriptionToSetMarks);
+	AddTreeRow(AvailableTypes,Nstr("en='Record type';pl='Typ zapisu'"),Type("AccumulationRecordType"),,TypeDescriptionToSetMarks);
+	
+	AddFolderWithContentToTypesTree(TypeDescriptionToSetMarks,Metadata.Catalogs,Catalogs,Nstr("en = 'Catalog''s references'; pl = 'Odnośniki do katalogów'"),PictureLib.Catalog);
+	AddFolderWithContentToTypesTree(TypeDescriptionToSetMarks,Metadata.Documents,Documents,Nstr("en = 'Document''s references'; pl = 'Odnośniki do dokumentów'"),PictureLib.Document);
+	AddFolderWithContentToTypesTree(TypeDescriptionToSetMarks,Metadata.Enums,Enums,Nstr("en = 'Enum''s references'; pl = 'Odnośniki do enumeracji'"),PictureLib.Enum);
+	AddFolderWithContentToTypesTree(TypeDescriptionToSetMarks,Metadata.ChartsOfCharacteristicTypes,ChartsOfCharacteristicTypes,Nstr("en = 'Charts of characteristic types references'; pl = 'Odnośniki do planów rodzajów charakterystyk'"),PictureLib.ChartOfCharacteristicTypes);
+	AddFolderWithContentToTypesTree(TypeDescriptionToSetMarks,Metadata.ChartsOfAccounts,ChartsOfAccounts,Nstr("en = 'Charts of accounts references'; pl = 'Odnośniki do planów kont'"),PictureLib.ChartOfAccounts);
+	
+EndFunction	
+
+Procedure ClearMarks(ArrayToClearMarks,ClearWithoutLast = False)
+	
+	If ArrayToClearMarks.Count() = 0 then
+		Return;
+	EndIf;	
+	
+	If ClearWithoutLast Then 
+		Minus = 1;
+	Else
+		Minus = 0;
+	EndIf;
+	
+	For i=0 To ArrayToClearMarks.Count()-1-Minus Do
+
+		ArrayToClearMarksItem = ArrayToClearMarks.Get(i).Value;
+		ArrayToClearMarksItem.Mark = False;
+		
+	EndDo;
+	
+	If ClearWithoutLast Then 
+		
+		SavedValue = ArrayToClearMarks.Get(ArrayToClearMarks.Count()-1).Value;
+		
+	Else
+		
+		SavedValue = Undefined;
+		
+	EndIf;	
+	
+	ArrayToClearMarks.Clear();
+	
+	If ClearWithoutLast Then
+		ArrayToClearMarks.Add(SavedValue);
+	EndIf;	
+		
+EndProcedure
+
+ArrayOfMarkedItems = New ValueList();

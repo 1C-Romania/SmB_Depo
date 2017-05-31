@@ -1,0 +1,1396 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<Form xmlns="http://v8.1c.ru/8.3/xcf/logform" xmlns:app="http://v8.1c.ru/8.2/managed-application/core" xmlns:cfg="http://v8.1c.ru/8.1/data/enterprise/current-config" xmlns:dcscor="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:dcsset="http://v8.1c.ru/8.1/data-composition-system/settings" xmlns:ent="http://v8.1c.ru/8.1/data/enterprise" xmlns:lf="http://v8.1c.ru/8.2/managed-application/logform" xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows" xmlns:xr="http://v8.1c.ru/8.3/xcf/readable" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.4">
+	<WindowOpeningMode>LockWholeInterface</WindowOpeningMode>
+	<UseForFoldersAndItems>Items</UseForFoldersAndItems>
+	<AutoCommandBar name="FormCommandBar" id="-1">
+		<Autofill>false</Autofill>
+		<ChildItems>
+			<Button name="FormButtonOK" id="1">
+				<Type>CommandBarButton</Type>
+				<DefaultButton>true</DefaultButton>
+				<CommandName>Form.Command.CommandOK</CommandName>
+				<ExtendedTooltip name="FormButtonOKExtendedTooltip" id="2"/>
+			</Button>
+			<Button name="FormButtonClose" id="3">
+				<Type>CommandBarButton</Type>
+				<CommandName>Form.StandardCommand.Close</CommandName>
+				<Title>
+					<v8:item>
+						<v8:lang>en</v8:lang>
+						<v8:content>Close</v8:content>
+					</v8:item>
+					<v8:item>
+						<v8:lang>pl</v8:lang>
+						<v8:content>Zamknij</v8:content>
+					</v8:item>
+				</Title>
+				<ExtendedTooltip name="FormButtonCloseExtendedTooltip" id="4"/>
+			</Button>
+		</ChildItems>
+	</AutoCommandBar>
+	<Events>
+		<Event name="OnOpen">OnOpen</Event>
+		<Event name="BeforeClose">BeforeClose</Event>
+		<Event name="OnCreateAtServer">OnCreateAtServer</Event>
+	</Events>
+	<ChildItems>
+		<Pages name="GroupPages" id="5">
+			<Title>
+				<v8:item>
+					<v8:lang>pl</v8:lang>
+					<v8:content>Group pages</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>pl</v8:lang>
+					<v8:content>Group pages</v8:content>
+				</v8:item>
+			</ToolTip>
+			<ExtendedTooltip name="GroupPagesExtendedTooltip" id="6"/>
+			<ChildItems>
+				<Page name="GroupGeneral" id="7">
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Parameter settings</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>pl</v8:lang>
+							<v8:content>Ustawienia parametru</v8:content>
+						</v8:item>
+					</Title>
+					<ToolTip>
+						<v8:item>
+							<v8:lang>pl</v8:lang>
+							<v8:content>Group general</v8:content>
+						</v8:item>
+					</ToolTip>
+					<ExtendedTooltip name="GroupGeneralExtendedTooltip" id="8"/>
+					<ChildItems>
+						<Pages name="GroupParameterKind" id="58">
+							<Title>
+								<v8:item>
+									<v8:lang>pl</v8:lang>
+									<v8:content>Group parameter kind</v8:content>
+								</v8:item>
+							</Title>
+							<ToolTipRepresentation>None</ToolTipRepresentation>
+							<PagesRepresentation>None</PagesRepresentation>
+							<ExtendedTooltip name="GroupParameterKindExtendedTooltip" id="59"/>
+							<ChildItems>
+								<Page name="GroupParameterKindWithDocumentBase" id="60">
+									<Title>
+										<v8:item>
+											<v8:lang>pl</v8:lang>
+											<v8:content>Group parameter kind with document base</v8:content>
+										</v8:item>
+									</Title>
+									<ToolTip>
+										<v8:item>
+											<v8:lang>pl</v8:lang>
+											<v8:content>Group parameter kind with document base</v8:content>
+										</v8:item>
+									</ToolTip>
+									<ExtendedTooltip name="GroupParameterKindWithDocumentBaseExtendedTooltip" id="61"/>
+									<ChildItems>
+										<RadioButtonField name="ParameterKindWithDocumentBase" id="21">
+											<DataPath>ParameterKind</DataPath>
+											<TitleLocation>None</TitleLocation>
+											<RadioButtonType>Auto</RadioButtonType>
+											<ChoiceList>
+												<xr:Item>
+													<xr:Presentation/>
+													<xr:CheckState>0</xr:CheckState>
+													<xr:Value xsi:type="FormChoiceListDesTimeValue">
+														<Presentation>
+															<v8:item>
+																<v8:lang>en</v8:lang>
+																<v8:content>Not linked</v8:content>
+															</v8:item>
+															<v8:item>
+																<v8:lang>pl</v8:lang>
+																<v8:content>Nie powiązany</v8:content>
+															</v8:item>
+														</Presentation>
+														<Value xsi:type="xr:DesignTimeRef">Enum.BookkeepingOperationTemplateParameterKinds.EnumValue.NotLinked</Value>
+													</xr:Value>
+												</xr:Item>
+												<xr:Item>
+													<xr:Presentation/>
+													<xr:CheckState>0</xr:CheckState>
+													<xr:Value xsi:type="FormChoiceListDesTimeValue">
+														<Presentation>
+															<v8:item>
+																<v8:lang>en</v8:lang>
+																<v8:content>Linked to document base</v8:content>
+															</v8:item>
+															<v8:item>
+																<v8:lang>pl</v8:lang>
+																<v8:content>Powiązany do dokumentu podstawy</v8:content>
+															</v8:item>
+														</Presentation>
+														<Value xsi:type="xr:DesignTimeRef">Enum.BookkeepingOperationTemplateParameterKinds.EnumValue.LinkedToDocumentBase</Value>
+													</xr:Value>
+												</xr:Item>
+												<xr:Item>
+													<xr:Presentation/>
+													<xr:CheckState>0</xr:CheckState>
+													<xr:Value xsi:type="FormChoiceListDesTimeValue">
+														<Presentation>
+															<v8:item>
+																<v8:lang>en</v8:lang>
+																<v8:content>System data</v8:content>
+															</v8:item>
+															<v8:item>
+																<v8:lang>pl</v8:lang>
+																<v8:content>Systemowe dane</v8:content>
+															</v8:item>
+														</Presentation>
+														<Value xsi:type="xr:DesignTimeRef">Enum.BookkeepingOperationTemplateParameterKinds.EnumValue.SystemData</Value>
+													</xr:Value>
+												</xr:Item>
+											</ChoiceList>
+											<ContextMenu name="ParameterKindWithDocumentBaseContextMenu" id="22"/>
+											<ExtendedTooltip name="ParameterKindWithDocumentBaseExtendedTooltip" id="23"/>
+											<Events>
+												<Event name="OnChange">ParameterKindOnChange</Event>
+											</Events>
+										</RadioButtonField>
+									</ChildItems>
+								</Page>
+								<Page name="GroupParameterKindWithoutDocumentBase" id="62">
+									<Title>
+										<v8:item>
+											<v8:lang>pl</v8:lang>
+											<v8:content>Group parameter kind without document base</v8:content>
+										</v8:item>
+									</Title>
+									<ToolTip>
+										<v8:item>
+											<v8:lang>pl</v8:lang>
+											<v8:content>Group parameter kind without document base</v8:content>
+										</v8:item>
+									</ToolTip>
+									<ExtendedTooltip name="GroupParameterKindWithoutDocumentBaseExtendedTooltip" id="63"/>
+									<ChildItems>
+										<RadioButtonField name="ParameterKindWithoutDocumentBase" id="64">
+											<DataPath>ParameterKind</DataPath>
+											<TitleLocation>None</TitleLocation>
+											<RadioButtonType>Auto</RadioButtonType>
+											<ChoiceList>
+												<xr:Item>
+													<xr:Presentation/>
+													<xr:CheckState>0</xr:CheckState>
+													<xr:Value xsi:type="FormChoiceListDesTimeValue">
+														<Presentation>
+															<v8:item>
+																<v8:lang>en</v8:lang>
+																<v8:content>Not linked</v8:content>
+															</v8:item>
+															<v8:item>
+																<v8:lang>pl</v8:lang>
+																<v8:content>Nie powiązany</v8:content>
+															</v8:item>
+														</Presentation>
+														<Value xsi:type="xr:DesignTimeRef">Enum.BookkeepingOperationTemplateParameterKinds.EnumValue.NotLinked</Value>
+													</xr:Value>
+												</xr:Item>
+												<xr:Item>
+													<xr:Presentation/>
+													<xr:CheckState>0</xr:CheckState>
+													<xr:Value xsi:type="FormChoiceListDesTimeValue">
+														<Presentation>
+															<v8:item>
+																<v8:lang>en</v8:lang>
+																<v8:content>System data</v8:content>
+															</v8:item>
+															<v8:item>
+																<v8:lang>pl</v8:lang>
+																<v8:content>Systemowe dane</v8:content>
+															</v8:item>
+														</Presentation>
+														<Value xsi:type="xr:DesignTimeRef">Enum.BookkeepingOperationTemplateParameterKinds.EnumValue.SystemData</Value>
+													</xr:Value>
+												</xr:Item>
+											</ChoiceList>
+											<ContextMenu name="ParameterKindWithoutDocumentBaseContextMenu" id="65"/>
+											<ExtendedTooltip name="ParameterKindWithoutDocumentBaseExtendedTooltip" id="66"/>
+											<Events>
+												<Event name="OnChange">ParameterKindWithoutDocumentBaseOnChange</Event>
+											</Events>
+										</RadioButtonField>
+									</ChildItems>
+								</Page>
+							</ChildItems>
+						</Pages>
+						<Pages name="GroupParametersKinds" id="67">
+							<Title>
+								<v8:item>
+									<v8:lang>pl</v8:lang>
+									<v8:content>Group parameters kinds</v8:content>
+								</v8:item>
+							</Title>
+							<ToolTipRepresentation>None</ToolTipRepresentation>
+							<PagesRepresentation>None</PagesRepresentation>
+							<ExtendedTooltip name="GroupParametersKindsExtendedTooltip" id="68"/>
+							<ChildItems>
+								<Page name="GroupParametersKindsNotLinked" id="69">
+									<Title>
+										<v8:item>
+											<v8:lang>pl</v8:lang>
+											<v8:content>Group parameters kinds not linked</v8:content>
+										</v8:item>
+									</Title>
+									<ToolTip>
+										<v8:item>
+											<v8:lang>pl</v8:lang>
+											<v8:content>Group parameters kinds not linked</v8:content>
+										</v8:item>
+									</ToolTip>
+									<ExtendedTooltip name="GroupParametersKindsNotLinkedExtendedTooltip" id="70"/>
+									<ChildItems>
+										<UsualGroup name="GroupValueType" id="24">
+											<Title>
+												<v8:item>
+													<v8:lang>en</v8:lang>
+													<v8:content>Value type</v8:content>
+												</v8:item>
+												<v8:item>
+													<v8:lang>pl</v8:lang>
+													<v8:content>Typ wartości</v8:content>
+												</v8:item>
+											</Title>
+											<ToolTip>
+												<v8:item>
+													<v8:lang>pl</v8:lang>
+													<v8:content>Group value type</v8:content>
+												</v8:item>
+											</ToolTip>
+											<Group>Vertical</Group>
+											<ExtendedTooltip name="GroupValueTypeExtendedTooltip" id="25"/>
+											<ChildItems>
+												<RadioButtonField name="TypeSelectionMethod" id="26">
+													<DataPath>TypeSelectionMethod</DataPath>
+													<TitleLocation>None</TitleLocation>
+													<RadioButtonType>Auto</RadioButtonType>
+													<ChoiceList>
+														<xr:Item>
+															<xr:Presentation/>
+															<xr:CheckState>0</xr:CheckState>
+															<xr:Value xsi:type="FormChoiceListDesTimeValue">
+																<Presentation>
+																	<v8:item>
+																		<v8:lang>en</v8:lang>
+																		<v8:content>Manual selection of parameter's possible types</v8:content>
+																	</v8:item>
+																	<v8:item>
+																		<v8:lang>pl</v8:lang>
+																		<v8:content>Ręczny wybór spośród możliwych typów parametru</v8:content>
+																	</v8:item>
+																</Presentation>
+																<Value xsi:type="xs:decimal">0</Value>
+															</xr:Value>
+														</xr:Item>
+														<xr:Item>
+															<xr:Presentation/>
+															<xr:CheckState>0</xr:CheckState>
+															<xr:Value xsi:type="FormChoiceListDesTimeValue">
+																<Presentation>
+																	<v8:item>
+																		<v8:lang>en</v8:lang>
+																		<v8:content>Specify the parameter type according to chosen account</v8:content>
+																	</v8:item>
+																	<v8:item>
+																		<v8:lang>pl</v8:lang>
+																		<v8:content>Określ typ parametru zgodnie z wybranym kontem</v8:content>
+																	</v8:item>
+																</Presentation>
+																<Value xsi:type="xs:decimal">1</Value>
+															</xr:Value>
+														</xr:Item>
+													</ChoiceList>
+													<ContextMenu name="TypeSelectionMethodContextMenu" id="27"/>
+													<ExtendedTooltip name="TypeSelectionMethodExtendedTooltip" id="28"/>
+													<Events>
+														<Event name="OnChange">TypeSelectionMethodOnChange</Event>
+													</Events>
+												</RadioButtonField>
+												<UsualGroup name="GroupType" id="54">
+													<Title>
+														<v8:item>
+															<v8:lang>pl</v8:lang>
+															<v8:content>Group type</v8:content>
+														</v8:item>
+													</Title>
+													<ToolTip>
+														<v8:item>
+															<v8:lang>pl</v8:lang>
+															<v8:content>Group type</v8:content>
+														</v8:item>
+													</ToolTip>
+													<Representation>None</Representation>
+													<ShowTitle>false</ShowTitle>
+													<ExtendedTooltip name="GroupTypeExtendedTooltip" id="55"/>
+													<ChildItems>
+														<InputField name="Type" id="29">
+															<DataPath>Type</DataPath>
+															<AutoMaxWidth>false</AutoMaxWidth>
+															<ChoiceButton>true</ChoiceButton>
+															<ContextMenu name="TypeContextMenu" id="30"/>
+															<ExtendedTooltip name="TypeExtendedTooltip" id="31"/>
+															<Events>
+																<Event name="OnChange">TypeOnChange</Event>
+																<Event name="StartChoice">TypeStartChoice</Event>
+															</Events>
+														</InputField>
+													</ChildItems>
+												</UsualGroup>
+												<UsualGroup name="GroupLinkByType" id="56">
+													<Title>
+														<v8:item>
+															<v8:lang>pl</v8:lang>
+															<v8:content>Group link by type</v8:content>
+														</v8:item>
+													</Title>
+													<ToolTip>
+														<v8:item>
+															<v8:lang>pl</v8:lang>
+															<v8:content>Group link by type</v8:content>
+														</v8:item>
+													</ToolTip>
+													<HorizontalStretch>true</HorizontalStretch>
+													<Group>Horizontal</Group>
+													<Representation>None</Representation>
+													<ShowTitle>false</ShowTitle>
+													<ExtendedTooltip name="GroupLinkByTypeExtendedTooltip" id="57"/>
+													<ChildItems>
+														<InputField name="LinkByType" id="32">
+															<DataPath>LinkByType</DataPath>
+															<AutoMaxWidth>false</AutoMaxWidth>
+															<DropListButton>true</DropListButton>
+															<ChooseType>false</ChooseType>
+															<ContextMenu name="LinkByTypeContextMenu" id="33"/>
+															<ExtendedTooltip name="LinkByTypeExtendedTooltip" id="34"/>
+														</InputField>
+														<InputField name="ExtDimensionNumber" id="35">
+															<DataPath>ExtDimensionNumber</DataPath>
+															<SpinButton>true</SpinButton>
+															<MinValue xsi:type="xs:decimal">1</MinValue>
+															<MaxValue xsi:type="xs:decimal">3</MaxValue>
+															<ContextMenu name="ExtDimensionNumberContextMenu" id="36"/>
+															<ExtendedTooltip name="ExtDimensionNumberExtendedTooltip" id="37"/>
+														</InputField>
+													</ChildItems>
+												</UsualGroup>
+											</ChildItems>
+										</UsualGroup>
+										<UsualGroup name="GroupSubordinateCatalogsParameters" id="38">
+											<Title>
+												<v8:item>
+													<v8:lang>en</v8:lang>
+													<v8:content>For subordinate catalogs</v8:content>
+												</v8:item>
+												<v8:item>
+													<v8:lang>pl</v8:lang>
+													<v8:content>Do katalogów podrzędnych</v8:content>
+												</v8:item>
+											</Title>
+											<ToolTip>
+												<v8:item>
+													<v8:lang>pl</v8:lang>
+													<v8:content>Group subordinate catalogs parameters</v8:content>
+												</v8:item>
+											</ToolTip>
+											<ExtendedTooltip name="GroupSubordinateCatalogsParametersExtendedTooltip" id="39"/>
+											<ChildItems>
+												<InputField name="LinkByOwner" id="40">
+													<DataPath>LinkByOwner</DataPath>
+													<ToolTip>
+														<v8:item>
+															<v8:lang>en</v8:lang>
+															<v8:content>For automatic owner settings before selection value subordinate catalog</v8:content>
+														</v8:item>
+														<v8:item>
+															<v8:lang>pl</v8:lang>
+															<v8:content>Do automatycznego ustawiania właścicieli przed wyborem wartości katalogu podrzędnego</v8:content>
+														</v8:item>
+													</ToolTip>
+													<AutoMaxWidth>false</AutoMaxWidth>
+													<HorizontalStretch>true</HorizontalStretch>
+													<DropListButton>false</DropListButton>
+													<ChoiceButton>true</ChoiceButton>
+													<ClearButton>true</ClearButton>
+													<ChooseType>false</ChooseType>
+													<TextEdit>false</TextEdit>
+													<ContextMenu name="LinkByOwnerContextMenu" id="41"/>
+													<ExtendedTooltip name="LinkByOwnerExtendedTooltip" id="42"/>
+													<Events>
+														<Event name="StartChoice">LinkByOwnerStartChoice</Event>
+													</Events>
+												</InputField>
+											</ChildItems>
+										</UsualGroup>
+										<UsualGroup name="GroupDefaultValue" id="43">
+											<Title>
+												<v8:item>
+													<v8:lang>en</v8:lang>
+													<v8:content>Value</v8:content>
+												</v8:item>
+												<v8:item>
+													<v8:lang>pl</v8:lang>
+													<v8:content>Wartość</v8:content>
+												</v8:item>
+											</Title>
+											<ToolTip>
+												<v8:item>
+													<v8:lang>pl</v8:lang>
+													<v8:content>Group default value</v8:content>
+												</v8:item>
+											</ToolTip>
+											<Group>Vertical</Group>
+											<ExtendedTooltip name="GroupDefaultValueExtendedTooltip" id="44"/>
+											<ChildItems>
+												<InputField name="Value" id="45">
+													<DataPath>Value</DataPath>
+													<AutoMaxWidth>false</AutoMaxWidth>
+													<HorizontalStretch>true</HorizontalStretch>
+													<ClearButton>true</ClearButton>
+													<ContextMenu name="ValueContextMenu" id="46"/>
+													<ExtendedTooltip name="ValueExtendedTooltip" id="47"/>
+													<Events>
+														<Event name="Clearing">ValueClearing</Event>
+													</Events>
+												</InputField>
+												<CheckBoxField name="Obligatory" id="48">
+													<DataPath>Obligatory</DataPath>
+													<TitleLocation>Right</TitleLocation>
+													<CheckBoxType>Auto</CheckBoxType>
+													<ContextMenu name="ObligatoryContextMenu" id="49"/>
+													<ExtendedTooltip name="ObligatoryExtendedTooltip" id="50"/>
+												</CheckBoxField>
+												<CheckBoxField name="NotRequest" id="51">
+													<DataPath>NotRequest</DataPath>
+													<TitleLocation>Right</TitleLocation>
+													<CheckBoxType>Auto</CheckBoxType>
+													<ContextMenu name="NotRequestContextMenu" id="52"/>
+													<ExtendedTooltip name="NotRequestExtendedTooltip" id="53"/>
+												</CheckBoxField>
+											</ChildItems>
+										</UsualGroup>
+									</ChildItems>
+								</Page>
+								<Page name="GroupParametersKindsLinkedToDocumentBase" id="71">
+									<Title>
+										<v8:item>
+											<v8:lang>pl</v8:lang>
+											<v8:content>Group parameters kinds linked to document base</v8:content>
+										</v8:item>
+									</Title>
+									<ToolTip>
+										<v8:item>
+											<v8:lang>pl</v8:lang>
+											<v8:content>Group parameters kinds linked to document base</v8:content>
+										</v8:item>
+									</ToolTip>
+									<ExtendedTooltip name="GroupParametersKindsLinkedToDocumentBaseExtendedTooltip" id="72"/>
+									<ChildItems>
+										<InputField name="TablePresentation" id="73">
+											<DataPath>TablePresentation</DataPath>
+											<AutoMaxWidth>false</AutoMaxWidth>
+											<HorizontalStretch>true</HorizontalStretch>
+											<ChoiceButton>true</ChoiceButton>
+											<TextEdit>false</TextEdit>
+											<ContextMenu name="TablePresentationContextMenu" id="74"/>
+											<ExtendedTooltip name="TablePresentationExtendedTooltip" id="75"/>
+											<Events>
+												<Event name="StartChoice">TablePresentationStartChoice</Event>
+											</Events>
+										</InputField>
+										<Table name="DataCompositionSettingsComposerSettingsSelectionSelectionAvailableFields" id="79">
+											<Representation>Tree</Representation>
+											<Autofill>true</Autofill>
+											<ChangeRowSet>false</ChangeRowSet>
+											<ChangeRowOrder>false</ChangeRowOrder>
+											<Width>60</Width>
+											<HeightInTableRows>15</HeightInTableRows>
+											<ChoiceMode>true</ChoiceMode>
+											<HorizontalLines>false</HorizontalLines>
+											<VerticalLines>false</VerticalLines>
+											<EnableStartDrag>true</EnableStartDrag>
+											<EnableDrag>true</EnableDrag>
+											<DataPath>DataCompositionSettingsComposer.Settings.Selection.SelectionAvailableFields</DataPath>
+											<ContextMenu name="DataCompositionSettingsComposerSettingsSelectionSelectionAvailableFieldsContextMenu" id="80"/>
+											<AutoCommandBar name="DataCompositionSettingsComposerSettingsSelectionSelectionAvailableFieldsCommandBar" id="81"/>
+											<ExtendedTooltip name="DataCompositionSettingsComposerSettingsSelectionSelectionAvailableFieldsExtendedTooltip" id="82"/>
+											<SearchStringAddition name="DataCompositionSettingsComposerSettingsSelectionSelectionAvailableFieldsSearchString" id="83">
+												<AdditionSource>
+													<Item>DataCompositionSettingsComposerSettingsSelectionSelectionAvailableFields</Item>
+													<Type>SearchStringRepresentation</Type>
+												</AdditionSource>
+												<ContextMenu name="DataCompositionSettingsComposerSettingsSelectionSelectionAvailableFieldsSearchStringContextMenu" id="84"/>
+												<ExtendedTooltip name="DataCompositionSettingsComposerSettingsSelectionSelectionAvailableFieldsSearchStringExtendedTooltip" id="85"/>
+											</SearchStringAddition>
+											<ViewStatusAddition name="DataCompositionSettingsComposerSettingsSelectionSelectionAvailableFieldsViewStatus" id="86">
+												<AdditionSource>
+													<Item>DataCompositionSettingsComposerSettingsSelectionSelectionAvailableFields</Item>
+													<Type>ViewStatusRepresentation</Type>
+												</AdditionSource>
+												<ContextMenu name="DataCompositionSettingsComposerSettingsSelectionSelectionAvailableFieldsViewStatusContextMenu" id="87"/>
+												<ExtendedTooltip name="DataCompositionSettingsComposerSettingsSelectionSelectionAvailableFieldsViewStatusExtendedTooltip" id="88"/>
+											</ViewStatusAddition>
+											<SearchControlAddition name="DataCompositionSettingsComposerSettingsSelectionSelectionAvailableFieldsSearchControl" id="89">
+												<AdditionSource>
+													<Item>DataCompositionSettingsComposerSettingsSelectionSelectionAvailableFields</Item>
+													<Type>SearchControl</Type>
+												</AdditionSource>
+												<ContextMenu name="DataCompositionSettingsComposerSettingsSelectionSelectionAvailableFieldsSearchControlContextMenu" id="90"/>
+												<ExtendedTooltip name="DataCompositionSettingsComposerSettingsSelectionSelectionAvailableFieldsSearchControlExtendedTooltip" id="91"/>
+											</SearchControlAddition>
+											<Events>
+												<Event name="OnActivateRow">DataCompositionSettingsComposerSettingsSelectionSelectionAvailableFieldsOnActivateRow</Event>
+											</Events>
+										</Table>
+										<InputField name="ParameterFormulaPresentation" id="76">
+											<DataPath>ParameterFormulaPresentation</DataPath>
+											<AutoMaxWidth>false</AutoMaxWidth>
+											<HorizontalStretch>true</HorizontalStretch>
+											<TextEdit>false</TextEdit>
+											<ContextMenu name="ParameterFormulaPresentationContextMenu" id="77"/>
+											<ExtendedTooltip name="ParameterFormulaPresentationExtendedTooltip" id="78"/>
+										</InputField>
+										<Table name="DataCompositionSettingsComposerSettings" id="92">
+											<Representation>Tree</Representation>
+											<Visible>false</Visible>
+											<UserVisible>
+												<xr:Common>false</xr:Common>
+											</UserVisible>
+											<Autofill>true</Autofill>
+											<HorizontalLines>false</HorizontalLines>
+											<UseAlternationRowColor>true</UseAlternationRowColor>
+											<InitialTreeView>ExpandAllLevels</InitialTreeView>
+											<EnableStartDrag>true</EnableStartDrag>
+											<EnableDrag>true</EnableDrag>
+											<DataPath>DataCompositionSettingsComposer.Settings</DataPath>
+											<ContextMenu name="DataCompositionSettingsComposerSettingsContextMenu" id="93"/>
+											<AutoCommandBar name="DataCompositionSettingsComposerSettingsCommandBar" id="94"/>
+											<ExtendedTooltip name="DataCompositionSettingsComposerSettingsExtendedTooltip" id="95"/>
+											<SearchStringAddition name="DataCompositionSettingsComposerSettingsSearchString" id="96">
+												<AdditionSource>
+													<Item>DataCompositionSettingsComposerSettings</Item>
+													<Type>SearchStringRepresentation</Type>
+												</AdditionSource>
+												<ContextMenu name="DataCompositionSettingsComposerSettingsSearchStringContextMenu" id="97"/>
+												<ExtendedTooltip name="DataCompositionSettingsComposerSettingsSearchStringExtendedTooltip" id="98"/>
+											</SearchStringAddition>
+											<ViewStatusAddition name="DataCompositionSettingsComposerSettingsViewStatus" id="99">
+												<AdditionSource>
+													<Item>DataCompositionSettingsComposerSettings</Item>
+													<Type>ViewStatusRepresentation</Type>
+												</AdditionSource>
+												<ContextMenu name="DataCompositionSettingsComposerSettingsViewStatusContextMenu" id="100"/>
+												<ExtendedTooltip name="DataCompositionSettingsComposerSettingsViewStatusExtendedTooltip" id="101"/>
+											</ViewStatusAddition>
+											<SearchControlAddition name="DataCompositionSettingsComposerSettingsSearchControl" id="102">
+												<AdditionSource>
+													<Item>DataCompositionSettingsComposerSettings</Item>
+													<Type>SearchControl</Type>
+												</AdditionSource>
+												<ContextMenu name="DataCompositionSettingsComposerSettingsSearchControlContextMenu" id="103"/>
+												<ExtendedTooltip name="DataCompositionSettingsComposerSettingsSearchControlExtendedTooltip" id="104"/>
+											</SearchControlAddition>
+										</Table>
+									</ChildItems>
+								</Page>
+								<Page name="GroupParametersKindsSystemData" id="105">
+									<Title>
+										<v8:item>
+											<v8:lang>pl</v8:lang>
+											<v8:content>Group parameters kinds system data</v8:content>
+										</v8:item>
+									</Title>
+									<ExtendedTooltip name="GroupParametersKindsSystemDataExtendedTooltip" id="106"/>
+									<ChildItems>
+										<Table name="SystemDataDataCompositionSettingsComposerSettingsSelectionSelectionAvailableFields" id="107">
+											<Representation>Tree</Representation>
+											<Autofill>true</Autofill>
+											<ChangeRowSet>false</ChangeRowSet>
+											<ChangeRowOrder>false</ChangeRowOrder>
+											<Width>60</Width>
+											<HeightInTableRows>15</HeightInTableRows>
+											<ChoiceMode>true</ChoiceMode>
+											<HorizontalLines>false</HorizontalLines>
+											<VerticalLines>false</VerticalLines>
+											<DataPath>SystemDataDataCompositionSettingsComposer.Settings.Selection.SelectionAvailableFields</DataPath>
+											<ContextMenu name="SystemDataDataCompositionSettingsComposerSettingsSelectionSelectionAvailableFieldsContextMenu" id="108"/>
+											<AutoCommandBar name="SystemDataDataCompositionSettingsComposerSettingsSelectionSelectionAvailableFieldsCommandBar" id="109"/>
+											<ExtendedTooltip name="SystemDataDataCompositionSettingsComposerSettingsSelectionSelectionAvailableFieldsExtendedTooltip" id="110"/>
+											<SearchStringAddition name="SystemDataDataCompositionSettingsComposerSettingsSelectionSelectionAvailableFieldsSearchString" id="111">
+												<AdditionSource>
+													<Item>SystemDataDataCompositionSettingsComposerSettingsSelectionSelectionAvailableFields</Item>
+													<Type>SearchStringRepresentation</Type>
+												</AdditionSource>
+												<ContextMenu name="SystemDataDataCompositionSettingsComposerSettingsSelectionSelectionAvailableFieldsSearchStringContextMenu" id="112"/>
+												<ExtendedTooltip name="SystemDataDataCompositionSettingsComposerSettingsSelectionSelectionAvailableFieldsSearchStringExtendedTooltip" id="113"/>
+											</SearchStringAddition>
+											<ViewStatusAddition name="SystemDataDataCompositionSettingsComposerSettingsSelectionSelectionAvailableFieldsViewStatus" id="114">
+												<AdditionSource>
+													<Item>SystemDataDataCompositionSettingsComposerSettingsSelectionSelectionAvailableFields</Item>
+													<Type>ViewStatusRepresentation</Type>
+												</AdditionSource>
+												<ContextMenu name="SystemDataDataCompositionSettingsComposerSettingsSelectionSelectionAvailableFieldsViewStatusContextMenu" id="115"/>
+												<ExtendedTooltip name="SystemDataDataCompositionSettingsComposerSettingsSelectionSelectionAvailableFieldsViewStatusExtendedTooltip" id="116"/>
+											</ViewStatusAddition>
+											<SearchControlAddition name="SystemDataDataCompositionSettingsComposerSettingsSelectionSelectionAvailableFieldsSearchControl" id="117">
+												<AdditionSource>
+													<Item>SystemDataDataCompositionSettingsComposerSettingsSelectionSelectionAvailableFields</Item>
+													<Type>SearchControl</Type>
+												</AdditionSource>
+												<ContextMenu name="SystemDataDataCompositionSettingsComposerSettingsSelectionSelectionAvailableFieldsSearchControlContextMenu" id="118"/>
+												<ExtendedTooltip name="SystemDataDataCompositionSettingsComposerSettingsSelectionSelectionAvailableFieldsSearchControlExtendedTooltip" id="119"/>
+											</SearchControlAddition>
+											<Events>
+												<Event name="OnActivateRow">SystemDataDataCompositionSettingsComposerSettingsSelectionSelectionAvailableFieldsOnActivateRow</Event>
+											</Events>
+										</Table>
+										<Table name="SystemDataDataCompositionSettingsComposerSettings" id="120">
+											<Representation>Tree</Representation>
+											<Visible>false</Visible>
+											<UserVisible>
+												<xr:Common>false</xr:Common>
+											</UserVisible>
+											<Autofill>true</Autofill>
+											<HorizontalLines>false</HorizontalLines>
+											<UseAlternationRowColor>true</UseAlternationRowColor>
+											<InitialTreeView>ExpandAllLevels</InitialTreeView>
+											<EnableStartDrag>true</EnableStartDrag>
+											<EnableDrag>true</EnableDrag>
+											<DataPath>SystemDataDataCompositionSettingsComposer.Settings</DataPath>
+											<ContextMenu name="SystemDataDataCompositionSettingsComposerSettingsContextMenu" id="121"/>
+											<AutoCommandBar name="SystemDataDataCompositionSettingsComposerSettingsCommandBar" id="122"/>
+											<ExtendedTooltip name="SystemDataDataCompositionSettingsComposerSettingsExtendedTooltip" id="123"/>
+											<SearchStringAddition name="SystemDataDataCompositionSettingsComposerSettingsSearchString" id="124">
+												<AdditionSource>
+													<Item>SystemDataDataCompositionSettingsComposerSettings</Item>
+													<Type>SearchStringRepresentation</Type>
+												</AdditionSource>
+												<ContextMenu name="SystemDataDataCompositionSettingsComposerSettingsSearchStringContextMenu" id="125"/>
+												<ExtendedTooltip name="SystemDataDataCompositionSettingsComposerSettingsSearchStringExtendedTooltip" id="126"/>
+											</SearchStringAddition>
+											<ViewStatusAddition name="SystemDataDataCompositionSettingsComposerSettingsViewStatus" id="127">
+												<AdditionSource>
+													<Item>SystemDataDataCompositionSettingsComposerSettings</Item>
+													<Type>ViewStatusRepresentation</Type>
+												</AdditionSource>
+												<ContextMenu name="SystemDataDataCompositionSettingsComposerSettingsViewStatusContextMenu" id="128"/>
+												<ExtendedTooltip name="SystemDataDataCompositionSettingsComposerSettingsViewStatusExtendedTooltip" id="129"/>
+											</ViewStatusAddition>
+											<SearchControlAddition name="SystemDataDataCompositionSettingsComposerSettingsSearchControl" id="130">
+												<AdditionSource>
+													<Item>SystemDataDataCompositionSettingsComposerSettings</Item>
+													<Type>SearchControl</Type>
+												</AdditionSource>
+												<ContextMenu name="SystemDataDataCompositionSettingsComposerSettingsSearchControlContextMenu" id="131"/>
+												<ExtendedTooltip name="SystemDataDataCompositionSettingsComposerSettingsSearchControlExtendedTooltip" id="132"/>
+											</SearchControlAddition>
+										</Table>
+										<InputField name="ParameterFormulaPresentation1" id="133">
+											<DataPath>ParameterFormulaPresentation</DataPath>
+											<AutoMaxWidth>false</AutoMaxWidth>
+											<HorizontalStretch>true</HorizontalStretch>
+											<TextEdit>false</TextEdit>
+											<ContextMenu name="ParameterFormulaPresentation1ContextMenu" id="134"/>
+											<ExtendedTooltip name="ParameterFormulaPresentation1ExtendedTooltip" id="135"/>
+										</InputField>
+									</ChildItems>
+								</Page>
+								<Page name="GroupParametersKindsNotLinkedWithDocumentBase" id="136">
+									<Title>
+										<v8:item>
+											<v8:lang>pl</v8:lang>
+											<v8:content>Group parameters kinds not linked with document base</v8:content>
+										</v8:item>
+									</Title>
+									<ToolTip>
+										<v8:item>
+											<v8:lang>pl</v8:lang>
+											<v8:content>Group parameters kinds not linked with document base</v8:content>
+										</v8:item>
+									</ToolTip>
+									<ExtendedTooltip name="GroupParametersKindsNotLinkedWithDocumentBaseExtendedTooltip" id="137"/>
+									<ChildItems>
+										<InputField name="ValueWithDocumentBase" id="138">
+											<DataPath>Value</DataPath>
+											<AutoMaxWidth>false</AutoMaxWidth>
+											<HorizontalStretch>true</HorizontalStretch>
+											<ContextMenu name="ValueWithDocumentBaseContextMenu" id="139"/>
+											<ExtendedTooltip name="ValueWithDocumentBaseExtendedTooltip" id="140"/>
+										</InputField>
+									</ChildItems>
+								</Page>
+							</ChildItems>
+						</Pages>
+					</ChildItems>
+				</Page>
+				<Page name="GroupDescription" id="9">
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Parameter description</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>pl</v8:lang>
+							<v8:content>Opis parametru</v8:content>
+						</v8:item>
+					</Title>
+					<ToolTip>
+						<v8:item>
+							<v8:lang>pl</v8:lang>
+							<v8:content>Group description</v8:content>
+						</v8:item>
+					</ToolTip>
+					<ExtendedTooltip name="GroupDescriptionExtendedTooltip" id="10"/>
+					<ChildItems>
+						<UsualGroup name="GroupLongDesription" id="11">
+							<Title>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Parameter's description</v8:content>
+								</v8:item>
+								<v8:item>
+									<v8:lang>pl</v8:lang>
+									<v8:content>Opis parametru</v8:content>
+								</v8:item>
+							</Title>
+							<ToolTip>
+								<v8:item>
+									<v8:lang>pl</v8:lang>
+									<v8:content>Group long desription</v8:content>
+								</v8:item>
+							</ToolTip>
+							<ExtendedTooltip name="GroupLongDesriptionExtendedTooltip" id="12"/>
+							<ChildItems>
+								<InputField name="LongDescription" id="13">
+									<DataPath>LongDescription</DataPath>
+									<TitleLocation>None</TitleLocation>
+									<AutoMaxWidth>false</AutoMaxWidth>
+									<HorizontalStretch>true</HorizontalStretch>
+									<MultiLine>true</MultiLine>
+									<ContextMenu name="LongDescriptionContextMenu" id="14"/>
+									<ExtendedTooltip name="LongDescriptionExtendedTooltip" id="15"/>
+								</InputField>
+							</ChildItems>
+						</UsualGroup>
+					</ChildItems>
+				</Page>
+			</ChildItems>
+		</Pages>
+		<InputField name="Presentation" id="16">
+			<DataPath>Presentation</DataPath>
+			<AutoMaxWidth>false</AutoMaxWidth>
+			<HorizontalStretch>true</HorizontalStretch>
+			<ContextMenu name="PresentationContextMenu" id="17"/>
+			<ExtendedTooltip name="PresentationExtendedTooltip" id="18"/>
+		</InputField>
+	</ChildItems>
+	<Attributes>
+		<Attribute name="ColumnName" id="1">
+			<Title>
+				<v8:item>
+					<v8:lang>pl</v8:lang>
+					<v8:content>Column name</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:string</v8:Type>
+				<v8:StringQualifiers>
+					<v8:Length>100</v8:Length>
+					<v8:AllowedLength>Variable</v8:AllowedLength>
+				</v8:StringQualifiers>
+			</Type>
+		</Attribute>
+		<Attribute name="DataCompositionSettingsComposer" id="2">
+			<Title>
+				<v8:item>
+					<v8:lang>pl</v8:lang>
+					<v8:content>Data composition settings composer</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>dcsset:SettingsComposer</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="DocumentBase" id="3">
+			<Title>
+				<v8:item>
+					<v8:lang>pl</v8:lang>
+					<v8:content>Document base</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:TypeSet>cfg:DocumentRef</v8:TypeSet>
+			</Type>
+		</Attribute>
+		<Attribute name="ExtDimensionNumber" id="4">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Extra dimension</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>pl</v8:lang>
+					<v8:content>Analityka</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:decimal</v8:Type>
+				<v8:NumberQualifiers>
+					<v8:Digits>1</v8:Digits>
+					<v8:FractionDigits>0</v8:FractionDigits>
+					<v8:AllowedSign>Nonnegative</v8:AllowedSign>
+				</v8:NumberQualifiers>
+			</Type>
+		</Attribute>
+		<Attribute name="FieldName" id="5">
+			<Title>
+				<v8:item>
+					<v8:lang>pl</v8:lang>
+					<v8:content>Field name</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:string</v8:Type>
+				<v8:StringQualifiers>
+					<v8:Length>100</v8:Length>
+					<v8:AllowedLength>Variable</v8:AllowedLength>
+				</v8:StringQualifiers>
+			</Type>
+		</Attribute>
+		<Attribute name="LinkByOwner" id="6">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Parameter-owner</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>pl</v8:lang>
+					<v8:content>Parametr-właściciel</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:string</v8:Type>
+				<v8:StringQualifiers>
+					<v8:Length>50</v8:Length>
+					<v8:AllowedLength>Variable</v8:AllowedLength>
+				</v8:StringQualifiers>
+			</Type>
+		</Attribute>
+		<Attribute name="LinkByType" id="7">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Parameter-account</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>pl</v8:lang>
+					<v8:content>Parametr-konto</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:string</v8:Type>
+				<v8:StringQualifiers>
+					<v8:Length>50</v8:Length>
+					<v8:AllowedLength>Variable</v8:AllowedLength>
+				</v8:StringQualifiers>
+			</Type>
+		</Attribute>
+		<Attribute name="LongDescription" id="8">
+			<Title>
+				<v8:item>
+					<v8:lang>pl</v8:lang>
+					<v8:content>Long description</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:string</v8:Type>
+				<v8:StringQualifiers>
+					<v8:Length>0</v8:Length>
+					<v8:AllowedLength>Variable</v8:AllowedLength>
+				</v8:StringQualifiers>
+			</Type>
+		</Attribute>
+		<Attribute name="Name" id="9">
+			<Title>
+				<v8:item>
+					<v8:lang>pl</v8:lang>
+					<v8:content>Name</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:string</v8:Type>
+				<v8:StringQualifiers>
+					<v8:Length>0</v8:Length>
+					<v8:AllowedLength>Variable</v8:AllowedLength>
+				</v8:StringQualifiers>
+			</Type>
+		</Attribute>
+		<Attribute name="NotRequest" id="10">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Not request parameter value</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>pl</v8:lang>
+					<v8:content>Nie wymagaj wartości parametru</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:boolean</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="Object" id="11">
+			<Title>
+				<v8:item>
+					<v8:lang>pl</v8:lang>
+					<v8:content>Object</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>cfg:CatalogObject.BookkeepingOperationsTemplates</v8:Type>
+			</Type>
+			<MainAttribute>true</MainAttribute>
+		</Attribute>
+		<Attribute name="Obligatory" id="12">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Check if the required parameter is filled</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>pl</v8:lang>
+					<v8:content>Sprawdzaj wypełnienie wymaganego parametru </v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:boolean</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="ParameterFormula" id="14">
+			<Title>
+				<v8:item>
+					<v8:lang>pl</v8:lang>
+					<v8:content>Parameter formula</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:string</v8:Type>
+				<v8:StringQualifiers>
+					<v8:Length>0</v8:Length>
+					<v8:AllowedLength>Variable</v8:AllowedLength>
+				</v8:StringQualifiers>
+			</Type>
+		</Attribute>
+		<Attribute name="ParameterFormulaPresentation" id="15">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Selected field</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>pl</v8:lang>
+					<v8:content>Wybrane pole</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:string</v8:Type>
+				<v8:StringQualifiers>
+					<v8:Length>0</v8:Length>
+					<v8:AllowedLength>Variable</v8:AllowedLength>
+				</v8:StringQualifiers>
+			</Type>
+			<FillCheck>ShowError</FillCheck>
+		</Attribute>
+		<Attribute name="ParameterFormulaTypeDescription" id="16">
+			<Title>
+				<v8:item>
+					<v8:lang>pl</v8:lang>
+					<v8:content>Parameter formula type description</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>v8:TypeDescription</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="ParameterKind" id="17">
+			<Title>
+				<v8:item>
+					<v8:lang>pl</v8:lang>
+					<v8:content>Parameter kind</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>cfg:EnumRef.BookkeepingOperationTemplateParameterKinds</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="Presentation" id="18">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Parameter's name</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>pl</v8:lang>
+					<v8:content>Nazwa parametru</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:string</v8:Type>
+				<v8:StringQualifiers>
+					<v8:Length>0</v8:Length>
+					<v8:AllowedLength>Variable</v8:AllowedLength>
+				</v8:StringQualifiers>
+			</Type>
+		</Attribute>
+		<Attribute name="SystemDataDataCompositionSettingsComposer" id="19">
+			<Title>
+				<v8:item>
+					<v8:lang>pl</v8:lang>
+					<v8:content>System data data composition settings composer</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>dcsset:SettingsComposer</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="TableKind" id="20">
+			<Title>
+				<v8:item>
+					<v8:lang>pl</v8:lang>
+					<v8:content>Table kind</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>cfg:EnumRef.BookkeepingOperationTemplateTableKind</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="TableKindFilter" id="21">
+			<Title>
+				<v8:item>
+					<v8:lang>pl</v8:lang>
+					<v8:content>Table kind filter</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>v8:ValueListType</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="TableName" id="22">
+			<Title>
+				<v8:item>
+					<v8:lang>pl</v8:lang>
+					<v8:content>Table name</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:string</v8:Type>
+				<v8:StringQualifiers>
+					<v8:Length>0</v8:Length>
+					<v8:AllowedLength>Variable</v8:AllowedLength>
+				</v8:StringQualifiers>
+			</Type>
+		</Attribute>
+		<Attribute name="TablePresentation" id="23">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Table</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>pl</v8:lang>
+					<v8:content>Tabela</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:string</v8:Type>
+				<v8:StringQualifiers>
+					<v8:Length>0</v8:Length>
+					<v8:AllowedLength>Variable</v8:AllowedLength>
+				</v8:StringQualifiers>
+			</Type>
+		</Attribute>
+		<Attribute name="Type" id="24">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Select type</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>pl</v8:lang>
+					<v8:content>Wybierz typ</v8:content>
+				</v8:item>
+			</Title>
+			<Type/>
+		</Attribute>
+		<Attribute name="TypeRestriction" id="25">
+			<Title>
+				<v8:item>
+					<v8:lang>pl</v8:lang>
+					<v8:content>Type restriction</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>v8:TypeDescription</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="TypeSelectionMethod" id="26">
+			<Title>
+				<v8:item>
+					<v8:lang>pl</v8:lang>
+					<v8:content>Type selection method</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:decimal</v8:Type>
+				<v8:NumberQualifiers>
+					<v8:Digits>1</v8:Digits>
+					<v8:FractionDigits>0</v8:FractionDigits>
+					<v8:AllowedSign>Nonnegative</v8:AllowedSign>
+				</v8:NumberQualifiers>
+			</Type>
+		</Attribute>
+		<Attribute name="Value" id="27">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>By default</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>pl</v8:lang>
+					<v8:content>Domyślnie</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>ent:AccumulationRecordType</v8:Type>
+				<v8:Type>xs:boolean</v8:Type>
+				<v8:Type>ent:AccountingRecordType</v8:Type>
+				<v8:Type>ent:AccountType</v8:Type>
+				<v8:Type>xs:string</v8:Type>
+				<v8:Type>xs:dateTime</v8:Type>
+				<v8:Type>xs:decimal</v8:Type>
+				<v8:TypeSet>cfg:DocumentRef</v8:TypeSet>
+				<v8:TypeSet>cfg:EnumRef</v8:TypeSet>
+				<v8:TypeSet>cfg:ChartOfCharacteristicTypesRef</v8:TypeSet>
+				<v8:TypeSet>cfg:ChartOfAccountsRef</v8:TypeSet>
+				<v8:TypeSet>cfg:CatalogRef</v8:TypeSet>
+				<v8:NumberQualifiers>
+					<v8:Digits>10</v8:Digits>
+					<v8:FractionDigits>0</v8:FractionDigits>
+					<v8:AllowedSign>Any</v8:AllowedSign>
+				</v8:NumberQualifiers>
+				<v8:StringQualifiers>
+					<v8:Length>0</v8:Length>
+					<v8:AllowedLength>Variable</v8:AllowedLength>
+				</v8:StringQualifiers>
+				<v8:DateQualifiers>
+					<v8:DateFractions>Date</v8:DateFractions>
+				</v8:DateQualifiers>
+			</Type>
+		</Attribute>
+		<Attribute name="SystemDataSchemaInTempStorage" id="29">
+			<Title>
+				<v8:item>
+					<v8:lang>pl</v8:lang>
+					<v8:content>System data schema in temp storage</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:string</v8:Type>
+				<v8:StringQualifiers>
+					<v8:Length>0</v8:Length>
+					<v8:AllowedLength>Variable</v8:AllowedLength>
+				</v8:StringQualifiers>
+			</Type>
+		</Attribute>
+		<Attribute name="TableOfTables" id="30">
+			<Title>
+				<v8:item>
+					<v8:lang>pl</v8:lang>
+					<v8:content>Table of tables</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>v8:ValueTable</v8:Type>
+			</Type>
+			<Columns>
+				<Column name="Filter" id="1">
+					<Title>
+						<v8:item>
+							<v8:lang>pl</v8:lang>
+							<v8:content>Filter</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>xs:string</v8:Type>
+						<v8:StringQualifiers>
+							<v8:Length>0</v8:Length>
+							<v8:AllowedLength>Variable</v8:AllowedLength>
+						</v8:StringQualifiers>
+					</Type>
+				</Column>
+				<Column name="TableKind" id="2">
+					<Title>
+						<v8:item>
+							<v8:lang>pl</v8:lang>
+							<v8:content>Table kind</v8:content>
+						</v8:item>
+					</Title>
+					<Type/>
+				</Column>
+				<Column name="TableName" id="3">
+					<Title>
+						<v8:item>
+							<v8:lang>pl</v8:lang>
+							<v8:content>Table name</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>xs:string</v8:Type>
+						<v8:StringQualifiers>
+							<v8:Length>0</v8:Length>
+							<v8:AllowedLength>Variable</v8:AllowedLength>
+						</v8:StringQualifiers>
+					</Type>
+				</Column>
+				<Column name="TablePicture" id="4">
+					<Title>
+						<v8:item>
+							<v8:lang>pl</v8:lang>
+							<v8:content>Table picture</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>v8ui:Picture</v8:Type>
+					</Type>
+				</Column>
+				<Column name="TableSynonym" id="5">
+					<Title>
+						<v8:item>
+							<v8:lang>pl</v8:lang>
+							<v8:content>Table synonym</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>xs:string</v8:Type>
+						<v8:StringQualifiers>
+							<v8:Length>0</v8:Length>
+							<v8:AllowedLength>Variable</v8:AllowedLength>
+						</v8:StringQualifiers>
+					</Type>
+				</Column>
+			</Columns>
+		</Attribute>
+		<Attribute name="DocumentTableSynonym" id="31">
+			<Title>
+				<v8:item>
+					<v8:lang>pl</v8:lang>
+					<v8:content>Document table synonym</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:string</v8:Type>
+				<v8:StringQualifiers>
+					<v8:Length>0</v8:Length>
+					<v8:AllowedLength>Variable</v8:AllowedLength>
+				</v8:StringQualifiers>
+			</Type>
+		</Attribute>
+		<Attribute name="DCSInTempStorage" id="32">
+			<Title>
+				<v8:item>
+					<v8:lang>pl</v8:lang>
+					<v8:content>DCSIn temp storage</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:string</v8:Type>
+				<v8:StringQualifiers>
+					<v8:Length>0</v8:Length>
+					<v8:AllowedLength>Variable</v8:AllowedLength>
+				</v8:StringQualifiers>
+			</Type>
+		</Attribute>
+		<Attribute name="NeedToSetSelectionAvailableFields" id="33">
+			<Title>
+				<v8:item>
+					<v8:lang>pl</v8:lang>
+					<v8:content>Need to set selection available fields</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:boolean</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="TableBox" id="35">
+			<Title>
+				<v8:item>
+					<v8:lang>pl</v8:lang>
+					<v8:content>Table box</v8:content>
+				</v8:item>
+			</Title>
+			<Type/>
+		</Attribute>
+		<Attribute name="IsNew" id="38">
+			<Title>
+				<v8:item>
+					<v8:lang>pl</v8:lang>
+					<v8:content>Is new</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:boolean</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="LineNumber" id="39">
+			<Title>
+				<v8:item>
+					<v8:lang>pl</v8:lang>
+					<v8:content>Line number</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:decimal</v8:Type>
+				<v8:NumberQualifiers>
+					<v8:Digits>10</v8:Digits>
+					<v8:FractionDigits>0</v8:FractionDigits>
+					<v8:AllowedSign>Any</v8:AllowedSign>
+				</v8:NumberQualifiers>
+			</Type>
+		</Attribute>
+	</Attributes>
+	<Commands>
+		<Command name="CommandOK" id="1">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>OK</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>pl</v8:lang>
+					<v8:content>OK</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Button OK press</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>pl</v8:lang>
+					<v8:content>Wciśnij przycisk OK</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>CommandOK</Action>
+		</Command>
+	</Commands>
+</Form>

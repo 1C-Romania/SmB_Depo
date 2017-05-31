@@ -1,0 +1,383 @@
+﻿Procedure BeforeOpen(Cancel, StandardProcessing)
+		
+	If Not IsDetailProcessing 
+	   AND Not SettingsSaving.FillSettingsOnReportOpening(ReportObject) Then
+		ReportInitialization();
+		InitPeriodValue();
+	EndIf;
+
+	TemplateReports.AssignToFormUniqueID(ThisForm);
+	TemplateReports.UpdateTemplateReportFormOnComposer(ReportObject, ThisForm);
+	UpdateAdditionalControlOnComposer(ReportObject, ThisForm);
+	TemplateReports.TemplateReportFormControlsPresentationManging(ReportObject, ThisForm);
+	
+EndProcedure
+
+Procedure OnOpen()
+	
+	If GenerateOnOpen Then
+		SettingsComposer.LoadSettings(SettingsOfComposerOnOpenData);
+		InitPeriodValue();
+		TemplateReports.UpdateTemplateReportFormOnComposer(ReportObject, ThisForm);
+		UpdateAdditionalControlOnComposer(ReportObject, ThisForm);
+		RefreshReport();
+		GenerateOnOpen = False;
+	EndIf;	
+	
+	DataCompositionSchemaAdress = ""; 
+	UpdateSettingsComposerDependencesOnAccount(Account,SettingsComposer, ThisForm, DataCompositionSchemaAdress);
+	
+EndProcedure
+
+Procedure FormActionsSettings(Button)
+	
+	EditReportSettings();
+	
+EndProcedure
+
+Procedure FormActionsGenerate(Button)
+	
+	RefreshReport();
+	
+EndProcedure
+
+Procedure FormActionsHeader(Button)
+	
+	Button.Check = Not Button.Check;
+	TemplateReports.TemplateReportFormControlsPresentationManging(ReportObject, ThisForm);
+	TemplateReports.TemplateReportHeaderPresentationManaging(ReportObject, ThisForm.Controls.Result);
+	
+EndProcedure
+
+Procedure FormActionsOpenInNewWindow(Button)
+	
+	TemplateReports.OpenTemplateReportInNewWindow(ReportObject, ThisForm);
+	
+EndProcedure
+
+Procedure FormActionsRestoreSettings(Button)
+	
+	SettingsSaving.SelectFormSetting(SavedSetting, ThisForm, "ReportObject." + ReportObject.Metadata().Name, False);
+	TemplateReports.UpdateTemplateReportFormOnComposer(ReportObject, ThisForm);
+	TemplateReports.UpdateTemplateReportHeader(ReportObject, ThisForm);
+	
+EndProcedure
+
+Procedure FormActionsSaveValues(Button)
+	
+	SettingsSaving.SelectFormSetting(SavedSetting, ThisForm, "ReportObject." + ReportObject.Metadata().Name, True);
+	TemplateReports.UpdateTemplateReportHeader(ReportObject, ThisForm);
+	
+EndProcedure
+
+Procedure FormActionsFilter(Button)
+	
+	Button.Check = Not Button.Check;
+	ShowQuickFilter = Button.Check;
+	TemplateReports.TemplateReportFormControlsPresentationManging(ReportObject, ThisForm);
+	TemplateReports.TemplateReportChangesProcessingInFormReport(ReportObject, ThisForm);
+	
+EndProcedure
+
+Procedure RefreshDisplay()
+	
+	TemplateReports.UpdateTemplateReportHeader(ReportObject, ThisForm);
+	
+EndProcedure
+
+Procedure ButtonPeriodSettingClick(Control)
+	
+	TemplateReports.SetupPeriod(PeriodSettings, BeginPeriod, EndPeriod);
+	TemplateReports.UpdatePeriodParametersOnForm(SettingsComposer, ThisForm);
+	TemplateReports.TemplateReportChangesProcessingInFormReport(ReportObject, ThisForm);
+	
+EndProcedure
+
+Procedure TextBoxPeriodOnChange(Control)
+	
+	TemplateReports.UpdatePeriodParametersOnForm(SettingsComposer, ThisForm);
+	TemplateReports.TemplateReportChangesProcessingInFormReport(ReportObject, ThisForm);
+	
+EndProcedure
+
+Procedure CompanyOnChange(Control)
+	UpdateCompanyParametersOnForm(SettingsComposer, ThisForm);
+	TemplateReports.TemplateReportChangesProcessingInFormReport(ReportObject, ThisForm);
+EndProcedure
+
+Procedure AccountOnChange(Control)
+	UpdateAccountParameterOnForm(SettingsComposer, ThisForm);
+	FilterButton = Controls.FormActions.Buttons.Filter;
+	DataCompositionSchemaAdress = "";   
+	If UpdateSettingsComposerDependencesOnAccount(Account,SettingsComposer,ThisForm,DataCompositionSchemaAdress) 
+		AND NOT FilterButton.Check Then
+		FormActionsFilter(FilterButton);
+	EndIf;	
+	TemplateReports.TemplateReportChangesProcessingInFormReport(ReportObject, ThisForm);
+EndProcedure
+
+Procedure FinancialYearOnChange(Control)
+	
+	If FinancialYear.IsEmpty() Then
+		FinancialYearDateFrom = '00010101000000';
+		FinancialYearDateTo = '00010101000000';
+	Else	
+		FinancialYearDateFrom = BegOfDay(FinancialYear.DateFrom);
+		FinancialYearDateTo = EndOfDay(FinancialYear.DateTo);
+	EndIf;	
+	
+	TemplateReports.SetParameter(SettingsComposer,"BeginOfYear",FinancialYearDateFrom);
+	TemplateReports.TemplateReportChangesProcessingInFormReport(ReportObject, ThisForm);
+	
+EndProcedure
+
+Procedure ResultDetailProcessing(Control, Details, StandardProcessing)
+	
+	ReportDetailsProcessing(Details, StandardProcessing, ReportObject, ThisForm);	
+	
+EndProcedure
+
+Procedure FormActionsPrint(Button)
+	
+	TemplateReports.PrintTemplateReport(Controls.Result);
+	
+EndProcedure
+
+Procedure RefreshReport() Export
+	
+	GenerateReport(ThisForm.Controls.Result, ThisForm.DetailsData);
+	
+EndProcedure
+
+Procedure TableBoxFilterOnEditEnd(Control, NewRow, CancelEditing)
+	
+	TemplateReports.TemplateReportChangesProcessingInFormReport(ReportObject, ThisForm);
+	
+EndProcedure
+
+Procedure InitPeriodValue()
+	
+	BeginOfPeriod_Param = TemplateReports.SetParameter(SettingsComposer,"BeginOfPeriod");
+	If BeginOfPeriod_Param <> Undefined AND BeginOfPeriod_Param.Value = '00010101' Then
+		TemplateReports.SetParameter(SettingsComposer,"BeginOfPeriod",CommonAtServer.GetUserSettingsValue("ReportsGeneralStartDate",SessionParameters.CurrentUser));
+	EndIf;	
+	
+	TemplateReports.SetParameter(SettingsComposer,"EndOfPeriod");
+	TemplateReports.SetParameter(SettingsComposer,"Period");	
+	
+EndProcedure
+
+Procedure FormActionsSendReportByEmail(Button)
+	
+	Printouts.SendReportByEMail(Nstr("en='Report';pl='Raport'") + " " + ReportObject.SettingsComposer.Settings.OutputParameters.FindParameterValue(New DataCompositionParameter("Title")).Value,Nstr("en='Report';pl='Raport'") + " " + ReportObject.SettingsComposer.Settings.OutputParameters.FindParameterValue(New DataCompositionParameter("Title")).Value,Controls.Result);
+	
+EndProcedure
+
+Procedure FormActionsSaveAndOpenAsXLS(Button)
+	TempXLSFile = Printouts.SaveReportAsXLS(Controls.Result,Nstr("en='Report';pl='Raport'") + " " +ThisForm.Caption);
+	If NOT IsBlankString(TempXLSFile) Then
+		RunApp(TempXLSFile,,False);
+	EndIf;	
+EndProcedure
+
+Procedure FormActionsSaveAsXLS(Button)
+	
+	TempXLSFile = Printouts.SaveReportAsXLS(Controls.Result,Nstr("en='Report';pl='Raport'") + " " +ThisForm.Caption,,True);
+	
+EndProcedure
+
+Procedure FormActionsSaveAndOpenAsPDF(Button)
+	Printouts.SaveReportAsPDF(Controls.Result,Nstr("en='Report';pl='Raport'") + " " +ThisForm.Caption,,,True);
+EndProcedure
+
+Procedure FormActionsSaveAsPDF(Button)
+	Printouts.SaveReportAsPDF(Controls.Result,Nstr("en='Report';pl='Raport'") + " " +ThisForm.Caption,,True);
+EndProcedure
+
+Function EditReportSettings()
+	
+	SavedSettings = SettingsComposer.GetSettings();
+	SettingsForm = GetForm("SettingsForm");
+	SettingsForm.SettingsComposer = SettingsComposer;
+	SettingsForm.NegativeInRed = NegativeInRed;
+	SettingsForm.OutputPageTotals = OutputPageTotals;
+	SettingsForm.ShowClosePeriodRecords = ShowClosePeriodRecords;
+	SettingsForm.OnlyIfHasTurnoversInPeriod = OnlyIfHasTurnoversInPeriod;
+	SettingsForm.OnlyNonZeroBalance = OnlyNonZeroBalance;
+	SettingsForm.FinancialYear = FinancialYear;
+	SettingsForm.Account = Account;
+	SettingsForm.ReportObject = ThisObject;
+	If SettingsForm.DoModal() = True Then
+		NegativeInRed = SettingsForm.NegativeInRed;
+		OutputPageTotals = SettingsForm.OutputPageTotals;
+		ShowClosePeriodRecords = SettingsForm.ShowClosePeriodRecords;
+		OnlyIfHasTurnoversInPeriod = SettingsForm.OnlyIfHasTurnoversInPeriod;
+		OnlyNonZeroBalance = SettingsForm.OnlyNonZeroBalance;
+		FinancialYear = SettingsForm.FinancialYear;
+		Account = SettingsForm.Account;
+		TemplateReports.UpdateTemplateReportFormOnComposer(ReportObject, ThisForm);
+		UpdateAdditionalControlOnComposer(ReportObject, ThisForm);
+	Else
+		SettingsComposer.LoadSettings(SavedSettings);
+	EndIf;	
+		
+EndFunction	
+
+Procedure UpdateCompanyParametersOnForm(SettingsComposer, Form) Export
+	
+	CompanyParameterValue = SettingsComposer.Settings.DataParameters.FindParameterValue(New DataCompositionParameter("Company"));
+	
+	If CompanyParameterValue <> Undefined Then
+		CompanyParameterValue.Value = Company;
+	EndIf;
+	
+EndProcedure
+
+Procedure UpdateAccountParameterOnForm(SettingsComposer, Form) Export
+	
+	AccountParameterValue = SettingsComposer.Settings.DataParameters.FindParameterValue(New DataCompositionParameter("Account"));
+		
+	If AccountParameterValue <> Undefined Then
+		AccountParameterValue.Value = Account;
+	EndIf;
+	
+EndProcedure
+
+Procedure UpdateAdditionalControlOnComposer(ReportObject, ReportForm) Export
+	
+	CompanyParameterValue = ReportObject.SettingsComposer.Settings.DataParameters.FindParameterValue(New DataCompositionParameter("Company"));	
+	ReportForm.Company = CompanyParameterValue.Value;
+
+	AccountParameterValue = SettingsComposer.Settings.DataParameters.FindParameterValue(New DataCompositionParameter("Account"));
+	ReportForm.Account = AccountParameterValue.Value;
+	
+EndProcedure
+
+Procedure ReportDetailsProcessing(Details, StandardProcessing, ReportObject, ReportForm) Export
+	
+	StandardProcessing = False;
+	
+	ChoiceList = New ValueList;	
+
+	If ValueIsFilled(Details["Account"]) Then		
+		ChoiceList.Add("OpenValueAccount", Nstr("en='Open account: ';pl='Otwórz konto: '") + Details["Account"],,PictureLib.Magnifier);
+	EndIf;
+	
+	For i=1 To 3 Do
+		If ValueIsFilled(Details["ExtDimension"+i]) Then		
+			ChoiceList.Add("OpenValueExtDimension"+i, Nstr("en='Open ext. dimension: ';pl='Otwórz analitykę: '") + Details["ExtDimension"+i],,PictureLib.Magnifier);
+		EndIf;
+	EndDo;
+	
+	If ValueIsFilled(Details["Currency"]) Then		
+		ChoiceList.Add("OpenValueCurrency", Nstr("en='Open currency: ';pl='Otwórz walutę: '") + Details["Currency"],,PictureLib.Magnifier);
+	EndIf;
+	
+	For Each DrillDownReport In GetAvailableDrillDownReports() Do
+		
+		ChoiceList.Add("DrillDown"+DrillDownReport.Key, Nstr("en='Drilldown by';pl='Uszczegóławianie raportem'") + " " + Metadata.Reports[DrillDownReport.Key].Synonym);
+		
+	EndDo;	
+	
+	If ChoiceList.Count() = 0 Then
+		Return;
+	ElsIf ChoiceList.Count() = 1 Then
+		SelectedValue = ChoiceList[0];
+	Else
+		SelectedValue = ReportForm.ChooseFromMenu(ChoiceList);
+	EndIf;
+		
+	If SelectedValue = Undefined Then
+		Return;
+	ElsIf Left(SelectedValue.Value, 9) = "OpenValue" Then
+		// Open value
+		OpenValue(Details[Right(SelectedValue.Value,StrLen(SelectedValue.Value)-9)]);
+	ElsIf Left(SelectedValue.Value, 9) = "DrillDown" Then	
+		NewReportObject = Reports[Right(SelectedValue.Value,StrLen(SelectedValue.Value)-9)].Create();
+		NewReportsForm = NewReportObject.GetForm(,, New UUID);
+		DrillDownByReport(Details,SettingsComposer,NewReportObject.SettingsComposer,Mid(SelectedValue.Value, 10),NewReportObject);
+		NewReportsForm.IsDetailProcessing = True;
+		NewReportsForm.Open();			
+		NewReportsForm.GenerateReport(NewReportsForm.Controls.Result);		
+	EndIf;
+			
+EndProcedure
+
+
+Procedure DrillDownByReport(Details,SourceSettingsComposer,ReceiverSettingsComposer,DrillDownReportName,NewReportObject)
+	
+	If Upper(DrillDownReportName) = Upper("AccountsCard") Then
+		FillParametersForDrillDownByAccountsCard(Details,SourceSettingsComposer,ReceiverSettingsComposer,NewReportObject);
+	EndIf;	
+	
+EndProcedure	
+
+Procedure FillParametersForDrillDownByAccountsCard(Details,SourceSettingsComposer,ReceiverSettingsComposer,NewReportObject)
+	
+	
+	AttributesStructure = New Structure("Company, Account, FinancialYear,ShowClosePeriodRecords,OutputPageTotals,PeriodSettings,ShowQuickFilter,BeginOfPeriod,EndOfPeriod,BeginOfYear");
+	
+	NewReportObjectMetadata = NewReportObject.Metadata(); 
+	CurReportObjectMetadata = ThisObject.Metadata();
+	
+	ReceiverAvailableParameters = ReceiverSettingsComposer.Settings.DataParameters.AvailableParameters.Items;
+	SourceParameters = SourceSettingsComposer.Settings.DataParameters.Items;
+	
+	For Each KeyAndValue In AttributesStructure Do
+		
+		If CommonAtServer.IsDocumentAttribute(KeyAndValue.Key,NewReportObjectMetadata)
+			AND CommonAtServer.IsDocumentAttribute(KeyAndValue.Key,CurReportObjectMetadata) Then
+			NewReportObject[KeyAndValue.Key] = ThisObject[KeyAndValue.Key];
+		EndIf;	
+		
+		ParamValue = TemplateReports.SetParameter(SourceSettingsComposer,KeyAndValue.Key);
+		If ParamValue <> Undefined Then
+			
+			If ReceiverAvailableParameters.Find(KeyAndValue.Key) <> Undefined Then
+				// as parameter
+				TemplateReports.SetParameter(ReceiverSettingsComposer,KeyAndValue.Key,ParamValue.Value);
+			EndIf;		
+			
+		EndIf;
+		
+	EndDo;	
+	
+	NewReportObject.UpdateSettingsComposerDependencesOnAccount(NewReportObject.Account,ReceiverSettingsComposer);
+	// Filters
+		
+	For Each Parameter In Details Do
+		
+		If ValueIsFilled(Parameter.Value) Then
+			If ReceiverSettingsComposer.Settings.Filter.FilterAvailableFields.Items.Find(Parameter.Key)<>Undefined Then
+				NewFilter = ReceiverSettingsComposer.Settings.Filter.Items.Add(Type("DataCompositionFilterItem"));
+				NewFilter.LeftValue = New DataCompositionField(Parameter.Key);
+				NewFilter.RightValue = Parameter.Value;
+				NewFilter.ComparisonType = DataCompositionComparisonType.Equal;
+				NewFilter.Use = True;
+			EndIf;	
+		EndIf;
+		
+	EndDo;
+
+EndProcedure	
+
+Function GetAvailableDrillDownReports()
+	
+	AvailableDrillDownReports = New Structure();
+	AvailableDrillDownReports.Insert("AccountsCard");
+	Return AvailableDrillDownReports;
+	
+EndFunction	
+
+Procedure TableBoxFilterDragCheck(Control, DragParameters, StandardProcessing, Row, Column)
+	TemplateReports.FilterDragCheck(SettingsComposer, Control, DragParameters, StandardProcessing, Row, Column);
+EndProcedure
+
+Procedure TableBoxFilterDrag(Control, DragParameters, StandardProcessing, Row, Column)
+	TemplateReports.FilterDrag(SettingsComposer,Control, DragParameters, StandardProcessing, Row, Column);
+EndProcedure
+
+
+
+
+

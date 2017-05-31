@@ -1,0 +1,2417 @@
+﻿////////////////////////////////////////////////////////////////////////////////
+// MODULE VARIABLES 
+
+Var FillingMethods Export; // Array with all possible methods of filling record's fields
+
+
+////////////////////////////////////////////////////////////////////////////////
+// FORM HANDLERS
+
+Procedure BeforeOpen(Cancel, StandardProcessing)
+	
+	//Controls.Formula.Enabled = False;
+	//Controls.SalesVATFormula.Enabled = False;
+	
+EndProcedure // BeforeOpen()
+
+Procedure OnOpen()
+	
+	If IsNew() Then
+		
+		Type = Enums.BookkeepingOperationTemplateTypes.Normal;
+		Author = SessionParameters.CurrentUser;
+		AlgorithmType = Enums.BookkeepingOperationTemplateAlgorithmTypes.None;
+		
+	Else
+		
+		Controls.GeneralPanel.CurrentPage = Controls.GeneralPanel.Pages.Records;
+		ReadOnly = WorkMode;
+		
+	EndIf;
+	
+	Controls.AlgorithmTextDocumentField.SetText(AlgorithmText);
+	
+	InitializeSelectedTables(SelectedTables,Records);
+	InitializeSelectedTables(SelectedSalesVATTables,SalesVATRecords);
+	InitializeSelectedTables(SelectedPurchaseVATTables,PurchaseVATRecords);
+	
+	UpdateDialog();
+	UpdateModeLabel();
+	
+EndProcedure
+
+Procedure BeforeWrite(Cancel)
+
+	AlgorithmText = Controls.AlgorithmTextDocumentField.GetText();
+	// Checking of correct parameter's settings
+	Checking = New Structure();
+	For each Param In Parameters Do
+		
+		If TrimAll(Param.Presentation) = "" Then
+			Domessagebox(Nstr("en = 'There is no presentation for one of parameters.
+			|Item was not written!'; pl = 'Brak przedstawienia dla jednego z parametrów.
+			|Element nie został zapisany!'"), 6);
+			Cancel = True;
+			Return;
+		EndIf;
+		
+		Try
+			Checking.Insert(Param.Name, Param.Value);
+		Except
+			Domessagebox(Alerts.ParametrizeString(Nstr("en = 'There is incorrect Name for parameter %P1.
+			|Item was not written!'; pl = 'Niepoprawna nazwa parametru %P1.
+			|Element nie został zapisany!'"),New Structure("P1",Param.Name)), 6);
+			Cancel = True;
+			Return;
+		EndTry;
+		
+	EndDo;
+
+EndProcedure // BeforeWrite()
+
+/////////////////////////////////////////////////////////////////////////////////
+// CONTROLS HANDLERS
+
+Procedure CommandBar3EmulateOperation(Button)
+	
+	GenerateOrEmulateNewOperation(True);
+
+EndProcedure
+
+Procedure ButtonAddOperationOnClick(Control)
+
+	GenerateOrEmulateNewOperation(False);
+
+EndProcedure
+
+Procedure ButtonSaveClick(Control)
+	
+	Dialog = GetFileDialog(FileDialogMode.Save);
+	
+	If Not Dialog.Choose() Then
+		Return;
+	EndIf;
+	
+	OperationTemplateAsDataProcessor.Get().Write(Dialog.FullFileName);
+
+EndProcedure
+
+Procedure ComboBoxFileNameOnChange(Control)
+	
+	DataProcessor = DataProcessors[FileName].Create();
+	
+	If Not OnProcessingChoice(DataProcessor) Then
+		FileName = "";
+		Return;
+	EndIf;
+	
+	UpdateDialog();
+
+EndProcedure
+
+Procedure DocumentBaseOnChange(Control)
+	
+	DocumentBaseChange();
+	
+EndProcedure
+
+Procedure DocumentBaseClearing(Control, StandardProcessing)
+	
+	DocumentBase = Undefined;
+	
+	DocumentBaseChange();
+	
+EndProcedure
+
+Procedure InternalDataProcessorOnChange(Control)
+	
+	UpdateDialog();
+
+EndProcedure
+
+Procedure InternalDataProcessorChoiceProcessing(Control, ValueSelected, StandardProcessing)
+	
+	If Control.Value <> ValueSelected Then
+		FileName = "";
+		OperationTemplateAsDataProcessor = Undefined;
+	EndIf;
+
+EndProcedure
+
+Procedure FileNameStartChoice(Control, StandardProcessing)
+	
+	Dialog = GetFileDialog(FileDialogMode.Open);
+	
+	If Not Dialog.Choose() Then
+		Return;
+	EndIf;
+	
+	DataProcessor = ExternalDataProcessors.Create(Dialog.FullFileName);
+	
+	If Not OnProcessingChoice(DataProcessor) Then
+		Return;
+	EndIf;
+	
+	UpdateDialog();
+	
+	OperationTemplateAsDataProcessor = New ValueStorage(New BinaryData(Dialog.FullFileName), New Deflation());
+	File = New File(Dialog.FullFileName);
+	FileName = File.Name;
+	
+EndProcedure // FileNameStartChoice()
+
+Procedure FilterDescriptionClick(Control)
+	
+	FilterForm = GetForm("DocumentFilterSettings");
+	FilterForm.DocumentBase = DocumentBase;
+	FilterForm.FilterAsXML = ?(Filter = Undefined,"",Filter.Get());
+	If FilterForm.DoModal() = True Then
+		FilterText = FilterForm.FilterAsXML;
+		Filter = New ValueStorage(FilterText);
+	EndIf;
+	
+	UpdateDialog();
+	
+EndProcedure
+
+Procedure TypeOnChange(Control)
+	
+	UpdateDialog();
+	
+EndProcedure
+
+Procedure ButtonWorkModeClick(Control)
+	
+	WorkMode = Not WorkMode;
+	
+	Try
+		Written = WriteInForm();
+	Except
+		Written = False;
+	EndTry;
+		
+	If Written Then
+		ReadOnly = WorkMode;
+		UpdateModeLabel();
+	Else
+		WorkMode = Not WorkMode;
+	EndIf;
+	
+EndProcedure
+
+Procedure ButtonSetBlockedMarkClick(Control)
+	
+	If Not Dialogs.WriteNewObjectInForm(ThisForm) Then
+		Return;
+	EndIf;
+	
+	RecordManager = InformationRegisters.BlockedBookkeepingOperationTemplates.CreateRecordManager();
+	RecordManager.Template = Ref;
+	RecordManager.Read();
+	If RecordManager.Selected() Then
+		RecordManager.Delete();
+	Else
+		RecordManager.Template = Ref;
+		RecordManager.Write();
+	EndIf;
+	
+	UpdateDialog();
+	
+EndProcedure
+
+Procedure FormActionsExportTemplate(Button)
+	
+	SaveTemplateAsFile(ThisObject);
+	
+EndProcedure
+
+Procedure FormActionsImportTemplate(Button)
+	
+	FileDialog = New FileDialog(FileDialogMode.Open);
+	
+	FileDialog.Filter  = Nstr("en='XML files';pl='Pliki XML'")+"(*.xml)|*.xml";
+	FileDialog.Title   = Nstr("en='Import bookkeeping operation template';pl='Importuj schemat księgowania'");
+	FileDialog.Preview = False;
+	FileDialog.DefaultExt              = "XML";
+	
+	XMLFileName = "";
+	If FileDialog.Choose() Then
+		XMLFileName = FileDialog.FullFileName;
+	Else
+		Return;
+	EndIf;
+	
+	If Not IsBlankString(XMLFileName) Then
+		TextDocument = New TextDocument;
+		TextDocument.Read(XMLFileName,TextEncoding.UTF8);
+		Try
+			NewBookkeepingTemplate = Common.GetObjectFromXML(TextDocument.GetText(),Type("CatalogObject.BookkeepingOperationsTemplates"));
+		Except
+			DoMessageBox(Nstr("en = 'Choosen file is corrupted or has incompatible format!
+                       |Could not load data!'; pl = 'Wybrany plik jest uszkodzony lub ma niezgodny format!
+                       |Nie można zaimportować dane!'"));
+			Return;
+		EndTry;	
+		//Object
+		FillPropertyValues(ThisObject,NewBookkeepingTemplate,,"Code,Author,Parent,Owner");
+		// Tabular parts
+		For Each TabularPart In Metadata.Catalogs.BookkeepingOperationsTemplates.TabularSections Do
+			ThisObject[TabularPart.Name].Clear();
+			For Each Row In NewBookkeepingTemplate[TabularPart.Name] Do
+				NewRow = ThisObject[TabularPart.Name].Add();
+				FillPropertyValues(NewRow,Row);
+			EndDo;	
+		EndDo;	
+		
+		InitializeSelectedTables(SelectedTables,Records);
+		InitializeSelectedTables(SelectedSalesVATTables,SalesVATRecords);
+		InitializeSelectedTables(SelectedPurchaseVATTables,PurchaseVATRecords);
+		
+		UpdateDialog();
+		UpdateModeLabel();
+				
+	Else
+		DoMessageBox(Nstr("en = 'Choosen file does not exist!'; pl = 'Wybrany plik nie istnieje!'"));
+		Return;
+	EndIf;	
+
+EndProcedure
+
+/////////////////////////////////////////////////////////////////////////////////
+// OPERATION TAB CONTROLS HANDLERS
+
+/////////////////////////////////////////////////////////////////////////////////
+// RECORDS TAB CONTROLS HANDLERS
+
+Procedure AnyButtonNewParameterOnClick(Control)
+	ControlsStructure = GetCurrentControlsForPage();
+	ParamName = NewParameter(ControlsStructure.CurrentRecords,,,ThisForm);
+	If Not IsBlankString(ParamName) Then
+		SetFieldValueOnChange(ControlsStructure.CurrentRecords,Enums.FieldFillingMethods.Parameter,Undefined,ParamName,True);
+	EndIf;	
+EndProcedure
+
+
+Procedure AnyRecordsFormulaStartChoice(Control, StandardProcessing)
+	
+	ControlsStructure = GetCurrentControlsForPage();
+	FormulaStructure = GetFormulaStructure(ControlsStructure.CurrentRecords);
+	If ControlsStructure.CurrentRecords.CurrentData = Undefined 
+		OR Not Common.IsDocumentTabularPartAttribute("TableName",ThisObject.Metadata(),ControlsStructure.CurrentRecords.Data)
+		OR Not Common.IsDocumentTabularPartAttribute("TableKind",ThisObject.Metadata(),ControlsStructure.CurrentRecords.Data) Then
+		TableName ="";
+		TableKind =Enums.BookkeepingOperationTemplateTableKind.EmptyRef();
+	Else
+		TableName = ControlsStructure.CurrentRecords.CurrentData.TableName;
+		TableKind = ControlsStructure.CurrentRecords.CurrentData.TableKind;
+	EndIf;
+	Formula = EditFormula(FillingMethod, Formula, FormulaPresentation, TableKind, TableName, ControlsStructure.CurrentRecords, FormulaStructure.TypeRestriction, ThisForm);
+	FormulaPresentation = GetFormulaPresentation(New Structure("FillingMethod, Value",FillingMethod,Formula),ControlsStructure.CurrentRecords);
+	SetFieldValueOnChange(ControlsStructure.CurrentRecords,FillingMethod,Undefined,Formula,True);
+	
+EndProcedure
+
+Procedure AnyRecordsFormulaClearing(Control, StandardProcessing)
+	
+	ControlsStructure = GetCurrentControlsForPage();
+	FormulaStructure = GetFormulaStructure(ControlsStructure.CurrentRecords);
+	SetFieldValueOnChange(ControlsStructure.CurrentRecords,FormulaStructure.FillingMethod,Undefined,"",True);
+	
+EndProcedure
+
+
+Procedure SelectedTablesBeforeAddRow(Control, Cancel, Clone)
+	Cancel = True;
+	AddTableAction(Control,SelectedTables);
+EndProcedure
+
+Procedure SelectedTablesBeforeDeleteRow(Control, Cancel)
+	BeforeDeleteTableAction(Control.CurrentData, Records,Cancel);
+EndProcedure
+
+Procedure SelectedTablesAfterDeleteRow(Control)
+	AfterDeleteTableAction(Control, Control.CurrentData, Records);
+EndProcedure
+
+Procedure SelectedTablesOnActivateRow(Control)
+	UpdateDialog();
+EndProcedure
+
+Procedure RecordsOnRowOutput(Control, RowAppearance, RowData)
+	
+	OnRowOutputInTableBox(Control, RowAppearance, RowData);
+	
+EndProcedure
+
+Procedure RecordsSelection(Control, RowSelected, Column, StandardProcessing)
+	
+	OnSelectionInTableBox(Control);
+	
+EndProcedure
+
+Procedure RecordsOnChange(Control) Export
+	
+	OnChangeInTableBox(Controls.Records);
+	
+EndProcedure // RecordsOnChange()
+
+Procedure RecordsExtDimensionStartChoice(Control, StandardProcessing)
+	
+	Accounting.ExtDimensionStartChoice(Controls.Records, Control, StandardProcessing);
+	
+EndProcedure
+
+Procedure RecordsOnActivateCell(Control)
+	
+	OnActivateCellInTableBox(Control,AddingNewRowEvent,Controls.SelectedTables);
+	
+EndProcedure // RecordsOnActivateCell()
+
+Procedure CommandBarOpenRecordCondition(Button)
+	
+	OpenRecordCondition(Controls.Records);
+	
+EndProcedure
+
+Procedure CommandBarOpenFormulaEditing(Button)
+	
+	OpenFormulaEditing(Controls.Records);
+	
+EndProcedure
+
+Procedure CommandBarOpenParametersSettings(Button)
+	
+	OpenParametersSettings(Controls.Records);
+	
+EndProcedure
+
+///////////////////////////////////////////////////////////////////////////////////
+/// CONTROL RECORDS DRAG HANDLERS
+
+Procedure RecordsDragStart(Control, DragParameters, StandardProcessing)
+	
+	AnyRecordsDragStart(Control, DragParameters, StandardProcessing);
+	
+EndProcedure
+
+Procedure RecordsDragEnd(Control, DragParameters, StandardProcessing)
+	
+	AnyRecordsDragEnd(Control, DragParameters, StandardProcessing);
+	
+EndProcedure
+
+Procedure SelectedTablesDragCheck(Control, DragParameters, StandardProcessing, Row, Column)
+	
+	AnySelectedTableDragCheck(Control, DragParameters, StandardProcessing, Row, Column);
+		
+EndProcedure
+
+/////////////////////////////////////////////////////////////////////////////////
+// EXCHANGE RATE RECORDS TAB CONTROLS HANDLERS
+
+Procedure ExchangeRateDifferencesSelection(Control, RowSelected, Column, StandardProcessing)
+	OnSelectionInTableBox(Control);
+EndProcedure
+
+Procedure ExchangeRateDifferencesOnActivateCell(Control)
+	OnActivateCellInTableBox(Control);
+EndProcedure
+
+Procedure ExchangeRateDifferencesOnRowOutput(Control, RowAppearance, RowData)
+	OnRowOutputInTableBox(Control, RowAppearance, RowData);
+	
+	If RowData.Type = Enums.BookkeepingOperationBalanceDifferenceTypes.GeneralRoundingDifference Then
+		RowAppearance.Cells.ExchangeRateDifferencesCarriedOut.ReadOnly = True;
+		RowAppearance.Cells.ExchangeRateDifferencesGroup.ReadOnly = True;
+	EndIf;	
+	
+EndProcedure
+
+Procedure ExchangeRateDifferencesBeforeAddRow(Control, Cancel, Clone)
+	
+	ExchangeRateDifferenceRow = Undefined;
+	GeneralRoundingDifferenceRow = Undefined;
+	For Each TableItem In ExchangeRateDifferences Do
+		
+		If TableItem.Type = Enums.BookkeepingOperationBalanceDifferenceTypes.ExchangeRateDifference Then	
+			ExchangeRateDifferenceRow = TableItem;
+		ElsIf TableItem.Type = Enums.BookkeepingOperationBalanceDifferenceTypes.GeneralRoundingDifference Then	
+			GeneralRoundingDifferenceRow = TableItem;
+		EndIf;	
+		
+	EndDo;	
+	
+	ExchangeRateDifferencesCount = ExchangeRateDifferences.Count();
+	If ExchangeRateDifferencesCount>=2 OR (ExchangeRateDifferencesCount = 2 AND (ExchangeRateDifferenceRow=Undefined OR GeneralRoundingDifferenceRow = Undefined)) Then
+		
+		Message(Nstr("en = 'Only one record for each type can be in tabulart part of exchange rate differences!'; pl = 'Tylko po jednym wierszu dla każdego typu może znajdować się w części tabelarycznej różnic kursowych!'"));
+		Cancel = True;
+		
+	EndIf;		
+	
+EndProcedure
+
+Procedure ExchangeRateDifferencesTypeOnChange(Control)
+	
+	If ExchangeRateDifferences.Count()=2 Then
+		If ExchangeRateDifferences[0].Type = ExchangeRateDifferences[1].Type AND ValueIsFilled(ExchangeRateDifferences[0].Type) Then
+			If Control.Value = Enums.BookkeepingOperationBalanceDifferenceTypes.ExchangeRateDifference Then
+				Control.Value = Enums.BookkeepingOperationBalanceDifferenceTypes.GeneralRoundingDifference;
+			ElsIf Control.Value = Enums.BookkeepingOperationBalanceDifferenceTypes.GeneralRoundingDifference Then
+				Control.Value = Enums.BookkeepingOperationBalanceDifferenceTypes.ExchangeRateDifference;
+			EndIf;	
+		EndIf;	
+	EndIf;	
+	
+EndProcedure
+
+Procedure CommandBarExchangeRateDifferencesOpenParametersSettings(Button)
+	OpenParametersSettings(Controls.ExchangeRateDifferences);
+EndProcedure
+
+Procedure CommandBarExchangeRateDifferencesOpenFormulaEditing(Button)
+	OpenFormulaEditing(Controls.ExchangeRateDifferences);
+EndProcedure
+
+/////////////////////////////////////////////////////////////////////////////////
+// VAT SALES RECORDS TAB CONTROLS HANDLERS
+
+
+Procedure SelectedSalesVATTablesBeforeAddRow(Control, Cancel, Clone)
+	Cancel = True;
+	AddTableAction(Control,SelectedSalesVATTables);
+EndProcedure
+
+Procedure SelectedSalesVATTablesBeforeDeleteRow(Control, Cancel)
+	BeforeDeleteTableAction(Control.CurrentData, SalesVATRecords,Cancel);
+EndProcedure
+
+Procedure SelectedSalesVATTablesAfterDeleteRow(Control)
+	AfterDeleteTableAction(Control,Control.CurrentData, SalesVATRecords);
+EndProcedure
+
+Procedure SelectedSalesVATTablesOnActivateRow(Control)
+	UpdateDialog();
+EndProcedure
+
+Procedure SalesVATRecordsOnRowOutput(Control, RowAppearance, RowData)
+	OnRowOutputInTableBox(Control, RowAppearance, RowData);
+EndProcedure
+
+Procedure SalesVATRecordsSelection(Control, RowSelected, Column, StandardProcessing)
+	OnSelectionInTableBox(Control);
+EndProcedure
+
+Procedure SalesVATRecordsOnChange(Control)
+	OnChangeInTableBox(Controls.SalesVATRecords);
+EndProcedure
+
+Procedure SalesVATRecordsOnActivateCell(Control)
+	OnActivateCellInTableBox(Control,AddingNewRowEvent,Controls.SelectedSalesVATTables);
+EndProcedure
+
+Procedure CommandBarSalesVATRecordsOpenRecordCondition(Button)
+	OpenRecordCondition(Controls.SalesVATRecords);
+EndProcedure
+
+Procedure CommandBarSalesVATRecordsOpenFormulaEditing(Button)
+	OpenFormulaEditing(Controls.SalesVATRecords);
+EndProcedure
+
+Procedure CommandBarSalesVATRecordsOpenParametersSettings(Button)
+	
+	OpenParametersSettings(Controls.SalesVATRecords);
+	
+EndProcedure
+
+///////////////////////////////////////////////////////////////////////////////////
+/// CONTROL RECORDS DRAG HANDLERS
+
+Procedure SalesVATRecordsDragStart(Control, DragParameters, StandardProcessing)
+	
+	AnyRecordsDragStart(Control, DragParameters, StandardProcessing);
+	
+EndProcedure
+
+Procedure SalesVATRecordsDragEnd(Control, DragParameters, StandardProcessing)
+	
+	AnyRecordsDragEnd(Control, DragParameters, StandardProcessing);
+	
+EndProcedure
+
+Procedure SelectedSalesVATTablesDragCheck(Control, DragParameters, StandardProcessing, Row, Column)
+	
+	AnySelectedTableDragCheck(Control, DragParameters, StandardProcessing, Row, Column);
+		
+EndProcedure
+
+/////////////////////////////////////////////////////////////////////////////////
+// VAT PURCHASE RECORDS TAB CONTROLS HANDLERS
+
+Procedure SelectedPurchaseVATTablesBeforeAddRow(Control, Cancel, Clone)
+	Cancel = True;
+	AddTableAction(Control,SelectedPurchaseVATTables);
+EndProcedure
+
+Procedure SelectedPurchaseVATTablesBeforeDeleteRow(Control, Cancel)
+	BeforeDeleteTableAction(Control.CurrentData, PurchaseVATRecords,Cancel);
+EndProcedure
+
+Procedure SelectedPurchaseVATTablesAfterDeleteRow(Control)
+	AfterDeleteTableAction(Control,Control.CurrentData, PurchaseVATRecords);
+EndProcedure
+
+Procedure SelectedPurchaseVATTablesOnActivateRow(Control)
+	UpdateDialog();
+EndProcedure
+
+Procedure PurchaseVATRecordsSelection(Control, RowSelected, Column, StandardProcessing)
+	OnSelectionInTableBox(Control);
+EndProcedure
+
+Procedure PurchaseVATRecordsOnChange(Control)
+	OnChangeInTableBox(Controls.PurchaseVATRecords);
+EndProcedure
+
+Procedure PurchaseVATRecordsOnActivateCell(Control)
+	OnActivateCellInTableBox(Control,AddingNewRowEvent,Controls.SelectedPurchaseVATTables);
+EndProcedure
+
+Procedure CommandBarPurchaseVATRecordsOpenRecordCondition(Button)
+	OpenRecordCondition(Controls.PurchaseVATRecords);
+EndProcedure
+
+Procedure CommandBarPurchaseVATRecordsOpenFormulaEditing(Button)
+	OpenFormulaEditing(Controls.PurchaseVATRecords);
+EndProcedure
+
+Procedure CommandBarPurchaseVATRecordsOpenParametersSettings(Button)
+	OpenParametersSettings(Controls.PurchaseVATRecords);
+EndProcedure
+
+Procedure PurchaseVATRecordsOnRowOutput(Control, RowAppearance, RowData)
+	OnRowOutputInTableBox(Control, RowAppearance, RowData);
+EndProcedure
+
+///////////////////////////////////////////////////////////////////////////////////
+/// CONTROL RECORDS DRAG HANDLERS
+
+Procedure PurchaseVATRecordsDragStart(Control, DragParameters, StandardProcessing)
+	
+	AnyRecordsDragStart(Control, DragParameters, StandardProcessing);
+	
+EndProcedure
+
+Procedure PurchaseVATRecordsDragEnd(Control, DragParameters, StandardProcessing)
+	
+	AnyRecordsDragEnd(Control, DragParameters, StandardProcessing);
+	
+EndProcedure
+
+Procedure SelectedPurchaseVATTablesDragCheck(Control, DragParameters, StandardProcessing, Row, Column)
+	
+	AnySelectedTableDragCheck(Control, DragParameters, StandardProcessing, Row, Column);
+		
+EndProcedure
+
+////////////////////////////////////////////////////////////////////////////////
+// TABLE BOX PARAMETERS CONTROLS HANDLERS
+
+Procedure ParametersBeforeAddRow(Control, Cancel, Copying) Export
+
+	Cancel = True;
+
+	If Copying Then
+
+		ParameterForm = GetForm("Parameter", ThisForm);
+
+		CurParameter    = Controls.Parameters.CurrentData;
+
+		ParameterForm.Name              = CurParameter.Name;
+		ParameterForm.Presentation    = CurParameter.Presentation;
+		ParameterForm.Type              = ?(TrimAll(CurParameter.Type)<>"", CurParameter.Type.Get(), Undefined );
+		ParameterForm.Value         = CurParameter.Value;
+		ParameterForm.NotRequest    = CurParameter.NotRequest;
+		ParameterForm.LinkByOwner = CurParameter.LinkByOwner;
+		ParameterForm.LinkByType      = CurParameter.LinkByType;
+		ParameterForm.ExtDimensionNumber    = CurParameter.ExtDimensionNumber;
+		ParameterForm.LongDescription        = CurParameter.LongDescription;
+		ParameterForm.Obligatory     = CurParameter.Obligatory;
+		
+		ParameterForm.ParameterKind     = CurParameter.ParameterKind;
+		ParameterForm.ParameterFormula     = CurParameter.ParameterFormula;
+		ParameterForm.FieldName     = CurParameter.FieldName;
+		ParameterForm.TableName     = CurParameter.TableName;
+		ParameterForm.TableKind     = CurParameter.TableKind;
+		
+		ParameterForm.DocumentBase = DocumentBase;
+		ParameterForm.Object = ThisObject;
+
+		ParameterForm.DoModal();
+
+	Else
+		
+		NewParameter(,);
+		
+	EndIf;
+
+EndProcedure
+
+Procedure ParametersBeforeRowChange(Control, Cancel)
+
+	Cancel             = True;
+	CurrentColumnName = Controls.Parameters.CurrentColumn.Name;
+	CurParameter       = Controls.Parameters.CurrentData;
+
+	If CurrentColumnName = "Obligatory" Then
+		CurParameter.Obligatory = Not CurParameter.Obligatory;
+		Return;
+	ElsIf CurrentColumnName = "NotRequest" Then
+		CurParameter.NotRequest = Not CurParameter.NotRequest;
+		Return;
+	EndIf;
+	
+	EditParameter(CurParameter.Name);
+
+EndProcedure
+
+Procedure ParametersOnRowOutput(Control, RowAppearance, RowData)
+	
+	If RowData.ParameterKind = Enums.BookkeepingOperationTemplateParameterKinds.LinkedToDocumentBase Then
+		
+		TableOfTables = GetTableOfTables();
+		
+		FoundRows = TableOfTables.FindRows(New Structure("TableName, TableKind",RowData.TableName,RowData.TableKind));
+		
+		If FoundRows.Count() = 0 Then
+			
+			BackColor = StyleColors.NegativeTextColor
+			
+		Else
+			
+			BackColor = StyleColors.FieldBackColor;
+			
+		EndIf;	
+		
+		For Each Cell In RowAppearance.Cells Do
+			
+			Cell.BackColor = BackColor;
+			
+		EndDo;
+		
+		If FoundRows.Count() = 1 Then
+			FoundRow = FoundRows[0];
+			RowAppearance.Cells.TablePresentation.Picture = FoundRow.TablePicture;
+			RowAppearance.Cells.TablePresentation.Text = FoundRow.TableSynonym;
+			RowAppearance.Cells.TablePresentation.ShowText = True;
+			RowAppearance.Cells.TablePresentation.ShowPicture = True;
+			
+		EndIf;	
+		
+	EndIf;
+	
+	If Controls.Parameters.Columns.Type.Visible = True Then
+
+		If TrimAll(RowData.Type) <> "" Then
+			RowAppearance.Cells.Type.ShowText = True;
+			RowAppearance.Cells.Type.Text           = String(RowData.Type.Get());
+		EndIf;
+
+	EndIf;
+
+EndProcedure
+
+Procedure ParametersBeforeDeleteRow(Control, Cancel)
+
+	CurParameter = Controls.Parameters.CurrentData;
+	CurrentItemName = CurParameter.Name;
+	Array = New Array;
+	
+	TableBoxesArray = New Array();
+	TableBoxesArray.Add(Controls.Records);
+	TableBoxesArray.Add(Controls.SalesVATRecords);
+	TableBoxesArray.Add(Controls.PurchaseVATRecords);
+
+	For Each TableBoxesArrayItem In TableBoxesArray Do
+		
+		For each Record In TableBoxesArrayItem.Value Do
+			
+			For each MDAttribute In Metadata.Catalogs.BookkeepingOperationsTemplates.TabularSections[TableBoxesArrayItem.Name].Attributes Do
+				
+				If MDAttribute.Name = "Formulas"
+					OR MDAttribute.Name = "Condition" Then
+					Continue
+				EndIf;
+				
+				Expression = GetFormula(TableBoxesArrayItem, Record, MDAttribute.Name);
+				
+				ParametersMap = ParseStringIntoParametersMap(Expression);
+				
+				For Each MapItem In ParametersMap Do
+					If NOT MapItem.IsOperator AND MapItem.Name = CurrentItemName Then
+						
+						Str = Nstr("en='Record Nr';pl='Zapis nr'") + (1+Records.Indexof(Record)) + " " + Nstr("en='Attribute';pl='Atrybut'") +": " +  MDAttribute.Synonym;
+						Array.Add(Str);
+						Break;
+						
+					EndIf;	
+				EndDo;	
+								
+			EndDo;
+			
+		EndDo;
+		
+	EndDo;
+	
+	If Array.Count() > 0 Then
+
+		Cancel = True;
+		Str   = Nstr("en = 'Parameter could not be removed, because it used in formulas:'; pl = 'Parametr nie może być usunięty dlatego że jest używany we wzórach:'");
+
+		Message(Str);
+
+		For each ArrayItem In Array Do
+			Message(Chars.Tab + ArrayItem);
+		EndDo;
+
+	EndIf;
+
+EndProcedure
+
+/////////////////////////////////////////////////////////////////////////////////
+// Working with formulas functions
+
+// Returns formula's expression of given field and given record's template
+//
+// Parameters:
+//  TableBox - control of table box Records
+//  VTRow       -  row of table box Records
+//  ColumnName     - column Name of table box Records, formula for which should be returned
+//
+// Return Value:
+//  String - formula's expression of given field and given record's template
+// 
+Function GetFormula(TableBox, VTRow="", ColumnName="") Export
+
+	If VTRow = "" Then
+		VTRow = TableBox.CurrentData;
+	EndIf;
+
+	If ColumnName = "" Then
+		ColumnName = TableBox.CurrentColumn.Name;
+	EndIf;
+
+	If VTRow = Undefined Then
+		Return("")
+	EndIf;
+
+	ValueRow = TrimAll(VTRow.Formulas);
+	If ValueRow = "" Then
+		Return("");
+	Else
+		Formulas = ValueFromStringInternal(ValueRow);
+	EndIf;
+
+	Return TrimAll(Formulas[TrimAll(ColumnName)]);
+
+EndFunction
+
+// Returns formula's expression of given field and given record's template
+//
+// Parameters:
+//  TableBox - control of table box Records
+//  VTRow       -  row of table box Records
+//  ColumnName     - column Name of table box Records, formula for which should be returned
+//
+// Return Value:
+//  String - formula's expression of given field and given record's template
+// 
+Function GetFormulaStructure(TableBox, VTRow="", ColumnName="") Export
+
+	If VTRow = "" Then
+		VTRow = TableBox.CurrentData;
+	EndIf;
+
+	If ColumnName = "" Then
+		ColumnName = TableBox.CurrentColumn.Name;
+	EndIf;
+
+	If VTRow = Undefined Then
+		FormulaStructure = New Structure("FillingMethod, Value",Enums.FieldFillingMethods.Parameter,"");
+	EndIf;
+
+	FormulasMapAsInternalString = TrimAll(VTRow.Formulas);
+	If FormulasMapAsInternalString = "" Then
+		
+		FormulaStructure = New Structure("FillingMethod, Value",Enums.FieldFillingMethods.Parameter,"");
+		
+	Else
+		
+		FormulasMap = ValueFromStringInternal(FormulasMapAsInternalString);
+		FormulaStructure = FormulasMap[TrimAll(ColumnName)];
+		
+		If FormulaStructure = Undefined Then
+			
+			FormulaStructure = New Structure("FillingMethod, Value",Enums.FieldFillingMethods.Parameter,"");	
+			
+		EndIf;	
+		
+	EndIf;
+	
+	If Left(ColumnName,12) = "ExtDimension" Then
+		
+		AccountFormulaStructure = GetFormulaStructure(TableBox,VTRow,"Account");
+		FoundRow = Common.FindTabularPartRow(Parameters,New Structure("Name",AccountFormulaStructure.Value));
+		If (AccountFormulaStructure.FillingMethod = Enums.FieldFillingMethods.Value
+			AND ValueIsFilled(AccountFormulaStructure.Value)) 
+			OR (AccountFormulaStructure.FillingMethod = Enums.FieldFillingMethods.Parameter 
+			AND FoundRow<> Undefined AND FoundRow.ParameterKind = Enums.BookkeepingOperationTemplateParameterKinds.NotLinked
+			AND TypeOf(FoundRow.Value) = TypeOf(ChartsOfAccounts.Bookkeeping.EmptyRef()) AND ValueIsFilled(FoundRow.Value)) Then
+			
+			If AccountFormulaStructure.FillingMethod = Enums.FieldFillingMethods.Value Then
+				CurrentAccount = AccountFormulaStructure.Value;
+			Else
+				CurrentAccount = FoundRow.Value;
+			EndIf;	
+			
+			ExtDimNumber = Number(Right(ColumnName,1))-1;
+			If ExtDimNumber>CurrentAccount.ExtDimensionTypes.Count()-1 Then
+				CurrentTypeDescription = Undefined;
+			Else	
+				CurrentTypeDescription = CurrentAccount.ExtDimensionTypes[ExtDimNumber].ExtDimensionType.ValueType;
+			EndIf;	
+			
+		Else
+			
+			CurrentTypeDescription = ThisObject.Metadata().TabularSections[TableBox.Data].Attributes[TrimAll(ColumnName)].Type;
+			
+		EndIf;	
+		
+	Else
+		
+		CurrentTypeDescription = ThisObject.Metadata().TabularSections[TableBox.Data].Attributes[TrimAll(ColumnName)].Type;
+		
+	EndIf;	
+
+	
+	FormulaStructure.Insert("TypeRestriction",CurrentTypeDescription);
+	
+	Return FormulaStructure;
+
+EndFunction
+
+// Set formula's expression for given field
+//
+// Parameters:
+//  TableBox - control of table box Records
+//  VTRow       - row of table box Records
+//  ColumnName     - column Name of table box Records, formula for which should be set
+//  FormulaRow     - String - formula's expression which should be set
+// 
+Procedure SetFormula(TableBox, VTRow="", ColumnName="", FormulaStr="") Export
+
+	If VTRow = "" Then
+		VTRow = TableBox.CurrentData;
+	EndIf;
+		
+	If ColumnName = "" Then
+		ColumnName = TableBox.CurrentColumn.Name;
+	EndIf;
+
+	ValueRow = TrimAll(VTRow.Formulas);
+	If ValueRow = "" Then
+		Formulas = New Map();
+	Else
+		Formulas = ValueFromStringInternal(ValueRow);
+	EndIf;
+
+	Str = TrimAll(FormulaStr);
+
+	If Str = "" Then
+		Formulas.Delete(TrimAll(ColumnName));
+	Else
+
+		Formulas[TrimAll(ColumnName)] = Str;
+	
+		VTRow[TrimAll(ColumnName)] = Undefined;
+		OnChangeInTableBox(TableBox);
+
+	EndIf;
+
+	VTRow.Formulas = ValueToStringInternal(Formulas);
+
+EndProcedure
+
+Procedure FormulaTextEditEnd(Control, Text, Value, StandardProcessing, TableBox) Export
+	
+	CurColumn = TableBox.CurrentColumn.Name;
+
+	If CurColumn = "Condition" Then
+		TableBox.CurrentData.Condition = Text;
+	Else
+		SetFormula(TableBox,TableBox.CurrentData, CurColumn, Text);
+	EndIf;
+
+	OnActivateCellInTableBox(TableBox);
+	
+EndProcedure
+
+Procedure FormulaStartChoice(Control, StandardProcessing,TableBox,IsFormula = False) Export
+
+	//StandardProcessing = False;
+	//ExtDimensionDescription = "";
+	//ColumnTypes          = Accounting.GetAccountingRecordsColumnType(Metadata(), TableBox, , , ExtDimensionDescription);
+	//ColumnName           = TableBox.CurrentColumn.Name;
+
+	//If ColumnTypes = Undefined Then
+	//	Return
+	//EndIf;
+
+	//If IsFormula Then
+	//	SelectionForm = GetForm("EditFormula", ThisForm);
+	//Else
+	//	SelectionForm = GetForm("ParameterSelection", ThisForm);
+	//EndIf;	
+	//SelectionForm.DocumentBase = DocumentBase;
+	//SelectionForm.TableBox = TableBox;
+
+	//If ColumnName = "Condition" Then
+	//	SelectionForm.Controls.FilterByType.Visible = False;
+	//	SelectionForm.FilterByType = False;
+	//Else
+	//	SelectionForm.Controls.FilterByType.Visible = True;
+	//	SelectionForm.FilterByType = True;
+	//EndIf;
+
+	//If TableBox.Name = "Records" Then
+	//	FormulaToChange = Formula;
+	//ElsIf TableBox.Name = "SalesVATRecords" Then	
+	//	FormulaToChange = SalesVATFormula;
+	//ElsIf TableBox.Name = "PurchaseVATRecords" Then	
+	//	FormulaToChange = PurchaseVATFormula;
+	//EndIf;	
+	//SelectionForm.Formula      = FormulaToChange;
+	//SelectionForm.ColumnName      = ColumnName;
+	//SelectionForm.CurrentRecord = TableBox.CurrentRow;
+	//SelectionForm.AlternateFormOwner = ThisForm;
+	//SelectionForm.FillParametersTree();
+	//SelectionForm.Caption = ColumnName + ?((ExtDimensionDescription<>"")AND(ExtDimensionDescription<>ColumnName), " (", "") + ExtDimensionDescription + ?((ExtDimensionDescription<>"")AND(ExtDimensionDescription<>ColumnName), ")", "") + ". "+ Nstr("en='Choose parameter';pl='Wybierz parametr'");
+	//SelectionForm.Object = ThisObject;
+	//ReturnFormula = SelectionForm.DoModal();
+
+	//If ReturnFormula = Undefined Then
+	//	Return
+	//EndIf;
+
+	//SelValue = ReturnFormula;
+
+	//If ColumnName = "Condition" Then
+	//	TableBox.CurrentData.Condition = SelValue;
+	//Else
+	//	SetFormula(TableBox, , , SelValue);
+	//EndIf;
+
+	//If TableBox.Name = "Records" Then
+	//	Formula = SelValue;
+	//ElsIf TableBox.Name = "SalesVATRecords" Then	
+	//	SalesVATFormula = SelValue;
+	//ElsIf TableBox.Name = "PurchaseVATRecords" Then	
+	//	PurchaseVATFormula = SelValue;	
+	//EndIf;	
+	//RecordsOnActivateCell(TableBox);
+
+EndProcedure // FormulaStartChoice()
+
+////////////////////////////////////////////////////////////////////////////////
+// GENERAL TABLEBOX FUNCTIONS 
+
+Procedure AnySelectedTablesOnDataGet(Control, RowAppearances)
+	
+	For Each RowAppearance In RowAppearances Do
+		
+		If NOT RowAppearance.RowData.Availability Then
+			
+			RowAppearance.Cells.TableSynonym.BackColor = StyleColors.NegativeTextColor;
+			
+		EndIf;	
+		
+	EndDo;	
+	
+EndProcedure
+
+////////////////////////////////////////////////////////////////////////////////
+// GENERAL TEXTBOX FUNCTIONS 
+
+Procedure OnRowOutputInTableBox(Control, RowAppearance, RowData)
+
+	BackColor = StyleColors.FieldBackColor;
+	
+	If Common.IsDocumentTabularPartAttribute("TableName",ThisObject.Metadata(),Control.Data) 
+		AND Common.IsDocumentTabularPartAttribute("TableKind",ThisObject.Metadata(),Control.Data) Then
+		
+		TableOfTables = GetTableOfTables();
+		
+		FoundRows = TableOfTables.FindRows(New Structure("TableName, TableKind",RowData.TableName,RowData.TableKind));
+		
+		If FoundRows.Count() = 0 Then
+			
+			BackColor = StyleColors.NegativeTextColor
+			
+		EndIf;
+		
+	EndIf;
+	
+	For each Col In Control.Columns Do
+
+		RowAppearance.Cells[Col.Name].BackColor = BackColor;
+		
+		If Not Col.Visible Then
+			Continue
+		EndIf;
+
+		If Col.Name = "LineNumber"
+			OR Col.Name = "UseInExchangeRateDifferenceCalculation" 
+			OR Col.Name = "Type"
+			OR Col.Name = "ExchangeRateDifferencesCarriedOut" Then
+			Continue
+		EndIf;
+
+		FormulaStructure = GetFormulaStructure(Control, RowData, Col.Name);
+		CellText = "";			
+		If FormulaStructure.FillingMethod = Enums.FieldFillingMethods.Value Then
+			// value
+			CellText = FormatAmount(FormulaStructure.Value);
+		Else
+			// formula
+			CellText = GetFormulaPresentation(FormulaStructure,Control);
+			If FormulaStructure.FillingMethod = Enums.FieldFillingMethods.Parameter
+				AND NOT IsBlankString(CellText) Then
+				CellText = "<"+CellText+">";
+			EndIf;	
+		EndIf;	
+
+		RowAppearance.Cells[Col.Name].ShowText = True;
+		RowAppearance.Cells[Col.Name].Text           = CellText;
+
+		RowAppearance.Cells[Col.Name].ReadOnly  = True;
+		
+	EndDo;
+	
+EndProcedure
+
+Procedure OnSelectionInTableBox(TableBox)
+	
+	If ReadOnly Or TableBox.ReadOnly Then
+		Return;
+	EndIf;
+	
+	If TableBox.CurrentColumn.Name = "Condition" Then
+
+		ControlsStructure = GetCurrentControlsForPage();
+		FormulaStructure = GetFormulaStructure(TableBox);
+		If ControlsStructure.CurrentRecords.CurrentData = Undefined Then
+			TableName ="";
+			TableKind =Enums.BookkeepingOperationTemplateTableKind.EmptyRef();
+		Else
+			TableName = ControlsStructure.CurrentRecords.CurrentData.TableName;
+			TableKind = ControlsStructure.CurrentRecords.CurrentData.TableKind;
+		EndIf;
+		Formula = EditFormula(FillingMethod, Formula, FormulaPresentation, TableKind, TableName, ControlsStructure.CurrentRecords, FormulaStructure.TypeRestriction, ThisForm);
+		FormulaPresentation = GetFormulaPresentation(New Structure("FillingMethod, Value",FillingMethod,Formula),ControlsStructure.CurrentRecords);
+		SetFieldValueOnChange(ControlsStructure.CurrentRecords,FillingMethod,Undefined,Formula,True);
+
+		
+		//ConditionForm         = GetForm("Condition", ThisForm);
+		//ConditionForm.Condition = TableBox.CurrentData.Condition;
+		//Param                = ConditionForm.DoModal();
+
+		//If Param <> Undefined Then
+		//	TableBox.CurrentData.Condition = Param;
+		//	If TableBox.Name = "Records" Then	
+		//		Formula = Param;
+		//	ElsIf TableBox.Name = "VATRecords" Then
+		//		VATFormula = Param;
+		//	EndIf;	
+		//EndIf;
+
+	ElsIf TableBox.CurrentColumn.Name = "LineNumber"
+		OR TableBox.CurrentColumn.Name = "UseInExchangeRateDifferenceCalculation"
+		OR TableBox.CurrentColumn.Name = "Type"
+		OR TableBox.CurrentColumn.Name = "ExchangeRateDifferencesCarriedOut" Then
+		// Do nothing
+	Else
+		
+		If IsExtDimensionControlAvailable(TableBox,,TableBox.CurrentColumn.Name) Then
+			
+			FormulaStructure = GetFormulaStructure(TableBox);
+			
+			ParameterWizardForm = GetForm("ParameterWizard", ThisForm, Code);
+			ParameterWizardForm.FillingMethod = FormulaStructure.FillingMethod;
+			
+			If FormulaStructure.FillingMethod = Enums.FieldFillingMethods.Value Then
+				ParameterWizardForm.Value = FormulaStructure.Value;
+			Else
+				ParameterWizardForm.Formula = FormulaStructure.Value;
+			EndIf;	
+			
+			ParameterWizardForm.TypeRestriction = FormulaStructure.TypeRestriction;
+			ParameterWizardForm.Object = ThisObject;
+			ParameterWizardForm.DocumentBase = DocumentBase;
+			
+			If TableBox.CurrentData = Undefined 
+				OR Not Common.IsDocumentTabularPartAttribute("TableName",ThisObject.Metadata(),TableBox.Data)
+				OR Not Common.IsDocumentTabularPartAttribute("TableKind",ThisObject.Metadata(),TableBox.Data) Then
+				ParameterWizardForm.TableName ="";
+				ParameterWizardForm.TableKind =Enums.BookkeepingOperationTemplateTableKind.EmptyRef();
+			Else
+				ParameterWizardForm.TableName = TableBox.CurrentData.TableName;
+				ParameterWizardForm.TableKind = TableBox.CurrentData.TableKind;
+			EndIf;
+			
+			ParameterWizardForm.TableBox = TableBox;
+			
+			If ParameterWizardForm.DoModal() = True Then
+				
+				SetFieldValueOnChange(TableBox,ParameterWizardForm.FillingMethod,ParameterWizardForm.Value,ParameterWizardForm.Formula,True);
+				
+			EndIf;	
+			
+		EndIf;
+		
+	EndIf;
+
+EndProcedure
+
+Function IsExtDimensionControlAvailable(TableBox, VTRow = Undefined, ColumnName) 
+	
+	If VTRow = Undefined Then
+		VTRow = TableBox.CurrentData;
+	EndIf;	
+	
+	If Left(ColumnName,12) = "ExtDimension" Then
+		
+		AccountFormulaStructure = GetFormulaStructure(TableBox,VTRow,"Account");
+		If AccountFormulaStructure.FillingMethod = Enums.FieldFillingMethods.Value Then
+			If ValueIsFilled(AccountFormulaStructure.Value) Then
+				If Number(Right(ColumnName,1))>AccountFormulaStructure.Value.ExtDimensionTypes.Count() Then
+					Return False;
+				EndIf;
+			Else
+				Alerts.AddAlert(Nstr("en = 'Please, choose account first!'; pl = 'Najperw należy wybrać konto!'"));
+				Return False;
+
+			EndIf;	
+		ElsIf AccountFormulaStructure.FillingMethod = Enums.FieldFillingMethods.Parameter
+			AND DocumentBase <> Undefined Then
+			FoundRow = Common.FindTabularPartRow(Parameters,New Structure("Name",AccountFormulaStructure.Value));
+			If FoundRow <> Undefined 
+				AND FoundRow.ParameterKind = Enums.BookkeepingOperationTemplateParameterKinds.NotLinked
+				AND TypeOf(FoundRow.Value) = TypeOf(ChartsOfAccounts.Bookkeeping.EmptyRef()) Then
+				
+				If ValueIsFilled(FoundRow.Value) Then
+					If Number(Right(ColumnName,1))>FoundRow.Value.ExtDimensionTypes.Count() Then
+						Return False;
+					EndIf;
+				Else
+					Alerts.AddAlert(Nstr("en = 'Please, choose account first!'; pl = 'Najperw należy wybrać konto!'"));
+					Return False;
+				EndIf;	
+				
+			EndIf;	
+			
+		EndIf;	
+		
+	EndIf;	
+	
+	Return True;
+	
+EndFunction	
+
+Function OnChangeInTableBox(TableBox) Export
+
+	// Performs also on clearing value fields
+
+	VTRow   = TableBox.CurrentData;
+	ColumnName = TableBox.CurrentColumn.Name;
+
+	MaxExtDimensionCount = Metadata.ChartsOfAccounts.Bookkeeping.MaxExtDimensionCount;
+
+	If (ColumnName = "Account") Or (Find(ColumnName, "ExtDimension") > 0) Then
+
+		Account = VTRow.Account;
+
+		For Cnt = 1 To MaxExtDimensionCount Do
+
+			If Account.Isempty() Then
+
+			ElsIf Cnt > Account.ExtDimensionTypes.Count() Then
+				VTRow["ExtDimension" + Cnt] = Undefined;
+			Else
+				ExtDimensionType = Account.ExtDimensionTypes[Cnt-1].ExtDimensionType;
+				ExtDimensionKindTypeDescription = ExtDimensionType.ValueType;
+				VTRow["ExtDimension" + Cnt] = ExtDimensionKindTypeDescription.AdjustValue(VTRow["ExtDimension" + Cnt]);
+			EndIf;
+
+		EndDo;
+
+	EndIf;
+
+	Return OnActivateCellInTableBox(TableBox);
+
+EndFunction
+
+Function OnActivateCellInTableBox(TableBox,AddingNewRowEvent = False, CurrentSelectedTablesControl = Undefined)
+	
+	If AddingNewRowEvent Then
+		AddingNewRowEvent = False;
+	
+		If CurrentSelectedTablesControl <> Undefined Then
+			
+			CurrentTable = CurrentSelectedTablesControl.CurrentData;
+			CurrentData = TableBox.CurrentData;
+			
+			If DocumentBase = Undefined Then
+				CurrentData.TableName = "";
+				CurrentData.TableKind = Enums.BookkeepingOperationTemplateTableKind.DocumentRecords;	
+			Else	
+				CurrentData.TableName = CurrentTable.TableName;
+				CurrentData.TableKind = CurrentTable.TableKind;	
+			EndIf;
+			
+		EndIf;
+		
+	EndIf;	
+
+	ControlsStructure = GetCurrentControlsForPage();
+	
+	CurRow  = TableBox.CurrentData;
+
+	If CurRow = Undefined Then
+		Return "";
+	EndIf;
+	
+	ColumnName = TableBox.CurrentColumn.Name;
+
+	ControlsStructure.CurrentLabelFormula.Caption = Nstr("en = 'Formula (Parameter):'; pl = 'Wzór (Parametr):'");
+
+	If ColumnName = "Condition" Then
+		
+		FormulaStructure = GetFormulaStructure(TableBox, CurRow, ColumnName);
+		
+		ControlsStructure.CurrentLabelFillingMethod.Enabled = True;
+		ControlsStructure.CurrentLabelFormula.Enabled = True;
+		ControlsStructure.CurrentLabelValue.Enabled = True;
+		ControlsStructure.CurrentFillingMethod.Enabled  = True;
+		ControlsStructure.CurrentFormulaPresentation.Enabled = True;
+		ControlsStructure.CurrentPanelFillingMethod.Enabled = True;
+		ControlsStructure.CurrentValue.Enabled = True;
+		ControlsStructure.CurrentValue.TypeRestriction = FormulaStructure.TypeRestriction;
+		ControlsStructure.CurrentValue.ChooseType = ControlsStructure.CurrentValue.TypeRestriction.Types().Count()<>1;
+		ControlsStructure.CurrentButtonNewParameter.Enabled = True;
+		ControlsStructure.CurrentLabelFormula.Caption   = Nstr("en='Condition:';pl='Warunek:'");
+		
+		FillingMethod = FormulaStructure.FillingMethod;
+		Formula = FormulaStructure.Value;
+		FormulaPresentation = GetFormulaPresentation(FormulaStructure,TableBox);
+		Value = ControlsStructure.CurrentValue.TypeRestriction.AdjustValue(FormulaStructure.Value);
+	
+	ElsIf ColumnName <> "LineNumber"
+		AND ColumnName <> "ExchangeRateDifferencesCarriedOut"
+		AND ColumnName <> "Type"
+		AND ColumnName <> "UseInExchangeRateDifferenceCalculation" Then
+
+		If IsExtDimensionControlAvailable(TableBox,,ColumnName) Then
+			
+			FormulaStructure = GetFormulaStructure(TableBox, CurRow, ColumnName);
+			
+			ControlsStructure.CurrentLabelFillingMethod.Enabled = True;
+			ControlsStructure.CurrentLabelFormula.Enabled = True;
+			ControlsStructure.CurrentLabelValue.Enabled = True;
+			ControlsStructure.CurrentFillingMethod.Enabled  = True;
+			ControlsStructure.CurrentFormulaPresentation.Enabled = True;
+			ControlsStructure.CurrentPanelFillingMethod.Enabled = True;
+			ControlsStructure.CurrentValue.Enabled = True;
+			ControlsStructure.CurrentValue.TypeRestriction = FormulaStructure.TypeRestriction;
+			ControlsStructure.CurrentValue.ChooseType = ControlsStructure.CurrentValue.TypeRestriction.Types().Count()<>1;
+			ControlsStructure.CurrentButtonNewParameter.Enabled = True;
+			
+			FillingMethod = FormulaStructure.FillingMethod;
+			Formula = FormulaStructure.Value;
+			FormulaPresentation = GetFormulaPresentation(FormulaStructure,TableBox);
+			Value = ControlsStructure.CurrentValue.TypeRestriction.AdjustValue(FormulaStructure.Value);
+			
+		Else
+			
+			DisableAllControlsForFieldEditing(ControlsStructure);
+			
+		EndIf;
+	Else
+		
+		DisableAllControlsForFieldEditing(ControlsStructure);
+		
+	EndIf;
+		
+	UpdateDialog();
+	
+	Return FillingMethod;
+	
+EndFunction
+
+Procedure DisableAllControlsForFieldEditing(ControlsStructure)
+	
+	ControlsStructure.CurrentLabelFillingMethod.Enabled = False;
+	ControlsStructure.CurrentLabelFormula.Enabled = False;
+	ControlsStructure.CurrentFormulaPresentation.Enabled        = False;
+	ControlsStructure.CurrentFillingMethod.Enabled  = False;
+	ControlsStructure.CurrentButtonNewParameter.Enabled = False;
+	ControlsStructure.CurrentValue.Enabled = False;
+	ControlsStructure.CurrentLabelValue.Enabled = False;
+	ControlsStructure.CurrentPanelFillingMethod.Enabled = False;
+	FormulaPresentation = "";
+	Formula = "";
+	
+EndProcedure	
+
+////////////////////////////////////////////////////////////////////////////////
+// GENERAL PURPOSE PROCEDURES AND FUNCTIONS
+
+// Check parameter (uniquess and correction)
+//
+// Parameters:
+//  Name           - String - Parameter Name to check
+//  Row           - reference on tab. part row, if should be checked already written parameter
+//
+// Return Value:
+//  True          - If Name is correct
+//  False         - if Name is incorrect
+// 
+Function NameIsCorrect(Name, Row=Undefined) Export
+
+	Checking = New Structure();
+
+	Name = TrimAll(Name);
+	
+	Try
+		Checking.Insert(Name, "111");
+	Except		
+		Domessagebox(Alerts.ParametrizeString(Nstr("en = 'Name %P1 is incorrect parameter''s name!'; pl = 'Nazwa %P1 jest niepoprawną nazwą parametru!'"),New Structure("P1",Name)),6);
+		Return False;
+	EndTry;
+	
+	If Upper(Name) = Upper("Type")
+		OR Upper(Name) = Upper("TypeOf") Then
+		Domessagebox(Alerts.ParametrizeString(Nstr("en = 'Name %P1 is incorrect parameter''s name!'; pl = 'Nazwa %P1 jest niepoprawną nazwą parametru!'"),New Structure("P1",Name)),6);
+		Return False;
+	EndIf;	
+
+	Checking = New Structure();
+	Checking.Insert("Name", Name);
+	RowsArray = Parameters.FindRows(Checking);
+
+	If RowsArray.Count() > 0 Then
+
+		If Row = Undefined Then
+			Domessagebox(Nstr("en = 'Parameter''s Name is not unique!'; pl = 'Nazwa parametru nie jest unikatowa!'"), 6);
+			Return False;
+		ElsIf (RowsArray.Count() = 1) AND (RowsArray[0] = Row) Then
+
+		Else
+			Domessagebox(Nstr("en = 'Parameter''s Name is not unique!'; pl = 'Nazwa parametru nie jest unikatowa!'"), 6);
+			Return False;
+		EndIf;
+
+	EndIf;
+
+	Return True;
+
+EndFunction
+
+// Check formula's expression is this expression is parameter or arbitrary expression
+//
+// Parameters:
+//  Expression      - String - formula's expression
+//
+// Return Value:
+//  True - If formula's expression is parameter
+//  False   - If formula's expression is arbitrary expression
+// 
+Function ThisParameter(Expression)
+
+	For each Param In Parameters Do
+
+		If (TrimAll(Param.Name) = Expression) Or ("Parameters."+TrimAll(Param.Name) = Expression) Then
+			Return True;
+		EndIf;
+
+	EndDo;
+
+	Return False;
+
+EndFunction
+
+// Check is value selected in given column of record's template 
+//
+// Parameters:
+//  CurRow      - ref on row - record's template
+//  ColumnName     - Record's template column Name
+//  ColumnTypes    - Type descriptions of column
+//
+// Return Value:
+//  True - Value is selected
+// 
+Function ValueSelected(TableBox,CurRow = "", ColumnName = "", ColumnTypes = "")
+
+	If CurRow = "" Then
+		CurRow = TableBox.CurrentData;
+	EndIf;
+
+	If ColumnName = "" Then
+		ColumnName = TableBox.CurrentColumn.Name;
+	EndIf;
+
+	If ColumnTypes = "" Then
+		ColumnTypes = Accounting.GetAccountingRecordsColumnType(Metadata(), TableBox, CurRow, ColumnName);
+	EndIf;
+
+	If ColumnTypes = Undefined Then
+		Return False;
+	ElsIf CurRow[ColumnName] = ColumnTypes.AdjustValue(Undefined) Then
+		Return False;
+	Else
+		Return True;
+	EndIf;
+
+EndFunction
+
+Procedure ChooseMethod(TableBox,FillingMethodAsString)
+
+	//If TableBox.Value.Count() = 0 
+	//	OR TableBox.CurrentRow = Undefined Then
+	//	Domessagebox(Nstr("en = 'Record is not selected!'; pl = 'Zapis nie jest wybrany!'"));
+	//	Return;
+	//EndIf;
+
+	//AssitantForm = GetForm("Wizard", ThisForm, Code);
+	//AssitantForm.TableBox = TableBox;
+	//AssitantForm.FillingMethodAsString = FillingMethodAsString;
+	//AssitantForm.DocumentBase = DocumentBase;
+	//AssitantForm.DoModal();
+
+EndProcedure
+
+Procedure OpenRecordCondition(TableBox)
+
+	CurRow = TableBox.CurrentData;
+
+	If CurRow = Undefined Then
+		Return
+	EndIf;
+
+	ConditionForm = GetForm("Condition", ThisForm);
+	ConditionForm.Condition = CurRow.Condition;
+	Param = ConditionForm.DoModal();
+
+	If Param <> Undefined Then
+
+		CurRow.Condition = Param;
+		If TableBox.CurrentColumn.Name = "Condition" Then
+			If TableBox.Name = "Records" Then
+				Formula = Param;
+			ElsIf TableBox.Name = "VATRecords" Then
+				VATFormula = Param;
+			EndIf;	
+		EndIf;
+
+	EndIf;
+
+EndProcedure
+
+Procedure OpenFormulaEditing(TableBox)
+	
+	CurRow = TableBox.CurrentData;
+
+	If CurRow = Undefined Then
+		Return
+	EndIf;
+
+	FormulasForm = GetForm("FormulasSetting", ThisForm, CurRow);
+	
+	If FormulasForm.Isopen() Then
+		FormulasForm.Activate();
+		Return;
+	EndIf;
+
+	FormulasForm.TableRow = CurRow;
+
+	For each MDAttribute In Metadata.Catalogs.BookkeepingOperationsTemplates.TabularSections[TableBox.Name].Attributes Do
+
+		If MDAttribute.Name = "Formulas"
+			OR MDAttribute.Name = "Condition" 
+			OR MDAttribute.Name = "TableKind" 
+			OR MDAttribute.Name = "ExchangeRateDifferencesCarriedOut" 
+			OR MDAttribute.Name = "UseInExchangeRateDifferenceCalculation" 
+			OR MDAttribute.Name = "TableName" Then
+			Continue
+		EndIf;
+
+		ExtDimensionDescription = "";
+		FieldTypes = Accounting.GetAccountingRecordsColumnType(Metadata(), TableBox, CurRow, MDAttribute.Name, ExtDimensionDescription);
+
+		If FieldTypes = Undefined Then
+			Continue
+		EndIf;
+
+		VTRow = FormulasForm.FormulasTable.Add();
+		VTRow.Name = MDAttribute.Name;
+		VTRow.Presentation = MDAttribute.Synonym + ?((ExtDimensionDescription<>"")AND(ExtDimensionDescription<>MDAttribute.Name), " (", "") + ExtDimensionDescription + ?((ExtDimensionDescription<>"")AND(ExtDimensionDescription<>MDAttribute.Name), ")", "");
+		VTRow.Formula = GetFormula(TableBox ,CurRow, MDAttribute.Name);
+
+	EndDo;
+	
+	FormulasForm.TableBox = TableBox;
+	FormulasForm.DoModal();
+
+EndProcedure // CommandBarOpenFormulaEditing()
+
+Procedure OpenParametersSettings(TableBox)
+	
+	CurRow = TableBox.CurrentData;
+
+	If CurRow = Undefined Then
+		Return
+	EndIf;
+
+	SettingForm = GetForm("ParametersSetting", ThisForm, CurRow);
+	SettingForm.TableRow = CurRow;
+
+	For each MDAttribute In Metadata.Catalogs.BookkeepingOperationsTemplates.TabularSections[TableBox.Name].Attributes Do
+
+		If MDAttribute.Name = "Formulas"
+			OR MDAttribute.Name = "Condition"
+			OR MDAttribute.Name = "TableName"
+			OR MDAttribute.Name = "ExchangeRateDifferencesCarriedOut"
+			OR MDAttribute.Name = "UseInExchangeRateDifferenceCalculation"
+			OR MDAttribute.Name = "TableKind" Then
+			Continue
+		EndIf;
+
+		If ValueSelected(TableBox,CurRow, MDAttribute.Name) Then
+			Continue
+		EndIf;
+
+		FieldFormula = GetFormula(TableBox, CurRow, MDAttribute.Name);
+
+		If FieldFormula <> "" Then
+
+			If Not ThisParameter(FieldFormula) Then
+				Continue
+			EndIf;
+
+		EndIf;
+
+		ExtDimensionDescription = "";
+		FieldTypes = Accounting.GetAccountingRecordsColumnType(Metadata(), TableBox, CurRow, MDAttribute.Name, ExtDimensionDescription);
+
+		If FieldTypes = Undefined Then
+			Continue
+		EndIf;
+
+		ParametersArray = GetParametersArray(FieldTypes);
+
+		VTRow         = SettingForm.ParametersTable.Add();
+		VTRow.Name     = MDAttribute.Name;
+		VTRow.Presentation = MDAttribute.Synonym + ?((ExtDimensionDescription<>"")AND(ExtDimensionDescription<>MDAttribute.Name), " (", "") + ExtDimensionDescription + ?((ExtDimensionDescription<>"")AND(ExtDimensionDescription<>MDAttribute.Name), ")", "");
+
+		If FieldFormula <> "" Then
+			VTRow.Parameter   = StrReplace(FieldFormula, "Parameters.", "");
+			VTRow.New      = False;
+			VTRow.Set = False;
+		ElsIf ParametersArray.Count() > 0 Then
+			VTRow.Parameter   = StrReplace(ParametersArray[0], "Parameters.", "");
+			VTRow.New      = False;
+			VTRow.Set = True;
+		Else
+			VTRow.Parameter   = ?(ExtDimensionDescription <> "", ExtDimensionDescription, MDAttribute.Name);
+			VTRow.New      = True;
+			VTRow.Set = True;
+		EndIf;
+
+	EndDo;
+	
+	SettingForm.TableBox = TableBox;
+	SettingForm.DoModal();
+
+EndProcedure // CommandBarOpenParametersSettings()
+
+Procedure AddTableAction(TableBox, CurrentSelectedTables)
+	
+	TablesList = GetListOfAvailableTables(CurrentSelectedTables);
+	ChoiceForm = GetForm("TableChoiceForm",ThisForm,ThisForm);
+	ChoiceForm.TablesList = TablesList;
+	ChoiceForm.TablesListSource = TablesList.Copy();
+	ReturnStructure = ChoiceForm.DoModal();
+	If  ReturnStructure <> Undefined Then
+		
+		ParentRows = GetParentRowsByKind(ReturnStructure.TableKind,CurrentSelectedTables.Rows[0]);
+		ParentRows.Availability = True;
+		NewRow = ParentRows.Rows.Add();
+		NewRow.TableName = ReturnStructure.TableName;
+		NewRow.TableKind = ReturnStructure.TableKind;
+		NewRow.TablePicture = ReturnStructure.TablePicture;
+		NewRow.TableSynonym = ReturnStructure.TableSynonym;
+		NewRow.Availability = True;
+		
+		TableBox.Expand(NewRow.Parent);
+		
+	EndIf;		
+	
+EndProcedure
+
+Procedure BeforeDeleteTableAction(CurrentData,CurrentRecords,Cancel)
+	
+	If CurrentData.Parent = Undefined Then
+		
+		DoMessageBox(Nstr("en='This row is predefined and could not be deleted!';pl='Ten wiersz jest predifiniowany i nie może być usunięty!'"));
+		Cancel = True;
+		
+	Else
+		
+		FoundRows = CurrentRecords.FindRows(New Structure("TableKind, TableName", CurrentData.TableKind, CurrentData.TableName));
+		
+		If FoundRows.Count()>0 Then
+			If DoQueryBox(Nstr("en='Some records linked to this table! After deleting table this records also will be deleted. Are you sure want to delete this table?';pl='Niektóre zapisy powiązane z tabelą! Po usunięcu tabeli zapisu zostaną również usunięty. Czy napewno chcesz usunąć tabelę?'"),QuestionDialogMode.YesNo) = DialogReturnCode.No Then
+				// cancel operation
+				Cancel = True;
+			Else
+				// delete records linked with table
+				For Each FoundRow In FoundRows Do
+					CurrentRecords.Delete(FoundRow);
+				EndDo;	
+			EndIf;	
+		EndIf;	
+		
+	EndIf;	
+	
+EndProcedure	
+
+Procedure AfterDeleteTableAction(Table, CurrentData, CurrentRecords)
+	
+	If CurrentData.Parent <> Undefined
+		AND CurrentData.TableKind = Enums.BookkeepingOperationTemplateTableKind.EmptyRef() 
+		AND CurrentData.Rows.Count() = 0 Then
+		CurrentData.Parent.Rows.Delete(CurrentData);
+	EndIf;	
+			
+EndProcedure	
+
+Procedure SetFilterOnTable(SelectedTablesControl, RecordsControl)
+	
+	CurrentData = SelectedTablesControl.CurrentData;
+	
+	If CurrentData = Undefined Then
+		
+		Return;
+		
+	EndIf;	
+	
+	If CurrentData.Rows.Count()>0 Then
+		
+		RecordsControl.RowFilter.Reset();
+		If CurrentData.Filter <> Undefined AND CurrentData.Filter.Count()>0 Then 
+			RecordsControl.RowFilterSettings.TableKind.Enabled = False;              	
+			RecordsControl.RowFilter.TableKind.Use = True; 
+		Else
+			RecordsControl.RowFilterSettings.TableKind.Enabled = True;
+			RecordsControl.RowFilter.TableKind.Use = False;
+		EndIf;	
+		RecordsControl.RowFilterSettings.TableName.Enabled = True;
+		RecordsControl.RowFilter.TableKind.ComparisonType = ComparisonType.InList;
+		RecordsControl.RowFilter.TableKind.Value = CurrentData.Filter;
+				
+	ElsIf CurrentData.Parent = Undefined Then
+		
+		RecordsControl.RowFilterSettings.TableKind.Enabled = True;
+		RecordsControl.RowFilterSettings.TableName.Enabled = True;
+		RecordsControl.RowFilter.Reset();
+		
+	Else	
+		
+		RecordsControl.RowFilterSettings.TableKind.Enabled = False;
+		RecordsControl.RowFilterSettings.TableName.Enabled = False;
+		RecordsControl.RowFilter.TableName.Set(CurrentData.TableName,True);
+		RecordsControl.RowFilter.TableKind.Set(CurrentData.TableKind,True);
+		
+	EndIf;	
+	
+	If (CurrentData.Parent = Undefined OR CurrentData.Rows.Count()>0) 
+		AND DocumentBase<>Undefined Then
+		RecordsControl.ChangeRowSet = False;
+	Else
+		RecordsControl.ChangeRowSet = True;
+	EndIf;	
+	
+EndProcedure	
+
+Procedure InitializeSelectedTables(CurrentSelectedTables, RecordsTable)
+	
+	CurrentSelectedTables.Rows.Clear();
+	AllRecordsRow = CurrentSelectedTables.Rows.Add();
+	AllRecordsRow.TableName = "AllRecords";
+	AllRecordsRow.TableSynonym = Nstr("en='All records';pl='Wszystkie zapisy'");
+	AllRecordsRow.TableKind = Enums.BookkeepingOperationTemplateTableKind.EmptyRef();
+	AllRecordsRow.TablePicture = PictureLib.AllRecords;
+	AllRecordsRow.Filter = New ValueList;
+	
+	GroupedRecords = RecordsTable.Unload(,"TableName, TableKind");
+	GroupedRecords.GroupBy("TableName, TableKind");
+	
+	TableOfTables = GetTableOfTables();
+	
+	TabularSectionRows = Undefined;
+	InformationRegisterRows = Undefined;
+	AccumulationRegisterRows = Undefined;
+	
+	For Each GroupedRecordsItem In GroupedRecords Do
+		
+		FoundRows = TableOfTables.FindRows(New Structure("TableName, TableKind",GroupedRecordsItem.TableName,GroupedRecordsItem.TableKind));
+		If FoundRows.Count()=0 Then
+			
+			Alerts.AddAlert(Alerts.ParametrizeString(Nstr("en='There is no table with name %P1 in configuration!';pl='Brak tabeli o nazwie %P1 w konfiguracji!'"),New Structure("P1",GroupedRecordsItem.TableName)),Enums.AlertType.Error);
+			OneRow = Undefined;
+			
+		ElsIf FoundRows.Count()>1 Then
+			
+			Alerts.AddAlert(Alerts.ParametrizeString(Nstr("en='Too many tables with name %P1 in configuration!';pl='Za dużo tabel o nazwie %P1 w konfiguracji!'"),New Structure("P1",GroupedRecordsItem.TableName)),Enums.AlertType.Error);
+			OneRow = FoundRows[0];
+			
+		Else
+			
+			OneRow = FoundRows[0];
+			
+		EndIf;
+		
+		ParentRows = GetParentRowsByKind(GroupedRecordsItem.TableKind,AllRecordsRow);	
+		
+		TablePicture = GetKindPicture(GroupedRecordsItem.TableKind);
+		
+		NewRow = ParentRows.Rows.Add();
+		NewRow.TableName = GroupedRecordsItem.TableName;
+		If OneRow = Undefined Then
+			NewRow.TableSynonym = "<"+GroupedRecordsItem.TableName+">";
+		Else	
+			NewRow.TableSynonym = OneRow.TableSynonym;
+		EndIf;
+		NewRow.TableKind = GroupedRecordsItem.TableKind;
+		NewRow.TablePicture = TablePicture;
+			
+		
+	EndDo;
+	
+	UnMarkAllSelectedTables(CurrentSelectedTables.Rows);
+	ListOfNotAvailableTables = GetListOfNotAvailableTables(CurrentSelectedTables.Rows,TableOfTables);
+	MarkUnavailableTables(ListOfNotAvailableTables);
+	
+EndProcedure	
+
+Function OnProcessingChoice(DataProcessor)
+	
+	If Not CommonAtServer.IsDocumentAttribute("Document", DataProcessor.Metadata())
+		OR Not CommonAtServer.IsDocumentAttribute("BookkeepingOperation", DataProcessor.Metadata()) 
+		OR NOT DataProcessor.Metadata().Attributes.BookkeepingOperation.Type.ContainsType(Type("DocumentRef.BookkeepingOperation")) Then
+			DoMessageBox(NStr("en = 'This data processor cannot be used as bookkeeping operation external template'; pl = 'Ta obróbka nie może zostać użyta jako zewnętrzny schemat księgowania'"));
+			Return False;
+	EndIf;
+		
+	Return True;
+	
+EndFunction // GetProcessingParameters()
+
+Function GetFileDialog(WorkMode)
+	
+	Dialog = New FileDialog(FileDialogMode.Open);
+	Dialog.Title = NStr("en='Select bookkeeping operation external template file';pl='Wybierz plik zewnętrznego schematu księgowania'");
+	Dialog.Filter = "Processing (*.epf)|*.epf";
+	Dialog.DefaultExt = "epf";
+	Dialog.FullFileName = FileName;
+	
+	Return Dialog;
+	
+EndFunction // GetFileDialog()
+
+Procedure UpdateDialog()
+		
+	SetFilterOnTable(Controls.SelectedTables,Controls.Records);
+	SetFilterOnTable(Controls.SelectedSalesVATTables,Controls.SalesVATRecords);
+	SetFilterOnTable(Controls.SelectedPurchaseVATTables,Controls.PurchaseVATRecords);
+	
+	If InternalDataProcessor Then
+		
+		Controls.PanelDataProcessor.CurrentPage = Controls.PanelDataProcessor.Pages.InternalDataProcessor;
+		
+	Else
+		
+		Controls.PanelDataProcessor.CurrentPage = Controls.PanelDataProcessor.Pages.ExternalDataProcessor;
+		
+	EndIf;
+	
+	EnabledFlag = Undefined;
+	
+	If Type = Enums.BookkeepingOperationTemplateTypes.Normal Then
+		
+		EnabledFlag = False;
+		
+	ElsIf Type = Enums.BookkeepingOperationTemplateTypes.AsDataProcessor Then
+		
+		EnabledFlag = True;
+		
+	EndIf;	
+	
+	Controls.LabelOperationTemplateAsDataProcessor.Enabled = EnabledFlag;
+	Controls.InternalDataProcessor.Enabled = EnabledFlag;
+	Controls.PanelDataProcessor.Enabled = EnabledFlag;	
+	
+	If DocumentBase <> Undefined Then
+		FilterDescription = Nstr("en='<Set filter>';pl='<Ustaw filtr>';");
+	Else
+		FilterDescription = "";
+	EndIf;	
+		
+	DocumentsTabularPartsProcessing.ShowHideColumns(DocumentBase=Undefined,Controls.Parameters,New Structure("Obligatory,NotRequest"));
+	
+	UpdateViewOnFillingMethod();
+	
+	If DocumentBase = Undefined Then
+		
+		// unlink panel
+		Controls.PanelSelectedTables.SetLink(ControlEdge.Right);
+		Controls.PanelPurchaseVATSelectedTables.SetLink(ControlEdge.Right);
+		Controls.PanelSalesVATSelectedTables.SetLink(ControlEdge.Right);
+		
+		// unlink splitter
+		Controls.RecordsSplitter.SetLink(ControlEdge.Left,Controls.PanelSelectedTables,ControlEdge.Right);
+		Controls.PurchaseVATRecordsSplitter.SetLink(ControlEdge.Left,Controls.PanelPurchaseVATSelectedTables,ControlEdge.Right);
+		Controls.SalesVATRecordsSplitter.SetLink(ControlEdge.Left,Controls.PanelSalesVATSelectedTables,ControlEdge.Right);
+		
+		// collapse
+		Controls.PanelSelectedTables.Collapse            = ControlCollapseMode.Left;
+		Controls.RecordsSplitter.Collapse                = ControlCollapseMode.Left;
+		Controls.PanelPurchaseVATSelectedTables.Collapse = ControlCollapseMode.Left;
+		Controls.PurchaseVATRecordsSplitter.Collapse     = ControlCollapseMode.Left;
+		Controls.PanelSalesVATSelectedTables.Collapse    = ControlCollapseMode.Left;
+		Controls.SalesVATRecordsSplitter.Collapse        = ControlCollapseMode.Left;
+		
+	Else
+		
+		// link splitter
+		Controls.RecordsSplitter.SetLink(ControlEdge.Left,Controls.GeneralPanel,ControlEdge.Left,Controls.GeneralPanel,ControlEdge.Right);
+		Controls.PurchaseVATRecordsSplitter.SetLink(ControlEdge.Left,Controls.GeneralPanel,ControlEdge.Left,Controls.GeneralPanel,ControlEdge.Right);
+		Controls.SalesVATRecordsSplitter.SetLink(ControlEdge.Left,Controls.GeneralPanel,ControlEdge.Left,Controls.GeneralPanel,ControlEdge.Right);
+		
+		// link panel to splitter
+		Controls.PanelSelectedTables.SetLink(ControlEdge.Right,Controls.RecordsSplitter,ControlEdge.Left);
+		Controls.PanelPurchaseVATSelectedTables.SetLink(ControlEdge.Right,Controls.PurchaseVATRecordsSplitter,ControlEdge.Left);
+		Controls.PanelSalesVATSelectedTables.SetLink(ControlEdge.Right,Controls.SalesVATRecordsSplitter,ControlEdge.Left);
+		
+		// expand
+		Controls.PanelSelectedTables.Collapse            = ControlCollapseMode.None;
+		Controls.RecordsSplitter.Collapse                = ControlCollapseMode.None;
+		Controls.PanelPurchaseVATSelectedTables.Collapse = ControlCollapseMode.None;
+		Controls.PurchaseVATRecordsSplitter.Collapse     = ControlCollapseMode.None;
+		Controls.PanelSalesVATSelectedTables.Collapse    = ControlCollapseMode.None;
+		Controls.SalesVATRecordsSplitter.Collapse        = ControlCollapseMode.None;
+		
+	EndIf;
+	
+	// Manage block button caption
+	If TemplateIsBlocked() Then
+		Controls.ButtonSetBlockedMark.Caption = NStr("en = 'Unlock this template for use in new documents'; pl = 'Odblokuj używanie tego schematu dla nowych dokumentów'");
+		Controls.Description.Picture = PictureLib.Stop;
+	Else
+		Controls.ButtonSetBlockedMark.Caption = NStr("en = 'Lock this template for use in new documents'; pl = 'Zablokuj używanie tego schematu dla nowych dokumentów'");
+		Controls.Description.Picture = New Picture;
+	EndIf;
+	
+	Controls.AlgorithmTextDocumentField.Enabled = (AlgorithmType <> Enums.BookkeepingOperationTemplateAlgorithmTypes.None AND AlgorithmType <> Enums.BookkeepingOperationTemplateAlgorithmTypes.EmptyRef());
+	If ValueIsNotFilled(AlgorithmType) Then
+		Controls.PanelLabel.CurrentPage = Controls.PanelLabel.Pages.None;
+	Else
+		Controls.PanelLabel.CurrentPage = Controls.PanelLabel.Pages[CommonAtServer.GetEnumNameByValue(AlgorithmType)];
+	EndIf;	
+	
+	Common.SetControlMarkIncompleteAndEnable(Controls.AutoDifferenceCompensationAmount,AutoDifferenceCompensationAmount,AutoDifferenceCompensation);
+	
+EndProcedure
+
+Procedure UpdateModeLabel()
+	
+	If WorkMode Then
+		Controls.LabelWorkMode.Caption = NStr("en = 'Work mode'; pl = 'Tryb roboczy'");
+		Controls.LabelWorkMode.Picture = New Picture;
+		Controls.ButtonWorkMode.Caption = NStr("en = 'Turn back to test mode'; pl = 'Wróć do trybu testowego'");
+	Else
+		Controls.LabelWorkMode.Caption = NStr("en = 'Test mode'; pl = 'Tryb testowy'");
+		Controls.LabelWorkMode.Picture = PictureLib.Important;
+		Controls.ButtonWorkMode.Caption = NStr("en = 'Turn to work mode'; pl = 'Przełącz na tryb roboczy'");
+	EndIf;
+	
+EndProcedure
+
+Procedure UpdateViewOnFillingMethod()
+	
+	ControlsStructure = GetCurrentControlsForPage();
+	
+	If ControlsStructure.CurrentRecords <> Undefined Then
+		ControlsEnabled = ControlsStructure.CurrentRecords.CurrentData <> Undefined 
+		AND ControlsStructure.CurrentRecords.CurrentColumn <> Undefined;
+		
+		If NOT ControlsEnabled Then
+			
+			ControlsStructure.CurrentLabelFillingMethod.Enabled = ControlsEnabled;
+			ControlsStructure.CurrentFillingMethod.Enabled = ControlsEnabled;
+			ControlsStructure.CurrentButtonNewParameter.Enabled = ControlsEnabled;
+			ControlsStructure.CurrentPanelFillingMethod.Enabled = ControlsEnabled;
+			ControlsStructure.CurrentLabelFormula.Enabled = ControlsEnabled;
+			ControlsStructure.CurrentFormulaPresentation.Enabled = ControlsEnabled;
+			ControlsStructure.CurrentValue.Enabled = ControlsEnabled;
+			ControlsStructure.CurrentLabelValue.Enabled = ControlsEnabled;
+		EndIf;
+		
+		If ControlsStructure.CurrentPanelFillingMethod<> Undefined Then
+			
+			If FillingMethod = Enums.FieldFillingMethods.EmptyRef() Then
+				ControlsStructure.CurrentPanelFillingMethod.CurrentPage = ControlsStructure.CurrentPanelFillingMethod.Pages.Empty;
+			ElsIf FillingMethod = Enums.FieldFillingMethods.Value Then
+				ControlsStructure.CurrentPanelFillingMethod.CurrentPage = ControlsStructure.CurrentPanelFillingMethod.Pages.Value;
+			Else
+				ControlsStructure.CurrentPanelFillingMethod.CurrentPage = ControlsStructure.CurrentPanelFillingMethod.Pages.Formula;
+			EndIf;	
+			
+		EndIf;
+	EndIf;
+	
+EndProcedure	
+
+// Returns structure with list of current controls in page
+Function GetCurrentControlsForPage()
+	
+	GeneralPanelControl = Controls.GeneralPanel;
+	GeneralPanelControlPages = GeneralPanelControl.Pages;
+	GeneralPanelControlCurrentPage = GeneralPanelControl.CurrentPage;
+	
+	CurrentSelectedTables = Undefined;
+	CurrentRecords = Undefined;
+	CurrentLabelFillingMethod = Undefined;
+	CurrentFillingMethod = Undefined;
+	CurrentButtonNewParameter = Undefined;
+	CurrentPanelFillingMethod = Undefined;
+	CurrentLabelFormula = Undefined;
+	CurrentFormulaPresentation = Undefined;
+	CurrentValue = Undefined;
+	CurrentLabelValue = Undefined;
+	
+	If GeneralPanelControlCurrentPage = GeneralPanelControlPages.Records Then
+		CurrentSelectedTables = Controls.SelectedTables;
+		CurrentRecords = Controls.Records;
+		CurrentLabelFillingMethod = Controls.LabelFillingMethod;
+		CurrentFillingMethod = Controls.FillingMethod;
+		CurrentButtonNewParameter = Controls.ButtonNewParameter;
+		CurrentPanelFillingMethod = Controls.PanelFillingMethod;
+		CurrentLabelFormula = Controls.LabelFormula;
+		CurrentFormulaPresentation = Controls.FormulaPresentation;
+		CurrentValue = Controls.Value;
+		CurrentLabelValue = Controls.LabelValue;
+	ElsIf GeneralPanelControlCurrentPage = GeneralPanelControlPages.PurchaseVATRecords Then		
+		CurrentSelectedTables = Controls.SelectedPurchaseVATTables;
+		CurrentRecords = Controls.PurchaseVATRecords;
+		CurrentLabelFillingMethod = Controls.LabelPurchaseVATFillingMethod;
+		CurrentFillingMethod = Controls.PurchaseVATFillingMethod;
+		CurrentButtonNewParameter = Controls.PurchaseVATButtonNewParameter;
+		CurrentPanelFillingMethod = Controls.PanelPurchaseVATFillingMethod;
+		CurrentLabelFormula = Controls.LabelPurchaseVATFormula;
+		CurrentFormulaPresentation = Controls.PurchaseVATFormulaPresentation;
+		CurrentValue = Controls.PurchaseVATValue;
+		CurrentLabelValue = Controls.LabelPurchaseVATValue;
+	ElsIf GeneralPanelControlCurrentPage = GeneralPanelControlPages.SalesVATRecords Then
+		CurrentSelectedTables = Controls.SelectedSalesVATTables;
+		CurrentRecords = Controls.SalesVATRecords;
+		CurrentLabelFillingMethod = Controls.LabelSalesVATFillingMethod;
+		CurrentFillingMethod = Controls.SalesVATFillingMethod;
+		CurrentButtonNewParameter = Controls.SalesVATButtonNewParameter;
+		CurrentPanelFillingMethod = Controls.PanelSalesVATFillingMethod;
+		CurrentLabelFormula = Controls.LabelSalesVATFormula;
+		CurrentFormulaPresentation = Controls.SalesVATFormulaPresentation;
+		CurrentValue = Controls.SalesVATValue;
+		CurrentLabelValue = Controls.LabelSalesVATValue;
+	ElsIf GeneralPanelControlCurrentPage = GeneralPanelControlPages.ExchangeRateDifferences Then	
+		CurrentSelectedTables = Undefined;
+		CurrentRecords = Controls.ExchangeRateDifferences;
+		CurrentLabelFillingMethod = Controls.LabelExchangeRateDifferencesFillingMethod;
+		CurrentFillingMethod = Controls.ExchangeRateDifferencesFillingMethod;
+		CurrentButtonNewParameter = Controls.ExchangeRateDifferencesButtonNewParameter;
+		CurrentPanelFillingMethod = Controls.PanelExchangeRateDifferencesFillingMethod;
+		CurrentLabelFormula = Controls.LabelExchangeRateDifferencesFormula;
+		CurrentFormulaPresentation = Controls.ExchangeRateDifferencesFormulaPresentation;
+		CurrentValue = Controls.ExchangeRateDifferencesValue;
+		CurrentLabelValue = Controls.LabelExchangeRateDifferencesValue;
+	EndIf;	
+	
+	
+	Return New Structure("CurrentSelectedTables, CurrentRecords, CurrentLabelFillingMethod, CurrentFillingMethod, CurrentButtonNewParameter, CurrentPanelFillingMethod, CurrentLabelFormula, CurrentFormulaPresentation, CurrentValue, CurrentLabelValue",CurrentSelectedTables, CurrentRecords, CurrentLabelFillingMethod, CurrentFillingMethod, CurrentButtonNewParameter, CurrentPanelFillingMethod, CurrentLabelFormula, CurrentFormulaPresentation, CurrentValue, CurrentLabelValue);
+	
+EndFunction	
+
+Function TemplateIsBlocked()
+	
+	If IsNew() Then
+		Return False;
+	EndIf;
+	
+	Query = New Query;
+	Query.Text = "SELECT
+	             |	BlockedBookkeepingOperationTemplates.Template
+	             |FROM
+	             |	InformationRegister.BlockedBookkeepingOperationTemplates AS BlockedBookkeepingOperationTemplates
+	             |WHERE
+	             |	BlockedBookkeepingOperationTemplates.Template = &Template";
+	
+	Query.SetParameter("Template", Ref);
+	Selection = Query.Execute().Select();
+	
+	If Selection.Next() Then
+		Return True;
+	Else
+		Return False;
+	EndIf;
+	
+EndFunction
+
+///////////////////////////////////////////////////////////////////////////////////
+/// DRAG COMMON FUNCTIONS
+
+Procedure AnyRecordsDragStart(Control, DragParameters, StandardProcessing)
+	
+	DragParameters.Action = DragAction.Move;
+	DragParameters.AllowedActions = DragAllowedActions.Move;
+	DragParameters.Value = New Structure();
+	DragParameters.Value.Insert("Row",Control.CurrentRow);
+	
+EndProcedure	
+
+Procedure AnyRecordsDragEnd(Control, DragParameters, StandardProcessing)
+	
+	StandardProcessing = False;
+	If DragParameters.Action = DragAction.Move Then
+		
+		If DoQueryBox(Alerts.ParametrizeString(Nstr("en='Are you sure you want to move this row to the table %P1?';pl='Czy na pewno chcesz przesunąć ten wiersz do tabeli %P1?'"),New Structure("P1",DragParameters.Value.TablePresentation)),QuestionDialogMode.YesNo)= DialogReturnCode.Yes Then
+			
+			DragParameters.Value.Row.TableName = DragParameters.Value.TableName;
+			DragParameters.Value.Row.TableKind = DragParameters.Value.TableKind;
+			
+		EndIf;	
+		
+	EndIf;	
+	
+EndProcedure	
+
+Procedure AnySelectedTableDragCheck(Control, DragParameters, StandardProcessing, Row, Column)
+	
+	CurrentRow = Control.CurrentRow;
+	
+	If Row = Undefined
+		OR Row.TableName = "AllRecords" 
+		OR (CurrentRow<>Undefined 
+		AND CurrentRow.TableName = "AllRecords")
+		OR CurrentRow = Row Then
+		DragParameters.Action = DragAction.Cancel;
+		DragParameters.AllowedActions = DragAllowedActions.DontProcess;
+	Else	
+		
+		StandardProcessing = False;
+		DragParameters.Value.Insert("TableName",Row.TableName);
+		DragParameters.Value.Insert("TableKind",Row.TableKind);
+		DragParameters.Value.Insert("TablePresentation",Row.TablePresentation);
+		
+	EndIf;
+	
+EndProcedure	
+
+Function GetIsFormulaByFillingMethod(FillingMethod) Export
+	
+	If IsBlankString(FillingMethod) Then
+		Return True;
+	Else
+		FoundIndex = Undefined;
+		For i=0 To FillingMethods.Count()-1 Do
+			
+			FillingMethodsItem = FillingMethods.Get(i);
+			
+			If FillingMethod = FillingMethodsItem Then
+				FoundIndex = i;
+				Break;
+			EndIf;	
+			
+		EndDo;	
+		
+		If FoundIndex = 2 Then
+			Return True;
+		Else
+			Return False;
+		EndIf;	
+			
+		
+	EndIf;	
+	
+	
+EndFunction	
+
+Procedure GenerateOrEmulateNewOperation(Emulate)
+	
+	If Modified Then
+		If DoQueryBox(Nstr("en = 'Bookkeeping operation template was modified. Before generation or emulation template should be written. Are you sure you want to write this template?'; pl = 'Schemat księgowanie został zmodifikowany. Przed generacją lub wprobuwaniem trzeba zapisać schemat. Czy chcesz zapisać schemat?'"),QuestionDialogMode.YesNo) = DialogReturnCode.Yes Then
+			WriteInForm();
+		Else
+			Return;
+		EndIf;	
+	EndIf;	
+	
+	If Type = Enums.BookkeepingOperationTemplateTypes.AsDataProcessor Then
+		
+		If InternalDataProcessor Then
+			
+			DataProcessor = DataProcessors[FileName].Create();
+			
+		Else
+			
+			BinaryData = OperationTemplateAsDataProcessor.Get();
+			TempFileName = GetTempFileName("epf");
+			BinaryData.Write(TempFileName);
+			DataProcessor = ExternalDataProcessors.Create(TempFileName);
+			
+		EndIf;
+		
+		DataProcessor.Perform(Ref);
+		
+	ElsIf Type = Enums.BookkeepingOperationTemplateTypes.Normal Then	
+		
+		NewForm = Documents.BookkeepingOperation.GetNewDocumentForm();
+		NewForm.Fill(Ref);
+		NewForm.IsEmulated = Emulate;
+		NewForm.Open();
+		
+	EndIf;
+	
+EndProcedure	
+
+Procedure AnyRecordsBeforeAddRow(Control, Cancel, Clone)
+	
+	AddingNewRowEvent = True;
+	
+EndProcedure
+
+Procedure ChangeAvailableTableOfDocumentBaseChange()
+	
+	TableOfTables = GetTableOfTables();
+	SelectedTablesListOfNotAvailableTables = GetListOfNotAvailableTables(SelectedTables.Rows,TableOfTables);
+	UnMarkAllSelectedTables(SelectedTables.Rows,TableOfTables);
+	MarkUnavailableTables(SelectedTablesListOfNotAvailableTables);
+	SelectedPurchaseVATTablesListOfNotAvailableTables = GetListOfNotAvailableTables(SelectedPurchaseVATTables.Rows,TableOfTables);
+	UnMarkAllSelectedTables(SelectedPurchaseVATTables.Rows,TableOfTables);
+	MarkUnavailableTables(SelectedPurchaseVATTablesListOfNotAvailableTables);
+	SelectedSalesVATTablesListOfNotAvailableTables = GetListOfNotAvailableTables(SelectedSalesVATTables.Rows,TableOfTables);
+	UnMarkAllSelectedTables(SelectedSalesVATTables.Rows,TableOfTables);
+	MarkUnavailableTables(SelectedSalesVATTablesListOfNotAvailableTables);
+	
+EndProcedure	
+
+Procedure DocumentBaseChange()
+	
+	Filter = New ValueStorage("");
+	ChangeAvailableTableOfDocumentBaseChange();
+	UpdateDialog();
+	
+EndProcedure	
+
+Procedure UnMarkAllSelectedTables(SelectedTablesRows, TableOfTables = Undefined)
+	
+	If TableOfTables = Undefined Then
+		TableOfTables = GetTableOfTables();
+	EndIf;	
+	
+	For Each Row In SelectedTablesRows Do
+		
+		Row.Availability = True;
+		
+		If Row.Rows.Count()>0 Then
+			UnMarkAllSelectedTables(Row.Rows,TableOfTables);
+		Else
+			FoundRows = TableOfTables.FindRows(New Structure("TableName, TableKind",Row.TableName,Row.TableKind));
+			If FoundRows.Count()>0 Then
+				Row.TableSynonym = FoundRows[0].TableSynonym;
+			EndIf;	
+		EndIf;	
+	
+	EndDo;	
+	
+EndProcedure	
+
+Procedure MarkUnavailableTables(ListOfNotAvailableTables)
+	
+	ParentsValueList = New ValueList();
+	
+	For Each NotAvailableTable In ListOfNotAvailableTables Do
+		
+		If ParentsValueList.FindByValue(NotAvailableTable.Parent)=Undefined Then
+			
+			ParentsValueList.Add(NotAvailableTable.Parent);
+			
+		EndIf;	
+		
+		NotAvailableTable.Availability = False;
+		
+	EndDo;	
+	
+	For Each ParentTable In ParentsValueList Do
+		
+		WasAvailable = False;
+		For Each Row In ParentTable.Value.Rows Do
+			
+			If Row.Availability Then
+				WasAvailable = True;
+				Break;
+			EndIf;	
+			
+		EndDo;
+		
+		If NOT WasAvailable Then
+			ParentTable.Value.Availability = False;
+		EndIf;	
+		
+	EndDo;	
+	
+EndProcedure	
+
+Procedure AnyValueOnChange(Control)
+	
+	ControlsStructure = GetCurrentControlsForPage();
+	SetFieldValueOnChange(ControlsStructure.CurrentRecords,FillingMethod,Value,Formula);
+	
+EndProcedure
+
+Procedure SetFieldValueOnChange(CurrentTableBox,CurrentFillingMethod,CurrentValue=Undefined,CurrentFormula=Undefined,NeedRefresh = False)
+	
+	FormulaStructure = New Structure("FillingMethod",CurrentFillingMethod);
+	If CurrentFillingMethod = Enums.FieldFillingMethods.Value Then
+		FormulaStructure.Insert("Value",CurrentValue);
+	Else
+		FormulaStructure.Insert("Value",CurrentFormula);
+	EndIf;	
+	
+	SetFormulaStructure(CurrentTableBox,,,FormulaStructure);
+	
+	If NeedRefresh Then
+	
+		OnActivateCellInTableBox(CurrentTableBox);
+		
+	EndIf;	
+	
+EndProcedure	
+
+Procedure FillingMethodOnChange(Control)
+	
+	ControlsStructure = GetCurrentControlsForPage();
+	FormulaStructure = GetFormulaStructure(ControlsStructure.CurrentRecords);
+	
+	If FormulaStructure.FillingMethod<>FillingMethod Then
+		Formula = "";
+		FormulaPresentation = "";
+		SetFieldValueOnChange(ControlsStructure.CurrentRecords,FillingMethod,Undefined,Formula,True);
+	EndIf;	
+	
+	UpdateViewOnFillingMethod();
+EndProcedure
+
+Procedure GeneralPanelOnCurrentPageChange(Control, CurrentPage)
+	UpdateViewOnFillingMethod();
+EndProcedure
+
+Function SaveTemplateAsFile(Object)
+	
+	FileName = TrimAll(Object.Code + " " + Object.Description);
+	
+	Mode = FileDialogMode.Save;
+	SaveFileDialog = New FileDialog(Mode);
+	SaveFileDialog.FullFileName = FileName;
+	SaveFileDialog.DefaultExt = "xml";
+	SaveFileDialogFilter = "XML files(*.xml)|*.xml";
+	SaveFileDialog.Filter = SaveFileDialogFilter;
+	SaveFileDialog.CheckFileExist = True;
+	SaveFileDialog.Multiselect = False;
+	SaveFileDialog.Title = Nstr("en='Save bookkeeping operation template as XML file';pl='Zapisz schemat księgowania jako plik XML'");
+	
+	If SaveFileDialog.Choose() Then
+		FileInXMLFormat = SaveFileDialog.FullFileName;
+	Else
+		Return "";
+	EndIf;
+			
+	TextDocument = New TextDocument;
+	XMLText = Common.SerializeObject(Object);
+	TextDocument.SetText(XMLText);
+	Try
+		TextDocument.Write(FileInXMLFormat,TextEncoding.UTF8);
+	Except
+		Return "";
+	EndTry;	
+	
+	Return FileInXMLFormat;
+	
+EndFunction	
+
+Procedure AlgorithmTypeOnChange(Control)
+	
+	If AlgorithmType = Enums.BookkeepingOperationTemplateAlgorithmTypes.None Then
+		Controls.AlgorithmTextDocumentField.SetText("");
+	EndIf;	
+	
+	UpdateDialog();
+	
+EndProcedure
+
+Procedure AutoDifferenceCompensationOnChange(Control)
+	If NOT AutoDifferenceCompensation Then
+		AutoDifferenceCompensationAmount = 0;
+	EndIf;	
+	UpdateDialog();
+EndProcedure
+
+
+////////////////////////////////////////////////////////////////////////////////
+// MAIN
+
+FillingMethods = New Array;
+FillingMethods.Add(Nstr("en='Fills by value';pl='Wypełnia się wartością'")); 
+FillingMethods.Add(Nstr("en='Fills by parameters value';pl='Wypełnia się wartością parametru'"));
+FillingMethods.Add(Nstr("en='Evaluated by formula expression';pl='Wylicza się zgodnie ze wzorem'"));
+
+ChoiceList = BookkeepingCommon.GetAvailableListOfDocumentsToBookkeepingPosting();
+
+ChoiceList.SortByPresentation();
+
+Controls.DocumentBase.ChoiceList = ChoiceList;
+
+
+// Filling DataProcessors list
+DataProcessorsList = New ValueList;
+
+For each MetadataDataProcessor In Metadata.DataProcessors Do
+	If  StrOccurrenceCount(MetadataDataProcessor.Comment,"BookkeepingOperationTemplate")>0 AND (CommonAtServer.IsDocumentAttribute("Document", MetadataDataProcessor)
+		AND CommonAtServer.IsDocumentAttribute("BookkeepingOperation", MetadataDataProcessor) 
+		AND MetadataDataProcessor.Attributes.BookkeepingOperation.Type.ContainsType(Type("DocumentRef.BookkeepingOperation"))) Then
+		DataProcessorsList.Add(MetadataDataProcessor.Name, MetadataDataProcessor.Synonym);
+	EndIf;
+EndDo;
+
+DataProcessorsList.SortByPresentation();
+
+Controls.ComboBoxFileName.ChoiceList = DataProcessorsList;
+

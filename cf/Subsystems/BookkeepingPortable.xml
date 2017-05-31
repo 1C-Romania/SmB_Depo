@@ -1,0 +1,58 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<MetaDataObject xmlns="http://v8.1c.ru/8.3/MDClasses" xmlns:app="http://v8.1c.ru/8.2/managed-application/core" xmlns:cfg="http://v8.1c.ru/8.1/data/enterprise/current-config" xmlns:cmi="http://v8.1c.ru/8.2/managed-application/cmi" xmlns:ent="http://v8.1c.ru/8.1/data/enterprise" xmlns:lf="http://v8.1c.ru/8.2/managed-application/logform" xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows" xmlns:xen="http://v8.1c.ru/8.3/xcf/enums" xmlns:xpr="http://v8.1c.ru/8.3/xcf/predef" xmlns:xr="http://v8.1c.ru/8.3/xcf/readable" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.4">
+	<Subsystem uuid="2aa1b9cc-ac72-40d9-8b0b-8df8f13f4eb9">
+		<Properties>
+			<Name>BookkeepingPortable</Name>
+			<Synonym>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Bookkeeping portable</v8:content>
+				</v8:item>
+			</Synonym>
+			<Comment/>
+			<IncludeHelpInContents>true</IncludeHelpInContents>
+			<IncludeInCommandInterface>true</IncludeInCommandInterface>
+			<Explanation/>
+			<Picture>
+				<xr:Ref>CommonPicture.ShowBookkeepingOperation</xr:Ref>
+				<xr:LoadTransparent>true</xr:LoadTransparent>
+			</Picture>
+			<Content>
+				<xr:Item xsi:type="xr:MDObjectRef">Document.BookkeepingOperation</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">Catalog.FinancialYears</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">Constant.CurrencyQuotationType</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">Report.AccountBalanceAndTurnovers</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">Catalog.BookkeepingOperationsTemplates</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">Document.SupplierInvoice</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">InformationRegister.BookkeepingPostingSettings</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">Document.CashPayment</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">Document.CashReceipt</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">Document.CashTransfer</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">Document.CustomerInvoice</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">Document.InventoryAssembly</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">Document.InventoryReceipt</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">Document.InventoryTransfer</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">Document.InventoryWriteOff</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">Document.Netting</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">Document.PaymentExpense</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">Document.PaymentReceipt</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">Report.AccountBalanceAndTurnoversByExtDimensionTypes</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">Report.AccountsCard</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">Report.TrialBalance</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">Report.TrialBalanceByAccount</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">ChartOfAccounts.Bookkeeping</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">Catalog.FinancialCounterpartyGroups</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">Catalog.FinancialProductsAndServicesGroups</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">InformationRegister.FinancialCounterpartiesGroups</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">InformationRegister.FinancialProductsAndServicesGroups</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">InformationRegister.BookkeepingVATRates</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">InformationRegister.FinancialPettyCashes</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">InformationRegister.BookkeepingBankAccounts</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">InformationRegister.FinancialAccrualAndDeductionKinds</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">InformationRegister.BookkeepingDefaultAccountGoodsInventoryMovements</xr:Item>
+				<xr:Item xsi:type="xr:MDObjectRef">CommonForm.BookkeepingSettingsCommonForm</xr:Item>
+			</Content>
+		</Properties>
+		<ChildObjects/>
+	</Subsystem>
+</MetaDataObject>

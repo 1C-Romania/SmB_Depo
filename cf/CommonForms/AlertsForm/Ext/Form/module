@@ -1,0 +1,163 @@
+﻿
+////////////////////// Form events
+
+Procedure BeforeOpen(Cancel, StandardProcessing)
+	
+	If Object = Undefined Then
+		Cancel = True;
+	EndIf;	
+		
+	Caption = String(Object);
+		
+EndProcedure
+
+Procedure OnReopen(StandardProcessing)
+	Caption = String(Object);
+	UpdateDialog();
+EndProcedure
+
+//////////////////////////////////////////////////////////////////////////////////////////
+////////////////////// Form controls items
+
+Procedure FormMainActionsWriteAndOmitYellowAlertsButton(Button)
+	
+	If Documents.AllRefsType().ContainsType(TypeOf(Object.Ref)) Then
+		// document - set all messages for posting
+		Object.AdditionalProperties.Insert("OmitWarnings");
+		
+		Try
+			FormOwner.WriteInForm(DocumentWriteMode.Posting);
+		Except
+			DoMessageBox(Nstr("en = 'Operation not performed!'; pl = 'Operacja nie została wykonana!'"));
+		EndTry;
+		
+		Object.AdditionalProperties.Delete("OmitWarnings");
+	Else
+		// document - set all messages for posting
+		Object.AdditionalProperties.Insert("OmitWarnings");
+		Try
+			FormOwner.WriteInForm();
+		Except
+			DoMessageBox(Nstr("en = 'Operation not performed!'; pl = 'Operacja nie została wykonana!'"));
+		EndTry;
+		
+		Object.AdditionalProperties.Delete("OmitWarnings");
+	EndIf;
+	
+EndProcedure
+
+Procedure TableBoxWarningsOnRowOutput(Control, RowAppearance, RowData)
+	
+	RowAppearance.Cells.AlertStatus.ShowPicture = True;
+	
+	If RowData.AlertStatus = Enums.AlertType.Error Then
+		RowAppearance.Cells.AlertStatus.SetPicture(PictureLib.Stop);
+	ElsIf RowData.AlertStatus = Enums.AlertType.Warning Then
+		RowAppearance.Cells.AlertStatus.SetPicture(PictureLib.YellowAlertSmall);
+	Else
+		RowAppearance.Cells.AlertStatus.ShowPicture = False;
+	EndIf;	
+	
+EndProcedure
+
+
+///////////////////// Common functions
+
+Procedure AddAlert(AlertText,AlertStatus = Undefined) Export
+	
+	NewRow = TableBoxAlerts.Add();
+	NewRow.AlertNumber = TableBoxAlerts.Count()-1;
+	NewRow.AlertText = AlertText;
+	NewRow.AlertStatus = AlertStatus;
+	
+	UpdateDialog();
+	
+	ThisForm.Activate();
+	
+EndProcedure	
+
+Procedure UpdateDialog() 
+	
+	If WasErrors() Then
+		ThisForm.CaptionPicture = PictureLib.Stop;
+		Controls.AlertPicture.Picture = PictureLib.ErrorBig;
+	Else
+		ThisForm.CaptionPicture = PictureLib.YellowAlertSmall;
+		Controls.AlertPicture.Picture = PictureLib.YellowAlertBig;
+	EndIf;	
+	
+	NoRefObject = False;
+	Try
+		ObjectRef = Object.Ref;
+	Except
+		NoRefObject = True;
+	EndTry;	
+	
+	
+	If NOT NoRefObject AND Documents.AllRefsType().ContainsType(TypeOf(Object.Ref)) Then
+		// document - set all messages for posting
+		Controls.FormMainActions.Buttons.WriteAndOmitYellowAlertsButton.Text = Nstr("en='Post omitting yellow alerts';pl='Zaksięguj ignorując ostrzeżenia na żółto'");
+		Controls.FormMainActions.Buttons.WriteAndOmitYellowAlertsButton.ToolTip = Controls.FormMainActions.Buttons.WriteAndOmitYellowAlertsButton.Text;
+		Controls.FormMainActions.Buttons.WriteAndOmitYellowAlertsButton.Description = Controls.FormMainActions.Buttons.WriteAndOmitYellowAlertsButton.Text;
+		
+		Try
+		
+			AdditionalProperties = Object.AdditionalProperties;
+		
+		Except
+			
+			AdditionalProperties = New Structure();
+			
+		EndTry; 
+		
+		If AdditionalProperties.Property("PostingMode") Then
+			Controls.LabelRequestToUser.Caption = Nstr("en='There was alerts during posting document.';pl='Podczas zatwierdzenia dokumentu wygenerowano ostrzeżenia.'");
+			Controls.FormMainActions.Buttons.WriteAndOmitYellowAlertsButton.Enabled = NOT WasErrors();
+		Else
+			Controls.LabelRequestToUser.Caption = Nstr("en = 'There was alerts during working with document.'; pl = 'Podczas pracy z dokumentem wygenerowano ostrzeżenia.'");
+			Controls.FormMainActions.Buttons.WriteAndOmitYellowAlertsButton.Enabled = False;
+		EndIf;	
+	Else
+		Controls.FormMainActions.Buttons.WriteAndOmitYellowAlertsButton.Text = Nstr("en='Write omitting yellow alerts';pl='Zapisz ignorując ostrzeżenia na żółto'");
+		Controls.FormMainActions.Buttons.WriteAndOmitYellowAlertsButton.ToolTip = Controls.FormMainActions.Buttons.WriteAndOmitYellowAlertsButton.Text;
+		Controls.FormMainActions.Buttons.WriteAndOmitYellowAlertsButton.Description = Controls.FormMainActions.Buttons.WriteAndOmitYellowAlertsButton.Text;
+		
+		If NoRefObject Then
+			Controls.LabelRequestToUser.Caption = Nstr("en = 'There was alerts during working with object.'; pl = 'Podczas pracy z obiektem wygenerowano ostrzeżenia.'");
+			Controls.FormMainActions.Buttons.WriteAndOmitYellowAlertsButton.Enabled = False;
+		Else
+			
+			Try
+				
+				AdditionalProperties = Object.AdditionalProperties;
+				
+			Except
+				
+				AdditionalProperties = New Structure();
+				
+			EndTry; 
+
+			If AdditionalProperties.Property("WritingProcess") Then
+				// non - document
+				Controls.LabelRequestToUser.Caption = Nstr("en = 'There was alerts during writing with object.'; pl = 'Podczas zapisywania obiektu wygenerowano ostrzeżenia.'");
+				Controls.FormMainActions.Buttons.WriteAndOmitYellowAlertsButton.Enabled = NOT WasErrors();
+			Else
+				Controls.LabelRequestToUser.Caption = Nstr("en = 'There was alerts during working with object.'; pl = 'Podczas pracy z obiektem wygenerowano ostrzeżenia.'");
+				Controls.FormMainActions.Buttons.WriteAndOmitYellowAlertsButton.Enabled = False;
+			EndIf;
+		EndIf;
+		
+	EndIf;
+	
+EndProcedure	
+
+Function WasErrors() Export
+	
+	If TableBoxAlerts.Find(Enums.AlertType.Error,"AlertStatus") = Undefined Then
+		Return False;
+	Else
+		Return True;
+	EndIf;		
+	
+EndFunction	
+

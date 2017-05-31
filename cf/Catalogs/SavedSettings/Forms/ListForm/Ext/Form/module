@@ -1,0 +1,140 @@
+﻿////////////////////////////////////////////////////////////////////////////////
+//  FORM EVENTS HANDLERS
+
+Procedure OnOpen()
+	
+	// Set filter and order avaliablility
+	SettingsSaving.SetFilterAvailability(Controls.CatalogListSavedSettings);
+	SettingsSaving.SetOrderAvailability(Controls.CatalogListSavedSettings);
+	
+	// Applying default settings
+	If SavedSetting.Isempty() Then
+		ApplySetting();
+	EndIf;
+	
+	// List kind settings
+	SettingsSaving.SetupListKind(Controls.CatalogListSavedSettings, SessionParameters.CurrentUser);
+	
+EndProcedure
+
+Procedure OnClose()
+	
+	// Save settings.
+	If SavedSetting.SaveAutomatically OR SavedSetting.Isempty() Then
+		SaveSettings();
+	EndIf;
+	
+EndProcedure
+
+////////////////////////////////////////////////////////////////////////////////
+// PANEL ACTIONS HANDLERS
+
+Procedure FormActionsSelectSetting(Button)
+	
+	SettingsSaving.SelectFormSetting(SavedSetting, ThisForm, "CatalogObject.SavedSettings", False);
+	
+EndProcedure
+
+Procedure FormActionsSaveSetting(Button)
+	
+	SettingsSaving.SelectFormSetting(SavedSetting, ThisForm, "CatalogObject.SavedSettings", True);
+	
+EndProcedure
+
+Procedure FormActionsOpenSetting(Button)
+	
+	SettingsSaving.OpenFormSetting(Controls.CatalogListSavedSettings.CurrentRow);
+	
+EndProcedure
+           
+////////////////////////////////////////////////////////////////////////////////
+// LIST EVENTS HANDLERS
+
+Procedure CatalogListSavedSettingsSelection(Control, RowSelected, Column, StandardProcessing)
+	
+	StandardProcessing = False;
+	
+	If ValueIsNotFilled(RowSelected) Then
+		Return;
+	EndIf;
+	
+	SettingsSaving.OpenFormSetting(Controls.CatalogListSavedSettings.CurrentRow);
+	
+EndProcedure
+////////////////////////////////////////////////////////////////////////////////
+// EXPORT PROCEDURES AND FUNCTIONS 
+
+// Save form work mode to setting
+//
+// Parameters:
+//  NONE
+//
+Procedure SaveSettings() Export
+	
+	SettingsStructure = New Structure();
+	
+	SettingsStructure.Insert("CatalogListSavedSettings_Columns", SettingsSaving.GetListColumnsSetting(Controls.CatalogListSavedSettings.Columns));
+	
+	If NOT SavedSetting.Isempty() Then
+	SettingsStructure.Insert("CatalogListSavedSettings_Filter",   SettingsSaving.GetListFilterSetting (CatalogListSavedSettings.Filter));
+	SettingsStructure.Insert("CatalogListSavedSettings_Order", SettingsSaving.GetListOrderSetting(CatalogListSavedSettings.Order));
+		
+		Caption = "" + SavedSetting.SetupObject + ", settings """ + SavedSetting + """";
+		
+		SettingsSaving.SaveObjectSetting(SavedSetting, SettingsStructure);
+		
+	Else
+		Caption = Nstr("en='Form settings list';pl='List ustawień formatki'");
+		
+		SaveValue("Catalog.SavedSettings.Form.FormSettingsList", SettingsStructure);
+	EndIf;
+	
+EndProcedure
+
+// Apply form work mode got from setting
+//
+// Parameters:
+//  None.
+//
+Procedure ApplySetting() Export
+	
+	SettingsStructure = SavedSetting.SettingsStorage.Get();
+	
+	If SavedSetting.IsEmpty() Then
+		Caption = Nstr("en='List ""SavedSettings""';pl='Lista ""Zapisane ustawienia""'");
+		
+		SettingsStructure = RestoreValue("Catalog.SavedSettings.Form.FormSettingsList");
+		
+	Else
+		Caption = "" + SavedSetting.SetupObject + ", " + Nstr("en = 'settings'; pl = 'ustawienia'") +" """ + SavedSetting + """";
+		
+		SettingsStructure = SavedSetting.SettingsStorage.Get();
+		
+		SettingsSaving.ApplyListFilterSetting (SettingsStructure, "CatalogListSavedSettings_Filter",   CatalogListSavedSettings.Filter);
+		SettingsSaving.ApplyListOrderSetting(SettingsStructure, "CatalogListSavedSettings_Order", CatalogListSavedSettings.Order, Controls.CatalogListSavedSettings.OrderSetting);
+	EndIf;
+	
+	SettingsSaving.ApplyListColumnsSetting(SettingsStructure, "CatalogListSavedSettings_Columns", Controls.CatalogListSavedSettings.Columns);
+	
+EndProcedure
+
+Procedure CatalogListSavedSettingsSetupObjectOnChange(Control)
+	
+	SetReadOnlyForSaveCheckBox(Controls.CatalogListSavedSettings.CurrentData);
+	Controls.CatalogListSavedSettings.CurrentData.SaveAutomatically = False;
+	
+EndProcedure
+ 
+Procedure CatalogListSavedSettingsOnActivateRow(Control)
+	
+	SetReadOnlyForSaveCheckBox(Control.CurrentData);
+	
+EndProcedure
+
+Procedure SetReadOnlyForSaveCheckBox(CurrentData)
+	
+	//Controls.CatalogListSavedSettings.Columns.SaveAutomatically.ReadOnly = CurrentData = Undefined or Not (TypeOf(CurrentData.SetupObject) = Type("EnumRef.SetupForms") or TypeOf(CurrentData.SetupObject) = Type("CatalogRef.SetupReports"));
+	
+EndProcedure
+
+

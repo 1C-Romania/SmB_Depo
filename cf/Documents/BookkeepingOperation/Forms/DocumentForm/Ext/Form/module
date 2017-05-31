@@ -1,0 +1,922 @@
+﻿Var IsModified;
+
+////////////////////////////////////////////////////////////////////////////////
+// PROCEDURES - EVENTS PROCESSING OF THE FORM
+
+Procedure OnOpen()
+	
+	Common.CommonDocumentFormOnOpenBegin(ThisForm,ThisObject);
+	
+	If IsNew() Then
+		
+		CommonAtServer.FillDocumentHeader(ThisObject);
+		
+		If Not ValueIsFilled(Currency) Then
+			Currency = Constants.NationalCurrency.Get();
+			ExchangeRate = CommonAtServer.GetExchangeRate(Currency, Date);
+		EndIf;
+		
+		// Showing number presentation with prefixes.
+		Controls.Number.Data = "";
+		Controls.Number.Value = DocumentsPostingAndNumbering.GetDocumentAutoNumberPresentation(ThisObject);
+		
+		If ValueIsNotFilled(OperationType) Then
+			OperationType = Enums.OperationTypesBookkeepingOperation.Any;
+		EndIf;	
+		OperationTypeChange();
+		
+	EndIf;
+	
+	Common.CommonDocumentFormOnOpenEnd(ThisForm,ThisObject);
+	
+	ShowFirstFilledTabularPart();
+	
+	UpdateDialog();
+	
+EndProcedure
+
+Procedure RefreshDisplay()
+	
+	TotalAmountDr = FormatAmount(Records.Total("AmountDr"));
+	TotalAmountCr = FormatAmount(Records.Total("AmountCr"));
+	TotalAmountDifference = FormatAmount(Records.Total("AmountDr") - Records.Total("AmountCr"));
+	
+	Controls.SalesVATRecords.Columns.GrossAmount.FooterText = FormatAmount(SalesVATRecords.Total("NetAmount") + SalesVATRecords.Total("VAT"));
+	Controls.PurchaseVATRecords.Columns.GrossAmount.FooterText = FormatAmount(PurchaseVATRecords.Total("NetAmount") + PurchaseVATRecords.Total("VAT"));
+	
+EndProcedure
+
+Procedure BeforeWrite(Cancel, WriteMode, PostingMode)
+	
+	If IsEmulated Then
+		Cancel = True;
+	EndIf;	
+	
+	If Controls.Number.Data = "" Then
+		Number = "";
+	EndIf;
+	
+	If WriteMode = DocumentWriteMode.Posting Then
+		AdditionalProperties.Insert("EditingInForm", ThisForm);
+	EndIf;
+	
+	IsModified = Dialogs.FillIsModifiedField(ThisForm, WriteMode, IsModified);
+	
+EndProcedure
+
+Procedure AfterWrite()
+	
+	If Controls.Number.Data = "" Then
+		Controls.Number.Data = "Number";
+	EndIf;
+	
+	UpdateDialog();
+	
+	Printouts.PerformPrintOnPostAndPrintAndClose(ThisForm);
+	CloseOnChoice = False;
+	NotifyChoice(New Structure("InitialDocumentBase, Ref", InitialDocumentBase, Ref));
+	InitialDocumentBase = DocumentBase;
+	
+EndProcedure
+
+Procedure BeforeClose(Cancel, StandardProcessing)
+	
+	If IsEmulated Then
+		Modified = False;
+	EndIf;	
+	
+	Cancel = Dialogs.CheckDocumentModificate(ThisObject, ThisForm, IsModified);
+	
+EndProcedure
+
+////////////////////////////////////////////////////////////////////////////////
+// PROCEDURES - EVENTS PROCESSING OF ATTRIBUTES OF HEADER
+
+Procedure NumberStartChoice(Control, StandardProcessing)
+	
+	DocumentsPostingAndNumbering.OnStartChangeDocumentAutoNumber(ThisForm);
+	
+EndProcedure
+
+Procedure DateOnChange(Control)
+	
+	Common.CommonDateOnChange(Control,ThisForm,ThisObject);
+	
+EndProcedure
+
+Procedure CompanyOnChange(Control)
+	
+	If Controls.Number.Data = "" Then
+		Controls.Number.Value = DocumentsPostingAndNumbering.GetDocumentAutoNumberPresentation(ThisObject);
+	EndIf;
+	
+EndProcedure
+
+Procedure BookkeepingOperationsTemplatesOnChange(Control)
+	
+	Description = BookkeepingOperationsTemplate.DescriptionForBookkeepingOperation;
+	PartialJournal = BookkeepingOperationsTemplate.PartialJournal;
+	
+	If Controls.Number.Data = "" Then
+		Controls.Number.Value = DocumentsPostingAndNumbering.GetDocumentAutoNumberPresentation(ThisObject);
+	EndIf;
+	
+	
+	If BookkeepingOperationsTemplate.DocumentBase <> Undefined Then
+		
+		If DocumentBase = Undefined 
+			OR TypeOf(BookkeepingOperationsTemplate.DocumentBase) <> TypeOf(DocumentBase) Then
+			
+			DocumentBase = BookkeepingOperationsTemplate.DocumentBase;
+			
+		EndIf;
+		
+	EndIf;
+	
+	If ValueIsNotFilled(BookkeepingOperationsTemplate) Then
+		Manual = True;
+	Else
+		Manual = False;
+	EndIf;
+	
+	If NOT Manual Then
+		Records.Clear();
+		SalesVATRecords.Clear();
+		PurchaseVATRecords.Clear();
+	EndIf;
+	
+	UpdateDialog();
+	
+EndProcedure
+
+Procedure BookkeepingOperationsTemplatesClearing(Control, StandardProcessing)
+	Manual = True;
+	UpdateDialog();
+EndProcedure
+
+Procedure CurrencyOnChange(Control)
+	
+	ExchangeRate = CommonAtServer.GetExchangeRate(Currency, Date);
+	
+	RecalculateAmountsAccordingToExchangeRate();	
+	
+EndProcedure
+
+Procedure ExchangeRateOnChange(Control)
+	
+	RecalculateAmountsAccordingToExchangeRate();
+	
+EndProcedure
+
+Procedure ExchangeRateStartListChoice(Control, StandardProcessing)
+	
+	OldExchangeRate = ExchangeRate;
+	
+	Dialogs.GlobalExchangeRateStartListChoice(Control, StandardProcessing, ThisForm, Currency);
+	
+	If OldExchangeRate <> ExchangeRate Then
+		RecalculateAmountsAccordingToExchangeRate();
+	EndIf;
+	
+EndProcedure
+
+Procedure OperationTypeOnChange(Control)
+	
+	OperationTypeChange();
+	UpdateDialog();
+	
+EndProcedure
+
+Procedure PartialJournalOnChange(Control)
+	
+	If Controls.Number.Data = "" Then
+		Controls.Number.Value = DocumentsPostingAndNumbering.GetDocumentAutoNumberPresentation(ThisObject);
+	EndIf;
+	
+EndProcedure
+
+Procedure ButtonFillAllRecordsClick(Control)
+	
+	GenerateRecordsFromBookkeepingOperationsTemplates(0);
+	
+EndProcedure
+
+
+////////////////////////////////////////////////////////////////////////////////
+// PROCEDURES - EVENTS PROCESSING OF TABULAR PART RECORDS
+
+Procedure CommandBarRecordsGenerateRecordsFromBookkeepingOperationsTemplates(Button)
+	GenerateRecordsFromBookkeepingOperationsTemplates(1);
+EndProcedure
+
+Procedure CommandBarRecordsLoadFromSpreadsheet(Button)
+	
+	DocumentsTabularPartsProcessing.OpenLoadingFromSpreadsheet(Ref,"Records",,ThisObject,ThisForm);
+	
+EndProcedure
+
+Procedure CommandBarAllowChanges(Button)
+	
+	Manual = Not Controls.CommandBarRecords.Buttons.AllowChanges.Check;
+	
+	If NOT Manual Then
+		// after change Manual to True need regenarate auto records
+		
+		GenerateRecordsFromBookkeepingOperationsTemplates(0);
+		Answer = DoQueryBox(Nstr("en = 'All auto records will be regenerated!'; pl = 'Wszystkie automatyczne wpisy zostaną wygenerowane ponownie!'"),QuestionDialogMode.YesNo,30,DialogReturnCode.Yes,,DialogReturnCode.Yes);
+		If Answer = DialogReturnCode.No Then
+			Manual = True;
+		EndIf;	
+	EndIf;	
+	
+	UpdateDialog();
+	
+EndProcedure
+
+Procedure RecordsOnRowOutput(Control, RowAppearance, RowData)
+	
+	If RowData.AmountDr <> 0 Then
+		RowAppearance.Cells.Icon.SetPicture(PictureLib.Debit);
+	ElsIf RowData.AmountCr <> 0 Then
+		RowAppearance.Cells.Icon.SetPicture(PictureLib.Credit);
+	EndIf;
+	
+	For each Column In Control.Columns Do
+		
+		If Not Column.Visible Then
+			Continue;
+		EndIf;
+		
+		ColumnTypes = Accounting.GetAccountingRecordsColumnType(Metadata(), Control, RowData, Column.Name);
+		RowAppearance.Cells[Column.Name].ReadOnly = (ColumnTypes = Undefined);
+		
+	EndDo;
+	
+	// ext dimenstion labels
+	For Counter = 1 To 3 Do
+		
+		// get label control
+		Cell = RowAppearance.Cells["LabelExtDimension" + Counter];
+		
+		If Not ValueIsFilled(RowData.Account) Or Counter > RowData.Account.ExtDimensionTypes.Count() Then
+			Cell.SetText("");
+		Else
+			If Not RowData.Account.ExtDimensionTypes[Counter-1].Mandatory Then
+				Cell.TextColor = WebColors.MediumGray;
+			EndIf;
+			Cell.SetText(String(RowData.Account.ExtDimensionTypes[Counter-1].ExtDimensionType));
+		EndIf;
+		
+	EndDo;
+	
+	LockRowEditingOnAutoType(RowAppearance, RowData, Manual);
+	
+EndProcedure
+
+Procedure RecordsAccountOnChange(Control)
+	
+	RecordsRow = Controls.Records.CurrentData;
+	
+	UpdateExtDimensionsOnAccountChange(RecordsRow,RecordsRow.Account);
+		
+	RecordsRow.Currency = ?(RecordsRow.Account.Currency, Currency, Catalogs.Currencies.EmptyRef());
+	
+EndProcedure
+
+Procedure RecordsExtDimensionStartChoice(Control, StandardProcessing)
+	
+	Accounting.ExtDimensionStartChoice(Controls.Records, Control, StandardProcessing);
+	
+EndProcedure
+
+Procedure RecordsCurrencyAmountOnChange(Control)
+	
+	If Controls.Records.CurrentRow.AmountDr <> 0 Then
+		Controls.Records.CurrentRow.AmountCr = 0;
+	EndIf;
+	
+	
+EndProcedure
+
+Procedure RecordsCurrencyAmountStartListChoice(Control, StandardProcessing)
+	
+	CurrentRow = Controls.Records.CurrentRow;
+	Control.ChoiceList.Clear();
+	
+	If CurrentRow.Account.Currency And CurrentRow.Currency = Currency And ExchangeRate <> 0 Then
+		Control.ChoiceList.Add(Round((CurrentRow.AmountDr + CurrentRow.AmountCr)/ExchangeRate, 2));
+	EndIf;
+	
+EndProcedure
+
+Procedure RecordsAmountDrOnChange(Control)
+	
+	CurrentRow = Controls.Records.CurrentRow;
+	
+	If CurrentRow.AmountDr <> 0 Then
+		CurrentRow.AmountCr = 0;
+	EndIf;
+	
+	If CurrentRow.Account.Currency And CurrentRow.Currency = Currency And CurrentRow.CurrencyAmount = 0 And ExchangeRate <> 0 Then
+		CurrentRow.CurrencyAmount = CurrentRow.AmountDr/ExchangeRate;
+	EndIf;
+	
+EndProcedure
+
+Procedure RecordsAmountDrStartListChoice(Control, StandardProcessing)
+	
+	CurrentRow = Controls.Records.CurrentRow;
+	Control.ChoiceList.Clear();
+	
+	If CurrentRow.Account.Currency And CurrentRow.Currency = Currency Then
+		Control.ChoiceList.Add(Round(CurrentRow.CurrencyAmount*ExchangeRate, 2));
+	EndIf;
+	
+EndProcedure
+
+Procedure RecordsAmountCrOnChange(Control)
+	
+	CurrentRow = Controls.Records.CurrentRow;
+	
+	If CurrentRow.AmountCr <> 0 Then
+		CurrentRow.AmountDr = 0;
+	EndIf;
+	
+	If CurrentRow.Account.Currency And CurrentRow.Currency = Currency And CurrentRow.CurrencyAmount = 0 And ExchangeRate <> 0 Then
+		CurrentRow.CurrencyAmount = CurrentRow.AmountCr/ExchangeRate;
+	EndIf;
+	
+EndProcedure
+
+Procedure RecordsAmountCrStartListChoice(Control, StandardProcessing)
+	
+	CurrentRow = Controls.Records.CurrentRow;
+	Control.ChoiceList.Clear();
+	
+	If CurrentRow.Account.Currency And CurrentRow.Currency = Currency Then
+		Control.ChoiceList.Add(Round(CurrentRow.CurrencyAmount*ExchangeRate, 2));
+	EndIf;
+	
+EndProcedure
+
+
+////////////////////////////////////////////////////////////////////////////////
+// PROCEDURES - EVENTS PROCESSING OF TABULAR PART SALES VAT RECORDS
+
+Procedure CommandBarSalesVATRecordsGenerateSalesVATRecordsFromBookkeepingOperationsTemplates(Button)
+	GenerateRecordsFromBookkeepingOperationsTemplates(2);
+EndProcedure
+
+Procedure CommandBarSalesVATRecordsLoadFromSpreadsheet(Button)
+	DocumentsTabularPartsProcessing.OpenLoadingFromSpreadsheet(Ref,"SalesVATRecords",,ThisObject,ThisForm);
+EndProcedure
+
+Procedure SalesVATRecordsNetAmountOnChange(Control)
+	RecalculateVATOnNetAmountOrVATRateChange(Controls.SalesVATRecords.CurrentRow);
+EndProcedure
+
+Procedure SalesVATRecordsVATRateOnChange(Control)
+	RecalculateVATOnNetAmountOrVATRateChange(Controls.SalesVATRecords.CurrentRow);
+EndProcedure
+
+Procedure SalesVATRecordsOnRowOutput(Control, RowAppearance, RowData)
+	LockRowEditingOnAutoType(RowAppearance, RowData, Manual);
+	RowAppearance.Cells.GrossAmount.Value = DocumentsTabularPartsProcessingAtClientAtServer.GetGrossAmount(RowData.NetAmount, RowData.VAT, Enums.NetGross.Net);
+	RowAppearance.Cells.GrossAmount.Text = FormatAmount(RowAppearance.Cells.GrossAmount.Value);
+	RowAppearance.Cells.GrossAmount.ShowText = True;
+EndProcedure
+
+Procedure SalesVATRecordsOnStartEdit(Control, NewRow, Clone)
+	
+	CurrentData = Control.CurrentData;
+	
+	If NewRow Then
+		CurrentData.Type = Enums.BookkeepingOperationRecordTypes.Manual;
+	EndIf;	
+
+EndProcedure
+
+Procedure SalesVATRecordsBeforeDeleteRow(Control, Cancel)
+	
+	CurrentData = Control.CurrentData;
+
+	If CurrentData.Type = Enums.BookkeepingOperationRecordTypes.Auto AND NOT Manual Then
+		Cancel = True;
+	EndIf;	
+
+EndProcedure
+
+
+////////////////////////////////////////////////////////////////////////////////
+// PROCEDURES - EVENTS PROCESSING OF TABULAR PART Purchase VAT RECORDS
+
+Procedure CommandBarPurchaseVATRecordsGeneratePurchaseVATRecordsFromBookkeepingOperationsTemplates(Button)
+	GenerateRecordsFromBookkeepingOperationsTemplates(3);
+EndProcedure
+
+Procedure CommandBarPurchaseVATRecordsLoadFromSpreadsheet(Button)
+	DocumentsTabularPartsProcessing.OpenLoadingFromSpreadsheet(Ref,"PurchaseVATRecords",,ThisObject,ThisForm);
+EndProcedure
+
+Procedure PurchaseVATRecordsNetAmountOnChange(Control)
+	RecalculateVATOnNetAmountOrVATRateChange(Controls.PurchaseVATRecords.CurrentRow);
+EndProcedure
+
+Procedure PurchaseVATRecordsVATRateOnChange(Control)
+	RecalculateVATOnNetAmountOrVATRateChange(Controls.PurchaseVATRecords.CurrentRow);
+EndProcedure
+
+Procedure PurchaseVATRecordsOnRowOutput(Control, RowAppearance, RowData)
+	LockRowEditingOnAutoType(RowAppearance, RowData, Manual);
+	RowAppearance.Cells.GrossAmount.Value = DocumentsTabularPartsProcessingAtClientAtServer.GetGrossAmount(RowData.NetAmount, RowData.VAT, Enums.NetGross.Net);
+	RowAppearance.Cells.GrossAmount.Value = DocumentsTabularPartsProcessingAtClientAtServer.GetGrossAmount(RowData.NetAmount, RowData.VAT, Enums.NetGross.Net);
+	RowAppearance.Cells.GrossAmount.Text = FormatAmount(RowAppearance.Cells.GrossAmount.Value);
+	RowAppearance.Cells.GrossAmount.ShowText = True;
+EndProcedure
+
+Procedure PurchaseVATRecordsOnStartEdit(Control, NewRow, Clone)
+	
+	CurrentData = Control.CurrentData;
+	
+	If NewRow Then
+		CurrentData.Type = Enums.BookkeepingOperationRecordTypes.Manual;
+	EndIf;	
+
+EndProcedure
+
+Procedure PurchaseVATRecordsBeforeDeleteRow(Control, Cancel)
+	
+	CurrentData = Control.CurrentData;
+
+	If CurrentData.Type = Enums.BookkeepingOperationRecordTypes.Auto AND NOT Manual Then
+		Cancel = True;
+	EndIf;	
+
+EndProcedure
+
+
+////////////////////////////////////////////////////////////////////////////////
+// OTHER PROCEDURES AND FUNCTIONS
+
+Procedure OperationTypeChange()
+	
+	If OperationType = Enums.OperationTypesBookkeepingOperation.BasedOnDocument
+		OR OperationType = Enums.OperationTypesBookkeepingOperation.ClosePeriod Then
+		InitialDocumentDate = '00010101';
+		InitialDocumentNumber = "";
+	Else
+		DocumentBase = Undefined;
+		Manual = True;
+	EndIf;	
+	
+EndProcedure	
+
+Procedure FormActionsNestedStructure(Button)
+	
+	Dialogs.ShowSlaveDocuments(Ref);
+	
+EndProcedure
+
+Procedure FormActionsShowRegisterRecords(Button)
+	
+	Dialogs.ShowRegistersRecords(ThisForm,Ref);
+	
+EndProcedure
+
+Procedure FormActionsShowRegisterRecordsBookkeeping(Button)
+	Dialogs.ShowDocumentsRecordsBookkeeping(Ref);
+EndProcedure
+
+Procedure UpdateExtDimensionsOnAccountChange(RecordsRow,Account)
+	
+	MaxExtDimensionCount = Metadata.ChartsOfAccounts.Bookkeeping.MaxExtDimensionCount;
+	
+	For x = 1 To MaxExtDimensionCount Do
+		
+		If Account.IsEmpty() Then
+			
+		ElsIf x > Account.ExtDimensionTypes.Count() Then
+			RecordsRow["ExtDimension" + x] = Undefined;
+		Else
+			ExtDimensionType = Account.ExtDimensionTypes[x-1].ExtDimensionType;
+			ExtDimensionTypeTypeDescription = ExtDimensionType.ValueType;
+			RecordsRow["ExtDimension" + x] = ExtDimensionTypeTypeDescription.AdjustValue(RecordsRow["ExtDimension" + x]);
+		EndIf;
+		
+	EndDo;
+
+EndProcedure	
+
+Procedure UpdateDialog()
+	
+	Common.SetControlMarkIncompleteAndEnable(Controls.Currency,Currency,(OperationType <> Enums.OperationTypesBookkeepingOperation.BasedOnDocument));
+	Common.SetControlMarkIncompleteAndEnable(Controls.ExchangeRate,ExchangeRate,(OperationType <> Enums.OperationTypesBookkeepingOperation.BasedOnDocument));
+	
+	IsFilledBookkeepingOperationsTemplate = ValueIsFilled(BookkeepingOperationsTemplate);
+	Controls.ButtonFillAllRecords.Enabled = IsFilledBookkeepingOperationsTemplate;
+	
+	Controls.CommandBarRecords.Buttons.Filling.Buttons.GenerateRecordsFromBookkeepingOperationsTemplates.Enabled                       = IsFilledBookkeepingOperationsTemplate;
+	Controls.CommandBarSalesVATRecords.Buttons.Filling.Buttons.GenerateSalesVATRecordsFromBookkeepingOperationsTemplates.Enabled       = IsFilledBookkeepingOperationsTemplate;
+	Controls.CommandBarPurchaseVATRecords.Buttons.Filling.Buttons.GeneratePurchaseVATRecordsFromBookkeepingOperationsTemplates.Enabled = IsFilledBookkeepingOperationsTemplate;
+	
+	Controls.CommandBarRecords.Buttons.AllowChanges.Enabled            = IsFilledBookkeepingOperationsTemplate;
+	Controls.CommandBarSalesVATRecords.Buttons.AllowChanges.Enabled    = IsFilledBookkeepingOperationsTemplate;
+	Controls.CommandBarPurchaseVATRecords.Buttons.AllowChanges.Enabled = IsFilledBookkeepingOperationsTemplate;
+	
+	Controls.CommandBarRecords.Buttons.AllowChanges.Check            = Manual And IsFilledBookkeepingOperationsTemplate;
+	Controls.CommandBarSalesVATRecords.Buttons.AllowChanges.Check    = Manual And IsFilledBookkeepingOperationsTemplate;
+	Controls.CommandBarPurchaseVATRecords.Buttons.AllowChanges.Check = Manual And IsFilledBookkeepingOperationsTemplate;
+	
+	If OperationType = Enums.OperationTypesBookkeepingOperation.BasedOnDocument Then
+		Controls.PanelBasedOn.CurrentPage = Controls.PanelBasedOn.Pages.DocumentBase;
+	Else
+		Controls.PanelBasedOn.CurrentPage = Controls.PanelBasedOn.Pages.Any;
+	EndIf;
+	
+	Dialogs.SetFormMainActionsButtonsProperties(ThisForm);
+	
+	If IsEmulated Then
+		Controls.FormActions.Enabled = False;	
+		For Each Button In Controls.FormMainActions.Buttons Do
+			If Button.Name <> "FormMainActionsClose" Then
+				Button.Enabled = False;
+			EndIf;
+		EndDo;
+	EndIf;
+	
+EndProcedure // UpdateDialog()
+
+Procedure RecalculateAmountsAccordingToExchangeRate()
+	
+	If Records.Count() > 0 AND Manual Then
+		Answer = DoQueryBox(NStr("en='Do you want to recalculate national amounts in existing rows?';pl='Czy chcesz przeliczyć kwoty w walucie krajowej w istniejących wierszach?'"), QuestionDialogMode.YesNo);
+		If Answer = DialogReturnCode.Yes Then
+			For Each RecordsRow In Records Do
+				
+				If RecordsRow.Account.Currency And RecordsRow.Currency = Currency Then
+					If RecordsRow.AmountDr <> 0 Then
+						RecordsRow.AmountDr = RecordsRow.CurrencyAmount*ExchangeRate;
+					ElsIf RecordsRow.AmountCr <> 0 Then
+						RecordsRow.AmountCr = RecordsRow.CurrencyAmount*ExchangeRate;
+					EndIf;
+				EndIf;
+				
+			EndDo;
+			
+		EndIf;
+	EndIf;
+	
+		
+EndProcedure // RecalculateAmountsAccordingToExchangeRate()
+
+// If TableIndex = 0 - Then will be filled all:  VATRecords,SalesVATRecords,PurchaseVATRecords
+// If TableIndex = 1 - Then will be filled VATRecords
+// If TableIndex = 2 - Then will be filled SalesVATRecords
+// If TableIndex = 3 - Then will be filled PurchaseVATRecords
+Procedure GenerateRecordsFromBookkeepingOperationsTemplates(TableIndex = 0) Export
+	
+	If ValueIsNotFilled(BookkeepingOperationsTemplate) Then
+		
+		DoMessageBox(NStr("en='Please, choose bookkeeping operation template.';pl='Należy wybrać schemat księgowania.'"));
+		Return;
+		
+	EndIf;
+
+	Description = BookkeepingOperationsTemplate.DescriptionForBookkeepingOperation;
+	PartialJournal = BookkeepingOperationsTemplate.PartialJournal;
+	
+	RefreshParameters();
+		
+	ParametersForm           = GetForm("Parameters", ThisForm);
+	ParametersForm.Parameters = RequestedParameters.Unload();	
+	If OperationType = Enums.OperationTypesBookkeepingOperation.BasedOnDocument Then
+		ParametersForm.ChooseDocumentBase = True;	
+		TypeDescrArray = New Array();
+		TypeDescrArray.Add(TypeOf(DocumentBase));
+		ParametersForm.DocumentBaseTypeDescription = New TypeDescription(TypeDescrArray);	
+		ParametersForm.DoModal();
+	Else
+		
+		If RequestedParameters.Count()>0 Then
+			
+			ParametersForm.DoModal();
+			
+		Else
+			
+			ParametersForm.DoneFlag = True;
+			
+		EndIf;	
+		
+	EndIf;	
+	
+	
+	
+	If ParametersForm.DoneFlag Then
+		
+		ParametersTable = ParametersForm.Parameters;
+		
+		If OperationType = Enums.OperationTypesBookkeepingOperation.BasedOnDocument Then
+			
+			If ParametersTable <> Undefined Then
+				
+				DocumentBaseFoundRows = ParametersTable.FindRows(New Structure("Name","DocumentBase"));
+				If DocumentBaseFoundRows.Count()>0 Then
+					DocumentBase = DocumentBaseFoundRows[0].Value;
+				EndIf;	
+				
+			EndIf;
+			
+		EndIf;
+		
+		If ParametersTable = Undefined Then
+			Return
+		EndIf;
+		
+		RequestedParameters.Load(ParametersTable);
+		
+		BookkeepingOperationsTemplateObject = BookkeepingOperationsTemplate.GetObject();
+		
+		If TableIndex = 0 Then
+			BookkeepingOperationsTemplateObject.FillBookkeepingDocument(DocumentBase,ThisObject);
+		ElsIf TableIndex = 1 Then
+			BookkeepingOperationsTemplateObject.FillBookkeepingDocumentRecords(DocumentBase,ThisObject);
+		ElsIf TableIndex = 2 Then
+			BookkeepingOperationsTemplateObject.FillBookkeepingDocumentSalesVATRecords(DocumentBase,ThisObject);
+		ElsIf TableIndex = 3 Then	
+			BookkeepingOperationsTemplateObject.FillBookkeepingDocumentPurchaseVATRecords(DocumentBase,ThisObject);
+		EndIf;	
+		
+		If TableIndex = 0 OR TableIndex = 1 Then
+			
+			For Each Row In Records Do
+				
+				UpdateExtDimensionsOnAccountChange(Row,Row.Account);
+				
+			EndDo;
+			
+		EndIf;
+		
+	EndIf;
+	
+EndProcedure	
+
+// Refills TABULARPART RequestedParameters on standart operation.
+// Entered values by user will saved
+//
+Procedure RefreshParameters()
+	
+	ValueTable = RequestedParameters.Unload();
+	
+	RequestedParameters.Clear();
+	
+	If Not BookkeepingOperationsTemplate.IsEmpty() Then
+		Fill(BookkeepingOperationsTemplate);
+	EndIf;
+	
+	If OperationType = Enums.OperationTypesBookkeepingOperation.Any
+		OR OperationType = Enums.OperationTypesBookkeepingOperation.AnyWithRecordsGeneration Then
+		For each Parameter In RequestedParameters Do
+			
+			Row = ValueTable.Find(Parameter.Name, "Name");
+			
+			If Row = Undefined Then
+				Continue
+			EndIf;
+			
+			Parameter.Value = Row.Value;
+			
+		EndDo;
+	EndIf;
+	
+EndProcedure
+
+Procedure FormMainActionsQuickPrint(Button)
+	
+	Printouts.CallPrintoutSettingsForm(ThisForm);
+	
+EndProcedure
+
+Procedure FormActionsPrint(Button)
+	
+	Printouts.CallPrintoutSettingsForm(ThisForm,True);
+
+EndProcedure
+
+Procedure PostAndPrintAndClose(Button)
+	
+	AdditionalProperties.Insert("PostAndPrintAndClose");
+	If WriteInForm(DocumentWriteMode.Posting) Then
+		Close();
+	EndIf;
+	
+EndProcedure	
+
+Procedure BookkeepingOperationsTemplatesStartChoice(Control, StandardProcessing)
+	
+	StandardProcessing = False;
+
+	ChoiceForm= Catalogs.BookkeepingOperationsTemplates.GetChoiceForm(, Control, Control);
+	
+	If OperationType = Enums.OperationTypesBookkeepingOperation.BasedOnDocument Then
+		
+		ChoiceForm.SetFilterByDocument(DocumentBase,BookkeepingOperationsTemplate);
+		
+	Else
+		
+		ChoiceForm.SetFilter(BookkeepingOperationsTemplate,New Structure("DocumentBase",Undefined));
+		
+	EndIf;
+	
+	ChoiceForm.Open();
+
+EndProcedure
+
+Procedure DocumentBaseOnChange(Control)
+	
+	DocumentBaseOnChangeEventHandler();
+	
+EndProcedure
+
+Procedure DocumentBaseOnChangeEventHandler() Export
+	
+	If NOT BookkeepingCommon.GetStatusOfBookkeepingOperationTemplatesForDocument(BookkeepingOperationsTemplate, DocumentBase) Then
+		BookkeepingOperationsTemplate = Catalogs.BookkeepingOperationsTemplates.EmptyRef();
+	EndIf;
+	
+	If DocumentBase<> Undefined Then
+		FillCurrencyAndExchangeRateOnDocumentBase();
+	EndIf;
+
+	If NOT Manual Then
+		
+		Records.Clear();
+		
+	EndIf;	
+
+EndProcedure	
+
+
+Procedure ShowFirstFilledTabularPart()
+	
+	ControlPanelRecords = Controls.PanelRecords;
+	ControlPanelRecords.CurrentPage = ControlPanelRecords.Pages.Records;
+	If Records.Count() = 0 Then
+		ControlPanelRecords.CurrentPage = ControlPanelRecords.Pages.SalesVATRecords;
+		If SalesVATRecords.Count() = 0 Then
+			ControlPanelRecords.CurrentPage = ControlPanelRecords.Pages.PurchaseVATRecords;
+			If PurchaseVATRecords.Count() = 0 Then
+				ControlPanelRecords.CurrentPage = ControlPanelRecords.Pages.Records;
+			EndIf;	
+		EndIf;	
+	EndIf;
+	
+EndProcedure	
+
+Procedure RecalculateVATOnNetAmountOrVATRateChange(CurrentRow)
+	
+	If CurrentRow <> Undefined Then
+		
+		CurrentRow.VAT = DocumentsTabularPartsProcessing.GetItemsLinesRowVATAmount(CurrentRow.NetAmount, CurrentRow.VATRate, Enums.NetGross.Net);
+		
+	EndIf;	
+	
+EndProcedure	
+
+Procedure RecordsOnActivateCell(Control)
+	
+	CurrentData = Control.CurrentData;
+	If CurrentData <> Undefined Then
+		
+		IsExtDimension = False;
+		IsMandatory = False;
+		For i=1 To Metadata.ChartsOfAccounts.Bookkeeping.MaxExtDimensionCount Do
+			If Upper(Control.CurrentColumn.Name) = Upper("ExtDimension"+i) Then
+				
+				If ValueIsFilled(CurrentData.Account)
+					AND i<=CurrentData.Account.ExtDimensionTypes.Count() Then
+					
+					IsMandatory = CurrentData.Account.ExtDimensionTypes[i-1].Mandatory;
+					Control.CurrentColumn.Control.AutoMarkIncomplete = IsMandatory;
+					Control.CurrentColumn.Control.AutoChoiceIncomplete = IsMandatory;
+					Control.CurrentColumn.Control.MarkIncomplete = Control.CurrentColumn.Control.AutoMarkIncomplete AND ValueIsNotFilled(CurrentData[Control.CurrentColumn.Name]);
+					
+				EndIf;	
+				
+			EndIf;	
+		EndDo;
+		
+	EndIf;
+	
+EndProcedure
+
+Procedure RecordsOnStartEdit(Control, NewRow, Clone)
+	
+	CurrentData = Control.CurrentData;
+	
+	If NewRow Then
+		CurrentData.Type = Enums.BookkeepingOperationRecordTypes.Manual;
+	EndIf;	
+		
+EndProcedure
+
+Procedure RecordsBeforeDeleteRow(Control, Cancel)
+	
+	CurrentData = Control.CurrentData;
+
+	If CurrentData.Type = Enums.BookkeepingOperationRecordTypes.Auto AND NOT Manual Then
+		Cancel = True;
+	EndIf;	
+	
+EndProcedure
+
+Procedure FormActionsShowBookkeepingOperation(Button)
+	Dialogs.ShowBookkeepingOperation(Ref);
+EndProcedure
+
+Procedure ChoiceProcessing(ChoiceValue, Source)
+	
+	If ChoiceValue.TypeOfChoice = "TABULARPARTLOADING" Then
+		
+		NewRowsArray = DocumentsTabularPartsProcessing.FillTabularSectionOnLoadingFromSpreadsheetResult(ThisObject[ChoiceValue.TabularPartName],ChoiceValue);
+		UpdateRowsAfterLoadingFromSpreadsheet(NewRowsArray,ChoiceValue);	
+		
+	EndIf;
+	
+EndProcedure
+
+Procedure UpdateRowsAfterLoadingFromSpreadsheet(NewRowsArray,ChoiceValue)
+	
+	If ChoiceValue.TabularPartName <> "Records" Then
+		Return;
+	EndIf;
+	
+	MultiplyTabularPartValueTable = ChoiceValue.MultiplyTabularPartValueTable;
+	TabularPartValueTable = ChoiceValue.TabularPartValueTable;
+	
+	Counter = 0;
+	For Each NewRow In NewRowsArray Do
+		
+		If Counter>MultiplyTabularPartValueTable.Count()-1 Then
+			Break;
+		EndIf;	
+		
+		If ValueIsFilled(NewRow.Account) Then
+			
+			MultiplyTabularPartValueTableRow = MultiplyTabularPartValueTable[Counter];
+			
+			For Each Column In MultiplyTabularPartValueTable.Columns Do
+				
+				If ValueIsFilled(MultiplyTabularPartValueTableRow[Column.Name])
+					AND Find(Column.Name,"ListValueAsString") = 0 Then
+					
+					NotFiltredArray = MultiplyTabularPartValueTableRow[Column.Name];
+					FiltredArray = New Array;
+					
+					Try
+						ExtDimensionNumber = Number(Common.GetNumberReducedFromString(StrReplace(Column.Name,"ExtDimension","")));
+					Except
+						ExtDimensionNumber = 0;
+					EndTry;	
+					
+					If ExtDimensionNumber <= 0 Then
+						Continue; 
+					EndIf;	
+					
+					ExtDimensionNumber = ExtDimensionNumber - 1;
+					
+					AvailableTypes = NewRow.Account.ExtDimensionTypes[ExtDimensionNumber].ExtDimensionType.ValueType;
+					
+					For Each NotFiltredItem In NotFiltredArray Do
+						
+						If AvailableTypes.ContainsType(TypeOf(NotFiltredItem)) Then
+							FiltredArray.Add(NotFiltredItem);
+						EndIf;	
+						
+					EndDo;	
+					
+					If FiltredArray.Count() = 1 Then
+						NewRow[Column.Name] = FiltredArray[0];
+					EndIf;	
+					
+				EndIf;	
+				
+			EndDo;	
+			
+		EndIf;	
+		
+		Counter = Counter + 1;
+		
+	EndDo;	
+	
+EndProcedure	
+
+Procedure LockRowEditingOnAutoType(RowAppearance, RowData, Manual)
+	
+	If RowData.Type = Enums.BookkeepingOperationRecordTypes.Auto AND NOT Manual Then
+		For Each Cell In RowAppearance.Cells Do
+			Cell.ReadOnly = True;
+		EndDo;	
+	EndIf;	
+	
+EndProcedure	
+
