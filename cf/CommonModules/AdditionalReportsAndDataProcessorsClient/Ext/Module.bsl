@@ -304,7 +304,7 @@ EndProcedure
 Procedure RunOpenOfProcessingForm(ExecuteCommand, Form, DestinationObjects) Export
 	ProcessingParameters = New Structure("CommandID, AdditionalDataProcessorRef, FormName, SessionKey");
 	ProcessingParameters.CommandID          = ExecuteCommand.ID;
-	ProcessingParameters.AdditionalInformationProcessorRef = ExecuteCommand.Ref;
+	ProcessingParameters.AdditionalDataProcessorRef = ExecuteCommand.Ref;
 	ProcessingParameters.FormName                      = ?(Form = Undefined, Undefined, Form.FormName);
 	ProcessingParameters.SessionKey = ExecuteCommand.Ref.UUID();
 	

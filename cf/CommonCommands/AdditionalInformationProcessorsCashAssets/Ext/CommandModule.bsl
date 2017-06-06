@@ -6,6 +6,6 @@ Procedure CommandProcessing(CommandParameter, CommandExecuteParameters)
 			CommandParameter,
 			CommandExecuteParameters,
 			AdditionalReportsAndDataProcessorsClientServer.DataProcessorKindAdditionalInformationProcessor(),
-			"CashAssets");
+			"Finances");
 	
 EndProcedure
