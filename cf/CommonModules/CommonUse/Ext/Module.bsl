@@ -6342,14 +6342,14 @@ Function SetDimensionsDescription(Val Meta, Cache)
 	// Period and registrar if any.
 	DimensionsDescription = New Structure;
 	
-	DimensionData = New Structure("Leading, Presentation, Format, Type", False);
+	DimensionData = New Structure("Master, Presentation, Format, Type", False);
 	
 	If Metadata.InformationRegisters.Contains(Meta) Then
 		// There may be a period
 		MetaPeriod = Meta.InformationRegisterPeriodicity; 
 		Periodicity = Metadata.ObjectProperties.InformationRegisterPeriodicity;
 		
-		If MetaPeriod = Periodicity.RegistrarPosition Then
+		If MetaPeriod = Periodicity.RecorderPosition Then
 			DimensionData.Type           = Documents.AllRefsType();
 			DimensionData.Presentation = NStr("en='Recorder';ru='Регистратор'");
 			DimensionData.Master       = True;
@@ -6397,7 +6397,7 @@ Function SetDimensionsDescription(Val Meta, Cache)
 	
 	// All dimensions
 	For Each MetaDimension In Meta.Dimensions Do
-		DimensionData = New Structure("Leading, Presentation, Format, Type");
+		DimensionData = New Structure("Master, Presentation, Format, Type");
 		DimensionData.Type           = MetaDimension.Type;
 		DimensionData.Presentation = MetaDimension.Presentation();
 		DimensionData.Master       = MetaDimension.Master;

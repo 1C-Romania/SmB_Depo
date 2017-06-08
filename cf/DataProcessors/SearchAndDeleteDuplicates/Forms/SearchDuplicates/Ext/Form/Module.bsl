@@ -747,8 +747,8 @@ Function FillDuplicatesSearchResults(Val Data)
 	TotalDuplicatesFound = 0;
 	
 	AllGroups = DuplicatesTable.FindRows(RowsFilter);
-	For Each Group In AllGroups Do
-		RowsFilter.Parent = Group.Ref;
+	For Each FoundGroup In AllGroups Do
+		RowsFilter.Parent = FoundGroup.Ref;
 		GroupItems = DuplicatesTable.FindRows(RowsFilter);
 		
 		TreeGroup = TreeItems.Add();
@@ -759,7 +759,7 @@ Function FillDuplicatesSearchResults(Val Data)
 		MaxPlaces   = -1;
 		For Each Item In GroupItems Do
 			TreeRow = TreeGroup.GetItems().Add();
-			FillPropertyValues(TreeRow, Item, "Ref, Code, Name");
+			FillPropertyValues(TreeRow, Item, "Ref, Code, Description");
 			TreeRow.Check = 1;
 			
 			PlacesFilter.Ref = Item.Ref;
@@ -2064,7 +2064,7 @@ Function BackGroundJobStart(Val ProcedureName)
 	
 	// Define start parameters.
 	MethodParameters = New Structure;
-	MethodParameters.Insert("FullObjectName", "Processing.SearchAndDeleteDuplicates");
+	MethodParameters.Insert("FullObjectName", "DataProcessor.SearchAndDeleteDuplicates");
 	MethodParameters.Insert("ProcedureName", ProcedureName);
 	
 	If ProcedureName = "BackgroundDuplicatesSearch" Then

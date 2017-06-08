@@ -307,7 +307,7 @@ Function SubsystemName()
 	Return "StandardSubsystems.LongActions";
 EndFunction
 
-Procedure ExecuteReportAndDataProcessorCommand(CommandParameters, ResultAddress) Export
+Procedure ExecuteReportOrDataProcessorCommand(CommandParameters, ResultAddress) Export
 	
 	If CommandParameters.Property("AdditionalInformationProcessorRef")
 		AND ValueIsFilled(CommandParameters.AdditionalInformationProcessorRef)

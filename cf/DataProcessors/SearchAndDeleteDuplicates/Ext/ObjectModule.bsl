@@ -262,7 +262,7 @@ Function DuplicatesGroups(Val SearchParameters, Val ReferenceObject = Undefined)
 		|	" + ?(IsBlankString(ComparisonFieldsOnEquality), "", ComparisonFieldsOnEquality + "," ) + "
 		|	" + ?(IsBlankString(ComparisonFieldsBySimilarity),   "", ComparisonFieldsBySimilarity   + "," ) + "
 		|	" + ?(IsBlankString(AdditionalAliases), "", AdditionalAliases + "," ) + "
-		|	Refs
+		|	Ref
 		|";
 	If Not IdentityFieldsStructure.Property("Code") AND Not SimilarityFieldsStructure.Property("Code") Then
 		QueryCommonPart = QueryCommonPart + "," + ?(ThereIsCode, "Code", "UNDEFINED") + " AS Code";
@@ -603,7 +603,7 @@ Procedure AddDuplicateToResult(Result, Val MainItemData, Val CandidateData, Val 
 		
 		DuplicatesRow = Result.Add();
 		FillPropertyValues(DuplicatesRow, MainItemData, 
-			"Ref, Code, Name," + FieldsStructure.IdentityFieldsList + "," + FieldsStructure.FieldsListSimilarities
+			"Ref, Code, Description," + FieldsStructure.IdentityFieldsList + "," + FieldsStructure.FieldsListSimilarities
 		);
 		
 		DuplicatesRow.Parent = DuplicatesGroup.Ref;
@@ -613,7 +613,7 @@ Procedure AddDuplicateToResult(Result, Val MainItemData, Val CandidateData, Val 
 	
 	DuplicatesRow = Result.Add();
 	FillPropertyValues(DuplicatesRow, CandidateData, 
-		"Ref, Code, Name," + FieldsStructure.IdentityFieldsList + "," + FieldsStructure.FieldsListSimilarities
+		"Ref, Code, Description," + FieldsStructure.IdentityFieldsList + "," + FieldsStructure.FieldsListSimilarities
 	);
 	
 	DuplicatesRow.Parent = DuplicatesGroup.Ref;
