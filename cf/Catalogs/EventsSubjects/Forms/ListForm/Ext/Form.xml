@@ -75,8 +75,23 @@
 				<LabelField name="Description" id="4">
 					<DataPath>List.Description</DataPath>
 					<DefaultItem>true</DefaultItem>
+					<Width>40</Width>
 					<ContextMenu name="DescriptionContextMenu" id="5"/>
 					<ExtendedTooltip name="DescriptionExtendedTooltip" id="16"/>
+				</LabelField>
+				<LabelField name="Content" id="21">
+					<DataPath>List.Content</DataPath>
+					<Width>40</Width>
+					<ContextMenu name="ContentContextMenu" id="22"/>
+					<ExtendedTooltip name="ContentExtendedTooltip" id="23"/>
+				</LabelField>
+				<LabelField name="Ref" id="24">
+					<DataPath>List.Ref</DataPath>
+					<UserVisible>
+						<xr:Common>false</xr:Common>
+					</UserVisible>
+					<ContextMenu name="RefContextMenu" id="25"/>
+					<ExtendedTooltip name="RefExtendedTooltip" id="26"/>
 				</LabelField>
 			</ChildItems>
 		</Table>
@@ -87,6 +102,9 @@
 				<v8:Type>cfg:DynamicList</v8:Type>
 			</Type>
 			<MainAttribute>true</MainAttribute>
+			<UseAlways>
+				<Field>List.Ref</Field>
+			</UseAlways>
 			<Settings xsi:type="DynamicList">
 				<ManualQuery>false</ManualQuery>
 				<DynamicDataRead>true</DynamicDataRead>

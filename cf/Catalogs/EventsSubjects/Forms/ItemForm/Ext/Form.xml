@@ -1,7 +1,6 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
 <Form xmlns="http://v8.1c.ru/8.3/xcf/logform" xmlns:app="http://v8.1c.ru/8.2/managed-application/core" xmlns:cfg="http://v8.1c.ru/8.1/data/enterprise/current-config" xmlns:dcscor="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:dcsset="http://v8.1c.ru/8.1/data-composition-system/settings" xmlns:ent="http://v8.1c.ru/8.1/data/enterprise" xmlns:lf="http://v8.1c.ru/8.2/managed-application/logform" xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows" xmlns:xr="http://v8.1c.ru/8.3/xcf/readable" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.4">
 	<WindowOpeningMode>LockOwnerWindow</WindowOpeningMode>
-	<VerticalScroll>useIfNecessary</VerticalScroll>
 	<UseForFoldersAndItems>Items</UseForFoldersAndItems>
 	<AutoCommandBar name="FormCommandBar" id="-1"/>
 	<ChildItems>
@@ -9,53 +8,24 @@
 			<DataPath>Object.Parent</DataPath>
 			<SkipOnInput>true</SkipOnInput>
 			<EditMode>EnterOnInput</EditMode>
-			<Width>30</Width>
-			<HorizontalStretch>false</HorizontalStretch>
 			<ContextMenu name="ParentContextMenu" id="6"/>
 			<ExtendedTooltip name="ParentExtendedTooltip" id="10"/>
 		</InputField>
-		<UsualGroup name="TemplateSubjectContent" id="9">
-			<Title>
-				<v8:item>
-					<v8:lang>en</v8:lang>
-					<v8:content>Pattern</v8:content>
-				</v8:item>
-				<v8:item>
-					<v8:lang>ru</v8:lang>
-					<v8:content>Шаблон</v8:content>
-				</v8:item>
-			</Title>
-			<ToolTip>
-				<v8:item>
-					<v8:lang>en</v8:lang>
-					<v8:content>Template: theme, content</v8:content>
-				</v8:item>
-				<v8:item>
-					<v8:lang>ru</v8:lang>
-					<v8:content>Шаблон: тема, содержание</v8:content>
-				</v8:item>
-			</ToolTip>
-			<Group>Vertical</Group>
-			<ExtendedTooltip name="TemplateSubjectContentExtendedTooltip" id="11"/>
-			<ChildItems>
-				<InputField name="Description" id="3">
-					<DataPath>Object.Description</DataPath>
-					<TitleLocation>Top</TitleLocation>
-					<EditMode>EnterOnInput</EditMode>
-					<ContextMenu name="DescriptionContextMenu" id="4"/>
-					<ExtendedTooltip name="DescriptionExtendedTooltip" id="12"/>
-				</InputField>
-				<InputField name="Content" id="7">
-					<DataPath>Object.Content</DataPath>
-					<TitleLocation>Top</TitleLocation>
-					<EditMode>EnterOnInput</EditMode>
-					<Height>3</Height>
-					<MultiLine>true</MultiLine>
-					<ContextMenu name="ContentContextMenu" id="8"/>
-					<ExtendedTooltip name="ContentExtendedTooltip" id="13"/>
-				</InputField>
-			</ChildItems>
-		</UsualGroup>
+		<InputField name="Description" id="3">
+			<DataPath>Object.Description</DataPath>
+			<DefaultItem>true</DefaultItem>
+			<EditMode>EnterOnInput</EditMode>
+			<ContextMenu name="DescriptionContextMenu" id="4"/>
+			<ExtendedTooltip name="DescriptionExtendedTooltip" id="12"/>
+		</InputField>
+		<InputField name="Content" id="7">
+			<DataPath>Object.Content</DataPath>
+			<TitleLocation>Left</TitleLocation>
+			<EditMode>EnterOnInput</EditMode>
+			<Height>3</Height>
+			<ContextMenu name="ContentContextMenu" id="8"/>
+			<ExtendedTooltip name="ContentExtendedTooltip" id="13"/>
+		</InputField>
 	</ChildItems>
 	<Attributes>
 		<Attribute name="Object" id="1">

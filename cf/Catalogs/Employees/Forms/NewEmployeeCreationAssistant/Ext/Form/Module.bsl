@@ -762,7 +762,7 @@ Procedure RunControlStaffSchedule(DataStructure, Errors, Cancel)
 	|				AND StructuralUnit = &StructuralUnit
 	|				AND Position = &Position) AS StaffScheduleSliceLast
 	|;
-	|	
+	|
 	|////////////////////////////////////////////////////////////////////////////////
 	|SELECT
 	|	SUM(OccupiedRates.OccupiedRates1) AS OccupiedRates
