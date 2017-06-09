@@ -25,20 +25,34 @@
 				<ChildItems>
 					<Button name="FormChoose" id="124">
 						<Type>CommandBarButton</Type>
-						<CommandName>Form.Item.List.StandardCommand.Choose</CommandName>
+						<CommandName>Form.StandardCommand.Choose</CommandName>
 						<ExtendedTooltip name="FormChooseExtendedTooltip" id="125"/>
 					</Button>
 					<Button name="FormCreate" id="126">
 						<Type>CommandBarButton</Type>
-						<CommandName>Form.Item.List.StandardCommand.Create</CommandName>
+						<CommandName>Form.StandardCommand.Create</CommandName>
 						<ExtendedTooltip name="FormCreateExtendedTooltip" id="127"/>
 					</Button>
 					<Button name="FormCopy" id="128">
 						<Type>CommandBarButton</Type>
-						<CommandName>Form.Item.List.StandardCommand.Copy</CommandName>
+						<CommandName>Form.StandardCommand.Copy</CommandName>
 						<ExtendedTooltip name="FormCopyExtendedTooltip" id="129"/>
 					</Button>
 				</ChildItems>
+			</ButtonGroup>
+			<ButtonGroup name="FormCommandsStandart" id="162">
+				<Title>
+					<v8:item>
+						<v8:lang>en</v8:lang>
+						<v8:content>Form commands standart</v8:content>
+					</v8:item>
+					<v8:item>
+						<v8:lang>ru</v8:lang>
+						<v8:content>Команды формы стандартные</v8:content>
+					</v8:item>
+				</Title>
+				<CommandSource>Form</CommandSource>
+				<ExtendedTooltip name="FormCommandsStandartExtendedTooltip" id="163"/>
 			</ButtonGroup>
 			<ButtonGroup name="CommandsImportant" id="106">
 				<Title>
