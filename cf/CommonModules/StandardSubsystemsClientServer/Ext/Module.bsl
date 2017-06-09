@@ -34,8 +34,8 @@ EndFunction
 //   Result - Structure - See StandardSubsystemsClient.ShowPerformanceResult().
 //   ModifiedObject - Array - Changed object refs.
 //
-Procedure NotifyDynamicLists(Result, ModifiedObject) Export
-	If TypeOf(ModifiedObject) <> Type("Array") Or ModifiedObject.Count() = 0 Then
+Procedure NotifyDynamicLists(Result, ModifiedObjects) Export
+	If TypeOf(ModifiedObjects) <> Type("Array") Or ModifiedObjects.Count() = 0 Then
 		Return;
 	EndIf;
 	
@@ -48,8 +48,8 @@ Procedure NotifyDynamicLists(Result, ModifiedObject) Export
 	Value = Notification.ReferenceOrType;
 	ValueIsFilled = ValueIsFilled(Value);
 	
-	If ModifiedObject.Count() = 1 AND Not ValueIsFilled Then
-		Notification.ReferenceOrType = ModifiedObject[0];
+	If ModifiedObjects.Count() = 1 AND Not ValueIsFilled Then
+		Notification.ReferenceOrType = ModifiedObjects[0];
 	Else
 		// Notification conversion to the array.
 		ValueType = TypeOf(Value);
@@ -61,8 +61,8 @@ Procedure NotifyDynamicLists(Result, ModifiedObject) Export
 		EndIf;
 		
 		// Adding changed object types.
-		For Each ModifObject IN ModifiedObject Do
-			ModifiedObjectType = TypeOf(ModifObject);
+		For Each ModifiedObject In ModifiedObjects Do
+			ModifiedObjectType = TypeOf(ModifiedObject);
 			If Notification.ReferenceOrType.Find(ModifiedObjectType) = Undefined Then
 				Notification.ReferenceOrType.Add(ModifiedObjectType);
 			EndIf;
