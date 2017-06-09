@@ -4,6 +4,8 @@
 &AtServer
 Procedure OnCreateAtServer(Cancel, StandardProcessing)
 	
+	SmallBusinessClientServer.SetPictureForComment(Items.GroupComment, Object.Comment);
+	
 	// StandardSubsystems.ObjectsAttributesEditProhibition
 	ObjectsAttributesEditProhibition.LockAttributes(ThisForm);
 	// End StandardSubsystems.ObjectsAttributesEditProhibition
@@ -12,6 +14,8 @@ EndProcedure
 
 &AtServer
 Procedure AfterWriteAtServer(CurrentObject, WriteParameters)
+	
+	SmallBusinessClientServer.SetPictureForComment(Items.GroupComment, Object.Comment);
 	
 	// Handler of the subsystem prohibiting the object attribute editing.
 	ObjectsAttributesEditProhibition.LockAttributes(ThisForm);
@@ -50,10 +54,10 @@ EndProcedure
 &AtClientAtServerNoContext
 Function GenerateDescription(DocumentKind, Number, IssueDate)
 	
-	TextName = NStr("ru='%DocumentKind% № %Number% от %IssueDate%'; en='%DocumentKind% # %Number% from %IssueDate%'");
+	TextName = NStr("ru='%DocumentKind% № %Number% %IssueDate%'; en='%DocumentKind% # %Number% %IssueDate%'");
 	TextName = StrReplace(TextName, "%DocumentKind%", TrimAll(String(DocumentKind)));
 	TextName = StrReplace(TextName, "%Number%", TrimAll(Number));
-	TextName = StrReplace(TextName, "%IssueDate%", ?(ValueIsFilled(IssueDate), TrimAll(String(Format(IssueDate, "DF=dd.MM.yyyy"))), ""));
+	TextName = StrReplace(TextName, "%IssueDate%", ?(ValueIsFilled(IssueDate), NStr("ru = 'от '; en = 'from '") + TrimAll(String(Format(IssueDate, "DF=dd.MM.yyyy"))), ""));
 	
 	Return TextName;
 	
