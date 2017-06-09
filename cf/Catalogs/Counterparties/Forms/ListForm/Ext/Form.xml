@@ -234,6 +234,12 @@
 											<CommandName>Form.StandardCommand.Copy</CommandName>
 											<ExtendedTooltip name="CopyExtendedTooltip" id="373"/>
 										</Button>
+										<Button name="DataImportFromExternalSources" id="374">
+											<Type>CommandBarButton</Type>
+											<OnlyInAllActions>false</OnlyInAllActions>
+											<CommandName>Form.Command.DataImportFromExternalSources</CommandName>
+											<ExtendedTooltip name="DataImportFromExternalSourcesExtendedTooltip" id="375"/>
+										</Button>
 										<Button name="CreateFolder" id="376">
 											<Type>CommandBarButton</Type>
 											<OnlyInAllActions>false</OnlyInAllActions>
@@ -258,12 +264,6 @@
 								</ButtonGroup>
 							</ChildItems>
 						</ButtonGroup>
-						<Button name="DataImportFromExternalSources" id="374">
-							<Type>CommandBarButton</Type>
-							<OnlyInAllActions>false</OnlyInAllActions>
-							<CommandName>Form.Command.DataImportFromExternalSources</CommandName>
-							<ExtendedTooltip name="DataImportFromExternalSourcesExtendedTooltip" id="375"/>
-						</Button>
 						<ButtonGroup name="GroupRemind" id="380">
 							<Title>
 								<v8:item>
