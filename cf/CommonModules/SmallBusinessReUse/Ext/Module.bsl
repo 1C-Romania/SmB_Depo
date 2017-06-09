@@ -18,11 +18,11 @@ EndFunction // GetSessionCurrentDate()
 // Returns:
 //  Value by default for setup.
 //
-Function GetValueByDefaultUser(User, Setting) Export
+Function GetValueByDefaultUser(User, Setting, EmptyValue = Undefined) Export
 
 	Query = New Query;
-	Query.SetParameter("User", User);
-	Query.SetParameter("Setting"   , ChartsOfCharacteristicTypes.UserSettings[Setting]);
+	Query.SetParameter("User"   , User);
+	Query.SetParameter("Setting", ChartsOfCharacteristicTypes.UserSettings[Setting]);
 	Query.Text = "
 	|SELECT
 	|	Value
@@ -35,7 +35,9 @@ Function GetValueByDefaultUser(User, Setting) Export
 
 	Selection = Query.Execute().Select();
 
-	EmptyValue = ChartsOfCharacteristicTypes.UserSettings[Setting].ValueType.AdjustValue();
+	If EmptyValue = Undefined Then
+		EmptyValue = ChartsOfCharacteristicTypes.UserSettings[Setting].ValueType.AdjustValue();
+	КонецЕсли;
 
 	If Selection.Count() = 0 Then
 		
