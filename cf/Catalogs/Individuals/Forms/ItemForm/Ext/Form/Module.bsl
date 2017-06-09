@@ -4,8 +4,6 @@
 &AtServer
 Procedure OnCreateAtServer(Cancel, StandardProcessing)
 	
-	GetCurrentIndividualDocument();
-	
 	If Parameters.Key.IsEmpty() Then
 		
 		// SB.ContactInformation
@@ -13,6 +11,8 @@ Procedure OnCreateAtServer(Cancel, StandardProcessing)
 		// End SB.ContactInformation
 		
 	EndIf;
+	
+	SmallBusinessClientServer.SetPictureForComment(Items.GroupComment, Object.Comment);
 	
 	// StandardSubsystems.AdditionalReportsAndDataProcessors
 	AdditionalReportsAndDataProcessors.OnCreateAtServer(ThisForm);
@@ -23,7 +23,7 @@ Procedure OnCreateAtServer(Cancel, StandardProcessing)
 	// End StandardSubsystems.Printing
 	
 	// StandardSubsystems.Properties
-	PropertiesManagement.OnCreateAtServer(ThisForm, Object, "AdditionalAttributes");
+	PropertiesManagement.OnCreateAtServer(ThisForm, Object, "GroupAdditionalAttributes");
 	// End StandardSubsystems.Properties
 	
 EndProcedure
@@ -47,8 +47,6 @@ Procedure NotificationProcessing(EventName, Parameter, Source)
 	// Mechanism handler "Properties".
 	If PropertiesManagementClient.ProcessAlerts(ThisForm, EventName, Parameter) Then
 		UpdateAdditionalAttributesItems();
-	ElsIf EventName = "ChangedIndividualDocument" Then
-		GetCurrentIndividualDocument();
 	EndIf;
 	
 EndProcedure
@@ -87,75 +85,18 @@ Procedure BeforeWrite(Cancel, WriteParameters)
 	
 EndProcedure
 
+&AtServer
+Procedure AfterWriteAtServer(CurrentObject, WriteParameters)
+	
+	SmallBusinessClientServer.SetPictureForComment(Items.GroupComment, Object.Comment);
+	
+EndProcedure
+
 &AtClient
 Procedure AfterWrite(WriteParameters)
 	
 	Notify("Write_Individuals", Object.Ref)
 	
-EndProcedure
-
-#EndRegion
-
-#Region FormItemsEventHadlers
-
-&AtClient
-Procedure DocumentClick(Item, StandardProcessing)
-	
-	StandardProcessing = False;
-	
-	If Object.Ref.IsEmpty() Then
-		ButtonsList = New ValueList;
-		ButtonsList.Add(DialogReturnCode.Yes, NStr("ru='Записать'; en = 'Write'"));
-		ButtonsList.Add(DialogReturnCode.No, NStr("ru='Отмена'; en = 'Cancel'"));
-		Notify = New NotifyDescription("NotifyProcessingGoingToDocuments", ThisObject);
-		
-		ShowQueryBox(
-			Notify,
-			NStr("ru='Переход к заполнению сведений документов возможен только после записи.
-				|Записать?'; en = 'Go to filling the information document is only possible after write.
-				|Write?'"),
-			ButtonsList);
-		
-		Write();
-		Return;
-	EndIf;
-	If Not Object.Ref.IsEmpty() Then
-		No = New NotifyDescription("NotifyFillingDocument", ThisObject);
-		OpenForm("InformationRegister.IndividualsDocuments.Form.FormFillingDetails",New Structure("Ind", Object.Ref),,,,,No, FormWindowOpeningMode.LockOwnerWindow);
-	EndIf;
-	
-EndProcedure
-
-#EndRegion
-
-#Region ServiceProceduresAndFunctions
-
-&AtServer
-Procedure GetCurrentIndividualDocument()
-	
-	Document = InformationRegisters.IndividualsDocuments.GetDocumentPresentationByIndividual(Object.Ref);
-	
-EndProcedure
-
-&AtClient
-Procedure NotifyProcessingGoingToDocuments(Result,Parameters) Export
-	
-	If Result = DialogReturnCode.Yes Then
-		Write();
-	Else
-		Return;
-	EndIf;
-	
-	If Not Object.Ref.IsEmpty() Then
-		No = New NotifyDescription("NotifyFillingDocument", ThisObject);
-		OpenForm("InformationRegister.IndividualsDocuments.Form.FormFillingDetails",New Structure("Ind", Object.Ref),,,,,No, FormWindowOpeningMode.LockOwnerWindow);
-	EndIf;
-	
-EndProcedure
-
-&AtClient
-Procedure NotifyFillingDocument(Result,Parameters) Export
-	GetCurrentIndividualDocument();
 EndProcedure
 
 #EndRegion

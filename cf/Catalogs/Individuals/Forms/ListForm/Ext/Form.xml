@@ -154,6 +154,7 @@
 				</LabelField>
 				<LabelField name="Birthdate" id="6">
 					<DataPath>List.Birthdate</DataPath>
+					<Width>10</Width>
 					<ContextMenu name="BirthdateContextMenu" id="7"/>
 					<ExtendedTooltip name="BirthdateExtendedTooltip" id="14"/>
 				</LabelField>
@@ -161,6 +162,11 @@
 					<DataPath>List.Gender</DataPath>
 					<ContextMenu name="GenderContextMenu" id="9"/>
 					<ExtendedTooltip name="GenderExtendedTooltip" id="15"/>
+				</LabelField>
+				<LabelField name="Citizenship" id="40">
+					<DataPath>List.Citizenship</DataPath>
+					<ContextMenu name="CitizenshipContextMenu" id="41"/>
+					<ExtendedTooltip name="CitizenshipExtendedTooltip" id="42"/>
 				</LabelField>
 				<LabelField name="Ref" id="10">
 					<DataPath>List.Ref</DataPath>

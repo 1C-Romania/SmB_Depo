@@ -78,6 +78,7 @@
 	</AutoCommandBar>
 	<Events>
 		<Event name="AfterWrite">AfterWrite</Event>
+		<Event name="AfterWriteAtServer">AfterWriteAtServer</Event>
 		<Event name="NotificationProcessing">NotificationProcessing</Event>
 		<Event name="OnReadAtServer">OnReadAtServer</Event>
 		<Event name="BeforeWrite">BeforeWrite</Event>
@@ -86,174 +87,271 @@
 		<Event name="FillCheckProcessingAtServer">FillCheckProcessingAtServer</Event>
 	</Events>
 	<ChildItems>
-		<UsualGroup name="DescriptionFullCode" id="17">
+		<Pages name="GroupPages" id="42">
 			<Title>
 				<v8:item>
 					<v8:lang>en</v8:lang>
-					<v8:content>Full name, Code</v8:content>
-				</v8:item>
-				<v8:item>
-					<v8:lang>ru</v8:lang>
-					<v8:content>ФИО, Код</v8:content>
+					<v8:content>Group pages</v8:content>
 				</v8:item>
 			</Title>
 			<ToolTip>
 				<v8:item>
 					<v8:lang>en</v8:lang>
-					<v8:content>Full name, Code</v8:content>
-				</v8:item>
-				<v8:item>
-					<v8:lang>ru</v8:lang>
-					<v8:content>ФИО, Код</v8:content>
+					<v8:content>Group pages</v8:content>
 				</v8:item>
 			</ToolTip>
-			<Group>Horizontal</Group>
-			<Representation>None</Representation>
-			<ShowTitle>false</ShowTitle>
-			<ExtendedTooltip name="NameAndSurnameCodeExtendedTooltip" id="19"/>
+			<ExtendedTooltip name="GroupPagesExtendedTooltip" id="43"/>
 			<ChildItems>
-				<InputField name="Description" id="1">
-					<DataPath>Object.Description</DataPath>
-					<EditMode>EnterOnInput</EditMode>
-					<AutoMaxWidth>false</AutoMaxWidth>
-					<MaxWidth>30</MaxWidth>
-					<Wrap>false</Wrap>
-					<ContextMenu name="DescriptionContextMenu" id="2"/>
-					<ExtendedTooltip name="DescriptionExtendedTooltip" id="20"/>
-				</InputField>
-				<InputField name="Code" id="15">
-					<DataPath>Object.Code</DataPath>
-					<UserVisible>
-						<xr:Common>false</xr:Common>
-					</UserVisible>
-					<WarningOnEditRepresentation>Show</WarningOnEditRepresentation>
-					<ContextMenu name="CodeContextMenu" id="16"/>
-					<ExtendedTooltip name="CodeExtendedTooltip" id="21"/>
-				</InputField>
+				<Page name="GroupGeneralInfo" id="44">
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>General info</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Общая информация</v8:content>
+						</v8:item>
+					</Title>
+					<ToolTip>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>General info</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Общая информация</v8:content>
+						</v8:item>
+					</ToolTip>
+					<ExtendedTooltip name="GroupGeneralInfoExtendedTooltip" id="45"/>
+					<ChildItems>
+						<InputField name="Description" id="1">
+							<DataPath>Object.Description</DataPath>
+							<EditMode>EnterOnInput</EditMode>
+							<AutoMaxWidth>false</AutoMaxWidth>
+							<Wrap>false</Wrap>
+							<ContextMenu name="DescriptionContextMenu" id="2"/>
+							<ExtendedTooltip name="DescriptionExtendedTooltip" id="20"/>
+						</InputField>
+						<UsualGroup name="ParentCode" id="17">
+							<Title>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Group, code</v8:content>
+								</v8:item>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Группа, код</v8:content>
+								</v8:item>
+							</Title>
+							<ToolTip>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Group, code</v8:content>
+								</v8:item>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Группа, код</v8:content>
+								</v8:item>
+							</ToolTip>
+							<Group>Horizontal</Group>
+							<Representation>None</Representation>
+							<ShowTitle>false</ShowTitle>
+							<ExtendedTooltip name="ParentCodeExtendedTooltip" id="19"/>
+							<ChildItems>
+								<InputField name="Parent" id="3">
+									<DataPath>Object.Parent</DataPath>
+									<SkipOnInput>true</SkipOnInput>
+									<EditMode>EnterOnInput</EditMode>
+									<AutoMaxWidth>false</AutoMaxWidth>
+									<MaxWidth>30</MaxWidth>
+									<Wrap>false</Wrap>
+									<ContextMenu name="ParentContextMenu" id="4"/>
+									<ExtendedTooltip name="ParentExtendedTooltip" id="22"/>
+								</InputField>
+								<InputField name="Code" id="15">
+									<DataPath>Object.Code</DataPath>
+									<UserVisible>
+										<xr:Common>false</xr:Common>
+									</UserVisible>
+									<SkipOnInput>true</SkipOnInput>
+									<WarningOnEditRepresentation>Show</WarningOnEditRepresentation>
+									<ContextMenu name="CodeContextMenu" id="16"/>
+									<ExtendedTooltip name="CodeExtendedTooltip" id="21"/>
+								</InputField>
+							</ChildItems>
+						</UsualGroup>
+						<UsualGroup name="DateGender" id="18">
+							<Title>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Birth date, gender</v8:content>
+								</v8:item>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Дата рождения, пол</v8:content>
+								</v8:item>
+							</Title>
+							<ToolTip>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Date gender</v8:content>
+								</v8:item>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Дата пол</v8:content>
+								</v8:item>
+							</ToolTip>
+							<Group>Horizontal</Group>
+							<Representation>None</Representation>
+							<ShowTitle>false</ShowTitle>
+							<ExtendedTooltip name="DateGenderExtendedTooltip" id="23"/>
+							<ChildItems>
+								<InputField name="BirthDate" id="5">
+									<DataPath>Object.Birthdate</DataPath>
+									<EditMode>EnterOnInput</EditMode>
+									<Width>11</Width>
+									<Wrap>false</Wrap>
+									<ContextMenu name="DateOfBirthContextMenu" id="6"/>
+									<ExtendedTooltip name="DateOfBirthExtendedTooltip" id="24"/>
+								</InputField>
+								<InputField name="Gender" id="7">
+									<DataPath>Object.Gender</DataPath>
+									<EditMode>EnterOnInput</EditMode>
+									<AutoMaxWidth>false</AutoMaxWidth>
+									<MaxWidth>12</MaxWidth>
+									<HorizontalStretch>false</HorizontalStretch>
+									<Wrap>false</Wrap>
+									<ContextMenu name="GenderContextMenu" id="8"/>
+									<ExtendedTooltip name="GenderExtendedTooltip" id="25"/>
+								</InputField>
+							</ChildItems>
+						</UsualGroup>
+						<InputField name="Citizenship" id="39">
+							<DataPath>Object.Citizenship</DataPath>
+							<AutoMaxWidth>false</AutoMaxWidth>
+							<MaxWidth>30</MaxWidth>
+							<ContextMenu name="CitizenshipContextMenu" id="40"/>
+							<ExtendedTooltip name="CitizenshipExtendedTooltip" id="41"/>
+						</InputField>
+						<InputField name="BirthPlace" id="53">
+							<DataPath>Object.BirthPlace</DataPath>
+							<AutoMaxWidth>false</AutoMaxWidth>
+							<ContextMenu name="BirthPlaceContextMenu" id="54"/>
+							<ExtendedTooltip name="BirthPlaceExtendedTooltip" id="55"/>
+						</InputField>
+					</ChildItems>
+				</Page>
+				<Page name="GroupContactInformation" id="46">
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Addresses, phones</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Адреса, телефоны</v8:content>
+						</v8:item>
+					</Title>
+					<ToolTip>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Addresses, phones</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Адреса, телефоны</v8:content>
+						</v8:item>
+					</ToolTip>
+					<ExtendedTooltip name="GroupContactInformationExtendedTooltip" id="47"/>
+					<ChildItems>
+						<UsualGroup name="ContactInformation" id="13">
+							<Title>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Addresses, phones</v8:content>
+								</v8:item>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Адреса, телефоны</v8:content>
+								</v8:item>
+							</Title>
+							<ToolTip>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Контактная информация</v8:content>
+								</v8:item>
+							</ToolTip>
+							<Group>Vertical</Group>
+							<Behavior>Collapsible</Behavior>
+							<Collapsed>true</Collapsed>
+							<ControlRepresentation>Picture</ControlRepresentation>
+							<Representation>NormalSeparation</Representation>
+							<ShowLeftMargin>false</ShowLeftMargin>
+							<ShowTitle>false</ShowTitle>
+							<ExtendedTooltip name="ContactInformationExtendedTooltip" id="27"/>
+						</UsualGroup>
+					</ChildItems>
+				</Page>
+				<Page name="GroupAdditionalAttributes" id="14">
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Additional attributes</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Дополнительные реквизиты</v8:content>
+						</v8:item>
+					</Title>
+					<ToolTip>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Additional attributes</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Дополнительные реквизиты</v8:content>
+						</v8:item>
+					</ToolTip>
+					<ExtendedTooltip name="GroupAdditionalAttributesExtendedTooltip" id="28"/>
+				</Page>
+				<Page name="GroupComment" id="48">
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Comment</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Комментарий</v8:content>
+						</v8:item>
+					</Title>
+					<ToolTip>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Comment</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Комментарий</v8:content>
+						</v8:item>
+					</ToolTip>
+					<ExtendedTooltip name="GroupCommentExtendedTooltip" id="49"/>
+					<ChildItems>
+						<InputField name="Comment" id="50">
+							<DataPath>Object.Comment</DataPath>
+							<TitleLocation>None</TitleLocation>
+							<AutoMaxWidth>false</AutoMaxWidth>
+							<VerticalStretch>true</VerticalStretch>
+							<MultiLine>true</MultiLine>
+							<ContextMenu name="CommentContextMenu" id="51"/>
+							<ExtendedTooltip name="CommentExtendedTooltip" id="52"/>
+						</InputField>
+					</ChildItems>
+				</Page>
 			</ChildItems>
-		</UsualGroup>
-		<InputField name="Parent" id="3">
-			<DataPath>Object.Parent</DataPath>
-			<EditMode>EnterOnInput</EditMode>
-			<AutoMaxWidth>false</AutoMaxWidth>
-			<MaxWidth>30</MaxWidth>
-			<Wrap>false</Wrap>
-			<ContextMenu name="ParentContextMenu" id="4"/>
-			<ExtendedTooltip name="ParentExtendedTooltip" id="22"/>
-		</InputField>
-		<UsualGroup name="DateGender" id="18">
-			<Title>
-				<v8:item>
-					<v8:lang>en</v8:lang>
-					<v8:content>Birth date, gender</v8:content>
-				</v8:item>
-				<v8:item>
-					<v8:lang>ru</v8:lang>
-					<v8:content>Дата рождения, пол</v8:content>
-				</v8:item>
-			</Title>
-			<ToolTip>
-				<v8:item>
-					<v8:lang>en</v8:lang>
-					<v8:content>Date gender</v8:content>
-				</v8:item>
-				<v8:item>
-					<v8:lang>ru</v8:lang>
-					<v8:content>Дата пол</v8:content>
-				</v8:item>
-			</ToolTip>
-			<Group>Horizontal</Group>
-			<Representation>None</Representation>
-			<ShowTitle>false</ShowTitle>
-			<ExtendedTooltip name="DateGenderExtendedTooltip" id="23"/>
-			<ChildItems>
-				<InputField name="BirthDate" id="5">
-					<DataPath>Object.Birthdate</DataPath>
-					<EditMode>EnterOnInput</EditMode>
-					<Width>11</Width>
-					<Wrap>false</Wrap>
-					<ContextMenu name="DateOfBirthContextMenu" id="6"/>
-					<ExtendedTooltip name="DateOfBirthExtendedTooltip" id="24"/>
-				</InputField>
-				<InputField name="Gender" id="7">
-					<DataPath>Object.Gender</DataPath>
-					<EditMode>EnterOnInput</EditMode>
-					<AutoMaxWidth>false</AutoMaxWidth>
-					<MaxWidth>12</MaxWidth>
-					<HorizontalStretch>false</HorizontalStretch>
-					<Wrap>false</Wrap>
-					<ContextMenu name="GenderContextMenu" id="8"/>
-					<ExtendedTooltip name="GenderExtendedTooltip" id="25"/>
-				</InputField>
-			</ChildItems>
-		</UsualGroup>
-		<InputField name="Citizenship" id="39">
-			<DataPath>Object.Citizenship</DataPath>
-			<AutoMaxWidth>false</AutoMaxWidth>
-			<MaxWidth>30</MaxWidth>
-			<ContextMenu name="CitizenshipContextMenu" id="40"/>
-			<ExtendedTooltip name="CitizenshipExtendedTooltip" id="41"/>
-		</InputField>
-		<LabelField name="Document" id="42">
-			<DataPath>Document</DataPath>
-			<Hiperlink>true</Hiperlink>
-			<ContextMenu name="DocumentContextMenu" id="43"/>
-			<ExtendedTooltip name="DocumentExtendedTooltip" id="44"/>
-			<Events>
-				<Event name="Click">DocumentClick</Event>
-			</Events>
-		</LabelField>
-		<UsualGroup name="ContactInformation" id="13">
-			<Title>
-				<v8:item>
-					<v8:lang>en</v8:lang>
-					<v8:content>Addresses, phones</v8:content>
-				</v8:item>
-				<v8:item>
-					<v8:lang>ru</v8:lang>
-					<v8:content>Адреса, телефоны</v8:content>
-				</v8:item>
-			</Title>
-			<ToolTip>
-				<v8:item>
-					<v8:lang>ru</v8:lang>
-					<v8:content>Контактная информация</v8:content>
-				</v8:item>
-			</ToolTip>
-			<Group>Vertical</Group>
-			<Behavior>Collapsible</Behavior>
-			<Collapsed>true</Collapsed>
-			<ControlRepresentation>Picture</ControlRepresentation>
-			<Representation>NormalSeparation</Representation>
-			<ShowLeftMargin>false</ShowLeftMargin>
-			<ExtendedTooltip name="ContactInformationExtendedTooltip" id="27"/>
-		</UsualGroup>
-		<UsualGroup name="AdditionalAttributes" id="14">
-			<Title>
-				<v8:item>
-					<v8:lang>en</v8:lang>
-					<v8:content>Additional attributes</v8:content>
-				</v8:item>
-				<v8:item>
-					<v8:lang>ru</v8:lang>
-					<v8:content>Дополнительные реквизиты объекта</v8:content>
-				</v8:item>
-			</Title>
-			<ToolTip>
-				<v8:item>
-					<v8:lang>en</v8:lang>
-					<v8:content>Additional attributes</v8:content>
-				</v8:item>
-				<v8:item>
-					<v8:lang>ru</v8:lang>
-					<v8:content>Дополнительные реквизиты</v8:content>
-				</v8:item>
-			</ToolTip>
-			<Group>Vertical</Group>
-			<Representation>None</Representation>
-			<ShowTitle>false</ShowTitle>
-			<ExtendedTooltip name="AdditionalAttributesExtendedTooltip" id="28"/>
-		</UsualGroup>
+		</Pages>
 	</ChildItems>
 	<Attributes>
 		<Attribute name="Object" id="1">
@@ -279,4 +377,35 @@
 			</Type>
 		</Attribute>
 	</Attributes>
+	<CommandInterface>
+		<NavigationPanel>
+			<Item>
+				<Command>InformationRegister.IndividualsDocuments.Command.DocumentsOfIndividual</Command>
+				<Type>Auto</Type>
+				<CommandGroup>FormNavigationPanelGoTo</CommandGroup>
+				<Index>2</Index>
+				<DefaultVisible>false</DefaultVisible>
+				<Visible>
+					<xr:Common>false</xr:Common>
+				</Visible>
+			</Item>
+			<Item>
+				<Command>InformationRegister.IndividualsDescriptionFull.StandardCommand.OpenByValue.Ind</Command>
+				<Type>Auto</Type>
+				<CommandGroup>FormNavigationPanelGoTo</CommandGroup>
+				<Index>1</Index>
+				<Visible>
+					<xr:Common>false</xr:Common>
+				</Visible>
+			</Item>
+			<Item>
+				<Command>Catalog.LegalDocuments.StandardCommand.OpenByValue</Command>
+				<Type>Auto</Type>
+				<CommandGroup>FormNavigationPanelGoTo</CommandGroup>
+				<Visible>
+					<xr:Common>false</xr:Common>
+				</Visible>
+			</Item>
+		</NavigationPanel>
+	</CommandInterface>
 </Form>
