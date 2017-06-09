@@ -692,14 +692,14 @@ Procedure SetFormTitle(Form)
 		RelationshipKinds.Add(NStr("ru='Прочие отношения'; en = 'Other relationship'"));
 	EndIf;
 	
-	Title = NStr("ru='Контрагенты'; en = 'Counterparties'");
-	
 	If RelationshipKinds.Count() > 0 Then
-		Title = Title + ": ";
+		Title	= "";
 		For Each Kind In RelationshipKinds Do
 			Title = Title + Kind + ", ";
 		EndDo;
 		StringFunctionsClientServer.DeleteLatestCharInRow(Title, 2);
+	Else
+		Title = NStr("ru='Контрагенты'; en = 'Counterparties'");
 	EndIf;
 	
 	Form.Title = Title;

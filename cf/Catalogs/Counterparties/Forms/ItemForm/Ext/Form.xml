@@ -224,21 +224,6 @@
 							<ContextMenu name="DescriptionContextMenu" id="4"/>
 							<ExtendedTooltip name="DescriptionExtendedTooltip" id="104"/>
 						</InputField>
-						<InputField name="ContactPerson" id="437">
-							<DataPath>Object.ContactPerson</DataPath>
-							<AutoMaxWidth>false</AutoMaxWidth>
-							<MaxWidth>57</MaxWidth>
-							<DropListButton>false</DropListButton>
-							<ChoiceButton>true</ChoiceButton>
-							<ChoiceButtonRepresentation>ShowInInputField</ChoiceButtonRepresentation>
-							<CreateButton>false</CreateButton>
-							<TextEdit>false</TextEdit>
-							<ContextMenu name="ContactPersonContextMenu" id="438"/>
-							<ExtendedTooltip name="ContactPersonExtendedTooltip" id="439"/>
-							<Events>
-								<Event name="StartChoice">ContactPersonStartChoice</Event>
-							</Events>
-						</InputField>
 						<UsualGroup name="CustomerSupplierOther" id="397">
 							<Title>
 								<v8:item>
@@ -1031,6 +1016,8 @@
 										<LabelField name="ActivityTypesLineNumber" id="479">
 											<DataPath>Object.ActivityTypes.LineNumber</DataPath>
 											<EditMode>EnterOnInput</EditMode>
+											<Width>4</Width>
+											<HorizontalStretch>false</HorizontalStretch>
 											<ContextMenu name="ActivityTypesLineNumberContextMenu" id="480"/>
 											<ExtendedTooltip name="ActivityTypesLineNumberExtendedTooltip" id="481"/>
 										</LabelField>

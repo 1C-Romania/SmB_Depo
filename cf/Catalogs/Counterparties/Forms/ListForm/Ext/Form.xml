@@ -260,6 +260,7 @@
 						</ButtonGroup>
 						<Button name="DataImportFromExternalSources" id="374">
 							<Type>CommandBarButton</Type>
+							<OnlyInAllActions>false</OnlyInAllActions>
 							<CommandName>Form.Command.DataImportFromExternalSources</CommandName>
 							<ExtendedTooltip name="DataImportFromExternalSourcesExtendedTooltip" id="375"/>
 						</Button>
@@ -370,11 +371,11 @@
 											</Title>
 											<ExtendedTooltip name="DocumentCustomerOrderGenerateExtendedTooltip" id="466"/>
 										</Button>
-										<Button name="CatalogCounterpartiesCommandJobOrderCreateBasedOn" id="485">
+										<Button name="CatalogCounterpartiesCommandWorkOrderCreateBasedOn" id="485">
 											<Type>CommandBarButton</Type>
 											<CommandName>Catalog.Counterparties.Command.CommandWorkOrderCreateBasedOn</CommandName>
 											<DataPath>Items.List.CurrentData.Ref</DataPath>
-											<ExtendedTooltip name="CatalogCounterpartiesCommandJobOrderCreateBasedOnExtendedTooltip" id="486"/>
+											<ExtendedTooltip name="CatalogCounterpartiesCommandWorkOrderCreateBasedOnExtendedTooltip" id="486"/>
 										</Button>
 										<Button name="DocumentCustomerInvoiceGenerate" id="463">
 											<Type>CommandBarButton</Type>

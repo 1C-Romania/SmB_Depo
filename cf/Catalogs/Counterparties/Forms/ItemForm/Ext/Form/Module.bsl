@@ -74,14 +74,6 @@ Procedure NotificationProcessing(EventName, Parameter, Source)
 		EndIf;
 		Notify("SettingMainAccountCompleted");
 		
-	ElsIf EventName = "SettingMainContactPerson" And Parameter.Counterparty = Object.Ref Then
-		
-		Object.ContactPerson = Parameter.NewMainContactPerson;
-		If Not Modified Then
-			Write();
-		EndIf;
-		Notify("SettingMainContactPersonCompleted");
-		
 	EndIf;
 	
 	// StandardSubsystems.Properties
@@ -291,14 +283,14 @@ Procedure SetFormTitle(Form)
 		RelationshipKinds.Add(NStr("ru='Прочие отношения'; en = 'Other relationship'"));
 	EndIf;
 	
-	Title = Object.Description + " (" + NStr("ru='Контрагент'; en = 'Counterparty'");
-	
 	If RelationshipKinds.Count() > 0 Then
-		Title = Title + ": ";
+		Title = Object.Description + " (";
 		For Each Kind In RelationshipKinds Do
 			Title = Title + Kind + ", ";
 		EndDo;
 		StringFunctionsClientServer.DeleteLatestCharInRow(Title, 2);
+	Else	
+		Title = Object.Description + " (" + NStr("ru='Контрагент'; en = 'Counterparty'");
 	EndIf;
 	
 	Title = Title + ")";
@@ -315,21 +307,6 @@ Procedure FillAttributesByFillingText(Val FillingText)
 	
 	GenerateDescriptionAutomatically = True;
 	Object.Description	= Object.DescriptionFull;
-	
-EndProcedure
-
-&AtClientAtServerNoContext
-Procedure FillAlwaysShowKindsCI(CI, ContactPersonContactInformationKindProperties)
-	
-	FindedRows = ContactPersonContactInformationKindProperties.FindRows(New Structure("ShowInFormAlways", True));
-	
-	For Each FindedRow In FindedRows Do
-		
-		NewRowCI = CI.Add();
-		NewRowCI.Kind = FindedRow.Kind;
-		NewRowCI.Type = FindedRow.Type;
-		
-	EndDo;
 	
 EndProcedure
 
@@ -656,16 +633,6 @@ Procedure UpdateAdditionalAttributesItems()
 	PropertiesManagement.UpdateAdditionalAttributesItems(ThisForm, FormAttributeToValue("Object"));
 	
 EndProcedure // UpdateAdditionalAttributeItems()
-
-&AtClient
-Procedure ContactPersonStartChoice(Item, ChoiceData, StandardProcessing)
-	
-	If Object.Ref.IsEmpty() Then
-		StandardProcessing = False;
-		ShowMessageBox(,NStr("ru = 'Необходимо сохранить текущие данные'; en = 'You must save current data'"));
-	EndIf;
-	
-EndProcedure
 
 // End StandardSubsystems.Properties
 

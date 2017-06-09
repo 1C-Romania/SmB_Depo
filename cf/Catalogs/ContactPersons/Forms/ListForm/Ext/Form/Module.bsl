@@ -1,11 +1,4 @@
 ﻿
-#Region FormVariables
-
-&AtClient
-Var SettingMainContactPersonCompleted; // Flag of successful setting of main contact person from a form of counterparty
-
-#EndRegion
-
 #Region FormEventHadlers
 
 &AtServer
@@ -64,15 +57,6 @@ Procedure OnCreateAtServer(Cancel, StandardProcessing)
 	
 EndProcedure // OnCreateAtServer()
 
-&AtClient
-Procedure NotificationProcessing(EventName, Parameter, Source)
-	
-	If EventName = "SettingMainContactPersonCompleted" Then
-		SettingMainContactPersonCompleted = True;
-	EndIf;
-	
-EndProcedure
-
 #EndRegion
 
 #Region FormItemsEventHadlers
@@ -104,19 +88,11 @@ Procedure UseAsMain(Command)
 	
 	NewMainContactPerson = Items.List.CurrentData.Ref;
 	
-	// If the form of counterparty is opened, then change the main account in it
-	SettingMainContactPersonCompleted = False;
-	
 	ParametersStructure = New Structure;
 	ParametersStructure.Insert("Counterparty", Items.List.CurrentData.Owner);
 	ParametersStructure.Insert("NewMainContactPerson", NewMainContactPerson);
 	
-	Notify("SettingMainContactPerson", ParametersStructure, ThisObject);
-	
-	// If the form of counterparty is closed, then change the main account by ourselves
-	If Not SettingMainContactPersonCompleted Then
-		WriteMainContactPerson(ParametersStructure);
-	EndIf;
+	WriteMainContactPerson(ParametersStructure);
 	
 	// Update dynamical list
 	If ValueIsFilled(CounterpartyOwner) Then
