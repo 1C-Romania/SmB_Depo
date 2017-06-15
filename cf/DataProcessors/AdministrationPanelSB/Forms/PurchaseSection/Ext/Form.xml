@@ -702,10 +702,6 @@ This option is used to split the accounting of inventory in terms of the storage
 							</Title>
 							<ToolTip>
 								<v8:item>
-									<v8:lang>en</v8:lang>
-									<v8:content>Order warehouse settings</v8:content>
-								</v8:item>
-								<v8:item>
 									<v8:lang>ru</v8:lang>
 									<v8:content>Настройки ордерный склад</v8:content>
 								</v8:item>
@@ -722,7 +718,7 @@ This option is used to split the accounting of inventory in terms of the storage
 									</v8:item>
 									<v8:item>
 										<v8:lang>ru</v8:lang>
-										<v8:content>Опция определяет возможность разделения учета запасов на складской и финансовый. Подробнее можно посмотреть в опциональной справке. </v8:content>
+										<v8:content>Опция позволяет включить использование серийных номеров. </v8:content>
 									</v8:item>
 								</Title>
 							</ExtendedTooltip>
@@ -768,7 +764,7 @@ This option is used to split the accounting of inventory in terms of the storage
 								</CheckBoxField>
 							</ChildItems>
 						</UsualGroup>
-						<UsualGroup name="SettingsКонтролироватьОстатки" id="365">
+						<UsualGroup name="SettingsSerialNumbersBalanceControl" id="365">
 							<Title>
 								<v8:item>
 									<v8:lang>ru</v8:lang>
@@ -776,10 +772,6 @@ This option is used to split the accounting of inventory in terms of the storage
 								</v8:item>
 							</Title>
 							<ToolTip>
-								<v8:item>
-									<v8:lang>en</v8:lang>
-									<v8:content>Accounting settings by cells</v8:content>
-								</v8:item>
 								<v8:item>
 									<v8:lang>ru</v8:lang>
 									<v8:content>Настройки учет по ячейкам</v8:content>
@@ -789,27 +781,21 @@ This option is used to split the accounting of inventory in terms of the storage
 							<Group>Horizontal</Group>
 							<Representation>None</Representation>
 							<ShowTitle>false</ShowTitle>
-							<ExtendedTooltip name="SettingsКонтролироватьОстаткиExtendedTooltip" id="366">
+							<ExtendedTooltip name="SettingsSerialNumbersBalanceControlExtendedTooltip" id="366">
 								<Title formatted="false">
+									<v8:item>
+										<v8:lang>ru</v8:lang>
+										<v8:content>Опция используется для контроля остатков по серийным номерам. </v8:content>
+									</v8:item>
 									<v8:item>
 										<v8:lang>en</v8:lang>
 										<v8:content>The option is used to enable the monitoring of balances by serial numbers.</v8:content>
-									</v8:item>
-									<v8:item>
-										<v8:lang>ru</v8:lang>
-										<v8:content>Учет запасов на складе в разрезе ячеек (проходов, стеллажей, полок и т.д.). Подробнее можно посмотреть в опциональной справке. </v8:content>
 									</v8:item>
 								</Title>
 							</ExtendedTooltip>
 							<ChildItems>
 								<CheckBoxField name="FunctionalOptionSerialNumbersBalanceControl" id="367">
 									<DataPath>ConstantsSet.SerialNumbersBalanceControl</DataPath>
-									<Title>
-										<v8:item>
-											<v8:lang>ru</v8:lang>
-											<v8:content>Учет запасов по ячейкам</v8:content>
-										</v8:item>
-									</Title>
 									<TitleLocation>Right</TitleLocation>
 									<TitleHeight>1</TitleHeight>
 									<ToolTipRepresentation>Button</ToolTipRepresentation>
