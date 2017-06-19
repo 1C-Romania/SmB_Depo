@@ -6530,10 +6530,10 @@ EndFunction // AmountsFormat()
 //
 Function GenerateAmountInWords(Amount, Currency) Export
 
-	If Currency.WritingParametersInEnglish = "" Then
+	If Currency.InWordParametersInHomeLanguage = "" Then
 		Return AmountsFormat(Amount);
 	Else
-		Return NumberInWords(Amount, , Currency.WritingParametersInEnglish);
+		Return NumberInWords(Amount, , Currency.InWordParametersInHomeLanguage);
 	EndIf;
 
 EndFunction // GenerateAmountInWords()
@@ -6582,8 +6582,8 @@ Function FormatPaymentDocumentAmountInWords(Amount, Currency, DisplayAmountWitho
 	
 	Result     = Amount;
 	IntegralPart    = Int(Amount);
-	FormatString  = "L=en_EN; DP=False";
-	SubjectParam = Currency.WritingParametersInEnglish;
+	FormatString  = "L=en_EN; FS=False";
+	SubjectParam = Currency.InWordParametersInHomeLanguage;
 	
 	If Result = IntegralPart Then
 		If DisplayAmountWithoutCents Then

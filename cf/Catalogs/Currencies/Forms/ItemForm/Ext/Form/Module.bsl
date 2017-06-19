@@ -28,8 +28,8 @@ Procedure OnCreateAtServer(Cancel, StandardProcessing)
 			Object.SetRateMethod = Enums.CurrencyRateSetMethods.ManualInput;
 		EndIf;
 		
-		If Parameters.Property("WritingParametersInEnglish") Then
-			Object.WritingParametersInEnglish = Parameters.WritingParametersInEnglish;
+		If Parameters.Property("InWordParametersInHomeLanguage") Then
+			Object.InWordParametersInHomeLanguage = Parameters.InWordParametersInHomeLanguage;
 		EndIf;
 		
 		FillFormByObject();
@@ -49,7 +49,8 @@ EndProcedure
 &AtServer
 Procedure BeforeWriteAtServer(Cancel, CurrentObject, WriteParameters)
 	
-	CurrentObject.WritingParametersInEnglish = WritingParametersInEnglish(ThisObject);
+	CurrentObject.InWordParametersInHomeLanguage	= InWordParametersInHomeLanguage(ThisObject);
+	CurrentObject.InWordParametersInEnglish			= InWordParametersInEnglish(ThisObject);
 	
 EndProcedure
 
@@ -187,7 +188,7 @@ Procedure FillFormByObject()
 EndProcedure
 
 &AtClientAtServerNoContext
-Function WritingParametersInEnglish(Form)
+Function InWordParametersInHomeLanguage(Form)
 	
 	Return Form.InWordsField1HomeLanguage + ", "
 			+ Form.InWordsField2HomeLanguage + ", "
@@ -202,9 +203,20 @@ Function WritingParametersInEnglish(Form)
 EndFunction
 
 &AtClientAtServerNoContext
+Function InWordParametersInEnglish(Form)
+	
+	Return Form.InWordsField1HomeLanguage + ", "
+			+ Form.InWordsField2HomeLanguage + ", "
+			+ Form.InWordsField5HomeLanguage + ", "
+			+ Form.InWordsField6HomeLanguage + ", "
+			+ Form.FractionalPartLength;
+	
+EndFunction
+
+&AtClientAtServerNoContext
 Procedure SetAmountInWords(Form)
 	
-	Form.AmountInWords = NumberInWords(Form.AmountNumber, , WritingParametersInEnglish(Form));
+	Form.AmountInWords = NumberInWords(Form.AmountNumber, , InWordParametersInHomeLanguage(Form));
 	
 EndProcedure
 
@@ -213,7 +225,7 @@ Procedure ReadWritingParameters()
 	
 	// Reads recipe parameters and fills corresponding dialog fields.
 	
-	ParameterString = StrReplace(Object.WritingParametersInEnglish, ",", Chars.LF);
+	ParameterString = StrReplace(Object.InWordParametersInHomeLanguage, ",", Chars.LF);
 	
 	InWordsField1HomeLanguage = TrimAll(StrGetLine(ParameterString, 1));
 	InWordsField2HomeLanguage = TrimAll(StrGetLine(ParameterString, 2));

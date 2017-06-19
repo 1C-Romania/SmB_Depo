@@ -178,7 +178,7 @@ Procedure CurrenciesRelationsTransformation() Export
 	While Selection.Next()  Do
 		Currency = Selection.GetObject();
 		FoundString = ClassifierTable.Find(Currency.Code, "Code");
-		If FoundString <> Undefined AND FoundString.RBCImporting = "true" Then
+		If FoundString <> Undefined AND FoundString.RBCLoading = "true" Then
 			Currency.SetRateMethod = Enums.CurrencyRateSetMethods.ExportFromInternet;
 			InfobaseUpdate.WriteData(Currency);
 		EndIf;

@@ -33,12 +33,12 @@ Function AddCurrenciesByCode(Val Codes) Export
 			NewRow.Code         			  = WriteOKV.Code;
 			NewRow.Description        	  = WriteOKV.CodeSymbol;
 			NewRow.DescriptionFull        = WriteOKV.Name;
-			If WriteOKV.RBCImporting Then
+			If WriteOKV.RBCLoading Then
 				NewRow.SetRateMethod = Enums.CurrencyRateSetMethods.ExportFromInternet;
 			Else
 				NewRow.SetRateMethod = Enums.CurrencyRateSetMethods.ManualInput;
 			EndIf;
-			NewRow.WritingParametersInEnglish = WriteOKV.NumerationItemOptions;
+			NewRow.InWordParametersInHomeLanguage = WriteOKV.NumerationItemOptions;
 			NewRow.Write();
 			Result.Add(NewRow.Ref);
 		Else
@@ -86,10 +86,10 @@ EndFunction
 //
 Function GenerateAmountInWords(AmountAsNumber, Currency, DisplayAmountWithoutCents = False) Export
 	
-	Amount             = ?(AmountAsNumber < 0, -AmountAsNumber, AmountAsNumber);
-	SubjectParameters = CommonUse.ObjectAttributesValues(Currency, "WritingParametersInEnglish");
+	Amount				= ?(AmountAsNumber < 0, -AmountAsNumber, AmountAsNumber);
+	SubjectParameters	= CommonUse.ObjectAttributesValues(Currency, "InWordParametersInEnglish");
 	
-	Result = NumberInWords(Amount, "L=en_EN;DP=False", SubjectParameters.WritingParametersInEnglish);
+	Result = NumberInWords(Amount, "L=en_US;FS=False", SubjectParameters.InWordParametersInEnglish);
 	
 	If DisplayAmountWithoutCents AND Int(Amount) = Amount Then
 		Result = Left(Result, Find(Result, "0") - 1);
@@ -751,10 +751,10 @@ Procedure UpdateHandwritingStorageFormatInRussian() Export
 	
 	While SelectionOfCurrency.Next() Do
 		Object = SelectionOfCurrency.GetObject();
-		ParameterString = StrReplace(Object.WritingParametersInEnglish, ",", Chars.LF);
+		ParameterString = StrReplace(Object.InWordParametersInHomeLanguage, ",", Chars.LF);
 		Par1 = Lower(Left(TrimAll(StrGetLine(ParameterString, 4)), 1));
 		Gender2 = Lower(Left(TrimAll(StrGetLine(ParameterString, 8)), 1));
-		Object.WritingParametersInEnglish = 
+		Object.InWordParametersInHomeLanguage = 
 					  TrimAll(StrGetLine(ParameterString, 1)) + ", "
 					+ TrimAll(StrGetLine(ParameterString, 2)) + ", "
 					+ TrimAll(StrGetLine(ParameterString, 3)) + ", "

@@ -494,56 +494,39 @@ Procedure FillTaxTypesFirstLaunch()
 
 EndProcedure // FillTaxTypesFirstLaunch()
 
-//(4) Function creates Currencies catalog item if there is no any.
-//
-// Parameters:
-//  Code -                     - value of the
-//  corresponding catalog item, Name              - value of the
-//  corresponding attribute, DescriptionFull        - value of the
-//  catalog corresponding attribute, SignatureParametersInRussian - value of the corresponding catalog attribute.
-//
-// Returns:
-//  Ref to added or existing item.
-//
-Function FindCreateCurrency(Code, Description, DescriptionFull, WritingParametersInEnglish) Export
-
-	Ref = Catalogs.Currencies.FindByCode(Code);
-
-	If Ref.IsEmpty() Then
-
-		CatalogObject = Catalogs.Currencies.CreateItem();
-
-		CatalogObject.Code                       = Code;
-		CatalogObject.Description              = Description;
-		CatalogObject.DescriptionFull        = DescriptionFull;
-		CatalogObject.WritingParametersInEnglish = WritingParametersInEnglish;
-
-		WriteCatalogObject(CatalogObject);
-
-		Ref = CatalogObject.Ref;
-		
-	ElsIf Ref.Predefined 
-		AND IsBlankString(Ref.DescriptionFull) Then
-		
-		// It is the first call to the predefined item
-		CatalogObject = Ref.GetObject();
-
-		CatalogObject.Description              = Description;
-		CatalogObject.DescriptionFull        = DescriptionFull;
-		CatalogObject.WritingParametersInEnglish = WritingParametersInEnglish;
-
-		WriteCatalogObject(CatalogObject);
-
-		Ref = CatalogObject.Ref;
-
+//(4) Returns object by code.
+//    If the object is not found in the directory, it creates a new object and fills it from the classifier.
+Function CatalogObjectCurrenciesByCode(Val CurrencyCode)
+	
+	CurrencyRef = Catalogs.Currencies.FindByCode(CurrencyCode);
+	If ValueIsFilled(CurrencyRef) Then
+		Return CurrencyRef.GetObject();
 	EndIf;
 	
-	// set rate and frequency = 1 to January 1, 1980
-	WorkWithCurrencyRates.CheckRateOn01Correctness_01_1980(Ref);
+	Result = Catalogs.Currencies.CreateItem();
 	
-	Return Ref;
-
-EndFunction // FindCreateCurrency()
+	ClassifierXML = Catalogs.Currencies.GetTemplate("CurrencyClassifier").GetText();
+	
+	ClassifierTable = CommonUse.ReadXMLToTable(ClassifierXML).Data;
+	
+	CCRecord = ClassifierTable.Find(CurrencyCode, "Code"); 
+	If CCRecord = Undefined Then
+		Return Result;
+	EndIf;
+	
+	Result.Code				= CCRecord.Code;
+	Result.Description		= CCRecord.CodeSymbol;
+	Result.DescriptionFull	= CCRecord.Name;
+	If CCRecord.RBCLoading Then
+		Result.SetRateMethod = Enums.CurrencyRateSetMethods.ExportFromInternet;
+	Else
+		Result.SetRateMethod = Enums.CurrencyRateSetMethods.ManualInput;
+	EndIf;
+	Result.InWordParametersInHomeLanguage = CCRecord.NumerationItemOptions;
+	
+	Return Result;
+	
+EndFunction
 
 //(5) The function fills in "VAT rates" IB
 // catalog and returns a reference to 18% VAT rate for the future use.
@@ -1486,8 +1469,13 @@ Procedure DefaultFirstLaunch() Export
 	FillTaxTypesFirstLaunch();
 	
 	// 4. Fill in currencies.
-	DefaultCurrency	= FindCreateCurrency("840", "USD", "US dollar", "dollar, dollar, dollars, M, cent, cent, cents, m, 2");
-	EURRef			= FindCreateCurrency("978", "EUR", "Euro", "euro, euro, euros, M, cent, cent, cents, m, 2");
+	CurrencyObject = CatalogObjectCurrenciesByCode("840");
+	InfobaseUpdate.WriteData(CurrencyObject);
+	WorkWithCurrencyRates.CheckRateOn01Correctness_01_1980(CurrencyObject.Ref);
+	
+	EURRef = CatalogObjectCurrenciesByCode("978");
+	InfobaseUpdate.WriteData(EURRef);
+	WorkWithCurrencyRates.CheckRateOn01Correctness_01_1980(EURRef.Ref);
 	
 	// 5. Fill in VAT rates.
 	WithoutVAT	= FillVATRatesFirstLaunch();
@@ -1495,7 +1483,7 @@ Procedure DefaultFirstLaunch() Export
 	// 6. Fill petty cashes.
 	PettyCashDefault = Catalogs.PettyCashes.CreateItem();
 	PettyCashDefault.Description		= NStr("ru = 'Основная касса'; en = 'Main petty cash'");
-	PettyCashDefault.CurrencyByDefault	= DefaultCurrency;
+	PettyCashDefault.CurrencyByDefault	= CurrencyObject.Ref;
 	PettyCashDefault.GLAccount			= ChartsOfAccounts.Managerial.PettyCash;
 	PettyCashDefault.Write();
 	
@@ -1515,7 +1503,7 @@ Procedure DefaultFirstLaunch() Export
 	// Wholesale.
 	WholesaleRef = Catalogs.PriceKinds.Wholesale;
 	Wholesale					= WholesaleRef.GetObject();
-	Wholesale.PriceCurrency		= DefaultCurrency;
+	Wholesale.PriceCurrency		= CurrencyObject.Ref;
 	Wholesale.PriceIncludesVAT	= False;
 	Wholesale.RoundingOrder		= Enums.RoundingMethods.Round1;
 	Wholesale.RoundUp			= False;
@@ -1525,7 +1513,7 @@ Procedure DefaultFirstLaunch() Export
 	// Accountable.
 	AccountingReference = Catalogs.PriceKinds.Accounting;
 	Accounting					= AccountingReference.GetObject();
-	Accounting.PriceCurrency	= DefaultCurrency;
+	Accounting.PriceCurrency	= CurrencyObject.Ref;
 	Accounting.PriceIncludesVAT	= False;
 	Accounting.RoundingOrder	= Enums.RoundingMethods.Round1;
 	Accounting.RoundUp			= False;
@@ -1533,8 +1521,8 @@ Procedure DefaultFirstLaunch() Export
 	Accounting.Write();
 	
 	// 12. Fill in constants.
-	Constants.AccountingCurrency.Set(DefaultCurrency);
-	Constants.NationalCurrency.Set(DefaultCurrency);
+	Constants.AccountingCurrency.Set(CurrencyObject.Ref);
+	Constants.NationalCurrency.Set(CurrencyObject.Ref);
 	
 	// 14. Fill in classifier of the working time use.
 	FillClassifierOfWorkingTimeUsage();

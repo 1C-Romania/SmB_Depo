@@ -55,8 +55,8 @@ Procedure FillCurrenciesTable()
 		NewRow.AlphabeticCurrencyCode      = WriteOKV.CodeSymbol;
 		NewRow.Description                 = WriteOKV.Name;
 		NewRow.CountriesAndTerritories     = WriteOKV.Description;
-		NewRow.Importing                   = WriteOKV.RBCImporting;
-		NewRow.WritingParametersInEnglish  = WriteOKV.NumerationItemOptions;
+		NewRow.Importing                   = WriteOKV.RBCLoading;
+		NewRow.InWordParametersInHomeLanguage  = WriteOKV.NumerationItemOptions;
 	EndDo;
 	
 EndProcedure
@@ -87,7 +87,7 @@ Function SaveSelectedRows(Val SelectedRows, IsRates)
 		Else
 			NewRow.SetRateMethod = Enums.CurrencyRateSetMethods.ManualInput;
 		EndIf;
-		NewRow.WritingParametersInEnglish = CurrentData.WritingParametersInEnglish;
+		NewRow.InWordParametersInHomeLanguage = CurrentData.InWordParametersInHomeLanguage;
 		NewRow.Write();
 		
 		If LineNumber = Items.CurrenciesList.CurrentRow Or CurrentRef = Undefined Then
