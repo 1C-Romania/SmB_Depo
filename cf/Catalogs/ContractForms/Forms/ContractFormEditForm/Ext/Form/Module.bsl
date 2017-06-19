@@ -224,7 +224,7 @@ Procedure AddAdditionalAttributesInsert(FormGroup, AttributesToAdd)
 		Button.CommandName = CommandName;
 		Button.Title = DescriptionAttribute;
 		
-		NewRow = ThisForm.AdditionalAttributes.Add();
+		NewRow = ThisForm.AdditionalAttributesVT.Add();
 		NewRow.CommandName = CommandName;
 		NewRow.Attribute = Attribute;
 		
@@ -680,7 +680,7 @@ EndProcedure
 
 &AtClient
 Procedure InsertAdditionalAttribute(Command)
-	Rows = ThisForm.AdditionalAttributes.FindRows(New Structure("CommandName", Command.Name));
+	Rows = ThisForm.AdditionalAttributesVT.FindRows(New Structure("CommandName", Command.Name));
 	If Rows.Count() <> 0 Then
 		InsertInfobaseParameter(Rows[0].Attribute);
 	EndIf;
