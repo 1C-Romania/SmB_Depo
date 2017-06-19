@@ -1124,7 +1124,7 @@ Function GenerateContractForms(CommandParameter) Export
 		Parameters.Insert("Document", PrintObject);
 		ContractForm = GetForm("Catalog.CounterpartyContracts.ObjectForm", Parameters);
 		OpenForm(ContractForm);
-		ContractForm.Items.GroupPages.CurrentPage = ContractForm.Items.GroupPrintContract;
+		ContractForm.Items.Pages.CurrentPage = ContractForm.Items.GroupPrintContract;
 		
 	EndDo;
 	
