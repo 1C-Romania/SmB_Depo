@@ -156,7 +156,7 @@ EndProcedure
 			NStr("ru = 'Не удалось заблокировать %1: %2, для изменения основного контактного лица, по причине:
 				|%3'; en = 'Could not be locked %1: %2, for editing main contact person, because:
 				|%3'", Metadata.DefaultLanguage.LanguageCode), 
-				ParametersStructure.Counterparty.Metadata.ObjectPresentation, DetailErrorDescription(ErrorInfo()));
+				ParametersStructure.Counterparty.Metadata().ObjectPresentation, DetailErrorDescription(ErrorInfo()));
 		WriteLogEvent(MessageText, EventLogLevel.Warning,, CounterpartyObject, ErrorDescription());
 		
 	EndTry;
