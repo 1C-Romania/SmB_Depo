@@ -9,7 +9,7 @@ Procedure OnCreateAtServer(Cancel, StandardProcessing)
 		Return;
 	EndIf;
 	
-	FillPropertyValues(ThisObject, Parameters, "VariantRef, ReportRef, SubsystemRef, ReportDescription");
+	FillPropertyValues(ThisObject, Parameters, "VariantRef, ReportRef, SubsystemRef, ReportName");
 	Items.GroupOtherReportVariants.Title = ReportName + " (" + NStr("en='Report variants';ru='Варианты отчета'") + "):";
 	
 	If ClientApplicationInterfaceCurrentVariant() = ClientApplicationInterfaceVariant.Version8_2 Then
@@ -209,10 +209,10 @@ Procedure FillReportsPanel()
 				Continue;
 			EndIf;
 			
-			Group = DetectOutputGroup(Found[0].SubsystemDescription);
+			OutputGroup = DetectOutputGroup(Found[0].SubsystemDescription);
 			For Each TableRow IN Found Do
 				ThereAreOtherReports = True;
-				DisplayHyperlinkOnPanel(OutputTable, TableRow, Group, ShowToolTips);
+				DisplayHyperlinkOnPanel(OutputTable, TableRow, OutputGroup, ShowToolTips);
 			EndDo;
 		EndDo;
 	EndIf;
@@ -311,15 +311,15 @@ Function DetectOutputGroup(SubsystemPresentation)
 		Decoration.Title = " ";
 	EndIf;
 	
-	Group = Items.Add(GroupName, Type("FormGroup"), Items.PageOtherReports);
-	Group.Type = FormGroupType.UsualGroup;
-	Group.Title = SubsystemPresentation;
-	Group.ShowTitle = True;
-	Group.TitleTextColor = ReportVariantsGroupsColour;
-	Group.TitleFont = CommonGroupFont;
+	OutputGroup = Items.Add(GroupName, Type("FormGroup"), Items.PageOtherReports);
+	OutputGroup.Type = FormGroupType.UsualGroup;
+	OutputGroup.Title = SubsystemPresentation;
+	OutputGroup.ShowTitle = True;
+	OutputGroup.TitleTextColor = ReportVariantsGroupsColour;
+	OutputGroup.TitleFont = CommonGroupFont;
 	
 	SubsystemsGroups.Add(SubsystemPresentation, GroupName);
-	Return Group;
+	Return OutputGroup;
 EndFunction
 
 #EndRegion
