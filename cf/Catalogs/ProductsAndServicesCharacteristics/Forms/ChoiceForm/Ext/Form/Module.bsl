@@ -117,40 +117,6 @@ Function GenerateDescription(PropertiesValuesCollection)
 
 EndFunction // GenerateDescription()
 
-&AtServer
-// Enters a new characteristic in compliance with the established property values.
-//
-// Parameters:
-//  No.
-//
-Procedure EnterNewCharacteristic()
-	
-	CatalogObjectCharacteristic = Catalogs.ProductsAndServicesCharacteristics.CreateItem();
-	
-	CatalogObjectCharacteristic.Owner = ProductsAndServices;
-	CatalogObjectCharacteristic.Description = GenerateDescription(PropertiesValuesTree);
-	
-	// Transfer the values from property value tree in tabular object section.
-	PropertiesManagementOverridable.MovePropertiesValues(CatalogObjectCharacteristic.AdditionalAttributes, FormAttributeToValue("PropertiesValuesTree"));
-	
-	BeginTransaction();
-	
-	Try
-		CatalogObjectCharacteristic.Write();
-		
-	Except
-		SmallBusinessServer.ShowMessageAboutError(,ErrorDescription());
-		Return;
-	EndTry;
-	
-	CommitTransaction();
-	
-	// Update dynamic list data.
-	Items.List.CurrentRow = CatalogObjectCharacteristic.Ref;
-	Items.List.Refresh();
-	
-EndProcedure // EnterNewCharacteristic()
-
 ////////////////////////////////////////////////////////////////////////////////
 // PROCEDURE - FORM EVENT HANDLERS
 
@@ -236,11 +202,21 @@ EndProcedure // ValueOnChange()
 //
 Procedure ListBeforeAddRow(Item, Cancel, Copy, Parent, Group)
 	
+	If Copy = True Then
+		Return;
+	EndIf;
+	
 	Cancel = True;
 	
-	EnterNewCharacteristic();
+	FillingValues = New Structure;
+	FillingValues.Insert("Owner", ProductsAndServices);
 	
-EndProcedure // ListBeforeAddStart()
+	FormParameters = New Structure;
+	FormParameters.Insert("FillingValues", FillingValues);
+	
+	OpenForm("Catalog.ProductsAndServicesCharacteristics.ObjectForm", FormParameters);
+	
+EndProcedure // ListBeforeAddRow()
 
 ////////////////////////////////////////////////////////////////////////////////
 // PROPERTY MECHANISM PROCEDURES
