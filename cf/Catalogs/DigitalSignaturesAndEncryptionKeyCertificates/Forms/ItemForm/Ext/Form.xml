@@ -1,8 +1,6 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
 <Form xmlns="http://v8.1c.ru/8.3/xcf/logform" xmlns:app="http://v8.1c.ru/8.2/managed-application/core" xmlns:cfg="http://v8.1c.ru/8.1/data/enterprise/current-config" xmlns:dcscor="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:dcsset="http://v8.1c.ru/8.1/data-composition-system/settings" xmlns:ent="http://v8.1c.ru/8.1/data/enterprise" xmlns:lf="http://v8.1c.ru/8.2/managed-application/logform" xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows" xmlns:xr="http://v8.1c.ru/8.3/xcf/readable" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.4">
-	<Width>72</Width>
 	<WindowOpeningMode>LockOwnerWindow</WindowOpeningMode>
-	<VerticalScroll>useIfNecessary</VerticalScroll>
 	<UseForFoldersAndItems>Items</UseForFoldersAndItems>
 	<AutoCommandBar name="FormCommandBar" id="-1">
 		<Autofill>false</Autofill>
@@ -214,137 +212,11 @@
 					<v8:content>Горизонтальная группа 1</v8:content>
 				</v8:item>
 			</Title>
-			<ToolTip>
-				<v8:item>
-					<v8:lang>en</v8:lang>
-					<v8:content>Horizontal group 1</v8:content>
-				</v8:item>
-				<v8:item>
-					<v8:lang>ru</v8:lang>
-					<v8:content>Горизонтальная группа 1</v8:content>
-				</v8:item>
-			</ToolTip>
 			<Group>Horizontal</Group>
 			<Representation>None</Representation>
 			<ShowTitle>false</ShowTitle>
 			<ExtendedTooltip name="HorizontalGroup1ExtendedTooltip" id="211"/>
 			<ChildItems>
-				<UsualGroup name="FieldsHeaders" id="199">
-					<Title>
-						<v8:item>
-							<v8:lang>en</v8:lang>
-							<v8:content>Fields headers</v8:content>
-						</v8:item>
-						<v8:item>
-							<v8:lang>ru</v8:lang>
-							<v8:content>Заголовки полей</v8:content>
-						</v8:item>
-					</Title>
-					<ToolTip>
-						<v8:item>
-							<v8:lang>en</v8:lang>
-							<v8:content>Fields headers</v8:content>
-						</v8:item>
-						<v8:item>
-							<v8:lang>ru</v8:lang>
-							<v8:content>Заголовки полей</v8:content>
-						</v8:item>
-					</ToolTip>
-					<Group>Vertical</Group>
-					<Representation>None</Representation>
-					<ShowTitle>false</ShowTitle>
-					<ExtendedTooltip name="FieldsHeadersExtendedTooltip" id="200"/>
-					<ChildItems>
-						<UsualGroup name="AutoFieldsHeadersFromCertificateData" id="217">
-							<Title>
-								<v8:item>
-									<v8:lang>en</v8:lang>
-									<v8:content>Headers of auto fields from certificate data</v8:content>
-								</v8:item>
-								<v8:item>
-									<v8:lang>ru</v8:lang>
-									<v8:content>Заголовки авто полей из данных сертификата</v8:content>
-								</v8:item>
-							</Title>
-							<Group>Vertical</Group>
-							<Representation>None</Representation>
-							<ShowTitle>false</ShowTitle>
-							<ExtendedTooltip name="AutoFieldsHeadersFromCertificateDataExtendedTooltip" id="218"/>
-							<ChildItems>
-								<LabelDecoration name="SurnameTitle" id="207">
-									<Title formatted="false">
-										<v8:item>
-											<v8:lang>en</v8:lang>
-											<v8:content>Surname:</v8:content>
-										</v8:item>
-										<v8:item>
-											<v8:lang>ru</v8:lang>
-											<v8:content>Фамилия:</v8:content>
-										</v8:item>
-									</Title>
-									<ContextMenu name="SurnameHeaderContextMenu" id="208"/>
-									<ExtendedTooltip name="SurnameHeaderExtendedTooltip" id="209"/>
-								</LabelDecoration>
-								<LabelDecoration name="FirmHeader" id="212">
-									<Title formatted="false">
-										<v8:item>
-											<v8:lang>en</v8:lang>
-											<v8:content>firm:</v8:content>
-										</v8:item>
-										<v8:item>
-											<v8:lang>ru</v8:lang>
-											<v8:content>фирма:</v8:content>
-										</v8:item>
-									</Title>
-									<ContextMenu name="FirmHeaderContextMenu" id="213"/>
-									<ExtendedTooltip name="FirmTitleExtendedTooltip" id="214"/>
-								</LabelDecoration>
-							</ChildItems>
-						</UsualGroup>
-						<LabelDecoration name="DescriptionHeader" id="201">
-							<Title formatted="false">
-								<v8:item>
-									<v8:lang>en</v8:lang>
-									<v8:content>Presentation:</v8:content>
-								</v8:item>
-								<v8:item>
-									<v8:lang>ru</v8:lang>
-									<v8:content>Представление:</v8:content>
-								</v8:item>
-							</Title>
-							<ContextMenu name="DescriptionHeaderContextMenu" id="202"/>
-							<ExtendedTooltip name="DescriptionHeaderExtendedTooltip" id="203"/>
-						</LabelDecoration>
-						<LabelDecoration name="CompanyHeader" id="223">
-							<Title formatted="false">
-								<v8:item>
-									<v8:lang>en</v8:lang>
-									<v8:content>Company:</v8:content>
-								</v8:item>
-								<v8:item>
-									<v8:lang>ru</v8:lang>
-									<v8:content>Организация:</v8:content>
-								</v8:item>
-							</Title>
-							<ContextMenu name="CompanyHeaderContextMenu" id="224"/>
-							<ExtendedTooltip name="CompanyHeaderExtendedTooltip" id="225"/>
-						</LabelDecoration>
-						<LabelDecoration name="UserHeader" id="226">
-							<Title formatted="false">
-								<v8:item>
-									<v8:lang>en</v8:lang>
-									<v8:content>User:</v8:content>
-								</v8:item>
-								<v8:item>
-									<v8:lang>ru</v8:lang>
-									<v8:content>Пользователь:</v8:content>
-								</v8:item>
-							</Title>
-							<ContextMenu name="UserHeaderContextMenu" id="227"/>
-							<ExtendedTooltip name="UserHeaderExtendedTooltip" id="228"/>
-						</LabelDecoration>
-					</ChildItems>
-				</UsualGroup>
 				<UsualGroup name="Fields" id="215">
 					<Title>
 						<v8:item>
@@ -382,87 +254,76 @@
 									<v8:content>Авто поля из данных сертификата</v8:content>
 								</v8:item>
 							</Title>
-							<Group>Horizontal</Group>
+							<Group>Vertical</Group>
 							<Representation>None</Representation>
 							<ShowTitle>false</ShowTitle>
 							<ExtendedTooltip name="AutoFieldsFromCertificateDataExtendedTooltip" id="194"/>
 							<ChildItems>
-								<UsualGroup name="VerticalGroup1" id="197">
+								<UsualGroup name="HorizontalGroup2" id="267">
 									<Title>
 										<v8:item>
 											<v8:lang>en</v8:lang>
-											<v8:content>Vertical group 1</v8:content>
+											<v8:content>Horizontal group 2</v8:content>
 										</v8:item>
 										<v8:item>
 											<v8:lang>ru</v8:lang>
-											<v8:content>Вертикальная группа 1</v8:content>
+											<v8:content>Горизонтальная группа 2</v8:content>
 										</v8:item>
 									</Title>
-									<Group>Vertical</Group>
+									<Group>Horizontal</Group>
 									<Representation>None</Representation>
 									<ShowTitle>false</ShowTitle>
-									<ExtendedTooltip name="VerticalGroup1ExtendedTooltip" id="198"/>
+									<ExtendedTooltip name="HorizontalGroup2ExtendedTooltip" id="268"/>
 									<ChildItems>
-										<UsualGroup name="HorizontalGroup3" id="189">
-											<Title>
-												<v8:item>
-													<v8:lang>en</v8:lang>
-													<v8:content>Horizontal group 3</v8:content>
-												</v8:item>
-												<v8:item>
-													<v8:lang>ru</v8:lang>
-													<v8:content>Горизонтальная группа 3</v8:content>
-												</v8:item>
-											</Title>
-											<Group>Horizontal</Group>
-											<Representation>None</Representation>
-											<ShowTitle>false</ShowTitle>
-											<ExtendedTooltip name="HorizontalGroup3ExtendedTooltip" id="190"/>
-											<ChildItems>
-												<InputField name="Surname" id="174">
-													<DataPath>Object.Surname</DataPath>
-													<TitleLocation>None</TitleLocation>
-													<ContextMenu name="SurnameContextMenu" id="175"/>
-													<ExtendedTooltip name="SurnameExtendedTooltip" id="176"/>
-												</InputField>
-												<InputField name="Name" id="177">
-													<DataPath>Object.Name</DataPath>
-													<ContextMenu name="NameContextMenu" id="178"/>
-													<ExtendedTooltip name="NameExtendedTooltip" id="179"/>
-												</InputField>
-											</ChildItems>
-										</UsualGroup>
-										<InputField name="firm" id="186">
-											<DataPath>Object.firm</DataPath>
-											<TitleLocation>None</TitleLocation>
-											<ContextMenu name="FirmContextMenu" id="187"/>
-											<ExtendedTooltip name="FirmExtendedTooltip" id="188"/>
+										<InputField name="Surname" id="174">
+											<DataPath>Object.Surname</DataPath>
+											<Width>16</Width>
+											<HorizontalStretch>false</HorizontalStretch>
+											<ContextMenu name="SurnameContextMenu" id="175"/>
+											<ExtendedTooltip name="SurnameExtendedTooltip" id="176"/>
 										</InputField>
-									</ChildItems>
-								</UsualGroup>
-								<UsualGroup name="VerticalGroup2" id="191">
-									<Title>
-										<v8:item>
-											<v8:lang>en</v8:lang>
-											<v8:content>Vertical group 2</v8:content>
-										</v8:item>
-										<v8:item>
-											<v8:lang>ru</v8:lang>
-											<v8:content>Вертикальная группа 2</v8:content>
-										</v8:item>
-									</Title>
-									<Group>Vertical</Group>
-									<Representation>None</Representation>
-									<ShowTitle>false</ShowTitle>
-									<ExtendedTooltip name="VerticalGroup2ExtendedTooltip" id="192"/>
-									<ChildItems>
+										<InputField name="Name" id="177">
+											<DataPath>Object.Name</DataPath>
+											<Width>16</Width>
+											<HorizontalStretch>false</HorizontalStretch>
+											<ContextMenu name="NameContextMenu" id="178"/>
+											<ExtendedTooltip name="NameExtendedTooltip" id="179"/>
+										</InputField>
 										<InputField name="Patronymic" id="180">
 											<DataPath>Object.Patronymic</DataPath>
+											<Width>22</Width>
+											<HorizontalStretch>false</HorizontalStretch>
 											<ContextMenu name="PatronymicContextMenu" id="181"/>
 											<ExtendedTooltip name="PatronymicExtendedTooltip" id="182"/>
 										</InputField>
+									</ChildItems>
+								</UsualGroup>
+								<UsualGroup name="HorizontalGroup3" id="189">
+									<Title>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Horizontal group 3</v8:content>
+										</v8:item>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Горизонтальная группа 3</v8:content>
+										</v8:item>
+									</Title>
+									<Group>Horizontal</Group>
+									<Representation>None</Representation>
+									<ShowTitle>false</ShowTitle>
+									<ExtendedTooltip name="HorizontalGroup3ExtendedTooltip" id="190"/>
+									<ChildItems>
+										<InputField name="firm" id="186">
+											<DataPath>Object.firm</DataPath>
+											<Width>37</Width>
+											<HorizontalStretch>false</HorizontalStretch>
+											<ContextMenu name="FirmContextMenu" id="187"/>
+											<ExtendedTooltip name="FirmExtendedTooltip" id="188"/>
+										</InputField>
 										<InputField name="Position" id="183">
 											<DataPath>Object.Position</DataPath>
+											<Width>20</Width>
 											<ContextMenu name="AppointmentContextMenu" id="184"/>
 											<ExtendedTooltip name="PositionExtendedTooltip" id="185"/>
 										</InputField>
@@ -473,9 +334,10 @@
 						<InputField name="Description" id="1">
 							<DataPath>Object.Description</DataPath>
 							<DefaultItem>true</DefaultItem>
-							<TitleLocation>None</TitleLocation>
 							<ToolTipRepresentation>Button</ToolTipRepresentation>
 							<EditMode>EnterOnInput</EditMode>
+							<Width>37</Width>
+							<HorizontalStretch>false</HorizontalStretch>
 							<ContextMenu name="DescriptionContextMenu" id="2"/>
 							<ExtendedTooltip name="DescriptionExtendedTooltip" id="97">
 								<Title formatted="false">
@@ -513,8 +375,7 @@ replaced for the purpose description, for example: "For invoice signature, up to
 						</InputField>
 						<InputField name="Company" id="168">
 							<DataPath>Object.Company</DataPath>
-							<TitleLocation>None</TitleLocation>
-							<Width>35</Width>
+							<Width>37</Width>
 							<HorizontalStretch>false</HorizontalStretch>
 							<ChoiceHistoryOnInput>DontUse</ChoiceHistoryOnInput>
 							<ContextMenu name="CounterpartyContextMenu" id="169"/>
@@ -538,8 +399,7 @@ replaced for the purpose description, for example: "For invoice signature, up to
 							<ChildItems>
 								<InputField name="User" id="171">
 									<DataPath>Object.User</DataPath>
-									<TitleLocation>None</TitleLocation>
-									<Width>35</Width>
+									<Width>37</Width>
 									<HorizontalStretch>false</HorizontalStretch>
 									<ContextMenu name="UserContextMenu" id="172"/>
 									<ExtendedTooltip name="UserExtendedTooltip" id="173"/>
@@ -687,6 +547,21 @@ replaced for the purpose description, for example: "For invoice signature, up to
 					</Type>
 				</Column>
 			</Columns>
+		</Attribute>
+		<Attribute name="AreCompanies" id="7">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Are companies</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Есть организации</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:boolean</v8:Type>
+			</Type>
 		</Attribute>
 	</Attributes>
 	<Commands>

@@ -14,7 +14,9 @@ Procedure OnCreateAtServer(Cancel, StandardProcessing)
 	
 	SmallBusinessServer.SetDesignDateColumn(List);
 	
-	CommonUseClientServer.SetFormItemProperty(Items, "ListCompanies", "Visible", GetFunctionalOption("MultipleCompaniesAccounting"));
+	// SB.ListFilter
+	WorkWithFilters.RestoreFilterSettings(ThisObject, List);
+	// End SB.ListFilter
 	
 EndProcedure
 

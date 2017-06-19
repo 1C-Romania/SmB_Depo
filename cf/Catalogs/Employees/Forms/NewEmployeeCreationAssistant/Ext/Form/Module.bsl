@@ -14,7 +14,7 @@ Procedure OnCreateAtServer(Cancel, StandardProcessing)
 	AdvanceHoldersGLAccount = ChartsOfAccounts.Managerial.AdvanceHolderPayments;
 	OverrunGLAccount = ChartsOfAccounts.Managerial.OverrunOfAdvanceHolders;
 	
-	CompaniesUsed = GetFunctionalOption("MultipleCompaniesAccounting");
+	CompaniesUsed = GetFunctionalOption("UseSeveralCompanies");
 	If CompaniesUsed Then
 		
 		AccountingByCompany = Constants.AccountingBySubsidiaryCompany.Get();

@@ -52,8 +52,8 @@
 			<ShowTitle>false</ShowTitle>
 			<ExtendedTooltip name="SettingsCompaniesExtendedTooltip" id="62"/>
 			<ChildItems>
-				<CheckBoxField name="FunctionalOptionAccountingByMultipleCompanies" id="6">
-					<DataPath>ConstantsSet.FunctionalOptionAccountingByMultipleCompanies</DataPath>
+				<CheckBoxField name="UseSeveralCompanies" id="6">
+					<DataPath>ConstantsSet.UseSeveralCompanies</DataPath>
 					<Title>
 						<v8:item>
 							<v8:lang>en</v8:lang>
@@ -67,8 +67,8 @@
 					<TitleLocation>Right</TitleLocation>
 					<ToolTipRepresentation>ShowBottom</ToolTipRepresentation>
 					<CheckBoxType>Auto</CheckBoxType>
-					<ContextMenu name="FunctionalOptionAccountingByMultipleCompaniesContextMenu" id="7"/>
-					<ExtendedTooltip name="FunctionalOptionAccountingByMultipleCompaniesExtendedTooltip" id="63">
+					<ContextMenu name="UseSeveralCompaniesContextMenu" id="7"/>
+					<ExtendedTooltip name="UseSeveralCompaniesExtendedTooltip" id="63">
 						<Title formatted="false">
 							<v8:item>
 								<v8:lang>en</v8:lang>
@@ -81,7 +81,7 @@
 						</Title>
 					</ExtendedTooltip>
 					<Events>
-						<Event name="OnChange">FunctionalOptionAccountingByMultipleCompaniesOnChange</Event>
+						<Event name="OnChange">UseSeveralCompaniesOnChange</Event>
 					</Events>
 				</CheckBoxField>
 				<UsualGroup name="CompanySettingsSettings" id="10">
@@ -276,7 +276,7 @@ There are two schemes of accounting in the software when the accounting system i
 			<Title>
 				<v8:item>
 					<v8:lang>en</v8:lang>
-					<v8:content>Constants set</v8:content>
+					<v8:content>Constant set</v8:content>
 				</v8:item>
 				<v8:item>
 					<v8:lang>ru</v8:lang>
@@ -289,6 +289,7 @@ There are two schemes of accounting in the software when the accounting system i
 			<MainAttribute>true</MainAttribute>
 			<SavedData>true</SavedData>
 			<UseAlways>
+				<Field>ConstantsSet.UseSeveralCompanies</Field>
 				<Field>ConstantsSet.SubsidiaryCompany</Field>
 				<Field>ConstantsSet.SMSProvider.Ref</Field>
 				<Field>ConstantsSet.ProductsAndServicesSKUInContent</Field>
@@ -314,7 +315,6 @@ There are two schemes of accounting in the software when the accounting system i
 				<Field>ConstantsSet.FunctionalOptionAccountingRetail</Field>
 				<Field>ConstantsSet.FunctionalOptionAccountingCashMethodIncomeAndExpenses</Field>
 				<Field>ConstantsSet.FunctionalOptionAccountingByProjects</Field>
-				<Field>ConstantsSet.FunctionalOptionAccountingByMultipleCompanies</Field>
 				<Field>ConstantsSet.FunctionalOptionAccountingByCells</Field>
 				<Field>ConstantsSet.FunctionalCurrencyTransactionsAccounting</Field>
 				<Field>ConstantsSet.ExchangeRateDifferencesCalculationFrequency.Ref</Field>

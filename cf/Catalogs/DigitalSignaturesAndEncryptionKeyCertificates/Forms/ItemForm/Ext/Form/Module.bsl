@@ -11,6 +11,7 @@ Procedure OnCreateAtServer(Cancel, StandardProcessing)
 		Return;
 	EndIf;
 	
+	AreCompanies = Not Metadata.DefinedTypes.Company.Type.ContainsType(Type("String"));
 	OnCreateAtServerOnReadAtServer();
 	
 EndProcedure
@@ -91,15 +92,11 @@ Procedure ShowAutofilledAttributes(Command)
 	Show = Not Items.FormShowAutofilledAttributes.Check;
 	
 	Items.FormShowAutofilledAttributes.Check = Show;
-	Items.AutoFieldsHeadersFromCertificateData.Visible = Show;
 	Items.AutoFieldsFromCertificateData.Visible = Show;
 	
-	If CommonUseClient.SubsystemExists("StandardSubsystems.Companies") Then
-		Items.CompanyHeader.Visible = Show;
+	If AreCompanies Then
 		Items.Company.Visible = Show;
 	EndIf;
-	
-	
 	
 EndProcedure
 
@@ -189,7 +186,6 @@ Procedure OnCreateAtServerOnReadAtServer()
 		Items.FormCheckCertificate.Enabled = False;
 		Items.FormSaveCertificateDataInFile.Enabled = False;
 		Items.AutoFieldsFromCertificateData.Visible = True;
-		Items.AutoFieldsHeadersFromCertificateData.Visible = True;
 		Items.FormShowAutofilledAttributes.Check = True;
 	EndIf;
 	
@@ -214,22 +210,8 @@ Procedure OnCreateAtServerOnReadAtServer()
 		EndIf;
 	EndIf;
 	
-	If CommonUse.SubsystemExists("StandardSubsystems.Companies") Then
-		CompaniesServiceModule = CommonUse.CommonModule("CompaniesService");
-		CompanyByDefault = CompaniesServiceModule.CompanyByDefault();
-		
-		If ValueIsFilled(CompanyByDefault)
-		   AND Object.Company = CompanyByDefault
-		   AND Not CompaniesServiceModule.SeveralCompaniesAreUsed() Then
-			
-			Items.CompanyHeader.Visible = False;
-			Items.Company.Visible = False;
-		EndIf;
-	EndIf;
-	If Not CommonUse.SubsystemExists("StandardSubsystems.Companies") Then
-		Items.CompanyHeader.Visible = False;
-		Items.Company.Visible = False;
-	EndIf;
+	AreCompanies = Not Metadata.DefinedTypes.Company.Type.ContainsType(Type("String"));
+	Items.Company.Visible = AreCompanies;
 	
 	If Not ValueIsFilled(CertificateAddress) Then
 		Return; // Certificate = Undefined.
@@ -275,13 +257,6 @@ Procedure OnCreateAtServerOnReadAtServer()
 		    Not Items.Surname.ReadOnly   AND Not ValueIsFilled(Object.Surname)
 		Or Not Items.Name.ReadOnly       AND Not ValueIsFilled(Object.Name)
 		Or Not Items.Patronymic.ReadOnly  AND Not ValueIsFilled(Object.Patronymic);
-	
-	Items.DescriptionHeader.Visible = Items.Description.Visible;
-	Items.CompanyHeader.Visible  = Items.Company.Visible;
-	Items.UserHeader.Visible = Items.User.Visible;
-	
-	Items.AutoFieldsHeadersFromCertificateData.Visible =
-		Items.AutoFieldsFromCertificateData.Visible;
 	
 	Items.FormShowAutofilledAttributes.Check =
 		Items.AutoFieldsFromCertificateData.Visible;

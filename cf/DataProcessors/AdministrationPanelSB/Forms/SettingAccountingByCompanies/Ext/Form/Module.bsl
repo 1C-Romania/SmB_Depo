@@ -17,10 +17,10 @@ Procedure RefreshSubsidiaryCompanyEnabled()
 	
 EndProcedure // RefreshSubsidiaryCompanyEnabled()
 
-// Check on the possibility to disable the MultipleCompaniesAccounting option.
+// Check on the possibility to disable the UseSeveralCompanies option.
 //
 &AtServer
-Function CancellationUncheckAccountingByMultipleCompaniesAccounting()
+Function CancellationUncheckUseSeveralCompanies()
 	
 	SetPrivilegedMode(True);
 	
@@ -40,7 +40,7 @@ Function CancellationUncheckAccountingByMultipleCompaniesAccounting()
 			If RefsTable.Count() > 0 Then
 				
 				MessageText = NStr("en='Companies that differ from the main one are used in the base! Disabling the option is prohibited!';ru='В базе используются организации, отличные от основной! Снятие опции запрещено!'");
-				SmallBusinessServer.ShowMessageAboutError(ThisForm, MessageText, , , "ConstantsSet.FunctionalOptionAccountingByMultipleCompanies", Cancel);
+				SmallBusinessServer.ShowMessageAboutError(ThisForm, MessageText, , , "ConstantsSet.UseSeveralCompanies", Cancel);
 				Break;
 				
 			EndIf;
@@ -53,7 +53,7 @@ Function CancellationUncheckAccountingByMultipleCompaniesAccounting()
 	
 	Return Cancel;
 	
-EndFunction // CancellationUncheckAccountingByMultipleCompaniesAccounting()
+EndFunction // CancellationUncheckUseSeveralCompanies()
 
 // Check on the possibility to change the established company.
 //
@@ -207,7 +207,7 @@ Procedure CatalogCompanies(Command)
 		
 	EndIf;
 	
-	If ConstantsSet.FunctionalOptionAccountingByMultipleCompanies Then
+	If ConstantsSet.UseSeveralCompanies Then
 		
 		OpenForm("Catalog.Companies.ListForm");
 		
@@ -229,7 +229,7 @@ EndProcedure // CatalogCompanies()
 Procedure OnOpen(Cancel)
 	
 	RefreshSubsidiaryCompanyEnabled();
-	ConstantValue = ConstantsSet.FunctionalOptionAccountingByMultipleCompanies;
+	ConstantValue = ConstantsSet.UseSeveralCompanies;
 	
 	Items.CompanySettingsSettings.Enabled	= ConstantValue;
 	ValueOnOpenAccountingForSeveralCompanies 	= ConstantValue;
@@ -241,12 +241,12 @@ EndProcedure // OnOpen()
 &AtServer
 Procedure BeforeWriteAtServer(Cancel, CurrentObject, WriteParameters)
 	
-	// If there are references to the company different from the main company, it is not allowed to clear the MultipleCompaniesAccounting flag.
-	If Constants.FunctionalOptionAccountingByMultipleCompanies.Get() <> ConstantsSet.FunctionalOptionAccountingByMultipleCompanies
-		AND (NOT ConstantsSet.FunctionalOptionAccountingByMultipleCompanies) 
-		AND CancellationUncheckAccountingByMultipleCompaniesAccounting() Then
+	// If there are references to the company different from the main company, it is not allowed to clear the UseSeveralCompanies flag.
+	If Constants.UseSeveralCompanies.Get() <> ConstantsSet.UseSeveralCompanies
+		AND (NOT ConstantsSet.UseSeveralCompanies) 
+		AND CancellationUncheckUseSeveralCompanies() Then
 		
-		ConstantsSet.FunctionalOptionAccountingByMultipleCompanies = True;
+		ConstantsSet.UseSeveralCompanies = True;
 		Cancel = True;
 		Return;
 		
@@ -309,10 +309,10 @@ EndProcedure // BeforeWriteAtServer()
 &AtClient
 Procedure AfterWrite(WriteParameters)
 	
-	ConstantValue = ConstantsSet.FunctionalOptionAccountingByMultipleCompanies;
+	ConstantValue = ConstantsSet.UseSeveralCompanies;
 	If ValueOnOpenAccountingForSeveralCompanies <> ConstantValue Then
 		
-		Notify("Record_ConstantsSet", New Structure("Value", ConstantValue), "FunctionalOptionAccountingByMultipleCompanies");
+		Notify("Record_ConstantsSet", New Structure("Value", ConstantValue), "UseSeveralCompanies");
 		
 	EndIf;
 	
@@ -335,12 +335,12 @@ Procedure AccountingBySubsidiaryCompanyOnChange(Item)
 	
 EndProcedure // AccountingBySubsidiaryCompanyOnChange()
 
-// Procedure - event handler OnChange of the FunctionalOptionAccountingByMultipleCompanies field.
+// Procedure - event handler OnChange of the UseSeveralCompanies field.
 //
 &AtClient
-Procedure FunctionalOptionAccountingByMultipleCompaniesOnChange(Item)
+Procedure UseSeveralCompaniesOnChange(Item)
 	
-	ConstantValue = ConstantsSet.FunctionalOptionAccountingByMultipleCompanies;
+	ConstantValue = ConstantsSet.UseSeveralCompanies;
 	
 	If Not ConstantValue Then
 		
@@ -352,7 +352,9 @@ Procedure FunctionalOptionAccountingByMultipleCompaniesOnChange(Item)
 	RefreshSubsidiaryCompanyEnabled();
 	Items.CompanySettingsSettings.Enabled = ConstantValue;
 	
-EndProcedure // FunctionalOptionAccountingByMultipleCompaniesOnChange()
+	RefreshInterface();
+	
+EndProcedure // UseSeveralCompaniesOnChange()
 // 
 
 

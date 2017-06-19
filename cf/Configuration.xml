@@ -530,14 +530,14 @@
 			<Language>Spanish</Language>
 			<Language>Swedish</Language>
 			<Language>Turkish</Language>
+			<Subsystem>CRM</Subsystem>
 			<Subsystem>Analysis</Subsystem>
 			<Subsystem>AttachedFilesService</Subsystem>
-			<Subsystem>CRM</Subsystem>
+			<Subsystem>Finances</Subsystem>
 			<Subsystem>DataImportFromExternalSources</Subsystem>
 			<Subsystem>ElectronicInteraction</Subsystem>
 			<Subsystem>Enterprise</Subsystem>
 			<Subsystem>ExchangeWithSites</Subsystem>
-			<Subsystem>Finances</Subsystem>
 			<Subsystem>InventoryAndPurchasing</Subsystem>
 			<Subsystem>KittingAndProduction</Subsystem>
 			<Subsystem>MarketingAndSales</Subsystem>
@@ -588,6 +588,7 @@
 			<StyleItem>FontRightFilterPanel</StyleItem>
 			<StyleItem>HiddenReportOptionColor</StyleItem>
 			<StyleItem>GreenColor</StyleItem>
+			<StyleItem>InaccessibleDataColor</StyleItem>
 			<StyleItem>MasterFieldBackground</StyleItem>
 			<StyleItem>MinorInscriptionText</StyleItem>
 			<StyleItem>ModifiedAttributeValueBackground</StyleItem>
@@ -613,9 +614,8 @@
 			<StyleItem>UnavailableCellTextColor</StyleItem>
 			<StyleItem>UnselectedImageTextColor</StyleItem>
 			<StyleItem>VisibleReportOptionColor</StyleItem>
-			<StyleItem>WorktimeCompletelyBusy</StyleItem>
 			<StyleItem>HyperlinkColor</StyleItem>
-			<StyleItem>InaccessibleDataColor</StyleItem>
+			<StyleItem>WorktimeCompletelyBusy</StyleItem>
 			<StyleItem>WorktimeFreeAvailable</StyleItem>
 			<StyleItem>InformationTextColor</StyleItem>
 			<StyleItem>PinkColor</StyleItem>
@@ -677,6 +677,7 @@
 			<CommonPicture>ConnectorTopRightBottom</CommonPicture>
 			<CommonPicture>Consultant1CConnect</CommonPicture>
 			<CommonPicture>AllRecords</CommonPicture>
+			<CommonPicture>ContactInformation</CommonPicture>
 			<CommonPicture>ContactInformationAddress</CommonPicture>
 			<CommonPicture>ContactInformationEmail</CommonPicture>
 			<CommonPicture>ContactInformationFax</CommonPicture>
@@ -687,8 +688,8 @@
 			<CommonPicture>ContactInformationOther</CommonPicture>
 			<CommonPicture>ContactInformationPhone</CommonPicture>
 			<CommonPicture>ContactInformationSkype</CommonPicture>
-			<CommonPicture>ContactInformationWebpage</CommonPicture>
 			<CommonPicture>CopyRows</CommonPicture>
+			<CommonPicture>ContactInformationWebpage</CommonPicture>
 			<CommonPicture>CounterpartyCollection</CommonPicture>
 			<CommonPicture>CountIsReviewed</CommonPicture>
 			<CommonPicture>CWP_ExpandAdditionalPanel</CommonPicture>
@@ -758,14 +759,15 @@
 			<CommonPicture>Errors16AreNoticed</CommonPicture>
 			<CommonPicture>ErrorsNotNoticed16</CommonPicture>
 			<CommonPicture>EventCollection</CommonPicture>
-			<CommonPicture>EventLogMonitorNote</CommonPicture>
 			<CommonPicture>Appearance</CommonPicture>
+			<CommonPicture>EventLogMonitorNote</CommonPicture>
 			<CommonPicture>EventsList</CommonPicture>
 			<CommonPicture>ExchangePlanNodeIcons</CommonPicture>
 			<CommonPicture>ExchangeWithSiteCheckConnectionToWebService</CommonPicture>
 			<CommonPicture>ExchangeWithSiteWebServicePublication</CommonPicture>
-			<CommonPicture>ExclamationMarkGray</CommonPicture>
 			<CommonPicture>AutoSaveReportSettings</CommonPicture>
+			<CommonPicture>ExclamationMarkGray</CommonPicture>
+			<CommonPicture>ExecuteScheduledJobManually</CommonPicture>
 			<CommonPicture>ExpandFilters</CommonPicture>
 			<CommonPicture>Export</CommonPicture>
 			<CommonPicture>ExportDataFromInfobaseIntoXMLFile</CommonPicture>
@@ -827,9 +829,10 @@
 			<CommonPicture>Invert</CommonPicture>
 			<CommonPicture>ItalicFontStyle</CommonPicture>
 			<CommonPicture>KeyCertificate</CommonPicture>
+			<CommonPicture>BookkeepingSettings</CommonPicture>
 			<CommonPicture>LeadingEndPoint</CommonPicture>
 			<CommonPicture>LeftAlign</CommonPicture>
-			<CommonPicture>BookkeepingSettings</CommonPicture>
+			<CommonPicture>LeftArrow</CommonPicture>
 			<CommonPicture>LeftArrowBig</CommonPicture>
 			<CommonPicture>LeftBorder</CommonPicture>
 			<CommonPicture>Line</CommonPicture>
@@ -839,28 +842,30 @@
 			<CommonPicture>Logo1CConnect</CommonPicture>
 			<CommonPicture>LongOperation48</CommonPicture>
 			<CommonPicture>MappingObjectsPicturesCollection</CommonPicture>
+			<CommonPicture>BookkeepingTemplates</CommonPicture>
 			<CommonPicture>MergeCells</CommonPicture>
 			<CommonPicture>MessageService</CommonPicture>
 			<CommonPicture>MessageToSupport</CommonPicture>
-			<CommonPicture>BookkeepingTemplates</CommonPicture>
+			<CommonPicture>MetadataObjectsCollection</CommonPicture>
 			<CommonPicture>Minus</CommonPicture>
 			<CommonPicture>MonthEndDivider</CommonPicture>
 			<CommonPicture>MonthEndIsNotRequired</CommonPicture>
 			<CommonPicture>MonthEndWasNotPerformed</CommonPicture>
 			<CommonPicture>MonthEndWithMistakes</CommonPicture>
 			<CommonPicture>MonthEndWithoutMistakes</CommonPicture>
+			<CommonPicture>CatalogFolder</CommonPicture>
 			<CommonPicture>MonthPeriod</CommonPicture>
 			<CommonPicture>MoveToLeftUp</CommonPicture>
 			<CommonPicture>MoveToRightDown</CommonPicture>
 			<CommonPicture>MSExcel2007Format</CommonPicture>
-			<CommonPicture>CatalogFolder</CommonPicture>
 			<CommonPicture>MSExcelFormat</CommonPicture>
 			<CommonPicture>MSWord2007Format</CommonPicture>
+			<CommonPicture>CatalogFolderDeletionMarked</CommonPicture>
 			<CommonPicture>MSWordFormat</CommonPicture>
 			<CommonPicture>MXLFormat</CommonPicture>
 			<CommonPicture>Navigation</CommonPicture>
 			<CommonPicture>NewAppeal</CommonPicture>
-			<CommonPicture>CatalogFolderDeletionMarked</CommonPicture>
+			<CommonPicture>NewByBarcode</CommonPicture>
 			<CommonPicture>NewIdea</CommonPicture>
 			<CommonPicture>NewOrders0</CommonPicture>
 			<CommonPicture>NewOrdersFrom11To30</CommonPicture>
@@ -900,12 +905,12 @@
 			<CommonPicture>OutgoingEventPersonalMeeting</CommonPicture>
 			<CommonPicture>OutgoingEventPhoneCall</CommonPicture>
 			<CommonPicture>OutgoingEventPostLetter</CommonPicture>
+			<CommonPicture>PasteRows</CommonPicture>
 			<CommonPicture>OutgoingMessage</CommonPicture>
 			<CommonPicture>PaperClip</CommonPicture>
 			<CommonPicture>PaperClipCollection</CommonPicture>
 			<CommonPicture>ParametersAndFiltersIcons</CommonPicture>
 			<CommonPicture>PartiallyCorrected16</CommonPicture>
-			<CommonPicture>PasteRows</CommonPicture>
 			<CommonPicture>PayrollSection</CommonPicture>
 			<CommonPicture>PDFFormat</CommonPicture>
 			<CommonPicture>PeripheralReportWithoutBlanking</CommonPicture>
@@ -951,43 +956,45 @@
 			<CommonPicture>QuickStartProductsAndServices</CommonPicture>
 			<CommonPicture>RapidAccessWithCheckBox</CommonPicture>
 			<CommonPicture>ReadDiscountCard</CommonPicture>
+			<CommonPicture>CatalogItem</CommonPicture>
 			<CommonPicture>RealizedIdea</CommonPicture>
 			<CommonPicture>RejectedIdea</CommonPicture>
 			<CommonPicture>ReleaseFile</CommonPicture>
 			<CommonPicture>Reminder</CommonPicture>
 			<CommonPicture>ReminderCollection</CommonPicture>
-			<CommonPicture>CatalogItem</CommonPicture>
 			<CommonPicture>ReportHiddenSetting</CommonPicture>
 			<CommonPicture>ReportMailing</CommonPicture>
 			<CommonPicture>Reports</CommonPicture>
+			<CommonPicture>CatalogItemDeletionMarked</CommonPicture>
 			<CommonPicture>ReportStructuresIcons</CommonPicture>
 			<CommonPicture>ReportsVariantsAvailableToAllUsers</CommonPicture>
 			<CommonPicture>ResetInterval</CommonPicture>
 			<CommonPicture>ResourceGraphPicture</CommonPicture>
 			<CommonPicture>RightAlign</CommonPicture>
-			<CommonPicture>CatalogItemDeletionMarked</CommonPicture>
+			<CommonPicture>RightArrow</CommonPicture>
 			<CommonPicture>RightArrowBig</CommonPicture>
 			<CommonPicture>RightArrowRed</CommonPicture>
 			<CommonPicture>RightBorder</CommonPicture>
 			<CommonPicture>Run1CConnectTaxi</CommonPicture>
 			<CommonPicture>SaveFileAs</CommonPicture>
+			<CommonPicture>CatalogList</CommonPicture>
 			<CommonPicture>SaveReportVariant</CommonPicture>
 			<CommonPicture>Scanning</CommonPicture>
 			<CommonPicture>SectionAdministration</CommonPicture>
 			<CommonPicture>SectionAdministration48</CommonPicture>
 			<CommonPicture>SectionAnalysis</CommonPicture>
 			<CommonPicture>SectionCRM</CommonPicture>
-			<CommonPicture>CatalogList</CommonPicture>
 			<CommonPicture>SectionEnterprise</CommonPicture>
 			<CommonPicture>SectionMain</CommonPicture>
 			<CommonPicture>SectionOrganizer</CommonPicture>
+			<CommonPicture>Checked</CommonPicture>
 			<CommonPicture>SectionProduction</CommonPicture>
 			<CommonPicture>SectionSales</CommonPicture>
 			<CommonPicture>SectionService</CommonPicture>
 			<CommonPicture>SectionSettings</CommonPicture>
 			<CommonPicture>SelectInventory</CommonPicture>
 			<CommonPicture>SendByEmail</CommonPicture>
-			<CommonPicture>Checked</CommonPicture>
+			<CommonPicture>SendEmail</CommonPicture>
 			<CommonPicture>SendEmailSmall</CommonPicture>
 			<CommonPicture>SendGetEmails</CommonPicture>
 			<CommonPicture>SendingSMS</CommonPicture>
@@ -995,6 +1002,7 @@
 			<CommonPicture>ServiceNotification</CommonPicture>
 			<CommonPicture>SetApprovedStatus</CommonPicture>
 			<CommonPicture>SetClientOrderStatusAgreed</CommonPicture>
+			<CommonPicture>ClearSortList</CommonPicture>
 			<CommonPicture>SettingScheduledJobsExecution</CommonPicture>
 			<CommonPicture>ShowDifference</CommonPicture>
 			<CommonPicture>ShowOnlySelectedRoles</CommonPicture>
@@ -1002,7 +1010,7 @@
 			<CommonPicture>StatusesOfObjectsMapping</CommonPicture>
 			<CommonPicture>StopSign</CommonPicture>
 			<CommonPicture>SubmitIdea</CommonPicture>
-			<CommonPicture>ClearSortList</CommonPicture>
+			<CommonPicture>Subsystem</CommonPicture>
 			<CommonPicture>SubsystemAnalysis</CommonPicture>
 			<CommonPicture>SubsystemCash</CommonPicture>
 			<CommonPicture>SubsystemEnterpriseAndSettings</CommonPicture>
@@ -1045,65 +1053,57 @@
 			<CommonPicture>UserState07</CommonPicture>
 			<CommonPicture>UserState08</CommonPicture>
 			<CommonPicture>UserState09</CommonPicture>
-			<CommonPicture>UserState10</CommonPicture>
-			<CommonPicture>UserState11</CommonPicture>
-			<CommonPicture>UserState12</CommonPicture>
-			<CommonPicture>UserStates</CommonPicture>
-			<CommonPicture>UserTemplateDelete</CommonPicture>
-			<CommonPicture>UseStandardTemplate</CommonPicture>
-			<CommonPicture>UseTemplate</CommonPicture>
-			<CommonPicture>UseUserTemplate</CommonPicture>
 			<CommonPicture>Commit</CommonPicture>
 			<CommonPicture>CompositionFilterAndOrder</CommonPicture>
 			<CommonPicture>CompositionOrder</CommonPicture>
-			<CommonPicture>ContactInformation</CommonPicture>
+			<CommonPicture>UserState10</CommonPicture>
 			<CommonPicture>DocumentNumber_16</CommonPicture>
 			<CommonPicture>DocumentPosted</CommonPicture>
 			<CommonPicture>EditForm_16</CommonPicture>
 			<CommonPicture>EditReportSettings</CommonPicture>
 			<CommonPicture>ErrorBig</CommonPicture>
-			<CommonPicture>ExecuteScheduledJobManually</CommonPicture>
+			<CommonPicture>UserState11</CommonPicture>
 			<CommonPicture>FileIcon_ODS</CommonPicture>
-			<CommonPicture>UsualAccessWithCheckBox</CommonPicture>
+			<CommonPicture>UserState12</CommonPicture>
 			<CommonPicture>FilesIcons</CommonPicture>
 			<CommonPicture>Filter</CommonPicture>
 			<CommonPicture>FilterYellow</CommonPicture>
 			<CommonPicture>FolderFiles</CommonPicture>
 			<CommonPicture>FolderWithResources</CommonPicture>
-			<CommonPicture>VersionHistory</CommonPicture>
+			<CommonPicture>UserStates</CommonPicture>
 			<CommonPicture>FormulaCopy</CommonPicture>
 			<CommonPicture>Generate</CommonPicture>
 			<CommonPicture>GenerationPreview</CommonPicture>
 			<CommonPicture>HideReportHeader</CommonPicture>
 			<CommonPicture>Important</CommonPicture>
 			<CommonPicture>InformationRegistersGroup</CommonPicture>
-			<CommonPicture>LeftArrow</CommonPicture>
+			<CommonPicture>UserTemplateDelete</CommonPicture>
 			<CommonPicture>LoadingFromSpreadsheet</CommonPicture>
 			<CommonPicture>Lock</CommonPicture>
 			<CommonPicture>LongAction48</CommonPicture>
-			<CommonPicture>MetadataObjectsCollection</CommonPicture>
+			<CommonPicture>UseStandardTemplate</CommonPicture>
 			<CommonPicture>Minus_16</CommonPicture>
-			<CommonPicture>Warning</CommonPicture>
+			<CommonPicture>UseTemplate</CommonPicture>
 			<CommonPicture>NestedStructure</CommonPicture>
-			<CommonPicture>NewByBarcode</CommonPicture>
+			<CommonPicture>UseUserTemplate</CommonPicture>
 			<CommonPicture>OurDebt</CommonPicture>
-			<CommonPicture>Warning32</CommonPicture>
+			<CommonPicture>UsualAccessWithCheckBox</CommonPicture>
 			<CommonPicture>OweUs</CommonPicture>
 			<CommonPicture>Paste</CommonPicture>
-			<CommonPicture>WeekPeriod</CommonPicture>
+			<CommonPicture>VersionHistory</CommonPicture>
 			<CommonPicture>Pencil</CommonPicture>
 			<CommonPicture>PlusMinus_16</CommonPicture>
 			<CommonPicture>RecordsByDocument</CommonPicture>
 			<CommonPicture>Refresh_16</CommonPicture>
 			<CommonPicture>RegisterRecords</CommonPicture>
-			<CommonPicture>RightArrow</CommonPicture>
-			<CommonPicture>SendEmail</CommonPicture>
+			<CommonPicture>Warning</CommonPicture>
+			<CommonPicture>Warning32</CommonPicture>
 			<CommonPicture>Settings</CommonPicture>
+			<CommonPicture>WeekPeriod</CommonPicture>
 			<CommonPicture>WithoutBorder</CommonPicture>
-			<CommonPicture>WorkingDirectoryByDefault</CommonPicture>
 			<CommonPicture>ShowBookkeepingOperation</CommonPicture>
 			<CommonPicture>ShowReportHeader</CommonPicture>
-			<CommonPicture>Subsystem</CommonPicture>
+			<CommonPicture>WorkingDirectoryByDefault</CommonPicture>
 			<CommonPicture>WriteSMS</CommonPicture>
 			<CommonPicture>Subsystem_UniversalMechanics_16</CommonPicture>
 			<CommonPicture>Subsystem_UniversalMechanics_32</CommonPicture>
@@ -2185,8 +2185,8 @@
 			<FunctionalOption>UseCharacteristics</FunctionalOption>
 			<FunctionalOption>UseCommonAdditionalAttributesAndInformation</FunctionalOption>
 			<FunctionalOption>UseCommonAdditionalValues</FunctionalOption>
-			<FunctionalOption>UseCounterpartyContractTypes</FunctionalOption>
 			<FunctionalOption>UseCounterpartiesAccessGroups</FunctionalOption>
+			<FunctionalOption>UseCounterpartyContractTypes</FunctionalOption>
 			<FunctionalOption>UseCustomerOrderStates</FunctionalOption>
 			<FunctionalOption>UseDataSynchronization</FunctionalOption>
 			<FunctionalOption>UseDataSynchronizationInLocalMode</FunctionalOption>
@@ -2239,7 +2239,7 @@
 			<DefinedType>ProductsAndServicesSeries</DefinedType>
 			<DefinedType>RightSettingsOwner</DefinedType>
 			<DefinedType>Amount</DefinedType>
-			<DefinedType>Company</DefinedType>
+			<DefinedType>SafeMode</DefinedType>
 			<DefinedType>Currency</DefinedType>
 			<DefinedType>DocumentAuthor</DefinedType>
 			<DefinedType>ExchangeRate</DefinedType>
@@ -2250,7 +2250,7 @@
 			<DefinedType>VATRate</DefinedType>
 			<DefinedType>VATSalesDocument</DefinedType>
 			<DefinedType>VATSupplier</DefinedType>
-			<DefinedType>SafeMode</DefinedType>
+			<DefinedType>Company</DefinedType>
 			<CommonCommand>AccessRights</CommonCommand>
 			<CommonCommand>AdditionalInformationCommandBar</CommonCommand>
 			<CommonCommand>AdditionalInformationNavigationPanel</CommonCommand>
@@ -2386,8 +2386,8 @@
 			<CommonCommand>ProductPageOn1CSite</CommonCommand>
 			<CommonCommand>Remind</CommonCommand>
 			<CommonCommand>ReportByMovements</CommonCommand>
-			<CommonCommand>ReportsPanel_Analysis</CommonCommand>
 			<CommonCommand>ReportsPanel_CRM</CommonCommand>
+			<CommonCommand>ReportsPanel_Analysis</CommonCommand>
 			<CommonCommand>ReportsPanel_Enterprise</CommonCommand>
 			<CommonCommand>ReportsPanel_Finances</CommonCommand>
 			<CommonCommand>ReportsPanel_InventoryAndPurchasing</CommonCommand>
@@ -2410,6 +2410,7 @@
 			<CommonCommand>DownloadRatesFromNBP</CommonCommand>
 			<CommonCommand>EditDocumentsHeader</CommonCommand>
 			<CommonCommand>ShowBookkeepingOperationCommand</CommonCommand>
+			<CommandGroup>Settings</CommandGroup>
 			<CommandGroup>DataExchangeExecution</CommandGroup>
 			<CommandGroup>DataExchangeParameters</CommandGroup>
 			<CommandGroup>ED</CommandGroup>
@@ -2418,10 +2419,16 @@
 			<CommandGroup>OpeningBalances</CommandGroup>
 			<CommandGroup>Organizer</CommandGroup>
 			<CommandGroup>Print</CommandGroup>
-			<CommandGroup>Settings</CommandGroup>
-			<Constant>BookkeepingFunctionalityConstant</Constant>
-			<Constant>AccountingCurrency</Constant>
 			<Constant>AccessLimitationParameters</Constant>
+			<Constant>BookkeepingFunctionalityConstant</Constant>
+			<Constant>AccountingBySubsidiaryCompany</Constant>
+			<Constant>AccountingCurrency</Constant>
+			<Constant>ActiveBackgroundJobMaxCount</Constant>
+			<Constant>ActiveBackgroundJobMaxExecutionTime</Constant>
+			<Constant>ActivityKind</Constant>
+			<Constant>AdditionalAttributesAndInformationParameters</Constant>
+			<Constant>AdditionalReportsAndDataProcessorsIndependentUseSaaS</Constant>
+			<Constant>AdditionalReportsAndDataProcessorsProceduralTasksMinIntervalSaaS</Constant>
 			<Constant>AddressClassifierDataSource</Constant>
 			<Constant>AddressForAccountPasswordRecovery</Constant>
 			<Constant>AddressPublicationsInformationBaseOnWeb</Constant>
@@ -2489,6 +2496,7 @@
 			<Constant>ExecutePerformanceMeasurements</Constant>
 			<Constant>ExtractFileTextsAtServer</Constant>
 			<Constant>FileExtensionListOpenDocument</Constant>
+			<Constant>FunctionalOptionAccountingByMultipleCompanies</Constant>
 			<Constant>FilesExchangeDirectoryInLinuxSaaS</Constant>
 			<Constant>FilesExchangeDirectorySaaS</Constant>
 			<Constant>FileTransferBlockSize</Constant>
@@ -2496,7 +2504,6 @@
 			<Constant>FunctionalCurrencyTransactionsAccounting</Constant>
 			<Constant>FunctionalOptionAccountingByCells</Constant>
 			<Constant>FunctionalOptionAccountingByMultipleBusinessActivities</Constant>
-			<Constant>FunctionalOptionAccountingByMultipleCompanies</Constant>
 			<Constant>FunctionalOptionAccountingByMultipleDepartments</Constant>
 			<Constant>FunctionalOptionAccountingByMultipleWarehouses</Constant>
 			<Constant>FunctionalOptionAccountingByProjects</Constant>
@@ -2520,8 +2527,8 @@
 			<Constant>FunctionalOptionUseBatches</Constant>
 			<Constant>FunctionalOptionUseBudgeting</Constant>
 			<Constant>FunctionalOptionUseCharacteristics</Constant>
-			<Constant>FunctionalOptionUseDiscountCards</Constant>
 			<Constant>FunctionalOptionUseCounterpartyContractTypes</Constant>
+			<Constant>FunctionalOptionUseDiscountCards</Constant>
 			<Constant>FunctionalOptionUseDiscountsMarkups</Constant>
 			<Constant>FunctionalOptionUseExchangeWithSites</Constant>
 			<Constant>FunctionalOptionUseJobSharing</Constant>
@@ -2554,7 +2561,7 @@
 			<Constant>MasterNode</Constant>
 			<Constant>MaxDataAreaFileSize</Constant>
 			<Constant>MaximumFileSize</Constant>
-			<Constant>ActiveBackgroundJobMaxCount</Constant>
+			<Constant>NationalCurrency</Constant>
 			<Constant>OfflineSaaS</Constant>
 			<Constant>OffsetAdvancesDebtsAutomatically</Constant>
 			<Constant>PasswordForSendingSMS</Constant>
@@ -2575,6 +2582,7 @@
 			<Constant>PurchaseOrdersCompletedStatus</Constant>
 			<Constant>PurchaseOrdersInProgressStatus</Constant>
 			<Constant>RecipientsEventLogMonitorReport</Constant>
+			<Constant>SerialNumbersBalanceControl</Constant>
 			<Constant>ReportVariantParameters</Constant>
 			<Constant>RetryDataExportExchangeMessagesBeforeStart</Constant>
 			<Constant>ReusableValuesUpdateDateORM</Constant>
@@ -2582,7 +2590,6 @@
 			<Constant>ScheduledJobsExecutionSettings</Constant>
 			<Constant>SecurityProfilesAreUsed</Constant>
 			<Constant>ServiceEventsParameters</Constant>
-			<Constant>SerialNumbersBalanceControl</Constant>
 			<Constant>ServiceManagerEndPoint</Constant>
 			<Constant>ServiceManagerOfficeUserName</Constant>
 			<Constant>ServiceManagerOfficeUserPassword</Constant>
@@ -2626,6 +2633,7 @@
 			<Constant>UseExchangeWithPeripheralsOffline</Constant>
 			<Constant>UseExternalUsers</Constant>
 			<Constant>UseFullTextSearch</Constant>
+			<Constant>UseSerialNumbers</Constant>
 			<Constant>UseIntegrationWith1CConnect</Constant>
 			<Constant>UseObjectVersioning</Constant>
 			<Constant>UseProductionOrderStates</Constant>
@@ -2633,19 +2641,11 @@
 			<Constant>UsersWorkParameters</Constant>
 			<Constant>UseSeparationByDataAreas</Constant>
 			<Constant>UseSeveralBusinessCalendars</Constant>
-			<Constant>UseSerialNumbers</Constant>
 			<Constant>UseSeveralCompanies</Constant>
 			<Constant>UseUserReminders</Constant>
 			<Constant>UseUsersGroups</Constant>
 			<Constant>VendorPaymentDueDate</Constant>
 			<Constant>VerifyDigitalSignaturesAtServer</Constant>
-			<Constant>NationalCurrency</Constant>
-			<Constant>ActivityKind</Constant>
-			<Constant>AccountingBySubsidiaryCompany</Constant>
-			<Constant>AdditionalAttributesAndInformationParameters</Constant>
-			<Constant>AdditionalReportsAndDataProcessorsProceduralTasksMinIntervalSaaS</Constant>
-			<Constant>ActiveBackgroundJobMaxExecutionTime</Constant>
-			<Constant>AdditionalReportsAndDataProcessorsIndependentUseSaaS</Constant>
 			<Constant>SaaSLicensesCount</Constant>
 			<Constant>UseBankServiceProcessors</Constant>
 			<Constant>UseSaaS</Constant>
@@ -3285,6 +3285,7 @@
 			<Report>IncomeAndExpensesForecast</Report>
 			<Report>InformationAboutUsers</Report>
 			<Report>AccountBalanceAndTurnoversByExtDimensionTypes</Report>
+			<Report>Inventory</Report>
 			<Report>InventoryByCCD</Report>
 			<Report>InventoryReceived</Report>
 			<Report>InventoryTransferred</Report>
@@ -3309,8 +3310,9 @@
 			<Report>ProductRelease</Report>
 			<Report>ProfitsAndLosses</Report>
 			<Report>ProfitsAndLossesBudget</Report>
-			<Report>PurchaseOrderAnalysis</Report>
 			<Report>AccountsCard</Report>
+			<Report>PurchaseOrderAnalysis</Report>
+			<Report>PurchaseOrders</Report>
 			<Report>PurchaseOrdersConsolidatedAnalysis</Report>
 			<Report>PurchaseOrdersPaymentAnalysis</Report>
 			<Report>Purchases</Report>
@@ -3320,10 +3322,10 @@
 			<Report>SalesByDiscountCards</Report>
 			<Report>SalesPlanActualAnalysis</Report>
 			<Report>SalesReportTORG29</Report>
-			<Report>SalesTargets</Report>
-			<Report>SegmentComposition</Report>
 			<Report>SerialNumbersRecords</Report>
 			<Report>SerialNumbersWarehouse</Report>
+			<Report>SalesTargets</Report>
+			<Report>SegmentComposition</Report>
 			<Report>SettlementsOnOtherOperations</Report>
 			<Report>SheetByGoodsOnWarehousesInProductsAndServicesPrices</Report>
 			<Report>StaffList</Report>
@@ -3335,8 +3337,6 @@
 			<Report>UFP</Report>
 			<Report>UsedExternalResources</Report>
 			<Report>Warehouse</Report>
-			<Report>Inventory</Report>
-			<Report>PurchaseOrders</Report>
 			<Report>TrialBalance</Report>
 			<Report>TrialBalanceByAccount</Report>
 			<Report>WorkedTime</Report>
@@ -3403,9 +3403,6 @@
 			<DataProcessor>HandlersExportAtRetail</DataProcessor>
 			<DataProcessor>HandlersImportFromRetail</DataProcessor>
 			<DataProcessor>ImportFromSpreadsheet</DataProcessor>
-			<DataProcessor>ImportHandlersFromAccountingBySubsidiaryCompany30</DataProcessor>
-			<DataProcessor>ImportHandlersFromEntrepreneurReporting</DataProcessor>
-			<DataProcessor>ImportHandlersFromTradeManagement103</DataProcessor>
 			<DataProcessor>InfobaseBackup</DataProcessor>
 			<DataProcessor>InfobaseBackupSetup</DataProcessor>
 			<DataProcessor>InfobaseObjectsConversion</DataProcessor>
@@ -3456,14 +3453,15 @@
 			<DataProcessor>XDTOObjectsConversion</DataProcessor>
 			<InformationRegister>AdditionalAttributeUsages</InformationRegister>
 			<InformationRegister>AccessGroupsDefaultValues</InformationRegister>
+			<InformationRegister>AccessGroupsTables</InformationRegister>
 			<InformationRegister>AccessGroupsValues</InformationRegister>
 			<InformationRegister>AccessRightsCorrelation</InformationRegister>
 			<InformationRegister>AccessValuesGroups</InformationRegister>
 			<InformationRegister>AccessValuesSets</InformationRegister>
 			<InformationRegister>AccrualsAndDeductionsPlan</InformationRegister>
-			<InformationRegister>AdditionalAddressInformation</InformationRegister>
 			<InformationRegister>AdditionalAttributeValues</InformationRegister>
 			<InformationRegister>BlockedBookkeepingOperationTemplates</InformationRegister>
+			<InformationRegister>AdditionalAddressInformation</InformationRegister>
 			<InformationRegister>AdditionalInformation</InformationRegister>
 			<InformationRegister>AdditionalInformationProcessorsFunctions</InformationRegister>
 			<InformationRegister>AddressAbbreviations</InformationRegister>
@@ -3479,7 +3477,6 @@
 			<InformationRegister>AuditLogbookSberbank</InformationRegister>
 			<InformationRegister>BankApplications</InformationRegister>
 			<InformationRegister>BankEDExchangeStates</InformationRegister>
-			<InformationRegister>BankRequestsIdentifiers</InformationRegister>
 			<InformationRegister>BookkeepingAccountingPolicyCostOfGoodsDirections</InformationRegister>
 			<InformationRegister>BookkeepingAccountingPolicyExchangeRateDifference</InformationRegister>
 			<InformationRegister>BookkeepingAccountingPolicyGeneral</InformationRegister>
@@ -3489,17 +3486,18 @@
 			<InformationRegister>BookkeepingDefaultAccountGoodsInventoryMovements</InformationRegister>
 			<InformationRegister>BookkeepingPostedDocuments</InformationRegister>
 			<InformationRegister>BookkeepingPostingSettings</InformationRegister>
+			<InformationRegister>BankRequestsIdentifiers</InformationRegister>
 			<InformationRegister>BusinessCalendarData</InformationRegister>
 			<InformationRegister>CalendarSchedules</InformationRegister>
-			<InformationRegister>ChangeProhibitionDates</InformationRegister>
 			<InformationRegister>BookkeepingVATRates</InformationRegister>
 			<InformationRegister>ClosedPeriods</InformationRegister>
+			<InformationRegister>ChangeProhibitionDates</InformationRegister>
 			<InformationRegister>CompaniesTaxationSystems</InformationRegister>
 			<InformationRegister>ContactInformationKindSettings</InformationRegister>
 			<InformationRegister>CorrectionExecutionDatesBySections</InformationRegister>
 			<InformationRegister>CounterpartyDuplicatesExist</InformationRegister>
-			<InformationRegister>CounterpartyProductsAndServicesPrices</InformationRegister>
 			<InformationRegister>ClosedPeriodsExceptions</InformationRegister>
+			<InformationRegister>CounterpartyProductsAndServicesPrices</InformationRegister>
 			<InformationRegister>CurrencyRates</InformationRegister>
 			<InformationRegister>CustomerOrdersFromSite</InformationRegister>
 			<InformationRegister>DataAreaDataExchangeStatus</InformationRegister>
@@ -3533,9 +3531,9 @@
 			<InformationRegister>DeleteWorldCountries</InformationRegister>
 			<InformationRegister>DemandDataProcessorSuppliedDataAreas</InformationRegister>
 			<InformationRegister>DeviationFromResourcesWorkSchedules</InformationRegister>
-			<InformationRegister>DigitallySignedEDKinds</InformationRegister>
 			<InformationRegister>CurrencyExchangeRates</InformationRegister>
 			<InformationRegister>DocumentHierarchy</InformationRegister>
+			<InformationRegister>DigitallySignedEDKinds</InformationRegister>
 			<InformationRegister>EDEventsLog</InformationRegister>
 			<InformationRegister>EDExchangeStatesThroughEDFOperators</InformationRegister>
 			<InformationRegister>EDStates</InformationRegister>
@@ -3548,13 +3546,12 @@
 			<InformationRegister>ExternalResourcesUsingPermissions</InformationRegister>
 			<InformationRegister>ExternalResourcesUsingPermissionsSaaS</InformationRegister>
 			<InformationRegister>FilesInWorkingDirectory</InformationRegister>
-			<InformationRegister>FileVersionsEncodings</InformationRegister>
 			<InformationRegister>FinancialAccrualAndDeductionKinds</InformationRegister>
 			<InformationRegister>DocumentsNumberingSettings</InformationRegister>
 			<InformationRegister>FinancialCounterpartiesGroups</InformationRegister>
 			<InformationRegister>FinancialPettyCashes</InformationRegister>
 			<InformationRegister>FinancialProductsAndServicesGroups</InformationRegister>
-			<InformationRegister>AccessGroupsTables</InformationRegister>
+			<InformationRegister>FileVersionsEncodings</InformationRegister>
 			<InformationRegister>FixedAssetsParameters</InformationRegister>
 			<InformationRegister>FixedAssetsStates</InformationRegister>
 			<InformationRegister>HousesBuildingsConstructions</InformationRegister>
@@ -3632,8 +3629,9 @@
 			<InformationRegister>WriteOffCostsCorrectionNodes</InformationRegister>
 			<InformationRegister>NotificationSettings</InformationRegister>
 			<AccumulationRegister>AccountsPayable</AccumulationRegister>
-			<AccumulationRegister>AccrualsAndDeductions</AccumulationRegister>
 			<AccumulationRegister>AccountsReceivable</AccumulationRegister>
+			<AccumulationRegister>AccrualsAndDeductions</AccumulationRegister>
+			<AccumulationRegister>AdvanceHolderPayments</AccumulationRegister>
 			<AccumulationRegister>AutomaticDiscountsApplied</AccumulationRegister>
 			<AccumulationRegister>BankCharges</AccumulationRegister>
 			<AccumulationRegister>CashAssets</AccumulationRegister>
@@ -3642,6 +3640,7 @@
 			<AccumulationRegister>CustomerOrders</AccumulationRegister>
 			<AccumulationRegister>FinancialResult</AccumulationRegister>
 			<AccumulationRegister>FinancialResultForecast</AccumulationRegister>
+			<AccumulationRegister>FixedAssets</AccumulationRegister>
 			<AccumulationRegister>FixedAssetsOutput</AccumulationRegister>
 			<AccumulationRegister>IncomeAndExpenses</AccumulationRegister>
 			<AccumulationRegister>IncomeAndExpensesCashMethod</AccumulationRegister>
@@ -3663,19 +3662,17 @@
 			<AccumulationRegister>PaymentCalendar</AccumulationRegister>
 			<AccumulationRegister>PayrollPayments</AccumulationRegister>
 			<AccumulationRegister>ProductionOrders</AccumulationRegister>
-			<AccumulationRegister>FixedAssets</AccumulationRegister>
 			<AccumulationRegister>ProductRelease</AccumulationRegister>
+			<AccumulationRegister>PurchaseOrders</AccumulationRegister>
 			<AccumulationRegister>Purchases</AccumulationRegister>
 			<AccumulationRegister>RetailAmountAccounting</AccumulationRegister>
 			<AccumulationRegister>Sales</AccumulationRegister>
+			<AccumulationRegister>SerialNumbers</AccumulationRegister>
 			<AccumulationRegister>SalesByDiscountCards</AccumulationRegister>
 			<AccumulationRegister>SalesTargets</AccumulationRegister>
-			<AccumulationRegister>SerialNumbers</AccumulationRegister>
 			<AccumulationRegister>SettlementsWithOtherCounterparties</AccumulationRegister>
 			<AccumulationRegister>TaxesSettlements</AccumulationRegister>
-			<AccumulationRegister>PurchaseOrders</AccumulationRegister>
 			<AccumulationRegister>Timesheet</AccumulationRegister>
-			<AccumulationRegister>AdvanceHolderPayments</AccumulationRegister>
 			<AccumulationRegister>WorkOrders</AccumulationRegister>
 			<AccumulationRegister>VATRegisterPurchase</AccumulationRegister>
 			<AccumulationRegister>VATRegisterSales</AccumulationRegister>

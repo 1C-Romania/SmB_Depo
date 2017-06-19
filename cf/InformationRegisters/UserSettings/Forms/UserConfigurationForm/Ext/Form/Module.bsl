@@ -38,7 +38,7 @@ Procedure FillTree()
 	|	Settings.IsFolder AS IsFolder,
 	|	NOT Settings.IsFolder AS PictureNumber,
 	|	SettingsValue.Value,
-	|	Constants.FunctionalOptionAccountingByMultipleCompanies,
+	|	Constants.UseSeveralCompanies,
 	|	Constants.FunctionalOptionAccountingByMultipleWarehouses,
 	|	Constants.FunctionalOptionAccountingByMultipleDepartments
 	|FROM
@@ -50,7 +50,7 @@ Procedure FillTree()
 	|WHERE
 	|	NOT Settings.DeletionMark
 	|	AND NOT(Settings.Ref = VALUE(ChartOfCharacteristicTypes.UserSettings.MainCompany)
-	|				AND NOT Constants.FunctionalOptionAccountingByMultipleCompanies)
+	|				AND NOT Constants.UseSeveralCompanies)
 	|	AND NOT(Settings.Ref = VALUE(ChartOfCharacteristicTypes.UserSettings.MainWarehouse)
 	|				AND NOT Constants.FunctionalOptionAccountingByMultipleWarehouses)
 	|	AND NOT(Settings.Ref = VALUE(ChartOfCharacteristicTypes.UserSettings.MainDepartment)

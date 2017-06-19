@@ -49,15 +49,8 @@ Procedure OnCreateAtServer(Cancel, StandardProcessing)
 			NStr("en='Personal certificates on computer and server';ru='Личные сертификаты на компьютере и сервере'");
 	EndIf;
 	
-	If CommonUse.SubsystemExists("StandardSubsystems.Companies") Then
-		CompaniesServiceModule = CommonUse.CommonModule("CompaniesService");
-		Items.CertificateCompany.Visible =
-			Not ValueIsFilled(CompaniesServiceModule.CompanyByDefault())
-			Or CompaniesServiceModule.SeveralCompaniesAreUsed();
-	EndIf;
-	If Not CommonUse.SubsystemExists("StandardSubsystems.Companies") Then
-		Items.CertificateCompany.Visible = False;
-	EndIf;
+	AreCompanies = Not Metadata.DefinedTypes.Company.Type.ContainsType(Type("String"));
+	Items.CertificateCompany.Visible = AreCompanies;
 	
 	Items.CertificateUser.ToolTip =
 		Metadata.Catalogs.DigitalSignaturesAndEncryptionKeyCertificates.Attributes.User.ToolTip;
@@ -604,7 +597,7 @@ Procedure GoToCurrentCertificateChoiceAfterFillingCertificateProperties(Context)
 		EndIf;
 	EndIf;
 	
-	If CommonUseClient.SubsystemExists("StandardSubsystems.Companies") Then
+	If AreCompanies Then
 		If CertificateAttributesParameters.Property("Company") Then
 			If Not CertificateAttributesParameters.Company.Visible Then
 				Items.CertificateCompany.Visible = False;

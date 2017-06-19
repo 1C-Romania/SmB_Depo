@@ -155,11 +155,4 @@ Procedure WhenDefiningObjectsWithEditableAttributes(Objects) Export
 	Objects.Insert(Metadata.Catalogs.Companies.FullName(), "NotEditableInGroupProcessingAttributes");
 EndProcedure
 
-// Returns the flag showing the usage of several companies.
-Function SeveralCompaniesAreUsed() Export
-	
-	Return GetFunctionalOption("MultipleCompaniesAccounting");
-	
-EndFunction
-
 #EndRegion

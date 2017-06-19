@@ -71,9 +71,9 @@ Procedure SetEnabled(AttributePathToData = "")
 	If RunMode.ThisIsSystemAdministrator 
 		OR CommonUseReUse.CanUseSeparatedData() Then
 		
-		If AttributePathToData = "ConstantsSet.FunctionalOptionAccountingByMultipleCompanies" OR AttributePathToData = "" Then
-			ConstantsSet.FunctionalOptionAccountingByMultipleCompanies = GetFunctionalOption("MultipleCompaniesAccounting");
-			CommonUseClientServer.SetFormItemProperty(Items, "CatalogCompanies", "Enabled", ConstantsSet.FunctionalOptionAccountingByMultipleCompanies);
+		If AttributePathToData = "ConstantsSet.UseSeveralCompanies" OR AttributePathToData = "" Then
+			ConstantsSet.UseSeveralCompanies = GetFunctionalOption("UseSeveralCompanies");
+			CommonUseClientServer.SetFormItemProperty(Items, "CatalogCompanies", "Enabled", ConstantsSet.UseSeveralCompanies);
 		EndIf;
 		
 		If AttributePathToData = "ConstantsSet.FunctionalOptionAccountingByMultipleDepartments" OR AttributePathToData = "" Then
@@ -362,10 +362,10 @@ EndFunction // CheckAbilityToChangeAttributeValue()
 &AtServer
 Procedure UpdateRecordSetOfConstants(NameRecords)
 	
-	If NameRecords = "FunctionalOptionAccountingByMultipleCompanies" OR NameRecords = "" Then
+	If NameRecords = "UseSeveralCompanies" OR NameRecords = "" Then
 		
-		ConstantsSet[NameRecords] = GetFunctionalOption("MultipleCompaniesAccounting");
-		SetEnabled("ConstantsSet.FunctionalOptionAccountingByMultipleCompanies");
+		ConstantsSet[NameRecords] = GetFunctionalOption("UseSeveralCompanies");
+		SetEnabled("ConstantsSet.UseSeveralCompanies");
 		
 	EndIf;
 	
@@ -473,7 +473,7 @@ EndProcedure // OnOpen()
 Procedure NotificationProcessing(EventName, Parameter, Source)
 	
 	If EventName = "Record_ConstantsSet"
-		AND Source = "FunctionalOptionAccountingByMultipleCompanies" Then
+		AND Source = "UseSeveralCompanies" Then
 		
 		UpdateRecordSetOfConstants(Source);
 		

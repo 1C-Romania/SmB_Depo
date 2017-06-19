@@ -29,7 +29,7 @@ Procedure OnCreateAtServer(Cancel, StandardProcessing)
 	
 	FillProductsAndServicesTypeLabel(Object.ProductsAndServicesType);
 	
-	CommonUseClientServer.SetFormItemProperty(Items, "Company", "Visible", GetFunctionalOption("MultipleCompaniesAccounting"));
+	CommonUseClientServer.SetFormItemProperty(Items, "Company", "Visible", GetFunctionalOption("UseSeveralCompanies"));
 	CommonUseClientServer.SetFormItemProperty(Items, "StructuralUnit", "Visible", GetFunctionalOption("AccountingBySeveralWarehouses"));
 	
 EndProcedure // OnCreateAtServer()

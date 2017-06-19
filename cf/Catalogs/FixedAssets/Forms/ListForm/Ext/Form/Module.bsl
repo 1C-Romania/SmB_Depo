@@ -74,7 +74,7 @@ Function GetPeriodOfLastDepreciation(Val Company)
 	|ORDER BY
 	|	FixedAssets.Period DESC");
 	
-	Company = ?(Constants.FunctionalOptionAccountingByMultipleCompanies.Get(), Company, Catalogs.Companies.MainCompany);
+	Company = ?(GetFunctionalOption("UseSeveralCompanies"), Company, Catalogs.Companies.MainCompany);
 	
 	Query.SetParameter("Company", SmallBusinessServer.GetCompany(Company));
 	Selection = Query.Execute().Select();

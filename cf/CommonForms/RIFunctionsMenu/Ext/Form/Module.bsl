@@ -7,7 +7,7 @@
 &AtServer
 Procedure OnCreateAtServer(Cancel, StandardProcessing)
 	
-	FOMultipleCompaniesAccounting = GetFunctionalOption("MultipleCompaniesAccounting");
+	FOMultipleCompaniesAccounting = GetFunctionalOption("UseSeveralCompanies");
 	Items.LabelCompany.Title = ?(FOMultipleCompaniesAccounting, "Companies", "Company");
 	
 	FOAccountingBySeveralWarehouses = GetFunctionalOption("AccountingBySeveralWarehouses");
@@ -28,25 +28,25 @@ Procedure NotificationProcessing(EventName, Parameter, Source)
 	
 	If EventName = "Record_ConstantsSet" Then 
 		
-		If Source = "FunctionalOptionAccountingByMultipleCompanies" Then
+		If Source = "UseSeveralCompanies" Then
 			
-			FOMultipleCompaniesAccounting = Parameter.Value;
+			FOMultipleCompaniesAccounting = GetFOServer("UseSeveralCompanies");
 			Items.LabelCompany.Title = ?(FOMultipleCompaniesAccounting, "Companies", "Company");
+			
+		ElsIf Source = "FunctionalOptionAccountingByMultipleWarehouses" Then
+			
+			FOAccountingBySeveralWarehouses = GetFOServer("AccountingBySeveralWarehouses");
+			Items.LabelWarehouses.Title = ?(FOAccountingBySeveralWarehouses, "Warehouses", "Warehouse");
 			
 		ElsIf Source = "FunctionalOptionAccountingByMultipleDepartments" Then
 			
-			FOAccountingBySeveralDepartments = Parameter.Value;
+			FOAccountingBySeveralDepartments = GetFOServer("AccountingBySeveralDepartments");
 			Items.LabelDepartments.Title = ?(FOAccountingBySeveralDepartments, "Departments", "Department");
 			
 		ElsIf Source = "FunctionalOptionAccountingByMultipleBusinessActivities" Then
 			
-			FOAccountingBySeveralBusinessActivities = Parameter.Value;
+			FOAccountingBySeveralBusinessActivities = GetFOServer("AccountingBySeveralBusinessActivities");
 			Items.LabelBusinessActivities.Title = ?(FOAccountingBySeveralBusinessActivities, "Business activities", "Business activity");
-			
-		ElsIf Source = "FunctionalOptionAccountingByMultipleWarehouses" Then
-			
-			FOAccountingBySeveralWarehouses = Parameter.Value;
-			Items.LabelWarehouses.Title = ?(FOAccountingBySeveralWarehouses, "Warehouses", "Warehouse");
 			
 		EndIf;
 		
@@ -131,3 +131,14 @@ Procedure LableBusinessActivitiesClick(Item)
 	EndIf;
 	
 EndProcedure // LableBusinessActivitiesClick()
+
+#Region ServiceProceduresAndFunctions
+	
+&AtServerNoContext
+Function GetFOServer(NameFunctionalOption)
+	
+	Return GetFunctionalOption(NameFunctionalOption);
+	
+EndFunction
+
+#EndRegion

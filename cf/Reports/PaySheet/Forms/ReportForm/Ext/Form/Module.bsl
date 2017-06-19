@@ -119,7 +119,7 @@ EndFunction // ExecuteQuery()
 //
 Procedure MakeExecute()
 
-	If Constants.FunctionalOptionAccountingByMultipleCompanies.Get() AND Not ValueIsFilled(Company) Then
+	If Constants.UseSeveralCompanies.Get() AND Not ValueIsFilled(Company) Then
 		MessageText = NStr("en='Company is not selected!';ru='Не выбрана организация!'");
 		MessageField = "Company";
 		SmallBusinessServer.ShowMessageAboutError(Report, MessageText,,,MessageField);
