@@ -1145,9 +1145,10 @@
 			<SessionParameter>UsedExchangeWithSiteNodes</SessionParameter>
 			<SessionParameter>VersionsDifferenceErrorOnReceivingData</SessionParameter>
 			<SessionParameter>IsBookkeepingAvailable</SessionParameter>
-			<Role>Right_Administration_ConfigurationAdministration</Role>
-			<Role>AddChangeBankSubsystem</Role>
 			<Role>AddChangeAdditionalReportsAndDataProcessors</Role>
+			<Role>AddChangeBankAccounts</Role>
+			<Role>AddChangeBankSubsystem</Role>
+			<Role>AddChangeBasicReferenceData</Role>
 			<Role>AddChangeCashFlowItems</Role>
 			<Role>AddChangeCommonBasicReferenceData</Role>
 			<Role>AddChangeCounterparties</Role>
@@ -1185,6 +1186,7 @@
 			<Role>BasicRights</Role>
 			<Role>BasicRightsIUS</Role>
 			<Role>BasicRightsOfED</Role>
+			<Role>BasicRightsSB</Role>
 			<Role>ChangeAccessGroupsMembers</Role>
 			<Role>ChangeCurrentExternalUser</Role>
 			<Role>ChangePrintFormsTemplates</Role>
@@ -1238,7 +1240,7 @@
 			<Role>RunThinClient</Role>
 			<Role>RunWebClient</Role>
 			<Role>SaveUserData</Role>
-			<Role>SBBasicRights</Role>
+			<Role>SubsystemCRM</Role>
 			<Role>SystemAdministrator</Role>
 			<Role>UpdateDataBaseConfiguration</Role>
 			<Role>Use1CTaxcomService</Role>
@@ -1260,17 +1262,16 @@
 			<Role>UseUOSMonitor</Role>
 			<Role>ViewApplicationChangesDescription</Role>
 			<Role>ViewEventLogMonitor</Role>
+			<Role>Right_Administration_ConfigurationAdministration</Role>
+			<Role>Right_General_ExternalDataProcessors</Role>
+			<Role>Right_General_ExternalReports</Role>
 			<Role>Right_General_ModifyDocumentsNumber</Role>
 			<Role>Right_General_ToModifyDocumentsWithChildren</Role>
+			<Role>Right_General_YellowAlertDontBlockPosting</Role>
 			<Role>Role_Assembling</Role>
 			<Role>Role_SaaS_ConfigurationManager</Role>
 			<Role>Role_SaaS_DataManager</Role>
 			<Role>Role_SystemSettings</Role>
-			<Role>AddChangeBankAccounts</Role>
-			<Role>AddChangeBasicReferenceData</Role>
-			<Role>Right_General_ExternalDataProcessors</Role>
-			<Role>Right_General_ExternalReports</Role>
-			<Role>Right_General_YellowAlertDontBlockPosting</Role>
 			<CommonTemplate>BarcodePrintingComponent</CommonTemplate>
 			<CommonTemplate>Dependencies</CommonTemplate>
 			<CommonTemplate>DescriptionFullDeclinationComponent</CommonTemplate>
@@ -2802,7 +2803,6 @@
 			<Catalog>AccessGroupsProfiles</Catalog>
 			<Catalog>AccrualAndDeductionKinds</Catalog>
 			<Catalog>ActivityTypes</Catalog>
-			<Catalog>AdditionalAttributeValues</Catalog>
 			<Catalog>AdditionalAttributesAndInformationSets</Catalog>
 			<Catalog>AdditionalReportsAndDataProcessors</Catalog>
 			<Catalog>AlcoholicProductsKinds</Catalog>
@@ -2811,7 +2811,6 @@
 			<Catalog>BankAccounts</Catalog>
 			<Catalog>BankCharges</Catalog>
 			<Catalog>Banks</Catalog>
-			<Catalog>BookkeepingOperationsTemplates</Catalog>
 			<Catalog>BulkMailAttachedFiles</Catalog>
 			<Catalog>BusinessActivities</Catalog>
 			<Catalog>BusinessCalendars</Catalog>
@@ -2865,7 +2864,6 @@
 			<Catalog>FileFoldersAttachedFiles</Catalog>
 			<Catalog>Files</Catalog>
 			<Catalog>FileStorageVolumes</Catalog>
-			<Catalog>FinancialYears</Catalog>
 			<Catalog>FileVersions</Catalog>
 			<Catalog>FixedAssets</Catalog>
 			<Catalog>FullPathsToForms</Catalog>
@@ -2944,8 +2942,11 @@
 			<Catalog>WorldCountries</Catalog>
 			<Catalog>SavedSettings</Catalog>
 			<Catalog>AdditionalAttributes</Catalog>
+			<Catalog>AdditionalAttributeValues</Catalog>
+			<Catalog>BookkeepingOperationsTemplates</Catalog>
 			<Catalog>FinancialCounterpartyGroups</Catalog>
 			<Catalog>FinancialProductsAndServicesGroups</Catalog>
+			<Catalog>FinancialYears</Catalog>
 			<Catalog>Items</Catalog>
 			<Document>AcceptanceCertificate</Document>
 			<Document>AdditionalCosts</Document>

@@ -119,7 +119,7 @@ Procedure WhenFillingOutProfileGroupsAccessProvided(ProfileDescriptions, UpdateP
 	ProfileDescription.Roles.Add("Use1CTaxcomService");
 	
 	// SB
-	ProfileDescription.Roles.Add("SBBasicRights");
+	ProfileDescription.Roles.Add("BasicRightsSB");
 	ProfileDescription.Roles.Add("AddChangeEventsAndTasks");
 	ProfileDescription.Roles.Add("AddChangeCounterparties");
 	ProfileDescription.Roles.Add("AddChangeInventoryMovements");
@@ -259,7 +259,7 @@ Procedure WhenFillingOutProfileGroupsAccessProvided(ProfileDescriptions, UpdateP
 	ProfileDescription.Roles.Add("Use1CTaxcomService");
 	
 	// SB
-	ProfileDescription.Roles.Add("SBBasicRights");
+	ProfileDescription.Roles.Add("BasicRightsSB");
 	ProfileDescription.Roles.Add("AddChangeEventsAndTasks");
 	ProfileDescription.Roles.Add("AddChangeProductsAndServices");
 	ProfileDescription.Roles.Add("AddChangeCounterparties");
@@ -365,7 +365,7 @@ Procedure WhenFillingOutProfileGroupsAccessProvided(ProfileDescriptions, UpdateP
 	ProfileDescription.Roles.Add("Use1CTaxcomService");
 	
 	// SB
-	ProfileDescription.Roles.Add("SBBasicRights");
+	ProfileDescription.Roles.Add("BasicRightsSB");
 	ProfileDescription.Roles.Add("AddChangeEventsAndTasks");
 	ProfileDescription.Roles.Add("AddChangeProductsAndServices");
 	ProfileDescription.Roles.Add("ReadDocumentsByBankAndPettyCash");
@@ -445,7 +445,7 @@ Procedure WhenFillingOutProfileGroupsAccessProvided(ProfileDescriptions, UpdateP
 	ProfileDescription.Roles.Add("UseUOSMonitor");
 	
 	// SB
-	ProfileDescription.Roles.Add("SBBasicRights");
+	ProfileDescription.Roles.Add("BasicRightsSB");
 	ProfileDescription.Roles.Add("AddChangeEventsAndTasks");
 	ProfileDescription.Roles.Add("AddChangeCounterparties");
 	ProfileDescription.Roles.Add("ReadCashBalances");
@@ -529,7 +529,7 @@ Procedure WhenFillingOutProfileGroupsAccessProvided(ProfileDescriptions, UpdateP
 	ProfileDescription.Roles.Add("UseUOSMonitor");
 	
 	// SB
-	ProfileDescription.Roles.Add("SBBasicRights");
+	ProfileDescription.Roles.Add("BasicRightsSB");
 	ProfileDescription.Roles.Add("UsePeripherals");
 	ProfileDescription.Roles.Add("AddChangeEventsAndTasks");
 	ProfileDescription.Roles.Add("AddChangeHumanResourcesSubsystem");

@@ -160,6 +160,13 @@ T1 ON T.Ref = T1.Ref",
 		</right>
 	</object>
 	<object>
+		<name>Document.Event.Command.PhoneCalls</name>
+		<right>
+			<name>View</name>
+			<value>true</value>
+		</right>
+	</object>
+	<object>
 		<name>Document.WorkOrder.Command.EnterTimeTracking</name>
 		<right>
 			<name>View</name>
@@ -296,6 +303,13 @@ AS T1 ON T.Ref = T1.Ref",
 		</right>
 		<right>
 			<name>InputByString</name>
+			<value>true</value>
+		</right>
+	</object>
+	<object>
+		<name>Document.Event.Command.OtherEvents</name>
+		<right>
+			<name>View</name>
 			<value>true</value>
 		</right>
 	</object>
@@ -440,6 +454,20 @@ AS T1 ON T.Ref = T1.Ref",
 		</right>
 		<right>
 			<name>InputByString</name>
+			<value>true</value>
+		</right>
+	</object>
+	<object>
+		<name>Document.Event.Command.Email</name>
+		<right>
+			<name>View</name>
+			<value>true</value>
+		</right>
+	</object>
+	<object>
+		<name>Document.Event.Command.PersonalMeetings</name>
+		<right>
+			<name>View</name>
 			<value>true</value>
 		</right>
 	</object>
