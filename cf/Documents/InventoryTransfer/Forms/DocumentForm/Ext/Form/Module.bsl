@@ -1012,8 +1012,6 @@ Procedure OnCreateAtServer(Cancel, StandardProcessing)
 	
 	SetVisibleAndEnabled();
 	
-	SmallBusinessClientServer.SetPictureForComment(Items.AdvancedPage, Object.Comment);
-	
 	// PickProductsAndServicesInDocuments
 	PickProductsAndServicesInDocuments.AssignPickForm(SelectionOpenParameters, Object.Ref.Metadata().Name, "Inventory");
 	// End PickProductsAndServicesInDocuments
@@ -1440,20 +1438,11 @@ Procedure SetChoiceParameters()
 	
 EndProcedure // SetChoiceParameters()
 
-// Procedure - OnChange event handler of the Comment input field.
-//
 &AtClient
-Procedure CommentOnChange(Item)
+Procedure CommentStartChoice(Item, ChoiceData, StandardProcessing)
 	
-	AttachIdleHandler("Attachable_SetPictureForComment", 0.5, True);
-	
-EndProcedure // CommentOnChange()
-
-&AtClient
-Procedure Attachable_SetPictureForComment()
-	
-	SmallBusinessClientServer.SetPictureForComment(Items.AdvancedPage, Object.Comment);
-	
+	CommonUseClient.ShowCommentEditingForm(Item.EditText, ThisObject, "Object.Comment");
+		
 EndProcedure
 
 ////////////////////////////////////////////////////////////////////////////////PROCEDURE - TABULAR SECTION ATTRIBUTE EVENT HANDLERS

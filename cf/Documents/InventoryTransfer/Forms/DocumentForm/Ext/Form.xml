@@ -157,7 +157,8 @@
 								<InputField name="StructuralUnit" id="3">
 									<DataPath>Object.StructuralUnit</DataPath>
 									<EditMode>EnterOnInput</EditMode>
-									<Width>10</Width>
+									<AutoMaxWidth>false</AutoMaxWidth>
+									<MaxWidth>25</MaxWidth>
 									<Wrap>false</Wrap>
 									<ContextMenu name="StructuralUnitContextMenu" id="4"/>
 									<ExtendedTooltip name="StructuralUnitExtendedTooltip" id="99"/>
@@ -170,7 +171,8 @@
 									<DataPath>Object.Cell</DataPath>
 									<TitleLocation>None</TitleLocation>
 									<EditMode>EnterOnInput</EditMode>
-									<Width>1</Width>
+									<AutoMaxWidth>false</AutoMaxWidth>
+									<MaxWidth>13</MaxWidth>
 									<Wrap>false</Wrap>
 									<OpenButton>false</OpenButton>
 									<InputHint>
@@ -217,7 +219,8 @@
 								<InputField name="StructuralUnitPayee" id="7">
 									<DataPath>Object.StructuralUnitPayee</DataPath>
 									<EditMode>EnterOnInput</EditMode>
-									<Width>10</Width>
+									<AutoMaxWidth>false</AutoMaxWidth>
+									<MaxWidth>25</MaxWidth>
 									<Wrap>false</Wrap>
 									<ContextMenu name="StructuralUnitPayeeContextMenu" id="8"/>
 									<ExtendedTooltip name="StructuralUnitPayeeExtendedTooltip" id="101"/>
@@ -230,7 +233,8 @@
 									<DataPath>Object.CellPayee</DataPath>
 									<TitleLocation>None</TitleLocation>
 									<EditMode>EnterOnInput</EditMode>
-									<Width>1</Width>
+									<AutoMaxWidth>false</AutoMaxWidth>
+									<MaxWidth>13</MaxWidth>
 									<Wrap>false</Wrap>
 									<OpenButton>false</OpenButton>
 									<InputHint>
@@ -343,7 +347,8 @@
 								<InputField name="Number" id="46">
 									<DataPath>Object.Number</DataPath>
 									<SkipOnInput>true</SkipOnInput>
-									<Width>10</Width>
+									<AutoMaxWidth>false</AutoMaxWidth>
+									<MaxWidth>10</MaxWidth>
 									<HorizontalStretch>false</HorizontalStretch>
 									<Wrap>false</Wrap>
 									<InputHint>
@@ -362,17 +367,8 @@
 								<InputField name="Date" id="48">
 									<DataPath>Object.Date</DataPath>
 									<SkipOnInput>true</SkipOnInput>
-									<Title>
-										<v8:item>
-											<v8:lang>en</v8:lang>
-											<v8:content>dated</v8:content>
-										</v8:item>
-										<v8:item>
-											<v8:lang>ru</v8:lang>
-											<v8:content>от</v8:content>
-										</v8:item>
-									</Title>
-									<Width>15</Width>
+									<AutoMaxWidth>false</AutoMaxWidth>
+									<MaxWidth>14</MaxWidth>
 									<HorizontalStretch>false</HorizontalStretch>
 									<Wrap>false</Wrap>
 									<ContextMenu name="DateContextMenu" id="49"/>
@@ -775,27 +771,6 @@
 					</ToolTip>
 					<ExtendedTooltip name="AdvancedPageExtendedTooltip" id="134"/>
 					<ChildItems>
-						<InputField name="Comment" id="18">
-							<DataPath>Object.Comment</DataPath>
-							<TitleLocation>None</TitleLocation>
-							<EditMode>EnterOnInput</EditMode>
-							<MultiLine>true</MultiLine>
-							<InputHint>
-								<v8:item>
-									<v8:lang>en</v8:lang>
-									<v8:content>Comment</v8:content>
-								</v8:item>
-								<v8:item>
-									<v8:lang>ru</v8:lang>
-									<v8:content>Примечание</v8:content>
-								</v8:item>
-							</InputHint>
-							<ContextMenu name="CommentContextMenu" id="19"/>
-							<ExtendedTooltip name="CommentExtendedTooltip" id="125"/>
-							<Events>
-								<Event name="OnChange">CommentOnChange</Event>
-							</Events>
-						</InputField>
 						<LabelField name="DocumentAuthor" id="67">
 							<DataPath>Object.Author</DataPath>
 							<ToolTip>
@@ -810,10 +785,6 @@
 							</ToolTip>
 							<Width>35</Width>
 							<HorizontalStretch>false</HorizontalStretch>
-							<Border width="1">
-								<v8ui:style xsi:type="v8ui:ControlBorderType">Single</v8ui:style>
-							</Border>
-							<TextColor>#993300</TextColor>
 							<ContextMenu name="AuthorDocumentContextMenu" id="68"/>
 							<ExtendedTooltip name="DocumentAuthorExtendedTooltip" id="130"/>
 						</LabelField>
@@ -849,6 +820,60 @@
 				</Page>
 			</ChildItems>
 		</Pages>
+		<UsualGroup name="Footer" id="175">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Footer</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Подвал</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Footer</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Подвал</v8:content>
+				</v8:item>
+			</ToolTip>
+			<VerticalStretch>false</VerticalStretch>
+			<Group>Vertical</Group>
+			<Representation>None</Representation>
+			<ShowTitle>false</ShowTitle>
+			<ExtendedTooltip name="FooterExtendedTooltip" id="176"/>
+			<ChildItems>
+				<InputField name="Comment" id="177">
+					<DataPath>Object.Comment</DataPath>
+					<TitleLocation>None</TitleLocation>
+					<EditMode>EnterOnInput</EditMode>
+					<AutoMaxWidth>false</AutoMaxWidth>
+					<MaxWidth>51</MaxWidth>
+					<Height>1</Height>
+					<MultiLine>true</MultiLine>
+					<ChoiceButton>true</ChoiceButton>
+					<InputHint>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Comment</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Комментарий</v8:content>
+						</v8:item>
+					</InputHint>
+					<ContextMenu name="CommentContextMenu" id="178"/>
+					<ExtendedTooltip name="CommentExtendedTooltip" id="179"/>
+					<Events>
+						<Event name="StartChoice">CommentStartChoice</Event>
+					</Events>
+				</InputField>
+			</ChildItems>
+		</UsualGroup>
 	</ChildItems>
 	<Attributes>
 		<Attribute name="Object" id="1">
