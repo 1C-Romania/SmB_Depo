@@ -650,14 +650,8 @@ Procedure Attachable_ContactInformationExecuteCommand(Command)
 	
 	ModuleContactInformationManagementClient =
 		CommonUseClient.CommonModule("ContactInformationManagementClient");
-	
-	Result = ModuleContactInformationManagementClient.LinkCommand(
-		ThisObject, Command.Name);
-	
-	RefreshContactInformation(Result);
-	
-	ModuleContactInformationManagementClient.OpenAddressEntryForm(ThisObject, Result);
-	
+	ModuleContactInformationManagementClient.AttachableCommand(ThisObject, Command.Name);	
+
 EndProcedure
 
 #EndRegion

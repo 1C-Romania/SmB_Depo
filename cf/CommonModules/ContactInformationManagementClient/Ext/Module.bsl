@@ -429,7 +429,7 @@ Procedure ContactInformationAddInputFieldCompletion(Val SelectedItem, Val Additi
 		Return;
 	EndIf;
 	
-	Result = New Structure("KindToAdd", SelectedItem.Value);
+	Result = New Structure("AddedKind", SelectedItem.Value);
 	
 	UpdateFormContactInformation(AdditionalParameters.Form, Result);
 EndProcedure
