@@ -1840,9 +1840,6 @@
 			<CommonModule>APARAtServer</CommonModule>
 			<CommonModule>BookkeepingAtClient</CommonModule>
 			<CommonModule>BookkeepingAtServer</CommonModule>
-			<CommonModule>DataExchangeEventsBP</CommonModule>
-			<CommonModule>DataExchangeEventsOP</CommonModule>
-			<CommonModule>DataExchangeEventsRT</CommonModule>
 			<CommonModule>BookkeepingCommon</CommonModule>
 			<CommonModule>BookkeepingEventSubscribtionsModule</CommonModule>
 			<CommonModule>Common</CommonModule>
@@ -1920,10 +1917,6 @@
 			<CommonAttribute>DataAreaAuxiliaryData</CommonAttribute>
 			<CommonAttribute>DataAreaBasicData</CommonAttribute>
 			<CommonAttribute>ManualChangeNumber</CommonAttribute>
-			<ExchangePlan>ExchangeRetailSmallBusiness</ExchangePlan>
-			<ExchangePlan>ExchangeSmallBusinessAccounting20</ExchangePlan>
-			<ExchangePlan>ExchangeSmallBusinessAccounting30</ExchangePlan>
-			<ExchangePlan>ExchangeSmallBusinessEntrepreneurReporting</ExchangePlan>
 			<ExchangePlan>ExchangeSmallBusinessSite</ExchangePlan>
 			<ExchangePlan>ExchangeWithPeripheralsOffline</ExchangePlan>
 			<ExchangePlan>MessageExchange</ExchangePlan>
@@ -2043,10 +2036,6 @@
 			<EventSubscription>ContactInformationTypesResetOrderingAttributeValue</EventSubscription>
 			<EventSubscription>CopyFileVersionAttributesToFile</EventSubscription>
 			<EventSubscription>CreateExchangeNodeWithOfflinePeripherals</EventSubscription>
-			<EventSubscription>DataExchangeSmallBusinessAccounting20BeforeDeletion</EventSubscription>
-			<EventSubscription>DataExchangeSmallBusinessAccounting20BeforeWrite</EventSubscription>
-			<EventSubscription>DataExchangeSmallBusinessAccounting20BeforeWriteDocument</EventSubscription>
-			<EventSubscription>DataExchangeSmallBusinessAccounting20BeforeWriteRegister</EventSubscription>
 			<EventSubscription>DisableAutomaticDataSynchronization</EventSubscription>
 			<EventSubscription>DisablePredefinedItemsDeletion</EventSubscription>
 			<EventSubscription>DisablePredefinedItemsDeletionMarkup</EventSubscription>
@@ -2055,16 +2044,6 @@
 			<EventSubscription>ExchangeMobileApplicationOnDocumentWrite</EventSubscription>
 			<EventSubscription>ExchangeMobileApplicationOnRegisterWrite</EventSubscription>
 			<EventSubscription>ExchangeMobileApplicationOnWrite</EventSubscription>
-			<EventSubscription>ExchangeRetailSmallBusinessRegisterChange</EventSubscription>
-			<EventSubscription>ExchangeRetailSmallBusinessRegisterDeletion</EventSubscription>
-			<EventSubscription>ExchangeRetailSmallBusinessRegisterRecordSetChange</EventSubscription>
-			<EventSubscription>ExchangeSmallBusinessAccounting30RegisterChange</EventSubscription>
-			<EventSubscription>ExchangeSmallBusinessAccounting30RegisterDeletion</EventSubscription>
-			<EventSubscription>ExchangeSmallBusinessAccounting30RegisterDocumentChange</EventSubscription>
-			<EventSubscription>ExchangeSmallBusinessAccounting30RegisterRecordSetChange</EventSubscription>
-			<EventSubscription>ExchangeSmallBusinessEntrepreneurReportingRegisterChange</EventSubscription>
-			<EventSubscription>ExchangeSmallBusinessEntrepreneurReportingRegisterDeletion</EventSubscription>
-			<EventSubscription>ExchangeSmallBusinessEntrepreneurReportingRegisterDocumentChange</EventSubscription>
 			<EventSubscription>ExchangeWithSiteBeforeRegisterRecord</EventSubscription>
 			<EventSubscription>ExchangeWithSiteOnObjectWrite</EventSubscription>
 			<EventSubscription>ExecuteActionsAfterGettingNodeDataInDistributedInfobase</EventSubscription>
@@ -2100,7 +2079,6 @@
 			<EventSubscription>RegisterNodesCommonDataChanges</EventSubscription>
 			<EventSubscription>ReportsVariantsBeforeMetadataObjectIdentificatorDelete</EventSubscription>
 			<EventSubscription>ReportsVariantsWhenUserDelete</EventSubscription>
-			<EventSubscription>RetailSmallBusinessExchangeDocumentChangeRecord</EventSubscription>
 			<EventSubscription>SetDeletionMarkOnAttachedDocumentFiles</EventSubscription>
 			<EventSubscription>SetDeletionMarkOnAttachedFiles</EventSubscription>
 			<EventSubscription>SetDeletionMarkOnCatalogFiles</EventSubscription>
