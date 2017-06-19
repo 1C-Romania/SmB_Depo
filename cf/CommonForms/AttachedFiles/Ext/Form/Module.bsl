@@ -376,13 +376,13 @@ Procedure SetDeletionMark(Command)
 	CurrentData = Items.List.CurrentData;
 	
 	If CurrentData.DeletionMark Then
-		QuestionText = NStr("en='Unmark the %1 file
-		|from deletion?';ru='Снять пометку на удаление с файла
+		QuestionText = NStr("en='Unmark to delete file
+		|""%1""?';ru='Снять пометку на удаление с файла
 		|""%1""?'");
 	Else
-		QuestionText = NStr("en='Mark the
-		|%1 file for deletion?';ru='Пометить
-		|на удаление файл ""%1""?'");
+		QuestionText = NStr("en='Mark to delete file
+		|""%1""?';ru='Пометить на удаление файл 
+		|""%1""?'");
 	EndIf;
 	
 	QuestionText = StringFunctionsClientServer.SubstituteParametersInString(QuestionText, CurrentData.Ref);
