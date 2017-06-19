@@ -1251,10 +1251,6 @@
 			<field>FunctionalOptionReceiveGoodsOnCommission</field>
 		</field>
 		<field xsi:type="DataSetFieldField">
-			<dataPath>FunctionalOptionAccountingByMultipleCompanies</dataPath>
-			<field>FunctionalOptionAccountingByMultipleCompanies</field>
-		</field>
-		<field xsi:type="DataSetFieldField">
 			<dataPath>InfobaseUsageMode</dataPath>
 			<field>InfobaseUsageMode</field>
 		</field>
@@ -1989,6 +1985,10 @@
 		<field xsi:type="DataSetFieldField">
 			<dataPath>Constants.FunctionalOptionUseTechOperations</dataPath>
 			<field>FunctionalOptionUseTechOperations</field>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>UseSeveralCompanies1</dataPath>
+			<field>UseSeveralCompanies1</field>
 		</field>
 		<item xsi:type="DataSetQuery">
 			<name>GeneralPolicy</name>
@@ -2766,10 +2766,6 @@ FROM
 				<field>FunctionalOptionReceiveGoodsOnCommission</field>
 			</field>
 			<field xsi:type="DataSetFieldField">
-				<dataPath>FunctionalOptionAccountingByMultipleCompanies</dataPath>
-				<field>FunctionalOptionAccountingByMultipleCompanies</field>
-			</field>
-			<field xsi:type="DataSetFieldField">
 				<dataPath>InfobaseUsageMode</dataPath>
 				<field>InfobaseUsageMode</field>
 			</field>
@@ -3505,6 +3501,10 @@ FROM
 				<dataPath>FunctionalOptionUseTechOperations</dataPath>
 				<field>FunctionalOptionUseTechOperations</field>
 			</field>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>UseSeveralCompanies1</dataPath>
+				<field>UseSeveralCompanies1</field>
+			</field>
 			<dataSource>DataSource1</dataSource>
 			<query>SELECT
 	Constants.BookkeepingFunctionalityConstant,
@@ -3590,7 +3590,7 @@ FROM
 	Constants.FunctionalCurrencyTransactionsAccounting,
 	Constants.FunctionalOptionAccountingByCells,
 	Constants.FunctionalOptionAccountingByMultipleBusinessActivities,
-	Constants.FunctionalOptionAccountingByMultipleCompanies,
+	Constants.UseSeveralCompanies,
 	Constants.FunctionalOptionAccountingByMultipleDepartments,
 	Constants.FunctionalOptionAccountingByMultipleWarehouses,
 	Constants.FunctionalOptionAccountingByProjects,
