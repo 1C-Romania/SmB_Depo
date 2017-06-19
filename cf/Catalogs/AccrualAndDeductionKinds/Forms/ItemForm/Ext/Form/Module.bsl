@@ -151,11 +151,11 @@ EndProcedure // LegalEntityIndividualOnChange()
 
 // StandardSubsystems.ObjectsAttributesEditProhibition
 &AtClient
-Procedure Attachable_AuthorizeObjectDetailsEditing(Command)
+Procedure Attachable_AllowObjectAttributesEditing(Command)
 	
-	ObjectsAttributesEditProhibitionClient.AuthorizeObjectDetailsEditing(ThisForm);
+	ObjectsAttributesEditProhibitionClient.AllowObjectAttributesEditing(ThisForm);
 	
-EndProcedure // Connected_AllowObjectAttributeEdit()
+EndProcedure // Attachable_AllowObjectAttributesEditing()
 // End
 
 #EndRegion

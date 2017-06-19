@@ -57,8 +57,8 @@ Procedure LockAttributes(Form, GroupForProhibitionButton = Undefined, Prohibitio
 		EndDo;
 	EndDo;
 	
-	If Form.Items.Find("AuthorizeObjectDetailsEditing") <> Undefined Then
-		Form.Items.AuthorizeObjectDetailsEditing.Enabled = True;
+	If Form.Items.Find("AllowObjectAttributesEditing") <> Undefined Then
+		Form.Items.AllowObjectAttributesEditing.Enabled = True;
 	EndIf;
 	
 EndProcedure
@@ -154,17 +154,17 @@ Procedure PrepareForm(Form, Refs, GroupForProhibitionButton, ProhibitionButtonTi
 	   AND Not AllAttributesWithoutEditingRight Then
 		
 		// Addition of a command
-		Command = Form.Commands.Add("AllowObjectAttributeEdit");
-		Command.Title = ?(IsBlankString(ProhibitionButtonTitle), NStr("en='Allow editing attributes';ru='Разрешить редактирование реквизитов'"), ProhibitionButtonTitle);
-		Command.Action = "Attachable_AllowObjectAttributeEdit";
-		Command.Picture = PictureLib.AuthorizeObjectDetailsEditing;
+		Command = Form.Commands.Add("AllowObjectAttributesEditing");
+		Command.Title = ?(IsBlankString(ProhibitionButtonTitle), NStr("en='Allow attributes editing';ru='Разрешить редактирование реквизитов'"), ProhibitionButtonTitle);
+		Command.Action = "Attachable_AllowObjectAttributesEditing";
+		Command.Picture = PictureLib.AllowObjectAttributesEditing;
 		Command.ModifiesStoredData = True;
 		
 		// Addition of a button
 		ParentGroup = ?(GroupForProhibitionButton <> Undefined, GroupForProhibitionButton, Form.CommandBar);
-		Button = Form.Items.Add("AllowObjectAttributeEdit", Type("FormButton"), ParentGroup);
+		Button = Form.Items.Add("AllowObjectAttributesEditing", Type("FormButton"), ParentGroup);
 		Button.OnlyInAllActions = True;
-		Button.CommandName = "AllowObjectAttributeEdit";
+		Button.CommandName = "AllowObjectAttributesEditing";
 	EndIf;
 	
 EndProcedure

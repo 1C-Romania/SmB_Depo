@@ -1040,9 +1040,9 @@ EndProcedure
 
 // StandardSubsystems.ObjectsAttributesEditProhibition
 &AtClient
-Procedure Attachable_AuthorizeObjectDetailsEditing(Command)
+Procedure Attachable_AllowObjectAttributesEditing(Command)
 	
-	ObjectsAttributesEditProhibitionClient.AuthorizeObjectDetailsEditing(ThisObject);
+	ObjectsAttributesEditProhibitionClient.AllowObjectAttributesEditing(ThisObject);
 	
 EndProcedure
 // End StandardSubsystems.ObjectsAttributesEditProhibition

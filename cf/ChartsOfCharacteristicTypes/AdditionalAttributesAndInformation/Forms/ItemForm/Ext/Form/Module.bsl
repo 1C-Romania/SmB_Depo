@@ -369,7 +369,7 @@ Procedure SpecificationsSetsChange(Command)
 EndProcedure
 
 &AtClient
-Procedure Attachable_AuthorizeObjectDetailsEditing(Command)
+Procedure Attachable_AllowObjectAttributesEditing(Command)
 	
 	BlockedAttributes = ObjectsAttributesEditProhibitionClient.Attributes(ThisObject);
 	

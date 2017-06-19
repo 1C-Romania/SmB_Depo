@@ -53,7 +53,7 @@ Procedure OnCreateAtServer(Cancel, StandardProcessing)
 		Items.CashCRType.ChoiceList.Add(Enums.CashCRTypes.CashRegistersOffline);
 	EndIf;
 	
-	Items.Owner.Visible = GetFunctionalOption("MultipleCompaniesAccounting");
+	Items.Owner.Visible = GetFunctionalOption("UseSeveralCompanies");
 	
 	// StandardSubsystems.AdditionalReportsAndDataProcessors
 	AdditionalReportsAndDataProcessors.OnCreateAtServer(ThisForm);
@@ -190,17 +190,17 @@ EndProcedure
 
 // StandardSubsystems.ObjectsAttributesEditProhibition
 &AtClient
-Procedure Attachable_AuthorizeObjectDetailsEditing(Command)
+Procedure Attachable_AllowObjectAttributesEditing(Command)
 	
 	If Not Object.Ref.IsEmpty() Then
-		Notification = New NotifyDescription("Attachable_AllowEditingDetailsOfObjectEnd",ThisForm);
+		Notification = New NotifyDescription("Attachable_AllowObjectAttributesEditingCompleted",ThisForm);
 		OpenForm("Catalog.CashRegisters.Form.WorkingWithKeyAttributesForm",,,,,,Notification);
 	EndIf;
 	
-EndProcedure // Attachable_AllowObjectAttributeEditing()
+EndProcedure // Attachable_AllowObjectAttributesEditing()
 
 &AtClient
-Procedure Attachable_AllowObjectAttributeEditingEnd(Result,Parameters) Export
+Procedure Attachable_AllowObjectAttributesEditingCompleted(Result,Parameters) Export
 	
 	If TypeOf(Result) = Type("Array") AND Result.Count() > 0 Then
 		ObjectsAttributesEditProhibitionClient.SetEnabledOfFormItems(ThisForm, Result);

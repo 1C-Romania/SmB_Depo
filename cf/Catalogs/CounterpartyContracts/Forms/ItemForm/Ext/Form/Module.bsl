@@ -762,15 +762,11 @@ Procedure UpdateAdditionalAttributesItems()
 EndProcedure // UpdateAdditionalAttributesItems()
 
 &AtClient
-Procedure Attachable_AuthorizeObjectDetailsEditing(Command)
+Procedure Attachable_AllowObjectAttributesEditing(Command)
 	
-	ObjectsAttributesEditProhibitionClient.AuthorizeObjectDetailsEditing(ThisForm);
+	ObjectsAttributesEditProhibitionClient.AllowObjectAttributesEditing(ThisForm);
 	
-	//If ObjectsAttributesEditProhibitionClient.EnableObjectDetailsEditing(ThisForm)
-	//	Then ObjectsAttributesEditProhibitionClient.SetEnableFormItems(ThisForm);
-	//EndIf;
-	
-EndProcedure // Attachable_AllowObjectAttributeEditing()
+EndProcedure // Attachable_AllowObjectAttributesEditing()
 
 // End StandardSubsystems.Properties
 

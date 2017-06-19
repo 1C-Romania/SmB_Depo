@@ -122,12 +122,12 @@ EndProcedure
 #Region FormCommandHandlers
 
 &AtClient
-Procedure Attachable_AllowObjectAttributeEdit(Command)
+Procedure Attachable_AllowObjectAttributesEditing(Command)
 	
 	If Not Object.Predefined Then
 		If CommonUseClient.SubsystemExists("StandardSubsystems.ObjectsAttributesEditProhibition") Then
 			ObjectAttributeEditProhibitionClientModule = CommonUseClient.CommonModule("ObjectsAttributesEditProhibitionClient");
-			ObjectAttributeEditProhibitionClientModule.AuthorizeObjectDetailsEditing(ThisObject);
+			ObjectAttributeEditProhibitionClientModule.AllowObjectAttributesEditing(ThisObject);
 		EndIf;
 	EndIf;
 	

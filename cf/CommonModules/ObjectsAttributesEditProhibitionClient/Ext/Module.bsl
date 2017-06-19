@@ -18,7 +18,7 @@
 //                           decided to enable editing, False   - there are no visible
 //                                    locked attributes or references detected, and user refused to continue.
 //
-Procedure AuthorizeObjectDetailsEditing(Val Form, ContinuationProcessor = Undefined) Export
+Procedure AllowObjectAttributesEditing(Val Form, ContinuationProcessor = Undefined) Export
 	
 	BlockedAttributes = Attributes(Form);
 	
@@ -117,27 +117,31 @@ Procedure CheckReferencesToObject(Val ContinuationProcessor, Val RefArray, Val S
 	AttributesPresentation = Left(AttributesPresentation, StrLen(AttributesPresentation) - 2);
 	
 	If SynonymsOfAttributes.Count() > 1 Then
-		QuestionText = NStr("en='To avoid misalignment of data in the application, the attributes are not
-		|editable as follows: %1.
+		QuestionText = NStr("en='To avoid misalignment of data in the application,
+		|the attributes are not editable as follows: 
+		|%1.
 		|
-		|Before permitting their edit, it is
-		|recommended to evaluate the consequences by checking all places of this item usage in the application.
-		|Search of usage places can take a long time.';ru='Для того чтобы не допустить рассогласования данных в программе, следующие
-		|реквизиты не доступны для редактирования: %1.
+		|Before permitting their edit, it is recommended to evaluate the consequences
+		|by checking all places of this item usage in the application.
+		|Search of usage places can take a long time.'; ru = 'Для того чтобы не допустить рассогласования данных в программе,
+		|следующие реквизиты не доступны для редактирования: 
+		|%1.
 		|
-		|Перед тем, как разрешить их
-		|редактирование, рекомендуется оценить последствия, проверив все места использования этого элемента в программе.
+		|Перед тем, как разрешить их редактирование, рекомендуется оценить последствия,
+		|проверив все места использования этого элемента в программе.
 		|Поиск мест использования может занять длительное время.'");
 								  
 	Else
-		QuestionText = NStr("en='To avoid misalignment of data in the application, the %1 attribute is not editable.
+		QuestionText = NStr("en='To avoid misalignment of data in the application,
+		|the %1 attribute is not editable.
 		|
-		|Before permitting its edit, it is recommended
-		|to evaluate the consequences by checking all places of the %2 item usage in the application.
-		|Search of usage places can take a long time.';ru='Для того чтобы не допустить рассогласования данных в программе, реквизит %1 не доступен для редактирования.
+		|Before permitting its edit, it is recommended to evaluate the consequences
+		|by checking all places of the ""%2"" item usage in the application.
+		|Search of usage places can take a long time.'; ru = 'Для того чтобы не допустить рассогласования данных в программе,
+		|реквизит %1 не доступен для редактирования.
 		|
-		|Перед тем, как разрешить его
-		|редактирование, рекомендуется оценить последствия, проверив все места использования %2 в программе.
+		|Перед тем, как разрешить его редактирование, рекомендуется оценить последствия,
+		|проверив все места использования ""%2"" в программе.
 		|Поиск мест использования может занять длительное время.'");
 	EndIf;
 	
@@ -213,7 +217,7 @@ Procedure SetAllowingAttributesEditing(Val Form, Val Attributes,
 	EndDo;
 	
 	If AllAttributesUnlocked Then
-		Form.Items.AuthorizeObjectDetailsEditing.Enabled = False;
+		Form.Items.AllowObjectAttributesEditing.Enabled = False;
 	EndIf;
 	
 EndProcedure

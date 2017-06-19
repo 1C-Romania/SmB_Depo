@@ -986,11 +986,11 @@ EndProcedure
 
 // StandardSubsystems.ObjectsAttributesEditProhibition
 &AtClient
-Procedure Attachable_AuthorizeObjectDetailsEditing(Command)
+Procedure Attachable_AllowObjectAttributesEditing(Command)
 	
-	ObjectsAttributesEditProhibitionClient.AuthorizeObjectDetailsEditing(ThisObject);
+	ObjectsAttributesEditProhibitionClient.AllowObjectAttributesEditing(ThisObject);
 	
-EndProcedure // Connected_AllowObjectAttributeEdit()
+EndProcedure // Attachable_AllowObjectAttributesEditing()
 // End
 
 // StandardSubsystems.Printing
