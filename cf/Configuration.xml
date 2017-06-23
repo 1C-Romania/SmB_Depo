@@ -2179,6 +2179,7 @@
 			<FunctionalOption>UseAdditionalReportsAndDataProcessors</FunctionalOption>
 			<FunctionalOption>UseAutomaticDiscountsMarkups</FunctionalOption>
 			<FunctionalOption>UseBankCharges</FunctionalOption>
+			<FunctionalOption>UseBankServiceProcessors</FunctionalOption>
 			<FunctionalOption>UseBatches</FunctionalOption>
 			<FunctionalOption>UseBudgeting</FunctionalOption>
 			<FunctionalOption>UseCharacteristics</FunctionalOption>
@@ -2202,6 +2203,7 @@
 			<FunctionalOption>UseExchangeWithPeripheralsOffline</FunctionalOption>
 			<FunctionalOption>UseExchangeWithSites</FunctionalOption>
 			<FunctionalOption>UseExternalUsers</FunctionalOption>
+			<FunctionalOption>UseFinance</FunctionalOption>
 			<FunctionalOption>UseFullTextSearch</FunctionalOption>
 			<FunctionalOption>UseIntegrationWith1CConnect</FunctionalOption>
 			<FunctionalOption>UseJobSharing</FunctionalOption>
@@ -2211,19 +2213,18 @@
 			<FunctionalOption>UseOrderWarehouse</FunctionalOption>
 			<FunctionalOption>UsePeripherals</FunctionalOption>
 			<FunctionalOption>UseRelatedObjectCreationAdditionalInformationProcessors</FunctionalOption>
+			<FunctionalOption>UseSaaS</FunctionalOption>
 			<FunctionalOption>UseSerialNumbers</FunctionalOption>
 			<FunctionalOption>UseSeveralBusinessCalendars</FunctionalOption>
 			<FunctionalOption>UseSeveralCompanies</FunctionalOption>
 			<FunctionalOption>UseSubsystemPayroll</FunctionalOption>
 			<FunctionalOption>UseSubsystemProduction</FunctionalOption>
 			<FunctionalOption>UseTechOperations</FunctionalOption>
+			<FunctionalOption>UseUEVATNumbers</FunctionalOption>
 			<FunctionalOption>UseUserReminders</FunctionalOption>
 			<FunctionalOption>UseUsersGroups</FunctionalOption>
 			<FunctionalOption>UseVAT</FunctionalOption>
 			<FunctionalOption>UseWorkSubsystem</FunctionalOption>
-			<FunctionalOption>UseBankServiceProcessors</FunctionalOption>
-			<FunctionalOption>UseSaaS</FunctionalOption>
-			<FunctionalOption>UseUEVATNumbers</FunctionalOption>
 			<FunctionalOption>VerifyDigitalSignaturesAtServer</FunctionalOption>
 			<FunctionalOption>WorkInLocalMode</FunctionalOption>
 			<FunctionalOption>WorkInOfflineMode</FunctionalOption>
@@ -2419,7 +2420,6 @@
 			<CommandGroup>Organizer</CommandGroup>
 			<CommandGroup>Print</CommandGroup>
 			<Constant>AccessLimitationParameters</Constant>
-			<Constant>BookkeepingFunctionalityConstant</Constant>
 			<Constant>AccountingBySubsidiaryCompany</Constant>
 			<Constant>AccountingCurrency</Constant>
 			<Constant>ActiveBackgroundJobMaxCount</Constant>
@@ -2437,6 +2437,7 @@
 			<Constant>AutomaticallyConfigurePermissionsInSecurityProfiles</Constant>
 			<Constant>BackupParameters</Constant>
 			<Constant>BackupSupport</Constant>
+			<Constant>BookkeepingFunctionalityConstant</Constant>
 			<Constant>ConferenceManagementAddress</Constant>
 			<Constant>ConfigurationUpdateStatus</Constant>
 			<Constant>ConnectionTimeoutToOnlineSupportService</Constant>
@@ -2446,6 +2447,7 @@
 			<Constant>ControlBalancesOnPosting</Constant>
 			<Constant>CopyDataAreasFromPrototype</Constant>
 			<Constant>CreateDigitalSignaturesAtServer</Constant>
+			<Constant>CurrencyQuotationType</Constant>
 			<Constant>CustomerInvoiceNote1137UsageBegin</Constant>
 			<Constant>CustomerOrdersCompletedStatus</Constant>
 			<Constant>CustomerOrdersInProgressStatus</Constant>
@@ -2560,6 +2562,7 @@
 			<Constant>MaxDataAreaFileSize</Constant>
 			<Constant>MaximumFileSize</Constant>
 			<Constant>NationalCurrency</Constant>
+			<Constant>NationalLanguage</Constant>
 			<Constant>OfflineSaaS</Constant>
 			<Constant>OffsetAdvancesDebtsAutomatically</Constant>
 			<Constant>PasswordForSendingSMS</Constant>
@@ -2580,13 +2583,14 @@
 			<Constant>PurchaseOrdersCompletedStatus</Constant>
 			<Constant>PurchaseOrdersInProgressStatus</Constant>
 			<Constant>RecipientsEventLogMonitorReport</Constant>
-			<Constant>SerialNumbersBalanceControl</Constant>
 			<Constant>ReportVariantParameters</Constant>
 			<Constant>RetryDataExportExchangeMessagesBeforeStart</Constant>
 			<Constant>ReusableValuesUpdateDateORM</Constant>
 			<Constant>RFBanksClassifierVersion</Constant>
+			<Constant>SaaSLicensesCount</Constant>
 			<Constant>ScheduledJobsExecutionSettings</Constant>
 			<Constant>SecurityProfilesAreUsed</Constant>
+			<Constant>SerialNumbersBalanceControl</Constant>
 			<Constant>ServiceEventsParameters</Constant>
 			<Constant>ServiceManagerEndPoint</Constant>
 			<Constant>ServiceManagerOfficeUserName</Constant>
@@ -2613,9 +2617,12 @@
 			<Constant>UseAdditionalAttributesAndInformation</Constant>
 			<Constant>UseAdditionalReportsAndDataProcessors</Constant>
 			<Constant>UseAdditionalReportsDirectoryAndDataprocessorsSaaS</Constant>
+			<Constant>UseAssembling</Constant>
+			<Constant>UseBankServiceProcessors</Constant>
 			<Constant>UseCommonAdditionalAttributesAndInformation</Constant>
 			<Constant>UseCommonAdditionalValues</Constant>
 			<Constant>UseCounterpartiesAccessGroups</Constant>
+			<Constant>UseCounterpartiesVerification</Constant>
 			<Constant>UseCustomerOrderStates</Constant>
 			<Constant>UseDataSynchronization</Constant>
 			<Constant>UseDataSynchronizationInLocalMode</Constant>
@@ -2630,31 +2637,26 @@
 			<Constant>UseEncryption</Constant>
 			<Constant>UseExchangeWithPeripheralsOffline</Constant>
 			<Constant>UseExternalUsers</Constant>
+			<Constant>UseFinance</Constant>
 			<Constant>UseFullTextSearch</Constant>
-			<Constant>UseSerialNumbers</Constant>
+			<Constant>UseIntegrationWith1CBuhphone</Constant>
 			<Constant>UseIntegrationWith1CConnect</Constant>
+			<Constant>UseMultiCompanies</Constant>
+			<Constant>UseMultiLanguagesDescriptions</Constant>
 			<Constant>UseObjectVersioning</Constant>
 			<Constant>UseProductionOrderStates</Constant>
 			<Constant>UsePurchaseOrderStates</Constant>
 			<Constant>UsersWorkParameters</Constant>
+			<Constant>UseSaaS</Constant>
 			<Constant>UseSeparationByDataAreas</Constant>
+			<Constant>UseSerialNumbers</Constant>
 			<Constant>UseSeveralBusinessCalendars</Constant>
 			<Constant>UseSeveralCompanies</Constant>
+			<Constant>UseUEVATNumbers</Constant>
 			<Constant>UseUserReminders</Constant>
 			<Constant>UseUsersGroups</Constant>
 			<Constant>VendorPaymentDueDate</Constant>
 			<Constant>VerifyDigitalSignaturesAtServer</Constant>
-			<Constant>SaaSLicensesCount</Constant>
-			<Constant>UseBankServiceProcessors</Constant>
-			<Constant>UseSaaS</Constant>
-			<Constant>UseUEVATNumbers</Constant>
-			<Constant>CurrencyQuotationType</Constant>
-			<Constant>UseIntegrationWith1CBuhphone</Constant>
-			<Constant>NationalLanguage</Constant>
-			<Constant>UseAssembling</Constant>
-			<Constant>UseMultiCompanies</Constant>
-			<Constant>UseMultiLanguagesDescriptions</Constant>
-			<Constant>UseCounterpartiesVerification</Constant>
 			<CommonForm>AccessRights</CommonForm>
 			<CommonForm>AccessRightsSimplified</CommonForm>
 			<CommonForm>AccountPasswordConfirmation</CommonForm>

@@ -40,6 +40,7 @@
 			<Form>SectionProduction</Form>
 			<Form>FundsSection</Form>
 			<Form>PayrollSection</Form>
+			<Form>FinanceSection</Form>
 			<Command uuid="51856555-c8e6-4e98-be7f-cd6742e6cded">
 				<Properties>
 					<Name>Enterprise</Name>
@@ -191,6 +192,30 @@
 						<v8:item>
 							<v8:lang>en</v8:lang>
 							<v8:content>Payroll</v8:content>
+						</v8:item>
+					</Synonym>
+					<Comment/>
+					<Group>NavigationPanelOrdinary</Group>
+					<CommandParameterType/>
+					<ParameterUseMode>Single</ParameterUseMode>
+					<ModifiesData>false</ModifiesData>
+					<Representation>Auto</Representation>
+					<ToolTip/>
+					<Picture/>
+					<Shortcut/>
+				</Properties>
+			</Command>
+			<Command uuid="afaf3c68-bf8b-4d79-b14a-b2fb939bef9b">
+				<Properties>
+					<Name>Finance</Name>
+					<Synonym>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Finance</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Финансы</v8:content>
 						</v8:item>
 					</Synonym>
 					<Comment/>
