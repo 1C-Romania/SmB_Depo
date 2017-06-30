@@ -19,6 +19,8 @@
 					<v8:content>Konto rozrachunków z pozostałymi osobami</v8:content>
 				</v8:item>
 			</title>
+			<appearance/>
+			<inputParameters/>
 		</field>
 		<field xsi:type="DataSetFieldField">
 			<dataPath>Account_CostSettlement</dataPath>
@@ -33,6 +35,8 @@
 					<v8:content>Konto rozliczenia kosztów</v8:content>
 				</v8:item>
 			</title>
+			<appearance/>
+			<inputParameters/>
 		</field>
 		<field xsi:type="DataSetFieldField">
 			<dataPath>Account_FixedAssetsUnderContstruction</dataPath>
@@ -47,6 +51,8 @@
 					<v8:content>Konto środków trwałych w budowie</v8:content>
 				</v8:item>
 			</title>
+			<appearance/>
+			<inputParameters/>
 		</field>
 		<field xsi:type="DataSetFieldField">
 			<dataPath>Account_PositiveExchangeRateDifferences</dataPath>
@@ -61,6 +67,8 @@
 					<v8:content>Konto dodatnich różnić kursowych</v8:content>
 				</v8:item>
 			</title>
+			<appearance/>
+			<inputParameters/>
 		</field>
 		<field xsi:type="DataSetFieldField">
 			<dataPath>CostDifferences.Negative.Account_PurchaseCreditNoteNegativeCostDifferences</dataPath>
@@ -75,6 +83,8 @@
 					<v8:content>Konto ujemych różnic kosztów dla korekt zakupu</v8:content>
 				</v8:item>
 			</title>
+			<appearance/>
+			<inputParameters/>
 		</field>
 		<field xsi:type="DataSetFieldField">
 			<dataPath>CostDifferences.Positive.Account_PurchaseCreditNotePositiveCostDifferences</dataPath>
@@ -89,6 +99,8 @@
 					<v8:content>Konto dodatnich różnic kosztów dla korekt zakupu</v8:content>
 				</v8:item>
 			</title>
+			<appearance/>
+			<inputParameters/>
 		</field>
 		<field xsi:type="DataSetFieldField">
 			<dataPath>ExchangeRateForCalculatingSalesAndPurchase</dataPath>
@@ -103,6 +115,8 @@
 					<v8:content>Kurs wymiany dla sprzedaży i zakupów</v8:content>
 				</v8:item>
 			</title>
+			<appearance/>
+			<inputParameters/>
 		</field>
 		<field xsi:type="DataSetFieldField">
 			<dataPath>Payroll.Payroll_Account_PublicSettlements</dataPath>
@@ -117,6 +131,8 @@
 					<v8:content>Konto rozrachunków publiczno prawnych</v8:content>
 				</v8:item>
 			</title>
+			<appearance/>
+			<inputParameters/>
 		</field>
 		<field xsi:type="DataSetFieldField">
 			<dataPath>Payroll.Payroll_CostArticle_EmployeesBenefits</dataPath>
@@ -131,6 +147,8 @@
 					<v8:content>Rodzaj kosztu świadczenia dla pracowników</v8:content>
 				</v8:item>
 			</title>
+			<appearance/>
+			<inputParameters/>
 		</field>
 		<field xsi:type="DataSetFieldField">
 			<dataPath>Payroll.Payroll_CostArticle_Salaries</dataPath>
@@ -145,6 +163,8 @@
 					<v8:content>Rodzaj kosztu pensji</v8:content>
 				</v8:item>
 			</title>
+			<appearance/>
+			<inputParameters/>
 		</field>
 		<field xsi:type="DataSetFieldField">
 			<dataPath>Payroll.Payroll_IllnessToBonus</dataPath>
@@ -159,6 +179,8 @@
 					<v8:content>Premia składnikiem podstawy zasiłku chorobowego</v8:content>
 				</v8:item>
 			</title>
+			<appearance/>
+			<inputParameters/>
 		</field>
 		<field xsi:type="DataSetFieldField">
 			<dataPath>Payroll.Payroll_Settlements_HealthIns</dataPath>
@@ -173,6 +195,8 @@
 					<v8:content>Ubezpieczenie zdrowotne</v8:content>
 				</v8:item>
 			</title>
+			<appearance/>
+			<inputParameters/>
 		</field>
 		<field xsi:type="DataSetFieldField">
 			<dataPath>Payroll.Payroll_Settlements_IncomeTax</dataPath>
@@ -1151,10 +1175,6 @@
 			<field>ActivityKind</field>
 		</field>
 		<field xsi:type="DataSetFieldField">
-			<dataPath>NationalLanguage</dataPath>
-			<field>NationalLanguage</field>
-		</field>
-		<field xsi:type="DataSetFieldField">
 			<dataPath>InitialSettingOpeningBalancesFilled</dataPath>
 			<field>InitialSettingOpeningBalancesFilled</field>
 		</field>
@@ -1249,10 +1269,6 @@
 		<field xsi:type="DataSetFieldField">
 			<dataPath>FunctionalOptionReceiveGoodsOnCommission</dataPath>
 			<field>FunctionalOptionReceiveGoodsOnCommission</field>
-		</field>
-		<field xsi:type="DataSetFieldField">
-			<dataPath>FunctionalOptionAccountingByMultipleCompanies</dataPath>
-			<field>FunctionalOptionAccountingByMultipleCompanies</field>
 		</field>
 		<field xsi:type="DataSetFieldField">
 			<dataPath>InfobaseUsageMode</dataPath>
@@ -1990,6 +2006,10 @@
 			<dataPath>Constants.FunctionalOptionUseTechOperations</dataPath>
 			<field>FunctionalOptionUseTechOperations</field>
 		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>UseSeveralCompanies1</dataPath>
+			<field>UseSeveralCompanies1</field>
+		</field>
 		<item xsi:type="DataSetQuery">
 			<name>GeneralPolicy</name>
 			<field xsi:type="DataSetFieldField">
@@ -2666,10 +2686,6 @@ FROM
 				<field>ActivityKind</field>
 			</field>
 			<field xsi:type="DataSetFieldField">
-				<dataPath>NationalLanguage</dataPath>
-				<field>NationalLanguage</field>
-			</field>
-			<field xsi:type="DataSetFieldField">
 				<dataPath>InitialSettingOpeningBalancesFilled</dataPath>
 				<field>InitialSettingOpeningBalancesFilled</field>
 			</field>
@@ -2764,10 +2780,6 @@ FROM
 			<field xsi:type="DataSetFieldField">
 				<dataPath>FunctionalOptionReceiveGoodsOnCommission</dataPath>
 				<field>FunctionalOptionReceiveGoodsOnCommission</field>
-			</field>
-			<field xsi:type="DataSetFieldField">
-				<dataPath>FunctionalOptionAccountingByMultipleCompanies</dataPath>
-				<field>FunctionalOptionAccountingByMultipleCompanies</field>
 			</field>
 			<field xsi:type="DataSetFieldField">
 				<dataPath>InfobaseUsageMode</dataPath>
@@ -3505,6 +3517,10 @@ FROM
 				<dataPath>FunctionalOptionUseTechOperations</dataPath>
 				<field>FunctionalOptionUseTechOperations</field>
 			</field>
+			<field xsi:type="DataSetFieldField">
+				<dataPath>UseSeveralCompanies1</dataPath>
+				<field>UseSeveralCompanies1</field>
+			</field>
 			<dataSource>DataSource1</dataSource>
 			<query>SELECT
 	Constants.BookkeepingFunctionalityConstant,
@@ -3590,7 +3606,7 @@ FROM
 	Constants.FunctionalCurrencyTransactionsAccounting,
 	Constants.FunctionalOptionAccountingByCells,
 	Constants.FunctionalOptionAccountingByMultipleBusinessActivities,
-	Constants.FunctionalOptionAccountingByMultipleCompanies,
+	Constants.UseSeveralCompanies,
 	Constants.FunctionalOptionAccountingByMultipleDepartments,
 	Constants.FunctionalOptionAccountingByMultipleWarehouses,
 	Constants.FunctionalOptionAccountingByProjects,
@@ -3731,7 +3747,6 @@ FROM
 	Constants.VendorPaymentDueDate,
 	Constants.VerifyDigitalSignaturesAtServer,
 	Constants.NationalCurrency,
-	Constants.NationalLanguage,
 	Constants.UseCounterpartiesVerification,
 	Constants.CurrencyQuotationType
 FROM

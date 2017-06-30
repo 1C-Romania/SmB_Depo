@@ -101,17 +101,19 @@ Function GetDocumentExchangeRateDate(DocumentObject, UseAccountingPolicyExchange
 		InitialDate = ?(DocumentObject.Date = '00010101', CurrentDate(), DocumentObject.Date);
 	EndIf;	
 	
-	If UseAccountingPolicyExchangeRateDateForCalculatingSalesAndPurchase Then
-		
-		ExchangeRateDatePolicy = InformationRegisters.AccountingPolicyGeneral.GetLast(InitialDate, New Structure("Company", DocumentObject.Company)).ExchangeRateForCalculatingSalesAndPurchase;
-		
-		If ExchangeRateDatePolicy = Enums.AccountingPolicy_ExchangeRateForCalculatingSalesAndPurchase.DayBeforeDocumentsDate Then
-			InitialDate = EndOfDay(InitialDate - 60*60*24);
-		Else
-			// In all other cases leave initial date as is.
-		EndIf;
-		
-	EndIf;
+	// Jack 27.06.2017
+	// to do 
+	//If UseAccountingPolicyExchangeRateDateForCalculatingSalesAndPurchase Then
+	//	
+	//	ExchangeRateDatePolicy = InformationRegisters.AccountingPolicyGeneral.GetLast(InitialDate, New Structure("Company", DocumentObject.Company)).ExchangeRateForCalculatingSalesAndPurchase;
+	//	
+	//	If ExchangeRateDatePolicy = Enums.AccountingPolicy_ExchangeRateForCalculatingSalesAndPurchase.DayBeforeDocumentsDate Then
+	//		InitialDate = EndOfDay(InitialDate - 60*60*24);
+	//	Else
+	//		// In all other cases leave initial date as is.
+	//	EndIf;
+	//	
+	//EndIf;
 		
 	Return InitialDate;
 	

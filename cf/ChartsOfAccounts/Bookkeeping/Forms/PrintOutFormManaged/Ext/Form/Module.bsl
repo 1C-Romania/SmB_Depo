@@ -32,7 +32,9 @@ Procedure CommandGenerate(Command)
 	PrintoutsArray.Add(PrintoutStructure);
 	
 	PrintList = New Array;	
-	OpenForm("CommonForm.GeneralPrintoutFormManaged", New Structure("PrintList, DirectPrinting, PrintFileName, InitialFormID, SpreadsheetsFromOutside, PrintoutsArray", PrintList, False, "", ThisForm.UUID, True, PrintoutsArray ),,True);	
+	// Jack 28.06.2017
+	// to do
+	//OpenForm("CommonForm.GeneralPrintoutFormManaged", New Structure("PrintList, DirectPrinting, PrintFileName, InitialFormID, SpreadsheetsFromOutside, PrintoutsArray", PrintList, False, "", ThisForm.UUID, True, PrintoutsArray ),,True);	
 	
 	Close();
 	
@@ -40,6 +42,7 @@ EndProcedure
 
 &AtServer
 Procedure CommandGenerateAtServer(Spreadsheet)
+	
 	LanguageCode = Common.GetDefaultLanguageCodeAndDescription().LanguageCode;
 	
 	GenerationDate = CurrentDate(); // fixing generation time
@@ -51,15 +54,19 @@ Procedure CommandGenerateAtServer(Spreadsheet)
 	Header = Template.GetArea("Header");
 	AccountHeader = Template.GetArea("AccountHeader");
 	
-	CompanyVATNumber = Taxes.GetBusinessPartnerVATNumberDescription(CurrentDate(),Company,LanguageCode);
-	CompanyName      = InformationRegisters.BusinessPartnersAttributesHistory.GetLast(CurrentDate(), New Structure("BusinessPartner, Attribute", Company, Enums.BusinessPartnersAttributesTypes.LongDescription)).Description;
+	// Jack 25.06.2017
+	// to do
+	CompanyName = "";
+	CompanyVATNumber = "";
+	//CompanyVATNumber = Taxes.GetBusinessPartnerVATNumberDescription(CurrentDate(),Company,LanguageCode);
+	//CompanyName      = InformationRegisters.BusinessPartnersAttributesHistory.GetLast(CurrentDate(), New Structure("BusinessPartner, Attribute", Company, Enums.BusinessPartnersAttributesTypes.LongDescription)).Description;
 	
-	CompanyAddressRecord = InformationRegisters.BusinessPartnersAttributesHistory.GetLast(CurrentDate(), New Structure("BusinessPartner, Attribute", Company, Enums.BusinessPartnersAttributesTypes.LegalAddress));
-	
-	Header.Drawings.CompanyLogo.Picture = CommonAtServer.GetCompanyLogo(Company);
-	Header.Parameters.CompanyName      = CompanyName;
-	Header.Parameters.CompanyAddress   = CompanyAddressRecord.Description;
-	Header.Parameters.CompanyVATNumber = CompanyVATNumber;
+	//CompanyAddressRecord = InformationRegisters.BusinessPartnersAttributesHistory.GetLast(CurrentDate(), New Structure("BusinessPartner, Attribute", Company, Enums.BusinessPartnersAttributesTypes.LegalAddress));
+	//
+	//Header.Drawings.CompanyLogo.Picture = CommonAtServer.GetCompanyLogo(Company);
+	//Header.Parameters.CompanyName      = CompanyName;
+	//Header.Parameters.CompanyAddress   = CompanyAddressRecord.Description;
+	//Header.Parameters.CompanyVATNumber = CompanyVATNumber;
 	
 	Header.Parameters.YearValidity = YearValidity;
 	

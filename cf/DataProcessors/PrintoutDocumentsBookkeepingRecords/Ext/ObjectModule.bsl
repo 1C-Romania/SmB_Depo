@@ -122,8 +122,8 @@ Procedure GenerateReport() Export
 	If GeneralPrintoutForm.IsOpen() Then
 		GeneralPrintoutForm.Controls.ReportsPanel.Pages.Delete(1);
 	EndIf;	
-
 	
+	// to do
 	Printouts.PrintSpreadsheet(SpreadsheetDoc,GeneralPrintoutForm, Enums.PrintMode.Form, ThisObject.Metadata().Synonym);
 	GeneralPrintoutForm.Open();
 	

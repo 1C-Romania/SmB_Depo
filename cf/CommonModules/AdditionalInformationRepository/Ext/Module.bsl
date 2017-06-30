@@ -226,6 +226,8 @@ Procedure SaveFiles(FilesObject, SelectedRows, DirectoryName = Undefined, Catalo
 	EndIf;
 
 	//SavingFilesForm = Catalogs[CatalogName].GetForm("SavingFilesForm");
+	// Jack 27.06.2017
+    // to do
 	SavingFilesForm = GetCommonForm("SavingFilesForm");
 	SavingFilesForm.DirectoryName    = DirectoryName;
 	SavingFilesForm.ReadOnly   = False;

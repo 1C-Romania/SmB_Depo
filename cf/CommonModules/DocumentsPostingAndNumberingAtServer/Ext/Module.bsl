@@ -1,71 +1,64 @@
-﻿Procedure CheckSalesAmountAndVATEditingPermission(DocumentForm, TabularPartName = "ItemsLines", AmountColumnsStructure = Undefined) Export
-	
-	If AmountColumnsStructure = Undefined Then
-		AmountColumnsStructure = New Structure("Amount, VATRate, VAT");
-	EndIf;
-	
-	IsManagedForm = (TypeOf(DocumentForm) = Type("ManagedForm"));
-	
-	If IsManagedForm Then
-		DocumentMetadata = DocumentForm.Object.Ref.Metadata();
-	Else	
-		DocumentMetadata = DocumentForm.Ref.Metadata();
-	EndIf;
-		
-	If Not IsInRole(Metadata.Roles.Right_Sales_ToEditSalesAmountAndVAT) Then
-		For each KeyAndValue In AmountColumnsStructure Do
-			If IsManagedForm Then
-				DocumentForm.Items[TabularPartName+KeyAndValue.Key].ReadOnly = True;
-			Else	
-				DocumentForm.Controls[TabularPartName].Columns[KeyAndValue.Key].ReadOnly = True;
-			EndIf;	
-		EndDo;
-	EndIf;
-	
-EndProcedure
+﻿// Jack 29.06.2017
+//Procedure CheckSalesAmountAndVATEditingPermission(DocumentForm, TabularPartName = "ItemsLines", AmountColumnsStructure = Undefined) Export
+//	
+//	If AmountColumnsStructure = Undefined Then
+//		AmountColumnsStructure = New Structure("Amount, VATRate, VAT");
+//	EndIf;
+//	
+//	IsManagedForm = (TypeOf(DocumentForm) = Type("ManagedForm"));
+//	
+//	If IsManagedForm Then
+//		DocumentMetadata = DocumentForm.Object.Ref.Metadata();
+//	Else	
+//		DocumentMetadata = DocumentForm.Ref.Metadata();
+//	EndIf;
+//		
+//	If Not IsInRole(Metadata.Roles.Right_Sales_ToEditSalesAmountAndVAT) Then
+//		For each KeyAndValue In AmountColumnsStructure Do
+//			If IsManagedForm Then
+//				DocumentForm.Items[TabularPartName+KeyAndValue.Key].ReadOnly = True;
+//			Else	
+//				DocumentForm.Controls[TabularPartName].Columns[KeyAndValue.Key].ReadOnly = True;
+//			EndIf;	
+//		EndDo;
+//	EndIf;
+//	
+//EndProcedure
 
-Procedure CheckEditingPermissionManaged(DocumentForm) Export
-	
-	DocumentObject = DocumentForm.Object;
-	
-	If NOT DocumentForm.Parameters.Key.IsEmpty() Then
-		LockUser = Undefined;
-		If WebServicesModule.IsObjectLockedForWebService(DocumentObject.Ref) Then
-			CommonAtClientAtServer.NotifyUser(CommonAtClientAtServer.ParametrizeString(Nstr("en = 'This document could not be changed because it has been locked by user %P1!'; pl = 'Nie można zmienić tego dokumentu ponieważ ten dokument został zablokowany przez użytkownika %P1!'"),New Structure("P1",LockUser)),DocumentObject);
-			DocumentForm.ReadOnly = True;
-		EndIf;	
-	EndIf;	
-	
-	If Not IsInRole(Metadata.Roles.Right_General_ModifyDocumentsNumber) Then
-		DocumentForm.Items.Number.ReadOnly = True;
-	EndIf;
-		
-	If DocumentObject.Posted Then
-		
-		If ObjectsExtensionsAtClientAtServer.IsInvoiceDocument(DocumentObject.Ref) AND NOT IsInRole(Metadata.Roles.Right_Sales_ToChangeInvoicesAfterPosting) Then
-			DocumentForm.ReadOnly = True;
-		Else
-			DocumentObjectMetadata = DocumentObject.Ref.Metadata();
-			
-			If DocumentObjectMetadata.Posting = Metadata.ObjectProperties.Posting.Allow
-			And DocumentObjectMetadata.RealTimePosting = Metadata.ObjectProperties.RealTimePosting.Allow 
-			AND Not IsInRole(Metadata.Roles.Right_General_NonRealTimePosting) Then
-				LockDocumentFormByDateManaged(DocumentForm);
-			EndIf;
-			
-			AllowToEditDocumentsWithChildren = IsInRole(Metadata.Roles.Right_General_ToModifyDocumentsWithChildren);
-			
-			If Not DocumentForm.Parameters.Key.IsEmpty() And Not AllowToEditDocumentsWithChildren And DocumentsPostingAndNumberingAtServer.HasChildDocuments(DocumentObject.Ref) Then
-				
-				DocumentForm.ReadOnly = True;
-				
-			EndIf;	
-			
-		EndIf;	
-	
-	EndIf;
-			
-EndProcedure
+//Procedure CheckEditingPermissionManaged(DocumentForm) Export
+//	
+//	DocumentObject = DocumentForm.Object;
+//		
+//	If Not IsInRole(Metadata.Roles.Right_General_ModifyDocumentsNumber) Then
+//		DocumentForm.Items.Number.ReadOnly = True;
+//	EndIf;
+//		
+//	If DocumentObject.Posted Then
+//		
+//		If ObjectsExtensionsAtClientAtServer.IsInvoiceDocument(DocumentObject.Ref) AND NOT IsInRole(Metadata.Roles.Right_Sales_ToChangeInvoicesAfterPosting) Then
+//			DocumentForm.ReadOnly = True;
+//		Else
+//			DocumentObjectMetadata = DocumentObject.Ref.Metadata();
+//			
+//			If DocumentObjectMetadata.Posting = Metadata.ObjectProperties.Posting.Allow
+//			And DocumentObjectMetadata.RealTimePosting = Metadata.ObjectProperties.RealTimePosting.Allow 
+//			AND Not IsInRole(Metadata.Roles.Right_General_NonRealTimePosting) Then
+//				LockDocumentFormByDateManaged(DocumentForm);
+//			EndIf;
+//			
+//			AllowToEditDocumentsWithChildren = IsInRole(Metadata.Roles.Right_General_ToModifyDocumentsWithChildren);
+//			
+//			If Not DocumentForm.Parameters.Key.IsEmpty() And Not AllowToEditDocumentsWithChildren And DocumentsPostingAndNumberingAtServer.HasChildDocuments(DocumentObject.Ref) Then
+//				
+//				DocumentForm.ReadOnly = True;
+//				
+//			EndIf;	
+//			
+//		EndIf;	
+//	
+//	EndIf;
+//			
+//EndProcedure
 
 Function HasChildDocuments(Val DocumentObject) Export
 	
@@ -86,8 +79,8 @@ Function HasChildDocuments(Val DocumentObject) Export
 EndFunction
 
 Procedure CommonDocumentFormManagedOnOpenEnd(ThisForm,ThisObject) Export
-	
-	CheckEditingPermissionManaged(ThisForm);
+	// Jack 29.06.2017
+	//CheckEditingPermissionManaged(ThisForm);
 	
 EndProcedure	
 
@@ -103,43 +96,45 @@ EndProcedure
 
 Function GetDocumentNumberPrefix(Val DocumentObject, InitialCounter = "") Export
 	
-	DocumentObjectMetadata = DocumentObject.Ref.Metadata();
+	// to do
+	// Jack 29.06.2017
+	//DocumentObjectMetadata = DocumentObject.Ref.Metadata();
+	//If ObjectsExtensionsAtServer.IsDocumentAttribute("Company", DocumentObjectMetadata) Then
+	//	Company = DocumentObject.Company;
+	//Else
+	//	Company = Catalogs.Companies.EmptyRef();
+	//EndIf;
+	//
+	//CompanyPrefix = TrimAll(Company.Prefix);
+	//
+	//If Documents.AllRefsType().ContainsType(TypeOf(DocumentObject.Ref)) Then
+	//	DocumentPrefixRecord = InformationRegisters.DocumentsNumberingSettings.GetLast(DocumentObject.Date, New Structure("DocumentType", Documents[DocumentObjectMetadata.Name].EmptyRef()));
+	//ElsIf BusinessProcesses.AllRefsType().ContainsType(TypeOf(DocumentObject.Ref)) Then
+	//	DocumentPrefixRecord = InformationRegisters.DocumentsNumberingSettings.GetLast(DocumentObject.Date, New Structure("DocumentType", BusinessProcesses[DocumentObjectMetadata.Name].EmptyRef()));	
+	//ElsIf Tasks.AllRefsType().ContainsType(TypeOf(DocumentObject.Ref)) Then
+	//	DocumentPrefixRecord = InformationRegisters.DocumentsNumberingSettings.GetLast(DocumentObject.Date, New Structure("DocumentType", Tasks[DocumentObjectMetadata.Name].EmptyRef()));		
+	//EndIf;	
+	//
+	//DocumentPrefix = TrimAll(DocumentPrefixRecord.Prefix);
+	//If IsBlankString(DocumentPrefixRecord.InitialCounter) Then
+	//	InitialCounter = "00001";
+	//Else
+	//	InitialCounter = TrimAll(DocumentPrefixRecord.InitialCounter);
+	//EndIf;
+	//
+	//// Parse prefix.
+	//DocumentPrefix = DocumentsPostingAndNumberingAtClientAtServer.ReplacePrefixTokens_Date(DocumentPrefix, DocumentObject.Date);
+	//
+	//// Document's copy prefix for documents that have prefix depends on attributes
+	//DocumentCopyPrefix = "";
+	//If SessionParameters.IsBookkeepingAvailable Then
+	//	If TypeOf(DocumentObject) = Type("DocumentObject.BookkeepingOperation") Then
+	//		DocumentCopyPrefix = TrimAll(DocumentObject.PartialJournal.Prefix);
+	//	EndIf;
+	//EndIf;
 	
-	If ObjectsExtensionsAtServer.IsDocumentAttribute("Company", DocumentObjectMetadata) Then
-		Company = DocumentObject.Company;
-	Else
-		Company = Catalogs.Companies.EmptyRef();
-	EndIf;
-	
-	CompanyPrefix = TrimAll(Company.Prefix);
-	
-	If Documents.AllRefsType().ContainsType(TypeOf(DocumentObject.Ref)) Then
-		DocumentPrefixRecord = InformationRegisters.DocumentsNumberingSettings.GetLast(DocumentObject.Date, New Structure("DocumentType", Documents[DocumentObjectMetadata.Name].EmptyRef()));
-	ElsIf BusinessProcesses.AllRefsType().ContainsType(TypeOf(DocumentObject.Ref)) Then
-		DocumentPrefixRecord = InformationRegisters.DocumentsNumberingSettings.GetLast(DocumentObject.Date, New Structure("DocumentType", BusinessProcesses[DocumentObjectMetadata.Name].EmptyRef()));	
-	ElsIf Tasks.AllRefsType().ContainsType(TypeOf(DocumentObject.Ref)) Then
-		DocumentPrefixRecord = InformationRegisters.DocumentsNumberingSettings.GetLast(DocumentObject.Date, New Structure("DocumentType", Tasks[DocumentObjectMetadata.Name].EmptyRef()));		
-	EndIf;	
-	
-	DocumentPrefix = TrimAll(DocumentPrefixRecord.Prefix);
-	If IsBlankString(DocumentPrefixRecord.InitialCounter) Then
-		InitialCounter = "00001";
-	Else
-		InitialCounter = TrimAll(DocumentPrefixRecord.InitialCounter);
-	EndIf;
-	
-	// Parse prefix.
-	DocumentPrefix = DocumentsPostingAndNumberingAtClientAtServer.ReplacePrefixTokens_Date(DocumentPrefix, DocumentObject.Date);
-	
-	// Document's copy prefix for documents that have prefix depends on attributes
-	DocumentCopyPrefix = "";
-	If SessionParameters.IsBookkeepingAvailable Then
-		If TypeOf(DocumentObject) = Type("DocumentObject.BookkeepingOperation") Then
-			DocumentCopyPrefix = TrimAll(DocumentObject.PartialJournal.Prefix);
-		EndIf;
-	EndIf;
-	
-	Return CompanyPrefix + DocumentPrefix + DocumentCopyPrefix;
+	//Return CompanyPrefix + DocumentPrefix + DocumentCopyPrefix;
+	Return "";
 	
 EndFunction
 

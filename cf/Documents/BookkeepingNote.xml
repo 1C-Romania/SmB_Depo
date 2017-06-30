@@ -184,9 +184,9 @@
 			<SearchStringModeOnInputByString>AnyPart</SearchStringModeOnInputByString>
 			<FullTextSearchOnInputByString>DontUse</FullTextSearchOnInputByString>
 			<ChoiceDataGetModeOnInputByString>Directly</ChoiceDataGetModeOnInputByString>
-			<DefaultObjectForm>Document.BookkeepingNote.Form.DocumentForm</DefaultObjectForm>
-			<DefaultListForm>Document.BookkeepingNote.Form.ListForm</DefaultListForm>
-			<DefaultChoiceForm>Document.BookkeepingNote.Form.ChoiceForm</DefaultChoiceForm>
+			<DefaultObjectForm>Document.BookkeepingNote.Form.DocumentFormManaged</DefaultObjectForm>
+			<DefaultListForm>Document.BookkeepingNote.Form.ListFormManaged</DefaultListForm>
+			<DefaultChoiceForm>Document.BookkeepingNote.Form.ListFormManaged</DefaultChoiceForm>
 			<AuxiliaryObjectForm>Document.BookkeepingNote.Form.DocumentFormManaged</AuxiliaryObjectForm>
 			<AuxiliaryListForm>Document.BookkeepingNote.Form.ListFormManaged</AuxiliaryListForm>
 			<AuxiliaryChoiceForm>Document.BookkeepingNote.Form.ListFormManaged</AuxiliaryChoiceForm>
@@ -1065,9 +1065,6 @@
 					<FullTextSearch>Use</FullTextSearch>
 				</Properties>
 			</Attribute>
-			<Form>DocumentForm</Form>
-			<Form>ListForm</Form>
-			<Form>ChoiceForm</Form>
 			<Form>DocumentFormManaged</Form>
 			<Form>ListFormManaged</Form>
 			<TabularSection uuid="1f8a4fca-ba15-4c1b-9251-6acdefa55d10">

@@ -90,37 +90,38 @@ Procedure ExchangeRateStartListChoiceEnd(ValueListItem, QueryParameters)  Export
 	EndIf;
 EndProcedure
 
-Procedure UnitOfMeasureStartListChoice(Item, StandartProcessing, Form, CurrentDataItem, CurrentUnitOfMeasure, Object = Undefined, OldUnitOfMeasure = Undefined) Export
-	
-	StandartProcessing = False;
-	
-	UnitOfMeasureValueList = ControlsProcessingAtServer.GetItemsUnitsOfMeasureValueList(CurrentDataItem);
-		
-	CurrentValue = Undefined;
-	
-	For i=0 To UnitOfMeasureValueList.Count()-1 Do
-		
-		If UnitOfMeasureValueList[i].Value = CurrentDataItem  Then
-			CurrentValue = i;
-			Break;
-		EndIf;	
-		
-	EndDo;	
-	
-	#If NOT ThickClientOrdinaryApplication Then
-		Descr		= New NotifyDescription("HandleValueOfChoiseFromList", Object, New Structure("OldUnitOfMeasure", OldUnitOfMeasure));
-		Form.ShowChooseFromList(Descr, UnitOfMeasureValueList, Item);
-	#Else
-		ValueListItem = Form.ChooseFromList(UnitOfMeasureValueList, Item, CurrentValue);
-		
-		If ValueListItem = Undefined Then
-			Return;
-		Else
-			CurrentUnitOfMeasure = ValueListItem.Value;
-		EndIf;
-	#EndIf
-	
-EndProcedure // UnitOfMeasureStartListChoice()
+// Jack 29.06.2017
+//Procedure UnitOfMeasureStartListChoice(Item, StandartProcessing, Form, CurrentDataItem, CurrentUnitOfMeasure, Object = Undefined, OldUnitOfMeasure = Undefined) Export
+//	
+//	StandartProcessing = False;
+//	
+//	UnitOfMeasureValueList = ControlsProcessingAtServer.GetItemsUnitsOfMeasureValueList(CurrentDataItem);
+//		
+//	CurrentValue = Undefined;
+//	
+//	For i=0 To UnitOfMeasureValueList.Count()-1 Do
+//		
+//		If UnitOfMeasureValueList[i].Value = CurrentDataItem  Then
+//			CurrentValue = i;
+//			Break;
+//		EndIf;	
+//		
+//	EndDo;	
+//	
+//	#If NOT ThickClientOrdinaryApplication Then
+//		Descr		= New NotifyDescription("HandleValueOfChoiseFromList", Object, New Structure("OldUnitOfMeasure", OldUnitOfMeasure));
+//		Form.ShowChooseFromList(Descr, UnitOfMeasureValueList, Item);
+//	#Else
+//		ValueListItem = Form.ChooseFromList(UnitOfMeasureValueList, Item, CurrentValue);
+//		
+//		If ValueListItem = Undefined Then
+//			Return;
+//		Else
+//			CurrentUnitOfMeasure = ValueListItem.Value;
+//		EndIf;
+//	#EndIf
+//	
+//EndProcedure // UnitOfMeasureStartListChoice()
 
 Procedure NumericValueStartListChoice(Item, StandartProcessing, Form, ValueArray, TableName, AttributeName) Export
 	StandartProcessing = False;	

@@ -1,25 +1,25 @@
-﻿
-Function GetVATRate(Company, BusinessAccountingGroup, ItemAccountingGroup) Export 
-	
-	If TypeOf(BusinessAccountingGroup) = TypeOf(Catalogs.CustomerAccountingGroups.EmptyRef()) Then
-		If BusinessAccountingGroup.LocationType = Enums.BusinessPartnersLocationTypes.Domestic Then
-			Return ItemAccountingGroup.DomesticCustomerVATRate;
-		ElsIf BusinessAccountingGroup.LocationType = Enums.BusinessPartnersLocationTypes.EuropeanUnion Then	
-			Return ItemAccountingGroup.EuropeanUnionCustomerVATRate;
-		ElsIf BusinessAccountingGroup.LocationType = Enums.BusinessPartnersLocationTypes.Foreign Then		
-			Return ItemAccountingGroup.ForeignCustomerVATRate;
-		EndIf;	
-	ElsIf TypeOf(BusinessAccountingGroup) = TypeOf(Catalogs.SupplierAccountingGroups.EmptyRef()) Then	
-		If BusinessAccountingGroup.LocationType = Enums.BusinessPartnersLocationTypes.Domestic Then
-			Return ItemAccountingGroup.DomesticSupplierVATRate;
-		ElsIf BusinessAccountingGroup.LocationType = Enums.BusinessPartnersLocationTypes.EuropeanUnion Then	
-			Return ItemAccountingGroup.EuropeanUnionSupplierVATRate;
-		ElsIf BusinessAccountingGroup.LocationType = Enums.BusinessPartnersLocationTypes.Foreign Then		
-			Return ItemAccountingGroup.ForeignSupplierVATRate;
-		EndIf;	
-	EndIf;	
-	
-EndFunction // GetVATRate()
+﻿// Jack 29.06.2017
+//Function GetVATRate(Company, BusinessAccountingGroup, ItemAccountingGroup) Export 
+//	
+//	If TypeOf(BusinessAccountingGroup) = TypeOf(Catalogs.CustomerAccountingGroups.EmptyRef()) Then
+//		If BusinessAccountingGroup.LocationType = Enums.BusinessPartnersLocationTypes.Domestic Then
+//			Return ItemAccountingGroup.DomesticCustomerVATRate;
+//		ElsIf BusinessAccountingGroup.LocationType = Enums.BusinessPartnersLocationTypes.EuropeanUnion Then	
+//			Return ItemAccountingGroup.EuropeanUnionCustomerVATRate;
+//		ElsIf BusinessAccountingGroup.LocationType = Enums.BusinessPartnersLocationTypes.Foreign Then		
+//			Return ItemAccountingGroup.ForeignCustomerVATRate;
+//		EndIf;	
+//	ElsIf TypeOf(BusinessAccountingGroup) = TypeOf(Catalogs.SupplierAccountingGroups.EmptyRef()) Then	
+//		If BusinessAccountingGroup.LocationType = Enums.BusinessPartnersLocationTypes.Domestic Then
+//			Return ItemAccountingGroup.DomesticSupplierVATRate;
+//		ElsIf BusinessAccountingGroup.LocationType = Enums.BusinessPartnersLocationTypes.EuropeanUnion Then	
+//			Return ItemAccountingGroup.EuropeanUnionSupplierVATRate;
+//		ElsIf BusinessAccountingGroup.LocationType = Enums.BusinessPartnersLocationTypes.Foreign Then		
+//			Return ItemAccountingGroup.ForeignSupplierVATRate;
+//		EndIf;	
+//	EndIf;	
+//	
+//EndFunction // GetVATRate()
 
 //Creates "nice" VATNumber presentation for print forms, etc.
 // Replaces given VATNumber in any presentation (e.g. "raw" - no formatting) 
@@ -47,7 +47,9 @@ Function GetVATNumberPresentation(VATNumber, TemplatesStructure = Undefined) Exp
 	
 	//Retrieve VATNumber template for given VATNumber length
 	If TemplatesStructure = Undefined Then
-		TemplatesStructure = Constants.VATNumberFormatStrings.Get().Get();
+		// to do
+		//TemplatesStructure = Constants.VATNumberFormatStrings.Get().Get();
+		TemplatesStructure = Undefined;
 	EndIf;
 	
 	If TypeOf(TemplatesStructure) <> Type("Map") Then
@@ -106,29 +108,32 @@ EndFunction
 
 Function GetBusinessPartnerVATNumberPresentation(Date, BusinessPartner, ForLocationType = Undefined, Val Country = Undefined) Export
 	
-	If Country = Catalogs.Countries.Poland Or ValueIsNotFilled(Country) Then
-		Country = Undefined;
-	EndIf;
-	
-	If ValueIsNotFilled(BusinessPartner) Then
-		Return "";
-	EndIf;
-	
-	If Not Country = Undefined Then
-		Return InformationRegisters.BusinessPartnersAttributesHistory.GetLast(Date, New Structure("BusinessPartner, Attribute, Country", BusinessPartner, Enums.BusinessPartnersAttributesTypes.VATNumber, Country)).Description;
-	EndIf;
-	
+	// to do
 	VATNumberPrefix = "";
-	VATNumber = InformationRegisters.BusinessPartnersAttributesHistory.GetLast(Date, New Structure("BusinessPartner, Attribute", BusinessPartner, Enums.BusinessPartnersAttributesTypes.VATNumber)).Description;
+	VATNumber = "";
+	//If Country = Catalogs.Countries.Poland Or ValueIsNotFilled(Country) Then
+	//	Country = Undefined;
+	//EndIf;
+	//
+	//If ValueIsNotFilled(BusinessPartner) Then
+	//	Return "";
+	//EndIf;
+	//
+	//If Not Country = Undefined Then
+	//	Return InformationRegisters.BusinessPartnersAttributesHistory.GetLast(Date, New Structure("BusinessPartner, Attribute, Country", BusinessPartner, Enums.BusinessPartnersAttributesTypes.VATNumber, Country)).Description;
+	//EndIf;
+	//
+	//VATNumberPrefix = "";
+	//VATNumber = InformationRegisters.BusinessPartnersAttributesHistory.GetLast(Date, New Structure("BusinessPartner, Attribute", BusinessPartner, Enums.BusinessPartnersAttributesTypes.VATNumber)).Description;
 
-	If ForLocationType = Undefined Or ForLocationType = Enums.BusinessPartnersLocationTypes.Domestic Then
-		VATNumber = GetVATNumberPresentation(VATNumber);
-	Else
-		If TypeOf(BusinessPartner) = TypeOf(Catalogs.Companies.EmptyRef()) Then
-			VATNumberPrefix = BusinessPartner.VATNumberPrefix + " ";
-			VATNumber = GetVATNumberPresentation(VATNumber);
-		EndIf;	
-	EndIf;
+	//If ForLocationType = Undefined Or ForLocationType = Enums.BusinessPartnersLocationTypes.Domestic Then
+	//	VATNumber = GetVATNumberPresentation(VATNumber);
+	//Else
+	//	If TypeOf(BusinessPartner) = TypeOf(Catalogs.Companies.EmptyRef()) Then
+	//		VATNumberPrefix = BusinessPartner.VATNumberPrefix + " ";
+	//		VATNumber = GetVATNumberPresentation(VATNumber);
+	//	EndIf;	
+	//EndIf;
 	
 	Return VATNumberPrefix + VATNumber;
 EndFunction

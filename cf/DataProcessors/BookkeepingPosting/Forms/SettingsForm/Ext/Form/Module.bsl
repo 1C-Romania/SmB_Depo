@@ -125,9 +125,10 @@ EndProcedure
 &AtClient
 Procedure LoadFromSpreadsheet(Command)
 	
-	ColumnsStructure = New Structure("Document",Nstr("en='Document';pl='Dokument';ru='Документ'"));	
-	ColumnsTypesStructure = New Structure("Document",GetDocumentTypes());	
-	DocumentsTabularPartsProcessing.OpenLoadingFromSpreadsheet(Undefined,"ChoosenDocumentsFromList",ColumnsStructure,,ThisForm,ColumnsTypesStructure);
+	// to do
+	//ColumnsStructure = New Structure("Document",Nstr("en='Document';pl='Dokument';ru='Документ'"));	
+	//ColumnsTypesStructure = New Structure("Document",GetDocumentTypes());	
+	//DocumentsTabularPartsProcessing.OpenLoadingFromSpreadsheet(Undefined,"ChoosenDocumentsFromList",ColumnsStructure,,ThisForm,ColumnsTypesStructure);
 	
 EndProcedure
 

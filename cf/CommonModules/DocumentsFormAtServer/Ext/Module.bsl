@@ -1,53 +1,54 @@
 ﻿&AtServer
 Function GetExceptOperationTypes()
 	ExceptOperationTypes = New Array;
-	ExceptOperationTypes.Add(Enums.OperationTypesSalesOrder.ListOfSalesQuotasCloseByPositions);
-	ExceptOperationTypes.Add(Enums.OperationTypesSalesOrder.SalesQuotaCloseByPositions);
-	ExceptOperationTypes.Add(Enums.OperationTypesSalesOrder.SalesQuotaCloseFull);
-	ExceptOperationTypes.Add(Enums.OperationTypesSalesOrder.Comission);
-	
-	ExceptOperationTypes.Add(Enums.OperationTypesPurchaseOrder.PurchaseQuotasListCloseByPositions);
-	ExceptOperationTypes.Add(Enums.OperationTypesPurchaseOrder.PurchaseQuotaCloseFull);
-	ExceptOperationTypes.Add(Enums.OperationTypesPurchaseOrder.PurchaseQuotaCloseByPositions);
-	ExceptOperationTypes.Add(Enums.OperationTypesSalesRetail.ListOfSalesRetailQuotasCloseByPositions);
-	ExceptOperationTypes.Add(Enums.OperationTypesSalesRetail.SalesRetailQuotaCloseByPositions);
-	ExceptOperationTypes.Add(Enums.OperationTypesSalesRetail.SalesRetailQuotaCloseFull);
-	ExceptOperationTypes.Add(Enums.OperationTypesPurchaseInvoice.PurchaseOrdersList);
-	ExceptOperationTypes.Add(Enums.OperationTypesPurchaseInvoice.PurchaseReceiptsAndOrdersList);
-	ExceptOperationTypes.Add(Enums.OperationTypesPurchaseInvoice.PurchaseReceiptsList);
-	ExceptOperationTypes.Add(Enums.OperationTypesPurchaseCreditNoteReturn.PurchaseInvoiceCostsOnly);
-	ExceptOperationTypes.Add(Enums.OperationTypesPurchaseCreditNoteReturn.PurchaseInvoiceFixedAssets);
-	ExceptOperationTypes.Add(Enums.OperationTypesSalesDelivery.ListOfSalesOrders);
-	
-	ExceptOperationTypes.Add(Enums.OperationTypesPurchaseReturnOrder.ListOfPurchaseInvoices);
-	ExceptOperationTypes.Add(Enums.OperationTypesPurchaseReturnOrder.ListOfPurchaseReceipts);
-	ExceptOperationTypes.Add(Enums.OperationTypesPurchaseReturnOrder.ListOfPurchaseReturnQuotasCloseByPositions);
-	ExceptOperationTypes.Add(Enums.OperationTypesPurchaseReturnOrder.PurchaseReturnQuotaCloseByPositions);
-	ExceptOperationTypes.Add(Enums.OperationTypesPurchaseReturnOrder.PurchaseReturnQuotaCloseFull);
-	
-	ExceptOperationTypes.Add(Enums.OperationTypesSalesReturnReceipt.ListOfSalesReturnOrders);
+	// Jack 27.06.2017
+	//ExceptOperationTypes.Add(Enums.OperationTypesSalesOrder.ListOfSalesQuotasCloseByPositions);
+	//ExceptOperationTypes.Add(Enums.OperationTypesSalesOrder.SalesQuotaCloseByPositions);
+	//ExceptOperationTypes.Add(Enums.OperationTypesSalesOrder.SalesQuotaCloseFull);
+	//ExceptOperationTypes.Add(Enums.OperationTypesSalesOrder.Comission);
+	//
+	//ExceptOperationTypes.Add(Enums.OperationTypesPurchaseOrder.PurchaseQuotasListCloseByPositions);
+	//ExceptOperationTypes.Add(Enums.OperationTypesPurchaseOrder.PurchaseQuotaCloseFull);
+	//ExceptOperationTypes.Add(Enums.OperationTypesPurchaseOrder.PurchaseQuotaCloseByPositions);
+	//ExceptOperationTypes.Add(Enums.OperationTypesSalesRetail.ListOfSalesRetailQuotasCloseByPositions);
+	//ExceptOperationTypes.Add(Enums.OperationTypesSalesRetail.SalesRetailQuotaCloseByPositions);
+	//ExceptOperationTypes.Add(Enums.OperationTypesSalesRetail.SalesRetailQuotaCloseFull);
+	//ExceptOperationTypes.Add(Enums.OperationTypesPurchaseInvoice.PurchaseOrdersList);
+	//ExceptOperationTypes.Add(Enums.OperationTypesPurchaseInvoice.PurchaseReceiptsAndOrdersList);
+	//ExceptOperationTypes.Add(Enums.OperationTypesPurchaseInvoice.PurchaseReceiptsList);
+	//ExceptOperationTypes.Add(Enums.OperationTypesPurchaseCreditNoteReturn.PurchaseInvoiceCostsOnly);
+	//ExceptOperationTypes.Add(Enums.OperationTypesPurchaseCreditNoteReturn.PurchaseInvoiceFixedAssets);
+	//ExceptOperationTypes.Add(Enums.OperationTypesSalesDelivery.ListOfSalesOrders);
+	//
+	//ExceptOperationTypes.Add(Enums.OperationTypesPurchaseReturnOrder.ListOfPurchaseInvoices);
+	//ExceptOperationTypes.Add(Enums.OperationTypesPurchaseReturnOrder.ListOfPurchaseReceipts);
+	//ExceptOperationTypes.Add(Enums.OperationTypesPurchaseReturnOrder.ListOfPurchaseReturnQuotasCloseByPositions);
+	//ExceptOperationTypes.Add(Enums.OperationTypesPurchaseReturnOrder.PurchaseReturnQuotaCloseByPositions);
+	//ExceptOperationTypes.Add(Enums.OperationTypesPurchaseReturnOrder.PurchaseReturnQuotaCloseFull);
+	//
+	//ExceptOperationTypes.Add(Enums.OperationTypesSalesReturnReceipt.ListOfSalesReturnOrders);
 	
 	Return ExceptOperationTypes;
 	
 EndFunction
+// Jack 27.06.2017
+//&AtServer
+//Function GetArrayPrefix(MetadataObject, Date)
+//	
+//	Query = New Query;
+//	Query.Text = "SELECT
+//	|	DocumentsNumberingSettingsSliceLast.Prefix
+//	|FROM
+//	|	InformationRegister.DocumentsNumberingSettings.SliceLast(&Date, DocumentType = &DocumentType) AS DocumentsNumberingSettingsSliceLast";
+//	
+//	Query.SetParameter("Date", Date);
+//	Query.SetParameter("DocumentType", Documents[MetadataObject.Name].EmptyRef());
+//	
+//	ResultList = Query.Execute().Unload().UnloadColumn("Prefix");
 
-&AtServer
-Function GetArrayPrefix(MetadataObject, Date)
-	
-	Query = New Query;
-	Query.Text = "SELECT
-	|	DocumentsNumberingSettingsSliceLast.Prefix
-	|FROM
-	|	InformationRegister.DocumentsNumberingSettings.SliceLast(&Date, DocumentType = &DocumentType) AS DocumentsNumberingSettingsSliceLast";
-	
-	Query.SetParameter("Date", Date);
-	Query.SetParameter("DocumentType", Documents[MetadataObject.Name].EmptyRef());
-	
-	ResultList = Query.Execute().Unload().UnloadColumn("Prefix");
-
-	Return ResultList;
-	
-EndFunction
+//	Return ResultList;
+//	
+//EndFunction
 
 Function GetFormInformation(Form) Export
 	FormInformation = New Structure();
@@ -148,13 +149,14 @@ Procedure ObjectOnCreateAtServer(Form, FormInformation)
 	AddStandartObjectAttributes(Form, FormInformation);
 	Form.ObjectMetadataName = ObjectMetadata.Name;
 	
-	Form.PrefixList.LoadValues(GetArrayPrefix(ObjectMetadata, ?(Form.Object.Date = '00010101000000', CurrentDate(), Form.Object.Date)));
-	If IsInRole("Role_SystemSettings") Then
-		Form.PrefixList.Add("NumberSettings", NStr("pl='Ustawienia...'; en='Settings...'"));
-	EndIf;
-	If Not Form.Items.Find("ChoicePrefix") = Undefined Then
-		 Form.Items.ChoicePrefix.Visible = Form.PrefixList.Count() > 1 Or IsInRole("Role_SystemSettings");
-	EndIf;
+	// Jack 27.06.2017
+	//Form.PrefixList.LoadValues(GetArrayPrefix(ObjectMetadata, ?(Form.Object.Date = '00010101000000', CurrentDate(), Form.Object.Date)));
+	//If IsInRole("Role_SystemSettings") Then
+	//	Form.PrefixList.Add("NumberSettings", NStr("pl='Ustawienia...'; en='Settings...'"));
+	//EndIf;
+	//If Not Form.Items.Find("ChoicePrefix") = Undefined Then
+	//	 Form.Items.ChoicePrefix.Visible = Form.PrefixList.Count() > 1 Or IsInRole("Role_SystemSettings");
+	//EndIf;
 	
 	If Not Form.Items.Find("OperationType") = Undefined Then
 		ExceptOperationTypes = GetExceptOperationTypes();
@@ -179,13 +181,14 @@ Procedure ObjectOnCreateAtServer(Form, FormInformation)
 		Form.Fill(FillingData);
 	EndIf;
 	
-	If FormInformation.IsAttribute.SettlementsChoiceList Then
-		SetUserFilterSettlementsChoice(Form);
-	EndIf;
-	
-	If FormInformation.IsAttribute.CurrentStatus Then
-		Form.CurrentStatus = InformationRegisters.DocumentStatus.GetLast(, New Structure("Document", Form.Object.Ref)).Status;
-	EndIf;
+	// Jack 27.06.2017
+	//If FormInformation.IsAttribute.SettlementsChoiceList Then
+	//	SetUserFilterSettlementsChoice(Form);
+	//EndIf;
+	//
+	//If FormInformation.IsAttribute.CurrentStatus Then
+	//	Form.CurrentStatus = InformationRegisters.DocumentStatus.GetLast(, New Structure("Document", Form.Object.Ref)).Status;
+	//EndIf;
 	
 	Form.ChangeDocumentsHeaderAtServer(False);
 	
@@ -229,47 +232,48 @@ Procedure ObjectOnCreateAtServer(Form, FormInformation)
 		FillNewDocument(Form, ObjectMetadata);
 	EndIf;
 	
-	If Form.Items.Find("SetNewPrefix")<>Undefined Then
-		If CommonAtServer.IsDocumentAttribute("Prefix", ObjectMetadata) Then
-			PrefixList = DocumentsPostingAndNumberingAtServer.GetArrayPrefix(ObjectMetadata,Form.Object.Date);
-			Form.Items.SetNewPrefix.Visible = Form.Object.Ref.IsEmpty() AND PrefixList.Count() > 1;
-		Else
-			Form.Items.SetNewPrefix.Visible = False;
-		EndIf;
-	EndIf;
+	// Jack 29.06.2017
+	//If Form.Items.Find("SetNewPrefix")<>Undefined Then
+	//	If CommonAtServer.IsDocumentAttribute("Prefix", ObjectMetadata) Then
+	//		PrefixList = DocumentsPostingAndNumberingAtServer.GetArrayPrefix(ObjectMetadata,Form.Object.Date);
+	//		Form.Items.SetNewPrefix.Visible = Form.Object.Ref.IsEmpty() AND PrefixList.Count() > 1;
+	//	Else
+	//		Form.Items.SetNewPrefix.Visible = False;
+	//	EndIf;
+	//EndIf;
+	//
+	//If Form.Items.Find("Number")<>Undefined Then	
+	//	If Not IsInRole(Metadata.Roles.Right_General_ModifyDocumentsNumber) Then			
+	//		Form.Items.Number.ReadOnly = True;
+	//		Form.Items.Number.ChoiceButton = False;			
+	//	EndIf;		
+	//EndIf;
+	//
+	//If Form.Items.Find("NumberPreview")<>Undefined Then	
+	//	If Not IsInRole(Metadata.Roles.Right_General_ModifyDocumentsNumber) Then			
+	//		Form.Items.NumberPreview.ChoiceButton = False;			
+	//	EndIf;				
+	//EndIf;
+	//
+	//If FormInformation.IsAttribute.ShowNumberPreview AND Form.Object.Ref.IsEmpty() Then
+	//	Form.ShowNumberPreview = True;
+	//Endif;	
 	
-	If Form.Items.Find("Number")<>Undefined Then	
-		If Not IsInRole(Metadata.Roles.Right_General_ModifyDocumentsNumber) Then			
-			Form.Items.Number.ReadOnly = True;
-			Form.Items.Number.ChoiceButton = False;			
-		EndIf;		
-	EndIf;
-	
-	If Form.Items.Find("NumberPreview")<>Undefined Then	
-		If Not IsInRole(Metadata.Roles.Right_General_ModifyDocumentsNumber) Then			
-			Form.Items.NumberPreview.ChoiceButton = False;			
-		EndIf;				
-	EndIf;
-	
-	If FormInformation.IsAttribute.ShowNumberPreview AND Form.Object.Ref.IsEmpty() Then
-		Form.ShowNumberPreview = True;
-	Endif;	
-	
-	DialogsAtServer.AddDocumentTabularPartCodeColumn(Form);	
+	//DialogsAtServer.AddDocumentTabularPartCodeColumn(Form);	
 EndProcedure
 
 Procedure SetVisibleCompanyItem(Form, ItemName = "Company") Export 
 	
-	Form.Items[ItemName].Visible = Constants.UseMultiCompanies.Get();
+	Form.Items[ItemName].Visible = True;
 	
 EndProcedure
 
 #Region BaseFormsProcedures
 Procedure OnCreateAtServer(Form, Cancel, StandardProcessing) Export
-	
-	If CurrentRunMode() = ClientRunMode.OrdinaryApplication Then
-		CommonAtServer.AdjustFormGroupsToOrdinaryApplication(Form);
-	EndIf;
+	// Jack 27.06.2017
+	//If CurrentRunMode() = ClientRunMode.OrdinaryApplication Then
+	//	CommonAtServer.AdjustFormGroupsToOrdinaryApplication(Form);
+	//EndIf;
 	
 	FormInformation = GetFormInformation(Form);
 	SetCommandsInterface(Form, Cancel, StandardProcessing, FormInformation);
@@ -321,35 +325,36 @@ Function Post(Form) Export
 	Return True;
 EndFunction
 
-Procedure NotificationProcessingAtServer(Form, EventName, Parameter) Export
-	If EventName = "AddingAdditionalAttributes" and Form.UUID = Parameter Then
-		AdditionalAttributesServer.PutUpdateAddititionalAttributesOnForm(Form);
-	ElsIf EventName = "LoadData" AND Form.UUID = Parameter.LoadingDestinationUUID Then
-		SelectedValue = Parameter;
-		
-		Object = Form.FormAttributeToValue("Object");
-		NewRowsArray = DocumentsTabularPartsProcessingAtServer.FillTabularSectionOnLoadingFromSpreadsheetResult(Object, SelectedValue);
-		Form.ValueToFormAttribute(Object, "Object");
-		Form.Modified = True;
+// Jack 27.06.2017
+//Procedure NotificationProcessingAtServer(Form, EventName, Parameter) Export
+//	If EventName = "AddingAdditionalAttributes" and Form.UUID = Parameter Then
+//		AdditionalAttributesServer.PutUpdateAddititionalAttributesOnForm(Form);
+//	ElsIf EventName = "LoadData" AND Form.UUID = Parameter.LoadingDestinationUUID Then
+//		SelectedValue = Parameter;
+//		
+//		Object = Form.FormAttributeToValue("Object");
+//		NewRowsArray = DocumentsTabularPartsProcessingAtServer.FillTabularSectionOnLoadingFromSpreadsheetResult(Object, SelectedValue);
+//		Form.ValueToFormAttribute(Object, "Object");
+//		Form.Modified = True;
 
-		UpdateRowsAfterLoadingFromSpreadsheet(Form, NewRowsArray,SelectedValue);
-		
-		DeleteFromTempStorage(Parameter.TempStorageAddress);
-	ElsIf EventName = "ChangeFiles" Then
-		If CommonAtServer.IsDocumentAttribute("MainPicture", Form.Object.Ref.Metadata()) Then
-			Form.Object.MainPicture = Parameter.MainPicture;
-			Form.Modified = True;
-			Try
-				Form.GetMainPicture();
-			Except
-			EndTry;
-		EndIf;
-	ElsIf EventName = "ChangePrefixList" Then
-		Form.PrefixList.LoadValues(DocumentsPostingAndNumberingAtServer.GetArrayPrefix(Metadata.Documents[Form.ObjectMetadataName],Form.Object.Date));
-		Form.PrefixList.Add("NumberSettings", NStr("pl='Ustawienia...'; en='Settings...'"));
-		SetFormDocumentTitle(Form);
-	EndIf;
-EndProcedure
+//		UpdateRowsAfterLoadingFromSpreadsheet(Form, NewRowsArray,SelectedValue);
+//		
+//		DeleteFromTempStorage(Parameter.TempStorageAddress);
+//	ElsIf EventName = "ChangeFiles" Then
+//		If CommonAtServer.IsDocumentAttribute("MainPicture", Form.Object.Ref.Metadata()) Then
+//			Form.Object.MainPicture = Parameter.MainPicture;
+//			Form.Modified = True;
+//			Try
+//				Form.GetMainPicture();
+//			Except
+//			EndTry;
+//		EndIf;
+//	ElsIf EventName = "ChangePrefixList" Then
+//		Form.PrefixList.LoadValues(DocumentsPostingAndNumberingAtServer.GetArrayPrefix(Metadata.Documents[Form.ObjectMetadataName],Form.Object.Date));
+//		Form.PrefixList.Add("NumberSettings", NStr("pl='Ustawienia...'; en='Settings...'"));
+//		SetFormDocumentTitle(Form);
+//	EndIf;
+//EndProcedure
 
 #EndRegion
 
@@ -367,6 +372,7 @@ Procedure UpdateRowsAfterLoadingFromSpreadsheet(Form, NewRowsArray, ChoiceValue)
 
 	For Each NewRowIndex In NewRowsArray Do
 		
+		// Jack 29.06.2017
 		//NewRow = ObjectValue.ItemsLines.Get(NewRowIndex);
 		NewRow =  ObjectValue[ChoiceValue.TabularSectionName].Get(NewRowIndex);
 		
@@ -374,17 +380,19 @@ Procedure UpdateRowsAfterLoadingFromSpreadsheet(Form, NewRowsArray, ChoiceValue)
 					
 		ActionsArray.Add(New Structure("Name, Parameters","SetSalesPrice",New Structure("Object", Form.Object)));
 		If IsVAT Then
-			If NOT IsInRole(Metadata.Roles.Right_Sales_ToEditVATRateInSalesDocuments) Then
+			// Jack 27.06.2017
+			//If NOT IsInRole(Metadata.Roles.Right_Sales_ToEditVATRateInSalesDocuments) Then
 				NewRow.VATRate = Catalogs.VATRates.EmptyRef();
-			EndIf;
+			//EndIf;
 			
-			If NewRow.VATRate.IsEmpty() And Not NewRow.Item.IsEmpty() Then
-				If CommonAtServer.IsDocumentAttribute("Customer", DocumentMetadata) Then
-					ActionsArray.Add(New Structure("Name, Parameters","SetVATRate",New Structure("Company, PartnerAccountingGroup, ItemAccountingGroup",ObjectValue.Company, ObjectValue.Customer.AccountingGroup, NewRow.Item.AccountingGroup)));
-				ElsIf CommonAtServer.IsDocumentAttribute("Supplier", DocumentMetadata) Then
-					ActionsArray.Add(New Structure("Name, Parameters","SetVATRate",New Structure("Company, PartnerAccountingGroup, ItemAccountingGroup",ObjectValue.Company, ObjectValue.Supplier.AccountingGroup, NewRow.Item.AccountingGroup)));
-				EndIf;
-			EndIf;
+			// Jack 27.06.2017
+			//If NewRow.VATRate.IsEmpty() And Not NewRow.Item.IsEmpty() Then
+			//	If CommonAtServer.IsDocumentAttribute("Customer", DocumentMetadata) Then
+			//		ActionsArray.Add(New Structure("Name, Parameters","SetVATRate",New Structure("Company, PartnerAccountingGroup, ItemAccountingGroup",ObjectValue.Company, ObjectValue.Customer.AccountingGroup, NewRow.Item.AccountingGroup)));
+			//	ElsIf CommonAtServer.IsDocumentAttribute("Supplier", DocumentMetadata) Then
+			//		ActionsArray.Add(New Structure("Name, Parameters","SetVATRate",New Structure("Company, PartnerAccountingGroup, ItemAccountingGroup",ObjectValue.Company, ObjectValue.Supplier.AccountingGroup, NewRow.Item.AccountingGroup)));
+			//	EndIf;
+			//EndIf;
 		EndIf;
 		
 		If IsUnitOfMeasure And NewRow.UnitOfMeasure.IsEmpty() Then
@@ -500,6 +508,7 @@ Procedure UpdateRowsAfterLoadingFromSpreadsheet(Form, NewRowsArray, ChoiceValue)
 		EndIf;
 	EndDo;
 	
+	// Jack 29.06.2017
 	//ObjectValue.ItemsLines.GroupBy(GroupingColumnsString, TotalingColumnsString);
 	ObjectValue[ChoiceValue.TabularSectionName].GroupBy(GroupingColumnsString, TotalingColumnsString);
 	
@@ -619,11 +628,12 @@ Procedure SetFormDocumentTitle(Form) Export
 			If DocumentObject.Date = '00010101' Then
 				DocumentObject.Date = CurrentDate();
 			EndIf;
-			If TrimAll(Form.Object.Number) = "" Then
-				Number = TrimAll(DocumentsPostingAndNumbering.GetDocumentAutoNumberPresentation(DocumentObject));
-			Else
+			// Jack 27.06.2017
+			//If TrimAll(Form.Object.Number) = "" Then
+			//	Number = TrimAll(DocumentsPostingAndNumbering.GetDocumentAutoNumberPresentation(DocumentObject));
+			//Else
 				Number = Form.Object.Number;
-			EndIf;
+			//EndIf;
 		Else
 			Number = Form.HeaderValue.CurrentNumber;
 		EndIf;
@@ -644,11 +654,12 @@ Procedure SetFormDocumentTitle(Form) Export
 		EndIf;
 	EndIf;
 	
-	If CommonAtServer.UseMultiCompaniesMode() Then
+	// Jack 27.06.2017
+	//If CommonAtServer.UseMuliCompaniesMode() Then
 		CompanyTitle = String(Form.Object.Company);
-	Else
-		CompanyTitle = "";
-	EndIf;
+	//Else
+	//	CompanyTitle = "";
+	//EndIf;
 	
 	If CommonAtServer.IsDocumentAttribute("IssuePlace", MetadataObject) Then
 		If ValueIsFilled(Form.Object.IssuePlace) Then

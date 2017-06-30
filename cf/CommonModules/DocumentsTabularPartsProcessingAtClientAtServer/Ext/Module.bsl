@@ -52,37 +52,37 @@
 		//	CalculateRowAmountByPriceAndQuantity(Row, Action.Parameters);
 		//EndIf;	
 		
-		If Action.Name = "CalculateRowNetAmount" Then
-			CalculateRowNetAmount(Row, Action.Parameters);
-		EndIf;	
+		//If Action.Name = "CalculateRowNetAmount" Then
+		//	CalculateRowNetAmount(Row, Action.Parameters);
+		//EndIf;	
 		
-		If Action.Name = "CalculateRowNetAmountByAmount" Then
-			CalculateRowNetAmountByAmount(Row, Action.Parameters);
-		EndIf;	
+		//If Action.Name = "CalculateRowNetAmountByAmount" Then
+		//	CalculateRowNetAmountByAmount(Row, Action.Parameters);
+		//EndIf;	
 
-		If Action.Name = "CalculateRowGrossAmount" Then
-			CalculateRowGrossAmount(Row, Action.Parameters);
-		EndIf;
+		//If Action.Name = "CalculateRowGrossAmount" Then
+		//	CalculateRowGrossAmount(Row, Action.Parameters);
+		//EndIf;
+		//
+		//If Action.Name = "CalculateRowGrossAmountByAmount" Then
+		//	CalculateRowGrossAmountByAmount(Row, Action.Parameters);
+		//EndIf;	
 		
-		If Action.Name = "CalculateRowGrossAmountByAmount" Then
-			CalculateRowGrossAmountByAmount(Row, Action.Parameters);
-		EndIf;	
-		
-		If Action.Name = "CalculateRowVAT" Then
-			CalculateRowVAT(Row, Action.Parameters);
-		EndIf;	
-		
-		If Action.Name = "CalculateRowVATByAmount" Then
-			CalculateRowVATByAmount(Row, Action.Parameters);
-		EndIf;	
+		//If Action.Name = "CalculateRowVAT" Then
+		//	CalculateRowVAT(Row, Action.Parameters);
+		//EndIf;	
+		//
+		//If Action.Name = "CalculateRowVATByAmount" Then
+		//	CalculateRowVATByAmount(Row, Action.Parameters);
+		//EndIf;	
 
-		If Action.Name = "CalculateRowAmount" Then
-			CalculateRowAmount(Row, Action.Parameters);
-		EndIf;	
-		
-		If Action.Name = "CalculateRowAmountNationalByAmount" Then
-			CalculateRowAmountNationalByAmount(Row, Action.Parameters);
-		EndIf;	
+		//If Action.Name = "CalculateRowAmount" Then
+		//	CalculateRowAmount(Row, Action.Parameters);
+		//EndIf;	
+		//
+		//If Action.Name = "CalculateRowAmountNationalByAmount" Then
+		//	CalculateRowAmountNationalByAmount(Row, Action.Parameters);
+		//EndIf;	
 		
 		//If Action.Name = "FillCurrentEmployee" Then
 		//	FillCurrentEmployee(Row, Action.Parameters);
@@ -218,41 +218,41 @@ EndProcedure
 //	
 //EndProcedure	
 
-Procedure CalculateRowVATByAmount(Row,  Val ParametersStructure)
-	
-	Row.VAT = GetItemsLinesRowVATAmount(Row.Amount, Row.VATRate, ParametersStructure.AmountType);
-	
-EndProcedure	
+//Procedure CalculateRowVATByAmount(Row,  Val ParametersStructure)
+//	
+//	Row.VAT = GetItemsLinesRowVATAmount(Row.Amount, Row.VATRate, ParametersStructure.AmountType);
+//	
+//EndProcedure	
 
-Procedure CalculateRowNetAmountByAmount(Row,  Val ParametersStructure)
-	
-	Row.NetAmount = GetNetAmount(Row.Amount, Row.VAT, ParametersStructure.AmountType);
-	
-EndProcedure	
+//Procedure CalculateRowNetAmountByAmount(Row,  Val ParametersStructure)
+//	
+//	Row.NetAmount = GetNetAmount(Row.Amount, Row.VAT, ParametersStructure.AmountType);
+//	
+//EndProcedure	
 
-Procedure CalculateRowAmount(Row,  Val ParametersStructure)
-	
-	If ParametersStructure.AmountType = PredefinedValue("Enum.NetGross.Net") Then
-		Row.Amount = Row.NetAmount;
-	ElsIf ParametersStructure.AmountType = PredefinedValue("Enum.NetGross.Gross") Then	
-		Row.Amount = Row.GrossAmount;
-	Else
-		Row.Amount = 0;
-	EndIf;	
-	
-EndProcedure	
+//Procedure CalculateRowAmount(Row,  Val ParametersStructure)
+//	
+//	If ParametersStructure.AmountType = PredefinedValue("Enum.NetGross.Net") Then
+//		Row.Amount = Row.NetAmount;
+//	ElsIf ParametersStructure.AmountType = PredefinedValue("Enum.NetGross.Gross") Then	
+//		Row.Amount = Row.GrossAmount;
+//	Else
+//		Row.Amount = 0;
+//	EndIf;	
+//	
+//EndProcedure	
 
-Procedure CalculateRowVAT(Row,  Val ParametersStructure)
-	
-	If ParametersStructure.AmountType = PredefinedValue("Enum.NetGross.Net") Then
-		Row.VAT = GetItemsLinesRowVATAmount(Row.NetAmount, Row.VATRate, ParametersStructure.AmountType);
-	ElsIf ParametersStructure.AmountType = PredefinedValue("Enum.NetGross.Gross") Then
-		Row.VAT = GetItemsLinesRowVATAmount(Row.GrossAmount, Row.VATRate, ParametersStructure.AmountType);
-	Else	
-		Row.VAT = 0;
-	EndIf;	
-		
-EndProcedure
+//Procedure CalculateRowVAT(Row,  Val ParametersStructure)
+//	
+//	If ParametersStructure.AmountType = PredefinedValue("Enum.NetGross.Net") Then
+//		Row.VAT = GetItemsLinesRowVATAmount(Row.NetAmount, Row.VATRate, ParametersStructure.AmountType);
+//	ElsIf ParametersStructure.AmountType = PredefinedValue("Enum.NetGross.Gross") Then
+//		Row.VAT = GetItemsLinesRowVATAmount(Row.GrossAmount, Row.VATRate, ParametersStructure.AmountType);
+//	Else	
+//		Row.VAT = 0;
+//	EndIf;	
+//		
+//EndProcedure
 
 // Jack 29.05.2017
 //Procedure CalculatePriceByNetAmountAndQuantity(Row,  Val ParametersStructure)
@@ -277,23 +277,23 @@ EndProcedure
 //		
 //EndProcedure	
 
-Procedure CalculateRowNetAmount(Row,  Val ParametersStructure)
-	
-	Row.NetAmount = GetNetAmount(Row.Amount, Row.VAT, ParametersStructure.AmountType);
-	
-EndProcedure
+//Procedure CalculateRowNetAmount(Row,  Val ParametersStructure)
+//	
+//	Row.NetAmount = GetNetAmount(Row.Amount, Row.VAT, ParametersStructure.AmountType);
+//	
+//EndProcedure
 
-Procedure CalculateRowGrossAmount(Row,  Val ParametersStructure)
-	
-	Row.GrossAmount = GetGrossAmount(Row.NetAmount, Row.VAT, PredefinedValue("Enum.NetGross.Net"));
-	
-EndProcedure
+//Procedure CalculateRowGrossAmount(Row,  Val ParametersStructure)
+//	
+//	Row.GrossAmount = GetGrossAmount(Row.NetAmount, Row.VAT, PredefinedValue("Enum.NetGross.Net"));
+//	
+//EndProcedure
 
-Procedure CalculateRowGrossAmountByAmount(Row,  Val ParametersStructure)
-	
-	Row.GrossAmount = GetGrossAmount(Row.Amount, Row.VAT, ParametersStructure.AmountType);
-	
-EndProcedure
+//Procedure CalculateRowGrossAmountByAmount(Row,  Val ParametersStructure)
+//	
+//	Row.GrossAmount = GetGrossAmount(Row.Amount, Row.VAT, ParametersStructure.AmountType);
+//	
+//EndProcedure
 
 // Jack 29.05.2017
 //Procedure CalculateDiscountByPriceAndInitialPrice(Row,  Val ParametersStructure)
@@ -344,25 +344,25 @@ EndFunction
 //	
 //EndFunction
 
-Function CalculateItemsLinesRowAmounts(ItemsLinesRow, Val AmountType) Export
-	
-	ItemsLinesRow.Amount = DocumentsTabularPartsProcessingAtClientAtServer.GetItemsLinesRowAmount(ItemsLinesRow.Price, ItemsLinesRow.Quantity);
-	ItemsLinesRow.VAT    = DocumentsTabularPartsProcessingAtClientAtServer.GetItemsLinesRowVATAmount(ItemsLinesRow.Amount, ItemsLinesRow.VATRate, AmountType);
-	
-	ItemsLinesRow.GrossAmount = DocumentsTabularPartsProcessingAtClientAtServer.GetGrossAmount(ItemsLinesRow.Amount, ItemsLinesRow.VAT, AmountType);
-	ItemsLinesRow.NetAmount = DocumentsTabularPartsProcessingAtClientAtServer.GetNetAmount(ItemsLinesRow.Amount, ItemsLinesRow.VAT, AmountType);	
-	
-EndFunction	
+//Function CalculateItemsLinesRowAmounts(ItemsLinesRow, Val AmountType) Export
+//	
+//	ItemsLinesRow.Amount = DocumentsTabularPartsProcessingAtClientAtServer.GetItemsLinesRowAmount(ItemsLinesRow.Price, ItemsLinesRow.Quantity);
+//	ItemsLinesRow.VAT    = DocumentsTabularPartsProcessingAtClientAtServer.GetItemsLinesRowVATAmount(ItemsLinesRow.Amount, ItemsLinesRow.VATRate, AmountType);
+//	
+//	ItemsLinesRow.GrossAmount = DocumentsTabularPartsProcessingAtClientAtServer.GetGrossAmount(ItemsLinesRow.Amount, ItemsLinesRow.VAT, AmountType);
+//	ItemsLinesRow.NetAmount = DocumentsTabularPartsProcessingAtClientAtServer.GetNetAmount(ItemsLinesRow.Amount, ItemsLinesRow.VAT, AmountType);	
+//	
+//EndFunction	
 
-Function GetGrossAmount(Val Amount, Val VAT, Val AmountType) Export
-	
-	Return Amount + ?(AmountType = PredefinedValue("Enum.NetGross.Gross"), 0, VAT);
-	
-EndFunction // GetGrossAmount()
+//Function GetGrossAmount(Val Amount, Val VAT, Val AmountType) Export
+//	
+//	Return Amount + ?(AmountType = PredefinedValue("Enum.NetGross.Gross"), 0, VAT);
+//	
+//EndFunction // GetGrossAmount()
 
-Function GetNetAmount(Val Amount, Val VAT, Val AmountType) Export
-	
-	Return Amount - ?(AmountType = PredefinedValue("Enum.NetGross.Gross"), VAT, 0);
-	
-EndFunction // GetNetAmount()
+//Function GetNetAmount(Val Amount, Val VAT, Val AmountType) Export
+//	
+//	Return Amount - ?(AmountType = PredefinedValue("Enum.NetGross.Gross"), VAT, 0);
+//	
+//EndFunction // GetNetAmount()
 

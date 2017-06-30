@@ -1,14 +1,14 @@
-﻿
-Procedure SetWaightAndVolumeColumnsHeaderText(TableBox, WeightColumnName = "Weight", VolumeColumnName = "Volume", GrossWeightColumnName = "") Export
-	
-	TableBox.Columns[WeightColumnName].HeaderText = TableBox.Columns[WeightColumnName].HeaderText + " (" + Constants.WeightUnitOfMeasure.Get() + ")";
-	TableBox.Columns[VolumeColumnName].HeaderText = TableBox.Columns[VolumeColumnName].HeaderText + " (" + Constants.VolumeUnitOfMeasure.Get() + ")";
-	
-	If NOT IsBlankString(GrossWeightColumnName) Then
-		TableBox.Columns[GrossWeightColumnName].HeaderText = TableBox.Columns[GrossWeightColumnName].HeaderText + " (" + Constants.WeightUnitOfMeasure.Get() + ")";
-	EndIf;	
-	
-EndProcedure
+﻿// Jack 29.06.2017
+//Procedure SetWaightAndVolumeColumnsHeaderText(TableBox, WeightColumnName = "Weight", VolumeColumnName = "Volume", GrossWeightColumnName = "") Export
+//	
+//	TableBox.Columns[WeightColumnName].HeaderText = TableBox.Columns[WeightColumnName].HeaderText + " (" + Constants.WeightUnitOfMeasure.Get() + ")";
+//	TableBox.Columns[VolumeColumnName].HeaderText = TableBox.Columns[VolumeColumnName].HeaderText + " (" + Constants.VolumeUnitOfMeasure.Get() + ")";
+//	
+//	If NOT IsBlankString(GrossWeightColumnName) Then
+//		TableBox.Columns[GrossWeightColumnName].HeaderText = TableBox.Columns[GrossWeightColumnName].HeaderText + " (" + Constants.WeightUnitOfMeasure.Get() + ")";
+//	EndIf;	
+//	
+//EndProcedure
 
 Function GetDocumentsTotalString(Document, AmountType, Currency) Export 
 	
@@ -56,198 +56,198 @@ Function WriteObjectInForm(ObjectForm, WriteFlag) Export
 	EndIf;
 	
 EndFunction // WriteNewObjectInForm()
+// Jack 29.06.2017
+//Function GetWightOfDocument(ItemLines) Export	
+//	
+//	Query = New Query;
+//	Query.Text = "SELECT
+//	             |	Items.Item,
+//	             |	Items.Quantity,
+//	             |	Items.UnitOfMeasure
+//	             |INTO TempTableItems
+//	             |FROM
+//	             |	&DistributionTable AS Items
+//	             |;
+//	             |
+//	             |////////////////////////////////////////////////////////////////////////////////
+//	             |SELECT
+//	             |	ItemsUnitsOfMeasure.Weight,
+//	             |	ItemsUnitsOfMeasure.GrossWeight,
+//	             |	TempTableItems.Item.Code AS ItemCode,
+//	             |	TempTableItems.Quantity
+//	             |FROM
+//	             |	TempTableItems AS TempTableItems
+//	             |		LEFT JOIN Catalog.Items.UnitsOfMeasure AS ItemsUnitsOfMeasure
+//	             |		ON TempTableItems.Item = ItemsUnitsOfMeasure.Ref
+//	             |			AND TempTableItems.UnitOfMeasure = ItemsUnitsOfMeasure.UnitOfMeasure";
+//	
+//	Query.SetParameter("DistributionTable", ItemLines);
+//	QueryResult = Query.ExecuteBatch();
+//	QueryUnload = QueryResult[1].Unload();
+//	
+//	WeightTotal = 0;
+//	GrossWeightTotal = 0;
+//	
+//	For each Item in QueryUnload Do
+//		
+//		WeightTotal = WeightTotal + (Item.Weight*Item.Quantity);
+//		GrossWeightTotal = GrossWeightTotal + (Item.GrossWeight*Item.Quantity); 
+//		
+//		If Item.Weight = 0 Then
+//			Message("Towar " + Item.ItemCode + " nie posiada wagi");
+//		EndIf;
+//	EndDo;
+//	
+//	Array = new Array();
+//	Array.Add(WeightTotal);
+//	Array.Add(GrossWeightTotal);
+//	
+//	Return Array;
+//	
+//EndFunction
 
-Function GetWightOfDocument(ItemLines) Export	
-	
-	Query = New Query;
-	Query.Text = "SELECT
-	             |	Items.Item,
-	             |	Items.Quantity,
-	             |	Items.UnitOfMeasure
-	             |INTO TempTableItems
-	             |FROM
-	             |	&DistributionTable AS Items
-	             |;
-	             |
-	             |////////////////////////////////////////////////////////////////////////////////
-	             |SELECT
-	             |	ItemsUnitsOfMeasure.Weight,
-	             |	ItemsUnitsOfMeasure.GrossWeight,
-	             |	TempTableItems.Item.Code AS ItemCode,
-	             |	TempTableItems.Quantity
-	             |FROM
-	             |	TempTableItems AS TempTableItems
-	             |		LEFT JOIN Catalog.Items.UnitsOfMeasure AS ItemsUnitsOfMeasure
-	             |		ON TempTableItems.Item = ItemsUnitsOfMeasure.Ref
-	             |			AND TempTableItems.UnitOfMeasure = ItemsUnitsOfMeasure.UnitOfMeasure";
-	
-	Query.SetParameter("DistributionTable", ItemLines);
-	QueryResult = Query.ExecuteBatch();
-	QueryUnload = QueryResult[1].Unload();
-	
-	WeightTotal = 0;
-	GrossWeightTotal = 0;
-	
-	For each Item in QueryUnload Do
-		
-		WeightTotal = WeightTotal + (Item.Weight*Item.Quantity);
-		GrossWeightTotal = GrossWeightTotal + (Item.GrossWeight*Item.Quantity); 
-		
-		If Item.Weight = 0 Then
-			Message("Towar " + Item.ItemCode + " nie posiada wagi");
-		EndIf;
-	EndDo;
-	
-	Array = new Array();
-	Array.Add(WeightTotal);
-	Array.Add(GrossWeightTotal);
-	
-	Return Array;
-	
-EndFunction
+//Function GetDocumentPricesValueList(Document, Item, PriceColumnName = "Price") Export
+//	
+//	If Document <> Undefined Then
+//		DocumentName = Document.Metadata().Name;
+//		
+//		Query = New Query;
+//		Query.Text = "SELECT
+//		|	DocumentItemsLines." + PriceColumnName + "
+//		|FROM
+//		|	Document." + DocumentName + ".ItemsLines AS DocumentItemsLines
+//		|WHERE
+//		|	DocumentItemsLines.Ref = &Document
+//		|	AND DocumentItemsLines.Item = &Item";
+//		
+//		Query.SetParameter("Document", Document);
+//		Query.SetParameter("Item"    , Item);
+//		
+//		Selection = Query.Execute().Select();
+//		
+//		ValueList = New ValueList;
+//		
+//		While Selection.Next() Do
+//			ValueList.Add(Selection.Price, FormatAmount(Selection.Price));
+//		EndDo;
+//	Else
+//		ValueList = New ValueList;
+//	EndIf;
+//	
+//	Return ValueList;
+//	
+//EndFunction // GetDocumentPricesValueList()
 
-Function GetDocumentPricesValueList(Document, Item, PriceColumnName = "Price") Export
-	
-	If Document <> Undefined Then
-		DocumentName = Document.Metadata().Name;
-		
-		Query = New Query;
-		Query.Text = "SELECT
-		|	DocumentItemsLines." + PriceColumnName + "
-		|FROM
-		|	Document." + DocumentName + ".ItemsLines AS DocumentItemsLines
-		|WHERE
-		|	DocumentItemsLines.Ref = &Document
-		|	AND DocumentItemsLines.Item = &Item";
-		
-		Query.SetParameter("Document", Document);
-		Query.SetParameter("Item"    , Item);
-		
-		Selection = Query.Execute().Select();
-		
-		ValueList = New ValueList;
-		
-		While Selection.Next() Do
-			ValueList.Add(Selection.Price, FormatAmount(Selection.Price));
-		EndDo;
-	Else
-		ValueList = New ValueList;
-	EndIf;
-	
-	Return ValueList;
-	
-EndFunction // GetDocumentPricesValueList()
+//Function GetDocumentPricesAndInitialPriceValueList(Document, Item, PriceColumnName = "Price", InitialPriceColumnName = "InitialPrice",PricePromotionColumnName = "PricePromotion") Export
+//	
+//	If Document <> Undefined Then
+//		DocumentName = Document.Metadata().Name;
+//		
+//		Query = New Query;
+//		Query.Text = "SELECT
+//		|	DocumentItemsLines." + PriceColumnName + " AS Price,
+//		|	DocumentItemsLines." + PricePromotionColumnName + " AS PricePromotion,
+//		|	DocumentItemsLines." + InitialPriceColumnName + " AS InitialPrice
+//		|FROM
+//		|	Document." + DocumentName + ".ItemsLines AS DocumentItemsLines
+//		|WHERE
+//		|	DocumentItemsLines.Ref = &Document
+//		|	AND DocumentItemsLines.Item = &Item";
+//		
+//		Query.SetParameter("Document", Document);
+//		Query.SetParameter("Item"    , Item);
+//		
+//		Selection = Query.Execute().Select();
+//		
+//		ValueList = New ValueList;
+//		
+//		While Selection.Next() Do
+//			ValueList.Add(New Structure("Price, InitialPrice, PricePromotion",Selection.Price,Selection.InitialPrice, Selection.PricePromotion));
+//		EndDo;
+//	Else
+//		ValueList = New ValueList;
+//	EndIf;
+//	
+//	Return ValueList;
+//	
+//EndFunction // GetDocumentPricesValueList()
 
-Function GetDocumentPricesAndInitialPriceValueList(Document, Item, PriceColumnName = "Price", InitialPriceColumnName = "InitialPrice",PricePromotionColumnName = "PricePromotion") Export
-	
-	If Document <> Undefined Then
-		DocumentName = Document.Metadata().Name;
-		
-		Query = New Query;
-		Query.Text = "SELECT
-		|	DocumentItemsLines." + PriceColumnName + " AS Price,
-		|	DocumentItemsLines." + PricePromotionColumnName + " AS PricePromotion,
-		|	DocumentItemsLines." + InitialPriceColumnName + " AS InitialPrice
-		|FROM
-		|	Document." + DocumentName + ".ItemsLines AS DocumentItemsLines
-		|WHERE
-		|	DocumentItemsLines.Ref = &Document
-		|	AND DocumentItemsLines.Item = &Item";
-		
-		Query.SetParameter("Document", Document);
-		Query.SetParameter("Item"    , Item);
-		
-		Selection = Query.Execute().Select();
-		
-		ValueList = New ValueList;
-		
-		While Selection.Next() Do
-			ValueList.Add(New Structure("Price, InitialPrice, PricePromotion",Selection.Price,Selection.InitialPrice, Selection.PricePromotion));
-		EndDo;
-	Else
-		ValueList = New ValueList;
-	EndIf;
-	
-	Return ValueList;
-	
-EndFunction // GetDocumentPricesValueList()
+//Function GetSupplierPricesValueList(Supplier, Item, Date) Export 
+//		
+//	Query = New Query;
+//	Query.Text = "SELECT
+//	             |	InnerQuery.Price AS Price,
+//	             |	InnerQuery.Currency AS Currency,
+//	             |	InnerQuery.Date AS Date,
+//	             |	PurchasePrices.Quantity AS Quantity,
+//	             |	PurchasePrices.UnitOfMeasure AS UnitOfMeasure
+//	             |FROM
+//	             |	(SELECT TOP 5
+//	             |		PurchasePrices.Item AS Item,
+//	             |		PurchasePrices.Supplier AS Supplier,
+//	             |		PurchasePrices.Price AS Price,
+//	             |		PurchasePrices.Currency AS Currency,
+//	             |		MAX(PurchasePrices.Period) AS Date
+//	             |	FROM
+//	             |		InformationRegister.PurchasePrices AS PurchasePrices
+//	             |	WHERE
+//	             |		PurchasePrices.Supplier = &Supplier
+//	             |		AND PurchasePrices.Item = &Item
+//	             |		AND PurchasePrices.Period < &Date
+//	             |	
+//	             |	GROUP BY
+//	             |		PurchasePrices.Supplier,
+//	             |		PurchasePrices.Item,
+//	             |		PurchasePrices.Price,
+//	             |		PurchasePrices.Currency
+//	             |	
+//	             |	ORDER BY
+//	             |		Date DESC) AS InnerQuery
+//	             |		INNER JOIN InformationRegister.PurchasePrices AS PurchasePrices
+//	             |		ON PurchasePrices.Period = InnerQuery.Date
+//	             |			AND PurchasePrices.Item = InnerQuery.Item
+//	             |			AND PurchasePrices.Supplier = InnerQuery.Supplier
+//	             |
+//	             |ORDER BY
+//	             |	Date DESC";
+//	
+//	Query.SetParameter("Supplier", Supplier);
+//	Query.SetParameter("Item"    , Item);
+//	Query.SetParameter("Date"    , Date);
+//	
+//	Selection = Query.Execute().Select();
+//	
+//	ValueList = New ValueList;
+//	
+//	While Selection.Next() Do
+//		ValueList.Add(Selection.Price, FormatAmount(Selection.Price) + " " + Selection.Currency + " (" + Format(Selection.Quantity, "NFD=3") + " " + Selection.UnitOfMeasure + NStr("en=' from ';pl=' od '") + Format(Selection.Date, "DLF=D") + ")" );
+//	EndDo;
+//	
+//	Return ValueList;
+//	
+//EndFunction // GetSupplierPricesValueList()
 
-Function GetSupplierPricesValueList(Supplier, Item, Date) Export 
-		
-	Query = New Query;
-	Query.Text = "SELECT
-	             |	InnerQuery.Price AS Price,
-	             |	InnerQuery.Currency AS Currency,
-	             |	InnerQuery.Date AS Date,
-	             |	PurchasePrices.Quantity AS Quantity,
-	             |	PurchasePrices.UnitOfMeasure AS UnitOfMeasure
-	             |FROM
-	             |	(SELECT TOP 5
-	             |		PurchasePrices.Item AS Item,
-	             |		PurchasePrices.Supplier AS Supplier,
-	             |		PurchasePrices.Price AS Price,
-	             |		PurchasePrices.Currency AS Currency,
-	             |		MAX(PurchasePrices.Period) AS Date
-	             |	FROM
-	             |		InformationRegister.PurchasePrices AS PurchasePrices
-	             |	WHERE
-	             |		PurchasePrices.Supplier = &Supplier
-	             |		AND PurchasePrices.Item = &Item
-	             |		AND PurchasePrices.Period < &Date
-	             |	
-	             |	GROUP BY
-	             |		PurchasePrices.Supplier,
-	             |		PurchasePrices.Item,
-	             |		PurchasePrices.Price,
-	             |		PurchasePrices.Currency
-	             |	
-	             |	ORDER BY
-	             |		Date DESC) AS InnerQuery
-	             |		INNER JOIN InformationRegister.PurchasePrices AS PurchasePrices
-	             |		ON PurchasePrices.Period = InnerQuery.Date
-	             |			AND PurchasePrices.Item = InnerQuery.Item
-	             |			AND PurchasePrices.Supplier = InnerQuery.Supplier
-	             |
-	             |ORDER BY
-	             |	Date DESC";
-	
-	Query.SetParameter("Supplier", Supplier);
-	Query.SetParameter("Item"    , Item);
-	Query.SetParameter("Date"    , Date);
-	
-	Selection = Query.Execute().Select();
-	
-	ValueList = New ValueList;
-	
-	While Selection.Next() Do
-		ValueList.Add(Selection.Price, FormatAmount(Selection.Price) + " " + Selection.Currency + " (" + Format(Selection.Quantity, "NFD=3") + " " + Selection.UnitOfMeasure + NStr("en=' from ';pl=' od '") + Format(Selection.Date, "DLF=D") + ")" );
-	EndDo;
-	
-	Return ValueList;
-	
-EndFunction // GetSupplierPricesValueList()
+//Function GetDocumentFirstPrice(Document, Item) Export 
+//	
+//	PriceValueList = GetDocumentPricesValueList(Document, Item);
+//	If PriceValueList.Count() = 1 Then
+//		Return PriceValueList[0].Value;
+//	Else
+//		Return 0;
+//	EndIf;
+//	
+//EndFunction // GetDocumentFirstPrice()
 
-Function GetDocumentFirstPrice(Document, Item) Export 
-	
-	PriceValueList = GetDocumentPricesValueList(Document, Item);
-	If PriceValueList.Count() = 1 Then
-		Return PriceValueList[0].Value;
-	Else
-		Return 0;
-	EndIf;
-	
-EndFunction // GetDocumentFirstPrice()
-
-Function GetDocumentFirstPriceAndInitialPriceStructure(Document, Item) Export 
-	
-	PriceValueList = GetDocumentPricesAndInitialPriceValueList(Document, Item);
-	If PriceValueList.Count() = 1 Then
-		Return PriceValueList[0].Value;
-	Else
-		Return New Structure("Price, InitialPrice, PricePromotion",0,0,Catalogs.SalesPricePromotions.EmptyRef());
-	EndIf;
-	
-EndFunction // GetDocumentFirstPrice()
+//Function GetDocumentFirstPriceAndInitialPriceStructure(Document, Item) Export 
+//	
+//	PriceValueList = GetDocumentPricesAndInitialPriceValueList(Document, Item);
+//	If PriceValueList.Count() = 1 Then
+//		Return PriceValueList[0].Value;
+//	Else
+//		Return New Structure("Price, InitialPrice, PricePromotion",0,0,Catalogs.SalesPricePromotions.EmptyRef());
+//	EndIf;
+//	
+//EndFunction // GetDocumentFirstPrice()
 
 
 Function GetSalesInvoicePricePromotionsValueList(Document, Item) Export 
@@ -649,35 +649,36 @@ Function GetRowGrossAmount(Amount, VAT, AmountType) Export
 	
 EndFunction // GetRowGrossAmount()
 
-Procedure SetVATControlsEnabled(DocumentForm,ColumnsArray,Enable = Undefined) Export
-	
-	VATCalculationMethod = DocumentsPostingAndNumbering.GetVATCalculationMethod(DocumentForm.Date, DocumentForm.Company);
-	
-	If Enable = Undefined Then 
-		
-		ControlsEnable = True;
-		
-		If VATCalculationMethod = Enums.VATCalculationMethod.ByEachDocumentLine Then
-			
-			ControlsEnable = True;
-			
-		ElsIf VATCalculationMethod = Enums.VATCalculationMethod.ByFullDocumentAmount Then
-			
-			ControlsEnable = False;
-			
-		EndIf;
-		
-	Else
-		
-		ControlsEnable = Enable;
-		
-	EndIf;
-	
-	For Each Control In ColumnsArray Do
-		Control.ReadOnly = NOT ControlsEnable;
-	EndDo;	
-	
-EndProcedure	
+// Jack 29.06.2017
+//Procedure SetVATControlsEnabled(DocumentForm,ColumnsArray,Enable = Undefined) Export
+//	
+//	VATCalculationMethod = DocumentsPostingAndNumbering.GetVATCalculationMethod(DocumentForm.Date, DocumentForm.Company);
+//	
+//	If Enable = Undefined Then 
+//		
+//		ControlsEnable = True;
+//		
+//		If VATCalculationMethod = Enums.VATCalculationMethod.ByEachDocumentLine Then
+//			
+//			ControlsEnable = True;
+//			
+//		ElsIf VATCalculationMethod = Enums.VATCalculationMethod.ByFullDocumentAmount Then
+//			
+//			ControlsEnable = False;
+//			
+//		EndIf;
+//		
+//	Else
+//		
+//		ControlsEnable = Enable;
+//		
+//	EndIf;
+//	
+//	For Each Control In ColumnsArray Do
+//		Control.ReadOnly = NOT ControlsEnable;
+//	EndDo;	
+//	
+//EndProcedure	
 
 ////////////////////////////////////////////////////////////////////////////////
 // PROCEDURES AND FUNCTIONS FOR HANDLING TYPING ON A CONTROL
@@ -997,16 +998,17 @@ Function GetAutoCompleteQueryResult(Val Text, ParametersStructure, ObjectType, C
 
 EndFunction
 
-Procedure ShowSlaveDocuments(DocumentRef) Export 
-	
-	Form = GetCommonForm("SlaveDocuments");
-	If Form.IsOpen() Then
-		Form.Close();
-	EndIf;
-	Form.DocumentRef = DocumentRef;
-	Form.Open();
-	
-EndProcedure
+// Jack 29.06.2017
+//Procedure ShowSlaveDocuments(DocumentRef) Export 
+//	
+//	Form = GetCommonForm("SlaveDocuments");
+//	If Form.IsOpen() Then
+//		Form.Close();
+//	EndIf;
+//	Form.DocumentRef = DocumentRef;
+//	Form.Open();
+//	
+//EndProcedure
 
 Procedure ShowDocumentsRecordsBookkeeping(DocumentRef) Export
 	
@@ -1027,16 +1029,17 @@ EndProcedure // ShowDocumentsRecords
 
 Procedure SetVATNumberMask(LocationType, VATNumber, ControlVATNumber) Export
 	
-	If LocationType = Enums.BusinessPartnersLocationTypes.Domestic Then
-		ControlVATNumber.Mask = "9999999999";
-	ElsIf LocationType = Enums.BusinessPartnersLocationTypes.EuropeanUnion Then
-		ControlVATNumber.Mask = "UUUX99999UUU99";
-	ElsIf LocationType = Enums.BusinessPartnersLocationTypes.Foreign Then
-		ControlVATNumber.Mask = "";
-	Else
+	// to do
+	//If LocationType = Enums.BusinessPartnersLocationTypes.Domestic Then
+	//	ControlVATNumber.Mask = "9999999999";
+	//ElsIf LocationType = Enums.BusinessPartnersLocationTypes.EuropeanUnion Then
+	//	ControlVATNumber.Mask = "UUUX99999UUU99";
+	//ElsIf LocationType = Enums.BusinessPartnersLocationTypes.Foreign Then
+	//	ControlVATNumber.Mask = "";
+	//Else
 		ControlVATNumber.Mask = "";
 		ControlVATNumber.Value = VATNumber;
-	EndIf;
+	//EndIf;
 	
 	If TrimAll(VATNumber) <> TrimAll(ControlVATNumber.Value) Then
 		VATNumber = ControlVATNumber.Value
@@ -1044,65 +1047,66 @@ Procedure SetVATNumberMask(LocationType, VATNumber, ControlVATNumber) Export
 	
 EndProcedure
 
-Procedure ShowRegistersRecords(FormOwner,ObjectRef) Export
-	
-	RecordsReportAndCorrectionForm = DataProcessors.RecordsReportAndCorrection.GetForm("MainForm", FormOwner, FormOwner);
-	If ValueIsFilled(ObjectRef) Then
-		RecordsReportAndCorrectionForm.Document = ObjectRef;
-	EndIf;
-	RecordsReportAndCorrectionForm.Open();
-	
-EndProcedure
+// Jack 29.06.2017
+//Procedure ShowRegistersRecords(FormOwner,ObjectRef) Export
+//	
+//	RecordsReportAndCorrectionForm = DataProcessors.RecordsReportAndCorrection.GetForm("MainForm", FormOwner, FormOwner);
+//	If ValueIsFilled(ObjectRef) Then
+//		RecordsReportAndCorrectionForm.Document = ObjectRef;
+//	EndIf;
+//	RecordsReportAndCorrectionForm.Open();
+//	
+//EndProcedure
 
 
-Procedure ShowDocumentAcceptanceForm(Form) Export
-	
-	If Not WriteObjectInForm(Form, Form.Modified) Then
-		Return;
-	EndIf;
-	
-	AcceptanceForm = DataProcessors.DocumentsAcceptance.GetForm("DocumentForm", Form);
-	AcceptanceForm.Document = Form.Ref;
-	AcceptanceForm.Open();
-	
-EndProcedure
+//Procedure ShowDocumentAcceptanceForm(Form) Export
+//	
+//	If Not WriteObjectInForm(Form, Form.Modified) Then
+//		Return;
+//	EndIf;
+//	
+//	AcceptanceForm = DataProcessors.DocumentsAcceptance.GetForm("DocumentForm", Form);
+//	AcceptanceForm.Document = Form.Ref;
+//	AcceptanceForm.Open();
+//	
+//EndProcedure
 
-Procedure AdjustFormActionsAcceptanceButton(Form) Export
-	
-	Button = Form.Controls.FormActions.Buttons.Acceptance;
-	
-	If Form.IsNew() Then
-		
-		Enabled = False;
-		Picture = New Picture;
-		
-	Else
-		
-		CurrentStateStructure = DocumentsAcceptance.GetCurrentState(Form.Ref);
-		
-		If CurrentStateStructure = Undefined Or ValueIsNotFilled(CurrentStateStructure.Schema) Then
-			
-			Enabled = False;
-			Picture = New Picture;
-			
-		Else
-			
-			Enabled = True;
-			
-			If ValueIsFilled(CurrentStateStructure.NextUser) Then
-				Picture = New Picture;
-			Else
-				Picture = PictureLib.Accepted;
-			EndIf;
-			
-		EndIf;
-		
-	EndIf;
-	
-	Button.Enabled = Enabled;
-	Button.Picture = Picture;
-	
-EndProcedure
+//Procedure AdjustFormActionsAcceptanceButton(Form) Export
+//	
+//	Button = Form.Controls.FormActions.Buttons.Acceptance;
+//	
+//	If Form.IsNew() Then
+//		
+//		Enabled = False;
+//		Picture = New Picture;
+//		
+//	Else
+//		
+//		CurrentStateStructure = DocumentsAcceptance.GetCurrentState(Form.Ref);
+//		
+//		If CurrentStateStructure = Undefined Or ValueIsNotFilled(CurrentStateStructure.Schema) Then
+//			
+//			Enabled = False;
+//			Picture = New Picture;
+//			
+//		Else
+//			
+//			Enabled = True;
+//			
+//			If ValueIsFilled(CurrentStateStructure.NextUser) Then
+//				Picture = New Picture;
+//			Else
+//				Picture = PictureLib.Accepted;
+//			EndIf;
+//			
+//		EndIf;
+//		
+//	EndIf;
+//	
+//	Button.Enabled = Enabled;
+//	Button.Picture = Picture;
+//	
+//EndProcedure
 
 Procedure SetPanelFirstVisiblePage(PanelControl) Export
 	
@@ -1115,110 +1119,111 @@ Procedure SetPanelFirstVisiblePage(PanelControl) Export
 	
 EndProcedure	
 
-////////////////////////////////////////////////////////////////////////////////
-// DOCUMENT POSTING QUERY
+//////////////////////////////////////////////////////////////////////////////////
+//// DOCUMENT POSTING QUERY
 
-Function FillIsModifiedField(ThisForm, WriteMode, IsModified) Export
-	
-	If WriteMode = DocumentWriteMode.UndoPosting Then
-		
-		Return Undefined;
-		
-	ElsIf IsModified <> Undefined Then
-		
-		Return IsModified;
-		
-	ElsIf IsModified = Undefined And ThisForm.Modified Then
-		
-		Return True;
-		
-	Else
-		
-		Return Undefined;
-		
-	EndIf;
-	
-EndFunction
+// Jack 29.06.2017
+//Function FillIsModifiedField(ThisForm, WriteMode, IsModified) Export
+//	
+//	If WriteMode = DocumentWriteMode.UndoPosting Then
+//		
+//		Return Undefined;
+//		
+//	ElsIf IsModified <> Undefined Then
+//		
+//		Return IsModified;
+//		
+//	ElsIf IsModified = Undefined And ThisForm.Modified Then
+//		
+//		Return True;
+//		
+//	Else
+//		
+//		Return Undefined;
+//		
+//	EndIf;
+//	
+//EndFunction
 
-Function CheckDocumentModificate(Object, ThisForm, IsModified) Export
-	
-	If Not CommonAtServer.GetUserSettingsValue("TheUserKnowsPrinciplesOfPosting") Then  // environment option
-		
-		If Not Object.Posted And Not ThisForm.ReadOnly And Not ThisForm.DeletionMark Then //form is unlock for operation (documetn option)
-			
-			If Not ThisForm.Modified And IsModified = Undefined Then
-				
-				Return False;
-				
-			EndIf;
-			
-			//Do Query Dialog
-			DocumentSavingAndPostingQueryForm = GetCommonForm("DocumentClosingForm");
-			RewriteMode = DocumentSavingAndPostingQueryForm.DoModal();
-			
-			If RewriteMode = DialogReturnCode.No Then
-				
-				Return False;
-				
-			ElsIf RewriteMode = DialogReturnCode.Yes Then
-				
-				Return True;
-				
-			EndIf;
-			
-		EndIf;
-		
-	EndIf;
-	
-EndFunction
+//Function CheckDocumentModificate(Object, ThisForm, IsModified) Export
+//	
+//	If Not CommonAtServer.GetUserSettingsValue("TheUserKnowsPrinciplesOfPosting") Then  // environment option
+//		
+//		If Not Object.Posted And Not ThisForm.ReadOnly And Not ThisForm.DeletionMark Then //form is unlock for operation (documetn option)
+//			
+//			If Not ThisForm.Modified And IsModified = Undefined Then
+//				
+//				Return False;
+//				
+//			EndIf;
+//			
+//			//Do Query Dialog
+//			DocumentSavingAndPostingQueryForm = GetCommonForm("DocumentClosingForm");
+//			RewriteMode = DocumentSavingAndPostingQueryForm.DoModal();
+//			
+//			If RewriteMode = DialogReturnCode.No Then
+//				
+//				Return False;
+//				
+//			ElsIf RewriteMode = DialogReturnCode.Yes Then
+//				
+//				Return True;
+//				
+//			EndIf;
+//			
+//		EndIf;
+//		
+//	EndIf;
+//	
+//EndFunction
 
-////////////////////////////////////////////////////////////////////////////////
-/// Document code column
+//////////////////////////////////////////////////////////////////////////////////
+///// Document code column
 
-Function GetCurrentUserCodeType() Export
-	
-	Return CommonAtServer.GetUserSettingsValue(ChartsOfCharacteristicTypes.UserSettings.ShowItemCodeInDocument,SessionParameters.CurrentUser);
-	
-EndFunction	
+//Function GetCurrentUserCodeType() Export
+//	
+//	Return CommonAtServer.GetUserSettingsValue(ChartsOfCharacteristicTypes.UserSettings.ShowItemCodeInDocument,SessionParameters.CurrentUser);
+//	
+//EndFunction	
 
-Procedure AddDocumentTabularPartCodeColumn(TableBoxControl,ItemColumnName = "Item",CodeType = Undefined) Export
-	
-	If CodeType = Undefined Then
-		CodeType = CommonAtServer.GetUserSettingsValue(ChartsOfCharacteristicTypes.UserSettings.ShowItemCodeInDocument,SessionParameters.CurrentUser);
-	EndIf;	
-	
-	If ValueIsFilled(CodeType) AND CodeType <> Enums.CodeTypes.DontShow Then
-		
-		FoundItemColumn = TableBoxControl.Columns.Find(ItemColumnName);
-		If FoundItemColumn <> Undefined Then
-			
-			CodeColumn = TableBoxControl.Columns.Insert(TableBoxControl.Columns.IndexOf(FoundItemColumn)+1,Metadata.Enums.CodeTypes.EnumValues[CommonAtServer.GetEnumNameByValue(CodeType)].Synonym);
-			CodeColumn.Name = "GeneratedCodeColumn";
-			CodeColumn.ReadOnly = True;
-			CodeColumn.Visible = True;
-			CodeColumn.SetControl(Type("TextBox"));
-			
-		EndIf;	
-		
-	EndIf;	
-	
-EndProcedure	
+//Procedure AddDocumentTabularPartCodeColumn(TableBoxControl,ItemColumnName = "Item",CodeType = Undefined) Export
+//	
+//	If CodeType = Undefined Then
+//		CodeType = CommonAtServer.GetUserSettingsValue(ChartsOfCharacteristicTypes.UserSettings.ShowItemCodeInDocument,SessionParameters.CurrentUser);
+//	EndIf;	
+//	
+//	If ValueIsFilled(CodeType) AND CodeType <> Enums.CodeTypes.DontShow Then
+//		
+//		FoundItemColumn = TableBoxControl.Columns.Find(ItemColumnName);
+//		If FoundItemColumn <> Undefined Then
+//			
+//			CodeColumn = TableBoxControl.Columns.Insert(TableBoxControl.Columns.IndexOf(FoundItemColumn)+1,Metadata.Enums.CodeTypes.EnumValues[CommonAtServer.GetEnumNameByValue(CodeType)].Synonym);
+//			CodeColumn.Name = "GeneratedCodeColumn";
+//			CodeColumn.ReadOnly = True;
+//			CodeColumn.Visible = True;
+//			CodeColumn.SetControl(Type("TextBox"));
+//			
+//		EndIf;	
+//		
+//	EndIf;	
+//	
+//EndProcedure	
 
-Procedure ShowDocumentCodeColumn(RowAppearance, RowData, ItemColumnName = "Item", CodeType = Undefined) Export
-	
-	If CodeType = Undefined Then
-		CodeType = CommonAtServer.GetUserSettingsValue(ChartsOfCharacteristicTypes.UserSettings.ShowItemCodeInDocument,SessionParameters.CurrentUser);
-	EndIf;	
-	
-	If CodeType = Enums.CodeTypes.Code Then
-		RowAppearance.Cells.GeneratedCodeColumn.Text = TrimAll(RowData[ItemColumnName].Code);	
-	ElsIf CodeType = Enums.CodeTypes.Article Then
-		RowAppearance.Cells.GeneratedCodeColumn.Text = TrimAll(RowData[ItemColumnName].Article);	 	
-	ElsIf CodeType = Enums.CodeTypes.EANCode Then
-		RowAppearance.Cells.GeneratedCodeColumn.Text = TrimAll(RowData[ItemColumnName].MainBarCode);
-	Else
-		Return;
-	EndIf;
-	RowAppearance.Cells.GeneratedCodeColumn.ShowText = True;
-	
-EndProcedure	
+//Procedure ShowDocumentCodeColumn(RowAppearance, RowData, ItemColumnName = "Item", CodeType = Undefined) Export
+//	
+//	If CodeType = Undefined Then
+//		CodeType = CommonAtServer.GetUserSettingsValue(ChartsOfCharacteristicTypes.UserSettings.ShowItemCodeInDocument,SessionParameters.CurrentUser);
+//	EndIf;	
+//	
+//	If CodeType = Enums.CodeTypes.Code Then
+//		RowAppearance.Cells.GeneratedCodeColumn.Text = TrimAll(RowData[ItemColumnName].Code);	
+//	ElsIf CodeType = Enums.CodeTypes.Article Then
+//		RowAppearance.Cells.GeneratedCodeColumn.Text = TrimAll(RowData[ItemColumnName].Article);	 	
+//	ElsIf CodeType = Enums.CodeTypes.EANCode Then
+//		RowAppearance.Cells.GeneratedCodeColumn.Text = TrimAll(RowData[ItemColumnName].MainBarCode);
+//	Else
+//		Return;
+//	EndIf;
+//	RowAppearance.Cells.GeneratedCodeColumn.ShowText = True;
+//	
+//EndProcedure	

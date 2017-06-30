@@ -102,12 +102,14 @@ Procedure PrefixOnChange(SelectedElement, AdditionalParameters) Export
 	If SelectedElement = Undefined Then
 		Return;
 	EndIf;
-	If SelectedElement.Value = "NumberSettings" Then
-		OpenForm("InformationRegister.DocumentsNumberingSettings.Form.RecordFormSetting", New Structure("DocumentType", Object.Ref), ThisForm);
-		Return;
-	EndIf;
-	Object["ManualChangeNumber"] = False;
-	Object["Prefix"] = SelectedElement.Value;
+	// Jack 25.06.2017
+	// to do
+	//If SelectedElement.Value = "NumberSettings" Then
+	//	OpenForm("InformationRegister.DocumentsNumberingSettings.Form.RecordFormSetting", New Structure("DocumentType", Object.Ref), ThisForm);
+	//	Return;
+	//EndIf;
+	//Object["ManualChangeNumber"] = False;
+	//Object["Prefix"] = SelectedElement.Value;
 	DocumentsFormAtClient.ChangeDocumentsHeaderData(ThisForm);
 EndProcedure
 

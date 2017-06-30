@@ -237,16 +237,7 @@ Function GetAvailablePrintoutsList(Objects) Export
 				 |	Partner";
 	
 	Query.SetParameter("ArrayRefs", Objects);
-	If Constants.UseMultiLanguagesDescriptions.Get() Then
-		Query.Text = StrReplace(Query.Text, "PrintoutsSettings.PrintoutLanguage IN (&PrintoutLanguage)", "True");
-	Else
-		SysLeng = LanguagesModulesServerCached.GetSystemLanguage();
-		PrintoutLanguage = New Array;
-		PrintoutLanguage.Add(Upper(SysLeng.Code));
-		PrintoutLanguage.Add(Lower(SysLeng.Code));
-		PrintoutLanguage.Add("");
-		Query.SetParameter("PrintoutLanguage", PrintoutLanguage);
-	EndIf;
+	Query.Text = StrReplace(Query.Text, "PrintoutsSettings.PrintoutLanguage IN (&PrintoutLanguage)", "True");
 	Result = Query.Execute();
 	SelectionDescription = Result.Select(QueryResultIteration.ByGroups);
 	

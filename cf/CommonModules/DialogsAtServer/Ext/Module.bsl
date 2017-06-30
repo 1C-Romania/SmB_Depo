@@ -29,8 +29,6 @@
 	
 EndProcedure
 
-
-
 Function GetBookkeepingOperation(DocumentRef) Export 
 	Answer = New Structure("Success,Message,ShowMessage,BookkeepingOperation,Empty",False,"",False,Undefined,False);
 	BookkeepingIsRegisterRecords = FALSE;
@@ -92,43 +90,43 @@ Function GetBookkeepingOperation(DocumentRef) Export
 		
 EndFunction
 
+// Jack 29.06.2017
+//Procedure AddDocumentTabularPartCodeColumn(ThisForm) Export
+//	Object = ThisForm.Object;
+//	//  by Jack 28.03.2017
+//	//CodeType = CommonAtServer.GetUserSettingsValue(ChartsOfCharacteristicTypes.UserSettings.ShowItemCodeInDocument, SessionParameters.CurrentUser);
+//	CodeType = Enums.CodeTypes.DontShow;
 
-Procedure AddDocumentTabularPartCodeColumn(ThisForm) Export
-	Object = ThisForm.Object;
-	//  by Jack 28.03.2017
-	//CodeType = CommonAtServer.GetUserSettingsValue(ChartsOfCharacteristicTypes.UserSettings.ShowItemCodeInDocument, SessionParameters.CurrentUser);
-	CodeType = Enums.CodeTypes.DontShow;
-
-	AllItems = ThisForm.Items;
-	ObjectMetadata = Object.Ref.Metadata();
-	ItemType = Type("CatalogRef.Items");
-	If ValueIsFilled(CodeType) AND CodeType <> Enums.CodeTypes.DontShow Then
-		For Each TabularPart In ObjectMetadata.TabularSections Do
-			ParentItem = AllItems.Find(TabularPart.Name);			
-			If ParentItem <> Undefined Then			
-				For Each CurrentAttribute In TabularPart.Attributes Do							
-					If CurrentAttribute.Type.ContainsType(ItemType) AND CurrentAttribute.Type.Types().Count() = 1 Then
-						CodeColumn = AllItems.Insert(TabularPart.Name + "GeneratedCodeColumn", Type("FormField"), ParentItem, AllItems[TabularPart.Name + CurrentAttribute.Name]);
-						AllItems.Move(AllItems[TabularPart.Name + CurrentAttribute.Name], AllItems[TabularPart.Name] , CodeColumn);
-						CodeColumn.Type = FormFieldType.InputField;
-						CodeColumn.ReadOnly = True;
-						CodeColumn.Visible = True;
-						CodeColumn.Width = 20;
-						
-						If CodeType = Enums.CodeTypes.Code Then				
-							AttributeName = "Code";
-						ElsIf CodeType = Enums.CodeTypes.Article Then
-							AttributeName = "Article";
-						ElsIf CodeType = Enums.CodeTypes.EANCode Then
-							AttributeName = "MainBarCode";
-						EndIf;
-						
-						CodeColumn.DataPath = "Object." + TabularPart.Name + "." + CurrentAttribute.Name + "." + AttributeName;
-					EndIf;				
-				EndDo;			
-			EndIf; 
-		EndDo;
-	EndIf;
-	
-EndProcedure
-			
+//	AllItems = ThisForm.Items;
+//	ObjectMetadata = Object.Ref.Metadata();
+//	ItemType = Type("CatalogRef.Items");
+//	If ValueIsFilled(CodeType) AND CodeType <> Enums.CodeTypes.DontShow Then
+//		For Each TabularPart In ObjectMetadata.TabularSections Do
+//			ParentItem = AllItems.Find(TabularPart.Name);			
+//			If ParentItem <> Undefined Then			
+//				For Each CurrentAttribute In TabularPart.Attributes Do							
+//					If CurrentAttribute.Type.ContainsType(ItemType) AND CurrentAttribute.Type.Types().Count() = 1 Then
+//						CodeColumn = AllItems.Insert(TabularPart.Name + "GeneratedCodeColumn", Type("FormField"), ParentItem, AllItems[TabularPart.Name + CurrentAttribute.Name]);
+//						AllItems.Move(AllItems[TabularPart.Name + CurrentAttribute.Name], AllItems[TabularPart.Name] , CodeColumn);
+//						CodeColumn.Type = FormFieldType.InputField;
+//						CodeColumn.ReadOnly = True;
+//						CodeColumn.Visible = True;
+//						CodeColumn.Width = 20;
+//						
+//						If CodeType = Enums.CodeTypes.Code Then				
+//							AttributeName = "Code";
+//						ElsIf CodeType = Enums.CodeTypes.Article Then
+//							AttributeName = "Article";
+//						ElsIf CodeType = Enums.CodeTypes.EANCode Then
+//							AttributeName = "MainBarCode";
+//						EndIf;
+//						
+//						CodeColumn.DataPath = "Object." + TabularPart.Name + "." + CurrentAttribute.Name + "." + AttributeName;
+//					EndIf;				
+//				EndDo;			
+//			EndIf; 
+//		EndDo;
+//	EndIf;
+//	
+//EndProcedure
+//			

@@ -67,14 +67,17 @@ Procedure Posting(Cancel, PostingMode)
 	QueryResult = Query.Execute().Select();
 	
 	While QueryResult.Next() Do
-		If TypeOf(QueryResult.ExtDimension1) = TypeOf(Catalogs.Employees.EmptyRef()) Then
-			PartnerInGroup = True;
-		ElsIf TypeOf(QueryResult.ExtDimension1) = TypeOf(Catalogs.Customers.EmptyRef()) Or
-			TypeOf(QueryResult.ExtDimension1) = TypeOf(Catalogs.Suppliers.EmptyRef()) Then
-			PartnerInGroup = QueryResult.ExtDimension1.AccountingGroup.Affiliate;
-		Else
-			PartnerInGroup = False;
-		EndIf;
+		// Jack 25.06.2017
+		// to do
+		PartnerInGroup = False;
+		//If TypeOf(QueryResult.ExtDimension1) = TypeOf(Catalogs.Employees.EmptyRef()) Then
+		//	PartnerInGroup = True;
+		//ElsIf TypeOf(QueryResult.ExtDimension1) = TypeOf(Catalogs.Customers.EmptyRef()) Or
+		//	TypeOf(QueryResult.ExtDimension1) = TypeOf(Catalogs.Suppliers.EmptyRef()) Then
+		//	PartnerInGroup = QueryResult.ExtDimension1.AccountingGroup.Affiliate;
+		//Else
+		//	PartnerInGroup = False;
+		//EndIf;
 
 		PostItem(Date, PartnerInGroup, AccountingPolicy, QueryResult, Cancel);
 		PostItem(DayOfNextMonth, PartnerInGroup, AccountingPolicy, QueryResult, Cancel);

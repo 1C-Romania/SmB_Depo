@@ -184,9 +184,9 @@
 			<SearchStringModeOnInputByString>AnyPart</SearchStringModeOnInputByString>
 			<FullTextSearchOnInputByString>DontUse</FullTextSearchOnInputByString>
 			<ChoiceDataGetModeOnInputByString>Directly</ChoiceDataGetModeOnInputByString>
-			<DefaultObjectForm>Document.CurrencyAccountsValuation.Form.DocumentForm</DefaultObjectForm>
-			<DefaultListForm>Document.CurrencyAccountsValuation.Form.ListForm</DefaultListForm>
-			<DefaultChoiceForm>Document.CurrencyAccountsValuation.Form.ChoiceForm</DefaultChoiceForm>
+			<DefaultObjectForm>Document.CurrencyAccountsValuation.Form.DocumentFormManaged</DefaultObjectForm>
+			<DefaultListForm>Document.CurrencyAccountsValuation.Form.ListFormManaged</DefaultListForm>
+			<DefaultChoiceForm>Document.CurrencyAccountsValuation.Form.ListFormManaged</DefaultChoiceForm>
 			<AuxiliaryObjectForm>Document.CurrencyAccountsValuation.Form.DocumentFormManaged</AuxiliaryObjectForm>
 			<AuxiliaryListForm>Document.CurrencyAccountsValuation.Form.ListFormManaged</AuxiliaryListForm>
 			<AuxiliaryChoiceForm>Document.CurrencyAccountsValuation.Form.ListFormManaged</AuxiliaryChoiceForm>
@@ -477,9 +477,6 @@
 					<FullTextSearch>Use</FullTextSearch>
 				</Properties>
 			</Attribute>
-			<Form>DocumentForm</Form>
-			<Form>ListForm</Form>
-			<Form>ChoiceForm</Form>
 			<Form>DocumentFormManaged</Form>
 			<Form>ListFormManaged</Form>
 			<TabularSection uuid="d7d0e9c8-8cd4-4a68-a248-6f14d0d4af4b">

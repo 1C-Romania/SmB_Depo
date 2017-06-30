@@ -381,51 +381,53 @@ Function GetGoodsInventoryAccountingPolicy(Date,Company) Export // Akulov
 	Return InformationRegisters.BookkeepingDefaultAccountGoodsInventoryMovements.GetLast(EndOfDay(Date),Filter);
 EndFunction	
 
-Function GetSettlementAccounts(Date,PartnerAccountingGroup,ItemAccountingGroup) Export // Akulov
-	Filter = New Structure;
-	Filter.Insert("BusinessAccountingGroup", PartnerAccountingGroup);
-	Filter.Insert("ItemAccountingGroup", ItemAccountingGroup);
-	Return InformationRegisters._BookkeepingAccountingGroupsSettlementAccounts.GetLast(EndOfDay(Date),Filter);
-EndFunction	
+// Jack 27.06.2017
+//Function GetSettlementAccounts(Date,PartnerAccountingGroup,ItemAccountingGroup) Export // Akulov
+//	Filter = New Structure;
+//	Filter.Insert("BusinessAccountingGroup", PartnerAccountingGroup);
+//	Filter.Insert("ItemAccountingGroup", ItemAccountingGroup);
+//	Return InformationRegisters._BookkeepingAccountingGroupsSettlementAccounts.GetLast(EndOfDay(Date),Filter);
+//EndFunction	
 
+// Jack 27.06.2017
 // returns account for given cost of goods direction
-Function GetAccountingPolicyCostOfGoodsDirections(Date, Company, Direction,ItemAccountingGroup) Export
-	
-	Query = New Query();
-	Query.Text = "SELECT
-	             |	BookkeepingAccountingPolicyCostOfGoodsDirectionsSliceLast.Account,
-	             |	BookkeepingAccountingPolicyCostOfGoodsDirectionsSliceLast.ExtDimension1,
-	             |	BookkeepingAccountingPolicyCostOfGoodsDirectionsSliceLast.ExtDimension2,
-	             |	BookkeepingAccountingPolicyCostOfGoodsDirectionsSliceLast.ExtDimension3,
-	             |	BookkeepingAccountingPolicyCostOfGoodsDirectionsSliceLast.ItemAccountingGroup AS ItemAccountingGroup
-	             |FROM
-	             |	InformationRegister.BookkeepingAccountingPolicyCostOfGoodsDirections.SliceLast(
-	             |			&Date,
-	             |			Company = &Company
-	             |				AND Direction = &Direction) AS BookkeepingAccountingPolicyCostOfGoodsDirectionsSliceLast
-	             |WHERE
-	             |	(BookkeepingAccountingPolicyCostOfGoodsDirectionsSliceLast.ItemAccountingGroup = &ItemAccountingGroup
-	             |			OR BookkeepingAccountingPolicyCostOfGoodsDirectionsSliceLast.ItemAccountingGroup = &EmptyItemAccountingGroup)";
-	Query.SetParameter("Date",Date);
-	Query.SetParameter("Company",Company);
-	Query.SetParameter("Direction", Direction);
-	Query.SetParameter("ItemAccountingGroup", ItemAccountingGroup);
-	Query.SetParameter("EmptyItemAccountingGroup", Catalogs.ItemAccountingGroups.EmptyRef());
-	ResultTable = Query.Execute().Unload();
-	ResRow = ResultTable.Find(ItemAccountingGroup,"ItemAccountingGroup");
-	If ResRow = Undefined Then
-		If ResultTable.Count()>0 Then
-			ResRow = ResultTable.Get(0);
-		Else
-			Return Undefined;
-		EndIf;	
-	EndIf;	
-	
-	RetStructure = New Structure("Account, ExtDimension1, ExtDimension2, ExtDimension3",ResRow.Account,ResRow.ExtDimension1,ResRow.ExtDimension2,ResRow.ExtDimension3);
-					 
-	Return RetStructure;
-	
-EndFunction
+//Function GetAccountingPolicyCostOfGoodsDirections(Date, Company, Direction,ItemAccountingGroup) Export
+//	
+//	Query = New Query();
+//	Query.Text = "SELECT
+//	             |	BookkeepingAccountingPolicyCostOfGoodsDirectionsSliceLast.Account,
+//	             |	BookkeepingAccountingPolicyCostOfGoodsDirectionsSliceLast.ExtDimension1,
+//	             |	BookkeepingAccountingPolicyCostOfGoodsDirectionsSliceLast.ExtDimension2,
+//	             |	BookkeepingAccountingPolicyCostOfGoodsDirectionsSliceLast.ExtDimension3,
+//	             |	BookkeepingAccountingPolicyCostOfGoodsDirectionsSliceLast.ItemAccountingGroup AS ItemAccountingGroup
+//	             |FROM
+//	             |	InformationRegister.BookkeepingAccountingPolicyCostOfGoodsDirections.SliceLast(
+//	             |			&Date,
+//	             |			Company = &Company
+//	             |				AND Direction = &Direction) AS BookkeepingAccountingPolicyCostOfGoodsDirectionsSliceLast
+//	             |WHERE
+//	             |	(BookkeepingAccountingPolicyCostOfGoodsDirectionsSliceLast.ItemAccountingGroup = &ItemAccountingGroup
+//	             |			OR BookkeepingAccountingPolicyCostOfGoodsDirectionsSliceLast.ItemAccountingGroup = &EmptyItemAccountingGroup)";
+//	Query.SetParameter("Date",Date);
+//	Query.SetParameter("Company",Company);
+//	Query.SetParameter("Direction", Direction);
+//	Query.SetParameter("ItemAccountingGroup", ItemAccountingGroup);
+//	Query.SetParameter("EmptyItemAccountingGroup", Catalogs.ItemAccountingGroups.EmptyRef());
+//	ResultTable = Query.Execute().Unload();
+//	ResRow = ResultTable.Find(ItemAccountingGroup,"ItemAccountingGroup");
+//	If ResRow = Undefined Then
+//		If ResultTable.Count()>0 Then
+//			ResRow = ResultTable.Get(0);
+//		Else
+//			Return Undefined;
+//		EndIf;	
+//	EndIf;	
+//	
+//	RetStructure = New Structure("Account, ExtDimension1, ExtDimension2, ExtDimension3",ResRow.Account,ResRow.ExtDimension1,ResRow.ExtDimension2,ResRow.ExtDimension3);
+//					 
+//	Return RetStructure;
+//	
+//EndFunction
 
 Function GetFinePercent(Customer , Date = Undefined) Export
 	

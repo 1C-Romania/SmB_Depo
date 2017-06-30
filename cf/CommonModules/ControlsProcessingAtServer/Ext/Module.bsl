@@ -266,25 +266,25 @@ Procedure AllowAccountsExtDimensions(Account, ExtDimensionName = "ExtDimension",
 	EndDo;
 	
 EndProcedure	
+// Jack 29.06.2017
+//Procedure SetWeightAndVolumeColumnsHeaderText(TableBox, WeightColumnName = "Weight", VolumeColumnName = "Volume", GrossWeightColumnName = "") Export
+//	
+//	TableBox.Columns[WeightColumnName].HeaderText = TableBox.Columns[WeightColumnName].HeaderText + " (" + Constants.WeightUnitOfMeasure.Get() + ")";
+//	TableBox.Columns[VolumeColumnName].HeaderText = TableBox.Columns[VolumeColumnName].HeaderText + " (" + Constants.VolumeUnitOfMeasure.Get() + ")";
+//	
+//	If NOT IsBlankString(GrossWeightColumnName) Then
+//		TableBox.Columns[GrossWeightColumnName].HeaderText = TableBox.Columns[GrossWeightColumnName].HeaderText + " (" + Constants.WeightUnitOfMeasure.Get() + ")";
+//	EndIf;	
+//	
+//EndProcedure
 
-Procedure SetWeightAndVolumeColumnsHeaderText(TableBox, WeightColumnName = "Weight", VolumeColumnName = "Volume", GrossWeightColumnName = "") Export
-	
-	TableBox.Columns[WeightColumnName].HeaderText = TableBox.Columns[WeightColumnName].HeaderText + " (" + Constants.WeightUnitOfMeasure.Get() + ")";
-	TableBox.Columns[VolumeColumnName].HeaderText = TableBox.Columns[VolumeColumnName].HeaderText + " (" + Constants.VolumeUnitOfMeasure.Get() + ")";
-	
-	If NOT IsBlankString(GrossWeightColumnName) Then
-		TableBox.Columns[GrossWeightColumnName].HeaderText = TableBox.Columns[GrossWeightColumnName].HeaderText + " (" + Constants.WeightUnitOfMeasure.Get() + ")";
-	EndIf;	
-	
-EndProcedure
-
-Procedure SetWeightAndVolumeColumnsHeaderTextManaged(TableBox, WeightColumnName = "Weight", VolumeColumnName = "Volume", GrossWeightColumnName = "") Export
-	
-	TableBox.ChildItems[TableBox.Name + WeightColumnName].Title = Nstr("en='Weight net';pl='Waga netto';ru='Вес нетто'") + " (" + Constants.WeightUnitOfMeasure.Get() + ")";
-	TableBox.ChildItems[TableBox.Name + VolumeColumnName].Title = Nstr("en='Volume';pl='Objętość';ru='Объем'") + " (" + Constants.VolumeUnitOfMeasure.Get() + ")";
-	
-	If NOT IsBlankString(GrossWeightColumnName) Then
-		TableBox.ChildItems[TableBox.Name + GrossWeightColumnName].Title = Nstr("en='Weight gross';pl='Waga brutto';ru='Вес брутто'") + " (" + Constants.WeightUnitOfMeasure.Get() + ")";
-	EndIf;	
-	
-EndProcedure
+//Procedure SetWeightAndVolumeColumnsHeaderTextManaged(TableBox, WeightColumnName = "Weight", VolumeColumnName = "Volume", GrossWeightColumnName = "") Export
+//	
+//	TableBox.ChildItems[TableBox.Name + WeightColumnName].Title = Nstr("en='Weight net';pl='Waga netto';ru='Вес нетто'") + " (" + Constants.WeightUnitOfMeasure.Get() + ")";
+//	TableBox.ChildItems[TableBox.Name + VolumeColumnName].Title = Nstr("en='Volume';pl='Objętość';ru='Объем'") + " (" + Constants.VolumeUnitOfMeasure.Get() + ")";
+//	
+//	If NOT IsBlankString(GrossWeightColumnName) Then
+//		TableBox.ChildItems[TableBox.Name + GrossWeightColumnName].Title = Nstr("en='Weight gross';pl='Waga brutto';ru='Вес брутто'") + " (" + Constants.WeightUnitOfMeasure.Get() + ")";
+//	EndIf;	
+//	
+//EndProcedure

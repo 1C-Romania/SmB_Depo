@@ -1,0 +1,40 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<MetaDataObject xmlns="http://v8.1c.ru/8.3/MDClasses" xmlns:app="http://v8.1c.ru/8.2/managed-application/core" xmlns:cfg="http://v8.1c.ru/8.1/data/enterprise/current-config" xmlns:cmi="http://v8.1c.ru/8.2/managed-application/cmi" xmlns:ent="http://v8.1c.ru/8.1/data/enterprise" xmlns:lf="http://v8.1c.ru/8.2/managed-application/logform" xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows" xmlns:xen="http://v8.1c.ru/8.3/xcf/enums" xmlns:xpr="http://v8.1c.ru/8.3/xcf/predef" xmlns:xr="http://v8.1c.ru/8.3/xcf/readable" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.4">
+	<DataProcessor uuid="bd21330a-4089-4058-a7c0-4987b594df98">
+		<InternalInfo>
+			<xr:GeneratedType name="DataProcessorObject.AccountManagement" category="Object">
+				<xr:TypeId>85f42248-b099-4e13-aa54-5d7d4696546f</xr:TypeId>
+				<xr:ValueId>8a255640-7df6-4e86-8e80-6827fbf6c2db</xr:ValueId>
+			</xr:GeneratedType>
+			<xr:GeneratedType name="DataProcessorManager.AccountManagement" category="Manager">
+				<xr:TypeId>bdabea51-35a4-416a-91b4-4285fad95008</xr:TypeId>
+				<xr:ValueId>06e45b81-7786-420f-ac3b-0d5e8d99ad47</xr:ValueId>
+			</xr:GeneratedType>
+		</InternalInfo>
+		<Properties>
+			<Name>AccountManagement</Name>
+			<Synonym>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Accounts management</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>pl</v8:lang>
+					<v8:content>Zarządzanie kontami</v8:content>
+				</v8:item>
+			</Synonym>
+			<Comment/>
+			<UseStandardCommands>true</UseStandardCommands>
+			<DefaultForm>DataProcessor.AccountManagement.Form.Form</DefaultForm>
+			<AuxiliaryForm>DataProcessor.AccountManagement.Form.FormManaged</AuxiliaryForm>
+			<IncludeHelpInContents>false</IncludeHelpInContents>
+			<ExtendedPresentation/>
+			<Explanation/>
+		</Properties>
+		<ChildObjects>
+			<Form>Form</Form>
+			<Form>FormManaged</Form>
+			<Template>Template</Template>
+		</ChildObjects>
+	</DataProcessor>
+</MetaDataObject>

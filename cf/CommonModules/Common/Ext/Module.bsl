@@ -406,132 +406,133 @@ EndFunction
 
 ////////////////////////////////////////////////////////////////////////////////
 // PROCEDURES AND FUNCTIONS FOR FILLING ATTRIBUTES IN FORM
+// Jack 27.06.2017
 
-Procedure RegisterNewPartner(Control, Text, Value, StandardProcessing, mSupplierTyping, mSupplierTypingText, mLastValueOfSupplierTyping, ThisForm, Partner, Modified, CatalogName) Export
+//Procedure RegisterNewPartner(Control, Text, Value, StandardProcessing, mSupplierTyping, mSupplierTypingText, mLastValueOfSupplierTyping, ThisForm, Partner, Modified, CatalogName) Export
 
-	StandardProcessing = False;
-	
-	If TypeOf(Control.Value) <> Type("String") Then
-	
-		QueryText = NStr("en='Partner not found. Add new partner?';pl='Nie znaleziono partnera. Dodać nowego partnera?'");
-		
-		Answer = DoQueryBox(QueryText, QuestionDialogMode.YesNoCancel, , DialogReturnCode.No);
-		
-		If Answer <> DialogReturnCode.Yes Then
-			If Answer = DialogReturnCode.No Then
-				mSupplierTyping = True;
-				mSupplierTypingText = Text;
-			Else
-				Value = mLastValueOfSupplierTyping;
-			EndIf;
-			Return;
-		EndIf;
-		
-		NewPartner = Catalogs[CatalogName].CreateItem();
-		SimplePartnerForm = NewPartner.GetForm("SimpleItemForm",ThisForm);
-		
-		IsPositiveNumber = False;
-		Try
-			RetNumb = Number(TrimAll(Text));
-			If RetNumb > 0 Then
-				IsPositiveNumber = True;
-			EndIf;
-		Except
-		EndTry;
-		
-		// if positive number then probably user creates partner by VATNumber
-		// else Text is treated like partner description
-		If IsPositiveNumber then
-			NewPartner.VATNumber = Text;
-			NewPartner.VATPayer = True;
-		Else 
-			NewPartner.Description = Text;
-			NewPartner.LongDescription = Text;
-		EndIf;
-		
-		SimplePartnerForm.DoModal();     
-		Value = Partner;
-		Modified = True;
-		
-	Else
-		
-		Value = Text;
-		
-	EndIf;
-	
-EndProcedure
+//	StandardProcessing = False;
+//	
+//	If TypeOf(Control.Value) <> Type("String") Then
+//	
+//		QueryText = NStr("en='Partner not found. Add new partner?';pl='Nie znaleziono partnera. Dodać nowego partnera?'");
+//		
+//		Answer = DoQueryBox(QueryText, QuestionDialogMode.YesNoCancel, , DialogReturnCode.No);
+//		
+//		If Answer <> DialogReturnCode.Yes Then
+//			If Answer = DialogReturnCode.No Then
+//				mSupplierTyping = True;
+//				mSupplierTypingText = Text;
+//			Else
+//				Value = mLastValueOfSupplierTyping;
+//			EndIf;
+//			Return;
+//		EndIf;
+//		
+//		NewPartner = Catalogs[CatalogName].CreateItem();
+//		SimplePartnerForm = NewPartner.GetForm("SimpleItemForm",ThisForm);
+//		
+//		IsPositiveNumber = False;
+//		Try
+//			RetNumb = Number(TrimAll(Text));
+//			If RetNumb > 0 Then
+//				IsPositiveNumber = True;
+//			EndIf;
+//		Except
+//		EndTry;
+//		
+//		// if positive number then probably user creates partner by VATNumber
+//		// else Text is treated like partner description
+//		If IsPositiveNumber then
+//			NewPartner.VATNumber = Text;
+//			NewPartner.VATPayer = True;
+//		Else 
+//			NewPartner.Description = Text;
+//			NewPartner.LongDescription = Text;
+//		EndIf;
+//		
+//		SimplePartnerForm.DoModal();     
+//		Value = Partner;
+//		Modified = True;
+//		
+//	Else
+//		
+//		Value = Text;
+//		
+//	EndIf;
+//	
+//EndProcedure
 
-Procedure RegisterNewVendor(Control, Text, Value, StandardProcessing, mVendorTyping, mVendorTypingText, mLastValueOfVendorTyping, ThisForm, Vendor, Modified, CatalogName) Export
+//Procedure RegisterNewVendor(Control, Text, Value, StandardProcessing, mVendorTyping, mVendorTypingText, mLastValueOfVendorTyping, ThisForm, Vendor, Modified, CatalogName) Export
 
-	StandardProcessing = False;
-	
-	If TypeOf(Control.Value) <> Type("String") Then
-	
-		QueryText = NStr("en='Vendor not found. Add new vendor?';pl='Nie znaleziono producenta. Dodać nowego producenta?'");
-		
-		Answer = DoQueryBox(QueryText, QuestionDialogMode.YesNoCancel, , DialogReturnCode.No);
-		
-		If Answer <> DialogReturnCode.Yes Then
-			If Answer = DialogReturnCode.No Then
-				mVendorTyping = True;
-				mVendorTypingText = Text;
-			Else
-				Value = mLastValueOfVendorTyping;
-			EndIf;
-			Return;
-		EndIf;
-		
-		NewVendor = Catalogs[CatalogName].CreateItem();
-		NewVendor.Description = Text;
-		NewVendor.Write();
-		
-		Value = NewVendor.Ref;
-		Modified = True;
-		
-	Else
-		
-		Value = Text;
-		
-	EndIf;
-	
-EndProcedure
+//	StandardProcessing = False;
+//	
+//	If TypeOf(Control.Value) <> Type("String") Then
+//	
+//		QueryText = NStr("en='Vendor not found. Add new vendor?';pl='Nie znaleziono producenta. Dodać nowego producenta?'");
+//		
+//		Answer = DoQueryBox(QueryText, QuestionDialogMode.YesNoCancel, , DialogReturnCode.No);
+//		
+//		If Answer <> DialogReturnCode.Yes Then
+//			If Answer = DialogReturnCode.No Then
+//				mVendorTyping = True;
+//				mVendorTypingText = Text;
+//			Else
+//				Value = mLastValueOfVendorTyping;
+//			EndIf;
+//			Return;
+//		EndIf;
+//		
+//		NewVendor = Catalogs[CatalogName].CreateItem();
+//		NewVendor.Description = Text;
+//		NewVendor.Write();
+//		
+//		Value = NewVendor.Ref;
+//		Modified = True;
+//		
+//	Else
+//		
+//		Value = Text;
+//		
+//	EndIf;
+//	
+//EndProcedure
 
-Procedure RegisterNewEmployee(Control, Text, Value, StandardProcessing, mEmployeeTyping, mEmployeeTypingText, mLastValueOfEmployeeTyping, ThisForm, Employee, Modified, CatalogName) Export
+//Procedure RegisterNewEmployee(Control, Text, Value, StandardProcessing, mEmployeeTyping, mEmployeeTypingText, mLastValueOfEmployeeTyping, ThisForm, Employee, Modified, CatalogName) Export
 
-	StandardProcessing = False;
-	
-	If TypeOf(Control.Value) <> Type("String") Then
-	
-		QueryText = NStr("en='Employee not found. Add new employee?';pl='Nie znaleziono pracownika. Dodać nowego pracownika?'");
-		
-		Answer = DoQueryBox(QueryText, QuestionDialogMode.YesNoCancel, , DialogReturnCode.No);
-		
-		If Answer <> DialogReturnCode.Yes Then
-			If Answer = DialogReturnCode.No Then
-				mEmployeeTyping = True;
-				mEmployeeTypingText = Text;
-			Else
-				Value = mLastValueOfEmployeeTyping;
-			EndIf;
-			Return;
-		EndIf;
-		
-		NewEmployee = Catalogs[CatalogName].CreateItem();
-		SimpleEmployeeForm = NewEmployee.GetForm("ItemForm",ThisForm);
-		
-		NewEmployee.Description = Text;	
-		NewEmployee.CollaborationType = Enums.TypeOfCollaborationWithEmployee.Employee;
-		SimpleEmployeeForm.DoModal();     
-		Value = Employee;
-		Modified = True;		
-		
-	Else
-		
-		Value = Text;
-		
-	EndIf;
-	
-EndProcedure
+//	StandardProcessing = False;
+//	
+//	If TypeOf(Control.Value) <> Type("String") Then
+//	
+//		QueryText = NStr("en='Employee not found. Add new employee?';pl='Nie znaleziono pracownika. Dodać nowego pracownika?'");
+//		
+//		Answer = DoQueryBox(QueryText, QuestionDialogMode.YesNoCancel, , DialogReturnCode.No);
+//		
+//		If Answer <> DialogReturnCode.Yes Then
+//			If Answer = DialogReturnCode.No Then
+//				mEmployeeTyping = True;
+//				mEmployeeTypingText = Text;
+//			Else
+//				Value = mLastValueOfEmployeeTyping;
+//			EndIf;
+//			Return;
+//		EndIf;
+//		
+//		NewEmployee = Catalogs[CatalogName].CreateItem();
+//		SimpleEmployeeForm = NewEmployee.GetForm("ItemForm",ThisForm);
+//		
+//		NewEmployee.Description = Text;	
+//		NewEmployee.CollaborationType = Enums.TypeOfCollaborationWithEmployee.Employee;
+//		SimpleEmployeeForm.DoModal();     
+//		Value = Employee;
+//		Modified = True;		
+//		
+//	Else
+//		
+//		Value = Text;
+//		
+//	EndIf;
+//	
+//EndProcedure
 #EndIf
 
 // Procedure used to filling general form attributes
@@ -1038,12 +1039,17 @@ Function GetYearDays(Date = Undefined) Export
 EndFunction	
 
 Function GetCompanyLogo(Company) Export
-	Return CommonAtServer.GetCompanyLogo(Company);
+	
+	//Return CommonAtServer.GetCompanyLogo(Company);
+	// Jack 29.06.2017
+	// to do
+	Return Undefined;
 EndFunction
 
-Function GetPaymentDate(InitialDate, PaymentTerm) Export
-	Return CommonAtServer.GetPaymentDate(InitialDate, PaymentTerm);
-EndFunction
+// Jack 29.06.2017
+//Function GetPaymentDate(InitialDate, PaymentTerm) Export
+//	Return CommonAtServer.GetPaymentDate(InitialDate, PaymentTerm);
+//EndFunction
 
 Function GetExchangeRateRecord(Currency, RateDate) Export
 	Return CommonAtServer.GetExchangeRateRecord(Currency, RateDate);
@@ -1073,17 +1079,18 @@ Function GetNationalAmount(Amount, Currency, ExchangeRate) Export
 	Return CommonAtServer.GetNationalAmount(Amount, Currency, ExchangeRate);
 EndFunction
 
-Function CreateNewInternalDocument(Control, Text, Value, StandardProcessing, mSupplierTyping, mSupplierTypingText, mLastValueOfSupplierTyping, ThisForm, Modified, CatalogName,TabularPartName = "SettlementDocuments",Owner = Undefined,OmitQuestionOnNewCreation = False) Export
-	Return CommonAtServer.CreateNewInternalDocument(Control, Text, Value, StandardProcessing, mSupplierTyping, mSupplierTypingText, mLastValueOfSupplierTyping, ThisForm, Modified, CatalogName, TabularPartName, Owner, OmitQuestionOnNewCreation);
-EndFunction
+// Jack 27.06.2017
+//Function CreateNewInternalDocument(Control, Text, Value, StandardProcessing, mSupplierTyping, mSupplierTypingText, mLastValueOfSupplierTyping, ThisForm, Modified, CatalogName,TabularPartName = "SettlementDocuments",Owner = Undefined,OmitQuestionOnNewCreation = False) Export
+//	Return CommonAtServer.CreateNewInternalDocument(Control, Text, Value, StandardProcessing, mSupplierTyping, mSupplierTypingText, mLastValueOfSupplierTyping, ThisForm, Modified, CatalogName, TabularPartName, Owner, OmitQuestionOnNewCreation);
+//EndFunction
 
-Function GetItemsUnitsOfMeasureValueList(Item) Export
-	Return CommonAtServer.GetItemsUnitsOfMeasureValueList(Item);
-EndFunction
+//Function GetItemsUnitsOfMeasureValueList(Item) Export
+//	Return CommonAtServer.GetItemsUnitsOfMeasureValueList(Item);
+//EndFunction
 
-Function IsCreditCardInSystem(CardNumber, PaymentMetodResult = Undefined) Export
-	Return CommonAtServer.IsCreditCardInSystem(CardNumber, PaymentMetodResult);
-EndFunction
+//Function IsCreditCardInSystem(CardNumber, PaymentMetodResult = Undefined) Export
+//	Return CommonAtServer.IsCreditCardInSystem(CardNumber, PaymentMetodResult);
+//EndFunction
 
 Function GetGeneratedByText(LanguageCode = "") Export
 	Return CommonAtServer.GetGeneratedByText(LanguageCode);
@@ -1092,26 +1099,26 @@ EndFunction
 Function GetUserSettingsValue(Setting = "", User = Undefined) Export
 	Return CommonAtServer.GetUserSettingsValue(Setting, User);
 EndFunction
+// Jack 27.06.2017
+//Function GetDocumentRemarks(DocumentObject, BusinessPartner = Undefined) Export
+//	Return CommonAtServer.GetDocumentRemarks(DocumentObject, BusinessPartner);
+//EndFunction
 
-Function GetDocumentRemarks(DocumentObject, BusinessPartner = Undefined) Export
-	Return CommonAtServer.GetDocumentRemarks(DocumentObject, BusinessPartner);
-EndFunction
+//Function DocumentsAcceptance_DataCompositionSettingsComposer(DocumentBase) Export
+//	Return CommonAtServer.DocumentsAcceptance_DataCompositionSettingsComposer(DocumentBase);
+//EndFunction
 
-Function DocumentsAcceptance_DataCompositionSettingsComposer(DocumentBase) Export
-	Return CommonAtServer.DocumentsAcceptance_DataCompositionSettingsComposer(DocumentBase);
-EndFunction
+//Function DocumentsAcceptance_GetSchemaRef(DocumentRef, ErrorText) Export
+//	Return CommonAtServer.DocumentsAcceptance_GetSchemaRef(DocumentRef, ErrorText);
+//EndFunction
 
-Function DocumentsAcceptance_GetSchemaRef(DocumentRef, ErrorText) Export
-	Return CommonAtServer.DocumentsAcceptance_GetSchemaRef(DocumentRef, ErrorText);
-EndFunction
+//Function CustomersFastFilter(FastFilter, PortionSize = 100,GetDescription = False,AskAboutCountOfGettingPortions = False, GetAllPortions = True) Export
+//	Return CommonAtServer.CustomersFastFilter(FastFilter, PortionSize,GetDescription, AskAboutCountOfGettingPortions, GetAllPortions);
+//EndFunction
 
-Function CustomersFastFilter(FastFilter, PortionSize = 100,GetDescription = False,AskAboutCountOfGettingPortions = False, GetAllPortions = True) Export
-	Return CommonAtServer.CustomersFastFilter(FastFilter, PortionSize,GetDescription, AskAboutCountOfGettingPortions, GetAllPortions);
-EndFunction
-
-Function ItemsFastFilter(FastFilter,PortionSize = 100,GetDescription = False,AskAboutCountOfGettingPortions = False, GetAllPortions = True) Export
-	Return CommonAtServer.ItemsFastFilter(FastFilter, PortionSize, GetDescription, AskAboutCountOfGettingPortions, GetAllPortions);
-EndFunction
+//Function ItemsFastFilter(FastFilter,PortionSize = 100,GetDescription = False,AskAboutCountOfGettingPortions = False, GetAllPortions = True) Export
+//	Return CommonAtServer.ItemsFastFilter(FastFilter, PortionSize, GetDescription, AskAboutCountOfGettingPortions, GetAllPortions);
+//EndFunction
 
 Function GetAttribute(ObjectRef,AttributeName,Cancel = False) Export
 	Return CommonAtServer.GetAttribute(ObjectRef,AttributeName,Cancel);

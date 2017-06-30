@@ -1,0 +1,534 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<Form xmlns="http://v8.1c.ru/8.3/xcf/logform" xmlns:app="http://v8.1c.ru/8.2/managed-application/core" xmlns:cfg="http://v8.1c.ru/8.1/data/enterprise/current-config" xmlns:dcscor="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:dcsset="http://v8.1c.ru/8.1/data-composition-system/settings" xmlns:ent="http://v8.1c.ru/8.1/data/enterprise" xmlns:lf="http://v8.1c.ru/8.2/managed-application/logform" xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows" xmlns:xr="http://v8.1c.ru/8.3/xcf/readable" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.4">
+	<Title>
+		<v8:item>
+			<v8:lang>en</v8:lang>
+			<v8:content>Period selection</v8:content>
+		</v8:item>
+		<v8:item>
+			<v8:lang>pl</v8:lang>
+			<v8:content>Wybór okresu</v8:content>
+		</v8:item>
+		<v8:item>
+			<v8:lang>ru</v8:lang>
+			<v8:content>Выбор периода</v8:content>
+		</v8:item>
+	</Title>
+	<WindowOpeningMode>LockOwnerWindow</WindowOpeningMode>
+	<AutoTitle>false</AutoTitle>
+	<CommandBarLocation>None</CommandBarLocation>
+	<AutoCommandBar name="ФормаКоманднаяПанель" id="-1"/>
+	<Events>
+		<Event name="OnCreateAtServer">OnCreateAtServer</Event>
+	</Events>
+	<ChildItems>
+		<UsualGroup name="GroupSelectYear" id="99">
+			<Group>Horizontal</Group>
+			<Representation>None</Representation>
+			<ShowTitle>false</ShowTitle>
+			<BackColor>style:QuickChoiceGroupBackground</BackColor>
+			<ExtendedTooltip name="GroupSelectYearExtendedTooltip" id="100"/>
+			<ChildItems>
+				<LabelDecoration name="DecorationLeft" id="169">
+					<HorizontalStretch>true</HorizontalStretch>
+					<ContextMenu name="DecorationLeftContextMenu" id="170"/>
+					<ExtendedTooltip name="DecorationLeftExtendedTooltip" id="171"/>
+				</LabelDecoration>
+				<Button name="GoToPreviousYear" id="90">
+					<Type>UsualButton</Type>
+					<CommandName>Form.Command.GoToPreviousYear</CommandName>
+					<Font ref="style:LargeTextFont" kind="StyleItem"/>
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>&lt;</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>pl</v8:lang>
+							<v8:content>&lt;</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>&lt;</v8:content>
+						</v8:item>
+					</Title>
+					<ExtendedTooltip name="GoToPreviousYearExtendedTooltip" id="91"/>
+				</Button>
+				<LabelField name="BegOfYearDate" id="92">
+					<DataPath>BegOfYearDate</DataPath>
+					<TitleLocation>None</TitleLocation>
+					<HorizontalAlign>Center</HorizontalAlign>
+					<Format>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>DF=yyyy</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>pl</v8:lang>
+							<v8:content>DF=yyyy</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>DF=yyyy</v8:content>
+						</v8:item>
+					</Format>
+					<Font ref="style:LargeTextFont" kind="StyleItem"/>
+					<ContextMenu name="BegOfYearDateContextMenu" id="93"/>
+					<ExtendedTooltip name="BegOfYearDateExtendedTooltip" id="94"/>
+				</LabelField>
+				<Button name="GoToNextYear" id="95">
+					<Type>UsualButton</Type>
+					<CommandName>Form.Command.GoToNextYear</CommandName>
+					<Font ref="style:LargeTextFont" kind="StyleItem"/>
+					<ExtendedTooltip name="GoToNextYearExtendedTooltip" id="96"/>
+				</Button>
+				<LabelDecoration name="DecorationRight" id="166">
+					<HorizontalStretch>true</HorizontalStretch>
+					<ContextMenu name="DecorationRightContextMenu" id="167"/>
+					<ExtendedTooltip name="DecorationRightExtendedTooltip" id="168"/>
+				</LabelDecoration>
+			</ChildItems>
+		</UsualGroup>
+		<UsualGroup name="Quarter1" id="150">
+			<Group>Horizontal</Group>
+			<Representation>None</Representation>
+			<ShowTitle>false</ShowTitle>
+			<ExtendedTooltip name="Quarter1ExtendedTooltip" id="151"/>
+			<ChildItems>
+				<UsualGroup name="Monthes123" id="152">
+					<Group>Horizontal</Group>
+					<Representation>None</Representation>
+					<ShowTitle>false</ShowTitle>
+					<ExtendedTooltip name="Monthes123ExtendedTooltip" id="153"/>
+					<ChildItems>
+						<Button name="SelectMonth1" id="101">
+							<Type>UsualButton</Type>
+							<Width>9</Width>
+							<Height>1</Height>
+							<CommandName>Form.Command.SelectMonth1</CommandName>
+							<ExtendedTooltip name="SelectMonth1ExtendedTooltip" id="102"/>
+						</Button>
+						<Button name="SelectMonth2" id="103">
+							<Type>UsualButton</Type>
+							<Width>9</Width>
+							<CommandName>Form.Command.SelectMonth2</CommandName>
+							<ExtendedTooltip name="SelectMonth2ExtendedTooltip" id="104"/>
+						</Button>
+						<Button name="SelectMonth3" id="105">
+							<Type>UsualButton</Type>
+							<Width>9</Width>
+							<CommandName>Form.Command.SelectMonth3</CommandName>
+							<ExtendedTooltip name="SelectMonth3ExtendedTooltip" id="106"/>
+						</Button>
+					</ChildItems>
+				</UsualGroup>
+				<Button name="SelectQuarter1" id="107">
+					<Type>UsualButton</Type>
+					<Width>9</Width>
+					<CommandName>Form.Command.SelectQuarter1</CommandName>
+					<BackColor>#DCDCDC</BackColor>
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>1st quarter</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>pl</v8:lang>
+							<v8:content>1. kwartał</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>1 квартал</v8:content>
+						</v8:item>
+					</Title>
+					<ExtendedTooltip name="SelectQuarter1ExtendedTooltip" id="108"/>
+				</Button>
+				<Button name="SelectDay" id="174">
+					<Type>UsualButton</Type>
+					<Representation>Text</Representation>
+					<Width>10</Width>
+					<CommandName>Form.Command.SelectDay</CommandName>
+					<BackColor>#C0C0C0</BackColor>
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>day</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>pl</v8:lang>
+							<v8:content>dzień</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>день</v8:content>
+						</v8:item>
+					</Title>
+					<ExtendedTooltip name="SelectDayExtendedTooltip" id="175"/>
+				</Button>
+			</ChildItems>
+		</UsualGroup>
+		<UsualGroup name="Quarter2" id="154">
+			<Group>Horizontal</Group>
+			<Representation>None</Representation>
+			<ShowTitle>false</ShowTitle>
+			<ExtendedTooltip name="Quarter2ExtendedTooltip" id="155"/>
+			<ChildItems>
+				<UsualGroup name="Monthes456" id="156">
+					<Group>Horizontal</Group>
+					<Representation>None</Representation>
+					<ShowTitle>false</ShowTitle>
+					<ExtendedTooltip name="Monthes456ExtendedTooltip" id="157"/>
+					<ChildItems>
+						<Button name="SelectMonth4" id="109">
+							<Type>UsualButton</Type>
+							<Width>9</Width>
+							<CommandName>Form.Command.SelectMonth4</CommandName>
+							<ExtendedTooltip name="SelectMonth4ExtendedTooltip" id="110"/>
+						</Button>
+						<Button name="SelectMonth5" id="111">
+							<Type>UsualButton</Type>
+							<Width>9</Width>
+							<CommandName>Form.Command.SelectMonth5</CommandName>
+							<ExtendedTooltip name="SelectMonth5ExtendedTooltip" id="112"/>
+						</Button>
+						<Button name="SelectMonth6" id="113">
+							<Type>UsualButton</Type>
+							<Width>9</Width>
+							<CommandName>Form.Command.SelectMonth6</CommandName>
+							<ExtendedTooltip name="SelectMonth6ExtendedTooltip" id="114"/>
+						</Button>
+					</ChildItems>
+				</UsualGroup>
+				<Button name="SelectQuarter2" id="115">
+					<Type>UsualButton</Type>
+					<Width>9</Width>
+					<CommandName>Form.Command.SelectQuarter2</CommandName>
+					<BackColor>#DCDCDC</BackColor>
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>2nd quarter</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>pl</v8:lang>
+							<v8:content>2. kwartał</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>2 квартал</v8:content>
+						</v8:item>
+					</Title>
+					<ExtendedTooltip name="SelectQuarter2ExtendedTooltip" id="116"/>
+				</Button>
+				<Button name="SelectHalfYear" id="133">
+					<Type>UsualButton</Type>
+					<Width>10</Width>
+					<CommandName>Form.Command.SelectHalfYear</CommandName>
+					<BackColor>#C0C0C0</BackColor>
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>half of year</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>pl</v8:lang>
+							<v8:content>półrocze</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>полугодие</v8:content>
+						</v8:item>
+					</Title>
+					<ExtendedTooltip name="SelectHalfYearExtendedTooltip" id="134"/>
+				</Button>
+			</ChildItems>
+		</UsualGroup>
+		<UsualGroup name="Quarter3" id="158">
+			<Group>Horizontal</Group>
+			<Representation>None</Representation>
+			<ShowTitle>false</ShowTitle>
+			<ExtendedTooltip name="Quarter3ExtendedTooltip" id="159"/>
+			<ChildItems>
+				<UsualGroup name="Monthes789" id="160">
+					<Group>Horizontal</Group>
+					<Representation>None</Representation>
+					<ShowTitle>false</ShowTitle>
+					<ExtendedTooltip name="Monthes789ExtendedTooltip" id="161"/>
+					<ChildItems>
+						<Button name="SelectMonth7" id="117">
+							<Type>UsualButton</Type>
+							<Width>9</Width>
+							<CommandName>Form.Command.SelectMonth7</CommandName>
+							<ExtendedTooltip name="SelectMonth7ExtendedTooltip" id="118"/>
+						</Button>
+						<Button name="SelectMonth8" id="119">
+							<Type>UsualButton</Type>
+							<Width>9</Width>
+							<CommandName>Form.Command.SelectMonth8</CommandName>
+							<ExtendedTooltip name="SelectMonth8ExtendedTooltip" id="120"/>
+						</Button>
+						<Button name="SelectMonth9" id="121">
+							<Type>UsualButton</Type>
+							<Width>9</Width>
+							<CommandName>Form.Command.SelectMonth9</CommandName>
+							<ExtendedTooltip name="SelectMonth9ExtendedTooltip" id="122"/>
+						</Button>
+					</ChildItems>
+				</UsualGroup>
+				<Button name="SelectQuarter3" id="123">
+					<Type>UsualButton</Type>
+					<Width>9</Width>
+					<CommandName>Form.Command.SelectQuarter3</CommandName>
+					<BackColor>#DCDCDC</BackColor>
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>3rd quarter</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>pl</v8:lang>
+							<v8:content>3. kwartał</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>3 квартал</v8:content>
+						</v8:item>
+					</Title>
+					<ExtendedTooltip name="SelectQuarter3ExtendedTooltip" id="124"/>
+				</Button>
+				<Button name="Select9Monthes" id="137">
+					<Type>UsualButton</Type>
+					<Width>10</Width>
+					<CommandName>Form.Command.Select9Monthes</CommandName>
+					<BackColor>#C0C0C0</BackColor>
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>9 monthes</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>pl</v8:lang>
+							<v8:content>9 miesięcy</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>9 месяцев</v8:content>
+						</v8:item>
+					</Title>
+					<ExtendedTooltip name="Select9MonthesExtendedTooltip" id="138"/>
+				</Button>
+			</ChildItems>
+		</UsualGroup>
+		<UsualGroup name="Quarter4" id="162">
+			<Group>Horizontal</Group>
+			<Representation>None</Representation>
+			<ShowTitle>false</ShowTitle>
+			<ExtendedTooltip name="Quarter4ExtendedTooltip" id="163"/>
+			<ChildItems>
+				<UsualGroup name="Monthes101112" id="164">
+					<Group>Horizontal</Group>
+					<Representation>None</Representation>
+					<ShowTitle>false</ShowTitle>
+					<ExtendedTooltip name="Monthes101112ExtendedTooltip" id="165"/>
+					<ChildItems>
+						<Button name="SelectMonth10" id="125">
+							<Type>UsualButton</Type>
+							<Width>9</Width>
+							<CommandName>Form.Command.SelectMonth10</CommandName>
+							<ExtendedTooltip name="SelectMonth10ExtendedTooltip" id="126"/>
+						</Button>
+						<Button name="SelectMonth11" id="127">
+							<Type>UsualButton</Type>
+							<Width>9</Width>
+							<CommandName>Form.Command.SelectMonth11</CommandName>
+							<ExtendedTooltip name="SelectMonth11ExtendedTooltip" id="128"/>
+						</Button>
+						<Button name="SelectMonth12" id="129">
+							<Type>UsualButton</Type>
+							<Width>9</Width>
+							<CommandName>Form.Command.SelectMonth12</CommandName>
+							<ExtendedTooltip name="SelectMonth12ExtendedTooltip" id="130"/>
+						</Button>
+					</ChildItems>
+				</UsualGroup>
+				<Button name="SelectQuarter4" id="131">
+					<Type>UsualButton</Type>
+					<Width>9</Width>
+					<CommandName>Form.Command.SelectQuarter4</CommandName>
+					<BackColor>#DCDCDC</BackColor>
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>4th quarter</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>pl</v8:lang>
+							<v8:content>4. kwartał</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>4 квартал</v8:content>
+						</v8:item>
+					</Title>
+					<ExtendedTooltip name="SelectQuarter4ExtendedTooltip" id="132"/>
+				</Button>
+				<Button name="SelectYear" id="139">
+					<Type>UsualButton</Type>
+					<Width>10</Width>
+					<CommandName>Form.Command.SelectYear</CommandName>
+					<BackColor>#C0C0C0</BackColor>
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>year</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>pl</v8:lang>
+							<v8:content>rok</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>год</v8:content>
+						</v8:item>
+					</Title>
+					<ExtendedTooltip name="SelectYearExtendedTooltip" id="140"/>
+				</Button>
+			</ChildItems>
+		</UsualGroup>
+	</ChildItems>
+	<Attributes>
+		<Attribute name="BeginOfPeriod" id="2">
+			<Type>
+				<v8:Type>xs:dateTime</v8:Type>
+				<v8:DateQualifiers>
+					<v8:DateFractions>Date</v8:DateFractions>
+				</v8:DateQualifiers>
+			</Type>
+		</Attribute>
+		<Attribute name="EndOfPeriod" id="3">
+			<Type>
+				<v8:Type>xs:dateTime</v8:Type>
+				<v8:DateQualifiers>
+					<v8:DateFractions>Date</v8:DateFractions>
+				</v8:DateQualifiers>
+			</Type>
+		</Attribute>
+		<Attribute name="BegOfYearDate" id="4">
+			<Type>
+				<v8:Type>xs:dateTime</v8:Type>
+				<v8:DateQualifiers>
+					<v8:DateFractions>Date</v8:DateFractions>
+				</v8:DateQualifiers>
+			</Type>
+		</Attribute>
+		<Attribute name="CurrentItemName" id="5">
+			<Type>
+				<v8:Type>xs:string</v8:Type>
+				<v8:StringQualifiers>
+					<v8:Length>0</v8:Length>
+					<v8:AllowedLength>Variable</v8:AllowedLength>
+				</v8:StringQualifiers>
+			</Type>
+		</Attribute>
+	</Attributes>
+	<Commands>
+		<Command name="GoToPreviousYear" id="1">
+			<Action>GoToPrevoiusYear</Action>
+		</Command>
+		<Command name="GoToNextYear" id="2">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>&gt;</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>pl</v8:lang>
+					<v8:content>&gt;</v8:content>
+				</v8:item>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>&gt;</v8:content>
+				</v8:item>
+			</Title>
+			<Action>GoToNextYear</Action>
+		</Command>
+		<Command name="SelectMonth1" id="3">
+			<Action>SelectMonth1</Action>
+		</Command>
+		<Command name="SelectMonth2" id="4">
+			<Action>SelectMonth2</Action>
+		</Command>
+		<Command name="SelectMonth3" id="5">
+			<Action>SelectMonth3</Action>
+		</Command>
+		<Command name="SelectMonth4" id="6">
+			<Action>SelectMonth4</Action>
+		</Command>
+		<Command name="SelectMonth5" id="7">
+			<Action>SelectMonth5</Action>
+		</Command>
+		<Command name="SelectMonth6" id="8">
+			<Action>SelectMonth6</Action>
+		</Command>
+		<Command name="SelectMonth7" id="9">
+			<Action>SelectMonth7</Action>
+		</Command>
+		<Command name="SelectMonth8" id="10">
+			<Action>SelectMonth8</Action>
+		</Command>
+		<Command name="SelectMonth9" id="11">
+			<Action>SelectMonth9</Action>
+		</Command>
+		<Command name="SelectMonth10" id="12">
+			<Action>SelectMonth10</Action>
+		</Command>
+		<Command name="SelectMonth11" id="13">
+			<Action>SelectMonth11</Action>
+		</Command>
+		<Command name="SelectMonth12" id="14">
+			<Action>SelectMonth12</Action>
+		</Command>
+		<Command name="SelectQuarter1" id="15">
+			<Action>SelectQuarter1</Action>
+		</Command>
+		<Command name="SelectQuarter2" id="16">
+			<Action>SelectQuarter2</Action>
+		</Command>
+		<Command name="SelectQuarter3" id="17">
+			<Action>SelectQuarter3</Action>
+		</Command>
+		<Command name="SelectQuarter4" id="18">
+			<Action>SelectQuarter4</Action>
+		</Command>
+		<Command name="SelectHalfYear" id="19">
+			<Action>SelectHalfYear</Action>
+		</Command>
+		<Command name="Select9Monthes" id="21">
+			<Action>Select9Monthes</Action>
+		</Command>
+		<Command name="SelectYear" id="22">
+			<Action>SelectYear</Action>
+		</Command>
+		<Command name="SelectDay" id="23">
+			<Action>SelectDay</Action>
+		</Command>
+	</Commands>
+	<Parameters>
+		<Parameter name="BeginOfPeriod">
+			<Type>
+				<v8:Type>xs:dateTime</v8:Type>
+				<v8:DateQualifiers>
+					<v8:DateFractions>Date</v8:DateFractions>
+				</v8:DateQualifiers>
+			</Type>
+		</Parameter>
+		<Parameter name="EndOfPeriod">
+			<Type>
+				<v8:Type>xs:dateTime</v8:Type>
+				<v8:DateQualifiers>
+					<v8:DateFractions>Date</v8:DateFractions>
+				</v8:DateQualifiers>
+			</Type>
+		</Parameter>
+	</Parameters>
+</Form>

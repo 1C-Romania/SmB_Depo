@@ -194,12 +194,14 @@ Procedure PrefixOnChange(SelectedElement, AdditionalParameters) Export
 	If SelectedElement = Undefined Then
 		Return;
 	EndIf;
-	If SelectedElement.Value = "NumberSettings" Then
-		OpenForm("InformationRegister.DocumentsNumberingSettings.Form.RecordFormSetting", New Structure("DocumentType", Object.Ref), ThisForm);
-		Return;
-	EndIf;
-	Object["ManualChangeNumber"] = False;
-	Object["Prefix"] = SelectedElement.Value;
+	// Jack 25.06.2017
+	// to do	
+	//If SelectedElement.Value = "NumberSettings" Then
+	//	OpenForm("InformationRegister.DocumentsNumberingSettings.Form.RecordFormSetting", New Structure("DocumentType", Object.Ref), ThisForm);
+	//	Return;
+	//EndIf;
+	//Object["ManualChangeNumber"] = False;
+	//Object["Prefix"] = SelectedElement.Value;
 	DocumentsFormAtClient.ChangeDocumentsHeaderData(ThisForm);
 EndProcedure
 
@@ -696,6 +698,8 @@ EndProcedure
 Procedure PurchaseVATAppearanceProcessingAtServer()
 	
 	For Each RecordRow In Object.PurchaseVATRecords Do
+		// Jack 25.06.2017
+		// to do
 		RecordRow.GrossAmount = FormatAmount(DocumentsTabularPartsProcessingAtClientAtServer.GetGrossAmount(RecordRow.NetAmount, RecordRow.VAT, PredefinedValue("Enum.NetGross.Net")));	
 	EndDo;
 	
@@ -710,6 +714,8 @@ EndProcedure
 Procedure SalesVATAppearanceProcessingAtServer()
 	
 	For Each RecordRow In Object.SalesVATRecords Do
+		// Jack 25.06.2017
+		// to do
 		RecordRow.GrossAmount = FormatAmount(DocumentsTabularPartsProcessingAtClientAtServer.GetGrossAmount(RecordRow.NetAmount, RecordRow.VAT, PredefinedValue("Enum.NetGross.Net")));	
 	EndDo;
 	
@@ -720,6 +726,8 @@ Procedure RecalculateVATOnNetAmountOrVATRateChange(CurrentRow)
 		
 	If CurrentRow <> Undefined Then
 		
+		// Jack 25.06.2017
+		// to do
 		CurrentRow.VAT = DocumentsTabularPartsProcessing.GetItemsLinesRowVATAmount(CurrentRow.NetAmount, CurrentRow.VATRate, PredefinedValue("Enum.NetGross.Net"));
 		
 	EndIf;	

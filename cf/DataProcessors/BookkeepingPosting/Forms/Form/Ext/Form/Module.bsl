@@ -31,7 +31,7 @@ Procedure OnCreateAtServer(Cancel, StandardProcessing)
 		Object.TopSelectionNumber = 100;
 	EndIf;
 	
-	Object.Company = CommonAtServer.GetUserSettingsValue(ChartsOfCharacteristicTypes.UserSettings.Company);
+	Object.Company = DefaultValuesAtServer.GetDefaultCompany();
 	Object.DisplayedDocumentsStatus = Enums.DocumentBookkeepingStatus.NotBookkeepingPosted;
 	Object.ManualBookkeepingOperation = 0;
 	

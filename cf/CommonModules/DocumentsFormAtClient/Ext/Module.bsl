@@ -85,22 +85,23 @@ Function AfterWrite(Form) Export
 EndFunction	
 
 Procedure UpdateDialog(Form) Export
-	If Not Form.Items.Find("ItemsLinesReservedQuantity") = Undefined Then
-		If TypeOf(Form.Object.Ref) = Type("DocumentRef.SalesDelivery") Then
-			Form.Items.ItemsLinesReservedQuantity.Visible = Form.Object.OperationType = PredefinedValue("Enum.OperationTypesSalesDelivery.SalesInvoice");
-		ElsIf TypeOf(Form.Object.Ref) = Type("DocumentRef.SalesOrder") Then
-			Form.Items.ItemsLinesReservedQuantity.Visible = (Form.Object.ReservationMode = PredefinedValue("Enum.SalesOrderReservationMode.DefineManually"));	
-		EndIf;
-	EndIf;
-	If Not Form.Items.Find("ItemsLinesVAT") = Undefined Then
-		VATCalculationMethod = DocumentsPostingAndNumbering.GetVATCalculationMethod(Form.Object.Date, Form.Object.Company);
-		Form.Items.ItemsLinesVAT.ReadOnly = Not (VATCalculationMethod = PredefinedValue("Enum.VATCalculationMethod.ByEachDocumentLine"));
-	EndIf;
-	
-	If Not Form.Items.Find("FixedAssetsLinesVAT") = Undefined Then
-		VATCalculationMethod = DocumentsPostingAndNumbering.GetVATCalculationMethod(Form.Object.Date, Form.Object.Company);
-		Form.Items.FixedAssetsLinesVAT.ReadOnly = Not (VATCalculationMethod = PredefinedValue("Enum.VATCalculationMethod.ByEachDocumentLine"));
-	EndIf;
+	// Jack 27.06.2017
+	//If Not Form.Items.Find("ItemsLinesReservedQuantity") = Undefined Then
+	//	If TypeOf(Form.Object.Ref) = Type("DocumentRef.SalesDelivery") Then
+	//		Form.Items.ItemsLinesReservedQuantity.Visible = Form.Object.OperationType = PredefinedValue("Enum.OperationTypesSalesDelivery.SalesInvoice");
+	//	ElsIf TypeOf(Form.Object.Ref) = Type("DocumentRef.SalesOrder") Then
+	//		Form.Items.ItemsLinesReservedQuantity.Visible = (Form.Object.ReservationMode = PredefinedValue("Enum.SalesOrderReservationMode.DefineManually"));	
+	//	EndIf;
+	//EndIf;
+	//If Not Form.Items.Find("ItemsLinesVAT") = Undefined Then
+	//	VATCalculationMethod = DocumentsPostingAndNumbering.GetVATCalculationMethod(Form.Object.Date, Form.Object.Company);
+	//	Form.Items.ItemsLinesVAT.ReadOnly = Not (VATCalculationMethod = PredefinedValue("Enum.VATCalculationMethod.ByEachDocumentLine"));
+	//EndIf;
+	//
+	//If Not Form.Items.Find("FixedAssetsLinesVAT") = Undefined Then
+	//	VATCalculationMethod = DocumentsPostingAndNumbering.GetVATCalculationMethod(Form.Object.Date, Form.Object.Company);
+	//	Form.Items.FixedAssetsLinesVAT.ReadOnly = Not (VATCalculationMethod = PredefinedValue("Enum.VATCalculationMethod.ByEachDocumentLine"));
+	//EndIf;
 	
 	If Not Form.Items.Find("CommonCommandVATTable") = Undefined Then
 		Form.Items.CommonCommandVATTable.Title = NStr("en='VAT :';pl='VAT :'"); 
@@ -345,29 +346,29 @@ Function GetSettlementsLineParameters(Form, CurrentSettlements, DocumentType, Is
 	
 	Return FormParameters;
 EndFunction
+// Jack 27.06.2017
+//Procedure OpenDocumentsSettlementsForm(Form, DocumentType = Undefined) Export
+//	If DocumentType = Undefined Then
+//		DocumentType = Form.ObjectMetadataName;
+//	EndIf;
+//	CurrentSettlements = Form.Items.Settlements.CurrentData;
+//	If CurrentSettlements.Partner = Undefined Then
+//		If Form.ObjectMetadataName = "PurchaseOrder" OR Form.ObjectMetadataName = "PurchaseInvoice" Then
+//			CurrentSettlements.Partner = Form.Object.Supplier;
+//		Else
+//			
+//		EndIf;
+//	EndIf;
+//	
+//	FormParameters = DocumentsFormAtClient.GetSettlementsLineParameters(Form, CurrentSettlements, DocumentType, Not ValueIsFilled(CurrentSettlements.Type));
+//	
+//	Notify = New NotifyDescription(
+//		"ChangeDocumentSettlements",
+//		Form, 
+//		New Structure("CurrentSettlements", CurrentSettlements));
 
-Procedure OpenDocumentsSettlementsForm(Form, DocumentType = Undefined) Export
-	If DocumentType = Undefined Then
-		DocumentType = Form.ObjectMetadataName;
-	EndIf;
-	CurrentSettlements = Form.Items.Settlements.CurrentData;
-	If CurrentSettlements.Partner = Undefined Then
-		If Form.ObjectMetadataName = "PurchaseOrder" OR Form.ObjectMetadataName = "PurchaseInvoice" Then
-			CurrentSettlements.Partner = Form.Object.Supplier;
-		Else
-			
-		EndIf;
-	EndIf;
-	
-	FormParameters = DocumentsFormAtClient.GetSettlementsLineParameters(Form, CurrentSettlements, DocumentType, Not ValueIsFilled(CurrentSettlements.Type));
-	
-	Notify = New NotifyDescription(
-		"ChangeDocumentSettlements",
-		Form, 
-		New Structure("CurrentSettlements", CurrentSettlements));
-
-	OpenForm("CommonForm.DocumentsSettlements", FormParameters, ,,,, Notify, FormWindowOpeningMode.LockOwnerWindow);
-EndProcedure
+//	OpenForm("CommonForm.DocumentsSettlements", FormParameters, ,,,, Notify, FormWindowOpeningMode.LockOwnerWindow);
+//EndProcedure
 
 Procedure ChangeDocumentSettlements(Form, MainParameters, AdditionalParameters) Export
 	CurrentSettlements = AdditionalParameters.CurrentSettlements;
@@ -379,128 +380,130 @@ Procedure ChangeDocumentSettlements(Form, MainParameters, AdditionalParameters) 
 	Form.Modified = True;
 EndProcedure
 
-Procedure SetFilterSettlementsChoiceList(Form, FilterValue) Export 
-	For Each UserSettingsItem In Form.SettlementsChoiceList.SettingsComposer.UserSettings.Items Do
-		If TypeOf(UserSettingsItem) = Type("DataCompositionFilter") Then
-			For Each FilterItem In UserSettingsItem.Items Do
-				If FilterItem.LeftValue = New DataCompositionField("Partner") Then
-					FilterItem.RightValue = FilterValue.Partner;
-				EndIf;
-			EndDo;
-		EndIf;
-	EndDo;
-	Form.SettlementsChoiceList.Filter.Items.Clear();
-	
-	NewFilterItem = Form.SettlementsChoiceList.Filter.Items.Add(Type("DataCompositionFilterItem"));
-	NewFilterItem.LeftValue = New DataCompositionField("Currency");
-	NewFilterItem.ComparisonType = DataCompositionComparisonType.Equal;
-	NewFilterItem.RightValue = FilterValue.Currency;
-	NewFilterItem.Use = True;
-	
-	NewFilterItem = Form.SettlementsChoiceList.Filter.Items.Add(Type("DataCompositionFilterItem"));
-	NewFilterItem.LeftValue = New DataCompositionField("Company");
-	NewFilterItem.ComparisonType = DataCompositionComparisonType.Equal;
-	NewFilterItem.RightValue = Form.Object.Company;
-	NewFilterItem.Use = True;
-	
-	NewFilterItem = Form.SettlementsChoiceList.Filter.Items.Add(Type("DataCompositionFilterItem"));
-	
-	DocType = TypeOf(Form.Object.Ref);
-	
-	If DocType = Type("DocumentRef.SalesOrder")OR DocType = Type("DocumentRef.PurchaseOrder")
-		OR DocType = Type("DocumentRef.PurchaseInvoice") Then
-		NewFilterItem.LeftValue = New DataCompositionField("ReservationDocumentType");
-		NewFilterItem.ComparisonType = DataCompositionComparisonType.InList;
-		ArrayTypes = New Array;
-		ArrayTypes.Add(Type("Undefined"));
-		ArrayTypes.Add(Type("CatalogRef.CustomerInternalDocuments"));
-		NewFilterItem.RightValue = ArrayTypes;
-		NewFilterItem.Use = True;
-	ElsIf DocType = Type("DocumentRef.SalesInvoice") OR DocType = Type("DocumentRef.SalesRetail") Then
-		NewFilterItem.LeftValue = New DataCompositionField("ReservationDocumentType");
-		NewFilterItem.ComparisonType = DataCompositionComparisonType.InList;
-		ArrayTypes = New Array;
-		ArrayTypes.Add(Type("Undefined"));
-		ArrayTypes.Add(Type("CatalogRef.CustomerInternalDocuments"));
-		ArrayTypes.Add(Type("DocumentRef.SalesOrder"));
-		NewFilterItem.RightValue = ArrayTypes;
-		NewFilterItem.Use = True;
-	EndIf;
-	If DocType = Type("DocumentRef.PurchaseOrder")OR DocType = Type("DocumentRef.PurchaseInvoice") Then
-		NewFilterItem = Form.SettlementsChoiceList.Filter.Items.Add(Type("DataCompositionFilterItem"));
-		NewFilterItem.LeftValue = New DataCompositionField("DocumentType");
-		NewFilterItem.ComparisonType = DataCompositionComparisonType.InList;
-		ArrayTypes = New Array;
-		ArrayTypes.Add(Type("DocumentRef.BankOutgoingToPartner"));
-		ArrayTypes.Add(Type("DocumentRef.CashOutgoingToPartner"));
-		NewFilterItem.RightValue = ArrayTypes;
-		NewFilterItem.Use = False;
-	ElsIf DocType = Type("DocumentRef.SalesOrder") Then
-		NewFilterItem = Form.SettlementsChoiceList.Filter.Items.Add(Type("DataCompositionFilterItem"));
-		NewFilterItem.LeftValue = New DataCompositionField("DocumentType");
-		NewFilterItem.ComparisonType = DataCompositionComparisonType.InList;
-		ArrayTypes = New Array;
-		ArrayTypes.Add(Type("DocumentRef.BankIncomingFromPartner"));
-		ArrayTypes.Add(Type("DocumentRef.CashIncomingFromPartner"));
-		NewFilterItem.RightValue = ArrayTypes;
-		NewFilterItem.Use = True;
-	ElsIf DocType = Type("DocumentRef.SalesInvoice") OR DocType = Type("DocumentRef.SalesRetail") Then
+// Jack 27.06.2017
+//Procedure SetFilterSettlementsChoiceList(Form, FilterValue) Export 
+//	For Each UserSettingsItem In Form.SettlementsChoiceList.SettingsComposer.UserSettings.Items Do
+//		If TypeOf(UserSettingsItem) = Type("DataCompositionFilter") Then
+//			For Each FilterItem In UserSettingsItem.Items Do
+//				If FilterItem.LeftValue = New DataCompositionField("Partner") Then
+//					FilterItem.RightValue = FilterValue.Partner;
+//				EndIf;
+//			EndDo;
+//		EndIf;
+//	EndDo;
+//	Form.SettlementsChoiceList.Filter.Items.Clear();
+//	
+//	NewFilterItem = Form.SettlementsChoiceList.Filter.Items.Add(Type("DataCompositionFilterItem"));
+//	NewFilterItem.LeftValue = New DataCompositionField("Currency");
+//	NewFilterItem.ComparisonType = DataCompositionComparisonType.Equal;
+//	NewFilterItem.RightValue = FilterValue.Currency;
+//	NewFilterItem.Use = True;
+//	
+//	NewFilterItem = Form.SettlementsChoiceList.Filter.Items.Add(Type("DataCompositionFilterItem"));
+//	NewFilterItem.LeftValue = New DataCompositionField("Company");
+//	NewFilterItem.ComparisonType = DataCompositionComparisonType.Equal;
+//	NewFilterItem.RightValue = Form.Object.Company;
+//	NewFilterItem.Use = True;
+//	
+//	NewFilterItem = Form.SettlementsChoiceList.Filter.Items.Add(Type("DataCompositionFilterItem"));
+//	
+//	DocType = TypeOf(Form.Object.Ref);
+//	
+//	If DocType = Type("DocumentRef.SalesOrder")OR DocType = Type("DocumentRef.PurchaseOrder")
+//		OR DocType = Type("DocumentRef.PurchaseInvoice") Then
+//		NewFilterItem.LeftValue = New DataCompositionField("ReservationDocumentType");
+//		NewFilterItem.ComparisonType = DataCompositionComparisonType.InList;
+//		ArrayTypes = New Array;
+//		ArrayTypes.Add(Type("Undefined"));
+//		ArrayTypes.Add(Type("CatalogRef.CustomerInternalDocuments"));
+//		NewFilterItem.RightValue = ArrayTypes;
+//		NewFilterItem.Use = True;
+//	ElsIf DocType = Type("DocumentRef.SalesInvoice") OR DocType = Type("DocumentRef.SalesRetail") Then
+//		NewFilterItem.LeftValue = New DataCompositionField("ReservationDocumentType");
+//		NewFilterItem.ComparisonType = DataCompositionComparisonType.InList;
+//		ArrayTypes = New Array;
+//		ArrayTypes.Add(Type("Undefined"));
+//		ArrayTypes.Add(Type("CatalogRef.CustomerInternalDocuments"));
+//		ArrayTypes.Add(Type("DocumentRef.SalesOrder"));
+//		NewFilterItem.RightValue = ArrayTypes;
+//		NewFilterItem.Use = True;
+//	EndIf;
+//	If DocType = Type("DocumentRef.PurchaseOrder")OR DocType = Type("DocumentRef.PurchaseInvoice") Then
+//		NewFilterItem = Form.SettlementsChoiceList.Filter.Items.Add(Type("DataCompositionFilterItem"));
+//		NewFilterItem.LeftValue = New DataCompositionField("DocumentType");
+//		NewFilterItem.ComparisonType = DataCompositionComparisonType.InList;
+//		ArrayTypes = New Array;
+//		ArrayTypes.Add(Type("DocumentRef.BankOutgoingToPartner"));
+//		ArrayTypes.Add(Type("DocumentRef.CashOutgoingToPartner"));
+//		NewFilterItem.RightValue = ArrayTypes;
+//		NewFilterItem.Use = False;
+//	ElsIf DocType = Type("DocumentRef.SalesOrder") Then
+//		NewFilterItem = Form.SettlementsChoiceList.Filter.Items.Add(Type("DataCompositionFilterItem"));
+//		NewFilterItem.LeftValue = New DataCompositionField("DocumentType");
+//		NewFilterItem.ComparisonType = DataCompositionComparisonType.InList;
+//		ArrayTypes = New Array;
+//		ArrayTypes.Add(Type("DocumentRef.BankIncomingFromPartner"));
+//		ArrayTypes.Add(Type("DocumentRef.CashIncomingFromPartner"));
+//		NewFilterItem.RightValue = ArrayTypes;
+//		NewFilterItem.Use = True;
+//	ElsIf DocType = Type("DocumentRef.SalesInvoice") OR DocType = Type("DocumentRef.SalesRetail") Then
 
-		NewFilterItem = Form.SettlementsChoiceList.Filter.Items.Add(Type("DataCompositionFilterItem"));
-		NewFilterItem.LeftValue = New DataCompositionField("DocumentType");
-		NewFilterItem.ComparisonType = DataCompositionComparisonType.InList;
-		ArrayTypes = New Array;
-		ArrayTypes.Add(Type("DocumentRef.BankIncomingFromPartner"));
-		ArrayTypes.Add(Type("DocumentRef.CashIncomingFromPartner"));
-		ArrayTypes.Add(Type("DocumentRef.SalesPrepaymentInvoice"));
-		NewFilterItem.RightValue = ArrayTypes;
-		NewFilterItem.Use = True;
-		
-	EndIf;
+//		NewFilterItem = Form.SettlementsChoiceList.Filter.Items.Add(Type("DataCompositionFilterItem"));
+//		NewFilterItem.LeftValue = New DataCompositionField("DocumentType");
+//		NewFilterItem.ComparisonType = DataCompositionComparisonType.InList;
+//		ArrayTypes = New Array;
+//		ArrayTypes.Add(Type("DocumentRef.BankIncomingFromPartner"));
+//		ArrayTypes.Add(Type("DocumentRef.CashIncomingFromPartner"));
+//		ArrayTypes.Add(Type("DocumentRef.SalesPrepaymentInvoice"));
+//		NewFilterItem.RightValue = ArrayTypes;
+//		NewFilterItem.Use = True;
+//		
+//	EndIf;
 
-	For Each RowSettlements In Form.Settlements Do
-		NewFilterGroupItem = Form.SettlementsChoiceList.Filter.Items.Add(Type("DataCompositionFilterItemGroup"));
-		NewFilterGroupItem.GroupType = DataCompositionFilterItemsGroupType.NotGroup;
-		NewFilterGroupItem.Use = True;
-		
-		NewFilterGroupItemReservationDocument = NewFilterGroupItem.Items.Add(Type("DataCompositionFilterItemGroup"));
-		NewFilterGroupItemReservationDocument.GroupType = DataCompositionFilterItemsGroupType.OrGroup;
-		NewFilterGroupItemReservationDocument.Use = True;
-		
-		NewFilterItem = NewFilterGroupItemReservationDocument.Items.Add(Type("DataCompositionFilterItem"));
-		NewFilterItem.LeftValue = New DataCompositionField("ReservationDocument");
-		NewFilterItem.ComparisonType = DataCompositionComparisonType.Equal;
-		NewFilterItem.RightValue = RowSettlements.ReservationDocument;
-		NewFilterItem.Use = True;
-		If Not ValueIsFilled(RowSettlements.ReservationDocument) Then
-			NewFilterItem = NewFilterGroupItemReservationDocument.Items.Add(Type("DataCompositionFilterItem"));
-			NewFilterItem.LeftValue = New DataCompositionField("ReservationDocument");
-			NewFilterItem.ComparisonType = DataCompositionComparisonType.Equal;
-			NewFilterItem.RightValue = Undefined;
-			NewFilterItem.Use = True;
-		EndIf;
-		NewFilterItem = NewFilterGroupItem.Items.Add(Type("DataCompositionFilterItem"));
-		NewFilterItem.LeftValue = New DataCompositionField("Document");
-		NewFilterItem.ComparisonType = DataCompositionComparisonType.Equal;
-		NewFilterItem.RightValue = RowSettlements.Document;
-		NewFilterItem.Use = True;
-		
-		NewFilterItem = NewFilterGroupItem.Items.Add(Type("DataCompositionFilterItem"));
-		NewFilterItem.LeftValue = New DataCompositionField("AmountBalance");
-		NewFilterItem.ComparisonType = DataCompositionComparisonType.Equal;
-		NewFilterItem.RightValue = RowSettlements.GrossAmount;
-		NewFilterItem.Use = True;
-	EndDo;
-EndProcedure
+//	For Each RowSettlements In Form.Settlements Do
+//		NewFilterGroupItem = Form.SettlementsChoiceList.Filter.Items.Add(Type("DataCompositionFilterItemGroup"));
+//		NewFilterGroupItem.GroupType = DataCompositionFilterItemsGroupType.NotGroup;
+//		NewFilterGroupItem.Use = True;
+//		
+//		NewFilterGroupItemReservationDocument = NewFilterGroupItem.Items.Add(Type("DataCompositionFilterItemGroup"));
+//		NewFilterGroupItemReservationDocument.GroupType = DataCompositionFilterItemsGroupType.OrGroup;
+//		NewFilterGroupItemReservationDocument.Use = True;
+//		
+//		NewFilterItem = NewFilterGroupItemReservationDocument.Items.Add(Type("DataCompositionFilterItem"));
+//		NewFilterItem.LeftValue = New DataCompositionField("ReservationDocument");
+//		NewFilterItem.ComparisonType = DataCompositionComparisonType.Equal;
+//		NewFilterItem.RightValue = RowSettlements.ReservationDocument;
+//		NewFilterItem.Use = True;
+//		If Not ValueIsFilled(RowSettlements.ReservationDocument) Then
+//			NewFilterItem = NewFilterGroupItemReservationDocument.Items.Add(Type("DataCompositionFilterItem"));
+//			NewFilterItem.LeftValue = New DataCompositionField("ReservationDocument");
+//			NewFilterItem.ComparisonType = DataCompositionComparisonType.Equal;
+//			NewFilterItem.RightValue = Undefined;
+//			NewFilterItem.Use = True;
+//		EndIf;
+//		NewFilterItem = NewFilterGroupItem.Items.Add(Type("DataCompositionFilterItem"));
+//		NewFilterItem.LeftValue = New DataCompositionField("Document");
+//		NewFilterItem.ComparisonType = DataCompositionComparisonType.Equal;
+//		NewFilterItem.RightValue = RowSettlements.Document;
+//		NewFilterItem.Use = True;
+//		
+//		NewFilterItem = NewFilterGroupItem.Items.Add(Type("DataCompositionFilterItem"));
+//		NewFilterItem.LeftValue = New DataCompositionField("AmountBalance");
+//		NewFilterItem.ComparisonType = DataCompositionComparisonType.Equal;
+//		NewFilterItem.RightValue = RowSettlements.GrossAmount;
+//		NewFilterItem.Use = True;
+//	EndDo;
+//EndProcedure
 
-Procedure SettlementsChange(Form, FilterValue) Export
-	Form.SettlementsCount = Form.Settlements.Count();
-	If Form.Items.Find("SettlementsSettlementsChoice")<> Undefined
-		AND Form.Items.SettlementsSettlementsChoice.Check Then
-		SetFilterSettlementsChoiceList(Form, FilterValue);
-	EndIf;
-	Form.SettlementsTotalAmount = Form.Settlements.Total("GrossAmount");
-EndProcedure
+// Jack 27.06.2017
+//Procedure SettlementsChange(Form, FilterValue) Export
+//	Form.SettlementsCount = Form.Settlements.Count();
+//	If Form.Items.Find("SettlementsSettlementsChoice")<> Undefined
+//		AND Form.Items.SettlementsSettlementsChoice.Check Then
+//		SetFilterSettlementsChoiceList(Form, FilterValue);
+//	EndIf;
+//	Form.SettlementsTotalAmount = Form.Settlements.Total("GrossAmount");
+//EndProcedure
 
 Procedure OpenSettlementsCurrentDocument(CurrentData, CurrentItem) Export
 	If CurrentData = Undefined Then
@@ -523,20 +526,21 @@ Procedure PostPrintClose(Form) Export
 	NotifyChanged(Form.Object.Ref);
 EndProcedure
 
-Procedure OpenPriceAndDiscountSettings(Form, CustomerValue = Undefined) Export
-	Object = Form.Object;
-	If CustomerValue = Undefined Then
-		ParametersStructure = Form.GetParametersPriceAndDiscountSettings();
-	Else
-		ParametersStructure = Form.GetParametersPriceAndDiscountSettings(CustomerValue);
-	EndIf;
-	
-	Notify = New NotifyDescription(
-		"RecalculatePriceAndDiscount",
-		Form, 
-		New Structure);
-	OpenForm("DataProcessor.PriceAndDiscountsRecalculation.Form.FormManaged", ParametersStructure, Form,,,,Notify);
-EndProcedure
+// Jack 27.06.2017
+//Procedure OpenPriceAndDiscountSettings(Form, CustomerValue = Undefined) Export
+//	Object = Form.Object;
+//	If CustomerValue = Undefined Then
+//		ParametersStructure = Form.GetParametersPriceAndDiscountSettings();
+//	Else
+//		ParametersStructure = Form.GetParametersPriceAndDiscountSettings(CustomerValue);
+//	EndIf;
+//	
+//	Notify = New NotifyDescription(
+//		"RecalculatePriceAndDiscount",
+//		Form, 
+//		New Structure);
+//	OpenForm("DataProcessor.PriceAndDiscountsRecalculation.Form.FormManaged", ParametersStructure, Form,,,,Notify);
+//EndProcedure
 
 Procedure SetCommandsInterface(Form, Cancel, FormInformation) 
 	If Not Form.Items.Find("FormCommonCommandShowBookkeepingOperationCommand") = Undefined Then
@@ -572,11 +576,12 @@ Procedure ShowHideColumns(Val Visibility, ColumnsStructure) Export
 	
 EndProcedure
 
-Procedure EndQuestionGenerateSalesReturnOrder(QuestionAnswer, DocumentParameters) Export
-	If QuestionAnswer = DialogReturnCode.Yes Then
-		OpenForm("Document.SalesReturnOrder.ObjectForm", New Structure("FillingData", DocumentParameters.SalesInvoice));
-	EndIf;
-EndProcedure
+// Jack 27.06.2017
+//Procedure EndQuestionGenerateSalesReturnOrder(QuestionAnswer, DocumentParameters) Export
+//	If QuestionAnswer = DialogReturnCode.Yes Then
+//		OpenForm("Document.SalesReturnOrder.ObjectForm", New Structure("FillingData", DocumentParameters.SalesInvoice));
+//	EndIf;
+//EndProcedure
 
 Procedure ChangeDocumentsHeaderData(Form, Item = Undefined) Export
 	//If Not Item = Undefined AND (Item.Name = "NumberPreview" Or Item.Name = "Number") Then

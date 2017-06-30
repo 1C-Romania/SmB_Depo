@@ -675,20 +675,22 @@ Procedure FillCurrencyAndExchangeRateOnDocumentBase() Export
 	DocumentBaseMetadata = DocumentBase.Metadata();
 	If CommonAtServer.IsDocumentAttribute("Currency",DocumentBaseMetadata) Then
 		Currency = DocumentBase.Currency;
-	ElsIf CommonAtServer.IsDocumentAttribute("SettlementCurrency",DocumentBaseMetadata) Then	
-		Currency = DocumentBase.SettlementCurrency;
-	ElsIf CommonAtServer.IsDocumentAttribute("RecordsCurrency",DocumentBaseMetadata) Then		
-		Currency = DocumentBase.RecordsCurrency;
+	// Jack 25.06.2017
+	//ElsIf CommonAtServer.IsDocumentAttribute("SettlementCurrency",DocumentBaseMetadata) Then	
+	//	Currency = DocumentBase.SettlementCurrency;
+	//ElsIf CommonAtServer.IsDocumentAttribute("RecordsCurrency",DocumentBaseMetadata) Then		
+	//	Currency = DocumentBase.RecordsCurrency;
 	Else
 		Currency = DefaultValuesAtServer.GetNationalCurrency();
 	EndIf;
 	
 	If CommonAtServer.IsDocumentAttribute("ExchangeRate",DocumentBaseMetadata) Then
 		ExchangeRate = DocumentBase.ExchangeRate;
-	ElsIf CommonAtServer.IsDocumentAttribute("SettlementExchangeRate",DocumentBaseMetadata) Then	
-		ExchangeRate = DocumentBase.SettlementExchangeRate;
-	ElsIf CommonAtServer.IsDocumentAttribute("RecordsExchangeRate",DocumentBaseMetadata) Then		
-		ExchangeRate = DocumentBase.RecordsExchangeRate;
+	// Jack 25.06.2017
+	//ElsIf CommonAtServer.IsDocumentAttribute("SettlementExchangeRate",DocumentBaseMetadata) Then	
+	//	ExchangeRate = DocumentBase.SettlementExchangeRate;
+	//ElsIf CommonAtServer.IsDocumentAttribute("RecordsExchangeRate",DocumentBaseMetadata) Then		
+	//	ExchangeRate = DocumentBase.RecordsExchangeRate;
 	Else
 		ExchangeRate = DefaultValuesAtServer.GetExchangeRate(Currency,CurrentDate());
 	EndIf;

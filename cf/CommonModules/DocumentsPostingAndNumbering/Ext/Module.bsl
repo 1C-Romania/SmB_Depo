@@ -2,56 +2,60 @@
 // DOCUMENTS POSTING
 
 Procedure CheckPostingPermission(DocumentObject, Cancel, Title) Export 
-	
-	If NOT IsInRole(Metadata.Roles.Right_Administration_ToPostDocumentsBeforeStartAccountingDate) Then
-		StartAccountingDate = Constants.StartAccountingDate.Get();
-		If ValueIsFilled(StartAccountingDate) AND DocumentObject.Date < StartAccountingDate Then
-			Alerts.AddAlert(Title + " " + Nstr("en=""Document with date less than 'Start accounting date' could not be posted!"";pl=""Nie można zatwierdzić dokumentu z datą mniejszą od 'Data rozpoczęcia rachunkowości'!"""),,Cancel,DocumentObject);
-		EndIf;
-	EndIf;
+	// Jack 29.06.2017
+	// to do
+	//If NOT IsInRole(Metadata.Roles.Right_Administration_ToPostDocumentsBeforeStartAccountingDate) Then
+	//	StartAccountingDate = Constants.StartAccountingDate.Get();
+	//	If ValueIsFilled(StartAccountingDate) AND DocumentObject.Date < StartAccountingDate Then
+	//		Alerts.AddAlert(Title + " " + Nstr("en=""Document with date less than 'Start accounting date' could not be posted!"";pl=""Nie można zatwierdzić dokumentu z datą mniejszą od 'Data rozpoczęcia rachunkowości'!"""),,Cancel,DocumentObject);
+	//	EndIf;
+	//EndIf;
 	
 	ErrorMessage = Title + " " + NStr("en='You cannot post documents from closed period!';pl='Nie możesz księgować dokumentów z zamkniętego okresu!'");
 	CheckDocumentInClosedPeriod(DocumentObject, Cancel,ErrorMessage);
 	If Cancel Then
 		Return;
 	EndIf;	
-		
-	DisableRealTimePosting = DocumentObject.AdditionalProperties.Property("DisableRealTimePosting");	
 	
-	If DocumentObject.Metadata().RealTimePosting = Metadata.ObjectProperties.RealTimePosting.Allow
-		And DocumentObject.AdditionalProperties.PostingMode = DocumentPostingMode.Regular
-		And NOT DocumentObject.AdditionalProperties.Property("ImmediateStockMovements")
-		And Not IsInRole(Metadata.Roles.Right_General_NonRealTimePosting) Then
-		If DisableRealTimePosting Then
-			Alerts.AddAlert(Title + " " + NStr("en = 'Current document could not be reposted, because it has influence on cost of goods!'; pl = 'Ten dokument nie może być zatwierdzony ponownie, ponieważ on wpływa na koszt towarów!'"),, Cancel,DocumentObject);
-		Else	
-			Alerts.AddAlert(Title + " " + NStr("en='You can post documents only in real time mode!';pl='Możesz księgować dokumenty wyłącznie w trybie operatywnym!'"),, Cancel,DocumentObject);
-		EndIf;	
-	EndIf;
+	// Jack 29.06.2017
+	// to do
+	//DisableRealTimePosting = DocumentObject.AdditionalProperties.Property("DisableRealTimePosting");	
+	//
+	//If DocumentObject.Metadata().RealTimePosting = Metadata.ObjectProperties.RealTimePosting.Allow
+	//	And DocumentObject.AdditionalProperties.PostingMode = DocumentPostingMode.Regular
+	//	And NOT DocumentObject.AdditionalProperties.Property("ImmediateStockMovements")
+	//	And Not IsInRole(Metadata.Roles.Right_General_NonRealTimePosting) Then
+	//	If DisableRealTimePosting Then
+	//		Alerts.AddAlert(Title + " " + NStr("en = 'Current document could not be reposted, because it has influence on cost of goods!'; pl = 'Ten dokument nie może być zatwierdzony ponownie, ponieważ on wpływa na koszt towarów!'"),, Cancel,DocumentObject);
+	//	Else	
+	//		Alerts.AddAlert(Title + " " + NStr("en='You can post documents only in real time mode!';pl='Możesz księgować dokumenty wyłącznie w trybie operatywnym!'"),, Cancel,DocumentObject);
+	//	EndIf;	
+	//EndIf;
 	
-	AllowToEditDocumentsWithChildren = IsInRole(Metadata.Roles.Right_General_ToModifyDocumentsWithChildren);
-	
-	If Not AllowToEditDocumentsWithChildren And DocumentsPostingAndNumberingAtServer.HasChildDocuments(DocumentObject) Then
-		Alerts.AddAlert(Title + " " + NStr("en='This document has child document(s), so is available for reading only!';pl='Ten dokument ma dokumenty pochodne, zatem jest dostępny tylko do odczytu!'"),, Cancel, DocumentObject);
-	EndIf;
-	
-	If IsInvoiceDocument(DocumentObject.Ref) 
-		AND NOT IsInRole(Metadata.Roles.Right_Sales_ToChangeInvoicesAfterPosting)
-		AND NOT DocumentObject.AdditionalProperties.WasNew 
-		AND DocumentObject.AdditionalProperties.WasPosted Then
-		Alerts.AddAlert(Title + " " + NStr("en='You don''t have enough permissions to repost this document!';pl='Nie masz wystarczających uprawnień dla ponownego zatwierdzenia tego dokumentu!'"),, Cancel,DocumentObject);
-	EndIf;	
+	//AllowToEditDocumentsWithChildren = IsInRole(Metadata.Roles.Right_General_ToModifyDocumentsWithChildren);
+	//
+	//If Not AllowToEditDocumentsWithChildren And DocumentsPostingAndNumberingAtServer.HasChildDocuments(DocumentObject) Then
+	//	Alerts.AddAlert(Title + " " + NStr("en='This document has child document(s), so is available for reading only!';pl='Ten dokument ma dokumenty pochodne, zatem jest dostępny tylko do odczytu!'"),, Cancel, DocumentObject);
+	//EndIf;
+	//
+	//If IsInvoiceDocument(DocumentObject.Ref) 
+	//	AND NOT IsInRole(Metadata.Roles.Right_Sales_ToChangeInvoicesAfterPosting)
+	//	AND NOT DocumentObject.AdditionalProperties.WasNew 
+	//	AND DocumentObject.AdditionalProperties.WasPosted Then
+	//	Alerts.AddAlert(Title + " " + NStr("en='You don''t have enough permissions to repost this document!';pl='Nie masz wystarczających uprawnień dla ponownego zatwierdzenia tego dokumentu!'"),, Cancel,DocumentObject);
+	//EndIf;	
 	
 EndProcedure // CheckPostingPermission()
 
 Procedure CheckUndoPostingPermission(DocumentObject, Cancel, Title) Export 
-	
-	If NOT IsInRole(Metadata.Roles.Right_Administration_ToPostDocumentsBeforeStartAccountingDate) Then
-		StartAccountingDate = Constants.StartAccountingDate.Get();
-		If ValueIsFilled(StartAccountingDate) AND DocumentObject.Date < StartAccountingDate Then
-			Alerts.AddAlert(Title + " " + Nstr("en=""Document with date less than 'Start accounting date' could not be unposted!"";pl=""Nie można anulować zatwierdzenia dokumentu z datą mniejszą od 'Data rozpoczęcia rachunkowości'!"""),,Cancel,DocumentObject);
-		EndIf;
-	EndIf;
+	// Jack 29.06.2017
+	// to do
+	//If NOT IsInRole(Metadata.Roles.Right_Administration_ToPostDocumentsBeforeStartAccountingDate) Then
+	//	StartAccountingDate = Constants.StartAccountingDate.Get();
+	//	If ValueIsFilled(StartAccountingDate) AND DocumentObject.Date < StartAccountingDate Then
+	//		Alerts.AddAlert(Title + " " + Nstr("en=""Document with date less than 'Start accounting date' could not be unposted!"";pl=""Nie można anulować zatwierdzenia dokumentu z datą mniejszą od 'Data rozpoczęcia rachunkowości'!"""),,Cancel,DocumentObject);
+	//	EndIf;
+	//EndIf;
 	
 	ErrorMessage = Title + " " + NStr("en='You cannot undo posting documents from closed period!';pl='Nie możesz odksięgować dokumentów z zamkniętego okresu!'");
 	CheckDocumentInClosedPeriod(DocumentObject, Cancel,ErrorMessage);
@@ -60,30 +64,32 @@ Procedure CheckUndoPostingPermission(DocumentObject, Cancel, Title) Export
 		Return;
 	EndIf;	
 	
-	DisableRealTimePosting = DocumentObject.AdditionalProperties.Property("DisableRealTimePosting");	
-		
-	If DocumentObject.Metadata().RealTimePosting = Metadata.ObjectProperties.RealTimePosting.Allow
-		And Not IsInRole(Metadata.Roles.Right_General_NonRealTimePosting) Then
-		If BegOfDay(DocumentObject.Date) < BegOfDay(CurrentDate()) Then
-			Alerts.AddAlert(Title + " " + NStr("en='You can undo posting documents only in current date!';pl='Możesz odksięgowywać dokumenty wyłącznie z dzisiejszej datą!'"),, Cancel, DocumentObject);
-		ElsIf DisableRealTimePosting Then
-			Alerts.AddAlert(Title + " " + NStr("en = 'This document could not be unposted because it has influence on cost of goods!'; pl = 'Nie można anulować zatwierdzenie dokumentu ponieważ ten dokument wpływa na koszt towarów!'"),, Cancel, DocumentObject);
-		EndIf;	
-	Else
-		If DisableRealTimePosting Then
-			Alerts.AddAlert(Title + " " + NStr("en = 'Unposting of this document has influence on cost of goods!'; pl = 'Anulowanie zatwierdzenia tego dokumentu może wpłynąć na koszt towarów!'"),Enums.AlertType.Warning,, DocumentObject);
-		EndIf;	
-	EndIf;
-	
-	AllowToEditDocumentsWithChildren = IsInRole(Metadata.Roles.Right_General_ToModifyDocumentsWithChildren);
-	
-	If Not AllowToEditDocumentsWithChildren And DocumentsPostingAndNumberingAtServer.HasChildDocuments(DocumentObject) Then
-		Alerts.AddAlert(Title + " " + NStr("en='This document has child document(s), so is available for reading only!';pl='Ten dokument ma dokumenty pochodne, zatem jest dostępny tylko do odczytu!'"),, Cancel,DocumentObject);
-	EndIf;
-	
-	If IsInvoiceDocument(DocumentObject.Ref) AND NOT IsInRole(Metadata.Roles.Right_Sales_ToChangeInvoicesAfterPosting) Then
-		Alerts.AddAlert(Title + " " + NStr("en='You don''t have enough permissions to unpost this document!';pl='Nie masz wystarczających uprawnień dla anulowania zatwierdzenia tego dokumentu!'"),, Cancel,DocumentObject);
-	EndIf;	
+	// to do
+	// Jack 29.06.2017
+	//DisableRealTimePosting = DocumentObject.AdditionalProperties.Property("DisableRealTimePosting");	
+	//	
+	//If DocumentObject.Metadata().RealTimePosting = Metadata.ObjectProperties.RealTimePosting.Allow
+	//	And Not IsInRole(Metadata.Roles.Right_General_NonRealTimePosting) Then
+	//	If BegOfDay(DocumentObject.Date) < BegOfDay(CurrentDate()) Then
+	//		Alerts.AddAlert(Title + " " + NStr("en='You can undo posting documents only in current date!';pl='Możesz odksięgowywać dokumenty wyłącznie z dzisiejszej datą!'"),, Cancel, DocumentObject);
+	//	ElsIf DisableRealTimePosting Then
+	//		Alerts.AddAlert(Title + " " + NStr("en = 'This document could not be unposted because it has influence on cost of goods!'; pl = 'Nie można anulować zatwierdzenie dokumentu ponieważ ten dokument wpływa na koszt towarów!'"),, Cancel, DocumentObject);
+	//	EndIf;	
+	//Else
+	//	If DisableRealTimePosting Then
+	//		Alerts.AddAlert(Title + " " + NStr("en = 'Unposting of this document has influence on cost of goods!'; pl = 'Anulowanie zatwierdzenia tego dokumentu może wpłynąć na koszt towarów!'"),Enums.AlertType.Warning,, DocumentObject);
+	//	EndIf;	
+	//EndIf;
+	//
+	//AllowToEditDocumentsWithChildren = IsInRole(Metadata.Roles.Right_General_ToModifyDocumentsWithChildren);
+	//
+	//If Not AllowToEditDocumentsWithChildren And DocumentsPostingAndNumberingAtServer.HasChildDocuments(DocumentObject) Then
+	//	Alerts.AddAlert(Title + " " + NStr("en='This document has child document(s), so is available for reading only!';pl='Ten dokument ma dokumenty pochodne, zatem jest dostępny tylko do odczytu!'"),, Cancel,DocumentObject);
+	//EndIf;
+	//
+	//If IsInvoiceDocument(DocumentObject.Ref) AND NOT IsInRole(Metadata.Roles.Right_Sales_ToChangeInvoicesAfterPosting) Then
+	//	Alerts.AddAlert(Title + " " + NStr("en='You don''t have enough permissions to unpost this document!';pl='Nie masz wystarczających uprawnień dla anulowania zatwierdzenia tego dokumentu!'"),, Cancel,DocumentObject);
+	//EndIf;	
 	
 EndProcedure // CheckUndoPostingPermission()
 
@@ -144,156 +150,164 @@ Procedure CheckDocumentInClosedPeriod(DocumentObject,Cancel,ErrorMessage)
 	
 EndProcedure	
 
-Function GetVATCalculationMethod(Date,Company) Export
-	
-	VATCalculationMethod = InformationRegisters.AccountingPolicyGeneral.GetLast(Date, New Structure("Company", Company)).VATCalculationMethod;
-	If VATCalculationMethod = Undefined Then
-		VATCalculationMethod = Enums.VATCalculationMethod.EmptyRef();
-	EndIf;
-	
-	Return VATCalculationMethod;
-	
-EndFunction
+// Jack 29.06.2017
+//Function GetVATCalculationMethod(Date,Company) Export
+//	
+//	VATCalculationMethod = InformationRegisters.AccountingPolicyGeneral.GetLast(Date, New Structure("Company", Company)).VATCalculationMethod;
+//	If VATCalculationMethod = Undefined Then
+//		VATCalculationMethod = Enums.VATCalculationMethod.EmptyRef();
+//	EndIf;
+//	
+//	Return VATCalculationMethod;
+//	
+//EndFunction
 
 
 #If Client Then
 
 Procedure CheckEditingPermission(DocumentForm) Export
 	
-	DocumentObject = DocumentForm.ThisObject;
-	
-	If NOT DocumentObject.IsNew() Then
-		LockUser = Undefined;
-		If WebServicesModule.IsObjectLockedForWebService(DocumentObject.Ref) Then
-			ShowMessageBox(, Alerts.ParametrizeString(Nstr("en = 'This document could not be changed because it has been locked by user %P1!';
-						|pl = 'Nie można zmienić tego dokumentu ponieważ ten dokument został zablokowany przez użytkownika %P1!'"), New Structure("P1",LockUser)));
-			DocumentForm.ReadOnly = True;
-			
-			If IsInRole(Metadata.Roles.Right_WebService_AllowToUnlockObjects) Then
-				
-				DocumentForm.Controls.FormActions.Buttons.Add("UnlockObject",CommandBarButtonType.Action,Nstr("pl='Odblokuj'"),New Action("UnlockObject"));
-				
-			EndIf;	
-			
-		EndIf;	
-	EndIf;	
-	
-	If Not IsInRole(Metadata.Roles.Right_General_ModifyDocumentsNumber) Then
-		DocumentForm.Controls.Number.ReadOnly = True;
-	ElsIf DocumentForm.Controls.Number.Data = "" Then
-		DocumentForm.Controls.Number.TextEdit = False;
-		DocumentForm.Controls.Number.ChoiceButton = True;
-		DocumentForm.Controls.Number.ChoiceButtonPicture = PictureLib.Pencil;
-	EndIf;
-		
-	If DocumentForm.Posted Then
-		
-		If IsInvoiceDocument(DocumentForm.Ref) AND NOT IsInRole(Metadata.Roles.Right_Sales_ToChangeInvoicesAfterPosting) Then
-			DocumentForm.ReadOnly = True;
-		Else
-			
-			If DocumentForm.Metadata().Posting = Metadata.ObjectProperties.Posting.Allow
-			And DocumentForm.Metadata().RealTimePosting = Metadata.ObjectProperties.RealTimePosting.Allow 
-			AND Not IsInRole(Metadata.Roles.Right_General_NonRealTimePosting) Then
-				LockDocumentFormByDate(DocumentForm);
-			EndIf;
-			
-			AllowToEditDocumentsWithChildren = IsInRole(Metadata.Roles.Right_General_ToModifyDocumentsWithChildren);
-			
-			If Not DocumentObject.IsNew() And Not AllowToEditDocumentsWithChildren And DocumentsPostingAndNumberingAtServer.HasChildDocuments(DocumentObject) Then
-				
-				DocumentForm.ReadOnly = True;
-				
-			EndIf;	
-			
-		EndIf;	
-	
-	EndIf;
+	// to do
+	// Jack 29.06.2017
+	//DocumentObject = DocumentForm.ThisObject;
+	//
+	//If NOT DocumentObject.IsNew() Then
+	//	LockUser = Undefined;
+	//	If WebServicesModule.IsObjectLockedForWebService(DocumentObject.Ref) Then
+	//		ShowMessageBox(, Alerts.ParametrizeString(Nstr("en = 'This document could not be changed because it has been locked by user %P1!';
+	//					|pl = 'Nie można zmienić tego dokumentu ponieważ ten dokument został zablokowany przez użytkownika %P1!'"), New Structure("P1",LockUser)));
+	//		DocumentForm.ReadOnly = True;
+	//		
+	//		If IsInRole(Metadata.Roles.Right_WebService_AllowToUnlockObjects) Then
+	//			
+	//			DocumentForm.Controls.FormActions.Buttons.Add("UnlockObject",CommandBarButtonType.Action,Nstr("pl='Odblokuj'"),New Action("UnlockObject"));
+	//			
+	//		EndIf;	
+	//		
+	//	EndIf;	
+	//EndIf;	
+	//
+	//If Not IsInRole(Metadata.Roles.Right_General_ModifyDocumentsNumber) Then
+	//	DocumentForm.Controls.Number.ReadOnly = True;
+	//ElsIf DocumentForm.Controls.Number.Data = "" Then
+	//	DocumentForm.Controls.Number.TextEdit = False;
+	//	DocumentForm.Controls.Number.ChoiceButton = True;
+	//	DocumentForm.Controls.Number.ChoiceButtonPicture = PictureLib.Pencil;
+	//EndIf;
+	//	
+	//If DocumentForm.Posted Then
+	//	
+	//	If IsInvoiceDocument(DocumentForm.Ref) AND NOT IsInRole(Metadata.Roles.Right_Sales_ToChangeInvoicesAfterPosting) Then
+	//		DocumentForm.ReadOnly = True;
+	//	Else
+	//		
+	//		If DocumentForm.Metadata().Posting = Metadata.ObjectProperties.Posting.Allow
+	//		And DocumentForm.Metadata().RealTimePosting = Metadata.ObjectProperties.RealTimePosting.Allow 
+	//		AND Not IsInRole(Metadata.Roles.Right_General_NonRealTimePosting) Then
+	//			LockDocumentFormByDate(DocumentForm);
+	//		EndIf;
+	//		
+	//		AllowToEditDocumentsWithChildren = IsInRole(Metadata.Roles.Right_General_ToModifyDocumentsWithChildren);
+	//		
+	//		If Not DocumentObject.IsNew() And Not AllowToEditDocumentsWithChildren And DocumentsPostingAndNumberingAtServer.HasChildDocuments(DocumentObject) Then
+	//			
+	//			DocumentForm.ReadOnly = True;
+	//			
+	//		EndIf;	
+	//		
+	//	EndIf;	
+	//
+	//EndIf;
 			
 EndProcedure
 
 Procedure LockDocumentFormByDate(DocumentForm)
-	
-	If BegOfDay(DocumentForm.Date) < BegOfDay(CurrentDate()) Then
-		DocumentForm.ReadOnly = True;
-	Else
-		DocumentForm.UsePostingMode = PostingModeUse.RealTime;
-	EndIf;	
+	// Jack 29.06.2017
+	// to do
+	//If BegOfDay(DocumentForm.Date) < BegOfDay(CurrentDate()) Then
+	//	DocumentForm.ReadOnly = True;
+	//Else
+	//	DocumentForm.UsePostingMode = PostingModeUse.RealTime;
+	//EndIf;	
 	
 EndProcedure	
 
 Procedure CheckEditingPermissionForArchive(DocumentForm) Export
-	
-	DocumentObject = DocumentForm.ThisObject;
-		
-	If CommonAtServer.IsDocumentAttribute("IsArchive", DocumentObject.Metadata()) 
-		AND DocumentObject.IsArchive Then
-		DocumentForm.Controls.Number.ReadOnly = False;
-		DocumentForm.Controls.Number.TextEdit = True;
-		DocumentForm.Controls.Number.ChoiceButton = False;
-		DocumentForm.Controls.Number.Data = "Number";
-		DocumentForm.ReadOnly = False;
-	EndIf;
+	// Jack 29.06.2017
+	// to do
+	//DocumentObject = DocumentForm.ThisObject;
+	//	
+	//If CommonAtServer.IsDocumentAttribute("IsArchive", DocumentObject.Metadata()) 
+	//	AND DocumentObject.IsArchive Then
+	//	DocumentForm.Controls.Number.ReadOnly = False;
+	//	DocumentForm.Controls.Number.TextEdit = True;
+	//	DocumentForm.Controls.Number.ChoiceButton = False;
+	//	DocumentForm.Controls.Number.Data = "Number";
+	//	DocumentForm.ReadOnly = False;
+	//EndIf;
 		
 EndProcedure
 
 #EndIf
 
-Procedure NumberEnabledOnArchiveStatusChange(DocumentForm,ArchiveStatus) Export
-	
-	If Not ArchiveStatus Then
-		DocumentForm.Controls.Number.Data = "Number";
-		
-		If DocumentForm.ThisObject.IsNew() Then
-			DocumentForm.Controls.Number.Value = "";
-		EndIf;	
-			
-		DocumentForm.Controls.Number.ReadOnly = False;
-		DocumentForm.Controls.Number.TextEdit = True;
-	Else
-		If Not IsInRole(Metadata.Roles.Right_General_ModifyDocumentsNumber) Then
-			DocumentForm.Controls.Number.ReadOnly = True;
-		ElsIf DocumentForm.Controls.Number.Data = "" Then
-			DocumentForm.Controls.Number.TextEdit = False;
-			DocumentForm.Controls.Number.ChoiceButton = True;
-			DocumentForm.Controls.Number.ChoiceButtonPicture = PictureLib.Pencil;
-		EndIf;
-		If DocumentForm.ThisObject.IsNew() Then
-			DocumentForm.Controls.Number.Data = "";
-			DocumentForm.Controls.Number.Value = GetDocumentAutoNumberPresentation(DocumentForm.ThisObject);
-		EndIf;	
-	EndIf;	
-	
-	
-EndProcedure
+// Jack 29.06.2017
+//Procedure NumberEnabledOnArchiveStatusChange(DocumentForm,ArchiveStatus) Export
+//	
+//	If Not ArchiveStatus Then
+//		DocumentForm.Controls.Number.Data = "Number";
+//		
+//		If DocumentForm.ThisObject.IsNew() Then
+//			DocumentForm.Controls.Number.Value = "";
+//		EndIf;	
+//			
+//		DocumentForm.Controls.Number.ReadOnly = False;
+//		DocumentForm.Controls.Number.TextEdit = True;
+//	Else
+//		If Not IsInRole(Metadata.Roles.Right_General_ModifyDocumentsNumber) Then
+//			DocumentForm.Controls.Number.ReadOnly = True;
+//		ElsIf DocumentForm.Controls.Number.Data = "" Then
+//			DocumentForm.Controls.Number.TextEdit = False;
+//			DocumentForm.Controls.Number.ChoiceButton = True;
+//			DocumentForm.Controls.Number.ChoiceButtonPicture = PictureLib.Pencil;
+//		EndIf;
+//		If DocumentForm.ThisObject.IsNew() Then
+//			DocumentForm.Controls.Number.Data = "";
+//			DocumentForm.Controls.Number.Value = GetDocumentAutoNumberPresentation(DocumentForm.ThisObject);
+//		EndIf;	
+//	EndIf;	
+//	
+//	
+//EndProcedure
 
-Procedure CheckSalesAmountAndVATEditingPermission(DocumentForm, TabularPartName = "ItemsLines", AmountColumnsStructure = Undefined) Export
-	
-	If AmountColumnsStructure = Undefined Then
-		AmountColumnsStructure = New Structure("Amount, VATRate, VAT");
-	EndIf;
-	
-	DocumentMetadata = DocumentForm.ThisObject.Metadata();
-	
-	If Not IsInRole(Metadata.Roles.Right_Sales_ToEditSalesAmountAndVAT) Then
-		For each KeyAndValue In AmountColumnsStructure Do
-			DocumentForm.Controls[TabularPartName].Columns[KeyAndValue.Key].ReadOnly = True;
-		EndDo;
-	EndIf;
-	
-EndProcedure
+// Jack 29.06.2017
+//Procedure CheckSalesAmountAndVATEditingPermission(DocumentForm, TabularPartName = "ItemsLines", AmountColumnsStructure = Undefined) Export
+//	
+//	If AmountColumnsStructure = Undefined Then
+//		AmountColumnsStructure = New Structure("Amount, VATRate, VAT");
+//	EndIf;
+//	
+//	DocumentMetadata = DocumentForm.ThisObject.Metadata();
+//	
+//	If Not IsInRole(Metadata.Roles.Right_Sales_ToEditSalesAmountAndVAT) Then
+//		For each KeyAndValue In AmountColumnsStructure Do
+//			DocumentForm.Controls[TabularPartName].Columns[KeyAndValue.Key].ReadOnly = True;
+//		EndDo;
+//	EndIf;
+//	
+//EndProcedure
 
 Function IsInvoiceDocument(DocumentRef)
-	
-	If TypeOf(DocumentRef) = TypeOf(Documents.SalesInvoice.EmptyRef())
-		OR TypeOf(DocumentRef) = TypeOf(Documents.SalesRetail.EmptyRef())
-		OR TypeOf(DocumentRef) = TypeOf(Documents.SalesCreditNotePriceCorrection.EmptyRef())
-		OR TypeOf(DocumentRef) = TypeOf(Documents.SalesCreditNoteReturn.EmptyRef())
-		OR TypeOf(DocumentRef) = TypeOf(Documents.SalesRetailReturn.EmptyRef()) Then
-		Return True;
-	Else
+	// Jack 29.06.2017
+	// to do
+	//If TypeOf(DocumentRef) = TypeOf(Documents.SalesInvoice.EmptyRef())
+	//	OR TypeOf(DocumentRef) = TypeOf(Documents.SalesRetail.EmptyRef())
+	//	OR TypeOf(DocumentRef) = TypeOf(Documents.SalesCreditNotePriceCorrection.EmptyRef())
+	//	OR TypeOf(DocumentRef) = TypeOf(Documents.SalesCreditNoteReturn.EmptyRef())
+	//	OR TypeOf(DocumentRef) = TypeOf(Documents.SalesRetailReturn.EmptyRef()) Then
+	//	Return True;
+	//Else
 		Return False;
-	EndIf;
+	//EndIf;
 	
 EndFunction
 
@@ -323,135 +337,138 @@ Function GetValueFromObject(DocumentObject, Attribute)
 EndFunction
 
 Function GetDocumentNumberPrefix(Val DocumentObject, InitialCounter = "") Export
+	// Jack 27.06.2017
+    // to do
 	
-	DocumentObjectMetadata = DocumentObject.Ref.Metadata();
-	
-	If CommonAtServer.IsDocumentAttribute("Company", DocumentObjectMetadata) Then
-		Company = DocumentObject.Company;
-	Else
-		Company = Catalogs.Companies.EmptyRef();
-	EndIf;
-	
-	CompanyPrefix = TrimAll(Company.Prefix);
-	IsDocumentPrefix = False;
-	If CommonAtServer.IsDocumentAttribute("Prefix", DocumentObjectMetadata) And ValueIsFilled(DocumentObject.Prefix) Then
-		IsDocumentPrefix = True;
-		DocumentPrefixRecord = New Structure("Prefix", DocumentObject.Prefix);
-		Query = New Query;
-		Query.Text = "SELECT
-		|	MAX(DocumentsNumberingSettingsSliceLast.Period) AS Period,
-		|	DocumentsNumberingSettingsSliceLast.DocumentType,
-		|	DocumentsNumberingSettingsSliceLast.Prefix
-		|INTO MaxPeriod
-		|FROM
-		|	InformationRegister.DocumentsNumberingSettings.SliceLast(
-		|			&Period,
-		|			DocumentType = &DocumentType
-		|				AND Prefix = &Prefix) AS DocumentsNumberingSettingsSliceLast
-		|
-		|GROUP BY
-		|	DocumentsNumberingSettingsSliceLast.DocumentType,
-		|	DocumentsNumberingSettingsSliceLast.Prefix
-		|;
-		|
-		|////////////////////////////////////////////////////////////////////////////////
-		|SELECT
-		|	DocumentsNumberingSettings.DocumentType,
-		|	DocumentsNumberingSettings.AttributeValue,
-		|	DocumentsNumberingSettings.Prefix,
-		|	DocumentsNumberingSettings.InitialCounter,
-		|	DocumentsNumberingSettings.Attribute
-		|FROM
-		|	MaxPeriod AS MaxPeriod
-		|		INNER JOIN InformationRegister.DocumentsNumberingSettings AS DocumentsNumberingSettings
-		|		ON MaxPeriod.Period = DocumentsNumberingSettings.Period
-		|			AND MaxPeriod.DocumentType = DocumentsNumberingSettings.DocumentType
-		|			AND MaxPeriod.Prefix = DocumentsNumberingSettings.Prefix";
+	//DocumentObjectMetadata = DocumentObject.Ref.Metadata();
+	//
+	//If CommonAtServer.IsDocumentAttribute("Company", DocumentObjectMetadata) Then
+	//	Company = DocumentObject.Company;
+	//Else
+	//	Company = Catalogs.Companies.EmptyRef();
+	//EndIf;
+	//
+	//CompanyPrefix = TrimAll(Company.Prefix);
+	//IsDocumentPrefix = False;
+	//If CommonAtServer.IsDocumentAttribute("Prefix", DocumentObjectMetadata) And ValueIsFilled(DocumentObject.Prefix) Then
+	//	IsDocumentPrefix = True;
+	//	DocumentPrefixRecord = New Structure("Prefix", DocumentObject.Prefix);
+	//	Query = New Query;
+	//	Query.Text = "SELECT
+	//	|	MAX(DocumentsNumberingSettingsSliceLast.Period) AS Period,
+	//	|	DocumentsNumberingSettingsSliceLast.DocumentType,
+	//	|	DocumentsNumberingSettingsSliceLast.Prefix
+	//	|INTO MaxPeriod
+	//	|FROM
+	//	|	InformationRegister.DocumentsNumberingSettings.SliceLast(
+	//	|			&Period,
+	//	|			DocumentType = &DocumentType
+	//	|				AND Prefix = &Prefix) AS DocumentsNumberingSettingsSliceLast
+	//	|
+	//	|GROUP BY
+	//	|	DocumentsNumberingSettingsSliceLast.DocumentType,
+	//	|	DocumentsNumberingSettingsSliceLast.Prefix
+	//	|;
+	//	|
+	//	|////////////////////////////////////////////////////////////////////////////////
+	//	|SELECT
+	//	|	DocumentsNumberingSettings.DocumentType,
+	//	|	DocumentsNumberingSettings.AttributeValue,
+	//	|	DocumentsNumberingSettings.Prefix,
+	//	|	DocumentsNumberingSettings.InitialCounter,
+	//	|	DocumentsNumberingSettings.Attribute
+	//	|FROM
+	//	|	MaxPeriod AS MaxPeriod
+	//	|		INNER JOIN InformationRegister.DocumentsNumberingSettings AS DocumentsNumberingSettings
+	//	|		ON MaxPeriod.Period = DocumentsNumberingSettings.Period
+	//	|			AND MaxPeriod.DocumentType = DocumentsNumberingSettings.DocumentType
+	//	|			AND MaxPeriod.Prefix = DocumentsNumberingSettings.Prefix";
 
-		Query.SetParameter("Prefix", DocumentObject.Prefix);
-	Else
-		Query = New Query;
-		Query.Text = "SELECT
-		|	MAX(DocumentsNumberingSettingsSliceLast.Period) AS Period,
-		|	DocumentsNumberingSettingsSliceLast.DocumentType
-		|INTO MaxPeriod
-		|FROM
-		|	InformationRegister.DocumentsNumberingSettings.SliceLast(&Period, DocumentType = &DocumentType) AS DocumentsNumberingSettingsSliceLast
-		|
-		|GROUP BY
-		|	DocumentsNumberingSettingsSliceLast.DocumentType
-		|;
-		|
-		|////////////////////////////////////////////////////////////////////////////////
-		|SELECT
-		|	DocumentsNumberingSettings.DocumentType,
-		|	DocumentsNumberingSettings.AttributeValue,
-		|	DocumentsNumberingSettings.Prefix,
-		|	DocumentsNumberingSettings.InitialCounter,
-		|	DocumentsNumberingSettings.Attribute
-		|FROM
-		|	MaxPeriod AS MaxPeriod
-		|		INNER JOIN InformationRegister.DocumentsNumberingSettings AS DocumentsNumberingSettings
-		|		ON MaxPeriod.Period = DocumentsNumberingSettings.Period
-		|			AND MaxPeriod.DocumentType = DocumentsNumberingSettings.DocumentType";
-		
-	EndIf;
-	
-	Query.SetParameter("Period", DocumentObject.Date);
-	Query.SetParameter("DocumentType", Documents[DocumentObjectMetadata.Name].EmptyRef());
-	
-	ResultNumbersSettings = Query.Execute().Unload();
-		
-	
-	If Documents.AllRefsType().ContainsType(TypeOf(DocumentObject.Ref)) Then
-		DocumentPrefixRecord = New Structure("Prefix, InitialCounter");
-		If ResultNumbersSettings.Count() > 1 Then
-			For Each RowNumberSetting In ResultNumbersSettings Do
-				If Not ValueIsFilled(RowNumberSetting.AttributeValue) Then
-					FillPropertyValues(DocumentPrefixRecord, RowNumberSetting);
-				ElsIf GetValueFromObject(DocumentObject, RowNumberSetting.Attribute) = RowNumberSetting.AttributeValue Then
-					FillPropertyValues(DocumentPrefixRecord, RowNumberSetting);
-				EndIf;
-			EndDo;
-		Else
-			If IsDocumentPrefix And ResultNumbersSettings.Count() = 1 Then
-				FillPropertyValues(DocumentPrefixRecord, ResultNumbersSettings[0]);
-			Else
-				DocumentPrefixRecord = InformationRegisters.DocumentsNumberingSettings.GetLast(DocumentObject.Date, New Structure("DocumentType", Documents[DocumentObjectMetadata.Name].EmptyRef()));
-			EndIf;
-		EndIf;
-	ElsIf BusinessProcesses.AllRefsType().ContainsType(TypeOf(DocumentObject.Ref)) Then
-		DocumentPrefixRecord = InformationRegisters.DocumentsNumberingSettings.GetLast(DocumentObject.Date, New Structure("DocumentType", BusinessProcesses[DocumentObjectMetadata.Name].EmptyRef()));	
-	ElsIf Tasks.AllRefsType().ContainsType(TypeOf(DocumentObject.Ref)) Then
-		DocumentPrefixRecord = InformationRegisters.DocumentsNumberingSettings.GetLast(DocumentObject.Date, New Structure("DocumentType", Tasks[DocumentObjectMetadata.Name].EmptyRef()));		
-	EndIf;	
-	
-	DocumentPrefix = TrimAll(DocumentPrefixRecord.Prefix);
-	If IsBlankString(DocumentPrefixRecord.InitialCounter) Then
-		InitialCounter = "00001";
-	Else
-		InitialCounter = TrimAll(DocumentPrefixRecord.InitialCounter);
-	EndIf;
-	
-	If Not TypeOf(DocumentObject) = Type("FormDataStructure") Then
-		If Number(InitialCounter) = 1 AND TypeOf(DocumentObject) <> Type("Structure") AND Find(XMLTypeOf(DocumentObject).TypeName, "Ref.") = 0 Then
-			DocumentObject.AdditionalProperties.Insert("FirstNumber",True);
-		EndIf;	
-	EndIf;	
-	
-	// Parse prefix.
-	DocumentPrefix = DocumentsPostingAndNumberingAtClientAtServer.ReplacePrefixTokens_Date(DocumentPrefix, DocumentObject.Date);
-	
-	// Document's copy prefix for documents that have prefix depends on attributes
-	DocumentCopyPrefix = "";
-	If SessionParameters.IsBookkeepingAvailable Then
-		If TypeOf(DocumentObject) = Type("DocumentObject.BookkeepingOperation") 
-			OR TypeOf(DocumentObject.Ref) = Type("DocumentRef.BookkeepingOperation") Then
-			DocumentCopyPrefix = TrimAll(DocumentObject.PartialJournal.Prefix);
-		EndIf;
-	EndIf;
-	
-	Return CompanyPrefix + DocumentPrefix + DocumentCopyPrefix;
+	//	Query.SetParameter("Prefix", DocumentObject.Prefix);
+	//Else
+	//	Query = New Query;
+	//	Query.Text = "SELECT
+	//	|	MAX(DocumentsNumberingSettingsSliceLast.Period) AS Period,
+	//	|	DocumentsNumberingSettingsSliceLast.DocumentType
+	//	|INTO MaxPeriod
+	//	|FROM
+	//	|	InformationRegister.DocumentsNumberingSettings.SliceLast(&Period, DocumentType = &DocumentType) AS DocumentsNumberingSettingsSliceLast
+	//	|
+	//	|GROUP BY
+	//	|	DocumentsNumberingSettingsSliceLast.DocumentType
+	//	|;
+	//	|
+	//	|////////////////////////////////////////////////////////////////////////////////
+	//	|SELECT
+	//	|	DocumentsNumberingSettings.DocumentType,
+	//	|	DocumentsNumberingSettings.AttributeValue,
+	//	|	DocumentsNumberingSettings.Prefix,
+	//	|	DocumentsNumberingSettings.InitialCounter,
+	//	|	DocumentsNumberingSettings.Attribute
+	//	|FROM
+	//	|	MaxPeriod AS MaxPeriod
+	//	|		INNER JOIN InformationRegister.DocumentsNumberingSettings AS DocumentsNumberingSettings
+	//	|		ON MaxPeriod.Period = DocumentsNumberingSettings.Period
+	//	|			AND MaxPeriod.DocumentType = DocumentsNumberingSettings.DocumentType";
+	//	
+	//EndIf;
+	//
+	//Query.SetParameter("Period", DocumentObject.Date);
+	//Query.SetParameter("DocumentType", Documents[DocumentObjectMetadata.Name].EmptyRef());
+	//
+	//ResultNumbersSettings = Query.Execute().Unload();
+	//	
+	//
+	//If Documents.AllRefsType().ContainsType(TypeOf(DocumentObject.Ref)) Then
+	//	DocumentPrefixRecord = New Structure("Prefix, InitialCounter");
+	//	If ResultNumbersSettings.Count() > 1 Then
+	//		For Each RowNumberSetting In ResultNumbersSettings Do
+	//			If Not ValueIsFilled(RowNumberSetting.AttributeValue) Then
+	//				FillPropertyValues(DocumentPrefixRecord, RowNumberSetting);
+	//			ElsIf GetValueFromObject(DocumentObject, RowNumberSetting.Attribute) = RowNumberSetting.AttributeValue Then
+	//				FillPropertyValues(DocumentPrefixRecord, RowNumberSetting);
+	//			EndIf;
+	//		EndDo;
+	//	Else
+	//		If IsDocumentPrefix And ResultNumbersSettings.Count() = 1 Then
+	//			FillPropertyValues(DocumentPrefixRecord, ResultNumbersSettings[0]);
+	//		Else
+	//			DocumentPrefixRecord = InformationRegisters.DocumentsNumberingSettings.GetLast(DocumentObject.Date, New Structure("DocumentType", Documents[DocumentObjectMetadata.Name].EmptyRef()));
+	//		EndIf;
+	//	EndIf;
+	//ElsIf BusinessProcesses.AllRefsType().ContainsType(TypeOf(DocumentObject.Ref)) Then
+	//	DocumentPrefixRecord = InformationRegisters.DocumentsNumberingSettings.GetLast(DocumentObject.Date, New Structure("DocumentType", BusinessProcesses[DocumentObjectMetadata.Name].EmptyRef()));	
+	//ElsIf Tasks.AllRefsType().ContainsType(TypeOf(DocumentObject.Ref)) Then
+	//	DocumentPrefixRecord = InformationRegisters.DocumentsNumberingSettings.GetLast(DocumentObject.Date, New Structure("DocumentType", Tasks[DocumentObjectMetadata.Name].EmptyRef()));		
+	//EndIf;	
+	//
+	//DocumentPrefix = TrimAll(DocumentPrefixRecord.Prefix);
+	//If IsBlankString(DocumentPrefixRecord.InitialCounter) Then
+	//	InitialCounter = "00001";
+	//Else
+	//	InitialCounter = TrimAll(DocumentPrefixRecord.InitialCounter);
+	//EndIf;
+	//
+	//If Not TypeOf(DocumentObject) = Type("FormDataStructure") Then
+	//	If Number(InitialCounter) = 1 AND TypeOf(DocumentObject) <> Type("Structure") AND Find(XMLTypeOf(DocumentObject).TypeName, "Ref.") = 0 Then
+	//		DocumentObject.AdditionalProperties.Insert("FirstNumber",True);
+	//	EndIf;	
+	//EndIf;	
+	//
+	//// Parse prefix.
+	//DocumentPrefix = DocumentsPostingAndNumberingAtClientAtServer.ReplacePrefixTokens_Date(DocumentPrefix, DocumentObject.Date);
+	//
+	//// Document's copy prefix for documents that have prefix depends on attributes
+	//DocumentCopyPrefix = "";
+	//If SessionParameters.IsBookkeepingAvailable Then
+	//	If TypeOf(DocumentObject) = Type("DocumentObject.BookkeepingOperation") 
+	//		OR TypeOf(DocumentObject.Ref) = Type("DocumentRef.BookkeepingOperation") Then
+	//		DocumentCopyPrefix = TrimAll(DocumentObject.PartialJournal.Prefix);
+	//	EndIf;
+	//EndIf;
+	//
+	//Return CompanyPrefix + DocumentPrefix + DocumentCopyPrefix;
+	Return "";
 	
 EndFunction
 

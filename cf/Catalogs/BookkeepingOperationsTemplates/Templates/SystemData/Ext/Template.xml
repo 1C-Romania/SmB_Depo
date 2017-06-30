@@ -1151,10 +1151,6 @@
 			<field>ActivityKind</field>
 		</field>
 		<field xsi:type="DataSetFieldField">
-			<dataPath>NationalLanguage</dataPath>
-			<field>NationalLanguage</field>
-		</field>
-		<field xsi:type="DataSetFieldField">
 			<dataPath>InitialSettingOpeningBalancesFilled</dataPath>
 			<field>InitialSettingOpeningBalancesFilled</field>
 		</field>
@@ -2666,10 +2662,6 @@ FROM
 				<field>ActivityKind</field>
 			</field>
 			<field xsi:type="DataSetFieldField">
-				<dataPath>NationalLanguage</dataPath>
-				<field>NationalLanguage</field>
-			</field>
-			<field xsi:type="DataSetFieldField">
 				<dataPath>InitialSettingOpeningBalancesFilled</dataPath>
 				<field>InitialSettingOpeningBalancesFilled</field>
 			</field>
@@ -3731,7 +3723,6 @@ FROM
 	Constants.VendorPaymentDueDate,
 	Constants.VerifyDigitalSignaturesAtServer,
 	Constants.NationalCurrency,
-	Constants.NationalLanguage,
 	Constants.UseCounterpartiesVerification,
 	Constants.CurrencyQuotationType
 FROM

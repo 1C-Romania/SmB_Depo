@@ -1,87 +1,87 @@
-﻿
-// Checks whether all rows of tabular parts are unique
-// based on given column names list (Structure).
-Procedure ObjectTabularPartRowUniquenessValidation(Object, Val TabularPartName, Val KeyColumnNames, Cancel, Val Title = "") Export 
-	
-	TabularPart = Object[TabularPartName];
-	
-	//presentation variables used for displaying messages
-	TabularPartMetadata = Object.Metadata().TabularSections[TabularPartName];
-	TabularPartPresentation = TabularPartMetadata.Presentation();
-	
-	ColumnPresentationsString = ""; // this one will be filled in the iteration below
-	ColumnNamesString = "";         // prepare a column list string ("Column1, Column2, ...") - for GroupBy function
-	
-	If TypeOf(KeyColumnNames) = Type("String") Then
-		
-		TempColumnName = KeyColumnNames;
-		KeyColumnNames = New Structure();
-		KeyColumnNames.Insert(TempColumnName);
-		
-	EndIf;	
-	
-	For Each ColumnKeyAndValue In KeyColumnNames Do
-		
-		ColumnNamesString = ColumnNamesString + StringFunctionsClientServer.AddStringSeparator(ColumnNamesString) + ColumnKeyAndValue.Key;
-		ColumnPresentationsString = ColumnPresentationsString + StringFunctionsClientServer.AddStringSeparator(ColumnPresentationsString) + TabularPartMetadata.Attributes[ColumnKeyAndValue.Key].Presentation();
-		
-	EndDo;
-	
-	//create a ValueTable initially containing original tabular part
-	TabularPartClone = TabularPart.Unload();
-	
-	//get row values (if such rows exist) which are duplicated in tabular part
-	TabularPartClone.Columns.Add("RowCount"); //add a column which will count how many such row appears in tabular table
-	TabularPartClone.FillValues(1, "RowCount");
-	TabularPartClone.GroupBy(ColumnNamesString, "RowCount");
-	
-	RowsAreDuplicated = False;
-	RowFilters = New Array; //Array of Structure, containing all row filters, one per duplicated rows set
-	
-	DuplicatedRowValues = New Array(KeyColumnNames.Count()); //this will be used to copy values of row encountered more than once
-	
-	// Find duplicates occurance
-	For Each TabularPartCloneRow In TabularPartClone Do
-		
-		If TabularPartCloneRow.RowCount > 1 Then //this is a duplicated row
-			
-			RowsAreDuplicated = True;
-			
-			RowFilter = New Structure; // this will contain criteria for future searching of duplicated rows in tabular part
-			
-			// Retrieve values that are in a duplicated row.
-			For Each KeyAndValue In KeyColumnNames Do
-				RowFilter.Insert(KeyAndValue.Key, TabularPartCloneRow[KeyAndValue.Key]); //form filter for row searching
-			EndDo;
-			
-			// Store new row filter for duplicated rows set.
-			RowFilters.Add(RowFilter);
-			
-		EndIf;
-		
-	EndDo;
-	
-	OutMessage = NStr("en='After checking uniqueness of rows in tabular part ""';pl='Po sprawdzeniu unikalności wierszy w części tabelarycznej ""'") + TabularPartPresentation + NStr("en='"" on values of columns (';pl='"" na wartościach w kolumnach ('") + ColumnPresentationsString + NStr("en="") the following duplicates found:"";pl="") znaleziono następujące duplikaty:""");
-	
-	//if there are duplicated rows, find them and return appropriate message
-	If RowsAreDuplicated Then
-		
-		For Each RowFilter in RowFilters Do
-			
-			DuplicatedRows = TabularPart.FindRows(RowFilter);
-			OutMessage = OutMessage + Chars.LF + NStr("en='There are duplicated rows:';pl='Zduplikowane wiersze:'") + " " + DuplicatedRows[0].LineNumber;
-			
-			For i = 1 To DuplicatedRows.UBound() Do
-				OutMessage = OutMessage + ", " + DuplicatedRows[i].LineNumber;
-			EndDo;
-			
-		EndDo;
-		
-		Alerts.AddAlert(Title + " " + OutMessage,, Cancel, Object);
-		
-	EndIf;
-	
-EndProcedure //ObjectTabularPartRowUniquenessValidation()
+﻿// Jack 29.06.2017
+//// Checks whether all rows of tabular parts are unique
+//// based on given column names list (Structure).
+//Procedure ObjectTabularPartRowUniquenessValidation(Object, Val TabularPartName, Val KeyColumnNames, Cancel, Val Title = "") Export 
+//	
+//	TabularPart = Object[TabularPartName];
+//	
+//	//presentation variables used for displaying messages
+//	TabularPartMetadata = Object.Metadata().TabularSections[TabularPartName];
+//	TabularPartPresentation = TabularPartMetadata.Presentation();
+//	
+//	ColumnPresentationsString = ""; // this one will be filled in the iteration below
+//	ColumnNamesString = "";         // prepare a column list string ("Column1, Column2, ...") - for GroupBy function
+//	
+//	If TypeOf(KeyColumnNames) = Type("String") Then
+//		
+//		TempColumnName = KeyColumnNames;
+//		KeyColumnNames = New Structure();
+//		KeyColumnNames.Insert(TempColumnName);
+//		
+//	EndIf;	
+//	
+//	For Each ColumnKeyAndValue In KeyColumnNames Do
+//		
+//		ColumnNamesString = ColumnNamesString + StringFunctionsClientServer.AddStringSeparator(ColumnNamesString) + ColumnKeyAndValue.Key;
+//		ColumnPresentationsString = ColumnPresentationsString + StringFunctionsClientServer.AddStringSeparator(ColumnPresentationsString) + TabularPartMetadata.Attributes[ColumnKeyAndValue.Key].Presentation();
+//		
+//	EndDo;
+//	
+//	//create a ValueTable initially containing original tabular part
+//	TabularPartClone = TabularPart.Unload();
+//	
+//	//get row values (if such rows exist) which are duplicated in tabular part
+//	TabularPartClone.Columns.Add("RowCount"); //add a column which will count how many such row appears in tabular table
+//	TabularPartClone.FillValues(1, "RowCount");
+//	TabularPartClone.GroupBy(ColumnNamesString, "RowCount");
+//	
+//	RowsAreDuplicated = False;
+//	RowFilters = New Array; //Array of Structure, containing all row filters, one per duplicated rows set
+//	
+//	DuplicatedRowValues = New Array(KeyColumnNames.Count()); //this will be used to copy values of row encountered more than once
+//	
+//	// Find duplicates occurance
+//	For Each TabularPartCloneRow In TabularPartClone Do
+//		
+//		If TabularPartCloneRow.RowCount > 1 Then //this is a duplicated row
+//			
+//			RowsAreDuplicated = True;
+//			
+//			RowFilter = New Structure; // this will contain criteria for future searching of duplicated rows in tabular part
+//			
+//			// Retrieve values that are in a duplicated row.
+//			For Each KeyAndValue In KeyColumnNames Do
+//				RowFilter.Insert(KeyAndValue.Key, TabularPartCloneRow[KeyAndValue.Key]); //form filter for row searching
+//			EndDo;
+//			
+//			// Store new row filter for duplicated rows set.
+//			RowFilters.Add(RowFilter);
+//			
+//		EndIf;
+//		
+//	EndDo;
+//	
+//	OutMessage = NStr("en='After checking uniqueness of rows in tabular part ""';pl='Po sprawdzeniu unikalności wierszy w części tabelarycznej ""'") + TabularPartPresentation + NStr("en='"" on values of columns (';pl='"" na wartościach w kolumnach ('") + ColumnPresentationsString + NStr("en="") the following duplicates found:"";pl="") znaleziono następujące duplikaty:""");
+//	
+//	//if there are duplicated rows, find them and return appropriate message
+//	If RowsAreDuplicated Then
+//		
+//		For Each RowFilter in RowFilters Do
+//			
+//			DuplicatedRows = TabularPart.FindRows(RowFilter);
+//			OutMessage = OutMessage + Chars.LF + NStr("en='There are duplicated rows:';pl='Zduplikowane wiersze:'") + " " + DuplicatedRows[0].LineNumber;
+//			
+//			For i = 1 To DuplicatedRows.UBound() Do
+//				OutMessage = OutMessage + ", " + DuplicatedRows[i].LineNumber;
+//			EndDo;
+//			
+//		EndDo;
+//		
+//		Alerts.AddAlert(Title + " " + OutMessage,, Cancel, Object);
+//		
+//	EndIf;
+//	
+//EndProcedure //ObjectTabularPartRowUniquenessValidation()
 
 Function GetItemsLinesRowAmount(Price, Quantity) Export 
 	
@@ -580,74 +580,74 @@ EndProcedure
 
 // LOADING FROM SPREADSHEET
 
-// ObjectRef - Reference on object. Used to take types and synonymes of columns
-// TabularSectionName - Tabular section name
-// ColumnsStructure - as key used column name in tabulart section, as value can be used column title. 
-// If ColumnsStructure is empty then all columns with the types will be got for tabular section
-//							- if value is filled, then procedure redefine type got from tabulart section by this value
-// Form - need to unique opening data processor 
-// Object - need for properly work of alerts mechanics 
-// ColumnsTypesStructure - if columns types should be taken not from TabularSection attributes, then this structure
-//							should contain as key - column name and as value - column type
-Procedure OpenLoadingFromSpreadsheet(ObjectRef,TabularSectionName,ColumnsStructure = Undefined,Object = Undefined,Form = Undefined,ColumnsTypesStructure = Undefined,DontShowNotificationStructure = Undefined,AdditionalProperties = Undefined) Export
-	
-	Alerts.ClearAlertsTable(Object,Form);
-	
-	If TypeOf(DontShowNotificationStructure) <> Type("Structure") Then
-		DontShowNotificationStructure = New Structure;
-	EndIf;
-	
-	LoadingForm = DataProcessors.LoadingDataFromSpreadsheet.GetForm("Form", Form, Form);
-	
-	RefMetadata = ObjectRef.Metadata();
-	
-	TabularSectionAttributes = RefMetadata.TabularSections[TabularSectionName].Attributes;
-	
-	TabularPartValueTable = New ValueTable;
-	
-	If ColumnsStructure = Undefined Then
-		// columns order from metadata	
-		For Each Attribute In TabularSectionAttributes Do
-			
-			TabularPartValueTable.Columns.Add(Attribute.Name, Attribute.Type ,Attribute.Synonym);
-			
-		EndDo;
+//// ObjectRef - Reference on object. Used to take types and synonymes of columns
+//// TabularSectionName - Tabular section name
+//// ColumnsStructure - as key used column name in tabulart section, as value can be used column title. 
+//// If ColumnsStructure is empty then all columns with the types will be got for tabular section
+////							- if value is filled, then procedure redefine type got from tabulart section by this value
+//// Form - need to unique opening data processor 
+//// Object - need for properly work of alerts mechanics 
+//// ColumnsTypesStructure - if columns types should be taken not from TabularSection attributes, then this structure
+////							should contain as key - column name and as value - column type
+//Procedure OpenLoadingFromSpreadsheet(ObjectRef,TabularSectionName,ColumnsStructure = Undefined,Object = Undefined,Form = Undefined,ColumnsTypesStructure = Undefined,DontShowNotificationStructure = Undefined,AdditionalProperties = Undefined) Export
+//	
+//	Alerts.ClearAlertsTable(Object,Form);
+//	
+//	If TypeOf(DontShowNotificationStructure) <> Type("Structure") Then
+//		DontShowNotificationStructure = New Structure;
+//	EndIf;
+//	
+//	LoadingForm = DataProcessors.LoadingDataFromSpreadsheet.GetForm("Form", Form, Form);
+//	
+//	RefMetadata = ObjectRef.Metadata();
+//	
+//	TabularSectionAttributes = RefMetadata.TabularSections[TabularSectionName].Attributes;
+//	
+//	TabularPartValueTable = New ValueTable;
+//	
+//	If ColumnsStructure = Undefined Then
+//		// columns order from metadata	
+//		For Each Attribute In TabularSectionAttributes Do
+//			
+//			TabularPartValueTable.Columns.Add(Attribute.Name, Attribute.Type ,Attribute.Synonym);
+//			
+//		EndDo;
 
-	Else
-		// order from structure
-		For Each StructureItem In ColumnsStructure Do
-			
-			Try
-				Attribute = TabularSectionAttributes[StructureItem.Key];
-			Except
-				Attribute = Undefined
-			EndTry;	
-			
-			StructureItemType = Undefined;
-			If ColumnsTypesStructure <> Undefined Then
-				ColumnsTypesStructure.Property(StructureItem.Key,StructureItemType);
-			EndIf;	
+//	Else
+//		// order from structure
+//		For Each StructureItem In ColumnsStructure Do
+//			
+//			Try
+//				Attribute = TabularSectionAttributes[StructureItem.Key];
+//			Except
+//				Attribute = Undefined
+//			EndTry;	
+//			
+//			StructureItemType = Undefined;
+//			If ColumnsTypesStructure <> Undefined Then
+//				ColumnsTypesStructure.Property(StructureItem.Key,StructureItemType);
+//			EndIf;	
 
-			If Attribute = Undefined Then
-				TabularPartValueTable.Columns.Add(StructureItem.Key, StructureItemType, StructureItem.Value);
-			Else
-				TabularPartValueTable.Columns.Add(Attribute.Name, ?(StructureItemType = Undefined,Attribute.Type,StructureItemType), Attribute.Synonym);
-			EndIf;
-			
-		EndDo;	
-		
-	EndIf;
-		
-	LoadingForm.TabularPartValueTable = TabularPartValueTable;
-	LoadingForm.Object = Object;
-	LoadingForm.TabularPartName = TabularSectionName;
-	LoadingForm.InternalDataLoading = True;
-	LoadingForm.DontShowNotificationStructure = DontShowNotificationStructure;
-	LoadingForm.AdditionalProperties = AdditionalProperties;
-	
-	LoadingForm.Open();
+//			If Attribute = Undefined Then
+//				TabularPartValueTable.Columns.Add(StructureItem.Key, StructureItemType, StructureItem.Value);
+//			Else
+//				TabularPartValueTable.Columns.Add(Attribute.Name, ?(StructureItemType = Undefined,Attribute.Type,StructureItemType), Attribute.Synonym);
+//			EndIf;
+//			
+//		EndDo;	
+//		
+//	EndIf;
+//		
+//	LoadingForm.TabularPartValueTable = TabularPartValueTable;
+//	LoadingForm.Object = Object;
+//	LoadingForm.TabularPartName = TabularSectionName;
+//	LoadingForm.InternalDataLoading = True;
+//	LoadingForm.DontShowNotificationStructure = DontShowNotificationStructure;
+//	LoadingForm.AdditionalProperties = AdditionalProperties;
+//	
+//	LoadingForm.Open();
 
-EndProcedure
+//EndProcedure
 
 
 Function FillTabularSectionOnLoadingFromSpreadsheetResult(TabularSection,LoadingFromSpreadsheetResult, GroupingColumns = "", TotalingColumns = "") Export

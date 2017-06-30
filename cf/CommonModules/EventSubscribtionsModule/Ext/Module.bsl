@@ -54,18 +54,7 @@ Procedure DocumentsBeforeWriteAll(Source, Cancel, WriteMode, PostingMode) Export
 	If WriteMode = DocumentWriteMode.UndoPosting Then
 		Source.AdditionalProperties.Insert("MessageTitle", NStr("en='Clear posting document:';pl='Anulowanie zatwierdzenia dokumentu:'") + " " + TrimAll(Source));
 	EndIf;
-	
-	If SessionParameters.UseWebServiceLocks Then
-		If NOT Source.IsNew() Then
-			LockUser = Undefined;
-			If WebServicesModule.IsObjectLockedForWebService(Source.Ref) Then
-				Alerts.AddAlert(Alerts.ParametrizeString(Nstr("en = 'This document could not be changed because it has been locked by user %P1!'; pl = 'Nie można zmienić tego dokumentu ponieważ ten dokument został zablokowany przez użytkownika %P1!'"),New Structure("P1",LockUser)),Enums.AlertType.Error,Cancel,Source);
-			Else
-				Privileged.UnLockObjectForWebService(Source.Ref);
-			EndIf;	
-		EndIf;	
-	EndIf;
-	
+		
 EndProcedure
 
 Procedure DocumentsOnWriteAll(Source, Cancel) Export

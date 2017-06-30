@@ -436,9 +436,9 @@
 			<ChoiceDataGetModeOnInputByString>Directly</ChoiceDataGetModeOnInputByString>
 			<CreateOnInput>DontUse</CreateOnInput>
 			<ChoiceHistoryOnInput>Auto</ChoiceHistoryOnInput>
-			<DefaultObjectForm>ChartOfAccounts.Bookkeeping.Form.AccountForm</DefaultObjectForm>
-			<DefaultListForm>ChartOfAccounts.Bookkeeping.Form.ListForm</DefaultListForm>
-			<DefaultChoiceForm>ChartOfAccounts.Bookkeeping.Form.ChoiceForm</DefaultChoiceForm>
+			<DefaultObjectForm>ChartOfAccounts.Bookkeeping.Form.AccountFormManaged</DefaultObjectForm>
+			<DefaultListForm>ChartOfAccounts.Bookkeeping.Form.ListFormManaged</DefaultListForm>
+			<DefaultChoiceForm>ChartOfAccounts.Bookkeeping.Form.ListFormManaged</DefaultChoiceForm>
 			<AuxiliaryObjectForm>ChartOfAccounts.Bookkeeping.Form.AccountFormManaged</AuxiliaryObjectForm>
 			<AuxiliaryListForm>ChartOfAccounts.Bookkeeping.Form.ListFormManaged</AuxiliaryListForm>
 			<AuxiliaryChoiceForm>ChartOfAccounts.Bookkeeping.Form.ListFormManaged</AuxiliaryChoiceForm>
@@ -1548,11 +1548,7 @@
 					<ChoiceHistoryOnInput>Auto</ChoiceHistoryOnInput>
 				</Properties>
 			</ExtDimensionAccountingFlag>
-			<Form>AccountForm</Form>
-			<Form>ListForm</Form>
-			<Form>ChoiceForm</Form>
 			<Form>NewAccountParentChoiceForm</Form>
-			<Form>PrintOutForm</Form>
 			<Form>AccountFormManaged</Form>
 			<Form>ListFormManaged</Form>
 			<Form>NewAccountParentChoiceFormManaged</Form>

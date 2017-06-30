@@ -9,16 +9,7 @@ Function GetCurrentUser() Export
 EndFunction	
 
 Function GetDefaultCompany(Val User = Undefined) Export
-	If NOT Constants.UseMultiCompanies.Get() Then 
-		
-		DefaultCompany	= CommonAtServerCached.DefaultCompany();
-		
-	Else
-		
-		DefaultCompany = CommonAtServer.GetUserSettingsValue("Company",User);
-		
-	EndIf;
-	
+	DefaultCompany = CommonAtServer.GetUserSettingsValue("Company",User);
 	Return DefaultCompany;
 EndFunction
 
@@ -35,7 +26,10 @@ Function GetDefaultDepartment(Val User = Undefined) Export
 EndFunction
 
 Function GetDefaultPriceType(Val User = Undefined) Export	
-	Return Catalogs.SalesPriceTypes.Base;	
+    // Jack 29.06.2017	
+	// to do
+	Return Undefined;
+	//Return Catalogs.SalesPriceTypes.Base;	
 EndFunction	
 
 Function GetDefaultIssuePlace(Val User = Undefined) Export	

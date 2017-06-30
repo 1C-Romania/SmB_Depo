@@ -7,23 +7,26 @@ EndFunction
 
 Procedure SetVATNumberMask(Val LocationType, VATNumber, ControlVATNumber) Export
 	
-	If LocationType = PredefinedValue("Enum.BusinessPartnersLocationTypes.Domestic") Then
-		ControlVATNumber.Mask = "999-999-99-99";
-	ElsIf LocationType = PredefinedValue("Enum.BusinessPartnersLocationTypes.EuropeanUnion") Then
-		ControlVATNumber.Mask = "UUUX99999UUU99";
-	ElsIf LocationType = PredefinedValue("Enum.BusinessPartnersLocationTypes.Foreign") Then
+	// to do
+	// Jack 29.06.2017
+	//If LocationType = PredefinedValue("Enum.BusinessPartnersLocationTypes.Domestic") Then
+	//	ControlVATNumber.Mask = "999-999-99-99";
+	//ElsIf LocationType = PredefinedValue("Enum.BusinessPartnersLocationTypes.EuropeanUnion") Then
+	//	ControlVATNumber.Mask = "UUUX99999UUU99";
+	//ElsIf LocationType = PredefinedValue("Enum.BusinessPartnersLocationTypes.Foreign") Then
+	//	ControlVATNumber.Mask = "";
+	//Else
 		ControlVATNumber.Mask = "";
-	Else
-		ControlVATNumber.Mask = "";
-	EndIf;
+	// EndIf;
 		
 EndProcedure
 
 Function ApplyVATNumberMaskToDomesticVATNumber(Val VATNumber) Export
 	
 	// mask is 999-999-99-99
-	
-	VATNumber = StringFunctionsClientServer.LeaveOnlyDigitsInString(VATNumber);
+	// Jack 29.06.2017
+	// to do
+	//VATNumber = StringFunctionsClientServer.LeaveOnlyDigitsInString(VATNumber);
 	VATNumber = Left(VATNumber,3)+"-"+Mid(VATNumber,4);
 	VATNumber = Left(VATNumber,7)+"-"+Mid(VATNumber,8);
 	VATNumber = Left(VATNumber,10)+"-"+Mid(VATNumber,11);
