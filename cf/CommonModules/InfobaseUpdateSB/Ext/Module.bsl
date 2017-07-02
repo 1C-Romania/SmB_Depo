@@ -1512,13 +1512,13 @@ Procedure DefaultFirstLaunch() Export
 	
 	// Accountable.
 	AccountingReference = Catalogs.PriceKinds.Accounting;
-	Accounting					= AccountingReference.GetObject();
-	Accounting.PriceCurrency	= CurrencyObject.Ref;
-	Accounting.PriceIncludesVAT	= False;
-	Accounting.RoundingOrder	= Enums.RoundingMethods.Round1;
-	Accounting.RoundUp			= False;
-	Accounting.PriceFormat		= "ND=15; NFD=2";
-	Accounting.Write();
+	Accounting1					= AccountingReference.GetObject();
+	Accounting1.PriceCurrency	= CurrencyObject.Ref;
+	Accounting1.PriceIncludesVAT	= False;
+	Accounting1.RoundingOrder	= Enums.RoundingMethods.Round1;
+	Accounting1.RoundUp			= False;
+	Accounting1.PriceFormat		= "ND=15; NFD=2";
+	Accounting1.Write();
 	
 	// 12. Fill in constants.
 	Constants.AccountingCurrency.Set(CurrencyObject.Ref);
