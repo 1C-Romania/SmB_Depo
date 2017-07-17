@@ -10,7 +10,7 @@ Procedure CheckInputBasedOnPossibility(FillingData, AttributeValues)
 	If AttributeValues.Property("OperationKind") Then
 		If ValueIsFilled(AttributeValues.OperationKind)
 			AND Not FillingData.OperationKind = Enums.OperationKindsCustomerOrder.JobOrder Then
-				ErrorMessage = NStr("en='Sales invoice receipt can be entered only on the basis of the job order!';ru='Расходный ордер можно ввести только на основании заказ-наряда!'");
+				ErrorMessage = NStr("en='You can enter issue slip only based on the job order.';ru='Расходный ордер можно ввести только на основании заказ-наряда!'");
 				Raise ErrorMessage;
 		EndIf;
 	EndIf;

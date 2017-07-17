@@ -18,7 +18,7 @@ Procedure OnCreateAtServer(Cancel, StandardProcessing)
 		String.Description                  = Parameters.PresentationArray[CurInd];
 	EndDo;
 	
-	TitleAutoRecord = NStr("en='Autoregistration for node ""%1""';ru='Авторегистрация для узла ""%1""'");
+	TitleAutoRecord = NStr("en='Automatic registration for node ""%1""';ru='Авторегистрация для узла ""%1""'");
 	
 	Items.DecorationAutoRecord.Title = StrReplace(TitleAutoRecord, "%1", Parameters.ExchangeNode);
 EndProcedure

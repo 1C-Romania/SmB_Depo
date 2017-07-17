@@ -135,7 +135,7 @@ Procedure RefillDocument(CommandParameter, Source = Undefined, MappingAlreadyCom
 	
 	If AccordanceOfEDIOwners.Count() = 0 Then
 		For Each CurrentDocument IN RefArray Do
-			Pattern = NStr("en='Electronic document is not found for %1';ru='Электронный документ для %1 не найден'");
+			Pattern = NStr("en='Electronic document for %1 is not found';ru='Электронный документ для %1 не найден'");
 			ErrorText = StringFunctionsClientServer.SubstituteParametersInString(Pattern, CurrentDocument);
 			CommonUseClientServer.MessageToUser(ErrorText);
 		EndDo;
@@ -274,7 +274,7 @@ Procedure OpenActualED(CommandParameter, Source = Undefined, OpenParameters = Un
 			EndIf;
 			
 		Else
-			TemplateText = NStr("en='%1. Actual electronic document is not found!';ru='%1. Актуальный электронный документ не найден!'");
+			TemplateText = NStr("en='%1. Relevant electronic document was not found.';ru='%1. Актуальный электронный документ не найден!'");
 			MessageText = StringFunctionsClientServer.SubstituteParametersInString(TemplateText, CurItm);
 			CommonUseClientServer.MessageToUser(MessageText);
 		EndIf;
@@ -356,7 +356,7 @@ Procedure RunCommandDocumentForms(Object, Form, CommandName) Export
 				StrPosted = ?(Posted, "write and post.
 				|Write and post?", "write. Write?");
 				
-				MessagePattern = NStr("en='Document is changed. To generate the electronic document it must be %1';ru='Документ изменен. Для формирования электронного документа его необходимо %1'");
+				MessagePattern = NStr("en='The document was changed. To generate an electronic document, you should %1 it';ru='Документ изменен. Для формирования электронного документа его необходимо %1'");
 				QuestionText = StringFunctionsClientServer.SubstituteParametersInString(MessagePattern, StrPosted);
 				
 				AdditionalParameters = New Structure();
@@ -388,7 +388,7 @@ Procedure WriteInForm(Response, AdditionalParameters) Export
 			Try
 				Cancel = Not Form.WriteInForm(DocumentWriteMode.Posting);
 			Except
-				ShowMessageBox(, NStr("en='The operation failed.';ru='Операция не выполнена:'"));
+				ShowMessageBox(, NStr("en='Operation failed:';ru='Операция не выполнена:'"));
 				Cancel = True;
 			EndTry;
 		Else
@@ -655,7 +655,7 @@ Procedure CloseEDFForcibly(EDOwnersArray) Export
 	Handler = New NotifyDescription("CloseForciblyRowInputResult", ThisObject, AdditionalParameters);
 	
 	ClosingReason = "";
-	ShowInputString(Handler, ClosingReason, NStr("en='Specify a reason for closing EDF';ru='Укажите причину закрытия документооборота'"),,True);
+	ShowInputString(Handler, ClosingReason, NStr("en='Specify the reason for closing EDF';ru='Укажите причину закрытия документооборота'"),,True);
 	
 	
 EndProcedure
@@ -664,7 +664,7 @@ Procedure CloseForciblyRowInputResult(ClosingReason, AdditionalParameters) Expor
 	
 	If Not ValueIsFilled(ClosingReason) Then
 		
-		MessageText = NStr("en='To close EDF by selected ED, specify a closure reason.';ru='Для закрытия документооборота по выбранным ЭД необходимо указать причину закрытия!'");
+		MessageText = NStr("en='To close EDF by the selected EDs, specify a closure reason.';ru='Для закрытия документооборота по выбранным ЭД необходимо указать причину закрытия!'");
 		CommonUseClientServer.MessageToUser(MessageText);
 		Return;
 		
@@ -674,9 +674,9 @@ Procedure CloseForciblyRowInputResult(ClosingReason, AdditionalParameters) Expor
 	ProcessedEDCount = 0;
 	ElectronicDocumentsServiceCallServer.CloseDocumentsForcedly(RefArray, ClosingReason, ProcessedEDCount);
 	
-	NotificationText = NStr("en='ED documents states are changed to ""Closed forcibly"": (%1)';ru='Изменено состояние ЭД документов на ""Закрыт принудительно"": (%1)'");
+	NotificationText = NStr("en='ED document states are changed to ""Closed forcefully"": (%1)';ru='Изменено состояние ЭД документов на ""Закрыт принудительно"": (%1)'");
 	NotificationText = StrReplace(NotificationText, "%1", ProcessedEDCount);
-	ShowUserNotification(NStr("en='Documents processing';ru='Обработка документов'"), , NotificationText);
+	ShowUserNotification(NStr("en='Document processing';ru='Обработка документов'"), , NotificationText);
 	If ProcessedEDCount > 0 Then
 		Notify("RefreshStateED");
 	EndIf;
@@ -780,7 +780,7 @@ Procedure GetBankStatement(EDAgreement, StartDate, Val EndDate, Owner, AccountNo
 	
 	StatusUsed = PredefinedValue("Enum.EDAgreementsStatuses.Acts");
 	If Not EDFSettingAttributes.AgreementStatus = StatusUsed Then
-		MessageText = NStr("en='EDF settings are incorrect, the operation can not be run';ru='Настройка ЭДО не действует, операция невозможна'");
+		MessageText = NStr("en='EDF setting is invalid, cannot execute the operation';ru='Настройка ЭДО не действует, операция невозможна'");
 		CommonUseClientServer.MessageToUser(MessageText);
 		Return;
 	EndIf;

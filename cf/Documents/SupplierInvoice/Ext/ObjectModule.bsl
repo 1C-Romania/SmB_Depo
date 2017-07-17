@@ -277,7 +277,7 @@ Procedure FillByCustomerInvoice(FillingData) Export
 	ElsIf FillingData.OperationKind = Enums.OperationKindsCustomerInvoice.TransferForSafeCustody Then
 		OperationKind = Enums.OperationKindsSupplierInvoice.ReturnFromSafeCustody;
 	Else
-		ErrorMessage = NStr("en='Cannot input operation ""Receipt"" on the basis of the operation - ""%OperationKind"".';ru='Невозможен ввод операции ""Поступления"" на основании операции - ""%ВидОперации""!'");
+		ErrorMessage = NStr("en='Cannot input the ""Receipt"" operation based on the ""%OperationKind"" operation.';ru='Невозможен ввод операции ""Поступления"" на основании операции - ""%ВидОперации""!'");
 		ErrorMessage = StrReplace(ErrorMessage, "%OperationKind", FillingData.OperationKind);
 		Raise ErrorMessage;
 	EndIf;
@@ -1150,7 +1150,7 @@ Procedure FillCheckProcessing(Cancel, CheckedAttributes)
 			 OR RowsExpenses.ProductsAndServices.ExpensesGLAccount.TypeOfAccount = Enums.GLAccountsTypes.Incomings
 			 OR RowsExpenses.ProductsAndServices.ExpensesGLAccount.TypeOfAccount = Enums.GLAccountsTypes.Expenses)
 			 AND Not ValueIsFilled(RowsExpenses.StructuralUnit) Then
-				MessageText = NStr("en='For products and services ""%ProductsAndServices%"" specified in row %RowNumber% of list ""Services"" attribute ""Department"" must be filled in.';ru='Для номенклатуры ""%Номенклатура%"" указанной в строке %НомерСтроки% списка ""Услуги"", должен быть заполнен реквизит ""Подразделение"".'"
+				MessageText = NStr("en='The ""Department"" attribute must be filled in for the ""%ProductsAndServices%"" products and services specified in the %RowNumber% line of the ""Services"" list.';ru='Для номенклатуры ""%Номенклатура%"" указанной в строке %НомерСтроки% списка ""Услуги"", должен быть заполнен реквизит ""Подразделение"".'"
 				);
 				MessageText = StrReplace(MessageText, "%ProductsAndServices%", TrimAll(String(RowsExpenses.ProductsAndServices))); 
 				MessageText = StrReplace(MessageText, "%LineNumber%",String(RowsExpenses.LineNumber));
@@ -1171,7 +1171,7 @@ Procedure FillCheckProcessing(Cancel, CheckedAttributes)
 	If IncludeExpensesInCostPrice
 		AND Inventory.Total("AmountExpenses") <> Expenses.Total("Total") Then
 		
-		MessageText = NStr("en='Amount of services is not equal to the distributed amount by inventories!';ru='Сумма услуг не равна распределенной сумме по запасам!'");
+		MessageText = NStr("en='Amount of services is not equal to the amount allocated by inventory.';ru='Сумма услуг не равна распределенной сумме по запасам!'");
 		SmallBusinessServer.ShowMessageAboutError(
 			,
 			MessageText,
@@ -1235,7 +1235,7 @@ Procedure FillCheckProcessing(Cancel, CheckedAttributes)
 		   AND FoundStringExpenses = Undefined
 		   AND QuantityCustomerInvoices > 0
 		   AND Counterparty.DoOperationsByOrders Then
-			MessageText = NStr("en='Unable to offset the advance for the order different from the specified amount in tabular sections ""Inventory"" or ""Services"".';ru='Нельзя зачесть аванс по заказу отличному от указанных в табличных частях ""Запасы"" или ""Услуги""!'");
+			MessageText = NStr("en='Advance of order that is different from the one specified in tabular sections ""Inventory"" or ""Services"" cannot be set off.';ru='Нельзя зачесть аванс по заказу отличному от указанных в табличных частях ""Запасы"" или ""Услуги""!'");
 			SmallBusinessServer.ShowMessageAboutError(
 				,
 				MessageText,

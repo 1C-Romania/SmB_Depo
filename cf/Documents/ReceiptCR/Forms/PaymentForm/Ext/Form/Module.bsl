@@ -693,7 +693,7 @@ Procedure OK(Command)
 	EndIf;
 	If Object.DocumentAmount < Object.PaymentWithPaymentCards.Total("Amount") Then
 		
-		ErrorText = NStr("en='The amount of payment by payment cards exceeds the amount of cheque';ru='Сумма оплаты платежными картами превышает сумму чека'");
+		ErrorText = NStr("en='The amount of payment by payment cards exceeds the total of a receipt';ru='Сумма оплаты платежными картами превышает сумму чека'");
 		
 		Message = New UserMessage;
 		Message.Text = ErrorText;
@@ -990,7 +990,7 @@ Procedure AddPaymentByCard()
 				
 			Else
 				
-				MessageText = NStr("en='First, you need to select the workplace of the current session peripherals.';ru='Предварительно необходимо выбрать рабочее место внешнего оборудования текущего сеанса.'");
+				MessageText = NStr("en='First, you need to select the work place of the current session peripherals.';ru='Предварительно необходимо выбрать рабочее место внешнего оборудования текущего сеанса.'");
 				CommonUseClientServer.MessageToUser(MessageText);
 				
 			EndIf;
@@ -1002,7 +1002,7 @@ Procedure AddPaymentByCard()
 		EndIf;
 		
 	ElsIf ShowMessageBox Then
-		ShowMessageBox(Undefined,NStr("en='Failed to post the document';ru='Не удалось выполнить проведение документа'"));
+		ShowMessageBox(Undefined,NStr("en='Failed to post document';ru='Не удалось выполнить проведение документа'"));
 	EndIf;
 	
 EndProcedure
@@ -1169,12 +1169,12 @@ Procedure DeletePaymentByCardAfterCardSelection(CurrentData)
 	
 	//Check selected string in payment table by payment cards
 	If CurrentData = Undefined Then
-		CommonUseClientServer.MessageToUser(NStr("en='Select the string to remove payment card';ru='Выберите строку удаляемой оплаты картой.'"));
+		CommonUseClientServer.MessageToUser(NStr("en='Select a row of deleted payment by card';ru='Выберите строку удаляемой оплаты картой.'"));
 		Return;
 	EndIf;
 	
 	If CurrentData.Amount = 0 Then
-		CommonUseClientServer.MessageToUser(NStr("en='Amount in the selected string = 0.';ru='Сумма в выбранной строке = 0.'"));
+		CommonUseClientServer.MessageToUser(NStr("en='Amount in the selected line = 0.';ru='Сумма в выбранной строке = 0.'"));
 		Return;
 	EndIf;
 	
@@ -1328,14 +1328,14 @@ Procedure DeletePaymentByCardAfterCardSelection(CurrentData)
 					EndIf;
 				EndIf;
 			Else
-				MessageText = NStr("en='First, you need to select the workplace of the current session peripherals.';ru='Предварительно необходимо выбрать рабочее место внешнего оборудования текущего сеанса.'");
+				MessageText = NStr("en='First, you need to select the work place of the current session peripherals.';ru='Предварительно необходимо выбрать рабочее место внешнего оборудования текущего сеанса.'");
 				
 				CommonUseClientServer.MessageToUser(MessageText);
 			EndIf;
 		EndIf;
 		
 	ElsIf ShowMessageBox Then
-		ShowMessageBox(Undefined,NStr("en='Failed to post the document';ru='Не удалось выполнить проведение документа'"));
+		ShowMessageBox(Undefined,NStr("en='Failed to post document';ru='Не удалось выполнить проведение документа'"));
 	EndIf;
 	
 EndProcedure

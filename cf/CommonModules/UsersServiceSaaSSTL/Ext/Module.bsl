@@ -698,7 +698,7 @@ Function IsSharedInfobaseUser()
 			If Not UserRegisteredAsUnseparated(UserID) Then
 				
 				Raise StringFunctionsClientServer.SubstituteParametersInString(
-					NStr("en='User with the %1 identifier is not registered as undivided!';ru='Пользователь с идентификатором %1 не зарегистрирован в качестве неразделенного!'"),
+					NStr("en='User with ID %1 is not registered as an undivided one.';ru='Пользователь с идентификатором %1 не зарегистрирован в качестве неразделенного!'"),
 					String(UserID)
 				);
 				
@@ -751,8 +751,7 @@ EndProcedure
 
 Function ExceptionTextUnseparatedUsersWriteProhibited()
 	
-	Return NStr("en='Write undivided
-		|users during the use of separators is denied.';ru='Запись неразделенных пользователей при включенном использовании разделителей запрещена.'");
+	Return NStr("en='It is prohibited to write undivided users when the separator use is enabled.';ru='Запись неразделенных пользователей при включенном использовании разделителей запрещена.'");
 	
 EndFunction
 

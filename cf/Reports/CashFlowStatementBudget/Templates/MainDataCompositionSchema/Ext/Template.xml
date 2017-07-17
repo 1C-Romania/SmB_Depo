@@ -49,7 +49,7 @@
 			<title xsi:type="v8:LocalStringType">
 				<v8:item>
 					<v8:lang>en</v8:lang>
-					<v8:content>Item (income)</v8:content>
+					<v8:content>Item (receipt)</v8:content>
 				</v8:item>
 				<v8:item>
 					<v8:lang>ru</v8:lang>
@@ -120,7 +120,7 @@
 				<title xsi:type="v8:LocalStringType">
 					<v8:item>
 						<v8:lang>en</v8:lang>
-						<v8:content>Item (income)</v8:content>
+						<v8:content>Item (receipt)</v8:content>
 					</v8:item>
 					<v8:item>
 						<v8:lang>ru</v8:lang>
@@ -627,7 +627,7 @@ GROUP BY
 		<title xsi:type="v8:LocalStringType">
 			<v8:item>
 				<v8:lang>en</v8:lang>
-				<v8:content>Amount closing balance discrepancy</v8:content>
+				<v8:content>Amount closing balance variance</v8:content>
 			</v8:item>
 			<v8:item>
 				<v8:lang>ru</v8:lang>
@@ -655,7 +655,7 @@ GROUP BY
 		<title xsi:type="v8:LocalStringType">
 			<v8:item>
 				<v8:lang>en</v8:lang>
-				<v8:content>Amount Income Discrepancy</v8:content>
+				<v8:content>Amount income variance</v8:content>
 			</v8:item>
 			<v8:item>
 				<v8:lang>ru</v8:lang>
@@ -683,7 +683,7 @@ GROUP BY
 		<title xsi:type="v8:LocalStringType">
 			<v8:item>
 				<v8:lang>en</v8:lang>
-				<v8:content>Amount Outcome Discrepancy</v8:content>
+				<v8:content>Amount expense discrepancy</v8:content>
 			</v8:item>
 			<v8:item>
 				<v8:lang>ru</v8:lang>
@@ -711,7 +711,7 @@ GROUP BY
 		<title xsi:type="v8:LocalStringType">
 			<v8:item>
 				<v8:lang>en</v8:lang>
-				<v8:content>Amount turnover discrepancy</v8:content>
+				<v8:content>Amount turnover variance</v8:content>
 			</v8:item>
 			<v8:item>
 				<v8:lang>ru</v8:lang>
@@ -851,7 +851,7 @@ GROUP BY
 		<title xsi:type="v8:LocalStringType">
 			<v8:item>
 				<v8:lang>en</v8:lang>
-				<v8:content>Amount Outcome Percent</v8:content>
+				<v8:content>Amount expense percent</v8:content>
 			</v8:item>
 			<v8:item>
 				<v8:lang>ru</v8:lang>
@@ -963,7 +963,7 @@ GROUP BY
 		<title xsi:type="v8:LocalStringType">
 			<v8:item>
 				<v8:lang>en</v8:lang>
-				<v8:content>End of period</v8:content>
+				<v8:content>Period end</v8:content>
 			</v8:item>
 			<v8:item>
 				<v8:lang>ru</v8:lang>
@@ -986,7 +986,7 @@ GROUP BY
 		<title xsi:type="v8:LocalStringType">
 			<v8:item>
 				<v8:lang>en</v8:lang>
-				<v8:content>Begin of period</v8:content>
+				<v8:content>Period start</v8:content>
 			</v8:item>
 			<v8:item>
 				<v8:lang>ru</v8:lang>
@@ -1049,7 +1049,7 @@ GROUP BY
 		<title xsi:type="v8:LocalStringType">
 			<v8:item>
 				<v8:lang>en</v8:lang>
-				<v8:content>Period</v8:content>
+				<v8:content>Accounting period</v8:content>
 			</v8:item>
 			<v8:item>
 				<v8:lang>ru</v8:lang>
@@ -1497,7 +1497,7 @@ GROUP BY
 						<dcsat:value xsi:type="v8:LocalStringType">
 							<v8:item>
 								<v8:lang>en</v8:lang>
-								<v8:content>Cash assets, Opening balance</v8:content>
+								<v8:content>Funds as of the period start</v8:content>
 							</v8:item>
 							<v8:item>
 								<v8:lang>ru</v8:lang>
@@ -1702,7 +1702,7 @@ GROUP BY
 						<dcsat:value xsi:type="v8:LocalStringType">
 							<v8:item>
 								<v8:lang>en</v8:lang>
-								<v8:content>Cash assets Receipt</v8:content>
+								<v8:content>Funds receipt</v8:content>
 							</v8:item>
 							<v8:item>
 								<v8:lang>ru</v8:lang>
@@ -2149,7 +2149,7 @@ GROUP BY
 						<dcsat:value xsi:type="v8:LocalStringType">
 							<v8:item>
 								<v8:lang>en</v8:lang>
-								<v8:content>Cash assets Outcome:</v8:content>
+								<v8:content>Funds outflow:</v8:content>
 							</v8:item>
 							<v8:item>
 								<v8:lang>ru</v8:lang>
@@ -2379,7 +2379,7 @@ GROUP BY
 						<dcsat:value xsi:type="v8:LocalStringType">
 							<v8:item>
 								<v8:lang>en</v8:lang>
-								<v8:content>Total Outcome</v8:content>
+								<v8:content>Total outflow</v8:content>
 							</v8:item>
 							<v8:item>
 								<v8:lang>ru</v8:lang>
@@ -2580,7 +2580,7 @@ GROUP BY
 						<dcsat:value xsi:type="v8:LocalStringType">
 							<v8:item>
 								<v8:lang>en</v8:lang>
-								<v8:content>Net Income / Outcome</v8:content>
+								<v8:content>Net inflow / outflow</v8:content>
 							</v8:item>
 							<v8:item>
 								<v8:lang>ru</v8:lang>
@@ -2781,7 +2781,7 @@ GROUP BY
 						<dcsat:value xsi:type="v8:LocalStringType">
 							<v8:item>
 								<v8:lang>en</v8:lang>
-								<v8:content>Cash assets, closing balance</v8:content>
+								<v8:content>Funds as of the period end</v8:content>
 							</v8:item>
 							<v8:item>
 								<v8:lang>ru</v8:lang>
@@ -3466,7 +3466,7 @@ GROUP BY
 						<dcsat:value xsi:type="v8:LocalStringType">
 							<v8:item>
 								<v8:lang>en</v8:lang>
-								<v8:content>Total Outcome</v8:content>
+								<v8:content>Total outflow</v8:content>
 							</v8:item>
 							<v8:item>
 								<v8:lang>ru</v8:lang>
@@ -3972,7 +3972,7 @@ GROUP BY
 						<dcsat:value xsi:type="v8:LocalStringType">
 							<v8:item>
 								<v8:lang>en</v8:lang>
-								<v8:content>Net Income / Outcome</v8:content>
+								<v8:content>Net inflow / outflow</v8:content>
 							</v8:item>
 							<v8:item>
 								<v8:lang>ru</v8:lang>
@@ -4478,7 +4478,7 @@ GROUP BY
 						<dcsat:value xsi:type="v8:LocalStringType">
 							<v8:item>
 								<v8:lang>en</v8:lang>
-								<v8:content>Cash assets, closing balance</v8:content>
+								<v8:content>Funds as of the period end</v8:content>
 							</v8:item>
 							<v8:item>
 								<v8:lang>ru</v8:lang>
@@ -5730,7 +5730,7 @@ GROUP BY
 						<dcsat:value xsi:type="v8:LocalStringType">
 							<v8:item>
 								<v8:lang>en</v8:lang>
-								<v8:content>Deviation</v8:content>
+								<v8:content>Variance</v8:content>
 							</v8:item>
 							<v8:item>
 								<v8:lang>ru</v8:lang>
@@ -6104,7 +6104,7 @@ GROUP BY
 						<dcsat:value xsi:type="v8:LocalStringType">
 							<v8:item>
 								<v8:lang>en</v8:lang>
-								<v8:content>Cash assets, Opening balance</v8:content>
+								<v8:content>Funds as of the period start</v8:content>
 							</v8:item>
 							<v8:item>
 								<v8:lang>ru</v8:lang>
@@ -6614,7 +6614,7 @@ GROUP BY
 						<dcsat:value xsi:type="v8:LocalStringType">
 							<v8:item>
 								<v8:lang>en</v8:lang>
-								<v8:content>Cash assets Receipt</v8:content>
+								<v8:content>Funds receipt</v8:content>
 							</v8:item>
 							<v8:item>
 								<v8:lang>ru</v8:lang>
@@ -7401,7 +7401,7 @@ GROUP BY
 						<dcsat:value xsi:type="v8:LocalStringType">
 							<v8:item>
 								<v8:lang>en</v8:lang>
-								<v8:content>Cash assets Outcome:</v8:content>
+								<v8:content>Funds outflow:</v8:content>
 							</v8:item>
 							<v8:item>
 								<v8:lang>ru</v8:lang>
@@ -7896,7 +7896,7 @@ GROUP BY
 		<dcsset:presentation xsi:type="v8:LocalStringType">
 			<v8:item>
 				<v8:lang>en</v8:lang>
-				<v8:content>Cash flow budget (plan/actual analysis)</v8:content>
+				<v8:content>Cash flow budget (variance analysis)</v8:content>
 			</v8:item>
 			<v8:item>
 				<v8:lang>ru</v8:lang>

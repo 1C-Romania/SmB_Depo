@@ -40,7 +40,7 @@ Procedure CheckDuplicatesOfRows(Cancel) Export
 	If Not QueryResult.IsEmpty() Then
 		QueryResultSelection = QueryResult.Select();
 		While QueryResultSelection.Next() Do
-			MessageText = NStr("en='Products and services ""%Description%"" in string %LineNumber% is specified repeatedly.';ru='Номенклатура ""%Наименование%"" в строке %НомерСтроки%, указана повторно.'"
+			MessageText = NStr("en='Products and services ""%Description%"" in line %LineNumber% are specified again.';ru='Номенклатура ""%Наименование%"" в строке %НомерСтроки%, указана повторно.'"
 			);
 			MessageText = StrReplace(MessageText, "%LineNumber%", QueryResultSelection.LineNumber);
 			MessageText = StrReplace(MessageText, "%Description%", QueryResultSelection.Description);

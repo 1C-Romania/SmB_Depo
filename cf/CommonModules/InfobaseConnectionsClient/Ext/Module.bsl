@@ -99,7 +99,7 @@ Function ProcessStartParameters(Val LaunchParameterValue, Val LaunchParameters) 
 	If LaunchParameterValue = Upper("AllowUsersWork") Then
 		
 		If Not InfobaseConnectionsServerCall.AllowUsersWork() Then
-			MessageText = NStr("en='AllowUsersWork start parameter is not processed. You have no rights for infobase administration.';ru='Параметр запуска РазрешитьРаботуПользователей не отработан. Нет прав на администрирование информационной базы.'");
+			MessageText = NStr("en='Launch parameter AllowUsersWork is not processed. You are not authorized to administer the infobase.';ru='Параметр запуска РазрешитьРаботуПользователей не отработан. Нет прав на администрирование информационной базы.'");
 			ShowMessageBox(,MessageText);
 			Return False;
 		EndIf;
@@ -123,7 +123,7 @@ Function ProcessStartParameters(Val LaunchParameterValue, Val LaunchParameters) 
 		DetachIdleHandler("ControlOfUserSessionTerminationMode");
 		
 		If Not InfobaseConnectionsServerCall.SetConnectionLock() Then
-			MessageText = NStr("en='EndUsersWork start parameter is not processed. You have no rights for infobase administration.';ru='Параметр запуска ЗавершитьРаботуПользователей не отработан. Нет прав на администрирование информационной базы.'");
+			MessageText = NStr("en='The EndUsersWork launch parameter is not processed. You are not authorized to administer the infobase.';ru='Параметр запуска ЗавершитьРаботуПользователей не отработан. Нет прав на администрирование информационной базы.'");
 			ShowMessageBox(,MessageText);
 			Return False;
 		EndIf;
@@ -177,8 +177,8 @@ Procedure TerminateThisSession(ShowQuestion = True) Export
 	EndIf;
 	
 	Notification = New NotifyDescription("EndThisSessionWorkEnd", ThisObject);
-	MessageText = NStr("en='Users work with application is prohibited. Do you want to exit the current session?';ru='Работа пользователей с программой запрещена. Завершить работу этого сеанса?'");
-	Title = NStr("en='Current session exit';ru='Завершение работы текущего сеанса'");
+	MessageText = NStr("en='User operation in the application is prohibited. Close this session?';ru='Работа пользователей с программой запрещена. Завершить работу этого сеанса?'");
+	Title = NStr("en='End the current session';ru='Завершение работы текущего сеанса'");
 	ShowQueryBox(Notification, MessageText, QuestionDialogMode.YesNo, 60, DialogReturnCode.Yes, Title, DialogReturnCode.Yes);
 	
 EndProcedure
@@ -370,7 +370,7 @@ EndProcedure
 
 Procedure AskQuestionOnWorkEnd(MessageText) Export
 	
-	QuestionText = NStr("en='%1 End work?';ru='%1 Завершить работу?'");
+	QuestionText = NStr("en='%1 Close?';ru='%1 Завершить работу?'");
 	QuestionText = StringFunctionsClientServer.SubstituteParametersInString(QuestionText, MessageText);
 	NotifyDescription = New NotifyDescription("AskQuestionOnWorkEndEnd", ThisObject);
 	ShowQueryBox(NOTifyDescription, QuestionText, QuestionDialogMode.YesNo, 30, DialogReturnCode.Yes);

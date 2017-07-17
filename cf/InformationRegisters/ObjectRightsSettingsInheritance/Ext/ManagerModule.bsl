@@ -83,7 +83,7 @@ Procedure UpdateOwnerParents(RightSettingsOwner, HasChanges, UpdateHierarchy = F
 	OwnerType = TypeOf(RightSettingsOwner);
 	
 	ErrorTitle =
-		NStr("en='An error occurred during update of hierarchy of the rights owners by access values.';ru='Ошибка при обновлении иерархии владельцев прав по значениям доступа.'")
+		NStr("en='An error occurred when updating right owner hierarchy by access values.';ru='Ошибка при обновлении иерархии владельцев прав по значениям доступа.'")
 		+ Chars.LF
 		+ Chars.LF;
 	

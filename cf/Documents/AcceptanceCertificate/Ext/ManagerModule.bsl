@@ -59,7 +59,7 @@ Procedure GenerateTableInventory(DocumentRefAcceptanceCertificate, StructureAddi
 	|	TableInventory.GLAccountCost,
 	|	TableInventory.GLAccount";
 	
-	Query.SetParameter("InventoryAssembly", NStr("en='Production';ru='Производство'"));
+	Query.SetParameter("InventoryAssembly", NStr("en='Manufacturing';ru='Производство'"));
 	QueryResult = Query.Execute();
 	
 	StructureAdditionalProperties.TableForRegisterRecords.Insert("TableInventory", QueryResult.Unload());
@@ -276,7 +276,7 @@ Procedure GenerateTableInventory(DocumentRefAcceptanceCertificate, StructureAddi
 			EndIf;
 			
 			TableRowExpense.RecordType = AccumulationRecordType.Expense;
-			TableRowExpense.ContentOfAccountingRecord = NStr("en='Inventory write off';ru='Списание запасов'");
+			TableRowExpense.ContentOfAccountingRecord = NStr("en='Inventory write-off';ru='Списание запасов'");
 			
 			TableRowExpense.Amount = AmountToBeWrittenOff;
 			
@@ -286,7 +286,7 @@ Procedure GenerateTableInventory(DocumentRefAcceptanceCertificate, StructureAddi
 				RowTableManagerial = StructureAdditionalProperties.TableForRegisterRecords.TableManagerial.Add();
 				FillPropertyValues(RowTableManagerial, RowTableInventory);
 				RowTableManagerial.PlanningPeriod = Catalogs.PlanningPeriods.Actual;
-				RowTableManagerial.Content = NStr("en='Inventory write off';ru='Списание запасов'");
+				RowTableManagerial.Content = NStr("en='Inventory write-off';ru='Списание запасов'");
 				RowTableManagerial.Amount = AmountToBeWrittenOff;
 				
 				// Move the cost of sales.
@@ -307,7 +307,7 @@ Procedure GenerateTableInventory(DocumentRefAcceptanceCertificate, StructureAddi
 				RowIncomeAndExpenses.AmountExpense = AmountToBeWrittenOff;
 				RowIncomeAndExpenses.Amount = AmountToBeWrittenOff;
 				
-				RowIncomeAndExpenses.ContentOfAccountingRecord = NStr("en='Costs reflection';ru='Отражение расходов'");
+				RowIncomeAndExpenses.ContentOfAccountingRecord = NStr("en='Record expenses';ru='Отражение расходов'");
 				
 			EndIf;
 			
@@ -545,7 +545,7 @@ Procedure GenerateTableIncomeAndExpenses(DocumentRefAcceptanceCertificate, Struc
 	
 	Query.SetParameter("PositiveExchangeDifferenceGLAccount", ChartsOfAccounts.Managerial.OtherIncome);
 	Query.SetParameter("NegativeExchangeDifferenceAccountOfAccounting", ChartsOfAccounts.Managerial.OtherExpenses);
-	Query.SetParameter("IncomeReflection", NStr("en='Income accounting';ru='Отражение доходов'"));
+	Query.SetParameter("IncomeReflection", NStr("en='Record income';ru='Отражение доходов'"));
 	Query.SetParameter("ExchangeDifference", NStr("en='Exchange rate difference';ru='Курсовая разница'"));
 	
 	QueryResult = Query.Execute();
@@ -566,8 +566,8 @@ Procedure GenerateTableCustomerAccounts(DocumentRefAcceptanceCertificate, Struct
 	Query.SetParameter("PointInTime", New Boundary(StructureAdditionalProperties.ForPosting.PointInTime, BoundaryType.Including));
 	Query.SetParameter("ControlPeriod", StructureAdditionalProperties.ForPosting.PointInTime.Date);
 	Query.SetParameter("Company", StructureAdditionalProperties.ForPosting.Company);
-	Query.SetParameter("AppearenceOfCustomerLiability", NStr("en='Appearance of customer liabilities';ru='Возникновение обязательств покупателя'"));
-	Query.SetParameter("AdvanceCredit", NStr("en='Setoff of advance payment';ru='Зачет предоплаты'"));
+	Query.SetParameter("AppearenceOfCustomerLiability", NStr("en='Incurrence of customer liabilities';ru='Возникновение обязательств покупателя'"));
+	Query.SetParameter("AdvanceCredit", NStr("en='Prepayment setoff';ru='Зачет предоплаты'"));
 	Query.SetParameter("ExchangeDifference", NStr("en='Exchange rate difference';ru='Курсовая разница'"));
 	
 	Query.Text =
@@ -1247,8 +1247,8 @@ Procedure GenerateTableManagerial(DocumentRefAcceptanceCertificate, StructureAdd
 	|	Order,
 	|	LineNumber";
 	
-	Query.SetParameter("SetOffAdvancePayment", NStr("en='Setoff of advance payment';ru='Зачет предоплаты'"));
-	Query.SetParameter("IncomeReflection", NStr("en='Sales revenue';ru='Выручка от продажи'"));
+	Query.SetParameter("SetOffAdvancePayment", NStr("en='Prepayment setoff';ru='Зачет предоплаты'"));
+	Query.SetParameter("IncomeReflection", NStr("en='Revenue from sale';ru='Выручка от продажи'"));
 	Query.SetParameter("ExchangeDifference", NStr("en='Exchange rate difference';ru='Курсовая разница'"));
 	Query.SetParameter("PositiveExchangeDifferenceGLAccount", ChartsOfAccounts.Managerial.OtherIncome);
 	Query.SetParameter("NegativeExchangeDifferenceAccountOfAccounting", ChartsOfAccounts.Managerial.OtherExpenses);

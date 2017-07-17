@@ -15,7 +15,7 @@ Procedure OnCreateAtServer(Cancel, StandardProcessing)
 	SetPrivilegedMode(True);
 	
 	If Not OfflineWorkService.ThisIsOfflineWorkplace() Then
-		Raise NStr("en='This infobase is not an offline workplace.';ru='Эта информационная база не является автономным рабочим местом.'");
+		Raise NStr("en='This infobase is not an offline work place.';ru='Эта информационная база не является автономным рабочим местом.'");
 	EndIf;
 	
 	ApplicationInService = OfflineWorkService.ApplicationInService();
@@ -314,7 +314,7 @@ Procedure OnChangeScheduleDataSynchronization()
 	Items.DataSynchronizationScheduleVariant.ChoiceList.Clear();
 	Items.DataSynchronizationScheduleVariant.ChoiceList.Add(1, NStr("en='Every 15 minutes';ru='Каждые 15 минут'"));
 	Items.DataSynchronizationScheduleVariant.ChoiceList.Add(2, NStr("en='Every hour';ru='Каждый час'"));
-	Items.DataSynchronizationScheduleVariant.ChoiceList.Add(3, NStr("en='Each day at 10:00, except Sa and Su';ru='Каждый день в 10:00, кроме сб. и вс.'"));
+	Items.DataSynchronizationScheduleVariant.ChoiceList.Add(3, NStr("en='Every day at 10:00 a.m., except for Saturdays and Sundays';ru='Каждый день в 10:00, кроме сб. и вс.'"));
 	
 	// Define the current schedule variant of the data synchronization execution
 	TypesOfSchedulingDataSynchronization = New Map;

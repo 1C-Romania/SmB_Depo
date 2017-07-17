@@ -17,9 +17,9 @@ Function InitializeDataToSetupStandardODataInterface() Export
 	AddTreeRootString("Constant", NStr("en='Constants';ru='Константы'"), 1, PictureLib.Constant);
 	AddTreeRootString("Catalog", NStr("en='Catalogs';ru='Справочники'"), 2, PictureLib.Catalog);
 	AddTreeRootString("Document", NStr("en='Documents';ru='Документы'"), 3, PictureLib.Document);
-	AddTreeRootString("DocumentJournal", NStr("en='Document journals';ru='Журналы документов'"), 4, PictureLib.DocumentJournal);
+	AddTreeRootString("DocumentJournal", NStr("en='Document logs';ru='Журналы документов'"), 4, PictureLib.DocumentJournal);
 	AddTreeRootString("Enum", NStr("en='Enum';ru='Перечисление'"), 5, PictureLib.Enum);
-	AddTreeRootString("ChartOfCharacteristicTypes", NStr("en='Charts of characteristics types';ru='Планы видов характеристик'"), 6, PictureLib.ChartOfCharacteristicTypes);
+	AddTreeRootString("ChartOfCharacteristicTypes", NStr("en='Charts of characteristic types';ru='Планы видов характеристик'"), 6, PictureLib.ChartOfCharacteristicTypes);
 	AddTreeRootString("ChartOfAccounts", NStr("en='Charts of accounts';ru='Планы счетов'"), 7, PictureLib.ChartOfAccounts);
 	AddTreeRootString("ChartOfCalculationTypes", NStr("en='Charts of calculation types';ru='Планы видов расчета'"), 8, PictureLib.ChartOfCalculationTypes);
 	AddTreeRootString("InformationRegister", NStr("en='Information registers';ru='Регистры сведений'"), 9, PictureLib.InformationRegister);

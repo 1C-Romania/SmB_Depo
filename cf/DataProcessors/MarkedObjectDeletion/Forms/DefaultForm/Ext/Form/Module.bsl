@@ -17,7 +17,7 @@ Procedure OnCreateAtServer(Cancel, StandardProcessing)
 	
 	If CommonUseReUse.DataSeparationEnabled()
 		AND Not CommonUse.UseSessionSeparator() Then
-		ErrorText = NStr("en='To delete the marked ones, log on to the data area.';ru='Для удаления помеченных необходимо войти в область данных.'");
+		ErrorText = NStr("en='To delete marked items, enter data area.';ru='Для удаления помеченных необходимо войти в область данных.'");
 		Return; // Denial is set in OnOpen.
 	EndIf;
 	
@@ -329,14 +329,14 @@ Procedure BackgroundJobStartOnClient(Action)
 		JobParameters.ReadMarkedFromCheckBoxesSelectionPage = True;
 	EndIf;
 	
-	Text = NStr("en='Objects marked for deletion are removed...';ru='Удаляются объекты, помеченные на удаление...'");
+	Text = NStr("en='Deleting the objects marked for deletion...';ru='Удаляются объекты, помеченные на удаление...'");
 	If JobParameters.SearchMarked AND JobParameters.DeleteMarked Then
-		Status(NStr("en='Search and delete the marked objects...';ru='Поиск и удаление помеченных объектов...'"));
+		Status(NStr("en='Search and deletion of marked objects...';ru='Поиск и удаление помеченных объектов...'"));
 	ElsIf JobParameters.SearchMarked Then
 		Text = NStr("en='Search for objects marked for deletion...';ru='Поиск помеченных на удаление объектов...'");
 		Status(Text);
 	Else
-		Status(NStr("en='Delete the selected objects...';ru='Удаление выбранных объектов...'"));
+		Status(NStr("en='Deleting the selected objects...';ru='Удаление выбранных объектов...'"));
 	EndIf;
 	Items.LabelLongAction.Title = Text;
 	
@@ -355,7 +355,7 @@ Procedure BackgroundJobStartOnClient(Action)
 		Else
 			StandardSubsystemsClientServer.DisplayWarning(
 				Result,
-				NStr("en='Cannot start deleting the marked objects';ru='Не удалось запустить удаление помеченных объектов'"),
+				NStr("en='Cannot start deletion of the marked objects';ru='Не удалось запустить удаление помеченных объектов'"),
 				Result.ExclusiveModeSettingErrorText);
 		EndIf;
 	EndIf;
@@ -400,7 +400,7 @@ Procedure ShowConnectionsNotRemovedOnClient()
 		Else
 			CurrentPage = Items.ReasonNotRemovedPage;
 			NotRemovedToolTip = StringFunctionsClientServer.SubstituteParametersInString(
-				NStr("en='Oject ""%1"" (%2) usage locations:';ru='Места использования объекта ""%1"" (%2):'"),
+				NStr("en='Usage locations of object ""%1"" (%2):';ru='Места использования объекта ""%1"" (%2):'"),
 				TreeRow.Presentation,
 				Format(TreeRow.ConnectionsCount, "NZ=0; NG=")
 			);
@@ -509,13 +509,13 @@ Procedure MarkSelectedTableObjectsForDeletion(ItemTable)
 		ErrorText = NStr("en='Select object.';ru='Выберите объект.'");
 		If QuantitySelected = 1 Then
 			If HasRegisterRecords Then
-				ErrorText = NStr("en='Register record is deleted from its card.';ru='Удаление записи регистра выполняется из ее карточки.'");
+				ErrorText = NStr("en='Register records are deleted from their cards.';ru='Удаление записи регистра выполняется из ее карточки.'");
 			ElsIf HasConstants Then
-				ErrorText = NStr("en='Constant is cleared from its card.';ru='Очистка значения константы выполняется из ее карточки.'");
+				ErrorText = NStr("en='Constant value is cleaned up from its card.';ru='Очистка значения константы выполняется из ее карточки.'");
 			EndIf;
 		Else
 			If HasRegisterRecords Or HasConstants Then
-				ErrorText = NStr("en='Register records are deleted and constant values are cleared from their cards.';ru='Удаление записей регистров или очистка значений констант выполняется из их карточек.'");
+				ErrorText = NStr("en='Register record deletion or constant value cleanup is carried out from their cards.';ru='Удаление записей регистров или очистка значений констант выполняется из их карточек.'");
 			EndIf;
 		EndIf;
 		ShowMessageBox(, ErrorText);
@@ -533,14 +533,14 @@ Procedure MarkSelectedTableObjectsForDeletion(ItemTable)
 	
 	If QuantityCanBeDeleted = 1 Then
 		If HasMarkedForDeletion Then
-			QuestionText = NStr("en='Unmark ""%1"" for deletion?';ru='Снять с ""%1"" пометку на удаление?'");
+			QuestionText = NStr("en='Clear mark for deletion for ""%1""?';ru='Снять с ""%1"" пометку на удаление?'");
 		Else
 			QuestionText = NStr("en='Mark ""%1"" for deletion?';ru='Пометить ""%1"" на удаление?'");
 		EndIf;
 		QuestionText = StrReplace(QuestionText, "%1", TableRowsArray[0].Presentation);
 	Else
 		If HasMarkedForDeletion Then
-			QuestionText = NStr("en='Clear a deletion mark from the selected objects (%1)?';ru='Снять с выделенных объектов (%1) пометку на удаление?'");
+			QuestionText = NStr("en='Clear marks for deletion for the selected objects (%1)?';ru='Снять с выделенных объектов (%1) пометку на удаление?'");
 		Else
 			QuestionText = NStr("en='Mark the selected objects (%1) for deletion?';ru='Пометить выделенные объекты (%1) на удаление?'");
 		EndIf;
@@ -609,7 +609,7 @@ Procedure VisibleEnabled(Form)
 	
 	Items.ButtonNext.Title = NStr("en='Delete';ru='Удалить'");
 	Items.CloseButton.Title = NStr("en='Close';ru='Закрыть'");
-	Items.ButtonBack.Title = NStr("en='< To the beginning';ru='< В начало'");
+	Items.ButtonBack.Title = NStr("en='< Go home';ru='< В начало'");
 	
 	If CurrentPage = Items.PageDeleteModeSelection Then
 		Items.ButtonBack.Visible = False;
@@ -628,7 +628,7 @@ Procedure VisibleEnabled(Form)
 	ElsIf CurrentPage = Items.PageLongOperation Then
 		Items.ButtonBack.Visible = False;
 		Items.ButtonNext.Visible = False;
-		Items.CloseButton.Title = NStr("en='Abort and close';ru='Прервать и закрыть'");
+		Items.CloseButton.Title = NStr("en='Stop and close';ru='Прервать и закрыть'");
 	ElsIf CurrentPage = Items.PageReasonsRemovingUnavailable Then
 		Items.ButtonBack.Visible = True;
 		Items.ButtonNext.Visible = True;
@@ -799,7 +799,7 @@ Function BackGroundJobStart(Val JobParameters)
 		UUID,
 		"DataProcessors.MarkedObjectDeletion.DeletionMarkedObjectsInteractively",
 		JobParameters,
-		NStr("en='Delete the marked objects (interactive)';ru='Удаление помеченных объектов (интерактивное)'"));
+		NStr("en='Deletion of marked objects (interactive)';ru='Удаление помеченных объектов (интерактивное)'"));
 	
 	BackgroundJobID  = BackgroundJobResult.JobID;
 	BackgroundJobStorageAddress = BackgroundJobResult.StorageAddress;
@@ -878,9 +878,9 @@ Function ChangeObjectsDeletionMark(RefArray, DeletionMark)
 		NotificationTitle = NStr("en='Object is not found';ru='Объект не найден'");
 	Else
 		If DeletionMark Then
-			NotificationTitle = NStr("en='Mark for deletion is not set';ru='Пометка удаления установлена'");
+			NotificationTitle = NStr("en='Deletion mark is selected';ru='Пометка удаления установлена'");
 		Else
-			NotificationTitle = NStr("en='Mark for deletion is cleared';ru='Пометка удаления снята'");
+			NotificationTitle = NStr("en='Deletion mark is cleared';ru='Пометка удаления снята'");
 		EndIf;
 		If ObjectCount = 1 Then
 			NotificationRef = RefArray[0];
@@ -1092,10 +1092,10 @@ Procedure BackgroundJobShowLongOperationPage(JobParameters)
 		Items.LabelLongAction.Title = NStr("en='Please wait...';ru='Пожалуйста, подождите...'");
 		Items.BackgroundOrderStatus.HorizontalAlign = ItemHorizontalLocation.Left;
 	ElsIf JobParameters.DeleteMarked Then
-		Items.LabelLongAction.Title = NStr("en='Objects marked for deletion are removed...';ru='Удаляются объекты, помеченные на удаление...'");
+		Items.LabelLongAction.Title = NStr("en='Deleting the objects marked for deletion...';ru='Удаляются объекты, помеченные на удаление...'");
 		Items.BackgroundOrderStatus.HorizontalAlign = ItemHorizontalLocation.Center;
 	Else
-		Items.LabelLongAction.Title = NStr("en='Search for the objects marked for deletion...';ru='Поиск объектов, помеченных на удаление...'");
+		Items.LabelLongAction.Title = NStr("en='Search for objects marked for deletion...';ru='Поиск объектов, помеченных на удаление...'");
 		Items.BackgroundOrderStatus.HorizontalAlign = ItemHorizontalLocation.Center;
 	EndIf;
 EndProcedure
@@ -1158,12 +1158,12 @@ Procedure BackgroundJobImportResult(Result)
 			
 			If DeletedQuantity = 0 Then
 				Items.LabelResultPartialRemoval.Title = StringFunctionsClientServer.SubstituteParametersInString(
-					NStr("en='Failed to delete objects marked for deletion (%1):';ru='Не получилось удалить объекты, помеченные на удаление (%1):'"),
+					NStr("en='Cannot delete objects marked for deletion (%1):';ru='Не получилось удалить объекты, помеченные на удаление (%1):'"),
 					Format(NOTRemovedQuantity, "NZ=0; NG=")
 				);
 			Else
 				Items.LabelResultPartialRemoval.Title = StringFunctionsClientServer.SubstituteParametersInString(
-					NStr("en='Deleted successfully: %1 from %2, the rest of the objects are not deleted (%3):';ru='Успешно удалено: %1 из %2, остальные объекты не удалены (%3):'"),
+					NStr("en='Successfully deleted: %1 from %2, other objects are not deleted (%3):';ru='Успешно удалено: %1 из %2, остальные объекты не удалены (%3):'"),
 					Format(DeletedQuantity, "NZ=0; NG="),
 					Format(DeletedQuantity+NotRemovedQuantity, "NZ=0; NG="),
 					Format(NOTRemovedQuantity, "NZ=0; NG=")
@@ -1189,7 +1189,7 @@ Procedure BackgroundJobImportResult(Result)
 		If NotificationText <> Undefined Then
 			StandardSubsystemsClientServer.DisplayNotification(
 				Result,
-				NStr("en='Delete marked';ru='Удаление помеченных'"),
+				NStr("en='Deletion of marked objects';ru='Удаление помеченных'"),
 				NotificationText,
 				NotificationPicture,
 				URL);

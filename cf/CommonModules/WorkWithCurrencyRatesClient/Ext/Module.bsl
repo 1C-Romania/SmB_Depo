@@ -27,9 +27,9 @@ EndProcedure
 Procedure NotifyRatesOutdated() Export
 	
 	ShowUserNotification(
-		NStr("en='Currency rates are outdated';ru='Курсы валют устарели'"),
+		NStr("en='Exchange rates are outdated';ru='Курсы валют устарели'"),
 		ProcessorsURL(),
-		NStr("en='Update currency rates';ru='Обновить курсы валют'"),
+		NStr("en='Update exchange rates';ru='Обновить курсы валют'"),
 		PictureLib.Warning32);
 	
 EndProcedure
@@ -39,9 +39,9 @@ EndProcedure
 Procedure NotifyCurrencyRatesSuccessfullyUpdated() Export
 	
 	ShowUserNotification(
-		NStr("en='Currency rates have been successfully updated';ru='Курсы валют успешно обновлены'"),
+		NStr("en='Exchange rates are successfully updated';ru='Курсы валют успешно обновлены'"),
 		,
-		NStr("en='Currency rates are updated';ru='Курсы валют обновлены'"),
+		NStr("en='Exchange rates are updated';ru='Курсы валют обновлены'"),
 		PictureLib.Information32);
 	
 EndProcedure
@@ -50,7 +50,7 @@ EndProcedure
 //
 Procedure NotifyCoursesAreActual() Export
 	
-	ShowMessageBox(,NStr("en='Currency rates are actual.';ru='Курсы валют актуальны.'"));
+	ShowMessageBox(,NStr("en='Exchange rates are relevant.';ru='Курсы валют актуальны.'"));
 	
 EndProcedure
 

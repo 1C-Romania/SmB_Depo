@@ -68,12 +68,12 @@ EndProcedure
 Procedure SignFile(AttachedFile, FormID, AdditionalParameters = Undefined) Export
 	
 	If Not ValueIsFilled(AttachedFile) Then
-		ShowMessageBox(, NStr("en='The file to be signed is not selected.';ru='Не выбран файл, который нужно подписать.'"));
+		ShowMessageBox(, NStr("en='File to be signed is not selected.';ru='Не выбран файл, который нужно подписать.'"));
 		Return;
 	EndIf;
 	
 	If Not CommonUseClient.SubsystemExists("StandardSubsystems.DigitalSignature") Then
-		ShowMessageBox(, NStr("en='Insertion of digital signatures is not supported.';ru='Добавление электронных подписей не поддерживается.'"));
+		ShowMessageBox(, NStr("en='Adding digital signatures is not supported.';ru='Добавление электронных подписей не поддерживается.'"));
 		Return;
 	EndIf;
 	

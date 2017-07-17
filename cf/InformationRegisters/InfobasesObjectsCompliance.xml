@@ -36,7 +36,7 @@
 			<Synonym>
 				<v8:item>
 					<v8:lang>en</v8:lang>
-					<v8:content>Infobases objects matching</v8:content>
+					<v8:content>Mapping of infobase objects</v8:content>
 				</v8:item>
 				<v8:item>
 					<v8:lang>ru</v8:lang>
@@ -167,7 +167,7 @@
 			<Explanation>
 				<v8:item>
 					<v8:lang>en</v8:lang>
-					<v8:content>Is used to store the information of these infobase objects matching to the objects of the exchange infobase-correspondent.</v8:content>
+					<v8:content>Used to store the information on mapping objects in this infobase with objects of infobase-exchange correspondent.</v8:content>
 				</v8:item>
 				<v8:item>
 					<v8:lang>ru</v8:lang>
@@ -182,7 +182,7 @@
 					<Synonym>
 						<v8:item>
 							<v8:lang>en</v8:lang>
-							<v8:content>UniqueSourceHandleAsString</v8:content>
+							<v8:content>Unique source identifier as a string</v8:content>
 						</v8:item>
 						<v8:item>
 							<v8:lang>ru</v8:lang>
@@ -239,7 +239,7 @@ The row of a unique object identifier of a reference type of this infobase (deri
 					<Synonym>
 						<v8:item>
 							<v8:lang>en</v8:lang>
-							<v8:content>The Object Exported By Refference</v8:content>
+							<v8:content>Object is exported by reference</v8:content>
 						</v8:item>
 						<v8:item>
 							<v8:lang>ru</v8:lang>
@@ -256,7 +256,7 @@ The row of a unique object identifier of a reference type of this infobase (deri
 					<ToolTip>
 						<v8:item>
 							<v8:lang>en</v8:lang>
-							<v8:content>Shows that the register record is used to identify objects imported by the link. When importing the data such records are deleted when possible.</v8:content>
+							<v8:content>Shows whether the register record is used to identify objects exported by the reference. Such records are deleted on data import if possible.</v8:content>
 						</v8:item>
 						<v8:item>
 							<v8:lang>ru</v8:lang>
@@ -307,7 +307,7 @@ The row of a unique object identifier of a reference type of this infobase (deri
 					<ToolTip>
 						<v8:item>
 							<v8:lang>en</v8:lang>
-							<v8:content>Exchange plan node in terms of which the objects matching information is stored.</v8:content>
+							<v8:content>Exchange plan node by which object mapping information is stored</v8:content>
 						</v8:item>
 						<v8:item>
 							<v8:lang>ru</v8:lang>
@@ -344,7 +344,7 @@ The row of a unique object identifier of a reference type of this infobase (deri
 					<Synonym>
 						<v8:item>
 							<v8:lang>en</v8:lang>
-							<v8:content>Unique source handle</v8:content>
+							<v8:content>Unique ID of the source</v8:content>
 						</v8:item>
 						<v8:item>
 							<v8:lang>ru</v8:lang>
@@ -361,7 +361,7 @@ The row of a unique object identifier of a reference type of this infobase (deri
 					<ToolTip>
 						<v8:item>
 							<v8:lang>en</v8:lang>
-							<v8:content>Reference to any object of the reference type if this infobase.</v8:content>
+							<v8:content>Reference to any object of the reference type of this infobase.</v8:content>
 						</v8:item>
 						<v8:item>
 							<v8:lang>ru</v8:lang>
@@ -398,7 +398,7 @@ The row of a unique object identifier of a reference type of this infobase (deri
 					<Synonym>
 						<v8:item>
 							<v8:lang>en</v8:lang>
-							<v8:content>Unique receiver handle</v8:content>
+							<v8:content>Unique ID of the target</v8:content>
 						</v8:item>
 						<v8:item>
 							<v8:lang>ru</v8:lang>
@@ -419,7 +419,7 @@ The row of a unique object identifier of a reference type of this infobase (deri
 					<ToolTip>
 						<v8:item>
 							<v8:lang>en</v8:lang>
-							<v8:content>Row of a unique object ID of the infobase reference type of the correspondent.</v8:content>
+							<v8:content>String of the unique object ID of the reference type of correspondent infobase.</v8:content>
 						</v8:item>
 						<v8:item>
 							<v8:lang>ru</v8:lang>
@@ -456,7 +456,7 @@ The row of a unique object identifier of a reference type of this infobase (deri
 					<Synonym>
 						<v8:item>
 							<v8:lang>en</v8:lang>
-							<v8:content>Receiver type</v8:content>
+							<v8:content>Target type</v8:content>
 						</v8:item>
 						<v8:item>
 							<v8:lang>ru</v8:lang>
@@ -477,7 +477,7 @@ The row of a unique object identifier of a reference type of this infobase (deri
 					<ToolTip>
 						<v8:item>
 							<v8:lang>en</v8:lang>
-							<v8:content>Line presentation of the correspondent infobase object type.</v8:content>
+							<v8:content>String representation of the correspondent infobase object type.</v8:content>
 						</v8:item>
 						<v8:item>
 							<v8:lang>ru</v8:lang>
@@ -535,7 +535,7 @@ The row of a unique object identifier of a reference type of this infobase (deri
 					<ToolTip>
 						<v8:item>
 							<v8:lang>en</v8:lang>
-							<v8:content>The string that represents the type of object of this infobase.</v8:content>
+							<v8:content>String representation of the infobase object type.</v8:content>
 						</v8:item>
 						<v8:item>
 							<v8:lang>ru</v8:lang>

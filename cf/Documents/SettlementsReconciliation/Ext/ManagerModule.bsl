@@ -45,7 +45,7 @@ Function SetStatus(DocumentArray, StatusValue) Export
 			LockDataForEdit(Selection.Ref);
 		Except
 
-			ErrorText = NStr("en='Unable to lock %Document%. %ErrorDescription%';ru='Не удалось заблокировать %Документ%. %ОписаниеОшибки%'");
+			ErrorText = NStr("en='Failed to lock %Document%. %ErrorDescription%';ru='Не удалось заблокировать %Документ%. %ОписаниеОшибки%'");
 			ErrorText = StrReplace(ErrorText, "%Document%",       Selection.Ref);
 			ErrorText = StrReplace(ErrorText, "%ErrorDescription%", BriefErrorDescription(ErrorInfo()));
 			Raise ErrorText;
@@ -137,21 +137,21 @@ Function GetDocumentPresentationsForCounterparties()
 	
 	DocumentKindsCounterparty = New Structure;
 	
-	DocumentKindsCounterparty.Insert("ExpenseReport",					NStr("en='Cash receipt';ru='Приходный кассовый ордер'"));
+	DocumentKindsCounterparty.Insert("ExpenseReport",					NStr("en='Credit slip';ru='Приходный кассовый ордер'"));
 	DocumentKindsCounterparty.Insert("AcceptanceCertificate",				NStr("en='Receipt (goods, services)';ru='Поступление (товаров, услуг)'"));
-	DocumentKindsCounterparty.Insert("Netting",						NStr("en='Mutual settlement';ru='Взаимозачет задолженности'"));
+	DocumentKindsCounterparty.Insert("Netting",						NStr("en='Debt setoff';ru='Взаимозачет задолженности'"));
 	DocumentKindsCounterparty.Insert("CustomerOrder",					NStr("en='Order';ru='Порядок'"));
 	DocumentKindsCounterparty.Insert("PurchaseOrder", 					NStr("en='Order';ru='Порядок'"));
 	DocumentKindsCounterparty.Insert("RegistersCorrection",			NStr("en='Debt adjustment';ru='Корректировка долга'"));
-	DocumentKindsCounterparty.Insert("AgentReport",					NStr("en='Principal report';ru='Отчет комитенту'"));
+	DocumentKindsCounterparty.Insert("AgentReport",					NStr("en='Report to principal';ru='Отчет комитенту'"));
 	DocumentKindsCounterparty.Insert("ReportToPrincipal",					NStr("en='Agent report';ru='Отчет комиссионера'"));
-	DocumentKindsCounterparty.Insert("PaymentReceipt", 				NStr("en='Payment expense';ru='Расход со счета'"));
-	DocumentKindsCounterparty.Insert("CashReceipt",					NStr("en='Cash payment voucher';ru='Расходный кассовый ордер'"));
-	DocumentKindsCounterparty.Insert("PaymentExpense",						NStr("en='Payment receipt';ru='Поступления на счет'"));
-	DocumentKindsCounterparty.Insert("CashPayment",						NStr("en='Cash receipt';ru='Приходный кассовый ордер'"));
-	DocumentKindsCounterparty.Insert("SupplierInvoice",				NStr("en='Implementation (goods, services)';ru='Реализация (товаров, услуг)'"));
+	DocumentKindsCounterparty.Insert("PaymentReceipt", 				NStr("en='Expense from account';ru='Расход со счета'"));
+	DocumentKindsCounterparty.Insert("CashReceipt",					NStr("en='Debit slip';ru='Расходный кассовый ордер'"));
+	DocumentKindsCounterparty.Insert("PaymentExpense",						NStr("en='Receipts to account';ru='Поступления на счет'"));
+	DocumentKindsCounterparty.Insert("CashPayment",						NStr("en='Credit slip';ru='Приходный кассовый ордер'"));
+	DocumentKindsCounterparty.Insert("SupplierInvoice",				NStr("en='Sale (goods, services)';ru='Реализация (товаров, услуг)'"));
 	DocumentKindsCounterparty.Insert("CustomerInvoice", 				NStr("en='Receipt (goods, services)';ru='Поступление (товаров, услуг)'"));
-	DocumentKindsCounterparty.Insert("InvoiceForPayment", 						NStr("en='Invoice for payment';ru='Счет на оплату'"));
+	DocumentKindsCounterparty.Insert("InvoiceForPayment", 						NStr("en='Proforma invoice';ru='Счет на оплату'"));
 	
 	Return DocumentKindsCounterparty;
 	
@@ -328,7 +328,7 @@ Function CompanyAccountingDocumentDescription(DocumentRef, DocumentNumber = "" ,
 	
 	If DocumentRef = Undefined Then
 		
-		DescriptionString =  NStr("en='Accounting document No %1 from %2 y.';ru='Расчетный документ № %1 от %2 г.'");
+		DescriptionString =  NStr("en='Settlement document No. %1 dated %2';ru='Расчетный документ № %1 от %2 г.'");
 		DescriptionString = StringFunctionsClientServer.SubstituteParametersInString(DescriptionString, 
 			?(IsBlankString(DocumentNumber), NStr("en='_______';ru='_______'"), ObjectPrefixationClientServer.GetNumberForPrinting(DocumentNumber, False, True)), 
 			?(ValueIsFilled(DocumentDate), Format(DocumentDate, "DLF=D"), NStr("en='___.___.________';ru='___.___.________'"))
@@ -343,7 +343,7 @@ Function CompanyAccountingDocumentDescription(DocumentRef, DocumentNumber = "" ,
 	If TypeOf(DocumentRef) = Type("DocumentRef.CustomerOrder") 
 		AND DocumentRef.OperationKind = Enums.OperationKindsCustomerOrder.JobOrder Then
 		
-		DocumentDescription = NStr("en='Job-order';ru='Порядок работы'");
+		DocumentDescription = NStr("en='Operating procedure';ru='Порядок работы'");
 		
 	Else
 		
@@ -413,7 +413,7 @@ Function CounterpartyAccountingDocumentDescription(DocumentRef, Val DocumentNumb
 	
 	If DocumentRef = Undefined Then
 		
-		DescriptionString = NStr("en='Accounting document No %1 from %2 y.';ru='Расчетный документ № %1 от %2 г.'");
+		DescriptionString = NStr("en='Settlement document No. %1 dated %2';ru='Расчетный документ № %1 от %2 г.'");
 		DescriptionString = StringFunctionsClientServer.SubstituteParametersInString(DescriptionString, DocumentNumber, DocumentDate);
 		
 		Return DescriptionString;
@@ -438,7 +438,7 @@ Function CounterpartyAccountingDocumentDescription(DocumentRef, Val DocumentNumb
 	
 	If IsBlankString(DocumentDescription) Then
 		
-		DocumentDescription = NStr("en='Accounting Document';ru='Расчетный документ'");
+		DocumentDescription = NStr("en='Payment document';ru='Расчетный документ'");
 		
 	EndIf;
 	
@@ -842,12 +842,12 @@ Function GeneratePrintFormCertificateWithoutDifferences(DocumentPrint, PrintObje
 		
 		If ValueIsFilled(Header.BeginOfPeriod) Then
 			
-			PeriodPresentation = NStr("en='in period from %1 to %2';ru='в период с %1 по %2'");
+			PeriodPresentation = NStr("en='from %1 to %2';ru='в период с %1 по %2'");
 			PeriodPresentation = StringFunctionsClientServer.SubstituteParametersInString(PeriodPresentation, Format(Header.BeginOfPeriod, "DLF=DD"), Format(Header.EndOfPeriod, "DLF=DD"));
 			
 		Else
 			
-			PeriodPresentation = NStr("en='as on %1';ru='по состоянию на %1'");
+			PeriodPresentation = NStr("en='as of %1';ru='по состоянию на %1'");
 			PeriodPresentation = StringFunctionsClientServer.SubstituteParametersInString(PeriodPresentation, Format(Header.EndOfPeriod, "DLF=DD"));
 			
 		EndIf;
@@ -972,7 +972,7 @@ Function GeneratePrintFormCertificateWithoutDifferences(DocumentPrint, PrintObje
 					
 				Else
 					
-					MessageText = NStr("en='Facsimile for company is not set. Facsimile is set in the company card, ""Printing setting"" section.';ru='Факсимиле для организации не установлена. Установка факсимиле выполняется в карточке организации, раздел ""Настройка печати"".'");
+					MessageText = NStr("en='Facsimile for company is not set. Facsimile is set in the company card, the ""Printing setting"" section.';ru='Факсимиле для организации не установлена. Установка факсимиле выполняется в карточке организации, раздел ""Настройка печати"".'");
 					CommonUseClientServer.AddUserError(Errors, , MessageText, Undefined);
 					OutputFieldsUnderOriginalSignature = True;
 					
@@ -980,7 +980,7 @@ Function GeneratePrintFormCertificateWithoutDifferences(DocumentPrint, PrintObje
 				
 			Else
 				
-				MessageText = NStr("en='ATTENTION! Perhaps, user template is used default methods for the accounts printing may work incorrectly.';ru='ВНИМАНИЕ! Возможно используется пользовательский макет. Штатный механизм печати счетов может работать некоректно.'");
+				MessageText = NStr("en='ATTENTION! Maybe, custom template is being used. Default procedures of account printing may work incorrectly.';ru='ВНИМАНИЕ! Возможно используется пользовательский макет. Штатный механизм печати счетов может работать некоректно.'");
 				CommonUseClientServer.AddUserError(Errors, , MessageText, Undefined);
 				OutputFieldsUnderOriginalSignature = True;
 				
@@ -1079,12 +1079,12 @@ Function GeneratePrintFormCertificateWithCounterpartyData(DocumentPrint, PrintOb
 		
 		If ValueIsFilled(Header.BeginOfPeriod) Then
 			
-			PeriodPresentation = NStr("en='in period from %1 to %2';ru='в период с %1 по %2'");
+			PeriodPresentation = NStr("en='from %1 to %2';ru='в период с %1 по %2'");
 			PeriodPresentation = StringFunctionsClientServer.SubstituteParametersInString(PeriodPresentation, Format(Header.BeginOfPeriod, "DLF=DD"), Format(Header.EndOfPeriod, "DLF=DD"));
 			
 		Else
 			
-			PeriodPresentation = NStr("en='as on %1';ru='по состоянию на %1'");
+			PeriodPresentation = NStr("en='as of %1';ru='по состоянию на %1'");
 			PeriodPresentation = StringFunctionsClientServer.SubstituteParametersInString(PeriodPresentation, Format(Header.EndOfPeriod, "DLF=DD"));
 			
 		EndIf;
@@ -1313,7 +1313,7 @@ Function GeneratePrintFormCertificateWithCounterpartyData(DocumentPrint, PrintOb
 					
 				Else
 					
-					MessageText = NStr("en='Facsimile for company is not set. Facsimile is set in the company card, ""Printing setting"" section.';ru='Факсимиле для организации не установлена. Установка факсимиле выполняется в карточке организации, раздел ""Настройка печати"".'");
+					MessageText = NStr("en='Facsimile for company is not set. Facsimile is set in the company card, the ""Printing setting"" section.';ru='Факсимиле для организации не установлена. Установка факсимиле выполняется в карточке организации, раздел ""Настройка печати"".'");
 					CommonUseClientServer.AddUserError(Errors, , MessageText, Undefined);
 					OutputFieldsUnderOriginalSignature = True;
 					
@@ -1321,7 +1321,7 @@ Function GeneratePrintFormCertificateWithCounterpartyData(DocumentPrint, PrintOb
 				
 			Else
 				
-				MessageText = NStr("en='ATTENTION! Perhaps, user template is used default methods for the accounts printing may work incorrectly.';ru='ВНИМАНИЕ! Возможно используется пользовательский макет. Штатный механизм печати счетов может работать некоректно.'");
+				MessageText = NStr("en='ATTENTION! Maybe, custom template is being used. Default procedures of account printing may work incorrectly.';ru='ВНИМАНИЕ! Возможно используется пользовательский макет. Штатный механизм печати счетов может работать некоректно.'");
 				CommonUseClientServer.AddUserError(Errors, , MessageText, Undefined);
 				OutputFieldsUnderOriginalSignature = True;
 				
@@ -1417,31 +1417,31 @@ Procedure AddPrintCommands(PrintCommands) Export
 	
 	PrintCommand = PrintCommands.Add();
 	PrintCommand.ID = "CertificateWithoutDifferences,CertificateWithCounterpartyData";
-	PrintCommand.Presentation = NStr("en='Custom kit of documents';ru='Настраиваемый комплект документов'");
+	PrintCommand.Presentation = NStr("en='Customized document set';ru='Настраиваемый комплект документов'");
 	PrintCommand.FormsList = "DocumentForm,ListForm";
 	PrintCommand.CheckPostingBeforePrint = False;
 	PrintCommand.Order = 1;
 	
 	PrintCommand = PrintCommands.Add();
 	PrintCommand.ID = "CertificateWithoutDifferences";
-	PrintCommand.Presentation = NStr("en='Settlements reconciliation certificate (without differences)';ru='Акт сверки взаиморасчетов (без расхождений)'");
+	PrintCommand.Presentation = NStr("en='Mutual settlements reconciliation statement (without variances)';ru='Акт сверки взаиморасчетов (без расхождений)'");
 	PrintCommand.FormsList = "DocumentForm,ListForm,DocumentsListForm";
 	PrintCommand.CheckPostingBeforePrint = False;
 	PrintCommand.Order = 4;
 	
 	//
-	// Definition Commands printing NStr("en='Settlements reconciliation certificate (without difference with facsimile)';ru='Акт сверки взаиморасчетов (без расхождений с факсимиле)'");
+	// Definition Commands printing NStr("en='Mutual settlements reconciliation statement (without variances with facsimile)';ru='Акт сверки взаиморасчетов (без расхождений с факсимиле)'");
 	//
 	
 	PrintCommand = PrintCommands.Add();
 	PrintCommand.ID = "CertificateWithCounterpartyData";
-	PrintCommand.Presentation = NStr("en='Settlements reconciliation certificate (with counterparty data)';ru='Акт сверки взаимных расчетов (с данными контрагента)'");
+	PrintCommand.Presentation = NStr("en='Mutual settlements reconciliation statement (with counterparty data)';ru='Акт сверки взаимных расчетов (с данными контрагента)'");
 	PrintCommand.FormsList = "DocumentForm,ListForm";
 	PrintCommand.CheckPostingBeforePrint = False;
 	PrintCommand.Order = 10;
 	
 	//
-	// Definition Commands printing NStr("en='Settlements reconciliation certificate (with counterparty data and with facsimile)';ru='Акт сверки взаиморасчетов (с данными контрагента и с факсимиле)'");
+	// Definition Commands printing NStr("en='Mutual settlements reconciliation statement (with counterparty data and facsimile)';ru='Акт сверки взаиморасчетов (с данными контрагента и с факсимиле)'");
 	//
 	
 EndProcedure

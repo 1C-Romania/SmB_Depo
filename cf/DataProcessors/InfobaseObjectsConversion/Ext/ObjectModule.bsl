@@ -727,7 +727,7 @@ Procedure ExecuteDataExport(DataProcessorForDataImport = Undefined) Export
 		
 		If DataProcessorForDataImport().ErrorFlag() Then
 			
-			MessageString = NStr("en='OUTER JOIN: %1';ru='ВНЕШНЕЕ СОЕДИНЕНИЕ: %1'");
+			MessageString = NStr("en='EXTERNAL CONNECTION: %1';ru='ВНЕШНЕЕ СОЕДИНЕНИЕ: %1'");
 			MessageString = StringFunctionsClientServer.SubstituteParametersInString(MessageString, DataProcessorForDataImport().ErrorMessageString());
 			WriteInExecutionProtocol(MessageString);
 			FinishExchangeProtocolLogging();
@@ -860,14 +860,14 @@ Procedure ExecuteDataImport() Export
 			ReadData(MessageReader);
 			
 			If ErrorFlag() Then
-				Raise NStr("en='Errors have occurred at the data import.';ru='Возникли ошибки при загрузке данных.'");
+				Raise NStr("en='Errors occurred when importing data.';ru='Возникли ошибки при загрузке данных.'");
 			EndIf;
 			
 			// Deferred record of things that were not written.
 			WriteNotRecordedObjects();
 			
 			If ErrorFlag() Then
-				Raise NStr("en='Errors have occurred at the data import.';ru='Возникли ошибки при загрузке данных.'");
+				Raise NStr("en='Errors occurred when importing data.';ru='Возникли ошибки при загрузке данных.'");
 			EndIf;
 			
 			FinishMessageReading(MessageReader);
@@ -945,7 +945,7 @@ Procedure ExecuteDataImportToInformationBase(TableToImport) Export
 	DataExchangeStatus().StartDate = CurrentSessionDate();
 	
 	// Record in the events log monitor.
-	MessageString = NStr("en='Beginning of data exchange process for node: %1';ru='Начало процесса обмена данными для узла: %1'", CommonUseClientServer.MainLanguageCode());
+	MessageString = NStr("en='Data exchange process start for node: %1';ru='Начало процесса обмена данными для узла: %1'", CommonUseClientServer.MainLanguageCode());
 	MessageString = StringFunctionsClientServer.SubstituteParametersInString(MessageString, String(ExchangeNodeForDataImport));
 	WriteLogEventDataExchange(MessageString, EventLogLevel.Information);
 	
@@ -958,7 +958,7 @@ Procedure ExecuteDataImportToInformationBase(TableToImport) Export
 	FixEndOfDataImport();
 	
 	// Record in the events log monitor.
-	MessageString = NStr("en='%1, %2; Processed %3 objects';ru='%1, %2; Обработано %3 объектов'", CommonUseClientServer.MainLanguageCode());
+	MessageString = NStr("en='%1, %2; %3 objects are processed';ru='%1, %2; Обработано %3 объектов'", CommonUseClientServer.MainLanguageCode());
 	MessageString = StringFunctionsClientServer.SubstituteParametersInString(MessageString,
 					ExchangeProcessResult(),
 					Enums.ActionsAtExchange.DataImport,
@@ -1081,7 +1081,7 @@ Procedure RunExchangeMessageAnalysis(AnalysisParameters = Undefined) Export
 			ReadDataInAnalysisMode(MessageReader, AnalysisParameters);
 			
 			If ErrorFlag() Then
-				Raise NStr("en='The errors occurred when analysing the data.';ru='Возникли ошибки при анализе данных.'");
+				Raise NStr("en='Errors occurred when analyzing data.';ru='Возникли ошибки при анализе данных.'");
 			EndIf;
 			
 			// Generate a temporary data table.
@@ -1478,7 +1478,7 @@ Procedure WriteObjectToIB(Object, Type, WriteObject = False, Val SendBack = Fals
 		AND Not CommonUseReUse.IsSeparatedMetadataObject(Object.Metadata().FullName(), CommonUseReUse.MainDataSeparator())
 		AND Not CommonUseReUse.IsSeparatedMetadataObject(Object.Metadata().FullName(), CommonUseReUse.SupportDataSplitter()) Then
 		
-		ErrorMessageString = NStr("en='Attempt of undivided data modification (%1) in separated session.';ru='Попытка изменения неразделенных данных (%1) в разделенном сеансе.'");
+		ErrorMessageString = NStr("en='Attempting to change shared data (%1) in split session.';ru='Попытка изменения неразделенных данных (%1) в разделенном сеансе.'");
 		ErrorMessageString = StringFunctionsClientServer.SubstituteParametersInString(ErrorMessageString, Object.Metadata().FullName());
 		
 		WriteInExecutionProtocol(ErrorMessageString,, False,,,, Enums.ExchangeExecutionResult.CompletedWithWarnings);
@@ -1632,7 +1632,7 @@ Function DumpByRule(Source					= Undefined,
 			SourceToString = " ";
 		EndTry;
 		
-		NameActions = ?(GetRefNodeOnly, NStr("en='Ref to object conversion';ru='Конвертация ссылки на объект'"), NStr("en='Object conversion';ru='Конвертация объекта'"));
+		NameActions = ?(GetRefNodeOnly, NStr("en='Conversion of reference to object';ru='Конвертация ссылки на объект'"), NStr("en='Object conversion';ru='Конвертация объекта'"));
 		
 		MessageText = NStr("en='[NameActions]: [Object]([ObjectType]), OCR: [OCR](OCRDescription)';ru='[ИмяДействия]: [Объект]([ТипОбъекта]), ПКО: [ПКО](НаименованиеПКО)'");
 		MessageText = StrReplace(MessageText, "[NameActions]", NameActions);
@@ -3343,7 +3343,7 @@ Procedure WriteToFile(Node)
 		
 		If DataProcessorForDataImport().ErrorFlag() Then
 			
-			MessageString = NStr("en='OUTER JOIN: %1';ru='ВНЕШНЕЕ СОЕДИНЕНИЕ: %1'");
+			MessageString = NStr("en='EXTERNAL CONNECTION: %1';ru='ВНЕШНЕЕ СОЕДИНЕНИЕ: %1'");
 			MessageString = StringFunctionsClientServer.SubstituteParametersInString(MessageString, DataProcessorForDataImport().ErrorMessageString());
 			ExchangeExecutionResultExternalConnection = Enums.ExchangeExecutionResult[DataProcessorForDataImport().ExchangeExecutionResultString()];
 			WriteInExecutionProtocol(MessageString,,,,,, ExchangeExecutionResultExternalConnection);
@@ -3481,7 +3481,7 @@ Procedure ExchangeProtocolInitialization()
 		DataLogFile = New TextWriter(ExchangeProtocolFileName, TextEncoding.ANSI, , AppendDataToExchangeProtocol);
 	Except
 		DataLogFile = Undefined;
-		MessageString = NStr("en='Write to the data protocol file failed: %1. Error description: %2';ru='Ошибка при попытке записи в файл протокола данных: %1. Описание ошибки: %2'",
+		MessageString = NStr("en='An error occurred when attempting to write to data protocol file: %1. Error description: %2';ru='Ошибка при попытке записи в файл протокола данных: %1. Описание ошибки: %2'",
 			CommonUseClientServer.MainLanguageCode());
 		MessageString = StringFunctionsClientServer.SubstituteParametersInString(MessageString, ExchangeProtocolFileName, ErrorDescription());
 		WriteLogEventDataExchange(MessageString, EventLogLevel.Warning);
@@ -5812,11 +5812,11 @@ Procedure StartMessageReader(MessageReader, DataAnalysis = False)
 	ExchangeFile.Read(); // ExchangeFile
 	
 	If ExchangeFile.NodeType <> XMLNodeType.StartElement Then
-		Raise NStr("en='Error of the exchange message format.';ru='Ошибка формата сообщения обмена.'");
+		Raise NStr("en='Error in exchange message format.';ru='Ошибка формата сообщения обмена.'");
 	EndIf;
 	
 	If ExchangeFile.LocalName <> "ExchangeFile" Then
-		Raise NStr("en='Error of the exchange message format.';ru='Ошибка формата сообщения обмена.'");
+		Raise NStr("en='Error in exchange message format.';ru='Ошибка формата сообщения обмена.'");
 	EndIf;
 	
 	IncomingExchangeMessageFormatVersionField = deAttribute(ExchangeFile, StringType, "FormatVersion");
@@ -5836,17 +5836,17 @@ Procedure StartMessageReader(MessageReader, DataAnalysis = False)
 	ExchangeFile.Read(); // ExchangeRules
 	
 	If ExchangeFile.NodeType <> XMLNodeType.StartElement Then
-		Raise NStr("en='Error of the exchange message format.';ru='Ошибка формата сообщения обмена.'");
+		Raise NStr("en='Error in exchange message format.';ru='Ошибка формата сообщения обмена.'");
 	EndIf;
 	
 	If ExchangeFile.LocalName <> "ExchangeRules" Then
-		Raise NStr("en='Error of the exchange message format.';ru='Ошибка формата сообщения обмена.'");
+		Raise NStr("en='Error in exchange message format.';ru='Ошибка формата сообщения обмена.'");
 	EndIf;
 	
 	If ConversionRulesTable.Count() = 0 Then
 		ImportExchangeRules(ExchangeFile, "XMLReader");
 		If ErrorFlag() Then
-			Raise NStr("en='The errors occurred when importing the data exchange rules';ru='При загрузке правил обмена данными возникли ошибки.'");
+			Raise NStr("en='Errors occurred when importing data exchange rules.';ru='При загрузке правил обмена данными возникли ошибки.'");
 		EndIf;
 	Else
 		deIgnore(ExchangeFile);
@@ -5874,7 +5874,7 @@ Procedure StartMessageReader(MessageReader, DataAnalysis = False)
 		EndTry;
 		
 		If Cancel Then
-			Raise NStr("en='Rejection to import the messages of exchange in the BeforeDataImport (conversion) handler.';ru='Отказ от загрузки сообщения обмена в обработчике ПередЗагрузкойДанных (конвертация).'");
+			Raise NStr("en='Cancel importing exchange message in the BeforeDataImport handler (conversion).';ru='Отказ от загрузки сообщения обмена в обработчике ПередЗагрузкойДанных (конвертация).'");
 		EndIf;
 		
 	EndIf;
@@ -5883,7 +5883,7 @@ Procedure StartMessageReader(MessageReader, DataAnalysis = False)
 	ExchangeFile.Read();
 	
 	If ExchangeFile.NodeType <> XMLNodeType.StartElement Then
-		Raise NStr("en='Error of the exchange message format.';ru='Ошибка формата сообщения обмена.'");
+		Raise NStr("en='Error in exchange message format.';ru='Ошибка формата сообщения обмена.'");
 	EndIf;
 	
 	// UserSearchSetting (optional)
@@ -5896,7 +5896,7 @@ Procedure StartMessageReader(MessageReader, DataAnalysis = False)
 	If ExchangeFile.LocalName = "DataTypeInfo" Then
 		
 		If ExchangeFile.NodeType <> XMLNodeType.StartElement Then
-			Raise NStr("en='Error of the exchange message format.';ru='Ошибка формата сообщения обмена.'");
+			Raise NStr("en='Error in exchange message format.';ru='Ошибка формата сообщения обмена.'");
 		EndIf;
 		
 		If MapOfDataTypesForImport().Count() > 0 Then
@@ -5904,7 +5904,7 @@ Procedure StartMessageReader(MessageReader, DataAnalysis = False)
 		Else
 			ImportInformationAboutDataTypes();
 			If ErrorFlag() Then
-				Raise NStr("en='When importing the information on the data types the errors have occurred.';ru='При загрузке информации о типах данных возникли ошибки.'");
+				Raise NStr("en='Errors occurred when importing information on data types.';ru='При загрузке информации о типах данных возникли ошибки.'");
 			EndIf;
 		EndIf;
 		ExchangeFile.Read();
@@ -5914,7 +5914,7 @@ Procedure StartMessageReader(MessageReader, DataAnalysis = False)
 	If ExchangeFile.LocalName = "ParameterValue" Then
 		
 		If ExchangeFile.NodeType <> XMLNodeType.StartElement Then
-			Raise NStr("en='Error of the exchange message format.';ru='Ошибка формата сообщения обмена.'");
+			Raise NStr("en='Error in exchange message format.';ru='Ошибка формата сообщения обмена.'");
 		EndIf;
 		
 		ImportDataEchangeParameterValues();
@@ -5924,7 +5924,7 @@ Procedure StartMessageReader(MessageReader, DataAnalysis = False)
 			If ExchangeFile.LocalName = "ParameterValue" Then
 				
 				If ExchangeFile.NodeType <> XMLNodeType.StartElement Then
-					Raise NStr("en='Error of the exchange message format.';ru='Ошибка формата сообщения обмена.'");
+					Raise NStr("en='Error in exchange message format.';ru='Ошибка формата сообщения обмена.'");
 				EndIf;
 				
 				ImportDataEchangeParameterValues();
@@ -5940,7 +5940,7 @@ Procedure StartMessageReader(MessageReader, DataAnalysis = False)
 	If ExchangeFile.LocalName = "AfterParameterExportAlgorithm" Then
 		
 		If ExchangeFile.NodeType <> XMLNodeType.StartElement Then
-			Raise NStr("en='Error of the exchange message format.';ru='Ошибка формата сообщения обмена.'");
+			Raise NStr("en='Error in exchange message format.';ru='Ошибка формата сообщения обмена.'");
 		EndIf;
 		
 		ExecuteAlgorithmAfterImportParameters(deItemValue(ExchangeFile, StringType));
@@ -5949,18 +5949,18 @@ Procedure StartMessageReader(MessageReader, DataAnalysis = False)
 	
 	// DataOnExchange (optional)
 	If ExchangeFile.NodeType <> XMLNodeType.StartElement Then
-		Raise NStr("en='Error of the exchange message format.';ru='Ошибка формата сообщения обмена.'");
+		Raise NStr("en='Error in exchange message format.';ru='Ошибка формата сообщения обмена.'");
 	EndIf;
 	
 	If ExchangeFile.LocalName <> "ExchangeData" Then
-		Raise NStr("en='Error of the exchange message format.';ru='Ошибка формата сообщения обмена.'");
+		Raise NStr("en='Error in exchange message format.';ru='Ошибка формата сообщения обмена.'");
 	EndIf;
 	
 	ReadExchangeData(MessageReader, DataAnalysis);
 	ExchangeFile.Read();
 	
 	If TransactionActive() Then
-		Raise NStr("en='Locking of the data receipt can not be installed in the active transaction.';ru='Блокировка получения данных не может быть установлена в активной транзакции.'");
+		Raise NStr("en='Lock of data receipt cannot be set in an active transaction.';ru='Блокировка получения данных не может быть установлена в активной транзакции.'");
 	EndIf;
 	
 	// Set lock on sender node.
@@ -6007,11 +6007,11 @@ Procedure FinishMessageReading(Val MessageReader)
 	// {Handler: AfterDataImport} End
 	
 	If ExchangeFile.NodeType <> XMLNodeType.EndElement Then
-		Raise NStr("en='Error of the exchange message format.';ru='Ошибка формата сообщения обмена.'");
+		Raise NStr("en='Error in exchange message format.';ru='Ошибка формата сообщения обмена.'");
 	EndIf;
 	
 	If ExchangeFile.LocalName <> "ExchangeFile" Then
-		Raise NStr("en='Error of the exchange message format.';ru='Ошибка формата сообщения обмена.'");
+		Raise NStr("en='Error in exchange message format.';ru='Ошибка формата сообщения обмена.'");
 	EndIf;
 	
 	ExchangeFile.Read(); // ExchangeFile
@@ -6070,11 +6070,11 @@ Procedure ExecuteAlgorithmAfterImportParameters(Val AlgorithmText)
 			
 			If Not IsBlankString(CancelReason) Then
 				
-				MessageString = NStr("en='Denial of the exchange message import in the AfterParametersImport handler (conversion) as: %1';ru='Отказ от загрузки сообщения обмена в обработчике ПослеЗагрузкиПараметров (конвертация) по причине: %1'");
+				MessageString = NStr("en='Decline exchange message import in handler AfterParametersImport (conversion) due to: %1';ru='Отказ от загрузки сообщения обмена в обработчике ПослеЗагрузкиПараметров (конвертация) по причине: %1'");
 				MessageString = StringFunctionsClientServer.SubstituteParametersInString(MessageString, CancelReason);
 				Raise MessageString;
 			Else
-				Raise NStr("en='Rejection from the exchange message import in the AfterImportOfParameters (conversion) processing.';ru='Отказ от загрузки сообщения обмена в обработчике ПослеЗагрузкиПараметров (конвертация).'");
+				Raise NStr("en='Cancel importing exchange message in the AfterImportOfParameters handler (conversion).';ru='Отказ от загрузки сообщения обмена в обработчике ПослеЗагрузкиПараметров (конвертация).'");
 			EndIf;
 			
 		EndIf;
@@ -6273,7 +6273,7 @@ Procedure DeleteDocumentRegisterRecords(DocumentObject)
 		
 		If Not AccessRight("Update", Set.Metadata()) Then
 			// No rights to all register table.
-			ErrorMessage = NStr("en='Access violation: %1';ru='Нарушение прав доступа: %1'");
+			ErrorMessage = NStr("en='Access right violation: %1';ru='Нарушение прав доступа: %1'");
 			ErrorMessage = StringFunctionsClientServer.SubstituteParametersInString(ErrorMessage, RegisterRecordRow.Name);
 			Raise ErrorMessage;
 			Return;
@@ -7489,7 +7489,7 @@ Function FindObjectByRef(ObjectType,
 		Except
 			
 			WriteInformationAboutOCRHandlerErrorImport(73, ErrorDescription(), "", "", 
-				ObjectType, Undefined, NStr("en='Search fields sequence';ru='Последовательность полей поиска'"));
+				ObjectType, Undefined, NStr("en='Sequence of search fields';ru='Последовательность полей поиска'"));
 			
 		EndTry;
 		
@@ -8305,7 +8305,7 @@ Procedure CommentsToObjectImport(NPP, Rulename, Source, ObjectType, GNPP = 0)
 	
 	If CommentObjectProcessingFlag Then
 		
-		MessageString = NStr("en='Import object No %1';ru='Загрузка объекта № %1'");
+		MessageString = NStr("en='Import object No. %1';ru='Загрузка объекта № %1'");
 		Number = ?(NPP <> 0, NPP, GNPP);
 		MessageString = StringFunctionsClientServer.SubstituteParametersInString(MessageString, Number);
 		
@@ -8594,7 +8594,7 @@ Function ReadRegisterRecordSet()
 		Except
 			
 			WriteInformationAboutOCRHandlerErrorImport(53, ErrorDescription(), Rulename, Source, 
-			ObjectType, Undefined, NStr("en='BeforeObjectImport(Global)';ru='ПередЗагрузкойОбъекта (глобальный)'"));
+			ObjectType, Undefined, NStr("en='BeforeObjectImport (global)';ru='ПередЗагрузкойОбъекта (глобальный)'"));
 			
 		EndTry;
 		
@@ -9009,7 +9009,7 @@ Function ReadObject(UUIDString = "")
 		Except
 			
 			WriteInformationAboutOCRHandlerErrorImport(53, ErrorDescription(), Rulename, Source, 
-				ObjectType, Undefined, NStr("en='BeforeObjectImport(Global)';ru='ПередЗагрузкойОбъекта (глобальный)'"));				
+				ObjectType, Undefined, NStr("en='BeforeObjectImport (global)';ru='ПередЗагрузкойОбъекта (глобальный)'"));				
 							
 		EndTry;
 				
@@ -9382,7 +9382,7 @@ Function ReadObject(UUIDString = "")
 				Except
 					
 					WriteInformationAboutOCRHandlerErrorImport(54, ErrorDescription(), Rulename, Source,
-						ObjectType, Object, NStr("en='AftertObjectImport(Global)';ru='ПослеЗагрузкиОбъекта (глобальный)'"));
+						ObjectType, Object, NStr("en='AftertObjectImport (global)';ru='ПослеЗагрузкиОбъекта (глобальный)'"));
 					
 				EndTry;
 				
@@ -12243,7 +12243,7 @@ Function GetRegistrationAttributesStructure(PCRTable)
 		Try
 			ChangeRecordAttributeStructure.Insert(PCR.Source);
 		Except
-			WriteLogEvent(NStr("en='Data exchange. Conversion rules import';ru='Обмен данными.Загрузка правил конвертации'", CommonUseClientServer.MainLanguageCode()),
+			WriteLogEvent(NStr("en='Data exchange.Conversion rule import';ru='Обмен данными.Загрузка правил конвертации'", CommonUseClientServer.MainLanguageCode()),
 				EventLogLevel.Error,,, DetailErrorDescription(ErrorInfo()));
 		EndTry;
 		
@@ -12297,7 +12297,7 @@ Procedure RunObjectRegistrationAttributesCheck(ChangeRecordAttributeTable)
 			ObjectType = Type(TableRow.ObjectTypeAsString);
 		Except
 			
-			MessageString = NStr("en='The object type is not defined: %1';ru='Тип объекта не определен: %1'");
+			MessageString = NStr("en='Object type is undefined: %1';ru='Тип объекта не определен: %1'");
 			MessageString = StringFunctionsClientServer.SubstituteParametersInString(MessageString, TableRow.ObjectTypeAsString);
 			WriteInExecutionProtocol(MessageString);
 			Continue;
@@ -12325,7 +12325,7 @@ Procedure RunObjectRegistrationAttributesCheck(ChangeRecordAttributeTable)
 						OR  DataExchangeServer.ThisIsStandardAttribute(MDObject.StandardAttributes, Attribute.Key)
 						OR  IsCommonAttribute(Attribute.Key, MDObject.FullName(), CommonAttributesTable)) Then
 						
-						MessageString = NStr("en='""%1"" object header attributes are specified incorrectly. Attribute ""%2"" does not exist.';ru='Неправильно указаны реквизиты шапки объекта ""%1"". Реквизит ""%2"" не существует.'");
+						MessageString = NStr("en='Attributes of ""%1"" object header are specified incorrectly. Attribute ""%2"" does not exist.';ru='Неправильно указаны реквизиты шапки объекта ""%1"". Реквизит ""%2"" не существует.'");
 						MessageString = StringFunctionsClientServer.SubstituteParametersInString(MessageString, String(MDObject), Attribute.Key);
 						WriteInExecutionProtocol(MessageString);
 						
@@ -12337,7 +12337,7 @@ Procedure RunObjectRegistrationAttributesCheck(ChangeRecordAttributeTable)
 						OR  DataExchangeServer.ThisIsStandardAttribute(MDObject.StandardAttributes, Attribute.Key)
 						OR  IsCommonAttribute(Attribute.Key, MDObject.FullName(), CommonAttributesTable)) Then
 						
-						MessageString = NStr("en='""%1"" object header attributes are specified incorrectly. Attribute ""%2"" does not exist.';ru='Неправильно указаны реквизиты шапки объекта ""%1"". Реквизит ""%2"" не существует.'");
+						MessageString = NStr("en='Attributes of ""%1"" object header are specified incorrectly. Attribute ""%2"" does not exist.';ru='Неправильно указаны реквизиты шапки объекта ""%1"". Реквизит ""%2"" не существует.'");
 						MessageString = StringFunctionsClientServer.SubstituteParametersInString(MessageString, String(MDObject), Attribute.Key);
 						WriteInExecutionProtocol(MessageString);
 						
@@ -12352,7 +12352,7 @@ Procedure RunObjectRegistrationAttributesCheck(ChangeRecordAttributeTable)
 			MetaTable  = ObjectsRegistrationAttributesMetaTabularSection(MDObject, TableRow.TabularSectionName);
 			If MetaTable = Undefined Then
 				WriteInExecutionProtocol(StringFunctionsClientServer.SubstituteParametersInString(
-					NStr("en='Tabular section (standard tabular section, movements) ""%1"" object ""%2"" does not exist.';ru='Табличная часть (стандартная табличная часть, движения) ""%1"" объекта ""%2"" не существует.'"),
+					NStr("en='Tabular section (standard tabular section, movements) %1 of object %2 does not exist.';ru='Табличная часть (стандартная табличная часть, движения) ""%1"" объекта ""%2"" не существует.'"),
 					TableRow.TabularSectionName, MDObject));
 				Continue;
 			EndIf;
@@ -12362,7 +12362,7 @@ Procedure RunObjectRegistrationAttributesCheck(ChangeRecordAttributeTable)
 				
 				If Not AttributeFoundInObjectsRegistrationAttributesTabularSection(MetaTable, Attribute.Key) Then
 					WriteInExecutionProtocol(StringFunctionsClientServer.SubstituteParametersInString(
-						NStr("en='Attribute ""%3"" does not exist in the tabular section (standard tabular section, movements) ""%1"" of object ""%2"".';ru='Реквизит ""%3"" не существует в табличной части (стандартной табличной части, движениях) ""%1"" объекта ""%2"".'"),
+						NStr("en='Attribute ""%3"" does not exist in the table section (standard table section, motion) ""%1"" of object ""%2"".';ru='Реквизит ""%3"" не существует в табличной части (стандартной табличной части, движениях) ""%1"" объекта ""%2"".'"),
 						TableRow.TabularSectionName, MDObject, Attribute.Key));
 					Break;
 				EndIf;
@@ -12591,9 +12591,9 @@ Function GetInformationAboutRules(AreCorrespondentRules = False) Export
 	EndIf;
 	
 	If AreCorrespondentRules Then
-		InfoString = NStr("en='Correspondent conversion rules (%1) from %2';ru='Правила конвертации корреспондента (%1) от %2'");
+		InfoString = NStr("en='Conversion rules of correspondent (%1) from %2';ru='Правила конвертации корреспондента (%1) от %2'");
 	Else
-		InfoString = NStr("en='This infobase conversion rules (%1) from %2';ru='Правила конвертации этой информационной базы (%1) от %2'");
+		InfoString = NStr("en='Conversion rules of this infobase (%1) from %2';ru='Правила конвертации этой информационной базы (%1) от %2'");
 	EndIf;
 	
 	SourceConfigurationPresentation = GetConfigurationPresentationFromExchangeRules("Source");
@@ -13259,7 +13259,7 @@ Procedure ImportExchangeRules(Source="",
 			EndIf;
 			
 		Except
-			ErrorMessageString = WriteInformationAboutErrorConversionHandlers(75, ErrorDescription(), NStr("en='After rules of exchange loading (conversion)';ru='ПослеЗагрузкиПравилОбмена (конвертация)'"));
+			ErrorMessageString = WriteInformationAboutErrorConversionHandlers(75, ErrorDescription(), NStr("en='AfterImportOfExchangeRules (conversion)';ru='ПослеЗагрузкиПравилОбмена (конвертация)'"));
 			Cancel = True;
 			
 			If Not ContinueOnError Then
@@ -13404,14 +13404,14 @@ Procedure ExecuteSelectiveMessageReader(TableToImport)
 			ReadDataForTables(TableToImport);
 			
 			If ErrorFlag() Then
-				Raise NStr("en='Errors have occurred at the data import.';ru='Возникли ошибки при загрузке данных.'");
+				Raise NStr("en='Errors occurred when importing data.';ru='Возникли ошибки при загрузке данных.'");
 			EndIf;
 			
 			// Deferred record of things that were not written.
 			WriteNotRecordedObjects();
 			
 			If ErrorFlag() Then
-				Raise NStr("en='Errors have occurred at the data import.';ru='Возникли ошибки при загрузке данных.'");
+				Raise NStr("en='Errors occurred when importing data.';ru='Возникли ошибки при загрузке данных.'");
 			EndIf;
 			
 			FinishMessageReading(MessageReader);
@@ -13504,13 +13504,13 @@ Procedure ReadData(MessageReader)
 			
 		Else
 			
-			Raise NStr("en='Error of the exchange message format.';ru='Ошибка формата сообщения обмена.'");
+			Raise NStr("en='Error in exchange message format.';ru='Ошибка формата сообщения обмена.'");
 			
 		EndIf;
 		
 		// If an import error occurs, abort file reading cycle.
 		If ErrorFlag() Then
-			Raise NStr("en='Errors have occurred at the data import.';ru='Возникли ошибки при загрузке данных.'");
+			Raise NStr("en='Errors occurred when importing data.';ru='Возникли ошибки при загрузке данных.'");
 		EndIf;
 		
 	EndDo;
@@ -13662,7 +13662,7 @@ Procedure ReadDataForTables(TableToImport)
 							
 							If Column.ValueType.ContainsType(StringType) Then
 								
-								TableRow[Column.Name] = NStr("en='Object removal';ru='Удаление объекта'");
+								TableRow[Column.Name] = NStr("en='Deleting object';ru='Удаление объекта'");
 								
 							EndIf;
 							
@@ -13702,13 +13702,13 @@ Procedure ReadDataForTables(TableToImport)
 			
 		Else
 			
-			Raise NStr("en='Error of the exchange message format.';ru='Ошибка формата сообщения обмена.'");
+			Raise NStr("en='Error in exchange message format.';ru='Ошибка формата сообщения обмена.'");
 			
 		EndIf;
 		
 		// If an error occurs, abort file reading cycle.
 		If ErrorFlag() Then
-			Raise NStr("en='Errors have occurred at the data import.';ru='Возникли ошибки при загрузке данных.'");
+			Raise NStr("en='Errors occurred when importing data.';ru='Возникли ошибки при загрузке данных.'");
 		EndIf;
 		
 	EndDo;
@@ -13865,13 +13865,13 @@ Procedure ReadDataInAnalysisMode(MessageReader, AnalysisParameters = Undefined)
 			
 		Else
 			
-			Raise NStr("en='Error of the exchange message format.';ru='Ошибка формата сообщения обмена.'");
+			Raise NStr("en='Error in exchange message format.';ru='Ошибка формата сообщения обмена.'");
 			
 		EndIf;
 		
 		// If an error occurs, abort file reading cycle.
 		If ErrorFlag() Then
-			Raise NStr("en='The errors occurred when analysing the data.';ru='Возникли ошибки при анализе данных.'");
+			Raise NStr("en='Errors occurred when analyzing data.';ru='Возникли ошибки при анализе данных.'");
 		EndIf;
 		
 	EndDo;
@@ -13959,7 +13959,7 @@ Procedure ReadDataInModeExternalConnection(MessageReader)
 						
 						If Not IsBlankString(CancelReason) Then
 							
-							MessageString = NStr("en='Data load canceled because: %1';ru='Загрузка данных отменена по причине: %1'");
+							MessageString = NStr("en='Data import was canceled as: %1';ru='Загрузка данных отменена по причине: %1'");
 							MessageString = StringFunctionsClientServer.SubstituteParametersInString(MessageString, CancelReason);
 							Raise MessageString;
 						Else
@@ -14045,7 +14045,7 @@ Procedure ReadExchangeData(MessageReader, DataAnalysis)
 	If Not ValueIsFilled(ExchangeNodeRecipient)
 		OR ExchangeNodeRecipient <> ExchangeNodeForDataImport Then
 		
-		MessageString = NStr("en='The node of exchange to import data is not found. Exchange plan: %1, Code: %2';ru='Не найден узел обмена для загрузки данных. План обмена: %1, Код: %2'");
+		MessageString = NStr("en='Exchange node for data import is not found. Exchange plan: %1, Code: %2';ru='Не найден узел обмена для загрузки данных. План обмена: %1, Код: %2'");
 		MessageString = StringFunctionsClientServer.SubstituteParametersInString(MessageString, ExchangePlanName(), FromWhomCode);
 		Raise MessageString;
 	EndIf;
@@ -14073,7 +14073,7 @@ Procedure ReadExchangeData(MessageReader, DataAnalysis)
 			MessageReadingTemporary.MessageWasAcceptedPreviously = True;
 			MessageReader = New FixedStructure(MessageReadingTemporary);
 			
-			Raise NStr("en='Exchange message has been previously accepted';ru='Сообщение обмена было принято ранее'");
+			Raise NStr("en='Exchange message was previously received';ru='Сообщение обмена было принято ранее'");
 		EndIf;
 		
 		DeleteChangeRecords = DeleteChangeRecords AND Not RestoredBackupCopy;
@@ -14081,7 +14081,7 @@ Procedure ReadExchangeData(MessageReader, DataAnalysis)
 		If DeleteChangeRecords Then // Delete registration of changes.
 			
 			If TransactionActive() Then
-				Raise NStr("en='Deletion of the data modification registration can not be done in the active transaction.';ru='Удаление регистрации изменений данных не может быть выполнено в активной транзакции.'");
+				Raise NStr("en='Deletion of the data change registration cannot be completed in an active transaction.';ru='Удаление регистрации изменений данных не может быть выполнено в активной транзакции.'");
 			EndIf;
 			
 			ExchangePlans.DeleteChangeRecords(MessageReader.Sender, MessageReader.ReceivedNo);
@@ -14359,7 +14359,7 @@ Procedure PerformPostponedObjectsRecording()
 				
 				ObjectSuccessfulyRecorded = False;
 				
-				ErrorDescription = NStr("en='Error of attributes filling verification';ru='Ошибка проверки заполнения реквизитов'");
+				ErrorDescription = NStr("en='An error occurred when checking the attribute population';ru='Ошибка проверки заполнения реквизитов'");
 				
 			EndIf;
 			
@@ -15764,98 +15764,98 @@ Procedure MessagesInitialization()
 
 	ErrorMessages			= New Map;
 		
-	ErrorMessages.Insert(2,  NStr("en='Error of exchange file unpacking. File is locked.';ru='Ошибка распаковки файла обмена. Файл заблокирован.'"));
-	ErrorMessages.Insert(3,  NStr("en='Specified exchange rules file does not exist.';ru='Указанный файл правил обмена не существует.'"));
-	ErrorMessages.Insert(4,  NStr("en='Error while creating COM-object Msxml2.DOMDocument';ru='Ошибка при создании COM-объекта Msxml2.DOMDocument'"));
-	ErrorMessages.Insert(5,  NStr("en='File opening error';ru='Ошибка открытия файла обмена'"));
-	ErrorMessages.Insert(6,  NStr("en='Error while loading rules of exchange';ru='Ошибка при загрузке правил обмена'"));
-	ErrorMessages.Insert(7,  NStr("en='Exchange rules format error';ru='Ошибка формата правил обмена'"));
-	ErrorMessages.Insert(8,  NStr("en='File name to export data is not correct';ru='Не корректно указано имя файла для выгрузки данных'")); // not used
-	ErrorMessages.Insert(9,  NStr("en='Exchange file format error';ru='Ошибка формата файла обмена'"));
-	ErrorMessages.Insert(10, NStr("en='File name is not specified for the data export (Name of the data file)';ru='Не указано имя файла для выгрузки данных (Имя файла данных)'"));
-	ErrorMessages.Insert(11, NStr("en='Reference to non-existing metadata object in the rules of exchange';ru='Ссылка на несуществующий объект метаданных в правилах обмена'"));
-	ErrorMessages.Insert(12, NStr("en='File name with the exchange rules (Name of the rules file) is not specified';ru='Не указано имя файла с правилами обмена (Имя файла правил)'"));
+	ErrorMessages.Insert(2,  NStr("en='An error occurred when unpacking an exchange file. The file is locked.';ru='Ошибка распаковки файла обмена. Файл заблокирован.'"));
+	ErrorMessages.Insert(3,  NStr("en='The specified exchange rule file does not exist.';ru='Указанный файл правил обмена не существует.'"));
+	ErrorMessages.Insert(4,  NStr("en='An error occurred when creating COM object Msxml2.DOMDocument';ru='Ошибка при создании COM-объекта Msxml2.DOMDocument'"));
+	ErrorMessages.Insert(5,  NStr("en='An error occurred when opening the exchange file';ru='Ошибка открытия файла обмена'"));
+	ErrorMessages.Insert(6,  NStr("en='An error occurred when importing exchange rules';ru='Ошибка при загрузке правил обмена'"));
+	ErrorMessages.Insert(7,  NStr("en='Error in exchange rule format';ru='Ошибка формата правил обмена'"));
+	ErrorMessages.Insert(8,  NStr("en='Incorrect file name for data export';ru='Не корректно указано имя файла для выгрузки данных'")); // not used
+	ErrorMessages.Insert(9,  NStr("en='Error in exchange file format';ru='Ошибка формата файла обмена'"));
+	ErrorMessages.Insert(10, NStr("en='File name for data export is not specified (Data file name)';ru='Не указано имя файла для выгрузки данных (Имя файла данных)'"));
+	ErrorMessages.Insert(11, NStr("en='Link to a non-existing metadata object in the exchange rules';ru='Ссылка на несуществующий объект метаданных в правилах обмена'"));
+	ErrorMessages.Insert(12, NStr("en='File name with exchange rules is not specified (Rule file name)';ru='Не указано имя файла с правилами обмена (Имя файла правил)'"));
 			
-	ErrorMessages.Insert(13, NStr("en='Error of receiving the object property value (by source property name)';ru='Ошибка получения значения свойства объекта (по имени свойства источника)'"));
-	ErrorMessages.Insert(14, NStr("en='error of receiving the object property value (by receiver property name)';ru='Ошибка получения значения свойства объекта (по имени свойства приемника)'"));
+	ErrorMessages.Insert(13, NStr("en='An error occurred when receiving a value of the object property (by the name of the source property)';ru='Ошибка получения значения свойства объекта (по имени свойства источника)'"));
+	ErrorMessages.Insert(14, NStr("en='An error occurred when receiving the object property value (by the target property name)';ru='Ошибка получения значения свойства объекта (по имени свойства приемника)'"));
 	
-	ErrorMessages.Insert(15, NStr("en='File name to load data not defined. (File name for loading)';ru='Не указано имя файла для загрузки данных (Имя файла для загрузки)'"));
+	ErrorMessages.Insert(15, NStr("en='File name for data import is not specified (File name for import)';ru='Не указано имя файла для загрузки данных (Имя файла для загрузки)'"));
 			
-	ErrorMessages.Insert(16, NStr("en=""Error in receiving the value of the child object (in the name of property's source)"";ru='Ошибка получения значения свойства подчиненного объекта (по имени свойства источника)'"));
-	ErrorMessages.Insert(17, NStr("en=""Error in receiving the value of the child object (in the name of receiver's source)"";ru='Ошибка получения значения свойства подчиненного объекта (по имени свойства приемника)'"));
-	ErrorMessages.Insert(18, NStr("en='Error when creating the data processor with the code of handlers';ru='Ошибка при создании обработки с кодом обработчиков'"));
-	ErrorMessages.Insert(19, NStr("en='Error in the event handler BeforeObjectImport';ru='Ошибка в обработчике события ПередЗагрузкойОбъекта'"));
-	ErrorMessages.Insert(20, NStr("en='Error in the event handler OnObjectImport';ru='Ошибка в обработчике события ПриЗагрузкеОбъекта'"));
-	ErrorMessages.Insert(21, NStr("en='Error in the event handler AfterObjectImport';ru='Ошибка в обработчике события ПослеЗагрузкиОбъекта'"));
-	ErrorMessages.Insert(22, NStr("en='Error in the event handler BeforeObjectImport (conversion)';ru='Ошибка в обработчике события ПередЗагрузкойДанных (конвертация)'"));
-	ErrorMessages.Insert(23, NStr("en='Error in the event handler AfterDataImport (conversion)';ru='Ошибка в обработчике события ПослеЗагрузкиДанных (конвертация)'"));
-	ErrorMessages.Insert(24, NStr("en='An error occurred while deleting an object';ru='Ошибка при удалении объекта'"));
-	ErrorMessages.Insert(25, NStr("en='Error writing document';ru='Ошибка при записи документа'"));
-	ErrorMessages.Insert(26, NStr("en='Error writing object';ru='Ошибка записи объекта'"));
-	ErrorMessages.Insert(27, NStr("en='BeforeProcessClearingRule event handler error';ru='Ошибка в обработчике события ПередОбработкойПравилаОчистки'"));
-	ErrorMessages.Insert(28, NStr("en='Error in the event handler AfterClearingRuleProcessing';ru='Ошибка в обработчике события ПослеОбработкиПравилаОчистки'"));
-	ErrorMessages.Insert(29, NStr("en='Error in the event handler BeforeDeleteObject';ru='Ошибка в обработчике события ПередУдалениемОбъекта'"));
+	ErrorMessages.Insert(16, NStr("en='An error occurred while receiving value of subobject property (by source property name)';ru='Ошибка получения значения свойства подчиненного объекта (по имени свойства источника)'"));
+	ErrorMessages.Insert(17, NStr("en='An error occurred while receiving value of subobject property (by target property name)';ru='Ошибка получения значения свойства подчиненного объекта (по имени свойства приемника)'"));
+	ErrorMessages.Insert(18, NStr("en='An error occurred when creating a data processor with the handler code';ru='Ошибка при создании обработки с кодом обработчиков'"));
+	ErrorMessages.Insert(19, NStr("en='An error occurred in event handler BeforeObjectImport';ru='Ошибка в обработчике события ПередЗагрузкойОбъекта'"));
+	ErrorMessages.Insert(20, NStr("en='An error occurred in event handler OnObjectImport';ru='Ошибка в обработчике события ПриЗагрузкеОбъекта'"));
+	ErrorMessages.Insert(21, NStr("en='An error occurred in event handler AfterObjectImport';ru='Ошибка в обработчике события ПослеЗагрузкиОбъекта'"));
+	ErrorMessages.Insert(22, NStr("en='An error occurred in event handler BeforeDataImport (conversion)';ru='Ошибка в обработчике события ПередЗагрузкойДанных (конвертация)'"));
+	ErrorMessages.Insert(23, NStr("en='An error occurred in event handler AfterDataImport (conversion)';ru='Ошибка в обработчике события ПослеЗагрузкиДанных (конвертация)'"));
+	ErrorMessages.Insert(24, NStr("en='An error occurred when removing an object';ru='Ошибка при удалении объекта'"));
+	ErrorMessages.Insert(25, NStr("en='An error occurred when writing the document';ru='Ошибка при записи документа'"));
+	ErrorMessages.Insert(26, NStr("en='An error occurred when writing the object';ru='Ошибка записи объекта'"));
+	ErrorMessages.Insert(27, NStr("en='An error occurred in event handler BeforeProcessClearingRule';ru='Ошибка в обработчике события ПередОбработкойПравилаОчистки'"));
+	ErrorMessages.Insert(28, NStr("en='An error occurred in event handler AfterClearingRuleProcessing';ru='Ошибка в обработчике события ПослеОбработкиПравилаОчистки'"));
+	ErrorMessages.Insert(29, NStr("en='An error occurred in event handler BeforeDeleteObject';ru='Ошибка в обработчике события ПередУдалениемОбъекта'"));
 	
-	ErrorMessages.Insert(31, NStr("en='BeforeProcessExportRule event handler error';ru='Ошибка в обработчике события ПередОбработкойПравилаВыгрузки'"));
-	ErrorMessages.Insert(32, NStr("en='Error in the event handler AfterDumpRuleProcessing';ru='Ошибка в обработчике события ПослеОбработкиПравилаВыгрузки'"));
-	ErrorMessages.Insert(33, NStr("en='Error in the event handler BeforeObjectExport';ru='Ошибка в обработчике события ПередВыгрузкойОбъекта'"));
-	ErrorMessages.Insert(34, NStr("en='Error in the event handler AfterObjectExport';ru='Ошибка в обработчике события ПослеВыгрузкиОбъекта'"));
+	ErrorMessages.Insert(31, NStr("en='An error occurred in event handler BeforeProcessExportRule';ru='Ошибка в обработчике события ПередОбработкойПравилаВыгрузки'"));
+	ErrorMessages.Insert(32, NStr("en='An error occurred in event handler AfterDumpRuleProcessing';ru='Ошибка в обработчике события ПослеОбработкиПравилаВыгрузки'"));
+	ErrorMessages.Insert(33, NStr("en='An error occurred in event handler BeforeObjectExport';ru='Ошибка в обработчике события ПередВыгрузкойОбъекта'"));
+	ErrorMessages.Insert(34, NStr("en='An error occurred in event handler AfterObjectExport';ru='Ошибка в обработчике события ПослеВыгрузкиОбъекта'"));
 			
-	ErrorMessages.Insert(41, NStr("en='Error in the event handler BeforeObjectExport';ru='Ошибка в обработчике события ПередВыгрузкойОбъекта'"));
-	ErrorMessages.Insert(42, NStr("en='Error in the event handler OnObjectExport';ru='Ошибка в обработчике события ПриВыгрузкеОбъекта'"));
-	ErrorMessages.Insert(43, NStr("en='Error in the event handler AfterObjectExport';ru='Ошибка в обработчике события ПослеВыгрузкиОбъекта'"));
+	ErrorMessages.Insert(41, NStr("en='An error occurred in event handler BeforeObjectExport';ru='Ошибка в обработчике события ПередВыгрузкойОбъекта'"));
+	ErrorMessages.Insert(42, NStr("en='An error occurred in event handler OnObjectExport';ru='Ошибка в обработчике события ПриВыгрузкеОбъекта'"));
+	ErrorMessages.Insert(43, NStr("en='An error occurred in event handler AfterObjectExport';ru='Ошибка в обработчике события ПослеВыгрузкиОбъекта'"));
 			
-	ErrorMessages.Insert(45, NStr("en='Object Conversion rule not found';ru='Не найдено правило конвертации объектов'"));
+	ErrorMessages.Insert(45, NStr("en='Object conversion rule is not found';ru='Не найдено правило конвертации объектов'"));
 		
-	ErrorMessages.Insert(48, NStr("en='Error in the event handler BeforeExportProcessor properties group';ru='Ошибка в обработчике события ПередОбработкойВыгрузки группы свойств'"));
-	ErrorMessages.Insert(49, NStr("en='Error in the event handler AfterExportProcessor';ru='Ошибка в обработчике события ПослеОбработкиВыгрузки группы свойств'"));
-	ErrorMessages.Insert(50, NStr("en='Error in the event handler BeforeExport (collection object)';ru='Ошибка в обработчике события ПередВыгрузкой (объекта коллекции)'"));
-	ErrorMessages.Insert(51, NStr("en='Error in the event handler OnExport (collection object)';ru='Ошибка в обработчике события ПриВыгрузке (объекта коллекции)'"));
-	ErrorMessages.Insert(52, NStr("en='Error in the event handler AfterExport (collection object)';ru='Ошибка в обработчике события ПослеВыгрузки (объекта коллекции)'"));
-	ErrorMessages.Insert(53, NStr("en='Error in the global event handler BeforeObjectImporting (conversion)';ru='Ошибка в глобальном обработчике события ПередЗагрузкойОбъекта (конвертация)'"));
-	ErrorMessages.Insert(54, NStr("en='Error in the global handler of the AfterObjectImport (conversion) event';ru='Ошибка в глобальном обработчике события ПослеЗагрузкиОбъекта (конвертация)'"));
-	ErrorMessages.Insert(55, NStr("en='Error in the event handler BeforeExport (property)';ru='Ошибка в обработчике события ПередВыгрузкой (свойства)'"));
-	ErrorMessages.Insert(56, NStr("en='Error in the event handler OnExport (properties)';ru='Ошибка в обработчике события ПриВыгрузке (свойства)'"));
-	ErrorMessages.Insert(57, NStr("en='Error in the event handler AfterExport (properties)';ru='Ошибка в обработчике события ПослеВыгрузки (свойства)'"));
+	ErrorMessages.Insert(48, NStr("en='An error occurred in event handler BeforeExportProcessor of the property group';ru='Ошибка в обработчике события ПередОбработкойВыгрузки группы свойств'"));
+	ErrorMessages.Insert(49, NStr("en='An error occurred in event handler AfterExportProcessor of the property group';ru='Ошибка в обработчике события ПослеОбработкиВыгрузки группы свойств'"));
+	ErrorMessages.Insert(50, NStr("en='Error in event handler BeforeExport (of collection object)';ru='Ошибка в обработчике события ПередВыгрузкой (объекта коллекции)'"));
+	ErrorMessages.Insert(51, NStr("en='Error in event handler OnExport (of collection object)';ru='Ошибка в обработчике события ПриВыгрузке (объекта коллекции)'"));
+	ErrorMessages.Insert(52, NStr("en='Error in event handler AfterExport (of collection object)';ru='Ошибка в обработчике события ПослеВыгрузки (объекта коллекции)'"));
+	ErrorMessages.Insert(53, NStr("en='An error occurred in global event handler BeforeObjectImporting (conversion)';ru='Ошибка в глобальном обработчике события ПередЗагрузкойОбъекта (конвертация)'"));
+	ErrorMessages.Insert(54, NStr("en='An error occurred in global event handler AfterObjectImport (conversion)';ru='Ошибка в глобальном обработчике события ПослеЗагрузкиОбъекта (конвертация)'"));
+	ErrorMessages.Insert(55, NStr("en='An error occurred in event handler BeforeExport (properties)';ru='Ошибка в обработчике события ПередВыгрузкой (свойства)'"));
+	ErrorMessages.Insert(56, NStr("en='An error occurred in event handler OnExport (properties)';ru='Ошибка в обработчике события ПриВыгрузке (свойства)'"));
+	ErrorMessages.Insert(57, NStr("en='An error occurred in event handler AfterExport (properties)';ru='Ошибка в обработчике события ПослеВыгрузки (свойства)'"));
 	
-	ErrorMessages.Insert(62, NStr("en='Error in the event handler BeforeDataExport (properties)';ru='Ошибка в обработчике события ПередВыгрузкойДанных (конвертация)'"));
-	ErrorMessages.Insert(63, NStr("en='Error in the event handler AfterDataExport (conversion)';ru='Ошибка в обработчике события ПослеВыгрузкиДанных (конвертация)'"));
-	ErrorMessages.Insert(64, NStr("en='Error in the global event handler BeforeObjectConversion (conversion)';ru='Ошибка в глобальном обработчике события ПередКонвертациейОбъекта (конвертация)'"));
-	ErrorMessages.Insert(65, NStr("en='Error in the global event handler BeforeObjectExport (conversion)';ru='Ошибка в глобальном обработчике события ПередВыгрузкойОбъекта (конвертация)'"));
-	ErrorMessages.Insert(66, NStr("en='Error of receiving the collection of subordinate objects from incoming data';ru='Ошибка получения коллекции подчиненных объектов из входящих данных'"));
-	ErrorMessages.Insert(67, NStr("en='Error retrieving subordinate object properties from incoming data';ru='Ошибка получения свойства подчиненного объекта из входящих данных'"));
-	ErrorMessages.Insert(68, NStr("en=""Error of receiving object's property from incoming data"";ru='Ошибка получения свойства объекта из входящих данных'"));
+	ErrorMessages.Insert(62, NStr("en='An error occurred in event handler BeforeDataExport (conversion)';ru='Ошибка в обработчике события ПередВыгрузкойДанных (конвертация)'"));
+	ErrorMessages.Insert(63, NStr("en='An error occurred in event handler AfterDataExport (conversion)';ru='Ошибка в обработчике события ПослеВыгрузкиДанных (конвертация)'"));
+	ErrorMessages.Insert(64, NStr("en='An error occurred in global event handler BeforeObjectConversion (conversion)';ru='Ошибка в глобальном обработчике события ПередКонвертациейОбъекта (конвертация)'"));
+	ErrorMessages.Insert(65, NStr("en='An error occurred in global event handler BeforeObjectExport (conversion)';ru='Ошибка в глобальном обработчике события ПередВыгрузкойОбъекта (конвертация)'"));
+	ErrorMessages.Insert(66, NStr("en='An error occurred when receiving a subordinate object collection from the incoming data';ru='Ошибка получения коллекции подчиненных объектов из входящих данных'"));
+	ErrorMessages.Insert(67, NStr("en='An error occurred when receiving the subordinate object properties from the incoming data';ru='Ошибка получения свойства подчиненного объекта из входящих данных'"));
+	ErrorMessages.Insert(68, NStr("en='An error occurred when receiving the object properties from the incoming data';ru='Ошибка получения свойства объекта из входящих данных'"));
 	
-	ErrorMessages.Insert(69, NStr("en='Error in the global event handler AfterObjectExport (conversion)';ru='Ошибка в глобальном обработчике события ПослеВыгрузкиОбъекта (конвертация)'"));
+	ErrorMessages.Insert(69, NStr("en='An error occurred in global event handler AfterObjectExport (conversion)';ru='Ошибка в глобальном обработчике события ПослеВыгрузкиОбъекта (конвертация)'"));
 	
-	ErrorMessages.Insert(71, NStr("en='The map of the Source value is not found';ru='Не найдено соответствие для значения Источника'"));
+	ErrorMessages.Insert(71, NStr("en='Match for the Source value is not found';ru='Не найдено соответствие для значения Источника'"));
 	
-	ErrorMessages.Insert(72, NStr("en='Error exporting data for exchange plan node';ru='Ошибка при выгрузке данных для узла плана обмена'"));
+	ErrorMessages.Insert(72, NStr("en='An error occurred when exporting data for the exchange plan node';ru='Ошибка при выгрузке данных для узла плана обмена'"));
 	
-	ErrorMessages.Insert(73, NStr("en='Error in the event handler SearchFieldsSequence';ru='Ошибка в обработчике события ПоследовательностьПолейПоиска'"));
-	ErrorMessages.Insert(74, NStr("en='It is required to reload exchange rules to dump data.';ru='Необходимо перезагрузить правила обмена для выгрузки данных.'"));
+	ErrorMessages.Insert(73, NStr("en='An error occurred in event handler SearchFieldsSequence';ru='Ошибка в обработчике события ПоследовательностьПолейПоиска'"));
+	ErrorMessages.Insert(74, NStr("en='Import exchange rules for data export again.';ru='Необходимо перезагрузить правила обмена для выгрузки данных.'"));
 	
-	ErrorMessages.Insert(75, NStr("en='Error in the event handler AfterImportOfExchangeRules (conversion)';ru='Ошибка в обработчике события ПослеЗагрузкиПравилОбмена (конвертация)'"));
-	ErrorMessages.Insert(76, NStr("en='Error in the BeforeSendingUninstallInformation (conversion) event handler';ru='Ошибка в обработчике события ПередОтправкойИнформацииОбУдалении (конвертация)'"));
-	ErrorMessages.Insert(77, NStr("en='Error in the event handler OnObtainingInformationAboutDeletion (conversion)';ru='Ошибка в обработчике события ПриПолученииИнформацииОбУдалении (конвертация)'"));
+	ErrorMessages.Insert(75, NStr("en='An error occurred in event handler AfterImportOfExchangeRules (conversion)';ru='Ошибка в обработчике события ПослеЗагрузкиПравилОбмена (конвертация)'"));
+	ErrorMessages.Insert(76, NStr("en='An error occurred in event handler BeforeSendingUninstallInformation (conversion)';ru='Ошибка в обработчике события ПередОтправкойИнформацииОбУдалении (конвертация)'"));
+	ErrorMessages.Insert(77, NStr("en='An error occurred in event handler OnObtainingInformationAboutDeletion (conversion)';ru='Ошибка в обработчике события ПриПолученииИнформацииОбУдалении (конвертация)'"));
 	
-	ErrorMessages.Insert(78, NStr("en='Error occurred while executing the algorithm after loading the parameters values';ru='Ошибка при выполнении алгоритма после загрузки значений параметров'"));
+	ErrorMessages.Insert(78, NStr("en='An error occurred when executing the algorithm after import of the parameter values';ru='Ошибка при выполнении алгоритма после загрузки значений параметров'"));
 	
-	ErrorMessages.Insert(79, NStr("en='Error in the event handler AfterObjectExportToFile';ru='Ошибка в обработчике события ПослеВыгрузкиОбъектаВФайл'"));
+	ErrorMessages.Insert(79, NStr("en='An error occurred in event handler AfterObjectExportToFile';ru='Ошибка в обработчике события ПослеВыгрузкиОбъектаВФайл'"));
 	
 	ErrorMessages.Insert(80, NStr("en='Error of the predefined item property setting.
 		|You can not mark the predefined item to be deleted. Mark for deletion for the objects is not installed.';ru='Ошибка установки свойства предопределенного элемента.
 		|Нельзя помечать на удаление предопределенный элемент. Пометка на удаление для объекта не установлена.'"));
 	//
-	ErrorMessages.Insert(83, NStr("en='Error of the reference to the object tabular section. Tabular section of the document can not be modified.';ru='Ошибка обращения к табличной части объекта. Табличная часть объекта не может быть изменена.'"));
-	ErrorMessages.Insert(84, NStr("en='Change prohibition dates collision.';ru='Коллизия дат запрета изменения.'"));
+	ErrorMessages.Insert(83, NStr("en='An error occurred while accessing the object tabular section. The object tabular section cannot be changed.';ru='Ошибка обращения к табличной части объекта. Табличная часть объекта не может быть изменена.'"));
+	ErrorMessages.Insert(84, NStr("en='Collision of change closing dates.';ru='Коллизия дат запрета изменения.'"));
 	
-	ErrorMessages.Insert(173, NStr("en='An error occurred while locking exchange node. Data synchronization may be in progress';ru='Ошибка блокировки узла обмена. Возможно синхронизация данных уже выполняется'"));
-	ErrorMessages.Insert(174, NStr("en='Exchange message has been previously accepted';ru='Сообщение обмена было принято ранее'"));
-	ErrorMessages.Insert(175, NStr("en='Error in the event handler BeforeModifiedObjectsReceiving (conversion)';ru='Ошибка в обработчике события ПередПолучениемИзмененныхОбъектов (конвертация)'"));
-	ErrorMessages.Insert(176, NStr("en='Error in the event handler AfterGettingInformationAboutExchangeNodes';ru='Ошибка в обработчике события ПослеПолученияИнформацииОбУзлахОбмена (конвертация)'"));
+	ErrorMessages.Insert(173, NStr("en='An error of the exchange node lock occurred. Maybe, data synchronization is already in progress';ru='Ошибка блокировки узла обмена. Возможно синхронизация данных уже выполняется'"));
+	ErrorMessages.Insert(174, NStr("en='Exchange message was previously received';ru='Сообщение обмена было принято ранее'"));
+	ErrorMessages.Insert(175, NStr("en='An error occurred in event handler BeforeModifiedObjectsReceiving (conversion)';ru='Ошибка в обработчике события ПередПолучениемИзмененныхОбъектов (конвертация)'"));
+	ErrorMessages.Insert(176, NStr("en='An error occurred in event handler AfterGettingInformationAboutExchangeNodes (conversion)';ru='Ошибка в обработчике события ПослеПолученияИнформацииОбУзлахОбмена (конвертация)'"));
 		
-	ErrorMessages.Insert(1000, NStr("en='Error creating temporary data export file';ru='Ошибка при создании временного файла выгрузки данных'"));
+	ErrorMessages.Insert(1000, NStr("en='An error occurred when creating a temporary file of data export';ru='Ошибка при создании временного файла выгрузки данных'"));
 		
 EndProcedure
 

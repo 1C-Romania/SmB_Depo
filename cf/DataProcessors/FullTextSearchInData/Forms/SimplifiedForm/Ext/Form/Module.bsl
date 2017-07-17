@@ -38,7 +38,7 @@ EndProcedure
 Procedure OpenSearchForm()
 	
 	If IsBlankString(SearchString) Then
-		ShowMessageBox(, NStr("en='Enter search string.';ru='Введите, что нужно найти.'"));
+		ShowMessageBox(, NStr("en='Enter a search object.';ru='Введите, что нужно найти.'"));
 		Return;
 	EndIf;
 	

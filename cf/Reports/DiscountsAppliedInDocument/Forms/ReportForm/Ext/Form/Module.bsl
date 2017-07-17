@@ -11,7 +11,7 @@ Procedure OnCreateAtServer(Cancel, StandardProcessing)
 	EndIf;
 	
 	If Parameters.DocumentRef = Undefined Then
-		Raise NStr("en='Report can be opened only from documents.';ru='Открытие отчета предусмотрено только из документов.'");
+		Raise NStr("en='The report can be opened only from documents.';ru='Открытие отчета предусмотрено только из документов.'");
 	EndIf;
 	
 	DocumentRef = Parameters.DocumentRef;

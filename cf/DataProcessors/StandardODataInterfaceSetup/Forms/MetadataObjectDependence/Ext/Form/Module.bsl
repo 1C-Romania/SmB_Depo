@@ -17,15 +17,15 @@ Procedure OnCreateAtServer(Cancel, StandardProcessing)
 	ElsIf CommonUseSTL.IsSequenceRecordSet(MetadataObject) Then
 		ObjectTypePresentation = NStr("en='sequences';ru='последовательности'");
 	ElsIf CommonUseSTL.IsDocumentJournal(MetadataObject) Then
-		ObjectTypePresentation = NStr("en='document log';ru='журналу документов'");
+		ObjectTypePresentation = NStr("en='document journal';ru='журналу документов'");
 	ElsIf CommonUseSTL.IsEnum(MetadataObject) Then
 		ObjectTypePresentation = NStr("en='enumeration';ru='перечислению'");
 	ElsIf CommonUseSTL.ThisIsChartOfCharacteristicTypes(MetadataObject) Then
-		ObjectTypePresentation = NStr("en='plan of characteristic types';ru='плану видов характеристик'");
+		ObjectTypePresentation = NStr("en='chart of characteristic types';ru='плану видов характеристик'");
 	ElsIf CommonUseSTL.ThisIsChartOfAccounts(MetadataObject) Then
-		ObjectTypePresentation = NStr("en='accounts plan';ru='плану счетов'");
+		ObjectTypePresentation = NStr("en='chart of accounts';ru='плану счетов'");
 	ElsIf CommonUseSTL.ThisIsChartOfCalculationTypes(MetadataObject) Then
-		ObjectTypePresentation = NStr("en='plan of calculation types';ru='плану видов расчета'");
+		ObjectTypePresentation = NStr("en='chart of calculation types';ru='плану видов расчета'");
 	ElsIf CommonUseSTL.ThisIsInformationRegister(MetadataObject) Then
 		ObjectTypePresentation = NStr("en='information register';ru='регистру сведений'");
 	ElsIf CommonUseSTL.ThisIsAccumulationRegister(MetadataObject) Then
@@ -81,9 +81,9 @@ Procedure OnCreateAtServer(Cancel, StandardProcessing)
 	AddTreeRootString(Tree, "Constant", NStr("en='Constants';ru='Константы'"), 1, PictureLib.Constant);
 	AddTreeRootString(Tree, "Catalog", NStr("en='Catalogs';ru='Справочники'"), 2, PictureLib.Catalog);
 	AddTreeRootString(Tree, "Document", NStr("en='Documents';ru='Документы'"), 3, PictureLib.Document);
-	AddTreeRootString(Tree, "DocumentJournal", NStr("en='Document journals';ru='Журналы документов'"), 4, PictureLib.DocumentJournal);
+	AddTreeRootString(Tree, "DocumentJournal", NStr("en='Document logs';ru='Журналы документов'"), 4, PictureLib.DocumentJournal);
 	AddTreeRootString(Tree, "Enum", NStr("en='Enum';ru='Перечисление'"), 5, PictureLib.Enum);
-	AddTreeRootString(Tree, "ChartOfCharacteristicTypes", NStr("en='Charts of characteristics types';ru='Планы видов характеристик'"), 6, PictureLib.ChartOfCharacteristicTypes);
+	AddTreeRootString(Tree, "ChartOfCharacteristicTypes", NStr("en='Charts of characteristic types';ru='Планы видов характеристик'"), 6, PictureLib.ChartOfCharacteristicTypes);
 	AddTreeRootString(Tree, "ChartOfAccounts", NStr("en='Charts of accounts';ru='Планы счетов'"), 7, PictureLib.ChartOfAccounts);
 	AddTreeRootString(Tree, "ChartOfCalculationTypes", NStr("en='Charts of calculation types';ru='Планы видов расчета'"), 8, PictureLib.ChartOfCalculationTypes);
 	AddTreeRootString(Tree, "InformationRegister", NStr("en='Information registers';ru='Регистры сведений'"), 9, PictureLib.InformationRegister);

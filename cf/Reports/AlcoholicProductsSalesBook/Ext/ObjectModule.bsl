@@ -17,10 +17,10 @@ Procedure OnComposeResult(ResultDocument, DetailsData, StandardProcessing)
 					New DataCompositionParameter("Warehouse")).Value;
 					
 	If Not ValueIsFilled(Company) Then
-		Raise NStr("en='Value of mandatory parameter ""Company"" is not filled in';ru='Не заполнено значение обязательного параметра ""Организация""'");
+		Raise NStr("en='Fill in the company';ru='Не заполнено значение обязательного параметра ""Организация""'");
 	EndIf;
 	If Not ValueIsFilled(Warehouse) Then
-		Raise NStr("en='Value of mandatory parameter ""Warehouse"" is not filled in';ru='Не заполнено значение обязательного параметра ""Склад""'");
+		Raise NStr("en='Fill in the warehouse';ru='Не заполнено значение обязательного параметра ""Склад""'");
 	EndIf;
 	
 	InfoAboutCompany = SmallBusinessServer.InfoAboutLegalEntityIndividual(Company, Period.EndDate);
@@ -241,17 +241,17 @@ Procedure OnComposeResult(ResultDocument, DetailsData, StandardProcessing)
 				
 			ElsIf TypeOf(Selection.Recorder) = Type("DocumentRef.InventoryWriteOff") Then
 				
-				ContentOperations = NStr("en='Shortage of products';ru='Недостачи продукции'");
+				ContentOperations = NStr("en='Product shortage';ru='Недостачи продукции'");
 				
 			ElsIf TypeOf(Selection.Recorder) = Type("DocumentRef.InventoryTransfer")
 				AND Selection.OperationKind = Enums.OperationKindsInventoryTransfer.Move
 				AND Selection.StructuralUnitCorr.StructuralUnitType <> Enums.StructuralUnitsTypes.Department Then
 				
-				ContentOperations = NStr("en='Products transferred to other department';ru='Продукция, переданная в другое подразделение'");
+				ContentOperations = NStr("en='Products transferred to another department';ru='Продукция, переданная в другое подразделение'");
 				
 			Else
 				
-				ContentOperations = NStr("en='Written-off products';ru='Списанная продукция'");
+				ContentOperations = NStr("en='Written off products';ru='Списанная продукция'");
 				
 			EndIf;
 			

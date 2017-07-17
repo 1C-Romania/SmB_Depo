@@ -26,7 +26,7 @@
 //
 // Example:
 //  EventLogMonitorClient.AddMessageForEventLogMonitor(EventLogMonitorEvent(), "Warning",
-//     NStr("en='It is impossible to connect to the Internet to check for updates';ru='Невозможно подключиться к сети Интернет для проверки обновлений.'"));
+//     NStr("en='Cannot connect to the Internet to check for updates.';ru='Невозможно подключиться к сети Интернет для проверки обновлений.'"));
 //
 Procedure AddMessageForEventLogMonitor(Val EventName, Val LevelPresentation = "Information", 
 	Val Comment = "", Val EventDate = "", Val WriteEvents = False) Export
@@ -75,7 +75,7 @@ EndProcedure
 Procedure OpenDataForViewing(CurrentData) Export
 	
 	If CurrentData = Undefined Or CurrentData.Data = Undefined Then
-		ShowMessageBox(, NStr("en='There is no data associated with this event log record (see ""Data"" column)';ru='Эта запись журнала регистрации не связана с данными (см. колонку ""Данные"")'"));
+		ShowMessageBox(, NStr("en='This event log entry is not related to data (see the ""Data"" column)';ru='Эта запись журнала регистрации не связана с данными (см. колонку ""Данные"")'"));
 		Return;
 	EndIf;
 	
@@ -90,12 +90,12 @@ Procedure OpenDataForViewing(CurrentData) Export
 			WarningText =
 					StringFunctionsClientServer.SubstituteParametersInString(
 						WarningText,
-						NStr("en='Data is deleted from IB';ru='Данные удалены из информационной базы'"));
+						NStr("en='Data is deleted from infobase';ru='Данные удалены из информационной базы'"));
 		Else
 			WarningText =
 				StringFunctionsClientServer.SubstituteParametersInString(
 						WarningText,
-						NStr("en='Maybe, data was deleted from info base';ru='Возможно, данные удалены из информационной базы'"));
+						NStr("en='Maybe the data is deleted from the infobase.';ru='Возможно, данные удалены из информационной базы'"));
 		EndIf;
 		ShowMessageBox(, WarningText);
 	EndTry;

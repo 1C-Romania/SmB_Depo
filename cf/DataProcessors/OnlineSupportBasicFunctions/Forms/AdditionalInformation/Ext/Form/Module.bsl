@@ -15,7 +15,7 @@ Procedure OnCreateAtServer(Cancel, StandardProcessing)
 		Return;
 	EndIf;
 	
-	Items.LoginLabel.Title = NStr("en='Login:';ru='Авторизоваться:'") + " " + Parameters.login;
+	Items.LoginLabel.Title = NStr("en='Authorize:';ru='Авторизоваться:'") + " " + Parameters.login;
 	
 	If ClientApplicationInterfaceCurrentVariant() = ClientApplicationInterfaceVariant.Taxi Then
 		Items.GroupHeader.Representation = UsualGroupRepresentation.None;
@@ -223,11 +223,11 @@ Procedure CommandCancel(Command)
 	NotifyDescription = New NotifyDescription("WhenReplyingToRegistrationRejectIssue", ThisObject);
 	
 	ShowQueryBox(NOTifyDescription,
-		NStr("en='Are you sure you want to cancel the registration of the software product?';ru='Вы уверены, что хотите отказаться от регистрации программного продукта?'"),
+		NStr("en='Are you sure you want to cancel registration of the software?';ru='Вы уверены, что хотите отказаться от регистрации программного продукта?'"),
 		QuestionDialogMode.YesNo,
 		,
 		,
-		NStr("en='Software product registration';ru='Регистрация программного продукта'"));
+		NStr("en='Software registration';ru='Регистрация программного продукта'"));
 	
 EndProcedure
 
@@ -272,37 +272,37 @@ Function FieldsAreFilledCorrectly()
 	If Company = "-1" Then
 		
 		If IsBlankString(CounterpartyName) Then
-			ShowFieldFillingErrorMessage(NStr("en='""Company name"" field is not filled.';ru='Поле ""Название организации"" не заполнено.'"),
+			ShowFieldFillingErrorMessage(NStr("en='The ""Company name"" field is not filled in.';ru='Поле ""Название организации"" не заполнено.'"),
 				"CounterpartyName",
 				Cancel);
 		EndIf;
 		
 		If IsBlankString(BusinessType) Then
-			ShowFieldFillingErrorMessage(NStr("en='""Business type"" field is not filled.';ru='Поле ""Тип деятельности"" не заполнено.'"),
+			ShowFieldFillingErrorMessage(NStr("en='The ""Activity type"" field is not filled in.';ru='Поле ""Тип деятельности"" не заполнено.'"),
 				"BusinessType",
 				Cancel);
 		EndIf;
 		
 		If IsBlankString(TIN) Then
-			ShowFieldFillingErrorMessage(NStr("en='""TIN"" field is not filled.';ru='Поле ""ИНН"" не заполнено.'"),
+			ShowFieldFillingErrorMessage(NStr("en='TIN is not filled in.';ru='Поле ""ИНН"" не заполнено.'"),
 				"TIN",
 				Cancel);
 		EndIf;
 		
 		If IsBlankString(Head) Then
-			ShowFieldFillingErrorMessage(NStr("en='""Manager"" field is not filled.';ru='Поле ""Руководитель"" не заполнено.'"),
+			ShowFieldFillingErrorMessage(NStr("en='Manager is not filled in.';ru='Поле ""Руководитель"" не заполнено.'"),
 				"Head",
 				Cancel);
 		EndIf;
 		
 		If IsBlankString(Phone) Then
-			ShowFieldFillingErrorMessage(NStr("en='""Phone"" field is not filled.';ru='Поле ""Телефон"" не заполнено.'"),
+			ShowFieldFillingErrorMessage(NStr("en='Phone is not filled in.';ru='Поле ""Телефон"" не заполнено.'"),
 				"Phone",
 				Cancel);
 		EndIf;
 		
 		If IsBlankString(EmailAddress) Then
-			ShowFieldFillingErrorMessage(NStr("en='""Email"" field is not filled.';ru='Поле ""Адрес электронной почты"" не заполнено.'"),
+			ShowFieldFillingErrorMessage(NStr("en='Email is not filled in.';ru='Поле ""Адрес электронной почты"" не заполнено.'"),
 				"EmailAddress",
 				Cancel);
 		EndIf;
@@ -310,25 +310,25 @@ Function FieldsAreFilledCorrectly()
 	EndIf;
 	
 	If IsBlankString(WhereApplicationWasPurchased) Then
-		ShowFieldFillingErrorMessage(NStr("en='""Purchase place"" field is not filled.';ru='Поле ""Место покупки"" не заполнено.'"),
+		ShowFieldFillingErrorMessage(NStr("en='The ""Purchase place"" field is not filled in.';ru='Поле ""Место покупки"" не заполнено.'"),
 			"WhereApplicationWasPurchased",
 			Cancel);
 	EndIf;
 	
 	If ApplicationPurchaseDate = '00010101' Then
-		ShowFieldFillingErrorMessage(NStr("en='""Purchase date"" field is not filled.';ru='Поле ""Дата покупки"" не заполнено.'"),
+		ShowFieldFillingErrorMessage(NStr("en='The ""Purchase date"" field is not filled in.';ru='Поле ""Дата покупки"" не заполнено.'"),
 			"ApplicationPurchaseDate",
 			Cancel);
 	EndIf;
 	
 	If WorkplaceNumber = 0 Then
-		ShowFieldFillingErrorMessage(NStr("en='""Number of Workplaces"" field is not filled.';ru='Поле ""Число рабочих мест"" не заполнено.'"),
+		ShowFieldFillingErrorMessage(NStr("en='The ""Number of work places"" field is not filled in.';ru='Поле ""Число рабочих мест"" не заполнено.'"),
 			"WorkplaceNumber",
 			Cancel);
 	EndIf;
 	
 	If IsBlankString(Responsible) Then
-		ShowFieldFillingErrorMessage(NStr("en='""Responsible employee"" field is not filled.';ru='Поле ""Ответственный сотрудник"" не заполнено.'"),
+		ShowFieldFillingErrorMessage(NStr("en='The ""Responsible employee"" field is not filled in.';ru='Поле ""Ответственный сотрудник"" не заполнено.'"),
 			"Responsible",
 			Cancel);
 	EndIf;
@@ -523,13 +523,13 @@ Procedure GenerateAddressPresentation()
 	AddSubstring(AddressPresentation, MailAddressInformation.Street, NStr("en='st.';ru='st.'") + " ");
 	AddSubstring(AddressPresentation, MailAddressInformation.Building, NStr("en='d.';ru='дн.'") + " ");
 	AddSubstring(AddressPresentation, MailAddressInformation.Construction, NStr("en='str.';ru='ул.'") + " ");
-	AddSubstring(AddressPresentation, MailAddressInformation.Apartment, NStr("en='app.';ru='приложение.'") + " ");
+	AddSubstring(AddressPresentation, MailAddressInformation.Apartment, NStr("en='application.';ru='приложение.'") + " ");
 	
 	If IsBlankString(AddressPresentation) Then
 		If Company = "-1" Then
 			AddressPresentation = NStr("en='<enter address>';ru='<введите адрес>'");
 		Else
-			AddressPresentation = NStr("en='<Not filled>';ru='<Не заполняется>'");
+			AddressPresentation = NStr("en='<Leave empty>';ru='<Не заполняется>'");
 		EndIf;
 	EndIf;
 	
@@ -628,7 +628,7 @@ Function MessageParametersToTechicalSupport()
 	
 	Result = New Structure;
 	Result.Insert("Subject",
-		NStr("en='Online support. Entry of user additional information.';ru='Интернет-поддержка. Ввод дополнительной информации о пользователе.'"));
+		NStr("en='Online support. Enter user additional information.';ru='Интернет-поддержка. Ввод дополнительной информации о пользователе.'"));
 	Result.Insert("MessageText",
 		MessageText + Chars.LF + MessageTextContinued);
 	

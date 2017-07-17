@@ -55,7 +55,7 @@ Procedure ChangeSetOfAdditionalAttributesAndInformation(Command)
 		ParametersOfFormOfPropertiesSet = New Structure("Key", SetOfAdditAttributes);
 		OpenForm("Catalog.AdditionalAttributesAndInformationSets.Form.ItemForm", ParametersOfFormOfPropertiesSet);
 	Else
-		ShowMessageBox(Undefined,NStr("en='You can not receive the set of object properties. Perhaps, the necessary attributes are not filled.';ru='Нельзя получить набор свойств объекта. Возможно не заполнены необходимые реквизиты.'"));
+		ShowMessageBox(Undefined,NStr("en='Cannot receive the object property set. Perhaps, the necessary attributes are not filled in.';ru='Нельзя получить набор свойств объекта. Возможно не заполнены необходимые реквизиты.'"));
 	EndIf;
 	
 EndProcedure // ChangeSetOfAdditionalAttributesAndInformation()

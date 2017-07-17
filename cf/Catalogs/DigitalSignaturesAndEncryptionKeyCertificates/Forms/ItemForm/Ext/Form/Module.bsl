@@ -75,7 +75,7 @@ Procedure FillCheckProcessingAtServer(Cancel, CheckedAttributes)
 		EndIf;
 		
 		MessageText = StringFunctionsClientServer.SubstituteParametersInString(
-			NStr("en='Field %1 is not filled.';ru='Поле %1 не заполнено.'"), Items[AttributeName].Title);
+			NStr("en='The ""%1"" field is not filled in.';ru='Поле %1 не заполнено.'"), Items[AttributeName].Title);
 		
 		CommonUseClientServer.MessageToUser(MessageText,, AttributeName,, Cancel);
 	EndDo;
@@ -121,7 +121,7 @@ EndProcedure
 Procedure CheckCertificate(Command)
 	
 	If Not ValueIsFilled(Object.Ref) Then
-		ShowMessageBox(, NStr("en='Certificate is not written yet.';ru='Сертификат еще не записан.'"));
+		ShowMessageBox(, NStr("en='Certificate has not been recorded yet.';ru='Сертификат еще не записан.'"));
 		Return;
 	EndIf;
 	
@@ -148,7 +148,7 @@ Procedure CertificateRevoked(Command)
 	Items.FormCertificateRevoked.Check = Object.Revoked;
 	
 	If Object.Revoked Then
-		ShowMessageBox(, NStr("en='After recording the call can not be canceled.';ru='После записи отменить отзыв будет невозможно.'"));
+		ShowMessageBox(, NStr("en='After writing, callback cannot be canceled.';ru='После записи отменить отзыв будет невозможно.'"));
 	EndIf;
 	
 EndProcedure

@@ -778,7 +778,7 @@ Function PossibleRights()
 		
 		If MetadataObjectOwner = Undefined Then
 			Raise StringFunctionsClientServer.SubstituteParametersInString(
-				ErrorTitle + NStr("en='Owner of %1 rights is not found.';ru='Не найден владелец прав ""%1"".'"),
+				ErrorTitle + NStr("en='Owner of rights ""%1"" is not found.';ru='Не найден владелец прав ""%1"".'"),
 				PossibleRight.RightsOwner);
 		EndIf;
 		

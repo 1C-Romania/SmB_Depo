@@ -37,7 +37,7 @@ Procedure FillCheckProcessing(Cancel, CheckedAttributes)
 		Query.SetParameter("Ref"      , Ref);
 
 		If Not Query.Execute().IsEmpty() Then
-			CommonUseClientServer.MessageToUser(NStr("en='Nonunique item description is specified. Specify unique name.';ru='Указано неуникальное наименование элемента. Укажите уникальное наименование.'"), ThisObject, , , Cancel);
+			CommonUseClientServer.MessageToUser(NStr("en='Non-unique item name specified. Specify a unique name.';ru='Указано неуникальное наименование элемента. Укажите уникальное наименование.'"), ThisObject, , , Cancel);
 		EndIf;
 	EndIf;
 

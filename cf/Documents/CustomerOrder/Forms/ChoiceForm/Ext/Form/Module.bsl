@@ -126,14 +126,14 @@ Procedure OnCreateAtServer(Cancel, StandardProcessing)
 			   AND Parameters.GLExpenseAccount.TypeOfAccount <> Enums.GLAccountsTypes.UnfinishedProduction
 			   AND Parameters.GLExpenseAccount.TypeOfAccount <> Enums.GLAccountsTypes.IndirectExpenses Then
 				
-				MessageText = NStr("en='Customer Order should not be filled for this type of account!';ru='Для данного типа счета заказ покупателя не указывается!'");
+				MessageText = NStr("en='Customer order is not specified for this account type.';ru='Для данного типа счета заказ покупателя не указывается!'");
 				SmallBusinessServer.ShowMessageAboutError(, MessageText, , , , Cancel);
 				
 			EndIf;
 			
 		Else
 			
-			MessageText = NStr("en='Account is not selected!';ru='Не выбран счет!'");
+			MessageText = NStr("en='Account is not selected.';ru='Не выбран счет!'");
 			SmallBusinessServer.ShowMessageAboutError(, MessageText, , , , Cancel);
 			
 		EndIf;

@@ -7,7 +7,7 @@ Procedure ReportPrintingWithoutBlankingExecute()
 	Context = New Structure("Action", "PrintXReport");
 	NotifyDescription = New NotifyDescription("ReportPrintEnd", ThisObject, Context);
 	EquipmentManagerClient.OfferSelectDevice(NOTifyDescription, "FiscalRegister",
-		NStr("en='Select the fiscal register';ru='Выберите фискальный регистратор'"), NStr("en='Fiscal register is not connected.';ru='Фискальный регистратор не подключен.'"));
+		NStr("en='Select a fiscal data recorder';ru='Выберите фискальный регистратор'"), NStr("en='Fiscal data recorder is not connected.';ru='Фискальный регистратор не подключен.'"));
 	
 EndProcedure
 
@@ -17,7 +17,7 @@ Procedure ReportPrintingWithBlankingExecute()
 	Context = New Structure("Action", "PrintZReport");
 	NotifyDescription = New NotifyDescription("ReportPrintEnd", ThisObject, Context);
 	EquipmentManagerClient.OfferSelectDevice(NOTifyDescription, "FiscalRegister",
-		NStr("en='Select the fiscal register';ru='Выберите фискальный регистратор'"), NStr("en='Fiscal register is not connected.';ru='Фискальный регистратор не подключен.'"));
+		NStr("en='Select a fiscal data recorder';ru='Выберите фискальный регистратор'"), NStr("en='Fiscal data recorder is not connected.';ru='Фискальный регистратор не подключен.'"));
 	
 EndProcedure
 

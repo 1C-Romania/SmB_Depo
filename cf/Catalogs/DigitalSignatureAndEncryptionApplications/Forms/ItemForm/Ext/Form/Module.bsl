@@ -82,7 +82,7 @@ Procedure FillCheckProcessingAtServer(Cancel, CheckedAttributes)
 	If Not Query.Execute().IsEmpty() Then
 		Cancel = True;
 		CommonUseClientServer.MessageToUser(
-			NStr("en='A application with such name and type has been already added to the list.';ru='Программа с указанным именем и типом уже добавлена в список.'"),
+			NStr("en='Application with the specified name and type has already been added to the list.';ru='Программа с указанным именем и типом уже добавлена в список.'"),
 			,
 			"Object.ApplicationName");
 	EndIf;

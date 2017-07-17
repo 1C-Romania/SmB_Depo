@@ -42,7 +42,7 @@ Procedure ChoiceDataGetProcessing(ChoiceData, Parameters, StandardProcessing)
 				StandardList.Insert(0, ProductsAndServices.MeasurementUnit, 
 					New FormattedString(PresentationUOM, New Font(,,True)));
 			Else
-				CommonUseClientServer.MessageToUser(NStr("en='Products and services are not filled!';ru='Не заполнена номенклатура!'"));
+				CommonUseClientServer.MessageToUser(NStr("en='Products and services are not filled in.';ru='Не заполнена номенклатура!'"));
 			EndIf;
 		EndIf;
 		

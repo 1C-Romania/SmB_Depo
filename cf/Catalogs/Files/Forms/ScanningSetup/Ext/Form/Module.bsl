@@ -175,7 +175,7 @@ Procedure PathToConversionApplicationStartChoice(Item, ChoiceData, StandardProce
 	Filter = NStr("en='Executable files(*.exe)|*.exe';ru='Исполняемые файлы(*.exe)|*.exe'");
 	FileOpeningDialog.Filter = Filter;
 	FileOpeningDialog.Multiselect = False;
-	FileOpeningDialog.Title = NStr("en='Select file for PDF conversion';ru='Выберите файл для преобразования в PDF'");
+	FileOpeningDialog.Title = NStr("en='Select a file to convert to PDF';ru='Выберите файл для преобразования в PDF'");
 	If FileOpeningDialog.Choose() Then
 		PathToConversionApplication = FileOpeningDialog.FullFileName;
 	EndIf;
@@ -381,7 +381,7 @@ Procedure ReadScannerSettings()
 	EndIf;
 	
 	MessageText = StringFunctionsClientServer.SubstituteParametersInString(
-		NStr("en='Collecting information on scanner ""%1""...';ru='Идет сбор сведений о сканере ""%1""...'"), DeviceName);
+		NStr("en='Gathering information about scanner ""%1""...';ru='Идет сбор сведений о сканере ""%1""...'"), DeviceName);
 	
 	Status(MessageText);
 	

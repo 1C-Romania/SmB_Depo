@@ -139,7 +139,7 @@ Procedure StartMechanismFromMenu(LaunchParameters = Undefined) Export
 	
 	If Not CommonUseClient.SubsystemExists("OnlineUserSupport.OnlineSupportMonitor") Then
 		
-		Raise NStr("en='Embedding error. The ""Online user support monitor"" subsystem is not available.';ru='Ошибка встраивания. Отсутствует подсистема ""Монитор Интернет-поддержки пользователей"".'");
+		Raise NStr("en='Embedding error. The ""Online user support dashboard"" subsystem is missing.';ru='Ошибка встраивания. Отсутствует подсистема ""Монитор Интернет-поддержки пользователей"".'");
 		
 	Else
 		
@@ -199,7 +199,7 @@ Procedure StartWorkWithEDFOperatorMechanism(
 	
 	If Not CommonUseClient.SubsystemExists("OnlineUserSupport.1CTaxcomConnection") Then
 		
-		Raise NStr("en='Embedding error. The ""1C-Taxcom connection"" subsystem is not available.';ru='Ошибка встраивания. Отсутствует подсистема ""Подключение 1С-Такском"".'");
+		Raise NStr("en='Embedding error. The ""Connection to 1C Taxcom"" subsystem is unavailable.';ru='Ошибка встраивания. Отсутствует подсистема ""Подключение 1С-Такском"".'");
 		
 	Else
 		

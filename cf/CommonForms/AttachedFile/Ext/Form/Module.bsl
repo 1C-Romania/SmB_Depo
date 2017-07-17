@@ -248,7 +248,7 @@ Procedure StandardReread(Command)
 		Return;
 	EndIf;
 	
-	QuestionText = NStr("en='Data was changed. Reread data?';ru='Данные изменены. Перечитать данные?'");
+	QuestionText = NStr("en='Data is changed. Reread?';ru='Данные изменены. Перечитать данные?'");
 	
 	NotifyDescription = New NotifyDescription("StandardRereadResponseReceived", ThisObject);
 	ShowQueryBox(NOTifyDescription, QuestionText, QuestionDialogMode.YesNo, , DialogReturnCode.Yes);
@@ -461,7 +461,7 @@ EndProcedure
 Procedure DeleteDS(Command)
 	
 	NotifyDescription = New NotifyDescription("DeleteDSResponseReceived", ThisObject);
-	ShowQueryBox(NOTifyDescription, NStr("en='Delete selected signature?';ru='Удалить выделенные подписи?'"), QuestionDialogMode.YesNo);
+	ShowQueryBox(NOTifyDescription, NStr("en='Delete the selected signatures?';ru='Удалить выделенные подписи?'"), QuestionDialogMode.YesNo);
 	
 EndProcedure
 
@@ -600,7 +600,7 @@ Procedure UpdateTitle()
 		Title = StringFunctionsClientServer.SubstituteParametersInString(
 			NStr("en='%1 (Attached file)';ru='%1 (Присоединенный файл)'"), String(ThisObject.Object.Ref));
 	Else
-		Title = NStr("en='Attached file (Creating)';ru='Присоединенный файл (Создание)'")
+		Title = NStr("en='Attached file (Creation)';ru='Присоединенный файл (Создание)'")
 	EndIf;
 	
 EndProcedure
@@ -709,7 +709,7 @@ Procedure FillEncryptionList()
 		EndDo;
 	EndIf;
 	
-	HeaderText = NStr("en='Allowed to decrypt';ru='Разрешено расшифровывать'");
+	HeaderText = NStr("en='Decryption allowed';ru='Разрешено расшифровывать'");
 	
 	If EncryptionCertificates.Count() <> 0 Then
 		HeaderText =HeaderText + " (" + Format(EncryptionCertificates.Count(), "NG=") + ")";
@@ -1041,7 +1041,7 @@ Function ProcessFileWriteCommand()
 	
 	If IsBlankString(ThisObject.Object.Description) Then
 		CommonUseClientServer.MessageToUser(
-			NStr("en='To continue specify the attachment file name.';ru='Для продолжения укажите имя файла.'"), , "Description", "Object");
+			NStr("en='To continue, specify the file name.';ru='Для продолжения укажите имя файла.'"), , "Description", "Object");
 		Return False;
 	EndIf;
 	
@@ -1119,7 +1119,7 @@ Function WriteFile(Val ObjectParameter = Undefined)
 	Except
 		If TransactionActive Then
 			RollbackTransaction();
-			WriteLogEvent(NStr("en='Files.Error of attached file record';ru='Файлы.Ошибка записи присоединенного файла'", CommonUseClientServer.MainLanguageCode()),
+			WriteLogEvent(NStr("en='Files.An error occurred when writing the attached file';ru='Файлы.Ошибка записи присоединенного файла'", CommonUseClientServer.MainLanguageCode()),
 				EventLogLevel.Error,,,	DetailErrorDescription(ErrorInfo()) );
 		EndIf;
 		Raise;

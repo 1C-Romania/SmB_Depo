@@ -645,7 +645,7 @@ Function CheckAddressInXML(AddressInXML, AddressCheckParameters = Undefined) Exp
 	
 	If Not ItIsXMLString(AddressInXML) Then
 		CheckResult.Result = "ContainsErrors";
-		CheckResult.ErrorList.Add("AddressFormat", NStr("en='Incorrect address format';ru='Некорректный формат адреса'"));
+		CheckResult.ErrorList.Add("AddressFormat", NStr("en='Invalid address format';ru='Некорректный формат адреса'"));
 		Return CheckResult;
 	EndIf;
 	
@@ -1073,7 +1073,7 @@ EndFunction
 
 Procedure FillAutopickFromTableList(Result, TabularData, IsStreetSelection)
 	
-	WarningIrrelevant = NStr("en='Address ""%1"" is not applicable.';ru='Адрес ""%1"" неактуален.'");
+	WarningIrrelevant = NStr("en='Address ""%1"" is irrelevant.';ru='Адрес ""%1"" неактуален.'");
 	IrrelevancePicture = PictureLib.ContactInformationIrrelevant;
 	PictureRelevance   = Undefined;
 	
@@ -1184,10 +1184,10 @@ Function ContactInformationFromXML(Val Text, Val ExpectedKind = Undefined, Conve
 				EventLogLevel.Error, , Text, DetailErrorDescription(ErrorInfo()));
 			
 			If TypeOf(ExpectedKind) = Type("CatalogRef.ContactInformationKinds") Then
-				ErrorText = StrReplace(NStr("en='Incorrect XML format of the %1 contact information, fields values were cleared.';ru='Некорректный формат XML контактной информации для ""%1"", значения полей были очищены.'"),
+				ErrorText = StrReplace(NStr("en='Incorrect XML format of contact information for ""%1"". Field values were cleared.';ru='Некорректный формат XML контактной информации для ""%1"", значения полей были очищены.'"),
 					"%1", String(ExpectedKind));
 			Else
-				ErrorText = NStr("en='Incorrect XML contact information format, the field values have been cleared.';ru='Некорректный формат XML контактной информации, значения полей были очищены.'");
+				ErrorText = NStr("en='Incorrect XML format of contact information. Field values were cleared.';ru='Некорректный формат XML контактной информации, значения полей были очищены.'");
 			EndIf;
 		EndTry;
 		
@@ -1195,17 +1195,17 @@ Function ContactInformationFromXML(Val Text, Val ExpectedKind = Undefined, Conve
 			// Control types match.
 			IsFoundType = ?(Result.Content = Undefined, Undefined, Result.Content.Type());
 			If ExpectedType = EnumerationAddress AND IsFoundType <> XDTOFactory.Type(TargetNamespace, "Address") Then
-				ErrorText = NStr("en='Contact information deserialize error, address is awaited';ru='Ошибка десериализации контактной информации, ожидается адрес'");
+				ErrorText = NStr("en='An error occurred when deserializing the contact information, address is expected';ru='Ошибка десериализации контактной информации, ожидается адрес'");
 			ElsIf ExpectedType = EnumEmailAddress AND IsFoundType <> XDTOFactory.Type(TargetNamespace, "Email") Then
-				ErrorText = NStr("en='Contact information deserialize error, email address is expected';ru='Ошибка десериализации контактной информации, ожидается адрес электронной почты'");
+				ErrorText = NStr("en='An error occurred when deserializing the contact information, email address is expected';ru='Ошибка десериализации контактной информации, ожидается адрес электронной почты'");
 			ElsIf ExpectedType = EnumerationWebPage AND IsFoundType <> XDTOFactory.Type(TargetNamespace, "WebSite") Then
-				ErrorText = NStr("en='Contact information deserialize error, waiting for the web page';ru='Ошибка десериализации контактной информации, ожидается веб-страница'");
+				ErrorText = NStr("en='An error occurred when deserializing the contact information, web page is expected';ru='Ошибка десериализации контактной информации, ожидается веб-страница'");
 			ElsIf ExpectedType = EnumerationPhone AND IsFoundType <> XDTOFactory.Type(TargetNamespace, "PhoneNumber") Then
-				ErrorText = NStr("en='Contact information deserialize error, phone is awaited';ru='Ошибка десериализации контактной информации, ожидается телефон'");
+				ErrorText = NStr("en='An error occurred when deserializing the contact information, phone number is expected';ru='Ошибка десериализации контактной информации, ожидается телефон'");
 			ElsIf ExpectedType = EnumFax AND IsFoundType <> XDTOFactory.Type(TargetNamespace, "FaxNumber") Then
-				ErrorText = NStr("en='Contact information deserialize error, phone is awaited';ru='Ошибка десериализации контактной информации, ожидается телефон'");
+				ErrorText = NStr("en='An error occurred when deserializing the contact information, phone number is expected';ru='Ошибка десериализации контактной информации, ожидается телефон'");
 			ElsIf ExpectedType = EnumerationAnother AND IsFoundType <> XDTOFactory.Type(TargetNamespace, "Other") Then
-				ErrorText = NStr("en='An error occurred while deserializing the contact information, other is expected';ru='Ошибка десериализации контактной информации, ожидается ""другое""'");
+				ErrorText = NStr("en='Contact information deserialization error. Other data is expected.';ru='Ошибка десериализации контактной информации, ожидается ""другое""'");
 			EndIf;
 		EndIf;
 		
@@ -1280,7 +1280,7 @@ Function ContactInformationFromXML(Val Text, Val ExpectedKind = Undefined, Conve
 		EndIf;
 		
 	Else
-		Raise NStr("en='Error of the contact information deserialize, the expected type is not specified';ru='Ошибка десериализации контактной информации, не указан ожидаемый тип'");
+		Raise NStr("en='An error occurred while deserializing contact information, the expected type is not specified';ru='Ошибка десериализации контактной информации, не указан ожидаемый тип'");
 	EndIf;
 	
 	Return Result;
@@ -1754,7 +1754,7 @@ Function DeserializationOfOtherContactInformation(FieldsValues, Presentation = "
 		Result.Content = XDTOFactory.Create(XDTOFactory.Type(TargetNamespace, "Other"));
 		
 	ElsIf ExpectedType <> Undefined Then
-		Raise NStr("en='Contact information deserialize error, another type is awaited';ru='Ошибка десериализации контактной информации, ожидается другой тип'");
+		Raise NStr("en='An error occurred when deserializing the contact information, another type is expected';ru='Ошибка десериализации контактной информации, ожидается другой тип'");
 		
 	EndIf;
 	
@@ -2292,7 +2292,7 @@ Function AddressFillingErrorsXDTO(XDTOAddress, InformationKind, ResultByGroups =
 		Result = ?(ResultByGroups, New Array, New ValueList);
 		
 		If CheckCheckBoxes.DomesticAddressOnly Then
-			ErrorText = NStr("en='Address should be only Russian.';ru='Адрес должен быть только российским.'");
+			ErrorText = NStr("en='Only Russian addresses can be used.';ru='Адрес должен быть только российским.'");
 			If ResultByGroups Then
 				Result.Add(New Structure("Fields, ErrorTypes, Message", New Array,
 					"MandatoryFieldsAreNotFilledIn", ErrorText
@@ -2357,7 +2357,7 @@ Function AddressFillingErrorsXDTO(XDTOAddress, InformationKind, ResultByGroups =
 		ElsIf ErrorsCount > 0 Then
 			// Errors detailed description
 			AllErrors.Add(GroupOfErrorsOfAddress(GroupDescriptionErrors,
-				NStr("en='Parts of address do not match the address classifier:';ru='Части адреса не соответствуют адресному классификатору:'")));
+				NStr("en='Parts of the address do not correspond to the address classifier:';ru='Части адреса не соответствуют адресному классификатору:'")));
 				
 			ClassifierErrorGroup = AllErrors[AllErrors.UBound()];
 			
@@ -2430,41 +2430,41 @@ Function FillAddressesCommonErrorGroups(Val DataAddresses, Val InformationKind) 
 		Presentation = AddressPresentation(AddressRF, InformationKind);
 		If XDTOContact.Presentation <> Presentation Then
 			Result.Add(GroupOfErrorsOfAddress("PresentationNotCorrespondsSetOfFields",
-				NStr("en='Address does not match the values in the fields set.';ru='Адрес не соответствует значениям в наборе полей.'")));
+				NStr("en='The address does not match the field set values.';ru='Адрес не соответствует значениям в наборе полей.'")));
 			AddErrorFillAddresses(Result[0], "",
 				StringFunctionsClientServer.SubstituteParametersInString( 
-					NStr("en='Address presentation for the %1 contact information kind differs from data in the address.';ru='Представление адреса для вида контактной информации ""%1"" отличается от данных в адресе.'"),
+					NStr("en='Address presentation for contact information kind ""%1"" is different from address data.';ru='Представление адреса для вида контактной информации ""%1"" отличается от данных в адресе.'"),
 					String(InformationKind.Description)));
 		EndIf;
 	EndIf;
 	
 	MandatoryFieldsAreNotFilledIn = GroupOfErrorsOfAddress("MandatoryFieldsAreNotFilledIn",
-		NStr("en='Obligatory fields are not filled:';ru='Не заполнены обязательные поля:'"));
+		NStr("en='Required fields are not entered:';ru='Не заполнены обязательные поля:'"));
 	Result.Add(MandatoryFieldsAreNotFilledIn);
 	
 	NoReductionInFields = GroupOfErrorsOfAddress("NoReductionInFields",
-		NStr("en='Abbreviation for the fields is not specified:';ru='Не указано сокращение для полей:'"));
+		NStr("en='Abbreviations are not specified for fields:';ru='Не указано сокращение для полей:'"));
 	Result.Add(NoReductionInFields);
 	
 	ProhibitedCharsFields = GroupOfErrorsOfAddress("ProhibitedCharsFields",
-		NStr("en='Invalid characters have been found in the fields:';ru='Найдены недопустимые символы в полях:'"));
+		NStr("en='Invalid characters are found in fields:';ru='Найдены недопустимые символы в полях:'"));
 	Result.Add(ProhibitedCharsFields);
 	
 	NotCorrespondingFieldsLength = GroupOfErrorsOfAddress("NotCorrespondingFieldsLength",
-		NStr("en='Does not correspond to the set fields length:';ru='Не соответствует установленной длина полей:'"));
+		NStr("en='Field length does not match the predefined value for fields:';ru='Не соответствует установленной длина полей:'"));
 	Result.Add(NotCorrespondingFieldsLength);
 	
 	// 2) ZipCode, State, House should be filled in.
 	IndexOf = PostalIndexOfAddresses(AddressRF);
 	If IsBlankString(IndexOf) Then
 		AddErrorFillAddresses(MandatoryFieldsAreNotFilledIn, ContactInformationManagementClientServerReUse.XMailPathIndex(),
-			NStr("en='The postal index is not specified.';ru='Не указан почтовый индекс.'"), "IndexOf");
+			NStr("en='Zip code is not specified.';ru='Не указан почтовый индекс.'"), "IndexOf");
 	EndIf;
 	
 	State = AddressRF.RFTerritorialEntity;
 	If IsBlankString(State) Then
 		AddErrorFillAddresses(MandatoryFieldsAreNotFilledIn, "RFTerritorialEntity",
-			NStr("en='State is not specified.';ru='Не указан регион.'"), "State");
+			NStr("en='Region is not specified.';ru='Не указан регион.'"), "State");
 	EndIf;
 	
 	BuildingsPremises = BuildingsAndFacilitiesAddresses(AddressRF);
@@ -2481,7 +2481,7 @@ Function FillAddressesCommonErrorGroups(Val DataAddresses, Val InformationKind) 
 		If BuildingIsNotSpecified Then
 			AddErrorFillAddresses(MandatoryFieldsAreNotFilledIn, 
 				ContactInformationManagementClientServerReUse.XNumberOfAdditionalObjectPathAddressing("House"),
-				NStr("en='House or block is not specified';ru='Не указан дом или корпус'"), 
+				NStr("en='House or block is not specified.';ru='Не указан дом или корпус'"), 
 				NStr("en='House';ru='дом'")
 			);
 		EndIf;
@@ -2493,12 +2493,12 @@ Function FillAddressesCommonErrorGroups(Val DataAddresses, Val InformationKind) 
 		If HousesData = Undefined Then
 			AddErrorFillAddresses(MandatoryFieldsAreNotFilledIn, 
 				ContactInformationManagementClientServerReUse.XNumberOfAdditionalObjectPathAddressing("House"),
-				NStr("en='House or ownership (homeownership) is not specified.';ru='Не указан дом или владение (домовладение).'"),
+				NStr("en='House or estate is not specified.';ru='Не указан дом или владение (домовладение).'"),
 				NStr("en='House';ru='дом'")
 			);
 		ElsIf IsBlankString(HousesData.Value) Then
 			AddErrorFillAddresses(MandatoryFieldsAreNotFilledIn, HousesData.PathXPath,
-				NStr("en='The value of a house or ownership (homeownership) is not filled.';ru='Не заполнено значение дома или владения (домовладения).'"),
+				NStr("en='Value of the house or estate is not entered.';ru='Не заполнено значение дома или владения (домовладения).'"),
 				NStr("en='House';ru='дом'")
 			);
 		EndIf;
@@ -2518,19 +2518,19 @@ Function FillAddressesCommonErrorGroups(Val DataAddresses, Val InformationKind) 
 		If IsBlankString(ContactInformationManagementClientServer.Abbr(State)) Then
 			AddErrorFillAddresses(NoReductionInFields, "RFTerritorialEntity",
 				StringFunctionsClientServer.SubstituteParametersInString( 
-					NStr("en='Abbreviation is not specified in the ""%1"" state name.';ru='Не указано сокращение в названии региона ""%1"".'"), State
+					NStr("en='Abbreviation is not specified in the name of region ""%1"".';ru='Не указано сокращение в названии региона ""%1"".'"), State
 				), NStr("en='State';ru='Состояние'"));
 		EndIf;
 		If StrLen(State) > 50 Then
 			AddErrorFillAddresses(NotCorrespondingFieldsLength, Field,
 				StringFunctionsClientServer.SubstituteParametersInString( 
-					NStr("en='State name ""%1"" should be shorter than 50 characters.';ru='Название региона ""%1"" должно быть короче 50 символов.'"), State
+					NStr("en='Name of region ""%1"" should be less than 50 characters.';ru='Название региона ""%1"" должно быть короче 50 символов.'"), State
 				), NStr("en='State';ru='Состояние'"));
 		EndIf;
 		If Not StringFunctionsClientServer.OnlyLatinInString(State, False, PermissibleNotCyrillic) Then
 			AddErrorFillAddresses(ProhibitedCharsFields, Field,
 				StringFunctionsClientServer.SubstituteParametersInString( 
-					NStr("en='State name ""%1"" does not have Cyrillic characters.';ru='В названии региона ""%1"" есть не кириллические символы.'"), State
+					NStr("en='Region name ""%1"" contains non-latin characters.';ru='В названии региона ""%1"" есть не кириллические символы.'"), State
 				), NStr("en='State';ru='Состояние'"));
 		EndIf
 	EndIf;
@@ -2542,19 +2542,19 @@ Function FillAddressesCommonErrorGroups(Val DataAddresses, Val InformationKind) 
 		If IsBlankString(ContactInformationManagementClientServer.Abbr(Region)) Then
 			AddErrorFillAddresses(NoReductionInFields, Field,
 				StringFunctionsClientServer.SubstituteParametersInString( 
-					NStr("en='Abbreviation in the ""%1"" region name is not specified.';ru='Не указано сокращение в названии района ""%1"".'"), Region
+					NStr("en='Abbreviation is not specified in the name of district ""%1"".';ru='Не указано сокращение в названии района ""%1"".'"), Region
 				), NStr("en='Region';ru='Регион'"));
 		EndIf;
 		If StrLen(Region) > 50 Then
 			AddErrorFillAddresses(NotCorrespondingFieldsLength, Field,
 				StringFunctionsClientServer.SubstituteParametersInString( 
-					NStr("en='Region name ""%1"" should be shorter than 50 characters.';ru='Название района ""%1"" должно быть короче 50 символов.'"), Region
+					NStr("en='Name of district ""%1"" should be less than 50 characters.';ru='Название района ""%1"" должно быть короче 50 символов.'"), Region
 				), NStr("en='Region';ru='Регион'"));
 		EndIf;
 		If Not StringFunctionsClientServer.OnlyLatinInString(Region, False, PermissibleNotCyrillic) Then
 			AddErrorFillAddresses(ProhibitedCharsFields, Field,
 				StringFunctionsClientServer.SubstituteParametersInString( 
-					NStr("en='Region name ""%1"" has non-Cyrillic characters.';ru='В названии района ""%1"" есть не кириллические символы.'"), Region
+					NStr("en='District name ""%1"" contains non-latin characters.';ru='В названии района ""%1"" есть не кириллические символы.'"), Region
 				), NStr("en='Region';ru='Регион'"));
 		EndIf;
 	EndIf;
@@ -2566,19 +2566,19 @@ Function FillAddressesCommonErrorGroups(Val DataAddresses, Val InformationKind) 
 		If IsBlankString(ContactInformationManagementClientServer.Abbr(City)) Then
 			AddErrorFillAddresses(NoReductionInFields, Field,
 				StringFunctionsClientServer.SubstituteParametersInString( 
-					NStr("en='Abbreviation is not specified in the %1 city name.';ru='Не указано сокращение в названии города ""%1"".'"), City
+					NStr("en='Abbreviation is not specified in the name of city ""%1"".';ru='Не указано сокращение в названии города ""%1"".'"), City
 				), NStr("en='City';ru='Город'"));
 		EndIf;
 		If StrLen(City) > 50 Then
 			AddErrorFillAddresses(NotCorrespondingFieldsLength, Field,
 				StringFunctionsClientServer.SubstituteParametersInString( 
-					NStr("en='%1 city name should be shorter than 50 characters.';ru='Название города ""%1"" должно быть короче 50 символов.'"), City
+					NStr("en='City name ""%1"" should be less than 50 characters.';ru='Название города ""%1"" должно быть короче 50 символов.'"), City
 				), NStr("en='City';ru='Город'"));
 		EndIf;
 		If Not StringFunctionsClientServer.OnlyLatinInString(City, False, PermissibleNotCyrillic) Then
 			AddErrorFillAddresses(ProhibitedCharsFields, Field,
 				StringFunctionsClientServer.SubstituteParametersInString( 
-					NStr("en='%1 city name has non-Cyrillic characters.';ru='В названии города ""%1"" есть не кириллические символы.'"), City
+					NStr("en='City name ""%1"" contains non-Latin characters.';ru='В названии города ""%1"" есть не кириллические символы.'"), City
 				), NStr("en='City';ru='Город'"));
 		EndIf;
 	EndIf;
@@ -2590,19 +2590,19 @@ Function FillAddressesCommonErrorGroups(Val DataAddresses, Val InformationKind) 
 		If IsBlankString(ContactInformationManagementClientServer.Abbr(Settlement)) Then
 			AddErrorFillAddresses(NoReductionInFields, Field,
 				StringFunctionsClientServer.SubstituteParametersInString( 
-					NStr("en='Abbreviation in the %1 locality name is not specified.';ru='Не указано сокращение в названии населенного пункта ""%1"".'"), Settlement
+					NStr("en='Abbreviation is not specified in the settlement name ""%1"".';ru='Не указано сокращение в названии населенного пункта ""%1"".'"), Settlement
 				), NStr("en='Settlement';ru='НаселПункт'"));
 		EndIf;
 		If StrLen(Settlement) > 50 Then
 			AddErrorFillAddresses(NotCorrespondingFieldsLength, Field,
 				StringFunctionsClientServer.SubstituteParametersInString( 
-					NStr("en='The name of the %1 locality should contain less than 50 characters.';ru='Название населенного пункта ""%1"" должно быть короче 50 символов.'"), Settlement
+					NStr("en='Name of settlement ""%1"" should be less than 50 characters.';ru='Название населенного пункта ""%1"" должно быть короче 50 символов.'"), Settlement
 				), NStr("en='Settlement';ru='НаселПункт'"));
 		EndIf;
 		If Not StringFunctionsClientServer.OnlyLatinInString(Settlement, False, PermissibleNotCyrillic) Then
 			AddErrorFillAddresses(ProhibitedCharsFields, Field,
 				StringFunctionsClientServer.SubstituteParametersInString( 
-					NStr("en='In the %1 locality name, there are non-Cyrilic characters.';ru='В названии населенного пункта ""%1"" есть не кириллические символы.'"), Settlement
+					NStr("en='Settlement name ""%1"" contains non-Latin characters.';ru='В названии населенного пункта ""%1"" есть не кириллические символы.'"), Settlement
 				), NStr("en='Settlement';ru='НаселПункт'"));
 		EndIf;
 	EndIf;
@@ -2614,19 +2614,19 @@ Function FillAddressesCommonErrorGroups(Val DataAddresses, Val InformationKind) 
 		If IsBlankString(ContactInformationManagementClientServer.Abbr(Street)) Then
 			AddErrorFillAddresses(NoReductionInFields, Field,
 				StringFunctionsClientServer.SubstituteParametersInString( 
-					NStr("en='Abbreviation is not specified in the %1 street name.';ru='Не указано сокращение в названии улицы ""%1"".'"), Street
+					NStr("en='Abbreviation is not specified in the name of street ""%1"".';ru='Не указано сокращение в названии улицы ""%1"".'"), Street
 				), NStr("en='Street';ru='Улица'"));
 		EndIf;
 		If StrLen(Region) > 50 Then
 			AddErrorFillAddresses(NotCorrespondingFieldsLength, Field,
 				StringFunctionsClientServer.SubstituteParametersInString( 
-					NStr("en='%1 street name should be shorter than 50 characters.';ru='Название улицы ""%1"" должно быть короче 50 символов.'"), Street
+					NStr("en='Name of street ""%1"" should be less than 50 characters.';ru='Название улицы ""%1"" должно быть короче 50 символов.'"), Street
 				), NStr("en='Street';ru='Улица'"));
 		EndIf;
 		If Not StringFunctionsClientServer.OnlyLatinInString(Street, False, PermissibleNotCyrillic) Then
 			AddErrorFillAddresses(ProhibitedCharsFields, Field,
 				StringFunctionsClientServer.SubstituteParametersInString( 
-					NStr("en='%1 street name has non-Cyrillic characters.';ru='В названии улицы ""%1"" есть не кириллические символы.'"), Street
+					NStr("en='Street name ""%1"" contains non-latin characters.';ru='В названии улицы ""%1"" есть не кириллические символы.'"), Street
 				), NStr("en='Street';ru='Улица'"));
 		EndIf;
 	EndIf;
@@ -2638,19 +2638,19 @@ Function FillAddressesCommonErrorGroups(Val DataAddresses, Val InformationKind) 
 		If IsBlankString(ContactInformationManagementClientServer.Abbr(AdditionalItem)) Then
 			AddErrorFillAddresses(NoReductionInFields, Field,
 				StringFunctionsClientServer.SubstituteParametersInString( 
-					NStr("en='Abbreviation of an %1 additional item is not specified';ru='Не указано сокращение у дополнительного элемента ""%1"".'"), AdditionalItem
+					NStr("en='Abbreviation of additional item ""%1"" is not specified.';ru='Не указано сокращение у дополнительного элемента ""%1"".'"), AdditionalItem
 				), NStr("en='Street';ru='Улица'"));
 		EndIf;
 		If StrLen(Region) > 50 Then
 			AddErrorFillAddresses(NotCorrespondingFieldsLength, Field,
 				StringFunctionsClientServer.SubstituteParametersInString( 
-					NStr("en='Name of the %1 additional item must be shorter than 50 characters.';ru='Название дополнительного элемента ""%1"" должно быть короче 50 символов.'"), AdditionalItem
+					NStr("en='Additional item name ""%1"" should be less than 50 characters.';ru='Название дополнительного элемента ""%1"" должно быть короче 50 символов.'"), AdditionalItem
 				), NStr("en='AdditionalItem';ru='AdditionalItem'"));
 		EndIf;
 		If Not StringFunctionsClientServer.OnlyLatinInString(AdditionalItem, False, PermissibleNotCyrillic) Then
 			AddErrorFillAddresses(ProhibitedCharsFields, Field,
 				StringFunctionsClientServer.SubstituteParametersInString( 
-					NStr("en='There are non-cyrillic characters in the name of the %1 additional item.';ru='В названии дополнительного элемента ""%1"" есть не кириллические символы.'"), AdditionalItem
+					NStr("en='Additional item name ""%1"" contains non-latin characters.';ru='В названии дополнительного элемента ""%1"" есть не кириллические символы.'"), AdditionalItem
 				), NStr("en='AdditionalItem';ru='AdditionalItem'"));
 		EndIf;
 	EndIf;
@@ -2660,8 +2660,8 @@ Function FillAddressesCommonErrorGroups(Val DataAddresses, Val InformationKind) 
 		Field = ContactInformationManagementClientServerReUse.XMailPathIndex();
 		If StrLen(IndexOf) <> 6 Or Not StringFunctionsClientServer.OnlyNumbersInString(IndexOf) Then
 			AddErrorFillAddresses(NotCorrespondingFieldsLength, Field,
-				NStr("en='Postal index must consist of 6 digits.';ru='Почтовый индекс должен состоять из 6 цифр.'"),
-				NStr("en='IndexOf';ru='Индекс'")
+				NStr("en='Zip code should contain 6 digits.';ru='Почтовый индекс должен состоять из 6 цифр.'"),
+				NStr("en='Index';ru='Индекс'")
 			);
 		EndIf;
 	EndIf;
@@ -2671,7 +2671,7 @@ Function FillAddressesCommonErrorGroups(Val DataAddresses, Val InformationKind) 
 		If StrLen(DataBuildings.Value) > 10 Then
 			AddErrorFillAddresses(NotCorrespondingFieldsLength, DataBuildings.PathXPath,
 				StringFunctionsClientServer.SubstituteParametersInString( 
-					NStr("en='%1 field value should be shorter than 10 characters.';ru='Значение поля ""%1"" должно быть короче 10 символов.'"), DataBuildings.Type
+					NStr("en='Value of field ""%1"" must be shorter than 10 characters.';ru='Значение поля ""%1"" должно быть короче 10 символов.'"), DataBuildings.Type
 				), DataBuildings.Type);
 		EndIf;
 	EndDo;
@@ -2679,7 +2679,7 @@ Function FillAddressesCommonErrorGroups(Val DataAddresses, Val InformationKind) 
 		If StrLen(DataPremises.Value) > 10 Then
 			AddErrorFillAddresses(NotCorrespondingFieldsLength, DataPremises.PathXPath,
 				StringFunctionsClientServer.SubstituteParametersInString( 
-					NStr("en='%1 field value should be shorter than 10 characters.';ru='Значение поля ""%1"" должно быть короче 10 символов.'"), DataPremises.Type
+					NStr("en='Value of field ""%1"" must be shorter than 10 characters.';ru='Значение поля ""%1"" должно быть короче 10 символов.'"), DataPremises.Type
 				), DataPremises.Type);
 		EndIf;
 	EndDo;
@@ -2688,11 +2688,11 @@ Function FillAddressesCommonErrorGroups(Val DataAddresses, Val InformationKind) 
 	If IsBlankString(City) AND IsBlankString(Settlement) Then
 		If CityNamesFederalValues().Find(Upper(State)) = Undefined Then
 			AddErrorFillAddresses(MandatoryFieldsAreNotFilledIn, "City",
-				NStr("en='City can be not specified only in the state - federal city.';ru='Город может быть не указан только в регионе - городе федерального значения.'"),
+				NStr("en='You do not have to specify a city just in region - federal city.';ru='Город может быть не указан только в регионе - городе федерального значения.'"),
 				NStr("en='City';ru='Город'")
 			);
 			AddErrorFillAddresses(MandatoryFieldsAreNotFilledIn, "Settlement",
-				NStr("en='Settlement can not be specified only in the city of the Federal importance.';ru='Населенный пункт может быть не указан только в регионе - городе федерального значения.'"),
+				NStr("en='You cannot specify a settlement just in region - federal city.';ru='Населенный пункт может быть не указан только в регионе - городе федерального значения.'"),
 				NStr("en='Settlement';ru='НаселПункт'")
 			);
 		EndIf;
@@ -2704,7 +2704,7 @@ Function FillAddressesCommonErrorGroups(Val DataAddresses, Val InformationKind) 
 		 
 		If IsBlankString(Settlement) AND IsBlankString(Street) AND Not ValueIsFilled(AdditionalItem) Then
 			AddErrorFillAddresses(MandatoryFieldsAreNotFilledIn, "Street",
-				NStr("en='City or locality should contain name of a street.';ru='Город или населенный пункт должен содержать название улицы.'"), 
+				NStr("en='City or settlement should include a street name.';ru='Город или населенный пункт должен содержать название улицы.'"), 
 				NStr("en='Street';ru='Улица'")
 			);
 		EndIf;
@@ -2741,7 +2741,7 @@ Function ExcludeTestHomeInAddress(Val AddressRF)
 	Result = False;
 	
 	// In Zelenograd a block without house/ownership can be specified.
-	If Upper(TrimAll(AddressRF.RFTerritorialEntity)) = NStr("en='MOSCOW C';ru='МОСКВА Г'") AND Upper(TrimAll(AddressRF.City)) = NStr("en='ZELENOGRAD C';ru='ЗЕЛЕНОГРАД Г'") Then
+	If Upper(TrimAll(AddressRF.RFTerritorialEntity)) = NStr("en='MOSCOW';ru='МОСКВА Г'") AND Upper(TrimAll(AddressRF.City)) = NStr("en='ZELENOGRAD';ru='ЗЕЛЕНОГРАД Г'") Then
 		Result = True;
 	EndIf;
 		
@@ -2754,7 +2754,7 @@ Function CheckOutStreetsInAddress(Val AddressRF)
 	Result = False;
 	
 	// Do not check the streets in Zelenograd.
-	If Upper(TrimAll(AddressRF.RFTerritorialEntity)) = NStr("en='MOSCOW C';ru='МОСКВА Г'") AND Upper(TrimAll(AddressRF.City)) = NStr("en='ZELENOGRAD C';ru='ЗЕЛЕНОГРАД Г'") Then
+	If Upper(TrimAll(AddressRF.RFTerritorialEntity)) = NStr("en='MOSCOW';ru='МОСКВА Г'") AND Upper(TrimAll(AddressRF.City)) = NStr("en='ZELENOGRAD';ru='ЗЕЛЕНОГРАД Г'") Then
 		Result = True;
 	EndIf;
 	
@@ -3149,7 +3149,7 @@ Function AddressDeserializationCommon(Val FieldsValues, Val Presentation, Val Ex
 	
 	If ExpectedType <> Undefined Then
 		If ExpectedType <> Enums.ContactInformationTypes.Address Then
-			Raise NStr("en='Contact information deserialize error, address is awaited';ru='Ошибка десериализации контактной информации, ожидается адрес'");
+			Raise NStr("en='An error occurred when deserializing the contact information, address is expected';ru='Ошибка десериализации контактной информации, ожидается адрес'");
 		EndIf;
 	EndIf;
 	
@@ -3446,7 +3446,7 @@ Function DeserializationPhoneFax(FieldsValues, Presentation = "", ExpectedType =
 		Data = XDTOFactory.Create(XDTOFactory.Type(TargetNamespace, "PhoneNumber"));
 		
 	Else
-		Raise NStr("en='Contact information deserialize error, waiting for the phone or fax';ru='Ошибка десериализации контактной информации, ожидается телефон или факс'");
+		Raise NStr("en='An error occurred when deserializing the contact information, phone number or fax is expected';ru='Ошибка десериализации контактной информации, ожидается телефон или факс'");
 	EndIf;
 	
 	Result = XDTOFactory.Create(XDTOFactory.Type(TargetNamespace, "ContactInformation"));

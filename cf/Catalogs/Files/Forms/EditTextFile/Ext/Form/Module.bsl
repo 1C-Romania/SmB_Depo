@@ -55,7 +55,7 @@ Procedure OnCreateAtServer(Cancel, StandardProcessing)
 				EncodingPresentation = ItemOfList.Presentation;
 			EndIf;
 		Else
-			EncodingPresentation = NStr("en='By default';ru='По умолчанию'");
+			EncodingPresentation = NStr("en='Default';ru='По умолчанию'");
 		EndIf;
 		
 	EndIf;
@@ -112,7 +112,7 @@ Procedure BeforeClose(Cancel, StandardProcessing)
 		NameAndExtension = CommonUseClientServer.GetNameWithExtention(
 			FileData.FullDescrOfVersion,
 			FileData.Extension);
-		QuestionText = StrReplace(NStr("en='File ""%1"" was modified.';ru='Файл ""%1"" был изменен.'"), "%1", NameAndExtension);
+		QuestionText = StrReplace(NStr("en='File ""%1"" was changed.';ru='Файл ""%1"" был изменен.'"), "%1", NameAndExtension);
 		FormParameters = New Structure;
 		FormParameters.Insert("QuestionText", QuestionText);
 		Handler = New NotifyDescription("BeforeCloseAfterAnsweringOnQuestionOnExitFromTextEditor", ThisObject);
@@ -151,7 +151,7 @@ Procedure SaveAs(Command)
 		
 		Text.Write(SelectedFullFileName, TextEncodingForWrite);
 		
-		Status(NStr("en='The file was successfully saved';ru='Файл успешно сохранен'"), , SelectedFullFileName);
+		Status(NStr("en='File successfully saved';ru='Файл успешно сохранен'"), , SelectedFullFileName);
 		
 	EndIf;
 	
@@ -205,7 +205,7 @@ EndProcedure
 &AtClient
 Procedure ShowDifference(Command)
 	#If WebClient Then
-		ShowMessageBox(, NStr("en='Version comparing is not supported in the web client';ru='Сравнение версий в веб-клиенте не поддерживается.'"));
+		ShowMessageBox(, NStr("en='Version comparison is not supported in web client.';ru='Сравнение версий в веб-клиенте не поддерживается.'"));
 	#Else
 		ExecuteParameters = New Structure;
 		ExecuteParameters.Insert("CurrentStep", 1);

@@ -259,7 +259,7 @@ Function GenerateMetadataStructure(ExchangePlanName = Undefined) Export
 	MetadataLevelForm(CurStringNumber, CurParameters, 3,  4,  True, "Catalogs",             NStr("en='Catalogs';ru='Справочники'"));
 	MetadataLevelForm(CurStringNumber, CurParameters, 5,  6,  True, "Sequences",      NStr("en='Sequences';ru='Последовательности'"));
 	MetadataLevelForm(CurStringNumber, CurParameters, 7,  8,  True, "Documents",               NStr("en='Documents';ru='Документы'"));
-	MetadataLevelForm(CurStringNumber, CurParameters, 9,  10, True, "ChartsOfCharacteristicTypes", NStr("en='Charts of characteristics types';ru='Планы видов характеристик'"));
+	MetadataLevelForm(CurStringNumber, CurParameters, 9,  10, True, "ChartsOfCharacteristicTypes", NStr("en='Charts of characteristic types';ru='Планы видов характеристик'"));
 	MetadataLevelForm(CurStringNumber, CurParameters, 11, 12, True, "ChartsOfAccounts",             NStr("en='Charts of accounts';ru='Планы счетов'"));
 	MetadataLevelForm(CurStringNumber, CurParameters, 13, 14, True, "ChartsOfCalculationTypes",       NStr("en='Charts of calculation types';ru='Планы видов расчета'"));
 	MetadataLevelForm(CurStringNumber, CurParameters, 15, 16, True, "InformationRegisters",        NStr("en='Information registers';ru='Регистры сведений'"));
@@ -951,7 +951,7 @@ Function RegisterSetDimensions(TableName, AllDimensions = False) Export
 		String = Dimensions.Add();
 		String.Name         = "Period";
 		String.ValueType = New TypeDescription("Date");
-		String.Title   = NStr("en='Period';ru='отчетный период'");
+		String.Title   = NStr("en='Accounting period';ru='отчетный период'");
 	EndIf;
 	
 	// Dimensions
@@ -1246,9 +1246,9 @@ Function CheckSettingsCorrectness(SettingKey = "") Export
 				ExternalDataProcessors.Create(SettingAddressExternalDataQueryProcessors);
 			Else
 				If ThisIsFileBase() Then
-					Text = NStr("en='File ""%1"" is not available';ru='Файл ""%1"" не доступен'");
+					Text = NStr("en='The ""%1"" file is not available';ru='Файл ""%1"" не доступен'");
 				Else
-					Text = NStr("en='File ""%1"" is not available on server';ru='Файл ""%1"" не доступен на сервере'");
+					Text = NStr("en='File ""%1"" is not available on the server';ru='Файл ""%1"" не доступен на сервере'");
 				EndIf;
 				Result.SettingAddressExternalDataQueryProcessors = StrReplace(Text, "%1", SettingAddressExternalDataQueryProcessors);;
 				Result.HasErrors = True;
@@ -1264,7 +1264,7 @@ Function CheckSettingsCorrectness(SettingKey = "") Export
 	Else
 		// IN configuration content
 		If Metadata.DataProcessors.Find(SettingAddressExternalDataQueryProcessors) = Undefined Then
-			Text = NStr("en='Data processor ""%1"" is not found in the configuration content';ru='Обработка ""%1"" не найдена в составе конфигурации'");
+			Text = NStr("en='Data processor ""%1"" is not found in the configuration';ru='Обработка ""%1"" не найдена в составе конфигурации'");
 			Result.SettingAddressExternalDataQueryProcessors = StrReplace(Text, "%1", SettingAddressExternalDataQueryProcessors);
 			
 			Result.HasErrors = True;
@@ -1289,7 +1289,7 @@ Function ExternalDataProcessorInfo() Export
 	Info.Insert("Description", NStr("en='Registration of modifications for the data exchange';ru='Регистрация изменений для обмена данными'"));
 	Info.Insert("Version",       "1.0");
 	Info.Insert("SSLVersion",    "1.2.1.4");
-	Info.Insert("Information",    NStr("en='Data processor to control objects registration on the exchange nodes before export generation. While working in the configuration content with SSL of 2 version.1.2.0 and more controls data migration limitation for the exchange nodes.';ru='Обработка для управления регистрацией объектов на узлах обмена до формирования выгрузки. При работе в составе конфигурации с БСП версии 2.1.2.0 и старше производит контроль ограничений миграции данных для узлов обмена.'"));
+	Info.Insert("Information",    NStr("en='Data processor to manage object registration on exchange nodes before export generating. When using configuration with SL version 2.1.2.0 and higher, data processor controls data migration limitations for the exchange nodes.';ru='Обработка для управления регистрацией объектов на узлах обмена до формирования выгрузки. При работе в составе конфигурации с БСП версии 2.1.2.0 и старше производит контроль ограничений миграции данных для узлов обмена.'"));
 	
 	Info.Purpose.Add("ExchangePlans.*");
 	Info.Purpose.Add("Constants.*");
@@ -1316,7 +1316,7 @@ Function ExternalDataProcessorInfo() Export
 	
 	// The only command, further actions - determine by the type of the passed one.
 	Command = Info.Commands.Add();
-	Command.Presentation = NStr("en='Editing of the object modifications registration';ru='Редактирование регистрации изменений объекта'");
+	Command.Presentation = NStr("en='Editing of object changes registration';ru='Редактирование регистрации изменений объекта'");
 	Command.ID = "OpenEditRegistrationForm";
 	Command.Use = "CallOfClientMethod";
 	

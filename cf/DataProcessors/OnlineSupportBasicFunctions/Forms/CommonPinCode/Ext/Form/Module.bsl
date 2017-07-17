@@ -99,7 +99,7 @@ EndProcedure
 &AtServer
 Procedure FillForm()
 	
-	UserTitle = NStr("en='Login:';ru='Авторизоваться:'") + " " + Parameters.login;
+	UserTitle = NStr("en='Authorize:';ru='Авторизоваться:'") + " " + Parameters.login;
 	
 	Items.UserLoginLabelPinCode.Title = UserTitle;
 	RegistrationNumberPinCode = Parameters.regNumber;
@@ -120,7 +120,7 @@ Function FieldsAreFilledCorrectly()
 	If IsBlankString(RegistrationNumberPinCode) Then
 		
 		Message = New UserMessage;
-		Message.Text = NStr("en='Registration Number field is not filled';ru='Не заполнено поле ""Регистрационный номер""'");
+		Message.Text = NStr("en='Registration number is not filled in';ru='Не заполнено поле ""Регистрационный номер""'");
 		Message.Field  = "RegistrationNumberPinCode";
 		Message.Message();
 		
@@ -131,7 +131,7 @@ Function FieldsAreFilledCorrectly()
 	If IsBlankString(PinCode) Then
 		
 		Message = New UserMessage;
-		Message.Text = NStr("en='Pin-code field is not filled.';ru='Не заполнено поле ""Пинкод""'");
+		Message.Text = NStr("en='PIN code is not filled in';ru='Не заполнено поле ""Пинкод""'");
 		Message.Field  = "PinCode";
 		Message.Message();
 		
@@ -143,7 +143,7 @@ Function FieldsAreFilledCorrectly()
 	If StrLen(PinCodePage) <> 16 Then
 		
 		Message = New UserMessage;
-		Message.Text = NStr("en='PIN shall consist of 16 digits.';ru='Пин-код должен состоять из 16 цифр.'");
+		Message.Text = NStr("en='PIN code should contain 16 digits.';ru='Пин-код должен состоять из 16 цифр.'");
 		Message.Field  = "PinCode";
 		Message.Message();
 		

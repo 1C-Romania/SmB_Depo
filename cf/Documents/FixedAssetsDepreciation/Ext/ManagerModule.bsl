@@ -7,7 +7,7 @@ Procedure GenerateTableInventory(DocumentRefFixedAssetsDepreciation, StructureAd
 	
 	Query = New Query;
 	Query.TempTablesManager = StructureAdditionalProperties.ForPosting.StructureTemporaryTables.TempTablesManager;
-	Query.SetParameter("DepreciationAccrual", NStr("en='Depriciation accrual';ru='Начисление амортизации'"));
+	Query.SetParameter("DepreciationAccrual", NStr("en='Depreciation accrual';ru='Начисление амортизации'"));
 	Query.SetParameter("Company", StructureAdditionalProperties.ForPosting.Company);
 	Query.SetParameter("PointInTime", New Boundary(StructureAdditionalProperties.ForPosting.PointInTime, BoundaryType.Including));
 	
@@ -68,7 +68,7 @@ Procedure GenerateTableIncomeAndExpenses(DocumentRefFixedAssetsDepreciation, Str
 	Query = New Query;
 	Query.TempTablesManager = StructureAdditionalProperties.ForPosting.StructureTemporaryTables.TempTablesManager;
 	
-	Query.SetParameter("DepreciationAccrual", NStr("en='Depriciation accrual';ru='Начисление амортизации'"));
+	Query.SetParameter("DepreciationAccrual", NStr("en='Depreciation accrual';ru='Начисление амортизации'"));
 	Query.SetParameter("Company", StructureAdditionalProperties.ForPosting.Company);
 	Query.SetParameter("PointInTime", New Boundary(StructureAdditionalProperties.ForPosting.PointInTime, BoundaryType.Including));
 	
@@ -110,7 +110,7 @@ Procedure GenerateTableFixedAssets(DocumentRefFixedAssetsDepreciation, Structure
 	Query = New Query;
 	Query.TempTablesManager = StructureAdditionalProperties.ForPosting.StructureTemporaryTables.TempTablesManager;
 	
-	Query.SetParameter("DepreciationAccrual", NStr("en='Depriciation accrual';ru='Начисление амортизации'"));
+	Query.SetParameter("DepreciationAccrual", NStr("en='Depreciation accrual';ru='Начисление амортизации'"));
 	
 	Query.Text =
 	"SELECT
@@ -145,8 +145,8 @@ Procedure GenerateTableMonthEndErrors(DocumentRefFixedAssetsDepreciation, Struct
 	Query = New Query;
 	Query.TempTablesManager = StructureAdditionalProperties.ForPosting.StructureTemporaryTables.TempTablesManager;
 	
-	Query.SetParameter("DepreciationAccrual", NStr("en='Depriciation accrual';ru='Начисление амортизации'"));
-	Query.SetParameter("DepreciationEqualsZero", NStr("en='calculated depriciation is equal to 0!';ru='расчитанная амортизация равна 0!'"));
+	Query.SetParameter("DepreciationAccrual", NStr("en='Depreciation accrual';ru='Начисление амортизации'"));
+	Query.SetParameter("DepreciationEqualsZero", NStr("en='calculated depreciation is equal to 0.';ru='расчитанная амортизация равна 0!'"));
 	Query.SetParameter("Company", StructureAdditionalProperties.ForPosting.Company);
 	
 	Query.Text =
@@ -187,7 +187,7 @@ Procedure GenerateTableMonthEndErrors(DocumentRefFixedAssetsDepreciation, Struct
 	ResultTable = Query.Execute().Unload();
 	
 	For Each CurRow IN ResultTable Do
-		ErrorText = NStr("en='For the %FixedAssetPresentation% (%Code%) fixed assets %MessageAboutDepreciationAccrualError%.';ru='Для имущества %ВнеоборотныйАктивПредставление% (%Код%) %СообщениеОбОшибкеНачисленияАмортизации%.'");
+		ErrorText = NStr("en='For the %FixedAssetPresentation% (%Code%) property %MessageAboutDepreciationAccrualError%.';ru='Для имущества %ВнеоборотныйАктивПредставление% (%Код%) %СообщениеОбОшибкеНачисленияАмортизации%.'");
 		ErrorText = StrReplace(ErrorText, "%FixedAssetPresentation%", TrimAll(CurRow.FixedAssetPresentation));
 		ErrorText = StrReplace(ErrorText, "%Code%", TrimAll(CurRow.Code));
 		ErrorText = StrReplace(ErrorText, "%MessageAboutDepreciationAccrualError%", TrimAll(CurRow.MessageAboutDepreciationAccrualError));
@@ -207,7 +207,7 @@ Procedure GenerateTableManagerial(DocumentRefFixedAssetsDepreciation, StructureA
 	Query.TempTablesManager = StructureAdditionalProperties.ForPosting.StructureTemporaryTables.TempTablesManager;
 	Query.SetParameter("Company", StructureAdditionalProperties.ForPosting.Company);
 	Query.SetParameter("PointInTime", New Boundary(StructureAdditionalProperties.ForPosting.PointInTime, BoundaryType.Including));
-	Query.SetParameter("DepreciationAccrual", NStr("en='Depriciation accrual';ru='Начисление амортизации'"));
+	Query.SetParameter("DepreciationAccrual", NStr("en='Depreciation accrual';ru='Начисление амортизации'"));
 		
 	Query.Text =
 	"SELECT
@@ -252,12 +252,12 @@ Procedure InitializeDocumentData(DocumentRefFixedAssetsDepreciation, StructureAd
 	Query.SetParameter("BegOfYear",	   BegOfYear(StructureAdditionalProperties.ForPosting.Date));
 	Query.SetParameter("BeginOfPeriod", BegOfMonth(StructureAdditionalProperties.ForPosting.Date));
 	Query.SetParameter("EndOfPeriod",  EndOfMonth(StructureAdditionalProperties.ForPosting.Date));
-	Query.SetParameter("Message1",	   NStr("en='depriciation has been already accrued in this month!';ru='амортизация в этом месяце уже начислялась!'"));
-	Query.SetParameter("Message2",	   NStr("en='depriciation accrual method is not specified!';ru='не указан способ начисления амортизации!'"));
-	Query.SetParameter("Message3",	   NStr("en='cost is 0!';ru='стоимость равна 0!'"));
-	Query.SetParameter("Message4",	   NStr("en='the useful life is 0!';ru='срок использования равен 0!'"));
-	Query.SetParameter("Message5",	   NStr("en='the scope of work for depricication accrual is not specified!';ru='объем продукции работ для вычисления амортизации не заполнен!'"));
-	Query.SetParameter("Message6",	   NStr("en='the initial cost is 0!';ru='первоначальная стоимость равна 0!'"));
+	Query.SetParameter("Message1",	   NStr("en='depreciation has already been accrued this month.';ru='амортизация в этом месяце уже начислялась!'"));
+	Query.SetParameter("Message2",	   NStr("en='depreciation accrual method is not specified.';ru='не указан способ начисления амортизации!'"));
+	Query.SetParameter("Message3",	   NStr("en='cost is equal to 0.';ru='стоимость равна 0!'"));
+	Query.SetParameter("Message4",	   NStr("en='useful life is 0.';ru='срок использования равен 0!'"));
+	Query.SetParameter("Message5",	   NStr("en='the scope of work to calculate depreciation is not filled in.';ru='объем продукции работ для вычисления амортизации не заполнен!'"));
+	Query.SetParameter("Message6",	   NStr("en='the initial cost is 0.';ru='первоначальная стоимость равна 0!'"));
 	
 	// Setting of the exclusive lock of the cash funds controlled balances.
 	Query.Text =

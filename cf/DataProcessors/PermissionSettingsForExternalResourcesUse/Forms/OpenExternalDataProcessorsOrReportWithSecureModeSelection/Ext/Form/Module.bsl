@@ -5,14 +5,14 @@ Procedure FillCheckProcessingAtServer(Cancel, CheckedAttributes)
 	
 	If Not ValueIsFilled(DataProcessorFileName) Or Not ValueIsFilled(DataProcessorFileAddress) Then
 		
-		CommonUseClientServer.MessageToUser(NStr("en='Specify file of external report or data processor';ru='Укажите файл внешнего отчета или обработки'"), , "DataProcessorFileAddress");
+		CommonUseClientServer.MessageToUser(NStr("en='Specify an external report or a data processor file';ru='Укажите файл внешнего отчета или обработки'"), , "DataProcessorFileAddress");
 		Cancel = True;
 		
 	EndIf;
 	
 	If Not ValueIsFilled(SafeMode) Then
 		
-		CommonUseClientServer.MessageToUser(NStr("en='Specify a safe mode to connect an external module';ru='Укажите безопасный режим для подключения внешнего модуля'"), , "SafeMode");
+		CommonUseClientServer.MessageToUser(NStr("en='Specify the safe mode for the external module connection';ru='Укажите безопасный режим для подключения внешнего модуля'"), , "SafeMode");
 		Cancel = True;
 		
 	EndIf;

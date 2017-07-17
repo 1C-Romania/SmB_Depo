@@ -23,16 +23,16 @@ Procedure OnCreateAtServer(Cancel, StandardProcessing)
 		Not InfobaseUpdate.InfobaseUpdateRequired();
 	
 	If OnlyApplicationWorkParametersUpdate Then
-		Title = NStr("en='Update application parameters';ru='Обновление параметров работы программы'");
+		Title = NStr("en='Update the application parameters';ru='Обновление параметров работы программы'");
 		Items.RunMode.CurrentPage = Items.ApplicationWorkParametersUpdate;
 		ProgressStepLength = 95;
 		
 	ElsIf DataUpdateMode = "InitialFilling" Then
-		Title = NStr("en='Initial data filling';ru='Начальное заполнение данных'");
+		Title = NStr("en='Initial data population';ru='Начальное заполнение данных'");
 		Items.RunMode.CurrentPage = Items.InitialFilling;
 		
 	ElsIf DataUpdateMode = "TransitionFromAnotherApplication" Then
-		Title = NStr("en='Transition from another application';ru='Переход с другой программы'");
+		Title = NStr("en='Migration from another application';ru='Переход с другой программы'");
 		Items.RunMode.CurrentPage = Items.TransitionFromAnotherApplication;
 		Items.MessageTextTransitionFromAnotherApplication.Title = StringFunctionsClientServer.SubstituteParametersInString(
 			Items.MessageTextTransitionFromAnotherApplication.Title, Metadata.Synonym);
@@ -166,7 +166,7 @@ Function ImportUpdateApplicationWorkInBackgroundParameters()
 			UUID,
 			"StandardSubsystemsServer.ImportUpdateApplicationWorkInBackgroundParameters",
 			ExecuteParameters,
-			NStr("en='Background update of the application work parameters.';ru='Фоновое обновление параметров работы программы'"));
+			NStr("en='Background update of the application parameters';ru='Фоновое обновление параметров работы программы'"));
 		
 		Result.Insert("AShortErrorMessage",   Undefined);
 		Result.Insert("DetailedErrorMessage", Undefined);

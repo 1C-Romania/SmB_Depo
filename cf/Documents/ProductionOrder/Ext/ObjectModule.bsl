@@ -106,7 +106,7 @@ Procedure FillTabularSectionBySpecification(NodesSpecificationStack, NodesTable 
 			If Not NodesSpecificationStack.Find(Selection.Specification) = Undefined Then
 				MessageText = NStr("en='During filling in of the Specification materials
 		|tabular section a recursive item occurrence was found';ru='При попытке заполнить табличную
-		|часть Материалы по спецификации, обнаружено рекурсивное вхождение элемента'")+" "+Selection.ProductsAndServices+" "+NStr("en='in specifications';ru='в спецификации'")+" "+Selection.ProductionSpecification+"
+		|часть Материалы по спецификации, обнаружено рекурсивное вхождение элемента'")+" "+Selection.ProductsAndServices+" "+NStr("en='in BOM';ru='в спецификации'")+" "+Selection.ProductionSpecification+"
 									|The operation failed.";
 				Raise MessageText;
 			EndIf;
@@ -777,7 +777,7 @@ Procedure FillCheckProcessing(Cancel, CheckedAttributes)
 	If (Inventory.Total("Reserve") > 0 OR Products.Total("Reserve") > 0)
 		AND Not ValueIsFilled(StructuralUnitReserve) Then
 		
-		MessageText = NStr("en='Reserve warehouse is not specified!';ru='Не указан склад резерва!'");
+		MessageText = NStr("en='Reserve warehouse is not specified.';ru='Не указан склад резерва!'");
 		SmallBusinessServer.ShowMessageAboutError(ThisObject, MessageText,,, "StructuralUnitReserve", Cancel);
 		
 	EndIf;
@@ -811,7 +811,7 @@ Procedure FillCheckProcessing(Cancel, CheckedAttributes)
 				
 				If StringProducts.Reserve > StringProducts.Quantity Then
 					
-					MessageText = NStr("en='In string No.%Number% of tabular section ""Products"" quantity of the reserved positions exceeds the total products.';ru='В строке №%Номер% табл. части ""Материалы"" количество резервируемых позиций превышает общее количество материалов.'");
+					MessageText = NStr("en='In string No.%Number% of tabular section ""Goods"" quantity of the reserved positions exceeds the total goods.';ru='В строке №%Номер% табл. части ""Товары"" количество резервируемых позиций превышает общее количество товаров.'");
 					MessageText = StrReplace(MessageText, "%Number%", StringProducts.LineNumber);
 					SmallBusinessServer.ShowMessageAboutError(
 						ThisObject,
@@ -848,7 +848,7 @@ Procedure FillCheckProcessing(Cancel, CheckedAttributes)
 	If Not Constants.UseProductionOrderStates.Get() Then
 		
 		If Not ValueIsFilled(OrderState) Then
-			MessageText = NStr("en='Field ""Order state"" is not filled. IN the accounting parameters settings it is necessary to install the statuses values.';ru='Поле ""Состояние заказа"" не заполнено. В настройках параметров учета необходимо установить значения состояний.'");
+			MessageText = NStr("en='The ""Order state"" field is not filled. Specify state values in the accounting parameter settings.';ru='Поле ""Состояние заказа"" не заполнено. В настройках параметров учета необходимо установить значения состояний.'");
 			SmallBusinessServer.ShowMessageAboutError(ThisObject, MessageText, , , "OrderState", Cancel);
 		EndIf;
 		

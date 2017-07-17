@@ -73,7 +73,7 @@ Procedure ConnectionExplanationLabelAuthorizationNavigationRefProcessing(Item, U
 		
 		StandardProcessing = False;
 		PageAddress		= "https://1c-dn.com/user/profile/";
-		PageTitle 	= NStr("en='Support of 1C:Enterprise 8 system users';ru='Поддержка пользователей системы 1С:Предприятие 8'");
+		PageTitle 	= NStr("en='Support users of 1C:Enterprise 8';ru='Поддержка пользователей системы 1С:Предприятие 8'");
 		OnlineUserSupportClient.OpenInternetPage(
 			PageAddress,
 			PageTitle);
@@ -183,7 +183,7 @@ EndProcedure
 &AtServer
 Procedure ShowSettingDateDoNotRemindAboutAuthorizationBefore()
 	
-	CommonCheckBoxTitle = NStr("en='Do not remind of the connection for seven days';ru='Не напоминать о подключении семь дней'");
+	CommonCheckBoxTitle = NStr("en='Do not remind of connection during seven days';ru='Не напоминать о подключении семь дней'");
 	
 	SettingValue = OnlineUserSupportServerCall.SettingValueDoNotRemindAboutAuthorizationBefore();
 	DoNotRemindAboutAuthorizationBefore = ?(SettingValue = '00010101', False, True);
@@ -191,7 +191,7 @@ Procedure ShowSettingDateDoNotRemindAboutAuthorizationBefore()
 	CheckBoxLine = CommonCheckBoxTitle
 		+ ?(SettingValue = '00010101',
 			"",
-			" " + NStr("en='(to';ru='(o'") + " " + Format(SettingValue, "DF=dd.MM.yyyy") + ")");
+			" " + NStr("en='(o';ru='(o'") + " " + Format(SettingValue, "DF=dd.MM.yyyy") + ")");
 	
 	Items.DoNotRemindAboutAuthorizationBefore.Title = CheckBoxLine;
 	
@@ -218,7 +218,7 @@ Function FieldsAreFilledCorrectly()
 	If IsBlankString(Login) Then
 		
 		Message = New UserMessage;
-		Message.Text = NStr("en='Login field is not filled';ru='Не заполнено поле ""Логин""'");
+		Message.Text = NStr("en='Login is not filled in';ru='Не заполнено поле ""Логин""'");
 		Message.Field  = "Login";
 		Message.Message();
 		Result = False;
@@ -228,7 +228,7 @@ Function FieldsAreFilledCorrectly()
 	If IsBlankString(Password) Then
 		
 		Message = New UserMessage;
-		Message.Text = NStr("en='Password field is not filled';ru='Не заполнено поле ""Пароль""'");
+		Message.Text = NStr("en='Password is not filled in';ru='Не заполнено поле ""Пароль""'");
 		Message.Field  = "Password";
 		Message.Message();
 		

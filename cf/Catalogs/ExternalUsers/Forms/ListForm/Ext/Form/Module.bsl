@@ -278,7 +278,7 @@ Procedure GroupsExternalUsersDrag(Item, DragParameters, StandardProcessing, Stri
 	If String = SettingsStored.GroupAllUsers
 		AND FolderTypeAllAuthorizationObjects Then
 		UserMessage = New Structure("Message, HasErrors, Users",
-			NStr("en='You can not exclude users from groups of the ""All users of the specified type"" group type.';ru='Из групп с типом участников ""Все пользователи заданного типа"" исключение пользователей невозможно.'"),
+			NStr("en='You cannot exclude users from groups with type of participants ""All users of the specified type"".';ru='Из групп с типом участников ""Все пользователи заданного типа"" исключение пользователей невозможно.'"),
 			True,
 			Undefined);
 	Else
@@ -291,11 +291,11 @@ Procedure GroupsExternalUsersDrag(Item, DragParameters, StandardProcessing, Stri
 		ActionWithUser = 
 			?((SettingsStored.GroupAllUsers = CurrentRowFolders) OR FolderTypeAllAuthorizationObjects,
 			NStr("en='Enable';ru='Включить'"),
-			?(Move, NStr("en='Move';ru='Перемещение'"), NStr("en='Copy';ru='Скопировать'")));
+			?(Move, NStr("en='Movement';ru='Перемещение'"), NStr("en='Copy';ru='Скопировать'")));
 		
 		If FolderIsMarkedForDelete Then
-			ActionsTemplate = ?(Move, NStr("en='Group ""%1"" is marked for deletion. %2';ru='Группа ""%1"" помечена на удаление. %2'"), 
-				NStr("en='Group ""%1"" is marked for deletion. %2';ru='Группа ""%1"" помечена на удаление. %2'"));
+			ActionsTemplate = ?(Move, NStr("en='The ""%1"" group is marked for deletion. %2';ru='Группа ""%1"" помечена на удаление. %2'"), 
+				NStr("en='The ""%1"" group is marked for deletion. %2';ru='Группа ""%1"" помечена на удаление. %2'"));
 			ActionWithUser = StringFunctionsClientServer.SubstituteParametersInString(
 				ActionsTemplate, String(String), ActionWithUser);
 		EndIf;
@@ -303,11 +303,11 @@ Procedure GroupsExternalUsersDrag(Item, DragParameters, StandardProcessing, Stri
 		If UserCount = 1 Then
 			
 			If ActionToDeleteUser Then
-				QuestionTemplate = NStr("en='Are you sure you want to exclude user %2 from group %4?';ru='Исключить пользователя ""%2"" из группы ""%4""?'");
+				QuestionTemplate = NStr("en='Exclude the ""%2"" user from the ""%4"" group?';ru='Исключить пользователя ""%2"" из группы ""%4""?'");
 			ElsIf Not FolderIsMarkedForDelete Then
-				QuestionTemplate = NStr("en='%1 users ""%2"" into group ""%3""?';ru='%1 пользователя ""%2"" в группу ""%3""?'");
+				QuestionTemplate = NStr("en='%1 user ""%2"" to group ""%3""?';ru='%1 пользователя ""%2"" в группу ""%3""?'");
 			Else
-				QuestionTemplate = NStr("en='%1 user %2 to this group?';ru='%1 пользователя ""%2"" в эту группу?'");
+				QuestionTemplate = NStr("en='%1 user ""%2"" to this group?';ru='%1 пользователя ""%2"" в эту группу?'");
 			EndIf;
 			QuestionText = StringFunctionsClientServer.SubstituteParametersInString(
 				QuestionTemplate, ActionWithUser, String(DragParameters.Value[0]),
@@ -316,9 +316,9 @@ Procedure GroupsExternalUsersDrag(Item, DragParameters, StandardProcessing, Stri
 		Else
 			
 			If ActionToDeleteUser Then
-				QuestionTemplate = NStr("en='Are you sure you want to exclude users (%2) from group %4?';ru='Исключить пользователей (%2) из группы ""%4""?'");
+				QuestionTemplate = NStr("en='Exclude users (%2) from the ""%4"" group?';ru='Исключить пользователей (%2) из группы ""%4""?'");
 			ElsIf Not FolderIsMarkedForDelete Then
-				QuestionTemplate = NStr("en='%1 users (%2) into group ""%3""?';ru='%1 пользователей (%2) в группу ""%3""?'");
+				QuestionTemplate = NStr("en='%1 users (%2) to group ""%3""?';ru='%1 пользователей (%2) в группу ""%3""?'");
 			Else
 				QuestionTemplate = NStr("en='%1 users (%2) to this group?';ru='%1 пользователей (%2) в эту группу?'");
 			EndIf;
@@ -421,7 +421,7 @@ Procedure CreateGroupOfExternalUsers(Command)
 	
 	If CurrentData.AllAuthorizationObjects Then
 		ShowMessageBox(, StringFunctionsClientServer.SubstituteParametersInString(
-			NStr("en='Cannot add a subgroup to group %1 because it includes all users.';ru='Невозможно добавить подгруппу к группе ""%1"", так как в число ее участников входят все пользователи.'"), CurrentData.Description));
+			NStr("en='Cannot add a subgroup to the ""%1"" group because it includes all users.';ru='Невозможно добавить подгруппу к группе ""%1"", так как в число ее участников входят все пользователи.'"), CurrentData.Description));
 		Return;
 	EndIf;
 		
@@ -854,20 +854,20 @@ Procedure SetupFormByUsingUsersGroups()
 				If SettingsStored.AdvancedSelection Then
 					Title = SettingsStored.FormHeaderSelection;
 				Else
-					Title = NStr("en='Pick up of the external users and groups';ru='Подбор внешних пользователей и групп'");
+					Title = NStr("en='Select external users and groups';ru='Подбор внешних пользователей и групп'");
 				EndIf;
 				
 				Items.ChooseExternalUser.Title =
-					NStr("en='Select external users';ru='Выбрать внешних пользователей'");
+					NStr("en='Selected external users';ru='Выбрать внешних пользователей'");
 				
 				Items.ChooseExternalUserGroup.Title =
-					NStr("en='Select groups';ru='Выбрать группы'");
+					NStr("en='Selected groups';ru='Выбрать группы'");
 				
 			Else
 				If SettingsStored.AdvancedSelection Then
 					Title = SettingsStored.FormHeaderSelection;
 				Else
-					Title = NStr("en='Selection of external users';ru='Подбор внешних пользователей'");
+					Title = NStr("en='Select external users';ru='Подбор внешних пользователей'");
 				EndIf;
 			EndIf;
 		Else
@@ -875,9 +875,9 @@ Procedure SetupFormByUsingUsersGroups()
 			If ExternalUserGroupChoice Then
 				Title = NStr("en='Select external user or group';ru='Выбор внешнего пользователя или группы'");
 				
-				Items.ChooseExternalUser.Title = NStr("en='Select the external user';ru='Выбрать внешнего пользователя'");
+				Items.ChooseExternalUser.Title = NStr("en='Selected external user';ru='Выбрать внешнего пользователя'");
 			Else
-				Title = NStr("en='Select external user';ru='Выбор внешнего пользователя'");
+				Title = NStr("en='Select internal user';ru='Выбор внешнего пользователя'");
 			EndIf;
 		EndIf;
 	EndIf;
@@ -1012,11 +1012,11 @@ Procedure ExternalUsersGroupsDragEnd(UserMessage)
 	
 	If UserMessage.HasErrors = False Then
 		ShowUserNotification(
-			NStr("en=""User's move"";ru='Перемещение пользователей'"), , UserMessage.Message, PictureLib.Information32);
+			NStr("en='Move users';ru='Перемещение пользователей'"), , UserMessage.Message, PictureLib.Information32);
 	Else
 		
 		If UserMessage.Users <> Undefined Then
-			Report = NStr("en='Following users have not been included to the selected group:';ru='Следующие пользователи не были включены в выбранную группу:'");
+			Report = NStr("en='The following users were not included in the selected group:';ru='Следующие пользователи не были включены в выбранную группу:'");
 			Report = Report + Chars.LF + UserMessage.Users;
 			
 			QuestionText = UserMessage.Message;

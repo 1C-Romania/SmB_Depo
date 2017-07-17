@@ -192,7 +192,7 @@ Procedure CorrectFileName(FileName, DeleteIncorrectSymbols = False) Export
 	StrException = CommonUseClientServer.GetProhibitedCharsInFileName();
 	
 	ErrorText = StringFunctionsClientServer.SubstituteParametersInString(
-		NStr("en='File name can not have symbols: %1';ru='В имени файла не должно быть следующих символов: %1'"), StrException);
+		NStr("en='File name cannot contain the following characters: %1';ru='В имени файла не должно быть следующих символов: %1'"), StrException);
 	
 	Result = True;
 	
@@ -382,7 +382,7 @@ Procedure ActionOnFileOpeningInWorkingDirectory(ResultHandler, FileNameWithPath,
 			// Date is the same but the size is different - rare but possible case.
 			
 			Parameters.Insert("Title",
-				NStr("en='The file size differs';ru='Размер файла отличается'"));
+				NStr("en='File size is different';ru='Размер файла отличается'"));
 			
 			Parameters.Insert("Message",
 				NStr("en='File size in working directory and files storage is different.
@@ -405,7 +405,7 @@ Procedure ActionOnFileOpeningInWorkingDirectory(ResultHandler, FileNameWithPath,
 		If FileData.InWorkingDirectoryForRead = False Then
 			// File in working directory for editing.
 			
-			Parameters.Insert("Title", NStr("en='New file in the file storage';ru='В хранилище файлов новый файл'"));
+			Parameters.Insert("Title", NStr("en='A new file is in the file storage';ru='В хранилище файлов новый файл'"));
 			
 			Parameters.Insert("Message",
 				NStr("en='File in files storage marked as locked
@@ -438,7 +438,7 @@ Procedure ActionOnFileOpeningInWorkingDirectory(ResultHandler, FileNameWithPath,
 		Else
 			// File in working directory for reading.
 		
-			Parameters.Insert("Title", NStr("en='New file in the work directory';ru='В рабочем каталоге новый файл'"));
+			Parameters.Insert("Title", NStr("en='New file in the working directory';ru='В рабочем каталоге новый файл'"));
 			
 			Parameters.Insert(
 				"Message",
@@ -655,7 +655,7 @@ Procedure CheckSignaturesAfterRowCheck(Result, AdditionalParameters) Export
 		SignatureRow.Status  = NStr("en='Correct';ru='Исправить'");
 		SignatureRow.Wrong = False;
 	Else
-		SignatureRow.Status  = NStr("en='Wrong';ru='Неверна'") + ". " + String(Result);
+		SignatureRow.Status  = NStr("en='Incorrect';ru='Неверна'") + ". " + String(Result);
 		SignatureRow.Wrong = True;
 	EndIf;
 	
@@ -865,7 +865,7 @@ EndProcedure
 Procedure HandleFileAfterReceivingFiles(ReceivedFiles, Context) Export
 	
 	If TypeOf(ReceivedFiles) <> Type("Array") Or ReceivedFiles.Count() = 0 Then
-		HandleFileAfterError(NStr("en='File receiving was canceled.';ru='Получение файла было отменено.'"), , Context);
+		HandleFileAfterError(NStr("en='File receipt was canceled.';ru='Получение файла было отменено.'"), , Context);
 		Return;
 	EndIf;
 	
@@ -877,7 +877,7 @@ EndProcedure
 Procedure HandleFileAfterPlacingFiles(PlacedFiles, Context) Export
 	
 	If TypeOf(PlacedFiles) <> Type("Array") Or PlacedFiles.Count() = 0 Then
-		HandleFileAfterError(NStr("en='Place filewas canceled.';ru='Помещение файла было отменено.'"), , Context);
+		HandleFileAfterError(NStr("en='File placement was canceled.';ru='Помещение файла было отменено.'"), , Context);
 		Return;
 	EndIf;
 	

@@ -848,10 +848,10 @@ Function InitializeComposer(ListOfMetadataNames = Undefined, LimitUseOfSelection
 	AutoParameter.Value = NStr("en='By common rules';ru='По общим правилам'");
 	
 	AdditionalParameter = Parameters.Find("ReasonForRegistrationAdvanced");
-	AdditionalParameter.Value = NStr("en='Additionally';ru='Дополнительно'");
+	AdditionalParameter.Value = NStr("en='Additional Information';ru='Дополнительно'");
 	
 	ReferenceParameter = Parameters.Find("ReasonForRegistrationLink");
-	ReferenceParameter.Value = NStr("en='By ref';ru='По ссылке'");
+	ReferenceParameter.Value = NStr("en='By reference';ru='По ссылке'");
 	
 	If LimitUseOfSelection Then
 		Fields = CompositionSchema.DataSets.ChangeRecords.Fields;

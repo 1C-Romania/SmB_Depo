@@ -69,14 +69,14 @@ Procedure ChoiceProcessing(ValueSelected, ChoiceSource)
 		EndIf;
 		
 		TotalParameters = New Structure;
-		TotalParameters.Insert("ProcessHeader",  NStr("en='Period setting of the calculated totals ...';ru='Установка периода рассчитанных итогов ...'"));
-		TotalParameters.Insert("AfterProcess",          NStr("en='Period for the calculated totals has been set';ru='Установка периода рассчитанных итогов завершена'"));
+		TotalParameters.Insert("ProcessHeader",  NStr("en='Setting calculated totals period ...';ru='Установка периода рассчитанных итогов ...'"));
+		TotalParameters.Insert("AfterProcess",          NStr("en='Setting of calculated totals period is complete';ru='Установка периода рассчитанных итогов завершена'"));
 		TotalParameters.Insert("Action",               "SetTotalPeriod");
 		TotalParameters.Insert("RowArray",            Items.TotalsList.SelectedRows);
 		TotalParameters.Insert("Field",                   "TotalsPeriod");
 		TotalParameters.Insert("Value1",              ValueSelected.AccumulationRegistersPeriod);
 		TotalParameters.Insert("Value2",              ValueSelected.PeriodForAccountingRegisters);
-		TotalParameters.Insert("ErrorMessageText", NStr("en='Error of the calculated totals period setup.';ru='Ошибка установки периода рассчитанных итогов.'"));
+		TotalParameters.Insert("ErrorMessageText", NStr("en='An error occurred when setting the calculated totals period.';ru='Ошибка установки периода рассчитанных итогов.'"));
 		
 		TotalsControl(TotalParameters);
 		
@@ -92,14 +92,14 @@ Procedure ChoiceProcessing(ValueSelected, ChoiceSource)
 			MinimalEffect   = ValueSelected.MinimalEffect;
 			
 			TotalParameters = New Structure;
-			TotalParameters.Insert("ProcessHeader",  NStr("en='Aggregates rebuilding...';ru='Перестроение агрегатов ...'"));
-			TotalParameters.Insert("AfterProcess",          NStr("en='Aggregates reconstruction has been completed';ru='Перестроение агрегатов завершено'"));
+			TotalParameters.Insert("ProcessHeader",  NStr("en='Rebuilding aggregates ...';ru='Перестроение агрегатов ...'"));
+			TotalParameters.Insert("AfterProcess",          NStr("en='Aggregates are rebuilt';ru='Перестроение агрегатов завершено'"));
 			TotalParameters.Insert("Action",               "RebuildAggregates");
 			TotalParameters.Insert("RowArray",            Items.AggregatesByRegisters.SelectedRows);
 			TotalParameters.Insert("Field",                   "Description");
 			TotalParameters.Insert("Value1",              ValueSelected.RelativeSize);
 			TotalParameters.Insert("Value2",              ValueSelected.MinimalEffect);
-			TotalParameters.Insert("ErrorMessageText", NStr("en='Error of the aggregates reconstruction.';ru='Ошибка перестроения агрегатов.'"));
+			TotalParameters.Insert("ErrorMessageText", NStr("en='An error occurred when rebuilding aggregates.';ru='Ошибка перестроения агрегатов.'"));
 			
 			ChangeClientAggregates(TotalParameters);
 			
@@ -173,14 +173,14 @@ EndProcedure
 Procedure EnableTotalsUsage(Command)
 	
 	TotalParameters = New Structure;
-	TotalParameters.Insert("ProcessHeader",  NStr("en='Totals use enabling...';ru='Включение использования итогов ...'"));
-	TotalParameters.Insert("AfterProcess",          NStr("en='Enabling of the totals use is completed';ru='Включение использования итогов завершено'"));
+	TotalParameters.Insert("ProcessHeader",  NStr("en='Enable totals usage...';ru='Включение использования итогов ...'"));
+	TotalParameters.Insert("AfterProcess",          NStr("en='Enabling usage of totals is completed';ru='Включение использования итогов завершено'"));
 	TotalParameters.Insert("Action",               "SetTotalsUsing");
 	TotalParameters.Insert("RowArray",            Items.TotalsList.SelectedRows);
 	TotalParameters.Insert("Field",                   "UseTotals");
 	TotalParameters.Insert("Value1",              True);
 	TotalParameters.Insert("Value2",              Undefined);
-	TotalParameters.Insert("ErrorMessageText", NStr("en='Error of totals use enabling.';ru='Ошибка включения использования итогов.'"));
+	TotalParameters.Insert("ErrorMessageText", NStr("en='An error occurred when enabling the totals usage.';ru='Ошибка включения использования итогов.'"));
 	
 	TotalsControl(TotalParameters);
 
@@ -191,13 +191,13 @@ Procedure EnableUsingCurrentTotals(Command)
 	
 	TotalParameters = New Structure;
 	TotalParameters.Insert("ProcessHeader",  NStr("en='Current totals use disabling ...';ru='Включение использования текущих итогов ...'"));
-	TotalParameters.Insert("AfterProcess",          NStr("en='Enabling of the current totals using has been completed';ru='Включение использования текущих итогов завершено'"));
+	TotalParameters.Insert("AfterProcess",          NStr("en='Enabling usage of the current totals is completed';ru='Включение использования текущих итогов завершено'"));
 	TotalParameters.Insert("Action",               "UseCurrentTotals");
 	TotalParameters.Insert("RowArray",            Items.TotalsList.SelectedRows);
 	TotalParameters.Insert("Field",                   "UseCurrentTotals");
 	TotalParameters.Insert("Value1",              True);
 	TotalParameters.Insert("Value2",              Undefined);
-	TotalParameters.Insert("ErrorMessageText", NStr("en='Error of the current totals using.';ru='Ошибка включения использования текущих итогов.'"));
+	TotalParameters.Insert("ErrorMessageText", NStr("en='An error occurred when enabling the current totals usage.';ru='Ошибка включения использования текущих итогов.'"));
 	
 	TotalsControl(TotalParameters);
 	
@@ -207,14 +207,14 @@ EndProcedure
 Procedure DisableTotalsUsage(Command)
 	
 	TotalParameters = New Structure;
-	TotalParameters.Insert("ProcessHeader",  NStr("en='Totals use disabling ...';ru='Выключение использования итогов ...'"));
-	TotalParameters.Insert("AfterProcess",          NStr("en='Disabling of the totals use is completed';ru='Выключение использования итогов завершено'"));
+	TotalParameters.Insert("ProcessHeader",  NStr("en='Disable totals usage...';ru='Выключение использования итогов ...'"));
+	TotalParameters.Insert("AfterProcess",          NStr("en='Disabling usage of totals is completed';ru='Выключение использования итогов завершено'"));
 	TotalParameters.Insert("Action",               "SetTotalsUsing");
 	TotalParameters.Insert("RowArray",            Items.TotalsList.SelectedRows);
 	TotalParameters.Insert("Field",                   "UseTotals");
 	TotalParameters.Insert("Value1",              False);
 	TotalParameters.Insert("Value2",              Undefined);
-	TotalParameters.Insert("ErrorMessageText", NStr("en='Error of the totals use disabling.';ru='Ошибка выключения использования итогов.'"));
+	TotalParameters.Insert("ErrorMessageText", NStr("en='An error occurred when disabling the totals usage.';ru='Ошибка выключения использования итогов.'"));
 	
 	TotalsControl(TotalParameters);
 	
@@ -225,13 +225,13 @@ Procedure DisableCurrentTotalsUsage(Command)
 	
 	TotalParameters = New Structure;
 	TotalParameters.Insert("ProcessHeader",  NStr("en='Current totals use disabling ...';ru='Включение использования текущих итогов ...'"));
-	TotalParameters.Insert("AfterProcess",          NStr("en='Disabling of the current totals usage is completed';ru='Выключение использования текущих итогов завершено'"));
+	TotalParameters.Insert("AfterProcess",          NStr("en='Disabling usage of the current totals is completed';ru='Выключение использования текущих итогов завершено'"));
 	TotalParameters.Insert("Action",               "UseCurrentTotals");
 	TotalParameters.Insert("RowArray",            Items.TotalsList.SelectedRows);
 	TotalParameters.Insert("Field",                   "UseCurrentTotals");
 	TotalParameters.Insert("Value1",              False);
 	TotalParameters.Insert("Value2",              Undefined);
-	TotalParameters.Insert("ErrorMessageText", NStr("en='Error of the current totals usage disabling.';ru='Ошибка выключения использования текущих итогов.'"));
+	TotalParameters.Insert("ErrorMessageText", NStr("en='An error occurred when disabling usage of the current totals.';ru='Ошибка выключения использования текущих итогов.'"));
 	
 	TotalsControl(TotalParameters);
 	
@@ -265,14 +265,14 @@ EndProcedure
 Procedure TurnOnDataSeparationTotals(Command)
 	
 	TotalParameters = New Structure;
-	TotalParameters.Insert("ProcessHeader",  NStr("en='Totals separation enabling ...';ru='Включение разделения итогов ...'"));
-	TotalParameters.Insert("AfterProcess",          NStr("en='Enabling of the totals separation is completed';ru='Включение разделения итогов завершено'"));
+	TotalParameters.Insert("ProcessHeader",  NStr("en='Enable totals separation...';ru='Включение разделения итогов ...'"));
+	TotalParameters.Insert("AfterProcess",          NStr("en='Enabling of total separation is completed';ru='Включение разделения итогов завершено'"));
 	TotalParameters.Insert("Action",               "ADivisionOf");
 	TotalParameters.Insert("RowArray",            Items.TotalsList.SelectedRows);
 	TotalParameters.Insert("Field",                   "TotalsDivision");
 	TotalParameters.Insert("Value1",              True);
 	TotalParameters.Insert("Value2",              Undefined);
-	TotalParameters.Insert("ErrorMessageText", NStr("en='Error of the totals separation enabling.';ru='Ошибка включения разделения итогов.'"));
+	TotalParameters.Insert("ErrorMessageText", NStr("en='An error occurred when enabling the total separation.';ru='Ошибка включения разделения итогов.'"));
 	
 	TotalsControl(TotalParameters);
 	
@@ -282,14 +282,14 @@ EndProcedure
 Procedure DisableTotalsDivision(Command)
 	
 	TotalParameters = New Structure;
-	TotalParameters.Insert("ProcessHeader",  NStr("en='Totals separation disabling ...';ru='Выключение разделения итогов ...'"));
-	TotalParameters.Insert("AfterProcess",          NStr("en='Totals separation disabling is completed';ru='Выключение разделения итогов завершено'"));
+	TotalParameters.Insert("ProcessHeader",  NStr("en='Disable totals separation...';ru='Выключение разделения итогов ...'"));
+	TotalParameters.Insert("AfterProcess",          NStr("en='Disabling division of totals is completed';ru='Выключение разделения итогов завершено'"));
 	TotalParameters.Insert("Action",               "ADivisionOf");
 	TotalParameters.Insert("RowArray",            Items.TotalsList.SelectedRows);
 	TotalParameters.Insert("Field",                   "TotalsDivision");
 	TotalParameters.Insert("Value1",              False);
 	TotalParameters.Insert("Value2",              Undefined);
-	TotalParameters.Insert("ErrorMessageText", NStr("en='Error of the totals separation disabling.';ru='Ошибка выключения разделения итогов.'"));
+	TotalParameters.Insert("ErrorMessageText", NStr("en='An error occurred when disabling the totals separation.';ru='Ошибка выключения разделения итогов.'"));
 	
 	TotalsControl(TotalParameters);
 	
@@ -330,14 +330,14 @@ EndProcedure
 Procedure EnableAggregateMode(Command)
 	
 	TotalParameters = New Structure;
-	TotalParameters.Insert("ProcessHeader",  NStr("en='Aggregate mode enabling ...';ru='Включение режима агрегатов ...'"));
-	TotalParameters.Insert("AfterProcess",          NStr("en='Aggregates mode enabling is prohibited';ru='Включение режима агрегатов завершено'"));
+	TotalParameters.Insert("ProcessHeader",  NStr("en='Enable aggregate mode ...';ru='Включение режима агрегатов ...'"));
+	TotalParameters.Insert("AfterProcess",          NStr("en='Enabling of aggregate mode is completed';ru='Включение режима агрегатов завершено'"));
 	TotalParameters.Insert("Action",               "SetUnits");
 	TotalParameters.Insert("RowArray",            Items.AggregatesByRegisters.SelectedRows);
 	TotalParameters.Insert("Field",                   "AggregatesMode");
 	TotalParameters.Insert("Value1",              True);
 	TotalParameters.Insert("Value2",              Undefined);
-	TotalParameters.Insert("ErrorMessageText", NStr("en='Error of aggregates mode enabling.';ru='Ошибка включения режима агрегатов.'"));
+	TotalParameters.Insert("ErrorMessageText", NStr("en='An error occurred when enabling the aggregate mode.';ru='Ошибка включения режима агрегатов.'"));
 	
 	ChangeClientAggregates(TotalParameters);
 	
@@ -347,14 +347,14 @@ EndProcedure
 Procedure EnableTotalsMode(Command)
 	
 	TotalParameters = New Structure;
-	TotalParameters.Insert("ProcessHeader",  NStr("en='Totals mode enabling ...';ru='Включение режима итогов ...'"));
-	TotalParameters.Insert("AfterProcess",          NStr("en='Totals mode enabling is prohibited.';ru='Включение режима итогов завершено'"));
+	TotalParameters.Insert("ProcessHeader",  NStr("en='Enabling the totals mode...';ru='Включение режима итогов ...'"));
+	TotalParameters.Insert("AfterProcess",          NStr("en='Enabling of the totals mode is completed';ru='Включение режима итогов завершено'"));
 	TotalParameters.Insert("Action",               "SetUnits");
 	TotalParameters.Insert("RowArray",            Items.AggregatesByRegisters.SelectedRows);
 	TotalParameters.Insert("Field",                   "AggregatesMode");
 	TotalParameters.Insert("Value1",              False);
 	TotalParameters.Insert("Value2",              Undefined);
-	TotalParameters.Insert("ErrorMessageText", NStr("en='Error of the totals mode enabling.';ru='Ошибка включения режима итогов.'"));
+	TotalParameters.Insert("ErrorMessageText", NStr("en='An error occurred when enabling the totals mode.';ru='Ошибка включения режима итогов.'"));
 	
 	ChangeClientAggregates(TotalParameters);
 	
@@ -364,14 +364,14 @@ EndProcedure
 Procedure EnableAggregatesUsage(Command)
 	
 	TotalParameters = New Structure;
-	TotalParameters.Insert("ProcessHeader",  NStr("en='Aggregates use enabling ...';ru='Включение использования агрегатов ...'"));
-	TotalParameters.Insert("AfterProcess",          NStr("en='Enabling of the aggregates usage is completed';ru='Включение использования агрегатов завершено'"));
+	TotalParameters.Insert("ProcessHeader",  NStr("en='Enable aggregate usage...';ru='Включение использования агрегатов ...'"));
+	TotalParameters.Insert("AfterProcess",          NStr("en='Enabling of aggregate usage is completed';ru='Включение использования агрегатов завершено'"));
 	TotalParameters.Insert("Action",               "InstallUsingUnits");
 	TotalParameters.Insert("RowArray",            Items.AggregatesByRegisters.SelectedRows);
 	TotalParameters.Insert("Field",                   "AggregatesUsage");
 	TotalParameters.Insert("Value1",              True);
 	TotalParameters.Insert("Value2",              Undefined);
-	TotalParameters.Insert("ErrorMessageText", NStr("en='Error of aggregates using enabling.';ru='Ошибка включения использования агрегатов.'"));
+	TotalParameters.Insert("ErrorMessageText", NStr("en='An error occurred when enabling the aggregate usage.';ru='Ошибка включения использования агрегатов.'"));
 	
 	ChangeClientAggregates(TotalParameters);
 	
@@ -381,14 +381,14 @@ EndProcedure
 Procedure DisableAggregatesUsage(Command)
 	
 	TotalParameters = New Structure;
-	TotalParameters.Insert("ProcessHeader",  NStr("en='Aggregates use disabling ...';ru='Выключение использования агрегатов ...'"));
-	TotalParameters.Insert("AfterProcess",          NStr("en='Aggregate usage disabling is completed';ru='Выключение использования агрегатов завершено'"));
+	TotalParameters.Insert("ProcessHeader",  NStr("en='Disable aggregate usage...';ru='Выключение использования агрегатов ...'"));
+	TotalParameters.Insert("AfterProcess",          NStr("en='Disabling aggregation usage is completed';ru='Выключение использования агрегатов завершено'"));
 	TotalParameters.Insert("Action",               "InstallUsingUnits");
 	TotalParameters.Insert("RowArray",            Items.AggregatesByRegisters.SelectedRows);
 	TotalParameters.Insert("Field",                   "AggregatesUsage");
 	TotalParameters.Insert("Value1",              False);
 	TotalParameters.Insert("Value2",              Undefined);
-	TotalParameters.Insert("ErrorMessageText", NStr("en='Error of aggregates using disabling.';ru='Ошибка выключения использования агрегатов.'"));
+	TotalParameters.Insert("ErrorMessageText", NStr("en='An error occurred when disabling aggregate usage.';ru='Ошибка выключения использования агрегатов.'"));
 	
 	ChangeClientAggregates(TotalParameters);
 	
@@ -411,7 +411,7 @@ EndProcedure
 &AtClient
 Procedure ClearAggregatesByRegisters(Command)
 	
-	QuestionText = NStr("en='Aggregates clearing can lead to significant reports delay.';ru='Очистка агрегатов может привести к существенному замедлению отчетов.'");
+	QuestionText = NStr("en='Aggregate cleanup may significantly slow down the reports.';ru='Очистка агрегатов может привести к существенному замедлению отчетов.'");
 	
 	Buttons = New ValueList;
 	Buttons.Add(DialogReturnCode.Yes, NStr("en='Clear aggregates';ru='Очистить агрегаты'"));
@@ -426,14 +426,14 @@ EndProcedure
 Procedure FillAggregatesOnRegisters(Command)
 	
 	TotalParameters = New Structure;
-	TotalParameters.Insert("ProcessHeader",  NStr("en='Aggregates filling ...';ru='Заполнение агрегатов ...'"));
-	TotalParameters.Insert("AfterProcess",          NStr("en='Aggregate filling is prohibited';ru='Заполнение агрегатов завершено'"));
+	TotalParameters.Insert("ProcessHeader",  NStr("en='Populating aggregates...';ru='Заполнение агрегатов ...'"));
+	TotalParameters.Insert("AfterProcess",          NStr("en='Aggregates are populated';ru='Заполнение агрегатов завершено'"));
 	TotalParameters.Insert("Action",               "CompleteUnits");
 	TotalParameters.Insert("RowArray",            Items.AggregatesByRegisters.SelectedRows);
 	TotalParameters.Insert("Field",                   "Description");
 	TotalParameters.Insert("Value1",              Undefined);
 	TotalParameters.Insert("Value2",              Undefined);
-	TotalParameters.Insert("ErrorMessageText", NStr("en='Aggregates filling error.';ru='Ошибка заполнения агрегатов.'"));
+	TotalParameters.Insert("ErrorMessageText", NStr("en='An error occurred when filling in aggregates.';ru='Ошибка заполнения агрегатов.'"));
 	
 	ChangeClientAggregates(TotalParameters);
 	
@@ -460,19 +460,19 @@ Procedure SetTotalsPeriod(Command)
 	ArrayActions = TotalsList.FindRows(New Structure("BalanceAndTurnovers", True));
 	
 	If ArrayActions.Count() = 0 Then
-		ShowMessageBox(, NStr("en='No registers for which it is possible to run this operation.';ru='Отсутствуют регистры, для которых можно выполнить данную операцию.'"));
+		ShowMessageBox(, NStr("en='No registers to perform this action.';ru='Отсутствуют регистры, для которых можно выполнить данную операцию.'"));
 		Return;
 	EndIf;
 	
 	TotalParameters = New Structure;
-	TotalParameters.Insert("ProcessHeader",  NStr("en='Period setting of the calculated totals ...';ru='Установка периода рассчитанных итогов ...'"));
-	TotalParameters.Insert("AfterProcess",          NStr("en='Period for the calculated totals has been set';ru='Установка периода рассчитанных итогов завершена'"));
+	TotalParameters.Insert("ProcessHeader",  NStr("en='Setting calculated totals period ...';ru='Установка периода рассчитанных итогов ...'"));
+	TotalParameters.Insert("AfterProcess",          NStr("en='Setting of calculated totals period is complete';ru='Установка периода рассчитанных итогов завершена'"));
 	TotalParameters.Insert("Action",               "SetTotalPeriod");
 	TotalParameters.Insert("RowArray",            ArrayActions);
 	TotalParameters.Insert("Field",                   "TotalsPeriod");
 	TotalParameters.Insert("Value1",              EndOfPeriod(AddMonth(CalculateTotalsOn, -1)) );
 	TotalParameters.Insert("Value2",              EndOfPeriod(CalculateTotalsOn) );
-	TotalParameters.Insert("ErrorMessageText", NStr("en='Error of the calculated totals period setup.';ru='Ошибка установки периода рассчитанных итогов.'"));
+	TotalParameters.Insert("ErrorMessageText", NStr("en='An error occurred when setting the calculated totals period.';ru='Ошибка установки периода рассчитанных итогов.'"));
 	TotalParameters.Insert("GroupProcessing",     True);
 	
 	TotalsControl(TotalParameters);
@@ -488,19 +488,19 @@ Procedure EnableTotalsUsageQuickAccess(Command)
 	ArrayActions = TotalsList.FindRows(New Structure("UseTotals", False));
 	
 	If ArrayActions.Count() = 0 Then
-		ShowMessageBox(, NStr("en='No registers for which it is possible to run this operation.';ru='Отсутствуют регистры, для которых можно выполнить данную операцию.'"));
+		ShowMessageBox(, NStr("en='No registers to perform this action.';ru='Отсутствуют регистры, для которых можно выполнить данную операцию.'"));
 		Return;
 	EndIf;
 	
 	TotalParameters = New Structure;
-	TotalParameters.Insert("ProcessHeader",  NStr("en='Totals use enabling...';ru='Включение использования итогов ...'"));
-	TotalParameters.Insert("AfterProcess",          NStr("en='Enabling of the totals use is completed';ru='Включение использования итогов завершено'"));
+	TotalParameters.Insert("ProcessHeader",  NStr("en='Enable totals usage...';ru='Включение использования итогов ...'"));
+	TotalParameters.Insert("AfterProcess",          NStr("en='Enabling usage of totals is completed';ru='Включение использования итогов завершено'"));
 	TotalParameters.Insert("Action",               "SetTotalsUsing");
 	TotalParameters.Insert("RowArray",            ArrayActions);
 	TotalParameters.Insert("Field",                   "");
 	TotalParameters.Insert("Value1",              True);
 	TotalParameters.Insert("Value2",              Undefined);
-	TotalParameters.Insert("ErrorMessageText", NStr("en='Error of totals use enabling.';ru='Ошибка включения использования итогов.'"));
+	TotalParameters.Insert("ErrorMessageText", NStr("en='An error occurred when enabling the totals usage.';ru='Ошибка включения использования итогов.'"));
 	TotalParameters.Insert("GroupProcessing",     True);
 	
 	TotalsControl(TotalParameters);
@@ -515,34 +515,34 @@ Procedure FillAggregatesAndExecuteRebuild(Command)
 	ArrayActions = AggregatesByRegisters.FindRows(New Structure("AggregatesMode,AggregatesUsage", True, True));
 	
 	If ArrayActions.Count() = 0 Then
-		ShowMessageBox(, NStr("en='No registers for which the selected action can be performed.';ru='Отсутствуют регистры, для которых можно выполнить выбранное действие.'"));
+		ShowMessageBox(, NStr("en='No registers to perform the selected action for.';ru='Отсутствуют регистры, для которых можно выполнить выбранное действие.'"));
 		Return;
 	EndIf;
 	
 	ProcessStep = 100/ArrayActions.Count();
 	
 	TotalParameters = New Structure;
-	TotalParameters.Insert("ProcessHeader",  NStr("en='Aggregates rebuilding...';ru='Перестроение агрегатов ...'"));
-	TotalParameters.Insert("AfterProcess",          NStr("en='Aggregates reconstruction has been completed';ru='Перестроение агрегатов завершено'"));
+	TotalParameters.Insert("ProcessHeader",  NStr("en='Rebuilding aggregates ...';ru='Перестроение агрегатов ...'"));
+	TotalParameters.Insert("AfterProcess",          NStr("en='Aggregates are rebuilt';ru='Перестроение агрегатов завершено'"));
 	TotalParameters.Insert("Action",               "RebuildAggregates");
 	TotalParameters.Insert("RowArray",            ArrayActions);
 	TotalParameters.Insert("Field",                   "");
 	TotalParameters.Insert("Value1",              0);
 	TotalParameters.Insert("Value2",              0);
-	TotalParameters.Insert("ErrorMessageText", NStr("en='Error of the aggregates reconstruction.';ru='Ошибка перестроения агрегатов.'"));
+	TotalParameters.Insert("ErrorMessageText", NStr("en='An error occurred when rebuilding aggregates.';ru='Ошибка перестроения агрегатов.'"));
 	TotalParameters.Insert("GroupProcessing",     True);
 	
 	ChangeClientAggregates(TotalParameters);
 	
 	TotalParameters = New Structure;
-	TotalParameters.Insert("ProcessHeader",  NStr("en='Aggregates filling ...';ru='Заполнение агрегатов ...'"));
-	TotalParameters.Insert("AfterProcess",          NStr("en='Aggregate filling is prohibited';ru='Заполнение агрегатов завершено'"));
+	TotalParameters.Insert("ProcessHeader",  NStr("en='Populating aggregates...';ru='Заполнение агрегатов ...'"));
+	TotalParameters.Insert("AfterProcess",          NStr("en='Aggregates are populated';ru='Заполнение агрегатов завершено'"));
 	TotalParameters.Insert("Action",               "CompleteUnits");
 	TotalParameters.Insert("RowArray",            ArrayActions);
 	TotalParameters.Insert("Field",                   "");
 	TotalParameters.Insert("Value1",              Undefined);
 	TotalParameters.Insert("Value2",              Undefined);
-	TotalParameters.Insert("ErrorMessageText", NStr("en='Aggregates filling error.';ru='Ошибка заполнения агрегатов.'"));
+	TotalParameters.Insert("ErrorMessageText", NStr("en='An error occurred when filling in aggregates.';ru='Ошибка заполнения агрегатов.'"));
 	
 	ChangeClientAggregates(TotalParameters);
 	
@@ -557,14 +557,14 @@ EndProcedure
 Procedure RecalcTotals(Command)
 	
 	TotalParameters = New Structure;
-	TotalParameters.Insert("ProcessHeader",  NStr("en='Totals recalculation...';ru='Пересчет итогов ...'"));
-	TotalParameters.Insert("AfterProcess",          NStr("en='Totals recalculation is completed';ru='Пересчет итогов завершен'"));
+	TotalParameters.Insert("ProcessHeader",  NStr("en='Recalculating totals ...';ru='Пересчет итогов ...'"));
+	TotalParameters.Insert("AfterProcess",          NStr("en='Totals are recalculated';ru='Пересчет итогов завершен'"));
 	TotalParameters.Insert("Action",               "RecalcTotals");
 	TotalParameters.Insert("RowArray",            Items.TotalsList.SelectedRows);
 	TotalParameters.Insert("Field",                   "Description");
 	TotalParameters.Insert("Value1",              False);
 	TotalParameters.Insert("Value2",              Undefined);
-	TotalParameters.Insert("ErrorMessageText", NStr("en='It is totals recalculation error.';ru='Ошибка пересчета итогов.'"));
+	TotalParameters.Insert("ErrorMessageText", NStr("en='Total recalculation error.';ru='Ошибка пересчета итогов.'"));
 	
 	TotalsControl(TotalParameters);
 	
@@ -574,14 +574,14 @@ EndProcedure
 Procedure RecalcPresentTotals(Command)
 	
 	TotalParameters = New Structure;
-	TotalParameters.Insert("ProcessHeader",  NStr("en='Recalculating of the current totals ...';ru='Пересчет текущих итогов ...'"));
-	TotalParameters.Insert("AfterProcess",          NStr("en='Current totals recalculation is completed';ru='Пересчет текущих итогов завершен'"));
+	TotalParameters.Insert("ProcessHeader",  NStr("en='Recalculating the current totals ...';ru='Пересчет текущих итогов ...'"));
+	TotalParameters.Insert("AfterProcess",          NStr("en='Current totals recalculation completed';ru='Пересчет текущих итогов завершен'"));
 	TotalParameters.Insert("Action",               "RecalcPresentTotals");
 	TotalParameters.Insert("RowArray",            Items.TotalsList.SelectedRows);
 	TotalParameters.Insert("Field",                   "Description");
 	TotalParameters.Insert("Value1",              False);
 	TotalParameters.Insert("Value2",              Undefined);
-	TotalParameters.Insert("ErrorMessageText", NStr("en='Error of the current totals recalculation.';ru='Ошибка пересчета текущих итогов.'"));
+	TotalParameters.Insert("ErrorMessageText", NStr("en='An error occurred when recalculating the current totals.';ru='Ошибка пересчета текущих итогов.'"));
 	
 	TotalsControl(TotalParameters);
 	
@@ -646,7 +646,7 @@ Procedure SetConditionalAppearance()
 	FilterElement.ComparisonType = DataCompositionComparisonType.Equal;
 	FilterElement.RightValue = 2;
 
-	Item.Appearance.SetParameterValue("Text", NStr("en='Just totals register';ru='Просто итоговый регистр'"));
+	Item.Appearance.SetParameterValue("Text", NStr("en='Just total register';ru='Просто итоговый регистр'"));
 
 	//
 
@@ -720,14 +720,14 @@ Procedure ClearAggregatesByRegistersEnd(Response, AdditionalParameters) Export
 	If Response = DialogReturnCode.Yes Then
 		
 		TotalParameters = New Structure;
-		TotalParameters.Insert("ProcessHeader",  NStr("en='Aggregates clearing ...';ru='Очистка агрегатов ...'"));
-		TotalParameters.Insert("AfterProcess",          NStr("en='Aggregates clearance is completed';ru='Очистка агрегатов завершена'"));
+		TotalParameters.Insert("ProcessHeader",  NStr("en='Clearing aggregates ...';ru='Очистка агрегатов ...'"));
+		TotalParameters.Insert("AfterProcess",          NStr("en='Aggregates are cleared';ru='Очистка агрегатов завершена'"));
 		TotalParameters.Insert("Action",               "ClearAggregates");
 		TotalParameters.Insert("RowArray",            Items.AggregatesByRegisters.SelectedRows);
 		TotalParameters.Insert("Field",                   "Description");
 		TotalParameters.Insert("Value1",              Undefined);
 		TotalParameters.Insert("Value2",              Undefined);
-		TotalParameters.Insert("ErrorMessageText", NStr("en='An error occurred while clearing the aggregates.';ru='Ошибка очистки агрегатов.'"));
+		TotalParameters.Insert("ErrorMessageText", NStr("en='An error occurred when clearing aggregates.';ru='Ошибка очистки агрегатов.'"));
 		
 		ChangeClientAggregates(TotalParameters);
 		
@@ -741,14 +741,14 @@ Procedure RecalcTotalsForPeriodEnd(ValueSelected, AdditionalParameters) Export
 		RegistersRecalculationPeriod = ValueSelected;
 		
 		TotalParameters = New Structure;
-		TotalParameters.Insert("ProcessHeader",  NStr("en='Totals recalculation for period...';ru='Пересчет итогов за период ...'"));
-		TotalParameters.Insert("AfterProcess",          NStr("en='Recalculation of totals for the period is completed';ru='Пересчет итогов за период завершен'"));
+		TotalParameters.Insert("ProcessHeader",  NStr("en='Totals recalculation for the period ...';ru='Пересчет итогов за период ...'"));
+		TotalParameters.Insert("AfterProcess",          NStr("en='Totals recalculation for the period completed';ru='Пересчет итогов за период завершен'"));
 		TotalParameters.Insert("Action",               "RecalcTotalsForPeriod");
 		TotalParameters.Insert("RowArray",            Items.TotalsList.SelectedRows);
 		TotalParameters.Insert("Field",                   "Description");
 		TotalParameters.Insert("Value1",              RegistersRecalculationPeriod.StartDate);
 		TotalParameters.Insert("Value2",              RegistersRecalculationPeriod.EndDate);
-		TotalParameters.Insert("ErrorMessageText", NStr("en='Error of recalculating the totals for the period.';ru='Ошибка пересчета итогов за период.'"));
+		TotalParameters.Insert("ErrorMessageText", NStr("en='An error occurred when recalculating the totals for the period.';ru='Ошибка пересчета итогов за период.'"));
 		
 		TotalsControl(TotalParameters);
 		
@@ -818,7 +818,7 @@ Procedure ChangeClientAggregates(Val TotalParameters)
 		If Not SelectedRow.AggregatesMode
 			AND Upper(TotalParameters.Action) <> Upper("SetUnits") Then
 			CommonUseClientServer.MessageToUser(
-				NStr("en='Operation is impossible in the totals mode';ru='Операция невозможна в режиме итогов'"),
+				NStr("en='The operation is not allowed in the totals mode';ru='Операция невозможна в режиме итогов'"),
 				,
 				ErrorMessageField);
 			Continue;
@@ -956,7 +956,7 @@ Procedure GetOptimumAggregateClient()
 		EndIf;
 	Else
 		If AggregatesByRegisters.Count() = 0 Then
-			ShowMessageBox(, NStr("en='No registers for which it is possible to run this operation.';ru='Отсутствуют регистры, для которых можно выполнить данную операцию.'"));
+			ShowMessageBox(, NStr("en='No registers to perform this action.';ru='Отсутствуют регистры, для которых можно выполнить данную операцию.'"));
 			Return;
 		EndIf;
 	EndIf;
@@ -974,7 +974,7 @@ Procedure GetOptimumAggregateClient()
 			If Extension = "zip" Then
 				Filter = NStr("en='Archive ZIP (*.%1)|*.%1';ru='Архив ZIP (*.%1)|*.%1'");
 			ElsIf Extension = "xml" Then
-				Filter = NStr("en='Document XML (*.%1)|*.%1';ru='Документ XML (*.%1)|*.%1'");
+				Filter = NStr("en='XML document (*.%1)|*.%1';ru='Документ XML (*.%1)|*.%1'");
 			Else
 				Filter = "";
 			EndIf;
@@ -1049,7 +1049,7 @@ Function GetOptimumAggregatesServer()
 		EndTry;
 		If ErrorInfo <> Undefined Then
 			HasErrors = True;
-			ErrorTitle = NStr("en='Cannot receive optimal register aggregates ""%1"":';ru='Не удалось получить оптимальные агрегаты регистра ""%1"":'");
+			ErrorTitle = NStr("en='Cannot receive optimal aggregates of register ""%1"":';ru='Не удалось получить оптимальные агрегаты регистра ""%1"":'");
 			DetailedErrorsText = DetailedErrorsText
 				+ ?(DetailedErrorsText = "", "", Chars.LF + Chars.LF)
 				+ StrReplace(ErrorTitle, "%1", AccumulationRegisterName)
@@ -1078,7 +1078,7 @@ Function GetOptimumAggregatesServer()
 			ShortFileName = ItemOfList.Presentation + ".xml";
 		Else
 			ShortFileName = StringFunctionsClientServer.SubstituteParametersInString(
-				NStr("en='Optimal aggregates of accumulation registers %1.zip';ru='Оптимальные агрегаты регистров накопления %1.zip'"),
+				NStr("en='Optimal aggregates of accumulation register %1.zip';ru='Оптимальные агрегаты регистров накопления %1.zip'"),
 				Format(CurrentSessionDate(), "DF=yyyy-MM-dd"));
 			FullFileName = TempFilesDir + ShortFileName;
 			SaveMode = ZIPStorePathMode.StoreRelativePath;
@@ -1107,13 +1107,13 @@ Function GetOptimumAggregatesServer()
 			StandardSubsystemsClientServer.DisplayWarning(
 				Result,
 				StringFunctionsClientServer.SubstituteParametersInString(
-					NStr("en='Cannot get optimal aggregates of the accumulation register ""%1"".';ru='Не удалось получить оптимальные агрегаты регистра накопления ""%1"".'"),
+					NStr("en='Cannot receive optimal aggregates of accumulation register ""%1"".';ru='Не удалось получить оптимальные агрегаты регистра накопления ""%1"".'"),
 					RegisterName),
 				DetailedErrorsText);
 		Else
 			StandardSubsystemsClientServer.DisplayNotification(
 				Result,
-				NStr("en='Optimal aggregates are successfully received.';ru='Оптимальные агрегаты успешно получены.'"),
+				NStr("en='Optimal aggregates successfully received.';ru='Оптимальные агрегаты успешно получены.'"),
 				StringFunctionsClientServer.SubstituteParametersInString(
 					NStr("en='%1 (accumulation register)';ru='%1 (регистр накопления)'"),
 					RegisterName),
@@ -1123,7 +1123,7 @@ Function GetOptimumAggregatesServer()
 		// Nothing worked.
 		StandardSubsystemsClientServer.DisplayWarning(
 			Result,
-			NStr("en='Cannot get optimal aggregates of the accumulation registers.';ru='Не удалось получить оптимальные агрегаты регистров накопления.'"),
+			NStr("en='Cannot receive optimal aggregates of accumulation registers.';ru='Не удалось получить оптимальные агрегаты регистров накопления.'"),
 			DetailedErrorsText);
 	ElsIf HasErrors Then
 		// Partially successfully.
@@ -1141,7 +1141,7 @@ Function GetOptimumAggregatesServer()
 		// Fully successful.
 		StandardSubsystemsClientServer.DisplayNotification(
 			Result,
-			NStr("en='Aggregates are successfully received.';ru='Агрегаты успешно получены.'"),
+			NStr("en='Aggregates are received successfully.';ru='Агрегаты успешно получены.'"),
 			StringFunctionsClientServer.SubstituteParametersInString(
 				NStr("en='Accumulation registers (%1)';ru='Регистры накопления (%1)'"),
 				Successfully),
@@ -1290,7 +1290,7 @@ Function SetRegisterParametersAtServer(Val RegisterType,
 			Manager.RecalcTotalsForPeriod(Value1, Value2);
 			
 		Else
-			Raise NStr("en='Wrong parameter name';ru='Неправильное имя параметра'") + "(1): " + Action;
+			Raise NStr("en='Incorrect partner name';ru='Неправильное имя параметра'") + "(1): " + Action;
 		EndIf;
 		
 	Except
@@ -1336,7 +1336,7 @@ Function ChangeServerAggregates(Val ServerParameters)
 			
 		Else
 			Raise StringFunctionsClientServer.SubstituteParametersInString(
-				NStr("en='Incorrect parameter name: %1';ru='Неправильное имя параметра: %1'"),
+				NStr("en='Incorrect name of parameter: %1';ru='Неправильное имя параметра: %1'"),
 				ServerParameters.Action);
 		EndIf;
 		
@@ -1356,14 +1356,14 @@ EndFunction
 Procedure SetExpandedMode()
 	
 	If FullAbilities Then
-		Title        = NStr("en='Totals management - full possibilities';ru='Управление итогами - полные возможности'");
-		HyperlinkText = NStr("en='Frequently used possibilities';ru='Часто используемые возможности'");
+		Title        = NStr("en='Totals management - full functionality';ru='Управление итогами - полные возможности'");
+		HyperlinkText = NStr("en='Frequently used features';ru='Часто используемые возможности'");
 		Items.Operations.CurrentPage = Items.AdvancedAbilities;
 		Items.QuickAccess.Visible          = False;
 		Items.AdvancedAbilities.Visible = True;
 	Else
-		Title        = NStr("en='Totals management - frequently used possibilities';ru='Управление итогами - часто используемые возможности'");
-		HyperlinkText = NStr("en='Full abilities';ru='Полные возможности'");
+		Title        = NStr("en='Totals management - frequently used features';ru='Управление итогами - часто используемые возможности'");
+		HyperlinkText = NStr("en='Full functionality';ru='Полные возможности'");
 		Items.Operations.CurrentPage = Items.QuickAccess;
 		Items.QuickAccess.Visible          = True;
 		Items.AdvancedAbilities.Visible = False;
@@ -1416,7 +1416,7 @@ Procedure ReadInformationOnRegisters()
 		Postfix = "";
 		If Register.RegisterType = Metadata.ObjectProperties.AccumulationRegisterType.Turnovers Then
 			BalanceAndTurnovers = False;
-			Postfix = NStr("en='revolving accumulation register';ru='оборотный регистр накопления'");
+			Postfix = NStr("en='turnover accumulation register';ru='оборотный регистр накопления'");
 		Else
 			BalanceAndTurnovers = True;
 			Postfix = NStr("en='Accumulation register';ru='Регистр накопления'");

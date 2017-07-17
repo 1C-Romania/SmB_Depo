@@ -186,12 +186,12 @@ Function SearchGoods(SearchString, ErrorDescription) Export
 		
 	ElsIf Result = "TooManyResults" Then
 		
-		ErrorDescription = NStr("en='Too many results. Refine your query.';ru='Слишком много результатов. Уточните запрос.'");
+		ErrorDescription = NStr("en='Too many results. Refine your search.';ru='Слишком много результатов. Уточните запрос.'");
 		Return SearchResult;
 		
 	ElsIf Result = "FoundNothing" Then
 		
-		ErrorDescription = NStr("en='Nothing found';ru='Ничего не найдено'");
+		ErrorDescription = NStr("en='No results found';ru='Ничего не найдено'");
 		Return SearchResult;
 		
 	Else

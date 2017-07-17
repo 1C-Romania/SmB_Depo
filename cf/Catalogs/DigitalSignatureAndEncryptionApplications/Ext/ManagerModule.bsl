@@ -57,7 +57,7 @@ Function SuppliedApllicationSettings(OnlyForInitialFill = False) Export
 	
 	// CryptoPro CSP
 	Setting = Settings.Add();
-	Setting.Presentation       = NStr("en='CryptoPro CSP';ru='КриптоПро CSP'");
+	Setting.Presentation       = NStr("en='CSP CryptoPro';ru='КриптоПро CSP'");
 	Setting.ApplicationName        = "Crypto-Pro GOST R 34.10-2001 Cryptographic Service Provider";
 	Setting.ApplicationType        = 75;
 	Setting.SignAlgorithm     = "GOST R 34.10-2001";
@@ -89,7 +89,7 @@ Function SuppliedApllicationSettings(OnlyForInitialFill = False) Export
 	
 	// SignalCOM CSP (RFC 4357)
 	Setting = Settings.Add();
-	Setting.Presentation       = NStr("en='SignalCOM CSP (RFC 4357)';ru='Сигнал-КОМ CSP (RFC 4357)'");
+	Setting.Presentation       = NStr("en='Signal-COM CSP (RFC 4357)';ru='Сигнал-КОМ CSP (RFC 4357)'");
 	Setting.ApplicationName        = "Signal-COM CPGOST Cryptographic Provider";
 	Setting.ApplicationType        = 75;
 	Setting.SignAlgorithm     = "ECR3410-CP";

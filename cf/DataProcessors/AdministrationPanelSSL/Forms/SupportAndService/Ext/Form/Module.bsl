@@ -172,7 +172,7 @@ Procedure GroupInternetSupportConnectionExtendedTooltipDataProcessorNavigationRe
 	StandardProcessing = False;
 	OnlineUserSupportClient.OpenInternetPage(
 		"https://1c-dn.com/user/profile/",
-		NStr("en='Support of 1C:Enterprise 8 system users';ru='Поддержка пользователей системы 1С:Предприятие 8'"));
+		NStr("en='Support users of 1C:Enterprise 8';ru='Поддержка пользователей системы 1С:Предприятие 8'"));
 	
 EndProcedure
 // SB. End OnlineUserSupport
@@ -214,7 +214,7 @@ Procedure AdditionalReportsOnAdministration(Command)
 	ParametersForm.Insert("DestinationObjects", New ValueList);
 	ParametersForm.Insert("Kind", AdditionalReportsAndDataProcessorsClientServer.DataProcessorKindAdditionalReport());
 	ParametersForm.Insert("WindowOpeningMode", FormWindowOpeningMode.LockOwnerWindow);
-	ParametersForm.Insert("Title", NStr("en='Additional reports on administration';ru='Дополнительные отчеты по администрированию'"));
+	ParametersForm.Insert("Title", NStr("en='Additional administration reports';ru='Дополнительные отчеты по администрированию'"));
 	OpenForm("CommonForm.AdditionalReportsAndDataProcessors", ParametersForm, ThisObject);
 EndProcedure
 // End StandardSubsystems.AdditionalReportsAndDataProcessors
@@ -227,7 +227,7 @@ Procedure AdditionalAdministrativeDataProcessors(Command)
 	ParametersForm.Insert("DestinationObjects", New ValueList);
 	ParametersForm.Insert("Kind", AdditionalReportsAndDataProcessorsClientServer.DataProcessorKindAdditionalInformationProcessor());
 	ParametersForm.Insert("WindowOpeningMode", FormWindowOpeningMode.LockOwnerWindow);
-	ParametersForm.Insert("Title", NStr("en='Additional administrative data processors';ru='Дополнительные обработки по администрированию'"));
+	ParametersForm.Insert("Title", NStr("en='Additional data processors for administration';ru='Дополнительные обработки по администрированию'"));
 	OpenForm("CommonForm.AdditionalReportsAndDataProcessors", ParametersForm, ThisObject);
 EndProcedure
 // End StandardSubsystems.AdditionalReportsAndDataProcessors
@@ -487,11 +487,11 @@ Procedure UpdateConfigurationUpdateSettings()
 	
 	ConfigurationUpdateOptions = ConfigurationUpdate.GetSettingsStructureOfAssistant();
 	
-	ApplicationTitleUpdates = NStr("en='Automatic check for updates is disabled.';ru='Автоматическая проверка обновлений отключена.'");
+	ApplicationTitleUpdates = NStr("en='Auto check for updates is disabled.';ru='Автоматическая проверка обновлений отключена.'");
 	If ConfigurationUpdateOptions.CheckUpdateExistsOnStart = 2 Then
-		ApplicationTitleUpdates = NStr("en='Updates are checked automatically each time the application starts.';ru='Автоматическая проверка обновлений выполняется при каждом запуске программы.'");
+		ApplicationTitleUpdates = NStr("en='Updates are checked automatically every time the application starts.';ru='Автоматическая проверка обновлений выполняется при каждом запуске программы.'");
 	ElsIf ConfigurationUpdateOptions.CheckUpdateExistsOnStart = 1 Then
-		ApplicationTitleUpdates = NStr("en='Updates are checked automatically according to the scheduled: %1.';ru='Автоматическая проверка обновлений выполняется по расписанию: %1.'");
+		ApplicationTitleUpdates = NStr("en='Updates are checked automatically on schedule: %1.';ru='Автоматическая проверка обновлений выполняется по расписанию: %1.'");
 		Schedule = CommonUseClientServer.StructureIntoSchedule(ConfigurationUpdateOptions.ScheduleOfUpdateExistsCheck);
 		ApplicationTitleUpdates = StringFunctionsClientServer.SubstituteParametersInString(ApplicationTitleUpdates, Schedule);
 	EndIf;

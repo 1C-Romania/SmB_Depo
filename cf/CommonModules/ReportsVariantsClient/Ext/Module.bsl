@@ -31,7 +31,7 @@ EndProcedure
 Procedure OpenPlacingVariantsInSectionsDialog(OptionsArray, AdditionalParameters = Undefined, Owner = Undefined) Export
 	
 	If TypeOf(OptionsArray) <> Type("Array") OR OptionsArray.Count() < 1 Then
-		ShowMessageBox(, NStr("en='Select the report variants which are to be placed in the sections.';ru='Выберите варианты отчетов, которые необходимо разместить в разделах.'"));
+		ShowMessageBox(, NStr("en='Select report variants to be placed in sections.';ru='Выберите варианты отчетов, которые необходимо разместить в разделах.'"));
 		Return;
 	EndIf;
 	
@@ -50,7 +50,7 @@ EndProcedure
 Procedure OpenUsersSettingsResetDialog(OptionsArray, Owner = Undefined) Export
 	
 	If TypeOf(OptionsArray) <> Type("Array") OR OptionsArray.Count() < 1 Then
-		ShowMessageBox(, NStr("en='Select report variants that require user settings reset.';ru='Выберите варианты отчетов, для которых необходимо сбросить пользовательские настройки.'"));
+		ShowMessageBox(, NStr("en='Select report variants for which it is required to reset the custom settings.';ru='Выберите варианты отчетов, для которых необходимо сбросить пользовательские настройки.'"));
 		Return;
 	EndIf;
 	
@@ -70,7 +70,7 @@ EndProcedure
 Procedure OpenDirectoryPropertiesResetDialog(OptionsArray, Owner = Undefined) Export
 	
 	If TypeOf(OptionsArray) <> Type("Array") OR OptionsArray.Count() < 1 Then
-		ShowMessageBox(, NStr("en='Select application report variants that require the location settings reset.';ru='Выберите варианты отчетов программы, для которых необходимо сбросить настройки размещения.'"));
+		ShowMessageBox(, NStr("en='Select the application report variants which location settings are to be reset.';ru='Выберите варианты отчетов программы, для которых необходимо сбросить настройки размещения.'"));
 		Return;
 	EndIf;
 	
@@ -141,11 +141,11 @@ Procedure OpenReportOption(Form) Export
 	
 	If Variant = Undefined OR Variant.Ref.IsEmpty() Then
 		
-		ShowMessageBox(, NStr("en='Choose the report version.';ru='Выберите вариант отчета.'"));
+		ShowMessageBox(, NStr("en='Select report variant.';ru='Выберите вариант отчета.'"));
 		
 	ElsIf Variant.ReportType = PredefinedValue("Enum.ReportsTypes.External") Then
 		
-		ShowMessageBox(, NStr("en='External report variant can be opened only out of the report form.';ru='Вариант внешнего отчета можно открыть только из формы отчета.'"));
+		ShowMessageBox(, NStr("en='External report variant can be opened only from the report form.';ru='Вариант внешнего отчета можно открыть только из формы отчета.'"));
 		
 	ElsIf Variant.ReportType = PredefinedValue("Enum.ReportsTypes.Additional") Then
 		
@@ -231,7 +231,7 @@ EndProcedure
 Procedure EditMultilineText(FormOrHandler, EditText, PropsOwner, AttributeName, Val Title = "") Export
 	
 	If IsBlankString(Title) Then
-		Title = NStr("en='Comment';ru='Примечание'");
+		Title = NStr("en='Note';ru='Примечание'");
 	EndIf;
 	
 	SourceParameters = New Structure;

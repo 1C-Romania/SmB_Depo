@@ -262,7 +262,7 @@ Procedure CheckFillOfFormAttributes(Cancel, OnlyPriceKindIsNotFilled = False)
 	If (RefillPrices OR RegisterVendorPrices) AND PriceKindCounterpartyIsAttribute Then
 		If Not ValueIsFilled(CounterpartyPriceKind) Then
 			Message = New UserMessage();
-			Message.Text = NStr("en=""Company's  fill in price type has not been selected!"";ru='Не выбран вид цен контрагента для заполнения!'");
+			Message.Text = NStr("en='Counterparty price kind for population is not selected.';ru='Не выбран вид цен контрагента для заполнения!'");
 			Message.Field = "CounterpartyPriceKind";
 			Message.Message();
   			Cancel = True;
@@ -274,7 +274,7 @@ Procedure CheckFillOfFormAttributes(Cancel, OnlyPriceKindIsNotFilled = False)
 	If DocumentCurrencyIsAttribute Then
 		If Not ValueIsFilled(DocumentCurrency) Then
             Message = New UserMessage();
-			Message.Text = NStr("en='Field Currency is required!';ru='Не заполнена валюта документа!'");
+			Message.Text = NStr("en='Document currency is not filled in.';ru='Не заполнена валюта документа!'");
 			Message.Field = "DocumentCurrency";
 			Message.Message();
 			Cancel = True;
@@ -286,7 +286,7 @@ Procedure CheckFillOfFormAttributes(Cancel, OnlyPriceKindIsNotFilled = False)
 	If VATTaxationIsAttribute Then
 		If Not ValueIsFilled(VATTaxation) Then
             Message = New UserMessage();
-			Message.Text = NStr("en='Field Taxation is required!';ru='Не заполнено налогообложение!'");
+			Message.Text = NStr("en='Taxation is not filled in.';ru='Не заполнено налогообложение!'");
 			Message.Field = "VATTaxation";
 			Message.Message();
 			Cancel = True;
@@ -298,7 +298,7 @@ Procedure CheckFillOfFormAttributes(Cancel, OnlyPriceKindIsNotFilled = False)
 	If ContractIsAttribute Then
 		If Not ValueIsFilled(PaymentsRate) Then
 			Message = New UserMessage();
-			Message.Text = NStr("en='Settlements currency exchange rate is equal to zero!';ru='Обнаружен нулевой курс валюты расчетов!'");
+			Message.Text = NStr("en='Settlements currency exchange rate is zero.';ru='Обнаружен нулевой курс валюты расчетов!'");
 			Message.Field = "PaymentsRate";
 			Message.Message();
 			Cancel = True;
@@ -306,7 +306,7 @@ Procedure CheckFillOfFormAttributes(Cancel, OnlyPriceKindIsNotFilled = False)
 		EndIf;
 		If Not ValueIsFilled(SettlementsMultiplicity) Then
 			Message = New UserMessage();
-			Message.Text = NStr("en='Settlements currency exchange rate multiplicity is equal to zero! ';ru='Обнаружена нулевая кратность курса валюты документа!'");
+			Message.Text = NStr("en='Document currency rate conversion factor is zero.';ru='Обнаружена нулевая кратность курса валюты документа!'");
 			Message.Field = "SettlementsMultiplicity";
 			Message.Message();
 			Cancel = True;
@@ -321,7 +321,7 @@ Procedure CheckFillOfFormAttributes(Cancel, OnlyPriceKindIsNotFilled = False)
 				// You can recalculate the discounts on the discount card in the document.
 			Else
 				Message = New UserMessage();
-				Message.Text = NStr("en='Fill in Price type has not been selected!';ru='Не выбран вид цены для заполнения!'");
+				Message.Text = NStr("en='Price kind for population is not selected.';ru='Не выбран вид цены для заполнения!'");
 				Message.Field = "PriceKind";
 				Message.Message();
 				OnlyPriceKindIsNotFilled = False;

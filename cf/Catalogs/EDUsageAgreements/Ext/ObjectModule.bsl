@@ -41,11 +41,11 @@ Function EDFSettingUnique() Export
 		
 		Selection = Result.Select();
 		While Selection.Next() Do
-			MessagePattern = NStr("en='In infobase EDF setting between counterparty %1 and company %2 has already existed';ru='В информационной базе уже существует настройка ЭДО между контрагентом %1 и организацией %2'");
+			MessagePattern = NStr("en='EDF setting between counterparty %1 and company %2 already exists in the infobase';ru='В информационной базе уже существует настройка ЭДО между контрагентом %1 и организацией %2'");
 			MessageText = StringFunctionsClientServer.SubstituteParametersInString(MessagePattern, Selection.Counterparty,
 				Selection.Company);
 			If ValueIsFilled(Selection.CounterpartyContract) Then
-				Pattern = NStr("en='%1 according to contract %2';ru='%1 по договору %2'");
+				Pattern = NStr("en='%1 under contract %2';ru='%1 по договору %2'");
 				MessageText = StringFunctionsClientServer.SubstituteParametersInString(
 										Pattern, MessageText, Selection.CounterpartyContract);
 			EndIf;

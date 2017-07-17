@@ -75,7 +75,7 @@ Procedure CheckPaymentAmounts(Cancel)
 	
 	If Object.DocumentAmount < Object.PaymentWithPaymentCards.Total("Amount") Then
 		
-		ErrorText = NStr("en='The amount of payment by payment cards exceeds the amount of cheque';ru='Сумма оплаты платежными картами превышает сумму чека'");
+		ErrorText = NStr("en='The amount of payment by payment cards exceeds the total of a receipt';ru='Сумма оплаты платежными картами превышает сумму чека'");
 		
 		Message = New UserMessage;
 		Message.Text = ErrorText;
@@ -270,7 +270,7 @@ Procedure BarcodesAreReceivedFragment(UnknownBarcodes) Export
 	
 	For Each CurUndefinedBarcode IN UnknownBarcodes Do
 		
-		MessageString = NStr("en='Data by barcode is not found: %1%; quantity: %2%';ru='Данные по штрихкоду не найдены: %1%; количество: %2%'");
+		MessageString = NStr("en='Barcode data is not found: %1%; quantity: %2%';ru='Данные по штрихкоду не найдены: %1%; количество: %2%'");
 		MessageString = StrReplace(MessageString, "%1%", CurUndefinedBarcode.Barcode);
 		MessageString = StrReplace(MessageString, "%2%", CurUndefinedBarcode.Quantity);
 		CommonUseClientServer.MessageToUser(MessageString);
@@ -860,7 +860,7 @@ EndProcedure // SetModeOnlyViewing()
 //
 Procedure CancelModeViewOnly()
 	
-	Items.IssueReceipt.Title = NStr("en='Issue receipt';ru='Пробить чек'");
+	Items.IssueReceipt.Title = NStr("en='Issue cash receipt';ru='Пробить чек'");
 	ReadOnly = False;
 	Items.PricesAndCurrency.Enabled = True;
 	Items.InventoryWeight.Enabled = True;
@@ -1051,7 +1051,7 @@ Procedure OnCreateAtServer(Cancel, StandardProcessing)
 	TitlePaymentWithPaymentCards = StrReplace(TitlePaymentWithPaymentCards, "%Currency%", Object.DocumentCurrency);
 	Items.PaymentWithPaymentCardsTotalAmount.ToolTip = TitlePaymentWithPaymentCards;
 	
-	TitleAmountPutting = NStr("ru = 'Сдача (%Currency%)'; en = 'Сдача (%Currency%)'");
+	TitleAmountPutting = NStr("en='Change (%Currency%)';ru='Сдача (%Currency%)'");
 	TitleAmountPutting = StrReplace(TitleAmountPutting, "%Currency%", Object.DocumentCurrency);
 	Items.AmountShortChange.ToolTip = TitleAmountPutting;
 
@@ -1337,7 +1337,7 @@ Procedure GetWeight(Command)
 	
 	If TabularSectionRow = Undefined Then
 		
-		ShowMessageBox(Undefined, NStr("en='It is required to select a line to get weight for it.';ru='Необходимо выбрать строку, для которой необходимо получить вес.'"));
+		ShowMessageBox(Undefined, NStr("en='Select a line for which the weight should be received.';ru='Необходимо выбрать строку, для которой необходимо получить вес.'"));
 		
 	ElsIf EquipmentManagerClient.RefreshClientWorkplace() Then // Checks if the operator's workplace is specified
 		
@@ -1410,7 +1410,7 @@ Procedure IssueReceipt()
 	If Object.ReceiptCRNumber <> 0
 	AND Not CashCRUseWithoutEquipmentConnection Then
 		
-		MessageText = NStr("en='Check has already been issued on the fiscal record!';ru='Чек уже пробит на фискальном регистраторе!'");
+		MessageText = NStr("en='Receipt has already been issued on the fiscal data recorder.';ru='Чек уже пробит на фискальном регистраторе!'");
 		CommonUseClientServer.MessageToUser(MessageText);
 		Return;
 		
@@ -1587,14 +1587,14 @@ Procedure IssueReceipt()
 					
 				Else
 					
-					MessageText = NStr("en='Fiscal registration has not been selected';ru='Не выбран фискальный регистратор'");
+					MessageText = NStr("en='Fiscal data recorder is not selected';ru='Не выбран фискальный регистратор'");
 					CommonUseClientServer.MessageToUser(MessageText);
 					
 				EndIf;
 				
 			Else
 				
-				MessageText = NStr("en='First, you need to select the workplace of the current session peripherals.';ru='Предварительно необходимо выбрать рабочее место внешнего оборудования текущего сеанса.'");
+				MessageText = NStr("en='First, you need to select the work place of the current session peripherals.';ru='Предварительно необходимо выбрать рабочее место внешнего оборудования текущего сеанса.'");
 				CommonUseClientServer.MessageToUser(MessageText);
 				
 			EndIf;
@@ -1620,7 +1620,7 @@ Procedure IssueReceipt()
 		EndIf;
 		
 	ElsIf ShowMessageBox Then
-		ShowMessageBox(Undefined,NStr("en='Failed to post the document';ru='Не удалось выполнить проведение документа'"));
+		ShowMessageBox(Undefined,NStr("en='Failed to post document';ru='Не удалось выполнить проведение документа'"));
 	EndIf;
 	
 EndProcedure // PrintReceipt()
@@ -1640,7 +1640,7 @@ Procedure IssueReceiptExecute(Command)
 	
 	If Object.DeletionMark Then
 		
-		ErrorText = NStr("en='The document is marked for deletion.';ru='Документ помечен на удаление'");
+		ErrorText = NStr("en='The document is marked for deletion';ru='Документ помечен на удаление'");
 		
 		Message = New UserMessage;
 		Message.Text = ErrorText;
@@ -1761,7 +1761,7 @@ Procedure AddPaymentByCard(Command)
 				
 			Else
 				
-				MessageText = NStr("en='First, you need to select the workplace of the current session peripherals.';ru='Предварительно необходимо выбрать рабочее место внешнего оборудования текущего сеанса.'");
+				MessageText = NStr("en='First, you need to select the work place of the current session peripherals.';ru='Предварительно необходимо выбрать рабочее место внешнего оборудования текущего сеанса.'");
 				CommonUseClientServer.MessageToUser(MessageText);
 				
 			EndIf;
@@ -1773,7 +1773,7 @@ Procedure AddPaymentByCard(Command)
 		EndIf;
 		
 	ElsIf ShowMessageBox Then
-		ShowMessageBox(Undefined,NStr("en='Failed to post the document';ru='Не удалось выполнить проведение документа'"));
+		ShowMessageBox(Undefined,NStr("en='Failed to post document';ru='Не удалось выполнить проведение документа'"));
 	EndIf;
 	
 EndProcedure
@@ -1919,7 +1919,7 @@ Procedure DeletePaymentByCard(Command)
 	//Check selected string in payment table by payment cards
 	CurrentData = Items.PaymentWithPaymentCards.CurrentData;
 	If CurrentData = Undefined Then
-		CommonUseClientServer.MessageToUser(NStr("en='Select the string to remove payment card';ru='Выберите строку удаляемой оплаты картой.'"));
+		CommonUseClientServer.MessageToUser(NStr("en='Select a row of deleted payment by card';ru='Выберите строку удаляемой оплаты картой.'"));
 		Return;
 	EndIf;
 	
@@ -2059,14 +2059,14 @@ Procedure DeletePaymentByCard(Command)
 					EndIf;
 				EndIf;
 			Else
-				MessageText = NStr("en='First, you need to select the workplace of the current session peripherals.';ru='Предварительно необходимо выбрать рабочее место внешнего оборудования текущего сеанса.'");
+				MessageText = NStr("en='First, you need to select the work place of the current session peripherals.';ru='Предварительно необходимо выбрать рабочее место внешнего оборудования текущего сеанса.'");
 				
 				CommonUseClientServer.MessageToUser(MessageText);
 			EndIf;
 		EndIf;
 		
 	ElsIf ShowMessageBox Then
-		ShowMessageBox(Undefined,NStr("en='Failed to post the document';ru='Не удалось выполнить проведение документа'"));
+		ShowMessageBox(Undefined,NStr("en='Failed to post document';ru='Не удалось выполнить проведение документа'"));
 	EndIf;
 	
 EndProcedure
@@ -2133,7 +2133,7 @@ Procedure PrintLastSlipReceipt(Command)
 				EndIf;
 			EndIf;
 		Else
-			MessageText = NStr("en='First, you need to select the workplace of the current session peripherals.';ru='Предварительно необходимо выбрать рабочее место внешнего оборудования текущего сеанса.'");
+			MessageText = NStr("en='First, you need to select the work place of the current session peripherals.';ru='Предварительно необходимо выбрать рабочее место внешнего оборудования текущего сеанса.'");
 			
 			CommonUseClientServer.MessageToUser(MessageText);
 		EndIf;
@@ -2424,7 +2424,7 @@ Function PaymentFormOnChangeAtServer(ErrorDescription = "")
 			
 			Object.PaymentForm = Enums.CashAssetTypes.EmptyRef();
 			
-			ErrorDescription = NStr("en='Paid in cash. Cannot set payment method ""in cash""';ru='Проведена оплата платежными картами! Установить форму оплаты ""Наличными"" невозможно'");
+			ErrorDescription = NStr("en='Paid with payment cards. Cannot set the ""In cash"" payment method';ru='Проведена оплата платежными картами! Установить форму оплаты ""Наличными"" невозможно'");
 			Return False;
 			
 		EndIf;
@@ -2881,7 +2881,7 @@ Procedure DiscountCardIsSelectedAdditionally(DiscountCard)
 	PricesAndCurrency = GenerateLabelPricesAndCurrency(LabelStructure);
 	
 	If Object.Inventory.Count() > 0 Then
-		Text = NStr("en='Refill discounts in all rows?';ru='Перезаполнить скидки во всех строках?'");
+		Text = NStr("en='Refill discounts in all lines?';ru='Перезаполнить скидки во всех строках?'");
 		Notification = New NotifyDescription("DiscountCardIsSelectedAdditionallyEnd", ThisObject);
 		ShowQueryBox(Notification, Text, QuestionDialogMode.YesNo, , DialogReturnCode.Yes);
 	EndIf;

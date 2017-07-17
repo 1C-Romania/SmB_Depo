@@ -351,7 +351,7 @@ Procedure InitializeDocumentData(DocumentRefInventoryWriteOff, StructureAddition
 	
 	Query.SetParameter("UseSerialNumbers", StructureAdditionalProperties.AccountingPolicy.UseSerialNumbers);
 
-	Query.SetParameter("InventoryWriteOff", NStr("ru = 'Списание запасов'; en = 'Inventory write off'"));
+	Query.SetParameter("InventoryWriteOff", NStr("en='Inventory write-off';ru='Списание запасов'"));
 	
 	ResultsArray = Query.ExecuteBatch();
 	
@@ -399,7 +399,7 @@ Procedure InitializeDocumentData(DocumentRefInventoryWriteOff, StructureAddition
 	Query.SetParameter("Company", StructureAdditionalProperties.ForPosting.Company);
 	Query.SetParameter("Amount", StructureAdditionalProperties.TableForRegisterRecords.TableInventory.Total("Amount"));
 	
-	Query.SetParameter("ReceiptExpenses", NStr("ru = 'Прочих затраты (расходы)'; en = 'Other expenses'"));
+	Query.SetParameter("ReceiptExpenses", NStr("en='Other costs (expenses)';ru='Прочих затраты (расходы)'"));
 	
 	ResultsArray = Query.ExecuteBatch();
 	
@@ -743,7 +743,7 @@ Procedure AddPrintCommands(PrintCommands) Export
 	
 	PrintCommand = PrintCommands.Add();
 	PrintCommand.ID = "MerchandiseFillingForm";
-	PrintCommand.Presentation = NStr("en='Merchandise filling form';ru='Бланк товарного наполнения'");
+	PrintCommand.Presentation = NStr("en='Goods content form';ru='Бланк товарного наполнения'");
 	PrintCommand.FormsList = "DocumentForm,ListForm";
 	PrintCommand.CheckPostingBeforePrint = False;
 	PrintCommand.Order = 1;

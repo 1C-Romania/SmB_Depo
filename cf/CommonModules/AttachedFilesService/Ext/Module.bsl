@@ -582,7 +582,7 @@ Procedure OnFileSending(DataItem,
 				Except
 					// File may not have been found. Do not abort data sending.
 					WriteLogEvent(
-						NStr("en='Files. Failed to send the file when exchanging the data';ru='Файлы.Не удалось отправить файл при обмене данными'",
+						NStr("en='Files.Cannot send the file during data exchange';ru='Файлы.Не удалось отправить файл при обмене данными'",
 						     CommonUseClientServer.MainLanguageCode()),
 						EventLogLevel.Error,
 						,
@@ -951,7 +951,7 @@ Procedure UpdateBinaryDataOfFileAtServer(Val AttachedFile,
 			Except
 				ErrorInfo = ErrorInfo();
 				WriteLogEvent(
-					NStr("en='Files. The file record on a disk';ru='Файлы.Запись файла на диск'", CommonUseClientServer.MainLanguageCode()),
+					NStr("en='Files.Writing file on disk';ru='Файлы.Запись файла на диск'", CommonUseClientServer.MainLanguageCode()),
 					EventLogLevel.Error,
 					Metadata.Catalogs[FileRef.Metadata().Name],
 					FileRef,
@@ -979,7 +979,7 @@ Procedure UpdateBinaryDataOfFileAtServer(Val AttachedFile,
 			RollbackTransaction();
 		EndIf;
 		WriteLogEvent(
-			NStr("en='Files. Update of the attached file data to the files storage';ru='Файлы.Обновление данных присоединенного файла в хранилище файлов'",
+			NStr("en='Files.Updating the attached file data in the file storage';ru='Файлы.Обновление данных присоединенного файла в хранилище файлов'",
 			     CommonUseClientServer.MainLanguageCode()),
 			EventLogLevel.Error,
 			,
@@ -1230,7 +1230,7 @@ Function ExtractText(Val BinaryData, Val Extension, ExtractedText) Export
 			DeleteFiles(TempFileName);
 		Except
 			WriteLogEvent(
-				NStr("en='Files. Text extraction';ru='Файлы.Извлечение текста'",
+				NStr("en='Files.Text extraction';ru='Файлы.Извлечение текста'",
 				     CommonUseClientServer.MainLanguageCode()),
 				EventLogLevel.Error,
 				,
@@ -1733,7 +1733,7 @@ Procedure PlaceFileIntoCatalogAttribute(DataItem)
 	Except
 		// File may not have been found. Do not abort data sending.
 		WriteLogEvent(
-			NStr("en='Files. Failed to send the file when exchanging the data';ru='Файлы.Не удалось отправить файл при обмене данными'",
+			NStr("en='Files.Cannot send the file during data exchange';ru='Файлы.Не удалось отправить файл при обмене данными'",
 			     CommonUseClientServer.MainLanguageCode()),
 			EventLogLevel.Error,
 			,

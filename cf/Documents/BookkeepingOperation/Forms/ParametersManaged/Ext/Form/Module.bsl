@@ -149,7 +149,7 @@ Function GetParameterTypeDescription(Name, Par = Undefined)
 
 	If ChooseDocumentBase AND Name = "DocumentBase" Then
 		
-		Par = New Structure("Obligatory, LongDescription, Presentation", True, Nstr("en='Document base';pl='Dokument podstawa';ru='Документ-основание'"), Nstr("en='Document base';pl='Dokument podstawa';ru='Документ-основание'"));
+		Par = New Structure("Obligatory, LongDescription, Presentation", True, Nstr("en='Basis document';pl='Dokument podstawa';ru='Документ-основание'"), Nstr("en='Basis document';pl='Dokument podstawa';ru='Документ-основание'"));
 		
 		Return DocumentBaseTypeDescription;
 		

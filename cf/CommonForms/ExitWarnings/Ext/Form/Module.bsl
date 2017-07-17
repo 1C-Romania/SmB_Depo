@@ -130,7 +130,7 @@ Procedure InitItemsInForm(Val Warnings)
 	EndDo;
 	
 	// Footer.
-	LabelText = NStr("en='Do you want to exit the application?';ru='Завершить работу с программой?'");
+	LabelText = NStr("en='Exit the application?';ru='Завершить работу с программой?'");
 	
 	LabelName    = FindLabelNameOnForm("QuestionLabel");
 	LabelsGroup = GenerateFormItemGroup();

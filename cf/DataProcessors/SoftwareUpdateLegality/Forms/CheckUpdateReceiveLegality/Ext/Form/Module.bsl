@@ -10,7 +10,7 @@ Procedure OnCreateAtServer(Cancel, StandardProcessing)
 	
 	If Not Parameters.ProgrammOpening Then
 		Raise
-			NStr("en='Data processor is not aimed for being used directly';ru='Обработка не предназначена для непосредственного использования.'");
+			NStr("en='Data processor is not intended for direct usage.';ru='Обработка не предназначена для непосредственного использования.'");
 	EndIf;
 	
 	SkipRestart = Parameters.SkipRestart;

@@ -10,7 +10,7 @@ Procedure OnCreateAtServer(Cancel, StandardProcessing)
 	
 	Location = Undefined;
 	If Not Parameters.Property("Location", Location) Then
-		Raise NStr("en='Service parameter ""Display"" is not sent.';ru='Не передан служебный параметр ""Отображение"".'");
+		Raise NStr("en='Service parameter ""Display"" is not passed.';ru='Не передан служебный параметр ""Отображение"".'");
 	EndIf;
 	If Location = DataCompositionFieldPlacement.Auto Then
 		GroupLocation = "Auto";
@@ -23,7 +23,7 @@ Procedure OnCreateAtServer(Cancel, StandardProcessing)
 	ElsIf Location = DataCompositionFieldPlacement.SpecialColumn Then
 		GroupLocation = "SpecialColumn";
 	Else
-		Raise StrReplace(NStr("en='Incorrect parameter value ""Location"": ""%1"".';ru='Некорретное значение параметра ""Расположение"": ""%1"".'"), "%1", String(Location));
+		Raise StrReplace(NStr("en='Incorrect value of the ""Location"" parameter: ""%1"".';ru='Некорретное значение параметра ""Расположение"": ""%1"".'"), "%1", String(Location));
 	EndIf;
 EndProcedure
 

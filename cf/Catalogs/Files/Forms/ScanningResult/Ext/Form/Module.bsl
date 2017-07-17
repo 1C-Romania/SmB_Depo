@@ -327,7 +327,7 @@ Procedure AcceptAllAsSeparateFiles(Command)
 		If ErrorsCount = 1 Then
 			Result.OutputWarning.Text = FullAllTextErrors;
 		Else
-			ShortAllTextErrors = StrReplace(NStr("en='During execution, errors occurred (%1).';ru='При выполнении возникли ошибки (%1).'"), "%1", String(ErrorsCount));
+			ShortAllTextErrors = StrReplace(NStr("en='Performing failed (%1).';ru='При выполнении возникли ошибки (%1).'"), "%1", String(ErrorsCount));
 			Result.OutputWarning.Text = ShortAllTextErrors;
 			Result.OutputWarning.ErrorsText = FullAllTextErrors;
 		EndIf;
@@ -730,21 +730,21 @@ Procedure ConvertEnumsToParametersAndGetPresentation()
 		If OnePageStorageFormat = Enums.OnePageFilesStorageFormats.PDF Then
 			PictureFormat = String(FormatOfScannedImage);
 			
-			Presentation = Presentation + NStr("en='Scanning format:';ru='Формат хранения:'") + " ";
+			Presentation = Presentation + NStr("en='Storage format:';ru='Формат хранения:'") + " ";
 			Presentation = Presentation + "PDF";
 			Presentation = Presentation + ". ";
-			Presentation = Presentation + NStr("en='Scanning format:';ru='Формат хранения:'") + " ";
+			Presentation = Presentation + NStr("en='Storage format:';ru='Формат хранения:'") + " ";
 			Presentation = Presentation + PictureFormat;
 			Presentation = Presentation + ". ";
 		Else	
 			PictureFormat = String(OnePageStorageFormat);
-			Presentation = Presentation + NStr("en='Scanning format:';ru='Формат хранения:'") + " ";
+			Presentation = Presentation + NStr("en='Storage format:';ru='Формат хранения:'") + " ";
 			Presentation = Presentation + PictureFormat;
 			Presentation = Presentation + ". ";
 		EndIf;
 	Else	
 		PictureFormat = String(FormatOfScannedImage);
-		Presentation = Presentation + NStr("en='Scanning format:';ru='Формат хранения:'") + " ";
+		Presentation = Presentation + NStr("en='Storage format:';ru='Формат хранения:'") + " ";
 		Presentation = Presentation + PictureFormat;
 		Presentation = Presentation + ". ";
 	EndIf;
@@ -757,7 +757,7 @@ Procedure ConvertEnumsToParametersAndGetPresentation()
 		Presentation = Presentation +  NStr("en='Deflate:';ru='дефлятируем:'") + " " + String(TIFFCompression) + ". ";
 	EndIf;
 	
-	Presentation = Presentation + NStr("en='Multipage storage format:';ru='Формат хранения многостраничный:'") + " ";
+	Presentation = Presentation + NStr("en='Multi-page storage format:';ru='Формат хранения многостраничный:'") + " ";
 	Presentation = Presentation + String(MultiPageStorageFormat);
 	Presentation = Presentation + ". ";
 	
@@ -774,7 +774,7 @@ Procedure ConvertEnumsToParametersAndGetPresentation()
 	EndIf;	
 	
 	If DoubleSidedScan = True Then
-		Presentation = Presentation +  NStr("en='Double sided scanning';ru='Двустороннее сканирование'") + ". ";
+		Presentation = Presentation +  NStr("en='Scan both sides';ru='Двустороннее сканирование'") + ". ";
 	EndIf;	
 	
 	SettingsText = Presentation;

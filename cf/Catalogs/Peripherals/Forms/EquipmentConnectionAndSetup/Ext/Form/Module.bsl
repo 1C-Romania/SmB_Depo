@@ -248,7 +248,7 @@ Procedure RefreshWorkingPlaceParameters()
 	EndIf;
 	
 	If IsBlankString(Title) Then
-		Title = NStr("en='Connect and set equipment for workplace';ru='Подключение и настройка оборудования для РМ'") + " """
+		Title = NStr("en='Connect and install equipment for work place';ru='Подключение и настройка оборудования для РМ'") + " """
 		          + String(CurrentWorksPlace) + """";
 		DeviceList.Filter.Items[1].RightValue = CurrentWorksPlace;
 	EndIf;

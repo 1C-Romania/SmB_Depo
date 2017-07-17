@@ -45,7 +45,7 @@ Function GetRefByIdentifier(ObjectManager, Val GUIDString)
 		ObjectReference = ObjectManager.GetRef(NewGUID);
 	Except
 		ErrorDescription = ErrorInfo();
-		WriteLogEvent(NSTr("en='GetPictureProc: failed to receive object by ID.';ru='GetPicture: не удалось получить объект по идентификатору.'"), EventLogLevel.Error,,, ErrorDescription.Definition);
+		WriteLogEvent(NSTr("en='GetPictureProc: cannot receive object by ID.';ru='GetPicture: не удалось получить объект по идентификатору.'"), EventLogLevel.Error,,, ErrorDescription.Definition);
 		Raise;
 	EndTry;
 	
@@ -785,7 +785,7 @@ Function ExportOrders(OrdersDataXDTO)
 	
 	If Not ExchangeWithSite.ExportOrders(OrdersDataXDTO, StatisticsStructure, Parameters, ErrorDescription) Then 
 		
-		ExchangeWithSite.AddErrorDescriptionFull(ErrorDescription, NStr("en='Failed to process documents, exported from server.';ru='Не удалось обработать документы, загруженные с сервера.'"));
+		ExchangeWithSite.AddErrorDescriptionFull(ErrorDescription, NStr("en='Failed to process the documents downloaded from the server.';ru='Не удалось обработать документы, загруженные с сервера.'"));
 		HasErrors = True;
 		
 	EndIf;
@@ -816,7 +816,7 @@ Function GetFileBinaryData(FileData)
 		If FileBinaryData = Undefined Then
 			
 			ErrorDescription = ErrorInfo();
-			WriteLogEvent(StringFunctionsClientServer.SubstituteParametersInString(NSTr("en='GetPictureProc: failed to get file data %1 of products and services %2.';ru='GetPicture: не удалось получить данные файла %1 номенклатуры %2.'"),
+			WriteLogEvent(StringFunctionsClientServer.SubstituteParametersInString(NSTr("en='GetPictureProc: cannot receive the %1 file data of the %2 products and services.';ru='GetPicture: не удалось получить данные файла %1 номенклатуры %2.'"),
 				FileData.File,
 				FileData.ProductsAndServices),
 				EventLogLevel.Error,,,

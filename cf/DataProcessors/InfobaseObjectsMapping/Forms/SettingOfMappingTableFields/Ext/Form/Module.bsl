@@ -25,14 +25,14 @@ Procedure Apply(Command)
 	
 	If MarkedListItemArray.Count() = 0 Then
 		
-		NString = NStr("en='You should set at least one field';ru='Следует указать хотя бы одно поле'");
+		NString = NStr("en='Specify at least one field';ru='Следует указать хотя бы одно поле'");
 		
 		CommonUseClientServer.MessageToUser(NString,,"FieldList",, Cancel);
 		
 	ElsIf MarkedListItemArray.Count() > MaximumQuantityOfCustomFields() Then
 		
 		// Value can not be greater than the set one.
-		MessageString = NStr("en='Reduce the field quantity (you can select no more than [FieldQuantity] fields)';ru='Уменьшите количество полей (можно выбирать не более [КоличествоПолей] полей)'");
+		MessageString = NStr("en='Reduce the number of fields (select no more than [FieldQuantity] fields)';ru='Уменьшите количество полей (можно выбирать не более [КоличествоПолей] полей)'");
 		MessageString = StrReplace(MessageString, "[FieldsCount]", String(MaximumQuantityOfCustomFields()));
 		CommonUseClientServer.MessageToUser(MessageString,,"FieldList",, Cancel);
 		

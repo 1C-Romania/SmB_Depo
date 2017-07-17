@@ -348,7 +348,7 @@ Procedure CreateAcceptanceCertificate(Command)
 	
 	If Items.ListCustomerOrders.CurrentData = Undefined Then
 		
-		WarningText = NStr("en='Command can not be executed for the specified object';ru='Команда не может быть выполнена для указанного объекта!'");
+		WarningText = NStr("en='Command cannot be executed for the specified object.';ru='Команда не может быть выполнена для указанного объекта!'");
 		ShowMessageBox(Undefined,WarningText);
 		Return;
 		
@@ -366,7 +366,7 @@ Procedure CreateAcceptanceCertificate(Command)
 		DataStructure = CheckKeyAttributesOfOrders(OrdersArray);
 		If DataStructure.GenerateFewOrders Then
 			
-			MessageText = NStr("en='The orders differ by data (%DataPresentation%) of the documents header! Form some acceptance certificates?';ru='Заказы отличаются данными (%ПредставлениеДанных%) шапки документов! Сформировать несколько актов выполненных работ?'");
+			MessageText = NStr("en='The orders have different data (%DataPresentation%) in document headers. Create multiple acceptance certificates?';ru='Заказы отличаются данными (%ПредставлениеДанных%) шапки документов! Сформировать несколько актов выполненных работ?'");
 			MessageText = StrReplace(MessageText, "%DataPresentation%", DataStructure.DataPresentation);
 			Response = Undefined;
 
@@ -394,7 +394,7 @@ Procedure CreateAcceptanceCertificateEnd(Result, AdditionalParameters) Export
     If Response = DialogReturnCode.Yes Then
         
         SalesDodumentsArray = GenerateSalesDocumentsAndWrite(OrdersArray);
-        Text = NStr("en='Creating:';ru='Создание:'");
+        Text = NStr("en='Created:';ru='Создание:'");
         For Each RowDocumentSales IN SalesDodumentsArray Do
             
             ShowUserNotification(Text, GetURL(RowDocumentSales), RowDocumentSales, PictureLib.Information32);

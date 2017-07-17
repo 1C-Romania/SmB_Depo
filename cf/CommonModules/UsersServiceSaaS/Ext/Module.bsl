@@ -48,7 +48,7 @@ Function GetActionsWithServiceUser(Val User = Undefined) Export
 			If IsRightToAddUsers() Then
 				Return ActionsWithNewServiceUser();
 			Else
-				Raise NStr("en='Insufficient access rights to add the new users';ru='Недостаточно прав доступа для добавления новых пользователей'");
+				Raise NStr("en='Insufficient access rights to add users';ru='Недостаточно прав доступа для добавления новых пользователей'");
 			EndIf;
 			
 		EndIf;
@@ -183,7 +183,7 @@ Procedure BeforeStartIBUserProcessor(UserObject, ProcessingParameters) Export
 	If TypeOf(UserObject) = Type("CatalogObject.ExternalUsers")
 	   AND CommonUseReUse.DataSeparationEnabled() Then
 		
-		Raise NStr("en='The service model does not support external users.';ru='Внешние пользователи не поддерживаются в модели сервиса.'");
+		Raise NStr("en='External users are not supported in SaaS.';ru='Внешние пользователи не поддерживаются в модели сервиса.'");
 	EndIf;
 	
 	AutoAttributes.Insert("ServiceUserID", OldUser.ServiceUserID);
@@ -641,7 +641,7 @@ Function XDTOObjectAccessRightsToActionsWithServiceUser(Factory, XDTOObjectAcces
 			CIKind = SaaSReUse.AccordanceCIXDTOTypesToUserCI().Get(
 				AccessRightsOfXDTOObject.Object.ContactType);
 			If CIKind = Undefined Then
-				MessagePattern = NStr("en='An unknown contact information type was received: %1';ru='Получен неизвестный вид контактной информации: %1'");
+				MessagePattern = NStr("en='Unknown contact information kind was received: %1';ru='Получен неизвестный вид контактной информации: %1'");
 				MessageText = StringFunctionsClientServer.SubstituteParametersInString(
 					MessagePattern, AccessRightsOfXDTOObject.Object.ContactType);
 				Raise(MessageText);
@@ -655,7 +655,7 @@ Function XDTOObjectAccessRightsToActionsWithServiceUser(Factory, XDTOObjectAcces
 				EndIf;
 			EndDo;
 		Else
-			MessagePattern = NStr("en='An unknown type of access objects was received: %1';ru='Получен неизвестный тип объектов доступа: %1'");
+			MessagePattern = NStr("en='Unknown access object type received: %1';ru='Получен неизвестный тип объектов доступа: %1'");
 			MessageText = StringFunctionsClientServer.SubstituteParametersInString(
 				MessagePattern, CommonUse.XDTOTypePresentation(AccessRightsOfXDTOObject.Object.Type()));
 			Raise(MessageText);

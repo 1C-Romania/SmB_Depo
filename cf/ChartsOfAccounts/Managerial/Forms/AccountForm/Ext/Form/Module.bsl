@@ -183,10 +183,10 @@ Procedure FormManagement()
 		Items.MethodOfDistribution.ChoiceList.Add(Enums.CostingBases.DoNotDistribute);
 		Items.ClosingAccount.ToolTip = ?(
 			UseBudgeting,
-			NStr("en='Automatic closing account when closing the month and budgeting';ru='Счет автоматического закрытия при закрытии месяца и бюджетировании'"),
-			NStr("en='Automatic closing account at the month closing';ru='Счет автоматического закрытия при закрытии месяца'")
+			NStr("en='Auto closing account on month closing and budgeting';ru='Счет автоматического закрытия при закрытии месяца и бюджетировании'"),
+			NStr("en='Auto closing account on month closing';ru='Счет автоматического закрытия при закрытии месяца'")
 		);
-		Items.MethodOfDistribution.ToolTip = NStr("en='Method of automatic distribution on the output costs when closing the month';ru='Способ автоматического распределения на себестоимость выпущенной продукции при закрытии месяца'"
+		Items.MethodOfDistribution.ToolTip = NStr("en='Method of automatic allocation to the cost of released products on month-end closing';ru='Способ автоматического распределения на себестоимость выпущенной продукции при закрытии месяца'"
 		);
 	ElsIf Object.TypeOfAccount =  Enums.GLAccountsTypes.UnfinishedProduction Then
 		Items.ClosingAccount.Visible = True;
@@ -197,10 +197,10 @@ Procedure FormManagement()
 		Items.MethodOfDistribution.ChoiceList.Add(Enums.CostingBases.DoNotDistribute);
 		Items.ClosingAccount.ToolTip = ?(
 			UseBudgeting,
-			NStr("en='Automatic closing account when closing the month and budgeting';ru='Счет автоматического закрытия при закрытии месяца и бюджетировании'"),
-			NStr("en='Automatic closing account at the month closing';ru='Счет автоматического закрытия при закрытии месяца'")
+			NStr("en='Auto closing account on month closing and budgeting';ru='Счет автоматического закрытия при закрытии месяца и бюджетировании'"),
+			NStr("en='Auto closing account on month closing';ru='Счет автоматического закрытия при закрытии месяца'")
 		);
-		Items.MethodOfDistribution.ToolTip = NStr("en='The method of an automatic distribution to the cost of the output production at closing the month for intangible costs';ru='Способ автоматического распределения на себестоимость выпущенной продукции при закрытии месяца для нематериальных затрат'"
+		Items.MethodOfDistribution.ToolTip = NStr("en='Method of automatic allocation to the cost of released products at month-end closing for intangible costs';ru='Способ автоматического распределения на себестоимость выпущенной продукции при закрытии месяца для нематериальных затрат'"
 		);
 	ElsIf (TypeOfAccount <>  Enums.GLAccountsTypes.OtherIncome
 		   OR TypeOfAccount <>  Enums.GLAccountsTypes.OtherExpenses
@@ -219,11 +219,11 @@ Procedure FormManagement()
 		Items.MethodOfDistribution.ChoiceList.Add(Enums.CostingBases.SalesRevenue);
 		Items.MethodOfDistribution.ChoiceList.Add(Enums.CostingBases.CostOfGoodsSold);
 		Items.MethodOfDistribution.ChoiceList.Add(Enums.CostingBases.GrossProfit);
-		Items.MethodOfDistribution.ChoiceList.Add(Enums.CostingBases.DoNotDistribute, "Direct Distribution");
+		Items.MethodOfDistribution.ChoiceList.Add(Enums.CostingBases.DoNotDistribute, NStr("en='Direct allocation'"));
 		Items.MethodOfDistribution.ToolTip = ?(
 			UseBudgeting,
-			NStr("en='Method of an automatic distribution on the financial result when closing the month and budgeting';ru='Способ автоматического распределения на финансовый результат при закрытии месяца и бюджетировании'"),
-			NStr("en='Method of an automatic distribution on the financial result when the month closing';ru='Способ автоматического распределения на финансовый результат при закрытии месяца'")
+			NStr("en='Method of automatic allocation to the financial result on month-end closing and budgeting';ru='Способ автоматического распределения на финансовый результат при закрытии месяца и бюджетировании'"),
+			NStr("en='Method of automatic allocation to the financial result on month-end closing';ru='Способ автоматического распределения на финансовый результат при закрытии месяца'")
 		);
 	Else
 		Items.MethodOfDistribution.Visible = False;

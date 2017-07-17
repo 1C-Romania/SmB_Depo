@@ -99,7 +99,7 @@ Function IsDocumentsForSigning()
 		CertificatesTable[0], Items.CertificatesTable.CurrentData);
 	
 	If CheckData.DocumentsCount = 0 Then
-		WarningText = NStr("en='No documents to be signed up by this certificate';ru='По данному сертификату нет документов на подпись'");
+		WarningText = NStr("en='No documents to be signed for this certificate';ru='По данному сертификату нет документов на подпись'");
 		ShowMessageBox(, WarningText);
 		Return False;
 	EndIf;
@@ -113,14 +113,14 @@ Procedure GoToPage(ToDrillDown)
 	
 	If ToDrillDown Then
 		Items.APMPages.CurrentPage = Items.APMPages.ChildItems.DetalizationPage;
-		Title = NStr("en='Documents for signature by certificate';ru='Документы на подпись по сертификату'")+ ": " + SignatureCertificate;
+		Title = NStr("en='Documents for signing according to the certificate';ru='Документы на подпись по сертификату'")+ ": " + SignatureCertificate;
 	Else
 		Items.APMPages.CurrentPage = Items.APMPages.ChildItems.PageSummary;
-		Title = NStr("en='Documents for signature';ru='Документы на подпись'");
+		Title = NStr("en='Documents for signing';ru='Документы на подпись'");
 	EndIf;
 	
 	If ThisCertificateOfSberbank(SignatureCertificate) Then
-		Items.Sign.Title = NStr("en='Sign marked';ru='Подписать отмеченные'");
+		Items.Sign.Title = NStr("en='Sign selected';ru='Подписать отмеченные'");
 	Else
 		Items.Sign.Title = NStr("en='Sign up and send the selected';ru='Подписать и отправить отмеченные'");
 	EndIf;
@@ -166,13 +166,13 @@ EndFunction
 &AtClient
 Procedure NotifyUser(DigitallySignedCnt, PreparedCnt, SentCnt)
 	
-	StatusText = NStr("en='Arbitrary EDs digitally signed: (%1)';ru='Подписано произвольных ЭД: (%1)'");
+	StatusText = NStr("en='Arbitrary digitally signed EDs: (%1)';ru='Подписано произвольных ЭД: (%1)'");
 	Quantity = 0;
 	If SentCnt > 0 Then
 		StatusText = StatusText + Chars.LF + NStr("en='Sent: (%2)';ru='Отправлено: (%2)'");
 		Quantity = SentCnt;
 	ElsIf PreparedCnt > 0 Then
-		StatusText = NStr("en='Prepared for sending: (%2)';ru='Подготовлено к отправке: (%2)'");
+		StatusText = NStr("en='Prepared for dispatch: (%2)';ru='Подготовлено к отправке: (%2)'");
 		Quantity = PreparedCnt;
 	EndIf;
 	HeaderText = NStr("en='Electronic document exchange';ru='Обмен электронными документами'");

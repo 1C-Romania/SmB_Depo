@@ -40,7 +40,7 @@ Procedure OnExit(Warnings) Export
 	
 	UserWarning = StandardSubsystemsClient.AlertOnEndWork();
 	UserWarning.HyperlinkText = StringFunctionsClientServer.SubstituteParametersInString(
-		NStr("en='Open the list of the edited files (%1)';ru='Открыть список редактируемых файлов (%1)'"),
+		NStr("en='Open list of edited files (%1)';ru='Открыть список редактируемых файлов (%1)'"),
 		Response.CountEmployedFiles);
 	
 	ActionOnHyperlinkClick = UserWarning.ActionOnHyperlinkClick;
@@ -140,7 +140,7 @@ Procedure ReleaseFileWithoutQuestion(FileData, UUID = Undefined) Export
 		ReregisterFileInWorkingDirectory(FileData, True, FileData.OwnerWorkingDirectory <> "");
 	EndIf;
 	
-	ShowUserNotification(NStr("en='File released';ru='Файл освобожден'"),
+	ShowUserNotification(NStr("en='File is released';ru='Файл освобожден'"),
 		FileData.URL, FileData.FullDescrOfVersion, PictureLib.Information32);
 	
 EndProcedure
@@ -160,7 +160,7 @@ Procedure MoveFilesToFolder(ObjectsRef, Folder) Export
 	For Each FileData IN DataFiles Do
 		
 		ShowUserNotification(
-			NStr("en='File transfer';ru='Перенос файла'"),
+			NStr("en='Transfer file';ru='Перенос файла'"),
 			FileData.URL,
 			StringFunctionsClientServer.SubstituteParametersInString(
 				NStr("en='The
@@ -522,7 +522,7 @@ Procedure FinishEditingWithExtensionAfterDeletingFileFromWorkingDirectory(Result
 		EndIf;
 		
 		ShowUserNotification(
-			NStr("en='Editing completed';ru='Редактирование закончено'"),
+			NStr("en='Editing is complete';ru='Редактирование закончено'"),
 			ExecuteParameters.FileData.URL,
 			StringFunctionsClientServer.SubstituteParametersInString(
 				ExplanationTemplate, String(ExecuteParameters.FileData.Ref)),
@@ -798,7 +798,7 @@ Procedure FinishEditingWithoutExtensionAfterEncryptingFile(DataDescription, Exec
 		EndIf;
 		
 		ShowUserNotification(
-			NStr("en='Editing completed';ru='Редактирование закончено'"),
+			NStr("en='Editing is complete';ru='Редактирование закончено'"),
 			ExecuteParameters.FileData.URL,
 			StringFunctionsClientServer.SubstituteParametersInString(
 				ExplanationTemplate, String(ExecuteParameters.FileData.Ref)),
@@ -884,7 +884,7 @@ Procedure UpdateFromFileOnDrive(ResultHandler, FileData, FormID) Export
 		#If Not WebClient Then
 			If StandardSubsystemsClientReUse.ClientWorkParameters().ThisIsBasicConfigurationVersion Then
 				CommonUseClientServer.MessageToUser(
-					NStr("en='This command is not supported in the basic version.';ru='Данная команда не поддерживается в базовой версии.'"));
+					NStr("en='This command is not supported in base version.';ru='Данная команда не поддерживается в базовой версии.'"));
 				ReturnResult(ResultHandler, False);
 				Return;
 			EndIf;
@@ -916,7 +916,7 @@ Procedure UpdateFromFileOnDrive(ResultHandler, FileData, FormID) Export
 	EndIf;
 	
 	If ValueIsFilled(ExtensionForEncryptedFiles) Then
-		Filter = NStr("en='File (*.%1)|*.%1|Encrypted file (*.%2)|*.%2|All files (*.*)|*.*';ru='Файл (*.%1)|*.%1|Зашифрованный файл (*.%2)|*.%2|Все файлы (*.*)|*.*'");
+		Filter = NStr("en='File *.%1)|*.%1|Encrypted file (*.%2)|*.%2|All files (*.*)|*.*';ru='Файл (*.%1)|*.%1|Зашифрованный файл (*.%2)|*.%2|Все файлы (*.*)|*.*'");
 	Else
 		Filter = NStr("en='File (*.%1)|*.%1|All files (*.*)|*.*';ru='Файл (*.%1)|*.%1|Все файлы (*.*)|*.*'");
 	EndIf;
@@ -1289,7 +1289,7 @@ Procedure LockFileByRefAfterInstallingExtension(ExtensionIsSet, ExecuteParameter
 	EndIf;
 	
 	ShowUserNotification(
-		NStr("en='File editing';ru='Редактирование файла'"),
+		NStr("en='Edit file';ru='Редактирование файла'"),
 		ExecuteParameters.FileData.URL,
 		StringFunctionsClientServer.SubstituteParametersInString(
 			NStr("en='The
@@ -1360,10 +1360,10 @@ Procedure LockFilesByReferencesAfterInstallingExtension(ExtensionIsSet, ExecuteP
 	EndDo;
 	
 	ShowUserNotification(
-		NStr("en='Lock the files';ru='Занять файлы'"),
+		NStr("en='Lock files';ru='Занять файлы'"),
 		,
 		StringFunctionsClientServer.SubstituteParametersInString(
-			NStr("en='Files (%1 from %2) are busy for editing.';ru='Файлы (%1 из %2) заняты для редактирования.'"),
+			NStr("en='Files (%1 of %2) are locked for editing.';ru='Файлы (%1 из %2) заняты для редактирования.'"),
 			LockedCount,
 			ExecuteParameters.FilesArray.Count()),
 		PictureLib.Information32);
@@ -1434,7 +1434,7 @@ Procedure EditFileByRefAfterInstallingExtension(ExtensionIsSet, ExecuteParameter
 	EndIf;
 	
 	ShowUserNotification(
-		NStr("en='File editing';ru='Редактирование файла'"),
+		NStr("en='Edit file';ru='Редактирование файла'"),
 		ExecuteParameters.FileData.URL,
 		StringFunctionsClientServer.SubstituteParametersInString(
 			NStr("en='The
@@ -1727,9 +1727,9 @@ Procedure UnlockFilesByReferencesAfterAnswerToQuestionCancelEditing(Response, Ex
 	EndDo;
 	
 	ShowUserNotification(
-		NStr("en='Cancel the file editing';ru='Отменить редактирование файлов'"),,
+		NStr("en='Cancel file editing';ru='Отменить редактирование файлов'"),,
 		StringFunctionsClientServer.SubstituteParametersInString(
-			NStr("en='File editing is cancelled (%1 of %2).';ru='Отменено редактирование файлов (%1 из %2).'"),
+			NStr("en='File editing is canceled (%1 of %2).';ru='Отменено редактирование файлов (%1 из %2).'"),
 			ExecuteParameters.DataFiles.Count(),
 			ExecuteParameters.FilesArray.Count()),
 		PictureLib.Information32);
@@ -1858,7 +1858,7 @@ Procedure UnlockFileAfterAnswerToQuestionCancelEdit(Response, ExecuteParameters)
 		
 		If Not ExecuteParameters.DoNotAskQuestion Then
 			ShowUserNotification(
-				NStr("en='File released';ru='Файл освобожден'"),
+				NStr("en='File is released';ru='Файл освобожден'"),
 				ExecuteParameters.FileData.URL,
 				ExecuteParameters.FileData.FullDescrOfVersion,
 				PictureLib.Information32);
@@ -2153,14 +2153,14 @@ Procedure SaveFileChangesWithExtensionAfterCheckingEncrypted(NOTSpecified, Execu
 	If ExecuteParameters.ShowAlert Then
 		If VersionUpdated Then
 			ShowUserNotification(
-				NStr("en='New version has been saved';ru='Новая версия сохранена'"),
+				NStr("en='New version is saved';ru='Новая версия сохранена'"),
 				ExecuteParameters.FileData.URL,
 				ExecuteParameters.FileData.FullDescrOfVersion,
 				PictureLib.Information32);
 		Else
 			ShowUserNotification(
-				NStr("en='The new version is not saved';ru='Новая версия не сохранена'"),,
-				NStr("en=""File didn't change"";ru='Файл не изменился'"),
+				NStr("en='New version is not saved';ru='Новая версия не сохранена'"),,
+				NStr("en='File is not changed';ru='Файл не изменился'"),
 				PictureLib.Information32);
 			Handler = New NotifyDescription("SaveFileChangesWithExtensionAfterShowingNotification", ThisObject, ExecuteParameters);
 			ShowInformationFileWasNotChanged(Handler);
@@ -2378,7 +2378,7 @@ Procedure SaveFileChangesWithoutExtensionAfterEncryptingFile(DataDescription, Ex
 	ExecuteParameters.FileData = Result.FileData;
 	If ExecuteParameters.ShowAlert Then
 		ShowUserNotification(
-			NStr("en='New version has been saved';ru='Новая версия сохранена'"),
+			NStr("en='New version is saved';ru='Новая версия сохранена'"),
 			ExecuteParameters.FileData.URL,
 			ExecuteParameters.FileData.FullDescrOfVersion,
 			PictureLib.Information32);
@@ -2513,7 +2513,7 @@ Procedure LockFileAfterSettingExtension(ExtensionIsSet, ExecuteParameters) Expor
 	EndIf;
 	
 	ShowUserNotification(
-		NStr("en='File editing';ru='Редактирование файла'"),
+		NStr("en='Edit file';ru='Редактирование файла'"),
 		ExecuteParameters.FileData.URL,
 		StringFunctionsClientServer.SubstituteParametersInString(
 			NStr("en='The
@@ -2571,8 +2571,8 @@ Procedure ReleaseFiles(ResultHandler, ObjectsRef) Export
 		QuestionWithListDialog(
 			Handler,
 			ListImpossibleRelease,
-			NStr("en='Do you want to unlock the files left?';ru='Освободить остальные файлы?'"),
-			NStr("en='When attempting to unlock the file, the following errors occurred:';ru='При попытке освободить файлы возникли следующие ошибки:'"),
+			NStr("en='Unlock the files left?';ru='Освободить остальные файлы?'"),
+			NStr("en='The following errors occurred while trying to unlock the files:';ru='При попытке освободить файлы возникли следующие ошибки:'"),
 			NStr("en='Unlock files';ru='Освободить файлы'"));
 	Else
 		ShowQueryBox(
@@ -2611,7 +2611,7 @@ Procedure UnlockFilesAfterReplyToQuestion(Response, ExecuteParameters) Export
 		EndIf;
 		
 		ShowUserNotification(
-			NStr("en='File released';ru='Файл освобожден'"),
+			NStr("en='File is released';ru='Файл освобожден'"),
 			FileData.URL,
 			FileData.FullDescrOfVersion,
 			PictureLib.Information32);
@@ -3093,7 +3093,7 @@ Procedure FreePlaceInWorkingDirectory(ResultHandler, VersionAttributes)
 		// Impossible to determine the amount of free space on disk in web client.
 		ReturnResultAfterShowWarning(
 			ResultHandler,
-			NStr("en='Working directory clearing is not supported in web client.';ru='Очистка рабочего каталога не поддерживается в веб-клиенте.'"),
+			NStr("en='Working directory cleanup is not supported in web client.';ru='Очистка рабочего каталога не поддерживается в веб-клиенте.'"),
 			Undefined);
 		Return;
 	#EndIf
@@ -3134,7 +3134,7 @@ EndProcedure
 Procedure ClearWorkingDirectory(ResultHandler, FilesSizeInWorkingDirectory, AddedFileSize, ToClearAll) Export
 	
 	#If WebClient Then
-		ReturnResultAfterShowWarning(ResultHandler, NStr("en='Working directory clearing is not supported in web client.';ru='Очистка рабочего каталога не поддерживается в веб-клиенте.'"), Undefined);
+		ReturnResultAfterShowWarning(ResultHandler, NStr("en='Working directory cleanup is not supported in web client.';ru='Очистка рабочего каталога не поддерживается в веб-клиенте.'"), Undefined);
 		Return;
 	#EndIf
 	
@@ -3262,9 +3262,9 @@ Procedure ClearWorkingDirectoryCycleHandler(ExecuteParameters)
 			
 			Buttons = New ValueList;
 			Buttons.Add("Yes",         NStr("en='Yes';ru='Да'"));
-			Buttons.Add("YesForAll",  NStr("en='Yes for all';ru='Да для всех'"));
+			Buttons.Add("YesForAll",  NStr("en='Yes to all';ru='Да для всех'"));
 			Buttons.Add("No",        NStr("en='No';ru='Нет'"));
-			Buttons.Add("NoForAll", NStr("en='Not for all';ru='Нет для всех'"));
+			Buttons.Add("NoForAll", NStr("en='No for all';ru='Нет для всех'"));
 			
 			ShowQueryBox(PrepareHandlerForDialog(ExecuteParameters), QuestionText, Buttons);
 			Return;
@@ -3278,9 +3278,9 @@ Procedure ClearWorkingDirectoryCycleHandler(ExecuteParameters)
 		FileOnDrive = New File(FullPath);
 		FileOnDrive.SetReadOnly(False);
 		If ExecuteParameters.ToClearAll = False Then
-			QuestionHeader = NStr("en='Work directory is cleared when adding the file.';ru='Выполняется очистка рабочего каталога при добавлении файла.'");
+			QuestionHeader = NStr("en='Clearing the working directory while adding a file.';ru='Выполняется очистка рабочего каталога при добавлении файла.'");
 		Else
-			QuestionHeader = NStr("en='Work directory is being cleared.';ru='Выполняется очистка рабочего каталога.'");
+			QuestionHeader = NStr("en='Clearing the working directory.';ru='Выполняется очистка рабочего каталога.'");
 		EndIf;
 		
 		DeleteFile(ExecuteParameters, FullPath, Undefined, QuestionHeader);
@@ -3456,7 +3456,7 @@ Procedure GetFromServerAndRegisterInLocalFilesCacheStart(ExecuteParameters)
 						ExecuteParameters.FullFileName);
 					
 					MessageText = MessageText + Chars.CR + Chars.CR
-						+ NStr("en='Change the attachment file name for the shorter.';ru='Измените имя файла на более короткое.'");
+						+ NStr("en='Replace the file name with a shorter one.';ru='Измените имя файла на более короткое.'");
 					ReturnResultAfterShowWarning(ExecuteParameters.ResultHandler, MessageText, ExecuteParameters);
 					Return;
 				EndIf;
@@ -3477,10 +3477,7 @@ EndProcedure
 Procedure GetFromServerAndRegisterInLocalFilesCacheOfferToSelectDirectory(Response, ExecuteParameters) Export
 	
 	QuestionText = StringFunctionsClientServer.SubstituteParametersInString(
-		NStr("en='The length of path exceeds
-		|%1
-		|
-		| characters: %2 Choose another default working directory?';ru='Длина пути к файлу превышает %1 символов: %2 Выбрать другой основной рабочий каталог?'"),
+		NStr("en='File path length exceeds %1 characters: %2 Choose another working directory?';ru='Длина пути к файлу превышает %1 символов: %2 Выбрать другой основной рабочий каталог?'"),
 		ExecuteParameters.FullPathMaxLength,
 		ExecuteParameters.FullFileName);
 	Handler = New NotifyDescription("GetFromServerAndRegisterInLocalFilesCacheStartDirectorySelection", ThisObject, ExecuteParameters);
@@ -3497,7 +3494,7 @@ Procedure GetFromServerAndRegisterInLocalFilesCacheStartDirectorySelection(Respo
 	EndIf;
 	
 	// Choose another path to the working directory.
-	Title = NStr("en='Select another main work catalog';ru='Выберите другой основной рабочий каталог'");
+	Title = NStr("en='Select another main working directory';ru='Выберите другой основной рабочий каталог'");
 	DirectorySelected = ChoosePathToWorkingDirectory(ExecuteParameters.DirectoryName, Title, False);
 	If Not DirectorySelected Then
 		ReturnResult(ExecuteParameters.ResultHandler, ExecuteParameters);
@@ -4158,7 +4155,7 @@ Procedure CheckFullPathMaxLengthInWorkingDirectoryStart(ExecuteParameters)
 	// If  file  name plus 5 exceeds 260 - write "Change attachment file name to a shorter one. OK" and exit.
 	If StrLen(ExecuteParameters.NormalFileName) > FileNameMaxLength Then
 		MessageText = MessageText + Chars.CR + Chars.CR
-			+ NStr("en='Change the attachment file name for the shorter.';ru='Измените имя файла на более короткое.'");
+			+ NStr("en='Replace the file name with a shorter one.';ru='Измените имя файла на более короткое.'");
 		ReturnResultAfterShowWarning(ExecuteParameters.ResultHandler, MessageText, False);
 		Return;
 	EndIf;
@@ -4167,7 +4164,7 @@ Procedure CheckFullPathMaxLengthInWorkingDirectoryStart(ExecuteParameters)
 	// names of folders or move current folder into another folder".
 	If StrLen(ExecuteParameters.FileData.OwnerWorkingDirectory) > ExecuteParameters.FullPathMaxLength - 5 Then
 		MessageText = MessageText + Chars.CR + Chars.CR
-			+ NStr("en='Change the folder names or move the current folder to another folder.';ru='Измените имена папок или перенесите текущую папку в другую папку.'");
+			+ NStr("en='Change folder names or move this folder to another one.';ru='Измените имена папок или перенесите текущую папку в другую папку.'");
 		ReturnResultAfterShowWarning(ExecuteParameters.ResultHandler, MessageText, False);
 		Return;
 	EndIf;
@@ -4204,7 +4201,7 @@ Procedure CheckFullPathMaxLengthInWorkingDirectoryStartDirectorySelection(Respon
 	EndIf;
 	
 	// Choose another path to the working directory.
-	Title = NStr("en='Select another work directory';ru='Выберите другой рабочий каталог'");
+	Title = NStr("en='Select another working directory';ru='Выберите другой рабочий каталог'");
 	DirectorySelected = ChoosePathToWorkingDirectory(ExecuteParameters.FileData.OwnerWorkingDirectory, Title, True);
 	If Not DirectorySelected Then
 		ReturnResult(ExecuteParameters.ResultHandler, False);
@@ -4596,7 +4593,7 @@ Procedure FilesImportAfterSizesCheck(Result, ExecuteParameters) Export
 		If ExecuteParameters.ImportMode Then
 			ReturnResult(ExecuteParameters.ResultHandler, Undefined);
 		Else
-			ReturnResultAfterShowWarning(ExecuteParameters.ResultHandler, NStr("en='There are no files for adding';ru='Нет файлов для добавления'"), Undefined);
+			ReturnResultAfterShowWarning(ExecuteParameters.ResultHandler, NStr("en='There are no files to add';ru='Нет файлов для добавления'"), Undefined);
 		EndIf;
 		Return;
 	EndIf;
@@ -4734,11 +4731,11 @@ Procedure FilesImportAfterCycleContinued(ExecuteParameters)
 	If ExecuteParameters.AllFilesStructuresArray.Count() > 1 Then
 		
 		StatusText = StringFunctionsClientServer.SubstituteParametersInString(
-			NStr("en='File import is completed. Imported files: %1';ru='Импорт файлов завершен. Загружено файлов: %1'"), String(ExecuteParameters.AllFilesStructuresArray.Count()) );
+			NStr("en='File are imported. Imported files: %1';ru='Импорт файлов завершен. Загружено файлов: %1'"), String(ExecuteParameters.AllFilesStructuresArray.Count()) );
 			
 		If ExecuteParameters.ImportMode Then
 			StatusText = StringFunctionsClientServer.SubstituteParametersInString(
-				NStr("en='Files import is finished. Imported files: %1';ru='Загрузка файлов завершена. Загружено файлов: %1'"), String(ExecuteParameters.AllFilesStructuresArray.Count()) );
+				NStr("en='Files have been imported. Files imported: %1';ru='Загрузка файлов завершена. Загружено файлов: %1'"), String(ExecuteParameters.AllFilesStructuresArray.Count()) );
 		EndIf;
 		
 		Status(StatusText);
@@ -4755,7 +4752,7 @@ Procedure FilesImportAfterCycleContinued(ExecuteParameters)
 		item0 = ExecuteParameters.AllFilesStructuresArray[0];
 		Ref = GetURL(item0.File);
 		ShowUserNotification(
-			NStr("en='Update:';ru='Изменение:'"),
+			NStr("en='Change';ru='Изменение:'"),
 			Ref,
 			item0.File,
 			PictureLib.Information32);
@@ -4766,7 +4763,7 @@ Procedure FilesImportAfterCycleContinued(ExecuteParameters)
 		Parameters = New Structure;
 		Parameters.Insert("FilenamesWithErrorsArray", ExecuteParameters.FilenamesWithErrorsArray);
 		If ExecuteParameters.ImportMode Then
-			Parameters.Insert("Title", NStr("en='Files export report';ru='Отчет о загрузке файлов'"));
+			Parameters.Insert("Title", NStr("en='Report on file import';ru='Отчет о загрузке файлов'"));
 		EndIf;
 		
 		OpenForm("Catalog.Files.Form.ReportForm", Parameters);
@@ -4875,7 +4872,7 @@ Procedure SaveAsWithExtensionContinued(ExecuteParameters)
 		#If Not WebClient Then
 			If StandardSubsystemsClientReUse.ClientWorkParameters().ThisIsBasicConfigurationVersion Then
 				CommonUseClientServer.MessageToUser(
-					NStr("en='This command is not supported in the basic version.';ru='Данная команда не поддерживается в базовой версии.'"));
+					NStr("en='This command is not supported in base version.';ru='Данная команда не поддерживается в базовой версии.'"));
 				ReturnResult(ExecuteParameters.ResultHandler, "");
 				Return;
 			EndIf;
@@ -5050,7 +5047,7 @@ Procedure SaveAsWithExtensionAfterDecryption(DataDescription, ExecuteParameters)
 		EndIf;
 	EndIf;
 	
-	Status(NStr("en='The file was successfully saved';ru='Файл успешно сохранен'"), , FullFileName);
+	Status(NStr("en='File successfully saved';ru='Файл успешно сохранен'"), , FullFileName);
 	
 	ChoicePathFormer = ExecuteParameters.ChoicePath;
 	ExecuteParameters.ChoicePath = File.Path;
@@ -5235,7 +5232,7 @@ Procedure CheckFilesLimitSize(ResultHandler, CheckParameters)
 		
 		Parameters.Insert("BigFiles", BigFiles);
 		Parameters.Insert("ImportMode", CheckParameters.ImportMode);
-		Parameters.Insert("Title", NStr("en='Warning on files importing';ru='Предупреждение при загрузке файлов'"));
+		Parameters.Insert("Title", NStr("en='File import warning';ru='Предупреждение при загрузке файлов'"));
 		
 		Handler = New NotifyDescription("CheckFilesLimitSizeAfterAnswerToQuestion", ThisObject, ExecuteParameters);
 		OpenForm("Catalog.Files.Form.FileImportQuestion", Parameters, , , , , Handler, FormWindowOpeningMode.LockWholeInterface);
@@ -5757,14 +5754,14 @@ Procedure Encrypt(ResultHandler, FileData, UUID) Export
 	ExecuteParameters.Insert("ThumbprintArray", New Array);
 	
 	If ExecuteParameters.FileData.Encrypted Then
-		WarningText = NStr("en='The file ""%1"" is already encrypted.';ru='Файл ""%1"" уже зашифрован.'");
+		WarningText = NStr("en='File ""%1"" is already encrypted.';ru='Файл ""%1"" уже зашифрован.'");
 		WarningText = StrReplace(WarningText, "%1", String(ExecuteParameters.FileData.Ref));
 		ReturnResultAfterShowWarning(ExecuteParameters.ResultHandler, WarningText, ExecuteParameters);
 		Return;
 	EndIf;
 	
 	If Not ExecuteParameters.FileData.IsEditing.IsEmpty() Then
-		WarningText = NStr("en='File locked for editing can not be encrypted.';ru='Нельзя зашифровать занятый файл.'");
+		WarningText = NStr("en='Cannot encrypt locked file.';ru='Нельзя зашифровать занятый файл.'");
 		ReturnResultAfterShowWarning(ExecuteParameters.ResultHandler, WarningText, ExecuteParameters);
 		Return;
 	EndIf;
@@ -6256,7 +6253,7 @@ Function AddFromFileSystemWithExtensionSynchronously(ExecuteParameters) Export
 	Notify("Record_File", NotificationParameters);
 	
 	ShowUserNotification(
-		NStr("en='Creating:';ru='Создание:'"),
+		NStr("en='Created:';ru='Создание:'"),
 		GetURL(Result.FileRef),
 		Result.FileRef,
 		PictureLib.Information32);
@@ -6284,9 +6281,9 @@ Procedure AddFromFileSystemWithoutExtensionAfterFileImport(Placed, Address, Sele
 	
 	PathStrings = CommonUseClientServer.SortStringByPointsAndSlashes(SelectedFileName);
 	If PathStrings.Count() < 2 Then
-		QuestionText = NStr("en='It is required to specify the file with extension.';ru='Необходимо указать файл с расширением.'");
+		QuestionText = NStr("en='Specify file with extension.';ru='Необходимо указать файл с расширением.'");
 		Buttons = New ValueList;
-		Buttons.Add(DialogReturnCode.Retry, NStr("en='Select other file';ru='Выбрать другой файл'"));
+		Buttons.Add(DialogReturnCode.Retry, NStr("en='Select another file';ru='Выбрать другой файл'"));
 		Buttons.Add(DialogReturnCode.Cancel);
 		Handler = New NotifyDescription("AddFromFileSystemWithoutExtensionAfterAnswerToQuestionRepeat", ThisObject, ExecuteParameters);
 		ShowQueryBox(Handler, QuestionText, Buttons);
@@ -6316,7 +6313,7 @@ Procedure AddFromFileSystemWithoutExtensionAfterFileImport(Placed, Address, Sele
 	Notify("Record_File", NotificationParameters);
 	
 	ShowUserNotification(
-		NStr("en='Creating:';ru='Создание:'"),
+		NStr("en='Created:';ru='Создание:'"),
 		GetURL(FileRef),
 		FileRef,
 		PictureLib.Information32);
@@ -6468,7 +6465,7 @@ Procedure SignFile(FilesArray, FormID, EndProcessor) Export
 	
 	DataDescription = New Structure;
 	DataDescription.Insert("ShowComment", True);
-	DataDescription.Insert("Operation",            NStr("en='Signing file';ru='Подписание файла'"));
+	DataDescription.Insert("Operation",            NStr("en='File signing';ru='Подписание файла'"));
 	DataDescription.Insert("DataTitle",     NStr("en='File';ru='Файловый'"));
 	DataDescription.Insert("DataSet",         DataSet);
 	DataDescription.Insert("SetPresentation", NStr("en='Files (%1)';ru='Файлы (%1)'"));
@@ -6790,7 +6787,7 @@ Procedure FilesImportRecursivelyWithoutDialogs(Val Owner, Val SelectedFiles, Val
 		If Not SelectedFile.Exist() Then
 			Record = New Structure;
 			Record.Insert("FileName", SelectedFile.FullName);
-			Record.Insert("Error", NStr("en='The file is absent on a disk.';ru='Файл отсутствует на диске.'"));
+			Record.Insert("Error", NStr("en='File is not present on disk.';ru='Файл отсутствует на диске.'"));
 			ExecuteParameters.FilenamesWithErrorsArray.Add(Record);
 			Continue;
 		EndIf;
@@ -6857,9 +6854,9 @@ Procedure FilesImportRecursivelyWithoutDialogs(Val Owner, Val SelectedFiles, Val
 				SelectedFile.Name, 
 				FileFunctionsServiceClientServer.GetStringWithFileSize(SizeInMB));
 				
-			StatusText = NStr("en='Files import from disk...';ru='Импорт файлов с диска...'");
+			StatusText = NStr("en='Importing files from disk...';ru='Импорт файлов с диска...'");
 			If ExecuteParameters.ImportMode Then
-				StatusText = NStr("en='Files import from disk...';ru='Импорт файлов с диска...'");
+				StatusText = NStr("en='Importing files from disk...';ru='Импорт файлов с диска...'");
 			EndIf;
 			
 			Status(StatusText,
@@ -6875,7 +6872,7 @@ Procedure FilesImportRecursivelyWithoutDialogs(Val Owner, Val SelectedFiles, Val
 				If FileOperationsServiceServerCall.IsFileWithSuchName(BaseName, Owner) Then
 					Record = New Structure;
 					Record.Insert("FileName", SelectedFile.FullName);
-					Record.Insert("Error", NStr("en='File with such name already exists in the file storage.';ru='Файл с таким именем уже есть в хранилище файлов.'"));
+					Record.Insert("Error", NStr("en='A file with this name already exists in the file storage.';ru='Файл с таким именем уже есть в хранилище файлов.'"));
 					ExecuteParameters.FilenamesWithErrorsArray.Add(Record);
 					Continue;
 				EndIf;
@@ -7169,12 +7166,12 @@ Procedure MoveFilesToAttachedFiles(FilesArray, FileOwner) Export
 		If CountTotal > 0 Then 
 			
 			FullDetails = StringFunctionsClientServer.SubstituteParametersInString(
-				NStr("en='Files (%1) moved to %2';ru='Файлы (%1 шт) перенесены в %2'"),
+				NStr("en='Files (%1 pcs) are transferred to %2';ru='Файлы (%1 шт) перенесены в %2'"),
 				CountTotal,
 				FileOwner);
 			
 			ShowUserNotification(
-				NStr("en='Files are transferred';ru='Файлы перенесены'"),
+				NStr("en='Files are moved';ru='Файлы перенесены'"),
 				,
 				FullDetails,
 				PictureLib.Information32);
@@ -7212,8 +7209,8 @@ Function CheckLockedFilesOnExit()
 	EndIf;
 	
 	ApplicationWarningFormParameters = New Structure;
-	ApplicationWarningFormParameters.Insert("MessageQuestion",      NStr("en='Do you want to exit the application?';ru='Завершить работу с программой?'"));
-	ApplicationWarningFormParameters.Insert("MessageTitle",   NStr("en='Following files are locked by you for editing:';ru='Следующие файлы заняты вами для редактирования:'"));
+	ApplicationWarningFormParameters.Insert("MessageQuestion",      NStr("en='Exit the application?';ru='Завершить работу с программой?'"));
+	ApplicationWarningFormParameters.Insert("MessageTitle",   NStr("en='You have locked the following files for editing:';ru='Следующие файлы заняты вами для редактирования:'"));
 	ApplicationWarningFormParameters.Insert("Title",            NStr("en='Exit';ru='Завершить'"));
 	ApplicationWarningFormParameters.Insert("IsEditing",          CurrentUser);
 	
@@ -7424,7 +7421,7 @@ Procedure SetComponent(ResultHandler) Export
 	EndIf;
 	
 	If InitializeComponent() Then
-		Status(NStr("en='Scanning component is already installed.';ru='Компонента сканирования уже установлена.'"));
+		Status(NStr("en='Scan component already installed.';ru='Компонента сканирования уже установлена.'"));
 		ReturnResult(ResultHandler, True);
 		Return;
 	EndIf;

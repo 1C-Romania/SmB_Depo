@@ -17,7 +17,7 @@ Procedure OnCreateAtServer(Cancel, StandardProcessing)
 	
 	If ItIsAuthentication Then
 		Items.FormDrillDown.Title = NStr("en='OK';ru='Ок'");
-		Items.ExplanationEnhancedPassword.Title = NStr("en='Click OK to proceed to enter the password.';ru='Нажмите ОК, чтобы перейти к вводу пароля.'");
+		Items.ExplanationEnhancedPassword.Title = NStr("en='Click OK to enter the password.';ru='Нажмите ОК, чтобы перейти к вводу пароля.'");
 	EndIf;
 	
 EndProcedure
@@ -579,7 +579,7 @@ Procedure WriteEncryptionCertificatesAtServer(ObjectsDescription, FormID, Error)
 	Except
 		ErrorInfo = ErrorInfo();
 		RollbackTransaction();
-		Error.Insert("ErrorDescription", NStr("en='When clearing the encryption certificates, an error occurred:';ru='При очистке сертификатов шифрования возникла ошибка:'")
+		Error.Insert("ErrorDescription", NStr("en='An error occurred during the encryption certificate cleanup:';ru='При очистке сертификатов шифрования возникла ошибка:'")
 			+ Chars.LF + BriefErrorDescription(ErrorInfo));
 	EndTry;
 	
@@ -594,7 +594,7 @@ Procedure ShowError(ErrorOnClient, ErrorOnServer)
 	EndIf;
 	
 	DigitalSignatureServiceClient.ShowRequestToApplicationError(
-		NStr("en='Failed to decrypt the data';ru='Не удалось расшифровать данные'"), "",
+		NStr("en='Cannot decrypt data';ru='Не удалось расшифровать данные'"), "",
 		ErrorOnClient, ErrorOnServer, , ProcessingAfterWarning);
 	
 EndProcedure

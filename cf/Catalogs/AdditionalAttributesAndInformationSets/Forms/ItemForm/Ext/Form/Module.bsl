@@ -15,10 +15,10 @@ Procedure OnCreateAtServer(Cancel, StandardProcessing)
 	UseAdditInfo  = SetPropertyTypes.AdditionalInformation;
 	
 	If UseAdditAttributes AND UseAdditInfo Then
-		Title = Object.Description + " " + NStr("en='(Additional attributes and information set)';ru='(Набор дополнительных реквизитов и сведений)'")
+		Title = Object.Description + " " + NStr("en='(Set of additional attributes and information)';ru='(Набор дополнительных реквизитов и сведений)'")
 		
 	ElsIf UseAdditAttributes Then
-		Title = Object.Description + " " + NStr("en='(Additional attributes set)';ru='(Набор дополнительных реквизитов)'")
+		Title = Object.Description + " " + NStr("en='(Additional attribute set)';ru='(Набор дополнительных реквизитов)'")
 		
 	ElsIf UseAdditInfo Then
 		Title = Object.Description + " " + NStr("en='(Additional information set)';ru='(Набор дополнительных сведений)'")

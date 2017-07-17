@@ -30,7 +30,7 @@ Procedure CheckUpdateNecessity(SiteConfigurationUpdateRequiredRIB)
 		|It is necessary to install the application update after which the data synchronization will be continued.';ru='Получено обновление программы из ""%1"".
 		|Необходимо установить обновление программы, после чего синхронизация данных будет продолжена.'");
 		Explanation = StringFunctionsClientServer.SubstituteParametersInString(Explanation, StandardSubsystemsClientReUse.ClientWorkParameters().MasterNode);
-		ShowUserNotification(NStr("en='Install update';ru='Установить обновление'"), "e1cib/app/DataProcessor.DataExchangeExecution",
+		ShowUserNotification(NStr("en='Install the update';ru='Установить обновление'"), "e1cib/app/DataProcessor.DataExchangeExecution",
 			Explanation, PictureLib.Warning32);
 		Notify("DataExchangeCompleted");
 	EndIf;

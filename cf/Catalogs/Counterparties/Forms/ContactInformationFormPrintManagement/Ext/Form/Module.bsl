@@ -27,7 +27,7 @@ Procedure BeforeClose(Cancel, StandardProcessing)
 		|Сохранить изменения?'");
 		
 		Notification = New NotifyDescription("BeforeCloseSaveOffered", ThisForm);
-		ShowQueryBox(Notification, QuestionText, QuestionDialogMode.YesNoCancel, , DialogReturnCode.Cancel, NStr("en='Edit content contact information';ru='Редактирование состава контактной информации'"));
+		ShowQueryBox(Notification, QuestionText, QuestionDialogMode.YesNoCancel, , DialogReturnCode.Cancel, NStr("en='Edit contact information content';ru='Редактирование состава контактной информации'"));
 		
 		Cancel = True;
 		

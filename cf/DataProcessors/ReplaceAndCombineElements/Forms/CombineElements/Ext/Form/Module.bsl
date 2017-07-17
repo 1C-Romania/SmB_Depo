@@ -144,7 +144,7 @@ Procedure UsagePlacesBeforeDeletion(Item, Cancel)
 	Code    = String(CurrentData.Code);
 	
 	QuestionText = StringFunctionsClientServer.SubstituteParametersInString(
-		NStr("en='Remove the %1 item from the to merge list?';ru='Удалить из списка для объединения элемент ""%1""?'"),
+		NStr("en='Delete item ""%1"" from the list for merging?';ru='Удалить из списка для объединения элемент ""%1""?'"),
 		String(Refs) + ?(IsBlankString(Code), "", " (" + Code + ")" ));
 	
 	Notification = New NotifyDescription("UsagePlacesBeforeDeletionEnd", ThisObject, New Structure);
@@ -365,7 +365,7 @@ Function CheckMergedRefs(Val RefsSet)
 	
 	QuantityRefs = RefsSet.Count();
 	If QuantityRefs < 2 Then
-		Result.Error = NStr("en='To merge, you should specify several items.';ru='Для объединения необходимо указать несколько элементов.'");
+		Result.Error = NStr("en='Specify several items for merging.';ru='Для объединения необходимо указать несколько элементов.'");
 		Return Result;
 	EndIf;
 	
@@ -417,7 +417,7 @@ Function CheckMergedRefs(Val RefsSet)
 		|Such items can not be merged.';ru='У объединяемых элементов различные владельцы.
 		|Такие элементы не могут быть объединены.'");
 	ElsIf Control.QuantityRefs <> QuantityRefs Then
-		Result.Error = NStr("en='All merged items should be of the same type.';ru='Все объединяемые элементы должны быть одного типа.'");
+		Result.Error = NStr("en='All mergable items must be of the same type.';ru='Все объединяемые элементы должны быть одного типа.'");
 	Else 
 		// Everything is ok
 		Result.CommonOwner = ?(HasOwners, Control.CommonOwner, Undefined);
@@ -483,7 +483,7 @@ EndProcedure
 Function EndingMessage()
 	
 	Return StringFunctionsClientServer.SubstituteParametersInString(
-		NStr("en='Items (%1) are merged to %2';ru='Элементы (%1) объединены в ""%2""'"),
+		NStr("en='Items (%1) are merged into ""%2""';ru='Элементы (%1) объединены в ""%2""'"),
 		UsagePlaces.Count(),
 		MainItem);
 	
@@ -558,7 +558,7 @@ Procedure FillUsagePlaces(Val UsageTable)
 		UsingRow.Code      = PossibleRefCode(Refs, MetadataCache);
 		UsingRow.Owner = PossibleRefOwner(Refs, MetadataCache);
 		
-		UsingRow.NotUsed = ?(Places = 0, NStr("en='Not Used';ru='Не используется'"), "");
+		UsingRow.NotUsed = ?(Places = 0, NStr("en='Not used';ru='Не используется'"), "");
 	EndDo;
 	
 	UsagePlaces.Load(NewUsagePlaces);
@@ -571,7 +571,7 @@ Procedure FillUsagePlaces(Val UsageTable)
 	Presentation = ?(MainItem=Undefined, "", MainItem.Metadata().Presentation());
 	
 	HeaderText = StringFunctionsClientServer.SubstituteParametersInString(
-		NStr("en='Merge %1 items to one';ru='Объединение элементов %1 в один'"),
+		NStr("en='Merge items of %1 into a single one';ru='Объединение элементов %1 в один'"),
 		Presentation
 	);
 EndProcedure
@@ -606,19 +606,19 @@ Function FillFailedReplacements(Val ReplacementResults)
 		
 		ErrorType = ResultRow.ErrorType;
 		If ErrorType = "UnknownData" Then
-			ErrorString.Cause = NStr("en='Data is found that was not planned to be processed.';ru='Обнаружена данные, обработка которых не планировалась.'");
+			ErrorString.Cause = NStr("en='Data which processing was not planned is detected.';ru='Обнаружена данные, обработка которых не планировалась.'");
 			
 		ElsIf ErrorType = "LockError" Then
 			ErrorString.Cause = NStr("en='The data is locked by another user.';ru='Данные заблокированы другим пользователем.'");
 			
 		ElsIf ErrorType = "DataChanged" Then
-			ErrorString.Cause = NStr("en='The data was changed by another user.';ru='Данные изменены другим пользователем.'");
+			ErrorString.Cause = NStr("en='Data is changed by another user.';ru='Данные изменены другим пользователем.'");
 			
 		ElsIf ErrorType = "RecordingError" Then
 			ErrorString.Cause = ResultRow.ErrorText;
 			
 		ElsIf ErrorType = "ErrorDelete" Then
-			ErrorString.Cause = NStr("en='Unable to delete data.';ru='Невозможно удалить данные.'");
+			ErrorString.Cause = NStr("en='You cannot delete data.';ru='Невозможно удалить данные.'");
 			
 		Else
 			ErrorString.Cause = NStr("en='Unknown error.';ru='Неизвестная ошибка.'");
@@ -785,8 +785,8 @@ Procedure InitializeAssistantScript()
 	ButtonsAssistant = ButtonsAssistant();
 	ButtonsAssistant.Back.Visible = False;
 	ButtonsAssistant.Next.Visible = False;
-	ButtonsAssistant.Cancel.Title = NStr("en='Break';ru='Прервать'");
-	ButtonsAssistant.Cancel.ToolTip = NStr("en='Cancel items merging';ru='Отказаться от объединения элементов'");
+	ButtonsAssistant.Cancel.Title = NStr("en='Abort';ru='Прервать'");
+	ButtonsAssistant.Cancel.ToolTip = NStr("en='Refuse to merge items';ru='Отказаться от объединения элементов'");
 	
 	AddAssistantStep(Items.StepSearchUsagePlaces, 
 		AssistantStepAction("OnActivating",         "StepSearchUsePlacesOnActivating",
@@ -799,9 +799,9 @@ Procedure InitializeAssistantScript()
 	ButtonsAssistant.Back.Visible = False;
 	ButtonsAssistant.Next.DefaultButton = True;
 	ButtonsAssistant.Next.Title = NStr("en='Merge >';ru='Объединить >'");
-	ButtonsAssistant.Next.ToolTip = NStr("en='Begin items merging';ru='Начать объединение элементов'");
+	ButtonsAssistant.Next.ToolTip = NStr("en='Start merging items';ru='Начать объединение элементов'");
 	ButtonsAssistant.Cancel.Title = NStr("en='Cancel';ru='Отменить'");
-	ButtonsAssistant.Cancel.ToolTip = NStr("en='Cancel items merging';ru='Отказаться от объединения элементов'");
+	ButtonsAssistant.Cancel.ToolTip = NStr("en='Refuse to merge items';ru='Отказаться от объединения элементов'");
 	
 	AddAssistantStep(Items.StepSelectMainItem, 
 		AssistantStepAction("OnActivating",         "StepSelectMainItemOnActivating",
@@ -813,8 +813,8 @@ Procedure InitializeAssistantScript()
 	ButtonsAssistant = ButtonsAssistant();
 	ButtonsAssistant.Back.Visible = False;
 	ButtonsAssistant.Next.Visible = False;
-	ButtonsAssistant.Cancel.Title = NStr("en='Break';ru='Прервать'");
-	ButtonsAssistant.Cancel.ToolTip = NStr("en='Break items merging';ru='Прервать объединение элементов'");
+	ButtonsAssistant.Cancel.Title = NStr("en='Abort';ru='Прервать'");
+	ButtonsAssistant.Cancel.ToolTip = NStr("en='Stop joining items';ru='Прервать объединение элементов'");
 	
 	AddAssistantStep(Items.StepMerging, 
 		AssistantStepAction("OnActivating",         "StepMergingOnActivating",
@@ -828,7 +828,7 @@ Procedure InitializeAssistantScript()
 	ButtonsAssistant.Next.Visible = False;
 	ButtonsAssistant.Cancel.DefaultButton = True;
 	ButtonsAssistant.Cancel.Title = NStr("en='Close';ru='Закрыть'");
-	ButtonsAssistant.Cancel.ToolTip = NStr("en='Close merging results';ru='Закрыть результаты объединения'");
+	ButtonsAssistant.Cancel.ToolTip = NStr("en='Close grouping results';ru='Закрыть результаты объединения'");
 	
 	AddAssistantStep(Items.SuccessfulCompletionStep, 
 		AssistantStepAction("OnActivating",         "StepSuccessfulCompletionOnActivating",
@@ -838,12 +838,12 @@ Procedure InitializeAssistantScript()
 	// 4. Errors of reference replacements
 	ButtonsAssistant = ButtonsAssistant();
 	ButtonsAssistant.Back.Title = NStr("en='< Home';ru='< Home'");
-	ButtonsAssistant.Back.ToolTip = NStr("en='Return to the main item selection';ru='Вернутся к выбору основного элемента'");
+	ButtonsAssistant.Back.ToolTip = NStr("en='Go back to the main item selection';ru='Вернутся к выбору основного элемента'");
 	ButtonsAssistant.Next.DefaultButton = True;
-	ButtonsAssistant.Next.Title = NStr("en='Retry';ru='Повторить'");
-	ButtonsAssistant.Next.ToolTip = NStr("en='Repeat merging';ru='Повторить объединение'");
+	ButtonsAssistant.Next.Title = NStr("en='Repeat';ru='Повторить'");
+	ButtonsAssistant.Next.ToolTip = NStr("en='Repeat grouping';ru='Повторить объединение'");
 	ButtonsAssistant.Cancel.Title = NStr("en='Cancel';ru='Отменить'");
-	ButtonsAssistant.Cancel.ToolTip = NStr("en='Close merging results';ru='Закрыть результаты объединения'");
+	ButtonsAssistant.Cancel.ToolTip = NStr("en='Close grouping results';ru='Закрыть результаты объединения'");
 	
 	AddAssistantStep(Items.RepeatMergingStep,
 		AssistantStepAction("OnActivating",         "StepRepeatMergingOnActivating",
@@ -1173,7 +1173,7 @@ EndProcedure
 &AtClient
 Procedure RunAssistant()
 	If StepByStepAssistantSettings.StartPage = Undefined Then
-		Raise NStr("en='Before launching the master, an initial page should be set.';ru='Перед запуском мастера должна быть установлена начальная страница.'");
+		Raise NStr("en='Before you run this wizard, set the home page.';ru='Перед запуском мастера должна быть установлена начальная страница.'");
 		
 	ElsIf StepByStepAssistantSettings.StartPage = -1 Then
 		// Warming up. Check if all steps have action handlers.
@@ -1187,7 +1187,7 @@ Procedure RunAssistant()
 						Test = New NotifyDescription(HandlerName, ThisObject);
 					Except
 						Text = StringFunctionsClientServer.SubstituteParametersInString(
-							NStr("en='Error of %1 event handler creation for %2 page, %3 procedure is not defined';ru='Ошибка создания обработчика события %1 для страницы %2, не определена процедура %3'"),
+							NStr("en='An error occurred when creating event handler %1 for page %2, procedure %3 is not defined';ru='Ошибка создания обработчика события %1 для страницы %2, не определена процедура %3'"),
 							NameActions, 
 							StepDescription.Page, 
 							HandlerName
@@ -1227,7 +1227,7 @@ Procedure AssistantStep(Val CommandCode)
 	ElsIf CommandCode = "Cancel" Then
 		Direction = 0;
 	Else
-		Raise NStr("en='Incorrect command of the assistant step';ru='Некорректная команда шага помощника'");
+		Raise NStr("en='Incorrect wizard step command';ru='Некорректная команда шага помощника'");
 	EndIf;
 		
 	StepDescription = StepByStepAssistantSettings.Steps[StepByStepAssistantSettings.CurrentStepNumber];
@@ -1268,7 +1268,7 @@ Procedure GoToAssistantStep(Val IdentifierStep, Val TriggerEvents = False)
 	NextStep = AssistantStepNumberByIdentifier(IdentifierStep);
 	If NextStep = Undefined Then
 		Error = StringFunctionsClientServer.SubstituteParametersInString(
-			NStr("en='%1 assistant step is not found';ru='Не найден шаг помощника %1'"),
+			NStr("en='Step of wizard %1 is not found';ru='Не найден шаг помощника %1'"),
 			IdentifierStep
 		);
 		Raise Error;
@@ -1301,11 +1301,11 @@ Procedure AssistantStepEnd(Val StepParameters)
 		
 	ElsIf StepParameters = 1 AND NextStep > LastStep Then
 		// You are trying to take a step outside forward.
-		Raise NStr("en='You are trying to go out of the assistant last step.';ru='Попытка выхода за последний шаг мастера'");
+		Raise NStr("en='Attempting to go over the last wizard step';ru='Попытка выхода за последний шаг мастера'");
 		
 	ElsIf StepParameters = -1 AND NextStep < 0 Then
 		// You are trying to take a step outside back.
-		Raise NStr("en='You are trying to go back from the assistant first step.';ru='Попытка выхода назад из первого шага мастера'");
+		Raise NStr("en='Attempting to go back from the first wizard step';ru='Попытка выхода назад из первого шага мастера'");
 		
 	EndIf;
 	
@@ -1388,7 +1388,7 @@ Function AssistantStepNumberByIdentifier(Val IdentifierStep)
 		EndIf;
 	EndDo;
 	
-	Raise StrReplace(NStr("en='Not found step ""%1"".';ru='Не найдено шаг ""%1"".'"), "%1", SearchName);
+	Raise StrReplace(NStr("en='Step ""%1"" is not found.';ru='Не найдено шаг ""%1"".'"), "%1", SearchName);
 EndFunction
 
 // Returns the cancel check box
@@ -1441,13 +1441,13 @@ Function BackgroundJobImportOnClient(InterruptIfNotCompleted, ShowDialogBeforeCl
 			Handler = New NotifyDescription("AfterTaskCancellationAndClosingFormConfirmation", ThisObject);
 			
 			If StepByStepAssistantSettings.ProcedureName = "DefineUsagePlacess" Then
-				QuestionText = NStr("en='Stop the search of usage places and close the form?';ru='Прервать поиск мест использования и закрыть форму?'");
+				QuestionText = NStr("en='Stop searching for usage locations and close the form?';ru='Прервать поиск мест использования и закрыть форму?'");
 			ElsIf StepByStepAssistantSettings.ProcedureName = "ReplaceRefs" Then
-				QuestionText = NStr("en='Stop items merging and close the form?';ru='Прервать объединение элементов и закрыть форму?'");
+				QuestionText = NStr("en='Stop merging items and close the form?';ru='Прервать объединение элементов и закрыть форму?'");
 			EndIf;
 			
 			Buttons = New ValueList;
-			Buttons.Add(DialogReturnCode.Abort, NStr("en='Break';ru='Прервать'"));
+			Buttons.Add(DialogReturnCode.Abort, NStr("en='Abort';ru='Прервать'"));
 			Buttons.Add(DialogReturnCode.No, NStr("en='Do not interrupt';ru='Не прерывать'"));
 			
 			ShowQueryBox(Handler, QuestionText, Buttons, , DialogReturnCode.No);
@@ -1504,12 +1504,12 @@ Function BackGroundJobStart(Val ProcedureName)
 	
 	If ProcedureName = "DefineUsagePlacess" Then
 		
-		MethodName = NStr("en='Search and delete duplicates: Define places of use';ru='Поиск и удаление дублей: Определение мест использования'");
+		MethodName = NStr("en='Search and deletion of duplicates: Determine usage locations';ru='Поиск и удаление дублей: Определение мест использования'");
 		MethodParameters = RefsArrayFromSet(UsagePlaces);
 		
 	ElsIf ProcedureName = "ReplaceRefs" Then
 		
-		MethodName = NStr("en='Search and remove duplicates: Merge items';ru='Поиск и удаление дублей: Объединение элементов'");
+		MethodName = NStr("en='Search and deletion of duplicates: Merge items';ru='Поиск и удаление дублей: Объединение элементов'");
 		SubstitutionsPairs = New Map;
 		For Each String IN UsagePlaces Do
 			SubstitutionsPairs.Insert(String.Ref, MainItem);

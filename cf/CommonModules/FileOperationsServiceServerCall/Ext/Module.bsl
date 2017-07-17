@@ -713,7 +713,7 @@ Function SaveChangesAndReleaseFile(FileData, FileInformation,
 	
 	FileDataCurrent = FileData(FileData.Ref);
 	If Not FileDataCurrent.CurrentUserIsEditing Then
-		Raise NStr("en='File is not in use by the current user';ru='Файл не занят текущим пользователем'");
+		Raise NStr("en='File is not used by the current user';ru='Файл не занят текущим пользователем'");
 	EndIf;
 	
 	VersionIsNotCreated = False;
@@ -803,7 +803,7 @@ Function SaveFileChanges(FileRef, FileInformation,
 	
 	FileDataCurrent = FileData(FileRef);
 	If Not FileDataCurrent.CurrentUserIsEditing Then
-		Raise NStr("en='File is not in use by the current user';ru='Файл не занят текущим пользователем'");
+		Raise NStr("en='File is not used by the current user';ru='Файл не занят текущим пользователем'");
 	EndIf;
 	
 	VersionIsNotCreated = False;
@@ -1211,7 +1211,7 @@ Function GetURLForOpening(VersionRef, FormID = Undefined) Export
 					ErrorInfo(), VersionRef.Owner);
 				
 				WriteLogEvent(
-					NStr("en='Files.File opening';ru='Файлы.Открытие файла'",
+					NStr("en='Files.Open file';ru='Файлы.Открытие файла'",
 					     CommonUseClientServer.MainLanguageCode()),
 					EventLogLevel.Error,
 					Metadata.Catalogs.Files,
@@ -1394,7 +1394,7 @@ Function FileDataForOpening(FileOrVersionRef, FormID = Undefined,
 					ErrorInfo(), FileReference);
 				
 				WriteLogEvent(
-					NStr("en='Files.File opening';ru='Файлы.Открытие файла'",
+					NStr("en='Files.Open file';ru='Файлы.Открытие файла'",
 					     CommonUseClientServer.MainLanguageCode()),
 					EventLogLevel.Error,
 					Metadata.Catalogs.Files,
@@ -1450,7 +1450,7 @@ Function GetFileDataAndSaveFileChanges(FileRef, FileInformation,
 	
 	FileData = FileData(FileRef);
 	If Not FileData.CurrentUserIsEditing Then
-		Raise NStr("en='File is not in use by the current user';ru='Файл не занят текущим пользователем'");
+		Raise NStr("en='File is not used by the current user';ru='Файл не занят текущим пользователем'");
 	EndIf;
 	
 	VersionCreated = SaveFileChanges(FileRef, FileInformation, 
@@ -2019,7 +2019,7 @@ Function FilesImportGenerateReport(FilenamesWithErrorsArray) Export
 	Template = Catalogs.Files.GetTemplate("ReportTemplate");
 	
 	HeaderArea = Template.GetArea("Title");
-	HeaderArea.Parameters.Description = NStr("en='It failed to export the following files:';ru='Не удалось загрузить следующие файлы:'");
+	HeaderArea.Parameters.Description = NStr("en='Cannot import the following files:';ru='Не удалось загрузить следующие файлы:'");
 	Document.Put(HeaderArea);
 	
 	AreaRow = Template.GetArea("String");
@@ -3167,7 +3167,7 @@ Function GetURLToTemporaryStorage(VersionRef, FormID = Undefined) Export
 					ErrorInfo(), VersionRef.Owner);
 				
 				WriteLogEvent(
-					NStr("en='Files.File opening';ru='Файлы.Открытие файла'",
+					NStr("en='Files.Open file';ru='Файлы.Открытие файла'",
 					     CommonUseClientServer.MainLanguageCode()),
 					EventLogLevel.Error,
 					Metadata.Catalogs.Files,
@@ -3278,7 +3278,7 @@ Function FileDataAndBinaryData(FileOrVersionRef, SignatureAddress = Undefined, F
 					ErrorInfo(), VersionRef.Owner);
 				
 				WriteLogEvent(
-					NStr("en='Files.File opening';ru='Файлы.Открытие файла'",
+					NStr("en='Files.Open file';ru='Файлы.Открытие файла'",
 					     CommonUseClientServer.MainLanguageCode()),
 					EventLogLevel.Error,
 					Metadata.Catalogs.Files,

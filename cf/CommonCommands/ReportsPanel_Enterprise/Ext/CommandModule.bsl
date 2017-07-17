@@ -7,6 +7,6 @@ Procedure CommandProcessing(CommandParameter, CommandExecuteParameters)
 	
 	CallParameters.Insert("Uniqueness", "Panel_Enterprise");
 	
-	ReportsVariantsClient.ShowReportsPanel("Enterprise", CallParameters, NStr("en='Enterprise reports';ru='Отчеты по предприятию'"));
+	ReportsVariantsClient.ShowReportsPanel("Enterprise", CallParameters, NStr("en='Company reports';ru='Отчеты по предприятию'"));
 	
 EndProcedure

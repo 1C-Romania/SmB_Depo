@@ -89,7 +89,7 @@
 					<xr:ToolTip>
 						<v8:item>
 							<v8:lang>en</v8:lang>
-							<v8:content>Ref to document</v8:content>
+							<v8:content>Reference to document</v8:content>
 						</v8:item>
 						<v8:item>
 							<v8:lang>ru</v8:lang>
@@ -191,7 +191,7 @@
 					<xr:ToolTip>
 						<v8:item>
 							<v8:lang>en</v8:lang>
-							<v8:content>Document No.</v8:content>
+							<v8:content>Document number</v8:content>
 						</v8:item>
 						<v8:item>
 							<v8:lang>ru</v8:lang>
@@ -264,7 +264,7 @@
 			<Explanation>
 				<v8:item>
 					<v8:lang>en</v8:lang>
-					<v8:content>Documents of customer order inventory or production reserve, and demands distribution by customer orders in order to vendor or production order.</v8:content>
+					<v8:content>Documents of customer order inventory reservation in warehouse or in production, and demand placement in customer orders in purchase orders or production orders.</v8:content>
 				</v8:item>
 				<v8:item>
 					<v8:lang>ru</v8:lang>
@@ -297,7 +297,7 @@
 					<ToolTip>
 						<v8:item>
 							<v8:lang>en</v8:lang>
-							<v8:content>Own company under the name of which the document is produced</v8:content>
+							<v8:content>Own company on whose behalf the document is issued</v8:content>
 						</v8:item>
 						<v8:item>
 							<v8:lang>ru</v8:lang>
@@ -348,7 +348,7 @@
 					<ToolTip>
 						<v8:item>
 							<v8:lang>en</v8:lang>
-							<v8:content>Customer order according to which the inventory has been accepted to the commission</v8:content>
+							<v8:content>Customer order for which inventory is reserved (removed from reserve)</v8:content>
 						</v8:item>
 						<v8:item>
 							<v8:lang>ru</v8:lang>
@@ -382,7 +382,7 @@
 					<Synonym>
 						<v8:item>
 							<v8:lang>en</v8:lang>
-							<v8:content>Comment</v8:content>
+							<v8:content>Note</v8:content>
 						</v8:item>
 						<v8:item>
 							<v8:lang>ru</v8:lang>
@@ -403,7 +403,7 @@
 					<ToolTip>
 						<v8:item>
 							<v8:lang>en</v8:lang>
-							<v8:content>Custom comment</v8:content>
+							<v8:content>Arbitrary comment</v8:content>
 						</v8:item>
 						<v8:item>
 							<v8:lang>ru</v8:lang>
@@ -437,7 +437,7 @@
 					<Synonym>
 						<v8:item>
 							<v8:lang>en</v8:lang>
-							<v8:content>Author</v8:content>
+							<v8:content>Created by</v8:content>
 						</v8:item>
 						<v8:item>
 							<v8:lang>ru</v8:lang>
@@ -572,7 +572,7 @@
 							<ToolTip>
 								<v8:item>
 									<v8:lang>en</v8:lang>
-									<v8:content>ProductsAndServices position</v8:content>
+									<v8:content>Products and services item</v8:content>
 								</v8:item>
 								<v8:item>
 									<v8:lang>ru</v8:lang>
@@ -625,7 +625,7 @@
 							<ToolTip>
 								<v8:item>
 									<v8:lang>en</v8:lang>
-									<v8:content>Products and services characteristic</v8:content>
+									<v8:content>Characteristic of products and services</v8:content>
 								</v8:item>
 								<v8:item>
 									<v8:lang>ru</v8:lang>
@@ -736,7 +736,7 @@
 							<ToolTip>
 								<v8:item>
 									<v8:lang>en</v8:lang>
-									<v8:content>Products and services unit of measurement</v8:content>
+									<v8:content>Products and services unit of measure</v8:content>
 								</v8:item>
 								<v8:item>
 									<v8:lang>ru</v8:lang>
@@ -796,7 +796,7 @@
 							<ToolTip>
 								<v8:item>
 									<v8:lang>en</v8:lang>
-									<v8:content>Products and services quantity</v8:content>
+									<v8:content>Quantity of products and services</v8:content>
 								</v8:item>
 								<v8:item>
 									<v8:lang>ru</v8:lang>
@@ -828,7 +828,7 @@
 							<Synonym>
 								<v8:item>
 									<v8:lang>en</v8:lang>
-									<v8:content>Original place</v8:content>
+									<v8:content>Original location</v8:content>
 								</v8:item>
 								<v8:item>
 									<v8:lang>ru</v8:lang>
@@ -848,7 +848,7 @@
 							<ToolTip>
 								<v8:item>
 									<v8:lang>en</v8:lang>
-									<v8:content>If marked, reserve will be checked if reserve not marked as done from balance</v8:content>
+									<v8:content>If it is specified, the reserve will be removed; if it is not specified, reservation is performed from the unrestricted stock</v8:content>
 								</v8:item>
 								<v8:item>
 									<v8:lang>ru</v8:lang>
@@ -887,7 +887,7 @@
 							<Synonym>
 								<v8:item>
 									<v8:lang>en</v8:lang>
-									<v8:content>New place</v8:content>
+									<v8:content>New location</v8:content>
 								</v8:item>
 								<v8:item>
 									<v8:lang>ru</v8:lang>
@@ -907,7 +907,7 @@
 							<ToolTip>
 								<v8:item>
 									<v8:lang>en</v8:lang>
-									<v8:content>If not marked, reserve will be checked if reserve is set as "done" in specified reserve place</v8:content>
+									<v8:content>If it is not specified, the reserve will be removed; if it is specified, reservation is performed in the specified reserve place</v8:content>
 								</v8:item>
 								<v8:item>
 									<v8:lang>ru</v8:lang>

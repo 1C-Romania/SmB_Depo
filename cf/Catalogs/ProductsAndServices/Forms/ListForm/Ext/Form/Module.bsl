@@ -77,7 +77,7 @@ Procedure ImportDataFromExternalSourceResultDataProcessor(ImportResult, Addition
 			
 			ProcessPreparedData(ImportResult);
 			Items.List.Refresh();
-			ShowMessageBox(,NStr("en='The data import is completed.';ru='Загрузка данных завершена.'"));
+			ShowMessageBox(,NStr("en='Data import is complete.';ru='Загрузка данных завершена.'"));
 			
 		EndIf;
 		

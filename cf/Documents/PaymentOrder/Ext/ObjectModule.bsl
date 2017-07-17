@@ -22,7 +22,7 @@ Procedure FillPaymentDestination()
 		AND ValueIsFilled(BasisDocument)
 		AND TypeOf(BasisDocument) = Type("DocumentRef.SupplierInvoiceForPayment")
 		AND ValueIsFilled(BasisDocument.IncomingDocumentNumber) Then
-		PaymentText = NStr("en='Payment against the invoice for payment No.%AccountNumber%';ru='Оплата по счету N %НомерСчета%'");
+		PaymentText = NStr("en='Payment against invoice No. %AccountNumber%';ru='Оплата по счету N %НомерСчета%'");
 		PaymentText = StrReplace(PaymentText, "%AccountNo%", TrimAll(String(BasisDocument.IncomingDocumentNumber)));
 		If ValueIsFilled(BasisDocument.IncomingDocumentDate) Then
 			PaymentText = PaymentText + " dated " + TrimAll(String(Format(BasisDocument.IncomingDocumentDate, "DF=dd MMMM yyyy'"))) + " g.";
@@ -332,10 +332,10 @@ EndProcedure // FillBySupplierInvoiceForPayment()
 Procedure FillByCashOutflowPlan(BasisDocument);
 	
 	If BasisDocument.PaymentConfirmationStatus = Enums.PaymentApprovalStatuses.NotApproved Then
-		Raise NStr("en='You can not enter a payment order on the basis of non-confirmed application!';ru='Нельзя ввести платежное поручение на основании не утвержденной заявки!'");
+		Raise NStr("en='You cannot enter a payment order based on the unapproved request.';ru='Нельзя ввести платежное поручение на основании не утвержденной заявки!'");
 	EndIf;
 	If BasisDocument.CashAssetsType = Enums.CashAssetTypes.Cash Then
-		Raise NStr("en='You can not enter a payment order. Invalid payment method is specified in the application (cash assets type)!';ru='Нельзя ввести платежное поручение. В заявке указан не верный способ оплаты (тип денежных средств)!'");
+		Raise NStr("en='Cannot enter a payment order. Invalid payment method is specified in the request (funds type).';ru='Нельзя ввести платежное поручение. В заявке указан не верный способ оплаты (тип денежных средств)!'");
 	EndIf;
 	
 	Query = New Query;

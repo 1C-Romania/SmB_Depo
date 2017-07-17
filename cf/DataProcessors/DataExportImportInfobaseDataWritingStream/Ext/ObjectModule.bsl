@@ -15,7 +15,7 @@ Procedure OpenFile(Val FileName, Val Serializer = Undefined) Export
 	
 	If CurrentInitialization Then
 		
-		Raise NStr("en='The object has been initialized before.';ru='Объект уже был инициализирован ранее!'");
+		Raise NStr("en='The object has already been initialized earlier.';ru='Объект уже был инициализирован ранее!'");
 		
 	Else
 		
@@ -75,7 +75,7 @@ Procedure WriteInfobaseDataObject(Object, Artifacts) Export
 		);
 		
 		Raise StringFunctionsClientServer.SubstituteParametersInString(
-			NStr("en='An error occurred while exporting object %1: %2';ru='При выгрузке объекта %1 произошла ошибка: %2'"),
+			NStr("en='An error occurred when exporting object %1: %2';ru='При выгрузке объекта %1 произошла ошибка: %2'"),
 			Object,
 			InitialErrorTextWithoutInvalidCharacters
 		);

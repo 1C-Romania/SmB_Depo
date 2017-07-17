@@ -228,7 +228,7 @@ Function PrintProformaInvoice(ObjectsArray, PrintObjects, TemplateName, Signatur
 			
 		Else
 			
-			MessageText = NStr("en='ATTENTION! Perhaps, user template is used default methods for the accounts printing may work incorrectly.';ru='ВНИМАНИЕ! Возможно используется пользовательский макет. Штатный механизм печати счетов может работать некоректно.'");
+			MessageText = NStr("en='ATTENTION! Maybe, custom template is being used. Default procedures of account printing may work incorrectly.';ru='ВНИМАНИЕ! Возможно используется пользовательский макет. Штатный механизм печати счетов может работать некоректно.'");
 			CommonUseClientServer.AddUserError(Errors, , MessageText, Undefined);
 			
 		EndIf;
@@ -332,7 +332,7 @@ Function PrintProformaInvoice(ObjectsArray, PrintObjects, TemplateName, Signatur
 				TemplateArea.Parameters.VAT = NStr("ru = 'Без налога (НДС)'; en = 'Without tax (VAT)'");
 				TemplateArea.Parameters.TotalVAT = "-";
 			Else
-				TemplateArea.Parameters.VAT = ?(Header.AmountIncludesVAT, NStr("ru = 'В том числе НДС'; en = 'Including VAT'"), NStr("ru = 'Сумма НДС'; en = 'VAT'"));
+				TemplateArea.Parameters.VAT = ?(Header.AmountIncludesVAT, NStr("ru = 'В том числе НДС'; en = 'Including VAT'"), NStr("en='VAT amount';ru='Сумма НДС'"));
 				TemplateArea.Parameters.TotalVAT = SmallBusinessServer.AmountsFormat(VATAmount);
 			EndIf; 
 			SpreadsheetDocument.Put(TemplateArea);
@@ -361,7 +361,7 @@ Function PrintProformaInvoice(ObjectsArray, PrintObjects, TemplateName, Signatur
 					
 				Else
 					
-					MessageText = NStr("en='Facsimile for company is not set. Facsimile is set in the company card, ""Printing setting"" section.';ru='Факсимиле для организации не установлена. Установка факсимиле выполняется в карточке организации, раздел ""Настройка печати"".'");
+					MessageText = NStr("en='Facsimile for company is not set. Facsimile is set in the company card, the ""Printing setting"" section.';ru='Факсимиле для организации не установлена. Установка факсимиле выполняется в карточке организации, раздел ""Настройка печати"".'");
 					CommonUseClientServer.AddUserError(Errors, , MessageText, Undefined);
 					
 					TemplateArea = Template.GetArea("InvoiceFooter");
@@ -437,7 +437,7 @@ Procedure AddPrintCommands(PrintCommands) Export
 	// Proforma invoice
 	PrintCommand = PrintCommands.Add();
 	PrintCommand.ID							= "ProformaInvoice";
-	PrintCommand.Presentation				= NStr("ru = 'Счет на оплату'; en = 'Proforma invoice'");
+	PrintCommand.Presentation				= NStr("en='Proforma invoice';ru='Счет на оплату'");
 	PrintCommand.FormsList					= "DocumentForm,ListForm,DocumentsListForm";
 	PrintCommand.CheckPostingBeforePrint	= False;
 	PrintCommand.Order						= 1;

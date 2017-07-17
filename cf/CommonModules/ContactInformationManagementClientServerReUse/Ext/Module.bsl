@@ -32,7 +32,7 @@ EndFunction
 //
 Function SerializationCodePostalIndex() Export
 	
-	Return AddressingObjectSerializationCode(NStr("en='Postal index';ru='Почтовый индекс'"));
+	Return AddressingObjectSerializationCode(NStr("en='Zip code';ru='Почтовый индекс'"));
 	
 EndFunction
 
@@ -209,13 +209,13 @@ Function TypesOfAddressingAddressesRF() Export
 	
 	Result.Add(ObjectStringAddress("1010", NStr("en='House';ru='дом'"),          1, 1, 2));
 	Result.Add(ObjectStringAddress("1020", NStr("en='Ownership';ru='Владение'"),     1, 2, 1));
-	Result.Add(ObjectStringAddress("1030", NStr("en='Homeownership';ru='Домовладение'"), 1, 3, 3));
+	Result.Add(ObjectStringAddress("1030", NStr("en='Home-ownership';ru='Домовладение'"), 1, 3, 3));
 	
 	Result.Add(ObjectStringAddress("1050", NStr("en='Block';ru='блок'"),     2, 1));
 	Result.Add(ObjectStringAddress("1060", NStr("en='Construction';ru='строительство'"),   2, 2, 1));
-	Result.Add(ObjectStringAddress("1080", NStr("en='Letter';ru='Письмо'"),     2, 3, 3));
-	Result.Add(ObjectStringAddress("1070", NStr("en='Facility';ru='Сооружение'"), 2, 4, 2));
-	Result.Add(ObjectStringAddress("1040", NStr("en='Land';ru='Участок'"),    2, 5));
+	Result.Add(ObjectStringAddress("1080", NStr("en='Email';ru='Письмо'"),     2, 3, 3));
+	Result.Add(ObjectStringAddress("1070", NStr("en='Construction';ru='Сооружение'"), 2, 4, 2));
+	Result.Add(ObjectStringAddress("1040", NStr("en='Land lot';ru='Участок'"),    2, 5));
 	
 	Result.Add(ObjectStringAddress("2010", NStr("en='Apartment';ru='Квартира'"),  3, 1));
 	Result.Add(ObjectStringAddress("2030", NStr("en='Office';ru='офис'"),      3, 2));
@@ -224,14 +224,14 @@ Function TypesOfAddressingAddressesRF() Export
 		|измерения'"), 3, 4));
 	Result.Add(ObjectStringAddress("2050", NStr("en='Room';ru='Комната'"),   3, 5));
 	//  Our abbreviations for supporting the backward match during parsing.
-	Result.Add(ObjectStringAddress("2010", NStr("en='app.';ru='приложение.'"),       3, 6));
-	Result.Add(ObjectStringAddress("2030", NStr("en='f.';ru='ж'"),       3, 7));
+	Result.Add(ObjectStringAddress("2010", NStr("en='application.';ru='приложение.'"),       3, 6));
+	Result.Add(ObjectStringAddress("2030", NStr("en='f';ru='ж'"),       3, 7));
 	
 	// Adjusting objects
-	Result.Add(ObjectStringAddress("10100000", NStr("en='Postal index';ru='Почтовый индекс'")));
+	Result.Add(ObjectStringAddress("10100000", NStr("en='Zip code';ru='Почтовый индекс'")));
 	Result.Add(ObjectStringAddress("10200000", NStr("en='Address point';ru='Адресная точка'")));
 	Result.Add(ObjectStringAddress("10300000", NStr("en=""Gardeners' partnership"";ru='Садовое товарищество'")));
-	Result.Add(ObjectStringAddress("10400000", NStr("en='Item of the road network, planning pattern of an additional address item';ru='Элемент улично-дорожной сети, планировочной структуры дополнительного адресного элемента'")));
+	Result.Add(ObjectStringAddress("10400000", NStr("en='Item of street-road network, planning structure of additional address element';ru='Элемент улично-дорожной сети, планировочной структуры дополнительного адресного элемента'")));
 	Result.Add(ObjectStringAddress("10500000", NStr("en='Industrial area';ru='Промышленная зона'")));
 	Result.Add(ObjectStringAddress("10600000", NStr("en='Garage construction co-operative';ru='Гаражно-строительный кооператив'")));
 	Result.Add(ObjectStringAddress("10700000", NStr("en='TERRITORY';ru='ТЕРРИТОРИЯ'")));

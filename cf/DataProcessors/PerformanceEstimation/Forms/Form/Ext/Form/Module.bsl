@@ -13,7 +13,7 @@ Procedure OnCreateAtServer(Cancel, StandardProcessing)
 	
 	OverallSystemPerformance = PerformanceEstimationService.GetItemGeneralSystemPerformance();
 	If OverallSystemPerformance.IsEmpty() Then
-		Object.OverallSystemPerformance = NStr("en='Overall system performance';ru='Общая производительность системы'");
+		Object.OverallSystemPerformance = NStr("en='Overall application performance';ru='Общая производительность системы'");
 	Else
 		Object.OverallSystemPerformance = OverallSystemPerformance;
 	EndIf;
@@ -22,7 +22,7 @@ Procedure OnCreateAtServer(Cancel, StandardProcessing)
 		ExportableSetup = ExportKeyOperations(Object.OverallSystemPerformance);
 		Object.Performance.Load(ExportableSetup);
 	Except
-		MessageText = NStr("en='Failed to import the settings.';ru='Не удалось загрузить настройки.'");
+		MessageText = NStr("en='Cannot import settings.';ru='Не удалось загрузить настройки.'");
 		CommonUseClientServer.MessageToUser(MessageText);
 	EndTry;
 	
@@ -213,7 +213,7 @@ Procedure SpecifyAPDEX(Command)
 	EndIf;
 	
 	Notification = New NotifyDescription("SpecifyEndAPDEX", ThisObject);
-	ToolTip = NStr("en='Enter the desired APDEX value';ru='Введите желаемое значение APDEX'"); 
+	ToolTip = NStr("en='Enter required APDEX value';ru='Введите желаемое значение APDEX'"); 
 	APDEX = 0;
 	ShowInputNumber(Notification, APDEX, ToolTip, 3, 2);
 	
@@ -324,7 +324,7 @@ Procedure RefreshIndicators(FilterValues = Undefined)
 	// Receive the total KeyOperationTable that will be output to a user.
 	TableOfKeyOperations = DataProcessorObject.PerformanceIndicators();
 	If TableOfKeyOperations = Undefined Then
-		CommonUseClientServer.MessageToUser(NStr("en='Period is installed incorrectly.';ru='Период установлен не верно.'"));
+		CommonUseClientServer.MessageToUser(NStr("en='Period was set up incorrectly.';ru='Период установлен не верно.'"));
 		Return;
 	EndIf;
 	
@@ -1201,7 +1201,7 @@ Function CalculateDateTimeSegment(StartDate, EndDate, IndexPeriod)
 	EndIf;
 	
 	If NumberOfSteps <= IndexPeriod Then
-		Raise NStr("en='Number of steps can not be less than index.';ru='Количество шагов не может быть меньше индекса.'");
+		Raise NStr("en='Number of steps cannot be less than index.';ru='Количество шагов не может быть меньше индекса.'");
 	EndIf;
 	
 	StartDate = Object.StartDate + (StepNumber * IndexPeriod);
@@ -1365,7 +1365,7 @@ Function SetupExecuted()
 		Then
 		
 			CommonUseClientServer.MessageToUser(
-				NStr("en='Target time must be obligatory filled in.';ru='Целевое время обязательно должно быть заполнено.'"),
+				NStr("en='Target time must be filled in.';ru='Целевое время обязательно должно быть заполнено.'"),
 				,
 				"Performance[" + Object.Performance.IndexOf(TSRow) + "].TargetTime",
 				"Object");
@@ -1503,7 +1503,7 @@ Procedure SelectFileAskedExport(FileOperationsExtensionConnected, AdditionalPara
 	
 	ExportOptions = ToPrepareExportOptions();
 	AddressInStorage = PutToTempStorage("", ThisObject.UUID);
-	Status(NStr("en='Data export...';ru='Экспорт данных...'"));
+	Status(NStr("en='Exporting data...';ru='Экспорт данных...'"));
 	ToExport(AddressInStorage, ExportOptions);
 	
 	GetFile(AddressInStorage, "perf.zip");

@@ -71,7 +71,7 @@ Function GetStandardSchedulesToRemind() Export
 	WeekDays = New Array;
 	WeekDays.Add(1);
 	Schedule.WeekDays = WeekDays;
-	Result.Insert(NStr("en='on Mondays, at 9:00';ru='по понедельникам, в 9:00'"), Schedule);
+	Result.Insert(NStr("en='on Mondays at 9 a.m.';ru='по понедельникам, в 9:00'"), Schedule);
 	
 	// on Fridays at 3 p.m.
 	Schedule = New JobSchedule;
@@ -81,14 +81,14 @@ Function GetStandardSchedulesToRemind() Export
 	WeekDays = New Array;
 	WeekDays.Add(5);
 	Schedule.WeekDays = WeekDays;
-	Result.Insert(NStr("en='on Fridays, at 15:00';ru='по пятницам, в 15:00'"), Schedule);
+	Result.Insert(NStr("en='on Fridays at 3 p.m.';ru='по пятницам, в 15:00'"), Schedule);
 	
 	// each day at 9:00
 	Schedule = New JobSchedule;
 	Schedule.DaysRepeatPeriod = 1;
 	Schedule.WeeksPeriod = 1;
 	Schedule.BeginTime = '00010101090000';
-	Result.Insert(NStr("en='every day, at 9:00';ru='каждый день, в 9:00'"), Schedule);
+	Result.Insert(NStr("en='every day at 9:00';ru='каждый день, в 9:00'"), Schedule);
 	
 	// to change the list
 	UserRemindersClientServerOverridable.OnGettingStandardSchedulesToRemind(Result);

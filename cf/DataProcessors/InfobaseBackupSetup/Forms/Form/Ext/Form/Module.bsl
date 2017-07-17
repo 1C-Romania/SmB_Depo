@@ -15,7 +15,7 @@ Procedure OnCreateAtServer(Cancel, StandardProcessing)
 	EndIf;
 	
 	If CommonUseClientServer.ThisIsWebClient() Then
-		Raise NStr("en='Backing up is not available in web-client.';ru='Резервное копирование недоступно в веб-клиенте.'");
+		Raise NStr("en='Backup is not available in web client.';ru='Резервное копирование недоступно в веб-клиенте.'");
 	EndIf;
 	
 	BackupSettings = InfobaseBackupServer.BackupSettings();
@@ -54,7 +54,7 @@ Procedure OnOpen(Cancel)
 	
 	If CommonUseClientServer.IsLinuxClient() Then
 		Cancel = True;
-		MessageText = NStr("en='Backup is not supported in the client under Linux OS.';ru='Резервное копирование не поддерживается в клиенте под управлением ОС Linux.'");
+		MessageText = NStr("en='Backup is not supported on the client running Linux OS.';ru='Резервное копирование не поддерживается в клиенте под управлением ОС Linux.'");
 		ShowMessageBox(, MessageText);
 		Return;
 	EndIf;
@@ -189,7 +189,7 @@ Procedure GoFromSetupPages()
 		InfobaseBackupClient.BackupSettingsFormName());
 		
 		ShowUserNotification(NStr("en='Backup';ru='Резервное копирование'"), SettingsFormName,
-			NStr("en='Backup is configured.';ru='Резервное копирование настроено.'"));
+			NStr("en='Backup is set up.';ru='Резервное копирование настроено.'"));
 		
 	Else
 		
@@ -213,13 +213,13 @@ Function CheckDirectoryWithBackups()
 	
 	If IsBlankString(Object.BackupDirectory) Then
 		
-		MessageText = NStr("en='Directory to backup copy is not chosen.';ru='Не выбран каталог для резервной копии.'");
+		MessageText = NStr("en='Backup directory is not selected.';ru='Не выбран каталог для резервной копии.'");
 		CommonUseClientServer.MessageToUser(MessageText,, "Object.BackupDirectory");
 		AttributesFilled = False;
 		
 	ElsIf FindFiles(Object.BackupDirectory).Count() = 0 Then
 		
-		MessageText = NStr("en='Non-existent directory is specified.';ru='Указан несуществующий каталог.'");
+		MessageText = NStr("en='Non-existing directory is specified.';ru='Указан несуществующий каталог.'");
 		CommonUseClientServer.MessageToUser(MessageText,, "Object.BackupDirectory");
 		AttributesFilled = False;
 		
@@ -231,7 +231,7 @@ Function CheckDirectoryWithBackups()
 			TestFile.WriteXMLDeclaration();
 			TestFile.Close();
 		Except
-			MessageText = NStr("en='No access to the backup directory';ru='Нет доступа к каталогу с резервными копиями.'");
+			MessageText = NStr("en='Cannot access directory with backups.';ru='Нет доступа к каталогу с резервными копиями.'");
 			CommonUseClientServer.MessageToUser(MessageText,, "Object.BackupDirectory");
 			AttributesFilled = False;
 		EndTry;
@@ -268,9 +268,9 @@ Function GetPath(DialogMode)
 	FileOpeningDialog= New FileDialog(Mode);
 	
 	If Mode = FileDialogMode.ChooseDirectory Then
-		FileOpeningDialog.Title= NStr("en='Select the folder';ru='Выберите каталог'");
+		FileOpeningDialog.Title= NStr("en='Select directory';ru='Выберите каталог'");
 	Else
-		FileOpeningDialog.Title= NStr("en='Select the file';ru='Выберите файл'");
+		FileOpeningDialog.Title= NStr("en='Select file';ru='Выберите файл'");
 	EndIf;	
 		
 	If FileOpeningDialog.Choose() Then

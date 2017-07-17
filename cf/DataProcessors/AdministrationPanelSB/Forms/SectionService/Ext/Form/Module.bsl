@@ -206,7 +206,7 @@ Function CancellationUncheckFunctionalOptionUseWorkSubsystem()
 	QueryResult = Query.Execute();
 	If Not QueryResult.IsEmpty() Then
 		
-		ErrorText = NStr("en='There are ""Work order"" documents in the infobase! You can not clear the ""Work"" check box!';ru='В информационной базе присутствуют документы ""Заказ - наряд""! Снятие флага ""Работы"" запрещено!'");
+		ErrorText = NStr("en='There are documents of the ""Job order"" kind in the infobase. You cannot clear the ""Works"" check box.';ru='В информационной базе присутствуют документы ""Заказ - наряд""! Снятие флага ""Работы"" запрещено!'");
 		
 	EndIf;
 	
@@ -320,7 +320,7 @@ Function ValidateAbilityToChangeAttributeValue(AttributePathToData, Result)
 		If Not ConstantsSet.UseCustomerOrderStates
 			AND Not ValueIsFilled(ConstantsSet.CustomerOrdersInProgressStatus) Then
 			
-			ErrorText = NStr("en='The ""Use several customer orders states"" flag is cleared, but the ""In work"" customer order state parameter is not filled!';ru='Снят флаг ""Использовать несколько состояний заказов покупателей"", но не заполнен параматр состояния заказа покупателя ""В работе""!'");
+			ErrorText = NStr("en='The ""Use several customer order states"" check box is cleared, but the ""In progress"" state parameter is not filled in.';ru='Снят флаг ""Использовать несколько состояний заказов покупателей"", но не заполнен параматр состояния заказа покупателя ""В работе""!'");
 			Result.Insert("Field", 				AttributePathToData);
 			Result.Insert("ErrorText", 		ErrorText);
 			Result.Insert("CurrentValue",	Constants.CustomerOrdersInProgressStatus.Get());
@@ -334,7 +334,7 @@ Function ValidateAbilityToChangeAttributeValue(AttributePathToData, Result)
 		If Not ConstantsSet.UseCustomerOrderStates
 			AND Not ValueIsFilled(ConstantsSet.CustomerOrdersCompletedStatus) Then
 			
-			ErrorText = NStr("en='The ""Use several customer orders states"" check box is cleared, but the ""Executed"" state of the customer order is not filled out!';ru='Снят флаг ""Использовать несколько состояний заказов покупателей"", но не заполнен параматр состояния заказа покупателя ""Выполнен""!'");
+			ErrorText = NStr("en='The ""Use several customer order states"" check box is cleared, but the ""Completed"" state parameter is not filled in.';ru='Снят флаг ""Использовать несколько состояний заказов покупателей"", но не заполнен параматр состояния заказа покупателя ""Выполнен""!'");
 			Result.Insert("Field", 				AttributePathToData);
 			Result.Insert("ErrorText", 		ErrorText);
 			Result.Insert("CurrentValue",	Constants.CustomerOrdersCompletedStatus.Get());

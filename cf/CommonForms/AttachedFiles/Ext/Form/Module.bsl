@@ -20,7 +20,7 @@ Procedure OnCreateAtServer(Cancel, StandardProcessing)
 		StandardSubsystemsServer.SetFormPurposeKey(ThisObject, "PickupSelection");
 		WindowOpeningMode = FormWindowOpeningMode.LockOwnerWindow;
 		
-		Title = NStr("en='Attached file selection';ru='Выбор присоединенного файла'");
+		Title = NStr("en='Select attached file';ru='Выбор присоединенного файла'");
 		
 		// Filter of items not marked for deletion.
 		CommonUseClientServer.SetFilterDynamicListItem(
@@ -728,7 +728,7 @@ Function ValidateActionAllowed(Val CurrentAction = "")
 	If TypeOf(Items.List.CurrentRow) = CatalogWithFilesType Then
 		Return True;
 	Else
-		ShowMessageBox(, NStr("en='Action is unavailable for the grouping row of the list.';ru='Действие недоступно для строки группировки списка.'"));
+		ShowMessageBox(, NStr("en='The action is not available for the list grouping row.';ru='Действие недоступно для строки группировки списка.'"));
 		Return False;
 	EndIf;
 	
@@ -900,8 +900,8 @@ Procedure ConfigureDynamicList(CatalogNameFilesStorage)
 	|WHERE
 	|	Files.FileOwner = &FilesOwner";
 	
-	ErrorTitle = NStr("en='Error when setting up the dynamic list of the attached files.';ru='Ошибка при настройке динамического списка присоединенных файлов.'");
-	EndErrors = NStr("en='In this case the dynamic list configuration is impossible.';ru='В этом случае настройка динамического списка невозможна.'");
+	ErrorTitle = NStr("en='An error occurred when configuring the dynamic list of attached files.';ru='Ошибка при настройке динамического списка присоединенных файлов.'");
+	EndErrors = NStr("en='In this case, dynamic list configuration is not supported.';ru='В этом случае настройка динамического списка невозможна.'");
 	
 	CatalogNameFilesStorage = AttachedFilesService.CatalogNameStorageFiles(
 		Parameters.FileOwner, "", ErrorTitle, EndErrors);

@@ -54,7 +54,7 @@ Procedure FillCheckProcessing(Cancel, CheckedAttributes)
 		
 		If Not ValueIsFilled(DayPeriod.Date) Then
 			CommonUseClientServer.MessageToUser(
-				NStr("en='The Day field value is not filled!';ru='Не заполнено значение поля День!'"), , );
+				NStr("en='Value of field Day is not entered.';ru='Не заполнено значение поля День!'"), , );
 			Cancel = True;
 			Return;
 		EndIf;
@@ -65,7 +65,7 @@ Procedure FillCheckProcessing(Cancel, CheckedAttributes)
 		AND BeginSelection.Use 
 		AND EndSelection.Use Then
 			CommonUseClientServer.MessageToUser(
-				NStr("en='Value of the period start must not exceed the end value!';ru='Значение начала периода не может быть больше значения конца!'"), , );
+				NStr("en='The period start value cannot be later than the period end value.';ru='Значение начала периода не может быть больше значения конца!'"), , );
 			Cancel = True;
 			Return;
 		EndIf;
@@ -76,14 +76,14 @@ Procedure FillCheckProcessing(Cancel, CheckedAttributes)
 		
 		If Not ValueIsFilled(User) Then
 			CommonUseClientServer.MessageToUser(
-				NStr("en='User field value is not filled!';ru='Не заполнено значение поля Пользователь!'"), , );
+				NStr("en='Value of field User is not entered.';ru='Не заполнено значение поля Пользователь!'"), , );
 			Cancel = True;
 			Return;
 		EndIf;
 		
 		If Reports.EventsLogAnalysis.IBUserName(User) = Undefined Then
 			CommonUseClientServer.MessageToUser(
-				NStr("en='Report generation is available only to the user who has the username to log on to the application.';ru='Формирование отчета возможно только для пользователя, которому указано имя для входа в программу.'"), , );
+				NStr("en='The report can be generated only for the user for whom a name for logon to the application is specified.';ru='Формирование отчета возможно только для пользователя, которому указано имя для входа в программу.'"), , );
 			Cancel = True;
 			Return;
 		EndIf;
@@ -96,7 +96,7 @@ Procedure FillCheckProcessing(Cancel, CheckedAttributes)
 			
 			If Reports.EventsLogAnalysis.IBUserName(UsersAndGroups) = Undefined Then
 				CommonUseClientServer.MessageToUser(
-					NStr("en='Report generation is available only to the user who has the username to log on to the application.';ru='Формирование отчета возможно только для пользователя, которому указано имя для входа в программу.'"), , );
+					NStr("en='The report can be generated only for the user for whom a name for logon to the application is specified.';ru='Формирование отчета возможно только для пользователя, которому указано имя для входа в программу.'"), , );
 				Cancel = True;
 				Return;
 			EndIf;
@@ -105,7 +105,7 @@ Procedure FillCheckProcessing(Cancel, CheckedAttributes)
 		
 		If Not ValueIsFilled(UsersAndGroups) Then
 			CommonUseClientServer.MessageToUser(
-				NStr("en='Users field value is not filled!';ru='Не заполнено значение поля Пользователи!'"), , );
+				NStr("en='Value of field Users is not entered.';ru='Не заполнено значение поля Пользователи!'"), , );
 			Cancel = True;
 			Return;
 		EndIf;

@@ -223,7 +223,7 @@ Procedure FixedAssetsVolumeProductsWorksForDepreciationCalculationOnChange(Item)
 	StructureData = GetDataFixedAsset(TabularSectionRow.FixedAsset);
 	
 	If Not StructureData.MethodOfDepreciationProportionallyProductsAmount Then
-		ShowMessageBox(Undefined,NStr("en='""Volume of Production Work for calculating depreciation ""can not be filled with for the specified depreciation accrual method!';ru='""Объем продукции (работ) для исчисления амортизации"" не может быть заполнен для указанного способа начисления амортизации!'"));
+		ShowMessageBox(Undefined,NStr("en='""Product (work) volume for calculating depreciation"" cannot be filled in for the specified depreciation accrual method.';ru='""Объем продукции (работ) для исчисления амортизации"" не может быть заполнен для указанного способа начисления амортизации!'"));
 		TabularSectionRow.AmountOfProductsServicesForDepreciationCalculation = 0;
 	EndIf;
 	
@@ -240,7 +240,7 @@ Procedure FixedAssetsUsagePeriodForDepreciationCalculationOnChange(Item)
 	StructureData = GetDataFixedAsset(TabularSectionRow.FixedAsset);
 	
 	If StructureData.MethodOfDepreciationProportionallyProductsAmount Then
-		ShowMessageBox(Undefined,NStr("en='The useful life of the asset can not be filled for the specified method of calculating depreciation!';ru='""Срок использования для вычисления амортизации"" не может быть заполнен для указанного способа начисления амортизации!'"));
+		ShowMessageBox(Undefined,NStr("en='Cannot fill in ""Useful life for calculating depreciation"" for the specified method of depreciation accrual.';ru='""Срок использования для вычисления амортизации"" не может быть заполнен для указанного способа начисления амортизации!'"));
 		TabularSectionRow.UsagePeriodForDepreciationCalculation = 0;
 	EndIf;
 	

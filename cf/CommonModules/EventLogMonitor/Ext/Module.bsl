@@ -75,7 +75,7 @@ Procedure ReadEventLogMonitorEvents(ReportParameters, StorageAddress) Export
 		AND ValueIsFilled(StartDate) AND ValueIsFilled(EventLogMonitorFilterAtClient.EndDate);
 		
 	If FilterDatesSpecified AND StartDate > EndDate Then
-		Raise NStr("en='Conditions of events log monitor filter are specified incorrectly. Start date is more than end date.';ru='Некорректно заданы условия отбора журнала регистрации. Дата начала больше даты окончания.'");
+		Raise NStr("en='Filter conditions of the event log are incorrect. Start date is greater than end date.';ru='Некорректно заданы условия отбора журнала регистрации. Дата начала больше даты окончания.'");
 	EndIf;
 	
 	// Filter preparation
@@ -219,14 +219,14 @@ Procedure ReadEventLogMonitorEvents(ReportParameters, StorageAddress) Export
 		SetPrivilegedMode(True);
 		// User name refinement.
 		If LogEvent.User = New UUID("00000000-0000-0000-0000-000000000000") Then
-			LogEvent.UserName = NStr("en='<NotSpecified>';ru='<Неопределен>'");
+			LogEvent.UserName = NStr("en='<Undefined>';ru='<Неопределен>'");
 			
 		ElsIf LogEvent.UserName = "" Then
 			LogEvent.UserName = Users.UnspecifiedUserFullName();
 			
 		ElsIf InfobaseUsers.FindByUUID(LogEvent.User) = Undefined Then
 			LogEvent.UserName = StringFunctionsClientServer.SubstituteParametersInString(
-				NStr("en='%1 <Deleted>';ru='%1 <Удален>'"),
+				NStr("en='%1 <Removed>';ru='%1 <Удален>'"),
 				LogEvent.UserName);
 		EndIf;
 		
@@ -311,13 +311,13 @@ Procedure GenerateFilterPresentation(FilterPresentation, EventLogMonitorFilter,
 		ElsIf Upper(RestrictionName) = Upper("TransactionStatus") Then
 			RestrictionName = NStr("en='Transaction status';ru='Статус транзакции'");
 		ElsIf Upper(RestrictionName) = Upper("DataPresentation") Then
-			RestrictionName = NStr("en='Data presentation';ru='Представления данных'");
+			RestrictionName = NStr("en='Data presentations';ru='Представления данных'");
 		ElsIf Upper(RestrictionName) = Upper("ServerName") Then
-			RestrictionName = NStr("en='Work server';ru='Рабочий сервер'");
+			RestrictionName = NStr("en='Working server';ru='Рабочий сервер'");
 		ElsIf Upper(RestrictionName) = Upper("Port") Then
 			RestrictionName = NStr("en='Main IP port';ru='Основной IP порт'");
 		ElsIf Upper(RestrictionName) = Upper("SyncPort") Then
-			RestrictionName = NStr("en='Auxiliary IP Port';ru='Вспомогательный IP порт'");
+			RestrictionName = NStr("en='Sync port';ru='Вспомогательный IP порт'");
 		ElsIf Upper(RestrictionName) = Upper("SessionDataSeparation") Then
 			RestrictionName = NStr("en='Session data separation';ru='Разделение данных сеанса'");
 		EndIf;
@@ -437,7 +437,7 @@ Procedure AddRestrictionToFilterPresentation(EventLogMonitorFilter, FilterPresen
 		If RestrictionName = "Event" AND RestrictionsList.Count() > 5 Then
 			
 			Restriction = FilterPresentation + StringFunctionsClientServer.SubstituteParametersInString(
-				NStr("en='Event (%1)';ru='События (%1)'"), RestrictionsList.Count());
+				NStr("en='Events (%1)';ru='События (%1)'"), RestrictionsList.Count());
 			
 		ElsIf RestrictionName = "Session" AND RestrictionsList.Count() > 3 Then
 			

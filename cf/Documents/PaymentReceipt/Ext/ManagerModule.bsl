@@ -12,7 +12,7 @@ Procedure GenerateTableCashAssets(DocumentRefPaymentReceipt, StructureAdditional
 	Query.SetParameter("PointInTime",			New Boundary(StructureAdditionalProperties.ForPosting.PointInTime, BoundaryType.Including));
 	Query.SetParameter("ControlPeriod",			StructureAdditionalProperties.ForPosting.PointInTime.Date);
 	Query.SetParameter("Company",				StructureAdditionalProperties.ForPosting.Company);
-	Query.SetParameter("CashFundsReceipt",		NStr("ru = 'Приходный кассовый ордер'; en = 'Cash receipt'",		Metadata.DefaultLanguage.LanguageCode));
+	Query.SetParameter("CashFundsReceipt",		NStr("en='Credit slip';ru='Приходный кассовый ордер'",		Metadata.DefaultLanguage.LanguageCode));
 	Query.SetParameter("ExchangeDifference",	NStr("ru = 'Курсовая разница'; en = 'Exchange rate difference'",	Metadata.DefaultLanguage.LanguageCode));
 	
 	Query.Text =
@@ -162,7 +162,7 @@ Procedure GenerateAdvanceHolderPaymentsTable(DocumentRefPaymentReceipt, Structur
 	Query.SetParameter("PointInTime", New Boundary(StructureAdditionalProperties.ForPosting.PointInTime, BoundaryType.Including));
 	Query.SetParameter("ControlPeriod", StructureAdditionalProperties.ForPosting.PointInTime.Date);
 	Query.SetParameter("Company", StructureAdditionalProperties.ForPosting.Company);
-	Query.SetParameter("RepaymentOfAdvanceHolderDebt", NStr("en='Repayment of advance holder debt';ru='Погашение долга подотчетника'"));
+	Query.SetParameter("RepaymentOfAdvanceHolderDebt", NStr("en='Repay advance holder debt';ru='Погашение долга подотчетника'"));
 	Query.SetParameter("ExchangeDifference", NStr("en='Exchange rate difference';ru='Курсовая разница'"));
 	
 	Query.Text =
@@ -395,8 +395,8 @@ Procedure GenerateTableAccountsPayable(DocumentRefPaymentReceipt, StructureAddit
 	Query.SetParameter("PointInTime", New Boundary(StructureAdditionalProperties.ForPosting.PointInTime, BoundaryType.Including));
 	Query.SetParameter("ControlPeriod", StructureAdditionalProperties.ForPosting.PointInTime.Date);
 	Query.SetParameter("Company", StructureAdditionalProperties.ForPosting.Company);
-	Query.SetParameter("VendorAdvanceRepayment", NStr("en='Vendor advance repayment';ru='Погашение аванса поставщику'"));
-	Query.SetParameter("AppearenceOfLiabilityToVendor", NStr("en='Appearance of vendor liabilities';ru='Возникновение обязательств перед поставщиком'"));
+	Query.SetParameter("VendorAdvanceRepayment", NStr("en='Repayment of advance to supplier';ru='Погашение аванса поставщику'"));
+	Query.SetParameter("AppearenceOfLiabilityToVendor", NStr("en='Incurrence of liabilities to supplier';ru='Возникновение обязательств перед поставщиком'"));
 	Query.SetParameter("ExchangeDifference", NStr("en='Exchange rate difference';ru='Курсовая разница'"));
 	
 	Query.Text =
@@ -535,7 +535,7 @@ Procedure GenerateTableIncomeAndExpenses(DocumentRefPaymentReceipt, StructureAdd
 	Query.SetParameter("Ref", 					DocumentRefPaymentReceipt);
 	Query.SetParameter("Company", 				StructureAdditionalProperties.ForPosting.Company);
 	Query.SetParameter("PointInTime", 			New Boundary(StructureAdditionalProperties.ForPosting.PointInTime, BoundaryType.Including));
-	Query.SetParameter("IncomeReflection",		NStr("ru = 'Отражение доходов'; en = 'Income accounting'",			Metadata.DefaultLanguage.LanguageCode));
+	Query.SetParameter("IncomeReflection",		NStr("en='Record income';ru='Отражение доходов'",			Metadata.DefaultLanguage.LanguageCode));
 	Query.SetParameter("ExchangeDifference",	NStr("ru = 'Курсовая разница'; en = 'Exchange rate difference'",	Metadata.DefaultLanguage.LanguageCode));
 	
 	Query.Text =
@@ -773,9 +773,9 @@ Procedure GenerateTableManagerial(DocumentRefPaymentReceipt, StructureAdditional
 	Query.SetParameter("Company", StructureAdditionalProperties.ForPosting.Company);
 	Query.SetParameter("PointInTime", New Boundary(StructureAdditionalProperties.ForPosting.PointInTime, BoundaryType.Including));
 	Query.SetParameter("ExchangeDifference",		NStr("ru = 'Курсовая разница'; en = 'Exchange rate difference'",	Metadata.DefaultLanguage.LanguageCode));
-	Query.SetParameter("Content",					NStr("ru = 'Оприходование денежных средств с произвольного счета'; en = 'Cash as received from any account'",	Metadata.DefaultLanguage.LanguageCode));
+	Query.SetParameter("Content",					NStr("en='Capitalization of cash from any account';ru='Оприходование денежных средств с произвольного счета'",	Metadata.DefaultLanguage.LanguageCode));
 	Query.SetParameter("TaxReturn",					NStr("ru = 'Возврат налога'; en = 'Tax return'",		Metadata.DefaultLanguage.LanguageCode));
-	Query.SetParameter("ContentCurrencyPurchase",	NStr("ru = 'Покупка валюты'; en = 'Currency purchase'",	Metadata.DefaultLanguage.LanguageCode));
+	Query.SetParameter("ContentCurrencyPurchase",	NStr("en='Foreign exchange buying';ru='Покупка валюты'",	Metadata.DefaultLanguage.LanguageCode));
 	
 	Query.Text =
 	"SELECT
@@ -2245,7 +2245,7 @@ Procedure GenerateTableSettlementsWithOtherCounterparties(DocumentRefPaymentRece
 	
 	Query.SetParameter("Company",						StructureAdditionalProperties.ForPosting.Company);
 	Query.SetParameter("AccountingForOtherOperations",	NStr("ru = 'Учет расчетов по прочим операциям'; en = 'Accounting for other operations'",	Metadata.DefaultLanguage.LanguageCode));
-	Query.SetParameter("Comment",						NStr("ru = 'Уменьшение долга контрагента'; en = 'Decrease company debt'", Metadata.DefaultLanguage.LanguageCode));
+	Query.SetParameter("Comment",						NStr("en='Decrease in counterparty debt';ru='Уменьшение долга контрагента'", Metadata.DefaultLanguage.LanguageCode));
 	Query.SetParameter("Ref",							DocumentRefPaymentReceipt);
 	Query.SetParameter("PointInTime",					New Boundary(StructureAdditionalProperties.ForPosting.PointInTime, BoundaryType.Including));
 	Query.SetParameter("ControlPeriod",					StructureAdditionalProperties.ForPosting.PointInTime.Date);

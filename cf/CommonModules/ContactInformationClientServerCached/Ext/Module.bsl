@@ -30,7 +30,7 @@ EndFunction
 //      String - code
 //
 Function PostalCodeSerializationCode() Export
-	Return ContactInformationClientServerCached.AddressingObjectSerializationCode(NStr("ru = 'Почтовый индекс'; en = 'Postal code'"));
+	Return ContactInformationClientServerCached.AddressingObjectSerializationCode(NStr("en='Zip code';ru='Почтовый индекс'"));
 EndFunction
 
 //  Returns postal code XPath
@@ -174,7 +174,7 @@ Function AddressingObjectTypesNationalAddresses() Export
 	Result.Add(AddressingObjectString("2030", NStr("ru = 'оф.';	en = 'off'"),       3, 7));
 	
 	// Additional information objects
-	Result.Add(AddressingObjectString("10100000", NStr("ru = 'Почтовый индекс'; en = 'Postal code'")));
+	Result.Add(AddressingObjectString("10100000", NStr("en='Zip code';ru='Почтовый индекс'")));
 	
 	Return Result;
 EndFunction

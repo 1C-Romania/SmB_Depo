@@ -9,8 +9,8 @@ Procedure GenerateTableSettlementsWithOtherCounterparties(DocumentRefOtherExpens
 	
 	Query.SetParameter("Company",						StructureAdditionalProperties.ForPosting.Company);
 	Query.SetParameter("AccountingForOtherOperations",	NStr("ru = 'Учет расчетов по прочим операциям'; en = 'Accounting for other operations'",	Metadata.DefaultLanguage.LanguageCode));
-	Query.SetParameter("CommentReceipt",				NStr("ru = 'Увеличение долга контрагента'; en = 'Increase company debt'", Metadata.DefaultLanguage.LanguageCode));
-	Query.SetParameter("CommentExpense",				NStr("ru = 'Уменьшение долга контрагента'; en = 'Decrease company debt'", Metadata.DefaultLanguage.LanguageCode));
+	Query.SetParameter("CommentReceipt",				NStr("en='Increase in counterparty debt';ru='Увеличение долга контрагента'", Metadata.DefaultLanguage.LanguageCode));
+	Query.SetParameter("CommentExpense",				NStr("en='Decrease in counterparty debt';ru='Уменьшение долга контрагента'", Metadata.DefaultLanguage.LanguageCode));
 	Query.SetParameter("Ref",							DocumentRefOtherExpenses);
 	Query.SetParameter("PointInTime",					New Boundary(StructureAdditionalProperties.ForPosting.PointInTime, BoundaryType.Including));
 	Query.SetParameter("ControlPeriod",					StructureAdditionalProperties.ForPosting.PointInTime.Date);
@@ -290,9 +290,9 @@ Procedure InitializeDocumentData(DocumentRefOtherExpenses, StructureAdditionalPr
 	Query.SetParameter("Ref", DocumentRefOtherExpenses);
 	Query.SetParameter("Company", StructureAdditionalProperties.ForPosting.Company);
 	
-	Query.SetParameter("OtherExpenses", NStr("en='Expenses reflection';ru='Отражение затрат'"));
+	Query.SetParameter("OtherExpenses", NStr("en='Expense recording';ru='Отражение затрат'"));
 	Query.SetParameter("RevenueIncomes", NStr("en='Other income';ru='Прочие доходы'"));
-	Query.SetParameter("OtherIncome", NStr("en='Other expenses';ru='Прочих затраты (расходы)'"));
+	Query.SetParameter("OtherIncome", NStr("en='Other costs (expenses)';ru='Прочих затраты (расходы)'"));
 	
 	ResultsArray = Query.ExecuteBatch();
 	

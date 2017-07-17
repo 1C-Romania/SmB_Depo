@@ -263,7 +263,7 @@ Function RefreshReport() Export
 	EndIf;	
 	If BeginOfPeriod <> Undefined AND EndOfPeriod <> Undefined AND BeginOfPeriod > EndOfPeriod Then		
 		Message = New UserMessage();
-		Message.Text = NStr("en='Incorrect period specification: start period can not be les or equal the end period!';ru='Неправильно задан период: начало периода должно быть меньше или равно окончанию!'");
+		Message.Text = NStr("en='Incorrect period is specified: period start cannot be less or equal to the period end.';ru='Неправильно задан период: начало периода должно быть меньше или равно окончанию!'");
 		Message.Message();		
 		Return Undefined;	
 	EndIf; 

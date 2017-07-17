@@ -30,7 +30,7 @@ Procedure FillCheckProcessing(Cancel, CheckedAttributes)
 	
 	If Cancel Then
 		CommonUseClientServer.MessageToUser(
-			NStr("en='The currency exchange rate can be linked to the rate of the independent currency only.';ru='Курс валюты можно связать только с курсом независимой валюты.'"));
+			NStr("en='Exchange rates can be linked to the rate of independent currency only.';ru='Курс валюты можно связать только с курсом независимой валюты.'"));
 	EndIf;
 	
 	If SetRateMethod <> Enums.CurrencyRateSetMethods.MarkupOnExchangeRateOfOtherCurrencies Then
@@ -50,7 +50,7 @@ Procedure FillCheckProcessing(Cancel, CheckedAttributes)
 		AND SetRateMethod = Enums.CurrencyRateSetMethods.MarkupOnExchangeRateOfOtherCurrencies
 		AND WorkWithCurrencyRates.DependentCurrenciesList(Ref).Count() > 0 Then
 		CommonUseClientServer.MessageToUser(
-			NStr("en='The currency can not be subordinate, as it is the main currency for other currencies.';ru='Валюта не может быть подчиненной, так как она является основной для других валют.'"));
+			NStr("en='The currency cannot be subordinate as it is the main one for other currencies.';ru='Валюта не может быть подчиненной, так как она является основной для других валют.'"));
 		Cancel = True;
 	EndIf;
 	
@@ -162,7 +162,7 @@ Procedure UpdateExchangeRate(SubordinateCurrency)
 		MainCurrencies = Query.Execute().Unload();
 		
 		If MainCurrencies.Count() = 0 Then
-			ErrorText = NStr("en='Formula must contain at least one main currency.';ru='В формуле должна быть использована хотя бы одна основная валюта.'");
+			ErrorText = NStr("en='At least one main currency is to be used in the formula.';ru='В формуле должна быть использована хотя бы одна основная валюта.'");
 			CommonUseClientServer.MessageToUser(ErrorText, , "Object.RateCalculationFormula");
 			Raise ErrorText;
 		EndIf;

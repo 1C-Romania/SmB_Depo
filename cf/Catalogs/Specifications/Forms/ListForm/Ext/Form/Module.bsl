@@ -18,24 +18,24 @@ Procedure OnCreateAtServer(Cancel, StandardProcessing)
 			
 			AutoTitle = False;
 			If UseSubsystemProduction AND UseWorkSubsystem Then
-				Title = NStr("en='Specifications are stored for inventory and work only';ru='Спецификации хранятся только для запасов и работ'");
+				Title = NStr("en='BOMs are stored for inventory and works only';ru='Спецификации хранятся только для запасов и работ'");
 			ElsIf UseSubsystemProduction Then
-				Title = NStr("en='Specifications are stored for inventory only';ru='Спецификации хранятся только для запасов'");
+				Title = NStr("en='BOMs are stored for inventory only';ru='Спецификации хранятся только для запасов'");
 			Else
-				Title = NStr("en='Specifications are stored for work only';ru='Спецификации хранятся только для работ'");
+				Title = NStr("en='BOMs are stored for works only';ru='Спецификации хранятся только для работ'");
 			EndIf;
 			Items.List.ReadOnly = True;
 			
 		ElsIf ProductsAndServices.ProductsAndServicesType = Enums.ProductsAndServicesTypes.InventoryItem AND Not UseSubsystemProduction Then
 			
 			AutoTitle = False;
-			Title = NStr("en='Specifications are stored for work only';ru='Спецификации хранятся только для работ'");
+			Title = NStr("en='BOMs are stored for works only';ru='Спецификации хранятся только для работ'");
 			Items.List.ReadOnly = True;
 			
 		ElsIf ProductsAndServices.ProductsAndServicesType = Enums.ProductsAndServicesTypes.Work AND Not UseWorkSubsystem Then
 			
 			AutoTitle = False;
-			Title = NStr("en='Specifications are stored for inventory only';ru='Спецификации хранятся только для запасов'");
+			Title = NStr("en='BOMs are stored for inventory only';ru='Спецификации хранятся только для запасов'");
 			Items.List.ReadOnly = True;
 			
 		EndIf;

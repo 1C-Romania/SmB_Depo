@@ -311,7 +311,7 @@ Procedure AddPrintCommands(PrintCommands) Export
 	
 	PrintCommand = PrintCommands.Add();
 	PrintCommand.ID = "TimeTracking";
-	PrintCommand.Presentation = NStr("en='Time tracking';ru='Учет времени'");
+	PrintCommand.Presentation = NStr("en='Time-keeping';ru='Учет времени'");
 	PrintCommand.FormsList = "DocumentForm,ListForm";
 	PrintCommand.CheckPostingBeforePrint = False;
 	PrintCommand.Order = 1;

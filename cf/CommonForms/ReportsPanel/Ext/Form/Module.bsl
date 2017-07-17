@@ -74,9 +74,9 @@ Procedure OnOpen(Cancel)
 	#EndIf
 	If ShowNotificationOnToolTips Then
 		ShowUserNotification(
-			NStr("en='New possibility';ru='Новая возможность'"),
+			NStr("en='New feature';ru='Новая возможность'"),
 			"e1cib/data/SettingsStorage.ReportsVariantsStorage.Form.DescriptionNewOptionForDescriptionsOutput",
-			NStr("en='Output of descriptions in the report panels';ru='Вывод описаний в панелях отчетов'"),
+			NStr("en='Display descriptions in report panels';ru='Вывод описаний в панелях отчетов'"),
 			PictureLib.Information32
 		);
 	EndIf;
@@ -135,7 +135,7 @@ Procedure VariantPress(Item)
 		
 	ElsIf Not ValueIsFilled(Variant.ReportName) Then
 		
-		WarningText = StrReplace(NStr("en='Report name for option ""%1"" is not filled in.';ru='Не заполнено имя отчета для варианта ""%1"".'"), "%1", Variant.Description);
+		WarningText = StrReplace(NStr("en='Report name for the ""%1"" variant is not filled in.';ru='Не заполнено имя отчета для варианта ""%1"".'"), "%1", Variant.Description);
 		ShowMessageBox(, WarningText);
 		
 	Else
@@ -180,7 +180,7 @@ EndProcedure
 Function EnteredSearchStringIsTooShort(Text)
 	Text = TrimAll(Text);
 	If StrLen(Text) < 2 Then
-		ShowMessageBox(, NStr("en='Entered search string is too short.';ru='Введена слишком короткая строка поиска.'"));
+		ShowMessageBox(, NStr("en='Search string is too short.';ru='Введена слишком короткая строка поиска.'"));
 		Return True;
 	EndIf;
 	
@@ -193,7 +193,7 @@ Function EnteredSearchStringIsTooShort(Text)
 		EndIf;
 	EndDo;
 	If Not ThereIsNormalWord Then
-		ShowMessageBox(, NStr("en='Entered search words are too short.';ru='Введены слишком короткие слова для поиска.'"));
+		ShowMessageBox(, NStr("en='Words for search are too short.';ru='Введены слишком короткие слова для поиска.'"));
 		Return True;
 	EndIf;
 	
@@ -324,7 +324,7 @@ EndProcedure
 
 &AtClient
 Procedure ResetSettings(Command)
-	QuestionText = NStr("en='Do you want to reset the reports placement settings?';ru='Сбросить настройки расположения отчетов?'");
+	QuestionText = NStr("en='Reset report placement settings?';ru='Сбросить настройки расположения отчетов?'");
 	Handler = New NotifyDescription("ResetSettingsEnd", ThisObject);
 	ShowQueryBox(Handler, QuestionText, QuestionDialogMode.YesNo, 60, DialogReturnCode.No);
 EndProcedure
@@ -658,8 +658,7 @@ Procedure FillInformationAboutSubsystemsAndSetTitle()
 	
 	If CurrentSectionRef = Catalogs.MetadataObjectIDs.EmptyRef() Then
 		Raise StringFunctionsClientServer.SubstituteParametersInString(
-			NStr("en='Section ""%1"" is not connected to the ""%2"" subsystem.See
-		|ReportsVariantsPredefined module, DetermineSectionsWithReportsVariants procedure.';ru='Раздел ""%1"" не подключен к подсистеме ""%2"".См. модуль ВариантыОтчетовПереопределяемый, процедуру ОпределитьРазделыСВариантамиОтчетов.'"),
+			NStr("en='Section ""%1"" is not connected to the ""%2"" subsystem. See module ReportsVariantsPredefined, procedure DetermineSectionsWithReportsVariants.';ru='Раздел ""%1"" не подключен к подсистеме ""%2"".См. модуль ВариантыОтчетовПереопределяемый, процедуру ОпределитьРазделыСВариантамиОтчетов.'"),
 			Parameters.PathToSubsystem,
 			ReportsVariantsClientServer.SubsystemDescription(Undefined));
 	EndIf;
@@ -730,14 +729,14 @@ Procedure FillReportsPanel()
 		Items.SearchResultsFromOtherGroupSections.Visible = True;
 		If FillingParameters.OtherSections.Count() = 0 Then
 			Label = Items.Insert("InOtherSections", Type("FormDecoration"), Items.SearchResultsFromOtherSections);
-			Label.Title = "    " + NStr("en='Reports in other sections are not found.';ru='Отчеты в других разделах не найдены.'") + Chars.LF;
+			Label.Title = "    " + NStr("en='Reports are not found in other sections.';ru='Отчеты в других разделах не найдены.'") + Chars.LF;
 			Label.Height = 2;
 		EndIf;
 		For Each SectionRef In FillingParameters.OtherSections Do
 			OuputSectionVariants(FillingParameters, SectionRef);
 		EndDo;
 		If FillingParameters.DontOutput > 0 Then // Output of information text.
-			LabelTitle = NStr("en='First %1 reports from other sections have been output, specify the search query.';ru='Выведены первые %1 отчетов из других разделов, уточните поисковый запрос.'");
+			LabelTitle = NStr("en='The first %1 reports from other sections are displayed, specify a search query.';ru='Выведены первые %1 отчетов из других разделов, уточните поисковый запрос.'");
 			LabelTitle = StrReplace(LabelTitle, "%1", FillingParameters.OutputLimit);
 			Label = Items.Insert("OutputLimitExceeded", Type("FormDecoration"), Items.SearchResultsFromOtherSections);
 			Label.Title = LabelTitle;
@@ -1152,13 +1151,13 @@ Procedure OuputSectionVariants(FillingParameters, SectionRef)
 			Label = Items.Insert("ReportListIsEmpty", Type("FormDecoration"), Items.WithoutGroupColumn1);
 			If ValueIsFilled(SearchString) Then
 				If FillingParameters.OnlyCurrentSection Then
-					Label.Title = NStr("en='Reports are not found.';ru='Отчеты не найдены.'");
+					Label.Title = NStr("en='Reports not found.';ru='Отчеты не найдены.'");
 				Else
-					Label.Title = NStr("en='Reports in the current section are not found.';ru='Отчеты в текущем разделе не найдены.'");
+					Label.Title = NStr("en='Reports are not found in the current section.';ru='Отчеты в текущем разделе не найдены.'");
 					Label.Height = 2;
 				EndIf;
 			Else
-				Label.Title = NStr("en='No reports are located in reports panel of this section.';ru='В панели отчетов этого раздела не размещено ни одного отчета.'");
+				Label.Title = NStr("en='Report panel of this section does not contain any reports.';ru='В панели отчетов этого раздела не размещено ни одного отчета.'");
 			EndIf;
 			Items["QuickAccessHeader"].Visible  = False;
 			Items["QuickAccessFooter"].Visible = False;
@@ -1777,7 +1776,7 @@ Function AddSubsystemGroup(FillingParameters, OutputOrderString, IntoGroup)
 	
 	If IlluminationRequired Then
 		If OutputOrderString.ThisIsContinuationOfThe Then
-			Suffix = NStr("en='(continued)';ru='(продолжение)'");
+			Suffix = NStr("en='(continue)';ru='(продолжение)'");
 			If Right(PresentationHighlight.Value, StrLen(Suffix)) <> Suffix Then
 				PresentationHighlight.Value = PresentationHighlight.Value + " " + Suffix;
 			EndIf;
@@ -1797,7 +1796,7 @@ Function AddSubsystemGroup(FillingParameters, OutputOrderString, IntoGroup)
 		
 	Else
 		If OutputOrderString.ThisIsContinuationOfThe Then
-			SubsystemPresentation = SubsystemPresentation + " " + NStr("en='(continued)';ru='(продолжение)'");
+			SubsystemPresentation = SubsystemPresentation + " " + NStr("en='(continue)';ru='(продолжение)'");
 		EndIf;
 		
 		GroupSubsystems.ShowTitle = True;
@@ -1964,7 +1963,7 @@ Procedure DefineVariantToolTipContent(FillingParameters, Variant, ToolTipContent
 				If ToolTipContent.Count() > 0 Then
 					ToolTipContent.Add(Chars.LF);
 				EndIf;
-				ToolTipContent.Add(NStr("en='Settings:';ru='Настройка:'") + " ");
+				ToolTipContent.Add(NStr("en='Setting:';ru='Настройка:'") + " ");
 				GenerateLineWithHighlight(HighlightParameters.ParametersAndFiltersNames, ToolTipContent);
 				ToolTipContent.Add(".");
 			EndIf;

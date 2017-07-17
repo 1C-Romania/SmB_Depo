@@ -25,7 +25,7 @@ Procedure OnCreateAtServer(Cancel, StandardProcessing)
 	
 	If KindOfDataProcessors = Enums.AdditionalReportsAndDataProcessorsKinds.ObjectFilling Then
 		ThisIsAppointedDataProcessors = True;
-		Title = NStr("en='Filling objects commands';ru='Команды заполнения объектов'");
+		Title = NStr("en='Object population commands';ru='Команды заполнения объектов'");
 	ElsIf KindOfDataProcessors = Enums.AdditionalReportsAndDataProcessorsKinds.Report Then
 		ThisIsAppointedDataProcessors = True;
 		AreReports = True;
@@ -35,7 +35,7 @@ Procedure OnCreateAtServer(Cancel, StandardProcessing)
 		Title = NStr("en='Additional print forms';ru='Дополнительные печатные формы'");
 	ElsIf KindOfDataProcessors = Enums.AdditionalReportsAndDataProcessorsKinds.CreatingLinkedObjects Then
 		ThisIsAppointedDataProcessors = True;
-		Title = NStr("en='Commands of creating the linked objects';ru='Команды создания связанных объектов'");
+		Title = NStr("en='Commands for linked object creation';ru='Команды создания связанных объектов'");
 	ElsIf KindOfDataProcessors = Enums.AdditionalReportsAndDataProcessorsKinds.AdditionalInformationProcessor Then
 		ThisIsGlobalDataProcessors = True;
 		Title = StringFunctionsClientServer.SubstituteParametersInString(
@@ -189,7 +189,7 @@ Procedure RunDataProcessorByParameters()
 		
 		// Change of the form items
 		Items.ExplanatoryDecoration.Title = StringFunctionsClientServer.SubstituteParametersInString(
-			NStr("en='Command ""%1"" is being executed...';ru='Выполняется команда ""%1""...'"),
+			NStr("en='Executing the ""%1"" command...';ru='Выполняется команда ""%1""...'"),
 			DataProcessorData.Presentation);
 		Items.Pages.CurrentPage = Items.DataProcessorExecutionPage;
 		Items.PagesCommandBars.CurrentPage = Items.DataProcessorExecutionPageCommandBarPage;
@@ -229,7 +229,7 @@ Function ExecuteProcessingServerMethodAtServer(ServerCallParameters)
 			UUID,
 			"AdditionalReportsAndDataProcessors.RunCommand", 
 			ServerCallParameters, 
-			NStr("en='Additional reports and data processors: The execution of the server processing method';ru='Дополнительные отчеты и обработки: Выполнение серверного метода обработки'"));
+			NStr("en='Additional reports and data processors: Running server method of data processor';ru='Дополнительные отчеты и обработки: Выполнение серверного метода обработки'"));
 		
 		If BackgroundJobResult.JobCompleted Then
 			Result.Completed = True;

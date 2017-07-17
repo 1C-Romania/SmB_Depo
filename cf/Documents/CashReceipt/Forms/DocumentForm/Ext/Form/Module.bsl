@@ -730,7 +730,7 @@ Procedure SetVisibilityItemsDependenceOnOperationKind()
 		Items.DocumentAmount.Width	= 13;
 		
 		Items.PaymentAmount.Visible		= GetFunctionalOption("PaymentCalendar");
-		Items.PaymentAmount.Title		= ?(GetFunctionalOption("PaymentCalendar"), NStr("ru='Сумма (план)'; en = 'Amount (plan)'"), NStr("ru='Сумма платежа'; en = 'Payment amount'"));
+		Items.PaymentAmount.Title		= ?(GetFunctionalOption("PaymentCalendar"), NStr("en='Amount (plan)';ru='Сумма (план)'"), NStr("ru='Сумма платежа'; en = 'Payment amount'"));
 		Items.SettlementsAmount.Visible	= False;
 		Items.VATAmount.Visible			= False;
 		
@@ -750,7 +750,7 @@ Procedure SetVisibilityItemsDependenceOnOperationKind()
 		EndIf;
 		
 		Items.PaymentAmount.Visible		= GetFunctionalOption("PaymentCalendar");
-		Items.PaymentAmount.Title		= ?(GetFunctionalOption("PaymentCalendar"), NStr("ru='Сумма (план)'; en = 'Amount (plan)'"), NStr("ru='Сумма платежа'; en = 'Payment amount'"));
+		Items.PaymentAmount.Title		= ?(GetFunctionalOption("PaymentCalendar"), NStr("en='Amount (plan)';ru='Сумма (план)'"), NStr("ru='Сумма платежа'; en = 'Payment amount'"));
 		Items.SettlementsAmount.Visible = False;
 		Items.VATAmount.Visible			= Object.VATTaxation = Enums.VATTaxationTypes.TaxableByVAT;
 		
@@ -770,7 +770,7 @@ Procedure SetVisibilityItemsDependenceOnOperationKind()
 		EndIf;
 		
 		Items.PaymentAmount.Visible		= GetFunctionalOption("PaymentCalendar");
-		Items.PaymentAmount.Title		= ?(GetFunctionalOption("PaymentCalendar"), NStr("ru='Сумма (план)'; en = 'Amount (plan)'"), NStr("ru='Сумма платежа'; en = 'Payment amount'"));
+		Items.PaymentAmount.Title		= ?(GetFunctionalOption("PaymentCalendar"), NStr("en='Amount (plan)';ru='Сумма (план)'"), NStr("ru='Сумма платежа'; en = 'Payment amount'"));
 		Items.SettlementsAmount.Visible = False;
 		Items.VATAmount.Visible			= Object.VATTaxation = Enums.VATTaxationTypes.TaxableByVAT;
 		
@@ -781,7 +781,7 @@ Procedure SetVisibilityItemsDependenceOnOperationKind()
 		Items.CurrencyPurchase.Visible	= True;
 		
 		Items.PaymentAmount.Visible 		= GetFunctionalOption("PaymentCalendar");
-		Items.PaymentAmount.Title			= ?(GetFunctionalOption("PaymentCalendar"), NStr("ru='Сумма (план)'; en = 'Amount (plan)'"), NStr("ru='Сумма платежа'; en = 'Payment amount'"));
+		Items.PaymentAmount.Title			= ?(GetFunctionalOption("PaymentCalendar"), NStr("en='Amount (plan)';ru='Сумма (план)'"), NStr("ru='Сумма платежа'; en = 'Payment amount'"));
 		Items.PaymentAmountCurrency.Visible	= Items.PaymentAmount.Visible;
 		Items.SettlementsAmount.Visible		= False;
 		Items.VATAmount.Visible				= False;
@@ -792,7 +792,7 @@ Procedure SetVisibilityItemsDependenceOnOperationKind()
 		Items.OtherSettlements.Visible	= True;
 		
 		Items.PaymentAmount.Visible 		= GetFunctionalOption("PaymentCalendar");
-		Items.PaymentAmount.Title			= ?(GetFunctionalOption("PaymentCalendar"), NStr("ru='Сумма (план)'; en = 'Amount (plan)'"), NStr("ru='Сумма платежа'; en = 'Payment amount'"));
+		Items.PaymentAmount.Title			= ?(GetFunctionalOption("PaymentCalendar"), NStr("en='Amount (plan)';ru='Сумма (план)'"), NStr("ru='Сумма платежа'; en = 'Payment amount'"));
 		Items.PaymentAmountCurrency.Visible	= Items.PaymentAmount.Visible;
 		Items.SettlementsAmount.Visible		= False;
 		Items.VATAmount.Visible				= False;
@@ -832,7 +832,7 @@ Procedure SetVisibilityItemsDependenceOnOperationKind()
 		Items.OtherSettlements.Visible = True;
 		
 		Items.PaymentAmount.Visible = True;
-		Items.PaymentAmount.Title = NStr("en='Amount (Plan)';ru='Сумма (план)'");
+		Items.PaymentAmount.Title = NStr("en='Amount (plan)';ru='Сумма (план)'");
 		Items.SettlementsAmount.Visible = False;
 		Items.VATAmount.Visible = False;
 		
@@ -1860,7 +1860,7 @@ EndProcedure // ClearAttributesNotRelatedToOperation()
 Procedure PrintReceipt(Command)
 	
 	If Object.ReceiptCRNumber <> 0 Then
-		MessageText = NStr("en='Check has already been issued on the fiscal record!';ru='Чек уже пробит на фискальном регистраторе!'");
+		MessageText = NStr("en='Receipt has already been issued on the fiscal data recorder.';ru='Чек уже пробит на фискальном регистраторе!'");
 		CommonUseClientServer.MessageToUser(MessageText);
 		Return;
 	EndIf;
@@ -1872,17 +1872,17 @@ Procedure PrintReceipt(Command)
 			
 			NotifyDescription = New NotifyDescription("EnableFiscalRegistrarEnd", ThisObject);
 			EquipmentManagerClient.OfferSelectDevice(NOTifyDescription, "FiscalRegister",
-					NStr("en='Select the fiscal register';ru='Выберите фискальный регистратор'"), NStr("en='Fiscal register is not connected.';ru='Фискальный регистратор не подключен.'"));
+					NStr("en='Select a fiscal data recorder';ru='Выберите фискальный регистратор'"), NStr("en='Fiscal data recorder is not connected.';ru='Фискальный регистратор не подключен.'"));
 			
 		Else
 			
-			MessageText = NStr("en='First, you need to select the workplace of the current session peripherals.';ru='Предварительно необходимо выбрать рабочее место внешнего оборудования текущего сеанса.'");
+			MessageText = NStr("en='First, you need to select the work place of the current session peripherals.';ru='Предварительно необходимо выбрать рабочее место внешнего оборудования текущего сеанса.'");
 			CommonUseClientServer.MessageToUser(MessageText);
 			
 		EndIf;
 		
 	ElsIf ShowMessageBox Then
-		ShowMessageBox(Undefined,NStr("en='Failed to post the document';ru='Не удалось выполнить проведение документа'"));
+		ShowMessageBox(Undefined,NStr("en='Failed to post document';ru='Не удалось выполнить проведение документа'"));
 	EndIf;
 	
 EndProcedure // PrintReceipt()
@@ -2034,7 +2034,7 @@ Procedure Pick(Command)
 	EndIf;
 	
 	If Not ValueIsFilled(Object.CashCurrency) Then
-		ShowMessageBox(Undefined,NStr("en='Specify currency first!';ru='Укажите вначале валюту!'"));
+		ShowMessageBox(Undefined,NStr("en='Specify currency first.';ru='Укажите вначале валюту!'"));
 		Return;
 	EndIf;
 	
@@ -2098,11 +2098,11 @@ EndProcedure // Selection()
 Procedure FillByBasis(Command)
 	
 	If Not ValueIsFilled(Object.BasisDocument) Then
-		ShowMessageBox(Undefined,NStr("en='Basis document is not selected!';ru='Не выбран документ основание!'"));
+		ShowMessageBox(Undefined,NStr("en='Basis document is not selected.';ru='Не выбран документ основание!'"));
 		Return;
 	EndIf;
 	
-	ShowQueryBox(New NotifyDescription("FillByBasisEnd", ThisObject), NStr("en='Document will be completely refilled by ""Basis""! Continue?';ru='Документ будет полностью перезаполнен по ""Основанию""! Продолжить?'"), QuestionDialogMode.YesNo, 0);
+	ShowQueryBox(New NotifyDescription("FillByBasisEnd", ThisObject), NStr("en='The  document will be fully filled out according to the ""Basis"". Continue?';ru='Документ будет полностью перезаполнен по ""Основанию""! Продолжить?'"), QuestionDialogMode.YesNo, 0);
 	
 EndProcedure
 
@@ -2141,7 +2141,7 @@ Procedure FillDetails(Command)
 	EndIf;
 	
 	If Not ValueIsFilled(Object.CashCurrency) Then
-		ShowMessageBox(Undefined,NStr("en='Specify currency first!';ru='Укажите вначале валюту!'"));
+		ShowMessageBox(Undefined,NStr("en='Specify currency first.';ru='Укажите вначале валюту!'"));
 		Return;
 	EndIf;
 	
@@ -2265,7 +2265,7 @@ Procedure DateOnChange(Item)
 		If StructureData.DATEDIFF <> 0 Then
 			Object.Number = "";
 		EndIf;
-		MessageText = NStr("en='Petty cash currency exchange rate has changed. Recalculate the document amount?';ru='Изменился курс валюты кассы. Пересчитать суммы документа?'");
+		MessageText = NStr("en='Cash fund exchange rate is changed. Recalculate the document amounts?';ru='Изменился курс валюты кассы. Пересчитать суммы документа?'");
 		RecalculateAmountsOnCashAssetsCurrencyRateChange(StructureData, MessageText);
 	EndIf;
 	
@@ -2305,7 +2305,7 @@ Procedure CashAssetsCurrencyOnChange(Item)
 		Object.CashCurrency
 	);
 	
-	MessageText = NStr("en='Recalculate the document amount?';ru='Пересчитать суммы документа?'");
+	MessageText = NStr("en='Recalculate document amounts?';ru='Пересчитать суммы документа?'");
 	RecalculateAmountsOnCashAssetsCurrencyRateChange(StructureData, MessageText);
 	
 EndProcedure // CashAssetsCurrencyOnChange()
@@ -2472,10 +2472,10 @@ Procedure PaymentDetailsAdvanceFlagOnChange(Item)
 		 OR TypeOf(TabularSectionRow.Document) = Type("DocumentRef.PaymentExpense")
 		 OR TypeOf(TabularSectionRow.Document) = Type("DocumentRef.ExpenseReport") Then
 			TabularSectionRow.AdvanceFlag = True;
-			ShowMessageBox(Undefined,NStr("en='The advance flag is always set for this document type!';ru='Для данного типа документа расчетов признак аванса всегда установлен!'"));
+			ShowMessageBox(Undefined,NStr("en='The Advance check box is always selected for this document type.';ru='Для данного типа документа расчетов признак аванса всегда установлен!'"));
 		ElsIf TypeOf(TabularSectionRow.Document) <> Type("DocumentRef.Netting") Then
 			TabularSectionRow.AdvanceFlag = False;
-			ShowMessageBox(Undefined,NStr("en='The advance flag can not be set for this document type!';ru='Для данного типа документа расчетов нельзя установить признак аванса!'"));
+			ShowMessageBox(Undefined,NStr("en='Cannot select the Advance check box for this type of settlements document.';ru='Для данного типа документа расчетов нельзя установить признак аванса!'"));
 		EndIf;
 	EndIf;
 	
@@ -2494,7 +2494,7 @@ Procedure PaymentDetailsDocumentStartChoice(Item, ChoiceData, StandardProcessing
 	If TabularSectionRow.AdvanceFlag
 		AND Object.OperationKind = PredefinedValue("Enum.OperationKindsCashReceipt.FromCustomer") Then
 		
-		ShowMessageBox(, NStr("en='The current document with the ""Advance"" flag will be used for settlement!';ru='Для вида расчета с признаком ""Аванс"" документом расчетов будет текущий!'"));
+		ShowMessageBox(, NStr("en='The current document is a document of settlements for the calculation kind ""Advance"".';ru='Для вида расчета с признаком ""Аванс"" документом расчетов будет текущий!'"));
 		
 	Else
 		

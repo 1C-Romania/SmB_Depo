@@ -179,7 +179,7 @@ EndProcedure
 Procedure ActualAddressStartChoice(Item, ChoiceData, StandardProcessing)
 	
 	AddressPresentationSelectionStart(ThisObject, Item, ChoiceData, StandardProcessing,
-		"ActualAddress", NStr("en='Counterparty physical address';ru='Фактический адрес контрагента'"));
+		"ActualAddress", NStr("en='Physical address of the counterparty';ru='Фактический адрес контрагента'"));
 	
 EndProcedure
 
@@ -208,7 +208,7 @@ EndProcedure
 Procedure PhoneStartChoice(Item, ChoiceData, StandardProcessing)
 	
 	PhonePresentationSelectionStart(ThisObject, Item, ChoiceData, StandardProcessing,
-		"Phone", NStr("en=""Company's phone"";ru='Телефон организации'"));
+		"Phone", NStr("en='Company phone';ru='Телефон организации'"));
 	
 EndProcedure
 
@@ -381,9 +381,7 @@ Procedure DecorationKeyGenerationNavigationRefProcessing(Item, URL, StandardProc
 		
 	ElsIf URL = "CertificateQuery" Then
 		ShowMessageBox(,
-			NStr("en='Certificate query is not a secret information.
-		|It is created on the basis of digital signature
-		|key, sent together with the application for certificate issue and required for certificate issue.';ru='Запрос на сертификат - это не секретная информация, которая создается на основе ключа электронной подписи, отправляется вместе с заявлением на выпуск сертификата и требуется для выпуска сертификата.'"));
+			NStr("en='Certificate request is not the secret information. It is created based on the digital signature key, sent together with the certificate issue application and required to issue certificate.';ru='Запрос на сертификат - это не секретная информация, которая создается на основе ключа электронной подписи, отправляется вместе с заявлением на выпуск сертификата и требуется для выпуска сертификата.'"));
 	EndIf;
 	
 EndProcedure
@@ -591,7 +589,7 @@ EndProcedure
 Procedure ExportRootCertificate(Command)
 	
 	DigitalSignatureServiceClient.SaveCertificate(, RootCertificateAddress,
-		NStr("en='Root certificate of SPC 1C LLC';ru='Корневой сертификат ООО НПЦ 1С'"));
+		NStr("en='Root certificate of 1C RDC LLC';ru='Корневой сертификат ООО НПЦ 1С'"));
 	
 EndProcedure
 
@@ -605,7 +603,7 @@ Procedure PrintDocuments(Command)
 	EndIf;
 	
 	PrintedFormIdentifier = "StatementToIssueCertificate";
-	PrintedFormName = NStr("en='Request for certificate issue';ru='Заявление на выпуск сертификата'");
+	PrintedFormName = NStr("en='Application for certificate issue';ru='Заявление на выпуск сертификата'");
 	
 	If Not CommonUseClient.SubsystemExists("StandardSubsystems.Print") Then
 		Document.Show(PrintedFormName);
@@ -641,7 +639,7 @@ EndProcedure
 Procedure ExportCertificateEnd(Result, Context) Export
 	
 	DigitalSignatureServiceClient.SaveCertificate(, RootCertificateAddress,
-		NStr("en='Root certificate of SPC 1C LLC';ru='Корневой сертификат ООО НПЦ 1С'"));
+		NStr("en='Root certificate of 1C RDC LLC';ru='Корневой сертификат ООО НПЦ 1С'"));
 	
 EndProcedure
 
@@ -800,7 +798,7 @@ Procedure GoToPageStatementSending()
 	
 	If Not ValueIsFilled(Object.Application) Then
 		CommonUseClientServer.MessageToUser(StringFunctionsClientServer.SubstituteParametersInString(
-			NStr("en='Field ""Digital signature application"" is not filled out';ru='Поле ""Программа электронной подписи"" не заполнено'")), , "Application");
+			NStr("en='The ""Digital signature application"" field is not populated';ru='Поле ""Программа электронной подписи"" не заполнено'")), , "Application");
 		
 		Return;
 	EndIf;
@@ -818,7 +816,7 @@ Procedure GoToPageStatementSendingAfterCreatingCryptographyManager(Result, Conte
 	If TypeOf(Result) <> Type("CryptoManager") Then
 		Object.Application = Undefined;
 		DigitalSignatureServiceClient.ShowRequestToApplicationError(
-			NStr("en='Generation of digital signature key';ru='Создание ключа электронной подписи'"),, Result, New Structure);
+			NStr("en='Create DS key';ru='Создание ключа электронной подписи'"),, Result, New Structure);
 		Return;
 	EndIf;
 	
@@ -997,7 +995,7 @@ Function GoToPageStatementProcessingPendingOnServer(ErrorDescription)
 	Object.RequestStatus = Enums.CertificateIssueRequestState.Sent;
 	
 	UpdateDateConditions = CurrentSessionDate();
-	RequestProcessingState = NStr("en='Statement is received for processing.';ru='Заявление принято для обработки.'");
+	RequestProcessingState = NStr("en='Application is accepted for processing.';ru='Заявление принято для обработки.'");
 	UpdateUpdateDateStatesInTitle(ThisObject);
 	
 	WriteStatement();
@@ -1025,7 +1023,7 @@ EndProcedure
 Procedure UpdateUpdateDateStatesInTitle(Form)
 	
 	Form.Items.RequestProcessingState.Title = StringFunctionsClientServer.SubstituteParametersInString(
-		NStr("en='Statement processing state (by % 1)';ru='Состояние обработки заявления (на %1)'"),
+		NStr("en='Request processing state (on %1)';ru='Состояние обработки заявления (на %1)'"),
 		Format(Form.UpdateDateConditions, "DLF=DT"));
 	
 EndProcedure
@@ -1039,7 +1037,7 @@ Procedure GoToPageCertificateSetup()
 	EndIf;
 	
 	If Result <> True Then
-		AfterWrite(NStr("en='Statement is declined.';ru='Заявление отклонено.'"));
+		AfterWrite(NStr("en='Application is rejected.';ru='Заявление отклонено.'"));
 		Close();
 		Return;
 	EndIf;
@@ -1055,7 +1053,7 @@ Procedure GoToPageCertificateSetupAfterInstallation(Installed, NoSpecified) Expo
 	
 	If Installed Then
 		CloseAssistantAfterCertificateInstallationOnServer();
-		AfterWrite(NStr("en='Statement is executed.';ru='Заявление исполнено.'"));
+		AfterWrite(NStr("en='Application is executed.';ru='Заявление исполнено.'"));
 		Close();
 	Else
 		AfterWrite();
@@ -1112,7 +1110,7 @@ Procedure UpdateCertificateInstallationDateInHeader(Form)
 	EndIf;
 	
 	Form.Items.ErrorCertificateSetup.Title = StringFunctionsClientServer.SubstituteParametersInString(
-		NStr("en='Certificate setup error (at %1)';ru='Ошибка установки сертификата (на %1)'"),
+		NStr("en='An error occurred when installing certificate (to %1)';ru='Ошибка установки сертификата (на %1)'"),
 		Format(Form.DateCertificateInstallation, "DLF=DT"));
 	
 EndProcedure
@@ -1153,7 +1151,7 @@ Procedure CloseAssistantAfterCertificateInstallationEnd(Installed, NoSpecified) 
 	
 	CloseAssistantAfterCertificateInstallationOnServer();
 	
-	AfterWrite(NStr("en='Certificate is set.';ru='Сертификат установлен.'"));
+	AfterWrite(NStr("en='Certificate is installed.';ru='Сертификат установлен.'"));
 	Close();
 	
 EndProcedure
@@ -1250,7 +1248,7 @@ Procedure OnChangingCompanyOnServer(Import = False)
 	EndIf;
 	
 	If ThisIsIndividualEntrepreneur Then
-		Items.OGRN.Title = NStr("en='OGRNIP';ru='ОГРНИП'");
+		Items.OGRN.Title = NStr("en='OGRNIE';ru='ОГРНИП'");
 	Else
 		Items.OGRN.Title = NStr("en='OGRN';ru='ОГРН'");
 	EndIf;
@@ -1371,7 +1369,7 @@ Procedure ValidateAddress(AttributeName)
 			EndDo;
 			Message = TrimAll(Message);
 			If Not ValueIsFilled(Message) Then
-				Message = NStr("en='Address is not filled';ru='Адрес не заполнен'");
+				Message = NStr("en='Address is not filled in';ru='Адрес не заполнен'");
 			EndIf;
 		EndIf;
 	Except
@@ -1394,12 +1392,12 @@ Function BankAccountMeetsRequirements(BankAccount, MessageText)
 	Value = TrimAll(BankAccount);
 	
 	If Not StringFunctionsClientServer.OnlyNumbersInString(Value) Then
-		MessageText = NStr("en='Bank account number should consist of digits only.';ru='Расчетный счет должен состоять только из цифр.'");
+		MessageText = NStr("en='Account number can contain only digits.';ru='Расчетный счет должен состоять только из цифр.'");
 		Return False;
 	EndIf;
 	
 	If StrLen(Value) <> 20 Then
-		MessageText = NStr("en='Bank account should consist of 20 digits.';ru='Расчетный счет должен состоять из 20 цифр.'");
+		MessageText = NStr("en='Account number consists of 20 digits.';ru='Расчетный счет должен состоять из 20 цифр.'");
 		Return False;
 	EndIf;
 	
@@ -1408,7 +1406,7 @@ Function BankAccountMeetsRequirements(BankAccount, MessageText)
 			CommonUse.CommonModule("RegulatedDataClientServer");
 		
 		If Not ModuleRegulatedDataClientServer.AccountKeyDigitMeetsRequirements(Value, BIN) Then
-			MessageText = NStr("en='Account check number does not match the value calculated with account of BIC';ru='Контрольное число счета не совпадает с рассчитанным с учетом БИК'");
+			MessageText = NStr("en='Check digit of account does not match the calculated value with branch ID taken into account';ru='Контрольное число счета не совпадает с рассчитанным с учетом БИК'");
 			Return False;
 		EndIf;
 	EndIf;
@@ -1423,12 +1421,12 @@ Function BICMeetsRequirements(BIN, MessageText)
 	Value = TrimAll(BIN);
 	
 	If Not StringFunctionsClientServer.OnlyNumbersInString(Value) Then
-		MessageText = NStr("en='BIC should consist of digits only.';ru='БИК должен состоять только из цифр.'");
+		MessageText = NStr("en='Branch ID must contain only digits.';ru='БИК должен состоять только из цифр.'");
 		Return False;
 	EndIf;
 	
 	If StrLen(Value) <> 9 Then
-		MessageText = NStr("en='BIC should consist of 9 digits.';ru='БИК должен состоять из 9 цифр.'");
+		MessageText = NStr("en='Branch ID must consist of 9 digits.';ru='БИК должен состоять из 9 цифр.'");
 		Return False;
 	EndIf;
 	
@@ -1442,12 +1440,12 @@ Function CorrespondentBankAccountMeetsRequirements(CorrespondentAccount, Message
 	Value = TrimAll(CorrespondentAccount);
 
 	If Not StringFunctionsClientServer.OnlyNumbersInString(Value) Then
-		MessageText = NStr("en='Correspondence account should consist of digits only.';ru='Корреспондентский счет должен состоять только из цифр.'");
+		MessageText = NStr("en='Correspondent account should contain only digits.';ru='Корреспондентский счет должен состоять только из цифр.'");
 		Return False;
 	EndIf;
 
 	If StrLen(Value) <> 20 Then
-		MessageText = NStr("en='Correspondence account should consist of 20 digits.';ru='Корреспондентский счет должен состоять из 20 цифр.'");
+		MessageText = NStr("en='Correspondent account should contain  20 digits.';ru='Корреспондентский счет должен состоять из 20 цифр.'");
 		Return False;
 	EndIf;
 	
@@ -1469,26 +1467,26 @@ Function AddressMeetsRequirements(Val AddressMXL, MessageText)
 	
 	// Check if the address is located in Russia.
 	If Not AddressStructure.Property("StateCode") Then
-		MessageText = MessageText + NStr("en='This is not a russian address';ru='Это не российский адрес'");
+		MessageText = MessageText + NStr("en='This is not Russian address';ru='Это не российский адрес'");
 		Return False;
 	EndIf;
 	
 	// Check if a state was specified.
 	If Not AddressStructure.Property("Region") Or Not ValueIsFilled(AddressStructure.Region) Then
-		MessageText = MessageText + NStr("en='State is not specified';ru='Не указан регион'");
+		MessageText = MessageText + NStr("en='Region is not specified';ru='Не указан регион'");
 		Return False;
 	EndIf;
 	
 	// Check if the state was specified correctly - state code is defined.
 	If Not ValueIsFilled(AddressStructure.StateCode) Then
-		MessageText = MessageText + NStr("en='Incorrect state (state code is not determined)';ru='Некорректный регион (код региона не определен)'");
+		MessageText = MessageText + NStr("en='Incorrect region (region code is not defined)';ru='Некорректный регион (код региона не определен)'");
 		Return False; 
 	EndIf;
 	
 	// Settlement entirely.
 	SettlementEntirely = SettlementEntirely(AddressStructure);
 	If Not ValueIsFilled(SettlementEntirely) Then
-		MessageText = MessageText + NStr("en='Settlement is not specified';ru='Не указан населенный пункт'");
+		MessageText = MessageText + NStr("en='Specify the settlement';ru='Не указан населенный пункт'");
 		Return False;
 	EndIf;
 	
@@ -1551,19 +1549,19 @@ Function PhoneMeetsRequirements(Val PhoneXML, MessageText)
 	
 	// Check if a phone number has Russian format.
 	If StrReplace(PhoneStructure.CountryCode, "+", "") <> "7" Then
-		MessageText = MessageText + NStr("en='Country code is not Russian (must be ""7"")';ru='Код страны не российский (должен быть ""7"")'");
+		MessageText = MessageText + NStr("en='Country code is not Russian (should be ""7"")';ru='Код страны не российский (должен быть ""7"")'");
 		Return False;
 	EndIf;
 	
 	PhoneNumberWithoutCountryCode = PhoneStructure.CityCode + PhoneStructure.PhoneNumber;
 	
 	If Not ValueIsFilled(PhoneNumberWithoutCountryCode) Then
-		MessageText = MessageText + NStr("en='Phone number is not filled';ru='Не заполнен номер телефона'");
+		MessageText = MessageText + NStr("en='Phone number is not entered';ru='Не заполнен номер телефона'");
 		Return False;
 	EndIf;
 	
 	If StrLen(OnlyDigits(PhoneNumberWithoutCountryCode)) <> 10 Then
-		MessageText = MessageText + NStr("en='Phone number with city code should consist of 10 digits';ru='Номер телефона с кодом города должен состоять из 10-и цифр'");
+		MessageText = MessageText + NStr("en='Phone number with the city code should contain 10 digits';ru='Номер телефона с кодом города должен состоять из 10-и цифр'");
 		Return False;
 	EndIf;
 	
@@ -1830,18 +1828,18 @@ Function RFPassportNumberMeetsRequirements(Val RFPassportNumber, MessageText)
 	RowOfDigits = StrReplace(RowOfDigits, " ", "");
 	
 	If IsBlankString(RowOfDigits) Then
-		MessageText = MessageText + NStr("en='Passport number is not filled';ru='Номер паспорта не заполнен'");
+		MessageText = MessageText + NStr("en='Passport number is not specified';ru='Номер паспорта не заполнен'");
 		Return False;
 	EndIf;
 	
 	If StrLen(RowOfDigits) < 10 Then
-		MessageText  =  MessageText + NStr("en='Passport number is not fully set';ru='Номер паспорта задан неполностью'");
+		MessageText  =  MessageText + NStr("en='Incorrect passport number';ru='Номер паспорта задан неполностью'");
 		Return False;
 	EndIf;
 	
 	If Not StringFunctionsClientServer.OnlyNumbersInString(RowOfDigits) Then
 		Result = False;
-		MessageText = MessageText + NStr("en='Passport number shall consist of digits only.';ru='Номер паспорта должен состоять только из цифр.'");
+		MessageText = MessageText + NStr("en='Passport number must contain only digits.';ru='Номер паспорта должен состоять только из цифр.'");
 	EndIf;
 	
 	Return Result;
@@ -2027,7 +2025,7 @@ Procedure ValueSelectionStart(Item, ChoiceData, StandardProcessing)
 		TypeChoiceList.LoadValues(ThisObject[AttributeName + "Type"].UnloadValues());
 		TypeChoiceList.ShowChooseItem(
 			New NotifyDescription("ValueSelectionStartAfterTypeSelection", ThisObject, Context),
-			NStr("en='Data type choice';ru='Выбор типа данных'"),
+			NStr("en='Select data type';ru='Выбор типа данных'"),
 			ThisObject[AttributeName + "Type"].FindByValue(TypeOf(ThisObject[AttributeNameValues])));
 	EndIf;
 	
@@ -2187,7 +2185,7 @@ Function ValidateAttribute(Cancel, AttributeName)
 	
 	If Not ValueIsFilled(ThisObject[AttributeName]) Then
 		CommonUseClientServer.MessageToUser(StringFunctionsClientServer.SubstituteParametersInString(
-			NStr("en='Field ""%1"" is not filled';ru='Поле ""%1"" не заполнено'"), TitleFields), , AttributeName, , Cancel);
+			NStr("en='The ""%1"" field is not filled in';ru='Поле ""%1"" не заполнено'"), TitleFields), , AttributeName, , Cancel);
 		
 		Return False;
 	EndIf;
@@ -2225,7 +2223,7 @@ Function PreparedDocument()
 	
 	Template.Parameters.IdentityCard = DocumentViewPresentation + " " + DocumentNumberPresentation + " "
 		+ NStr("en='from';ru='from'") + " " + DocumentIssueDatePresentation + " "
-		+ NStr("en='issued by';ru='выданный'") + " " + DocumentWhoIssued;
+		+ NStr("en='issued';ru='выданный'") + " " + DocumentWhoIssued;
 	
 	Document.Put(Template);
 	
@@ -2313,10 +2311,7 @@ Function SendStatement(ErrorDescription)
 	
 	If ResultCode = "202" Then
 		ErrorDescription = StringFunctionsClientServer.SubstituteParametersInString(
-			NStr("en='Failed to check the contract for ITS (its.1c.ru)
-		|due to: ticket received for the user %1 is incorrect or obsolete.
-		|
-		|Try to send the statement once again.';ru='Не удалось проверить договор на ИТС (its.1c.ru) по причине: Билет, полученный для пользователя %1, неверный или устарел.  Попробуйте отправить заявление еще раз.'"),
+			NStr("en='Cannot check the contract for ITS (its.1c.ru) due to: The ticket received for the %1 user is incorrect or obsolete. Try to send the statement again.';ru='Не удалось проверить договор на ИТС (its.1c.ru) по причине: Билет, полученный для пользователя %1, неверный или устарел.  Попробуйте отправить заявление еще раз.'"),
 			AuthenticationParametersOnSite.Login);
 		
 	ElsIf ResultCode = "206" Then
@@ -2359,7 +2354,7 @@ Function TicketToSupportSite(ErrorDescription)
 		ErrorInfo = ErrorInfo();
 		BriefErrorDescription = BriefErrorDescription(ErrorInfo);
 		If Find(BriefErrorDescription, "IncorrectLoginOrPasswordExceptionApi") > 0 Then
-			BriefErrorDescription = NStr("en='Incorrect name of the user or password.';ru='Некорректное имя пользователя или пароль.'");
+			BriefErrorDescription = NStr("en='Incorrect user name or password.';ru='Некорректное имя пользователя или пароль.'");
 			AuthenticationParametersOnSite = Undefined;
 		EndIf;
 		ErrorDescription = StringFunctionsClientServer.SubstituteParametersInString(
@@ -2629,7 +2624,7 @@ EndFunction
 Function GetCertificate()
 	
 	ErrorDescriptionTemplate =
-		NStr("en='Failed to update the state due to: %1';ru='Не удалось обновить состояние по причине: %1'");
+		NStr("en='Cannot update the state due to: %1';ru='Не удалось обновить состояние по причине: %1'");
 	
 	// Query for statement processing status
 	
@@ -2676,14 +2671,14 @@ Function GetCertificate()
 		EndIf;
 		
 	ElsIf ResultCode = "1" Then
-		ErrorDescription = NStr("en='Statement is not processed yet, please try again later.';ru='Заявление еще не обработано, попробуйте позже.'");
+		ErrorDescription = NStr("en='The application has not been processed yet, try again later.';ru='Заявление еще не обработано, попробуйте позже.'");
 	Else
 		DOMNode = DOMBuilder.GetElementByTagName("errorMessage");
 		If DOMNode.Count() > 0 Then
 			ErrorDescription = DOMNode[0].TextContent;
 		Else
 			ErrorDescription = StringFunctionsClientServer.SubstituteParametersInString(
-				NStr("en='Server returned an error code:% 1';ru='Сервер вернул код ошибки: %1'"), String(ResultCode));
+				NStr("en='Server returned error code: %1';ru='Сервер вернул код ошибки: %1'"), String(ResultCode));
 		EndIf;
 	EndIf;
 	
@@ -2726,7 +2721,7 @@ Function GetCertificate()
 		EndDo;
 		
 		If Not FileFound Then
-			Raise NStr("en='Incorrect data format.';ru='Неверный формат данных.'");
+			Raise NStr("en='Invalid data format.';ru='Неверный формат данных.'");
 		EndIf;
 	Except
 		ErrorInfo = ErrorInfo();
@@ -2781,7 +2776,7 @@ Function GetCertificate()
 			ErrorDescription = DOMNode[0].TextContent;
 		Else
 			ErrorDescription = StringFunctionsClientServer.SubstituteParametersInString(
-				NStr("en='Server returned an error code:% 1';ru='Сервер вернул код ошибки: %1'"), String(ResultCode));
+				NStr("en='Server returned error code: %1';ru='Сервер вернул код ошибки: %1'"), String(ResultCode));
 		EndIf;
 	EndIf;
 	
@@ -2815,7 +2810,7 @@ Function GetCertificate()
 				
 				DOMNode = DOMDocument.GetElementByTagName("Certificate");
 				If DOMNode.Count() <> 2 Then
-					Raise NStr("en='Incorrect data format.';ru='Неверный формат данных.'");
+					Raise NStr("en='Invalid data format.';ru='Неверный формат данных.'");
 				EndIf;
 				
 				CertificateInRow = "";
@@ -2835,7 +2830,7 @@ Function GetCertificate()
 				If Not ValueIsFilled(CertificateInRow)
 				 Or Not ValueIsFilled(RootCertificateInRow) Then
 					
-					Raise NStr("en='Incorrect data format.';ru='Неверный формат данных.'");
+					Raise NStr("en='Invalid data format.';ru='Неверный формат данных.'");
 				EndIf;
 				
 				CertificateData          = Base64Value(CertificateInRow);
@@ -2847,7 +2842,7 @@ Function GetCertificate()
 		EndDo;
 		
 		If Not FileFound Then
-			Raise NStr("en='Incorrect data format.';ru='Неверный формат данных.'");
+			Raise NStr("en='Invalid data format.';ru='Неверный формат данных.'");
 		EndIf;
 	Except
 		ErrorInfo = ErrorInfo();
@@ -2935,7 +2930,7 @@ Procedure SetCertificateAfterCreatingCryptographyManager(Manager, Context) Expor
 	
 	If TypeOf(Manager) <> Type("CryptoManager") Then
 		DigitalSignatureServiceClient.ShowRequestToApplicationError(
-			NStr("en='Installing the certificate on a computer';ru='Установка сертификата на компьютер'"),, Manager, New Structure);
+			NStr("en='Install the certificate on this computer';ru='Установка сертификата на компьютер'"),, Manager, New Structure);
 		
 		ErrorCertificateSetup = Manager.ErrorDescription;
 		ExecuteNotifyProcessing(Context.Notification, False);
@@ -2979,7 +2974,7 @@ EndProcedure
 Procedure SetCertificateWhenCryptographyObjectCreationErrorAppearsAfterConnectingFilesExtension(Attached, Context) Export
 	
 	If Not Attached Then
-		ErrorCertificateSetup = NStr("en='Extension for these files is not installed.';ru='Не установлено расширение для работы с файлами.'");
+		ErrorCertificateSetup = NStr("en='File operation extension is not installed.';ru='Не установлено расширение для работы с файлами.'");
 	Else
 		BeginAttachingCryptoExtension(New NotifyDescription(
 			"SetCertificateWhenCryptographyObjectCreationErrorAppearsAfterConnectingCryptographyExtension", ThisObject));
@@ -2992,7 +2987,7 @@ EndProcedure
 Procedure SetCertificateWhenCryptographyObjectCreationErrorAppearsAfterConnectingCryptographyExtension(Attached, Context) Export
 	
 	If Not Attached Then
-		ErrorCertificateSetup = NStr("en='Cryptography extension is not installed.';ru='Не установлено расширение для работы с криптографией.'");
+		ErrorCertificateSetup = NStr("en='Cryptography operation extension is not installed.';ru='Не установлено расширение для работы с криптографией.'");
 	Else
 		ErrorCertificateSetup = NStr("en='Additional external component is not installed.';ru='Не установлена дополнительная внешняя компонента.'");
 	EndIf;
@@ -3042,7 +3037,7 @@ Procedure SetCertificateAfterGettingPermission(PermissionsReceived, Context) Exp
 	
 	If Not PermissionsReceived Then
 		ErrorCertificateSetup =
-			NStr("en='Certificates save to the temporary folder was canceled by user.';ru='Сохранение сертификатов во временную папку отменено пользователем.'");
+			NStr("en='Saving certificates to the temporary folder is canceled by user.';ru='Сохранение сертификатов во временную папку отменено пользователем.'");
 		ExecuteNotifyProcessing(Context.Notification, False);
 		Return;
 	EndIf;
@@ -3069,7 +3064,7 @@ Procedure SetCertificateAfterReceivingFiles(ReceivedFiles, Context) Export
 	If ReceivedFiles = Undefined
 	 Or ReceivedFiles.Count() <> 2 Then
 		
-		ErrorCertificateSetup = NStr("en='Certificates were not saved in the temporary folder.';ru='Сертификаты не были сохранены во временную папку.'");
+		ErrorCertificateSetup = NStr("en='Certificates were not saved into a temporary folder.';ru='Сертификаты не были сохранены во временную папку.'");
 		SetCertificateDeleteTemporaryDirectoryAndEnd(False, Context);
 		Return;
 	EndIf;
@@ -3125,7 +3120,7 @@ Procedure SetCertificateAfterCallSetCertificateToContainerAndStorage(Result, Cal
 	ActiveWindow().Activate();
 	
 	If Result <> True AND Not ValueIsFilled(ErrorCertificateSetup) Then
-		ErrorCertificateSetup = NStr("en='Failed to set a personal certificate.';ru='Не удалось установить личный сертификат.'");
+		ErrorCertificateSetup = NStr("en='Cannot install a personal certificate.';ru='Не удалось установить личный сертификат.'");
 	EndIf;
 	
 	DigitalSignatureServiceClient.GetCertificateByImprint(New NotifyDescription(
@@ -3144,7 +3139,7 @@ Procedure SetCertificateAfterCertificateSearch(Result, Context) Export
 	If TypeOf(Result) <> Type("CryptoCertificate") Then
 		If Result.Property("CertificateNotFound") Then
 			SearchError =
-				NStr("en='Failed to find the personal certificate installed on your computer.';ru='Не удалось найти личный сертификат, установленный на компьютер.'");
+				NStr("en='Cannot find a personal certificate installed on the computer.';ru='Не удалось найти личный сертификат, установленный на компьютер.'");
 		Else
 			SearchError = StringFunctionsClientServer.SubstituteParametersInString(
 				NStr("en='Failed to find a personal certificate installed on the
@@ -3187,7 +3182,7 @@ Procedure SetCertificateAfterCallingImportCertificate(Result, CallParameters, Co
 	ActiveWindow().Activate();
 	
 	If Result <> True AND Not ValueIsFilled(ErrorCertificateSetup) Then
-		ErrorCertificateSetup = NStr("en='Failed to install a root certificate.';ru='Не удалось установить корневой сертификат.'");
+		ErrorCertificateSetup = NStr("en='Cannot install the root certificate.';ru='Не удалось установить корневой сертификат.'");
 	EndIf;
 	
 	ActiveWindow().Activate();
@@ -3208,7 +3203,7 @@ Procedure SetCertificateAfterRootCertificateSearch(Result, Context) Export
 	If TypeOf(Result) <> Type("CryptoCertificate") Then
 		If Result.Property("CertificateNotFound") Then
 			SearchError =
-				NStr("en='Failed to find the root certificate installed on your computer.';ru='Не удалось найти корневой сертификат, установленный на компьютер.'");
+				NStr("en='Cannot find a root certificate installed on the computer.';ru='Не удалось найти корневой сертификат, установленный на компьютер.'");
 		Else
 			SearchError = StringFunctionsClientServer.SubstituteParametersInString(
 				NStr("en='Failed to find the root certificate installed on the
@@ -3380,14 +3375,14 @@ Function RFStateNameByRecommendationsForDSVKC(StateCode)
 	
 	If Left(String, 3) <> StateCode + " " Then
 		Raise StringFunctionsClientServer.SubstituteParametersInString(
-			NStr("en='Region of the Russian Federation with code ""%1"" does not exist.';ru='Регион РФ с кодом ""%1"" не существует.'"), StateCode);
+			NStr("en='Region of the Russian Federation with the ""%1"" code does not exist.';ru='Регион РФ с кодом ""%1"" не существует.'"), StateCode);
 	EndIf;
 	
 	String = TrimAll(Mid(String, 4));
 	
 	If Not ValueIsFilled(String) Then
 		Raise StringFunctionsClientServer.SubstituteParametersInString(
-			NStr("en='Name recommended for DSVKC is not yet assigned for the region of the Russian Federation with the code ""%1"".';ru='Для региона РФ с кодом ""%1"" имя, рекомендованное для СКПЭП, еще не назначено.'"),
+			NStr("en='Name recommended for the certificate of DS authentication key is not assigned yet for the RF region with code ""%1"".';ru='Для региона РФ с кодом ""%1"" имя, рекомендованное для СКПЭП, еще не назначено.'"),
 			StateCode);
 	EndIf;
 	
@@ -3459,7 +3454,7 @@ Procedure ImportStatement()
 		
 	ElsIf CurrentObject.RequestStatus = Enums.CertificateIssueRequestState.Rejected Then
 		AutoTitle = False;
-		Title = NStr("en='Statement certificate receiving failed';ru='Заявление, по которому не удалось получить сертификат'");
+		Title = NStr("en='The application using which the certificate was not received';ru='Заявление, по которому не удалось получить сертификат'");
 		Items.FormNext.Visible = False;
 		Items.FormClose.Title = NStr("en='Close';ru='Закрыть'");
 		FillAttributesStatements(True);
@@ -3468,7 +3463,7 @@ Procedure ImportStatement()
 		
 	ElsIf CurrentObject.RequestStatus = Enums.CertificateIssueRequestState.Executed Then
 		AutoTitle = False;
-		Title = NStr("en='Statement for which the certificate was issued';ru='Заявление, по которому был получен сертификат'");
+		Title = NStr("en='Application which was used to get the certificate';ru='Заявление, по которому был получен сертификат'");
 		Items.FormExportRootCertificate.Visible = True;
 		Items.FormExportCertificateQuery.Visible = True;
 		Items.FormNext.Visible = False;
@@ -3495,7 +3490,7 @@ Procedure FillAttributesStatements(All = False)
 	EndIf;
 	
 	// Completion of information about company.
-	FillAttribute(NStr("en='Information on the company';ru='Сведения об организации'"),, True);
+	FillAttribute(NStr("en='Company information';ru='Сведения об организации'"),, True);
 	
 	FillAttribute("AbbreviatedName");
 	FillAttribute("DescriptionFull");
@@ -3509,7 +3504,7 @@ Procedure FillAttributesStatements(All = False)
 	FillAttribute("ActualAddress", ActualAddress);
 	
 	// Filling of the information about certificate owner.
-	FillAttribute(NStr("en='Information about certificate owner';ru='Сведения о владельце сертификата'"),, True);
+	FillAttribute(NStr("en='Certificate owner information';ru='Сведения о владельце сертификата'"),, True);
 	
 	FillAttribute("Surname");
 	FillAttribute("Name");
@@ -3522,7 +3517,7 @@ Procedure FillAttributesStatements(All = False)
 	EndIf;
 	
 	String = RequestAttributes.Add();
-	String.Attribute = NStr("en='Personal identification document';ru='Документ, удостоверяющий личность'");
+	String.Attribute = NStr("en='Identity document';ru='Документ, удостоверяющий личность'");
 	String.Value = Items.DocumentKind1.ChoiceList.FindByValue(DocumentKind1).Presentation;
 	
 	String = RequestAttributes.Add();
@@ -3548,20 +3543,20 @@ Procedure FillAttributesStatements(All = False)
 		FillAttribute(NStr("en='Information about manager';ru='Сведения о руководителе'"),, True);
 		
 		String = RequestAttributes.Add();
-		String.Attribute = NStr("en=""Executive's full name"";ru='ФИО руководителя'");
+		String.Attribute = NStr("en='Full name of the manager';ru='ФИО руководителя'");
 		String.Value = DocumentsHead;
 		
 		String = RequestAttributes.Add();
-		String.Attribute = NStr("en='Head post';ru='Должность руководителя'");
+		String.Attribute = NStr("en='Manager position';ru='Должность руководителя'");
 		String.Value = DocumentsHeadPosition;
 		
 		String = RequestAttributes.Add();
-		String.Attribute = NStr("en=""Basis of manager's actions"";ru='Основание действий руководителя'");
+		String.Attribute = NStr("en='Manager action basis';ru='Основание действий руководителя'");
 		String.Value = DocumentsHeadBasis;
 	EndIf;
 	
 	// Completion of information about printed documents.
-	FillAttribute(NStr("en='Information about service company';ru='Сведения об обслуживающей организации'"),, True);
+	FillAttribute(NStr("en='Information on service company';ru='Сведения об обслуживающей организации'"),, True);
 	
 	String = RequestAttributes.Add();
 	String.Attribute = NStr("en='Partner name';ru='Наименование партнера'");
@@ -3680,11 +3675,11 @@ Procedure SetAgreement()
 	
 	HTMLText = StringFunctionsClientServer.SubstituteParametersInString(HTMLText,
 		// Name of certifying center.
-		NStr("en='Scientific and production center ""1C"", LLC';ru='Scientific and production center ""1C"", LLC'"),
+		NStr("en='Scientific and production center 1C, LLC';ru='Scientific and production center ""1C"", LLC'"),
 		// Address of certification center regulations.
 		NStr("en='http://ca.1c.en/reglament.pdf';ru='http://ca.1c.en/reglament.pdf'"),
 		// Network of authorized certification centers.
-		NStr("en='federal body authorized in the field of use of the digital signature';ru='уполномоченного федерального органа в области использования электронной подписи'"));
+		NStr("en='authorized federal authority on the use of digital signature';ru='уполномоченного федерального органа в области использования электронной подписи'"));
 	
 	Agreement.SetHTML(HTMLText, New Structure);
 	
@@ -3837,7 +3832,7 @@ Procedure AfterSelectingApplicationAfterCreatingCryptographyManager(Manager, Con
 		
 		If Context.ShowError Then
 			DigitalSignatureServiceClient.ShowRequestToApplicationError(
-				NStr("en='Selection of digital signature application';ru='Выбор программы электронной подписи'"),, Manager, New Structure);
+				NStr("en='Select a digital signature application';ru='Выбор программы электронной подписи'"),, Manager, New Structure);
 		EndIf;
 		
 	EndIf;
@@ -3863,7 +3858,7 @@ Procedure WriteStatement()
 	Content.Insert("HasChanges", ThisIsNewState);
 	
 	If CurrentObject.RequestStatus = Enums.CertificateIssueRequestState.NotPrepared Then
-		CurrentObject.Description = Surname + " " + Name + " " + Patronymic + " (" + NStr("en='Statement for a new certificate';ru='Заявление на новый сертификат'") + ")";
+		CurrentObject.Description = Surname + " " + Name + " " + Patronymic + " (" + NStr("en='Application for new certificate';ru='Заявление на новый сертификат'") + ")";
 		// Company.
 		UpdateValue(Content, "ThisIsIndividualEntrepreneur");
 		UpdateValue(Content, "Company");
@@ -4026,7 +4021,7 @@ Procedure AfterWrite(NotificationText = "")
 	Notify("Record_DigitalSignaturesAndEncryptionKeyCertificates", Context, Object.Ref);
 	
 	If Not ValueIsFilled(NotificationText) Then
-		NotificationText = NStr("en='Statement is saved.';ru='Заявление сохранено.'");
+		NotificationText = NStr("en='Application is saved.';ru='Заявление сохранено.'");
 	EndIf;
 	
 	ShowUserNotification(NotificationText);
@@ -4066,7 +4061,7 @@ Procedure CreateKeyAndCertificateQuery(Notification)
 			NStr("en='To create digital signature key and certificate
 		|query, it is required to install extension for web client 1C:Enterprise.';ru='Для создания ключа электронной подписи
 		|и запроса на сертификат требуется установить расширение для веб-клиента 1С:Предприятия.'"),
-			NStr("en='To create digital signature key and certificate request, it is required to install additional external component.';ru='Для создания ключа электронной подписи и запроса на сертификат требуется установить дополнительную внешнюю компоненту.'"));
+			NStr("en='To create a digital signature key and a certificate request, install an additional external component.';ru='Для создания ключа электронной подписи и запроса на сертификат требуется установить дополнительную внешнюю компоненту.'"));
 	EndIf;
 	
 EndProcedure
@@ -4091,7 +4086,7 @@ EndProcedure
 Procedure CreateKeyAndCertificateQueryAfterKeyContainerExistenceCheck(Exists, Context) Export
 	
 	If Exists Then
-		ShowUserNotification(NStr("en='Previously generated key container is used:';ru='Используется ранее созданный контейнер ключа:'"),,
+		ShowUserNotification(NStr("en='Previously created key container is used:';ru='Используется ранее созданный контейнер ключа:'"),,
 			KeyContainerPath);
 		
 		CreateKeyAndCertificateQueryAfterKeyContainerPreparation(Context);
@@ -4132,7 +4127,7 @@ Procedure CreateKeyAndCertificateQueryAfterCallErrorCreateContainer(ErrorInfo, S
 		BriefErrorDescription(ErrorInfo)));
 	
 	DigitalSignatureServiceClient.ShowRequestToApplicationError(
-		NStr("en='Generation of digital signature key';ru='Создание ключа электронной подписи'"),, Error, New Structure);
+		NStr("en='Create DS key';ru='Создание ключа электронной подписи'"),, Error, New Structure);
 	
 	ExecuteNotifyProcessing(Context.Notification, False);
 	
@@ -4232,7 +4227,7 @@ Procedure CreateKeyAndCertificateQueryAfterCallErrorCreateCertificateQuery(Error
 	StandardProcessing = False;
 	
 	CreateKeyAndCertificateQueryEnd(Context, ErrorInfo,
-		NStr("en='Unable to execute operation as:';ru='Не удалось выполнить операцию по причине:'"));
+		NStr("en='Cannot execute the operation due to:';ru='Не удалось выполнить операцию по причине:'"));
 	
 EndProcedure
 
@@ -4304,7 +4299,7 @@ Procedure CreateKeyAndCertificateQueryAfterCallErrorGetOpenKey(ErrorInfo, Standa
 	StandardProcessing = False;
 	
 	CreateKeyAndCertificateQueryEnd(Context, ErrorInfo,
-		NStr("en='Failed to get an open part of the key due to:';ru='Не удалось получить открытую часть ключа по причине:'"));
+		NStr("en='Cannot receive a public key part due to:';ru='Не удалось получить открытую часть ключа по причине:'"));
 	
 EndProcedure
 
@@ -4328,7 +4323,7 @@ Procedure CreateKeyAndCertificateQueryAfterCallErrorCalculateEntityKeyIdentifier
 	StandardProcessing = False;
 	
 	CreateKeyAndCertificateQueryEnd(Context, ErrorInfo,
-		NStr("en='Failed to calculate key identifier of the subject due to:';ru='Не удалось вычислить идентификатор ключа субъекта по причине:'"));
+		NStr("en='Cannot calculate the subject key ID due to:';ru='Не удалось вычислить идентификатор ключа субъекта по причине:'"));
 	
 EndProcedure
 
@@ -4376,7 +4371,7 @@ Procedure CreateKeyAndCertificateQueryEnd(Context, ErrorInfo = Undefined, ErrorT
 			+ Chars.LF + BriefErrorDescription(ErrorInfo));
 		
 		DigitalSignatureServiceClient.ShowRequestToApplicationError(
-			NStr("en='Certificate request creation';ru='Создание запроса на сертификат'"),, Error, New Structure);
+			NStr("en='Create certificate request';ru='Создание запроса на сертификат'"),, Error, New Structure);
 		
 	ElsIf Not Context.QueryCreated Then
 		ShowMessageBox(, NStr("en='Certificate request is not created.';ru='Запрос на сертификат не создан.'"));
@@ -4819,7 +4814,7 @@ Procedure CreateCryptographyObjectAfterConnectingExternalComponent(Connected, Co
 	Else
 		Buttons = New ValueList;
 		Buttons.Add("Set",      NStr("en='Set';ru='Установить'"));
-		Buttons.Add("DoNotInstall", NStr("en='Do not install';ru='Не устанавливать'"));
+		Buttons.Add("DoNotInstall", NStr("en='Do not set';ru='Не устанавливать'"));
 		ShowQueryBox(New NotifyDescription(
 				"CreateCryptographyObjectAfterAnswerToQuestion", ThisObject, Context),
 			Context.CryptographyExternalComponentFunction, Buttons, , "Set");
@@ -4877,7 +4872,7 @@ Procedure CreateCryptographyObjectAfterConnectingInstalledExternalComponent(Conn
 		ShowMessageBox(
 			New NotifyDescription("CreateCryptographyObjectAfterErrorWarning",
 				ThisObject, Context),
-			NStr("en='Failed to connect additional external component.';ru='Не удалось подключить дополнительную внешнюю компоненту.'"));
+			NStr("en='Cannot connect an additional external component.';ru='Не удалось подключить дополнительную внешнюю компоненту.'"));
 	Else
 		CreateCryptographyObjectContinuation(Context);
 	EndIf;

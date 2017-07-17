@@ -88,7 +88,7 @@ Procedure AbortExecuteIfExternalUserAuthorized(Val MessageText = "") Export
 		ErrorMessage = MessageText;
 		
 		If IsBlankString(ErrorMessage) Then
-			ErrorMessage = NStr("en='Specified operation is not allowed for external user.';ru='Данная операция не доступна внешнему пользователю системы.'");
+			ErrorMessage = NStr("en='This operation is not available for external system user.';ru='Данная операция не доступна внешнему пользователю системы.'");
 		EndIf;
 		
 		Raise ErrorMessage;
@@ -132,7 +132,7 @@ EndFunction
 //
 Procedure FinishUpdate(Val UpdateResult, Val Email, Val UpdateAdministratorName) Export
 
-	MessageText = NStr("en='Update completion from external script.';ru='Завершение обновления из внешнего скрипта.'");
+	MessageText = NStr("en='Completing update from the external script.';ru='Завершение обновления из внешнего скрипта.'");
 	WriteLogEvent(EventLogMonitorEvent(), EventLogLevel.Information,,,MessageText);
 	
 	If Not CheckAccessForUpdate() Then
@@ -147,11 +147,11 @@ Procedure FinishUpdate(Val UpdateResult, Val Email, Val UpdateAdministratorName)
 		AND Not IsBlankString(Email) Then
 		Try
 			SendNotificationAboutUpdate(UpdateAdministratorName, Email, UpdateResult);
-			MessageText = NStr("en='Notification of successfully installed updates has been sent to the email address:';ru='Уведомление об обновлении успешно отправлено на адрес электронной почты:'")
+			MessageText = NStr("en='Update notification is successfully sent to the email address:';ru='Уведомление об обновлении успешно отправлено на адрес электронной почты:'")
 				+ " " + Email;
 			WriteLogEvent(EventLogMonitorEvent(), EventLogLevel.Information,,,MessageText);
 		Except
-			MessageText = NStr("en='Error when sending email:';ru='Ошибка при отправке письма электронной почты:'")
+			MessageText = NStr("en='An error occurred when sending the email:';ru='Ошибка при отправке письма электронной почты:'")
 				+ " " + Email + Chars.LF + DetailErrorDescription(ErrorInfo());
 			WriteLogEvent(EventLogMonitorEvent(), EventLogLevel.Error,,,MessageText);
 		EndTry;
@@ -411,12 +411,12 @@ EndFunction
 
 Procedure SendNotificationAboutUpdate(Val UserName, Val AddressOfDestination, Val SuccessfulRefresh)
 	
-	Subject = ? (SuccessfulRefresh, NStr("en='Successful configuration update ""%1"", version %2';ru='Успешное обновление конфигурации ""%1"", версия %2'"), 
-		NStr("en='Error configuration updating ""%1"", %2 version';ru='Ошибка обновления конфигурации ""%1"", версия %2'"));
+	Subject = ? (SuccessfulRefresh, NStr("en='Configuration ""%1"" is successfully updated, version %2';ru='Успешное обновление конфигурации ""%1"", версия %2'"), 
+		NStr("en='Configuration ""%1"" update error, version %2';ru='Ошибка обновления конфигурации ""%1"", версия %2'"));
 	Subject = StringFunctionsClientServer.SubstituteParametersInString(Subject, Metadata.BriefInformation, Metadata.Version);
 	
-	Details = ?(SuccessfulRefresh, NStr("en='Configuration update completed successfully';ru='Обновление конфигурации завершено успешно.'"), 
-		NStr("en='Errors occurred while updating configuration. Details are written to the events log monitor.';ru='При обновлении конфигурации произошли ошибки. Подробности записаны в журнал регистрации.'"));
+	Details = ?(SuccessfulRefresh, NStr("en='Configuration is successfully updated.';ru='Обновление конфигурации завершено успешно.'"), 
+		NStr("en='Configuration update failed. Details have been written to the event log.';ru='При обновлении конфигурации произошли ошибки. Подробности записаны в журнал регистрации.'"));
 	Text = StringFunctionsClientServer.SubstituteParametersInString(NStr("en='%1
 		|
 		|Configuration:
@@ -441,7 +441,7 @@ EndProcedure
 
 // Returns event name for events log monitor record.
 Function EventLogMonitorEvent() Export
-	Return NStr("en='Configuration update';ru='Обновление конфигурации'", CommonUseClientServer.MainLanguageCode());
+	Return NStr("en='Update configuration';ru='Обновление конфигурации'", CommonUseClientServer.MainLanguageCode());
 EndFunction
 
 ////////////////////////////////////////////////////////////////////////////////

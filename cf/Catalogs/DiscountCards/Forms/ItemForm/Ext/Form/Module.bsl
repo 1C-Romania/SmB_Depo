@@ -85,7 +85,7 @@ Procedure CheckDiscountCardsDuplicates(Form)
 			
 		EndIf;	
 		
-		LabelTextOnDuplicates = NStr("en='With such code there are [DuplicateItemsNumber] [Declension]';ru='С таким кодом есть [КоличествоЭлементовДублей] [Склонение]'");
+		LabelTextOnDuplicates = NStr("en='With such code, there are [DuplicateItemsNumber] [Declension]';ru='С таким кодом есть [КоличествоЭлементовДублей] [Склонение]'");
 		
 		Items.ShowDoubles.Title = StringFunctionsClientServer.SubstituteParametersInStringByName(LabelTextOnDuplicates, 
 																										   DuplicatesMessageParametersStructure);
@@ -459,7 +459,7 @@ Procedure HandleReceivedCodeOnClient(Data, ReceivedCodeType, Preprocessing)
 					SmallBusinessClient.ShowMessageAboutError(Object, "Card code does not correspond to any template of magnetic cards.");
 				EndIf;
 			Else
-				ValueSelected = Result.ChooseItem(NStr("en='Choice of magnetic card code';ru='Выбор кода магнитной карты'"));
+				ValueSelected = Result.ChooseItem(NStr("en='Select magnetic stripe card code';ru='Выбор кода магнитной карты'"));
 				If ValueSelected <> Undefined Then
 					Object.MagneticCode = ValueSelected.Value;
 				EndIf;

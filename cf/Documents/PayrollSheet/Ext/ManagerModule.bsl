@@ -182,7 +182,7 @@ Procedure AddPrintCommands(PrintCommands) Export
 	
 	PrintCommand = PrintCommands.Add();
 	PrintCommand.ID = "PayrollSheet";
-	PrintCommand.Presentation = NStr("en='Payroll sheet';ru='ПЛАТЕЖНАЯ ВЕДОМОСТЬ'");
+	PrintCommand.Presentation = NStr("en='Pay sheet';ru='ПЛАТЕЖНАЯ ВЕДОМОСТЬ'");
 	PrintCommand.FormsList = "DocumentForm,ListForm";
 	PrintCommand.CheckPostingBeforePrint = False;
 	PrintCommand.Order = 1;

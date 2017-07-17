@@ -35,13 +35,13 @@ Function SendSMS(RecipientNumbers, Text, SenderName, Login, Val Password) Export
 																  "+" +  RecipientNumber, Format(MessageID, "NG=")));
 			Except
 				WriteLogEvent(
-					NStr("en='SMS sending';ru='Отправка SMS'", CommonUseClientServer.MainLanguageCode()),
+					NStr("en='Send SMS';ru='Отправка SMS'", CommonUseClientServer.MainLanguageCode()),
 					EventLogLevel.Error,
 					,
 					,
 					DetailErrorDescription(ErrorInfo()));
 				Result.ErrorDescription = Result.ErrorDescription 
-										 + StringFunctionsClientServer.SubstituteParametersInString(NStr("en='SMS to the number %1 has not been sent';ru='SMS на номер %1 не отправлено'"), Item)
+										 + StringFunctionsClientServer.SubstituteParametersInString(NStr("en='SMS is not sent to number %1';ru='SMS на номер %1 не отправлено'"), Item)
 										 + ": " + BriefErrorDescription(ErrorInfo())
 										 + Chars.LF;
 			EndTry;
@@ -124,7 +124,7 @@ Function permissions() Export
 	Protocol = "HTTP";
 	Address = "";
 	Port = Undefined;
-	Definition = NStr("en='Sending the SMS via MTS.';ru='Отправка SMS через МТС.'");
+	Definition = NStr("en='Send SMS via MTS.';ru='Отправка SMS через МТС.'");
 	
 	permissions = New Array;
 	permissions.Add(

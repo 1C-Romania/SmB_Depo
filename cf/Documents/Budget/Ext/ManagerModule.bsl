@@ -9,8 +9,8 @@ Procedure InitializeDocumentDataCashAssetsForecast(DocumentRefBudget, StructureA
 	
 	Query.SetParameter("Ref", DocumentRefBudget);
 	Query.SetParameter("Company", StructureAdditionalProperties.ForPosting.Company);
-	Query.SetParameter("IncomeContent", NStr("en='Forecast of receipt of the cash funds';ru='Прогноз поступления денежных средств'"));
-	Query.SetParameter("ExpenceContent", NStr("en='Forecast of retirement of the cash funds';ru='Прогноз выбытия денежных средств'"));
+	Query.SetParameter("IncomeContent", NStr("en='Forecast of funds receipt';ru='Прогноз поступления денежных средств'"));
+	Query.SetParameter("ExpenceContent", NStr("en='Forecast of funds outflow';ru='Прогноз выбытия денежных средств'"));
 	Query.SetParameter("AccountingCurrency", Constants.AccountingCurrency.Get());
 	
 	Query.Text =
@@ -759,7 +759,7 @@ Procedure InitializeDocumentDataBalances(DocumentRefBudget, StructureAdditionalP
 	Query.SetParameter("Ref", DocumentRefBudget);
 	Query.SetParameter("Company", StructureAdditionalProperties.ForPosting.Company);
 	Query.SetParameter("AccountingCurrency", Constants.AccountingCurrency.Get());
-	Query.SetParameter("Content", NStr("en='Opening balances forecast';ru='Прогноз начальных остатков'"));
+	Query.SetParameter("Content", NStr("en='Opening balance forecast';ru='Прогноз начальных остатков'"));
 	
 	DebetAccountTypes = New ValueList;
 	DebetAccountTypes.Add(Enums.GLAccountsTypes.FixedAssets);
@@ -1287,7 +1287,7 @@ Procedure DistributeFinancialResultThroughoutBase(DocumentRefBudget, StructureAd
 						
 							If SumWasDistributed = 0 Then
 								
-								MessageText = NStr("en='Financial result calculating:Financial account ""%FinancialAccount%"" has no distribution base!';ru='Расчет финансового результата: Счет учета ""%СчетУчета%"", не имеет базы распределения!'");
+								MessageText = NStr("en='Financial result calculation: The ""%FinancialAccount%""  GL account has no distribution base.';ru='Расчет финансового результата: Счет учета ""%СчетУчета%"", не имеет базы распределения!'");
 								MessageText = StrReplace(MessageText, "%GLAccount%", String(BypassByGLAccounts.GLAccount));
 								SmallBusinessServer.ShowMessageAboutError(DocumentRefBudget, MessageText); 
 								Continue;

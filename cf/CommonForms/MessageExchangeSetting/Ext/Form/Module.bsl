@@ -12,7 +12,7 @@ Procedure OnCreateAtServer(Cancel, StandardProcessing)
 		AND CommonUseReUse.CanUseSeparatedData() Then
 		
 		CommonUseClientServer.MessageToUser(
-			NStr("en='Subsystem setup is not supported in the separated mode.';ru='Настройка подсистемы в разделенном режиме не поддерживается.'"),,,, Cancel);
+			NStr("en='Subsystem configuration is not supported in the split mode.';ru='Настройка подсистемы в разделенном режиме не поддерживается.'"),,,, Cancel);
 		Return;
 	EndIf;
 	

@@ -12,7 +12,7 @@ Procedure GenerateTableCashAssets(DocumentRefCashReceipt, StructureAdditionalPro
 	Query.SetParameter("PointInTime", New Boundary(StructureAdditionalProperties.ForPosting.PointInTime, BoundaryType.Including));
 	Query.SetParameter("ControlPeriod", StructureAdditionalProperties.ForPosting.PointInTime.Date);
 	Query.SetParameter("Company", StructureAdditionalProperties.ForPosting.Company);
-	Query.SetParameter("CashFundsReceipt", NStr("en='Cash receipt';ru='Приходный кассовый ордер'"));
+	Query.SetParameter("CashFundsReceipt", NStr("en='Credit slip';ru='Приходный кассовый ордер'"));
 	Query.SetParameter("RevenueInRetailReceipt", NStr("en='Retail Revenue Receipt';ru='Поступление розничной выручки'"));
 	Query.SetParameter("ExchangeDifference", NStr("en='Exchange rate difference';ru='Курсовая разница'"));
 	
@@ -222,7 +222,7 @@ Procedure GenerateAdvanceHolderPaymentsTable(DocumentRefCashReceipt, StructureAd
 	Query.SetParameter("PointInTime", New Boundary(StructureAdditionalProperties.ForPosting.PointInTime, BoundaryType.Including));
 	Query.SetParameter("ControlPeriod", StructureAdditionalProperties.ForPosting.PointInTime.Date);
 	Query.SetParameter("Company", StructureAdditionalProperties.ForPosting.Company);
-	Query.SetParameter("RepaymentOfAdvanceHolderDebt", NStr("en='Repayment of advance holder debt';ru='Погашение долга подотчетника'"));
+	Query.SetParameter("RepaymentOfAdvanceHolderDebt", NStr("en='Repay advance holder debt';ru='Погашение долга подотчетника'"));
 	Query.SetParameter("ExchangeDifference", NStr("en='Exchange rate difference';ru='Курсовая разница'"));
 	
 	Query.Text =
@@ -456,8 +456,8 @@ Procedure GenerateTableAccountsPayable(DocumentRefCashReceipt, StructureAddition
 	Query.SetParameter("PointInTime", New Boundary(StructureAdditionalProperties.ForPosting.PointInTime, BoundaryType.Including));
 	Query.SetParameter("ControlPeriod", StructureAdditionalProperties.ForPosting.PointInTime.Date);
 	Query.SetParameter("Company", StructureAdditionalProperties.ForPosting.Company);
-	Query.SetParameter("VendorAdvanceRepayment", NStr("en='Vendor advance repayment';ru='Погашение аванса поставщику'"));
-	Query.SetParameter("AppearenceOfLiabilityToVendor", NStr("en='Appearance of vendor liabilities';ru='Возникновение обязательств перед поставщиком'"));
+	Query.SetParameter("VendorAdvanceRepayment", NStr("en='Repayment of advance to supplier';ru='Погашение аванса поставщику'"));
+	Query.SetParameter("AppearenceOfLiabilityToVendor", NStr("en='Incurrence of liabilities to supplier';ru='Возникновение обязательств перед поставщиком'"));
 	Query.SetParameter("ExchangeDifference", NStr("en='Exchange rate difference';ru='Курсовая разница'"));
 	
 	Query.Text =
@@ -596,8 +596,8 @@ Procedure GenerateTableIncomeAndExpenses(DocumentRefCashReceipt, StructureAdditi
 	Query.SetParameter("Ref", DocumentRefCashReceipt);
 	Query.SetParameter("Company", StructureAdditionalProperties.ForPosting.Company);
 	Query.SetParameter("PointInTime", New Boundary(StructureAdditionalProperties.ForPosting.PointInTime, BoundaryType.Including));
-	Query.SetParameter("IncomeReflection", NStr("en='Income accounting';ru='Отражение доходов'"));
-	Query.SetParameter("CostsReflection", NStr("en='Costs reflection';ru='Отражение расходов'"));
+	Query.SetParameter("IncomeReflection", NStr("en='Record income';ru='Отражение доходов'"));
+	Query.SetParameter("CostsReflection", NStr("en='Record expenses';ru='Отражение расходов'"));
 	Query.SetParameter("ExchangeDifference", NStr("en='Exchange rate difference';ru='Курсовая разница'"));
 	
 	Query.Text =
@@ -921,9 +921,9 @@ Procedure GenerateTableManagerial(DocumentRefCashReceipt, StructureAdditionalPro
 	Query.SetParameter("Company", StructureAdditionalProperties.ForPosting.Company);
 	Query.SetParameter("PointInTime", New Boundary(StructureAdditionalProperties.ForPosting.PointInTime, BoundaryType.Including));
 	Query.SetParameter("ExchangeDifference", NStr("en='Exchange rate difference';ru='Курсовая разница'"));
-	Query.SetParameter("Content", NStr("en='Cash as received from any account';ru='Оприходование денежных средств с произвольного счета'"));
-	Query.SetParameter("ContentCurrencyPurchase", NStr("en='Currency purchase';ru='Покупка валюты'"));
-	Query.SetParameter("ContentRetailIncome", NStr("en='Retail income';ru='Розничная выручка'"));
+	Query.SetParameter("Content", NStr("en='Capitalization of cash from any account';ru='Оприходование денежных средств с произвольного счета'"));
+	Query.SetParameter("ContentCurrencyPurchase", NStr("en='Foreign exchange buying';ru='Покупка валюты'"));
+	Query.SetParameter("ContentRetailIncome", NStr("en='Retail revenue';ru='Розничная выручка'"));
 	Query.SetParameter("ContentCost", NStr("en='Cost';ru='Себестоимость'"));
 	Query.SetParameter("ContentMarkup", NStr("en='Markup';ru='Наценка'"));
 		
@@ -2164,7 +2164,7 @@ Procedure GenerateTableRetailAmountAccounting(DocumentRefCashReceipt, StructureA
 	Query.SetParameter("PointInTime", New Boundary(StructureAdditionalProperties.ForPosting.PointInTime, BoundaryType.Including));
 	Query.SetParameter("ControlPeriod", StructureAdditionalProperties.ForPosting.PointInTime.Date);
 	Query.SetParameter("Company", StructureAdditionalProperties.ForPosting.Company);
-	Query.SetParameter("RetailIncome", NStr("en='Retail income';ru='Розничная выручка'"));
+	Query.SetParameter("RetailIncome", NStr("en='Retail revenue';ru='Розничная выручка'"));
 	Query.SetParameter("Cost", NStr("en='Cost';ru='Себестоимость'"));
 	Query.SetParameter("ExchangeDifference", NStr("en='Exchange rate difference';ru='Курсовая разница'"));
 	
@@ -3100,7 +3100,7 @@ Function PrintForm(ObjectsArray, PrintObjects)
 			
 		Else
 			
-			MessageText = NStr("en='ATTENTION! Perhaps, user template is used default methods for the accounts printing may work incorrectly.';ru='ВНИМАНИЕ! Возможно используется пользовательский макет. Штатный механизм печати счетов может работать некоректно.'");
+			MessageText = NStr("en='ATTENTION! Maybe, custom template is being used. Default procedures of account printing may work incorrectly.';ru='ВНИМАНИЕ! Возможно используется пользовательский макет. Штатный механизм печати счетов может работать некоректно.'");
 			CommonUseClientServer.AddUserError(Errors, , MessageText, Undefined);
 			
 		EndIf;
@@ -3167,7 +3167,7 @@ Procedure Print(ObjectsArray, PrintParameters, PrintFormsCollection, PrintObject
 	
 	If PrintManagement.NeedToPrintTemplate(PrintFormsCollection, "CashReceiptVoucher") Then
 		
-		PrintManagement.OutputSpreadsheetDocumentToCollection(PrintFormsCollection, "CashReceiptVoucher", NStr("ru = 'Приходный кассовый ордер'; en = 'Cash receipt voucher'"), PrintForm(ObjectsArray, PrintObjects));
+		PrintManagement.OutputSpreadsheetDocumentToCollection(PrintFormsCollection, "CashReceiptVoucher", NStr("en='Credit slip';ru='Приходный кассовый ордер'"), PrintForm(ObjectsArray, PrintObjects));
 		
 	EndIf;
 	
@@ -3185,7 +3185,7 @@ Procedure AddPrintCommands(PrintCommands) Export
 	
 	PrintCommand = PrintCommands.Add();
 	PrintCommand.ID							= "CashReceiptVoucher";
-	PrintCommand.Presentation				= NStr("ru = 'Приходный кассовый ордер'; en = 'Cash receipt voucher'");
+	PrintCommand.Presentation				= NStr("en='Credit slip';ru='Приходный кассовый ордер'");
 	PrintCommand.CheckPostingBeforePrint	= False;
 	PrintCommand.Order						= 1;
 	
@@ -3202,7 +3202,7 @@ Procedure GenerateTableSettlementsWithOtherCounterparties(DocumentRefCashReceipt
 	
 	Query.SetParameter("Company",						StructureAdditionalProperties.ForPosting.Company);
 	Query.SetParameter("AccountingForOtherOperations",	NStr("ru = 'Учет расчетов по прочим операциям'; en = 'Accounting for other operations'",	Metadata.DefaultLanguage.LanguageCode));
-	Query.SetParameter("Comment",						NStr("ru = 'Уменьшение долга контрагента'; en = 'Decrease company debt'", Metadata.DefaultLanguage.LanguageCode));
+	Query.SetParameter("Comment",						NStr("en='Decrease in counterparty debt';ru='Уменьшение долга контрагента'", Metadata.DefaultLanguage.LanguageCode));
 	Query.SetParameter("Ref",							DocumentRefCashReceipt);
 	Query.SetParameter("PointInTime",					New Boundary(StructureAdditionalProperties.ForPosting.PointInTime, BoundaryType.Including));
 	Query.SetParameter("ControlPeriod",					StructureAdditionalProperties.ForPosting.PointInTime.Date);

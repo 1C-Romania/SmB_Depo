@@ -115,7 +115,7 @@ Procedure ApplyTableOfUnapprovedRecords(Cancel) Export
 		
 		CommitTransaction();
 	Except
-		WriteLogEvent(NStr("en='Data exchange';ru='Обмен данными описание'", CommonUseClientServer.MainLanguageCode()),
+		WriteLogEvent(NStr("en='Data exchange description';ru='Обмен данными описание'", CommonUseClientServer.MainLanguageCode()),
 			EventLogLevel.Error,,, DetailErrorDescription(ErrorInfo())
 		);
 		Cancel = True;
@@ -185,7 +185,7 @@ Procedure ExecuteDataImportToInformationBase(Cancel, TableToImport) Export
 	EndDo;
 	
 	If DataExchangeDataProcessor.ErrorFlag() Then
-		NString = NStr("en='Errors occurred when loading the exchange message: %1';ru='При загрузке сообщения обмена возникли ошибки: %1'");
+		NString = NStr("en='Errors occurred when importing exchange message: %1';ru='При загрузке сообщения обмена возникли ошибки: %1'");
 		NString = StringFunctionsClientServer.SubstituteParametersInString(NString, DataExchangeDataProcessor.ErrorMessageString());
 		CommonUseClientServer.MessageToUser(NString,,,, Cancel);
 		Return;
@@ -1901,7 +1901,7 @@ Function GetTableOfSourceInformationBase(Cancel)
 		
 		If DataExchangeDataProcessor.ErrorFlag() Then
 			
-			NString = NStr("en='Errors occurred when loading the exchange message: %1';ru='При загрузке сообщения обмена возникли ошибки: %1'");
+			NString = NStr("en='Errors occurred when importing exchange message: %1';ru='При загрузке сообщения обмена возникли ошибки: %1'");
 			NString = StringFunctionsClientServer.SubstituteParametersInString(NString, DataExchangeDataProcessor.ErrorMessageString());
 			CommonUseClientServer.MessageToUser(NString,,,, Cancel);
 			Return Undefined;
@@ -2065,7 +2065,7 @@ Procedure FillListByAdditionalParameters(TableFieldList)
 		
 		If Attribute = Undefined Then
 			Raise StringFunctionsClientServer.SubstituteParametersInString(
-				NStr("en='For metadata object ""%1"" attribute is not defined with name ""%2""';ru='Для объекта метаданных ""%1"" не определен реквизит с именем ""%2""'"),
+				NStr("en='Attribute with the ""%2"" name is not defined for the ""%1"" metadata object';ru='Для объекта метаданных ""%1"" не определен реквизит с именем ""%2""'"),
 				MetadataObject.FullName(),
 				String(Item.Value));
 		EndIf;

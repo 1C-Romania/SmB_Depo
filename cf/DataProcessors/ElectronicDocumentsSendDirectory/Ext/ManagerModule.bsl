@@ -124,7 +124,7 @@ Procedure SetFilterByPricesType(Composer)
 		OR FilterPricesType.ComparisonType <> DataCompositionComparisonType.Equal Then
 		
 		If FilterPricesType.Use Then
-			CommonUseClientServer.MessageToUser(NStr("en='Filter is possible only by one price type. Information on the item prices is not filled.';ru='Возможен отбор только по одному типу цен. Информация о ценах номенклатуры не заполнена.'"));
+			CommonUseClientServer.MessageToUser(NStr("en='Filter is possible only by one price type. Information on products and services prices is not filled in.';ru='Возможен отбор только по одному типу цен. Информация о ценах номенклатуры не заполнена.'"));
 		EndIf;
 		
 		FilterPricesType.Use  = True;

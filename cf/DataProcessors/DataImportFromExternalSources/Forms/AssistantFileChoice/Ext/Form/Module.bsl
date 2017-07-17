@@ -56,9 +56,9 @@ Procedure OpenSample(Extension)
 			
 			PrintFormsCollection = PrintManagementClient.NewPrintedFormsCollection(PrintedFormIdentifier);
 			PrintForm = PrintManagementClient.PrintFormDescription(PrintFormsCollection, PrintedFormIdentifier);
-			PrintForm.TemplateSynonym = NStr("en='Template of the prepared data in the mxl format';ru='Образец подготовленных данных в формате mxl'");
+			PrintForm.TemplateSynonym = NStr("en='Sample of prepared data in the mxl format';ru='Образец подготовленных данных в формате mxl'");
 			PrintForm.SpreadsheetDocument = SpreadsheetDocument;
-			PrintForm.FileNamePrintedForm = NStr("en='Template of the prepared data in the mxl format';ru='Образец подготовленных данных в формате mxl'");
+			PrintForm.FileNamePrintedForm = NStr("en='Sample of prepared data in the mxl format';ru='Образец подготовленных данных в формате mxl'");
 			
 			PrintManagementClient.PrintingDocuments(PrintFormsCollection, ObjectAreas);
 			
@@ -123,13 +123,13 @@ Procedure FillMatchTableFilterChoiceList(IsTabularSectionImport)
 	If Parameters.DataLoadSettings.IsTabularSectionImport Then
 		
 		Items.FilterComparisonTable.ChoiceList.Insert(1, NStr("en='FilterNoErrors';ru='ОтборОшибокНет'"),	NStr("en='Data ready for import';ru='Данные, готовые к загрузке'"));
-		Items.FilterComparisonTable.ChoiceList.Insert(2, NStr("en='FilterErrors';ru='ОтборОшибки'"), 	NStr("en='Data impossible to be imported';ru='Данные, которые загрузить невозможно'"));
+		Items.FilterComparisonTable.ChoiceList.Insert(2, NStr("en='FilterErrors';ru='ОтборОшибки'"), 	NStr("en='Data which is impossible to import';ru='Данные, которые загрузить невозможно'"));
 		
 	Else
 		
-		Items.FilterComparisonTable.ChoiceList.Insert(1, NStr("en='Mapped';ru='Сопоставлено'"), NStr("en='Data matched successfully';ru='Данные, которые удалось сопоставить'"));
+		Items.FilterComparisonTable.ChoiceList.Insert(1, NStr("en='Mapped';ru='Сопоставлено'"), NStr("en='Matched data';ru='Данные, которые удалось сопоставить'"));
 		Items.FilterComparisonTable.ChoiceList.Insert(1, NStr("en='WillBeCreated';ru='БудутСозданы'"), NStr("en='Data without any match in the application';ru='Данные, которым не найдено соответствие в программе'"));
-		Items.FilterComparisonTable.ChoiceList.Insert(1, NStr("en='Inconsistent';ru='Несогласованные'"), NStr("en='Data that contains the error (not filled in completely)';ru='Данные, которые содержат ошибку (заполнены не полностью)'"));
+		Items.FilterComparisonTable.ChoiceList.Insert(1, NStr("en='Unapproved';ru='Несогласованные'"), NStr("en='Data that contains error (not filled in completely)';ru='Данные, которые содержат ошибку (заполнены не полностью)'"));
 		
 	EndIf;
 	
@@ -146,7 +146,7 @@ Procedure SetDecorationTitleTextUnmatchedRows()
 		
 	Else
 		
-		HeaderText = NStr("en='rows will be skipped:';ru='будет пропущено строк:'");
+		HeaderText = NStr("en='lines will be skipped:';ru='будет пропущено строк:'");
 		
 	EndIf;
 	
@@ -338,17 +338,17 @@ Procedure SetRowsQuantityDecorationText()
 	
 	If FilterComparisonTable = "WithoutFilter" Then 
 		
-		NewHeader = NStr("en='Total number of rows in table .......... %1';ru='Всего строк в таблице .......... %1'");
+		NewHeader = NStr("en='Total number of rows in the table .......... %1';ru='Всего строк в таблице .......... %1'");
 		ParameterValue = TableRowCount;
 		
 	ElsIf FilterComparisonTable = "FilterNoErrors" Then 
 		
-		NewHeader = NStr("en='Rows with data that could be imported to the application .......... %1';ru='Строк с данными, которые возможно загрузить в приложение .......... %1'");
+		NewHeader = NStr("en='Lines with data that could be imported to the application .......... %1';ru='Строк с данными, которые возможно загрузить в приложение .......... %1'");
 		ParameterValue = RowsQuantityWithoutErrors;
 		
 	ElsIf FilterComparisonTable = "FilterErrors" Then 
 		
-		NewHeader = NStr("en='Rows that contain errors and prevent data import .......... %1';ru='Строки, содержащие ошибки и препятствующие загрузке данных .......... %1'");
+		NewHeader = NStr("en='Lines that contain errors and prevent data from importing .......... %1';ru='Строки, содержащие ошибки и препятствующие загрузке данных .......... %1'");
 		ParameterValue = TableRowCount - RowsQuantityWithoutErrors;
 		
 	ElsIf FilterComparisonTable = "Mapped" Then 
@@ -367,12 +367,12 @@ Procedure SetRowsQuantityDecorationText()
 		
 	ElsIf FilterComparisonTable = "WillBeCreated" Then 
 		
-		NewHeader = NStr("en='Data failed to be matched .......... %1';ru='Данные, которые не удалось сопоставить .......... %1'");
+		NewHeader = NStr("en='Data failed to be mapped .......... %1';ru='Данные, которые не удалось сопоставить .......... %1'");
 		ParameterValue = UnmatchedData;
 		
 	ElsIf FilterComparisonTable = "Inconsistent" Then 
 		
-		NewHeader = NStr("en='Rows that contain an error or are filled in incompletely .......... %1';ru='Строки, которые содержат ошибку либо заполнены не полностью .......... %1'");
+		NewHeader = NStr("en='Lines that contain an error or that are not completely filled in .......... %1';ru='Строки, которые содержат ошибку либо заполнены не полностью .......... %1'");
 		ParameterValue = InconsistentData;
 		
 	EndIf;
@@ -704,7 +704,7 @@ Procedure SelectExternalFileDataProcessorEnd(Result, Address, FileName, Addition
 			
 		Else
 			
-			WarningText = NStr("en='Data import from files of a given type is not supported.';ru='Импорт данных из файлов данного типа не поддерживается.'");
+			WarningText = NStr("en='Data import from files of this type is not supported.';ru='Импорт данных из файлов данного типа не поддерживается.'");
 			ShowMessageBox(, WarningText); 
 			
 		EndIf;
@@ -775,7 +775,7 @@ Procedure GoToNumberOnChange(Val IsGoNext)
 	GoToRowsCurrent = GoToTable.FindRows(New Structure("GoToNumber", GoToNumber));
 	
 	If GoToRowsCurrent.Count() = 0 Then
-		Raise NStr("en='Page for displaying has not been defined.';ru='Не определена страница для отображения.'");
+		Raise NStr("en='Page for displaying is not defined.';ru='Не определена страница для отображения.'");
 	EndIf;
 	
 	GoToRowCurrent = GoToRowsCurrent[0];
@@ -881,7 +881,7 @@ Procedure ExecuteGoToEventHandlers(Val IsGoNext)
 	GoToRowsCurrent = GoToTable.FindRows(New Structure("GoToNumber", GoToNumber));
 	
 	If GoToRowsCurrent.Count() = 0 Then
-		Raise NStr("en='Page for displaying has not been defined.';ru='Не определена страница для отображения.'");
+		Raise NStr("en='Page for displaying is not defined.';ru='Не определена страница для отображения.'");
 	EndIf;
 	
 	GoToRowCurrent = GoToRowsCurrent[0];
@@ -937,7 +937,7 @@ Procedure ExecuteLongOperationHandler()
 	GoToRowsCurrent = GoToTable.FindRows(New Structure("GoToNumber", GoToNumber));
 	
 	If GoToRowsCurrent.Count() = 0 Then
-		Raise NStr("en='Page for displaying has not been defined.';ru='Не определена страница для отображения.'");
+		Raise NStr("en='Page for displaying is not defined.';ru='Не определена страница для отображения.'");
 	EndIf;
 	
 	GoToRowCurrent = GoToRowsCurrent[0];

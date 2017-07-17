@@ -303,7 +303,7 @@ Procedure CheckSuppliedDataUniqueness(FillChecking = False, Cancel = False)
 				CommonUseClientServer.MessageToUser(BriefErrorDescription,,,, Cancel);
 			Else
 				WriteLogEvent(
-					NStr("en='Acces management. Violation of the supplied profile uniqueness';ru='Управление доступом.Нарушение однозначности поставляемого профиля'",
+					NStr("en='Access management.Violation of unambiguity of the supplied profile';ru='Управление доступом.Нарушение однозначности поставляемого профиля'",
 					     CommonUseClientServer.MainLanguageCode()),
 					EventLogLevel.Error, , , DetailErrorDescription);
 			EndIf;

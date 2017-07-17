@@ -435,7 +435,7 @@ Procedure SetTitle()
 	If IsNew() Then
 		Title = Title + " (" + NStr("en='create';ru='создать'") + ")";
 	ElsIf EditProhibited Then
-		Title = Title + " (" + NStr("en='Read only';ru='только просмотр'") + ")";
+		Title = Title + " (" + NStr("en='view only';ru='только просмотр'") + ")";
 	EndIf;
 	
 EndProcedure

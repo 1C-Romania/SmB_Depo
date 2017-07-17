@@ -387,7 +387,7 @@ Procedure LaunchBackgroundJobOnServer(ExecutionBroken = False)
 		JobParameters.Add("CurrentWorksService.UserToDoList");
 		JobParameters.Add(ProcedureParameters);
 		
-		JobDescription = NStr("en='To-do lists list update';ru='Обновление списка текущих дел'");
+		JobDescription = NStr("en='Update current to-dos';ru='Обновление списка текущих дел'");
 		
 		Task = BackgroundJobs.Execute("WorkInSafeMode.ExecuteConfigurationMethod", JobParameters,, JobDescription);
 		

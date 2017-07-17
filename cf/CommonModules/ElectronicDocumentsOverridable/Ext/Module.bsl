@@ -418,7 +418,7 @@ Procedure FillDataByAssignmentDeed(ObjectReference, EDStructure, DataTree) Expor
 	If ObjectReference.OperationKind <> Enums.OperationKindsCustomerInvoice.SaleToCustomer Then
 		
 		MessageText = StringFunctionsClientServer.SubstituteParametersInString(
-			NStr("en='It is not possible to create an eletronic document for the operation kind ""%1""!';ru='Нельзя создать электронный документ для вида операции ""%1""!'"), ObjectReference.OperationKind);
+			NStr("en='Cannot create an electronic document for operation kind ""%1"".';ru='Нельзя создать электронный документ для вида операции ""%1""!'"), ObjectReference.OperationKind);
 		
 		Raise MessageText;
 		
@@ -566,7 +566,7 @@ Procedure FillDataOnTrad21SellerFTS(ObjectReference, EDStructure, DataTree) Expo
 	If ObjectReference.OperationKind <> Enums.OperationKindsCustomerInvoice.SaleToCustomer Then
 		
 		MessageText = StringFunctionsClientServer.SubstituteParametersInString(
-			NStr("en='It is not possible to create an eletronic document for the operation kind ""%1""!';ru='Нельзя создать электронный документ для вида операции ""%1""!'"), ObjectReference.OperationKind);
+			NStr("en='Cannot create an electronic document for operation kind ""%1"".';ru='Нельзя создать электронный документ для вида операции ""%1""!'"), ObjectReference.OperationKind);
 		
 		Raise MessageText;
 		
@@ -751,7 +751,7 @@ Procedure FillDataByAct501PerformerFTS(ObjectReference, EDStructure, DataTree) E
 	TabularSection = DocumentData.WorkTable;
 	
 	If TabularSection.Count() = 0 Then
-		MessageText = StringFunctionsClientServer.SubstituteParametersInString(NStr("en='The document does not contain data for ED generaton ""%1""';ru='Документ не содержит данных для формирования ЭД ""%1""'"),
+		MessageText = StringFunctionsClientServer.SubstituteParametersInString(NStr("en='The document does not contain data to generate ED ""%1""';ru='Документ не содержит данных для формирования ЭД ""%1""'"),
 			EDStructure.EDKind);
 		CommonUseClientServer.MessageToUser(MessageText);
 		Return;
@@ -796,7 +796,7 @@ Procedure FillDataByAct501PerformerFTS(ObjectReference, EDStructure, DataTree) E
 	For Each String IN TabularSection Do
 		
 		If Not ValueIsFilled(String.ProductsAndServices) Then
-			MessageText = NStr("en='In the %1 string of the %2 tabular section the products and services are not filled. To transfer an electronic document, it is necessary to fill out the products and services.';ru='В строке %1 табличной части %2 не заполнена номенклатура. Для передачи электронного документа заполнение номенклатуры обязательно.'");
+			MessageText = NStr("en='Products and services are not populated in row %1 of the %2 tabular section. To transfer an electronic document, it is necessary to fill in products and services.';ru='В строке %1 табличной части %2 не заполнена номенклатура. Для передачи электронного документа заполнение номенклатуры обязательно.'");
 			MessageText = StringFunctionsClientServer.SubstituteParametersInString(MessageText, String.LineNumber, String.TabularSectionName);
 			CommonUseClientServer.MessageToUser(MessageText, ObjectReference);
 			Continue;
@@ -874,7 +874,7 @@ Procedure PrepareDataByTorg12(ObjectReference, EDStructure, ParametersStructure)
 	If ObjectReference.OperationKind <> Enums.OperationKindsCustomerInvoice.SaleToCustomer Then
 		
 		MessageText = StringFunctionsClientServer.SubstituteParametersInString(
-			NStr("en='It is not possible to create an eletronic document for the operation kind ""%1""!';ru='Нельзя создать электронный документ для вида операции ""%1""!'"), ObjectReference.OperationKind);
+			NStr("en='Cannot create an electronic document for operation kind ""%1"".';ru='Нельзя создать электронный документ для вида операции ""%1""!'"), ObjectReference.OperationKind);
 		
 		Raise MessageText;
 		
@@ -884,7 +884,7 @@ Procedure PrepareDataByTorg12(ObjectReference, EDStructure, ParametersStructure)
 	HeaderAttributes  = DocumentData.HeaderAttributes;
 	
 	If DocumentData.ProductsTable.Count() = 0 Then
-		MessageText = StringFunctionsClientServer.SubstituteParametersInString(NStr("en='The document does not contain data for ED generaton ""%1""';ru='Документ не содержит данных для формирования ЭД ""%1""'"),
+		MessageText = StringFunctionsClientServer.SubstituteParametersInString(NStr("en='The document does not contain data to generate ED ""%1""';ru='Документ не содержит данных для формирования ЭД ""%1""'"),
 			EDStructure.EDKind);
 		CommonUseClientServer.MessageToUser(MessageText);
 		Return;
@@ -1123,7 +1123,7 @@ Procedure PrepareDataByProductsOrder(ObjectReference, EDStructure, ParametersStr
 	If ObjectReference.OperationKind <> Enums.OperationKindsPurchaseOrder.OrderForPurchase Then
 		
 		MessageText = StringFunctionsClientServer.SubstituteParametersInString(
-			NStr("en='It is not possible to create an eletronic document for the operation kind ""%1""!';ru='Нельзя создать электронный документ для вида операции ""%1""!'"), ObjectReference.OperationKind);
+			NStr("en='Cannot create an electronic document for operation kind ""%1"".';ru='Нельзя создать электронный документ для вида операции ""%1""!'"), ObjectReference.OperationKind);
 		
 		Raise MessageText;
 		
@@ -1210,7 +1210,7 @@ Procedure PrepareDataByProductsOrder(ObjectReference, EDStructure, ParametersStr
 			
 			CommonUseClientServer.MessageToUser(
 				StringFunctionsClientServer.SubstituteParametersInString(
-					NStr("en='Failed to map the products and services ""%1"" with the products and services of the supplier';ru='Не удалось сопоставить номенклатуру ""%1"" с номенклатурой поставщика'"),
+					NStr("en='Cannot map the ""%1"" products and services with products and services of the supplier';ru='Не удалось сопоставить номенклатуру ""%1"" с номенклатурой поставщика'"),
 					String(Selection.ProductsAndServices) + ?(ValueIsFilled(Selection.Characteristic), "(" + Selection.Characteristic + ")", "") 
 																		)
 				);
@@ -1233,7 +1233,7 @@ Procedure PrepareDataByProductsOrder(ObjectReference, EDStructure, ParametersStr
 	If UnableToMatchProductsAndServices Then
 		
 		ParametersStructure.Insert("DataPrepared", False);
-		CommonUseClientServer.MessageToUser(NStr("en='Electronic document generation has been cancelled.';ru='Формирование электронного документа отменено.'"));
+		CommonUseClientServer.MessageToUser(NStr("en='Electronic document generation has been canceled.';ru='Формирование электронного документа отменено.'"));
 		
 		Return ;
 	EndIf;
@@ -1268,7 +1268,7 @@ Procedure PrepareDataByProductsOrder(ObjectReference, EDStructure, ParametersStr
 		
 	EndIf;
 	
-	TotalRow = NStr("en='Total number of names %Quantity% amounted %Amount%';ru='Всего наименований %Количество%, на сумму %Сумма%'");
+	TotalRow = NStr("en='Total number of names %Quantity% in the amount of %Amount%';ru='Всего наименований %Количество%, на сумму %Сумма%'");
 	TotalRow = StrReplace(TotalRow, "%Quantity%", ProductsTable.Count());
 	TotalRow = StrReplace(TotalRow, "%Amount%",		 SmallBusinessServer.AmountsFormat(ObjectReference.DocumentAmount, ObjectReference.DocumentCurrency));
 	AmountInWords  = SmallBusinessServer.GenerateAmountInWords(ObjectReference.DocumentAmount, ObjectReference.DocumentCurrency);
@@ -1293,7 +1293,7 @@ Procedure PrepareDataByOnOrderResponce(ObjectReference, EDStructure, ParametersS
 	If ObjectReference.OperationKind <> Enums.OperationKindsCustomerOrder.OrderForSale Then
 		
 		MessageText = StringFunctionsClientServer.SubstituteParametersInString(
-			NStr("en='It is not possible to create an eletronic document for the operation kind ""%1""!';ru='Нельзя создать электронный документ для вида операции ""%1""!'"), ObjectReference.OperationKind);
+			NStr("en='Cannot create an electronic document for operation kind ""%1"".';ru='Нельзя создать электронный документ для вида операции ""%1""!'"), ObjectReference.OperationKind);
 		
 		Raise MessageText;
 		
@@ -1407,7 +1407,7 @@ Procedure PrepareDataByOnOrderResponce(ObjectReference, EDStructure, ParametersS
 	ShippingAddress = SmallBusinessManagementElectronicDocumentsServer.GetDeliveryAddress(EDStructure.Counterparty);
 	ParametersStructure.Insert("ShippingAddress", 			ShippingAddress);
 	
-	TotalRow = NStr("en='Total number of names %Quantity% amounted %Amount%';ru='Всего наименований %Количество%, на сумму %Сумма%'");
+	TotalRow = NStr("en='Total number of names %Quantity% in the amount of %Amount%';ru='Всего наименований %Количество%, на сумму %Сумма%'");
 	TotalRow = StrReplace(TotalRow, "%Quantity%", ProductsTable.Count());
 	TotalRow = StrReplace(TotalRow, "%Amount%",		 SmallBusinessServer.AmountsFormat(ObjectReference.DocumentAmount, ObjectReference.DocumentCurrency));
 	AmountInWords  = SmallBusinessServer.GenerateAmountInWords(ObjectReference.DocumentAmount, ObjectReference.DocumentCurrency);
@@ -1890,7 +1890,7 @@ Function FillCounterpartyAttributes(AttributesStructure) Export
 				Counterparty.Description);
 		Else
 			Message.Text = StringFunctionsClientServer.SubstituteParametersInString(
-				NStr("en='Data of counterparty ""%1"" is refilled.';ru='Данные контрагента ""%1"" перезаполнены.'"),
+				NStr("en='Data of the ""%1"" counterparty is repopulated.';ru='Данные контрагента ""%1"" перезаполнены.'"),
 				Counterparty.Description);
 		EndIf;
 		
@@ -1903,7 +1903,7 @@ Function FillCounterpartyAttributes(AttributesStructure) Export
 		RollbackTransaction();
 		MessageText = BriefErrorDescription(ErrorInfo()) + NStr("en=' (see details in Event log monitor).';ru=' (подробности см. в Журнале регистрации).'");
 		ErrorText = DetailErrorDescription(ErrorInfo());
-		ElectronicDocuments.ProcessExceptionByEDOnServer(NStr("en='Counterparty attributes import';ru='Загрузка реквизитов контрагента'"), ErrorText, MessageText);
+		ElectronicDocuments.ProcessExceptionByEDOnServer(NStr("en='Import counterparty attributes';ru='Загрузка реквизитов контрагента'"), ErrorText, MessageText);
 		Return Undefined;
 		
 	EndTry;
@@ -2906,7 +2906,7 @@ Procedure CheckSourcesReadiness(DocumentsArray, FormSource = Undefined) Export
 	// It is not necessary to generate ED based on the invoices with the InvoiceIsNotIssued flag
 	NotIssuedInvoicesArray = New Array();
 	
-	MessagePattern = NStr("en='Document ""%1"" is not issued.';ru='Документ ""%1"" не выставляется.'");
+	MessagePattern = NStr("en='The ""%1"" document is not issued.';ru='Документ ""%1"" не выставляется.'");
 	For Each Document IN NotIssuedInvoicesArray Do
 		Found = DocumentsArray.Find(Document);
 		If Found <> Undefined Then
@@ -2925,14 +2925,14 @@ Procedure CheckSourcesReadiness(DocumentsArray, FormSource = Undefined) Export
 		Return;
 	Else
 		If UnpostedDocumentsCount = 1 Then
-			Text = NStr("en='It is necessary to post the document before the ED generation.';ru='Перед формированием ЭД документ необходимо провести.'");
+			Text = NStr("en='Post the document before generating ED.';ru='Перед формированием ЭД документ необходимо провести.'");
 		Else
-			Text = NStr("en='Before the ED generation the documents must be posted first.';ru='Перед формированием ЭД документы необходимо провести.'");
+			Text = NStr("en='Post documents before generating ED.';ru='Перед формированием ЭД документы необходимо провести.'");
 		EndIf;
 	EndIf;
 	CommonUseClientServer.MessageToUser(Text);
 	
-	MessagePattern = NStr("en='The document %1 is not posted.';ru='Документ %1 не проведен.'");
+	MessagePattern = NStr("en='Document %1 is not posted.';ru='Документ %1 не проведен.'");
 	For Each UnpostedDocument IN ArrayOfUnpostedDocuments Do
 		Found = DocumentsArray.Find(UnpostedDocument.Ref);
 		If Found <> Undefined Then
@@ -3256,11 +3256,11 @@ Procedure MessageTextAboutSystemSettingRequirement(OperationKind, MessageText) E
 		|is required to enable option of using electronic digital signatures in the system settings.';ru='Для возможности
 		|подписания ЭД необходимо в настройках системы включить опцию использования электронных цифровых подписей.'");
 	ElsIf Upper(OperationKind) = "SettingCryptography" Then
-		MessageText = NStr("en='To be able to set cryptography, you should enable the option of electronic digital signatures usage in the system settings.';ru='Для возможности настройки криптографии необходимо в настройках системы включить опцию использования электронных цифровых подписей.'");
+		MessageText = NStr("en='To configure cryptography, enable the option of digital signature usage in the application settings.';ru='Для возможности настройки криптографии необходимо в настройках системы включить опцию использования электронных цифровых подписей.'");
 	ElsIf Upper(OperationKind) = "BANKOPERATIONS" Then
-			MessageText = NStr("en='To exchange ED with the banks it is required to select the option of direct exchange with banks in the application settings.';ru='Для возможности обмена ЭД с банками необходимо в настройках программы включить опцию использования прямого обмена с банками.'");
+			MessageText = NStr("en='To exchange ED with banks, select the option of direct exchange with banks in the application settings.';ru='Для возможности обмена ЭД с банками необходимо в настройках программы включить опцию использования прямого обмена с банками.'");
 	Else
-		MessageText = NStr("en='Operation can not be executed. The required application settings are not configured.';ru='Операция не может быть выполнена. Не выполнены необходимые настройки программы.'");
+		MessageText = NStr("en='Operation cannot be executed. The required application settings are not configured.';ru='Операция не может быть выполнена. Не выполнены необходимые настройки программы.'");
 	EndIf;
 	
 EndProcedure

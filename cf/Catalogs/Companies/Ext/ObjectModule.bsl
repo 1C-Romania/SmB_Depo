@@ -33,7 +33,7 @@ Procedure BeforeWrite(Cancel)
 	
 	// Check the possibility of changes
 	If IsNew() And Not GetFunctionalOption("UseSeveralCompanies") Then
-		CommonUseClientServer.MessageToUser(NStr("ru = 'В программе отключен учет по нескольким организациям.'; en = 'Accounting by several companies is disabled in application.'"));
+		CommonUseClientServer.MessageToUser(NStr("en='In the application, accounting by several companies is disabled.';ru='В программе отключен учет по нескольким организациям.'"));
 		Cancel = True;
 	EndIf;
 	

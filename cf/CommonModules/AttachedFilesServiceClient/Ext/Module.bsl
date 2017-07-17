@@ -25,7 +25,7 @@ Function GetFileIntoWorkingDirectory(Val FileBinaryDataAddress,
 		CreateDirectory(DirectorySave);
 	Except
 		ErrorInfo = BriefErrorDescription(ErrorInfo());
-		ErrorInfo = NStr("en='Error of directory creation on the disk:';ru='Ошибка создания каталога на диске:'") + " " + ErrorInfo;
+		ErrorInfo = NStr("en='An error occurred when creating a directory on the drive:';ru='Ошибка создания каталога на диске:'") + " " + ErrorInfo;
 		CommonUseClientServer.MessageToUser(ErrorInfo);
 		Return False;
 	EndTry;
@@ -113,7 +113,7 @@ Procedure AddFilesByDragging(Val FileOwner, Val FormID, Val FileNameArray) Expor
 		AttachedFile = AttachedFilesArray[0];
 		
 		ShowUserNotification(
-			NStr("en='Creating';ru='Создание'"),
+			NStr("en='Create';ru='Создание'"),
 			GetURL(AttachedFile),
 			AttachedFile,
 			PictureLib.Information32);
@@ -237,7 +237,7 @@ Procedure PlaceEditedFileOnDriveIntoStorageExtensionRequested(FileOperationsExte
 			InformationAboutFile = PutFileToStorage(FullFileNameAtClient, FormID);
 		Else
 			CommonUseClientServer.MessageToUser(
-				NStr("en='File is not found in the work directory.';ru='Файл не найден в рабочем каталоге.'"));
+				NStr("en='File is not found in the working directory.';ru='Файл не найден в рабочем каталоге.'"));
 		EndIf;
 		
 		ExecuteNotifyProcessing(AdditionalParameters.ResultHandler, InformationAboutFile);
@@ -428,7 +428,7 @@ Procedure OpenDirectoryWithFileExtensionRequested(FileOperationsExtensionConnect
 	If FileOperationsExtensionConnected Then
 		UserWorkingDirectory = FileFunctionsServiceClient.UserWorkingDirectory();
 		If IsBlankString(UserWorkingDirectory) Then
-			ShowMessageBox(, NStr("en='The working directory is not set';ru='Не задан рабочий каталог'"));
+			ShowMessageBox(, NStr("en='Working directory is not specified';ru='Не задан рабочий каталог'"));
 			Return;
 		EndIf;
 		
@@ -504,7 +504,7 @@ Procedure PlaceAttachedFile(Notification, AttachedFile, FormID, AdditionalParame
 	EndIf;
 	
 	Context.Insert("ErrorTitle",
-		NStr("en='Failed to place the file from your computer into storage due to:';ru='Не удалось поместить файл с компьютера в хранилище файлов по причине:'") + Chars.LF);
+		NStr("en='Cannot place a file from the computer to the file storage due to:';ru='Не удалось поместить файл с компьютера в хранилище файлов по причине:'") + Chars.LF);
 	
 	CommonUseClient.ShowFileSystemExtensionInstallationQuestion(New NotifyDescription(
 		"PlaceAttachedFileAfterConnectionExpansions", ThisObject, Context),, False);
@@ -517,7 +517,7 @@ Procedure PlaceAttachedFileAfterConnectionExpansions(ExtensionAttached, Context)
 	If Not ExtensionAttached Then
 		Result = New Structure;
 		Result.Insert("ErrorDescription", Context.ErrorTitle +
-			NStr("en='The extension for work with files is not installed in the Internet browser.';ru='В обозреватель интернет не установлено расширение для работы с файлами.'"));
+			NStr("en='File operation extension was not installed for the web browser.';ru='В обозреватель интернет не установлено расширение для работы с файлами.'"));
 		ExecuteNotifyProcessing(Context.Notification, Result);
 		Return;
 	EndIf;
@@ -562,7 +562,7 @@ Procedure PlaceAttachedFileAfterGettingWorkingDirectory(Result, Context) Export
 		Action.Insert("Properties", New Structure("ReadOnly", False));
 		Action.Insert("ErrorTitle", Context.ErrorTitle +
 			StringFunctionsClientServer.SubstituteParametersInString(
-				NStr("en='The ""View only"" property of the file is not changed due to:';ru='Изменение свойства файла ""Только просмотр"" не выполнено по причине:'"), Context.FullFileName));
+				NStr("en='Cannot change property ""View only"" of the file as:';ru='Изменение свойства файла ""Только просмотр"" не выполнено по причине:'"), Context.FullFileName));
 		ActionsWithFile.Add(Action);
 		
 		Action = New Structure;
@@ -589,7 +589,7 @@ Procedure PlaceAttachedFileAfterGettingWorkingDirectory(Result, Context) Export
 	Action.Insert("Properties", New Structure("ReadOnly", True));
 	Action.Insert("ErrorTitle", Context.ErrorTitle +
 		StringFunctionsClientServer.SubstituteParametersInString(
-			NStr("en='The ""View only"" property of the file is not changed due to:';ru='Изменение свойства файла ""Только просмотр"" не выполнено по причине:'"), Context.FullFileName));
+			NStr("en='Cannot change property ""View only"" of the file as:';ru='Изменение свойства файла ""Только просмотр"" не выполнено по причине:'"), Context.FullFileName));
 	ActionsWithFile.Add(Action);
 	
 	Context.Insert("FileProperties", New Structure);
@@ -603,7 +603,7 @@ Procedure PlaceAttachedFileAfterGettingWorkingDirectory(Result, Context) Export
 	Action.Insert("Properties", Context.FileProperties);
 	Action.Insert("ErrorTitle", Context.ErrorTitle +
 		StringFunctionsClientServer.SubstituteParametersInString(
-			NStr("en='File property is not got due to:';ru='Получение свойств файла не выполнено по причине:'"), Context.FullFileName));
+			NStr("en='File properties were not received due to:';ru='Получение свойств файла не выполнено по причине:'"), Context.FullFileName));
 	ActionsWithFile.Add(Action);
 	
 	Context.Insert("PlacingAction", New Structure);
@@ -679,7 +679,7 @@ Procedure GetAttachedFile(Notification, AttachedFile, FormID, AdditionalParamete
 	EndIf;
 	
 	Context.Insert("ErrorTitle",
-		NStr("en='Failed to get the file onto your computer from the storage due to:';ru='Не удалось получить файл на компьютер из хранилища файлов по причине:'") + Chars.LF);
+		NStr("en='Cannot receive the file to the computer from the file storage due to:';ru='Не удалось получить файл на компьютер из хранилища файлов по причине:'") + Chars.LF);
 	
 	If Context.ForEditing
 	   AND Context.FileData.IsEditing <> UsersClientServer.AuthorizedUser() Then
@@ -687,7 +687,7 @@ Procedure GetAttachedFile(Notification, AttachedFile, FormID, AdditionalParamete
 		Result = New Structure;
 		Result.Insert("FullFileName", "");
 		Result.Insert("ErrorDescription", Context.ErrorTitle + StringFunctionsClientServer.SubstituteParametersInString(
-			NStr("en='The %1 user is already editing the file.';ru='Файл уже редактирует пользователь %1.'"), String(Context.FileData.IsEditing)));
+			NStr("en='The file is already being edited by user %1.';ru='Файл уже редактирует пользователь %1.'"), String(Context.FileData.IsEditing)));
 		ExecuteNotifyProcessing(Context.Notification, Result);
 		Return;
 	EndIf;
@@ -706,7 +706,7 @@ Procedure GetAttachedFileAfterConnectionExpansions(ExtensionAttached, Context) E
 		Result = New Structure;
 		Result.Insert("FullFileName", "");
 		Result.Insert("ErrorDescription", Context.ErrorTitle +
-			NStr("en='The extension for work with files is not installed in the Internet browser.';ru='В обозреватель интернет не установлено расширение для работы с файлами.'"));
+			NStr("en='File operation extension was not installed for the web browser.';ru='В обозреватель интернет не установлено расширение для работы с файлами.'"));
 		ExecuteNotifyProcessing(Context.Notification, Result);
 		Return;
 	EndIf;
@@ -747,7 +747,7 @@ Procedure GetAttachedFileAfterGettingWorkingDirectory(Result, Context) Export
 	Action.Insert("Properties", New Structure("ReadOnly", False));
 	Action.Insert("ErrorTitle", Context.ErrorTitle +
 		StringFunctionsClientServer.SubstituteParametersInString(
-			NStr("en='The ""View only"" property of the file is not changed due to:';ru='Изменение свойства файла ""Только просмотр"" не выполнено по причине:'"), Context.FullFileName));
+			NStr("en='Cannot change property ""View only"" of the file as:';ru='Изменение свойства файла ""Только просмотр"" не выполнено по причине:'"), Context.FullFileName));
 	ActionsWithFile.Add(Action);
 	
 	Action = New Structure;
@@ -775,7 +775,7 @@ Procedure GetAttachedFileAfterGettingWorkingDirectory(Result, Context) Export
 	Action.Insert("Properties", FileProperties);
 	Action.Insert("ErrorTitle", Context.ErrorTitle +
 		StringFunctionsClientServer.SubstituteParametersInString(
-			NStr("en='File property is not set due to:';ru='Установка свойств файла не выполнено по причине:'"), Context.FullFileName));
+			NStr("en='Cannot set file properties due to:';ru='Установка свойств файла не выполнено по причине:'"), Context.FullFileName));
 	ActionsWithFile.Add(Action);
 	
 	FileFunctionsServiceClient.HandleFile(New NotifyDescription(
@@ -818,7 +818,7 @@ Procedure SignFile(AttachedFile, FileData, FormID, EndProcessor, HandlerOnReceiv
 	ExecuteParameters.Insert("FormID", FormID);
 	
 	DataDescription = New Structure;
-	DataDescription.Insert("Operation",            NStr("en='Signing file';ru='Подписание файла'"));
+	DataDescription.Insert("Operation",            NStr("en='File signing';ru='Подписание файла'"));
 	DataDescription.Insert("DataTitle",     NStr("en='File';ru='Файловый'"));
 	DataDescription.Insert("Presentation",       AttachedFile);
 	DataDescription.Insert("ShowComment", True);
@@ -951,7 +951,7 @@ Procedure GetEncryptedData(ResultHandler, Val AttachedFile, Val FileData, Val Fo
 	EndIf;
 	
 	If ValueIsFilled(FileData.IsEditing) Then
-		ShowMessageBox(, NStr("en='File locked for editing can not be encrypted.';ru='Нельзя зашифровать занятый файл.'"));
+		ShowMessageBox(, NStr("en='Cannot encrypt locked file.';ru='Нельзя зашифровать занятый файл.'"));
 		ExecuteNotifyProcessing(ResultHandler, Undefined);
 		Return;
 	EndIf;
@@ -1291,14 +1291,14 @@ Procedure UpdateStateAboutFileSaving(Val SelectedFiles, Val File, Val CurrentPos
 	If SelectedFiles.Count() > 1 Then
 		
 		If CurrentPosition = Undefined Then
-			Status(NStr("en='File saving has been completed.';ru='Сохранение файлов завершено.'"));
+			Status(NStr("en='File saving is complete.';ru='Сохранение файлов завершено.'"));
 		Else
 			IndicatorPercent = CurrentPosition * 100 / SelectedFiles.Count();
 			
 			LabelMore = StringFunctionsClientServer.SubstituteParametersInString(
-				NStr("en='The %1 file is being saved (%2 Mb)...';ru='Сохраняется файл ""%1"" (%2 Мб) ...'"), File.Name, SizeInMB);
+				NStr("en='Saving file ""%1"" (%2 MB) ...';ru='Сохраняется файл ""%1"" (%2 Мб) ...'"), File.Name, SizeInMB);
 				
-			StatusText = NStr("en='Several files saving.';ru='Сохранение нескольких файлов.'");
+			StatusText = NStr("en='Saving multiple files.';ru='Сохранение нескольких файлов.'");
 			
 			Status(StatusText, IndicatorPercent, LabelMore, PictureLib.Information32);
 		EndIf;
@@ -1430,7 +1430,7 @@ Procedure AddFilesExtensionRequested(FileOperationsExtensionConnected, Additiona
 				AttachedFile = AttachedFilesArray[0];
 				
 				ShowUserNotification(
-					NStr("en='Creating:';ru='Создание:'"),
+					NStr("en='Created:';ru='Создание:'"),
 					GetURL(AttachedFile),
 					AttachedFile,
 					PictureLib.Information32);
@@ -1461,7 +1461,7 @@ Procedure AddFilesEnd(AttachedFile, AdditionalParameters) Export
 	EndIf;
 	
 	ShowUserNotification(
-		NStr("en='Creating';ru='Создание'"),
+		NStr("en='Create';ru='Создание'"),
 		GetURL(AttachedFile),
 		AttachedFile,
 		PictureLib.Information32);
@@ -1521,7 +1521,7 @@ Procedure SaveFileAsExtensionRequested(FileOperationsExtensionConnected, Additio
 		ReceivedFiles = New Array;
 		
 		If GetFiles(FilesToReceive, ReceivedFiles, , False) Then
-			Status(NStr("en='The file is successfully saved.';ru='Файл успешно сохранен.'"), , FileChoice.FullFileName);
+			Status(NStr("en='The file was successfully saved.';ru='Файл успешно сохранен.'"), , FileChoice.FullFileName);
 		EndIf;
 		FullFileName = FileChoice.FullFileName;
 	Else

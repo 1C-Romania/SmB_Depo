@@ -29,7 +29,7 @@
 Function ExportDataIntoArchive(Val ExportParameters) Export
 	
 	If Not ValidateRights() Then
-		Raise NStr("en='You have not enough access rights to export data!';ru='Недостаточно прав доступа для выгрузки данных!'");
+		Raise NStr("en='Insufficient access rights to export data.';ru='Недостаточно прав доступа для выгрузки данных!'");
 	EndIf;
 	
 	ExternalExclusiveMode = ExclusiveMode();
@@ -104,7 +104,7 @@ EndFunction
 Procedure ImportDataFromArchive(Val ArchiveName, Val ExportParameters) Export
 	
 	If Not ValidateRights() Then
-		Raise NStr("en='You have not enough access rights to import data!';ru='Недостаточно прав доступа для загрузки данных!'");
+		Raise NStr("en='Insufficient access rights to import data.';ru='Недостаточно прав доступа для загрузки данных!'");
 	EndIf;
 	
 	SetPrivilegedMode(True);
@@ -167,7 +167,7 @@ Function ExportArchiveIsCompatibleWithCurrentConfiguration(Val ArchiveName) Expo
 		ImportDescriptionItem = Archiver.Items.Find("DumpInfo.xml");
 		
 		If ImportDescriptionItem = Undefined Then
-			Raise NStr("en='The DumpInfo.xml file is not available in the export file!';ru='В файле выгрузки отсутствует файл DumpInfo.xml!'");
+			Raise NStr("en='File DumpInfo.xml is missing in the export file.';ru='В файле выгрузки отсутствует файл DumpInfo.xml!'");
 		EndIf;
 		
 		Archiver.Extract(ImportDescriptionItem, Directory, ZIPRestoreFilePathsMode.Restore);

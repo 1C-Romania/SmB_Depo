@@ -311,7 +311,7 @@ Procedure BarcodesAreReceivedFragment(UnknownBarcodes) Export
 	
 	For Each CurUndefinedBarcode In UnknownBarcodes Do
 		
-		MessageString = NStr("ru = 'Данные по штрихкоду не найдены: %1%; количество: %2%'; en = 'Data by barcode is not found: %1%; quantity: %2%'");
+		MessageString = NStr("en='Barcode data is not found: %1%; quantity: %2%';ru='Данные по штрихкоду не найдены: %1%; количество: %2%'");
 		MessageString = StrReplace(MessageString, "%1%", CurUndefinedBarcode.Barcode);
 		MessageString = StrReplace(MessageString, "%2%", CurUndefinedBarcode.Count);
 		CommonUseClientServer.MessageToUser(MessageString);

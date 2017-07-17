@@ -12,7 +12,7 @@ Procedure OnCreateAtServer(Cancel, StandardProcessing)
 
 	If Parameters.ThisIsAdditionalInformation Then
 		Items.TypesProperties.CurrentPage = Items.Information;
-		Title = NStr("en='Change the additional information setting';ru='Изменить настройку дополнительного сведения'");
+		Title = NStr("en='Change additional information settings';ru='Изменить настройку дополнительного сведения'");
 	Else
 		Items.TypesProperties.CurrentPage = Items.Attribute;
 	EndIf;
@@ -114,7 +114,7 @@ EndProcedure
 &AtClient
 Procedure WriteBegin()
 	
-	Status(NStr("en='Property setting change is executed. Please, wait';ru='Выполняется изменение настройки свойства. Пожалуйста, подождите'"));
+	Status(NStr("en='Changing property settings. Please wait';ru='Выполняется изменение настройки свойства. Пожалуйста, подождите'"));
 	
 	OpenProperty = WriteAtServer();
 	
@@ -207,7 +207,7 @@ Function WriteAtServer()
 	ProcedureParameters.Insert("Property", Property);
 	ProcedureParameters.Insert("CurrentSetOfProperties", CurrentSetOfProperties);
 	
-	JobDescription = NStr("en='Additional property setting modification';ru='Изменение настройки дополнительного свойства'");
+	JobDescription = NStr("en='Change additional property setting';ru='Изменение настройки дополнительного свойства'");
 	
 	Result = LongActions.ExecuteInBackground(
 		UUID,

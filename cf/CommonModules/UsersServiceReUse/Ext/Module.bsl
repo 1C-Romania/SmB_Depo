@@ -21,7 +21,7 @@ Function Parameters() Export
 	ParameterPresentation = "";
 	
 	If Not SavedParameters.Property("UnavailableRolesByUserTypes") Then
-		ParameterPresentation = NStr("en='Inaccessible roles';ru='Недоступные роли'");
+		ParameterPresentation = NStr("en='Unavailable roles';ru='Недоступные роли'");
 		
 	ElsIf Not SavedParameters.Property("AllRoles") Then
 		ParameterPresentation = NStr("en='All roles';ru='Все роли'");

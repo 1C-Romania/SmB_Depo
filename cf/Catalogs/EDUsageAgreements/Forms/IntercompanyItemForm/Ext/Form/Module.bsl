@@ -365,9 +365,9 @@ EndFunction
 Procedure RefreshFormTitle()
 	
 	If Object.DeleteIsTypical Then
-		HeaderText = NStr("en='Typical setup of EDF between companies';ru='Типовая настройка ЭДО между организациями'");
+		HeaderText = NStr("en='Standard setup of EDF between companies';ru='Типовая настройка ЭДО между организациями'");
 	Else
-		HeaderText = NStr("en='EDF setup between companies';ru='Настройка ЭДО между организациями'");
+		HeaderText = NStr("en='EDF setting between companies';ru='Настройка ЭДО между организациями'");
 	EndIf;
 	If Not ValueIsFilled(Object.Ref) Then
 		Title = HeaderText + NStr("en=' (creation)';ru=' (создание)'");
@@ -478,7 +478,7 @@ Procedure SenderCompanyProcessingOfChoice(Item, ValueSelected, StandardProcessin
 	NotifyDescription = New NotifyDescription("HandleChangeSenderRecipient", ThisObject, AdditParameters);
 	If ValueIsFilled(Object.CompanyID) Then
 		If ValueSelected <> Object.Company Then
-			QuestionText = NStr("en='The company was modified. Do you want to change the exchange ID of the company?';ru='Была изменена организация. Изменить идентификатор обмена организации?'");
+			QuestionText = NStr("en='Company was changed. Change exchange ID of the company?';ru='Была изменена организация. Изменить идентификатор обмена организации?'");
 			ShowQueryBox(NOTifyDescription, QuestionText, QuestionDialogMode.YesNo, , DialogReturnCode.Yes);
 		EndIf;
 	Else
@@ -510,7 +510,7 @@ Procedure PayeeChoiceProcessing(Item, ValueSelected, StandardProcessing)
 	NotifyDescription = New NotifyDescription("HandleChangeSenderRecipient", ThisObject, AdditParameters);
 	If ValueIsFilled(Object.CounterpartyID) Then
 		If ValueSelected <> Object.Counterparty Then
-			QuestionText = NStr("en='Recipient company has been changed. Do you want to change the recipient ID?';ru='Была изменена организация получатель. Изменить идентификатор получателя?'");
+			QuestionText = NStr("en='Receiving company was changed. Change recipient ID?';ru='Была изменена организация получатель. Изменить идентификатор получателя?'");
 			ShowQueryBox(NOTifyDescription, QuestionText, QuestionDialogMode.YesNo, , DialogReturnCode.Yes);
 		EndIf;
 	Else
@@ -660,7 +660,7 @@ Procedure OnCreateAtServer(Cancel, StandardProcessing)
 				+ NStr("en=' (see details in Event log monitor).';ru=' (подробности см. в Журнале регистрации).'");
 			ErrorText = DetailErrorDescription(ErrorInfo());
 			ElectronicDocumentsServiceCallServer.ProcessExceptionByEDOnServer(
-				NStr("en='the agreement form opening';ru='открытие формы соглашения'"), ErrorText, MessageText);
+				NStr("en='opening agreement form';ru='открытие формы соглашения'"), ErrorText, MessageText);
 		EndTry;
 	EndIf;
 	

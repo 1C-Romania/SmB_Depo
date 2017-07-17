@@ -108,7 +108,7 @@ Function ContractMeetsDocumentTerms(MessageText, Contract, Company, Counterparty
 		Return True;
 	EndIf;
 	
-	MessageText = NStr("en='Contract attributes do not match the document terms:';ru='Реквизиты договора не соответствуют условиям документа:'");
+	MessageText = NStr("en='Contract attributes do not comply with the document conditions:';ru='Реквизиты договора не соответствуют условиям документа:'");
 	
 	If DoesNotMatchCompany Then
 		MessageText = MessageText + NStr("en='

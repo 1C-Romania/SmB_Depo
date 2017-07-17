@@ -15,7 +15,7 @@ Procedure OnCreateAtServer(Cancel, StandardProcessing)
 	EndIf;
 	
 	If ExchangePlans.MasterNode() <> Undefined Then
-		Raise NStr("en='Main node is restored.';ru='Главный узел установлен.'");
+		Raise NStr("en='Main node is set.';ru='Главный узел установлен.'");
 	EndIf;
 	
 	Items.WarningText.Title = StringFunctionsClientServer.SubstituteParametersInString(

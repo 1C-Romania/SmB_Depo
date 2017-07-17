@@ -42,10 +42,10 @@ Procedure OnOpen(Cancel)
 		|from %1 or found in %2';ru='Комплект правил
 		|можно скачать с %1 или найти в %2'");
 	
-	TemplateUpdatesDirectory = NStr("en='directory of the %1 application delivery';ru='каталоге поставки программы ""%1""'");
+	TemplateUpdatesDirectory = NStr("en='directory of the ""%1"" application delivery';ru='каталоге поставки программы ""%1""'");
 	TemplateUpdatesDirectory = StringFunctionsClientServer.SubstituteParametersInString(TemplateUpdatesDirectory, ApplicationName);
 	
-	TemplateUserWebsite = NStr("en='Users support website of 1C:Enterprise 8 system';ru='сайта поддержки пользователей системы ""1C:Предприятие 8""'");
+	TemplateUserWebsite = NStr("en='user support website of 1C:Enterprise 8';ru='сайта поддержки пользователей системы ""1C:Предприятие 8""'");
 	If Not IsBlankString(LocationRulesSet.PathToRulesSetFileOnUsersWebsite) Then
 		TemplateUserWebsite = New FormattedString(TemplateUserWebsite,,,, LocationRulesSet.PathToRulesSetFileOnUsersWebsite);
 	EndIf;
@@ -61,7 +61,7 @@ Procedure OnOpen(Cancel)
 		AdditionalParameters.Insert("TemplateUserSettings", DirectoryAppData() + "1C\1CEStart\1CEStart.cfg");
 		AdditionalParameters.Insert("FileLocation",                 "");
 		
-		SuggestionText = NStr("en='To open a directory, you need to set an extension of working with files.';ru='Для открытия каталога необходимо необходимо установить расширение работы с файлами.'");
+		SuggestionText = NStr("en='To open the directory, install the file operation extension.';ru='Для открытия каталога необходимо необходимо установить расширение работы с файлами.'");
 		Notification = New NotifyDescription("AfterWorksWithFilesExpansionCheck", ThisForm, AdditionalParameters);
 		CommonUseClient.ShowFileSystemExtensionInstallationQuestion(Notification, SuggestionText);
 		
@@ -168,7 +168,7 @@ Function CheckFillingOnClient()
 			
 			If Not ValueIsFilled(FileName) Then
 				
-				MessageString = NStr("en='External processing attachment file name is not specified.';ru='Не задано имя файла внешней обработки.'");
+				MessageString = NStr("en='Name of external data processor file is not specified.';ru='Не задано имя файла внешней обработки.'");
 				CommonUseClientServer.MessageToUser(MessageString,, "DataProcessorFileNameForExportDebugging",, HasUnfilledFields);
 				
 			EndIf;
@@ -182,7 +182,7 @@ Function CheckFillingOnClient()
 			
 			If Not ValueIsFilled(FileName) Then
 				
-				MessageString = NStr("en='External processing attachment file name is not specified.';ru='Не задано имя файла внешней обработки.'");
+				MessageString = NStr("en='Name of external data processor file is not specified.';ru='Не задано имя файла внешней обработки.'");
 				CommonUseClientServer.MessageToUser(MessageString,, "DataProcessorFileNameForImportDebugging",, HasUnfilledFields);
 				
 			EndIf;
@@ -196,7 +196,7 @@ Function CheckFillingOnClient()
 			
 			If Not ValueIsFilled(FileName) Then
 				
-				MessageString = NStr("en='Exchange protocol attachment file name is not specified.';ru='Не задано имя файла протокола обмена.'");
+				MessageString = NStr("en='Exchange protocol file name is not specified.';ru='Не задано имя файла протокола обмена.'");
 				CommonUseClientServer.MessageToUser(MessageString,, "ExchangeProtocolFileName",, HasUnfilledFields);
 				
 			EndIf;
@@ -238,7 +238,7 @@ EndProcedure
 Procedure ExternalDataProcessorForExportDebuggingBeginChoice(Item, ChoiceData, StandardProcessing)
 	
 	DialogSettings = New Structure;
-	DialogSettings.Insert("Filter", NStr("en='External processor(*.epf)';ru='Внешняя обработка(*.epf)'") + "|*.epf" );
+	DialogSettings.Insert("Filter", NStr("en='External data processor (*.epf)';ru='Внешняя обработка(*.epf)'") + "|*.epf" );
 	
 	DataExchangeClient.FileChoiceHandler(ThisObject, "DataProcessorFileNameForExportDebugging", StandardProcessing, DialogSettings);
 	
@@ -248,7 +248,7 @@ EndProcedure
 Procedure ExternalProcessingForExportDebuggingBeginChoice(Item, ChoiceData, StandardProcessing)
 	
 	DialogSettings = New Structure;
-	DialogSettings.Insert("Filter", NStr("en='External processor(*.epf)';ru='Внешняя обработка(*.epf)'") + "|*.epf" );
+	DialogSettings.Insert("Filter", NStr("en='External data processor (*.epf)';ru='Внешняя обработка(*.epf)'") + "|*.epf" );
 	
 	StandardProcessing = False;
 	DataExchangeClient.FileChoiceHandler(ThisObject, "DataProcessorFileNameForImportDebugging", StandardProcessing, DialogSettings);
@@ -273,7 +273,7 @@ EndProcedure
 Procedure ProtocolExchangeFileBeginChoice(Item, ChoiceData, StandardProcessing)
 	
 	DialogSettings = New Structure;
-	DialogSettings.Insert("Filter", NStr("en='Text document(*.txt)';ru='Текстовый документ(*.txt)'")+ "|*.txt" );
+	DialogSettings.Insert("Filter", NStr("en='Text document (*.txt)';ru='Текстовый документ(*.txt)'")+ "|*.txt" );
 	DialogSettings.Insert("CheckFileExist", False);
 	
 	DataExchangeClient.FileChoiceHandler(ThisObject, "ExchangeProtocolFileName", StandardProcessing, DialogSettings);
@@ -324,7 +324,7 @@ Procedure ImportRules(Command)
 	NameParts = CommonUseClientServer.SplitFullFileName(RulesFilename);
 	
 	DialogueParameters = New Structure;
-	DialogueParameters.Insert("Title", NStr("en='Specify archive with exchange rules';ru='Укажите архив с правилами обмена'"));
+	DialogueParameters.Insert("Title", NStr("en='Specify an archive with exchange rules';ru='Укажите архив с правилами обмена'"));
 	DialogueParameters.Insert("Filter", NStr("en='ZIP archives (*.zip)';ru='Архивы ZIP (*.zip)'") + "|*.zip");
 	DialogueParameters.Insert("FullFileName", NameParts.DescriptionFull);
 	
@@ -353,7 +353,7 @@ Procedure UnloadRules(Command)
 	
 	DialogueParameters = New Structure;
 	DialogueParameters.Insert("Mode", FileDialogMode.Save);
-	DialogueParameters.Insert("Title", NStr("en='Specify the file to which the rules should be exported';ru='Укажите в какой файл выгрузить правила'") );
+	DialogueParameters.Insert("Title", NStr("en='Specify a file the rules will be exported to';ru='Укажите в какой файл выгрузить правила'") );
 	DialogueParameters.Insert("FullFileName", FullFileName);
 	DialogueParameters.Insert("Filter", NStr("en='ZIP archives (*.zip)';ru='Архивы ZIP (*.zip)'") + "|*.zip");
 	
@@ -411,7 +411,7 @@ Procedure ImportRulesEnd(Val FilesPlacingResult, Val AdditionalParameters) Expor
 	ErrorText           = FilesPlacingResult.ErrorDescription;
 	
 	If IsBlankString(ErrorText) AND IsBlankString(PlacedFileAddress) Then
-		ErrorText = NStr("en='An error occurred during sending a settings file of data synchronization to server';ru='Ошибка передачи файла настроек синхронизации данных на сервер'");
+		ErrorText = NStr("en='An error occurred when transferring the file of data synchronization settings to the server';ru='Ошибка передачи файла настроек синхронизации данных на сервер'");
 	EndIf;
 	
 	If Not IsBlankString(ErrorText) Then
@@ -463,7 +463,7 @@ Procedure ImportRulesExecute(Val PlacedFileAddress, Val FileName, ErrorDescripti
 		FormParameters.Picture = ErrorDescription.Picture;
 		FormParameters.OfferDontAskAgain = False;
 		If ErrorDescription.ErrorKind = "IncorrectConfiguration" Then
-			FormParameters.Title = NStr("en='Rules can not be imported';ru='Правила не могут быть загружены'");
+			FormParameters.Title = NStr("en='Rules cannot be imported';ru='Правила не могут быть загружены'");
 		Else
 			FormParameters.Title = NStr("en='Data synchronization may work incorrectly';ru='Синхронизация данных может работать некорректно'");
 		EndIf;
@@ -477,7 +477,7 @@ Procedure ImportRulesExecute(Val PlacedFileAddress, Val FileName, ErrorDescripti
 		Notification = New NotifyDescription("ShowEventLogMonitorOnError", ThisObject);
 		ShowQueryBox(Notification, ErrorText, QuestionDialogMode.YesNo, ,DialogReturnCode.No);
 	Else
-		ShowUserNotification(,, NStr("en='Rules have been successfully loaded to the infobase.';ru='Правила успешно загружены в информационную базу.'"));
+		ShowUserNotification(,, NStr("en='Rules were successfully imported to the infobase.';ru='Правила успешно загружены в информационную базу.'"));
 		Close();
 	EndIf;
 	
@@ -570,7 +570,7 @@ Function GetRuleArchiveTempStorageAddressAtServer()
 	
 	If Result.IsEmpty() Then
 		
-		NString = NStr("en='Failed to receive exchange rules.';ru='Не удалось получить правила обмена.'");
+		NString = NStr("en='Cannot receive exchange rules.';ru='Не удалось получить правила обмена.'");
 		DataExchangeServer.ShowMessageAboutError(NString);
 		Return "";
 		
@@ -623,9 +623,9 @@ Procedure UpdateRuleInfo()
 	RulesInformationCommon = "[UsageInformation] [RegistrationRulesInformation] [ConversionRulesInformation]";
 	
 	If RulesSource = "ExportedFromTheFile" Then
-		UsageInformation = NStr("en='Rights imported from file are used.';ru='Используются правила загруженные из файла.'");
+		UsageInformation = NStr("en='Rules imported from file are used.';ru='Используются правила загруженные из файла.'");
 	Else
-		UsageInformation = NStr("en='Typical rules from the configuration content are used.';ru='Используются типовые правила из состава конфигурации.'");
+		UsageInformation = NStr("en='Standard rules from configuration are used.';ru='Используются типовые правила из состава конфигурации.'");
 	EndIf;
 	
 	RulesInformationCommon = StrReplace(RulesInformationCommon, "[InformationAboutUsage]", UsageInformation);

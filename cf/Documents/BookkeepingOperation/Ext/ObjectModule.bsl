@@ -140,7 +140,7 @@ Procedure Filling(Base)
 		
 		TabularPartRow               = RequestedParameters.Add();
 		TabularPartRow.Name           = "DocumentBase";
-		TabularPartRow.Presentation = Nstr("en='Document base';pl='Dokument podstawa';ru='Документ-основание'");
+		TabularPartRow.Presentation = Nstr("en='Basis document';pl='Dokument podstawa';ru='Документ-основание'");
 		TabularPartRow.Value      = DocumentBase;	
 			
 	Else
@@ -631,7 +631,7 @@ Procedure FillingOnDocumentBaseAndTemplate(DocumentBaseRef, TemplateRef) Export
 			
 			TabularPartRow               = RequestedParameters.Add();
 			TabularPartRow.Name           = "DocumentBase";
-			TabularPartRow.Presentation = Nstr("en='Document base';pl='Dokument podstawa';ru='Документ-основание'");
+			TabularPartRow.Presentation = Nstr("en='Basis document';pl='Dokument podstawa';ru='Документ-основание'");
 			TabularPartRow.Value      = DocumentBase;	
 				
 		Else

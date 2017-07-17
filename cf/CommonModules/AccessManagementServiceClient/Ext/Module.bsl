@@ -101,7 +101,7 @@ Procedure AccessValueStartChoice(Form, Item, ChoiceData, StandardProcessing) Exp
 		
 		Form.SelectedValuesCurrentTypes.ShowChooseItem(
 			New NotifyDescription("AccessValueSelectionStartContinuation", ThisObject, Form),
-			NStr("en='Data type choice';ru='Выбор типа данных'"),
+			NStr("en='Select data type';ru='Выбор типа данных'"),
 			Form.SelectedValuesCurrentTypes[0]);
 	EndIf;
 	

@@ -1592,7 +1592,7 @@ Procedure BarcodesAreReceivedFragment(UnknownBarcodes) Export
 	
 	For Each CurUndefinedBarcode IN UnknownBarcodes Do
 		
-		MessageString = NStr("en='Data by barcode is not found: %1%; quantity: %2%';ru='Данные по штрихкоду не найдены: %1%; количество: %2%'");
+		MessageString = NStr("en='Barcode data is not found: %1%; quantity: %2%';ru='Данные по штрихкоду не найдены: %1%; количество: %2%'");
 		MessageString = StrReplace(MessageString, "%1%", CurUndefinedBarcode.Barcode);
 		MessageString = StrReplace(MessageString, "%2%", CurUndefinedBarcode.Quantity);
 		CommonUseClientServer.MessageToUser(MessageString);
@@ -2322,7 +2322,7 @@ Procedure WOMaterialsPick(Command)
 	
 	If TabularSectionRow = Undefined Then
 		Message = New UserMessage;
-		Message.Text = NStr("en='Main tabular section row is not selected.';ru='Не выбрана строка основной табличной части!'");
+		Message.Text = NStr("en='Row of the main tabular section is not selected.';ru='Не выбрана строка основной табличной части!'");
 		Message.Message();
 		Return;
 	EndIf;
@@ -2588,7 +2588,7 @@ Procedure OWSetPossibilityOfEditInList()
 
 		
 		ShowQueryBox(New NotifyDescription("WOSetEditByListOptionEnd", ThisObject, New Structure("LineCount", LineCount)), 
-			NStr("en='All rows except the first will be deleted. Continue?';ru='Все строки кроме первой будут удалены. Продолжить?'"),
+			NStr("en='All lines except for the first one will be deleted. Continue?';ru='Все строки кроме первой будут удалены. Продолжить?'"),
 			QuestionDialogMode.YesNo
 		);
 		Return;
@@ -3357,7 +3357,7 @@ Procedure GetWeightForTabularSectionRow(TabularSectionRow)
 	
 	If TabularSectionRow = Undefined Then
 		
-		ShowMessageBox(Undefined, NStr("en='It is required to select a line to get weight for it.';ru='Необходимо выбрать строку, для которой необходимо получить вес.'"));
+		ShowMessageBox(Undefined, NStr("en='Select a line for which the weight should be received.';ru='Необходимо выбрать строку, для которой необходимо получить вес.'"));
 		
 	ElsIf EquipmentManagerClient.RefreshClientWorkplace() Then // Checks if the operator's workplace is specified
 		
@@ -3416,7 +3416,7 @@ Procedure FillBySpecification(Command)
 	
 	If CurrentTSLine = Undefined Then
 		Message = New UserMessage;
-		Message.Text = NStr("en='Main tabular section row is not selected.';ru='Не выбрана строка основной табличной части!'");
+		Message.Text = NStr("en='Row of the main tabular section is not selected.';ru='Не выбрана строка основной табличной части!'");
 		Message.Message();
 		Return;
 	EndIf;
@@ -3433,7 +3433,7 @@ Procedure FillBySpecification(Command)
 		Response = Undefined;
 		
 		ShowQueryBox(New NotifyDescription("FillBySpecificationEnd", ThisObject, New Structure("SearchResult", SearchResult)),
-			NStr("en='Tabular section ""Materials"" will be refilled! Continue the operation?';ru='Табличная часть ""Материалы"" будет перезаполнена! Продолжить выполнение операции?'"), QuestionDialogMode.YesNo, 0);
+			NStr("en='Tabular section ""Materials"" will be filled in again. Continue?';ru='Табличная часть ""Материалы"" будет перезаполнена! Продолжить выполнение операции?'"), QuestionDialogMode.YesNo, 0);
 		Return;
 		
 	EndIf;
@@ -3484,7 +3484,7 @@ Procedure FillMaterialsFromAllSpecifications(Command)
 	If Not Object.Works.Count() > 0 Then
 		
 		Message		= New UserMessage;
-		Message.Text = NStr("en='Fill tabular section ""Works"".';ru='Заполните табличную часть ""Работы"".'");
+		Message.Text = NStr("en='Fill in the ""Works"" tabular section.';ru='Заполните табличную часть ""Работы"".'");
 		Message.DataPath = "Works";
 		Message.Message();
 		
@@ -3496,7 +3496,7 @@ Procedure FillMaterialsFromAllSpecifications(Command)
 		
 		Response = Undefined;
 		ShowQueryBox(New NotifyDescription("FillMaterialsFromAllSpecificationsEnd", ThisObject),
-			NStr("en='It is necessary to clear tabular section ""Materials"" to execute operation! Continue the operation?';ru='Для выполнения операции требуется очистить табличную часть """"Материалы""""! Продолжить выполнение операции?'"), QuestionDialogMode.YesNo, 0);
+			NStr("en='Clear tabular section ""Materials"" to execute the operation. Continue the operation execution?';ru='Для выполнения операции требуется очистить табличную часть """"Материалы""""! Продолжить выполнение операции?'"), QuestionDialogMode.YesNo, 0);
 		Return;
 		
 	EndIf;
@@ -3557,7 +3557,7 @@ Procedure FillByResourcesForCurrentWorks(Command)
 	
 	If Object.EnterpriseResources.Count() = 0 Then
 		
-		SmallBusinessClient.ShowMessageAboutError(Object, NStr("en='Tabular section ""Used resources has no any records!""';ru='В табличной части ""Задействованные ресурсы"" нет записей!'"));
+		SmallBusinessClient.ShowMessageAboutError(Object, NStr("en='No records in tabular section ""Resources in use"".';ru='В табличной части ""Задействованные ресурсы"" нет записей!'"));
 		Return;
 		
 	EndIf;
@@ -3566,7 +3566,7 @@ Procedure FillByResourcesForCurrentWorks(Command)
 	
 	If SearchResult.Count() <> 0 Then
 		
-		QuestionText = NStr("en='Tabular section ""Performers"" for current work will be refilled! Continue the operation?';ru='Табличная часть """"Исполнители"""" для текущей работы будет перезаполнена! Продолжить выполнение операции?'");
+		QuestionText = NStr("en='The ""Performers"" tabular section will be filled in again for the current work. Continue?';ru='Табличная часть """"Исполнители"""" для текущей работы будет перезаполнена! Продолжить выполнение операции?'");
 		
 		Response = Undefined;
 		
@@ -3627,7 +3627,7 @@ Procedure FillByResourcesForAllWorks(Command)
 	EndIf;
 	
 	If Object.EnterpriseResources.Count() = 0 Then
-		SmallBusinessClient.ShowMessageAboutError(Object, NStr("en='Tabular section ""Used resources has no any records!""';ru='В табличной части ""Задействованные ресурсы"" нет записей!'"));
+		SmallBusinessClient.ShowMessageAboutError(Object, NStr("en='No records in tabular section ""Resources in use"".';ru='В табличной части ""Задействованные ресурсы"" нет записей!'"));
 		Return;
 	EndIf;
 	
@@ -3635,7 +3635,7 @@ Procedure FillByResourcesForAllWorks(Command)
 		Response = Undefined;
 		
 		ShowQueryBox(New NotifyDescription("FillByResourcesForAllWorksEnd", ThisObject),
-			NStr("en='Tabular section ""Performers"" will be refilled! Continue the operation?';ru='Табличная часть ""Исполнители"" будет перезаполнена! Продолжить выполнение операции?'"), QuestionDialogMode.YesNo, 0);
+			NStr("en='Tabular section ""Performers"" will be filled in again. Continue?';ru='Табличная часть ""Исполнители"" будет перезаполнена! Продолжить выполнение операции?'"), QuestionDialogMode.YesNo, 0);
 		Return;
 	EndIf;
 	
@@ -3707,7 +3707,7 @@ Procedure FillByTeamsForCurrentWorksEnd1(Result, AdditionalParameters) Export
 	If SearchResult.Count() <> 0 Then
 		Response = Undefined;
 		
-		ShowQueryBox(New NotifyDescription("FillByTeamsForCurrentWorksEnd", ThisObject, New Structure("ArrayOfTeams, SearchResult", ArrayOfTeams, SearchResult)), NStr("en='Tabular section ""Performers"" for current work will be refilled! Continue the operation?';ru='Табличная часть """"Исполнители"""" для текущей работы будет перезаполнена! Продолжить выполнение операции?'"),
+		ShowQueryBox(New NotifyDescription("FillByTeamsForCurrentWorksEnd", ThisObject, New Structure("ArrayOfTeams, SearchResult", ArrayOfTeams, SearchResult)), NStr("en='The ""Performers"" tabular section will be filled in again for the current work. Continue?';ru='Табличная часть """"Исполнители"""" для текущей работы будет перезаполнена! Продолжить выполнение операции?'"),
 		QuestionDialogMode.YesNo, 0);
 		Return;
 	EndIf;
@@ -3780,7 +3780,7 @@ Procedure FillByTeamsForAllWorksEnd1(Result, AdditionalParameters) Export
 		Response = Undefined;
 		
 		ShowQueryBox(New NotifyDescription("FillByTeamsForAllWorksEnd", ThisObject, New Structure("ArrayOfTeams", ArrayOfTeams)),
-			NStr("en='Tabular section ""Performers"" will be refilled! Continue the operation?';ru='Табличная часть ""Исполнители"" будет перезаполнена! Продолжить выполнение операции?'"), QuestionDialogMode.YesNo, 0);
+			NStr("en='Tabular section ""Performers"" will be filled in again. Continue?';ru='Табличная часть ""Исполнители"" будет перезаполнена! Продолжить выполнение операции?'"), QuestionDialogMode.YesNo, 0);
 		Return;
 	EndIf;
 	
@@ -3897,7 +3897,7 @@ Procedure WOChangeGoodsReserveFillByBalances(Command)
 	
 	If Object.Inventory.Count() = 0 Then
 		Message = New UserMessage;
-		Message.Text = NStr("en='Tabular section ""Goods"" is not filled!';ru='Табличная часть ""Товары"" не заполнена!'");
+		Message.Text = NStr("en='The Goods tabular section is not filled in.';ru='Табличная часть ""Товары"" не заполнена!'");
 		Message.Message();
 		Return;
 	EndIf;
@@ -3913,7 +3913,7 @@ Procedure WOChangeGoodsReserveFillByReserves(Command)
 	
 	If Object.Inventory.Count() = 0 Then
 		Message = New UserMessage;
-		Message.Text = NStr("en='Tabular section ""Goods"" is not filled!';ru='Табличная часть ""Товары"" не заполнена!'");
+		Message.Text = NStr("en='The Goods tabular section is not filled in.';ru='Табличная часть ""Товары"" не заполнена!'");
 		Message.Message();
 		Return;
 	EndIf;
@@ -3929,7 +3929,7 @@ Procedure WOChangeProductsReserveClearReserve(Command)
 	
 	If Object.Inventory.Count() = 0 Then
 		Message = New UserMessage;
-		Message.Text = NStr("en='Tabular section ""Goods"" is not filled!';ru='Табличная часть ""Товары"" не заполнена!'");
+		Message.Text = NStr("en='The Goods tabular section is not filled in.';ru='Табличная часть ""Товары"" не заполнена!'");
 		Message.Message();
 		Return;
 	EndIf;
@@ -4026,7 +4026,7 @@ Procedure WOChangeMaterialsReserveFillByBalances(Command)
 	
 	If CurrentTSLine = Undefined Then
 		Message = New UserMessage;
-		Message.Text = NStr("en='Main tabular section row is not selected.';ru='Не выбрана строка основной табличной части!'");
+		Message.Text = NStr("en='Row of the main tabular section is not selected.';ru='Не выбрана строка основной табличной части!'");
 		Message.Message();
 		Return;
 	EndIf;
@@ -4035,7 +4035,7 @@ Procedure WOChangeMaterialsReserveFillByBalances(Command)
 	SearchResult = Object.Materials.FindRows(New Structure("ConnectionKey", MaterialsConnectionKey));
 	If SearchResult.Count() = 0 Then
 		Message = New UserMessage;
-		Message.Text = NStr("en='Tabular section ""Materials"" is not filled!';ru='Табличная часть ""Материалы"" не заполнена!'");
+		Message.Text = NStr("en='Tabular section ""Materials"" is not filled in.';ru='Табличная часть ""Материалы"" не заполнена!'");
 		Message.Message();
 		Return;
 	EndIf;
@@ -4053,7 +4053,7 @@ Procedure WOChangeMaterialsReserveFillByBalancesForAll(Command)
 	
 	If Object.Materials.Count() = 0 Then
 		Message = New UserMessage;
-		Message.Text = NStr("en='Tabular section ""Materials"" is not filled!';ru='Табличная часть ""Материалы"" не заполнена!'");
+		Message.Text = NStr("en='Tabular section ""Materials"" is not filled in.';ru='Табличная часть ""Материалы"" не заполнена!'");
 		Message.Message();
 		Return;
 	EndIf;
@@ -4061,7 +4061,7 @@ Procedure WOChangeMaterialsReserveFillByBalancesForAll(Command)
 	If Object.Works.Count() > 1 Then
 		Response = Undefined;
 		ShowQueryBox(New NotifyDescription("WOChangeMaterialsReserveFillByBalancesForAllEnd", ThisObject),
-			NStr("en='In the tabular section ""Materials"" column ""Reserve"" will be refilled for all works! Continue the operation?';ru='В табличной части ""Материалы"" колонка ""Резерв"" будет перезаполнена для всех работ! Продолжить выполнение операции?'"), QuestionDialogMode.YesNo, 0);
+			NStr("en='The ""Reserve"" column will be refilled for all works in the ""Materials"" tabular section. Continue the operation?';ru='В табличной части ""Материалы"" колонка ""Резерв"" будет перезаполнена для всех работ! Продолжить выполнение операции?'"), QuestionDialogMode.YesNo, 0);
 		Return;
 	EndIf;
 	
@@ -4078,7 +4078,7 @@ Procedure WOChangeMaterialsReserveFillByReserves(Command)
 	
 	If CurrentTSLine = Undefined Then
 		Message = New UserMessage;
-		Message.Text = NStr("en='Main tabular section row is not selected.';ru='Не выбрана строка основной табличной части!'");
+		Message.Text = NStr("en='Row of the main tabular section is not selected.';ru='Не выбрана строка основной табличной части!'");
 		Message.Message();
 		Return;
 	EndIf;
@@ -4087,7 +4087,7 @@ Procedure WOChangeMaterialsReserveFillByReserves(Command)
 	SearchResult = Object.Materials.FindRows(New Structure("ConnectionKey", MaterialsConnectionKey));
 	If SearchResult.Count() = 0 Then
 		Message = New UserMessage;
-		Message.Text = NStr("en='Tabular section ""Materials"" is not filled!';ru='Табличная часть ""Материалы"" не заполнена!'");
+		Message.Text = NStr("en='Tabular section ""Materials"" is not filled in.';ru='Табличная часть ""Материалы"" не заполнена!'");
 		Message.Message();
 		Return;
 	EndIf;
@@ -4105,7 +4105,7 @@ Procedure WOChangeMaterialsReserveFillByReservesForAll(Command)
 	
 	If Object.Materials.Count() = 0 Then
 		Message = New UserMessage;
-		Message.Text = NStr("en='Tabular section ""Materials"" is not filled!';ru='Табличная часть ""Материалы"" не заполнена!'");
+		Message.Text = NStr("en='Tabular section ""Materials"" is not filled in.';ru='Табличная часть ""Материалы"" не заполнена!'");
 		Message.Message();
 		Return;
 	EndIf;
@@ -4113,7 +4113,7 @@ Procedure WOChangeMaterialsReserveFillByReservesForAll(Command)
 	If Object.Works.Count() > 1 Then
 		Response = Undefined;
 		ShowQueryBox(New NotifyDescription("WOChangeMaterialsReserveFillByReservesForAllEnd", ThisObject),
-			NStr("en='In the tabular section ""Materials"" column ""Reserve"" will be refilled for all works! Continue the operation?';ru='В табличной части ""Материалы"" колонка ""Резерв"" будет перезаполнена для всех работ! Продолжить выполнение операции?'"), QuestionDialogMode.YesNo, 0);
+			NStr("en='The ""Reserve"" column will be refilled for all works in the ""Materials"" tabular section. Continue the operation?';ru='В табличной части ""Материалы"" колонка ""Резерв"" будет перезаполнена для всех работ! Продолжить выполнение операции?'"), QuestionDialogMode.YesNo, 0);
 		Return;
 	EndIf;
 	
@@ -4130,7 +4130,7 @@ Procedure WOChangeMaterialsReserveClearReserve(Command)
 	
 	If CurrentTSLine = Undefined Then
 		Message = New UserMessage;
-		Message.Text = NStr("en='Main tabular section row is not selected.';ru='Не выбрана строка основной табличной части!'");
+		Message.Text = NStr("en='Row of the main tabular section is not selected.';ru='Не выбрана строка основной табличной части!'");
 		Message.Message();
 		Return;
 	EndIf;
@@ -4138,7 +4138,7 @@ Procedure WOChangeMaterialsReserveClearReserve(Command)
 	SearchResult = Object.Materials.FindRows(New Structure("ConnectionKey", Items.WOMaterials.RowFilter["ConnectionKey"]));
 	If SearchResult.Count() = 0 Then
 		Message = New UserMessage;
-		Message.Text = NStr("en='Tabular section ""Materials"" is not filled!';ru='Табличная часть ""Материалы"" не заполнена!'");
+		Message.Text = NStr("en='Tabular section ""Materials"" is not filled in.';ru='Табличная часть ""Материалы"" не заполнена!'");
 		Message.Message();
 		Return;
 	EndIf;
@@ -4159,7 +4159,7 @@ Procedure WOChangeMaterialsReserveClearReserveForAll(Command)
 	
 	If Object.Materials.Count() = 0 Then
 		Message = New UserMessage;
-		Message.Text = NStr("en='Tabular section ""Materials"" is not filled!';ru='Табличная часть ""Материалы"" не заполнена!'");
+		Message.Text = NStr("en='Tabular section ""Materials"" is not filled in.';ru='Табличная часть ""Материалы"" не заполнена!'");
 		Message.Message();
 		Return;
 	EndIf;
@@ -4167,7 +4167,7 @@ Procedure WOChangeMaterialsReserveClearReserveForAll(Command)
 	If Object.Works.Count() > 1 Then
 		Response = Undefined;
 		ShowQueryBox(New NotifyDescription("WOChangeMaterialsReserveClearReserveForAllEnd", ThisObject),
-			NStr("en='In the tabular section ""Materials"" column ""Reserve"" will be refilled for all works! Continue the operation?';ru='В табличной части ""Материалы"" колонка ""Резерв"" будет перезаполнена для всех работ! Продолжить выполнение операции?'"), QuestionDialogMode.YesNo, 0);
+			NStr("en='The ""Reserve"" column will be refilled for all works in the ""Materials"" tabular section. Continue the operation?';ru='В табличной части ""Материалы"" колонка ""Резерв"" будет перезаполнена для всех работ! Продолжить выполнение операции?'"), QuestionDialogMode.YesNo, 0);
 		Return;
 	EndIf;
 	
@@ -4370,7 +4370,7 @@ Procedure WOStartOnChange(Item)
 	
 	If Object.Start > Object.Finish Then
 		Object.Start = WhenChangingStart;
-		Message(NStr("en='Start date can not be later than the end date.';ru='Дата старта не может быть больше даты финиша.'"));
+		Message(NStr("en='Start date cannot be greater than end date.';ru='Дата старта не может быть больше даты финиша.'"));
 	Else
 		WhenChangingStart = Object.Start;
 	EndIf;
@@ -5931,7 +5931,7 @@ Procedure OpenPricesAndCurrencyFormEnd(ClosingResult, AdditionalParameters) Expo
 				Object.DiscountPercentByDiscountCard = ClosingResult.DiscountPercentByDiscountCard;
 			Else // We will show the message and we will not change discount card data.
 				CommonUseClientServer.MessageToUser(
-				NStr("en='Discount card is not read. Discount card owner does not match with a counterparty in the document.';ru='Дисконтная карта не считана. Владелец дисконтной карты не совпадает с контрагентом в документе.'"),
+				NStr("en='Discount card is not read. Discount card owner does not match the counterparty in the document.';ru='Дисконтная карта не считана. Владелец дисконтной карты не совпадает с контрагентом в документе.'"),
 				,
 				"Counterparty",
 				"Object");
@@ -6150,14 +6150,14 @@ Procedure DiscountCardIsSelected(DiscountCard)
 		CounterpartyOnChange(Items.WOCounterparty);
 		
 		ShowUserNotification(
-			NStr("en='Counterparty is filled and discount card is read';ru='Заполнен контрагент и считана дисконтная карта'"),
+			NStr("en='Counterparty is filled in and discount card is read';ru='Заполнен контрагент и считана дисконтная карта'"),
 			GetURL(DiscountCard),
 			StringFunctionsClientServer.SubstituteParametersInString(NStr("en='The counterparty is filled out in the document and discount card %1 is read';ru='В документе заполнен контрагент и считана дисконтная карта %1'"), DiscountCard),
 			PictureLib.Information32);
 	ElsIf Object.Counterparty <> DiscountCardOwner AND Not DiscountCardOwner.IsEmpty() Then
 		
 		CommonUseClientServer.MessageToUser(
-			NStr("en='Discount card is not read. Discount card owner does not match with a counterparty in the document.';ru='Дисконтная карта не считана. Владелец дисконтной карты не совпадает с контрагентом в документе.'"),
+			NStr("en='Discount card is not read. Discount card owner does not match the counterparty in the document.';ru='Дисконтная карта не считана. Владелец дисконтной карты не совпадает с контрагентом в документе.'"),
 			,
 			"Counterparty",
 			"Object");
@@ -6203,7 +6203,7 @@ Procedure DiscountCardIsSelectedAdditionally(DiscountCard)
 	PricesAndCurrency = GenerateLabelPricesAndCurrency(LabelStructure);
 	
 	If Object.Inventory.Count() > 0 Or Object.Works.Count() > 0 Then
-		Text = NStr("en='Refill discounts in all rows?';ru='Перезаполнить скидки во всех строках?'");
+		Text = NStr("en='Refill discounts in all lines?';ru='Перезаполнить скидки во всех строках?'");
 		Notification = New NotifyDescription("DiscountCardIsSelectedAdditionallyEnd", ThisObject);
 		ShowQueryBox(Notification, Text, QuestionDialogMode.YesNo, , DialogReturnCode.Yes);
 	EndIf;

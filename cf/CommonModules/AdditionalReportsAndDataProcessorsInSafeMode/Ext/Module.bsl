@@ -354,7 +354,7 @@ Function GetFileFromInternet(Val SessionKey, Val URL, Val Port = 0, Val UserName
 	CheckCorrectnessOfCallOnEnvironment();
 	
 	If Not CommonUse.SubsystemExists("StandardSubsystems.GetFilesFromInternet") Then
-		Raise NStr("en='This configuration does not support the funcrion AdditionalReportsAndDataProcessorsInSafeMode.GetFileFromInternet!';ru='В данной конфигурации не поддерживается вызов функции ДополнительныеОтчетыИОбработкиВБезопасномРежиме.ПолучитьФайлИзИнтернета!'");
+		Raise NStr("en='Call of function AdditionalReportsAndDataProcessorsInSafeMode.GetFileFromInternet is not supported in this configuration.';ru='В данной конфигурации не поддерживается вызов функции ДополнительныеОтчетыИОбработкиВБезопасномРежиме.ПолучитьФайлИзИнтернета!'");
 	EndIf;
 	
 	ModuleGetFilesFromInternetClientServer = CommonUse.CommonModule("GetFilesFromInternetClientServer");
@@ -406,7 +406,7 @@ Function GetFileFromInternet(Val SessionKey, Val URL, Val Port = 0, Val UserName
 			Join = New FTPConnection(ServerName, Port, UserName, Password, Proxy, PassiveConnection, Timeout);
 		Except
 			ErrorInfo = ErrorInfo();
-			ErrorInfo = NStr("en='Error while creating FTP-connection with server %1';ru='Ошибка при создании FTP-соединения с сервером %1:'") + Chars.LF + "%2";
+			ErrorInfo = NStr("en='An error occurred when establishing FTP connection with server %1:';ru='Ошибка при создании FTP-соединения с сервером %1:'") + Chars.LF + "%2";
 			
 			Raise StringFunctionsClientServer.SubstituteParametersInString(
 				ErrorInfo, ServerName, DetailErrorDescription(ErrorInfo));
@@ -423,7 +423,7 @@ Function GetFileFromInternet(Val SessionKey, Val URL, Val Port = 0, Val UserName
 			Join = New HTTPConnection(ServerName, Port, UserName, Password, Proxy, Timeout, SecureConnection);
 		Except
 			ErrorInfo = ErrorInfo();
-			ErrorInfo = NStr("en='Error when creating the HTTP-conection with the server %1:';ru='Ошибка при создании HTTP-соединения с сервером %1:'") + Chars.LF + "%2";
+			ErrorInfo = NStr("en='An error occurred when setting up HTTP connection with server %1:';ru='Ошибка при создании HTTP-соединения с сервером %1:'") + Chars.LF + "%2";
 			
 			Raise StringFunctionsClientServer.SubstituteParametersInString(ErrorInfo, ServerName, 
 				DetailErrorDescription(ErrorInfo));
@@ -436,7 +436,7 @@ Function GetFileFromInternet(Val SessionKey, Val URL, Val Port = 0, Val UserName
 		Join.Get(PathToFileAtServer, TempFile);
 	Except
 		ErrorInfo = ErrorInfo();
-		ErrorInfo = NStr("en='Error while receiving file form server %1:';ru='Ошибка при получении файла с сервера %1:'") + Chars.LF + "%2";
+		ErrorInfo = NStr("en='An error occurred when receiving the file from server %1:';ru='Ошибка при получении файла с сервера %1:'") + Chars.LF + "%2";
 		
 		Raise StringFunctionsClientServer.SubstituteParametersInString(ErrorInfo, ServerName, 
 			DetailErrorDescription(ErrorInfo));
@@ -471,7 +471,7 @@ Function ImportFileInInternet(Val SessionKey, Val BinaryDataAddress, Val URL, Va
 	CheckCorrectnessOfCallOnEnvironment();
 	
 	If Not CommonUse.SubsystemExists("StandardSubsystems.GetFilesFromInternet") Then
-		Raise NStr("en='This configuration does not support the AdditionalReportsAndDataProcessorsInSafeMode.ImportFileInInternet function call!';ru='В данной конфигурации не поддерживается вызов функции ДополнительныеОтчетыИОбработкиВБезопасномРежиме.ПередатьФайлВИнтернет!'");
+		Raise NStr("en='Call of function AdditionalReportsAndDataProcessorsInSafeMode.ImportFileInInternet is not supported in this configuration.';ru='В данной конфигурации не поддерживается вызов функции ДополнительныеОтчетыИОбработкиВБезопасномРежиме.ПередатьФайлВИнтернет!'");
 	EndIf;
 	
 	ModuleGetFilesFromInternetClientServer = CommonUse.CommonModule("GetFilesFromInternetClientServer");
@@ -513,7 +513,7 @@ Function ImportFileInInternet(Val SessionKey, Val BinaryDataAddress, Val URL, Va
 			Join = New FTPConnection(ServerName, Port, UserName, Password, Proxy, PassiveConnection, Timeout);
 		Except
 			ErrorInfo = ErrorInfo();
-			ErrorInfo = NStr("en='Error while creating FTP-connection with server %1';ru='Ошибка при создании FTP-соединения с сервером %1:'") + Chars.LF + "%2";
+			ErrorInfo = NStr("en='An error occurred when establishing FTP connection with server %1:';ru='Ошибка при создании FTP-соединения с сервером %1:'") + Chars.LF + "%2";
 			
 			Raise StringFunctionsClientServer.SubstituteParametersInString(
 				ErrorInfo, ServerName, DetailErrorDescription(ErrorInfo));
@@ -530,7 +530,7 @@ Function ImportFileInInternet(Val SessionKey, Val BinaryDataAddress, Val URL, Va
 			Join = New HTTPConnection(ServerName, Port, UserName, Password, Proxy, Timeout, SecureConnection);
 		Except
 			ErrorInfo = ErrorInfo();
-			ErrorInfo = NStr("en='Error when creating the HTTP-conection with the server %1:';ru='Ошибка при создании HTTP-соединения с сервером %1:'") + Chars.LF + "%2";
+			ErrorInfo = NStr("en='An error occurred when setting up HTTP connection with server %1:';ru='Ошибка при создании HTTP-соединения с сервером %1:'") + Chars.LF + "%2";
 			
 			Raise StringFunctionsClientServer.SubstituteParametersInString(ErrorInfo, ServerName, 
 				DetailErrorDescription(ErrorInfo));
@@ -541,7 +541,7 @@ Function ImportFileInInternet(Val SessionKey, Val BinaryDataAddress, Val URL, Va
 		Join.Write(TempFile, PathToFileAtServer);
 	Except
 		ErrorInfo = ErrorInfo();
-		ErrorInfo = NStr("en='An error occurred when transferring the file to server %1:';ru='Ошибка при передаче файла на сервер %1:'") + Chars.LF + "%2";
+		ErrorInfo = NStr("en='An error occurred when transferring file to the server %1:';ru='Ошибка при передаче файла на сервер %1:'") + Chars.LF + "%2";
 		
 		Raise StringFunctionsClientServer.SubstituteParametersInString(ErrorInfo, ServerName, 
 			DetailErrorDescription(ErrorInfo));
@@ -776,7 +776,7 @@ Procedure CheckCorrectnessOfMethodNameOfExternalObject(Val MethodName)
 		If Find(MethodName, ForbiddenSymbol) > 0 Then
 			
 			Raise StringFunctionsClientServer.SubstituteParametersInString(
-				NStr("en='%1 is not a correct method name for the COM-object or the external component object!';ru='%1 не является корректным именем метода для COM-объекта или объекта внешней компоненты!'"),
+				NStr("en='%1 not a correct method name for COM object or external component object.';ru='%1 не является корректным именем метода для COM-объекта или объекта внешней компоненты!'"),
 				MethodName);
 			
 		EndIf;

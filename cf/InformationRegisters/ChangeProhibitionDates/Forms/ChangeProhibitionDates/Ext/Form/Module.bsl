@@ -29,12 +29,12 @@ Procedure OnCreateAtServer(Cancel, StandardProcessing)
 	If Parameters.DataImportingProhibitionDates Then
 		
 		If Not SectionsProperties.UseProhibitionDatesOfDataImport Then
-			Raise(NStr("en='Dates of prohibition of data loading are not used.';ru='Даты запрета загрузки данных не используются.'"));
+			Raise(NStr("en='Closing dates of data import are not used.';ru='Даты запрета загрузки данных не используются.'"));
 		EndIf;
 		
-		Title = NStr("en='Importing prohibition dates';ru='Даты запрета загрузки данных'");
+		Title = NStr("en='Closing dates of data import';ru='Даты запрета загрузки данных'");
 		Items.ProhibitionDateSetting.ChoiceList.FindByValue("NoProhibition").Presentation =
-			NStr("en='No prohibition of data loading';ru='Нет запрета загрузки данных'");
+			NStr("en='Data import allowed';ru='Нет запрета загрузки данных'");
 		Items.ProhibitionDateSetting.ChoiceList.FindByValue("ForAllUsers").Presentation =
 			NStr("en='For all infobases';ru='Для всех информационных баз'");
 		Items.ProhibitionDateSetting.ChoiceList.FindByValue("ByUsers").Presentation =
@@ -46,7 +46,7 @@ Procedure OnCreateAtServer(Cancel, StandardProcessing)
 		|датам запрета загрузки данных, установленным ""По информационным базам"".'");
 		
 		Commands.ProhibitionDatesByUsers.Title
-			= NStr("en='Prohibition dates by infobases';ru='Даты запрета по информационным базам'");
+			= NStr("en='Closing dates by infobases';ru='Даты запрета по информационным базам'");
 		
 		Commands.ProhibitionDatesByUsers.ToolTip
 			= NStr("en='Data import prohibition
@@ -54,7 +54,7 @@ Procedure OnCreateAtServer(Cancel, StandardProcessing)
 		|загрузки данных по информационным базам и программам.'");
 		
 		Commands.ProhibitionDatesBySectionsObjectsForUsers.Title =
-			NStr("en='Prohibition dates by sections and objects for the infobases';ru='Даты запрета по разделам и объектам для информационных баз'");
+			NStr("en='Closing dates by sections and objects for infobases';ru='Даты запрета по разделам и объектам для информационных баз'");
 		
 		Commands.ProhibitionDatesBySectionsObjectsForUsers.ToolTip =
 			NStr("en='Data import prohibition
@@ -4005,14 +4005,14 @@ Procedure CommonProhibitionDateWithDescriptionOnChange(Val Context, CalculatePro
 			
 			If Context.CurrentDateAtServer > PermissionTerm Then
 				LabelText = Chars.LF +
-					NStr("en='Term possibility of changing data from %3 to %4 expired %2';ru='Срок возможности изменения данных с %3 по %4 истек %2'");
+					NStr("en='Period of changing data from %3 to %4 expired on %2';ru='Срок возможности изменения данных с %3 по %4 истек %2'");
 			Else
 				If CalculateProhibitionDate Then
 					Context.ProhibitionDate = CalculatedProhibitionDates.Previous;
 				EndIf;
 				LabelText = Chars.LF +
-					NStr("en='To %2 change of data is possible from %3 to %4';ru='По %2 возможно изменение данных с %3 по %4'") + Chars.LF +
-					NStr("en='After %2 change of data will be forbidden to %4';ru='После %2 будет запрещено изменение данных по %4'") + Chars.LF;
+					NStr("en='For %2 data might change from %3 to %4';ru='По %2 возможно изменение данных с %3 по %4'") + Chars.LF +
+					NStr("en='After %2 it will be prohibited to change %4 data';ru='После %2 будет запрещено изменение данных по %4'") + Chars.LF;
 			EndIf;
 		Else
 			Context.Items.PropertyPermissionDaysCountChanges.CurrentPage = Context.Items.DataChangingBeforeProhibitionDateIsNotAllowed;
@@ -4020,7 +4020,7 @@ Procedure CommonProhibitionDateWithDescriptionOnChange(Val Context, CalculatePro
 		EndIf;
 		Context.Items.AutomaticalDateExplanation.Title =
 			StringFunctionsClientServer.SubstituteParametersInString(
-				NStr("en='Change of data is forbidden to %1';ru='Запрещено изменение данных по %1'") + LabelText,
+				NStr("en='Changing of data on %1 is prohibited';ru='Запрещено изменение данных по %1'") + LabelText,
 				Format(Context.ProhibitionDate, "DLF=D"),
 				Format(PermissionTerm, "DLF=D"),
 				Format(CalculatedProhibitionDates.Previous + TwentyFourHours, "DLF=D"),
@@ -4099,12 +4099,12 @@ EndProcedure
 Function DescriptionsProhibitionDateList()
 	
 	List = New ValueList;
-	List.Add("",                "(" + NStr("en='By default';ru='По умолчанию'") + ")");
-	List.Add("Custom",      NStr("en='Arbitrary date';ru='Произвольная дата'"));
+	List.Add("",                "(" + NStr("en='Default';ru='По умолчанию'") + ")");
+	List.Add("Custom",      NStr("en='Custom date';ru='Произвольная дата'"));
 	List.Add("LastYearEnd",     NStr("en='Last year end';ru='Конец прошлого года'"));
-	List.Add("LastQuarterEnd", NStr("en='End of the last quarter';ru='Конец прошлого квартала'"));
-	List.Add("LastMonthEnd",   NStr("en='End of the last month';ru='Конец прошлого месяца'"));
-	List.Add("LastWeekEnd",    NStr("en='End of the last week';ru='Конец прошлой недели'"));
+	List.Add("LastQuarterEnd", NStr("en='Last quarter end';ru='Конец прошлого квартала'"));
+	List.Add("LastMonthEnd",   NStr("en='Last month end';ru='Конец прошлого месяца'"));
+	List.Add("LastWeekEnd",    NStr("en='Last week end';ru='Конец прошлой недели'"));
 	List.Add("PreviousDay",        NStr("en='Previous day';ru='Предыдущий день'"));
 	
 	Return List;
@@ -4146,7 +4146,7 @@ EndFunction
 &AtClientAtServerNoContext
 Function CommentTextForAllUsers()
 	
-	Return "(" + NStr("en='By default';ru='По умолчанию'") + ")";
+	Return "(" + NStr("en='Default';ru='По умолчанию'") + ")";
 	
 EndFunction
 
@@ -4181,14 +4181,14 @@ EndFunction
 &AtClientAtServerNoContext
 Function QuestionTextRecalculateProhibitionDates()
 	
-	Return NStr("en='Do you want to clear the unfilled rows and recalculate the relative prohibition dates?';ru='Очистить незаполненные строки и пересчитать относительные даты запрета?'");
+	Return NStr("en='Clear the unfilled lines and recalculate relative closing dates?';ru='Очистить незаполненные строки и пересчитать относительные даты запрета?'");
 	
 EndFunction
 
 &AtClientAtServerNoContext
 Function QuestionTextUpdateData()
 	
-	Return NStr("en='Update the data?';ru='Обновить данные?'");
+	Return NStr("en='Update data?';ru='Обновить данные?'");
 	
 EndFunction
 
@@ -4196,7 +4196,7 @@ EndFunction
 Function QuestionTextDeleteAllProhibitionDatesExceptDatesForAllUsers()
 	
 	Return StringFunctionsClientServer.SubstituteParametersInString(
-		NStr("en='Delete all prohibition dates except specified %1?';ru='Удалить все даты запрета, кроме установленных %1?'"),
+		NStr("en='Delete all closing dates except for the set ones %1?';ru='Удалить все даты запрета, кроме установленных %1?'"),
 		ValueForAllUsers);
 	
 EndFunction
@@ -4204,7 +4204,7 @@ EndFunction
 &AtClientAtServerNoContext
 Function QuestionTextDeleteAllProhibitionDates()
 	
-	Return NStr("en='Delete all the prohibition dates?';ru='Удалить все даты запрета?'");
+	Return NStr("en='Delete all closing dates?';ru='Удалить все даты запрета?'");
 	
 EndFunction
 
@@ -4212,7 +4212,7 @@ EndFunction
 Function MessageTextValueForAllUsersNotChange()
 	
 	Return StringFunctionsClientServer.SubstituteParametersInString(
-		NStr("en='Value %1 does not change.';ru='Значение %1 не изменяется.'"),
+		NStr("en='Value %1 is not being changed.';ru='Значение %1 не изменяется.'"),
 		PresentationTextForAllUsers(ThisObject));
 	
 EndFunction
@@ -4221,7 +4221,7 @@ EndFunction
 Function MessageTextCommentForAllUsersNotChange()
 	
 	Return StringFunctionsClientServer.SubstituteParametersInString(
-		NStr("en='Comment %1 does not change.';ru='Комментарий %1 не изменяется.'"),
+		NStr("en='Comment %1 cannot be changed.';ru='Комментарий %1 не изменяется.'"),
 		PresentationTextForAllUsers(ThisObject));
 	
 EndFunction
@@ -4229,7 +4229,7 @@ EndFunction
 &AtClientAtServerNoContext
 Function MessageTextFirstSelectUser()
 	
-	Return NStr("en='Select the user first.';ru='Сначала выберите пользователя.'");
+	Return NStr("en='Select user first.';ru='Сначала выберите пользователя.'");
 	
 EndFunction
 
@@ -4275,14 +4275,14 @@ EndFunction
 &AtClientAtServerNoContext
 Function QuestionTextClearBlankRows()
 	
-	Return NStr("en='Clear unfilled rows?';ru='Очистить незаполненные строки?'");
+	Return NStr("en='Clear unfilled lines?';ru='Очистить незаполненные строки?'");
 	
 EndFunction
 
 &AtClientAtServerNoContext
 Function MessageTextForDeletingSelectOneRow()
 	
-	Return NStr("en='For removing select one row';ru='Для удаления выделите одну строку.'");
+	Return NStr("en='Mark one line for deletion.';ru='Для удаления выделите одну строку.'");
 	
 EndFunction
 
@@ -4290,42 +4290,42 @@ EndFunction
 Function QuestionTextDeleteProhibitionDatesForAllUsers()
 	
 	Return StringFunctionsClientServer.SubstituteParametersInString(
-		NStr("en='Delete prohibition dates %1?';ru='Удалить даты запрета %1?'"), Lower(ValueForAllUsers));
+		NStr("en='Delete the %1 closing dates?';ru='Удалить даты запрета %1?'"), Lower(ValueForAllUsers));
 	
 EndFunction
 
 &AtClientAtServerNoContext
 Function QuestionTextDeleteProhibitionDatesForUser()
 	
-	Return NStr("en='Delete prohibition dates for user?';ru='Удалить даты запрета для пользователя?'");
+	Return NStr("en='Delete closing dates for a user?';ru='Удалить даты запрета для пользователя?'");
 	
 EndFunction
 
 &AtClientAtServerNoContext
 Function QuestionTextDeleteProhibitionDatesForUsersGroups()
 	
-	Return NStr("en='Delete prohibition dates for users group?';ru='Удалить даты запрета для группы пользователей?'");
+	Return NStr("en='Delete closing dates for a user group?';ru='Удалить даты запрета для группы пользователей?'");
 	
 EndFunction
 
 &AtClientAtServerNoContext
 Function QuestionTextDeleteProhibitionDatesForExternalUser()
 	
-	Return NStr("en='Delete prohibition dates for external user?';ru='Удалить даты запрета для внешнего пользователя?'");
+	Return NStr("en='Delete closing dates for an external user?';ru='Удалить даты запрета для внешнего пользователя?'");
 	
 EndFunction
 
 &AtClientAtServerNoContext
 Function QuestionTextDeleteProhibitionDatesForExternalUsersGroups()
 	
-	Return NStr("en='Delete the prohibition dates from the external users group?';ru='Удалить даты запрета для группы внешних пользователей?'");
+	Return NStr("en='Delete closing dates for external users group?';ru='Удалить даты запрета для группы внешних пользователей?'");
 	
 EndFunction
 
 &AtClientAtServerNoContext
 Function QuestionTextDeleteProhibitionDates()
 	
-	Return NStr("en='Delete the prohibition dates?';ru='Удалить даты запрета?'");
+	Return NStr("en='Remove closing dates?';ru='Удалить даты запрета?'");
 	
 EndFunction
 
@@ -4333,56 +4333,56 @@ EndFunction
 Function MessageTextForAllUsersProhibitionDatesIsNotSet()
 	
 	Return StringFunctionsClientServer.SubstituteParametersInString(
-		NStr("en='%1 prohibition dates are not set.';ru='%1 даты запрета не установлены.'"), ValueForAllUsers);
+		NStr("en='%1 closing dates are not set.';ru='%1 даты запрета не установлены.'"), ValueForAllUsers);
 	
 EndFunction
 
 &AtClientAtServerNoContext
 Function MessageTextValueAlreadyAddedToList()
 	
-	Return NStr("en='The value has been already added to the list.';ru='Значение уже добавлено в список.'");
+	Return NStr("en='The value has already been added to the list.';ru='Значение уже добавлено в список.'");
 	
 EndFunction
 
 &AtClientAtServerNoContext
 Function MessageTextUpdateFormF5Data()
 	
-	Return NStr("en='Update the form data (F5).';ru='Обновите данные формы (F5).'");
+	Return NStr("en='Update form data (F5).';ru='Обновите данные формы (F5).'");
 	
 EndFunction
 
 &AtClientAtServerNoContext
 Function QuestionTextDeleteProhibitionDatesForSectionsAndObjects()
 	
-	Return NStr("en='Delete prohibition dates for sections and objects?';ru='Удалить даты запрета для разделов и объектов?'");
+	Return NStr("en='Delete closing dates for sections and objects?';ru='Удалить даты запрета для разделов и объектов?'");
 	
 EndFunction
 
 &AtClientAtServerNoContext
 Function QuestionTextDeleteProhibitionDatesForObjects()
 	
-	Return NStr("en='Delete prohibition dates for objects?';ru='Удалить даты запрета для объектов?'");
+	Return NStr("en='Delete closing dates for objects?';ru='Удалить даты запрета для объектов?'");
 	
 EndFunction
 
 &AtClientAtServerNoContext
 Function QuestionTextDeleteProhibitionDatesForSections()
 	
-	Return NStr("en='Delete prohibition dates for sections?';ru='Удалить даты запрета для разделов?'");
+	Return NStr("en='Delete closing dates for sections?';ru='Удалить даты запрета для разделов?'");
 	
 EndFunction
 
 &AtClientAtServerNoContext
 Function MessageTextInSelectedSectionProhibitionDatesForObjectNotSet()
 	
-	Return NStr("en='In the selected section the prohibition dates for the objects do not have to be set.';ru='В выбранном разделе даты запрета для объектов не устанавливаются.'");
+	Return NStr("en='Closing dates for objects are not set in the selected section.';ru='В выбранном разделе даты запрета для объектов не устанавливаются.'");
 	
 EndFunction
 
 &AtClientAtServerNoContext
 Function MessageTextCommonDateCanBeSet()
 	
-	Return NStr("en='<Common Date> can be installed.';ru='<Общая дата> может быть установлена.'");
+	Return NStr("en='<Common date> can be set.';ru='<Общая дата> может быть установлена.'");
 	
 EndFunction
 
@@ -4420,35 +4420,35 @@ EndFunction
 &AtClientAtServerNoContext
 Function MessageTextFirstSelectObject()
 	
-	Return NStr("en='Select an object first';ru='Сначала выберите объект.'");
+	Return NStr("en='Select object first.';ru='Сначала выберите объект.'");
 	
 EndFunction
 
 &AtClientAtServerNoContext
 Function QuestionTextDeleteProhibitionDatesForSectionAndObjects()
 	
-	Return NStr("en='Delete prohibition dates for sections and objects?';ru='Удалить даты запрета для разделов и объектов?'");
+	Return NStr("en='Delete closing dates for sections and objects?';ru='Удалить даты запрета для разделов и объектов?'");
 	
 EndFunction
 
 &AtClientAtServerNoContext
 Function QuestionTextDeleteProhibitionDatesForSection()
 	
-	Return NStr("en='Delete prohibition date for the section?';ru='Удалить дату запрета для раздела?'");
+	Return NStr("en='Delete a closing date for a section?';ru='Удалить дату запрета для раздела?'");
 	
 EndFunction
 
 &AtClientAtServerNoContext
 Function QuestionTextDeleteCommonProhibitionDate()
 	
-	Return NStr("en='Delete the common prohibition date?';ru='Удалить общую дату запрета?'");
+	Return NStr("en='Delete common closing date?';ru='Удалить общую дату запрета?'");
 	
 EndFunction
 
 &AtClientAtServerNoContext
 Function QuestionTextDeleteObjectProhibitionDate()
 	
-	Return NStr("en='Delete ban date for an object?';ru='Удалить дату запрета для объекта?'");
+	Return NStr("en='Delete a closing date for an object?';ru='Удалить дату запрета для объекта?'");
 	
 EndFunction
 
@@ -4456,14 +4456,14 @@ EndFunction
 Function MessageTextForAllUsersSectionsAlwaysShow()
 	
 	Return StringFunctionsClientServer.SubstituteParametersInString(
-		NStr("en='%1 sections always shown.';ru='%1 разделы всегда показываются.'"), ValueForAllUsers);
+		NStr("en='%1 sections are always shown.';ru='%1 разделы всегда показываются.'"), ValueForAllUsers);
 	
 EndFunction
 
 &AtClientAtServerNoContext
 Function MessageTextWhenDeletingProhibitionDateCleared()
 	
-	Return NStr("en='When deleting prohibition date is cleared.';ru='При удалении дата запрета очищается.'");
+	Return NStr("en='On deletion, closing date is cleared.';ru='При удалении дата запрета очищается.'");
 	
 EndFunction
 
@@ -4471,7 +4471,7 @@ EndFunction
 Function MessageTextForAllUsersCommonDateAlwaysShow()
 	
 	Return StringFunctionsClientServer.SubstituteParametersInString(
-		NStr("en='%1 <Common date> always shown.';ru='%1 <Общая дата> всегда показывается.'"), ValueForAllUsers);
+		NStr("en='%1 <Common date> is always shown.';ru='%1 <Общая дата> всегда показывается.'"), ValueForAllUsers);
 	
 EndFunction
 
@@ -4492,14 +4492,14 @@ EndFunction
 &AtClientAtServerNoContext
 Function MessageTextNotEnoughRightsForChoiceOfExternalUsers()
 	
-	Return NStr("en='Insufficient rights to select the external users.';ru='Недостаточно прав для выбора внешних пользователей.'");
+	Return NStr("en='Insufficient rights to select external users.';ru='Недостаточно прав для выбора внешних пользователей.'");
 	
 EndFunction
 
 &AtClientAtServerNoContext
 Function TitleTextChoiceDataType()
 	
-	Return NStr("en='Data type choice';ru='Выбор типа данных'");
+	Return NStr("en='Select data type';ru='Выбор типа данных'");
 	
 EndFunction
 
@@ -4507,66 +4507,66 @@ EndFunction
 Function MessageTextSettingsWithUnselectedUsersNotSaved(Context)
 	
 	If Context.Parameters.DataImportingProhibitionDates Then
-		Return NStr("en='Settings with unselected infobases have not been saved.';ru='Настройки с невыбранными информационными базами не сохранены.'");
+		Return NStr("en='Settings with unselected infobases are not saved.';ru='Настройки с невыбранными информационными базами не сохранены.'");
 	EndIf;
 	
-	Return NStr("en='Settings with unselected users have not been saved.';ru='Настройки с невыбранными пользователями не сохранены.'");
+	Return NStr("en='Settings with unselected users are not saved.';ru='Настройки с невыбранными пользователями не сохранены.'");
 	
 EndFunction
 
 &AtClientAtServerNoContext
 Function MessageTextSettingsWithUnselectedObjectsNotSaved()
 	
-	Return NStr("en='Settings with unselected objects are not saved';ru='Настройки с невыбранными объектами не сохранены.'");
+	Return NStr("en='Settings with unselected objects are not saved.';ru='Настройки с невыбранными объектами не сохранены.'");
 	
 EndFunction
 
 &AtClientAtServerNoContext
 Function MessageTextSettingsWithUnfilledProhibitionDatesForObjectsNotSaved()
 	
-	Return NStr("en='The settings with the blank prohibition dates for the objects have not been saved.';ru='Настройки с незаполненными датами запрета для объектов не сохранены.'");
+	Return NStr("en='Settings with unfilled closing dates for objects are not saved.';ru='Настройки с незаполненными датами запрета для объектов не сохранены.'");
 	
 EndFunction
 
 &AtClientAtServerNoContext
 Function MessageTextSettingsWithUnfilledProhibitionDatesForSectionsNotSaved()
 	
-	Return NStr("en='The settings with the blank prohibition dates for the sections have not been saved.';ru='Настройки с незаполненными датами запрета для разделов не сохранены.'");
+	Return NStr("en='Settings with unfilled closing dates for sections are not saved.';ru='Настройки с незаполненными датами запрета для разделов не сохранены.'");
 	
 EndFunction
 
 &AtClientAtServerNoContext
 Function MessageTextCommonDateAlreadyShown()
 	
-	Return NStr("en='<Common date> is already displayed.';ru='<Общая дата> уже показана.'");
+	Return NStr("en='<Common date> is already shown.';ru='<Общая дата> уже показана.'");
 	
 EndFunction
 
 &AtClientAtServerNoContext
 Function MessageTextAllSectionsAlreadyShown()
 	
-	Return NStr("en='All the sections are already displayed.';ru='Все разделы уже показаны.'");
+	Return NStr("en='All sections are already shown.';ru='Все разделы уже показаны.'");
 	
 EndFunction
 
 &AtClientAtServerNoContext
 Function TitleChoiceOfRequiredSections()
 	
-	Return NStr("en='Choice of required sections';ru='Выбор требуемых разделов'");
+	Return NStr("en='Select required sections';ru='Выбор требуемых разделов'");
 	
 EndFunction
 
 &AtClientAtServerNoContext
 Function MessageTextUnfilledRowsAreUnmarked()
 	
-	Return NStr("en='Blank rows unmarked.';ru='Снято выделение с незаполненных строк.'");
+	Return NStr("en='Unfilled rows are unchecked.';ru='Снято выделение с незаполненных строк.'");
 	
 EndFunction
 
 &AtClientAtServerNoContext
 Function MessageTextSelectedStringsNotFilledIn()
 	
-	Return NStr("en='The selected rows are not filled.';ru='Выделенные строки не заполнены.'");
+	Return NStr("en='The selected lines are not filled in.';ru='Выделенные строки не заполнены.'");
 	
 EndFunction
 

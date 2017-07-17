@@ -74,7 +74,7 @@ Procedure ApplyChangesPermissionsInSecurityProfilesOnServerCluster(Val Operation
 			If ClusterAdministrationClientServer.SecurityProfileExists(ClusterAdministrationParameters, ScriptItem.Profile) Then
 				
 				CommonUseClientServer.MessageToUser(
-					StringFunctionsClientServer.SubstituteParametersInString(NStr("en='Security profile %1 already exists in the servers cluster. Profile security settings will replaced...';ru='Профиль безопасности %1 уже присутствует в кластере серверов. Настройки в профиле безопасности будут замещены...'"), ScriptItem.Profile));
+					StringFunctionsClientServer.SubstituteParametersInString(NStr("en='Security profile %1 already exists in the server cluster. Settings in the security profile will be replaced...';ru='Профиль безопасности %1 уже присутствует в кластере серверов. Настройки в профиле безопасности будут замещены...'"), ScriptItem.Profile));
 				
 				ClusterAdministrationClientServer.SetSecurityProfileProperties(ClusterAdministrationParameters, ScriptItem.permissions);
 				
@@ -101,7 +101,7 @@ Procedure ApplyChangesPermissionsInSecurityProfilesOnServerCluster(Val Operation
 			Else
 				
 				CommonUseClientServer.MessageToUser(
-					StringFunctionsClientServer.SubstituteParametersInString(NStr("en='Security profile %1 do not exists in cluster servers. Perhaps the security profile was deleted previously...';ru='Профиль безопасности %1 отсутствует в кластере серверов. Возможно, профиль безопасности был удален ранее...'"), ScriptItem.Profile));
+					StringFunctionsClientServer.SubstituteParametersInString(NStr("en='Security profile %1 does not exist in the server cluster. Security profile might have been deleted earlier...';ru='Профиль безопасности %1 отсутствует в кластере серверов. Возможно, профиль безопасности был удален ранее...'"), ScriptItem.Profile));
 				
 			EndIf;
 			
@@ -325,8 +325,8 @@ Procedure AfterCompletingPermissionsQueryForExternalResourcesUsing(Result, Statu
 	
 	If Result = DialogReturnCode.OK Then
 		
-		ShowUserNotification(NStr("en='Permissions setting';ru='Настройка разрешений'"),,
-			NStr("en='Security profiles settings in the servers cluster are changed.';ru='Внесены изменения в настройки профилей безопасности в кластере серверов.'"));
+		ShowUserNotification(NStr("en='Set permissions';ru='Настройка разрешений'"),,
+			NStr("en='Changes made to security profile settings in server cluster.';ru='Внесены изменения в настройки профилей безопасности в кластере серверов.'"));
 		
 		CompletePermissionsSettingOnUseExternalResourcesAsynchronously(Status.NotifyDescription);
 		

@@ -59,7 +59,7 @@ EndProcedure
 Procedure BeforeClose(Cancel, StandardProcessing)
 	
 	If EDExchangeInitialSetup Then
-		QuestionText = NStr("en='Do you want to enable the counterparty to exchange electronic documents?';ru='Подключить контрагента к обмену электронными документами?'");
+		QuestionText = NStr("en='Connect the counterparty to electronic document exchange?';ru='Подключить контрагента к обмену электронными документами?'");
 		NotifyDescription = New NotifyDescription("ContinueBeforeClosing", ThisObject);
 		ShowQueryBox(NOTifyDescription, QuestionText, QuestionDialogMode.YesNo, , DialogReturnCode.Yes);
 		Cancel = True;
@@ -178,7 +178,7 @@ Procedure InscriptionPrivateOfficeExchangeEDMemberPress(Item)
 	// registered with the EDF operator You can access your personal area by the current or the first certificate
 	
 	If Object.CompanySignatureCertificates.Count() = 0 Then
-		WarningText = NStr("en='To enter the private office at least one certificate must be registered';ru='Для входа в личный кабинет должен быть зарегистрирован хотя бы один сертификат'");
+		WarningText = NStr("en='To log on to the personal account, at least one certificate must be registered';ru='Для входа в личный кабинет должен быть зарегистрирован хотя бы один сертификат'");
 		ShowMessageBox(, WarningText, 30);
 		Return;
 	EndIf;
@@ -201,7 +201,7 @@ Procedure InvitationsTextStartChoice(Item, ChoiceData, StandardProcessing)
 	StandardProcessing = False;
 	
 	Notification = New NotifyDescription("EndInvitationTextEditing", ThisObject);
-	FormTitle = NStr("en='Text pattern for counterparty invitations';ru='Шаблон текста для приглашений контрагентов'");
+	FormTitle = NStr("en='Text template for counterparty invitations';ru='Шаблон текста для приглашений контрагентов'");
 	CommonUseClient.ShowMultilineTextEditingForm(
 		Notification, Items.InvitationsText.EditText, FormTitle);
 	
@@ -501,7 +501,7 @@ EndProcedure
 Procedure OpenChoiceFormDSCertificate()
 	
 	If Object.DeletionMark Then
-		MessageText = NStr("en='To perform an action it is required to uncheck the deletion mark.';ru='Для выполнения действия необходимо снять пометку удаления.'");
+		MessageText = NStr("en='Clear the deletion mark to perform the action.';ru='Для выполнения действия необходимо снять пометку удаления.'");
 		CommonUseClientServer.MessageToUser(MessageText);
 		Return;
 	EndIf;
@@ -552,7 +552,7 @@ Procedure CompleteSettingsProfileTest(Val Result, Val AdditionalParameters) Expo
 	If Object.EDExchangeMethod = PredefinedValue("Enum.EDExchangeMethods.ThroughEMail") Then
 		Status(NStr("en='Settings test.';ru='Тест настроек.'"),
 			,
-			NStr("en='Testing ED exchange through electronic mail. Please wait...';ru='Выполняется тестирование обмена ЭД через электронную почту. Пожалуйста, подождите..'"));
+			NStr("en='Testing ED exchange via email. Please wait...';ru='Выполняется тестирование обмена ЭД через электронную почту. Пожалуйста, подождите..'"));
 			
 		UserAccount = Object.IncomingDocumentsResource;
 		
@@ -570,7 +570,7 @@ Procedure CompleteSettingsProfileTest(Val Result, Val AdditionalParameters) Expo
 	If Object.EDExchangeMethod = PredefinedValue("Enum.EDExchangeMethods.ThroughDirectory") Then
 		Status(NStr("en='Settings test.';ru='Тест настроек.'"),
 			,
-			NStr("en='Testing ED exchange through directory. Please wait...';ru='Выполняется тестирование обмена ЭД через каталог. Пожалуйста, подождите..'"));
+			NStr("en='Testing ED exchange via directory. Please wait...';ru='Выполняется тестирование обмена ЭД через каталог. Пожалуйста, подождите..'"));
 		
 		PathToParentDirectoryEDFProfileSettings = Object.IncomingDocumentsResource;
 		
@@ -599,7 +599,7 @@ Procedure CompleteSettingsProfileTest(Val Result, Val AdditionalParameters) Expo
 	If Object.EDExchangeMethod = PredefinedValue("Enum.EDExchangeMethods.ThroughFTP") Then
 		Status(NStr("en='Settings test.';ru='Тест настроек.'"),
 			,
-			NStr("en='Testing ED exchange through FTP. Please wait...';ru='Выполняется тестирование обмена ЭД через FTP. Пожалуйста, подождите..'"));
+			NStr("en='Testing ED exchange via FTP. Please wait...';ru='Выполняется тестирование обмена ЭД через FTP. Пожалуйста, подождите..'"));
 		
 		PathToParentDirectoryEDFProfileSettings = Object.IncomingDocumentsResource;
 		
@@ -659,7 +659,7 @@ Procedure AfterGettingYourPrintsValidateCertificates(Prints, Parameters = Undefi
 	If ValueIsFilled(Certificate) Then
 		ElectronicDocumentsServiceClient.CertificateValidationSettingsTest(Certificate, , ForAuthorization, ThisForm);
 	ElsIf ForAuthorization Then
-		MessageText = NStr("en='There are no available certificates. Test not executed.';ru='Нет доступных сертификатов. Тест не выполнен.'");
+		MessageText = NStr("en='No available certificates. Test canceled.';ru='Нет доступных сертификатов. Тест не выполнен.'");
 		CommonUseClientServer.MessageToUser(MessageText);
 	EndIf;
 	
@@ -731,7 +731,7 @@ Procedure GoToPersonalAreaAlert(Result, AdditionalParameters) Export
 	If Result.Property("ProfilesAndCertificatesParametersMatch", ProfilesAndCertificatesParametersMatch)
 		AND Not ValueIsFilled(ProfilesAndCertificatesParametersMatch) Then
 		
-		MessageText = NStr("en='No available certificates among the registered in this EDF settings profile.';ru='Нет доступных сертификатов, среди зарегистрированных по данному профилю настроек ЭДО.'");
+		MessageText = NStr("en='No available certificates among the registered ones in this EDF settings profile.';ru='Нет доступных сертификатов, среди зарегистрированных по данному профилю настроек ЭДО.'");
 		CommonUseClientServer.MessageToUser(MessageText,
 			,
 			"CompanySignatureCertificates",

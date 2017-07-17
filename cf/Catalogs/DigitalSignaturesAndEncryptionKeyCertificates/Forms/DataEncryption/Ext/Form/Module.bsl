@@ -287,7 +287,7 @@ Procedure FillEncryptionCertificatesFromSet(CertificatesSetDescription)
 			CertificateData = Selection.CertificateData.Get();
 			If TypeOf(CertificateData) <> Type("BinaryData") Then
 				Raise StringFunctionsClientServer.SubstituteParametersInString(
-					NStr("en='""%1"" certificate data was not found in the catalog';ru='Данные сертификата ""%1"" не найдены в справочнике'"), Selection.Presentation);
+					NStr("en='The ""%1"" certificate data is not found in catalog';ru='Данные сертификата ""%1"" не найдены в справочнике'"), Selection.Presentation);
 			EndIf;
 			Try
 				CryptoCertificate = New CryptoCertificate(CertificateData);
@@ -638,7 +638,7 @@ Function CertificatesProperties(Val Refs, Val FormID)
 		CertificateData = Selection.CertificateData.Get();
 		If TypeOf(CertificateData) <> Type("BinaryData") Then
 			Raise StringFunctionsClientServer.SubstituteParametersInString(
-				NStr("en='""%1"" certificate data was not found in the catalog';ru='Данные сертификата ""%1"" не найдены в справочнике'"), Selection.Description);
+				NStr("en='The ""%1"" certificate data is not found in catalog';ru='Данные сертификата ""%1"" не найдены в справочнике'"), Selection.Description);
 		EndIf;
 		
 		Try
@@ -721,7 +721,7 @@ Procedure WriteEncryptionCertificatesAtServer(ObjectsDescription, CertificatesAd
 	Except
 		ErrorInfo = ErrorInfo();
 		RollbackTransaction();
-		Error.Insert("ErrorDescription", NStr("en='An error occurred when writing the encryption certificates:';ru='При записи сертификатов шифрования возникла ошибка:'")
+		Error.Insert("ErrorDescription", NStr("en='An error occurred when writing encryption certificates:';ru='При записи сертификатов шифрования возникла ошибка:'")
 			+ Chars.LF + BriefErrorDescription(ErrorInfo));
 	EndTry;
 	
@@ -736,7 +736,7 @@ Procedure ShowError(ErrorOnClient, ErrorOnServer)
 	EndIf;
 	
 	DigitalSignatureServiceClient.ShowRequestToApplicationError(
-		NStr("en='Failed to encrypt data';ru='Не удалось зашифровать данные'"), "",
+		NStr("en='Cannot encrypt data';ru='Не удалось зашифровать данные'"), "",
 		ErrorOnClient, ErrorOnServer, , ProcessingAfterWarning);
 	
 EndProcedure

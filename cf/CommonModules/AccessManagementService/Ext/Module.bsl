@@ -830,7 +830,7 @@ Procedure UpdateUsersRoles(Val Users1 = Undefined,
 						Profiles = UserProfilesWithRole(CurrentUser, String.Role);
 						For Each Profile IN Profiles Do
 							WriteLogEvent(
-								NStr("en='Access management. Role has not been found in metadata';ru='Управление доступом.Роль не найдена в метаданных'",
+								NStr("en='Access management.Role is not found in metadata';ru='Управление доступом.Роль не найдена в метаданных'",
 								     CommonUseClientServer.MainLanguageCode()),
 								EventLogLevel.Error,
 								,
@@ -1806,23 +1806,23 @@ Procedure DataFillingForAccessLimit(DataQuantity = 0, OnlyCacheAttributes = Fals
 	
 	If DataQuantity < 10000 Then
 		WriteLogEvent(
-			NStr("en='Acces management. Filling data for access restriction';ru='Управление доступом.Заполнение данных для ограничения доступа'",
+			NStr("en='Access management.Data population for access restriction';ru='Управление доступом.Заполнение данных для ограничения доступа'",
 				 CommonUseClientServer.MainLanguageCode()),
 			EventLogLevel.Information,
 			,
 			,
-			NStr("en='Data filling for the access restriction has been completed.';ru='Завершено заполнение данных для ограничения доступа.'"),
+			NStr("en='Data population for access restriction is completed.';ru='Завершено заполнение данных для ограничения доступа.'"),
 			EventLogEntryTransactionMode.Transactional);
 			
 		SetDataFillingForAccessRestriction(False);
 	Else
 		WriteLogEvent(
-			NStr("en='Acces management. Filling data for access restriction';ru='Управление доступом.Заполнение данных для ограничения доступа'",
+			NStr("en='Access management.Data population for access restriction';ru='Управление доступом.Заполнение данных для ограничения доступа'",
 				 CommonUseClientServer.MainLanguageCode()),
 			EventLogLevel.Information,
 			,
 			,
-			NStr("en='Data part for access restriction is written.';ru='Выполнена запись части данных для ограничения доступа.'"),
+			NStr("en='Part of data for access restriction is written.';ru='Выполнена запись части данных для ограничения доступа.'"),
 			EventLogEntryTransactionMode.Transactional);
 	EndIf;
 	
@@ -2343,12 +2343,12 @@ Procedure OnChangeLimitAccessOnRecordsLevel(RecordLevelSecurityEnabled) Export
 	If RecordLevelSecurityEnabled Then
 		
 		WriteLogEvent(
-			NStr("en='Acces management. Filling data for access restriction';ru='Управление доступом.Заполнение данных для ограничения доступа'",
+			NStr("en='Access management.Data population for access restriction';ru='Управление доступом.Заполнение данных для ограничения доступа'",
 			     CommonUseClientServer.MainLanguageCode()),
 			EventLogLevel.Information,
 			,
 			,
-			NStr("en='Data filling to restrict the access has been started.';ru='Начато заполнение данных для ограничения доступа.'"),
+			NStr("en='Data population for access restriction is started.';ru='Начато заполнение данных для ограничения доступа.'"),
 			EventLogEntryTransactionMode.Transactional);
 		
 		SetDataFillingForAccessRestriction(True);
@@ -3865,7 +3865,7 @@ Procedure FillParameters(InputParameters, Val AllParameters, Val MandatoryParame
 	For Each KeyAndValue IN Parameters Do
 		If Not AllParameters.Property(KeyAndValue.Key) Then
 			Raise StringFunctionsClientServer.SubstituteParametersInString(
-				NStr("en='%1 non-existent parameter is specified';ru='Указан несуществующий параметр %1'"), KeyAndValue.Key);
+				NStr("en='Non-existing parameter %1 is specified';ru='Указан несуществующий параметр %1'"), KeyAndValue.Key);
 		EndIf;
 		AllParameters[KeyAndValue.Key] = Parameters[KeyAndValue.Key];
 	EndDo;
@@ -3876,7 +3876,7 @@ Procedure FillParameters(InputParameters, Val AllParameters, Val MandatoryParame
 		For Each KeyAndValue IN MandatoryParameters Do
 			If Not Parameters.Property(KeyAndValue.Key) Then
 				Raise StringFunctionsClientServer.SubstituteParametersInString(
-					NStr("en='%1 mandatory parameter is not specified';ru='Не указан обязательный параметр %1'"), KeyAndValue.Key);
+					NStr("en='Required parameter %1 is not specified';ru='Не указан обязательный параметр %1'"), KeyAndValue.Key);
 			EndIf;
 		EndDo;
 	EndIf;
@@ -4935,19 +4935,19 @@ Procedure FillPresentationTableAllAllowedInForm(Form, IsProfile)
 	If IsProfile Then
 		String = Form.PresentationsAllAllowed.Add();
 		String.Name = "InitiallyAllProhibited";
-		String.Presentation = NStr("en='All prohibited, exclusions are set in access groups';ru='Все запрещены, исключения назначаются в группах доступа'");
+		String.Presentation = NStr("en='All prohibited, exceptions are assigned in access groups';ru='Все запрещены, исключения назначаются в группах доступа'");
 		
 		String = Form.PresentationsAllAllowed.Add();
 		String.Name = "InitiallyAllAllowed";
-		String.Presentation = NStr("en='All allowed, exclusions are set in access groups';ru='Все разрешены, исключения назначаются в группах доступа'");
+		String.Presentation = NStr("en='All permitted, exceptions are assigned in access groups';ru='Все разрешены, исключения назначаются в группах доступа'");
 		
 		String = Form.PresentationsAllAllowed.Add();
 		String.Name = "AllProhibited";
-		String.Presentation = NStr("en='All are prohibited, exclusions are assigned in the profile';ru='Все запрещены, исключения назначаются в профиле'");
+		String.Presentation = NStr("en='All prohibited, exceptions are assigned in a profile';ru='Все запрещены, исключения назначаются в профиле'");
 		
 		String = Form.PresentationsAllAllowed.Add();
 		String.Name = "AllAllowed";
-		String.Presentation = NStr("en='All are allowed, exclusions are assigned in the profile';ru='Все разрешены, исключения назначаются в профиле'");
+		String.Presentation = NStr("en='All permitted, exceptions are assigned in a profile';ru='Все разрешены, исключения назначаются в профиле'");
 	Else
 		String = Form.PresentationsAllAllowed.Add();
 		String.Name = "AllProhibited";

@@ -151,8 +151,8 @@ Procedure Initialization() Export
 	MessageSubject = StringFunctionsClientServer.SubstituteParametersInString(MessageSubject, MessageFileTemplateName);
 	
 	mBodyMessageIsSimple	= NStr("en='Data exchange message';ru='Сообщение обмена данными'");
-	mBodyMessageIsCompressed	= NStr("en='Data exchange compressed message';ru='Сжатое сообщение обмена данными'");
-	mBodyMessageIsBatched	= NStr("en='Burst data exchange message';ru='Пакетное сообщение обмена данными'");
+	mBodyMessageIsCompressed	= NStr("en='Compressed data exchange message';ru='Сжатое сообщение обмена данными'");
+	mBodyMessageIsBatched	= NStr("en='Package message of the data exchange';ru='Пакетное сообщение обмена данными'");
 	
 EndProcedure
 
@@ -404,7 +404,7 @@ Function GetExchangeMessage()
 		
 		GetMessageAboutError(104);
 		
-		MessageString = NStr("en='No message with header ""%1"" has been found';ru='Не обнаружены письма с заголовком: ""%1""'");
+		MessageString = NStr("en='Emails with title ""%1"" are not found';ru='Не обнаружены письма с заголовком: ""%1""'");
 		MessageString = StringFunctionsClientServer.SubstituteParametersInString(MessageString, MessageSubject);
 		SupplementErrorMessage(MessageString);
 		
@@ -553,23 +553,23 @@ Procedure ErrorMessagesInitialization()
 	ErrorMessages = New Map;
 	
 	// Common error codes
-	ErrorMessages.Insert(001, NStr("en='Exchange messages have not been found';ru='Не обнаружены сообщения обмена.'"));
-	ErrorMessages.Insert(002, NStr("en=""Error while unzipping message's zipped file"";ru='Ошибка при распаковке сжатого файла сообщения.'"));
-	ErrorMessages.Insert(003, NStr("en='Error while zipping the file of message exchange';ru='Ошибка при сжатии файла сообщения обмена.'"));
+	ErrorMessages.Insert(001, NStr("en='Exchange emails are not found.';ru='Не обнаружены сообщения обмена.'"));
+	ErrorMessages.Insert(002, NStr("en='An error occurred when unpacking a compressed message file.';ru='Ошибка при распаковке сжатого файла сообщения.'"));
+	ErrorMessages.Insert(003, NStr("en='An error occurred when compressing the exchange message file.';ru='Ошибка при сжатии файла сообщения обмена.'"));
 	ErrorMessages.Insert(004, NStr("ru = ""Error when creating temporary directory'."));
-	ErrorMessages.Insert(005, NStr("en='The archive does not contain the exchange file.';ru='Архив не содержит файл сообщения обмена.'"));
-	ErrorMessages.Insert(006, NStr("en='Exchange message is not sent: size limit has been exceeded.';ru='Сообщение обмена не отправлено: превышен допустимый размер сообщения.'"));
+	ErrorMessages.Insert(005, NStr("en='Archive does not include exchange message file.';ru='Архив не содержит файл сообщения обмена.'"));
+	ErrorMessages.Insert(006, NStr("en='Exchange message was not sent: allowed message size exceeded.';ru='Сообщение обмена не отправлено: превышен допустимый размер сообщения.'"));
 	
 	// Errors codes, that are dependent on the transport kind.
-	ErrorMessages.Insert(101, NStr("en='Error of initialization: no email record of exchange message transporting';ru='Ошибка инициализации: не указана учетная запись электронной почты транспорта сообщений обмена.'"));
-	ErrorMessages.Insert(102, NStr("en='Error while sending email message';ru='Ошибка при отправке сообщения электронной почты.'"));
-	ErrorMessages.Insert(103, NStr("en='Error while receiving the headings from the email server';ru='Ошибка при получении заголовков сообщений с сервера электронной почты.'"));
-	ErrorMessages.Insert(104, NStr("en='Exchange messages have not been found at the mail server';ru='Не обнаружены сообщения обмена на почтовом сервере.'"));
-	ErrorMessages.Insert(105, NStr("en='Error while receiving messages from the email server';ru='Ошибка при получении сообщения с сервера электронной почты.'"));
-	ErrorMessages.Insert(106, NStr("en='Error while recording file of the message exchange to disk';ru='Ошибка при записи файла сообщения обмена на диск.'"));
-	ErrorMessages.Insert(107, NStr("en='Verification parameters of the account record has  completed with errors';ru='Проверка параметров учетной записи завершилась с ошибками.'"));
-	ErrorMessages.Insert(108, NStr("en='Maximum size of the exchange message has been exceeded';ru='Превышен допустимый размер сообщения обмена.'"));
-	ErrorMessages.Insert(109, NStr("en='Error: file with message has not been found in the mail message';ru='Ошибка: в почтовом сообщении не найден файл с сообщением.'"));
+	ErrorMessages.Insert(101, NStr("en='Initialization error: email account of the exchange message transport is not specified.';ru='Ошибка инициализации: не указана учетная запись электронной почты транспорта сообщений обмена.'"));
+	ErrorMessages.Insert(102, NStr("en='An error occurred when sending the email.';ru='Ошибка при отправке сообщения электронной почты.'"));
+	ErrorMessages.Insert(103, NStr("en='An error occurred when getting message titles from the email server.';ru='Ошибка при получении заголовков сообщений с сервера электронной почты.'"));
+	ErrorMessages.Insert(104, NStr("en='Exchange emails are not found on email server.';ru='Не обнаружены сообщения обмена на почтовом сервере.'"));
+	ErrorMessages.Insert(105, NStr("en='An error occurred when receiving a message from the email server.';ru='Ошибка при получении сообщения с сервера электронной почты.'"));
+	ErrorMessages.Insert(106, NStr("en='An error occurred when writing the exchange message file to the disk.';ru='Ошибка при записи файла сообщения обмена на диск.'"));
+	ErrorMessages.Insert(107, NStr("en='Account parameter check is completed with errors.';ru='Проверка параметров учетной записи завершилась с ошибками.'"));
+	ErrorMessages.Insert(108, NStr("en='Exchange message size exceeds the allowable limit.';ru='Превышен допустимый размер сообщения обмена.'"));
+	ErrorMessages.Insert(109, NStr("en='Error: a file with message is not found in the mail message.';ru='Ошибка: в почтовом сообщении не найден файл с сообщением.'"));
 	
 EndProcedure
 

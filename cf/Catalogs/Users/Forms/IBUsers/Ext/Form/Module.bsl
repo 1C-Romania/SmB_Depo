@@ -11,7 +11,7 @@ Procedure OnCreateAtServer(Cancel, StandardProcessing)
 	EndIf;
 	
 	If Not Users.InfobaseUserWithFullAccess(, CommonUseReUse.ApplicationRunningMode().Local) Then
-		Raise NStr("en='The rights are not sufficient to open the infobase user list.';ru='Недостаточно прав для открытия списка пользователей информационной базы.'");
+		Raise NStr("en='Insufficient rights to open infobase user list.';ru='Недостаточно прав для открытия списка пользователей информационной базы.'");
 	EndIf;
 	
 	Users.FindAmbiguousInfobaseUsers(,);
@@ -135,7 +135,7 @@ Procedure CancelMapping(Command)
 	EndIf;
 	
 	Buttons = New ValueList;
-	Buttons.Add("CancelMapping", NStr("en='Cancel mapping';ru='Отменить сопоставление'"));
+	Buttons.Add("CancelMapping", NStr("en='Clear mapping';ru='Отменить сопоставление'"));
 	Buttons.Add("LeaveCompliance", NStr("en='Leave mapping';ru='Оставить сопоставление'"));
 	
 	ShowQueryBox(
@@ -410,7 +410,7 @@ Procedure DeleteCurrentIBUser(DeleteLine = False)
 	
 	ShowQueryBox(
 		New NotifyDescription("DeleteCurrentIBUserEnd", ThisObject, DeleteLine),
-		NStr("en='Delete the infobase user?';ru='Удалить пользователя информационной базы?'"),
+		NStr("en='Delete infobase user?';ru='Удалить пользователя информационной базы?'"),
 		QuestionDialogMode.YesNo);
 	
 EndProcedure
@@ -436,7 +436,7 @@ Procedure MapIBUser(WithNew = False)
 	If UserTypes.Count() > 1 Then
 		UserTypes.ShowChooseItem(
 			New NotifyDescription("MapIBUserForPointType", ThisObject, WithNew),
-			NStr("en='Data type choice';ru='Выбор типа данных'"),
+			NStr("en='Select data type';ru='Выбор типа данных'"),
 			UserTypes[0]);
 	Else
 		MapIBUserForPointType(UserTypes[0], WithNew);

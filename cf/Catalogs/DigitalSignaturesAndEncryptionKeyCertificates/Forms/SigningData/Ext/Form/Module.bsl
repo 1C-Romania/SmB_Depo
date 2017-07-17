@@ -506,7 +506,7 @@ Procedure ShowError(ErrorOnClient, ErrorOnServer)
 	EndIf;
 	
 	DigitalSignatureServiceClient.ShowRequestToApplicationError(
-		NStr("en='Failed to sign data';ru='Не удалось подписать данные'"), "",
+		NStr("en='Cannot sign data';ru='Не удалось подписать данные'"), "",
 		ErrorOnClient, ErrorOnServer, , ProcessingAfterWarning);
 	
 EndProcedure

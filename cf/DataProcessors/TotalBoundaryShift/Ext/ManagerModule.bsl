@@ -10,7 +10,7 @@ Procedure RunCommand(CommandParameters, StorageAddress) Export
 	StandardSubsystemsClientServer.DisplayNotification(
 		Result,
 		NStr("en='Application optimization';ru='Оптимизация программы'"),
-		NStr("en='is successfully completed';ru='успешно завершена'"),
+		NStr("en='completed';ru='успешно завершена'"),
 		PictureLib.Successfully32);
 	PutToTempStorage(Result, StorageAddress);
 EndProcedure

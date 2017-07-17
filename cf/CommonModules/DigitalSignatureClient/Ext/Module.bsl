@@ -670,7 +670,7 @@ Procedure Decrypt(DataDescription, Form = Undefined, ResultProcessing = Undefine
 	EndIf;
 	
 	ServerParameters = New Structure;
-	ServerParameters.Insert("Operation",            NStr("en='Decrypting data';ru='Расшифровка данных'"));
+	ServerParameters.Insert("Operation",            NStr("en='Data decryption';ru='Расшифровка данных'"));
 	ServerParameters.Insert("DataTitle",     NStr("en='Data';ru='Данные'"));
 	ServerParameters.Insert("FilterCertificates");
 	ServerParameters.Insert("EncryptionCertificates");
@@ -1039,15 +1039,15 @@ Procedure InformAboutSigningAnObject(DataPresentation, DataSet = False, FromFile
 	
 	If FromFile Then
 		If DataSet Then
-			MessageText = NStr("en='Signatures from files are added:';ru='Добавлены подписи из файлов:'");
+			MessageText = NStr("en='Signatures from files added:';ru='Добавлены подписи из файлов:'");
 		Else
-			MessageText = NStr("en='Signature from file is added:';ru='Добавлена подпись из файла:'");
+			MessageText = NStr("en='Signature from file added:';ru='Добавлена подпись из файла:'");
 		EndIf;
 	Else
 		If DataSet Then
-			MessageText = NStr("en='Signatures are set:';ru='Установлены подписи:'");
+			MessageText = NStr("en='Digitally signed:';ru='Установлены подписи:'");
 		Else
-			MessageText = NStr("en='Signature is set:';ru='Установлена подпись:'");
+			MessageText = NStr("en='Digitally signed:';ru='Установлена подпись:'");
 		EndIf;
 	EndIf;
 	
@@ -1065,7 +1065,7 @@ EndProcedure
 //
 Procedure InformAboutObjectEncryption(DataPresentation, DataSet = False) Export
 	
-	MessageText = NStr("en='Encryption is complete:';ru='Выполнено шифрование:'");
+	MessageText = NStr("en='Encrypted:';ru='Выполнено шифрование:'");
 	
 	ShowUserNotification(MessageText, , DataPresentation);
 	
@@ -1081,7 +1081,7 @@ EndProcedure
 //
 Procedure InformAboutObjectDecryption(DataPresentation, DataSet = False) Export
 	
-	MessageText = NStr("en='Decryption is executed:';ru='Выполнена расшифровка:'");
+	MessageText = NStr("en='Decrypted:';ru='Выполнена расшифровка:'");
 	
 	ShowUserNotification(MessageText, , DataPresentation);
 	

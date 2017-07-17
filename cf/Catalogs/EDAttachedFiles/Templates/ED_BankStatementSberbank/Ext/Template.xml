@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
 <document xmlns="http://v8.1c.ru/8.2/data/spreadsheet" xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
 	<languageSettings>
-		<currentLanguage>en</currentLanguage>
+		<currentLanguage>ru</currentLanguage>
 		<defaultLanguage>en</defaultLanguage>
 		<languageInfo>
 			<id>en</id>
@@ -82,6 +82,26 @@
 			<id>tr</id>
 			<code>Turkish</code>
 			<description>Turkish</description>
+		</languageInfo>
+		<languageInfo>
+			<id>hu</id>
+			<code>Hungarian</code>
+			<description>Hungarian</description>
+		</languageInfo>
+		<languageInfo>
+			<id>it</id>
+			<code>Italian</code>
+			<description>Italian</description>
+		</languageInfo>
+		<languageInfo>
+			<id>es</id>
+			<code>Spanish</code>
+			<description>Spanish</description>
+		</languageInfo>
+		<languageInfo>
+			<id>sv</id>
+			<code>Swedish</code>
+			<description>Swedish</description>
 		</languageInfo>
 	</languageSettings>
 	<columns>
@@ -525,7 +545,7 @@
 					<tl>
 						<v8:item>
 							<v8:lang>en</v8:lang>
-							<v8:content>Form No.01301</v8:content>
+							<v8:content>Form No. 01301</v8:content>
 						</v8:item>
 						<v8:item>
 							<v8:lang>ru</v8:lang>
@@ -569,7 +589,7 @@
 					<tl>
 						<v8:item>
 							<v8:lang>en</v8:lang>
-							<v8:content>EXTRACT FROM PERSONAL ACCOUNT</v8:content>
+							<v8:content>PERSONAL ACCOUNT STATEMENT</v8:content>
 						</v8:item>
 						<v8:item>
 							<v8:lang>ru</v8:lang>
@@ -621,7 +641,7 @@
 					<tl>
 						<v8:item>
 							<v8:lang>en</v8:lang>
-							<v8:content>For the period since [StartDate] till [EndDate]</v8:content>
+							<v8:content>For the period from [StartDate] to [EndDate]</v8:content>
 						</v8:item>
 						<v8:item>
 							<v8:lang>ru</v8:lang>
@@ -786,7 +806,7 @@
 					<tl>
 						<v8:item>
 							<v8:lang>en</v8:lang>
-							<v8:content>Date of the previous operation by account</v8:content>
+							<v8:content>Date of the previous account transaction</v8:content>
 						</v8:item>
 						<v8:item>
 							<v8:lang>ru</v8:lang>
@@ -829,7 +849,7 @@
 					<tl>
 						<v8:item>
 							<v8:lang>en</v8:lang>
-							<v8:content>Incoming balance</v8:content>
+							<v8:content>Opening balance</v8:content>
 						</v8:item>
 						<v8:item>
 							<v8:lang>ru</v8:lang>
@@ -845,7 +865,7 @@
 					<tl>
 						<v8:item>
 							<v8:lang>en</v8:lang>
-							<v8:content>passive</v8:content>
+							<v8:content>liabilities</v8:content>
 						</v8:item>
 						<v8:item>
 							<v8:lang>ru</v8:lang>
@@ -956,7 +976,7 @@
 					<tl>
 						<v8:item>
 							<v8:lang>en</v8:lang>
-							<v8:content>Num. doc.</v8:content>
+							<v8:content>Doc. No.</v8:content>
 						</v8:item>
 						<v8:item>
 							<v8:lang>ru</v8:lang>
@@ -971,7 +991,7 @@
 					<tl>
 						<v8:item>
 							<v8:lang>en</v8:lang>
-							<v8:content>Bank BIN corr.</v8:content>
+							<v8:content>Corr bank branch ID.</v8:content>
 						</v8:item>
 						<v8:item>
 							<v8:lang>ru</v8:lang>
@@ -1403,7 +1423,7 @@
 					<tl>
 						<v8:item>
 							<v8:lang>en</v8:lang>
-							<v8:content>passive</v8:content>
+							<v8:content>liabilities</v8:content>
 						</v8:item>
 						<v8:item>
 							<v8:lang>ru</v8:lang>
@@ -1439,7 +1459,7 @@
 					<tl>
 						<v8:item>
 							<v8:lang>en</v8:lang>
-							<v8:content>BIN [BIN]</v8:content>
+							<v8:content>Branch ID [BIN]</v8:content>
 						</v8:item>
 						<v8:item>
 							<v8:lang>ru</v8:lang>
@@ -1541,7 +1561,7 @@
 					<tl>
 						<v8:item>
 							<v8:lang>en</v8:lang>
-							<v8:content>Statement is issued for the period since [StartDate] till [EndDate]</v8:content>
+							<v8:content>Statement is issued for the period from [StartDate] to [EndDate]</v8:content>
 						</v8:item>
 						<v8:item>
 							<v8:lang>ru</v8:lang>
@@ -1573,7 +1593,7 @@
 					<tl>
 						<v8:item>
 							<v8:lang>en</v8:lang>
-							<v8:content>in the order determined by the settlement and cash services contract</v8:content>
+							<v8:content>in the order determined under the settlement and cash services contract</v8:content>
 						</v8:item>
 						<v8:item>
 							<v8:lang>ru</v8:lang>

@@ -39,13 +39,13 @@ Procedure OnOpen(Cancel)
 	
 	If CommonUseClientServer.ThisIsWebClient() Then
 		Cancel = True;
-		ShowMessageBox(, NStr("en='Text extraction is not supported in the web client.';ru='Извлечение текстов не поддерживается в Веб-клиенте.'"));
+		ShowMessageBox(, NStr("en='Text extraction is not supported in Web client.';ru='Извлечение текстов не поддерживается в Веб-клиенте.'"));
 		Return;
 	EndIf;
 	
 	If CommonUseClientServer.IsLinuxClient() Then
 		Cancel = True;
-		MessageText = NStr("en='Text extraction is not supported in the client under Linux OS.';ru='Извлечение текстов не поддерживается в клиенте под управлением ОС Linux.'");
+		MessageText = NStr("en='Text extraction is not supported on computers running Linux operating system.';ru='Извлечение текстов не поддерживается в клиенте под управлением ОС Linux.'");
 		ShowMessageBox(, MessageText);
 		Return;
 	EndIf;
@@ -135,7 +135,7 @@ EndProcedure
 Procedure WriteLogEventServer(MessageText)
 	
 	WriteLogEvent(
-		NStr("en='Files. Text extraction';ru='Файлы.Извлечение текста'",
+		NStr("en='Files.Text extraction';ru='Файлы.Извлечение текста'",
 		     CommonUseClientServer.MainLanguageCode()),
 		EventLogLevel.Error,
 		,
@@ -152,7 +152,7 @@ Procedure UpdateOfCountdown()
 	Left = ExtractionStartForecastedTime - CurrentDate();
 	
 	MessageText = StringFunctionsClientServer.SubstituteParametersInString(
-		NStr("en='Text extraction will start in %1 sec';ru='До начала извлечения текстов осталось %1 сек'"),
+		NStr("en='%1 sec before text extraction start';ru='До начала извлечения текстов осталось %1 сек'"),
 		Left);
 	
 	If Left <= 1 Then
@@ -182,7 +182,7 @@ Procedure ExtractionOfTextsClient(PortionSize = Undefined)
 	// database and is used only on client for information purposes, therefore it is not necessary to replace with CurrentSessionDate.
 	ExtractionStartForecastedTime = CurrentDate() + RunTimeInterval;
 	
-	Status(NStr("en='Extracting text started';ru='Начато извлечение текста'"));
+	Status(NStr("en='Text extraction started';ru='Начато извлечение текста'"));
 	
 	Try
 		
@@ -193,7 +193,7 @@ Procedure ExtractionOfTextsClient(PortionSize = Undefined)
 		FilesArray = GetFilesForTextExtraction(PortionSizeCurrent);
 		
 		If FilesArray.Count() = 0 Then
-			Status(NStr("en='No file to extract the text from!';ru='Нет файлов для извлечения текста'"));
+			Status(NStr("en='There are no files to extract the text';ru='Нет файлов для извлечения текста'"));
 			Return;
 		EndIf; 
 		
@@ -212,7 +212,7 @@ Procedure ExtractionOfTextsClient(PortionSize = Undefined)
 					FileDescription, Extension);
 				
 				Progress = IndexOf * 100 / FilesArray.Count();
-				Status(NStr("en='Extracting text from file';ru='Идет извлечение текста файла'"), Progress, NameWithExtension);
+				Status(NStr("en='Extracting file text';ru='Идет извлечение текста файла'"), Progress, NameWithExtension);
 				
 				FileFunctionsServiceClient.ExtractVersionText(
 					FileOrFileVersion, FileURL, Extension, UUID, Encoding);

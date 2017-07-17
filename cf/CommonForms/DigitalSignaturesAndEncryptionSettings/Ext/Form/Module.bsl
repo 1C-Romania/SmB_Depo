@@ -59,7 +59,7 @@ Procedure OnCreateAtServer(Cancel, StandardProcessing)
 		Items.CheckSignaturesAtServer.Visible = False;
 		Items.ToSignAtServer.Visible = False;
 		Items.ApplicationsExplanation.Title =
-			NStr("en='List of the applications specified by the administrator, which can be used on the computer.';ru='Список программ, предусмотренных администратором, которые можно использовать на компьютере.'");
+			NStr("en='Applications specified by administrator that can be used on computer.';ru='Список программ, предусмотренных администратором, которые можно использовать на компьютере.'");
 	EndIf;
 	
 	If Not DigitalSignature.CommonSettings().CertificateIssueApplicationAvailable Then
@@ -356,7 +356,7 @@ Procedure ApplicationsSetDeleteMark(Command)
 	EndIf;
 	
 	If CurrentData.DeletionMark Then
-		QuestionText = NStr("en='Unmark ""%1"" for deletion?';ru='Снять с ""%1"" пометку на удаление?'");
+		QuestionText = NStr("en='Clear mark for deletion for ""%1""?';ru='Снять с ""%1"" пометку на удаление?'");
 	Else
 		QuestionText = NStr("en='Mark ""%1"" for deletion?';ru='Пометить ""%1"" на удаление?'");
 	EndIf;
@@ -495,14 +495,14 @@ Procedure RefreshCurrentItemsVisible()
 	
 	If Constants.UseEncryption.Get() Then
 		Items.AddFromInstalledOnComputer.Title =
-			NStr("en='From installed on computer...';ru='Из установленных на компьютере...'");
+			NStr("en='From the ones installed on computer...';ru='Из установленных на компьютере...'");
 	Else
 		Items.AddFromInstalledOnComputer.Title =
-			NStr("en='From installed on computer';ru='Из установленных на компьютере'");
+			NStr("en='From the ones installed on computer';ru='Из установленных на компьютере'");
 	EndIf;
 	
 	If Constants.UseDigitalSignatures.Get() Then
-		CheckBoxTitle = NStr("en='Check signatures and certificates on server';ru='Проверять подписи и сертификаты на сервере'");
+		CheckBoxTitle = NStr("en='Check signatures and certificates on the server';ru='Проверять подписи и сертификаты на сервере'");
 		CheckBoxToolTip =
 			NStr("en='It allows you not to install
 		|the application to the user computer to check digital signatures and certificates.
@@ -518,7 +518,7 @@ Procedure RefreshCurrentItemsVisible()
 		Items.ExtensionForSignatureFiles.Visible = True;
 		Items.ActionsOnSavingDataWithDigitalSignature.Visible = True;
 	Else
-		CheckBoxTitle = NStr("en='Check certificates on server';ru='Проверять сертификаты на сервере'");
+		CheckBoxTitle = NStr("en='Verify certificates on server';ru='Проверять сертификаты на сервере'");
 		CheckBoxToolTip =
 			NStr("en='It is not necessary to install
 		|the application and certificate to the users computer to check certificates.
@@ -538,7 +538,7 @@ Procedure RefreshCurrentItemsVisible()
 	Items.CheckSignaturesAtServer.ExtendedTooltip.Title = CheckBoxToolTip;
 	
 	If Not Constants.UseDigitalSignatures.Get() Then
-		CheckBoxTitle = NStr("en='Encrypt and decrypt on the server';ru='Шифровать и расшифровывать на сервере'");
+		CheckBoxTitle = NStr("en='Encrypt and decrypt on server';ru='Шифровать и расшифровывать на сервере'");
 		CheckBoxToolTip =
 			NStr("en=""It is not necessary to
 		|install the application and certificate to the user's computer for encryption and decryption.
@@ -566,7 +566,7 @@ Procedure RefreshCurrentItemsVisible()
 		|компьютер, где работает сервер 1С:Предприятия
 		|или веб-сервер, использующий файловую информационную базу, должна быть установлена программа и сертификат с закрытым ключом.'");
 	Else
-		CheckBoxTitle = NStr("en='Sign and encrypt on server';ru='Подписывать и шифровать на сервере'");
+		CheckBoxTitle = NStr("en='Sign and decrypt on server';ru='Подписывать и шифровать на сервере'");
 		CheckBoxToolTip =
 			NStr("en='It allows you not to
 		|install the application and the certificate on the computer of the user for signing, encryption and decryption.
@@ -720,9 +720,9 @@ Procedure ExpectationHandlerDefineInstalledApplicationsContinueCycle(Manager, Co
 		UpdateValue(ApplicationDescription.CheckResult, NStr("en='Path to the application is not specified.';ru='Не указан путь к программе.'"));
 		UpdateValue(ApplicationDescription.Use, "");
 	Else
-		ErrorText = NStr("en='Not set on the computer.';ru='Не установлена на компьютере.'") + " " + Error.Description;
+		ErrorText = NStr("en='It is not installed on the computer.';ru='Не установлена на компьютере.'") + " " + Error.Description;
 		If Error.ToAdmin AND Not InfobaseUserWithFullAccess Then
-			ErrorText = ErrorText + " " + NStr("en='Contact your administrator.';ru='Обратитесь к администратору.'");
+			ErrorText = ErrorText + " " + NStr("en='Contact administrator.';ru='Обратитесь к администратору.'");
 		EndIf;
 		UpdateValue(ApplicationDescription.CheckResult, ErrorText);
 		UpdateValue(ApplicationDescription.Use, False);

@@ -66,7 +66,7 @@ Procedure FillTitleBySelectedCatalogs()
 	ArrayMarked = Object.CounterpartyContracts.FindRows(New Structure("Select", True));
 	If Object.CounterpartyContracts.Count() = 0 Then
 		
-		LabelText = NStr("en='The contracts list is empty';ru='Список договоров пуст'");
+		LabelText = NStr("en='Contract list is empty';ru='Список договоров пуст'");
 		
 	ElsIf ArrayMarked.Count() = 1 Then
 		
@@ -724,7 +724,7 @@ Procedure CounterpartyOnChange(Item)
 	Else
 		
 		Object.CounterpartyContracts.Clear();
-		Object.DescriptionContractsSelection = NStr("en='The contracts list is empty';ru='Список договоров пуст'");
+		Object.DescriptionContractsSelection = NStr("en='Contract list is empty';ru='Список договоров пуст'");
 		
 	EndIf;
 	
@@ -877,7 +877,7 @@ Procedure FillAccordingToAccounting(Command)
 		
 		If Object.CompanyData.Count() > 0 Then
 			
-			QuestionText	= NStr("en='The tabular section will be cleared and filled in again. Continue?';ru='Табличная часть будит очищена и заполнена повторно. Продолжить?'");
+			QuestionText	= NStr("en='Tabular section will be cleared and filled in again. Continue?';ru='Табличная часть будит очищена и заполнена повторно. Продолжить?'");
 			NotifyDescription = New NotifyDescription("HandlerAfterQuestionAboutCleaning", ThisObject, "CompanyData");
 			ShowQueryBox(NOTifyDescription, QuestionText, QuestionDialogMode.YesNo, 0);
 			
@@ -899,7 +899,7 @@ Procedure TransferFromCompanyData(Command)
 	
 	If Object.CompanyData.Count() < 1 Then
 		
-		MessageText = NStr("en='Company data tabular section is not filled.';ru='Не заполнена табличная часть с данными организации.'");
+		MessageText = NStr("en='Tabular section with company data is not filled in.';ru='Не заполнена табличная часть с данными организации.'");
 		CommonUseClientServer.MessageToUser(MessageText);
 		Return;
 		
@@ -907,7 +907,7 @@ Procedure TransferFromCompanyData(Command)
 	
 	If Object.CounterpartyData.Count() > 0 Then
 		
-		QuestionText	= NStr("en='The tabular section will be cleared and filled in again. Continue?';ru='Табличная часть будит очищена и заполнена повторно. Продолжить?'");
+		QuestionText	= NStr("en='Tabular section will be cleared and filled in again. Continue?';ru='Табличная часть будит очищена и заполнена повторно. Продолжить?'");
 		NotifyDescription = New NotifyDescription("HandlerAfterQuestionAboutCleaning", ThisObject, "CounterpartyData");
 		ShowQueryBox(NOTifyDescription, QuestionText, QuestionDialogMode.YesNo, 0);
 		

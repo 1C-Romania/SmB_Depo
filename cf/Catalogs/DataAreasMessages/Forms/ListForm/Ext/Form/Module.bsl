@@ -68,13 +68,13 @@ Procedure Delete(Command)
 		If Items.List.CurrentData.Property("RowGroup")
 			AND TypeOf(Items.List.CurrentData.RowGroup) = Type("DynamicalListGroupRow") Then
 			
-			ShowMessageBox(, NStr("en='Action is unavailable for the grouping row of the list.';ru='Действие недоступно для строки группировки списка.'"));
+			ShowMessageBox(, NStr("en='The action is not available for the list grouping row.';ru='Действие недоступно для строки группировки списка.'"));
 			
 		Else
 			
 			If Items.List.SelectedRows.Count() > 1 Then
 				
-				QuestionString = NStr("en='Do you want to delete the selected messages?';ru='Удалить выделенные сообщения?'");
+				QuestionString = NStr("en='Delete the selected messages?';ru='Удалить выделенные сообщения?'");
 				
 			Else
 				

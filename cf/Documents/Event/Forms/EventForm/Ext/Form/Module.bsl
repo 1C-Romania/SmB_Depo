@@ -259,7 +259,7 @@ Procedure ContactsContactStartChoice(Item, ChoiceData, StandardProcessing)
 	StandardProcessing = False;
 	
 	If Not ValueIsFilled(Counterparty) Then
-		CommonUseClientServer.MessageToUser(NStr("en='It is necessary to select counterparty.';ru='Необходимо выбрать контрагента.'"), , "Counterparty");
+		CommonUseClientServer.MessageToUser(NStr("en='Select a counterparty.';ru='Необходимо выбрать контрагента.'"), , "Counterparty");
 		Return;
 	EndIf;
 	
@@ -322,7 +322,7 @@ Procedure FillByBasis(Command)
 	КонецЕсли;
 	
 	ShowQueryBox(New NotifyDescription("FillByBasisEnd", ThisObject),
-		NStr("en='Document will be completely refilled by ""Basis""! Continue?';ru='Документ будет полностью перезаполнен по ""Основанию""! Продолжить?'"), QuestionDialogMode.YesNo, 0);
+		NStr("en='The  document will be fully filled out according to the ""Basis"". Continue?';ru='Документ будет полностью перезаполнен по ""Основанию""! Продолжить?'"), QuestionDialogMode.YesNo, 0);
 		
 EndProcedure
 
@@ -340,7 +340,7 @@ Procedure FillByCounterparty(Command)
 	
 	If Contacts.Count() > 0 Then
 		ShowQueryBox(New NotifyDescription("FillByCounterpartyEnd", ThisObject),
-			NStr("en='Contacts will be completely refilled by counterparty! Continue?';ru='Контакты будут полностью перезаполнены по контрагенту! Продолжить?'"), QuestionDialogMode.YesNo, 0);
+			NStr("en='Contacts will be completely refilled according to the counterparty. Continue?';ru='Контакты будут полностью перезаполнены по контрагенту! Продолжить?'"), QuestionDialogMode.YesNo, 0);
 	Else
 		FillByCounterpartyFragment(DialogReturnCode.Yes);
 	EndIf;
@@ -503,7 +503,7 @@ Procedure FillContentEvents(EventSubject)
 	
 	If Not IsBlankString(Object.Content) Then
 		ShowQueryBox(New NotifyDescription("FillEventContentEnd", ThisObject, New Structure("EventSubject", EventSubject)),
-			NStr("en='Do you want to refill the content by the selected topic?';ru='Перезаполнить содержание по выбранной теме?'"), QuestionDialogMode.YesNo, 0);
+			NStr("en='Refill the content by the selected topic?';ru='Перезаполнить содержание по выбранной теме?'"), QuestionDialogMode.YesNo, 0);
 		Return;
 	EndIf;
 	
@@ -601,7 +601,7 @@ Procedure FormDurationPresentation(Form)
 	
 	Days = Int(DurationSec / 86400);
 	CaptionDays = SmallBusinessClientServer.PluralForm(
-		NStr("ru = 'день'; en = 'day'"),
+		NStr("en='Day';ru='день'"),
 		NStr("ru = 'дня'; en = 'day'"),
 		NStr("ru = 'дней'; en = 'days'"),
 		Days
@@ -610,7 +610,7 @@ Procedure FormDurationPresentation(Form)
 	Hours = Int((DurationSec - Days * 86400) / 3600);
 	CaptionHours = SmallBusinessClientServer.PluralForm(
 		NStr("ru = 'час'; en = 'hour'"),
-		NStr("ru = 'часа'; en = 'hour'"),
+		NStr("ru = 'часа'; en = 'hours'"),
 		NStr("ru = 'часов'; en = 'hours'"),
 		Hours
 	);
@@ -618,7 +618,7 @@ Procedure FormDurationPresentation(Form)
 	Minutes = Int((DurationSec - Days * 86400 - Hours * 3600) / 60);
 	CaptionMinutes = SmallBusinessClientServer.PluralForm(
 		NStr("ru = 'минута'; en = 'minute'"),
-		NStr("ru = 'минуты'; en = 'minute'"),
+		NStr("en='minutes';ru='минуты'"),
 		NStr("ru = 'минут'; en = 'minutes'"),
 		Minutes
 	);

@@ -18,7 +18,7 @@ Function GetConfigurationExchangePlans()
 		
 		If IsBlankString(ExchangeFeature.ExchangeRole) Then
 			Raise StringFunctionsClientServer.SubstituteParametersInString(
-				NStr("en='Return value of the ConfigurationNameSource() function is not specified in the %1 exchange plan manager module';ru='Не задано возвращаемое значение функции ИмяКонфигурацииИсточника() в модуле менеджера плана обмена %1'"),
+				NStr("en='Return value of function ConfigurationNameSource() is not specified in the module of exchange plan manager %1';ru='Не задано возвращаемое значение функции ИмяКонфигурацииИсточника() в модуле менеджера плана обмена %1'"),
 				ExchangePlanName
 			);
 		EndIf;

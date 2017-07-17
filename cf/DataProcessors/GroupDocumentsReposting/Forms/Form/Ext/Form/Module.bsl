@@ -88,7 +88,7 @@ Procedure ButtonExecute(Command)
 	ClearMessages();
 	
 	If OnlySelectedCompanies = 1 AND Not ValueIsFilled(CompaniesTable) Then
-		MessageText = NStr("en='Companies list is filled incorrectly.';ru='Не корректно заполнен список организаций.'");
+		MessageText = NStr("en='Company list is filled in incorrectly.';ru='Не корректно заполнен список организаций.'");
 		CommonUseClientServer.MessageToUser(MessageText);
 		Return;
 	EndIf;
@@ -162,10 +162,10 @@ Procedure InitializingCommandsDocumentAtClient()
 	Result = RunOnServer();
 	
 	If Result = 1 Then
-		ShowMessageBox(Undefined,NStr("en='Reposting is being executed already. Expect completion.';ru='Перепроведение уже выполняется. Ожидайте завершения.'"));
+		ShowMessageBox(Undefined,NStr("en='Reposting is already being performed. Await completion.';ru='Перепроведение уже выполняется. Ожидайте завершения.'"));
 		Return;
 	ElsIf Result = 2 Then
-		ShowMessageBox(Undefined,NStr("en='Reposting is already performed by another user.';ru='Перепроведение уже выполняется другим пользователем.'"));
+		ShowMessageBox(Undefined,NStr("en='Another user is already performing reposting.';ru='Перепроведение уже выполняется другим пользователем.'"));
 		Return;
 	EndIf;
 	

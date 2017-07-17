@@ -778,7 +778,7 @@ Procedure GenerateTableInventory(DocumentRefInventoryTransfer, StructureAddition
 				RowTableManagerial.AccountDr = ?(RetailTransferAccrualAccounting, TableRow.FinancialAccountInRetailRecipient, TableRow.GLAccountInRetail);
 				RowTableManagerial.AccountCr = ?(RetailTransferAccrualAccounting, TableRow.MarkupGLAccountRecipient, TableRow.MarkupGLAccount);
 				RowTableManagerial.PlanningPeriod = Catalogs.PlanningPeriods.Actual;
-				RowTableManagerial.Content = NStr("en='Trade markup';ru='Торговая наценка'");
+				RowTableManagerial.Content = NStr("en='Markup';ru='Торговая наценка'");
 				RowTableManagerial.Amount = AmountMarkup;
 			EndIf;
 			
@@ -1002,8 +1002,8 @@ Procedure GenerateTableRetailAmountAccounting(DocumentRefInventoryTransfer, Stru
 	Query.SetParameter("PointInTime", New Boundary(StructureAdditionalProperties.ForPosting.PointInTime, BoundaryType.Including));
 	Query.SetParameter("ControlPeriod", StructureAdditionalProperties.ForPosting.PointInTime.Date);
 	Query.SetParameter("Company", StructureAdditionalProperties.ForPosting.Company);
-	Query.SetParameter("RetailTransfer", NStr("en='Transfer to retail';ru='Перемещение в розницу'"));
-	Query.SetParameter("RetailTransfer", NStr("en='Transfer in retail';ru='Перемещение в рознице'"));
+	Query.SetParameter("RetailTransfer", NStr("en='Move to retail';ru='Перемещение в розницу'"));
+	Query.SetParameter("RetailTransfer", NStr("en='Movement in retail';ru='Перемещение в рознице'"));
 	Query.SetParameter("ReturnAndRetail", NStr("en='Return from retail';ru='Возврат из розницы'"));
 	Query.SetParameter("ExchangeDifference", NStr("en='Exchange rate difference';ru='Курсовая разница'"));
 	
@@ -1569,7 +1569,7 @@ Procedure InitializeDocumentData(DocumentRefInventoryTransfer, StructureAddition
 	// Temporarily: change motions by the order warehouse.
 	Query.SetParameter("UpdateDateToRelease_1_2_1", Constants.UpdateDateToRelease_1_2_1.Get());
 		
-	Query.SetParameter("InventoryTransfer", NStr("ru = 'Перемещение запасов'; en = 'Inventory transfer'"));
+	Query.SetParameter("InventoryTransfer", NStr("en='Inventory movement';ru='Перемещение запасов'"));
 	
 	ResultsArray = Query.Execute();
 
@@ -2320,7 +2320,7 @@ Procedure AddPrintCommands(PrintCommands) Export
 	
 	PrintCommand = PrintCommands.Add();
 	PrintCommand.ID = "InventoryTransfer";
-	PrintCommand.Presentation = NStr("en='Inventory transfer';ru='Перемещение запасов'");
+	PrintCommand.Presentation = NStr("en='Inventory movement';ru='Перемещение запасов'");
 	PrintCommand.FormsList = "DocumentForm,ListForm";
 	PrintCommand.CheckPostingBeforePrint = False;
 	PrintCommand.Order = 20;
@@ -2334,7 +2334,7 @@ Procedure AddPrintCommands(PrintCommands) Export
 	
 	PrintCommand = PrintCommands.Add();
 	PrintCommand.ID = "MerchandiseFillingFormRecipient";
-	PrintCommand.Presentation = NStr("en='Goods content form (Receiver)';ru='Бланк товарного наполнения (Получатель)'");
+	PrintCommand.Presentation = NStr("en='Goods content form (Recipient)';ru='Бланк товарного наполнения (Получатель)'");
 	PrintCommand.FormsList = "DocumentForm,ListForm";
 	PrintCommand.CheckPostingBeforePrint = False;
 	PrintCommand.Order = 26;
@@ -2344,7 +2344,7 @@ Procedure AddPrintCommands(PrintCommands) Export
 		PrintCommand = PrintCommands.Add();
 		PrintCommand.Handler = "SmallBusinessClient.PrintLabelsAndPriceTagsFromDocuments";
 		PrintCommand.ID = "LabelsPrintingFromGoodsMovement";
-		PrintCommand.Presentation = NStr("en='Labels printing';ru='Печать этикеток'");
+		PrintCommand.Presentation = NStr("en='Print labels';ru='Печать этикеток'");
 		PrintCommand.FormsList = "DocumentForm,ListForm";
 		PrintCommand.CheckPostingBeforePrint = False;
 		PrintCommand.Order = 29;
@@ -2352,7 +2352,7 @@ Procedure AddPrintCommands(PrintCommands) Export
 		PrintCommand = PrintCommands.Add();
 		PrintCommand.Handler = "SmallBusinessClient.PrintLabelsAndPriceTagsFromDocuments";
 		PrintCommand.ID = "PriceTagsPrintingFromGoodsMovement";
-		PrintCommand.Presentation = NStr("en='Tags printing';ru='Печать ценников'");
+		PrintCommand.Presentation = NStr("en='Print price tags';ru='Печать ценников'");
 		PrintCommand.FormsList = "DocumentForm,ListForm";
 		PrintCommand.CheckPostingBeforePrint = False;
 		PrintCommand.Order = 32;

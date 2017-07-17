@@ -57,7 +57,7 @@ Function DuplicateSearchAreaManager(Val DataSearchAreaName) Export
 	EndIf;
 		
 	Raise StrReplace(
-		NStr("en='Unknown type of metadata object ""%1""';ru='Неизвестный тип объекта метаданных ""%1""'"), 
+		NStr("en='Unknown metadata object type ""%1""';ru='Неизвестный тип объекта метаданных ""%1""'"), 
 		"%1", DataSearchAreaName
 	);
 	
@@ -422,9 +422,9 @@ Function DuplicatesGroups(Val SearchParameters, Val ReferenceObject = Undefined)
 			EndDo;
 			// If it was the last group, tell about the error.
 			If DuplicatesTable.Count() = 0 Then
-				Result.ErrorDescription = NStr("en='Too many items are found, not all duplicates groups are defined.';ru='Найдено слишком много элементов, определены не все группы дублей.'");
+				Result.ErrorDescription = NStr("en='Too many items are found, not all duplicate groups are defined.';ru='Найдено слишком много элементов, определены не все группы дублей.'");
 			Else
-				Result.ErrorDescription = NStr("en='Too many items are found. Specify criteria of duplicates search.';ru='Найдено слишком много элементов. Уточните критерии поиска дублей.'");
+				Result.ErrorDescription = NStr("en='Too many items are found. Specify the duplicate search criteria.';ru='Найдено слишком много элементов. Уточните критерии поиска дублей.'");
 			EndIf;
 			Break;
 		EndIf;
@@ -487,7 +487,7 @@ Procedure RunCommand(ExecuteParameters, ResultAddress) Export
 		
 	Else
 		
-		Raise NStr("en='Search and delete duplicates: %1 command is not supported.';ru='Поиск и удаление дублей: Команда ""%1"" не поддерживается.'");
+		Raise NStr("en='Search and delete duplicates: Command ""%1"" is not supported.';ru='Поиск и удаление дублей: Команда ""%1"" не поддерживается.'");
 		
 	EndIf;
 	

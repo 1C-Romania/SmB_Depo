@@ -33,7 +33,7 @@ Procedure OnCreateAtServer(Cancel, StandardProcessing)
 			Items.List.Multiselect = True;
 			Items.List.SelectionMode = TableSelectionMode.MultiRow;
 		Else
-			Title = NStr("en='Select users group';ru='Выбор группы пользователей'");
+			Title = NStr("en='Select user group';ru='Выбор группы пользователей'");
 		EndIf;
 		AutoTitle = False;
 		

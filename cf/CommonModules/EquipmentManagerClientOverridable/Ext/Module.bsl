@@ -173,7 +173,7 @@ EndProcedure
 Procedure ConnectEquipmentEnd(ExecutionResult, Parameters) Export
 	
 	If Not ExecutionResult.Result Then
-		MessageText = NStr("en='An error occurred when connecting the equipment: ""%ErrorDetails%"".';ru='При подключении оборудования произошла ошибка:""%ОписаниеОшибки%"".'");
+		MessageText = NStr("en='An error occurred when connecting the equipment:""%ErrorDetails%"".';ru='При подключении оборудования произошла ошибка:""%ОписаниеОшибки%"".'");
 		MessageText = StrReplace(MessageText, "%ErrorDetails%" , ExecutionResult.ErrorDetails);
 		CommonUseClientServer.MessageToUser(MessageText);
 	EndIf;

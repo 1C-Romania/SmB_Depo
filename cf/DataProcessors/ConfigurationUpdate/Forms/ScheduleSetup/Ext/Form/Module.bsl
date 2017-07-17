@@ -54,7 +54,7 @@ Procedure CommandOK(Command)
 	If SettingsChanged Then
 		RepeatPeriodInDay = Object.ScheduleOfUpdateExistsCheck.RepeatPeriodInDay;
 		If RepeatPeriodInDay > 0 AND RepeatPeriodInDay < 60 * 5 Then
-			CommonUseClientServer.MessageToUser(NStr("en='Checking interval can not be less then 5 minutes.';ru='Интервал проверки не может быть задан чаще, чем один раз 5 минут.'"));
+			CommonUseClientServer.MessageToUser(NStr("en='Check interval cannot be set to more often than once every 5 minutes.';ru='Интервал проверки не может быть задан чаще, чем один раз 5 минут.'"));
 			Return;
 		EndIf;
 		

@@ -13,7 +13,7 @@ Procedure OnCreateAtServer(Cancel, StandardProcessing)
 	// Parameterization of assistant by the name of exchange plan (mandatory).
 	If Not Parameters.Property("ExchangePlanName", Object.ExchangePlanName) AND IsBlankString(Object.ExchangePlanName) Then
 		
-		Raise NStr("en='Data processor is not aimed for being used directly';ru='Обработка не предназначена для непосредственного использования.'");
+		Raise NStr("en='Data processor is not intended for direct usage.';ru='Обработка не предназначена для непосредственного использования.'");
 		
 	EndIf;
 	
@@ -249,7 +249,7 @@ Procedure OnCreateAtServer(Cancel, StandardProcessing)
 		Items.TransportSettingsFTP.Enabled   = Object.UseTransportParametersFTP;
 		Items.TransportSettingsEMAIL.Enabled = Object.UseTransportParametersEMAIL;
 		
-		Items.AssistantRunModeChoiceSwitchGroup.Title = NStr("en='Continuation of the data synchronization setting with the main node';ru='Продолжение настройки синхронизации данных с главным узлом'");
+		Items.AssistantRunModeChoiceSwitchGroup.Title = NStr("en='Continue to configure data synchronization with the main node';ru='Продолжение настройки синхронизации данных с главным узлом'");
 		
 		Items.GroupBackup.Visible = False;
 	EndIf;
@@ -286,7 +286,7 @@ Procedure OnOpen(Cancel)
 	If CommonUseClient.OfferToCreateBackups() Then
 		
 		Text = StringFunctionsClientServer.SubstituteParametersInString(
-			NStr("en='Before you configure the synchronization it is recommended to <a href=""%1"">back up<a>.';ru='Перед настройкой синхронизации рекомендуется сделать <a href = %1 >резервную копию данных</a>.'"),
+			NStr("en='We recommend that you make a <a href = %1 >data backup</a> before configuring data synchronization.';ru='Перед настройкой синхронизации рекомендуется сделать <a href = %1 >резервную копию данных</a>.'"),
 			"CreateBackup");
 		
 		FormattedString = StringFunctionsClientServer.FormattedString(Text);
@@ -342,7 +342,7 @@ Procedure BeforeClose(Cancel, StandardProcessing)
 		Return;
 	EndIf;
 	
-	WarningText = NStr("en='Do you want to cancel the synchronization setup and exit from the assistant?';ru='Отменить настройку синхронизации и выйти из помощника?'");
+	WarningText = NStr("en='Cancel synchronization customizing and quit the wizard?';ru='Отменить настройку синхронизации и выйти из помощника?'");
 	AlertDescriptionClose = New NotifyDescription("DeleteDataExchangeSetting", ThisObject);
 	CommonUseClient.ShowArbitraryFormClosingConfirmation(ThisObject, Cancel, WarningText, "CloseFormWithoutWarnings", AlertDescriptionClose);
 	
@@ -362,17 +362,17 @@ Procedure NotificationProcessing(EventName, Parameter, Source)
 		
 		Cancel = False;
 		
-		Status(NStr("en='Gathering mapping information...';ru='Выполняется сбор информации сопоставления...'"));
+		Status(NStr("en='Collecting mapping information...';ru='Выполняется сбор информации сопоставления...'"));
 		
 		RefreshDataOfMappingStatisticsAtServer(Cancel, Parameter);
 		
 		If Cancel Then
-			ShowMessageBox(, NStr("en='When getting the statistics information the errors occurred.';ru='При получении информации статистики возникли ошибки.'"));
+			ShowMessageBox(, NStr("en='Errors occurred when receiving statistics information.';ru='При получении информации статистики возникли ошибки.'"));
 		Else
 			
 			ExpandTreeOfInformationStatistics(Parameter.UniqueKey);
 			
-			Status(NStr("en='Information accumulation is completed';ru='Сбор информации завершен'"));
+			Status(NStr("en='Information collection is complete';ru='Сбор информации завершен'"));
 		EndIf;
 		
 	EndIf;
@@ -392,7 +392,7 @@ Procedure DataExchangeSettingsForImportFileNameStartChoice(Item, ChoiceData, Sta
 	StandardProcessing = False;
 	
 	DialogSettings = New Structure;
-	DialogSettings.Insert("Filter", NStr("en='File of data synchronization settings (*.xml)';ru='Файл настроек синхронизации данных (*.xml)'") + "|*.xml" );
+	DialogSettings.Insert("Filter", NStr("en='Data synchronization setting file (*.xml)';ru='Файл настроек синхронизации данных (*.xml)'") + "|*.xml" );
 	
 	Notification = New NotifyDescription("EndSelectingDataExchangeSettingsForImportFile", ThisObject);
 	DataExchangeClient.SelectAndSendFileToServer(Notification, DialogSettings, UUID);
@@ -731,7 +731,7 @@ Procedure SaveDataExchangeSettingsFile(Command)
 	
 	If Cancel Then
 		
-		ShowMessageBox(, NStr("en='When saving the data synchronization settings of the file, errors occurred.';ru='При сохранении файла настроек синхронизации данных возникли ошибки.'"));
+		ShowMessageBox(, NStr("en='When saving file of data synchronization settings, errors occurred.';ru='При сохранении файла настроек синхронизации данных возникли ошибки.'"));
 		
 	Else
 		
@@ -745,7 +745,7 @@ Procedure SaveDataExchangeSettingsFile(Command)
 			
 			AdditionalParameters = New Structure();
 			AdditionalParameters.Insert("TemporaryStorageAddress", TemporaryStorageAddress);
-			SuggestionText = NStr("en='To open a directory, you need to set an extension of working with files.';ru='Для открытия каталога необходимо необходимо установить расширение работы с файлами.'");
+			SuggestionText = NStr("en='To open the directory, install the file operation extension.';ru='Для открытия каталога необходимо необходимо установить расширение работы с файлами.'");
 			Notification = New NotifyDescription("AfterWorksWithFilesExpansionCheck", ThisForm, AdditionalParameters);
 			CommonUseClient.ShowFileSystemExtensionInstallationQuestion(Notification, SuggestionText);
 			
@@ -763,7 +763,7 @@ Procedure AfterWorksWithFilesExpansionCheck(Result, AdditionalParameters) Export
 		
 		Dialog = New FileDialog(FileDialogMode.Save);
 		
-		Dialog.Title      = NStr("en='Specify the attachment file name of the data synchronization settings';ru='Укажите имя файла настроек синхронизации данных'");
+		Dialog.Title      = NStr("en='Specify a name of the data synchronization setting file';ru='Укажите имя файла настроек синхронизации данных'");
 		Dialog.Extension     = "xml";
 		Dialog.Filter         = "File of data synchronization settings(*.xml)|*.xml";
 		Dialog.FullFileName = SettingsFilenameForReceiver;
@@ -974,7 +974,7 @@ Procedure GoToNumberOnChange(Val IsGoNext)
 	GoToRowsCurrent = GoToTable.FindRows(New Structure("GoToNumber", GoToNumber));
 	
 	If GoToRowsCurrent.Count() = 0 Then
-		Raise NStr("en='Page for displaying has not been defined.';ru='Не определена страница для отображения.'");
+		Raise NStr("en='Page for displaying is not defined.';ru='Не определена страница для отображения.'");
 	EndIf;
 	
 	GoToRowCurrent = GoToRowsCurrent[0];
@@ -1080,7 +1080,7 @@ Procedure ExecuteGoToEventHandlers(Val IsGoNext)
 	GoToRowsCurrent = GoToTable.FindRows(New Structure("GoToNumber", GoToNumber));
 	
 	If GoToRowsCurrent.Count() = 0 Then
-		Raise NStr("en='Page for displaying has not been defined.';ru='Не определена страница для отображения.'");
+		Raise NStr("en='Page for displaying is not defined.';ru='Не определена страница для отображения.'");
 	EndIf;
 	
 	GoToRowCurrent = GoToRowsCurrent[0];
@@ -1136,7 +1136,7 @@ Procedure ExecuteLongOperationHandler()
 	GoToRowsCurrent = GoToTable.FindRows(New Structure("GoToNumber", GoToNumber));
 	
 	If GoToRowsCurrent.Count() = 0 Then
-		Raise NStr("en='Page for displaying has not been defined.';ru='Не определена страница для отображения.'");
+		Raise NStr("en='Page for displaying is not defined.';ru='Не определена страница для отображения.'");
 	EndIf;
 	
 	GoToRowCurrent = GoToRowsCurrent[0];
@@ -1272,7 +1272,7 @@ Procedure CheckCOMConnectionEnd(Result, AdditionalParameters) Export
 		
 		MessageText = CheckCOMConnectionOnServer();
 		If IsBlankString(MessageText) Then
-			MessageText = NStr("en='Connection verification is successfully completed.';ru='Проверка подключения успешно завершена.'");
+			MessageText = NStr("en='Connection check is completed successfully.';ru='Проверка подключения успешно завершена.'");
 		EndIf;
 		ShowMessageBox(,MessageText);
 		
@@ -1313,7 +1313,7 @@ Procedure CheckWSConnectionEnd(Result, AdditionalParameters) Export
 		
 		If Not Cancel Then
 			
-			ShowMessageBox(, NStr("en='Connection has been successfully installed.';ru='Подключение успешно установлено.'"));
+			ShowMessageBox(, NStr("en='Connection has been successfully established.';ru='Подключение успешно установлено.'"));
 			
 		EndIf;
 		
@@ -1518,7 +1518,7 @@ Procedure SetVisibleAtServer()
 		Items.EndcapPrefix.Visible = False;
 		Items.TargetInfobasePrefix1.ToolTipRepresentation = ToolTipRepresentation.None;
 		
-		Items.AssistantRunModeChoiceSwitchGroup.Title = NStr("en='Subordinate RIB node initial image creating';ru='Создание начального образа подчиненного узла РИБ'");
+		Items.AssistantRunModeChoiceSwitchGroup.Title = NStr("en='Create initial image of DIB subordinate node';ru='Создание начального образа подчиненного узла РИБ'");
 		
 	EndIf;
 	
@@ -1720,7 +1720,7 @@ Function GetDescriptionOfSettingsOfExchangeTransport()
 	
 	If IsBlankString(Result) Then
 		
-		Result = NStr("en='Connection settings are not specified';ru='Настройки подключения не заданы.'");
+		Result = NStr("en='Connection settings are not set.';ru='Настройки подключения не заданы.'");
 		
 	EndIf;
 	
@@ -1745,9 +1745,9 @@ Procedure CheckConnection(TransportKind)
 	If Not Cancel Then
 		
 		If TransportKind = PredefinedValue("Enum.ExchangeMessagesTransportKinds.FILE") Then
-			WarningText = NStr("en='Recording data in the specified directory is allowed.';ru='Запись данных в указанный каталог разрешена.'");
+			WarningText = NStr("en='Writing data to the specified directory is permitted.';ru='Запись данных в указанный каталог разрешена.'");
 		Else
-			WarningText = NStr("en='Connection has been successfully installed.';ru='Подключение успешно установлено.'");
+			WarningText = NStr("en='Connection has been successfully established.';ru='Подключение успешно установлено.'");
 		EndIf;
 		
 		ShowMessageBox(, WarningText);
@@ -1840,7 +1840,7 @@ Procedure CheckWSConnectionAtServer(Cancel, ExtendedCheck, IsSuggestOpenEventLog
 		
 		If Not TargetParameters.ExchangePlanExists Then
 			
-			Message = NStr("en='Another application is not intended for the synchronization with the current one.';ru='Другая программа не предназначена для синхронизации с текущей.'");
+			Message = NStr("en='Another application is not for synchronization with the current one.';ru='Другая программа не предназначена для синхронизации с текущей.'");
 			CommonUseClientServer.MessageToUser(Message,,,, Cancel);
 			Return;
 			
@@ -1906,17 +1906,17 @@ Procedure CheckWSConnectionAtClient(Cancel, ExtendedCheck = False)
 	
 	If IsBlankString(Object.WSURLWebService) Then
 		
-		NString = NStr("en='Specify application address in the Internet.';ru='Укажите адрес приложения в Интернете.'");
+		NString = NStr("en='Specify an online application address.';ru='Укажите адрес приложения в Интернете.'");
 		CommonUseClientServer.MessageToUser(NString,, "Object.WSURLWebService",, Cancel);
 		
 	ElsIf IsBlankString(Object.WSUserName) Then
 		
-		NString = NStr("en='Specify a user name.';ru='Укажите имя пользователя.'");
+		NString = NStr("en='Specify user name.';ru='Укажите имя пользователя.'");
 		CommonUseClientServer.MessageToUser(NString,, "Object.WSUserName",, Cancel);
 		
 	ElsIf IsBlankString(Object.WSPassword) Then
 		
-		NString = NStr("en='Specify the user password.';ru='Укажите пароль пользователя.'");
+		NString = NStr("en='Specify user password.';ru='Укажите пароль пользователя.'");
 		CommonUseClientServer.MessageToUser(NString,, "Object.WSPassword",, Cancel);
 		
 	Else
@@ -2160,7 +2160,7 @@ Procedure CheckAttributeFillingOnForm(Cancel, FormToCheckName, FormParameters, F
 	
 	If Not SettingsForm.CheckFilling() Then
 		
-		CommonUseClientServer.MessageToUser(NStr("en='It is necessary to specify the obligatory settings.';ru='Необходимо задать обязательные настройки.'"),,, FormAttributeName, Cancel);
+		CommonUseClientServer.MessageToUser(NStr("en='Configure required settings.';ru='Необходимо задать обязательные настройки.'"),,, FormAttributeName, Cancel);
 		
 	EndIf;
 	
@@ -2326,7 +2326,7 @@ Procedure FinishFirstExchangeOverOrdinaryCommunicationChannelsSetupStage(Cancel)
 	If Not Object.ThisIsSettingOfDistributedInformationBase
 		AND IsBlankString(Object.DataExchangeSettingsFileName) Then
 		
-		NString = NStr("en='Save the file with the settings for another application';ru='Сохраните файл с настройками для другой программы'");
+		NString = NStr("en='Save file with settings for another application';ru='Сохраните файл с настройками для другой программы'");
 		
 		CommonUseClientServer.MessageToUser(NString,,"Object.DataExchangeSettingsFileName",, Cancel);
 		Return;
@@ -2349,13 +2349,13 @@ Procedure FinishFirstExchangeOverOrdinaryCommunicationChannelsSetupStage(Cancel)
 		
 		If ExecuteDataExchangeNow Then
 			
-			Status(NStr("en='Data sending is in progress...';ru='Выполняется отправка данных...'"));
+			Status(NStr("en='Sending data...';ru='Выполняется отправка данных...'"));
 			InitializationOfDataExchangeAtClient(Cancel, Object.InfobaseNode, Object.ExchangeMessageTransportKind);
-			Status(NStr("en='Data sending is completed';ru='Отправка данных завершена'"));
+			Status(NStr("en='Data is sent';ru='Отправка данных завершена'"));
 			
 			If Cancel Then
 				
-				ShowMessageBox(, NStr("en='Error occurred during data sending (see event log monitor).';ru='Во время отправки данных возникли ошибки(см. журнал регистрации).'"));
+				ShowMessageBox(, NStr("en='Errors occurred when sending the data (see the event log).';ru='Во время отправки данных возникли ошибки(см. журнал регистрации).'"));
 				
 			EndIf;
 			
@@ -2378,13 +2378,13 @@ EndProcedure
 &AtClient
 Procedure FinishSecondExchangeOverOrdinaryCommunicationChannelsSetupStage(Cancel, Val OpenAfterClosingCurrent)
 	
-	Status(NStr("en='Data synchronization setting is being created';ru='Выполняется создание настройки синхронизации данных'"));
+	Status(NStr("en='Creating data synchronization setting';ru='Выполняется создание настройки синхронизации данных'"));
 	
 	ConfigureNewDataExchangeAtServer(Cancel, FilterSsettingsAtNode, DefaultValuesAtNode);
 	
 	If Cancel Then
 		
-		ShowMessageBox(, NStr("en='Errors occurred when creating data synchronization settings.';ru='При создании настройки синхронизации данных возникли ошибки.'"));
+		ShowMessageBox(, NStr("en='When creating data synchronization setting, errors occurred.';ru='При создании настройки синхронизации данных возникли ошибки.'"));
 		Return;
 	EndIf;
 	
@@ -2424,7 +2424,7 @@ Procedure OpenMappingForm()
 	EndIf;
 	
 	If Not CurrentData.UsePreview Then
-		ShowMessageBox(, NStr("en='Impossible to perform matching for these data.';ru='Для этих данных нельзя выполнить сопоставление.'"));
+		ShowMessageBox(, NStr("en='Cannot map this data.';ru='Для этих данных нельзя выполнить сопоставление.'"));
 		Return;
 	EndIf;
 	
@@ -2557,7 +2557,7 @@ Procedure OnConnectingToCorrespondent(Cancel, Val CorrespondentVersion)
 		CommonUseClientServer.MessageToUser(BriefErrorDescription(ErrorInfo()),,,, Cancel);
 		WriteErrorInEventLogMonitor(
 			StringFunctionsClientServer.SubstituteParametersInString(
-				NStr("en='When executing the OnConnectingToCorrespondent handler, an error occurred:%1%2';ru='При выполнении обработчика ПриПодключенииККорреспонденту произошла ошибка:%1%2'"),
+				NStr("en='An error occurred while executing handler OnConnectingToCorrespondent:%1%2';ru='При выполнении обработчика ПриПодключенииККорреспонденту произошла ошибка:%1%2'"),
 				Chars.LF,
 				DetailErrorDescription(ErrorInfo())),
 			DataExchangeCreationEventLogMonitorMessageText
@@ -2595,21 +2595,21 @@ EndProcedure
 &AtClientAtServerNoContext
 Function LabelNextFTP()
 	
-	Return NStr("en='Press the ""Next"" button to set up the connection through the FTP resource.';ru='Нажмите кнопку ""Далее"" для настройки подключения через FTP-ресурс.'");
+	Return NStr("en='Click Next to set connection via FTP resource.';ru='Нажмите кнопку ""Далее"" для настройки подключения через FTP-ресурс.'");
 	
 EndFunction
 
 &AtClientAtServerNoContext
 Function LabelNextEMAIL()
 	
-	Return NStr("en='Press the ""Next"" button to set the connection by email.';ru='Нажмите кнопку ""Далее"" для настройки подключения по почте.'");
+	Return NStr("en='Click Next to set email connection.';ru='Нажмите кнопку ""Далее"" для настройки подключения по почте.'");
 	
 EndFunction
 
 &AtClientAtServerNoContext
 Function LabelNextSettings()
 	
-	Return NStr("en='Click ""Next"" to set up additional parameters of data synchronization.';ru='Нажмите кнопку ""Далее"" для настройки дополнительных параметров синхронизации данных.'");
+	Return NStr("en='Click Next to set additional parameters of data synchronization.';ru='Нажмите кнопку ""Далее"" для настройки дополнительных параметров синхронизации данных.'");
 	
 EndFunction
 
@@ -2894,28 +2894,28 @@ Function Attachable_AssistantPageParameterSetup_OnGoingNext(Cancel)
 	
 	If IsBlankString(Object.ThisInfobaseDescription) Then
 		
-		NString = NStr("en='Specify the name of this application.';ru='Укажите наименование этой программы.'");
+		NString = NStr("en='Specify this application name.';ru='Укажите наименование этой программы.'");
 		CommonUseClientServer.MessageToUser(NString,, "Object.ThisInfobaseDescription",, Cancel);
 		
 	EndIf;
 	
 	If IsBlankString(Object.SecondInfobaseDescription) Then
 		
-		NString = NStr("en='Specify another application name';ru='Укажите наименование другой программы.'");
+		NString = NStr("en='Specify a different application name.';ru='Укажите наименование другой программы.'");
 		CommonUseClientServer.MessageToUser(NString,, "Object.SecondInfobaseDescription",, Cancel);
 		
 	EndIf;
 	
 	If IsBlankString(Object.TargetInfobasePrefix) Then
 		
-		NString = NStr("en='Specify the existing or desired prefix of the second infobase.';ru='Укажите существующий или желаемый префикс второй информационной базы.'");
+		NString = NStr("en='Specify an existing or required prefix of the second infobase.';ru='Укажите существующий или желаемый префикс второй информационной базы.'");
 		CommonUseClientServer.MessageToUser(NString,, "Object.TargetInfobasePrefix",, Cancel);
 		
 	EndIf;
 	
 	If TrimAll(Object.SourceInfobasePrefix) = TrimAll(Object.TargetInfobasePrefix) Then
 		
-		NString = NStr("en='Infobase prefixes must be different.';ru='Префиксы информационных баз должны быть различными.'");
+		NString = NStr("en='Infobase prefixes should be different.';ru='Префиксы информационных баз должны быть различными.'");
 		CommonUseClientServer.MessageToUser(NString,, "Object.TargetInfobasePrefix",, Cancel);
 		
 	EndIf;
@@ -2955,7 +2955,7 @@ Function Attachable_AssistantPageFirstInfobaseExternalConnectionParameterSetup_O
 	
 	If IsBlankString(Object.ThisInfobaseDescription) Then
 		
-		NString = NStr("en='Specify infobase name.';ru='Укажите наименование информационной базы.'");
+		NString = NStr("en='Specify an infobase name.';ru='Укажите наименование информационной базы.'");
 		CommonUseClientServer.MessageToUser(NString,, "Object.ThisInfobaseDescription",, Cancel);
 		Return Undefined;
 	EndIf;
@@ -3073,13 +3073,13 @@ Function Attachable_AssistantPageStart_OnGoingNext(Cancel)
 	
 	// Trying to pass the file to the server with a query to set an extension without a dialog.
 	If IsBlankString(Object.DataExchangeSettingsForImportFileName) Then
-		ErrorText = NStr("en='Select the file with the data synchronization settings';ru='Выберите файл с настройками синхронизации данных'");
+		ErrorText = NStr("en='Select a file with data synchronization settings';ru='Выберите файл с настройками синхронизации данных'");
 		CommonUseClientServer.MessageToUser(ErrorText, , "Object.DataExchangeSettingsForImportFileName");
 		Return Undefined;
 	EndIf;
 	
 	Notification = New NotifyDescription("AssistantPageStart_OnSkipForward_End", ThisObject, New Structure);
-	WarningText = NStr("en='To transfer the file of data synchronization settings you should install the extension for 1C: Enterprise web client.';ru='Для передачи файла настроек синхронизации данных необходимо установить расширение для веб-клиента 1С:Предприятие.'");
+	WarningText = NStr("en='To transfer the file of data synchronization settings, install extension for web client 1C:Enterprise.';ru='Для передачи файла настроек синхронизации данных необходимо установить расширение для веб-клиента 1С:Предприятие.'");
 	
 	FileNames = New Array;
 	FileNames.Add(Object.DataExchangeSettingsForImportFileName);
@@ -3114,7 +3114,7 @@ Procedure EndSelectingDataExchangeSettingsForImportFile(Val FilesPlacingResult, 
 	DataExchangeSettingsFileSuccessfullyImported = False;
 	
 	If IsBlankString(ErrorText) AND IsBlankString(PlacedFileAddress) Then
-		ErrorText = NStr("en='An error occurred during sending a settings file of data synchronization to server';ru='Ошибка передачи файла настроек синхронизации данных на сервер'");
+		ErrorText = NStr("en='An error occurred when transferring the file of data synchronization settings to the server';ru='Ошибка передачи файла настроек синхронизации данных на сервер'");
 	EndIf;
 	
 	If IsBlankString(ErrorText) Then
@@ -3123,7 +3123,7 @@ Procedure EndSelectingDataExchangeSettingsForImportFile(Val FilesPlacingResult, 
 		// Calling the server
 		ImportAssistantParameters(AssistantParametersImportError, PlacedFileAddress);
 		If AssistantParametersImportError Then
-			ErrorText = NStr("en='Incorrect file of data synchronization settings is indicated. Specify the correct file.';ru='Указан неправильный файл настроек синхронизации данных. Укажите корректный файл.'");
+			ErrorText = NStr("en='Invalid data synchronization setting file is specified. Specify a correct file.';ru='Указан неправильный файл настроек синхронизации данных. Укажите корректный файл.'");
 		Else
 			DataExchangeSettingsFileSuccessfullyImported = True;
 		EndIf;
@@ -3393,7 +3393,7 @@ Function Attachable_AssistantPageWaitForDataAnalysisAutomaticMapping_LongOperati
 	
 	If Cancel Then
 		
-		ShowMessageBox(, NStr("en='At the data analysis stage, errors occurred.';ru='Возникли ошибки на этапе анализа данных.'"));
+		ShowMessageBox(, NStr("en='Errors occurred when analyzing data.';ru='Возникли ошибки на этапе анализа данных.'"));
 		
 	EndIf;
 	
@@ -3529,7 +3529,7 @@ Procedure AssistantPageWaitForCatalogSynchronizationImport_LongOperationProcessi
 		UUID,
 		"DataProcessors.DataExchangeCreationAssistant.RunCatalogImport",
 		MethodParameters,
-		NStr("en='Import of catalogs from the exchange message';ru='Загрузка справочников из сообщения обмена'"));
+		NStr("en='Import catalogs from exchange message';ru='Загрузка справочников из сообщения обмена'"));
 	
 	If Not Result.JobCompleted Then
 		
@@ -4027,7 +4027,7 @@ Procedure CheckAccountingSettingsAtServer(
 	If Not SystemAccountingSettingsAreSet Then
 		
 		If IsBlankString(ErrorInfo) Then
-			ErrorInfo = NStr("en='Accounting parameters have not been specified in this application.';ru='Не заданы параметры учета в этой программе.'");
+			ErrorInfo = NStr("en='Accounting parameters in this application are not specified.';ru='Не заданы параметры учета в этой программе.'");
 		EndIf;
 		
 		LabelAccountingSettings = ErrorInfo;
@@ -4038,7 +4038,7 @@ Procedure CheckAccountingSettingsAtServer(
 	If Not CorrespondentAccountingSettingsAreSet Then
 		
 		If IsBlankString(CorrespondentErrorMessage) Then
-			CorrespondentErrorMessage = NStr("en='Accounting parameters in the application located in the Internet are not specified.';ru='Не заданы параметры учета в приложении, расположенном в Интернете.'");
+			CorrespondentErrorMessage = NStr("en='Accounting parameters are not specified for the online application.';ru='Не заданы параметры учета в приложении, расположенном в Интернете.'");
 		EndIf;
 		
 		LabelCorrespondentAccountingSettings = CorrespondentErrorMessage;
@@ -4056,21 +4056,21 @@ Procedure CheckJobSettingsForFirstInfobase(Cancel, ConnectionType = "WebService"
 	
 	If IsBlankString(Object.ThisInfobaseDescription) Then
 		
-		NString = NStr("en='Specify the name of this application.';ru='Укажите наименование этой программы.'");
+		NString = NStr("en='Specify this application name.';ru='Укажите наименование этой программы.'");
 		CommonUseClientServer.MessageToUser(NString,, "Object.ThisInfobaseDescription",, Cancel);
 		
 	EndIf;
 	
 	If IsBlankString(Object.SecondInfobaseDescription) Then
 		
-		NString = NStr("en='Specify the application name in the Internet.';ru='Укажите наименование приложения в Интернете.'");
+		NString = NStr("en='Specify the online application name.';ru='Укажите наименование приложения в Интернете.'");
 		CommonUseClientServer.MessageToUser(NString,, "Object.SecondInfobaseDescription",, Cancel);
 		
 	EndIf;
 	
 	If TrimAll(Object.SourceInfobasePrefix) = TrimAll(Object.TargetInfobasePrefix) Then
 		
-		NString = NStr("en='Infobase prefixes must be different.';ru='Префиксы информационных баз должны быть различными.'");
+		NString = NStr("en='Infobase prefixes should be different.';ru='Префиксы информационных баз должны быть различными.'");
 		CommonUseClientServer.MessageToUser(NString,, "Object.SourceInfobasePrefix",, Cancel);
 		CommonUseClientServer.MessageToUser(NString,, "Object.TargetInfobasePrefix",, Cancel);
 		
@@ -4109,14 +4109,14 @@ Procedure CheckJobSettingsForSecondInfobase(Cancel, ConnectionType)
 	
 	If IsBlankString(Object.SecondInfobaseDescription) Then
 		
-		NString = NStr("en='Specify the application name.';ru='Укажите наименование программы.'");
+		NString = NStr("en='Specify application name.';ru='Укажите наименование программы.'");
 		CommonUseClientServer.MessageToUser(NString,, "Object.SecondInfobaseDescription",, Cancel);
 		
 	EndIf;
 	
 	If TrimAll(Object.SourceInfobasePrefix) = TrimAll(Object.TargetInfobasePrefix) Then
 		
-		NString = NStr("en='Infobase prefixes must be different.';ru='Префиксы информационных баз должны быть различными.'");
+		NString = NStr("en='Infobase prefixes should be different.';ru='Префиксы информационных баз должны быть различными.'");
 		CommonUseClientServer.MessageToUser(NString,, "Object.TargetInfobasePrefix",, Cancel);
 		
 	EndIf;
@@ -4313,14 +4313,14 @@ Procedure AssistantPageWaitForCheckExternalConnectionConnected_LongOperationProc
 		
 		If IsBlankString(Object.COMServerName1CEnterprise) Then
 			
-			NString = NStr("en='Specify the server cluster name.';ru='Укажите имя кластера серверов.'");
+			NString = NStr("en='Specify a server cluster name.';ru='Укажите имя кластера серверов.'");
 			CommonUseClientServer.MessageToUser(NString,, "Object.COMServerName1CEnterprise",, Cancel);
 			Cancel = True;
 			Return;
 			
 		ElsIf IsBlankString(Object.COMInfobaseNameAtServer1CEnterprise) Then
 			
-			NString = NStr("en='Specify the infobase name.';ru='Укажите имя информационной базы.'");
+			NString = NStr("en='Specify an infobase name.';ru='Укажите имя информационной базы.'");
 			CommonUseClientServer.MessageToUser(NString,, "Object.COMInfobaseNameAtServer1CEnterprise",, Cancel);
 			Cancel = True;
 			Return;
@@ -4360,7 +4360,7 @@ Procedure AssistantPageWaitForCheckExternalConnectionConnected_LongOperationProc
 	
 	If Not ExchangePlanExists Then
 		
-		Message = NStr("en='There is no data synchronization for the specified application.';ru='Синхронизация данных с указанной программой не предусмотрена.'");
+		Message = NStr("en='Data synchronization with the specified application is not applicable.';ru='Синхронизация данных с указанной программой не предусмотрена.'");
 		CommonUseClientServer.MessageToUser(Message,,,, Cancel);
 		Return;
 		
@@ -4368,7 +4368,7 @@ Procedure AssistantPageWaitForCheckExternalConnectionConnected_LongOperationProc
 	
 	If Lower(InfobaseConnectionString()) = Lower(ExternalConnection.InfobaseConnectionString()) Then
 		
-		Message = NStr("en='Connection settings for this infobase are set.';ru='Заданы настройки подключения к этой информационной базе.'");
+		Message = NStr("en='Connection settings for this infobase are configured.';ru='Заданы настройки подключения к этой информационной базе.'");
 		CommonUseClientServer.MessageToUser(Message,,,, Cancel);
 		Return;
 		
@@ -4438,7 +4438,7 @@ Procedure CheckWhetherDataExchangeWithSecondBaseExists(Cancel)
 	If Not IsBlankString(NodeCode)
 		AND Not ExchangePlans[Object.ExchangePlanName].FindByCode(NodeCode).IsEmpty() Then
 		
-		Message = NStr("en='Data synchronization between the applications was already configured.';ru='Синхронизация данных между программами уже была настроена ранее.'");
+		Message = NStr("en='Data synchronization between applications has been configured earlier.';ru='Синхронизация данных между программами уже была настроена ранее.'");
 		CommonUseClientServer.MessageToUser(Message,,,, Cancel);
 		
 	EndIf;

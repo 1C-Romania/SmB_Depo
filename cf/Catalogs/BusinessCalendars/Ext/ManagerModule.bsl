@@ -661,7 +661,7 @@ Function PrintingFormBusinessCalendar(ParametersForPrintingForms) Export
 		While SelectionByQuarter.Next() Do
 			NumberOfQuarter = Template.GetArea("Quarter");
 			NumberOfQuarter.Parameters.NumberOfQuarter = StringFunctionsClientServer.SubstituteParametersInString(
-				NStr("en='%1 Quarter';ru='%1 квартал'"), SelectionByQuarter.QuarterWeek);
+				NStr("en='quarter %1';ru='%1 квартал'"), SelectionByQuarter.QuarterWeek);
 			SpreadsheetDocument.Put(NumberOfQuarter);
 			
 			HeaderBlock = Template.GetArea("HeaderBlock");
@@ -763,7 +763,7 @@ Function PrintingFormBusinessCalendar(ParametersForPrintingForms) Export
 			ColumnOfMonth.Parameters.CalendarDays 	= CalendarDaysQ;
 			ColumnOfMonth.Parameters.WorkDays 		= WorkingDaysQr;
 			ColumnOfMonth.Parameters.NameOfMonth 		= StringFunctionsClientServer.SubstituteParametersInString(
-				NStr("en='%1 Quarter';ru='%1 квартал'"), SelectionByQuarter.QuarterWeek);
+				NStr("en='quarter %1';ru='%1 квартал'"), SelectionByQuarter.QuarterWeek);
 			SpreadsheetDocument.Join(ColumnOfMonth);
 			
 			If SelectionByQuarter.QuarterWeek = 2 

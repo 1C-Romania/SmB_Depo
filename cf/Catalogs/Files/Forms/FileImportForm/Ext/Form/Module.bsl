@@ -75,7 +75,7 @@ Procedure AddRun()
 	
 	If SelectedFiles.Count() = 0 Then
 		CommonUseClientServer.MessageToUser(
-			NStr("en='There are no files for adding.';ru='Нет файлов для добавления.'"), , "SelectedFiles");
+			NStr("en='No files to add.';ru='Нет файлов для добавления.'"), , "SelectedFiles");
 		FieldsNotFilled = True;
 	EndIf;
 	

@@ -166,12 +166,12 @@ Procedure FillCheckProcessingAtServer(Cancel, CheckedAttributes)
 			CommonUseClientServer.AddUserError(Errors,
 				"Roles[%1].RolesSynonym",
 				StringFunctionsClientServer.SubstituteParametersInString(
-					NStr("en='Role ""%1"" is not found in the metadata.';ru='Роль ""%1"" не найдена в метаданных.'"),
+					NStr("en='Role ""%1"" was not found in metadata.';ru='Роль ""%1"" не найдена в метаданных.'"),
 					String.Synonym),
 				"Roles",
 				TreeItems.IndexOf(String),
 				StringFunctionsClientServer.SubstituteParametersInString(
-					NStr("en='Role ""%2"" in row %1 is not found in the metadata.';ru='Роль ""%2"" в строке %1 не найдена в метаданных.'"),
+					NStr("en='The ""%2"" role in line %1 is not found in the metadata.';ru='Роль ""%2"" в строке %1 не найдена в метаданных.'"),
 					"%1", String.Synonym));
 		EndIf;
 	EndDo;
@@ -387,7 +387,7 @@ Procedure RestoreByInitialFilling(Command)
 	
 	ShowQueryBox(
 		New NotifyDescription("RestoreByInitialFillingContinuation", ThisObject),
-		NStr("en='Do you want to restore the profile by the initial filling content?';ru='Восстановить профиль по содержимому начального заполнения?'"),
+		NStr("en='Restore the profile to its initial state?';ru='Восстановить профиль по содержимому начального заполнения?'"),
 		QuestionDialogMode.YesNo);
 	
 EndProcedure
@@ -489,9 +489,9 @@ Procedure RestoreByInitialFillingEnd(Response, NotSpecified) Export
 	UsersServiceClient.ExpandRolesSubsystems(ThisObject);
 	
 	If UpdateAccessGroups Then
-		Text = NStr("en='Profile ""%1%"" restored by start filling content, profile access groups updated';ru='Профиль ""%1"" восстановлен по содержимому начального заполнения, группы доступа профиля обновлены.'");
+		Text = NStr("en='Profile ""%1"" is restored to its initial state, access groups of the profile are updated.';ru='Профиль ""%1"" восстановлен по содержимому начального заполнения, группы доступа профиля обновлены.'");
 	Else
-		Text = NStr("en='Profile ""%1%"" restored by start filling content, profile access groups not updated';ru='Профиль ""%1"" восстановлен по содержимому начального заполнения, группы доступа профиля не обновлены.'");
+		Text = NStr("en='Profile ""%1"" is restored to its initial state, access groups of the profile are not updated.';ru='Профиль ""%1"" восстановлен по содержимому начального заполнения, группы доступа профиля не обновлены.'");
 	EndIf;
 	
 	ShowUserNotification(StringFunctionsClientServer.SubstituteParametersInString(

@@ -364,7 +364,7 @@ Function RunInfobaseUpdate(UpdateParameters) Export
 	
 	// Checks if there are sufficient rights to update the infobase.
 	If Not AreRightsForInfobaseUpdate() Then
-		Message = NStr("en='You have no right to update application version.';ru='Недостаточно прав для обновления версии программы.'");
+		Message = NStr("en='Insufficient rights to update the application version.';ru='Недостаточно прав для обновления версии программы.'");
 		WriteError(Message);
 		Raise Message;
 	EndIf;
@@ -383,7 +383,7 @@ Function RunInfobaseUpdate(UpdateParameters) Export
 			DataVersion, MetadataVersion);
 	Else 
 		Message = StringFunctionsClientServer.SubstituteParametersInString(
-			NStr("en='The initial filling to the %1 version is in progress.';ru='Выполняется начальное заполнение данных до версии ""%1"".'"),
+			NStr("en='Initial data population up to version ""%1"" is in progress.';ru='Выполняется начальное заполнение данных до версии ""%1"".'"),
 			MetadataVersion);
 	EndIf;
 	WriteInformation(Message);
@@ -482,7 +482,7 @@ Function RunInfobaseUpdate(UpdateParameters) Export
 	EndIf;
 
 	Message = StringFunctionsClientServer.SubstituteParametersInString(
-		NStr("en='The Infobase has been successfully updated to the version ""%1"".';ru='Обновление информационной базы на версию ""%1"" выполнено успешно.'"), MetadataVersion);
+		NStr("en='Infobase is successfully updated to version ""%1"".';ru='Обновление информационной базы на версию ""%1"" выполнено успешно.'"), MetadataVersion);
 	WriteInformation(Message);
 	
 	PutSystemChangesDescription = (DataUpdateMode <> "InitialFilling");
@@ -1003,9 +1003,9 @@ Function RunUpdateIteration(Val IterationUpdate, Val Parameters) Export
 		HandlersToExecute = GetUpdatePlan(LibraryID, CurrentIBVersion, MetadataVersion);
 		If HandlersToExecute = Undefined Then
 			If IterationUpdate.ThisMainConfiguration Then 
-				MessagePattern = NStr("en='Plan of the %1 configuration update from %2 version to %3 is not found';ru='Не найден план обновления конфигурации %1 с версии %2 на версию %3'");
+				MessagePattern = NStr("en='Update plan of configuration %1 from version %2 to version %3 is not found';ru='Не найден план обновления конфигурации %1 с версии %2 на версию %3'");
 			Else
-				MessagePattern = NStr("en='Failed to find the library update plan %1 from %2 version to %3 version';ru='Не найден план обновления библиотеки %1 с версии %2 на версию %3'");
+				MessagePattern = NStr("en='Update plan of library %1 from version %2 to version %3 is not found';ru='Не найден план обновления библиотеки %1 с версии %2 на версию %3'");
 			EndIf;
 			Message = StringFunctionsClientServer.SubstituteParametersInString(MessagePattern, LibraryID,
 				CurrentIBVersion, MetadataVersion);
@@ -1026,15 +1026,15 @@ Function RunUpdateIteration(Val IterationUpdate, Val Parameters) Export
 	For Each Version IN HandlersToExecute.Rows Do
 		
 		If Version.Version = "*" Then
-			Message = NStr("en='The obligatory procedures of the infobase update are being performed.';ru='Выполняются обязательные процедуры обновления информационной базы.'");
+			Message = NStr("en='Required procedures of infobase update are in progress.';ru='Выполняются обязательные процедуры обновления информационной базы.'");
 		Else
 			NewInfobaseVersion = Version.Version;
 			If CurrentIBVersion = "0.0.0.0" Then
-				Message = NStr("en='Initial data filling is in progress.';ru='Выполняется начальное заполнение данных.'");
+				Message = NStr("en='Initial data population is in progress.';ru='Выполняется начальное заполнение данных.'");
 			ElsIf IterationUpdate.ThisMainConfiguration Then 
-				Message = NStr("en='The infobase is being updated from the %1 version to %2.';ru='Выполняется обновление информационной базы с версии %1 на версию %2.'");
+				Message = NStr("en='Updating the infobase from version %1 to version %2.';ru='Выполняется обновление информационной базы с версии %1 на версию %2.'");
 			Else
-				Message = NStr("en='Library data is being updated from %3 version to %2.';ru='Выполняется обновление данных библиотеки %3 с версии %1 на версию %2.'");
+				Message = NStr("en='Updating data of library %3 from version %1 to version %2.';ru='Выполняется обновление данных библиотеки %3 с версии %1 на версию %2.'");
 			EndIf;
 			Message = StringFunctionsClientServer.SubstituteParametersInString(Message,
 				CurrentIBVersion, NewInfobaseVersion, LibraryID);
@@ -1071,12 +1071,12 @@ Function RunUpdateIteration(Val IterationUpdate, Val Parameters) Export
 		EndDo;
 		
 		If Version.Version = "*" Then
-			Message = NStr("en='The obligatory procedures of the infobase update have been completed.';ru='Выполнены обязательные процедуры обновления информационной базы.'");
+			Message = NStr("en='Required procedures of infobase update are performed.';ru='Выполнены обязательные процедуры обновления информационной базы.'");
 		Else
 			If IterationUpdate.ThisMainConfiguration Then 
-				Message = NStr("en='The infobase have been updated from the %1 version to %2.';ru='Выполнено обновление информационной базы с версии %1 на версию %2.'");
+				Message = NStr("en='Infobase update from version %1 to version %2 is completed.';ru='Выполнено обновление информационной базы с версии %1 на версию %2.'");
 			Else
-				Message = NStr("en='Library data is being updated from the %3 version to %2.';ru='Выполнено обновление данных библиотеки %3 с версии %1 на версию %2.'");
+				Message = NStr("en='Data of library %3 is updated from version %1 to version %2.';ru='Выполнено обновление данных библиотеки %3 с версии %1 на версию %2.'");
 			EndIf;
 			
 			Message = StringFunctionsClientServer.SubstituteParametersInString(Message,
@@ -1173,7 +1173,7 @@ Function RefreshInfobaseInBackground(FormUUID, IBBlock) Export
 			FormUUID,
 			"InfobaseUpdateService.UpdateInfobaseInBackground",
 			IBUpdateParameters,
-			NStr("en='Background update of the infobase.';ru='Фоновое обновление информационной базы'"));
+			NStr("en='Background update of the infobase';ru='Фоновое обновление информационной базы'"));
 		
 		Result.Insert("IBBlock", IBUpdateParameters.IBBlock);
 		Result.Insert("AShortErrorMessage", Undefined);
@@ -1427,7 +1427,7 @@ Procedure GoFromAnotherApplication()
 	EndIf;
 	
 	If CommonUseReUse.DataSeparationEnabled() Then
-		Raise NStr("en='During the work in the service model the transition from another application is not expected.';ru='При работе в модели сервиса переход с другой программы не предусмотрен.'");
+		Raise NStr("en='When working in SaaS, transfer from another application is unexpected.';ru='При работе в модели сервиса переход с другой программы не предусмотрен.'");
 	EndIf;
 	
 	QueryResult = Query.Execute().Unload()[0];
@@ -1530,7 +1530,7 @@ EndProcedure
 //
 Function EventLogMonitorEvent() Export
 	
-	Return NStr("en='Info base update';ru='Обновление информационной базы'", CommonUseClientServer.MainLanguageCode());
+	Return NStr("en='Infobase update';ru='Обновление информационной базы'", CommonUseClientServer.MainLanguageCode());
 	
 EndFunction
 
@@ -2111,7 +2111,7 @@ Procedure AtFillingToDoList(CurrentWorks) Export
 		Work.ID = ID;
 		Work.ThereIsWork      = (HasHandlersWithError Or IsNotExecutedHandlers);
 		Work.Important        = HasHandlersWithError;
-		Work.Presentation = NStr("en='Application update is not complete';ru='Обновление программы не завершено'");
+		Work.Presentation = NStr("en='Application update is not completed';ru='Обновление программы не завершено'");
 		Work.Form         = "DataProcessor.InfobaseUpdate.Form.InfobaseDelayedUpdateProgressIndication";
 		Work.Owner      = Section;
 	EndDo;
@@ -2512,13 +2512,13 @@ Procedure DisableUpdateHandlers(LibraryID, HandlersToExecute, MetadataVersion, H
 			HandlersExecutionProcess.HandlersToTotal = HandlersExecutionProcess.HandlersToTotal - 1;
 		ElsIf RunningHandler <> Undefined AND RunningHandler.Version <> "*"
 			AND DisabledHandler.Version = MetadataVersion Then
-			ErrorMessage = NStr("en='The handler of the %1 update can not be disabled as it is executed only during the change to the %2 version.';ru='Обработчик обновления %1 не может быть отключен, так как он выполняется только при переходе на версию %2'");
+			ErrorMessage = NStr("en='The handler of %1 update cannot be disabled as it is executed only when changing to version %2.';ru='Обработчик обновления %1 не может быть отключен, так как он выполняется только при переходе на версию %2'");
 			ErrorMessage = StringFunctionsClientServer.SubstituteParametersInString(ErrorMessage,
 				RunningHandler.Procedure, RunningHandler.Version);
 			
 			Raise ErrorMessage;
 		ElsIf RunningHandler = Undefined Then
-			ErrorMessage = NStr("en='The disabled update handler %1 does not exist';ru='Отключаемый обработчик обновления %1 не существует'");
+			ErrorMessage = NStr("en='Disabled update handler %1 does not exist';ru='Отключаемый обработчик обновления %1 не существует'");
 			ErrorMessage = StringFunctionsClientServer.SubstituteParametersInString(ErrorMessage,
 				DisabledHandler.Procedure);
 			
@@ -2677,7 +2677,7 @@ EndProcedure
 
 Procedure ValidateNestedTransaction(TransactionActiveOnExecutionStart, ProcessorsName)
 	
-	EventName = EventLogMonitorEvent() + ". " + NStr("en=""Handlers' execution"";ru='Выполнение обработчиков'", CommonUseClientServer.MainLanguageCode());
+	EventName = EventLogMonitorEvent() + ". " + NStr("en='Executing handlers';ru='Выполнение обработчиков'", CommonUseClientServer.MainLanguageCode());
 	If TransactionActiveOnExecutionStart Then
 		
 		If TransactionActive() Then
@@ -2726,7 +2726,7 @@ Procedure ValidateHandlersProperties(IterationUpdate)
 		If IsBlankString(Handler.Version) Then
 			
 			If Handler.InitialFilling <> True Then
-				ErrorDescription = NStr("en='The Time or Initial filling property is filled incorrectly in the handler.';ru='У обработчика не заполнено свойство Версия или свойство НачальноеЗаполнение.'");
+				ErrorDescription = NStr("en='The Version or InitialFilling property is not filled out in the handler.';ru='У обработчика не заполнено свойство Версия или свойство НачальноеЗаполнение.'");
 			EndIf;
 			
 		ElsIf Handler.Version <> "*" Then
@@ -2785,10 +2785,10 @@ Procedure ValidateHandlersProperties(IterationUpdate)
 		EndIf;
 		
 		If IterationUpdate.ThisMainConfiguration Then
-			ErrorTitle = NStr("en='Error in the configuration update handler property';ru='Ошибка в свойстве обработчика обновления конфигурации'");
+			ErrorTitle = NStr("en='An error occurred in the property of the configuration update handler';ru='Ошибка в свойстве обработчика обновления конфигурации'");
 		Else
 			ErrorTitle = StringFunctionsClientServer.SubstituteParametersInString(
-				NStr("en='Error in the property of the library update handler %1 of the %2 version';ru='Ошибка в свойстве обработчика обновления библиотеки %1 версии %2'"),
+				NStr("en='An error occurred in the property of library update handler %1 of version %2';ru='Ошибка в свойстве обработчика обновления библиотеки %1 версии %2'"),
 				IterationUpdate.Subsystem,
 				IterationUpdate.Version);
 		EndIf;
@@ -2820,7 +2820,7 @@ Function CountHandlersToCurrentVersion(IterationsUpdate)
 		
 	EndDo;
 	
-	Message = NStr("en='To update application to a new version, the handlers will be executed: %1';ru='Для обновления программы на новую версию будут выполнены обработчики: %1'");
+	Message = NStr("en='To update the application to a new version, the following handlers will be executed: %1';ru='Для обновления программы на новую версию будут выполнены обработчики: %1'");
 	Message = StringFunctionsClientServer.SubstituteParametersInString(Message, HandlersCount);
 	WriteInformation(Message);
 	
@@ -2887,7 +2887,7 @@ Procedure WriteInformationAboutUpdate(Handler, HandlersExecutionProcess, InBackg
 	HandlersExecutionProcess.CompletedHandlers = HandlersExecutionProcess.CompletedHandlers + 1;
 	
 	If Not CommonUseReUse.DataSeparationEnabled() Then
-		Message = NStr("en='Update handler is being performed %1 (%2 of %3).';ru='Выполняется обработчик обновления %1 (%2 из %3).'");
+		Message = NStr("en='Update handler %1 is in progress (%2 of %3).';ru='Выполняется обработчик обновления %1 (%2 из %3).'");
 		Message = StringFunctionsClientServer.SubstituteParametersInString(
 			Message, Handler.Procedure,
 			HandlersExecutionProcess.CompletedHandlers, HandlersExecutionProcess.TotalHandlers);
@@ -3216,7 +3216,7 @@ Function ExecutePendingUpdateHandler(DataAboutUpdate, ExecuteFailed = False)
 				HandlersWerePerformed = True;
 				HandlerName = UpdateHandler.HandlerName;
 				Try
-					MessageAboutRunningHandler = NStr("en='%1 update is in progress.';ru='Выполняется процедура обновления ""%1"".'");
+					MessageAboutRunningHandler = NStr("en='Updating ""%1"".';ru='Выполняется процедура обновления ""%1"".'");
 					MessageAboutRunningHandler = StringFunctionsClientServer.SubstituteParametersInString(
 						MessageAboutRunningHandler, HandlerName);
 					WriteLogEvent(EventLogMonitorEvent(), 

@@ -199,7 +199,7 @@ Procedure OnCreateInteractionContext(Context) Export
 	
 	Context.COPContext.Insert("HashInformationMonitor", "");
 	Context.Insert("MessageActionsUnavailable",
-		NStr("en='Displaying of the online support monitor is not available for this configuration.';ru='Отображение монитора Интернет-поддержки недоступно для этой конфигурации.'"));
+		NStr("en='Displaying of the online support dashboard is not available for this configuration.';ru='Отображение монитора Интернет-поддержки недоступно для этой конфигурации.'"));
 	
 EndProcedure
 
@@ -262,7 +262,7 @@ Procedure CheckUpdateHash(COPContext, CommandStructure, HandlerContext)
 			
 			HandlerContext.MakeStop = True;
 			HandlerContext.Insert("StopCauseDescription",
-				NStr("en='There is no new information on the server of users online support.';ru='Новой информации на сервере Интернет-поддержки пользователей нет.'"));
+				NStr("en='There is no new information on the Online user support server.';ru='Новой информации на сервере Интернет-поддержки пользователей нет.'"));
 			
 		EndIf;
 		

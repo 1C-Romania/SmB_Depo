@@ -145,7 +145,7 @@
 			<title xsi:type="v8:LocalStringType">
 				<v8:item>
 					<v8:lang>en</v8:lang>
-					<v8:content>Accounts document</v8:content>
+					<v8:content>Settlement document</v8:content>
 				</v8:item>
 				<v8:item>
 					<v8:lang>ru</v8:lang>
@@ -287,7 +287,7 @@
 			<title xsi:type="v8:LocalStringType">
 				<v8:item>
 					<v8:lang>en</v8:lang>
-					<v8:content>Debt as of the beginning (cur.)</v8:content>
+					<v8:content>Debt as of the start (cur.)</v8:content>
 				</v8:item>
 				<v8:item>
 					<v8:lang>ru</v8:lang>
@@ -306,7 +306,7 @@
 			<title xsi:type="v8:LocalStringType">
 				<v8:item>
 					<v8:lang>en</v8:lang>
-					<v8:content>Debt balance as of the beginning (cur.)</v8:content>
+					<v8:content>Debt balance as of the start (cur.)</v8:content>
 				</v8:item>
 				<v8:item>
 					<v8:lang>ru</v8:lang>
@@ -367,7 +367,7 @@
 			<title xsi:type="v8:LocalStringType">
 				<v8:item>
 					<v8:lang>en</v8:lang>
-					<v8:content>Debt increase (cur.)</v8:content>
+					<v8:content>Increase in debt (cur.)</v8:content>
 				</v8:item>
 				<v8:item>
 					<v8:lang>ru</v8:lang>
@@ -395,7 +395,7 @@
 			<title xsi:type="v8:LocalStringType">
 				<v8:item>
 					<v8:lang>en</v8:lang>
-					<v8:content>Debt decrease (cur.)</v8:content>
+					<v8:content>Decrease in debt (cur.)</v8:content>
 				</v8:item>
 				<v8:item>
 					<v8:lang>ru</v8:lang>
@@ -485,7 +485,7 @@
 			<title xsi:type="v8:LocalStringType">
 				<v8:item>
 					<v8:lang>en</v8:lang>
-					<v8:content>Debt as of the beginning</v8:content>
+					<v8:content>Debt as of the start</v8:content>
 				</v8:item>
 				<v8:item>
 					<v8:lang>ru</v8:lang>
@@ -504,7 +504,7 @@
 			<title xsi:type="v8:LocalStringType">
 				<v8:item>
 					<v8:lang>en</v8:lang>
-					<v8:content>Debt balance as of the beginning</v8:content>
+					<v8:content>Debt balance as of the start</v8:content>
 				</v8:item>
 				<v8:item>
 					<v8:lang>ru</v8:lang>
@@ -551,7 +551,7 @@
 			<title xsi:type="v8:LocalStringType">
 				<v8:item>
 					<v8:lang>en</v8:lang>
-					<v8:content>Advance offset</v8:content>
+					<v8:content>Advance setoff</v8:content>
 				</v8:item>
 				<v8:item>
 					<v8:lang>ru</v8:lang>
@@ -593,7 +593,7 @@
 			<title xsi:type="v8:LocalStringType">
 				<v8:item>
 					<v8:lang>en</v8:lang>
-					<v8:content>Debt decrease</v8:content>
+					<v8:content>Decrease in debt</v8:content>
 				</v8:item>
 				<v8:item>
 					<v8:lang>ru</v8:lang>
@@ -901,7 +901,7 @@
 		<title xsi:type="v8:LocalStringType">
 			<v8:item>
 				<v8:lang>en</v8:lang>
-				<v8:content>Begin of period</v8:content>
+				<v8:content>Period start</v8:content>
 			</v8:item>
 			<v8:item>
 				<v8:lang>ru</v8:lang>
@@ -924,7 +924,7 @@
 		<title xsi:type="v8:LocalStringType">
 			<v8:item>
 				<v8:lang>en</v8:lang>
-				<v8:content>End of period</v8:content>
+				<v8:content>Period end</v8:content>
 			</v8:item>
 			<v8:item>
 				<v8:lang>ru</v8:lang>
@@ -946,7 +946,7 @@
 		<title xsi:type="v8:LocalStringType">
 			<v8:item>
 				<v8:lang>en</v8:lang>
-				<v8:content>Period</v8:content>
+				<v8:content>Accounting period</v8:content>
 			</v8:item>
 			<v8:item>
 				<v8:lang>ru</v8:lang>
@@ -968,7 +968,7 @@
 		<title xsi:type="v8:LocalStringType">
 			<v8:item>
 				<v8:lang>en</v8:lang>
-				<v8:content>Output title</v8:content>
+				<v8:content>Display title</v8:content>
 			</v8:item>
 			<v8:item>
 				<v8:lang>ru</v8:lang>
@@ -988,7 +988,7 @@
 		<dcsset:presentation xsi:type="v8:LocalStringType">
 			<v8:item>
 				<v8:lang>en</v8:lang>
-				<v8:content>Payments to vendors (man. cur.)</v8:content>
+				<v8:content>Settlements with suppliers (man. cur.)</v8:content>
 			</v8:item>
 			<v8:item>
 				<v8:lang>ru</v8:lang>
@@ -1002,7 +1002,7 @@
 					<dcsset:lwsTitle>
 						<v8:item>
 							<v8:lang>en</v8:lang>
-							<v8:content>Opening balance</v8:content>
+							<v8:content>Opening property balance</v8:content>
 						</v8:item>
 						<v8:item>
 							<v8:lang>ru</v8:lang>
@@ -1014,7 +1014,7 @@
 						<dcsset:lwsTitle>
 							<v8:item>
 								<v8:lang>en</v8:lang>
-								<v8:content>Debt</v8:content>
+								<v8:content>Our debt</v8:content>
 							</v8:item>
 							<v8:item>
 								<v8:lang>ru</v8:lang>
@@ -1105,7 +1105,7 @@
 						<dcsset:lwsTitle>
 							<v8:item>
 								<v8:lang>en</v8:lang>
-								<v8:content>Transfered</v8:content>
+								<v8:content>Transferred</v8:content>
 							</v8:item>
 							<v8:item>
 								<v8:lang>ru</v8:lang>
@@ -1118,7 +1118,7 @@
 						<dcsset:lwsTitle>
 							<v8:item>
 								<v8:lang>en</v8:lang>
-								<v8:content>Credited</v8:content>
+								<v8:content>Set off</v8:content>
 							</v8:item>
 							<v8:item>
 								<v8:lang>ru</v8:lang>
@@ -1144,7 +1144,7 @@
 						<dcsset:lwsTitle>
 							<v8:item>
 								<v8:lang>en</v8:lang>
-								<v8:content>Debt</v8:content>
+								<v8:content>Our debt</v8:content>
 							</v8:item>
 							<v8:item>
 								<v8:lang>ru</v8:lang>
@@ -1266,7 +1266,7 @@
 					<dcscor:value xsi:type="v8:LocalStringType">
 						<v8:item>
 							<v8:lang>en</v8:lang>
-							<v8:content>Accounts payable</v8:content>
+							<v8:content>Company debt</v8:content>
 						</v8:item>
 						<v8:item>
 							<v8:lang>ru</v8:lang>
@@ -1347,7 +1347,7 @@
 						<dcsset:userSettingPresentation xsi:type="v8:LocalStringType">
 							<v8:item>
 								<v8:lang>en</v8:lang>
-								<v8:content>By calculations documents</v8:content>
+								<v8:content>By settlement documents</v8:content>
 							</v8:item>
 							<v8:item>
 								<v8:lang>ru</v8:lang>
@@ -1378,7 +1378,7 @@
 		<dcsset:presentation xsi:type="v8:LocalStringType">
 			<v8:item>
 				<v8:lang>en</v8:lang>
-				<v8:content>Balances by vendors settlements (man. cur.)</v8:content>
+				<v8:content>Balance of settlements with suppliers (man. cur.)</v8:content>
 			</v8:item>
 			<v8:item>
 				<v8:lang>ru</v8:lang>
@@ -1393,7 +1393,7 @@
 					<dcsset:lwsTitle>
 						<v8:item>
 							<v8:lang>en</v8:lang>
-							<v8:content>Debt</v8:content>
+							<v8:content>Our debt</v8:content>
 						</v8:item>
 						<v8:item>
 							<v8:lang>ru</v8:lang>
@@ -1518,7 +1518,7 @@
 					<dcscor:value xsi:type="v8:LocalStringType">
 						<v8:item>
 							<v8:lang>en</v8:lang>
-							<v8:content>Vendors settlements balances</v8:content>
+							<v8:content>Balance of settlements with suppliers</v8:content>
 						</v8:item>
 						<v8:item>
 							<v8:lang>ru</v8:lang>
@@ -1599,7 +1599,7 @@
 						<dcsset:userSettingPresentation xsi:type="v8:LocalStringType">
 							<v8:item>
 								<v8:lang>en</v8:lang>
-								<v8:content>By calculations documents</v8:content>
+								<v8:content>By settlement documents</v8:content>
 							</v8:item>
 							<v8:item>
 								<v8:lang>ru</v8:lang>
@@ -1630,7 +1630,7 @@
 		<dcsset:presentation xsi:type="v8:LocalStringType">
 			<v8:item>
 				<v8:lang>en</v8:lang>
-				<v8:content>Accounts payable</v8:content>
+				<v8:content>Company debt</v8:content>
 			</v8:item>
 			<v8:item>
 				<v8:lang>ru</v8:lang>
@@ -1644,7 +1644,7 @@
 					<dcsset:lwsTitle>
 						<v8:item>
 							<v8:lang>en</v8:lang>
-							<v8:content>Opening balance</v8:content>
+							<v8:content>Opening property balance</v8:content>
 						</v8:item>
 						<v8:item>
 							<v8:lang>ru</v8:lang>
@@ -1656,7 +1656,7 @@
 						<dcsset:lwsTitle>
 							<v8:item>
 								<v8:lang>en</v8:lang>
-								<v8:content>Debt</v8:content>
+								<v8:content>Our debt</v8:content>
 							</v8:item>
 							<v8:item>
 								<v8:lang>ru</v8:lang>
@@ -1747,7 +1747,7 @@
 						<dcsset:lwsTitle>
 							<v8:item>
 								<v8:lang>en</v8:lang>
-								<v8:content>Transfered</v8:content>
+								<v8:content>Transferred</v8:content>
 							</v8:item>
 							<v8:item>
 								<v8:lang>ru</v8:lang>
@@ -1760,7 +1760,7 @@
 						<dcsset:lwsTitle>
 							<v8:item>
 								<v8:lang>en</v8:lang>
-								<v8:content>Credited</v8:content>
+								<v8:content>Set off</v8:content>
 							</v8:item>
 							<v8:item>
 								<v8:lang>ru</v8:lang>
@@ -1786,7 +1786,7 @@
 						<dcsset:lwsTitle>
 							<v8:item>
 								<v8:lang>en</v8:lang>
-								<v8:content>Debt</v8:content>
+								<v8:content>Our debt</v8:content>
 							</v8:item>
 							<v8:item>
 								<v8:lang>ru</v8:lang>
@@ -1912,7 +1912,7 @@
 					<dcscor:value xsi:type="v8:LocalStringType">
 						<v8:item>
 							<v8:lang>en</v8:lang>
-							<v8:content>Accounts payable</v8:content>
+							<v8:content>Company debt</v8:content>
 						</v8:item>
 						<v8:item>
 							<v8:lang>ru</v8:lang>
@@ -2001,7 +2001,7 @@
 							<dcsset:userSettingPresentation xsi:type="v8:LocalStringType">
 								<v8:item>
 									<v8:lang>en</v8:lang>
-									<v8:content>By calculations documents</v8:content>
+									<v8:content>By settlement documents</v8:content>
 								</v8:item>
 								<v8:item>
 									<v8:lang>ru</v8:lang>
@@ -2033,7 +2033,7 @@
 		<dcsset:presentation xsi:type="v8:LocalStringType">
 			<v8:item>
 				<v8:lang>en</v8:lang>
-				<v8:content>Vendors settlements balances</v8:content>
+				<v8:content>Balance of settlements with suppliers</v8:content>
 			</v8:item>
 			<v8:item>
 				<v8:lang>ru</v8:lang>
@@ -2048,7 +2048,7 @@
 					<dcsset:lwsTitle>
 						<v8:item>
 							<v8:lang>en</v8:lang>
-							<v8:content>Debt</v8:content>
+							<v8:content>Our debt</v8:content>
 						</v8:item>
 						<v8:item>
 							<v8:lang>ru</v8:lang>
@@ -2177,7 +2177,7 @@
 					<dcscor:value xsi:type="v8:LocalStringType">
 						<v8:item>
 							<v8:lang>en</v8:lang>
-							<v8:content>Accounts payable</v8:content>
+							<v8:content>Company debt</v8:content>
 						</v8:item>
 						<v8:item>
 							<v8:lang>ru</v8:lang>
@@ -2266,7 +2266,7 @@
 							<dcsset:userSettingPresentation xsi:type="v8:LocalStringType">
 								<v8:item>
 									<v8:lang>en</v8:lang>
-									<v8:content>By calculations documents</v8:content>
+									<v8:content>By settlement documents</v8:content>
 								</v8:item>
 								<v8:item>
 									<v8:lang>ru</v8:lang>

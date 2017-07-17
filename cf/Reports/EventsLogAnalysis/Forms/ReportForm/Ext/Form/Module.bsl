@@ -43,7 +43,7 @@ Procedure ResultDetailProcessing(Item, Details, StandardProcessing)
 		
 	EndIf;
 	
-	If Not CurrentVariantDescription = NStr("en='Duration of the scheduled jobs work';ru='Продолжительность работы регламентных заданий'") Then
+	If Not CurrentVariantDescription = NStr("en='Duration of scheduled jobs';ru='Продолжительность работы регламентных заданий'") Then
 		StandardProcessing = True;
 		Return;
 	EndIf;
@@ -53,8 +53,8 @@ Procedure ResultDetailProcessing(Item, Details, StandardProcessing)
 	If TypeDetails = "DecryptionScheduledJobs" Then
 		
 		VariantDetails = New ValueList;
-		VariantDetails.Add("InfoAboutScheduledJob", NStr("en='Information on the scheduled job';ru='Сведения о регламентном задании'"));
-		VariantDetails.Add("OpenEventLogMonitor", NStr("en='Proceed to the event log';ru='Перейти к журналу регистрации'"));
+		VariantDetails.Add("InfoAboutScheduledJob", NStr("en='Scheduled job information';ru='Сведения о регламентном задании'"));
+		VariantDetails.Add("OpenEventLogMonitor", NStr("en='Go to event log';ru='Перейти к журналу регистрации'"));
 		
 		NotifyDescription = New NotifyDescription("ResultDetailDataProcessorEnd", ThisObject, Details);
 		ShowChooseFromMenu(NOTifyDescription, VariantDetails);
@@ -231,7 +231,7 @@ Function GenerateReportServer(ReportParameters)
 		UUID,
 		"Reports.EventsLogAnalysis.Generate",
 		ReportParameters,
-		NStr("en='Report execution: Events log monitor analysis';ru='Выполнение отчета: Анализ журнала регистрации'"));
+		NStr("en='Running report: Event log analysis';ru='Выполнение отчета: Анализ журнала регистрации'"));
 	
 	StorageAddress       = ExecutionResult.StorageAddress;
 	JobID = ExecutionResult.JobID;

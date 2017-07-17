@@ -1046,7 +1046,7 @@ Function FixedPeriodsList(Val BeginOfPeriod, PeriodKind) Export
 	Today = BegOfDay(Today);
 	
 	NavigationPointItemPreviouslyPresentation = NStr("en='Previously...';ru='Раньше ...'");
-	NavigationPointLaterPresentation = NStr("en='Later...';ru='Позже...'");
+	NavigationPointLaterPresentation = NStr("en='Later ...';ru='Позже...'");
 	
 	If PeriodKind = PredefinedValue("Enum.AvailableReportPeriods.Day") Then
 		CurrentDayOfWeek   = WeekDay(Today);
@@ -1090,7 +1090,7 @@ Function FixedPeriodsList(Val BeginOfPeriod, PeriodKind) Export
 		For Counter = 0 To 6 Do
 			Period = InitialWeek + Counter * 604800;
 			EndOfPeriod  = EndOfWeek(Period);
-			PeriodPresentation = Format(Period, "DF=dd.MM") + " - " + Format(EndOfPeriod, "DLF=D") + " (" + WeekOfYear(EndOfPeriod) + " " + NStr("en='Week Of Year';ru='неделя года'") + ")";
+			PeriodPresentation = Format(Period, "DF=dd.MM") + " - " + Format(EndOfPeriod, "DLF=D") + " (" + WeekOfYear(EndOfPeriod) + " " + NStr("en='week of the year';ru='неделя года'") + ")";
 			If Period = CurrentWeekBeginning Then
 				PeriodPresentation = PeriodPresentation + " - " + NStr("en='this week';ru='эта неделя'");
 			EndIf;
@@ -1111,7 +1111,7 @@ Function FixedPeriodsList(Val BeginOfPeriod, PeriodKind) Export
 		SelectedDecade = ?(SelectedDay <= 10, 1, ?(SelectedDay <= 20, 2, 3));
 		CurrentTenDaysTotally   = CurrentYear*36 + (CurrentMonth-1)*3 + (CurrentTenDays-1);
 		SelectedDecadeAbsolutely = SelectedYear*36 + (SelectedMonth-1)*3 + (SelectedDecade-1);
-		StringTenDays = NStr("en='decade';ru='декада'");
+		StringTenDays = NStr("en='ten-day period';ru='декада'");
 		
 		// Calculation of initial and ending period according to the formula.
 		Factor = (SelectedDecadeAbsolutely - CurrentTenDaysTotally - 2)/7;
@@ -1135,7 +1135,7 @@ Function FixedPeriodsList(Val BeginOfPeriod, PeriodKind) Export
 			MonthInYear = Int(DecadeInYear/3) + 1;
 			DecadeInMonth = DecadeInYear - (MonthInYear-1)*3 + 1;
 			Period = Date(Year, MonthInYear, (DecadeInMonth - 1) * 10 + 1);
-			Presentation = Format(Period, "DF='MMMM yyyy'") + ", " + Left("III", DecadeInMonth) + " " + StringTenDays + ?(TenDays = CurrentTenDaysTotally, " - " + NStr("en='this decade';ru='эта декада'"), "");
+			Presentation = Format(Period, "DF='MMMM yyyy'") + ", " + Left("III", DecadeInMonth) + " " + StringTenDays + ?(TenDays = CurrentTenDaysTotally, " - " + NStr("en='this ten-day period';ru='эта декада'"), "");
 			PeriodsList.Add(Period, Presentation);
 		EndDo;
 		
@@ -1252,7 +1252,7 @@ Function FixedPeriodsList(Val BeginOfPeriod, PeriodKind) Export
 			HalfInYear = HalfYear - Year*2 + 1;
 			MonthInYear = (HalfInYear-1)*6 + 1;
 			Period = Date(Year, MonthInYear, 1);
-			Presentation = Left("II", HalfInYear) + " " + StringHalfYear + " " + Format(Period, "DF='yyyy'") + ?(HalfYear = CurrentHalfyearAbsolutely, " - " + NStr("en='this half';ru='это полугодие'"), "");
+			Presentation = Left("II", HalfInYear) + " " + StringHalfYear + " " + Format(Period, "DF='yyyy'") + ?(HalfYear = CurrentHalfyearAbsolutely, " - " + NStr("en='this half-year';ru='это полугодие'"), "");
 			PeriodsList.Add(Period, Presentation);
 		EndDo;
 		
@@ -1319,7 +1319,7 @@ Function CalculatingPeriodsList(PeriodKind) Export
 	ElsIf PeriodKind = PredefinedValue("Enum.AvailableReportPeriods.Month") Then
 		PeriodsList.Add(StandardPeriodVariant.LastMonth);
 		PeriodsList.Add(StandardPeriodVariant.LastMonthTillSameDate);
-		PeriodsList.Add(StandardPeriodVariant.Month, NStr("en='Since the same date of the previous month';ru='С такой же даты прошлого месяца'"));
+		PeriodsList.Add(StandardPeriodVariant.Month, NStr("en='From the same date of the previous month';ru='С такой же даты прошлого месяца'"));
 		PeriodsList.Add(StandardPeriodVariant.ThisMonth);
 		PeriodsList.Add(StandardPeriodVariant.FromBeginningOfThisMonth);
 		PeriodsList.Add(StandardPeriodVariant.TillEndOfThisMonth);
@@ -1358,7 +1358,7 @@ EndFunction
 Function PresentationStandardPeriod(StandardPeriod, PeriodKind) Export
 	
 	If StandardPeriod.Variant = StandardPeriodVariant.Month Then
-		Return NStr("en='Since the same date of the previous month';ru='С такой же даты прошлого месяца'");
+		Return NStr("en='From the same date of the previous month';ru='С такой же даты прошлого месяца'");
 	ElsIf StandardPeriod.Variant <> StandardPeriodVariant.Custom Then
 		Return String(StandardPeriod.Variant);
 	EndIf;
@@ -1995,7 +1995,7 @@ Function ParametersOfCopying(PointType, Collection)
 	Else
 		
 		Raise StringFunctionsClientServer.SubstituteParametersInString(
-			NStr("en='Copy %1 items is not supported';ru='Копирование элементов ""%1"" не поддерживается'"),
+			NStr("en='Copying of items ""%1"" is not supported.';ru='Копирование элементов ""%1"" не поддерживается'"),
 			PointType);
 		
 	EndIf;

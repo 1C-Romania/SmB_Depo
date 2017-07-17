@@ -306,7 +306,7 @@
 			<ObjectPresentation>
 				<v8:item>
 					<v8:lang>en</v8:lang>
-					<v8:content>Information base job</v8:content>
+					<v8:content>Infobase job</v8:content>
 				</v8:item>
 				<v8:item>
 					<v8:lang>ru</v8:lang>
@@ -344,7 +344,7 @@
 					<ToolTip>
 						<v8:item>
 							<v8:lang>en</v8:lang>
-							<v8:content>Task usage flag</v8:content>
+							<v8:content>Indicates that the job is in use</v8:content>
 						</v8:item>
 						<v8:item>
 							<v8:lang>ru</v8:lang>
@@ -399,7 +399,7 @@
 					<ToolTip>
 						<v8:item>
 							<v8:lang>en</v8:lang>
-							<v8:content>Date of the next scheduled launch of the task (UTC)</v8:content>
+							<v8:content>Date of next scheduled job start (UTC)</v8:content>
 						</v8:item>
 						<v8:item>
 							<v8:lang>ru</v8:lang>
@@ -451,7 +451,7 @@
 					<ToolTip>
 						<v8:item>
 							<v8:lang>en</v8:lang>
-							<v8:content>Queue task status</v8:content>
+							<v8:content>Queue job state</v8:content>
 						</v8:item>
 						<v8:item>
 							<v8:lang>ru</v8:lang>
@@ -503,7 +503,7 @@
 					<ToolTip>
 						<v8:item>
 							<v8:lang>en</v8:lang>
-							<v8:content>ID of the background job that is performing the job queue</v8:content>
+							<v8:content>Identifier of a background job performing the queue job</v8:content>
 						</v8:item>
 						<v8:item>
 							<v8:lang>ru</v8:lang>
@@ -555,7 +555,7 @@
 					<ToolTip>
 						<v8:item>
 							<v8:lang>en</v8:lang>
-							<v8:content>Flag of exclusive tasks performance in the area</v8:content>
+							<v8:content>Check box of exclusive job performing in the area</v8:content>
 						</v8:item>
 						<v8:item>
 							<v8:lang>ru</v8:lang>
@@ -612,7 +612,7 @@
 					<ToolTip>
 						<v8:item>
 							<v8:lang>en</v8:lang>
-							<v8:content>Sequence number of attempt to perform the task</v8:content>
+							<v8:content>Sequence number of job execution attempt</v8:content>
 						</v8:item>
 						<v8:item>
 							<v8:lang>ru</v8:lang>
@@ -668,7 +668,7 @@
 					<ToolTip>
 						<v8:item>
 							<v8:lang>en</v8:lang>
-							<v8:content>Task method name</v8:content>
+							<v8:content>Job method name</v8:content>
 						</v8:item>
 						<v8:item>
 							<v8:lang>ru</v8:lang>
@@ -720,7 +720,7 @@
 					<ToolTip>
 						<v8:item>
 							<v8:lang>en</v8:lang>
-							<v8:content>Parameters for the method executing the task (structure)</v8:content>
+							<v8:content>Parameters for method executing the job (structure)</v8:content>
 						</v8:item>
 						<v8:item>
 							<v8:lang>ru</v8:lang>
@@ -775,7 +775,7 @@
 					<ToolTip>
 						<v8:item>
 							<v8:lang>en</v8:lang>
-							<v8:content>Date of the last task performance start</v8:content>
+							<v8:content>Date of last task execution start</v8:content>
 						</v8:item>
 						<v8:item>
 							<v8:lang>ru</v8:lang>
@@ -810,7 +810,7 @@
 					<Synonym>
 						<v8:item>
 							<v8:lang>en</v8:lang>
-							<v8:content>Date of the last launch completion</v8:content>
+							<v8:content>Date of last launch completion</v8:content>
 						</v8:item>
 						<v8:item>
 							<v8:lang>ru</v8:lang>
@@ -830,7 +830,7 @@
 					<ToolTip>
 						<v8:item>
 							<v8:lang>en</v8:lang>
-							<v8:content>Date of the last task performance start</v8:content>
+							<v8:content>Date of last task execution start</v8:content>
 						</v8:item>
 						<v8:item>
 							<v8:lang>ru</v8:lang>
@@ -886,7 +886,7 @@
 					<ToolTip>
 						<v8:item>
 							<v8:lang>en</v8:lang>
-							<v8:content>Task key</v8:content>
+							<v8:content>Job key</v8:content>
 						</v8:item>
 						<v8:item>
 							<v8:lang>ru</v8:lang>
@@ -921,7 +921,7 @@
 					<Synonym>
 						<v8:item>
 							<v8:lang>en</v8:lang>
-							<v8:content>Interval of repeat in case of abnormal termination</v8:content>
+							<v8:content>Retry interval in case of crash</v8:content>
 						</v8:item>
 						<v8:item>
 							<v8:lang>ru</v8:lang>
@@ -943,7 +943,7 @@
 					<ToolTip>
 						<v8:item>
 							<v8:lang>en</v8:lang>
-							<v8:content>Time interval (in seconds)at the end of which the task will be restarted if its previous start was terminated</v8:content>
+							<v8:content>Time interval (in seconds) after which the job will be restarted if the previous start crashed</v8:content>
 						</v8:item>
 						<v8:item>
 							<v8:lang>ru</v8:lang>
@@ -1030,7 +1030,7 @@
 					<Synonym>
 						<v8:item>
 							<v8:lang>en</v8:lang>
-							<v8:content>Number of repeats at abnormal termination</v8:content>
+							<v8:content>Number of retries after abnormal termination</v8:content>
 						</v8:item>
 						<v8:item>
 							<v8:lang>ru</v8:lang>
@@ -1052,7 +1052,7 @@
 					<ToolTip>
 						<v8:item>
 							<v8:lang>en</v8:lang>
-							<v8:content>Number of repeats at the jobs abnormal termination</v8:content>
+							<v8:content>Number of retries after job abnormal termination</v8:content>
 						</v8:item>
 						<v8:item>
 							<v8:lang>ru</v8:lang>

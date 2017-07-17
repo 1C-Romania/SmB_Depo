@@ -9,7 +9,7 @@ Procedure OnCreateAtServer(Cancel, StandardProcessing)
 	Try
 		
 		If Not Users.InfobaseUserWithFullAccess() Then
-			Raise NStr("en='You have no right to end session!';ru='Недостаточно прав для завершения сеанса!'");
+			Raise NStr("en='Insufficient rights to end session.';ru='Недостаточно прав для завершения сеанса!'");
 		EndIf;
 		
 		SessionNumber = Parameters.SessionNumber;
@@ -30,7 +30,7 @@ Function StartSessionEnd() Export
 	If IsBlankString(Password) Then
 		
 		CommonUseClientServer.MessageToUser(
-			NStr("en='No password is specified to access the service.';ru='Не указан пароль для доступа к сервису!'"), ,
+			NStr("en='Password for access to the service is not specified.';ru='Не указан пароль для доступа к сервису!'"), ,
 			"Password"
 		);
 		
@@ -68,7 +68,7 @@ Procedure StartSessionAtServerEnd()
 		"RemoteAdministrationSTLService.DataAreaSessionEnd",
 		JobParameters,
 		,
-		NStr("en='End the active session';ru='Завершение активного сеанса'")
+		NStr("en='End active session';ru='Завершение активного сеанса'")
 	);
 	
 	JobID = Task.UUID;
@@ -110,7 +110,7 @@ Function BackGroundJobFinished(JobID)
 	
 	If Task = Undefined Then
 		
-		Raise NStr("en='Background job is not found!';ru='Фоновое задание не найдено!'");
+		Raise NStr("en='Background job is not found.';ru='Фоновое задание не найдено!'");
 		
 	Else
 		
@@ -120,7 +120,7 @@ Function BackGroundJobFinished(JobID)
 			
 		ElsIf Task.Status = BackgroundJobState.Canceled Then
 			
-			Raise NStr("en='Background job is canceled by administrator!';ru='Фоновое задание отменено администратором!'");
+			Raise NStr("en='Background job is canceled by administrator';ru='Фоновое задание отменено администратором!'");
 			
 		Else
 			

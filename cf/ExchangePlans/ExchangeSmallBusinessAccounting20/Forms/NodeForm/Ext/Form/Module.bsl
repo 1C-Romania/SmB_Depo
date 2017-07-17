@@ -145,7 +145,7 @@ EndProcedure
 Procedure CompanyFilterClean(Command)
 	
 	HeaderText = NStr("en='Confirmation';ru='Подтверждение'");
-	QuestionText   = NStr("en='Do you want to clear the filter by companies?';ru='Очистить отбор по организациям?'");
+	QuestionText   = NStr("en='Clear filter by companies?';ru='Очистить отбор по организациям?'");
 	Response = Undefined;
 
 	ShowQueryBox(New NotifyDescription("ClearFilterByCompanyEnd", ThisObject), QuestionText, QuestionDialogMode.YesNo,,,HeaderText);
@@ -169,7 +169,7 @@ EndProcedure
 Procedure ClearDocumentTypesFilter(Command)
 	
 	HeaderText = NStr("en='Confirmation';ru='Подтверждение'");
-	QuestionText   = NStr("en='Do you want to clear the filter by document types?';ru='Очистить отбор по видам документов?'");
+	QuestionText   = NStr("en='Clear filter by document kinds?';ru='Очистить отбор по видам документов?'");
 	Response = Undefined;
 
 	ShowQueryBox(New NotifyDescription("ClearFilterByDocumentKindEnd", ThisObject), QuestionText, QuestionDialogMode.YesNo,,,HeaderText);

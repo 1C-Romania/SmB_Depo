@@ -238,7 +238,7 @@ Function GetJobs(Val Filter) Export
 	EndDo;
 	
 	If IsBlankString(QueryText) Then
-		Raise NStr("en='Incorrect filter value - no catalog which jobs satisfy the filter conditions is found.';ru='Некорректное значение отбора - не обнаружено на одного справочника, задания из которого подходили бы под условия в отборе!'");
+		Raise NStr("en='Incorrect filter value. No catalog whose tasks meet the filter conditions was found.';ru='Некорректное значение отбора - не обнаружено на одного справочника, задания из которого подходили бы под условия в отборе!'");
 	EndIf;
 	
 	Query.Text = QueryText;
@@ -302,7 +302,7 @@ Function AddJob(JobParameters) Export
 	
 	// Check method name
 	If Not JobParameters.Property("MethodName") Then
-		Raise(NStr("en='Obligatory task parameter MethodName is not specified';ru='Не задан обязательный параметр задания ИмяМетода'"));
+		Raise(NStr("en='Required parameter of the MethodName job is not specified';ru='Не задан обязательный параметр задания ИмяМетода'"));
 	EndIf;
 	
 	ValidateRegistrationHandlerTasks(JobParameters.MethodName);
@@ -556,7 +556,7 @@ Procedure ChangeTask(ID, JobParameters) Export
 		// Creating a job record.
 		
 		If Not CommonUse.RefExists(ID) Then
-			MessagePattern = NStr("en='Job with ID %1 to be changed is not found. Data area: %2';ru='Задание с идентификатором %1 к изменению не найдено. Область данных: %2'");
+			MessagePattern = NStr("en='Job with ID %1 to change is not found. Data area: %2';ru='Задание с идентификатором %1 к изменению не найдено. Область данных: %2'");
 			MessageText = StringFunctionsClientServer.SubstituteParametersInString(MessagePattern, ID, Task.DataArea);
 			Raise(MessageText);
 		EndIf;
@@ -653,7 +653,7 @@ Function TemplateByName(Val Name) Export
 	
 	Result = Query.Execute();
 	If Result.IsEmpty() Then
-		MessagePattern = NStr("en='job template with name %1 is not found.';ru='Не найден шаблон задания с именем %1'");
+		MessagePattern = NStr("en='Job template with name %1 is not found';ru='Не найден шаблон задания с именем %1'");
 		MessageText = StringFunctionsClientServer.SubstituteParametersInString(MessagePattern, Name);
 		Raise(MessageText);
 	EndIf;
@@ -685,7 +685,7 @@ EndFunction
 Procedure ValidateJobParameters(Parameters, Mode)
 	
 	If TypeOf(Parameters) <> Type("Structure") Then
-		MessagePattern = NStr("en='Invalid type of the job parameters set is passed - %1';ru='Передан недопустимый тип набора параметров задания - %1'");
+		MessagePattern = NStr("en='Invalid type of task parameters - %1 was passed';ru='Передан недопустимый тип набора параметров задания - %1'");
 		MessageText = StringFunctionsClientServer.SubstituteParametersInString(MessagePattern, TypeOf(Parameters));
 		Raise(MessageText);
 	EndIf;
@@ -705,7 +705,7 @@ Procedure ValidateJobParameters(Parameters, Mode)
 		If ParameterDescription = Undefined 
 			OR Not ParameterDescription[Mode] Then
 			
-			MessagePattern = NStr("en='Invalid job parameter is passed - %1';ru='Передан недопустимый параметр задания - %1'");
+			MessagePattern = NStr("en='Invalid task parameter - 1% passed';ru='Передан недопустимый параметр задания - %1'");
 			MessageText = StringFunctionsClientServer.SubstituteParametersInString(MessagePattern, 
 				KeyAndValue.Key);
 			Raise(MessageText);
@@ -715,7 +715,7 @@ Procedure ValidateJobParameters(Parameters, Mode)
 			// Filter descriptions array
 			For Each FilterDescription IN KeyAndValue.Value Do
 				If TypeOf(FilterDescription) <> Type("Structure") Then
-					MessagePattern = NStr("en='Invalid type %1 in selection description collection %2 is passed';ru='Передан недопустимый тип %1 в коллекции описания отбора %2'");
+					MessagePattern = NStr("en='Invalid type %1 was passed in filter description collection %2';ru='Передан недопустимый тип %1 в коллекции описания отбора %2'");
 					MessageText = StringFunctionsClientServer.SubstituteParametersInString(MessagePattern, 
 						TypeOf(FilterDescription), KeyAndValue.Key);
 					Raise(MessageText);
@@ -735,7 +735,7 @@ Procedure ValidateJobParameters(Parameters, Mode)
 				
 				// Check comparison kind
 				If KindsCompare.Get(FilterDescription.ComparisonType) = Undefined Then
-					MessagePattern = NStr("en='Invalid matching type in the selection description in the %1 selection description collection is passed';ru='Передан недопустимый вид сравнения в описании отбора в коллекции описания отбора %1'");
+					MessagePattern = NStr("en='Invalid comparison kind in filter description in filter description collection %1';ru='Передан недопустимый вид сравнения в описании отбора в коллекции описания отбора %1'");
 					MessageText = StringFunctionsClientServer.SubstituteParametersInString(MessagePattern, 
 						KeyAndValue.Key);
 					Raise(MessageText);
@@ -772,7 +772,7 @@ Procedure ValidateJobParameters(Parameters, Mode)
 		
 		If Parameters.Property("DataArea") Then
 			If Parameters.DataArea <> CommonUse.SessionSeparatorValue() Then
-				Raise(NStr("en='In this session the reference to the data from the other data area is unavailable!';ru='В данном сеансе недопустимо обращение к данным из другой области данных!'"));
+				Raise(NStr("en='Cannot access data from another data area in this session.';ru='В данном сеансе недопустимо обращение к данным из другой области данных!'"));
 			EndIf;
 		Else
 			ParameterDescription = ParameterDescriptions.Find(Upper("DataArea"), "NameUpper");
@@ -787,7 +787,7 @@ Procedure ValidateJobParameters(Parameters, Mode)
 	If Parameters.Property("ScheduledStartTime")
 		AND Not ValueIsFilled(Parameters.ScheduledStartTime) Then
 		
-		MessagePattern = NStr("en='Invalid value %1 of the job parameter %2 is passed';ru='Передано недопустимое значение %1 параметра задания %2'");
+		MessagePattern = NStr("en='Invalid value %1 of task parameter %2 was passed';ru='Передано недопустимое значение %1 параметра задания %2'");
 		MessageText = StringFunctionsClientServer.SubstituteParametersInString(MessagePattern, 
 			Parameters.ScheduledStartTime, 
 			ParameterDescriptions.Find(Upper("ScheduledStartTime"), "NameUpper").Name);
@@ -799,7 +799,7 @@ EndProcedure
 Procedure ValidateValueInAccordanceToDescriptionParameter(Val Value, Val ParameterDescription)
 	
 	If Not ParameterDescription.Type.ContainsType(TypeOf(Value)) Then
-		MessagePattern = NStr("en='Invalid type %1 of the job parameter %2 is passed';ru='Передан недопустимый тип %1 параметра задания %2'");
+		MessagePattern = NStr("en='Invalid type %1 of %2 task parameter was passed';ru='Передан недопустимый тип %1 параметра задания %2'");
 		MessageText = StringFunctionsClientServer.SubstituteParametersInString(MessagePattern, 
 			TypeOf(Value), ParameterDescription.Name);
 		Raise(MessageText);
@@ -816,7 +816,7 @@ EndFunction
 Procedure ValidateRegistrationHandlerTasks(Val MethodName)
 	
 	If JobQueueServiceReUse.AccordanceMethodNamesToAliases().Get(Upper(MethodName)) = Undefined Then
-		MessagePattern = NStr("en='%1 method alias for using as a job queue handler is not registered.';ru='Не зарегистрирован псевдоним метода %1 для использования в качестве обработчика задания очереди.'");
+		MessagePattern = NStr("en='Method alias %1 is not registered to be used as a job queue handler.';ru='Не зарегистрирован псевдоним метода %1 для использования в качестве обработчика задания очереди.'");
 		MessageText = StringFunctionsClientServer.SubstituteParametersInString(MessagePattern, MethodName);
 		Raise(MessageText);
 	EndIf;
@@ -826,14 +826,14 @@ EndProcedure
 Function TasksDetailsOnIdIdentificator(Val ID)
 	
 	If Not ValueIsFilled(ID) OR Not CommonUse.RefExists(ID) Then
-		MessagePattern = NStr("en='Invalid value %1 of the job parameter ID is passed';ru='Передано недопустимое значение %1 параметра задания Идентификатор'");
+		MessagePattern = NStr("en='Invalid value %1 of job parameter ID was passed';ru='Передано недопустимое значение %1 параметра задания Идентификатор'");
 		MessageText = StringFunctionsClientServer.SubstituteParametersInString(MessagePattern, ID);
 		Raise(MessageText);
 	EndIf;
 	
 	Jobs = GetJobs(New Structure("ID", ID));
 	If Jobs.Count() = 0 Then
-		MessagePattern = NStr("en='Job queue with the %1 ID is not found';ru='Задание очереди с идентификатором %1 не найдено'");
+		MessagePattern = NStr("en='Queue job with ID %1 is not found';ru='Задание очереди с идентификатором %1 не найдено'");
 		MessageText = StringFunctionsClientServer.SubstituteParametersInString(MessagePattern, ID);
 		Raise(MessageText);
 	EndIf;
@@ -849,7 +849,7 @@ EndFunction
 //
 Function GetJobsWithSameKeyDuplicationErrorMessage() Export
 	
-	Return NStr("en=""Doubling of jobs with the same field value 'Key' unavailable."";ru=""Дублирование заданий с одинаковым значения поля 'Ключ' не допустимо.""");
+	Return NStr("en=""Job duplication with the same value of the 'Key' field is not allowed."";ru=""Дублирование заданий с одинаковым значения поля 'Ключ' не допустимо.""");
 	
 EndFunction
 
@@ -861,7 +861,7 @@ EndFunction
 //
 Function GetAnotherAreaDataGettingExceptionText()
 	
-	Return NStr("en='In this session the reference to the data from the other data area is unavailable!';ru='В данном сеансе недопустимо обращение к данным из другой области данных!'");
+	Return NStr("en='Cannot access data from another data area in this session.';ru='В данном сеансе недопустимо обращение к данным из другой области данных!'");
 	
 EndFunction
 

@@ -43,7 +43,7 @@ Procedure FillCheckProcessingAtServer(Cancel, CheckedAttributes)
 	   AND Object.Description = PersonalAccessGroupsName Then
 		
 		CommonUseClientServer.MessageToUser(
-			NStr("en='This description is reserved.';ru='Это наименование зарезервировано.'"),
+			NStr("en='This name is reserved.';ru='Это наименование зарезервировано.'"),
 			,
 			"Object.Description",
 			,

@@ -17,7 +17,7 @@ Procedure FillCheckProcessing(Cancel, CheckedAttributes)
 	If Not IsFolder Then
 	
 		If StrLen(TrimAll(Code)) <> 8 AND StrLen(TrimAll(Code)) <> 11 Then
-			MessageText = NStr("en='SWIFT must have 8 or 11 symbols.';ru='SWIFT банка должен иметь 8 или 11 знаков.'");
+			MessageText = NStr("en='SWIFT must have 8 or 11 characters.';ru='SWIFT банка должен иметь 8 или 11 знаков.'");
 			SmallBusinessServer.ShowMessageAboutError(
 				ThisObject,
 				MessageText,

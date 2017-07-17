@@ -737,7 +737,7 @@ Procedure CalculateByFormulas()
 		Try
 			CalculatedSum = Eval(Formula);
 		Except
-			MessageText = NStr("en='Failed to calculate the accrual amount in the row No.%LineNumber%. The formula probably contains an error, or indicators are not filled.';ru='Не удалось рассчитать сумму начисления в строке №%НомерСтроки%. Возможно, формула содержит ошибку или не заполнены показатели.'");
+			MessageText = NStr("en='Cannot calculate the accrual amount in the line No. %LineNumber%. The formula may contain an error, or indicators are not filled in.';ru='Не удалось рассчитать сумму начисления в строке №%НомерСтроки%. Возможно, формула содержит ошибку или не заполнены показатели.'");
 			MessageText = StrReplace(MessageText, "%LineNumber%", (Object.AccrualsDeductions.IndexOf(AccrualsRow) + 1));
 			MessageField = "Object.AccrualsDeductions[" + Object.AccrualsDeductions.IndexOf(AccrualsRow) + "].AccrualDeductionKind";
 			
@@ -931,7 +931,7 @@ Procedure Fill(Command)
 	If Not ValueIsFilled(Object.StructuralUnit) Then
 		
 		Message = New UserMessage();
-		Message.Text = NStr("en='The department is not filled! Document filling is cancelled.';ru='Не заполнено подразделение! Заполнение документа отменено.'");
+		Message.Text = NStr("en='Department is not populated. Document population is canceled.';ru='Не заполнено подразделение! Заполнение документа отменено.'");
 		Message.Field = "Object.StructuralUnit";
 		Message.Message();
 		
@@ -944,7 +944,7 @@ Procedure Fill(Command)
 		Response = Undefined;
 
 		
-		ShowQueryBox(New NotifyDescription("FillEnd1", ThisObject), NStr("en='Document tabular sections will be cleared! Continue?';ru='Табличные части документа будут очищены! Продолжить?'"), QuestionDialogMode.YesNo, 0);
+		ShowQueryBox(New NotifyDescription("FillEnd1", ThisObject), NStr("en='Document tabular sections will be cleared. Continue?';ru='Табличные части документа будут очищены! Продолжить?'"), QuestionDialogMode.YesNo, 0);
         Return;
 		
 	ElsIf Object.AccrualsDeductions.Count() > 0 OR Object.IncomeTaxes.Count() > 0 Then

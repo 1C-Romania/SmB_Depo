@@ -106,7 +106,7 @@ Procedure ContinueCountdown()
 				IdleButtonTitle
 				+ " ("
 				+ StringFunctionsClientServer.SubstituteParametersInString(
-				NStr("en='left %1 sec.';ru='осталось %1 сек.'"),
+				NStr("en='%1 sec left';ru='осталось %1 сек.'"),
 				String(ExpectationCounter))
 				+ ")");
 				
@@ -247,12 +247,12 @@ Function StandardSet(Buttons)
 		Result.Add("DialogReturnCode.OK",     NStr("en='OK';ru='Ок'"));
 		Result.Add("DialogReturnCode.Cancel", NStr("en='Cancel';ru='Отменить'"));
 	ElsIf Buttons = "QuestionDialogMode.RetryCancel" Then
-		Result.Add("ReturnDialogCode.Retry", NStr("en='Retry';ru='Повторить'"));
+		Result.Add("ReturnDialogCode.Retry", NStr("en='Repeat';ru='Повторить'"));
 		Result.Add("DialogReturnCode.Cancel",    NStr("en='Cancel';ru='Отменить'"));
 	ElsIf Buttons = "QuestionDialogMode.AbortRetryIgnore" Then
-		Result.Add("DialogReturnCode.Abort",   NStr("en='Break';ru='Прервать'"));
-		Result.Add("ReturnDialogCode.Retry",  NStr("en='Retry';ru='Повторить'"));
-		Result.Add("DialogReturnCode.Ignore", NStr("en='Skip';ru='Пропустить'"));
+		Result.Add("DialogReturnCode.Abort",   NStr("en='Abort';ru='Прервать'"));
+		Result.Add("ReturnDialogCode.Retry",  NStr("en='Repeat';ru='Повторить'"));
+		Result.Add("DialogReturnCode.Ignore", NStr("en='Ignore';ru='Пропустить'"));
 	EndIf;
 	
 	Return Result;

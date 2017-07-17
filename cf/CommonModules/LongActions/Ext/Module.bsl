@@ -114,7 +114,7 @@ Procedure CancelJobExecution(Val JobID) Export
 		Task.Cancel();
 	Except
 		// The job might end at the moment and there is no error.
-		WriteLogEvent(NStr("en='Long actions.Background job execution cancellation';ru='Длительные операции.Отмена выполнения фонового задания'", CommonUseClientServer.MainLanguageCode()),
+		WriteLogEvent(NStr("en='Long actions. Background job execution cancellation';ru='Длительные операции.Отмена выполнения фонового задания'", CommonUseClientServer.MainLanguageCode()),
 			EventLogLevel.Error, , , DetailErrorDescription(ErrorInfo()));
 	EndTry;
 	
@@ -141,7 +141,7 @@ Function JobCompleted(Val JobID) Export
 	ActionNotExecuted = True;
 	ShowFullErrorText = False;
 	If Task = Undefined Then
-		WriteLogEvent(NStr("en='Long actions.Background job has not been found';ru='Длительные операции.Фоновое задание не найдено'", CommonUseClientServer.MainLanguageCode()),
+		WriteLogEvent(NStr("en='Long actions. Background job is not found';ru='Длительные операции.Фоновое задание не найдено'", CommonUseClientServer.MainLanguageCode()),
 			EventLogLevel.Error, , , String(JobID));
 	Else
 		If Task.State = BackgroundJobState.Failed Then
@@ -151,11 +151,11 @@ Function JobCompleted(Val JobID) Export
 			EndIf;
 		ElsIf Task.State = BackgroundJobState.Canceled Then
 			WriteLogEvent(
-				NStr("en='Long actions.Background task has been cancelled by administrator';ru='Длительные операции.Фоновое задание отменено администратором'", CommonUseClientServer.MainLanguageCode()),
+				NStr("en='Long actions. Background job is canceled by administrator';ru='Длительные операции.Фоновое задание отменено администратором'", CommonUseClientServer.MainLanguageCode()),
 				EventLogLevel.Error,
 				,
 				,
-				NStr("en='Job has been completed with an unknown error.';ru='Задание завершилось с неизвестной ошибкой.'"));
+				NStr("en='Job was completed with an unknown error.';ru='Задание завершилось с неизвестной ошибкой.'"));
 		Else
 			Return True;
 		EndIf;
@@ -280,10 +280,10 @@ Procedure ExecuteProcedureDataProcessorsObjectModule(Parameters, StorageAddress)
 	Try
 		TempStructure.Insert(MethodName);
 	Except
-		WriteLogEvent(NStr("en='Safe execution of the processor method';ru='Безопасное выполнение метода обработки'", CommonUseClientServer.MainLanguageCode()),
+		WriteLogEvent(NStr("en='Safe execution of the data processor method';ru='Безопасное выполнение метода обработки'", CommonUseClientServer.MainLanguageCode()),
 			EventLogLevel.Error, , , DetailErrorDescription(ErrorInfo()));
 		Raise StringFunctionsClientServer.SubstituteParametersInString(
-			NStr("en='Method name ""%1"" does not correspond to the requirements of the variable names formation.';ru='Имя метода ""%1"" не соответствует требованиям образования имен переменных.'"),
+			NStr("en='Method name ""%1"" does not meet variable naming conventions.';ru='Имя метода ""%1"" не соответствует требованиям образования имен переменных.'"),
 			MethodName);
 	EndTry;
 	

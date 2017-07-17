@@ -33,7 +33,7 @@ Procedure ChangeEmailAddress(Command)
 			+ Chars.LF
 			+ Chars.LF;
 	EndIf;
-	QuestionText = QuestionText + NStr("en='Do you want to change the email address?';ru='Выполнить изменение адреса электронной почты?'");
+	QuestionText = QuestionText + NStr("en='Change the email address?';ru='Выполнить изменение адреса электронной почты?'");
 	
 	ShowQueryBox(
 		New NotifyDescription("ChangeEmailEnd", ThisObject),

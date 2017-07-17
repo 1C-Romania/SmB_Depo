@@ -117,7 +117,7 @@ Procedure BeginEnableExtensionFileOperationsEnd(Attached, AdditionalParameters) 
 	
 	If Not Attached Then
 		Notification = New NotifyDescription("BeginInstallFileSystemExtensionEnd", ThisObject, AdditionalParameters);
-		MessageText = NStr("en='To continue work, you need to install 1C: Enterprise web client extension. Install?';ru='Для продолжении работы необходимо установить расширение для веб-клиента ""1С:Предприятие"". Установить?'");
+		MessageText = NStr("en='To continue, you need to install an extension for 1C:Enterprise web client. Install?';ru='Для продолжении работы необходимо установить расширение для веб-клиента ""1С:Предприятие"". Установить?'");
 		ShowQueryBox(Notification, MessageText, QuestionDialogMode.YesNo); 
 	EndIf;
 	
@@ -128,7 +128,7 @@ Procedure BeginEnableExtensionFileOperationsEnd(Attached, AdditionalParameters) 
 	Filter = "Text file(*.txt)|*.txt|Xml file(*.xml)|*.xml|(*.*)|*.*|";
 	FileOpeningDialog.Filter = Filter;
 	FileOpeningDialog.Multiselect = False;
-	FileOpeningDialog.Title = NStr("en='Select the file';ru='Выберите файл'");
+	FileOpeningDialog.Title = NStr("en='Select file';ru='Выберите файл'");
 	
 	Notification = New NotifyDescription("FileOpeningDialogEnd", ThisObject, AdditionalParameters);
 	FileOpeningDialog.Show(Notification);

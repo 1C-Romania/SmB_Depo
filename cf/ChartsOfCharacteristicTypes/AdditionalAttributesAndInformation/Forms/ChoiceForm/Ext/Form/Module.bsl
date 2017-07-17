@@ -29,10 +29,10 @@ Procedure OnCreateAtServer(Cancel, StandardProcessing)
 		
 		If ThisIsAdditionalInformation = True Then
 			AutoTitle = False;
-			Title = NStr("en='Common additional information selection';ru='Выбор общего дополнительного сведения'");
+			Title = NStr("en='Select common additional information';ru='Выбор общего дополнительного сведения'");
 		ElsIf ThisIsAdditionalInformation = False Then
 			AutoTitle = False;
-			Title = NStr("en='Common additional attribute selection';ru='Выбор общего дополнительного реквизита'");
+			Title = NStr("en='Select common additional attribute';ru='Выбор общего дополнительного реквизита'");
 		EndIf;
 		
 	ElsIf Parameters.OwnersSelectionOfAdditionalValues Then
@@ -50,7 +50,7 @@ Procedure OnCreateAtServer(Cancel, StandardProcessing)
 			DataCompositionComparisonType.NotFilled, , True);
 		
 		AutoTitle = False;
-		Title = NStr("en='Example choice';ru='Выбор образца'");
+		Title = NStr("en='Select sample';ru='Выбор образца'");
 		
 		Items.FormCreate.Visible = False;
 		Items.FormCopy.Visible = False;

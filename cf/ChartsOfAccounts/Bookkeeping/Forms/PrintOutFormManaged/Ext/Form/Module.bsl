@@ -214,7 +214,7 @@ Procedure CommandGenerateAtServer(Spreadsheet)
 	Spreadsheet.Footer.Enabled   = True;
 	
 	Spreadsheet.Header.LeftText  = Nstr("en='Company';pl='Firma';ru='Организация'", LanguageCode)+": " + CompanyName + " " + CompanyVATNumber;
-	Spreadsheet.Header.RightText = Nstr("en='Chart of account';pl='Plan kont';ru='План счетов'", LanguageCode)+". " + Nstr("en='Generated';pl='Wygenerowany';ru='Сформированный'", LanguageCode)+": " + GenerationDate;
+	Spreadsheet.Header.RightText = Nstr("en='Chart of accounts';pl='Plan kont';ru='План счетов'", LanguageCode)+". " + Nstr("en='Generated';pl='Wygenerowany';ru='Сформированный'", LanguageCode)+": " + GenerationDate;
 	
 	Spreadsheet.Footer.LeftText  = CommonAtServer.GetGeneratedByText();
 	Spreadsheet.Footer.RightText = NStr("en='Page [&PageNumber] from [&PagesTotal]';pl='Strona [&PageNumber] z [&PagesTotal]';ru='Страница [&PageNumber] из [&PagesTotal]'");

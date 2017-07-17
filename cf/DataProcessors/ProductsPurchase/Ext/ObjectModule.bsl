@@ -12,7 +12,7 @@ Function ExternalDataProcessorInfo() Export
 	RegistrationParameters.SafeMode = True;
 	
 	NewCommand = RegistrationParameters.Commands.Add();
-	NewCommand.Presentation = NStr("en='Products need calculation';ru='Расчет потребности товаров'");
+	NewCommand.Presentation = NStr("en='Goods demand calculation';ru='Расчет потребности товаров'");
 	NewCommand.ID = "ProductsNeedCalculation";
 	NewCommand.Use = AdditionalReportsAndDataProcessorsClientServer.TypeCommandsFormOpening();
 	NewCommand.ShowAlert = False;

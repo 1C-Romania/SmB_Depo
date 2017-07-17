@@ -209,13 +209,13 @@ Procedure FillByBasis(Command)
 	
 	If Not ValueIsFilled(Object.BasisDocument) Then
 		
-		MessageText	= NStr("en='The basis document should be filled.';ru='Требуется заполнить документ-основание.'");
+		MessageText	= NStr("en='Specify the basis document.';ru='Требуется заполнить документ-основание.'");
 		CommonUseClientServer.MessageToUser(MessageText, , "Object.BasisDocument");
 		Return;
 		
 	EndIf;
 	
-	QuestionText 	= NStr("en='Document will be completely refilled by ""Basis""! Continue?';ru='Документ будет полностью перезаполнен по ""Основанию""! Продолжить?'");
+	QuestionText 	= NStr("en='The  document will be fully filled out according to the ""Basis"". Continue?';ru='Документ будет полностью перезаполнен по ""Основанию""! Продолжить?'");
 	
 	Response = Undefined;
 

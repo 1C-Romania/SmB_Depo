@@ -55,7 +55,7 @@ Procedure CheckReferencesToObjectAfterCheckConfirmation(Response, Parameters) Ex
 		EndIf;
 		
 		Buttons = New ValueList;
-		Buttons.Add(DialogReturnCode.Yes, NStr("en='Allow edit';ru='Разрешить редактирование'"));
+		Buttons.Add(DialogReturnCode.Yes, NStr("en='Enable editing';ru='Разрешить редактирование'"));
 		Buttons.Add(DialogReturnCode.No, NStr("en='Cancel';ru='Отменить'"));
 		ShowQueryBox(
 			New NotifyDescription(
@@ -63,12 +63,12 @@ Procedure CheckReferencesToObjectAfterCheckConfirmation(Response, Parameters) Ex
 			MessageText, Buttons, , DialogReturnCode.No, Parameters.DialogTitle);
 	Else
 		If Parameters.RefArray.Count() = 1 Then
-			ShowUserNotification(NStr("en='Attributes editing is allowed';ru='Редактирование реквизитов разрешено'"),
+			ShowUserNotification(NStr("en='Attribute editing is allowed';ru='Редактирование реквизитов разрешено'"),
 				GetURL(Parameters.RefArray[0]), Parameters.RefArray[0]);
 		Else
 			MessageText = StringFunctionsClientServer.SubstituteParametersInString(
-				NStr("en='Editing object attributes (%1) is allowed';ru='Разрешено редактирование реквизитов объектов (%1)'"), Parameters.RefArray.Count());
-			ShowUserNotification(NStr("en='Attributes editing is allowed';ru='Редактирование реквизитов разрешено'"),, MessageText);
+				NStr("en='Editing object attributes is allowed (%1)';ru='Разрешено редактирование реквизитов объектов (%1)'"), Parameters.RefArray.Count());
+			ShowUserNotification(NStr("en='Attribute editing is allowed';ru='Редактирование реквизитов разрешено'"),, MessageText);
 		EndIf;
 		ExecuteNotifyProcessing(Parameters.ContinuationProcessor, True);
 	EndIf;

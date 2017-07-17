@@ -24,7 +24,7 @@ EndFunction // GetIndicatorID()
 //
 Procedure OnCreateAtServer(Cancel, StandardProcessing)
 	
-	TextIndicators = NStr("en='To place the indicator in the formula, click it';ru='Для размещения показателя в формуле дважды щелкните левой кнопкой мыши'");
+	TextIndicators = NStr("en='To add an indicator to the formula, double-click it';ru='Для размещения показателя в формуле дважды щелкните левой кнопкой мыши'");
 	
 	If Parameters.Property("FormulaText") Then
 		

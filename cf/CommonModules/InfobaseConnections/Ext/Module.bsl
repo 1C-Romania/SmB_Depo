@@ -198,7 +198,7 @@ EndFunction
 Procedure SetDataAreaSessionLock(Parameters, Val LocalTime = True, Val DataArea = -1) Export
 	
 	If Not Users.InfobaseUserWithFullAccess() Then
-		Raise NStr("en='Insufficient rights to perform operation';ru='Недостаточно прав для выполнения операции'");
+		Raise NStr("en='Insufficient rights to perform the operation';ru='Недостаточно прав для выполнения операции'");
 	EndIf;
 	
 	Exclusive = False;
@@ -206,7 +206,7 @@ Procedure SetDataAreaSessionLock(Parameters, Val LocalTime = True, Val DataArea 
 		Exclusive = False;
 	EndIf;
 	If Exclusive AND Not Users.InfobaseUserWithFullAccess(, True) Then
-		Raise NStr("en='Insufficient rights to perform operation';ru='Недостаточно прав для выполнения операции'");
+		Raise NStr("en='Insufficient rights to perform the operation';ru='Недостаточно прав для выполнения операции'");
 	EndIf;
 	
 	If CommonUseReUse.CanUseSeparatedData() Then
@@ -214,13 +214,13 @@ Procedure SetDataAreaSessionLock(Parameters, Val LocalTime = True, Val DataArea 
 		If DataArea = -1 Then
 			DataArea = CommonUse.SessionSeparatorValue();
 		ElsIf DataArea <> CommonUse.SessionSeparatorValue() Then
-			Raise NStr("en='Out of the session with the used separators values is impossible to lock the data areas sessions different from the used in a session!';ru='Из сеанса с используемыми значениями разделителей нельзя установить блокировку сеансов области данных, отличной от используемой в сеансе!'");
+			Raise NStr("en='Running a session with used separator values, you cannot set a session lock for a data area that is different from the one used in the session.';ru='Из сеанса с используемыми значениями разделителей нельзя установить блокировку сеансов области данных, отличной от используемой в сеансе!'");
 		EndIf;
 		
 	Else
 		
 		If DataArea = -1 Then
-			Raise NStr("en='Cannot lock the data areas sessions - a data area is not specified.';ru='Невозможно установить блокировку сеансов области данных - не указана область данных!'");
+			Raise NStr("en='Cannot set lock for data area sessions as data area was not specified.';ru='Невозможно установить блокировку сеансов области данных - не указана область данных!'");
 		EndIf;
 		
 	EndIf;
@@ -268,7 +268,7 @@ Function GetDataAreaSessionLock(Val LocalTime = True) Export
 	EndIf;
 	
 	If Not Users.InfobaseUserWithFullAccess() Then
-		Raise NStr("en='Insufficient rights to perform operation';ru='Недостаточно прав для выполнения операции'");
+		Raise NStr("en='Insufficient rights to perform the operation';ru='Недостаточно прав для выполнения операции'");
 	EndIf;
 	
 	SetPrivilegedMode(True);
@@ -448,16 +448,16 @@ Procedure OnAddParametersJobsClientLogicStandardSubsystemsRunning(Parameters) Ex
 	
 	If ValueIsFilled(CurrentMode.End) Then
 		LockPeriod = StringFunctionsClientServer.SubstituteParametersInString(
-			NStr("en='for period from %1 to %2';ru='на период с %1 по %2'"),
+			NStr("en='for the period from %1 to %2';ru='на период с %1 по %2'"),
 			CurrentMode.Begin, CurrentMode.End);
 	Else
 		LockPeriod = StringFunctionsClientServer.SubstituteParametersInString(
 			NStr("en='from %1';ru='с %1'"), CurrentMode.Begin);
 	EndIf;
 	If ValueIsFilled(CurrentMode.Message) Then
-		LockReason = NStr("en='by reason of:';ru='по причине:'") + Chars.LF + CurrentMode.Message;
+		LockReason = NStr("en='due to:';ru='по причине:'") + Chars.LF + CurrentMode.Message;
 	Else
-		LockReason = NStr("en='to post the scheduled works';ru='для проведения регламентных работ'");
+		LockReason = NStr("en='to conduct scheduled operations';ru='для проведения регламентных работ'");
 	EndIf;
 	MessageText = StringFunctionsClientServer.SubstituteParametersInString(
 		NStr("en='Application administator set %1 %2 users work lock.
@@ -564,16 +564,16 @@ Procedure AtFillingToDoList(CurrentWorks) Export
 	If LockParameters.Use Then
 		If CurrentSessionDate < LockParameters.Begin Then
 			If LockParameters.End <> Date(1, 1, 1) Then
-				Message = StringFunctionsClientServer.SubstituteParametersInString(NStr("en='Planned from %1 to %2';ru='Запланирована с %1 по %2'"), 
+				Message = StringFunctionsClientServer.SubstituteParametersInString(NStr("en='Scheduled from %1 to %2';ru='Запланирована с %1 по %2'"), 
 					Format(LockParameters.Begin, "DLF=DT"), Format(LockParameters.End, "DLF=DT"));
 			Else
-				Message = StringFunctionsClientServer.SubstituteParametersInString(NStr("en='Planned from %1';ru='Запланирована с %1'"), 
+				Message = StringFunctionsClientServer.SubstituteParametersInString(NStr("en='Scheduled from %1';ru='Запланирована с %1'"), 
 					Format(LockParameters.Begin, "DLF=DT"));
 			EndIf;
 			Importance = False;
 		ElsIf LockParameters.End <> Date(1, 1, 1) AND CurrentSessionDate > LockParameters.End AND LockParameters.Begin <> Date(1, 1, 1) Then
 			Importance = False;
-			Message = StringFunctionsClientServer.SubstituteParametersInString(NStr("en='Invalid (expired %1)';ru='Не действует (истек срок %1)'"), 
+			Message = StringFunctionsClientServer.SubstituteParametersInString(NStr("en='Not valid (expired %1)';ru='Не действует (истек срок %1)'"), 
 				Format(LockParameters.End, "DLF=DT"));
 		Else
 			If LockParameters.End <> Date(1, 1, 1) Then
@@ -598,7 +598,7 @@ Procedure AtFillingToDoList(CurrentWorks) Export
 		Work = CurrentWorks.Add();
 		Work.ID  = WorkIdentifier;
 		Work.ThereIsWork       = LockParameters.Use;
-		Work.Presentation  = NStr("en='User work locking';ru='Блокировка работы пользователей'");
+		Work.Presentation  = NStr("en='User operation locking';ru='Блокировка работы пользователей'");
 		Work.Form          = "DataProcessor.UserWorkBlocking.Form";
 		Work.Important         = Importance;
 		Work.Owner       = Section;
@@ -718,7 +718,7 @@ EndFunction
 //
 Function EnabledSessionsMessage() Export
 	
-	Message = NStr("en='Unable to disable sessions:';ru='Не удалось отключить сеансы:'");
+	Message = NStr("en='Cannot disable sessions:';ru='Не удалось отключить сеансы:'");
 	CurrentSessionNumber = InfobaseSessionNumber();
 	For Each Session IN GetInfobaseSessions() Do
 		If Session.SessionNumber <> CurrentSessionNumber Then

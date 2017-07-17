@@ -278,12 +278,12 @@ Procedure ExecuteDataRefreshing(HasChanges, HasDeleted, CheckOnly = False,
 		
 		CriticalChangesList = "";
 		If ValueIsFilled(MetadataObjectsRenamingsList) Then
-			CriticalChangesList = NStr("en='Rename metadata objects IDs OldFullName -> NewFullName:';ru='Переименование идентификаторов объектов метаданных СтароеПолноеИмя -> НовоеПолноеИмя:'")
+			CriticalChangesList = NStr("en='Rename IDs of metadata objects OldFullName -> NewFullName:';ru='Переименование идентификаторов объектов метаданных СтароеПолноеИмя -> НовоеПолноеИмя:'")
 				+ Chars.LF + MetadataObjectsRenamingsList + Chars.LF + Chars.LF;
 		EndIf;
 		If ValueIsFilled(ListOfNewMetadataObjects) Then
 			CriticalChangesList = CriticalChangesList
-				+ NStr("en='Add new IDs of the metadata objects:';ru='Добавление новых идентификаторов объектов метаданных:'")
+				+ NStr("en='Add new metadata object identifiers:';ru='Добавление новых идентификаторов объектов метаданных:'")
 				+ Chars.LF + ListOfNewMetadataObjects + Chars.LF;
 		EndIf;
 		
@@ -354,7 +354,7 @@ Procedure ExecuteDataRefreshing(HasChanges, HasDeleted, CheckOnly = False,
 		
 		If ValueIsFilled(CriticalChangesList) Then
 			WriteLogEvent(
-				NStr("en='Metadata objects IDs.Critical changes are executed';ru='Идентификаторы объектов метаданных.Выполнены критичные изменения'",
+				NStr("en='Metadata object IDs.Critical changes made';ru='Идентификаторы объектов метаданных.Выполнены критичные изменения'",
 					CommonUseClientServer.MainLanguageCode()),
 				EventLogLevel.Information,
 				,
@@ -658,7 +658,7 @@ Procedure CheckUse() Export
 	
 	If StandardSubsystemsReUse.DisableCatalogMetadataObjectIDs() Then
 		Raise
-			NStr("en='""Metadata objects IDs"" catalog is not used.';ru='Справочник ""Идентификаторы объектов метаданных"" не используется.'");
+			NStr("en='The ""Metadata object IDs"" catalog is not used.';ru='Справочник ""Идентификаторы объектов метаданных"" не используется.'");
 	EndIf;
 	
 	SetPrivilegedMode(True);
@@ -945,9 +945,9 @@ Function MetadataObjectCollectionProperties() Export
 	String = MetadataObjectCollectionProperties.Add();
 	String.ID   = "07938234-e29b-4cff-961a-9af07a4c6185";
 	String.Name             = "DocumentJournals";
-	String.Synonym         = NStr("en='Document journals';ru='Журналы документов'");
+	String.Synonym         = NStr("en='Document logs';ru='Журналы документов'");
 	String.SingularName     = "DocumentJournal";
-	String.SynonymInSingularNumber = NStr("en='Documents journal';ru='Журнал документов'");
+	String.SynonymInSingularNumber = NStr("en='Document journal';ru='Журнал документов'");
 	String.WithoutData       = True;
 	
 	// Reports
@@ -963,16 +963,16 @@ Function MetadataObjectCollectionProperties() Export
 	String = MetadataObjectCollectionProperties.Add();
 	String.ID   = "ae480426-487e-40b2-98ba-d207777449f3";
 	String.Name             = "DataProcessors";
-	String.Synonym         = NStr("en='DataProcessors';ru='Обработки'");
+	String.Synonym         = NStr("en='Data processors';ru='Обработки'");
 	String.SingularName     = "DataProcessor";
-	String.SynonymInSingularNumber = NStr("en='DataProcessor';ru='Обработка'");
+	String.SynonymInSingularNumber = NStr("en='Processing';ru='Обработка'");
 	String.WithoutData       = True;
 	
 	// ChartsOfCharacteristicTypes
 	String = MetadataObjectCollectionProperties.Add();
 	String.ID   = "8b5649b9-cdd1-4698-9aac-12ba146835c4";
 	String.Name             = "ChartsOfCharacteristicTypes";
-	String.Synonym         = NStr("en='Charts of characteristics types';ru='Планы видов характеристик'");
+	String.Synonym         = NStr("en='Charts of characteristic types';ru='Планы видов характеристик'");
 	String.SingularName     = "ChartOfCharacteristicTypes";
 	String.SynonymInSingularNumber = NStr("en='Chart of characteristic types';ru='План видов характеристик'");
 	
@@ -1118,7 +1118,7 @@ EndProcedure
 Procedure CallExceptionByError(ErrorText) Export
 	
 	Raise
-		NStr("en='An error occurred while working with ""Metadata objects IDs"" catalog.';ru='Ошибка при работе со справочником ""Идентификаторы объектов метаданных"".'") + "
+		NStr("en='An error occurred while working with the ""Metadata object IDs"" catalog.';ru='Ошибка при работе со справочником ""Идентификаторы объектов метаданных"".'") + "
 		           |
 		           |" + ErrorText;
 	
@@ -1524,7 +1524,7 @@ Function MetadataFindByFullName(FullName)
 				MetadataObject.FullName());
 		Else
 			Raise StringFunctionsClientServer.SubstituteParametersInString(
-				NStr("en='An error occurred while searching for metadata by a full name (while searching ""%1"" was found ""%2"").';ru='Ошибка при поиске объекта метаданных по полному имени (при поиске ""%1"" был найден ""%2"").'"),
+				NStr("en='An error occurred when searching for metadata object by full name (searched for ""%1"", ""%2"" was found).';ru='Ошибка при поиске объекта метаданных по полному имени (при поиске ""%1"" был найден ""%2"").'"),
 				FullName,
 				MetadataObject.FullName());
 		EndIf;
@@ -2083,7 +2083,7 @@ Function ExecuteItemReplacement(Val Replaceable, Val RefsTable, Val DisableWrite
 					ShowMessageAboutError(ErrorInfo());
 				EndTry;
 			Else
-				ShowMessageAboutError(NStr("en='Values are not replaced in the type data';ru='Значения не заменяются в данных типа'") + ": " + TableRow.Metadata);
+				ShowMessageAboutError(NStr("en='Values are not changed in the type data';ru='Значения не заменяются в данных типа'") + ": " + TableRow.Metadata);
 			EndIf;
 		EndDo;
 	
@@ -2128,7 +2128,7 @@ Procedure ShowMessageAboutError(Val Definition)
 	EndIf;
 	
 	WriteLogEvent(
-		NStr("en='Metadata objects IDs. Identifier replacement';ru='Идентификаторы объектов метаданных. Замена идентификатора'",
+		NStr("en='Metadata objects IDs. Change identifier';ru='Идентификаторы объектов метаданных. Замена идентификатора'",
 		     CommonUseClientServer.MainLanguageCode()),
 		EventLogLevel.Error,
 		,

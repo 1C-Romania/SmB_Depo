@@ -5,7 +5,7 @@
 &AtServer
 Procedure OnCreateAtServer(Cancel, StandardProcessing)
 	
-	ThisForm.Title =  NStr("en='Duplicates list by barcode (magnetic code) and card kind';ru='Список дублей по штрихкоду (магнитному коду) и виду карты'");
+	ThisForm.Title =  NStr("en='Duplicate list according to barcode (magnetic code) and card kind';ru='Список дублей по штрихкоду (магнитному коду) и виду карты'");
 							
 	Query = New Query;
 	Query.Text = 

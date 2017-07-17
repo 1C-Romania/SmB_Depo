@@ -9,7 +9,7 @@ Procedure OnCreateAtServer(Cancel, StandardProcessing)
 	EndIf;
 	
 	If StandardSubsystemsServerCall.ClientWorkParameters().FileInfobase Then
-		Items.PathToWindowsArchive.Title = NStr("en='For the 1C:Entreprise server under Microsoft Windows';ru='Для сервера 1С:Предприятия под управлением Microsoft Windows'"); 
+		Items.PathToWindowsArchive.Title = NStr("en='For the 1C:Enterprise server under Microsoft Windows';ru='Для сервера 1С:Предприятия под управлением Microsoft Windows'"); 
 	Else
 		Items.PathToWindowsArchive.ChoiceButton = False; 
 	EndIf;
@@ -32,12 +32,12 @@ Procedure PathToArchiveWindowsInitialSelection(Item, ChoiceData, StandardProcess
 	
 	Dialog = New FileDialog(FileDialogMode.Open);
 	
-	Dialog.Title                    = NStr("en='Select the file';ru='Выберите файл'");
+	Dialog.Title                    = NStr("en='Select file';ru='Выберите файл'");
 	Dialog.FullFileName               = ?(ThisObject.PathToWindowsArchive = "", "files.zip", ThisObject.PathToWindowsArchive);
 	Dialog.Multiselect           = False;
 	Dialog.Preview      = False;
 	Dialog.CheckFileExist  = True;
-	Dialog.Filter                       = NStr("en='Archives zip(*.zip)|*.zip';ru='Архивы zip(*.zip)|*.zip'");
+	Dialog.Filter                       = NStr("en='Zip archives(*.zip)|*.zip';ru='Архивы zip(*.zip)|*.zip'");
 	
 	If Dialog.Choose() Then
 		
@@ -77,7 +77,7 @@ Procedure Place(Command)
 	EndIf;
 	
 	Status(
-		NStr("en='Data exchange';ru='Обмен данными описание'"),
+		NStr("en='Data exchange description';ru='Обмен данными описание'"),
 		,
 		NStr("en='File placement from
 		|archive with initial image files is executed...';ru='Осуществляется размещение файлов из

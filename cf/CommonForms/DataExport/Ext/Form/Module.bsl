@@ -12,12 +12,12 @@ Procedure OnCreateAtServer(Cancel, StandardProcessing)
 	EndIf;
 	
 	If CommonUseReUse.DataSeparationEnabled() Then
-		FormHeaderText = NStr("en='Donwload data to local version';ru='Выгрузить данные в локальную версию'");
+		FormHeaderText = NStr("en='Export data to local version';ru='Выгрузить данные в локальную версию'");
 		MessageText      = NStr("en='Data from the service will be exported to the
 		|file for its following import and use in the local version.';ru='Данные из сервиса будут выгружены в файл
 		|для последующей их загрузки и использования в локальной версии.'");
 	Else
-		FormHeaderText = NStr("en='Export data for migration to service';ru='Выгрузить данные для перехода в сервис'");
+		FormHeaderText = NStr("en='Export data for migration to the service';ru='Выгрузить данные для перехода в сервис'");
 		MessageText      = NStr("en='Data from the local version will be exported to the
 		|file for its following import and use in the service mode.';ru='Данные из локальной версии будут выгружены в
 		|файл для последующей их загрузки и использования в режиме сервиса.'");
@@ -178,7 +178,7 @@ Function ExportDataReady()
 	Items.GroupPages.CurrentPage = Items.Warning;
 	
 	If Task = Undefined Then
-		Raise(NStr("en='During the export preparation an error has occurred - job that prepares the exporting has not been found.';ru='При подготовке выгрузки произошла ошибка - не найдено задание подготавливающее выгрузку.'"));
+		Raise(NStr("en='An error occurred when preparing export, export preparation job is not found.';ru='При подготовке выгрузки произошла ошибка - не найдено задание подготавливающее выгрузку.'"));
 	EndIf;
 	
 	If Task.State = BackgroundJobState.Failed Then
@@ -186,10 +186,10 @@ Function ExportDataReady()
 		If JobError <> Undefined Then
 			Raise(DetailErrorDescription(JobError));
 		Else
-			Raise(NStr("en='When getting prepared for export an error has occurred - the job preparing the export has been terminated with the unknown error.';ru='При подготовке выгрузки произошла ошибка - задание подготавливающее выгрузку завершилось с неизвестной ошибкой.'"));
+			Raise(NStr("en='An error occurred when preparing export, export preparation job was completed with an unknown error.';ru='При подготовке выгрузки произошла ошибка - задание подготавливающее выгрузку завершилось с неизвестной ошибкой.'"));
 		EndIf;
 	ElsIf Task.State = BackgroundJobState.Canceled Then
-		Raise(NStr("en='During the export preparation an error has occurred - the job preparing the export has been cancelled by the administrator.';ru='При подготовке выгрузки произошла ошибка - задание подготавливающее выгрузку было отменено администратором.'"));
+		Raise(NStr("en='An error occurred when preparing export, export preparation job was canceled by the administrator.';ru='При подготовке выгрузки произошла ошибка - задание подготавливающее выгрузку было отменено администратором.'"));
 	Else
 		JobID = Undefined;
 		Return True;
@@ -212,7 +212,7 @@ Procedure StartDataExportAtServer()
 		Task = BackgroundJobs.Execute("DataAreasExportImport.ExportCurrentDataAreaIntoTemporaryStorage", 
 			JobParameters,
 			,
-			NStr("en='Data area export preparation';ru='Подготовка выгрузки области данных'"));
+			NStr("en='Prepare data area export';ru='Подготовка выгрузки области данных'"));
 			
 		JobID = Task.UUID;
 		
@@ -252,7 +252,7 @@ Procedure CancelInitializationJob(Val JobID)
 		Task.Cancel();
 	Except
 		// The job might end at the moment and there is no error.
-		WriteLogEvent(NStr("en='Cancelling the job of preparation to data area export';ru='Отмена выполнения задания подготовки выгрузки области данных'", 
+		WriteLogEvent(NStr("en='Job execution on data area export preparation canceled';ru='Отмена выполнения задания подготовки выгрузки области данных'", 
 			CommonUseClientServer.MainLanguageCode()),
 			EventLogLevel.Error,,,
 			DetailErrorDescription(ErrorInfo()));
@@ -263,7 +263,7 @@ EndProcedure
 &AtServerNoContext
 Procedure HandleError(Val ShortPresentation, Val DetailedPresentation)
 	
-	WriteLogEventTemplate = NStr("en='An error occurred while exporting the data: ----------------------------------------- %1 -----------------------------------------';ru='При выгрузке данных произошла ошибка: ----------------------------------------- %1 -----------------------------------------'");
+	WriteLogEventTemplate = NStr("en='An error occurred when exporting data: ----------------------------------------- %1 -----------------------------------------';ru='При выгрузке данных произошла ошибка: ----------------------------------------- %1 -----------------------------------------'");
 	WriteLogEventText = StringFunctionsClientServer.SubstituteParametersInString(WriteLogEventTemplate, DetailedPresentation);
 	
 	WriteLogEvent(

@@ -571,7 +571,7 @@ Function SecurityProfile(Val ClusterAdministrationParameters, Val ProfileName) E
 	SecurityProfiles = GetSecurityProfiles(ClusterIdentifier, ClusterAdministrationParameters, Filter);
 	
 	If SecurityProfiles.Count() <> 1 Then
-		Raise StringFunctionsClientServer.SubstituteParametersInString(NStr("en='Security profile %2 is not registered in server cluster %1 .';ru='В кластере серверов %1 не зарегистрирован профиль безопасности %2!'"), ClusterIdentifier, ProfileName);
+		Raise StringFunctionsClientServer.SubstituteParametersInString(NStr("en='Security profile %2 is not registered in server cluster %1.';ru='В кластере серверов %1 не зарегистрирован профиль безопасности %2!'"), ClusterIdentifier, ProfileName);
 	EndIf;
 	
 	Result = SecurityProfiles[0];
@@ -650,7 +650,7 @@ Procedure SetSecurityProfileProperties(Val ClusterAdministrationParameters, Val 
 	SecurityProfiles = GetSecurityProfiles(ClusterIdentifier, ClusterAdministrationParameters, Filter);
 	
 	If SecurityProfiles.Count() <> 1 Then
-		Raise StringFunctionsClientServer.SubstituteParametersInString(NStr("en='Security profile %2 is not registered in server cluster %1 .';ru='В кластере серверов %1 не зарегистрирован профиль безопасности %2!'"), ClusterIdentifier, ProfileName);
+		Raise StringFunctionsClientServer.SubstituteParametersInString(NStr("en='Security profile %2 is not registered in server cluster %1.';ru='В кластере серверов %1 не зарегистрирован профиль безопасности %2!'"), ClusterIdentifier, ProfileName);
 	EndIf;
 	
 	UpdateSecurityProfilesProperties(ClusterAdministrationParameters, SecurityProfileProperties, True);
@@ -720,7 +720,7 @@ Function GetCluster(Val ClusterAdministrationParameters)
 	If Clusters.Count() = 1 Then
 		Return Clusters[0].Get("cluster");
 	Else
-		Raise StringFunctionsClientServer.SubstituteParametersInString(NStr("en='Servers cluster with %1 port is not found';ru='Не обнаружен кластер серверов с портом %1'"), ClusterAdministrationParameters.ClusterPort);
+		Raise StringFunctionsClientServer.SubstituteParametersInString(NStr("en='Server cluster with port %1 is not found';ru='Не обнаружен кластер серверов с портом %1'"), ClusterAdministrationParameters.ClusterPort);
 	EndIf;
 	
 EndFunction
@@ -795,7 +795,7 @@ Function GetInfobase(Val ClusterIdentifier, Val ClusterAdministrationParameters,
 	If Infobases.Count() = 1 Then
 		Return Infobases[0].Get("infobase");
 	Else
-		Raise StringFunctionsClientServer.SubstituteParametersInString(NStr("en='Infobase %2 is not registered in server cluster %1.';ru='В кластере серверов %1 не зарегистрирована информационная база %2!'"), ClusterIdentifier, InformationBaseAdministrationParameters.NameInCluster);
+		Raise StringFunctionsClientServer.SubstituteParametersInString(NStr("en='Infobase %2 is not registered in the %1 server cluster.';ru='В кластере серверов %1 не зарегистрирована информационная база %2!'"), ClusterIdentifier, InformationBaseAdministrationParameters.NameInCluster);
 	EndIf;
 	
 EndFunction
@@ -1588,11 +1588,11 @@ Function RunCommand(Val Pattern, Val ClusterAdministrationParameters, Val Parame
 	#If Server Then
 		
 		If SafeMode() Then
-			Raise NStr("en='Cluster administration is not available in safe mode!';ru='Администрирование кластера невозможно в безопасном режиме!'");
+			Raise NStr("en='Cluster administration is unavailable in the safe mode.';ru='Администрирование кластера невозможно в безопасном режиме!'");
 		EndIf;
 		
 		If CommonUseReUse.DataSeparationEnabled() Then
-			Raise NStr("en='In the model of service, the execution of the cluster administration functions by the applied infobase is not allowed!';ru='В модели сервиса недопустимо выполнение прикладной информационной базой функций администрирования кластера!'");
+			Raise NStr("en='Applied infobase cannot administer cluster in SaaS.';ru='В модели сервиса недопустимо выполнение прикладной информационной базой функций администрирования кластера!'");
 		EndIf;
 		
 	#EndIf

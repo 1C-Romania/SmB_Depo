@@ -11,11 +11,11 @@ Procedure OnCreateAtServer(Cancel, StandardProcessing)
 		Items.ProductsAndServicesGroupValue.ChoiceFoldersAndItems = FoldersAndItems.Items;
 		TypeArray.Add(Type("CatalogRef.ProductsAndServices"));
 	ElsIf FilterKind = "FilterByProductsAndServicesGroups" Then
-		Title = NStr("en='Choose ProductsAndServices groups';ru='Выберите группы номенклатуры'");
+		Title = NStr("en='Select products and services groups';ru='Выберите группы номенклатуры'");
 		Items.ProductsAndServicesGroupValue.ChoiceFoldersAndItems = FoldersAndItems.Folders;
 		TypeArray.Add(Type("CatalogRef.ProductsAndServices"));
 	Else
-		Title = NStr("en='Select products and services categories';ru='Выберите номенклатурные группы'");
+		Title = NStr("en='Select products and services groups';ru='Выберите номенклатурные группы'");
 		Items.ProductsAndServicesGroupValue.ChoiceFoldersAndItems = FoldersAndItems.Items;
 		TypeArray.Add(Type("CatalogRef.ProductsAndServicesCategories"));
 	EndIf;

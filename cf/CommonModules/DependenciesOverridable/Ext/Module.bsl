@@ -157,7 +157,7 @@ Function GetDocumentPresentationToPrint(Selection) Export
 	If (Selection.DocumentAmount <> 0) 
 		AND (Selection.DocumentAmount <> NULL) Then
 		
-		DocumentPresentation = DocumentPresentation + " " + NStr("en='For amount';ru='на сумму'") + " " + Selection.DocumentAmount;
+		DocumentPresentation = DocumentPresentation + " " + NStr("en='to the amount of';ru='на сумму'") + " " + Selection.DocumentAmount;
 		
 		If ValueIsFilled(Selection.Currency) Then
 			

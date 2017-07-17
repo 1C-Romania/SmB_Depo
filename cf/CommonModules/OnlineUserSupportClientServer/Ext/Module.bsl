@@ -135,7 +135,7 @@ Function DefineStartPossibilityByLocationAndParameters(LaunchLocation, InternetS
 		Result = New Structure;
 		Result.Insert("Action", "ShowMessage");
 		Result.Insert("Message",
-			NStr("en='It is forbidden to use online user support in the current work mode.';ru='Использование Интернет-поддержки пользователей запрещено в текущем режиме работы.'"));
+			NStr("en='Online user support cannot be used in the current work mode.';ru='Использование Интернет-поддержки пользователей запрещено в текущем режиме работы.'"));
 		
 	ElsIf Not InternetSupportParameters.LaunchAllowed Then
 		
@@ -381,7 +381,7 @@ Function NewOUSServiceDescription(
 				"%1",
 				WSDLAddress)
 			+ Chars.LF
-			+ NStr("en='Description item of the (<wsdl:types data types is unavailable...>).';ru='Отсутствует элемент описания типов данных (<wsdl:types ...>).'");
+			+ NStr("en='Data type description item is missing (<wsdl:types ...>).';ru='Отсутствует элемент описания типов данных (<wsdl:types ...>).'");
 		
 		Raise ErrorMessage;
 		
@@ -395,7 +395,7 @@ Function NewOUSServiceDescription(
 		|Ошибка чтения WSDL-описания веб-сервиса Интернет-поддержки пользователей:'"),
 				"%1",
 				WSDLAddress)
-			+ " " + NStr("en='Description item of the (<xs:schema ...>) data types is unavailable';ru='Отсутствует элемент описания типов данных (<xs:schema ...>)'");
+			+ " " + NStr("en='Data type description item is missing (<xs:schema ...>)';ru='Отсутствует элемент описания типов данных (<xs:schema ...>)'");
 		
 		Raise ErrorMessage;
 		
@@ -444,7 +444,7 @@ Function NewOUSServiceDescription(
 		|Ошибка чтения WSDL-описания веб-сервиса Интернет-поддержки пользователей:'"),
 				"%1",
 				WSDLAddress)
-			+ " " + NStr("en='URI of names space in the WSDL-description is unavailable.';ru='Отсутствует URI пространства имен в WSDL-описании.'");
+			+ " " + NStr("en='Names space URI in WSDL description is missing.';ru='Отсутствует URI пространства имен в WSDL-описании.'");
 		
 		Raise ErrorMessage;
 		
@@ -460,7 +460,7 @@ Function NewOUSServiceDescription(
 		|Ошибка чтения WSDL-описания веб-сервиса Интернет-поддержки пользователей:'"),
 				"%1",
 				WSDLAddress)
-			+ " " + NStr("en='Description of the web services is unavailable in WSDL-description (<wsdl:service ...>).';ru='Отсутствует описание веб-сервисов в WSDL-описании (<wsdl:service ...>).'");
+			+ " " + NStr("en='Description of the web services is missing in WSDL description (<wsdl:service ...>).';ru='Отсутствует описание веб-сервисов в WSDL-описании (<wsdl:service ...>).'");
 		
 		Raise ErrorMessage;
 	EndIf;
@@ -477,7 +477,7 @@ Function NewOUSServiceDescription(
 		|Ошибка чтения WSDL-описания веб-сервиса Интернет-поддержки пользователей:'"),
 				"%1",
 				WSDLAddress)
-			+ " " + NStr("en='There is no description of ports in WSDL-description (<wsdl:port ...>).';ru='Отсутствует описание портов в WSDL-описании (<wsdl:port ...>).'");
+			+ " " + NStr("en='No description of ports in WSDL description (<wsdl:port ...>).';ru='Отсутствует описание портов в WSDL-описании (<wsdl:port ...>).'");
 		
 		Raise ErrorMessage;
 	EndIf;
@@ -492,7 +492,7 @@ Function NewOUSServiceDescription(
 		|Ошибка чтения WSDL-описания веб-сервиса Интернет-поддержки пользователей:'"),
 				"%1",
 				WSDLAddress)
-			+ " " + StrReplace(NStr("en='Unable to define the name of service port (%1).';ru='Не удалось определить имя порта сервиса (%1).'"),
+			+ " " + StrReplace(NStr("en='Cannot define name of the service port (%1).';ru='Не удалось определить имя порта сервиса (%1).'"),
 				"%1",
 				ServiceName);
 		
@@ -513,7 +513,7 @@ Function NewOUSServiceDescription(
 		|Ошибка чтения WSDL-описания веб-сервиса Интернет-поддержки пользователей:'"),
 				"%1",
 				WSDLAddress)
-			+ " " + StrReplace(NStr("en='Unable to define URL of the specified service port (%1).';ru='Не удалось определить URL заданного порта сервиса (%1).'"),
+			+ " " + StrReplace(NStr("en='Cannot detect URL of the defined service port (%1).';ru='Не удалось определить URL заданного порта сервиса (%1).'"),
 				"%1",
 				PortName);
 		
@@ -615,7 +615,7 @@ Function OUSService_isReady(OUSServiceDescription) Export
 	Try
 		Value = ReadResponseInSOAPEnvelope(ResponseBody, OUSServiceDescription, ObjectType);
 	Except
-		ErrorMessage = StrReplace(NStr("en='An error occurred while calling the isReady operation of service (%1).';ru='Ошибка при вызове операции isReady сервиса (%1).'"),
+		ErrorMessage = StrReplace(NStr("en='An error occurred when calling operation isReady of service (%1).';ru='Ошибка при вызове операции isReady сервиса (%1).'"),
 			"%1",
 			OUSServiceDescription.WSDLAddress)
 			+ Chars.LF
@@ -690,7 +690,7 @@ Function OUSService_isConfigurationSupported(ConfigurationName, OUSServiceDescri
 		ResponseBody = SendSOAPQuery(EnvelopeText, OUSServiceDescription);
 	Except
 		
-		ErrorMessage = StrReplace(NStr("en='An error occurred during calling the isConfigurationSupported operation of (%1) service:';ru='Ошибка при вызове операции isConfigurationSupported сервиса (%1):'"),
+		ErrorMessage = StrReplace(NStr("en='An error occurred when calling the isConfigurationSupported operation of the (%1) service:';ru='Ошибка при вызове операции isConfigurationSupported сервиса (%1):'"),
 			"%1",
 			OUSServiceDescription.WSDLAddress)
 			+ " " + DetailErrorDescription(ErrorInfo());
@@ -712,7 +712,7 @@ Function OUSService_isConfigurationSupported(ConfigurationName, OUSServiceDescri
 	Try
 		Value = ReadResponseInSOAPEnvelope(ResponseBody, OUSServiceDescription, ObjectType);
 	Except
-		ErrorMessage = StrReplace(NStr("en='An error occurred during calling the isConfigurationSupported operation of (%1) service.';ru='Ошибка при вызове операции isConfigurationSupported сервиса (%1).'"),
+		ErrorMessage = StrReplace(NStr("en='An error occurred when calling the isConfigurationSupported operation of the (%1) service.';ru='Ошибка при вызове операции isConfigurationSupported сервиса (%1).'"),
 			"%1",
 			OUSServiceDescription.WSDLAddress)
 			+ Chars.LF
@@ -789,7 +789,7 @@ Function OUSService_process(QueryParameters, OUSServiceDescription) Export
 		Value = ReadResponseInSOAPEnvelope(ResponseBody, OUSServiceDescription, ObjectType);
 	Except
 		
-		ErrorMessage = StrReplace(NStr("en='An error occurred while calling the process operation of service (%1).';ru='Ошибка при вызове операции process сервиса (%1).'"),
+		ErrorMessage = StrReplace(NStr("en='An error occurred when calling operation process of service (%1).';ru='Ошибка при вызове операции process сервиса (%1).'"),
 			"%1",
 			OUSServiceDescription.WSDLAddress)
 			+ Chars.LF
@@ -839,7 +839,7 @@ Function OUSService_sendmailtonet(QueryParameters, OUSServiceDescription) Export
 		ResponseBody = SendSOAPQuery(EnvelopeText, OUSServiceDescription);
 	Except
 		
-		ErrorMessage = StrReplace(NStr("en='An error occurred during calling the sendmailtonet operation of service (%1).';ru='Ошибка при вызове операции sendmailtonet сервиса (%1).'"),
+		ErrorMessage = StrReplace(NStr("en='An error occurred while calling the sendmailtonet operation of service (%1).';ru='Ошибка при вызове операции sendmailtonet сервиса (%1).'"),
 			"%1",
 			OUSServiceDescription.WSDLAddress)
 			+ " " + DetailErrorDescription(ErrorInfo());
@@ -862,7 +862,7 @@ Function OUSService_sendmailtonet(QueryParameters, OUSServiceDescription) Export
 		Value = ReadResponseInSOAPEnvelope(ResponseBody, OUSServiceDescription, ObjectType);
 	Except
 		
-		ErrorMessage = StrReplace(NStr("en='An error occurred while calling the process operation of service (%1).';ru='Ошибка при вызове операции process сервиса (%1).'"),
+		ErrorMessage = StrReplace(NStr("en='An error occurred when calling operation process of service (%1).';ru='Ошибка при вызове операции process сервиса (%1).'"),
 			"%1",
 			OUSServiceDescription.WSDLAddress)
 			+ Chars.LF
@@ -990,7 +990,7 @@ Function SendSOAPQuery(EnvelopeText, OUSServiceDescription)
 	Try
 		HTTPResponse = OUSServiceDescription.PortConnection.Post(HTTPRequest);
 	Except
-		ErrorMessage = NStr("en='An error of the network connection occurred while the query is being passed.';ru='Ошибка сетевого соединения при отправке запроса.'")
+		ErrorMessage = NStr("en='An error of the network connection occurred while sending the request.';ru='Ошибка сетевого соединения при отправке запроса.'")
 			+ Chars.LF
 			+ DetailErrorDescription(ErrorInfo());
 		Raise ErrorMessage;
@@ -1067,7 +1067,7 @@ Function ReadResponseInSOAPEnvelope(ResponseBody, OUSServiceDescription, ValueTy
 			
 		EndTry;
 		
-		ErrorMessage = NStr("en='An error of SOAP-Server occurred while processing the query:';ru='Ошибка SOAP-Сервера при обработке запроса:'")
+		ErrorMessage = NStr("en='An error of SOAP Server occurred while processing the query:';ru='Ошибка SOAP-Сервера при обработке запроса:'")
 			+ " " + DescriptionSOAPExceptionToRow(ExceptionDetails);
 		
 		Raise ErrorMessage;
@@ -1078,7 +1078,7 @@ Function ReadResponseInSOAPEnvelope(ResponseBody, OUSServiceDescription, ValueTy
 		Value = OUSServiceDescription.XDTOFactory.ReadXML(ResponseReading, ValueType);
 	Except
 		
-		ErrorMessage = StrReplace(NStr("en='An error occurred while reading (%1) object in SOAP envelope:';ru='Ошибка чтения объекта (%1) в конверте SOAP:'"),
+		ErrorMessage = StrReplace(NStr("en='An error occurred while reading object (%1) in SOAP envelope:';ru='Ошибка чтения объекта (%1) в конверте SOAP:'"),
 				"%1",
 				String(ValueType))
 			+ " " + DetailErrorDescription(ErrorInfo())
@@ -1329,7 +1329,7 @@ Function StructureServerResponse(
 		HandlerContext.ActionsOnErrorForServer.Add("CreateLogRegistrationRecord");
 		
 		HandlerContext.UserErrorDescription =
-			NStr("en='Unknown error.For more information, see the events log monitor.';ru='Неизвестная ошибка.См. подробности в журнале регистрации.'");
+			NStr("en='Unknown error.For more information, see the event log.';ru='Неизвестная ошибка.См. подробности в журнале регистрации.'");
 		HandlerContext.ActionOnErrorForClient = "ShowMessage";
 		
 		Return Undefined;
@@ -2159,7 +2159,7 @@ Procedure AddServiceCommands(
 					ParameterValue = TextInBinaryData(TransferredParameter.Value);
 				Except
 					InfError = ErrorInfo();
-					ErrorMessage = StrReplace(NStr("en='An error occurred while converting the passed data. %1';ru='Ошибка при преобразовании передаваемых данных. %1'"),
+					ErrorMessage = StrReplace(NStr("en='An error occurred while converting transferred data. %1';ru='Ошибка при преобразовании передаваемых данных. %1'"),
 						"%1",
 						DetailErrorDescription(InfError));
 					Raise ErrorMessage;
@@ -2220,7 +2220,7 @@ Procedure AddServiceCommands(
 	EndIf;
 	
 	If CommandsStructureArray = Undefined OR CommandsStructureArray.Count() = 0 Then
-		Raise NStr("en='Empty response of the server.';ru='Пустой ответ сервера.'");
+		Raise NStr("en='Empty server response.';ru='Пустой ответ сервера.'");
 	EndIf;
 	
 	// Insert commands to the beginning of the commands stack

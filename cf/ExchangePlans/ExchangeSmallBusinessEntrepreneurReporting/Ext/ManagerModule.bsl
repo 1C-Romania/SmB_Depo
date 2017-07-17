@@ -91,7 +91,7 @@ Function DataTransferRestrictionsDescriptionFull(FilterSsettingsAtNode, Correspo
 	If ValueIsFilled(FilterSsettingsAtNode.DocumentsDumpStartDate) Then
 		
 		// "Export documents starting from January 1, 2009."
-		NString = NStr("en='Beginning with %1';ru='Начиная с %1'");
+		NString = NStr("en='Starting with %1';ru='Начиная с %1'");
 		
 		DocumentsDumpStartDateRestriction = StringFunctionsClientServer.SubstituteParametersInString(NString, Format(FilterSsettingsAtNode.DocumentsDumpStartDate, "DLF=DD"));
 		
@@ -152,11 +152,11 @@ EndFunction
 //  String, Unlimited - presentation of a command displayed in the user interface.
 //
 // ForExample:
-// Return NStr("en='Create an exchange in the distributed infobase';ru='Создать обмен в распределенной информационной базе'");
+// Return NStr("en='Create exchange in the distributed infobase';ru='Создать обмен в распределенной информационной базе'");
 //
 Function CommandTitleForCreationOfNewDataExchange() Export
 	
-	Return NStr("en='Create exchange with configuration ""1C:Enterpreneur Reporting 8, version 1.0""';ru='Создать обмен с конфигурацией ""1С:Отчетность предпринимателя 8, ред. 1.0""'");
+	Return NStr("en='Create exchange with configuration 1C:Entrepreneur Reporting 8 1.0';ru='Создать обмен с конфигурацией ""1С:Отчетность предпринимателя 8, ред. 1.0""'");
 	
 EndFunction
 

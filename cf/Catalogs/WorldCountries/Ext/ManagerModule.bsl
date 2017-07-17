@@ -169,7 +169,7 @@ Procedure UpdateWorldCountriesByClassifier(Val Add = False) Export
 		Except
 			Info = ErrorInfo();
 			ErrorText = StringFunctionsClientServer.SubstituteParametersInString(
-				NStr("ru = 'Ошибка записи страны мира %1 (код %2) при обновлении классификатора, %3'; en = 'Error writing world country %1 (code %2) while updating classifier, %3'"),
+				NStr("en='An error occurred when writing country %1 (code %2) when updating the classifier, %3';ru='Ошибка записи страны мира %1 (код %2) при обновлении классификатора, %3'"),
 				Selection.Code, Selection.Description, BriefErrorDescription(Info));
 			WriteLogEvent(InfobaseUpdate.EventLogMessageText(), 
 				EventLogLevel.Error,,,
@@ -201,7 +201,7 @@ Function RefByClassifier(Val Filter, Val AdditionalData = Undefined) Export
 	// Checking whether the specified country is listed in the classifier
 	SearchData = WorldCountryClassifierDataByCode(Filter.Code);
 	If SearchData=Undefined Then
-		Raise NStr("ru = 'Некорректный код страны мира для поиска в классификаторе'; en = 'Invalid world country classifier code'");
+		Raise NStr("en='Invalid world country classifier code';ru='Некорректный код страны мира для поиска в классификаторе'");
 	EndIf;
 	
 	// Checking whether the specified country is listed in the catalog, based on classifier data

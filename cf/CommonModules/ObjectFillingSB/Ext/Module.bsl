@@ -983,7 +983,7 @@ EndProcedure
 	"IsFolder, ContractByDefault");
 	
 	If CounterpartyDetails.IsFolder Then
-		Raise NStr("ru = 'Нельзя выбирать группу контрагентов.'; en = 'You can not select a group of counterparties.'");
+		Raise NStr("en='You cannot select a counterparty group.';ru='Нельзя выбирать группу контрагентов.'");
 	EndIf;
 	
 	If RenamedFields.Property("Contract")

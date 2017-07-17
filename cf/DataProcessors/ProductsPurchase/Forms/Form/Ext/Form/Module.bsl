@@ -160,7 +160,7 @@ EndProcedure
 Procedure ShowZeroSales(Command)
 	
 	If Demand.GetItems().Count() > 0 Then
-		QuestionText = NStr("en='Tabular section will be refilled. Continue?';ru='Табличная часть будет перезаполнена. Продолжить?'");
+		QuestionText = NStr("en='Tabular section will be filled in again. Continue?';ru='Табличная часть будет перезаполнена. Продолжить?'");
 		Response = Undefined;
 
 		ShowQueryBox(New NotifyDescription("ShowZeroSalesEnd", ThisObject), QuestionText, QuestionDialogMode.YesNo);
@@ -196,7 +196,7 @@ EndProcedure
 Procedure FillAndCalculate(Command)
 	
 	If Demand.GetItems().Count() > 0 Then
-		QuestionText = NStr("en='Tabular section will be refilled. Continue?';ru='Табличная часть будет перезаполнена. Продолжить?'");
+		QuestionText = NStr("en='Tabular section will be filled in again. Continue?';ru='Табличная часть будет перезаполнена. Продолжить?'");
 		Response = Undefined;
 
 		ShowQueryBox(New NotifyDescription("FillAndCalculateEnd", ThisObject), QuestionText, QuestionDialogMode.YesNo);
@@ -242,7 +242,7 @@ Procedure GenerateOrders(Command)
 		
 		ShowUserNotification(
 			,,
-			NStr("en='Purchase orders have been successfully created.';ru='Заказы поставщикам успешно созданы.'"),
+			NStr("en='Purchase orders are successfully created.';ru='Заказы поставщикам успешно созданы.'"),
 			PictureLib.Information32
 		);
 		
@@ -251,7 +251,7 @@ Procedure GenerateOrders(Command)
 	Else
 		
 		Message = New UserMessage;
-		Message.Text = NStr("en='No data to generate the orders.';ru='Нет данных для формирования заказов.'");
+		Message.Text = NStr("en='No data to generate orders.';ru='Нет данных для формирования заказов.'");
 		Message.Message();
 		
 	EndIf;
@@ -794,7 +794,7 @@ Function OrderSetServer()
 			EndIf;
 			
 			DocumentObject.DocumentAmount = DocumentObject.Inventory.Total("Total");
-			DocumentObject.Comment = NStr("en='It is automatically created by the ""Product need calculation"" data processor';ru='Создан автоматически обработкой ""Расчет потребности товаров""'");
+			DocumentObject.Comment = NStr("en='Automatically created using the ""Goods demand calculation"" data processor';ru='Создан автоматически обработкой ""Расчет потребности товаров""'");
 			
 			DocumentObject.Write(DocumentWriteMode.Write);
 			
@@ -984,7 +984,7 @@ Procedure OrdersDeleteServer()
 		Except
 			
 			MessageText = StringFunctionsClientServer.SubstituteParametersInString(
-				NStr("en='Cannot mark the %1 document for deletion.';ru='Не удалось пометить на удаление документ: %1.'"), String(DocumentObject));
+				NStr("en='Cannot mark the document for deletion: %1.';ru='Не удалось пометить на удаление документ: %1.'"), String(DocumentObject));
 			
 			Message = New UserMessage;
 			Message.Text = MessageText;

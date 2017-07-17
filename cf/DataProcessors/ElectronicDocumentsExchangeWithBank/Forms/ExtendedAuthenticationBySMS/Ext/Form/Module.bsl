@@ -132,7 +132,7 @@ Procedure SendSMS()
 		EndIf;
 		MessageText = StringFunctionsClientServer.SubstituteParametersInString(
 							ErrorTemplate, ErrorDetails.Code, ErrorDetails.Message);
-		Operation = NStr("en='Making a connection';ru='Установка соединения'");
+		Operation = NStr("en='Connecting';ru='Установка соединения'");
 		ElectronicDocumentsServiceCallServer.ProcessExceptionByEDOnServer(
 			Operation, DetailErrorDescription, MessageText, 1);
 		Items.FormButtonDone.Visible = False;

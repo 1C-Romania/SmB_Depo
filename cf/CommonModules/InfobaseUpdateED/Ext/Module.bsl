@@ -292,7 +292,7 @@ Procedure UpdateEDFSettings(EDKind) Export
 				OR EDKind = Enums.EDKinds.AgreementAboutCostChangeRecipient
 				OR EDKind = Enums.EDKinds.AgreementAboutCostChangeSender Then
 				
-				FormatVersion = NStr("en='Federal Tax Service 5.01';ru='ФНС 5.01'");
+				FormatVersion = NStr("en='FTS 5.01';ru='ФНС 5.01'");
 			EndIf;
 			NewRow.FormatVersion = FormatVersion;
 			
@@ -346,7 +346,7 @@ Procedure UpdateEDFSettings(EDKind) Export
 				OR EDKind = Enums.EDKinds.AgreementAboutCostChangeRecipient
 				OR EDKind = Enums.EDKinds.AgreementAboutCostChangeSender Then
 				
-				FormatVersion = NStr("en='Federal Tax Service 5.01';ru='ФНС 5.01'");
+				FormatVersion = NStr("en='FTS 5.01';ru='ФНС 5.01'");
 			EndIf;
 			NewRow.FormatVersion = FormatVersion;
 			
@@ -438,7 +438,7 @@ Procedure UpdateEDFSettings(EDKind) Export
 		EndDo;
 		CommitTransaction();
 	Except
-		OperationKind = NStr("en='Info base update';ru='Обновление информационной базы'");
+		OperationKind = NStr("en='Infobase update';ru='Обновление информационной базы'");
 		DetailErrorText = DetailErrorDescription(ErrorInfo());
 		ElectronicDocumentsServiceCallServer.ProcessExceptionByEDOnServer(OperationKind, DetailErrorText);
 		RollbackTransaction();
@@ -476,7 +476,7 @@ Procedure FillDataAboutEDFProfileSettings() Export
 	While Selection.Next() Do
 		EDFSetup = Selection.Ref.GetObject();
 		EDFSetup.SetDeletionMark(True);
-		EDFSetup.Comment = NStr("en='##EDF setting is automatically marked for deletion during updating.';ru='##Настройка ЭДО помечена на удаление автоматически при обновлении.'");
+		EDFSetup.Comment = NStr("en='##EDF setting is automatically marked for deletion during update.';ru='##Настройка ЭДО помечена на удаление автоматически при обновлении.'");
 		InfobaseUpdate.WriteObject(EDFSetup);
 	EndDo;
 	
@@ -568,7 +568,7 @@ Procedure FillDataAboutEDFProfileSettings() Export
 						OR EnumValue = Enums.EDKinds.TORG12Seller
 						OR EnumValue = Enums.EDKinds.AgreementAboutCostChangeSender
 						OR EnumValue = Enums.EDKinds.AgreementAboutCostChangeRecipient Then
-						FormatVersion = NStr("en='Federal Tax Service 5.01';ru='ФНС 5.01'");
+						FormatVersion = NStr("en='FTS 5.01';ru='ФНС 5.01'");
 					ElsIf EnumValue = Enums.EDKinds.RightsDelegationAct Then
 						FormatVersion = "CML 2.08";
 					EndIf;
@@ -698,7 +698,7 @@ Procedure FillDataAboutEDFProfileSettings() Export
 		If DesiredCounterparty = Selection.Counterparty Then
 			EDFSetup = Selection.Ref.GetObject();
 			EDFSetup.SetDeletionMark(True);
-			EDFSetup.Comment = NStr("en='##EDF setting is automatically marked for deletion during updating.';ru='##Настройка ЭДО помечена на удаление автоматически при обновлении.'");
+			EDFSetup.Comment = NStr("en='##EDF setting is automatically marked for deletion during update.';ru='##Настройка ЭДО помечена на удаление автоматически при обновлении.'");
 			InfobaseUpdate.WriteObject(EDFSetup);
 		Else
 			DesiredCounterparty = Selection.Counterparty;
@@ -832,8 +832,8 @@ Procedure FillDataAboutEDFProfileSettings() Export
 		If Not ParticipantsSelection.AgreementAboutEDUsage.DeletionMark Then
 			EDFSetup = ParticipantsSelection.AgreementAboutEDUsage.GetObject();
 			EDFSetup.SetDeletionMark(True);
-			EDFSetup.Description = NStr("en=""Don't use"";ru='Не использовать'") + " - " + EDFSetup.Description;
-			EDFSetup.Comment = NStr("en='##EDF setting is automatically marked for deletion during updating.';ru='##Настройка ЭДО помечена на удаление автоматически при обновлении.'");
+			EDFSetup.Description = NStr("en='None';ru='Не использовать'") + " - " + EDFSetup.Description;
+			EDFSetup.Comment = NStr("en='##EDF setting is automatically marked for deletion during update.';ru='##Настройка ЭДО помечена на удаление автоматически при обновлении.'");
 			InfobaseUpdate.WriteObject(EDFSetup);
 		EndIf;
 		

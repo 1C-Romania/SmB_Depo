@@ -18,7 +18,7 @@ Procedure FillCheckProcessing(Cancel, CheckedAttributes)
 		If Not UseForObjectForm AND Not UseForListForm 
 			AND Publication <> Enums.AdditionalReportsAndDataProcessorsPublicationOptions.Disabled Then
 			CommonUseClientServer.MessageToUser(
-				NStr("en='Disable publication or select at least one form for using';ru='Необходимо отключить публикацию или выбрать для использования как минимум одну из форм'")
+				NStr("en='Disable publishing or select at least one of the forms to use';ru='Необходимо отключить публикацию или выбрать для использования как минимум одну из форм'")
 				,
 				,
 				,
@@ -79,7 +79,7 @@ Procedure FillCheckProcessing(Cancel, CheckedAttributes)
 				);
 			Else
 				ErrorText = StringFunctionsClientServer.SubstituteParametersInString(
-					NStr("en='Name ""%1"" used by report (data processor) ""% 2"" already occupied by another published additional report (data processor).';ru='Имя ""%1"", используемое отчетом (обработкой) ""%2"", уже занято другим опубликованным дополнительным отчетом (обработкой).'"),
+					NStr("en='Name ""%1"" used by the report (data processor) ""%2"" is already in use by another published additional report (data processor).';ru='Имя ""%1"", используемое отчетом (обработкой) ""%2"", уже занято другим опубликованным дополнительным отчетом (обработкой).'"),
 					ObjectName,
 					CommonUse.ObjectAttributeValue(ThisObject.Ref, "Description")
 				);
@@ -103,13 +103,13 @@ Procedure BeforeWrite(Cancel)
 	AdditionalReportsAndDataProcessors.AdditionalProcessingBeforeWrite(ThisObject, Cancel);
 	
 	If IsNew() AND Not AdditionalReportsAndDataProcessors.AddRight(ThisObject) Then
-		Raise NStr("en='Insufficient rights for adding the additional reports and processings.';ru='Недостаточно прав для добавления дополнительных отчетов или обработок.'");
+		Raise NStr("en='Insufficient rights to add additional reports or data processors.';ru='Недостаточно прав для добавления дополнительных отчетов или обработок.'");
 	EndIf;
 	
 	// Preliminary checks
 	If Not IsNew() AND Type <> CommonUse.ObjectAttributeValue(Ref, "Type") Then
 		CommonUseClientServer.MessageToUser(
-			NStr("en='Impossible to change the existing additional report or processing type.';ru='Невозможно сменить вид существующего дополнительного отчета или обработки.'"),,,,
+			NStr("en='Cannot change the kind of existing additional report or data processor.';ru='Невозможно сменить вид существующего дополнительного отчета или обработки.'"),,,,
 			Cancel);
 		Return;
 	EndIf;

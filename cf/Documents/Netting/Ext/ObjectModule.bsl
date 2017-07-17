@@ -93,7 +93,7 @@ Procedure FillCheckProcessing(Cancel, CheckedAttributes)
 		CreditorAccountingSum = Creditor.Total("AccountingAmount");
 		
 		If DebitorSumOfAccounting <> CreditorAccountingSum Then
-			MessageText = NStr("en='Account amount of the tabular section ""Accounts receivable"" is not equal to account amount in the tabular section ""Accounts payable""!'; ru = 'Сумма учета табличной части ""Расчеты с покупателем"", не равна сумме учета по табличной части ""Расчеты с поставщиком""!'");
+			MessageText = NStr("en='Accounting amount of the ""Settlements with customer"" tabular section is not equal to the accounting amount in the ""Settlements with supplier"" tabular section.';ru='Сумма учета табличной части ""Расчеты с покупателем"", не равна сумме учета по табличной части ""Расчеты с поставщиком""!'");
 			SmallBusinessServer.ShowMessageAboutError(
 				ThisObject,
 				MessageText,
@@ -136,7 +136,7 @@ Procedure FillCheckProcessing(Cancel, CheckedAttributes)
 	ElsIf OperationKind = Enums.OperationKindsNetting.CustomerDebtAssignment Then
 		
 		DebitorSumOfAccounting = Debitor.Total("AccountingAmount");
-		MessageText = NStr("en='Account amount is not equal to amount in the tabular section ""Accounts receivable""!';ru='Сумма учета, не равна сумме учета табличной части ""Расчеты с покупателем""!'");
+		MessageText = NStr("en='Accounting amount is not equal to the amount in the ""Settlements with customer"" tabular section.';ru='Сумма учета, не равна сумме учета табличной части ""Расчеты с покупателем""!'");
 		
 		If DebitorSumOfAccounting <> AccountingAmount Then
 			SmallBusinessServer.ShowMessageAboutError(

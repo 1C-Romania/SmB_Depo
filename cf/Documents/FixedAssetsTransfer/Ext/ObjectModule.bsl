@@ -232,7 +232,7 @@ Procedure RunPreliminaryControl(Cancel)
 	If Not QueryResult.IsEmpty() Then
 		QueryResultSelection = QueryResult.Select();
 		While QueryResultSelection.Next() Do
-			MessageText = NStr("en='Assets %FixedAsset% in list ""Assets"" string %LineNumber% is indicated repeatedly.';ru='Имущество ""%ВнеоборотныйАктив%"" указанное в строке %НомерСтроки% списка ""Имущество"", указано повторно.'"
+			MessageText = NStr("en='The ""%FixedAsset%"" property in the %LineNumber% line of the ""Property"" list is specified again.';ru='Имущество ""%ВнеоборотныйАктив%"" указанное в строке %НомерСтроки% списка ""Имущество"", указано повторно.'"
 			);
 			MessageText = StrReplace(MessageText, "%LineNumber%", QueryResultSelection.LineNumber);
 			MessageText = StrReplace(MessageText, "%FixedAsset%", QueryResultSelection.FixedAsset);
@@ -292,7 +292,7 @@ Procedure RunPreliminaryControl(Cancel)
 	For Each RowOfFixedAssets IN FixedAssets Do
 		
 		If ArrayVAStatus.Find(RowOfFixedAssets.FixedAsset) = Undefined Then
-			MessageText = NStr("en='For assets %FixedAsset% in list ""Assets"" string %LineNumber% statuses are not registrated.';ru='Для имущества ""%ВнеоборотныйАктив%"" указанного в строке %НомерСтроки% списка """"Имущество"""", не зарегистрированы состояния.'"
+			MessageText = NStr("en='States are not registered for the %FixedAsset% property in the %LineNumber% line of the """"Property"""" list.';ru='Для имущества ""%ВнеоборотныйАктив%"" указанного в строке %НомерСтроки% списка """"Имущество"""", не зарегистрированы состояния.'"
 			);
 			MessageText = StrReplace(MessageText, "%FixedAsset%", TrimAll(String(RowOfFixedAssets.FixedAsset))); 
 			MessageText = StrReplace(MessageText, "%LineNumber%",String(RowOfFixedAssets.LineNumber));
@@ -305,7 +305,7 @@ Procedure RunPreliminaryControl(Cancel)
 				Cancel
 			);
 		ElsIf ArrayVAAcceptedForAccounting.Find(RowOfFixedAssets.FixedAsset) = Undefined Then
-			MessageText = NStr("en='For the %FixedAsset% assets in row No.%LineNumber% of the Assets list, the current state is ""Taken off the list"".';ru='Для имущества ""%ВнеоборотныйАктив%"" указанного в строке %НомерСтроки% списка ""Имущество"", текущее состояние ""Снят с учета"".'"
+			MessageText = NStr("en='The current state for the %FixedAsset% property in line No. %LineNumber% of the ""Property"" list is ""Taken off the books"".';ru='Для имущества ""%ВнеоборотныйАктив%"" указанного в строке %НомерСтроки% списка ""Имущество"", текущее состояние ""Снят с учета"".'"
 			);
 			MessageText = StrReplace(MessageText, "%FixedAsset%", TrimAll(String(RowOfFixedAssets.FixedAsset))); 
 			MessageText = StrReplace(MessageText, "%LineNumber%",String(RowOfFixedAssets.LineNumber));

@@ -320,7 +320,7 @@ Function CancellationUncheckFunctionalOptionUseDiscountsMarkups()
 		
 		If RefsTable.Count() > 0 Then
 			
-			ErrorText = NStr("en='Discounts and markups kinds are used in the base! Disabling the option is prohibited!';ru='В базе используются виды скидок, наценок! Снятие опции запрещено!'");
+			ErrorText = NStr("en='Kinds of discounts and markups are used in the infobase. Cannot clear the check box.';ru='В базе используются виды скидок, наценок! Снятие опции запрещено!'");
 			Break;
 			
 		EndIf;
@@ -360,7 +360,7 @@ Function CancellationUncheckFunctionalOptionUseDiscountsMarkups()
 	
 	If Not QueryResult.IsEmpty() Then
 		
-		ErrorText = ErrorText + ?(IsBlankString(ErrorText), "", Chars.LF) + NStr("en='Discounts and markups are used in the documents! Disabling the option is prohibited!';ru='В документах используются скидки и наценки! Снятие опции запрещено!'");
+		ErrorText = ErrorText + ?(IsBlankString(ErrorText), "", Chars.LF) + NStr("en='Discounts and markups are used in the documents. Cannot clear the check box.';ru='В документах используются скидки и наценки! Снятие опции запрещено!'");
 		
 	EndIf;
 	
@@ -368,7 +368,7 @@ Function CancellationUncheckFunctionalOptionUseDiscountsMarkups()
 	If GetFunctionalOption("UseDiscountCards") Then
 		
 		ErrorText = ErrorText + ?(IsBlankString(ErrorText), "", Chars.LF) + 
-			NStr("en='Option ""Use discount cards"" is enabled! The flag removal is prohibited!';ru='Включена опция ""Использовать дисконтные карты""! Снятие флага запрещено!'");
+			NStr("en='The ""Use discount cards"" option is enabled. Clearing the check box is prohibited.';ru='Включена опция ""Использовать дисконтные карты""! Снятие флага запрещено!'");
 		
 	EndIf;
 	// End DiscountCards
@@ -396,7 +396,7 @@ Function CancellationUncheckFunctionalOptionTransferGoodsOnCommission()
 	QueryResult = Query.Execute();
 	If Not QueryResult.IsEmpty() Then
 		
-		ErrorText = NStr("en='Accumulation register ""Transferred inventory"" contains information about the transfer on the commission! The flag removal is prohibited!';ru='Регистр накопления ""Запасы переданные"" содержит информацию о передаче на комиссию! Снятие флага запрещено!'");
+		ErrorText = NStr("en='The ""Transferred inventory"" accumulation register contains information about transfer for commission. Clearing the check box is prohibited.';ru='Регистр накопления ""Запасы переданные"" содержит информацию о передаче на комиссию! Снятие флага запрещено!'");
 		
 	EndIf;
 	
@@ -423,7 +423,7 @@ Function CancellationUncheckFunctionalOptionReceiveGoodsOnCommission()
 	QueryResult = Query.Execute();
 	If Not QueryResult.IsEmpty() Then
 		
-		ErrorText = NStr("en='Accumulation register ""Received inventory"" contains information about the reception on a commission! The flag removal is prohibited!';ru='Регистр накопления ""Запасы принятые"" содержит информацию о приеме на комиссию! Снятие флага запрещено!'");
+		ErrorText = NStr("en='The ""Received inventory"" accumulation register contains information about acceptance for commission. Clearing the check box is prohibited.';ru='Регистр накопления ""Запасы принятые"" содержит информацию о приеме на комиссию! Снятие флага запрещено!'");
 		
 	EndIf;
 	
@@ -507,7 +507,7 @@ Function CancellationUncheckFunctionalOptionAccountingRetail()
 	If QuerySelection.Next()
 		AND QuerySelection.RecordersCount > 0 Then
 		
-		ErrorText = NStr("en='In the base there are register records or objects related to the accounting retail operations! The flag removal is prohibited!';ru='В базе есть движения или объекты, относящиеся к учету операций розничных продаж! Снятие флага запрещено!'");
+		ErrorText = NStr("en='There are movements or objects related to the retail sale transaction accounting in the infobase. Cannot clear the check box.';ru='В базе есть движения или объекты, относящиеся к учету операций розничных продаж! Снятие флага запрещено!'");
 		
 	EndIf;
 	
@@ -535,7 +535,7 @@ Function CancellationUncheckFunctionalOptionUseAutomaticDiscountsMarkups()
 		
 		If RefsTable.Count() > 0 Then
 			
-			ErrorText = NStr("en='Automatic discounts and markups kinds are used in the base! Disabling the option is prohibited!';ru='В базе используются виды автоматических скидок, наценок! Снятие опции запрещено!'");
+			ErrorText = NStr("en='Kinds of automatic discounts and markups are used in the infobase. Cannot clear the check box.';ru='В базе используются виды автоматических скидок, наценок! Снятие опции запрещено!'");
 			Break;
 			
 		EndIf;
@@ -575,7 +575,7 @@ Function CancellationUncheckFunctionalOptionUseAutomaticDiscountsMarkups()
 	
 	If Not QueryResult.IsEmpty() Then
 		
-		ErrorText = ErrorText + ?(IsBlankString(ErrorText), "", Chars.LF) + NStr("en='Automatic discounts and markups are used in the documents! Disabling the option is prohibited!';ru='В документах используются автоматические скидки и наценки! Снятие опции запрещено!'");
+		ErrorText = ErrorText + ?(IsBlankString(ErrorText), "", Chars.LF) + NStr("en='Automatic discounts and markups are used in the documents. Cannot clear the check box.';ru='В документах используются автоматические скидки и наценки! Снятие опции запрещено!'");
 		
 	EndIf;
 	
@@ -605,7 +605,7 @@ Function CancellationUncheckFunctionalOptionUseDiscountCards()
 		
 		If RefsTable.Count() > 0 Then
 			
-			ErrorText = NStr("en='Discount cards are used in the base! Disabling the option is prohibited!';ru='В базе используются дисконтные карты! Снятие опции запрещено!'");
+			ErrorText = NStr("en='Discount cards are used in the infobase. Cannot clear the check box.';ru='В базе используются дисконтные карты! Снятие опции запрещено!'");
 			Break;
 			
 		EndIf;
@@ -694,7 +694,7 @@ Function ValidateAbilityToChangeAttributeValue(AttributePathToData, Result)
 		If Not ConstantsSet.UseCustomerOrderStates
 			AND Not ValueIsFilled(ConstantsSet.CustomerOrdersInProgressStatus) Then
 			
-			ErrorText = NStr("en='The ""Use several customer orders states"" flag is cleared, but the ""In work"" customer order state parameter is not filled!';ru='Снят флаг ""Использовать несколько состояний заказов покупателей"", но не заполнен параматр состояния заказа покупателя ""В работе""!'");
+			ErrorText = NStr("en='The ""Use several customer order states"" check box is cleared, but the ""In progress"" state parameter is not filled in.';ru='Снят флаг ""Использовать несколько состояний заказов покупателей"", но не заполнен параматр состояния заказа покупателя ""В работе""!'");
 			
 			Result.Insert("Field",				AttributePathToData);
 			Result.Insert("ErrorText", 		ErrorText);
@@ -710,7 +710,7 @@ Function ValidateAbilityToChangeAttributeValue(AttributePathToData, Result)
 		If Not ConstantsSet.UseCustomerOrderStates
 			AND Not ValueIsFilled(ConstantsSet.CustomerOrdersCompletedStatus) Then
 			
-			ErrorText = NStr("en='The ""Use several customer orders states"" flag is cleared, but the ""Executed"" customer order state parameter is not filled!';ru='Снят флаг ""Использовать несколько состояний заказов покупателей"", но не заполнен параматр состояний заказа покупателя ""Выполнен""!'");
+			ErrorText = NStr("en='The ""Use several customer order states"" check box is cleared, but the ""Completed"" state parameter is not filled in.';ru='Снят флаг ""Использовать несколько состояний заказов покупателей"", но не заполнен параматр состояний заказа покупателя ""Выполнен""!'");
 			
 			Result.Insert("Field",				AttributePathToData);
 			Result.Insert("ErrorText", 		ErrorText);

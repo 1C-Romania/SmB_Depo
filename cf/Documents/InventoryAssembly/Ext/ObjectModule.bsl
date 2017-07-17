@@ -108,7 +108,7 @@ Procedure FillTabularSectionBySpecification(NodesSpecificationStack, NodesTable 
 			If Not NodesSpecificationStack.Find(Selection.Specification) = Undefined Then
 				MessageText = NStr("en='During filling in of the Specification materials
 		|tabular section a recursive item occurrence was found';ru='При попытке заполнить табличную
-		|часть Материалы по спецификации, обнаружено рекурсивное вхождение элемента'")+" "+Selection.ProductsAndServices+" "+NStr("en='in specifications';ru='в спецификации'")+" "+Selection.ProductionSpecification+"
+		|часть Материалы по спецификации, обнаружено рекурсивное вхождение элемента'")+" "+Selection.ProductsAndServices+" "+NStr("en='in BOM';ru='в спецификации'")+" "+Selection.ProductionSpecification+"
 									|The operation failed.";
 				Raise MessageText;
 			EndIf;
@@ -771,7 +771,7 @@ Procedure FillCheckProcessing(Cancel, CheckedAttributes)
 		
 		If Not ValueIsFilled(CustomerOrder) Then
 			
-			MessageText = NStr("ru = 'Не указан заказ покупателя- источник резерва!'; en = 'Customer order is not specified - reserve source!'");
+			MessageText = NStr("en='Customer order which is a reserve source is not specified.';ru='Не указан заказ покупателя- источник резерва!'");
 			SmallBusinessServer.ShowMessageAboutError(ThisObject, MessageText,,,"CustomerOrder",Cancel);
 			
 		EndIf;
@@ -786,7 +786,7 @@ Procedure FillCheckProcessing(Cancel, CheckedAttributes)
 				
 				If StringInventory.Reserve > StringInventory.Quantity Then
 					
-					MessageText = NStr("ru = 'В строке №%Номер% табл. части ""Запасы"" количество позиций к списанию из резерва превышает общее количество запасов.'; en = 'In row No.%Number% of the ""Inventory"" tabular section, the number of items for write-off from reserve exceeds the total inventory quantity.'");
+					MessageText = NStr("en='In row No. %Number% of the ""Inventory"" tabular section, the number of items for write-off from reserve exceeds the total inventory quantity.';ru='В строке №%Номер% табл. части ""Запасы"" количество позиций к списанию из резерва превышает общее количество запасов.'");
 					MessageText = StrReplace(MessageText, "%Number%", StringInventory.LineNumber);
 					SmallBusinessServer.ShowMessageAboutError(
 						ThisObject,
@@ -807,7 +807,7 @@ Procedure FillCheckProcessing(Cancel, CheckedAttributes)
 				
 				If StringProducts.Reserve > StringProducts.Quantity Then
 					
-					MessageText = NStr("ru = 'В строке №%Номер% табл. части ""Продукция"" количество позиций к списанию из резерва превышает общее количество продукции.'; en = 'In row No.%Number% of the ""Products"" tabular section the number of items for write-off from reserve exceeds the total inventory quantity.'");
+					MessageText = NStr("en='In row No. %Number% of the ""Products"" tabular section, the number of items for write-off from reserve exceeds the total inventory quantity.';ru='В строке №%Номер% табл. части ""Продукция"" количество позиций к списанию из резерва превышает общее количество продукции.'");
 					MessageText = StrReplace(MessageText, "%Number%", StringProducts.LineNumber);
 					SmallBusinessServer.ShowMessageAboutError(
 						ThisObject,

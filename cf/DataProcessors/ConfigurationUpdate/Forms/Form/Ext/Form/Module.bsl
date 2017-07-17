@@ -16,7 +16,7 @@ Procedure OnCreateAtServer(Cancel, StandardProcessing)
 	StandardSubsystemsServer.SetGroupHeadersDisplay(ThisObject);
 	
 	WriteLogEvent(ConfigurationUpdate.EventLogMonitorEvent(), EventLogLevel.Information,,,
-		NStr("en='Opening configuration update assistant...';ru='Открытие помощника обновления конфигурации...'"));
+		NStr("en='Opening configuration update wizard...';ru='Открытие помощника обновления конфигурации...'"));
 	ConfigurationUpdate.AbortExecuteIfExternalUserAuthorized();
 	
 	// Setting the update flag at the end of assistant work.
@@ -299,8 +299,8 @@ Procedure FieldUpdateFileStartChoice(Item, ChoiceData, StandardProcessing)
 	Dialog				= New FileDialog(FileDialogMode.Open);
 	Dialog.Directory		= ConfigurationUpdateClient.GetFileDir(Object.UpdateFileName);
 	Dialog.CheckFileExist = True;
-	Dialog.Filter		= NStr("en='All the files of supply (*.cf*;*.cfu)|*.cf*;*.cfu|Files of the configuration supply (*.cf)|*.cf|Files of the configuration update supply(*.cfu)|*.cfu';ru='Все файлы поставки (*.cf*;*.cfu)|*.cf*;*.cfu|Файлы поставки конфигурации (*.cf)|*.cf|Файлы поставки обновления конфигурации(*.cfu)|*.cfu'");
-	Dialog.Title	= NStr("en='Choice of delivery update configuration';ru='Выбор поставки обновления конфигурации'");
+	Dialog.Filter		= NStr("en='All delivery files (*.cf*;*.cfu)|*.cf*;*.cfu|Configuration delivery files (*.cf)|*.cf|Configuration update delivery files(*.cfu)|*.cfu';ru='Все файлы поставки (*.cf*;*.cfu)|*.cf*;*.cfu|Файлы поставки конфигурации (*.cf)|*.cf|Файлы поставки обновления конфигурации(*.cfu)|*.cfu'");
+	Dialog.Title	= NStr("en='Select a configuration update delivery';ru='Выбор поставки обновления конфигурации'");
 	
 	If Dialog.Choose() Then
 		Object.UpdateFileName = Dialog.FullFileName;
@@ -425,7 +425,7 @@ Procedure NewInVersion(Command)
 	If Not IsBlankString(FileNameInformationAboutUpdate) Then
 		ConfigurationUpdateClient.OpenWebPage(FileNameInformationAboutUpdate);
 	Else
-		ShowMessageBox(, NStr("en='Information about the update is missing.';ru='Информация об обновлении отсутствует.'"));
+		ShowMessageBox(, NStr("en='No update information is available.';ru='Информация об обновлении отсутствует.'"));
 	EndIf;
 	
 EndProcedure
@@ -637,7 +637,7 @@ Procedure GetAvailableUpdatesInInterval(Val VersionFrom, Val VersionBefore, File
 		If CurrentVersionFrom = NewCurrentVersionFrom AND NewCurrentVersionFrom <> VersionBefore Then
 			TableOfAvailableUpdatesConfiguration.Clear();
 			Raise StringFunctionsClientServer.SubstituteParametersInString(
-				NStr("en='An update to the version of %1 from the current version of %2 is unavailable';ru='Недоступно обновление на версию %1 с текущей версии %2'"), VersionBefore, VersionFrom);
+				NStr("en='Update to version %1 from the current version %2 is not available';ru='Недоступно обновление на версию %1 с текущей версии %2'"), VersionBefore, VersionFrom);
 		EndIf;
 		CurrentVersionFrom	= NewCurrentVersionFrom;
 	
@@ -656,7 +656,7 @@ Procedure RunImportOfListOfUpdates(Val ImportFileAddress, TableUpdates = Undefin
 		FileData.Write(FullPathFileExport);
 	EndIf;
 	
-	ErrorInfo = NStr("en='Error when reading an updates list file';ru='Ошибка при чтении файла списка обновлений'") + " " + FullPathFileExport;
+	ErrorInfo = NStr("en='An error occurred when reading the update list file';ru='Ошибка при чтении файла списка обновлений'") + " " + FullPathFileExport;
 	If Not FileExistsAtServer(FullPathFileExport) Then
 		Raise ErrorInfo;
 	EndIf;
@@ -745,7 +745,7 @@ Procedure RunImportOfListOfUpdates(Val ImportFileAddress, TableUpdates = Undefin
 	XMLReader.Close();
 	
 	If TableUpdates = Undefined Then // errors at file reading
-		Raise NStr("en='Error when reading the file';ru='Ошибка при чтении файла'") + " " + FullPathFileExport;
+		Raise NStr("en='An error occurred when reading the file';ru='Ошибка при чтении файла'") + " " + FullPathFileExport;
    	EndIf;
 	
 EndProcedure
@@ -894,7 +894,7 @@ Procedure BeforePageOpen(NewCurrentPage = Undefined)
 		EndIf;
 		
 		If Not IsBlankString(Object.TechnicalErrorInfo) Then
-			Object.TechnicalErrorInfo = NStr("en='Technical information about the error:';ru='Техническая информация об ошибке:'") + Chars.LF + Object.TechnicalErrorInfo;
+			Object.TechnicalErrorInfo = NStr("en='Technical information on the error:';ru='Техническая информация об ошибке:'") + Chars.LF + Object.TechnicalErrorInfo;
 		EndIf;
 		
 	ElsIf NewCurrentPage = Pages.AvailableUpdate Then
@@ -938,7 +938,7 @@ Procedure BeforePageOpen(NewCurrentPage = Undefined)
 		EnabledButtonsNextStep									= False;
 		Items.LabelDetailsCurrentConfiguration.Title	= StandardSubsystemsClientReUse.ClientWorkParameters().ConfigurationSynonym;
 		Items.LabelVersionCurrentConfiguration.Title		= StandardSubsystemsClientReUse.ClientWorkParameters().ConfigurationVersion;
-		Items.InscriptionVersionForUpdate.Title			= ?(TypeOf(AvailableUpdateStructure) = Type("Structure"), NStr("en='Available version for update -';ru='Доступная версия для обновления -'") + " " + AvailableUpdateStructure.Version, "");
+		Items.InscriptionVersionForUpdate.Title			= ?(TypeOf(AvailableUpdateStructure) = Type("Structure"), NStr("en='Version available for update -';ru='Доступная версия для обновления -'") + " " + AvailableUpdateStructure.Version, "");
 		Items.InscriptionVersionForUpdate.Visible			= Not IsBlankString(Items.InscriptionVersionForUpdate.Title);
 		
 		If CommonUseClientServer.CompareVersions(StandardSubsystemsClientReUse.ClientWorkParameters().ConfigurationVersion,
@@ -947,13 +947,13 @@ Procedure BeforePageOpen(NewCurrentPage = Undefined)
 			Or (Object.UpdateSource = 0 AND Object.AvailableUpdates.Count() = 0) Then // this is the last version.
 			
 			Items.PanelInformationAboutUpdate.CurrentPage = Items.PanelInformationAboutUpdate.ChildItems.RefreshEnabledNotNeeded;
-			Items.GroupUpdateIsNotDetected.Title = NStr("en='Update is not required';ru='Обновление не требуется'");
+			Items.GroupUpdateIsNotDetected.Title = NStr("en='No update required';ru='Обновление не требуется'");
 		ElsIf StandardSubsystemsClientReUse.ClientWorkParameters().MasterNode <> Undefined Then
 			Items.PanelInformationAboutUpdate.CurrentPage = Items.UpdatePerformedAtMainNode;
-			Items.GroupUpdateIsNotDetected.Title = NStr("en='Update is not required';ru='Обновление не требуется'");
+			Items.GroupUpdateIsNotDetected.Title = NStr("en='No update required';ru='Обновление не требуется'");
 		Else 
 			Items.PanelInformationAboutUpdate.CurrentPage = Items.PanelInformationAboutUpdate.ChildItems.RefreshEnabledIsNotFound;
-			Items.GroupUpdateIsNotDetected.Title = NStr("en='Update of configuration is not found';ru='Обновления конфигурации не обнаружено'");
+			Items.GroupUpdateIsNotDetected.Title = NStr("en='Configuration update is not detected';ru='Обновления конфигурации не обнаружено'");
 		EndIf;
 		
 		If Not StandardSubsystemsClientReUse.ClientWorkParameters().IsMasterNode Then
@@ -1075,7 +1075,7 @@ Procedure BeforePageOpen(NewCurrentPage = Undefined)
 		EndIf;
 	EndIf;
 	
-	ButtonNext.Title = ?(NextButtonFunction, NStr("en='Next >';ru='Далее  >'"), NStr("en='Done';ru='Готово'"));
+	ButtonNext.Title = ?(NextButtonFunction, NStr("en='Next >';ru='Далее  >'"), NStr("en='Finish';ru='Готово'"));
 	
 	If NewCurrentPage = Pages.LongOperation Then
 		AttachIdleHandler("RunUpdateObtaining", 1, True);
@@ -1105,7 +1105,7 @@ Function RestoreResultsOfPreviousStart(Cancel = False)
 			NameLogEvents = ConfigurationUpdateClient.EventLogMonitorEvent();
 			
 			EventLogMonitorClient.AddMessageForEventLogMonitor(NameLogEvents, "Information",
-				NStr("en='It is discovered that the update configuration files have already been received and saved locally.';ru='Обнаружено, что файлы обновления конфигурации уже были получены и сохранены локально.'"));
+				NStr("en='Configuration update files have already been received and saved locally.';ru='Обнаружено, что файлы обновления конфигурации уже были получены и сохранены локально.'"));
 				
 			GoToChoiceOfUpdateMode();
 			Return Undefined;
@@ -1146,7 +1146,7 @@ Function ProcessPageConnectionToSite(OutputMessages = True)
 	Object.TechnicalErrorInfo = "";
 	If Not ValueIsFilled(Object.UpdateServerUserCode) Then
 		If OutputMessages Then
-			ShowMessageBox(, NStr("en='Specify the user code for update.';ru='Укажите код пользователя для обновления.'"));
+			ShowMessageBox(, NStr("en='Specify a user code for update.';ru='Укажите код пользователя для обновления.'"));
 		EndIf;
 		CurrentItem = Items.UpdateServerUserCode;
 		Return Pages.ConnectionToSite.Name;
@@ -1154,7 +1154,7 @@ Function ProcessPageConnectionToSite(OutputMessages = True)
 	
 	If Not ValueIsFilled(Object.UpdatesServerPassword) Then
 		If OutputMessages Then
-			ShowMessageBox(, NStr("en='Specify the user password for updating.';ru='Укажите пароль пользователя для обновления.'"));
+			ShowMessageBox(, NStr("en='Specify a user password for update.';ru='Укажите пароль пользователя для обновления.'"));
 		EndIf;
 		CurrentItem = Items.UpdatesServerPassword;
 		Return Pages.ConnectionToSite.Name;
@@ -1185,7 +1185,7 @@ Function ProcessPageChoiceUpdateMode(OutputMessages = True, FlagCompleteJobs = F
 		
 		File = New File(Object.InfobaseBackupDirectoryName);
 		If Not File.Exist() Or Not File.IsDirectory() Then
-			ShowMessageBox(, NStr("en='Specify existing directory for saving IB backup file.';ru='Укажите существующий каталог для сохранения резервной копии ИБ.'"));
+			ShowMessageBox(, NStr("en='Specify an existing directory to save the IB backup.';ru='Укажите существующий каталог для сохранения резервной копии ИБ.'"));
 		EndIf;
 		
 		Return CurrentPage.Name;
@@ -1196,7 +1196,7 @@ Function ProcessPageChoiceUpdateMode(OutputMessages = True, FlagCompleteJobs = F
 		If FileInfobase AND Not SimulationModeOfClientServerIB() Then
 			AvailabilityOfConnections = ActiveConnectionsExist(ApplicationParameters["StandardSubsystems.MessagesForEventLogMonitor"]);
 			If AvailabilityOfConnections Then
-				ShowMessageBox(, NStr("en='It is impossible to continue the configuration update because not all the connections with the infobase have been completed.';ru='Невозможно продолжить обновление конфигурации, так как не завершены все соединения с информационной базой.'"));
+				ShowMessageBox(, NStr("en='The configuration update cannot proceed as connections with infobase were not terminated.';ru='Невозможно продолжить обновление конфигурации, так как не завершены все соединения с информационной базой.'"));
 				Return CurrentPage.Name;
 			EndIf; 
 		EndIf;
@@ -1236,11 +1236,11 @@ Function ProcessPageChoiceUpdateMode(OutputMessages = True, FlagCompleteJobs = F
 	EndIf;
 	ApplicationParameters[ParameterName] = Object.UpdateMode = 1;
 	
-	Message = NStr("en='Selected update mode:';ru='Выбран режим обновления:'") + " ";
+	Message = NStr("en='Update mode is selected:';ru='Выбран режим обновления:'") + " ";
 	If Object.UpdateMode = 0 Then   // Update now
 		Message = Message + NStr("en='now';ru='сейчас'");
 	ElsIf Object.UpdateMode = 1 Then  // On closing application
-		Message = Message + NStr("en='On closing application';ru='При завершении работы'");
+		Message = Message + NStr("en='On exiting the application';ru='При завершении работы'");
 	ElsIf Object.UpdateMode = 2 Then  // Plan update
 		Message = Message + NStr("en='schedule';ru='график'");
 	EndIf;
@@ -1420,7 +1420,7 @@ Function ProcessPageAvailableUpdate(OutputMessages = True)
 	If CheckUpdateFilesReceived() Then
 		NameLogEvents  = ConfigurationUpdateClient.EventLogMonitorEvent();
 		EventLogMonitorClient.AddMessageForEventLogMonitor(NameLogEvents, "Information",
-			NStr("en='It is discovered that the update configuration files have already been received and saved locally.';ru='Обнаружено, что файлы обновления конфигурации уже были получены и сохранены локально.'"));
+			NStr("en='Configuration update files have already been received and saved locally.';ru='Обнаружено, что файлы обновления конфигурации уже были получены и сохранены локально.'"));
 		GoToChoiceOfUpdateMode(True);
 		Return Undefined;
 	EndIf;
@@ -1467,7 +1467,7 @@ Function ProcessPageUpdateFile(OutputMessages = True)
 		
 		If Not ValueIsFilled(Object.UpdateFileName) Then
 			If OutputMessages Then
-				CommonUseClientServer.MessageToUser(NStr("en='Specify the configuration update delivery file.';ru='Укажите файл поставки обновления конфигурации.'"),,"Object.UpdateFileName");
+				CommonUseClientServer.MessageToUser(NStr("en='Specify a configuration update delivery file.';ru='Укажите файл поставки обновления конфигурации.'"),,"Object.UpdateFileName");
 			EndIf;
 			CurrentItem = Items.FieldUpdateFile;
 			Return Pages.UpdateFile.Name;
@@ -1476,7 +1476,7 @@ Function ProcessPageUpdateFile(OutputMessages = True)
 		File = New File(Object.UpdateFileName);
 		If Not File.Exist() OR Not File.IsFile() Then
 			If OutputMessages Then
-				CommonUseClientServer.MessageToUser(NStr("en='Delivery update configuration File not found';ru='Файл поставки обновления конфигурации не найден.'"),,"Object.UpdateFileName");
+				CommonUseClientServer.MessageToUser(NStr("en='Delivery file of configuration update is not found.';ru='Файл поставки обновления конфигурации не найден.'"),,"Object.UpdateFileName");
 			EndIf;
 			CurrentItem = Items.FieldUpdateFile;
 			Return Pages.UpdateFile.Name;
@@ -1643,7 +1643,7 @@ Function GoToChoiceOfUpdateMode(IsGoNext = False)
 		ThisIsFileBase = StandardSubsystemsClientReUse.ClientWorkParameters().FileInfobase;
 		
 		NotifyDescription = New NotifyDescription("AfterAdministrationParametersReceiving", ThisObject, IsGoNext);
-		FormTitle = NStr("en='Setting update';ru='Установка обновления'");
+		FormTitle = NStr("en='Install update';ru='Установка обновления'");
 		If ThisIsFileBase Then
 			ExplanatoryInscription = NStr("en='To set the update
 		|it is necessary to enter the infobase administration parameters';ru='Для установки
@@ -1707,7 +1707,7 @@ Procedure AfterAdministrationParametersReceiving(Result, IsGoNext) Export
 			
 		EndIf;
 		
-		WarningText = NStr("en='To set the update it is necessary to enter the administration parameters.';ru='Для установки обновления необходимо ввести параметры администрирования.'");
+		WarningText = NStr("en='To install the update, enter the administration parameters.';ru='Для установки обновления необходимо ввести параметры администрирования.'");
 		ShowMessageBox(, WarningText);
 		
 		NameLogEvents = ConfigurationUpdateClient.EventLogMonitorEvent();
@@ -1792,7 +1792,7 @@ Function CheckAccessToIB()
 		ClusterAdministrationClientServer.CheckAdministrationParameters(AdministrationParameters,, False);
 	Except
 		Result = False;
-		MessageText = NStr("en='Failed to connect to the infobase:';ru='Не удалось выполнить подключение к информационной базе:'") + Chars.LF;
+		MessageText = NStr("en='Cannot connect to the infobase:';ru='Не удалось выполнить подключение к информационной базе:'") + Chars.LF;
 		EventLogMonitorClient.AddMessageForEventLogMonitor(NameLogEvents, 
 			"Error", MessageText + DetailErrorDescription(ErrorInfo()));
 		DetectedConnectionError = MessageText + BriefErrorDescription(ErrorInfo());
@@ -1804,7 +1804,7 @@ Function CheckAccessToIB()
 			ClusterAdministrationClientServer.CheckAdministrationParameters(AdministrationParameters,,, False);
 		Except
 			Result = False;
-			MessageText = NStr("en='Failed to connect to the server cluster:';ru='Не удалось выполнить подключение к кластеру серверов:'") + Chars.LF;
+			MessageText = NStr("en='Cannot connect to the server cluster:';ru='Не удалось выполнить подключение к кластеру серверов:'") + Chars.LF;
 			EventLogMonitorClient.AddMessageForEventLogMonitor(NameLogEvents,
 				"Error", MessageText + DetailErrorDescription(ErrorInfo()));
 			DetectedConnectionError = MessageText + BriefErrorDescription(ErrorInfo());
@@ -1819,7 +1819,7 @@ EndFunction
 Function CheckEMailSettings(CurrentPageName, OutputMessages = True)
 	If Not CommonUseClientServer.EmailAddressMeetsRequirements(Object.EmailAddress) Then
 		If OutputMessages Then
-			ShowMessageBox(, NStr("en='Specify valid email address';ru='Укажите допустимый адрес электронной почты.'"));
+			ShowMessageBox(, NStr("en='Specify an allowable email address.';ru='Укажите допустимый адрес электронной почты.'"));
 		EndIf;
 		CurrentItem	= Items.FieldEmailAddress;
 		Return CurrentPageName;
@@ -1902,11 +1902,11 @@ Function CreateSchedulerTask(Val ApplicationFileName, Val DateTime)
 			CodeTasks);// out JobId
 		If ErrorCode <> 0 Then	// Error codes: http://msdn2.microsoft.com/en-us/library/aa389389(VS.85).aspx.
 			EventLogMonitorClient.AddMessageForEventLogMonitor(NameLogEvents, 
-				"Error", NStr("en=""Error while creating scheduler's  task:"";ru='Ошибка при создании задачи планировщика:'")
+				"Error", NStr("en='An error occurred while creating a scheduler task:';ru='Ошибка при создании задачи планировщика:'")
 					+ " " + ErrorCode);
 			Return 0;
 		EndIf;
-		MessageText = NStr("en='The scheduler task has been successfully scheduled (command: %1; Date: %2; task code: %3).';ru='Задача планировщика успешно запланирована (команда: %1; дата: %2; код задачи: %3).'");
+		MessageText = NStr("en='Scheduler task is successfully planned (command: %1; date: %2; task code: %3).';ru='Задача планировщика успешно запланирована (команда: %1; дата: %2; код задачи: %3).'");
 		
 		EventLogMonitorClient.AddMessageForEventLogMonitor(NameLogEvents,
 			"Information", 
@@ -1915,7 +1915,7 @@ Function CreateSchedulerTask(Val ApplicationFileName, Val DateTime)
 	Except
 			
 		EventLogMonitorClient.AddMessageForEventLogMonitor(NameLogEvents, "Error",
-			NStr("en=""Error while creating scheduler's  task:"";ru='Ошибка при создании задачи планировщика:'")
+			NStr("en='An error occurred while creating a scheduler task:';ru='Ошибка при создании задачи планировщика:'")
 				+ " " + ErrorDescription());
 		Return 0;
 	EndTry;
@@ -2037,10 +2037,10 @@ Function ValidateAcceptableDateUpdateAtServer(DateTime)
 	
 	Now = CurrentSessionDate();
 	If DateTime < Now Then
-		Return NStr("en='Configuration updates can be planned only for future date and time.';ru='Обновление конфигурации может быть запланировано только на будущую дату и время.'");
+		Return NStr("en='Configuration update can be scheduled only for a future date and time.';ru='Обновление конфигурации может быть запланировано только на будущую дату и время.'");
 	EndIf;
 	If DateTime > AddMonth(Now, 1) Then
-		Return NStr("en='Configuration update can be planned not later than in a month after the current date.';ru='Обновление конфигурации может быть запланировано не позднее, чем через месяц относительно текущей даты.'");
+		Return NStr("en='Configuration update can be scheduled not later than in a month from the current date.';ru='Обновление конфигурации может быть запланировано не позднее, чем через месяц относительно текущей даты.'");
 	EndIf;
 	
 	Return "";
@@ -2067,11 +2067,11 @@ Function DeleteSchedulerTask(CodeTasks)
 		Result = ErrorCode = 0;
 		If Not Result Then	// Error codes: http://msdn2.microsoft.com/en-us/library/aa389957(VS.85).aspx.
 			EventLogMonitorClient.AddMessageForEventLogMonitor(NameLogEvents, "Error",
-				NStr("en='Error occurred while deleting the scheduler:';ru='Ошибка при удалении задачи планировщика:'")
+				NStr("en='An error occurred while deleting the scheduler task:';ru='Ошибка при удалении задачи планировщика:'")
 					+ " " + ErrorCode);
 			Return Result;
 		EndIf;
-		MessageText = NStr("en='The scheduler task has been successfully removed (task code: %1).';ru='Задача планировщика успешно удалена (код задачи: %1).'");
+		MessageText = NStr("en='Scheduler task is successfully removed (task code: %1).';ru='Задача планировщика успешно удалена (код задачи: %1).'");
 		EventLogMonitorClient.AddMessageForEventLogMonitor(NameLogEvents, "Information",
 			StringFunctionsClientServer.SubstituteParametersInString(MessageText, CodeTasks));
 		CodeTasks = 0;
@@ -2080,7 +2080,7 @@ Function DeleteSchedulerTask(CodeTasks)
 	Except
 		
 		EventLogMonitorClient.AddMessageForEventLogMonitor(NameLogEvents, "Error",
-			NStr("en='Error occurred while deleting the scheduler:';ru='Ошибка при удалении задачи планировщика:'")
+			NStr("en='An error occurred while deleting the scheduler task:';ru='Ошибка при удалении задачи планировщика:'")
 				+ " " + ErrorDescription());
 		Return False;
 	EndTry;
@@ -2240,7 +2240,7 @@ Function UnpackUpdateInstallationPackage()
 	#If Not WebClient Then
 	NameLogEvents = ConfigurationUpdateClient.EventLogMonitorEvent();
 	EventLogMonitorClient.AddMessageForEventLogMonitor(NameLogEvents, 
-		"Information", NStr("en='Unpack the update distribution...';ru='Выполняется распаковка дистрибутива обновления...'"));
+		"Information", NStr("en='Unpacking update distribution...';ru='Выполняется распаковка дистрибутива обновления...'"));
 		
 	For Each Update IN Object.AvailableUpdates Do
 	
@@ -2258,14 +2258,14 @@ Function UnpackUpdateInstallationPackage()
 			UpdateFileName	= DestinationDirectory + "1cv8.cfu";
 			If Not FileExistsAtClient(UpdateFileName) Then
 				EventLogMonitorClient.AddMessageForEventLogMonitor(NameLogEvents, "Error",
-					NStr("en='Update installation package does not contain 1cv8.cfu:';ru='Дистрибутив обновления не содержит 1cv8.cfu:'")
+					NStr("en='Update distribution does not contain 1cv8.cfu:';ru='Дистрибутив обновления не содержит 1cv8.cfu:'")
 						+ " " + Update.PathToLocalFile);
 				Return False;
 			EndIf;
 			Update.PathToLocalUpdateFile = UpdateFileName;
 			
 			EventLogMonitorClient.AddMessageForEventLogMonitor(NameLogEvents, "Information",
-				NStr("en='Update files successfully unpacked:';ru='Файлы дистрибутива обновления успешно распакованы:'")
+				NStr("en='Update distribution files are successfully uncompressed:';ru='Файлы дистрибутива обновления успешно распакованы:'")
 					+ " " + UpdateFileName);
 		Except
 			EventLogMonitorClient.AddMessageForEventLogMonitor(NameLogEvents, "Error",
@@ -2281,13 +2281,13 @@ Function UnpackUpdateInstallationPackage()
 			UpdateFileName	= DestinationDirectory + "1cv8.cfu";
 			If Not FileExistsAtClient(UpdateFileName) Then
 				EventLogMonitorClient.AddMessageForEventLogMonitor(ConfigurationUpdateClient.EventLogMonitorEvent(), 
-					"Error", NStr("en='Update installation package does not contain 1cv8.cfu:';ru='Дистрибутив обновления не содержит 1cv8.cfu:'")
+					"Error", NStr("en='Update distribution does not contain 1cv8.cfu:';ru='Дистрибутив обновления не содержит 1cv8.cfu:'")
 						+ " " + Update.PathToLocalFile);
 				Return False;
 			EndIf;
 			Update.PathToLocalUpdateFile = UpdateFileName;
 			EventLogMonitorClient.AddMessageForEventLogMonitor(ConfigurationUpdateClient.EventLogMonitorEvent(), 
-				"Information", NStr("en='Update files successfully unpacked:';ru='Файлы дистрибутива обновления успешно распакованы:'")
+				"Information", NStr("en='Update distribution files are successfully uncompressed:';ru='Файлы дистрибутива обновления успешно распакованы:'")
 					+ " " + UpdateFileName);
 			ZipReader.Close();
 		Except
@@ -2336,10 +2336,10 @@ Function GetFileOfTemplatesList(Val OutputMessages = True, AvailableUpdateForNex
 		Except
 			EventLogMonitorClient.AddMessageForEventLogMonitor(ConfigurationUpdateClient.EventLogMonitorEvent(),
 				"Error", 
-				NStr("en='Error while deleting temporary file';ru='Ошибка при удалении временного файла'") + " " + PathToTemplatesListFile + Chars.LF +
+				NStr("en='An error occurred while deleting a temporary file';ru='Ошибка при удалении временного файла'") + " " + PathToTemplatesListFile + Chars.LF +
 				DetailErrorDescription(ErrorInfo()));
 		EndTry;
-		ErrorText = NStr("en='Error while receiving file of the templates list:';ru='Ошибка при получении файла списка шаблонов:'") + " " + Result.ErrorInfo;
+		ErrorText = NStr("en='An error occurred when receiving a template list file:';ru='Ошибка при получении файла списка шаблонов:'") + " " + Result.ErrorInfo;
 		If OutputMessages Then
 			ShowMessageBox(, ErrorText);
 		EndIf; 
@@ -2354,7 +2354,7 @@ Function GetFileOfTemplatesList(Val OutputMessages = True, AvailableUpdateForNex
 		ZipReader = New ZipFileReader(PathToTemplatesListFile);
 		ZipReader.ExtractAll(UpdateParameters.UpdateFilesDir, ZIPRestoreFilePathsMode.DontRestore);
 	Except
-		ErrorText	= NStr("en='Error when unpacking the file with the list of available updates:';ru='Ошибка при распаковке файла со списком доступных обновлений:'") + " ";
+		ErrorText	= NStr("en='An error occurred when unpacking a file with available update list:';ru='Ошибка при распаковке файла со списком доступных обновлений:'") + " ";
 		InfoErrors	= ErrorInfo();
 		EventLogMonitorClient.AddMessageForEventLogMonitor(ConfigurationUpdateClient.EventLogMonitorEvent(), 
 			"Error", ErrorText + DetailErrorDescription(InfoErrors));
@@ -2386,9 +2386,9 @@ Function GetUpdate(OutputMessages = True)
 	Pages = Items.AssistantPages.ChildItems;
 	Message = "";
 	If Object.UpdateSource = 0 Then
-		Message = Message + NStr("en='Receiving the files from the Internet...';ru='Получение файлов из Интернета...'");
+		Message = Message + NStr("en='Receiving files from the Internet...';ru='Получение файлов из Интернета...'");
 	Else
-		Message = Message + NStr("en='Receiving the update file from the specified source...';ru='Получение файла обновления из указанного источника...'");
+		Message = Message + NStr("en='Receiving update file from the specified source...';ru='Получение файла обновления из указанного источника...'");
 	EndIf;
 	EventLogMonitorClient.AddMessageForEventLogMonitor(ConfigurationUpdateClient.EventLogMonitorEvent(), 
 		"Information", Message);
@@ -2437,7 +2437,7 @@ Function GetUpdate(OutputMessages = True)
 						DeleteFiles(File.Value.LocalPath);
 					Except
 						EventLogMonitorClient.AddMessageForEventLogMonitor(ConfigurationUpdateClient.EventLogMonitorEvent(), 
-							"Error", NStr("en='Error while deleting temporary file';ru='Ошибка при удалении временного файла'") + " " +
+							"Error", NStr("en='An error occurred while deleting a temporary file';ru='Ошибка при удалении временного файла'") + " " +
 							File.Value.LocalPath + Chars.LF + DetailErrorDescription(ErrorInfo()));
 					EndTry;
 					If Not IsBlankString(ErrorText) Then
@@ -2469,11 +2469,11 @@ Function GetUpdate(OutputMessages = True)
 	PageName = "";
 	If CheckUpdateFilesReceived() Then
 		EventLogMonitorClient.AddMessageForEventLogMonitor(ConfigurationUpdateClient.EventLogMonitorEvent(), 
-			"Information", NStr("en='Update Files received successfully.';ru='Файлы обновления успешно получены.'"));
+			"Information", NStr("en='Update files are successfully received.';ru='Файлы обновления успешно получены.'"));
 		GoToChoiceOfUpdateMode(True);
 		Return Undefined;
 	Else
-		Message = NStr("en='Error at receiving the update files.';ru='Ошибка при получении файлов обновления.'");
+		Message = NStr("en='An error occurred when receiving update files.';ru='Ошибка при получении файлов обновления.'");
 		EventLogMonitorClient.AddMessageForEventLogMonitor(ConfigurationUpdateClient.EventLogMonitorEvent(), 
 			"Error", Message);
 		PageName = Pages.FailureRefresh.Name;
@@ -2528,7 +2528,7 @@ Function GetUpdateFilesViaInternet(OutputMessages, AvailableUpdateForNextEdition
 		LastConfigurationVersion = AvailableUpdate.LastConfigurationVersion;
 		If Object.AvailableUpdates.Count() = 0 Then
 			EventLogMonitorClient.AddMessageForEventLogMonitor(ConfigurationUpdateClient.EventLogMonitorEvent(), 
-				"Information", NStr("en='It is impossible to continue receiving updates: there are no updates available.';ru='Невозможно продолжить обновление: нет доступных обновлений.'"));
+				"Information", NStr("en='The update cannot proceed: no updates available.';ru='Невозможно продолжить обновление: нет доступных обновлений.'"));
 			Return Pages.UpdatesNotDetected.Name;
 		EndIf;
 		
@@ -2542,7 +2542,7 @@ EndFunction
 Function CheckUpdateInternet(OutputMessages = True) 
 	Pages		= Items.AssistantPages.ChildItems;
 	EventLogMonitorClient.AddMessageForEventLogMonitor(ConfigurationUpdateClient.EventLogMonitorEvent(), 
-		"Information", NStr("en='Check update in Internet...';ru='Проверка обновления в Интернете...'"));
+		"Information", NStr("en='Checking for updates online...';ru='Проверка обновления в Интернете...'"));
 	AvailableUpdate = Undefined;
 	Object.AvailableUpdates.Clear();
 	
@@ -2573,7 +2573,7 @@ Function CheckUpdateFile(OutputMessages = True)
 	Pages = Items.AssistantPages.ChildItems;
 	
 	EventLogMonitorClient.AddMessageForEventLogMonitor(ConfigurationUpdateClient.EventLogMonitorEvent(), 
-		"Information",  NStr("en='Check update in Internet...';ru='Проверка обновления в Интернете...'"));
+		"Information",  NStr("en='Checking for updates online...';ru='Проверка обновления в Интернете...'"));
 		
 	Object.AvailableUpdates.Clear();
 	
@@ -2586,7 +2586,7 @@ Function CheckUpdateFile(OutputMessages = True)
 		If Not File.Exist() OR Not File.IsFile() Then
 			
 			EventLogMonitorClient.AddMessageForEventLogMonitor(ConfigurationUpdateClient.EventLogMonitorEvent(), "Information",
-				NStr("en='It is impossible to continue installing updates: configuration updates delivery file not found.';ru='Невозможно продолжить обновление: файл поставки обновления конфигурации не найден.'"));
+				NStr("en='The update cannot proceed: the delivery file for configuration update was not found.';ru='Невозможно продолжить обновление: файл поставки обновления конфигурации не найден.'"));
 				
 			Return Pages.UpdateFile.Name;
 		EndIf;
@@ -2601,18 +2601,18 @@ EndFunction
 &AtClient
 Function LabelTextInfobaseBackup()
 	
-	Result = NStr("en='Do not create the backup copy';ru='Не создавать резервную копию ИБ'");
+	Result = NStr("en='Do not back up the infobase';ru='Не создавать резервную копию ИБ'");
 	
 	If Object.CreateBackup = 1 Then
-		Result = NStr("en='Create the temporary IB backup';ru='Создавать временную резервную копию ИБ'");
+		Result = NStr("en='Create temporary backup of infobase';ru='Создавать временную резервную копию ИБ'");
 	ElsIf Object.CreateBackup = 2 Then
-		Result = NStr("en='Create IB backup copy';ru='Создавать резервную копию ИБ'");
+		Result = NStr("en='Create infobase backup';ru='Создавать резервную копию ИБ'");
 	EndIf; 
 	
 	If Object.RestoreInfobase Then
-		Result = Result + " " + NStr("en='and perform rollback in case of abnormal situation';ru='и выполнять откат при нештатной ситуации'");
+		Result = Result + " " + NStr("en='and roll back in case of error';ru='и выполнять откат при нештатной ситуации'");
 	Else
-		Result = Result + " " + NStr("en='and do not perform the rollback in case of abnormal situation';ru='и не выполнять откат при нештатной ситуации'");
+		Result = Result + " " + NStr("en='and do not roll back in case of error';ru='и не выполнять откат при нештатной ситуации'");
 	EndIf;
 	
 	Return Result;
@@ -2625,7 +2625,7 @@ Procedure RunConfigurationUpdate()
 	DeleteSchedulerTask(Object.SchedulerTaskCode);
 	ScriptMainFileName = GenerateUpdateScriptFiles(True);
 	EventLogMonitorClient.AddMessageForEventLogMonitor(ConfigurationUpdateClient.EventLogMonitorEvent(), "Information",
-		NStr("en='Installing configuration updates:';ru='Выполняется процедура обновления конфигурации:'")
+		NStr("en='Updating configuration:';ru='Выполняется процедура обновления конфигурации:'")
 			+ " " + ScriptMainFileName);
 	WriteUpdateStatus(UserName(), True, False, False, ApplicationParameters["StandardSubsystems.MessagesForEventLogMonitor"]);
 	
@@ -2678,17 +2678,17 @@ Function ItIsPossibleToStartUpdate()
 	
 	#If WebClient Then
 		ItIsPossibleToStartUpdate = False;
-		MessageText = NStr("en='Application update is unavailable in the web client.';ru='Обновление программы недоступно в веб-клиенте.'");
+		MessageText = NStr("en='Updating the application in web client is unavailable.';ru='Обновление программы недоступно в веб-клиенте.'");
 	#EndIf
 	
 	If CommonUseClientServer.IsLinuxClient() Then
 		ItIsPossibleToStartUpdate = False;
-		MessageText = NStr("en='Application update is unavailable in the client under Linux OS.';ru='Обновление программы недоступно в клиенте под управлением ОС Linux.'");
+		MessageText = NStr("en='Updating the application is unavailable under Linux OS.';ru='Обновление программы недоступно в клиенте под управлением ОС Linux.'");
 	EndIf;
 	
 	If CommonUseClient.ClientConnectedViaWebServer() Then
 		ItIsPossibleToStartUpdate = False;
-		MessageText = NStr("en='Application update is not available when connecting using the web server.';ru='Обновление программы недоступно при подключении через веб-сервер.'");
+		MessageText = NStr("en='Updating the application using web server connection is unavailable.';ru='Обновление программы недоступно при подключении через веб-сервер.'");
 	EndIf;
 	
 	If Not ItIsPossibleToStartUpdate Then
@@ -2709,7 +2709,7 @@ Procedure DisplayUpdateOrder()
 	If Not IsBlankString(FileNameOrderUpdate) Then
 		ConfigurationUpdateClient.OpenWebPage(FileNameOrderUpdate);
 	Else
-		ShowMessageBox(, NStr("en='Update order description missing.';ru='Описание порядка обновления отсутствует.'"));
+		ShowMessageBox(, NStr("en='Update order description is missing.';ru='Описание порядка обновления отсутствует.'"));
 	EndIf;
 	
 EndProcedure

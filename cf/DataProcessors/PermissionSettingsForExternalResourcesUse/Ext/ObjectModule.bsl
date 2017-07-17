@@ -1085,12 +1085,12 @@ Function NewSecurityProfileDescription(Val SoftwareModuleType, Val SoftwareModul
 		EndIf;
 	EndDo;
 	If IsBlankString(InfobaseName) Then
-		Raise NStr("en='Infobase connection row does not contain the infobase name.';ru='Строка соединения информационной базы не содержит имени информационной базы!'");
+		Raise NStr("en='Infobase connection string does not contain the name of the infobase.';ru='Строка соединения информационной базы не содержит имени информационной базы!'");
 	EndIf;
 	
 	If SoftwareModuleType = Catalogs.MetadataObjectIDs.EmptyRef() Then
 		Return StringFunctionsClientServer.SubstituteParametersInString(Pattern, InfobaseName,
-			NStr("en='Security profile for the infobase';ru='Профиль безопасности для информационной базы'"), InfobaseConnectionString());
+			NStr("en='Security profile for infobase';ru='Профиль безопасности для информационной базы'"), InfobaseConnectionString());
 	Else
 		ProgramModule = WorkInSafeModeService.RefFromPermissionsRegister(SoftwareModuleType, SoftwareModuleID);
 		Dictionary = WorkInSafeModeService.ExternalModuleManager(ProgramModule).ExternalModuleContainerDictionary();

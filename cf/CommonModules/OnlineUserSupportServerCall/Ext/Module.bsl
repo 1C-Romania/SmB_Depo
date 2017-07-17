@@ -584,7 +584,7 @@ Procedure ServiceCommandsDataProcessor(
 		HandlerContext.ErrorOccurred = True;
 		HandlerContext.ActionsOnErrorForServer.Add("CreateLogRegistrationRecord");
 		HandlerContext.ActionsOnErrorForServer.Add("BreakBusinessProcess");
-		HandlerContext.FullErrorDescription = NStr("en='An unhandled exception occurred.';ru='Произошло необрабатываемое исключение.'")
+		HandlerContext.FullErrorDescription = NStr("en='Non-handled exception is thrown.';ru='Произошло необрабатываемое исключение.'")
 			+ " " + DetailErrorDescription(ErrorInfo());
 		
 		HandlerContext.UserErrorDescription =
@@ -626,7 +626,7 @@ Procedure AddServiceCommands(
 			HandlerContext.ActionsOnErrorForServer.Add("CreateLogRegistrationRecord");
 			HandlerContext.ActionOnErrorForClient = "DisplayFormConnectionNotAvailable";
 			HandlerContext.UserErrorDescription =
-				NStr("en='Error at connecting online support service.';ru='Ошибка при подключении к сервису Интернет-поддержки'");
+				NStr("en='Error on connecting online support service.';ru='Ошибка при подключении к сервису Интернет-поддержки'");
 		EndIf;
 		
 		Return;
@@ -914,7 +914,7 @@ Procedure ClearUserUOSSettings() Export
 	Try
 		OnlineUserSupportOverridable.WhenUserExitsOnlineSupport();
 	Except
-		ErrorInfo = NStr("en='Error occurred at handling user logout from Online Support. %1';ru='Ошибка при обработке выхода пользователя из Интернет-поддержки. %1'");
+		ErrorInfo = NStr("en='An error occurred while processing user logout from online support. %1';ru='Ошибка при обработке выхода пользователя из Интернет-поддержки. %1'");
 		ErrorInfo = StrReplace(ErrorInfo,
 			"%1",
 			DetailErrorDescription(ErrorInfo()));
@@ -960,7 +960,7 @@ EndProcedure
 //
 Function LogEventOnlineUserSupportError()
 	
-	Return NStr("en='Online user support. Error';ru='Интернет-поддержка пользователей.Ошибка'",
+	Return NStr("en='Online user support.Error';ru='Интернет-поддержка пользователей.Ошибка'",
 		CommonUseClientServer.MainLanguageCode());
 	
 EndFunction
@@ -973,7 +973,7 @@ EndFunction
 //
 Function LogEventOnlineUserSupportInformation()
 	
-	Return NStr("en='Online user support.Info';ru='Интернет-поддержка пользователей.Информация'",
+	Return NStr("en='Online user support.Information';ru='Интернет-поддержка пользователей.Информация'",
 		CommonUseClientServer.MainLanguageCode());
 	
 EndFunction

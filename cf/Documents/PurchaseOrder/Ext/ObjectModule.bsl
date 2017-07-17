@@ -117,7 +117,7 @@ Procedure FillCheckProcessing(Cancel, CheckedAttributes)
 		
 			If StringMaterials.Reserve > 0 AND Not ValueIsFilled(StructuralUnitReserve) Then
 				
-				MessageText = NStr("en='The reserve warehouse is not filled.';ru='Не заполнен склад резерва.'");
+				MessageText = NStr("en='The reserve warehouse is required.';ru='Не заполнен склад резерва.'");
 				SmallBusinessServer.ShowMessageAboutError(ThisObject, MessageText, , , "StructuralUnitReserve", Cancel);
 				
 			EndIf;
@@ -147,7 +147,7 @@ Procedure FillCheckProcessing(Cancel, CheckedAttributes)
 	   AND PaymentCalendar.Count() = 1
 	   AND Not ValueIsFilled(PaymentCalendar[0].PayDate) Then
 		
-		MessageText = NStr("en='Field ""Payment date"" is required.';ru='Поле ""Дата оплаты"" не заполнено.'");
+		MessageText = NStr("en='The ""Payment date"" field is not filled in.';ru='Поле ""Дата оплаты"" не заполнено.'");
 		SmallBusinessServer.ShowMessageAboutError(ThisObject, MessageText, , , "PayDate", Cancel);
 		SmallBusinessServer.DeleteAttributeBeingChecked(CheckedAttributes, "PaymentCalendar.PaymentDate");
 		
@@ -160,7 +160,7 @@ Procedure FillCheckProcessing(Cancel, CheckedAttributes)
 			
 			If StringMaterials.Reserve > StringMaterials.Quantity Then
 				
-				MessageText = NStr("en='In string No.%Number% of tabular section ""Recycling materials"" quantity of the write-off positions from reserve exceeds the total materials.';ru='В строке №%Номер% табл. части ""Материалы в переработку"" количество позиций к списанию из резерва превышает общее количество материалов.'");
+				MessageText = NStr("en='In row No. %Number% of the ""Materials for processing"" tabular section quantity of the write-off items from reserve exceeds the total material quantity.';ru='В строке №%Номер% табл. части ""Материалы в переработку"" количество позиций к списанию из резерва превышает общее количество материалов.'");
 				MessageText = StrReplace(MessageText, "%Number%", StringMaterials.LineNumber);
 				SmallBusinessServer.ShowMessageAboutError(
 					ThisObject,
@@ -180,7 +180,7 @@ Procedure FillCheckProcessing(Cancel, CheckedAttributes)
 	If Not Constants.UsePurchaseOrderStates.Get() Then
 		
 		If Not ValueIsFilled(OrderState) Then
-			MessageText = NStr("en='Field ""Order state"" is not filled. IN the accounting parameters settings it is necessary to install the statuses values.';ru='Поле ""Состояние заказа"" не заполнено. В настройках параметров учета необходимо установить значения состояний.'");
+			MessageText = NStr("en='The ""Order state"" field is not filled. Specify state values in the accounting parameter settings.';ru='Поле ""Состояние заказа"" не заполнено. В настройках параметров учета необходимо установить значения состояний.'");
 			SmallBusinessServer.ShowMessageAboutError(ThisObject, MessageText, , , "OrderState", Cancel);
 		EndIf;
 		

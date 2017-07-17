@@ -12,7 +12,7 @@ Procedure OnCreateAtServer(Cancel, StandardProcessing)
 			OR Object.Owner.StructuralUnitType = Enums.StructuralUnitsTypes.RetailAccrualAccounting) Then
 		
 			Message = New UserMessage();
-			Message.Text = NStr("en='Cells can not be used for this type of structural unit!';ru='Для структурной единицы данного типа нельзя использовать ячейки!'");
+			Message.Text = NStr("en='Cannot use bins for this type of business unit.';ru='Для структурной единицы данного типа нельзя использовать ячейки!'");
 			Message.Message();
 			Cancel = True;
 			

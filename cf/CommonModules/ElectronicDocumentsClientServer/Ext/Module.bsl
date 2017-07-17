@@ -55,7 +55,7 @@ Function GetMessageText(FieldKind = "Field", MessageKind = "Filling",
 
 	If Upper(FieldKind) = "Field" Then
 		If Upper(MessageKind) = "FillType" Then
-			Pattern = NStr("en='Field ""%1"" is not filled.';ru='Поле ""%1"" не заполнено.'");
+			Pattern = NStr("en='The ""%1"" field is not filled in.';ru='Поле ""%1"" не заполнено.'");
 		ElsIf Upper(MessageKind) = "CORRECTNESS" Then
 			Pattern = NStr("en='%1 field is filled in incorrectly.
 		|
@@ -65,7 +65,7 @@ Function GetMessageText(FieldKind = "Field", MessageKind = "Filling",
 		EndIf;
 	ElsIf Upper(FieldKind) = "Column" Then
 		If Upper(MessageKind) = "FillType" Then
-			Pattern = NStr("en='Empty column ""%1"" of row %2 in list ""%3"".';ru='Не заполнена колонка ""%1"" в строке %2 списка ""%3"".'");
+			Pattern = NStr("en='The ""%1"" column is not populated in line %2 of the ""%3"" list.';ru='Не заполнена колонка ""%1"" в строке %2 списка ""%3"".'");
 		ElsIf Upper(MessageKind) = "CORRECTNESS" Then
 			Pattern = NStr("en='Column %1 is filled in incorrectly in %2 row of %3 list.
 		|
@@ -75,7 +75,7 @@ Function GetMessageText(FieldKind = "Field", MessageKind = "Filling",
 		EndIf;
 	ElsIf Upper(FieldKind) = "LIST" Then
 		If Upper(MessageKind) = "FillType" Then
-			Pattern = NStr("en='No row is entered in list ""%3"".';ru='Не введено ни одной строки в список ""%3"".'");
+			Pattern = NStr("en='No row is entered into list ""%3"".';ru='Не введено ни одной строки в список ""%3"".'");
 		ElsIf Upper(MessageKind) = "CORRECTNESS" Then
 			Pattern = NStr("en='List %3 is filled in incorrectly.
 		|

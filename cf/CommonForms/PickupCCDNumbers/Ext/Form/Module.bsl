@@ -144,7 +144,7 @@ Procedure InventoryTableCCDNumberStartChoice(Item, ChoiceData, StandardProcessin
 		
 		StandardProcessing = False;
 		
-		MessageText = NStr("en='Specify the CCD number is possible only for the products and services with the <Inventory> type.';ru='Указать номер ГТД возможно только для номенклатуры с типом <Запас>.'");
+		MessageText = NStr("en='You can specify the CCD number only for the products and services with the <Inventory> type.';ru='Указать номер ГТД возможно только для номенклатуры с типом <Запас>.'");
 		CommonUseClientServer.MessageToUser(MessageText);
 		
 	EndIf;
@@ -159,7 +159,7 @@ Procedure InventoryTableNumberCCDOnChange(Item)
 		
 		StandardProcessing = False;
 		
-		MessageText = NStr("en='Specify the CCD number is possible only for the products and services with the <Inventory> type.';ru='Указать номер ГТД возможно только для номенклатуры с типом <Запас>.'");
+		MessageText = NStr("en='You can specify the CCD number only for the products and services with the <Inventory> type.';ru='Указать номер ГТД возможно только для номенклатуры с типом <Запас>.'");
 		CommonUseClientServer.MessageToUser(MessageText);
 		
 		RowData.CCDNo = Undefined;
@@ -189,7 +189,7 @@ Procedure InventoryTableCountryOfOriginStartChoice(Item, ChoiceData, StandardPro
 		
 		StandardProcessing = False;
 		
-		MessageText = NStr("en='You can specify the country of origin only for the products and services with the <Inventory> type.';ru='Указать страну происхождения возможно только для номенклатуры с типом <Запас>.'");
+		MessageText = NStr("en='You can specify the country of origin only for the products and services of the <Inventory> type.';ru='Указать страну происхождения возможно только для номенклатуры с типом <Запас>.'");
 		CommonUseClientServer.MessageToUser(MessageText);
 		
 	EndIf;
@@ -204,7 +204,7 @@ Procedure InventoryTableCountryOfOriginOnChange(Item)
 		
 		StandardProcessing = False;
 		
-		MessageText = NStr("en='You can specify the country of origin only for the products and services with the <Inventory> type.';ru='Указать страну происхождения возможно только для номенклатуры с типом <Запас>.'");
+		MessageText = NStr("en='You can specify the country of origin only for the products and services of the <Inventory> type.';ru='Указать страну происхождения возможно только для номенклатуры с типом <Запас>.'");
 		CommonUseClientServer.MessageToUser(MessageText);
 		
 		RowData.CountryOfOrigin = Undefined;
@@ -299,7 +299,7 @@ Procedure SetMarkForRowsWithSameCountry(Command)
 	
 	If CurrentStringData = Undefined Then
 		
-		MessageText = NStr("en='Highlight a row of the tabular section and repeat click...';ru='Выделите строку табличной части и повторите нажатие...'");
+		MessageText = NStr("en='Highlight a row of the tabular section and click again...';ru='Выделите строку табличной части и повторите нажатие...'");
 		CommonUseClientServer.MessageToUser(MessageText);
 		Return;
 		
@@ -320,7 +320,7 @@ Procedure ClearMarkForRowsWithSameCountry(Command)
 	
 	If CurrentStringData = Undefined Then
 		
-		MessageText = NStr("en='Highlight a row of the tabular section and repeat click...';ru='Выделите строку табличной части и повторите нажатие...'");
+		MessageText = NStr("en='Highlight a row of the tabular section and click again...';ru='Выделите строку табличной части и повторите нажатие...'");
 		CommonUseClientServer.MessageToUser(MessageText);
 		Return;
 		

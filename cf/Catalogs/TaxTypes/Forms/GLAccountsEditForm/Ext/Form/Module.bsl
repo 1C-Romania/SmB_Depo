@@ -44,7 +44,7 @@ Procedure OnCreateAtServer(Cancel, StandardProcessing)
 	Ref = Parameters.Ref;
 	
 	If CancelGLAccountChange(Ref) Then
-		Items.GLAccountsGroup.ToolTip = NStr("en='There are transactions in base by this tax kind! You can not change the GL account!';ru='В базе есть движения по этому виду налога! Изменение счета учета запрещено!'");
+		Items.GLAccountsGroup.ToolTip = NStr("en='Records are registered for this tax kind in the infobase. Cannot change the GL account.';ru='В базе есть движения по этому виду налога! Изменение счета учета запрещено!'");
 		Items.GLAccountsGroup.Enabled = False;
 		Items.Default.Visible = False;
 	EndIf;

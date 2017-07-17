@@ -7,7 +7,7 @@ Procedure CommandProcessing(CommandParameter, CommandExecuteParameters)
 	EndIf;
 	
 	If Not SmallBusinessAccessManagementReUse.InfobaseUserWithFullAccess() Then
-		ErrorMessage = NStr("en='The setting is available only for administrator of the application!';ru='Данная настройка доступна только для администратора программы!'");
+		ErrorMessage = NStr("en='The setting is available only for administrator of the application.';ru='Данная настройка доступна только для администратора программы!'");
 		Raise ErrorMessage;
 		Return;
 	EndIf;

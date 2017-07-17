@@ -142,14 +142,14 @@ Procedure FillContact(RequestsListPresentation)
 		NewAppeal = References.Add();
 		NewAppeal.ID = New UUID(RequestObject.Id);
 		NewAppeal.Status = RequestObject.Status;
-		NewAppeal.Description = ?(IsBlankString(RequestObject.Name), NStr("en='<No theme>';ru='<Без темы>'"), RequestObject.Name);
+		NewAppeal.Description = ?(IsBlankString(RequestObject.Name), NStr("en='<No subject>';ru='<Без темы>'"), RequestObject.Name);
 		NewAppeal.Picture = InformationCenterServer.PictureBySupportRequestState(RequestObject.Status);
 		NewAppeal.Date = RequestObject.Date;
 		NewAppeal.Number = RequestObject.Number;
 		NewAppeal.NotSeenInteractionsQuantity = RequestObject.UnreviewedInteractions.Count();
 		If NewAppeal.NotSeenInteractionsQuantity <> 0 Then 
 			ExplanationHasResponse = ?(NewAppeal.NotSeenInteractionsQuantity = 1, "", " (" + String(NewAppeal.NotSeenInteractionsQuantity) + ")");
-			HasResponse = ?(NewAppeal.NotSeenInteractionsQuantity = 1, NStr("en='Unread';ru='Не прочитано'"), NStr("en='Unread';ru='Не прочитано'"));
+			HasResponse = ?(NewAppeal.NotSeenInteractionsQuantity = 1, NStr("en='Not read';ru='Не прочитано'"), NStr("en='Not read';ru='Не прочитано'"));
 			NewAppeal.LabelHasResponse = HasResponse + ExplanationHasResponse;
 			For Each UnviewedInteraction IN RequestObject.UnreviewedInteractions Do 
 				ListValue = New Structure;

@@ -78,7 +78,7 @@ Procedure OnCreateAtServer(Cancel, StandardProcessing)
 			
 		Else
 			Raise StrReplace(
-				NStr("en='Incorrect object parameters of assigning the command opening ""%1""';ru='Некорректные параметры объектов назначения открытия команды ""%1""'"),
+				NStr("en='Incorrect destination object parameters for running command ""%1""';ru='Некорректные параметры объектов назначения открытия команды ""%1""'"),
 				"%1", Parameters.CommandID);
 		EndIf;
 		
@@ -106,7 +106,7 @@ Procedure OnCreateAtServer(Cancel, StandardProcessing)
 	If Not MonitorSettings() AND OpenNodeParameter Then
 		
 		MessageText = StrReplace(
-			NStr("en='For ""%1"" objects registration editing is unavailable.';ru='Для ""%1"" редактирование регистрации объектов недоступно.'"),
+			NStr("en='Editing object registration is not available for ""%1"".';ru='Для ""%1"" редактирование регистрации объектов недоступно.'"),
 			"%1", NodeNameExchangePlan);
 		
 		Raise MessageText;
@@ -131,7 +131,7 @@ Procedure ChoiceProcessing(ValueSelected, ChoiceSource)
 		Or TypeOf(ValueSelected.ActionSelect) <> Type("Boolean")
 		Or TypeOf(ValueSelected.ChoiceData) <> Type("String")
 	Then
-		Error = NStr("en='Unexpected result of selection from the request console';ru='Неожиданный результат выбора из консоли запросов'");
+		Error = NStr("en='Unexpected result when querying from console';ru='Неожиданный результат выбора из консоли запросов'");
 	Else
 		Error = QuerySelectControlLinks(ValueSelected.ChoiceData);
 	EndIf;
@@ -464,7 +464,7 @@ Procedure ShowExportResult(Command)
 	
 	If Serialization.Count() > 0 Then
 		Text = SerializationText(Serialization);
-		TitleText = NStr("en='Standard export result (RIB)';ru='Результат стандартной выгрузки (РИБ)'");
+		TitleText = NStr("en='Export result (in DIB mode)';ru='Результат стандартной выгрузки (РИБ)'");
 		Text.Show(TitleText);
 	EndIf;
 	
@@ -785,7 +785,7 @@ Procedure EditMessageNoOfConstant()
 	Notification.AdditionalParameters.Insert("MetaFullName", CurData.MetaFullName);
 	
 	MessageNo = CurData.MessageNo;
-	ToolTip = NStr("en='Sent Number';ru='Номер отправленного'"); 
+	ToolTip = NStr("en='Number of the last sent message';ru='Номер отправленного'"); 
 	
 	ShowInputNumber(Notification, MessageNo, ToolTip);
 EndProcedure
@@ -816,7 +816,7 @@ Procedure EditMessageNoLinks()
 	Notification.AdditionalParameters.Insert("Ref", CurData.Ref);
 	
 	MessageNo = CurData.MessageNo;
-	ToolTip = NStr("en='Sent Number';ru='Номер отправленного'"); 
+	ToolTip = NStr("en='Number of the last sent message';ru='Номер отправленного'"); 
 	
 	ShowInputNumber(Notification, MessageNo, ToolTip);
 EndProcedure
@@ -854,7 +854,7 @@ Procedure EditMessageNoListOfSets()
 	Notification.AdditionalParameters.Insert("RowData", RowData);
 	
 	MessageNo = CurData.MessageNo;
-	ToolTip = NStr("en='Sent Number';ru='Номер отправленного'"); 
+	ToolTip = NStr("en='Number of the last sent message';ru='Номер отправленного'"); 
 	
 	ShowInputNumber(Notification, MessageNo, ToolTip);
 EndProcedure
@@ -889,7 +889,7 @@ EndProcedure
 &AtServer
 Procedure SetTitleNumbersMessages()
 	
-	Text = NStr("en='%1 sent No, %2 receved No';ru='№ отправленного %1, № принятого %2'");
+	Text = NStr("en='No. of sent %1, No. of received %2';ru='№ отправленного %1, № принятого %2'");
 	
 	Data = ReadNumberMessages();
 	Text = StrReplace(Text, "%1", Format(Data.SentNo, "NFD=0; NZ="));
@@ -933,16 +933,16 @@ Procedure MessageAboutResultsOfRegistration(Command, Results)
 	
 	If TypeOf(Command) = Type("Boolean") Then
 		If Command Then
-			TitleWarnings = NStr("en='Change records:';ru='Регистрация изменений:'");
+			TitleWarnings = NStr("en='Change registration:';ru='Регистрация изменений:'");
 			WarningText = NStr("en='%1 changes are registered
 		|from %2 on the node ""%0""';ru='Зарегистрировано
 		|%1 изменений из %2 на узле ""%0""'");
 		Else
-			TitleWarnings = NStr("en='Registration cancel:';ru='Отмена регистрации:'");
-			WarningText = NStr("en='%1 changes registration is canceled on the node ""%0"".';ru='Отменена регистрация %1 изменений на узле ""%0"".'");
+			TitleWarnings = NStr("en='Cancel registration:';ru='Отмена регистрации:'");
+			WarningText = NStr("en='Registration of %1 changes is canceled on the ""%0"" node.';ru='Отменена регистрация %1 изменений на узле ""%0"".'");
 		EndIf;
 	Else
-		TitleWarnings = NStr("en='The message number change:';ru='Изменение номера сообщения:'");
+		TitleWarnings = NStr("en='Change message number:';ru='Изменение номера сообщения:'");
 		WarningText = NStr("en='Message number is changed
 		|to %3 in the %1 object(s)';ru='Номер сообщения
 		|изменен на %3 у %1 объекта(ов)'");
@@ -1206,9 +1206,7 @@ Procedure AddSelectedObjectsRegistration(WithoutAccountingAutoRecord = True)
 		Data = GetMetadataNamesCurrentRows(WithoutAccountingAutoRecord);
 	EndIf;
 	
-	Text = NStr("en='Register %1 for export
-		|
-		|on the node ""%2""? Changing the registration of many objects may take a long time.';ru='Зарегистрировать %1 для выгрузки на узле ""%2""? Изменение регистрации большого количества объектов может занять продолжительное время!'");
+	Text = NStr("en='Register %1 for export on the ""%2"" node? Changing registration of a large number of objects can take a long time.';ru='Зарегистрировать %1 для выгрузки на узле ""%2""? Изменение регистрации большого количества объектов может занять продолжительное время!'");
 					 
 	Text = StrReplace(Text, "%1", Data.Definition);
 	Text = StrReplace(Text, "%2", ExchangeNodeRef);
@@ -1246,9 +1244,7 @@ Procedure DeleteSelectedObjectsRegistration(WithoutAccountingAutoRecord = True)
 		Data = GetMetadataNamesCurrentRows(WithoutAccountingAutoRecord);
 	EndIf;
 	
-	Text = NStr("en='Cancel %1 registration for export
-		|
-		|on the node ""%2""? Changing the registration of many objects may take a long time.';ru='Отменить регистрацию %1 для выгрузки на узле ""%2""? Изменение регистрации большого количества объектов может занять продолжительное время!'");
+	Text = NStr("en='Cancel %1 registration for export on the ""%2"" node? Changing registration of a large number of objects can take a long time.';ru='Отменить регистрацию %1 для выгрузки на узле ""%2""? Изменение регистрации большого количества объектов может занять продолжительное время!'");
 	
 	QuestionTitle = NStr("en='Confirmation';ru='Подтверждение'");
 	
@@ -1425,9 +1421,9 @@ Procedure OperationWithResultsOfQuery(CommandOperations)
 	If CurFormName <> Undefined Then
 		// Open
 		If CommandOperations Then
-			Text = NStr("en='Request result modifications registration';ru='Регистрация изменений результата запроса'");
+			Text = NStr("en='Registration of query result changes';ru='Регистрация изменений результата запроса'");
 		Else
-			Text = NStr("en='Cancel the modifications registration of the request result';ru='Отмена регистрации изменений результата запроса'");
+			Text = NStr("en='Cancel registration of request result changes';ru='Отмена регистрации изменений результата запроса'");
 		EndIf;
 		OpenForm(CurFormName, 
 			New Structure("Title, ActionSelect, ChoiceMode, CloseOnChoice, ", 
@@ -1620,10 +1616,10 @@ Function QuerySelectControlLinks(Address)
 	If TypeOf(Result) = Type("Array") Then 
 		Result = Result[Result.UBound()];	
 		If Result.Columns.Find("Ref") = Undefined Then
-			Return NStr("en='There is no ""Ref"" column in the last query result.';ru='В последнем результате запроса отсутствует колонка ""Ссылка""'");
+			Return NStr("en='Column ""Ref"" is missing in the last query result.';ru='В последнем результате запроса отсутствует колонка ""Ссылка""'");
 		EndIf;
 	Else		
-		Return NStr("en='Error when receiving the request result data';ru='Ошибка получения данных результата запроса'");
+		Return NStr("en='An error occurred when receiving the query result data';ru='Ошибка получения данных результата запроса'");
 	EndIf;
 	
 	Return "";
@@ -2046,7 +2042,7 @@ Function GetDescriptionSelectedMetadata(WithoutAccountingAutoRecord, MetaNameGro
     
 	If MetaNameGroup = Undefined AND MetaNameNode = Undefined Then
 		// Nothing is specified
-		Text = NStr("en='all objects %1 by the selected type hierarchy';ru='все объекты %1 по выбранной иерархии вида'");
+		Text = NStr("en='all objects %1 by the selected kind hierarchy';ru='все объекты %1 по выбранной иерархии вида'");
 		
 	ElsIf MetaNameGroup <> Undefined AND MetaNameNode = Undefined Then
 		// Only the group is specified, treat it as the group name.
@@ -2054,18 +2050,18 @@ Function GetDescriptionSelectedMetadata(WithoutAccountingAutoRecord, MetaNameGro
 		
 	ElsIf MetaNameGroup = Undefined AND MetaNameNode <> Undefined Then
 		// Only the node is specified, treat it as a lot of selected objects.
-		Text = NStr("en='all objects %1 by the selected type hierarchy';ru='все объекты %1 по выбранной иерархии вида'");
+		Text = NStr("en='all objects %1 by the selected kind hierarchy';ru='все объекты %1 по выбранной иерархии вида'");
 		
 	Else
 		// Both group and node are specified, treat them as the metadata names.
-		Text = NStr("en='all objects of the type ""%3"" %1';ru='все объекты типа ""%3"" %1'");
+		Text = NStr("en='all objects of type ""%3"" %1';ru='все объекты типа ""%3"" %1'");
 		
 	EndIf;
 	
 	If WithoutAccountingAutoRecord Then
 		FlagText = "";
 	Else
-		FlagText = NStr("en='with autoregistration sign';ru='с признаком авторегистрации'");
+		FlagText = NStr("en='with automatic registration flag';ru='с признаком авторегистрации'");
 	EndIf;
 	
 	Presentation = "";
@@ -2199,7 +2195,7 @@ Procedure HandleProhibitionChangesNode()
 		Title = NStr("en='Registration of modifications for the data exchange';ru='Регистрация изменений для обмена данными'");
 	Else
 		Items.ExchangeNodeRef.Visible = False;
-		Title = StrReplace(NStr("en='Changes registration for the exchange with ""%1""';ru='Регистрация изменений для обмена с ""%1""'"), "%1", String(ExchangeNodeRef));
+		Title = StrReplace(NStr("en='Register changes for exchange with ""%1""';ru='Регистрация изменений для обмена с ""%1""'"), "%1", String(ExchangeNodeRef));
 	EndIf;
 	
 	Items.FormOpenFormRegistrationForNodes.Visible = OperationsAllowed;

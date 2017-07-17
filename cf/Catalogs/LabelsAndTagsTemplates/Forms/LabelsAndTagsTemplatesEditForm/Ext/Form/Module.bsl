@@ -286,7 +286,7 @@ Procedure SetPrintArea(Command)
 		
 		ClearMessages();
 		Message = New UserMessage;
-		Message.Text = NStr("en='Print area is incorrect';ru='Некорректная область печати'");
+		Message.Text = NStr("en='Incorrect print area';ru='Некорректная область печати'");
 		Message.Field = "SpreadsheetDocumentField";
 		Message.Message();
 		
@@ -423,7 +423,7 @@ EndProcedure // PlaceDefaultTemplateToSpreadsheetDocument()
 Procedure DefaultLabel(Command)
 	
 	Notification = New NotifyDescription("DefaultTemplateCompletion",ThisForm,"DefaultLabelTemplate");
-	ShowQueryBox(Notification,NStr("en='The edited template will be changed by the default template, continue?';ru='Редактируемый шаблон будет заменен на шаблон по умолчанию, продолжить?'"), QuestionDialogMode.YesNo);
+	ShowQueryBox(Notification,NStr("en='The template being edited will be replaced with the default template, continue?';ru='Редактируемый шаблон будет заменен на шаблон по умолчанию, продолжить?'"), QuestionDialogMode.YesNo);
 	
 EndProcedure // DefaultLabel()
 
@@ -433,7 +433,7 @@ EndProcedure // DefaultLabel()
 Procedure PriceTagByDefault(Command)
 	
 	Notification = New NotifyDescription("DefaultTemplateCompletion",ThisForm,"DefaultTagTemplate");
-	ShowQueryBox(Notification,NStr("en='The edited template will be changed by the default template, continue?';ru='Редактируемый шаблон будет заменен на шаблон по умолчанию, продолжить?'"), QuestionDialogMode.YesNo);
+	ShowQueryBox(Notification,NStr("en='The template being edited will be replaced with the default template, continue?';ru='Редактируемый шаблон будет заменен на шаблон по умолчанию, продолжить?'"), QuestionDialogMode.YesNo);
 	
 EndProcedure // PriceTagByDefault()
 
@@ -460,7 +460,7 @@ Procedure Union(Command)
 		
 		ClearMessages();
 		Message = New UserMessage;
-		Message.Text = NStr("en='Incorrect area!';ru='Некорректная область!'");
+		Message.Text = NStr("en='Incorrect area.';ru='Некорректная область!'");
 		Message.Field = "SpreadsheetDocumentField";
 		Message.Message();
 		
@@ -482,7 +482,7 @@ Procedure UndoMerge(Command)
 		
 		ClearMessages();
 		Message = New UserMessage;
-		Message.Text = NStr("en='Incorrect area!';ru='Некорректная область!'");
+		Message.Text = NStr("en='Incorrect area.';ru='Некорректная область!'");
 		Message.Field = "SpreadsheetDocumentField";
 		Message.Message();
 		

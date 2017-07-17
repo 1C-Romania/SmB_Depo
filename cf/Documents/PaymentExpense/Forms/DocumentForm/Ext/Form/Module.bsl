@@ -763,7 +763,7 @@ Procedure SetVisibilityItemsDependenceOnOperationKind()
 		Items.AdvanceHolder.Visible					= True;
 		
 		Items.PaymentAmount.Visible			= GetFunctionalOption("PaymentCalendar");
-		Items.PaymentAmount.Title			= ?(GetFunctionalOption("PaymentCalendar"), NStr("ru='Сумма (план)'; en = 'Amount (plan)'"), NStr("ru='Сумма платежа'; en = 'Payment amount'"));
+		Items.PaymentAmount.Title			= ?(GetFunctionalOption("PaymentCalendar"), NStr("en='Amount (plan)';ru='Сумма (план)'"), NStr("ru='Сумма платежа'; en = 'Payment amount'"));
 		Items.PaymentAmountCurrency.Visible	= Items.PaymentAmount.Visible;
 		Items.SettlementsAmount.Visible		= False;
 		
@@ -783,7 +783,7 @@ Procedure SetVisibilityItemsDependenceOnOperationKind()
 		Items.TaxesSettlements.Visible = True;
 		
 		Items.PaymentAmount.Visible			= GetFunctionalOption("PaymentCalendar");
-		Items.PaymentAmount.Title			= ?(GetFunctionalOption("PaymentCalendar"), NStr("ru='Сумма (план)'; en = 'Amount (plan)'"), NStr("ru='Сумма платежа'; en = 'Payment amount'"));
+		Items.PaymentAmount.Title			= ?(GetFunctionalOption("PaymentCalendar"), NStr("en='Amount (plan)';ru='Сумма (план)'"), NStr("ru='Сумма платежа'; en = 'Payment amount'"));
 		Items.PaymentAmountCurrency.Visible	= Items.PaymentAmount.Visible;
 		Items.SettlementsAmount.Visible		= False;
 		
@@ -796,7 +796,7 @@ Procedure SetVisibilityItemsDependenceOnOperationKind()
 		Items.OtherSettlements.Visible	= True;
 		
 		Items.PaymentAmount.Visible			= GetFunctionalOption("PaymentCalendar");
-		Items.PaymentAmount.Title			= ?(GetFunctionalOption("PaymentCalendar"), NStr("ru='Сумма (план)'; en = 'Amount (plan)'"), NStr("ru='Сумма платежа'; en = 'Payment amount'"));
+		Items.PaymentAmount.Title			= ?(GetFunctionalOption("PaymentCalendar"), NStr("en='Amount (plan)';ru='Сумма (план)'"), NStr("ru='Сумма платежа'; en = 'Payment amount'"));
 		Items.PaymentAmountCurrency.Visible	= Items.PaymentAmount.Visible;
 		Items.SettlementsAmount.Visible		= False;
 		
@@ -831,7 +831,7 @@ Procedure SetVisibilityItemsDependenceOnOperationKind()
 		Items.OtherSettlements.Visible = True;
 		
 		Items.PaymentAmount.Visible = True;
-		Items.PaymentAmount.Title = NStr("en='Amount (Plan)';ru='Сумма (план)'");
+		Items.PaymentAmount.Title = NStr("en='Amount (plan)';ru='Сумма (план)'");
 		Items.SettlementsAmount.Visible = False;
 		Items.VATAmount.Visible = False;
 		Items.PayrollPaymentTotalPaymentAmount.Visible = False;
@@ -1832,19 +1832,19 @@ EndProcedure // Selection()
 Procedure FillByBasis(Command)
 	
 	If Not ValueIsFilled(Object.BasisDocument) Then
-		ShowMessageBox(Undefined, NStr("en='Basis document is not selected!';ru='Не выбран документ основание!'"));
+		ShowMessageBox(Undefined, NStr("en='Basis document is not selected.';ru='Не выбран документ основание!'"));
 		Return;
 	EndIf;
 	
 	If (TypeOf(Object.BasisDocument) = Type("DocumentRef.CashTransferPlan")
 		OR TypeOf(Object.BasisDocument) = Type("DocumentRef.CashOutflowPlan"))
 		AND Not DocumentApproved(Object.BasisDocument) Then
-		Raise NStr("en='You can not enter the cash register records basing on the unapproved plan document!';ru='Нельзя ввести перемещение денег на основании неутвержденного планового документа!'");
+		Raise NStr("en='Cannot enter funds movement based on an unapproved plan document.';ru='Нельзя ввести перемещение денег на основании неутвержденного планового документа!'");
 	EndIf;
 	
 	Response = Undefined;
 	
-	ShowQueryBox(New NotifyDescription("FillByBasisEnd", ThisObject), NStr("en='Document will be completely refilled by ""Basis""! Continue?';ru='Документ будет полностью перезаполнен по ""Основанию""! Продолжить?'"), QuestionDialogMode.YesNo, 0);
+	ShowQueryBox(New NotifyDescription("FillByBasisEnd", ThisObject), NStr("en='The  document will be fully filled out according to the ""Basis"". Continue?';ru='Документ будет полностью перезаполнен по ""Основанию""! Продолжить?'"), QuestionDialogMode.YesNo, 0);
 	
 EndProcedure
 
@@ -2017,7 +2017,7 @@ Procedure DateOnChange(Item)
 		If StructureData.DATEDIFF <> 0 Then
 			Object.Number = "";
 		EndIf;
-		MessageText = NStr("en='Currency rate of the bank account has been changed. Recalculate the document amount?';ru='Изменился курс валюты банковского счета. Пересчитать суммы документа?'");
+		MessageText = NStr("en='Exchange rate of the bank account has been changed. Recalculate the document amount?';ru='Изменился курс валюты банковского счета. Пересчитать суммы документа?'");
 		RecalculateAmountsOnCashAssetsCurrencyRateChange(StructureData, MessageText);
 	EndIf;
 	
@@ -2079,7 +2079,7 @@ Procedure BankAccountOnChange(Item)
 	EndIf;
 	
 	If Object.OperationKind = PredefinedValue("Enum.OperationKindsPaymentExpense.Salary") Then
-		MessageText = NStr("en='Currency of the bank account has been changed. The ""Payroll sheets"" list will be cleared.';ru='Изменилась валюта банковского счета. Список ""Платежные ведомости"" будет очищен.'");
+		MessageText = NStr("en='Currency of the bank account has been changed. The ""Pay sheets"" list will be cleared.';ru='Изменилась валюта банковского счета. Список ""Платежные ведомости"" будет очищен.'");
 		ShowMessageBox(New NotifyDescription("BankAccountOnChangeEnd", ThisObject, New Structure("StructureData, MessageText", StructureData, MessageText)), MessageText);
 		Return;
 	EndIf;
@@ -2201,10 +2201,10 @@ Procedure PaymentDetailsAdvanceFlagOnChange(Item)
 		If TypeOf(TabularSectionRow.Document) = Type("DocumentRef.CashReceipt")
 		 OR TypeOf(TabularSectionRow.Document) = Type("DocumentRef.PaymentReceipt") Then
 			TabularSectionRow.AdvanceFlag = True;
-			ShowMessageBox(Undefined,NStr("en='The advance flag is always set for this document type!';ru='Для данного типа документа расчетов признак аванса всегда установлен!'"));
+			ShowMessageBox(Undefined,NStr("en='The Advance check box is always selected for this document type.';ru='Для данного типа документа расчетов признак аванса всегда установлен!'"));
 		ElsIf TypeOf(TabularSectionRow.Document) <> Type("DocumentRef.Netting") Then
 			TabularSectionRow.AdvanceFlag = False;
-			ShowMessageBox(Undefined,NStr("en='The advance flag can not be set for this document type!';ru='Для данного типа документа расчетов нельзя установить признак аванса!'"));
+			ShowMessageBox(Undefined,NStr("en='Cannot select the Advance check box for this type of settlements document.';ru='Для данного типа документа расчетов нельзя установить признак аванса!'"));
 		EndIf;
 	EndIf;
 	
@@ -2223,7 +2223,7 @@ Procedure PaymentDetailsDocumentStartChoice(Item, ChoiceData, StandardProcessing
 	If TabularSectionRow.AdvanceFlag
 		AND Object.OperationKind = PredefinedValue("Enum.OperationKindsPaymentExpense.Vendor") Then
 		
-		ShowMessageBox(, NStr("en='The current document with the ""Advance"" flag will be used for settlement!';ru='Для вида расчета с признаком ""Аванс"" документом расчетов будет текущий!'"));
+		ShowMessageBox(, NStr("en='The current document is a document of settlements for the calculation kind ""Advance"".';ru='Для вида расчета с признаком ""Аванс"" документом расчетов будет текущий!'"));
 		
 	Else
 		

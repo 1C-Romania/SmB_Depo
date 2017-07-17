@@ -44,7 +44,7 @@ Procedure ProcessMessage(Val MessageChannel, Val MessageBody, Val Sender) Export
 		Else
 			
 			Raise StringFunctionsClientServer.SubstituteParametersInString(
-				NStr("en='Failed to define the messages channel handler in the %1 service model';ru='Не удалось определить обработчик канала сообщений в модели сервиса %1'"), MessageChannel);
+				NStr("en='Cannot define the message channel handler in SaaS %1';ru='Не удалось определить обработчик канала сообщений в модели сервиса %1'"), MessageChannel);
 			
 		EndIf;
 		

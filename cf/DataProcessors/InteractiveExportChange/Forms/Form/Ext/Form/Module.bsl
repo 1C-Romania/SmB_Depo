@@ -9,7 +9,7 @@ Procedure OnCreateAtServer(Cancel, StandardProcessing)
 	EndIf;
 	
 	If Not Parameters.Property("OpenByScenario") Then
-		Raise NStr("en='Data processor is not aimed for being used directly';ru='Обработка не предназначена для непосредственного использования.'");
+		Raise NStr("en='Data processor is not intended for direct usage.';ru='Обработка не предназначена для непосредственного использования.'");
 	EndIf;
 	
 	ThisDataProcessor = ThisObject();
@@ -20,7 +20,7 @@ Procedure OnCreateAtServer(Cancel, StandardProcessing)
 	EndIf;
 	
 	If Not ValueIsFilled(Object.InfobaseNode) Then
-		Text = NStr("en='Data exchange setup is not found.';ru='Настройка обмена данными не найдена.'");
+		Text = NStr("en='Data exchange setting is not found.';ru='Настройка обмена данными не найдена.'");
 		DataExchangeServer.ShowMessageAboutError(Text, Cancel);
 		Return;
 	EndIf;
@@ -84,7 +84,7 @@ Procedure AdditionalRegistrationBeforeDeleting(Item, Cancel)
 	Selected = Items.AdditionalRegistration.SelectedRows;
 	Quantity = Selected.Count();
 	If Quantity>1 Then
-		PresentationText = NStr("en='Selected rows';ru='выбранные строки'");
+		PresentationText = NStr("en='Selected lines';ru='выбранные строки'");
 	ElsIf Quantity=1 Then
 		PresentationText = Items.AdditionalRegistration.CurrentData.Presentation;
 	Else
@@ -94,7 +94,7 @@ Procedure AdditionalRegistrationBeforeDeleting(Item, Cancel)
 	// Action will be executed from the confirmation.
 	Cancel = True;
 	
-	QuestionText = NStr("en='Delete from additional data %1?';ru='Удалить из дополнительных данных %1 ?'");    
+	QuestionText = NStr("en='Delete from additional data %1 ?';ru='Удалить из дополнительных данных %1 ?'");    
 	QuestionText = StrReplace(QuestionText, "%1", PresentationText);
 	
 	QuestionTitle = NStr("en='Confirmation';ru='Подтверждение'");
@@ -179,7 +179,7 @@ Procedure SettingsOfFilters(Command)
 	// Choice from the menu - list
 	VariantList = ReadListOfSettingsOptionsServer();
 	
-	Text = NStr("en='Save the current setting...';ru='Сохранить текущую настройку...'");
+	Text = NStr("en='Saving the current configuration...';ru='Сохранить текущую настройку...'");
 	VariantList.Add(1, Text, , PictureLib.SaveReportSettings);
 	
 	Notification = New NotifyDescription("SelectionsSettingsVariantChoiceEnd", ThisObject);
@@ -405,7 +405,7 @@ Function QuantityUpdated()
 	
 	BackgroundJobResult = LongActions.ExecuteInBackground(UUID,
 		"DataExchangeServer.InteractiveExportChange_GenerateValueTree",
-		JobParameters, NStr("en='Objects quantity calculation for sending at synchronization';ru='Расчет количества объектов для отправки при синхронизации'"));
+		JobParameters, NStr("en='Calculating the number of objects to be sent during synchronization';ru='Расчет количества объектов для отправки при синхронизации'"));
 		
 	BackgroundJobID = BackgroundJobResult.JobID;
 	BackgroundJobResultAddress = BackgroundJobResult.StorageAddress;

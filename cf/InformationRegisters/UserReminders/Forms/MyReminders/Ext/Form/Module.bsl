@@ -75,7 +75,7 @@ Procedure DeleteReminder()
 	DialogButtons.Add(DialogReturnCode.Cancel, NStr("en='Do not delete';ru='Не удалять'"));
 	NotifyDescription = New NotifyDescription("DeleteReminderEnd", ThisObject);
 	
-	ShowQueryBox(NOTifyDescription, NStr("en='Delete reminder?';ru='Удалить напоминание?'"), DialogButtons);
+	ShowQueryBox(NOTifyDescription, NStr("en='Dismiss the reminder?';ru='Удалить напоминание?'"), DialogButtons);
 	
 EndProcedure
 

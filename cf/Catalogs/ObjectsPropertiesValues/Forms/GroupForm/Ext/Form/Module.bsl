@@ -48,19 +48,19 @@ Procedure SetTitle()
 				PropertyName);
 		Else
 			Title = StringFunctionsClientServer.SubstituteParametersInString(
-				NStr("en='%1 (Creating)';ru='%1 (Создание)'"), PropertyName);
+				NStr("en='%1 (Creation)';ru='%1 (Создание)'"), PropertyName);
 		EndIf;
 	Else
 		PropertyName = String(AttributeValues.Title);
 		
 		If ValueIsFilled(Object.Ref) Then
 			Title = StringFunctionsClientServer.SubstituteParametersInString(
-				NStr("en='%1 (%2 property value group)';ru='%1 (Группа значений свойства %2)'"),
+				NStr("en='%1 (Value group of property %2)';ru='%1 (Группа значений свойства %2)'"),
 				Object.Description,
 				PropertyName);
 		Else
 			Title = StringFunctionsClientServer.SubstituteParametersInString(
-				NStr("en='Group of the %1 property values (Creation)';ru='Группа значений свойства %1 (Создание)'"), PropertyName);
+				NStr("en='Group of property %1 values (Creation)';ru='Группа значений свойства %1 (Создание)'"), PropertyName);
 		EndIf;
 	EndIf;
 	

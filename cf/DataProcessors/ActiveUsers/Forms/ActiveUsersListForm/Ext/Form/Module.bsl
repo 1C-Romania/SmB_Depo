@@ -89,7 +89,7 @@ Procedure EndSession(Command)
 	
 	If SelectedRowsQuantity = 0 Then
 		
-		ShowMessageBox(,NStr("en='Users for session end is not selected.';ru='Не выбраны пользователи для завершения сеансов.'"));
+		ShowMessageBox(,NStr("en='Users for ending sessions are not selected.';ru='Не выбраны пользователи для завершения сеансов.'"));
 		Return;
 		
 	EndIf;
@@ -131,7 +131,7 @@ Procedure EndSession(Command)
 		If RequestInfobaseAdministrationParameters Then
 			
 			NotifyDescription = New NotifyDescription("EndSessionContinuation", ThisObject);
-			FormTitle = NStr("en='Terminate session';ru='Завершить сеанс'");
+			FormTitle = NStr("en='End session';ru='Завершить сеанс'");
 			ExplanatoryInscription = NStr("en='To end the session it
 		|is necessary to enter administration parameters of server cluster';ru='Для завершения сеанса
 		|необходимо ввести параметры администрирования кластера серверов'");
@@ -512,18 +512,18 @@ Procedure AfterSessionEnd(Result, AdditionalParameters) Export
 		If AdditionalParameters.Property("SessionNumbers")
 			AND AdditionalParameters.SessionNumbers.Count() > 1 Then
 			
-			NotificationText = NStr("en='The %1 sessions is completed.';ru='Сеансы %1 завершены.'");
+			NotificationText = NStr("en='Sessions %1 are ended.';ru='Сеансы %1 завершены.'");
 			SessionNumbers = StringFunctionsClientServer.RowFromArraySubrows(AdditionalParameters.SessionNumbers);
 			NotificationText = StringFunctionsClientServer.SubstituteParametersInString(NotificationText,
 				SessionNumbers);
-			ShowUserNotification(NStr("en='Sessions end';ru='Завершение сеансов'"),, NotificationText);
+			ShowUserNotification(NStr("en='End sessions';ru='Завершение сеансов'"),, NotificationText);
 			
 		Else
 			
-			NotificationText = NStr("en='The %1 session is completed.';ru='Сеанс %1 завершен.'");
+			NotificationText = NStr("en='Session %1 is ended.';ru='Сеанс %1 завершен.'");
 			NotificationText = StringFunctionsClientServer.SubstituteParametersInString(NotificationText,
 			AdditionalParameters.SessionNumbers);
-			ShowUserNotification(NStr("en='Terminate session';ru='Завершить сеанс'"),, NotificationText);
+			ShowUserNotification(NStr("en='End session';ru='Завершить сеанс'"),, NotificationText);
 			
 		EndIf;
 		

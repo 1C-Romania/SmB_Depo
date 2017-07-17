@@ -9,7 +9,7 @@ Procedure OnCreateAtServer(Cancel, StandardProcessing)
 	EndIf;
 	
 	If Not Users.InfobaseUserWithFullAccess(Undefined, True, False) Then
-		Raise NStr("en='No rights to administrate the data exchange.';ru='Нет прав на администрирование обменов данными.'");
+		Raise NStr("en='No rights to administrate data exchange.';ru='Нет прав на администрирование обменов данными.'");
 	EndIf;
 	
 	SetPrivilegedMode(True);

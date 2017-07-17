@@ -9,7 +9,7 @@ Procedure OnCreateAtServer(Cancel, StandardProcessing)
 	EndIf;
 	
 	If CommonUse.FileInfobase() AND Parameters.QueryClusterAdministrationParameters Then
-		Raise NStr("en='Setting of the servers cluster parameters is available only in the client server mode.';ru='Настройка параметров кластера серверов доступна только в клиент-серверном режиме работы.'");
+		Raise NStr("en='Setting of the server cluster parameters is available only in the client/server mode.';ru='Настройка параметров кластера серверов доступна только в клиент-серверном режиме работы.'");
 	EndIf;
 	
 	CanUseSeparatedData = CommonUseReUse.CanUseSeparatedData();
@@ -93,13 +93,13 @@ Procedure FillCheckProcessingAtServer(Cancel, CheckedAttributes)
 		IBUser = Undefined;
 		GetInfobaseAdministrator(IBUser);
 		If IBUser = Undefined Then
-			CommonUseClientServer.MessageToUser(NStr("en='Specified user does not have access to the infobase.';ru='Указанный пользователь не имеет доступа к информационной базе.'"),,
+			CommonUseClientServer.MessageToUser(NStr("en='The specified user does not have access to the infobase.';ru='Указанный пользователь не имеет доступа к информационной базе.'"),,
 				FieldName,,Cancel);
 			Return;
 		EndIf;
 		
 		If Not Users.InfobaseUserWithFullAccess(IBUser, True) Then
-			CommonUseClientServer.MessageToUser(NStr("en='User has no administrative rights.';ru='У пользователя нет административных прав.'"),,
+			CommonUseClientServer.MessageToUser(NStr("en='User does not have administrative rights.';ru='У пользователя нет административных прав.'"),,
 				FieldName,,Cancel);
 			Return;
 		EndIf;

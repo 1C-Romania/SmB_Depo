@@ -672,7 +672,7 @@ Procedure IssueReceipt(GenerateSalesReceipt = False)
 	If Object.ReceiptCRNumber <> 0
 	AND Not CashCRUseWithoutEquipmentConnection Then
 		
-		MessageText = NStr("ru = 'Чек уже пробит на фискальном регистраторе!'; en = 'Check has already been issued on the fiscal record!'");
+		MessageText = NStr("en='Receipt has already been issued on the fiscal data recorder.';ru='Чек уже пробит на фискальном регистраторе!'");
 		CommonUseClientServer.MessageToUser(MessageText);
 		Return;
 		
@@ -812,7 +812,7 @@ Procedure IssueReceipt(GenerateSalesReceipt = False)
 								//Write(New Structure("WriteMode", DocumentWriteMode.UndoPosting));
 								
 								FillInDetailsForTSInventoryAtClient();
-								ShowMessageBox(Undefined, NStr("ru = 'Не удалось выполнить проведение документа'; en = 'Failed to post the document'")); // Asynchronous method!
+								ShowMessageBox(Undefined, NStr("en='Failed to post document';ru='Не удалось выполнить проведение документа'")); // Asynchronous method!
 								Return;
 							EndTry;
 							
@@ -871,14 +871,14 @@ Procedure IssueReceipt(GenerateSalesReceipt = False)
 					
 				Else
 					
-					MessageText = NStr("ru = 'Не выбран фискальный регистратор'; en = 'Fiscal registration has not been selected'");
+					MessageText = NStr("en='Fiscal data recorder is not selected';ru='Не выбран фискальный регистратор'");
 					CommonUseClientServer.MessageToUser(MessageText);
 					
 				EndIf;
 				
 			Else
 				
-				MessageText = NStr("ru = 'Предварительно необходимо выбрать рабочее место внешнего оборудования текущего сеанса.'; en = 'First, you need to select the workplace of the current session peripherals.'");
+				MessageText = NStr("en='First, you need to select the work place of the current session peripherals.';ru='Предварительно необходимо выбрать рабочее место внешнего оборудования текущего сеанса.'");
 				CommonUseClientServer.MessageToUser(MessageText);
 				
 			EndIf;
@@ -900,7 +900,7 @@ Procedure IssueReceipt(GenerateSalesReceipt = False)
 				ShowHideDealAtServer();
 			Except
 				FillInDetailsForTSInventoryAtClient();
-				ShowMessageBox(Undefined,NStr("ru = 'Не удалось выполнить проведение документа'; en = 'Failed to post the document'")); // Asynchronous method!
+				ShowMessageBox(Undefined,NStr("en='Failed to post document';ru='Не удалось выполнить проведение документа'")); // Asynchronous method!
 				Return;
 			EndTry;
 			
@@ -926,7 +926,7 @@ Procedure IssueReceipt(GenerateSalesReceipt = False)
 		
 		FillInDetailsForTSInventoryAtClient();
 		If ShowMessageBox Then
-			ShowMessageBox(Undefined,NStr("ru = 'Не удалось выполнить проведение документа'; en = 'Failed to post the document'"));
+			ShowMessageBox(Undefined,NStr("en='Failed to post document';ru='Не удалось выполнить проведение документа'"));
 		EndIf;
 		
 	EndIf;
@@ -1057,7 +1057,7 @@ Procedure CashCRSessionOpen()
 		
 	Else
 		
-		MessageText = NStr("en='First, you need to select the workplace of the current session peripherals.';ru='Предварительно необходимо выбрать рабочее место внешнего оборудования текущего сеанса.'"
+		MessageText = NStr("en='First, you need to select the work place of the current session peripherals.';ru='Предварительно необходимо выбрать рабочее место внешнего оборудования текущего сеанса.'"
 		);
 		CommonUseClientServer.MessageToUser(MessageText);
 		
@@ -1138,7 +1138,7 @@ Procedure CashDeposition(Command)
 		
 		InAmount = 0;
 		
-		WindowTitle = NStr("en='Receipt amount, %Currency%';ru='Сумма внесения, %Валюта%'");
+		WindowTitle = NStr("en='Deposit amount, %Currency%';ru='Сумма внесения, %Валюта%'");
 		WindowTitle = StrReplace(
 			WindowTitle,
 			"%Currency%",
@@ -1149,7 +1149,7 @@ Procedure CashDeposition(Command)
 		
 	Else
 		
-		MessageText = NStr("en='First, you need to select the workplace of the current session peripherals.';ru='Предварительно необходимо выбрать рабочее место внешнего оборудования текущего сеанса.'"
+		MessageText = NStr("en='First, you need to select the work place of the current session peripherals.';ru='Предварительно необходимо выбрать рабочее место внешнего оборудования текущего сеанса.'"
 		);
 		CommonUseClientServer.MessageToUser(MessageText);
 		
@@ -1176,7 +1176,7 @@ Procedure FundsIntroductionEnd(Result1, AdditionalParameters) Export
 		Else
 			NotifyDescription = New NotifyDescription("FundsIntroductionFiscalRegisterConnectionsEnd", ThisObject, InAmount);
 			EquipmentManagerClient.OfferSelectDevice(NOTifyDescription, "FiscalRegister",
-				NStr("en='Select the fiscal register';ru='Выберите фискальный регистратор'"), NStr("en='Fiscal register is not connected.';ru='Фискальный регистратор не подключен.'"));
+				NStr("en='Select a fiscal data recorder';ru='Выберите фискальный регистратор'"), NStr("en='Fiscal data recorder is not connected.';ru='Фискальный регистратор не подключен.'"));
 		EndIf;
 		
 	EndIf;
@@ -1277,7 +1277,7 @@ Procedure Withdrawal(Command)
 		
 	Else
 		
-		MessageText = NStr("en='First, you need to select the workplace of the current session peripherals.';ru='Предварительно необходимо выбрать рабочее место внешнего оборудования текущего сеанса.'");
+		MessageText = NStr("en='First, you need to select the work place of the current session peripherals.';ru='Предварительно необходимо выбрать рабочее место внешнего оборудования текущего сеанса.'");
 		CommonUseClientServer.MessageToUser(MessageText);
 		
 	EndIf;
@@ -1305,7 +1305,7 @@ Procedure CashWithdrawalEnd(Result1, AdditionalParameters) Export
 		Else
 			NotifyDescription = New NotifyDescription("CashWithdrawalFiscalRegisterConnectionsEnd", ThisObject, WithdrawnAmount);
 			EquipmentManagerClient.OfferSelectDevice(NOTifyDescription, "FiscalRegister",
-				NStr("en='Select the fiscal register';ru='Выберите фискальный регистратор'"), NStr("en='Fiscal register is not connected.';ru='Фискальный регистратор не подключен.'"));
+				NStr("en='Select a fiscal data recorder';ru='Выберите фискальный регистратор'"), NStr("en='Fiscal data recorder is not connected.';ru='Фискальный регистратор не подключен.'"));
 		EndIf;
 	
 	EndIf;
@@ -1414,7 +1414,7 @@ Procedure IssueReceiptExecute(Command, GenerateSalesReceipt = False)
 	
 	If Object.DeletionMark Then
 		
-		ErrorText = NStr("en='The document is marked for deletion.';ru='Документ помечен на удаление'");
+		ErrorText = NStr("en='The document is marked for deletion';ru='Документ помечен на удаление'");
 		
 		Message = New UserMessage;
 		Message.Text = ErrorText;
@@ -1439,7 +1439,7 @@ Procedure IssueReceiptExecute(Command, GenerateSalesReceipt = False)
 	
 	If Object.DocumentAmount < Object.PaymentWithPaymentCards.Total("Amount") Then
 		
-		ErrorText = NStr("en='The amount of payment by payment cards exceeds the amount of cheque';ru='Сумма оплаты платежными картами превышает сумму чека'");
+		ErrorText = NStr("en='The amount of payment by payment cards exceeds the total of a receipt';ru='Сумма оплаты платежными картами превышает сумму чека'");
 		
 		Message = New UserMessage;
 		Message.Text = ErrorText;
@@ -1517,8 +1517,8 @@ Procedure ReportPrintingWithoutBlankingExecute()
 		MessageText = "";
 		EquipmentManagerClient.OfferSelectDevice(NOTifyDescription, 
 																	 "FiscalRegister",
-																	 NStr("en='Select the fiscal register';ru='Выберите фискальный регистратор'"), 
-																	 NStr("en='Fiscal register is not connected';ru='Фискальный регистратор не подключен'")
+																	 NStr("en='Select a fiscal data recorder';ru='Выберите фискальный регистратор'"), 
+																	 NStr("en='Fiscal data recorder is not connected';ru='Фискальный регистратор не подключен'")
 																	 );
 		If Not IsBlankString(MessageText) Then
 			MessageText = NStr("en='Print X report';ru='Печать X-отчета'") + MessageText;
@@ -1526,7 +1526,7 @@ Procedure ReportPrintingWithoutBlankingExecute()
 		EndIf;
 			
 	Else
-		MessageText = NStr("en='It is required to select a work place of the current peripheral session in advance.';ru='Предварительно необходимо выбрать рабочее место подключаемого оборудования текущего сеанса.'");
+		MessageText = NStr("en='First, you need to select the work place of the current session peripherals.';ru='Предварительно необходимо выбрать рабочее место подключаемого оборудования текущего сеанса.'");
 
 		CommonUseClientServer.MessageToUser(MessageText);
 	EndIf;
@@ -1680,7 +1680,7 @@ Procedure CloseCashCRSession(Command)
 		
 	Else
 		
-		MessageText = NStr("en='First, you need to select the workplace of the current session peripherals.';ru='Предварительно необходимо выбрать рабочее место внешнего оборудования текущего сеанса.'"
+		MessageText = NStr("en='First, you need to select the work place of the current session peripherals.';ru='Предварительно необходимо выбрать рабочее место внешнего оборудования текущего сеанса.'"
 		);
 		CommonUseClientServer.MessageToUser(MessageText);
 		
@@ -1819,12 +1819,12 @@ Function CancelReceiptCR(CashCR)
 			EndIf;
 			
 		Else
-			MessageText = NStr("en='Fiscal register is not selected.';ru='Не выбран фискальный регистратор.'");
+			MessageText = NStr("en='Fiscal data recorder is not selected.';ru='Не выбран фискальный регистратор.'");
 			CommonUseClientServer.MessageToUser(MessageText);
 		EndIf;
 		
 	Else
-		MessageText = NStr("en='First, you need to select the workplace of the current session peripherals.';ru='Предварительно необходимо выбрать рабочее место внешнего оборудования текущего сеанса.'");
+		MessageText = NStr("en='First, you need to select the work place of the current session peripherals.';ru='Предварительно необходимо выбрать рабочее место внешнего оборудования текущего сеанса.'");
 		CommonUseClientServer.MessageToUser(MessageText);
 	EndIf;
 	
@@ -1860,7 +1860,7 @@ Procedure PrintCopyOnFiscalRegistrar(Command)
 	
 	If Not UsePeripherals Then
 		
-		MessageText = NStr("en=""Slip receipt can't be printed. Peripheral is not used."";ru='Слип-чек не может быть напечатан. Подключаемое оборудование не используется.'");
+		MessageText = NStr("en='Cannot print the sales slip. Peripherals are not used.';ru='Слип-чек не может быть напечатан. Подключаемое оборудование не используется.'");
 		CommonUseClientServer.MessageToUser(MessageText);
 		
 		Return;
@@ -1874,19 +1874,19 @@ Procedure PrintCopyOnFiscalRegistrar(Command)
 		MessageText = "";
 		EquipmentManagerClient.OfferSelectDevice(NOTifyDescription, 
 																	 "FiscalRegister",
-																	 NStr("en='Select the fiscal register';ru='Выберите фискальный регистратор'"), 
-																	 NStr("en='Fiscal register is not connected';ru='Фискальный регистратор не подключен'")
-																	 //, NStr("en='Fiscal register is not selected';ru='Фискальный регистратор не выбран'"),
+																	 NStr("en='Select a fiscal data recorder';ru='Выберите фискальный регистратор'"), 
+																	 NStr("en='Fiscal data recorder is not connected';ru='Фискальный регистратор не подключен'")
+																	 //, NStr("en='Fiscal data recorder is not selected';ru='Фискальный регистратор не выбран'"),
 																	 //True,
 																	 //MessageText
 																	 );
 		If Not IsBlankString(MessageText) Then
-			MessageText = NStr("en='Print last slip receipt';ru='Напечатать последний слип чек'") + MessageText;
+			MessageText = NStr("en='Print the last sales slip';ru='Напечатать последний слип чек'") + MessageText;
 			CommonUseClientServer.MessageToUser(MessageText);
 		EndIf;
 		
 	Else
-		MessageText = NStr("en='Fiscal register is not connected';ru='Фискальный регистратор не подключен'");
+		MessageText = NStr("en='Fiscal data recorder is not connected';ru='Фискальный регистратор не подключен'");
 		CommonUseClientServer.MessageToUser(MessageText);
 	EndIf;
 	
@@ -1915,7 +1915,7 @@ Procedure PrintCopyOnFiscalRegistrarEnd(DeviceIdentifierFR, Parameters) Export
 				                                                          InputParameters,
 				                                                          Output_Parameters);
 				If Not ResultFR Then
-					MessageText = NStr("en='When printing slip receipt there was error: ""%ErrorDescription%"".';ru='При печати слип-чека возникла ошибка: ""%ОписаниеОшибки%"".'"); 
+					MessageText = NStr("en='An error occurred when printing a sales slip: ""%ErrorDescription%"".';ru='При печати слип-чека возникла ошибка: ""%ОписаниеОшибки%"".'"); 
 					MessageText = StrReplace(MessageText,
 					                             "%ErrorDescription%",
 					                             Output_Parameters[1]);
@@ -2126,7 +2126,7 @@ Procedure OnCreateAtServer(Cancel, StandardProcessing)
 	CashCR = Parameters.CashCR;
 	If Not ValueIsFilled(CashCR) Then
 		Message = New UserMessage();
-		Message.Text = NStr("ru = 'Для пользователя не определена Касса ККМ!'; en = 'For user Cash Register is not defined!'");
+		Message.Text = NStr("en='Cash register is not determined for the user.';ru='Для пользователя не определена Касса ККМ!'");
 		Message.Message();
 		Cancel = True;
 		Return;
@@ -2565,7 +2565,7 @@ Procedure UpdateLabelVisibleTimedOutOver24Hours(StructureStateCashCRSession = Un
 	
 	SetLabelVisible = False;
 	If StructureStateCashCRSession.SessionIsOpen Then
-		MessageText = NStr("en='Cash session is opened';ru='Кассовая смена открыта'");
+		MessageText = NStr("en='Register shift is opened';ru='Кассовая смена открыта'");
 		If Not Documents.RetailReport.SessionIsOpen(Object.CashCRSession, Date, MessageText) Then
 			If Find(MessageText, "24") > 0 Then
 				Items.LabelSinceChangeOpeningMore24Hours.Title = MessageText;
@@ -4148,7 +4148,7 @@ Procedure GetWeight(Command)
 	
 	If TabularSectionRow = Undefined Then
 		
-		ShowMessageBox(Undefined, NStr("en='It is required to select a line to get weight for it.';ru='Необходимо выбрать строку, для которой необходимо получить вес.'"));
+		ShowMessageBox(Undefined, NStr("en='Select a line for which the weight should be received.';ru='Необходимо выбрать строку, для которой необходимо получить вес.'"));
 		
 	ElsIf EquipmentManagerClient.RefreshClientWorkplace() Then // Checks if the operator's workplace is specified
 		
@@ -4714,7 +4714,7 @@ Procedure DiscountCardIsSelectedAdditionally(DiscountCard)
 	PricesAndCurrency = GenerateLabelPricesAndCurrency(LabelStructure);
 	
 	If Object.Inventory.Count() > 0 Then
-		Text = NStr("en='Refill discounts in all rows?';ru='Перезаполнить скидки во всех строках?'");
+		Text = NStr("en='Refill discounts in all lines?';ru='Перезаполнить скидки во всех строках?'");
 		Notification = New NotifyDescription("DiscountCardIsSelectedAdditionallyEnd", ThisObject);
 		ShowQueryBox(Notification, Text, QuestionDialogMode.YesNo, , DialogReturnCode.Yes);
 	EndIf;
@@ -4989,7 +4989,7 @@ Procedure BarcodesAreReceivedFragment(UnknownBarcodes) Export
 	
 	For Each CurUndefinedBarcode IN UnknownBarcodes Do
 		
-		MessageString = NStr("en='Data by barcode is not found: %1%; quantity: %2%';ru='Данные по штрихкоду не найдены: %1%; количество: %2%'");
+		MessageString = NStr("en='Barcode data is not found: %1%; quantity: %2%';ru='Данные по штрихкоду не найдены: %1%; количество: %2%'");
 		MessageString = StrReplace(MessageString, "%1%", CurUndefinedBarcode.Barcode);
 		MessageString = StrReplace(MessageString, "%2%", CurUndefinedBarcode.Quantity);
 		CommonUseClientServer.MessageToUser(MessageString);

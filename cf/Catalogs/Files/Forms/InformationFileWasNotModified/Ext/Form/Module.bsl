@@ -11,7 +11,7 @@ Procedure OnCreateAtServer(Cancel, StandardProcessing)
 	DontShowAgain = False;
 	
 	ReminderText = 
-	NStr("en='The version was not created as file was not change. The comment is not saved.';ru='Версия не была создана, т.к. файл не изменен. Комментарий не сохранен.'");
+	NStr("en='Version was not created as the file was not changed. The comment is not saved.';ru='Версия не была создана, т.к. файл не изменен. Комментарий не сохранен.'");
 	
 EndProcedure
 

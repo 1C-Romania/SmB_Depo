@@ -48,7 +48,7 @@ Procedure FillCheckProcessing(Cancel, CheckedAttributes)
 		
 	If Not IsBlankString(EmailAddress) AND Not CommonUseClientServer.EmailAddressMeetsRequirements(EmailAddress, True) Then
 		CommonUseClientServer.MessageToUser(
-			NStr("en='Postal address is filled incorrectly.';ru='Почтовый адрес заполнен неверно.'"), ThisObject, "EmailAddress");
+			NStr("en='Incorrect postal address.';ru='Почтовый адрес заполнен неверно.'"), ThisObject, "EmailAddress");
 		NoncheckableAttributeArray.Add("EmailAddress");
 		Cancel = True;
 	EndIf;

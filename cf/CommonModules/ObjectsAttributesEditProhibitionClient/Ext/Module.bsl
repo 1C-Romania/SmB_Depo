@@ -108,7 +108,7 @@ EndProcedure
 //
 Procedure CheckReferencesToObject(Val ContinuationProcessor, Val RefArray, Val SynonymsOfAttributes) Export
 	
-	DialogTitle = NStr("en='Attributes editing permission';ru='Разрешение редактирования реквизитов'");
+	DialogTitle = NStr("en='Allow editing attributes';ru='Разрешение редактирования реквизитов'");
 	
 	AttributesPresentation = "";
 	For Each AttributesSynonym IN SynonymsOfAttributes Do
@@ -275,7 +275,7 @@ EndFunction
 Procedure ShowMessageBoxAllVisibleAttributesUnlocked(ContinuationProcessor = Undefined) Export
 	
 	ShowMessageBox(ContinuationProcessor,
-		NStr("en='Editing of all the visible object attributes is already allowed.';ru='Редактирование всех видимых реквизитов объекта уже разрешено.'"));
+		NStr("en='Editing all visible object attributes allowed.';ru='Редактирование всех видимых реквизитов объекта уже разрешено.'"));
 	
 EndProcedure
 

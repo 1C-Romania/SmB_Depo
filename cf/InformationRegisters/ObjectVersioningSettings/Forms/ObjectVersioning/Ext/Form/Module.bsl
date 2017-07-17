@@ -74,7 +74,7 @@ EndProcedure
 Procedure SetVersioningVariantOnPosting(Command)
 	
 	If SelectNoPostingDocumentsType() Then
-		ShowMessageBox(, NStr("en='The versioning mode ""Versioning on record"" is enabled for the documents which can not be posted.';ru='Документам, которые не могут быть проведены, установлен режим версионирования ""Версионировать при записи"".'"));
+		ShowMessageBox(, NStr("en='Documents that cannot be posted are set to versioning mode ""Version on writing"".';ru='Документам, которые не могут быть проведены, установлен режим версионирования ""Версионировать при записи"".'"));
 	EndIf;
 	
 	SetVersioningVariantForSelectedRows(
@@ -511,7 +511,7 @@ Procedure RunScheduledJob()
 	If BackgroundJobsCleanup.Count() > 0 Then
 		BackgroundJobID = BackgroundJobsCleanup[0].UUID;
 	Else
-		BackgroundJobDescription = StringFunctionsClientServer.SubstituteParametersInString(NStr("en='Launch manually: %1';ru='Запуск вручную: %1'"), ScheduledJobMetadata.Synonym);
+		BackgroundJobDescription = StringFunctionsClientServer.SubstituteParametersInString(NStr("en='Start manually: %1';ru='Запуск вручную: %1'"), ScheduledJobMetadata.Synonym);
 		BackgroundJob = BackgroundJobs.Execute(ScheduledJobMetadata.MethodName, , , BackgroundJobDescription);
 		BackgroundJobID = BackgroundJob.UUID;
 	EndIf;
@@ -561,12 +561,12 @@ EndProcedure
 
 &AtClientAtServerNoContext
 Function StatusTextCalculation()
-	Return NStr("en='Search outdated versions...';ru='Поиск устаревших версий...'");
+	Return NStr("en='Search for outdated versions...';ru='Поиск устаревших версий...'");
 EndFunction
 
 &AtClientAtServerNoContext
 Function StatusTextClearing()
-	Return NStr("en='Outdated versions are being cleared...';ru='Выполняется очистка устаревших версий...'");
+	Return NStr("en='Clearing obsolete versions...';ru='Выполняется очистка устаревших версий...'");
 EndFunction
 
 &AtServer
@@ -592,11 +592,11 @@ Procedure DisplayInformationAboutOutdatedVersions()
 	Items.Clear.Visible = InformationAboutLegacyVersions.DataSize > 0;
 	If InformationAboutLegacyVersions.DataSize > 0 Then
 		Items.InformationAboutLegacyVersions.Title = StringFunctionsClientServer.SubstituteParametersInString(
-			NStr("en='Total outdated versions: %1 (%2)';ru='Всего устаревших версий: %1 (%2)'"),
+			NStr("en='Total obsolete versions: %1 (%2)';ru='Всего устаревших версий: %1 (%2)'"),
 			InformationAboutLegacyVersions.CountVersions,
 			InformationAboutLegacyVersions.DataSizeString);
 	Else
-		Items.InformationAboutLegacyVersions.Title = NStr("en='Total outdated versions: no';ru='Всего устаревших версий: нет'");
+		Items.InformationAboutLegacyVersions.Title = NStr("en='All obsolete versions: no';ru='Всего устаревших версий: нет'");
 	EndIf;
 	
 EndProcedure

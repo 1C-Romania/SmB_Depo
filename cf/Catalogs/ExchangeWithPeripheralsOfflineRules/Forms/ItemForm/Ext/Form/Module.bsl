@@ -30,7 +30,7 @@ Procedure BeforeWriteAtServer(Cancel, CurrentObject, WriteParameters)
 	If ProductQuantity > 0 Then
 		If Products[ProductQuantity-1].Code > CurrentObject.MaximumCode AND CurrentObject.MaximumCode <> 0 Then
 			CommonUseClientServer.MessageToUser(StringFunctionsClientServer.SubstituteParametersInString(
-			NStr("en='In tabular section ""Products"", rows with a code that exceeds the maximum allowed value is detected: %1. Modify a maximum code or reduce the number of goods for the export using the filter.';ru='В табличной части ""Товары"" найдены строки с кодом, превышающим максимальное допустимое значение: %1. Измените максимальный код или уменьшите количество товаров к выгрузке при помощи отбора.'"), CurrentObject.MaximumCode),,"Products",,Cancel);
+			NStr("en='In the Goods tabular section, rows with a code that exceeds the maximum allowed value are detected: %1. Edit a maximum code or reduce the number of goods for export using filter.';ru='В табличной части ""Товары"" найдены строки с кодом, превышающим максимальное допустимое значение: %1. Измените максимальный код или уменьшите количество товаров к выгрузке при помощи отбора.'"), CurrentObject.MaximumCode),,"Products",,Cancel);
 			Return;
 		EndIf;
 	EndIf;
@@ -104,7 +104,7 @@ EndProcedure
 Procedure MaximumCodeOnChange(Item)
 	
 	// Maximum Changed  code - control is required.
-	Status(NStr("en='Product list is being updated...';ru='Выполняется обновление списка товаров...'"));
+	Status(NStr("en='Updating the goods list...';ru='Выполняется обновление списка товаров...'"));
 	UpdateListOfProductsOnServer();
 	Items.Pages.CurrentPage = Items.PageProductsList;
 	
@@ -168,11 +168,11 @@ Procedure ProductsBeforeEndOfEditing(Item, NewRow, CancelEdit, Cancel)
 			
 			FoundString = Products.FindByID(FoundString);
 			
-			ErrorDescription = NStr("en='Such code is already assigned for the items %ProductsAndServices%';ru='Такой код уже назначен для номенклатуры %Номенклатура%'");
+			ErrorDescription = NStr("en='Such code is already assigned for products and services %ProductsAndServices%';ru='Такой код уже назначен для номенклатуры %Номенклатура%'");
 			ErrorDescription = StrReplace(ErrorDescription, "%ProductsAndServices%", """" + FoundString.ProductsAndServices + """"
 			+ ?(ValueIsFilled(FoundString.Characteristic), " " + NStr("en='with characteristic';ru='с характеристикой'") + " """ + FoundString.Characteristic + """", "")
 			+ ?(ValueIsFilled(FoundString.Batch), " " + NStr("en='with the batch';ru='с партией'") + " """ + FoundString.Batch + """", "")
-			+ ?(ValueIsFilled(FoundString.MeasurementUnit), " " + NStr("en='with unit';ru='с единицей'") + " """ + FoundString.MeasurementUnit + """", ""))+NStr("en='. Completed exchange places.';ru='. Выполнен обмен местами.'");
+			+ ?(ValueIsFilled(FoundString.MeasurementUnit), " " + NStr("en='with unit';ru='с единицей'") + " """ + FoundString.MeasurementUnit + """", ""))+NStr("en='. Places are exchanged.';ru='. Выполнен обмен местами.'");
 			
 			CurrentData.ChangedByUser = True;
 			FoundString.ChangedByUser = True;
@@ -216,7 +216,7 @@ Procedure ProductsBeforeDeleting(Item, Cancel)
 	For Each SelectedRow IN Items.Products.SelectedRows Do
 		CurrentData = Products.FindByID(SelectedRow);
 		If ValueIsFilled(CurrentData.ProductsAndServices) AND CurrentData.Used Then
-			ShowMessageBox(, (NStr("en='After deletion, new product codes will be assigned to the products and services that meet the set filter conditions.';ru='Номенклатуре, соответствующей заданному отбору, после удаления будут заново назначены коды товаров.'")));
+			ShowMessageBox(, (NStr("en='After deletion, new goods codes will be assigned to products and services that meet the specified filter.';ru='Номенклатуре, соответствующей заданному отбору, после удаления будут заново назначены коды товаров.'")));
 			Break;
 		EndIf;
 	EndDo;
@@ -274,7 +274,7 @@ EndProcedure
 &AtClient
 Procedure UpdateProductsList(Command)
 	
-	Status(NStr("en='Product list is being updated...';ru='Выполняется обновление списка товаров...'"));
+	Status(NStr("en='Updating the goods list...';ru='Выполняется обновление списка товаров...'"));
 	RefreshListOfGoodsAtServerReOpen();
 	
 EndProcedure
@@ -282,7 +282,7 @@ EndProcedure
 &AtClient
 Procedure ShowProductList(Command)
 	
-	Status(NStr("en='Product list is being updated...';ru='Выполняется обновление списка товаров...'"));
+	Status(NStr("en='Updating the goods list...';ru='Выполняется обновление списка товаров...'"));
 	UpdateListOfProductsOnServer();
 	Items.Pages.CurrentPage = Items.PageProductsList;
 	
@@ -361,10 +361,10 @@ Procedure DeleteFreeGoodsCodesInListEnd(Command)
 		If Not ValueIsFilled(TSRow.ProductsAndServices) Then
 			RemoveFreeCodesProductsOnServer();
 		Else
-			ShowMessageBox(Undefined,NStr("en='There is no data for deletion';ru='Нет данных для удаления'"));
+			ShowMessageBox(Undefined,NStr("en='No data to delete';ru='Нет данных для удаления'"));
 		EndIf;
 	Else
-		ShowMessageBox(Undefined,NStr("en='There is no data for deletion';ru='Нет данных для удаления'"));
+		ShowMessageBox(Undefined,NStr("en='No data to delete';ru='Нет данных для удаления'"));
 	EndIf;
 	
 EndProcedure

@@ -98,7 +98,7 @@ Procedure OnOpen(Cancel)
 	SelectedMethod = GetKeyByValueInAccordance(PredefinedAlertMethods, Object.ReminderTimeSettingVariant);
 	
 	If Object.ReminderTimeSettingVariant = PredefinedValue("Enum.ReminderTimeSettingVariants.RelativelyToCurrentTime") Then
-		ReminderTimeSettingVariant = NStr("en='through';ru='через'") + " " + UserRemindersClientServer.TimePresentation(Object.ReminderInterval);
+		ReminderTimeSettingVariant = NStr("en='every';ru='через'") + " " + UserRemindersClientServer.TimePresentation(Object.ReminderInterval);
 	Else
 		ReminderTimeSettingVariant = SelectedMethod;
 	EndIf;
@@ -145,10 +145,10 @@ Procedure ReminderTimeSettingVariantOnChange(Item)
 	TimeInterval = UserRemindersClientServer.GetTimeIntervalFromString(ReminderTimeSettingVariant);
 	If TimeInterval > 0 Then
 		TimeIntervalAsString = UserRemindersClientServer.TimePresentation(TimeInterval);
-		ReminderTimeSettingVariant = NStr("en='through';ru='через'") + " " + TimeIntervalAsString;
+		ReminderTimeSettingVariant = NStr("en='every';ru='через'") + " " + TimeIntervalAsString;
 	Else
 		If Items.ReminderTimeSettingVariant.ChoiceList.FindByValue(ReminderTimeSettingVariant) = Undefined Then
-			CommonUseClientServer.MessageToUser(NStr("en='Time interval is not defined.';ru='Интервал времени не определен.'"), , "ReminderTimeSettingVariant");
+			CommonUseClientServer.MessageToUser(NStr("en='Time interval not specified.';ru='Интервал времени не определен.'"), , "ReminderTimeSettingVariant");
 		EndIf;
 	EndIf;
 	
@@ -172,7 +172,7 @@ Procedure TimeIntervalOnChange(Item)
 	If Object.ReminderInterval > 0 Then
 		TimeIntervalAsString = UserRemindersClientServer.TimePresentation(Object.ReminderInterval);
 	Else
-		CommonUseClientServer.MessageToUser(NStr("en='Time interval is not determined';ru='Интервал времени не определен'"), , "TimeIntervalAsString");
+		CommonUseClientServer.MessageToUser(NStr("en='Time interval not specified';ru='Интервал времени не определен'"), , "TimeIntervalAsString");
 	EndIf;
 EndProcedure
 
@@ -209,7 +209,7 @@ Procedure Delete(Command)
 	DialogButtons.Add(DialogReturnCode.Cancel, NStr("en=""Don't delete"";ru='Не удалять'"));
 	
 	NotifyDescription = New NotifyDescription("DeleteReminder", ThisObject);
-	ShowQueryBox(NOTifyDescription, NStr("en='Delete reminder?';ru='Удалить напоминание?'"), DialogButtons);
+	ShowQueryBox(NOTifyDescription, NStr("en='Dismiss the reminder?';ru='Удалить напоминание?'"), DialogButtons);
 	
 EndProcedure
 
@@ -270,9 +270,9 @@ EndFunction
 &AtClient
 Function GetPredefinedWaysNotifications()
 	Result = New Map;
-	Result.Insert(NStr("en='relatively to subject';ru='относительно предмета'"), PredefinedValue("Enum.ReminderTimeSettingVariants.RelativelyToSubjectTime"));
-	Result.Insert(NStr("en='in specified time';ru='в указанное время'"), PredefinedValue("Enum.ReminderTimeSettingVariants.InSpecifiedTime"));
-	Result.Insert(NStr("en='Periodically';ru='периодически'"), PredefinedValue("Enum.ReminderTimeSettingVariants.Periodically"));
+	Result.Insert(NStr("en='relative to subject';ru='относительно предмета'"), PredefinedValue("Enum.ReminderTimeSettingVariants.RelativelyToSubjectTime"));
+	Result.Insert(NStr("en='at a specified time';ru='в указанное время'"), PredefinedValue("Enum.ReminderTimeSettingVariants.InSpecifiedTime"));
+	Result.Insert(NStr("en='periodic';ru='периодически'"), PredefinedValue("Enum.ReminderTimeSettingVariants.Periodically"));
 	Return Result;
 EndFunction
            
@@ -287,7 +287,7 @@ Procedure FillOptionsAlerts()
 	Items.TimeIntervalRelativelyToSource.ChoiceList.Clear();
 	IntervalsTime = UserRemindersClientServer.GetStandardAlertsIntervals();
 	For Each Interval IN IntervalsTime Do
-		OptionsAlerts.Add(NStr("en='through';ru='через'") + " " + Interval);
+		OptionsAlerts.Add(NStr("en='every';ru='через'") + " " + Interval);
 		Items.TimeIntervalRelativelyToSource.ChoiceList.Add(Interval);
 	EndDo;
 EndProcedure
@@ -347,7 +347,7 @@ Procedure FillInOptionsForFrequency()
 	For Each StandardSchedule IN ListOfSchedules Do
 		Items.FrequencyVariant.ChoiceList.Add(StandardSchedule.Key, StandardSchedule.Key);
 	EndDo;
-	Items.FrequencyVariant.ChoiceList.Add("", NStr("en='according to set schedule...';ru='по заданному расписанию...'"));	
+	Items.FrequencyVariant.ChoiceList.Add("", NStr("en='on the specified schedule...';ru='по заданному расписанию...'"));	
 EndProcedure
 
 &AtClient
@@ -388,7 +388,7 @@ Procedure OpenDialogScheduleSettingsEnd(SelectedSchedule, AdditionalParameters) 
 	EndIf;
 	Schedule = SelectedSchedule;
 	If Not ScheduleMeetsRequirements(Schedule) Then 
-		ShowMessageBox(, NStr("en='Periodicity throughout the day is not supported, corresponding settings have been cleared.';ru='Периодичность в течение дня не поддерживается, соответствующие настройки очищены.'"));
+		ShowMessageBox(, NStr("en='Daily frequency is not supported. Corresponding settings cleared.';ru='Периодичность в течение дня не поддерживается, соответствующие настройки очищены.'"));
 	EndIf;
 	NormalizeSchedule(Schedule);
 	DefineSelectionFrequency();

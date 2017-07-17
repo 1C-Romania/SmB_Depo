@@ -344,7 +344,7 @@ Procedure CurrentYearNumberOnChange(Item)
 	
 	If ModifiedResults Then
 		MessageText = StringFunctionsClientServer.SubstituteParametersInString(
-							NStr("en='Write modified data for %1 year?';ru='Записать измененные данные за %1 год?'"), 
+							NStr("en='Write the changed data for the year of %1?';ru='Записать измененные данные за %1 год?'"), 
 							Format(PreviousYearNumber, "NG=0"));
 		
 		Notification = New NotifyDescription("CurrentYearNumberOnChangeEnd", ThisObject);
@@ -430,7 +430,7 @@ Procedure SetConditionalAppearance()
 	FilterElement.ComparisonType = DataCompositionComparisonType.Equal;
 	FilterElement.RightValue = True;
 
-	Item.Appearance.SetParameterValue("Text", NStr("en='Fill in schedule';ru='Заполнить расписание'"));
+	Item.Appearance.SetParameterValue("Text", NStr("en='Fill in timetable';ru='Заполнить расписание'"));
 
 	//
 
@@ -498,7 +498,7 @@ Procedure SetConditionalAppearance()
 	FilterElement.ComparisonType = DataCompositionComparisonType.Equal;
 	FilterElement.RightValue = True;
 
-	Item.Appearance.SetParameterValue("Text", NStr("en='Fill in schedule';ru='Заполнить расписание'"));
+	Item.Appearance.SetParameterValue("Text", NStr("en='Fill in timetable';ru='Заполнить расписание'"));
 
 EndProcedure
 
@@ -584,12 +584,12 @@ Function ScheduleForDayPresentation(Form, DayNumber)
 	StringFunctionsClientServer.DeleteLatestCharInRow(IntervalsPresentation, 2);
 	
 	If Seconds = 0 Then
-		Return NStr("en='Fill in schedule';ru='Заполнить расписание'");
+		Return NStr("en='Fill in timetable';ru='Заполнить расписание'");
 	EndIf;
 	
 	Hours = Round(Seconds / 3600, 1);
 	
-	Return StringFunctionsClientServer.SubstituteParametersInString(NStr("en='% p. (%2)';ru='%1 ч. (%2)'"), Hours, IntervalsPresentation);
+	Return StringFunctionsClientServer.SubstituteParametersInString(NStr("en='%1 h. (%2)';ru='%1 ч. (%2)'"), Hours, IntervalsPresentation);
 	
 EndFunction
 
@@ -652,12 +652,12 @@ Procedure ClarifyOccupancyGraphics(Form)
 	EndIf;
 	
 	If Not ValueIsFilled(Form.DateOccupancyRate) Then
-		Form.OccupancyInformationText = NStr("en='The work schedule is not filled';ru='График работы не заполнен'");
+		Form.OccupancyInformationText = NStr("en='Work schedule is not filled in';ru='График работы не заполнен'");
 		Form.RequiresFill = True;
 	Else	
 		If Not ValueIsFilled(Form.Object.PlanningHorizon) Then
 			Form.OccupancyInformationText = StringFunctionsClientServer.SubstituteParametersInString(
-													NStr("en='Work schedule is filled to %1';ru='График работы заполнен до %1'"), 
+													NStr("en='Work schedule is filled in up to %1';ru='График работы заполнен до %1'"), 
 													Format(Form.DateOccupancyRate, "DLF=D"));
 		Else											
 			#If Client Then
@@ -667,7 +667,7 @@ Procedure ClarifyOccupancyGraphics(Form)
 			#EndIf
 			EndPlanningHorizon = AddMonth(CurrentDate, Form.Object.PlanningHorizon);
 			Form.OccupancyInformationText = StringFunctionsClientServer.SubstituteParametersInString(
-													NStr("en='Work schedule is filled till %1, in terms of the planning horizon the schedule must be filled till %2';ru='График работы заполнен до %1, с учетом горизонта планирования график должен быть заполнен до %2'"), 
+													NStr("en='Work schedule is filled in up to %1, considering planning horizon schedule should be filled in up to %2';ru='График работы заполнен до %1, с учетом горизонта планирования график должен быть заполнен до %2'"), 
 													Format(Form.DateOccupancyRate, "DLF=D"),
 													Format(EndPlanningHorizon, "DLF=D"));
 			If EndPlanningHorizon > Form.DateOccupancyRate Then
@@ -889,17 +889,17 @@ Procedure FillTextFillResultInformation(Form)
 	InformationalPicture = New Picture;
 	AvailableFillingPattern = False;
 	If Form.ManualEdit Then
-		InformationalText = NStr("en='Work schedule for the current year is changed manually. Click ""Fill by template"" to return to automatic filling.';ru='График работы на текущий год изменен вручную. Нажмите ""Заполнить по шаблону"" чтобы вернуться к автоматическому заполнению.'");
+		InformationalText = NStr("en='The current year work schedule is changed manually. Click ""Fill in from template"" to return to automatic population.';ru='График работы на текущий год изменен вручную. Нажмите ""Заполнить по шаблону"" чтобы вернуться к автоматическому заполнению.'");
 		InformationalPicture = PictureLib.Warning;
 		AvailableFillingPattern = True;
 	Else
 		If Form.ResultFillByPattern Then
 			If ValueIsFilled(Form.Object.BusinessCalendar) Then
-				InformationalText = NStr("en='Work schedule is automatically updated when changing the production calendar for the current period.';ru='График работы автоматически обновляется при изменении производственного календаря за текущий год.'");
+				InformationalText = NStr("en='Work schedule is updated on changing a bus. calendar for the current year.';ru='График работы автоматически обновляется при изменении производственного календаря за текущий год.'");
 				InformationalPicture = PictureLib.Information;
 			EndIf;
 		Else
-			InformationalText = NStr("en='The displayed result does not match the template setting. Click ""Fill by template"" to see how the work schedule looks like with respect to the template modifications.';ru='Нажмите ""Заполнить по шаблону"", чтобы увидеть как выглядит график работы с учетом изменений шаблона.'");
+			InformationalText = NStr("en='The displayed result does not match the template setting. Click ""Fill in from template"" to see how the work schedule looks like with the template changes.';ru='Нажмите ""Заполнить по шаблону"", чтобы увидеть как выглядит график работы с учетом изменений шаблона.'");
 			InformationalPicture = PictureLib.Warning;
 			AvailableFillingPattern = True;
 		EndIf;
@@ -920,7 +920,7 @@ Procedure FillInformationTextEditing(Form)
 	InformationalPicture = New Picture;
 	If Form.ManualEdit Then
 		InformationalPicture = PictureLib.Warning;
-		InformationalText = NStr("en='Work schedule for the current year is changed manually. Changes are highlighted in the filling results.';ru='График работы на текущий год изменен вручную. Изменения выделены в результатах заполнения.'");
+		InformationalText = NStr("en='Current year work schedule is changed manually. Changes are highlighted in population results.';ru='График работы на текущий год изменен вручную. Изменения выделены в результатах заполнения.'");
 	EndIf;
 	
 	Form.ManualEditTextInformation = InformationalText;

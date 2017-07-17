@@ -13,13 +13,13 @@ Procedure OnCreateAtServer(Cancel, StandardProcessing)
 	EndIf;
 	
 	If Not Parameters.Property("SettingsComposer", SettingsComposer) Then
-		Raise NStr("en='The SettingsLinker service parameter has not been passed.';ru='Не передан служебный параметр ""КомпоновщикНастроек"".'");
+		Raise NStr("en='The SettingsLinker service parameter is not passed.';ru='Не передан служебный параметр ""КомпоновщикНастроек"".'");
 	EndIf;
 	If Not Parameters.Property("ReportSettings", ReportSettings) Then
-		Raise NStr("en='The ReportSettings service parameter has not been passed.';ru='Не передан служебный параметр ""НастройкиОтчета"".'");
+		Raise NStr("en='Service parameter ReportSettings is not passed.';ru='Не передан служебный параметр ""НастройкиОтчета"".'");
 	EndIf;
 	If Not Parameters.Property("OptionName", OptionName) Then
-		Raise NStr("en='The VariantName service parameter has not been passed.';ru='Не передан служебный параметр ""ВариантНаименование"".'");
+		Raise NStr("en='Service parameter VariantName is not passed.';ru='Не передан служебный параметр ""ВариантНаименование"".'");
 	EndIf;
 	Parameters.Property("CurrentCDHostIdentifier", CurrentCDHostIdentifier);
 	If CurrentCDHostIdentifier <> Undefined Then
@@ -27,10 +27,10 @@ Procedure OnCreateAtServer(Cancel, StandardProcessing)
 		Height = 0;
 		WindowOptionsKey = String(CurrentCDHostIdentifier);
 		If Not Parameters.Property("Title", Title) Then
-			Raise NStr("en='The Title service parameter has not been passed.';ru='Не передан служебный параметр ""Заголовок"".'");
+			Raise NStr("en='Service parameter ""Title"" is not transferred.';ru='Не передан служебный параметр ""Заголовок"".'");
 		EndIf;
 		If Not Parameters.Property("CurrentCDHostType", CurrentCDHostType) Then
-			Raise NStr("en='The CurrentDCNode service parameter has not been passed.';ru='Не передан служебный параметр ""ТипТекущегоУзлаКД"".'");
+			Raise NStr("en='Service parameter CurrentDCNode is not passed.';ru='Не передан служебный параметр ""ТипТекущегоУзлаКД"".'");
 		EndIf;
 	Else
 		If Not ValueIsFilled(OptionName) Then
@@ -584,7 +584,7 @@ Procedure Attachable_ListWithSelection_BeforeEditEnd(Item, NewRow, CancelStartEd
 	Else
 		For Each ListItemDoubleInForm IN ValuesListInForm Do
 			If ListItemDoubleInForm.Value = Value AND ListItemDoubleInForm <> ListItemInForm Then
-				Status(NStr("en='Found duplicate records. Editing canceled.';ru='Обнаружены дублирующиеся записи. Редактирование отменено.'"));
+				Status(NStr("en='Duplicate records are detected. Editing canceled.';ru='Обнаружены дублирующиеся записи. Редактирование отменено.'"));
 				CancelEndEditing = True; // Deny duplicates.
 				Break;
 			EndIf;
@@ -2462,7 +2462,7 @@ Function ExecuteStep(CaseUser, Script)
 		Return RefreshForm(CaseUser, Script);
 	
 	Else
-		Script.ErrorText = StrReplace(NStr("en='Error in script: Unknown step % 1.';ru='Ошибка в сценарии: Неизвестный шаг ""%1"".'"), "%1", Script.CurrentStep);
+		Script.ErrorText = StrReplace(NStr("en='Error in script: Unknown step ""%1"".';ru='Ошибка в сценарии: Неизвестный шаг ""%1"".'"), "%1", Script.CurrentStep);
 		Return False;
 	
 	EndIf;
@@ -2505,11 +2505,11 @@ Function FieldsTablesDefineSelectedRows(CaseUser, Script)
 				Return False; // Pause script.
 			ElsIf TreeRow.IsParameter Then
 				If Script.Action = "Move" Then
-					Script.ErrorText = StrReplace(NStr("en='Parameters can not be transferred.';ru='Параметры не могут быть перемещены.'"), "%1", TreeRow.Presentation);
+					Script.ErrorText = StrReplace(NStr("en='Parameters cannot be transferred.';ru='Параметры не могут быть перемещены.'"), "%1", TreeRow.Presentation);
 				ElsIf Script.Action = "Group" Then
-					Script.ErrorText = NStr("en='Parameters can not be group participants.';ru='Параметры не могут быть участниками групп.'");
+					Script.ErrorText = NStr("en='Parameters cannot be group participants.';ru='Параметры не могут быть участниками групп.'");
 				ElsIf Script.Action = "Delete" Then
-					Script.ErrorText = NStr("en='Parameters can not be deleted.';ru='Параметры не могут быть удалены.'");
+					Script.ErrorText = NStr("en='Parameters cannot be deleted.';ru='Параметры не могут быть удалены.'");
 				EndIf;
 				Return False; // Pause script.
 			EndIf;
@@ -2520,9 +2520,9 @@ Function FieldsTablesDefineSelectedRows(CaseUser, Script)
 				Script.CurrentParent = Parent;
 			ElsIf Script.CurrentParent <> Parent Then
 				If Script.Action = "Move" Then
-					Script.ErrorText = NStr("en='Selected items can not be transferred as they belong to different parents.';ru='Выбранные элементы не могут быть перемещены, поскольку они принадлежат разным родителям.'");
+					Script.ErrorText = NStr("en='The selected items cannot be transferred as they have different parents.';ru='Выбранные элементы не могут быть перемещены, поскольку они принадлежат разным родителям.'");
 				ElsIf Script.Action = "Group" Then
-					Script.ErrorText = NStr("en='Selected items can not be grouped as they belong to different parents.';ru='Выбранные элементы не могут быть сгруппированы, поскольку они принадлежат разным родителям.'");
+					Script.ErrorText = NStr("en='The selected items cannot be grouped as they have different parents.';ru='Выбранные элементы не могут быть сгруппированы, поскольку они принадлежат разным родителям.'");
 				EndIf;
 				Return False; // Pause script.
 			EndIf;
@@ -2720,13 +2720,13 @@ Procedure FiltersSelectAccessLevel(TableName, RowIdentifier, TableRow)
 	Handler = New NotifyDescription("FiltersAccessLevelSelectionEnd", ThisObject, Context);
 	
 	List = New ValueList;
-	List.Add(2, NStr("en='In the report header';ru='В шапке отчета'"), , PictureLib.QuickAccess);
+	List.Add(2, NStr("en='In report header';ru='В шапке отчета'"), , PictureLib.QuickAccess);
 	If Not TableRow.IsParameter Then
-		List.Add(1, NStr("en='Only a check box in the record header';ru='Только флажок в шапке отчета'"), , PictureLib.RapidAccessWithCheckBox);
+		List.Add(1, NStr("en='Only check box in report title';ru='Только флажок в шапке отчета'"), , PictureLib.RapidAccessWithCheckBox);
 	EndIf;
-	List.Add(4, NStr("en='In the report settings';ru='В настройках отчета'"), , PictureLib.Attribute);
+	List.Add(4, NStr("en='In report settings';ru='В настройках отчета'"), , PictureLib.Attribute);
 	If Not TableRow.IsParameter Then
-		List.Add(3, NStr("en='Only a check box in the report settings';ru='Только флажок в настройках отчета'"), , PictureLib.UsualAccessWithCheckBox);
+		List.Add(3, NStr("en='Only check box in report settings';ru='Только флажок в настройках отчета'"), , PictureLib.UsualAccessWithCheckBox);
 	EndIf;
 	List.Add(5, NStr("en='Do not show';ru='Не показывать'"), , PictureLib.ReportHiddenSetting);
 	
@@ -2967,10 +2967,10 @@ Procedure FiltersSelectComparisonType(TableRow)
 		If TypeInformation.ContainsObjectTypes Then
 			
 			List.Add(DataCompositionComparisonType.InListByHierarchy); // NStr("en='In list including subordinate';ru='В списке включая подчиненные'")
-			List.Add(DataCompositionComparisonType.NotInListByHierarchy); // NStr("en='Not in the list including subordinate';ru='Не в списке включая подчиненные'").
+			List.Add(DataCompositionComparisonType.NotInListByHierarchy); // NStr("en='Not in the list, including subordinate';ru='Не в списке включая подчиненные'").
 			
 			List.Add(DataCompositionComparisonType.InHierarchy); // NStr("en='In group';ru='В группе'")
-			List.Add(DataCompositionComparisonType.NotInHierarchy); // NStr("en='Not in the group';ru='Не в группе'")
+			List.Add(DataCompositionComparisonType.NotInHierarchy); // NStr("en='Not in group';ru='Не в группе'")
 			
 		EndIf;
 		
@@ -3126,7 +3126,7 @@ Procedure FieldsTablesUngroup(TableName)
 	SelectedRows = ItemTable.SelectedRows;
 	SelectedRows = CommonUseClientServer.CollapseArray(SelectedRows); // For a platform.
 	If SelectedRows.Count() <> 1 Then
-		ShowMessageBox(, NStr("en='Select one group.';ru='Выберите одну группу.'"));
+		ShowMessageBox(, NStr("en='Select a group.';ru='Выберите одну группу.'"));
 		Return;
 	EndIf;
 	
@@ -3395,9 +3395,9 @@ Procedure FieldsTablesChangeNodeVariantStructure(TableName, RowIdentifier, Table
 	FormParameters.Insert("CurrentCDHostIdentifier", TableRow.DCIdentifier);
 	FormParameters.Insert("CurrentCDHostType", TableRow.Type);
 	If TableRow.Type = "Chart" Then
-		FormParameters.Insert("Title", NStr("en='Set the %2 report chart.';ru='Настройка диаграммы отчета ""%2""'"));
+		FormParameters.Insert("Title", NStr("en='Set up chart of the %2 report';ru='Настройка диаграммы отчета ""%2""'"));
 	Else
-		FormParameters.Insert("Title", NStr("en='Set %1 grouping of the %2 report.';ru='Настройка группировки ""%1"" отчета ""%2""'"));
+		FormParameters.Insert("Title", NStr("en='Set up %1 grouping of the %2 report';ru='Настройка группировки ""%1"" отчета ""%2""'"));
 	EndIf;
 	FormParameters.Title = StringFunctionsClientServer.SubstituteParametersInString(
 		FormParameters.Title,
@@ -3751,7 +3751,7 @@ Function FieldsTablesFindNode(ThisObject, TableName, TableRow = Undefined, DCNod
 		ElsIf TableName = "VariantStructure" Then
 			Return RootNode;
 		Else
-			Raise StrReplace(NStr("en='Changing the %1 table nodes is not supported.';ru='Изменение узлов таблицы ""%1"" не поддерживается.'"), "%1", TableName);
+			Raise StrReplace(NStr("en='Changing of nodes of the ""%1"" table is not supported.';ru='Изменение узлов таблицы ""%1"" не поддерживается.'"), "%1", TableName);
 		EndIf;
 	Else
 		If TableName = "VariantStructure" Then

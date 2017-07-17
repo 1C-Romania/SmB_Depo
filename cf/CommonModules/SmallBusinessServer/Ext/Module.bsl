@@ -1666,11 +1666,11 @@ Function FindCounterparties(SearchString, CounterpartiesList)
 	
 	// Return if search is not effective.
 	If SearchList.TooManyResults() Then
-		Return NStr("en='Too many results, refine query.';ru='Слишком много результатов, уточните запрос.'");
+		Return NStr("en='Too many results. Refine your search criteria.';ru='Слишком много результатов, уточните запрос.'");
 	EndIf;
 
 	If SearchList.TotalCount() = 0 Then
-		Return NStr("en='Nothing found';ru='Ничего не найдено'");
+		Return NStr("en='No results found';ru='Ничего не найдено'");
 	EndIf;
 	
 	ItemCount = SearchList.TotalCount();
@@ -1712,10 +1712,10 @@ Function FindCounterparties(SearchString, CounterpartiesList)
 				If FoundCounterpartiesTable <> Undefined Then
 					
 					For Each TableRow IN FoundCounterpartiesTable Do
-						BasisTemplate = NStr("en='Find: Individual ""%1"" of the contact person ""%2"" - %3';ru='Найдено: Физическое лицо ""%1"" контактного лица ""%2"" - %3'");
+						BasisTemplate = NStr("en='Found: The ""%1"" individual of the ""%2"" contact person - %3';ru='Найдено: Физическое лицо ""%1"" контактного лица ""%2"" - %3'");
 						Basis = StringFunctionsClientServer.SubstituteParametersInString(BasisTemplate, Item.Value, TableRow.Presentation, Item.Description);
 						If Not AddCounterpartyToListOfFoundByFulltextSearch(CounterpartiesList, TableRow.Counterparty, Basis, ItemRef) Then
-							Return NStr("en='Too many results, refine query.';ru='Слишком много результатов, уточните запрос.'");
+							Return NStr("en='Too many results. Refine your search criteria.';ru='Слишком много результатов, уточните запрос.'");
 						EndIf;
 					EndDo;
 					
@@ -1744,7 +1744,7 @@ Function FindCounterparties(SearchString, CounterpartiesList)
 			
 			If Not Item.Metadata = Metadata.Catalogs.Individuals Then
 				If Not AddCounterpartyToListOfFoundByFulltextSearch(CounterpartiesList, Counterparty, Basis, ItemRef) Then
-					Return NStr("en='Too many results, refine query.';ru='Слишком много результатов, уточните запрос.'");
+					Return NStr("en='Too many results. Refine your search criteria.';ru='Слишком много результатов, уточните запрос.'");
 				EndIf;
 			EndIf;
 			
@@ -1761,7 +1761,7 @@ Function FindCounterparties(SearchString, CounterpartiesList)
 	EndDo;
 	
 	If CounterpartiesList.Count() = 0 Then
-		Return NStr("en='Nothing found';ru='Ничего не найдено'");
+		Return NStr("en='No results found';ru='Ничего не найдено'");
 	EndIf;
 	
 	Return Undefined;
@@ -3154,7 +3154,7 @@ Function RecalculateFromCurrencyToCurrency(Amount, InitRate, FinRate,	Repetition
 	
 	If InitRate = 0 OR FinRate = 0 OR RepetitionBeg = 0 OR RepetitionEnd = 0 Then
 		Message = New UserMessage();
-		Message.Text = NStr("en='Null exchange rate has been found. Recalculation is not executed.';ru='Обнаружен нулевой курс валюты. Пересчет не выполнен.'");
+		Message.Text = NStr("en='Zero exchange rate is found. Conversion is not executed.';ru='Обнаружен нулевой курс валюты. Пересчет не выполнен.'");
 		Message.Message();
 		Return Amount;
 	EndIf;
@@ -4289,7 +4289,7 @@ EndProcedure // ReportErrorsPostingByRegisterInventoryInWarehouses()
 Procedure ShowMessageAboutPostingToInventoryInWarehousesRegisterErrorsAsList(DocObject, RecordsSelection, Cancel) Export
 	
 	ErrorTitle = NStr("ru = 'Ошибка:'; en = 'Error:'");
-	MessageTitleText = ErrorTitle + Chars.LF + NStr("ru = 'Не хватает запасов'; en = 'There is not enough inventory'");
+	MessageTitleText = ErrorTitle + Chars.LF + NStr("en='Insufficient inventory';ru='Не хватает запасов'");
 	ShowMessageAboutError(DocObject, MessageTitleText, , , , Cancel);
 	
 	MessagePattern = NStr("ru = 'Номенклатура: %ProductsAndServicesCharacteristicsBatch%,
@@ -4382,7 +4382,7 @@ EndProcedure // ReportErrorsPostingByRegisterInventory()
 Procedure ShowMessageAboutPostingToInventoryRegisterErrorsAsList(DocObject, RecordsSelection, Cancel) Export
 	
 	ErrorTitle = NStr("en='Error:';ru='Ошибка:'");
-	MessageTitleText = ErrorTitle + Chars.LF + NStr("ru = 'Не хватает остатка по учету запасов и затрат'; en = 'There is not enough balance on inventory and expenses'");
+	MessageTitleText = ErrorTitle + Chars.LF + NStr("en='Balance by accounting of inventories and expenses is missing';ru='Не хватает остатка по учету запасов и затрат'");
 	ShowMessageAboutError(DocObject, MessageTitleText, , , , Cancel);
 	
 	MessagePattern = NStr("ru = 'Номенклатура: %ProductsAndServicesCharacteristicsBatch%,
@@ -4489,7 +4489,7 @@ EndProcedure // ShowMessageAboutPostingToInventoryTransferredRegisterErrors()
 Procedure ShowMessageAboutPostingToInventoryTransferredRegisterErrorsAsList(DocObject, RecordsSelection, Cancel) Export
 	
 	ErrorTitle = NStr("ru = 'Ошибка:'; en = 'Error:'");
-	MessageTitleText = ErrorTitle + Chars.LF + NStr("ru='Не хватает запасов, переданных стороннему контрагенту'; en='There is not enough inventory transferred to a third party counterparty'");
+	MessageTitleText = ErrorTitle + Chars.LF + NStr("en='Insufficient inventory transferred to the external counterparty';ru='Не хватает запасов, переданных стороннему контрагенту'");
 	ShowMessageAboutError(DocObject, MessageTitleText, , , , Cancel);
 	
 	MessagePattern = NStr("ru = 'Номенклатура: %ProductsAndServicesCharacteristicsBatch%,
@@ -4601,7 +4601,7 @@ EndProcedure // ShowMessageAboutPostingToInventoryReceivedRegisterErrors()
 Procedure ShowMessageAboutPostingToInventoryReceivedRegisterErrorsAsList(DocObject, RecordsSelection, Cancel) Export
 	
 	ErrorTitle = NStr("ru='Ошибка:'; en='Error:'");
-	MessageTitleText = ErrorTitle + Chars.LF + NStr("ru = 'Не хватает запасов, поступивших от стороннего контрагента'; en = 'There is not enough inventory received from a third party counterparty'");
+	MessageTitleText = ErrorTitle + Chars.LF + NStr("en='Insufficient inventory received from the external counterparty';ru='Не хватает запасов, поступивших от стороннего контрагента'");
 	ShowMessageAboutError(DocObject, MessageTitleText, , , , Cancel);
 	MessagePattern = NStr("ru = 'Номенклатура: %ProductsAndServicesCharacteristicsBatch%,
 		|контрагент %CounterpartyPresentation%'; en='Products and services: %ProductsAndServicesCharacteristicsBatch%, 
@@ -4656,7 +4656,7 @@ EndProcedure // ReportErrorsPostingByRegisterInventoryReceivedAsList()
 Procedure ShowMessageAboutPostingToInventoryByCCDRegisterErrors(DocObject, RecordsSelection, Cancel) Export
 	
 	ErrorTitle = NStr("ru = 'Ошибка:'; en = 'Error:'");
-	MessageTitleText = ErrorTitle + Chars.LF + NStr("ru='Не хватает запасов в разрезе ГТД'; en='There is not enough inventory in the context of CCD'");
+	MessageTitleText = ErrorTitle + Chars.LF + NStr("en='Insufficient inventory by CCD';ru='Не хватает запасов в разрезе ГТД'");
 	ShowMessageAboutError(DocObject, MessageTitleText, , , , Cancel);
 		
 	MessagePattern = NStr("ru = 'Номенклатура: %ProductsAndServicesCharacteristicsBatch%,
@@ -4688,7 +4688,7 @@ EndProcedure // ShowMessageAboutPostingToInventoryByCCDRegisterErrors()
 Procedure ShowMessageAboutPostingToCustomerOrdersRegisterErrors(DocObject, RecordsSelection, Cancel) Export
 	
 	ErrorTitle = NStr("ru = 'Ошибка:'; en = 'Error:'");
-	MessageTitleText = ErrorTitle + Chars.LF + NStr("ru='Оформлено больше, чем указано в заказе покупателя'; en='Executed more than specified in the customer order'");
+	MessageTitleText = ErrorTitle + Chars.LF + NStr("en='Registered more than specified in the customer order';ru='Оформлено больше, чем указано в заказе покупателя'");
 	ShowMessageAboutError(DocObject, MessageTitleText, , , , Cancel);
 	
 	MessagePattern = NStr("ru = 'Номенклатура: %ProductsAndServicesCharacteristicsBatch%,
@@ -4718,7 +4718,7 @@ EndProcedure // ShowMessageAboutPostingToCustomerOrdersRegisterErrors()
 Procedure ShowMessageAboutPostingToPurchaseOrdersRegisterErrors(DocObject, RecordsSelection, Cancel) Export
 	
 	ErrorTitle = NStr("ru = 'Ошибка:'; en = 'Error:'");
-	MessageTitleText = ErrorTitle + Chars.LF + NStr("ru = 'Оформлено больше, чем указано в заказе поставщику'; en = 'Executed more than specified in the purchase order'");
+	MessageTitleText = ErrorTitle + Chars.LF + NStr("en='Registered more than specified in the purchase order';ru='Оформлено больше, чем указано в заказе поставщику'");
 	ShowMessageAboutError(DocObject, MessageTitleText, , , , Cancel);
 		
 	MessagePattern = NStr("ru = 'Номенклатура: %ProductsAndServicesCharacteristicsBatch%,
@@ -4750,7 +4750,7 @@ EndProcedure // ShowMessageAboutPostingToPurchaseOrdersRegisterErrors()
 Procedure ShowMessageAboutPostingToProductionOrdersRegisterErrors(DocObject, RecordsSelection, Cancel) Export
 	
 	ErrorTitle = NStr("ru = 'Ошибка:'; en = 'Error:'");
-	MessageTitleText = ErrorTitle + Chars.LF + NStr("ru = 'Оформлено больше, чем указано в заказе на производство'; en = 'Executed more than specified in the production order'");
+	MessageTitleText = ErrorTitle + Chars.LF + NStr("en='Registered more than specified in the production order';ru='Оформлено больше, чем указано в заказе на производство'");
 	ShowMessageAboutError(DocObject, MessageTitleText, , , , Cancel);
 		
 	MessagePattern = NStr("Номенклатура: %ProductsAndServicesCharacteristicsBatch%,
@@ -4782,7 +4782,7 @@ EndProcedure // ShowMessageAboutPostingToProductionOrdersRegisterErrors()
 Procedure ShowMessageAboutPostingToInventoryDemandRegisterErrors(DocObject, RecordsSelection, Cancel) Export
 	
 	ErrorTitle = NStr("ru='Ошибка:'; en='Error:'");
-	MessageTitleText = ErrorTitle + Chars.LF + NStr("ru = 'Оформлено больше, чем есть потребность в запасах'; en = 'Executed more than the inventory needed'");
+	MessageTitleText = ErrorTitle + Chars.LF + NStr("en='Registered more than the inventory demand';ru='Оформлено больше, чем есть потребность в запасах'");
 	ShowMessageAboutError(DocObject, MessageTitleText, , , , Cancel);
 	
 	MessagePattern = NStr("ru = 'Номенклатура: %ProductsAndServicesCharacteristicsBatch%,
@@ -4814,7 +4814,7 @@ EndProcedure // ShowMessageAboutPostingToInventoryDemandRegisterErrors()
 Procedure ShowMessageAboutPostingToOrdersPlacementRegisterErrors(DocObject, RecordsSelection, Cancel) Export
 	
 	ErrorTitle = NStr("ru='Ошибка:'; en='Error:'");
-	MessageTitleText = ErrorTitle + Chars.LF + NStr("ru = 'Оформлено больше, чем размещено запасов в заказах'; en = 'Executed more than placed of inventories in the orders'");
+	MessageTitleText = ErrorTitle + Chars.LF + NStr("en='Registered more than inventories placed in the orders';ru='Оформлено больше, чем размещено запасов в заказах'");
 	ShowMessageAboutError(DocObject, MessageTitleText, , , , Cancel);
 		
 	MessagePattern = NStr("ru = 'Номенклатура: %ProductsAndServicesCharacteristicsBatch%,
@@ -4849,7 +4849,7 @@ EndProcedure // ShowMessageAboutPostingToOrdersPlacementRegisterErrors()
 Procedure ShowMessageAboutPostingToCashAssetsRegisterErrors(DocObject, RecordsSelection, Cancel) Export
 	
 	ErrorTitle = NStr("ru = 'Ошибка:'; en = 'Error:'");
-	MessageTitleText = ErrorTitle + Chars.LF + NStr("ru='Не хватает денежных средств'; en='There are not enough cash assets'");
+	MessageTitleText = ErrorTitle + Chars.LF + NStr("en='Not enough funds';ru='Не хватает денежных средств'");
 	ShowMessageAboutError(DocObject, MessageTitleText, , , , Cancel);
 	
 	MessagePattern = NStr("ru = '%PettyCashAccount%: %PettyCashAccountPresentation%,
@@ -4888,7 +4888,7 @@ EndProcedure // ShowMessageAboutPostingToCashAssetsRegisterErrors()
 Procedure ErrorMessageOfPostingOnRegisterOfCashAtCashRegisters(DocObject, RecordsSelection, Cancel) Export
 	
 	ErrorTitle = NStr("ru = 'Ошибка:'; en = 'Error:'");
-	MessageTitleText = ErrorTitle + Chars.LF + NStr("ru='Не хватает денежных средств в кассе ККМ'; en='There are not enough cash assets in CR'");
+	MessageTitleText = ErrorTitle + Chars.LF + NStr("en='Not enough funds in cash register';ru='Не хватает денежных средств в кассе ККМ'");
 	ShowMessageAboutError(DocObject, MessageTitleText, , , , Cancel);
 	
 	MessagePattern = NStr("ru = 'Касса ККМ: %CRPettyCashPresentation%,
@@ -4917,7 +4917,7 @@ EndProcedure // ErrorMessageOfPostingOnRegisterOfCashAtCashRegisters()
 Procedure ShowMessageAboutPostingToAdvanceHolderPaymentsRegisterErrors(DocObject, RecordsSelection, Cancel) Export
 	
 	ErrorTitle = NStr("ru = 'Ошибка:'; en = 'Error:'");
-	MessageTitleText = ErrorTitle + Chars.LF + NStr("ru = 'Расчеты с подотчетным лицом станут отрицательными'; en = 'Settlements with advance holder will become negative'");
+	MessageTitleText = ErrorTitle + Chars.LF + NStr("en='Settlements with advance holder will be negative';ru='Расчеты с подотчетным лицом станут отрицательными'");
 	ShowMessageAboutError(DocObject, MessageTitleText, , , , Cancel);
 	
 	MessagePattern = NStr("ru = '%AdvanceHolderPresentation%,
@@ -4943,7 +4943,7 @@ EndProcedure // ShowMessageAboutPostingToAdvanceHolderPaymentsRegisterErrors()
 Procedure ShowMessageAboutPostingToAccountsPayableRegisterErrors(DocObject, RecordsSelection, Cancel) Export
 	
 	ErrorTitle = NStr("ru = 'Ошибка:'; en = 'Error:'");
-	MessageTitleText = ErrorTitle + Chars.LF + NStr("ru = 'Нет возможности зафиксировать расчеты с поставщиками'; en = 'Cannot record the accounts payables.'");
+	MessageTitleText = ErrorTitle + Chars.LF + NStr("en='Cannot record settlements with suppliers';ru='Нет возможности зафиксировать расчеты с поставщиками'");
 	ShowMessageAboutError(DocObject, MessageTitleText, , , , Cancel);
 	
 	While RecordsSelection.Next() Do
@@ -5018,7 +5018,7 @@ EndProcedure // ShowMessageAboutPostingToAccountsPayableRegisterErrors()
 Procedure ShowMessageAboutPostingToAccountsReceivableRegisterErrors(DocObject, RecordsSelection, Cancel) Export
 	
 	ErrorTitle = NStr("ru = 'Ошибка:'; en = 'Error:'");
-	MessageTitleText = ErrorTitle + Chars.LF + NStr("ru = 'Нет возможности зафиксировать расчеты с покупателями'; en = 'There is no way to fix settlements with customers'");
+	MessageTitleText = ErrorTitle + Chars.LF + NStr("en='Cannot record settlements with customers';ru='Нет возможности зафиксировать расчеты с покупателями'");
 	ShowMessageAboutError(DocObject, MessageTitleText, , , , Cancel);
 		
 	While RecordsSelection.Next() Do
@@ -5097,7 +5097,7 @@ EndProcedure // ShowMessageAboutPostingToAccountsReceivableRegisterErrors()
 Procedure ShowMessageAboutPostingToFixedAssetsRegisterErrors(DocObject, RecordsSelection, Cancel) Export
 	
 	ErrorTitle = NStr("ru = 'Ошибка:'; en = 'Error:'");
-	MessageTitleText = ErrorTitle + Chars.LF + NStr("ru = 'Возможно имущество уже списано или передано'; en = 'Perhaps property has already  been written off or transferred'");
+	MessageTitleText = ErrorTitle + Chars.LF + NStr("en='Property might have already been written off or transferred';ru='Возможно имущество уже списано или передано'");
 	ShowMessageAboutError(DocObject, MessageTitleText, , , , Cancel);
 		
 	MessagePattern = NStr("ru = 'Имущество: %ProductsAndServicesCharacteristicsBatch%,
@@ -5763,7 +5763,7 @@ Procedure Denoding(ContentStructure, ContentTable, TableOfOperations) Export
 				
 				For Each EntAttributeString IN RecursiveEntryStrings Do
 					
-					MessageText = NStr("en='Detected a recursive item occurrence';ru='Обнаружено рекурсивное вхождение элемента'")+" "+ProductsAndServicesSelection.ProductsAndServices+" "+NStr("en='in element';ru='в элемент'")+" "+ContentStructure.ProductsAndServices+"!";
+					MessageText = NStr("en='Recursive item inclusion is found';ru='Обнаружено рекурсивное вхождение элемента'")+" "+ProductsAndServicesSelection.ProductsAndServices+" "+NStr("en='to item';ru='в элемент'")+" "+ContentStructure.ProductsAndServices+"!";
 					ShowMessageAboutError(ContentStructure.Object, MessageText);
 					
 				EndDo;
@@ -6653,7 +6653,7 @@ Function SpreadsheetDocumentFitsPage(Spreadsheet, AreasToPut, ResultOnError = Tr
 	Except
 		ErrorDescription = ErrorInfo();
 		WriteLogEvent(
-			NSTr("en='Impossible to get information about the current printer (perhaps, no printers are installed in the system)';ru='Невозможно получить информацию о текущем принтере (возможно, в системе не установлено ни одного принтера)'"),
+			NSTr("en='Cannot get information about the current printer (maybe, no printers are installed in the application)';ru='Невозможно получить информацию о текущем принтере (возможно, в системе не установлено ни одного принтера)'"),
 			EventLogLevel.Error,,, ErrorDescription.Definition);
 		Return ResultOnError;
 	EndTry;
@@ -7041,7 +7041,7 @@ Procedure SetStandardFilterSettings(CurrentUser) Export
 	If Not ValueIsFilled(CurrentUser) Then
 		
 		CommonUseClientServer.MessageToUser(
-		NStr("en='User for whom default filter settings are set is not specified.';ru='Неуказан пользователь, для которого устанавливаются настройки подбора по умолчанию.'")
+		NStr("en='User for whom default selection settings are set is not specified.';ru='Неуказан пользователь, для которого устанавливаются настройки подбора по умолчанию.'")
 		);
 		
 		Return;
@@ -10023,7 +10023,7 @@ EndFunction // GetQueryTextExchangeRateDifferncesRetailAmountAccounting()
 Function ClearDataInDatabase() Export
 	
 	If Not Users.InfobaseUserWithFullAccess(, True) Then
-		Raise(NStr("en='Insufficient rights to perform operation';ru='Недостаточно прав для выполнения операции'"));
+		Raise(NStr("en='Insufficient rights to perform the operation';ru='Недостаточно прав для выполнения операции'"));
 	EndIf;
 	
 	SetPrivilegedMode(True);
@@ -10032,7 +10032,7 @@ Function ClearDataInDatabase() Export
 		CommonUse.LockInfobase();
 	Except
 		Message = StringFunctionsClientServer.SubstituteParametersInString(
-			NStr("en='Failed to install the monopoly mode (%1)';ru='Не удалось установить монопольный режим (%1)'"),
+			NStr("en='Cannot set the exclusive mode (%1)';ru='Не удалось установить монопольный режим (%1)'"),
 			BriefErrorDescription(ErrorInfo()));
 		Return False;
 	EndTry;
@@ -10730,7 +10730,7 @@ Function GetCalendarByProductionCalendaRF() Export
 	BusinessCalendarRF = CalendarSchedules.BusinessCalendarOfRussiaFederation();
 	If BusinessCalendarRF = Undefined Then
 		
-		WriteLogEvent(NStr("en='Failed to fill the work graphs data for the company according to the RF production calendar.';ru='Неудалось заполнить данные граффиков работы для организации на основании производственного календаря РФ.'"), 
+		WriteLogEvent(NStr("en='Cannot fill in the work schedule data for the company according to the RF production calendar.';ru='Неудалось заполнить данные граффиков работы для организации на основании производственного календаря РФ.'"), 
 			EventLogLevel.Error, , , DetailErrorDescription(ErrorInfo()));
 		
 		Return Undefined;

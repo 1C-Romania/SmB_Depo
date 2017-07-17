@@ -13,7 +13,7 @@ Procedure OnOpen(Cancel)
 	EndIf;
 	If ItemCount = 0 Then
 		Cancel = True;
-		ShowMessageBox(, NStr("en='The scanner is not installed. Contact your application administrator.';ru='Не установлен сканер. Обратитесь к администратору программы.'"));
+		ShowMessageBox(, NStr("en='Scanner is not installed. Contact the application administrator.';ru='Не установлен сканер. Обратитесь к администратору программы.'"));
 	Else
 		Items.DeviceName.ListChoiceMode = True;
 	EndIf;

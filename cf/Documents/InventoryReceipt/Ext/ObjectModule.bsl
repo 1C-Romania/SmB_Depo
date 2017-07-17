@@ -117,7 +117,7 @@ Procedure Filling(FillingData, StandardProcessing) Export
 		// FO Use Production subsystem.
 		If Not Constants.FunctionalOptionUseSubsystemProduction.Get()
 			AND StructuralUnit.StructuralUnitType = Enums.StructuralUnitsTypes.Department Then
-			Raise NStr("ru = 'Нельзя ввести Оприходование запасов на основании инвентеризации запасов, т.к. недоступен вид деятельности Производство!'; en = 'You can not enter Inventory receipt basing on the inventory reconciliation, as the Production activity kind is not available!'");
+			Raise NStr("en='Cannot enter Inventory capitalization basing on the physical inventory, as the Production activity kind is not available';ru='Нельзя ввести Оприходование запасов на основании инвентеризации запасов, т.к. недоступен вид деятельности Производство!'");
 		EndIf;
 		
 		Query = New Query(
@@ -196,7 +196,7 @@ Procedure Filling(FillingData, StandardProcessing) Export
 		
 		If Inventory.Count() = 0 Then
 			
-			Raise NStr("ru = 'Нет данных для оформления оприходования!'; en = 'No data for posting registration!'");
+			Raise NStr("en='No data for capitalization registration.';ru='Нет данных для оформления оприходования!'");
 			
 		EndIf;
 		

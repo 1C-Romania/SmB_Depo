@@ -421,11 +421,11 @@ Function GetExchangeMessage()
 		
 		GetMessageAboutError(1);
 		
-		MessageString = NStr("en='Exchange data folder on server:  ""%1""';ru='Каталог обмена информацией на сервере: ""%1""'");
+		MessageString = NStr("en='Data exchange directory on server: ""%1""';ru='Каталог обмена информацией на сервере: ""%1""'");
 		MessageString = StringFunctionsClientServer.SubstituteParametersInString(MessageString, FolderAtFTPServer);
 		SupplementErrorMessage(MessageString);
 		
-		MessageString = NStr("en='Exchange message attachment file name: ""%1"" or ""%2""';ru='Имя файла сообщения обмена: ""%1"" или ""%2""'");
+		MessageString = NStr("en='Exchange message file name: ""%1"" or ""%2""';ru='Имя файла сообщения обмена: ""%1"" или ""%2""'");
 		MessageString = StringFunctionsClientServer.SubstituteParametersInString(MessageString, MessageFileTemplateName + ".xml", MessageFileTemplateName + ".zip");
 		SupplementErrorMessage(MessageString);
 		
@@ -545,21 +545,21 @@ Procedure ErrorMessagesInitialization()
 	ErrorMessages = New Map;
 	
 	// Common error codes
-	ErrorMessages.Insert(001, NStr("en='Exchange plan catalog does not have data file.';ru='В каталоге обмена информацией не был обнаружен файл сообщения с данными.'"));
-	ErrorMessages.Insert(002, NStr("en=""Error while unzipping message's zipped file"";ru='Ошибка при распаковке сжатого файла сообщения.'"));
-	ErrorMessages.Insert(003, NStr("en='Error while zipping the file of message exchange';ru='Ошибка при сжатии файла сообщения обмена.'"));
-	ErrorMessages.Insert(004, NStr("en='Error when creating the temporary directory.';ru='Ошибка при создании временного каталога.'"));
-	ErrorMessages.Insert(005, NStr("en='The archive does not contain the exchange file.';ru='Архив не содержит файл сообщения обмена.'"));
+	ErrorMessages.Insert(001, NStr("en='Information exchange directory does not contain a message file with data.';ru='В каталоге обмена информацией не был обнаружен файл сообщения с данными.'"));
+	ErrorMessages.Insert(002, NStr("en='An error occurred when unpacking a compressed message file.';ru='Ошибка при распаковке сжатого файла сообщения.'"));
+	ErrorMessages.Insert(003, NStr("en='An error occurred when compressing the exchange message file.';ru='Ошибка при сжатии файла сообщения обмена.'"));
+	ErrorMessages.Insert(004, NStr("en='An error occurred when creating a temporary directory.';ru='Ошибка при создании временного каталога.'"));
+	ErrorMessages.Insert(005, NStr("en='Archive does not include exchange message file.';ru='Архив не содержит файл сообщения обмена.'"));
 	
 	// Errors codes, that are dependent on the transport kind.
-	ErrorMessages.Insert(101, NStr("en='The server path is not specified.';ru='Не задан путь на сервере.'"));
-	ErrorMessages.Insert(102, NStr("en='Initialization error of connection to the FTP-server';ru='Ошибка инициализации подключения к FTP-серверу.'"));
-	ErrorMessages.Insert(103, NStr("en='Connection to FTP - server error, check if the specified path is correct and resource access rights.';ru='Ошибка подключения к FTP-серверу, проверьте правильность задания пути и права доступа к ресурсу.'"));
-	ErrorMessages.Insert(104, NStr("en='Error while searching for the file on FTP-server';ru='Ошибка при поиске файлов на FTP-сервере.'"));
-	ErrorMessages.Insert(105, NStr("en='Error while receiving the file form FTP-server';ru='Ошибка при получении файла с FTP-сервера.'"));
-	ErrorMessages.Insert(106, NStr("en='Error while deleting file on FTP-server, check access rights for the resource';ru='Ошибка удаления файла на FTP-сервере, проверьте права доступа к ресурсу.'"));
+	ErrorMessages.Insert(101, NStr("en='Path on the server is not specified.';ru='Не задан путь на сервере.'"));
+	ErrorMessages.Insert(102, NStr("en='An error occurred when initializing connection to the FTP server.';ru='Ошибка инициализации подключения к FTP-серверу.'"));
+	ErrorMessages.Insert(103, NStr("en='An error occurred when connecting to the FTP server, check the path  correctness and access rights to the resource.';ru='Ошибка подключения к FTP-серверу, проверьте правильность задания пути и права доступа к ресурсу.'"));
+	ErrorMessages.Insert(104, NStr("en='An error occurred when searching for files on FTP server.';ru='Ошибка при поиске файлов на FTP-сервере.'"));
+	ErrorMessages.Insert(105, NStr("en='An error occurred when receiving the file from FTP server.';ru='Ошибка при получении файла с FTP-сервера.'"));
+	ErrorMessages.Insert(106, NStr("en='An error occurred when removing file on FTP server, check access rights to the resource.';ru='Ошибка удаления файла на FTP-сервере, проверьте права доступа к ресурсу.'"));
 	
-	ErrorMessages.Insert(108, NStr("en='Maximum size of the exchange message has been exceeded';ru='Превышен допустимый размер сообщения обмена.'"));
+	ErrorMessages.Insert(108, NStr("en='Exchange message size exceeds the allowable limit.';ru='Превышен допустимый размер сообщения обмена.'"));
 	
 EndProcedure
 

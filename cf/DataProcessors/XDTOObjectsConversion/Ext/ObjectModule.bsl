@@ -201,7 +201,7 @@ Procedure ExecuteDataImport() Export
 	Try
 		DataExchangeXDTOServer.ReadData(ExchangeComponents);
 	Except
-		MessageString = NStr("en='Error when importing the files: %1';ru='Ошибка при загрузке данных: %1'");
+		MessageString = NStr("en='An error occurred when importing data: %1';ru='Ошибка при загрузке данных: %1'");
 		MessageString = StringFunctionsClientServer.SubstituteParametersInString(MessageString, ErrorDescription());
 		DataExchangeXDTOServer.WriteInExecutionProtocol(ExchangeComponents, MessageString,,,,,True);
 		ExchangeComponents.ErrorFlag = True;
@@ -256,14 +256,14 @@ Procedure ExecuteDataImportToInformationBase(TableToImport) Export
 	DataExchangeXDTOServer.InitializeExchangeRulesTables(ExchangeComponents);
 	
 	// Record in the events log monitor.
-	MessageString = NStr("en='Beginning of data exchange process for node: %1';ru='Начало процесса обмена данными для узла: %1'", CommonUseClientServer.MainLanguageCode());
+	MessageString = NStr("en='Data exchange process start for node: %1';ru='Начало процесса обмена данными для узла: %1'", CommonUseClientServer.MainLanguageCode());
 	MessageString = StringFunctionsClientServer.SubstituteParametersInString(MessageString, String(ExchangeNodeForDataImport));
 	DataExchangeXDTOServer.WriteLogEventDataExchange(MessageString, ExchangeComponents, EventLogLevel.Information);
 	
 	DataExchangeXDTOServer.ReadData(ExchangeComponents, TableToImport);
 	
 	// Record in the events log monitor.
-	MessageString = NStr("en='%1, %2; Processed %3 objects';ru='%1, %2; Обработано %3 объектов'", CommonUseClientServer.MainLanguageCode());
+	MessageString = NStr("en='%1, %2; %3 objects are processed';ru='%1, %2; Обработано %3 объектов'", CommonUseClientServer.MainLanguageCode());
 	MessageString = StringFunctionsClientServer.SubstituteParametersInString(MessageString,
 					ExchangeComponents.DataExchangeStatus.ExchangeProcessResult,
 					Enums.ActionsAtExchange.DataImport,
@@ -346,7 +346,7 @@ Procedure RunExchangeMessageAnalysis(AnalysisParameters = Undefined) Export
 		EndDo;
 		
 	Except
-		MessageString = NStr("en='Error when analyzing the data: %1';ru='Ошибка при анализе данных: %1'");
+		MessageString = NStr("en='An error occurred when analyzing data: %1';ru='Ошибка при анализе данных: %1'");
 		MessageString = StringFunctionsClientServer.SubstituteParametersInString(MessageString, ErrorDescription());
 		DataExchangeXDTOServer.WriteInExecutionProtocol(ExchangeComponents, MessageString,,,,,True);
 	EndTry;

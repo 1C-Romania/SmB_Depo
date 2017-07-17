@@ -88,29 +88,29 @@ Procedure AddHierarchy(GLAccountsTypes = Undefined, TypeOfAccount = Undefined)
 		For Each CurAccountType IN GLAccountsTypes Do
 			InvoiceHeader = "";
 			If CurAccountType = Enums.GLAccountsTypes.Expenses Then
-				InvoiceHeader = NStr("en='Expenses distributed for the financial result (Indirect)';ru='Расходы, распределяемые на финансовый результат (Косвенные)'");
+				InvoiceHeader = NStr("en='Expenses allocated to the financial result (Indirect)';ru='Расходы, распределяемые на финансовый результат (Косвенные)'");
 			ElsIf CurAccountType = Enums.GLAccountsTypes.OtherExpenses Then
-				InvoiceHeader = NStr("en='Other expenses distributed for the financial result';ru='Прочие расходы, распределяемые на финансовый результат'");
+				InvoiceHeader = NStr("en='Other expenses allocated to the financial result';ru='Прочие расходы, распределяемые на финансовый результат'");
 			ElsIf  CurAccountType = Enums.GLAccountsTypes.Incomings Then
-				InvoiceHeader = NStr("en='Expenses distributed for the financial result';ru='Доходы, распределяемые на финансовый результат'");
+				InvoiceHeader = NStr("en='Income allocated to the financial result';ru='Доходы, распределяемые на финансовый результат'");
 			ElsIf CurAccountType = Enums.GLAccountsTypes.OtherIncome Then
-				InvoiceHeader = NStr("en='Other incomes distributed for the financial result';ru='Прочие доходы, распределяемые на финансовый результат'");
+				InvoiceHeader = NStr("en='Other income allocated to the financial result';ru='Прочие доходы, распределяемые на финансовый результат'");
 			ElsIf CurAccountType = Enums.GLAccountsTypes.Debitors Then
-				InvoiceHeader = NStr("en='Other debitor (debt to us)';ru='Прочие дебиторы (задолженность перед нами)'");
+				InvoiceHeader = NStr("en='Other debtors (debt to us)';ru='Прочие дебиторы (задолженность перед нами)'");
 			ElsIf CurAccountType = Enums.GLAccountsTypes.Creditors Then
 				InvoiceHeader = NStr("en='Other creditors (our debt)';ru='Прочие кредиторы (наша задолженность)'");
 			ElsIf CurAccountType = Enums.GLAccountsTypes.CashAssets Then
 				InvoiceHeader = NStr("en='Funds transfer';ru='Перемещения денег'");
 			ElsIf CurAccountType = Enums.GLAccountsTypes.LongtermObligations Then
-				InvoiceHeader = NStr("en='Long-Term Obligations';ru='Долгосрочные обязательства'");
+				InvoiceHeader = NStr("en='Long-term liabilities';ru='Долгосрочные обязательства'");
 			ElsIf CurAccountType = Enums.GLAccountsTypes.Capital Then
 				InvoiceHeader = NStr("en='Capital';ru='Капитал'");
 			ElsIf CurAccountType = Enums.GLAccountsTypes.CreditsAndLoans Then
 				InvoiceHeader = NStr("en='Credits and Loans';ru='Кредиты и займы'");
 			ElsIf CurAccountType = Enums.GLAccountsTypes.UnfinishedProduction Then
-				InvoiceHeader = NStr("en='Expenses relating to the production output (Direct)';ru='Затраты, относящиеся к выпуску продукции (Прямые)'");
+				InvoiceHeader = NStr("en='Expenses related to product release (Direct)';ru='Затраты, относящиеся к выпуску продукции (Прямые)'");
 			ElsIf CurAccountType = Enums.GLAccountsTypes.IndirectExpenses Then
-				InvoiceHeader = NStr("en='Expenses distributed for the net cost of the production output (Indirect)';ru='Затраты, распределяемые на себестоимость выпуска продукции (Косвенные)'");
+				InvoiceHeader = NStr("en='Costs allocated to product release cost (Indirect)';ru='Затраты, распределяемые на себестоимость выпуска продукции (Косвенные)'");
 			ElsIf CurAccountType = Enums.GLAccountsTypes.OtherCurrentAssets Then
 				InvoiceHeader = NStr("en='Other Current Assets';ru='Прочие оборотные активы'");
 			EndIf;

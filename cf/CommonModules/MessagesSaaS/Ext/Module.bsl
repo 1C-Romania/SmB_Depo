@@ -166,7 +166,7 @@ EndFunction
 //
 Procedure WriteMessageStartProcessing(Val Message) Export
 	
-	WriteLogEvent(NStr("en='Messages in the service models. Start of processing';ru='Сообщения в модели сервиса.Начало обработки'",
+	WriteLogEvent(NStr("en='SaaS messages.Start processing';ru='Сообщения в модели сервиса.Начало обработки'",
 		CommonUseClientServer.MainLanguageCode()),
 		EventLogLevel.Information,
 		,
@@ -182,7 +182,7 @@ EndProcedure
 //
 Procedure WriteEventEndDataProcessors(Val Message) Export
 	
-	WriteLogEvent(NStr("en='Messages in the service model. End of processing';ru='Сообщения в модели сервиса.Окончание обработки'",
+	WriteLogEvent(NStr("en='SaaS messages.End processing';ru='Сообщения в модели сервиса.Окончание обработки'",
 		CommonUseClientServer.MainLanguageCode()),
 		EventLogLevel.Information,
 		,
@@ -196,7 +196,7 @@ Procedure WriteEventEndDataProcessors(Val Message) Export
 Procedure DeliverQuickMessages() Export
 	
 	If TransactionActive() Then
-		Raise(NStr("en='Fast messages delivery is impossible in transaction';ru='Доставка быстрых сообщений невозможна в транзакции'"));
+		Raise(NStr("en='Quick message delivery is unavailable in the transaction';ru='Доставка быстрых сообщений невозможна в транзакции'"));
 	EndIf;
 	
 	JobMethodName = "MessageExchange.DeliverMessages";
@@ -227,11 +227,11 @@ Procedure DeliverQuickMessages() Export
 	EndIf;
 		
 	Try
-		BackgroundJobs.Execute(JobMethodName, , JobKey, NStr("en='Instant messages delivery';ru='Доставка быстрых сообщений'"))
+		BackgroundJobs.Execute(JobMethodName, , JobKey, NStr("en='Instant message delivery';ru='Доставка быстрых сообщений'"))
 	Except
 		// Additional exception data processor
 		// is not required, the expected exception - duplication of a job with the same key.
-		WriteLogEvent(NStr("en='Instant messages delivery';ru='Доставка быстрых сообщений'",
+		WriteLogEvent(NStr("en='Instant message delivery';ru='Доставка быстрых сообщений'",
 			CommonUseClientServer.MainLanguageCode()), EventLogLevel.Error, , ,
 			DetailErrorDescription(ErrorInfo()));
 	EndTry;
@@ -260,14 +260,14 @@ Procedure BeforeMessageSending(Val MessageChannel, Val MessageBody) Export
 	If BodyContainTypedMessage(MessageBody, Message) Then
 		If MessagesSaaSReUse.TypeAreaBody().IsDescendant(Message.Body.Type()) Then
 			If CommonUse.SessionSeparatorValue() <> Message.Body.Zone Then
-				WriteLogEvent(NStr("en='Messages in the service model. Message sending';ru='Сообщения в модели сервиса.Отправка сообщения'",
+				WriteLogEvent(NStr("en='SaaS messages.Send message';ru='Сообщения в модели сервиса.Отправка сообщения'",
 					CommonUseClientServer.MainLanguageCode()),
 					EventLogLevel.Error,
 					,
 					,
 					MessagePresentationForLog(Message));
 					
-				ErrorTemplate = NStr("en='Error at message sending. Data area %1 does not match the current one (%2).';ru='Ошибка при отправке сообщения. Область данных %1 не совпадает с текущей (%2).'");
+				ErrorTemplate = NStr("en='An error occurred when sending the message. Data area %1 does not match the current one (%2).';ru='Ошибка при отправке сообщения. Область данных %1 не совпадает с текущей (%2).'");
 				ErrorText = StringFunctionsClientServer.SubstituteParametersInString(ErrorTemplate, 
 					Message.Body.Zone, CommonUse.SessionSeparatorValue());
 					
@@ -295,7 +295,7 @@ Procedure OnMessageSending(MessageChannel, MessageBody, MessageObject) Export
 		Message.Header.Sent = CurrentUniversalDate();
 		MessageBody = WriteMessageToUntypedBody(Message);
 		
-		WriteLogEvent(NStr("en='Messages in the service model. Sending';ru='Сообщения в модели сервиса.Отправка'",
+		WriteLogEvent(NStr("en='SaaS messages.Send';ru='Сообщения в модели сервиса.Отправка'",
 			CommonUseClientServer.MainLanguageCode()),
 			EventLogLevel.Information,
 			,
@@ -333,7 +333,7 @@ Procedure OnMessageReceiving(MessageChannel, MessageBody, MessageObject) Export
 		
 		MessageBody = WriteMessageToUntypedBody(Message);
 		
-		WriteLogEvent(NStr("en='Messages in the service model. Receiving';ru='Сообщения в модели сервиса.Получение'",
+		WriteLogEvent(NStr("en='SaaS messages.Receive';ru='Сообщения в модели сервиса.Получение'",
 			CommonUseClientServer.MainLanguageCode()),
 			EventLogLevel.Information,
 			,
@@ -433,13 +433,13 @@ Procedure BroadcastMessageToCorrespondentIfNecessary(Message, Val InformationCon
 	
 	InterfaceMessages = TranslationXDTOService.GetInterfaceMessages(Message);
 	If InterfaceMessages = Undefined Then
-		Raise NStr("en='The application failed to define interface of the message being sent: there is no interface handler registered for any of the types used in the message!';ru='Не удалось определить интерфейс отправляемого сообщения: ни для одного из типов, используемых в сообщении, не зарегистрирован обработчик интерфейса!'");
+		Raise NStr("en='Cannot define an interface of the message being sent: interface handler is not registered for any type used in the message.';ru='Не удалось определить интерфейс отправляемого сообщения: ни для одного из типов, используемых в сообщении, не зарегистрирован обработчик интерфейса!'");
 	EndIf;
 	
 	If Not InformationConnection.Property("URL") 
 			Or Not ValueIsFilled(InformationConnection.URL) Then
 		Raise StringFunctionsClientServer.SubstituteParametersInString(
-			NStr("en='URL of the messages exchange service with the infobase %1 is not specified';ru='Не задан URL сервиса обмена сообщениями с информационной базой %1'"), RecipientPresentation);
+			NStr("en='URL of the service of message exchange with infobase %1 is not specified';ru='Не задан URL сервиса обмена сообщениями с информационной базой %1'"), RecipientPresentation);
 	EndIf;
 	
 	CorrespondentVersion = MessageInterfacesSaaS.InterfaceVersionCorrespondent(
@@ -447,7 +447,7 @@ Procedure BroadcastMessageToCorrespondentIfNecessary(Message, Val InformationCon
 	
 	If CorrespondentVersion = Undefined Then
 		Raise StringFunctionsClientServer.SubstituteParametersInString(
-			NStr("en='Correspondent %1 does not support the %2 interface messages versions receipt supported by the current infobase!';ru='Корреспондент %1 не поддерживает получение версий сообщений интерфейса %2, поддерживаемых текущей информационной базой!'"),
+			NStr("en='Correspondent %1 does not support receiving versions of interface %2 messages supported by the current infobase.';ru='Корреспондент %1 не поддерживает получение версий сообщений интерфейса %2, поддерживаемых текущей информационной базой!'"),
 			RecipientPresentation, InterfaceMessages.ProgramInterface);
 	EndIf;
 	

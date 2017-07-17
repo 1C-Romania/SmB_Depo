@@ -23,7 +23,7 @@ Procedure Apply(Command)
 	
 	If MarkedListItemArray.Count() = 0 Then
 		
-		NString = NStr("en='You should set at least one field';ru='Следует указать хотя бы одно поле'");
+		NString = NStr("en='Specify at least one field';ru='Следует указать хотя бы одно поле'");
 		
 		CommonUseClientServer.MessageToUser(NString,,"FieldList");
 		

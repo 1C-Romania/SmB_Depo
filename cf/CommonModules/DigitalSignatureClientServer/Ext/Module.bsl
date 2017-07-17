@@ -21,7 +21,7 @@ Function CertificatePresentation(Certificate, Patronymic = False, ValidityPeriod
 	
 	Return SubjectPresentation(Certificate, Patronymic) + ", "
 		+ StringFunctionsClientServer.SubstituteParametersInString(
-			NStr("en='up to %1';ru='до %1'"), Format(Certificate.EndDate, "DF=MM.yyyy"));
+			NStr("en='until %1';ru='до %1'"), Format(Certificate.EndDate, "DF=MM.yyyy"));
 	
 EndFunction
 
@@ -491,7 +491,7 @@ Function FillCertificateDataDescription(Table, Certificate) Export
 	CertificateStructure = FillCertificateStructure(Certificate);
 	
 	If Certificate.UseToSign AND Certificate.UseForEncryption Then
-		Purpose = NStr("en='Sign data, Encrypt data';ru='Подписание данных, Шифрование данных'");
+		Purpose = NStr("en='Data signing, Data encryption';ru='Подписание данных, Шифрование данных'");
 		
 	ElsIf Certificate.UseToSign Then
 		Purpose = NStr("en='Data signing';ru='Подписание данных'");
@@ -513,7 +513,7 @@ Function FillCertificateDataDescription(Table, Certificate) Export
 	String.Value = Format(CertificateStructure.ValidUntil, "DF=dd.MM.yyyy");
 	
 	String = Table.Add();
-	String.Property = NStr("en='Purpose:';ru='Назначение:'");
+	String.Property = NStr("en='Assignment:';ru='Назначение:'");
 	String.Value = Purpose;
 	
 EndFunction

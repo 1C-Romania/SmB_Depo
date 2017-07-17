@@ -82,7 +82,7 @@ Procedure ImportRules(Command)
 	NameParts = CommonUseClientServer.SplitFullFileName(Record.RulesFilename);
 	
 	DialogueParameters = New Structure;
-	DialogueParameters.Insert("Title", NStr("en='Specify, from which file can be imported rules';ru='Укажите, из какого файла загрузить правила'"));
+	DialogueParameters.Insert("Title", NStr("en='Specify a file to import the rules from';ru='Укажите, из какого файла загрузить правила'"));
 	DialogueParameters.Insert("Filter",
 		  NStr("en='Registration rule files (*.xml)';ru='Файлы правил регистрации (*.xml)'") + "|*.xml|"
 		+ NStr("en='ZIP archives (*.zip)';ru='Архивы ZIP (*.zip)'")   + "|*.zip"
@@ -115,7 +115,7 @@ Procedure UnloadRules(Command)
 	
 	DialogueParameters = New Structure;
 	DialogueParameters.Insert("Mode", FileDialogMode.Save);
-	DialogueParameters.Insert("Title", NStr("en='Specify the file to which the rules should be exported';ru='Укажите в какой файл выгрузить правила'") );
+	DialogueParameters.Insert("Title", NStr("en='Specify a file the rules will be exported to';ru='Укажите в какой файл выгрузить правила'") );
 	DialogueParameters.Insert("FullFileName", FullFileName);
 	DialogueParameters.Insert("Filter", NameFilter);
 	
@@ -279,7 +279,7 @@ Procedure ImportRulesExecute(Val PlacedFileAddress, Val FileName, Val IsArchive)
 	Status();
 	
 	If Not Cancel Then
-		ShowUserNotification(,, NStr("en='Rules have been successfully loaded to the infobase.';ru='Правила успешно загружены в информационную базу.'"));
+		ShowUserNotification(,, NStr("en='Rules were successfully imported to the infobase.';ru='Правила успешно загружены в информационную базу.'"));
 		Return;
 	EndIf;
 	
@@ -298,7 +298,7 @@ Procedure ImportRulesEnd(Val FilesPlacingResult, Val AdditionalParameters) Expor
 	ErrorText           = FilesPlacingResult.ErrorDescription;
 	
 	If IsBlankString(ErrorText) AND IsBlankString(PlacedFileAddress) Then
-		ErrorText = NStr("en='Error transferring file to the server';ru='Ошибка передачи файла на сервер'");
+		ErrorText = NStr("en='An error occurred when transferring the file to the server';ru='Ошибка передачи файла на сервер'");
 	EndIf;
 	
 	If Not IsBlankString(ErrorText) Then

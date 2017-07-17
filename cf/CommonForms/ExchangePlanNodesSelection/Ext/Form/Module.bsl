@@ -45,7 +45,7 @@ Procedure OnCreateAtServer(Cancel, StandardProcessing)
 	ExchangePlanNodes.Sort("ExchangePlanPresentation Asc");
 	
 	If PickMode Then
-		Title = NStr("en='Picking nodes of exchange plans';ru='Подбор узлов планов обмена'");
+		Title = NStr("en='Select exchange plan nodes';ru='Подбор узлов планов обмена'");
 	EndIf;
 	If Multiselect Then
 		Items.ExchangePlanNodes.SelectionMode = TableSelectionMode.MultiRow;
@@ -95,7 +95,7 @@ Procedure Select(Command)
 	Else
 		CurrentData = Items.ExchangePlanNodes.CurrentData;
 		If CurrentData = Undefined Then
-			ShowMessageBox(, NStr("en='Node is not selected';ru='Узел не выбран.'"));
+			ShowMessageBox(, NStr("en='Node is not selected.';ru='Узел не выбран.'"));
 		Else
 			NotifyChoice(CurrentData.Node);
 		EndIf;

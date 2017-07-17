@@ -154,7 +154,7 @@ EndProcedure
 //
 Function GetWebServiceErrorDescription(ErrorInfo) Export
 	
-	WriteLogEvent(NStr("en='Performing a web service operation';ru='Выполнение операции web-сервиса'"), EventLogLevel.Error, , ,
+	WriteLogEvent(NStr("en='Web service operation in progress';ru='Выполнение операции web-сервиса'"), EventLogLevel.Error, , ,
 		DetailErrorDescription(ErrorInfo));
 	
 	ErrorDescription = XDTOFactory.Create(

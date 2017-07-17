@@ -174,7 +174,7 @@ Function PrintForm(ObjectsArray, PrintObjects, TemplateName = "")
 		
 		SpreadsheetDocument.Put(AreaHeader);
 		
-		TableHeaderArea.Parameters.TaskKindText = "Task is" + ?(Header.OperationKind = Enums.OperationKindsWorkOrder.External, " external", " internal");
+		TableHeaderArea.Parameters.TaskKindText = NStr("en = 'Work order is '") + ?(Header.OperationKind = Enums.OperationKindsWorkOrder.External, NStr("en = 'external'"), NStr("en = 'internal'"));
 		SpreadsheetDocument.Put(TableHeaderArea);
 		
 		TotalDurationInHours = 0;
@@ -253,7 +253,7 @@ Procedure AddPrintCommands(PrintCommands) Export
 	
 	PrintCommand = PrintCommands.Add();
 	PrintCommand.ID = "WorkOrders";
-	PrintCommand.Presentation = NStr("en='Work order';ru='Заказ наряд'");
+	PrintCommand.Presentation = NStr("en='Job order';ru='Заказ наряд'");
 	PrintCommand.FormsList = "DocumentForm,ListForm";
 	PrintCommand.CheckPostingBeforePrint = False;
 	PrintCommand.Order = 1;

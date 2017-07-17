@@ -23,7 +23,7 @@ Function AuthorizationKey(Val Resolution) Export
 	Key = XDTOFactory.Create(XDTOFactory.Type("http://www.w3.org/2001/XMLSchema", "hexBinary"), Hashing.HashSum).LexicalMeaning;
 	
 	If StrLen(Key) > 32 Then
-		Raise NStr("en='Exceed the key length';ru='Превышение длины ключа'");
+		Raise NStr("en='Key length exceeds the allowed one';ru='Превышение длины ключа'");
 	EndIf;
 	
 	Return Key;

@@ -382,7 +382,7 @@ Procedure FillByPlan(Command)
 	
 	If Not ValueIsFilled(Object.Company) Then
         Message = New UserMessage();
-		Message.Text = NStr("en='Company is required! Completion is cancelled.';ru='Не заполнена организация! Заполнение отменено.'");
+		Message.Text = NStr("en='Company is not populated. Population is canceled.';ru='Не заполнена организация! Заполнение отменено.'");
 		Message.Field = "Object.Company";
 		Message.Message();
 		Return;
@@ -390,7 +390,7 @@ Procedure FillByPlan(Command)
 
 	If Not ValueIsFilled(Object.StructuralUnit) Then
         Message = New UserMessage();
-		Message.Text = NStr("en='The department is not filled! Completion is cancelled.';ru='Не заполнено подразделение! Заполнение отменено.'");
+		Message.Text = NStr("en='Department is not populated. Population is canceled.';ru='Не заполнено подразделение! Заполнение отменено.'");
 		Message.Field = "Object.StructuralUnit";
 		Message.Message();
 		Return;
@@ -398,7 +398,7 @@ Procedure FillByPlan(Command)
 
 	If Not ValueIsFilled(Object.Employee) Then
         Message = New UserMessage();
-		Message.Text = NStr("en='Employee is not selected. Completion is cancelled.';ru='Не выбран сотрудник! Заполнение отменено.'");
+		Message.Text = NStr("en='Employee is not selected. Population is canceled.';ru='Не выбран сотрудник! Заполнение отменено.'");
 		Message.Field = "Object.Employee";
 		Message.Message();
 		Return;
@@ -406,7 +406,7 @@ Procedure FillByPlan(Command)
 
 	If Not ValueIsFilled(Object.DateFrom) Then
         Message = New UserMessage();
-		Message.Text = NStr("en='Week beginning is not selected. Completion is cancelled.';ru='Не выбрано начало недели! Заполнение отменено.'");
+		Message.Text = NStr("en='Week start is not selected. Population is canceled.';ru='Не выбрано начало недели! Заполнение отменено.'");
 		Message.Field = "Object.DateFrom";
 		Message.Message();
 		Return;
@@ -414,7 +414,7 @@ Procedure FillByPlan(Command)
 
 	If Not ValueIsFilled(Object.DateTo) Then
         Message = New UserMessage();
-		Message.Text = NStr("en='The end of the week is not selected. Completion is cancelled.';ru='Не выбрано окончание недели! Заполнение отменено.'");
+		Message.Text = NStr("en='Week end is not selected. Population is canceled.';ru='Не выбрано окончание недели! Заполнение отменено.'");
 		Message.Field = "Object.DateTo";
 		Message.Message();
 		Return;

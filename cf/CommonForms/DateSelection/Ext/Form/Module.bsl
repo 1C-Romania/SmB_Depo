@@ -63,7 +63,7 @@ Procedure OK(Command)
 	SelectedDates = Items.Calendar.SelectedDates;
 	
 	If SelectedDates.Count() = 0 Then
-		ShowMessageBox(,NStr("en='Date not selected.';ru='Дата не выбрана.'"));
+		ShowMessageBox(,NStr("en='Date is not selected.';ru='Дата не выбрана.'"));
 		Return;
 	EndIf;
 	

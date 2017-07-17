@@ -45,7 +45,7 @@ Procedure OnCreateAtServer(Cancel, StandardProcessing)
 			Format(UpdateEndTime, "DLF=T"),
 			DataAboutUpdate.DurationOfUpdate);
 	Else
-		TitleRefreshCompleted = NStr("en='Application version has been successfully updated to the %1 version';ru='Версия программы успешно обновлена на версию %1'");
+		TitleRefreshCompleted = NStr("en='The application version was successfully updated to version %1';ru='Версия программы успешно обновлена на версию %1'");
 		Items.InformationRefreshEnabledCompleted.Title = StringFunctionsClientServer.SubstituteParametersInString(
 			TitleRefreshCompleted,
 			Metadata.Version);
@@ -70,7 +70,7 @@ Procedure OnCreateAtServer(Cancel, StandardProcessing)
 		Items.StatusUpdate.CurrentPage = Items.RefreshEnabledCompleted;
 		
 		DataAboutUpdate = InfobaseUpdateService.DataOnUpdatingInformationBase();
-		CaptionPattern = NStr("en='Additional data processing procedures have been completed %1 in %2';ru='Дополнительные процедуры обработки данных завершены %1 в %2'");
+		CaptionPattern = NStr("en='Additional data processor procedures are completed %1 at %2';ru='Дополнительные процедуры обработки данных завершены %1 в %2'");
 		Items.InformationPostponedUpdateCompleted1.Title = 
 		StringFunctionsClientServer.SubstituteParametersInString(CaptionPattern, 
 			Format(DataAboutUpdate.EndTimeDeferredUpdate, "DLF=D"),
@@ -322,7 +322,7 @@ EndProcedure
 &AtServer
 Procedure RefreshPageRefreshCompleted(DataAboutUpdate)
 	
-	CaptionPattern = NStr("en='Additional data processing procedures have been completed %1 in %2';ru='Дополнительные процедуры обработки данных завершены %1 в %2'");
+	CaptionPattern = NStr("en='Additional data processor procedures are completed %1 at %2';ru='Дополнительные процедуры обработки данных завершены %1 в %2'");
 	MessageText = MessageAboutUpdateResult(DataAboutUpdate);
 	
 	Items.InformationPostponedUpdateCompleted1.Title = 
@@ -361,11 +361,11 @@ Function MessageAboutUpdateResult(DataAboutUpdate)
 			Items.InformationPendingHandlersAbsent.Visible = True;
 			Items.GroupTransitionToListOfPendingHandlers.Visible = False;
 		Else
-			MessageText = NStr("en='All update procedures have been successfully completed (%1)';ru='Все процедуры обновления выполнены успешно (%1)'");
+			MessageText = NStr("en='All update procedures are completed successfully (%1)';ru='Все процедуры обновления выполнены успешно (%1)'");
 		EndIf;
 		Items.PictureInformation1.Picture = PictureLib.Successfully32;
 	Else
-		MessageText = NStr("en='Not all the procedures were completed (completed %1 of %2)';ru='Не все процедуры удалось выполнить (выполнено %1 из %2)'");
+		MessageText = NStr("en='Not all procedures were executed (%1 is executed out of %2)';ru='Не все процедуры удалось выполнить (выполнено %1 из %2)'");
 		Items.PictureInformation1.Picture = PictureLib.Error32;
 	EndIf;
 	Return StringFunctionsClientServer.SubstituteParametersInString(
@@ -396,7 +396,7 @@ Procedure RefreshInformationAboutUpdate(DataAboutUpdate, RefreshEnabledCompleted
 	EndIf;
 	
 	Items.InformationStateUpdate.Title = StringFunctionsClientServer.SubstituteParametersInString(
-		NStr("en='Completed: %1 of %2';ru='Выполнено: %1 из %2'"),
+		NStr("en='Completed: %1 out of %2';ru='Выполнено: %1 из %2'"),
 		CompletedHandlers,
 		TotalHandlers);
 	
@@ -419,7 +419,7 @@ Procedure ChangeScheduleAfterScheduleSetup(Schedule, AdditionalParameters) Expor
 			Notification = New NotifyDescription("ChangeScheduleAfterQuestion", ThisObject, Schedule);
 			
 			QuestionButtons = New ValueList;
-			QuestionButtons.Add("ConfigureSchedule", NStr("en='Setup schedule';ru='Настроить расписание'"));
+			QuestionButtons.Add("ConfigureSchedule", NStr("en='Configure schedule';ru='Настроить расписание'"));
 			QuestionButtons.Add("RecommendedSettings", NStr("en='Set recommended settings';ru='Установить рекомендуемые настройки'"));
 			
 			MessageText = NStr("en='Data processing additional procedures are executed

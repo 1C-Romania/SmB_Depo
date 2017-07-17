@@ -22,7 +22,7 @@ Procedure OnCreateAtServer(Cancel, StandardProcessing)
 	
 	If Find(", Add, Copy, Change,", ", " + Action + ",") = 0 Then
 		
-		Raise NStr("en='Invalid parameters of opening the form ""Scheduled job"".';ru='Неверные параметры открытия формы ""Регламентное задание"".'");
+		Raise NStr("en='Incorrect parameters of opening form ""Scheduled job"".';ru='Неверные параметры открытия формы ""Регламентное задание"".'");
 	EndIf;
 	
 	If Action = "Add" Then
@@ -70,7 +70,7 @@ Procedure OnCreateAtServer(Cancel, StandardProcessing)
 	EndIf;
 	
 	If Action <> "Change" Then
-		ID = NStr("en='<will be created when recording>';ru='<будет создан при записи>'");
+		ID = NStr("en='<will be created when writing>';ru='<будет создан при записи>'");
 		Use = False;
 		
 		Description = ?(
@@ -164,7 +164,7 @@ Procedure TemplateSelectionForNewScheduledJob()
 	// Template selection for scheduled job (metadata).
 	ScheduledJobMetadataDetails.ShowChooseItem(
 		New NotifyDescription("TemplateSelectionForNewScheduledJobEnd", ThisObject),
-		NStr("en='Select the scheduled job template';ru='Выберите шаблон регламентного задания'"));
+		NStr("en='Select a scheduled job template';ru='Выберите шаблон регламентного задания'"));
 	
 EndProcedure
 
@@ -257,7 +257,7 @@ Procedure RefreshFormTitle()
 		Title = StringFunctionsClientServer.SubstituteParametersInString(
 			NStr("en='%1 (Scheduled job)';ru='%1 (Регламентное задание)'"), Presentation);
 	Else
-		Title = NStr("en='Scheduled job (creating)';ru='Регламентное задание (создание)'");
+		Title = NStr("en='Scheduled job (creation)';ru='Регламентное задание (создание)'");
 	EndIf;
 	
 EndProcedure

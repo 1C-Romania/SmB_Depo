@@ -59,7 +59,7 @@ Procedure TreeNodesExchangeCase(Item, SelectedRow, Field, StandardProcessing)
 	Notification = New NotifyDescription("TreeNodesExchangeSelectionEnd", ThisObject, New Structure);
 	Notification.AdditionalParameters.Insert("Node", CurrentData.Ref);
 	
-	ToolTip = NStr("en='Sent Number';ru='Номер отправленного'"); 
+	ToolTip = NStr("en='Number of the last sent message';ru='Номер отправленного'"); 
 	ShowInputNumber(Notification, CurrentData.MessageNo, ToolTip);
 EndProcedure
 
@@ -134,8 +134,8 @@ Procedure ChangeRegistrationEnd(Val QuestionResult, Val AdditionalParameters) Ex
 	
 	Quantity = UpdateRegistrationSites(TreeNodesExchange);
 	If Quantity > 0 Then
-		Text = NStr("en='Registration %1 has been changed on %2 nodes';ru='Регистрация %1 была изменена на %2 узлах'");
-		NotificationTitle = NStr("en='Update registration:';ru='Изменение регистрации:'");
+		Text = NStr("en='Registration of %1 was changed on %2 nodes';ru='Регистрация %1 была изменена на %2 узлах'");
+		NotificationTitle = NStr("en='Change registration:';ru='Изменение регистрации:'");
 		
 		Text = StrReplace(Text, "%1", RegistrationObject);
 		Text = StrReplace(Text, "%2", Quantity);

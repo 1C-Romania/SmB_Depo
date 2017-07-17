@@ -48,7 +48,7 @@
 					<Title formatted="false">
 						<v8:item>
 							<v8:lang>en</v8:lang>
-							<v8:content>Use these settings to customize accounting detalization by inventory. You can enable usage of several warehouses. Customize purchase order states, reservation and safe custody.</v8:content>
+							<v8:content>Customize accounting details by inventory. Enable usage of several warehouses. Customize purchase order states, reservation and safe custody.</v8:content>
 						</v8:item>
 						<v8:item>
 							<v8:lang>ru</v8:lang>
@@ -120,7 +120,7 @@
 						<Title formatted="false">
 							<v8:item>
 								<v8:lang>en</v8:lang>
-								<v8:content>In order the changes to take an effect it is necessary to update the system parameters or to restart the application.</v8:content>
+								<v8:content>For the changes to enter into force, it is necessary to update the application parameters or to restart the application.</v8:content>
 							</v8:item>
 							<v8:item>
 								<v8:lang>ru</v8:lang>
@@ -174,7 +174,7 @@
 							<Title>
 								<v8:item>
 									<v8:lang>en</v8:lang>
-									<v8:content>Settings accounting in different units of measurement</v8:content>
+									<v8:content>Settings accounting in various units of measure</v8:content>
 								</v8:item>
 								<v8:item>
 									<v8:lang>ru</v8:lang>
@@ -184,7 +184,7 @@
 							<ToolTip>
 								<v8:item>
 									<v8:lang>en</v8:lang>
-									<v8:content>Settings accounting in different units of measurement</v8:content>
+									<v8:content>Settings accounting in various units of measure</v8:content>
 								</v8:item>
 								<v8:item>
 									<v8:lang>ru</v8:lang>
@@ -213,7 +213,7 @@
 									<Title>
 										<v8:item>
 											<v8:lang>en</v8:lang>
-											<v8:content>Accounting in various UOM</v8:content>
+											<v8:content>Accounting in various units of measure</v8:content>
 										</v8:item>
 										<v8:item>
 											<v8:lang>ru</v8:lang>
@@ -228,9 +228,7 @@
 										<Title formatted="true">
 											<v8:item>
 												<v8:lang>en</v8:lang>
-												<v8:content>&lt;b&gt;"Account products and services in various units of measure"&lt;/&gt;. 
-
-This option defines the possibility of products and services accounting in various units for example in pieces, blocks, boxes or kilograms. &lt;b&gt;&lt;color #ff0000&gt;IMPORTANT!&lt;/&gt;&lt;/&gt; Key parameter. You can not disable this option if there is accounting data in the system.</v8:content>
+												<v8:content>Enable this option to keep records of products and services in various units of measure, for example, in pieces, blocks, boxes, or kilograms. IMPORTANT! Key parameter. You cannot disable this option if there is accounting data in the application.</v8:content>
 											</v8:item>
 											<v8:item>
 												<v8:lang>ru</v8:lang>
@@ -287,7 +285,7 @@ This option defines the possibility of products and services accounting in vario
 									<Title>
 										<v8:item>
 											<v8:lang>en</v8:lang>
-											<v8:content>Accounting by characteristics</v8:content>
+											<v8:content>Inventory accounting by characteristics</v8:content>
 										</v8:item>
 										<v8:item>
 											<v8:lang>ru</v8:lang>
@@ -302,15 +300,7 @@ This option defines the possibility of products and services accounting in vario
 										<Title formatted="true">
 											<v8:item>
 												<v8:lang>en</v8:lang>
-												<v8:content>&lt;b&gt;"Account products and services in terms of characteristics"&lt;/&gt;. 
-
-The option defines whether it is possible to keep accounts of inventories, works, and services by products and services characteristics. Characteristics are the additional view of analytics and provide the most convenient structure of products and services. Usually additional characteristics are color, size, power, signs, etc.
-
-&lt;b&gt;&lt;color
-#ff0000&gt;IMPORTANT!&lt;/&gt;&lt;/&gt; Key parameter. You can not disable this option if there is accounting data in the system.
-
-
-</v8:content>
+												<v8:content>Enable this option to keep accounts of inventory, works, and services by products and services characteristics. The characteristics are additional dimension sections; they arrange the most convenient structure of products and services. Usually additional characteristics are color, size, power, etc. IMPORTANT! Key parameter. You cannot disable this option if there is accounting data in the application.</v8:content>
 											</v8:item>
 											<v8:item>
 												<v8:lang>ru</v8:lang>
@@ -341,7 +331,7 @@ The option defines whether it is possible to keep accounts of inventories, works
 							<Title>
 								<v8:item>
 									<v8:lang>en</v8:lang>
-									<v8:content>Batches using settings</v8:content>
+									<v8:content>Batch using settings</v8:content>
 								</v8:item>
 								<v8:item>
 									<v8:lang>ru</v8:lang>
@@ -351,7 +341,7 @@ The option defines whether it is possible to keep accounts of inventories, works
 							<ToolTip>
 								<v8:item>
 									<v8:lang>en</v8:lang>
-									<v8:content>Batches using settings</v8:content>
+									<v8:content>Batch using settings</v8:content>
 								</v8:item>
 								<v8:item>
 									<v8:lang>ru</v8:lang>
@@ -381,7 +371,7 @@ The option defines whether it is possible to keep accounts of inventories, works
 									<Title>
 										<v8:item>
 											<v8:lang>en</v8:lang>
-											<v8:content>Accounting inventories by batches</v8:content>
+											<v8:content>Inventory accounting by batches</v8:content>
 										</v8:item>
 										<v8:item>
 											<v8:lang>ru</v8:lang>
@@ -396,16 +386,7 @@ The option defines whether it is possible to keep accounts of inventories, works
 										<Title formatted="true">
 											<v8:item>
 												<v8:lang>en</v8:lang>
-												<v8:content>&lt;b&gt;"Account inventory in terms of batches"&lt;/&gt;. 
-
-The parameter defines whether inventory accounting by specific products and services batches is possible. With batch accounting, each batch of the same inventory can be accounted in the warehouse separately. Batch accounting is mandatory for inventory received for commission, processing, or safe custody from an external counterparty. For own inventories, it is determined by the company type.
-
-&lt;b&gt;&lt;color
-#ff0000&gt;IMPORTANT!&lt;/&gt;&lt;/&gt; Products and services batch &lt;b&gt;is not&lt;/&gt; an analog of inventories recieveing document and is not used for determining the cost of inventory writeoff by FIFO method.
-
-&lt;b&gt;&lt;color
-#ff0000&gt;IMPORTANT!&lt;/&gt;&lt;/&gt; Key parameter. You can not disable this option if there is accounting data in the system.
-</v8:content>
+												<v8:content>Enable this option to keep accounts of inventory by specific products and services batches. With batch accounting, each batch of the same inventory can be separately accounted in the warehouse. Batch accounting is mandatory for inventory accepted for commission, processing, or safe custody from an external counterparty. For own inventories, it is determined by the company type. IMPORTANT! Products and services batch is not an analog of inventory capitalization document and is not used to determine the cost of inventory write-off using FIFO method. IMPORTANT! Key parameter. You cannot disable this option if there is accounting data in the application.</v8:content>
 											</v8:item>
 											<v8:item>
 												<v8:lang>ru</v8:lang>
@@ -463,7 +444,7 @@ The parameter defines whether inventory accounting by specific products and serv
 							<Title>
 								<v8:item>
 									<v8:lang>en</v8:lang>
-									<v8:content>Accounting by several warehouses (two or more)</v8:content>
+									<v8:content>Keep records of several warehouses (two or more)</v8:content>
 								</v8:item>
 								<v8:item>
 									<v8:lang>ru</v8:lang>
@@ -478,7 +459,7 @@ The parameter defines whether inventory accounting by specific products and serv
 								<Title formatted="false">
 									<v8:item>
 										<v8:lang>en</v8:lang>
-										<v8:content>Enable this option if you need to keep accounts by several warehouses. Enabling this option also allows to specify warehouses in documents.</v8:content>
+										<v8:content>Enable this option if you need to keep records of several warehouses. If you enable this option, you can specify warehouses in documents.</v8:content>
 									</v8:item>
 									<v8:item>
 										<v8:lang>ru</v8:lang>
@@ -497,7 +478,7 @@ The parameter defines whether inventory accounting by specific products and serv
 							<Title>
 								<v8:item>
 									<v8:lang>en</v8:lang>
-									<v8:content>Structural units catalog</v8:content>
+									<v8:content>Business units catalog</v8:content>
 								</v8:item>
 								<v8:item>
 									<v8:lang>ru</v8:lang>
@@ -509,7 +490,7 @@ The parameter defines whether inventory accounting by specific products and serv
 								<Title formatted="false">
 									<v8:item>
 										<v8:lang>en</v8:lang>
-										<v8:content>Go to the structural units catalog with the filter set for warehouses.</v8:content>
+										<v8:content>Go to the Business units catalog with the filter by warehouses.</v8:content>
 									</v8:item>
 									<v8:item>
 										<v8:lang>ru</v8:lang>
@@ -531,7 +512,7 @@ The parameter defines whether inventory accounting by specific products and serv
 							<Title>
 								<v8:item>
 									<v8:lang>en</v8:lang>
-									<v8:content>Order warehouse settings</v8:content>
+									<v8:content>Settings two-phase warehouse</v8:content>
 								</v8:item>
 								<v8:item>
 									<v8:lang>ru</v8:lang>
@@ -541,7 +522,7 @@ The parameter defines whether inventory accounting by specific products and serv
 							<ToolTip>
 								<v8:item>
 									<v8:lang>en</v8:lang>
-									<v8:content>Order warehouse settings</v8:content>
+									<v8:content>Settings two-phase warehouse</v8:content>
 								</v8:item>
 								<v8:item>
 									<v8:lang>ru</v8:lang>
@@ -570,7 +551,7 @@ The parameter defines whether inventory accounting by specific products and serv
 									<Title>
 										<v8:item>
 											<v8:lang>en</v8:lang>
-											<v8:content>Use order warehouse</v8:content>
+											<v8:content>Use two-phase warehouse</v8:content>
 										</v8:item>
 										<v8:item>
 											<v8:lang>ru</v8:lang>
@@ -586,16 +567,7 @@ The parameter defines whether inventory accounting by specific products and serv
 										<Title formatted="true">
 											<v8:item>
 												<v8:lang>en</v8:lang>
-												<v8:content>&lt;b&gt;"Use order warehouse (separation of warehouse and financial operations by inventories accounting )"&lt;/&gt;. 
-
-This option is used to split the accounting of inventory to warehouse and financial accounting.
-The mechanism is used when for any reason the warehouse inventory accounting and managerial inventory accounting have to be separated.
-In this case, to account the warehouse inventory, the warehouse goods reciepts and exspenses are used, as well as the document showing the inventory inside the warehouse structure (for example, for distribution of the products on the shelves and cells, or order packaging for shipment).
-For managerial inventory accounting, the financial documents are used: customer invoices, inventory transfer,
-
-etc.&lt;b&gt;&lt;color
-#ff0000&gt;IMPORTANT!&lt;/&gt;&lt;/&gt; Key parameter. You can not disable this option if there is accounting data in the system.
-</v8:content>
+												<v8:content>Enable this option to distinguish between warehouse inventory accounting and financial inventory accounting. The functionality is used when for some reason it is required to distinguish between warehouse inventory accounting and management inventory accounting. Then, to keep records of warehouse inventory, receipt and issue warehouse slips are used, as well as the document for recording inventory movements inside the warehouse (for example, for distributing delivered goods among shelves and bins, or preparing order for shipment). For management of inventory accounting financial documents are used: goods issues, inventory movement, etc. IMPORTANT! Key parameter. You cannot disable this option if there is accounting data in the application.</v8:content>
 											</v8:item>
 											<v8:item>
 												<v8:lang>ru</v8:lang>
@@ -613,7 +585,7 @@ etc.&lt;b&gt;&lt;color
 							<Title>
 								<v8:item>
 									<v8:lang>en</v8:lang>
-									<v8:content>Accounting settings by cells</v8:content>
+									<v8:content>Settings bin accounting</v8:content>
 								</v8:item>
 								<v8:item>
 									<v8:lang>ru</v8:lang>
@@ -623,7 +595,7 @@ etc.&lt;b&gt;&lt;color
 							<ToolTip>
 								<v8:item>
 									<v8:lang>en</v8:lang>
-									<v8:content>Accounting settings by cells</v8:content>
+									<v8:content>Settings bin accounting</v8:content>
 								</v8:item>
 								<v8:item>
 									<v8:lang>ru</v8:lang>
@@ -668,9 +640,7 @@ etc.&lt;b&gt;&lt;color
 										<Title formatted="true">
 											<v8:item>
 												<v8:lang>en</v8:lang>
-												<v8:content>&lt;b&gt;"Accounting of warehouse inventory by cells (lanes, racks, shelves, etc.)"&lt;/&gt;.
-This option is used to split the accounting of inventory in terms of the storage places structure. List of storage bins for each warehouse is specified separately. &lt;b&gt;&lt;color #ff0000&gt;IMPORTANT! &lt;/&gt;&lt;/&gt;Key parameter. You can not disable this option if there is accounting data in the system.
-</v8:content>
+												<v8:content>Enable this option to split inventory accounting by storage location structure. List of storage bins is specified separately for each warehouse. IMPORTANT! Key parameter. You cannot disable this option if there is accounting data in the application.</v8:content>
 											</v8:item>
 											<v8:item>
 												<v8:lang>ru</v8:lang>
@@ -699,11 +669,19 @@ This option is used to split the accounting of inventory in terms of the storage
 									<v8:lang>ru</v8:lang>
 									<v8:content>Настройки ордерный склад</v8:content>
 								</v8:item>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Settings two-phase warehouse</v8:content>
+								</v8:item>
 							</Title>
 							<ToolTip>
 								<v8:item>
 									<v8:lang>ru</v8:lang>
 									<v8:content>Настройки ордерный склад</v8:content>
+								</v8:item>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Settings two-phase warehouse</v8:content>
 								</v8:item>
 							</ToolTip>
 							<ToolTipRepresentation>ShowBottom</ToolTipRepresentation>
@@ -770,11 +748,19 @@ This option is used to split the accounting of inventory in terms of the storage
 									<v8:lang>ru</v8:lang>
 									<v8:content>Настройки учет по ячейкам</v8:content>
 								</v8:item>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Settings bin accounting</v8:content>
+								</v8:item>
 							</Title>
 							<ToolTip>
 								<v8:item>
 									<v8:lang>ru</v8:lang>
 									<v8:content>Настройки учет по ячейкам</v8:content>
+								</v8:item>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Settings bin accounting</v8:content>
 								</v8:item>
 							</ToolTip>
 							<ToolTipRepresentation>ShowBottom</ToolTipRepresentation>
@@ -863,7 +849,7 @@ If the stock balances is ON:Serial numbers must always be entered in all documen
 					<Title>
 						<v8:item>
 							<v8:lang>en</v8:lang>
-							<v8:content>Reservation settings FO</v8:content>
+							<v8:content>Settings reservation FO</v8:content>
 						</v8:item>
 						<v8:item>
 							<v8:lang>ru</v8:lang>
@@ -873,7 +859,7 @@ If the stock balances is ON:Serial numbers must always be entered in all documen
 					<ToolTip>
 						<v8:item>
 							<v8:lang>en</v8:lang>
-							<v8:content>Reservation settings FO</v8:content>
+							<v8:content>Settings reservation FO</v8:content>
 						</v8:item>
 						<v8:item>
 							<v8:lang>ru</v8:lang>
@@ -920,13 +906,7 @@ If the stock balances is ON:Serial numbers must always be entered in all documen
 								<Title formatted="true">
 									<v8:item>
 										<v8:lang>en</v8:lang>
-										<v8:content>&lt;b&gt;"Use the inventories reservation in warehouses and in expected receipts by the purchase orders, production orders."&lt;/&gt;.
-
-Option determines the possibility to reserve inventories in warehouses, to account material and other direct costs by the customers orders, placing of customers orders in open purchase orders and production orders (assembling, disassembling).
-
-&lt;b&gt;&lt;color
-#ff0000&gt;IMPORTANT!&lt;/&gt;&lt;/&gt; Key parameter. You can not disable this option if there is accounting data in the system.
-</v8:content>
+										<v8:content>Enable this option to reserve inventory in warehouses, keep accounts of material and other direct costs during production against customer orders, place customers orders in open purchase orders and production orders (assembly, disassembly). IMPORTANT! Key parameter. You cannot disable this option if there is accounting data in the application.</v8:content>
 									</v8:item>
 									<v8:item>
 										<v8:lang>ru</v8:lang>
@@ -987,7 +967,7 @@ Option determines the possibility to reserve inventories in warehouses, to accou
 							<Title>
 								<v8:item>
 									<v8:lang>en</v8:lang>
-									<v8:content>Several states of purchase orders</v8:content>
+									<v8:content>Several purchase order states</v8:content>
 								</v8:item>
 								<v8:item>
 									<v8:lang>ru</v8:lang>
@@ -1033,7 +1013,7 @@ Option determines the possibility to reserve inventories in warehouses, to accou
 								<Title formatted="false">
 									<v8:item>
 										<v8:lang>en</v8:lang>
-										<v8:content>Go to the purchase order states catalog. Use the catalog to create arbitrary number of states of definite kinds. To go to the catalog, it is necessary to enable the "Several states of purchase orders" option.</v8:content>
+										<v8:content>Go to the "Purchase order states" catalog. Use the catalog to create arbitrary number of states of definite kinds. To go to the catalog, enable the "Several states of purchase orders" option.</v8:content>
 									</v8:item>
 									<v8:item>
 										<v8:lang>ru</v8:lang>
@@ -1048,7 +1028,7 @@ Option determines the possibility to reserve inventories in warehouses, to accou
 					<Title>
 						<v8:item>
 							<v8:lang>en</v8:lang>
-							<v8:content>Default settings of the purchase order states</v8:content>
+							<v8:content>Set up default purchase order states</v8:content>
 						</v8:item>
 						<v8:item>
 							<v8:lang>ru</v8:lang>
@@ -1058,7 +1038,7 @@ Option determines the possibility to reserve inventories in warehouses, to accou
 					<ToolTip>
 						<v8:item>
 							<v8:lang>en</v8:lang>
-							<v8:content>Default settings of the purchase order states</v8:content>
+							<v8:content>Set up default purchase order states</v8:content>
 						</v8:item>
 						<v8:item>
 							<v8:lang>ru</v8:lang>
@@ -1075,7 +1055,7 @@ Option determines the possibility to reserve inventories in warehouses, to accou
 							<Title>
 								<v8:item>
 									<v8:lang>en</v8:lang>
-									<v8:content>Orders states</v8:content>
+									<v8:content>Order states</v8:content>
 								</v8:item>
 								<v8:item>
 									<v8:lang>ru</v8:lang>
@@ -1085,7 +1065,7 @@ Option determines the possibility to reserve inventories in warehouses, to accou
 							<ToolTip>
 								<v8:item>
 									<v8:lang>en</v8:lang>
-									<v8:content>Orders states</v8:content>
+									<v8:content>Order states</v8:content>
 								</v8:item>
 								<v8:item>
 									<v8:lang>ru</v8:lang>
@@ -1102,7 +1082,7 @@ Option determines the possibility to reserve inventories in warehouses, to accou
 									<Title>
 										<v8:item>
 											<v8:lang>en</v8:lang>
-											<v8:content>"In process" state</v8:content>
+											<v8:content>"In progress" state</v8:content>
 										</v8:item>
 										<v8:item>
 											<v8:lang>ru</v8:lang>
@@ -1176,7 +1156,7 @@ Option determines the possibility to reserve inventories in warehouses, to accou
 					<Title>
 						<v8:item>
 							<v8:lang>en</v8:lang>
-							<v8:content>Settings of goods receipt for safe custody</v8:content>
+							<v8:content>Settings goods receipt for safe custody</v8:content>
 						</v8:item>
 						<v8:item>
 							<v8:lang>ru</v8:lang>
@@ -1186,7 +1166,7 @@ Option determines the possibility to reserve inventories in warehouses, to accou
 					<ToolTip>
 						<v8:item>
 							<v8:lang>en</v8:lang>
-							<v8:content>Settings of goods receipt for safe custody</v8:content>
+							<v8:content>Settings goods receipt for safe custody</v8:content>
 						</v8:item>
 						<v8:item>
 							<v8:lang>ru</v8:lang>
@@ -1215,7 +1195,7 @@ Option determines the possibility to reserve inventories in warehouses, to accou
 							<Title>
 								<v8:item>
 									<v8:lang>en</v8:lang>
-									<v8:content>Receipt of inventory for safe custody</v8:content>
+									<v8:content>Inventory receipt for safe custody</v8:content>
 								</v8:item>
 								<v8:item>
 									<v8:lang>ru</v8:lang>
@@ -1230,16 +1210,7 @@ Option determines the possibility to reserve inventories in warehouses, to accou
 								<Title formatted="true">
 									<v8:item>
 										<v8:lang>en</v8:lang>
-										<v8:content>&lt;b&gt;"Use inventory receipt for safe custody"&lt;/&gt;. 
-
-This option is used to receive the inventory from counterparties for safe custody.
-
-&lt;b&gt;&lt;color
-#ff0000&gt;IMPORTANT!&lt;/&gt;&lt;/&gt; To distinguish between own inventory and inventory received for safe custody, an additional "Products and services batches" accounting section is used. That's why to use this option it is nessesary to enable "Inventory accounting by batches" option in accounting settings in "Purchase" section.
-
-&lt;b&gt;&lt;color
-#ff0000&gt;IMPORTANT!&lt;/&gt;&lt;/&gt; Key parameter. You can not disable this option if there is accounting data in the system.
-</v8:content>
+										<v8:content>Enable this option to receive inventory from external counterparties for safe custody. IMPORTANT! To distinguish between own inventory and inventory received for safe custody, additional accounting section "Products and services batches" is used. To use this option, enable the "Inventory accounting by batches" option in the accounting settings in the "Purchases" section. IMPORTANT! Key parameter. You cannot disable this option if there is accounting data in the application.</v8:content>
 									</v8:item>
 									<v8:item>
 										<v8:lang>ru</v8:lang>
@@ -1257,7 +1228,7 @@ This option is used to receive the inventory from counterparties for safe custod
 					<Title>
 						<v8:item>
 							<v8:lang>en</v8:lang>
-							<v8:content>Settings of goods transfer for safe custody</v8:content>
+							<v8:content>Settings goods transfer for safe custody</v8:content>
 						</v8:item>
 						<v8:item>
 							<v8:lang>ru</v8:lang>
@@ -1267,7 +1238,7 @@ This option is used to receive the inventory from counterparties for safe custod
 					<ToolTip>
 						<v8:item>
 							<v8:lang>en</v8:lang>
-							<v8:content>Settings of goods transfer for safe custody</v8:content>
+							<v8:content>Settings goods transfer for safe custody</v8:content>
 						</v8:item>
 						<v8:item>
 							<v8:lang>ru</v8:lang>
@@ -1296,7 +1267,7 @@ This option is used to receive the inventory from counterparties for safe custod
 							<Title>
 								<v8:item>
 									<v8:lang>en</v8:lang>
-									<v8:content>Transfer of inventory for safe custody</v8:content>
+									<v8:content>Inventory transfer for safe custody</v8:content>
 								</v8:item>
 								<v8:item>
 									<v8:lang>ru</v8:lang>
@@ -1311,13 +1282,7 @@ This option is used to receive the inventory from counterparties for safe custod
 								<Title formatted="true">
 									<v8:item>
 										<v8:lang>en</v8:lang>
-										<v8:content>&lt;b&gt;"Use inventory transfer for safe custody"&lt;/&gt;. 
-
-Option determines the possibility to transfer own inventories for safe custody to thirdparty counterparties.
-
-&lt;b&gt;&lt;color
-#ff0000&gt;IMPORTANT!&lt;/&gt;&lt;/&gt; Key parameter. You can not disable this option if there is accounting data in the system.
-</v8:content>
+										<v8:content>Enable this option to transfer own inventories for safe custody to external counterparties. IMPORTANT! Key parameter. You cannot disable this option if there is accounting data in the application.</v8:content>
 									</v8:item>
 									<v8:item>
 										<v8:lang>ru</v8:lang>
@@ -1423,13 +1388,7 @@ Option determines the possibility to transfer own inventories for safe custody t
 								<Title formatted="true">
 									<v8:item>
 										<v8:lang>en</v8:lang>
-										<v8:content>&lt;b&gt;"Use transfer of raw materials and materials to processing"&lt;/&gt;.
-
-Option determines the possibility to transfer own supplies and materials to third party counterparties for the products manufacturing or processing.
-
-&lt;b&gt;&lt;color
-#ff0000&gt;IMPORTANT!&lt;/&gt;&lt;/&gt; Key parameter. You can not disable this option if there is accounting data in the system.
-</v8:content>
+										<v8:content>Enable this option to transfer own raw materials to external counterparties for manufacturing of products or processing. IMPORTANT! Key parameter. You cannot disable this option if there is accounting data in the application.</v8:content>
 									</v8:item>
 									<v8:item>
 										<v8:lang>ru</v8:lang>
@@ -1447,7 +1406,7 @@ Option determines the possibility to transfer own supplies and materials to thir
 					<Title>
 						<v8:item>
 							<v8:lang>en</v8:lang>
-							<v8:content>Date of payment to supplier settings</v8:content>
+							<v8:content>Settings period of payment to the supplier</v8:content>
 						</v8:item>
 						<v8:item>
 							<v8:lang>ru</v8:lang>
@@ -1457,7 +1416,7 @@ Option determines the possibility to transfer own supplies and materials to thir
 					<ToolTip>
 						<v8:item>
 							<v8:lang>en</v8:lang>
-							<v8:content>Date of payment to supplier settings</v8:content>
+							<v8:content>Settings period of payment to the supplier</v8:content>
 						</v8:item>
 						<v8:item>
 							<v8:lang>ru</v8:lang>
@@ -1503,12 +1462,7 @@ Option determines the possibility to transfer own supplies and materials to thir
 								<Title formatted="true">
 									<v8:item>
 										<v8:lang>en</v8:lang>
-										<v8:content>&lt;b&gt;"Date of payment to supplier (by default)"&lt;/&gt;. 
-
-This option is used to specify the default delay of payment to supplier in days.
-It is used for automated insertion of counterparty into the agreement and to determine the payment date during payments planning.
-
-</v8:content>
+										<v8:content>Enable this option to specify the default payable deferral period to supplier in days. It is used to automatically insert counterparty into an agreement and determine a payment date during payment planning.</v8:content>
 									</v8:item>
 									<v8:item>
 										<v8:lang>ru</v8:lang>
@@ -1530,7 +1484,7 @@ It is used for automated insertion of counterparty into the agreement and to det
 			<Title>
 				<v8:item>
 					<v8:lang>en</v8:lang>
-					<v8:content>Constants set</v8:content>
+					<v8:content>Constant set</v8:content>
 				</v8:item>
 				<v8:item>
 					<v8:lang>ru</v8:lang>
@@ -1570,7 +1524,7 @@ It is used for automated insertion of counterparty into the agreement and to det
 			<Title>
 				<v8:item>
 					<v8:lang>en</v8:lang>
-					<v8:content>Work mode</v8:content>
+					<v8:content>Run mode</v8:content>
 				</v8:item>
 				<v8:item>
 					<v8:lang>ru</v8:lang>
@@ -1585,7 +1539,7 @@ It is used for automated insertion of counterparty into the agreement and to det
 			<Title>
 				<v8:item>
 					<v8:lang>en</v8:lang>
-					<v8:content>Structural units catalog</v8:content>
+					<v8:content>Business units catalog</v8:content>
 				</v8:item>
 				<v8:item>
 					<v8:lang>ru</v8:lang>
@@ -1595,7 +1549,7 @@ It is used for automated insertion of counterparty into the agreement and to det
 			<ToolTip>
 				<v8:item>
 					<v8:lang>en</v8:lang>
-					<v8:content>Open the catalog "Structural unit (warehouses)"</v8:content>
+					<v8:content>Open the "Business units (warehouses)" catalog</v8:content>
 				</v8:item>
 				<v8:item>
 					<v8:lang>ru</v8:lang>
@@ -1618,7 +1572,7 @@ It is used for automated insertion of counterparty into the agreement and to det
 			<ToolTip>
 				<v8:item>
 					<v8:lang>en</v8:lang>
-					<v8:content>Open catalog "Purchase order state"</v8:content>
+					<v8:content>Open the "Purchase order states" catalog</v8:content>
 				</v8:item>
 				<v8:item>
 					<v8:lang>ru</v8:lang>

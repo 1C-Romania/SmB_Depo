@@ -38,7 +38,7 @@ Procedure NewBarcode(Command)
 	
 	If UseExchangeWithPeripheralsOffline Then
 		WeightProductPrefix = 1;
-		ShowInputNumber(New NotifyDescription("NewBarcodeEnd", ThisObject, New Structure("WeightProductPrefix", WeightProductPrefix)), WeightProductPrefix, NStr("en='If it is a weight item then enter the prefix of the weight item and press the Cancell button';ru='Если товар весовой, то введите префикс весового товара или нажмите кнопку Отмена'"), 1, 0);
+		ShowInputNumber(New NotifyDescription("NewBarcodeEnd", ThisObject, New Structure("WeightProductPrefix", WeightProductPrefix)), WeightProductPrefix, NStr("en='If the goods are sold by weight, enter prefix of the goods or click Cancel';ru='Если товар весовой, то введите префикс весового товара или нажмите кнопку Отмена'"), 1, 0);
 	Else
 		Record.Barcode = GenerateBarcodeEAN13();
 	EndIf;

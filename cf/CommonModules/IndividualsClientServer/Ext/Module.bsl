@@ -117,10 +117,10 @@ Function SurnameInitialsOfIndividual(InitialsString = "", Surname = " ", Name = 
 	
 	If CountSubstrings > 3 Then
 		AdditionalPatronymicParts = New Array;
-		AdditionalPatronymicParts.Add(NStr("en='oglu';ru='оглы'"));
+		AdditionalPatronymicParts.Add(NStr("en='ogly';ru='оглы'"));
 		AdditionalPatronymicParts.Add(NStr("en='uly';ru='улы'"));
 		AdditionalPatronymicParts.Add(NStr("en='uulu';ru='уулу'"));
-		AdditionalPatronymicParts.Add(NStr("en='kyzy';ru='кызы'"));
+		AdditionalPatronymicParts.Add(NStr("en='qizy';ru='кызы'"));
 		AdditionalPatronymicParts.Add(NStr("en='gizi';ru='гызы'"));
 		
 		If AdditionalPatronymicParts.Find(Lower(Initials[3])) <> Undefined Then

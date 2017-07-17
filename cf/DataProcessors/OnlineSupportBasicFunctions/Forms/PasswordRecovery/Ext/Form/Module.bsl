@@ -97,14 +97,14 @@ Function FieldsAreFilledCorrectly()
 	
 	If IsBlankString(Login) Then
 		
-		ShowMessageBox(, NStr("en='Please enter login.';ru='Пожалуйста, введите логин.'"), , NStr("en='Filling error';ru='Ошибка заполнения'"));
+		ShowMessageBox(, NStr("en='Please enter login.';ru='Пожалуйста, введите логин.'"), , NStr("en='Population error';ru='Ошибка заполнения'"));
 		Return False;
 		
 	EndIf;
 	
 	If IsBlankString(Email) Then
 		
-		ShowMessageBox(, NStr("en='Please enter email.';ru='Пожалуйста, введите e-mail.'"), , NStr("en='Filling error';ru='Ошибка заполнения'"));
+		ShowMessageBox(, NStr("en='Please enter email.';ru='Пожалуйста, введите e-mail.'"), , NStr("en='Population error';ru='Ошибка заполнения'"));
 		Return False;
 		
 	EndIf;

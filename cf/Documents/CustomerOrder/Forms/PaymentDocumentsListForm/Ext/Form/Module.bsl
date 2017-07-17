@@ -279,7 +279,7 @@ Procedure CreatePayment(Command)
 	CurrentRow = Items.List.CurrentRow;
 	If CurrentRow = Undefined Then
 		
-		WarningText = NStr("en='Command can not be executed for the specified object';ru='Команда не может быть выполнена для указанного объекта!'");
+		WarningText = NStr("en='Command cannot be executed for the specified object.';ru='Команда не может быть выполнена для указанного объекта!'");
 		ShowMessageBox(Undefined,WarningText);
 		Return;
 		

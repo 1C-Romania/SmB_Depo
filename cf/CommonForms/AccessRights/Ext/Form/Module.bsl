@@ -152,7 +152,7 @@ EndProcedure
 Procedure ExcludeFromGroup(Command)
 	
 	If Not ValueIsFilled(CurrentAccessGroup) Then
-		ShowMessageBox(, NStr("en='Access group not selected.';ru='Группа доступа не выбрана.'"));
+		ShowMessageBox(, NStr("en='Access group is not selected.';ru='Группа доступа не выбрана.'"));
 		Return;
 	EndIf;
 	
@@ -166,7 +166,7 @@ Procedure ChangeGroup(Command)
 	FormParameters = New Structure;
 	
 	If Not ValueIsFilled(CurrentAccessGroup) Then
-		ShowMessageBox(, NStr("en='Access group not selected.';ru='Группа доступа не выбрана.'"));
+		ShowMessageBox(, NStr("en='Access group is not selected.';ru='Группа доступа не выбрана.'"));
 		Return;
 		
 	ElsIf IBUserWithFullRights
@@ -415,7 +415,7 @@ Procedure ChangeContentOfGroup(Val AccessGroup, Val Add, ErrorDescription = "")
 		
 		If Not ActionsWithServiceUser.ChangeAdmininstrativeAccess Then
 			Raise
-				NStr("en='Insufficient access rights to modify the administrators structure.';ru='Не достаточно прав доступа для изменения состава администраторов.'");
+				NStr("en='Insufficient access rights to edit administrators.';ru='Не достаточно прав доступа для изменения состава администраторов.'");
 		EndIf;
 	EndIf;
 	

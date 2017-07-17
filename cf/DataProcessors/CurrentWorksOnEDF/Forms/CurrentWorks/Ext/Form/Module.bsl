@@ -1258,19 +1258,19 @@ Function DataTreeAction(Val ActionsTree, Queries)
 	
 	SetPresentationRowsTreeRecursively(Tree, "Cancel", NStr("en='Cancel';ru='Отменить'"), DataOnQuantities[5]);
 
-	SetPresentationRowsTreeRecursively(Tree, "OnControl", NStr("en='On control';ru='На контроле'"), DataOnQuantities[6]);
+	SetPresentationRowsTreeRecursively(Tree, "OnControl", NStr("en='Under control';ru='На контроле'"), DataOnQuantities[6]);
 	
 	SetPresentationRowsTreeRecursively(Tree, "Send", NStr("en='Send';ru='Отправлять'"), DataOnQuantities[7]);
 
 	RowPresentation = NStr("en='Unpack';ru='распаковывать'");
 	SetPresentationRowsTreeRecursively(Tree, "Unpack", RowPresentation, DataOnQuantities[8]);
 
-	SetPresentationRowsTreeRecursively(Tree, "Unmake", NStr("en='Unmake';ru='Разобрать'"), DataOnQuantities[9]);
+	SetPresentationRowsTreeRecursively(Tree, "Unmake", NStr("en='Parse';ru='Разобрать'"), DataOnQuantities[9]);
 	
 	SetPresentationRowsTreeRecursively(Tree, "Invitation", NStr("en='Invitation';ru='Приглашение'"), DataOnQuantities[10]);
-	SetPresentationRowsTreeRecursively(Tree, "InvitationRequired", NStr("en='Is necessary to invite';ru='Требуется пригласить'"), DataOnQuantities[11]);
-	SetPresentationRowsTreeRecursively(Tree, "WaitingForApproval", NStr("en='Waiting for approval';ru='Ждет согласия'"), DataOnQuantities[12]);
-	SetPresentationRowsTreeRecursively(Tree, "ApprovalRequired", NStr("en='Consent required';ru='Требуется согласие'"), DataOnQuantities[13]);
+	SetPresentationRowsTreeRecursively(Tree, "InvitationRequired", NStr("en='Invitation is required';ru='Требуется пригласить'"), DataOnQuantities[11]);
+	SetPresentationRowsTreeRecursively(Tree, "WaitingForApproval", NStr("en='Awaiting consent';ru='Ждет согласия'"), DataOnQuantities[12]);
+	SetPresentationRowsTreeRecursively(Tree, "ApprovalRequired", NStr("en='Approval is required';ru='Требуется согласие'"), DataOnQuantities[13]);
 	
 	Return Tree;
 
@@ -1289,7 +1289,7 @@ Procedure SetPackagesStatus(Val EDKindsArray, Val PackageStatus, CountOfChanged)
 		Except
 			MessageText = BriefErrorDescription(ErrorInfo());
 			ErrorText    = DetailErrorDescription(ErrorInfo());
-			TextOperations  = NStr("en='modification of ED packages status';ru='изменение статуса пакетов ЭД'");
+			TextOperations  = NStr("en='modification of ED package status';ru='изменение статуса пакетов ЭД'");
 			ElectronicDocumentsServiceCallServer.ProcessExceptionByEDOnServer(TextOperations,
 																						ErrorText,
 																						MessageText);
@@ -1426,7 +1426,7 @@ Procedure GenerateTableRapidFilter()
 	
 	NewRow = QuickFilters.Add();
 	NewRow.Parameter = "Responsible";
-	NewRow.ParameterPresentation = NStr("en='Responsible:';ru='Ответственный:'");
+	NewRow.ParameterPresentation = NStr("en='Responsible person:';ru='Ответственный:'");
 	NewRow.Type = "CatalogRef.Users";
 	NewRow.Value = Users.AuthorizedUser();
 	
@@ -1509,7 +1509,7 @@ Procedure SetCancelStatus(EDKindsArray)
 	SetPackagesStatus(EDKindsArray,
 							PredefinedValue("Enum.EDPackagesStatuses.Canceled"),
 							Quantity);
-	NotificationText = NStr("en='Packages status is changed on ""Canceled"": (%1)';ru='Изменен статус пакетов на ""Отменен"": (%1)'");
+	NotificationText = NStr("en='Status of packages is changed to ""Canceled"": (%1)';ru='Изменен статус пакетов на ""Отменен"": (%1)'");
 	NotificationText = StrReplace(NotificationText, "%1", Quantity);
 	ShowUserNotification(NStr("en='Electronic document exchange';ru='Обмен электронными документами'"), , NotificationText);
 	RefreshDataTreeAtClient();
@@ -2015,12 +2015,12 @@ Procedure SendPackagesAlert(Result, AdditionalParameters) Export
 													EDKindsArray,
 													ProfilesAndCertificatesParametersMatch);
 
-	NotificationTemplate = NStr("en='Packages sent: (%1).';ru='Отправлено пакетов: (%1).'");
+	NotificationTemplate = NStr("en='Sent packages: (%1).';ru='Отправлено пакетов: (%1).'");
 	NotificationText = StringFunctionsClientServer.SubstituteParametersInString(NotificationTemplate, CountSent);
 	
 	Notify("RefreshStateED");
 		
-	NotificationTitle = NStr("en='Electronic documents sending';ru='Отправка электронных документов'");
+	NotificationTitle = NStr("en='Sending electronic documents';ru='Отправка электронных документов'");
 	ShowUserNotification(NotificationTitle, , NotificationText);
 	
 EndProcedure

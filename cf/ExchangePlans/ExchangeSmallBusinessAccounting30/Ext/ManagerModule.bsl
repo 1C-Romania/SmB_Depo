@@ -92,7 +92,7 @@ EndFunction
 //
 Function DataTransferRestrictionsDescriptionFull(FilterSsettingsAtNode, CorrespondentVersion, SettingID) Export
 	
-	TextDescription = NStr("en='All normative-reference information is automatically registered for sending;';ru='Вся нормативно-справочная информация автоматически регистрируется к отправке;'");
+	TextDescription = NStr("en='All reference information is automatically registered for sending;';ru='Вся нормативно-справочная информация автоматически регистрируется к отправке;'");
 	
 	If FilterSsettingsAtNode.ManualExchange Then
 		
@@ -107,7 +107,7 @@ Function DataTransferRestrictionsDescriptionFull(FilterSsettingsAtNode, Correspo
 		EndIf;
 		
 		If ValueIsFilled(FilterSsettingsAtNode.DocumentsDumpStartDate) Then
-			TextDescription = TextDescription + Chars.LF + NStr("en='since %StartDate%';ru='начиная с %ДатаНачала%'");
+			TextDescription = TextDescription + Chars.LF + NStr("en='from %StartDate%';ru='начиная с %ДатаНачала%'");
 			TextDescription = StrReplace(TextDescription,"%StartDate%", Format(FilterSsettingsAtNode.DocumentsDumpStartDate, "DF=dd.MM.yyyy"));
 		EndIf;
 		
@@ -155,11 +155,11 @@ EndFunction
 //  String, Unlimited - presentation of a command displayed in the user interface.
 //
 // ForExample:
-// Return NStr("en='Create an exchange in the distributed infobase';ru='Создать обмен в распределенной информационной базе'");
+// Return NStr("en='Create exchange in the distributed infobase';ru='Создать обмен в распределенной информационной базе'");
 //
 Function CommandTitleForCreationOfNewDataExchange() Export
 	
-	Return NStr("en='Create an exchange with configuration ""1C: Accounting Enterprise 8, ed. 3.0""';ru='Создать обмен с конфигурацией ""1C: Бухгалтерия предприятия 8, ред. 3.0""'");
+	Return NStr("en='Create data exchange with 1C:Accounting Enterprise 8 3.0 configuration';ru='Создать обмен с конфигурацией ""1C: Бухгалтерия предприятия 8, ред. 3.0""'");
 	
 EndFunction
 
@@ -380,32 +380,32 @@ Function CorrespondentInfobaseDefaultValueDetails(DefaultValuesAtNode, Correspon
 	
 	If Not CommonUseReUse.DataSeparationEnabled() Then
 		
-		TextDescription = NStr("en='Main budget item to insert into the documents by default: %Value%';ru='Основная статья затрат для подстановки в документы по умолчанию: %Значение%'");
+		TextDescription = NStr("en='Main cost item for the lookup into documents by default: %Value%';ru='Основная статья затрат для подстановки в документы по умолчанию: %Значение%'");
 		If ValueIsFilled(DefaultValuesAtNode.CostsItem) Then
 			TextDescription = StrReplace(TextDescription, "%Value%", String(DefaultValuesAtNode.CostsItem));
 		Else
 			TextDescription = StrReplace(TextDescription, "%Value%", NStr("en='not specified';ru='не указан'"));
 		EndIf;
 		
-		TextDescription = TextDescription + Chars.LF + Chars.LF + NStr("en='Main item of other revenues and expenses to insert into the documents by default: %Value%';ru='Основная статья прочих доходов и расходов для подстановки в документы по умолчанию: %Значение%'");
+		TextDescription = TextDescription + Chars.LF + Chars.LF + NStr("en='Main item of other income and expenses to insert into documents by default: %Value%';ru='Основная статья прочих доходов и расходов для подстановки в документы по умолчанию: %Значение%'");
 		If ValueIsFilled(DefaultValuesAtNode.OtherIncomeCostsItem) Then
 			TextDescription = StrReplace(TextDescription, "%Value%", String(DefaultValuesAtNode.OtherIncomeCostsItem));
 		Else
 			TextDescription = StrReplace(TextDescription, "%Value%", NStr("en='not specified';ru='не указан'"));
 		EndIf;
 		
-		TextDescription = TextDescription + Chars.LF + Chars.LF + NStr("en='Commission fee service to insert into document Report to principal by default: %Value%';ru='Услуга по комиссионному вознаграждению для подстановки в документ Отчет комитенту по умолчанию: %Значение%'");
+		TextDescription = TextDescription + Chars.LF + Chars.LF + NStr("en='Commission service to insert into the Report document to the default principal: %Value%';ru='Услуга по комиссионному вознаграждению для подстановки в документ Отчет комитенту по умолчанию: %Значение%'");
 		If ValueIsFilled(DefaultValuesAtNode.ServiceRewards) Then
 			TextDescription = StrReplace(TextDescription, "%Value%", String(DefaultValuesAtNode.ServiceRewards));
 		Else
 			TextDescription = StrReplace(TextDescription, "%Value%", NStr("en='not specified';ru='не указан'"));
 		EndIf;
 		
-		TextDescription = TextDescription + Chars.LF + Chars.LF + NStr("en='Method of expense reflection for filling of document Transfer of materials into operation: %Value%';ru='Способ отражения расходов для заполнения документа Передача материалов в эксплуатацию: %Значение%'");
+		TextDescription = TextDescription + Chars.LF + Chars.LF + NStr("en='Expense recording method to populate the Material commissioning document: %Value%';ru='Способ отражения расходов для заполнения документа Передача материалов в эксплуатацию: %Значение%'");
 		If ValueIsFilled(DefaultValuesAtNode.CostsReflectionMethod) Then
 			TextDescription = StrReplace(TextDescription, "%Value%", String(DefaultValuesAtNode.CostsReflectionMethod));
 		Else
-			TextDescription = StrReplace(TextDescription, "%Value%", NStr("en='Is not specified';ru='Не указан'"));
+			TextDescription = StrReplace(TextDescription, "%Value%", NStr("en='Not specified';ru='Не указан'"));
 		EndIf;
 		
 	EndIf;

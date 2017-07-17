@@ -36,7 +36,7 @@
 			<Synonym>
 				<v8:item>
 					<v8:lang>en</v8:lang>
-					<v8:content>(not used) Groups of access values</v8:content>
+					<v8:content>(not used) Access value groups</v8:content>
 				</v8:item>
 				<v8:item>
 					<v8:lang>ru</v8:lang>
@@ -173,7 +173,7 @@
 					<Synonym>
 						<v8:item>
 							<v8:lang>en</v8:lang>
-							<v8:content>Inherit rights of the parents</v8:content>
+							<v8:content>Inherit parent rights</v8:content>
 						</v8:item>
 						<v8:item>
 							<v8:lang>ru</v8:lang>
@@ -190,7 +190,7 @@
 					<ToolTip>
 						<v8:item>
 							<v8:lang>en</v8:lang>
-							<v8:content>The check box is used to set rights by access values in the hierarchy catalogs. For example by file folders. If True then all the parent rights are inherited for the folder in the "Access value" and "Access group" fields</v8:content>
+							<v8:content>The check box is used to set access rights by access values in hierarchical catalogs. For example, by file folders. If True, all parent rights for the folder in fields "Access value" and "Access group" are inherited</v8:content>
 						</v8:item>
 						<v8:item>
 							<v8:lang>ru</v8:lang>
@@ -241,7 +241,7 @@
 					<ToolTip>
 						<v8:item>
 							<v8:lang>en</v8:lang>
-							<v8:content>Access type used for the access value (usually one for the access value type).</v8:content>
+							<v8:content>Access kind used for access value (usually one for access value type).</v8:content>
 						</v8:item>
 						<v8:item>
 							<v8:lang>ru</v8:lang>
@@ -295,7 +295,7 @@
 					<ToolTip>
 						<v8:item>
 							<v8:lang>en</v8:lang>
-							<v8:content>The catalog or another metadata object item for which the access values groups are used (counerparty, items)</v8:content>
+							<v8:content>Item of a catalog or another metadata object for which access value groups are used (counterparty, products and services)</v8:content>
 						</v8:item>
 						<v8:item>
 							<v8:lang>ru</v8:lang>
@@ -349,7 +349,7 @@
 					<ToolTip>
 						<v8:item>
 							<v8:lang>en</v8:lang>
-							<v8:content>The flag indicates that the row specifies not the values group of the specified access value but the using of the access type for the access value (used in case of several access types for the single access value type)</v8:content>
+							<v8:content>Shows that not a group of specified access values is set in the string, but an access kind for an access value (it is used when several access kinds are available for one access value type)</v8:content>
 						</v8:item>
 						<v8:item>
 							<v8:lang>ru</v8:lang>
@@ -386,7 +386,7 @@
 					<Synonym>
 						<v8:item>
 							<v8:lang>en</v8:lang>
-							<v8:content>Access values group</v8:content>
+							<v8:content>Access value group</v8:content>
 						</v8:item>
 						<v8:item>
 							<v8:lang>ru</v8:lang>
@@ -403,7 +403,7 @@
 					<ToolTip>
 						<v8:item>
 							<v8:lang>en</v8:lang>
-							<v8:content>Usually the catalog item which is used for the access values grouping (e.g. Products and services access group catalog item).</v8:content>
+							<v8:content>Usually a catalog item that is used to group access values (for example, a "Products and services access groups" catalog item).</v8:content>
 						</v8:item>
 						<v8:item>
 							<v8:lang>ru</v8:lang>
@@ -462,7 +462,7 @@
 					<ToolTip>
 						<v8:item>
 							<v8:lang>en</v8:lang>
-							<v8:content>Auxiliary characteristics which is used only when updating the data.</v8:content>
+							<v8:content>Additional characteristic used only on data update.</v8:content>
 						</v8:item>
 						<v8:item>
 							<v8:lang>ru</v8:lang>

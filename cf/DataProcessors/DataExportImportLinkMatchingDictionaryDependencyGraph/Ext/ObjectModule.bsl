@@ -51,7 +51,7 @@ Procedure AddVertex(Val MetadataObjectName, Val IfNotExist = True) Export
 		If IfNotExist Then
 			Return;
 		Else
-			Raise NStr("en='An attempt to duplicate.';ru='Попытка дублирования!'");
+			Raise NStr("en='Duplication attempt';ru='Попытка дублирования!'");
 		EndIf;
 		
 	Else
@@ -131,7 +131,7 @@ Function MetadataObject(Val DescriptionFull)
 	If MetadataObject = Undefined Then
 		
 		Raise StringFunctionsClientServer.SubstituteParametersInString(
-			NStr("en='Metadata object %1 does not exist in the current configuration. The object exists in the data file.';ru='В текущей конфигурации отсутствует объект метаданных %1, присутствующих в файле данных!'"),
+			NStr("en='Metadata object %1 existing in the data file is missing in the current configuration.';ru='В текущей конфигурации отсутствует объект метаданных %1, присутствующих в файле данных!'"),
 			DescriptionFull
 		);
 		
@@ -168,7 +168,7 @@ Function Vertex(Val MetadataObject, Val ExceptionIfNotExist = True)
 		If ExceptionIfNotExist Then
 			
 			Raise StringFunctionsClientServer.SubstituteParametersInString(
-				NStr("en='No vertex for metadata object %1 in the graph.';ru='В графе отсутствует вершина для объекта метаданных %1!'"),
+				NStr("en='There is no vertex for metadata object %1 in the column.';ru='В графе отсутствует вершина для объекта метаданных %1!'"),
 				MetadataObject.FullName());
 			
 		Else
@@ -180,7 +180,7 @@ Function Vertex(Val MetadataObject, Val ExceptionIfNotExist = True)
 	Else
 		
 		Raise StringFunctionsClientServer.SubstituteParametersInString(
-			NStr("en='Non-unique graph for metadata object %1.';ru='Нарушение уникальности граф для объекта метаданных %1!'"),
+			NStr("en='Unique column violation for the metadata object %1.';ru='Нарушение уникальности граф для объекта метаданных %1!'"),
 			MetadataObject.FullName());
 		
 	EndIf;
@@ -198,7 +198,7 @@ Procedure SearchInDepth(Vertex, SortResult)
 	// If it is a gray vertex - a cycle is found, can not process topological sort
 	If Vertex.Color = Gray Then
 		
-		Raise NStr("en='Recursive dependence.';ru='Рекурсивная зависимость!'");
+		Raise NStr("en='Recursive dependence';ru='Рекурсивная зависимость!'");
 		
 	ElsIf Vertex.Color = White Then
 		

@@ -127,7 +127,7 @@ Procedure SwitchClearedSettingsOnChange(Item)
 		Or SwitchWhomSettingsCleared = "AllUsers" Then
 		SwitchClearedSettings = "ClearAll";
 		Items.ChooseSettings.Enabled = False;
-		ShowMessageBox(,NStr("en='Clearing some settings is available only when a single user is selected.';ru='Очистка отдельных настроек доступна только при выборе одного пользователя.'"));
+		ShowMessageBox(,NStr("en='Cleanup of separate settings is available only when one user is selected.';ru='Очистка отдельных настроек доступна только при выборе одного пользователя.'"));
 	ElsIf SwitchClearedSettings = "ClearAll" Then
 		Items.ChooseSettings.Enabled = False;
 	Else
@@ -239,11 +239,11 @@ Function ClearingSettings()
 	If SwitchWhomSettingsCleared = "SelectedUsers" Then
 			
 		If UserCount = 1 Then
-			ExplanationWhoHasClearedSettings = NStr("en='of user ""%1""';ru='пользователя ""%1""'");
+			ExplanationWhoHasClearedSettings = NStr("en='user ""%1""';ru='пользователя ""%1""'");
 			ExplanationWhoHasClearedSettings = StringFunctionsClientServer.SubstituteParametersInString(
 				ExplanationWhoHasClearedSettings, UsersWhomSettingsClearing.UserArray[0]);
 		Else
-			ExplanationWhoHasClearedSettings = NStr("en='%1 to users';ru='%1 пользователям'");
+			ExplanationWhoHasClearedSettings = NStr("en='%1 users';ru='%1 пользователям'");
 			ExplanationWhoHasClearedSettings = StringFunctionsClientServer.SubstituteParametersInString(
 				ExplanationWhoHasClearedSettings, UserCount);
 		EndIf;
@@ -255,7 +255,7 @@ Function ClearingSettings()
 	If SwitchClearedSettings = "SomeSettings"
 		AND SettingsCount = 0 Then
 		CommonUseClientServer.MessageToUser(
-			NStr("en='Select the settings which must be cleared.';ru='Выберите настройки, которые необходимо очистить.'"), , "SwitchClearedSettings");
+			NStr("en='Select settings to be cleared.';ru='Выберите настройки, которые необходимо очистить.'"), , "SwitchClearedSettings");
 		Return False;
 	EndIf;
 	
@@ -268,7 +268,7 @@ Function ClearingSettings()
 				SettingRepresentation = Left(SettingRepresentation, 24) + "...";
 			EndIf;
 			
-			ExplanationText = NStr("en='""%1"" cleared for %2';ru='""%1"" очищена у %2'");
+			ExplanationText = NStr("en='""%1"" is cleared for %2';ru='""%1"" очищена у %2'");
 			ExplanationText = StringFunctionsClientServer.SubstituteParametersInString(
 				ExplanationText, SettingRepresentation, ExplanationWhoHasClearedSettings);
 			
@@ -287,7 +287,7 @@ Function ClearingSettings()
 				NumberInWords,
 				Format(SettingsCount, "NFD=0") + " ");
 			
-			ExplanationText = NStr("en='Cleared %1 in %2';ru='Очищено %1 у %2'");
+			ExplanationText = NStr("en='%1 is cleaned up for %2';ru='Очищено %1 у %2'");
 			ExplanationText = StringFunctionsClientServer.SubstituteParametersInString(
 				ExplanationText, SubjectInWords, ExplanationWhoHasClearedSettings);
 		EndIf;
@@ -297,7 +297,7 @@ Function ClearingSettings()
 	ElsIf SwitchClearedSettings = "ClearAll" Then
 		ClearAllSettings();
 		
-		ExplanationText = NStr("en='All the settings %1 are cleared';ru='Очищены все настройки %1'");
+		ExplanationText = NStr("en='All settings %1 are cleaned up';ru='Очищены все настройки %1'");
 		ExplanationText = StringFunctionsClientServer.SubstituteParametersInString(
 			ExplanationText, ExplanationWhoHasClearedSettings);
 		ShowUserNotification(

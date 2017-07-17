@@ -5,7 +5,7 @@
 	If ReportParameters.Property("Period") Then
 		
 		If ValueIsFilled(ReportParameters.Period) Then
-			TextPeriod = ?(OnlyDates, "", " on ") + Format(ReportParameters.Period, "DF=dd.MM.yyyy");
+			TextPeriod = ?(OnlyDates, "", " on ") + Format(ReportParameters.Period, "DLF=D");
 		EndIf;
 		
 	ElsIf ReportParameters.Property("BeginOfPeriod")

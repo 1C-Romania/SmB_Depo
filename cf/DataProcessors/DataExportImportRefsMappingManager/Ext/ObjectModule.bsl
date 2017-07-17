@@ -21,7 +21,7 @@ Procedure Initialize(Container, RefReplacementStream, Handlers) Export
 	CurrentSourceRefsColumnName = DataExportImportService.ReadObjectFromFile(FileName);
 	
 	If CurrentSourceRefsColumnName = Undefined Or IsBlankString(CurrentSourceRefsColumnName) Then 
-		Raise NStr("en='Column name with the source reference is not found';ru='Не найдено имя колонки с исходной ссылкой'");
+		Raise NStr("en='Column name with the original reference is not found';ru='Не найдено имя колонки с исходной ссылкой'");
 	EndIf;
 	
 EndProcedure

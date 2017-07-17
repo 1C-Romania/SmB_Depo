@@ -37,7 +37,7 @@ Procedure OnOpen(Cancel)
 	EndDo;
 	
 	If DirectoriesOnly Then
-		Title = NStr("en='folders Import';ru='Загрузка папок'");
+		Title = NStr("en='Folder import';ru='Загрузка папок'");
 	EndIf;
 	
 	Status();
@@ -92,7 +92,7 @@ Procedure ImportFiles()
 	
 	If SelectedFiles.Count() = 0 Then
 		CommonUseClientServer.MessageToUser(
-			NStr("en='There are no files for adding.';ru='Нет файлов для добавления.'"), , "SelectedFiles");
+			NStr("en='No files to add.';ru='Нет файлов для добавления.'"), , "SelectedFiles");
 		FieldsNotFilled = True;
 	EndIf;
 	

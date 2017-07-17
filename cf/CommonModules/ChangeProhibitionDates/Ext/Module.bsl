@@ -929,18 +929,18 @@ Function DataChangeOrImportProhibitionFound(Query,
 				If Checking.Section = ChartsOfCharacteristicTypes.ChangingProhibitionDatesSections.EmptyRef() Then
 					Text = Text + NStr("en='Date %1';ru='Дате %1'");
 				Else
-					Text = Text + NStr("en='Date %1 by section ""%2""';ru='Дате %1 по разделу ""%2""'");
+					Text = Text + NStr("en='Date %1 by the ""%2"" section';ru='Дате %1 по разделу ""%2""'");
 				EndIf;
 			ElsIf EmbeddingProperties.SingleSection Then
-				Text = Text + NStr("en='Date %1 by object ""%3""';ru='Дате %1 по объекту ""%3""'");
+				Text = Text + NStr("en='Date %1 by the ""%3"" object';ru='Дате %1 по объекту ""%3""'");
 			Else
-				Text = Text + NStr("en='Date %1 by object ""%3"" section ""%2""';ru='Дате %1 по объекту ""%3"" раздела ""%2""'");
+				Text = Text + NStr("en='Date %1 by the ""%3"" object of the ""%2"" section';ru='Дате %1 по объекту ""%3"" раздела ""%2""'");
 			EndIf;
 			Text = Text + " ";
 			If Prohibitions.Count() = 1 Then
-				Text = Text + NStr("en='matching with data change prohibition';ru='соответствует запрет изменения данных'") + " ";
+				Text = Text + NStr("en='match data change prevention';ru='соответствует запрет изменения данных'") + " ";
 			Else
-				Text = Text + NStr("en='matching with data change prohibition:';ru='соответствуют запреты изменения данных:'") + Chars.LF;
+				Text = Text + NStr("en='match data change preventions:';ru='соответствуют запреты изменения данных:'") + Chars.LF;
 			EndIf;
 			For Each Prohibition IN Prohibitions Do
 				Text = Text + ?(Prohibitions.Count() = 1, "", Chars.LF + "- ");
@@ -952,29 +952,29 @@ Function DataChangeOrImportProhibitionFound(Query,
 					
 				ElsIf TypeOf(Prohibition.User) = Type("CatalogRef.UsersGroups")
 				      OR TypeOf(Prohibition.User) = Type("CatalogRef.ExternalUsersGroups") Then
-					Text = Text + NStr("en='for users group ""%4""';ru='для группы пользователей ""%4""'");
+					Text = Text + NStr("en='for the ""%4"" user group';ru='для группы пользователей ""%4""'");
 					
 				ElsIf TypeOf(Prohibition.User) = Type("CatalogRef.Users")
 				      OR TypeOf(Prohibition.User) = Type("CatalogRef.ExternalUsers") Then
-					Text = Text + NStr("en='for user ""%4""';ru='для пользователя ""%4""'");
+					Text = Text + NStr("en='for the ""%4"" user';ru='для пользователя ""%4""'");
 					
 				ElsIf ValueIsFilled(Prohibition.User) Then
-					Text = Text + NStr("en='for the infobase ""%4""';ru='для информационной базы ""%4""'");
+					Text = Text + NStr("en='for the ""%4"" infobase';ru='для информационной базы ""%4""'");
 				Else
 					Text = Text + NStr("en='for all infobases ""%6""';ru='для всех информационных баз ""%6""'");
 				EndIf;
-				Text = Text + " " + NStr("en='to %5';ru='по %5'");
+				Text = Text + " " + NStr("en='by %5';ru='по %5'");
 				If Not EmbeddingProperties.WithoutSectionsAndObjects Then
 					If ValueIsFilled(Prohibition.Section) Then
 						If Prohibition.Object = Prohibition.Section Then
-							Text = Text + " " + NStr("en='(prohibition is set for section ""%2"")';ru='(запрет установлен на раздел ""%2"")'");
+							Text = Text + " " + NStr("en='(section ""%2"" is prohibited)';ru='(запрет установлен на раздел ""%2"")'");
 						ElsIf EmbeddingProperties.SingleSection Then
-							Text = Text + " " + NStr("en='(prohibition is set for object ""%3"")';ru='(запрет установлен на объект ""%3"")'");
+							Text = Text + " " + NStr("en='(object ""%3""  is prohibited)';ru='(запрет установлен на объект ""%3"")'");
 						Else
-							Text = Text + " " + NStr("en='(prohibition set for object ""%3"" section ""%2"")';ru='(запрет установлен на объект ""%3"" раздела ""%2"")'");
+							Text = Text + " " + NStr("en='(object ""%3"" of section ""%2"" is prohibited)';ru='(запрет установлен на объект ""%3"" раздела ""%2"")'");
 						EndIf;
 					Else
-						Text = Text + " " + NStr("en='(general prohibition date is established)';ru='(установлена общая дата запрета)'");
+						Text = Text + " " + NStr("en='(common closing date is set)';ru='(установлена общая дата запрета)'");
 					EndIf;
 				EndIf;
 				Text = StringFunctionsClientServer.SubstituteParametersInString(
@@ -993,9 +993,9 @@ Function DataChangeOrImportProhibitionFound(Query,
 			CommonUseClientServer.MessageToUser(Text);
 			WriteLogEvent(
 				?(ImportProhibitionsSearch,
-				  NStr("en='Change prohibition dates. Import prohibitions found';ru='Даты запрета изменения.Найдены запреты загрузки'",
+				  NStr("en='Change closing date.Import prohibitions are found';ru='Даты запрета изменения.Найдены запреты загрузки'",
 				       CommonUseClientServer.MainLanguageCode()),
-				  NStr("en='Modification prohibition dates. Modification prohibitions have been found';ru='Даты запрета изменения.Найдены запреты изменения'",
+				  NStr("en='Change closing date.Change prohibitions are found';ru='Даты запрета изменения.Найдены запреты изменения'",
 				       CommonUseClientServer.MainLanguageCode())),
 				EventLogLevel.Error,
 				,
@@ -1034,16 +1034,16 @@ Function GetDataPresentation(DataId, DataTable)
 	MetadataObject = Metadata.FindByFullName(DataTable);
 	
 	If Metadata.InformationRegisters.Contains(MetadataObject) Then
-		DataPresentation = NStr("en='Info register ""%1"" records';ru='Записи регистра сведений ""%1""'");
+		DataPresentation = NStr("en='Records of the ""%1"" information register';ru='Записи регистра сведений ""%1""'");
 		
 	ElsIf Metadata.AccumulationRegisters.Contains(MetadataObject) Then
-		DataPresentation = NStr("en='Accumulation register ""%1"" records';ru='Записи регистра накопления ""%1""'");
+		DataPresentation = NStr("en='Records of the ""%1"" accumulation register';ru='Записи регистра накопления ""%1""'");
 		
 	ElsIf Metadata.AccountingRegisters.Contains(MetadataObject) Then
-		DataPresentation = NStr("en='Accounts register ""%1"" records';ru='Записи регистра бухгалтерии ""%1""'");
+		DataPresentation = NStr("en='Records of the ""%1"" accounting register';ru='Записи регистра бухгалтерии ""%1""'");
 		
 	ElsIf Metadata.CalculationRegisters.Contains(MetadataObject) Then
-		DataPresentation = NStr("en='Calculation register ""%1"" records';ru='Записи регистра расчета ""%1""'");
+		DataPresentation = NStr("en='Records of the ""%1"" calculation register';ru='Записи регистра расчета ""%1""'");
 		
 	EndIf;
 	
@@ -1064,19 +1064,19 @@ Function GetDataPresentation(DataId, DataTable)
 		EndIf;
 	Else
 		If Metadata.Catalogs.Contains(MetadataObject) Then
-			DataPresentation = NStr("en='Element of catalog ""%1""';ru='Элемент справочника ""%1""'");
+			DataPresentation = NStr("en='The ""%1"" catalog item';ru='Элемент справочника ""%1""'");
 		
 		ElsIf Metadata.Documents.Contains(MetadataObject) Then
 			DataPresentation = NStr("en='Document';ru='документ'");
 		
 		ElsIf Metadata.ChartsOfCharacteristicTypes.Contains(MetadataObject) Then
-			DataPresentation = NStr("en='Chart of characteristics types ""%1""';ru='План видов характеристик ""%1""'");
+			DataPresentation = NStr("en='The ""%1"" chart of characteristic types';ru='План видов характеристик ""%1""'");
 			
 		ElsIf Metadata.ChartsOfAccounts.Contains(MetadataObject) Then
-			DataPresentation = NStr("en='Chart of accounts ""%1""';ru='План счетов ""%1""'");
+			DataPresentation = NStr("en='The ""%1"" chart of accounts';ru='План счетов ""%1""'");
 			
 		ElsIf Metadata.ChartsOfCalculationTypes.Contains(MetadataObject) Then
-			DataPresentation = NStr("en='Chart of calculation types ""%1""';ru='План видов расчета ""%1""'");
+			DataPresentation = NStr("en='The ""%1"" chart of calculation types';ru='План видов расчета ""%1""'");
 			
 		ElsIf Metadata.BusinessProcesses.Contains(MetadataObject) Then
 			DataPresentation = NStr("en='Business process';ru='Бизнес-процесс'");
@@ -1085,7 +1085,7 @@ Function GetDataPresentation(DataId, DataTable)
 			DataPresentation = NStr("en='Task';ru='Задача'");
 			
 		ElsIf Metadata.ExchangePlans.Contains(MetadataObject) Then
-			DataPresentation = NStr("en='Exchange plan ""%1""';ru='План обмена ""%1""'");
+			DataPresentation = NStr("en='The ""%1"" exchange plan';ru='План обмена ""%1""'");
 		EndIf;
 		
 		If ValueIsFilled(DataPresentation) AND ValueIsFilled(DataId) Then

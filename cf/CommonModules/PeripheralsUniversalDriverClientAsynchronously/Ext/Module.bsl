@@ -25,7 +25,7 @@ Procedure StartDeviceConnectionConnectEnd(ExecutionResult, CallParameters, Addit
 			Output_Parameters = AdditionalParameters.Output_Parameters;
 			Output_Parameters.Clear();
 			Output_Parameters.Add(999);
-			Output_Parameters.Add(NStr("en='Error calling method <DriverObject.GetError>.';ru='Ошибка вызова метода <DriverObject.GetError>.'") + Chars.LF + ErrorDescription());
+			Output_Parameters.Add(NStr("en='An error occurred while calling the <DriverObject.GetError> method.';ru='Ошибка вызова метода <DriverObject.GetError>.'") + Chars.LF + ErrorDescription());
 			ExecutionResult = New Structure("Result, Output_Parameters", False, Output_Parameters);
 			If AdditionalParameters.AlertOnEnd <> Undefined Then
 				ExecuteNotifyProcessing(AdditionalParameters.AlertOnEnd, ExecutionResult);
@@ -68,7 +68,7 @@ Procedure StartConnectionDeviceParametersSettingEnd(Result, Parameters) Export
 		Output_Parameters = Parameters.Output_Parameters;
 		Output_Parameters.Clear();
 		Output_Parameters.Add(999);
-		Output_Parameters.Add(NStr("en='Error calling method <DriverObject.Enable>.';ru='Ошибка вызова метода <DriverObject.Enable>.'") + Chars.LF + ErrorDescription());
+		Output_Parameters.Add(NStr("en='An error occurred while calling the <DriverObject.Enable> method.';ru='Ошибка вызова метода <DriverObject.Enable>.'") + Chars.LF + ErrorDescription());
 		ExecutionResult = New Structure("Result, Output_Parameters", False, Output_Parameters);
 		If Parameters.AlertOnEnd <> Undefined Then
 			ExecuteNotifyProcessing(Parameters.AlertOnEnd, ExecutionResult);
@@ -131,7 +131,7 @@ Procedure StartDisableDevice(AlertOnEnd, DriverObject, Parameters, ConnectionPar
 	Except
 		Output_Parameters.Clear();
 		Output_Parameters.Add(999);
-		Output_Parameters.Add(NStr("en='Error calling method <DriverObject.Disable>.';ru='Ошибка вызова метода <DriverObject.Disable>.'") + Chars.LF + ErrorDescription());
+		Output_Parameters.Add(NStr("en='An error occurred while calling the <DriverObject.Disable> method.';ru='Ошибка вызова метода <DriverObject.Disable>.'") + Chars.LF + ErrorDescription());
 		ExecutionResult = New Structure("Result, Output_Parameters", False, Output_Parameters);
 		If AlertOnEnd <> Undefined Then
 			ExecuteNotifyProcessing(AlertOnEnd, ExecutionResult);
@@ -174,7 +174,7 @@ Procedure StartCommandExecution(AlertOnEnd, Command, InputParameters = Undefined
 		
 	Else
 		Output_Parameters.Add(999);
-		Output_Parameters.Add(NStr("en='The %Command% command is not supported by the current driver.';ru='Команда ""%Команда%"" не поддерживается данным драйвером.'"));
+		Output_Parameters.Add(NStr("en='The %Command% command is not supported by the driver.';ru='Команда ""%Команда%"" не поддерживается данным драйвером.'"));
 		Output_Parameters[1] = StrReplace(Output_Parameters[1], "%Command%", Command);
 		ExecutionResult = New Structure("Result, Output_Parameters", False, Output_Parameters);
 		If AlertOnEnd <> Undefined Then
@@ -246,7 +246,7 @@ EndProcedure
 Procedure StartGettingDriverVersion(AlertOnEnd, DriverObject, Parameters, ConnectionParameters, Output_Parameters) Export
 
 	Output_Parameters.Clear();
-	Output_Parameters.Add(NStr("en='Installed';ru='Установлен'"));
+	Output_Parameters.Add(NStr("en='Set';ru='Установлен'"));
 	Output_Parameters.Add(NStr("en='Not defined';ru='Не определена'"));
 	
 	CommandParameters = New Structure();
@@ -262,7 +262,7 @@ Procedure StartGettingDriverVersion(AlertOnEnd, DriverObject, Parameters, Connec
 	Except
 		Output_Parameters.Clear();
 		Output_Parameters.Add(999);
-		Output_Parameters.Add(NStr("en='Error calling method <DriverObject.GetVersionNumber>.';ru='Ошибка вызова метода <DriverObject.GetVersionNumber>.'") + Chars.LF + ErrorDescription());
+		Output_Parameters.Add(NStr("en='An error occurred while calling the <DriverObject.GetVersionNumber> method.';ru='Ошибка вызова метода <DriverObject.GetVersionNumber>.'") + Chars.LF + ErrorDescription());
 		ExecutionResult = New Structure("Result, Output_Parameters", False, Output_Parameters);
 		If AlertOnEnd <> Undefined Then
 			ExecuteNotifyProcessing(AlertOnEnd, ExecutionResult);
@@ -333,7 +333,7 @@ Procedure BeginDeviceTestParametersSettingEnd(Result, Parameters) Export
 		Output_Parameters = Parameters.Output_Parameters;
 		Output_Parameters.Clear();
 		Output_Parameters.Add(999);
-		Output_Parameters.Add(NStr("en='Error calling method <DriverObject.DeviceText>.';ru='Ошибка вызова метода <DriverObject.DeviceText>.'") + Chars.LF + ErrorDescription());
+		Output_Parameters.Add(NStr("en='An error occurred while calling the <DriverObject.DeviceText> method.';ru='Ошибка вызова метода <DriverObject.DeviceText>.'") + Chars.LF + ErrorDescription());
 		ExecutionResult = New Structure("Result, Output_Parameters", False, Output_Parameters);
 		If Parameters.AlertOnEnd <> Undefined Then
 			ExecuteNotifyProcessing(Parameters.AlertOnEnd, ExecutionResult);
@@ -407,7 +407,7 @@ Procedure StartExecuteAdditionalAction(AlertOnEnd, DriverObject, Parameters, Con
 	Except
 		Output_Parameters.Clear();
 		Output_Parameters.Add(999);
-		Output_Parameters.Add(NStr("en='Error calling method <DriverObject.ExecuteAdditionalAction>.';ru='Ошибка вызова метода <DriverObject.ExecuteAdditionalAction>.'") + Chars.LF + ErrorDescription());
+		Output_Parameters.Add(NStr("en='An error occurred while calling the <DriverObject.ExecuteAdditionalAction> method.';ru='Ошибка вызова метода <DriverObject.ExecuteAdditionalAction>.'") + Chars.LF + ErrorDescription());
 	EndTry;
 	
 EndProcedure
@@ -417,7 +417,7 @@ EndProcedure
 Procedure StarGetDriverDescription(AlertOnEnd, DriverObject, Parameters, ConnectionParameters, Output_Parameters)
 	
 	Output_Parameters.Clear();
-	Output_Parameters.Add(NStr("en='Installed';ru='Установлен'"));
+	Output_Parameters.Add(NStr("en='Set';ru='Установлен'"));
 	Output_Parameters.Add(NStr("en='Not defined';ru='Не определена'"));
 	Output_Parameters.Add(NStr("en='Undefined';ru='Неопределено'"));
 	Output_Parameters.Add(NStr("en='Undefined';ru='Неопределено'"));

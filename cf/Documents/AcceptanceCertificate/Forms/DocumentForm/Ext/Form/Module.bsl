@@ -505,7 +505,7 @@ Procedure OpenPricesAndCurrencyFormEnd(ClosingResult, AdditionalParameters) Expo
 				Object.DiscountPercentByDiscountCard = ClosingResult.DiscountPercentByDiscountCard;
 			Else // We will show the message and we will not change discount card data.
 				CommonUseClientServer.MessageToUser(
-				NStr("en='Discount card is not read. Discount card owner does not match with a counterparty in the document.';ru='Дисконтная карта не считана. Владелец дисконтной карты не совпадает с контрагентом в документе.'"),
+				NStr("en='Discount card is not read. Discount card owner does not match the counterparty in the document.';ru='Дисконтная карта не считана. Владелец дисконтной карты не совпадает с контрагентом в документе.'"),
 				,
 				"Counterparty",
 				"Object");
@@ -744,7 +744,7 @@ Procedure ProcessContractChange()
 			DocumentParameters.Insert("ContractData", ContractData);
 			
 			NotifyDescription = New NotifyDescription("PrepaymentClearingQuestionEnd", ThisObject, DocumentParameters);
-			QuestionText = NStr("en='Prepayment set-off will be cleared, do you want to continue?';ru='Зачет предоплаты будет очищен, продолжить?'");
+			QuestionText = NStr("en='Prepayment setoff will be cleared, continue?';ru='Зачет предоплаты будет очищен, продолжить?'");
 			
 			ShowQueryBox(NOTifyDescription, QuestionText, QuestionDialogMode.YesNo);
 			Return;
@@ -1377,7 +1377,7 @@ Procedure FillByBasis(Command)
 	Response = Undefined;
 
 	
-	ShowQueryBox(New NotifyDescription("FillByBasisEnd", ThisObject), NStr("en='Document will be completely refilled by ""Basis""! Continue?';ru='Документ будет полностью перезаполнен по ""Основанию""! Продолжить?'"), QuestionDialogMode.YesNo, 0);
+	ShowQueryBox(New NotifyDescription("FillByBasisEnd", ThisObject), NStr("en='The  document will be fully filled out according to the ""Basis"". Continue?';ru='Документ будет полностью перезаполнен по ""Основанию""! Продолжить?'"), QuestionDialogMode.YesNo, 0);
 	
 EndProcedure
 
@@ -1620,7 +1620,7 @@ Procedure CounterpartyOnChange(Item)
 			DocumentParameters.Insert("ContractBeforeChange", ContractBeforeChange);
 			
 			NotifyDescription = New NotifyDescription("PrepaymentClearingQuestionEnd", ThisObject, DocumentParameters);
-			QuestionText = NStr("en='Prepayment set-off will be cleared, do you want to continue?';ru='Зачет предоплаты будет очищен, продолжить?'");
+			QuestionText = NStr("en='Prepayment setoff will be cleared, continue?';ru='Зачет предоплаты будет очищен, продолжить?'");
 			
 			ShowQueryBox(NOTifyDescription, QuestionText, QuestionDialogMode.YesNo);
 			Return;
@@ -1678,7 +1678,7 @@ Procedure CustomerOrderOnChange(Item)
 		Mode = QuestionDialogMode.YesNo;
 		Response = Undefined;
 
-		ShowQueryBox(New NotifyDescription("CustomerOrderOnChangeEnd", ThisObject), NStr("en='Prepayment set-off will be cleared, do you want to continue?';ru='Зачет предоплаты будет очищен, продолжить?'"), Mode, 0);
+		ShowQueryBox(New NotifyDescription("CustomerOrderOnChangeEnd", ThisObject), NStr("en='Prepayment setoff will be cleared, continue?';ru='Зачет предоплаты будет очищен, продолжить?'"), Mode, 0);
         Return;
 	EndIf;
 	
@@ -2164,14 +2164,14 @@ Procedure DiscountCardIsSelected(DiscountCard)
 		CounterpartyOnChange(Items.Counterparty);
 		
 		ShowUserNotification(
-			NStr("en='Counterparty is filled and discount card is read';ru='Заполнен контрагент и считана дисконтная карта'"),
+			NStr("en='Counterparty is filled in and discount card is read';ru='Заполнен контрагент и считана дисконтная карта'"),
 			GetURL(DiscountCard),
 			StringFunctionsClientServer.SubstituteParametersInString(NStr("en='The counterparty is filled out in the document and discount card %1 is read';ru='В документе заполнен контрагент и считана дисконтная карта %1'"), DiscountCard),
 			PictureLib.Information32);
 	ElsIf Object.Counterparty <> DiscountCardOwner AND Not DiscountCardOwner.IsEmpty() Then
 		
 		CommonUseClientServer.MessageToUser(
-			NStr("en='Discount card is not read. Discount card owner does not match with a counterparty in the document.';ru='Дисконтная карта не считана. Владелец дисконтной карты не совпадает с контрагентом в документе.'"),
+			NStr("en='Discount card is not read. Discount card owner does not match the counterparty in the document.';ru='Дисконтная карта не считана. Владелец дисконтной карты не совпадает с контрагентом в документе.'"),
 			,
 			"Counterparty",
 			"Object");
@@ -2215,7 +2215,7 @@ Procedure DiscountCardIsSelectedAdditionally(DiscountCard)
 	PricesAndCurrency = GenerateLabelPricesAndCurrency(LabelStructure);
 	
 	If Object.WorksAndServices.Count() > 0 Then
-		Text = NStr("en='Refill discounts in all rows?';ru='Перезаполнить скидки во всех строках?'");
+		Text = NStr("en='Refill discounts in all lines?';ru='Перезаполнить скидки во всех строках?'");
 		Notification = New NotifyDescription("DiscountCardIsSelectedAdditionallyEnd", ThisObject);
 		ShowQueryBox(Notification, Text, QuestionDialogMode.YesNo, , DialogReturnCode.Yes);
 	EndIf;

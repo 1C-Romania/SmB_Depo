@@ -107,7 +107,7 @@ Procedure OnCreateAtServer(Cancel, StandardProcessing)
 		EndIf;
 		
 		If Not ValueIsFilled(Encoding) Then
-			Encoding = NStr("en='By default';ru='По умолчанию'");
+			Encoding = NStr("en='Default';ru='По умолчанию'");
 		EndIf;
 		
 	Else
@@ -610,7 +610,7 @@ Procedure Delete(Command)
 	
 	Handler = New NotifyDescription("DeleteEnd", ThisObject);
 	
-	ShowQueryBox(Handler, NStr("en='Delete selected signature?';ru='Удалить выделенные подписи?'"), QuestionDialogMode.YesNo);
+	ShowQueryBox(Handler, NStr("en='Delete the selected signatures?';ru='Удалить выделенные подписи?'"), QuestionDialogMode.YesNo);
 	
 EndProcedure
 
@@ -742,7 +742,7 @@ Procedure EncryptAfterAnswerToWriteQuestion(Response, ExecuteParameters) Export
 	EndIf;
 	
 	ShowUserNotification(
-		NStr("en='Creating:';ru='Создание:'"),
+		NStr("en='Created:';ru='Создание:'"),
 		GetURL(Object.Ref),
 		String(Object.Ref),
 		PictureLib.Information32);
@@ -971,7 +971,7 @@ Procedure FillEncryptionList()
 		EndDo;
 	EndIf;
 	
-	HeaderText = NStr("en='Allowed to decrypt';ru='Разрешено расшифровывать'");
+	HeaderText = NStr("en='Decryption allowed';ru='Разрешено расшифровывать'");
 	
 	If EncryptionCertificates.Count() <> 0 Then
 		HeaderText =HeaderText + " (" + Format(EncryptionCertificates.Count(), "NG=") + ")";
@@ -1034,7 +1034,7 @@ Procedure FillListOfSignatures()
 		HeaderText = NStr("en='Digital signatures';ru='Электронные подписи'");
 	Else
 		HeaderText = StringFunctionsClientServer.SubstituteParametersInString(
-			NStr("en='DigitalSignatures (%1)';ru='Электронные подписи (%1)'"),
+			NStr("en='Digital signatures (%1)';ru='Электронные подписи (%1)'"),
 			Format(DigitalSignatures.Count(), "NG="));
 	EndIf;
 	Items.DigitalSignaturesGroup.Title = HeaderText;

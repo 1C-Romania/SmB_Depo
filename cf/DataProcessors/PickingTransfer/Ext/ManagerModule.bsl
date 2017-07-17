@@ -39,14 +39,14 @@ Procedure CheckParametersFilling(SelectionParameters, Cancel) Export
 		ValueParameters = Undefined;
 		If Not SelectionParameters.Property(StructureItem.Key, ValueParameters) Then
 			
-			ErrorText = NStr("en='%1 mandatory parameter required for opening of the products and services selection form is absent.';ru='Отсутствует обязательный параметр (%1), необходимый для открытия формы подбора номенклатуры.'");
+			ErrorText = NStr("en='Required parameter (%1) required for opening of products and services selection form is missing.';ru='Отсутствует обязательный параметр (%1), необходимый для открытия формы подбора номенклатуры.'");
 			ErrorText = StringFunctionsClientServer.SubstituteParametersInString(ErrorText, StructureItem.Value);
 			
 			CommonUseClientServer.AddUserError(Errors, , ErrorText, Undefined);
 			
 		ElsIf Not ValueIsFilled(ValueParameters) Then
 			
-			ErrorText = NStr("en='%1 mandatory parameter required for opening of the products and services selection form is filled in incorrectly.';ru='Неверно заполнен обязательный параметр (%1), необходимый для открытия формы подбора номенклатуры.'");
+			ErrorText = NStr("en='Required parameter (%1) required for opening of products and services selection form is filled in incorrectly.';ru='Неверно заполнен обязательный параметр (%1), необходимый для открытия формы подбора номенклатуры.'");
 			ErrorText = StringFunctionsClientServer.SubstituteParametersInString(ErrorText, StructureItem.Value);
 			
 			CommonUseClientServer.AddUserError(Errors, , ErrorText, Undefined);

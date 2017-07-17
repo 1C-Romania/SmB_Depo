@@ -12,7 +12,7 @@ Procedure OnCreateAtServer(Cancel, StandardProcessing)
 	If Not Parameters.Property("Order") Then
 		
 		Message = New UserMessage();
-		Message.Text = NStr("en='It is possible to call report only from the document ""Customer order"".';ru='Вызов отчета возможен только из документа ""Заказ покупателя""!'");
+		Message.Text = NStr("en='It is possible to generate the report only from the ""Customer order"" document.';ru='Вызов отчета возможен только из документа ""Заказ покупателя""!'");
 		Message.Message();
 		
 		Cancel = True;

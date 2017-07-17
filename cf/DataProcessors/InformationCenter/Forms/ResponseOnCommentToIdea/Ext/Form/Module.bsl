@@ -26,7 +26,7 @@ EndProcedure
 Procedure Add(Command)
 	
 	If IsBlankString(Text) Then 
-		Raise NStr("en='The comment field should be filled in';ru='Поле комментарий должно быть заполнено'");
+		Raise NStr("en='The ""Comment"" field is required';ru='Поле комментарий должно быть заполнено'");
 	EndIf;
 	AddComment();
 	Notify("CommentToIdeaAdded");

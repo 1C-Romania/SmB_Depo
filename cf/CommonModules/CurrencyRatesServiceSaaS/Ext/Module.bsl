@@ -41,7 +41,7 @@ Procedure ImportRates() Export
 	Descriptors = SuppliedData.ProvidedDataFromManagerDescriptors("CurrencyRates");
 	
 	If Descriptors.Descriptor.Count() < 1 Then
-		Raise(NStr("en='There is no data of kind ""ExchangeRates"" in the service manager.';ru='В менеджере сервиса отсутствуют данные вида ""КурсыВалют""'"));
+		Raise(NStr("en='There is no data of the ExchangeRates kind in the service manager';ru='В менеджере сервиса отсутствуют данные вида ""КурсыВалют""'"));
 	EndIf;
 	
 	CurrencyRates = SuppliedData.RefOfProvidedDataFromCache("RatesOfOneCurrency");
@@ -384,7 +384,7 @@ Procedure ProcessProvidedRatesForDay(Val Handle, Val PathToFile)
 	EndDo; 
 	
 	If CurrencyRatesDate = "" Then
-		Raise NStr("en='Data of kind ""ExchangeRatesForDay"" does not contain characteristic ""Date"". Exchange rate update is impossible.';ru='Данные вида ""КурсыВалютЗаДень"" не содержат характеристики ""Дата"". Обновление курсов невозможно.'"); 
+		Raise NStr("en='Data of the ""ExchangeRatesForDay"" kind does not contain the ""Date"" characteristics. Cannot update the rates.';ru='Данные вида ""КурсыВалютЗаДень"" не содержат характеристики ""Дата"". Обновление курсов невозможно.'"); 
 	EndIf;
 	
 	AreasForUpdating = SuppliedData.AreasRequiredProcessing(Handle.FileGUID, "CurrencyRatesForDay", True);

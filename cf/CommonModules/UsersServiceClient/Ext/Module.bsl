@@ -88,7 +88,7 @@ Procedure OpenReportOrForm(CurrentItem, User, CurrentUser, FormNamePersonalSetti
 	EndIf;
 	
 	If User <> CurrentUser Then
-		WarningText = NStr("en='To view settings of other user, run the application on behalf of this user and open the needed report or form.';ru='Для просмотра настроек другого пользователя необходимо запустить программу от его имени и открыть нужный отчет или форму.'");
+		WarningText = NStr("en='To view settings of another user, run the application on behalf of this user, and then open the required report or form.';ru='Для просмотра настроек другого пользователя необходимо запустить программу от его имени и открыть нужный отчет или форму.'");
 		ShowMessageBox(,WarningText);
 		Return;
 	EndIf;
@@ -134,7 +134,7 @@ Procedure OpenReportOrForm(CurrentItem, User, CurrentUser, FormNamePersonalSetti
 				EndIf;
 				
 				If ItemParent <> Undefined Then
-					WarningText = NStr("en='To  view this setting, open ""%1"" and go to form ""%2"".';ru='Для просмотра данной настройки необходимо открыть ""%1"" и затем перейти к форме ""%2"".'");
+					WarningText = NStr("en='To view this setting, open ""%1"", and then go to form ""%2"".';ru='Для просмотра данной настройки необходимо открыть ""%1"" и затем перейти к форме ""%2"".'");
 					WarningText = StringFunctionsClientServer.SubstituteParametersInString(WarningText,
 						ItemParent.Setting, ValueTreeItem.CurrentData.Setting);
 					ShowMessageBox(,WarningText);
@@ -145,7 +145,7 @@ Procedure OpenReportOrForm(CurrentItem, User, CurrentUser, FormNamePersonalSetti
 			
 		EndDo;
 		
-		ShowMessageBox(,NStr("en='This setting is impossible to view.';ru='Данную настройку невозможно просмотреть.'"));
+		ShowMessageBox(,NStr("en='This setting cannot be viewed.';ru='Данную настройку невозможно просмотреть.'"));
 		Return;
 		
 	ElsIf ValueTreeItem.Name = "OtherSettings" Then
@@ -156,12 +156,12 @@ Procedure OpenReportOrForm(CurrentItem, User, CurrentUser, FormNamePersonalSetti
 			Return;
 		EndIf;
 		
-		ShowMessageBox(,NStr("en='This setting is impossible to view.';ru='Данную настройку невозможно просмотреть.'"));
+		ShowMessageBox(,NStr("en='This setting cannot be viewed.';ru='Данную настройку невозможно просмотреть.'"));
 		Return;
 		
 	EndIf;
 	
-	ShowMessageBox(,NStr("en='Select the setting for viewing.';ru='Выберите настройку для просмотра.'"));
+	ShowMessageBox(,NStr("en='Select a setting for viewing.';ru='Выберите настройку для просмотра.'"));
 	
 EndProcedure
 
@@ -209,7 +209,7 @@ Function GeneratingExplanationOnCopying(SettingRepresentation, SettingsCount, Ex
 			SettingRepresentation = Left(SettingRepresentation, 24) + "...";
 		EndIf;
 		
-		ExplanationText = NStr("en='""%1"" copied %2';ru='""%1"" скопирована %2'");
+		ExplanationText = NStr("en='""%1"" is copied %2';ru='""%1"" скопирована %2'");
 		ExplanationText = StringFunctionsClientServer.SubstituteParametersInString(
 			ExplanationText, SettingRepresentation, ExplanationToWhomSettingsAreCopied);
 	Else
@@ -235,11 +235,11 @@ EndFunction
 Function ExplanationUsers(UserCount, User) Export
 	
 	If UserCount = 1 Then
-		ExplanationToWhomSettingsAreCopied = NStr("en='to user ""%1""';ru='пользователю ""%1""'");
+		ExplanationToWhomSettingsAreCopied = NStr("en='user ""%1""';ru='пользователю ""%1""'");
 		ExplanationToWhomSettingsAreCopied = StringFunctionsClientServer.SubstituteParametersInString(
 			ExplanationToWhomSettingsAreCopied, User);
 	Else
-		ExplanationToWhomSettingsAreCopied = NStr("en='%1 to users';ru='%1 пользователям'");
+		ExplanationToWhomSettingsAreCopied = NStr("en='%1 users';ru='%1 пользователям'");
 		ExplanationToWhomSettingsAreCopied = StringFunctionsClientServer.SubstituteParametersInString(
 			ExplanationToWhomSettingsAreCopied, UserCount);
 	EndIf;

@@ -20,13 +20,13 @@ Procedure OnCreateAtServer(Cancel, StandardProcessing)
 	ErrorText = Undefined;
 	
 	If Not DataExchangeSaaSReUse.DataSynchronizationSupported() Then
-		ErrorText = NStr("en='Data synchronization is not supported for configuration!';ru='Синхронизация данных для конфигурации не поддерживается!'");
+		ErrorText = NStr("en='Data synchronization for this configuration is not supported.';ru='Синхронизация данных для конфигурации не поддерживается!'");
 		
 	ElsIf Not Parameters.Property("InfobaseNode", Object.InfobaseNode) Then
-		ErrorText = NStr("en='Data processor is not aimed for being used directly';ru='Обработка не предназначена для непосредственного использования.'");
+		ErrorText = NStr("en='Data processor is not intended for direct usage.';ru='Обработка не предназначена для непосредственного использования.'");
 		
 	ElsIf Object.InfobaseNode.IsEmpty() Then
-		ErrorText = NStr("en='Data exchange setup is not found.';ru='Настройка обмена данными не найдена.'");
+		ErrorText = NStr("en='Data exchange setting is not found.';ru='Настройка обмена данными не найдена.'");
 		
 	EndIf;
 	
@@ -66,7 +66,7 @@ EndProcedure
 &AtClient
 Procedure BeforeClose(Cancel, StandardProcessing)
 	
-	ConfirmationText = NStr("en='Do you want to terminate data synchronization?';ru='Прервать синхронизацию данных?'");
+	ConfirmationText = NStr("en='Stop data synchronization?';ru='Прервать синхронизацию данных?'");
 	CommonUseClient.ShowArbitraryFormClosingConfirmation(
 		ThisObject, Cancel, ConfirmationText, "ForceCloseForm");
 	
@@ -167,7 +167,7 @@ Procedure ExportAdditionFilterHistory(Command)
 	VariantList = ExportAdditionHistorySettingsServer();
 	
 	// Add saving variant of the current
-	Text = NStr("en='Save the current setting...';ru='Сохранить текущую настройку...'");
+	Text = NStr("en='Saving the current configuration...';ru='Сохранить текущую настройку...'");
 	VariantList.Add(1, Text, , PictureLib.SaveReportSettings);
 	
 	NotifyDescription = New NotifyDescription("ExportAdditionFilterHistorySelectionFromMenu", ThisObject);
@@ -344,7 +344,7 @@ Procedure GoToNumberOnChange(Val IsGoNext)
         "GoToNumber", GoToNumber));
 	
 	If GoToRowsCurrent.Count() = 0 Then
-		Raise NStr("en='Page for displaying has not been defined.';ru='Не определена страница для отображения.'");
+		Raise NStr("en='Page for displaying is not defined.';ru='Не определена страница для отображения.'");
 	EndIf;
 	
 	GoToRowCurrent = GoToRowsCurrent[0];
@@ -419,7 +419,7 @@ Procedure ExecuteGoToEventHandlers(Val IsGoNext)
 	GoToRowsCurrent = GoToTable.FindRows(New Structure(
         "GoToNumber", GoToNumber));
 	If GoToRowsCurrent.Count() = 0 Then
-		Raise NStr("en='Page for displaying has not been defined.';ru='Не определена страница для отображения.'");
+		Raise NStr("en='Page for displaying is not defined.';ru='Не определена страница для отображения.'");
 	EndIf;
 	
 	GoToRowCurrent = GoToRowsCurrent[0];
@@ -459,7 +459,7 @@ Procedure ExecuteLongOperationHandler()
 	GoToRowsCurrent = GoToTable.FindRows(New Structure(
         "GoToNumber", GoToNumber));
 	If GoToRowsCurrent.Count() = 0 Then
-		Raise NStr("en='Page for displaying has not been defined.';ru='Не определена страница для отображения.'");
+		Raise NStr("en='Page for displaying is not defined.';ru='Не определена страница для отображения.'");
 	EndIf;
 	
 	GoToRowCurrent = GoToRowsCurrent[0];
@@ -746,7 +746,7 @@ Procedure SetAdditionDescriptionInDetails()
 	Text = DataExchangeServer.InteractiveChangeExportingDetailedFilterDescription(ExportAddition);
 	FilterAbsent = IsBlankString(Text);
 	If FilterAbsent Then
-		Text = NStr("en='Additional data have not been selected';ru='Дополнительные данные не выбраны'");
+		Text = NStr("en='Additional data is not selected';ru='Дополнительные данные не выбраны'");
 	EndIf;
 	
 	Items.ExportAdditionDetailedFilter.Title = Text;
@@ -860,7 +860,7 @@ Procedure CorrespondentIdleHandler()
 		GoToNext();
 		
 	Else
-		LongOperationState.ErrorInfo = NStr("en='Message error to correspondent';ru='Ошибка сообщения корреспонденту'");
+		LongOperationState.ErrorInfo = NStr("en='Correspondent notification error';ru='Ошибка сообщения корреспонденту'");
 		
 	EndIf;
 	
@@ -937,7 +937,7 @@ Function BackgroundJobDumpsAtServer()
 	BackgroundExecutionParameters.Add( Result.ResultAddress );
 	
 	Task = BackgroundJobs.Execute("DataExchangeSaaS.ExchangeOnDemand", 
-		BackgroundExecutionParameters, , NStr("en='Interactive exchange on demand.';ru='Интерактивный обмен по требованию.'"));
+		BackgroundExecutionParameters, , NStr("en='Interactive exchange on request.';ru='Интерактивный обмен по требованию.'"));
 		
 	Result.Insert("ID", Task.UUID);
 	Return Result;
@@ -996,7 +996,7 @@ EndProcedure
 Procedure CompanyFilterClean(Command)
 	
 	HeaderText = NStr("en='Confirmation';ru='Подтверждение'");
-	QuestionText   = NStr("en='Do you want to clear the filter by companies?';ru='Очистить отбор по организациям?'");
+	QuestionText   = NStr("en='Clear filter by companies?';ru='Очистить отбор по организациям?'");
 	NotifyDescription = New NotifyDescription("ClearFilterByCompanyEnd", ThisObject);
 	ShowQueryBox(NOTifyDescription, QuestionText, QuestionDialogMode.YesNo,,,HeaderText);
 	

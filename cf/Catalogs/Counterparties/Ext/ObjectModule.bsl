@@ -418,7 +418,7 @@ Procedure CheckChangePossibility(Cancel)
 		SetPrivilegedMode(False);
 		
 		If Not QueryResult.IsEmpty() Then
-			MessageText = NStr("ru = 'В базе присутствуют движения по взаиморасчетам с контрагентом. Изменение аналитики учета взаиморасчетов запрещено.'; en = 'The database contains posting of Settlement with the counterparty. Changing is prohibited.'");
+			MessageText = NStr("en='Records are registered for mutual settlements with the counterparty in the infobase. Cannot change the settlements accounting dimension.';ru='В базе присутствуют движения по взаиморасчетам с контрагентом. Изменение аналитики учета взаиморасчетов запрещено.'");
 			SmallBusinessServer.ShowMessageAboutError(ThisObject, MessageText,,,, Cancel);
 		EndIf;
 		

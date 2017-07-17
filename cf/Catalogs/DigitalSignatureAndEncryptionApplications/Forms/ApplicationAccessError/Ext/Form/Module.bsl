@@ -22,10 +22,10 @@ Procedure OnCreateAtServer(Cancel, StandardProcessing)
 	   AND ValueIsFilled(ErrorOnServer) Then
 		
 		ErrorDescription =
-			  NStr("en='ON SERVER:';ru='НА СЕРВЕРЕ:'")
+			  NStr("en='ON THE SERVER:';ru='НА СЕРВЕРЕ:'")
 			+ Chars.LF + Chars.LF + ErrorOnServer.ErrorDescription
 			+ Chars.LF + Chars.LF
-			+ NStr("en='ON COMPUTER:';ru='НА КОМПЬЮТЕРЕ:'")
+			+ NStr("en='ON THE COMPUTER:';ru='НА КОМПЬЮТЕРЕ:'")
 			+ Chars.LF + Chars.LF + ErrorOnClient.ErrorDescription;
 	Else
 		ErrorDescription = ErrorOnClient.ErrorDescription;

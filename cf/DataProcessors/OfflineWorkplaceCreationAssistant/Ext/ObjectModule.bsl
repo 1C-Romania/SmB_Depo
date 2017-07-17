@@ -300,7 +300,7 @@ Function GenerateApplicationNameInService()
 	
 	Result = "[ApplicationName] ([Explanation])";
 	Result = StrReplace(Result, "[ApplicationName]", ApplicationName);
-	Result = StrReplace(Result, "[Explanation]", NStr("en='Application in Internet';ru='приложение в Интернете'"));
+	Result = StrReplace(Result, "[Explanation]", NStr("en='online application';ru='приложение в Интернете'"));
 	
 	Return Result;
 EndFunction
@@ -324,7 +324,7 @@ Function SystemTitle()
 		
 	EndIf;
 	
-	Return ?(IsBlankString(Result), NStr("en='Offline working place';ru='Автономное рабочее место'"), Result);
+	Return ?(IsBlankString(Result), NStr("en='Offline work place';ru='Автономное рабочее место'"), Result);
 EndFunction
 
 #EndIf

@@ -13,7 +13,7 @@ Procedure OnCreateAtServer(Cancel, StandardProcessing)
 	EndIf;
 	
 	// Fill in form fields
-	Items.LoginLabel.Title = NStr("en='Login:';ru='Авторизоваться:'") + " " + Parameters.login;
+	Items.LoginLabel.Title = NStr("en='Authorize:';ru='Авторизоваться:'") + " " + Parameters.login;
 	
 	GenerateForm(Parameters);
 	

@@ -119,13 +119,13 @@ Procedure FillCheckProcessingAtServer(Cancel, CheckedAttributes)
 		FieldName = "InfobaseAdministrator";
 		IBUser = GetInfobaseAdministrator();
 		If IBUser = Undefined Then
-			CommonUseClientServer.MessageToUser(NStr("en='Specified user does not have access to the infobase.';ru='Указанный пользователь не имеет доступа к информационной базе.'"),,
+			CommonUseClientServer.MessageToUser(NStr("en='The specified user does not have access to the infobase.';ru='Указанный пользователь не имеет доступа к информационной базе.'"),,
 				FieldName,,Cancel);
 			Return;
 		EndIf;
 		
 		If Not Users.InfobaseUserWithFullAccess(IBUser, True) Then
-			CommonUseClientServer.MessageToUser(NStr("en='User has no administrative rights.';ru='У пользователя нет административных прав.'"),,
+			CommonUseClientServer.MessageToUser(NStr("en='User does not have administrative rights.';ru='У пользователя нет административных прав.'"),,
 				FieldName,,Cancel);
 			Return;
 		EndIf;

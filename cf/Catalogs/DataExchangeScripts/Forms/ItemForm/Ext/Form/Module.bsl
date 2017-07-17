@@ -24,7 +24,7 @@ Procedure OnCreateAtServer(Cancel, StandardProcessing)
 		Catalogs.DataExchangeScripts.AddImportingToDataExchangeScripts(Object, InfobaseNode);
 		Catalogs.DataExchangeScripts.AddDumpToDataExchangeScripts(Object, InfobaseNode);
 		
-		Description = NStr("en='Synchronization script for %1';ru='Сценарий синхронизации для %1'");
+		Description = NStr("en='Synchronization scenario for %1';ru='Сценарий синхронизации для %1'");
 		Object.Description = StringFunctionsClientServer.SubstituteParametersInString(Description, String(InfobaseNode));
 		
 		JobSchedule = Catalogs.DataExchangeScripts.ScheduledJobDefaultSchedule();
@@ -228,7 +228,7 @@ Procedure RefreshSchedulePresentation()
 	
 	If SchedulePresentation = String(New JobSchedule) Then
 		
-		SchedulePresentation = NStr("en='Schedule not specified';ru='Расписание не задано'");
+		SchedulePresentation = NStr("en='Schedule is not set';ru='Расписание не задано'");
 		
 	EndIf;
 	
@@ -256,7 +256,7 @@ Procedure ExecuteDataExchangeAtClient()
 	
 	OutputState = (LineCount > 1);
 	
-	MessageString = NStr("en='Running %1 for %2';ru='Выполняется %1 для %2'");
+	MessageString = NStr("en='%1 is executed for %2';ru='Выполняется %1 для %2'");
 	MessageString = StringFunctionsClientServer.SubstituteParametersInString(MessageString, 
 							String(CurrentData.RunningAction),
 							String(CurrentData.InfobaseNode));

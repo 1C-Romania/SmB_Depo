@@ -27,7 +27,7 @@ Procedure OnCreateAtServer(Cancel, StandardProcessing)
 	If Parameters.User <> Users.AuthorizedUser()
 	   AND Not Users.InfobaseUserWithFullAccess() Then
 		
-		Raise NStr("en = 'The rights are not sufficient to view the report.'; ru = 'Недостаточно прав для просмотра отчета.'");
+		Raise NStr("en='Insufficient rights to view the report.';ru='Недостаточно прав для просмотра отчета.'");
 	EndIf;
 	
 	Items.DetailedInformationAboutAccessRights.Visible =
@@ -89,17 +89,17 @@ Procedure OutputReport(Ref)
 		Properties.Insert("ObjectPresentation",			NStr("en = 'User: %1'; ru = 'Пользователь: %1'"));
 		
 	ElsIf TypeOf(Ref) = Type("CatalogRef.ExternalUsers") Then
-		Properties.Insert("ReportHeader",				NStr("en = 'External users rights report'; ru = 'Отчет по правам внешнего пользователя'"));
-		Properties.Insert("RolesByProfilesGrouping",	NStr("en = 'External user roles by profiles'; ru = 'Роли внешнего пользователя по профилям'"));
+		Properties.Insert("ReportHeader",				NStr("en='External user rights report';ru='Отчет по правам внешнего пользователя'"));
+		Properties.Insert("RolesByProfilesGrouping",	NStr("en='Roles of external user by profiles';ru='Роли внешнего пользователя по профилям'"));
 		Properties.Insert("ObjectPresentation",			NStr("en = 'External user: %1'; ru = 'Внешний пользователь: %1'"));
 		
 	ElsIf TypeOf(Ref) = Type("CatalogRef.UsersGroups") Then
 		Properties.Insert("ReportHeader",				NStr("en = 'User group rights report'; ru = 'Отчет по правам группы пользователей'"));
-		Properties.Insert("RolesByProfilesGrouping",	NStr("en = 'Roles user groups by profiles'; ru = 'Роли группы пользователей по профилям'"));
+		Properties.Insert("RolesByProfilesGrouping",	NStr("en='User group roles by profiles';ru='Роли группы пользователей по профилям'"));
 		Properties.Insert("ObjectPresentation",			NStr("en = 'User group: %1'; ru = 'Группа пользователей: %1'"));
 	Else
-		Properties.Insert("ReportHeader",				NStr("en = 'External user group rights report'; ru = 'Отчет по правам группы внешних пользователей'"));
-		Properties.Insert("RolesByProfilesGrouping",	NStr("en = 'External user group roles by profiles'; ru = 'Роли группы внешних пользователей по профилям'"));
+		Properties.Insert("ReportHeader",				NStr("en='Report on group rights of external users';ru='Отчет по правам группы внешних пользователей'"));
+		Properties.Insert("RolesByProfilesGrouping",	NStr("en='Roles of external user group by profiles';ru='Роли группы внешних пользователей по профилям'"));
 		Properties.Insert("ObjectPresentation",			NStr("en = 'External user group: %1'; ru = 'Группа внешних пользователей: %1'"));
 	EndIf;
 	
@@ -144,7 +144,7 @@ Procedure OutputReport(Ref)
 				StartModePresentation(InfobaseUserProperties.RunMode);
 			
 			If Not ValueIsFilled(InfobaseUserProperties.OSUser) Then
-				Area.Parameters.OSUser = NStr("en = 'Not specified'; ru = 'Не указан'");
+				Area.Parameters.OSUser = NStr("en='Not specified';ru='Не указан'");
 			EndIf;
 			Document.Put(Area, 2);
 		Else
@@ -690,10 +690,10 @@ Procedure OutputReport(Ref)
 		
 		If OnePersonalGroup Then
 			If TypeOf(Ref) = Type("CatalogRef.Users") Then
-				AccessPresentation = NStr("en = 'User access restrictions'; ru = 'Ограничения доступа пользователя'");
+				AccessPresentation = NStr("en='User access limitations';ru='Ограничения доступа пользователя'");
 				
 			ElsIf TypeOf(Ref) = Type("CatalogRef.ExternalUsers") Then
-				AccessPresentation = NStr("en = 'External user access restrictions'; ru = 'Ограничения доступа внешнего пользователя'");
+				AccessPresentation = NStr("en='Access restrictions of external user';ru='Ограничения доступа внешнего пользователя'");
 				
 			ElsIf TypeOf(Ref) = Type("CatalogRef.UsersGroups") Then
 				AccessPresentation = NStr("en = 'Access restrictions of user group'; ru = 'Ограничения доступа группы пользователей'");
@@ -705,7 +705,7 @@ Procedure OutputReport(Ref)
 				AccessPresentation = NStr("en = 'User access groups'; ru = 'Группы доступа пользователя'");
 				
 			ElsIf TypeOf(Ref) = Type("CatalogRef.ExternalUsers") Then
-				AccessPresentation = NStr("en = 'Extrenal user access groups'; ru = 'Группы доступа внешнего пользователя'");
+				AccessPresentation = NStr("en='Groups of external user access';ru='Группы доступа внешнего пользователя'");
 				
 			ElsIf TypeOf(Ref) = Type("CatalogRef.UsersGroups") Then
 				AccessPresentation = NStr("en = 'Access groups user groups'; ru = 'Группы доступа группы пользователей'");
@@ -856,15 +856,15 @@ Procedure OutputReport(Ref)
 			
 			If ObjectDescription.ReadingNotLimited Then
 				If ObjectDescription.view Then
-					ObjectPresentationClarification = NStr("en = '(viewing, not limited)'; ru = '(просмотр, не ограничен)'");
+					ObjectPresentationClarification = NStr("en='(view, not limited)';ru='(просмотр, не ограничен)'");
 				Else
-					ObjectPresentationClarification = NStr("en = '(viewing*, not limited)'; ru = '(просмотр*, не ограничен)'");
+					ObjectPresentationClarification = NStr("en='(view*, not limited)';ru='(просмотр*, не ограничен)'");
 				EndIf;
 			Else
 				If ObjectDescription.view Then
-					ObjectPresentationClarification = NStr("en = '(viewing, limited)'; ru = '(просмотр, ограничен)'");
+					ObjectPresentationClarification = NStr("en='(view, limited)';ru='(просмотр, ограничен)'");
 				Else
-					ObjectPresentationClarification = NStr("en = '(viewing *, limited)'; ru = '(просмотр*, ограничен)'");
+					ObjectPresentationClarification = NStr("en='(view*, limited)';ru='(просмотр*, ограничен)'");
 				EndIf;
 			EndIf;
 			
@@ -1072,7 +1072,7 @@ Procedure OutputReport(Ref)
 		True);
 	
 	Area = Template.GetArea("ObjectRightsGrouping");
-	Area.Parameters.ObjectRightsGroupingPresentation = NStr("en = 'Edit objects'; ru = 'Редактирование объектов'");
+	Area.Parameters.ObjectRightsGroupingPresentation = NStr("en='Object editing';ru='Редактирование объектов'");
 	Document.Put(Area, 1);
 	Area = Template.GetArea("EditObjectsOfLegend");
 	Document.Put(Area, 2);
@@ -1236,19 +1236,19 @@ Procedure OutputReport(Ref)
 				If ObjectDescription.Update1 Then
 					If ObjectDescription.ChangingNotLimited Then
 						If ObjectDescription.Edit Then
-							ObjectPresentationClarification = NStr("en = '(modification, not limited)'; ru = '(изменение, не ограничено)'");
+							ObjectPresentationClarification = NStr("en='(change, not limited)';ru='(изменение, не ограничено)'");
 						Else // NO ObjectDescription.Editing
-							ObjectPresentationClarification = NStr("en = '(modification*, not limited)'; ru = '(изменение*, не ограничено)'");
+							ObjectPresentationClarification = NStr("en='(change *, not limited)';ru='(изменение*, не ограничено)'");
 						EndIf;
 					Else
 						If ObjectDescription.Edit Then
-							ObjectPresentationClarification = NStr("en = '(modification, limited)'; ru = '(изменение, ограничено)'");
+							ObjectPresentationClarification = NStr("en='(change, limited)';ru='(изменение, ограничено)'");
 						Else // NO ObjectDescription.Editing
-							ObjectPresentationClarification = NStr("en = '(modification*, limited)'; ru = '(изменение*, ограничено)'");
+							ObjectPresentationClarification = NStr("en='(change *, limited)';ru='(изменение*, ограничено)'");
 						EndIf;
 					EndIf;
 				Else // NO ObjectDescription.Change
-					ObjectPresentationClarification = NStr("en = 'modification is not available)'; ru = '(изменение не доступно)'");
+					ObjectPresentationClarification = NStr("en='(change is not available)';ru='(изменение не доступно)'");
 				EndIf;
 			EndIf;
 			
@@ -1500,10 +1500,10 @@ Procedure OutputReport(Ref)
 		Area.Parameters.ToolTip = StrReplace(PromtForSubfolders, Chars.LF, " ");
 		Document.Put(Area, 2);
 		
-		TitleSettingIsReceivedFromGroup = NStr("en = 'Right setting is received from group'; ru = 'Настройка прав получена от группы'");
+		TitleSettingIsReceivedFromGroup = NStr("en='Rights setting received from group';ru='Настройка прав получена от группы'");
 		
 		Area = Template.GetArea("RightsSettingsLegendRowInheritance");
-		Area.Parameters.ToolTip = NStr("en = 'Inheriting rights from parent folders'; ru = 'Наследование прав от вышестоящих папок'");
+		Area.Parameters.ToolTip = NStr("en='Rights inheritance from upstream folders';ru='Наследование прав от вышестоящих папок'");
 		Document.Put(Area, 2);
 		
 		Document.Put(AreaIndent, 2);
@@ -1554,7 +1554,7 @@ Procedure OutputReport(Ref)
 		EndIf;
 		Document.Put(HeaderTemplate, 2);
 		
-		TextYes  = NStr("en = 'Yes'; ru = 'Да'");
+		TextYes  = NStr("en='Yes';ru='Да'");
 		TextNo = NStr("en = 'No'; ru = 'Нет'");
 		
 		// Display table rows
@@ -1621,11 +1621,11 @@ Function AccessKindPresentationTemplate(AccessTypeDescription, OwnersOfRightsSet
 		ElsIf AccessTypeDescription.AllAllowed Then
 			If AccessTypeDescription.AccessKind = Catalogs.Users.EmptyRef() Then
 				AccessKindPresentationTemplate =
-					NStr("en = '%1 (without prohibited, current user is always permitted)'; ru = '%1 (без запрещенных, текущий пользователь всегда разрешен)'");
+					NStr("en='%1 (no prohibited, the current  user is always permitted)';ru='%1 (без запрещенных, текущий пользователь всегда разрешен)'");
 				
 			ElsIf AccessTypeDescription.AccessKind = Catalogs.ExternalUsers.EmptyRef() Then
 				AccessKindPresentationTemplate =
-					NStr("en = '%1 (without prohibited, current external user is always permitted)'; ru = '%1 (без запрещенных, текущий внешний пользователь всегда разрешен)'");
+					NStr("en='%1 (no prohibited, the current external user is always permitted)';ru='%1 (без запрещенных, текущий внешний пользователь всегда разрешен)'");
 			Else
 				AccessKindPresentationTemplate = NStr("en = '%1 (without prohibited)'; ru = '%1 (без запрещенных)'");
 			EndIf;
@@ -1636,7 +1636,7 @@ Function AccessKindPresentationTemplate(AccessTypeDescription, OwnersOfRightsSet
 				
 			ElsIf AccessTypeDescription.AccessKind = Catalogs.ExternalUsers.EmptyRef() Then
 				AccessKindPresentationTemplate =
-					NStr("en='%1 (without permitted, current external user is always permitted)';ru='%1 (без разрешенных, текущий внешний пользователь всегда разрешен)'");
+					NStr("en='%1 (no permitted, the current external user is always permitted)';ru='%1 (без разрешенных, текущий внешний пользователь всегда разрешен)'");
 			Else
 				AccessKindPresentationTemplate = NStr("en='%1 (without permitted)';ru='%1 (без разрешенных)'");
 			EndIf;
@@ -1645,22 +1645,22 @@ Function AccessKindPresentationTemplate(AccessTypeDescription, OwnersOfRightsSet
 		If AccessTypeDescription.AllAllowed Then
 			If AccessTypeDescription.AccessKind = Catalogs.Users.EmptyRef() Then
 				AccessKindPresentationTemplate =
-					NStr("en='%1 (prohibited, current user is always permitted):';ru='%1 (запрещенные, текущий пользователь всегда разрешен):'");
+					NStr("en='%1 (prohibited, the current user is always permitted):';ru='%1 (запрещенные, текущий пользователь всегда разрешен):'");
 				
 			ElsIf AccessTypeDescription.AccessKind = Catalogs.ExternalUsers.EmptyRef() Then
 				AccessKindPresentationTemplate =
-					NStr("en='%1 (prohibited, current external user is always permitted):';ru='%1 (запрещенные, текущий внешний пользователь всегда разрешен):'");
+					NStr("en='%1  (prohibited, the current external user is always permitted):';ru='%1 (запрещенные, текущий внешний пользователь всегда разрешен):'");
 			Else
 				AccessKindPresentationTemplate = NStr("en='%1 (prohibited):';ru='%1 (запрещенные):'");
 			EndIf;
 		Else
 			If AccessTypeDescription.AccessKind = Catalogs.Users.EmptyRef() Then
 				AccessKindPresentationTemplate =
-					NStr("en='%1 (permitted, current user is always permitted):';ru='%1 (разрешенные, текущий пользователь всегда разрешен):'");
+					NStr("en='%1 (permitted, the current user is always permitted):';ru='%1 (разрешенные, текущий пользователь всегда разрешен):'");
 				
 			ElsIf AccessTypeDescription.AccessKind = Catalogs.ExternalUsers.EmptyRef() Then
 				AccessKindPresentationTemplate =
-					NStr("en='%1 (permitted, current external user is always permitted):';ru='%1 (разрешенные, текущий внешний пользователь всегда разрешен):'");
+					NStr("en='%1 (permitted, the current external user is always permitted):';ru='%1 (разрешенные, текущий внешний пользователь всегда разрешен):'");
 			Else
 				AccessKindPresentationTemplate = NStr("en='%1 (permitted):';ru='%1 (разрешенные):'");
 			EndIf;
@@ -1747,7 +1747,7 @@ Function StartModePresentation(RunMode)
 		StartModePresentation = NStr("en='Auto';ru='Авто'");
 		
 	ElsIf RunMode = "OrdinaryApplication" Then
-		StartModePresentation = NStr("en='Ordinary application';ru='Обычное приложение'");
+		StartModePresentation = NStr("en='Standard application';ru='Обычное приложение'");
 		
 	ElsIf RunMode = "ManagedApplication" Then
 		StartModePresentation = NStr("en='Managed application';ru='Управляемое приложение'");
@@ -1822,7 +1822,7 @@ Function MetadataObjectsRightsRestrictionKinds()
 				String.Presentation = NStr("en='Unknown access kind';ru='Неизвестный вид доступа'");
 			Else
 				String.Presentation = StringFunctionsClientServer.SubstituteParametersInString(
-					NStr("en='Right settings for %1';ru='Настройки прав на %1'"), RightSettingsOwnerMetadata.Presentation());
+					NStr("en='Set rights to %1';ru='Настройки прав на %1'"), RightSettingsOwnerMetadata.Presentation());
 			EndIf;
 		ElsIf AccessManagementService.AccessKindIsUsed(String.AccessKind) Then
 			String.Presentation = AccessTypeProperties.Presentation;

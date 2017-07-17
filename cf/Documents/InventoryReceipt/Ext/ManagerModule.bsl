@@ -200,7 +200,7 @@ Procedure InitializeDocumentData(DocumentRefInventoryReceipt, StructureAdditiona
 	
 	Query.SetParameter("InventoryReceipt", NStr("ru = 'Inventory receiving'; en = 'Inventory receiving'"));
 	Query.SetParameter("RevenueIncomes", NStr("ru = 'Поступление прочих доходов'; en = 'Receipt of other income'"));
-	Query.SetParameter("OtherIncome", NStr("ru = 'Прочее оприходование запасов'; en = 'Other inventory receipt'"));
+	Query.SetParameter("OtherIncome", NStr("en='Other inventory capitalization';ru='Прочее оприходование запасов'"));
 	
 	Query.SetParameter("UseSerialNumbers", StructureAdditionalProperties.AccountingPolicy.UseSerialNumbers);
 	

@@ -101,14 +101,14 @@ EndFunction
 //
 Function DataTransferRestrictionsDescriptionFull(FilterSsettingsAtNode, CorrespondentVersion, SettingID) Export
 	
-	TextDescription = NStr("en='All normative-reference information is automatically registered for sending;';ru='Вся нормативно-справочная информация автоматически регистрируется к отправке;'");
+	TextDescription = NStr("en='All reference information is automatically registered for sending;';ru='Вся нормативно-справочная информация автоматически регистрируется к отправке;'");
 	
 	If FilterSsettingsAtNode.ManualExchange Then
 		
 		TextDescription = NStr("en='User individually selects and registers the documents for sending;';ru='Пользователь самостоятельно отбирает и регистрирует документы к отправке;'");
 		
 		If Not FilterSsettingsAtNode.ImportDocumentsFromEnterprisesAccounting Then
-			TextDescription = TextDescription + Chars.LF + NStr("en='Application documents ""Accounting"" not participate in the synchronization;';ru='Документы приложения ""Бухгалтерия предприятия"" в синхронизации не участвуют;'");
+			TextDescription = TextDescription + Chars.LF + NStr("en='Documents of the Enterprise Accounting application are not synchronized;';ru='Документы приложения ""Бухгалтерия предприятия"" в синхронизации не участвуют;'");
 		EndIf;
 		
 	Else
@@ -120,7 +120,7 @@ Function DataTransferRestrictionsDescriptionFull(FilterSsettingsAtNode, Correspo
 		EndIf;
 		
 		If ValueIsFilled(FilterSsettingsAtNode.DocumentsDumpStartDate) Then
-			TextDescription = TextDescription + Chars.LF + NStr("en='since %StartDate%';ru='начиная с %ДатаНачала%'");
+			TextDescription = TextDescription + Chars.LF + NStr("en='from %StartDate%';ru='начиная с %ДатаНачала%'");
 			TextDescription = StrReplace(TextDescription,"%StartDate%", Format(FilterSsettingsAtNode.DocumentsDumpStartDate, "DF=dd.MM.yyyy"));
 		EndIf;
 		
@@ -163,7 +163,7 @@ Function ValuesDescriptionFullByDefault(DefaultValuesAtNode, CorrespondentVersio
 	
 	// Tax kind
 	If ValueIsFilled(DefaultValuesAtNode.TaxKind) Then
-		NString = NStr("en='Tax type: %1';ru='Вид налога: %1'");
+		NString = NStr("en='Tax kind: %1';ru='Вид налога: %1'");
 		Definition = StringFunctionsClientServer.SubstituteParametersInString(NString, String(DefaultValuesAtNode.TaxKind));
 	Else
 		Definition = "Tax kind is not specified";
@@ -183,7 +183,7 @@ Function ValuesDescriptionFullByDefault(DefaultValuesAtNode, CorrespondentVersio
 	
 	// Cash flow item (Income)
 	If ValueIsFilled(DefaultValuesAtNode.DebitItem) Then
-		NString = NStr("en='Cash flow item (income): %3';ru='Статья ДДС (приход): %3'");
+		NString = NStr("en='Cash flow item (receipt): %3';ru='Статья ДДС (приход): %3'");
 		Definition = StringFunctionsClientServer.SubstituteParametersInString(NString, , , String(DefaultValuesAtNode.DebitItem));
 	Else
 		Definition = "Cash flow item (Income) is not specified";
@@ -193,7 +193,7 @@ Function ValuesDescriptionFullByDefault(DefaultValuesAtNode, CorrespondentVersio
 	
 	// PettyCash
 	If ValueIsFilled(DefaultValuesAtNode.PettyCash) Then
-		NString = NStr("en='Petty cash: %4';ru='Касса: %4'");
+		NString = NStr("en='Cash fund: %4';ru='Касса: %4'");
 		Definition = StringFunctionsClientServer.SubstituteParametersInString(NString, , , , String(DefaultValuesAtNode.PettyCash));
 	Else
 		Definition = "Petty cash is not specified";
@@ -235,11 +235,11 @@ EndFunction
 //  String, Unlimited - presentation of a command displayed in the user interface.
 //
 // ForExample:
-// Return NStr("en='Create an exchange in the distributed infobase';ru='Создать обмен в распределенной информационной базе'");
+// Return NStr("en='Create exchange in the distributed infobase';ru='Создать обмен в распределенной информационной базе'");
 //
 Function CommandTitleForCreationOfNewDataExchange() Export
 	
-	Return NStr("en='Create an exchange with configuration ""1C: Accounting Enterprise 8, ed. 2.0""';ru='Создать обмен с конфигурацией ""1C: Бухгалтерия предприятия 8, ред. 2.0""'");
+	Return NStr("en='Create data exchange with the 1C:Accounting Enterprise 8 2.0 configuration';ru='Создать обмен с конфигурацией ""1C: Бухгалтерия предприятия 8, ред. 2.0""'");
 	
 EndFunction
 

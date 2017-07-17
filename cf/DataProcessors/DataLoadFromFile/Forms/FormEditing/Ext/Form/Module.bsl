@@ -36,7 +36,7 @@ EndProcedure
 &AtClient
 Procedure ResetSettings(Command)
 	Notification = New NotifyDescription("ResetSettingsEnd", ThisObject, CorrelationObjectName);
-	ShowQueryBox(Notification, NStr("en='Set columns settings to their original state?';ru='Установить настройки колонок в первоначальное состояние?'"), QuestionDialogMode.YesNo);
+	ShowQueryBox(Notification, NStr("en='Set the column settings back to their original state?';ru='Установить настройки колонок в первоначальное состояние?'"), QuestionDialogMode.YesNo);
 EndProcedure
 
 &AtClient

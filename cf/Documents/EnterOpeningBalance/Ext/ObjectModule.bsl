@@ -337,7 +337,7 @@ Procedure FillCheckProcessing(Cancel, CheckedAttributes)
 	For Each TSRow IN OtherSections Do
 		If TSRow.Account.Currency
 		AND Not ValueIsFilled(TSRow.Currency) Then
-			MessageText = NStr("ru = 'Не заполнена колонка ""Валюта"" для валютного счета в строке %НомерСтроки% списка ""Прочие разделы"".'; en = '''The ""Currency"" column is not filled for currency account in row No.%LineNumber% of the ""Other sections"" list.'");
+			MessageText = NStr("en='The ""Currency"" column is not filled in for the currency account in row No. %RowNumber% of the ""Other sections"" list.';ru='Не заполнена колонка ""Валюта"" для валютного счета в строке %НомерСтроки% списка ""Прочие разделы"".'");
 			MessageText = StrReplace(MessageText, "%LineNumber%", String(TSRow.LineNumber));
 			SmallBusinessServer.ShowMessageAboutError(
 				ThisObject,
@@ -350,7 +350,7 @@ Procedure FillCheckProcessing(Cancel, CheckedAttributes)
 		EndIf;
 		If TSRow.Account.Currency
 		AND Not ValueIsFilled(TSRow.AmountCur) Then
-			MessageText = NStr("ru = 'Не заполнена колонка ""Сумма (вал.)"" для валютного счета в строке %НомерСтроки% списка ""Прочие разделы"".'; en = 'Column ""Amount"" is not filled (cur.) for currency account in row No.%LineNumber% of the ""Other sections"" list.'");
+			MessageText = NStr("en='The ""Amount (cur.)"" column is not populated for the currency account in the %LineNumber% line of the ""Other sections"" list.';ru='Не заполнена колонка ""Сумма (вал.)"" для валютного счета в строке %НомерСтроки% списка ""Прочие разделы"".'");
 			MessageText = StrReplace(MessageText, "%LineNumber%", String(TSRow.LineNumber));
 			SmallBusinessServer.ShowMessageAboutError(
 				ThisObject,
@@ -367,7 +367,7 @@ Procedure FillCheckProcessing(Cancel, CheckedAttributes)
 		If TSRow.Counterparty.DoOperationsByDocuments
 		AND Not Autogeneration
 		AND Not ValueIsFilled(TSRow.Document) Then
-			MessageText = NStr("ru = 'Не заполнена колонка ""Документ расчетов"" в строке %НомерСтроки% списка ""Расчеты с покупателями"".'; en = 'The ""Calculation"" column is not filled in row No.%LineNumber% of the ""Accounts receivable"" list.'");
+			MessageText = NStr("en='The ""Settlement document"" column is not populated in the %LineNumber% line of the ""Settlements with customers"" list.';ru='Не заполнена колонка ""Документ расчетов"" в строке %НомерСтроки% списка ""Расчеты с покупателями"".'");
 			MessageText = StrReplace(MessageText, "%LineNumber%", String(TSRow.LineNumber));
 			SmallBusinessServer.ShowMessageAboutError(
 				ThisObject,
@@ -384,7 +384,7 @@ Procedure FillCheckProcessing(Cancel, CheckedAttributes)
 		If TSRow.Counterparty.DoOperationsByDocuments
 		AND Not Autogeneration
 		AND Not ValueIsFilled(TSRow.Document) Then
-			MessageText = NStr("ru = 'Не заполнена колонка ""Документ расчетов"" в строке %НомерСтроки% списка ""Расчеты с покупателями"".'; en = 'The ""Calculation"" column is not filled in row No.%LineNumber% of the ""Accounts receivable"" list.'");
+			MessageText = NStr("en='The ""Settlement document"" column is not populated in the %LineNumber% line of the ""Settlements with customers"" list.';ru='Не заполнена колонка ""Документ расчетов"" в строке %НомерСтроки% списка ""Расчеты с покупателями"".'");
 			MessageText = StrReplace(MessageText, "%LineNumber%", String(TSRow.LineNumber));
 			SmallBusinessServer.ShowMessageAboutError(
 				ThisObject,

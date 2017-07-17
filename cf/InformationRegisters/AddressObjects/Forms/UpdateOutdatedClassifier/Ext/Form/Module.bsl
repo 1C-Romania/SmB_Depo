@@ -23,7 +23,7 @@ Procedure BeforeClose(Cancel, StandardProcessing)
 	Notification = New NotifyDescription("CloseFormEnd", ThisObject);
 	Cancel = True;
 	
-	Text = NStr("en='Reject the update of data classifier?';ru='Отказаться от обновления данных классификатора?'");
+	Text = NStr("en='Refuse to update the classifier data?';ru='Отказаться от обновления данных классификатора?'");
 	ShowQueryBox(Notification, Text, QuestionDialogMode.YesNo);
 	
 EndProcedure
@@ -54,7 +54,7 @@ Procedure Cancel(Command)
 	
 	If ValueIsFilled(BackgroundJobID) Then
 		BackgroundJobCancel(BackgroundJobID);
-		ShowUserNotification(,, NStr("en='Address classifier update is not completed.';ru='Обновление адресного классификатора не завершено.'"));
+		ShowUserNotification(,, NStr("en='Address classifier has not been updated yet.';ru='Обновление адресного классификатора не завершено.'"));
 	EndIf;
 	
 	Close();
@@ -92,9 +92,9 @@ Procedure UpdateAddressClassifierClient()
 		If Result = "Completed" Then
 			RefreshReusableValues(); 
 			Notify("AddressClassifierIsUpdated", , ThisObject);
-			ShowUserNotification(,, NStr("en='Address classifier update is completed successfully.';ru='Обновление адресного классификатора успешно завершено.'"));
+			ShowUserNotification(,, NStr("en='Address classifier is successfully updated.';ru='Обновление адресного классификатора успешно завершено.'"));
 		Else
-			ShowUserNotification(,, NStr("en='Address classifier update is not completed.';ru='Обновление адресного классификатора не завершено.'"));
+			ShowUserNotification(,, NStr("en='Address classifier has not been updated yet.';ru='Обновление адресного классификатора не завершено.'"));
 		EndIf;
 	EndIf;
 
@@ -107,7 +107,7 @@ Procedure Attachable_CheckJobExecution()
 	Try
 		JobCompleted = JobCompleted(BackgroundJobID);
 	Except
-		EventLogMonitorClient.AddMessageForEventLogMonitor(NStr("en='Address classifier update';ru='Обновление адресного классификатора'", CommonUseClientServer.MainLanguageCode()),
+		EventLogMonitorClient.AddMessageForEventLogMonitor(NStr("en='Update address classifier';ru='Обновление адресного классификатора'", CommonUseClientServer.MainLanguageCode()),
 			"Error", DetailErrorDescription(ErrorInfo()), , True);
 			
 		ErrorText = StringFunctionsClientServer.SubstituteParametersInString(NStr("en='Address classifier update is interrupted.
@@ -119,9 +119,9 @@ Procedure Attachable_CheckJobExecution()
 	EndTry;
 		
 	If JobCompleted Then
-		EventLogMonitorClient.AddMessageForEventLogMonitor(NStr("en='Address classifier update';ru='Обновление адресного классификатора'", CommonUseClientServer.MainLanguageCode()),
-			"Information", NStr("en='Address classifier update is completed successfully.';ru='Обновление адресного классификатора успешно завершено.'"), , True);
-		ShowUserNotification(,, NStr("en='Address classifier update is completed successfully.';ru='Обновление адресного классификатора успешно завершено.'"));
+		EventLogMonitorClient.AddMessageForEventLogMonitor(NStr("en='Update address classifier';ru='Обновление адресного классификатора'", CommonUseClientServer.MainLanguageCode()),
+			"Information", NStr("en='Address classifier is successfully updated.';ru='Обновление адресного классификатора успешно завершено.'"), , True);
+		ShowUserNotification(,, NStr("en='Address classifier is successfully updated.';ru='Обновление адресного классификатора успешно завершено.'"));
 		RefreshReusableValues(); 
 		Notify("AddressClassifierIsUpdated", , ThisObject);
 		ClosingFormConfirmation = True;
@@ -152,7 +152,7 @@ Procedure UpdateAddressClassifier(Result, BackgroundJob = False)
 		
 	BackgroundJobResult = LongActions.ExecuteInBackground(UUID,
 		"AddressClassifierService.ObsoleteClassifierBackgroundDataTransfer", ServerCallParameters,
-		NStr("en='Address classifier subsystem: data update';ru='Подсистема Адресный классификатор: актуализация данных'")
+		NStr("en='Subsystem Address classifier: data update';ru='Подсистема Адресный классификатор: актуализация данных'")
 	);
 		
 	If BackgroundJobResult.JobCompleted Then

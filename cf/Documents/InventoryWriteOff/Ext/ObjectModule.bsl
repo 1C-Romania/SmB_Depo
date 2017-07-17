@@ -88,7 +88,7 @@ Procedure Filling(FillingData, StandardProcessing) Export
 		If Inventory.Count() = 0 Then
 			
 			Message = New UserMessage();
-			Raise NStr("en='No data to issue write off!';ru='Нет данных для оформления списания!'");
+			Raise NStr("en='No data to register write-off.';ru='Нет данных для оформления списания!'");
 			Message.Message();
 			
 			StandardProcessing = False;

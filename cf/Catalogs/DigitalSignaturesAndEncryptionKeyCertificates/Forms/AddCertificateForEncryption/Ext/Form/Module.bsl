@@ -22,7 +22,7 @@ Procedure OnCreateAtServer(Cancel, StandardProcessing)
 	Else
 		If DigitalSignatureClientServer.CommonSettings().CreateDigitalSignaturesAtServer Then
 			Items.GroupCertificates.Title =
-				NStr("en='Personal certificates on computer and server';ru='Личные сертификаты на компьютере и сервере'");
+				NStr("en='Personal certificates on computer and on server';ru='Личные сертификаты на компьютере и сервере'");
 		EndIf;
 		
 		ErrorReceivingCertificatesOnClient = Parameters.ErrorReceivingCertificatesOnClient;
@@ -168,7 +168,7 @@ EndProcedure
 Procedure Next(Command)
 	
 	If Items.Certificates.CurrentData = Undefined Then
-		ShowMessageBox(, NStr("en='Select the certificates to be added.';ru='Выделите сертификаты, которые требуется добавить.'"));
+		ShowMessageBox(, NStr("en='Select certificates that you want to add.';ru='Выделите сертификаты, которые требуется добавить.'"));
 		Return;
 	EndIf;
 	
@@ -201,7 +201,7 @@ Procedure NextAfterCertificateSearch(Result, NotSpecified) Export
 	Context = New Structure;
 	
 	If Result.Property("CertificateNotFound") Then
-		Context.Insert("ErrorDescription", NStr("en='Certificate is not found on the computer (may be deleted).';ru='Сертификат не найден на компьютере (возможно удален).'"));
+		Context.Insert("ErrorDescription", NStr("en='Certificate is not found on the computer (it might have been deleted).';ru='Сертификат не найден на компьютере (возможно удален).'"));
 	Else
 		Context.Insert("ErrorDescription", Result.ErrorDescription);
 	EndIf;
@@ -306,7 +306,7 @@ Procedure ShowPageCertificatePropertiesAdjustment(Form, CryptoCertificate, Certi
 	Items.Pages.CurrentPage  = Items.PageRefinementCertificateProperties;
 	Items.Add.DefaultButton = True;
 	
-	String = ?(ValueIsFilled(Form.Certificate), NStr("en='Refresh';ru='Обновить календарь'"), NStr("en='Add';ru='Добавить'"));
+	String = ?(ValueIsFilled(Form.Certificate), NStr("en='Update calendar';ru='Обновить календарь'"), NStr("en='Add';ru='Добавить'"));
 	If Items.Add.Title <> String Then
 		Items.Add.Title = String;
 	EndIf;

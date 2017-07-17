@@ -24,7 +24,7 @@ Function InterfaceVersionsCurrentIB(Val InterfaceName) Export
 	
 	If Result = Undefined OR Result.Count() = 0 Then
 		Raise StringFunctionsClientServer.SubstituteParametersInString(
-					NStr("en='Current infobase does not support the interface %1!';ru='Текущая информационная база не поддерживает интерфейс %1!'"), InterfaceName);
+					NStr("en='Current infobase does not support the %1 interface.';ru='Текущая информационная база не поддерживает интерфейс %1!'"), InterfaceName);
 	Else
 		Return Result;
 	EndIf;

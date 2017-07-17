@@ -202,7 +202,7 @@ Function CancellationUncheckAccountingBySeveralBusinessActivities()
 			
 			If RefsTable.Count() > 0 Then
 				
-				ErrorText = NStr("en='In base business activity are used different from the main! Disabling the option is prohibited!';ru='В базе используются направления деятельности, отличные от основного! Снятие опции запрещено!'");
+				ErrorText = NStr("en='Business areas which are different from the main one are used in the infobase. Cannot disable the option.';ru='В базе используются направления деятельности, отличные от основного! Снятие опции запрещено!'");
 				Break;
 				
 			EndIf;
@@ -241,7 +241,7 @@ Function CancellationUncheckAccountingBySeveralDepartments()
 	
 	If Not QueryResult.IsEmpty() Then
 		
-		ErrorText = NStr("en='In base departments are used different from the main! Disabling the option is prohibited!';ru='В базе используются подразделения, отличные от основного! Снятие опции запрещено!'");
+		ErrorText = NStr("en='Departments which are different from the main one are used in the infobase. Cannot disable the option.';ru='В базе используются подразделения, отличные от основного! Снятие опции запрещено!'");
 		
 	EndIf;
 	
@@ -282,7 +282,7 @@ Function CancellationUncheckFunctionalOptionAccountingFixedAssets()
 	
 	If Cancel Then
 		
-		ErrorText = NStr("en='In base there are register records by fixed assets! The flag removal is prohibited!';ru='В базе присутствуют движения по внеоборотным активам! Снятие флага запрещено!'");
+		ErrorText = NStr("en='There are capital asset movements in the infobase. Cannot clear the check box.';ru='В базе присутствуют движения по внеоборотным активам! Снятие флага запрещено!'");
 		
 	EndIf;
 	

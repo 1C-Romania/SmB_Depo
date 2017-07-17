@@ -83,7 +83,7 @@ Procedure ImportRules(Cancel, Record, TemporaryStorageAddress = "", RulesFilenam
 			
 			// There was no file in the archive - deny importing.
 			If UnpackedFileList.Count() = 0 Then
-				NString = NStr("en='When unpacking the archive the file with rules has not been found.';ru='При распаковке архива не найден файл с правилами.'");
+				NString = NStr("en='When unzipping archive, file with rules was not found.';ru='При распаковке архива не найден файл с правилами.'");
 				DataExchangeServer.ShowMessageAboutError(NString, Cancel);
 			EndIf;
 			
@@ -117,13 +117,11 @@ Procedure ImportRules(Cancel, Record, TemporaryStorageAddress = "", RulesFilenam
 					
 				// Old format
 				ElsIf UnpackedFileList.Count() = 1 Then
-					NString = NStr("en='No conversion rules file is found in the archive. Expected files quantity in archive - two. Files
-		|are expected: ExchangeRules.xml - conversion rules for
-		|the current application; CorrespondentExchangeRules.xml - conversion rules for application-correspondent.';ru='В архиве найден один файл правил конвертации. Ожидаемое количество файлов в архиве - два. Ожидаются файлы: ExchangeRules.xml - правила конвертации для текущей программы; CorrespondentExchangeRules.xml - правила конвертации для программы-корреспондента.'");
+					NString = NStr("en='Archive contains one file with conversion rules. Expected number of files in the archive is two. Expected files: ExchangeRules.xml - rules for the current application conversion; CorrespondentExchangeRules.xml - rules for the correspondent application conversion.';ru='В архиве найден один файл правил конвертации. Ожидаемое количество файлов в архиве - два. Ожидаются файлы: ExchangeRules.xml - правила конвертации для текущей программы; CorrespondentExchangeRules.xml - правила конвертации для программы-корреспондента.'");
 					DataExchangeServer.ShowMessageAboutError(NString, Cancel);
 				// There are several files in the archive but there should be one - deny importing.
 				ElsIf UnpackedFileList.Count() > 1 Then
-					NString = NStr("en='Several files are found while unzipping archive. There must be only one file with rules.';ru='При распаковке архива найдено несколько файлов. Должен быть только один файл с правилами.'");
+					NString = NStr("en='When unzipping archive, multiple files were found. There should be only one file with rules.';ru='При распаковке архива найдено несколько файлов. Должен быть только один файл с правилами.'");
 					DataExchangeServer.ShowMessageAboutError(NString, Cancel);
 				EndIf;
 				
@@ -135,14 +133,14 @@ Procedure ImportRules(Cancel, Record, TemporaryStorageAddress = "", RulesFilenam
 					
 				// There are several files in the archive but there should be one - deny importing.
 				ElsIf UnpackedFileList.Count() > 1 Then
-					NString = NStr("en='Several files are found while unzipping archive. There must be only one file with rules.';ru='При распаковке архива найдено несколько файлов. Должен быть только один файл с правилами.'");
+					NString = NStr("en='When unzipping archive, multiple files were found. There should be only one file with rules.';ru='При распаковке архива найдено несколько файлов. Должен быть только один файл с правилами.'");
 					DataExchangeServer.ShowMessageAboutError(NString, Cancel);
 				EndIf;
 				
 			EndIf;
 			
 		Else // If you failed to unpack file - deny importing.
-			NString = NStr("en='Failed to unpack the archive with rules.';ru='Не удалось распаковать архив с правилами.'");
+			NString = NStr("en='Cannot unpack an archive with rules.';ru='Не удалось распаковать архив с правилами.'");
 			DataExchangeServer.ShowMessageAboutError(NString, Cancel);
 		EndIf;
 		
@@ -284,7 +282,7 @@ Procedure ImportRuleSet(Cancel, DataForWriting, ErrorDescription, TemporaryStora
 			
 			// There was no file in the archive - deny importing.
 			If UnpackedFileList.Count() = 0 Then
-				NString = NStr("en='When unpacking the archive the file with rules has not been found.';ru='При распаковке архива не найден файл с правилами.'");
+				NString = NStr("en='When unzipping archive, file with rules was not found.';ru='При распаковке архива не найден файл с правилами.'");
 				DataExchangeServer.ShowMessageAboutError(NString, Cancel);
 			EndIf;
 			
@@ -320,7 +318,7 @@ Procedure ImportRuleSet(Cancel, DataForWriting, ErrorDescription, TemporaryStora
 			
 		Else 
 			// If you failed to unpack file - deny importing.
-			NString = NStr("en='Failed to unpack the archive with rules.';ru='Не удалось распаковать архив с правилами.'");
+			NString = NStr("en='Cannot unpack an archive with rules.';ru='Не удалось распаковать архив с правилами.'");
 			DataExchangeServer.ShowMessageAboutError(NString, Cancel);
 		EndIf;
 		
@@ -457,7 +455,7 @@ Procedure ImportProvidedRules(ExchangePlanName, RulesFilename) Export
 		
 		// There was no file in the archive - deny importing.
 		If UnpackedFileList.Count() = 0 Then
-			Raise NStr("en='When unpacking the archive the file with rules has not been found.';ru='При распаковке архива не найден файл с правилами.'");
+			Raise NStr("en='When unzipping archive, file with rules was not found.';ru='При распаковке архива не найден файл с правилами.'");
 		EndIf;
 		
 		// Files quantity does not correspond to the expected one - deny importing.
@@ -491,7 +489,7 @@ Procedure ImportProvidedRules(ExchangePlanName, RulesFilename) Export
 		
 	Else
 		// If you failed to unpack file - deny importing.
-		Raise NStr("en='Failed to unpack the archive with rules.';ru='Не удалось распаковать архив с правилами.'");
+		Raise NStr("en='Cannot unpack an archive with rules.';ru='Не удалось распаковать архив с правилами.'");
 	EndIf;
 	
 	// Delete temporary archive and temporary folder to which archive was unzipped.
@@ -565,7 +563,7 @@ Procedure ImportProvidedRules(ExchangePlanName, RulesFilename) Export
 	RegistrationRulesInformation = ImportRecordRules.GetInformationAboutRules();
 	
 	If ImportRecordRules.ErrorFlag Then
-		Raise NStr("en='An error occurred while importing registration rules.';ru='Ошибка при загрузке правил регистрации.'");
+		Raise NStr("en='An error occurred when importing registration rules.';ru='Ошибка при загрузке правил регистрации.'");
 	EndIf;
 	
 	// Delete rules temporary files.
@@ -620,7 +618,7 @@ Procedure DeleteProvidedRules(ExchangePlanName) Export
 		HasErrors = False;
 		InformationRegisters.DataExchangeRules.ImportRules(HasErrors, RecordManager);
 		If HasErrors Then
-			Raise NStr("en='An error occurred while importing rules from configuration.';ru='Ошибка при загрузке правил из конфигурации.'");
+			Raise NStr("en='An error occurred when importing rules from configuration.';ru='Ошибка при загрузке правил из конфигурации.'");
 		Else
 			RecordManager.Write();
 		EndIf;
@@ -782,7 +780,7 @@ Function GetBinaryDataFromConfigurationTemplate(Cancel, ExchangePlanName, Templa
 		RuleTemplate = ExchangePlanManager.GetTemplate(TemplateName);
 	Except
 		
-		MessageString = NStr("en='An error while receiving the configuration template %1 for the exchnage plan of %2 has occurred';ru='Ошибка получения макета конфигурации %1 для плана обмена %2'");
+		MessageString = NStr("en='An error occurred when receiving a template of configuration %1 for exchange plan %2';ru='Ошибка получения макета конфигурации %1 для плана обмена %2'");
 		MessageString = StringFunctionsClientServer.SubstituteParametersInString(MessageString, TemplateName, ExchangePlanName);
 		DataExchangeServer.ShowMessageAboutError(MessageString, Cancel);
 		Return Undefined;
@@ -818,7 +816,7 @@ Procedure RunFieldsFillCheckup(Cancel, Record)
 	ElsIf Record.RulesSource = Enums.RuleSourcesForDataExchange.ConfigurationTemplate
 		    AND IsBlankString(Record.RulesTemplateName) Then
 		
-		NString = NStr("en='Specify typical rules.';ru='Укажите типовые правила.'");
+		NString = NStr("en='Specify standard rules.';ru='Укажите типовые правила.'");
 		
 		DataExchangeServer.ShowMessageAboutError(NString, Cancel);
 		
@@ -893,7 +891,7 @@ Function RulesFromFileInformation(RulesFilename)
 	ExchangeRules.Read();
 	
 	If Not ((ExchangeRules.LocalName = "ExchangeRules") AND (ExchangeRules.NodeType = XMLNodeType.StartElement)) Then
-		Raise NStr("en='Exchange rules format error';ru='Ошибка формата правил обмена'");
+		Raise NStr("en='Error in exchange rule format';ru='Ошибка формата правил обмена'");
 	EndIf;
 	
 	While ExchangeRules.Read() Do
@@ -917,7 +915,7 @@ Function RulesFromFileInformation(RulesFilename)
 		
 	EndDo;
 	
-	Raise NStr("en='Exchange rules format error';ru='Ошибка формата правил обмена'");
+	Raise NStr("en='Error in exchange rule format';ru='Ошибка формата правил обмена'");
 	
 EndFunction
 
@@ -949,12 +947,12 @@ Function ConversionRulesAreCompatibleWithCurrentVersion(ExchangePlanName, ErrorD
 		
 		If ComparisonResult < 0 Then
 			
-			ErrorText = NStr("en='Data synchronization may work incorrectly as imported rules are designed for the previous application version ""%1"" (%2). It is recommended to use rules from configuration or import rules set designed for the current application version (%3).';ru='Синхронизация данных может работать некорректно, так как загружаемые правила предназначены для предыдущей версии программы ""%1"" (%2). Рекомендуется использовать правила из конфигурации или загрузить комплект правил, предназначенный для текущей версии программы (%3).'");
+			ErrorText = NStr("en='Data may be synced incorrectly because you use rules designed for the previous version of application ""%1"" (%2). Use rules designed for the configuration or import the set of rules designed for the current application version (%3).';ru='Синхронизация данных может работать некорректно, так как загружаемые правила предназначены для предыдущей версии программы ""%1"" (%2). Рекомендуется использовать правила из конфигурации или загрузить комплект правил, предназначенный для текущей версии программы (%3).'");
 			ErrorKind = "OutdatedConfigurationVersion";
 			
 		Else
 			
-			ErrorText = NStr("en='Data synchronization may work incorrectly as imported rules are designed for more recent application version ""%1"" (%2). It is recommended to update application version or use rules set designed for the current application version (%3).';ru='Синхронизация данных может работать некорректно, так как загружаемые правила предназначены для более новой версии программы ""%1"" (%2). Рекомендуется обновить версию программы или использовать комплект правил, предназначенный для текущей версии программы (%3).'");
+			ErrorText = NStr("en='Data may be synced incorrectly because you use rules designed for the newer version of application ""%1"" (%2). Update version of the application or use the set of rules designed for the current application version (%3).';ru='Синхронизация данных может работать некорректно, так как загружаемые правила предназначены для более новой версии программы ""%1"" (%2). Рекомендуется обновить версию программы или использовать комплект правил, предназначенный для текущей версии программы (%3).'");
 			ErrorKind = "OutdatedRules";
 			
 		EndIf;

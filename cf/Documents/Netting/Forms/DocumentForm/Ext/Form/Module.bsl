@@ -1037,7 +1037,7 @@ EndProcedure
 Procedure PickAccountsReceivable(Command)
 	
 	If Not ValueIsFilled(Object.CounterpartySource) Then
-		ShowMessageBox(, NStr("en='Specify the customer first!';ru='Укажите вначале покупателя!'"));
+		ShowMessageBox(, NStr("en='Specify the customer first.';ru='Укажите вначале покупателя!'"));
 		Return;
 	EndIf;
 	
@@ -1119,7 +1119,7 @@ EndProcedure // GetDebitorFromStorage()
 Procedure PickVendorSettlements(Command)
 	
 	If Not ValueIsFilled(Object.Counterparty) Then
-		ShowMessageBox(, NStr("en='Specify the vendor first!';ru='Укажите вначале поставщика!'"));
+		ShowMessageBox(, NStr("en='Specify the supplier first.';ru='Укажите вначале поставщика!'"));
 		Return;
 	EndIf;
 	
@@ -1223,7 +1223,7 @@ Procedure FillByDocumentBase(Command)
 	If Not ValueIsFilled(Object.BasisDocument) Then
 		
 		Message				= New UserMessage;
-		Message.Text			= NStr("en='Select the basis document.';ru='Выберите документ основание.'");
+		Message.Text			= NStr("en='Select basis document.';ru='Выберите документ основание.'");
 		Message.DataPath	= "BasisDocument";
 		Message.Message();
 		
@@ -1231,7 +1231,7 @@ Procedure FillByDocumentBase(Command)
 		
 	EndIf;
 	
-	QuestionText 	= NStr("en='Document will be cleared and filled according to basis document. Continue?';ru='Документ будит очищен и заполнен по документу-основанию. Продолжить?'");
+	QuestionText 	= NStr("en='Document will be cleared and filled in according to the basis document. Continue?';ru='Документ будит очищен и заполнен по документу-основанию. Продолжить?'");
 	Response = Undefined;
 
 	ShowQueryBox(New NotifyDescription("FillAccordingToBasisDocumentEnd", ThisObject), QuestionText, QuestionDialogMode.YesNo, );

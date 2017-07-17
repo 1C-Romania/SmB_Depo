@@ -35,7 +35,7 @@ Procedure GetPermissionsExtensionSafeModeSession(Val SessionKey, PermissionDescr
 		Else
 			
 			Raise StringFunctionsClientServer.SubstituteParametersInString(
-				NStr("en='Supplied processing for the launch key %1 has not been found!';ru='Не обнаружена поставляемая обработка для ключа запуска %1!'"),
+				NStr("en='Supplied data processor for startup key %1 is not found.';ru='Не обнаружена поставляемая обработка для ключа запуска %1!'"),
 				String(SessionKey));
 			
 		EndIf;

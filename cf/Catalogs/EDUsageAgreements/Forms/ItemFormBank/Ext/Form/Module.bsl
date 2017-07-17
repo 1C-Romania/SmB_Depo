@@ -44,7 +44,7 @@ Procedure OnCreateAtServer(Cancel, StandardProcessing)
 			MessageText = BriefErrorDescription(ErrorInfo())
 							+ NStr("en=' (see details in Event log monitor).';ru=' (подробности см. в Журнале регистрации).'");
 			ErrorText = DetailErrorDescription(ErrorInfo());
-			Operation = NStr("en='the agreement form opening';ru='открытие формы соглашения'");
+			Operation = NStr("en='opening agreement form';ru='открытие формы соглашения'");
 			ElectronicDocuments.ProcessExceptionByEDOnServer(Operation, ErrorText, MessageText, 1);
 		EndTry;
 		Items.TypeOfBankingSystem.Visible = False;
@@ -306,7 +306,7 @@ Procedure SettingsTest(Command)
 	
 	If Object.BankApplication = PredefinedValue("Enum.BankApplications.SberbankOnline") Then
 		#If WebClient Then
-			MessageText = NStr("en='Test is not possible in Web client';ru='Тест не возможен в веб-клиенте'");
+			MessageText = NStr("en='Test is unavailable in Web client';ru='Тест не возможен в веб-клиенте'");
 			CommonUseClientServer.MessageToUser(MessageText);
 			Return;
 		#EndIf
@@ -314,9 +314,9 @@ Procedure SettingsTest(Command)
 	
 	NotifyDescription = New NotifyDescription("TestEDFSettings", ThisObject);
 	If Modified OR Not ValueIsFilled(Object.Ref) Then
-		QuestionText = NStr("en='Save the current EDF setting. Do you want to continue the test?';ru='Необходимо сохранить текущую настройку ЭДО. Продолжить выполнение теста?'");
+		QuestionText = NStr("en='Save the current EDF setting. Continue the test?';ru='Необходимо сохранить текущую настройку ЭДО. Продолжить выполнение теста?'");
 		ButtonList = New ValueList();
-		ButtonList.Add(True, NStr("en='Save and perform the test';ru='Сохранить и выполнить тест'"));
+		ButtonList.Add(True, NStr("en='Save and test';ru='Сохранить и выполнить тест'"));
 		ButtonList.Add(False, NStr("en='Cancel the test';ru='Отменить тест'"));
 		ShowQueryBox(NOTifyDescription, QuestionText, ButtonList, , True, NStr("en='Test settings';ru='Тест настроек'"));
 	Else
@@ -354,7 +354,7 @@ Procedure TestEDFSettings(Result = Undefined, AdditionalParameters = Undefined) 
 		
 	If Object.BankApplication = PredefinedValue("Enum.BankApplications.SberbankOnline") Then
 		#If WebClient Then
-			MessageText = NStr("en='Test is not possible in WEB client';ru='Тест не возможен в WEB-клиенте'");
+			MessageText = NStr("en='Test is unavailable in WEB client';ru='Тест не возможен в WEB-клиенте'");
 			CommonUseClientServer.MessageToUser(MessageText);
 			Return;
 		#EndIf
@@ -742,7 +742,7 @@ Procedure PutInCertificateRepositoryConfiguration(BinaryData = Undefined, Certif
 				ValueToFormAttribute(CatalogObject, "Object");
 				Read();
 				DeleteFiles(TempFile);
-				MessageText = NStr("en='Failed to read the certificate file, operation is terminated.';ru='Не удалось прочитать файл сертификата, операция прервана.'");
+				MessageText = NStr("en='Failed to read the certificate file, the operation is terminated.';ru='Не удалось прочитать файл сертификата, операция прервана.'");
 				CommonUseClientServer.MessageToUser(MessageText);
 				CertificatePresentation = "";
 				Return;
@@ -923,7 +923,7 @@ Procedure ProcessingSberbankCertificateSelection(IDCertificate, Parameters = Und
 	Try
 		NewCertificate = New CryptoCertificate(CertificateBinaryData);
 	Except
-		ShowMessageBox( , NStr("en='Failed to read the certificate file, operation is terminated.';ru='Не удалось прочитать файл сертификата, операция прервана.'"));
+		ShowMessageBox( , NStr("en='Failed to read the certificate file, the operation is terminated.';ru='Не удалось прочитать файл сертификата, операция прервана.'"));
 		Return;
 	EndTry;
 	
@@ -1019,7 +1019,7 @@ Function ImportCertificateOnServer(CertificateStructure, ErrorDescription)
 		
 		Return NewItem.Ref;
 	Else
-		ErrorDescription = NStr("en='Error of the signature certificate data receiving!';ru='Ошибка получения данных сертификата подписи!'");
+		ErrorDescription = NStr("en='Error of the signature certificate data receipt.';ru='Ошибка получения данных сертификата подписи!'");
 		
 		Return Undefined;
 	EndIf;
@@ -1037,8 +1037,8 @@ Function SberbankCertificateBinaryData(IDCertificate)
 		MessageText = NStr("en='An error occurred while getting a certificate data.
 		|details in the event log';ru='При получении данных сертификата произошла ошибка.
 		|подробности в журнале регистрации'");
-		ErrorText = NStr("en='AddIn.Bicrypt component has returned an error code at the certificate receiving';ru='Компонента AddIn.Bicrypt при получении сертификата вернула код ошибки'") + Res;
-		Operation = NStr("en='Cryptography certificate receiving.';ru='Получение сертификата криптографии.'");
+		ErrorText = NStr("en='The AddIn.Bicrypt component returned an error code when receiving the certificate';ru='Компонента AddIn.Bicrypt при получении сертификата вернула код ошибки'") + Res;
+		Operation = NStr("en='Receiving cryptography certificate.';ru='Получение сертификата криптографии.'");
 		ElectronicDocumentsServiceCallServer.ProcessExceptionByEDOnServer(Operation, ErrorText, MessageText, 1);
 		Return Undefined;
 	EndIf;
@@ -1065,9 +1065,9 @@ Procedure GetSberbankCertificateIdentifier(EDAgreement, Parameters = Undefined) 
 		MessageText = NStr("en='An error occurred while getting a list of available certificates.
 		|details in the event log';ru='Ошибка получения списка доступных сертификатов.
 		|подробности в журнале регистрации'");
-		ErrorText = NStr("en='The AddIn.Bicrypt component has returned an error code when receiving the list of the certificates';ru='Компонента AddIn.Bicrypt при получении списка доступных сертификатов вернула код ошибки'")
+		ErrorText = NStr("en='The AddIn.Bicrypt component returned an error code when receiving a list of available certificates';ru='Компонента AddIn.Bicrypt при получении списка доступных сертификатов вернула код ошибки'")
 						+ Res;
-		Operation = NStr("en='Electronic document signing.';ru='Подписание электронного документа.'");
+		Operation = NStr("en='Sign electronic document.';ru='Подписание электронного документа.'");
 		ElectronicDocumentsServiceCallServer.ProcessExceptionByEDOnServer(Operation, ErrorText, MessageText, 1);
 		ElectronicDocumentsServiceClient.ClearAuthorizationDataSberbank();
 		Return;

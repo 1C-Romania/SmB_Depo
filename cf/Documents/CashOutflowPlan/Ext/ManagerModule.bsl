@@ -218,7 +218,7 @@ Procedure AddPrintCommands(PrintCommands) Export
 	
 	PrintCommand = PrintCommands.Add();
 	PrintCommand.ID = "CashOutflowPlanning";
-	PrintCommand.Presentation = NStr("en='Cash outflow planning';ru='Планирование расходов ДС'");
+	PrintCommand.Presentation = NStr("en='Cash expense planning';ru='Планирование расходов ДС'");
 	PrintCommand.FormsList = "DocumentForm,ListForm";
 	PrintCommand.CheckPostingBeforePrint = False;
 	PrintCommand.Order = 1;

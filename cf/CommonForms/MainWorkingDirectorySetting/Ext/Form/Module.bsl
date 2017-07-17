@@ -47,7 +47,7 @@ Procedure UserWorkingDirectoryStartChoice(Item, ChoiceData, StandardProcessing)
 	
 	// Choose another path to the working directory.
 	DirectoryName = UserWorkingDirectory;
-	Title = NStr("en='Select the main work directory';ru='Выберите основной рабочий каталог'");
+	Title = NStr("en='Select a main working directory';ru='Выберите основной рабочий каталог'");
 	If Not FileOperationsServiceClient.ChoosePathToWorkingDirectory(DirectoryName, Title, False) Then
 		Return;
 	EndIf;
@@ -179,7 +179,7 @@ Procedure ClearLocalFilesCacheEnd(Result, ExecuteParameters) Export
 	
 	RefreshCurrentStateBusinessDirectory();
 	
-	Status(NStr("en='Main working directory has been cleared successfully.';ru='Очистка основного рабочего каталога успешно завершена.'"));
+	Status(NStr("en='Main working directory is cleaned up successfully.';ru='Очистка основного рабочего каталога успешно завершена.'"));
 	
 EndProcedure
 

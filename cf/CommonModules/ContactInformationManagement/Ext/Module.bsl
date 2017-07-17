@@ -499,7 +499,7 @@ Procedure FillCheckProcessingAtServer(Form, Object, Cancel) Export
 				
 				If Mandatory And IsBlankString(Presentation) Then
 					
-					MessageText = NStr("ru = 'Поле ""%1"" не заполнено.'; en = 'The %1 field is required.'");
+					MessageText = NStr("en='The ""%1"" field is not filled in.';ru='Поле ""%1"" не заполнено.'");
 					MessageText = StringFunctionsClientServer.SubstituteParametersInString(MessageText, InformationKind.Description);
 					CommonUseClientServer.MessageToUser(MessageText,,Field);
 					CurrentErrorLevel = 2;
@@ -531,7 +531,7 @@ Procedure FillCheckProcessingAtServer(Form, Object, Cancel) Export
 				)
 			Then
 				
-				MessageText = NStr("ru = 'Поле ""%1"" не заполнено.'; en = 'The %1 field is required.'");
+				MessageText = NStr("en='The ""%1"" field is not filled in.';ru='Поле ""%1"" не заполнено.'");
 				MessageText = StringFunctionsClientServer.SubstituteParametersInString(MessageText, InformationKind.Description);
 				CommonUseClientServer.MessageToUser(MessageText,,,AttributeName);
 				CurrentErrorLevel = 2;
@@ -813,7 +813,7 @@ Function ContactInformationAddressCountry(Val XMLString) Export
 	XDTOAddress = XDTOFactory.ReadXML(Read, XDTOFactory.Type(Namespace, "ContactInformation"));
 	Address = XDTOAddress.Content;
 	If Address = Undefined Or Address.Type() <> XDTOFactory.Type(Namespace, "Address") Then
-		Raise NStr("ru = 'Невозможно определить страну, ожидается адрес.'; en = 'Cannot determine country, expecting an address.'");
+		Raise NStr("en='Cannot determine country; address pending.';ru='Невозможно определить страну, ожидается адрес.'");
 	EndIf;
 	
 	Result.Description = TrimAll(Address.Country);
@@ -868,7 +868,7 @@ Function ContactInformationAddressCity(Val XMLString) Export
 	XDTOAddress = XDTOFactory.ReadXML(Read, XDTOFactory.Type(Namespace, "ContactInformation"));
 	Address = XDTOAddress.Content;
 	If Address = Undefined Or Address.Type() <> XDTOFactory.Type(Namespace, "Address") Then
-		Raise NStr("ru = 'Невозможно определить город, ожидается адрес.'; en = 'Cannot determine city, expecting an address.'");
+		Raise NStr("en='Cannot determine city; address pending.';ru='Невозможно определить город, ожидается адрес.'");
 	EndIf;
 	
 	AddressUS = ContactInformationInternal.HomeCountryAddress(Address);
@@ -912,7 +912,7 @@ Function ContactInformationAddressDomain(Val XMLString) Export
 		EndIf;
 	EndIf;
 	
-	Raise NStr("ru = 'Невозможно определить домен, ожидается электронная почта или веб-ссылка.'; en = 'Cannot determine domain, expecting an email address or URL.'");	
+	Raise NStr("en='Cannot determine domain; email or web link pending.';ru='Невозможно определить домен, ожидается электронная почта или веб-ссылка.'");	
 EndFunction
 
 // Returns a string containing a phone number without country code or extension.
@@ -944,7 +944,7 @@ Function ContactInformationPhoneNumber(Val XMLString) Export
 		EndIf;
 	EndIf;
 	
-	Raise NStr("ru = 'Невозможно определить номер, ожидается телефона или факс.'; en = 'Cannot determine number, expecting a phone or fax number.'");
+	Raise NStr("en='Cannot determine number; phone call or fax pending.';ru='Невозможно определить номер, ожидается телефона или факс.'");
 EndFunction
 
 // Compares two sets of contact information.
@@ -1182,7 +1182,7 @@ Procedure CreateContactInformationTemporaryTable(TempTablesManager, ObjectArray,
 	If TypeOf(ObjectArray) = Type("Array") And ObjectArray.Count() > 0 Then
 		Ref = ObjectArray.Get(0);
 	Else
-		Raise NStr("ru = 'Неверное значение для массива владельцев контактной информации.'; en = 'Invalid value in the contact information owner data array.'");
+		Raise NStr("en='Incorrect value for the array of contact information owners.';ru='Неверное значение для массива владельцев контактной информации.'");
 	EndIf;
 	
 	Query = New Query("
@@ -1787,9 +1787,9 @@ Function TextBox(Form, EditInDialogOnly, Type, AttributeName, ToolTip, IsNewCIKi
 		CommandName = "ContextMenu" + AttributeName;
 		Command = Form.Commands.Add(CommandName);
 		Button = Form.Items.Add(CommandName,Type("FormButton"), Item.ContextMenu);
-		Command.ToolTip = NStr("ru = 'Ввести комментарий'; en = 'Enter comment'");
+		Command.ToolTip = NStr("en='Enter a comment';ru='Ввести комментарий'");
 		Command.Action = "Attachable_ContactInformationExecuteCommand";
-		Button.Title = NStr("ru = 'Ввести комментарий'; en = 'Enter comment'");
+		Button.Title = NStr("en='Enter a comment';ru='Ввести комментарий'");
 		Button.CommandName = CommandName;
 		Command.ModifiesStoredData = True;
 		
@@ -1838,21 +1838,21 @@ Function Action(Form, Type, AttributeName, ActionGroup, AddressCount, HasComment
 		
 		If Type = Enums.ContactInformationTypes.Address Then
 			
-			Item.Title = NStr("ru = 'Заполнить'; en = 'Fill'");
-			Command.ToolTip = NStr("ru = 'Заполнить адрес из другого поля'; en = 'Fill in address'");
+			Item.Title = NStr("en='Fill in';ru='Заполнить'");
+			Command.ToolTip = NStr("en='Fill in the address';ru='Заполнить адрес из другого поля'");
 			Command.Picture = PictureLib.MoveLeft;
 			Command.ModifiesStoredData = True;
 			
 		ElsIf Type = Enums.ContactInformationTypes.WebPage Then
 			
-			Item.Title = NStr("ru = 'Перейти'; en = 'GoTo'");
-			Command.ToolTip = NStr("ru = 'Перейти по ссылке'; en = 'Go to URL'");
+			Item.Title = NStr("en='Navigate';ru='Перейти'");
+			Command.ToolTip = NStr("en='Click URL';ru='Перейти по ссылке'");
 			Command.Picture = PictureLib.ContactInformationGotoURL;
 			
 		ElsIf Type = Enums.ContactInformationTypes.EmailAddress Then
 			
-			Item.Title = NStr("ru = 'Написать письмо'; en = 'Create email message'");
-			Command.ToolTip = NStr("ru = 'Написать письмо'; en = 'Create an email message'");
+			Item.Title = NStr("en='Write an email';ru='Написать письмо'");
+			Command.ToolTip = NStr("en='Write an email';ru='Написать письмо'");
 			Command.Picture = PictureLib.SendEmail;
 			
 		EndIf;

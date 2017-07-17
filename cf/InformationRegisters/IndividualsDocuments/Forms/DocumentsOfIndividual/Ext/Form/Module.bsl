@@ -31,7 +31,7 @@ Procedure OnCreateAtServer(Cancel, StandardProcessing)
 		
 		If Not IsIdentity AND AreDocuments Then
 			Items.NoneIdentity.Visible		= True;
-			MessageText = NStr("en='For the individual %1 the ID document has not been specified.';ru='Для физлица %1 не задан документ, удостоверяющий личность.'");
+			MessageText = NStr("en='ID document is not specified for individual %1.';ru='Для физлица %1 не задан документ, удостоверяющий личность.'");
 			IdentityCard = StringFunctionsClientServer.SubstituteParametersInString(MessageText, Ind);
 		EndIf;
 		

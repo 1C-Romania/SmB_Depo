@@ -21,9 +21,9 @@ Procedure OnCreateAtServer(Cancel, StandardProcessing)
 	
 	If RunMode.SaaS Then
 		
-		Items.SectionDescription.Title = NStr("en='Data synchronization setup with my applications.';ru='Настройка синхронизации данных с моими приложениями.'");
-		Items.ExplanationDataSynchronizationSettings.Title = NStr("en='Setup and data synchronization with my applications.';ru='Настройка и выполнение синхронизации данных с моими приложениями.'");
-		Items.ExplanationOpenDataImportProhibitionDates.Title = NStr("en='Prohibition of the last periods data import out of the other applications.';ru='Запрет загрузки данных прошлых периодов из других приложений.'");
+		Items.SectionDescription.Title = NStr("en='Configure data synchronization with my applications.';ru='Настройка синхронизации данных с моими приложениями.'");
+		Items.ExplanationDataSynchronizationSettings.Title = NStr("en='Setting and data synchronization with my applications.';ru='Настройка и выполнение синхронизации данных с моими приложениями.'");
+		Items.ExplanationOpenDataImportProhibitionDates.Title = NStr("en='Prohibit import of previous period data from other applications.';ru='Запрет загрузки данных прошлых периодов из других приложений.'");
 		
 		Items.GroupUseDataSynchronization.Visible = False;
 		Items.GroupDistributedInfobaseNodePrefix.Visible = False;

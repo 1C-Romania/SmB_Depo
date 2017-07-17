@@ -146,7 +146,7 @@ Procedure CheckUserRights(User = Undefined)
 		Raise(
 			NStr("en='User ""';ru='Пользователь ""'")
 		  + User
-		  + NStr("en='"" there aren not rights on data synchronization with mobile application 1C:Small Business. It is required to add the Basic rights and Funds access rights profiles.';ru='"" нет прав на синхронизацию данных с мобильным приложением 1С:Управление небольшой фирмой. Необходимо включить профили прав доступа Базовые права и Деньги.'")
+		  + NStr("en='"" you are not authorized to synchronize data with mobile application 1C:Small Business. Enable the Basic rights and Funds access rights profiles.';ru='"" нет прав на синхронизацию данных с мобильным приложением 1С:Управление небольшой фирмой. Необходимо включить профили прав доступа Базовые права и Деньги.'")
 		);
 		
 	EndIf;

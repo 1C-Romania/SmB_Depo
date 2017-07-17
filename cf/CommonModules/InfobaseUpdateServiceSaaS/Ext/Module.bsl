@@ -137,7 +137,7 @@ Procedure GenerateDataAreaUpdatePlan(LibraryID, AllHandlers,
 				If Not Selection.Updated Then
 					EmptyUpdatePlan = False;
 					
-					CommentTemplate = NStr("en='Configuration version update has been performed before the %1 library version update';ru='Обновление версии конфигурации было выполнено до обновления версии библиотеки %1'");
+					CommentTemplate = NStr("en='Configuration version was updated before updating a version of library %1';ru='Обновление версии конфигурации было выполнено до обновления версии библиотеки %1'");
 					TextOfComment = StringFunctionsClientServer.SubstituteParametersInString(CommentTemplate, Selection.Name);
 					WriteLogEvent(
 						InfobaseUpdate.EventLogMonitorEvent(),
@@ -158,7 +158,7 @@ Procedure GenerateDataAreaUpdatePlan(LibraryID, AllHandlers,
 				If DescriptionUpdateYourPlan = Undefined Then
 					EmptyUpdatePlan = False;
 					
-					CommentTemplate = NStr("en='Library update plan %1 has not been found';ru='Не найден план обновления библиотеки %1'");
+					CommentTemplate = NStr("en='Update plan of library %1 is not found';ru='Не найден план обновления библиотеки %1'");
 					TextOfComment = StringFunctionsClientServer.SubstituteParametersInString(CommentTemplate, Selection.Name);
 					WriteLogEvent(
 						InfobaseUpdate.EventLogMonitorEvent(),
@@ -532,7 +532,7 @@ Procedure ScheduleDataAreaUpdate(Val LockAreas = True, Val LockMessage = "") Exp
 	If IsBlankString(LockMessage) Then
 		LockMessage = Constants.LockMessageOnConfigurationUpdate.Get();
 		If IsBlankString(LockMessage) Then
-			LockMessage = NStr("en='System is locked to perform the update.';ru='Система заблокирована для выполнения обновления.'");
+			LockMessage = NStr("en='System is locked for update.';ru='Система заблокирована для выполнения обновления.'");
 		EndIf;
 	EndIf;
 	LockParameters = InfobaseConnections.NewLockConnectionParameters();
@@ -755,10 +755,10 @@ Function LockDataAreasVersions() Export
 			LockDataForEdit(RecordKey);
 		Except
 			WriteLogEvent(InfobaseUpdate.EventLogMonitorEvent() + ". " 
-				+ NStr("en='Data area updating';ru='Обновление области данных'", Metadata.DefaultLanguage.LanguageCode),
+				+ NStr("en='Update data area';ru='Обновление области данных'", Metadata.DefaultLanguage.LanguageCode),
 				EventLogLevel.Error,,,
 				DetailErrorDescription(ErrorInfo()));
-			Raise(NStr("en='An error occurred while updating data area. Record of the data area versions has been locked.';ru='Ошибка обновления области данных. Запись версий области данных заблокирована.'"));
+			Raise(NStr("en='An error occurred when updating the data area. Writing of data area versions is locked.';ru='Ошибка обновления области данных. Запись версий области данных заблокирована.'"));
 		EndTry;
 	EndIf;
 	Return RecordKey;

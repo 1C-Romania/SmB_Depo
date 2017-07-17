@@ -133,13 +133,13 @@ Function AdministrationParameters() Export
 	If CommonUseReUse.DataSeparationEnabled() AND CommonUseReUse.CanUseSeparatedData() Then
 		
 		If Not Users.InfobaseUserWithFullAccess() Then
-			Raise NStr("en='Insufficient rights to perform operation';ru='Недостаточно прав для выполнения операции'");
+			Raise NStr("en='Insufficient rights to perform the operation';ru='Недостаточно прав для выполнения операции'");
 		EndIf;
 		
 	Else
 		
 		If Not Users.InfobaseUserWithFullAccess(, True) Then
-			Raise NStr("en='Insufficient rights to perform operation';ru='Недостаточно прав для выполнения операции'");
+			Raise NStr("en='Insufficient rights to perform the operation';ru='Недостаточно прав для выполнения операции'");
 		EndIf;
 		
 	EndIf;
@@ -723,7 +723,7 @@ Function ClientParametersOnServer() Export
 	If ClientParameters.Count() = 0
 	   AND CurrentRunMode() <> Undefined Then
 		
-		Raise NStr("en='Client parameters at server are not filled.';ru='Не заполнены параметры клиента на сервере.'");
+		Raise NStr("en='Client parameters on server are not entered.';ru='Не заполнены параметры клиента на сервере.'");
 	EndIf;
 	
 	Return ClientParameters;
@@ -745,7 +745,7 @@ EndFunction
 Function RunBackgroundJobWithClientContext(MethodName, Parameters = Undefined, Key = "", Description = "") Export
 	
 	If CurrentRunMode() = Undefined Then
-		Raise NStr("en='Run the background job with the client context is possible only when there is the client.';ru='Запуск фонового задания с контекстом клиента возможен только при наличии клиента.'");
+		Raise NStr("en='You can start background job with the customer context only when there is the customer.';ru='Запуск фонового задания с контекстом клиента возможен только при наличии клиента.'");
 	EndIf;
 	
 	AllParameters = New Structure;
@@ -910,7 +910,7 @@ Procedure CheckForUpdatesApplicationWorkParameters(ConstantName, ParameterNames 
 			EndIf;
 			If CurrentRunMode() = Undefined Then
 				Raise
-					NStr("en='Entrance to the application is temporarily impossible due to the update to the new version.';ru='Вход в программу временно невозможен в связи с обновлением на новую версию'");
+					NStr("en='Logon to the application is temporarily unavailable due to update to the newer version';ru='Вход в программу временно невозможен в связи с обновлением на новую версию'");
 			Else
 				Raise
 					NStr("en='Invalid access to non-updated application
@@ -1338,7 +1338,7 @@ Procedure ValidateExchangePlanContent(Val ExchangePlanName) Export
 		If EnableContent.Count() <> 0 Then
 			
 			DetailsExceptions1 = StringFunctionsClientServer.SubstituteParametersInString(
-				NStr("en='The %1 exchange plan must include the following metadata objects: %2';ru='В состав плана обмена %1 должны входить следующие объекты метаданных: %2'"),
+				NStr("en='The following metadata objects should be included in exchange plan %1: %2';ru='В состав плана обмена %1 должны входить следующие объекты метаданных: %2'"),
 				ExchangePlanName,
 				StringFunctionsClientServer.RowFromArraySubrows(PresentationMetadataObjects(EnableContent), ", "));
 			
@@ -1347,7 +1347,7 @@ Procedure ValidateExchangePlanContent(Val ExchangePlanName) Export
 		If ExcludeFromComposition.Count() <> 0 Then
 			
 			DetailsExceptions2 = StringFunctionsClientServer.SubstituteParametersInString(
-				NStr("en='The exchange plan %1 must NOT include the following metadata objects: %2';ru='В состав плана обмена %1 НЕ должны входить следующие объекты метаданных: %2'"),
+				NStr("en='The following metadata objects should NOT be included in exchange plan %1: %2';ru='В состав плана обмена %1 НЕ должны входить следующие объекты метаданных: %2'"),
 				ExchangePlanName,
 				StringFunctionsClientServer.RowFromArraySubrows(PresentationMetadataObjects(ExcludeFromComposition), ", "));
 			
@@ -1413,19 +1413,19 @@ Procedure RegisterObjectInAllNodes(Val Object, Val ExchangePlanName) Export
 	If CommonUseReUse.DataSeparationEnabled() Then
 		
 		If CommonUseReUse.CanUseSeparatedData() Then
-			Raise NStr("en='Registration of the unseparated data modifications in the divided mode.';ru='Регистрация изменений неразделенных данных в разделенном режиме.'");
+			Raise NStr("en='Changes registration of shared data in the split mode.';ru='Регистрация изменений неразделенных данных в разделенном режиме.'");
 		EndIf;
 		
 		If Not CommonUseReUse.IsSeparatedMetadataObject("ExchangePlan." + ExchangePlanName,
 				CommonUseReUse.MainDataSeparator())
 			Then
-			Raise NStr("en='Registration of modifications for undivided exchange plans is not supported.';ru='Регистрация изменений для неразделенных планов обмена не поддерживается.'");
+			Raise NStr("en='Changes registration for undivided exchange plans is not supported.';ru='Регистрация изменений для неразделенных планов обмена не поддерживается.'");
 		EndIf;
 		
 		If CommonUseReUse.IsSeparatedMetadataObject(Object.Metadata().FullName(),
 				CommonUseReUse.MainDataSeparator())
 			Then
-			Raise NStr("en='Registration of modifications for the separated objects is not supported.';ru='Регистрация изменений для разделенных объектов не поддерживается.'");
+			Raise NStr("en='Changes registration for divided objects is not supported.';ru='Регистрация изменений для разделенных объектов не поддерживается.'");
 		EndIf;
 		
 		QueryText =
@@ -1774,9 +1774,9 @@ Procedure WhenFillingOutPermitsForAccessToExternalResources(PermissionsQueries) 
 	permissions = New Array();
 	
 	permissions.Add(WorkInSafeMode.PermissionToUseTemporaryFilesDirectory(True, True,
-		NStr("en='For the application to work.';ru='Для возможности работы программы.'")));
+		NStr("en='For the application operation.';ru='Для возможности работы программы.'")));
 	permissions.Add(WorkInSafeMode.PermissionToUseExternalComponent("CommonTemplate.DeclinationComponentFullName", 
-		NStr("en='To use functions by the full name declension.';ru='Для использования функций по склонению ФИО.'")));
+		NStr("en='To use functions of full name conjugation.';ru='Для использования функций по склонению ФИО.'")));
 	permissions.Add(WorkInSafeMode.PermissionToUsePrivelegedMode());
 	
 	PermissionsQueries.Add(
@@ -1943,7 +1943,7 @@ Procedure ClearTempFilesDirectory(PathToDirectory) Export
 			,
 			,
 			StringFunctionsClientServer.SubstituteParametersInString(
-				NStr("en='An error occurred while clearing the directory of temporary files %1:%2';ru='Ошибка очистки каталога временных файлов ""%1"":%2'"),
+				NStr("en='An error occurred when cleaning up temporary file directory ""%1"":%2';ru='Ошибка очистки каталога временных файлов ""%1"":%2'"),
 				PathToDirectory,
 				Chars.LF + DetailErrorDescription(ErrorInfo())));
 	EndTry;
@@ -2430,7 +2430,7 @@ Function EventsHandlers() Export
 	If AreRequiredEventsWithoutHandlers.Count() > 0 Then
 		EventName  = NStr("en='EVENT HANDLERS';ru='Обработчики событий'", CommonUseClientServer.MainLanguageCode());
 		
-		Comment = NStr("en='Handlers have not been determined for the following obligatory events:';ru='Для следующих обязательных событий не определены обработчики:'")
+		Comment = NStr("en='Handlers are not defined for the following required events:';ru='Для следующих обязательных событий не определены обработчики:'")
 			+ Chars.LF + StringFunctionsClientServer.RowFromArraySubrows(AreRequiredEventsWithoutHandlers, Chars.LF);
 		
 		WriteLogEvent(EventName, EventLogLevel.Error,,, Comment);
@@ -2585,11 +2585,11 @@ Procedure ImportRefreshApplicationWorkParameters(ExclusiveModeSetupError = Undef
 			If ValueIsFilled(CriticalChangesList) Then
 				
 				If RunImport Then
-					EventName = NStr("en='Metadata objects identifiers.It is required to import critical changes';ru='Идентификаторы объектов метаданных.Требуется загрузить критичные изменения'",
+					EventName = NStr("en='Metadata object IDs.Import critical changes';ru='Идентификаторы объектов метаданных.Требуется загрузить критичные изменения'",
 						CommonUseClientServer.MainLanguageCode());
 				Else
 					// Setting in the IB subordinate node during the first start.
-					EventName = NStr("en='Metadata objects identifiers.It is required to execute critical changes';ru='Идентификаторы объектов метаданных.Требуется выполнить критичные изменения'",
+					EventName = NStr("en='Metadata object IDs.It is required to execute critical changes';ru='Идентификаторы объектов метаданных.Требуется выполнить критичные изменения'",
 						CommonUseClientServer.MainLanguageCode());
 				EndIf;
 				WriteLogEvent(EventName, EventLogLevel.Error, , , CriticalChangesList);
@@ -2926,7 +2926,7 @@ Procedure DisablePredefinedItemsDeletionMarkupBeforeWriting(Source, Cancel) Expo
 	
 	If Source.IsNew() Then
 		Raise
-			NStr("en='It is unacceptable to create the predefined item marked for deletion.';ru='Недопустимо создавать предопределенный элемент помеченный на удаление.'");
+			NStr("en='Cannot create a predefined item marked for deletion.';ru='Недопустимо создавать предопределенный элемент помеченный на удаление.'");
 	Else
 		OldProperties = CommonUse.ObjectAttributesValues(
 			Source.Ref, "DeletionMark, PredefinedDataName");
@@ -3119,7 +3119,7 @@ Procedure BeforeApplicationStart()
 	MinimalPlatformVersion = "8.3.5.1443";
 	If CommonUseClientServer.CompareVersions(SystemInfo.AppVersion, MinimalPlatformVersion) < 0 Then
 		Raise StringFunctionsClientServer.SubstituteParametersInString(
-			NStr("en='To start, 1C:Enterprise platform version should be %1 or greater.';ru='Для запуска необходима версия платформы 1С:Предприятие %1 или выше.'"), MinimalPlatformVersion);
+			NStr("en='For launch 1C:Enterprise platform version %1 or higher is required.';ru='Для запуска необходима версия платформы 1С:Предприятие %1 или выше.'"), MinimalPlatformVersion);
 	EndIf;
 	
 	Modes = Metadata.ObjectProperties.CompatibilityMode;
@@ -3155,7 +3155,7 @@ Procedure BeforeApplicationStart()
 	
 	// Check if the configuration version is filled in.
 	If IsBlankString(Metadata.Version) Then
-		Raise NStr("en='Version configuration property is not filled.';ru='Не заполнено свойство конфигурации Версия.'");
+		Raise NStr("en='Property Version of the configuration is not entered.';ru='Не заполнено свойство конфигурации Версия.'");
 	Else
 		Try
 			ZeroVersion = CommonUseClientServer.CompareVersions(Metadata.Version, "0.0.0.0") = 0;

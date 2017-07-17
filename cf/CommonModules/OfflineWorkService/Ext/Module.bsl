@@ -68,7 +68,7 @@ Function QuestionAboutLongSynchronizationSettingCheckBox(ValueOfFlag = Undefined
 	
 	SettingDetails.Insert("ObjectKey",  "ApplicationSettings");
 	SettingDetails.Insert("SettingsKey", "ShowAlertOnLongSynchronizationAWP");
-	SettingDetails.Insert("Presentation", NStr("en='Show alert on long synchronization';ru='Показывать предупреждение о длительной синхронизации'"));
+	SettingDetails.Insert("Presentation", NStr("en='Show warning about long synchronization';ru='Показывать предупреждение о длительной синхронизации'"));
 	
 	SettingsDescription = New SettingsDescription;
 	FillPropertyValues(SettingsDescription, SettingDetails);
@@ -360,7 +360,7 @@ EndFunction
 // 
 Function SetupPackageFileName() Export
 	
-	Return NStr("en='Offline work.zip';ru='Автономная работа.zip'");
+	Return NStr("en='Offline.zip';ru='Автономная работа.zip'");
 	
 EndFunction
 
@@ -459,7 +459,7 @@ Function OfflineWorkplacesMonitor() Export
 			SynchronizationSetting.SynchronizationDatePresentation =
 				DataExchangeServer.RelativeSynchronizationDate(SynchronizationSetting.SynchronizationDate);
 		Else
-			SynchronizationSetting.SynchronizationDatePresentation = NStr("en='were not executed';ru='не выполнялась'");
+			SynchronizationSetting.SynchronizationDatePresentation = NStr("en='not executed';ru='не выполнялась'");
 		EndIf;
 		
 	EndDo;
@@ -471,7 +471,7 @@ EndFunction
 // 
 Function EventLogMonitorEventCreatingOfflineWorkplace() Export
 	
-	Return NStr("en='Offline work. Offline workplace creation';ru='Автономная работа.Создание автономного рабочего места'", CommonUseClientServer.MainLanguageCode());
+	Return NStr("en='Offline work. Generation of offline work place';ru='Автономная работа.Создание автономного рабочего места'", CommonUseClientServer.MainLanguageCode());
 	
 EndFunction
 
@@ -479,7 +479,7 @@ EndFunction
 // 
 Function EventLogMonitorEventDeletionOfflineWorkplace() Export
 	
-	Return NStr("en='Offline work. Offline workplace deletion';ru='Автономная работа.Удаление автономного рабочего места'", CommonUseClientServer.MainLanguageCode());
+	Return NStr("en='Offline work. Deletion of offline work place';ru='Автономная работа.Удаление автономного рабочего места'", CommonUseClientServer.MainLanguageCode());
 	
 EndFunction
 
@@ -564,7 +564,7 @@ Procedure SynchronizeDataWithApplicationInInternet() Export
 		Enums.ExchangeMessagesTransportKinds.WS);
 	
 	If Cancel Then
-		Raise NStr("en='Error occurred while data synchronization with the application on the Internet (see. events log monitor).';ru='В процессе синхронизации данных с приложением в Интернете возникли ошибки (см. журнал регистрации).'");
+		Raise NStr("en='Errors occurred when synchronizing the data with an online application (see the event log).';ru='В процессе синхронизации данных с приложением в Интернете возникли ошибки (см. журнал регистрации).'");
 	EndIf;
 	
 EndProcedure
@@ -993,7 +993,7 @@ EndFunction
 // 
 Function EventLogMonitorEventDataSynchronization()
 	
-	Return NStr("en='Offline work.Data synchronization';ru='Автономная работа.Синхронизация данных'", CommonUseClientServer.MainLanguageCode());
+	Return NStr("en='Offline.Data synchronization';ru='Автономная работа.Синхронизация данных'", CommonUseClientServer.MainLanguageCode());
 	
 EndFunction
 

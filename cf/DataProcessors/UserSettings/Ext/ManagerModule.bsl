@@ -20,23 +20,23 @@ Function AllFormsSettings(UserName) Export
 	
 	// Addition of the standard forms to list.
 	FormsList.Add("ExternalDataProcessor.StandardEventLogMonitor.Form.EventsJournal", 
-		NStr("en='Standard. Event log';ru='Стандартные.Журнал регистрации'") , False, PictureLib.Form);
+		NStr("en='Standard.Event log';ru='Стандартные.Журнал регистрации'") , False, PictureLib.Form);
 	FormsList.Add("ExternalDataProcessor.StandardEventLogMonitor.Form.EventForm", 
-		NStr("en='Standard. Event log, Event';ru='Стандартные.Журнал регистрации, Событие'") , False, PictureLib.Form);
+		NStr("en='Standard.Event log, Event';ru='Стандартные.Журнал регистрации, Событие'") , False, PictureLib.Form);
 	FormsList.Add("ExternalDataProcessor.StandardEventLogMonitor.Form.EventsJournalFilter", 
-		NStr("en='Standard.Event log monitor, Events filter setup';ru='Стандартные.Журнал регистрации, Настройка отбора событий'") , False, PictureLib.Form);
+		NStr("en='Standard.Event log, Customize event selection';ru='Стандартные.Журнал регистрации, Настройка отбора событий'") , False, PictureLib.Form);
 	FormsList.Add("ExternalDataProcessor.StandardFindByRef.Form.MainForm", 
-		NStr("en='Standard.Search of references to object';ru='Стандартные.Поиск ссылок на объект'") , False, PictureLib.Form);
+		NStr("en='Standard.Search for links to object';ru='Стандартные.Поиск ссылок на объект'") , False, PictureLib.Form);
 	FormsList.Add("ExternalDataProcessor.StandardFullTextSearchManagement.Form.MainForm", 
-		NStr("en='Standard.Full-text search management';ru='Стандартные.Управление полнотекстовым поиском'") , False, PictureLib.Form);
+		NStr("en='Standard.Manage full-text search';ru='Стандартные.Управление полнотекстовым поиском'") , False, PictureLib.Form);
 	FormsList.Add("ExternalDataProcessor.StandardDocumentsPosting.Form.MainForm", 
 		NStr("en='Standard.Document posting';ru='Стандартные.Проведение документов'") , False, PictureLib.Form);
 	FormsList.Add("ExternalDataProcessor.StandardMarkedObjectDeletion.Form.Form", 
-		NStr("en='Standard.Deletion marked objects';ru='Стандартные.Удаление помеченных объектов'") , False, PictureLib.Form);
+		NStr("en='Standard.Delete selected objects';ru='Стандартные.Удаление помеченных объектов'") , False, PictureLib.Form);
 	FormsList.Add("ExternalDataProcessor.StandardExternalDataSourceManagement.Form.Form", 
-		NStr("en='Standard.External data source management';ru='Стандартные.Управление внешними источниками данных'") , False, PictureLib.Form);
+		NStr("en='Standard.Manage external data sources';ru='Стандартные.Управление внешними источниками данных'") , False, PictureLib.Form);
 	FormsList.Add("ExternalDataProcessor.StandardTotalsManagement.Form.MainForm", 
-		NStr("en='Standard.Totals management';ru='Стандартные.Управление итогами'") , False, PictureLib.Form);
+		NStr("en='Standard.Total management';ru='Стандартные.Управление итогами'") , False, PictureLib.Form);
 	FormsList.Add("ExternalDataProcessor.StandardActiveUsers.Form.ActiveUsersListForm", 
 		NStr("en='Standard.Active users';ru='Стандартные.Активные пользователи'") , False, PictureLib.Form);
 		
@@ -90,7 +90,7 @@ Function MetadataObjectsForms()
 	
 	StandardFormNames = New ValueList;
 	StandardFormNames.Add("Form");
-	GetFormListOfMetadataObject(Metadata.DocumentJournals, "DocumentJournal", NStr("en='Documents journal';ru='Журнал документов'"),
+	GetFormListOfMetadataObject(Metadata.DocumentJournals, "DocumentJournal", NStr("en='Document journal';ru='Журнал документов'"),
 		StandardFormNames, PictureLib.DocumentJournal, FormsList);
 	
 	StandardFormNames = New ValueList;
@@ -108,7 +108,7 @@ Function MetadataObjectsForms()
 	
 	StandardFormNames = New ValueList;
 	StandardFormNames.Add("Form");
-	GetFormListOfMetadataObject(Metadata.DataProcessors, "DataProcessor", NStr("en='DataProcessor';ru='Обработка'"),
+	GetFormListOfMetadataObject(Metadata.DataProcessors, "DataProcessor", NStr("en='Processing';ru='Обработка'"),
 		StandardFormNames, PictureLib.DataProcessor, FormsList);
 	
 	StandardFormNames = New ValueList;
@@ -1404,7 +1404,7 @@ Procedure AddFormTypeToPresentation(Object, Form, FormName)
 			NStr("en='%1 (list)';ru='%1 (список)'"), FormName);
 	ElsIf Form = Object.DefaultChoiceForm Then
 		FormName = StringFunctionsClientServer.SubstituteParametersInString(
-			NStr("en='%1 (choice)';ru='%1 (выбор)'"), FormName);
+			NStr("en='%1 (selection)';ru='%1 (выбор)'"), FormName);
 	ElsIf Form = Object.DefaultFolderForm Then
 		FormName = StringFunctionsClientServer.SubstituteParametersInString(
 			NStr("en='%1 (group)';ru='%1 (группа)'"), FormName);
@@ -1419,7 +1419,7 @@ Procedure AddPresentationFormAvtogeneriruemojForms(Object, Form, FormName)
 			NStr("en='%1 (list)';ru='%1 (список)'"), FormName);
 	ElsIf Form = "ChoiceForm" Then
 		FormName = StringFunctionsClientServer.SubstituteParametersInString(
-			NStr("en='%1 (choice)';ru='%1 (выбор)'"), FormName);
+			NStr("en='%1 (selection)';ru='%1 (выбор)'"), FormName);
 	ElsIf Form = "FolderChoiceForm" Then
 		FormName = StringFunctionsClientServer.SubstituteParametersInString(
 			NStr("en='%1 (group)';ru='%1 (группа)'"), FormName);
@@ -2042,7 +2042,7 @@ Procedure FillOtherSettingsList(Form)
 	OutputSetting = True;
 	If Not IsBlankString(Form.Search) Then
 		
-		If Find(Upper(NStr("en='Tabular documents print settings';ru='Настройки печати табличных документов'")), Upper(Form.Search)) = 0 Then
+		If Find(Upper(NStr("en='Spreadsheet document print settings';ru='Настройки печати табличных документов'")), Upper(Form.Search)) = 0 Then
 			OutputSetting = False;
 		EndIf;
 		
@@ -2050,7 +2050,7 @@ Procedure FillOtherSettingsList(Form)
 	
 	If IsPrintSettings
 		AND OutputSetting Then
-		Setting = NStr("en='Tabular documents print settings';ru='Настройки печати табличных документов'");
+		Setting = NStr("en='Spreadsheet document print settings';ru='Настройки печати табличных документов'");
 		Picture = PictureLib.Print;
 		SettingType = "OtherSetting";
 		AddLineTree(OtherSettingsTree, Setting, Picture, Keys, SettingType);

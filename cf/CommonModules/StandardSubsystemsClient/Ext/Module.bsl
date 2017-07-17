@@ -43,7 +43,7 @@ Procedure SetAdvancedApplicationCaption(OnLaunch = False) Export
 	Else
 		CaptionPattern = "%1 / %2";
 		ApplicationCaption = StringFunctionsClientServer.SubstituteParametersInString(CaptionPattern, 
-			NStr("en='Separators are not installed';ru='Не установлены разделители'"), ClientParameters.DetailedInformation);
+			NStr("en='Separators are not set';ru='Не установлены разделители'"), ClientParameters.DetailedInformation);
 	EndIf;
 	
 	CommonUseClientOverridable.OnSettingClientApplicationTitle(ApplicationCaption, OnLaunch);
@@ -810,7 +810,7 @@ Procedure ShowExecutionResult(Form, Result, EndProcessor = Undefined) Export
 		OutputWarning = Result.OutputWarning;
 		If ValueIsFilled(OutputWarning.ErrorsText) Then
 			Buttons = New ValueList;
-			Buttons.Add(1, NStr("en='Details...';ru='Подробнее...'"));
+			Buttons.Add(1, NStr("en='More...';ru='Подробнее...'"));
 			If TypeOf(Form) = Type("ManagedForm") AND ValueIsFilled(OutputWarning.PathToAttributeForms) Then
 				Buttons.Add(2, NStr("en='Go to attribute';ru='Перейти к реквизиту'"));
 			EndIf;
@@ -885,7 +885,7 @@ Procedure ShowExecutionResultEnd(Response, Result) Export
 			FullText = String(Result.OutputWarning.Text) + Chars.LF + Chars.LF + Result.OutputWarning.ErrorsText;
 			Title = Result.OutputWarning.Title;
 			If IsBlankString(Title) Then
-				Title = NStr("en='Details';ru='Расшифровка'");
+				Title = NStr("en='Explanation';ru='Расшифровка'");
 			EndIf;
 			Handler = New NotifyDescription("ShowExecutionResultEnd", ThisObject, Result);
 			ShowInputString(Handler, FullText, Title, , True);
@@ -1887,7 +1887,7 @@ Procedure SetSessionSeparation()
 		SeparatorValue = Number(LaunchParameters[1]);
 	Except
 		Raise
-			NStr("en='The separator value in the LogOnDataArea parameter must be the digit.';ru='Значением разделителя в параметре ВойтиВОбластьДанных должно быть число.'");
+			NStr("en='The separator value in the LogOnDataArea parameter must be a number.';ru='Значением разделителя в параметре ВойтиВОбластьДанных должно быть число.'");
 	EndTry;
 	
 	CommonUseServerCall.SetSessionSeparation(True, SeparatorValue);
@@ -2170,7 +2170,7 @@ Procedure AskExitConfirmation(Parameters, ResponseProcessor) Export
 	QuestionParameters.Title = NStr("en='Exit';ru='Завершить'");
 	QuestionParameters.DontAskAgain = False;
 	
-	ShowQuestionToUser(ResponseProcessor, NStr("en='Do you want to exit the application?';ru='Завершить работу с программой?'"), Buttons, QuestionParameters);
+	ShowQuestionToUser(ResponseProcessor, NStr("en='Exit the application?';ru='Завершить работу с программой?'"), Buttons, QuestionParameters);
 	
 EndProcedure
 
@@ -2267,7 +2267,7 @@ Procedure ProcessErrorOnStartOrEnd(Parameters, ErrorInfo, Event, StopWork = Fals
 		StopWork, Event, DetailErrorDescription(ErrorInfo));	
 	
 	WarningText = ErrorDescriptionBegin + Chars.LF
-		+ NStr("en='Error details are written to the event log monitor.';ru='Техническая информация об ошибке записана в журнал регистрации.'")
+		+ NStr("en='Technical information on the error is recorded in the event log.';ru='Техническая информация об ошибке записана в журнал регистрации.'")
 		+ Chars.LF + Chars.LF
 		+ BriefErrorDescription(ErrorInfo);
 	
@@ -2317,7 +2317,7 @@ Procedure ShowFilePlaceWhenConnectingFileExtensions(ExtensionAttached, Additiona
 	If DialogueParameters.Property("Mode") Then
 		Mode = DialogueParameters.Mode;
 		If Mode = FileDialogMode.ChooseDirectory Then
-			Raise NStr("en='Catalog selection is not supported';ru='Выбор каталога не поддерживается'");
+			Raise NStr("en='Directory selection is not supported.';ru='Выбор каталога не поддерживается'");
 		EndIf;
 	Else
 		Mode = FileDialogMode.Open;

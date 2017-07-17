@@ -25,7 +25,7 @@ Procedure FieldBackupDirStartChoice(Item, ChoiceData, StandardProcessing)
 	Dialog = New FileDialog(FileDialogMode.ChooseDirectory);
 	Dialog.Directory = Object.InfobaseBackupDirectoryName;
 	Dialog.CheckFileExist = True;
-	Dialog.Title = NStr("en='Choice of the IB backup copy directory';ru='Выбор каталога резервной копии ИБ'");
+	Dialog.Title = NStr("en='Select an infobase backup directory';ru='Выбор каталога резервной копии ИБ'");
 	If Dialog.Choose() Then
 		Object.InfobaseBackupDirectoryName = Dialog.Directory;
 	EndIf;
@@ -53,7 +53,7 @@ Procedure CommandOK(Command)
 		File	= New File(Object.InfobaseBackupDirectoryName);
 		Cancel	= Not File.Exist() OR Not File.IsDirectory();
 		If Cancel Then
-			ShowMessageBox(, NStr("en='Specify existing directory for saving IB backup file.';ru='Укажите существующий каталог для сохранения резервной копии ИБ.'"));
+			ShowMessageBox(, NStr("en='Specify an existing directory to save the IB backup.';ru='Укажите существующий каталог для сохранения резервной копии ИБ.'"));
 			CurrentItem = Items.FieldBackupDirectory;
 		EndIf; 
 	EndIf;

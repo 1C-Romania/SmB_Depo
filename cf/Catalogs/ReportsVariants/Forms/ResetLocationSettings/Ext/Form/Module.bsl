@@ -39,7 +39,7 @@ Procedure ResetCommand(Command)
 	VariantCount = ResetPlacementSettingsHost(CustomizableOptions);
 	If VariantCount = 1 AND SelectedOptionsQuantity = 1 Then
 		OptionRef = CustomizableOptions[0].Value;
-		NotificationTitle = NStr("en='The report variant placement settings have been reset';ru='Сброшены настройки размещения варианта отчета'");
+		NotificationTitle = NStr("en='Placement settings of report variant were reset';ru='Сброшены настройки размещения варианта отчета'");
 		NotificationRef    = GetURL(OptionRef);
 		NotificationText     = String(OptionRef);
 		ShowUserNotification(NotificationTitle, NotificationRef, NotificationText);

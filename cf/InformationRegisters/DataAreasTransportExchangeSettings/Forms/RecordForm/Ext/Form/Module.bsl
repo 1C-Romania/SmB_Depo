@@ -75,7 +75,7 @@ Procedure CheckConnection(TransportKindString)
 	
 	CheckConnectionAtServer(Cancel, TransportKindString);
 	
-	WarningText = ?(Cancel, NStr("en='Failed to install connection.';ru='Не удалось установить подключение.'"), NStr("en='Connection has been successfully installed.';ru='Подключение успешно установлено.'"));
+	WarningText = ?(Cancel, NStr("en='Cannot connect.';ru='Не удалось установить подключение.'"), NStr("en='Connection has been successfully established.';ru='Подключение успешно установлено.'"));
 	ShowMessageBox(, WarningText);
 	
 EndProcedure

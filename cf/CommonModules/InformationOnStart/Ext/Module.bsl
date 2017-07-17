@@ -47,7 +47,7 @@ Procedure OnAddUpdateHandlers(Handlers) Export
 	//Handler.PerformModes = "Promptly";
 	//Handler.Version      = "*";
 	//Handler.Procedure    = "InformationOnStart.UpdateFirstShowCache";
-	//Handler.Comment      = NStr("en='Updates the data first show.';ru='Актуализирует данные первого показа.'");
+	//Handler.Comment      = NStr("en='Updates data of the first show.';ru='Актуализирует данные первого показа.'");
 	//Handler.Priority     = 100;
 EndProcedure
 
@@ -235,7 +235,7 @@ Function CacheForFirstShow() Export
 	//	PagesPackage.ShowStartDate              = GivenCells(SpreadsheetDocument, StringPrefix, 5, "Date", '00010101');
 	//	PagesPackage.ShowEndDate           = GivenCells(SpreadsheetDocument, StringPrefix, 6, "Date", '29990101');
 	//	
-	//	If Lower(PagesPackage.Section) = Lower(NStr("en='Advertisement';ru='Реклама'")) Then
+	//	If Lower(PagesPackage.Section) = Lower(NStr("en='Advertising';ru='Реклама'")) Then
 	//		PagesPackage.Priority = 0;
 	//	Else
 	//		PagesPackage.Priority = GivenCells(SpreadsheetDocument, StringPrefix, 7, "Number", 0);

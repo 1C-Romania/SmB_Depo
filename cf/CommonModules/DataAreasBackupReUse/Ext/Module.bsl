@@ -62,7 +62,7 @@ Function BackupControlProxy() Export
 	
 	ServiceManagerAddress = Constants.InternalServiceManagerURL.Get();
 	If Not ValueIsFilled(ServiceManagerAddress) Then
-		Raise(NStr("en='Parameters of connection with the service manager have not been set.';ru='Не установлены параметры связи с менеджером сервиса.'"));
+		Raise(NStr("en='Parameters of connection with the service manager are not set.';ru='Не установлены параметры связи с менеджером сервиса.'"));
 	EndIf;
 	
 	ServiceAddress = ServiceManagerAddress + "/ws/ZoneBackupControl?wsdl";

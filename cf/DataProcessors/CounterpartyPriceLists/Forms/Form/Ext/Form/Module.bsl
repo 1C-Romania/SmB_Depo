@@ -61,7 +61,7 @@ EndFunction //CreateMapPattern()
 //
 Procedure UpdateFormTitleAtServer()
 	
-	ThisForm.Title	= NStr("en=""Counterparties' price lists"";ru='прайс-листы контрагентов'") + 
+	ThisForm.Title	= NStr("en='Counterparty price lists';ru='прайс-листы контрагентов'") + 
 		?(ValueIsFilled(ToDate), NStr("en=' on ';ru=' на '") + Format(ToDate, "DLF=DD"), NStr("en='.';ru='.'"));
 	
 EndProcedure // UpdateFormTitleAtServer()
@@ -1051,7 +1051,7 @@ Procedure Copy(Command)
 		If AvailablePriceKindsList.Count() < 1 Then
 			
 			CommonUseClientServer.MessageToUser(
-				NStr("en='No prices available for copying exist for the current products and services in the current price list.';ru='В текущем прайс-листе для данной номенклатурной позиции нет цен, доступных для копирования.'")
+				NStr("en='No prices available for copying exist for the current products and services item in the current price list.';ru='В текущем прайс-листе для данной номенклатурной позиции нет цен, доступных для копирования.'")
 						);
 						
 			Return;
@@ -1120,7 +1120,7 @@ Procedure Change(Command)
 		If AvailablePriceKindsList.Count() < 1 Then
 			
 			CommonUseClientServer.MessageToUser(
-				NStr("en='No prices available for editing exist for the current products and services in current price list.';ru='В текущем прайс-листе для данной номенклатурной позиции нет цен, доступных для изменения.'")
+				NStr("en='No prices available for editing exist for the current products and services item in the current price list.';ru='В текущем прайс-листе для данной номенклатурной позиции нет цен, доступных для изменения.'")
 						);
 						
 			Return;
@@ -1173,7 +1173,7 @@ Procedure Delete(Command)
 		If AvailablePriceKindsList.Count() < 1 Then
 			
 			CommonUseClientServer.MessageToUser(
-				NStr("en='No prices available for deletion exist for the current products and services in the current price list.';ru='В текущем прайс-листе для данной номенклатурной позиции нет цен, доступных для удаления.'")
+				NStr("en='No prices available for deletion exist for the current products and services item in the current price list.';ru='В текущем прайс-листе для данной номенклатурной позиции нет цен, доступных для удаления.'")
 						);
 						
 			Return;
@@ -1214,7 +1214,7 @@ Procedure History(Command)
 		Then
 		
 		CommonUseClientServer.MessageToUser(
-			NStr("en='Can not show history of the prices generation.';ru='Невозможно отобразить историю формирования цен.'")
+			NStr("en='Cannot show price generation history.';ru='Невозможно отобразить историю формирования цен.'")
 					);
 		Return;
 		
@@ -1224,7 +1224,7 @@ Procedure History(Command)
 		If AvailablePriceKindsList.Count() < 1 Then
 			
 			CommonUseClientServer.MessageToUser(
-				NStr("en='Cannot show history of price generation for the current products and services.';ru='Невозможно отобразить историю формирорвания цен для данной номенклатурной позиции.'")
+				NStr("en='Cannot show history of price generation for the current products and services item.';ru='Невозможно отобразить историю формирорвания цен для данной номенклатурной позиции.'")
 						);
 						
 			Return;

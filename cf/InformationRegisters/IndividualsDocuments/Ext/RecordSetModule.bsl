@@ -11,9 +11,9 @@ Procedure BeforeWrite(Cancel, Replacing)
 	
 	TextSeries			= NStr("en=', series: %1';			ru=', серия: %1'");
 	TextNumber			= NStr("en=', No.%1';				ru=', № %1'");
-	TextIssuanceDate	= NStr("en=', issued: %1 year';		ru=', выдан: %1 года'");
-	TextValidityPeriod	= NStr("en=', valid till: %1 year';	ru=', действует до: %1 года'");
-	TextDepartmentCode	= NStr("en=', div. No.%1';			ru=', № подр. %1'");
+	TextIssuanceDate	= NStr("en=', issued: %1';ru=', выдан: %1 года'");
+	TextValidityPeriod	= NStr("en=', valid till: %1';ru=', действует до: %1 года'");
+	TextDepartmentCode	= NStr("en=', dep. No.%1';ru=', № подр. %1'");
 	
 	For Each Record IN ThisObject Do
 		If Record.DocumentKind.IsEmpty() Then
@@ -78,7 +78,7 @@ Procedure OnWrite(Cancel, Replacing)
 	|	COUNT(IndividualsDocuments.Ind) > 1";
 	Selection = Query.Execute().Select();
 	
-	MessageText = NStr("en='The ID of %2 has been entered already as of 1%.';ru='На %1 у физлица %2 уже введен документ, удостоверяющий личность.'");
+	MessageText = NStr("en='ID document of individual %2 has been already entered as of 1%.';ru='На %1 у физлица %2 уже введен документ, удостоверяющий личность.'");
 	
 	While Selection.Next() Do
 		Cancel = True;

@@ -753,7 +753,7 @@ Procedure FillCheckProcessing(Cancel, CheckedAttributes)
 			
 			If StringInventory.Reserve > StringInventory.Quantity Then
 				
-				MessageText = NStr("ru = 'В строке №%Номер% табл. части ""Запасы"" количество передаваемых в резерв позиций превышает общее количество запасов.'; en = 'In row No.%Number% of the ""Inventory"" tabular section the quantity of items transferred to reserve exceeds the total inventory quantity.'");
+				MessageText = NStr("en='In row No. %Number% of the ""Inventory"" tabular section, the quantity of items transferred to reserve exceeds the total inventory quantity.';ru='В строке №%Номер% табл. части ""Запасы"" количество передаваемых в резерв позиций превышает общее количество запасов.'");
 				MessageText = StrReplace(MessageText, "%Number%", StringInventory.LineNumber);
 				SmallBusinessServer.ShowMessageAboutError(
 					ThisObject,

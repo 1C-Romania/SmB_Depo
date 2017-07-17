@@ -3,7 +3,7 @@
 	<Title>
 		<v8:item>
 			<v8:lang>en</v8:lang>
-			<v8:content>Production</v8:content>
+			<v8:content>Manufacturing</v8:content>
 		</v8:item>
 		<v8:item>
 			<v8:lang>ru</v8:lang>
@@ -50,7 +50,7 @@
 					<Title formatted="false">
 						<v8:item>
 							<v8:lang>en</v8:lang>
-							<v8:content>Use this section to customize states of the Production order documents, enable technological operations and reflection operations.</v8:content>
+							<v8:content>Use this section to configure states for the Production order documents, enable technological operations and operations for recording supplier raw material processing.</v8:content>
 						</v8:item>
 						<v8:item>
 							<v8:lang>ru</v8:lang>
@@ -122,7 +122,7 @@
 						<Title formatted="false">
 							<v8:item>
 								<v8:lang>en</v8:lang>
-								<v8:content>In order the changes to take an effect it is necessary to update the system parameters or to restart the application.</v8:content>
+								<v8:content>For the changes to enter into force, it is necessary to update the application parameters or to restart the application.</v8:content>
 							</v8:item>
 							<v8:item>
 								<v8:lang>ru</v8:lang>
@@ -214,7 +214,7 @@
 								<Title formatted="false">
 									<v8:item>
 										<v8:lang>en</v8:lang>
-										<v8:content>This option enables the use of several states of the production orders (three and more). If the option is disabled, the documents states are edited in the attributes below.</v8:content>
+										<v8:content>Enable this option to use several states for production orders (three and more). If disabled, document states are edited in the attributes below.</v8:content>
 									</v8:item>
 									<v8:item>
 										<v8:lang>ru</v8:lang>
@@ -235,7 +235,7 @@
 								<Title formatted="false">
 									<v8:item>
 										<v8:lang>en</v8:lang>
-										<v8:content>Go to the production orders states catalog. Use the catalog to create arbitrary number of states of definite kinds. To go to the catalog, enable the "Several production order states" option.</v8:content>
+										<v8:content>Go to the "Production order states" catalog. Use the catalog to create arbitrary number of states of definite kinds. To go to the catalog, enable the "Several production order states" option.</v8:content>
 									</v8:item>
 									<v8:item>
 										<v8:lang>ru</v8:lang>
@@ -250,7 +250,7 @@
 					<Title>
 						<v8:item>
 							<v8:lang>en</v8:lang>
-							<v8:content>Settings of the production orders default states</v8:content>
+							<v8:content>Set up default production order state</v8:content>
 						</v8:item>
 						<v8:item>
 							<v8:lang>ru</v8:lang>
@@ -260,7 +260,7 @@
 					<ToolTip>
 						<v8:item>
 							<v8:lang>en</v8:lang>
-							<v8:content>Settings of the production orders default states</v8:content>
+							<v8:content>Set up default production order state</v8:content>
 						</v8:item>
 						<v8:item>
 							<v8:lang>ru</v8:lang>
@@ -277,7 +277,7 @@
 							<Title>
 								<v8:item>
 									<v8:lang>en</v8:lang>
-									<v8:content>Orders states</v8:content>
+									<v8:content>Order states</v8:content>
 								</v8:item>
 								<v8:item>
 									<v8:lang>ru</v8:lang>
@@ -287,7 +287,7 @@
 							<ToolTip>
 								<v8:item>
 									<v8:lang>en</v8:lang>
-									<v8:content>Orders states</v8:content>
+									<v8:content>Order states</v8:content>
 								</v8:item>
 								<v8:item>
 									<v8:lang>ru</v8:lang>
@@ -304,7 +304,7 @@
 									<Title>
 										<v8:item>
 											<v8:lang>en</v8:lang>
-											<v8:content>"In process" state</v8:content>
+											<v8:content>"In progress" state</v8:content>
 										</v8:item>
 										<v8:item>
 											<v8:lang>ru</v8:lang>
@@ -378,7 +378,7 @@
 					<Title>
 						<v8:item>
 							<v8:lang>en</v8:lang>
-							<v8:content>Settings use technical operations FO</v8:content>
+							<v8:content>Settings use manufacturing operations FO</v8:content>
 						</v8:item>
 						<v8:item>
 							<v8:lang>ru</v8:lang>
@@ -388,7 +388,7 @@
 					<ToolTip>
 						<v8:item>
 							<v8:lang>en</v8:lang>
-							<v8:content>Settings use technical operations FO</v8:content>
+							<v8:content>Settings use manufacturing operations FO</v8:content>
 						</v8:item>
 						<v8:item>
 							<v8:lang>ru</v8:lang>
@@ -422,15 +422,7 @@
 								<Title formatted="true">
 									<v8:item>
 										<v8:lang>en</v8:lang>
-										<v8:content>&lt;b&gt;"Use technological operations in specifications of products manufacturing, job sheets"&lt;/&gt;. 
-
-The option enables the use of technological operations in production specifications and job sheets. If this option is
-
-
-enabled, the following actions become avaliable: • calculating employees payroll by job sheets; • specifying the technological operations in production specifications (production components can be specified also); • adding items with the "Operation" type into the "Products and services" catalog.
-
-
-&lt;b&gt;&lt;color #ff0000&gt;IMPORTANT! &lt;/&gt;&lt;/&gt;Key parameter. You can not disable this option if there is accounting data in the system.</v8:content>
+										<v8:content>Enable this option to use technological operations in production bills of materials and job sheets. If this option is enabled, the following actions are avaliable: • Employees payroll accounting according to job sheets • Specification of technological operations in production bills of materials (production components can also be specified) • Adding items with the "Operation" type to the "Products and services" catalog. IMPORTANT! Key parameter. You cannot disable this option if there is accounting data in the application.</v8:content>
 									</v8:item>
 									<v8:item>
 										<v8:lang>ru</v8:lang>
@@ -448,7 +440,7 @@ enabled, the following actions become avaliable: • calculating employees payro
 					<Title>
 						<v8:item>
 							<v8:lang>en</v8:lang>
-							<v8:content>Settings of processing of raw materials supplied by customer FO</v8:content>
+							<v8:content>Settings processing of supplier's raw materials FO</v8:content>
 						</v8:item>
 						<v8:item>
 							<v8:lang>ru</v8:lang>
@@ -458,7 +450,7 @@ enabled, the following actions become avaliable: • calculating employees payro
 					<ToolTip>
 						<v8:item>
 							<v8:lang>en</v8:lang>
-							<v8:content>Settings of processing of raw materials supplied by customer FO</v8:content>
+							<v8:content>Settings processing of supplier's raw materials FO</v8:content>
 						</v8:item>
 						<v8:item>
 							<v8:lang>ru</v8:lang>
@@ -475,7 +467,7 @@ enabled, the following actions become avaliable: • calculating employees payro
 						<Title formatted="false">
 							<v8:item>
 								<v8:lang>en</v8:lang>
-								<v8:content>The option defines the possibility to receive the third party inventories for processing. To use this option, enable use of products and services batches. For more information, see the option help.</v8:content>
+								<v8:content>The option defines whether inventories of external counterparties can be received for processing. To use this option, enable usage of products and services batches. For more information, see help.</v8:content>
 							</v8:item>
 							<v8:item>
 								<v8:lang>ru</v8:lang>
@@ -489,7 +481,7 @@ enabled, the following actions become avaliable: • calculating employees payro
 							<Title>
 								<v8:item>
 									<v8:lang>en</v8:lang>
-									<v8:content>Use supplier raw materials processing</v8:content>
+									<v8:content>Use supplier's raw material processing</v8:content>
 								</v8:item>
 								<v8:item>
 									<v8:lang>ru</v8:lang>
@@ -504,13 +496,7 @@ enabled, the following actions become avaliable: • calculating employees payro
 								<Title formatted="true">
 									<v8:item>
 										<v8:lang>en</v8:lang>
-										<v8:content>&lt;b&gt;"Use supplier raw materials processing"&lt;/&gt;.
-
-The option defines the possibility to receive the third party inventories for processing.
-
-&lt;b&gt;&lt;color #ff0000&gt;IMPORTANT! &lt;/&gt;&lt;/&gt;To distinguish between own inventory and inventory received for processing, an additional "Products and services batches" acounting dimension is used. That's why to use this option it is nessesary to enable "Inventory accounting by batches" option in accounting settings in "Purchase" section.
-
-&lt;b&gt;&lt;color #ff0000&gt;IMPORTANT! &lt;/&gt;&lt;/&gt;Key parameter. You can not disable this option if there is accounting data in the system.</v8:content>
+										<v8:content>Enable this option to receive inventory of external counterparty for processing. IMPORTANT! To distinguish between own inventory and inventory received for processing, additional accounting dimension "Products and services batches" is used. To use this option, enable the "Inventory accounting by batches" option in accounting settings in the Purchases section. IMPORTANT! Key parameter. You cannot disable this option if there is accounting data in the application.</v8:content>
 									</v8:item>
 									<v8:item>
 										<v8:lang>ru</v8:lang>
@@ -532,7 +518,7 @@ The option defines the possibility to receive the third party inventories for pr
 			<Title>
 				<v8:item>
 					<v8:lang>en</v8:lang>
-					<v8:content>Constants set</v8:content>
+					<v8:content>Constant set</v8:content>
 				</v8:item>
 				<v8:item>
 					<v8:lang>ru</v8:lang>
@@ -568,7 +554,7 @@ The option defines the possibility to receive the third party inventories for pr
 			<Title>
 				<v8:item>
 					<v8:lang>en</v8:lang>
-					<v8:content>Work mode</v8:content>
+					<v8:content>Run mode</v8:content>
 				</v8:item>
 				<v8:item>
 					<v8:lang>ru</v8:lang>
@@ -593,7 +579,7 @@ The option defines the possibility to receive the third party inventories for pr
 			<ToolTip>
 				<v8:item>
 					<v8:lang>en</v8:lang>
-					<v8:content>Open catalog "Production order state"</v8:content>
+					<v8:content>Open the "Production order states" catalog</v8:content>
 				</v8:item>
 				<v8:item>
 					<v8:lang>ru</v8:lang>

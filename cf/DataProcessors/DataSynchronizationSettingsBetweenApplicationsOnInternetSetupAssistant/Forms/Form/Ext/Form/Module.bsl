@@ -10,7 +10,7 @@ Procedure OnCreateAtServer(Cancel, StandardProcessing)
 	EndIf;
 	
 	If IsBlankString(Parameters.ExchangePlanName) Then
-		Raise NStr("en='Data processor is not aimed for being used directly';ru='Обработка не предназначена для непосредственного использования.'");
+		Raise NStr("en='Data processor is not intended for direct usage.';ru='Обработка не предназначена для непосредственного использования.'");
 	EndIf;
 	
 	// Data synchronization can be enabled by the exchange administrator only (for the subscriber).
@@ -20,7 +20,7 @@ Procedure OnCreateAtServer(Cancel, StandardProcessing)
 	
 	If Not DataExchangeSaaSReUse.DataSynchronizationSupported() Then
 		
-		Raise NStr("en='Data synchronization is not supported for configuration!';ru='Синхронизация данных для конфигурации не поддерживается!'");
+		Raise NStr("en='Data synchronization for this configuration is not supported.';ru='Синхронизация данных для конфигурации не поддерживается!'");
 		
 	EndIf;
 	
@@ -74,7 +74,7 @@ Procedure OnCreateAtServer(Cancel, StandardProcessing)
 	CorrespondentTables = DataExchangeServer.CorrespondentTablesForValuesByDefault(ExchangePlanName, CorrespondentVersion);
 	
 	// Set the assistant title
-	Title = StringFunctionsClientServer.SubstituteParametersInString(NStr("en='Setting the data synchronization with ""%1""';ru='Настройка синхронизации данных с ""%1""'"), CorrespondentDescription);
+	Title = StringFunctionsClientServer.SubstituteParametersInString(NStr("en='Setting of data synchronization with ""%1""';ru='Настройка синхронизации данных с ""%1""'"), CorrespondentDescription);
 	Items.DataSynchronizationDescription.Title = StringFunctionsClientServer.SubstituteParametersInString(NStr("en='Description of data synchronization with ""%1""';ru='Описание синхронизации данных с ""%1""'"), CorrespondentDescription);
 	
 	EventLogMonitorEventDataSyncronizationSetting = DataExchangeSaaS.EventLogMonitorEventDataSyncronizationSetting();
@@ -99,7 +99,7 @@ Procedure OnOpen(Cancel)
 	If CommonUseClient.OfferToCreateBackups() Then
 		
 		Text = StringFunctionsClientServer.SubstituteParametersInString(
-			NStr("en='Before you configure the synchronization it is recommended to <a href=""%1"">back up<a>.';ru='Перед настройкой синхронизации рекомендуется сделать <a href = %1 >резервную копию данных</a>.'"),
+			NStr("en='We recommend that you make a <a href = %1 >data backup</a> before configuring data synchronization.';ru='Перед настройкой синхронизации рекомендуется сделать <a href = %1 >резервную копию данных</a>.'"),
 			"CreateBackup");
 		
 		Items.BackupLabel.Title = StringFunctionsClientServer.FormattedString(Text);
@@ -136,7 +136,7 @@ EndProcedure
 &AtClient
 Procedure BeforeClose(Cancel, StandardProcessing)
 	
-	WarningText = NStr("en='Do you want to cancel the data synchronization setup?';ru='Отменить настройку синхронизации данных?'");
+	WarningText = NStr("en='Cancel data synchronization setting?';ru='Отменить настройку синхронизации данных?'");
 	If Items.MainPanel.CurrentPage <> Items.Begin Then
 		NotifyDescription = New NotifyDescription("SynchronizationSettingCancel", ThisObject);
 	Else
@@ -185,7 +185,7 @@ Procedure LongOperationIdleHandler()
 		WriteErrorInEventLogMonitor(
 			DetailErrorDescription(ErrorInfo()), EventLogMonitorEventDataSyncronizationSetting);
 		SkipBack();
-		ShowMessageBox(, NStr("en='Failed to execute the operation.';ru='Не удалось выполнить операцию.'"));
+		ShowMessageBox(, NStr("en='Cannot execute the operation.';ru='Не удалось выполнить операцию.'"));
 		Return;
 	EndTry;
 	
@@ -197,7 +197,7 @@ Procedure LongOperationIdleHandler()
 		
 		SkipBack();
 		
-		ShowMessageBox(, NStr("en='Failed to execute the operation.';ru='Не удалось выполнить операцию.'"));
+		ShowMessageBox(, NStr("en='Cannot execute the operation.';ru='Не удалось выполнить операцию.'"));
 		
 	Else
 		
@@ -224,7 +224,7 @@ Procedure BackgroundJobTimeoutHandler()
 		WriteErrorInEventLogMonitor(
 			DetailErrorDescription(ErrorInfo()), EventLogMonitorEventDataSyncronizationSetting);
 		SkipBack();
-		ShowMessageBox(, NStr("en='Failed to execute the operation.';ru='Не удалось выполнить операцию.'"));
+		ShowMessageBox(, NStr("en='Cannot execute the operation.';ru='Не удалось выполнить операцию.'"));
 	EndTry;
 	
 EndProcedure
@@ -392,7 +392,7 @@ Procedure GoToNumberOnChange(Val IsGoNext)
 	GoToRowsCurrent = GoToTable.FindRows(New Structure("GoToNumber", GoToNumber));
 	
 	If GoToRowsCurrent.Count() = 0 Then
-		Raise NStr("en='Page for displaying has not been defined.';ru='Не определена страница для отображения.'");
+		Raise NStr("en='Page for displaying is not defined.';ru='Не определена страница для отображения.'");
 	EndIf;
 	
 	GoToRowCurrent = GoToRowsCurrent[0];
@@ -498,7 +498,7 @@ Procedure ExecuteGoToEventHandlers(Val IsGoNext)
 	GoToRowsCurrent = GoToTable.FindRows(New Structure("GoToNumber", GoToNumber));
 	
 	If GoToRowsCurrent.Count() = 0 Then
-		Raise NStr("en='Page for displaying has not been defined.';ru='Не определена страница для отображения.'");
+		Raise NStr("en='Page for displaying is not defined.';ru='Не определена страница для отображения.'");
 	EndIf;
 	
 	GoToRowCurrent = GoToRowsCurrent[0];
@@ -554,7 +554,7 @@ Procedure ExecuteLongOperationHandler()
 	GoToRowsCurrent = GoToTable.FindRows(New Structure("GoToNumber", GoToNumber));
 	
 	If GoToRowsCurrent.Count() = 0 Then
-		Raise NStr("en='Page for displaying has not been defined.';ru='Не определена страница для отображения.'");
+		Raise NStr("en='Page for displaying is not defined.';ru='Не определена страница для отображения.'");
 	EndIf;
 	
 	GoToRowCurrent = GoToRowsCurrent[0];
@@ -806,7 +806,7 @@ EndFunction
 &AtServer
 Procedure ShowMessageAboutError(Cancel)
 	
-	CommonUseClientServer.MessageToUser(NStr("en='Failed to execute the operation.';ru='Не удалось выполнить операцию.'"),,,, Cancel);
+	CommonUseClientServer.MessageToUser(NStr("en='Cannot execute the operation.';ru='Не удалось выполнить операцию.'"),,,, Cancel);
 	
 EndProcedure
 
@@ -833,7 +833,7 @@ Procedure OpenMappingForm()
 	EndIf;
 	
 	If Not CurrentData.UsePreview Then
-		ShowMessageBox(, NStr("en='Impossible to perform matching for these data.';ru='Для этих данных нельзя выполнить сопоставление.'"));
+		ShowMessageBox(, NStr("en='Cannot map this data.';ru='Для этих данных нельзя выполнить сопоставление.'"));
 		Return;
 	EndIf;
 	
@@ -930,7 +930,7 @@ Function Attachable_Begin_OnGoingNext(Cancel)
 		
 		If Not SettingsForm.CheckFilling() Then
 			
-			CommonUseClientServer.MessageToUser(NStr("en='It is necessary to specify the obligatory settings.';ru='Необходимо задать обязательные настройки.'"),,, "DataExportSettingsDescription", Cancel);
+			CommonUseClientServer.MessageToUser(NStr("en='Configure required settings.';ru='Необходимо задать обязательные настройки.'"),,, "DataExportSettingsDescription", Cancel);
 			
 		EndIf;
 		
@@ -981,7 +981,7 @@ Procedure DataAnalysisExpectation_LongOperationProcessing(Cancel)
 			UUID,
 			"DataProcessors.DataSynchronizationSettingsBetweenApplicationsOnInternetSetupAssistant.SetExchangeStep1",
 			MethodParameters,
-			NStr("en='Data synchronization setup between the applications in the Internet (step 1)';ru='Настройка синхронизации данных между приложениями в сети Интернет (шаг 1)'"));
+			NStr("en='Setting of data synchronization between online applications (step 1)';ru='Настройка синхронизации данных между приложениями в сети Интернет (шаг 1)'"));
 		
 		JobID = Result.JobID;
 		TemporaryStorageAddress = Result.StorageAddress;
@@ -1047,7 +1047,7 @@ Procedure RunAutomaticDataMapping(Cancel)
 			UUID,
 			"DataProcessors.DataSynchronizationSettingsBetweenApplicationsOnInternetSetupAssistant.RunAutomaticDataMapping",
 			MethodParameters,
-			NStr("en='Setting the data synchronization between the applications in the Internet (automatic data mapping)';ru='Настройка синхронизации данных между приложениями в сети Интернет (автоматическое сопоставление данных)'"));
+			NStr("en='Setting of data synchronization between online applications (automatic data mapping)';ru='Настройка синхронизации данных между приложениями в сети Интернет (автоматическое сопоставление данных)'"));
 		
 		JobID = Result.JobID;
 		TemporaryStorageAddress = Result.StorageAddress;
@@ -1171,7 +1171,7 @@ Procedure GetStatsComparison(Cancel)
 			UUID,
 			"DataProcessors.DataSynchronizationSettingsBetweenApplicationsOnInternetSetupAssistant.GetStatsComparison",
 			MethodParameters,
-			NStr("en='Setting the data synchronization between the applications in the Internet (getting the mapping statistics)';ru='Настройка синхронизации данных между приложениями в сети Интернет (получение статистики сопоставления)'"));
+			NStr("en='Setting of data synchronization between online applications (mapping statistics receipt)';ru='Настройка синхронизации данных между приложениями в сети Интернет (получение статистики сопоставления)'"));
 		
 		JobID = Result.JobID;
 		TemporaryStorageAddress = Result.StorageAddress;
@@ -1296,7 +1296,7 @@ Procedure DataSynchronizationExpectation_LongOperationProcessing(Cancel)
 			UUID,
 			"DataProcessors.DataSynchronizationSettingsBetweenApplicationsOnInternetSetupAssistant.SynchronizeCatalogs",
 			MethodParameters,
-			NStr("en='Data synchronization setup between the applications in the Internet (catalogs synchronization)';ru='Настройка синхронизации данных между приложениями в сети Интернет (синхронизация справочников)'"));
+			NStr("en='Setting of data synchronization between online applications (catalog synchronization)';ru='Настройка синхронизации данных между приложениями в сети Интернет (синхронизация справочников)'"));
 		
 		JobID = Result.JobID;
 		TemporaryStorageAddress = Result.StorageAddress;
@@ -1555,7 +1555,7 @@ Procedure ImportParametersAccountingCorrespondent(Cancel, ErrorInfo = "", Corres
 		CorrespondentErrorMessage    = CorrespondentData.ErrorPresentation;
 		
 		If IsBlankString(CorrespondentErrorMessage) Then
-			CorrespondentErrorMessage = NStr("en='Accounting parameters are not set in application ""%1"".';ru='Не заданы параметры учета в приложении ""%1"".'");
+			CorrespondentErrorMessage = NStr("en='Accounting parameters are not specified in the ""%1"" application.';ru='Не заданы параметры учета в приложении ""%1"".'");
 			CorrespondentErrorMessage = StringFunctionsClientServer.SubstituteParametersInString(CorrespondentErrorMessage, CorrespondentDescription);
 		EndIf;
 		
@@ -1563,7 +1563,7 @@ Procedure ImportParametersAccountingCorrespondent(Cancel, ErrorInfo = "", Corres
 		AccountingParametersSpecified = DataExchangeServer.SystemAccountingSettingsAreSet(ExchangePlanName, Correspondent, ErrorInfo);
 		
 		If IsBlankString(ErrorInfo) Then
-			ErrorInfo = NStr("en='Accounting parameters in this application are not specified.';ru='Не заданы параметры учета в этом приложении.'");
+			ErrorInfo = NStr("en='Accounting parameters are not specified in this application.';ru='Не заданы параметры учета в этом приложении.'");
 		EndIf;
 		
 	Except
@@ -1619,7 +1619,7 @@ Function Attachable_DataReceivingRules_OnGoingNext(Cancel)
 		
 		If Not SettingsForm.CheckFilling() Then
 			
-			CommonUseClientServer.MessageToUser(NStr("en='It is necessary to specify the obligatory settings.';ru='Необходимо задать обязательные настройки.'"),,, "ValuesDescriptionFullByDefault", Cancel);
+			CommonUseClientServer.MessageToUser(NStr("en='Configure required settings.';ru='Необходимо задать обязательные настройки.'"),,, "ValuesDescriptionFullByDefault", Cancel);
 			
 		EndIf;
 		
@@ -1645,7 +1645,7 @@ Function Attachable_DataReceivingRules_OnGoingNext(Cancel)
 		
 		If Not SettingsForm.CheckFilling() Then
 			
-			CommonUseClientServer.MessageToUser(NStr("en='It is necessary to specify the obligatory settings for the second application.';ru='Необходимо задать обязательные настройки для второго приложения.'")
+			CommonUseClientServer.MessageToUser(NStr("en='Specify required settings for the second application.';ru='Необходимо задать обязательные настройки для второго приложения.'")
 				,,, "DescriptionValuesByDefaultCorrespondent", Cancel);
 		EndIf;
 		
@@ -1707,7 +1707,7 @@ Procedure SettingsSaveExpected_LongOperationProcessing(Cancel)
 			UUID,
 			"DataProcessors.DataSynchronizationSettingsBetweenApplicationsOnInternetSetupAssistant.SetExchangeStep2",
 			MethodParameters,
-			NStr("en='Data synchronization setup between the applications in the Internet (step 2)';ru='Настройка синхронизации данных между приложениями в сети Интернет (шаг 2)'"));
+			NStr("en='Setting of data synchronization between online applications (step 2)';ru='Настройка синхронизации данных между приложениями в сети Интернет (шаг 2)'"));
 		
 		JobID = Result.JobID;
 		TemporaryStorageAddress = Result.StorageAddress;

@@ -36,7 +36,7 @@ EndProcedure
 &AtClient
 Procedure FilterOnChange(Item)
 	
-	Status(NStr("en='Product table is being updated...';ru='Выполняется обновление таблицы товаров...'"));
+	Status(NStr("en='Goods table is being updated...';ru='Выполняется обновление таблицы товаров...'"));
 	
 	FilterOnChangeAtServer();
 	
@@ -79,10 +79,10 @@ Procedure RecordChanges(Command)
 			EndDo;
 			Notify("Record_CodesOfGoodsPeripheral", New Structure, Undefined);
 		Else
-			ShowMessageBox(Undefined, NStr("en='During modifications registration an error has occurred:';ru='В процессе регистрации изменений произошла ошибка:'") + " " + ErrorDescription);
+			ShowMessageBox(Undefined, NStr("en='During the change registration an error occurred:';ru='В процессе регистрации изменений произошла ошибка:'") + " " + ErrorDescription);
 		EndIf;
 	Else
-		ShowMessageBox(Undefined, NStr("en='Rows for the modifications registration have not been selected';ru='Не выбраны строки для регистрации изменений'"));
+		ShowMessageBox(Undefined, NStr("en='Rows for change registration are not selected';ru='Не выбраны строки для регистрации изменений'"));
 	EndIf;
 	
 EndProcedure
@@ -219,10 +219,10 @@ Procedure DeleteChangesRegistrationForSelectedStrings(Command)
 			EndDo;
 			Notify("Record_CodesOfGoodsPeripheral", New Structure, Undefined);
 		Else
-			ShowMessageBox(Undefined, NStr("en='An error has occurred during the modification registration deletion:';ru='В процессе удаления регистрации изменений произошла ошибка:'") + " " + ErrorDescription);
+			ShowMessageBox(Undefined, NStr("en='An error occurred during the change registration deletion:';ru='В процессе удаления регистрации изменений произошла ошибка:'") + " " + ErrorDescription);
 		EndIf;
 	Else
-		ShowMessageBox(Undefined, NStr("en='Rows for the modification registration deletion have not been selected';ru='Не выбраны строки для удаления регистрации изменений'"));
+		ShowMessageBox(Undefined, NStr("en='Rows for change registration deletion are not selected';ru='Не выбраны строки для удаления регистрации изменений'"));
 	EndIf;
 	
 EndProcedure

@@ -14,7 +14,7 @@ Function DeliverMessages(SenderCode, StreamStorage)
 	
 	If Sender.IsEmpty() Then
 		
-		Raise NStr("en='Incorrect settings of connection to the end point have been specified.';ru='Заданы неправильные настройки подключения к конечной точке.'");
+		Raise NStr("en='Invalid endpoint connection settings.';ru='Заданы неправильные настройки подключения к конечной точке.'");
 		
 	EndIf;
 	
@@ -108,7 +108,7 @@ Function RefreshConnectionSettings(Code, ConnectionSettingsString)
 	
 	EndPoint = ExchangePlans.MessageExchange.FindByCode(Code);
 	If EndPoint.IsEmpty() Then
-		Raise NStr("en='Incorrect settings of connection to the end point have been specified.';ru='Заданы неправильные настройки подключения к конечной точке.'");
+		Raise NStr("en='Invalid endpoint connection settings.';ru='Заданы неправильные настройки подключения к конечной точке.'");
 	EndIf;
 	
 	BeginTransaction();

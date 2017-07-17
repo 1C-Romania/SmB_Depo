@@ -81,10 +81,10 @@ Procedure TerminateUserSessions() Export
 	CurrentMoment = CurrentMode.CurrentSessionDate;
 	
 	If CurrentMoment < BeginTimeLock Then
-		MessageText = NStr("en='Locking of the users work is scheduled for %1.';ru='Блокировка работы пользователей запланирована на %1.'");
+		MessageText = NStr("en='Lock of the user operation is planned on %1.';ru='Блокировка работы пользователей запланирована на %1.'");
 		MessageText = StringFunctionsClientServer.SubstituteParametersInString(
 			MessageText, BeginTimeLock);
-		ShowUserNotification(NStr("en='Users disconnection';ru='Завершение работы пользователей'"), 
+		ShowUserNotification(NStr("en='User work completion';ru='Завершение работы пользователей'"), 
 			"e1cib/app/DataProcessor.UserWorkBlocking", 
 			MessageText, PictureLib.Information32);
 		Return;
@@ -117,7 +117,7 @@ Procedure TerminateUserSessions() Export
 		|Следующая проверка сеансов будет выполнена через минуту.'");
 		MessageText = StringFunctionsClientServer.SubstituteParametersInString(
 			MessageText, NumberOfSessions);
-		ShowUserNotification(NStr("en='Users disconnection';ru='Завершение работы пользователей'"), 
+		ShowUserNotification(NStr("en='User work completion';ru='Завершение работы пользователей'"), 
 			"e1cib/app/DataProcessor.UserWorkBlocking", 
 			MessageText, PictureLib.Information32);
 		Notify("UserSessions", New Structure("Status,NumberOfSessions", "Running", NumberOfSessions));
@@ -141,16 +141,16 @@ Procedure TerminateUserSessions() Export
 	
 	If Result Then
 		InfobaseConnectionsClient.SetUserTerminationInProgressFlag(False);
-		ShowUserNotification(NStr("en='Users disconnection';ru='Завершение работы пользователей'"), 
+		ShowUserNotification(NStr("en='User work completion';ru='Завершение работы пользователей'"), 
 			"e1cib/app/DataProcessor.UserWorkBlocking", 
-			NStr("en='End of session has been successfully completed';ru='Завершение сеансов выполнено успешно'"), PictureLib.Information32);
+			NStr("en='Sessions are successfully closed';ru='Завершение сеансов выполнено успешно'"), PictureLib.Information32);
 		Notify("UserSessions", New Structure("Status,NumberOfSessions", "Done", NumberOfSessions));
 		InfobaseConnectionsClient.TerminateThisSession();
 	Else
 		InfobaseConnectionsClient.SetUserTerminationInProgressFlag(False);
-		ShowUserNotification(NStr("en='Users disconnection';ru='Завершение работы пользователей'"), 
+		ShowUserNotification(NStr("en='User work completion';ru='Завершение работы пользователей'"), 
 			"e1cib/app/DataProcessor.UserWorkBlocking", 
-			NStr("en='End of sessions has not been completed! Look for details in event log.';ru='Завершение сеансов не выполнено! Подробности см. в журнале регистрации.'"), PictureLib.Warning32);
+			NStr("en='Sessions are not completed. For more information, see event log.';ru='Завершение сеансов не выполнено! Подробности см. в журнале регистрации.'"), PictureLib.Warning32);
 		Notify("UserSessions", New Structure("Status,NumberOfSessions", "Error", NumberOfSessions));
 	EndIf;
 	

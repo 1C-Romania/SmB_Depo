@@ -41,7 +41,7 @@ Procedure OnComposeResult(ResultDocument, DetailsData, StandardProcessing)
 		AND Not EndOfPeriod = Date(1,1,1)
 		AND BeginOfPeriod > EndOfPeriod Then
 		
-		MessageText	 	= NStr("en='Begin of the period can not be greater than end of period';ru='Дата начала периода не должна превышать дату окончания.'");
+		MessageText	 	= NStr("en='Period start cannot be greater than period end';ru='Дата начала периода не должна превышать дату окончания.'");
 		CommonUseClientServer.MessageToUser(MessageText);
 		
 		Return;

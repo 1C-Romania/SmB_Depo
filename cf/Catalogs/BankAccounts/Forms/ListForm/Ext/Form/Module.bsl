@@ -147,7 +147,7 @@ Procedure WriteMainAccount(ParametersStructure)
 		
 		OwnerSuccesfullyLocked = False;
 		
-		MessageText = NStr("ru = 'Не удалось заблокировать объект для изменения основного банковского счета.'; en = 'Could not be locked object for editing main bank account.'", Metadata.DefaultLanguage.LanguageCode);
+		MessageText = NStr("en='Cannot lock object for changing the main bank account.';ru='Не удалось заблокировать объект для изменения основного банковского счета.'", Metadata.DefaultLanguage.LanguageCode);
 		WriteLogEvent(MessageText, EventLogLevel.Warning,, OwnerObject, ErrorDescription());
 		
 	EndTry;

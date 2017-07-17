@@ -40,7 +40,7 @@ Procedure BeforeClose(Cancel, StandardProcessing)
 		NotifyDescription = New NotifyDescription("OnAnswerQuestionAboutSavingChangedData",
 			ThisObject);
 		
-		QuestionText = NStr("en='Data is modified. Save changes?';ru='Данные модифицированы. Сохранить изменения?'");
+		QuestionText = NStr("en='Data changed. Save changes?';ru='Данные модифицированы. Сохранить изменения?'");
 		ShowQueryBox(NOTifyDescription, QuestionText, QuestionDialogMode.YesNoCancel);
 		
 	EndIf;
@@ -76,7 +76,7 @@ Procedure StateCodeStartChoice(Item, ChoiceData, StandardProcessing)
 	
 	If StatesCodesList = Undefined Then
 		
-		WarningText = NStr("en='Codes list has not been imported yet. Click the Import reference or enter a state code manually.';ru='Список кодов еще не загружен. Нажмите на ссылку ""Загрузить"" или введите код региона вручную.'");
+		WarningText = NStr("en='List of codes has not been imported yet. Click ""Import"" or enter the region code manually.';ru='Список кодов еще не загружен. Нажмите на ссылку ""Загрузить"" или введите код региона вручную.'");
 		ShowMessageBox(, WarningText);
 		Return;
 		
@@ -88,7 +88,7 @@ Procedure StateCodeStartChoice(Item, ChoiceData, StandardProcessing)
 	
 	StatesCodesList.ShowChooseItem(
 		NotifyDescription,
-		NStr("en='States codes';ru='Коды регионов'"),
+		NStr("en='Region codes';ru='Коды регионов'"),
 		CurrentListItem);
 	
 EndProcedure

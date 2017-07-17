@@ -193,7 +193,7 @@ Function PreviewPrintedFormProformaInvoice(ObjectsArray, PrintObjects, TemplateN
 	Inventory.Insert("Amount",					100);
 	Inventory.Insert("TotalVAT",				18);
 	Inventory.Insert("Total",					118);
-	Inventory.Insert("VATAmount",				NStr("ru = 'Сумма НДС'; en = 'VAT'"));
+	Inventory.Insert("VATAmount",				NStr("en='VAT amount';ru='Сумма НДС'"));
 	Inventory.Insert("Characteristic",			Catalogs.ProductsAndServicesCharacteristics.EmptyRef());
 	Inventory.Insert("DiscountMarkupPercent",	0);
 	
@@ -232,7 +232,7 @@ Function PreviewPrintedFormProformaInvoice(ObjectsArray, PrintObjects, TemplateN
 		
 	Else
 		
-		MessageText = NStr("en='ATTENTION! Perhaps, user template is used default methods for the accounts printing may work incorrectly.';ru='ВНИМАНИЕ! Возможно используется пользовательский макет. Штатный механизм печати счетов может работать некоректно.'");
+		MessageText = NStr("en='ATTENTION! Maybe, custom template is being used. Default procedures of account printing may work incorrectly.';ru='ВНИМАНИЕ! Возможно используется пользовательский макет. Штатный механизм печати счетов может работать некоректно.'");
 		CommonUseClientServer.AddUserError(Errors, , MessageText, Undefined);
 		
 	EndIf;
@@ -442,7 +442,7 @@ Procedure Print(ObjectsArray,
 		PrintManagement.OutputSpreadsheetDocumentToCollection(
 			PrintFormsCollection,
 			"CompanyAttributes",
-			NStr("ru = 'Реквизиты организации'; en = 'Company attributes'"),
+			NStr("en='Company details';ru='Реквизиты организации'"),
 			PrintCompanyCard(ObjectsArray, PrintObjects));
 		
 	EndIf;

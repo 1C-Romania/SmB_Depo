@@ -366,10 +366,10 @@ EndProcedure
 Function MessageStringAboutImpossibilityOfLockedFileSigning(FileRef = Undefined) Export
 	
 	If FileRef = Undefined Then
-		Return NStr("en='Impossible to sign locked file.';ru='Нельзя подписать занятый файл.'");
+		Return NStr("en='Cannot sign locked file.';ru='Нельзя подписать занятый файл.'");
 	Else
 		Return StringFunctionsClientServer.SubstituteParametersInString(
-			NStr("en='Impossible to sign locked file: %1.';ru='Нельзя подписать занятый файл: %1.'"),
+			NStr("en='Cannot sign locked file: %1.';ru='Нельзя подписать занятый файл: %1.'"),
 			String(FileRef) );
 	EndIf;
 	
@@ -380,10 +380,10 @@ EndFunction
 Function MessageStringAboutImpossibilityOfEncryptedFileSigning(FileRef = Undefined) Export
 	
 	If FileRef = Undefined Then
-		Return NStr("en='Impossible to sign encrypted file.';ru='Нельзя подписать зашифрованный файл.'");
+		Return NStr("en='Cannot sign encrypted file.';ru='Нельзя подписать зашифрованный файл.'");
 	Else
 		Return StringFunctionsClientServer.SubstituteParametersInString(
-						NStr("en='Impossible to sign encrypted file: 1.';ru='Нельзя подписать зашифрованный файл: %1.'"),
+						NStr("en='Cannot sign encrypted file: %1.';ru='Нельзя подписать зашифрованный файл: %1.'"),
 						String(FileRef) );
 	EndIf;
 	

@@ -433,7 +433,7 @@ Procedure GenerateReport()
 	
     If Not ValueIsFilled(Report.Document) Then
 		Message = New UserMessage();
-		Message.Text = NStr("en='Document is not selected!';ru='Не выбран документ!'");
+		Message.Text = NStr("en='Document not selected.';ru='Не выбран документ!'");
 		Message.Message();
 		Return;
 	EndIf;

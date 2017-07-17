@@ -57,7 +57,7 @@ Procedure OnCreateAtServer(Cancel, StandardProcessing)
 	SetPrinterNameInPrintButtonToolTip();
 	SetFormTitle();
 	If IsSetPrint() Then
-		Items.copies.Title = NStr("en='Kit copies';ru='Копий комплекта'");
+		Items.copies.Title = NStr("en='Set copies';ru='Копий комплекта'");
 	EndIf;
 	
 EndProcedure
@@ -88,7 +88,7 @@ Procedure ChoiceProcessing(ValueSelected, ChoiceSource)
 				For Each WrittenObject IN WrittenObjects Do
 					Notify("Record_AttachedFile", New Structure, WrittenObject);
 				EndDo;
-				Status(NStr("en='Saving has been successfully completed.';ru='Сохранение успешно завершено.'"));
+				Status(NStr("en='Saving completed successfully.';ru='Сохранение успешно завершено.'"));
 			EndIf;
 		EndIf;
 		
@@ -562,7 +562,7 @@ Procedure AddNumberOfInstancesInPrintFormsPresentations()
 	For Each PrintFormSetting IN PrintFormsSettings Do
 		If PrintFormSetting.Quantity <> 1 Then
 			PrintFormSetting.Presentation = PrintFormSetting.Presentation 
-				+ " (" + PrintFormSetting.Quantity + " " + NStr("en='copy.';ru='экз.'") + ")";
+				+ " (" + PrintFormSetting.Quantity + " " + NStr("en='copy';ru='экз.'") + ")";
 		EndIf;
 	EndDo;
 EndProcedure
@@ -573,9 +573,9 @@ Procedure SetOutputEnabledFlagInPrintFormsPresentations(IsAllowedOutput)
 		For Each PrintFormSetting IN PrintFormsSettings Do
 			SpreadsheetDocumentField = Items[PrintFormSetting.AttributeName];
 			If SpreadsheetDocumentField.Output = UseOutput.Disable Then
-				PrintFormSetting.Presentation = PrintFormSetting.Presentation + " (" + NStr("en='output disabled';ru='вывод не доступен'") + ")";
+				PrintFormSetting.Presentation = PrintFormSetting.Presentation + " (" + NStr("en='output is not available';ru='вывод не доступен'") + ")";
 			ElsIf SpreadsheetDocumentField.Protection Then
-				PrintFormSetting.Presentation = PrintFormSetting.Presentation + " (" + NStr("en='Only printing';ru='только печать'") + ")";
+				PrintFormSetting.Presentation = PrintFormSetting.Presentation + " (" + NStr("en='print only';ru='только печать'") + ")";
 			EndIf;
 		EndDo;
 	EndIf;	
@@ -596,7 +596,7 @@ Procedure SetPrinterNameInPrintButtonToolTip()
 	If PrintFormsSettings.Count() > 0 Then
 		PrinterName = ThisObject[PrintFormsSettings[0].AttributeName].PrinterName;
 		If Not IsBlankString(PrinterName) Then
-			ThisObject.Commands["Print"].ToolTip = NStr("en='Print on printer';ru='Напечатать на принтере'") + " (" + PrinterName + ")";
+			ThisObject.Commands["Print"].ToolTip = NStr("en='Print using printer';ru='Напечатать на принтере'") + " (" + PrinterName + ")";
 		EndIf;
 	EndIf;
 EndProcedure
@@ -613,11 +613,11 @@ Procedure SetFormTitle()
 		Title = FormTitle;
 	Else
 		If IsSetPrint() Then
-			Title = NStr("en='Set print';ru='Печать комплекта'");
+			Title = NStr("en='Print set';ru='Печать комплекта'");
 		ElsIf TypeOf(Parameters.CommandParameter) <> Type("Array") Or Parameters.CommandParameter.Count() > 1 Then
-			Title = NStr("en='Printing Documents';ru='Печать документов'");
+			Title = NStr("en='Document print';ru='Печать документов'");
 		Else
-			Title = NStr("en='Document print';ru='Печать документа'");
+			Title = NStr("en='Print document';ru='Печать документа'");
 		EndIf;
 	EndIf;
 EndProcedure
@@ -942,7 +942,7 @@ Procedure SavePrintFormsToFolder(FilesListInTempStorage, Val Folder = "")
 		BinaryData.Write(UniqueFileName(Folder + FileToSave.Presentation));
 	EndDo;
 	
-	Status(NStr("en='Saving has been successfully completed.';ru='Сохранение успешно завершено.'"), , NStr("en='to folder:';ru='в папку:'") + " " + Folder);
+	Status(NStr("en='Saving completed successfully.';ru='Сохранение успешно завершено.'"), , NStr("en='to folder:';ru='в папку:'") + " " + Folder);
 	
 EndProcedure
 
@@ -1040,7 +1040,7 @@ Procedure OpenTemplateForEdit()
 	
 	PrintFormSetting = CurrentPrintFormSetting();
 	
-	DisplayCurrentPrintFormState(NStr("en='Template is edited';ru='Макет редактируется'"));
+	DisplayCurrentPrintFormState(NStr("en='The template is being edited';ru='Макет редактируется'"));
 	
 	MetadataObjectTemplateName = PrintFormSetting.PathToTemplate;
 	
@@ -1133,7 +1133,7 @@ Procedure RegeneratePrintForm(TemplateName, AttributeName)
 	Cancel = False;
 	PrintFormsCollection = GeneratePrintForms(TemplateName, Cancel);
 	If Cancel Then
-		Raise NStr("en='Print form has not been regenerated.';ru='Печатная форма не была переформирована.'");
+		Raise NStr("en='Print form was not regenerated.';ru='Печатная форма не была переформирована.'");
 	EndIf;
 	
 	For Each PrintForm IN PrintFormsCollection Do

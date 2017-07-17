@@ -26,7 +26,7 @@ Procedure OnCreateAtServer(Cancel, StandardProcessing)
 	
 	ExchangePlanList = DataExchangeReUse.SLExchangePlanList();
 	If ExchangePlanList.Count() = 0 Then
-		MessageText = NStr("en='Possibility to configure the data synchronization is not provided.';ru='Возможность настройки синхронизации данных не предусмотрена.'");
+		MessageText = NStr("en='Configuring data synchronization is not applicable.';ru='Возможность настройки синхронизации данных не предусмотрена.'");
 		CommonUseClientServer.MessageToUser(MessageText,,,, Cancel);
 		Return;
 	EndIf;
@@ -117,7 +117,7 @@ EndProcedure
 Procedure ListOfNodesStatusSelection(Item, SelectedRow, Field, StandardProcessing)
 	
 	NotifyDescription = New NotifyDescription("NodesStatusListSelectionEnd", ThisObject);
-	ShowQueryBox(NOTifyDescription, NStr("en='Do you want to perform data synchronization?';ru='Выполнить синхронизацию данных?'"), QuestionDialogMode.YesNo,, DialogReturnCode.Yes);
+	ShowQueryBox(NOTifyDescription, NStr("en='Synchronize data?';ru='Выполнить синхронизацию данных?'"), QuestionDialogMode.YesNo,, DialogReturnCode.Yes);
 	
 EndProcedure
 
@@ -585,7 +585,7 @@ Procedure SetOneSynchronizationItems()
 	
 	If ConfiguredSynchronization.InfobaseNode = Undefined Then
 		
-		Raise NStr("en='Work of the data synchronization monitor in the undivided session is not supported';ru='Работа монитора синхронизации данных в неразделенном сеансе не поддерживается'");
+		Raise NStr("en='Data synchronization monitor is not supported for undivided session';ru='Работа монитора синхронизации данных в неразделенном сеансе не поддерживается'");
 		
 	EndIf;
 	
@@ -986,9 +986,9 @@ Procedure CheckConversionRulesCompatibility(Val ExchangePlanName, ContinuationPr
 		FormParameters.Picture = ErrorDescription.Picture;
 		FormParameters.OfferDontAskAgain = False;
 		If ErrorDescription.ErrorKind = "IncorrectConfiguration" Then
-			FormParameters.Title = NStr("en='Data can not be synchronized';ru='Синхронизация данных не может быть выполнена'");
+			FormParameters.Title = NStr("en='Data synchronization cannot be executed';ru='Синхронизация данных не может быть выполнена'");
 		Else
-			FormParameters.Title = NStr("en='Data can be synchronized incorrectly';ru='Синхронизация данных может быть выполнена некорректно'");
+			FormParameters.Title = NStr("en='Data synchronization may be executed incorrectly';ru='Синхронизация данных может быть выполнена некорректно'");
 		EndIf;
 		
 		StandardSubsystemsClient.ShowQuestionToUser(Notification, ErrorDescription.ErrorText, Buttons, FormParameters);
@@ -1030,7 +1030,7 @@ Function ConversionRulesAreCompatibleWithCurrentVersion(ExchangePlanName, ErrorD
 	If ConfigurationNameFromRules <> InfobaseConfigurationName Then
 			
 			ErrorDescription = New Structure;
-			ErrorDescription.Insert("ErrorText", NStr("en='Data can not be synchronized because of using rules for the %1 applicatione. You should use rules from configuration or import correct rules set from file.';ru='Синхронизация данных не может быть выполнена, так как используются правила, предназначенные для программы ""%1"". Следует использовать правила из конфигурации или загрузить корректный комплект правил из файла.'"));
+			ErrorDescription.Insert("ErrorText", NStr("en='Cannot sync data because you use rules designed for application ""%1"". Use rules from configuration or import the correct set of rules from the file.';ru='Синхронизация данных не может быть выполнена, так как используются правила, предназначенные для программы ""%1"". Следует использовать правила из конфигурации или загрузить корректный комплект правил из файла.'"));
 			ErrorDescription.ErrorText = StringFunctionsClientServer.SubstituteParametersInString(ErrorDescription.ErrorText,
 				RulesInformation.ConfigurationSynonymInRules);
 			ErrorDescription.Insert("ErrorKind", "IncorrectConfiguration");
@@ -1047,12 +1047,12 @@ Function ConversionRulesAreCompatibleWithCurrentVersion(ExchangePlanName, ErrorD
 			
 			If ComparisonResult < 0 Then
 				
-				ErrorText = NStr("en='Data can be synchronized incorrectly because of using rules for the previous version of %1 applicatione (%2). It is recommended to use rules from configuration or import rules set designed for the current application version (%3).';ru='Синхронизация данных может быть выполнена некорректно, так как используются правила, предназначенные для предыдущей версии программы ""%1"" (%2). Рекомендуется использовать правила из конфигурации или загрузить комплект правил, предназначенный для текущей версии программы (%3).'");
+				ErrorText = NStr("en='Data may be synced incorrectly because you use rules designed for the previous version of application ""%1"" (%2). Use rules designed for the configuration or import the set of rules designed for the current application version (%3).';ru='Синхронизация данных может быть выполнена некорректно, так как используются правила, предназначенные для предыдущей версии программы ""%1"" (%2). Рекомендуется использовать правила из конфигурации или загрузить комплект правил, предназначенный для текущей версии программы (%3).'");
 				ErrorKind = "OutdatedConfigurationVersion";
 				
 			Else
 				
-				ErrorText = NStr("en='Data can be synchronized incorrectly because of using rules for newer version of the %1 applicatione (%2). It is recommended to update application version or use rules set designed for the current application version (%3).';ru='Синхронизация данных может быть выполнена некорректно, так как используются правила, предназначенные для более новой версии программы """"%1"""" (%2). Рекомендуется обновить версию программы или использовать комплект правил, предназначенный для текущей версии программы (%3).'");
+				ErrorText = NStr("en='Data may be synchronized incorrectly due to using rules for a newer version of the """"%1"""" application (%2). It is recommended to update application version or use rules set designed for the current application version (%3).';ru='Синхронизация данных может быть выполнена некорректно, так как используются правила, предназначенные для более новой версии программы """"%1"""" (%2). Рекомендуется обновить версию программы или использовать комплект правил, предназначенный для текущей версии программы (%3).'");
 				ErrorKind = "OutdatedRules";
 				
 			EndIf;

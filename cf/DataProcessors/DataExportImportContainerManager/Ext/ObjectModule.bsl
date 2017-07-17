@@ -45,7 +45,7 @@ Function ExportParameters() Export
 	If ForExport Then
 		Return New FixedStructure(Parameters);
 	Else
-		Raise NStr("en='The container has not been initialized for exporting data.';ru='Контейнер не инициализирован для выгрузки данных!'");
+		Raise NStr("en='The container is not initialized for data export.';ru='Контейнер не инициализирован для выгрузки данных!'");
 	EndIf;
 	
 EndFunction
@@ -112,7 +112,7 @@ Procedure DeleteFile(Val FullPathToFile) Export
 	ContentRow = Content.Find(FullPathToFile, "DescriptionFull");
 	If ContentRow = Undefined Then
 		Raise StringFunctionsClientServer.SubstituteParametersInString(
-			NStr("en='File %1 is not found in the container content.';ru='Файл %1 не найден в составе контейнера!'"), FullPathToFile);
+			NStr("en='File %1 was not found in the container.';ru='Файл %1 не найден в составе контейнера!'"), FullPathToFile);
 	Else
 		
 		Content.Delete(ContentRow);
@@ -129,7 +129,7 @@ Procedure ReplaceFile(Val NameInContainer, Val FullPathToFile, Val DeleteReplace
 	SourceFileRow = Content.Find(NameInContainer, "Name");
 	If SourceFileRow = Undefined Then
 		Raise StringFunctionsClientServer.SubstituteParametersInString(
-			NStr("en='File with identifier %1 is not found in the container.';ru='Файл с идентификатором %1 не найден в составе контейнера!'"), NameInContainer);
+			NStr("en='File with ID %1 was not found in the container.';ru='Файл с идентификатором %1 не найден в составе контейнера!'"), NameInContainer);
 	Else
 		
 		SourceFileName = SourceFileRow.DescriptionFull;
@@ -209,14 +209,14 @@ Procedure InitializeImport(Val ImportingDirectory, Val ImportParameters) Export
 			Or ReadStream.Name <> "Data" Then
 		
 		Raise ServiceTechnologyIntegrationWithSSL.PlaceParametersIntoString(
-			NStr("en='The XML reading error. Incorrect file format. The beginning of the item %1 is expected.';ru='Ошибка чтения XML. Неверный формат файла. Ожидается начало элемента %1.'"),
+			NStr("en='XML reading error. Invalid file format. Awaiting %1 item start.';ru='Ошибка чтения XML. Неверный формат файла. Ожидается начало элемента %1.'"),
 			"Data"
 		);
 		
 	EndIf;
 	
 	If Not ReadStream.Read() Then
-		Raise NStr("en='The XML reading error. File completion is detected.';ru='Ошибка чтения XML. Обнаружено завершение файла.'");
+		Raise NStr("en='XML reading error. File end is detected.';ru='Ошибка чтения XML. Обнаружено завершение файла.'");
 	EndIf;
 	
 	While ReadStream.NodeType = XMLNodeType.StartElement Do
@@ -246,7 +246,7 @@ Function ImportParameters() Export
 	If ForImport Then
 		Return New FixedStructure(Parameters);
 	Else
-		Raise NStr("en='The container has not been initialized for importing data.';ru='Контейнер не инициализирован для загрузки данных!'");
+		Raise NStr("en='The container is not initialized for data import.';ru='Контейнер не инициализирован для загрузки данных!'");
 	EndIf;
 	
 EndFunction
@@ -274,7 +274,7 @@ Function GetFileFromDirectory(Val FileKind, Val DataType = Undefined) Export
 	If Files.Count() = 0 Then
 		Return Undefined;
 	ElsIf Files.Count() > 1 Then
-		Raise NStr("en='Duplicate data exists in the export';ru='В выгрузке содержится дублирующаяся информация'");
+		Raise NStr("en='Export contains duplicate information';ru='В выгрузке содержится дублирующаяся информация'");
 	EndIf;
 	
 	Return Files[0].DescriptionFull;
@@ -296,11 +296,11 @@ Function GetRandomFile(Val DataType = Undefined) Export
 	Files = GetFilesFromSet(DataExportImportService.CustomData() , DataType);
 	If Files.Count() = 0 Then
 		Raise StringFunctionsClientServer.SubstituteParametersInString(
-			NStr("en='Arbitrary file with data type %1 does not exist in the export.';ru='В выгрузке отсутствует произвольный файл с типом данным %1!'"),
+			NStr("en='There is no arbitrary file with data type %1 in export.';ru='В выгрузке отсутствует произвольный файл с типом данным %1!'"),
 			DataType
 		);
 	ElsIf Files.Count() > 1 Then
-		Raise NStr("en='Duplicate data exists in the export';ru='В выгрузке содержится дублирующаяся информация'");
+		Raise NStr("en='Export contains duplicate information';ru='В выгрузке содержится дублирующаяся информация'");
 	EndIf;
 	
 	Return Files[0].DescriptionFull;
@@ -334,7 +334,7 @@ Function GetFileDescriptionsFromDirectory(Val FileKind, Val DataType = Undefined
 		
 	Else
 		
-		Raise NStr("en='Unknown file kind';ru='Неизвестный вид файла'");
+		Raise NStr("en='Unknown file type';ru='Неизвестный вид файла'");
 		
 	EndIf;
 	
@@ -375,7 +375,7 @@ Function GetFullFileName(Val RelativeFileName) Export
 	
 	If ContentRow = Undefined Then
 		Raise StringFunctionsClientServer.SubstituteParametersInString(
-			NStr("en='File with relative name %1 is not found in the container.';ru='В контейнере не обнаружен файл с относительным именем %1!'"),
+			NStr("en='There is no file with relative name %1 in the container.';ru='В контейнере не обнаружен файл с относительным именем %1!'"),
 			RelativeFileName
 		);
 	Else
@@ -392,7 +392,7 @@ Function GetRelativeFileName(Val FullFileName) Export
 	
 	If ContentRow = Undefined Then
 		Raise StringFunctionsClientServer.SubstituteParametersInString(
-			NStr("en='File %1 is not found in the container.';ru='В контейнере не обнаружен файл %1!'"),
+			NStr("en='There is no file %1 in the container.';ru='В контейнере не обнаружен файл %1!'"),
 			FullFileName
 		);
 	Else
@@ -426,13 +426,13 @@ EndFunction
 Procedure CheckContainerInitialization(Val WhenInitializing = False)
 	
 	If ForExport AND ForImport Then
-		Raise NStr("en='Invalid container initialization.';ru='Некорректная инициализация контейнера!'");
+		Raise NStr("en='Incorrect container initialization';ru='Некорректная инициализация контейнера!'");
 	EndIf;
 	
 	If WhenInitializing Then
 		
 		If ContainerInitialized <> Undefined AND ContainerInitialized Then
-			Raise NStr("en='The export container has already been initialized.';ru='Контейнер выгрузки уже был инициализирован ранее!'");
+			Raise NStr("en='Export container has already been initialized.';ru='Контейнер выгрузки уже был инициализирован ранее!'");
 		EndIf;
 		
 	Else
@@ -518,7 +518,7 @@ Function GetDirectoryToLocateFile(Val FileKind)
 		
 	Else
 		Raise ServiceTechnologyIntegrationWithSSL.PlaceParametersIntoString(
-			NStr("en='File kind %1 is not supported.';ru='Вид файла %1 не поддерживается!'"), FileKind);
+			NStr("en='The %1 file kind is not supported.';ru='Вид файла %1 не поддерживается!'"), FileKind);
 	EndIf;
 		
 EndFunction

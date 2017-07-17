@@ -1151,7 +1151,7 @@ Procedure ProcessDiscountsTree(DiscountsTree)
 			
 			LineCount = TreeRow.Rows.Count();
 			If LineCount > 1 Then
-				Raise NStr("en='Discounts tree generation error';ru='Ошибка генерации дерева скидок'");
+				Raise NStr("en='An error occurred while generating discount tree';ru='Ошибка генерации дерева скидок'");
 			EndIf;
 			If LineCount > 0 Then
 				FillPropertyValues(TreeRow, TreeRow.Rows[0]);

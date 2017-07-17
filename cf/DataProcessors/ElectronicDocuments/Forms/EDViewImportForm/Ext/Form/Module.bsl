@@ -77,13 +77,13 @@ Procedure ChangeVisibleOfEnabledWhenCreatingServer()
 
 		If Upper(EDKind) = Upper("CompanyAttributes") Then
 			
-			Title = NStr("en='Data import from the file';ru='Загрузка данных из файла'");
+			Title = NStr("en='Import data from file';ru='Загрузка данных из файла'");
 			
 			Items.SettingsGroupCatalogs.Visible = True;
 			Items.SettingsGroupDocuments.Visible = False;
 		Else
 			
-			Title = NStr("en='Document loading from the file';ru='Загрузка документа из файла'");
+			Title = NStr("en='Document import from the file';ru='Загрузка документа из файла'");
 			
 			Items.SettingsGroupCatalogs.Visible = False;
 			Items.SettingsGroupDocuments.Visible = True;
@@ -166,12 +166,12 @@ Procedure ToViewEDServer(EDStructure, Cancel)
 		
 		If CardFile = Undefined Or InformationFile = Undefined Then
 			
-			MessagePattern = NStr("en='Error occurred when reading data from the ""%1No."" file (see details in the event log).';ru='Возникла ошибка при чтении данных из файла ""%1№"" (подробности см. в Журнале регистрации).'");
+			MessagePattern = NStr("en='An error occurred while reading data from the ""%1No."" file (for more information, see the event log).';ru='Возникла ошибка при чтении данных из файла ""%1№"" (подробности см. в Журнале регистрации).'");
 			MessageText = StringFunctionsClientServer.SubstituteParametersInString(MessagePattern, EDStructure.FileName);
 			
-			MessagePattern = NStr("en='""%1"" file does not contain electronic documents.';ru='Файл ""%1"" не содержит электронных документов.'");
+			MessagePattern = NStr("en='The ""%1"" file does not contain electronic documents.';ru='Файл ""%1"" не содержит электронных документов.'");
 			ErrorPresentation = StringFunctionsClientServer.SubstituteParametersInString(MessagePattern, EDStructure.FileName);
-			ElectronicDocumentsServiceCallServer.ProcessExceptionByEDOnServer(NStr("en='ED reading';ru='Чтение ЭД.'"),
+			ElectronicDocumentsServiceCallServer.ProcessExceptionByEDOnServer(NStr("en='ED reading.';ru='Чтение ЭД.'"),
 			ErrorPresentation,
 			MessageText);
 			DeleteFiles(FolderForUnpacking);
@@ -427,7 +427,7 @@ Function EDDataFile(LinkToED, Val SubordinatedEDFileName = Undefined)
 		EndIf;
 		
 		If FileName = Undefined Then
-			ErrorText = NStr("en='Unable to view electronic document. Verify the work directory setting';ru='Не удалось просмотреть электронный документ. Проверьте настройку рабочего каталога'");
+			ErrorText = NStr("en='Unable to view the electronic document. Check a working directory setting';ru='Не удалось просмотреть электронный документ. Проверьте настройку рабочего каталога'");
 			CommonUseClientServer.MessageToUser(ErrorText);
 			Return Undefined;
 		EndIf;
@@ -446,7 +446,7 @@ Function EDDataFile(LinkToED, Val SubordinatedEDFileName = Undefined)
 			FolderForUnpacking = ElectronicDocumentsService.WorkingDirectory(,LinkToED.UUID());
 			
 			If FolderForUnpacking = Undefined Then
-				ErrorText = NStr("en='Unable to view electronic document. Verify the work directory setting';ru='Не удалось просмотреть электронный документ. Проверьте настройку рабочего каталога'");
+				ErrorText = NStr("en='Unable to view the electronic document. Check a working directory setting';ru='Не удалось просмотреть электронный документ. Проверьте настройку рабочего каталога'");
 				CommonUseClientServer.MessageToUser(ErrorText);
 				Return Undefined;
 			EndIf;
@@ -580,7 +580,7 @@ Procedure GenerateServiceMessageText()
 	
 	If ValueIsFilled(FileNameCML) Then
 		
-		ItemTitle = NStr("en='Failed to read the file';ru='Не удалось прочитать файл'"+ FileNameCML+".""'");
+		ItemTitle = NStr("en='Cannot read the file';ru='Не удалось прочитать файл'"+ FileNameCML+".""'");
 		
 	Else
 		
@@ -662,7 +662,7 @@ Procedure ImportDocumentEDF()
 	EndIf;
 	
 	If DocumentImportMethod = 1 AND Not ValueIsFilled(IBDocument) Then
-		MessageText = NStr("en='Document for refilling is not specified.';ru='Не указан документ для перезаполнения.'");
+		MessageText = NStr("en='Document for repopulation is not specified.';ru='Не указан документ для перезаполнения.'");
 		CommonUseClientServer.MessageToUser(MessageText);
 		Cancel = True;
 	EndIf;

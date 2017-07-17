@@ -317,7 +317,7 @@ Procedure CreateEmailMessage(Val FieldValues, Val Presentation = "", ExpectedKin
 	InformationType = ContactInformation.ContactInformationType;
 	
 	If InformationType <> PredefinedValue("Enum.ContactInformationTypes.EmailAddress") Then
-		Raise StrReplace(NStr("ru = 'Нельзя создать письмо по контактной информацию с типом ""%1""'; en = 'Cannot create a contact information email for ""%1"" type'"),
+		Raise StrReplace(NStr("en='Cannot create email by contact information with type ""%1""';ru='Нельзя создать письмо по контактной информацию с типом ""%1""'"),
 			"%1", InformationType);
 	EndIf;	
 	
@@ -325,7 +325,7 @@ Procedure CreateEmailMessage(Val FieldValues, Val Presentation = "", ExpectedKin
 	
 	EmailAddress = ContactInformationInternalServerCall.ContactInformationContentString(XMLData);
 	If TypeOf(EmailAddress) <> Type("String") Then
-		Raise NStr("ru = 'Ошибка получения адреса электронной почты, неверный тип контактной информации'; en = 'Email address retrieval error, invalid contact information type'");
+		Raise NStr("en='An error occurred when receiving the email address, incorrect contact information type';ru='Ошибка получения адреса электронной почты, неверный тип контактной информации'");
 	EndIf;
 	
 	If CommonUseClient.SubsystemExists("StandardSubsystems.EmailOperations") Then
@@ -338,7 +338,7 @@ Procedure CreateEmailMessage(Val FieldValues, Val Presentation = "", ExpectedKin
 	
 	// No email subsystem, using the platform notification
 	Notification = New NotifyDescription("CreateContactInformationEmailCompletion", ThisObject, EmailAddress);
-	SuggestionText = NStr("ru = 'Для отправки письма необходимо установить расширение для работы с файлами.'; en = 'To be able to send email messages, you need to install the file system extension.'");
+	SuggestionText = NStr("en='To send the email, install the file operation extension.';ru='Для отправки письма необходимо установить расширение для работы с файлами.'");
 	CommonUseClient.CheckFileSystemExtensionAttached(Notification, SuggestionText);
 EndProcedure
 
@@ -366,7 +366,7 @@ Procedure GoToWebLink(Val FieldValues, Val Presentation = "", ExpectedKind = Und
 
 	ReferenceAddress = ContactInformationInternalServerCall.ContactInformationContentString(XMLData);
 	If TypeOf(ReferenceAddress) <> Type("String") Then
-		Raise NStr("ru = 'Ошибка получения ссылки, неверный тип контактной информации'; en = 'Reference retrieval error, invalid contact information type'");
+		Raise NStr("en='An error occurred when receiving the reference, incorrect contact information type';ru='Ошибка получения ссылки, неверный тип контактной информации'");
 	EndIf;
 	
 	If Find(ReferenceAddress, "://") > 0 Then

@@ -15,7 +15,7 @@ Procedure BeforeWrite(Cancel)
 		// Check right "Adding".
 		If Not FileOperationsService.IsRight("FoldersUpdate", Parent) Then
 			Raise StringFunctionsClientServer.SubstituteParametersInString(
-				NStr("en='You haven''t enough rights to add subfolders in file folder ""%1"".';ru='Недостаточно прав для добавления подпапок в папку файлов ""%1"".'"),
+				NStr("en='Insufficient rights to add subfolders to file folder ""%1"".';ru='Недостаточно прав для добавления подпапок в папку файлов ""%1"".'"),
 				String(Parent));
 		EndIf;
 	EndIf;
@@ -25,7 +25,7 @@ Procedure BeforeWrite(Cancel)
 		// Check right "Deletion mark".
 		If Not FileOperationsService.IsRight("FoldersUpdate", Ref) Then
 			Raise StringFunctionsClientServer.SubstituteParametersInString(
-				NStr("en='You haven''t enough rights to change file folders ""%1"".';ru='Недостаточно прав для изменения папки файлов ""%1"".'"),
+				NStr("en='Insufficient rights to change file folder ""%1"".';ru='Недостаточно прав для изменения папки файлов ""%1"".'"),
 				String(Ref));
 		EndIf;
 	EndIf;
@@ -49,7 +49,7 @@ Procedure BeforeWrite(Cancel)
 		While Selection.Next() Do
 			If Not Selection.IsEditing.IsEmpty() Then
 				Raise StringFunctionsClientServer.SubstituteParametersInString(
-				                     NStr("en='Folder %1 can''t be deleted, so. it it contains file ""%2"" locked for editing.';ru='Папку %1 нельзя удалить, т.к. она содержит файл ""%2"", занятый для редактирования.'"),
+				                     NStr("en='Folder %1 cannot be deleted as it contains file ""%2"" that is locked for editing.';ru='Папку %1 нельзя удалить, т.к. она содержит файл ""%2"", занятый для редактирования.'"),
 				                     String(Ref),
 				                     String(Selection.Ref));
 			EndIf;
@@ -153,7 +153,7 @@ Procedure FillCheckProcessing(Cancel, CheckedAttributes)
 	If FoundProhibitedCharArray.Count() <> 0 Then
 		Cancel = True;
 		
-		Text = NStr("en='Folder description contains not allowed symbols ( \ / : * ? "" < > | .. )';ru='Наименование папки содержит запрещенные символы ( \ / : * ? "" < > | .. )'");
+		Text = NStr("en='Folder name contains forbidden characters ( \ / : * ? "" < > | .. )';ru='Наименование папки содержит запрещенные символы ( \ / : * ? "" < > | .. )'");
 		CommonUseClientServer.MessageToUser(Text, ThisObject, "Description");
 	EndIf;
 	

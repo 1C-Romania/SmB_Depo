@@ -119,7 +119,7 @@ Procedure ExecuteOperationByPaymentCardEnd(Result, Parameters) Export
 				MessageText = StrReplace(MessageText, "%ErrorDescription%", ErrorDescriptionFR);
 				CommonUseClientServer.MessageToUser(MessageText);
 			Else
-				MessageText = NStr("en='Operation has been successfully installed.';ru='Операция выполнена успешно.'");
+				MessageText = NStr("en='Operation is performed successfully.';ru='Операция выполнена успешно.'");
 				CommonUseClientServer.MessageToUser(MessageText);
 			EndIf;
 			
@@ -252,7 +252,7 @@ Procedure PrintLastSlipReceiptEnd(DeviceIdentifier, Parameters) Export
 				CommonUseClientServer.MessageToUser(MessageText);
 			EndIf;
 		Else
-			MessageText = NStr("en='There is no last slip receipt.';ru='Отсутствует последний слип чек.'");
+			MessageText = NStr("en='There is no last sales slip.';ru='Отсутствует последний слип чек.'");
 			CommonUseClientServer.MessageToUser(MessageText);
 		EndIf;
 		// FR device disconnect
@@ -274,8 +274,8 @@ Procedure PrintLastSlipReceipt(Command)
 	
 	NotifyDescription = New NotifyDescription("PrintLastSlipReceiptEnd", ThisObject, Parameters);
 	EquipmentManagerClient.OfferSelectDevice(NOTifyDescription, "FiscalRegister",
-			NStr("en='Select a fiscal register to print POS receipts.';ru='Выберите фискальный регистратор для печати эквайринговых чеков'"), 
-			NStr("en='Fiscal register for printing acquiring receipts is not enabled.';ru='Фискальный регистратор для печати эквайринговых чеков не подключен.'"));
+			NStr("en='Select a fiscal data recorder to print POS receipts.';ru='Выберите фискальный регистратор для печати эквайринговых чеков'"), 
+			NStr("en='Fiscal data recorder for printing acquiring receipts is not connected.';ru='Фискальный регистратор для печати эквайринговых чеков не подключен.'"));
 			
 EndProcedure
 

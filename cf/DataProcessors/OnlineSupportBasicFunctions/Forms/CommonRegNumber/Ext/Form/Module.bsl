@@ -142,7 +142,7 @@ Procedure FillForm()
 		Items.DoNotRemindAboutAuthorizationBefore.Visible = False;
 	EndIf;
 	
-	UserTitle = NStr("en='Login:';ru='Авторизоваться:'") + " " + Parameters.login;
+	UserTitle = NStr("en='Authorize:';ru='Авторизоваться:'") + " " + Parameters.login;
 	
 	Items.UserLoginLabelRegNumber.Title = UserTitle;
 	RegistrationNumberRegNumber = Parameters.regNumber;
@@ -154,7 +154,7 @@ EndProcedure
 &AtServer
 Procedure ShowSettingDateDoNotRemindAboutAuthorizationBefore()
 	
-	CommonCheckBoxTitle = NStr("en='Do not remind of the connection for seven days';ru='Не напоминать о подключении семь дней'");
+	CommonCheckBoxTitle = NStr("en='Do not remind of connection during seven days';ru='Не напоминать о подключении семь дней'");
 	
 	SettingValue = OnlineUserSupportServerCall.SettingValueDoNotRemindAboutAuthorizationBefore();
 	DoNotRemindAboutAuthorizationBefore = ?(SettingValue = '00010101', False, True);
@@ -162,7 +162,7 @@ Procedure ShowSettingDateDoNotRemindAboutAuthorizationBefore()
 	CheckBoxLine = CommonCheckBoxTitle
 		+ ?(SettingValue = '00010101',
 			"",
-			" " + NStr("en='(to';ru='(o'") + " " + Format(SettingValue, "DF=dd.MM.yyyy") + ")");
+			" " + NStr("en='(o';ru='(o'") + " " + Format(SettingValue, "DF=dd.MM.yyyy") + ")");
 	
 	Items.DoNotRemindAboutAuthorizationBefore.Title = CheckBoxLine;
 	
@@ -184,7 +184,7 @@ Function FieldsAreFilledCorrectly()
 	If IsBlankString(RegistrationNumberRegNumber) Then
 		
 		Message = New UserMessage;
-		Message.Text = NStr("en='Registration Number field is not filled';ru='Не заполнено поле ""Регистрационный номер""'");
+		Message.Text = NStr("en='Registration number is not filled in';ru='Не заполнено поле ""Регистрационный номер""'");
 		Message.Field  = "RegistrationNumberRegNumber";
 		Message.Message();
 		
@@ -200,7 +200,7 @@ EndFunction
 Function MessageParametersToTechicalSupport()
 	
 	Result = New Structure;
-	Result.Insert("Subject", NStr("en='Online support. Registration number entry.';ru='Интернет-поддержка. Ввод регистрационного номера.'"));
+	Result.Insert("Subject", NStr("en='Online support. Enter registration number.';ru='Интернет-поддержка. Ввод регистрационного номера.'"));
 	
 	MessageText = NStr("en='Hello!
 		|I can not enter registration number for the software product

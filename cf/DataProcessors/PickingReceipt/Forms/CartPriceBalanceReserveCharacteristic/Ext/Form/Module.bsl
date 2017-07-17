@@ -151,7 +151,7 @@ EndProcedure // SearchAndSetFilter()
 Procedure SetSearchStringOnServerInputHint()
 	
 	FulltextSearchSetPartially = (UseFullTextSearch AND Not RelevancyFullTextSearchIndex);
-	InputHint = ?(FulltextSearchSetPartially, NStr("en='You need to update the index of full-text search...';ru='Необходимо обновить индекс полнотекстового поиска...'"), NStr("en='(ALT+F3) Enter search text ...';ru='(ALT+F3) Введите текст поиска...'"));
+	InputHint = ?(FulltextSearchSetPartially, NStr("en='Update the full-text search index...';ru='Необходимо обновить индекс полнотекстового поиска...'"), NStr("en='(ALT+F3) Enter search text ...';ru='(ALT+F3) Введите текст поиска...'"));
 	Items.SearchText.InputHint = InputHint;
 	
 EndProcedure // SetSearchStringOnServerToolTipInput()
@@ -390,7 +390,7 @@ Procedure FilterByProductsAndServicesAnalogs(ProductsAndServices, MessageText)
 	
 	If ListProductsAndServicesAnalogs.Count() = 0 Then
 		
-		MessageText = NStr("en='There are no analogs for products and services.';ru='Для номенклатуры не заведены аналоги.'");
+		MessageText = NStr("en='There are no analogs for these products and services in the infobase.';ru='Для номенклатуры не заведены аналоги.'");
 		
 	Else
 		
@@ -771,7 +771,7 @@ Procedure OutputBoardUsePreviousPick()
 	If SelectionSettingsCache.OutputBoardUsePreviousPick Then
 		
 		FormTitle = NStr("en='Advice';ru='Совет'");
-		MessageText = NStr("en='You can disable/enable using a new selection form in the user settings.';ru='Выключить/включить использование новой формы подбора можно в настройках пользователя.'");
+		MessageText = NStr("en='You can disable/enable use of a new selection form in the user settings.';ru='Выключить/включить использование новой формы подбора можно в настройках пользователя.'");
 		
 		ShowUserAdvice(FormTitle, MessageText, True, "OutputBoardUsePreviousPick");
 		
@@ -787,7 +787,7 @@ Procedure CouncilServicesOutputInReceiptDocuments()
 	If SelectionSettingsCache.CouncilServicesOutputInReceiptDocuments Then
 		
 		FormTitle = NStr("en='Advice';ru='Совет'");
-		MessageText = NStr("en='Services in the supplier documents reflect expenses of the company, that is why the characteristics are limited.';ru='Услуги в приходных документах отражают расходы компании, поэтому выбор характеристик ограничен.'");
+		MessageText = NStr("en='Services in the reimbursement documents reflect company expenses, that is why characteristics are limited.';ru='Услуги в приходных документах отражают расходы компании, поэтому выбор характеристик ограничен.'");
 		
 		ShowUserAdvice(FormTitle, MessageText, True, "CouncilServicesOutputInReceiptDocuments");
 		

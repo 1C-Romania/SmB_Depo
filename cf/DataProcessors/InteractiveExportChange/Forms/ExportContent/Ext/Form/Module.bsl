@@ -36,7 +36,7 @@ Procedure OnCreateAtServer(Cancel, StandardProcessing)
 	ThisObject(ObjectSource);
 	
 	If Not ValueIsFilled(Object.InfobaseNode) Then
-		Text = NStr("en='Data exchange setup is not found.';ru='Настройка обмена данными не найдена.'");
+		Text = NStr("en='Data exchange setting is not found.';ru='Настройка обмена данными не найдена.'");
 		DataExchangeServer.ShowMessageAboutError(Text, Cancel);
 		Return;
 	EndIf;
@@ -175,7 +175,7 @@ Function GenerateTableDocumentServer()
 	
 	BackgroundJobResult = LongActions.ExecuteInBackground(UUID,
 		"DataExchangeServer.InteractiveExportChange_FormTableUserDocument",
-		JobParameters, NStr("en='Generation of report on the composition of the data to be sent during synchronization';ru='Формирование отчета по составу данных для отправки при синхронизации'"));
+		JobParameters, NStr("en='Generate a report on data content to be sent when synchronizing';ru='Формирование отчета по составу данных для отправки при синхронизации'"));
 	
 	BackgroundJobResultAddress = BackgroundJobResult.StorageAddress;
 	BackgroundJobID = BackgroundJobResult.JobID;

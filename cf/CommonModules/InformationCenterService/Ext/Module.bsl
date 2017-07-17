@@ -295,7 +295,7 @@ Procedure UpdateInformationReferencesForFormsSaaS() Export
 			Return;
 		EndIf;
 		
-		ErrorText = NStr("en='Failed to update Information references';ru='Не удалось обновить Информационные ссылки'");
+		ErrorText = NStr("en='Cannot update Information links';ru='Не удалось обновить Информационные ссылки'");
 		EventName = InformationCenterServer.GetEventNameForEventLogMonitor();
 		WriteLogEvent(EventName, EventLogLevel.Error, , , ErrorText);
 	Except

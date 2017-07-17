@@ -3,7 +3,7 @@
 &AtClient
 Procedure OnOpen(Cancel)
 	Cancel = True;
-	ShowMessageBox(, NStr("en='Data processor is not aimed for being used directly';ru='Обработка не предназначена для непосредственного использования.'"));
+	ShowMessageBox(, NStr("en='Data processor is not intended for direct usage.';ru='Обработка не предназначена для непосредственного использования.'"));
 EndProcedure
 
 #EndRegion

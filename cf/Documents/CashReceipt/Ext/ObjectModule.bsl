@@ -357,7 +357,7 @@ EndProcedure // FillByPaymentReceiptPlan()
 Procedure FillByCashTransferPlan(BasisDocument, Amount = Undefined)
 	
 	If BasisDocument.PaymentConfirmationStatus = Enums.PaymentApprovalStatuses.NotApproved Then
-		Raise NStr("en='You can not enter the cash register records basing on the unapproved plan document!';ru='Нельзя ввести перемещение денег на основании неутвержденного планового документа!'");
+		Raise NStr("en='Cannot enter funds movement based on an unapproved plan document.';ru='Нельзя ввести перемещение денег на основании неутвержденного планового документа!'");
 	EndIf;
 	
 	Query = New Query;
@@ -1135,7 +1135,7 @@ EndProcedure // FillByCustomerOrderDependOnBalanceForPayment()
 Procedure FillBySalesInvoice(FillingData)
 	
 	If FillingData.OperationKind = Enums.OperationKindsCustomerInvoice.TransferToProcessing Then
-		ErrorMessage = NStr("en='Cannot enter a document based on the operation - ""%OperationKind""';ru='Невозможен ввод документа на основании операции - ""%ВидОперации""!'");
+		ErrorMessage = NStr("en='Cannot enter the document based on the operation - ""%OperationKind"".';ru='Невозможен ввод документа на основании операции - ""%ВидОперации""!'");
 		ErrorMessage = StrReplace(ErrorMessage, "%OperationKind", FillingData.OperationKind);
 		Raise ErrorMessage;
 	EndIf;
@@ -1749,15 +1749,15 @@ Procedure FillCheckProcessing(Cancel, CheckedAttributes)
 				   AND Not RowPaymentDetails.AdvanceFlag)) Then
 					If PaymentDetails.Count() = 1 Then
 						If OperationKind = Enums.OperationKindsCashReceipt.FromCustomer Then
-							MessageText = NStr("en='Specify the shipment document or the advance payment sign.';ru='Укажите документ отгрузки или признак аванса платежа.'");
+							MessageText = NStr("en='Specify the shipment document or payment advance.';ru='Укажите документ отгрузки или признак аванса платежа.'");
 						Else
-							MessageText = NStr("en='Specify the settlements document.';ru='Укажите документ расчетов.'");
+							MessageText = NStr("en='Specify document of settlements.';ru='Укажите документ расчетов.'");
 						EndIf;
 					Else
 						If OperationKind = Enums.OperationKindsCashReceipt.FromCustomer Then
-							MessageText = NStr("en='Specify the shipment document or payment flag in the %LineNumber% row of the ""Payment details"" list.';ru='Укажите документ отгрузки или признак оплаты в строке %НомерСтроки% списка ""Расшифровка платежа"".'");
+							MessageText = NStr("en='Specify the shipment document or payment flag in the %LineNumber% line of the ""Payment explanation"" list.';ru='Укажите документ отгрузки или признак оплаты в строке %НомерСтроки% списка ""Расшифровка платежа"".'");
 						Else
-							MessageText = NStr("en='Specify the payment document in the row %LineNumber% of the list ""Payment details"".';ru='Укажите документ расчетов в строке %НомерСтроки% списка ""Расшифровка платежа"".'");
+							MessageText = NStr("en='Specify document of settlements in the row %LineNumber% of the list ""Payment details"".';ru='Укажите документ расчетов в строке %НомерСтроки% списка ""Расшифровка платежа"".'");
 						EndIf;
 						MessageText = StrReplace(MessageText, "%LineNumber%", String(RowPaymentDetails.LineNumber));
 					EndIf;

@@ -193,7 +193,7 @@ Procedure CheckDocumentsPosted(DocumentsArray, DocumentsPosted, FormSource = Und
 		
 		// Prompt a user whether it is required to continue printing if there are unposted documents
 		
-		DialogText = NStr("en='Failed to post one or several documents.';ru='Не удалось провести один или несколько документов.'");
+		DialogText = NStr("en='Cannot post one or several documents.';ru='Не удалось провести один или несколько документов.'");
 		DialogButtons = New ValueList;
 		
 		If IsDocumentsReadyForEDFormation Then
@@ -395,7 +395,7 @@ Procedure DocumentsCheckPostingRunContinue(Val Result, Val AdditionalParameters)
 		IsDocumentsReadyForEDFormation = DocumentsArray.Count() > 0;
 		If UnpostedDocumentsCount > 0 Then
 			// Prompt a user whether it is required to continue printing if there are unposted documents
-			QuestionText = NStr("en='Failed to post one or several documents.';ru='Не удалось провести один или несколько документов.'");
+			QuestionText = NStr("en='Cannot post one or several documents.';ru='Не удалось провести один или несколько документов.'");
 			DialogButtons = New ValueList;
 			
 			If IsDocumentsReadyForEDFormation Then

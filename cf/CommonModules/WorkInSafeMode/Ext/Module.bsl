@@ -459,7 +459,7 @@ Procedure ExecuteConfigurationMethod(Val MethodName, Val Parameters = Undefined)
 		ValidateConfigurationMethodName(MethodName);
 	Except
 		ErrorInfo = ErrorInfo();
-		Raise NStr("en='An error occurred when calling procedure ExecuteConfigurationMethod of common module WorkInSafeMode.';ru='Ошибка при вызове процедуры ВыполнитьМетодКонфигурации общего модуля РаботаВБезопасномРежиме.'")
+		Raise NStr("en='An error occurred when calling the ExecuteConfigurationMethod procedure of the WorkInSafeMode common module.';ru='Ошибка при вызове процедуры ВыполнитьМетодКонфигурации общего модуля РаботаВБезопасномРежиме.'")
 			+ Chars.LF + BriefErrorDescription(ErrorInfo);
 	EndTry;
 	
@@ -508,7 +508,7 @@ Procedure ExecuteObjectMethod(Val Object, Val MethodName, Val Parameters = Undef
 		Test = New Structure(MethodName, MethodName);
 	Except
 		Raise StringFunctionsClientServer.SubstituteParametersInString(
-			NStr("en='Incorrect parameter value MethodName (%1)';ru='Некорректное значение параметра ИмяМетода (%1)'"),
+			NStr("en='Incorrect value of parameter MethodName (%1)';ru='Некорректное значение параметра ИмяМетода (%1)'"),
 			MethodName);
 	EndTry;
 	
@@ -552,7 +552,7 @@ Procedure ValidateConfigurationMethodName(Val MethodName) Export
 	NameParts = StringFunctionsClientServer.DecomposeStringIntoSubstringsArray(MethodName, ".");
 	If NameParts.Count() <> 2 AND NameParts.Count() <> 3 Then
 		Raise StringFunctionsClientServer.SubstituteParametersInString(
-			NStr("en='Wrong parameter format MethodName (%1)';ru='Неправильный формат параметра ИмяМетода (%1)'"),
+			NStr("en='Invalid format for parameter MethodName (%1)';ru='Неправильный формат параметра ИмяМетода (%1)'"),
 			MethodName);
 	EndIf;
 	
@@ -590,7 +590,7 @@ Procedure ValidateConfigurationMethodName(Val MethodName) Export
 		// For example: MyProcedure
 		TempStructure.Insert(ObjectMethodName);
 	Except
-		WriteLogEvent(NStr("en='Safe method execution';ru='Безопасное выполнение метода'", CommonUseClientServer.MainLanguageCode()),
+		WriteLogEvent(NStr("en='Method is safely performed';ru='Безопасное выполнение метода'", CommonUseClientServer.MainLanguageCode()),
 			EventLogLevel.Error, , , DetailErrorDescription(ErrorInfo()));
 		Raise StringFunctionsClientServer.SubstituteParametersInString(
 			NStr("en='Incorrect format of
@@ -856,7 +856,7 @@ Function ObjectManagerByName(Name)
 	EndIf;
 	
 	Raise StringFunctionsClientServer.SubstituteParametersInString(
-		NStr("en='Failed to get a manager for the object ""%1""';ru='Не удалось получить менеджер для объекта ""%1""'"), Name);
+		NStr("en='Cannot receive manager for object ""%1""';ru='Не удалось получить менеджер для объекта ""%1""'"), Name);
 	
 EndFunction
 
@@ -873,13 +873,13 @@ Function PossibleToExecuteSessionParametersSetupHandlersWithoutSafeModeInstallat
 		
 	Except
 		
-		WriteLogEventTemplate = NStr("en='During installation of session parameters an error occurred: -------------------------------------------------------------------------------------------- %1 -------------------------------------------------------------------------------------------- Launch of the application is not possible.';ru='При установке параметров сеанса произошла ошибка: -------------------------------------------------------------------------------------------- %1 -------------------------------------------------------------------------------------------- Запуск программы будет невозможен.'");
+		WriteLogEventTemplate = NStr("en='An error occurred while setting session parameters: -------------------------------------------------------------------------------------------- %1 --------------------------------------------------------------------------------------------Application start will be unavailable.';ru='При установке параметров сеанса произошла ошибка: -------------------------------------------------------------------------------------------- %1 -------------------------------------------------------------------------------------------- Запуск программы будет невозможен.'");
 		
 		WriteLogEventText = StringFunctionsClientServer.SubstituteParametersInString(
 			WriteLogEventTemplate, DetailErrorDescription(ErrorInfo()));
 		
 		WriteLogEvent(
-			NStr("en='Session parameters setup';ru='Установка параметров сеанса'", CommonUseClientServer.MainLanguageCode()),
+			NStr("en='Set session parameters';ru='Установка параметров сеанса'", CommonUseClientServer.MainLanguageCode()),
 			EventLogLevel.Error,
 			,
 			,

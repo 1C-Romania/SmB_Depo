@@ -48,7 +48,7 @@ Procedure OnCreateAtServer(Cancel, StandardProcessing)
 	BusinessActivity = Parameters.Ref;
 	
 	If DenialChangeGLAccounts(BusinessActivity) Then
-		Items.GLAccountsGroup.ToolTip = NStr("en='There are incomes or expenses in the base by this activity! Change of the sales revenue GL account is prohibited!';ru='В базе есть доходы или расходы по этому направлению деятельности! Изменение счета учета выручки от продаж запрещено!'");
+		Items.GLAccountsGroup.ToolTip = NStr("en='There is income or expenses for this area in the infobase. Cannot change GL accounts of sales revenue.';ru='В базе есть доходы или расходы по этому направлению деятельности! Изменение счета учета выручки от продаж запрещено!'");
 		Items.GLAccountsGroup.Enabled = False;
 		Items.Default.Visible = False;
 	EndIf;

@@ -50,7 +50,7 @@ Function ExistingItem() Export
 	Selection = QueryResult.Select();
 	If Selection.Next() Then
 		Result = New Structure("ErrorDescription", StringFunctionsClientServer.SubstituteParametersInString(
-			NStr("ru = 'С кодом %1 уже существует страна %2. Измените код или используйте уже существующие данные.'; en = 'Code %1 already assigned to country %2. Enter another code, or use the existing data.'"), 
+			NStr("en='Code %1 is already assigned to country %2. Enter another code, or use the existing data.';ru='С кодом %1 уже существует страна %2. Измените код или используйте уже существующие данные.'"), 
 			Code, Selection.Description));
 		
 		For Each Field In QueryResult.Columns Do

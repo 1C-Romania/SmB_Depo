@@ -39,7 +39,7 @@ Function CancellationUncheckUseSeveralCompanies()
 			
 			If RefsTable.Count() > 0 Then
 				
-				MessageText = NStr("en='Companies that differ from the main one are used in the base! Disabling the option is prohibited!';ru='В базе используются организации, отличные от основной! Снятие опции запрещено!'");
+				MessageText = NStr("en='Companies that differ from the main one are used in the infobase. Cannot clear the check box.';ru='В базе используются организации, отличные от основной! Снятие опции запрещено!'");
 				SmallBusinessServer.ShowMessageAboutError(ThisForm, MessageText, , , "ConstantsSet.UseSeveralCompanies", Cancel);
 				Break;
 				
@@ -116,7 +116,7 @@ Function CancellationSetAccountingBySubsidiaryCompanyChangeSubsidiaryCompany(Fie
 	EndIf;
 	
 	If AreRecords Then
-		MessageText = NStr("en='There are records of an organization other than the company in the base! Parameter change is prohibited!';ru='В базе есть движения от организации, отличной от компании! Изменение параметра запрещено!'");
+		MessageText = NStr("en='Records are registered for a company that is different from the company in the infobase. Cannot change the parameter.';ru='В базе есть движения от организации, отличной от компании! Изменение параметра запрещено!'");
 		SmallBusinessServer.ShowMessageAboutError(ThisForm, MessageText, , , FieldName);
 		Return True;
 	Else
@@ -181,7 +181,7 @@ Function CancellationUncheckAccountingBySubsidiaryCompany()
 	EndIf;
 	
 	If AreDocuments Then
-		MessageText = NStr("en='In the base there are posted documents from an organization other than company! You can not clear the ""Accounting by company"" check box!';ru='В базе есть проведенные документы от организации, отличной от компании! Снятие флага ""Учет по компании"" запрещено!'");	
+		MessageText = NStr("en='There are posted documents of a company which differs from the company in the infobase. You cannot clear the ""Company accounting"" check box.';ru='В базе есть проведенные документы от организации, отличной от компании! Снятие флага ""Учет по компании"" запрещено!'");	
 		SmallBusinessServer.ShowMessageAboutError(ThisForm, MessageText, , , "ConstantsSet.AccountingBySubsidiaryCompany");
 		Return True;
 	Else
@@ -201,7 +201,7 @@ Procedure CatalogCompanies(Command)
 	If Modified Then
 		
 		Message = New UserMessage();
-		Message.Text = NStr("en='Data is not written yet! You can start editing the ""Companies"" catalog only after the data is written!';ru='Данные еще не записаны! Переход к редактированию справочника ""Организации"" возможен только после записи данных!'");
+		Message.Text = NStr("en='Data is not written yet. You can start editing the ""Companies"" catalog only after the data is written.';ru='Данные еще не записаны! Переход к редактированию справочника ""Организации"" возможен только после записи данных!'");
 		Message.Message();
 		Return;
 		
@@ -256,7 +256,7 @@ Procedure BeforeWriteAtServer(Cancel, CurrentObject, WriteParameters)
 	If ConstantsSet.AccountingBySubsidiaryCompany 
 		AND Not ValueIsFilled(ConstantsSet.SubsidiaryCompany) Then
 		
-		MessageText = NStr("en='The ""Account by company"" check box is selected, but the ""Organization-company"" is not filled!';ru='Установлен флаг ""Вести учет по компании"", но не заполнена ""Организация-компания""!'");
+		MessageText = NStr("en='The ""Keep accounting by company"" check box is selected, but the company is not filled in.';ru='Установлен флаг ""Вести учет по компании"", но не заполнена ""Организация-компания""!'");
 		SmallBusinessServer.ShowMessageAboutError(ThisForm, MessageText, , , "ConstantsSet.SubsidiaryCompany", Cancel);
 		Return;
 		

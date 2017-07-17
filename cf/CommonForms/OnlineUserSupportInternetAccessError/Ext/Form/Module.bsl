@@ -74,7 +74,7 @@ Procedure SupportMessageLabelURLProcessing(Item, URL, StandardProcessing)
 		
 		// Asynchronous launch with extention connection to work with files.
 		Notification = New NotifyDescription("SendMessageToSupport", ThisObject);
-		MessageText = NStr("en='To send messages, you should connect the file extension.';ru='Для отправки сообщения необходимо подключить расширение работы с файлами.'");
+		MessageText = NStr("en='To send messages, connect the file operation extension.';ru='Для отправки сообщения необходимо подключить расширение работы с файлами.'");
 		CommonUseClient.CheckFileOperationsExtensionConnected(Notification, MessageText);
 		
 		#Else
@@ -84,10 +84,10 @@ Procedure SupportMessageLabelURLProcessing(Item, URL, StandardProcessing)
 			RunApp("mailto:webits-info@1c.ru");
 		Except
 			OnlineUserSupportServerCall.WriteErrorInEventLogMonitor(
-				NStr("en='Unable to open email client:';ru='Не удалось открыть почтовый клиент:'")
+				NStr("en='Cannot open email client:';ru='Не удалось открыть почтовый клиент:'")
 					+ " " + DetailErrorDescription(ErrorInfo()));
 			ShowMessageBox(,
-				NStr("en='Unable to run the application to work with email.';ru='Не удалось запустить приложение для работы с электронной почтой.'"));
+				NStr("en='Cannot start the application to operate with email.';ru='Не удалось запустить приложение для работы с электронной почтой.'"));
 		EndTry;
 		
 		#EndIf
@@ -166,11 +166,11 @@ Procedure ApplicationLaunchException(InfError, StandardProcessing, AdditParamete
 	StandardProcessing = False;
 	
 	OnlineUserSupportServerCall.WriteErrorInEventLogMonitor(
-		NStr("en='Unable to open email client.';ru='Не удалось открыть почтовый клиент.'")
+		NStr("en='Cannot open email client.';ru='Не удалось открыть почтовый клиент.'")
 			+ " " + DetailErrorDescription(InfError));
 	
 	ShowMessageBox(,
-		NStr("en='Unable to run the application to work with email.';ru='Не удалось запустить приложение для работы с электронной почтой.'"));
+		NStr("en='Cannot start the application to operate with email.';ru='Не удалось запустить приложение для работы с электронной почтой.'"));
 	
 EndProcedure
 

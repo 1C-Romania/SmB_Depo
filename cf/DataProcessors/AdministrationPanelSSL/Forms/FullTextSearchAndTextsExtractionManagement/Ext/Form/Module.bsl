@@ -21,8 +21,8 @@ Procedure OnCreateAtServer(Cancel, StandardProcessing)
 	If RunMode.File Then
 		Items.GroupAutomaticTextExtraction.Visible = False;
 		AutoTitle = False;
-		Title = NStr("en='Full text search management';ru='Управление полнотекстовым поиском'");
-		Items.SectionDescription.Title = NStr("en='Enabling and disabling the fulltext search, fulltext search index update';ru='Включение и отключение полнотекстового поиска, обновление индекса полнотекстового поиска.'");
+		Title = NStr("en='Manage full-text search';ru='Управление полнотекстовым поиском'");
+		Items.SectionDescription.Title = NStr("en='Enabling and disabling of full-text search, update of full-text search index.';ru='Включение и отключение полнотекстового поиска, обновление индекса полнотекстового поиска.'");
 	EndIf;
 	
 	// Items state update.
@@ -70,7 +70,7 @@ Procedure UpdateIndex(Command)
 	
 	UpdateIndexServer();
 	
-	Status(NStr("en='Update of the full-text index is completed.';ru='Обновление полнотекстового индекса завершено.'"));
+	Status(NStr("en='Full-text index is updated.';ru='Обновление полнотекстового индекса завершено.'"));
 EndProcedure
 
 &AtClient
@@ -82,7 +82,7 @@ Procedure ClearIndex(Command)
 	
 	ClearIndexServer();
 	
-	Status(NStr("en='Full-text index clearance is completed.';ru='Очистка полнотекстового индекса завершена.'"));
+	Status(NStr("en='Cleanup of full-text index is completed.';ru='Очистка полнотекстового индекса завершена.'"));
 EndProcedure
 
 &AtClient
@@ -194,14 +194,14 @@ Function PredefinedJobScheduleID(PredefinedName)
 	PredefinedMetadata = Metadata.ScheduledJobs.Find(PredefinedName);
 	If PredefinedMetadata = Undefined Then
 		Raise StringFunctionsClientServer.SubstituteParametersInString(
-			NStr("en='Scheduled job ""%1"" is not found in the metadata.';ru='Регламентное задание ""%1"" не найдено в метаданных.'"),
+			NStr("en='The ""%1"" scheduled job is not found in the metadata.';ru='Регламентное задание ""%1"" не найдено в метаданных.'"),
 			PredefinedName);
 	EndIf;
 	
 	ScheduledJob = ScheduledJobs.FindPredefined(PredefinedMetadata);
 	If ScheduledJob = Undefined Then
 		Raise StringFunctionsClientServer.SubstituteParametersInString(
-			NStr("en='Scheduled job ""%1"" is not found.';ru='Регламентное задание ""%1"" не найдено.'"),
+			NStr("en='The ""%1"" scheduled job is not found.';ru='Регламентное задание ""%1"" не найдено.'"),
 			PredefinedName);
 	EndIf;
 	
@@ -348,9 +348,9 @@ Procedure SetEnabled(AttributePathToData = "")
 			IndexTrue = FullTextSearchServer.SearchIndexTrue();
 			FlagEnabled = Not IndexTrue;
 			If IndexTrue Then
-				IndexStatus = NStr("en='Update is not required';ru='Обновление не требуется'");
+				IndexStatus = NStr("en='No update required';ru='Обновление не требуется'");
 			Else
-				IndexStatus = NStr("en='Update is needed';ru='Требуется обновление'");
+				IndexStatus = NStr("en='Update required';ru='Требуется обновление'");
 			EndIf;
 		Else
 			UpdateDateIndex = '00010101';

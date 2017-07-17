@@ -14,7 +14,7 @@ Procedure OnCreateAtServer(Cancel, StandardProcessing)
 			.GetBackgroundJobProperties(Parameters.ID);
 		
 		If BackgroundJobProperties = Undefined Then
-			Raise(NStr("en='Background job has not been found.';ru='Фоновое задание не найдено.'"));
+			Raise(NStr("en='Background job is not found.';ru='Фоновое задание не найдено.'"));
 		EndIf;
 		
 		UserMessagesAndErrorDetails = ScheduledJobsService

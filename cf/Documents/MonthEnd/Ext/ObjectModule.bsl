@@ -1294,12 +1294,12 @@ Procedure GenerateRegisterRecordsByExpensesRegister(RecordSet, RecordSetManageri
 	
 	If ContentOfAccountingRecord = Undefined Then
 		If RegisterRecordRow.GLAccountGLAccountType = Enums.GLAccountsTypes.Inventory Then
-			ContentOfAccountingRecord = NStr("en='Warehouse inventory write off';ru='Списание запасов со склада'");
+			ContentOfAccountingRecord = NStr("en='Write off warehouse inventory';ru='Списание запасов со склада'");
 		Else
 			If ValueIsFilled(RegisterRecordRow.ProductsAndServices) Then
-				ContentOfAccountingRecord = NStr("en='Expense write off';ru='Списание расходов'");
+				ContentOfAccountingRecord = NStr("en='Expense write-off';ru='Списание расходов'");
 			Else
-				ContentOfAccountingRecord = NStr("en='Inventory write off from manufacturing';ru='Списание запасов из производства'");
+				ContentOfAccountingRecord = NStr("en='Inventory write-off from manufacturing';ru='Списание запасов из производства'");
 			EndIf;
 		EndIf;
 	EndIf;
@@ -1320,12 +1320,12 @@ Procedure GenerateRegisterRecordsByExpensesRegister(RecordSet, RecordSetManageri
 	EndIf;
 	
 	If RegisterRecordRow.CorrAccountFinancialAccountType = Enums.GLAccountsTypes.Inventory Then
-		ContentOfAccountingRecord = NStr("en='Receiving inventories to warehouse';ru='Оприходование запасов на склад'");
+		ContentOfAccountingRecord = NStr("en='Inventory capitalization to warehouse';ru='Оприходование запасов на склад'");
 	Else
 		If ValueIsFilled(RegisterRecordRow.ProductsAndServices) Then
-			ContentOfAccountingRecord = NStr("en='Expenses receipt';ru='Поступление расходов'");
+			ContentOfAccountingRecord = NStr("en='Expense receipt';ru='Поступление расходов'");
 		Else
-			ContentOfAccountingRecord = NStr("en='Receiving inventories in production';ru='Оприходование запасов в производство'");
+			ContentOfAccountingRecord = NStr("en='Inventory capitalization in production';ru='Оприходование запасов в производство'");
 		EndIf;
 	EndIf;
 		
@@ -1684,7 +1684,7 @@ Procedure GenerateCorrectiveRegisterRecordsByExpensesRegister()
 					NewRow.BusinessActivity = SelectionDetailRecords.BusinessActivitySales;
 					NewRow.GLAccount = SelectionDetailRecords.BusinessActivitySalesGLAccountOfSalesCost;
 					NewRow.AmountExpense = CorrectionAmount;
-					NewRow.ContentOfAccountingRecord = NStr("en='Costs reflection';ru='Отражение расходов'");
+					NewRow.ContentOfAccountingRecord = NStr("en='Record expenses';ru='Отражение расходов'");
 					
 					// Movements by register Managerial.
 					NewRow = RecordSetManagerial.Add();
@@ -1694,7 +1694,7 @@ Procedure GenerateCorrectiveRegisterRecordsByExpensesRegister()
 					NewRow.PlanningPeriod = Catalogs.PlanningPeriods.Actual;
 					NewRow.AccountDr = SelectionDetailRecords.BusinessActivitySalesGLAccountOfSalesCost;
 					NewRow.AccountCr = SelectionDetailRecords.GLAccount;
-					NewRow.Content = NStr("en='Costs reflection';ru='Отражение расходов'");
+					NewRow.Content = NStr("en='Record expenses';ru='Отражение расходов'");
 					NewRow.Amount = CorrectionAmount;
 					
 				ElsIf ValueIsFilled(SelectionDetailRecords.SalesDocument)
@@ -1713,7 +1713,7 @@ Procedure GenerateCorrectiveRegisterRecordsByExpensesRegister()
 					If CorrectionAmount < 0 Then
 						NewRow.GLAccount = ChartsOfAccounts.Managerial.OtherExpenses;
 						NewRow.AmountExpense = CorrectionAmount;
-						NewRow.ContentOfAccountingRecord = NStr("en='Other expenses';ru='Прочих затраты (расходы)'");
+						NewRow.ContentOfAccountingRecord = NStr("en='Other costs (expenses)';ru='Прочих затраты (расходы)'");
 					Else
 						NewRow.GLAccount = ChartsOfAccounts.Managerial.OtherIncome;
 						NewRow.AmountIncome = CorrectionAmount;
@@ -1731,7 +1731,7 @@ Procedure GenerateCorrectiveRegisterRecordsByExpensesRegister()
 						NewRow.AccountDr = ChartsOfAccounts.Managerial.OtherExpenses;
 						NewRow.AccountCr = SelectionDetailRecords.GLAccount;
 						NewRow.Amount = - CorrectionAmount;
-						NewRow.Content = NStr("en='Other expenses';ru='Прочих затраты (расходы)'");
+						NewRow.Content = NStr("en='Other costs (expenses)';ru='Прочих затраты (расходы)'");
 					Else
 						NewRow.AccountDr = SelectionDetailRecords.GLAccount;
 						NewRow.AccountCr = ChartsOfAccounts.Managerial.OtherIncome;
@@ -1749,7 +1749,7 @@ Procedure GenerateCorrectiveRegisterRecordsByExpensesRegister()
 					NewRow.Company = SelectionDetailRecords.Company;
 					NewRow.StructuralUnit = SelectionDetailRecords.RetailStructuralUnit;
 					NewRow.Currency = SelectionDetailRecords.RetailStructuralUnit.RetailPriceKind.PriceCurrency;
-					NewRow.ContentOfAccountingRecord = NStr("en='Transfer to retail';ru='Перемещение в розницу'");
+					NewRow.ContentOfAccountingRecord = NStr("en='Move to retail';ru='Перемещение в розницу'");
 					NewRow.Cost = CorrectionAmount;
 					
 					// Movements by register Managerial.
@@ -1760,7 +1760,7 @@ Procedure GenerateCorrectiveRegisterRecordsByExpensesRegister()
 					NewRow.PlanningPeriod = Catalogs.PlanningPeriods.Actual;
 					NewRow.AccountDr = SelectionDetailRecords.RetailStructuralUnit.GLAccountInRetail;
 					NewRow.AccountCr = SelectionDetailRecords.GLAccount;
-					NewRow.Content = NStr("en='Transfer to retail';ru='Перемещение в розницу'");
+					NewRow.Content = NStr("en='Move to retail';ru='Перемещение в розницу'");
 					NewRow.Amount = CorrectionAmount; 
 					
 				ElsIf SelectionDetailRecords.GLAccountWriteOffAccountType = Enums.GLAccountsTypes.OtherExpenses
@@ -1783,7 +1783,7 @@ Procedure GenerateCorrectiveRegisterRecordsByExpensesRegister()
 					
 					NewRow.GLAccount = SelectionDetailRecords.GLAccountWriteOff;
 					NewRow.AmountExpense = CorrectionAmount;
-					NewRow.ContentOfAccountingRecord = NStr("en='Other expenses';ru='Прочих затраты (расходы)'");
+					NewRow.ContentOfAccountingRecord = NStr("en='Other costs (expenses)';ru='Прочих затраты (расходы)'");
 					
 					// Movements by register Managerial.
 					NewRow = RecordSetManagerial.Add();
@@ -1793,7 +1793,7 @@ Procedure GenerateCorrectiveRegisterRecordsByExpensesRegister()
 					NewRow.PlanningPeriod = Catalogs.PlanningPeriods.Actual;
 					NewRow.AccountDr = SelectionDetailRecords.GLAccountWriteOff;
 					NewRow.AccountCr = SelectionDetailRecords.GLAccount;
-					NewRow.Content = NStr("en='Other expenses';ru='Прочих затраты (расходы)'");
+					NewRow.Content = NStr("en='Other costs (expenses)';ru='Прочих затраты (расходы)'");
 					NewRow.Amount = CorrectionAmount;
 					
 				Else
@@ -1806,7 +1806,7 @@ Procedure GenerateCorrectiveRegisterRecordsByExpensesRegister()
 					NewRow.PlanningPeriod = Catalogs.PlanningPeriods.Actual;
 					NewRow.AccountDr = SelectionDetailRecords.GLAccountWriteOff;
 					NewRow.AccountCr = SelectionDetailRecords.GLAccount;
-					NewRow.Content = NStr("en='The inventory write off on arbitrary account';ru='Списание запасов на произвольный счет'");
+					NewRow.Content = NStr("en='Inventory write-off to arbitrary account';ru='Списание запасов на произвольный счет'");
 					NewRow.Amount = CorrectionAmount;
 					
 				EndIf;
@@ -2146,7 +2146,7 @@ Procedure DistributeAmountsWithoutQuantity(OperationKind, ErrorsTable)
 		
 		IterationsQuantity = IterationsQuantity + 1;
 		If IterationsQuantity > 60 Then
-			ErrorDescription = NStr("en='Failed to adjust total balances by expenses.';ru='Не удалось скорректировать суммовые остатки по затратам.'");
+			ErrorDescription = NStr("en='Cannot adjust cost balance values.';ru='Не удалось скорректировать суммовые остатки по затратам.'");
 			AddErrorIntoTable(ErrorDescription, OperationKind, ErrorsTable);
 			Break;
 		EndIf;
@@ -2218,7 +2218,7 @@ Procedure DistributeAmountsWithoutQuantity(OperationKind, ErrorsTable)
 					NewRow.BusinessActivity = SelectionDetailRecords.BusinessActivitySales;
 					NewRow.GLAccount = SelectionDetailRecords.BusinessActivitySalesGLAccountOfSalesCost;
 					NewRow.AmountExpense = CorrectionAmount;
-					NewRow.ContentOfAccountingRecord = NStr("en='Sale expenses display';ru='Отражение расходов по продаже'");
+					NewRow.ContentOfAccountingRecord = NStr("en='Record sale expenses';ru='Отражение расходов по продаже'");
 					
 					// Movements by register Managerial.
 					NewRow = RecordSetManagerial.Add();
@@ -2228,7 +2228,7 @@ Procedure DistributeAmountsWithoutQuantity(OperationKind, ErrorsTable)
 					NewRow.PlanningPeriod = Catalogs.PlanningPeriods.Actual;
 					NewRow.AccountDr = SelectionDetailRecords.BusinessActivitySalesGLAccountOfSalesCost;
 					NewRow.AccountCr = SelectionDetailRecords.GLAccount;
-					NewRow.Content = NStr("en='Sale expenses display';ru='Отражение расходов по продаже'");
+					NewRow.Content = NStr("en='Record sale expenses';ru='Отражение расходов по продаже'");
 					NewRow.Amount = CorrectionAmount;
 					
 				ElsIf ValueIsFilled(SelectionDetailRecords.SalesDocument)
@@ -2247,11 +2247,11 @@ Procedure DistributeAmountsWithoutQuantity(OperationKind, ErrorsTable)
 					If CorrectionAmount < 0 Then
 						NewRow.GLAccount = ChartsOfAccounts.Managerial.OtherExpenses;
 						NewRow.AmountExpense = CorrectionAmount;
-						NewRow.ContentOfAccountingRecord = NStr("en='Other expenses by return to a vendor';ru='Прочие расходы по возврату поставщику'");
+						NewRow.ContentOfAccountingRecord = NStr("en='Other expenses on return to the supplier';ru='Прочие расходы по возврату поставщику'");
 					Else
 						NewRow.GLAccount = ChartsOfAccounts.Managerial.OtherIncome;
 						NewRow.AmountIncome = CorrectionAmount;
-						NewRow.ContentOfAccountingRecord = NStr("en='Other incomes by return to a vendor';ru='Прочие доходы по возврату поставщику'");
+						NewRow.ContentOfAccountingRecord = NStr("en='Other income on return to the supplier';ru='Прочие доходы по возврату поставщику'");
 					EndIf;
 					
 					// Movements by register Managerial.
@@ -2265,12 +2265,12 @@ Procedure DistributeAmountsWithoutQuantity(OperationKind, ErrorsTable)
 						NewRow.AccountDr = ChartsOfAccounts.Managerial.OtherExpenses;
 						NewRow.AccountCr = SelectionDetailRecords.GLAccount;
 						NewRow.Amount = - CorrectionAmount;
-						NewRow.Content = NStr("en='Other expenses by return to a vendor';ru='Прочие расходы по возврату поставщику'");
+						NewRow.Content = NStr("en='Other expenses on return to the supplier';ru='Прочие расходы по возврату поставщику'");
 					Else
 						NewRow.AccountDr = SelectionDetailRecords.GLAccount;
 						NewRow.AccountCr = ChartsOfAccounts.Managerial.OtherIncome;
 						NewRow.Amount = CorrectionAmount;
-						NewRow.Content = NStr("en='Other incomes by return to a vendor';ru='Прочие доходы по возврату поставщику'");
+						NewRow.Content = NStr("en='Other income on return to the supplier';ru='Прочие доходы по возврату поставщику'");
 					EndIf;
 					
 				ElsIf SelectionDetailRecords.RetailTransferAccrualAccounting Then
@@ -2283,7 +2283,7 @@ Procedure DistributeAmountsWithoutQuantity(OperationKind, ErrorsTable)
 					NewRow.Company = SelectionDetailRecords.Company;
 					NewRow.StructuralUnit = SelectionDetailRecords.RetailStructuralUnit;
 					NewRow.Currency = SelectionDetailRecords.RetailStructuralUnit.RetailPriceKind.PriceCurrency;
-					NewRow.ContentOfAccountingRecord = NStr("en='Transfer to retail';ru='Перемещение в розницу'");
+					NewRow.ContentOfAccountingRecord = NStr("en='Move to retail';ru='Перемещение в розницу'");
 					NewRow.Cost = CorrectionAmount;
 					
 					// Movements by register Managerial.
@@ -2294,7 +2294,7 @@ Procedure DistributeAmountsWithoutQuantity(OperationKind, ErrorsTable)
 					NewRow.PlanningPeriod = Catalogs.PlanningPeriods.Actual;
 					NewRow.AccountDr = SelectionDetailRecords.RetailStructuralUnit.GLAccountInRetail;
 					NewRow.AccountCr = SelectionDetailRecords.GLAccount;
-					NewRow.Content = NStr("en='Transfer to retail';ru='Перемещение в розницу'");
+					NewRow.Content = NStr("en='Move to retail';ru='Перемещение в розницу'");
 					NewRow.Amount = CorrectionAmount; 
 					
 				ElsIf SelectionDetailRecords.GLAccountWriteOffAccountType = Enums.GLAccountsTypes.OtherExpenses
@@ -2317,7 +2317,7 @@ Procedure DistributeAmountsWithoutQuantity(OperationKind, ErrorsTable)
 					
 					NewRow.GLAccount = SelectionDetailRecords.GLAccountWriteOff;
 					NewRow.AmountExpense = CorrectionAmount;
-					NewRow.ContentOfAccountingRecord = NStr("en='Other expenses';ru='Прочих затраты (расходы)'");
+					NewRow.ContentOfAccountingRecord = NStr("en='Other costs (expenses)';ru='Прочих затраты (расходы)'");
 					
 					// Movements by register Managerial.
 					NewRow = RecordSetManagerial.Add();
@@ -2327,7 +2327,7 @@ Procedure DistributeAmountsWithoutQuantity(OperationKind, ErrorsTable)
 					NewRow.PlanningPeriod = Catalogs.PlanningPeriods.Actual;
 					NewRow.AccountDr = SelectionDetailRecords.GLAccountWriteOff;
 					NewRow.AccountCr = SelectionDetailRecords.GLAccount;
-					NewRow.Content = NStr("en='Other expenses';ru='Прочих затраты (расходы)'");
+					NewRow.Content = NStr("en='Other costs (expenses)';ru='Прочих затраты (расходы)'");
 					NewRow.Amount = CorrectionAmount;
 					
 				Else
@@ -2340,7 +2340,7 @@ Procedure DistributeAmountsWithoutQuantity(OperationKind, ErrorsTable)
 					NewRow.PlanningPeriod = Catalogs.PlanningPeriods.Actual;
 					NewRow.AccountDr = SelectionDetailRecords.GLAccountWriteOff;
 					NewRow.AccountCr = SelectionDetailRecords.GLAccount;
-					NewRow.Content = NStr("en='The inventory write off on arbitrary account';ru='Списание запасов на произвольный счет'");
+					NewRow.Content = NStr("en='Inventory write-off to arbitrary account';ru='Списание запасов на произвольный счет'");
 					NewRow.Amount = CorrectionAmount;
 					
 				EndIf;
@@ -2619,7 +2619,7 @@ Procedure CalculateCostOfReturns()
 				SelectionDetailRecords,
 				CorrectionAmount,
 				SelectionDetailRecords.IsPastPeriodReturn, // returns of the last year period by the fixed cost
-				NStr("en='Net cost of return from customer';ru='Себестоимость возврата от покупателя'")
+				NStr("en='Cost of return from customer';ru='Себестоимость возврата от покупателя'")
 			);
 			
 			// Movements on the register Sales.
@@ -2647,7 +2647,7 @@ Procedure CalculateCostOfReturns()
 			NewRow.BusinessActivity = SelectionDetailRecords.BusinessActivitySales;
 			NewRow.GLAccount = SelectionDetailRecords.BusinessActivitySalesGLAccountOfSalesCost;
 			NewRow.AmountExpense = CorrectionAmount;
-			NewRow.ContentOfAccountingRecord = NStr("en='Costs reflection';ru='Отражение расходов'");
+			NewRow.ContentOfAccountingRecord = NStr("en='Record expenses';ru='Отражение расходов'");
 			
 			// Movements by register Managerial.
 			NewRow = RecordSetManagerial.Add();
@@ -2657,7 +2657,7 @@ Procedure CalculateCostOfReturns()
 			NewRow.PlanningPeriod = Catalogs.PlanningPeriods.Actual;
 			NewRow.AccountDr = SelectionDetailRecords.BusinessActivitySalesGLAccountOfSalesCost;
 			NewRow.AccountCr = SelectionDetailRecords.GLAccount;
-			NewRow.Content = NStr("en='Costs reflection';ru='Отражение расходов'");
+			NewRow.Content = NStr("en='Record expenses';ru='Отражение расходов'");
 			NewRow.Amount = CorrectionAmount;
 			
 		EndIf;
@@ -3774,7 +3774,7 @@ Procedure CalculateCostPriceInRetailAccrualAccounting(Cancel, ErrorsTable)
 		NewRow.BusinessActivity = SelectionDetailRecords.DocumentSalesBusinessActivity;
 		NewRow.GLAccount = SelectionDetailRecords.DocumentSalesBusinessActivityGLAccountCost;
 		NewRow.AmountExpense = SelectionDetailRecords.CorrectionAmount;
-		NewRow.ContentOfAccountingRecord = NStr("en='Costs reflection';ru='Отражение расходов'");
+		NewRow.ContentOfAccountingRecord = NStr("en='Record expenses';ru='Отражение расходов'");
 		
 		// Movements by register Managerial.
 		NewRow = RecordSetManagerial.Add();
@@ -4984,7 +4984,7 @@ Procedure Posting(Cancel, PostingMode)
 	EndIf;
 	
 	If ErrorsTable.Count() > 0 Then
-		MessageText = NStr("en='Warnings have been generated while closing the month. See details in the month end report.';ru='При закрытии месяца были сформированы предупреждения! Подробнее см. в отчете о закрытии месяца.'");
+		MessageText = NStr("en='Warnings were generated on month-end closing. For more information, see the month-end closing report.';ru='При закрытии месяца были сформированы предупреждения! Подробнее см. в отчете о закрытии месяца.'");
 		CommonUseClientServer.MessageToUser(MessageText);
 	EndIf;
 	

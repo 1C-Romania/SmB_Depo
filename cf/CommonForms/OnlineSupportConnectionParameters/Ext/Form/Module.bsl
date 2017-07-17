@@ -11,7 +11,7 @@ Procedure OnCreateAtServer(Cancel, StandardProcessing)
 	If Not OnlineUserSupport.UseOnlineSupportAllowedInCurrentOperationMode() Then
 		// Administration right is not checked as subsystem
 		// is used only in the local mode.
-		Raise NStr("en='The online support is forbidden in the current work mode.';ru='Использование Интернет-поддержки запрещено в текущем режиме работы.'");
+		Raise NStr("en='Online user support is not allowed in the current work mode.';ru='Использование Интернет-поддержки запрещено в текущем режиме работы.'");
 	EndIf;
 	
 	If Not Users.InfobaseUserWithFullAccess(, True, False) Then
@@ -117,7 +117,7 @@ Procedure NotificationProcessing(EventName, Parameter, Source)
 				Items.Login.Visible = False;
 			Else
 				Items.DecorationExplanationLoginPassword.Title =
-					NStr("en='When Online support is connected, the following is used:';ru='При подключении Интернет-поддержки используется:'");
+					NStr("en='When connecting online support, the following is used:';ru='При подключении Интернет-поддержки используется:'");
 				Items.Login.Visible = True;
 			EndIf;
 			
@@ -157,7 +157,7 @@ Procedure DecorationExplanationGettingLoginPasswordDataProcessorNavigationRef(It
 	StandardProcessing = False;
 	OnlineUserSupportClient.OpenInternetPage(
 		"https://1c-dn.com/user/profile/",
-		NStr("en='Support of 1C:Enterprise 8 system users';ru='Поддержка пользователей системы 1С:Предприятие 8'"));
+		NStr("en='Support users of 1C:Enterprise 8';ru='Поддержка пользователей системы 1С:Предприятие 8'"));
 	
 EndProcedure
 

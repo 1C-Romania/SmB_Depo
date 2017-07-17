@@ -102,21 +102,21 @@ Function MoveDataToNewTable() Export
 		EndIf;
 		
 		WriteLogEvent(
-			NStr("en='Acces management. Filling data for access restriction';ru='Управление доступом.Заполнение данных для ограничения доступа'",
+			NStr("en='Access management.Data population for access restriction';ru='Управление доступом.Заполнение данных для ограничения доступа'",
 				 CommonUseClientServer.MainLanguageCode()),
 			EventLogLevel.Information,
 			,
 			,
-			NStr("en='The data transfer from the DeleteAccessValuesSets register is complete.';ru='Завершен перенос данных из регистра УдалитьНаборыЗначенийДоступа.'"),
+			NStr("en='Data transfer from the DeleteAccessValuesSets register is complete.';ru='Завершен перенос данных из регистра УдалитьНаборыЗначенийДоступа.'"),
 			EventLogEntryTransactionMode.Transactional);
 	Else
 		WriteLogEvent(
-			NStr("en='Acces management. Filling data for access restriction';ru='Управление доступом.Заполнение данных для ограничения доступа'",
+			NStr("en='Access management.Data population for access restriction';ru='Управление доступом.Заполнение данных для ограничения доступа'",
 				 CommonUseClientServer.MainLanguageCode()),
 			EventLogLevel.Information,
 			,
 			,
-			NStr("en='The step of the data transfer from the DeleteAccessValuesSets register is executed.';ru='Выполнен шаг переноса данных из регистра УдалитьНаборыЗначенийДоступа.'"),
+			NStr("en='Step of data transfer from register DeleteAccessValuesSets is executed.';ru='Выполнен шаг переноса данных из регистра УдалитьНаборыЗначенийДоступа.'"),
 			EventLogEntryTransactionMode.Transactional);
 	EndIf;
 	

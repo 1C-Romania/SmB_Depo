@@ -44,7 +44,7 @@ Procedure BeforeClose(Cancel, StandardProcessing)
 	
 	If IsBlankString(AddressInStorage) AND SelectedRecipients.GetItems().Count() > 0 Then
 		
-		QuestionText = NStr("en='Transfer the marked recipients?';ru='Перенести отмеченных адресатов?'");
+		QuestionText = NStr("en='Transfer marked recipients?';ru='Перенести отмеченных адресатов?'");
 		
 		Notification = New NotifyDescription("BeforeCloseingTransferProposed", ThisForm);
 		ShowQueryBox(Notification, QuestionText, QuestionDialogMode.YesNoCancel, , DialogReturnCode.Yes, NStr("en='Address book';ru='Адресная книга'"));
@@ -330,7 +330,7 @@ Procedure ExecuteTransfer(val Counterparties)
 			If SelectedRow.IsEmpty() Or Data.IsFolder Then
 				QuestionParameters = New Structure;
 				QuestionParameters.Insert("Title", NStr("en='Confirm group selection';ru='Подтверждение выбора группы'"));
-				QuestionParameters.Insert("MessageText", NStr("en='Select all counterparties of the groups?';ru='Выбрать всех контрагентов группы?'"));
+				QuestionParameters.Insert("MessageText", NStr("en='Select all counterparties of the group?';ru='Выбрать всех контрагентов группы?'"));
 				QuestionParameters.Insert("Buttons", "DialogModeQuestion.YesNo");
 				QuestionParameters.Insert("OfferDontAskAgain", True);
 				NotifyDescription = New NotifyDescription("ExecuteTransferEnd", ThisForm, New Structure("SelectedRows", Items.CounterpartiesList.SelectedRows));

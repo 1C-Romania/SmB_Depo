@@ -15,7 +15,7 @@ Procedure OnCreateAtServer(Cancel, StandardProcessing)
 	AddRight = AdditionalReportsAndDataProcessors.AddRight();
 	If Not AddRight Then
 		If IsNew Then
-			Raise NStr("en='Insufficient access rights for adding additional reports and processors.';ru='Недостаточно прав доступа для добавления дополнительных отчетов или обработок.'");
+			Raise NStr("en='Insufficient access rights to add additional reports and data processors.';ru='Недостаточно прав доступа для добавления дополнительных отчетов или обработок.'");
 		Else
 			Items.LoadFromFile.Visible = False;
 			Items.ExportToFile.Visible = False;
@@ -54,7 +54,7 @@ Procedure OnCreateAtServer(Cancel, StandardProcessing)
 	EndIf;
 	
 	If ShowDialogLoadFromFileOnOpen AND Not Items.LoadFromFile.Visible Then
-		Raise NStr("en='Insufficient rights for importing additional reports and data processors';ru='Недостаточно прав для загрузки дополнительных отчетов и обработок'");
+		Raise NStr("en='Insufficient rights to import additional reports and data processors';ru='Недостаточно прав для загрузки дополнительных отчетов и обработок'");
 	EndIf;
 	
 	FillCommands();
@@ -244,7 +244,7 @@ Procedure AdditionalReportVariantsBeforeDelete(Item, Cancel)
 	EndIf;
 	
 	If Not Variant.User Then
-		ShowMessageBox(, NStr("en='You can not mark the predefined report variant for deletion.';ru='Пометка на удаление предопределенного варианта отчета запрещена.'"));
+		ShowMessageBox(, NStr("en='Cannot mark predefined report variant for deletion.';ru='Пометка на удаление предопределенного варианта отчета запрещена.'"));
 		Return;
 	EndIf;
 	
@@ -374,7 +374,7 @@ EndProcedure
 Procedure AdditionalReportVariantsOpen(Command)
 	Variant = ThisObject.Items.AdditionalReportVariants.CurrentData;
 	If Variant = Undefined Then
-		ShowMessageBox(, NStr("en='Choose the report version.';ru='Выберите вариант отчета.'"));
+		ShowMessageBox(, NStr("en='Select report variant.';ru='Выберите вариант отчета.'"));
 		Return;
 	EndIf;
 	
@@ -512,13 +512,13 @@ Procedure UpdateFromFileStart()
 	DialogueParameters.Filter = AdditionalReportsAndDataProcessorsClientServer.ChooserAndSaveDialog();
 	If Object.Ref.IsEmpty() Then
 		DialogueParameters.FilterIndex = 0;
-		DialogueParameters.Title = NStr("en='Select file of external report or data processor';ru='Выберите файл внешнего отчета или обработки'");
+		DialogueParameters.Title = NStr("en='Select a file of external report or data processor';ru='Выберите файл внешнего отчета или обработки'");
 	ElsIf Object.Type = TypeAdditionalReport Or Object.Type = ReportKind Then
 		DialogueParameters.FilterIndex = 1;
-		DialogueParameters.Title = NStr("en='Select file of external report';ru='Выберите файл внешнего отчета'");
+		DialogueParameters.Title = NStr("en='Select an external report file';ru='Выберите файл внешнего отчета'");
 	Else
 		DialogueParameters.FilterIndex = 2;
-		DialogueParameters.Title = NStr("en='Select file of data processor';ru='Выберите файл внешней обработки'");
+		DialogueParameters.Title = NStr("en='Select an external data processor file';ru='Выберите файл внешней обработки'");
 	EndIf;
 	
 	StandardSubsystemsClient.ShowFilePlace(Handler, UUID, Object.FileName, DialogueParameters);
@@ -551,7 +551,7 @@ Procedure UpdateFromFileAfterFileSelection(PlacedFiles, RegistrationParameters) 
 	Else
 		RegistrationParameters.Success = False;
 		StandardSubsystemsClient.ReturnResultAfterShowWarning(
-			NStr("en='File extension does not correspond to the extension of either the external report (ERF) or processing (EPF).';ru='Расширение файла не соответствует расширению внешнего отчета (ERF) или обработки (EPF).'"),
+			NStr("en='File extension does not match those of the external report (ERF) or data processor (EPF).';ru='Расширение файла не соответствует расширению внешнего отчета (ERF) или обработки (EPF).'"),
 			RegistrationParameters.ResultHandler,
 			RegistrationParameters);
 		Return;
@@ -579,7 +579,7 @@ Procedure UpdateFromFileMechanicsAtClient(RegistrationParameters)
 	
 	// Server work result data processor.
 	If RegistrationParameters.Success Then
-		NotificationTitle = ?(RegistrationParameters.IsReport, NStr("en='External report file is loaded';ru='Файл внешнего отчета загружен'"), NStr("en='External data processor file is loaded';ru='Файл внешней обработки загружен'"));
+		NotificationTitle = ?(RegistrationParameters.IsReport, NStr("en='External report file is imported';ru='Файл внешнего отчета загружен'"), NStr("en='External data processor file is imported';ru='Файл внешней обработки загружен'"));
 		NotificationRef    = ?(IsNew, "", GetURL(Object.Ref));
 		NotificationText     = RegistrationParameters.FileName;
 		ShowUserNotification(NotificationTitle, NotificationRef, NotificationText);
@@ -598,7 +598,7 @@ EndProcedure
 Procedure UpdateFromFileShowConflicts(RegistrationParameters)
 	If RegistrationParameters.ConflictsCount > 1 Then
 		If RegistrationParameters.IsReport Then
-			QuestionTitle = NStr("en='Conflicts on exporting external report';ru='Конфликты при загрузке внешнего отчета'");
+			QuestionTitle = NStr("en='Conflicts during external report import';ru='Конфликты при загрузке внешнего отчета'");
 			QuestionText = NStr("en='Internal name report ""[Name]"" is already engaged other additional report ([Count]): [List].
 		|
 		|Select:
@@ -611,7 +611,7 @@ Procedure UpdateFromFileShowConflicts(RegistrationParameters)
 		|2. ""[Disable]"" - выполнить загрузку, отключив публикацию всех других конфликтующих отчетов.
 		|3. ""[Open]"" - отменить загрузку и открыть список конфликтующих отчетов.'");
 		Else
-			QuestionTitle = NStr("en='Conflicts when exporting external data processor';ru='Конфликты при загрузке внешней обработки'");
+			QuestionTitle = NStr("en='Conflicts occurred during import of external data processor';ru='Конфликты при загрузке внешней обработки'");
 			QuestionText = NStr("en='Internal name of data processor ""[Name]"" is already occupied by other additional data processors ([Count]): [List].
 		|
 		|Select:
@@ -624,11 +624,11 @@ Procedure UpdateFromFileShowConflicts(RegistrationParameters)
 		|2. ""[Disable]"" - выполнить загрузку, отключив публикацию всех других конфликтующих обработок.
 		|3. ""[Open]"" - отменить загрузку и открыть список конфликтующих обработок.'");
 		EndIf;
-		DisableButtonPresentation = NStr("en='Disconnect conflicting';ru='Отключить конфликтующие'");
+		DisableButtonPresentation = NStr("en='Disable conflicting';ru='Отключить конфликтующие'");
 		OpenButtonPresentation = NStr("en='Cancel and show list';ru='Отменить и показать список'");
 	Else
 		If RegistrationParameters.IsReport Then
-			QuestionTitle = NStr("en='Conflict when exporting external report';ru='Конфликт при загрузке внешнего отчета'");
+			QuestionTitle = NStr("en='Conflict during external report import';ru='Конфликт при загрузке внешнего отчета'");
 			QuestionText = NStr("en='Internal name of report ""[Name]"" is already occupied by other additional report: [List].
 		|
 		|Select:
@@ -642,7 +642,7 @@ Procedure UpdateFromFileShowConflicts(RegistrationParameters)
 		|3. ""[Open]"" - отменить загрузку и открыть карточку другого отчета.'");
 			DisableButtonPresentation = NStr("en='Disable another report';ru='Отключить другой отчет'");
 		Else
-			QuestionTitle = NStr("en='Conflict when exporting external data processor';ru='Конфликт при загрузке внешней обработки'");
+			QuestionTitle = NStr("en='Conflict occurred during import of external data processor';ru='Конфликт при загрузке внешней обработки'");
 			QuestionText = NStr("en='Internal name of data processor ""[Name]"" is already occupied by another additional data processor: [List].
 		|
 		|Select:
@@ -656,9 +656,9 @@ Procedure UpdateFromFileShowConflicts(RegistrationParameters)
 		|3. ""[Open]"" - отменить загрузку и открыть карточку другой обработку.'");
 			DisableButtonPresentation = NStr("en='Disable another data processor';ru='Отключить другую обработку'");
 		EndIf;
-		OpenButtonPresentation = NStr("en='Cancel and open';ru='Отменить и открыть'");
+		OpenButtonPresentation = NStr("en='Cancel and show';ru='Отменить и открыть'");
 	EndIf;
-	ContinueButtonPresentation = NStr("en='In debugging mode';ru='В режиме отладки'");
+	ContinueButtonPresentation = NStr("en='In debug mode';ru='В режиме отладки'");
 	QuestionText = StrReplace(QuestionText, "[Name]",  RegistrationParameters.ObjectName);
 	QuestionText = StrReplace(QuestionText, "[Count]", RegistrationParameters.ConflictsCount);
 	QuestionText = StrReplace(QuestionText, "[List]",  RegistrationParameters.LockerPresentation);
@@ -888,7 +888,7 @@ EndFunction
 
 &AtClientAtServerNoContext
 Function DisabledSchedulePresentation()
-	Return NStr("en='Schedule not specified';ru='Расписание не задано'");
+	Return NStr("en='Schedule is not set';ru='Расписание не задано'");
 EndFunction
 
 &AtClientAtServerNoContext
@@ -900,11 +900,11 @@ Function UsersQuickAccessPresentation(UserCount)
 	LastDigit = UserCount - 10 * Int(UserCount/10);
 	
 	If LastDigit = 1 Then
-		QuickAccessView = NStr("en='%1 user';ru='%1 пользователя'");
+		QuickAccessView = NStr("en='User %1';ru='%1 пользователя'");
 	ElsIf LastDigit = 2 Or LastDigit = 3 Or LastDigit = 4 Then
-		QuickAccessView = NStr("en='%1 user';ru='%1 пользователя'");
+		QuickAccessView = NStr("en='User %1';ru='%1 пользователя'");
 	Else
-		QuickAccessView = NStr("en='%1 of users';ru='%1 пользователей'");
+		QuickAccessView = NStr("en='%1 users';ru='%1 пользователей'");
 	EndIf;
 	
 	QuickAccessView = StringFunctionsClientServer.SubstituteParametersInString(
@@ -988,7 +988,7 @@ Function PrepareFormParametersMetadataObjectSelect()
 	FormParameters = New Structure;
 	FormParameters.Insert("FilterByMetadataObjects", FilterByMetadataObjects);
 	FormParameters.Insert("SelectedMetadataObjects", SelectedMetadataObjects);
-	FormParameters.Insert("Title", NStr("en='Additional processing assignment';ru='Назначение дополнительной обработки'"));
+	FormParameters.Insert("Title", NStr("en='Additional data processor purpose';ru='Назначение дополнительной обработки'"));
 	
 	Return FormParameters;
 EndFunction
@@ -1133,7 +1133,7 @@ Procedure SetVisibleEnabled(Registration = False)
 		|application using ""personal"" security profile %1 which  allows only following operations:';ru='Дополнительный отчет или обработка будет подключаться к программе с использованием ""персонального"" профиля безопасности %1, в котором будут разрешены только следующие операции:'"), SafeMode);
 		Else
 			Raise StringFunctionsClientServer.SubstituteParametersInString(
-				NStr("en='%1 is not the correct connection mode for additional reports and data processors that require permissions to use security profiles!';ru='%1 не является корректным режимом подключения для дополнительных отчетов и обработок, требующих разрешений на использование профилей безопасности!'"),
+				NStr("en='%1 not a correct connection mode for additional reports and data processors that require permissions for security profile usage.';ru='%1 не является корректным режимом подключения для дополнительных отчетов и обработок, требующих разрешений на использование профилей безопасности!'"),
 				SafeMode);
 		EndIf;
 		
@@ -1196,7 +1196,7 @@ Procedure SetVisibleEnabled(Registration = False)
 	Items.FormTypes.Visible                                      = Not ThisIsGlobalDataProcessor;
 	
 	If IsNew Then
-		Title = ?(IsReport, NStr("en='Additional Report (Creating)';ru='Дополнительный отчет (создание)'"), NStr("en='Additional processing (creation)';ru='Дополнительная обработка (создание)'"));
+		Title = ?(IsReport, NStr("en='Additional report (creation)';ru='Дополнительный отчет (создание)'"), NStr("en='Additional data processor (creation)';ru='Дополнительная обработка (создание)'"));
 	Else
 		Title = Object.Description + " " + ?(IsReport, NStr("en='(Additional report)';ru='(Дополнительный отчет)'"), NStr("en='(Additional data processor)';ru='(Дополнительная обработка)'"));
 	EndIf;
@@ -1322,7 +1322,7 @@ Procedure FillCommands(SavedCommands = Undefined)
 			EndIf;
 		Else
 			ItemCommand.ScheduledJobPresentation = StringFunctionsClientServer.SubstituteParametersInString(
-				NStr("en='Not applicable for commands with ""%1"" launch variant';ru='Не применимо для команд с вариантом запуска ""%1""'"),
+				NStr("en='Not applied for commands with launch option ""%1""';ru='Не применимо для команд с вариантом запуска ""%1""'"),
 				String(ItemCommand.StartVariant));
 		EndIf;
 	EndDo;
@@ -1336,7 +1336,7 @@ Procedure AdditionalReportVariantsFill()
 	Try
 		ExternalObject = AdditionalReportsAndDataProcessors.GetObjectOfExternalDataProcessor(Object.Ref);
 	Except
-		ErrorText = NStr("en='Cannot get the report variant list due to an error which occurred while connecting the report:';ru='Не удалось получить список вариантов отчета из-за ошибки, возникшей при подключении этого отчета:'");
+		ErrorText = NStr("en='Cannot receive a list of report variants due to the error that occurred when connecting this report:';ru='Не удалось получить список вариантов отчета из-за ошибки, возникшей при подключении этого отчета:'");
 		MessageText = ErrorText + Chars.LF + DetailErrorDescription(ErrorInfo());
 		CommonUseClientServer.MessageToUser(MessageText);
 		Return;

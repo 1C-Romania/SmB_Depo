@@ -585,9 +585,9 @@ Procedure HandleReceivedCodeOnClient(Data, ReceivedCodeType, Preprocessing)
 	If Not Result Then
 		
 		If CodeType = PredefinedValue("Enum.CardCodesTypes.Barcode") Then
-			MessageText = NStr("en='Card with barcode ""%1"" is not registered and there is no suitable kind of discount card.';ru='Карта со штрихкодом ""%1"" не зарегистрирована и нет ни одного подходящего вида дисконтных карт.'");
+			MessageText = NStr("en='Card with the ""%1"" barcode is not registered and there is no suitable discount card kind.';ru='Карта со штрихкодом ""%1"" не зарегистрирована и нет ни одного подходящего вида дисконтных карт.'");
 		Else
-			MessageText = NStr("en='Card with magnetic code ""%1"" is not registered and there is no suitable kind of discount card.';ru='Карта с магнитным кодом ""%1"" не зарегистрирована и нет ни одного подходящего вида дисконтных карт.'");
+			MessageText = NStr("en='Card with the ""%1"" magnetic code is not registered and there is no suitable discount card kind.';ru='Карта с магнитным кодом ""%1"" не зарегистрирована и нет ни одного подходящего вида дисконтных карт.'");
 		EndIf;
 		
 		CommonUseClientServer.MessageToUser(

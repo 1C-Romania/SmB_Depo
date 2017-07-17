@@ -148,7 +148,7 @@ Procedure RunScript(Command)
 		Return;
 	EndIf;
 	
-	Message = NStr("en='Data is being synchronized according to script ""%1""...';ru='Синхронизируются данные по сценарию ""%1""...'");
+	Message = NStr("en='Data is being synchronized using script ""%1""...';ru='Синхронизируются данные по сценарию ""%1""...'");
 	Message = StringFunctionsClientServer.SubstituteParametersInString(Message, String(CurrentData.Ref));
 	
 	Status(Message);
@@ -159,10 +159,10 @@ Procedure RunScript(Command)
 	DataExchangeServerCall.ExecuteDataExchangeByScenarioOfExchangeData(Cancel, CurrentData.Ref);
 	
 	If Cancel Then
-		Message = NStr("en='Synchronization script is performed with errors.';ru='Сценарий синхронизации выполнен с ошибками.'");
+		Message = NStr("en='Data synchronization scenario completed with errors.';ru='Сценарий синхронизации выполнен с ошибками.'");
 		Picture = PictureLib.Error32;
 	Else
-		Message = NStr("en='Synchronization script has been successfully completed.';ru='Сценарий синхронизации успешно выполнен.'");
+		Message = NStr("en='Synchronization scenario is completed successfully.';ru='Сценарий синхронизации успешно выполнен.'");
 		Picture = Undefined;
 	EndIf;
 	

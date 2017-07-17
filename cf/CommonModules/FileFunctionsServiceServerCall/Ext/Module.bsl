@@ -37,7 +37,7 @@ Procedure CheckSignatures(SourceData, RowsData) Export
 			SignatureRow.Status  = NStr("en='Correct';ru='Исправить'");
 			SignatureRow.Wrong = False;
 		Else
-			SignatureRow.Status  = NStr("en='Wrong';ru='Неверна'") + ". " + ErrorDescription;
+			SignatureRow.Status  = NStr("en='Incorrect';ru='Неверна'") + ". " + ErrorDescription;
 			SignatureRow.Wrong = True;
 		EndIf;
 	EndDo;

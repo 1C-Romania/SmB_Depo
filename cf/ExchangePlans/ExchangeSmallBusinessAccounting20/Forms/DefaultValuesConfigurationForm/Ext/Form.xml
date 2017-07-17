@@ -3,7 +3,7 @@
 	<Title>
 		<v8:item>
 			<v8:lang>en</v8:lang>
-			<v8:content>Settings assistant</v8:content>
+			<v8:content>Settings filling wizard</v8:content>
 		</v8:item>
 		<v8:item>
 			<v8:lang>ru</v8:lang>
@@ -49,7 +49,7 @@
 					<Title>
 						<v8:item>
 							<v8:lang>en</v8:lang>
-							<v8:content>Page tax type</v8:content>
+							<v8:content>Page tax kind</v8:content>
 						</v8:item>
 						<v8:item>
 							<v8:lang>ru</v8:lang>
@@ -59,7 +59,7 @@
 					<ToolTip>
 						<v8:item>
 							<v8:lang>en</v8:lang>
-							<v8:content>Page tax type</v8:content>
+							<v8:content>Page tax kind</v8:content>
 						</v8:item>
 						<v8:item>
 							<v8:lang>ru</v8:lang>
@@ -77,7 +77,7 @@
 								<Title formatted="false">
 									<v8:item>
 										<v8:lang>en</v8:lang>
-										<v8:content>The value will be added to the "Tax kind" attribute when importing from Enterprise Accounting the cash outflow documents reflecting the payment of taxes.</v8:content>
+										<v8:content>The value will be used for the "Tax kind" attribute when importing cash expense documents reflecting tax payments from configuration Enterprise Accounting</v8:content>
 									</v8:item>
 									<v8:item>
 										<v8:lang>ru</v8:lang>
@@ -92,7 +92,7 @@
 					<Title>
 						<v8:item>
 							<v8:lang>en</v8:lang>
-							<v8:content>Expense item page</v8:content>
+							<v8:content>Page item expense</v8:content>
 						</v8:item>
 						<v8:item>
 							<v8:lang>ru</v8:lang>
@@ -102,7 +102,7 @@
 					<ToolTip>
 						<v8:item>
 							<v8:lang>en</v8:lang>
-							<v8:content>Expense item page</v8:content>
+							<v8:content>Page item expense</v8:content>
 						</v8:item>
 						<v8:item>
 							<v8:lang>ru</v8:lang>
@@ -121,7 +121,7 @@
 								<Title formatted="false">
 									<v8:item>
 										<v8:lang>en</v8:lang>
-										<v8:content>The value will be added to the "CF item" attribute when importing the cash outflow documents in case this field is not filled in Enterprise Accounting.</v8:content>
+										<v8:content>The value will be used for the "Cash flow item" attribute when importing the cash expense documents in case this field is not filled in the "Enterprise Accounting" configuration.</v8:content>
 									</v8:item>
 									<v8:item>
 										<v8:lang>ru</v8:lang>
@@ -136,7 +136,7 @@
 					<Title>
 						<v8:item>
 							<v8:lang>en</v8:lang>
-							<v8:content>Debit item page</v8:content>
+							<v8:content>Page item receipt</v8:content>
 						</v8:item>
 						<v8:item>
 							<v8:lang>ru</v8:lang>
@@ -146,7 +146,7 @@
 					<ToolTip>
 						<v8:item>
 							<v8:lang>en</v8:lang>
-							<v8:content>Debit item page</v8:content>
+							<v8:content>Page item receipt</v8:content>
 						</v8:item>
 						<v8:item>
 							<v8:lang>ru</v8:lang>
@@ -165,7 +165,7 @@
 								<Title formatted="false">
 									<v8:item>
 										<v8:lang>en</v8:lang>
-										<v8:content>Value will be used to fill in the "CF item" attribute when importing the cash assets receipt documents in case if this field is not filled in the "Enterprise Accounting" configuration.</v8:content>
+										<v8:content>Value will be used to fill in the "CF item" attribute while importing the cash assets receipt documents if this field is not filled in the "Enterprise accounting" configuration.</v8:content>
 									</v8:item>
 									<v8:item>
 										<v8:lang>ru</v8:lang>
@@ -180,7 +180,7 @@
 					<Title>
 						<v8:item>
 							<v8:lang>en</v8:lang>
-							<v8:content>Petty cash page</v8:content>
+							<v8:content>Page cash fund</v8:content>
 						</v8:item>
 						<v8:item>
 							<v8:lang>ru</v8:lang>
@@ -190,7 +190,7 @@
 					<ToolTip>
 						<v8:item>
 							<v8:lang>en</v8:lang>
-							<v8:content>Petty cash page</v8:content>
+							<v8:content>Page cash fund</v8:content>
 						</v8:item>
 						<v8:item>
 							<v8:lang>ru</v8:lang>
@@ -208,7 +208,7 @@
 								<Title formatted="false">
 									<v8:item>
 										<v8:lang>en</v8:lang>
-										<v8:content>The value will be added to the "Petty cash" attribute when importing the cash documents.</v8:content>
+										<v8:content>The value will be used for the "Cash fund" attribute when importing the cash documents.</v8:content>
 									</v8:item>
 									<v8:item>
 										<v8:lang>ru</v8:lang>
@@ -251,7 +251,7 @@
 								<Title formatted="false">
 									<v8:item>
 										<v8:lang>en</v8:lang>
-										<v8:content>The value will be added to the "Cash Register" attribute when exporting the cash receipt documents from the retail outlet.</v8:content>
+										<v8:content>The value will be used for the "Cash register" attribute when importing the documents of cash receipt from retail outlet.</v8:content>
 									</v8:item>
 									<v8:item>
 										<v8:lang>ru</v8:lang>
@@ -292,7 +292,7 @@
 							<Title>
 								<v8:item>
 									<v8:lang>en</v8:lang>
-									<v8:content>Navigation page start</v8:content>
+									<v8:content>Navigation start page</v8:content>
 								</v8:item>
 								<v8:item>
 									<v8:lang>ru</v8:lang>
@@ -302,7 +302,7 @@
 							<ToolTip>
 								<v8:item>
 									<v8:lang>en</v8:lang>
-									<v8:content>Navigation page start</v8:content>
+									<v8:content>Navigation start page</v8:content>
 								</v8:item>
 								<v8:item>
 									<v8:lang>ru</v8:lang>
@@ -317,7 +317,7 @@
 									<Title>
 										<v8:item>
 											<v8:lang>en</v8:lang>
-											<v8:content>Begin command bar</v8:content>
+											<v8:content>Command bar start</v8:content>
 										</v8:item>
 										<v8:item>
 											<v8:lang>ru</v8:lang>
@@ -327,7 +327,7 @@
 									<ToolTip>
 										<v8:item>
 											<v8:lang>en</v8:lang>
-											<v8:content>Begin command bar</v8:content>
+											<v8:content>Command bar start</v8:content>
 										</v8:item>
 										<v8:item>
 											<v8:lang>ru</v8:lang>
@@ -372,7 +372,7 @@
 							<ToolTip>
 								<v8:item>
 									<v8:lang>en</v8:lang>
-									<v8:content>Navigation page 1</v8:content>
+									<v8:content>Navigation page1</v8:content>
 								</v8:item>
 								<v8:item>
 									<v8:lang>ru</v8:lang>
@@ -387,7 +387,7 @@
 									<Title>
 										<v8:item>
 											<v8:lang>en</v8:lang>
-											<v8:content>Command panel continuation</v8:content>
+											<v8:content>Command bar continued</v8:content>
 										</v8:item>
 										<v8:item>
 											<v8:lang>ru</v8:lang>
@@ -397,7 +397,7 @@
 									<ToolTip>
 										<v8:item>
 											<v8:lang>en</v8:lang>
-											<v8:content>Command panel continuation</v8:content>
+											<v8:content>Command bar continued</v8:content>
 										</v8:item>
 										<v8:item>
 											<v8:lang>ru</v8:lang>
@@ -431,7 +431,7 @@
 							<Title>
 								<v8:item>
 									<v8:lang>en</v8:lang>
-									<v8:content>Navigation page end</v8:content>
+									<v8:content>End navigation page</v8:content>
 								</v8:item>
 								<v8:item>
 									<v8:lang>ru</v8:lang>
@@ -441,7 +441,7 @@
 							<ToolTip>
 								<v8:item>
 									<v8:lang>en</v8:lang>
-									<v8:content>Navigation page 1</v8:content>
+									<v8:content>Navigation page1</v8:content>
 								</v8:item>
 								<v8:item>
 									<v8:lang>ru</v8:lang>
@@ -505,7 +505,7 @@
 			<Title>
 				<v8:item>
 					<v8:lang>en</v8:lang>
-					<v8:content>Default values at node</v8:content>
+					<v8:content>Default values on node</v8:content>
 				</v8:item>
 				<v8:item>
 					<v8:lang>ru</v8:lang>
@@ -548,7 +548,7 @@
 			<Title>
 				<v8:item>
 					<v8:lang>en</v8:lang>
-					<v8:content>Cash flow item (Outcome)</v8:content>
+					<v8:content>Cash flow item (expense)</v8:content>
 				</v8:item>
 				<v8:item>
 					<v8:lang>ru</v8:lang>
@@ -563,7 +563,7 @@
 			<Title>
 				<v8:item>
 					<v8:lang>en</v8:lang>
-					<v8:content>Cash flow item (Income)</v8:content>
+					<v8:content>Cash flow item (receipt)</v8:content>
 				</v8:item>
 				<v8:item>
 					<v8:lang>ru</v8:lang>
@@ -596,7 +596,7 @@
 			<Title>
 				<v8:item>
 					<v8:lang>en</v8:lang>
-					<v8:content>Jump table</v8:content>
+					<v8:content>Go to table</v8:content>
 				</v8:item>
 				<v8:item>
 					<v8:lang>ru</v8:lang>
@@ -611,7 +611,7 @@
 					<Title>
 						<v8:item>
 							<v8:lang>en</v8:lang>
-							<v8:content>Sequence number of jump</v8:content>
+							<v8:content>Sequence number of the transition</v8:content>
 						</v8:item>
 						<v8:item>
 							<v8:lang>ru</v8:lang>
@@ -688,7 +688,7 @@
 					<Title>
 						<v8:item>
 							<v8:lang>en</v8:lang>
-							<v8:content>On open handler name</v8:content>
+							<v8:content>Handler name on opening</v8:content>
 						</v8:item>
 						<v8:item>
 							<v8:lang>ru</v8:lang>
@@ -707,7 +707,7 @@
 					<Title>
 						<v8:item>
 							<v8:lang>en</v8:lang>
-							<v8:content>Go to next handler name</v8:content>
+							<v8:content>Go next handler name</v8:content>
 						</v8:item>
 						<v8:item>
 							<v8:lang>ru</v8:lang>
@@ -726,7 +726,7 @@
 					<Title>
 						<v8:item>
 							<v8:lang>en</v8:lang>
-							<v8:content>Go back handler name</v8:content>
+							<v8:content>Handler name while going back</v8:content>
 						</v8:item>
 						<v8:item>
 							<v8:lang>ru</v8:lang>
@@ -745,7 +745,7 @@
 					<Title>
 						<v8:item>
 							<v8:lang>en</v8:lang>
-							<v8:content>Long operation</v8:content>
+							<v8:content>Long action</v8:content>
 						</v8:item>
 						<v8:item>
 							<v8:lang>ru</v8:lang>
@@ -760,7 +760,7 @@
 					<Title>
 						<v8:item>
 							<v8:lang>en</v8:lang>
-							<v8:content>Long operation handler name</v8:content>
+							<v8:content>Long action handler name</v8:content>
 						</v8:item>
 						<v8:item>
 							<v8:lang>ru</v8:lang>
@@ -781,7 +781,7 @@
 			<Title>
 				<v8:item>
 					<v8:lang>en</v8:lang>
-					<v8:content>Sequence number of jump</v8:content>
+					<v8:content>Sequence number of the transition</v8:content>
 				</v8:item>
 				<v8:item>
 					<v8:lang>ru</v8:lang>
@@ -837,7 +837,7 @@
 			<Title>
 				<v8:item>
 					<v8:lang>en</v8:lang>
-					<v8:content>Done</v8:content>
+					<v8:content>Finish</v8:content>
 				</v8:item>
 				<v8:item>
 					<v8:lang>ru</v8:lang>

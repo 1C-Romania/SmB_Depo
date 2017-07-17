@@ -132,16 +132,16 @@ EndFunction
 Procedure ImportActualRate(ExportParameters = Undefined, ResultAddress = Undefined) Export
 	
 	If CommonUseReUse.DataSeparationEnabled() Then
-		Raise NStr("en='Invalid procedure call ""ImportRelevantCurrencyRate"".';ru='Недопустимый вызов процедуры ""ЗагрузитьАктуальныйКурс"".'");
+		Raise NStr("en='Invalid call of the ""ImportRelevantCurrencyRate"" procedure.';ru='Недопустимый вызов процедуры ""ЗагрузитьАктуальныйКурс"".'");
 	EndIf;
 	
 	CommonUse.OnStartExecutingScheduledJob();
 	
-	EventName = NStr("en='Currencies. Import exchange rates ';ru='Валюты.Загрузка курсов валют'",
+	EventName = NStr("en='Currency.Exchange rates import';ru='Валюты.Загрузка курсов валют'",
 		CommonUseClientServer.MainLanguageCode());
 	
 	WriteLogEvent(EventName, EventLogLevel.Information, , ,
-		NStr("en='Scheduled dump of currency rates has started';ru='Начата регламентная загрузка курсов валют'"));
+		NStr("en='Scheduled import of exchange rates is started';ru='Начата регламентная загрузка курсов валют'"));
 	
 	CurrentDate = CurrentSessionDate();
 	
@@ -189,14 +189,14 @@ Procedure ImportActualRate(ExportParameters = Undefined, ResultAddress = Undefin
 			EventLogLevel.Error,
 			, 
 			,
-			NStr("en='Errors occurred during scheduled job of exporting the exchange rates';ru='Во время регламентного задания загрузки курсов валют возникли ошибки'"));
+			NStr("en='Errors occurred during the scheduled job of the exchange rate import';ru='Во время регламентного задания загрузки курсов валют возникли ошибки'"));
 	Else
 		WriteLogEvent(
 			EventName,
 			EventLogLevel.Information,
 			,
 			,
-			NStr("en='Scheduled loading of the currency exchange rate has been completed';ru='Завершена регламентная загрузка курсов валют.'"));
+			NStr("en='Scheduled download of exchange rates is completed.';ru='Завершена регламентная загрузка курсов валют.'"));
 	EndIf;
 	
 EndProcedure
@@ -281,7 +281,7 @@ Procedure AtFillingToDoList(CurrentWorks) Export
 		Work = CurrentWorks.Add();
 		Work.ID  = CurrencyID;
 		Work.ThereIsWork       = Not ExchangeRatesAreRelevant;
-		Work.Presentation  = NStr("en='Currency rates are outdated';ru='Курсы валют устарели'");
+		Work.Presentation  = NStr("en='Exchange rates are outdated';ru='Курсы валют устарели'");
 		Work.Important         = True;
 		Work.Form          = "DataProcessor.CurrencyRatesImportProcess.Form";
 		Work.FormParameters = New Structure("OpenFromList", True);
@@ -519,9 +519,9 @@ Function ImportCurrencyRateFromFile(Val Currency, Val PathToFile, Val ImportBegi
 	If NumberOfDaysExportTotal = NumberOfImportedDays Then
 		ExplanationAboutExporting = "";
 	ElsIf NumberOfImportedDays = 0 Then
-		ExplanationAboutExporting = NStr("en='%1 - %2 exchange rates are not imported. No data.';ru='Курсы валюты %1 - %2 не загружены. Нет данных.'");
+		ExplanationAboutExporting = NStr("en='Exchange rates %1 - %2 are not imported. No data available.';ru='Курсы валюты %1 - %2 не загружены. Нет данных.'");
 	Else
-		ExplanationAboutExporting = NStr("en='Not all currency exchange rates have been exported for %1 - %2.';ru='Загружены не все курсы по валюте %1 - %2.'");
+		ExplanationAboutExporting = NStr("en='Not all exchange rates for currency %1 are imported - %2.';ru='Загружены не все курсы по валюте %1 - %2.'");
 	EndIf;
 	
 	ExplanationAboutExporting = StringFunctionsClientServer.SubstituteParametersInString(

@@ -986,11 +986,11 @@ Function COMConnector()
 	#Else
 		
 		If SafeMode() Then
-			Raise NStr("en='Cluster administration is not available in safe mode!';ru='Администрирование кластера невозможно в безопасном режиме!'");
+			Raise NStr("en='Cluster administration is unavailable in the safe mode.';ru='Администрирование кластера невозможно в безопасном режиме!'");
 		EndIf;
 		
 		If CommonUseReUse.DataSeparationEnabled() Then
-			Raise NStr("en='In the model of service, the execution of the cluster administration functions by the applied infobase is not allowed!';ru='В модели сервиса недопустимо выполнение прикладной информационной базой функций администрирования кластера!'");
+			Raise NStr("en='Applied infobase cannot administer cluster in SaaS.';ru='В модели сервиса недопустимо выполнение прикладной информационной базой функций администрирования кластера!'");
 		EndIf;
 		
 		Return New COMObject(CommonUseClientServer.COMConnectorName());
@@ -1041,7 +1041,7 @@ Function GetCluster(ConnectionToServerAgent, Val ClusterPort, Val ClusterAdminis
 	EndDo;
 	
 	Raise StringFunctionsClientServer.SubstituteParametersInString(
-		NStr("en='On the working %1 server the %2 cluster is not found';ru='На рабочем сервере %1 не найден кластер %2'"),
+		NStr("en='Cluster %2 is not found on server %1';ru='На рабочем сервере %1 не найден кластер %2'"),
 		ConnectionToServerAgent.ConnectionString,
 		ClusterPort);
 	
@@ -1066,7 +1066,7 @@ Function WorkingProcessConnection(COMConnector, ConnectionToServerAgent, Cluster
 	EndDo;
 	
 	Raise StringFunctionsClientServer.SubstituteParametersInString(
-		NStr("en='In the %1:%2 cluster of servers, the active working processes are not found.';ru='В кластере серверов %1:%2 не найдено активных рабочих процессов.'"),
+		NStr("en='Active processes are not found in server cluster %1:%2.';ru='В кластере серверов %1:%2 не найдено активных рабочих процессов.'"),
 		Cluster.HostName,
 		Format(Cluster.MainPort, "NG=0"));
 	
@@ -1094,7 +1094,7 @@ Function GetIBDescription(ConnectionToServerAgent, Cluster, Val NameInCluster)
 	EndDo;
 	
 	Raise StringFunctionsClientServer.SubstituteParametersInString(
-		NStr("en='In the %1:%2 cluster of servers, the ""%3"" infobase is not found!';ru='В кластере серверов %1:%2 не найдена информационная база ""%3""!'"),
+		NStr("en='Infobase ""%3"" was not found in server cluster %1:%2.';ru='В кластере серверов %1:%2 не найдена информационная база ""%3""!'"),
 		Cluster.HostName,
 		Format(Cluster.MainPort, "NG=0"),
 		NameInCluster
@@ -1124,7 +1124,7 @@ Function GetIB(WorkingProcessConnection, Cluster, Val NameInCluster, Val IBAdmin
 			If Not ValueIsFilled(Infobase.DBMS) Then
 				
 				Raise StringFunctionsClientServer.SubstituteParametersInString(
-					NStr("en='Invalid administrator name and password of the %1 infobase in the cluster of servers %2:%3 (name: ""%4"").';ru='Неправильные имя и пароль администратора информационной базы %1 в кластере серверов %2:%3 (имя: ""%4"").'"),
+					NStr("en='The administrator user name or password is incorrect in the cluster of servers %2:%3 in infobase %1 (name: ""%4"").';ru='Неправильные имя и пароль администратора информационной базы %1 в кластере серверов %2:%3 (имя: ""%4"").'"),
 					NameInCluster,
 					Cluster.HostName, Cluster.MainPort,
 					IBAdministratorName);
@@ -1138,7 +1138,7 @@ Function GetIB(WorkingProcessConnection, Cluster, Val NameInCluster, Val IBAdmin
 	EndDo;
 	
 	Raise StringFunctionsClientServer.SubstituteParametersInString(
-		NStr("en='In the %1:%2 cluster of servers, the ""%3"" infobase is not found!';ru='В кластере серверов %1:%2 не найдена информационная база ""%3""!'"),
+		NStr("en='Infobase ""%3"" was not found in server cluster %1:%2.';ru='В кластере серверов %1:%2 не найдена информационная база ""%3""!'"),
 		Cluster.HostName,
 		Format(Cluster.MainPort, "NG=0"),
 		NameInCluster
@@ -1321,7 +1321,7 @@ Function GetSecurityProfile(ConnectionToServerAgent, Cluster, ProfileName)
 	EndDo;
 	
 	Raise StringFunctionsClientServer.SubstituteParametersInString(
-		NStr("en='In the %1:%2 cluster of servers, the ""%3"" security profile is not found!';ru='В кластере серверов %1:%2 не найден профиль безопасности ""%3""!'"),
+		NStr("en='Security profile ""%3"" is not found in server cluster %1:%2.';ru='В кластере серверов %1:%2 не найден профиль безопасности ""%3""!'"),
 		Cluster.HostName,
 		Format(Cluster.MainPort, "NG=0"),
 		ProfileName

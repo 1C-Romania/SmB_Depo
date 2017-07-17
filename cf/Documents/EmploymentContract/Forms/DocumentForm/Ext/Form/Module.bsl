@@ -92,7 +92,7 @@ Procedure OnCreateAtServer(Cancel, StandardProcessing)
 	If Not TaxAccounting Then
 		
 		Items.Employees.ExtendedTooltip.Title = 
-			NStr("en='Accruals and deductions are itemized on the relevant page for each employee individually.';ru='Начисления и удержания указываются на соответствующей странице для каждого сотрудника в отдельности.'");
+			NStr("en='Accruals and deductions are specified on the corresponding page for each employee individually.';ru='Начисления и удержания указываются на соответствующей странице для каждого сотрудника в отдельности.'");
 			
 	EndIf;
 		

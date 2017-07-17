@@ -362,7 +362,7 @@ Procedure FillCheckProcessing(Cancel, CheckedAttributes)
 	If Inventory.Total("AmountExpense") <> Expenses.Total("Total") - VATExpenses Then  
 	//) elmi	
 		
-		MessageText = NStr("en='Amount of services is not equal to the distributed amount by inventories!';ru='Сумма услуг не равна распределенной сумме по запасам!'");
+		MessageText = NStr("en='Amount of services is not equal to the amount allocated by inventory.';ru='Сумма услуг не равна распределенной сумме по запасам!'");
 		SmallBusinessServer.ShowMessageAboutError(
 			,
 			MessageText,

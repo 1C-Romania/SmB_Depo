@@ -354,7 +354,7 @@ Procedure BarcodesAreReceivedFragment(UnknownBarcodes) Export
 	
 	For Each CurUndefinedBarcode IN UnknownBarcodes Do
 		
-		MessageString = NStr("en='Data by barcode is not found: %1%; quantity: %2%';ru='Данные по штрихкоду не найдены: %1%; количество: %2%'");
+		MessageString = NStr("en='Barcode data is not found: %1%; quantity: %2%';ru='Данные по штрихкоду не найдены: %1%; количество: %2%'");
 		MessageString = StrReplace(MessageString, "%1%", CurUndefinedBarcode.Barcode);
 		MessageString = StrReplace(MessageString, "%2%", CurUndefinedBarcode.Quantity);
 		CommonUseClientServer.MessageToUser(MessageString);
@@ -559,7 +559,7 @@ Procedure GetWeight(Command)
 	
 	If TabularSectionRow = Undefined Then
 		
-		ShowMessageBox(Undefined, NStr("en='It is required to select a line to get weight for it.';ru='Необходимо выбрать строку, для которой необходимо получить вес.'"));
+		ShowMessageBox(Undefined, NStr("en='Select a line for which the weight should be received.';ru='Необходимо выбрать строку, для которой необходимо получить вес.'"));
 		
 	ElsIf EquipmentManagerClient.RefreshClientWorkplace() Then // Checks if the operator's workplace is specified
 		
@@ -858,7 +858,7 @@ Procedure FillByBasis(Command)
 	Response = Undefined;
 
 	
-	ShowQueryBox(New NotifyDescription("FillByBasisEnd", ThisObject), NStr("en='Document will be completely refilled by ""Basis""! Continue?';ru='Документ будет полностью перезаполнен по ""Основанию""! Продолжить?'"), QuestionDialogMode.YesNo, 0);
+	ShowQueryBox(New NotifyDescription("FillByBasisEnd", ThisObject), NStr("en='The  document will be fully filled out according to the ""Basis"". Continue?';ru='Документ будет полностью перезаполнен по ""Основанию""! Продолжить?'"), QuestionDialogMode.YesNo, 0);
 	
 EndProcedure
 
@@ -942,7 +942,7 @@ Procedure ChangeReserveFillByBalances(Command)
 	
 	If Object.Inventory.Count() = 0 Then
 		Message = New UserMessage;
-		Message.Text = NStr("en='Tabular section ""Inventory"" is not filled!';ru='Табличная часть ""Запасы"" не заполнена!'");
+		Message.Text = NStr("en='The ""Inventory"" tabular section is not filled in.';ru='Табличная часть ""Запасы"" не заполнена!'");
 		Message.Message();
 		Return;
 	EndIf;
@@ -958,7 +958,7 @@ Procedure ChangeReserveClearReserve(Command)
 	
 	If Object.Inventory.Count() = 0 Then
 		Message = New UserMessage;
-		Message.Text = NStr("en='Tabular section ""Inventory"" is not filled!';ru='Табличная часть ""Запасы"" не заполнена!'");
+		Message.Text = NStr("en='The ""Inventory"" tabular section is not filled in.';ru='Табличная часть ""Запасы"" не заполнена!'");
 		Message.Message();
 		Return;
 	EndIf;
@@ -1114,7 +1114,7 @@ Procedure StartOnChange(Item)
 	
 	If Object.Start > Object.Finish AND ValueIsFilled(Object.Finish) Then
 		Object.Start = WhenChangingStart;
-		Message(NStr("en='Start date can not be later than the end date.';ru='Дата старта не может быть больше даты финиша.'"));
+		Message(NStr("en='Start date cannot be greater than end date.';ru='Дата старта не может быть больше даты финиша.'"));
 	Else
 		WhenChangingStart = Object.Start;
 	EndIf;
@@ -1224,7 +1224,7 @@ Procedure CommandFillBySpecification(Command)
 		Response = Undefined;
 
 		
-		ShowQueryBox(New NotifyDescription("CommandToFillBySpecificationEnd", ThisObject), NStr("en='Tabular section ""Materials"" will be refilled! Continue?';ru='Табличная часть ""Материалы"" будет перезаполнена! Продолжить?'"), 
+		ShowQueryBox(New NotifyDescription("CommandToFillBySpecificationEnd", ThisObject), NStr("en='Tabular section ""Materials"" will be filled in again. Continue?';ru='Табличная часть ""Материалы"" будет перезаполнена! Продолжить?'"), 
 							QuestionDialogMode.YesNo, 0);
         Return;
 		

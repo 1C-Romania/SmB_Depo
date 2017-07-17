@@ -39,10 +39,10 @@ Function TimePresentation(Val Time, FullPresentation = True, OutputSeconds = Tru
 	Result = "";
 	
 	// Presentation of the time measurement units in the accusative case for quantities: 1, 2-4, 5-20.
-	WeeksRepresentation	= NStr("en='Week';ru='Неделя'")  + "," + NStr("en='of the week';ru='недели'")  + "," + NStr("en='weeks';ru='недель'");
+	WeeksRepresentation	= NStr("en='Week';ru='Неделя'")  + "," + NStr("en='weeks';ru='недели'")  + "," + NStr("en='weeks';ru='недель'");
 	DaysRepresentation	= NStr("en='day';ru='дне'")    + "," + NStr("en='days';ru='дня'")     + "," + NStr("en='days';ru='дня'");
 	HoursRepresentation	= NStr("en='hour';ru='час'")     + "," + NStr("en='hours';ru='часа'")    + "," + NStr("en='Hours';ru='часы'");
-	MinutesRepresentation	= NStr("en='minute';ru='минуту'")  + "," + NStr("en='Minutes';ru='минуты'")  + "," + NStr("en='minutes';ru='минут'");
+	MinutesRepresentation	= NStr("en='minute';ru='минуту'")  + "," + NStr("en='minutes';ru='минуты'")  + "," + NStr("en='minutes';ru='минут'");
 	SecondsRepresentation	= NStr("en='second';ru='секунду'") + "," + NStr("en='Seconds';ru='секунды'") + "," + NStr("en='Seconds';ru='секунды'");
 	
 	Time = Number(Time);
@@ -198,9 +198,9 @@ Function ReplaceUnitDimensionsOnFactor(Val Unit)
 		  Or FirstThreeSymbols = NStr("en='day';ru='дне'")
 		  Or FirstThreeSymbols = NStr("en='days';ru='дня'")
 		  Or FirstThreeSymbols = NStr("en='days';ru='дня'")
-		  Or FirstThreeSymbols = NStr("en='d';ru='дн'") Then
+		  Or FirstThreeSymbols = NStr("en='days';ru='дн'") Then
 		Result = 60*60*24;
-	ElsIf FirstThreeSymbols = NStr("en='hour';ru='час'") Or FirstThreeSymbols = NStr("en='ch';ru='ch'") Then
+	ElsIf FirstThreeSymbols = NStr("en='hour';ru='час'") Or FirstThreeSymbols = NStr("en='h';ru='ch'") Then
 		Result = 60*60;
 	ElsIf FirstThreeSymbols = NStr("en='min';ru='мин'") Or FirstThreeSymbols = NStr("en='m';ru='m'") Then
 		Result = 60;

@@ -94,7 +94,7 @@ EndProcedure
 // CommandDataProcessor(command) CommandID = Command.Name;
 // 	CommandParameters = New Structure("AdditionalDataProcessorRef, SupportText");
 // 	CommandParameters.AdditionalDataProcessorRef = ObjectRef;
-// 	CommandParameters.SupportText = NStr("en='Command is running...';ru='Выполняется команда...'");
+// 	CommandParameters.SupportText = NStr("en='Executing the command...';ru='Выполняется команда...'");
 // 	State(CommandParameters.SupportText);
 // 	If StandardServerCallSubsystem.ClientWorkParameters().InformationFileBase
 // 		Then RunResult = RunCommandDirectly (CommandID, CommandParameters);
@@ -131,14 +131,14 @@ Procedure RunCommandInBackground(CommandID, CommandParameters, Form) Export
 	WrongType = TypeOf(AdditionalInformationProcessorRef) <> Type("CatalogRef.AdditionalReportsAndDataProcessors");
 	If WrongType OR AdditionalInformationProcessorRef = PredefinedValue("Catalog.AdditionalReportsAndDataProcessors.EmptyRef") Then
 		
-		ErrorText = NStr("en='Incorrect parameter value ""AdditionalDataProcessorRef"":';ru='Некорректное значение параметра ""ДополнительнаяОбработкаСсылка"":'") + Chars.LF;
+		ErrorText = NStr("en='Incorrect value of parameter AdditionalDataProcessorRef:';ru='Некорректное значение параметра ""ДополнительнаяОбработкаСсылка"":'") + Chars.LF;
 		If WrongType Then
 			ErrorText = ErrorText + StringFunctionsClientServer.SubstituteParametersInString(
-				NStr("en='Type transferred ""%1"", expected ""%2"".';ru='Передан тип ""%1"", ожидался ""%2"".'"),
+				NStr("en='Type ""%1"" is transferred, ""%2"" was expected.';ru='Передан тип ""%1"", ожидался ""%2"".'"),
 				String(TypeOf(AdditionalInformationProcessorRef)),
 				String(Type("CatalogRef.AdditionalReportsAndDataProcessors")));
 		Else
-			ErrorText = ErrorText + NStr("en='Empty reference is transferred. Perhaps, processing was opened directly.';ru='Передана пустая ссылка. Вероятно, обработка была открыта напрямую.'");
+			ErrorText = ErrorText + NStr("en='Null reference passed. Data processor might have been opened directly.';ru='Передана пустая ссылка. Вероятно, обработка была открыта напрямую.'");
 		EndIf;
 		
 		Raise ErrorText;
@@ -195,7 +195,7 @@ Function ExecuteAllocatedCommandAtClient(Form, ItemName) Export
 	
 	If Object.Ref.IsEmpty() OR Form.Modified Then
 		QuestionText = StrReplace(
-			NStr("en='To run the command ""%1"", it is required to write data.';ru='Для выполнения команды ""%1"" необходимо записать данные.'"),
+			NStr("en='To run the ""%1"" command, write the data.';ru='Для выполнения команды ""%1"" необходимо записать данные.'"),
 			"%1",
 			ExecuteCommand.Presentation);
 		
@@ -296,7 +296,7 @@ EndFunction
 // Shows notification before running a command.
 Procedure ShowNotificationOnCommandExecution(ExecuteCommand) Export
 	If ExecuteCommand.ShowAlert Then
-		ShowUserNotification(NStr("en='Command is executed...';ru='Команда выполняется...'"), , ExecuteCommand.Presentation);
+		ShowUserNotification(NStr("en='Executing the command...';ru='Команда выполняется...'"), , ExecuteCommand.Presentation);
 	EndIf;
 EndProcedure
 
@@ -523,7 +523,7 @@ EndProcedure
 Procedure EditMultilineText(FormOrHandler, EditText, PropsOwner, AttributeName, Val Title = "") Export
 	
 	If IsBlankString(Title) Then
-		Title = NStr("en='Comment';ru='Примечание'");
+		Title = NStr("en='Note';ru='Примечание'");
 	EndIf;
 	
 	SourceParameters = New Structure;
@@ -538,7 +538,7 @@ EndProcedure
 
 // Shows the dialog of extension installation, then imports additional report or data processor data.
 Procedure ExportToFile(ExportParameters) Export
-	MessageText = NStr("en='For external data processors (report) export to file, it is recommended to install extension for 1C:Enterprise web client.';ru='Для выгрузки внешней обработки (отчета) в файл рекомендуется установить расширение для веб-клиента 1С:Предприятие.'");
+	MessageText = NStr("en='To export an external data processor (repot) to the file, install extension for 1C:Enterprise web client.';ru='Для выгрузки внешней обработки (отчета) в файл рекомендуется установить расширение для веб-клиента 1С:Предприятие.'");
 	Handler = New NotifyDescription("ExportToFileEnd", ThisObject, ExportParameters);
 	CommonUseClient.ShowFileSystemExtensionInstallationQuestion(Handler, MessageText);
 EndProcedure

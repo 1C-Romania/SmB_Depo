@@ -53,7 +53,7 @@ Procedure FillCheckProcessing(Cancel, CheckedAttributes)
 	
 	If EventEnding < EventBegin Then
 		CommonUseClientServer.MessageToUser(
-			NStr("ru = 'Дата окончания не может быть меньше даты начала.'; en = 'The end date can not be less than the start date.'"),
+			NStr("en='The end date cannot be earlier than the start date.';ru='Дата окончания не может быть меньше даты начала.'"),
 			ThisObject,
 			"EventEnding",
 			,
@@ -248,7 +248,7 @@ EndProcedure
 Procedure FillByCounterparty(Counterparty)
 	
 	If Counterparty.IsFolder Then
-		Raise NStr("ru = 'Нельзя выбирать группу контрагентов.'; en = 'You can not select a group of counterparties.'");
+		Raise NStr("en='You cannot select a counterparty group.';ru='Нельзя выбирать группу контрагентов.'");
 	EndIf;
 	
 	Participants.Clear();

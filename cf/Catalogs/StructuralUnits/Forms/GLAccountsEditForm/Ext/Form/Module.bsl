@@ -48,7 +48,7 @@ Procedure OnCreateAtServer(Cancel, StandardProcessing)
 	Ref = Parameters.Ref;
 	
 	If CancelGLAccountChange(Ref) Then
-		Items.GLAccountsGroup.ToolTip = NStr("en='There are register records of this retail point in the base! You can not change the GL account!';ru='В базе есть движения по этой розничной точке! Изменение счета учета запрещено!'");
+		Items.GLAccountsGroup.ToolTip = NStr("en='Records are registered for this retail outlet in the infobase. Cannot change the GL account.';ru='В базе есть движения по этой розничной точке! Изменение счета учета запрещено!'");
 		Items.GLAccountsGroup.Enabled = False;
 		Items.Default.Visible = False;
 	EndIf;
@@ -108,7 +108,7 @@ Procedure OnOpen(Cancel)
 	
 	If Not ThisIsRetailAccrualAccounting Then
 		Cancel = True;
-		ShowMessageBox(, NStr("en='GL accounts are edited only for retail with amount accounting!';ru='Счета учетов редактируются только для розницы с суммовым учетом!'"));
+		ShowMessageBox(, NStr("en='GL accounts are edited only for retail with value accounting.';ru='Счета учетов редактируются только для розницы с суммовым учетом!'"));
 	EndIf;
 
 EndProcedure

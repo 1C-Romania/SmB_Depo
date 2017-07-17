@@ -87,7 +87,7 @@ Function PrepareReportParameters(ReportSettings)
 	If ParameterTotalsCurrency <> Undefined
 		AND ParameterTotalsCurrency.Use Then
 		
-		ParameterTotalsCurrency.UserSettingPresentation = NStr("en='Currency of the totals';ru='Валюта итогов'");
+		ParameterTotalsCurrency.UserSettingPresentation = NStr("en='Total currency';ru='Валюта итогов'");
 		ParametersToBeIncludedInSelectionText.Add(ParameterTotalsCurrency);
 	EndIf;
 	

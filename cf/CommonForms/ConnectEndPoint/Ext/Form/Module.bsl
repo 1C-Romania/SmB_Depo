@@ -17,7 +17,7 @@ EndProcedure
 &AtClient
 Procedure BeforeClose(Cancel, StandardProcessing)
 	
-	WarningText = NStr("en='Do you want to cancel the connection to the end point?';ru='Отменить подключение конечной точки?'");
+	WarningText = NStr("en='Cancel connection to the endpoint?';ru='Отменить подключение конечной точки?'");
 	Notification = New NotifyDescription("ConnectAndClose", ThisObject);
 	CommonUseClient.ShowFormClosingConfirmation(Notification, Cancel, WarningText);
 	
@@ -41,7 +41,7 @@ EndProcedure
 &AtClient
 Procedure ConnectAndClose(Result = Undefined, AdditionalParameters = Undefined) Export
 	
-	Status(NStr("en='End point is being connected. Please wait...';ru='Выполняется подключение конечной точки. Пожалуйста, подождите..'"));
+	Status(NStr("en='Connecting the end point. Please wait...';ru='Выполняется подключение конечной точки. Пожалуйста, подождите..'"));
 	
 	Cancel = False;
 	FillError = False;
@@ -64,7 +64,7 @@ Procedure ConnectAndClose(Result = Undefined, AdditionalParameters = Undefined) 
 	
 	Notify(MessageExchangeClient.EndPointAddedEventName());
 	
-	ShowUserNotification(,,NStr("en='End point connection has been successfully completed.';ru='Подключение конечной точки успешно завершено.'"));
+	ShowUserNotification(,,NStr("en='Connection of endpoint successfully completed.';ru='Подключение конечной точки успешно завершено.'"));
 	
 	Modified = False;
 	

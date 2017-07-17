@@ -19,7 +19,7 @@ Procedure OnCreateAtServer(Cancel, StandardProcessing)
 		Try
 			MessageBodyPresentation = CommonUse.ValueToXMLString(MessageBody);
 		Except
-			MessageBodyPresentation = NStr("en='Message body can not be presented by the row.';ru='Тело сообщения не может быть представлено строкой.'");
+			MessageBodyPresentation = NStr("en='Email body cannot be displayed as a string.';ru='Тело сообщения не может быть представлено строкой.'");
 		EndTry;
 		
 	EndIf;

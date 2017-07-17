@@ -73,13 +73,13 @@ Function Dictionary() Export
 	
 	// {http://www.1c.ru/1cFresh/ApplicationExtensions/Permissions/a.b.c.d}GetFileFromInternet
 	
-	Presentation = NStr("en='Receiving the data from the Internet';ru='Получение данных из сети Интернет'");
+	Presentation = NStr("en='Receiving data from the Internet';ru='Получение данных из сети Интернет'");
 	Definition = NStr("en='Additional report or data processor will be allowed to receive data from the Internet';ru='Дополнительному отчету или обработке будет разрешено получать данные из сети Интернет'");
 	
 	Parameters = ParameterTable();
 	AddParameter(Parameters, "Host", NStr("en='from server %1';ru='с сервера %1'"), NStr("en='from any server';ru='с любого сервера'"));
-	AddParameter(Parameters, "Protocol", NStr("en='via protocol %1';ru='по протоколу %1'"), NStr("en='via any protocol';ru='по любому протоколу'"));
-	AddParameter(Parameters, "Port", NStr("en='using port %1';ru='через порт %1'"), NStr("en='using any port';ru='через любой порт'"));
+	AddParameter(Parameters, "Protocol", NStr("en='by protocol %1';ru='по протоколу %1'"), NStr("en='by any protocol';ru='по любому протоколу'"));
+	AddParameter(Parameters, "Port", NStr("en='via port %1';ru='через порт %1'"), NStr("en='via any port';ru='через любой порт'"));
 	
 	Result.Insert(
 		AdditionalReportsAndDataProcessorsInSafeModeInterface.GetDataTypeOfInternet(),
@@ -93,8 +93,8 @@ Function Dictionary() Export
 	
 	// {http://www.1c.ru/1cFresh/ApplicationExtensions/Permissions/a.b.c.d}SendFileToInternet
 	
-	Presentation = NStr("en='Data transfer to the Internet';ru='Передача данных в сеть Интернет'");
-	Definition = NStr("en='Additional report or processing will be allowed to send the data to the Internet network';ru='Дополнительному отчету или обработке будет разрешено отправлять данные в сеть Интернет'");
+	Presentation = NStr("en='Data transfer to Internet';ru='Передача данных в сеть Интернет'");
+	Definition = NStr("en='Additional report or data processor will be allowed to send data to the Internet';ru='Дополнительному отчету или обработке будет разрешено отправлять данные в сеть Интернет'");
 	Effects = NStr("en='Warning! Data sending potentially can
 		|used by an additional report or data processor for
 		|acts that are not alleged by administrator of infobases.
@@ -111,8 +111,8 @@ Function Dictionary() Export
 	
 	Parameters = ParameterTable();
 	AddParameter(Parameters, "Host", NStr("en='to server %1';ru='на сервер %1'"), NStr("en='on any server';ru='на любой сервера'"));
-	AddParameter(Parameters, "Protocol", NStr("en='via protocol %1';ru='по протоколу %1'"), NStr("en='via any protocol';ru='по любому протоколу'"));
-	AddParameter(Parameters, "Port", NStr("en='using port %1';ru='через порт %1'"), NStr("en='using any port';ru='через любой порт'"));
+	AddParameter(Parameters, "Protocol", NStr("en='by protocol %1';ru='по протоколу %1'"), NStr("en='by any protocol';ru='по любому протоколу'"));
+	AddParameter(Parameters, "Port", NStr("en='via port %1';ru='через порт %1'"), NStr("en='via any port';ru='через любой порт'"));
 	
 	Result.Insert(
 		AdditionalReportsAndDataProcessorsInSafeModeInterface.TypeOfTransferDataOnInternet(),
@@ -127,8 +127,8 @@ Function Dictionary() Export
 	
 	// {http://www.1c.ru/1cFresh/ApplicationExtensions/Permissions/a.b.c.d}SoapConnect
 	
-	Presentation = NStr("en='References to the web services in the Internet';ru='Обращение к веб-сервисам в сети Интернет'");
-	Definition = NStr("en='Additional report or data processor will be permitted to address the web-services located in the Internet (in this case, additional report or data processor can receive and transfer information from the Internet).';ru='Дополнительному отчету или обработке будет разрешено обращаться к веб-сервисам, расположенным в сети Интернет (при этом возможно как получение дополнительным отчетом или обработкой информации из сети Интернет, так и передача.'");
+	Presentation = NStr("en='Contacting web services in Internet';ru='Обращение к веб-сервисам в сети Интернет'");
+	Definition = NStr("en='Additional report or data processor will be allowed to refer to web services on the Internet (additional report or data processor may receive and send some information on the Internet.';ru='Дополнительному отчету или обработке будет разрешено обращаться к веб-сервисам, расположенным в сети Интернет (при этом возможно как получение дополнительным отчетом или обработкой информации из сети Интернет, так и передача.'");
 	Effects = NStr("en='Warning! Appeal to web services potentially
 		|can be used by an additional report or data
 		|processor for actions that are not alleged by infobases administrator.
@@ -144,7 +144,7 @@ Function Dictionary() Export
 		|выданные разрешения.'");
 	
 	Parameters = ParameterTable();
-	AddParameter(Parameters, "WsdlDestination", NStr("en='by address %1';ru='по адресу %1'"), NStr("en='by any address';ru='по любому адресу'"));
+	AddParameter(Parameters, "WsdlDestination", NStr("en='at address %1';ru='по адресу %1'"), NStr("en='by any address';ru='по любому адресу'"));
 	
 	Result.Insert(
 		AdditionalReportsAndDataProcessorsInSafeModeInterface.TypeWSConnection(),
@@ -159,8 +159,8 @@ Function Dictionary() Export
 	
 	// {http://www.1c.ru/1cFresh/ApplicationExtensions/Permissions/a.b.c.d}CreateComObject
 	
-	Presentation = NStr("en='Creating COM-object';ru='Создание COM-объекта'");
-	Definition = NStr("en='An additional report or processing will be allowed to use the mechanisms of external software using the COM-connection';ru='Дополнительному отчету или обработке будет разрешено использовать механизмы внешнего программного обеспечения с помощью COM-соединения'");
+	Presentation = NStr("en='Create COM object';ru='Создание COM-объекта'");
+	Definition = NStr("en='Additional report or data processor will be allowed to use mechanisms of external software using COM connection';ru='Дополнительному отчету или обработке будет разрешено использовать механизмы внешнего программного обеспечения с помощью COM-соединения'");
 	Effects = NStr("en='Warning! Use of thirdparty software funds can
 		|be used by an additional report or data processor for
 		|actions that are not alleged by infobase administrator, and also for
@@ -178,7 +178,7 @@ Function Dictionary() Export
 		|выданные разрешения.'");
 	
 	Parameters = ParameterTable();
-	AddParameter(Parameters, "ProgId", NStr("en='with application ID %1';ru='с программным идентификатором %1'"), NStr("en='with any application ID';ru='с любым программным идентификатором'"));
+	AddParameter(Parameters, "ProgId", NStr("en='with programmatic identifier %1';ru='с программным идентификатором %1'"), NStr("en='with any programmatic identifier';ru='с любым программным идентификатором'"));
 	
 	Result.Insert(
 		AdditionalReportsAndDataProcessorsInSafeModeInterface.TypeCreatingCOMObject(),
@@ -193,8 +193,8 @@ Function Dictionary() Export
 	
 	// {http://www.1c.ru/1cFresh/ApplicationExtensions/Permissions/a.b.c.d}AttachAddin
 	
-	Presentation = NStr("en='External component object creation';ru='Создание объекта внешней компоненту'");
-	Definition = NStr("en='The additional report or processing will be allowed to use the mechanisms of the external software using the creation of the external component object that is provided in the configuration template';ru='Дополнительному отчету или обработке будет разрешено использовать механизмы внешнего программного обеспечения с помощью создания объекта внешней компоненты, поставляемой в макете конфигурации'");
+	Presentation = NStr("en='Create object of external component';ru='Создание объекта внешней компоненту'");
+	Definition = NStr("en='Additional report or data processor  will be allowed to use mechanisms of external software by creating object of external component, which is supplied in the configuration template';ru='Дополнительному отчету или обработке будет разрешено использовать механизмы внешнего программного обеспечения с помощью создания объекта внешней компоненты, поставляемой в макете конфигурации'");
 	Effects = NStr("en='Warning! Use of thirdparty software funds can
 		|be used by an additional report or data processor for
 		|actions that are not alleged by infobase administrator, and also for
@@ -227,8 +227,8 @@ Function Dictionary() Export
 	
 	// {http://www.1c.ru/1cFresh/ApplicationExtensions/Permissions/a.b.c.d}GetFileFromExternalSoftware
 	
-	Presentation = NStr("en='Receiving of files from external object';ru='Получение файлов из внешнего объекта'");
-	Definition = NStr("en='The additional report or processing will be allowed to receive the files out of the external software (e.g. using COM-connection or the external component)';ru='Дополнительному отчету или обработке будет разрешено получать файлы из внешнего программного обеспечения (например, с помощью COM-соединения или внешней компоненты)'");
+	Presentation = NStr("en='Receive files from external object';ru='Получение файлов из внешнего объекта'");
+	Definition = NStr("en='Additional report or data processor will be allowed to receive files from external software (for example, using COM connection or external component)';ru='Дополнительному отчету или обработке будет разрешено получать файлы из внешнего программного обеспечения (например, с помощью COM-соединения или внешней компоненты)'");
 	
 	Result.Insert(
 		AdditionalReportsAndDataProcessorsInSafeModeInterface.GetFileTypeFromExternalObject(),
@@ -241,8 +241,8 @@ Function Dictionary() Export
 	
 	// {http://www.1c.ru/1cFresh/ApplicationExtensions/Permissions/a.b.c.d}SendFileToExternalSoftware
 	
-	Presentation = NStr("en='Files transfer to an external object';ru='Передача файлов во внешний объект'");
-	Definition = NStr("en='The additional report or processing will be allowed to transfer the files to the external software (e.g. using COM-connection or the external component)';ru='Дополнительному отчету или обработке будет разрешено передавать файлы во внешнее программное обеспечение (например, с помощью COM-соединения или внешней компоненты)'");
+	Presentation = NStr("en='File transfer to the external object';ru='Передача файлов во внешний объект'");
+	Definition = NStr("en='Additional report or data processor will be allowed to transfer files to external software (for example, using COM connection or external component)';ru='Дополнительному отчету или обработке будет разрешено передавать файлы во внешнее программное обеспечение (например, с помощью COM-соединения или внешней компоненты)'");
 	
 	Result.Insert(
 		AdditionalReportsAndDataProcessorsInSafeModeInterface.TypeFileTransferIntoExternalObject(),
@@ -256,11 +256,11 @@ Function Dictionary() Export
 	// {http://www.1c.ru/1cFresh/ApplicationExtensions/Permissions/a.b.c.d}SendFileToInternet
 	
 	Presentation = NStr("en='Documents posting';ru='Проведение документов'");
-	Definition = NStr("en='Additional report or processing will be permitted to modify the documents posting status';ru='Дополнительному отчету или обработке будет разрешено изменять состояние проведенности документов'");
+	Definition = NStr("en='Additional report or data processor will be allowed to change document posting state';ru='Дополнительному отчету или обработке будет разрешено изменять состояние проведенности документов'");
 	
 	Parameters = ParameterTable();
 	AddParameter(Parameters, "DocumentType", NStr("en='documents with type %1';ru='документы с типом %1'"), NStr("en='any documents';ru='любые документы'"));
-	AddParameter(Parameters, "Action", NStr("en='Permitted action: %1';ru='разрешенное действие: %1'"), NStr("en='any posting status modification';ru='любое изменение состояния проведения'"));
+	AddParameter(Parameters, "Action", NStr("en='allowed action: %1';ru='разрешенное действие: %1'"), NStr("en='any posting state change';ru='любое изменение состояния проведения'"));
 	
 	Result.Insert(
 		AdditionalReportsAndDataProcessorsInSafeModeInterface.TypePostingDocuments(),

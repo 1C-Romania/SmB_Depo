@@ -178,7 +178,7 @@ Function AccessKindsProperties()
 		If AllAccessKindNames[Upper(AccessKind.Name)] <> Undefined Then
 			Raise StringFunctionsClientServer.SubstituteParametersInString(
 				ErrorTitle +
-				NStr("en='Access kind name ""%1"" is already determined.';ru='Имя вида доступа ""%1"" уже определено.'"),
+				NStr("en='Name of access type ""%1"" was already defined.';ru='Имя вида доступа ""%1"" уже определено.'"),
 				AccessKind.Name);
 		EndIf;
 		
@@ -393,7 +393,7 @@ Procedure CheckType(AccessKind, Type, AllTypes, Parameters, GroupTypesCheck = Fa
 		EndIf;
 		Raise StringFunctionsClientServer.SubstituteParametersInString(
 			Parameters.ErrorTitle +
-			NStr("en='For the access kind ""%1"" access values type is not specified.';ru='Для вида доступа ""%1"" не указан тип значений доступа.'"),
+			NStr("en='Access value type is not specified for the ""%1"" access kind.';ru='Для вида доступа ""%1"" не указан тип значений доступа.'"),
 			AccessKind.Name);
 	EndIf;
 	

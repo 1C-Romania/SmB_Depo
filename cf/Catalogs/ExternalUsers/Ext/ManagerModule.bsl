@@ -69,7 +69,7 @@ Procedure FormGetProcessing(FormKind, Parameters, SelectedForm, AdditionalInform
 				"NewExternalUserAuthorizationObject", Parameters.AuthorizationObject);
 		Else
 			ErrorAsWarningDescription =
-				NStr("en='Permission on input to the application was not provided.';ru='Разрешение на вход в программу не предоставлялось.'");
+				NStr("en='No permission to logon to the application.';ru='Разрешение на вход в программу не предоставлялось.'");
 				
 			Raise ErrorAsWarningDescription;
 		EndIf;

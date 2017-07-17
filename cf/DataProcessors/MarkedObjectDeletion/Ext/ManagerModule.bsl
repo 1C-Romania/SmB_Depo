@@ -159,7 +159,7 @@ Procedure TryToDeleteReference(ExecuteParameters, Ref, Information, Result)
 	EndIf;
 	If Object.DeletionMark <> True Then
 		Result.Success = False;
-		Result.ErrorInfo = NStr("en='The object is not marked for deletion.';ru='Объект не помечен на удаление.'");
+		Result.ErrorInfo = NStr("en='Object is not marked for deletion.';ru='Объект не помечен на удаление.'");
 		Return;
 	EndIf;
 	
@@ -173,7 +173,7 @@ Procedure TryToDeleteReference(ExecuteParameters, Ref, Information, Result)
 		Result.Success = True;
 	Else
 		Result.Success = False;
-		Result.ErrorInfo = NStr("en='The object is used in other application objects.';ru='Объект используется в других объектах программы.'");
+		Result.ErrorInfo = NStr("en='Object is in use by other application objects.';ru='Объект используется в других объектах программы.'");
 	EndIf;
 EndProcedure
 
@@ -848,7 +848,7 @@ Procedure WriteWarning(Ref, ErrorInfo)
 	EndIf;
 	
 	WriteLogEvent(
-		NStr("en='Delete marked';ru='Удаление помеченных'", CommonUseClientServer.MainLanguageCode()),
+		NStr("en='Deletion of marked objects';ru='Удаление помеченных'", CommonUseClientServer.MainLanguageCode()),
 		EventLogLevel.Warning,
 		,
 		Ref,
@@ -878,7 +878,7 @@ Procedure WriteReasonIntoResult(ExecuteParameters, TableRow)
 			Cause.DetectedType = Type("ConstantValueManager." + TableRow.FindMetadata.Name);
 		Else
 			Cause.FoundReference = StringFunctionsClientServer.SubstituteParametersInString(
-				NStr("en='Unresolved references are found (%1)';ru='Обнаружены неразрешимые ссылки (%1)'"),
+				NStr("en='Incorrect references are detected (%1)';ru='Обнаружены неразрешимые ссылки (%1)'"),
 				TableRow.FindMetadata.Presentation());
 			Cause.DetectedType = Type("String");
 			Return;
@@ -994,27 +994,27 @@ Procedure ClientMarkCollectionBypassProgress(ExecuteParameters, CollectionName)
 		
 	ElsIf CollectionName = "FindMarkedForDeletion" Then
 		
-		Text = NStr("en='Search for the objects marked for deletion.';ru='Поиск объектов, помеченных на удаление.'");
+		Text = NStr("en='Search for objects marked for deletion.';ru='Поиск объектов, помеченных на удаление.'");
 		
 	ElsIf CollectionName = "AllMarkedForDeletion" Then
 		
-		Text = NStr("en='Analyzing the objects marked for deletion.';ru='Анализ помеченных на удаление.'");
+		Text = NStr("en='Analysis of marked for deletion.';ru='Анализ помеченных на удаление.'");
 		
 	ElsIf CollectionName = "TechnologicalObjects" Then
 		
-		Text = NStr("en='Preparation for removal.';ru='Подготовка к удалению.'");
+		Text = NStr("en='Prepare for deletion.';ru='Подготовка к удалению.'");
 		
 	ElsIf CollectionName = "ExclusiveDeletion" Then
 		
-		Text = NStr("en='Objects deletion in progress.';ru='Выполняется удаление объектов.'");
+		Text = NStr("en='Removing objects.';ru='Выполняется удаление объектов.'");
 		
 	ElsIf CollectionName = "CustomObjects" Then
 		
 		NotRemoved = ExecuteParameters.NotRemoved.Count();
 		If NotRemoved = 0 Then
-			Pattern = NStr("en='Deleted: %1 out of %2 objects.';ru='Удалено: %1 из %2 объектов.'");
+			Pattern = NStr("en='Deleted: %1 of %2 objects.';ru='Удалено: %1 из %2 объектов.'");
 		Else
-			Pattern = NStr("en='Processed: %1 out of %2 objects, out of this quantity not removed: %3.';ru='Обработано: %1 из %2 объектов, из них не удалено: %3.'");
+			Pattern = NStr("en='Processed: %1 out of %2 objects; not deleted: %3.';ru='Обработано: %1 из %2 объектов, из них не удалено: %3.'");
 		EndIf;
 		Text = StringFunctionsClientServer.SubstituteParametersInString(
 			Pattern,
@@ -1025,14 +1025,14 @@ Procedure ClientMarkCollectionBypassProgress(ExecuteParameters, CollectionName)
 	ElsIf CollectionName = "RepeatedlyDeleted" Then
 		
 		Text = StringFunctionsClientServer.SubstituteParametersInString(
-			NStr("en='Follow-up check of not deleted objects: %1 out of %2.';ru='Повторная проверка не удаленных объектов: %1 из %2.'"),
+			NStr("en='Recheck not deleted objects: %1 of %2.';ru='Повторная проверка не удаленных объектов: %1 из %2.'"),
 			Format(ExecuteParameters.Number, "NZ=0; NG="),
 			Format(ExecuteParameters.Total, "NZ=0; NG="));
 		
 	ElsIf CollectionName = "ImpedingRemoval" Then
 		
 		Text = StringFunctionsClientServer.SubstituteParametersInString(
-			NStr("en='Analysis of the objects preventing deletion: %1 out of %2.';ru='Анализ объектов, препятствующих удалению: %1 из %2.'"),
+			NStr("en='Analysis of objects that prevent deletion: %1 from %2.';ru='Анализ объектов, препятствующих удалению: %1 из %2.'"),
 			Format(ExecuteParameters.Number, "NZ=0; NG="),
 			Format(ExecuteParameters.Total, "NZ=0; NG="));
 		

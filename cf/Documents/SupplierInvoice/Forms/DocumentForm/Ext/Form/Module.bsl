@@ -859,7 +859,7 @@ Procedure BarcodesAreReceivedFragment(UnknownBarcodes) Export
 	
 	For Each CurUndefinedBarcode IN UnknownBarcodes Do
 		
-		MessageString = NStr("en='Data by barcode is not found: %1%; quantity: %2%';ru='Данные по штрихкоду не найдены: %1%; количество: %2%'");
+		MessageString = NStr("en='Barcode data is not found: %1%; quantity: %2%';ru='Данные по штрихкоду не найдены: %1%; количество: %2%'");
 		MessageString = StrReplace(MessageString, "%1%", CurUndefinedBarcode.Barcode);
 		MessageString = StrReplace(MessageString, "%2%", CurUndefinedBarcode.Quantity);
 		CommonUseClientServer.MessageToUser(MessageString);
@@ -971,7 +971,7 @@ Procedure ProcessContractChange()
 		   AND Object.Contract <> ContractBeforeChange Then
 			
 			ShowQueryBox(New NotifyDescription("ProcessContractChangeEnd", ThisObject, New Structure("ContractBeforeChange", ContractBeforeChange)),
-				NStr("en='Prepayment set-off will be cleared, do you want to continue?';ru='Зачет предоплаты будет очищен, продолжить?'"),
+				NStr("en='Prepayment setoff will be cleared, continue?';ru='Зачет предоплаты будет очищен, продолжить?'"),
 				QuestionDialogMode.YesNo
 			);
 			Return;
@@ -2075,7 +2075,7 @@ EndProcedure // EditPrepaymentOffset()
 Procedure FillByBasis(Command)
 	
 	Response = Undefined;
-	ShowQueryBox(New NotifyDescription("FillByBasisEnd", ThisObject), NStr("en='Document will be completely refilled by ""Basis""! Continue?';ru='Документ будет полностью перезаполнен по ""Основанию""! Продолжить?'"), QuestionDialogMode.YesNo, 0);
+	ShowQueryBox(New NotifyDescription("FillByBasisEnd", ThisObject), NStr("en='The  document will be fully filled out according to the ""Basis"". Continue?';ru='Документ будет полностью перезаполнен по ""Основанию""! Продолжить?'"), QuestionDialogMode.YesNo, 0);
 	
 EndProcedure
 
@@ -2104,7 +2104,7 @@ EndProcedure // FillByBasis()
 Procedure FillByOrder(Command)
 	
 	Response = Undefined;
-	ShowQueryBox(New NotifyDescription("FillEndByOrder", ThisObject), NStr("en='The document will be completely refilled by ""Order""! Continue?';ru='Документ будет полностью перезаполнен по ""Заказу""! Продолжить выполнение операции?'"), QuestionDialogMode.YesNo, 0);
+	ShowQueryBox(New NotifyDescription("FillEndByOrder", ThisObject), NStr("en='The  document will be fully filled out according to the ""Order"". Continue?';ru='Документ будет полностью перезаполнен по ""Заказу""! Продолжить выполнение операции?'"), QuestionDialogMode.YesNo, 0);
 	
 EndProcedure
 
@@ -2157,7 +2157,7 @@ Procedure GetWeight(Command)
 	
 	If TabularSectionRow = Undefined Then
 		
-		ShowMessageBox(Undefined, NStr("en='It is required to select a line to get weight for it.';ru='Необходимо выбрать строку, для которой необходимо получить вес.'"));
+		ShowMessageBox(Undefined, NStr("en='Select a line for which the weight should be received.';ru='Необходимо выбрать строку, для которой необходимо получить вес.'"));
 		
 	ElsIf EquipmentManagerClient.RefreshClientWorkplace() Then // Checks if the operator's workplace is specified
 		
@@ -2372,7 +2372,7 @@ Procedure CounterpartyOnChange(Item)
 		   AND Object.Contract <> ContractBeforeChange Then
 			
 			ShowQueryBox(New NotifyDescription("CounterpartyOnChangeEnd", ThisObject, New Structure("CounterpartyBeforeChange, ContractBeforeChange, CounterpartyDoSettlementsByOrdersBeforeChange, ContractVisibleBeforeChange, StructureData", CounterpartyBeforeChange, ContractBeforeChange, CounterpartyDoSettlementsByOrdersBeforeChange, ContractVisibleBeforeChange, StructureData)),
-				NStr("en='Prepayment set-off will be cleared, do you want to continue?';ru='Зачет предоплаты будет очищен, продолжить?'"),
+				NStr("en='Prepayment setoff will be cleared, continue?';ru='Зачет предоплаты будет очищен, продолжить?'"),
 				QuestionDialogMode.YesNo
 			);
 			Return;
@@ -2567,7 +2567,7 @@ Procedure OrderOnChange(Item)
 	   AND Object.OperationKind = PredefinedValue("Enum.OperationKindsSupplierInvoice.ReceiptFromVendor") Then
 		Mode = QuestionDialogMode.YesNo;
 		Response = Undefined;
-		ShowQueryBox(New NotifyDescription("OrderOnChangeEnd", ThisObject, New Structure("OrderBefore", OrderBefore)), NStr("en='Prepayment set-off will be cleared, do you want to continue?';ru='Зачет предоплаты будет очищен, продолжить?'"), Mode, 0);
+		ShowQueryBox(New NotifyDescription("OrderOnChangeEnd", ThisObject, New Structure("OrderBefore", OrderBefore)), NStr("en='Prepayment setoff will be cleared, continue?';ru='Зачет предоплаты будет очищен, продолжить?'"), Mode, 0);
 	EndIf;
 	
 EndProcedure
@@ -3062,7 +3062,7 @@ Procedure ExpensesBusinessActivityStartChoice(Item, ChoiceData, StandardProcessi
 	
 	If Not StructureData.AvailabilityOfPointingBusinessActivities Then
 		StandardProcessing = False;
-		ShowMessageBox(, NStr("en='The business activity is not specified for this type of expense!';ru='Для данного расхода направление деятельности не указывается!'"));
+		ShowMessageBox(, NStr("en='Business area is not required for this type of expense.';ru='Для данного расхода направление деятельности не указывается!'"));
 	EndIf;
 	
 EndProcedure // ExpensesBusinessActivityStartChoice()
@@ -3078,7 +3078,7 @@ Procedure ExpensesStructuralUnitStartChoice(Item, ChoiceData, StandardProcessing
 	
 	If Not StructureData.AbilityToSpecifyDepartments Then
 		StandardProcessing = False;
-		ShowMessageBox(, NStr("en='The department is not specified for this type of expense!';ru='Для этого расхода подразделение не указывается!'"));
+		ShowMessageBox(, NStr("en='Department is not required for this kind of expense.';ru='Для этого расхода подразделение не указывается!'"));
 	EndIf;
 	
 EndProcedure // ExpensesStructuralUnitStartChoice()
@@ -3094,7 +3094,7 @@ Procedure ExpensesOrderStartChoice(Item, ChoiceData, StandardProcessing)
 	
 	If Not StructureData.AbilityToSpecifyOrder Then
 		StandardProcessing = False;
-		ShowMessageBox(, NStr("en='The order is not specified for this type of expense!';ru='Для этого расхода заказ не указывается!'"));
+		ShowMessageBox(, NStr("en='The order is not specified for this type of expense.';ru='Для этого расхода заказ не указывается!'"));
 	EndIf;
 	
 EndProcedure // ExpensesOrderStartChoice()
@@ -3277,7 +3277,7 @@ Procedure ProcessChangesOnButtonPricesAndCurrenciesEnd(ClosingResult, Additional
 				Object.DiscountCard = ClosingResult.DiscountCard;
 			Else // We will show the message and we will not change discount card data.
 				CommonUseClientServer.MessageToUser(
-				NStr("en='Discount card is not read. Discount card owner does not match with a counterparty in the document.';ru='Дисконтная карта не считана. Владелец дисконтной карты не совпадает с контрагентом в документе.'"),
+				NStr("en='Discount card is not read. Discount card owner does not match the counterparty in the document.';ru='Дисконтная карта не считана. Владелец дисконтной карты не совпадает с контрагентом в документе.'"),
 				,
 				"Counterparty",
 				"Object");

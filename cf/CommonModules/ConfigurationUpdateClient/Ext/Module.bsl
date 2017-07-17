@@ -81,9 +81,9 @@ Procedure CheckConfigurationUpdate() Export
 		Parameters.UpdateSource = ConfigurationUpdateOptions.UpdateSource;
 		Parameters.NeedUpdateFile = ConfigurationUpdateOptions.NeedUpdateFile;
 		Parameters.FlagOfAutoTransitionToPageWithUpdate = True;
-		ShowUserNotification(NStr("en='Configuration update';ru='Обновление конфигурации'"),
+		ShowUserNotification(NStr("en='Update configuration';ru='Обновление конфигурации'"),
 			"e1cib/app/DataProcessor.ConfigurationUpdate",
-			NStr("en='Database configuration does not match stored configuration.';ru='Конфигурация отличается от основной конфигурации информационной базы.'"), 
+			NStr("en='The configuration is different from the basic configuration of the infobase.';ru='Конфигурация отличается от основной конфигурации информационной базы.'"), 
 			PictureLib.Information32);
 		Return;
 	EndIf;	
@@ -98,7 +98,7 @@ Procedure CheckConfigurationUpdate() Export
 		Parameters.UpdateSource = ConfigurationUpdateOptions.UpdateSource;
 		Parameters.NeedUpdateFile = ConfigurationUpdateOptions.NeedUpdateFile;
 		Parameters.FlagOfAutoTransitionToPageWithUpdate = True;
-		ShowUserNotification(NStr("en='The configuration update is available';ru='Доступно обновление конфигурации'"),
+		ShowUserNotification(NStr("en='Configuration update is available';ru='Доступно обновление конфигурации'"),
 			"e1cib/app/DataProcessor.ConfigurationUpdate",
 			NStr("en='Version:';ru='Версия:'") + " " + Parameters.FileParametersUpdateChecks.Version, 
 			PictureLib.Information32);
@@ -187,7 +187,7 @@ EndFunction
 Function InstallationPackageParameters(Val FileName) Export
 	File = New File(FileName);
 	If Not File.Exist() Then
-		Return NStr("en='Updates description file is not received';ru='Файл описания обновлений не получен'");
+		Return NStr("en='Update description file is not received';ru='Файл описания обновлений не получен'");
 	EndIf;	
 	TextDocument = New TextDocument(); 
 	TextDocument.Read(File.DescriptionFull);
@@ -219,11 +219,11 @@ Function InstallationPackageParameters(Val FileName) Export
 			EndIf;
 			SetParameters.Insert("UpdateDate",Date(TemporaryString));
 		Else
-			Return NStr("en='Invalid information format about updates';ru='Неверный формат сведений о наличии обновлений'");
+			Return NStr("en='Incorrect update information format';ru='Неверный формат сведений о наличии обновлений'");
 		EndIf;
 	EndDo;
 	If SetParameters.Count() <> 3 Then 
-		Return NStr("en='Invalid information format about updates';ru='Неверный формат сведений о наличии обновлений'");
+		Return NStr("en='Incorrect update information format';ru='Неверный формат сведений о наличии обновлений'");
 	EndIf;
 	Return SetParameters;
 EndFunction
@@ -445,7 +445,7 @@ EndFunction
 //	OutputMessages: Boolean, shows that errors messages are output to a user.
 Procedure CheckUpdateExistsViaInternet(OutputMessages = False, UpdateAvailableForNewEdition = False) Export
 	
-	Status(NStr("en='Check for update on the Internet';ru='Проверка наличия обновления в Интернете'"));
+	Status(NStr("en='Check for updates online';ru='Проверка наличия обновления в Интернете'"));
 	Parameters = GetAvailableConfigurationUpdate(); 
 	If Parameters.UpdateSource <> -1 Then
 		TimeOfObtainingUpdate = Parameters.TimeOfObtainingUpdate;
@@ -457,7 +457,7 @@ Procedure CheckUpdateExistsViaInternet(OutputMessages = False, UpdateAvailableFo
 	Parameters.FileParametersUpdateChecks = GetFileOfUpdateAvailabilityCheck(OutputMessages);
 	If TypeOf(Parameters.FileParametersUpdateChecks) = Type("String") Then
 		EventLogMonitorClient.AddMessageForEventLogMonitor(EventLogMonitorEvent(), "Warning",
-			NStr("en='It is impossible to connect to the Internet to check for updates';ru='Невозможно подключиться к сети Интернет для проверки обновлений.'"));
+			NStr("en='Cannot connect to the Internet to check for updates.';ru='Невозможно подключиться к сети Интернет для проверки обновлений.'"));
 		Parameters.PageName = "InternetConnection";
 		Return;
 	EndIf;
@@ -489,7 +489,7 @@ Procedure CheckUpdateExistsViaInternet(OutputMessages = False, UpdateAvailableFo
 		If UpdatesNotDetected Then
 			
 			EventLogMonitorClient.AddMessageForEventLogMonitor(EventLogMonitorEvent(), "Information",
-				NStr("en='No update required: the latest version of configuration is already installed on computer.';ru='Обновление не требуется: последняя версия конфигурации уже установлена.'"));
+				NStr("en='Update is not required: the newest configuration version is already installed.';ru='Обновление не требуется: последняя версия конфигурации уже установлена.'"));
 			
 			Parameters.PageName = "UpdatesNotDetected";
 			Return;
@@ -497,7 +497,7 @@ Procedure CheckUpdateExistsViaInternet(OutputMessages = False, UpdateAvailableFo
 		EndIf;
 	EndIf;
 	
-	MessageText = NStr("en='New version of configuration is now available on the Internet:% 1.';ru='Обнаружена более новая версия конфигурации в Интернете: %1.'");
+	MessageText = NStr("en='Newer configuration version is found on the Internet: %1.';ru='Обнаружена более новая версия конфигурации в Интернете: %1.'");
 	MessageText = StringFunctionsClientServer.SubstituteParametersInString(MessageText, Parameters.LastConfigurationVersion);
 	EventLogMonitorClient.AddMessageForEventLogMonitor(EventLogMonitorEvent(), "Information", MessageText);
 	
@@ -533,7 +533,7 @@ Procedure CheckUpdateOnSchedule() Export
 		
 	ConfigurationUpdateOptions.TimeOfLastUpdateCheck = CheckDate;
 	EventLogMonitorClient.AddMessageForEventLogMonitor(EventLogMonitorEvent(),, 
-		NStr("en='Verification for the updates availability in the Internet by schedule.';ru='Проверка наличия обновления в сети Интернет по расписанию.'"));
+		NStr("en='Check for updates on the Internet on schedule.';ru='Проверка наличия обновления в сети Интернет по расписанию.'"));
 		
 	AvailableUpdatePageDescription = "AvailableUpdate";
 	CheckUpdateExistsViaInternet();
@@ -541,7 +541,7 @@ Procedure CheckUpdateOnSchedule() Export
 	If Parameters.UpdateSource <> -1 AND Parameters.PageName = AvailableUpdatePageDescription Then
 			
 		EventLogMonitorClient.AddMessageForEventLogMonitor(EventLogMonitorEvent(),,
-			NStr("en='New version of the configuration has been detected:';ru='Обнаружена новая версия конфигурации:'") + " " +
+			NStr("en='New configuration version is detected:';ru='Обнаружена новая версия конфигурации:'") + " " +
 				Parameters.FileParametersUpdateChecks.Version);
 				
 		ConfigurationUpdateOptions.UpdateSource = 0;
@@ -551,13 +551,13 @@ Procedure CheckUpdateOnSchedule() Export
 		Parameters.UpdateSource = ConfigurationUpdateOptions.UpdateSource;
 		Parameters.NeedUpdateFile = ConfigurationUpdateOptions.NeedUpdateFile;
 		Parameters.FlagOfAutoTransitionToPageWithUpdate = True;
-		ShowUserNotification(NStr("en='The configuration update is available';ru='Доступно обновление конфигурации'"),
+		ShowUserNotification(NStr("en='Configuration update is available';ru='Доступно обновление конфигурации'"),
 			"e1cib/app/DataProcessor.ConfigurationUpdate",
 			NStr("en='Version:';ru='Версия:'") + " " + Parameters.FileParametersUpdateChecks.Version, 
 			PictureLib.Information32);
 	Else
 		EventLogMonitorClient.AddMessageForEventLogMonitor(EventLogMonitorEvent(),, 
-			NStr("en='No updates available';ru='Доступных обновлений не обнаружено.'"));
+			NStr("en='No available updates were found.';ru='Доступных обновлений не обнаружено.'"));
 	EndIf;
 	ConfigurationUpdateServerCall.WriteStructureOfAssistantSettings(ConfigurationUpdateOptions, ApplicationParameters["StandardSubsystems.MessagesForEventLogMonitor"]);
 	
@@ -633,7 +633,7 @@ EndProcedure
 
 // Returns event name for events log monitor record.
 Function EventLogMonitorEvent() Export
-	Return NStr("en='Configuration update';ru='Обновление конфигурации'", CommonUseClientServer.MainLanguageCode());
+	Return NStr("en='Update configuration';ru='Обновление конфигурации'", CommonUseClientServer.MainLanguageCode());
 EndFunction
 
 // It is called on system shutdown to request
@@ -732,7 +732,7 @@ Function CheckUpdateImportLegality(QueryParameters) Export
 	// Create service description
 		ServiceDescription = LegalityCheckServiceDescription();
 	Except
-		ErrorText = NStr("en='An error occurred while describing web service of update receipt legality check.';ru='Ошибка создания описания веб-сервиса проверки легальности получения обновления.'");
+		ErrorText = NStr("en='An error occurred when creating description of web service for update legality check.';ru='Ошибка создания описания веб-сервиса проверки легальности получения обновления.'");
 		Return WebServerResponceStructure(ErrorText, True,,, DetailErrorDescription(ErrorInfo()));
 	EndTry;
 	
@@ -849,7 +849,7 @@ Function CheckUpdateReceiptLegality(AdditionalParameters, LegalityCheckServiceDe
 		
 	Else
 		
-		Result = WebServerResponceStructure(NStr("en='Unexpected service response of updates receipt legality check';ru='Неожиданный ответ сервиса проверки легальности получения обновлений'"), True);
+		Result = WebServerResponceStructure(NStr("en='Unexpected update service response';ru='Неожиданный ответ сервиса проверки легальности получения обновлений'"), True);
 		
 	EndIf;
 	
@@ -1121,7 +1121,7 @@ Function ServiceAvailable(LegalityCheckServiceDescription)
 		ResponseBody = SendSOAPQuery(EnvelopeText, LegalityCheckServiceDescription);
 	Except
 		
-		ErrorMessage = StringFunctionsClientServer.SubstituteParametersInString(NStr("en='An error occurred while calling the isReady operation of service (%1): %2';ru='Ошибка при вызове операции isReady сервиса (%1): %2'"),
+		ErrorMessage = StringFunctionsClientServer.SubstituteParametersInString(NStr("en='An error occurred when calling operation isReady of service (%1): %2';ru='Ошибка при вызове операции isReady сервиса (%1): %2'"),
 			LegalityCheckServiceDescription.WSDLAddress, DetailErrorDescription(ErrorInfo()));
 		Raise ErrorMessage;
 		
@@ -1140,7 +1140,7 @@ Function ServiceAvailable(LegalityCheckServiceDescription)
 	Try
 		Value = ReadResponseInSOAPEnvelope(ResponseBody, LegalityCheckServiceDescription, ObjectType);
 	Except
-		ErrorMessage = StrReplace(NStr("en='An error occurred while calling the isReady operation of service (%1).';ru='Ошибка при вызове операции isReady сервиса (%1).'"),
+		ErrorMessage = StrReplace(NStr("en='An error occurred when calling operation isReady of service (%1).';ru='Ошибка при вызове операции isReady сервиса (%1).'"),
 			"%1",
 			LegalityCheckServiceDescription.WSDLAddress)
 			+ Chars.LF
@@ -1202,7 +1202,7 @@ Function RefreshReceivedLegally(QueryParameters, LegalityCheckServiceDescription
 		ResponseBody = SendSOAPQuery(EnvelopeText, LegalityCheckServiceDescription);
 	Except
 		
-		ErrorMessage = StringFunctionsClientServer.SubstituteParametersInString(NStr("en='An error occurred while calling the process operation of service (%1): %2';ru='Ошибка при вызове операции process сервиса (%1): %2'"),
+		ErrorMessage = StringFunctionsClientServer.SubstituteParametersInString(NStr("en='An error occurred when calling operation process of service (%1): %2';ru='Ошибка при вызове операции process сервиса (%1): %2'"),
 			LegalityCheckServiceDescription.WSDLAddress, DetailErrorDescription(ErrorInfo()));
 		Raise ErrorMessage;
 		
@@ -1222,7 +1222,7 @@ Function RefreshReceivedLegally(QueryParameters, LegalityCheckServiceDescription
 		Value = ReadResponseInSOAPEnvelope(ResponseBody, LegalityCheckServiceDescription, ObjectType);
 	Except
 		
-		ErrorMessage = StrReplace(NStr("en='An error occurred while calling the process operation of service (%1).';ru='Ошибка при вызове операции process сервиса (%1).'"),
+		ErrorMessage = StrReplace(NStr("en='An error occurred when calling operation process of service (%1).';ru='Ошибка при вызове операции process сервиса (%1).'"),
 			"%1",
 			LegalityCheckServiceDescription.WSDLAddress)
 			+ Chars.LF
@@ -1351,7 +1351,7 @@ Function SendSOAPQuery(EnvelopeText, LegalityCheckServiceDescription)
 	Try
 		HTTPResponse = LegalityCheckServiceDescription.PortConnection.Post(HTTPRequest);
 	Except
-		ErrorMessage = NStr("en='A network connection error occurred while sending SOAP-query.';ru='Ошибка сетевого соединения при отправке SOAP-запроса.'")
+		ErrorMessage = NStr("en='A connection error occurred when sending a SOAP query.';ru='Ошибка сетевого соединения при отправке SOAP-запроса.'")
 			+ Chars.LF
 			+ DetailErrorDescription(ErrorInfo());
 		Raise ErrorMessage;
@@ -1419,7 +1419,7 @@ Function ReadResponseInSOAPEnvelope(ResponseBody, LegalityCheckServiceDescriptio
 		EndTry;
 		
 		ErrorMessage = StringFunctionsClientServer.SubstituteParametersInString(
-			NStr("en='SOAP-Server error occurred while processing query: %1';ru='Ошибка SOAP-Сервера при обработке запроса: %1'"), DescriptionSOAPExceptionToRow(ExceptionDetails));
+			NStr("en='The SOAP-server error occurred when processing the query: %1';ru='Ошибка SOAP-Сервера при обработке запроса: %1'"), DescriptionSOAPExceptionToRow(ExceptionDetails));
 		Raise ErrorMessage;
 		
 	EndIf;
@@ -1507,7 +1507,7 @@ Function DescriptionSOAPExceptionToRow(ExceptionSOAP)
 	EndIf;
 	
 	If Not IsBlankString(ExceptionSOAP.FaultString) Then
-		ErrorText = StringFunctionsClientServer.SubstituteParametersInString(NStr("en='Error string: %1';ru='Строка ошибки: %1'"), ExceptionSOAP.FaultString);
+		ErrorText = StringFunctionsClientServer.SubstituteParametersInString(NStr("en='Error line: %1';ru='Строка ошибки: %1'"), ExceptionSOAP.FaultString);
 		Result = Result + Chars.LF + ErrorText;
 	EndIf;
 	

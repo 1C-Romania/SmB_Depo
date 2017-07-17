@@ -373,7 +373,7 @@ Procedure CreateShipment(Command)
 	
 	If Items.List.CurrentData = Undefined Then
 		
-		WarningText = NStr("en='Command can not be executed for the specified object';ru='Команда не может быть выполнена для указанного объекта!'");
+		WarningText = NStr("en='Command cannot be executed for the specified object.';ru='Команда не может быть выполнена для указанного объекта!'");
 		ShowMessageBox(Undefined,WarningText);
 		Return;
 		
@@ -391,7 +391,7 @@ Procedure CreateShipment(Command)
 		DataStructure = CheckKeyAttributesOfOrders(OrdersArray);
 		If DataStructure.GenerateFewOrders Then
 			
-			MessageText = NStr("en='The orders differ by data (%DataPresentation%) of the documents header! Generate several customer invoices?';ru='Заказы отличаются данными (%ПредставлениеДанных%) шапки документов! Сформировать несколько расходных накладных?'");
+			MessageText = NStr("en='The orders have different data (%DataPresentation%) in document headers. Create multiple invoices?';ru='Заказы отличаются данными (%ПредставлениеДанных%) шапки документов! Сформировать несколько расходных накладных?'");
 			MessageText = StrReplace(MessageText, "%DataPresentation%", DataStructure.DataPresentation);
 			Response = Undefined;
 
@@ -421,7 +421,7 @@ Procedure CreateShipmentEnd(Result, AdditionalParameters) Export
     If Response = DialogReturnCode.Yes Then
         
         SalesDodumentsArray = GenerateSalesDocumentsAndWrite(OrdersArray);
-        Text = NStr("en='Creating:';ru='Создание:'");
+        Text = NStr("en='Created:';ru='Создание:'");
         For Each RowDocumentSales IN SalesDodumentsArray Do
             
             ShowUserNotification(Text, GetURL(RowDocumentSales), RowDocumentSales, PictureLib.Information32);

@@ -58,7 +58,7 @@ Procedure SettingsOptionsBeforeDeleting(Item, Cancel)
 	SettingRepresentation = Item.CurrentData.Presentation;
 	
 	HeaderText = NStr("en='Confirmation';ru='Подтверждение'");
-	QuestionText   = NStr("en='Delete setting ""%1""?';ru='Удалить настройку ""%1""?'");
+	QuestionText   = NStr("en='Remove setting ""%1""?';ru='Удалить настройку ""%1""?'");
 	
 	QuestionText = StrReplace(QuestionText, "%1", SettingRepresentation);
 	
@@ -79,13 +79,13 @@ Procedure SaveSetting(Command)
 	
 	If IsBlankString(ViewCurrentSettings) Then
 		CommonUseClientServer.MessageToUser(
-			NStr("en='Name for the current setting is not filled.';ru='Не заполнено имя для текущей настройки.'"), , "ViewCurrentSettings");
+			NStr("en='Name for the current setting is not entered.';ru='Не заполнено имя для текущей настройки.'"), , "ViewCurrentSettings");
 		Return;
 	EndIf;
 		
 	If SettingVariants.FindByValue(ViewCurrentSettings)<>Undefined Then
 		HeaderText = NStr("en='Confirmation';ru='Подтверждение'");
-		QuestionText   = NStr("en='Rewrite the existing setting ""%1""?';ru='Перезаписать существующую настройку ""%1""?'");
+		QuestionText   = NStr("en='Rewrite existing setting ""%1""?';ru='Перезаписать существующую настройку ""%1""?'");
 		QuestionText = StrReplace(QuestionText, "%1", ViewCurrentSettings);
 		
 		AdditionalParameters = New Structure("SettingRepresentation", ViewCurrentSettings);

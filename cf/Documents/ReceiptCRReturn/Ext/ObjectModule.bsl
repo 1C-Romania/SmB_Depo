@@ -81,7 +81,7 @@ Procedure FillByReceiptCR(Val BasisDocument, FillingData)
 	
 	If Not Documents.RetailReport.SessionIsOpen(Selection.CashCRSession, CurrentDate(), ErrorText) Then
 		
-		ErrorText = ErrorText + NStr("en='. Input on the basis is not possible';ru='. Ввод на основании невозможен'");
+		ErrorText = ErrorText + NStr("en='. Input on the basis is unavailable';ru='. Ввод на основании невозможен'");
 		
 		Raise ErrorText;
 		
@@ -89,7 +89,7 @@ Procedure FillByReceiptCR(Val BasisDocument, FillingData)
 	
 	If Not Selection.Posted Then
 		
-		ErrorText = NStr("en='Cash register receipt is not posted. Input on the basis is not possible';ru='Чек ККМ не проведен. Ввод на основании невозможен'");
+		ErrorText = NStr("en='Cash receipt is not posted. Input on the basis is not possible';ru='Чек ККМ не проведен. Ввод на основании невозможен'");
 		
 		Raise ErrorText;
 		
@@ -97,7 +97,7 @@ Procedure FillByReceiptCR(Val BasisDocument, FillingData)
 	
 	If Not ValueIsFilled(Selection.ReceiptCRNumber) Then
 		
-		ErrorText = NStr("en='Cash register receipt is not issued. Input on the basis is not possible';ru='Чек ККМ не пробит. Ввод на основании невозможен'");
+		ErrorText = NStr("en='Cash receipt is not issued. Input on the basis is not possible';ru='Чек ККМ не пробит. Ввод на основании невозможен'");
 	
 		Raise ErrorText;
 		
@@ -137,7 +137,7 @@ EndProcedure // AddAttributesToAdditionalPropertiesForPosting()
 //
 Procedure OnCopy(CopiedObject)
 	
-	Raise NStr("en='Return receipt can be entered only on base';ru='Чек на возврат вводится только на основании'");
+	Raise NStr("en='Refund receipt can be entered only on basis';ru='Чек на возврат вводится только на основании'");
 	
 EndProcedure // OnCopy()
 
@@ -153,7 +153,7 @@ Procedure Filling(FillingData, StandardProcessing)
 		
 	Else
 		
-		Raise NStr("en='Return receipts must be entered only on base of cash receipts';ru='Чеки ККМ на возврат должны вводится на основании чеков ККМ'");
+		Raise NStr("en='Refund receipts must be entered only on basis of cash receipts.';ru='Чеки ККМ на возврат должны вводится на основании чеков ККМ'");
 		
 	EndIf;
 	
@@ -194,7 +194,7 @@ Procedure FillCheckProcessing(Cancel, CheckedAttributes)
 	
 	While Selection.Next() Do
 		
-		ErrorText = NStr("ru = 'Для данного чека уже введен чек на возврат'; en = 'For this receipt the return has already been entered'");
+		ErrorText = NStr("en='Refund receipt has already been entered for this receipt';ru='Для данного чека уже введен чек на возврат'");
 		
 		SmallBusinessServer.ShowMessageAboutError(
 			ThisObject,
@@ -213,7 +213,7 @@ Procedure FillCheckProcessing(Cancel, CheckedAttributes)
 		
 		If BegOfDay(Selection.Date) <> BegOfDay(Date) Then
 			
-			ErrorText = NStr("ru = 'Дата чека на возврат должна соответствовать дате чека продажи'; en = 'Return date should correspond to the date of cash register receipt'");
+			ErrorText = NStr("en='Refund receipt date should correspond to sales receipt date';ru='Дата чека на возврат должна соответствовать дате чека продажи'");
 			
 			SmallBusinessServer.ShowMessageAboutError(
 				ThisObject,
@@ -228,7 +228,7 @@ Procedure FillCheckProcessing(Cancel, CheckedAttributes)
 		
 		If CashCRSession <> Selection.CashCRSession Then
 			
-			ErrorText = NStr("ru = 'Кассовая смена Чека на возврат должна соответствовать кассовой смене чека продажи'; en = 'Return receipt''s cash session should correspond to original receipt''s cash session'");
+			ErrorText = NStr("en='Refund receipt register shift should correspond to sale receipt register shift';ru='Кассовая смена Чека на возврат должна соответствовать кассовой смене чека продажи'");
 			
 			SmallBusinessServer.ShowMessageAboutError(
 				ThisObject,
@@ -243,7 +243,7 @@ Procedure FillCheckProcessing(Cancel, CheckedAttributes)
 		
 		If Not Selection.Posted Then
 			
-			ErrorText = NStr("ru = 'Чек ККМ не проведен'; en = 'Cash register receipt is not posted.'");
+			ErrorText = NStr("en='Cash receipt is not posted';ru='Чек ККМ не проведен'");
 			
 			SmallBusinessServer.ShowMessageAboutError(
 				ThisObject,
@@ -258,7 +258,7 @@ Procedure FillCheckProcessing(Cancel, CheckedAttributes)
 		
 		If Not ValueIsFilled(Selection.ReceiptCRNumber) Then
 			
-			ErrorText = NStr("ru = 'Чек ККМ продажи не пробит'; en = 'Cash receipt was not issued'");
+			ErrorText = NStr("en='Cash receipt of a sale is not issued';ru='Чек ККМ продажи не пробит'");
 			
 			SmallBusinessServer.ShowMessageAboutError(
 				ThisObject,
@@ -271,7 +271,7 @@ Procedure FillCheckProcessing(Cancel, CheckedAttributes)
 			
 		EndIf;
 		
-		ErrorText = NStr("ru = 'Кассовая смена не открыта'; en = 'Cash session is not opened.'");
+		ErrorText = NStr("en='Register shift is not opened';ru='Кассовая смена не открыта'");
 		If Not Documents.RetailReport.SessionIsOpen(CashCRSession, Date, ErrorText) Then
 			
 			
@@ -290,7 +290,7 @@ Procedure FillCheckProcessing(Cancel, CheckedAttributes)
 	
 	If PaymentWithPaymentCards.Count() > 0 AND Not ValueIsFilled(POSTerminal) Then
 		
-		ErrorText = NStr("ru = 'Поле ""Эквайринговый терминал"" не заполнено'; en = 'Field ""Terminal"" is empty'");
+		ErrorText = NStr("en='The ""POS terminal"" field is not filled in';ru='Поле ""Эквайринговый терминал"" не заполнено'");
 		
 		SmallBusinessServer.ShowMessageAboutError(
 			ThisObject,
@@ -322,7 +322,7 @@ Procedure BeforeWrite(Cancel, WriteMode, PostingMode)
 		
 		Cancel = True;
 		
-		ErrorText = NStr("en='CR receipt to return is issued on the fiscal register. Impossible to cancel the posting';ru='Чек ККМ на возврат пробит на фискальном регистраторе. Отмена проведения невозможна'");
+		ErrorText = NStr("en='Cash receipt for return is issued on the fiscal data recorder. Cannot cancel posting';ru='Чек ККМ на возврат пробит на фискальном регистраторе. Отмена проведения невозможна'");
 		
 		CommonUseClientServer.MessageToUser(
 			ErrorText,
@@ -337,7 +337,7 @@ Procedure BeforeWrite(Cancel, WriteMode, PostingMode)
 	   AND CashCRSession.Posted
 	   AND CashCRSession.CashCRSessionStatus = Enums.CashCRSessionStatuses.Closed Then
 		
-		MessageText = NStr("en='Cash session is closed. Impossible to cancel the posting';ru='Кассовая смена закрыта. Отмена проведения невозможна'");
+		MessageText = NStr("en='Register shift is closed. Cannot cancel posting';ru='Кассовая смена закрыта. Отмена проведения невозможна'");
 		
 		SmallBusinessServer.ShowMessageAboutError(
 				ThisObject,

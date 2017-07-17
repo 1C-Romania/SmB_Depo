@@ -88,8 +88,8 @@ Function ExternalModuleContainerDictionary() Export
 	
 	Result = New Structure();
 	
-	Result.Insert("Nominative", NStr("en='Additional report or data processor';ru='Дополнительного отчета или обработки'"));
-	Result.Insert("Genitive", NStr("en='Additional report or data processor';ru='Дополнительного отчета или обработки'"));
+	Result.Insert("Nominative", NStr("en='Additional report of data processor';ru='Дополнительного отчета или обработки'"));
+	Result.Insert("Genitive", NStr("en='Additional report of data processor';ru='Дополнительного отчета или обработки'"));
 	
 	Return Result;
 	
@@ -308,7 +308,7 @@ Function ExecuteScriptSafeMode(Val SessionKey, Val Script, Val ExecutableObject,
 		Else
 			
 			Raise StringFunctionsClientServer.SubstituteParametersInString(
-				NStr("en='Unknown action type for this step of the script: %1';ru='Неизвестный вид действия для этапа сценария: %1'"),
+				NStr("en='Unknown action kind for script stage: %1';ru='Неизвестный вид действия для этапа сценария: %1'"),
 				ScriptStep.ActionKind);
 			
 		EndIf;
@@ -353,7 +353,7 @@ Function ExecuteScriptSafeMode(Val SessionKey, Val Script, Val ExecutableObject,
 			Else
 				
 				Raise StringFunctionsClientServer.SubstituteParametersInString(
-					NStr("en='Unknown parameter for this step of the script: %1';ru='Неизвестный параметр для этапа сценария: %1'"),
+					NStr("en='Unknown parameter for script stage: %1';ru='Неизвестный параметр для этапа сценария: %1'"),
 					MethodParameter.Type);
 				
 			EndIf;
@@ -488,7 +488,7 @@ Function GeneratePermissionPresentation(Val permissions) Export
 			"<LI><FONT size=2>%1 <A href=""%2"">%3</A></FONT>",
 			PresentationPermissions,
 			"internal:" + TypePermissions,
-			NStr("en='Details...';ru='Подробнее...'"));
+			NStr("en='More...';ru='Подробнее...'"));
 		
 	EndDo;
 	
@@ -583,7 +583,7 @@ EndFunction
 Function PermissionIsNotGrantedTextOfException(Val SessionKey, Val TypeRequiredPermissions)
 	
 	Return StringFunctionsClientServer.SubstituteParametersInString(
-			NStr("en='Aditional report or processing %1 is not granted permission (%2)%3!';ru='Дополнительному отчету или обработке %1 не предоставлено разрешение {%2}%3!'"),
+			NStr("en='Permission (%2)%3 is not provided for additional report or data processor %1.';ru='Дополнительному отчету или обработке %1 не предоставлено разрешение {%2}%3!'"),
 			String(SessionKey), TypeRequiredPermissions.NamespaceURI, TypeRequiredPermissions.Name);
 	
 EndFunction

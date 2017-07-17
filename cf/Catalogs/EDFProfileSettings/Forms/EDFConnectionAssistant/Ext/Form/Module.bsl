@@ -114,7 +114,7 @@ Procedure CompanyOnChange(Item)
 	
 	If EDExchangeMethod = PredefinedValue("Enum.EDExchangeMethods.ThroughEDFOperatorTaxcom") Then
 		CompanyID = "";
-		Items.CaptionIDOfParticipantExchangeED.Title = NStr("en='Obtain a unique identifier of the ED exchange participant';ru='Получить уникальный идентификатор участника обмена ЭД.'");
+		Items.CaptionIDOfParticipantExchangeED.Title = NStr("en='Obtain a unique ID of the ED exchange participant.';ru='Получить уникальный идентификатор участника обмена ЭД.'");
 		ElementFont = Items.CaptionIDOfParticipantExchangeED.Font;
 		Items.CaptionIDOfParticipantExchangeED.Font = New Font(ElementFont, , , False);
 		Items.CaptionIDOfParticipantExchangeED.Hyperlink = True;
@@ -122,7 +122,7 @@ Procedure CompanyOnChange(Item)
 	Else
 		If ValueIsFilled(CompanyID) Then
 			NotifyDescription = New NotifyDescription("CompanyOnChangeComplete", ThisObject);
-			QuestionText = NStr("en='The company was modified. Do you want to change the exchange ID of the company?';ru='Была изменена организация. Изменить идентификатор обмена организации?'");
+			QuestionText = NStr("en='Company was changed. Change exchange ID of the company?';ru='Была изменена организация. Изменить идентификатор обмена организации?'");
 			ShowQueryBox(NOTifyDescription, QuestionText, QuestionDialogMode.YesNo, , DialogReturnCode.Yes);
 		Else
 			CompanyOnChangeComplete(DialogReturnCode.Yes, Undefined);
@@ -143,7 +143,7 @@ Procedure UseDSOnChange(Item)
 	
 	If ValueIsFilled(CryptoCertificate) Then
 		NotifyDescription = New NotifyDescription("UseDSOnChangeComplete", ThisObject);
-		QuestionText = NStr("en='Data on the certificate will be cleared. Continue?';ru='Данные по сертификату будут очищены. Продолжить?'");
+		QuestionText = NStr("en='Certificate data will be cleared. Continue?';ru='Данные по сертификату будут очищены. Продолжить?'");
 		ShowQueryBox(NOTifyDescription, QuestionText, QuestionDialogMode.YesNo, , DialogReturnCode.Yes);
 	Else
 		UseDSOnChangeComplete(Undefined, Undefined);
@@ -491,7 +491,7 @@ Procedure EDFProfileSettingsTest()
 			
 			If ElectronicDocumentsServiceClient.CheckUsingUsersInternetSupport() Then
 				CommonUseClientServer.MessageToUser(
-					NStr("en='You need to obtain a unique identifier of the ED exchange participant.';ru='Необходимо получить уникальный идентификатор участника обмена ЭД.'"), , , , Cancel);
+					NStr("en='You need to obtain a unique ID of the ED exchange participant.';ru='Необходимо получить уникальный идентификатор участника обмена ЭД.'"), , , , Cancel);
 			Else
 				CommonUseClientServer.MessageToUser(
 					ElectronicDocumentsClientServer.GetMessageText("Field", "Filling", "Company ID"),
@@ -506,7 +506,7 @@ Procedure EDFProfileSettingsTest()
 			If IdentifierLength <> 46 Then
 				CommonUseClientServer.MessageToUser(
 					ElectronicDocumentsClientServer.GetMessageText("Field", "CORRECTNESS", "Company ID", , ,
-						NStr("en='Field length is not equal 46.';ru='Длина поля не равна 46.'")),
+						NStr("en='Field length is not equal to 46.';ru='Длина поля не равна 46.'")),
 					,
 					"CompanyID",
 					,
@@ -522,17 +522,17 @@ Procedure EDFProfileSettingsTest()
 	CommunicationsTestPass = True;
 	If EDExchangeMethod = PredefinedValue("Enum.EDExchangeMethods.ThroughEDFOperatorTaxcom") Then
 		
-		Status(NStr("en='Creating an EDF settings profile.';ru='Создание профиля настроек ЭДО.'"),
+		Status(NStr("en='Creating EDF setting profile.';ru='Создание профиля настроек ЭДО.'"),
 			,
-			NStr("en='Testing the connection with the operator. Please wait...';ru='Выполняется тестирование связи с оператором. Пожалуйста, подождите..'"));
+			NStr("en='Testing connection with the operator. Please wait...';ru='Выполняется тестирование связи с оператором. Пожалуйста, подождите..'"));
 		CertificateTest(CommunicationsTestPass, True);
 		
 	Else
 		If EDExchangeMethod = PredefinedValue("Enum.EDExchangeMethods.ThroughEMail") Then
 			
-			Status(NStr("en='Creating an EDF settings profile.';ru='Создание профиля настроек ЭДО.'"),
+			Status(NStr("en='Creating EDF setting profile.';ru='Создание профиля настроек ЭДО.'"),
 				,
-				NStr("en='Testing ED exchange through electronic mail. Please wait...';ru='Выполняется тестирование обмена ЭД через электронную почту. Пожалуйста, подождите..'"));
+				NStr("en='Testing ED exchange via email. Please wait...';ru='Выполняется тестирование обмена ЭД через электронную почту. Пожалуйста, подождите..'"));
 			
 			ErrorInfo = "";
 			AdditionalMessage = "";
@@ -544,22 +544,22 @@ Procedure EDFProfileSettingsTest()
 					NStr("en='Verification of the account parameters
 		|is complete with errors: %1';ru='Проверка параметров учетной записи завершилась с ошибками:
 		|%1'"), ErrorInfo ),,
-					NStr("en='Check email account';ru='Проверка учетной записи'"));
+					NStr("en='Check account';ru='Проверка учетной записи'"));
 				CommunicationsTestPass = False;
 			EndIf;
 			
 		ElsIf EDExchangeMethod = PredefinedValue("Enum.EDExchangeMethods.ThroughDirectory") Then
 			
-			Status(NStr("en='Creating an EDF settings profile.';ru='Создание профиля настроек ЭДО.'"),
+			Status(NStr("en='Creating EDF setting profile.';ru='Создание профиля настроек ЭДО.'"),
 				,
-				NStr("en='Testing ED exchange through directory. Please wait...';ru='Выполняется тестирование обмена ЭД через каталог. Пожалуйста, подождите..'"));
+				NStr("en='Testing ED exchange via directory. Please wait...';ru='Выполняется тестирование обмена ЭД через каталог. Пожалуйста, подождите..'"));
 			TestLinksDirectExchangeAtServer(IncomingDocumentsDir, CommunicationsTestPass);
 			
 		ElsIf EDExchangeMethod = PredefinedValue("Enum.EDExchangeMethods.ThroughFTP") Then
 			
-			Status(NStr("en='Creating an EDF settings profile.';ru='Создание профиля настроек ЭДО.'"),
+			Status(NStr("en='Creating EDF setting profile.';ru='Создание профиля настроек ЭДО.'"),
 				,
-				NStr("en='Testing ED exchange through FTP. Please wait...';ru='Выполняется тестирование обмена ЭД через FTP. Пожалуйста, подождите..'"));
+				NStr("en='Testing ED exchange via FTP. Please wait...';ru='Выполняется тестирование обмена ЭД через FTP. Пожалуйста, подождите..'"));
 			ExchangeConnectionTestThroughFTPOnServer(CommunicationsTestPass);
 			
 		EndIf;
@@ -1030,7 +1030,7 @@ Procedure UseDSOnChangeComplete(Val Result, Val AdditionalParameters) Export
 			If EDExchangeMethod = PredefinedValue("Enum.EDExchangeMethods.ThroughEDFOperatorTaxcom")
 				AND ElectronicDocumentsServiceClient.CheckUsingUsersInternetSupport() Then
 				CompanyID = "";
-				Items.CaptionIDOfParticipantExchangeED.Title = NStr("en='Obtain a unique identifier of the ED exchange participant';ru='Получить уникальный идентификатор участника обмена ЭД.'");
+				Items.CaptionIDOfParticipantExchangeED.Title = NStr("en='Obtain a unique ID of the ED exchange participant.';ru='Получить уникальный идентификатор участника обмена ЭД.'");
 				ElementFont = Items.CaptionIDOfParticipantExchangeED.Font;
 				Items.CaptionIDOfParticipantExchangeED.Font = New Font(ElementFont, , , False);
 				Items.CaptionIDOfParticipantExchangeED.Hyperlink = True;

@@ -85,19 +85,19 @@ Procedure SetTitle()
 				PropertyName);
 		Else
 			Title = StringFunctionsClientServer.SubstituteParametersInString(
-				NStr("en='%1 (Creating)';ru='%1 (Создание)'"), PropertyName);
+				NStr("en='%1 (Creation)';ru='%1 (Создание)'"), PropertyName);
 		EndIf;
 	Else
 		PropertyName = String(AttributeValues.Title);
 		
 		If ValueIsFilled(Object.Ref) Then
 			Title = StringFunctionsClientServer.SubstituteParametersInString(
-				NStr("en='%1 (Property value %2)';ru='%1 (Значение свойства %2)'"),
+				NStr("en='%1 (Value of property %2)';ru='%1 (Значение свойства %2)'"),
 				Object.Description,
 				PropertyName);
 		Else
 			Title = StringFunctionsClientServer.SubstituteParametersInString(
-				NStr("en='%1 Property value (Create)';ru='Значение свойства %1 (Создание)'"), PropertyName);
+				NStr("en='Value of property %1 (Create)';ru='Значение свойства %1 (Создание)'"), PropertyName);
 		EndIf;
 	EndIf;
 	

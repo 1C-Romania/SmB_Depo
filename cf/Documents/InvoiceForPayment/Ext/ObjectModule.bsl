@@ -270,7 +270,7 @@ Procedure FillCheckProcessing(Cancel, CheckedAttributes)
 			CurAmountDiscount			= CurAmountManualDiscount + CurAmountAutomaticDiscount;
 			If StringInventory.DiscountMarkupPercent <> 100 AND CurAmountDiscount < CurAmount
 				AND Not ValueIsFilled(StringInventory.Amount) Then
-				MessageText = NStr("ru = 'Не заполнена колонка ""Сумма"" в строке %Номер% списка ""Запасы"".'; en = 'Column ""Amount"" is not populated in row %Number% of list ""Inventory"".'");
+				MessageText = NStr("en='The ""Amount"" column is not populated in the %Number% line of the ""Inventory"" list.';ru='Не заполнена колонка ""Сумма"" в строке %Номер% списка ""Запасы"".'");
 				MessageText = StrReplace(MessageText, "%Number%", StringInventory.LineNumber);
 				SmallBusinessServer.ShowMessageAboutError(
 					ThisObject,
@@ -305,7 +305,7 @@ Procedure FillCheckProcessing(Cancel, CheckedAttributes)
 		AND PaymentCalendar.Count() = 1
 		AND Not ValueIsFilled(PaymentCalendar[0].PayDate) Then
 		
-		MessageText = NStr("ru = 'Поле ""Дата оплаты"" не заполнено.'; en = 'Field ""Payment date"" is required.'");
+		MessageText = NStr("en='The ""Payment date"" field is not filled in.';ru='Поле ""Дата оплаты"" не заполнено.'");
 		SmallBusinessServer.ShowMessageAboutError(ThisObject, MessageText, , , "PayDate", Cancel);
 		SmallBusinessServer.DeleteAttributeBeingChecked(CheckedAttributes, "PaymentCalendar.PaymentDate");
 		

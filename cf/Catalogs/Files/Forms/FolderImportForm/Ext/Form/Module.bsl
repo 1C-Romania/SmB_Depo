@@ -62,7 +62,7 @@ Procedure SelectedFolderStartChoice(Item, ChoiceData, StandardProcessing)
 		Filter = NStr("en='All files(*.*)|*.*';ru='Все файлы(*.*)|*.*'");
 		FileOpeningDialog.Filter = Filter;
 		FileOpeningDialog.Multiselect = False;
-		FileOpeningDialog.Title = NStr("en='Select the folder';ru='Выберите каталог'");
+		FileOpeningDialog.Title = NStr("en='Select directory';ru='Выберите каталог'");
 		If FileOpeningDialog.Choose() Then
 			
 			If DirectoryChoice = True Then 
@@ -87,7 +87,7 @@ Procedure ImportExecute()
 	If IsBlankString(Directory) Then
 		
 		CommonUseClientServer.MessageToUser(
-			NStr("en='Directory for the import is not selected.';ru='Не выбран каталог для импорта.'"), , "Directory");
+			NStr("en='Catalog for import is not selected.';ru='Не выбран каталог для импорта.'"), , "Directory");
 		Return;
 		
 	EndIf;

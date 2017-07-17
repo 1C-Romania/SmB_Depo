@@ -107,7 +107,7 @@ Procedure FillCheckProcessingAtServer(Cancel, CheckedAttributes)
 	
 	If Object.Participants.Count() = 0 Then
 		CommonUseClientServer.MessageToUser(
-			NStr("en='Recipient list is not filled.';ru='Список получателей не заполнен.'"),
+			NStr("en='Recipient list is not filled in.';ru='Список получателей не заполнен.'"),
 			,
 			"Object.Participants",
 			,
@@ -116,7 +116,7 @@ Procedure FillCheckProcessingAtServer(Cancel, CheckedAttributes)
 	
 	If IsBlankString(Object.Content) Then
 		CommonUseClientServer.MessageToUser(
-			NStr("en='Field ""Content"" is not filled.';ru='Поле ""Содержание"" не заполнено.'"),
+			NStr("en='Content is not filled in.';ru='Поле ""Содержание"" не заполнено.'"),
 			,
 			"Object.Content",
 			,
@@ -355,7 +355,7 @@ Function GenerateCharacterQuantityLabel(SendTransliterated, val MessageText)
 	CharsCount = StrLen(MessageText);
 	MessageCount   = Int(CharsCount / CharactersInMessage) + 1;
 	CharactersLeft      = CharactersInMessage - CharsCount % CharactersInMessage;
-	MessageTextTemplate = NStr("en='Message - %1, remained characters - %2';ru='Сообщение - %1, осталось символов - %2'");
+	MessageTextTemplate = NStr("en='Message - %1, characters left - %2';ru='Сообщение - %1, осталось символов - %2'");
 	
 	Return StringFunctionsClientServer.SubstituteParametersInString(MessageTextTemplate, MessageCount, CharactersLeft);
 	
@@ -368,7 +368,7 @@ Procedure CheckAndConvertRecipientNumbers(Cancel)
 		
 		If IsBlankString(Recipient.HowToContact) Then
 			CommonUseClientServer.MessageToUser(
-				NStr("en='""Phone number"" field is not filled.';ru='Поле ""Номер телефона"" не заполнено.'"),
+				NStr("en='Phone number is not populated.';ru='Поле ""Номер телефона"" не заполнено.'"),
 				,
 				CommonUseClientServer.PathToTabularSection("Object.Participants", Recipient.LineNumber, "HowToContact"),
 				,
@@ -391,7 +391,7 @@ Procedure CheckAndConvertRecipientNumbers(Cancel)
 			Recipient.NumberForSending = CheckResult.SendingNumber;
 		Else
 			CommonUseClientServer.MessageToUser(
-				NStr("en='Incorrect format of phone number.';ru='Неверный формат номера телефона.'"),
+				NStr("en='Incorrect phone number format.';ru='Неверный формат номера телефона.'"),
 				,
 				CommonUseClientServer.PathToTabularSection("Object.Participants", Recipient.LineNumber, "HowToContact"),
 				,
@@ -432,7 +432,7 @@ Procedure SMSSendingSettingsAreExecuted()
 		Object.EventBegin = Object.Date;
 		Object.EventEnding = Object.Date;
 		Write();
-		ShowUserNotification(NStr("en='SMS is successfully sent';ru='SMS успешно отправлено'"), GetURL(Object.Ref), String(Object.Ref), PictureLib.Information32);
+		ShowUserNotification(NStr("en='SMS successfully sent';ru='SMS успешно отправлено'"), GetURL(Object.Ref), String(Object.Ref), PictureLib.Information32);
 		Close();
 	Else
 		CommonUseClientServer.MessageToUser(ErrorDescription,,"Object");
@@ -595,7 +595,7 @@ Procedure FillContentEvents(EventSubject)
 	If Not IsBlankString(Object.Content) Then
 		
 		ShowQueryBox(New NotifyDescription("FillEventContentEnd", ThisObject, New Structure("EventSubject", EventSubject)),
-			NStr("en='Do you want to refill the content by the selected topic?';ru='Перезаполнить содержание по выбранной теме?'"), QuestionDialogMode.YesNo, 0);
+			NStr("en='Refill the content by the selected topic?';ru='Перезаполнить содержание по выбранной теме?'"), QuestionDialogMode.YesNo, 0);
 		Return;
 		
 	EndIf;

@@ -165,11 +165,11 @@ Procedure RunOperation(Command)
 	ClearMessages();
 	
 	If Amount = 0 Then
-		Errors = NStr("en='Payment can not be performed for the amount equal to zero.';ru='Платеж не может быть осуществлен на нулевую сумму.'");
+		Errors = NStr("en='Payment cannot be made for the amount equals to zero.';ru='Платеж не может быть осуществлен на нулевую сумму.'");
 	EndIf;
 	
 	If ShowCardNumber AND Not ValueIsFilled(CardNumber) Then
-		Errors = Errors + ?(IsBlankString(Errors),"",Chars.LF) + NStr("en='Payment can not be performed without number of card.';ru='Платеж не может быть осуществлен без номера карты.'");
+		Errors = Errors + ?(IsBlankString(Errors),"",Chars.LF) + NStr("en='Payment cannot be made without a card number.';ru='Платеж не может быть осуществлен без номера карты.'");
 	EndIf;
 	
 	If IsBlankString(Errors) Then

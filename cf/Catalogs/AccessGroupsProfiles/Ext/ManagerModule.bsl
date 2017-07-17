@@ -348,7 +348,7 @@ Procedure AtFillingToDoList(CurrentWorks) Export
 		Work = CurrentWorks.Add();
 		Work.ID = ProfileId;
 		Work.ThereIsWork      = IncompatibleAccessGroupProfilesQuantity > 0;
-		Work.Presentation = NStr("en='Incompatible with the current version';ru='Не совместимы с текущей версией'");
+		Work.Presentation = NStr("en='Not compatible with the current version';ru='Не совместимы с текущей версией'");
 		Work.Quantity    = IncompatibleAccessGroupProfilesQuantity;
 		Work.Owner      = Section;
 		
@@ -889,7 +889,7 @@ Function ProvidedProfiles()
 		If ValueIsFilled(ProfileDescription.Name) Then
 			If ProfilesProperties.Get(ProfileDescription.Name) <> Undefined Then
 				Raise ErrorTitle + StringFunctionsClientServer.SubstituteParametersInString(
-					NStr("en='Profile with the name ""%1"" already exists.';ru='Профиль с именем ""%1"" уже существует.'"),
+					NStr("en='Profile with name ""%1"" already exists.';ru='Профиль с именем ""%1"" уже существует.'"),
 					ProfileDescription.Name);
 			EndIf;
 			ProfilesProperties.Insert(ProfileDescription.Name, ProfileDescription);

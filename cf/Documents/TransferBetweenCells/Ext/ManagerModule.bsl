@@ -359,7 +359,7 @@ Procedure GenerateInventoryTransferInCells(CurrentDocument, SpreadsheetDocument,
 	
 	If TotalsSelection.TotalQuantity = 0 Then
 		
-		InventoryTransferredCountInWords = NStr("ru = 'В документе не указаны перемещаемые запасы.'; en = 'Transferred inventories are not specified in the document.'");
+		InventoryTransferredCountInWords = NStr("en='Inventory to move is not specified in the document.';ru='В документе не указаны перемещаемые запасы.'");
 		
 	ElsIf IsMoveFromOneToSeveral Then
 		
@@ -472,7 +472,7 @@ Procedure AddPrintCommands(PrintCommands) Export
 	
 	PrintCommand = PrintCommands.Add();
 	PrintCommand.ID = "TransferBetweenCells";
-	PrintCommand.Presentation = NStr("en='Inventory transfer between locations';ru='Перемещение запасов по ячейкам'");
+	PrintCommand.Presentation = NStr("en='Inventory movement among bins';ru='Перемещение запасов по ячейкам'");
 	PrintCommand.FormsList = "DocumentForm,ListForm";
 	PrintCommand.CheckPostingBeforePrint = False;
 	PrintCommand.Order = 1;

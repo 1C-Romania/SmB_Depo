@@ -87,7 +87,7 @@ Procedure ExternEventProcessing(Source, Event, Data)
 	// Transfer data for processing
 	Result = EquipmentManagerClient.ProcessEventFromDevice(DetailsEvents, ErrorDescription);
 	If Not Result Then
-		CommonUseClientServer.MessageToUser(NStr("en='When processing the external events from device an error has occurred.';ru='При обработке внешнего события от устройства произошла ошибка.'")
+		CommonUseClientServer.MessageToUser(NStr("en='An error occurred when processing an external event from the device.';ru='При обработке внешнего события от устройства произошла ошибка.'")
 									+ Chars.LF + ErrorDescription);
 	EndIf;
 	

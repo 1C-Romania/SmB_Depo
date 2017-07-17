@@ -40,7 +40,7 @@ Procedure OnCreateAtServer(Cancel, StandardProcessing)
 	GLAccount = Parameters.GLAccount;
 	
 	If CancelGLAccountChange(Parameters.Ref) Then
-		Items.GLAccountsGroup.ToolTip = NStr("en='There are transactions by this POS terminal in base! You can not change the GL account!';ru='В базе есть движения по этому эквайринговому терминалу! Изменение счета учета запрещено!'");
+		Items.GLAccountsGroup.ToolTip = NStr("en='Records are registered for this POS terminal in the infobase. Cannot change the GL account.';ru='В базе есть движения по этому эквайринговому терминалу! Изменение счета учета запрещено!'");
 		Items.GLAccountsGroup.Enabled = False;
 	EndIf;
 	

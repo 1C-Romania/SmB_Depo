@@ -341,7 +341,7 @@ Procedure RaiseExceptionOnPresenceDividedDataRefsToUndividedWithoutSupportingMat
 	Else
 		
 		Raise StringFunctionsClientServer.SubstituteParametersInString(
-			NStr("en='Unexpected metadata object: %1!';ru='Неожиданный объект метаданных: %1!'", Metadata.DefaultLanguage.LanguageCode),
+			NStr("en='Unexpected metadata object: %1.';ru='Неожиданный объект метаданных: %1!'", Metadata.DefaultLanguage.LanguageCode),
 			MetadataObject.FullName()
 		);
 		

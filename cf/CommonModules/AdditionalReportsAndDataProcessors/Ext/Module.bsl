@@ -97,7 +97,7 @@ Function ConnectExternalDataProcessor(Ref) Export
 		
 	EndIf;
 	
-	WriteNote(Ref, NStr("en='Enabling, SafeMode = ""%1"".';ru='Подключение, БезопасныйРежим = ""%1"".'"), SafeMode);
+	WriteNote(Ref, NStr("en='Connection, SafeMode = ""%1"".';ru='Подключение, БезопасныйРежим = ""%1"".'"), SafeMode);
 	
 	//( elmi для обеспечения возможности отладки дополнительных отчетов и обработок. Отладка возможна только в файл серверном варианте запуска
 	If Ref.Publication = Enums.AdditionalReportsAndDataProcessorsPublicationOptions.DebugMode and ValueIsFilled(ref.FileNameForDebugging) Then
@@ -239,7 +239,7 @@ Procedure PrintByExternalSource(Ref, SourceParameters, PrintFormsCollection,
 	
 	If ExternalDataProcessorObject = Undefined Then
 		Raise StringFunctionsClientServer.SubstituteParametersInString(
-			NStr("en='External processor ""%1"" (type ""%2"") is not served by the ""Additional reports and processors"" subsystem';ru='Внешняя обработка ""%1"" (тип ""%2"") не обслуживается подсистемой ""Дополнительные отчеты и обработки""'"),
+			NStr("en='External data processor ""%1"" (type ""%2"") is not supported by the ""Additional reports and data processors"" subsystem';ru='Внешняя обработка ""%1"" (тип ""%2"") не обслуживается подсистемой ""Дополнительные отчеты и обработки""'"),
 			String(Ref),
 			String(TypeOf(Ref)));
 	EndIf;
@@ -254,7 +254,7 @@ Procedure PrintByExternalSource(Ref, SourceParameters, PrintFormsCollection,
 	For Each Str IN PrintFormsCollection Do
 		If Str.SpreadsheetDocument = Undefined Then
 			ErrorMessageText = StringFunctionsClientServer.SubstituteParametersInString(
-				NStr("en='Print handler has not generated spreadsheet document for: %1';ru='В обработчике печати не был сформирован табличный документ для: %1'"),
+				NStr("en='Spreadsheet document for %1 was not generated in the print processor';ru='В обработчике печати не был сформирован табличный документ для: %1'"),
 				Str.TemplateName);
 			Raise(ErrorMessageText);
 		EndIf;
@@ -985,7 +985,7 @@ Procedure OnConnectingAdd1Report(Ref, ReportParameters, Result) Export
 			Result = True;
 		Except
 			ReportParameters.Errors = 
-				StrReplace(NStr("en='An error occurred while enabling an additional report ""%1"":';ru='При подключении дополнительного отчета ""%1"" возникла ошибка:'"), "%1", String(Ref))
+				StrReplace(NStr("en='An error occurred while connecting additional report ""%1"":';ru='При подключении дополнительного отчета ""%1"" возникла ошибка:'"), "%1", String(Ref))
 				+ Chars.LF
 				+ DetailErrorDescription(ErrorInfo());
 			Result = False;
@@ -1122,7 +1122,7 @@ Procedure ReceiveAdditionalReportsAndDataProcessorsSettings(UserRef, Settings) E
 	EndIf;
 	
 	// Settings string name displayed in the processor settings tree.
-	SettingName = NStr("en='Prompt access settings to the additional reports and processings';ru='Настройки быстрого доступа к дополнительным отчетам и обработкам'");
+	SettingName = NStr("en='Settings of quick access to additional reports and data processors';ru='Настройки быстрого доступа к дополнительным отчетам и обработкам'");
 	
 	// Settings string picture.
 	SettingPicture = "";
@@ -1579,10 +1579,10 @@ Procedure FillDimensionsCompatibilityMode() Export
 					// If it is impossible to connect the data processor - set permissions
 					// compatibility mode for it with SSL version 2.1.3 and lock temporarily.
 					ErrorText = """" + Object.Description + """:"
-						+ Chars.LF + NStr("en='Unable to determine permissions compatibility mode as:';ru='Не удалось определить режим совместимости разрешений по причине:'")
+						+ Chars.LF + NStr("en='Cannot define a compatibility mode of extensions due to:';ru='Не удалось определить режим совместимости разрешений по причине:'")
 						+ Chars.LF + DetailErrorDescription(ErrorInfo())
 						+ Chars.LF
-						+ Chars.LF + NStr("en='Object is locked in the compatibility mode with the version 2.1.3.';ru='Объект заблокирован в режиме совместимости с версией 2.1.3.'");
+						+ Chars.LF + NStr("en='Object was locked in the compatibility mode with version 2.1.3.';ru='Объект заблокирован в режиме совместимости с версией 2.1.3.'");
 					WriteWarning(Object.Ref, ErrorText);
 					CompatibilityMode = Enums.AdditionalReportAndDataProcessorPermissionCompatibilityModes.Version_2_1_3;
 					Publication = Enums.AdditionalReportsAndDataProcessorsPublicationOptions.Disabled;
@@ -1638,7 +1638,7 @@ Procedure RunDataProcessorInScheduledJob(ExternalDataProcessor, CommandID) Expor
 	EndTry;
 	
 	// Events log monitor record
-	WriteInformation(ExternalDataProcessor, NStr("en='Command %1: Ending.';ru='Команда %1: Завершение.'"), CommandID);
+	WriteInformation(ExternalDataProcessor, NStr("en='Command %1: End.';ru='Команда %1: Завершение.'"), CommandID);
 	
 EndProcedure
 
@@ -2277,7 +2277,7 @@ Procedure GeneratePopupCommandsFill(Form, Parameters)
 			CommandBar = Form.CommandBar;
 		EndIf;
 		Popup = Items.Insert("PopupAdditionalFillingDataprocessors", Type("FormGroup"), CommandBar);
-		Popup.Title = NStr("en='Fill';ru='Заполнить'");
+		Popup.Title = NStr("en='Fill in';ru='Заполнить'");
 		Popup.Type = FormGroupType.Popup;
 		Popup.Picture = PictureLib.FillForm;
 		Popup.Representation = ButtonRepresentation.PictureAndText;
@@ -2522,7 +2522,7 @@ Function ExecuteExternalObjectCommand(ExternalObject, CommandID, CommandParamete
 	If CommandDetails = Undefined Then
 		
 		Raise StringFunctionsClientServer.SubstituteParametersInString(
-			NStr("en='Command %1 is not found!';ru='Команда %1 не обнаружена!'"), CommandID);
+			NStr("en='Command %1 is not found.';ru='Команда %1 не обнаружена!'"), CommandID);
 		
 	EndIf;
 	IsScriptInSafeMode = (CommandDetails.Use = "ScriptInSafeMode");
@@ -2696,7 +2696,7 @@ Function RegisterDataProcessor(Val Object, Val RegistrationParameters) Export
 		OR Users.InfobaseUserWithFullAccess(, True) Then
 		// do nothing
 	Else
-		Result.ErrorText = NStr("en='To enable processor started in the unsafe mode, you need administrator rights.';ru='Для подключения обработки, запускаемой в небезопасном режиме, требуются административные права.'");
+		Result.ErrorText = NStr("en='To connect data processor run in the unsafe mode, administrative rights are required.';ru='Для подключения обработки, запускаемой в небезопасном режиме, требуются административные права.'");
 		Return Result;
 	EndIf;
 	
@@ -2711,7 +2711,7 @@ Function RegisterDataProcessor(Val Object, Val RegistrationParameters) Export
 		);
 		Return Result;
 	ElsIf RegistrationParameters.IsReport <> (RegistrationData.Type = TypeAdditionalReport OR RegistrationData.Type = ReportKind) Then
-		Result.ErrorText = NStr("en='Processing type specified in the information about the external processing does not correspond to its extension.';ru='Вид обработки, указанный в сведениях о внешней обработке, не соответствует ее расширению.'");
+		Result.ErrorText = NStr("en='Data processor kind from external data processor data does not correspond to its extension.';ru='Вид обработки, указанный в сведениях о внешней обработке, не соответствует ее расширению.'");
 		Return Result;
 	EndIf;
 	
@@ -2789,7 +2789,7 @@ Function RegisterDataProcessor(Val Object, Val RegistrationParameters) Export
 		
 		If Not ValueIsFilled(CommandDetails.StartVariant) Then
 			CommonUseClientServer.MessageToUser(
-				StrReplace(NStr("en='Launch method is not specified for command ""%1"".';ru='Для команды ""%1"" не определен способ запуска.'"), "%1", CommandDetails.Presentation));
+				StrReplace(NStr("en='The launch method is not defined for the ""%1"" command.';ru='Для команды ""%1"" не определен способ запуска.'"), "%1", CommandDetails.Presentation));
 		EndIf;
 		
 		Command = Object.Commands.Add();

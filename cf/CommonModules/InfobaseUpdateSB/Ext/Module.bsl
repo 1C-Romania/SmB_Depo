@@ -1210,15 +1210,15 @@ Procedure WriteCatalogObject(CatalogObject, Inform = False) Export
 
 	If CatalogObject.IsNew() Then
 		If CatalogObject.IsFolder Then
-			MessageStr = NStr("en='Created catalog group ""%1"", code: ""%2"", description: ""%3""';ru='Создана группа справочника ""%1"", код: ""%2"", наименование: ""%3""'") ;
+			MessageStr = NStr("en='Group of catalog ""%1"" is created, code: ""%2"", name: ""%3""';ru='Создана группа справочника ""%1"", код: ""%2"", наименование: ""%3""'") ;
 		Else
-			MessageStr = NStr("en='Created catalog element ""%1"", code: ""%2"", description: ""%3""';ru='Создан элемент справочника ""%1"", код: ""%2"", наименование: ""%3""'") ;
+			MessageStr = NStr("en='Item of catalog ""%1"" is created, code: ""%2"", name: ""%3""';ru='Создан элемент справочника ""%1"", код: ""%2"", наименование: ""%3""'") ;
 		EndIf; 
 	Else
 		If CatalogObject.IsFolder Then
-			MessageStr = NStr("en='Processed catalog group ""%1"", code: ""%2"", description: ""%3""';ru='Обработана группа справочника ""%1"", код: ""%2"", наименование: ""%3""'") ;
+			MessageStr = NStr("en='Catalog group ""%1"" is processed, code: ""%2"", name: ""%3""';ru='Обработана группа справочника ""%1"", код: ""%2"", наименование: ""%3""'") ;
 		Else
-			MessageStr = NStr("en='Processed catalog element ""%1"", code: ""%2"", description: ""%3""';ru='Обработан элемент справочника ""%1"", код: ""%2"", наименование: ""%3""'") ;
+			MessageStr = NStr("en='Catalog item ""%1"" is processed, code: ""%2"", name: ""%3""';ru='Обработан элемент справочника ""%1"", код: ""%2"", наименование: ""%3""'") ;
 		EndIf; 
 	EndIf;
 
@@ -1237,7 +1237,7 @@ Procedure WriteCatalogObject(CatalogObject, Inform = False) Export
 
 	Except
 
-		MessageText = NStr("en='Failed to complete action: %1';ru='Не удалось завершить действие: %1'");
+		MessageText = NStr("en='Cannot finish action: %1';ru='Не удалось завершить действие: %1'");
 		MessageText = StringFunctionsClientServer.SubstituteParametersInString(MessageText, MessageStr);
 
 		CommonUseClientServer.MessageToUser(MessageText);

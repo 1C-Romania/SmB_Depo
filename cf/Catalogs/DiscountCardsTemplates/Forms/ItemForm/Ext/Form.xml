@@ -123,7 +123,7 @@
 					<ToolTip>
 						<v8:item>
 							<v8:lang>en</v8:lang>
-							<v8:content>If length is not specified then it is not controlled. Code length includes prefix, suffix and delimiters.</v8:content>
+							<v8:content>If the length is not specified, it is not controlled. Code length includes prefix, suffix, and separators.</v8:content>
 						</v8:item>
 						<v8:item>
 							<v8:lang>ru</v8:lang>
@@ -155,7 +155,7 @@
 					<ToolTip>
 						<v8:item>
 							<v8:lang>en</v8:lang>
-							<v8:content>If number is not specified then the 1st block is used</v8:content>
+							<v8:content>If number is not specified, the 1st block is used</v8:content>
 						</v8:item>
 						<v8:item>
 							<v8:lang>ru</v8:lang>
@@ -172,7 +172,7 @@
 					<ToolTip>
 						<v8:item>
 							<v8:lang>en</v8:lang>
-							<v8:content>If number is not specified then start with the 1st symbol</v8:content>
+							<v8:content>If number is not specified, then start with the 1st character</v8:content>
 						</v8:item>
 						<v8:item>
 							<v8:lang>ru</v8:lang>
@@ -189,7 +189,7 @@
 					<ToolTip>
 						<v8:item>
 							<v8:lang>en</v8:lang>
-							<v8:content>If length is not specified then the entire block is used as a code</v8:content>
+							<v8:content>If length is not specified, the entire block is used as a code</v8:content>
 						</v8:item>
 						<v8:item>
 							<v8:lang>ru</v8:lang>
@@ -303,7 +303,7 @@
 									<ToolTip>
 										<v8:item>
 											<v8:lang>en</v8:lang>
-											<v8:content>To view the code read the card on magnetic card reader</v8:content>
+											<v8:content>To view the code, read the card on magnetic stripe card reader</v8:content>
 										</v8:item>
 										<v8:item>
 											<v8:lang>ru</v8:lang>
@@ -334,7 +334,7 @@
 							<Title formatted="false">
 								<v8:item>
 									<v8:lang>en</v8:lang>
-									<v8:content>To view card data read tha card on magnetic card reader</v8:content>
+									<v8:content>To view card data, read the card on magnetic stripe card reader</v8:content>
 								</v8:item>
 								<v8:item>
 									<v8:lang>ru</v8:lang>
@@ -350,20 +350,7 @@
 					<Title formatted="true">
 						<v8:item>
 							<v8:lang>en</v8:lang>
-							<v8:content>&lt;fontsize 10&gt;&lt;b&gt;Example 1: ";00035?" and code = "&lt;/&gt;&lt;/&gt;&lt;fontsize 10&gt;&lt;b&gt;00035&lt;/&gt;&lt;/&gt;&lt;fontsize 10&gt;&lt;b&gt;"&lt;/&gt;&lt;/&gt;
-In this case the tamplate may not be used.
-Settings: Prefix = "&lt;fontsize 10&gt;&lt;b&gt;;&lt;/&gt;&lt;/&gt;", suffix = "&lt;fontsize 10&gt;&lt;b&gt;?&lt;/&gt;&lt;/&gt;",code length = "&lt;fontsize 10&gt;&lt;b&gt;7&lt;/&gt;&lt;/&gt;". Leave the other fields empty or = 0.
-
-&lt;fontsize 10&gt;&lt;b&gt;Example 2&lt;/&gt;&lt;/&gt;&lt;fontsize 10&gt;&lt;b&gt;: ";00&lt;/&gt;&lt;/&gt;&lt;fontsize 10&gt;&lt;b&gt;351&lt;/&gt;&lt;/&gt;&lt;fontsize 10&gt;&lt;b&gt;=1234322&lt;/&gt;&lt;/&gt;&lt;fontsize 10&gt;&lt;b&gt;?" and code = "00351"&lt;/&gt;&lt;/&gt;
-Settings: Prefix = "&lt;fontsize 10&gt;&lt;b&gt;;&lt;/&gt;&lt;/&gt;", suffix = "&lt;fontsize 10&gt;&lt;b&gt;?&lt;/&gt;&lt;/&gt;", separator = "&lt;fontsize 10&gt;&lt;b&gt;=&lt;/&gt;&lt;/&gt;", code length= "&lt;fontsize 10&gt;&lt;b&gt;15&lt;/&gt;&lt;/&gt;". Leave the other fields empty or = 0.
-
-&lt;fontsize 10&gt;&lt;b&gt;Example 3&lt;/&gt;&lt;/&gt;&lt;fontsize 10&gt;&lt;b&gt;: ";00&lt;/&gt;&lt;/&gt;&lt;fontsize 10&gt;&lt;b&gt;351&lt;/&gt;&lt;/&gt;&lt;fontsize 10&gt;&lt;b&gt;=1234322&lt;/&gt;&lt;/&gt;&lt;fontsize 10&gt;&lt;b&gt;?" and code = "&lt;/&gt;&lt;/&gt;&lt;fontsize 10&gt;&lt;b&gt;1234322&lt;/&gt;&lt;/&gt;&lt;fontsize 10&gt;&lt;b&gt;"&lt;/&gt;&lt;/&gt;
-Settings: Prefix = "&lt;fontsize 10&gt;&lt;b&gt;;&lt;/&gt;&lt;/&gt;", suffix = "&lt;fontsize 10&gt;&lt;b&gt;?&lt;/&gt;&lt;/&gt;", separator = "&lt;fontsize 10&gt;&lt;b&gt;=&lt;/&gt;&lt;/&gt;", code length = "&lt;fontsize 10&gt;&lt;b&gt;15&lt;/&gt;&lt;/&gt;", number block = "&lt;fontsize 10&gt;&lt;b&gt;2&lt;/&gt;&lt;/&gt;". Leave the other fields empty or = 0.
-
-&lt;fontsize 10&gt;&lt;b&gt;Example 4&lt;/&gt;&lt;/&gt;&lt;fontsize 10&gt;&lt;b&gt;: ";&lt;/&gt;&lt;/&gt;&lt;fontsize 10&gt;&lt;b&gt;00035&lt;/&gt;&lt;/&gt;&lt;fontsize 10&gt;&lt;b&gt;342^&lt;/&gt;&lt;/&gt;&lt;fontsize 10&gt;&lt;b&gt;Petrov Ivan&lt;/&gt;&lt;/&gt;&lt;fontsize 10&gt;&lt;b&gt;?^=12012344&lt;/&gt;&lt;/&gt;&lt;fontsize 10&gt;&lt;b&gt;" and code = "&lt;/&gt;&lt;/&gt;&lt;fontsize 10&gt;&lt;b&gt;35&lt;/&gt;&lt;/&gt;&lt;fontsize 10&gt;&lt;b&gt;342&lt;/&gt;&lt;/&gt;&lt;fontsize 10&gt;&lt;b&gt;"&lt;/&gt;&lt;/&gt;
-Settings: Prefix = "&lt;fontsize 10&gt;&lt;b&gt;;&lt;/&gt;&lt;/&gt;", suffix = "&lt;fontsize 10&gt;&lt;b&gt;?&lt;/&gt;&lt;/&gt;", separator = "&lt;fontsize 10&gt;&lt;b&gt;=&lt;/&gt;&lt;/&gt;", number of first symbol = "&lt;fontsize 10&gt;&lt;b&gt;4&lt;/&gt;&lt;/&gt;", fields length= "&lt;fontsize 10&gt;&lt;b&gt;5&lt;/&gt;&lt;/&gt;". Leave the other fields empty or = 0.
-
-</v8:content>
+							<v8:content>Example 1: ";00035?" and code = "00035" In this case, the template may not be used. Settings: prefix = ";", suffix = "?",code length = "7". Leave other fields empty or = 0. Example 2: ";00351=1234322?" and code = "00351" Settings: prefix = ";", suffix = "?", separator = "=", code length= "15". Leave other fields empty or = 0. Example 3: ";00351=1234322?" and code = "1234322" Settings: prefix = ";", suffix = "?", separator = "=", code length = "15", block number = "2". Leave other fields empty or = 0. Example 4: ";00035342^Petrov Ivan?^=12012344" and code = "35342" Settings: prefix = ";", suffix = "?", separator = "=", first symbol number = "4", field length= "5". Leave other fields empty or = 0.</v8:content>
 						</v8:item>
 						<v8:item>
 							<v8:lang>ru</v8:lang>
@@ -408,7 +395,7 @@ Settings: Prefix = "&lt;fontsize 10&gt;&lt;b&gt;;&lt;/&gt;&lt;/&gt;", suffix = "
 			<Title>
 				<v8:item>
 					<v8:lang>en</v8:lang>
-					<v8:content>Card code by template</v8:content>
+					<v8:content>Card code according to the template</v8:content>
 				</v8:item>
 				<v8:item>
 					<v8:lang>ru</v8:lang>
@@ -427,7 +414,7 @@ Settings: Prefix = "&lt;fontsize 10&gt;&lt;b&gt;;&lt;/&gt;&lt;/&gt;", suffix = "
 			<Title>
 				<v8:item>
 					<v8:lang>en</v8:lang>
-					<v8:content>Supported peripherals types</v8:content>
+					<v8:content>Supported peripheral types</v8:content>
 				</v8:item>
 				<v8:item>
 					<v8:lang>ru</v8:lang>
@@ -463,7 +450,7 @@ Settings: Prefix = "&lt;fontsize 10&gt;&lt;b&gt;;&lt;/&gt;&lt;/&gt;", suffix = "
 			<Title>
 				<v8:item>
 					<v8:lang>en</v8:lang>
-					<v8:content>Check code by template</v8:content>
+					<v8:content>Check code according to the template</v8:content>
 				</v8:item>
 				<v8:item>
 					<v8:lang>ru</v8:lang>
@@ -473,7 +460,7 @@ Settings: Prefix = "&lt;fontsize 10&gt;&lt;b&gt;;&lt;/&gt;&lt;/&gt;", suffix = "
 			<ToolTip>
 				<v8:item>
 					<v8:lang>en</v8:lang>
-					<v8:content>Check code by template</v8:content>
+					<v8:content>Check code according to the template</v8:content>
 				</v8:item>
 				<v8:item>
 					<v8:lang>ru</v8:lang>

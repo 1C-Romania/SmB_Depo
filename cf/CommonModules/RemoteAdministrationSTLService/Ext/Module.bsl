@@ -120,7 +120,7 @@ Function ManagingApplicationServiceUtilizedVersion(Val UserPassword = "") Export
 	Else
 		
 		Raise StringFunctionsClientServer.SubstituteParametersInString(
-			NStr("en='Correspondent %1 does not support interface %2!';ru='Корреспондент %1 не поддерживает интерфейс %2!'"),
+			NStr("en='Correspondent %1 does not support interface %2.';ru='Корреспондент %1 не поддерживает интерфейс %2!'"),
 			ConnectionParameters.URL,
 			InterfaceName
 		);
@@ -179,7 +179,7 @@ Procedure DataAreaSessionEnd(Val SessionNumber, Val UserPassword) Export
 		
 	Else
 		
-		Raise NStr("en='Current version of managing application does not support finishing of the session from applications. It is required to update the managing application.';ru='Текущая версия управляющего приложения не поддерживает завершение сеанса из приложений. Необходимо обновить управлящее приложение.'");
+		Raise NStr("en='Ending sessions from applications is not supported by the current version of the managing application. Managing application update is required.';ru='Текущая версия управляющего приложения не поддерживает завершение сеанса из приложений. Необходимо обновить управлящее приложение.'");
 		
 	EndIf;
 	
@@ -213,7 +213,7 @@ Procedure SendQueriesForExternalResourcesUse(Val RequestsSerialization) Export
 		
 	Else
 		
-		Raise NStr("en='Current version of managing application does not support requests for permissions to use external resources. It is required to update the managing application.';ru='Текущая версия управляющего приложения не поддерживает запросы разрешений на использование внешних ресурсов. Необходимо обновить управлящее приложение.'");
+		Raise NStr("en='Permission requests to use external resources are not supported by the current version of the managing application. Managing application update is required.';ru='Текущая версия управляющего приложения не поддерживает запросы разрешений на использование внешних ресурсов. Необходимо обновить управлящее приложение.'");
 		
 	EndIf;
 	
@@ -250,7 +250,7 @@ Procedure SendQueriesForDataAreasExternalResourcesUse(Val RequestsSerialization,
 		
 	Else
 		
-		Raise NStr("en='Current version of managing application does not support requests for permissions to use external resources. It is required to update the managing application.';ru='Текущая версия управляющего приложения не поддерживает запросы разрешений на использование внешних ресурсов. Необходимо обновить управлящее приложение.'");
+		Raise NStr("en='Permission requests to use external resources are not supported by the current version of the managing application. Managing application update is required.';ru='Текущая версия управляющего приложения не поддерживает запросы разрешений на использование внешних ресурсов. Необходимо обновить управлящее приложение.'");
 		
 	EndIf;
 	

@@ -274,7 +274,7 @@ Procedure FillCheckProcessing(Cancel, CheckedAttributes)
 		AND PaymentCalendar.Count() = 1
 		AND Not ValueIsFilled(PaymentCalendar[0].PayDate) Then
 		
-		MessageText = NStr("en='Field ""Payment date"" is required.';ru='Поле ""Дата оплаты"" не заполнено.'");
+		MessageText = NStr("en='The ""Payment date"" field is not filled in.';ru='Поле ""Дата оплаты"" не заполнено.'");
 		SmallBusinessServer.ShowMessageAboutError(ThisObject, MessageText, , , "PayDate", Cancel);
 		CheckedAttributes.Delete(CheckedAttributes.Find("PaymentCalendar.PaymentDate"));
 		
@@ -288,7 +288,7 @@ Procedure FillCheckProcessing(Cancel, CheckedAttributes)
 				
 				If StringInventory.Reserve > StringInventory.Quantity Then
 					
-					MessageText = NStr("en='In the %Number% string of the tabular section ""Goods, services"" the quantity of reserved positions exceeds the total inventories quantity.';ru='В строке №%Номер% табл. части ""Товары, услуги"" количество резервируемых позиций превышает общее количество запасов.'");
+					MessageText = NStr("en='The number of reserved positions exceeds the total inventory quantity in row No. %Number% of the ""Goods, services"" tabular section.';ru='В строке №%Номер% табл. части ""Товары, услуги"" количество резервируемых позиций превышает общее количество запасов.'");
 					MessageText = StrReplace(MessageText, "%Number%", StringInventory.LineNumber);
 					SmallBusinessServer.ShowMessageAboutError(
 						ThisObject,
@@ -310,7 +310,7 @@ Procedure FillCheckProcessing(Cancel, CheckedAttributes)
 				If OrderState.OrderStatus = Enums.OrderStatuses.Completed
 					AND StringInventory.ReserveShipment > StringInventory.Quantity Then
 					
-					MessageText = NStr("en='In the %Number% string of the Goods tabular section the quantity of decommissioned reserve exceeds the total inventories quantity.';ru='В строке №%Номер% табл. части ""Товары"" количество списываемых позиций из резерва превышает общее количество запасов.'");
+					MessageText = NStr("en='The number of items written off from reserve exceeds the total inventory quantity in row No. %Number% of the Goods tabular section.';ru='В строке №%Номер% табл. части ""Товары"" количество списываемых позиций из резерва превышает общее количество запасов.'");
 					MessageText = StrReplace(MessageText, "%Number%", StringInventory.LineNumber);
 					SmallBusinessServer.ShowMessageAboutError(
 						ThisObject,
@@ -323,7 +323,7 @@ Procedure FillCheckProcessing(Cancel, CheckedAttributes)
 					
 				ElsIf StringInventory.Reserve > StringInventory.Quantity Then	
 					
-					MessageText = NStr("en='In the %Number% string of the tabular section ""Goods"", quantity of reserved positions exceeds the total inventories quantity.';ru='В строке №%Номер% табл. части ""Товары"" количество резервируемых позиций превышает общее количество запасов.'");
+					MessageText = NStr("en='The number of reserved positions exceeds the total inventory quantity in row No. %Number% of the Goods tabular section.';ru='В строке №%Номер% табл. части ""Товары"" количество резервируемых позиций превышает общее количество запасов.'");
 					MessageText = StrReplace(MessageText, "%Number%", StringInventory.LineNumber);
 					SmallBusinessServer.ShowMessageAboutError(
 						ThisObject,
@@ -343,7 +343,7 @@ Procedure FillCheckProcessing(Cancel, CheckedAttributes)
 				If OrderState.OrderStatus = Enums.OrderStatuses.Completed
 					AND StringInventory.ReserveShipment > StringInventory.Quantity Then
 					
-					MessageText = NStr("en='In the %Number% string  of the tabular section ""Materials"" the quantity of decommissioned reservs execeeds the total inventories qiantity.';ru='В строке №%Номер% табл. части ""Материалы"" количество списываемых позиций из резерва превышает общее количество запасов.'");
+					MessageText = NStr("en='Quantity of items written off from reserve exceeds the total inventory quantity in row No. %Number% of the ""Materials"" tabular section.';ru='В строке №%Номер% табл. части ""Материалы"" количество списываемых позиций из резерва превышает общее количество запасов.'");
 					MessageText = StrReplace(MessageText, "%Number%", StringInventory.LineNumber);
 					SmallBusinessServer.ShowMessageAboutError(
 						ThisObject,
@@ -356,7 +356,7 @@ Procedure FillCheckProcessing(Cancel, CheckedAttributes)
 					
 				ElsIf StringInventory.Reserve > StringInventory.Quantity Then
 					
-					MessageText = NStr("en='In the %Number% string of the tabular section ""Materials"" the quantity of reserved positions exceeds the total inventories quantity.';ru='В строке №%Номер% табл. части ""Материалы"" количество резервируемых позиций превышает общее количество запасов.'");
+					MessageText = NStr("en='The number of reserved positions exceeds the total inventory quantity in row No. %Number% of the ""Materials"" tabular section.';ru='В строке №%Номер% табл. части ""Материалы"" количество резервируемых позиций превышает общее количество запасов.'");
 					MessageText = StrReplace(MessageText, "%Number%", StringInventory.LineNumber);
 					SmallBusinessServer.ShowMessageAboutError(
 						ThisObject,
@@ -382,7 +382,7 @@ Procedure FillCheckProcessing(Cancel, CheckedAttributes)
 	If Not Constants.UseCustomerOrderStates.Get() Then
 		
 		If Not ValueIsFilled(OrderState) Then
-			MessageText = NStr("en='Field ""Order state"" is not filled. IN the accounting parameters settings it is necessary to install the statuses values.';ru='Поле ""Состояние заказа"" не заполнено. В настройках параметров учета необходимо установить значения состояний.'");
+			MessageText = NStr("en='The ""Order state"" field is not filled. Specify state values in the accounting parameter settings.';ru='Поле ""Состояние заказа"" не заполнено. В настройках параметров учета необходимо установить значения состояний.'");
 			SmallBusinessServer.ShowMessageAboutError(ThisObject, MessageText, , , "OrderState", Cancel);
 		EndIf;
 		
@@ -400,7 +400,7 @@ Procedure FillCheckProcessing(Cancel, CheckedAttributes)
 			CurAmountDiscounts = ManualDiscountCurAmount + AutomaticDiscountCurAmount;
 			If StringInventory.DiscountMarkupPercent <> 100 AND CurAmountDiscounts < CurAmount
 				AND Not ValueIsFilled(StringInventory.Amount) Then
-				MessageText = NStr("en='The column ""Amount"" in the %Number% string of the list ""Goods, works, services""  is not filled.';ru='Не заполнена колонка ""Сумма"" в строке %Номер% списка ""Товары, работы, услуги"".'");
+				MessageText = NStr("en='The ""Amount"" column is not filled out in the %Number% row of the ""Goods, works, services"" list.';ru='Не заполнена колонка ""Сумма"" в строке %Номер% списка ""Товары, работы, услуги"".'");
 				MessageText = StrReplace(MessageText, "%Number%", StringInventory.LineNumber);
 				SmallBusinessServer.ShowMessageAboutError(
 					ThisObject,
@@ -422,7 +422,7 @@ Procedure FillCheckProcessing(Cancel, CheckedAttributes)
 			CurAmountDiscounts = ManualDiscountCurAmount + AutomaticDiscountCurAmount;
 			If WorkRow.DiscountMarkupPercent <> 100 AND CurAmountDiscounts < CurAmount
 				AND Not ValueIsFilled(WorkRow.Amount) Then
-				MessageText = NStr("en='The column ""Amount"" is not filled in the %Number% string of the list ""Works"".';ru='Не заполнена колонка ""Сумма"" в строке %Номер% списка ""Работы"".'");
+				MessageText = NStr("en='The ""Amount"" column is not filled out in the %Number% row of the ""Works"" list.';ru='Не заполнена колонка ""Сумма"" в строке %Номер% списка ""Работы"".'");
 				MessageText = StrReplace(MessageText, "%Number%", WorkRow.LineNumber);
 				SmallBusinessServer.ShowMessageAboutError(
 					ThisObject,

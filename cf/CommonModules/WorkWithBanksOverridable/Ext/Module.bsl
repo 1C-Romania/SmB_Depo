@@ -82,9 +82,9 @@ Function RefreshCreateBanksWIB(Refs, IgnoreManualChanging)
 			
 			If Not ValueIsFilled(BankObject.Parent) Then
 				EventName = ?(EventName = "",
-					NStr("en='Pick from ACC';ru='Подбор из классификатора'"), EventName);
+					NStr("en='Pick from classifier';ru='Подбор из классификатора'"), EventName);
 				ErrorText = StringFunctionsClientServer.SubstituteParametersInString(
-					NStr("en='Failed to obtain the parent from the item with BIC %1';ru='Не смогли получить родителя у элемента с БИК %1'"), TrimAll(ParametersObject.Code));
+					NStr("en='Cannot receive a parent from the item with branch ID %1';ru='Не смогли получить родителя у элемента с БИК %1'"), TrimAll(ParametersObject.Code));
 				WriteLogEvent(EventName, 
 					EventLogLevel.Error,,, ErrorText);
 				Break;
@@ -99,7 +99,7 @@ Function RefreshCreateBanksWIB(Refs, IgnoreManualChanging)
 			RollbackTransaction();
 			
 			EventName = ?(EventName = "",
-				NStr("en='Pick from ACC';ru='Подбор из классификатора'"), EventName);
+				NStr("en='Pick from classifier';ru='Подбор из классификатора'"), EventName);
 			WriteLogEvent(EventName, 
 				EventLogLevel.Error,,, DetailErrorDescription(ErrorInfo()));
 			

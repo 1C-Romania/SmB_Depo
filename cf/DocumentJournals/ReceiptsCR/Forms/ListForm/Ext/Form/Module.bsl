@@ -197,7 +197,7 @@ Procedure CashCRSessionOpen(Command)
 		
 	Else
 		
-		MessageText = NStr("en='First, you need to select the workplace of the current session peripherals.';ru='Предварительно необходимо выбрать рабочее место внешнего оборудования текущего сеанса.'"
+		MessageText = NStr("en='First, you need to select the work place of the current session peripherals.';ru='Предварительно необходимо выбрать рабочее место внешнего оборудования текущего сеанса.'"
 		);
 		CommonUseClientServer.MessageToUser(MessageText);
 		
@@ -400,7 +400,7 @@ Procedure CloseCashCRSession(Command)
 		
 	Else
 		
-		MessageText = NStr("en='First, you need to select the workplace of the current session peripherals.';ru='Предварительно необходимо выбрать рабочее место внешнего оборудования текущего сеанса.'"
+		MessageText = NStr("en='First, you need to select the work place of the current session peripherals.';ru='Предварительно необходимо выбрать рабочее место внешнего оборудования текущего сеанса.'"
 		);
 		CommonUseClientServer.MessageToUser(MessageText);
 		
@@ -421,7 +421,7 @@ Procedure CashDeposition(Command)
 		
 		InAmount = 0;
 		
-		WindowTitle = NStr("en='Receipt amount, %Currency%';ru='Сумма внесения, %Валюта%'");
+		WindowTitle = NStr("en='Deposit amount, %Currency%';ru='Сумма внесения, %Валюта%'");
 		WindowTitle = StrReplace(
 			WindowTitle,
 			"%Currency%",
@@ -432,7 +432,7 @@ Procedure CashDeposition(Command)
 		
 	Else
 		
-		MessageText = NStr("en='First, you need to select the workplace of the current session peripherals.';ru='Предварительно необходимо выбрать рабочее место внешнего оборудования текущего сеанса.'"
+		MessageText = NStr("en='First, you need to select the work place of the current session peripherals.';ru='Предварительно необходимо выбрать рабочее место внешнего оборудования текущего сеанса.'"
 		);
 		CommonUseClientServer.MessageToUser(MessageText);
 		
@@ -457,7 +457,7 @@ Procedure FundsIntroductionEnd(Result1, AdditionalParameters) Export
 		Else
 			NotifyDescription = New NotifyDescription("FundsIntroductionFiscalRegisterConnectionsEnd", ThisObject, InAmount);
 			EquipmentManagerClient.OfferSelectDevice(NOTifyDescription, "FiscalRegister",
-				NStr("en='Select the fiscal register';ru='Выберите фискальный регистратор'"), NStr("en='Fiscal register is not connected.';ru='Фискальный регистратор не подключен.'"));
+				NStr("en='Select a fiscal data recorder';ru='Выберите фискальный регистратор'"), NStr("en='Fiscal data recorder is not connected.';ru='Фискальный регистратор не подключен.'"));
 		EndIf;
 		
 	EndIf;
@@ -556,7 +556,7 @@ Procedure Withdrawal(Command)
 		
 	Else
 		
-		MessageText = NStr("en='First, you need to select the workplace of the current session peripherals.';ru='Предварительно необходимо выбрать рабочее место внешнего оборудования текущего сеанса.'");
+		MessageText = NStr("en='First, you need to select the work place of the current session peripherals.';ru='Предварительно необходимо выбрать рабочее место внешнего оборудования текущего сеанса.'");
 		CommonUseClientServer.MessageToUser(MessageText);
 		
 	EndIf;
@@ -582,7 +582,7 @@ Procedure CashWithdrawalEnd(Result1, AdditionalParameters) Export
 		Else
 			NotifyDescription = New NotifyDescription("CashWithdrawalFiscalRegisterConnectionsEnd", ThisObject, WithdrawnAmount);
 			EquipmentManagerClient.OfferSelectDevice(NOTifyDescription, "FiscalRegister",
-				NStr("en='Select the fiscal register';ru='Выберите фискальный регистратор'"), NStr("en='Fiscal register is not connected.';ru='Фискальный регистратор не подключен.'"));
+				NStr("en='Select a fiscal data recorder';ru='Выберите фискальный регистратор'"), NStr("en='Fiscal data recorder is not connected.';ru='Фискальный регистратор не подключен.'"));
 		EndIf;
 	
 	EndIf;
@@ -688,7 +688,7 @@ Procedure UpdateCashCRSessionStateAtServer(CashCR)
 		
 	Else
 		
-		StatusCashCRSession = NStr("en='Session is not opened.';ru='Смена не открыта.'");
+		StatusCashCRSession = NStr("en='Shift is not opened.';ru='Смена не открыта.'");
 		
 	EndIf;
 	

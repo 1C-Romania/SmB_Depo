@@ -127,7 +127,7 @@ EndFunction
 //
 Function GetEventNameForEventLogMonitor() Export
 	
-	Return NStr("en='Information center';ru='Информационный центр'", ServiceTechnologyIntegrationWithSSL.MainLanguageCode());
+	Return NStr("en='Info center';ru='Информационный центр'", ServiceTechnologyIntegrationWithSSL.MainLanguageCode());
 	
 EndFunction
 
@@ -163,7 +163,7 @@ EndFunction
 Function GetInformationCenterProxy() Export
 	
 	If Not ServiceTechnologyIntegrationWithSSL.SubsystemExists("StandardSubsystems.SaaS") Then
-		Raise(NStr("en='Impossible to connect to the service Manager.';ru='Не возможно подключиться к Менеджеру сервиса.'"));
+		Raise(NStr("en='Cannot connect to the service manager.';ru='Не возможно подключиться к Менеджеру сервиса.'"));
 	EndIf;
 	
 	ModuleSaaSOperations = ServiceTechnologyIntegrationWithSSL.CommonModule("SaaSOperations");
@@ -172,7 +172,7 @@ Function GetInformationCenterProxy() Export
 	ServiceManagerAddress = ModuleSaaSOperations.InternalServiceManagerURL();
 	
 	If Not ValueIsFilled(ServiceManagerAddress) Then
-		Raise(NStr("en='Parameters of connection with the service manager have not been set.';ru='Не установлены параметры связи с менеджером сервиса.'"));
+		Raise(NStr("en='Parameters of connection with the service manager are not set.';ru='Не установлены параметры связи с менеджером сервиса.'"));
 	EndIf;
 	
 	ServiceAddress       = ServiceManagerAddress + "/ws/ManageInfoCenter?wsdl";
@@ -200,7 +200,7 @@ EndFunction
 Function GetInformationCenterProxy_1_0_1_1() Export
 	
 	If Not ServiceTechnologyIntegrationWithSSL.SubsystemExists("StandardSubsystems.SaaS") Then
-		Raise(NStr("en='Impossible to connect to the service Manager.';ru='Не возможно подключиться к Менеджеру сервиса.'"));
+		Raise(NStr("en='Cannot connect to the service manager.';ru='Не возможно подключиться к Менеджеру сервиса.'"));
 	EndIf;
 	
 	ModuleSaaSOperations = ServiceTechnologyIntegrationWithSSL.CommonModule("SaaSOperations");
@@ -209,7 +209,7 @@ Function GetInformationCenterProxy_1_0_1_1() Export
 	ServiceManagerAddress = ModuleSaaSOperations.InternalServiceManagerURL();
 	
 	If Not ValueIsFilled(ServiceManagerAddress) Then
-		Raise(NStr("en='Parameters of connection with the service manager have not been set.';ru='Не установлены параметры связи с менеджером сервиса.'"));
+		Raise(NStr("en='Parameters of connection with the service manager are not set.';ru='Не установлены параметры связи с менеджером сервиса.'"));
 	EndIf;
 	
 	ServiceAddress       = ServiceManagerAddress + "/ws/ManageInfoCenter_1_0_1_1?wsdl";
@@ -237,7 +237,7 @@ EndFunction
 Function GetInformationCenterProxy_1_0_1_2() Export
 	
 	If Not ServiceTechnologyIntegrationWithSSL.SubsystemExists("StandardSubsystems.SaaS") Then
-		Raise(NStr("en='Impossible to connect to the service Manager.';ru='Не возможно подключиться к Менеджеру сервиса.'"));
+		Raise(NStr("en='Cannot connect to the service manager.';ru='Не возможно подключиться к Менеджеру сервиса.'"));
 	EndIf;
 	
 	ModuleSaaSOperations = ServiceTechnologyIntegrationWithSSL.CommonModule("SaaSOperations");
@@ -246,7 +246,7 @@ Function GetInformationCenterProxy_1_0_1_2() Export
 	ServiceManagerAddress = ModuleSaaSOperations.InternalServiceManagerURL();
 	
 	If Not ValueIsFilled(ServiceManagerAddress) Then
-		Raise(NStr("en='Parameters of connection with the service manager have not been set.';ru='Не установлены параметры связи с менеджером сервиса.'"));
+		Raise(NStr("en='Parameters of connection with the service manager are not set.';ru='Не установлены параметры связи с менеджером сервиса.'"));
 	EndIf;
 	
 	ServiceAddress       = ServiceManagerAddress + "/ws/ManageInfoCenter_1_0_1_2?wsdl";
@@ -277,7 +277,7 @@ EndFunction
 Function GetIdeasCenterProxy() Export
 	
 	If Not ServiceTechnologyIntegrationWithSSL.SubsystemExists("StandardSubsystems.SaaS") Then
-		Raise(NStr("en='Impossible to connect to the service Manager.';ru='Не возможно подключиться к Менеджеру сервиса.'"));
+		Raise(NStr("en='Cannot connect to the service manager.';ru='Не возможно подключиться к Менеджеру сервиса.'"));
 	EndIf;
 	
 	ModuleSaaSOperations = ServiceTechnologyIntegrationWithSSL.CommonModule("SaaSOperations");
@@ -286,7 +286,7 @@ Function GetIdeasCenterProxy() Export
 	ServiceManagerAddress = ModuleSaaSOperations.InternalServiceManagerURL();
 	
 	If Not ValueIsFilled(ServiceManagerAddress) Then
-		Raise(NStr("en='Parameters of connection with the service manager have not been set.';ru='Не установлены параметры связи с менеджером сервиса.'"));
+		Raise(NStr("en='Parameters of connection with the service manager are not set.';ru='Не установлены параметры связи с менеджером сервиса.'"));
 	EndIf;
 	
 	ServiceAddress       = ServiceManagerAddress + "/ws/UsersIdeas_1_0_0_1?wsdl";
@@ -429,7 +429,7 @@ EndFunction
 //
 Function GenerateImplementationDateTitle(Val IdeaPresentation) Export 
 	
-	Return StringFunctionsClientServer.SubstituteParametersInString(NStr("en='Planned date of implementation:% 1';ru='Плановая дата реализации: %1'"), IdeaPresentation.PlanMadeDatePresentation);
+	Return StringFunctionsClientServer.SubstituteParametersInString(NStr("en='Planned sale date: %1';ru='Плановая дата реализации: %1'"), IdeaPresentation.PlanMadeDatePresentation);
 	
 EndFunction
 
@@ -457,7 +457,7 @@ EndFunction
 //
 Function GenerateImplementationDate(Val IdeaPresentation) Export 
 	
-	Return StringFunctionsClientServer.SubstituteParametersInString(NStr("en='Implemented: %1';ru='Реализовано: %1'"), Format(IdeaPresentation.ClosingDate, "DLF=DD"));
+	Return StringFunctionsClientServer.SubstituteParametersInString(NStr("en='Sold: %1';ru='Реализовано: %1'"), Format(IdeaPresentation.ClosingDate, "DLF=DD"));
 	
 EndFunction
 
@@ -669,7 +669,7 @@ Function GenerateXMLWithTechnicalParameters(AdditionalParameters = Undefined) Ex
 	Try
 		DeleteFiles(XMLFile);
 	Except
-		WriteLogEvent(NStr("en='Information center. Sending a message to support. Failed to delete the technical parameters temporary file.';ru='Информационный центр. Отправка сообщения в техподдержку. Не удалось удалить временный файл технических параметров.'"), 
+		WriteLogEvent(NStr("en='Information center. Sending a message to the technical support. Cannot remove a temporary file of technical parameters.';ru='Информационный центр. Отправка сообщения в техподдержку. Не удалось удалить временный файл технических параметров.'"), 
 			EventLogLevel.Error, , , DetailErrorDescription(ErrorInfo()));
 	EndTry;
 	

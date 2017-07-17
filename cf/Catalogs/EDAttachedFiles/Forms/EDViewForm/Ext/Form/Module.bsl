@@ -211,7 +211,7 @@ EndProcedure
 Procedure ChooseDocument(Command)
 	
 	Modified = False;
-	QuestionText = NStr("en='Warning! It is not recommended to select a document to be registered for manual accounting. Continue?';ru='Внимание! Не рекомендуется выбирать документ отражения в учете вручную. Продолжить?'");
+	QuestionText = NStr("en='Warning! It is not recommended to select a document for recording in accounting manually. Continue?';ru='Внимание! Не рекомендуется выбирать документ отражения в учете вручную. Продолжить?'");
 	NotifyDescription = New NotifyDescription("ChooseDocumentContinue", ThisObject);
 	ShowQueryBox(NOTifyDescription, QuestionText, QuestionDialogMode.YesNo, , DialogReturnCode.No);
 	
@@ -282,7 +282,7 @@ Procedure OpenCertificate(Command)
 		ShowCertificate(Items.DS.CurrentData.LineNumber, Items.DS.CurrentData.Imprint);
 	Else
 		ClearMessages();
-		ErrorText = NStr("en='Select the certificates in the installed signatures list.';ru='Выберите сертификат в списке установленных подписей.'");
+		ErrorText = NStr("en='Select a certificate in the signature list.';ru='Выберите сертификат в списке установленных подписей.'");
 		CommonUseClientServer.MessageToUser(ErrorText);
 	EndIf;
 	
@@ -295,7 +295,7 @@ Procedure CheckSignatures(Command)
 	
 	If BankApplication = PredefinedValue("Enum.BankApplications.SberbankOnline") Then
 		#If WebClient Then
-			MessageText = NStr("en='Verification of signatures from WEB browser is impossible';ru='Невозможна проверка подписей из WEB-браузера'");
+			MessageText = NStr("en='Cannot verify signatures from WEB browser';ru='Невозможна проверка подписей из WEB-браузера'");
 			CommonUseClientServer.MessageToUser(MessageText);
 			Return;
 		#Else
@@ -688,7 +688,7 @@ Procedure ChangeVisibleEnabled()
 			
 			Items.RefillDocument.Visible = False;
 		ElsIf Object.EDKind = Enums.EDKinds.ProductsDirectory Then
-			Items.RefillDocument.Title = NStr("en='Compare ProductsAndServices';ru='Сопоставить номенклатуру'");
+			Items.RefillDocument.Title = NStr("en='Compare products and services';ru='Сопоставить номенклатуру'");
 		ElsIf Object.EDKind = Enums.EDKinds.TORG12Customer
 			OR Object.EDKind = Enums.EDKinds.ActCustomer
 			OR Object.EDKind = Enums.EDKinds.AgreementAboutCostChangeRecipient
@@ -1046,7 +1046,7 @@ EndProcedure
 Procedure FillSignatureStatus(NewRow, CurRow)
 	
 	If ValueIsFilled(CurRow.SignatureVerificationDate) Then
-		NewRow.SignatureIsCorrect = ?(CurRow.SignatureIsCorrect, NStr("en='Correct';ru='Исправить'"), NStr("en='Wrong';ru='Неверна'"))
+		NewRow.SignatureIsCorrect = ?(CurRow.SignatureIsCorrect, NStr("en='Correct';ru='Исправить'"), NStr("en='Incorrect';ru='Неверна'"))
 			+" (" + CurRow.SignatureVerificationDate + ")";
 	Else
 		NewRow.SignatureIsCorrect = NStr("en='Not checked';ru='Не проверена'");
@@ -1204,7 +1204,7 @@ Function EDDataFile(LinkToED = Undefined, Val SubordinatedEDFileName = Undefined
 		EndIf;
 		
 		If FileName = Undefined Then
-			ErrorText = NStr("en='Unable to view electronic document. Verify the work directory setting';ru='Не удалось просмотреть электронный документ. Проверьте настройку рабочего каталога'");
+			ErrorText = NStr("en='Unable to view the electronic document. Check a working directory setting';ru='Не удалось просмотреть электронный документ. Проверьте настройку рабочего каталога'");
 			CommonUseClientServer.MessageToUser(ErrorText);
 			Return Undefined;
 		EndIf;
@@ -1225,7 +1225,7 @@ Function EDDataFile(LinkToED = Undefined, Val SubordinatedEDFileName = Undefined
 				EndIf;
 			
 				If AdditDataFileName = Undefined Then
-					ErrorText = NStr("en='Unable to get additional data of the electronic document. Verify the work directory setting';ru='Не удалось получить доп. данные электронного документа. Проверьте настройку рабочего каталога'");
+					ErrorText = NStr("en='Cannot receive additional data of electronic document. Check working directory setting';ru='Не удалось получить доп. данные электронного документа. Проверьте настройку рабочего каталога'");
 					CommonUseClientServer.MessageToUser(ErrorText);
 					Return Undefined;
 				EndIf;
@@ -1247,7 +1247,7 @@ Function EDDataFile(LinkToED = Undefined, Val SubordinatedEDFileName = Undefined
 			FolderForUnpacking = ElectronicDocumentsService.WorkingDirectory(,LinkToED.UUID());
 			
 			If FolderForUnpacking = Undefined Then
-				ErrorText = NStr("en='Unable to view electronic document. Verify the work directory setting';ru='Не удалось просмотреть электронный документ. Проверьте настройку рабочего каталога'");
+				ErrorText = NStr("en='Unable to view the electronic document. Check a working directory setting';ru='Не удалось просмотреть электронный документ. Проверьте настройку рабочего каталога'");
 				CommonUseClientServer.MessageToUser(ErrorText);
 				Return Undefined;
 			EndIf;
@@ -1803,7 +1803,7 @@ EndProcedure
 Procedure AddCertificateToTrusted(SignatureData)
 	
 	If SignatureData <> Undefined AND SignatureData.MissingInList Then 
-		QuestionText = NStr("en='Do you want to add the %1 certificate to the list of expected counterparty certificates?';ru='Добавить сертификат %1 в список ожидаемых сертификатов контрагента?'");
+		QuestionText = NStr("en='Add certificate %1 to the list of expected certificates of the counterparty?';ru='Добавить сертификат %1 в список ожидаемых сертификатов контрагента?'");
 		QuestionText = StrReplace(QuestionText, "%1", SignatureData.CertificateIsIssuedTo);
 		AddData = New Structure("SignatureData", SignatureData);
 		NotifyDescription = New NotifyDescription("AddCertificateToTrustedComplete", ThisObject, AddData);
@@ -2094,7 +2094,7 @@ Procedure ConfirmPaymentEndiBank2(Val Result, Val AdditionalParameters) Export
 		
 		Notify("RefreshStateED");
 		
-		ShowUserNotification(NStr("en='The document is confirmed';ru='Документ подтвержден'"));
+		ShowUserNotification(NStr("en='Document confirmed';ru='Документ подтвержден'"));
 		
 	EndIf;
 	
@@ -2151,7 +2151,7 @@ Procedure ConfirmPaymentCompleteThroughAdditionalProcessing(Val Result, Val Addi
 		
 		Notify("RefreshStateED");
 		
-		ShowUserNotification(NStr("en='The document is confirmed';ru='Документ подтвержден'"));
+		ShowUserNotification(NStr("en='Document confirmed';ru='Документ подтвержден'"));
 	EndIf;
 	
 EndProcedure
@@ -2188,7 +2188,7 @@ Procedure ConfirmPaymentThroughAdditionalProcessing(ExternalAttachableModule, Ad
 			ContinueConfirmationPaymentAfterEnteringPasswordCertificateThroughAdditionalProcessing(CertificateData,
 				AdditionalParameters);
 		Else
-			OperationKind = NStr("en='Authentication on bank resource';ru='Аутентификация на ресурсе банка.'");
+			OperationKind = NStr("en='Authentication on the bank resource';ru='Аутентификация на ресурсе банка.'");
 			If ElectronicDocumentsServiceClient.PasswordToCertificateReceived2(AvailableCertificates, OperationKind) Then
 				AdditionalParameters.Insert("AccCertificatesAndTheirStructures", AvailableCertificates);
 			Else
@@ -2221,7 +2221,7 @@ Procedure ChooseDocumentContinue(Val Result, Val AdditionalParameters) Export
 	If Result = DialogReturnCode.Yes Then
 		SelValue = Object.FileOwner;
 		NotifyDescription = New NotifyDescription("ChooseDocumentComplete", ThisObject);
-		ToolTip = NStr("en='Specify a document to be registered in accounting';ru='Укажите документ отражения в учете'");
+		ToolTip = NStr("en='Specify a document of recording in accounting';ru='Укажите документ отражения в учете'");
 		ShowInputValue(NOTifyDescription, SelValue, ToolTip);
 	EndIf;
 	
@@ -2240,7 +2240,7 @@ Procedure AddCertificateToTrustedComplete(Val Result, Val AdditionalParameters) 
 		CertificateAdded = False;
 		AddSigningCertificateInAgreement(SignatureData.Imprint, CertificateAdded);
 		If Not CertificateAdded Then 
-			MessageText = NStr("en='Error of adding the signature certificate to the list of the expected certificates!';ru='Ошибка добавления сертификата подписи в список ожидаемых сертификатов!'");
+			MessageText = NStr("en='An error occurred when adding a certificate to the expected certificate list.';ru='Ошибка добавления сертификата подписи в список ожидаемых сертификатов!'");
 			CommonUseClientServer.MessageToUser(MessageText);
 		Else
 			FillTableDS();
@@ -2304,7 +2304,7 @@ Procedure ConfirmPaymentiBank2(ExternalAttachableModule, AdditionalParameters = 
 	AdditionalParameters.Insert("AccCertificatesAndTheirStructures", AvailableCertificates);
 	
 	If Not PasswordIsSetPreviously Then
-		OperationKind = NStr("en='Authentication on bank resource';ru='Аутентификация на ресурсе банка.'");
+		OperationKind = NStr("en='Authentication on the bank resource';ru='Аутентификация на ресурсе банка.'");
 		
 		If Not ElectronicDocumentsServiceClient.PasswordToCertificateReceived2(AvailableCertificates, OperationKind) Then
 			
@@ -2409,7 +2409,7 @@ Procedure ConfirmiBank2Payment(AuthenticationCompleted, Parameters) Export
 	
 	If Not Result.Ways.Property("SMS") Then
 		ErrorText = NStr("en='Payment confirmation by SMS is not supported.';ru='Подтверждение платежа по SMS не поддерживается.'");
-		Operation = NStr("en='Initializing a payment confirmation procedure';ru='Инициализация процедуры подтверждения платежа'");
+		Operation = NStr("en='Payment confirmation procedure initialization';ru='Инициализация процедуры подтверждения платежа'");
 		ElectronicDocumentsServiceCallServer.ProcessExceptionByEDOnServer(
 												Operation, ErrorText, ErrorText, 1);
 		Return;
@@ -2454,7 +2454,7 @@ Procedure ExecuteConfirmPaymentThroughAdditionalProcessing(AuthenticationComplet
 															ErrorTemplate,
 															ErrorDetails.Code,
 															ErrorDetails.Message);
-		Operation = NStr("en='Initializing the confirmation session';ru='Инициализация сессии подтверждения'");
+		Operation = NStr("en='Confirmation session initialization';ru='Инициализация сессии подтверждения'");
 		DetailErrorDescription = DetailErrorDescription(ErrorInfo());
 		ElectronicDocumentsServiceCallServer.ProcessExceptionByEDOnServer(Operation,
 			DetailErrorDescription, MessageText, 1);

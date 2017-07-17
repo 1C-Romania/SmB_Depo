@@ -56,13 +56,13 @@ Function FormAutoNamingAtClient()
 	
 	AmountInDocument = (Object.AssignmentMethod = AssignmentMethodAmount AND Object.AssignmentArea = AreaInDocument);
 	If Object.ProductsAndServicesGroupsPriceGroups.Count() > 0 AND Not AmountInDocument Then
-		DescriptionString = DescriptionString + NStr("en=', with clarification';ru=', с уточнением'");
+		DescriptionString = DescriptionString + NStr("en=', with specification';ru=', с уточнением'");
 		Items.Description.ChoiceList.Add(DescriptionString);
 	EndIf;
 	
 	If (Object.DiscountRecipientsCounterparties.Count() > 0 AND Object.Purpose <> PurposeRetail) 
 		OR (Object.DiscountRecipientsWarehouses.Count() > 0 AND Object.Purpose <> PurposeWholesale) Then
-		DescriptionString = DescriptionString + NStr("en=',  recipients indicated';ru=', указаны получатели'");
+		DescriptionString = DescriptionString + NStr("en=', recipients are specified';ru=', указаны получатели'");
 		Items.Description.ChoiceList.Add(DescriptionString);
 	EndIf;
 	
@@ -119,13 +119,13 @@ Function FormAutoNamingAtServer()
 	
 	AmountInDocument = (Object.AssignmentMethod = AssignmentMethodAmount AND Object.AssignmentArea = AreaInDocument);
 	If Object.ProductsAndServicesGroupsPriceGroups.Count() > 0 AND Not AmountInDocument Then
-		DescriptionString = DescriptionString + NStr("en=', with clarification';ru=', с уточнением'");
+		DescriptionString = DescriptionString + NStr("en=', with specification';ru=', с уточнением'");
 		Items.Description.ChoiceList.Add(DescriptionString);
 	EndIf;
 	
 	If (Object.DiscountRecipientsCounterparties.Count() > 0 AND Object.Purpose <> PurposeRetail) 
 		OR (Object.DiscountRecipientsWarehouses.Count() > 0 AND Object.Purpose <> PurposeWholesale) Then
-		DescriptionString = DescriptionString + NStr("en=',  recipients indicated';ru=', указаны получатели'");
+		DescriptionString = DescriptionString + NStr("en=', recipients are specified';ru=', указаны получатели'");
 		Items.Description.ChoiceList.Add(DescriptionString);
 	EndIf;
 	
@@ -239,7 +239,7 @@ Procedure VisibleManagementAtServer()
 		
 	Items.Clarification.Visible = Not AmountInDocument;
 	If Object.RestrictionByProductsAndServicesVariant = RestrictionByProductsAndServicesVariant Then
-		Items.ProductsAndServicesGroupsPriceGroupsClarificationValue.Title = "ProductsAndServices";
+		Items.ProductsAndServicesGroupsPriceGroupsClarificationValue.Title = "Products and services";
 		Items.ProductsAndServicesGroupsPriceGroupsClarificationValue.TypeRestriction = New TypeDescription("CatalogRef.ProductsAndServices");
 		
 		Items.DecorationHelpClarification.Title = "Fill in the refinements if it is required to apply discount amount to certain products or product groups which is different from the main amount. If the list is not completed, basic discount will be used for all products and services.";
@@ -364,7 +364,7 @@ Procedure DiscountMarkupValueOnChange(Item)
 	
 	If Object.AssignmentMethod = AssignmentMethodPercent Then
 		If Object.DiscountMarkupValue > 100 Then
-			MessageText = NStr("en='Discount shall not exceed 100%';ru='Процент скидки должен быть не более 100%'");
+			MessageText = NStr("en='Discount percent should not exceed 100%';ru='Процент скидки должен быть не более 100%'");
 			CommonUseClientServer.MessageToUser(MessageText, 
 																,
 																"DiscountMarkupValue",
@@ -475,7 +475,7 @@ Procedure ProductsAndServicesGroupsPriceGroupsDiscountMarkupValueOnChange(Item)
 	If CurrentRow <> Undefined Then
 		If Object.AssignmentMethod = AssignmentMethodPercent Then
 			If CurrentRow.DiscountMarkupValue > 100 Then
-				MessageText = NStr("en='Discount shall not exceed 100%';ru='Процент скидки должен быть не более 100%'");
+				MessageText = NStr("en='Discount percent should not exceed 100%';ru='Процент скидки должен быть не более 100%'");
 				CommonUseClientServer.MessageToUser(MessageText, 
 																	,
 																	"ProductsAndServicesGroupsPriceGroups["+(CurrentRow.LineNumber-1)+"].DiscountMarkupValue",

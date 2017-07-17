@@ -16,7 +16,7 @@ Procedure OpenFile(Val FileName) Export
 	
 	If CurrentInitialization Then
 		
-		Raise NStr("en='The object has been initialized before.';ru='Объект уже был инициализирован ранее!'");
+		Raise NStr("en='The object has already been initialized earlier.';ru='Объект уже был инициализирован ранее!'");
 		
 	Else
 		
@@ -29,11 +29,11 @@ Procedure OpenFile(Val FileName) Export
 		If ReadStream.NodeType <> XMLNodeType.StartElement
 			Or ReadStream.Name <> "Data" Then
 			
-			Raise(NStr("en='The XML reading error. Incorrect file format. Waiting the start of the Data item.';ru='Ошибка чтения XML. Неверный формат файла. Ожидается начало элемента Data.'"));
+			Raise(NStr("en='XML reading error. Invalid file format. Awaiting Data item start.';ru='Ошибка чтения XML. Неверный формат файла. Ожидается начало элемента Data.'"));
 		EndIf;
 
 		If Not ReadStream.Read() Then
-			Raise(NStr("en='The XML reading error. File completion is detected.';ru='Ошибка чтения XML. Обнаружено завершение файла.'"));
+			Raise(NStr("en='XML reading error. File end is detected.';ru='Ошибка чтения XML. Обнаружено завершение файла.'"));
 		EndIf;
 		
 		//
@@ -49,7 +49,7 @@ Function ReadInfobaseDataObject() Export
 	If ReadStream.NodeType = XMLNodeType.StartElement Then
 		
 		If ReadStream.Name <> "DumpElement" Then
-			Raise NStr("en='The XML reading error. Incorrect file format. Awaiting the DumpElement item start.';ru='Ошибка чтения XML. Неверный формат файла. Ожидается начало элемента DumpElement.'");
+			Raise NStr("en='XML reading error. Invalid file format. Awaiting DumpElement item start.';ru='Ошибка чтения XML. Неверный формат файла. Ожидается начало элемента DumpElement.'");
 		EndIf;
 		
 		ReadStream.Read(); // <DumpElement>
@@ -185,7 +185,7 @@ Function ReadFlowFragment()
 		|fragment:% 1';ru='Ошибка копирования фрагмента исходного файла. Частично
 		|скопированный фрагмент: %1'"),
 				WriteFragment.Close());
-		WriteLogEvent(NStr("en='Exporting/importing data. XML read error';ru='Выгрузка/загрузка данных.Ошибка чтения XML'", 
+		WriteLogEvent(NStr("en='Import/export data.XML reading error';ru='Выгрузка/загрузка данных.Ошибка чтения XML'", 
 			ServiceTechnologyIntegrationWithSSL.MainLanguageCode()), EventLogLevel.Error, , , TextEL);
 		Raise;
 	EndTry;

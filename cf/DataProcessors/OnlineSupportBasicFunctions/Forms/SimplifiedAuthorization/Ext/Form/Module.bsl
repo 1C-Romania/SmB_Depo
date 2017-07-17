@@ -66,7 +66,7 @@ EndProcedure
 Procedure SiteUsersConnectionAuthorizationClick(Item)
 	
 	PageAddress = "https://1c-dn.com/user/profile/";
-	PageTitle = NStr("en='Support of 1C:Enterprise 8 system users';ru='Поддержка пользователей системы 1С:Предприятие 8'");
+	PageTitle = NStr("en='Support users of 1C:Enterprise 8';ru='Поддержка пользователей системы 1С:Предприятие 8'");
 	OnlineUserSupportClient.OpenInternetPage(
 		PageAddress,
 		PageTitle);
@@ -155,7 +155,7 @@ EndFunction
 &AtServer
 Procedure FillForm()
 	
-	UserTitle = NStr("en='Login:';ru='Авторизоваться:'") + " " + Parameters.login;
+	UserTitle = NStr("en='Authorize:';ru='Авторизоваться:'") + " " + Parameters.login;
 	
 	Login  = Parameters.login;
 	Password = Parameters.password;
@@ -178,7 +178,7 @@ Function FieldsAreFilledCorrectly()
 	If IsBlankString(Login) Then
 		
 		Message = New UserMessage;
-		Message.Text = NStr("en='Login field is not filled';ru='Не заполнено поле ""Логин""'");
+		Message.Text = NStr("en='Login is not filled in';ru='Не заполнено поле ""Логин""'");
 		Message.Field  = "Login";
 		Message.Message();
 		Return False;
@@ -188,7 +188,7 @@ Function FieldsAreFilledCorrectly()
 	If IsBlankString(Password) Then
 		
 		Message = New UserMessage;
-		Message.Text = NStr("en='Password field is not filled';ru='Не заполнено поле ""Пароль""'");
+		Message.Text = NStr("en='Password is not filled in';ru='Не заполнено поле ""Пароль""'");
 		Message.Field  = "Password";
 		Message.Message();
 		

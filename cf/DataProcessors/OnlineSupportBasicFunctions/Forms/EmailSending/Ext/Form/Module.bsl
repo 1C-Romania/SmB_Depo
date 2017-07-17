@@ -34,7 +34,7 @@ Procedure Send(Command)
 	// Check field filling
 	If IsBlankString(Email) Then
 		UserMessage = New UserMessage;
-		UserMessage.Text = NStr("en='""Email for feedback"" field is not filled.';ru='Поле ""E-mail для обратной связи"" не заполнено.'");
+		UserMessage.Text = NStr("en='The ""Email for feedback"" field is not filled in.';ru='Поле ""E-mail для обратной связи"" не заполнено.'");
 		UserMessage.Field  = "Email";
 		UserMessage.Message();
 		Return;
@@ -42,7 +42,7 @@ Procedure Send(Command)
 	
 	If IsBlankString(Subject) Then
 		UserMessage = New UserMessage;
-		UserMessage.Text = NStr("en='""Email Subject"" field is not filled.';ru='Поле ""Тема сообщения"" не заполнено.'");
+		UserMessage.Text = NStr("en='The ""Email subject"" field is not filled in.';ru='Поле ""Тема сообщения"" не заполнено.'");
 		UserMessage.Field  = "Subject";
 		UserMessage.Message();
 		Return;
@@ -50,7 +50,7 @@ Procedure Send(Command)
 	
 	If IsBlankString(Message) Then
 		UserMessage = New UserMessage;
-		UserMessage.Text = NStr("en='Letter text is not entered.';ru='Не заполнен тест письма.'");
+		UserMessage.Text = NStr("en='Email text is not filled in.';ru='Не заполнен тест письма.'");
 		UserMessage.Field  = "Message";
 		UserMessage.Message();
 		Return;
@@ -61,10 +61,10 @@ Procedure Send(Command)
 		EmailParameters.Insert("ConditionalRecipientName", ConditionalRecipientName);
 	EndIf;
 	
-	Status(NStr("en='sending';ru='Отправка'")
+	Status(NStr("en='Send';ru='Отправка'")
 		,
 		,
-		NStr("en='Email sending to technical support.';ru='Выполняется отправка электронного письма в службу тех. поддержки.'"),
+		NStr("en='Sending email to the technical support.';ru='Выполняется отправка электронного письма в службу тех. поддержки.'"),
 		PictureLib.OnlineUserSupportSendingLetter);
 	
 	SendingResult = OnlineUserSupportClient.SendEmailToSupportService(
@@ -111,7 +111,7 @@ Procedure WriteEmail(Parameters)
 	EndIf;
 	
 	Items.TitleExplanation.Title = StringFunctionsClientServer.SubstituteParametersInString(
-		NStr("en='Email will be send to user technical support to the address %1';ru='Письмо будет отправлено в техподдержку пользователей на адрес %1'"),
+		NStr("en='The email will be sent to technical support to %1';ru='Письмо будет отправлено в техподдержку пользователей на адрес %1'"),
 		EMailForSending);
 	
 	If Not IsBlankString(Parameters.FromWhom) Then
@@ -121,7 +121,7 @@ Procedure WriteEmail(Parameters)
 	ConditionalRecipientName = Parameters.ConditionalRecipientName;
 	
 	If IsBlankString(Subject) Then
-		Subject = NStr("en='<Enter email subject>';ru='<Укажите тему сообщения>'");
+		Subject = NStr("en='<Specify email subject>';ru='<Укажите тему сообщения>'");
 	EndIf;
 	
 	If IsBlankString(Message) Then
@@ -148,7 +148,7 @@ Function TechnicalParametersText(OnStart)
 	SysInfo = New SystemInfo;
 	
 	If OnStart Then
-		CallServicePosition = NStr("en='automatic';ru='автоматический'");
+		CallServicePosition = NStr("en='auto';ru='автоматический'");
 	Else
 		CallServicePosition = NStr("en='manual';ru='руководство'");
 	EndIf;

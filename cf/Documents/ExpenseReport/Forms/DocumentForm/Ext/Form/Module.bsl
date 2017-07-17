@@ -192,7 +192,7 @@ Procedure BarcodesAreReceivedFragment(UnknownBarcodes) Export
 	
 	For Each CurUndefinedBarcode IN UnknownBarcodes Do
 		
-		MessageString = NStr("en='Data by barcode is not found: %1%; quantity: %2%';ru='Данные по штрихкоду не найдены: %1%; количество: %2%'");
+		MessageString = NStr("en='Barcode data is not found: %1%; quantity: %2%';ru='Данные по штрихкоду не найдены: %1%; количество: %2%'");
 		MessageString = StrReplace(MessageString, "%1%", CurUndefinedBarcode.Barcode);
 		MessageString = StrReplace(MessageString, "%2%", CurUndefinedBarcode.Quantity);
 		CommonUseClientServer.MessageToUser(MessageString);
@@ -952,14 +952,14 @@ EndProcedure // GetInventoryFromStorage()
 Procedure FillByBasis(Command)
 	
 	If Not ValueIsFilled(Object.BasisDocument) Then
-		ShowMessageBox(Undefined,NStr("en='Basis document is not selected!';ru='Не выбран документ основание!'"));
+		ShowMessageBox(Undefined,NStr("en='Basis document is not selected.';ru='Не выбран документ основание!'"));
 		Return;
 	EndIf;
 	
 	Response = Undefined;
 
 	
-	ShowQueryBox(New NotifyDescription("FillByBasisEnd", ThisObject), NStr("en='Document will be completely refilled by ""Basis""! Continue?';ru='Документ будет полностью перезаполнен по ""Основанию""! Продолжить?'"), QuestionDialogMode.YesNo, 0);
+	ShowQueryBox(New NotifyDescription("FillByBasisEnd", ThisObject), NStr("en='The  document will be fully filled out according to the ""Basis"". Continue?';ru='Документ будет полностью перезаполнен по ""Основанию""! Продолжить?'"), QuestionDialogMode.YesNo, 0);
 	
 EndProcedure
 
@@ -1012,7 +1012,7 @@ Procedure GetWeight(Command)
 	
 	If TabularSectionRow = Undefined Then
 		
-		ShowMessageBox(Undefined, NStr("en='It is required to select a line to get weight for it.';ru='Необходимо выбрать строку, для которой необходимо получить вес.'"));
+		ShowMessageBox(Undefined, NStr("en='Select a line for which the weight should be received.';ru='Необходимо выбрать строку, для которой необходимо получить вес.'"));
 		
 	ElsIf EquipmentManagerClient.RefreshClientWorkplace() Then // Checks if the operator's workplace is specified
 		
@@ -1359,7 +1359,7 @@ EndProcedure
 Procedure AdvancesPaidDocumentStartChoice(Item, ChoiceData, StandardProcessing)
 	
 	If Not ValueIsFilled(Object.Employee) Then
-		MessageText = NStr("en='Specify employee first!';ru='Укажите вначале сотрудника!'");
+		MessageText = NStr("en='Specify the employee first.';ru='Укажите вначале сотрудника!'");
 		ShowMessageBox(Undefined,MessageText);
 		StandardProcessing = False;
 	EndIf;
@@ -1713,7 +1713,7 @@ Procedure ExpensesBusinessActivityStartChoice(Item, ChoiceData, StandardProcessi
 	StructureData = GetDataBusinessActivityStartChoice(TabularSectionRow.ProductsAndServices);
 	
 	If Not StructureData.AvailabilityOfPointingBusinessActivities Then
-		ShowMessageBox(, NStr("en='The business activity is not specified for this type of expense!';ru='Для данного расхода направление деятельности не указывается!'"));
+		ShowMessageBox(, NStr("en='Business area is not required for this type of expense.';ru='Для данного расхода направление деятельности не указывается!'"));
 		StandardProcessing = False;
 	EndIf;
 	
@@ -1729,7 +1729,7 @@ Procedure ExpensesStructuralUnitStartChoice(Item, ChoiceData, StandardProcessing
 	StructureData = GetDataStructuralUnitStartChoice(TabularSectionRow.ProductsAndServices);
 	
 	If Not StructureData.AbilityToSpecifyDepartments Then
-		ShowMessageBox(, NStr("en='The department is not specified for this type of expense!';ru='Для этого расхода подразделение не указывается!'"));
+		ShowMessageBox(, NStr("en='Department is not required for this kind of expense.';ru='Для этого расхода подразделение не указывается!'"));
 		StandardProcessing = False;
 	EndIf;
 	
@@ -1745,7 +1745,7 @@ Procedure ExpensesOrderStartChoice(Item, ChoiceData, StandardProcessing)
 	StructureData = GetDataOrderStartChoice(TabularSectionRow.ProductsAndServices);
 	
 	If Not StructureData.AbilityToSpecifyOrder Then
-		ShowMessageBox(, NStr("en='The order is not specified for this type of expense!';ru='Для этого расхода заказ не указывается!'"));
+		ShowMessageBox(, NStr("en='The order is not specified for this type of expense.';ru='Для этого расхода заказ не указывается!'"));
 		StandardProcessing = False;
 	EndIf;
 	
@@ -1869,7 +1869,7 @@ Procedure PaymentsDocumentStartChoice(Item, ChoiceData, StandardProcessing)
 	TabularSectionRow = Items.Payments.CurrentData;
 	
 	If TabularSectionRow.AdvanceFlag Then
-		ShowMessageBox(, NStr("en='The current document with the ""Advance"" flag will be used for settlement!';ru='Для вида расчета с признаком ""Аванс"" документом расчетов будет текущий!'"));
+		ShowMessageBox(, NStr("en='The current document is a document of settlements for the calculation kind ""Advance"".';ru='Для вида расчета с признаком ""Аванс"" документом расчетов будет текущий!'"));
 		StandardProcessing = False;
 	EndIf;
 	

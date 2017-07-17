@@ -27,7 +27,7 @@ EndProcedure
 Procedure OnOpen(Cancel)
 	
 	#If WebClient Then
-		ShowMessageBox(, NStr("en='Folder export is not supported in Web-client.';ru='В Веб-клиенте экспорт каталогов не поддерживается.'"));
+		ShowMessageBox(, NStr("en='Directory export is not supported in Web client.';ru='В Веб-клиенте экспорт каталогов не поддерживается.'"));
 		Cancel = True;
 		Return;
 	#EndIf
@@ -122,7 +122,7 @@ Procedure SaveFolder()
 		Try
 			CreateDirectory(FullExportPath);
 		Except
-			ErrorText = NStr("en='Cannot create a export folder:';ru='Не удалось создать папку выгрузки:'");
+			ErrorText = NStr("en='Cannot create an export folder:';ru='Не удалось создать папку выгрузки:'");
 			ErrorText = ErrorText + Chars.LF + Chars.LF + DetailErrorDescription(ErrorInfo());
 		EndTry;
 		If ErrorText <> "" Then
@@ -657,7 +657,7 @@ Procedure BypassFileTree14(ExecuteParameters)
 	
 	// Update progress bar.
 	TitleState = StringFunctionsClientServer.SubstituteParametersInString(
-		NStr("en='Export Folders ""%1""';ru='Экспорт папки ""%1""'"),
+		NStr("en='Export folder ""%1""';ru='Экспорт папки ""%1""'"),
 		ExecuteParameters.WritingFile.FolderDescription);
 	StateText = StringFunctionsClientServer.SubstituteParametersInString(
 		NStr("en='File ""%1""

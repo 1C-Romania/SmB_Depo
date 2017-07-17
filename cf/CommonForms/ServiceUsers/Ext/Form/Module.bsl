@@ -12,7 +12,7 @@ Procedure OnCreateAtServer(Cancel, StandardProcessing)
 	
 	RunMode = Constants.InfobaseUsageMode.Get();
 	If RunMode = Enums.InfobaseUsageModes.Demo Then
-		Raise(NStr("en='New users adding is not available in the demo mode';ru='В демонстрационном режиме не доступно добавление новых пользователей'"));
+		Raise(NStr("en='New users cannot be added in the demo mode';ru='В демонстрационном режиме не доступно добавление новых пользователей'"));
 	EndIf;
 	
 	// Form is unavailable until the preparation is not finished.

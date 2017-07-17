@@ -24,7 +24,7 @@ Procedure FillCheckProcessing(Cancel, CheckedAttributes)
 	If Parent = Catalogs.UsersGroups.AllUsers Then
 		CommonUseClientServer.AddUserError(Errors,
 			"Object.Parent",
-			NStr("en='Predefined group ""All users"" can''t be a parent.';ru='Предопределенная группа ""Все пользователи"" не может быть родителем.'"),
+			NStr("en='Predefined group ""All users"" cannot be a parent group.';ru='Предопределенная группа ""Все пользователи"" не может быть родителем.'"),
 			"");
 	EndIf;
 	
@@ -41,7 +41,7 @@ Procedure FillCheckProcessing(Cancel, CheckedAttributes)
 				NStr("en='User is not selected.';ru='Пользователь не выбран.'"),
 				"Object.Content",
 				LineNumber,
-				NStr("en='User in the row %1 is not selected.';ru='Пользователь в строке %1 не выбран.'"));
+				NStr("en='User in line %1 is not selected.';ru='Пользователь в строке %1 не выбран.'"));
 			Continue;
 		EndIf;
 		
@@ -50,10 +50,10 @@ Procedure FillCheckProcessing(Cancel, CheckedAttributes)
 		If FoundValues.Count() > 1 Then
 			CommonUseClientServer.AddUserError(Errors,
 				"Object.Content[%1].User",
-				NStr("en='User is not unique.';ru='Пользователь повторяется.'"),
+				NStr("en='User is repeated.';ru='Пользователь повторяется.'"),
 				"Object.Content",
 				LineNumber,
-				NStr("en='User in the %1 row is repeated.';ru='Пользователь в строке %1 повторяется.'"));
+				NStr("en='User in line %1 is repeated.';ru='Пользователь в строке %1 повторяется.'"));
 		EndIf;
 	EndDo;
 	

@@ -135,7 +135,7 @@ Procedure HTMLDocumentOnClick(Item, EventData, StandardProcessing)
 		If IsBlankString(UpdateProcessorVersion) Then
 			ShowMessageBox(
 				,
-				NStr("en='Mechanism of the automatic update is unavailable.';ru='Отсутствует механизм автоматического обновления.'"));
+				NStr("en='Automatic update functionality is unavailable.';ru='Отсутствует механизм автоматического обновления.'"));
 			Return;
 		EndIf;
 		
@@ -229,19 +229,19 @@ EndProcedure
 Function ConfigurationUpdateMainProcessorFormName(ErrorInfo)
 	
 	If Not CommonUse.SubsystemExists("StandardSubsystems.ConfigurationUpdate") Then
-		ErrorInfo = NStr("en='Mechanism of the automatic update is unavailable.';ru='Отсутствует механизм автоматического обновления.'");
+		ErrorInfo = NStr("en='Automatic update functionality is unavailable.';ru='Отсутствует механизм автоматического обновления.'");
 		OnlineUserSupportServerCall.WriteErrorInEventLogMonitor(
-			NStr("en='An error occurred while calling an automatic update. Mechanism of the automatic update is unavailable.';ru='Ошибка при вызове автоматического обновления. Отсутствует механизм автоматического обновления.'"));
+			NStr("en='An error occurred while calling an auto update. Auto update functionality is unavailable.';ru='Ошибка при вызове автоматического обновления. Отсутствует механизм автоматического обновления.'"));
 		Return Undefined;
 	EndIf;
 	
 	MetadataDataProcessor = Metadata.DataProcessors.Find("ConfigurationUpdate");
 	If MetadataDataProcessor = Undefined Then
 		
-		ErrorInfo = NStr("en='Mechanism of the automatic update is unavailable.';ru='Отсутствует механизм автоматического обновления.'");
+		ErrorInfo = NStr("en='Automatic update functionality is unavailable.';ru='Отсутствует механизм автоматического обновления.'");
 		
 		OnlineUserSupportServerCall.WriteErrorInEventLogMonitor(
-			NStr("en='An error occurred while calling an automatic update. The ConfigurationUpdate processor is unavailable in the metadata.';ru='Ошибка при вызове автоматического обновления. В метаданных отсутствует обработка ОбновлениеКонфигурации.'"));
+			NStr("en='An error occurred while calling auto update. There is no data processor ConfigurationUpdate in metadata.';ru='Ошибка при вызове автоматического обновления. В метаданных отсутствует обработка ОбновлениеКонфигурации.'"));
 		
 		Return Undefined;
 		
@@ -255,7 +255,7 @@ Function ConfigurationUpdateMainProcessorFormName(ErrorInfo)
 		|For more details see the event log.';ru='Ошибка при вызове автоматического обновления.
 		|Подробнее см. в журнале регистрации.'");
 			OnlineUserSupportServerCall.WriteErrorInEventLogMonitor(
-				NStr("en='An error occurred while calling an automatic update. The main form of the ConfigurationUpdate processor is unavailable.';ru='Ошибка при вызове автоматического обновления. Отсутствует основная форма обработки ОбновлениеКонфигурации.'"));
+				NStr("en='An error occurred while calling auto update. The main form of data processor ConfigurationUpdate is missing.';ru='Ошибка при вызове автоматического обновления. Отсутствует основная форма обработки ОбновлениеКонфигурации.'"));
 			Return Undefined;
 		EndIf;
 		
@@ -267,7 +267,7 @@ EndFunction
 Function MessageParametersToTechicalSupportUpdate()
 	
 	Result = New Structure;
-	Result.Insert("Subject", NStr("en='Online support. Problems with the configuration update.';ru='Интернет-поддержка. Проблемы с обновлением конфигурации.'"));
+	Result.Insert("Subject", NStr("en='Online support. Configuration update problems.';ru='Интернет-поддержка. Проблемы с обновлением конфигурации.'"));
 	
 	MessageText = NStr("en='Hello, the following problems occurred while updating the configuration to a new release: Login %1 Registration number: %2 %TechnicalParameters% ----------------------------------------------- Sincerely, .';ru='Здравствуйте. При обновлении конфигурации на новый релиз возникли следующие проблемы: Логин: %1 Регистрационный номер: %2 %ТехническиеПараметры% ----------------------------------------------- С уважением, .'");
 	

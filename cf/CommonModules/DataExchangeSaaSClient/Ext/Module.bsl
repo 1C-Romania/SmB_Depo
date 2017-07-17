@@ -30,7 +30,7 @@ Procedure OnStart(Parameters) Export
 		If ClientWorkParameters.SynchronizeDataWithApplicationInInternetOnWorkStart Then
 			
 			ShowUserNotification(NStr("en='OffLine work';ru='Автономная работа'"), "e1cib/app/DataProcessor.DataExchangeExecution",
-				NStr("en='Recommended to synchronize the data with the application in the Internet.';ru='Рекомендуется синхронизировать данные с приложением в Интернете.'"), PictureLib.Information32);
+				NStr("en='It is recommended to synchronize data with the online application.';ru='Рекомендуется синхронизировать данные с приложением в Интернете.'"), PictureLib.Information32);
 			
 		EndIf;
 		
@@ -59,7 +59,7 @@ Procedure OnExit(Warnings) Export
 		| - большой объем данных;
 		| - доступно обновление приложения в Интернете.'");
 
-		WarningParameters.FlagText = NStr("en='Data synchronization with the application in the Internet';ru='Синхронизировать данные с приложением в Интернете'");
+		WarningParameters.FlagText = NStr("en='Synchronize data with the online application';ru='Синхронизировать данные с приложением в Интернете'");
 		WarningParameters.Priority = 80;
 		
 		ActionIfMarked = WarningParameters.ActionIfMarked;

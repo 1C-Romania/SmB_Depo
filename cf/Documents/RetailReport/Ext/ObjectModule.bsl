@@ -137,7 +137,7 @@ Procedure FillTabularSectionInventoryByGoodsInventoryAtWarehouse(FillingData)
 	If Inventory.Count() = 0 Then
 		
 		Message = New UserMessage();
-		Message.Text = NStr("ru = 'Нет данных для заполнения по инвентаризации!'; en = 'No data to fill by reconciliation!'");
+		Message.Text = NStr("en='No data to fill in by physical inventory.';ru='Нет данных для заполнения по инвентаризации!'");
 		Message.Message();
 		
 		StandardProcessing = False;
@@ -232,7 +232,7 @@ Procedure Filling(FillingData, StandardProcessing)
 	ElsIf DataTypeFill = Type("DocumentRef.InventoryReconciliation") Then
 		
 		If FillingData.StructuralUnit.StructuralUnitType <> Enums.StructuralUnitsTypes.Retail Then
-			Raise(NStr("en='The document can be filled according to the retail warehouse reconciliation only!';ru='Документ может быть заполнен только на основании инвентаризации по розничному складу!'"));
+			Raise(NStr("en='The document can be filled in based on the retail warehouse physical inventory only.';ru='Документ может быть заполнен только на основании инвентаризации по розничному складу!'"));
 		Else
 			FillByInventoryInventoryAtWarehouse(FillingData);
 		EndIf;
@@ -276,7 +276,7 @@ Procedure FillCheckProcessing(Cancel, CheckedAttributes)
 	
 	If PaymentWithPaymentCards.Total("Amount") > DocumentAmount Then
 		
-		ErrorText = NStr("ru = 'Сумма оплаты платежными картами превышает сумму документа'; en = 'Amount of payment by payment cards exceeds document amount'");
+		ErrorText = NStr("en='Card payment amount is greater than the document amount';ru='Сумма оплаты платежными картами превышает сумму документа'");
 		
 		SmallBusinessServer.ShowMessageAboutError(
 			ThisObject,
@@ -295,7 +295,7 @@ Procedure FillCheckProcessing(Cancel, CheckedAttributes)
 		If OpenedCashCRSession <> Undefined
 		   AND OpenedCashCRSession <> Ref Then
 			
-			ErrorText = NStr("ru = 'По данной кассе на дату %Дата% уже зарегистрирован %КассоваяСмена%'; en = 'For this petty cash %CashShift% is already registered as of %Date%'");
+			ErrorText = NStr("en='%CashShift% is already registered for this cash register on date %Date%';ru='По данной кассе на дату %Дата% уже зарегистрирован %КассоваяСмена%'");
 			ErrorText = StrReplace(ErrorText, "%Date%", Date);
 			ErrorText = StrReplace(ErrorText, "%CashCRSession%", OpenedCashCRSession);
 			
@@ -314,7 +314,7 @@ Procedure FillCheckProcessing(Cancel, CheckedAttributes)
 			 AND ValueIsFilled(CashCRSessionStatus)
 			 AND CashCRSessionStatus <> Enums.CashCRSessionStatuses.IsOpen Then
 			
-			ErrorText = NStr("ru = 'Поле ""Окончание смены"" не заполнено'; en = 'Field ""End of Session"" is required'");
+			ErrorText = NStr("en='The ""Shift end"" field is not filled in';ru='Поле ""Окончание смены"" не заполнено'");
 			
 			SmallBusinessServer.ShowMessageAboutError(
 				ThisObject,
@@ -330,7 +330,7 @@ Procedure FillCheckProcessing(Cancel, CheckedAttributes)
 		If ValueIsFilled(CashCRSessionEnd)
 			 AND CashCRSessionEnd < CashCRSessionStart Then
 			
-			ErrorText = NStr("ru = 'Время начала кассовой смены больше времени окончания кассовой смены'; en = 'The start time of the cash session exceeds the final time of the cash session'");
+			ErrorText = NStr("en='Start time of the register shift is later than the end time of the register shift';ru='Время начала кассовой смены больше времени окончания кассовой смены'");
 			
 			SmallBusinessServer.ShowMessageAboutError(
 				ThisObject,
@@ -348,7 +348,7 @@ Procedure FillCheckProcessing(Cancel, CheckedAttributes)
 			 AND CashCRSessionStatus = Enums.CashCRSessionStatuses.IsOpen
 			 AND CashCRSessionStart <> Date Then
 			
-			ErrorText = NStr("ru = 'Время начала кассовой смены отличается от даты документа'; en = 'The start date of the cash session differs from the document date'");
+			ErrorText = NStr("en='Start time of the register shift is different from the document date';ru='Время начала кассовой смены отличается от даты документа'");
 			
 			SmallBusinessServer.ShowMessageAboutError(
 				ThisObject,
@@ -365,7 +365,7 @@ Procedure FillCheckProcessing(Cancel, CheckedAttributes)
 			 AND CashCRSessionStatus <> Enums.CashCRSessionStatuses.IsOpen
 			 AND CashCRSessionEnd <> Date Then
 			
-			ErrorText = NStr("ru = 'Время окончания кассовой смены отличается от даты документа'; en = 'The final time of the cash session differs from the document date'");
+			ErrorText = NStr("en='End time of the register shift is different from the document date';ru='Время окончания кассовой смены отличается от даты документа'");
 			
 			SmallBusinessServer.ShowMessageAboutError(
 				ThisObject,
@@ -385,7 +385,7 @@ Procedure FillCheckProcessing(Cancel, CheckedAttributes)
 		For Each StringInventory IN Inventory Do
 			If StringInventory.DiscountMarkupPercent <> 100 
 				AND Not ValueIsFilled(StringInventory.Amount) Then
-				MessageText = NStr("ru = 'Не заполнена колонка ""Сумма"" в строке %Номер% списка ""Запасы"".'; en = 'Column ""Amount"" is not populated in string %Number% of list ""Inventory"".'");
+				MessageText = NStr("en='The ""Amount"" column is not populated in the %Number% line of the ""Inventory"" list.';ru='Не заполнена колонка ""Сумма"" в строке %Номер% списка ""Запасы"".'");
 				MessageText = StrReplace(MessageText, "%Number%", StringInventory.LineNumber);
 				SmallBusinessServer.ShowMessageAboutError(
 					ThisObject,

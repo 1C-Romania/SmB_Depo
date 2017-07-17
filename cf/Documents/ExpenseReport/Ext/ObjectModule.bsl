@@ -39,7 +39,7 @@ EndProcedure // FillByCashTransferPlan()
 Procedure FillByCashPayment(FillingData)
 	
 	If FillingData.OperationKind <> Enums.OperationKindsCashPayment.ToAdvanceHolder Then
-		Raise NStr("en='Expense report can not be created on the basis of cash payment with this type of operation!';ru='Нельзя ввести Авансовый отчет на основании расхода из кассы с этим видом операции!'");
+		Raise NStr("en='Cannot enter expense report based on the expenses from cash fund with this operation kind.';ru='Нельзя ввести Авансовый отчет на основании расхода из кассы с этим видом операции!'");
 	EndIf;
 	
 	Company = FillingData.Company;
@@ -75,7 +75,7 @@ EndProcedure // FillByCashPayment()
 Procedure FillByPaymentExpense(FillingData)
 	
 	If FillingData.OperationKind <> Enums.OperationKindsPaymentExpense.ToAdvanceHolder Then
-		Raise NStr("en='Expense report can not be created on the basis of payment expense with this type of operation!';ru='Нельзя ввести Авансовый отчет на основании расхода со счета с этим видом операции!'");
+		Raise NStr("en='Cannot enter expense report based on the expenses from account with this operation kind.';ru='Нельзя ввести Авансовый отчет на основании расхода со счета с этим видом операции!'");
 	EndIf;
 	
 	Company = FillingData.Company;
@@ -129,7 +129,7 @@ Procedure FillCheckProcessing(Cancel, CheckedAttributes)
 	PaymentsTotals = Payments.Total("PaymentAmount");
 	
 	If TotalExpences > InventoryTotal + ExpencesTotal + PaymentsTotals Then
-		MessageText = NStr("en='Expended advances exceed the amount set in the document!';ru='Израсходованная сумма авансов превышает сумму по документу!'");
+		MessageText = NStr("en='Spent advance amount exceeds the amount of the document.';ru='Израсходованная сумма авансов превышает сумму по документу!'");
 		SmallBusinessServer.ShowMessageAboutError(
 			ThisObject,
 			MessageText,
@@ -144,7 +144,7 @@ Procedure FillCheckProcessing(Cancel, CheckedAttributes)
 		If PaymentRow.Counterparty.DoOperationsByDocuments
 		   AND Not PaymentRow.AdvanceFlag
 		   AND Not ValueIsFilled(PaymentRow.Document) Then
-			MessageText = NStr("en='Column ""Calculation document"" is not filled in string %LineNumber% of list ""Payment"".';ru='Не заполнена колонка ""Документ расчетов"" в строке %НомерСтроки% списка ""Оплаты"".'");
+			MessageText = NStr("en='The ""Settlement document"" column is not populated in the %LineNumber% line of the ""Payments"" list.';ru='Не заполнена колонка ""Документ расчетов"" в строке %НомерСтроки% списка ""Оплаты"".'");
 			MessageText = StrReplace(MessageText, "%LineNumber%", String(PaymentRow.LineNumber));
 			SmallBusinessServer.ShowMessageAboutError(
 				ThisObject,
@@ -165,7 +165,7 @@ Procedure FillCheckProcessing(Cancel, CheckedAttributes)
 		 OR RowsExpenses.ProductsAndServices.ExpensesGLAccount.TypeOfAccount = Enums.GLAccountsTypes.Incomings
 		 OR RowsExpenses.ProductsAndServices.ExpensesGLAccount.TypeOfAccount = Enums.GLAccountsTypes.Expenses)
 		 AND Not ValueIsFilled(RowsExpenses.StructuralUnit) Then
-			MessageText = NStr("en='For products and services ""%ProductsAndServices%"" in the %LineNumber% line of list ""Expenses"" the attribute ""Department"" must be filled.';ru='Для номенклатуры ""%Номенклатура%"" указанной в строке %НомерСтроки% списка ""Расходы"", должен быть заполнен реквизит ""Подразделение"".'"
+			MessageText = NStr("en='The ""Department"" attribute must be filled in for the %ProductsAndServices%"" products and services in the %LineNumber% line of the ""Expenses"" list.';ru='Для номенклатуры ""%Номенклатура%"" указанной в строке %НомерСтроки% списка ""Расходы"", должен быть заполнен реквизит ""Подразделение"".'"
 			);
 			MessageText = StrReplace(MessageText, "%ProductsAndServices%", TrimAll(String(RowsExpenses.ProductsAndServices))); 
 			MessageText = StrReplace(MessageText, "%LineNumber%",String(RowsExpenses.LineNumber));

@@ -35,11 +35,11 @@ Procedure ConfigureReportsVariants(Settings, ReportSettings) Export
 		|информация о том, с какими объектами работал пользователь в программе.'");
 	
 	VariantSettings = ModuleReportsVariants.VariantDesc(Settings, ReportSettings, "EventLogMonitorControl");
-	VariantSettings.Definition = NStr("en='List of critical records in the events log monitor.';ru='Список критичных записей журнала регистрации.'");
+	VariantSettings.Definition = NStr("en='List of critical entries in the event log.';ru='Список критичных записей журнала регистрации.'");
 	VariantSettings.SearchSettings.TemplateNames = "ErrorsReportTemplateInEventLogMonitor";
 	
 	VariantSettings = ModuleReportsVariants.VariantDesc(Settings, ReportSettings, "ScheduledJobsWorkDuration");
-	VariantSettings.Definition = NStr("en='Outputs schedule of scheduled jobs execution in the application.';ru='Выводит график выполнения регламентных заданий в программе.'");
+	VariantSettings.Definition = NStr("en='Displays scheduled job schedule in the application.';ru='Выводит график выполнения регламентных заданий в программе.'");
 	VariantSettings.SearchSettings.TemplateNames = "ScheduledJobsWorkDuration, ScheduledJobDetails";
 EndProcedure
 

@@ -216,7 +216,7 @@ Procedure DeleteFilesAtServer(FormerPathOnVolume) Export
 			DeleteFiles(FormerPathOnVolume);
 		Except
 			WriteLogEvent(
-				NStr("en='Files.Files deletion in the volume at exchange';ru='Файлы.Удаление файлов в томе при обмене'",
+				NStr("en='Files.Delete files from the volume on exchange';ru='Файлы.Удаление файлов в томе при обмене'",
 				     CommonUseClientServer.MainLanguageCode()),
 				EventLogLevel.Error,
 				,
@@ -234,7 +234,7 @@ Procedure DeleteFilesAtServer(FormerPathOnVolume) Export
 		EndIf;
 	Except
 		WriteLogEvent(
-			NStr("en='Files.Files deletion in the volume at exchange';ru='Файлы.Удаление файлов в томе при обмене'",
+			NStr("en='Files.Delete files from the volume on exchange';ru='Файлы.Удаление файлов в томе при обмене'",
 			     CommonUseClientServer.MainLanguageCode()),
 			EventLogLevel.Error,
 			,
@@ -369,7 +369,7 @@ Function AddFileToVolume(BinaryDataOrPath, ModificationTimeUniversal, BaseName, 
 	Selection = Query.Execute().Select();
 	
 	If Selection.Count() = 0 Then
-		Raise NStr("en='No volumes to place the files';ru='Нет ни одного тома для размещения файлов'");
+		Raise NStr("en='There are no volumes to place files in';ru='Нет ни одного тома для размещения файлов'");
 	EndIf;
 	
 	While Selection.Next() Do
@@ -414,7 +414,7 @@ Function AddFileToVolume(BinaryDataOrPath, ModificationTimeUniversal, BaseName, 
 				If NewSize > VolumeRef.MaximumSize Then
 					
 					Raise StringFunctionsClientServer.SubstituteParametersInString(
-						NStr("en='Maximal volume size (%1 Mb) is exceeded.';ru='Превышен максимальный размер тома (%1 Мб).'"),
+						NStr("en='Maximum volume size exceeded (%1 MB).';ru='Превышен максимальный размер тома (%1 Мб).'"),
 						VolumeRef.MaximumSize);
 				EndIf;
 			EndIf;
@@ -496,7 +496,7 @@ Function AddFileToVolume(BinaryDataOrPath, ModificationTimeUniversal, BaseName, 
 		|ошибок: %1'");
 	
 	WriteLogEvent(
-		NStr("en='Files. File adding';ru='Файлы.Добавление файла'", CommonUseClientServer.MainLanguageCode()),
+		NStr("en='Files. Adding a file';ru='Файлы.Добавление файла'", CommonUseClientServer.MainLanguageCode()),
 		EventLogLevel.Error,,,
 		StringFunctionsClientServer.SubstituteParametersInString(MessageAboutErrorTemplate, AllErrorsDetailedDescription));
 	
@@ -597,11 +597,11 @@ Procedure CryptographyOnCreateFormAtServer(Form, ThisIsListForm = True, RowsPict
 		Picture  = PictureLib["DigitallySignedEncryptedTitle"];
 	ElsIf ESigning Then
 		Title = NStr("en='Digital signature';ru='Электронная подпись'");
-		ToolTip = NStr("en='Existence of digital signature';ru='Наличие электронной подписи'");
+		ToolTip = NStr("en='Digital signature existence';ru='Наличие электронной подписи'");
 		Picture  = PictureLib["DigitallySigned"];
 	Else // Encryption
 		Title = NStr("en='Encryption';ru='Шифрование'");
-		ToolTip = NStr("en='Existence of encryption';ru='Наличие шифрования'");
+		ToolTip = NStr("en='Encryption existence';ru='Наличие шифрования'");
 		Picture  = PictureLib["Encrypted"];
 	EndIf;
 	
@@ -955,7 +955,7 @@ Function CreateFileInitialImageAtServer(Node, FormUUID, Language, WindowsFileBas
 	If IsBlankString(FileBaseFullName) Then
 		
 		CommonUseClientServer.MessageToUser(
-			NStr("en='Specify full name of the file base (1cv8.1cd)';ru='Укажите полное имя файловой базы (файл 1cv8.1cd)'"),,
+			NStr("en='Specify a full name of the file base (file 1cv8.1cd)';ru='Укажите полное имя файловой базы (файл 1cv8.1cd)'"),,
 			"WindowsFileBaseFullName");
 		Return False;
 		
@@ -977,7 +977,7 @@ Function CreateFileInitialImageAtServer(Node, FormUUID, Language, WindowsFileBas
 		
 		If IsBlankString(PathToArchiveWithVolumeFiles) Then
 			CommonUseClientServer.MessageToUser(
-				NStr("en='Specify the full name of the archive with files of volumes (file *.zip)';ru='Укажите полное имя архива с файлами томов (файл *.zip)'"),, 
+				NStr("en='Specify a full name of an archive with volume files (file *.zip)';ru='Укажите полное имя архива с файлами томов (файл *.zip)'"),, 
 				"PathToArchiveWithWindowsVolumesFiles");
 			Return False;
 		EndIf;
@@ -1096,7 +1096,7 @@ Function CreateServerInitialImageAtServer(Node, ConnectionString, PathToArchiveW
 	If AreFilesInVolumes Then
 		If IsBlankString(PathToArchiveWithVolumeFiles) Then
 			CommonUseClientServer.MessageToUser(
-				NStr("en='Specify the full name of the archive with files of volumes (file *.zip)';ru='Укажите полное имя архива с файлами томов (файл *.zip)'"),
+				NStr("en='Specify a full name of an archive with volume files (file *.zip)';ru='Укажите полное имя архива с файлами томов (файл *.zip)'"),
 				,
 				"PathToArchiveWithWindowsVolumesFiles");
 			Return False;
@@ -1271,12 +1271,12 @@ Procedure ExtractTextFromFilesOnServer() Export
 	NameWithExtensionFile = "";
 	
 	WriteLogEvent(
-		NStr("en='Files. Text extraction';ru='Файлы.Извлечение текста'",
+		NStr("en='Files.Text extraction';ru='Файлы.Извлечение текста'",
 		     CommonUseClientServer.MainLanguageCode()),
 		EventLogLevel.Information,
 		,
 		,
-		NStr("en='Scheduled text extraction has been started';ru='Начато регламентное извлечения текста'"));
+		NStr("en='Scheduled text extraction is started';ru='Начато регламентное извлечения текста'"));
 		
 	FinalQueryText = "";
 	
@@ -1364,7 +1364,7 @@ Procedure ExtractTextFromFilesOnServer() Export
 			EndDo;
 		Except
 			WriteLogEvent(
-				NStr("en='Files. Text extraction';ru='Файлы.Извлечение текста'",
+				NStr("en='Files.Text extraction';ru='Файлы.Извлечение текста'",
 				     CommonUseClientServer.MainLanguageCode()),
 				EventLogLevel.Error,
 				,
@@ -1384,12 +1384,12 @@ Procedure ExtractTextFromFilesOnServer() Export
 	EndDo;
 	
 	WriteLogEvent(
-		NStr("en='Files. Text extraction';ru='Файлы.Извлечение текста'",
+		NStr("en='Files.Text extraction';ru='Файлы.Извлечение текста'",
 		     CommonUseClientServer.MainLanguageCode()),
 		EventLogLevel.Information,
 		,
 		,
-		NStr("en='Scheduled extraction of the text has been completed';ru='Закончено регламентное извлечение текста'"));
+		NStr("en='Scheduled text extraction is completed';ru='Закончено регламентное извлечение текста'"));
 	
 EndProcedure
 

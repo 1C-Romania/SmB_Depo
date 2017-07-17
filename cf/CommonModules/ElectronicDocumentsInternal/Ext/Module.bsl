@@ -53,13 +53,12 @@ Function GenerateInvoiceByDocument(ObjectReference, EDExchangeSettings, ASignOfE
 	EndIf;
 	
 	If ValueIsFilled(ErrorText) Then
-		MessagePattern = NStr("en='During the generation %1 the
-		|following  errors occurred: %2';ru='При формировании %1 возникли следующие ошибки: %2'");
+		MessagePattern = NStr("en='The following  errors occurred while generating %1: %2';ru='При формировании %1 возникли следующие ошибки: %2'");
 		MessageText = StringFunctionsClientServer.SubstituteParametersInString(MessagePattern,
 			EDStructure.EDKind, ErrorText);
 		CommonUseClientServer.MessageToUser(MessageText);
 		
-		ElectronicDocumentsServiceCallServer.ProcessExceptionByEDOnServer(NStr("en='ED formation';ru='Формирование ЭД'"),
+		ElectronicDocumentsServiceCallServer.ProcessExceptionByEDOnServer(NStr("en='ED generation';ru='Формирование ЭД'"),
 																					MessageText);
 		
 	EndIf;
@@ -225,8 +224,7 @@ Function FormTORG12SellerFTS(ObjectReference, EDExchangeSettings, ASignOfED = Tr
 	EndIf;
 	
 	If ValueIsFilled(ErrorText) Then
-		MessagePattern = NStr("en='During the generation %1 the
-		|following  errors occurred: %2';ru='При формировании %1 возникли следующие ошибки: %2'");
+		MessagePattern = NStr("en='The following  errors occurred while generating %1: %2';ru='При формировании %1 возникли следующие ошибки: %2'");
 		MessageText = StringFunctionsClientServer.SubstituteParametersInString(MessagePattern,
 			EDStructure.EDKind, ErrorText);
 		CommonUseClientServer.MessageToUser(MessageText);
@@ -326,8 +324,7 @@ Function DeleteGenerateTrad12FTSByDocument(ObjectReference, EDExchangeSettings, 
 	EndIf;
 	
 	If ValueIsFilled(ErrorText) Then
-		MessagePattern = NStr("en='During the generation %1 the
-		|following  errors occurred: %2';ru='При формировании %1 возникли следующие ошибки: %2'");
+		MessagePattern = NStr("en='The following  errors occurred while generating %1: %2';ru='При формировании %1 возникли следующие ошибки: %2'");
 		MessageText = StringFunctionsClientServer.SubstituteParametersInString(MessagePattern,
 			EDStructure.EDKind, ErrorText);
 		CommonUseClientServer.MessageToUser(MessageText);
@@ -462,8 +459,7 @@ Function GenerateFileTrad12CustomerFTS(LinkToED) Export
 	EndIf;
 	
 	If ValueIsFilled(ErrorText) Then
-		MessagePattern = NStr("en='During the generation %1 the
-		|following  errors occurred: %2';ru='При формировании %1 возникли следующие ошибки: %2'");
+		MessagePattern = NStr("en='The following  errors occurred while generating %1: %2';ru='При формировании %1 возникли следующие ошибки: %2'");
 		MessageText = StringFunctionsClientServer.SubstituteParametersInString(MessagePattern,
 			EDStructure.EDKind, ErrorText);
 		CommonUseClientServer.MessageToUser(MessageText);
@@ -548,8 +544,7 @@ Function DeleteGenerateFileTrad12Customer(LinkToED) Export
 	EndIf;
 	
 	If ValueIsFilled(ErrorText) Then
-		MessagePattern = NStr("en='During the generation %1 the
-		|following  errors occurred: %2';ru='При формировании %1 возникли следующие ошибки: %2'");
+		MessagePattern = NStr("en='The following  errors occurred while generating %1: %2';ru='При формировании %1 возникли следующие ошибки: %2'");
 		MessageText = StringFunctionsClientServer.SubstituteParametersInString(MessagePattern,
 			EDStructure.EDKind, ErrorText);
 		CommonUseClientServer.MessageToUser(MessageText);
@@ -738,8 +733,7 @@ Function GenerateCorDocumentByDocument(ObjectReference, EDExchangeSettings, ASig
 	EndIf;
 	
 	If ValueIsFilled(ErrorText) Then
-		MessagePattern = NStr("en='During the generation %1 the
-		|following  errors occurred: %2';ru='При формировании %1 возникли следующие ошибки: %2'");
+		MessagePattern = NStr("en='The following  errors occurred while generating %1: %2';ru='При формировании %1 возникли следующие ошибки: %2'");
 		MessageText = StringFunctionsClientServer.SubstituteParametersInString(MessagePattern,
 			EDStructure.EDKind, ErrorText);
 		CommonUseClientServer.MessageToUser(MessageText);
@@ -879,8 +873,7 @@ Function GenerateRecipientCorDocumentFile(LinkToED) Export
 	EndIf;
 	
 	If ValueIsFilled(ErrorText) Then
-		MessagePattern = NStr("en='During the generation %1 the
-		|following  errors occurred: %2';ru='При формировании %1 возникли следующие ошибки: %2'");
+		MessagePattern = NStr("en='The following  errors occurred while generating %1: %2';ru='При формировании %1 возникли следующие ошибки: %2'");
 		MessageText = StringFunctionsClientServer.SubstituteParametersInString(MessagePattern,
 			EDStructure.EDKind, ErrorText);
 		CommonUseClientServer.MessageToUser(MessageText);
@@ -974,13 +967,12 @@ Function GenerateInvoiceForPaymentByDocument(ObjectReference, EDExchangeSettings
 	EndIf;
 	
 	If ValueIsFilled(ErrorText) Then
-		MessagePattern = NStr("en='During the generation %1 the
-		|following  errors occurred: %2';ru='При формировании %1 возникли следующие ошибки: %2'");
+		MessagePattern = NStr("en='The following  errors occurred while generating %1: %2';ru='При формировании %1 возникли следующие ошибки: %2'");
 		MessageText = StringFunctionsClientServer.SubstituteParametersInString(MessagePattern,
 			EDStructure.EDKind, ErrorText);
 		CommonUseClientServer.MessageToUser(MessageText);
 		
-		ElectronicDocumentsServiceCallServer.ProcessExceptionByEDOnServer(NStr("en='ED formation';ru='Формирование ЭД'"),
+		ElectronicDocumentsServiceCallServer.ProcessExceptionByEDOnServer(NStr("en='ED generation';ru='Формирование ЭД'"),
 																					MessageText);
 	
 	EndIf;
@@ -1034,13 +1026,12 @@ Function DeleteGenerateInvoiceForPaymentByDocument(ObjectReference, EDExchangeSe
 	EndIf;
 	
 	If ValueIsFilled(ErrorText) Then
-		MessagePattern = NStr("en='During the generation %1 the
-		|following  errors occurred: %2';ru='При формировании %1 возникли следующие ошибки: %2'");
+		MessagePattern = NStr("en='The following  errors occurred while generating %1: %2';ru='При формировании %1 возникли следующие ошибки: %2'");
 		MessageText = StringFunctionsClientServer.SubstituteParametersInString(MessagePattern,
 			EDStructure.EDKind, ErrorText);
 		CommonUseClientServer.MessageToUser(MessageText);
 		
-		ElectronicDocumentsServiceCallServer.ProcessExceptionByEDOnServer(NStr("en='ED formation';ru='Формирование ЭД'"),
+		ElectronicDocumentsServiceCallServer.ProcessExceptionByEDOnServer(NStr("en='ED generation';ru='Формирование ЭД'"),
 																					MessageText);
 
 	EndIf;
@@ -1130,13 +1121,12 @@ Function GenerateOrderToSupplierByDocument(ObjectReference, EDExchangeSettings, 
 	EndIf;
 	
 	If ValueIsFilled(ErrorText) Then
-		MessagePattern = NStr("en='During the generation %1 the
-		|following  errors occurred: %2';ru='При формировании %1 возникли следующие ошибки: %2'");
+		MessagePattern = NStr("en='The following  errors occurred while generating %1: %2';ru='При формировании %1 возникли следующие ошибки: %2'");
 		MessageText = StringFunctionsClientServer.SubstituteParametersInString(MessagePattern,
 		EDStructure.EDKind, ErrorText);
 		CommonUseClientServer.MessageToUser(MessageText);
 		
-		ElectronicDocumentsServiceCallServer.ProcessExceptionByEDOnServer(NStr("en='ED formation';ru='Формирование ЭД'"),
+		ElectronicDocumentsServiceCallServer.ProcessExceptionByEDOnServer(NStr("en='ED generation';ru='Формирование ЭД'"),
 																					MessageText);
 
 	EndIf;
@@ -1190,13 +1180,12 @@ Function DeleteGenerateOrderToSupplierByDocument(ObjectReference, EDExchangeSett
 	EndIf;
 	
 	If ValueIsFilled(ErrorText) Then
-		MessagePattern = NStr("en='During the generation %1 the
-		|following  errors occurred: %2';ru='При формировании %1 возникли следующие ошибки: %2'");
+		MessagePattern = NStr("en='The following  errors occurred while generating %1: %2';ru='При формировании %1 возникли следующие ошибки: %2'");
 		MessageText = StringFunctionsClientServer.SubstituteParametersInString(MessagePattern,
 			EDStructure.EDKind, ErrorText);
 		CommonUseClientServer.MessageToUser(MessageText);
 		
-		ElectronicDocumentsServiceCallServer.ProcessExceptionByEDOnServer(NStr("en='ED formation';ru='Формирование ЭД'"),
+		ElectronicDocumentsServiceCallServer.ProcessExceptionByEDOnServer(NStr("en='ED generation';ru='Формирование ЭД'"),
 																					MessageText);
 
 	EndIf;
@@ -1288,13 +1277,12 @@ Function GenerateClientOrderByDocument(ObjectReference, EDExchangeSettings, ASig
 
 	
 	If ValueIsFilled(ErrorText) Then
-		MessagePattern = NStr("en='During the generation %1 the
-		|following  errors occurred: %2';ru='При формировании %1 возникли следующие ошибки: %2'");
+		MessagePattern = NStr("en='The following  errors occurred while generating %1: %2';ru='При формировании %1 возникли следующие ошибки: %2'");
 		MessageText = StringFunctionsClientServer.SubstituteParametersInString(MessagePattern,
 			EDStructure.EDKind, ErrorText);
 		CommonUseClientServer.MessageToUser(MessageText);
 		
-		ElectronicDocumentsServiceCallServer.ProcessExceptionByEDOnServer(NStr("en='ED formation';ru='Формирование ЭД'"),
+		ElectronicDocumentsServiceCallServer.ProcessExceptionByEDOnServer(NStr("en='ED generation';ru='Формирование ЭД'"),
 																					MessageText);
 
 	EndIf;
@@ -1353,13 +1341,12 @@ Function DeleteGenerateCustomerOrderByDocument(ObjectReference, EDExchangeSettin
 	EndIf;
 	
 	If ValueIsFilled(ErrorText) Then
-		MessagePattern = NStr("en='During the generation %1 the
-		|following  errors occurred: %2';ru='При формировании %1 возникли следующие ошибки: %2'");
+		MessagePattern = NStr("en='The following  errors occurred while generating %1: %2';ru='При формировании %1 возникли следующие ошибки: %2'");
 		MessageText = StringFunctionsClientServer.SubstituteParametersInString(MessagePattern,
 			EDStructure.EDKind, ErrorText);
 		CommonUseClientServer.MessageToUser(MessageText);
 		
-		ElectronicDocumentsServiceCallServer.ProcessExceptionByEDOnServer(NStr("en='ED formation';ru='Формирование ЭД'"),
+		ElectronicDocumentsServiceCallServer.ProcessExceptionByEDOnServer(NStr("en='ED generation';ru='Формирование ЭД'"),
 																					MessageText);
 
 	EndIf;
@@ -1392,7 +1379,7 @@ Function GenerateProductsAndServicesCatalog(EDExchangeSettings, AdditionalParame
 	
 	If EDExchangeSettings.EDFProfileSettings.EDExchangeMethod = Enums.EDExchangeMethods.QuickExchange Then
 		
-		MessagePattern = NStr("en='Directory %1 from %2';ru='Каталог %1 от %2'");
+		MessagePattern = NStr("en='Directory %1 dated %2';ru='Каталог %1 от %2'");
 		CatalogName = StringFunctionsClientServer.SubstituteParametersInString(MessagePattern,
 			EDExchangeSettings.Company, Format(EDStructure.EDDate, "DLF=D"));
 	Else
@@ -1405,7 +1392,7 @@ Function GenerateProductsAndServicesCatalog(EDExchangeSettings, AdditionalParame
 			EDExchangeSettings.EDAgreement));
 		EDStructure.Insert("SenderDocumentDate", CurrentSessionDate());
 		
-		MessagePattern = NStr("en='The directory %1 for %2 from %3';ru='Каталог %1 для %2 от %3'");
+		MessagePattern = NStr("en='Directory %1 for %2 from %3';ru='Каталог %1 для %2 от %3'");
 		CatalogName = StringFunctionsClientServer.SubstituteParametersInString(MessagePattern,
 			EDExchangeSettings.Company, EDExchangeSettings.Counterparty, Format(EDStructure.EDDate, "DLF=D"));
 	EndIf;
@@ -1459,13 +1446,12 @@ Function GenerateProductsAndServicesCatalog(EDExchangeSettings, AdditionalParame
 		EndIf;
 		
 	Else
-		MessagePattern = NStr("en='During the generation %1 the
-		|following  errors occurred: %2';ru='При формировании %1 возникли следующие ошибки: %2'");
+		MessagePattern = NStr("en='The following  errors occurred while generating %1: %2';ru='При формировании %1 возникли следующие ошибки: %2'");
 		MessageText = StringFunctionsClientServer.SubstituteParametersInString(MessagePattern,
 			EDStructure.EDKind, ErrorText);
 		CommonUseClientServer.MessageToUser(MessageText);
 		
-		ElectronicDocumentsServiceCallServer.ProcessExceptionByEDOnServer(NStr("en='ED formation';ru='Формирование ЭД'"),
+		ElectronicDocumentsServiceCallServer.ProcessExceptionByEDOnServer(NStr("en='ED generation';ru='Формирование ЭД'"),
 																					MessageText);
 
 	EndIf;
@@ -1540,13 +1526,12 @@ Function GeneratePriceListByDocument(ObjectReference, EDExchangeSettings, ASignO
 	EndIf;
 	
 	If ValueIsFilled(ErrorText) Then
-		MessagePattern = NStr("en='During the generation %1 the
-		|following  errors occurred: %2';ru='При формировании %1 возникли следующие ошибки: %2'");
+		MessagePattern = NStr("en='The following  errors occurred while generating %1: %2';ru='При формировании %1 возникли следующие ошибки: %2'");
 		MessageText = StringFunctionsClientServer.SubstituteParametersInString(MessagePattern,
 			EDStructure.EDKind, ErrorText);
 		CommonUseClientServer.MessageToUser(MessageText);
 		
-		ElectronicDocumentsServiceCallServer.ProcessExceptionByEDOnServer(NStr("en='ED formation';ru='Формирование ЭД'"),
+		ElectronicDocumentsServiceCallServer.ProcessExceptionByEDOnServer(NStr("en='ED generation';ru='Формирование ЭД'"),
 																					MessageText);
 
 	EndIf;
@@ -1600,13 +1585,12 @@ Function DeleteGeneratePriceListFromDocument(ObjectReference, EDExchangeSettings
 	EndIf;
 	
 	If ValueIsFilled(ErrorText) Then
-		MessagePattern = NStr("en='During the generation %1 the
-		|following  errors occurred: %2';ru='При формировании %1 возникли следующие ошибки: %2'");
+		MessagePattern = NStr("en='The following  errors occurred while generating %1: %2';ru='При формировании %1 возникли следующие ошибки: %2'");
 		MessageText = StringFunctionsClientServer.SubstituteParametersInString(MessagePattern,
 			EDStructure.EDKind, ErrorText);
 		CommonUseClientServer.MessageToUser(MessageText);
 		
-		ElectronicDocumentsServiceCallServer.ProcessExceptionByEDOnServer(NStr("en='ED formation';ru='Формирование ЭД'"),
+		ElectronicDocumentsServiceCallServer.ProcessExceptionByEDOnServer(NStr("en='ED generation';ru='Формирование ЭД'"),
 																					MessageText);
 
 	EndIf;
@@ -1663,8 +1647,7 @@ Function GenerateAcceptanceCertificateByDocument(ObjectReference, EDExchangeSett
 	EndIf;
 	
 	If ValueIsFilled(ErrorText) Then
-		MessagePattern = NStr("en='During the generation %1 the
-		|following  errors occurred: %2';ru='При формировании %1 возникли следующие ошибки: %2'");
+		MessagePattern = NStr("en='The following  errors occurred while generating %1: %2';ru='При формировании %1 возникли следующие ошибки: %2'");
 		MessageText = StringFunctionsClientServer.SubstituteParametersInString(MessagePattern,
 			EDStructure.EDKind, ErrorText);
 		CommonUseClientServer.MessageToUser(MessageText);
@@ -1830,8 +1813,7 @@ Function GenerateAct501PerformerFTS(ObjectReference, EDExchangeSettings, ASignOf
 	EndIf;
 	
 	If ValueIsFilled(ErrorText) Then
-		MessagePattern = NStr("en='During the generation %1 the
-		|following  errors occurred: %2';ru='При формировании %1 возникли следующие ошибки: %2'");
+		MessagePattern = NStr("en='The following  errors occurred while generating %1: %2';ru='При формировании %1 возникли следующие ошибки: %2'");
 		MessageText = StringFunctionsClientServer.SubstituteParametersInString(MessagePattern,
 			EDStructure.EDKind, ErrorText);
 		CommonUseClientServer.MessageToUser(MessageText);
@@ -1934,8 +1916,7 @@ Function DeleteGenerateAct501FTSByDocument(ObjectReference, EDExchangeSettings, 
 	EndIf;
 	
 	If ValueIsFilled(ErrorText) Then
-		MessagePattern = NStr("en='During the generation %1 the
-		|following  errors occurred: %2';ru='При формировании %1 возникли следующие ошибки: %2'");
+		MessagePattern = NStr("en='The following  errors occurred while generating %1: %2';ru='При формировании %1 возникли следующие ошибки: %2'");
 		MessageText = StringFunctionsClientServer.SubstituteParametersInString(MessagePattern,
 			EDStructure.EDKind, ErrorText);
 		CommonUseClientServer.MessageToUser(MessageText);
@@ -2070,8 +2051,7 @@ Function GenerateFileAct501CustomerFTS(LinkToED) Export
 	EndIf;
 	
 	If ValueIsFilled(ErrorText) Then
-		MessagePattern = NStr("en='During the generation %1 the
-		|following  errors occurred: %2';ru='При формировании %1 возникли следующие ошибки: %2'");
+		MessagePattern = NStr("en='The following  errors occurred while generating %1: %2';ru='При формировании %1 возникли следующие ошибки: %2'");
 		MessageText = StringFunctionsClientServer.SubstituteParametersInString(MessagePattern,
 			EDStructure.EDKind, ErrorText);
 		CommonUseClientServer.MessageToUser(MessageText);
@@ -2152,8 +2132,7 @@ Function DeleteGenerateFileAct501Customer(LinkToED) Export
 	EndIf;
 	
 	If ValueIsFilled(ErrorText) Then
-		MessagePattern = NStr("en='During the generation %1 the
-		|following  errors occurred: %2';ru='При формировании %1 возникли следующие ошибки: %2'");
+		MessagePattern = NStr("en='The following  errors occurred while generating %1: %2';ru='При формировании %1 возникли следующие ошибки: %2'");
 		MessageText = StringFunctionsClientServer.SubstituteParametersInString(MessagePattern,
 			EDStructure.EDKind, ErrorText);
 		CommonUseClientServer.MessageToUser(MessageText);
@@ -2242,13 +2221,12 @@ Function GenerateReportAboutCommissionGoodsSalesByDocument(ObjectReference, EDEx
 	EndIf;
 	
 	If ValueIsFilled(ErrorText) Then
-		MessagePattern = NStr("en='During the generation %1 the
-		|following  errors occurred: %2';ru='При формировании %1 возникли следующие ошибки: %2'");
+		MessagePattern = NStr("en='The following  errors occurred while generating %1: %2';ru='При формировании %1 возникли следующие ошибки: %2'");
 		MessageText = StringFunctionsClientServer.SubstituteParametersInString(MessagePattern,
 			EDStructure.EDKind, ErrorText);
 		CommonUseClientServer.MessageToUser(MessageText);
 		
-		ElectronicDocumentsServiceCallServer.ProcessExceptionByEDOnServer(NStr("en='ED formation';ru='Формирование ЭД'"),
+		ElectronicDocumentsServiceCallServer.ProcessExceptionByEDOnServer(NStr("en='ED generation';ru='Формирование ЭД'"),
 																					MessageText);
 
 	EndIf;
@@ -2310,13 +2288,12 @@ Function DeleteGenerateReportOnCommissionGoodsSalesByDocument(ObjectReference, E
 	EndIf;
 	
 	If ValueIsFilled(ErrorText) Then
-		MessagePattern = NStr("en='During the generation %1 the
-		|following  errors occurred: %2';ru='При формировании %1 возникли следующие ошибки: %2'");
+		MessagePattern = NStr("en='The following  errors occurred while generating %1: %2';ru='При формировании %1 возникли следующие ошибки: %2'");
 		MessageText = StringFunctionsClientServer.SubstituteParametersInString(MessagePattern,
 			EDStructure.EDKind, ErrorText);
 		CommonUseClientServer.MessageToUser(MessageText);
 		
-		ElectronicDocumentsServiceCallServer.ProcessExceptionByEDOnServer(NStr("en='ED formation';ru='Формирование ЭД'"),
+		ElectronicDocumentsServiceCallServer.ProcessExceptionByEDOnServer(NStr("en='ED generation';ru='Формирование ЭД'"),
 																					MessageText);
 		
 	EndIf;
@@ -2399,13 +2376,12 @@ Function GenerateComissionGoodsWriteOffReportByDocument(ObjectReference, EDExcha
 
 	
 	If ValueIsFilled(ErrorText) Then
-		MessagePattern = NStr("en='During the generation %1 the
-		|following  errors occurred: %2';ru='При формировании %1 возникли следующие ошибки: %2'");
+		MessagePattern = NStr("en='The following  errors occurred while generating %1: %2';ru='При формировании %1 возникли следующие ошибки: %2'");
 		MessageText = StringFunctionsClientServer.SubstituteParametersInString(MessagePattern,
 			EDStructure.EDKind, ErrorText);
 		CommonUseClientServer.MessageToUser(MessageText);
 		
-		ElectronicDocumentsServiceCallServer.ProcessExceptionByEDOnServer(NStr("en='ED formation';ru='Формирование ЭД'"),
+		ElectronicDocumentsServiceCallServer.ProcessExceptionByEDOnServer(NStr("en='ED generation';ru='Формирование ЭД'"),
 																					MessageText);
 		
 	EndIf;
@@ -2464,13 +2440,12 @@ Function DeleteGenerateComissionGoodsWriteOffReportByDocument(ObjectReference, E
 	EndIf;
 	
 	If ValueIsFilled(ErrorText) Then
-		MessagePattern = NStr("en='During the generation %1 the
-		|following  errors occurred: %2';ru='При формировании %1 возникли следующие ошибки: %2'");
+		MessagePattern = NStr("en='The following  errors occurred while generating %1: %2';ru='При формировании %1 возникли следующие ошибки: %2'");
 		MessageText = StringFunctionsClientServer.SubstituteParametersInString(MessagePattern,
 			EDStructure.EDKind, ErrorText);
 		CommonUseClientServer.MessageToUser(MessageText);
 		
-		ElectronicDocumentsServiceCallServer.ProcessExceptionByEDOnServer(NStr("en='ED formation';ru='Формирование ЭД'"),
+		ElectronicDocumentsServiceCallServer.ProcessExceptionByEDOnServer(NStr("en='ED generation';ru='Формирование ЭД'"),
 																					MessageText);
 		
 	EndIf;
@@ -2527,8 +2502,7 @@ Function GenerateGoodsTransferBetweenCompanies(ObjectReference, EDExchangeSettin
 	EndIf;
 	
 	If ValueIsFilled(ErrorText) Then
-		MessagePattern = NStr("en='During the generation %1 the
-		|following  errors occurred: %2';ru='При формировании %1 возникли следующие ошибки: %2'");
+		MessagePattern = NStr("en='The following  errors occurred while generating %1: %2';ru='При формировании %1 возникли следующие ошибки: %2'");
 		MessageText = StringFunctionsClientServer.SubstituteParametersInString(MessagePattern,
 			EDStructure.EDKind, ErrorText);
 		CommonUseClientServer.MessageToUser(MessageText);
@@ -2586,8 +2560,7 @@ Function GenerateGoodsReturnBetweenCompanies(ObjectReference, EDExchangeSettings
 	EndIf;
 	
 	If ValueIsFilled(ErrorText) Then
-		MessagePattern = NStr("en='During the generation %1 the
-		|following  errors occurred: %2';ru='При формировании %1 возникли следующие ошибки: %2'");
+		MessagePattern = NStr("en='The following  errors occurred while generating %1: %2';ru='При формировании %1 возникли следующие ошибки: %2'");
 		MessageText = StringFunctionsClientServer.SubstituteParametersInString(MessagePattern,
 			EDStructure.EDKind, ErrorText);
 		CommonUseClientServer.MessageToUser(MessageText);
@@ -2674,14 +2647,13 @@ Function GeneratePaymentOrder(ObjectReference, EDExchangeSettings, ASignOfED = T
 	EndIf;
 	
 	If ValueIsFilled(ErrorText) Then
-		MessagePattern = NStr("en='During the generation %1 the
-		|following  errors occurred: %2';ru='При формировании %1 возникли следующие ошибки: %2'");
+		MessagePattern = NStr("en='The following  errors occurred while generating %1: %2';ru='При формировании %1 возникли следующие ошибки: %2'");
 		MessageText = StringFunctionsClientServer.SubstituteParametersInString(MessagePattern,
 			EDStructure.EDKind, ErrorText);
 		CommonUseClientServer.MessageToUser(MessageText);
 		
 		ElectronicDocumentsServiceCallServer.ProcessExceptionByEDOnServer(
-								NStr("en='ED formation';ru='Формирование ЭД'"), MessageText, , 1);
+								NStr("en='ED generation';ru='Формирование ЭД'"), MessageText, , 1);
 	EndIf;
 
 	Return ReturnValue;
@@ -2837,8 +2809,7 @@ Function FormTransferOfAuthorityAct(ObjectReference, EDExchangeSettings, ASignOf
 	EndIf;
 		
 	If ValueIsFilled(ErrorText) Then
-		MessagePattern = NStr("en='During the generation %1 the
-		|following  errors occurred: %2';ru='При формировании %1 возникли следующие ошибки: %2'");
+		MessagePattern = NStr("en='The following  errors occurred while generating %1: %2';ru='При формировании %1 возникли следующие ошибки: %2'");
 		MessageText = StringFunctionsClientServer.SubstituteParametersInString(MessagePattern,
 			EDStructure.EDKind, ErrorText);
 		CommonUseClientServer.MessageToUser(MessageText);
@@ -2908,14 +2879,13 @@ Function GenerateCompanyInvoice(ObjectReference, EDExchangeSettings) Export
 
 	
 	If ValueIsFilled(ErrorText) Then
-		MessagePattern = NStr("en='During the generation %1 the
-		|following  errors occurred: %2';ru='При формировании %1 возникли следующие ошибки: %2'");
+		MessagePattern = NStr("en='The following  errors occurred while generating %1: %2';ru='При формировании %1 возникли следующие ошибки: %2'");
 		MessageText = StringFunctionsClientServer.SubstituteParametersInString(MessagePattern,
 			NStr("en='electronic document';ru='электронный документ'"), ErrorText);
 			
 		CommonUseClientServer.MessageToUser(MessageText);
 		
-		ElectronicDocumentsServiceCallServer.ProcessExceptionByEDOnServer(NStr("en='ED formation';ru='Формирование ЭД'"),
+		ElectronicDocumentsServiceCallServer.ProcessExceptionByEDOnServer(NStr("en='ED generation';ru='Формирование ЭД'"),
 																					MessageText);
 	
 	EndIf;
@@ -3521,7 +3491,7 @@ Function ReadCMLFileHeaderByXDTO(FileName) Export
 		EndIf;
 		If UnknownED Then
 			MessageText = StringFunctionsClientServer.SubstituteParametersInString(
-				NStr("en='Unknown ED type when reading the data out of the file %1!';ru='Неизвестный тип ЭД при чтении данных из файла %1!'"), FileName);
+				NStr("en='Unknown ED type when reading the data from file %1.';ru='Неизвестный тип ЭД при чтении данных из файла %1!'"), FileName);
 			CommonUseClientServer.MessageToUser(MessageText);
 		EndIf;
 		
@@ -3532,10 +3502,10 @@ Function ReadCMLFileHeaderByXDTO(FileName) Export
 		ParametersStructure.Insert("OwnerEDId", OwnerEDId);
 		ParametersStructure.Insert("EDDirection", Enums.EDDirections.Incoming);
 	Except
-		MessagePattern = NStr("en='Data reading from the file %1 failed: %2 (see details in Events log monitor).';ru='Возникла ошибка при чтении данных из файла %1: %2 (подробности см. в Журнале регистрации).'");
+		MessagePattern = NStr("en='An error occurred when reading the data from file %1: %2 (see details in Event log).';ru='Возникла ошибка при чтении данных из файла %1: %2 (подробности см. в Журнале регистрации).'");
 		MessageText = StringFunctionsClientServer.SubstituteParametersInString(MessagePattern,
 			FileName, BriefErrorDescription(ErrorInfo()));
-		ElectronicDocumentsServiceCallServer.ProcessExceptionByEDOnServer(NStr("en='ED reading';ru='Чтение ЭД.'"),
+		ElectronicDocumentsServiceCallServer.ProcessExceptionByEDOnServer(NStr("en='ED reading.';ru='Чтение ЭД.'"),
 																					DetailErrorDescription(ErrorInfo()),
 																					MessageText);
 	EndTry;
@@ -3846,7 +3816,7 @@ Procedure InformationAboutProductFromXMLFile(FullFileName,
 		If UnknownED Then
 			If Users.InfobaseUserWithFullAccess(, , False) Then
 				MessageText = StringFunctionsClientServer.SubstituteParametersInString(
-					NStr("en='Unknown type when reading data from the ED %1.';ru='Неизвестный тип при чтении данных из ЭД %1.'"), ED);
+					NStr("en='Unknown type when reading data from ED %1.';ru='Неизвестный тип при чтении данных из ЭД %1.'"), ED);
 				CommonUseClientServer.MessageToUser(MessageText);
 			EndIf;
 			XMLObject.Close();
@@ -4142,7 +4112,7 @@ Function EDPrintForm(StructureFileParser, EDDirection, ID = Undefined, Subordina
 		MessageText = StringFunctionsClientServer.SubstituteParametersInString(MessagePattern,
 			BriefErrorDescription(ErrorInfo()));
 		ElectronicDocumentsServiceCallServer.ProcessExceptionByEDOnServer(
-													NStr("en='tabular document generation';ru='формирования табличного документа'"),
+													NStr("en='spreadsheet document generation';ru='формирования табличного документа'"),
 													DetailErrorDescription(ErrorInfo()),
 													MessageText);
 		
@@ -4380,7 +4350,7 @@ Procedure SetSubscriptionQuery(EDAgreement,
 		ElectronicDocumentsOverridable.GetBankAccountNumbers(Company, Bank, AccountsArray);
 		
 		If AccountsArray.Count()=0 Then
-			ErrorText = NStr("en='To generate the extract request it is necessary to add a company banking account';ru='Для формирования запроса выписки необходимо добавить банковский счет организации'");
+			ErrorText = NStr("en='To generate the statement request, add a company bank account';ru='Для формирования запроса выписки необходимо добавить банковский счет организации'");
 			CommonUseClientServer.MessageToUser(ErrorText);
 			IsError = True;
 			Return;
@@ -4416,18 +4386,18 @@ Procedure SetSubscriptionQuery(EDAgreement,
 		StmtReqType.Validate();
 		
 		If ValueIsFilled(ErrorText) Then
-			Raise NStr("en='Statement request generation error';ru='Ошибка формирования запроса выписки'");
+			Raise NStr("en='Error generating statement request';ru='Ошибка формирования запроса выписки'");
 		EndIf;
 		
 		ExportEDtoFile(StmtReqType, QueryFile, , "UTF-8");
 
 	Except
 		
-		MessagePattern = NStr("en='%1. (see details in Event log monitor).';ru='%1. (подробности см. в Журнале регистрации).'");
+		MessagePattern = NStr("en='%1. (for more information, see Event log).';ru='%1. (подробности см. в Журнале регистрации).'");
 		MessageText = StringFunctionsClientServer.SubstituteParametersInString(
 															MessagePattern,
 															BriefErrorDescription(ErrorInfo()));
-		ElectronicDocumentsServiceCallServer.ProcessExceptionByEDOnServer(NStr("en='ED formation';ru='Формирование ЭД'"),
+		ElectronicDocumentsServiceCallServer.ProcessExceptionByEDOnServer(NStr("en='ED generation';ru='Формирование ЭД'"),
 																					DetailErrorDescription(ErrorInfo()), MessageText, 1);
 		IsError = True;
 		
@@ -4789,10 +4759,10 @@ Function GenerateCorrectionInvoiceFTSCML(DataTree)
 		DeleteNameSpace(TreeAttributeValue(DataTree, "FullFileName"), TargetNamespaceSchema);
 		Return True;
 	Except
-		MessagePattern = NStr("en='%1. (see details in Event log monitor).';ru='%1. (подробности см. в Журнале регистрации).'");
+		MessagePattern = NStr("en='%1. (for more information, see Event log).';ru='%1. (подробности см. в Журнале регистрации).'");
 		MessageText = StringFunctionsClientServer.SubstituteParametersInString(MessagePattern,
 			BriefErrorDescription(ErrorInfo()));
-		ElectronicDocumentsServiceCallServer.ProcessExceptionByEDOnServer(NStr("en='ED formation';ru='Формирование ЭД'"),
+		ElectronicDocumentsServiceCallServer.ProcessExceptionByEDOnServer(NStr("en='ED generation';ru='Формирование ЭД'"),
 			DetailErrorDescription(ErrorInfo()), MessageText);
 		
 		Return False;
@@ -5068,10 +5038,10 @@ Function GenerateInvoiceFTSCML(DataTree)
 		DeleteNameSpace(TreeAttributeValue(DataTree, "FullFileName"), TargetNamespaceSchema);
 		Return True;
 	Except
-		MessagePattern = NStr("en='%1. (see details in Event log monitor).';ru='%1. (подробности см. в Журнале регистрации).'");
+		MessagePattern = NStr("en='%1. (for more information, see Event log).';ru='%1. (подробности см. в Журнале регистрации).'");
 		MessageText = StringFunctionsClientServer.SubstituteParametersInString(MessagePattern,
 			BriefErrorDescription(ErrorInfo()));
-		ElectronicDocumentsServiceCallServer.ProcessExceptionByEDOnServer(NStr("en='ED formation';ru='Формирование ЭД'"),
+		ElectronicDocumentsServiceCallServer.ProcessExceptionByEDOnServer(NStr("en='ED generation';ru='Формирование ЭД'"),
 			DetailErrorDescription(ErrorInfo()), MessageText);
 		
 		Return False;
@@ -5408,10 +5378,10 @@ Function GenerateTORG12SellerFTSCML(DataTree)
 		DeleteNameSpace(TreeAttributeValue(DataTree, "FullFileName"), TargetNamespaceSchema);
 		Return True;
 	Except
-		MessagePattern = NStr("en='%1 (see details in event log monitor).';ru='%1 (подробности см. в Журнале регистрации).'");
+		MessagePattern = NStr("en='%1 (for more information, see Event log).';ru='%1 (подробности см. в Журнале регистрации).'");
 		MessageText = StringFunctionsClientServer.SubstituteParametersInString(MessagePattern,
 			?(ValueIsFilled(ErrorText), ErrorText, BriefErrorDescription(ErrorInfo())));
-		ElectronicDocumentsServiceCallServer.ProcessExceptionByEDOnServer(NStr("en='ED formation';ru='Формирование ЭД'"),
+		ElectronicDocumentsServiceCallServer.ProcessExceptionByEDOnServer(NStr("en='ED generation';ru='Формирование ЭД'"),
 																					DetailErrorDescription(ErrorInfo()),
 																					MessageText);
 		
@@ -5547,10 +5517,10 @@ Function GenerateTrad12BuyerFTSCML(DataTree)
 		EndIf;
 		
 	Except
-		MessagePattern = NStr("en='%1 (see details in event log monitor).';ru='%1 (подробности см. в Журнале регистрации).'");
+		MessagePattern = NStr("en='%1 (for more information, see Event log).';ru='%1 (подробности см. в Журнале регистрации).'");
 		MessageText = StringFunctionsClientServer.SubstituteParametersInString(MessagePattern,
 			BriefErrorDescription(ErrorInfo()));
-		ElectronicDocumentsServiceCallServer.ProcessExceptionByEDOnServer(NStr("en='ED formation';ru='Формирование ЭД'"),
+		ElectronicDocumentsServiceCallServer.ProcessExceptionByEDOnServer(NStr("en='ED generation';ru='Формирование ЭД'"),
 																					DetailErrorDescription(ErrorInfo()),
 																					MessageText);
 			
@@ -5783,10 +5753,10 @@ Function GenerateAct501PerformerFTSCML(DataTree)
 		EndIf;
 		
 	Except
-		MessagePattern = NStr("en='%1 (see details in event log monitor).';ru='%1 (подробности см. в Журнале регистрации).'");
+		MessagePattern = NStr("en='%1 (for more information, see Event log).';ru='%1 (подробности см. в Журнале регистрации).'");
 		MessageText = StringFunctionsClientServer.SubstituteParametersInString(MessagePattern,
 			BriefErrorDescription(ErrorInfo()));
-		ElectronicDocumentsServiceCallServer.ProcessExceptionByEDOnServer(NStr("en='ED formation';ru='Формирование ЭД'"),
+		ElectronicDocumentsServiceCallServer.ProcessExceptionByEDOnServer(NStr("en='ED generation';ru='Формирование ЭД'"),
 																					DetailErrorDescription(ErrorInfo()),
 																					MessageText);
 			
@@ -5923,10 +5893,10 @@ Function GenerateAct501CustomerFTSCML(DataTree, EDFScheduleVersion)
 		EndIf;
 		
 	Except
-		MessagePattern = NStr("en='%1 (see details in event log monitor).';ru='%1 (подробности см. в Журнале регистрации).'");
+		MessagePattern = NStr("en='%1 (for more information, see Event log).';ru='%1 (подробности см. в Журнале регистрации).'");
 		MessageText = StringFunctionsClientServer.SubstituteParametersInString(MessagePattern,
 			BriefErrorDescription(ErrorInfo()));
-		ElectronicDocumentsServiceCallServer.ProcessExceptionByEDOnServer(NStr("en='ED formation';ru='Формирование ЭД'"),
+		ElectronicDocumentsServiceCallServer.ProcessExceptionByEDOnServer(NStr("en='ED generation';ru='Формирование ЭД'"),
 																					DetailErrorDescription(ErrorInfo()),
 																					MessageText);
 			
@@ -6323,10 +6293,10 @@ Function GenerateCorrectingDocumentCML(DataTree)
 		DeleteNameSpace(TreeAttributeValue(DataTree, "FullFileName"), TargetNamespaceSchema);
 		Return True;
 	Except
-		MessagePattern = NStr("en='%1 (see details in event log monitor).';ru='%1 (подробности см. в Журнале регистрации).'");
+		MessagePattern = NStr("en='%1 (for more information, see Event log).';ru='%1 (подробности см. в Журнале регистрации).'");
 		MessageText = StringFunctionsClientServer.SubstituteParametersInString(MessagePattern,
 			?(ValueIsFilled(ErrorText), ErrorText, BriefErrorDescription(ErrorInfo())));
-		ElectronicDocumentsServiceCallServer.ProcessExceptionByEDOnServer(NStr("en='ED formation';ru='Формирование ЭД'"),
+		ElectronicDocumentsServiceCallServer.ProcessExceptionByEDOnServer(NStr("en='ED generation';ru='Формирование ЭД'"),
 																					DetailErrorDescription(ErrorInfo()),
 																					MessageText);
 			
@@ -6489,10 +6459,10 @@ Function GenerateCorrectingDocumentBuyerCML(DataTree)
 		EndIf;
 		
 	Except
-		MessagePattern = NStr("en='%1 (see details in event log monitor).';ru='%1 (подробности см. в Журнале регистрации).'");
+		MessagePattern = NStr("en='%1 (for more information, see Event log).';ru='%1 (подробности см. в Журнале регистрации).'");
 		MessageText = StringFunctionsClientServer.SubstituteParametersInString(MessagePattern,
 			BriefErrorDescription(ErrorInfo()));
-		ElectronicDocumentsServiceCallServer.ProcessExceptionByEDOnServer(NStr("en='ED formation';ru='Формирование ЭД'"),
+		ElectronicDocumentsServiceCallServer.ProcessExceptionByEDOnServer(NStr("en='ED generation';ru='Формирование ЭД'"),
 																					DetailErrorDescription(ErrorInfo()),
 																					MessageText);
 			
@@ -6760,10 +6730,10 @@ Function DeleteGenerateInvoiceCML(ParametersStructure)
 		DeleteNameSpace(ParametersStructure.FullFileName, TargetNamespaceSchema);
 		Return True;
 	Except
-		MessagePattern = NStr("en='%1. (see details in Event log monitor).';ru='%1. (подробности см. в Журнале регистрации).'");
+		MessagePattern = NStr("en='%1. (for more information, see Event log).';ru='%1. (подробности см. в Журнале регистрации).'");
 		MessageText = StringFunctionsClientServer.SubstituteParametersInString(MessagePattern,
 			BriefErrorDescription(ErrorInfo()));
-		ElectronicDocumentsServiceCallServer.ProcessExceptionByEDOnServer(NStr("en='ED formation';ru='Формирование ЭД'"),
+		ElectronicDocumentsServiceCallServer.ProcessExceptionByEDOnServer(NStr("en='ED generation';ru='Формирование ЭД'"),
 			DetailErrorDescription(ErrorInfo()), MessageText);
 		
 		Return False;
@@ -7037,10 +7007,10 @@ Function DeleteGenerateCorrectionInvoiceCML(ParametersStructure)
 		DeleteNameSpace(ParametersStructure.FullFileName, TargetNamespaceSchema);
 		Return True;
 	Except
-		MessagePattern = NStr("en='%1. (see details in Event log monitor).';ru='%1. (подробности см. в Журнале регистрации).'");
+		MessagePattern = NStr("en='%1. (for more information, see Event log).';ru='%1. (подробности см. в Журнале регистрации).'");
 		MessageText = StringFunctionsClientServer.SubstituteParametersInString(MessagePattern,
 			BriefErrorDescription(ErrorInfo()));
-		ElectronicDocumentsServiceCallServer.ProcessExceptionByEDOnServer(NStr("en='ED formation';ru='Формирование ЭД'"),
+		ElectronicDocumentsServiceCallServer.ProcessExceptionByEDOnServer(NStr("en='ED generation';ru='Формирование ЭД'"),
 			DetailErrorDescription(ErrorInfo()), MessageText);
 		
 		Return False;
@@ -7385,10 +7355,10 @@ Function DeleteFornTorg12CML(ParametersStructure)
 		EndIf;
 		
 	Except
-		MessagePattern = NStr("en='%1 (see details in event log monitor).';ru='%1 (подробности см. в Журнале регистрации).'");
+		MessagePattern = NStr("en='%1 (for more information, see Event log).';ru='%1 (подробности см. в Журнале регистрации).'");
 		MessageText = StringFunctionsClientServer.SubstituteParametersInString(MessagePattern,
 			BriefErrorDescription(ErrorInfo()));
-		ElectronicDocumentsServiceCallServer.ProcessExceptionByEDOnServer(NStr("en='ED formation';ru='Формирование ЭД'"),
+		ElectronicDocumentsServiceCallServer.ProcessExceptionByEDOnServer(NStr("en='ED generation';ru='Формирование ЭД'"),
 																					DetailErrorDescription(ErrorInfo()),
 																					MessageText);
 			
@@ -7545,10 +7515,10 @@ Function DeleteGenerateTrad12CustomerCML(ParametersStructure)
 		EndIf;
 		
 	Except
-		MessagePattern = NStr("en='%1 (see details in event log monitor).';ru='%1 (подробности см. в Журнале регистрации).'");
+		MessagePattern = NStr("en='%1 (for more information, see Event log).';ru='%1 (подробности см. в Журнале регистрации).'");
 		MessageText = StringFunctionsClientServer.SubstituteParametersInString(MessagePattern,
 			BriefErrorDescription(ErrorInfo()));
-		ElectronicDocumentsServiceCallServer.ProcessExceptionByEDOnServer(NStr("en='ED formation';ru='Формирование ЭД'"),
+		ElectronicDocumentsServiceCallServer.ProcessExceptionByEDOnServer(NStr("en='ED generation';ru='Формирование ЭД'"),
 																					DetailErrorDescription(ErrorInfo()),
 																					MessageText);
 			
@@ -7792,10 +7762,10 @@ Function DeteteFormAct501CML(ParametersStructure)
 		EndIf;
 		
 	Except
-		MessagePattern = NStr("en='%1 (see details in event log monitor).';ru='%1 (подробности см. в Журнале регистрации).'");
+		MessagePattern = NStr("en='%1 (for more information, see Event log).';ru='%1 (подробности см. в Журнале регистрации).'");
 		MessageText = StringFunctionsClientServer.SubstituteParametersInString(MessagePattern,
 			BriefErrorDescription(ErrorInfo()));
-		ElectronicDocumentsServiceCallServer.ProcessExceptionByEDOnServer(NStr("en='ED formation';ru='Формирование ЭД'"),
+		ElectronicDocumentsServiceCallServer.ProcessExceptionByEDOnServer(NStr("en='ED generation';ru='Формирование ЭД'"),
 																					DetailErrorDescription(ErrorInfo()),
 																					MessageText);
 			
@@ -7955,10 +7925,10 @@ Function DeleteGenerateAct501CustomerCML(ParametersStructure, EDFScheduleVersion
 		EndIf;
 		
 	Except
-		MessagePattern = NStr("en='%1 (see details in event log monitor).';ru='%1 (подробности см. в Журнале регистрации).'");
+		MessagePattern = NStr("en='%1 (for more information, see Event log).';ru='%1 (подробности см. в Журнале регистрации).'");
 		MessageText = StringFunctionsClientServer.SubstituteParametersInString(MessagePattern,
 			BriefErrorDescription(ErrorInfo()));
-		ElectronicDocumentsServiceCallServer.ProcessExceptionByEDOnServer(NStr("en='ED formation';ru='Формирование ЭД'"),
+		ElectronicDocumentsServiceCallServer.ProcessExceptionByEDOnServer(NStr("en='ED generation';ru='Формирование ЭД'"),
 																					DetailErrorDescription(ErrorInfo()),
 																					MessageText);
 			
@@ -8049,10 +8019,10 @@ Function GenerateCMLCatalog(DataTree, FilesArray)
 		EndIf;
 		
 	Except
-		MessagePattern = NStr("en='%1 (see details in event log monitor).';ru='%1 (подробности см. в Журнале регистрации).'");
+		MessagePattern = NStr("en='%1 (for more information, see Event log).';ru='%1 (подробности см. в Журнале регистрации).'");
 		MessageText = StringFunctionsClientServer.SubstituteParametersInString(MessagePattern,
 			BriefErrorDescription(ErrorInfo()));
-		ElectronicDocumentsServiceCallServer.ProcessExceptionByEDOnServer(NStr("en='ED formation';ru='Формирование ЭД'"),
+		ElectronicDocumentsServiceCallServer.ProcessExceptionByEDOnServer(NStr("en='ED generation';ru='Формирование ЭД'"),
 																					DetailErrorDescription(ErrorInfo()),
 																					MessageText);
 	EndTry;
@@ -8184,10 +8154,10 @@ Function GeneratePriceListCML(DataTree)
 		EndIf;
 		
 	Except
-		MessagePattern = NStr("en='%1 (see details in event log monitor).';ru='%1 (подробности см. в Журнале регистрации).'");
+		MessagePattern = NStr("en='%1 (for more information, see Event log).';ru='%1 (подробности см. в Журнале регистрации).'");
 		MessageText = StringFunctionsClientServer.SubstituteParametersInString(MessagePattern,
 			BriefErrorDescription(ErrorInfo()));
-		ElectronicDocumentsServiceCallServer.ProcessExceptionByEDOnServer(NStr("en='ED formation';ru='Формирование ЭД'"),
+		ElectronicDocumentsServiceCallServer.ProcessExceptionByEDOnServer(NStr("en='ED generation';ru='Формирование ЭД'"),
 																					DetailErrorDescription(ErrorInfo()),
 																					MessageText);
 		
@@ -8328,10 +8298,10 @@ Function GenerateOrderCML(DataTree)
 		EndIf;
 		
 	Except
-		MessagePattern = NStr("en='%1 (see details in event log monitor).';ru='%1 (подробности см. в Журнале регистрации).'");
+		MessagePattern = NStr("en='%1 (for more information, see Event log).';ru='%1 (подробности см. в Журнале регистрации).'");
 		MessageText = StringFunctionsClientServer.SubstituteParametersInString(MessagePattern,
 			BriefErrorDescription(ErrorInfo()));
-		ElectronicDocumentsServiceCallServer.ProcessExceptionByEDOnServer(NStr("en='ED formation';ru='Формирование ЭД'"),
+		ElectronicDocumentsServiceCallServer.ProcessExceptionByEDOnServer(NStr("en='ED generation';ru='Формирование ЭД'"),
 																					DetailErrorDescription(ErrorInfo()),
 																					MessageText);
 		
@@ -8484,10 +8454,10 @@ Function GenerateInvoiceForPaymentCML(DataTree)
 		EndIf;
 		
 	Except
-		MessagePattern = NStr("en='%1 (see details in event log monitor).';ru='%1 (подробности см. в Журнале регистрации).'");
+		MessagePattern = NStr("en='%1 (for more information, see Event log).';ru='%1 (подробности см. в Журнале регистрации).'");
 		MessageText = StringFunctionsClientServer.SubstituteParametersInString(MessagePattern,
 			BriefErrorDescription(ErrorInfo()));
-		ElectronicDocumentsServiceCallServer.ProcessExceptionByEDOnServer(NStr("en='ED formation';ru='Формирование ЭД'"),
+		ElectronicDocumentsServiceCallServer.ProcessExceptionByEDOnServer(NStr("en='ED generation';ru='Формирование ЭД'"),
 																					DetailErrorDescription(ErrorInfo()),
 																					MessageText);
 		
@@ -8613,10 +8583,10 @@ Function GenerateComissionGoodsWriteOffReportCML(DataTree)
 		EndIf;
 		
 	Except
-		MessagePattern = NStr("en='%1 (see details in event log monitor).';ru='%1 (подробности см. в Журнале регистрации).'");
+		MessagePattern = NStr("en='%1 (for more information, see Event log).';ru='%1 (подробности см. в Журнале регистрации).'");
 		MessageText = StringFunctionsClientServer.SubstituteParametersInString(MessagePattern,
 			BriefErrorDescription(ErrorInfo()));
-		ElectronicDocumentsServiceCallServer.ProcessExceptionByEDOnServer(NStr("en='ED formation';ru='Формирование ЭД'"),
+		ElectronicDocumentsServiceCallServer.ProcessExceptionByEDOnServer(NStr("en='ED generation';ru='Формирование ЭД'"),
 																					DetailErrorDescription(ErrorInfo()),
 																					MessageText);
 		
@@ -8780,10 +8750,10 @@ Function GenerateReportAboutComissionGoodsSalesCML(DataTree)
 
 		
 	Except
-		MessagePattern = NStr("en='%1 (see details in event log monitor).';ru='%1 (подробности см. в Журнале регистрации).'");
+		MessagePattern = NStr("en='%1 (for more information, see Event log).';ru='%1 (подробности см. в Журнале регистрации).'");
 		MessageText = StringFunctionsClientServer.SubstituteParametersInString(MessagePattern,
 			BriefErrorDescription(ErrorInfo()));
-		ElectronicDocumentsServiceCallServer.ProcessExceptionByEDOnServer(NStr("en='ED formation';ru='Формирование ЭД'"),
+		ElectronicDocumentsServiceCallServer.ProcessExceptionByEDOnServer(NStr("en='ED generation';ru='Формирование ЭД'"),
 																					DetailErrorDescription(ErrorInfo()),
 																					MessageText);
 		
@@ -8925,10 +8895,10 @@ Function FormTransferOfAuthorityActCML(DataTree)
 		EndIf;
 		
 	Except
-		MessagePattern = NStr("en='%1 (see details in event log monitor).';ru='%1 (подробности см. в Журнале регистрации).'");
+		MessagePattern = NStr("en='%1 (for more information, see Event log).';ru='%1 (подробности см. в Журнале регистрации).'");
 		MessageText = StringFunctionsClientServer.SubstituteParametersInString(MessagePattern,
 			BriefErrorDescription(ErrorInfo()));
-		ElectronicDocumentsServiceCallServer.ProcessExceptionByEDOnServer(NStr("en='ED formation';ru='Формирование ЭД'"),
+		ElectronicDocumentsServiceCallServer.ProcessExceptionByEDOnServer(NStr("en='ED generation';ru='Формирование ЭД'"),
 																					DetailErrorDescription(ErrorInfo()),
 																					MessageText);
 	EndTry;
@@ -9039,10 +9009,10 @@ Function GenerateCompanyDetailsCML(DataTree)
 		
 	Except
 		
-		MessagePattern = NStr("en='%1 (see details in event log monitor).';ru='%1 (подробности см. в Журнале регистрации).'");
+		MessagePattern = NStr("en='%1 (for more information, see Event log).';ru='%1 (подробности см. в Журнале регистрации).'");
 		MessageText = StringFunctionsClientServer.SubstituteParametersInString(MessagePattern,
 			BriefErrorDescription(ErrorInfo()));
-		ElectronicDocumentsServiceCallServer.ProcessExceptionByEDOnServer(NStr("en='ED formation';ru='Формирование ЭД'"),
+		ElectronicDocumentsServiceCallServer.ProcessExceptionByEDOnServer(NStr("en='ED generation';ru='Формирование ЭД'"),
 																					DetailErrorDescription(ErrorInfo()),
 																					MessageText);
 		FileIsFormed = False;
@@ -9104,10 +9074,10 @@ Function DeleteGenerateCMLCatalog(ParametersStructure)
 		EndIf;
 		
 	Except
-		MessagePattern = NStr("en='%1 (see details in event log monitor).';ru='%1 (подробности см. в Журнале регистрации).'");
+		MessagePattern = NStr("en='%1 (for more information, see Event log).';ru='%1 (подробности см. в Журнале регистрации).'");
 		MessageText = StringFunctionsClientServer.SubstituteParametersInString(MessagePattern,
 			BriefErrorDescription(ErrorInfo()));
-		ElectronicDocumentsServiceCallServer.ProcessExceptionByEDOnServer(NStr("en='ED formation';ru='Формирование ЭД'"),
+		ElectronicDocumentsServiceCallServer.ProcessExceptionByEDOnServer(NStr("en='ED generation';ru='Формирование ЭД'"),
 																					DetailErrorDescription(ErrorInfo()),
 																					MessageText);
 		
@@ -9323,10 +9293,10 @@ Function DeleteGenerateInvoiceForPaymentCML(ParametersStructure)
 		EndIf;
 		
 	Except
-		MessagePattern = NStr("en='%1 (see details in event log monitor).';ru='%1 (подробности см. в Журнале регистрации).'");
+		MessagePattern = NStr("en='%1 (for more information, see Event log).';ru='%1 (подробности см. в Журнале регистрации).'");
 		MessageText = StringFunctionsClientServer.SubstituteParametersInString(MessagePattern,
 			BriefErrorDescription(ErrorInfo()));
-		ElectronicDocumentsServiceCallServer.ProcessExceptionByEDOnServer(NStr("en='ED formation';ru='Формирование ЭД'"),
+		ElectronicDocumentsServiceCallServer.ProcessExceptionByEDOnServer(NStr("en='ED generation';ru='Формирование ЭД'"),
 																					DetailErrorDescription(ErrorInfo()),
 																					MessageText);
 		
@@ -9419,10 +9389,10 @@ Function DeleteGenerateComissionGoodsWriteOffReportCML(ParametersStructure)
 		EndIf;
 		
 	Except
-		MessagePattern = NStr("en='%1 (see details in event log monitor).';ru='%1 (подробности см. в Журнале регистрации).'");
+		MessagePattern = NStr("en='%1 (for more information, see Event log).';ru='%1 (подробности см. в Журнале регистрации).'");
 		MessageText = StringFunctionsClientServer.SubstituteParametersInString(MessagePattern,
 			BriefErrorDescription(ErrorInfo()));
-		ElectronicDocumentsServiceCallServer.ProcessExceptionByEDOnServer(NStr("en='ED formation';ru='Формирование ЭД'"),
+		ElectronicDocumentsServiceCallServer.ProcessExceptionByEDOnServer(NStr("en='ED generation';ru='Формирование ЭД'"),
 																					DetailErrorDescription(ErrorInfo()),
 																					MessageText);
 		
@@ -9623,10 +9593,10 @@ Function DeleteGenerateOrderCML(ParametersStructure)
 		EndIf;
 		
 	Except
-		MessagePattern = NStr("en='%1 (see details in event log monitor).';ru='%1 (подробности см. в Журнале регистрации).'");
+		MessagePattern = NStr("en='%1 (for more information, see Event log).';ru='%1 (подробности см. в Журнале регистрации).'");
 		MessageText = StringFunctionsClientServer.SubstituteParametersInString(MessagePattern,
 			BriefErrorDescription(ErrorInfo()));
-		ElectronicDocumentsServiceCallServer.ProcessExceptionByEDOnServer(NStr("en='ED formation';ru='Формирование ЭД'"),
+		ElectronicDocumentsServiceCallServer.ProcessExceptionByEDOnServer(NStr("en='ED generation';ru='Формирование ЭД'"),
 																					DetailErrorDescription(ErrorInfo()),
 																					MessageText);
 		
@@ -9812,10 +9782,10 @@ Function DeleteGenerateReportOnComissionGoodsSalesCML(ParametersStructure)
 		EndIf;
 		
 	Except
-		MessagePattern = NStr("en='%1 (see details in event log monitor).';ru='%1 (подробности см. в Журнале регистрации).'");
+		MessagePattern = NStr("en='%1 (for more information, see Event log).';ru='%1 (подробности см. в Журнале регистрации).'");
 		MessageText = StringFunctionsClientServer.SubstituteParametersInString(MessagePattern,
 			BriefErrorDescription(ErrorInfo()));
-		ElectronicDocumentsServiceCallServer.ProcessExceptionByEDOnServer(NStr("en='ED formation';ru='Формирование ЭД'"),
+		ElectronicDocumentsServiceCallServer.ProcessExceptionByEDOnServer(NStr("en='ED generation';ru='Формирование ЭД'"),
 																					DetailErrorDescription(ErrorInfo()),
 																					MessageText);
 		
@@ -9927,10 +9897,10 @@ Function DeleteGeneratePriceListCML(ParametersStructure)
 		EndIf;
 		
 	Except
-		MessagePattern = NStr("en='%1 (see details in event log monitor).';ru='%1 (подробности см. в Журнале регистрации).'");
+		MessagePattern = NStr("en='%1 (for more information, see Event log).';ru='%1 (подробности см. в Журнале регистрации).'");
 		MessageText = StringFunctionsClientServer.SubstituteParametersInString(MessagePattern,
 			BriefErrorDescription(ErrorInfo()));
-		ElectronicDocumentsServiceCallServer.ProcessExceptionByEDOnServer(NStr("en='ED formation';ru='Формирование ЭД'"),
+		ElectronicDocumentsServiceCallServer.ProcessExceptionByEDOnServer(NStr("en='ED generation';ru='Формирование ЭД'"),
 																					DetailErrorDescription(ErrorInfo()),
 																					MessageText);
 		
@@ -10102,10 +10072,10 @@ Function GenerateCMLInvoice(ParametersStructure)
 		EndIf;
 		
 	Except
-		MessagePattern = NStr("en='%1 (see details in event log monitor).';ru='%1 (подробности см. в Журнале регистрации).'");
+		MessagePattern = NStr("en='%1 (for more information, see Event log).';ru='%1 (подробности см. в Журнале регистрации).'");
 		MessageText = StringFunctionsClientServer.SubstituteParametersInString(MessagePattern,
 			BriefErrorDescription(ErrorInfo()));
-		ElectronicDocumentsServiceCallServer.ProcessExceptionByEDOnServer(NStr("en='ED formation';ru='Формирование ЭД'"),
+		ElectronicDocumentsServiceCallServer.ProcessExceptionByEDOnServer(NStr("en='ED generation';ru='Формирование ЭД'"),
 																					DetailErrorDescription(ErrorInfo()),
 																					MessageText);
 		
@@ -10260,10 +10230,10 @@ Function GenerateCMLCertificate(ParametersStructure)
 		EndIf;
 		
 	Except
-		MessagePattern = NStr("en='%1 (see details in event log monitor).';ru='%1 (подробности см. в Журнале регистрации).'");
+		MessagePattern = NStr("en='%1 (for more information, see Event log).';ru='%1 (подробности см. в Журнале регистрации).'");
 		MessageText = StringFunctionsClientServer.SubstituteParametersInString(MessagePattern,
 			BriefErrorDescription(ErrorInfo()));
-		ElectronicDocumentsServiceCallServer.ProcessExceptionByEDOnServer(NStr("en='ED formation';ru='Формирование ЭД'"),
+		ElectronicDocumentsServiceCallServer.ProcessExceptionByEDOnServer(NStr("en='ED generation';ru='Формирование ЭД'"),
 																					DetailErrorDescription(ErrorInfo()),
 																					MessageText);
 		
@@ -10409,10 +10379,10 @@ Function GenerateGoodsTransferReturnBetweenCompaniesCML(ParametersStructure)
 		EndIf;
 		
 	Except
-		MessagePattern = NStr("en='%1 (see details in event log monitor).';ru='%1 (подробности см. в Журнале регистрации).'");
+		MessagePattern = NStr("en='%1 (for more information, see Event log).';ru='%1 (подробности см. в Журнале регистрации).'");
 		MessageText = StringFunctionsClientServer.SubstituteParametersInString(MessagePattern,
 			BriefErrorDescription(ErrorInfo()));
-		ElectronicDocumentsServiceCallServer.ProcessExceptionByEDOnServer(NStr("en='ED formation';ru='Формирование ЭД'"),
+		ElectronicDocumentsServiceCallServer.ProcessExceptionByEDOnServer(NStr("en='ED generation';ru='Формирование ЭД'"),
 																					DetailErrorDescription(ErrorInfo()),
 																					MessageText);
 		
@@ -11027,7 +10997,7 @@ Function CheckRequiredVTFieldsFilling(Source, VT, Val VTFields, VTName, ErrorTex
 			Item = TrimAll(MandatoryColumnsArray[ColumnsCount - IndexOf]);
 			// add. Checking of existence of mandatory columns in nested tables (see the function Act501ParametersStructure.
 			If Find(Item, ".") = 0 AND VT.Columns.Find(Item) = Undefined Then
-					ErrorTemplate = NStr("en='In the table ""%1"" the column mandatory for filling is absent: ""%2"".';ru='В таблице ""%1"" отсутствует обязательная к заполнению колонка: ""%2.""'");
+					ErrorTemplate = NStr("en='Required column is missing in the ""%1"" table: ""%2"".';ru='В таблице ""%1"" отсутствует обязательная к заполнению колонка: ""%2.""'");
 					UserPresentation = ElectronicDocumentsReUse.GetUserPresentation(
 																												Source,
 																												Item);
@@ -11058,7 +11028,7 @@ Function CheckRequiredVTFieldsFilling(Source, VT, Val VTFields, VTName, ErrorTex
 						CheckRequiredFieldsFilling(ParameterValue, ErrorText);
 						
 					ElsIf Not ValueIsFilled(ParameterValue) AND Not TypeOf(ParameterValue) = Type("Number") Then
-						ErrorTemplate = NStr("en='In the row #%1 of the table ""%2"" the value ""%3"" is not filled.';ru='В строке №%1 таблицы ""%2"" не заполнено значение ""%3.""'");
+						ErrorTemplate = NStr("en='Value ""%3"" is not filled in row No. %1 of table ""%2"".';ru='В строке №%1 таблицы ""%2"" не заполнено значение ""%3.""'");
 						
 						UserPresentation = ElectronicDocumentsReUse.GetUserPresentation(Source,
 							Item);
@@ -11069,7 +11039,7 @@ Function CheckRequiredVTFieldsFilling(Source, VT, Val VTFields, VTName, ErrorTex
 			EndDo;
 		EndDo;
 	Else
-		ErrorTemplate = NStr("en='Obligatory table is not filled in: ""%1.""';ru='Не заполнена обязательная таблица: ""%1.""'");
+		ErrorTemplate = NStr("en='Required table is not filled in: ""%1.""';ru='Не заполнена обязательная таблица: ""%1.""'");
 		ErrorText = ErrorText + StringFunctionsClientServer.SubstituteParametersInString(ErrorTemplate, VTName) + Chars.LF;
 	EndIf;
 	ParametersFilled = Not ValueIsFilled(ErrorText);
@@ -11129,7 +11099,7 @@ Function CheckRequiredFieldsFilling(Source, ParametersStructure, ErrorText = "")
 					CheckRequiredVTFieldsFilling(Source, ParameterValue, VTFields, UserVTPresentation,
 						ErrorText);
 				Else
-					ErrorTemplate = NStr("en='List of mandatory fields of the table is not completed: ""%1"".';ru='Не заполнен перечень обязательных полей таблицы: ""%1"".'");
+					ErrorTemplate = NStr("en='List of required fields of the table is not completed: ""%1"".';ru='Не заполнен перечень обязательных полей таблицы: ""%1"".'");
 					ErrorText = ErrorText + StringFunctionsClientServer.SubstituteParametersInString(ErrorTemplate,
 						UserVTPresentation) + Chars.LF;
 				EndIf;
@@ -11142,7 +11112,7 @@ Function CheckRequiredFieldsFilling(Source, ParametersStructure, ErrorText = "")
 				EndDo;
 			Else
 				If Not ValueIsFilled(ParameterValue) AND Not TypeOf(ParameterValue) = Type("Number") Then
-					ErrorTemplate = NStr("en='Mandatory field of parameters structure is not filled in: ""%1"".';ru='Не заполнено обязательное поле структуры параметров: ""%1"".'");
+					ErrorTemplate = NStr("en='Required field of parameter structure is not filled in: ""%1"".';ru='Не заполнено обязательное поле структуры параметров: ""%1"".'");
 					
 					UserPresentation = ElectronicDocumentsReUse.GetUserPresentation(Source,
 						Item.Key);
@@ -11151,7 +11121,7 @@ Function CheckRequiredFieldsFilling(Source, ParametersStructure, ErrorText = "")
 				EndIf;
 			EndIf;
 		Else
-			ErrorTemplate = NStr("en='Mandatory field is absent in parameters structure: ""%1"".';ru='Отсутствует обязательное поле в структуре параметров: ""%1"".'");
+			ErrorTemplate = NStr("en='Required field is missing in the structure of parameters: ""%1"".';ru='Отсутствует обязательное поле в структуре параметров: ""%1"".'");
 			ErrorText = ErrorText + StringFunctionsClientServer.SubstituteParametersInString(ErrorTemplate,
 				Item.Key) + Chars.LF;
 		EndIf;
@@ -15328,7 +15298,7 @@ Function FillInAgentDataFromAdditData(ParseTree, NewED, TargetNamespaceSchema, E
 				MessageText = NStr("en='Failed to read Commission
 		|agent data when extracting the data of ED(corr)invoice (see details in event log monitor).';ru='Не удалось
 		|прочитать данные Комиссионера при извлечении данных ЭД (корр)счет-фактура (подробности см. в Журнале регистрации).'");
-				ElectronicDocumentsServiceCallServer.ProcessExceptionByEDOnServer(NStr("en='ED reading';ru='Чтение ЭД.'"),
+				ElectronicDocumentsServiceCallServer.ProcessExceptionByEDOnServer(NStr("en='ED reading.';ru='Чтение ЭД.'"),
 																							DetailErrorDescription(ErrorInfo()),
 																							MessageText);
 			EndTry;
@@ -15427,10 +15397,10 @@ Function GetDataFromFile(ParametersStructure, ParseTree, EDDirection = Undefined
 				RefToOwner = ElectronicDocumentsOverridable.SaveVBDObjectData(NewED, ParseTree,
 				RefToOwner);
 			Except
-				MessagePattern = NStr("en='%1 (see details in event log monitor).';ru='%1 (подробности см. в Журнале регистрации).'");
+				MessagePattern = NStr("en='%1 (for more information, see Event log).';ru='%1 (подробности см. в Журнале регистрации).'");
 				MessageText = StringFunctionsClientServer.SubstituteParametersInString(MessagePattern,
 				BriefErrorDescription(ErrorInfo()));
-				ElectronicDocumentsServiceCallServer.ProcessExceptionByEDOnServer(NStr("en='Document filling according to ED.';ru='Заполнение документа на основе ЭД.'"),
+				ElectronicDocumentsServiceCallServer.ProcessExceptionByEDOnServer(NStr("en='Document population based on ED.';ru='Заполнение документа на основе ЭД.'"),
 				DetailErrorDescription(ErrorInfo()),
 				MessageText);
 				RecordingError = True;
@@ -15442,14 +15412,14 @@ Function GetDataFromFile(ParametersStructure, ParseTree, EDDirection = Undefined
 		|документ базы данных (подробности см. в Журнале регистрации).'");
 				EDActualKinds = ElectronicDocumentsReUse.GetEDActualKinds();
 				If EDActualKinds.Find(NewED.EDKind) = Undefined Then
-					MessagePattern = NStr("en='Electronic document of the kind ""%1"" is not supported in the current configuration';ru='Электронный документ вида ""%1"" в текущей конфигурации не поддерживается'");
+					MessagePattern = NStr("en='Electronic document of kind ""%1"" is not supported in the current configuration';ru='Электронный документ вида ""%1"" в текущей конфигурации не поддерживается'");
 					EventLogMonitorText = StringFunctionsClientServer.SubstituteParametersInString(MessagePattern, NewED.EDKind);
 				Else
 					EventLogMonitorText = NStr("en='It is required
 		|to check the work of function ElectonicDocumentsOverridable.SaveObjectDataInDB';ru='Необходимо
 		|проверить работу функции ЭлектронныеДокументыПереопределяемый.СохранитьДанныеОбъектаВБД'");
 				EndIf;
-				OperationKind = NStr("en='Document filling according to ED.';ru='Заполнение документа на основе ЭД.'");
+				OperationKind = NStr("en='Document population based on ED.';ru='Заполнение документа на основе ЭД.'");
 				ElectronicDocumentsServiceCallServer.ProcessExceptionByEDOnServer(
 										OperationKind, EventLogMonitorText, MessageText);
 				RecordingError = True;
@@ -15740,7 +15710,7 @@ Function ReadFileCMLbyXDTO(FileName, ParseTree, NewED, ShowErrors = False)
 		If UnknownED Then
 			If Users.InfobaseUserWithFullAccess( , , False) Then
 				MessageText = StringFunctionsClientServer.SubstituteParametersInString(
-					NStr("en='Unknown ED type when reading the data out of the file %1!';ru='Неизвестный тип ЭД при чтении данных из файла %1!'"), FileName);
+					NStr("en='Unknown ED type when reading the data from file %1.';ru='Неизвестный тип ЭД при чтении данных из файла %1!'"), FileName);
 				CommonUseClientServer.MessageToUser(MessageText);
 			EndIf;
 			Error = True;
@@ -15757,12 +15727,12 @@ Function ReadFileCMLbyXDTO(FileName, ParseTree, NewED, ShowErrors = False)
 		Error = True;
 		MessageText = Undefined;
 		If Users.InfobaseUserWithFullAccess( , , False) OR ShowErrors Then
-			MessagePattern = NStr("en='Data reading from the file %1 failed: %2 (see details in Events log monitor).';ru='Возникла ошибка при чтении данных из файла %1: %2 (подробности см. в Журнале регистрации).'");
+			MessagePattern = NStr("en='An error occurred when reading the data from file %1: %2 (see details in Event log).';ru='Возникла ошибка при чтении данных из файла %1: %2 (подробности см. в Журнале регистрации).'");
 			MessageText = StringFunctionsClientServer.SubstituteParametersInString(MessagePattern,
 				FileName, BriefErrorDescription(ErrorInfo()));
 		EndIf;
 		ElectronicDocumentsServiceCallServer.ProcessExceptionByEDOnServer(
-			NStr("en='ED reading';ru='Чтение ЭД.'"), DetailErrorDescription(ErrorInfo()), MessageText, 5);
+			NStr("en='ED reading.';ru='Чтение ЭД.'"), DetailErrorDescription(ErrorInfo()), MessageText, 5);
 	EndTry;
 	XMLObject.Close();
 	
@@ -18616,7 +18586,7 @@ Procedure FillRefsToObjectsInTree(ParseTree, Error) Export
 					ObjectString.ObjectReference = ObjectReference;
 				Else
 					Text = StringFunctionsClientServer.SubstituteParametersInString(
-						NStr("en='Failed to create catalog item ""%1""';ru='Ошибка создания элемента справочника ""%1""'"), RowObjectType.ObjectType);
+						NStr("en='An error occurred while creating the ""%1"" catalog item';ru='Ошибка создания элемента справочника ""%1""'"), RowObjectType.ObjectType);
 					CommonUseClientServer.MessageToUser(Text);
 					Error = True;
 					Return;
@@ -18630,7 +18600,7 @@ Procedure FillRefsToObjectsInTree(ParseTree, Error) Export
 					ObjectString.ObjectReference = ObjectReference;
 				Else
 					Text = StringFunctionsClientServer.SubstituteParametersInString(
-						NStr("en='Failed to create catalog item ""%1""';ru='Ошибка создания элемента справочника ""%1""'"), RowObjectType.ObjectType);
+						NStr("en='An error occurred while creating the ""%1"" catalog item';ru='Ошибка создания элемента справочника ""%1""'"), RowObjectType.ObjectType);
 					CommonUseClientServer.MessageToUser(Text);
 					Error = True;
 					Return;
@@ -18701,7 +18671,7 @@ Function FindCreateStringInParsedTree(RowTypeInTree, IDObject, ObjectDescription
 					// Error: objects with different descriptions exist by reference in ED
 					Error = True;
 					MessageText = StringFunctionsClientServer.SubstituteParametersInString(
-						NStr("en='Error in electronic document data: for one object <%1> two descriptions <%2> exist and <%3>';ru='Ошибка в данных эл.документа: на один Объект <%1>, два Описания <%2> и <%3>'"), ObjectReference,
+						NStr("en='An error occurred in electronic document data: for one Object <%1>, two Descriptions <%2> and <%3>';ru='Ошибка в данных эл.документа: на один Объект <%1>, два Описания <%2> и <%3>'"), ObjectReference,
 						FoundString.ObjectDescription, ObjectDescription);
 					CommonUseClientServer.MessageToUser(MessageText);
 					FoundString.ObjectDescription = ObjectDescription;
@@ -18730,7 +18700,7 @@ Function FindCreateStringInParsedTree(RowTypeInTree, IDObject, ObjectDescription
 					// situation Error: objects with different descriptions exist in ED by the reference
 					Error = True;
 					MessageText = StringFunctionsClientServer.SubstituteParametersInString(
-						NStr("en='Error in data of the electonic document: nonunique description for ID <%1>, Description <%2>';ru='Ошибка в данных эл.документа: неуникальное описание для ИД <%1>, Описание <%2>'"),
+						NStr("en='Error in data of the electronic document: non-unique description for ID <%1>, Description <%2>';ru='Ошибка в данных эл.документа: неуникальное описание для ИД <%1>, Описание <%2>'"),
 						IDObject, ObjectDescription);
 					CommonUseClientServer.MessageToUser(MessageText);
 				EndIf;
@@ -19519,7 +19489,7 @@ EndFunction
 
 Procedure FillInHeaderAttributesCostCorrection(PrintInfo, Template, SpreadsheetDocument)
 
-	TitlePart1 = StringFunctionsClientServer.SubstituteParametersInString(NStr("en='Agreement on the change of cost of No %1 from %2';ru='Соглашение об изменении стоимости № %1 от %2'"),
+	TitlePart1 = StringFunctionsClientServer.SubstituteParametersInString(NStr("en='Agreement on the change of cost No %1 from %2';ru='Соглашение об изменении стоимости № %1 от %2'"),
 														PrintInfo.DocumentNumber, Format(PrintInfo.DocumentDate, "DF=dd.MM.yyyy"));
 	TitlePart2 = ?(ValueIsFilled(PrintInfo.CorrectionNumber), 
 				StringFunctionsClientServer.SubstituteParametersInString(NStr("en=', correction No %1 from %2';ru=', исправление № %1 от %2'"),
@@ -20370,7 +20340,7 @@ Procedure FillInTabularDocumentAccountOrder_ED(SpreadsheetDocument, PrintInfo, T
 		If ValueIsFilled(PrintInfo.Header.VATAmount) Then
 			
 			VATArea = Template.GetArea("TotalVATPartialPayment");
-			VATArea.Parameters.VAT = NStr("en='Including VAT:';ru='Inclusive TVA:'");
+			VATArea.Parameters.VAT = NStr("en='Inclusive TVA:';ru='Inclusive TVA:'");
 			VATArea.Parameters.TotalVAT = PrintInfo.Header.VATAmount;
 			SpreadsheetDocument.Put(VATArea);
 		EndIf;
@@ -20595,7 +20565,7 @@ Procedure FillHeaderAttributesInvoiceOrder(PrintInfo, Template, SpreadsheetDocum
 		
 		If ValueIsFilled(PrintInfo.Header.PaymentDate) Then
 			
-			LabelValidityPeriod = NStr("en='Account is valid till %ValidityPeriod%.';ru='Счет действителен до %СрокДействия%.'");
+			LabelValidityPeriod = NStr("en='The account is valid till %ValidityPeriod%.';ru='Счет действителен до %СрокДействия%.'");
 			LabelValidityPeriod = StrReplace(LabelValidityPeriod, "%ValidityPeriod%",
 				Format(PrintInfo.Header.PaymentDate, "DLF=D"));
 			TemplateArea.Parameters.ValidityPeriod = LabelValidityPeriod;
@@ -20625,9 +20595,9 @@ Procedure FillHeaderAttributesInvoiceOrder(PrintInfo, Template, SpreadsheetDocum
 	TemplateArea = Template.GetArea("Title");
 	
 	If Type = "Account" Then
-		HeaderText = NStr("en='Account for payment # %DocumentNumber% as of %DocumentDate%';ru='Счет на оплату № %НомерДокумента% от %ДатаДокумента% г.'");
+		HeaderText = NStr("en='Proforma invoice No. %DocumentNumber% dated %DocumentDate%';ru='Счет на оплату № %НомерДокумента% от %ДатаДокумента% г.'");
 	ElsIf Type = "Order" Then
-		HeaderText = NStr("en='Client order # %DocumentNumber% as of %DocumentDate%';ru='Заказ клиента № %НомерДокумента% от %ДатаДокумента% г.'");
+		HeaderText = NStr("en='Customer order No. %DocumentNumber% dated %DocumentDate%';ru='Заказ клиента № %НомерДокумента% от %ДатаДокумента% г.'");
 	EndIf;
 	
 	HeaderText = StrReplace(HeaderText, "%DocumentNumber%", PrintInfo.Header.Number);
@@ -20639,7 +20609,7 @@ Procedure FillHeaderAttributesInvoiceOrder(PrintInfo, Template, SpreadsheetDocum
 	
 	TemplateArea = Template.GetArea("Vendor");
 	
-	TemplateArea.Parameters.TextSupplier = ?(Type = "Account", NStr("en='Vendor:';ru='Поставщик:'"), NStr("en='Performer:';ru='Исполнитель:'"));
+	TemplateArea.Parameters.TextSupplier = ?(Type = "Account", NStr("en='Supplier:';ru='Поставщик:'"), NStr("en='Performer:';ru='Исполнитель:'"));
 	TemplateArea.Parameters.VendorPresentation = ElectronicDocumentsOverridable.CompaniesDescriptionFull(InfoAboutVendor,
 		"FullDescr,TIN,LegalAddress,PhoneNumbers,");
 	SpreadsheetDocument.Put(TemplateArea);
@@ -20854,7 +20824,7 @@ Procedure FillInTabularDocumentOrderToSupplier_ED(SpreadsheetDocument, PrintInfo
 	// Fill in header attributes
 	TemplateArea = Template.GetArea("Title");
 	
-	HeaderText = NStr("en='Order to supplier # %DocumentNumber% as of %DocumentDate%.';ru='Заказ поставщику № %НомерДокумента% от %ДатаДокумента% г.'");
+	HeaderText = NStr("en='Purchase order No. %DocumentNumber% dated %DocumentDate%';ru='Заказ поставщику № %НомерДокумента% от %ДатаДокумента% г.'");
 	HeaderText = StrReplace(HeaderText, "%DocumentNumber%", PrintInfo.Header.Number);
 	HeaderText = StrReplace(HeaderText, "%DocumentDate%",  Format(PrintInfo.Header.Date, "DF=dd MMMM yyyy'"));
 	
@@ -21027,7 +20997,7 @@ Procedure FillInTabularDocumentOrderToSupplier_ED(SpreadsheetDocument, PrintInfo
 		SpreadsheetDocument.Join(AreaProduct);
 		
 		If PrintInfo.Header.PriceIncludesVAT Then
-			DataArea.Parameters.VAT = NStr("en='Including VAT:';ru='Inclusive TVA:'");
+			DataArea.Parameters.VAT = NStr("en='Inclusive TVA:';ru='Inclusive TVA:'");
 		Else
 			DataArea.Parameters.VAT = NStr("en='VAT Amount:';ru='Сумма НДС:'");
 		EndIf;
@@ -21075,7 +21045,7 @@ Function GetInvoiceDataToPrint(ObjectString, ParseTree)
 	DateFixedLine = GetParsedTreeStringAttributeValue(ParseTree, ObjectString, "DateOfCorrection");
 	CorrectionNumber = GetParsedTreeStringAttributeValue(ParseTree, ObjectString, "CorrectionNumber");
 	
-	FillingDataHeader.Insert("CorrectionNumber", NStr("en='Fix #';ru='Исправление №'")
+	FillingDataHeader.Insert("CorrectionNumber", NStr("en='Correction No.';ru='Исправление №'")
 		+ ?(ValueIsFilled(CorrectionNumber), CorrectionNumber, "--") + " " + NStr("en='dated';ru='от'") + " "
 		+ ?(ValueIsFilled(DateFixedLine), Format(DateFixedLine, "DLF=DD"), "--"));
 	
@@ -21147,7 +21117,7 @@ Function GetInvoiceDataToPrint(ObjectString, ParseTree)
 			+ InfoAboutShipper.FullDescr + ?(ValueIsFilled(InfoAboutShipper.ActualAddress), ", "
 			+ InfoAboutShipper.ActualAddress, ""));
 	Else
-		FillingDataHeader.Insert("PresentationOfShipper", NStr("en='Consignor and their address: --';ru='Грузоотправитель и его адрес: --'")); 
+		FillingDataHeader.Insert("PresentationOfShipper", NStr("en='Consignor and its address: --';ru='Грузоотправитель и его адрес: --'")); 
 	EndIf;
 	
 	If ValueIsFilled(InfoAboutConsignee.FullDescr) Then
@@ -21155,10 +21125,10 @@ Function GetInvoiceDataToPrint(ObjectString, ParseTree)
 			+ InfoAboutConsignee.FullDescr + ?(ValueIsFilled(InfoAboutConsignee.ActualAddress), ", "
 			+ InfoAboutConsignee.ActualAddress, ""));
 	Else
-		FillingDataHeader.Insert("PresentationOfConsignee", NStr("en='Consignee and their address: --';ru='Грузополучатель и его адрес: --'")); 
+		FillingDataHeader.Insert("PresentationOfConsignee", NStr("en='Consignee and its address: --';ru='Грузополучатель и его адрес: --'")); 
 	EndIf;
 	
-	FillingDataHeader.Insert("ByDocument", NStr("en='To payment and settlement document #';ru='К платежно-расчетному документу №'") + " "
+	FillingDataHeader.Insert("ByDocument", NStr("en='To settlement document No.';ru='К платежно-расчетному документу №'") + " "
 		+ GetParsedTreeStringAttributeValue(ParseTree, ObjectString, "PaymentDocument"));
 	FillingDataHeader.Insert("CustomerPresentation",NStr("en='Customer:';ru='Покупатель:'") + " " + FillingDataHeader.InfoAboutCustomer.FullDescr);
 	FillingDataHeader.Insert("CustomerAddress", NStr("en='Address:';ru='Адрес:'") + " "+ FillingDataHeader.InfoAboutCustomer.LegalAddress);
@@ -22681,7 +22651,7 @@ Procedure FillInTabularDocumentAcceptanceCertificate_ED(SpreadsheetDocument, Pri
 	// Display act header
 	TemplateArea = Template.GetArea("Title");
 	
-	HeaderText = NStr("en='Act # %DocumentNumber% dated %DocumentDate%';ru='Акт № %НомерДокумента% от %ДатаДокумента% г.'");
+	HeaderText = NStr("en='Certificate No. %DocumentNumber% dated %DocumentDate%';ru='Акт № %НомерДокумента% от %ДатаДокумента% г.'");
 	HeaderText = StrReplace(HeaderText, "%DocumentNumber%", PrintInfo.Header.Number);
 	HeaderText = StrReplace(HeaderText, "%DocumentDate%",  Format(PrintInfo.Header.Date, "DF=dd MMMM yyyy'"));
 	
@@ -22749,7 +22719,7 @@ Procedure FillInTabularDocumentAcceptanceCertificate_ED(SpreadsheetDocument, Pri
 	TemplateArea.Parameters.TotalVAT = VATAmount;
 	If IsVAT Then
 		If PrintInfo.Header.PriceIncludesVAT Then
-			TemplateArea.Parameters.VAT = NStr("en='Including VAT:';ru='Inclusive TVA:'");
+			TemplateArea.Parameters.VAT = NStr("en='Inclusive TVA:';ru='Inclusive TVA:'");
 		Else
 			TemplateArea.Parameters.VAT = NStr("en='VAT amount';ru='Указывается сумма НДС'");
 		EndIf;
@@ -22978,14 +22948,14 @@ Procedure FillTableDocumentAct501(SpreadsheetDocument, PrintInfo, ConsumerData)
 	// Display act header
 	TemplateArea = Template.GetArea("Header");
 	
-	CaptionPattern = NStr("en='Act # %1 dated %2 year';ru='Акт № %1 от %2 года'");
+	CaptionPattern = NStr("en='Certificate No. %1 dated %2';ru='Акт № %1 от %2 года'");
 	HeaderText = StringFunctionsClientServer.SubstituteParametersInString(CaptionPattern, PrintInfo.Header.Number,
 		Format(PrintInfo.Header.Date, "DF=dd MMMM yyyy'"));
 	TemplateArea.Parameters.HeaderText = HeaderText;
 	
 	If PrintInfo.Header.Property("DateOfCorrection") Then
 		
-		CaptionPattern = NStr("en='Correction No %1 from %2';ru='Исправление № %1 от %2 г.'");
+		CaptionPattern = NStr("en='Correction No. %1 dated %2';ru='Исправление № %1 от %2 г.'");
 		FixText = StringFunctionsClientServer.SubstituteParametersInString(CaptionPattern, PrintInfo.Header.CorrectionNumber,
 																		Format(PrintInfo.Header.DateOfCorrection, "DF=dd MMMM yyyy'"));
 		TemplateArea.Parameters.Correction = FixText;
@@ -23279,7 +23249,7 @@ Procedure FillInTabularDocumentCommissionGoodsSalesReport_ED(SpreadsheetDocument
 	FirstLineNumber = SpreadsheetDocument.TableHeight + 1;
 	
 	// Display header general attributes.
-	FillHeaderAttributesReportByComission(PrintInfo.Header, NStr("en='Report on the commission goods sales';ru='Отчет о продажах комиссионного товара'"), Template,
+	FillHeaderAttributesReportByComission(PrintInfo.Header, NStr("en='Report on commission goods sales';ru='Отчет о продажах комиссионного товара'"), Template,
 		SpreadsheetDocument);
 	
 	// Display table title.
@@ -23477,7 +23447,7 @@ Procedure FillInTabularDocumentComissionGoodsWriteOffReport_ED(SpreadsheetDocume
 	
 	Template = Catalogs.EDAttachedFiles.GetTemplate("ED_CommisionReportAboutWriteOff");
 	
-	Title = NStr("en='Report on the commission goods depreciation';ru='Отчет о списании комиссионного товара'");
+	Title = NStr("en='Report on commission goods write-off';ru='Отчет о списании комиссионного товара'");
 	
 	CodesColumn = ElectronicDocumentsOverridable.AdditionalColumnName();
 	FirstLineNumber = SpreadsheetDocument.TableHeight + 1;
@@ -23669,7 +23639,7 @@ EndFunction
 Procedure FillInTabularDocumentCompanyDetails_ED(SpreadsheetDocument, EDDataToPrint)
 	
 	Template = Catalogs.EDAttachedFiles.GetTemplate("ED_CounterpartyAttributes");
-	Title = NStr("en='Company attributes';ru='Реквизиты организации'");
+	Title = NStr("en='Company details';ru='Реквизиты организации'");
 	
 	CompanyAttributes = EDDataToPrint.CompanyAttributes;
 	
@@ -24003,7 +23973,7 @@ Function GetConfirmationDataToPrint(ObjectString, ParseTree)
 	
 	FillingDataHeader = New Structure;
 	
-	FillingDataHeader.Insert("OperatorEDO", NStr("en='Operator of electronic document flow';ru='Оператор электронного документооборота'") + " "
+	FillingDataHeader.Insert("OperatorEDO", NStr("en='Electronic document flow provider';ru='Оператор электронного документооборота'") + " "
 		+ GetParsedTreeStringAttributeValue(ParseTree, ObjectString, "OperatorEDO"));
 	
 	FillingDataHeader.Insert("Sender", GetParsedTreeStringAttributeValue(ParseTree, ObjectString,
@@ -24049,7 +24019,7 @@ Procedure FillTableDocumentNumbertification(SpreadsheetDocument, PrintInfo)
 	Template = Catalogs.EDAttachedFiles.GetTemplate("ED_Notification");
 	
 	TemplateArea = Template.GetArea("Title");
-	HeaderText = NStr("en='Notification on the electronic document receiving';ru='Извещение о получении электронного документа'");
+	HeaderText = NStr("en='Notification of electronic document receipt';ru='Извещение о получении электронного документа'");
 	TemplateArea.Parameters.HeaderText = HeaderText;
 	SpreadsheetDocument.Put(TemplateArea);
 	
@@ -24328,10 +24298,10 @@ Function FillInServiceDocumentFile(Tree, EDKind)
 		
 		Return True;
 	Except
-		MessagePattern = NStr("en='%1 (see details in event log monitor).';ru='%1 (подробности см. в Журнале регистрации).'");
+		MessagePattern = NStr("en='%1 (for more information, see Event log).';ru='%1 (подробности см. в Журнале регистрации).'");
 		MessageText = StringFunctionsClientServer.SubstituteParametersInString(MessagePattern,
 			?(ValueIsFilled(ErrorText), ErrorText, BriefErrorDescription(ErrorInfo())));
-		ElectronicDocumentsServiceCallServer.ProcessExceptionByEDOnServer(NStr("en='ED formation';ru='Формирование ЭД'"),
+		ElectronicDocumentsServiceCallServer.ProcessExceptionByEDOnServer(NStr("en='ED generation';ru='Формирование ЭД'"),
 			DetailErrorDescription(ErrorInfo()), MessageText);
 		
 		Return False;
@@ -24435,10 +24405,10 @@ Function PrepareDataByServiceDocument(ObjectReference, EDStructure, Tree)
 		
 		TreeIsFilled = True;
 	Except
-		MessagePattern = NStr("en='%1 (see details in event log monitor).';ru='%1 (подробности см. в Журнале регистрации).'");
+		MessagePattern = NStr("en='%1 (for more information, see Event log).';ru='%1 (подробности см. в Журнале регистрации).'");
 		MessageText = StringFunctionsClientServer.SubstituteParametersInString(MessagePattern,
 			BriefErrorDescription(ErrorInfo()));
-		ElectronicDocumentsServiceCallServer.ProcessExceptionByEDOnServer(NStr("en='ED formation';ru='Формирование ЭД'"),
+		ElectronicDocumentsServiceCallServer.ProcessExceptionByEDOnServer(NStr("en='ED generation';ru='Формирование ЭД'"),
 			DetailErrorDescription(ErrorInfo()), MessageText);
 		TreeIsFilled = False;
 	EndTry;
@@ -24446,8 +24416,7 @@ Function PrepareDataByServiceDocument(ObjectReference, EDStructure, Tree)
 	ErrorText = "";
 	CheckFillObligatoryAttributesRecursively(Tree, ErrorText);
 	If TreeIsFilled AND ValueIsFilled(ErrorText) Then
-		MessagePattern = NStr("en='During the generation %1 the
-		|following  errors occurred: %2';ru='При формировании %1 возникли следующие ошибки: %2'");
+		MessagePattern = NStr("en='The following  errors occurred while generating %1: %2';ru='При формировании %1 возникли следующие ошибки: %2'");
 		MessageText = StringFunctionsClientServer.SubstituteParametersInString(MessagePattern,
 			EDStructure.EDKind, ErrorText);
 		CommonUseClientServer.MessageToUser(MessageText);
@@ -24527,7 +24496,7 @@ Procedure FillTableDocumentCorrection(SpreadsheetDocument, PrintInfo)
 	Template = Catalogs.EDAttachedFiles.GetTemplate("ED_Clarification");
 	
 	TemplateArea = Template.GetArea("Title");
-	HeaderText = NStr("en='Notification about clarification';ru='Уведомление об уточнении'");
+	HeaderText = NStr("en='Notification of specification';ru='Уведомление об уточнении'");
 	TemplateArea.Parameters.HeaderText = HeaderText;
 	SpreadsheetDocument.Put(TemplateArea);
 	
@@ -24613,7 +24582,7 @@ Function GetCorrectionDataToPrint(ObjectString, ParseTree, ID)
 						ConfirmationStructure.ParseTree, ConfirmationStructure.ObjectString, "SendingDate"));
 					FillingDataHeader.Insert("SendingTime", GetParsedTreeStringAttributeValue(
 						ConfirmationStructure.ParseTree, ConfirmationStructure.ObjectString, "SendingTime"));
-					FillingDataHeader.Insert("OperatorEDO", NStr("en='operator of electronic document flow';ru='оператора электронного документооборота'") + " "
+					FillingDataHeader.Insert("OperatorEDO", NStr("en='provider of electronic document flow';ru='оператора электронного документооборота'") + " "
 						+ GetParsedTreeStringAttributeValue(ConfirmationStructure.ParseTree,
 						ConfirmationStructure.ObjectString, "OperatorEDO"));
 				EndIf;
@@ -24649,7 +24618,7 @@ EndProcedure
 
 Procedure FillEDFBlankOperatorAttributes(ParametersStructure, DataByCompany)
 	
-	Description = NStr("en='without EDO Operator';ru='Без оператора ЭДО'");
+	Description = NStr("en='Without EDF provider';ru='Без оператора ЭДО'");
 	TIN = "1111111117"; // First TIN which fulfills the format requirements
 	
 	DataLegalIndividual = ElectronicDocumentsOverridable.GetDataLegalIndividual(DataByCompany);
@@ -24732,7 +24701,7 @@ Procedure FillInTabularDocumentPaymentOrderOutgoing_ED(SpreadsheetDocument, Attr
 	
 	FillPropertyValues(TemplateArea.Parameters, Attributes);
 	
-	TemplateArea.Parameters.DescriptionNumber = NStr("en='PAYMENT ORDER No';ru='ПЛАТЕЖНОЕ ПОРУЧЕНИЕ №'") + " " + Attributes.Number;
+	TemplateArea.Parameters.DescriptionNumber = NStr("en='PAYMENT ORDER No.';ru='ПЛАТЕЖНОЕ ПОРУЧЕНИЕ №'") + " " + Attributes.Number;
 	TemplateArea.Parameters.DocumentDate = Format(Attributes.Date, "DLF=D");
 	
 	TextPattern = NStr("en='%1
@@ -25552,11 +25521,11 @@ Function GeneratePaymentOrderCML(DataTree)
 
 	Except
 		
-		MessagePattern = NStr("en='%1 (see details in event log monitor).';ru='%1 (подробности см. в Журнале регистрации).'");
+		MessagePattern = NStr("en='%1 (for more information, see Event log).';ru='%1 (подробности см. в Журнале регистрации).'");
 		BriefErrorDescription = BriefErrorDescription(ErrorInfo());
 		MessageText = StringFunctionsClientServer.SubstituteParametersInString(
 			MessagePattern, ?(ValueIsFilled(ErrorText), ErrorText, BriefErrorDescription));
-		Operation = NStr("en='ED formation';ru='Формирование ЭД'");
+		Operation = NStr("en='ED generation';ru='Формирование ЭД'");
 		DetailErrorDescription = DetailErrorDescription(ErrorInfo());
 		ElectronicDocumentsServiceCallServer.ProcessExceptionByEDOnServer(
 			Operation, DetailErrorDescription, MessageText, 1);
@@ -26045,10 +26014,10 @@ Function ParseUniversalAdditFile(AdditFile)
 	Except
 		AdditDataTree = Undefined;
 		XMLObject.Close();
-		MessagePattern = NStr("en='Data reading from the file %1 failed: %2 (see details in Events log monitor).';ru='Возникла ошибка при чтении данных из файла %1: %2 (подробности см. в Журнале регистрации).'");
+		MessagePattern = NStr("en='An error occurred when reading the data from file %1: %2 (see details in Event log).';ru='Возникла ошибка при чтении данных из файла %1: %2 (подробности см. в Журнале регистрации).'");
 		MessageText = StringFunctionsClientServer.SubstituteParametersInString(MessagePattern,
 			AdditFile, BriefErrorDescription(ErrorInfo()));
-		ElectronicDocumentsServiceCallServer.ProcessExceptionByEDOnServer(NStr("en='ED reading';ru='Чтение ЭД.'"),
+		ElectronicDocumentsServiceCallServer.ProcessExceptionByEDOnServer(NStr("en='ED reading.';ru='Чтение ЭД.'"),
 																					DetailErrorDescription(ErrorInfo()),
 																					MessageText);
 	EndTry;
@@ -26104,7 +26073,7 @@ Procedure ReadInfPol(Val XMLString, AdditDataTree, DataSetName, LineNumber = Und
 			EndIf;
 			XMLObject.Close();
 			MessageText = StringFunctionsClientServer.SubstituteParametersInString(
-				NStr("en='Error occurred when reading the data from additional data string. (%1)';ru='Возникла ошибка при чтении данных из строки доп.данных. (%1)'"), ErrorDescription());
+				NStr("en='An error occurred while reading data from the string of addit.data. (%1)';ru='Возникла ошибка при чтении данных из строки доп.данных. (%1)'"), ErrorDescription());
 			CommonUseClientServer.MessageToUser(MessageText);
 		EndTry;
 	EndIf;
@@ -26322,7 +26291,7 @@ Function GetSupplierProductsAndServicesOwnerAttributeName()
 	ElectronicDocumentsOverridable.DetermineSuppliersProductsAndServicesOwnerAttributeName(OwnerAttributeName);
 	
 	If OwnerAttributeName = Undefined Then // match is not specified
-		MessageText = NStr("en='In the applied solution code it is necessary to specify the attribute name for the owner of the suppliers items.';ru='В коде прикладного решения необходимо указать имя реквизита для владельца номенклатуры поставщиков.'");
+		MessageText = NStr("en='In the applied solution code, specify an attribute name for the owner of the supplier products and services.';ru='В коде прикладного решения необходимо указать имя реквизита для владельца номенклатуры поставщиков.'");
 		ElectronicDocumentsService.WriteEventOnEDToEventLogMonitor(MessageText,
 			2, EventLogLevel.Warning);
 		OwnerAttributeName = "";
@@ -26742,12 +26711,12 @@ Function GeneratePaymentOrderSberbankCML(DataTree)
 		
 	Except
 		
-		MessagePattern = NStr("en='%1 (see details in event log monitor).';ru='%1 (подробности см. в Журнале регистрации).'");
+		MessagePattern = NStr("en='%1 (for more information, see Event log).';ru='%1 (подробности см. в Журнале регистрации).'");
 		BriefErrorDescription = BriefErrorDescription(ErrorInfo());
 		
 		MessageText = StringFunctionsClientServer.SubstituteParametersInString(
 			MessagePattern, ?(ValueIsFilled(ErrorText), ErrorText, BriefErrorDescription));
-		Operation = NStr("en='ED formation';ru='Формирование ЭД'");
+		Operation = NStr("en='ED generation';ru='Формирование ЭД'");
 		DetailErrorDescription = DetailErrorDescription(ErrorInfo());
 		ElectronicDocumentsServiceCallServer.ProcessExceptionByEDOnServer(
 							Operation, DetailErrorDescription, MessageText, 1);
@@ -26955,10 +26924,10 @@ Function GenerateEDTakskomPackageAttachedFile(Envelop, AddressDataEncryptedAtCli
 				ElectronicDocumentsService.PlaceEDPackageIntoEnvelop(Envelop, DirectoryAddress + FileName + ".zip");
 				ContainerGenerated = True;
 			Except
-				MessagePattern = NStr("en='%1 (see details in event log monitor).';ru='%1 (подробности см. в Журнале регистрации).'");
+				MessagePattern = NStr("en='%1 (for more information, see Event log).';ru='%1 (подробности см. в Журнале регистрации).'");
 				MessageText = StringFunctionsClientServer.SubstituteParametersInString(MessagePattern,
 					?(ValueIsFilled(ErrorText), ErrorText, BriefErrorDescription(ErrorInfo())));
-				ElectronicDocumentsServiceCallServer.ProcessExceptionByEDOnServer(NStr("en='ED package formation';ru='Формирование пакета ЭД'"),
+				ElectronicDocumentsServiceCallServer.ProcessExceptionByEDOnServer(NStr("en='ED package generation';ru='Формирование пакета ЭД'"),
 					DetailErrorDescription(ErrorInfo()), MessageText);
 			EndTry;
 		Else
@@ -27053,7 +27022,7 @@ Function GetMarkerEEDF(TokenRequestParametersStructure, Join, Decrypt = True) Ex
 		|(see details in Event log monitor).';ru='Ошибка авторизации на сервере оператора электронного документооборота Такском!
 		|(подробности см. в Журнале регистрации).'");
 					ElectronicDocumentsServiceCallServer.ProcessExceptionByEDOnServer(
-																NStr("en='Authentication on EDF operator server';ru='Аутентификация на сервере оператора ЭДО'"),
+																NStr("en='Authentication on the EDF provider server';ru='Аутентификация на сервере оператора ЭДО'"),
 																DetailErrorDescription(ErrorInfo()),
 																MessageText);
 					DeleteFiles(ResultFileName);
@@ -27073,19 +27042,19 @@ Function GetMarkerEEDF(TokenRequestParametersStructure, Join, Decrypt = True) Ex
 				DeleteFiles(ResultFileName);
 				DeleteFiles(DDCertificateFile);
 			Else
-				DetailErrorDescription = NStr("en='Failed to receive the data of cryptography certificate %1.';ru='Не удалось получить данные сертификата криптографии %1.'");
+				DetailErrorDescription = NStr("en='Cannot receive the %1 cryptography certificate data.';ru='Не удалось получить данные сертификата криптографии %1.'");
 				DetailErrorDescription = StrReplace(DetailErrorDescription, "%1", SignatureCertificate);
 				MessageText = NStr("en='Authorization error on the server of electronic document management operator Taxcom!
 		|(see details in Event log monitor).';ru='Ошибка авторизации на сервере оператора электронного документооборота Такском!
 		|(подробности см. в Журнале регистрации).'");
 				ElectronicDocumentsServiceCallServer.ProcessExceptionByEDOnServer(
-															NStr("en='Authentication on EDF operator server';ru='Аутентификация на сервере оператора ЭДО'"),
+															NStr("en='Authentication on the EDF provider server';ru='Аутентификация на сервере оператора ЭДО'"),
 															DetailErrorDescription,
 															MessageText);
 			EndIf;
 		EndIf;
 	Else
-		MessageText = NStr("en='Authentication certificate is not specified on the server of electronic document flow operator.';ru='Не указан сертификат аутентификации на сервере оператора электронного документооборота.'");
+		MessageText = NStr("en='Authentication certificate is not specified on the server of electronic document flow provider.';ru='Не указан сертификат аутентификации на сервере оператора электронного документооборота.'");
 		CommonUseClientServer.MessageToUser(MessageText);
 	EndIf;
 	
@@ -27387,10 +27356,10 @@ Function AcceptRejectContactThroughTakskom(ID, InvitationAccepted, Marker) Expor
 				MessagePattern = NStr("en='Error occurred when processing %1 invitation on the Taxcom server!
 		|(see details in Event log monitor).';ru='Ошибка обработки %1 приглашения на сервере Такском!
 		|(подробности см. в Журнале регистрации).'");
-				CurParameterString = ?(InvitationAccepted, NStr("en='Adoption';ru='принятия'"), NStr("en='rejections';ru='отклонения'"));
+				CurParameterString = ?(InvitationAccepted, NStr("en='acceptances';ru='принятия'"), NStr("en='Variances';ru='отклонения'"));
 				MessageText = StringFunctionsClientServer.SubstituteParametersInString(MessagePattern, CurParameterString);
 				DetailErrorDescription = DetailErrorDescription(ErrorInfo());
-				ElectronicDocumentsServiceCallServer.ProcessExceptionByEDOnServer(NStr("en='Receiving ED.';ru='Получение ЭД.'"),
+				ElectronicDocumentsServiceCallServer.ProcessExceptionByEDOnServer(NStr("en='Receive ED.';ru='Получение ЭД.'"),
 																							DetailErrorDescription,
 																							MessageText);
 				OperationExecuted = False;
@@ -27638,7 +27607,7 @@ Function OutgoingInvitationRequestTakskom(TableDataProcessors, AdditParametersSt
 		
 		MessageText = ErrorText + NStr("en=' (see details in Event log monitor).';ru=' (подробности см. в Журнале регистрации).'");
 		ErrorText = DetailErrorDescription(ErrorInfo());
-		ElectronicDocumentsServiceCallServer.ProcessExceptionByEDOnServer(NStr("en='Generation of invitations for the exchange';ru='Формирование приглашения к обмену'"),
+		ElectronicDocumentsServiceCallServer.ProcessExceptionByEDOnServer(NStr("en='Generation of invitation for exchange';ru='Формирование приглашения к обмену'"),
 																					ErrorText,
 																					MessageText);
 			
@@ -27881,7 +27850,7 @@ Function DocumentTypeByTakscomLine(DocumentType)
 		|card of ED package ""%1"" with listing of the configuration ""ED types""';ru='Не задано сопоставление типа документа
 		|из карточки пакета ЭД ""%1"", с перечислением конфигурации ""Типы ЭД""'");
 		RecordInLog = StrReplace(RecordInLog, "%1", DocumentType);
-		OperationKind = NStr("en='Reading of ED package card';ru='Чтение карточки пакета ЭД'");
+		OperationKind = NStr("en='ED package card reading';ru='Чтение карточки пакета ЭД'");
 		ElectronicDocumentsServiceCallServer.ProcessExceptionByEDOnServer(OperationKind, RecordInLog);
 		ReturnValue = Enums.EDTypes.Other;
 	EndIf;
@@ -27977,7 +27946,7 @@ Function TransferEDFOperatorEDFPackage(File, Marker, Join, Val ResourceAddress, 
 					ErrorParametersArray[7], ErrorParametersArray[1]);
 					
 				ErrorCode = ErrorParametersArray[5];
-				MessagePattern = NStr("en='Sending of package on EDF profile settings: %1, exchange method: %2';ru='Отправка пакета по профилю настроек ЭДО: %1, способ обмена: %2'");
+				MessagePattern = NStr("en='Sending package by EDF profile settings: %1, exchange method: %2';ru='Отправка пакета по профилю настроек ЭДО: %1, способ обмена: %2'");
 				
 				MessageTitleText = StringFunctionsClientServer.SubstituteParametersInString(
 											MessagePattern,
@@ -28038,7 +28007,7 @@ Function GetEDFOperatorEDList(Marker, Join, TokenRequestParametersStructure, Res
 				MessageText = NStr("en='Receipt of the incoming electronic documents on Taxcom server failed!
 		|(see details in Event log monitor).';ru='Ошибка получения входящих электронных документов на сервере Такском!
 		|(подробности см. в Журнале регистрации).'");
-				Operation = NStr("en='ED receiving';ru='Получение ЭД'");
+				Operation = NStr("en='ED receipt';ru='Получение ЭД'");
 				ElectronicDocumentsServiceCallServer.ProcessExceptionByEDOnServer(Operation, ErrorText, MessageText);
 			EndIf;
 		EndTry;
@@ -28275,10 +28244,10 @@ Function GetIncomingEDData(BinaryData, TransactionCode, DocumentFlowID, Document
 				Except
 					XMLObject.Close();
 					
-					MessagePattern = NStr("en='Data reading from the file %1 failed: %2 (see details in Events log monitor).';ru='Возникла ошибка при чтении данных из файла %1: %2 (подробности см. в Журнале регистрации).'");
+					MessagePattern = NStr("en='An error occurred when reading the data from file %1: %2 (see details in Event log).';ru='Возникла ошибка при чтении данных из файла %1: %2 (подробности см. в Журнале регистрации).'");
 					MessageText = StringFunctionsClientServer.SubstituteParametersInString(MessagePattern,
 						CardFile.FullName, BriefErrorDescription(ErrorInfo()));
-					ElectronicDocumentsServiceCallServer.ProcessExceptionByEDOnServer(NStr("en='ED reading';ru='Чтение ЭД.'"),
+					ElectronicDocumentsServiceCallServer.ProcessExceptionByEDOnServer(NStr("en='ED reading.';ru='Чтение ЭД.'"),
 																								DetailErrorDescription(ErrorInfo()),
 																								MessageText);
 					AgreementSettings = Undefined;
@@ -28390,9 +28359,9 @@ Procedure ReadServiceHeaderFileCMXDTOLpo(FileName, RegulationsCode, TransactionC
 		|It is required to update the configuration to a recent version (see details in Event log monitor).';ru='Данный вид электронного документа ""%1"" не поддерживается в текущей версии программы.
 		|Необходимо обновить конфигурацию до актуальной версии (подробности см. в Журнале регистрации).'");
 					MessageText = StringFunctionsClientServer.SubstituteParametersInString(MessageText, TransactionCode);
-					ErrorText = NStr("en='When reading the data from the file ""%1"" an error occurred: unknown code of transaction ""%2"".';ru='При чтении данных из файла ""%1"" возникла ошибка: неизвестный код транзакции ""%2"".'");
+					ErrorText = NStr("en='When reading the data from file ""%1"", an error occurred: unknown code of transaction ""%2"".';ru='При чтении данных из файла ""%1"" возникла ошибка: неизвестный код транзакции ""%2"".'");
 					ErrorText = StringFunctionsClientServer.SubstituteParametersInString(ErrorText, FileName, TransactionCode);
-					ElectronicDocumentsServiceCallServer.ProcessExceptionByEDOnServer(NStr("en='ED reading';ru='Чтение ЭД.'"),
+					ElectronicDocumentsServiceCallServer.ProcessExceptionByEDOnServer(NStr("en='ED reading.';ru='Чтение ЭД.'"),
 						ErrorText, MessageText);
 				EndIf;
 			Else
@@ -28445,9 +28414,9 @@ Procedure ReadServiceHeaderFileCMXDTOLpo(FileName, RegulationsCode, TransactionC
 		|It is required to update the configuration to a recent version (see details in Event log monitor).';ru='Данный вид электронного документа ""%1"" не поддерживается в текущей версии программы.
 		|Необходимо обновить конфигурацию до актуальной версии (подробности см. в Журнале регистрации).'");
 					MessageText = StringFunctionsClientServer.SubstituteParametersInString(MessageText, TransactionCode);
-					ErrorText = NStr("en='When reading the data from the file ""%1"" an error occurred: unknown code of transaction ""%2"".';ru='При чтении данных из файла ""%1"" возникла ошибка: неизвестный код транзакции ""%2"".'");
+					ErrorText = NStr("en='When reading the data from file ""%1"", an error occurred: unknown code of transaction ""%2"".';ru='При чтении данных из файла ""%1"" возникла ошибка: неизвестный код транзакции ""%2"".'");
 					ErrorText = StringFunctionsClientServer.SubstituteParametersInString(ErrorText, FileName, TransactionCode);
-					ElectronicDocumentsServiceCallServer.ProcessExceptionByEDOnServer(NStr("en='ED reading';ru='Чтение ЭД.'"),
+					ElectronicDocumentsServiceCallServer.ProcessExceptionByEDOnServer(NStr("en='ED reading.';ru='Чтение ЭД.'"),
 						ErrorText, MessageText);
 				EndIf;
 				
@@ -28476,10 +28445,10 @@ Procedure ReadServiceHeaderFileCMXDTOLpo(FileName, RegulationsCode, TransactionC
 		EDFileStructure.AdditionalInformation      = AdditionalInformation;
 	Except
 		XMLObject.Close();
-		MessagePattern = NStr("en='Data reading from the file %1 failed: %2 (see details in Events log monitor).';ru='Возникла ошибка при чтении данных из файла %1: %2 (подробности см. в Журнале регистрации).'");
+		MessagePattern = NStr("en='An error occurred when reading the data from file %1: %2 (see details in Event log).';ru='Возникла ошибка при чтении данных из файла %1: %2 (подробности см. в Журнале регистрации).'");
 		MessageText = StringFunctionsClientServer.SubstituteParametersInString(MessagePattern,
 			FileName, BriefErrorDescription(ErrorInfo()));
-		ElectronicDocumentsServiceCallServer.ProcessExceptionByEDOnServer(NStr("en='ED reading';ru='Чтение ЭД.'"),
+		ElectronicDocumentsServiceCallServer.ProcessExceptionByEDOnServer(NStr("en='ED reading.';ru='Чтение ЭД.'"),
 																					DetailErrorDescription(ErrorInfo()),
 																					MessageText);
 	EndTry;
@@ -28986,10 +28955,10 @@ Function GetCorrespondingFileParameters(FileTransportInfo, CardFile) Export
 		EndIf;
 	Except
 		XMLObject.Close();
-		MessagePattern = NStr("en='Data reading from the file %1 failed: %2 (see details in Events log monitor).';ru='Возникла ошибка при чтении данных из файла %1: %2 (подробности см. в Журнале регистрации).'");
+		MessagePattern = NStr("en='An error occurred when reading the data from file %1: %2 (see details in Event log).';ru='Возникла ошибка при чтении данных из файла %1: %2 (подробности см. в Журнале регистрации).'");
 		MessageText = StringFunctionsClientServer.SubstituteParametersInString(MessagePattern,
 			CardFile.FullName, BriefErrorDescription(ErrorInfo()));
-		ElectronicDocumentsServiceCallServer.ProcessExceptionByEDOnServer(NStr("en='ED reading';ru='Чтение ЭД.'"),
+		ElectronicDocumentsServiceCallServer.ProcessExceptionByEDOnServer(NStr("en='ED reading.';ru='Чтение ЭД.'"),
 																					DetailErrorDescription(ErrorInfo()),
 																					MessageText);
 	EndTry;
@@ -29059,10 +29028,10 @@ Function GetCorrespondingFileParameters(FileTransportInfo, CardFile) Export
 		EndDo;
 	Except
 		XMLObject.Close();
-		MessagePattern = NStr("en='Data reading from the file %1 failed: %2 (see details in Events log monitor).';ru='Возникла ошибка при чтении данных из файла %1: %2 (подробности см. в Журнале регистрации).'");
+		MessagePattern = NStr("en='An error occurred when reading the data from file %1: %2 (see details in Event log).';ru='Возникла ошибка при чтении данных из файла %1: %2 (подробности см. в Журнале регистрации).'");
 		MessageText = StringFunctionsClientServer.SubstituteParametersInString(MessagePattern,
 			FileTransportInfo.FullName, BriefErrorDescription(ErrorInfo()));
-		ElectronicDocumentsServiceCallServer.ProcessExceptionByEDOnServer(NStr("en='ED reading';ru='Чтение ЭД.'"),
+		ElectronicDocumentsServiceCallServer.ProcessExceptionByEDOnServer(NStr("en='ED reading.';ru='Чтение ЭД.'"),
 																					DetailErrorDescription(ErrorInfo()),
 																					MessageText);
 		ConformityOfReturn.Clear();
@@ -29246,10 +29215,10 @@ Function GenerateCardTakskomCML(DataTree, ErrorText)
 		Return FileName;
 	Except
 		
-		MessagePattern = NStr("en='%1 (see details in event log monitor).';ru='%1 (подробности см. в Журнале регистрации).'");
+		MessagePattern = NStr("en='%1 (for more information, see Event log).';ru='%1 (подробности см. в Журнале регистрации).'");
 		MessageText = StringFunctionsClientServer.SubstituteParametersInString(MessagePattern,
 			BriefErrorDescription(ErrorInfo()));
-		ElectronicDocumentsServiceCallServer.ProcessExceptionByEDOnServer(NStr("en='Takskom card generation';ru='Формирование карточки такском'"),
+		ElectronicDocumentsServiceCallServer.ProcessExceptionByEDOnServer(NStr("en='Taxcom card generation';ru='Формирование карточки такском'"),
 																					DetailErrorDescription(ErrorInfo()),
 																					MessageText);
 		Return "";
@@ -29345,7 +29314,7 @@ Function GenerateTransportInformationTakskomCML(DataTree, ErrorText)
 		Return FileName;
 		
 	Except
-		MessagePattern = NStr("en='%1 (see details in event log monitor).';ru='%1 (подробности см. в Журнале регистрации).'");
+		MessagePattern = NStr("en='%1 (for more information, see Event log).';ru='%1 (подробности см. в Журнале регистрации).'");
 		MessageText = StringFunctionsClientServer.SubstituteParametersInString(MessagePattern,
 			?(ValueIsFilled(ErrorText), ErrorText, BriefErrorDescription(ErrorInfo())));
 		ElectronicDocumentsServiceCallServer.ProcessExceptionByEDOnServer(NStr("en='Transport information generation';ru='Формирование транспортной информации'"),
@@ -29643,12 +29612,12 @@ Procedure CheckFillObligatoryAttributesRecursively(DataTree, ErrorText, IsTable 
 				ApplicationPresentation = StrReplace(String.FullPath, ".", " - ");
 			EndIf;
 			If IsTable Then
-				ErrorTemplate = NStr("en='Mandatory field is not filled in the table: ""%.1"" in the row %2';ru='Не заполнено обязательное поле таблицы: ""%1."" в строке %2'");
+				ErrorTemplate = NStr("en='Required field is not filled in the table: ""%.1"" in row %2';ru='Не заполнено обязательное поле таблицы: ""%1."" в строке %2'");
 				ErrorText = ErrorText
 							+ StringFunctionsClientServer.SubstituteParametersInString(ErrorTemplate, ApplicationPresentation, LineNumber)
 							+ Chars.LF;
 			Else
-				ErrorTemplate = NStr("en='Mandatory field is not filled: ""%1.""';ru='Не заполнено обязательное поле: ""%1.""'");
+				ErrorTemplate = NStr("en='Required field is not filled: ""%1.""';ru='Не заполнено обязательное поле: ""%1.""'");
 				ErrorText = ErrorText
 							+ StringFunctionsClientServer.SubstituteParametersInString(ErrorTemplate, ApplicationPresentation)
 							+ Chars.LF;
@@ -29669,7 +29638,7 @@ Procedure CheckFillObligatoryAttributesRecursively(DataTree, ErrorText, IsTable 
 				If Not ValueIsFilled(ApplicationPresentation) Then
 					ApplicationPresentation = StrReplace(String.FullPath, ".", " - ");
 				EndIf;
-				ErrorTemplate = NStr("en='Mandatory field is not filled: ""%1.""';ru='Не заполнено обязательное поле: ""%1.""'");
+				ErrorTemplate = NStr("en='Required field is not filled: ""%1.""';ru='Не заполнено обязательное поле: ""%1.""'");
 				ErrorText = ErrorText
 							+ StringFunctionsClientServer.SubstituteParametersInString(ErrorTemplate, ApplicationPresentation)
 							+ Chars.LF;
@@ -29962,7 +29931,7 @@ EndProcedure
 
 Procedure AddAttributesToEmptyStatementOfEDO(DataTree, DataByCompany)
 	
-	Description = NStr("en='without EDO Operator';ru='Без оператора ЭДО'");
+	Description = NStr("en='Without EDF provider';ru='Без оператора ЭДО'");
 	TIN = "1111111117"; // First TIN which fulfills the format requirements
 	
 	DataLegalIndividual = ElectronicDocumentsOverridable.GetDataLegalIndividual(DataByCompany);
@@ -30439,10 +30408,10 @@ Procedure ReadInvitationRequestTakskom(FileName, CounterpartyTable, QueryDateTim
 	Except
 		
 		XMLObject.Close();
-		MessagePattern = NStr("en='Data reading from the file %1 failed: %2 (see details in Events log monitor).';ru='Возникла ошибка при чтении данных из файла %1: %2 (подробности см. в Журнале регистрации).'");
+		MessagePattern = NStr("en='An error occurred when reading the data from file %1: %2 (see details in Event log).';ru='Возникла ошибка при чтении данных из файла %1: %2 (подробности см. в Журнале регистрации).'");
 		MessageText = StringFunctionsClientServer.SubstituteParametersInString(MessagePattern,
 			FileName, BriefErrorDescription(ErrorInfo()));
-		ElectronicDocumentsServiceCallServer.ProcessExceptionByEDOnServer(NStr("en='ED reading';ru='Чтение ЭД.'"),
+		ElectronicDocumentsServiceCallServer.ProcessExceptionByEDOnServer(NStr("en='ED reading.';ru='Чтение ЭД.'"),
 																					DetailErrorDescription(ErrorInfo()),
 																					MessageText);
 	EndTry;
@@ -30597,8 +30566,7 @@ Function DeleteGenerateProductsAndServicesCatalog(ObjectReference, ProductsDirec
 	EndIf;
 	
 	If ValueIsFilled(ErrorText) Then
-		MessagePattern = NStr("en='During the generation %1 the
-		|following  errors occurred: %2';ru='При формировании %1 возникли следующие ошибки: %2'");
+		MessagePattern = NStr("en='The following  errors occurred while generating %1: %2';ru='При формировании %1 возникли следующие ошибки: %2'");
 		MessageText = StringFunctionsClientServer.SubstituteParametersInString(MessagePattern,
 			EDStructure.EDKind, ErrorText);
 		CommonUseClientServer.MessageToUser(MessageText);
@@ -31698,7 +31666,7 @@ Procedure SaveUnknownPackage(ItemBinaryData, EDFProfileSettings, ExternalUID)
 		MessageText = BriefErrorDescription(ErrorInfo())
 						+ NStr("en=' (see details in Event log monitor).';ru=' (подробности см. в Журнале регистрации).'");
 		ErrorText = DetailErrorDescription(ErrorInfo());
-		OperationKind = NStr("en='New EDPackage creation';ru='создание нового ПакетаЭД'");
+		OperationKind = NStr("en='create new EDPackage';ru='создание нового ПакетаЭД'");
 		ElectronicDocumentsServiceCallServer.ProcessExceptionByEDOnServer(OperationKind,
 																					ErrorText,
 																					MessageText);
@@ -31812,7 +31780,7 @@ Function ParsingTreeBankStatements(TextForParsing) Export
 				
 			Else
 				Message = New UserMessage;
-				ErrorText = NStr("en='Import file structure is broken, string %1 : %2';ru='Нарушена структура файла импорта, строка %1 : %2'");
+				ErrorText = NStr("en='Import file structure is broken, line %1 : %2';ru='Нарушена структура файла импорта, строка %1 : %2'");
 				Message.Text = StringFunctionsClientServer.SubstituteParametersInString(
 																						ErrorText,
 																						Import_CurrentRow - 1,
@@ -31844,7 +31812,7 @@ Function ParsingTreeBankStatements(TextForParsing) Export
 		ElsIf Left(Upper(TrimAll(Str)), 10) = "EndFile" Then
 			If Not Import_ExchangeSign Then
 				Message = New UserMessage;
-				Message.Text = NStr("en='""1CClientBankExchange"" is missing in the file of import!';ru='В файле импорта отсутствует признак обмена ""1CClientBankExchange""!'");
+				Message.Text = NStr("en='1C:ClientBankExchange is missing in the import file.';ru='В файле импорта отсутствует признак обмена ""1CClientBankExchange""!'");
 				Message.Message();
 				Return Undefined;
 			EndIf;
@@ -31872,7 +31840,7 @@ Function ParsingTreeBankStatements(TextForParsing) Export
 		
 	If Not IsFoundEndFile Then
 		Message = New UserMessage;
-		Message.Text = NStr("en='Invalid file format (EndFile section not found)!';ru='Файл загрузки не соответствует стандарту (не найдена секция КонецФайла)!'");
+		Message.Text = NStr("en='Import file does not correspond to a standard. (The EndFile section is not found).';ru='Файл загрузки не соответствует стандарту (не найдена секция КонецФайла)!'");
 		Message.Message();
 		Return Undefined;
 	EndIf;
@@ -31891,11 +31859,11 @@ Function ParsingTreeBankStatements(TextForParsing) Export
 	Try
 		ClientBankExchange.Validate();
 	Except
-		MessagePattern = NStr("en='%1 (see details in event log monitor).';ru='%1 (подробности см. в Журнале регистрации).'");
+		MessagePattern = NStr("en='%1 (for more information, see Event log).';ru='%1 (подробности см. в Журнале регистрации).'");
 		MessageText = StringFunctionsClientServer.SubstituteParametersInString(
 								MessagePattern,
 								BriefErrorDescription(ErrorInfo()));
-		ElectronicDocumentsServiceCallServer.ProcessExceptionByEDOnServer(NStr("en='ED formation';ru='Формирование ЭД'"),
+		ElectronicDocumentsServiceCallServer.ProcessExceptionByEDOnServer(NStr("en='ED generation';ru='Формирование ЭД'"),
 																					DetailErrorDescription(ErrorInfo()),
 																					MessageText,
 																					1);
@@ -32157,7 +32125,7 @@ Function ImportDocumentSection(PaymentDocumentSection, Import_CurrentRow, Import
 			
 			If Not IsBlankString(ErrorText) Then
 				Message = New UserMessage;
-				Pattern = NStr("en='Invalid details of the billing document, row %1 : %2';ru='Неверный реквизит платежного документа, строка %1 : %2'");
+				Pattern = NStr("en='Invalid details of the payment document, line %1 : %2';ru='Неверный реквизит платежного документа, строка %1 : %2'");
 				Message.Text = StringFunctionsClientServer.SubstituteParametersInString(
 																			Pattern,
 																			Import_CurrentRow - 1,
@@ -32169,7 +32137,7 @@ Function ImportDocumentSection(PaymentDocumentSection, Import_CurrentRow, Import
 		Else
 			
 			Message = New UserMessage;
-			Pattern = NStr("en='Structure of billing document is broken, string %1 : %2';ru='Нарушена структура платежного документа, строка %1 : %2'");
+			Pattern = NStr("en='Payment document structure is broken, string %1 : %2';ru='Нарушена структура платежного документа, строка %1 : %2'");
 			Message.Text = StringFunctionsClientServer.SubstituteParametersInString(
 																			Pattern,
 																			Import_CurrentRow - 1,
@@ -32241,7 +32209,7 @@ Function ImportBankAccSection(SectionBankAcc, Import_CurrentRow, Import_LineCoun
 		EndIf;
 		If Not IsBlankString(ErrorText) Then
 			Message = New UserMessage;
-			MessagePattern = NStr("en='Invalid attribute in current account description section, row %1 : %2';ru='Неверный реквизит в секции описания расчетного счета, строка %1 : %2'");
+			MessagePattern = NStr("en='Invalid attribute in the current account description section, line %1 : %2';ru='Неверный реквизит в секции описания расчетного счета, строка %1 : %2'");
 			Message.Text = StringFunctionsClientServer.SubstituteParametersInString(
 																	MessagePattern,
 																	Import_CurrentRow - 1,
@@ -32286,7 +32254,7 @@ Function GetDateFromString(Val DateString, ErrorText)
 	DotPosition = Find(DateString, ".");
 	
 	If DotPosition = 0 Then
-		ErrorText = NStr("en='The incorrect format of the date row';ru='Неверный формат строки с датой'");
+		ErrorText = NStr("en='Incorrect format of the date row';ru='Неверный формат строки с датой'");
 		Return Undefined;
 	EndIf;
 	
@@ -32295,7 +32263,7 @@ Function GetDateFromString(Val DateString, ErrorText)
 	DotPosition = Find(DateString, ".");
 	
 	If DotPosition = 0 Then
-		ErrorText = NStr("en='The incorrect format of the date row';ru='Неверный формат строки с датой'");
+		ErrorText = NStr("en='Incorrect format of the date row';ru='Неверный формат строки с датой'");
 		Return Undefined;
 	EndIf;
 	
@@ -32313,7 +32281,7 @@ Function GetDateFromString(Val DateString, ErrorText)
 	Try
 		Receiver = Date(Number(DateYear), Number(DateMonth), Number(NumberDate));
 	Except
-		ErrorText = NStr("en='The incorrect format of the date row';ru='Неверный формат строки с датой'");
+		ErrorText = NStr("en='Incorrect format of the date row';ru='Неверный формат строки с датой'");
 		Return Undefined;
 	EndTry;
 	
@@ -32364,7 +32332,7 @@ Procedure ImportHeaderString(XDTODataValue, FilterConditions, HeaderRowText, Cur
 	
 	If IsError Then
 		Message = New UserMessage;
-		MessageText = NStr("en='Invalid header attribute , row %1 : %2';ru='Неверный реквизит заголовка, строка %1 : %2'");
+		MessageText = NStr("en='Invalid header attribute, line %1 : %2';ru='Неверный реквизит заголовка, строка %1 : %2'");
 		Message.Text = StringFunctionsClientServer.SubstituteParametersInString(
 																MessageText,
 																CurrentRow - 1,
@@ -32689,7 +32657,7 @@ Function GetBankMarker(EDAgreement, MarkerRequestParameters, Decrypt = True) Exp
 				MessageText = NStr("en='Authentication error on bank server!
 		|(see details in Event log monitor).';ru='Ошибка аутентификации на сервере банка!
 		|(подробности см. в Журнале регистрации).'");
-				OperationKind = NStr("en='authentication on bank server';ru='аутентификация на сервере банка'");
+				OperationKind = NStr("en='authentication on the bank server';ru='аутентификация на сервере банка'");
 				DetailErrorDescription = DetailErrorDescription(ErrorInfo());
 				ElectronicDocumentsServiceCallServer.ProcessExceptionByEDOnServer(
 					OperationKind, DetailErrorDescription, MessageText, 1);
@@ -32698,7 +32666,7 @@ Function GetBankMarker(EDAgreement, MarkerRequestParameters, Decrypt = True) Exp
 			EndTry;
 			
 			If Response.StateCode <> 200 Then
-				Pattern = NStr("en='Internet error (%1)';ru='Ошибка работы с Интернет (%1)'");
+				Pattern = NStr("en='An error occurred while working with the Internet (%1)';ru='Ошибка работы с Интернет (%1)'");
 				ErrorMessage = StringFunctionsClientServer.SubstituteParametersInString(Pattern, Response.StateCode);
 				CommonUseClientServer.MessageToUser(ErrorMessage);
 				DeleteFiles(ResultFileName);
@@ -32732,7 +32700,7 @@ Function GetBankMarker(EDAgreement, MarkerRequestParameters, Decrypt = True) Exp
 				DeleteFiles(ResultFileName);
 				MessageText = NStr("en='an error occurred when receiving a bank marker';ru='Произошла ошибка при получении маркера банка'");
 				DetailErrorDescription = DetailErrorDescription(ErrorInfo());
-				OperationKind = NStr("en='Receiving of bank marker';ru='Получение маркера банка'");
+				OperationKind = NStr("en='Receiving bank token';ru='Получение маркера банка'");
 				ElectronicDocumentsServiceCallServer.ProcessExceptionByEDOnServer(
 					OperationKind, DetailErrorDescription, MessageText, 1);
 				Return Undefined;
@@ -32752,7 +32720,7 @@ Function GetBankMarker(EDAgreement, MarkerRequestParameters, Decrypt = True) Exp
 			DeleteFiles(ResultFileName);
 		EndIf;
 	Else
-		MessageText = NStr("en='Certificate of bank client is not specified.';ru='Не указан сертификат клиента банка.'");
+		MessageText = NStr("en='Bank customer certificate is not specified.';ru='Не указан сертификат клиента банка.'");
 		CommonUseClientServer.MessageToUser(MessageText);
 	EndIf;
 	
@@ -32937,12 +32905,12 @@ Function GenerateTransferOrderAsync(DataTree)
 
 	Except
 		
-		MessagePattern = NStr("en='%1 (see details in event log monitor).';ru='%1 (подробности см. в Журнале регистрации).'");
+		MessagePattern = NStr("en='%1 (for more information, see Event log).';ru='%1 (подробности см. в Журнале регистрации).'");
 		MessageText = StringFunctionsClientServer.SubstituteParametersInString(
 								MessagePattern,
 								?(ValueIsFilled(ErrorText), ErrorText, BriefErrorDescription(ErrorInfo())));
 		ElectronicDocumentsServiceCallServer.ProcessExceptionByEDOnServer(
-			NStr("en='ED formation';ru='Формирование ЭД'"), DetailErrorDescription(ErrorInfo()), MessageText, 1);
+			NStr("en='ED generation';ru='Формирование ЭД'"), DetailErrorDescription(ErrorInfo()), MessageText, 1);
 		FileIsFormed = False;
 	EndTry;
 	

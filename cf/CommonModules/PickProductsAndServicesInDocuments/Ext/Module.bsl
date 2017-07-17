@@ -26,7 +26,7 @@ Function ChoiceFormNameByDocument(DocumentFullName, TabularSectionName) Export
 	
 	If FoundStrings.Count() = 0 Then
 		
-		MessageText = NStr("en='Unable to define which form of selection to use.';ru='Не удалось определить какую форму подбора использовать.'");
+		MessageText = NStr("en='Cannot define which selection form to use.';ru='Не удалось определить какую форму подбора использовать.'");
 		WriteLogEvent("PickProductsAndServices", EventLogLevel.Information, , , MessageText, EventLogEntryTransactionMode.Independent);
 		
 		Return ""; // if there is an error of form definition, open an old selection form.

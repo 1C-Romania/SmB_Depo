@@ -89,7 +89,7 @@ Procedure OnCreateAtServer(Cancel, StandardProcessing)
 	);
 	
 	If CancelGLAccountChange(Ref) Then
-		Items.GLAccountsGroup.ToolTip = NStr("en='There are register records in the base of this products and services! You can not change the GL account!';ru='В базе есть движения по этой номенклатуре! Изменение счета учета запрещено!'");
+		Items.GLAccountsGroup.ToolTip = NStr("en='Records are registered for these products and services in the infobase. Cannot change the GL account.';ru='В базе есть движения по этой номенклатуре! Изменение счета учета запрещено!'");
 		Items.GLAccountsGroup.Enabled = False;
 		Items.Default.Visible = False;
 	EndIf;

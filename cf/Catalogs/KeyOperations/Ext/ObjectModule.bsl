@@ -40,7 +40,7 @@ Procedure CheckPriority(Cancel)
 	
 	Selection = Query.Execute().Select();
 	If Selection.Next() Then
-		MessageText = NStr("en='Key opeartion with priority ""%1"" already exists (%2).';ru='Ключевая операция с приоритетом ""%1"" уже существует (%2).'");
+		MessageText = NStr("en='Key operation with priority ""%1"" already exists (""%2"").';ru='Ключевая операция с приоритетом ""%1"" уже существует (%2).'");
 		MessageText = StrReplace(MessageText, "%1", String(Priority));
 		MessageText = StrReplace(MessageText, "%2", Selection.Description);
 		PerformanceEstimationClientServer.WriteToEventLogMonitor(

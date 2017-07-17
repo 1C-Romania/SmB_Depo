@@ -1043,7 +1043,7 @@ Procedure GetWeightForTabularSectionRow(TabularSectionRow)
 	
 	If TabularSectionRow = Undefined Then
 		
-		ShowMessageBox(Undefined, NStr("en='It is required to select a line to get weight for it.';ru='Необходимо выбрать строку, для которой необходимо получить вес.'"));
+		ShowMessageBox(Undefined, NStr("en='Select a line for which the weight should be received.';ru='Необходимо выбрать строку, для которой необходимо получить вес.'"));
 		
 	ElsIf EquipmentManagerClient.RefreshClientWorkplace() Then // Checks if the operator's workplace is specified
 		
@@ -1110,7 +1110,7 @@ Procedure EditInList(Command)
 		
 		ShowQueryBox(
 			NotifyDescription,
-			NStr("ru='Все строки кроме первой будут удалены. Продолжить?'; en = 'All rows except the first will be deleted. Continue?'"),
+			NStr("en='All lines except for the first one will be deleted. Continue?';ru='Все строки кроме первой будут удалены. Продолжить?'"),
 			QuestionDialogMode.YesNo
 		);
 		Return;
@@ -1167,7 +1167,7 @@ Procedure ChangeReserveFillByBalances(Command)
 	
 	If Object.Inventory.Count() = 0 Then
 		Message = New UserMessage;
-		Message.Text = NStr("ru = 'Табличная часть ""Товары, услуги"" не заполнена!'; en = 'Tabular section ""Products, services"" is not filled!'");
+		Message.Text = NStr("en='The ""Goods, services"" tabular section is not filled in.';ru='Табличная часть ""Товары, услуги"" не заполнена!'");
 		Message.Message();
 		Return;
 	EndIf;
@@ -1181,7 +1181,7 @@ Procedure ChangeReserveClearReserve(Command)
 	
 	If Object.Inventory.Count() = 0 Then
 		Message = New UserMessage;
-		Message.Text = NStr("ru = 'Табличная часть ""Товары, услуги"" не заполнена!'; en = 'Tabular section ""Products, services"" is not filled!'");
+		Message.Text = NStr("en='The ""Goods, services"" tabular section is not filled in.';ru='Табличная часть ""Товары, услуги"" не заполнена!'");
 		Message.Message();
 		Return;
 	EndIf;
@@ -2343,7 +2343,7 @@ Procedure BarcodesAreReceivedFragment(UnknownBarcodes) Export
 	
 	For Each CurUndefinedBarcode IN UnknownBarcodes Do
 		
-		MessageString = NStr("en='Data by barcode is not found: %1%; quantity: %2%';ru='Данные по штрихкоду не найдены: %1%; количество: %2%'");
+		MessageString = NStr("en='Barcode data is not found: %1%; quantity: %2%';ru='Данные по штрихкоду не найдены: %1%; количество: %2%'");
 		MessageString = StrReplace(MessageString, "%1%", CurUndefinedBarcode.Barcode);
 		MessageString = StrReplace(MessageString, "%2%", CurUndefinedBarcode.Quantity);
 		CommonUseClientServer.MessageToUser(MessageString);
@@ -2498,7 +2498,7 @@ Procedure OpenPricesAndCurrencyFormEnd(ClosingResult, AdditionalParameters) Expo
 				Object.DiscountPercentByDiscountCard = ClosingResult.DiscountPercentByDiscountCard;
 			Else // We will show the message and we will not change discount card data.
 				CommonUseClientServer.MessageToUser(
-				NStr("en='Discount card is not read. Discount card owner does not match with a counterparty in the document.';ru='Дисконтная карта не считана. Владелец дисконтной карты не совпадает с контрагентом в документе.'"),
+				NStr("en='Discount card is not read. Discount card owner does not match the counterparty in the document.';ru='Дисконтная карта не считана. Владелец дисконтной карты не совпадает с контрагентом в документе.'"),
 				,
 				"Counterparty",
 				"Object");
@@ -2510,7 +2510,7 @@ Procedure OpenPricesAndCurrencyFormEnd(ClosingResult, AdditionalParameters) Expo
 			Object.DiscountPercentByDiscountCard = ClosingResult.DiscountPercentByDiscountCard;
 			
 			ShowUserNotification(
-				NStr("en='Counterparty is filled and discount card is read';ru='Заполнен контрагент и считана дисконтная карта'"),
+				NStr("en='Counterparty is filled in and discount card is read';ru='Заполнен контрагент и считана дисконтная карта'"),
 				GetURL(Object.DiscountCard),
 				StringFunctionsClientServer.SubstituteParametersInString(NStr("en='The counterparty is filled out in the document and discount card %1 is read';ru='В документе заполнен контрагент и считана дисконтная карта %1'"), Object.DiscountCard),
 				PictureLib.Information32);
@@ -2963,14 +2963,14 @@ Procedure DiscountCardIsSelected(DiscountCard)
 		CounterpartyOnChange(Items.Counterparty);
 		
 		ShowUserNotification(
-			NStr("en='Counterparty is filled and discount card is read';ru='Заполнен контрагент и считана дисконтная карта'"),
+			NStr("en='Counterparty is filled in and discount card is read';ru='Заполнен контрагент и считана дисконтная карта'"),
 			GetURL(DiscountCard),
 			StringFunctionsClientServer.SubstituteParametersInString(NStr("en='The counterparty is filled out in the document and discount card %1 is read';ru='В документе заполнен контрагент и считана дисконтная карта %1'"), DiscountCard),
 			PictureLib.Information32);
 	ElsIf Object.Counterparty <> DiscountCardOwner AND Not DiscountCardOwner.IsEmpty() Then
 		
 		CommonUseClientServer.MessageToUser(
-			NStr("en='Discount card is not read. Discount card owner does not match with a counterparty in the document.';ru='Дисконтная карта не считана. Владелец дисконтной карты не совпадает с контрагентом в документе.'"),
+			NStr("en='Discount card is not read. Discount card owner does not match the counterparty in the document.';ru='Дисконтная карта не считана. Владелец дисконтной карты не совпадает с контрагентом в документе.'"),
 			,
 			"Counterparty",
 			"Object");
@@ -3016,7 +3016,7 @@ Procedure DiscountCardIsSelectedAdditionally(DiscountCard)
 	PricesAndCurrency = GenerateLabelPricesAndCurrency(LabelStructure);
 	
 	If Object.Inventory.Count() > 0 Then
-		Text = NStr("en='Refill discounts in all rows?';ru='Перезаполнить скидки во всех строках?'");
+		Text = NStr("en='Refill discounts in all lines?';ru='Перезаполнить скидки во всех строках?'");
 		Notification = New NotifyDescription("DiscountCardIsSelectedAdditionallyEnd", ThisObject);
 		ShowQueryBox(Notification, Text, QuestionDialogMode.YesNo, , DialogReturnCode.Yes);
 	EndIf;

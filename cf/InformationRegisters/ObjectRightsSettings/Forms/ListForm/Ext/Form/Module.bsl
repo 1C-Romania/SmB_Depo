@@ -34,9 +34,9 @@ Procedure UpdateAuxiliaryRegisterData(Command)
 	UpdateAuxilaryRegisterDataAtServer(HasChanges);
 	
 	If HasChanges Then
-		Text = NStr("en='Updated successfully.';ru='Обновление выполнено успешно.'");
+		Text = NStr("en='Update was successful.';ru='Обновление выполнено успешно.'");
 	Else
-		Text = NStr("en='No need to update.';ru='Обновление не требуется.'");
+		Text = NStr("en='Update is not required.';ru='Обновление не требуется.'");
 	EndIf;
 	
 	ShowMessageBox(, Text);
@@ -64,7 +64,7 @@ Procedure SetConditionalAppearance()
 	FilterElement.ComparisonType = DataCompositionComparisonType.Equal;
 	FilterElement.RightValue = Catalogs.MetadataObjectIDs.EmptyRef();
 
-	Item.Appearance.SetParameterValue("Text", NStr("en='For all tables except the specified ones.';ru='Для всех таблиц, кроме указанных'"));
+	Item.Appearance.SetParameterValue("Text", NStr("en='For all tables except for the specified ones';ru='Для всех таблиц, кроме указанных'"));
 
 EndProcedure
 

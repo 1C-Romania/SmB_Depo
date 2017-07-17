@@ -59,7 +59,7 @@ Procedure ExportExecute()
 		
 	Else
 		
-		MessageText = NStr("en='First, you need to select the workplace of the current session peripherals.';ru='Предварительно необходимо выбрать рабочее место внешнего оборудования текущего сеанса.'");
+		MessageText = NStr("en='First, you need to select the work place of the current session peripherals.';ru='Предварительно необходимо выбрать рабочее место внешнего оборудования текущего сеанса.'");
 		CommonUseClientServer.MessageToUser(MessageText);
 		
 	EndIf;
@@ -70,7 +70,7 @@ EndProcedure
 Procedure ExportVTSDEnd(Result, Parameters) Export
 	
 	If Result Then
-		MessageText = NStr("en='Data is successfully exported to the DCT.';ru='Данные успешно выгружены в ТСД.'");
+		MessageText = NStr("en='The data was successfully uploaded into the shipping documents.';ru='Данные успешно выгружены в ТСД.'");
 		CommonUseClientServer.MessageToUser(MessageText);
 	EndIf;
 	

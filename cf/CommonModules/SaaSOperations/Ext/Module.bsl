@@ -45,7 +45,7 @@ EndProcedure
 Procedure LockCurrentDataArea(Val CheckNoOtherSessions = False, Val SeparatedLock = False) Export
 	
 	If Not CommonUseReUse.CanUseSeparatedData() Then
-		Raise(NStr("en='The locking of the area can be installed only in case if the separators use is enabled';ru='Блокировка области может быть установлена только при включенном использовании разделителей'"));
+		Raise(NStr("en='Area can be locked only when separator usage is enabled';ru='Блокировка области может быть установлена только при включенном использовании разделителей'"));
 	EndIf;
 	
 	KeyVar = CreateAuxiliaryDataRecordKeyOfInformationRegister(
@@ -126,7 +126,7 @@ Procedure LockCurrentDataArea(Val CheckNoOtherSessions = False, Val SeparatedLoc
 			EndDo;
 			
 			ErrorMessage = StringFunctionsClientServer.SubstituteParametersInString(
-				NStr("en='The operation can not be executed as Other users are working in the application: %1';ru='Операция не может быть выполнена, т.к. в приложении работают другие пользователи: %1'",
+				NStr("en='Operation cannot be performed as other users are using the application: %1';ru='Операция не может быть выполнена, т.к. в приложении работают другие пользователи: %1'",
 					CommonUseClientServer.MainLanguageCode()),
 				TextSessions);
 			Raise ErrorMessage;
@@ -246,7 +246,7 @@ Procedure PrepareDataAreaToUse(Val DataArea, Val ExportFileID,
 												 Val Variant = Undefined) Export
 	
 	If Not Users.InfobaseUserWithFullAccess(, True) Then
-		Raise(NStr("en='Insufficient rights to perform operation';ru='Недостаточно прав для выполнения операции'"));
+		Raise(NStr("en='Insufficient rights to perform the operation';ru='Недостаточно прав для выполнения операции'"));
 	EndIf;
 	
 	SetPrivilegedMode(True);
@@ -296,7 +296,7 @@ EndProcedure
 Procedure CopyAreaData(Val SourceArea, Val DestinationArea) Export
 	
 	If Not Users.InfobaseUserWithFullAccess(, True) Then
-		Raise(NStr("en='Insufficient rights to perform operation';ru='Недостаточно прав для выполнения операции'"));
+		Raise(NStr("en='Insufficient rights to perform the operation';ru='Недостаточно прав для выполнения операции'"));
 	EndIf;
 	
 	SetPrivilegedMode(True);
@@ -318,7 +318,7 @@ Procedure CopyAreaData(Val SourceArea, Val DestinationArea) Export
 	Try
 		ExportFileName = ModuleDataAreasExportImport.ExportCurrentDataAreaToArchive();
 	Except
-		WriteLogEvent(NStr("en='Copying of data area';ru='Копирование области данных'", CommonUseClientServer.MainLanguageCode()), 
+		WriteLogEvent(NStr("en='Copy data area';ru='Копирование области данных'", CommonUseClientServer.MainLanguageCode()), 
 			EventLogLevel.Error, , , DetailErrorDescription(ErrorInfo()));
 		If ExportFileName <> Undefined Then
 			Try
@@ -334,7 +334,7 @@ Procedure CopyAreaData(Val SourceArea, Val DestinationArea) Export
 	Try
 		ModuleDataAreasExportImport.ImportCurrentDataAreaFromArchive(ExportFileName);
 	Except
-		WriteLogEvent(NStr("en='Copying of data area';ru='Копирование области данных'", CommonUseClientServer.MainLanguageCode()), 
+		WriteLogEvent(NStr("en='Copy data area';ru='Копирование области данных'", CommonUseClientServer.MainLanguageCode()), 
 			EventLogLevel.Error, , , DetailErrorDescription(ErrorInfo()));
 		Try
 			DeleteFiles(ExportFileName);
@@ -366,7 +366,7 @@ EndProcedure
 Procedure ClearDataArea(Val DataArea, Val DeleteUsers = True) Export
 	
 	If Not Users.InfobaseUserWithFullAccess(, True) Then
-		Raise(NStr("en='Insufficient rights to perform operation';ru='Недостаточно прав для выполнения операции'"));
+		Raise(NStr("en='Insufficient rights to perform the operation';ru='Недостаточно прав для выполнения операции'"));
 	EndIf;
 	
 	SetPrivilegedMode(True);
@@ -688,7 +688,7 @@ Procedure DataAreasMaintenance() Export
 		Else
 			
 			ChangeAreasStateAndNotifyManager(Manager, ?(Manager.Status = Enums.DataAreaStatuses.New,
-				"FatalError", "ErrorDelete"), NStr("en='The number of attempts to process the area has been exhausted';ru='Исчерпано количество попыток обработки области'"));
+				"FatalError", "ErrorDelete"), NStr("en='Number of attempts to process the area is exceeded';ru='Исчерпано количество попыток обработки области'"));
 			
 			UnlockDataForEdit(Key);
 			
@@ -708,7 +708,7 @@ Function GetServiceManagerProxy(Val UserPassword = Undefined) Export
 	
 	ServiceManagerAddress = Constants.InternalServiceManagerURL.Get();
 	If Not ValueIsFilled(ServiceManagerAddress) Then
-		Raise(NStr("en='Parameters of connection with the service manager have not been set.';ru='Не установлены параметры связи с менеджером сервиса.'"));
+		Raise(NStr("en='Parameters of connection with the service manager are not set.';ru='Не установлены параметры связи с менеджером сервиса.'"));
 	EndIf;
 	
 	ServiceAddress = ServiceManagerAddress + "/ws/ManagementApplication_1_0_3_1?wsdl";
@@ -736,7 +736,7 @@ EndFunction
 Procedure SetSessionSeparation(Val Use = Undefined, Val DataArea = Undefined) Export
 	
 	If Not CommonUseReUse.SessionWithoutSeparator() Then
-		Raise(NStr("en='To change the session separation is possible only out of the session launched without separators specification';ru='Изменить разделение сеанса возможно только из сеанса запущенного без указания разделителей'"));
+		Raise(NStr("en='You can change session separation only from the session running without separators specified';ru='Изменить разделение сеанса возможно только из сеанса запущенного без указания разделителей'"));
 	EndIf;
 	
 	SetPrivilegedMode(True);
@@ -766,7 +766,7 @@ Function SessionSeparatorValue() Export
 		Return 0;
 	Else
 		If Not CommonUse.UseSessionSeparator() Then
-			Raise(NStr("en='Delimiter value is not specified';ru='Не установлено значение разделителя'"));
+			Raise(NStr("en='Separator value is not set';ru='Не установлено значение разделителя'"));
 		EndIf;
 		
 		// Get a separator value of the current data area.
@@ -1026,7 +1026,7 @@ Procedure ProcessInformationAboutWebServiceError(Val ErrorInfo, Val SubsystemNam
 	EndIf;
 	
 	EventName = StringFunctionsClientServer.SubstituteParametersInString(
-		NStr("en='%1.An error occurred while calling the web service operation';ru='%1.Ошибка вызова операции web-сервиса'", CommonUseClientServer.MainLanguageCode()),
+		NStr("en='%1.Web service operation call error';ru='%1.Ошибка вызова операции web-сервиса'", CommonUseClientServer.MainLanguageCode()),
 		SubsystemName);
 	
 	ErrorText = StringFunctionsClientServer.SubstituteParametersInString(
@@ -1084,7 +1084,7 @@ Function GetFileFromServiceManagerStorage(Val FileID) Export
 	
 	ServiceManagerAddress = Constants.InternalServiceManagerURL.Get();
 	If Not ValueIsFilled(ServiceManagerAddress) Then
-		Raise(NStr("en='Parameters of connection with the service manager have not been set.';ru='Не установлены параметры связи с менеджером сервиса.'"));
+		Raise(NStr("en='Parameters of connection with the service manager are not set.';ru='Не установлены параметры связи с менеджером сервиса.'"));
 	EndIf;
 	
 	StorageAccessParameters = New Structure;
@@ -1424,8 +1424,8 @@ Procedure OnCheckingSafeModeDataSharing() Export
 				EventLogLevel.Error,
 				,
 				,
-				NStr("en='Safe mode for data separation is not enabled at publication';ru='При публикации не включен режим безопасного разделения данных'"));
-			Raise(NStr("en='Info base is published incorrectly. Session work will be terminated.';ru='Информационная база опубликована некорректно. Работа сеанса будет прекращена.'"));
+				NStr("en='Safe mode for data separation is not enabled on publishing';ru='При публикации не включен режим безопасного разделения данных'"));
+			Raise(NStr("en='Infobase is published incorrectly. The session will be closed.';ru='Информационная база опубликована некорректно. Работа сеанса будет прекращена.'"));
 		EndIf;
 		
 	EndIf;
@@ -1914,7 +1914,7 @@ Function ParametersSelections(Val FullMetadataObjectName) Export
 	Else
 		
 		Raise StringFunctionsClientServer.SubstituteParametersInString(
-			NStr("en='ParametersSelections () function must not be used for the %1 object.';ru='Функция ПараметрыВыборки() не должна использоваться для объекта %1.'"),
+			NStr("en='The ParametersSelections() function should not be used for object %1.';ru='Функция ПараметрыВыборки() не должна использоваться для объекта %1.'"),
 			FullMetadataObjectName);
 		
 	EndIf;
@@ -1989,11 +1989,11 @@ Function GetRecordManagerOfDataAreas(Val DataArea, Val Status)
 		RecordManager.Read();
 		
 		If Not RecordManager.Selected() Then
-			MessagePattern = NStr("en='Data area %1 not found';ru='Область данных %1 не найдена'");
+			MessagePattern = NStr("en='Data area %1 is not found';ru='Область данных %1 не найдена'");
 			MessageText = StringFunctionsClientServer.SubstituteParametersInString(MessagePattern, DataArea);
 			Raise(MessageText);
 		ElsIf RecordManager.Status <> Status Then
-			MessagePattern = NStr("en='Data area status %1 is not equal to ""%2""';ru='Статус области данных %1 не равен ""%2""'");
+			MessagePattern = NStr("en='Status of data area %1 is not ""%2""';ru='Статус области данных %1 не равен ""%2""'");
 			MessageText = StringFunctionsClientServer.SubstituteParametersInString(MessagePattern, DataArea, Status);
 			Raise(MessageText);
 		EndIf;
@@ -2001,7 +2001,7 @@ Function GetRecordManagerOfDataAreas(Val DataArea, Val Status)
 		CommitTransaction();
 	Except
 		RollbackTransaction();
-		WriteLogEvent(NStr("en='Preparation of data area';ru='Подготовка области данных'", CommonUseClientServer.MainLanguageCode()), 
+		WriteLogEvent(NStr("en='Prepare data area';ru='Подготовка области данных'", CommonUseClientServer.MainLanguageCode()), 
 			EventLogLevel.Error, , , DetailErrorDescription(ErrorInfo()));
 		Raise;
 	EndTry;
@@ -2035,7 +2035,7 @@ Procedure ChangeAreasStateAndNotifyManager(Val RecordManager, Val ResultOf, Val 
 		RecordManager.Status = Enums.DataAreaStatuses.Deleted;
 		MessageType = MessageRemoteAdministratorControlInterface.MessageDataAreaDeleted();
 	ElsIf ResultOf = "FatalError" Then
-		WriteLogEvent(NStr("en='Preparation of data area';ru='Подготовка области данных'", CommonUseClientServer.MainLanguageCode()), 
+		WriteLogEvent(NStr("en='Prepare data area';ru='Подготовка области данных'", CommonUseClientServer.MainLanguageCode()), 
 			EventLogLevel.Error, , , ErrorInfo);
 		RecordManager.ProcessingError = True;
 		MessageType = MessageRemoteAdministratorControlInterface.MessageErrorPreparingDataArea();
@@ -2120,7 +2120,7 @@ Function PrepareDataFromExportingArea(Val DataArea, Val ExportFileID, ErrorInfo)
 	
 	If ExportFileName = Undefined Then
 		
-		ErrorInfo = NStr("en='No initial data file for the area';ru='Нет файла начальных данных для области'");
+		ErrorInfo = NStr("en='No initial info file for the area';ru='Нет файла начальных данных для области'");
 		
 		Return "FatalError";
 	EndIf;
@@ -2145,7 +2145,7 @@ Function PrepareDataFromExportingArea(Val DataArea, Val ExportFileID, ErrorInfo)
 	Try
 		DeleteFiles(ExportFileName);
 	Except
-		WriteLogEvent(NStr("en='Preparation of data area';ru='Подготовка области данных'", CommonUseClientServer.MainLanguageCode()), 
+		WriteLogEvent(NStr("en='Prepare data area';ru='Подготовка области данных'", CommonUseClientServer.MainLanguageCode()), 
 			EventLogLevel.Error, , , DetailErrorDescription(ErrorInfo()));
 	EndTry;
 	Return Result;
@@ -2461,7 +2461,7 @@ Function GetFileFromStorage(Val FileID, Val ConnectionParameters,
 				EndIf;
 				
 				WriteInJournalFileStoreEvent(
-					NStr("en='Extraction';ru='Извлечение'", CommonUseClientServer.MainLanguageCode()),
+					NStr("en='Extract';ru='Извлечение'", CommonUseClientServer.MainLanguageCode()),
 					FileID,
 					SizeReceivedFile,
 					CurrentUniversalDate() - ExecutionStarted,
@@ -2472,7 +2472,7 @@ Function GetFileFromStorage(Val FileID, Val ConnectionParameters,
 				ExchangeOverFS = False;
 			EndIf;
 		Except
-			WriteLogEvent(NStr("en='Receiving the file from the storage';ru='Получение файла из хранилища'", CommonUseClientServer.MainLanguageCode()),
+			WriteLogEvent(NStr("en='Receive file from the storage';ru='Получение файла из хранилища'", CommonUseClientServer.MainLanguageCode()),
 				EventLogLevel.Error,,, DetailErrorDescription(ErrorInfo()));
 			ExchangeOverFS = False;
 		EndTry;
@@ -2560,7 +2560,7 @@ Function GetFileFromStorage(Val FileID, Val ConnectionParameters,
 	EndTry;
 	
 	WriteInJournalFileStoreEvent(
-		NStr("en='Extraction';ru='Извлечение'", CommonUseClientServer.MainLanguageCode()),
+		NStr("en='Extract';ru='Извлечение'", CommonUseClientServer.MainLanguageCode()),
 		FileID,
 		SizeReceivedFile,
 		CurrentUniversalDate() - ExecutionStarted,
@@ -2634,7 +2634,7 @@ Function PutFileToStorage(Val AddressDataFile, Val ConnectionParameters, Val Fil
 				CurrentUniversalDate() - ExecutionStarted,
 				ExchangeOverFS);
 		Except
-			WriteLogEvent(NStr("en='Insert File Exchange through FS';ru='Добавление файла.Обмен через ФС'", CommonUseClientServer.MainLanguageCode()),
+			WriteLogEvent(NStr("en='Add file.Exchange via FS';ru='Добавление файла.Обмен через ФС'", CommonUseClientServer.MainLanguageCode()),
 				EventLogLevel.Error,,, DetailErrorDescription(ErrorInfo()));
 			ExchangeOverFS = False;
 		EndTry;
@@ -2657,7 +2657,7 @@ Function PutFileToStorage(Val AddressDataFile, Val ConnectionParameters, Val Fil
 				FileCopy(FileProperties.DescriptionFull, FullFileName);
 			Else
 				Raise(StringFunctionsClientServer.SubstituteParametersInString(
-					NStr("en='Adding a file to the storage. File %1 has not been found.';ru='Добавление файла в хранилище. Не найден файл %1.'"), FileProperties.DescriptionFull));
+					NStr("en='Add file to the storage. File %1 not found.';ru='Добавление файла в хранилище. Не найден файл %1.'"), FileProperties.DescriptionFull));
 			EndIf;
 		Else
 			Description.Data.Write(FullFileName);
@@ -2747,19 +2747,19 @@ Function GetFileNameWithData(Val AddressDataFile, Val FileName = "")
 	
 	If TypeOf(AddressDataFile) = Type("String") Then // File data address in a temporary storage.
 		If IsBlankString(AddressDataFile) Then
-			Raise(NStr("en='Storage address is incorrect.';ru='Неверный адрес хранилища.'"));
+			Raise(NStr("en='Invalid storage address.';ru='Неверный адрес хранилища.'"));
 		EndIf;
 		FileData = GetFromTempStorage(AddressDataFile);
 	ElsIf TypeOf(AddressDataFile) = Type("File") Then // File type object.
 		If Not AddressDataFile.Exist() Then
-			Raise(NStr("en='File not found';ru='Файл не найден.'"));
+			Raise(NStr("en='File is not found.';ru='Файл не найден.'"));
 		EndIf;
 		FileData = Undefined;
 		FileName = AddressDataFile.DescriptionFull;
 	ElsIf TypeOf(AddressDataFile) = Type("BinaryData") Then // File data.
 		FileData = AddressDataFile;
 	Else
-		Raise(NStr("en='Incorrect data type';ru='Неверный тип данных'"));
+		Raise(NStr("en='Invalid data type';ru='Неверный тип данных'"));
 	EndIf;
 	
 	If IsBlankString(FileName) Then
@@ -2969,7 +2969,7 @@ Procedure WriteInJournalFileStoreEvent(Val Event,
 	EndIf;
 	
 	WriteLogEvent(
-		NStr("en='Storage of Files';ru='Хранилище файлов'", CommonUseClientServer.MainLanguageCode()) + "." + Event,
+		NStr("en='File storage';ru='Хранилище файлов'", CommonUseClientServer.MainLanguageCode()) + "." + Event,
 		EventLogLevel.Information,
 		,
 		,
@@ -3004,7 +3004,7 @@ Procedure DeleteTemporaryFiles(Val FileName)
 			EndIf;
 		EndIf;
 	Except
-		WriteLogEvent(NStr("en='Perform temp files deletion operations';ru='Выполнение операции удаления временного файла'", 
+		WriteLogEvent(NStr("en='Deleting temporary file';ru='Выполнение операции удаления временного файла'", 
 			CommonUseClientServer.MainLanguageCode()),
 			EventLogLevel.Error,,, DetailErrorDescription(ErrorInfo()));
 		Return;
@@ -3066,7 +3066,7 @@ Function StructuralObjectToXDTOObject(Val StructuralTypeValue)
 	
 	If Not StructuralTypeToSerialize(StructuralType) Then
 		ErrorInfo = StringFunctionsClientServer.SubstituteParametersInString(
-			NStr("en='%1 type is not a structural one or its serialization is not currently supported.';ru='Тип %1 не является структурным или его сериализация в настоящее время не поддерживается.'"),
+			NStr("en='Type ""%1"" is not structural or currently its serialization is not supported.';ru='Тип %1 не является структурным или его сериализация в настоящее время не поддерживается.'"),
 			StructuralType);
 		Raise(ErrorInfo);
 	EndIf;
@@ -3179,7 +3179,7 @@ Function XDTOObjectToStructuralObject(XDTODataObject)
 	
 	If Not StructuralTypeToSerialize(StructuralType) Then
 		ErrorInfo = StringFunctionsClientServer.SubstituteParametersInString(
-			NStr("en='%1 type is not a structural one or its serialization is not currently supported.';ru='Тип %1 не является структурным или его сериализация в настоящее время не поддерживается.'"),
+			NStr("en='Type ""%1"" is not structural or currently its serialization is not supported.';ru='Тип %1 не является структурным или его сериализация в настоящее время не поддерживается.'"),
 			StructuralType);
 		Raise(ErrorInfo);
 	EndIf;
@@ -3367,7 +3367,7 @@ EndFunction
 Function ImportAreaOfSuppliedData(Val DataArea, Val ExportFileID, Val Variant, MessageAboutFatalError)
 	
 	If Not Users.InfobaseUserWithFullAccess(, True) Then
-		Raise(NStr("en='Insufficient rights to perform operation';ru='Недостаточно прав для выполнения операции'"));
+		Raise(NStr("en='Insufficient rights to perform the operation';ru='Недостаточно прав для выполнения операции'"));
 	EndIf;
 	
 	DataFileFound = False;
@@ -3404,13 +3404,13 @@ Function ImportAreaOfSuppliedData(Val DataArea, Val ExportFileID, Val Variant, M
 	
 		If Descriptors.Descriptor.Count() = 0 Then
 			MessageAboutFatalError = 
-			NStr("en='The service manager does not contain the initial data file for the current configuration version.';ru='В менеджере сервиса нет файла начальных данных для текущей версии конфигурации.'");
+			NStr("en='Service manager does not include the initial data file for the current configuration version.';ru='В менеджере сервиса нет файла начальных данных для текущей версии конфигурации.'");
 			Return "FatalError";
 		EndIf;
 		
 		If Descriptors.Descriptor[0].FileGUID <> ExportFileID Then
 			MessageAboutFatalError = 
-			NStr("en='Initial data file that is present in the service manager differs from one specified in the message for the area preparation. Area can not be prepared.';ru='Файл начальных данных, имеющийся в менеджере сервиса, отличается от указанного в сообщении на подготовку области. Область не может быть подготовлена.'");
+			NStr("en='The initial data file available in the service manager differs from the one specified in the message for the area preparation. Cannot prepare the area.';ru='Файл начальных данных, имеющийся в менеджере сервиса, отличается от указанного в сообщении на подготовку области. Область не может быть подготовлена.'");
 			Return "FatalError";
 		EndIf;
 		
@@ -3418,7 +3418,7 @@ Function ImportAreaOfSuppliedData(Val DataArea, Val ExportFileID, Val Variant, M
 			
 		If ExportFileName = Undefined Then
 			MessageAboutFatalError = 
-			NStr("en='There is no required file of the initial data in the service manager, it may have been replaced. Area can not be prepared.';ru='В менеджере сервиса больше нет требуемого файла начальных данных, вероятно он был заменен. Область не может быть подготовлена.'");
+			NStr("en='Service manager no longer contains the required file with initial data, it might have been replaced. Area cannot be prepared.';ru='В менеджере сервиса больше нет требуемого файла начальных данных, вероятно он был заменен. Область не может быть подготовлена.'");
 			Return False;
 		EndIf;
 		
@@ -3444,7 +3444,7 @@ Function ImportAreaOfSuppliedData(Val DataArea, Val ExportFileID, Val Variant, M
 		
 	Except
 		
-		WriteLogEvent(NStr("en='Copying of data area';ru='Копирование области данных'", CommonUseClientServer.MainLanguageCode()), 
+		WriteLogEvent(NStr("en='Copy data area';ru='Копирование области данных'", CommonUseClientServer.MainLanguageCode()), 
 			EventLogLevel.Error, , , DetailErrorDescription(ErrorInfo()));
 		Try
 			DeleteFiles(ExportFileName);
@@ -3472,7 +3472,7 @@ Procedure ControlDataOnWriteBrain(Val Source)
 	
 	If CommonUseReUse.DataSeparationEnabled() AND CommonUseReUse.CanUseSeparatedData() Then
 		
-		ExceptionsRepresentation = NStr("en='Access violation!';ru='Нарушение прав доступа!'", CommonUseClientServer.MainLanguageCode());
+		ExceptionsRepresentation = NStr("en='Access right violation';ru='Нарушение прав доступа!'", CommonUseClientServer.MainLanguageCode());
 		
 		WriteLogEvent(
 			ExceptionsRepresentation,
@@ -3975,7 +3975,7 @@ Procedure ControlUndividedDataWhenUpdating() Export
 	
 	If Not IsBlankString(ResultingExcept) Then
 		
-		ResultingExcept = NStr("en='Errors in the configuration metadata structure have been found:';ru='Обнаружены ошибки в структуре метаданных конфигурации:'") + Chars.LF + Chars.CR + ResultingExcept;
+		ResultingExcept = NStr("en='Errors in configuration metadata structure are detected:';ru='Обнаружены ошибки в структуре метаданных конфигурации:'") + Chars.LF + Chars.CR + ResultingExcept;
 		Raise ResultingExcept;
 		
 	EndIf;

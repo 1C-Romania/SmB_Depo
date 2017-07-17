@@ -133,7 +133,7 @@ Procedure AtFillingToDoList(CurrentWorks) Export
 	Prototype.ThereIsWork = MustMoveBorderTotals();
 	Prototype.Important   = True;
 	Prototype.Form    = DataProcessorFullName + ".Form";
-	Prototype.Presentation = NStr("en='Optimize the application';ru='Оптимизировать программу'");
+	Prototype.Presentation = NStr("en='Optimize application';ru='Оптимизировать программу'");
 	Prototype.ToolTip     = NStr("en='Speed up documents processing and reports generation.
 		|Mandatory monthly procedure, can take some time.';ru='Ускорить проведение документов и формирование отчетов.
 		|Обязательная ежемесячная процедура, может занять некоторое время.'");
@@ -394,7 +394,7 @@ Function ScheduleTasks1Default(Val Name)
 		Schedule.BeginTime = Date(1, 1, 1, 01, 00, 00);
 		Schedule.DayInMonth = 5;
 	Else
-		MessagePattern = NStr("en='Unknown name of a task %1';ru='Неизвестное имя задания %1'");
+		MessagePattern = NStr("en='Unknown job name %1';ru='Неизвестное имя задания %1'");
 		MessageText = StringFunctionsClientServer.SubstituteParametersInString(MessagePattern, Name);
 		Raise(MessageText);
 	EndIf;

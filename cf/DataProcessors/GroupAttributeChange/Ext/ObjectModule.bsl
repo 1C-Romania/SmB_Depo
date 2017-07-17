@@ -17,7 +17,7 @@ Function ExternalDataProcessorInfo() Export
 		RegistrationParameters.SafeMode = False;
 		
 		NewCommand = RegistrationParameters.Commands.Add();
-		NewCommand.Presentation = NStr("en='Group change of attributes';ru='Групповое изменение реквизитов'");
+		NewCommand.Presentation = NStr("en='Bulk attribute editing';ru='Групповое изменение реквизитов'");
 		NewCommand.ID = "OpenGlobally";
 		NewCommand.Use = ModuleAdditionalReportsAndDataProcessorsClientServer.TypeCommandsFormOpening();
 		NewCommand.ShowAlert = False;
@@ -570,7 +570,7 @@ Function ObjectKindByKind(Type) Export
 	
 	Else
 		Raise PlaceParametersIntoString(
-			NStr("en='InvalidValueTypeParameter%1';ru='Неверный тип значения параметра (%1)'"), String(Type));
+			NStr("en='Incorrect type of parameter value (%1)';ru='Неверный тип значения параметра (%1)'"), String(Type));
 	
 	EndIf;
 	
@@ -927,7 +927,7 @@ Function CommonModule(Name) Export
 	
 	If TypeOf(Module) <> Type("CommonModule") Then
 		Raise PlaceParametersIntoString(
-			NStr("en='Common module ""%1"" is not found.';ru='Общий модуль ""%1"" не найден.'"), Name);
+			NStr("en='Common module ""%1"" was not found.';ru='Общий модуль ""%1"" не найден.'"), Name);
 	EndIf;
 	
 	Return Module;

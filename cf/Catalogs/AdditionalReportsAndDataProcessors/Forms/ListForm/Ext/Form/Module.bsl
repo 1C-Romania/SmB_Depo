@@ -239,7 +239,7 @@ Function PublicationChange(PublicationVariant)
 	SelectedRows = Items.List.SelectedRows;
 	
 	If SelectedRows.Count() = 0 Then
-		MessageText = NStr("en='No additional reports (data processors) selected';ru='Не выбран ни один дополнительный отчет (обработка)'");
+		MessageText = NStr("en='No additional report (data processor) is selected';ru='Не выбран ни один дополнительный отчет (обработка)'");
 		OutputWarning = NewExecutionResult.OutputWarning;
 		OutputWarning.Use = True;
 		OutputWarning.Text = MessageText;
@@ -301,10 +301,10 @@ Function PublicationChange(PublicationVariant)
 	
 	If SelectedRows.Count() = 1 Then
 		ObjectName = CommonUse.ObjectAttributeValue(SelectedRows[0], "Description");
-		MessageText = NStr("en='Additional report (data processor)  ""%1"" publication is changed';ru='Изменена публикация дополнительного отчета (обработки) ""%1""'");
+		MessageText = NStr("en='Publication of additional report (data processor) ""%1"" is changed';ru='Изменена публикация дополнительного отчета (обработки) ""%1""'");
 		MessageText = StringFunctionsClientServer.SubstituteParametersInString(MessageText, ObjectName);
 	Else
-		MessageText = NStr("en='Additional reports (data processors) %1 publication is changed';ru='Изменена публикация у %1 дополнительных отчетов (обработок)'");
+		MessageText = NStr("en='Publication of %1 additional reports (data processors) is changed';ru='Изменена публикация у %1 дополнительных отчетов (обработок)'");
 		MessageText = StringFunctionsClientServer.SubstituteParametersInString(MessageText, SelectedRows.Count());
 	EndIf;
 	
@@ -328,7 +328,7 @@ Procedure ListChangeMarkToDelete()
 	FillPropertyValues(Context, TableRow);
 	
 	If Context.DeletionMark Then
-		QuestionText = NStr("en='Unmark ""%1"" for deletion?';ru='Снять с ""%1"" пометку на удаление?'");
+		QuestionText = NStr("en='Clear mark for deletion for ""%1""?';ru='Снять с ""%1"" пометку на удаление?'");
 	Else
 		QuestionText = NStr("en='Mark ""%1"" for deletion?';ru='Пометить ""%1"" на удаление?'");
 	EndIf;

@@ -21,7 +21,7 @@ Procedure OnCreateAtServer(Cancel, StandardProcessing)
 	If ContextCall Then
 		FulfillActionsAtContextOpening();
 	Else
-		Title = NStr("en='Group change of attributes';ru='Групповое изменение реквизитов'");
+		Title = NStr("en='Bulk attribute editing';ru='Групповое изменение реквизитов'");
 	EndIf;
 	GenerateConfiguredChangesExplanation();
 	RefreshElementsVisible();
@@ -207,7 +207,7 @@ Procedure Change(Command)
 	
 	If ButtonFunction = "Change" Then
 		If ObjectCountForDataProcessors = 0 Then
-			ShowMessageBox(, NStr("en='Items for changing are not specified';ru='Не указаны элементы для изменения'"));
+			ShowMessageBox(, NStr("en='Items for change are not specified';ru='Не указаны элементы для изменения'"));
 			Return;
 		EndIf;
 	
@@ -216,7 +216,7 @@ Procedure Change(Command)
 		Else
 			QuestionText = NStr("en='Filter is not set. Change all items?';ru='Отбор не задан. Изменить все элементы?'");
 			NotifyDescription = New NotifyDescription("PerformChangingSelectionCheckIsDone", ThisObject);
-			ShowQueryBox(NOTifyDescription, QuestionText, QuestionDialogMode.OKCancel, , , NStr("en='Change of elements';ru='Изменение элементов'"));
+			ShowQueryBox(NOTifyDescription, QuestionText, QuestionDialogMode.OKCancel, , , NStr("en='Change items';ru='Изменение элементов'"));
 		EndIf;
 		
 		Return;
@@ -326,9 +326,9 @@ Procedure PerformChangingSelectionCheckIsDone(QuestionResult = Undefined, Additi
 	EndIf;
 	
 	If Not ThereAreConfiguredChanges() Then
-		QuestionText = NStr("en='Changes are not configured. Rewrite items without changes?';ru='Изменения не настроены. Выполнить перезапись элементов без изменений?'");
+		QuestionText = NStr("en='Changes are not set. Rewrite the items without changes?';ru='Изменения не настроены. Выполнить перезапись элементов без изменений?'");
 		NotifyDescription = New NotifyDescription("PerformChangeChecksPerformed", ThisObject);
-		ShowQueryBox(NOTifyDescription, QuestionText, QuestionDialogMode.OKCancel, , , NStr("en='Change of elements';ru='Изменение элементов'"));
+		ShowQueryBox(NOTifyDescription, QuestionText, QuestionDialogMode.OKCancel, , , NStr("en='Change items';ru='Изменение элементов'"));
 	Else
 		PerformChangeChecksPerformed();
 	EndIf;
@@ -359,12 +359,12 @@ Procedure FulfillActionsAtContextOpening()
 	
 	For Each TransferedObject IN Parameters.ObjectsArray Do
 		If TypeOf(TransferedObject) <> TransferedObjectType Then
-			Raise NStr("en='Group change is only for items of a single type.';ru='Групповое изменение возможно только для элементов одного типа.'");
+			Raise NStr("en='Bulk edit is only for items of one type.';ru='Групповое изменение возможно только для элементов одного типа.'");
 		EndIf;
 	EndDo;
 	
 	ObjectCount    = Parameters.ObjectsArray.Count();
-	CaptionPattern       = NStr("en='Change of selected  items ""%1"" (%2)';ru='Изменение выделенных элементов ""%1"" (%2)'");
+	CaptionPattern       = NStr("en='Change selected items ""%1"" (%2)';ru='Изменение выделенных элементов ""%1"" (%2)'");
 	Title = PlaceParametersIntoString(CaptionPattern, TransferedObjectType, ObjectCount);
 	
 	ChangeProhibitionIntegrated = Metadata.FindByFullName("CommonModule.ObjectsAttributesEditProhibitionClient") <> Undefined;
@@ -478,7 +478,7 @@ EndProcedure
 &AtClient
 Procedure QuestionGoToToAttributeUnblocking()
 	
-	QuestionText = NStr("en='Attribute is locked. Do you want to proceed to the attributes unlocking?';ru='Реквизит заблокирован, перейти к разблокированию реквизитов?'");
+	QuestionText = NStr("en='The attribute has been locked.  Unlock attributes?';ru='Реквизит заблокирован, перейти к разблокированию реквизитов?'");
 	
 	Buttons = New ValueList;
 	Buttons.Add(DialogReturnCode.Yes, NStr("en='Yes';ru='Да'"));
@@ -663,10 +663,10 @@ Procedure SetButtonsDuringModification(BeginChanges)
 	Items.FormChange.Enabled = True;
 	
 	If BeginChanges Then
-		Items.FormChange.Title = NStr("en='Break';ru='Прервать'");
+		Items.FormChange.Title = NStr("en='Abort';ru='Прервать'");
 	Else
 		If ObjectsFailedToChange.Count() > 0 Then
-			Items.FormChange.Title = NStr("en='Repeat changing';ru='Повторить изменение'");
+			Items.FormChange.Title = NStr("en='Change again';ru='Повторить изменение'");
 		Else
 			Items.FormChange.Title = NStr("en='Close';ru='Закрыть'");
 		EndIf;
@@ -685,7 +685,7 @@ Procedure ChangeObjects()
 		
 		If TPAboutPortionSetting = 1 Then // processing by one call
 			
-			ShowUserNotification(NStr("en='Selected items modification';ru='Изменение выделенных элементов'"), ,NStr("en='Please wait, the processing takes some time...';ru='Пожалуйста подождите, обработка может занять некоторое время...'"));
+			ShowUserNotification(NStr("en='Change selected items';ru='Изменение выделенных элементов'"), ,NStr("en='Please wait. Data processor may take some time...';ru='Пожалуйста подождите, обработка может занять некоторое время...'"));
 			ShowPercentOfProcessed = False;
 			
 			PortionSize = ObjectCountForDataProcessors;
@@ -718,7 +718,7 @@ Procedure ChangeObjects()
 			EndIf;
 		EndIf;
 		
-		Status(NStr("en='Items are processing...';ru='Обрабатываются элементы...'"), 0, NStr("en='Selected items modification';ru='Изменение выделенных элементов'"));
+		Status(NStr("en='Processing items...';ru='Обрабатываются элементы...'"), 0, NStr("en='Change selected items';ru='Изменение выделенных элементов'"));
 		
 		ShowPercentOfProcessed = True;
 	EndIf;
@@ -796,7 +796,7 @@ Procedure ProcessChangeResult(ResultOfChange = Undefined, ContinueProcessing = U
 		
 		// If there are errors in transaction - Roll the whole transaction back.
 		If Object.ChangeInTransaction Then
-			WarningText = NStr("en='At the items modification the errors have occurred - changes have been cancelled.';ru='При изменении элементов обнаружены ошибки - изменения отменены.'");
+			WarningText = NStr("en='Errors occurred while editing the items. The changes were canceled.';ru='При изменении элементов обнаружены ошибки - изменения отменены.'");
 			AttachIdleHandler("FinishChangeOfObjects", 0.1, True);
 			Return; // Early exit from the cycle and procedure.
 		EndIf;
@@ -807,12 +807,12 @@ Procedure ProcessChangeResult(ResultOfChange = Undefined, ContinueProcessing = U
 		|Прервать изменение элементов и перейти к просмотру ошибок?
 		|'");
 		Buttons = New ValueList;
-		Buttons.Add(DialogReturnCode.Abort, NStr("en='Break';ru='Прервать'"));
+		Buttons.Add(DialogReturnCode.Abort, NStr("en='Abort';ru='Прервать'"));
 		Buttons.Add(DialogReturnCode.Ignore, NStr("en='Continue';ru='Продолжить'"));
-		Buttons.Add(DialogReturnCode.No, NStr("en=""Don't ask again"";ru='больше не спрашивать'"));
+		Buttons.Add(DialogReturnCode.No, NStr("en='do not ask again';ru='больше не спрашивать'"));
 		
 		NotifyDescription = New NotifyDescription("ProcessChangeResultResponseReceived", ThisObject, ResultOfChange);
-		ShowQueryBox(NOTifyDescription, QuestionText, Buttons, , DialogReturnCode.Abort, NStr("en='Errors when changing the items';ru='Ошибки при изменении элементов'"));
+		ShowQueryBox(NOTifyDescription, QuestionText, Buttons, , DialogReturnCode.Abort, NStr("en='Errors occurred when changing items';ru='Ошибки при изменении элементов'"));
 		Return;
 	EndDo;
 	
@@ -821,7 +821,7 @@ Procedure ProcessChangeResult(ResultOfChange = Undefined, ContinueProcessing = U
 	If CurrentStateChanges.ShowPercentOfProcessed Then
 		// Calculate the current percentage of processed objects.
 		CurrentPercent = Round(CurrentStateChanges.CurrentPosition / CurrentStateChanges.ObjectCountForDataProcessors * 100);
-		Status(NStr("en='Items are processing...';ru='Обрабатываются элементы...'"), CurrentPercent, NStr("en='Selected items modification';ru='Изменение выделенных элементов'"));
+		Status(NStr("en='Processing items...';ru='Обрабатываются элементы...'"), CurrentPercent, NStr("en='Change selected items';ru='Изменение выделенных элементов'"));
 	EndIf;
 	
 	IsItemsForDataProcessors = ?(CurrentStateChanges.CurrentPosition < CurrentStateChanges.ObjectCountForDataProcessors, True, False);
@@ -858,8 +858,8 @@ Procedure FinishChangeOfObjects()
 	
 	DataProcessorCompleted = CurrentStateChanges.CountOfChanged = CurrentStateChanges.ObjectCountForDataProcessors;
 	If DataProcessorCompleted Then
-		ShowUserNotification(NStr("en='Item attribute changing';ru='Изменение реквизитов элементов'"), , 
-			PlaceParametersIntoString(NStr("en='changed items (%1).';ru='Изменены элементы (%1).'"), CurrentStateChanges.CountOfChanged));
+		ShowUserNotification(NStr("en='Change item attributes';ru='Изменение реквизитов элементов'"), , 
+			PlaceParametersIntoString(NStr("en='Items are changed (%1).';ru='Изменены элементы (%1).'"), CurrentStateChanges.CountOfChanged));
 		GoToPageAllDone();
 		Return;
 	EndIf;
@@ -867,10 +867,10 @@ Procedure FinishChangeOfObjects()
 	Items.GroupObjectsFailedToChange.Visible = ObjectsFailedToChange.Count() > 0;
 	
 	If DataProcessorCompleted Then
-		MessagePattern = NStr("en='Changes are done for all selected items (%2).';ru='Изменения выполнены во всех выбранных элементах (%2).'");
+		MessagePattern = NStr("en='Changes are made in all selected items (%2).';ru='Изменения выполнены во всех выбранных элементах (%2).'");
 	Else
 		If Object.ChangeInTransaction Or CurrentStateChanges.CountOfChanged = 0 Then
-			MessagePattern = NStr("en='Changes are not performed';ru='Изменения не выполнены.'");
+			MessagePattern = NStr("en='Not changed.';ru='Изменения не выполнены.'");
 		Else
 			MessagePattern = NStr("en='Partly modified.
 		|Modified: %1; Failed to change: %3';ru='Изменения выполнены частично.
@@ -883,7 +883,7 @@ Procedure FinishChangeOfObjects()
 		If SkippedQuantity > 0 AND Not CurrentStateChanges.InterruptChange Then
 			TableRow = ObjectsFailedToChange.Add();
 			TableRow.Object = PlaceParametersIntoString(NStr("en='... and other items (%1)';ru='... и другие элементы (%1)'"), SkippedQuantity);
-			TableRow.Cause = NStr("en='Skipped since one or more items were not changed.';ru='Пропущены, так как не были изменены один или более элементов.'");
+			TableRow.Cause = NStr("en='Skipped as one or more items were not changed.';ru='Пропущены, так как не были изменены один или более элементов.'");
 		EndIf;
 	EndIf;
 	
@@ -924,7 +924,7 @@ Procedure GoToPageAllDone()
 		NStr("en='Attributes of selected items were changed.
 		|Total modified items:%1';ru='Реквизиты выбранных элементов были изменены.
 		|Всего изменено элементов: %1'"), CurrentStateChanges.CountOfChanged);
-	Items.FormChange.Title = NStr("en='Done';ru='Готово'");
+	Items.FormChange.Title = NStr("en='Finish';ru='Готово'");
 	Items.FormBack.Visible = True;
 	
 EndProcedure
@@ -1118,7 +1118,7 @@ Function ChangeAtServer(Val StopChangingAtError)
 			DataProcessorObject.RunChangeOfObjects(ParametersStructure, StorageAddress);
 			BackgroundJobResult = New Structure("TaskDone, StorageAddress", True, StorageAddress);
 	Else
-		JobDescription = NStr("en='Item group changing';ru='Групповое изменение элементов'");
+		JobDescription = NStr("en='Bulk edit of items';ru='Групповое изменение элементов'");
 		
 		RunningMethod = "LongActions.ExecuteProcedureDataProcessorsObjectModule";
 		ParametersStructure = New Structure("DataProcessorName,MethodName,ExecuteParameters,IsExternalDataProcessor,AdditionalInformationProcessorRef",
@@ -2327,7 +2327,7 @@ Procedure GenerateConfiguredChangesExplanation()
 	EndIf;
 	
 	If Not IsBlankString(Explanation) Then
-		Explanation = Explanation + " " + NStr("en='in selected items';ru='в выбранных элементах'");
+		Explanation = Explanation + " " + NStr("en='in the selected items';ru='в выбранных элементах'");
 	EndIf;
 	
 	For Each TabularSection IN ChangeableTableParts Do
@@ -2354,15 +2354,15 @@ Procedure GenerateConfiguredChangesExplanation()
 			EndDo;
 		EndIf;
 		Explanation = Explanation + " " 
-			+ PlaceParametersIntoString(NStr("en='in tabular section ""%1""';ru='в табличной части ""%1""'"), TabularSection.Key);
+			+ PlaceParametersIntoString(NStr("en='in the ""%1"" tabular section';ru='в табличной части ""%1""'"), TabularSection.Key);
 	EndDo;
 	
 	If Not IsBlankString(Explanation) Then
 		If ChangeableTableParts.Count() > 0 Then
 			If FilterByStrings Then 
-				Explanation = Explanation + " " + NStr("en='in selected item strings answering filter conditions';ru='в тех строках выбранных элементов, которые удовлетворяют условиям отбора'")
+				Explanation = Explanation + " " + NStr("en='in the lines of the selected items that satisfy the filter conditions';ru='в тех строках выбранных элементов, которые удовлетворяют условиям отбора'")
 			Else
-				Explanation = Explanation + " " + NStr("en='for all strings of selected items';ru='во всех строках выбранных элементов'")
+				Explanation = Explanation + " " + NStr("en='in all lines of the selected items';ru='во всех строках выбранных элементов'")
 			EndIf;
 		EndIf;
 	EndIf;
@@ -2374,7 +2374,7 @@ Procedure GenerateConfiguredChangesExplanation()
 			Explanation = NStr("en='Rewrite the selected items.';ru='Выполнить перезапись выбранных элементов.'");
 		EndIf;
 	Else
-		Explanation = NStr("en='Items with the attributes to be changed are not selected.';ru='Не выбраны элементы, реквизиты которых необходимо изменить.'");
+		Explanation = NStr("en='Items which attributes shall be changed are not selected.';ru='Не выбраны элементы, реквизиты которых необходимо изменить.'");
 	EndIf;
 	
 	Items.SettingChangesExplanation.Title = Explanation;
@@ -2388,7 +2388,7 @@ Procedure UpdateLabelSelectedCount()
 		SelectedObjectsCount = SelectedObjectsCount(True, , ErrorMessageText);
 		If IsBlankString(ErrorMessageText) Then
 			LabelText = PlaceParametersIntoString(
-				NStr("en='Chosen items: %1';ru='Выбрано элементов: %1'"), SelectedObjectsCount);
+				NStr("en='Selected items: %1';ru='Выбрано элементов: %1'"), SelectedObjectsCount);
 		Else
 			ThereAreErrorsInSelection = True;
 			LabelText = PlaceParametersIntoString(
@@ -2486,7 +2486,7 @@ Procedure ConfigureChangeSetting(Val Setting)
 	EndDo;
 	
 	If IsBlocked Then
-		ShowMessageBox(, NStr("en='Some attributes are blocked for modifications, changes not set';ru='Некоторые реквизиты заблокированы для изменения, изменения не установлены.'"));
+		ShowMessageBox(, NStr("en='Some attributes are locked for editing. Changes were not defined.';ru='Некоторые реквизиты заблокированы для изменения, изменения не установлены.'"));
 	EndIf;
 	
 	UpdateChangingAttributesCounters();
@@ -2716,7 +2716,7 @@ Function ObjectManagerByFullName(DescriptionFull)
 				Manager = CalculationRegisters[MOName].Recalculations;
 			Else
 				Raise PlaceParametersIntoString(
-					NStr("en='Unknown type of metadata object ""%1""';ru='Неизвестный тип объекта метаданных ""%1""'"), DescriptionFull);
+					NStr("en='Unknown metadata object type ""%1""';ru='Неизвестный тип объекта метаданных ""%1""'"), DescriptionFull);
 			EndIf;
 		EndIf;
 		
@@ -2742,7 +2742,7 @@ Function ObjectManagerByFullName(DescriptionFull)
 	EndIf;
 	
 	Raise PlaceParametersIntoString(
-		NStr("en='Unknown type of metadata object ""%1""';ru='Неизвестный тип объекта метаданных ""%1""'"), DescriptionFull);
+		NStr("en='Unknown metadata object type ""%1""';ru='Неизвестный тип объекта метаданных ""%1""'"), DescriptionFull);
 	
 EndFunction
 
@@ -2970,7 +2970,7 @@ Function ObjectKindByKind(Type)
 	
 	Else
 		Raise PlaceParametersIntoString(
-			NStr("en='InvalidValueTypeParameter%1';ru='Неверный тип значения параметра (%1)'"), String(Type));
+			NStr("en='Incorrect type of parameter value (%1)';ru='Неверный тип значения параметра (%1)'"), String(Type));
 	
 	EndIf;
 	
@@ -3526,14 +3526,14 @@ Function CommonModule(Name)
 	
 	If TypeOf(Module) <> Type("CommonModule") Then
 		Raise PlaceParametersIntoString(
-			NStr("en='Common module ""%1"" is not found.';ru='Общий модуль ""%1"" не найден.'"), Name);
+			NStr("en='Common module ""%1"" was not found.';ru='Общий модуль ""%1"" не найден.'"), Name);
 	EndIf;
 #Else
 	Module = Eval(Name);
 #If Not WebClient Then
 	If TypeOf(Module) <> Type("CommonModule") Then
 		Raise PlaceParametersIntoString(
-			NStr("en='Common module ""%1"" is not found.';ru='Общий модуль ""%1"" не найден.'"), Name);
+			NStr("en='Common module ""%1"" was not found.';ru='Общий модуль ""%1"" не найден.'"), Name);
 	EndIf;
 #EndIf
 #EndIf
@@ -3701,7 +3701,7 @@ Function ReadXMLToTable(Val XML)
 	If Not Read.Read() Then
 		Raise NStr("en='Empty XML';ru='Пустой XML'");
 	ElsIf Read.Name <> "Items" Then
-		Raise NStr("en='Error in XML structure';ru='Ошибка в структуре XML'");
+		Raise NStr("en='An error occurred in XML structure';ru='Ошибка в структуре XML'");
 	EndIf;
 	
 	// Get the table description and create it.
@@ -3722,7 +3722,7 @@ Function ReadXMLToTable(Val XML)
 		ElsIf Read.NodeType <> XMLNodeType.StartElement Then
 			Continue;
 		ElsIf Read.Name <> "Item" Then
-			Raise NStr("en='Error in XML structure';ru='Ошибка в структуре XML'");
+			Raise NStr("en='An error occurred in XML structure';ru='Ошибка в структуре XML'");
 		EndIf;
 		
 		NewRow = ValueTable.Add();

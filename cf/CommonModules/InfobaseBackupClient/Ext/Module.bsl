@@ -33,7 +33,7 @@ Procedure OnStart(Parameters) Export
 	CheckInfobaseBackup(FixedParametersOfInfobaseBackup);
 	
 	If FixedParametersOfInfobaseBackup.RecoverHasBeenPerformed Then
-		NotificationText = NStr("en='Data recovery has been successfully performed.';ru='Восстановление данных проведено успешно.'");
+		NotificationText = NStr("en='Data is restored successfully.';ru='Восстановление данных проведено успешно.'");
 		ShowUserNotification(NStr("en='Data is restored.';ru='Данные восстановлены.'"), , NotificationText);
 	EndIf;
 	
@@ -130,7 +130,7 @@ Procedure OnGetListOfWarningsToCompleteJobs(Warnings) Export
 	EndIf;
 	
 	WarningParameters = StandardSubsystemsClient.AlertOnEndWork();
-	WarningParameters.FlagText = NStr("en='Perform the backup';ru='Выполнить резервное копирование'");
+	WarningParameters.FlagText = NStr("en='Back up';ru='Выполнить резервное копирование'");
 	WarningParameters.Priority = 50;
 	
 	ActionIfMarked = WarningParameters.ActionIfMarked;
@@ -316,7 +316,7 @@ Procedure DeleteBackupsBySetting() Export
 		Except
 			
 			EventLogMonitorClient.AddMessageForEventLogMonitor(EventLogMonitorEvent(), "Error",
-				NStr("en='Failed to clear the directory with the backup copies.';ru='Не удалось провести очистку каталога с резервными копиями.'") + Chars.LF 
+				NStr("en='Cannot clear a directory with backups.';ru='Не удалось провести очистку каталога с резервными копиями.'") + Chars.LF 
 				+ DetailErrorDescription(ErrorInfo()),,True);
 			
 		EndTry;
@@ -348,7 +348,7 @@ Procedure CheckInfobaseBackup(Parameters)
 		
 		ShowUserNotification(NStr("en='Backup';ru='Резервное копирование'"),
 			"e1cib/command/CommonCommand.ShowBackupResult",
-			NStr("en='Backup has been successfully performed';ru='Резервное копирование проведено успешно'"), PictureLib.Information32);
+			NStr("en='Backup was successfully performed';ru='Резервное копирование проведено успешно'"), PictureLib.Information32);
 		InfobaseBackupServerCall.SetSettingValue("CopyingHasBeenPerformed", False);
 		
 	EndIf;
@@ -375,7 +375,7 @@ Procedure NotifyUserAboutBackingUp(VariantNotifications) Export
 		SettingsFormName = StringFunctionsClientServer.SubstituteParametersInString(
 			SettingsFormName, BackupSettingsFormName());
 			
-		ExplanationText = NStr("en='Recommended to set info base backup.';ru='Рекомендуется настроить резервное копирование информационной базы.'"); 
+		ExplanationText = NStr("en='We recommend that you configure backup for the infobase.';ru='Рекомендуется настроить резервное копирование информационной базы.'"); 
 		ShowUserNotification(NStr("en='Backup';ru='Резервное копирование'"),
 			SettingsFormName, ExplanationText, PictureLib.Warning32);
 			
@@ -407,7 +407,7 @@ EndFunction
 //
 Function EventLogMonitorEvent() Export
 	
-	Return NStr("en='Info base backup';ru='Резервное копирование информационной базы'", CommonUseClientServer.MainLanguageCode());
+	Return NStr("en='Infobase backup';ru='Резервное копирование информационной базы'", CommonUseClientServer.MainLanguageCode());
 	
 EndFunction
 

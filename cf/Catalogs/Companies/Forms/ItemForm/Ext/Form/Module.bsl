@@ -321,7 +321,7 @@ Procedure AddImageLogo(Command)
 	
 	If Not ValueIsFilled(Object.Ref) Then
 		
-		QuestionText = NStr("en = 'To select the image it is necessary to record the object. Write?'; ru = 'Для выбора изображения необходимо записать объект. Записать?'");
+		QuestionText = NStr("en='To select an image, write the object. Write?';ru='Для выбора изображения необходимо записать объект. Записать?'");
 		Response = Undefined;
 
 		ShowQueryBox(New NotifyDescription("AddLogoImageEnd", ThisObject), QuestionText, QuestionDialogMode.YesNo);
@@ -344,7 +344,7 @@ Procedure ChangeImageLogo(Command)
 		
 	Else
 		
-		MessageText = NStr("en = 'Picture for editing is absent';ru = 'Отсутстует изображение для редактирования'");
+		MessageText = NStr("en='No image for editing';ru='Отсутстует изображение для редактирования'");
 		CommonUseClientServer.MessageToUser(MessageText,, "AddressLogo");
 		
 	EndIf;
@@ -372,7 +372,7 @@ Procedure AddImageFacsimile(Command)
 	
 	If Not ValueIsFilled(Object.Ref) Then
 		
-		QuestionText = NStr("en = 'To select the image it is necessary to record the object. Write?'; ru = 'Для выбора изображения необходимо записать объект. Записать?'");
+		QuestionText = NStr("en='To select an image, write the object. Write?';ru='Для выбора изображения необходимо записать объект. Записать?'");
 		Response = Undefined;
 
 		ShowQueryBox(New NotifyDescription("AddFacsimileImageEnd", ThisObject), QuestionText, QuestionDialogMode.YesNo);
@@ -395,7 +395,7 @@ Procedure ChangeImageFacsimile(Command)
 		
 	Else
 		
-		MessageText = NStr("en = 'Picture for editing is absent'; ru = 'Отсутстует изображение для редактирования'");
+		MessageText = NStr("en='No image for editing';ru='Отсутстует изображение для редактирования'");
 		CommonUseClientServer.MessageToUser(MessageText,, "AddressLogo");
 		
 	EndIf;
@@ -579,7 +579,7 @@ Procedure SeeAttachedFile()
 		
 	Else
 		
-		MessageText = NStr("en = 'Picture for viewing is absent'; ru = 'Отсутстует изображение для просмотра'");
+		MessageText = NStr("en='No preview image';ru='Отсутстует изображение для просмотра'");
 		CommonUseClientServer.MessageToUser(MessageText,, "PictureURL");
 		
 	EndIf;
@@ -591,7 +591,7 @@ Procedure AddImageAtClient()
 	
 	If Not ValueIsFilled(Object.Ref) Then
 		
-		QuestionText = NStr("en='To select the image it is necessary to record the object. Record?';ru='Для выбора изображения необходимо записать объект. Записать?'");
+		QuestionText = NStr("en='To select an image, write the object. Write?';ru='Для выбора изображения необходимо записать объект. Записать?'");
 		Response = Undefined;
 
 		ShowQueryBox(New NotifyDescription("AddImageAtClientEnd", ThisObject), QuestionText, QuestionDialogMode.YesNo);

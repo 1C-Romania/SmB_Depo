@@ -66,7 +66,7 @@ Procedure RepostingDocuments(ParametersStructure, StorageAddress) Export
 			
 			ErrorInfo = ErrorInfo();
 			
-			MessageText = NStr("en='Document %1 is not posted! %2 Due to: %3';ru='Документ %1 не проведен! %2 По причине: %3'");
+			MessageText = NStr("en='Document %1 is not posted. %2 Due to: %3';ru='Документ %1 не проведен! %2 По причине: %3'");
 			MessageText = StringFunctionsClientServer.SubstituteParametersInString(MessageText,
 						String(DocumentObject), Chars.LF, ErrorDescription());
 						

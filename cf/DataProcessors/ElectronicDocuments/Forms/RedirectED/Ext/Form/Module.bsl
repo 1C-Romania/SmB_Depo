@@ -24,7 +24,7 @@ Procedure OnCreateAtServer(Cancel, StandardProcessing)
 	StorageAddress = PutToTempStorage(ObjectsForProcessings, UUID);
 	
 	If ObjectsForProcessings.Count() > 1 Then
-		Items.ObjectsForProcessings.Title = NStr("en='List';ru='Списком'");
+		Items.ObjectsForProcessings.Title = NStr("en='As a list';ru='Списком'");
 	EndIf;
 	
 	If Parameters.Property("Responsible") Then
@@ -95,7 +95,7 @@ Procedure OK(Command)
 	
 	If Not ValueIsFilled(User) Then
 		ClearMessages();
-		CommonUseClientServer.MessageToUser(NStr("en='Responsible person is not specified.';ru='Не указан ответственный.'"),, "User");
+		CommonUseClientServer.MessageToUser(NStr("en='Responsible employee is not specified.';ru='Не указан ответственный.'"),, "User");
 		Return;
 	EndIf;
 	TotallyED = 0;

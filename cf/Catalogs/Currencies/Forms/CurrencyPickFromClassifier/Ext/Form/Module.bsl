@@ -118,7 +118,7 @@ Procedure ProcessChoiceInCurrencyList(StandardProcessing = Undefined)
 	ShowUserNotification(
 		NStr("en='Currencies are added.';ru='Валюты добавлены.'"), ,
 		?(StandardSubsystemsClientReUse.ClientWorkParameters().DataSeparationEnabled AND IsRates, 
-			NStr("en='Exchange rates will be imported automatically after a short time.';ru='Курсы будут загружены автоматически через непродолжительное время.'"), ""),
+			NStr("en='Rates will be automatically imported after some time.';ru='Курсы будут загружены автоматически через непродолжительное время.'"), ""),
 		PictureLib.Information32);
 	Close();
 	

@@ -529,11 +529,11 @@ Function LocalityAddressPartsStructure() Export
 	
 	Result = New Structure;
 	
-	Result.Insert("State",	ItemAddressStructure(NStr("ru = 'Регион'; en = 'State'"),	NStr("ru = 'Регион адреса'; en = 'Addresses state'"),	"RFTerritorialEntity",	1));
-	Result.Insert("Region",	ItemAddressStructure(NStr("ru = 'Район'; en = 'County'"),	NStr("ru = 'Район адреса'; en = 'Address county'"),		"PrRayMO/Region",		3));
+	Result.Insert("State",	ItemAddressStructure(NStr("en='Region';ru='Регион'"),	NStr("en='Address region';ru='Регион адреса'"),	"RFTerritorialEntity",	1));
+	Result.Insert("Region",	ItemAddressStructure(NStr("en='District';ru='Район'"),	NStr("ru = 'Район адреса'; en = 'Address county'"),		"PrRayMO/Region",		3));
 	Result.Insert("City",	ItemAddressStructure(NStr("ru = 'Город'; en = 'City'"),		NStr("ru = 'Город адреса'; en = 'Address city'"),		"City",					4));
 	Result.Insert("Settlement", ItemAddressStructure(NStr("ru = 'Населенный пункт'; en = 'Settlement'"),
-		NStr("ru = 'Населенный пункт адреса'; en = 'Addresses of settlement'"), "Settlement",  6, True));
+		NStr("en='Settlement addresses';ru='Населенный пункт адреса'"), "Settlement",  6, True));
 	Result.Insert("Street", ItemAddressStructure(NStr("ru = 'Улица'; en = 'Street'"),
 		NStr("ru = 'Улица адреса'; en = 'Address street'"), "Street", 7));
 	Result.Insert("AdditionalItem", ItemAddressStructure(NStr("ru = 'Дополнительный элемент'; en = 'Additional item'"),

@@ -585,7 +585,7 @@ Procedure FillCheckProcessing(Cancel, CheckedAttributes)
 			CurAmountDiscounts = ManualDiscountCurAmount + AutomaticDiscountCurAmount;
 			If StringWorksAndServices.DiscountMarkupPercent <> 100 AND CurAmountDiscounts < CurAmount
 				AND Not ValueIsFilled(StringWorksAndServices.Amount) Then
-				MessageText = NStr("en='The column ""Amount"" in the %Number% string of the list ""Works and services"" is not filled.';ru='Не заполнена колонка ""Сумма"" в строке %Номер% списка ""Работы и услуги"".'");
+				MessageText = NStr("en='The ""Amount"" column is not filled out in the %Number% row of the ""Works and services"" list.';ru='Не заполнена колонка ""Сумма"" в строке %Номер% списка ""Работы и услуги"".'");
 				MessageText = StrReplace(MessageText, "%Number%", StringWorksAndServices.LineNumber);
 				SmallBusinessServer.ShowMessageAboutError(
 					ThisObject,
@@ -622,7 +622,7 @@ Procedure FillCheckProcessing(Cancel, CheckedAttributes)
 		If FoundStringWorksAndServices = Undefined
 		   AND QuantityOfWorkAndService > 0
 		   AND Counterparty.DoOperationsByOrders Then
-			MessageText = NStr("en='Advance by order that is different from the one specified in tabular section ""Works and services"" can not be accepted.';ru='Нельзя зачесть аванс по заказу отличному от указанных в табличной части ""Работы и услуги""!'");
+			MessageText = NStr("en='Advance of order that is different from the one specified in the ""Works and services"" tabular section cannot be set off.';ru='Нельзя зачесть аванс по заказу отличному от указанных в табличной части ""Работы и услуги""!'");
 			SmallBusinessServer.ShowMessageAboutError(
 				,
 				MessageText,

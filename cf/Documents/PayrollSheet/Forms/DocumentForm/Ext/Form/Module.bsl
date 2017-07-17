@@ -291,7 +291,7 @@ Procedure FillByBalance(Command)
 	If Not ValueIsFilled(Object.StructuralUnit) Then
 		
 		Message = New UserMessage();
-		Message.Text = NStr("en='The department is not filled!';ru='Не заполнено подразделение!'");
+		Message.Text = NStr("en='Department is not populated.';ru='Не заполнено подразделение!'");
 		Message.Field = "Object.StructuralUnit";
  		Message.Message();
 		
@@ -309,7 +309,7 @@ Procedure FillByDepartment(Command)
 	If Not ValueIsFilled(Object.StructuralUnit) Then
 		
 		Message = New UserMessage();
-		Message.Text = NStr("en='The department is not filled!';ru='Не заполнено подразделение!'");
+		Message.Text = NStr("en='Department is not populated.';ru='Не заполнено подразделение!'");
 		Message.Field = "Object.StructuralUnit";
  		Message.Message();
 		

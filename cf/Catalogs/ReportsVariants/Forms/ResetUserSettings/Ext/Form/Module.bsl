@@ -13,7 +13,7 @@ Procedure OnCreateAtServer(Cancel, StandardProcessing)
 	EndIf;
 	
 	If Not AreUserSettings(Parameters.OptionsArray) Then
-		ErrorText = NStr("en='User settings of the selected reports variants (%1 unit) are either not specified or already reset.';ru='Пользовательские настройки выбранных вариантов отчетов (%1 шт) не заданы или уже сброшены.'");
+		ErrorText = NStr("en='User settings of the selected report variants (%1 pcs.) were not specified or have already been reset.';ru='Пользовательские настройки выбранных вариантов отчетов (%1 шт) не заданы или уже сброшены.'");
 		ErrorText = StrReplace(ErrorText, "%1", Format(Parameters.OptionsArray.Count(), "NZ=0; NG=0"));
 		Return;
 	EndIf;
@@ -44,7 +44,7 @@ Procedure ResetCommand(Command)
 	ResetUserSettingsServer(CustomizableOptions);
 	If VariantCount = 1 Then
 		OptionRef = CustomizableOptions[0].Value;
-		NotificationTitle = NStr("en='User settings report variants are reset';ru='Сброшены пользовательские настройки варианта отчета'");
+		NotificationTitle = NStr("en='User settings of report variant were reset';ru='Сброшены пользовательские настройки варианта отчета'");
 		NotificationRef    = GetURL(OptionRef);
 		NotificationText     = String(OptionRef);
 		ShowUserNotification(NotificationTitle, NotificationRef, NotificationText);

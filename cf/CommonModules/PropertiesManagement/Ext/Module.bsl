@@ -132,7 +132,7 @@ Procedure FillCheckProcessing(Form, Cancel, CheckedAttributes) Export
 				CommonUseClientServer.AddUserError(Errors,
 					String.AttributeNameValue,
 					StringFunctionsClientServer.SubstituteParametersInString(
-						NStr("en='Field ""%1"" is not filled.';ru='Поле ""%1"" не заполнено.'"), String.Description),
+						NStr("en='The ""%1"" field is not filled in.';ru='Поле ""%1"" не заполнено.'"), String.Description),
 					"");
 			EndIf;
 		EndIf;
@@ -1053,9 +1053,9 @@ Procedure CreateMainFormObjects(Form, ItemNameForPlacement,
 			If Users.RolesAvailable("AddChangeBasicReferenceData") Then
 				// Addition of a command.
 				Command = Form.Commands.Add("EditAdditionalAttributesContent");
-				Command.Title = NStr("en='Change the additional attributes structure';ru='Изменить состав дополнительных реквизитов'");
+				Command.Title = NStr("en='Change set of additional attributes';ru='Изменить состав дополнительных реквизитов'");
 				Command.Action = "Attachable_EditContentOfProperties";
-				Command.ToolTip = NStr("en='Change the additional attributes structure';ru='Изменить состав дополнительных реквизитов'");
+				Command.ToolTip = NStr("en='Change set of additional attributes';ru='Изменить состав дополнительных реквизитов'");
 				Command.Picture = PictureLib.ListSettings;
 				
 				Button = Form.Items.Add(

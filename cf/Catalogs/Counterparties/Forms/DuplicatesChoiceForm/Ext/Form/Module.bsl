@@ -6,7 +6,7 @@ Procedure OnCreateAtServer(Cancel, StandardProcessing)
 	
 	DoublesList.Parameters.SetParameterValue("TIN", TrimAll(Parameters.TIN));
 	
-	ThisForm.Title =  NStr("en='Duplicates list by TIN';ru='Список дублей по ИНН'");
+	ThisForm.Title =  NStr("en='TIN duplicate list';ru='Список дублей по ИНН'");
 	
 EndProcedure
 
@@ -50,7 +50,7 @@ Procedure OpenDocumentsOnCounterparty(Command)
 	
 	CurrentDataOfList = Items.DoublesList.CurrentData;
 	If CurrentDataOfList = Undefined Then
-		WarningText = NStr("en='Command can not be executed for the specified object';ru='Команда не может быть выполнена для указанного объекта!'");
+		WarningText = NStr("en='Command cannot be executed for the specified object.';ru='Команда не может быть выполнена для указанного объекта!'");
 		ShowMessageBox(Undefined, WarningText);
 		Return;
 	EndIf;

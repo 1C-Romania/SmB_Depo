@@ -21,7 +21,7 @@ Procedure OnCreateAtServer(Cancel, StandardProcessing)
 	//	ValueIsFilled(Agreement) And Agreement.AgreementState <> Enum.AgreementStatesED.Acts Then
 	//	
 	//	MessageText = StringFunctionsClientServer.SubstituteParametersInString(
-	//		NStr("en='You can not send a directory for an agreement with the ""%1"" state!';ru='Нельзя отправить каталог для соглашения с состоянием ""%1""!'"), Agreement.AgreementState);
+	//		NStr("en='Cannot send a directory for an agreement with the ""%1"" state.';ru='Нельзя отправить каталог для соглашения с состоянием ""%1""!'"), Agreement.AgreementState);
 	//	
 	//	Raise MessageText;
 	//	
@@ -287,7 +287,7 @@ EndProcedure
 Procedure FillProductsTable(Command)
 	
 	If Object.Products.Count() > 0 Then
-		QuestionText = NStr("en='Products table will be refilled. Continue?';ru='Таблица товаров будет перезаполнена. Продолжить?'");
+		QuestionText = NStr("en='Goods table will be refilled. Continue?';ru='Таблица товаров будет перезаполнена. Продолжить?'");
 		ShowQueryBox(New NotifyDescription("FillProductsTableEnd", ThisObject), QuestionText, QuestionDialogMode.YesNo,,DialogReturnCode.Yes);
 	Else
 		FillProductsTableAtServer();

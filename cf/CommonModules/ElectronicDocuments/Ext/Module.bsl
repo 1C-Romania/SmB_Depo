@@ -560,7 +560,7 @@ Procedure GetBankStatementDataTextFormat(ED, LinksToRepository, AccountsArray) E
 		FileName = GetTempFileName("xml");
 				
 		If FileName = Undefined Then
-			ErrorText = NStr("en='Failed to read electronic document. Verify the work directory setting';ru='Не удалось прочитать электронный документ. Проверьте настройку рабочего каталога'");
+			ErrorText = NStr("en='Cannot read the electronic document. Check the working directory setting';ru='Не удалось прочитать электронный документ. Проверьте настройку рабочего каталога'");
 			CommonUseClientServer.MessageToUser(ErrorText);
 			Return;
 		EndIf;
@@ -866,7 +866,7 @@ Procedure GetBankStatementDataValueTree(ED, StatementData) Export
 		FileName = GetTempFileName("xml");
 				
 		If FileName = Undefined Then
-			ErrorText = NStr("en='Failed to read electronic document. Verify the work directory setting';ru='Не удалось прочитать электронный документ. Проверьте настройку рабочего каталога'");
+			ErrorText = NStr("en='Cannot read the electronic document. Check the working directory setting';ru='Не удалось прочитать электронный документ. Проверьте настройку рабочего каталога'");
 			CommonUseClientServer.MessageToUser(ErrorText);
 			Return;
 		EndIf;

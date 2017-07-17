@@ -297,7 +297,7 @@ Procedure UpdatePageTitle(SettingsCount)
 	If SelectedSettingsPage = "ReportsSettingsPage" Then
 		
 		ReportsSettingsAmount = ReportsSettingsAmount + SettingsCount;
-		HeaderText = ?(ReportsSettingsAmount = 0, NStr("en='Report settings';ru='Настройки отчета'"), NStr("en='Reports settings (%1)';ru='Настройки отчетов (%1)'"));
+		HeaderText = ?(ReportsSettingsAmount = 0, NStr("en='Report settings';ru='Настройки отчета'"), NStr("en='Report settings (%1)';ru='Настройки отчетов (%1)'"));
 		
 		Items.ReportsSettingsPage.Title = StringFunctionsClientServer.SubstituteParametersInString(
 			HeaderText, ReportsSettingsAmount);
@@ -607,7 +607,7 @@ Procedure ImportMarksValues(ValueTree, MarkedSettings, KindSettings)
 		If KindSettings = "ReportsSettings" Then
 			ReportsSettingsAmount = MarkedCount;
 			Items.ReportsSettingsPage.Title = StringFunctionsClientServer.SubstituteParametersInString(
-				NStr("en='Reports settings (%1)';ru='Настройки отчетов (%1)'"), MarkedCount);
+				NStr("en='Report settings (%1)';ru='Настройки отчетов (%1)'"), MarkedCount);
 		ElsIf KindSettings = "ExternalView" Then
 			AppearanceSettingsAmount = MarkedCount;
 			Items.AppearancePage.Title = StringFunctionsClientServer.SubstituteParametersInString(

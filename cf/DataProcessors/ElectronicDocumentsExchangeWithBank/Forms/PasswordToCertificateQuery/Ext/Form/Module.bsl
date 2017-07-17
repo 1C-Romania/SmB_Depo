@@ -14,7 +14,7 @@ Procedure SetEnabledVisible()
 	EndIf;
 	
 	If TableED.Count() > 1 Then
-		Items.ObjectsForProcessings.Title = NStr("en='List';ru='Списком'");
+		Items.ObjectsForProcessings.Title = NStr("en='As a list';ru='Списком'");
 	EndIf;
 	
 	Items.ObjectsForProcessings.Visible = (TableED.Count() > 0);
@@ -180,8 +180,8 @@ Procedure OnCreateAtServer(Cancel, StandardProcessing)
 	
 	OperationKind = Parameters.OperationKind;
 	
-	If OperationKind = NStr("en='Authentication at the bank server';ru='Аутентификация на сервере банка'") Then
-		Title = NStr("en='Enter the authentication data';ru='Введите данные аутентификации'");
+	If OperationKind = NStr("en='Authentication on the bank server';ru='Аутентификация на сервере банка'") Then
+		Title = NStr("en='Enter authentication data';ru='Введите данные аутентификации'");
 		Items.Pages.CurrentPage = Items.EnterLoginAndPassword;
 		If TypeOf(Parameters.Map) = Type("Map") AND Parameters.Map.Count() > 0 Then
 			For Each KeyAndValue IN Parameters.Map Do
@@ -212,7 +212,7 @@ Procedure OnCreateAtServer(Cancel, StandardProcessing)
 	If TypeOf(Parameters.ObjectsForProcessings) = Type("Array") AND Parameters.ObjectsForProcessings.Count() > 0 Then
 		If Parameters.ObjectsForProcessings.Count() = 1 Then
 			ElectronicDocument = Parameters.ObjectsForProcessings[0];
-			TemplateHyperlink = NStr("en='%1 # %2 date %3';ru='%1 № %2 от %3'");
+			TemplateHyperlink = NStr("en='%1 No. %2 from %3';ru='%1 № %2 от %3'");
 			EDOwner = Undefined;
 			If TypeOf(ElectronicDocument) = Type("DocumentRef.EDPackage") Then
 				AttributesStructure = CommonUse.ObjectAttributesValues(ElectronicDocument, "Number, Date");
@@ -244,7 +244,7 @@ Procedure OnCreateAtServer(Cancel, StandardProcessing)
 					HyperlinkText = ?(ValueIsFilled(AttributesStructure.FileDescription),
 						AttributesStructure.FileDescription, AttributesStructure.Description) + "." + AttributesStructure.Extension;
 				ElsIf ElectronicDocumentsServiceCallServer.ThisIsServiceDocument(ElectronicDocument) Then
-					OperationKind = NStr("en='Service electronic documents signing';ru='Подписание служебных электронных документов'");
+					OperationKind = NStr("en='Sign electronic service documents';ru='Подписание служебных электронных документов'");
 					
 					TemplateHyperlink = NStr("en='%1';ru='%1'");
 					HyperlinkText = StringFunctionsClientServer.SubstituteParametersInString(TemplateHyperlink,

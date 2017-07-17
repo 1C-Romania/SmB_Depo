@@ -121,7 +121,7 @@ Procedure GoToNumberOnChange(Val IsGoNext)
 	GoToRowsCurrent = GoToTable.FindRows(New Structure("GoToNumber", GoToNumber));
 	
 	If GoToRowsCurrent.Count() = 0 Then
-		Raise NStr("en='Page for displaying has not been defined.';ru='Не определена страница для отображения.'");
+		Raise NStr("en='Page for displaying is not defined.';ru='Не определена страница для отображения.'");
 	EndIf;
 	
 	GoToRowCurrent = GoToRowsCurrent[0];
@@ -227,7 +227,7 @@ Procedure ExecuteGoToEventHandlers(Val IsGoNext)
 	GoToRowsCurrent = GoToTable.FindRows(New Structure("GoToNumber", GoToNumber));
 	
 	If GoToRowsCurrent.Count() = 0 Then
-		Raise NStr("en='Page for displaying has not been defined.';ru='Не определена страница для отображения.'");
+		Raise NStr("en='Page for displaying is not defined.';ru='Не определена страница для отображения.'");
 	EndIf;
 	
 	GoToRowCurrent = GoToRowsCurrent[0];
@@ -283,7 +283,7 @@ Procedure ExecuteLongOperationHandler()
 	GoToRowsCurrent = GoToTable.FindRows(New Structure("GoToNumber", GoToNumber));
 	
 	If GoToRowsCurrent.Count() = 0 Then
-		Raise NStr("en='Page for displaying has not been defined.';ru='Не определена страница для отображения.'");
+		Raise NStr("en='Page for displaying is not defined.';ru='Не определена страница для отображения.'");
 	EndIf;
 	
 	GoToRowCurrent = GoToRowsCurrent[0];
@@ -424,7 +424,7 @@ EndProcedure
 &AtClient
 Procedure CancelOperation()
 	
-	ShowMessageBox(, NStr("en='Failed to execute the operation.';ru='Не удалось выполнить операцию.'"));
+	ShowMessageBox(, NStr("en='Cannot execute the operation.';ru='Не удалось выполнить операцию.'"));
 	Close();
 	
 EndProcedure
@@ -473,7 +473,7 @@ Procedure DataReceivingExpectation_LongOperationProcessing(Cancel)
 			
 		Else
 			
-			Raise NStr("en='Unknown mode for the correspondent data receiving.';ru='Неизвестный режим получения данных корреспондента.'");
+			Raise NStr("en='Unknown mode of correspondent data receipt.';ru='Неизвестный режим получения данных корреспондента.'");
 			
 		EndIf;
 		

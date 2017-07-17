@@ -410,7 +410,7 @@ Procedure FillAccrualsDeductions(Command)
 	If TabularSectionRow = Undefined Then
 	
 		Message = New UserMessage;
-		Message.Text = NStr("en='The row in the tabular section ""Employees"" is not selected!';ru='Не выбрана строка табличной части ""Сотрудники""!'");
+		Message.Text = NStr("en='The ""Employees"" row is not selected in the tabular section.';ru='Не выбрана строка табличной части ""Сотрудники""!'");
 		Message.Message();	
 		Return;
 		
@@ -419,7 +419,7 @@ Procedure FillAccrualsDeductions(Command)
 	If Object.AccrualsDeductions.FindRows(New Structure("ConnectionKey", TabularSectionRow.ConnectionKey)).Count() > 0 Then
 		Response = Undefined;
 
-		ShowQueryBox(New NotifyDescription("FillDeductionAccrualsEnd", ThisObject, New Structure("TabularSectionRow", TabularSectionRow)), NStr("en='The ""Accruals and deductions"" tabular section will be cleared! Continue?';ru='Табличная часть ""Начисления и удержания"" будет очищена! Продолжить?'"), QuestionDialogMode.YesNo, 0);
+		ShowQueryBox(New NotifyDescription("FillDeductionAccrualsEnd", ThisObject, New Structure("TabularSectionRow", TabularSectionRow)), NStr("en='The ""Accruals and deductions"" tabular section will be cleared. Continue?';ru='Табличная часть ""Начисления и удержания"" будет очищена! Продолжить?'"), QuestionDialogMode.YesNo, 0);
         Return; 
 	EndIf;
 	
@@ -477,7 +477,7 @@ Procedure FillIncomeTaxes(Command)
 	If TabularSectionRow = Undefined Then
 	
 		Message = New UserMessage;
-		Message.Text = NStr("en='The row in the tabular section ""Employees"" is not selected!';ru='Не выбрана строка табличной части ""Сотрудники""!'");
+		Message.Text = NStr("en='The ""Employees"" row is not selected in the tabular section.';ru='Не выбрана строка табличной части ""Сотрудники""!'");
 		Message.Message();	
 		Return;
 		
@@ -486,7 +486,7 @@ Procedure FillIncomeTaxes(Command)
 	If Object.IncomeTaxes.FindRows(New Structure("ConnectionKey", TabularSectionRow.ConnectionKey)).Count() > 0 Then
 		Response = Undefined;
 
-		ShowQueryBox(New NotifyDescription("FillIncomeTaxesEnd", ThisObject, New Structure("TabularSectionRow", TabularSectionRow)), NStr("en='The ""Income taxes"" tabular section will be cleared! Continue?';ru='Табличная часть ""Налоги на доходы"" будет очищена! Продолжить?'"), QuestionDialogMode.YesNo, 0);
+		ShowQueryBox(New NotifyDescription("FillIncomeTaxesEnd", ThisObject, New Structure("TabularSectionRow", TabularSectionRow)), NStr("en='The ""Income taxes"" tabular section will be cleared. Continue?';ru='Табличная часть ""Налоги на доходы"" будет очищена! Продолжить?'"), QuestionDialogMode.YesNo, 0);
         Return; 
 	EndIf;
 	

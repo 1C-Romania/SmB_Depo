@@ -96,7 +96,7 @@ Procedure AddRecipients(Object, Nodes) Export
 		Except
 			ExchangePlanName = Item.Metadata().Name;
 			MetadataObject = Object.Metadata();
-			MessageString = NStr("en='For exchange plan content [ExchangePlanName] not specified object registration [FullName}';ru='Для состава плана обмена [ИмяПланаОбмена] не указана регистрация объекта [ПолноеИмя]'");
+			MessageString = NStr("en='Registration of object [FullName] is not specified for exchange plan content [ExchangePlanName]';ru='Для состава плана обмена [ИмяПланаОбмена] не указана регистрация объекта [ПолноеИмя]'");
 			MessageString = StrReplace(MessageString, "[ExchangePlanName]", ExchangePlanName);
 			MessageString = StrReplace(MessageString, "[DescriptionFull]",      MetadataObject.FullName());
 			Raise MessageString;
@@ -415,7 +415,7 @@ Procedure RecordChangesData(Val Recipient, Val Data, Val CheckPermissionOfUploud
 			EndIf;
 			
 			If IsNewObject Then
-				Raise NStr("en='Registration of the unrecorded objects exported by the reference is not supported.';ru='Регистрация незаписанных объектов, выгружаемых по ссылке, не поддерживается.'");
+				Raise NStr("en='Registration of unwritten objects that can be exported by reference is not supported.';ru='Регистрация незаписанных объектов, выгружаемых по ссылке, не поддерживается.'");
 			EndIf;
 			
 			BeginTransaction();
@@ -589,7 +589,7 @@ Procedure CheckDataExchangeSettingChangePossibility(Source, Cancel) Export
 		AND Not Source.IsNew()
 		AND DataDifferent(Source, Source.Ref.GetObject(), "Code, description") Then
 		
-		Raise NStr("en='Modification of the data synchronization code and name is invalid.';ru='Изменение наименования и кода синхронизации данных недопустимо.'");
+		Raise NStr("en='Cannot change name and code of data synchronization.';ru='Изменение наименования и кода синхронизации данных недопустимо.'");
 		
 	EndIf;
 	
@@ -852,19 +852,19 @@ Procedure RegisterObjectChange(ExchangePlanName, Object, Cancel, AdditionalParam
 		If CommonUseReUse.DataSeparationEnabled() Then
 			
 			If Not SeparatedExchangePlan(ExchangePlanName) Then
-				Raise NStr("en='Registration of modifications for undivided exchange plans is not supported.';ru='Регистрация изменений для неразделенных планов обмена не поддерживается.'");
+				Raise NStr("en='Changes registration for undivided exchange plans is not supported.';ru='Регистрация изменений для неразделенных планов обмена не поддерживается.'");
 			EndIf;
 			
 			If CommonUseReUse.CanUseSeparatedData() Then
 				
 				If Not SeparatedData(MetadataObject) Then
-					Raise NStr("en='Registration of the unseparated data modifications in the divided mode.';ru='Регистрация изменений неразделенных данных в разделенном режиме.'");
+					Raise NStr("en='Changes registration of shared data in the split mode.';ru='Регистрация изменений неразделенных данных в разделенном режиме.'");
 				EndIf;
 				
 			Else
 				
 				If SeparatedData(MetadataObject) Then
-					Raise NStr("en='Registration of the separated data modifications in the undivided mode.';ru='Регистрация изменений разделенных данных в неразделенном режиме.'");
+					Raise NStr("en='Change registration of separated data in the split mode.';ru='Регистрация изменений разделенных данных в неразделенном режиме.'");
 				EndIf;
 					
 				// For undivided data in the undivided mode register data
@@ -942,7 +942,7 @@ Procedure RegisterObjectChange(ExchangePlanName, Object, Cancel, AdditionalParam
 		EndIf;
 		
 	Except
-		WriteLogEvent(NStr("en='Data exchange. Objects registration rules';ru='Обмен данными.Правила регистрации объектов'", CommonUseClientServer.MainLanguageCode()),
+		WriteLogEvent(NStr("en='Data exchange.Objects registration rules';ru='Обмен данными.Правила регистрации объектов'", CommonUseClientServer.MainLanguageCode()),
 			EventLogLevel.Error,,, DetailErrorDescription(ErrorInfo()));
 		ProcessRegistrationRulesError(ExchangePlanName);
 		Cancel = True;
@@ -980,7 +980,7 @@ Function ObjectModifiedForExchangePlan(Source, MetadataObject, ExchangePlanName,
 		ObjectModified = ObjectModifiedForExchangePlanTryExcept(Source, MetadataObject, ExchangePlanName, WriteMode, RecordObjectChangeToExport);
 	Except
 		Raise StringFunctionsClientServer.SubstituteParametersInString(
-			NStr("en='Error on defining object modification: %1';ru='Ошибка определения модифицированности объекта: %1'"),
+			NStr("en='An error occurred when determining modification of object: %1';ru='Ошибка определения модифицированности объекта: %1'"),
 			DetailErrorDescription(ErrorInfo()));
 	EndTry;
 	
@@ -1759,7 +1759,7 @@ Function GetPropertiesValuesForRef(Ref, PropertiesOfObject, Val ObjectProperties
 		Selection = Query.Execute().Select();
 		
 	Except
-		MessageString = NStr("en='An error occurred while receiving reference properties. An error occurred while executing query: [ErrorDescription]';ru='Ошибка при получении свойств ссылки. Ошибка выполнения запроса: [ОписаниеОшибки]'");
+		MessageString = NStr("en='An error occurred when receiving the reference properties. Query execution failed: [ErrorDescription]';ru='Ошибка при получении свойств ссылки. Ошибка выполнения запроса: [ОписаниеОшибки]'");
 		MessageString = StrReplace(MessageString, "[ErrorDescription]", DetailErrorDescription(ErrorInfo()));
 		Raise MessageString;
 	EndTry;
@@ -1914,7 +1914,7 @@ Function NodesArrayByPropertiesValues(PropertyValues, Val QueryText, Val Exchang
 		ArrayOfNodesResult = Query.Execute().Unload().UnloadColumn("Ref");
 		
 	Except
-		MessageString = NStr("en='An error occurred while getting receiver nodes list. An error occurred while executing query: [ErrorDescription]';ru='Ошибка при получении списка узлов получателей. Ошибка выполнения запроса: [ОписаниеОшибки]'");
+		MessageString = NStr("en='An error occurred when receiving a list of target nodes. Failed to execute the query: [ErrorDescription]';ru='Ошибка при получении списка узлов получателей. Ошибка выполнения запроса: [ОписаниеОшибки]'");
 		MessageString = StrReplace(MessageString, "[ErrorDescription]", DetailErrorDescription(ErrorInfo()));
 		Raise MessageString;
 	EndTry;
@@ -2056,7 +2056,7 @@ Function RecordSetByType(MetadataObject)
 		
 	Else
 		
-		MessageString = NStr("en='For the metadata object %1 the records set is not provided.';ru='Для объекта метаданных %1 не предусмотрено набора записей.'");
+		MessageString = NStr("en='The record set is not provided for metadata object %1.';ru='Для объекта метаданных %1 не предусмотрено набора записей.'");
 		MessageString = StringFunctionsClientServer.SubstituteParametersInString(MessageString, MetadataObject.FullName());
 		Raise MessageString;
 		
@@ -2392,7 +2392,7 @@ Procedure ExecuteORRHandlerOnProcessing(Cancel, ORR, Object, AdditionalParameter
 		Except
 			MessageString = NStr("en='An error occurred while executing handler: ""[HandlerName]""; Exchange plan: [ExchangePlanName]; Metadata object: [MetadataObjectName] Error description: [Description]';ru='Ошибка при выполнении обработчика: ""[ИмяОбработчика]""; План обмена: [ИмяПланаОбмена]; Объект метаданных: [ОбъектМетаданныхИмя]
 		|Описание ошибки: [Описание]'");
-			MessageString = StrReplace(MessageString, "[HandlerName]",      NStr("en='On processing';ru='При обработке'"));
+			MessageString = StrReplace(MessageString, "[HandlerName]",      NStr("en='When processing';ru='При обработке'"));
 			MessageString = StrReplace(MessageString, "[ExchangePlanName]",      ORR.ExchangePlanName);
 			MessageString = StrReplace(MessageString, "[MetadataObjectName]", ORR.MetadataObjectName);
 			MessageString = StrReplace(MessageString, "[Definition]",            DetailErrorDescription(ErrorInfo()));
@@ -2416,7 +2416,7 @@ Procedure ExecuteORRHandlerOnProcessingAdditional(Cancel, ORR, Object, QueryText
 		Except
 			MessageString = NStr("en='An error occurred while executing handler: ""[HandlerName]""; Exchange plan: [ExchangePlanName]; Metadata object: [MetadataObjectName] Error description: [Description]';ru='Ошибка при выполнении обработчика: ""[ИмяОбработчика]""; План обмена: [ИмяПланаОбмена]; Объект метаданных: [ОбъектМетаданныхИмя]
 		|Описание ошибки: [Описание]'");
-			MessageString = StrReplace(MessageString, "[HandlerName]",      NStr("en='When processing (additional)';ru='При обработке (дополнительный)'"));
+			MessageString = StrReplace(MessageString, "[HandlerName]",      NStr("en='When processing (optional)';ru='При обработке (дополнительный)'"));
 			MessageString = StrReplace(MessageString, "[ExchangePlanName]",      ORR.ExchangePlanName);
 			MessageString = StrReplace(MessageString, "[MetadataObjectName]", ORR.MetadataObjectName);
 			MessageString = StrReplace(MessageString, "[Definition]",            DetailErrorDescription(ErrorInfo()));
@@ -3009,7 +3009,7 @@ Function DataDifferent(Data1, Data2, PropertyList = Undefined, ExcludingProperti
 		
 	Else
 		
-		Raise NStr("en='Invalid parameter value is specified [1] of the CommonUse method.PropertyValuesChanged.';ru='Задано недопустимое значение параметра [1] метода ОбщегоНазначения.ЗначенияСвойствИзменены.'");
+		Raise NStr("en='Invalid value of parameter [1] of method CommonUse.DataDifferent is set.';ru='Задано недопустимое значение параметра [1] метода ОбщегоНазначения.ЗначенияСвойствИзменены.'");
 		
 	EndIf;
 	
@@ -3349,7 +3349,7 @@ Procedure RegisterDataProhibitionImportByDate(DataItem, Sender, ErrorInfo)
 			
 			ObjectInDataBase = ObjectReference.GetObject();
 			
-			Comment = NStr("en='Version is created at the data synchronization.';ru='Версия создана при синхронизации данных.'");
+			Comment = NStr("en='Version was created during data synchronization.';ru='Версия создана при синхронизации данных.'");
 			InfoAboutObjectVersion = New Structure("Comment", Comment);
 			
 			OnCreateObjectVersion(ObjectInDataBase, InfoAboutObjectVersion, True);
@@ -3359,7 +3359,7 @@ Procedure RegisterDataProhibitionImportByDate(DataItem, Sender, ErrorInfo)
 			
 		Else
 			
-			ErrorMessageString = NStr("en='%1 prohibited to import to the prohibited period.%2%2%3';ru='%1 запрещено загружать в запрещенный период.%2%2%3'");
+			ErrorMessageString = NStr("en='%1 cannot be imported to the prohibited period.%2%2%3';ru='%1 запрещено загружать в запрещенный период.%2%2%3'");
 			ErrorMessageString = StringFunctionsClientServer.SubstituteParametersInString(ErrorMessageString,
 				String(DataItem), Chars.LF, ErrorInfo);
 			ObjectVersioningType = "UnacceptedDataByProhibitionDateObjectNotExists";
@@ -3447,7 +3447,7 @@ Function GetDataObjectAsStringBeforeChange(Object, ObjectMetadata, IsReferenceTy
 			
 		Else
 			
-			ObjectString = NStr("en='Object deleted';ru='Объект удален'");
+			ObjectString = NStr("en='Object is removed';ru='Объект удален'");
 			
 		EndIf;
 		

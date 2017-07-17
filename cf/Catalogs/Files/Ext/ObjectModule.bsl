@@ -25,7 +25,7 @@ Procedure BeforeWrite(Cancel)
 		If InfobaseUpdate.InfobaseUpdateInProgress() Then
 			
 			WriteLogEvent(
-				NStr("en='Files. File record error at IB update';ru='Файлы.Ошибка записи файла при обновлении ИБ'",
+				NStr("en='Files. An error occurred when writing the file while updating IB';ru='Файлы.Ошибка записи файла при обновлении ИБ'",
 				     CommonUseClientServer.MainLanguageCode()),
 				EventLogLevel.Error,
 				,
@@ -41,7 +41,7 @@ Procedure BeforeWrite(Cancel)
 		// Check right "Adding".
 		If Not FileOperationsService.IsRight("FilesAdd", FileOwner) Then
 			Raise StringFunctionsClientServer.SubstituteParametersInString(
-				NStr("en='The rights are not sufficient to add the file into folder ""%1"".';ru='Недостаточно прав для добавления файлов в папку ""%1"".'"),
+				NStr("en='Insufficient rights to add files to folder ""%1"".';ru='Недостаточно прав для добавления файлов в папку ""%1"".'"),
 				String(FileOwner));
 		EndIf;
 	Else
@@ -65,11 +65,11 @@ Procedure BeforeWrite(Cancel)
 				RefEncrypted = AttributesStructure.Encrypted;
 				
 				If DigitallySigned AND RefDigitallySigned Then
-					Raise NStr("en='DigitallySigned file can not be edited.';ru='Подписанный файл нельзя редактировать.'");
+					Raise NStr("en='Signed file cannot be edited.';ru='Подписанный файл нельзя редактировать.'");
 				EndIf;	
 				
 				If Encrypted AND RefEncrypted AND DigitallySigned AND Not RefDigitallySigned Then
-					Raise NStr("en='Encrypted file can not be signed.';ru='Зашифрованный файл нельзя подписывать.'");
+					Raise NStr("en='Encrypted file cannot be signed.';ru='Зашифрованный файл нельзя подписывать.'");
 				EndIf;	
 				
 			EndIf;	
@@ -103,7 +103,7 @@ Procedure BeforeWrite(Cancel)
 			// Check right "Deletion mark".
 			If Not FileOperationsService.IsRight("FileDeletionMark", FileOwner) Then
 				Raise StringFunctionsClientServer.SubstituteParametersInString(
-					NStr("en='The rights are not sufficient to mark the file for deletion in folder ""%1"".';ru='Недостаточно прав для пометки файлов на удаление в папке ""%1"".'"),
+					NStr("en='Insufficient rights to mark files for deletion in folder ""%1"".';ru='Недостаточно прав для пометки файлов на удаление в папке ""%1"".'"),
 					String(FileOwner));
 			EndIf;
 			

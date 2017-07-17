@@ -37,7 +37,7 @@ Procedure OnCreateAtServer(Cancel, StandardProcessing)
 
 	If DocumentSystemChangesDescription.TableHeight = 0 Then
 		Text = StringFunctionsClientServer.SubstituteParametersInString(
-			NStr("en='Configuration has been successfully updated to the version %1';ru='Конфигурация успешно обновлена на версию %1'"), Metadata.Version);
+			NStr("en='The configuration was successfully updated to version %1';ru='Конфигурация успешно обновлена на версию %1'"), Metadata.Version);
 		DocumentSystemChangesDescription.Area("R1C1:R1C1").Text = Text;
 	EndIf;
 	
@@ -67,15 +67,15 @@ Procedure OnCreateAtServer(Cancel, StandardProcessing)
 	EndIf;
 	
 	If CommonUse.FileInfobase() Then
-		MessageTitle = NStr("en='It is necessary to perform the additional data processing procedures';ru='Необходимо выполнить дополнительные процедуры обработки данных'");
+		MessageTitle = NStr("en='Execute additional data processing procedures';ru='Необходимо выполнить дополнительные процедуры обработки данных'");
 		Items.PostponedUpdateData.Title = MessageTitle;
 	EndIf;
 	
 	If Not Users.InfobaseUserWithFullAccess(, True) Then
 		Items.PostponedUpdateData.Title =
-			NStr("en='Additional data processing procedures have not been completed';ru='Не выполнены дополнительные процедуры обработки данных'");
+			NStr("en='Additional data processing procedures not executed';ru='Не выполнены дополнительные процедуры обработки данных'");
 		Items.PostponedUpdateDataExplanation.Title = 
-			NStr("en='The work in the application is temporarily limited because the update to the new version is not completed.';ru='Работа в программе временно ограничена, так как еще не завершен переход на новую версию.'");
+			NStr("en='Application operations are temporarily limited as the new version migration is not completed yet.';ru='Работа в программе временно ограничена, так как еще не завершен переход на новую версию.'");
 	EndIf;
 	
 	If Not ValueIsFilled(UpdateBeginTime) AND Not ValueIsFilled(UpdateEndTime) Then
@@ -174,7 +174,7 @@ Procedure DisabledScheduledJobsNavigationRefsDataProcessor(Item, URL, StandardPr
 	StandardProcessing = False;
 	
 	Notification = New NotifyDescription("ScheduledJobsAreDisconnectionNavigationRefDataProcessorEnd", ThisObject);
-	QuestionText = NStr("en='Restart application?';ru='Перезапустить программу?'");
+	QuestionText = NStr("en='Restart the application?';ru='Перезапустить программу?'");
 	ShowQueryBox(Notification, QuestionText, QuestionDialogMode.YesNo,, DialogReturnCode.No);
 EndProcedure
 

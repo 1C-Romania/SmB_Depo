@@ -71,7 +71,7 @@ Procedure ConnectCorrespondent(Message, Sender)
 		OR ThisEndPoint <> MessageExchangeInternal.ThisNode() Then
 		
 		// We send a message to the error service manager
-		ErrorPresentation = NStr("en='The end point does not correspond to the expected one. The code of the expected end point is %1. Current end point code %2.';ru='Конечная точка не соответствует ожидаемой. Код ожидаемой конечной точки %1. Код текущей конечной точки %2.'");
+		ErrorPresentation = NStr("en='Endpoint does not match the expected one. Expected endpoint code %1. Current endpoint code %2.';ru='Конечная точка не соответствует ожидаемой. Код ожидаемой конечной точки %1. Код текущей конечной точки %2.'");
 		ErrorPresentation = StringFunctionsClientServer.SubstituteParametersInString(ErrorPresentation,
 			Body.SenderId,
 			MessageExchangeInternal.ThisNodeCode());
@@ -113,7 +113,7 @@ Procedure ConnectCorrespondent(Message, Sender)
 		
 		If Cancel Then // We send a message to the error service manager
 			
-			ErrorPresentation = NStr("en=""Error of connecting the exchange correspondent's end point. End point code of the exchange correspondent %1."";ru='Ошибка подключения конечной точки корреспондента обмена. Код конечной точки корреспондента обмена %1.'");
+			ErrorPresentation = NStr("en='An error occurred when connecting to the exchange correspondent endpoint. The endpoint code of exchange correspondent %1.';ru='Ошибка подключения конечной точки корреспондента обмена. Код конечной точки корреспондента обмена %1.'");
 			ErrorPresentation = StringFunctionsClientServer.SubstituteParametersInString(ErrorPresentation,
 				Body.RecipientId);
 			
@@ -232,7 +232,7 @@ Procedure SetTransportSettings(Message, Sender)
 	Correspondent = ExchangePlans.MessageExchange.FindByCode(Body.RecipientId);
 	
 	If Correspondent.IsEmpty() Then
-		MessageString = NStr("en='Correspondent end point with the %1 script is not found.';ru='Не найдена конечная точка корреспондента с кодом ""%1"".'");
+		MessageString = NStr("en='Correspondent endpoint with the ""%1"" code is not found.';ru='Не найдена конечная точка корреспондента с кодом ""%1"".'");
 		MessageString = StringFunctionsClientServer.SubstituteParametersInString(MessageString, Body.RecipientId);
 		Raise MessageString;
 	EndIf;
@@ -349,7 +349,7 @@ EndProcedure
 
 Function EventLogMonitorMessageTextConnectionCorrespondent()
 	
-	Return NStr("en='Data exchange. Exchange correspondent connection';ru='Обмен данными.Подключение корреспондента обмена'", CommonUseClientServer.MainLanguageCode());
+	Return NStr("en='Data exchange.Exchange correspondent connection';ru='Обмен данными.Подключение корреспондента обмена'", CommonUseClientServer.MainLanguageCode());
 	
 EndFunction
 

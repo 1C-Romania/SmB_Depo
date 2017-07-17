@@ -5,7 +5,7 @@
 Procedure OnCreateAtServer(Cancel, StandardProcessing)
 	
 	If CommonUseClientServer.ThisIsWebClient() Then
-		Raise NStr("en='Backing up is not available in web-client.';ru='Резервное копирование недоступно в веб-клиенте.'");
+		Raise NStr("en='Backup is not available in web client.';ru='Резервное копирование недоступно в веб-клиенте.'");
 	EndIf;
 	
 	If CommonUseClientServer.IsLinuxClient() Then
@@ -22,7 +22,7 @@ Procedure OnOpen(Cancel)
 	
 	If CommonUseClientServer.IsLinuxClient() Then
 		Cancel = True;
-		MessageText = NStr("en='Backup is not supported in the client under Linux OS.';ru='Резервное копирование не поддерживается в клиенте под управлением ОС Linux.'");
+		MessageText = NStr("en='Backup is not supported on the client running Linux OS.';ru='Резервное копирование не поддерживается в клиенте под управлением ОС Linux.'");
 		ShowMessageBox(, MessageText);
 		Return;
 	EndIf;

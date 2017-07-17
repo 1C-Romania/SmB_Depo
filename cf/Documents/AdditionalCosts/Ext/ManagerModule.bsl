@@ -36,7 +36,7 @@ Procedure GenerateTableInventory(DocumentRefAdditionalCosts, StructureAdditional
 	|	TableInventory.Batch,
 	|	TableInventory.CustomerOrder";
 	
-	Query.SetParameter("InventoryReceipt", NStr("en='Inventory receiving';ru='Прием запасов'"));
+	Query.SetParameter("InventoryReceipt", NStr("en='Inventory receipt';ru='Прием запасов'"));
 	QueryResult = Query.Execute();
 	
 	StructureAdditionalProperties.TableForRegisterRecords.Insert("TableInventory", QueryResult.Unload());
@@ -81,8 +81,8 @@ Procedure GenerateTableAccountsPayable(DocumentRefAdditionalCosts, StructureAddi
 	Query.SetParameter("PointInTime", New Boundary(StructureAdditionalProperties.ForPosting.PointInTime, BoundaryType.Including));
 	Query.SetParameter("ControlPeriod", StructureAdditionalProperties.ForPosting.PointInTime.Date);
 	Query.SetParameter("Company", StructureAdditionalProperties.ForPosting.Company);
-	Query.SetParameter("AppearenceOfLiabilityToVendor", NStr("en='Appearance of vendor liabilities';ru='Возникновение обязательств перед поставщиком'"));
-	Query.SetParameter("AdvanceCredit", NStr("en='Setoff of advance payment';ru='Зачет предоплаты'"));
+	Query.SetParameter("AppearenceOfLiabilityToVendor", NStr("en='Incurrence of liabilities to supplier';ru='Возникновение обязательств перед поставщиком'"));
+	Query.SetParameter("AdvanceCredit", NStr("en='Prepayment setoff';ru='Зачет предоплаты'"));
 	Query.SetParameter("ExchangeDifference", NStr("en='Exchange rate difference';ru='Курсовая разница'"));
 	
 	//( elmi #11
@@ -929,8 +929,8 @@ Procedure GenerateTableManagerial(DocumentRefAdditionalCosts, StructureAdditiona
 	|	Order,
 	|	LineNumber";
 		
-	Query.SetParameter("InventoryReceipt", NStr("en='Add. expenses receiving';ru='Оприходование доп. расходов'"));
-	Query.SetParameter("SetOffAdvancePayment", NStr("en='Setoff of advance payment';ru='Зачет предоплаты'"));
+	Query.SetParameter("InventoryReceipt", NStr("en='Add. expense capitalization';ru='Оприходование доп. расходов'"));
+	Query.SetParameter("SetOffAdvancePayment", NStr("en='Prepayment setoff';ru='Зачет предоплаты'"));
 	Query.SetParameter("ExchangeDifference", NStr("en='Exchange rate difference';ru='Курсовая разница'"));
 	Query.SetParameter("PositiveExchangeDifferenceGLAccount", ChartsOfAccounts.Managerial.OtherIncome);
 	Query.SetParameter("NegativeExchangeDifferenceAccountOfAccounting", ChartsOfAccounts.Managerial.OtherExpenses);

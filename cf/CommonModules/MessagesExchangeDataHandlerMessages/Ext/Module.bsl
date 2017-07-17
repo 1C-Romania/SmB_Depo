@@ -100,7 +100,7 @@ Procedure CreateDataExchangeInInfobase(Sender, Settings, FilterSsettingsAtNode, 
 		
 		If CorrespondentEndPoint.IsEmpty() Then
 			Raise StringFunctionsClientServer.SubstituteParametersInString(
-				NStr("en='Correspondent end point with the %1 script is not found.';ru='Не найдена конечная точка корреспондента с кодом ""%1"".'"),
+				NStr("en='Correspondent endpoint with the ""%1"" code is not found.';ru='Не найдена конечная точка корреспондента с кодом ""%1"".'"),
 				Settings.CorrespondentEndPoint);
 		EndIf;
 		

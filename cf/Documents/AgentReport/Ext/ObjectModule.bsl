@@ -313,7 +313,7 @@ Procedure FillCheckProcessing(Cancel, CheckedAttributes)
 		If FoundStringInventory = Undefined
 		   AND QuantityInventory > 0
 		   AND Counterparty.DoOperationsByOrders Then
-			MessageText = NStr("en='Advance by order that is different form specified in the tabular section ""Inventory"" can not be accepted!';ru='Нельзя зачесть аванс по заказу отличному от указанных в табличной части ""Запасы""!'");
+			MessageText = NStr("en='Advance of order that is different form specified in the ""Inventory"" tabular section cannot be set off!';ru='Нельзя зачесть аванс по заказу отличному от указанных в табличной части ""Запасы""!'");
 			SmallBusinessServer.ShowMessageAboutError(
 				,
 				MessageText,

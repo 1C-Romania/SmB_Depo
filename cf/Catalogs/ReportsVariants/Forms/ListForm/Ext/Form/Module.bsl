@@ -239,13 +239,13 @@ Procedure SubsystemsTreeDrag(Item, DragParameters, StandardProcessing, String, F
 	EndIf;
 	
 	If ArrangementParameters.Source.Ref = ArrangementParameters.Receiver.Ref Then
-		ShowMessageBox(, NStr("en='Selected report variants in this section.';ru='Выбранные варианты отчетов уже в данном разделе.'"));
+		ShowMessageBox(, NStr("en='The selected report variants are already in this section.';ru='Выбранные варианты отчетов уже в данном разделе.'"));
 		Return;
 	EndIf;
 	
 	If ArrangementParameters.Variants.Total = 1 Then
 		If ArrangementParameters.Action = "Copy" Then
-			QuestionTemplate = NStr("en='Arrange ""%1"" in ""%4""?';ru='Разместить ""%1"" в ""%4""?'");
+			QuestionTemplate = NStr("en='Place ""%1"" to ""%4""?';ru='Разместить ""%1"" в ""%4""?'");
 		Else
 			QuestionTemplate = NStr("en='Move ""%1"" from ""%3"" to ""%4""?';ru='Переместить ""%1"" из ""%3"" в ""%4""?'");
 		EndIf;
@@ -262,9 +262,9 @@ Procedure SubsystemsTreeDrag(Item, DragParameters, StandardProcessing, String, F
 			EndIf;
 		EndDo;
 		If ArrangementParameters.Action = "Copy" Then
-			QuestionTemplate = NStr("en='Arrange reports variants ""%1"" (%2 item(s)) in ""%4""?';ru='Разместить варианты отчетов ""%1"" (%2 шт.) в ""%4""?'");
+			QuestionTemplate = NStr("en='Place report variants ""%1"" (%2 pcs.) in ""%4""?';ru='Разместить варианты отчетов ""%1"" (%2 шт.) в ""%4""?'");
 		Else
-			QuestionTemplate = NStr("en='Move reports variants ""%1"" (%2 item(s)) from ""%3"" to ""%4""?';ru='Переместить варианты отчетов ""%1"" (%2 шт.) из ""%3"" в ""%4""?'");
+			QuestionTemplate = NStr("en='Move report variants ""%1"" (%2 pcs.) from ""%3"" to ""%4""?';ru='Переместить варианты отчетов ""%1"" (%2 шт.) из ""%3"" в ""%4""?'");
 		EndIf;
 	EndIf;
 	
@@ -543,9 +543,9 @@ Function PlaceOptionsInSubsystem(ArrangementParameters)
 		OutputNotification.Use = True;
 		If ArrangementParameters.Variants.Total = 1 Then
 			If ArrangementParameters.Action = "Move" Then
-				Pattern = NStr("en='Successfully moved to ""%1"".';ru='Успешно перемещены в ""%1"".'");
+				Pattern = NStr("en='Successfully transferred to %1"".';ru='Успешно перемещены в ""%1"".'");
 			Else
-				Pattern = NStr("en='Successfully arranged in ""%1"".';ru='Успешно размещены в ""%1"".'");
+				Pattern = NStr("en='Successfully placed in %1"".';ru='Успешно размещены в ""%1"".'");
 			EndIf;
 			OutputNotification.Title = StringFunctionsClientServer.SubstituteParametersInString(
 				Pattern,
@@ -554,12 +554,12 @@ Function PlaceOptionsInSubsystem(ArrangementParameters)
 			OutputNotification.Ref = GetURL(ArrangementParameters.Variants.Array[0]);
 		Else
 			If ArrangementParameters.Action = "Move" Then
-				Pattern = NStr("en='Successfully moved to ""%1"".';ru='Успешно перемещены в ""%1"".'");
+				Pattern = NStr("en='Successfully transferred to %1"".';ru='Успешно перемещены в ""%1"".'");
 			Else
-				Pattern = NStr("en='Successfully arranged in ""%1"".';ru='Успешно размещены в ""%1"".'");
+				Pattern = NStr("en='Successfully placed in %1"".';ru='Успешно размещены в ""%1"".'");
 			EndIf;
 			OutputNotification.Text = StringFunctionsClientServer.SubstituteParametersInString(
-				NStr("en='Reports variants (%1).';ru='Варианты отчетов (%1).'"),
+				NStr("en='Report variants (%1).';ru='Варианты отчетов (%1).'"),
 				Format(ArrangementParameters.Variants.Total, "NZ=0; NG=0"));
 			OutputNotification.Title = StringFunctionsClientServer.SubstituteParametersInString(
 				Pattern,
@@ -569,21 +569,21 @@ Function PlaceOptionsInSubsystem(ArrangementParameters)
 		ErrorsText = "";
 		If Not IsBlankString(CannotBeArranged) Then
 			ErrorsText = ?(ErrorsText = "", "", ErrorsText + Chars.LF + Chars.LF)
-				+ NStr("en='Cannot arrange in command interface:';ru='Не могут размещаться в командном интерфейсе:'")
+				+ NStr("en='Cannot be placed in command interface:';ru='Не могут размещаться в командном интерфейсе:'")
 				+ Chars.LF
 				+ CannotBeArranged;
 		EndIf;
 		If Not IsBlankString(ArrangedAlready) Then
 			ErrorsText = ?(ErrorsText = "", "", ErrorsText + Chars.LF + Chars.LF)
-				+ NStr("en='Already arranged in this sector:';ru='Уже размещены в этом разделе:'")
+				+ NStr("en='Already located in this section:';ru='Уже размещены в этом разделе:'")
 				+ Chars.LF
 				+ ArrangedAlready;
 		EndIf;
 		
 		If ArrangementParameters.Action = "Move" Then
-			Pattern = NStr("en='Reports variants moved: %1 of %2.';ru='Перемещено вариантов отчетов: %1 из %2.'");
+			Pattern = NStr("en='Transferred report variants: %1 out of %2.';ru='Перемещено вариантов отчетов: %1 из %2.'");
 		Else
-			Pattern = NStr("en='Reports variants arranged: %1 of %2.';ru='Размещено вариантов отчетов: %1 из %2.'");
+			Pattern = NStr("en='Placed report variants: %1 of %2.';ru='Размещено вариантов отчетов: %1 из %2.'");
 		EndIf;
 		
 		OutputWarning = ExecutionResult.OutputWarning;

@@ -29,7 +29,7 @@ Function SendSMS(RecipientNumbers, Val Text, SenderName = "", TranslateToTransli
 	EndIf;
 	
 	If Not SMSSendSettingFinished() Then
-		Result.ErrorDescription = NStr("en='Provider settings for SMS sending have been specified incorrectly.';ru='Неверно заданы настройки провайдера для отправки SMS.'");
+		Result.ErrorDescription = NStr("en='Incorrect settings of the provider for SMS sending.';ru='Неверно заданы настройки провайдера для отправки SMS.'");
 		Return Result;
 	EndIf;
 	

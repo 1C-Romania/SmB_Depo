@@ -92,7 +92,7 @@ Procedure OpenExternalDataProcessor(Command)
 	FileOpeningDialog = New FileDialog(FileDialogMode.Open);
 	FileOpeningDialog.Filter = NStr("en='External data processor';ru='Внешняя обработка'") + "(*.epf)|*.epf";
 	FileOpeningDialog.Multiselect = False;
-	FileOpeningDialog.Title = NStr("en='Choose external data processor';ru='Выберите внешнюю обработку'");
+	FileOpeningDialog.Title = NStr("en='Select external data processor';ru='Выберите внешнюю обработку'");
 	
 	NotifyDescription = New NotifyDescription("OpenExternalDataProcessorEnding", ThisObject);
 	FileOpeningDialog.Show(NOTifyDescription);

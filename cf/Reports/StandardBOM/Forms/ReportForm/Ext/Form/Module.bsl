@@ -311,7 +311,7 @@ Procedure GenerateReport(ProductsAndServices, Characteristic, Specification)
 	
 	If Not ValueIsFilled(ProductsAndServices) Then
 		
-		MessageText = NStr("en='The Products and services field is not filled';ru='Поле Номенклатура не заполнено'");
+		MessageText = NStr("en='The Products and services field is required';ru='Поле Номенклатура не заполнено'");
 		MessageField = "ProductsAndServices";
 		SmallBusinessServer.ShowMessageAboutError(Report, MessageText,,,MessageField);
 		
@@ -321,7 +321,7 @@ Procedure GenerateReport(ProductsAndServices, Characteristic, Specification)
 	
 	If Not ValueIsFilled(Specification) Then
 		
-		MessageText = NStr("en='The Specification field is not filled';ru='Поле Спецификация не заполнено'");
+		MessageText = NStr("en='The ""Bill of materials"" field is not filled in';ru='Поле Спецификация не заполнено'");
 		MessageField = "Specification";
 		SmallBusinessServer.ShowMessageAboutError(Report, MessageText,,,MessageField);
 		

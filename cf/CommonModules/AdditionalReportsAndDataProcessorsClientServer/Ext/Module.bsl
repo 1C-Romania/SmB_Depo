@@ -118,7 +118,7 @@ EndFunction
 // Filter for chooser or save dialogs of additional reports and data processors.
 Function ChooserAndSaveDialog() Export
 	
-	Filter = NStr("en='External reports and processings (*.%1, *.%2)|*.%1;*.%2|External reports (*.%1)|*.%1|External processings (*.%2)|*.%2';ru='Внешние отчеты и обработки (*.%1, *.%2)|*.%1;*.%2|Внешние отчеты (*.%1)|*.%1|Внешние обработки (*.%2)|*.%2'");
+	Filter = NStr("en='External reports and data processors (*.%1, *.%2)|*.%1;*.%2|External reports (*.%1)|*.%1|External data processors (*.%2)|*.%2';ru='Внешние отчеты и обработки (*.%1, *.%2)|*.%1;*.%2|Внешние отчеты (*.%1)|*.%1|Внешние обработки (*.%2)|*.%2'");
 	Filter = StringFunctionsClientServer.SubstituteParametersInString(Filter, "erf", "epf");
 	Return Filter;
 	

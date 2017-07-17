@@ -28,12 +28,12 @@ Procedure DetermineSectionsWithReportVariants(Sections) Export
 	
 	Sections.Add(Metadata.Subsystems.CRM, NStr("en='CRM';ru='CRM'"));
 	Sections.Add(Metadata.Subsystems.MarketingAndSales, NStr("en='Marketing and sales';ru='Маркетинг и продажи'"));
-	Sections.Add(Metadata.Subsystems.InventoryAndPurchasing, NStr("en='Inventory and purchasing';ru='Запасы и закупки'"));
+	Sections.Add(Metadata.Subsystems.InventoryAndPurchasing, NStr("en='Inventory and purchases';ru='Запасы и закупки'"));
 	Sections.Add(Metadata.Subsystems.Services, NStr("en='Service';ru='Работы'"));
-	Sections.Add(Metadata.Subsystems.KittingAndProduction, NStr("en='Production';ru='Производство'"));
+	Sections.Add(Metadata.Subsystems.KittingAndProduction, NStr("en='Manufacturing';ru='Производство'"));
 	Sections.Add(Metadata.Subsystems.Finances, NStr("en='Finances';ru='Деньги'"));
-	Sections.Add(Metadata.Subsystems.PayrollAndHumanResources, NStr("en='Payroll and Human Resources';ru='Зарплата и персонал'"));
-	Sections.Add(Metadata.Subsystems.Enterprise, NStr("en='Enterprise';ru='Предприятие'"));
+	Sections.Add(Metadata.Subsystems.PayrollAndHumanResources, NStr("en='Payroll and HR';ru='Зарплата и персонал'"));
+	Sections.Add(Metadata.Subsystems.Enterprise, NStr("en='Company';ru='Предприятие'"));
 	Sections.Add(Metadata.Subsystems.Analysis, NStr("en='Analysis';ru='Анализ'"));
 	
 EndProcedure // DetermineSectionsWithReportVariants
@@ -288,7 +288,7 @@ EndProcedure // HighlightSecondaryReports()
 Procedure ConfigureReportsVariants(Settings) Export
 	
 	Variant = ReportsVariants.VariantDesc(Settings, Metadata.Reports.CustomerOrdersAnalysis, "Default");
-	Variant.Definition = NStr("en='The report presents analysis of the customer orders processing';ru='Отчет позволяет проанализировать выполнение заказов покупателей'");
+	Variant.Definition = NStr("en='The report is used to analyze fulfillment of customer orders';ru='Отчет позволяет проанализировать выполнение заказов покупателей'");
 	
 	Variant = ReportsVariants.VariantDesc(Settings, Metadata.Reports.CustomerOrderAnalysis, "Default");
 	Variant.Enabled = False;
@@ -311,255 +311,255 @@ Procedure ConfigureReportsVariants(Settings) Export
 	Variant.Placement.Clear();
 	
 	Variant = ReportsVariants.VariantDesc(Settings, Metadata.Reports.CustomerOrdersPaymentAnalysis, "Default");
-	Variant.Definition = NStr("en='The report allows to analyse payment of orders of buyers';ru='Отчет позволяет проанализировать оплату заказов покупателей'");
+	Variant.Definition = NStr("en='The report is used to analyze payments of customer orders';ru='Отчет позволяет проанализировать оплату заказов покупателей'");
 	
 	Variant = ReportsVariants.VariantDesc(Settings, Metadata.Reports.PurchaseOrdersPaymentAnalysis, "Default");
-	Variant.Definition = NStr("en='The report presents analysis of the payment by orders to suppliers';ru='Отчет позволяет проанализировать оплату заказов поставщикам'");
+	Variant.Definition = NStr("en='The report is used to analyze purchase orders payments';ru='Отчет позволяет проанализировать оплату заказов поставщикам'");
 	
 	Variant = ReportsVariants.VariantDesc(Settings, Metadata.Reports.DemandAnalysis, "Default");
-	Variant.Definition = NStr("en='The report presents analysis of supplying raw materials and materials requirements to perform work, provide services, necessary for production';ru='Отчет позволяет проанализировать обеспечение потребности в сырье и материалах, необходимых для выполнения работ, оказания услуг, производства продукции'");
+	Variant.Definition = NStr("en='The report is used to analyze supplying of raw materials and materials required to perform works, provide services, and manufacture of products';ru='Отчет позволяет проанализировать обеспечение потребности в сырье и материалах, необходимых для выполнения работ, оказания услуг, производства продукции'");
 	
 	Variant = ReportsVariants.VariantDesc(Settings, Metadata.Reports.InvoiceForPaymentAnalysis, "Default");
-	Variant.Definition = NStr("en='The report analyzes bill payments by the customers';ru='Отчет позволяет проанализировать оплату счетов покупателями'");
+	Variant.Definition = NStr("en='The report is used to analyze order payments by customers';ru='Отчет позволяет проанализировать оплату счетов покупателями'");
 	
 	Variant = ReportsVariants.VariantDesc(Settings, Metadata.Reports.SupplierInvoiceForPaymentAnalysis, "Default");
-	Variant.Definition = NStr("en='The report presents analysis of the payment of suppliers invoices';ru='Отчет позволяет проанализировать оплату счетов поставщиков'");
+	Variant.Definition = NStr("en='The report is used to analyze payments of supplier invoices';ru='Отчет позволяет проанализировать оплату счетов поставщиков'");
 	
 	Variant = ReportsVariants.VariantDesc(Settings, Metadata.Reports.BalanceSheet, "Default");
-	Variant.Definition = NStr("en='The report presents balance sheet statement for the specified period';ru='Отчет формирует управленческий баланс на указанный период'");
+	Variant.Definition = NStr("en='The report generates balance sheet statement for the specified period';ru='Отчет формирует управленческий баланс на указанный период'");
 	
 	Variant = ReportsVariants.VariantDesc(Settings, Metadata.Reports.CashFlowStatementBudget, "Default");
-	Variant.Definition = NStr("en='The report presents Cash Flow Budget by specified scenario';ru='Отчет формирует бюджет движения денежных средств по указанному сценарию'");
+	Variant.Definition = NStr("en='The report generates cash flow budget by the specified scenario';ru='Отчет формирует бюджет движения денежных средств по указанному сценарию'");
 	
 	Variant = ReportsVariants.VariantDesc(Settings, Metadata.Reports.CashFlowStatementBudget, "Planfact analysis");
-	Variant.Definition = NStr("en='The report presents Cash Flow Budget by specified scenario';ru='Отчет формирует бюджет движения денежных средств по указанному сценарию'");
+	Variant.Definition = NStr("en='The report generates cash flow budget by the specified scenario';ru='Отчет формирует бюджет движения денежных средств по указанному сценарию'");
 	
 	Variant = ReportsVariants.VariantDesc(Settings, Metadata.Reports.ProfitsAndLossesBudget, "Default");
-	Variant.Definition = NStr("en='The report presents profit and loss budget by the specified scenario';ru='Отчет формирует бюджет прибылей и убытков по указанному сценарию'");
+	Variant.Definition = NStr("en='The report generates profit and loss budget by the specified scenario';ru='Отчет формирует бюджет прибылей и убытков по указанному сценарию'");
 	
 	Variant = ReportsVariants.VariantDesc(Settings, Metadata.Reports.ProfitsAndLossesBudget, "Planfact analysis");
-	Variant.Definition = NStr("en='The report presents plan/actual analysis of the profit and loss budget by the specified scenario';ru='Отчет формирует план-фактный анализ бюджета прибылей и убытков по указанному сценарию'");
+	Variant.Definition = NStr("en='The report generates variance analysis of profit and loss budgets by the specified scenario';ru='Отчет формирует план-фактный анализ бюджета прибылей и убытков по указанному сценарию'");
 	
 	Variant = ReportsVariants.VariantDesc(Settings, Metadata.Reports.SheetByGoodsOnWarehousesInProductsAndServicesPrices, "Default");
-	Variant.Definition = NStr("en='The report is used to evaluate the cost of products in stock according to the price kind specified';ru='Отчет предназначен для оценки стоимости товаров на складах указанному виду цен'");
+	Variant.Definition = NStr("en='The report is used to evaluate the cost of goods in stock according to the price kind specified';ru='Отчет предназначен для оценки стоимости товаров на складах указанному виду цен'");
 	
 	Variant = ReportsVariants.VariantDesc(Settings, Metadata.Reports.MutualSettlements, "Statement");
-	Variant.Definition = NStr("en='The report presents the dynamics of the settlements with customers and suppliers in total for the specified period';ru='Отчет отображает динамику взаиморасчетов с покупателями и поставщиками сводно за выбранный период времени'");
+	Variant.Definition = NStr("en='The report displays dynamics of mutual settlements with customers and suppliers for the specified period';ru='Отчет отображает динамику взаиморасчетов с покупателями и поставщиками сводно за выбранный период времени'");
 	Variant.VisibleByDefault = False;
 	
 	Variant = ReportsVariants.VariantDesc(Settings, Metadata.Reports.MutualSettlements, "Balance");
-	Variant.Definition = NStr("en='Report reflects the state mutual settlements with the customers and suppliers summarily for the selected period';ru='Отчет отображает состояние взаиморасчетов с покупателями и поставщиками сводно за выбранный период времени'");
+	Variant.Definition = NStr("en='The report reflects the state of mutual settlements with customers and suppliers for the specified period';ru='Отчет отображает состояние взаиморасчетов с покупателями и поставщиками сводно за выбранный период времени'");
 	Variant.VisibleByDefault = False;
 	
 	Variant = ReportsVariants.VariantDesc(Settings, Metadata.Reports.MutualSettlements, "Statement in currency");
-	Variant.Definition = NStr("en='The report presents the dymanics of the settlements with customers and suppliers in total for the specified period in the settlements currency';ru='Отчет отображает динамику взаиморасчетов с покупателями и поставщиками сводно за выбранный период времени в валюте расчетов'");
+	Variant.Definition = NStr("en='The report displays dynamics of mutual settlements with customers and suppliers for the specified period in the currency of settlements';ru='Отчет отображает динамику взаиморасчетов с покупателями и поставщиками сводно за выбранный период времени в валюте расчетов'");
 	
 	Variant = ReportsVariants.VariantDesc(Settings, Metadata.Reports.MutualSettlements, "Balance in currency");
-	Variant.Definition = NStr("en='The report presents the state of the settlements with customers and suppliers in total for the specified date in the settlements currency';ru='Отчет отображает состояние взаиморасчетов с покупателями и поставщиками сводно на указанною дату в валюте расчетов'");
+	Variant.Definition = NStr("en='The report shows state of mutual settlements with customers and suppliers for the specified date in the currency of settlements';ru='Отчет отображает состояние взаиморасчетов с покупателями и поставщиками сводно на указанною дату в валюте расчетов'");
 	Variant.VisibleByDefault = False;
 	
 	Variant = ReportsVariants.VariantDesc(Settings, Metadata.Reports.MutualSettlements, "Statement in currency (briefly)");
-	Variant.Definition = NStr("en='The report presents the dynamics of the settlements with customers and suppliers in total for the specified period in the settlements currency (briefly)';ru='Отчет отображает динамику взаиморасчетов с покупателями и поставщиками сводно за выбранный период времени в валюте расчетов (кратко)'");
+	Variant.Definition = NStr("en='The report displays dynamics of settlements with customers and suppliers for the specified period in the currency of settlements (briefly)';ru='Отчет отображает динамику взаиморасчетов с покупателями и поставщиками сводно за выбранный период времени в валюте расчетов (кратко)'");
 	
 	Variant = ReportsVariants.VariantDesc(Settings, Metadata.Reports.MutualSettlementsBriefly, "Statement in currency (briefly)");
-	Variant.Definition = NStr("en='The report presents the settlements with customers and suppliers in total for the specified accounting period (briefly without contract details)';ru='Отчет отображает динамику взаиморасчетов с покупателями и поставщиками сводно за выбранный период времени расчетов (кратко без использования детализации по договорам)'");
+	Variant.Definition = NStr("en='The report shows dynamics of mutual settlements with customers and suppliers for the specified accounting period (briefly without contract details)';ru='Отчет отображает динамику взаиморасчетов с покупателями и поставщиками сводно за выбранный период времени расчетов (кратко без использования детализации по договорам)'");
 	Variant.Enabled = False;
 	Variant.Placement.Clear();
 	
 	Variant = ReportsVariants.VariantDesc(Settings, Metadata.Reports.FixedAssets, "Statement");
-	Variant.Definition = NStr("en='The report presents the summary data on the assets depreciation';ru='В отчете отображаются сводные сведения об амортизации имущества'");
+	Variant.Definition = NStr("en='The report provides common data on property depreciation';ru='В отчете отображаются сводные сведения об амортизации имущества'");
 	
 	Variant = ReportsVariants.VariantDesc(Settings, Metadata.Reports.FixedAssets, "Card");
 	Variant.Definition = NStr("en='Inventory card';ru='Инвентарная карточка'");
 	
 	Variant = ReportsVariants.VariantDesc(Settings, Metadata.Reports.ProductRelease, "Default");
-	Variant.Definition = NStr("en='The report presents the work performed, services rendered and products release';ru='Отчет по выполнению работ, оказанию услуг и выпуску продукции'");
+	Variant.Definition = NStr("en='The report on works performed, services rendered and products released';ru='Отчет по выполнению работ, оказанию услуг и выпуску продукции'");
 	
 	Variant = ReportsVariants.VariantDesc(Settings, Metadata.Reports.FixedAssetsOutput, "Default");
-	Variant.Definition = NStr("en='The report shows fixed assets output for the specified period';ru='В отчете отображаются сведения о выработке имущества за выбранный период времени'");
+	Variant.Definition = NStr("en='The report shows information on property output for the specified period of time';ru='В отчете отображаются сведения о выработке имущества за выбранный период времени'");
 	
 	Variant = ReportsVariants.VariantDesc(Settings, Metadata.Reports.InventoryTransferSchedule, "Default");
-	Variant.Definition = NStr("en='The report shows planned receipts and shipment of the goods items by orders quantification for the specified period';ru='Отчет показывает плановые поступления и отгрузки номенклатуры по заказам в количественном выражении за выбранный период времени'");
+	Variant.Definition = NStr("en='The report shows planned receipt and shipment of products and services by orders for the specified period in quantitative terms';ru='Отчет показывает плановые поступления и отгрузки номенклатуры по заказам в количественном выражении за выбранный период времени'");
 	
 	Variant = ReportsVariants.VariantDesc(Settings, Metadata.Reports.AvailabilityAnalysis, "Default");
-	Variant.Definition = NStr("en='The report shows available balance of goods at warehouses.';ru='Отчет отображает свободный остаток товара на складах.'");
+	Variant.Definition = NStr("en='The report shows unrestricted stock of goods at warehouses';ru='Отчет отображает свободный остаток товара на складах.'");
 	
 	Variant = ReportsVariants.VariantDesc(Settings, Metadata.Reports.CashFlow, "Default");
-	Variant.Definition = NStr("en='Statement of Cash Flow of the enterprise for the specified period';ru='Отчет о движении денежных средств организации за указанный период'");
+	Variant.Definition = NStr("en='Cash flow statement of a company for the specified period';ru='Отчет о движении денежных средств организации за указанный период'");
 	
 	Variant = ReportsVariants.VariantDesc(Settings, Metadata.Reports.CashAssets, "Statement");
-	Variant.Definition = NStr("en='The report generates statement of cash flow by petty cashes and bank accounts for the selected period';ru='Отчет формирует ведомость движения денежных средств с детализацией по кассам и банковским счетам за выбранный период времени'");
+	Variant.Definition = NStr("en='The report generates a cash flow statement drilled down by cash funds and bank accounts for the selected period';ru='Отчет формирует ведомость движения денежных средств с детализацией по кассам и банковским счетам за выбранный период времени'");
 	
 	Variant = ReportsVariants.VariantDesc(Settings, Metadata.Reports.CashAssets, "Balance");
-	Variant.Definition = NStr("en='The report shows cash balances of accounts and petty cashes on the specified date';ru='Отчет показывает остатки денежных средств на счетах и в кассах на указанную дату'");
+	Variant.Definition = NStr("en='The report shows cash balance on accounts and in cash funds for the specified date';ru='Отчет показывает остатки денежных средств на счетах и в кассах на указанную дату'");
 	Variant.VisibleByDefault = False;
 	
 	Variant = ReportsVariants.VariantDesc(Settings, Metadata.Reports.CashAssets, "Movements analysis");
-	Variant.Definition = NStr("en='The report shows cash flow, detailed by items for the specified period';ru='Отчет показывает движение денежных средств с детализацией по статьям за выбранный период времени'");
+	Variant.Definition = NStr("en='The report shows cash flow drilled down by items for the specified period';ru='Отчет показывает движение денежных средств с детализацией по статьям за выбранный период времени'");
 	
 	Variant = ReportsVariants.VariantDesc(Settings, Metadata.Reports.CashAssets, "StatementInCurrency");
-	Variant.Definition = NStr("en='The report generates statement of cash flow by petty cashes and bank accounts for the selected period in cash currency';ru='Отчет формирует ведомость движения денежных средств с детализацией по кассам и банковским счетам за выбранный период времени в валюте денежных средств'");
+	Variant.Definition = NStr("en='The report generates a cash flow statement drilled down by cash funds and bank accounts for the selected period in cash currency';ru='Отчет формирует ведомость движения денежных средств с детализацией по кассам и банковским счетам за выбранный период времени в валюте денежных средств'");
 	
 	Variant = ReportsVariants.VariantDesc(Settings, Metadata.Reports.CashAssets, "BalanceInCurrency");
-	Variant.Definition = NStr("en='The report shows cash balances of accounts and petty cashes on the specified date in cash currency';ru='Отчет показывает остатки денежных средств на счетах и в кассах на указанную дату в валюте денежных средств'");
+	Variant.Definition = NStr("en='The report shows cash balance on accounts and in cash funds for the specified date in cash currency';ru='Отчет показывает остатки денежных средств на счетах и в кассах на указанную дату в валюте денежных средств'");
 	Variant.VisibleByDefault = False;
 	
 	Variant = ReportsVariants.VariantDesc(Settings, Metadata.Reports.CashAssets, "Analysis of movements in currency");
-	Variant.Definition = NStr("en='The report shows cash flow, detailed by items for the specified period in cash currency';ru='Отчет показывает движение денежных средств с детализацией по статьям за выбранный период времени в валюте денежных средств'");
+	Variant.Definition = NStr("en='The report shows cash flow drilled down by items for the specified period in cash currency';ru='Отчет показывает движение денежных средств с детализацией по статьям за выбранный период времени в валюте денежных средств'");
 	
 	Variant = ReportsVariants.VariantDesc(Settings, Metadata.Reports.CashAssets, "CashReceiptsDynamics");
-	Variant.Definition = NStr("en='The report presents the cash receipt dynamics detailed by items over the specified period of time in accounting currency';ru='Отчет показывает динамику поступления денежных средств с детализацией по статьям за выбранный период времени в валюте учета'");
+	Variant.Definition = NStr("en='The report shows the dynamics of cash receipt drilled down by items for the specified period of time in accounting currency';ru='Отчет показывает динамику поступления денежных средств с детализацией по статьям за выбранный период времени в валюте учета'");
 	Variant.VisibleByDefault = False;
 	
 	Variant = ReportsVariants.VariantDesc(Settings, Metadata.Reports.CashAssets, "CashExpenseDynamics");
-	Variant.Definition = NStr("en='The report presents the cash expense dynamics detailed by items over the specified period of time in accounting currency';ru='Отчет показывает динамику расхода денежных средств с детализацией по статьям за выбранный период времени в валюте учета'");
+	Variant.Definition = NStr("en='The report shows the dynamics of cash expense drilled down by items for the specified period of time in accounting currency';ru='Отчет показывает динамику расхода денежных средств с детализацией по статьям за выбранный период времени в валюте учета'");
 	Variant.VisibleByDefault = False;
 	
 	Variant = ReportsVariants.VariantDesc(Settings, Metadata.Reports.CashInCashRegisters, "Statement");
-	Variant.Definition = NStr("en='The report shows cash flow in cash registers for the selected period';ru='Отчет отображает движения денежных средств в кассах ККМ за выбранный период времени'");
+	Variant.Definition = NStr("en='The report shows cash flow in the cash registers for the specified period';ru='Отчет отображает движения денежных средств в кассах ККМ за выбранный период времени'");
 	Variant.VisibleByDefault = False;
 	
 	Variant = ReportsVariants.VariantDesc(Settings, Metadata.Reports.CashInCashRegisters, "Balance");
-	Variant.Definition = NStr("en='The report shows cash balances of the cash registers on the specified date';ru='Отчет выводит остатки денежных средств в кассах ККМ на указанную дату'");
+	Variant.Definition = NStr("en='The report shows cash balance in the cash registers for the specified date';ru='Отчет выводит остатки денежных средств в кассах ККМ на указанную дату'");
 	Variant.VisibleByDefault = False;
 	
 	Variant = ReportsVariants.VariantDesc(Settings, Metadata.Reports.CashInCashRegisters, "StatementInCurrency");
-	Variant.Definition = NStr("en='The report shows cash flow in cash registers for the selected period in the cash currency';ru='Отчет отображает движения денежных средств в кассах ККМ за выбранный период времени в валюте денежных средств'");
+	Variant.Definition = NStr("en='The report shows cash flow in the cash registers for the specified period in the cash currency';ru='Отчет отображает движения денежных средств в кассах ККМ за выбранный период времени в валюте денежных средств'");
 	
 	Variant = ReportsVariants.VariantDesc(Settings, Metadata.Reports.CashInCashRegisters, "BalanceInCurrency");
-	Variant.Definition = NStr("en='Report displays the cash assets balances in the cash registers for the specified date in the cash assets currency';ru='Отчет выводит остатки денежных средств в кассах ККМ на указанную дату в валюте денежных средств'");
+	Variant.Definition = NStr("en='The report shows cash balance in the cash registers for the specified date in cash currency';ru='Отчет выводит остатки денежных средств в кассах ККМ на указанную дату в валюте денежных средств'");
 	Variant.VisibleByDefault = False;
 	
 	Variant = ReportsVariants.VariantDesc(Settings, Metadata.Reports.CashAssetsForecast, "Default");
-	Variant.Definition = NStr("en='The report shows planned cash flow by specified scenario';ru='Отчет показывает запланированные движения денежных средств по указанному сценарию'");
+	Variant.Definition = NStr("en='The report shows planned cash flow by the specified scenario';ru='Отчет показывает запланированные движения денежных средств по указанному сценарию'");
 	
 	Variant = ReportsVariants.VariantDesc(Settings, Metadata.Reports.CashAssetsForecast, "InCurrency");
-	Variant.Definition = NStr("en='The report shows planned cash flow by specified scenario in cash currency';ru='Отчет показывает запланированные движения денежных средств по указанному сценарию в валюте денежных средств'");
+	Variant.Definition = NStr("en='The report shows planned cash flow by the specified scenario in cash currency';ru='Отчет показывает запланированные движения денежных средств по указанному сценарию в валюте денежных средств'");
 	
 	Variant = ReportsVariants.VariantDesc(Settings, Metadata.Reports.CashAssetsForecast, "Planfact analysis");
-	Variant.Definition = NStr("en='The report shows cash flow plan/actual analysis';ru='Отчет показывает план-фактный анализ движения денежных средств'");
+	Variant.Definition = NStr("en='The report shows cash flow variance analysis';ru='Отчет показывает план-фактный анализ движения денежных средств'");
 	
 	Variant = ReportsVariants.VariantDesc(Settings, Metadata.Reports.CashAssetsForecast, "Planfact analysis (cur.)");
-	Variant.Definition = NStr("en='The report shows cash flow plan/actual analysis in cash currency';ru='Отчет показывает план-фактный анализ движения денежных средств в валюте денежных средств'");
+	Variant.Definition = NStr("en='The report shows cash flow variance analysis in the cash currency';ru='Отчет показывает план-фактный анализ движения денежных средств в валюте денежных средств'");
 	
 	Variant = ReportsVariants.VariantDesc(Settings, Metadata.Reports.BankCharges, "BankCharges");
 	Variant.Definition = NStr("ru = 'Отчет показывает информацию по расходам на банковские комиссии'; en = 'The report shows information on expenses for bank charges'");
 	
 	Variant = ReportsVariants.VariantDesc(Settings, Metadata.Reports.PlannedCashBalance, "Default");
-	Variant.Definition = NStr("en='Report shows information on planned cash balances in selected currency';ru='Отчет показывает информацию о планируемых остатках денежных средств в выбранной валюте'");
+	Variant.Definition = NStr("en='The report displays information on planned cash balance in the selected currency';ru='Отчет показывает информацию о планируемых остатках денежных средств в выбранной валюте'");
 	
 	Variant = ReportsVariants.VariantDesc(Settings, Metadata.Reports.IncomeAndExpenses, "Statement");
-	Variant.Definition = NStr("en='The report presents income and expences forecast (by the shipment)';ru='Отчет содержит прогнозные данные о доходах и расходах (по отгрузке)'");
+	Variant.Definition = NStr("en='The report provides forecast data on income and expenses (by shipment)';ru='Отчет содержит прогнозные данные о доходах и расходах (по отгрузке)'");
 	
 	Variant = ReportsVariants.VariantDesc(Settings, Metadata.Reports.IncomeAndExpenses, "IncomeAndExpensesByOrders");
 	Variant.Definition = NStr("en='The report contains data on income and expenses by customer orders (shipment)';ru='Отчет содержит данные о доходах и расходах по заказам покупателей(по отгрузке)'");
 	Variant.VisibleByDefault = False;
 	
 	Variant = ReportsVariants.VariantDesc(Settings, Metadata.Reports.IncomeAndExpenses, "IncomeAndExpensesDynamics");
-	Variant.Definition = NStr("en='The report presents the change dynamics of income, expenses and profit (by shipment) for the specified period of time';ru='Отчет показывает динамику изменения доходов, расходов и прибыли (по отгрузке) за выбранный период времени'");
+	Variant.Definition = NStr("en='The report shows the dynamics changes of income, expenses and profit (by shipment) for the specified period of time';ru='Отчет показывает динамику изменения доходов, расходов и прибыли (по отгрузке) за выбранный период времени'");
 	Variant.VisibleByDefault = False;
 	
 	Variant = ReportsVariants.VariantDesc(Settings, Metadata.Reports.IncomeAndExpensesByCashMethod, "Default");
-	Variant.Definition = NStr("en='The report presents income and expenses data (by the payments)';ru='Отчет содержит данные о доходах и расходах (по оплате)'");
+	Variant.Definition = NStr("en='The report shows data on income and expenses (payroll)';ru='Отчет содержит данные о доходах и расходах (по оплате)'");
 	
 	Variant = ReportsVariants.VariantDesc(Settings, Metadata.Reports.IncomeAndExpensesByCashMethod, "IncomeAndExpensesDynamics");
-	Variant.Definition = NStr("en='The report presents the change dynamics of income, expenses and profit (by payment) for the specified period of time';ru='Отчет показывает динамику изменения доходов, расходов и прибыли (по оплате) за выбранный период времени'");
+	Variant.Definition = NStr("en='The report shows the dynamics changes of income, expenses and profit (by payment) for the specified period of time';ru='Отчет показывает динамику изменения доходов, расходов и прибыли (по оплате) за выбранный период времени'");
 	Variant.VisibleByDefault = False;
 	
 	Variant = ReportsVariants.VariantDesc(Settings, Metadata.Reports.IncomeAndExpensesForecast, "Statement");
-	Variant.Definition = NStr("en='The report presents income and expences forecast (by the shipment)';ru='Отчет содержит прогнозные данные о доходах и расходах (по отгрузке)'");
+	Variant.Definition = NStr("en='The report provides forecast data on income and expenses (by shipment)';ru='Отчет содержит прогнозные данные о доходах и расходах (по отгрузке)'");
 	
 	Variant = ReportsVariants.VariantDesc(Settings, Metadata.Reports.IncomeAndExpensesForecast, "Planfact analysis");
-	Variant.Definition = NStr("en='The report presents plan/actual analysis of income and expences (by the shipment)';ru='Отчет содержит план-фактный анализ доходов и расходов (по отгрузке)'");
+	Variant.Definition = NStr("en='The report provides variance analysis of income and expenses (by shipment)';ru='Отчет содержит план-фактный анализ доходов и расходов (по отгрузке)'");
 	
 	Variant = ReportsVariants.VariantDesc(Settings, Metadata.Reports.WorkOrders, "Default");
-	Variant.Definition = NStr("en=' The report shows scheduled and completed work orders';ru='Отчет показывает запланированные и выполненные задания на работу'");
+	Variant.Definition = NStr("en='The report shows scheduled and completed work orders.';ru='Отчет показывает запланированные и выполненные задания на работу'");
 	Variant.VisibleByDefault = False;
 	
 	Variant = ReportsVariants.VariantDesc(Settings, Metadata.Reports.WorkOrders, "ReportToCustomer");
-	Variant.Definition = NStr("en='The report persents information for the customer about performed work orders';ru='Отчет предназначен для предоставления сведений заказчику о выполненных заданиях на работу'");
+	Variant.Definition = NStr("en='The report provides information about performed work orders to the customer';ru='Отчет предназначен для предоставления сведений заказчику о выполненных заданиях на работу'");
 	
 	Variant = ReportsVariants.VariantDesc(Settings, Metadata.Reports.ProductionOrders, "Statement");
-	Variant.Definition = NStr("en='The report shows orders processing dynamic for the specified period';ru='Отчет отображает динамику работы с заказами за выбранный период'");
+	Variant.Definition = NStr("en='The report shows order processing dynamics for the specified period';ru='Отчет отображает динамику работы с заказами за выбранный период'");
 	
 	Variant = ReportsVariants.VariantDesc(Settings, Metadata.Reports.ProductionOrders, "Balance");
-	Variant.Definition = NStr("en='The report presents analysis of state orders on the specified date';ru='Отчет предназначен для анализа состояния заказов на указанную дату.'");
+	Variant.Definition = NStr("en='The report is used to analyze the state of orders for the specified date.';ru='Отчет предназначен для анализа состояния заказов на указанную дату.'");
 	Variant.VisibleByDefault = False;
 	
 	Variant = ReportsVariants.VariantDesc(Settings, Metadata.Reports.CustomerOrders, "Statement");
-	Variant.Definition = NStr("en='The report shows orders processing dynamic for the specified period';ru='Отчет отображает динамику работы с заказами за выбранный период'");
+	Variant.Definition = NStr("en='The report shows order processing dynamics for the specified period';ru='Отчет отображает динамику работы с заказами за выбранный период'");
 	Variant.VisibleByDefault = False;
 	
 	Variant = ReportsVariants.VariantDesc(Settings, Metadata.Reports.CustomerOrders, "Balance");
-	Variant.Definition = NStr("en='The report shows state orders on the specified date';ru='Отчет отображает состояние заказов на указанную дату'");
+	Variant.Definition = NStr("en='The report shows state of orders for the specified date';ru='Отчет отображает состояние заказов на указанную дату'");
 	Variant.VisibleByDefault = False;
 	
 	Variant = ReportsVariants.VariantDesc(Settings, Metadata.Reports.PurchaseOrders, "Statement");
-	Variant.Definition = NStr("en='The report shows orders processing dynamic for the specified period';ru='Отчет отображает динамику работы с заказами за выбранный период'");
+	Variant.Definition = NStr("en='The report shows order processing dynamics for the specified period';ru='Отчет отображает динамику работы с заказами за выбранный период'");
 	Variant.VisibleByDefault = False;
 	
 	Variant = ReportsVariants.VariantDesc(Settings, Metadata.Reports.PurchaseOrders, "Balance");
-	Variant.Definition = NStr("en='The report shows state orders on the specified date';ru='Отчет отображает состояние заказов на указанную дату'");
+	Variant.Definition = NStr("en='The report shows state of orders for the specified date';ru='Отчет отображает состояние заказов на указанную дату'");
 	Variant.VisibleByDefault = False;
 	
 	Variant = ReportsVariants.VariantDesc(Settings, Metadata.Reports.Purchases, "Default");
-	Variant.Definition = NStr("en='The report presents the analysis of products and services purchased by the company within the specified period';ru='Отчет предназначен для анализа закупок номенклатуры, совершенных предприятием в течение заданного периода времени'");
+	Variant.Definition = NStr("en='The report is used to analyze products and services purchased by the company within the specified period of time';ru='Отчет предназначен для анализа закупок номенклатуры, совершенных предприятием в течение заданного периода времени'");
 	
 	Variant = ReportsVariants.VariantDesc(Settings, Metadata.Reports.Inventory, "Statement");
-	Variant.Definition = NStr("en='The report presents information about receipt, shipment and current quantity of inventory in available balance and in reserve under orders of buyers';ru='Отчет позволяет получить информацию о поступлении, отгрузке и текущем количестве запасов в свободном остатке и в резерве по заказам покупателей'");
+	Variant.Definition = NStr("en='The report provides information on receipt, shipment and quantity of inventory in unrestricted stock and reserve under customer orders';ru='Отчет позволяет получить информацию о поступлении, отгрузке и текущем количестве запасов в свободном остатке и в резерве по заказам покупателей'");
 	
 	Variant = ReportsVariants.VariantDesc(Settings, Metadata.Reports.Inventory, "Balance");
-	Variant.Definition = NStr("en='Report reflects the inventory status for the specified date';ru='Отчет отображает состояние запасов на указанную дату'");
+	Variant.Definition = NStr("en='The report reflects inventory state for the specified date.';ru='Отчет отображает состояние запасов на указанную дату'");
 	Variant.VisibleByDefault = False;
 	
 	Variant = ReportsVariants.VariantDesc(Settings, Metadata.Reports.SurplusesAndShortages, "Default");
-	Variant.Definition = NStr("en='The report presents the data on the surpluses and shortages according to the results of reconciliation';ru='Отчет позволяет получить информацию об излишках и недостачах по итогам инвентаризации'");
+	Variant.Definition = NStr("en='The report provides information on surpluses and shortages according to the physical inventory results';ru='Отчет позволяет получить информацию об излишках и недостачах по итогам инвентаризации'");
 	
 	Variant = ReportsVariants.VariantDesc(Settings, Metadata.Reports.InventoryByCCD, "Statement");
-	Variant.Definition = NStr("en='The report presents information about receipt, shipment and current quantity of any of the imported goods, whith CCD number';ru='Отчет позволяет получить информацию о поступлении, отгрузке и текущем количестве любого импортного товара, которому присвоен номер ГТД'");
+	Variant.Definition = NStr("en='The report provides information on receipt, shipment, and quantity of any imported product available that has a CCD number assigned';ru='Отчет позволяет получить информацию о поступлении, отгрузке и текущем количестве любого импортного товара, которому присвоен номер ГТД'");
 	
 	Variant = ReportsVariants.VariantDesc(Settings, Metadata.Reports.InventoryByCCD, "Balance");
-	Variant.Definition = NStr("en='The report presents information about current quantity of any of the imported goods, whith CCD number';ru='Отчет позволяет получить информацию о текущем количестве любого импортного товара, которому присвоен номер ГТД'");
+	Variant.Definition = NStr("en='The report provides information on the quantity of any imported product available that has a CCD number assigned';ru='Отчет позволяет получить информацию о текущем количестве любого импортного товара, которому присвоен номер ГТД'");
 	Variant.VisibleByDefault = False;
 	
 	Variant = ReportsVariants.VariantDesc(Settings, Metadata.Reports.InventoryTransferred, "Statement");
-	Variant.Definition = NStr("en='The report presents information about inventory changes, received on commission, for processing, and on the safe custody by specified period';ru='Отчет позволяет получить информацию об изменении запасов, принятых на комиссию, в переработку и на ответственное хранение за указанный период времени'");
+	Variant.Definition = NStr("en='The report provides information about changes of inventory balance received for commission, processing, and safe custody for the specified period';ru='Отчет позволяет получить информацию об изменении запасов, принятых на комиссию, в переработку и на ответственное хранение за указанный период времени'");
 	
 	Variant = ReportsVariants.VariantDesc(Settings, Metadata.Reports.InventoryTransferred, "Balance");
-	Variant.Definition = NStr("en='The report presents information about inventory balance, received on commission, for processing, and on the safe custody by specified period';ru='Отчет позволяет получить информацию об остатках запасов, принятых на комиссию, в переработку и на ответственное хранение.'");
+	Variant.Definition = NStr("en='The report provides information about inventory balance received for commission, processing, and safe custody.';ru='Отчет позволяет получить информацию об остатках запасов, принятых на комиссию, в переработку и на ответственное хранение.'");
 	Variant.VisibleByDefault = False;
 	
 	Variant = ReportsVariants.VariantDesc(Settings, Metadata.Reports.InventoryReceived, "Statement");
-	Variant.Definition = NStr("en='The report presents information about inventory changes, received on commission, for processing, and on the safe custody by specified period';ru='Отчет позволяет получить информацию об изменении запасов, принятых на комиссию, в переработку и на ответственное хранение за указанный период времени'");
+	Variant.Definition = NStr("en='The report provides information about changes of inventory balance received for commission, processing, and safe custody for the specified period';ru='Отчет позволяет получить информацию об изменении запасов, принятых на комиссию, в переработку и на ответственное хранение за указанный период времени'");
 	
 	Variant = ReportsVariants.VariantDesc(Settings, Metadata.Reports.InventoryReceived, "Balance");
-	Variant.Definition = NStr("en='The report presents information about inventory balance, received on commission, for processing, and on the safe custody by specified period';ru='Отчет позволяет получить информацию об остатках запасов, принятых на комиссию, в переработку и на ответственное хранение.'");
+	Variant.Definition = NStr("en='The report provides information about inventory balance received for commission, processing, and safe custody.';ru='Отчет позволяет получить информацию об остатках запасов, принятых на комиссию, в переработку и на ответственное хранение.'");
 	Variant.VisibleByDefault = False;
 	
 	Variant = ReportsVariants.VariantDesc(Settings, Metadata.Reports.EventCalendar, "Default");
-	Variant.Definition = NStr("en='Report allows us to receive information about events grouped by the statuses (delayed, as of today, scheduled).';ru='Отчет позволяет получить информацию по событиям, сгруппированным по статусам (просроченные, на сегодня, запланированные).'");
+	Variant.Definition = NStr("en='The report provides information on events grouped by their statuses (overdue, for today, scheduled)';ru='Отчет позволяет получить информацию по событиям, сгруппированным по статусам (просроченные, на сегодня, запланированные).'");
 	
 	Variant = ReportsVariants.VariantDesc(Settings, Metadata.Reports.CounterpartyContactInformation, "Counterparty contact information");
 	Variant.Enabled = False;
 	Variant.Placement.Clear();
 	
 	Variant = ReportsVariants.VariantDesc(Settings, Metadata.Reports.AccrualsAndDeductions, "Default");
-	Variant.Definition = NStr("en='The report shows employees earnings and deductions with detailed earning/deduction type';ru='В отчете отражаются данные по начислениям и удержаниям сотрудников с детализацией до вида начисления/удержания'");
+	Variant.Definition = NStr("en='The report shows data on employee accruals and deductions drilled down to the accrual/deduction kind';ru='В отчете отражаются данные по начислениям и удержаниям сотрудников с детализацией до вида начисления/удержания'");
 	Variant.VisibleByDefault = False;
 	
 	Variant = ReportsVariants.VariantDesc(Settings, Metadata.Reports.AccrualsAndDeductions, "InCurrency");
-	Variant.Definition = NStr("en='The report shows employees earnings and deductions in currency with detailed earning/deduction type';ru='В отчете отражаются данные по начислениям и удержаниям сотрудников в валюте с детализацией до вида начисления/удержания'");
+	Variant.Definition = NStr("en='The report displays data on employee accruals and deductions drilled down to the accrual/deduction kind';ru='В отчете отражаются данные по начислениям и удержаниям сотрудников в валюте с детализацией до вида начисления/удержания'");
 	
 	Variant = ReportsVariants.VariantDesc(Settings, Metadata.Reports.UFP, "Statement");
-	Variant.Definition = NStr("en='The report presents the data on changes in direct and indirect costs of the company. Data is presented in terms of departments with the detalization by the customer orders';ru='Отчет предоставляет информацию об изменениях прямых и косвенных затрат предприятия. Данные представлены в разрезе подразделений с детализацией по заказам покупателей'");
+	Variant.Definition = NStr("en='The report displays data on changes of direct and indirect costs of the company. The data is shown by departments drilled down by customer orders';ru='Отчет предоставляет информацию об изменениях прямых и косвенных затрат предприятия. Данные представлены в разрезе подразделений с детализацией по заказам покупателей'");
 	
 	Variant = ReportsVariants.VariantDesc(Settings, Metadata.Reports.UFP, "Balance");
-	Variant.Definition = NStr("en='The report presents data on the state of direct and indirect costs of the company. Data is presented in terms of departments with the detalization by the customer orders';ru='Отчет предоставляет информацию о состоянии прямых и косвенных затрат предприятия. Данные представлены в разрезе подразделений с детализацией по заказам покупателей'");
+	Variant.Definition = NStr("en='The report displays data on the state of direct and indirect costs of the company. The data is shown by departments drilled down by customer orders';ru='Отчет предоставляет информацию о состоянии прямых и косвенных затрат предприятия. Данные представлены в разрезе подразделений с детализацией по заказам покупателей'");
 	Variant.VisibleByDefault = False;
 	
 	Report = ReportsVariants.ReportDescription(Settings, Metadata.Reports.StandardBOM); //Variant does not exist, the description shall be set for report.
 	ReportsVariants.SetOutputModeInReportPanels(Settings, Report, True);	
-	Report.Definition = NStr("en='The report presents information about standards and technologies of works and finished products';ru='Отчет предоставляет информацию о нормативном составе и технологии работ, продукции'");
+	Report.Definition = NStr("en='The report provides information on standards and technologies of works and products';ru='Отчет предоставляет информацию о нормативном составе и технологии работ, продукции'");
 	Report.SearchSettings.FieldNames =
 		NStr("en='Products
 		|and services
@@ -578,89 +578,88 @@ Procedure ConfigureReportsVariants(Settings) Export
 		|Номенклатура Характеристика Спецификация'");
 	
 	Variant = ReportsVariants.VariantDesc(Settings, Metadata.Reports.InventoryTurnover, "Default");
-	Variant.Definition = NStr("en='The report presents analysis of turnover and Average inventory life';ru='Отчет предназначен для анализа оборачиваемости и среднего срока хранения запасов'");
+	Variant.Definition = NStr("en='The report is used to analyze the turnover and average storage time of inventory';ru='Отчет предназначен для анализа оборачиваемости и среднего срока хранения запасов'");
 	
 	Variant = ReportsVariants.VariantDesc(Settings, Metadata.Reports.TurnoverBalanceSheet, "TBS");
 	Variant.Definition = NStr("en='The report contains information about opening and closing balance by GL accounts, and turnovers by GL accounts for the specified period';ru='Отчет содержит информацию о начальных и конечных остатках по счетам учета, а так же оборотов по счетам за указанный период'");
 	
 	Variant = ReportsVariants.VariantDesc(Settings, Metadata.Reports.WorkedTime, "ByDays");
-	Variant.Definition = NStr("en='The report shows work time expenditures by days in specified period';ru='В отчете отображаются сведения о ежедневных затратах рабочего времени по дням за указанный период'");
+	Variant.Definition = NStr("en='The report shows daily work time expenditures by days for the specified period';ru='В отчете отображаются сведения о ежедневных затратах рабочего времени по дням за указанный период'");
 	
 	Variant = ReportsVariants.VariantDesc(Settings, Metadata.Reports.WorkedTime, "TotalForPeriod");
-	Variant.Definition = NStr("en='The report presents total work time detailed to the type of work time within the specified period';ru='В отчет выводятся данные о суммарных затратах рабочего времени с детализацией до вида рабочего времени за указанный период'");
+	Variant.Definition = NStr("en='The report displays data on total work time expenditures drilled down to the work time kind for the specified period';ru='В отчет выводятся данные о суммарных затратах рабочего времени с детализацией до вида рабочего времени за указанный период'");
 	
 	Variant = ReportsVariants.VariantDesc(Settings, Metadata.Reports.SalesPlanActualAnalysis, "Default");
-	Variant.Definition = NStr("en='The report presents correlation of planned and actual sales analysis';ru='С помощью отчета можно проанализировать соотношение запланированных и фактических продаж'");
+	Variant.Definition = NStr("en='The report is used to analyze correlation of planned and actual sales';ru='С помощью отчета можно проанализировать соотношение запланированных и фактических продаж'");
 	
 	Variant = ReportsVariants.VariantDesc(Settings, Metadata.Reports.ProductionPlanActualAnalysis, "Default");
-	Variant.Definition = NStr("en='The report presents plan/actual analysis of performed work, performed services, output of products';ru='Отчет предназначен для план-фактного анализа выполнения работ, оказания услуг, производства продукции'");
+	Variant.Definition = NStr("en='The report is designed to perform variance analysis of performed works, services rendered, manufacture of products';ru='Отчет предназначен для план-фактного анализа выполнения работ, оказания услуг, производства продукции'");
 	
 	Variant = ReportsVariants.VariantDesc(Settings, Metadata.Reports.SalesTargets, "Default");
-	Variant.Definition = NStr("en='The report shows information about planned items of goods sale, grouped by departments';ru='В отчете отображаются данные о планируемых продажах номенклатуры, сгруппированные по подразделениям'");
+	Variant.Definition = NStr("en='The report shows information about planned sales of products and services grouped by departments';ru='В отчете отображаются данные о планируемых продажах номенклатуры, сгруппированные по подразделениям'");
 	
 	Variant = ReportsVariants.VariantDesc(Settings, Metadata.Reports.PaymentCalendar, "Default");
 	Variant.Definition = NStr("en='Payment calendar';ru='Платежный календарь'");
 	
 	Variant = ReportsVariants.VariantDesc(Settings, Metadata.Reports.ProfitsAndLosses, "Default");
-	Variant.Definition = NStr("en='The report presents information about gains and losses for the specified period';ru='В отчет выводится информация о прибылях и убытках за указанный период'");
+	Variant.Definition = NStr("en='The report provides information about profits and losses for the specified period';ru='В отчет выводится информация о прибылях и убытках за указанный период'");
 	
 	Variant = ReportsVariants.VariantDesc(Settings, Metadata.Reports.BalanceEstimation, "Default");
-	Variant.Definition = NStr("en='The report generates budget by balance sheet by the specified scenario';ru='Отчет формирует бюджет по балансовому листу по указанному сценарию'");
+	Variant.Definition = NStr("en='The report generates budget by balance sheet using the specified scenario';ru='Отчет формирует бюджет по балансовому листу по указанному сценарию'");
 	
 	Variant = ReportsVariants.VariantDesc(Settings, Metadata.Reports.BalanceEstimation, "Planfact analysis");
-	Variant.Definition = NStr("en='The report shows plan/actual of budget execution by balance sheet';ru='Отчет показывает план-фактный анализ исполнения бюджета по балансовому листу'");
+	Variant.Definition = NStr("en='The report shows variance analysis of budget implementation by balance sheet';ru='Отчет показывает план-фактный анализ исполнения бюджета по балансовому листу'");
 	
 	Variant = ReportsVariants.VariantDesc(Settings, Metadata.Reports.Sales, "Default");
-	Variant.Definition = NStr("en='The report presents products and services items sold within the specified period by quantity and amount';ru='Отчет отображает сведения о проданных позициях номенклатуры в количественном и суммовом выражении за определенный период времени'");
+	Variant.Definition = NStr("en='The report displays information on products and services items sold for the specified period in quantitative and monetary terms';ru='Отчет отображает сведения о проданных позициях номенклатуры в количественном и суммовом выражении за определенный период времени'");
 	Variant.VisibleByDefault = False;
 	
 	Variant = ReportsVariants.VariantDesc(Settings, Metadata.Reports.Sales, "GrossProfit");
-	Variant.Definition = NStr("en='The report shows gross profit by specified period';ru='Отчет отображает валовую прибыль за определенный период времени'");
+	Variant.Definition = NStr("en='The report displays gross profit for the specified period';ru='Отчет отображает валовую прибыль за определенный период времени'");
 	
 	Variant = ReportsVariants.VariantDesc(Settings, Metadata.Reports.Sales, "GrossProfitByProductsAndServicesCategories");
-	Variant.Definition = NStr("en='The report presents the gross profit by products and sevices categories over a certain period of time';ru='Отчет отображает валовую прибыль по номенклатурным группам за определенный период времени'");
+	Variant.Definition = NStr("en='The report displays gross profit by products and services groups for a certain period of time';ru='Отчет отображает валовую прибыль по номенклатурным группам за определенный период времени'");
 	Variant.VisibleByDefault = False;
 	
 	Variant = ReportsVariants.VariantDesc(Settings, Metadata.Reports.Sales, "GrossProfitByCustomers");
-	Variant.Definition = NStr("en='The report presents gross profit by customers over a certain period of time';ru='Отчет отображает валовую прибыль по покупателям за определенный период времени'");
+	Variant.Definition = NStr("en='The report displays gross profit by customers for a certain period of time';ru='Отчет отображает валовую прибыль по покупателям за определенный период времени'");
 	Variant.VisibleByDefault = False;
 	
 	Variant = ReportsVariants.VariantDesc(Settings, Metadata.Reports.Sales, "GrossProfitByManagers");
-	Variant.Definition = NStr("en='The report presents gross profit by managers over a certain period of time';ru='Отчет отображает валовую прибыль по менеджерам за определенный период времени'");
+	Variant.Definition = NStr("en='The report displays gross profit by managers for a certain period of time';ru='Отчет отображает валовую прибыль по менеджерам за определенный период времени'");
 	Variant.VisibleByDefault = False;
 	
 	Variant = ReportsVariants.VariantDesc(Settings, Metadata.Reports.Sales, "SalesDynamics");
-	Variant.Definition = NStr("en='The report displays the sales dynamics by periods over a certain period of time';ru='Отчет отображает динамику продаж по периодам за определенный период времени'");
+	Variant.Definition = NStr("en='The report shows sales dynamics by periods for a certain period of time';ru='Отчет отображает динамику продаж по периодам за определенный период времени'");
 	
 	Variant = ReportsVariants.VariantDesc(Settings, Metadata.Reports.Sales, "SalesDynamicsByProductsAndServices");
-	Variant.Definition = NStr("en='The report presents the sales dynamics by products and services over a certain period of time';ru='Отчет отображает динамику продаж по номенклатуре за определенный период времени'");
+	Variant.Definition = NStr("en='The report shows sales dynamics by products and services for a certain period of time';ru='Отчет отображает динамику продаж по номенклатуре за определенный период времени'");
 	Variant.VisibleByDefault = False;
 	
 	Variant = ReportsVariants.VariantDesc(Settings, Metadata.Reports.Sales, "SalesDynamicsByProductsAndServicesCategories");
-	Variant.Definition = NStr("en='The report presents the sales dynamics by products and services categories over a certain period of time';ru='Отчет отображает динамику продаж по номенклатурным группам за определенный период времени'");
+	Variant.Definition = NStr("en='The report shows sales dynamics by products and services groups for a certain period of time';ru='Отчет отображает динамику продаж по номенклатурным группам за определенный период времени'");
 	Variant.VisibleByDefault = False;
 	
 	Variant = ReportsVariants.VariantDesc(Settings, Metadata.Reports.Sales, "SalesDynamicsByCustomers");
-	Variant.Definition = NStr("en='The report presents the sales dynamics by customers over a certain period of time';ru='Отчет отображает динамику продаж по покупателям за определенный период времени'");
+	Variant.Definition = NStr("en='The report shows sales dynamics by customers for a certain period of time';ru='Отчет отображает динамику продаж по покупателям за определенный период времени'");
 	Variant.VisibleByDefault = False;
 	
 	Variant = ReportsVariants.VariantDesc(Settings, Metadata.Reports.Sales, "SalesDynamicsByManagers");
-	Variant.Definition = NStr("en='The report presents the sales dynamics by managers over a certain period of time';ru='Отчет отображает динамику продаж по менеджерам за определенный период времени'");
+	Variant.Definition = NStr("en='The report shows sales dynamics by managers for a certain period of time';ru='Отчет отображает динамику продаж по менеджерам за определенный период времени'");
 	Variant.VisibleByDefault = False;
 	
 	Variant = ReportsVariants.VariantDesc(Settings, Metadata.Reports.OrdersPlacement, "Statement");
-	Variant.Definition = NStr("en='The report presents the changes of customer orders that are fulfilled due to the receipts under other orders - purchase and kitting orders, production';ru='В отчете отражаются изменение данных о заказах покупателей, выполнение которых обеспечивается за счет поступлений по другим заказам - поставщикам и на комплектацию, производство'");
+	Variant.Definition = NStr("en='The report shows changes of data on customer orders that are fulfilled due to receipts under other orders: purchase orders, picking, production';ru='В отчете отражаются изменение данных о заказах покупателей, выполнение которых обеспечивается за счет поступлений по другим заказам - поставщикам и на комплектацию, производство'");
 	
 	Variant = ReportsVariants.VariantDesc(Settings, Metadata.Reports.OrdersPlacement, "Balance");
-	Variant.Definition = NStr("en='The report presents the data on customer orders that are fulfilled due to the receipts under other orders - purchase and kitting orders, production';ru='В отчете отражаются данные о заказах покупателей, выполнение которых обеспечивается за счет поступлений по другим заказам - поставщикам и на комплектацию, производство'");
+	Variant.Definition = NStr("en='The report shows data on customer orders that are fulfilled due to receipts under other orders: purchase orders, picking, production';ru='В отчете отражаются данные о заказах покупателей, выполнение которых обеспечивается за счет поступлений по другим заказам - поставщикам и на комплектацию, производство'");
 	Variant.VisibleByDefault = False;
 	
 	Report = ReportsVariants.ReportDescription(Settings, Metadata.Reports.PaySheet);
 	ReportsVariants.SetOutputModeInReportPanels(Settings, Report, True);	
-	Report.Definition = NStr("en='Payroll sheet of an arbitrary form. Is intended for internal enterprise reporting';ru='Расчетная ведомость произвольной формы. Предназначена для внутренней отчетности предприятия'");
+	Report.Definition = NStr("en='Payroll of an arbitrary form. Intended for internal reporting of the company';ru='Расчетная ведомость произвольной формы. Предназначена для внутренней отчетности предприятия'");
 	Report.SearchSettings.FieldNames =
-		NStr("en='Employee
-		|code
+		NStr("en='Personnel number
 		|Employee
 		|Position
 		|Rate
@@ -676,10 +675,9 @@ Procedure ConfigureReportsVariants(Settings) Export
 	
 	Report = ReportsVariants.ReportDescription(Settings, Metadata.Reports.PayrollSheets);
 	ReportsVariants.SetOutputModeInReportPanels(Settings, Report, True);	
-	Report.Definition = NStr("en='The report generates statemets of earnings, selected and grouped by companies and departments';ru='Отчет предоставляет возможность сформировать расчетные листки, отобранные и сгруппированные по организациям и подразделениям'");
+	Report.Definition = NStr("en='The report is used to generate payslips selected and grouped by companies and departments';ru='Отчет предоставляет возможность сформировать расчетные листки, отобранные и сгруппированные по организациям и подразделениям'");
 	Report.SearchSettings.FieldNames =
-		NStr("en='Employee
-		|code
+		NStr("en='Personnel number
 		|Employee
 		|Position
 		|Rate
@@ -694,178 +692,178 @@ Procedure ConfigureReportsVariants(Settings) Export
 		|Валюта Сотрудник'");
 	
 	Variant = ReportsVariants.VariantDesc(Settings, Metadata.Reports.TaxesSettlements, "Statement");
-	Variant.Definition = NStr("en='The report presents information about settlements in respect of taxes and levies, by type of tax';ru='Отчет позволяет получить информацию о расчетах с бюджетом по налогам и сборам, в разрезе видов налогов'");
+	Variant.Definition = NStr("en='The report provides information about settlements with tax and levy department of the treasury drilled down by tax kinds';ru='Отчет позволяет получить информацию о расчетах с бюджетом по налогам и сборам, в разрезе видов налогов'");
 	
 	Variant = ReportsVariants.VariantDesc(Settings, Metadata.Reports.TaxesSettlements, "Balance");
-	Variant.Definition = NStr("en='The report presents information about state of settlements in respect of taxes and levies, by type of tax';ru='Отчет позволяет получить информацию о состоянии расчетов с бюджетом по налогам сборам, в разрезе видов налогов'");
+	Variant.Definition = NStr("en='The report provides information about the state of settlements with tax and levy department of the treasury drilled down by tax kinds';ru='Отчет позволяет получить информацию о состоянии расчетов с бюджетом по налогам сборам, в разрезе видов налогов'");
 	Variant.VisibleByDefault = False;
 	
 	Variant = ReportsVariants.VariantDesc(Settings, Metadata.Reports.PayrollPayments, "Statement");
-	Variant.Definition = NStr("en='The report shows changes of arrearage of wages in specified period';ru='Отчет отображает изменение задолженности по заработной плате сотрудникам в течение выбранного периода времени'");
+	Variant.Definition = NStr("en='The report shows changes of salary debts to employees for the specified period';ru='Отчет отображает изменение задолженности по заработной плате сотрудникам в течение выбранного периода времени'");
 	Variant.VisibleByDefault = False;
 	
 	Variant = ReportsVariants.VariantDesc(Settings, Metadata.Reports.PayrollPayments, "Balance");
-	Variant.Definition = NStr("en='The report shows state of arrearage of wages in specified period';ru='Отчет отображает состояние задолженности по заработной плате сотрудникам в течение выбранного периода времени'");
+	Variant.Definition = NStr("en='The report shows salary debts to employees for the specified period';ru='Отчет отображает состояние задолженности по заработной плате сотрудникам в течение выбранного периода времени'");
 	Variant.VisibleByDefault = False;
 	
 	Variant = ReportsVariants.VariantDesc(Settings, Metadata.Reports.PayrollPayments, "StatementInCurrency");
-	Variant.Definition = NStr("en='The report shows changes of salary arrearage in the settlements currency over the specified period';ru='Отчет отображает изменение задолженности по заработной плате сотрудникам в валюте расчетов в течение выбранного периода времени'");
+	Variant.Definition = NStr("en='The report shows changes of salary debts to employees in the currency of settlements for the specified period';ru='Отчет отображает изменение задолженности по заработной плате сотрудникам в валюте расчетов в течение выбранного периода времени'");
 	
 	Variant = ReportsVariants.VariantDesc(Settings, Metadata.Reports.PayrollPayments, "BalanceInCurrency");
-	Variant.Definition = NStr("en='The report shows state of arrearage of wages in currency of account in specified period';ru='Отчет отображает состояние задолженности по заработной плате сотрудникам в валюте расчетов в течение выбранного периода времени'");
+	Variant.Definition = NStr("en='The report shows salary debts in the currency of settlements with employees for the specified period';ru='Отчет отображает состояние задолженности по заработной плате сотрудникам в валюте расчетов в течение выбранного периода времени'");
 	Variant.VisibleByDefault = False;
 	
 	Variant = ReportsVariants.VariantDesc(Settings, Metadata.Reports.AdvanceHolderPayments, "Statement");
-	Variant.Definition = NStr("en='The report shows debts changes on settlements with advance holders in specified period';ru='Отчет отображает изменение задолженностей в течение выбранного периода времени, возникающих при расчетах с подотчетными лицами'");
+	Variant.Definition = NStr("en='The report shows debts changes in settlements with advance holders for the specified period';ru='Отчет отображает изменение задолженностей в течение выбранного периода времени, возникающих при расчетах с подотчетными лицами'");
 	Variant.VisibleByDefault = False;
 	
 	Variant = ReportsVariants.VariantDesc(Settings, Metadata.Reports.AdvanceHolderPayments, "Balance");
-	Variant.Definition = NStr("en='The report shows state of debts on settlements with advance holders in specified period';ru='Отчет отображает состояние задолженностей в течение выбранного периода времени, возникающих при расчетах с подотчетными лицами'");
+	Variant.Definition = NStr("en='The report shows state of debts in settlements with advance holders for the specified period';ru='Отчет отображает состояние задолженностей в течение выбранного периода времени, возникающих при расчетах с подотчетными лицами'");
 	Variant.VisibleByDefault = False;
 	
 	Variant = ReportsVariants.VariantDesc(Settings, Metadata.Reports.AdvanceHolderPayments, "StatementInCurrency");
-	Variant.Definition = NStr("en='The report shows debts changes on settlements with advance holders in currency of accounts in specified period';ru='Отчет отображает изменение задолженностей в валюте расчетов в течение выбранного периода времени, возникающих при расчетах с подотчетными лицами'");
+	Variant.Definition = NStr("en='The report shows debts changes in the currency of settlements with advance holders for the specified period';ru='Отчет отображает изменение задолженностей в валюте расчетов в течение выбранного периода времени, возникающих при расчетах с подотчетными лицами'");
 	
 	Variant = ReportsVariants.VariantDesc(Settings, Metadata.Reports.AdvanceHolderPayments, "BalanceInCurrency");
-	Variant.Definition = NStr("en='The report shows state of debts on settlements with advance holders in currency of accounts in specified period';ru='Отчет отображает состояние задолженностей в валюте расчетов в течение выбранного периода времени, возникающих при расчетах с подотчетными лицами'");
+	Variant.Definition = NStr("en='The report shows state of debts in the currency of settlements with advance holders for the specified period';ru='Отчет отображает состояние задолженностей в валюте расчетов в течение выбранного периода времени, возникающих при расчетах с подотчетными лицами'");
 	Variant.VisibleByDefault = False;
 	
 	Variant = ReportsVariants.VariantDesc(Settings, Metadata.Reports.AccountsReceivable, "Statement");
-	Variant.Definition = NStr("en='The report shows information about accounts with customers, including orders and contracts - in a frames of wich deals were accomplished';ru='В отчете отображаются сведения о расчетах компании с покупателями, включая заказы и договоры, в рамках которых заключались сделки между компанией и контрагентами'");
+	Variant.Definition = NStr("en='The report shows information on settlements with customers including orders and contracts under which there were transactions made between the company and counterparties';ru='В отчете отображаются сведения о расчетах компании с покупателями, включая заказы и договоры, в рамках которых заключались сделки между компанией и контрагентами'");
 	Variant.VisibleByDefault = False;
 	
 	Variant = ReportsVariants.VariantDesc(Settings, Metadata.Reports.AccountsReceivable, "Balance");
-	Variant.Definition = NStr("en='The report shows information about balances of accounts with customers, including orders and contracts - in a frames of wich deals were accomplished';ru='В отчете отображаются сведения об остатках расчетов компании с покупателями, включая заказы и договоры, в рамках которых заключались сделки между компанией и контрагентами'");
+	Variant.Definition = NStr("en='The report shows information on the balance of settlements with customers including orders and contracts under which there were transactions made between the company and counterparties';ru='В отчете отображаются сведения об остатках расчетов компании с покупателями, включая заказы и договоры, в рамках которых заключались сделки между компанией и контрагентами'");
 	Variant.VisibleByDefault = False;
 	
 	Variant = ReportsVariants.VariantDesc(Settings, Metadata.Reports.AccountsReceivable, "StatementInCurrency");
-	Variant.Definition = NStr("en='The report shows information about accounts with customers in currency of accounts, including orders and contracts - in a frames of wich deals were accomplished';ru='В отчете отображаются сведения о расчетах компании с покупателями в валюте расчетов, включая заказы и договоры, в рамках которых заключались сделки между компанией и контрагентами'");
+	Variant.Definition = NStr("en='The report shows information on settlements with customers in the currency of settlements including orders and contracts under which there were transactions made between the company and counterparties';ru='В отчете отображаются сведения о расчетах компании с покупателями в валюте расчетов, включая заказы и договоры, в рамках которых заключались сделки между компанией и контрагентами'");
 	
 	Variant = ReportsVariants.VariantDesc(Settings, Metadata.Reports.AccountsReceivable, "BalanceInCurrency");
-	Variant.Definition = NStr("en='The report shows information about balances of accounts with customers in currency of accounts, including orders and contracts - in a frames of wich deals were accomplished';ru='В отчете отображаются сведения об остатках расчетов компании с покупателями в валюте расчетов, включая заказы и договоры, в рамках которых заключались сделки между компанией и контрагентами'");
+	Variant.Definition = NStr("en='The report shows information on the balance of settlements with customers in the currency of settlements including orders and contracts under which there were transactions made between the company and counterparties';ru='В отчете отображаются сведения об остатках расчетов компании с покупателями в валюте расчетов, включая заказы и договоры, в рамках которых заключались сделки между компанией и контрагентами'");
 	Variant.VisibleByDefault = False;
 	
 	Variant = ReportsVariants.VariantDesc(Settings, Metadata.Reports.AccountsReceivableDynamics, "DebtDynamics");
-	Variant.Definition = NStr("en='The report presents the dynamics of changes in total and overdue debts of customers for the specified period of time';ru='Отчет показывает динамику изменения общей и просроченной задолженности покупателей за выбранный период времени'");
+	Variant.Definition = NStr("en='The report shows the dynamics changes of total and overdue debts of customers for the specified period of time';ru='Отчет показывает динамику изменения общей и просроченной задолженности покупателей за выбранный период времени'");
 	
 	Variant = ReportsVariants.VariantDesc(Settings, Metadata.Reports.AccountsPayable, "Statement");
-	Variant.Definition = NStr("en='The report presents data on the settlements with suppliers including orders and contracts under which there were deals between the company and counterparties';ru='В отчете отображаются сведения о расчетах компании с поставщиками, включая заказы и договоры, в рамках которых заключались сделки между компанией и контрагентами'");
+	Variant.Definition = NStr("en='The report shows information on settlements with suppliers including orders and contracts under which there were transactions made between the company and counterparties';ru='В отчете отображаются сведения о расчетах компании с поставщиками, включая заказы и договоры, в рамках которых заключались сделки между компанией и контрагентами'");
 	Variant.VisibleByDefault = False;
 	
 	Variant = ReportsVariants.VariantDesc(Settings, Metadata.Reports.AccountsPayable, "Balance");
-	Variant.Definition = NStr("en='The report presents the data on the balances of settlements with suppliers including orders and contracts under which there were deals between the company and conterparties';ru='В отчете отображаются сведения об остатках расчетов компании с поставщиками, включая заказы и договоры, в рамках которых заключались сделки между компанией и контрагентами'");
+	Variant.Definition = NStr("en='The report shows information on the balance of settlements with suppliers including orders and contracts under which there were transactions made between the company and counterparties';ru='В отчете отображаются сведения об остатках расчетов компании с поставщиками, включая заказы и договоры, в рамках которых заключались сделки между компанией и контрагентами'");
 	Variant.VisibleByDefault = False;
 	
 	Variant = ReportsVariants.VariantDesc(Settings, Metadata.Reports.AccountsPayable, "StatementInCurrency");
-	Variant.Definition = NStr("en='The report presents the data on the settlements with suppliers in the settlement currency including orders and contracts under which there were deals between the company and counterparties';ru='В отчете отображаются сведения о расчетах компании с поставщиками в валюте расчетов, включая заказы и договоры, в рамках которых заключались сделки между компанией и контрагентами'");
+	Variant.Definition = NStr("en='The report shows information on settlements with suppliers in the currency of settlements including orders and contracts under which there were transactions made between the company and counterparties';ru='В отчете отображаются сведения о расчетах компании с поставщиками в валюте расчетов, включая заказы и договоры, в рамках которых заключались сделки между компанией и контрагентами'");
 	
 	Variant = ReportsVariants.VariantDesc(Settings, Metadata.Reports.AccountsPayable, "BalanceInCurrency");
-	Variant.Definition = NStr("en='The report presents the data on the balances of settlements with suppliers in the settlement currency including orders and contracts under which there were deals between the company and counterparties';ru='В отчете отображаются сведения об остатках расчетов компании с поставщиками в валюте расчетов, включая заказы и договоры, в рамках которых заключались сделки между компанией и контрагентами'");
+	Variant.Definition = NStr("en='The report shows information on the balance of settlements with suppliers in the currency of settlements including orders and contracts under which there were transactions made between the company and counterparties';ru='В отчете отображаются сведения об остатках расчетов компании с поставщиками в валюте расчетов, включая заказы и договоры, в рамках которых заключались сделки между компанией и контрагентами'");
 	Variant.VisibleByDefault = False;
 	
 	Variant = ReportsVariants.VariantDesc(Settings, Metadata.Reports.DynamicsOfDebtToSuppliers, "DebtDynamics");
-	Variant.Definition = NStr("en='The report presents the dynamics of changes in total and overdue debts to suppliers for the specified period of time';ru='Отчет показывает динамику изменения общей и просроченной задолженности поставщикам за выбранный период времени'");
+	Variant.Definition = NStr("en='The report shows the dynamics changes of total and overdue debts to suppliers for the specified period of time';ru='Отчет показывает динамику изменения общей и просроченной задолженности поставщикам за выбранный период времени'");
 	
 	Variant = ReportsVariants.VariantDesc(Settings, Metadata.Reports.AccountsReceivableAgingRegister, "Default");
-	Variant.Definition = NStr("en='The report presents the amount of receivables with due dates indication';ru='Отчет отображает суммы задолженностей контрагентов перед компанией с указанием сроков задолженности'");
+	Variant.Definition = NStr("en='The report shows amount of counterparty debts to company with period outstanding';ru='Отчет отображает суммы задолженностей контрагентов перед компанией с указанием сроков задолженности'");
 	Variant.VisibleByDefault = False;
 	
 	Variant = ReportsVariants.VariantDesc(Settings, Metadata.Reports.AccountsReceivableAgingRegister, "InCurrency");
-	Variant.Definition = NStr("en='The report presents the amount of receivables from counterparties in the settlement currency with due dates indication';ru='Отчет отображает суммы задолженностей контрагентов перед компанией в валюте расчетов с указанием сроков задолженности'");
+	Variant.Definition = NStr("en='The report shows amount of counterparty debts to company in the currency of settlements with period outstanding';ru='Отчет отображает суммы задолженностей контрагентов перед компанией в валюте расчетов с указанием сроков задолженности'");
 	
 	Variant = ReportsVariants.VariantDesc(Settings, Metadata.Reports.AccountsPayableAgingRegister, "Default");
-	Variant.Definition = NStr("en='The report shows amount of debts to counterparties (trade liabilities) with due dates indication';ru='Отчет отображает суммы задолженностей компании перед контрагентами с указанием сроков задолженности'");
+	Variant.Definition = NStr("en='The report shows amount of company debts to counterparties with period outstanding';ru='Отчет отображает суммы задолженностей компании перед контрагентами с указанием сроков задолженности'");
 	Variant.VisibleByDefault = False;
 	
 	Variant = ReportsVariants.VariantDesc(Settings, Metadata.Reports.AccountsPayableAgingRegister, "InCurrency");
-	Variant.Definition = NStr("en='The report presents the amount of debts to counterparties the settlement currency with due dates indication';ru='Отчет отображает суммы задолженностей компании перед контрагентами в валюте расчетов с указанием сроков задолженности'");
+	Variant.Definition = NStr("en='The report shows amount of company debts to counterparties in the currency of settlements with period outstanding';ru='Отчет отображает суммы задолженностей компании перед контрагентами в валюте расчетов с указанием сроков задолженности'");
 	
 	Variant = ReportsVariants.VariantDesc(Settings, Metadata.Reports.CustomersOrdersConsolidatedAnalysis, "Default");
-	Variant.Definition = NStr("en='The report allows to analyze the execution of customer orders by amount and quantity';ru='Отчет позволяет проанализировать выполнение заказов покупателей по суммам и количеству'");
+	Variant.Definition = NStr("en='The report is used to analyze fulfillment of customer orders by amounts and quantity';ru='Отчет позволяет проанализировать выполнение заказов покупателей по суммам и количеству'");
 	
 	Variant = ReportsVariants.VariantDesc(Settings, Metadata.Reports.PurchaseOrdersConsolidatedAnalysis, "Default");
-	Variant.Definition = NStr("en='The report allows to analyze the execution of purchase orders by amount and quantity';ru='Отчет позволяет проанализировать выполнение заказов поставщикам по суммам и количеству'");
+	Variant.Definition = NStr("en='The report is used to analyze the fulfillment of purchase orders by amounts and in terms of volume';ru='Отчет позволяет проанализировать выполнение заказов поставщикам по суммам и количеству'");
 	
 	Variant = ReportsVariants.VariantDesc(Settings, Metadata.Reports.JobSheets, "Default");
-	Variant.Definition = NStr("en='The report presents plan/actual analysis of technological operations, performed by employees in job sheet context';ru='Отчет предназначен для проведения план-фактного анализа технологических операций, выполняемых сотрудниками в рамках сдельных нарядов'");
+	Variant.Definition = NStr("en='The report is designed to perform variance analysis of technological operations performed by employees within the job sheet';ru='Отчет предназначен для проведения план-фактного анализа технологических операций, выполняемых сотрудниками в рамках сдельных нарядов'");
 	
 	Variant = ReportsVariants.VariantDesc(Settings, Metadata.Reports.Cost, "Full");
-	Variant.Definition = NStr("en='The report presents the data on the net cost of the products released, work and services rendered, with the details of expenses incurred';ru='Отчет содержит данные о себестоимости выпущенной продукции, работ и услуг с расшифровкой понесенных при этом затрат'");
+	Variant.Definition = NStr("en='The report shows data on costs of made products, works, and services with a breakdown by expenses incurred';ru='Отчет содержит данные о себестоимости выпущенной продукции, работ и услуг с расшифровкой понесенных при этом затрат'");
 	
 	Variant = ReportsVariants.VariantDesc(Settings, Metadata.Reports.Cost, "Default");
-	Variant.Definition = NStr("en='The report contains production cost, works, and services data';ru='Отчет содержит данные о себестоимости выпущенной продукции, работ и услуг'");
+	Variant.Definition = NStr("en='The report shows data on costs of made products, works, and services';ru='Отчет содержит данные о себестоимости выпущенной продукции, работ и услуг'");
 	
 	Variant = ReportsVariants.VariantDesc(Settings, Metadata.Reports.OutputNetCostPlanActualAnalysis, "Default");
-	Variant.Definition = NStr("en='The report is used for the plan/fact analysis of the products release costs';ru='Отчет предназначен для проведения план-фактного анализа затрат на выпуск продукции'");
+	Variant.Definition = NStr("en='The report is designed to perform variance analysis of the products release costs';ru='Отчет предназначен для проведения план-фактного анализа затрат на выпуск продукции'");
 	
 	Variant = ReportsVariants.VariantDesc(Settings, Metadata.Reports.Warehouse, "Statement");
-	Variant.Definition = NStr("en='The report presents full information about receipt, shipment and current quantity of goods in specified location';ru='Отчет позволяет получить полную информацию о поступлении, отгрузке и текущем количестве товаров в выбранном месте хранения'");
+	Variant.Definition = NStr("en='The report provides complete information on receipt, shipment and the quantity of products available at the specified storage location';ru='Отчет позволяет получить полную информацию о поступлении, отгрузке и текущем количестве товаров в выбранном месте хранения'");
 	
 	Variant = ReportsVariants.VariantDesc(Settings, Metadata.Reports.Warehouse, "Balance");
-	Variant.Definition = NStr("en='The report shows state of warehouse, information for storekeeper';ru='Отчет отображает состояние склада, информацию для кладовщика'");
+	Variant.Definition = NStr("en='The report shows the state of warehouse, information for storekeeper.';ru='Отчет отображает состояние склада, информацию для кладовщика'");
 	Variant.VisibleByDefault = False;
 	
 	Variant = ReportsVariants.VariantDesc(Settings, Metadata.Reports.EmployeesLists, "EmployeesList");
-	Variant.Definition = NStr("en='Report shows human resources information';ru='Отчет отображает кадровую информацию сотрудников'");
+	Variant.Definition = NStr("en='The report shows employment information of employees';ru='Отчет отображает кадровую информацию сотрудников'");
 	
 	Variant = ReportsVariants.VariantDesc(Settings, Metadata.Reports.EmployeesLists, "AccrualsPlan");
-	Variant.Definition = NStr("en='Report shows payroll accounting information';ru='Отчет отображает информацию о плановых начислениях сотрудников'");
+	Variant.Definition = NStr("en='The report provides information on planned accruals to employees';ru='Отчет отображает информацию о плановых начислениях сотрудников'");
 	
 	Variant = ReportsVariants.VariantDesc(Settings, Metadata.Reports.EmployeesLists, "PassportData");
-	Variant.Definition = NStr("en='Report shows Passport Information of individuals';ru='Отчет отображает паспортные данные физических лиц'");
+	Variant.Definition = NStr("en='The report shows passport data of individuals';ru='Отчет отображает паспортные данные физических лиц'");
 	
 	Variant = ReportsVariants.VariantDesc(Settings, Metadata.Reports.EmployeesLists, "ContactInformation");
-	Variant.Definition = NStr("en='Report displays the individuals contact information';ru='Отчет отображает контактную информацию физических лиц'");
+	Variant.Definition = NStr("en='The report displays contact information of individuals';ru='Отчет отображает контактную информацию физических лиц'");
 	
 	Variant = ReportsVariants.VariantDesc(Settings, Metadata.Reports.RetailAmountAccounting, "Statement");
-	Variant.Definition = NStr("en='Report presents sales analysis by retail location using accrual accounting';ru='Отчет предназначен для анализа продаж в розничной точке с суммовым учетом'");
+	Variant.Definition = NStr("en='The report is used to analyze sales of a retail outlet using value accounting';ru='Отчет предназначен для анализа продаж в розничной точке с суммовым учетом'");
 	Variant.VisibleByDefault = False;
 	
 	Variant = ReportsVariants.VariantDesc(Settings, Metadata.Reports.RetailAmountAccounting, "Balance");
-	Variant.Definition = NStr("en='Report presents state of sales analysis by retail location using accrual accounting';ru='Отчет предназначен для анализа состояния продаж в розничной точке с суммовым учетом'");
+	Variant.Definition = NStr("en='The report is used to analyze the state of sales of a retail outlet using value accounting';ru='Отчет предназначен для анализа состояния продаж в розничной точке с суммовым учетом'");
 	Variant.VisibleByDefault = False;
 	
 	Variant = ReportsVariants.VariantDesc(Settings, Metadata.Reports.RetailAmountAccounting, "StatementInCurrency");
-	Variant.Definition = NStr("en='Report presents sales analysis by retail location using accrual accounting in foreign currency';ru='Отчет предназначен для анализа состояния продаж в розничной точке с суммовым учетом в валюте'");
+	Variant.Definition = NStr("en='The report is used to analyze the state of sales of a retail outlet using value accounting in foreign currency';ru='Отчет предназначен для анализа состояния продаж в розничной точке с суммовым учетом в валюте'");
 	
 	Variant = ReportsVariants.VariantDesc(Settings, Metadata.Reports.RetailAmountAccounting, "BalanceInCurrency");
-	Variant.Definition = NStr("en='Report presents  analysis of state of retail sales debt using accrual accounting in foreign currency';ru='Отчет предназначен для анализа состояния задолженности розницы с суммовым учетом в валюте'");
+	Variant.Definition = NStr("en='The report is used to analyze the state of retail sales debt using value accounting in foreign currency';ru='Отчет предназначен для анализа состояния задолженности розницы с суммовым учетом в валюте'");
 	Variant.VisibleByDefault = False;
 	
 	Variant = ReportsVariants.VariantDesc(Settings, Metadata.Reports.SalesReportTORG29, "Default");
-	Variant.Definition = NStr("en='The report is used to analyze the retail sales. Report is generated by the scheduled form TORG-29';ru='Отчет предназначен для анализа розничных продаж. Отчет формируется по регламентированной форме Торг-29'");
+	Variant.Definition = NStr("en='The report is used to analyze retail sales. The report is generated by form TORG-29';ru='Отчет предназначен для анализа розничных продаж. Отчет формируется по регламентированной форме Торг-29'");
 	
 	Variant = ReportsVariants.VariantDesc(Settings, Metadata.Reports.AlcoholicProductsSalesBook, "Default");
-	Variant.Definition = NStr("en='The report is used to generate the sales book of alcohol and alcoholic products';ru='Отчет предназначен для формирования журнала учета объема розничной продажи алкогольной и спиртосодержащей продукции'");
+	Variant.Definition = NStr("en='The report is used to generate the journal of retail sale volume of alcohol and alcohol containing products';ru='Отчет предназначен для формирования журнала учета объема розничной продажи алкогольной и спиртосодержащей продукции'");
 	
 	Variant = ReportsVariants.VariantDesc(Settings, Metadata.Reports.FinancialResult, "Statement");
-	Variant.Definition = NStr("en='Report presents financial results of activity';ru='Отчет содержит данные о финансовых результатах работы'");
+	Variant.Definition = NStr("en='The report displays data on financial results';ru='Отчет содержит данные о финансовых результатах работы'");
 	
 	Variant = ReportsVariants.VariantDesc(Settings, Metadata.Reports.FinancialResultForecast, "Default");
-	Variant.Definition = NStr("en='Report presents forecast of financial result by selected option';ru='В отчет выводятся сведения о прогнозе финансового результата по указанному сценарию'");
+	Variant.Definition = NStr("en='Report presents financial result forecast of the selected scenario';ru='В отчет выводятся сведения о прогнозе финансового результата по указанному сценарию'");
 	
 	Variant = ReportsVariants.VariantDesc(Settings, Metadata.Reports.FinancialResultForecast, "Planfact analysis");
-	Variant.Definition = NStr("en='Report compares forecast and actual financial result';ru='В отчете сравнивается прогнозный и фактический финансовый результат'");
+	Variant.Definition = NStr("en='The report compares forecast and actual financial results';ru='В отчете сравнивается прогнозный и фактический финансовый результат'");
 	
 	Variant = ReportsVariants.VariantDesc(Settings, Metadata.Reports.StaffList, "Default");
-	Variant.Definition = NStr("en='Report presents staff list of the company';ru='Отчет предназначен для предоставления информации о состоянии штатного расписания организации'");
+	Variant.Definition = NStr("en='The report shows information on the state of the staff list of the company';ru='Отчет предназначен для предоставления информации о состоянии штатного расписания организации'");
 	
 	Variant = ReportsVariants.VariantDesc(Settings, Metadata.Reports.MaterialsDistribution, "Default");
 	Variant.Placement.Clear();
 	
 	// DiscountCards
 	Variant = ReportsVariants.VariantDesc(Settings, Metadata.Reports.SalesByDiscountCards, "SalesByDiscountCards");
-	Variant.Definition = NStr("en='Report shows information on volume of sales with use of discount cards for specific period';ru='Отчет отображает сведения о продажах по дисконтным картам в суммовом выражении за определенный период времени'");	
+	Variant.Definition = NStr("en='The report shows information on sales by discount cards for a certain period of time in monetary terms';ru='Отчет отображает сведения о продажах по дисконтным картам в суммовом выражении за определенный период времени'");	
 	
 	Variant = ReportsVariants.VariantDesc(Settings, Metadata.Reports.SalesByDiscountCards, "SalesByDiscountCard");
-	Variant.Definition = NStr("en='The report is called from the ""Discount cards"" data processor and presents the data on sales for a discount card by total amount over a certain period of time';ru='Отчет вызывается из обработки ""Дисконтные карты"" и отображает сведения о продажах по дисконтной карте в суммовом выражении за определенный период времени'");	
+	Variant.Definition = NStr("en='The report is called from the ""Discount cards"" data processor and displays data on sales by discount cards for a certain period of time in monetary terms';ru='Отчет вызывается из обработки ""Дисконтные карты"" и отображает сведения о продажах по дисконтной карте в суммовом выражении за определенный период времени'");	
 	Variant.Enabled = False;
 	Variant.VisibleByDefault = False;
 	// End DiscountCards
 	
 	// AutomaticDiscounts
 	Variant = ReportsVariants.VariantDesc(Settings, Metadata.Reports.AutomaticDiscounts, "AutomaticDiscounts");
-	Variant.Definition = NStr("en='The report presents the data on granted automatic discounts in total amounts over a certain period of time';ru='Отчет отображает сведения о предоставленных автоматических скидках в суммовом выражении за определенный период времени'");	
+	Variant.Definition = NStr("en='The report provides data on granted automatic discounts in total amounts for a certain period of time';ru='Отчет отображает сведения о предоставленных автоматических скидках в суммовом выражении за определенный период времени'");	
 	// End AutomaticDiscounts
 	
 	// Other settlements
@@ -896,7 +894,7 @@ Procedure ConfigureReportsVariants(Settings) Export
 	// End Serial numbers
 	
 	Variant = ReportsVariants.VariantDesc(Settings, Metadata.Reports.SegmentComposition, "SegmentCompositionContext");
-	Variant.Definition = NStr("en='Report displays the current content of the counterparties segment';ru='Отчет отображает текущий состав сегмента контрагентов'");
+	Variant.Definition = NStr("en='The report displays the current counterparty segment.';ru='Отчет отображает текущий состав сегмента контрагентов'");
 	Variant.Enabled = False;
 	Variant.Placement.Clear();
 	
@@ -960,7 +958,7 @@ EndProcedure // RegisterReportVariantsKeysChanges
 //               - False   - Value by default. Do not show check box.
 //
 // ForExample:
-// Settings.Search.InputHint = NStr("en='ForExample, cost';ru='Например, себестоимость'");
+// Settings.Search.InputHint = NStr("en='For example, cost';ru='Например, себестоимость'");
 // Settings OtherReports.CloseAfterSelection = False;
 // Settings.OtherReports.ShowCheckBox = True;
 //

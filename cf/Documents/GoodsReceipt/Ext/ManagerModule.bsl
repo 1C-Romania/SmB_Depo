@@ -560,21 +560,21 @@ Procedure AddPrintCommands(PrintCommands) Export
 	
 	PrintCommand = PrintCommands.Add();
 	PrintCommand.ID = "M4";
-	PrintCommand.Presentation = NStr("en='Purchase order receipt';ru='Приходный ордер'");
+	PrintCommand.Presentation = NStr("en='Receipt slip';ru='Приходный ордер'");
 	PrintCommand.FormsList = "DocumentForm,ListForm";
 	PrintCommand.CheckPostingBeforePrint = False;
 	PrintCommand.Order = 1;
 	
 	PrintCommand = PrintCommands.Add();
 	PrintCommand.ID = "GoodsReceipt";
-	PrintCommand.Presentation = NStr("en='Purchase order receipt';ru='Приходный ордер'");
+	PrintCommand.Presentation = NStr("en='Receipt slip';ru='Приходный ордер'");
 	PrintCommand.FormsList = "DocumentForm,ListForm";
 	PrintCommand.CheckPostingBeforePrint = False;
 	PrintCommand.Order = 7;
 	
 	PrintCommand = PrintCommands.Add();
 	PrintCommand.ID = "MerchandiseFillingForm";
-	PrintCommand.Presentation = NStr("en='Merchandise filling form';ru='Бланк товарного наполнения'");
+	PrintCommand.Presentation = NStr("en='Goods content form';ru='Бланк товарного наполнения'");
 	PrintCommand.FormsList = "DocumentForm,ListForm";
 	PrintCommand.CheckPostingBeforePrint = False;
 	PrintCommand.Order = 10;

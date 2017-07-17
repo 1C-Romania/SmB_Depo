@@ -345,7 +345,7 @@ Procedure OpenDocumentForm()
 		
 		If Items.DocumentsTree.CurrentData.Ref = DocumentRef AND Form.IsOpen() Then
 			Message = New UserMessage();
-			Message.Text = NStr("en='Document is already opened!';ru='Документ уже открыт!'");
+			Message.Text = NStr("en='Document is already opened.';ru='Документ уже открыт!'");
 			Message.Message();
 		EndIf;
 		
@@ -547,7 +547,7 @@ Function PostServer(DocumentRef)
 		Object.Unlock();
 	Except
 		Message = New UserMessage();
-		Message.Text = NStr("en='Impossible to lock the document';ru='Невозможно заблокировать документ.'");
+		Message.Text = NStr("en='Cannot lock the document.';ru='Невозможно заблокировать документ.'");
 		Message.Message();
 	EndTry; 
 
@@ -567,7 +567,7 @@ Function UndoPostingServer(DocumentRef)
 		Object.Unlock();
 	Except
 		Message = New UserMessage();
-		Message.Text = NStr("en='Impossible to lock the document';ru='Невозможно заблокировать документ.'");
+		Message.Text = NStr("en='Cannot lock the document.';ru='Невозможно заблокировать документ.'");
 		Message.Message();
 	EndTry; 
 
@@ -590,7 +590,7 @@ Function SetDeletionMarkServer(DocumentRef)
 	Except
 		
 		Message = New UserMessage();
-		Message.Text = NStr("en='Impossible to lock the document';ru='Невозможно заблокировать документ.'");
+		Message.Text = NStr("en='Cannot lock the document.';ru='Невозможно заблокировать документ.'");
 		Message.Message();
 		
 	EndTry; 
@@ -730,7 +730,7 @@ Procedure Post(Button)
 	Except
 		
 		Message = New UserMessage();
-		Message.Text = NStr("en='Failed to post the document %Document%!';ru='Не удалось провести документ %Document%!'");;
+		Message.Text = NStr("en='Cannot post the %Document% document.';ru='Не удалось провести документ %Document%!'");;
 		Message.Text = StrReplace(Message.Text, "%Document%", Items.DocumentsTree.CurrentData.DocumentPresentation);
 		Message.Message();
 		
@@ -757,7 +757,7 @@ Procedure UndoPosting(Button)
 	Except
 		
 		Message = New UserMessage();
-		Message.Text = NStr("en='Failed to make the document %Document% unposted!';ru='Не удалось сделать непроведенным документ %Документ%!'");;
+		Message.Text = NStr("en='Cannot unpost the %Document% document.';ru='Не удалось сделать непроведенным документ %Документ%!'");;
 		Message.Text = StrReplace(Message.Text, "%Document%", Items.DocumentsTree.CurrentData.DocumentPresentation);
 		Message.Message();
 		
@@ -793,7 +793,7 @@ Procedure SetDeletionMark(Button)
 	Except
 		
 		Message = New UserMessage();
-		Message.Text = NStr("en='Failed to mark the %Document% document for deletion!';ru='Не удалось установить пометку удаления на документ %Document%!'");;
+		Message.Text = NStr("en='Cannot mark the %Document% document for deletion.';ru='Не удалось установить пометку удаления на документ %Document%!'");;
 		Message.Text = StrReplace(Message.Text, "%Document%", CurrentRowData.DocumentPresentation);
 		Message.Message();
 		

@@ -632,7 +632,7 @@ Procedure IssueReceipt()
 	If Object.ReceiptCRNumber <> 0
 	AND Not CashCRUseWithoutEquipmentConnection Then
 		
-		MessageText = NStr("en='Check has already been issued on the fiscal record!';ru='Чек уже пробит на фискальном регистраторе!'");
+		MessageText = NStr("en='Receipt has already been issued on the fiscal data recorder.';ru='Чек уже пробит на фискальном регистраторе!'");
 		CommonUseClientServer.MessageToUser(MessageText);
 		Return;
 		
@@ -987,7 +987,7 @@ Procedure IssueReceipt()
 				
 			Else
 				
-				MessageText = NStr("en='First, you need to select the workplace of the current session peripherals.';ru='Предварительно необходимо выбрать рабочее место внешнего оборудования текущего сеанса.'");
+				MessageText = NStr("en='First, you need to select the work place of the current session peripherals.';ru='Предварительно необходимо выбрать рабочее место внешнего оборудования текущего сеанса.'");
 				CommonUseClientServer.MessageToUser(MessageText);
 				
 			EndIf;
@@ -1011,7 +1011,7 @@ Procedure IssueReceipt()
 		EndIf;
 		
 	ElsIf ShowMessageBox Then
-		ShowMessageBox(Undefined,NStr("en='Failed to post the document';ru='Не удалось выполнить проведение документа'"));
+		ShowMessageBox(Undefined,NStr("en='Failed to post document';ru='Не удалось выполнить проведение документа'"));
 	EndIf;
 	
 	Notify("RefreshFormListDocumentsReceiptsCRReturn");
@@ -1029,7 +1029,7 @@ Procedure IssueReceiptExecute()
 	
 	If Object.DeletionMark Then
 		
-		ErrorText = NStr("en='The document is marked for deletion.';ru='Документ помечен на удаление'");
+		ErrorText = NStr("en='The document is marked for deletion';ru='Документ помечен на удаление'");
 		
 		Message = New UserMessage;
 		Message.Text = ErrorText;
@@ -1061,12 +1061,12 @@ Procedure CancelPayment(Command)
 	//Check selected string in payment table by payment cards
 	CurrentData = Items.PaymentWithPaymentCards.CurrentData;
 	If CurrentData = Undefined Then
-		CommonUseClientServer.MessageToUser(NStr("en='Select string of canceled payment card.';ru='Выберите строку отменяемой оплаты картой.'"));
+		CommonUseClientServer.MessageToUser(NStr("en='Select the line of canceled payment by card.';ru='Выберите строку отменяемой оплаты картой.'"));
 		Return;
 	EndIf;
 	
 	If CurrentData.PaymentCanceled Then
-		CommonUseClientServer.MessageToUser(NStr("en='This payment is already cancelled.';ru='Данная оплата уже отменена.'"));
+		CommonUseClientServer.MessageToUser(NStr("en='This payment has already been canceled.';ru='Данная оплата уже отменена.'"));
 		Return;
 	EndIf;
 	
@@ -1245,7 +1245,7 @@ Procedure CancelPayment(Command)
 		
 	Else
 		
-		MessageText = NStr("en='First, you need to select the workplace of the current session peripherals.';ru='Предварительно необходимо выбрать рабочее место внешнего оборудования текущего сеанса.'");
+		MessageText = NStr("en='First, you need to select the work place of the current session peripherals.';ru='Предварительно необходимо выбрать рабочее место внешнего оборудования текущего сеанса.'");
 		CommonUseClientServer.MessageToUser(MessageText);
 		
 	EndIf;

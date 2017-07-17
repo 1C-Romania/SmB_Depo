@@ -29,7 +29,7 @@ Procedure ConfigureCharacteristicsPropertiesSetClick(Item)
 		|возможно только после записи элемента, записать элемент?'");
 		
 		Notification = New NotifyDescription("ConfigureSetOfPropertiesCharacteristicsClickEnd",ThisForm);
-		ShowQueryBox(Notification,QuestionText, QuestionDialogMode.OKCancel,,DialogReturnCode.Cancel, NStr("en='Edit the characteristic property set';ru='Редактирование набора свойств характеристик'"));
+		ShowQueryBox(Notification,QuestionText, QuestionDialogMode.OKCancel,,DialogReturnCode.Cancel, NStr("en='Edit characteristic property set';ru='Редактирование набора свойств характеристик'"));
 		
 		Return;
 		

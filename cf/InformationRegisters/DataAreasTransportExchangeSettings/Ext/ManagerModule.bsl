@@ -39,7 +39,7 @@ Function TransportSettings(Val CorrespondentEndPoint) Export
 	
 	If QueryResult.IsEmpty() Then
 		Raise StringFunctionsClientServer.SubstituteParametersInString(
-			NStr("en='Settings for the connection to the end point %1 have not been specified.';ru='Не заданы настройки подключения для конечной точки %1.'"),
+			NStr("en='Connection settings for the endpoint %1 are not specified.';ru='Не заданы настройки подключения для конечной точки %1.'"),
 			String(CorrespondentEndPoint));
 	EndIf;
 	

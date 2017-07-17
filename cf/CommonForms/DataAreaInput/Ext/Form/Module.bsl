@@ -82,7 +82,7 @@ Procedure EnterInDataAreaAfterExit()
 	
 	If Not IsFilledDataArea(DataArea) Then
 		NotifyDescription = New NotifyDescription("EnterInDataAreaAfterExit2", ThisObject);
-		ShowQueryBox(NOTifyDescription, NStr("en='The selected data area is not used. Do you want to continue to enter?';ru='Выбранная область данных не используется, продолжить вход?'"),
+		ShowQueryBox(NOTifyDescription, NStr("en='The selected data area is not used, continue logon?';ru='Выбранная область данных не используется, продолжить вход?'"),
 			QuestionDialogMode.YesNo, , DialogReturnCode.No);
 		Return;
 	EndIf;

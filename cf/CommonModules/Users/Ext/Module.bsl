@@ -781,7 +781,7 @@ Function ReadIBUser(Val ID,
 	
 	If IBUser = Undefined Then
 		ErrorDescription = StringFunctionsClientServer.SubstituteParametersInString(
-			NStr("en='The user of the ""%1"" infobase is not found.';ru='Пользователь информационной базы ""%1"" не найден.'"), ID);
+			NStr("en='Infobase user ""%1"" is not found.';ru='Пользователь информационной базы ""%1"" не найден.'"), ID);
 		Return False;
 	EndIf;
 	
@@ -859,9 +859,7 @@ Function WriteIBUser(Val ID,
 			
 			If Not OldPasswordIsSame Then
 				ErrorDescription = ErrorDescriptionOnIBUserWrite(
-					NStr("en='While writing infobase user
-		|%1
-		|an old password is specified incorrectly.';ru='При записи пользователя информационной базы %1, старый пароль указан не верно.'"),
+					NStr("en='When writing user of infobase %1, old password was specified incorrectly.';ru='При записи пользователя информационной базы %1, старый пароль указан не верно.'"),
 					OldProperties.Name,
 					OldProperties.UUID);
 				Return False;
@@ -1387,7 +1385,7 @@ Procedure FindAmbiguousInfobaseUsers(Val User,
 		Return;
 	EndIf;
 	
-	ErrorDescription = NStr("en='Database error:';ru='Ошибка в базе данных:'") + Chars.LF;
+	ErrorDescription = NStr("en='Error in the data base:';ru='Ошибка в базе данных:'") + Chars.LF;
 	CurrentAmbiguousID = Undefined;
 	
 	For Each String In Exporting Do
@@ -1409,7 +1407,7 @@ Procedure FindAmbiguousInfobaseUsers(Val User,
 				EndIf;
 				
 				If CurrentInfobaseUser = Undefined Then
-					NameForEntering = NStr("en='<not found>';ru='<не найден>'");
+					NameForEntering = NStr("en='<not specified>';ru='<не найден>'");
 				Else
 					NameForEntering = CurrentInfobaseUser.Name;
 				EndIf;
@@ -1499,7 +1497,7 @@ Function ErrorDescriptionOnIBUserWrite(ErrorTemplate,
 	
 	If WriteInJournal Then
 		WriteLogEvent(
-			NStr("en='Users.Error of the IB user record';ru='Пользователи.Ошибка записи пользователя ИБ'",
+			NStr("en='Users.An error occurred when writing infobase user';ru='Пользователи.Ошибка записи пользователя ИБ'",
 			     CommonUseClientServer.MainLanguageCode()),
 			EventLogLevel.Error,
 			,

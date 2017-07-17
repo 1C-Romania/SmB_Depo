@@ -126,8 +126,8 @@ Procedure GenerateTableCashAssetsInCashRegisters(DocumentRefReceiptCR, Structure
 	Query.SetParameter("ControlPeriod", StructureAdditionalProperties.ForPosting.PointInTime.Date);
 	Query.SetParameter("CheckIssued", StructureAdditionalProperties.ForPosting.CheckIssued);
 	Query.SetParameter("Archival", StructureAdditionalProperties.ForPosting.Archival);
-	Query.SetParameter("CashFundsReceipt", NStr("en='Cash receipt to the cash registers';ru='Поступление денежных средств в кассу ККМ'"));
-	Query.SetParameter("PaymentWithPaymentCards", NStr("en='Payment by cards';ru='Оплата платежными картами'"));
+	Query.SetParameter("CashFundsReceipt", NStr("en='Cash receipt to cash register';ru='Поступление денежных средств в кассу ККМ'"));
+	Query.SetParameter("PaymentWithPaymentCards", NStr("en='Payment with payment cards';ru='Оплата платежными картами'"));
 	Query.SetParameter("ExchangeDifference", NStr("en='Exchange rate difference';ru='Курсовая разница'"));
 	
 	Query.Execute();
@@ -244,7 +244,7 @@ Procedure GenerateTableIncomeAndExpenses(DocumentRefReceiptCR, StructureAddition
 	
 	Query.SetParameter("PositiveExchangeDifferenceGLAccount", ChartsOfAccounts.Managerial.OtherIncome);
 	Query.SetParameter("NegativeExchangeDifferenceAccountOfAccounting", ChartsOfAccounts.Managerial.OtherExpenses);
-	Query.SetParameter("IncomeReflection", NStr("en='Income accounting';ru='Отражение доходов'"));
+	Query.SetParameter("IncomeReflection", NStr("en='Record income';ru='Отражение доходов'"));
 	Query.SetParameter("ExchangeDifference", NStr("en='Exchange rate difference';ru='Курсовая разница'"));
 	Query.SetParameter("CheckIssued", StructureAdditionalProperties.ForPosting.CheckIssued);
 	Query.SetParameter("Archival", StructureAdditionalProperties.ForPosting.Archival);
@@ -504,8 +504,8 @@ Procedure GenerateTableManagerial(DocumentRefReceiptCR, StructureAdditionalPrope
 	|	Order,
 	|	LineNumber";
 	
-	Query.SetParameter("IncomeReflection", NStr("en='Sales revenue';ru='Выручка от продажи'"));
-	Query.SetParameter("ReflectionOfPaymentByCards", NStr("en='Payment by cards';ru='Оплата платежными картами'"));
+	Query.SetParameter("IncomeReflection", NStr("en='Revenue from sale';ru='Выручка от продажи'"));
+	Query.SetParameter("ReflectionOfPaymentByCards", NStr("en='Payment with payment cards';ru='Оплата платежными картами'"));
 	Query.SetParameter("AccountingCurrency", Constants.AccountingCurrency.Get());
 	Query.SetParameter("PositiveExchangeDifferenceGLAccount", ChartsOfAccounts.Managerial.OtherIncome);
 	Query.SetParameter("NegativeExchangeDifferenceAccountOfAccounting", ChartsOfAccounts.Managerial.OtherExpenses);
@@ -1225,7 +1225,7 @@ Procedure AddPrintCommands(PrintCommands) Export
 	
 	PrintCommand = PrintCommands.Add();
 	PrintCommand.ID = "SalesReceipt";
-	PrintCommand.Presentation = NStr("ru = 'Товарный чек'; en = 'Sales receipt'");
+	PrintCommand.Presentation = NStr("en='Receipt';ru='Товарный чек'");
 	PrintCommand.FormsList = "DocumentForm,ListForm,DocumentForm_CWP";
 	PrintCommand.CheckPostingBeforePrint = False;
 	PrintCommand.Order = 1;

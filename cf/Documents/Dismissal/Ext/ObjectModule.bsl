@@ -60,7 +60,7 @@ Procedure RunPreliminaryControl(Cancel)
 	If Not ResultsArray[1].IsEmpty() Then
 		QueryResultSelection = ResultsArray[1].Select();
 		While QueryResultSelection.Next() Do
-			MessageText = NStr("en='In row No.%Number% of the ""Employees"" tabular section the order validity conflicts with the personnel order ""%PersonnelOrder%"".';ru='В строке №%Номер% табл. части ""Сотрудники"" период действия приказа противоречит кадровому приказу ""%КадровыйПриказ%"".'");
+			MessageText = NStr("en='In row No. %Number% of the ""Employees"" tabular section, the order validity contradicts the ""%PersonnelOrder%"" personnel order.';ru='В строке №%Номер% табл. части ""Сотрудники"" период действия приказа противоречит кадровому приказу ""%КадровыйПриказ%"".'");
 			MessageText = StrReplace(MessageText, "%Number%", QueryResultSelection.LineNumber); 
 			MessageText = StrReplace(MessageText, "%RegularOrder%", QueryResultSelection.Recorder);
 			SmallBusinessServer.ShowMessageAboutError(
@@ -77,7 +77,7 @@ Procedure RunPreliminaryControl(Cancel)
 	If Not ResultsArray[2].IsEmpty() Then
 		QueryResultSelection = ResultsArray[2].Select();
 		While QueryResultSelection.Next() Do
-			MessageText = NStr("en='In row No.%Number% of the ""Employees"" tabular section the employee is specified repeatedly.';ru='В строке №%Номер% табл. части ""Сотрудники"" сотрудник указывается повторно.'");
+			MessageText = NStr("en='In row No. %Number% of the ""Employees"" tabular section, the employee is specified again.';ru='В строке №%Номер% табл. части ""Сотрудники"" сотрудник указывается повторно.'");
 			MessageText = StrReplace(MessageText, "%Number%", QueryResultSelection.LineNumber);
 			SmallBusinessServer.ShowMessageAboutError(
 				ThisObject,
@@ -161,7 +161,7 @@ Procedure RunControl(AdditionalProperties, Cancel)
 	QueryResultSelection = Result[0].Select();
 	While QueryResultSelection.Next() Do
 		If Not ValueIsFilled(QueryResultSelection.StructuralUnit) Then
-		    MessageText = NStr("en='In row No.%Number% of tabular section ""Employees"", the employee %Employee% is not hired to %Company% company.';ru='В строке №%Номер% табл. части ""Сотрудники"" сотрудник %Сотрудник% не принят на работу в организацию %Организация%.'");
+		    MessageText = NStr("en='In row No.%Number% of the ""Employees"" tabular section, it is indicated that the %Employee% employee is not hired to the %Company% company.';ru='В строке №%Номер% табл. части ""Сотрудники"" сотрудник %Сотрудник% не принят на работу в организацию %Организация%.'");
 			MessageText = StrReplace(MessageText, "%Number%", QueryResultSelection.LineNumber); 
 			MessageText = StrReplace(MessageText, "%Employee%", QueryResultSelection.Employee); 
 			MessageText = StrReplace(MessageText, "%Company%", AdditionalProperties.ForPosting.Company);
@@ -178,7 +178,7 @@ Procedure RunControl(AdditionalProperties, Cancel)
 	// There are register records after dismissal of the employee.
 	QueryResultSelection = Result[1].Select();
 	While QueryResultSelection.Next() Do
-		MessageText = NStr("en='In row No.%Number% of tabular section ""Employees"" there are personnel register records for employee %Employee% within %Period% after dismissal date.';ru='В строке №%Номер% табл. части ""Сотрудники"" по сотруднику %Сотрудник% есть кадровые движения %Период% после даты увольнения.'");
+		MessageText = NStr("en='In row No. %Number% of the ""Employees"" tabular section, there are personnel register records for employee %Employee% within %Period% after dismissal date.';ru='В строке №%Номер% табл. части ""Сотрудники"" по сотруднику %Сотрудник% есть кадровые движения %Период% после даты увольнения.'");
 		MessageText = StrReplace(MessageText, "%Number%", QueryResultSelection.LineNumber); 
 		MessageText = StrReplace(MessageText, "%Employee%", QueryResultSelection.Employee); 
 		MessageText = StrReplace(MessageText, "%Period%", Format(QueryResultSelection.Period, "DF=dd.MM.yy"));

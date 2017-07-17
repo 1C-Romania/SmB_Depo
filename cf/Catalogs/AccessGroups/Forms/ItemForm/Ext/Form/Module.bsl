@@ -42,7 +42,7 @@ Procedure OnCreateAtServer(Cancel, StandardProcessing)
 		
 		If Not ActionsWithServiceUser.ChangeAdmininstrativeAccess Then
 			Raise
-				NStr("en='Insufficient access rights to modify the administrators structure.';ru='Не достаточно прав доступа для изменения состава администраторов.'");
+				NStr("en='Insufficient access rights to edit administrators.';ru='Не достаточно прав доступа для изменения состава администраторов.'");
 		EndIf;
 	EndIf;
 	
@@ -271,7 +271,7 @@ Procedure FillCheckProcessingAtServer(Cancel, CheckedAttributes)
 				ClarifyMessage(NStr("en='User is not selected.';ru='Пользователь не выбран.'"), Participant),
 				"GroupUsers",
 				LineNumber,
-				ClarifyMessage(NStr("en='User in the row %1 is not selected.';ru='Пользователь в строке %1 не выбран.'"), Participant));
+				ClarifyMessage(NStr("en='User in line %1 is not selected.';ru='Пользователь в строке %1 не выбран.'"), Participant));
 			Continue;
 		EndIf;
 		
@@ -283,18 +283,18 @@ Procedure FillCheckProcessingAtServer(Cancel, CheckedAttributes)
 			
 			If TypeOf(CurrentRow.User) = Type("CatalogRef.Users") Then
 				SingleErrorText      = NStr("en='User ""%2"" is repeated.';ru='Пользователь ""%2"" повторяется.'");
-				SeveralErrorText = NStr("en='User ""%2"" in the row %1 is repeated.';ru='Пользователь ""%2"" в строке %1 повторяется.'");
+				SeveralErrorText = NStr("en='The ""%2"" user in line %1 is repeated.';ru='Пользователь ""%2"" в строке %1 повторяется.'");
 				
 			ElsIf TypeOf(CurrentRow.User) = Type("CatalogRef.ExternalUsers") Then
 				SingleErrorText      = NStr("en='External user ""%2"" is repeated.';ru='Внешний пользователь ""%2"" повторяется.'");
-				SeveralErrorText = NStr("en='External user ""%2"" in the row %1 is repeated.';ru='Внешний пользователь ""%2"" в строке %1 повторяется.'");
+				SeveralErrorText = NStr("en='External user ""%2"" in line %1 is repeated.';ru='Внешний пользователь ""%2"" в строке %1 повторяется.'");
 				
 			ElsIf TypeOf(CurrentRow.User) = Type("CatalogRef.UsersGroups") Then
-				SingleErrorText      = NStr("en='User group ""%2"" is repeated.';ru='Группа пользователей ""%2"" повторяется.'");
-				SeveralErrorText = NStr("en='User group ""%2"" in the row %1 is repeated.';ru='Группа пользователей ""%2"" в строке %1 повторяется.'");
+				SingleErrorText      = NStr("en='The ""%2"" user group is repeated.';ru='Группа пользователей ""%2"" повторяется.'");
+				SeveralErrorText = NStr("en='The ""%2"" user group in line %1 is repeated.';ru='Группа пользователей ""%2"" в строке %1 повторяется.'");
 			Else
-				SingleErrorText      = NStr("en='External users group ""%2"" is repeated.';ru='Группа внешних пользователей ""%2"" повторяется.'");
-				SeveralErrorText = NStr("en='External users group ""%2"" in the row %1 is repeated.';ru='Группа внешних пользователей ""%2"" в строке %1 повторяется.'");
+				SingleErrorText      = NStr("en='External user group ""%2"" is repeated.';ru='Группа внешних пользователей ""%2"" повторяется.'");
+				SeveralErrorText = NStr("en='External user group ""%2"" in line %1 is repeated.';ru='Группа внешних пользователей ""%2"" в строке %1 повторяется.'");
 			EndIf;
 			
 			CommonUseClientServer.AddUserError(Errors,
@@ -310,15 +310,15 @@ Procedure FillCheckProcessingAtServer(Cancel, CheckedAttributes)
 		   AND TypeOf(CurrentRow.User) <> Type("CatalogRef.Users") Then
 			
 			If TypeOf(CurrentRow.User) = Type("CatalogRef.ExternalUsers") Then
-				SingleErrorText      = NStr("en='External user ""%2"" is invalid in the predefined access group Administrators.';ru='Внешний пользователь ""%2"" недопустим в предопределенной группе доступа Администраторы.'");
-				SeveralErrorText = NStr("en='External user ""%2"" in the row %1 is invalid in the predefined access group Administrators.';ru='Внешний пользователь ""%2"" в строке %1 недопустим в предопределенной группе доступа Администраторы.'");
+				SingleErrorText      = NStr("en='External user ""%2"" is invalid in predefined access group Administrators.';ru='Внешний пользователь ""%2"" недопустим в предопределенной группе доступа Администраторы.'");
+				SeveralErrorText = NStr("en='External user ""%2"" in line %1 is invalid in predefined group Administrators.';ru='Внешний пользователь ""%2"" в строке %1 недопустим в предопределенной группе доступа Администраторы.'");
 				
 			ElsIf TypeOf(CurrentRow.User) = Type("CatalogRef.UsersGroups") Then
-				SingleErrorText      = NStr("en='User group ""%2"" is invalid in the predefined access group Administrators.';ru='Группа пользователей ""%2"" недопустима в предопределенной группе доступа Администраторы.'");
-				SeveralErrorText = NStr("en='User group ""%2"" in the row %1 is invalid in the predefined access group Administrators.';ru='Группа пользователей ""%2"" в строке %1 недопустима в предопределенной группе доступа Администраторы.'");
+				SingleErrorText      = NStr("en='The ""%2"" user group is invalid in predefined access group Administrators.';ru='Группа пользователей ""%2"" недопустима в предопределенной группе доступа Администраторы.'");
+				SeveralErrorText = NStr("en='The ""%2"" user group in line %1 is invalid in predefined access group Administrators.';ru='Группа пользователей ""%2"" в строке %1 недопустима в предопределенной группе доступа Администраторы.'");
 			Else
-				SingleErrorText      = NStr("en='External users group ""%2"" is invalid in the predefined access group Administrators.';ru='Группа внешних пользователей ""%2"" недопустима в предопределенной группе доступа Администраторы.'");
-				SeveralErrorText = NStr("en='External users group ""%2"" in the row %1 is invalid in the predefined access group Administrators.';ru='Группа внешних пользователей ""%2"" в строке %1 недопустима в предопределенной группе доступа Администраторы.'");
+				SingleErrorText      = NStr("en='External user group ""%2"" is invalid in predefined access group Administrators.';ru='Группа внешних пользователей ""%2"" недопустима в предопределенной группе доступа Администраторы.'");
+				SeveralErrorText = NStr("en='External user group ""%2"" in line %1 is invalid in predefined access group Administrators.';ru='Группа внешних пользователей ""%2"" в строке %1 недопустима в предопределенной группе доступа Администраторы.'");
 			EndIf;
 			
 			CommonUseClientServer.AddUserError(Errors,
@@ -337,15 +337,15 @@ Procedure FillCheckProcessingAtServer(Cancel, CheckedAttributes)
 			If TypeOf(CurrentRow.User) = Type("CatalogRef.Users") Then
 				
 				If TypeOf(Object.UsersType) <> Type("CatalogRef.Users") Then
-					SingleErrorText      = NStr("en='User ""%2"" is invalid for the specified type of the participants.';ru='Пользователь ""%2"" недопустим для указанного типа участников.'");
-					SeveralErrorText = NStr("en='User ""%2"" in the row %1 is invalid for the specified type of the participants.';ru='Пользователь ""%2"" в строке %1 недопустим для указанного типа участников.'");
+					SingleErrorText      = NStr("en='User ""%2"" is invalid for the selected participant type.';ru='Пользователь ""%2"" недопустим для указанного типа участников.'");
+					SeveralErrorText = NStr("en='User ""%2"" in row %1 is invalid for the selected participant type.';ru='Пользователь ""%2"" в строке %1 недопустим для указанного типа участников.'");
 				EndIf;
 				
 			ElsIf TypeOf(CurrentRow.User) = Type("CatalogRef.UsersGroups") Then
 				
 				If TypeOf(Object.UsersType) <> Type("CatalogRef.Users") Then
-					SingleErrorText      = NStr("en='User group ""%2"" is invalid for the specified type of the participants.';ru='Группа пользователей ""%2"" недопустима для указанного типа участников.'");
-					SeveralErrorText = NStr("en='User group ""%2"" in the row %1 is invalid for the specified type of the participants.';ru='Группа пользователей ""%2"" в строке %1 недопустима для указанного типа участников.'");
+					SingleErrorText      = NStr("en='The ""%2"" user group is invalid for the specified participant type.';ru='Группа пользователей ""%2"" недопустима для указанного типа участников.'");
+					SeveralErrorText = NStr("en='The ""%2"" user group in line %1 is invalid for the specified participant type.';ru='Группа пользователей ""%2"" в строке %1 недопустима для указанного типа участников.'");
 				EndIf;
 			Else
 				DescriptionOfTheAuthorizationObjectType = TypesOfObjectsUsersAuthorization.Find(
@@ -356,8 +356,8 @@ Procedure FillCheckProcessingAtServer(Cancel, CheckedAttributes)
 					If DescriptionOfTheAuthorizationObjectType = Undefined
 					 OR TypeOf(Object.UsersType) <> TypeOf(DescriptionOfTheAuthorizationObjectType.TypeOfAuthorizationObjects) Then
 						
-						SingleErrorText      = NStr("en='External user ""%2"" is invalid for the specified type of the participants.';ru='Внешний пользователь ""%2"" недопустим для указанного типа участников.'");
-						SeveralErrorText = NStr("en='External user ""%2"" in the row %1 is invalid for the specified type of the participants.';ru='Внешний пользователь ""%2"" в строке %1 недопустим для указанного типа участников.'");
+						SingleErrorText      = NStr("en='External user ""%2"" is invalid for the specified type of participants.';ru='Внешний пользователь ""%2"" недопустим для указанного типа участников.'");
+						SeveralErrorText = NStr("en='External user ""%2"" in line %1 is invalid for the specified type of participants.';ru='Внешний пользователь ""%2"" в строке %1 недопустим для указанного типа участников.'");
 					EndIf;
 				
 				Else // External users group.
@@ -367,8 +367,8 @@ Procedure FillCheckProcessingAtServer(Cancel, CheckedAttributes)
 					 OR DescriptionOfTheAuthorizationObjectType.TypeOfAuthorizationObjects <> Undefined
 					   AND TypeOf(Object.UsersType) <> TypeOf(DescriptionOfTheAuthorizationObjectType.TypeOfAuthorizationObjects) Then
 						
-						SingleErrorText      = NStr("en='External users group ""%2"" is invalid for the specified type of the participants.';ru='Группа внешних пользователей ""%2"" недопустима для указанного типа участников.'");
-						SeveralErrorText = NStr("en='External users group ""%2"" in the row %1 is invalid for the specified type of the participants.';ru='Группа внешних пользователей ""%2"" в строке %1 недопустима для указанного типа участников.'");
+						SingleErrorText      = NStr("en='External user group ""%2"" is invalid for the specified participant type.';ru='Группа внешних пользователей ""%2"" недопустима для указанного типа участников.'");
+						SeveralErrorText = NStr("en='External user group ""%2"" in line %1 is invalid for the specified participant type.';ru='Группа внешних пользователей ""%2"" в строке %1 недопустима для указанного типа участников.'");
 					EndIf;
 				EndIf;
 			EndIf;
@@ -1020,7 +1020,7 @@ Procedure FillListOfUserTypes()
 	
 	UserTypes.Add(
 		Undefined,
-		NStr("en='Custom participants';ru='Произвольные участники'"));
+		NStr("en='Arbitrary participants';ru='Произвольные участники'"));
 	
 	UserTypes.Add(
 		Catalogs.Users.EmptyRef(),
@@ -1271,7 +1271,7 @@ Procedure ShowUsersTypeSelectionOrExternalUsers(ContinuationProcessor)
 				"ShowTypeSelectionUsersOrExternalUsersEnd",
 				ThisObject,
 				ContinuationProcessor),
-			NStr("en='Data type choice';ru='Выбор типа данных'"),
+			NStr("en='Select data type';ru='Выбор типа данных'"),
 			ListOfUserTypes[0]);
 	Else
 		ExecuteNotifyProcessing(ContinuationProcessor, SelectionAndPickOutOfExternalUsers);
@@ -1360,7 +1360,7 @@ Procedure PickSelectUsersEnd(SelectionAndPickOutOfExternalUsers, Pick) Export
 		If CatalogExternalUsersEnabled Then
 			OpenForm("Catalog.ExternalUsers.ChoiceForm", FormParameters, Items.Users);
 		Else
-			ShowMessageBox(, NStr("en='Insufficient rights to select the external users.';ru='Недостаточно прав для выбора внешних пользователей.'"));
+			ShowMessageBox(, NStr("en='Insufficient rights to select external users.';ru='Недостаточно прав для выбора внешних пользователей.'"));
 		EndIf;
 	Else
 		OpenForm("Catalog.Users.ChoiceForm", FormParameters, Items.Users);
@@ -1385,7 +1385,7 @@ Function SelectedMembersGroupAccess()
 		
 	EndDo;
 	
-	FormHeaderSelection = NStr("en='Access group participants selection';ru='Подбор участников группы доступа'");
+	FormHeaderSelection = NStr("en='Select participants of access group';ru='Подбор участников группы доступа'");
 	AnExtendedFormOfSelectionOptions = New Structure("FormHeaderSelection, SelectedUsers",
 	                                                   FormHeaderSelection, SelectedUsers);
 	StorageAddress = PutToTempStorage(AnExtendedFormOfSelectionOptions);

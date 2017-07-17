@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
 <document xmlns="http://v8.1c.ru/8.2/data/spreadsheet" xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
 	<languageSettings>
-		<currentLanguage>en</currentLanguage>
+		<currentLanguage>ru</currentLanguage>
 		<defaultLanguage>en</defaultLanguage>
 		<languageInfo>
 			<id>en</id>
@@ -82,6 +82,26 @@
 			<id>tr</id>
 			<code>Turkish</code>
 			<description>Turkish</description>
+		</languageInfo>
+		<languageInfo>
+			<id>hu</id>
+			<code>Hungarian</code>
+			<description>Hungarian</description>
+		</languageInfo>
+		<languageInfo>
+			<id>it</id>
+			<code>Italian</code>
+			<description>Italian</description>
+		</languageInfo>
+		<languageInfo>
+			<id>es</id>
+			<code>Spanish</code>
+			<description>Spanish</description>
+		</languageInfo>
+		<languageInfo>
+			<id>sv</id>
+			<code>Swedish</code>
+			<description>Swedish</description>
 		</languageInfo>
 	</languageSettings>
 	<columns>
@@ -262,11 +282,11 @@
 					<tl>
 						<v8:item>
 							<v8:lang>en</v8:lang>
-							<v8:content>Address</v8:content>
+							<v8:content>Path</v8:content>
 						</v8:item>
 						<v8:item>
 							<v8:lang>ru</v8:lang>
-							<v8:content>Регион</v8:content>
+							<v8:content>Путь</v8:content>
 						</v8:item>
 					</tl>
 				</c>
@@ -278,7 +298,7 @@
 					<tl>
 						<v8:item>
 							<v8:lang>en</v8:lang>
-							<v8:content>Data reading</v8:content>
+							<v8:content>Read data</v8:content>
 						</v8:item>
 						<v8:item>
 							<v8:lang>ru</v8:lang>
@@ -293,7 +313,7 @@
 					<tl>
 						<v8:item>
 							<v8:lang>en</v8:lang>
-							<v8:content>Data recording</v8:content>
+							<v8:content>Writing data</v8:content>
 						</v8:item>
 						<v8:item>
 							<v8:lang>ru</v8:lang>
@@ -385,7 +405,7 @@
 					<tl>
 						<v8:item>
 							<v8:lang>en</v8:lang>
-							<v8:content>• COM classes installed on cluster servers 1C:Enterprise ([Quantity]): </v8:content>
+							<v8:content>• COM classes installed on the servers of 1C:Enterprise cluster ([Quantity]): </v8:content>
 						</v8:item>
 						<v8:item>
 							<v8:lang>ru</v8:lang>
@@ -411,7 +431,7 @@
 					<tl>
 						<v8:item>
 							<v8:lang>en</v8:lang>
-							<v8:content>Name and ID of COM class</v8:content>
+							<v8:content>Name and identifier of COM class</v8:content>
 						</v8:item>
 						<v8:item>
 							<v8:lang>ru</v8:lang>
@@ -522,7 +542,7 @@
 					<tl>
 						<v8:item>
 							<v8:lang>en</v8:lang>
-							<v8:content>• Connection of external components included into application ([Quantity]):</v8:content>
+							<v8:content>• Connection of external components supplied with application ([Quantity]):</v8:content>
 						</v8:item>
 						<v8:item>
 							<v8:lang>ru</v8:lang>
@@ -548,7 +568,7 @@
 					<tl>
 						<v8:item>
 							<v8:lang>en</v8:lang>
-							<v8:content>Template or component attachment file name</v8:content>
+							<v8:content>Name of template or component file</v8:content>
 						</v8:item>
 						<v8:item>
 							<v8:lang>ru</v8:lang>
@@ -564,7 +584,7 @@
 					<tl>
 						<v8:item>
 							<v8:lang>en</v8:lang>
-							<v8:content>Check sum</v8:content>
+							<v8:content>Checksum</v8:content>
 						</v8:item>
 						<v8:item>
 							<v8:lang>ru</v8:lang>
@@ -667,7 +687,7 @@
 					<tl>
 						<v8:item>
 							<v8:lang>en</v8:lang>
-							<v8:content>• Start applications of operating system on cluster servers of 1C:Enterprise ([Quantity]):</v8:content>
+							<v8:content>• Run operation system applications on the servers of 1C:Enterprise cluster ([Quantity]):</v8:content>
 						</v8:item>
 						<v8:item>
 							<v8:lang>ru</v8:lang>
@@ -693,7 +713,7 @@
 					<tl>
 						<v8:item>
 							<v8:lang>en</v8:lang>
-							<v8:content>Command bar template</v8:content>
+							<v8:content>Command line template</v8:content>
 						</v8:item>
 						<v8:item>
 							<v8:lang>ru</v8:lang>
@@ -815,7 +835,7 @@
 					<tl>
 						<v8:item>
 							<v8:lang>en</v8:lang>
-							<v8:content>Internet resource address</v8:content>
+							<v8:content>Online resource address</v8:content>
 						</v8:item>
 						<v8:item>
 							<v8:lang>ru</v8:lang>
@@ -956,7 +976,7 @@
 					<tl>
 						<v8:item>
 							<v8:lang>en</v8:lang>
-							<v8:content>• Set a privileged mode (the application module will be allowed to execute application operations with data for which the current application user has no sufficient access rights)</v8:content>
+							<v8:content>• Privileged mode setting (program module will be allowed to execute operations with data to which the current user of the application has insufficient rights)</v8:content>
 						</v8:item>
 						<v8:item>
 							<v8:lang>ru</v8:lang>

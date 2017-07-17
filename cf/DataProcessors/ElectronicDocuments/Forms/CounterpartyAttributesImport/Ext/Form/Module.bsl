@@ -14,10 +14,10 @@ Procedure ParseFileOnServer();
 		ED = XDTOFactory.ReadXML(XMLObject);
 	Except
 		XMLObject.Close();
-		MessagePattern = NStr("en='Data reading from the file %1 failed: %2 (see details in Events log monitor).';ru='Возникла ошибка при чтении данных из файла %1: %2 (подробности см. в Журнале регистрации).'");
+		MessagePattern = NStr("en='An error occurred when reading the data from file %1: %2 (see details in Event log).';ru='Возникла ошибка при чтении данных из файла %1: %2 (подробности см. в Журнале регистрации).'");
 		MessageText = StringFunctionsClientServer.SubstituteParametersInString(MessagePattern,
 			TempFile, BriefErrorDescription(ErrorInfo()));
-		ElectronicDocumentsServiceCallServer.ProcessExceptionByEDOnServer(NStr("en='ED reading';ru='Чтение ЭД.'"),
+		ElectronicDocumentsServiceCallServer.ProcessExceptionByEDOnServer(NStr("en='ED reading.';ru='Чтение ЭД.'"),
 																					DetailErrorDescription(ErrorInfo()),
 																					MessageText);
 		Return;
@@ -150,7 +150,7 @@ Function MandatoryAttributesFilled()
 		AttributesFilled = False;
 		MessageText = NStr("en='<Name> is not filled, import is impossible.';ru='Не заполнено <Наименование>, загрузка не возможна.'");
 		CommonUseClientServer.MessageToUser(MessageText);
-		MessageText = NStr("en='Verify for the correctness of the <File> specification with the counterparty attribute.';ru='Проверьте правильность указания <Файла> с реквизитами контрагента.'");
+		MessageText = NStr("en='Verify the correctness of the <File> specification with the counterparty attributes.';ru='Проверьте правильность указания <Файла> с реквизитами контрагента.'");
 		CommonUseClientServer.MessageToUser(MessageText);
 	EndIf;
 	
@@ -264,7 +264,7 @@ Procedure Import(Command)
 	
 	If MandatoryAttributesFilled() Then
 		If ValueIsFilled(Counterparty) Then
-			QuestionText = NStr("en='Counterparty exists. Refill attributes?';ru='Контрагент существует. Перезаполнить реквизиты?'");
+			QuestionText = NStr("en='Counterparty exists. Fill in the attributes again?';ru='Контрагент существует. Перезаполнить реквизиты?'");
 			NotifyDescription = New NotifyDescription("FinishImport", ThisObject);
 			ShowQueryBox(NOTifyDescription, QuestionText, QuestionDialogMode.YesNo);
 		EndIf;

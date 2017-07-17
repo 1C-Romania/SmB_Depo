@@ -225,7 +225,7 @@ Function QueryByCashAssetsBalance()
 	Query.Text = QueryText;
 	Query.SetParameter("Company", SmallBusinessServer.GetCompany(Company));
 	Query.SetParameter("WorkingDate", Report.WorkingDate);
-	Query.SetParameter("PaymentStatus", NStr("en='Available balance';ru='Доступный остаток'"));
+	Query.SetParameter("PaymentStatus", NStr("en='Available remaining goods';ru='Доступный остаток'"));
 	Query.SetParameter("TextSummary", NStr("en='Total payments';ru='Всего платежи'"));
 	Query.SetParameter("Payment", NStr("en='Current balance';ru='Текущий остаток'"));
 	

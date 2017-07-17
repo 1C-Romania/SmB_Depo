@@ -36,7 +36,7 @@ Procedure StartWorkWithEDFOperatorMechanism(
 	
 	If Not ValueIsFilled(DSCertificate) Then
 		
-		ErrorText = NStr("en='Subscriber certificate';ru='""Сертификат абонента""'");
+		ErrorText = NStr("en='""Subscriber certificate""';ru='""Сертификат абонента""'");
 		ErrorsCount = ErrorsCount + 1;
 		
 	EndIf;
@@ -67,7 +67,7 @@ Procedure StartWorkWithEDFOperatorMechanism(
 		
 		If BusinessProcessOption = "taxcomGetID" Then
 			MessageText = MessageText
-				+ " " + NStr("en='before receiving a unique ididentifier of ED exchange participant';ru='до получения уникального идентификатора участника обмена ЭД'");
+				+ " " + NStr("en='before receiving a unique ID of ED exchange participant';ru='до получения уникального идентификатора участника обмена ЭД'");
 		ElsIf BusinessProcessOption = "taxcomPrivat" Then
 			MessageText = MessageText + " " + NStr("en='before going to personal account';ru='до перехода в личный кабинет'");
 		EndIf;
@@ -358,7 +358,7 @@ Procedure DecryptControlDSMarkerServer(
 		// Business process error: markerED mandatory parameter is not available
 		OnlineUserSupportClient.EndBusinessProcess(InteractionContext);
 		OnlineUserSupportServerCall.WriteErrorInEventLogMonitor(
-			NStr("en='Error occurred checking the certificate owner authenticity. Authentication marker is not available (markerED)';ru='Ошибка при проверке подлинности владельца сертификата. Отсутствует маркер аутентификации (markerED)'"));
+			NStr("en='An error occurred while authenticating the certificate owner. No authentication token (markerED)';ru='Ошибка при проверке подлинности владельца сертификата. Отсутствует маркер аутентификации (markerED)'"));
 		ShowMessageBox(, ErrorMessageForUser);
 		Return;
 	EndIf;
@@ -401,7 +401,7 @@ Procedure DecryptControlDSMarkerServer(
 		// Unable to receive certificate ref - end business process
 		OnlineUserSupportClient.EndBusinessProcess(InteractionContext);
 		OnlineUserSupportServerCall.WriteErrorInEventLogMonitor(
-			NStr("en='Error occurred checking the certificate owner authenticity. Certificate is not specified (IDDSCertificate, IDDSCertificate_Dop)';ru='Ошибка при проверке подлинности владельца сертификата. Не указан сертификат (IDCertificateED, IDCertificateED_Dop)'"));
+			NStr("en='An error occurred while authenticating the certificate owner. Certificate is not specified (IDCertificateED, IDCertificateED_Dop)';ru='Ошибка при проверке подлинности владельца сертификата. Не указан сертификат (IDCertificateED, IDCertificateED_Dop)'"));
 		ShowMessageBox(, ErrorMessageForUser);
 		Return;
 		
@@ -494,7 +494,7 @@ Procedure ShowEDFApplicationRejection(InteractionContext) Export
 	EndIf;
 	
 	If IsBlankString(ReasonDescription.ErrorText) Then
-		MessageText = NStr("en='Unknown error. Contact support.';ru='Неизвестная ошибка. Обратитесь в службу техподдержки.'");
+		MessageText = NStr("en='Unknown error. Contact technical support.';ru='Неизвестная ошибка. Обратитесь в службу техподдержки.'");
 	EndIf;
 	
 	ShowMessageBox(, MessageText);

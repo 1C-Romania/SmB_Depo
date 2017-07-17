@@ -12,7 +12,7 @@ Procedure CommandProcessing(CommandParameter, CommandExecuteParameters)
 	
 	If Cancel Then
 		
-		ShowMessageBox(, NStr("en='Errors have occurred when receiving the data exchange settings.';ru='Возникли ошибки при получении настроек обмена данными.'"));
+		ShowMessageBox(, NStr("en='Errors occurred when receiving data exchange settings.';ru='Возникли ошибки при получении настроек обмена данными.'"));
 		
 	Else
 		

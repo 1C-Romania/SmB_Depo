@@ -5,7 +5,7 @@
 Procedure OnCopy(CopiedObject)
 
 	CurrentUser = InfobaseUsers.CurrentUser();
-	Description = ?(IsBlankString(String(Code)), NStr("en='Workplace';ru='рабочее место'"), String(Code))
+	Description = ?(IsBlankString(String(Code)), NStr("en='Work place';ru='рабочее место'"), String(Code))
 	             + ?(IsBlankString(String(Code)), ": ", "/")
 	             + ?(IsBlankString(String(CurrentUser)), NStr("en='User';ru='Пользователь'"), String(CurrentUser));
 		 

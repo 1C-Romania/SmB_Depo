@@ -238,7 +238,7 @@ EndFunction
 Procedure SupplementMessageText(ClassifierImportParameters) Export
 	
 	If IsBlankString(ClassifierImportParameters["MessageText"]) Then
-		MessageText = NStr("en='Banks classifier is loaded successfully.';ru='Загрузка классификатора банков РФ выполнена успешно.'");
+		MessageText = NStr("en='The RF bank classifier was imported successfully.';ru='Загрузка классификатора банков РФ выполнена успешно.'");
 	Else
 		MessageText = ClassifierImportParameters["MessageText"];
 	EndIf;
@@ -296,7 +296,7 @@ Procedure GetRBCData(ClassifierImportParameters, StorageAddress = "") Export
 	Try
 		RBCZIPFile = New ZipFileReader(RBKFilesReceivingParameters["PathToRBCFile"]);
 	Except
-		MessageText = NStr("en='The problems occurred with the banks classifier file obtained form the RBC website.';ru='Возникли проблемы с файлом классификатора банков, полученным с сайта РБК.'");
+		MessageText = NStr("en='Problems with the bank classifier file received from the RBK website occurred.';ru='Возникли проблемы с файлом классификатора банков, полученным с сайта РБК.'");
 		MessageText = MessageText + DetailErrorDescription(ErrorInfo());
 	EndTry;
 	
@@ -311,7 +311,7 @@ Procedure GetRBCData(ClassifierImportParameters, StorageAddress = "") Export
 	Try
 		RBCZIPFile.ExtractAll(TemporaryDirectory);
 	Except
-		MessageText = NStr("en='The problems occurred with the banks classifier file obtained form the RBC website.';ru='Возникли проблемы с файлом классификатора банков, полученным с сайта РБК.'");
+		MessageText = NStr("en='Problems with the bank classifier file received from the RBK website occurred.';ru='Возникли проблемы с файлом классификатора банков, полученным с сайта РБК.'");
 		MessageText = MessageText + DetailErrorDescription(ErrorInfo());
 	EndTry;	
 	
@@ -405,7 +405,7 @@ Procedure ImportBanksClassifier() Export
 	EventLevel = EventLogLevel.Information;
 	
 	If CommonUse.IsSubordinateDIBNode() Then
-		WriteLogEvent(EventNameInEventLogMonitor(), EventLevel, , , NStr("en='Import in the subordinate RIB node is not provided';ru='Загрузка в подчиненном узле РИБ не предусмотрена'"));
+		WriteLogEvent(EventNameInEventLogMonitor(), EventLevel, , , NStr("en='Import is not supported in subordinate DIB node';ru='Загрузка в подчиненном узле РИБ не предусмотрена'"));
 		Return;
 	EndIf;
 	
@@ -690,7 +690,7 @@ Function ClassifierFilesReceived(FolderWithFiles)
 		If Not File.Exist() Then
 			WriteErrorInEventLogMonitor(
 				StringFunctionsClientServer.SubstituteParametersInString(
-					NStr("en='File %1 has not been found';ru='Не найден файл %1'"),
+					NStr("en='File %1 is not found';ru='Не найден файл %1'"),
 					FileName));
 			Result = False;
 		EndIf;
@@ -743,7 +743,7 @@ EndProcedure
 
 Function EventNameInEventLogMonitor()
 	
-	Return NStr("en='Banks classifier import. RBK site';ru='Загрузка классификатора банков. Сайт РБК'", CommonUseClientServer.MainLanguageCode());
+	Return NStr("en='Banks classifier import. RBK website';ru='Загрузка классификатора банков. Сайт РБК'", CommonUseClientServer.MainLanguageCode());
 	
 EndFunction
 

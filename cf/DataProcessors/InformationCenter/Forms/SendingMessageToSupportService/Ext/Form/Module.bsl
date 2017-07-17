@@ -53,17 +53,17 @@ Procedure Send(Command)
 	
 	If Items.ReplyTo.Visible Then 
 		If IsBlankString(AddressForAnswer) Then 
-			Raise NStr("en='You need to enter email address for an answer';ru='Необходимо ввести адрес электронной почты для ответа'");
+			Raise NStr("en='Enter an email address for response';ru='Необходимо ввести адрес электронной почты для ответа'");
 		EndIf;
 		If Not ParseStringWithPostalAddresses(AddressForAnswer) Then 
 			Notification = New NotifyDescription("SendMessageToSupport", ThisForm);
-			ShowQueryBox(Notification, NStr("en='The email address you have typed may be incorrect Send the email?';ru='Адрес электронной почты возможно введен неверно. Отправить сообщение?'"), QuestionDialogMode.YesNo);
+			ShowQueryBox(Notification, NStr("en='Email address might be incorrect. Send the email?';ru='Адрес электронной почты возможно введен неверно. Отправить сообщение?'"), QuestionDialogMode.YesNo);
 			Return;
 		EndIf;
 	EndIf;
 	
 	SendMessageServer();
-	ShowUserNotification(NStr("en='Message to support is sent.';ru='Сообщение в службу поддержки отправлено.'"));
+	ShowUserNotification(NStr("en='Message to technical support was sent.';ru='Сообщение в службу поддержки отправлено.'"));
 	Notify("SendingMessageToSupportService");
 	Close();
 	
@@ -112,7 +112,7 @@ Procedure SendMessageToSupport(Result) Export
 	EndIf;
 	
 	SendMessageServer();
-	ShowUserNotification(NStr("en='Message to support is sent.';ru='Сообщение в службу поддержки отправлено.'"));
+	ShowUserNotification(NStr("en='Message to technical support was sent.';ru='Сообщение в службу поддержки отправлено.'"));
 	Notify("SendingMessageToSupportService");
 	Close();
 	
@@ -180,7 +180,7 @@ Procedure PlaceFilesWithExtension()
 	
 	// Open the files selection dialog.
 	Dialog = New FileDialog(FileDialogMode.Open);
-	Dialog.Title = NStr("en='Select the file';ru='Выберите файл'");
+	Dialog.Title = NStr("en='Select file';ru='Выберите файл'");
 	Dialog.Multiselect = False;
 	
 	NotifyDescription = New NotifyDescription("PutFileWithExtensionAlert", ThisObject);
@@ -216,13 +216,13 @@ Procedure PutFileWithAlertExtensionSizeAlert(Size, AdditionalParameters) Export
 	EndIf;
 	
 	If Not TotalFilesSizeIsOptimal(Size) Then 
-		WarningText = NStr("en='Unable to add file. Selected files size exceeds the limit in %1 MB';ru='Не удалось добавить файл. Размер выбранных файлов превышает предел в %1 Мб'");
+		WarningText = NStr("en='Cannot add the file. Size of the selected files exceeds the limit of %1 MB';ru='Не удалось добавить файл. Размер выбранных файлов превышает предел в %1 Мб'");
 		WarningText = StringFunctionsClientServer.SubstituteParametersInString(WarningText, MaximalFileSize);
 		ClearMessages();
 		ShowMessageToUser(WarningText);
 	EndIf;
 	
-	Status(NStr("en='File is added to a message.';ru='Файл добавляется к сообщению.'"));
+	Status(NStr("en='File is added to the message.';ru='Файл добавляется к сообщению.'"));
 
 	// Add files to table.
 	AddFilesInSelectedFiles(AdditionalParameters.FullFileName);
@@ -301,7 +301,7 @@ Procedure PlaceFilesWithoutExtensionAtServer(StorageAddress, FileNameAndExtensio
 	// Check if total files size is correct.
 	FileSize = NewFile.Size();
 	If Not TotalFilesSizeIsOptimal(FileSize) Then 
-		WarningText = NStr("en='Selected files size exceeds the limit in %1 MB';ru='Размер выбранных файлов превышает предел в %1 Мб'");
+		WarningText = NStr("en='Size of the selected files exceeds the limit of %1 MB';ru='Размер выбранных файлов превышает предел в %1 Мб'");
 		WarningText = StringFunctionsClientServer.SubstituteParametersInString(WarningText, MaximalFileSize);
 		ShowMessageToUser(WarningText);
 		DeleteFromTempStorage(StorageAddress);
@@ -362,7 +362,7 @@ Procedure SendMessageServer()
 	MessageText = Content.GetText();
 	
 	If IsBlankString(MessageText) Then 
-		Raise NStr("en='Message body can not be empty.';ru='Текст сообщения не может быть пустым.'");
+		Raise NStr("en='Text message cannot be empty.';ru='Текст сообщения не может быть пустым.'");
 	EndIf;
 	
 	If IsBlankString(Subject) Then 

@@ -36,14 +36,14 @@ Procedure ImportInfobaseUsers(Container) Export
 			Or ReadStream.Name <> "Data" Then
 		
 		Raise ServiceTechnologyIntegrationWithSSL.PlaceParametersIntoString(
-			NStr("en='The XML reading error. Incorrect file format. The beginning of the item %1 is expected.';ru='Ошибка чтения XML. Неверный формат файла. Ожидается начало элемента %1.'"),
+			NStr("en='XML reading error. Invalid file format. Awaiting %1 item start.';ru='Ошибка чтения XML. Неверный формат файла. Ожидается начало элемента %1.'"),
 			"Data"
 		);
 		
 	EndIf;
 	
 	If Not ReadStream.Read() Then
-		Raise NStr("en='The XML reading error. File completion is detected.';ru='Ошибка чтения XML. Обнаружено завершение файла.'");
+		Raise NStr("en='XML reading error. File end is detected.';ru='Ошибка чтения XML. Обнаружено завершение файла.'");
 	EndIf;
 	
 	While ReadStream.NodeType = XMLNodeType.StartElement Do
@@ -155,7 +155,7 @@ Function RunModeString(Val RunMode)
 	ElsIf RunMode = ClientRunMode.ManagedApplication Then
 		Return "ManagedApplication";
 	Else
-		MessagePattern = NStr("en='Unknown launch mode of the client application %1';ru='Неизвестный режим запуска клиентского приложения %1'");
+		MessagePattern = NStr("en='Unknown start mode of client application %1';ru='Неизвестный режим запуска клиентского приложения %1'");
 		MessageText = ServiceTechnologyIntegrationWithSSL.PlaceParametersIntoString(MessagePattern, RunMode);
 		Raise(MessageText);
 	EndIf;

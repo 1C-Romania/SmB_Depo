@@ -97,7 +97,7 @@ EndProcedure
 Procedure CheckEnd(Result, NotSpecified) Export
 	
 	If Result = True Then
-		ShowMessageBox(, NStr("en='The certificate is valid.';ru='Сертификат действителен.'"));
+		ShowMessageBox(, NStr("en='Certificate is valid.';ru='Сертификат действителен.'"));
 		
 	ElsIf Result <> Undefined Then
 		ShowMessageBox(, NStr("en='Certificate is invalid due to:';ru='Сертификат недействителен по причине:'")
@@ -122,10 +122,10 @@ Procedure FillSubjectProperties(Certificate)
 	PropertiesPresentation.Add("Position",		NStr("en='Position';ru='Position'"));
 	PropertiesPresentation.Add("Email",			NStr("en='Email';ru='Электронное письмо'"));
 	PropertiesPresentation.Add("OGRN",			NStr("en='OGRN';ru='ОГРН'"));
-	PropertiesPresentation.Add("OGRNIP",		NStr("en='OGRNIP';ru='ОГРНИП'"));
-	PropertiesPresentation.Add("INILA",			NStr("en='INILA';ru='СНИЛС'"));
+	PropertiesPresentation.Add("OGRNIP",		NStr("en='OGRNIE';ru='ОГРНИП'"));
+	PropertiesPresentation.Add("INILA",			NStr("en='IIAN';ru='СНИЛС'"));
 	PropertiesPresentation.Add("TIN",			NStr("en='TIN';ru='ИНН'"));
-	PropertiesPresentation.Add("Surname",		NStr("en='Surname';ru='Фамилия'"));
+	PropertiesPresentation.Add("Surname",		NStr("en='Last name';ru='Фамилия'"));
 	PropertiesPresentation.Add("Name",			NStr("en='Name';ru='Имя'"));
 	PropertiesPresentation.Add("Patronymic",	NStr("en='Patronymic';ru='Отчество'"));
 	
@@ -179,10 +179,10 @@ Procedure FillCertificateInternalFields()
 		AddProperty(Certificate, "Version",                    NStr("en='Version';ru='Версия'"));
 		AddProperty(Certificate, "StartDate",                NStr("en='Start date';ru='Дата начала'"));
 		AddProperty(Certificate, "EndDate",             NStr("en='End date';ru='Дата окончания'"));
-		AddProperty(Certificate, "UseToSign",    NStr("en='Use to sign';ru='Использовать для подписи'"));
+		AddProperty(Certificate, "UseToSign",    NStr("en='Use for signature';ru='Использовать для подписи'"));
 		AddProperty(Certificate, "UseForEncryption", NStr("en='Use for encryption';ru='Использовать для шифрования'"));
-		AddProperty(Certificate, "OpenKey",              NStr("en='Open key';ru='Открытый ключ'"), True);
-		AddProperty(Certificate, "Imprint",                 NStr("en='Imprint';ru='Отпечаток'"), True);
+		AddProperty(Certificate, "OpenKey",              NStr("en='Public key';ru='Открытый ключ'"), True);
+		AddProperty(Certificate, "Imprint",                 NStr("en='Thumbprint';ru='Отпечаток'"), True);
 		AddProperty(Certificate, "SerialNumber",             NStr("en='Serial number';ru='Серийный номер'"), True);
 	Else
 		Collection = Certificate[InternalFieldsGroup];

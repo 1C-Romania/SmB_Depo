@@ -417,7 +417,7 @@ Procedure ExecuteActionsOnTransitionToNextPage(Cancel)
 	If mCurrentPageNumber = 1 Then
 		
 		If Not ValueIsFilled(AccountingCurrency) Then
-			MessageText = NStr("en='Specify currency of accounting.';ru='Укажите валюту учета.'");
+			MessageText = NStr("en='Specify accounting currency.';ru='Укажите валюту учета.'");
 			CommonUseClientServer.MessageToUser(
 				MessageText,
 				,
@@ -794,7 +794,7 @@ Procedure BeforeClose(Cancel, StandardProcessing)
 		
 		Cancel = True;
 		NotifyDescription = New NotifyDescription("BeforeCloseEnd", ThisObject);
-		Text = NStr("en='To want to save the changes made?';ru='Сохранить внесенные изменения?'");
+		Text = NStr("en='Save changes?';ru='Сохранить внесенные изменения?'");
 		ShowQueryBox(NOTifyDescription, Text, QuestionDialogMode.YesNoCancel);
 		
 	EndIf;
@@ -903,7 +903,7 @@ EndProcedure // Back()
 Procedure AddProductsAndServices(Command)
 	
 	If Not ValueIsFilled(ProductsAndServices) Then
-		MessageText = NStr("en='Fill in the ProductsAndServices description first!';ru='Вначале заполните наименование номенклатуры!'");
+		MessageText = NStr("en='First, fill in products and services name.';ru='Вначале заполните наименование номенклатуры!'");
 		ShowMessageBox(Undefined,MessageText);
 		Return;
 	EndIf;
@@ -981,7 +981,7 @@ EndProcedure
 Procedure DocumentsListEnterOpeningBalance(Command)
 	
 	If Modified Then
-		Text = NStr("en='All the entered data will be saved. Continue?';ru='Все введенные данные будут сохранены. Продолжить?'");
+		Text = NStr("en='All entered data will be saved. Continue?';ru='Все введенные данные будут сохранены. Продолжить?'");
 		Mode = QuestionDialogMode.YesNo;
 		Response = Undefined;
 
@@ -1184,7 +1184,7 @@ Procedure EnterOpeningBalanceBankAndPettyCashCashAssetsCurrencyOfCashAssetsStart
 	
 	// If type of cash assets is changed, appropriate actions are required.
 	If TypeOf(TabularSectionRow.BankAccountPettyCash) = Type("CatalogRef.BankAccounts") Then
-		ShowMessageBox(Undefined,NStr("en='It is prohibited to change currency of the bank account!';ru='Для банковского счета нельзя изменить валюту денежных средств!'"));
+		ShowMessageBox(Undefined,NStr("en='Cannot change the cash currency of the bank account.';ru='Для банковского счета нельзя изменить валюту денежных средств!'"));
 		StandardProcessing = False;
 	EndIf;
 	
@@ -1778,17 +1778,17 @@ Procedure ImportDataFromExternalSourceResultDataProcessor(ImportResult, Addition
 			If FillingObjectFullName = "Document.EnterOpeningBalance.TabularSection.Inventory" Then
 				
 				ProcessPreparedDataInventory(ImportResult);
-				ShowMessageBox(,NStr("en='The data import is completed.';ru='Загрузка данных завершена.'"));
+				ShowMessageBox(,NStr("en='Data import is complete.';ru='Загрузка данных завершена.'"));
 				
 			ElsIf FillingObjectFullName = "Document.EnterOpeningBalance.TabularSection.AccountsPayable" Then
 				
 				ProcessPreparedDataAccountsPayable(ImportResult);
-				ShowMessageBox(,NStr("en='The data import is completed.';ru='Загрузка данных завершена.'"));
+				ShowMessageBox(,NStr("en='Data import is complete.';ru='Загрузка данных завершена.'"));
 				
 			ElsIf FillingObjectFullName = "Document.EnterOpeningBalance.TabularSection.AccountsReceivable" Then
 				
 				ProcessPreparedDataAccountsReceivable(ImportResult);
-				ShowMessageBox(,NStr("en='The data import is completed.';ru='Загрузка данных завершена.'"));
+				ShowMessageBox(,NStr("en='Data import is complete.';ru='Загрузка данных завершена.'"));
 				
 			EndIf;
 			

@@ -91,7 +91,7 @@ Function GetDatesArrayByCalendar(Val WorkSchedule, Val DateFrom, Val DaysArray, 
 	
 	While Selection.Next() Do
 		If Selection.DateInCalendar = Undefined Then
-			ErrorInfo = NStr("en='Business calendar ""%1"" is not filled in from date %2 for the specified number of business days.';ru='Производственный календарь ""%1"" не заполнен с даты %2 на указанное количество рабочих дней.'");
+			ErrorInfo = NStr("en='The ""%1"" business calendar is not filled in from date %2 for the specified number of working days.';ru='Производственный календарь ""%1"" не заполнен с даты %2 на указанное количество рабочих дней.'");
 			If CallingException Then
 				Raise StringFunctionsClientServer.SubstituteParametersInString(
 					ErrorInfo,
@@ -273,7 +273,7 @@ Function GetDatesDiffByCalendar(Val WorkSchedule, Val StartDate, Val EndDate, Ca
 	
 	If Result.IsEmpty() Then
 		If CallingException Then
-			ErrorInfo = NStr("en='Work schedule ""%1"" is not filled for the period %2.';ru='График работы ""%1"" не заполнен на период %2.'");
+			ErrorInfo = NStr("en='The ""%1"" work schedule is not filled in for period %2.';ru='График работы ""%1"" не заполнен на период %2.'");
 			Raise StringFunctionsClientServer.SubstituteParametersInString(
 				ErrorInfo,
 				WorkSchedule, PeriodPresentation(StartDate, EndOfDay(EndDate)));
@@ -394,7 +394,7 @@ Function GetWorkingDaysDates(Schedule, BeginningDates, GetPreceding = False, Cal
 			EndIf;
 			If CallingException Then
 				ErrorMessage = StringFunctionsClientServer.SubstituteParametersInString(
-									NStr("en='Unable to define the closest work date for the %1 date, perhaps, the work schedule is not filled.';ru='Невозможно определить ближайшую рабочую дату для даты %1, возможно, график работы не заполнен.'"), 
+									NStr("en='Cannot determine the nearest workday for date %1, work schedule might not be populated.';ru='Невозможно определить ближайшую рабочую дату для даты %1, возможно, график работы не заполнен.'"), 
 									Format(Selection.Date, "DLF=D"));
 				Raise(ErrorMessage);
 			Else
@@ -430,7 +430,7 @@ Function SchedulesOfWorkOnPeriod(Graphics, StartDate, EndDate) Export
 		Return WorkSchedulesModule.SchedulesOfWorkOnPeriod(Graphics, StartDate, EndDate);
 	EndIf;
 	
-	Raise NStr("en='Subsystem ""Work schedules"" is not found.';ru='Подсистема ""Графики работы"" не обнаружена.'");
+	Raise NStr("en='Subsystem ""Work schedules"" not found.';ru='Подсистема ""Графики работы"" не обнаружена.'");
 	
 EndFunction
 
@@ -447,7 +447,7 @@ Procedure CreateTSchedulesOfWorkOnPeriod(TempTablesManager, Graphics, StartDate,
 		Return;
 	EndIf;
 	
-	Raise NStr("en='Subsystem ""Work schedules"" is not found.';ru='Подсистема ""Графики работы"" не обнаружена.'");
+	Raise NStr("en='Subsystem ""Work schedules"" not found.';ru='Подсистема ""Графики работы"" не обнаружена.'");
 	
 EndProcedure
 

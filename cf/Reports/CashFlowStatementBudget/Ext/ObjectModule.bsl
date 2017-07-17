@@ -11,7 +11,7 @@ Procedure OnComposeResult(ResultDocument, DetailsData, StandardProcessing)
 		OR Not ValueIsFilled(ParameterPlanningPeriod.Value) Then
 		
 		Message 			= New UserMessage;
-		Message.Text	 	= NStr("en='Before generating the report, the parameter value ""Planning period"" must be filled out.';ru='Перед формированием отчета значение параметра ""Период планирования"" должно быть заполнено.'");
+		Message.Text	 	= NStr("en='Before generating the report, fill in the ""Planning period"" parameter value.';ru='Перед формированием отчета значение параметра ""Период планирования"" должно быть заполнено.'");
 		Message.Message();
 		
 		StandardProcessing = False;

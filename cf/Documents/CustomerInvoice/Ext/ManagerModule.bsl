@@ -253,8 +253,8 @@ Procedure GenerateTableInventory(DocumentRefSalesInvoice, StructureAdditionalPro
 	|		ELSE CAST(&InventoryWriteOff AS String(100))
 	|	END";
 	
-	Query.SetParameter("InventoryReceipt", NStr("en='Inventory receiving';ru='Прием запасов'"));
-	Query.SetParameter("InventoryWriteOff", NStr("en='Inventory write off';ru='Списание запасов'"));
+	Query.SetParameter("InventoryReceipt", NStr("en='Inventory receipt';ru='Прием запасов'"));
+	Query.SetParameter("InventoryWriteOff", NStr("en='Inventory write-off';ru='Списание запасов'"));
 	
 	QueryResult = Query.Execute();
 	
@@ -578,7 +578,7 @@ Procedure GenerateTableInventorySale(DocumentRefSalesInvoice, StructureAdditiona
 				TableRowReceipt.Amount = AmountToBeWrittenOff;
 				TableRowReceipt.Quantity = QuantityRequiredReserve;
 				
-				TableRowReceipt.ContentOfAccountingRecord = NStr("en='Inventory transfer';ru='Перемещение запасов'"); 
+				TableRowReceipt.ContentOfAccountingRecord = NStr("en='Inventory movement';ru='Перемещение запасов'"); 
 				
 				TableRowReceipt.GLAccount = RowTableInventory.CorrGLAccount;
 				
@@ -598,7 +598,7 @@ Procedure GenerateTableInventorySale(DocumentRefSalesInvoice, StructureAdditiona
 					RowIncomeAndExpenses.AmountExpense = AmountToBeWrittenOff;
 					RowIncomeAndExpenses.Amount = AmountToBeWrittenOff;
 					
-					RowIncomeAndExpenses.ContentOfAccountingRecord = NStr("en='Costs reflection';ru='Отражение расходов'");
+					RowIncomeAndExpenses.ContentOfAccountingRecord = NStr("en='Record expenses';ru='Отражение расходов'");
 					
 				EndIf;
 				
@@ -694,7 +694,7 @@ Procedure GenerateTableInventorySale(DocumentRefSalesInvoice, StructureAdditiona
 				TableRowReceipt.Amount = AmountToBeWrittenOff;
 				TableRowReceipt.Quantity = QuantityRequiredAvailableBalance;
 				
-				TableRowReceipt.ContentOfAccountingRecord = NStr("en='Inventory transfer';ru='Перемещение запасов'");
+				TableRowReceipt.ContentOfAccountingRecord = NStr("en='Inventory movement';ru='Перемещение запасов'");
 				
 				TableRowReceipt.GLAccount = RowTableInventory.CorrGLAccount;
 				
@@ -714,7 +714,7 @@ Procedure GenerateTableInventorySale(DocumentRefSalesInvoice, StructureAdditiona
 					RowIncomeAndExpenses.AmountExpense = AmountToBeWrittenOff;
 					RowIncomeAndExpenses.Amount = AmountToBeWrittenOff;
 					
-					RowIncomeAndExpenses.ContentOfAccountingRecord = NStr("en='Costs reflection';ru='Отражение расходов'");
+					RowIncomeAndExpenses.ContentOfAccountingRecord = NStr("en='Record expenses';ru='Отражение расходов'");
 					
 				EndIf;
 				
@@ -983,7 +983,7 @@ Procedure GenerateTableInventoryReturn(DocumentRefSalesInvoice, StructureAdditio
 					RowIncomeAndExpenses.AmountIncome = TableRowExpense.Amount;
 				EndIf;
 				
-				RowIncomeAndExpenses.ContentOfAccountingRecord = NStr("en='Costs reflection';ru='Отражение расходов'");
+				RowIncomeAndExpenses.ContentOfAccountingRecord = NStr("en='Record expenses';ru='Отражение расходов'");
 				
 				// Management.
 				RowTableManagerial = StructureAdditionalProperties.TableForRegisterRecords.TableManagerial.Add();
@@ -1351,7 +1351,7 @@ Procedure GenerateTableInventoryReceived(DocumentRefSalesInvoice, StructureAddit
 	|	TableInventoryReceived.GLAccount";
 	
 	Query.SetParameter("InventoryReception", "");
-	Query.SetParameter("InventoryReceiptProductsOnCommission", NStr("en='Inventory receiving';ru='Прием запасов'"));
+	Query.SetParameter("InventoryReceiptProductsOnCommission", NStr("en='Inventory receipt';ru='Прием запасов'"));
 	Query.SetParameter("AdmAccountingCurrency", Constants.AccountingCurrency.Get());
 	
 	QueryResult = Query.Execute();
@@ -1645,7 +1645,7 @@ Procedure GenerateTableIncomeAndExpenses(DocumentRefSalesInvoice, StructureAddit
 	
 	Query.SetParameter("PositiveExchangeDifferenceGLAccount", ChartsOfAccounts.Managerial.OtherIncome);
 	Query.SetParameter("NegativeExchangeDifferenceAccountOfAccounting", ChartsOfAccounts.Managerial.OtherExpenses);
-	Query.SetParameter("Income", NStr("en='Sales revenue';ru='Выручка от продажи'"));
+	Query.SetParameter("Income", NStr("en='Revenue from sale';ru='Выручка от продажи'"));
 	Query.SetParameter("ExchangeDifference", NStr("en='Exchange rate difference';ru='Курсовая разница'"));
 	
 	QueryResult = Query.Execute();
@@ -1714,8 +1714,8 @@ Procedure GenerateTableCustomerAccounts(DocumentRefSalesInvoice, StructureAdditi
 	Query.SetParameter("PointInTime", New Boundary(StructureAdditionalProperties.ForPosting.PointInTime, BoundaryType.Including));
 	Query.SetParameter("ControlPeriod", StructureAdditionalProperties.ForPosting.PointInTime.Date);
 	Query.SetParameter("Company", StructureAdditionalProperties.ForPosting.Company);
-	Query.SetParameter("AppearenceOfCustomerLiability", NStr("en='Appearance of customer liabilities';ru='Возникновение обязательств покупателя'"));
-	Query.SetParameter("AdvanceCredit", NStr("en='Setoff of advance payment';ru='Зачет предоплаты'"));
+	Query.SetParameter("AppearenceOfCustomerLiability", NStr("en='Incurrence of customer liabilities';ru='Возникновение обязательств покупателя'"));
+	Query.SetParameter("AdvanceCredit", NStr("en='Prepayment setoff';ru='Зачет предоплаты'"));
 	Query.SetParameter("ExchangeDifference", NStr("en='Exchange rate difference';ru='Курсовая разница'"));
 	
 	// Generate temporary table by accounts payable.
@@ -1937,8 +1937,8 @@ Procedure GenerateTableAccountsPayable(DocumentRefSalesInvoice, StructureAdditio
 	Query.SetParameter("PointInTime", New Boundary(StructureAdditionalProperties.ForPosting.PointInTime, BoundaryType.Including));
 	Query.SetParameter("ControlPeriod", StructureAdditionalProperties.ForPosting.PointInTime.Date);
 	Query.SetParameter("Company", StructureAdditionalProperties.ForPosting.Company);
-	Query.SetParameter("DebtCancelling", NStr("en='Debt cancelling';ru='Сторнирование долга'"));
-	Query.SetParameter("PrepaymentRecovery", NStr("en='Prepayment recovery';ru='Восстановление предоплаты'"));
+	Query.SetParameter("DebtCancelling", NStr("en='Debt reversal';ru='Сторнирование долга'"));
+	Query.SetParameter("PrepaymentRecovery", NStr("en='Restore prepayment';ru='Восстановление предоплаты'"));
 	Query.SetParameter("ExchangeDifference", NStr("en='Exchange rate difference';ru='Курсовая разница'"));
 	
 	Query.Text =
@@ -2809,10 +2809,10 @@ Procedure GenerateTableManagerial(DocumentRefSalesInvoice, StructureAdditionalPr
 	|	Ordering,
 	|	LineNumber";
 	
-	Query.SetParameter("SetOffAdvancePayment", NStr("en='Setoff of advance payment';ru='Зачет предоплаты'"));
-	Query.SetParameter("PrepaymentReversal", NStr("en='Prepayment reversing';ru='Сторнирование предоплаты'"));
-	Query.SetParameter("ReversingSupplies", NStr("en='Delivery reversing';ru='Сторнирование поставки'"));
-	Query.SetParameter("IncomeReflection", NStr("en='Sales revenue';ru='Выручка от продажи'"));
+	Query.SetParameter("SetOffAdvancePayment", NStr("en='Prepayment setoff';ru='Зачет предоплаты'"));
+	Query.SetParameter("PrepaymentReversal", NStr("en='Prepayment reversal';ru='Сторнирование предоплаты'"));
+	Query.SetParameter("ReversingSupplies", NStr("en='Delivery reversal';ru='Сторнирование поставки'"));
+	Query.SetParameter("IncomeReflection", NStr("en='Revenue from sale';ru='Выручка от продажи'"));
 	Query.SetParameter("AccountingCurrency", Constants.AccountingCurrency.Get());
 	Query.SetParameter("PositiveExchangeDifferenceGLAccount", ChartsOfAccounts.Managerial.OtherIncome);
 	Query.SetParameter("NegativeExchangeDifferenceAccountOfAccounting", ChartsOfAccounts.Managerial.OtherExpenses);
@@ -4046,7 +4046,7 @@ Function GenerateCompletionCertificate(SpreadsheetDocument, CurrentDocument, Err
 		
 	Else
 		
-		MessageText = NStr("en='ATTENTION! Perhaps, user template is used default methods for the accounts printing may work incorrectly.';ru='ВНИМАНИЕ! Возможно используется пользовательский макет. Штатный механизм печати счетов может работать некоректно.'");
+		MessageText = NStr("en='ATTENTION! Maybe, custom template is being used. Default procedures of account printing may work incorrectly.';ru='ВНИМАНИЕ! Возможно используется пользовательский макет. Штатный механизм печати счетов может работать некоректно.'");
 		CommonUseClientServer.AddUserError(Errors, , MessageText, Undefined);
 		
 	EndIf;
@@ -4162,7 +4162,7 @@ Function GenerateCompletionCertificate(SpreadsheetDocument, CurrentDocument, Err
 			TemplateArea.Parameters.VAT = NStr("ru = 'Без налога (НДС)'; en = 'Without tax (VAT)'");
 			TemplateArea.Parameters.TotalVAT = "-";
 		Else
-			TemplateArea.Parameters.VAT = ?(Header.AmountIncludesVAT, NStr("ru = 'В том числе НДС'; en = 'Including VAT'"), NStr("ru = 'Сумма НДС'; en = 'VAT'"));
+			TemplateArea.Parameters.VAT = ?(Header.AmountIncludesVAT, NStr("ru = 'В том числе НДС'; en = 'Including VAT'"), NStr("en='VAT amount';ru='Сумма НДС'"));
 			TemplateArea.Parameters.TotalVAT = SmallBusinessServer.AmountsFormat(VATAmount);
 		EndIf; 
 		SpreadsheetDocument.Put(TemplateArea);
@@ -4293,7 +4293,7 @@ Procedure GenerateInvoice(SpreadsheetDocument, CurrentDocument)
 		
 	Else
 		
-		MessageText = NStr("en='ATTENTION! Perhaps, user template is used default methods for the accounts printing may work incorrectly.';ru='ВНИМАНИЕ! Возможно используется пользовательский макет. Штатный механизм печати счетов может работать некоректно.'");
+		MessageText = NStr("en='ATTENTION! Maybe, custom template is being used. Default procedures of account printing may work incorrectly.';ru='ВНИМАНИЕ! Возможно используется пользовательский макет. Штатный механизм печати счетов может работать некоректно.'");
 		CommonUseClientServer.AddUserError(Errors, , MessageText, Undefined);
 		
 	EndIf;
@@ -4408,7 +4408,7 @@ Procedure GenerateInvoice(SpreadsheetDocument, CurrentDocument)
 			TemplateArea.Parameters.VAT = NStr("ru = 'Без налога (НДС)'; en = 'Without tax (VAT)'");
 			TemplateArea.Parameters.TotalVAT = "-";
 		Else
-			TemplateArea.Parameters.VAT = ?(Header.AmountIncludesVAT, NStr("ru = 'В том числе НДС'; en = 'Including VAT'"), NStr("ru = 'Сумма НДС'; en = 'VAT'"));
+			TemplateArea.Parameters.VAT = ?(Header.AmountIncludesVAT, NStr("ru = 'В том числе НДС'; en = 'Including VAT'"), NStr("en='VAT amount';ru='Сумма НДС'"));
 			TemplateArea.Parameters.TotalVAT = SmallBusinessServer.AmountsFormat(VATAmount);
 		EndIf; 
 		SpreadsheetDocument.Put(TemplateArea);
@@ -4503,7 +4503,7 @@ Procedure AddPrintCommands(PrintCommands) Export
 	
 	PrintCommand = PrintCommands.Add();
 	PrintCommand.ID							= "CustomerInvoice";
-	PrintCommand.Presentation				= NStr("en = 'Customer invoice'; ru = 'Расходная накладная'");
+	PrintCommand.Presentation				= NStr("en='Invoice';ru='Расходная накладная'");
 	PrintCommand.CheckPostingBeforePrint	= False;
 	PrintCommand.Order						= 1;
 	

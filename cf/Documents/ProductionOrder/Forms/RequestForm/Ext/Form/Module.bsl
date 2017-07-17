@@ -1515,7 +1515,7 @@ Procedure StartOnChange(Item)
 	
 	If Object.Start > Object.Finish Then
 		Object.Start = WhenChangingStart;
-		Message(NStr("en='Start date can not be later than the end date.';ru='Дата старта не может быть больше даты финиша.'"));
+		Message(NStr("en='Start date cannot be greater than end date.';ru='Дата старта не может быть больше даты финиша.'"));
 	Else
 		WhenChangingStart = Object.Start;
 	EndIf;

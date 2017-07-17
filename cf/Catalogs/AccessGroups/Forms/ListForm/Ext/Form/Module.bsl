@@ -61,7 +61,7 @@ Procedure OnCreateAtServer(Cancel, StandardProcessing)
 	
 	List.Parameters.SetParameterValue(
 		"ErrorObjectNotFound",
-		NStr("en='<Object not found>';ru='<Объект не найден>'"));
+		NStr("en='<Object is not found>';ru='<Объект не найден>'"));
 	
 	If Parameters.ChoiceMode Then
 		
@@ -81,9 +81,9 @@ Procedure OnCreateAtServer(Cancel, StandardProcessing)
 			Items.List.Multiselect = True;
 			Items.List.SelectionMode = TableSelectionMode.MultiRow;
 			
-			Title = NStr("en='Picking up access group';ru='Подбор групп доступа'");
+			Title = NStr("en='Select access groups';ru='Подбор групп доступа'");
 		Else
-			Title = NStr("en='Access group selection';ru='Выбор группы доступа'");
+			Title = NStr("en='Select access group';ru='Выбор группы доступа'");
 			Items.FormChoose.DefaultButton = False;
 		EndIf;
 	EndIf;
@@ -123,7 +123,7 @@ Procedure ValueChoiceList(Item, Value, StandardProcessing)
 	
 	If Value = ParentOfPersonalAccessGroups Then
 		StandardProcessing = False;
-		ShowMessageBox(, NStr("en='This group is only for personal groups of access.';ru='Эта группа только для персональных групп доступа.'"));
+		ShowMessageBox(, NStr("en='This group is only for personal access groups.';ru='Эта группа только для персональных групп доступа.'"));
 	EndIf;
 	
 EndProcedure
@@ -136,7 +136,7 @@ Procedure ListBeforeAddRow(Item, Cancel, Copy, Parent, Group)
 		Cancel = True;
 		
 		If Group Then
-			ShowMessageBox(, NStr("en='In this groups subgroups are used.';ru='В этой группе не используются подгруппы.'"));
+			ShowMessageBox(, NStr("en='Subgroups are not used in this group.';ru='В этой группе не используются подгруппы.'"));
 			
 		ElsIf SimplifiedInterfaceOfAccessRightsSettings Then
 			ShowMessageBox(,
@@ -165,11 +165,11 @@ Procedure ListDrag(Item, DragParameters, StandardProcessing, String, Field)
 	
 	If String = ParentOfPersonalAccessGroups Then
 		StandardProcessing = False;
-		ShowMessageBox(, NStr("en='This folder is for personal access groups only.';ru='Эта папка только для персональных групп доступа.'"));
+		ShowMessageBox(, NStr("en='This folder is only for personal access groups.';ru='Эта папка только для персональных групп доступа.'"));
 		
 	ElsIf DragParameters.Value = ParentOfPersonalAccessGroups Then
 		StandardProcessing = False;
-		ShowMessageBox(, NStr("en='Personal access groups folder is not transferred.';ru='Папка персональных групп доступа не переносится.'"));
+		ShowMessageBox(, NStr("en='Folder of personal access groups cannot be moved.';ru='Папка персональных групп доступа не переносится.'"));
 	EndIf;
 	
 EndProcedure

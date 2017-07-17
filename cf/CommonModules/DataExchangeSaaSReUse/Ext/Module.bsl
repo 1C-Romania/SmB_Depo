@@ -26,7 +26,7 @@ Function GetExchangeServiceWSProxy() Export
 	Result = DataExchangeServer.GetWSProxyByConnectionParameters(SettingsStructure);
 	
 	If Result = Undefined Then
-		Raise NStr("en='Error of receiving of the data exchange web service of the managing application.';ru='Ошибка получения web-сервиса обмена данными управляющего приложения.'");
+		Raise NStr("en='Error receiving data exchange web service of managing application.';ru='Ошибка получения web-сервиса обмена данными управляющего приложения.'");
 	EndIf;
 	
 	Return Result;

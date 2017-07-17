@@ -386,11 +386,11 @@ Function GetExchangeMessage()
 		
 		GetMessageAboutError(3);
 		
-		MessageString = NStr("en='Exchange data folder:  ""%1""';ru='Каталог обмена информацией: ""%1""'");
+		MessageString = NStr("en='Data exchange directory: ""%1""';ru='Каталог обмена информацией: ""%1""'");
 		MessageString = StringFunctionsClientServer.SubstituteParametersInString(MessageString, InformationExchangeDirectoryName());
 		SupplementErrorMessage(MessageString);
 		
-		MessageString = NStr("en='Exchange message attachment file name: ""%1"" or ""%2""';ru='Имя файла сообщения обмена: ""%1"" или ""%2""'");
+		MessageString = NStr("en='Exchange message file name: ""%1"" or ""%2""';ru='Имя файла сообщения обмена: ""%1"" или ""%2""'");
 		MessageString = StringFunctionsClientServer.SubstituteParametersInString(MessageString, MessageFileTemplateName + ".xml", MessageFileTemplateName + ".zip");
 		SupplementErrorMessage(MessageString);
 		
@@ -452,7 +452,7 @@ EndFunction
 Function CreateVerificationFile()
 	
 	TextDocument = New TextDocument;
-	TextDocument.AddLine(NStr("en='Temporary checking file';ru='Временный файл проверки'"));
+	TextDocument.AddLine(NStr("en='Temporary check file';ru='Временный файл проверки'"));
 	
 	Try
 		
@@ -489,7 +489,7 @@ Function RunCopyingFile(Val SourceFileName, Val TargetFileName)
 		
 	Except
 		
-		MessageString = NStr("en='Error when copying file from %1 to %2. Error description: %3';ru='Ошибка при копировании файла из %1 в %2. Описание ошибки: %3'");
+		MessageString = NStr("en='An error occurred when copying a file from %1 to %2. Error description: %3';ru='Ошибка при копировании файла из %1 в %2. Описание ошибки: %3'");
 		MessageString = StringFunctionsClientServer.SubstituteParametersInString(MessageString,
 							SourceFileName,
 							TargetFileName,
@@ -555,17 +555,17 @@ EndProcedure
 Procedure ErrorMessagesInitialization()
 	
 	ErrorMessages = New Map;
-	ErrorMessages.Insert(1, NStr("en='Connection error: data exchange directory is not specified.';ru='Ошибка подключения: Не указан каталог обмена информацией.'"));
-	ErrorMessages.Insert(2, NStr("en='Connection error: data exchange directory does not exist.';ru='Ошибка подключения: Каталог обмена информацией не существует.'"));
+	ErrorMessages.Insert(1, NStr("en='Connection error: Information exchange directory is not specified.';ru='Ошибка подключения: Не указан каталог обмена информацией.'"));
+	ErrorMessages.Insert(2, NStr("en='Connection error: Information exchange directory does not exist.';ru='Ошибка подключения: Каталог обмена информацией не существует.'"));
 	
-	ErrorMessages.Insert(3, NStr("en='Exchange plan catalog does not have data file.';ru='В каталоге обмена информацией не был обнаружен файл сообщения с данными.'"));
-	ErrorMessages.Insert(4, NStr("en=""Error while unzipping message's zipped file"";ru='Ошибка при распаковке сжатого файла сообщения.'"));
-	ErrorMessages.Insert(5, NStr("en='Error while zipping the file of message exchange';ru='Ошибка при сжатии файла сообщения обмена.'"));
-	ErrorMessages.Insert(6, NStr("en='Error while creating temporary directory';ru='Ошибка при создании временного каталога'"));
-	ErrorMessages.Insert(7, NStr("en='The archive does not contain the exchange file';ru='Архив не содержит файл сообщения обмена'"));
+	ErrorMessages.Insert(3, NStr("en='Information exchange directory does not contain a message file with data.';ru='В каталоге обмена информацией не был обнаружен файл сообщения с данными.'"));
+	ErrorMessages.Insert(4, NStr("en='An error occurred when unpacking a compressed message file.';ru='Ошибка при распаковке сжатого файла сообщения.'"));
+	ErrorMessages.Insert(5, NStr("en='An error occurred when compressing the exchange message file.';ru='Ошибка при сжатии файла сообщения обмена.'"));
+	ErrorMessages.Insert(6, NStr("en='An error occurred when creating a temporary directory';ru='Ошибка при создании временного каталога'"));
+	ErrorMessages.Insert(7, NStr("en='Archive does not include an exchange message file';ru='Архив не содержит файл сообщения обмена'"));
 	
-	ErrorMessages.Insert(8, NStr("en='Error of recording the file to the data exchange directory. Verify the user rights for acccess to directory.';ru='Ошибка записи файла в каталог обмена информацией. Проверьте права пользователя на доступ к каталогу.'"));
-	ErrorMessages.Insert(9, NStr("en='Error of the file deletion out of the information exchange directory. Verify the user rights for acccess to directory.';ru='Ошибка удаления файла из каталога обмена информацией. Проверьте права пользователя на доступ к каталогу.'"));
+	ErrorMessages.Insert(8, NStr("en='An error occurred when writing the file to the information exchange directory. Check if the user is authorized to access the directory.';ru='Ошибка записи файла в каталог обмена информацией. Проверьте права пользователя на доступ к каталогу.'"));
+	ErrorMessages.Insert(9, NStr("en='An error occurred when removing a file from the information exchange directory. Check user access rights to the directory.';ru='Ошибка удаления файла из каталога обмена информацией. Проверьте права пользователя на доступ к каталогу.'"));
 	
 EndProcedure
 

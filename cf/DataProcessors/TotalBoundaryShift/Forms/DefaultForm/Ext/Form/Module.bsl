@@ -66,7 +66,7 @@ Function BackGroundJobStart(Val UUID)
 		UUID,
 		"DataProcessors.TotalBoundaryShift.RunCommand",
 		New Structure,
-		NStr("en='Totals and aggregates: Acceleration of document posting and reports formating';ru='Итоги и агрегаты: Ускорение проведения документов и формирования отчетов'"));
+		NStr("en='Totals and aggregates: Accelerated document posting and report generation';ru='Итоги и агрегаты: Ускорение проведения документов и формирования отчетов'"));
 	FillPropertyValues(JobParameters, Start);
 	
 	If JobParameters.JobCompleted Then

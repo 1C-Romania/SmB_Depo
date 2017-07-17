@@ -142,19 +142,19 @@ Procedure ExportCompanyAttributes(StorageAddress, UUID)
 			
 			StorageAddress = PutToTempStorage(BinaryData, UUID);
 		Else
-			MessagePattern = NStr("en='%1 (see details in event log monitor).';ru='%1 (подробности см. в Журнале регистрации).'");
+			MessagePattern = NStr("en='%1 (for more information, see Event log).';ru='%1 (подробности см. в Журнале регистрации).'");
 			MessageText = StringFunctionsClientServer.SubstituteParametersInString(MessagePattern, ErrorText);
-			ElectronicDocumentsServiceCallServer.ProcessExceptionByEDOnServer(NStr("en='ED formation';ru='Формирование ЭД'"),
+			ElectronicDocumentsServiceCallServer.ProcessExceptionByEDOnServer(NStr("en='ED generation';ru='Формирование ЭД'"),
 																						ErrorText,
 																						ErrorText);
 		EndIf;
 		
 	Except
 		
-		MessagePattern = NStr("en='%1 (see details in event log monitor).';ru='%1 (подробности см. в Журнале регистрации).'");
+		MessagePattern = NStr("en='%1 (for more information, see Event log).';ru='%1 (подробности см. в Журнале регистрации).'");
 		MessageText = StringFunctionsClientServer.SubstituteParametersInString(MessagePattern,
 			BriefErrorDescription(ErrorInfo()));
-		ElectronicDocumentsServiceCallServer.ProcessExceptionByEDOnServer(NStr("en='ED formation';ru='Формирование ЭД'"),
+		ElectronicDocumentsServiceCallServer.ProcessExceptionByEDOnServer(NStr("en='ED generation';ru='Формирование ЭД'"),
 																					DetailErrorDescription(ErrorInfo()),
 																					MessageText);
 	EndTry;
@@ -238,7 +238,7 @@ Procedure RefreshForm()
 	If LegalEntityIndividual = AnIndividualEntrepreneur Then
 		Items.GroupHead.Visible = False;
 		
-		LabelCertificate = NStr("en='Certificate No';ru='Свидетельство №'") + CertificateNumber + NStr("en=' from ';ru=' от '") + Format(CertificateDate, "DLF=D");
+		LabelCertificate = NStr("en='Certificate No.';ru='Свидетельство №'") + CertificateNumber + NStr("en=' from ';ru=' от '") + Format(CertificateDate, "DLF=D");
 	Else
 		Items.Certificate.Visible = False;
 	EndIf;
@@ -259,7 +259,7 @@ Procedure ExportAttributes(Command)
 	
 	If ExportMethod = PredefinedValue("Enum.EDExchangeMethods.ThroughEMail") Then
 		If Not ValueIsFilled(ExportingAddress) Then
-			MessageText = NStr("en='Email account is not specified.';ru='Не выбрана учетная запись электронной почты.'");
+			MessageText = NStr("en='Email account is not selected.';ru='Не выбрана учетная запись электронной почты.'");
 			CommonUseClientServer.MessageToUser(MessageText);
 			Return;
 		EndIf;

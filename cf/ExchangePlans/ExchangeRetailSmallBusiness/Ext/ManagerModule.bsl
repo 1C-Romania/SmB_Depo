@@ -26,7 +26,7 @@ EndProcedure // DefineSettings()
 //
 Function SettingsFilenameForReceiver() Export
 	
-	Return NStr("en='Exchange settings SB-RT';ru='Настройки обмена УНФ-РТ'");
+	Return NStr("en='SB-RT exchange settings';ru='Настройки обмена УНФ-РТ'");
 	
 EndFunction
 
@@ -131,7 +131,7 @@ Function DataTransferRestrictionsDescriptionFull(FilterSsettingsAtNode, Correspo
 		
 	ElsIf FilterSsettingsAtNode.CatalogsExportMode = Enums.ExchangeObjectsExportModes.ExportIfNecessary Then
 		
-		RegulatoryReferenceInformationPresentation = NStr("en='Send reference information that is used in the sent documents.';ru='Отправлять нормативно-справочную информацию, которая используется в отправляемых документах.'");
+		RegulatoryReferenceInformationPresentation = NStr("en='Send reference information used in the sent documents.';ru='Отправлять нормативно-справочную информацию, которая используется в отправляемых документах.'");
 		
 	ElsIf FilterSsettingsAtNode.CatalogsExportMode = Enums.ExchangeObjectsExportModes.DoNotExport Then
 		
@@ -213,11 +213,11 @@ EndFunction
 //  Row, Unlimited - presentation of a command displayed in the user interface.
 //
 // ForExample:
-// Return NStr("en='Create an exchange in the distributed infobase';ru='Создать обмен в распределенной информационной базе'");
+// Return NStr("en='Create exchange in the distributed infobase';ru='Создать обмен в распределенной информационной базе'");
 //
 Function CommandTitleForCreationOfNewDataExchange() Export
 	
-	Return NStr("en='Create an exchange with 1C:Retail 8, edition configuration. 2.1';ru='Создать обмен с конфигурацией ""1C: Розница 8, ред. 2.1'");
+	Return NStr("en='Create an exchange with 1C:Retail 8 2.1';ru='Создать обмен с конфигурацией ""1C: Розница 8, ред. 2.1'");
 	
 EndFunction
 
@@ -304,7 +304,7 @@ EndFunction
 //
 Function BriefInformationOnExchange(SettingID) Export
 	
-	ExplanationText = NStr("en='Synchronizes the data between 1C:Retail and 1C:Small business applications, Synchronization is bidirectional and helps each infobase to have actual data.';ru='Позволяет синхронизировать данные между программами 1С:Розница и 1С:Управление небольшой фирмой, Синхронизация является двухсторонней и позволяет иметь актуальные данные в каждой из информационных баз.'");
+	ExplanationText = NStr("en='Allows you to synchronize data between 1C:Retail and 1C:Small business. Two-way synchronization helps you get the latest data in each infobase.';ru='Позволяет синхронизировать данные между программами 1С:Розница и 1С:Управление небольшой фирмой, Синхронизация является двухсторонней и позволяет иметь актуальные данные в каждой из информационных баз.'");
 	
 	Return ExplanationText;
 	
@@ -401,10 +401,10 @@ Function CorrespondentInfobaseDataTransferRestrictionDetails(FilterSsettingsAtNo
 	
 	If ValueIsFilled(FilterSsettingsAtNode.DocumentsDumpStartDate) Then
 		DocumentsDumpStartDateRestriction = StringFunctionsClientServer.SubstituteParametersInString(
-			NStr("en='Beginning with %1';ru='Начиная с %1'"),
+			NStr("en='Starting with %1';ru='Начиная с %1'"),
 			Format(FilterSsettingsAtNode.DocumentsDumpStartDate, "DLF=DD"));
 	Else
-		DocumentsDumpStartDateRestriction = NStr("en='For the whole period of accounting in application';ru='За весь период ведения учета в программе'");
+		DocumentsDumpStartDateRestriction = NStr("en='For the whole period of accounting in the application';ru='За весь период ведения учета в программе'");
 	EndIf;
 	
 	// Filter by companies

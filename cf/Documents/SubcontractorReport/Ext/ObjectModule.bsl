@@ -121,7 +121,7 @@ Procedure FillTabularSectionBySpecification(NodesSpecificationStack, NodesTable 
 			If Not NodesSpecificationStack.Find(Selection.Specification) = Undefined Then
 				MessageText = NStr("en='During filling in of the Specification materials
 		|tabular section a recursive item occurrence was found';ru='При попытке заполнить табличную
-		|часть Материалы по спецификации, обнаружено рекурсивное вхождение элемента'")+" "+Selection.ProductsAndServices+" "+NStr("en='in specifications';ru='в спецификации'")+" "+Selection.ProductionSpecification+"
+		|часть Материалы по спецификации, обнаружено рекурсивное вхождение элемента'")+" "+Selection.ProductsAndServices+" "+NStr("en='in BOM';ru='в спецификации'")+" "+Selection.ProductionSpecification+"
 									|The operation failed.";
 				Raise MessageText;
 			EndIf;
@@ -648,7 +648,7 @@ Procedure Filling(FillingData, StandardProcessing) Export
 		FillByGoodsReceipt(FillingData);
 	ElsIf TypeOf(FillingData) = Type("DocumentRef.CustomerInvoice") Then
 		If FillingData.OperationKind <> Enums.OperationKindsCustomerInvoice.TransferToProcessing Then
-			Raise NStr("en='Report on processing is displayed only according to the transfer for processing!';ru='Отчет о переработке вводится только на основании передачи в переработку!'");;
+			Raise NStr("en='Processing report is displayed only based on the transfer to processing.';ru='Отчет о переработке вводится только на основании передачи в переработку!'");;
 		EndIf;
 		FillBySalesInvoice(FillingData);
 	ElsIf TypeOf(FillingData) = Type("Structure") Then

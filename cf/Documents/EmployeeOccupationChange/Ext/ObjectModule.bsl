@@ -153,7 +153,7 @@ Procedure RunPreliminaryControl(Cancel)
 	If Not ResultsArray[2].IsEmpty() Then
 		QueryResultSelection = ResultsArray[2].Select();
 		While QueryResultSelection.Next() Do
-			MessageText = NStr("en='In row No.%Number% of the ""Employees"" tabular section the order validity conflicts with the personnel order ""%PersonnelOrder%"".';ru='В строке №%Номер% табл. части ""Сотрудники"" период действия приказа противоречит кадровому приказу ""%КадровыйПриказ%"".'");
+			MessageText = NStr("en='In row No. %Number% of the ""Employees"" tabular section, the order validity contradicts the ""%PersonnelOrder%"" personnel order.';ru='В строке №%Номер% табл. части ""Сотрудники"" период действия приказа противоречит кадровому приказу ""%КадровыйПриказ%"".'");
 			MessageText = StrReplace(MessageText, "%Number%", QueryResultSelection.LineNumber); 
 			MessageText = StrReplace(MessageText, "%RegularOrder%", QueryResultSelection.Recorder);
 			SmallBusinessServer.ShowMessageAboutError(
@@ -170,7 +170,7 @@ Procedure RunPreliminaryControl(Cancel)
 	If Not ResultsArray[3].IsEmpty() Then
 		QueryResultSelection = ResultsArray[3].Select();
 		While QueryResultSelection.Next() Do
-			MessageText = NStr("en='In row No.%Number% of the ""Accruals and deductions"" tabular section the order validity conflicts with personnel order ""%PersonnelOrder%"".';ru='В строке №%Номер% табл. части ""Начисления и удержания"" период действия приказа противоречит кадровому приказу ""%КадровыйПриказ%"".'");
+			MessageText = NStr("en='In row No. %Number% of the ""Accruals and deductions"" tabular section, the order validity contradicts the ""%PersonnelOrder%"" personnel order.';ru='В строке №%Номер% табл. части ""Начисления и удержания"" период действия приказа противоречит кадровому приказу ""%КадровыйПриказ%"".'");
 			MessageText = StrReplace(MessageText, "%Number%", QueryResultSelection.LineNumber); 
 			MessageText = StrReplace(MessageText, "%RegularOrder%", QueryResultSelection.Recorder);
 			SmallBusinessServer.ShowMessageAboutError(
@@ -187,7 +187,7 @@ Procedure RunPreliminaryControl(Cancel)
 	If Not ResultsArray[4].IsEmpty() Then
 		QueryResultSelection = ResultsArray[4].Select();
 		While QueryResultSelection.Next() Do
-			MessageText = NStr("en='In row No.%Number% of the ""Employees"" tabular section the employee is specified repeatedly.';ru='В строке №%Номер% табл. части ""Сотрудники"" сотрудник указывается повторно.'");
+			MessageText = NStr("en='In row No. %Number% of the ""Employees"" tabular section, the employee is specified again.';ru='В строке №%Номер% табл. части ""Сотрудники"" сотрудник указывается повторно.'");
 			MessageText = StrReplace(MessageText, "%Number%", QueryResultSelection.LineNumber);
 			SmallBusinessServer.ShowMessageAboutError(
 				ThisObject,
@@ -251,7 +251,7 @@ Procedure RunControl(AdditionalProperties, Cancel)
 	QueryResultSelection = Result.Select();
 	While QueryResultSelection.Next() Do
 		If Not ValueIsFilled(QueryResultSelection.StructuralUnit) Then
-		    MessageText = NStr("en='In row No.%Number% of tabular section ""Employees"", the employee %Employee% is not hired to %Company% company.';ru='В строке №%Номер% табл. части ""Сотрудники"" сотрудник %Сотрудник% не принят на работу в организацию %Организация%.'");
+		    MessageText = NStr("en='In row No.%Number% of the ""Employees"" tabular section, it is indicated that the %Employee% employee is not hired to the %Company% company.';ru='В строке №%Номер% табл. части ""Сотрудники"" сотрудник %Сотрудник% не принят на работу в организацию %Организация%.'");
 			MessageText = StrReplace(MessageText, "%Number%", QueryResultSelection.LineNumber); 
 			MessageText = StrReplace(MessageText, "%Employee%", QueryResultSelection.Employee); 
 			MessageText = StrReplace(MessageText, "%Company%", AdditionalProperties.ForPosting.Company);
@@ -377,7 +377,7 @@ Procedure RunControlStaffSchedule(AdditionalProperties, Cancel)
 	
 	While Selection.Next() Do
 		If Selection.FontsContradiction Then
-			MessageText = NStr("en='Row No.%Number% of the ""Employees"" tabular section: employment positions are not provided for in the staff list!';ru='Строка №%Номер% табл. части ""Сотрудники"": в штатном расписании не предусмотрены ставки для приема сотрудника!'");
+			MessageText = NStr("en='Row No. %Number% of the ""Employees"" tabular section: employment rates are not provided in the staff list.';ru='Строка №%Номер% табл. части ""Сотрудники"": в штатном расписании не предусмотрены ставки для приема сотрудника!'");
 			MessageText = StrReplace(MessageText, "%Number%", Selection.LineNumber);
 			SmallBusinessServer.ShowMessageAboutError(
 				ThisObject,

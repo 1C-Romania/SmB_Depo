@@ -14,7 +14,7 @@ Procedure OnCreateAtServer(Cancel, StandardProcessing)
 		If Not ProductsAndServices.ProductsAndServicesType = Enums.ProductsAndServicesTypes.InventoryItem Then
 			
 			AutoTitle = False;
-			Title = NStr("en='Inventory management is used for inventories only';ru='Управление запасами используется только для запасов'");
+			Title = NStr("en='Inventory management is used only for inventories';ru='Управление запасами используется только для запасов'");
 			
 			Items.List.ReadOnly = True;
 			

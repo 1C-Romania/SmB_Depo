@@ -21,15 +21,15 @@ Procedure OnCreateAtServer(Cancel, StandardProcessing)
 	RunMode = New FixedStructure(RunMode);
 	
 	If Not WorkInSafeModeService.SecurityProfilesCanBeUsed() Then
-		Raise NStr("en='Security profiles use is unavailable for this configuration.';ru='Использование профилей безопасности недоступно для данной конфигурации!'");
+		Raise NStr("en='Use of security profiles is not available for this configuration.';ru='Использование профилей безопасности недоступно для данной конфигурации!'");
 	EndIf;
 	
 	If Not WorkInSafeModeService.SecurityProfilesSetupAvailable() Then
-		Raise NStr("en='Security profile customization is unavailable.';ru='Настройка профилей безопасности недоступна!'");
+		Raise NStr("en='Setting of security profiles is not available.';ru='Настройка профилей безопасности недоступна!'");
 	EndIf;
 	
 	If Not RunMode.ThisIsSystemAdministrator Then
-		Raise NStr("en='You have no enough access rights!';ru='Недостаточно прав доступа!'");
+		Raise NStr("en='Insufficient access rights';ru='Недостаточно прав доступа!'");
 	EndIf;
 	
 	// Visible settings on launch.
@@ -198,7 +198,7 @@ EndFunction
 Procedure StartUseSecurityProfilesUseSettings(Val UUID)
 	
 	If Not WorkInSafeModeService.SecurityProfilesCanBeUsed() Then
-		Raise NStr("en='Enabling of automatic permissions requests is unavailable.';ru='Включение автоматического запроса разрешений недоступно!'");
+		Raise NStr("en='Enabling automatic permission request is not available.';ru='Включение автоматического запроса разрешений недоступно!'");
 	EndIf;
 	
 	SetExclusiveMode(True);

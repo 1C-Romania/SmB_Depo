@@ -183,7 +183,7 @@ Function ShowUserAlertAboutPossibleError(Text, Quantity, CountTotal)
 	
 		Text = Text
 		        + Chars.LF
-		        + NStr("en='Check:either the quantity is not filled or the price tag (label) template is not specified. IN this case the selection mark for strings can not be specified.';ru='Проверьте: не заполнены либо количество, либо не задан шаблон ценника (этикетки). В этом случае отметка выбора для строк не может быть установлена.'");
+		        + NStr("en='Check: either the quantity is not filled in or the price tag (label) template is not specified. In this case, selection mark for lines cannot be specified.';ru='Проверьте: не заполнены либо количество, либо не задан шаблон ценника (этикетки). В этом случае отметка выбора для строк не может быть установлена.'");
 	
 		Text = StrReplace(Text, "%QuantitySelected%", Quantity);
 		Text = StrReplace(Text, "%QuantityTotal%", CountTotal);
@@ -360,7 +360,7 @@ EndProcedure // FillProductsTableAtServer()
 &AtClient
 Procedure FillInventoryTable(Command)
 	
-	QuestionText = NStr("en='All manually entered data will be lost. Do you want to continue?';ru='При перезаполнении все введенные вручную данные будут потеряны, продолжить?'");
+	QuestionText = NStr("en='During repopulation all information entered manually will be lost, continue?';ru='При перезаполнении все введенные вручную данные будут потеряны, продолжить?'");
 	ShowQueryBox(New NotifyDescription("FillInventoryTableEnd", ThisObject), QuestionText, QuestionDialogMode.YesNo,,DialogReturnCode.Yes);
 	
 EndProcedure
@@ -383,7 +383,7 @@ Procedure Print(Command)
 	
 	If SelectedRows.Count() = 0 Then
 		
-		ShowMessageBox(Undefined,NStr("en='No items selected';ru='Не выбрано ни одного товара'"));
+		ShowMessageBox(Undefined,NStr("en='No goods selected';ru='Не выбрано ни одного товара'"));
 		Return;
 		
 	EndIf;
@@ -432,7 +432,7 @@ Procedure Print(Command)
 		EndIf;
 		
 		PrintParameters =New Structure;
-		PrintParameters.Insert("FormTitle", NStr("en='Print labels and tags';ru='Печать этикеток и ценников'"));
+		PrintParameters.Insert("FormTitle", NStr("en='Print price tags and labels';ru='Печать этикеток и ценников'"));
 		PrintParameters.Insert("PrintInfo", PrintInfo);
 		
 		CommandParameter = New Array;
@@ -639,7 +639,7 @@ Procedure InventoryChosenOnChange(Item)
 					AND Not ValueIsFilled(CurrentData.LabelsQuantity)) Then
 					
 				Message = New UserMessage;
-				Message.Text = NStr("en='The price tags number is not filled';ru='Не заполнено количество ценников'");
+				Message.Text = NStr("en='Number of price tags is required';ru='Не заполнено количество ценников'");
 				Message.Field = "Object.Products["+CurrentRow+"].PriceTagsQuantity";
 				Message.Message();
 				
@@ -663,7 +663,7 @@ Procedure InventoryChosenOnChange(Item)
 					 AND Not ValueIsFilled(CurrentData.LabelsQuantity)) Then
 					
 				Message = New UserMessage;
-				Message.Text = NStr("en='The labels number is not filled';ru='Не заполнено количество этикеток'");
+				Message.Text = NStr("en='Number of labels not specified';ru='Не заполнено количество этикеток'");
 				Message.Field = "Object.Products["+CurrentRow+"].LabelsQuantity";
 				Message.Message();
 				
@@ -675,7 +675,7 @@ Procedure InventoryChosenOnChange(Item)
 					 AND    ValueIsFilled(CurrentData.LabelsQuantity)) Then
 					
 				Message = New UserMessage;
-				Message.Text = NStr("en='No label template selected';ru='Не выбран шаблон этикетки'");
+				Message.Text = NStr("en='Label template is not selected';ru='Не выбран шаблон этикетки'");
 				Message.Field = "Object.Products["+CurrentRow+"].LabelTemplate";
 				Message.Message();
 				
@@ -687,7 +687,7 @@ Procedure InventoryChosenOnChange(Item)
 					 AND Not ValueIsFilled(CurrentData.LabelsQuantity)) Then
 				
 				Message = New UserMessage;
-				Message.Text = NStr("en='Price tags and (or) labels quantity is not filled';ru='Не заполнено количество ценников и(или) этикеток'");
+				Message.Text = NStr("en='Price tag and(or) label quantity is not filled in';ru='Не заполнено количество ценников и(или) этикеток'");
 				Message.Field = "Object.Products["+CurrentRow+"].PriceTagsQuantity";
 				Message.Message();
 				
@@ -699,7 +699,7 @@ Procedure InventoryChosenOnChange(Item)
 					 AND    ValueIsFilled(CurrentData.LabelsQuantity)) Then
 				
 				Message = New UserMessage;
-				Message.Text = NStr("en='Price tags and(or) labels templates are not selected';ru='Не выбраны шаблоны ценников и(или) этикеток'");
+				Message.Text = NStr("en='Price tag and(or) label templates are not selected';ru='Не выбраны шаблоны ценников и(или) этикеток'");
 				Message.Field = "Object.Products["+CurrentRow+"].PriceTagsTemplate";
 				Message.Message();
 				
@@ -711,7 +711,7 @@ Procedure InventoryChosenOnChange(Item)
 					 AND Not ValueIsFilled(CurrentData.LabelsQuantity)) Then
 				
 				Message = New UserMessage;
-				Message.Text = NStr("en='Price tags and (or) labels quantity is not filled';ru='Не заполнено количество ценников и(или) этикеток'");
+				Message.Text = NStr("en='Price tag and(or) label quantity is not filled in';ru='Не заполнено количество ценников и(или) этикеток'");
 				Message.Field = "Object.Products["+CurrentRow+"].PriceTagsQuantity";
 				Message.Message();
 				
@@ -723,7 +723,7 @@ Procedure InventoryChosenOnChange(Item)
 					 AND    ValueIsFilled(CurrentData.LabelsQuantity)) Then
 				
 				Message = New UserMessage;
-				Message.Text = NStr("en='The number of price tags and (or) the label template is not filled';ru='Не заполнено количество ценников и(или) шаблон этикетки'");
+				Message.Text = NStr("en='The number of price tags and(or) the label template is not filled out';ru='Не заполнено количество ценников и(или) шаблон этикетки'");
 				Message.Field = "Object.Products["+CurrentRow+"].PriceTagsQuantity";
 				Message.Message();
 				
@@ -735,7 +735,7 @@ Procedure InventoryChosenOnChange(Item)
 					 AND Not ValueIsFilled(CurrentData.LabelsQuantity)) Then
 				
 				Message = New UserMessage;
-				Message.Text = NStr("en='The number of labels and (or) the price tag template is not filled';ru='Не заполнено количество этикеток и(или) шаблон ценника'");
+				Message.Text = NStr("en='The number of labels and(or) the price tag template is required';ru='Не заполнено количество этикеток и(или) шаблон ценника'");
 				Message.Field = "Object.Products["+CurrentRow+"].LabelsQuantity";
 				Message.Message();
 				
@@ -748,7 +748,7 @@ Procedure InventoryChosenOnChange(Item)
 			If CurrentData.LabelsQuantity = 0 Then
 			
 				Message = New UserMessage;
-				Message.Text = NStr("en='The labels number is not filled';ru='Не заполнено количество этикеток'");
+				Message.Text = NStr("en='Number of labels not specified';ru='Не заполнено количество этикеток'");
 				Message.Field = "Object.Products["+CurrentRow+"].LabelsQuantity";
 				Message.Message();
 				
@@ -759,7 +759,7 @@ Procedure InventoryChosenOnChange(Item)
 			If Not ValueIsFilled(CurrentData.LabelTemplate) Then
 				
 				Message = New UserMessage;
-				Message.Text = NStr("en='No label template selected';ru='Не выбран шаблон этикетки'");
+				Message.Text = NStr("en='Label template is not selected';ru='Не выбран шаблон этикетки'");
 				Message.Field = "Object.Products["+CurrentRow+"].LabelTemplate";
 				Message.Message();
 				
@@ -772,7 +772,7 @@ Procedure InventoryChosenOnChange(Item)
 			If CurrentData.PriceTagsQuantity = 0 Then
 				
 				Message = New UserMessage;
-				Message.Text = NStr("en='The price tags number is not filled';ru='Не заполнено количество ценников'");
+				Message.Text = NStr("en='Number of price tags is required';ru='Не заполнено количество ценников'");
 				Message.Field = "Object.Products["+CurrentRow+"].PriceTagsQuantity";
 				Message.Message();
 				
@@ -803,7 +803,7 @@ EndProcedure // InventorySelectedOnChange()
 Procedure SetPriceTagsQuantity(Command)
 	
 	ValueSelected = Undefined;
-	ShowInputNumber(New NotifyDescription("SetPriceTagsQuantityEnd", ThisObject, New Structure("ValueSelected", ValueSelected)), ValueSelected, NStr("en='Enter the number of the price tags';ru='Введите количество ценников'"), 10, 2);
+	ShowInputNumber(New NotifyDescription("SetPriceTagsQuantityEnd", ThisObject, New Structure("ValueSelected", ValueSelected)), ValueSelected, NStr("en='Enter price tag quantity';ru='Введите количество ценников'"), 10, 2);
 	
 EndProcedure
 
@@ -831,7 +831,7 @@ Procedure SetPriceTagsQuantityEnd(Result, AdditionalParameters) Export
         
         CountTotal = RowArray.Count();
         
-        Text = NStr("en='Price tags quantity %Quantity% specified.';ru='Установлено количество ценников %Количество%.'");
+        Text = NStr("en='%Quantity% price tags are set.';ru='Установлено количество ценников %Количество%.'");
         Text = StrReplace(Text, "%Quantity%", ValueSelected);
         
         ShowUserAlertAboutPossibleError(Text, Quantity, CountTotal);
@@ -874,7 +874,7 @@ Procedure SetLabelsQuantityEnd(Result, AdditionalParameters) Export
         
         CountTotal = RowArray.Count();
         
-        Text = NStr("en='Labels  quantity %Quantity% specified.';ru='Установлено количество этикеток %Количество%.'");
+        Text = NStr("en='%Quantity% labels are set.';ru='Установлено количество этикеток %Количество%.'");
         Text = StrReplace(Text, "%Quantity%", ValueSelected);
         
         ShowUserAlertAboutPossibleError(Text, Quantity, CountTotal);
@@ -917,7 +917,7 @@ Procedure SetPriceTagsTemplateEnd(Result, AdditionalParameters) Export
         
         CountTotal = RowArray.Count();
         
-        Text = NStr("en='The %Template% template specified.';ru='Установлен шаблон ""%Шаблон%"".'");
+        Text = NStr("en='The %Template% template set.';ru='Установлен шаблон ""%Шаблон%"".'");
         Text = StrReplace(Text, "%Pattern%", ValueSelected);
         
         ShowUserAlertAboutPossibleError(Text, Quantity, CountTotal);
@@ -960,7 +960,7 @@ Procedure SetLabelsTemplateEnd(Result, AdditionalParameters) Export
         
         CountTotal = RowArray.Count();
         
-        Text = NStr("en='The %Template% template specified.';ru='Установлен шаблон ""%Шаблон%"".'");
+        Text = NStr("en='The %Template% template set.';ru='Установлен шаблон ""%Шаблон%"".'");
         Text = StrReplace(Text, "%Pattern%", ValueSelected);
         
         ShowUserAlertAboutPossibleError(Text, Quantity, CountTotal);

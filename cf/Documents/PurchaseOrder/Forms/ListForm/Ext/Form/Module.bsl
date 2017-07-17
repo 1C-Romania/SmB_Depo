@@ -147,18 +147,18 @@ Procedure SetFilterCurrentWorks()
 	EndIf;
 	
 	If Parameters.Property("ForToday") Then
-		FormHeaderText = "Purchase orders: for today";
+		FormHeaderText = NStr("en = 'Purchase orders: as for today'");
 		SmallBusinessClientServer.SetListFilterItem(List, "ForToday", True);
 	EndIf;
 	
 	If Parameters.Property("InProcess") Then
-		FormHeaderText = "Purchase orders: in work";
+		FormHeaderText = NStr("en = 'Purchase orders: in progess'");
 		SmallBusinessClientServer.SetListFilterItem(List, "OrderInProcess", True);
 	EndIf;
 	
 	If Parameters.Property("Responsible") Then
 		SmallBusinessClientServer.SetListFilterItem(List, "Responsible", Parameters.Responsible.List, True, DataCompositionComparisonType.InList);
-		FormHeaderText = FormHeaderText + ", responsible " + Parameters.Responsible.Initials;
+		FormHeaderText = FormHeaderText + NStr("en = ', responsible person '") + Parameters.Responsible.Initials;
 	EndIf;
 	
 	If Not IsBlankString(FormHeaderText) Then

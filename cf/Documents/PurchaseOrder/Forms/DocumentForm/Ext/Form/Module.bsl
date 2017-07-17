@@ -749,7 +749,7 @@ Procedure BarcodesAreReceivedFragment(UnknownBarcodes) Export
 	
 	For Each CurUndefinedBarcode IN UnknownBarcodes Do
 		
-		MessageString = NStr("en='Data by barcode is not found: %1%; quantity: %2%';ru='Данные по штрихкоду не найдены: %1%; количество: %2%'");
+		MessageString = NStr("en='Barcode data is not found: %1%; quantity: %2%';ru='Данные по штрихкоду не найдены: %1%; количество: %2%'");
 		MessageString = StrReplace(MessageString, "%1%", CurUndefinedBarcode.Barcode);
 		MessageString = StrReplace(MessageString, "%2%", CurUndefinedBarcode.Quantity);
 		CommonUseClientServer.MessageToUser(MessageString);
@@ -1143,7 +1143,7 @@ Procedure SetEditInListOption()
 		
 		Response = Undefined;
 		ShowQueryBox(New NotifyDescription("SetEditInListEndOption", ThisObject, New Structure("LineCount", LineCount)), 
-			NStr("en='All rows except the first will be deleted. Continue?';ru='Все строки кроме первой будут удалены. Продолжить?'"),
+			NStr("en='All lines except for the first one will be deleted. Continue?';ru='Все строки кроме первой будут удалены. Продолжить?'"),
 			QuestionDialogMode.YesNo
 		);
 		Return;
@@ -1661,7 +1661,7 @@ Procedure GetWeight(Command)
 	
 	If TabularSectionRow = Undefined Then
 		
-		ShowMessageBox(Undefined, NStr("en='It is required to select a line to get weight for it.';ru='Необходимо выбрать строку, для которой необходимо получить вес.'"));
+		ShowMessageBox(Undefined, NStr("en='Select a line for which the weight should be received.';ru='Необходимо выбрать строку, для которой необходимо получить вес.'"));
 		
 	ElsIf EquipmentManagerClient.RefreshClientWorkplace() Then // Checks if the operator's workplace is specified
 		
@@ -1774,7 +1774,7 @@ Procedure ChangeReserveFillByBalances(Command)
 	
 	If Object.Materials.Count() = 0 Then
 		Message = New UserMessage;
-		Message.Text = NStr("en='Tabular section ""Materials"" is not filled!';ru='Табличная часть ""Материалы"" не заполнена!'");
+		Message.Text = NStr("en='Tabular section ""Materials"" is not filled in.';ru='Табличная часть ""Материалы"" не заполнена!'");
 		Message.Message();
 		Return;
 	EndIf;
@@ -1790,7 +1790,7 @@ Procedure ChangeReserveClearReserve(Command)
 	
 	If Object.Materials.Count() = 0 Then
 		Message = New UserMessage;
-		Message.Text = NStr("en='Tabular section ""Materials"" is not filled!';ru='Табличная часть ""Материалы"" не заполнена!'");
+		Message.Text = NStr("en='Tabular section ""Materials"" is not filled in.';ru='Табличная часть ""Материалы"" не заполнена!'");
 		Message.Message();
 		Return;
 	EndIf;

@@ -27,7 +27,7 @@ EndProcedure
 &AtClient
 Procedure Select(Command)
 	If BeginOfPeriod > EndOfPeriod Then
-		CommonUseClientServer.MessageToUser(NStr("en='Start date of the period exceeds the end date of the period';ru='Дата начала периода больше чем дата окончания периода'"), , "BeginOfPeriod");
+		CommonUseClientServer.MessageToUser(NStr("en='Period start date is more than the period end date';ru='Дата начала периода больше чем дата окончания периода'"), , "BeginOfPeriod");
 		Return;
 	EndIf;
 	

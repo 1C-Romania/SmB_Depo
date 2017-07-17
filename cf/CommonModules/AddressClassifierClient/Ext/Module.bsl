@@ -262,7 +262,7 @@ Procedure AnalysisFilesAvailabilityInDirectoryClassifierEnd(StatePostCode, Addit
 		Presentation = AddressClassifierServerCall.StatePresentationByCode(AdditionalParameters.MissingFiles);
 		
 		For Each KeyValue In Presentation Do
-			ErrorInfo = NStr("en='For state ""%1"" data file ""%2"" is not found';ru='Для региона ""%1"" не найден файл данных ""%2""'") + Chars.LF;
+			ErrorInfo = NStr("en='The ""%2"" data file is not found for region ""%1""';ru='Для региона ""%1"" не найден файл данных ""%2""'") + Chars.LF;
 			ErrorInfo = ErrorInfo + NStr("en='Up to date address information can be exported on #EMPTY LINK#';ru='Актуальные адресные сведения можно загрузить по адресу http://its.1c.ru/download/fias'");
 			
 			CommonUseClientServer.AddUserError(AdditionalParameters.Result.Errors, AdditionalParameters.ErrorField,

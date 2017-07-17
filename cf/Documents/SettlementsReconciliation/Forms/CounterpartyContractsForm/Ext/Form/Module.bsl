@@ -28,7 +28,7 @@ Procedure BeforeClose(Cancel, StandardProcessing)
 			
 			If Not ValueIsFilled(Contract.Contract) Then
 				
-				MessageText = NStr("en='Rows are in table with a blank counterparty contract';ru='В таблице присутствуют строки с незаполненным договором контрагента'");
+				MessageText = NStr("en='There are rows with a blank counterparty contract in the table';ru='В таблице присутствуют строки с незаполненным договором контрагента'");
 				CommonUseClientServer.MessageToUser(MessageText, , , , Cancel);
 				Break;
 				

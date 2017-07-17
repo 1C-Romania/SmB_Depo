@@ -247,7 +247,7 @@ Function ObjectManagerByFullName(DescriptionFull)
 				Manager = CalculationRegisters[MOName].Recalculations;
 			Else
 				Raise PlaceParametersIntoString(
-					NStr("en='Unknown type of metadata object ""%1""';ru='Неизвестный тип объекта метаданных ""%1""'"), DescriptionFull);
+					NStr("en='Unknown metadata object type ""%1""';ru='Неизвестный тип объекта метаданных ""%1""'"), DescriptionFull);
 			EndIf;
 		EndIf;
 		
@@ -273,7 +273,7 @@ Function ObjectManagerByFullName(DescriptionFull)
 	EndIf;
 	
 	Raise PlaceParametersIntoString(
-		NStr("en='Unknown type of metadata object ""%1""';ru='Неизвестный тип объекта метаданных ""%1""'"), DescriptionFull);
+		NStr("en='Unknown metadata object type ""%1""';ru='Неизвестный тип объекта метаданных ""%1""'"), DescriptionFull);
 	
 EndFunction
 
@@ -425,14 +425,14 @@ Function CommonModule(Name)
 	
 	If TypeOf(Module) <> Type("CommonModule") Then
 		Raise PlaceParametersIntoString(
-			NStr("en='Common module ""%1"" is not found.';ru='Общий модуль ""%1"" не найден.'"), Name);
+			NStr("en='Common module ""%1"" was not found.';ru='Общий модуль ""%1"" не найден.'"), Name);
 	EndIf;
 #Else
 	Module = Eval(Name);
 #If Not WebClient Then
 	If TypeOf(Module) <> Type("CommonModule") Then
 		Raise PlaceParametersIntoString(
-			NStr("en='Common module ""%1"" is not found.';ru='Общий модуль ""%1"" не найден.'"), Name);
+			NStr("en='Common module ""%1"" was not found.';ru='Общий модуль ""%1"" не найден.'"), Name);
 	EndIf;
 #EndIf
 #EndIf

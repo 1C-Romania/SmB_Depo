@@ -39,11 +39,11 @@ EndProcedure
 Procedure AddIdea(Command)
 	
 	If IsBlankString(Description) Then 
-		Raise NStr("en='The Name field should not be empty.';ru='Поле Наименование не должно быть пустым'");
+		Raise NStr("en='The Name field must not be empty';ru='Поле Наименование не должно быть пустым'");
 	EndIf;
 	
 	If IsBlankString(Subject) Then 
-		Raise NStr("en='The Subject field should not be empty.';ru='Поле Предмет не должно быть пустым'");
+		Raise NStr("en='The Subject field must not be empty';ru='Поле Предмет не должно быть пустым'");
 	EndIf;
 	
 	AddIdeaServer();

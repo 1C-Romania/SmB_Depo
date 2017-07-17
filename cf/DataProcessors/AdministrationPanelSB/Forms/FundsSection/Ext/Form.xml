@@ -48,7 +48,7 @@
 					<Title formatted="false">
 						<v8:item>
 							<v8:lang>en</v8:lang>
-							<v8:content>Use these settings to configure currency transactions, identify interactions during the advance set off and enable the payment calendar.</v8:content>
+							<v8:content>Use this section to configure currency transactions, determine interactions during advance setoff and enable the payment calendar.</v8:content>
 						</v8:item>
 						<v8:item>
 							<v8:lang>ru</v8:lang>
@@ -172,7 +172,7 @@
 								<Title formatted="false">
 									<v8:item>
 										<v8:lang>en</v8:lang>
-										<v8:content>If it is necessary to keep accounts of operations in several currencies, you should enable this option. The parameter affects the reflection of currency, exchange rates and multiplicity of currency in the corresponding objects, e.g. in the form of the prices and currency selection called out of the documents.</v8:content>
+										<v8:content>If it is necessary to keep records of transactions in several currencies, enable this option. The parameter affects the currency display, exchange rates and currency multiplicity in the corresponding objects, e.g. in the form of prices and currency selection opened from the documents.</v8:content>
 									</v8:item>
 									<v8:item>
 										<v8:lang>ru</v8:lang>
@@ -193,7 +193,7 @@
 								<Title formatted="false">
 									<v8:item>
 										<v8:lang>en</v8:lang>
-										<v8:content>Go to the currencies catalog. You can use it only after you enable the "Keep records in foreign currency" option.</v8:content>
+										<v8:content>Go to the Currencies catalog. You can use it only after you select the "Keep records in foreign currency" check box.</v8:content>
 									</v8:item>
 									<v8:item>
 										<v8:lang>ru</v8:lang>
@@ -215,7 +215,7 @@
 							<Title>
 								<v8:item>
 									<v8:lang>en</v8:lang>
-									<v8:content>Functional option currency transactions settings</v8:content>
+									<v8:content>Functional option currency transaction accounting settings</v8:content>
 								</v8:item>
 								<v8:item>
 									<v8:lang>ru</v8:lang>
@@ -225,7 +225,7 @@
 							<ToolTip>
 								<v8:item>
 									<v8:lang>en</v8:lang>
-									<v8:content>Functional option currency transactions settings</v8:content>
+									<v8:content>Functional option currency transaction accounting settings</v8:content>
 								</v8:item>
 								<v8:item>
 									<v8:lang>ru</v8:lang>
@@ -258,8 +258,7 @@
 										<Title formatted="true">
 											<v8:item>
 												<v8:lang>en</v8:lang>
-												<v8:content>&lt;b&gt; "National currency &gt;".&lt;/&gt; Specify the required national currency of your Country. For example, it will be Russian rubles for Russia.
-</v8:content>
+												<v8:content>"National currency". Specify the required national currency of your country. For example, it will be rubles for Russia.</v8:content>
 											</v8:item>
 											<v8:item>
 												<v8:lang>ru</v8:lang>
@@ -291,10 +290,7 @@
 										<Title formatted="true">
 											<v8:item>
 												<v8:lang>en</v8:lang>
-												<v8:content>&lt;b "Accounting currency &gt;".&lt;/&gt; If the management accounting currency should differ from the national currency, for example, to be in euro, than this option shall be enabled.
-
-&lt;b&gt;&lt;color #ff0000&gt;IMPORTANT!&lt;/&gt;&lt;/&gt; Key parameter. If there is accounting data in the system, you can not change the accounting currency.
-</v8:content>
+												<v8:content>"Accounting currency". If the management accounting should be kept in a currency which differs from the national currency, for example, in euro, than this option should be enabled. IMPORTANT! Key parameter. If there is accounting data in the application, you cannot change the accounting currency.</v8:content>
 											</v8:item>
 											<v8:item>
 												<v8:lang>ru</v8:lang>
@@ -312,7 +308,7 @@
 							<Title>
 								<v8:item>
 									<v8:lang>en</v8:lang>
-									<v8:content>Currency exchange rate differences calculation frequency FO</v8:content>
+									<v8:content>Exchange rate difference calculation frequency of an individual</v8:content>
 								</v8:item>
 								<v8:item>
 									<v8:lang>ru</v8:lang>
@@ -322,7 +318,7 @@
 							<ToolTip>
 								<v8:item>
 									<v8:lang>en</v8:lang>
-									<v8:content>Currency exchange rate differences calculation frequency FO</v8:content>
+									<v8:content>Exchange rate difference calculation frequency of an individual</v8:content>
 								</v8:item>
 								<v8:item>
 									<v8:lang>ru</v8:lang>
@@ -337,7 +333,7 @@
 								<Title formatted="false">
 									<v8:item>
 										<v8:lang>en</v8:lang>
-										<v8:content>Setup of the currency exchange rate differences interval. For more information, see the option help.</v8:content>
+										<v8:content>Set up interval of exchange rate difference calculation. For more information, see help.</v8:content>
 									</v8:item>
 									<v8:item>
 										<v8:lang>ru</v8:lang>
@@ -351,7 +347,7 @@
 									<Title>
 										<v8:item>
 											<v8:lang>en</v8:lang>
-											<v8:content>Frequency of calculation</v8:content>
+											<v8:content>Calculation frequency</v8:content>
 										</v8:item>
 										<v8:item>
 											<v8:lang>ru</v8:lang>
@@ -369,7 +365,7 @@
 												<Presentation>
 													<v8:item>
 														<v8:lang>en</v8:lang>
-														<v8:content>On each operation</v8:content>
+														<v8:content>For each transaction</v8:content>
 													</v8:item>
 													<v8:item>
 														<v8:lang>ru</v8:lang>
@@ -386,7 +382,7 @@
 												<Presentation>
 													<v8:item>
 														<v8:lang>en</v8:lang>
-														<v8:content>On period closure</v8:content>
+														<v8:content>On period closing</v8:content>
 													</v8:item>
 													<v8:item>
 														<v8:lang>ru</v8:lang>
@@ -484,7 +480,7 @@ options are possible: • &lt;b&gt;At the moment of operation performing&lt;/&gt
 						<Title formatted="false">
 							<v8:item>
 								<v8:lang>en</v8:lang>
-								<v8:content>Option defines a necessity of an automatic debts and advances set-off during the documents posting</v8:content>
+								<v8:content>The option determines whether advances and debts are automatically set off during document posting.</v8:content>
 							</v8:item>
 							<v8:item>
 								<v8:lang>ru</v8:lang>
@@ -498,7 +494,7 @@ options are possible: • &lt;b&gt;At the moment of operation performing&lt;/&gt
 							<Title>
 								<v8:item>
 									<v8:lang>en</v8:lang>
-									<v8:content>Advances offset</v8:content>
+									<v8:content>Set off advances automatically</v8:content>
 								</v8:item>
 								<v8:item>
 									<v8:lang>ru</v8:lang>
@@ -632,7 +628,7 @@ options are possible: • &lt;b&gt;Yes&lt;/&gt;. Before writing the document, th
 						<Title formatted="false">
 							<v8:item>
 								<v8:lang>en</v8:lang>
-								<v8:content>With the payment calendar, you can plan cash receipt or expense, as well as control cash shortages.</v8:content>
+								<v8:content>With the payment calendar, you can plan funds receipt, expense or movement, as well as control cash deficiencies.</v8:content>
 							</v8:item>
 							<v8:item>
 								<v8:lang>ru</v8:lang>
@@ -661,9 +657,7 @@ options are possible: • &lt;b&gt;Yes&lt;/&gt;. Before writing the document, th
 								<Title formatted="true">
 									<v8:item>
 										<v8:lang>en</v8:lang>
-										<v8:content>&lt;b&gt;"Use payment schedule"&lt;/&gt;.
-This option allows keeping payment schedule, a tool for short term planning of cash expense, receipt and transfer.
-</v8:content>
+										<v8:content>Enable this option to keep payment calendar which is a tool for real-time planning of cash expense, receipt, and movement.</v8:content>
 									</v8:item>
 									<v8:item>
 										<v8:lang>ru</v8:lang>
@@ -687,7 +681,7 @@ This option allows keeping payment schedule, a tool for short term planning of c
 			<Title>
 				<v8:item>
 					<v8:lang>en</v8:lang>
-					<v8:content>Additionally</v8:content>
+					<v8:content>Additional Information</v8:content>
 				</v8:item>
 				<v8:item>
 					<v8:lang>ru</v8:lang>
@@ -698,7 +692,7 @@ This option allows keeping payment schedule, a tool for short term planning of c
 			<ToolTip>
 				<v8:item>
 					<v8:lang>en</v8:lang>
-					<v8:content>Additionally</v8:content>
+					<v8:content>Additional Information</v8:content>
 				</v8:item>
 				<v8:item>
 					<v8:lang>ru</v8:lang>
@@ -739,7 +733,7 @@ This option allows keeping payment schedule, a tool for short term planning of c
 			<Title>
 				<v8:item>
 					<v8:lang>en</v8:lang>
-					<v8:content>Work mode</v8:content>
+					<v8:content>Run mode</v8:content>
 				</v8:item>
 				<v8:item>
 					<v8:lang>ru</v8:lang>
@@ -752,7 +746,7 @@ This option allows keeping payment schedule, a tool for short term planning of c
 			<Title>
 				<v8:item>
 					<v8:lang>en</v8:lang>
-					<v8:content>Constants set</v8:content>
+					<v8:content>Constant set</v8:content>
 				</v8:item>
 				<v8:item>
 					<v8:lang>ru</v8:lang>

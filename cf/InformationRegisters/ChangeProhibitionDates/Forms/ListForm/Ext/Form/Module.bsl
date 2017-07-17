@@ -95,13 +95,13 @@ Procedure SetConditionalAppearance()
 		NStr("en='Empty user';ru='Пустой пользователь'"));
 	
 	IssueValue(Catalogs.UsersGroups.EmptyRef(),
-		NStr("en='Empty group of users';ru='Пустая группа пользователей'"));
+		NStr("en='Empty user group';ru='Пустая группа пользователей'"));
 	
 	IssueValue(Catalogs.ExternalUsers.EmptyRef(),
 		NStr("en='Empty external user';ru='Пустой внешний пользователь'"));
 	
 	IssueValue(Catalogs.ExternalUsersGroups.EmptyRef(),
-		NStr("en='Empty group of external users';ru='Пустая группа внешних пользователей'"));
+		NStr("en='Empty external user group';ru='Пустая группа внешних пользователей'"));
 	
 	IssueValue(Enums.ProhibitionDatesPurposeKinds.ForAllUsers,
 		"<" + Enums.ProhibitionDatesPurposeKinds.ForAllUsers + ">");

@@ -122,7 +122,7 @@ Procedure SWIFTBankTextEditEnd(Item, Text, ChoiceData, StandardProcessing)
 		
 		If StrLen(Text) > 11 Then
 			Message = New UserMessage;
-			Message.Text = NStr("en='Entered value exceeds the admissible length SWIFT 11 symbols.';ru='Введенное значение превышает допустимую длину SWIFT 11 символов.'");
+			Message.Text = NStr("en='Entered value exceeds the allowed length SWIFT of 11 characters.';ru='Введенное значение превышает допустимую длину SWIFT 11 символов.'");
 			Message.Message();
 			
 			StandardProcessing = False;
@@ -221,7 +221,7 @@ Procedure SWIFTBankForSettlementsTextEditEnd(Item, Text, ChoiceData, StandardPro
 		
 		If StrLen(Text) > 11 Then
 			Message = New UserMessage;
-			Message.Text = NStr("en='Entered value exceeds the admissible length SWIFT 11 symbols!';ru='Введенное значение превышает допустимую длину SWIFT 11 символов!'");
+			Message.Text = NStr("en='Entered value exceeds the allowed length SWIFT of 11 characters.';ru='Введенное значение превышает допустимую длину SWIFT 11 символов!'");
 			Message.Message();
 			
 			StandardProcessing = False;
@@ -503,7 +503,7 @@ Function CheckCorrectnessOfSWIFT(SWIFT, ErrorText = "")
 	ErrorText = "";
 	If StrLen(SWIFT) <> 8 AND StrLen(SWIFT) <> 11 Then
 		
-		ErrorText = NStr("en='No bank found for the specified SWIFT. Perhaps, SWIFT is specified incompletely.';ru='По указанному SWIFT банк не найден. Возможно SWIFT указан не полностью.'");
+		ErrorText = NStr("en='Bank is not found by the specified SWIFT. SWIFT might be specified incompletely.';ru='По указанному SWIFT банк не найден. Возможно SWIFT указан не полностью.'");
 		
 	EndIf;
 	
@@ -528,7 +528,7 @@ Function FindBanks(TextForSearch, Field, Currency = False)
 		ClearMessages();
 		
 		MessageText = StringFunctionsClientServer.SubstituteParametersInString(
-			NStr("en='The ""%1"" field value is invalid.';ru='Поле ""%1"" заполнено не корректно.'"), 
+			NStr("en='The ""%1"" field value is incorrect.';ru='Поле ""%1"" заполнено не корректно.'"), 
 			?(Find(Field, "SWIFT") > 0, "SWIFT", "Corr. account")
 			);
 		
@@ -566,7 +566,7 @@ Function FindBanks(TextForSearch, Field, Currency = False)
 			EndIf;
 			
 			QuestionText = StringFunctionsClientServer.SubstituteParametersInString(
-				NStr("en='The bank with SWIFT ""%1"" was not found in the Banks catalog';ru='Банк с SWIFT ""%1"" не найден в справочнике банков'"), TextForSearch);
+				NStr("en='Bank with SWIFT ""%1"" was not found in the Banks catalog';ru='Банк с SWIFT ""%1"" не найден в справочнике банков'"), TextForSearch);
 			
 		ElsIf SearchArea = "CorrAccount" Then
 			
@@ -577,7 +577,7 @@ Function FindBanks(TextForSearch, Field, Currency = False)
 			EndIf;
 			
 			QuestionText = StringFunctionsClientServer.SubstituteParametersInString(
-				NStr("en='Bank with corr. account ""%1"" was not found in the Banks catalog';ru='Банк с корр. счетом ""%1"" не найден в справочнике банков'"), TextForSearch);
+				NStr("en='Bank with corr. account ""%1"" is not found in the bank catalog';ru='Банк с корр. счетом ""%1"" не найден в справочнике банков'"), TextForSearch);
 			
 		EndIf;
 		
@@ -588,7 +588,7 @@ Function FindBanks(TextForSearch, Field, Currency = False)
 		
 		// Choice processor
 		NotifyDescription = New NotifyDescription("DetermineIfBankIsToBeSelectedFromCatalog", ThisObject, New Structure("IsBank", IsBank));
-		ShowQueryBox(NOTifyDescription, QuestionText, Buttons,, "Select", NStr("en='Bank not found';ru='Банк не найден'"));
+		ShowQueryBox(NOTifyDescription, QuestionText, Buttons,, "Select", NStr("en='Bank is not found';ru='Банк не найден'"));
 		Return Undefined;
 		
 	EndIf;

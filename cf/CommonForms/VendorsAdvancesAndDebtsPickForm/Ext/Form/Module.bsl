@@ -230,7 +230,7 @@ Procedure AddRowIntoFiltered(CurrentRow)
 	If AskAmount Then
 		
 		NotifyDescription = New NotifyDescription("OpenPricesAndCurrencyFormEnd", ThisObject, New Structure("CurrentRow, SettlementsAmount.", CurrentRow, SettlementsAmount));
-		ShowInputNumber(NOTifyDescription, SettlementsAmount, NStr("en='Enter the amount of settlements';ru='Введите сумму расчетов'"));
+		ShowInputNumber(NOTifyDescription, SettlementsAmount, NStr("en='Enter settlements amount';ru='Введите сумму расчетов'"));
 		
 	Else
 		

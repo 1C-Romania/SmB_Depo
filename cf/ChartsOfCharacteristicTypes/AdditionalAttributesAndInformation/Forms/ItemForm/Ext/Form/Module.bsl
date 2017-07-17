@@ -79,8 +79,8 @@ Procedure BeforeWrite(Cancel, WriteParameters)
 		
 		If ValueIsFilled(QuestionText) Then
 			Buttons = New ValueList;
-			Buttons.Add("ContinueWrite",            NStr("en='Continue write';ru='Продолжить запись'"));
-			Buttons.Add("BackToEnteringNames", NStr("en='Return to the name entry';ru='Вернуться к вводу наименования'"));
+			Buttons.Add("ContinueWrite",            NStr("en='Continue writing';ru='Продолжить запись'"));
+			Buttons.Add("BackToEnteringNames", NStr("en='Return to name input';ru='Вернуться к вводу наименования'"));
 			
 			ShowQueryBox(
 				New NotifyDescription("AfterAnswerToAQuestionWhenNameIsAlreadyUsed", ThisObject, WriteParameters),
@@ -249,12 +249,10 @@ Procedure AdditionalValuesWithWeightOnChange(Item)
 	   AND Not Object.AdditionalValuesWithWeight Then
 		
 		QuestionText =
-			NStr("en='Do you want
-		|
-		|to clear the entered weight coefficients? Data will be recorded.';ru='Очистить введенные весовые коэффициенты? Данные будут записаны.'");
+			NStr("en='Clear the entered weight coefficients? Data will be written.';ru='Очистить введенные весовые коэффициенты? Данные будут записаны.'");
 		
 		Buttons = New ValueList;
-		Buttons.Add("ClearAndWrite", NStr("en='Clean and write';ru='Очистить и записать'"));
+		Buttons.Add("ClearAndWrite", NStr("en='Clear and write';ru='Очистить и записать'"));
 		Buttons.Add("Cancel", NStr("en='Cancel';ru='Отменить'"));
 		
 		ShowQueryBox(
@@ -695,43 +693,43 @@ Procedure EditValueFormatEnd(Text, NotSpecified) Export
 		For Each Substring IN Array Do
 			If Find(Substring, "DP=") > 0 OR Find(Substring, "DE=") > 0 Then
 				WarningText = WarningText + Chars.LF +
-					NStr("en='Empty date fields representation is not supported in the input fields.';ru='Представление пустой даты не поддерживается в полях ввода.'");
+					NStr("en='Date fields cannot be left blank.';ru='Представление пустой даты не поддерживается в полях ввода.'");
 				Continue;
 			EndIf;
 			If Find(Substring, "NZ=") > 0 OR Find(Substring, "NZ=") > 0 Then
 				WarningText = WarningText + Chars.LF +
-					NStr("en='Empty number representing is not supported in the input fields.';ru='Представление пустого числа не поддерживается в полях ввода.'");
+					NStr("en='Input fields cannot be left blank.';ru='Представление пустого числа не поддерживается в полях ввода.'");
 				Continue;
 			EndIf;
 			If Find(Substring, "DF=") > 0 OR Find(Substring, "DF=") > 0 Then
 				If Find(Substring, "ddd") > 0 OR Find(Substring, "ddd") > 0 Then
 					WarningText = WarningText + Chars.LF +
-						NStr("en='Short name of weekday is not supported in the input fields.';ru='Кратное название дня недели не поддерживается в полях ввода.'");
+						NStr("en='Multiple name of day of the week is not supported in input fields.';ru='Кратное название дня недели не поддерживается в полях ввода.'");
 				EndIf;
 				If Find(Substring, "dddd") > 0 OR Find(Substring, "dddd") > 0 Then
 					WarningText = WarningText + Chars.LF +
-						NStr("en='Full weekday name is not suppoted in the input fields.';ru='Полное название дня недели не поддерживается в полях ввода.'");
+						NStr("en='Full name of the weekday is not supported in input fields.';ru='Полное название дня недели не поддерживается в полях ввода.'");
 				EndIf;
 				If Find(Substring, "MMM") > 0 OR Find(Substring, "MMM") > 0 Then
 					WarningText = WarningText + Chars.LF +
-						NStr("en='Short name of month is not supported in the input fields.';ru='Кратное название месяца не поддерживается в полях ввода.'");
+						NStr("en='Short month name is not supported in input fields.';ru='Кратное название месяца не поддерживается в полях ввода.'");
 				EndIf;
 				If Find(Substring, "MMMM") > 0 OR Find(Substring, "MMMM") > 0 Then
 					WarningText = WarningText + Chars.LF +
-						NStr("en='Full month name is not supported in the input fields.';ru='Полное название месяца не поддерживается в полях ввода.'");
+						NStr("en='Full month name is not supported in input fields.';ru='Полное название месяца не поддерживается в полях ввода.'");
 				EndIf;
 			EndIf;
 			If Find(Substring, "DLF=") > 0 OR Find(Substring, "DLF=") > 0 Then
 				If Find(Substring, "DD") > 0 OR Find(Substring, "DD") > 0 Then
 					WarningText = WarningText + Chars.LF +
-						NStr("en='Long date (month in words) is not supported in the input fields.';ru='Длинная дата (месяц прописью) не поддерживается в полях ввода.'");
+						NStr("en='Long date (month in words) is not supported in input fields.';ru='Длинная дата (месяц прописью) не поддерживается в полях ввода.'");
 				EndIf;
 			EndIf;
 		EndDo;
 		
 		If ValueIsFilled(WarningText) Then
 			WarningText = WarningText + Chars.LF +
-				NStr("en='There are no any limits where text box fields are used.';ru='В местах использования полей надписей ограничений нет.'");
+				NStr("en='There are no restrictions in the usage locations of the label fields.';ru='В местах использования полей надписей ограничений нет.'");
 			ShowMessageBox(, WarningText);
 		EndIf;
 	EndIf;
@@ -968,9 +966,9 @@ Procedure RefreshContentOfFormItems(WarningText = "")
 			Object.AdditionalValuesOwner, "PropertiesSet, Title, ThisIsAdditionalInformation");
 		
 		If PropertiesOfOwner.ThisIsAdditionalInformation <> True Then
-			SpecificationTemplate = NStr("en='Values list is common with the attribute ""%1"" of set ""%2"".';ru='Список значений общий с реквизитом ""%1"" набора ""%2""'");
+			SpecificationTemplate = NStr("en='Common list of values with attribute ""%1"" of set ""%2""';ru='Список значений общий с реквизитом ""%1"" набора ""%2""'");
 		Else
-			SpecificationTemplate = NStr("en='Values list is common with the information ""%1"" of set ""%2""';ru='Список значений общий со сведением ""%1"" набора ""%2""'");
+			SpecificationTemplate = NStr("en='Common list of values with data ""%1"" of set ""%2""';ru='Список значений общий со сведением ""%1"" набора ""%2""'");
 		EndIf;
 		
 		Items.ClarificationOfValuesListComment.Title =
@@ -1009,18 +1007,18 @@ Procedure RefreshContentOfFormItems(WarningText = "")
 			   AND ListOfSets.Count() < 2 Then
 				
 				If Object.ThisIsAdditionalInformation Then
-					SpecificationTemplate = NStr("en='Information is included in the set: %1';ru='Сведение входит в набор: %1'");
+					SpecificationTemplate = NStr("en='Data is included in set: %1';ru='Сведение входит в набор: %1'");
 				Else
-					SpecificationTemplate = NStr("en='Attribute is included in the set: %1';ru='Реквизит входит в набор: %1'");
+					SpecificationTemplate = NStr("en='The attribute belongs to the set: %1';ru='Реквизит входит в набор: %1'");
 				EndIf;
 				TextOfComment = StringFunctionsClientServer.SubstituteParametersInString(
 					SpecificationTemplate, TrimAll(ListOfSets[0].Presentation));
 			Else
 				If ListOfSets.Count() > 1 Then
 					If Object.ThisIsAdditionalInformation Then
-						SpecificationTemplate = NStr("en='Common information is included to %1 %2';ru='Общее сведение входит в %1 %2'");
+						SpecificationTemplate = NStr("en='Common information is included in %1 %2';ru='Общее сведение входит в %1 %2'");
 					Else
-						SpecificationTemplate = NStr("en='Common attribute is included to %1 %2';ru='Общий реквизит входит в %1 %2'");
+						SpecificationTemplate = NStr("en='Common attribute is included in %1 %2';ru='Общий реквизит входит в %1 %2'");
 					EndIf;
 					
 					StringSets = TrimAll(NumberInWords(
@@ -1038,9 +1036,9 @@ Procedure RefreshContentOfFormItems(WarningText = "")
 						SpecificationTemplate, Format(ListOfSets.Count(), "NG="), StringSets);
 				Else
 					If Object.ThisIsAdditionalInformation Then
-						SpecificationTemplate = NStr("en='Common information is included in the set: %1';ru='Общее сведение входит в набор: %1'");
+						SpecificationTemplate = NStr("en='Common information is included in set: %1';ru='Общее сведение входит в набор: %1'");
 					Else
-						SpecificationTemplate = NStr("en='Common attribiute is included in the set: %1';ru='Общий реквизит входит в набор: %1'");
+						SpecificationTemplate = NStr("en='Common attribute is included in set: %1';ru='Общий реквизит входит в набор: %1'");
 					EndIf;
 					
 					TextOfComment = StringFunctionsClientServer.SubstituteParametersInString(
@@ -1053,15 +1051,15 @@ Procedure RefreshContentOfFormItems(WarningText = "")
 			
 			If ValueIsFilled(Object.PropertySet) Then
 				If Object.ThisIsAdditionalInformation Then
-					TextOfComment = NStr("en='Information is not included in a set';ru='Сведение не входит в набор'");
+					TextOfComment = NStr("en='Data is not included in the set';ru='Сведение не входит в набор'");
 				Else
-					TextOfComment = NStr("en='Attribute is not included in the set';ru='Реквизит не входит в набор'");
+					TextOfComment = NStr("en='The attribute does not belong to the set';ru='Реквизит не входит в набор'");
 				EndIf;
 			Else
 				If Object.ThisIsAdditionalInformation Then
-					TextOfComment = NStr("en='Common information is not included into the sets';ru='Общее сведение не входит в наборы'");
+					TextOfComment = NStr("en='Common information is not included in sets';ru='Общее сведение не входит в наборы'");
 				Else
-					TextOfComment = NStr("en='Common information is not included into the sets';ru='Общее сведение не входит в наборы'");
+					TextOfComment = NStr("en='Common information is not included in sets';ru='Общее сведение не входит в наборы'");
 				EndIf;
 			EndIf;
 		EndIf;
@@ -1069,7 +1067,7 @@ Procedure RefreshContentOfFormItems(WarningText = "")
 		Items.SetsSpecificationsComment.Title = TextOfComment + " ";
 		
 		If Items.SetsSpecificationsComment.Hyperlink Then
-			Items.SetsSpecificationsComment.ToolTip = NStr("en='Proceeding to the set';ru='Переход к набору'");
+			Items.SetsSpecificationsComment.ToolTip = NStr("en='Go to set';ru='Переход к набору'");
 		Else
 			Items.SetsSpecificationsComment.ToolTip = "";
 		EndIf;
@@ -1204,8 +1202,7 @@ Function NameIsAlreadyUsed(Val Title, Val CurrentProperty, Val PropertySet, NewD
 	
 	If ValueIsFilled(Selection.PropertySet) Then
 		If Selection.ThisIsAdditionalInformation Then
-			QuestionText = NStr("en='There is additional 
-		| information with the name ""%1"".';ru='Существует дополнительное сведение с наименованием ""%1"".'");
+			QuestionText = NStr("en='There is an additional information with name ""%1"".';ru='Существует дополнительное сведение с наименованием ""%1"".'");
 		Else
 			QuestionText = NStr("en='There is additional attribute
 		|with name ""%1"".';ru='Существует дополнительный
@@ -1246,7 +1243,7 @@ Function GetTitle(Object)
 			If Object.ThisIsAdditionalInformation Then
 				Title = String(Object.Title) + " " + NStr("en='Additional information';ru='Дополнительная информация'");
 			Else
-				Title = String(Object.Title) + " " + NStr("en='Additional attribute';ru='(Дополнительный реквизит)'");
+				Title = String(Object.Title) + " " + NStr("en='(Additional attribute)';ru='(Дополнительный реквизит)'");
 			EndIf;
 		Else
 			If Object.ThisIsAdditionalInformation Then
@@ -1258,9 +1255,9 @@ Function GetTitle(Object)
 	Else
 		If ValueIsFilled(Object.PropertySet) Then
 			If Object.ThisIsAdditionalInformation Then
-				Title = NStr("en='Additional information (create)';ru='Дополнительное сведение (создание)'");
+				Title = NStr("en='Additional information (creation)';ru='Дополнительное сведение (создание)'");
 			Else
-				Title = NStr("en='Additional attribute (create)';ru='Дополнительный реквизит (создание)'");
+				Title = NStr("en='Additional attribute (creation)';ru='Дополнительный реквизит (создание)'");
 			EndIf;
 		Else
 			If Object.ThisIsAdditionalInformation Then
@@ -1279,9 +1276,9 @@ EndFunction
 Procedure SetTitleOfFormatButton(Form)
 	
 	If IsBlankString(Form.Object.FormatProperties) Then
-		HeaderText = NStr("en='Format by default';ru='Формат по умолчанию'");
+		HeaderText = NStr("en='Default format';ru='Формат по умолчанию'");
 	Else
-		HeaderText = NStr("en='Format is installed';ru='Формат установлен'");
+		HeaderText = NStr("en='Format is set';ru='Формат установлен'");
 	EndIf;
 	
 	Form.Items.EditValueFormat.Title = HeaderText;

@@ -110,7 +110,7 @@ Function GetMSWordTemplate(Val TemplateBinaryData, Val TempFileName = "") Export
 		DeleteFiles(TempFileName);
 		EventLogMonitorClient.AddMessageForEventLogMonitor(EventLogMonitorEvent(), "Error",
 			DetailErrorDescription(ErrorInfo()),,True);
-		Raise(NStr("en='Error on layout file opening';ru='Ошибка при открытии файла шаблона.'") + Chars.LF 
+		Raise(NStr("en='An error occurred when opening a template file.';ru='Ошибка при открытии файла шаблона.'") + Chars.LF 
 			+ BriefErrorDescription(ErrorInfo()));
 	EndTry;
 	
@@ -592,7 +592,7 @@ EndFunction
 
 Procedure FailedToGeneratePrintForm(ErrorInfo)
 #If WebClient Then
-	CorrectionText = NStr("en='Working in web client, it is required to install Internet Explorer run under the Windows operating system. See also chapter ""Configuring web browsers to work in web client"".';ru='При работе через веб требуется браузер Internet Explorer под управлением операционной системы Windows. См. также главу документации ""Настройка веб-браузеров для работы в веб-клиенте""'");
+	CorrectionText = NStr("en='Working via web client requires Windows Internet Explorer. See also documentation, chapter ""Web browser settings to work via web client""';ru='При работе через веб требуется браузер Internet Explorer под управлением операционной системы Windows. См. также главу документации ""Настройка веб-браузеров для работы в веб-клиенте""'");
 #Else		
 	CorrectionText = "";	
 #EndIf

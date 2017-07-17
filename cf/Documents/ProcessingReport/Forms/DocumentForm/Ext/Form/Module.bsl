@@ -791,7 +791,7 @@ Procedure BarcodesAreReceivedFragment(UnknownBarcodes) Export
 	
 	For Each CurUndefinedBarcode IN UnknownBarcodes Do
 		
-		MessageString = NStr("en='Data by barcode is not found: %1%; quantity: %2%';ru='Данные по штрихкоду не найдены: %1%; количество: %2%'");
+		MessageString = NStr("en='Barcode data is not found: %1%; quantity: %2%';ru='Данные по штрихкоду не найдены: %1%; количество: %2%'");
 		MessageString = StrReplace(MessageString, "%1%", CurUndefinedBarcode.Barcode);
 		MessageString = StrReplace(MessageString, "%2%", CurUndefinedBarcode.Quantity);
 		CommonUseClientServer.MessageToUser(MessageString);
@@ -935,7 +935,7 @@ Procedure ProcessContractChange(ContractData = Undefined)
 		
 		If QueryBoxPrepayment = True Then
 			
-			QuestionText = NStr("en='Prepayment set-off will be cleared, do you want to continue?';ru='Зачет предоплаты будет очищен, продолжить?'");
+			QuestionText = NStr("en='Prepayment setoff will be cleared, continue?';ru='Зачет предоплаты будет очищен, продолжить?'");
 			
 			NotifyDescription = New NotifyDescription("DefineAdvancePaymentOffsetsRefreshNeed", ThisObject, DocumentParameters);
 			ShowQueryBox(NOTifyDescription, QuestionText, QuestionDialogMode.YesNo);
@@ -1165,7 +1165,7 @@ Procedure GetWeight(Command)
 	
 	If TabularSectionRow = Undefined Then
 		
-		ShowMessageBox(Undefined, NStr("en='It is required to select a line to get weight for it.';ru='Необходимо выбрать строку, для которой необходимо получить вес.'"));
+		ShowMessageBox(Undefined, NStr("en='Select a line for which the weight should be received.';ru='Необходимо выбрать строку, для которой необходимо получить вес.'"));
 		
 	ElsIf EquipmentManagerClient.RefreshClientWorkplace() Then // Checks if the operator's workplace is specified
 		
@@ -1622,7 +1622,7 @@ Procedure ChangeReserveFillByReserves(Command)
 	
 	If Object.Products.Count() = 0 Then
 		Message = New UserMessage;
-		Message.Text = NStr("en='Tabular section ""Finished goods"" is not filled!';ru='Табличная часть ""Продукция"" не заполнена!'");
+		Message.Text = NStr("en='The ""Products"" tabular section is not filled in.';ru='Табличная часть ""Продукция"" не заполнена!'");
 		Message.Message();
 		Return;
 	EndIf;
@@ -1638,7 +1638,7 @@ Procedure ChangeReserveClearReserve(Command)
 	
 	If Object.Products.Count() = 0 Then
 		Message = New UserMessage;
-		Message.Text = NStr("en='Tabular section ""Finished goods"" is not filled!';ru='Табличная часть ""Продукция"" не заполнена!'");
+		Message.Text = NStr("en='The ""Products"" tabular section is not filled in.';ru='Табличная часть ""Продукция"" не заполнена!'");
 		Message.Message();
 		Return;
 	EndIf;
@@ -1659,7 +1659,7 @@ Procedure CommandFillBySpecification(Command)
 		Response = Undefined;
 		
 		
-		ShowQueryBox(New NotifyDescription("CommandToFillBySpecificationEnd", ThisObject), NStr("en='Tabular section ""Materials"" will be refilled! Continue?';ru='Табличная часть ""Материалы"" будет перезаполнена! Продолжить?'"), 
+		ShowQueryBox(New NotifyDescription("CommandToFillBySpecificationEnd", ThisObject), NStr("en='Tabular section ""Materials"" will be filled in again. Continue?';ru='Табличная часть ""Материалы"" будет перезаполнена! Продолжить?'"), 
 							QuestionDialogMode.YesNo, 0);
 		Return;
 		
@@ -1837,7 +1837,7 @@ Procedure OrderOnChange(Item)
 		Mode = QuestionDialogMode.YesNo;
 		Response = Undefined;
 
-		ShowQueryBox(New NotifyDescription("OrderOnChangeEnd", ThisObject), NStr("en='Prepayment set-off will be cleared, do you want to continue?';ru='Зачет предоплаты будет очищен, продолжить?'"), Mode, 0);
+		ShowQueryBox(New NotifyDescription("OrderOnChangeEnd", ThisObject), NStr("en='Prepayment setoff will be cleared, continue?';ru='Зачет предоплаты будет очищен, продолжить?'"), Mode, 0);
         Return;
 	EndIf;
 	

@@ -23,16 +23,16 @@ Function Parameters() Export
 	ParameterPresentation = "";
 	
 	If Not SavedParameters.Property("PossibleRightsForObjectRightsSettings") Then
-		ParameterPresentation = NStr("en='Possible rights for object rights settings';ru='Возможные права для настройки прав объектов'");
+		ParameterPresentation = NStr("en='Possible rights for setting object rights';ru='Возможные права для настройки прав объектов'");
 		
 	ElsIf Not SavedParameters.Property("ProvidedAccessGroupsProfiles") Then
 		ParameterPresentation = NStr("en='Supplied access group profiles';ru='Поставляемые профили групп доступа'");
 		
 	ElsIf Not SavedParameters.Property("AccessGroupsPredefinedProfiles") Then
-		ParameterPresentation = NStr("en='Predefined access group profiles';ru='Предопределенные профили групп доступа'");
+		ParameterPresentation = NStr("en='Access group predefined profiles';ru='Предопределенные профили групп доступа'");
 		
 	ElsIf Not SavedParameters.Property("AccessKindsProperties") Then
-		ParameterPresentation = NStr("en='Properties of access kinds';ru='Свойства видов доступа'");
+		ParameterPresentation = NStr("en='Access kind properties';ru='Свойства видов доступа'");
 	EndIf;
 	
 	If ValueIsFilled(ParameterPresentation) Then
@@ -99,7 +99,7 @@ Function ConstantRightsRestrictionKindsOfMetadataObjects() Export
 		If ValueIsFilled(CurrentRow) Then
 			ErrorExplanation = "";
 			If StrOccurrenceCount(CurrentRow, ".") <> 3 AND StrOccurrenceCount(CurrentRow, ".") <> 5 Then
-				ErrorExplanation = NStr("en='String should be in the ""<Table full name> format.<Right name>.<Access kind name>[.Object table]"".';ru='Строка должна быть в формате ""<Полное имя таблицы>.<Имя права>.<Имя вида доступа>[.Таблица объекта]"".'");
+				ErrorExplanation = NStr("en='The string should be formatted as ""<Full table name>.<Right name>.<Access kind name>[.Object table]"".';ru='Строка должна быть в формате ""<Полное имя таблицы>.<Имя права>.<Имя вида доступа>[.Таблица объекта]"".'");
 			Else
 				PositionOfRight = Find(CurrentRow, ".");
 				PositionOfRight = Find(Mid(CurrentRow, PositionOfRight + 1), ".") + PositionOfRight;
@@ -117,18 +117,18 @@ Function ConstantRightsRestrictionKindsOfMetadataObjects() Export
 				
 				If Metadata.FindByFullName(Table) = Undefined Then
 					ErrorExplanation = StringFunctionsClientServer.SubstituteParametersInString(
-						NStr("en='Not found table ""%1"".';ru='Не найдена таблица ""%1"".'"),
+						NStr("en='Table ""%1"" is not found.';ru='Не найдена таблица ""%1"".'"),
 						Table);
 				
 				ElsIf Right <> "Read" AND Right <> "Update" Then
 					ErrorExplanation = StringFunctionsClientServer.SubstituteParametersInString(
-						NStr("en='Not found right ""%1"".';ru='Не найдено право ""%1"".'"),
+						NStr("en='Right ""%1"" is not found.';ru='Не найдено право ""%1"".'"),
 						Right);
 				
 				ElsIf Upper(AccessKind) = Upper("Object") Then
 					If Metadata.FindByFullName(ObjectTable) = Undefined Then
 						ErrorExplanation = StringFunctionsClientServer.SubstituteParametersInString(
-							NStr("en='Not found object table ""%1"".';ru='Не найдена таблица объекта ""%1"".'"),
+							NStr("en='Table of object ""%1"" is not found.';ru='Не найдена таблица объекта ""%1"".'"),
 							ObjectTable);
 					Else
 						AccessKindRef = Undefined;
@@ -139,7 +139,7 @@ Function ConstantRightsRestrictionKindsOfMetadataObjects() Export
 				ElsIf Upper(AccessKind) = Upper("RightSettings") Then
 					If Metadata.FindByFullName(ObjectTable) = Undefined Then
 						ErrorExplanation = StringFunctionsClientServer.SubstituteParametersInString(
-							NStr("en='Rights settings owner table is not found ""%1"".';ru='Не найдена таблица владельца настроек прав ""%1"".'"),
+							NStr("en='Table of right settings owner ""%1"" is not found.';ru='Не найдена таблица владельца настроек прав ""%1"".'"),
 							ObjectTable);
 					Else
 						AccessKindRef = AccessManagementService.MetadataObjectEmptyRef(
@@ -149,7 +149,7 @@ Function ConstantRightsRestrictionKindsOfMetadataObjects() Export
 				
 				ElsIf AccessKindsByNames.Get(AccessKind) = Undefined Then
 					ErrorExplanation = StringFunctionsClientServer.SubstituteParametersInString(
-						NStr("en='Not found access kind ""%1"".';ru='Не найден вид доступа ""%1"".'"),
+						NStr("en='Access kind ""%1"" is not found.';ru='Не найден вид доступа ""%1"".'"),
 						AccessKind);
 				Else
 					AccessKindRef = AccessKindsByNames.Get(AccessKind).Ref;

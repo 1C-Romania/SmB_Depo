@@ -263,17 +263,17 @@ Function InaccessibleRightsByTypesUsers()
 	Rights = New Map;
 	InaccessibleRights.Insert(Enums.UserTypes.LocalApplicationUser, Rights);
 	Rights.Insert("Administration",                     NStr("en='Administration';ru='Администрирование'"));
-	Rights.Insert("UpdateDataBaseConfiguration",      NStr("en='Update Database Configuration';ru='Обновление конфигурации базы данных'"));
+	Rights.Insert("UpdateDataBaseConfiguration",      NStr("en='Update infobase configuration';ru='Обновление конфигурации базы данных'"));
 	
 	Rights = New Map;
 	InaccessibleRights.Insert(Enums.UserTypes.DataAreaUser, Rights);
 	Rights.Insert("Administration",                     NStr("en='Administration';ru='Администрирование'"));
-	Rights.Insert("UpdateDataBaseConfiguration",      NStr("en='Update Database Configuration';ru='Обновление конфигурации базы данных'"));
+	Rights.Insert("UpdateDataBaseConfiguration",      NStr("en='Update infobase configuration';ru='Обновление конфигурации базы данных'"));
 	Rights.Insert("ThickClient",                         NStr("en='Thick client';ru='Толстый клиент'"));
-	Rights.Insert("ExternalConnection",                     NStr("en='OUTER JOIN';ru='Внешнее соединение'"));
+	Rights.Insert("ExternalConnection",                     NStr("en='External connection';ru='Внешнее соединение'"));
 	Rights.Insert("Automation",                            NStr("en='Automation';ru='Automation'"));
-	Rights.Insert("InteractiveOpenExtDataProcessors", NStr("en='Interactive opening of external processings';ru='Интерактивное открытие внешних обработок'"));
-	Rights.Insert("InteractiveOpenExtReports",   NStr("en='Interactive external reports opening';ru='Интерактивное открытие внешних отчетов'"));
+	Rights.Insert("InteractiveOpenExtDataProcessors", NStr("en='Interactive opening of external data processors';ru='Интерактивное открытие внешних обработок'"));
+	Rights.Insert("InteractiveOpenExtReports",   NStr("en='Interactive opening of external reports';ru='Интерактивное открытие внешних отчетов'"));
 	Rights.Insert("AllFunctionsMode",                       NStr("en='All functions mode';ru='Режим все функции'"));
 	
 	Return InaccessibleRights;

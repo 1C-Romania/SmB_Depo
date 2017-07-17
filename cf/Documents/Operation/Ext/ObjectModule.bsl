@@ -34,7 +34,7 @@ Procedure FillCheckProcessing(Cancel, CheckedAttributes)
 	For Each TSRow IN AccountingRecords Do
 		If TSRow.AccountDr.Currency
 		AND Not ValueIsFilled(TSRow.CurrencyDr) Then
-			MessageText = NStr("en='Column ""Currency Dt"" is not filled for currency account in string %LineNumber% of list ""Posting"".';ru='Не заполнена колонка ""Валюта Дт"" для валютного счета в строке %НомерСтроки% списка ""Проводки"".'");
+			MessageText = NStr("en='The ""Currency Dr"" column is not populated for the currency account in the %LineNumber% line of the ""Postings"" list.';ru='Не заполнена колонка ""Валюта Дт"" для валютного счета в строке %НомерСтроки% списка ""Проводки"".'");
 			MessageText = StrReplace(MessageText, "%LineNumber%", String(TSRow.LineNumber));
 			SmallBusinessServer.ShowMessageAboutError(
 				ThisObject,
@@ -47,7 +47,7 @@ Procedure FillCheckProcessing(Cancel, CheckedAttributes)
 		EndIf;
 		If TSRow.AccountDr.Currency
 		AND Not ValueIsFilled(TSRow.AmountCurDr) Then
-			MessageText = NStr("en='Column ""Amount"" is not filled (cur.) Dt"" for currency account in string %LineNumber% of list ""Posting"".';ru='Не заполнена колонка ""Сумма (вал.) Дт"" для валютного счета в строке %НомерСтроки% списка ""Проводки"".'");
+			MessageText = NStr("en='The ""Amount (cur.) Dr"" column is not populated for currency account in the  %LineNumber% line of the ""Postings"" list.';ru='Не заполнена колонка ""Сумма (вал.) Дт"" для валютного счета в строке %НомерСтроки% списка ""Проводки"".'");
 			MessageText = StrReplace(MessageText, "%LineNumber%", String(TSRow.LineNumber));
 			SmallBusinessServer.ShowMessageAboutError(
 				ThisObject,

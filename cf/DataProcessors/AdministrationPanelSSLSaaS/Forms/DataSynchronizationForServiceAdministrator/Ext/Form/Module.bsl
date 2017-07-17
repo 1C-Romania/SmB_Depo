@@ -11,7 +11,7 @@ Procedure OnCreateAtServer(Cancel, StandardProcessing)
 	EndIf;
 	
 	If Not Users.InfobaseUserWithFullAccess(Undefined, True, False) Then
-		Raise NStr("en='Insufficient rights for administration of data syncronization between applications.';ru='Недостаточно прав для администрирования синхронизации данных между приложениями.'");
+		Raise NStr("en='Insufficient rights to administer data synchronization between applications.';ru='Недостаточно прав для администрирования синхронизации данных между приложениями.'");
 	EndIf;
 	
 	// Attribute values of the form

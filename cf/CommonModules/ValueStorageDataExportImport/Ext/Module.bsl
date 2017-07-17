@@ -205,7 +205,7 @@ Procedure BeforeObjectExport(Container, ObjectExportManager, Serializer, Object,
 	If AttributesWithValuesStorage = Undefined Then
 		
 		Raise ServiceTechnologyIntegrationWithSSL.PlaceParametersIntoString(
-			NStr("en='%1 metadata object can not be processed by the handler ValueStorageDataExportImport.BeforeObjectExport()!';ru='Объект метаданных %1 не может быть обработан обработчиком ВыгрузкаЗагрузкаДанныхХранилищЗначений.ПередВыгрузкойОбъекта()!'"),
+			NStr("en='Metadata object %1 cannot be processed by handler ValueStorageDataExportImport.BeforeObjectExport().';ru='Объект метаданных %1 не может быть обработан обработчиком ВыгрузкаЗагрузкаДанныхХранилищЗначений.ПередВыгрузкойОбъекта()!'"),
 			MetadataObject.FullName());
 		
 	EndIf;
@@ -225,7 +225,7 @@ Procedure BeforeObjectExport(Container, ObjectExportManager, Serializer, Object,
 	Else
 		
 		Raise ServiceTechnologyIntegrationWithSSL.PlaceParametersIntoString(
-			NStr("en='Unexpected metadata object: %1!';ru='Неожиданный объект метаданных: %1!'"),
+			NStr("en='Unexpected metadata object: %1.';ru='Неожиданный объект метаданных: %1!'"),
 			MetadataObject.DescriptionFull);
 		
 	EndIf;
@@ -276,7 +276,7 @@ Procedure BeforeObjectImport(Container, Object, Artifacts, Cancel) Export
 		Else
 			
 			Raise ServiceTechnologyIntegrationWithSSL.PlaceParametersIntoString(
-				NStr("en='Unexpected metadata object: %1!';ru='Неожиданный объект метаданных: %1!'"),
+				NStr("en='Unexpected metadata object: %1.';ru='Неожиданный объект метаданных: %1!'"),
 				MetadataObject.DescriptionFull);
 			
 		EndIf;
@@ -529,7 +529,7 @@ Procedure BeforeUpdateConstant(Container, Object, Artifact)
 	Else
 		
 		Raise ServiceTechnologyIntegrationWithSSL.PlaceParametersIntoString(
-			NStr("en='The {%1}%2 owner type should not be used for the %3 metadata object!';ru='Тип владельца {%1}%2 не должен использоваться для объекта метаданных %3!'"),
+			NStr("en='Type of owner {%1}%2 cannot be used for metadata object %3.';ru='Тип владельца {%1}%2 не должен использоваться для объекта метаданных %3!'"),
 			Artifact.Owner.Type().NamespaceURI,
 			Artifact.Owner.Type().Name,
 			Object.Metadata().FullName()
@@ -557,7 +557,7 @@ Procedure BeforeImportReferenceObject(Container, Object, Artifact)
 	Else
 		
 		Raise ServiceTechnologyIntegrationWithSSL.PlaceParametersIntoString(
-			NStr("en='The {%1}%2 owner type should not be used for the %3 metadata object!';ru='Тип владельца {%1}%2 не должен использоваться для объекта метаданных %3!'"),
+			NStr("en='Type of owner {%1}%2 cannot be used for metadata object %3.';ru='Тип владельца {%1}%2 не должен использоваться для объекта метаданных %3!'"),
 			Artifact.Owner.Type().NamespaceURI,
 			Artifact.Owner.Type().Name,
 			Object.Metadata().FullName()
@@ -583,7 +583,7 @@ Procedure BeforeImportRecordSet(Container, RecordSet, Artifact)
 	Else
 		
 		Raise ServiceTechnologyIntegrationWithSSL.PlaceParametersIntoString(
-			NStr("en='The {%1}%2 owner type should not be used for the %3 metadata object!';ru='Тип владельца {%1}%2 не должен использоваться для объекта метаданных %3!'"),
+			NStr("en='Type of owner {%1}%2 cannot be used for metadata object %3.';ru='Тип владельца {%1}%2 не должен использоваться для объекта метаданных %3!'"),
 			Artifact.Owner.Type().NamespaceURI,
 			Artifact.Owner.Type().Name,
 			RecordSet.Metadata().FullName()
@@ -614,7 +614,7 @@ Procedure ImportValueStorage(Container, ValueStorage, Artifact)
 	Else
 		
 		Raise ServiceTechnologyIntegrationWithSSL.PlaceParametersIntoString(
-			NStr("en='Unexpected placement type of value storage data in the exporting container: {%1}%2!';ru='Неожиданный тип размещения данных хранилища значений в контейнере выгрузки: {%1}%2!'"),
+			NStr("en='Unexpected placement type of value storage data in export container: (%1)%2.';ru='Неожиданный тип размещения данных хранилища значений в контейнере выгрузки: {%1}%2!'"),
 			Artifact.Data.Type().NamespaceURI,
 			Artifact.Data.Type().Name,
 		);

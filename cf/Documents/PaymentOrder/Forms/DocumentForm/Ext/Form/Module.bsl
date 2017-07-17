@@ -20,7 +20,7 @@ Procedure SetFormFrom2014Year()
 		Items.PaymentIdentifier.WarningOnEdit = "";
 	ElsIf Object.OperationKind = Enums.OperationKindsPaymentOrder.Payment Then
 		Items.PaymentIdentifier.WarningOnEditRepresentation = WarningOnEditRepresentation.Show;
-		Items.PaymentIdentifier.WarningOnEdit = NStr("en='Payment ID is used only for payment into the budget until 03/31/2014';ru='До 31.03.2014 идентификатор платежа используется только для платежей в бюджет'");
+		Items.PaymentIdentifier.WarningOnEdit = NStr("en='Payment ID is used only for payments to the budget until 03/31/2014';ru='До 31.03.2014 идентификатор платежа используется только для платежей в бюджет'");
 	EndIf;
 	
 	If Object.OperationKind = Enums.OperationKindsPaymentOrder.Payment Then
@@ -147,7 +147,7 @@ Procedure FillByDocumentAndSetEnabled()
 	Response = Undefined;
 
 	
-	ShowQueryBox(New NotifyDescription("FillInByDocumentAndSetAvailableEnd", ThisObject), NStr("en='The document will be cleared and filled in by the ""Basis"". Continue?';ru='Документ будет очищен и заполнен по ""Основанию""! Продолжить?'"), QuestionDialogMode.YesNo, 0);
+	ShowQueryBox(New NotifyDescription("FillInByDocumentAndSetAvailableEnd", ThisObject), NStr("en='The document will be cleared and filled out under the ""Basis"". Continue?';ru='Документ будет очищен и заполнен по ""Основанию""! Продолжить?'"), QuestionDialogMode.YesNo, 0);
 	
 EndProcedure
 
@@ -188,7 +188,7 @@ Procedure GeneratePaymentDestination(UpdateAmount = False)
 			AND ValueIsFilled(Object.BasisDocument)
 			AND TypeOf(Object.BasisDocument) = Type("DocumentRef.SupplierInvoiceForPayment")
 			AND ValueIsFilled(IncomingDocumentNumber) Then
-			PaymentDestination = NStr("en='Payment against the invoice for payment No.%AccountNumber%';ru='Оплата по счету N %НомерСчета%'");
+			PaymentDestination = NStr("en='Payment against invoice No. %AccountNumber%';ru='Оплата по счету N %НомерСчета%'");
 			PaymentDestination = StrReplace(PaymentDestination, "%AccountNo%", TrimAll(String(IncomingDocumentNumber)));
 			If ValueIsFilled(IncomingDocumentDate) Then
 				PaymentDestination = PaymentDestination + " dated " + TrimAll(String(Format(IncomingDocumentDate, "DF=dd MMMM yyyy'"))) + " g.";
@@ -962,7 +962,7 @@ Procedure OperationKindOnChange(Item)
 		Items.PaymentIdentifier.WarningOnEdit = "";
 	ElsIf Object.OperationKind = PredefinedValue("Enum.OperationKindsPaymentOrder.Payment") Then
 		Items.PaymentIdentifier.WarningOnEditRepresentation = WarningOnEditRepresentation.Show;
-		Items.PaymentIdentifier.WarningOnEdit = NStr("en='Payment ID is used only for payment into the budget until 03/31/2014';ru='До 31.03.2014 идентификатор платежа используется только для платежей в бюджет'");
+		Items.PaymentIdentifier.WarningOnEdit = NStr("en='Payment ID is used only for payments to the budget until 03/31/2014';ru='До 31.03.2014 идентификатор платежа используется только для платежей в бюджет'");
 	EndIf;
 	
 	GeneratePaymentDestination();

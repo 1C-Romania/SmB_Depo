@@ -36,7 +36,7 @@
 			<Synonym>
 				<v8:item>
 					<v8:lang>en</v8:lang>
-					<v8:content>General settings of the nodes of infobases</v8:content>
+					<v8:content>General settings of infobase nodes</v8:content>
 				</v8:item>
 				<v8:item>
 					<v8:lang>ru</v8:lang>
@@ -167,7 +167,7 @@
 			<Explanation>
 				<v8:item>
 					<v8:lang>en</v8:lang>
-					<v8:content>Used to store general settings for the infobases of the exchange counterparties.</v8:content>
+					<v8:content>Used to store general settings for infobases of exchange correspondents.</v8:content>
 				</v8:item>
 				<v8:item>
 					<v8:lang>ru</v8:lang>
@@ -182,7 +182,7 @@
 					<Synonym>
 						<v8:item>
 							<v8:lang>en</v8:lang>
-							<v8:content>Execute Correction of Information Comparing</v8:content>
+							<v8:content>Adjust mapping information</v8:content>
 						</v8:item>
 						<v8:item>
 							<v8:lang>ru</v8:lang>
@@ -199,7 +199,7 @@
 					<ToolTip>
 						<v8:item>
 							<v8:lang>en</v8:lang>
-							<v8:content>Shows that it is required to correct matching information during the data exchange.</v8:content>
+							<v8:content>Shows whether it is necessary to correct mapping information during the data exchange.</v8:content>
 						</v8:item>
 						<v8:item>
 							<v8:lang>ru</v8:lang>
@@ -250,7 +250,7 @@
 					<ToolTip>
 						<v8:item>
 							<v8:lang>en</v8:lang>
-							<v8:content>Used for the universal data exchanges.</v8:content>
+							<v8:content>Used for universal data exchanges.</v8:content>
 						</v8:item>
 						<v8:item>
 							<v8:lang>ru</v8:lang>
@@ -284,7 +284,7 @@
 					<Synonym>
 						<v8:item>
 							<v8:lang>en</v8:lang>
-							<v8:content>User for the data synchronization</v8:content>
+							<v8:content>User for data synchronization</v8:content>
 						</v8:item>
 						<v8:item>
 							<v8:lang>ru</v8:lang>
@@ -301,7 +301,7 @@
 					<ToolTip>
 						<v8:item>
 							<v8:lang>en</v8:lang>
-							<v8:content>User on behalf of which the data is synchronized with the main node</v8:content>
+							<v8:content>User on whose behalf data is synchronized with the specified node</v8:content>
 						</v8:item>
 						<v8:item>
 							<v8:lang>ru</v8:lang>
@@ -335,7 +335,7 @@
 					<Synonym>
 						<v8:item>
 							<v8:lang>en</v8:lang>
-							<v8:content>Perform data sending</v8:content>
+							<v8:content>Send data</v8:content>
 						</v8:item>
 						<v8:item>
 							<v8:lang>ru</v8:lang>
@@ -352,7 +352,7 @@
 					<ToolTip>
 						<v8:item>
 							<v8:lang>en</v8:lang>
-							<v8:content>Sign indicating that in case of another interactive session of data syncronization you should first send the data and then receive and send it. Used for receiving the main node metadata changes through a web service.</v8:content>
+							<v8:content>Shows whether it is required to first send data and then receive and send it during the next interactive session of data synchronization. It is used while receiving changes of the main node metadata from the web service.</v8:content>
 						</v8:item>
 						<v8:item>
 							<v8:lang>ru</v8:lang>
@@ -407,7 +407,7 @@
 					<ToolTip>
 						<v8:item>
 							<v8:lang>en</v8:lang>
-							<v8:content>Version of the information correspondent base configuration</v8:content>
+							<v8:content>Version of correspondent infobase configuration</v8:content>
 						</v8:item>
 						<v8:item>
 							<v8:lang>ru</v8:lang>
@@ -441,7 +441,7 @@
 					<Synonym>
 						<v8:item>
 							<v8:lang>en</v8:lang>
-							<v8:content>Sent Number</v8:content>
+							<v8:content>Number of the last sent message</v8:content>
 						</v8:item>
 						<v8:item>
 							<v8:lang>ru</v8:lang>
@@ -463,7 +463,7 @@
 					<ToolTip>
 						<v8:item>
 							<v8:lang>en</v8:lang>
-							<v8:content>Number of the sent exchange message which contains the correction of the matching information.</v8:content>
+							<v8:content>Number of the sent exchange message which contains adjustment of mapping information.</v8:content>
 						</v8:item>
 						<v8:item>
 							<v8:lang>ru</v8:lang>
@@ -497,7 +497,7 @@
 					<Synonym>
 						<v8:item>
 							<v8:lang>en</v8:lang>
-							<v8:content>Number of the sent initial data export</v8:content>
+							<v8:content>Number of the sent one initial data export</v8:content>
 						</v8:item>
 						<v8:item>
 							<v8:lang>ru</v8:lang>
@@ -519,7 +519,7 @@
 					<ToolTip>
 						<v8:item>
 							<v8:lang>en</v8:lang>
-							<v8:content>Number of the sent exchange message which contains the sign of initial data import.</v8:content>
+							<v8:content>Number of the sent exchange message which contains the flag of initial data export.</v8:content>
 						</v8:item>
 						<v8:item>
 							<v8:lang>ru</v8:lang>
@@ -570,7 +570,7 @@
 					<ToolTip>
 						<v8:item>
 							<v8:lang>en</v8:lang>
-							<v8:content>Exchange plan node the settings are used for.</v8:content>
+							<v8:content>Exchange plan node for which the settings are applied.</v8:content>
 						</v8:item>
 						<v8:item>
 							<v8:lang>ru</v8:lang>

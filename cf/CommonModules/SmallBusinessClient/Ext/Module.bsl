@@ -115,23 +115,23 @@ Function GetPresentationOfWeekDay(CalendarWeekDay) Export
 	WeekDayNumber = WeekDay(CalendarWeekDay);
 	If WeekDayNumber = 1 Then
 		
-		Return NStr("en='Mo';ru='Пн'");
+		Return NStr("en='Mon';ru='Пн'");
 		
 	ElsIf WeekDayNumber = 2 Then
 		
-		Return NStr("en='Tu';ru='Вт'");
+		Return NStr("en='Tue';ru='Вт'");
 		
 	ElsIf WeekDayNumber = 3 Then
 		
-		Return NStr("en='We';ru='Ср'");
+		Return NStr("en='Wed';ru='Ср'");
 		
 	ElsIf WeekDayNumber = 4 Then
 		
-		Return NStr("en='Th';ru='Чт'");
+		Return NStr("en='Thu';ru='Чт'");
 		
 	ElsIf WeekDayNumber = 5 Then
 		
-		Return NStr("en='Fr';ru='Пт'");
+		Return NStr("en='Fri';ru='Пт'");
 		
 	ElsIf WeekDayNumber = 6 Then
 		
@@ -139,7 +139,7 @@ Function GetPresentationOfWeekDay(CalendarWeekDay) Export
 		
 	Else
 		
-		Return NStr("en='Su';ru='Вс'");
+		Return NStr("en='Sun';ru='Вс'");
 		
 	EndIf;
 	
@@ -268,7 +268,7 @@ Function BeforeAddToSubordinateTabularSection(DocumentForm, SubordinateTabularSe
 
 	If DocumentForm.Items[DocumentForm.TabularSectionName].CurrentData = Undefined Then
 		Message = New UserMessage;
-		Message.Text = NStr("en='Main tabular section row is not selected.';ru='Не выбрана строка основной табличной части!'");
+		Message.Text = NStr("en='Row of the main tabular section is not selected.';ru='Не выбрана строка основной табличной части!'");
 		Message.Message();
 		Return True;
 	Else
@@ -1238,14 +1238,14 @@ Procedure CreateEmail(Val FieldsValues, Val Presentation = "", ExpectedKind = Un
 		
 	InformationType = ContactInformation.ContactInformationType;
 	If InformationType <> PredefinedValue("Enum.ContactInformationTypes.EmailAddress") Then
-		Raise StrReplace(NStr("en='You can not create email by contact information with the type ""%1""';ru='Нельзя создать письмо по контактной информацию с типом ""%1""'"),
+		Raise StrReplace(NStr("en='Cannot create email by contact information with type ""%1""';ru='Нельзя создать письмо по контактной информацию с типом ""%1""'"),
 			"%1", InformationType);
 	EndIf;
 	
 	XMLData = ContactInformation.DataXML;
 	MailAddress = ContactInformationInternalServerCall.ContactInformationContentString(XMLData);
 	If TypeOf(MailAddress) <> Type("String") Then
-		Raise NStr("en='Error of the email address obtaining, incorrect type of the contact details';ru='Ошибка получения адреса электронной почты, неверный тип контактной информации'");
+		Raise NStr("en='An error occurred when receiving the email address, incorrect contact information type';ru='Ошибка получения адреса электронной почты, неверный тип контактной информации'");
 	EndIf;
 	
 	If CommonUseClient.SubsystemExists("StandardSubsystems.EmailOperations") Then
@@ -1265,7 +1265,7 @@ Procedure CreateEmail(Val FieldsValues, Val Presentation = "", ExpectedKind = Un
 	
 	// No mail subsystem, start the system one
 	Notification = New NotifyDescription("CreateEmailByContactInformationEnd", ThisObject, MailAddress);
-	SuggestionText = NStr("en='To send email, you should install extension for work with files.';ru='Для отправки письма необходимо установить расширение для работы с файлами.'");
+	SuggestionText = NStr("en='To send the email, install the file operation extension.';ru='Для отправки письма необходимо установить расширение для работы с файлами.'");
 	CommonUseClient.CheckFileOperationsExtensionConnected(Notification, SuggestionText);
 	
 EndProcedure
@@ -1412,7 +1412,7 @@ Procedure EnableFileOperationsExtensionEnd(Attached, AdditionalParameters) Expor
 			ReadTextDocument(AdditionalParameters);
 		Else // If there are no settings, then file opening dialog.
 			Dialog = New FileDialog(FileDialogMode.Open);
-			Dialog.Title = NStr("en='Select file for import...';ru='Выберите файл для загрузки...'");
+			Dialog.Title = NStr("en='Select a file for import...';ru='Выберите файл для загрузки...'");
 			Dialog.Filter = NStr("en='Files of exchange with 1C (*.xml)|*.xml|Files of exchange with 1C (*.txt)|*.txt|All files (*.*)|*.*';ru='Файлы обмена с 1С (*.xml)|*.xml|Файлы обмена с 1С (*.txt)|*.txt|Все файлы (*.*)|*.*'");
 			Dialog.FullFileName = AdditionalParameters.PathToFile1;
 			Notification = New NotifyDescription("FileOpeningDialogEnd", ThisObject, AdditionalParameters);
@@ -1468,7 +1468,7 @@ Procedure ReadTextDocument(AdditionalParameters)
 	Try
 		File.Read(AdditionalParameters.PathToFile1, Codin);
 	Except
-		MessageText = NStr("en='An error occurred while reading file %File%.';ru='Ошибка чтения файла %Файл%.'");
+		MessageText = NStr("en='An error occurred while reading the %File% file.';ru='Ошибка чтения файла %Файл%.'");
 		MessageText = StrReplace(MessageText, "%File%", AdditionalParameters.PathToFile1);
 		ShowMessageBox(, MessageText);
 		Return;
@@ -1501,9 +1501,9 @@ EndProcedure
 Procedure ImportDataFromFileStatementsFragment(AdditionalParameters)
 	
 	Status(
-		NStr("en='The statement file is being loaded';ru='Загружается файл выписки'"),
+		NStr("en='Loading statement file';ru='Загружается файл выписки'"),
 		,
-		NStr("en='Statement file is being imported';ru='Производится загрузка файла выписки'"),
+		NStr("en='Importing statement file';ru='Производится загрузка файла выписки'"),
 		PictureLib.DataImport32
 	);
 	

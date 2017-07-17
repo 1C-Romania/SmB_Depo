@@ -1159,7 +1159,7 @@ Function VerifyFilterConditions(Val VerifiedObject, Val Filter = Undefined) Expo
 			
 		Else
 			
-			Raise NStr("en='The filter is incorrectly set!';ru='Некорректно задан фильтр!'");
+			Raise NStr("en='Filter is set incorrectly.';ru='Некорректно задан фильтр!'");
 			
 		EndIf;
 		
@@ -1298,7 +1298,7 @@ Function AdministrationManager(Val AdministrationParameters)
 	Else
 		
 		Raise StringFunctionsClientServer.SubstituteParametersInString(
-			NStr("en='Unknown type of connection: %1!';ru='Неизвестный тип подключения: %1!'"), AdministrationParameters.ConnectionType);
+			NStr("en='Unknown connection type: %1.';ru='Неизвестный тип подключения: %1!'"), AdministrationParameters.ConnectionType);
 		
 	EndIf;
 	

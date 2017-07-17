@@ -118,14 +118,14 @@ Procedure SetTitle()
 			If Not Parameters.ChoiceMode Then
 				TitleString = NStr("en='Property value %1';ru='Значения свойства %1'");
 			Else
-				TitleString = NStr("en='Select the %1 property value';ru='Выберите значение свойства %1'");
+				TitleString = NStr("en='Select value of property %1';ru='Выберите значение свойства %1'");
 			EndIf;
 			
 			TitleString = StringFunctionsClientServer.SubstituteParametersInString(
 				TitleString, String(Property));
 		
 		ElsIf Parameters.ChoiceMode Then
-			TitleString = NStr("en='Choose property value';ru='Выберите значение свойства'");
+			TitleString = NStr("en='Select property value';ru='Выберите значение свойства'");
 		EndIf;
 	EndIf;
 	

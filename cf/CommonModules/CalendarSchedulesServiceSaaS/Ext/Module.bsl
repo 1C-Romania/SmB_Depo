@@ -226,10 +226,10 @@ EndProcedure
 Function StartElement(Val XMLReader, Val Name)
 	
 	If XMLReader.NodeType <> XMLNodeType.StartElement Or XMLReader.Name <> Name Then
-		WriteLogEvent(NStr("en='Supplied data. Calendar schedules';ru='Поставляемые данные.Календарные графики'", 
+		WriteLogEvent(NStr("en='Supplied data.Calendar schedules';ru='Поставляемые данные.Календарные графики'", 
 			Metadata.DefaultLanguage.LanguageCode), EventLogLevel.Error,
 			,, StringFunctionsClientServer.SubstituteParametersInString(
-			NStr("en='Incorrect data file format. Waiting for the start of %1 item';ru='Неверный формат файла данных. Ожидается начало элемента %1'"), Name));
+			NStr("en='Incorrect format of the data file. Start of item %1 is expected';ru='Неверный формат файла данных. Ожидается начало элемента %1'"), Name));
 		Return False;
 	EndIf;
 	
@@ -240,10 +240,10 @@ EndFunction
 Function EndElement(Val XMLReader, Val Name)
 	
 	If XMLReader.NodeType <> XMLNodeType.EndElement Or XMLReader.Name <> Name Then
-		WriteLogEvent(NStr("en='Supplied data. Calendar schedules';ru='Поставляемые данные.Календарные графики'", 
+		WriteLogEvent(NStr("en='Supplied data.Calendar schedules';ru='Поставляемые данные.Календарные графики'", 
 			Metadata.DefaultLanguage.LanguageCode), EventLogLevel.Error,
 			,, StringFunctionsClientServer.SubstituteParametersInString(
-			NStr("en='Incorrect data file format. Waiting for the end of %1 item';ru='Неверный формат файла данных. Ожидается конец элемента %1'"), Name));
+			NStr("en='Incorrect format of the data file. End of item %1 is expected';ru='Неверный формат файла данных. Ожидается конец элемента %1'"), Name));
 		Return False;
 	EndIf;
 	

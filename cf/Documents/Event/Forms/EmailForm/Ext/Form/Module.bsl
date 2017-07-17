@@ -445,7 +445,7 @@ Procedure Send(Command)
 	
 	If Not ValueIsFilled(Object.UserAccount) Then
 		CommonUseClientServer.MessageToUser(
-			NStr("en='Select the account for sending an email.';ru='Выберите учетную запись для отправки почты.'"), ,
+			NStr("en='Select an account to send emails.';ru='Выберите учетную запись для отправки почты.'"), ,
 			"Object.UserAccount");
 		Return;
 	EndIf;
@@ -689,7 +689,7 @@ Procedure ContinueSendingEmailsWithPassword(Password = Undefined)
 	EmailParameters = GenerateLetterParameters(Password);
 	
 	If EmailParameters = Undefined Then
-		CommonUseClientServer.MessageToUser(NStr("en='Error of generating parameters of the mail message';ru='Ошибка формирования параметров почтового сообщения'"));
+		CommonUseClientServer.MessageToUser(NStr("en='An error occurred while generating email message parameters';ru='Ошибка формирования параметров почтового сообщения'"));
 		Return;
 	EndIf;
 	
@@ -916,7 +916,7 @@ Function GetSpreadsheetDocumentByBinaryData(Val BinaryData)
 	Try
 		DeleteFiles(FileName);
 	Except
-		WriteLogEvent(NStr("en='Tabular document receiving';ru='Получение табличного документа'", CommonUseClientServer.MainLanguageCode()), EventLogLevel.Error, , , 
+		WriteLogEvent(NStr("en='Receive spreadsheet document';ru='Получение табличного документа'", CommonUseClientServer.MainLanguageCode()), EventLogLevel.Error, , , 
 			DetailErrorDescription(ErrorInfo()));
 	EndTry;
 	
@@ -1073,7 +1073,7 @@ Procedure FillContentEvents(EventSubject)
 	If Not IsBlankString(FormattedDocument.GetText()) Then
 		
 		ShowQueryBox(New NotifyDescription("FillEventContentEnd", ThisObject, New Structure("EventSubject", EventSubject)),
-			NStr("en='Do you want to refill the content by the selected topic?';ru='Перезаполнить содержание по выбранной теме?'"), QuestionDialogMode.YesNo, 0);
+			NStr("en='Refill the content by the selected topic?';ru='Перезаполнить содержание по выбранной теме?'"), QuestionDialogMode.YesNo, 0);
 		Return;
 		
 	EndIf;

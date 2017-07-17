@@ -119,8 +119,8 @@ Procedure DeviceTestEnd(ExecutionResult, Parameters) Export
 		
 	EndIf;
 		
-	MessageText = ?(ExecutionResult.Result,  NStr("en='Test successfully performed. %AdditionalDetails%';ru='Тест успешно выполнен. %ДополнительноеОписание%'"),
-	                               NStr("en='Test is not passed. %AdditionalDetails%';ru='Тест не пройден. %ДополнительноеОписание%'"));
+	MessageText = ?(ExecutionResult.Result,  NStr("en='Test succeeded. %AdditionalDescription%';ru='Тест успешно выполнен. %ДополнительноеОписание%'"),
+	                               NStr("en='Test failed. %AdditionalDescription%';ru='Тест не пройден. %ДополнительноеОписание%'"));
 	MessageText = StrReplace(MessageText, "%AdditionalDetails%", ?(IsBlankString(AdditionalDetails), "", AdditionalDetails));
 	CommonUseClientServer.MessageToUser(MessageText);
 	
@@ -163,7 +163,7 @@ Procedure AdditionalAction(Command)
 																			ID, 
 																			GetSettings());
 		
-	MessageText = ?(Result,  NStr("en='Operation has been successfully installed.';ru='Операция выполнена успешно.'"),
+	MessageText = ?(Result,  NStr("en='Operation is performed successfully.';ru='Операция выполнена успешно.'"),
 	                               NStr("en='Operation execution error.';ru='Ошибка выполнения операции.'") + Chars.NBSp + Output_Parameters[1]);
 	CommonUseClientServer.MessageToUser(MessageText);
 	
@@ -442,7 +442,7 @@ Procedure StartAdditionalCommandExecutionEnd(ExecutionResult, Parameters) Export
 		DriverMessage  = Output_Parameters[1];
 		DriverIsSet = Output_Parameters[2];
 		DriverVersion  = NStr("en='Not defined';ru='Не определена'");
-		If Not IsBlankString(DriverMessage) AND DriverIsSet = NStr("en='Installed';ru='Установлен'") Then
+		If Not IsBlankString(DriverMessage) AND DriverIsSet = NStr("en='Set';ru='Установлен'") Then
 			Items.DevicePlugged.Visible = True;
 			Items.DevicePlugged.Title = DriverMessage;
 			Items.WriteAndClose.Visible = False;
@@ -458,7 +458,7 @@ Procedure StartAdditionalCommandExecutionEnd(ExecutionResult, Parameters) Export
 	Items.DetailsDriver.TextColor     = ?(DetailsDriver     = NStr("en='Undefined';ru='Неопределено'"), ErrorColor, TextColor);
 	Items.DetailsDriver.Visible = Not IsBlankString(DetailsDriver);
 	
-	Items.SetupDriver.Enabled = Not (DriverIsSet = NStr("en='Installed';ru='Установлен'"));
+	Items.SetupDriver.Enabled = Not (DriverIsSet = NStr("en='Set';ru='Установлен'"));
 	Items.DeviceTest.Enabled = (NOT DriverIsSet = NStr("en='Not set';ru='Не установлен'")) 
 	                                      AND (NOT IntegrationLibrary Or (IntegrationLibrary AND MainDriverIsSet));
 	

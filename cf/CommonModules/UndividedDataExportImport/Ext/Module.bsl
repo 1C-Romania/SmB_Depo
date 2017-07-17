@@ -150,7 +150,7 @@ EndProcedure
 Procedure BeforeExportType(Container, Serializer, MetadataObject, Cancel) Export
 	
 	If Not CommonUseSTL.ThisIsReferenceData(MetadataObject) Then 
-		Raise NStr("en='Replacement of references is available only in reference data';ru='Замена ссылок доступна только в ссылочных данных'");
+		Raise NStr("en='References can be replaced only in the reference data';ru='Замена ссылок доступна только в ссылочных данных'");
 	EndIf;
 	
 	ObjectManager = ServiceTechnologyIntegrationWithSSL.ObjectManagerByFullName(MetadataObject.FullName());
@@ -180,7 +180,7 @@ Procedure AfterObjectExport(Container, ObjectExportManager, Serializer, Object, 
 	If Container.AdditionalProperties.CommonDataRequireMatchingRefs.Find(MetadataObject) <> Undefined Then
 		
 		If Not CommonUseSTL.ThisIsReferenceData(MetadataObject) Then 
-			Raise NStr("en='Substitution of references is available only in reference data';ru='Подмена ссылок доступна только в ссылочных данных'");
+			Raise NStr("en='You can substitute references only in reference data';ru='Подмена ссылок доступна только в ссылочных данных'");
 		EndIf;
 		
 		ObjectManager = ServiceTechnologyIntegrationWithSSL.ObjectManagerByFullName(FullMetadataObjectName);
@@ -230,7 +230,7 @@ Procedure ReferencesUseControlUndividedDataInSeparated() Export
 		
 		ErrorText = BriefErrorDescription(ErrorInfo());
 		Raise StringFunctionsClientServer.SubstituteParametersInString(
-			NStr("en='There are errors in the structure of configuration metadata: %1';ru='Обнаружены ошибки в структуре метаданных конфигурации: %1'", Metadata.DefaultLanguage.LanguageCode),
+			NStr("en='Errors found in the structure of metadata configuration: %1';ru='Обнаружены ошибки в структуре метаданных конфигурации: %1'", Metadata.DefaultLanguage.LanguageCode),
 			ErrorText
 		);
 		
@@ -248,7 +248,7 @@ Procedure FillingControlNaturalKeyFieldsForUndividedObjects() Export
 		
 		ErrorText = BriefErrorDescription(ErrorInfo());
 		Raise StringFunctionsClientServer.SubstituteParametersInString(
-			NStr("en='There are errors in the structure of configuration metadata: %1';ru='Обнаружены ошибки в структуре метаданных конфигурации: %1'", Metadata.DefaultLanguage.LanguageCode),
+			NStr("en='Errors found in the structure of metadata configuration: %1';ru='Обнаружены ошибки в структуре метаданных конфигурации: %1'", Metadata.DefaultLanguage.LanguageCode),
 			ErrorText
 		);
 		
@@ -401,7 +401,7 @@ Procedure UndividedDataReferencesControlOnExport(Container, Object, FieldsForUnd
 		
 		If ObjectNameStructure[0] <> FieldNameStructure[0] Or ObjectNameStructure[1] <> FieldNameStructure[1] Then
 			
-			Raise NStr("en='Invalid control cache of undivided data on exporting!';ru='Некорректный кэш контроля неразделенных данных при выгрузке!'");
+			Raise NStr("en='Incorrect cache of shared data control on export.';ru='Некорректный кэш контроля неразделенных данных при выгрузке!'");
 			
 		EndIf;
 		
@@ -448,13 +448,13 @@ Procedure UndividedDataReferencesControlOnExport(Container, Object, FieldsForUnd
 					
 				Else
 					
-					Raise NStr("en='Invalid control cache of undivided data on exporting!';ru='Некорректный кэш контроля неразделенных данных при выгрузке!'");
+					Raise NStr("en='Incorrect cache of shared data control on export.';ru='Некорректный кэш контроля неразделенных данных при выгрузке!'");
 					
 				EndIf;
 				
 			Else
 				
-				Raise NStr("en='Invalid control cache of undivided data on exporting!';ru='Некорректный кэш контроля неразделенных данных при выгрузке!'");
+				Raise NStr("en='Incorrect cache of shared data control on export.';ru='Некорректный кэш контроля неразделенных данных при выгрузке!'");
 				
 			EndIf;
 			
@@ -478,13 +478,13 @@ Procedure UndividedDataReferencesControlOnExport(Container, Object, FieldsForUnd
 				
 			Else
 				
-				Raise NStr("en='Invalid control cache of undivided data on exporting!';ru='Некорректный кэш контроля неразделенных данных при выгрузке!'");
+				Raise NStr("en='Incorrect cache of shared data control on export.';ru='Некорректный кэш контроля неразделенных данных при выгрузке!'");
 				
 			EndIf;
 			
 		Else
 			Raise StringFunctionsClientServer.SubstituteParametersInString(
-				NStr("en='The %1 metadata object is not supported!';ru='Объект метаданных %1 не поддерживается!'", Metadata.DefaultLanguage.LanguageCode),
+				NStr("en='Metadata object %1 is not supported.';ru='Объект метаданных %1 не поддерживается!'", Metadata.DefaultLanguage.LanguageCode),
 				FullMetadataObjectName
 			);
 		EndIf;

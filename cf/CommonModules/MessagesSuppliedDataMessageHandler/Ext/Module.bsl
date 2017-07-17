@@ -34,7 +34,7 @@ Procedure ProcessMessage(Val MessageChannel, Val MessageBody, Val Sender) Export
 			
 		EndIf;
 	Except
-		WriteLogEvent(NStr("en='Presented data. Error of the message processing';ru='Поставляемые данные.Ошибка обработки сообщения'", 
+		WriteLogEvent(NStr("en='Supplied data.Message processing error';ru='Поставляемые данные.Ошибка обработки сообщения'", 
 			CommonUseClientServer.MainLanguageCode()), 
 			EventLogLevel.Error, ,
 			, SuppliedData.GetDataDescription(Handle) + Chars.LF + DetailErrorDescription(ErrorInfo()));
@@ -76,10 +76,10 @@ Procedure ProcessNewDescriptor(Val Handle) Export
 		ScheduleDataExport(Handle);
 	EndIf;
 	
-	WriteLogEvent(NStr("en='Supplied data. New data is available';ru='Поставляемые данные.Доступны новые данные'", 
+	WriteLogEvent(NStr("en='Supplied data.New data is available';ru='Поставляемые данные.Доступны новые данные'", 
 		CommonUseClientServer.MainLanguageCode()), 
 		EventLogLevel.Information, ,
-		, ?(Import, NStr("en='Task for import is added to the queue.';ru='В очередь добавлено задание на загрузку.'"), NStr("en='Data import is not required.';ru='Загрузка данных не требуется.'"))
+		, ?(Import, NStr("en='Import job was added to the queue.';ru='В очередь добавлено задание на загрузку.'"), NStr("en='Data import is not required.';ru='Загрузка данных не требуется.'"))
 		+ Chars.LF + SuppliedData.GetDataDescription(Handle));
 
 EndProcedure
@@ -129,7 +129,7 @@ Procedure ImportData(Val HandleXML) Export
 	Try
 		Handle = DeserializeXDTO(HandleXML);
 	Except
-		WriteLogEvent(NStr("en='Supplied data. Error of work with XML';ru='Поставляемые данные.Ошибка работы с XML'", 
+		WriteLogEvent(NStr("en='Supplied data.An error occurred when working with XML';ru='Поставляемые данные.Ошибка работы с XML'", 
 			CommonUseClientServer.MainLanguageCode()), 
 			EventLogLevel.Error, ,
 			, DetailErrorDescription(ErrorInfo())
@@ -140,7 +140,7 @@ Procedure ImportData(Val HandleXML) Export
 	WriteLogEvent(NStr("en='Supplied data. Data import';ru='Поставляемые данные.Загрузка данных'", 
 		CommonUseClientServer.MainLanguageCode()), 
 		EventLogLevel.Information, ,
-		, NStr("en='Import has started';ru='Загрузка начата'") + Chars.LF + SuppliedData.GetDataDescription(Handle));
+		, NStr("en='Import is started';ru='Загрузка начата'") + Chars.LF + SuppliedData.GetDataDescription(Handle));
 
 	If ValueIsFilled(Handle.FileGUID) Then
 		ExportFileName = GetFileFromStorage(Handle);
@@ -149,7 +149,7 @@ Procedure ImportData(Val HandleXML) Export
 			WriteLogEvent(NStr("en='Supplied data. Data import';ru='Поставляемые данные.Загрузка данных'", 
 				CommonUseClientServer.MainLanguageCode()), 
 				EventLogLevel.Information, ,
-				, NStr("en='File can not be imported';ru='Файл не может быть загружен'") + Chars.LF 
+				, NStr("en='File cannot be imported';ru='Файл не может быть загружен'") + Chars.LF 
 				+ SuppliedData.GetDataDescription(Handle));
 			Return;
 		EndIf;
@@ -158,7 +158,7 @@ Procedure ImportData(Val HandleXML) Export
 	WriteLogEvent(NStr("en='Supplied data. Data import';ru='Поставляемые данные.Загрузка данных'", 
 		CommonUseClientServer.MainLanguageCode()), 
 		EventLogLevel.Note, ,
-		, NStr("en='Importing is successfully completed';ru='Загрузка успешно выполнена'") + Chars.LF + SuppliedData.GetDataDescription(Handle));
+		, NStr("en='Import is completed successfully';ru='Загрузка успешно выполнена'") + Chars.LF + SuppliedData.GetDataDescription(Handle));
 
 	// InformationRegister.SuppliedDataForDataProcessors
 	// is used in cases when the execution cycle is interrupted by a server rebooting.
@@ -187,7 +187,7 @@ Procedure ImportData(Val HandleXML) Export
 			SetRawData.Delete(WriteRawData);
 			SetRawData.Write();			
 		Except
-			WriteLogEvent(NStr("en='Supplied data. Processing error';ru='Поставляемые данные.Ошибка обработки'", 
+			WriteLogEvent(NStr("en='Supplied data. Data processor error';ru='Поставляемые данные.Ошибка обработки'", 
 				CommonUseClientServer.MainLanguageCode()), 
 				EventLogLevel.Error, ,
 				, DetailErrorDescription(ErrorInfo())
@@ -220,12 +220,12 @@ Procedure ImportData(Val HandleXML) Export
 				
 		EndDo;
 			
-		WriteLogEvent(NStr("en='Supplied data. Processing error';ru='Поставляемые данные.Ошибка обработки'", 
+		WriteLogEvent(NStr("en='Supplied data. Data processor error';ru='Поставляемые данные.Ошибка обработки'", 
 			CommonUseClientServer.MainLanguageCode()),
 			EventLogLevel.Error, 
 			,
 			, 
-			NStr("en='The transaction was not closed after completion of handler operation.';ru='По завершении выполнения обработчика не была закрыта транзакция'")
+			NStr("en='Upon completion of handler execution Transaction was not closed when the handler finished';ru='По завершении выполнения обработчика не была закрыта транзакция'")
 				 + Chars.LF + SuppliedData.GetDataDescription(Handle));
 			
 	EndIf;
@@ -234,10 +234,10 @@ Procedure ImportData(Val HandleXML) Export
 		// We postpone loading for 5 minutes.
 		Handle.RecommendedUpdateDate = CurrentUniversalDate() + 5 * 60;
 		ScheduleDataExport(Handle);
-		WriteLogEvent(NStr("en='Supplied data. Processing error';ru='Поставляемые данные.Ошибка обработки'", 
+		WriteLogEvent(NStr("en='Supplied data. Data processor error';ru='Поставляемые данные.Ошибка обработки'", 
 			CommonUseClientServer.MainLanguageCode()), 
 			EventLogLevel.Information, , ,
-			NStr("en='Data processing will be launched once again due to the handler error.';ru='Обработка данных будет запущена повторно из-за ошибки обработчика.'")
+			NStr("en='Data processing will be restarted due to handler error.';ru='Обработка данных будет запущена повторно из-за ошибки обработчика.'")
 			 + Chars.LF + SuppliedData.GetDataDescription(Handle));
 	Else
 		SetRawData.Clear();
@@ -284,7 +284,7 @@ Procedure NotifyAboutCancelProcessing(Val Handler, Val Handle)
 	
 	Try
 		Handler.Handler.DataProcessingCanceled(Handle);
-		WriteLogEvent(NStr("en='Supplied data. Processing cancellation';ru='Поставляемые данные.Отмена обработки'", 
+		WriteLogEvent(NStr("en='Supplied data. Cancel processor';ru='Поставляемые данные.Отмена обработки'", 
 			CommonUseClientServer.MainLanguageCode()), 
 			EventLogLevel.Information, ,
 			, SuppliedData.GetDataDescription(Handle)
@@ -292,7 +292,7 @@ Procedure NotifyAboutCancelProcessing(Val Handler, Val Handle)
 			NStr("en='Handler code: %1';ru='Код обработчика: %1'"), Handler.ProcessorCode));
 	
 	Except
-		WriteLogEvent(NStr("en='Supplied data. Processing cancellation';ru='Поставляемые данные.Отмена обработки'", 
+		WriteLogEvent(NStr("en='Supplied data. Cancel processor';ru='Поставляемые данные.Отмена обработки'", 
 			CommonUseClientServer.MainLanguageCode()), 
 			EventLogLevel.Error, ,
 			, DetailErrorDescription(ErrorInfo())

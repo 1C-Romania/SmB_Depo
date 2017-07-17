@@ -9,7 +9,7 @@ Procedure OnCreateAtServer(Cancel, StandardProcessing)
 	EndIf;
 	
 	If Not Parameters.Property("OpenByScenario") Then
-		Raise NStr("en='Data processor is not aimed for being used directly';ru='Обработка не предназначена для непосредственного использования.'");
+		Raise NStr("en='Data processor is not intended for direct usage.';ru='Обработка не предназначена для непосредственного использования.'");
 	EndIf;
 	
 	SkipExit = Parameters.SkipExit;
@@ -25,7 +25,7 @@ Procedure OnCreateAtServer(Cancel, StandardProcessing)
 	If Parameters.Done Then
 		Items.QuestionText.Visible = False;
 		Items.FormNo.Visible     = False;
-		Title = NStr("en='It is required to update platform version';ru='Необходимо обновить версию платформы'");
+		Title = NStr("en='Update platform version';ru='Необходимо обновить версию платформы'");
 	EndIf;
 	
 	If (ClientApplicationInterfaceCurrentVariant() <> ClientApplicationInterfaceVariant.Taxi) Then

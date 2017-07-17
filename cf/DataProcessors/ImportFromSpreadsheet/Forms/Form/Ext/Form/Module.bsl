@@ -168,7 +168,7 @@ Procedure ReadFileSourceEnd(Exist, AdditionalParameters) Export
 			LineCount = SourceText.LineCount();
 			If LineCount < 1 Then
 				
-				MessageText = NStr("en='There is no data in the file!';ru='В файле нет данных!'");
+				MessageText = NStr("en='No data in the file.';ru='В файле нет данных!'");
 				SmallBusinessServer.ShowMessageAboutError(, MessageText);
 				
 			Else
@@ -193,7 +193,7 @@ Procedure ReadFileSourceEnd(Exist, AdditionalParameters) Export
 		
 	Else
 		
-		MessageText = NStr("en='File %File% does not exist!';ru='Файла %File% не существует!'");
+		MessageText = NStr("en='The %File% file does not exist.';ru='Файла %File% не существует!'");
 		MessageText = StrReplace(MessageText, "%File%", File);
 		SmallBusinessServer.ShowMessageAboutError(, MessageText);
 		
@@ -264,7 +264,7 @@ Procedure FillImportingList()
 					StringNumber = StrReplace(StringNumber, " ", "");
 					StringNumber = StrReplace(StringNumber, "'", "");
 					If Number(StringNumber) = 0 Then
-						MessageText = NStr("en='String No%LineNumber% can not be imported because value in the %ColumnNo% column is equal to 0.';ru='Строка №%НомерСтроки% не может быть загружена, т.к. значение в колонке ""%НомерКолонки%"" равно 0.'");
+						MessageText = NStr("en='Cannot import row No%LineNumber% because the value in the %ColumnNo% column is 0.';ru='Строка №%НомерСтроки% не может быть загружена, т.к. значение в колонке ""%НомерКолонки%"" равно 0.'");
 						MessageText = StrReplace(MessageText, "%LineNumber%", String(RowCounter+1));
 						MessageText = StrReplace(MessageText, "%ColumnNumber%", ColumnNumber+1);
 						Message = New UserMessage;
@@ -273,7 +273,7 @@ Procedure FillImportingList()
 						Continue;
 					EndIf;
 				Except
-					MessageText = NStr("en='String No%LineNumber% can not be imported because value in the %ColumnNo% column is not a number.';ru='Строка №%НомерСтроки% не может быть загружена, т.к. значение в колонке ""%НомерКолонки%"" не является числом.'");
+					MessageText = NStr("en='Cannot import row No%LineNumber% because value in the %ColumnNo% column is not a number.';ru='Строка №%НомерСтроки% не может быть загружена, т.к. значение в колонке ""%НомерКолонки%"" не является числом.'");
 					MessageText = StrReplace(MessageText, "%LineNumber%", String(RowCounter+1));
 					MessageText = StrReplace(MessageText, "%ColumnNumber%", ColumnNumber+1);
 					Message = New UserMessage;
@@ -651,7 +651,7 @@ Procedure GreetingNext(Command)
 	If AttachFileSystemExtension() AND
 		Not ValueIsFilled(PathToFile) Then
 		
-		MessageText = NStr("en='First specify path to the file to load!';ru='Вначале укажите путь к файлу загрузки!'");
+		MessageText = NStr("en='First specify path to the import file.';ru='Вначале укажите путь к файлу загрузки!'");
 		ShowMessageBox(Undefined,MessageText);
 		Return;
 		

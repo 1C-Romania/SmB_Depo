@@ -49,7 +49,7 @@ Procedure OnOpen(Cancel)
 		EndIf;
 		MessageText = StringFunctionsClientServer.SubstituteParametersInString(
 							ErrorTemplate, ErrorDetails.Code, ErrorDetails.Message);
-		Operation = NStr("en='Receiving bank certificates';ru='Получение банковских сертификатов'");
+		Operation = NStr("en='Receive bank certificates';ru='Получение банковских сертификатов'");
 		DetailErrorDescription = DetailErrorDescription(ErrorInfo());
 		ElectronicDocumentsServiceCallServer.ProcessExceptionByEDOnServer(
 			Operation, DetailErrorDescription, MessageText, 1);
@@ -189,7 +189,7 @@ Procedure ContinueReceivingCertificate(Authentication, Parameters) Export
 		EndIf;
 		MessageText = StringFunctionsClientServer.SubstituteParametersInString(
 							ErrorTemplate, ErrorDetails.Code, ErrorDetails.Message);
-		Operation = NStr("en='Receiving additional certificate data';ru='Получение дополнительных данных сертификата'");
+		Operation = NStr("en='Receive additional certificate data';ru='Получение дополнительных данных сертификата'");
 		DetailErrorDescription = DetailErrorDescription(ErrorInfo());
 		ElectronicDocumentsServiceCallServer.ProcessExceptionByEDOnServer(
 							Operation, DetailErrorDescription, MessageText, 1);

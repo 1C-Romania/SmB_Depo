@@ -432,7 +432,7 @@ Procedure OnTransferringToFolderExecution(TransportParameters, Attachments) Expo
 	EndDo;
 	
 	Comment = StringFunctionsClientServer.SubstituteParametersInString(
-		NStr("en='Report mailing %1 from %2';ru='Рассылка отчетов %1 от %2'"),
+		NStr("en='Mailing reports %1 from %2';ru='Рассылка отчетов %1 от %2'"),
 		"'"+ TransportParameters.Mailing +"'",
 		Format(TransportParameters.ExecutionDate, "DLF=DT"));
 	
@@ -689,7 +689,7 @@ Procedure OnFillingInPossibleRightsForObjectRightsSettings(PossibleRights) Expor
 	Right.RightsOwner  = "Catalog.FileFolders";
 	Right.Name           = "Read";
 	Right.Title     = NStr("en='Read';ru='Чтение'");
-	Right.ToolTip     = NStr("en='Folders and files reading';ru='Чтение папок и файлов'");
+	Right.ToolTip     = NStr("en='Reading folders and files';ru='Чтение папок и файлов'");
 	Right.InitialValue = True;
 	// Rights for standard templates of access restrictions.
 	Right.ReadingInTables.Add("*");
@@ -698,7 +698,7 @@ Procedure OnFillingInPossibleRightsForObjectRightsSettings(PossibleRights) Expor
 	Right = PossibleRights.Add();
 	Right.RightsOwner  = "Catalog.FileFolders";
 	Right.Name           = "FoldersUpdate";
-	Right.Title     = NStr("en='Folders update';ru='Изменение папок'");
+	Right.Title     = NStr("en='Folder change';ru='Изменение папок'");
 	Right.ToolTip     = NStr("en='Addition, change
 		|and deletion mark of files folders';ru='Добавление, изменение и пометка удаления папок файлов'");
 	// Rights required for this right.
@@ -710,8 +710,8 @@ Procedure OnFillingInPossibleRightsForObjectRightsSettings(PossibleRights) Expor
 	Right = PossibleRights.Add();
 	Right.RightsOwner  = "Catalog.FileFolders";
 	Right.Name           = "FilesUpdate";
-	Right.Title     = NStr("en='Files update';ru='Изменение файлов'");
-	Right.ToolTip     = NStr("en='Files editing in folder';ru='Изменение файлов в папке'");
+	Right.Title     = NStr("en='File change';ru='Изменение файлов'");
+	Right.ToolTip     = NStr("en='Change files in folder';ru='Изменение файлов в папке'");
 	// Rights required for this right.
 	Right.RequiredRights.Add("Read");
 	// Rights for standard templates of access restrictions.
@@ -721,8 +721,8 @@ Procedure OnFillingInPossibleRightsForObjectRightsSettings(PossibleRights) Expor
 	Right = PossibleRights.Add();
 	Right.RightsOwner  = "Catalog.FileFolders";
 	Right.Name           = "FilesAdd";
-	Right.Title     = NStr("en='Files add';ru='Добавление файлов'");
-	Right.ToolTip     = NStr("en='Adding files to folder';ru='Добавление файлов в папку'");
+	Right.Title     = NStr("en='Add files';ru='Добавление файлов'");
+	Right.ToolTip     = NStr("en='Add files to folder';ru='Добавление файлов в папку'");
 	// Rights required for this right.
 	Right.RequiredRights.Add("FilesUpdate");
 	
@@ -731,15 +731,15 @@ Procedure OnFillingInPossibleRightsForObjectRightsSettings(PossibleRights) Expor
 	Right.RightsOwner  = "Catalog.FileFolders";
 	Right.Name           = "FileDeletionMark";
 	Right.Title     = NStr("en='Deletion mark';ru='ПометкаУдаления'");
-	Right.ToolTip     = NStr("en='Deletion mark of files in folder';ru='Пометка удаления файлов в папке'");
+	Right.ToolTip     = NStr("en='File deletion mark in the folder';ru='Пометка удаления файлов в папке'");
 	// Rights required for this right.
 	Right.RequiredRights.Add("FilesUpdate");
 	
 	Right = PossibleRights.Add();
 	Right.RightsOwner  = "Catalog.FileFolders";
 	Right.Name           = "RightsManagement";
-	Right.Title     = NStr("en='Rights management';ru='Управление правами'");
-	Right.ToolTip     = NStr("en='Folder rights management';ru='Управление правами папки'");
+	Right.Title     = NStr("en='Right management';ru='Управление правами'");
+	Right.ToolTip     = NStr("en='Folder right management';ru='Управление правами папки'");
 	// Rights required for this right.
 	Right.RequiredRights.Add("Read");
 	
@@ -874,7 +874,7 @@ Procedure AtFillingToDoList(CurrentWorks) Export
 		Work = CurrentWorks.Add();
 		Work.ID  = IdentifierEditedFiles;
 		Work.ThereIsWork       = CountEmployedFiles > 0;
-		Work.Presentation  = NStr("en='Edited files';ru='Редактируемые файлы'");
+		Work.Presentation  = NStr("en='Files being edited';ru='Редактируемые файлы'");
 		Work.Quantity     = CountEmployedFiles;
 		Work.Important         = False;
 		Work.Form          = "Catalog.Files.Form.EditableFiles";
@@ -897,7 +897,7 @@ Function GetEncodingsList() Export
 
 	EncodingsList = New ValueList;
 	
-	EncodingsList.Add("ibm852",       NStr("en='IBM852 (Central European  DOS)';ru='IBM852 (Центральноевропейская DOS)'"));
+	EncodingsList.Add("ibm852",       NStr("en='IBM852 (Central European DOS)';ru='IBM852 (Центральноевропейская DOS)'"));
 	EncodingsList.Add("ibm866",       NStr("en='IBM866 (Cyrillic DOS)';ru='IBM866 (Кириллица DOS)'"));
 	EncodingsList.Add("iso-8859-1",   NStr("en='ISO-8859-1 (Western European ISO)';ru='ISO-8859-1 (Западноевропейская ISO)'"));
 	EncodingsList.Add("iso-8859-2",   NStr("en='ISO-8859-2 (Central European ISO)';ru='ISO-8859-2 (Центральноевропейская ISO)'"));
@@ -1249,7 +1249,7 @@ EndFunction
 //
 Function EventLogMonitorForExchange() 
 	
-	Return NStr("en='Files. Failed to send the file when exchanging the data';ru='Файлы.Не удалось отправить файл при обмене данными'", CommonUseClientServer.MainLanguageCode());
+	Return NStr("en='Files.Cannot send the file during data exchange';ru='Файлы.Не удалось отправить файл при обмене данными'", CommonUseClientServer.MainLanguageCode());
 	
 EndFunction
 

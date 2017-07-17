@@ -189,7 +189,7 @@ Procedure CheckAccount(Val UserAccount) Export
 	
 	ClearMessages();
 	
-	Status(NStr("en='Check email account';ru='Проверка учетной записи'"),,NStr("en='Account is being checked. Please wait...';ru='Выполняется проверка учетной записи. Пожалуйста, подождите..'"));
+	Status(NStr("en='Check account';ru='Проверка учетной записи'"),,NStr("en='Checking the account. Please wait...';ru='Выполняется проверка учетной записи. Пожалуйста, подождите..'"));
 	
 	If EmailOperationsServerCall.PasswordIsAssigned(UserAccount) Then
 		CheckPossibilityOfSendingAndReceivingOfEmails(Undefined, UserAccount, Undefined);
@@ -217,12 +217,12 @@ Procedure CheckPossibilityOfSendingAndReceivingOfEmails(ResultHandler, UserAccou
 			NStr("en='Account parameters have been checked
 		|with errors: %1';ru='Проверка параметров учетной
 		|записи завершилась с ошибками: %1'"), ErrorInfo ),,
-			NStr("en='Check email account';ru='Проверка учетной записи'"));
+			NStr("en='Check account';ru='Проверка учетной записи'"));
 	Else
 		ShowMessageBox(ResultHandler, StringFunctionsClientServer.SubstituteParametersInString(
-			NStr("en='Account parameters have been checked successfully. %1';ru='Проверка параметров учетной записи завершилась успешно. %1'"),
+			NStr("en='Account parameter check is completed successfully. %1';ru='Проверка параметров учетной записи завершилась успешно. %1'"),
 			AdditionalMessage),,
-			NStr("en='Check email account';ru='Проверка учетной записи'"));
+			NStr("en='Check account';ru='Проверка учетной записи'"));
 	EndIf;
 	
 EndProcedure

@@ -791,7 +791,7 @@ Procedure ProcessContractChange(ContractData = Undefined)
 		
 		If QueryBoxPrepayment = True Then
 			
-			QuestionText = NStr("en='Prepayment set-off will be cleared, do you want to continue?';ru='Зачет предоплаты будет очищен, продолжить?'");
+			QuestionText = NStr("en='Prepayment setoff will be cleared, continue?';ru='Зачет предоплаты будет очищен, продолжить?'");
 			
 			NotifyDescription = New NotifyDescription("DefineAdvancePaymentOffsetsRefreshNeed", ThisObject, DocumentParameters);
 			ShowQueryBox(NOTifyDescription, QuestionText, QuestionDialogMode.YesNo);
@@ -1242,7 +1242,7 @@ EndProcedure // FixedAssetsAmountOnChange()
 Procedure Calculate(Command)
 	
 	If Object.Posted Then
-		ShowMessageBox(Undefined,NStr("en='Depreciation calculation is possible only in non-posted document';ru='Рассчет амортизации возможен только в непроведенном документе.'"));
+		ShowMessageBox(Undefined,NStr("en='Depreciation can be calculated only in non-posted document.';ru='Рассчет амортизации возможен только в непроведенном документе.'"));
 		Return;
 	EndIf;
 	

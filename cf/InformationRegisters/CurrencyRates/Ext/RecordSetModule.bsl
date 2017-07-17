@@ -151,12 +151,12 @@ Function CurrencyRateAccordingToFormula(Currency, Formula, Period)
 			RateCalculationErrorByFormula.Insert(Currency, True);
 			ErrorInfo = ErrorInfo();
 			ErrorText = StringFunctionsClientServer.SubstituteParametersInString(
-				NStr("en='Exchange rate of ""%1"" currency is not calculated according to formula ""%2"":';ru='Расчет курса валюты ""%1"" по формуле ""%2"" не выполнен:'", CommonUseClientServer.MainLanguageCode()), Currency, Formula);
+				NStr("en='Calculation of exchange rate ""%1"" using formula ""%2"" is not executed:';ru='Расчет курса валюты ""%1"" по формуле ""%2"" не выполнен:'", CommonUseClientServer.MainLanguageCode()), Currency, Formula);
 			CommonUseClientServer.MessageToUser(ErrorText + Chars.LF + BriefErrorDescription(ErrorInfo), Currency, "Object.RateCalculationFormula");
 			If AdditionalProperties.Property("UpdateDependentCurrencyRate") Then
 				Raise ErrorText + Chars.LF + BriefErrorDescription(ErrorInfo);
 			Else
-				WriteLogEvent(NStr("en='Currencies. Import exchange rates ';ru='Валюты.Загрузка курсов валют'", CommonUseClientServer.MainLanguageCode()),
+				WriteLogEvent(NStr("en='Currency.Exchange rates import';ru='Валюты.Загрузка курсов валют'", CommonUseClientServer.MainLanguageCode()),
 					EventLogLevel.Error, Currency.Metadata(), Currency, 
 					ErrorText + Chars.LF + DetailErrorDescription(ErrorInfo));
 			EndIf;

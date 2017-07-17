@@ -612,8 +612,7 @@ Procedure ProcessRolesInterface(Action, Parameters) Export
 		FillRoles(Parameters);
 	Else
 		Raise StringFunctionsClientServer.SubstituteParametersInString(
-			NStr("en='Error in the UsersService procedure.RolesInterfaceProcessor()
-		|Incorrect value of the Action parameter: %1.';ru='Ошибка в процедуре ПользователиСлужебный.ОбработатьИнтерфейсРолей() Неверное значение параметра Действие: ""%1"".'"),
+			NStr("en='An error occurred in the UsersService.RolesInterfaceProcessor() procedure Incorrect value of the Action parameter: %1.';ru='Ошибка в процедуре ПользователиСлужебный.ОбработатьИнтерфейсРолей() Неверное значение параметра Действие: ""%1"".'"),
 			Action);
 	EndIf;
 	
@@ -764,7 +763,7 @@ Procedure AtFillingToDoList(CurrentWorks) Export
 		Work.ID  = UsersID;
 		Work.ThereIsWork       = IncorrectUsers > 0;
 		Work.Quantity     = IncorrectUsers;
-		Work.Presentation  = NStr("en='Incorrect information about users';ru='Некорректные сведения о пользователях'");
+		Work.Presentation  = NStr("en='Incorrect information on users';ru='Некорректные сведения о пользователях'");
 		Work.Form          = "Catalog.Users.Form.IBUsers";
 		Work.Owner       = Section;
 		
@@ -1369,7 +1368,7 @@ Procedure BeginOfDBUserProcessing(UserObject,
 	
 	ProcessingParameters.Insert("UserDeletingFromCatalog", UserDeletingFromCatalog);
 	ProcessingParameters.Insert("MessageTextNotEnoughRights",
-		NStr("en='Insufficient rights to change the infobase user.';ru='Недостаточно прав для изменения пользователя информационной базы.'"));
+		NStr("en='Insufficient rights to change infobase user.';ru='Недостаточно прав для изменения пользователя информационной базы.'"));
 	
 	If AdditionalProperties.Property("CopyingValue")
 	   AND ValueIsFilled(AdditionalProperties.CopyingValue)
@@ -1913,7 +1912,7 @@ Function CheckIBUserFullName(Val IBUserDescription, Cancel) Export
 		If IsBlankString(Name) Then
 			// Settings storage uses only first 64 name characters of IB user.
 			CommonUseClientServer.MessageToUser(
-				NStr("en='Name is not filled (to enter).';ru='Не заполнено Имя (для входа).'"),
+				NStr("en='Login is not entered.';ru='Не заполнено Имя (для входа).'"),
 				,
 				"Name",
 				,
@@ -1923,7 +1922,7 @@ Function CheckIBUserFullName(Val IBUserDescription, Cancel) Export
 			// Authentication via web
 			// uses : character as a separator of name and user’s password.
 			CommonUseClientServer.MessageToUser(
-				NStr("en='Name (for entrance) exceeds 64 symbols.';ru='Имя (для входа) превышает 64 символа.'"),
+				NStr("en='Login cannot exceed 64 characters.';ru='Имя (для входа) превышает 64 символа.'"),
 				,
 				"Name",
 				,
@@ -1931,7 +1930,7 @@ Function CheckIBUserFullName(Val IBUserDescription, Cancel) Export
 			
 		ElsIf Find(Name, ":") > 0 Then
 			CommonUseClientServer.MessageToUser(
-				NStr("en='Name (for login) contains prohibited character :.';ru='Имя (для входа) содержит запрещенный символ "":"".'"),
+				NStr("en='Login contains invalid character "":"".';ru='Имя (для входа) содержит запрещенный символ "":"".'"),
 				,
 				"Name",
 				,
@@ -1953,10 +1952,10 @@ Function CheckIBUserFullName(Val IBUserDescription, Cancel) Export
 				If FoundUser = Undefined
 				 OR Not Users.InfobaseUserWithFullAccess() Then
 					
-					ErrorText = NStr("en='Name (for login) is already occupied.';ru='Имя (для входа) уже занято.'");
+					ErrorText = NStr("en='Login is already in use.';ru='Имя (для входа) уже занято.'");
 				Else
 					ErrorText = StringFunctionsClientServer.SubstituteParametersInString(
-						NStr("en='Name (for login) is not available %1.';ru='Имя (для входа) уже занято для пользователя ""%1"".'"),
+						NStr("en='Login is already used by user ""%1"".';ru='Имя (для входа) уже занято для пользователя ""%1"".'"),
 						String(FoundUser));
 				EndIf;
 				
@@ -1973,7 +1972,7 @@ Function CheckIBUserFullName(Val IBUserDescription, Cancel) Export
 			  <> IBUserDescription.PasswordConfirmation Then
 			
 			CommonUseClientServer.MessageToUser(
-				NStr("en='Password and password confirmation do not match';ru='Пароль и подтверждение пароля не совпадают.'"),
+				NStr("en='Password and password confirmation do not match.';ru='Пароль и подтверждение пароля не совпадают.'"),
 				,
 				"Password",
 				,
@@ -2659,7 +2658,7 @@ Procedure RefreshRolesOfExternalUsers(Val ExternalUserArray = Undefined) Export
 				String(Selection.ExternalUserGroup));
 			
 			WriteLogEvent(
-				NStr("en='Users.Role is not found in the metadata';ru='Пользователи.Роль не найдена в метаданных'",
+				NStr("en='Users.Role was not found in metadata';ru='Пользователи.Роль не найдена в метаданных'",
 				     CommonUseClientServer.MainLanguageCode()),
 				EventLogLevel.Error,
 				,
@@ -2774,7 +2773,7 @@ Function AuthorizationObjectInUse(Val AuthorizationObjectRef,
 	Result = Table.Count() > 0;
 	If Result Then
 		ErrorText = StringFunctionsClientServer.SubstituteParametersInString(
-			NStr("en='External user connected to object %1 already exists.';ru='Уже существует внешний пользователь, связанный с объектом ""%1"".'"),
+			NStr("en='External user related to object ""%1"" already exists.';ru='Уже существует внешний пользователь, связанный с объектом ""%1"".'"),
 			AuthorizationObjectRef);
 		EndIf;
 	Return Result;
@@ -2921,10 +2920,10 @@ Function UserTransferToNewGroup(UserArray, GroupSource,
 	
 	If DisplacedUsersArray.Count() = 0 AND ArrayIsNotDisplacedUsers.Count() = 0 Then
 		If UserArray.Count() = 1 Then
-			MessageText = NStr("en='User %1 is included in the group %2.';ru='Пользователь ""%1"" уже включен в группу ""%2"".'");
+			MessageText = NStr("en='User ""%1"" is already a member of group ""%2"".';ru='Пользователь ""%1"" уже включен в группу ""%2"".'");
 			NameRoamingUser = CommonUse.ObjectAttributeValue(UserArray[0], "Description");
 		Else
-			MessageText = NStr("en='All selected users are already included in group %2.';ru='Все выбранные пользователи уже включены в группу ""%2"".'");
+			MessageText = NStr("en='All the selected users are already included in group ""%2"".';ru='Все выбранные пользователи уже включены в группу ""%2"".'");
 			NameRoamingUser = "";
 		EndIf;
 		GroupDescription = CommonUse.ObjectAttributeValue(GroupReceiver, "Description");
@@ -3086,11 +3085,11 @@ Function GeneratingMessageToUser(UserArray, GroupReceiver,
 			UserTypeIsSameAsWithGroup = (TypeOf(ArrayIsNotDisplacedUsers[0].AuthorizationObject) = 
 												TypeOf(GroupReceiver.TypeOfAuthorizationObjects));
 			UserNotification.Users = Undefined;
-			UserMessage = NStr("en='User %1 can not be included in group %2,';ru='Пользователь ""%1"" не может быть включен в группу ""%2"",'");
+			UserMessage = NStr("en='User ""%1"" cannot be included in group ""%2"",';ru='Пользователь ""%1"" не может быть включен в группу ""%2"",'");
 			UserMessage = UserMessage + Chars.LF + 
 									?(NOT UserTypeIsSameAsWithGroup, 
-									NStr("en='T.k. its participants structure includes only %3.';ru='Т.к. в состав ее участников входят только %3.'"),
-									NStr("en='T.k. group has ""All users of the specified type"" flag.';ru='Т.к. у группы стоит признак ""Все пользователи заданного типа"".'"));
+									NStr("en='because only %3 are its members.';ru='Т.к. в состав ее участников входят только %3.'"),
+									NStr("en='because the ""All users of the specified type"" check box is selected for the group.';ru='Т.к. у группы стоит признак ""Все пользователи заданного типа"".'"));
 		Else
 			Subject = "";
 			UserNotification.Users = StringFunctionsClientServer.RowFromArraySubrows(ArrayIsNotDisplacedUsers, Chars.LF);
@@ -3117,10 +3116,10 @@ Function GeneratingMessageToUser(UserArray, GroupReceiver,
 		RowObject = CommonUse.ObjectAttributeValue(UserArray[0], "Description");
 		If GroupReceiver = Catalogs.UsersGroups.AllUsers
 			Or GroupReceiver = Catalogs.ExternalUsersGroups.AllExternalUsers Then
-			StringAction = NStr("en='excluded from group';ru='исключен из группы'");
+			StringAction = NStr("en='excluded from the group';ru='исключен из группы'");
 			GroupDescription = CommonUse.ObjectAttributeValue(GroupSource, "Description");
 		ElsIf Move Then
-			StringAction = NStr("en='moved to group';ru='перемещен в группу'");
+			StringAction = NStr("en='transferred to group';ru='перемещен в группу'");
 		Else
 			StringAction = NStr("en='included in group';ru='включен в группу'");
 		EndIf;
@@ -3130,12 +3129,12 @@ Function GeneratingMessageToUser(UserArray, GroupReceiver,
 		
 		RowObject = WordEndingGenerating(UserCount);
 		If GroupReceiver = Catalogs.UsersGroups.AllUsers Then
-			StringAction = NStr("en='Excluded from group';ru='исключены из группы'");
+			StringAction = NStr("en='excluded from the group';ru='исключены из группы'");
 			GroupDescription = CommonUse.ObjectAttributeValue(GroupSource, "Description");
 		ElsIf Move Then
-			StringAction = NStr("en='are moved to group';ru='перемещены в группу'");
+			StringAction = NStr("en='transferred to group';ru='перемещены в группу'");
 		Else
-			StringAction = NStr("en='include in goup';ru='включены в группу'");
+			StringAction = NStr("en='included in group';ru='включены в группу'");
 		EndIf;
 		UserMessage = NStr("en='%1 %2 ""%3""';ru='%1 %2 ""%3""'");
 	EndIf;
@@ -4464,14 +4463,14 @@ Procedure CheckUserRights(IBUser, CheckMode)
 					TableString);
 			EndIf;
 			
-			EventName = NStr("en='Users. Error when installing the roles for the IB users';ru='Пользователи.Ошибка при установке ролей пользователю ИБ'",
+			EventName = NStr("en='Users.An error occurred when assigning roles to the infobase user';ru='Пользователи.Ошибка при установке ролей пользователю ИБ'",
 			     CommonUseClientServer.MainLanguageCode());
 			WriteLogEvent(EventName, EventLogLevel.Error,, IBUser, MessageText);
 		EndIf;
 		
 		If UnavailableRoleProperty.Property("Rights") Then
 			
-			EventName = NStr("en='Users. Error when installing the roles for the IB users';ru='Пользователи.Ошибка при установке ролей пользователю ИБ'",
+			EventName = NStr("en='Users.An error occurred when assigning roles to the infobase user';ru='Пользователи.Ошибка при установке ролей пользователю ИБ'",
 			     CommonUseClientServer.MainLanguageCode());
 			
 			For Each Right IN UnavailableRoleProperty.Rights Do
@@ -4515,11 +4514,11 @@ Procedure CheckUserRights(IBUser, CheckMode)
 	
 	If DeletedRoles.Count() = 1 Then
 		RemovalMessageText = StringFunctionsClientServer.SubstituteParametersInString(
-			NStr("en='Unable to delete unavailable user role %1.';ru='Невозможно удалить недоступную роль у пользователя ""%1"".'"),
+			NStr("en='Cannot delete unavailable role of user ""%1"".';ru='Невозможно удалить недоступную роль у пользователя ""%1"".'"),
 			IBUser.FullName);
 	ElsIf DeletedRoles.Count() > 1 Then
 		RemovalMessageText = StringFunctionsClientServer.SubstituteParametersInString(
-			NStr("en='Unable to delete unavailable user roles  %1.';ru='Невозможно удалить недоступные роли у пользователя ""%1"".'"),
+			NStr("en='Cannot delete unavailable roles of user ""%1"".';ru='Невозможно удалить недоступные роли у пользователя ""%1"".'"),
 			IBUser.FullName);
 	EndIf;
 	
@@ -4538,7 +4537,7 @@ Procedure CheckUserRights(IBUser, CheckMode)
 			|" + RoleDescription.Role.Presentation();
 		EndDo;
 		AddingMessageText = StringFunctionsClientServer.SubstituteParametersInString(
-			NStr("en='Roles can not be added to user %1: %2.';ru='Пользователю ""%1"" не могут быть добавлены роли:%2.'"), 
+			NStr("en='Roles cannot be added to the ""%1"" user: %2.';ru='Пользователю ""%1"" не могут быть добавлены роли:%2.'"), 
 			IBUser.FullName,
 			Roles);
 	EndIf;

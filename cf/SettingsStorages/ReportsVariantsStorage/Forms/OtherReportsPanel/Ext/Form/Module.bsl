@@ -62,7 +62,7 @@ Procedure VariantPress(Item)
 		
 	ElsIf Not ValueIsFilled(Variant.ReportName) Then
 		
-		WarningText = StrReplace(NStr("en='Report name for option ""%1"" is not filled in.';ru='Не заполнено имя отчета для варианта ""%1"".'"), "%1", Variant.Description);
+		WarningText = StrReplace(NStr("en='Report name for the ""%1"" variant is not filled in.';ru='Не заполнено имя отчета для варианта ""%1"".'"), "%1", Variant.Description);
 		ShowMessageBox(, WarningText);
 		Return;
 		

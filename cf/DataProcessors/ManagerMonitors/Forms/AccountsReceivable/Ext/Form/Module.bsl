@@ -333,9 +333,9 @@ Procedure RefreshChartAndWidgetDebitorsByDeadlines()
 	
 	Point = ChartDebitorsOnTerms.Points.Add("Debt = ");
 	
-	DebtLessThan7 = "Up to 7 days";
-	DebtLessThan30 = "8 - 30 days";
-	DebtMoreThan31 = "from 31 day";
+	DebtLessThan7 = NStr("en = 'Up to 7 days'");
+	DebtLessThan30 = NStr("en = '8 - 30 days'");
+	DebtMoreThan31 = NStr("en = 'over 31 days'");
 	
 	Items.CounterpartiesOnTerms.Title = "";
 	Items.CounterpartiesOnTerms.ToolTip = "";
@@ -461,8 +461,8 @@ Procedure RefreshChartDebtDynamics()
 	While Selection.Next() Do
 		
 		Point = ChartDebtDynamics.Points.Add(Selection.Period);
-		Point.Text = Format(Selection.Period, "DF=dd.MM.yy");
-		ToolTip = "Debt " + Selection.AmountClosingBalance + " on " + Format(Selection.Period, "DF=dd.MM.yyyy");
+		Point.Text = Format(Selection.Period, "DLF=D");
+		ToolTip = "Debt " + Selection.AmountClosingBalance + " on " + Format(Selection.Period, "DLF=D");
 		ChartDebtDynamics.SetValue(Point, Series, Selection.AmountClosingBalance, , ToolTip);
 		 
 	EndDo;	

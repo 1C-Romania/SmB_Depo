@@ -26,8 +26,8 @@ Procedure ImportCurrencyClient(Response, AdditionalParameters) Export
 	ImportRates();
 	
 	ShowUserNotification(
-		NStr("en='Importing is scheduled.';ru='Загрузка запланирована.'"), ,
-		NStr("en='The exchange rates will be imported in the background mode within a short period of time.';ru='Курсы будут загружены в фоновом режиме через непродолжительное время.'"),
+		NStr("en='Import is scheduled.';ru='Загрузка запланирована.'"), ,
+		NStr("en='Rates will be imported in background after some time.';ru='Курсы будут загружены в фоновом режиме через непродолжительное время.'"),
 		PictureLib.Information32);
 	
 EndProcedure

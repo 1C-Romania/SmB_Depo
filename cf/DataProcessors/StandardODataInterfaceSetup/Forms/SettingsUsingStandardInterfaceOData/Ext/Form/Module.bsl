@@ -6,7 +6,7 @@ Procedure OnCreateAtServer(Cancel, StandardProcessing)
 	EndIf;
 	
 	If Not AccessRight("DataAdministration", Metadata) Then
-		Raise NStr("en='Insufficient rights to setup automatic REST-service';ru='Недостаточно прав для настройки автоматического REST-сервиса'");
+		Raise NStr("en='Insufficient rights to setup automatic REST service';ru='Недостаточно прав для настройки автоматического REST-сервиса'");
 	EndIf;
 	
 	AuthorizationSettings = DataProcessors.StandardODataInterfaceSetup.AuthorizationSettingsForStandardODataInterface();
@@ -210,12 +210,12 @@ Procedure FillCheckProcessingAtServer(Cancel, CheckedAttributes)
 		EndIf;
 		
 		If Not ValueIsFilled(PasswordConfirmation) Then
-			CommonUseClientServer.MessageToUser(NStr("en='Password confirmation is not indicated';ru='Не указано подтверждение пароля'"), , "PasswordConfirmation");
+			CommonUseClientServer.MessageToUser(NStr("en='Password confirmation is not specified';ru='Не указано подтверждение пароля'"), , "PasswordConfirmation");
 			Cancel = True;
 		EndIf;
 		
 		If ValueIsFilled(Password) AND ValueIsFilled(PasswordConfirmation) AND Password <> PasswordConfirmation Then
-			CommonUseClientServer.MessageToUser(NStr("en='Password confirmation does not match password';ru='Подтверждение пароля не совпадает с паролем'"), , "PasswordConfirmation");
+			CommonUseClientServer.MessageToUser(NStr("en='Password confirmation does not match the password';ru='Подтверждение пароля не совпадает с паролем'"), , "PasswordConfirmation");
 			Cancel = True;
 		EndIf;
 		
@@ -228,7 +228,7 @@ Procedure FillCheckProcessingAtServer(Cancel, CheckedAttributes)
 		RowFilter.Insert("Use", True);
 		Rows = Tree.Rows.FindRows(RowFilter, True);
 		If Rows.Count() = 0 Then
-			CommonUseClientServer.MessageToUser(NStr("en='No object is selected to which the access is allowed through automatic REST-service';ru='Не выбрано ни одного объекта, к которому разрешен доступ через автоматический REST-сервис'"), , "MetadataObjects");
+			CommonUseClientServer.MessageToUser(NStr("en='No object is selected to which access is allowed through automatic REST service';ru='Не выбрано ни одного объекта, к которому разрешен доступ через автоматический REST-сервис'"), , "MetadataObjects");
 			Cancel = True;
 		EndIf;
 		
@@ -280,7 +280,7 @@ Procedure SaveOnServer()
 			
 		Else
 			
-			Raise NStr("en='Password and password confirmation do not match!';ru='Пароль и подтверждение пароля не совпадают!'");
+			Raise NStr("en='Password and password confirmation do not match.';ru='Пароль и подтверждение пароля не совпадают!'");
 			
 		EndIf;
 		
@@ -330,7 +330,7 @@ Procedure BeforeClose(Cancel, StandardProcessing)
 		Cancel = True;
 		
 		Callback = New NotifyDescription("ContinueClosingAfterQuestion", ThisObject);
-		ShowQueryBox(Callback, NStr("en='Data was changed. Save changes?';ru='Данные были изменены. Сохранить изменения?'"), QuestionDialogMode.YesNoCancel);
+		ShowQueryBox(Callback, NStr("en='Data was changed. Save the changes?';ru='Данные были изменены. Сохранить изменения?'"), QuestionDialogMode.YesNoCancel);
 		
 	EndIf;
 	

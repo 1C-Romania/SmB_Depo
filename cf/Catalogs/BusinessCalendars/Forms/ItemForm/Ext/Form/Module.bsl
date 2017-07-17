@@ -68,7 +68,7 @@ Procedure CurrentYearNumberOnChange(Item)
 	WriteScheduleData = False;
 	If Modified Then
 		MessageText = StringFunctionsClientServer.SubstituteParametersInString(
-							NStr("en='Write modified data for %1 year?';ru='Записать измененные данные за %1 год?'"), 
+							NStr("en='Write the changed data for the year of %1?';ru='Записать измененные данные за %1 год?'"), 
 							Format(PreviousYearNumber, "NG=0"));
 		
 		Notification = New NotifyDescription("CurrentYearNumberOnChangeEnd", ThisObject);
@@ -130,9 +130,9 @@ Procedure MoveDay(Command)
 	DateChoiceParameters.Insert("InitialValue",			DestinationDate);
 	DateChoiceParameters.Insert("BeginOfRepresentationPeriod",	BegOfYear(Calendar));
 	DateChoiceParameters.Insert("EndOfRepresentationPeriod",		EndOfYear(Calendar));
-	DateChoiceParameters.Insert("Title",					NStr("en='Transfer date selection';ru='Выбор даты переноса'"));
+	DateChoiceParameters.Insert("Title",					NStr("en='Select transfer data';ru='Выбор даты переноса'"));
 	DateChoiceParameters.Insert("ExplanationText",				StringFunctionsClientServer.SubstituteParametersInString(
-																NStr("en='Select the date on which the day will be transferred %1 (%2)';ru='Выберите дату, на которую будет осуществлен перенос дня %1 (%2)'"), 
+																NStr("en='Select a date day %1 will be transferred to (%2)';ru='Выберите дату, на которую будет осуществлен перенос дня %1 (%2)'"), 
 																Format(DestinationDate, "DF=d MMMM'"), 
 																DayKind));
 	
@@ -397,7 +397,7 @@ Procedure FillPresentationTransfers(Form)
 		TypeOfDaySource = KindTransferDayPresentation(Form.DayKinds.Get(DateTransmitters), DateSource);
 		TypeOfDayReceiver = KindTransferDayPresentation(Form.DayKinds.Get(DateSource), DateTransmitters);
 		Form.ListTransfers.Add(DateSource, StringFunctionsClientServer.SubstituteParametersInString(
-															NStr("en='%1 (%3) transferred to %2 (%4)';ru='%1 (%3) перенесен на %2 (%4)'"),
+															NStr("en='%1 (%3) is transferred to %2 (%4)';ru='%1 (%3) перенесен на %2 (%4)'"),
 															Format(DateSource, "DF=d MMMM'"),
 															Format(DateTransmitters, "DF=d MMMM'"),
 															TypeOfDaySource,

@@ -26,23 +26,23 @@ Function TINMeetsTheRequirements(Val TIN, ThisLegalEntity, MessageText) Export
 	TINLength = StrLen(TIN);
 
 	If ThisLegalEntity = Undefined Then
-		MessageText = MessageText + NStr("en='Not defined TIN owner type.';ru='Не определен тип владельца ИНН.'");
+		MessageText = MessageText + NStr("en='TIN owner type is not specified.';ru='Не определен тип владельца ИНН.'");
 		Return False;
 	EndIf;
 	
 	If Not StringFunctionsClientServer.OnlyNumbersInString(TIN) Then
 		MeetsRequirements = False;
-		MessageText = MessageText + NStr("en='TIN should contain only numbers.';ru='ИНН должен состоять только из цифр.'");
+		MessageText = MessageText + NStr("en='TIN contains only digits.';ru='ИНН должен состоять только из цифр.'");
 	EndIf;
 
 	If  ThisLegalEntity AND TINLength <> 10 Then
 		MeetsRequirements = False;
 		MessageText = MessageText + ?(ValueIsFilled(MessageText), Chars.LF, "")
-			+ NStr("en='TIN of legal entity should contain 10 numbers.';ru='ИНН юридического лица должен состоять из 10 цифр.'");
+			+ NStr("en='TIN of a legal entity must contain 10 digits.';ru='ИНН юридического лица должен состоять из 10 цифр.'");
 	ElsIf Not ThisLegalEntity AND TINLength <> 12 Then
 		MeetsRequirements = False;
 		MessageText = MessageText + ?(ValueIsFilled(MessageText), Chars.LF, "")
-			+ NStr("en='Individual TIN should contain 12 number.';ru='ИНН физического лица должен состоять из 12 цифр.'");
+			+ NStr("en='TIN of an individual must contain 12 digits.';ru='ИНН физического лица должен состоять из 12 цифр.'");
 	EndIf;
 
 	If MeetsRequirements Then
@@ -83,7 +83,7 @@ Function TINMeetsTheRequirements(Val TIN, ThisLegalEntity, MessageText) Export
 			If CheckDigit <> Number(Mid(TIN, 10, 1)) Then
 				MeetsRequirements = False;
 				MessageText = MessageText + ?(ValueIsFilled(MessageText), Chars.LF, "")
-				               + NStr("en='Check number for TIN not matches with calculated.';ru='Контрольное число для ИНН не совпадает с рассчитанным.'");
+				               + NStr("en='Check digit of TIN does not match the calculated value.';ru='Контрольное число для ИНН не совпадает с рассчитанным.'");
 			EndIf;
 
 		Else
@@ -141,7 +141,7 @@ Function TINMeetsTheRequirements(Val TIN, ThisLegalEntity, MessageText) Export
 			If CheckDigit11 <> Number(Mid(TIN,11,1)) OR CheckDigit12 <> Number(Mid(TIN,12,1)) Then
 				MeetsRequirements = False;
 				MessageText = MessageText + ?(ValueIsFilled(MessageText), Chars.LF, "")
-				               + NStr("en='Check number for TIN not matches with calculated.';ru='Контрольное число для ИНН не совпадает с рассчитанным.'");
+				               + NStr("en='Check digit of TIN does not match the calculated value.';ru='Контрольное число для ИНН не совпадает с рассчитанным.'");
 			EndIf;
 
 		EndIf;
@@ -172,23 +172,23 @@ Function MSRNMeetsTheRequirements(Val OGRN, ThisLegalEntity, MessageText) Export
 	OGRNLength = StrLen(OGRN);
 	
 	If ThisLegalEntity = Undefined Then
-		MessageText = MessageText + NStr("en='Not defined MNSR owner type.';ru='Не определен тип владельца ОГРН.'");
+		MessageText = MessageText + NStr("en='OGRN owner type is not defined.';ru='Не определен тип владельца ОГРН.'");
 		Return False;
 	EndIf;
 
 	If Not StringFunctionsClientServer.OnlyNumbersInString(OGRN) Then
 		MeetsRequirements = False;
-		MessageText = MessageText + NStr("en='MSRN should contain only numbers.';ru='ОГРН должен состоять только из цифр.'")
+		MessageText = MessageText + NStr("en='OGRN should contain only digits.';ru='ОГРН должен состоять только из цифр.'")
 	EndIf;
 
 	If ThisLegalEntity AND OGRNLength <> 13 Then
 		MeetsRequirements = False;
 		MessageText = MessageText + ?(ValueIsFilled(MessageText), Chars.LF, "")
-		               + NStr("en='Legal entity MSRN should contain only 13 numbers.';ru='ОГРН юридического лица должен состоять из 13 цифр.'");
+		               + NStr("en='OGRN of legal entity should contain 13 digits.';ru='ОГРН юридического лица должен состоять из 13 цифр.'");
 	ElsIf Not ThisLegalEntity AND OGRNLength <> 15 Then
 		MeetsRequirements = False;
 		MessageText = MessageText + ?(ValueIsFilled(MessageText), Chars.LF, "")
-		               + NStr("en='Individual MSRN should contain only 15 numbers.';ru='ОГРН физического лица должен состоять из 15 цифр.'");
+		               + NStr("en=""Individual's OGRN should contain 15 digits."";ru='ОГРН физического лица должен состоять из 15 цифр.'");
 	EndIf;
 
 	If MeetsRequirements Then
@@ -200,7 +200,7 @@ Function MSRNMeetsTheRequirements(Val OGRN, ThisLegalEntity, MessageText) Export
 			If CheckDigit <> Right(OGRN, 1) Then
 				MeetsRequirements = False;
 				MessageText = MessageText + ?(ValueIsFilled(MessageText), Chars.LF, "")
-				               + NStr("en='Check number for MSRN not matches with calculated.';ru='Контрольное число для ОГРН не совпадает с рассчитанным.'");
+				               + NStr("en='Check digit of OGRN does not match the calculated value.';ru='Контрольное число для ОГРН не совпадает с рассчитанным.'");
 			EndIf;
 
 		Else
@@ -210,7 +210,7 @@ Function MSRNMeetsTheRequirements(Val OGRN, ThisLegalEntity, MessageText) Export
 			If CheckDigit <> Right(OGRN, 1) Then
 				MeetsRequirements = False;
 				MessageText = MessageText + ?(ValueIsFilled(MessageText), Chars.LF, "")
-				               + NStr("en='Check number for MSRN not matches with calculated.';ru='Контрольное число для ОГРН не совпадает с рассчитанным.'");
+				               + NStr("en='Check digit of OGRN does not match the calculated value.';ru='Контрольное число для ОГРН не совпадает с рассчитанным.'");
 			EndIf;
 
 		EndIf;
@@ -235,17 +235,17 @@ Function PFRInsuaranceNumberMeetsTheRequirements(Val InsuranceNumber, MessageTex
 	RowOfDigits = StrReplace(RowOfDigits, " ", "");
 	
 	If IsBlankString(RowOfDigits) Then
-		MessageText = MessageText + NStr("en='Insurance number is not filled in';ru='Страховой номер не заполнен'");
+		MessageText = MessageText + NStr("en='Insurance number was not specified';ru='Страховой номер не заполнен'");
 		Return False;
 	EndIf;
 	
 	If StrLen(RowOfDigits) < 11 Then
-		MessageText = MessageText + NStr("en='Insurance number is specified incompletely';ru='Страховой номер задан неполностью'");
+		MessageText = MessageText + NStr("en='Insurance number incomplete';ru='Страховой номер задан неполностью'");
 		Return False;
 	EndIf;
 	
 	If Not StringFunctionsClientServer.OnlyNumbersInString(RowOfDigits) Then
-		MessageText = MessageText + NStr("en='Insurance number should contain only numbers.';ru='Страховой номер должен состоять только из цифр.'");
+		MessageText = MessageText + NStr("en='Insurance number must contain only digits.';ru='Страховой номер должен состоять только из цифр.'");
 		Return False;
 	EndIf;
 	
@@ -259,7 +259,7 @@ Function PFRInsuaranceNumberMeetsTheRequirements(Val InsuranceNumber, MessageTex
 		Balance = Total % 101;
 		Balance = ?(Balance = 100, 0, Balance);
 		If Balance <> ChecksumNumber Then
-			MessageText = MessageText + NStr("en='Check number for insurance number does not match the calculated one.';ru='Контрольное число для страхового номера не совпадает с рассчитанным.'");
+			MessageText = MessageText + NStr("en='Check digit of insurance number does not match the calculated value.';ru='Контрольное число для страхового номера не совпадает с рассчитанным.'");
 			Return False;
 		EndIf;
 	EndIf;

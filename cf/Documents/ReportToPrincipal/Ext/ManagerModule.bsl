@@ -395,9 +395,9 @@ Procedure GenerateTableManagerial(DocumentRefReportToCommissioner, StructureAddi
 	|	LineNumber";
 	
 	Query.SetParameter("ExchangeDifference", NStr("en='Exchange rate difference';ru='Курсовая разница'"));
-	Query.SetParameter("SetOffAdvancePayment", NStr("en='Setoff of advance payment';ru='Зачет предоплаты'"));
-	Query.SetParameter("IncomeReflection", NStr("en='Sales revenue';ru='Выручка от продажи'"));
-	Query.SetParameter("ComitentDebt", NStr("en='Principal debt';ru='Задолженность комитенту'"));
+	Query.SetParameter("SetOffAdvancePayment", NStr("en='Prepayment setoff';ru='Зачет предоплаты'"));
+	Query.SetParameter("IncomeReflection", NStr("en='Revenue from sale';ru='Выручка от продажи'"));
+	Query.SetParameter("ComitentDebt", NStr("en='Debt to principal';ru='Задолженность комитенту'"));
 	Query.SetParameter("AccountingCurrency", Constants.AccountingCurrency.Get());
 	Query.SetParameter("PositiveExchangeDifferenceGLAccount", ChartsOfAccounts.Managerial.OtherIncome);
 	Query.SetParameter("NegativeExchangeDifferenceAccountOfAccounting", ChartsOfAccounts.Managerial.OtherExpenses);
@@ -526,7 +526,7 @@ Procedure GenerateTableInventoryReceived(DocumentRefReportToCommissioner, Struct
 	|	ConstantNationalCurrency.Value";
 	
 	Query.SetParameter("InventoryReception", "");
-	Query.SetParameter("InventoryreceptionPostponedIncome", NStr("en='Inventory receiving';ru='Прием запасов'"));
+	Query.SetParameter("InventoryreceptionPostponedIncome", NStr("en='Inventory receipt';ru='Прием запасов'"));
 	
 	QueryResult = Query.Execute();
 	
@@ -702,7 +702,7 @@ Procedure GenerateTableIncomeAndExpenses(DocumentRefReportToCommissioner, Struct
 	
 	Query.SetParameter("PositiveExchangeDifferenceGLAccount", ChartsOfAccounts.Managerial.OtherIncome);
 	Query.SetParameter("NegativeExchangeDifferenceAccountOfAccounting", ChartsOfAccounts.Managerial.OtherExpenses);
-	Query.SetParameter("IncomeReflection", NStr("en='Income accounting';ru='Отражение доходов'"));
+	Query.SetParameter("IncomeReflection", NStr("en='Record income';ru='Отражение доходов'"));
 	Query.SetParameter("ExchangeDifference", NStr("en='Exchange rate difference';ru='Курсовая разница'"));
 	
 	QueryResult = Query.Execute();
@@ -723,8 +723,8 @@ Procedure GenerateTableAccountsPayable(DocumentRefReportToCommissioner, Structur
 	Query.SetParameter("PointInTime", New Boundary(StructureAdditionalProperties.ForPosting.PointInTime, BoundaryType.Including));
 	Query.SetParameter("ControlPeriod", StructureAdditionalProperties.ForPosting.PointInTime.Date);
 	Query.SetParameter("Company", StructureAdditionalProperties.ForPosting.Company);
-	Query.SetParameter("AppearenceOfLiabilityToVendor", NStr("en='Obligations for vendor appearance';ru='Возникновение обязательств перед поставщикт'"));
-	Query.SetParameter("AdvanceCredit", NStr("en='Setoff of advance payment';ru='Зачет предоплаты'"));
+	Query.SetParameter("AppearenceOfLiabilityToVendor", NStr("en='Incurrence of liabilities to supplier';ru='Возникновение обязательств перед поставщикт'"));
+	Query.SetParameter("AdvanceCredit", NStr("en='Prepayment setoff';ru='Зачет предоплаты'"));
 	Query.SetParameter("ExchangeDifference", NStr("en='Exchange rate difference';ru='Курсовая разница'"));
 	
 	Query.Text =
@@ -1827,7 +1827,7 @@ Function ReportToPrincipalPrinting(ObjectsArray, PrintObjects)
 		
 		// Displaying invoice header
 		TemplateArea = Template.GetArea("Title");
-		TemplateArea.Parameters.HeaderText = NStr("en='Principal report';ru='Отчет комитенту'");
+		TemplateArea.Parameters.HeaderText = NStr("en='Report to principal';ru='Отчет комитенту'");
 		SpreadsheetDocument.Put(TemplateArea);
 
 		InfoAboutCompany    = SmallBusinessServer.InfoAboutLegalEntityIndividual(Header.Company, Header.Date);
@@ -1962,7 +1962,7 @@ Procedure AddPrintCommands(PrintCommands) Export
 	
 	PrintCommand = PrintCommands.Add();
 	PrintCommand.ID = "ServicesAcceptanceCertificate,ReportToPrincipal";
-	PrintCommand.Presentation = NStr("en='Custom kit of documents';ru='Настраиваемый комплект документов'");
+	PrintCommand.Presentation = NStr("en='Customized document set';ru='Настраиваемый комплект документов'");
 	PrintCommand.FormsList = "DocumentForm,ListForm";
 	PrintCommand.CheckPostingBeforePrint = False;
 	PrintCommand.Order = 1;
@@ -1976,7 +1976,7 @@ Procedure AddPrintCommands(PrintCommands) Export
 	
 	PrintCommand = PrintCommands.Add();
 	PrintCommand.ID = "ReportToPrincipal";
-	PrintCommand.Presentation = NStr("en='Principal report';ru='Отчет комитенту'");
+	PrintCommand.Presentation = NStr("en='Report to principal';ru='Отчет комитенту'");
 	PrintCommand.FormsList = "DocumentForm,ListForm";
 	PrintCommand.CheckPostingBeforePrint = False;
 	PrintCommand.Order = 7;

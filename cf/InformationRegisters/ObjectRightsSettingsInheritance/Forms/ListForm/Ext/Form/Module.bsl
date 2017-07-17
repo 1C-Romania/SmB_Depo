@@ -31,9 +31,9 @@ Procedure RefreshDataRegister(Command)
 	RegisterDataUpdateOnServer(HasChanges);
 	
 	If HasChanges Then
-		Text = NStr("en='Updated successfully.';ru='Обновление выполнено успешно.'");
+		Text = NStr("en='Update was successful.';ru='Обновление выполнено успешно.'");
 	Else
-		Text = NStr("en='No need to update.';ru='Обновление не требуется.'");
+		Text = NStr("en='Update is not required.';ru='Обновление не требуется.'");
 	EndIf;
 	
 	ShowMessageBox(, Text);

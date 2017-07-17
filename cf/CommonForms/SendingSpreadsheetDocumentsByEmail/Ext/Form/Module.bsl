@@ -65,7 +65,7 @@ Procedure Attach(Command)
 	EndDo;
 	
 	If SelectedSavingFormats.Count() = 0 Then
-		ShowMessageBox(, NStr("en='It is necessary to specify at least one of the offered formats.';ru='Необходимо указать как минимум один из предложенных форматов.'"));
+		ShowMessageBox(, NStr("en='Specify at least one of the given formats.';ru='Необходимо указать как минимум один из предложенных форматов.'"));
 		Return;
 	EndIf;
 	

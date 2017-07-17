@@ -38,7 +38,7 @@ Procedure ListChange(Command)
 	
 	If Not ValueIsFilled(Object.Ref) Then
 		Message = New UserMessage();
-		Message.Text = NStr("en='Data is still not recorded.';ru='Данные еще не записаны.'");
+		Message.Text = NStr("en='The data is not written yet.';ru='Данные еще не записаны.'");
 		Message.Message();
 	Else
 		OpenParameters = New Structure;
@@ -61,7 +61,7 @@ Procedure ResourcesListBeforeAddRow(Item, Cancel, Copy, Parent, Group)
 	Cancel = True;
 	If Not ValueIsFilled(Object.Ref) Then
 		Message = New UserMessage();
-		Message.Text = NStr("en='Data is still not recorded.';ru='Данные еще не записаны.'");
+		Message.Text = NStr("en='The data is not written yet.';ru='Данные еще не записаны.'");
 		Message.Message();
 	Else
 		OpenParameters = New Structure;
@@ -91,7 +91,7 @@ EndProcedure // ResourcesListSelection()
 Procedure ResourcesListBeforeDeleteRow(Item, Cancel)
 	
 	If Object.Ref = PredefinedValue("Catalog.EnterpriseResourcesKinds.AllResources") Then
-		MessageText = NStr("en='Object is not deleted as the enterprise resource should be included into the ""All resources"" kind.';ru='Объект не удален, т. к. ресурс предприятия должен входить в вид ""Все ресурсы"".'");
+		MessageText = NStr("en='Object is not deleted as the company resource should be included in the ""All resources"" kind.';ru='Объект не удален, т. к. ресурс предприятия должен входить в вид ""Все ресурсы"".'");
 		SmallBusinessClient.ShowMessageAboutError(Object, MessageText, , , , Cancel);
 	EndIf;
 	

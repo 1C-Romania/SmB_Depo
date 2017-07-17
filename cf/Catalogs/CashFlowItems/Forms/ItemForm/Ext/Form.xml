@@ -10,7 +10,7 @@
 				<Title>
 					<v8:item>
 						<v8:lang>en</v8:lang>
-						<v8:content>Global commands group</v8:content>
+						<v8:content>Group global commands</v8:content>
 					</v8:item>
 					<v8:item>
 						<v8:lang>ru</v8:lang>
@@ -20,7 +20,7 @@
 				<ToolTip>
 					<v8:item>
 						<v8:lang>en</v8:lang>
-						<v8:content>Global commands group</v8:content>
+						<v8:content>Group global commands</v8:content>
 					</v8:item>
 					<v8:item>
 						<v8:lang>ru</v8:lang>
@@ -99,7 +99,7 @@
 			<Title>
 				<v8:item>
 					<v8:lang>en</v8:lang>
-					<v8:content>Additional attributes</v8:content>
+					<v8:content>Additional object attributes</v8:content>
 				</v8:item>
 				<v8:item>
 					<v8:lang>ru</v8:lang>
@@ -109,7 +109,7 @@
 			<ToolTip>
 				<v8:item>
 					<v8:lang>en</v8:lang>
-					<v8:content>Additional attributes</v8:content>
+					<v8:content>Additional object attributes</v8:content>
 				</v8:item>
 				<v8:item>
 					<v8:lang>ru</v8:lang>
@@ -135,9 +135,7 @@
 						<Title formatted="true">
 							<v8:item>
 								<v8:lang>en</v8:lang>
-								<v8:content>&lt;b&gt;"Corr. account."&lt;/&gt; The attribute defines an account that will be used in bank or cash documents when importing to "Enterprise Accounting".
-
-&lt;b&gt;&lt;color #ff0000&gt;IMPORTANT! &lt;/&gt;&lt;/&gt;The account is populated with an item for accounting documents with operation types "Other", "Taxes" and "Salary", i.e. for the documents with which the default account can not be associated with.</v8:content>
+								<v8:content>"Corr. account." The attribute determines GL account that will be inserted in a bank or cash document when importing to Enterprise Accounting. IMPORTANT! GL account is inserted from an item for cash accounting documents with the "Other", "Taxes" and "Payroll" operation types, that is for the documents for which the default GL accounts cannot be specified.</v8:content>
 							</v8:item>
 							<v8:item>
 								<v8:lang>ru</v8:lang>

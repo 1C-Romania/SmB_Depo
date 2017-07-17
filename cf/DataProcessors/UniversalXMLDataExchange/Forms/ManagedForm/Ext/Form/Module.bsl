@@ -6,7 +6,7 @@ Procedure OnCreateAtServer(Cancel, StandardProcessing)
 	
 	// Access right check should be the first one.
 	If Not AccessRight("Administration", Metadata) Then
-		Raise NStr("en='The use of processing in the interactive mode is available only for administrator.';ru='Использование обработки в интерактивном режиме доступно только администратору.'");
+		Raise NStr("en='Data processor use in interactive mode is available to administrator only.';ru='Использование обработки в интерактивном режиме доступно только администратору.'");
 	EndIf;
 	
 	If Parameters.Property("AutoTest") Then // Return if the form for analysis is received.
@@ -17,7 +17,7 @@ Procedure OnCreateAtServer(Cancel, StandardProcessing)
 	
 	Object.ThisIsInteractiveMode = True;
 	
-	FormTitle = NStr("en='Universal data exchange in the XML format (%VersionHandling%)';ru='Универсальный обмен данными в формате XML (%VersionHandling%)'");
+	FormTitle = NStr("en='Universal data exchange in XML format (%VersionHandling%)';ru='Универсальный обмен данными в формате XML (%VersionHandling%)'");
 	FormTitle = StrReplace(FormTitle, "%VersionHandling%", ObjectVersioningAsStringAtServer());
 	
 	Title = FormTitle;
@@ -77,7 +77,7 @@ Procedure OnOpen(Cancel)
 		If Object.SettingAutomaticDataImport = 1 Then
 			
 			NotifyDescription = New NotifyDescription("OnOpenEnd", ThisObject);
-			ShowQueryBox(NOTifyDescription, NStr("en='Do you want to perform the data import out of the exchange file?';ru='Выполнить загрузку данных из файла обмена?'"), QuestionDialogMode.YesNo, , DialogReturnCode.Yes);
+			ShowQueryBox(NOTifyDescription, NStr("en='Import data from the exchange file?';ru='Выполнить загрузку данных из файла обмена?'"), QuestionDialogMode.YesNo, , DialogReturnCode.Yes);
 			
 		Else
 			
@@ -207,7 +207,7 @@ Procedure InfobaseForConnectionDirectoryStartChoice(Item, ChoiceData, StandardPr
 	
 	FileDialog = New FileDialog(FileDialogMode.ChooseDirectory);
 	
-	FileDialog.Title = NStr("en='Select the infobase directory';ru='Выберите каталог информационной базы'");
+	FileDialog.Title = NStr("en='Select an infobase directory';ru='Выберите каталог информационной базы'");
 	FileDialog.Directory = Object.InfobaseForConnectionDirectory;
 	FileDialog.CheckFileExist = True;
 	
@@ -253,7 +253,7 @@ Procedure RulesFilenameOnChange(Item)
 	
 	File = New File(RulesFilename);
 	If IsBlankString(RulesFilename) Or Not File.Exist() Then
-		MessageToUser(NStr("en='Exchange rule file is not found';ru='Не найден файл правил обмена'"), "RulesFilename");
+		MessageToUser(NStr("en='File of exchange rules is not found';ru='Не найден файл правил обмена'"), "RulesFilename");
 		SetSignUnloadRules(False);
 		Return;
 	EndIf;
@@ -263,7 +263,7 @@ Procedure RulesFilenameOnChange(Item)
 	EndIf;
 	
 	NotifyDescription = New NotifyDescription("RulesFilenameOnChangeEnd", ThisObject);
-	ShowQueryBox(NOTifyDescription, NStr("en='Do you want to import the data exchange rules?';ru='Загрузить правила обмена данными?'"), QuestionDialogMode.YesNo, , DialogReturnCode.Yes);
+	ShowQueryBox(NOTifyDescription, NStr("en='Import data exchange rules?';ru='Загрузить правила обмена данными?'"), QuestionDialogMode.YesNo, , DialogReturnCode.Yes);
 	
 EndProcedure
 
@@ -472,7 +472,7 @@ Procedure ReceiveInformationAboutExchangeFileEnd(Result, Address, SelectedFileNa
 			
 		Except
 			
-			MessageToUser(NStr("en='Failed to read the exchange file.';ru='Не удалось прочитать файл обмена.'"));
+			MessageToUser(NStr("en='Cannot read the exchange file.';ru='Не удалось прочитать файл обмена.'"));
 			ClearDataAboutFileForDataImport();
 			
 		EndTry;
@@ -507,7 +507,7 @@ EndProcedure
 Procedure DeletionDelete(Command)
 	
 	NotifyDescription = New NotifyDescription("DeletionDeleteEnd", ThisObject);
-	ShowQueryBox(NOTifyDescription, NStr("en='Do you want to delete the infobase data?';ru='Удалить выбранные данные в информационной базе?'"), QuestionDialogMode.YesNo, , DialogReturnCode.No);
+	ShowQueryBox(NOTifyDescription, NStr("en='Delete the selected data in the infobase?';ru='Удалить выбранные данные в информационной базе?'"), QuestionDialogMode.YesNo, , DialogReturnCode.No);
 	
 EndProcedure
 
@@ -516,7 +516,7 @@ Procedure DeletionDeleteEnd(Result, AdditionalParameters) Export
 	
 	If Result = DialogReturnCode.Yes Then
 		
-		Status(NStr("en='Data deleting is in process. Please wait...';ru='Выполняется удаление данных. Пожалуйста, подождите..'"));
+		Status(NStr("en='Deleting data. Please wait...';ru='Выполняется удаление данных. Пожалуйста, подождите..'"));
 		DeleteAtServer();
 		
 	EndIf;
@@ -664,7 +664,7 @@ EndProcedure
 Procedure ReadExchangeRules(Command)
 	
 	If IsLinuxClient() AND DirectExporting = 1 Then
-		ShowMessageBox(,NStr("en='Direct connection to infobase is not supported for a Linux client.';ru='Прямое подключение к информационной базе не поддерживается в клиенте под управлением ОС Linux.'"));
+		ShowMessageBox(,NStr("en='Direct infobase connection is not supported if the client application is running on Linux.';ru='Прямое подключение к информационной базе не поддерживается в клиенте под управлением ОС Linux.'"));
 		Return;
 	EndIf;
 	
@@ -673,7 +673,7 @@ Procedure ReadExchangeRules(Command)
 	If IsClient Then
 		
 		NotifyDescription = New NotifyDescription("ReadExchangeRulesEnd", ThisObject);
-		BeginPutFile(NOTifyDescription, RulesFileAddressInStorage,NStr("en='Exchange rules file';ru='Файл правил обмена'"),, UUID);
+		BeginPutFile(NOTifyDescription, RulesFileAddressInStorage,NStr("en='Exchange rule file';ru='Файл правил обмена'"),, UUID);
 		
 	Else
 		
@@ -695,7 +695,7 @@ Procedure ReadExchangeRulesEnd(Result, Address, SelectedFileName, AdditionalPara
 		
 		RulesFileAddressInStorage = Address;
 		
-		Status(NStr("en='Exchange rules reading is in process. Please wait...';ru='Выполняется чтение правил обмена. Пожалуйста, подождите..'"));
+		Status(NStr("en='Exchange rules are being read. Please wait...';ru='Выполняется чтение правил обмена. Пожалуйста, подождите..'"));
 		RunExchangeRulesImport(Address, SelectedFileName);
 		
 		If Object.ErrorFlag Then
@@ -850,7 +850,7 @@ Procedure FillListOfTypesAvailableForDeletion()
 	EndDo;
 	
 	TreeRow = DataTree.Rows.Add();
-	TreeRow.Presentation = NStr("en='Charts of characteristics types';ru='Планы видов характеристик'");
+	TreeRow.Presentation = NStr("en='Charts of characteristic types';ru='Планы видов характеристик'");
 	
 	For Each MDObject IN Metadata.ChartsOfCharacteristicTypes Do
 		
@@ -1055,7 +1055,7 @@ Procedure FileChoice(Item, PropertyName, CheckFileExistence, Val DefaultExtensio
 		
 	EndIf;
 	
-	FileDialog.Title = NStr("en='Select the file';ru='Выберите файл'");
+	FileDialog.Title = NStr("en='Select file';ru='Выберите файл'");
 	FileDialog.Preview = False;
 	FileDialog.FilterIndex = 0;
 	FileDialog.FullFileName = Item.EditText;
@@ -1089,7 +1089,7 @@ Function RunConnectionToIBReceiverAtServer()
 	
 	If ConnectionResult <> Undefined Then
 		
-		MessageToUser(NStr("en='Connection has been successfully installed.';ru='Подключение успешно установлено.'"));
+		MessageToUser(NStr("en='Connection has been successfully established.';ru='Подключение успешно установлено.'"));
 		
 	EndIf;
 	
@@ -1186,7 +1186,7 @@ Procedure OpenImportingFileAtServer(FileURL)
 		
 		If Not FileAtServer.Exist() Then
 			
-			MessageToUser(NStr("en='Exchange file is not found on the server.';ru='Не найден файл обмена на сервере.'"), "ExchangeFileName");
+			MessageToUser(NStr("en='Exchange file is not found on server.';ru='Не найден файл обмена на сервере.'"), "ExchangeFileName");
 			Return;
 			
 		EndIf;
@@ -1326,7 +1326,7 @@ Procedure RunImportFromFormEnd(Result, Address, SelectedFileName, AdditionalPara
 	
 	If Result Then
 		
-		Status(NStr("en='Data import in progress. Please wait...';ru='Выполняется загрузка данных. Пожалуйста, подождите..'"));
+		Status(NStr("en='Importing data. Please wait...';ru='Выполняется загрузка данных. Пожалуйста, подождите..'"));
 		ImportExecuteAtServer(Address, SelectedFileName);
 		
 		OpenDataOfExchangeProtocolsIfNeeded();
@@ -1406,7 +1406,7 @@ Function FileNameAtServerOrClient(AttributeName ,Val FileURL, Val FilenameForExt
 		
 		If Not FileAtServer.Exist() AND CheckFileExistence Then
 			
-			MessageToUser(NStr("en='Specified file does not exist.';ru='Указанный файл не существует.'"));
+			MessageToUser(NStr("en='The specified file does not exist.';ru='Указанный файл не существует.'"));
 			
 		Else
 			
@@ -1466,7 +1466,7 @@ Procedure RunDumpFromForm()
 		
 	EndIf;
 	
-	Status(NStr("en='The data is being exported. Please wait...';ru='Выполняется выгрузка данных. Пожалуйста, подождите..'"));
+	Status(NStr("en='Exporting data. Please wait...';ru='Выполняется выгрузка данных. Пожалуйста, подождите..'"));
 	DataFileAddressInStorage = PerformExportAtServer();
 	
 	If DataFileAddressInStorage = Undefined Then
@@ -1499,7 +1499,7 @@ Function PerformExportAtServer()
 		If TempFileNameData = Undefined Then
 			
 			Return Undefined;
-			MessageToUser(NStr("en='Data file is not defined';ru='Не определен файл данных'"));
+			MessageToUser(NStr("en='Data file is not specified';ru='Не определен файл данных'"));
 			
 		Else
 			
@@ -1523,7 +1523,7 @@ Function PerformExportAtServer()
 		
 		If Not File.Exist() Then
 			
-			MessageToUser(NStr("en='File of external processing of the events debuggers does not exist on the server';ru='Файл внешней обработки отладчиков событий не существует на сервере'"));
+			MessageToUser(NStr("en='External data processor file of event debuggers does not exist on the server';ru='Файл внешней обработки отладчиков событий не существует на сервере'"));
 			Return Undefined;
 			
 		EndIf;
@@ -1532,7 +1532,7 @@ Function PerformExportAtServer()
 		
 		If Cancel Then
 			
-			MessageToUser(NStr("en='Failed to export the event handlers';ru='Не удалось выгрузить обработчики событий'"));
+			MessageToUser(NStr("en='Cannot export event handlers';ru='Не удалось выгрузить обработчики событий'"));
 			Return "";
 			
 		EndIf;
@@ -1728,7 +1728,7 @@ Procedure ChangeModeDataProcessors(RunMode)
 	ModeGroup.FormAtServer.Check = Not RunMode;
 	
 	CommandBar.ChildItems.ProcessingMode.Title = 
-	?(RunMode, NStr("en='Operating mode (at client)';ru='Режим работы (на клиенте)'"), NStr("en='Operating mode (at server)';ru='Режим работы (на сервере)'"));
+	?(RunMode, NStr("en='Operation mode (on client)';ru='Режим работы (на клиенте)'"), NStr("en='Operation mode (on server)';ru='Режим работы (на сервере)'"));
 	
 	Object.UnloadRulesTable.GetItems().Clear();
 	Object.ParametersSettingsTable.Clear();
@@ -1776,7 +1776,7 @@ Function AttributeEmptyValue(Attribute, DataPath, Title)
 	
 	If IsBlankString(Attribute) Then
 		
-		MessageText = NStr("en='Field ""%1"" is not filled';ru='Поле ""%1"" не заполнено'");
+		MessageText = NStr("en='The ""%1"" field is not filled in';ru='Поле ""%1"" не заполнено'");
 		MessageText = StrReplace(MessageText, "%1", Title);
 		
 		MessageToUser(MessageText, DataPath);

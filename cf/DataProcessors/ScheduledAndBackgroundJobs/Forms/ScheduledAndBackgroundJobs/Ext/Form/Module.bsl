@@ -160,14 +160,14 @@ Procedure TableScheduledJobsBeforeDelete(Item, Cancel)
 	Cancel = True;
 	
 	If Items.ScheduledJobTable.SelectedRows.Count() > 1 Then
-		ShowMessageBox(, NStr("en='Select one scheduled job.';ru='Выберите одно регламентное задание.'"));
+		ShowMessageBox(, NStr("en='Select a scheduled job.';ru='Выберите одно регламентное задание.'"));
 		
 	ElsIf Item.CurrentData.Predefined Then
-		ShowMessageBox(, NStr("en='Impossible to delete the predefined scheduled job.';ru='Невозможно удалить предопределенное регламентное задание.'") );
+		ShowMessageBox(, NStr("en='Cannot delete the predefined scheduled job.';ru='Невозможно удалить предопределенное регламентное задание.'") );
 	Else
 		ShowQueryBox(
 			New NotifyDescription("TableScheduledJobsBeforeDeleteEnd", ThisObject),
-			NStr("en='Delete scheduled job?';ru='Удалить регламентное задание?'"), QuestionDialogMode.YesNo);
+			NStr("en='Remove the scheduled job?';ru='Удалить регламентное задание?'"), QuestionDialogMode.YesNo);
 	EndIf;
 	
 EndProcedure
@@ -187,7 +187,7 @@ EndProcedure
 Procedure ExecuteScheduledJobManually(Command)
 
 	If Items.ScheduledJobTable.CurrentData = Undefined Then
-		ShowMessageBox(, NStr("en='Select the scheduled job.';ru='Выберите регламентное задание.'"));
+		ShowMessageBox(, NStr("en='Select scheduled job.';ru='Выберите регламентное задание.'"));
 		Return;
 	EndIf;
 	
@@ -207,7 +207,7 @@ Procedure ExecuteScheduledJobManually(Command)
 		If ExecuteParameters.Started Then
 			
 			ShowUserNotification(
-				NStr("en='Scheduled job procedure is running';ru='Запущена процедура регламентного задания'"), ,
+				NStr("en='Scheduled job is launched';ru='Запущена процедура регламентного задания'"), ,
 				StringFunctionsClientServer.SubstituteParametersInString(NStr("en='%1.
 		|Procedure is launched in the background job %2';ru='%1.
 		|Процедура запущена в фоновом задании %2'"),
@@ -241,7 +241,7 @@ Procedure ExecuteScheduledJobManually(Command)
 	ErrorsCount = EventsAboutErrorsArray.Count();
 	If ErrorsCount > 0 Then
 		TextAboutErrorsTitle = StringFunctionsClientServer.SubstituteParametersInString(
-			NStr("en='Jobs have been performed with errors (%1 of %2)';ru='Задания выполнены с ошибками (%1 из %2)'"),
+			NStr("en='Jobs are completed with errors (%1 out of %2)';ru='Задания выполнены с ошибками (%1 из %2)'"),
 			Format(ErrorsCount, "NG="),
 			Format(SelectedRows.Count(), "NG="));
 		
@@ -281,10 +281,10 @@ Procedure ConfigureSchedule(Command)
 	CurrentData = Items.ScheduledJobTable.CurrentData;
 	
 	If CurrentData = Undefined Then
-		ShowMessageBox(, NStr("en='Select the scheduled job.';ru='Выберите регламентное задание.'"));
+		ShowMessageBox(, NStr("en='Select scheduled job.';ru='Выберите регламентное задание.'"));
 	
 	ElsIf Items.ScheduledJobTable.SelectedRows.Count() > 1 Then
-		ShowMessageBox(, NStr("en='Select one scheduled job.';ru='Выберите одно регламентное задание.'"));
+		ShowMessageBox(, NStr("en='Select a scheduled job.';ru='Выберите одно регламентное задание.'"));
 	Else
 		Dialog = New ScheduledJobDialog(
 			GetSchedule(CurrentData.ID));
@@ -320,7 +320,7 @@ EndProcedure
 Procedure CancelBackgroundJob(Command)
 	
 	If Items.BackgroundJobTable.CurrentData = Undefined Then
-		ShowMessageBox(, NStr("en='Choose a background job.';ru='Выберите фоновое задание.'"));
+		ShowMessageBox(, NStr("en='Select background job.';ru='Выберите фоновое задание.'"));
 	Else
 		CancelBackgroundJobAtServer(Items.BackgroundJobTable.CurrentData.ID);
 		
@@ -364,7 +364,7 @@ Procedure SetConditionalAppearance()
 	FilterElement = Item.Filter.Items.Add(Type("DataCompositionFilterItem"));
 	FilterElement.LeftValue = New DataCompositionField("ScheduledJobTable.ExecutionState");
 	FilterElement.ComparisonType = DataCompositionComparisonType.Equal;
-	FilterElement.RightValue = NStr("en='<not defined>';ru='<не определено>'");
+	FilterElement.RightValue = NStr("en='<not determined>';ru='<не определено>'");
 	Item.Appearance.SetParameterValue("TextColor", StyleColors.InaccessibleDataColor);
 	
 	//
@@ -376,7 +376,7 @@ Procedure SetConditionalAppearance()
 	FilterElement = Item.Filter.Items.Add(Type("DataCompositionFilterItem"));
 	FilterElement.LeftValue = New DataCompositionField("ScheduledJobTable.EndDate");
 	FilterElement.ComparisonType = DataCompositionComparisonType.Equal;
-	FilterElement.RightValue = NStr("en='<not defined>';ru='<не определено>'");
+	FilterElement.RightValue = NStr("en='<not determined>';ru='<не определено>'");
 	Item.Appearance.SetParameterValue("TextColor", StyleColors.InaccessibleDataColor);
 
 
@@ -495,7 +495,7 @@ EndProcedure
 Procedure OpenBackgroundJob()
 	
 	If Items.BackgroundJobTable.CurrentData = Undefined Then
-		ShowMessageBox(, NStr("en='Choose a background job.';ru='Выберите фоновое задание.'"));
+		ShowMessageBox(, NStr("en='Select background job.';ru='Выберите фоновое задание.'"));
 		Return;
 	EndIf;
 	
@@ -581,7 +581,7 @@ Procedure ShowMessageAboutScheduledJobManualProcessingCompletion()
 	For Each Notification IN CompletionNotifications Do
 		
 		ShowUserNotification(
-			NStr("en='Scheduled job procedure has been completed';ru='Выполнена процедура регламентного задания'"),
+			NStr("en='Scheduled job procedure is executed';ru='Выполнена процедура регламентного задания'"),
 			,
 			StringFunctionsClientServer.SubstituteParametersInString(
 				NStr("en='%1.
@@ -672,7 +672,7 @@ EndProcedure
 Procedure AddCopyChangeScheduledJob(Val Action)
 	
 	If Items.ScheduledJobTable.CurrentData = Undefined Then
-		ShowMessageBox(, NStr("en='Select the scheduled job.';ru='Выберите регламентное задание.'"));
+		ShowMessageBox(, NStr("en='Select scheduled job.';ru='Выберите регламентное задание.'"));
 	Else
 		FormParameters = New Structure;
 		FormParameters.Insert("ID", Items.ScheduledJobTable.CurrentData.ID);
@@ -882,7 +882,7 @@ Procedure RefreshBackgroundJobsTable()
 				New Structure("ID", Update.ScheduledJobID));
 			
 			Update.ScheduledJobDescription
-				= ?(Rows.Count() = 0, NStr("en='<not found>';ru='<не найден>'"), Rows[0].Description);
+				= ?(Rows.Count() = 0, NStr("en='<not specified>';ru='<не найден>'"), Rows[0].Description);
 		Else
 			Update.ScheduledJobDescription  = TextUndefined;
 			Update.ScheduledJobID = TextUndefined;

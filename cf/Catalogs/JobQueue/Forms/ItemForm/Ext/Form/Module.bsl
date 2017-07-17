@@ -108,7 +108,7 @@ Procedure SetPresentationSchedule(Val Form)
 	If Schedule <> Undefined Then
 		Form.SchedulePresentation = String(Schedule);
 	Else
-		Form.SchedulePresentation = NStr("en='<Not defined>';ru='<Не задано>'");
+		Form.SchedulePresentation = NStr("en='<Not specified>';ru='<Не задано>'");
 	EndIf;
 	
 EndProcedure

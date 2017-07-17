@@ -120,21 +120,21 @@ EndFunction // ExecuteQuery()
 Procedure MakeExecute()
 
 	If Constants.UseSeveralCompanies.Get() AND Not ValueIsFilled(Company) Then
-		MessageText = NStr("en='Company is not selected!';ru='Не выбрана организация!'");
+		MessageText = NStr("en='Company is not selected.';ru='Не выбрана организация!'");
 		MessageField = "Company";
 		SmallBusinessServer.ShowMessageAboutError(Report, MessageText,,,MessageField);
 		Return;
 	EndIf;
 
 	If Not ValueIsFilled(RegistrationPeriod) Then
-		MessageText = NStr("en='The registration period is not selected!';ru='Не выбран период регистрации!'");
+		MessageText = NStr("en='The registration period is required.';ru='Не выбран период регистрации!'");
 		MessageField = "RegistrationPeriod";
 		SmallBusinessServer.ShowMessageAboutError(Report, MessageText,,,MessageField);
 		Return;
 	EndIf;
 
 	If Not Constants.FunctionalCurrencyTransactionsAccounting.Get() AND Not ValueIsFilled(Currency) Then
-		MessageText = NStr("en='Currency is not selected!';ru='Не выбрана валюта!'");
+		MessageText = NStr("en='Currency is not selected.';ru='Не выбрана валюта!'");
 		MessageField = "Currency";
 		SmallBusinessServer.ShowMessageAboutError(Report, MessageText,,,MessageField);
 		Return;
@@ -144,7 +144,7 @@ Procedure MakeExecute()
 
 	If QueryResult.IsEmpty() Then
 		Message = New UserMessage();
-		Message.Text = NStr("en='No data to generate the report!';ru='Нет данных для формирования отчета!'");
+		Message.Text = NStr("en='No data to generate the report.';ru='Нет данных для формирования отчета!'");
 		Message.Message();
 		Return;
 	EndIf; 

@@ -415,7 +415,7 @@ Function FormAutoNamingAtClient()
 			DescriptionString = DescriptionString + ": " + TabularSectionDescriptionClient("SalesFilterByProductsAndServices", "ProductsAndServices");
 		EndIf;
 	ElsIf Object.AssignmentCondition = PredefinedValue("Enum.DiscountsMarkupsProvidingConditions.ForKitPurchase") Then
-		DescriptionString = NStr("en='Kit:';ru='Комплект:'");
+		DescriptionString = NStr("en='Set:';ru='Комплект:'");
 		DescriptionString = DescriptionString + " " + TabularSectionDescriptionClient("PurchaseKit", "ProductsAndServices");
 	EndIf;
 	
@@ -440,7 +440,7 @@ Function FormAutoNamingAtServer()
 			DescriptionString = DescriptionString + ": " + TabularSectionDescriptionServer("SalesFilterByProductsAndServices", "ProductsAndServices");
 		EndIf;
 	ElsIf Object.AssignmentCondition = Enums.DiscountsMarkupsProvidingConditions.ForKitPurchase Then
-		DescriptionString = NStr("en='Kit:';ru='Комплект:'");
+		DescriptionString = NStr("en='Set:';ru='Комплект:'");
 		DescriptionString = DescriptionString + " " + TabularSectionDescriptionServer("PurchaseKit", "ProductsAndServices");
 	EndIf;
 	

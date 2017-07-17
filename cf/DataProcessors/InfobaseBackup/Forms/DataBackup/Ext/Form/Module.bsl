@@ -15,11 +15,11 @@ Procedure OnCreateAtServer(Cancel, StandardProcessing)
 	EndIf;
 	
 	If CommonUseClientServer.ThisIsWebClient() Then
-		Raise NStr("en='Backing up is not available in web-client.';ru='Резервное копирование недоступно в веб-клиенте.'");
+		Raise NStr("en='Backup is not available in web client.';ru='Резервное копирование недоступно в веб-клиенте.'");
 	EndIf;
 	
 	If Not CommonUse.FileInfobase() Then
-		Raise NStr("en='Backup in client-server work variant should be performed by outside agents (means DBMS)';ru='В клиент-серверном варианте работы резервное копирование следует выполнять сторонними средствами (средствами СУБД).'");
+		Raise NStr("en='Back up data using external tools (DBMS tools) in the client/server mode.';ru='В клиент-серверном варианте работы резервное копирование следует выполнять сторонними средствами (средствами СУБД).'");
 	EndIf;
 	
 	BackupSettings = InfobaseBackupServer.BackupSettings();
@@ -51,9 +51,9 @@ Procedure OnCreateAtServer(Cancel, StandardProcessing)
 	EndIf;
 	
 	If BackupSettings.DateOfLastBackup = Date(1, 1, 1) Then
-		HeaderText = NStr("en='Backup has never conducted';ru='Резервное копирование еще ни разу не проводилось'");
+		HeaderText = NStr("en='Backup has never been made';ru='Резервное копирование еще ни разу не проводилось'");
 	Else
-		HeaderText = NStr("en='Last time the backup was executed: %1';ru='В последний раз резервное копирование проводилось: %1'");
+		HeaderText = NStr("en='Last backup: %1';ru='В последний раз резервное копирование проводилось: %1'");
 		LastCopyDate = Format(BackupSettings.DateOfLastBackup, "DLF=DDT");
 		HeaderText = StringFunctionsClientServer.SubstituteParametersInString(HeaderText, LastCopyDate);
 	EndIf;
@@ -87,7 +87,7 @@ Procedure OnOpen(Cancel)
 	
 	If CommonUseClientServer.IsLinuxClient() Then
 		Cancel = True;
-		MessageText = NStr("en='Backup is unavailable in the client managed by OC Linux.';ru='Резервное копирование недоступно в клиенте под управлением ОС Linux.'");
+		MessageText = NStr("en='Backup is not available on the client running Linux OS.';ru='Резервное копирование недоступно в клиенте под управлением ОС Linux.'");
 		ShowMessageBox(,MessageText);
 		Return;
 	EndIf;
@@ -119,7 +119,7 @@ Procedure BeforeClose(Cancel, StandardProcessing)
 	CurrentPage = Items.AssistantPages.CurrentPage;
 	If CurrentPage = Items.AssistantPages.ChildItems.InformationAndBackupPerformingPage Then
 		
-		WarningText = NStr("en='Cancel backup preparation?';ru='Прервать подготовку к резервному копированию данных?'");
+		WarningText = NStr("en='Stop preparing for backup?';ru='Прервать подготовку к резервному копированию данных?'");
 		CommonUseClient.ShowArbitraryFormClosingConfirmation(ThisObject,
 			Cancel, WarningText, "ForceCloseForm");
 		
@@ -281,7 +281,7 @@ Procedure GoToBackupInformationAndExecutionPage()
 	
 	If InfobaseSessionCount() = 1 Then
 		
-		InfobaseConnectionsServerCall.SetConnectionLock(NStr("en='For a backup.';ru='Для выполнения резервного копирования.'"), "Backup");
+		InfobaseConnectionsServerCall.SetConnectionLock(NStr("en='For backup execution.';ru='Для выполнения резервного копирования.'"), "Backup");
 		InfobaseConnectionsClient.SetCompleteSignAllSessionsExceptCurrent(True);
 		InfobaseConnectionsClient.SetUserTerminationInProgressFlag(True);
 		InfobaseConnectionsClient.TerminateThisSession(False);
@@ -294,7 +294,7 @@ Procedure GoToBackupInformationAndExecutionPage()
 		
 		CheckLockingSessionsPresence();
 		
-		InfobaseConnectionsServerCall.SetConnectionLock(NStr("en='For a backup.';ru='Для выполнения резервного копирования.'"), "Backup");
+		InfobaseConnectionsServerCall.SetConnectionLock(NStr("en='For backup execution.';ru='Для выполнения резервного копирования.'"), "Backup");
 		InfobaseConnectionsClient.SetIdleHandlerOfUserSessionsTermination(True);
 		SetBackupBeginIdleHandler();
 		SetBackupTimeoutLapseIdleHandler();
@@ -362,13 +362,13 @@ Function CheckAttributesFilling(ShowError = True)
 	
 	If IsBlankString(Object.BackupDirectory) Then
 		
-		MessageText = NStr("en='Directory to backup copy is not chosen.';ru='Не выбран каталог для резервной копии.'");
+		MessageText = NStr("en='Backup directory is not selected.';ru='Не выбран каталог для резервной копии.'");
 		WriteAttributesCheckError(MessageText, "Object.BackupDirectory", ShowError);
 		AttributesFilled = False;
 		
 	ElsIf FindFiles(Object.BackupDirectory).Count() = 0 Then
 		
-		MessageText = NStr("en='Non-existent directory is specified.';ru='Указан несуществующий каталог.'");
+		MessageText = NStr("en='Non-existing directory is specified.';ru='Указан несуществующий каталог.'");
 		WriteAttributesCheckError(MessageText, "Object.BackupDirectory", ShowError);
 		AttributesFilled = False;
 		
@@ -380,7 +380,7 @@ Function CheckAttributesFilling(ShowError = True)
 			TestFile.WriteXMLDeclaration();
 			TestFile.Close();
 		Except
-			MessageText = NStr("en='No access to the backup directory';ru='Нет доступа к каталогу с резервными копиями.'");
+			MessageText = NStr("en='Cannot access directory with backups.';ru='Нет доступа к каталогу с резервными копиями.'");
 			WriteAttributesCheckError(MessageText, "Object.BackupDirectory", ShowError);
 			AttributesFilled = False;
 		EndTry;
@@ -432,8 +432,8 @@ EndProcedure
 Procedure TimeOutLapse()
 	
 	DetachIdleHandler("CheckThatConnectionIsSingle");
-	QuestionText = NStr("en='Unable to disconnect all users from the base. Do you want to perform the backup? (errors are possible at the archivation)';ru='Не удалось отключить всех пользователей от базы. Провести резервное копирование? (возможны ошибки при архивации)'");
-	ExplanationText = NStr("en='Failed to disable the user';ru='Не удалось отключить пользователя.'");
+	QuestionText = NStr("en='Cannot disconnect all users from the base. Back up the data? (errors can occur during backup)';ru='Не удалось отключить всех пользователей от базы. Провести резервное копирование? (возможны ошибки при архивации)'");
+	ExplanationText = NStr("en='Cannot disable the user.';ru='Не удалось отключить пользователя.'");
 	NotifyDescription = New NotifyDescription("TimeOutWaitingEnd", ThisObject);
 	ShowQueryBox(NOTifyDescription, QuestionText, QuestionDialogMode.YesNo, 30, DialogReturnCode.No, ExplanationText, DialogReturnCode.No);
 	
@@ -492,7 +492,7 @@ EndProcedure
 &AtClient
 Procedure SetTitleForButtonNext(IsNextButton)
 	
-	Items.Next.Title = ?(IsNextButton, NStr("en='Next >';ru='Далее  >'"), NStr("en='Done';ru='Готово'"));
+	Items.Next.Title = ?(IsNextButton, NStr("en='Next >';ru='Далее  >'"), NStr("en='Finish';ru='Готово'"));
 	
 EndProcedure
 
@@ -502,9 +502,9 @@ Function GetPath(DialogMode)
 	Mode = DialogMode;
 	FileOpeningDialog = New FileDialog(Mode);
 	If Mode = FileDialogMode.ChooseDirectory Then
-		FileOpeningDialog.Title= NStr("en='Select the folder';ru='Выберите каталог'");
+		FileOpeningDialog.Title= NStr("en='Select directory';ru='Выберите каталог'");
 	Else
-		FileOpeningDialog.Title= NStr("en='Select the file';ru='Выберите файл'");
+		FileOpeningDialog.Title= NStr("en='Select file';ru='Выберите файл'");
 	EndIf;	
 		
 	If FileOpeningDialog.Choose() Then
@@ -523,7 +523,7 @@ Procedure StartBackup()
 	ScriptMainFileName = GenerateUpdateScriptFiles();
 	
 	EventLogMonitorClient.AddMessageForEventLogMonitor(InfobaseBackupClient.EventLogMonitorEvent(),
-		"Information",  NStr("en='Backup of infobase is carried out:';ru='Выполняется резервное копирование информационной базы:'") + " " + ScriptMainFileName);
+		"Information",  NStr("en='Infobase backup is in progress:';ru='Выполняется резервное копирование информационной базы:'") + " " + ScriptMainFileName);
 		
 	If Parameters.RunMode = "ExecuteNow" Or Parameters.RunMode = "ExecuteOnExit" Then
 		InfobaseBackupClient.DeleteBackupsBySetting();

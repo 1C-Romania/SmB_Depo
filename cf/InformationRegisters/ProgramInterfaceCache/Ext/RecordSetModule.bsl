@@ -66,7 +66,7 @@ Procedure PrepareDataForWrite() Export
 	
 	ReceivingParameters = Undefined;
 	If Not AdditionalProperties.Property("ReceivingParameters", ReceivingParameters) Then
-		Raise NStr("en='Getting data parameters are not defined';ru='Не определены параметры получения данных'");
+		Raise NStr("en='Data receipt parameters are not specified';ru='Не определены параметры получения данных'");
 	EndIf;
 	
 	DataForWriting = ThisObject.Unload();

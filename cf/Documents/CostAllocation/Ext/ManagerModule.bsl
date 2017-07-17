@@ -728,7 +728,7 @@ Procedure DataInitializationByInventory(DocumentRefCosting, StructureAdditionalP
 	Query.SetParameter("UseCharacteristics", StructureAdditionalProperties.AccountingPolicy.UseCharacteristics);
 	Query.SetParameter("UseBatches", StructureAdditionalProperties.AccountingPolicy.UseBatches);
 	Query.SetParameter("AccountingByCells", StructureAdditionalProperties.AccountingPolicy.AccountingByCells);
-	Query.SetParameter("InventoryDistribution", NStr("en='Inventory distribution';ru='Распределение запасов'"));
+	Query.SetParameter("InventoryDistribution", NStr("en='Inventory allocation';ru='Распределение запасов'"));
 	
 	ResultsArray = Query.ExecuteBatch();
 	

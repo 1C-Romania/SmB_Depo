@@ -43,7 +43,7 @@ Procedure FillInNotSeenInteractions()
 		NewRowVT = NotSeenInteractions.Add();
 		FillPropertyValues(NewRowVT, UnviewedInteraction);
 		NewRowVT.PictureNumber = InformationCenterServer.PictureNumberByInteraction(NewRowVT.Type, NewRowVT.Incoming);
-		NewRowVT.ExplanationToPicture = ?(NewRowVT.Incoming, NStr("en='inc.';ru='вкл.'"), NStr("en='Source.';ru='Источник.'"));
+		NewRowVT.ExplanationToPicture = ?(NewRowVT.Incoming, NStr("en='incl.';ru='вкл.'"), NStr("en='Source.';ru='Источник.'"));
 	EndDo;
 	
 EndProcedure

@@ -210,7 +210,7 @@ Procedure RetailPriceKindOnChange(Item)
 	
 	If Not DataStructure.PriceCurrency = DataStructure.NationalCurrency Then
 		
-		MessageText = NStr("en='In the price kind ""%PricesKind%"", for retail structural unit, national currency (%NatCurrency%) must be specified.';ru='У вида цен ""%ВидЦен%"", для розничной структурной единицы, должна быть задана национальная валюта (%НацВалюта%).'");
+		MessageText = NStr("en='Specify national currency (%NatCurrency%) for the ""%PricesKind%"" price kind for retail structural unit.';ru='У вида цен ""%ВидЦен%"", для розничной структурной единицы, должна быть задана национальная валюта (%НацВалюта%).'");
 		MessageText = StrReplace(MessageText, "%PriceKind%", DataStructure.PriceKindDescription);
 		MessageText = StrReplace(MessageText, "%NatCurrency%", DataStructure.NationalCurrency);
 		

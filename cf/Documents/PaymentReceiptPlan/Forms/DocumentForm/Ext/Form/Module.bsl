@@ -433,14 +433,14 @@ EndProcedure // FillByDocument()
 Procedure FillByBasis(Command)
 	
 	If Not ValueIsFilled(Object.BasisDocument) Then
-		ShowMessageBox(Undefined, NStr("en='Basis document is not selected!';ru='Не выбран документ основание!'"));
+		ShowMessageBox(Undefined, NStr("en='Basis document is not selected.';ru='Не выбран документ основание!'"));
 		Return;
 	EndIf;
 	
 	Response = Undefined;
 
 	
-	ShowQueryBox(New NotifyDescription("FillByBasisEnd", ThisObject), NStr("en='Document will be completely refilled by ""Basis""! Continue?';ru='Документ будет полностью перезаполнен по ""Основанию""! Продолжить?'"), QuestionDialogMode.YesNo, 0);
+	ShowQueryBox(New NotifyDescription("FillByBasisEnd", ThisObject), NStr("en='The  document will be fully filled out according to the ""Basis"". Continue?';ru='Документ будет полностью перезаполнен по ""Основанию""! Продолжить?'"), QuestionDialogMode.YesNo, 0);
 
 EndProcedure
 

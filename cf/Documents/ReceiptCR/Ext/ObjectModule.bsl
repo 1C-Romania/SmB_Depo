@@ -79,7 +79,7 @@ Procedure FillCheckProcessing(Cancel, CheckedAttributes)
 	
 	If PaymentWithPaymentCards.Count() > 0 AND Not ValueIsFilled(POSTerminal) Then
 		
-		MessageText = NStr("ru = 'Поле ""Эквайринговый терминал"" не заполнено'; en = 'Field ""Terminal"" is empty'");
+		MessageText = NStr("en='The ""POS terminal"" field is not filled in';ru='Поле ""Эквайринговый терминал"" не заполнено'");
 
 		SmallBusinessServer.ShowMessageAboutError(
 			ThisObject,
@@ -94,7 +94,7 @@ Procedure FillCheckProcessing(Cancel, CheckedAttributes)
 	
 	If PaymentWithPaymentCards.Total("Amount") > DocumentAmount Then
 		
-		MessageText = NStr("ru = 'Сумма оплаты платежными картами превышает сумму документа'; en = 'Amount of payment by payment cards exceeds document amount'");
+		MessageText = NStr("en='Card payment amount is greater than the document amount';ru='Сумма оплаты платежными картами превышает сумму документа'");
 		
 		SmallBusinessServer.ShowMessageAboutError(
 			ThisObject,
@@ -107,7 +107,7 @@ Procedure FillCheckProcessing(Cancel, CheckedAttributes)
 
 	EndIf;
 	
-	MessageText = NStr("ru = 'Кассовая смена не открыта'; en = 'Cash session is not opened.'");
+	MessageText = NStr("en='Register shift is not opened';ru='Кассовая смена не открыта'");
 	
 	If Not Documents.RetailReport.SessionIsOpen(CashCRSession, Date, MessageText) Then
 		
@@ -162,7 +162,7 @@ Procedure BeforeWrite(Cancel, WriteMode, PostingMode)
 	   AND WriteMode = DocumentWriteMode.UndoPosting
 	   AND Not CashCR.UseWithoutEquipmentConnection Then
 		
-		MessageText = NStr("en='CR receipt was issued on the fiscal registrar. Impossible to cancel the posting';ru='Чек ККМ пробит на фискальном регистраторе. Отмена проведения невозможна'");
+		MessageText = NStr("en='Cash receipt was issued on the fiscal data recorder. Cannot cancel posting';ru='Чек ККМ пробит на фискальном регистраторе. Отмена проведения невозможна'");
 		
 		SmallBusinessServer.ShowMessageAboutError(
 				ThisObject,
@@ -182,7 +182,7 @@ Procedure BeforeWrite(Cancel, WriteMode, PostingMode)
 	   AND CashCRSession.Posted
 	   AND CashCRSession.CashCRSessionStatus = Enums.CashCRSessionStatuses.Closed Then
 		
-		MessageText = NStr("en='Cash session is closed. Impossible to cancel the posting';ru='Кассовая смена закрыта. Отмена проведения невозможна'");
+		MessageText = NStr("en='Register shift is closed. Cannot cancel posting';ru='Кассовая смена закрыта. Отмена проведения невозможна'");
 		
 		SmallBusinessServer.ShowMessageAboutError(
 				ThisObject,

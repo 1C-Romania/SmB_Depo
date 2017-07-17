@@ -38,7 +38,7 @@ Procedure OnCreateAtServer(Cancel, StandardProcessing)
 		If SearchResults.Count() <> 0 Then
 			
 			ShowedResultsFromTo = StringFunctionsClientServer.SubstituteParametersInString(
-			                            NStr("en='Shown %1 - %2 from %3';ru='Показаны %1 - %2 из %3'"),
+			                            NStr("en='Shown %1 - %2 out of %3';ru='Показаны %1 - %2 из %3'"),
 			                            String(CurrentPosition + 1),
 			                            String(CurrentPosition + SearchResults.Count()),
 			                            String(TotalQuantity) );
@@ -175,7 +175,7 @@ Procedure Search(Direction, Cancel = Undefined)
 	// Search procedure, getting and displaying the result.
 	
 	If IsBlankString(SearchString) Then
-		CommonUseClientServer.MessageToUser(NStr("en='Enter search string.';ru='Введите, что нужно найти.'"), , "SearchString");
+		CommonUseClientServer.MessageToUser(NStr("en='Enter a search object.';ru='Введите, что нужно найти.'"), , "SearchString");
 		Cancel = True;
 		Return;
 	EndIf;
@@ -204,7 +204,7 @@ Procedure Search(Direction, Cancel = Undefined)
 	If SearchResults.Count() > 0 Then
 		
 		ShowedResultsFromTo = StringFunctionsClientServer.SubstituteParametersInString(
-			NStr("en='Shown %1 - %2 from %3';ru='Показаны %1 - %2 из %3'"),
+			NStr("en='Shown %1 - %2 out of %3';ru='Показаны %1 - %2 из %3'"),
 			Format(CurrentPosition + 1, "NZ=0; NG="),
 			Format(CurrentPosition + SearchResults.Count(), "NZ=0; NG="),
 			Format(TotalQuantity, "NZ=0; NG="));
@@ -213,7 +213,7 @@ Procedure Search(Direction, Cancel = Undefined)
 		Items.Back.Enabled = (CurrentPosition > 0);
 		
 		If Direction = 0 AND Result.CurrentPosition = 0 AND Result.TooManyResults Then
-			ShowMessageBox(, NStr("en='Too many results, refine query.';ru='Слишком много результатов, уточните запрос.'"));
+			ShowMessageBox(, NStr("en='Too many results. Refine your search criteria.';ru='Слишком много результатов, уточните запрос.'"));
 		EndIf;
 	
 	Else

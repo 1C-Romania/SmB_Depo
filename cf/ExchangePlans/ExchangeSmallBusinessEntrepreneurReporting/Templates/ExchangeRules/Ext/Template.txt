@@ -987,18 +987,18 @@ FilterItem.Value = String(Ref.UUID());
 		If TypeOf(Ref) = Type("DocumentRef.CashReceipt") Then
 			
 			If Ref.OperationKind = Enums.OperationKindsCashReceipt.FromCustomer Then
-				OperationKindRow = StringFunctionsClientServer.PlaceParametersIntoString(NStr("en='Cash receipt from customer ""%1""';ru='Поступление наличных денежных средств от покупателя ""%1""'"), TrimAll(Ref.Counterparty));
+				OperationKindRow = StringFunctionsClientServer.PlaceParametersIntoString(NStr("en='Cash receipt from the ""%1"" customer';ru='Поступление наличных денежных средств от покупателя ""%1""'"), TrimAll(Ref.Counterparty));
 			ElsIf Ref.OperationKind = Enums.OperationKindsCashReceipt.FromVendor Then
 				OperationKindRow = StringFunctionsClientServer.PlaceParametersIntoString(NStr("en='Cash receipt from supplier ""%1""';ru='Поступление наличных денежных средств от поставщика ""%1""'"), TrimAll(Ref.Counterparty));
 			ElsIf Ref.OperationKind = Enums.OperationKindsCashReceipt.FromAdvanceHolder Then
-				OperationKindRow = StringFunctionsClientServer.PlaceParametersIntoString(NStr("en='Cash receipt from advance holder ""%1""';ru='Поступление наличных денежных средств от подотчетника ""%1""'"), TrimAll(Ref.AdvanceHolder));
+				OperationKindRow = StringFunctionsClientServer.PlaceParametersIntoString(NStr("en='Cash receipt from the ""%1"" advance holder';ru='Поступление наличных денежных средств от подотчетника ""%1""'"), TrimAll(Ref.AdvanceHolder));
 			ElsIf Ref.OperationKind = Enums.OperationKindsCashReceipt.RetailIncome
 				OR Ref.OperationKind = Enums.OperationKindsCashReceipt.RetailIncomeAccrualAccounting Then
 				OperationKindRow = NStr("en='Retail Revenue Receipt';ru='Поступление розничной выручки'");
 			ElsIf Ref.OperationKind = Enums.OperationKindsCashReceipt.CurrencyPurchase Then
-				OperationKindRow = NStr("en='Receipt of cash funds by currency operations';ru='Поступление наличных денежных средств по валютным операциям'");
+				OperationKindRow = NStr("en='Receipt of currency transaction cash';ru='Поступление наличных денежных средств по валютным операциям'");
 			ElsIf Ref.OperationKind = Enums.OperationKindsCashReceipt.Other Then
-				OperationKindRow = NStr("en='Receipt of cash funds by other operations';ru='Поступление наличных денежных средств по прочим операциям'");
+				OperationKindRow = NStr("en='Receipt of other transaction cash';ru='Поступление наличных денежных средств по прочим операциям'");
 			EndIf;
 			
 		ElsIf TypeOf(Ref) = Type("DocumentRef.PaymentReceipt") Then
@@ -1010,9 +1010,9 @@ FilterItem.Value = String(Ref.UUID());
 			ElsIf Ref.OperationKind = Enums.OperationKindsPaymentReceipt.FromAdvanceHolder Then
 				OperationKindRow = StringFunctionsClientServer.PlaceParametersIntoString(NStr("en='Non-cash receipt from advance holder ""%1""';ru='Поступление безналичных денежных средств от подотчетника ""%1""'"), TrimAll(Ref.AdvanceHolder));
 			ElsIf Ref.OperationKind = Enums.OperationKindsPaymentReceipt.CurrencyPurchase Then
-				OperationKindRow = NStr("en='Receipt of the non cash assets by the currency operations';ru='Поступление безналичных денежных средств по валютным операциям'");
+				OperationKindRow = NStr("en='Receipt of non-cash of the currency transactions';ru='Поступление безналичных денежных средств по валютным операциям'");
 			ElsIf Ref.OperationKind = Enums.OperationKindsPaymentReceipt.Other Then
-				OperationKindRow = NStr("en='Non cash assets receipt by other operations';ru='Поступление безналичных денежных средств по прочим операциям'");
+				OperationKindRow = NStr("en='Non-cash receipt by other operations';ru='Поступление безналичных денежных средств по прочим операциям'");
 			EndIf;
 			
 			If ValueIsFilled(Ref.PaymentDestination) Then
@@ -1022,20 +1022,20 @@ FilterItem.Value = String(Ref.UUID());
 		ElsIf TypeOf(Ref) = Type("DocumentRef.CashPayment") Then
 			
 			If Ref.OperationKind = Enums.OperationKindsCashPayment.Vendor Then
-				OperationKindRow = StringFunctionsClientServer.PlaceParametersIntoString(NStr("en='Cash expense for payment to supplier ""%1""';ru='Расход наличных денежных средств на оплату поставщику ""%1""'"), TrimAll(Ref.Counterparty));
+				OperationKindRow = StringFunctionsClientServer.PlaceParametersIntoString(NStr("en='Cash expense for payment to the ""%1"" supplier';ru='Расход наличных денежных средств на оплату поставщику ""%1""'"), TrimAll(Ref.Counterparty));
 			ElsIf Ref.OperationKind = Enums.OperationKindsCashPayment.ToCustomer Then
-				OperationKindRow = StringFunctionsClientServer.PlaceParametersIntoString(NStr("en='Cash expense for payment to customer ""%1""';ru='Расход наличных денежных средств на оплату покупателю ""%1""'"), TrimAll(Ref.Counterparty));
+				OperationKindRow = StringFunctionsClientServer.PlaceParametersIntoString(NStr("en='Cash expense for payment to the ""%1"" customer';ru='Расход наличных денежных средств на оплату покупателю ""%1""'"), TrimAll(Ref.Counterparty));
 			ElsIf Ref.OperationKind = Enums.OperationKindsCashPayment.ToAdvanceHolder Then
-				OperationKindRow = StringFunctionsClientServer.PlaceParametersIntoString(NStr("en='Cash dispense to advance holder ""%1""';ru='Выдача наличных денежных средств подотчетнику ""%1""'"), TrimAll(Ref.AdvanceHolder));
+				OperationKindRow = StringFunctionsClientServer.PlaceParametersIntoString(NStr("en='Issue funds to the ""%1"" advance holder';ru='Выдача наличных денежных средств подотчетнику ""%1""'"), TrimAll(Ref.AdvanceHolder));
 			ElsIf Ref.OperationKind = Enums.OperationKindsCashPayment.Salary
 				OR Ref.OperationKind = Enums.OperationKindsCashPayment.SalaryForEmployee Then
-				OperationKindRow = NStr("en='Cash assets expense for the payroll payment';ru='Расход наличных денежных средств на выплату заработной платы'");
+				OperationKindRow = NStr("en='Cash expense for salary payment';ru='Расход наличных денежных средств на выплату заработной платы'");
 			ElsIf Ref.OperationKind = Enums.OperationKindsCashPayment.Taxes Then
-				OperationKindRow = NStr("en='Cash funds expense for the taxes payment';ru='Расход наличных денежных средств на уплату налогов'");
+				OperationKindRow = NStr("en='Cash expense for tax payment';ru='Расход наличных денежных средств на уплату налогов'");
 			ElsIf Ref.OperationKind = Enums.OperationKindsCashPayment.TransferToCashCR Then
-				OperationKindRow = NStr("en='Transfer of cash funds to the CR';ru='Перемещение наличных денежных средств в кассу ККМ'");
+				OperationKindRow = NStr("en='Cash transfer to cash register';ru='Перемещение наличных денежных средств в кассу ККМ'");
 			ElsIf Ref.OperationKind = Enums.OperationKindsCashPayment.Other Then
-				OperationKindRow = NStr("en='Cash funds expense by other operations';ru='Расход наличных денежных средств по прочим операциям'");
+				OperationKindRow = NStr("en='Other operation cash expense';ru='Расход наличных денежных средств по прочим операциям'");
 			EndIf;
 			
 		ElsIf TypeOf(Ref) = Type("DocumentRef.PaymentExpense") Then
@@ -1045,11 +1045,11 @@ FilterItem.Value = String(Ref.UUID());
 			ElsIf Ref.OperationKind = Enums.OperationKindsPaymentExpense.ToCustomer Then
 				OperationKindRow = StringFunctionsClientServer.PlaceParametersIntoString(NStr("en='Non-cash expense for payment to customer ""%1""';ru='Расход безналичных денежных средств на оплату покупателю ""%1""'"), TrimAll(Ref.Counterparty));
 			ElsIf Ref.OperationKind = Enums.OperationKindsPaymentExpense.ToAdvanceHolder Then
-				OperationKindRow = StringFunctionsClientServer.PlaceParametersIntoString(NStr("en='Non-cash payment to advance holder ""%1""';ru='Выдача безналичных денежных средств подотчетнику ""%1""'"), TrimAll(Ref.AdvanceHolder));
+				OperationKindRow = StringFunctionsClientServer.PlaceParametersIntoString(NStr("en='Non-cash issue to advance holder ""%1""';ru='Выдача безналичных денежных средств подотчетнику ""%1""'"), TrimAll(Ref.AdvanceHolder));
 			ElsIf Ref.OperationKind = Enums.OperationKindsPaymentExpense.Salary Then
-				OperationKindRow = NStr("en='Expense of the noncash assets for the payroll payment';ru='Расход безналичных денежных средств на выплату заработной платы'");
+				OperationKindRow = NStr("en='Expense of the non-cash for salary payment';ru='Расход безналичных денежных средств на выплату заработной платы'");
 			ElsIf Ref.OperationKind = Enums.OperationKindsPaymentExpense.Taxes Then
-				OperationKindRow = NStr("en='Non-cash expense for taxes';ru='Расход безналичных денежных средств на уплату налогов'");
+				OperationKindRow = NStr("en='Non-cash expense for tax payment';ru='Расход безналичных денежных средств на уплату налогов'");
 			ElsIf Ref.OperationKind = Enums.OperationKindsPaymentExpense.Other Then
 				OperationKindRow = NStr("en='Non-cash expense for other operations';ru='Расход безналичных денежных средств по прочим операциям'");
 			EndIf;

@@ -692,7 +692,7 @@ Procedure DraganddropProcessingToLinearList(DragParameters, ListFileOwner)
 		
 	ElsIf TypeOf(DragParameters.Value) = Type("File") AND DragParameters.Value.IsFile() = False Then
 		
-		ShowMessageBox(, NStr("en='Select only the files without directories.';ru='Выберите только файлы без каталогов.'"));
+		ShowMessageBox(, NStr("en='Select files only (without directory).';ru='Выберите только файлы без каталогов.'"));
 		Return;
 		
 	ElsIf TypeOf(DragParameters.Value) = Type("CatalogRef.Files") Then
@@ -721,7 +721,7 @@ Procedure DraganddropProcessingToLinearList(DragParameters, ListFileOwner)
 		
 		For Each AcceptedFile IN DragParameters.Value Do
 			If Not AcceptedFile.IsFile() Then // Only files but not directories.
-				ShowMessageBox(, NStr("en='Select only the files without directories.';ru='Выберите только файлы без каталогов.'"));
+				ShowMessageBox(, NStr("en='Select files only (without directory).';ru='Выберите только файлы без каталогов.'"));
 				Return;
 			EndIf;
 		EndDo;
@@ -752,7 +752,7 @@ Procedure DraganddropProcessingToLinearList(DragParameters, ListFileOwner)
 			If ErrorsCount = 1 Then
 				Result.OutputWarning.Text = ErrorsTexts[0];
 			Else
-				ShortAllTextErrors = StrReplace(NStr("en='During execution, errors occurred (%1).';ru='При выполнении возникли ошибки (%1).'"), "%1", String(ErrorsCount));
+				ShortAllTextErrors = StrReplace(NStr("en='Performing failed (%1).';ru='При выполнении возникли ошибки (%1).'"), "%1", String(ErrorsCount));
 				FullAllTextErrors = "";
 				For Each ErrorText IN ErrorsTexts Do
 					If FullAllTextErrors <> "" Then

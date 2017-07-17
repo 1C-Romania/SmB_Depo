@@ -826,7 +826,7 @@ Function GetBarcodePicture(BarcodeParameters) Export
 	ExternalComponent = EquipmentManagerServerReUse.ConnectBarcodePrintingExternalComponent();
 	
 	If ExternalComponent = Undefined Then
-		Raise NStr("en='External barcode printing components connection error!';ru='Ошибка подключения внешней компоненты печати штрихкода!'");
+		Raise NStr("en='An error occurred while connecting external barcode printing component.';ru='Ошибка подключения внешней компоненты печати штрихкода!'");
 	EndIf;
 	
 	// Define image size

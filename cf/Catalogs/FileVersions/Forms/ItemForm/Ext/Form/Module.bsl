@@ -43,7 +43,7 @@ Procedure OnCreateAtServer(Cancel, StandardProcessing)
 		EndIf;
 		
 		If Not ValueIsFilled(Encoding) Then
-			Encoding = NStr("en='By default';ru='По умолчанию'");
+			Encoding = NStr("en='Default';ru='По умолчанию'");
 		EndIf;
 	Else
 		Items.Encoding.Visible = False;

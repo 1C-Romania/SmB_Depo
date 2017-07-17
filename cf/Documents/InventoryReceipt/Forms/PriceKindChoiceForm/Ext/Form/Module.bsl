@@ -41,7 +41,7 @@ Procedure CommandOK(Command)
 	Cancel = False;
 	If RefillPrices AND Not ValueIsFilled(PriceKind) Then
 		Message = New UserMessage();
-		Message.Text = NStr("en='Fill in Price type has not been selected!';ru='Не выбран вид цены для заполнения!'");
+		Message.Text = NStr("en='Price kind for population is not selected.';ru='Не выбран вид цены для заполнения!'");
 		Message.Field = "PriceKind";
 		Message.Message();
 		Cancel = True;

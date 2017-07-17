@@ -127,11 +127,11 @@ Procedure ServiceSetIBPrefixAndReprefixAllObjectsCreatedInThisIB(
 	
 	If TransactionActive() Then
 		
-		Raise NStr("en='Infobase prefix modification can not be performed in the transaction.';ru='Изменение префикса информационной базы не может выполняться в транзакции.'");
+		Raise NStr("en='Cannot change infobase prefix during transaction.';ru='Изменение префикса информационной базы не может выполняться в транзакции.'");
 		
 	ElsIf Not Users.InfobaseUserWithFullAccess() Then
 		
-		Raise NStr("en='Insufficient rights to change a prefix of the infobase.';ru='Недостаточно прав для изменения префикса информационной базы.'");
+		Raise NStr("en='Insufficient rights to change infobase prefix.';ru='Недостаточно прав для изменения префикса информационной базы.'");
 		
 	EndIf;
 	
@@ -165,11 +165,11 @@ Procedure ServiceSetIBPrefixAndReprefixAllObjects(
 	
 	If TransactionActive() Then
 		
-		Raise NStr("en='Infobase prefix modification can not be performed in the transaction.';ru='Изменение префикса информационной базы не может выполняться в транзакции.'");
+		Raise NStr("en='Cannot change infobase prefix during transaction.';ru='Изменение префикса информационной базы не может выполняться в транзакции.'");
 		
 	ElsIf Not Users.InfobaseUserWithFullAccess() Then
 		
-		Raise NStr("en='Insufficient rights to change a prefix of the infobase.';ru='Недостаточно прав для изменения префикса информационной базы.'");
+		Raise NStr("en='Insufficient rights to change infobase prefix.';ru='Недостаточно прав для изменения префикса информационной базы.'");
 		
 	EndIf;
 	
@@ -456,11 +456,11 @@ Procedure SetIBPrefixAndCreateChangeObjects(
 	
 	If TransactionActive() Then
 		
-		Raise NStr("en='Infobase prefix modification can not be performed in the transaction.';ru='Изменение префикса информационной базы не может выполняться в транзакции.'");
+		Raise NStr("en='Cannot change infobase prefix during transaction.';ru='Изменение префикса информационной базы не может выполняться в транзакции.'");
 		
 	ElsIf Not Users.InfobaseUserWithFullAccess() Then
 		
-		Raise NStr("en='Insufficient rights to change a prefix of the infobase.';ru='Недостаточно прав для изменения префикса информационной базы.'");
+		Raise NStr("en='Insufficient rights to change infobase prefix.';ru='Недостаточно прав для изменения префикса информационной базы.'");
 		
 	EndIf;
 	
@@ -1476,7 +1476,7 @@ Procedure CheckPrefixSetPossibility()
 	OnDeterminingFunctionalBasePrefixInformationOptions(FunctionalOptionInUse);
 	If Not FunctionalOptionInUse Then
 		
-		Raise NStr("en='Objects prefixation is unavailable.';ru='Перепрефиксация объектов недоступна.'");
+		Raise NStr("en='Object reprefixation is not available.';ru='Перепрефиксация объектов недоступна.'");
 		
 	EndIf;
 	
@@ -1484,7 +1484,7 @@ EndProcedure
 
 Function EventLogMonitorMessageTextPereprefixionObjects()
 	
-	Return NStr("en='Objects prefixation. Infobase prefix modification';ru='Префиксация объектов.Изменение префикса информационной базы'", CommonUseClientServer.MainLanguageCode());
+	Return NStr("en='Object prefixation.Infobase prefix change';ru='Префиксация объектов.Изменение префикса информационной базы'", CommonUseClientServer.MainLanguageCode());
 	
 EndFunction
 

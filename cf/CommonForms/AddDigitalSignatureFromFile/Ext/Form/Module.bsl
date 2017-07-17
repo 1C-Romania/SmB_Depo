@@ -153,10 +153,10 @@ Procedure OKEnd(Result, Context) Export
 		DataDescription.Delete("Signatures");
 		
 		Error = New Structure("ErrorDescription",
-			NStr("en='An error occurred writing a signature:';ru='При записи подписи возникла ошибка:'") + Chars.LF + Result.ErrorDescription);
+			NStr("en='An error occurred when writing the signature:';ru='При записи подписи возникла ошибка:'") + Chars.LF + Result.ErrorDescription);
 		
 		DigitalSignatureServiceClient.ShowRequestToApplicationError(
-			NStr("en='Unable to add digital signature from file';ru='Не удалось добавить электронную подпись из файла'"), "", Error, New Structure);
+			NStr("en='Cannot add a digital signature from the file';ru='Не удалось добавить электронную подпись из файла'"), "", Error, New Structure);
 		Return;
 	EndIf;
 	
@@ -222,7 +222,7 @@ Procedure SelectFileAfterConnectionFileOperationsExtension(Attached, Context) Ex
 	
 	Dialog = New FileDialog(FileDialogMode.Open);
 	Dialog.Multiselect = False;
-	Dialog.Title = NStr("en='Select digital signature file';ru='Выберите файл электронной подписи'");
+	Dialog.Title = NStr("en='Select a digital signature file';ru='Выберите файл электронной подписи'");
 	Dialog.Filter = StringFunctionsClientServer.SubstituteParametersInString(
 		NStr("en='Signature files (*.%1)|*.%1|All files(*.*)|*.*';ru='Файлы подписи (*.%1)|*.%1|Все файлы(*.*)|*.*'"),
 		DigitalSignatureClientServer.PersonalSettings().ExtensionForSignatureFiles);
@@ -310,7 +310,7 @@ Procedure SelectFileAfterObtainingCertificatesFromSignaturesError(ErrorInfo, Sta
 	StandardProcessing = False;
 	
 	ErrorOnClient = New Structure("ErrorDescription", StringFunctionsClientServer.SubstituteParametersInString(
-		NStr("en='An error occurred when getting certificates from a signature file: %1';ru='При получении сертификатов из файла подписи произошла ошибка: %1'"),
+		NStr("en='An error occurred when receiving certificates from the signature file: %1';ru='При получении сертификатов из файла подписи произошла ошибка: %1'"),
 		BriefErrorDescription(ErrorInfo)));
 	
 	ShowError(ErrorOnClient, Context.ErrorOnServer);
@@ -323,7 +323,7 @@ Procedure SelectFileAfterReceivingCertificatesFromSignature(Certificates, Contex
 	
 	If Certificates.Count() = 0 Then
 		ErrorOnClient = New Structure("ErrorDescription",
-			NStr("en='File contains no signatures of any certificate';ru='В файле подписи нет ни одного сертификата.'"));
+			NStr("en='Signature file does not include any certificates.';ru='В файле подписи нет ни одного сертификата.'"));
 		
 		ShowError(ErrorOnClient, Context.ErrorOnServer);
 		Return;
@@ -370,13 +370,13 @@ Function AddRowAtServer(Address, FileName, AddNewRow, ErrorOnServer, SignatureDa
 	Except
 		ErrorInfo = ErrorInfo();
 		ErrorOnServer.Insert("ErrorDescription", StringFunctionsClientServer.SubstituteParametersInString(
-			NStr("en='An error occurred when getting certificates from a signature file: %1';ru='При получении сертификатов из файла подписи произошла ошибка: %1'"),
+			NStr("en='An error occurred when receiving certificates from the signature file: %1';ru='При получении сертификатов из файла подписи произошла ошибка: %1'"),
 			BriefErrorDescription(ErrorInfo)));
 		Return False;
 	EndTry;
 	
 	If Certificates.Count() = 0 Then
-		ErrorOnServer.Insert("ErrorDescription", NStr("en='File contains no signatures of any certificate';ru='В файле подписи нет ни одного сертификата.'"));
+		ErrorOnServer.Insert("ErrorDescription", NStr("en='Signature file does not include any certificates.';ru='В файле подписи нет ни одного сертификата.'"));
 		Return False;
 	EndIf;
 	
@@ -446,7 +446,7 @@ EndProcedure
 Procedure ShowError(ErrorOnClient, ErrorOnServer)
 	
 	DigitalSignatureServiceClient.ShowRequestToApplicationError(
-		NStr("en='Unable to get signature from file';ru='Не удалось получить подпись из файла'"), "", ErrorOnClient, ErrorOnServer);
+		NStr("en='Cannot receive a signature from the file';ru='Не удалось получить подпись из файла'"), "", ErrorOnClient, ErrorOnServer);
 	
 EndProcedure
 

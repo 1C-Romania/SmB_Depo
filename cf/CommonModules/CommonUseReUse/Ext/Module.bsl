@@ -148,7 +148,7 @@ Function GetXSLTransformFromCommonTemplate(Val CommonTemplateName) Export
 	Try
 		DeleteFiles(TransformFileName);
 	Except
-		WriteLogEvent(NStr("en='Receiving XSL';ru='Получение XSL'", CommonUseClientServer.MainLanguageCode()),
+		WriteLogEvent(NStr("en='Receive XSL';ru='Получение XSL'", CommonUseClientServer.MainLanguageCode()),
 			EventLogLevel.Error, , , DetailErrorDescription(ErrorInfo()));
 	EndTry;
 	
@@ -293,7 +293,7 @@ Function SeparatedMetadataObjects(Val Delimiter) Export
 	CommonAttributeMetadata = Metadata.CommonAttributes.Find(Delimiter);
 	If CommonAttributeMetadata = Undefined Then
 		Raise StringFunctionsClientServer.SubstituteParametersInString(
-			NStr("en='Common attribute %1 is not found in configuration!';ru='Общий реквизит %1 не обнаружен в конфигурации!'"), Delimiter);
+			NStr("en='Common attribute %1 was not found in configuration.';ru='Общий реквизит %1 не обнаружен в конфигурации!'"), Delimiter);
 	EndIf;
 	
 	If CommonAttributeMetadata.DataSeparation = Metadata.ObjectProperties.CommonAttributeDataSeparation.Separate Then
@@ -337,7 +337,7 @@ Function SeparatedMetadataObjects(Val Delimiter) Export
 	Else
 		
 		Raise StringFunctionsClientServer.SubstituteParametersInString(
-			NStr("en='Data separation is not used for the common attribute %1!';ru='Для общего реквизита %1 не используется разделение данных!'"), Delimiter);
+			NStr("en='Data separation is not used for common attribute %1.';ru='Для общего реквизита %1 не используется разделение данных!'"), Delimiter);
 		
 	EndIf;
 	
@@ -350,9 +350,9 @@ Function SeparatedMetadataObjects(Val Delimiter) Export
 		
 		If SequenceMetadata.Documents.Count() = 0 Then
 			
-			MessagePattern = NStr("en='No document is included into the %1 sequence.';ru='В последовательность %1 не включено ни одного документа.'");
+			MessagePattern = NStr("en='Sequence %1 does not include any documents.';ru='В последовательность %1 не включено ни одного документа.'");
 			MessageText = StringFunctionsClientServer.SubstituteParametersInString(MessagePattern, SequenceMetadata.Name);
-			WriteLogEvent(NStr("en='Separated metadata objects receipt';ru='Получение разделенных объектов метаданных'", 
+			WriteLogEvent(NStr("en='Receive separate metadata objects';ru='Получение разделенных объектов метаданных'", 
 				CommonUseClientServer.MainLanguageCode()), EventLogLevel.Error, 
 				SequenceMetadata, , MessageText);
 			
@@ -384,9 +384,9 @@ Function SeparatedMetadataObjects(Val Delimiter) Export
 		
 		If DocumentJournalMetadata.RegisteredDocuments.Count() = 0 Then
 			
-			MessagePattern = NStr("en='No one document is included to the log %1.';ru='В журнал %1 не включено ни одного документа.'");
+			MessagePattern = NStr("en='Journal %1 does not contain any documents.';ru='В журнал %1 не включено ни одного документа.'");
 			MessageText = StringFunctionsClientServer.SubstituteParametersInString(MessagePattern, DocumentJournalMetadata.Name);
-			WriteLogEvent(NStr("en='Separated metadata objects receipt';ru='Получение разделенных объектов метаданных'", 
+			WriteLogEvent(NStr("en='Receive separate metadata objects';ru='Получение разделенных объектов метаданных'", 
 				CommonUseClientServer.MainLanguageCode()), EventLogLevel.Error, 
 				DocumentJournalMetadata, , MessageText);
 			
@@ -492,7 +492,7 @@ Function CacheVersionsData(Val ID, Val DataType, Val ReceivingParameters, Val Us
 		Else
 			JobMethodName = "CommonUse.UpdateVersionCacheData";
 			DescriptionSchTask = StringFunctionsClientServer.SubstituteParametersInString(
-				NStr("en='Versions cache update. %1 record identifier. Data type %2';ru='Обновление кэша версий. Идентификатор записи %1. Тип данных %2.'"),
+				NStr("en='Updating version cache. Identifier of record %1. Data type %2.';ru='Обновление кэша версий. Идентификатор записи %1. Тип данных %2.'"),
 				ID,
 				DataType);
 			JobParameters = New Array;
@@ -527,23 +527,23 @@ Function CacheVersionsData(Val ID, Val DataType, Val ReceivingParameters, Val Us
 						EndIf;
 						
 						If Job.ErrorInfo <> Undefined Then
-							WriteLogEvent(NStr("en='Refresh versions cache';ru='Обновление кэша версий'", CommonUseClientServer.MainLanguageCode()),
+							WriteLogEvent(NStr("en='Updating version cache';ru='Обновление кэша версий'", CommonUseClientServer.MainLanguageCode()),
 								EventLogLevel.Error,
 								,
 								,
 								DetailErrorDescription(Job.ErrorInfo));
 							Raise(BriefErrorDescription(Job.ErrorInfo));
 						Else
-							WriteLogEvent(NStr("en='Refresh versions cache';ru='Обновление кэша версий'", CommonUseClientServer.MainLanguageCode()),
+							WriteLogEvent(NStr("en='Updating version cache';ru='Обновление кэша версий'", CommonUseClientServer.MainLanguageCode()),
 								EventLogLevel.Error,
 								,
 								,
 								DetailErrorDescription(ErrorInfo()));
-							Raise(NStr("en='Unknown error occurred when updating the version cache.';ru='Неизвестная ошибка при выполнения задания обновления кэша версий'"));
+							Raise(NStr("en='An unknown error occurred while updating the version cache';ru='Неизвестная ошибка при выполнения задания обновления кэша версий'"));
 						EndIf;
 					EndDo;
 					
-					Raise(NStr("en='Unknown error when updating the versions cache';ru='Неизвестная ошибка при обновлении кэша версий'"));
+					Raise(NStr("en='An unknown error occurred while updating the version cache';ru='Неизвестная ошибка при обновлении кэша версий'"));
 				EndTry;
 			EndIf;
 			
@@ -617,7 +617,7 @@ Function InterfaceOptions() Export
 		CommonUseOverridable.OnDefiningFunctionalInterfaceOptionsParameters(InterfaceOptions);
 	Except
 		ErrorInfo = ErrorInfo();
-		EventName = NStr("en='Interface setting';ru='Настройка интерфейса'", CommonUseClientServer.MainLanguageCode());
+		EventName = NStr("en='Interface configuration';ru='Настройка интерфейса'", CommonUseClientServer.MainLanguageCode());
 		ErrorText = StringFunctionsClientServer.SubstituteParametersInString(
 			NStr("en='An error occurred while receiving
 		|interface options: %1';ru='При получении опций интерфейса

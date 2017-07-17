@@ -14,7 +14,7 @@ Procedure OnCreateAtServer(Cancel, StandardProcessing)
 	If ObjectVersioning.LastVersionNumber(Ref) = 0 Then
 		Items.MainPage.CurrentPage = Items.VersionsForCompareThereAreNo;
 		Items.NoneOfVersions.Title = StringFunctionsClientServer.SubstituteParametersInString(
-	       NStr("en='There are no previous versions: ""%1"".';ru='Предыдущие версии отсутствуют: ""%1"".'"),
+	       NStr("en='Previous versions are missing: ""%1"".';ru='Предыдущие версии отсутствуют: ""%1"".'"),
 	       String(Ref));
 	EndIf;
 	
@@ -95,7 +95,7 @@ Procedure GenerateChangesReport(Command)
 	ComparedVersions = GenerateListOfSelectedVersions(SelectedRows);
 	
 	If ComparedVersions.Count() < 2 Then
-		ShowMessageBox(, NStr("en='To generate the report on changes it is necessary to select at least two versions.';ru='Для формирования отчета по изменениям необходимо выбрать хотя бы две версии.'"));
+		ShowMessageBox(, NStr("en='To generate a report on changes, select at least two versions.';ru='Для формирования отчета по изменениям необходимо выбрать хотя бы две версии.'"));
 		Return;
 	EndIf;
 	
@@ -166,7 +166,7 @@ Procedure GoToSelectedVersion(CancelPosting = False)
 			
 		NotifyDescription = New NotifyDescription("GoToSelectedVersionQueryIsAsked", ThisObject);
 		Buttons = New ValueList;
-		Buttons.Add("Goto", NStr("en='Goto';ru='Перейти'"));
+		Buttons.Add("Goto", NStr("en='Navigate';ru='Перейти'"));
 		Buttons.Add(DialogReturnCode.Cancel);
 		ShowQueryBox(NOTifyDescription, QuestionText, Buttons);
 	Else //Result = "RecoveryIsCompleted"
@@ -178,7 +178,7 @@ Procedure GoToSelectedVersion(CancelPosting = False)
 				// Do nothing if the form has no Read() method.
 			EndTry;
 		EndIf;
-		ShowMessageBox(, NStr("en='Proceeding to the old version has been successfully perfomed.';ru='Переход к старой версий выполнен успешно.'"));
+		ShowMessageBox(, NStr("en='Migration to the previous version is completed successfully.';ru='Переход к старой версий выполнен успешно.'"));
 	EndIf;
 	
 EndProcedure
@@ -207,7 +207,7 @@ Function GoToVersionServer(Ref, VersionNumber, UndoPosting = False)
 	
 	Object.AdditionalProperties.Insert("ObjectVersioningCommentToVersion",
 		StringFunctionsClientServer.SubstituteParametersInString(
-			NStr("en='Proceeding to the version #%1 from %2 has been performed';ru='Выполнен переход к версии №%1 от %2'"),
+			NStr("en='Transfer to version No. %1 from %2 is performed';ru='Выполнен переход к версии №%1 от %2'"),
 			String(VersionNumber),
 			Format(Information.VersionDate, "DLF=DT")) );
 			

@@ -57,14 +57,14 @@ Procedure NotificationProcessing(EventName, Parameter, Source)
 			
 			ClearMessages();
 			If Not EquipmentManagerClient.CodeCorrespondsToMCTemplate(TracksData, PatternData) Then
-				CommonUseClientServer.MessageToUser(NStr("en='Card does not matches with template!';ru='Карта не соответствует шаблону!'"));
+				CommonUseClientServer.MessageToUser(NStr("en='The card does not match template.';ru='Карта не соответствует шаблону!'"));
 				Return;
 			EndIf;
 			
 			// Display encrypted fields
 			If Parameter[1][3] = Undefined
 				OR Parameter[1][3].Count() = 0 Then
-				CommonUseClientServer.MessageToUser(NStr("en='It was not succeeded to distinguish any field. Perhaps, the template fields have been configured incorrectly.';ru='Не удалось распознать ни одного поля. Возможно, поля шаблона настроены неверно.'"));
+				CommonUseClientServer.MessageToUser(NStr("en='Failed to identify any field. Maybe, template fields configured incorrectly.';ru='Не удалось распознать ни одного поля. Возможно, поля шаблона настроены неверно.'"));
 			Else
 				TemplateFound = Undefined;
 				For Each curTemplate IN Parameter[1][3] Do
@@ -73,9 +73,9 @@ Procedure NotificationProcessing(EventName, Parameter, Source)
 					EndIf;
 				EndDo;
 				If TemplateFound = Undefined Then
-					CommonUseClientServer.MessageToUser(NStr("en='Code does not match this template. Perhaps, template has been configured incorrectly.';ru='Код не соответствует данному шаблону. Возможно, шаблон настроен неверно.'"));
+					CommonUseClientServer.MessageToUser(NStr("en='The code does not match this template. Maybe, the template is configured incorrectly.';ru='Код не соответствует данному шаблону. Возможно, шаблон настроен неверно.'"));
 				Else
-					MessageText = NStr("en='Card matches to template and contains this fields:';ru='Карта соответствует шаблону и содержит следующие поля:'")+Chars.LF+Chars.LF;
+					MessageText = NStr("en='The card matches the template and contains the following fields:';ru='Карта соответствует шаблону и содержит следующие поля:'")+Chars.LF+Chars.LF;
 					Iterator = 1;
 					For Each curField IN TemplateFound.TracksData Do
 						MessageText = MessageText + String(Iterator)+". "+?(ValueIsFilled(curField.Field), String(curField.Field), "")+" = "+String(curField.FieldValue)+Chars.LF;

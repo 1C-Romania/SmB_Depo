@@ -684,7 +684,7 @@ Procedure ProcessContractChange(ContractData = Undefined)
 		
 		If QueryBoxPrepayment = True Then
 			
-			QuestionText = NStr("en='Prepayment set-off will be cleared, do you want to continue?';ru='Зачет предоплаты будет очищен, продолжить?'");
+			QuestionText = NStr("en='Prepayment setoff will be cleared, continue?';ru='Зачет предоплаты будет очищен, продолжить?'");
 			
 			NotifyDescription = New NotifyDescription("DefineAdvancePaymentOffsetsRefreshNeed", ThisObject, DocumentParameters);
 			ShowQueryBox(NOTifyDescription, QuestionText, QuestionDialogMode.YesNo);
@@ -1064,12 +1064,12 @@ EndProcedure // EditPricesAndCurrency()
 Procedure DistributeExpensesByQuantity(Command)
 	
 	If Object.Inventory.Count() = 0 Then
-		SmallBusinessClient.ShowMessageAboutError(Object, NStr("en='Tabular section ""Inventory"" has no records!';ru='В табличной части ""Запасы"" нет записей!'"));
+		SmallBusinessClient.ShowMessageAboutError(Object, NStr("en='No records in tabular section ""Inventory"".';ru='В табличной части ""Запасы"" нет записей!'"));
 		Return;
 	EndIf;
 	
 	If Object.Expenses.Count() = 0 Then
-		SmallBusinessClient.ShowMessageAboutError(Object, NStr("en='There are no records in the tabular section ""Expenses""!';ru='В табличной части ""Расходы"" нет записей!'"));
+		SmallBusinessClient.ShowMessageAboutError(Object, NStr("en='There are no records in the tabular section ""Expenses"".';ru='В табличной части ""Расходы"" нет записей!'"));
 		Return;
 	EndIf;
 	
@@ -1083,12 +1083,12 @@ EndProcedure // DistributeExpensesByCount()
 Procedure DistributeExpensesByAmount(Command)
 	
 	If Object.Inventory.Count() = 0 Then
-		SmallBusinessClient.ShowMessageAboutError(Object, NStr("en='Tabular section ""Inventory"" has no records!';ru='В табличной части ""Запасы"" нет записей!'"));
+		SmallBusinessClient.ShowMessageAboutError(Object, NStr("en='No records in tabular section ""Inventory"".';ru='В табличной части ""Запасы"" нет записей!'"));
 		Return;
 	EndIf;
 	
 	If Object.Expenses.Count() = 0 Then
-		SmallBusinessClient.ShowMessageAboutError(Object, NStr("en='There are no records in the tabular section ""Expenses""!';ru='В табличной части ""Расходы"" нет записей!'"));
+		SmallBusinessClient.ShowMessageAboutError(Object, NStr("en='There are no records in the tabular section ""Expenses"".';ru='В табличной части ""Расходы"" нет записей!'"));
 		Return;
 	EndIf;
 	
@@ -1277,7 +1277,7 @@ Procedure PurchaseOrderOnChange(Item)
 		Mode = QuestionDialogMode.YesNo;
 		Response = Undefined;
 
-		ShowQueryBox(New NotifyDescription("PurchaseOrderOnChangeEnd", ThisObject), NStr("en='Prepayment set-off will be cleared, do you want to continue?';ru='Зачет предоплаты будет очищен, продолжить?'"), Mode, 0);
+		ShowQueryBox(New NotifyDescription("PurchaseOrderOnChangeEnd", ThisObject), NStr("en='Prepayment setoff will be cleared, continue?';ru='Зачет предоплаты будет очищен, продолжить?'"), Mode, 0);
 		Return;
 	EndIf;
 	

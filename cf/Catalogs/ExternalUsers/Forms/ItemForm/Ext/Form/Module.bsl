@@ -200,11 +200,11 @@ Procedure BeforeWrite(Cancel, WriteParameters)
 			Cancel = True;
 			ShowQueryBox(
 				New NotifyDescription("AfterAnswerToQuestionAboutRecordWithEmptyRoleList", ThisObject, WriteParameters),
-				NStr("en='A role was not assigned to the Infobase user. Continue?';ru='Пользователю информационной базы не установлено ни одной роли. Продолжить?'"),
+				NStr("en='Infobase user was not assign any role. Continue?';ru='Пользователю информационной базы не установлено ни одной роли. Продолжить?'"),
 				QuestionDialogMode.YesNo,
 				,
 				,
-				NStr("en='Record of the infobase user';ru='Запись пользователя информационной базы'"));
+				NStr("en='Infobase user record';ru='Запись пользователя информационной базы'"));
 			Return;
 		EndIf;
 	EndIf;
@@ -952,12 +952,12 @@ Procedure DefineUserInconsistenciesWithUserIB(WriteParameters = Undefined)
 		
 		If IBUserShowInList Then
 			FoundDifferencesCanBeResolvedWithoutAdministrator = True;
-			PropertiesAdjustment.Add(NStr("en='Show in choice list (enabled)';ru='Показывать в списке выбора (включено)'"));
+			PropertiesAdjustment.Add(NStr("en='Show in the selection list (enabled)';ru='Показывать в списке выбора (включено)'"));
 		EndIf;
 		
 		If IBUserRunMode <> "Auto" Then
 			FoundDifferencesCanBeResolvedWithoutAdministrator = True;
-			PropertiesAdjustment.Add(NStr("en='Launch mode (not Auto)';ru='Режим запуска (не Авто)'"));
+			PropertiesAdjustment.Add(NStr("en='Start mode (not Auto)';ru='Режим запуска (не Авто)'"));
 		EndIf;
 		
 		If PropertiesAdjustment.Count() > 0 Then
@@ -980,8 +980,8 @@ Procedure DefineUserInconsistenciesWithUserIB(WriteParameters = Undefined)
 		|от указанных в этой форме: %1.'"), StringPropertyClarification)
 				+ Chars.LF
 				+ ?(ShowCommandsDifferences Or FoundDifferencesCanBeResolvedWithoutAdministrator,
-					NStr("en='Click ""Write"" to resolve the differences and not to show this warning message.';ru='Нажмите ""Записать"", чтобы устранить различия и не выводить это предупреждение.'"),
-					NStr("en='To resolve the differences, contact your administrator.';ru='Обратитесь к администратору, чтобы устранить различия.'"));
+					NStr("en='Click ""Write"" to resolve the differences and not to show this message again.';ru='Нажмите ""Записать"", чтобы устранить различия и не выводить это предупреждение.'"),
+					NStr("en='Contact your administrator to resolve the differences.';ru='Обратитесь к администратору, чтобы устранить различия.'"));
 		Else
 			ShowMismatch = False;
 		EndIf;

@@ -82,7 +82,7 @@ Procedure WriteAuthorizationSettingsForStandardODataInterface(Val AuthorizationS
 			StandardInterfaceUserOData = Catalogs.Users.CreateItem();
 		EndIf;
 		
-		StandardInterfaceUserOData.Description = NStr("en='Automatic REST-service';ru='Автоматический REST-сервис'");
+		StandardInterfaceUserOData.Description = NStr("en='Automatic REST service';ru='Автоматический REST-сервис'");
 		StandardInterfaceUserOData.Service = True;
 		StandardInterfaceUserOData.AdditionalProperties.Insert("IBUserDescription", IBUserDescription);
 		
@@ -98,7 +98,7 @@ Procedure WriteAuthorizationSettingsForStandardODataInterface(Val AuthorizationS
 			IBUserDescription.Delete("Password");
 			
 			Comment = StringFunctionsClientServer.SubstituteParametersInString(
-				NStr("en='Record of the user for standard OData interface is done. Description of IB user: ------------------------------------------- %1 ------------------------------------------- Result: ------------------------------------------- %2 -------------------------------------------';ru='Выполнена запись пользователя для стандартного интерфейса OData. Описание пользователя ИБ: ------------------------------------------- %1 ------------------------------------------- Результат: ------------------------------------------- %2 -------------------------------------------'"),
+				NStr("en='User is written for standard interface OData. IB user description: ------------------------------------------- %1 ------------------------------------------- Result: ------------------------------------------- %2 -------------------------------------------';ru='Выполнена запись пользователя для стандартного интерфейса OData. Описание пользователя ИБ: ------------------------------------------- %1 ------------------------------------------- Результат: ------------------------------------------- %2 -------------------------------------------'"),
 				CommonUse.ValueToXMLString(IBUserDescription),
 				StandardInterfaceUserOData.AdditionalProperties.IBUserDescription.ActionResult
 			);
@@ -118,7 +118,7 @@ Procedure WriteAuthorizationSettingsForStandardODataInterface(Val AuthorizationS
 			IBUserDescription.Delete("Password");
 			
 			Comment = StringFunctionsClientServer.SubstituteParametersInString(
-				NStr("en='Error occurred at recording of the user of standard OData interface. Description of IB user: ------------------------------------------- %1 ------------------------------------------- Error text: ------------------------------------------- %2 -------------------------------------------';ru='При записи пользователя для стандартного интерфейса OData произошла ошибка. Описание пользователя ИБ: ------------------------------------------- %1 ------------------------------------------- Текст ошибки: ------------------------------------------- %2 -------------------------------------------'"),
+				NStr("en='An error occurred while writing a user for standard interface OData. IB user description: ------------------------------------------- %1 ------------------------------------------- Error text: ------------------------------------------- %2 -------------------------------------------';ru='При записи пользователя для стандартного интерфейса OData произошла ошибка. Описание пользователя ИБ: ------------------------------------------- %1 ------------------------------------------- Текст ошибки: ------------------------------------------- %2 -------------------------------------------'"),
 				CommonUse.ValueToXMLString(IBUserDescription),
 				DetailErrorDescription(ErrorInfo())
 			);
@@ -297,13 +297,13 @@ Procedure CheckODataRoleContent() Export
 	Errors = New Array();
 	
 	If ExcessiveRights.Count() > 0 Then
-		ErrorText = Chars.NBSp + NStr("en='The following rights are excessively included in role content:';ru='Следующие права избыточно включены в состав роли:'") + Chars.LF + Chars.CR + 
+		ErrorText = Chars.NBSp + NStr("en='The following rights are redundant in the role:';ru='Следующие права избыточно включены в состав роли:'") + Chars.LF + Chars.CR + 
 			ExcessiveOrMissingRightsDisplay(ExcessiveRights, 2);
 		Errors.Add(ErrorText);
 	EndIf;
 	
 	If MissingRights.Count() > 0 Then
-		ErrorText = Chars.NBSp + NStr("en='The following rights shall be included in role content:';ru='Следующие права должны быть включены в состав роли:'") + Chars.LF + Chars.CR + 
+		ErrorText = Chars.NBSp + NStr("en='The following rights must be included in the role:';ru='Следующие права должны быть включены в состав роли:'") + Chars.LF + Chars.CR + 
 			ExcessiveOrMissingRightsDisplay(MissingRights, 2);
 		Errors.Add(ErrorText);
 	EndIf;
@@ -311,7 +311,7 @@ Procedure CheckODataRoleContent() Export
 	If Errors.Count() > 0 Then
 		
 		ErrorMessage = StringFunctionsClientServer.SubstituteParametersInString(
-			NStr("en='Errors in the content of role rights were detected %1:';ru='Обнаружены ошибки в составе прав роли %1:'"),
+			NStr("en='Errors in the role right content were found %1:';ru='Обнаружены ошибки в составе прав роли %1:'"),
 			RoleForStandardODataInterface().Name);
 		
 		For Each Error IN Errors Do
@@ -522,7 +522,7 @@ EndFunction
 Function StandardODataInterfaceUserProperties()
 	
 	If Not AccessRight("DataAdministration", Metadata) Then
-		Raise NStr("en='Insufficient rights to setup automatic REST-service';ru='Недостаточно прав для настройки автоматического REST-сервиса'");
+		Raise NStr("en='Insufficient rights to setup automatic REST service';ru='Недостаточно прав для настройки автоматического REST-сервиса'");
 	EndIf;
 	
 	SetPrivilegedMode(True);
@@ -589,7 +589,7 @@ Procedure CheckODataRoleContentWhenUpdating() Export
 	If CommonUseReUse.DataSeparationEnabled() Then
 		CheckODataRoleContent();
 	Else
-		Raise NStr("en='Handler shall not be used when division by data areas is enabled';ru='Обработчик не должен использоваться при выключенном разделении по областям данных'");
+		Raise NStr("en='Handler shall not be used when data area division is enabled';ru='Обработчик не должен использоваться при выключенном разделении по областям данных'");
 	EndIf;
 	
 EndProcedure
@@ -602,7 +602,7 @@ Procedure CheckPossibilityToCreateUserForStandardODataInterfaceCalls()
 	
 	If UserCount = 0 Then
 		
-		Raise NStr("en='You can not create a separate login and password for automatic REST-service as other users are absent in the application.';ru='Нельзя создать отдельные логин и пароль для использования автоматического REST-сервиса, т.к. в программе отсутствуют другие пользователи.'");
+		Raise NStr("en='Cannot create separate login and password for automatic REST service because there are no other users in the application.';ru='Нельзя создать отдельные логин и пароль для использования автоматического REST-сервиса, т.к. в программе отсутствуют другие пользователи.'");
 		
 	EndIf;
 	

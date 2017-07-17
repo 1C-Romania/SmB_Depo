@@ -26,7 +26,7 @@ Procedure FillCheckProcessing(Cancel, CheckedAttributes)
 		AND Not OrdersExchange Then
 		
 		Cancel = True;
-		Message = NStr("en='Exchange mode is not selected!';ru='Режим обмена не выбран!'");
+		Message = NStr("en='Exchange mode is not selected.';ru='Режим обмена не выбран!'");
 		Field = "ProductsExchange";
 		CommonUseClientServer.MessageToUser(Message, ThisObject, Field);
 		
@@ -57,15 +57,15 @@ Procedure GenerateDescription() Export
 	
 	If ProductsExchange AND OrdersExchange Then
 		
-		Prefix = NStr("en='Products and orders exchange';ru='Обмен товарами и заказами'");
+		Prefix = NStr("en='Goods and orders exchange';ru='Обмен товарами и заказами'");
 		
 	ElsIf OrdersExchange Then
 		
-		Prefix = NStr("en='Orders exchange';ru='Обмениваться заказами'");
+		Prefix = NStr("en='Exchange orders';ru='Обмениваться заказами'");
 		
 	Else
 		
-		Prefix = NStr("en='Products export';ru='Товары выгрузить'");
+		Prefix = NStr("en='Goods export';ru='Товары выгрузить'");
 		
 	EndIf;
 	

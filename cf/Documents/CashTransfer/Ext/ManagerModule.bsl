@@ -291,7 +291,7 @@ Procedure GenerateTableManagerial(DocumentRef, StructureAdditionalProperties)
 	Query.SetParameter("Company", StructureAdditionalProperties.ForPosting.Company);
 	Query.SetParameter("PointInTime", New Boundary(StructureAdditionalProperties.ForPosting.PointInTime, BoundaryType.Including));
 	Query.SetParameter("ExchangeDifference", NStr("en='Exchange rate difference';ru='Курсовая разница'"));
-	Query.SetParameter("Content", NStr("en='Write-off of the cash to any account';ru='Списание денежных средств на произвольный счет'"));
+	Query.SetParameter("Content", NStr("en='Funds debiting to arbitrary account';ru='Списание денежных средств на произвольный счет'"));
 	Query.SetParameter("TaxPay", NStr("en='Tax payment';ru='Оплата налога'"));
 	
 	Query.Text =

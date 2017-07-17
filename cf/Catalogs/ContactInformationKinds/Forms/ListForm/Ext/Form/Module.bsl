@@ -8,7 +8,7 @@ Procedure ListBeforeAddRow(Item, Cancel, Copy, Parent, Group)
 	If Copy AND Group Then
 		Cancel = True;
 		
-		ShowMessageBox(, NStr("en='Adding new groups to catalog is prohibited.';ru='Добавление новых групп в справочнике запрещено.'"));
+		ShowMessageBox(, NStr("en='Adding new groups to the catalog is prohibited.';ru='Добавление новых групп в справочнике запрещено.'"));
 	EndIf;
 	
 EndProcedure

@@ -13,11 +13,11 @@ Procedure OnCreateAtServer(Cancel, StandardProcessing)
 	EndIf;
 	
 	If CommonUseClientServer.ThisIsWebClient() Then
-		Raise NStr("en='Backing up is not available in web-client.';ru='Резервное копирование недоступно в веб-клиенте.'");
+		Raise NStr("en='Backup is not available in web client.';ru='Резервное копирование недоступно в веб-клиенте.'");
 	EndIf;
 	
 	If Not CommonUse.FileInfobase() Then
-		Raise NStr("en='Backup in client-server work variant should be performed by outside agents (means DBMS)';ru='В клиент-серверном варианте работы резервное копирование следует выполнять сторонними средствами (средствами СУБД).'");
+		Raise NStr("en='Back up data using external tools (DBMS tools) in the client/server mode.';ru='В клиент-серверном варианте работы резервное копирование следует выполнять сторонними средствами (средствами СУБД).'");
 	EndIf;
 	
 	BackupSettings = InfobaseBackupServer.BackupSettings();
@@ -40,7 +40,7 @@ Procedure OnOpen(Cancel)
 	
 	If CommonUseClientServer.IsLinuxClient() Then
 		Cancel = True;
-		MessageText = NStr("en='Backup is unavailable in the client managed by OC Linux.';ru='Резервное копирование недоступно в клиенте под управлением ОС Linux.'");
+		MessageText = NStr("en='Backup is not available on the client running Linux OS.';ru='Резервное копирование недоступно в клиенте под управлением ОС Linux.'");
 		ShowMessageBox(,MessageText);
 		Return;
 	EndIf;
@@ -70,7 +70,7 @@ Procedure BeforeClose(Cancel, StandardProcessing)
 	CurrentPage = Items.DataImportPages.CurrentPage;
 	If CurrentPage = Items.DataImportPages.ChildItems.InformationAndBackupPerformingPage Then
 		
-		WarningText = NStr("en='Interrupt preparation for data recovery?';ru='Прервать подготовку к восстановлению данных?'");
+		WarningText = NStr("en='Stop preparing to restore data?';ru='Прервать подготовку к восстановлению данных?'");
 		CommonUseClient.ShowArbitraryFormClosingConfirmation(ThisObject,
 			Cancel, WarningText, "ForceCloseForm");
 		
@@ -156,7 +156,7 @@ Procedure Done(Command)
 	Items.ActiveUserCount.Title = InfobaseSessionCount;
 	
 	SetConnectionLock = True;
-	InfobaseConnectionsServerCall.SetConnectionLock(NStr("en='Infobase is being restored.';ru='Выполняется восстановление информационной базы.'"), "Backup");
+	InfobaseConnectionsServerCall.SetConnectionLock(NStr("en='Infobase recovery is in progress.';ru='Выполняется восстановление информационной базы.'"), "Backup");
 	
 	If InfobaseSessionCount = 1 Then
 		InfobaseConnectionsClient.SetUserTerminationInProgressFlag(SetConnectionLock);
@@ -201,8 +201,8 @@ EndProcedure
 Procedure SelectBackupFile()
 	
 	FileOpeningDialog = New FileDialog(FileDialogMode.Open);
-	FileOpeningDialog.Filter = NStr("en='Archive with a backup (*.zip)|*.zip';ru='Архив с резервной копией (*.zip)|*.zip'");
-	FileOpeningDialog.Title= NStr("en='Select a backup file.';ru='Выберите файл резервной копии'");
+	FileOpeningDialog.Filter = NStr("en='Archive with backup (*.zip)|*.zip';ru='Архив с резервной копией (*.zip)|*.zip'");
+	FileOpeningDialog.Title= NStr("en='Select a backup file';ru='Выберите файл резервной копии'");
 	FileOpeningDialog.CheckFileExist = True;
 	
 	If FileOpeningDialog.Choose() Then
@@ -227,7 +227,7 @@ Function CheckAttributesFilling()
 	FileName = Object.BackupImportingFile;
 	
 	If IsBlankString(FileName) Then
-		MessageText = NStr("en='File with a backup is not found.';ru='Не выбран файл с резервной копией.'");
+		MessageText = NStr("en='Backup file is not selected.';ru='Не выбран файл с резервной копией.'");
 		CommonUseClientServer.MessageToUser(MessageText,, "Object.BackupImportingFile");
 		Return False;
 	EndIf;
@@ -235,7 +235,7 @@ Function CheckAttributesFilling()
 	FileOfArchive = New File(FileName);
 	If FileOfArchive.Extension <> ".zip" Then
 		
-		MessageText = NStr("en='The selected file is not an archive with a backup.';ru='Выбранный файл не является архивом с резервной копией.'");
+		MessageText = NStr("en='The selected file is not an archive with backup.';ru='Выбранный файл не является архивом с резервной копией.'");
 		CommonUseClientServer.MessageToUser(MessageText,, "Object.BackupImportingFile");
 		Return False;
 		
@@ -244,7 +244,7 @@ Function CheckAttributesFilling()
 	ZipFile = New ZipFileReader(FileName);
 	If ZipFile.Items.Count() <> 1 Then
 		
-		MessageText = NStr("en='Selected file is not an archive with backup (contains more than one file).';ru='Выбранный файл не является архивом с резервной копией (содержит более одного файла).'");
+		MessageText = NStr("en='The selected file is not an archive with backup (contains more than one file).';ru='Выбранный файл не является архивом с резервной копией (содержит более одного файла).'");
 		CommonUseClientServer.MessageToUser(MessageText,, "Object.BackupImportingFile");
 		Return False;
 		
@@ -254,7 +254,7 @@ Function CheckAttributesFilling()
 	
 	If UPPER(FileInArchive.Extension) <> "1CD" Then
 		
-		MessageText = NStr("en='Selected file is not an archive with backup (does not contain infobase file).';ru='Выбранный файл не является архивом с резервной копией (не содержит файл информационной базы).'");
+		MessageText = NStr("en='The selected file is not an archive with backup (does not contain an infobase file).';ru='Выбранный файл не является архивом с резервной копией (не содержит файл информационной базы).'");
 		CommonUseClientServer.MessageToUser(MessageText,, "Object.BackupImportingFile");
 		Return False;
 		
@@ -262,7 +262,7 @@ Function CheckAttributesFilling()
 	
 	If UPPER(FileInArchive.BaseName) <> "1CV8" Then
 		
-		MessageText = NStr("en='Selected file is not an archive with backup (wrong infobase attachment file name).';ru='Выбранный файл не является архивом с резервной копией (неправильное имя файла информационной базы).'");
+		MessageText = NStr("en='The selected file is not an archive with backup (invalid name of infobase file).';ru='Выбранный файл не является архивом с резервной копией (неправильное имя файла информационной базы).'");
 		CommonUseClientServer.MessageToUser(MessageText,, "Object.BackupImportingFile");
 		Return False;
 		
@@ -314,7 +314,7 @@ Procedure StartBackup()
 	ScriptMainFileName = GenerateUpdateScriptFiles();
 	EventLogMonitorClient.AddMessageForEventLogMonitor(InfobaseBackupClient.EventLogMonitorEvent(), 
 		"Information",
-		NStr("en='Backup of infobase is carried out:';ru='Выполняется резервное копирование информационной базы:'") + " " + ScriptMainFileName);
+		NStr("en='Infobase backup is in progress:';ru='Выполняется резервное копирование информационной базы:'") + " " + ScriptMainFileName);
 	
 	ForceCloseForm = True;
 	Close();

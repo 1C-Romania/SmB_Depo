@@ -6,7 +6,7 @@ Procedure OnCreateAtServer(Cancel, StandardProcessing)
 		Return;
 	EndIf;
 	If Object.Ref.IsEmpty() Then
-		OpenError = NStr("en='New report variant can be created out of the report form only';ru='Новый вариант отчета можно создать только из формы отчета'");
+		OpenError = NStr("en='You can create report variant only from the report form';ru='Новый вариант отчета можно создать только из формы отчета'");
 		Return;
 	EndIf;
 	Parameters.Property("OpenAdditionalReportFormOnOpen", OpenAdditionalReportFormOnOpen);
@@ -141,7 +141,7 @@ EndProcedure
 &AtClient
 Procedure DescriptionStartChoice(Item, ChoiceData, StandardProcessing)
 	StandardProcessing = False;
-	ReportsVariantsClient.EditMultilineText(ThisObject, Item.EditText, Object, "Definition", NStr("en='Definition';ru='Определение'"));
+	ReportsVariantsClient.EditMultilineText(ThisObject, Item.EditText, Object, "Definition", NStr("en='Definitions';ru='Определение'"));
 EndProcedure
 
 &AtClient

@@ -320,7 +320,7 @@ Function PostDocuments(Documents) Export
 				ErrorPresentation = BriefErrorDescription(ErrorInfo());
 			EndTry;
 		Else
-			ErrorPresentation = NStr("en='Document fields not filled.';ru='Поля документа не заполнены.'");
+			ErrorPresentation = NStr("en='Document fields are not populated.';ru='Поля документа не заполнены.'");
 		EndIf;
 		
 		If Not CompletedSuccessfully Then
@@ -536,7 +536,7 @@ Function ReplaceRefs(Val SubstitutionsPairs, Val Parameters = Undefined) Export
 				If Errors[KeyValue.Key] = Undefined Then
 					What = KeyValue.Key;
 					ForWhat = KeyValue.Value;
-					ErrorText = NStr("en='Replacement was not complete because of the previous problems.';ru='Замена не была выполнена из-за предыдущих проблем.'");
+					ErrorText = NStr("en='Not replaced due to the previous issues.';ru='Замена не была выполнена из-за предыдущих проблем.'");
 					Cause = ReplacementErrorDescription("RecordingError", ForWhat, SubjectString(ForWhat), ErrorText);
 					AddReplacementResult(ReplacementResult, What, Cause);
 				EndIf;
@@ -1009,7 +1009,7 @@ Function ReadXMLToTable(Val XML) Export
 	If Not Read.Read() Then
 		Raise NStr("en='Empty XML';ru='Пустой XML'");
 	ElsIf Read.Name <> "Items" Then
-		Raise NStr("en='Error in XML structure';ru='Ошибка в структуре XML'");
+		Raise NStr("en='An error occurred in XML structure';ru='Ошибка в структуре XML'");
 	EndIf;
 	
 	// Get the table description and create it.
@@ -1030,7 +1030,7 @@ Function ReadXMLToTable(Val XML) Export
 		ElsIf Read.NodeType <> XMLNodeType.StartElement Then
 			Continue;
 		ElsIf Read.Name <> "Item" Then
-			Raise NStr("en='Error in XML structure';ru='Ошибка в структуре XML'");
+			Raise NStr("en='An error occurred in XML structure';ru='Ошибка в структуре XML'");
 		EndIf;
 		
 		NewRow = ValueTable.Add();
@@ -1101,7 +1101,7 @@ Function IdenticalCollections(RowsCollection1, RowsCollection2, ColumnNames = ""
 				ColumnsToCompare.Add("Value");
 			EndIf;
 		Else
-			ErrorMessage = NStr("en='For the collection of the %1 type it is necessary to specify the name of the fields by which the matching is performed';ru='Для коллекции типа %1 необходимо указать имена полей, по которым производится сравнение'");
+			ErrorMessage = NStr("en='Specify names of fields for comparison for the collection of type %1';ru='Для коллекции типа %1 необходимо указать имена полей, по которым производится сравнение'");
 			Raise StringFunctionsClientServer.SubstituteParametersInString(ErrorMessage, TypeOf(RowsCollection1));
 		EndIf;
 	Else
@@ -1539,7 +1539,7 @@ Function COMConnectorIdentifier(Val COMConnectorName) Export
 		
 	EndIf;
 	
-	ErrorMessage = NStr("en='CLSID is not set for class %1';ru='На задан CLSID для класса %1'");
+	ErrorMessage = NStr("en='CLSID is not specified for class %1';ru='На задан CLSID для класса %1'");
 	ErrorMessage = StringFunctionsClientServer.SubstituteParametersInString(ErrorMessage, COMConnectorName);
 	Raise ErrorMessage;
 	
@@ -1634,7 +1634,7 @@ Function SubjectString(SubjectRef) Export
 	
 	If IsBlankString(Result) Then
 		If SubjectRef = Undefined Or SubjectRef.IsEmpty() Then
-			Result = NStr("en='is not specified';ru='не задан'");
+			Result = NStr("en='not specified';ru='не задан'");
 		ElsIf Metadata.Documents.Contains(SubjectRef.Metadata()) Then
 			Result = String(SubjectRef);
 		Else
@@ -1912,7 +1912,7 @@ EndProcedure
 Function ExecuteQueryBeyondTransaction(Val Query) Export
 	
 	If TransactionActive() Then
-		Raise(NStr("en='Transaction is active. Request peformance out of transaction is impossible.';ru='Транзакция активна. Выполнение запроса вне транзакции невозможно.'"));
+		Raise(NStr("en='Transaction is active. Cannot execute a query outside the transaction.';ru='Транзакция активна. Выполнение запроса вне транзакции невозможно.'"));
 	EndIf;
 	
 	AttemptCount = 0;
@@ -2131,7 +2131,7 @@ Function TimeIntervalAsString(BeginTime, EndTime = Undefined) Export
 	If EndTime = Undefined Then
 		EndTime = CurrentSessionDate();
 	ElsIf BeginTime > EndTime Then
-		Raise NStr("en='Date of the interval end can be not less than the start date.';ru='Дата окончания интервала не может быть меньше даты начала.'");
+		Raise NStr("en='The interval end date cannot be earlier than the start date.';ru='Дата окончания интервала не может быть меньше даты начала.'");
 	EndIf;
 	
 	IntervalSize = EndTime - BeginTime;
@@ -2149,14 +2149,14 @@ Function TimeIntervalAsString(BeginTime, EndTime = Undefined) Export
 		SubjectAndNumberInWords = NumberInWords(
 			IntervalSizeInDays,
 			"L=en_US",
-			NStr("en='day,days,days,,,,,,0';ru='день,дня,дней,,,,,,0'"));
+			NStr("en='day, day, days,,,,,,0';ru='день,дня,дней,,,,,,0'"));
 		
 		DetailsOfInterval = StrReplace(
 			SubjectAndNumberInWords,
 			NumberInWords,
 			Format(IntervalSizeInDays, "NFD=0") + " ");
 	Else
-		DetailsOfInterval = NStr("en='less than one day';ru='менее одного дня'");
+		DetailsOfInterval = NStr("en='less than a day';ru='менее одного дня'");
 	EndIf;
 	
 	Return DetailsOfInterval;
@@ -2318,9 +2318,9 @@ Function GetConfigurationMetadataTree(Filter = Undefined) Export
 	NewMetadataObjectCollectionRow("Constants",               NStr("en='Constants';ru='Константы'"),                 PictureLib.Constant,              PictureLib.Constant,                    CollectionsOfMetadataObjects);
 	NewMetadataObjectCollectionRow("Catalogs",             NStr("en='Catalogs';ru='Справочники'"),               PictureLib.Catalog,             PictureLib.Catalog,                   CollectionsOfMetadataObjects);
 	NewMetadataObjectCollectionRow("Documents",               NStr("en='Documents';ru='Документы'"),                 PictureLib.Document,               PictureLib.DocumentObject,               CollectionsOfMetadataObjects);
-	NewMetadataObjectCollectionRow("ChartsOfCharacteristicTypes", NStr("en='Charts of characteristics types';ru='Планы видов характеристик'"), PictureLib.ChartOfCharacteristicTypes, PictureLib.ChartOfCharacteristicTypesObject, CollectionsOfMetadataObjects);
+	NewMetadataObjectCollectionRow("ChartsOfCharacteristicTypes", NStr("en='Charts of characteristic types';ru='Планы видов характеристик'"), PictureLib.ChartOfCharacteristicTypes, PictureLib.ChartOfCharacteristicTypesObject, CollectionsOfMetadataObjects);
 	NewMetadataObjectCollectionRow("ChartsOfAccounts",             NStr("en='Charts of accounts';ru='Планы счетов'"),              PictureLib.ChartOfAccounts,             PictureLib.ChartOfAccountsObject,             CollectionsOfMetadataObjects);
-	NewMetadataObjectCollectionRow("ChartsOfCalculationTypes",       NStr("en='Charts of characteristics types';ru='Планы видов характеристик'"), PictureLib.ChartOfCharacteristicTypes, PictureLib.ChartOfCharacteristicTypesObject, CollectionsOfMetadataObjects);
+	NewMetadataObjectCollectionRow("ChartsOfCalculationTypes",       NStr("en='Charts of characteristic types';ru='Планы видов характеристик'"), PictureLib.ChartOfCharacteristicTypes, PictureLib.ChartOfCharacteristicTypesObject, CollectionsOfMetadataObjects);
 	NewMetadataObjectCollectionRow("InformationRegisters",        NStr("en='Information registers';ru='Регистры сведений'"),         PictureLib.InformationRegister,        PictureLib.InformationRegister,              CollectionsOfMetadataObjects);
 	NewMetadataObjectCollectionRow("AccumulationRegisters",      NStr("en='Accumulation registers';ru='Регистры накопления'"),       PictureLib.AccumulationRegister,      PictureLib.AccumulationRegister,            CollectionsOfMetadataObjects);
 	NewMetadataObjectCollectionRow("AccountingRegisters",     NStr("en='Accounting registers';ru='Регистры бухгалтерии'"),      PictureLib.AccountingRegister,     PictureLib.AccountingRegister,           CollectionsOfMetadataObjects);
@@ -2633,7 +2633,7 @@ Function ObjectManagerByFullName(FullName) Export
 	EndIf;
 	
 	Raise StringFunctionsClientServer.SubstituteParametersInString(
-		NStr("en='Unknown type of metadata object ""%1""';ru='Неизвестный тип объекта метаданных ""%1""'"), FullName);
+		NStr("en='Unknown metadata object type ""%1""';ru='Неизвестный тип объекта метаданных ""%1""'"), FullName);
 	
 EndFunction
 
@@ -2699,7 +2699,7 @@ Function ObjectByDescriptionFull(FullName) Export
 		Kind = Upper(RowArray[0]);
 		Name = RowArray[1];
 	Else
-		Raise StrReplace(NStr("en='Incorrect full name of report or processor %1.';ru='Некорректное полное имя отчета или обработки ""%1"".'"), "%1", FullName);
+		Raise StrReplace(NStr("en='Incorrect full name of the report or data processor ""%1"".';ru='Некорректное полное имя отчета или обработки ""%1"".'"), "%1", FullName);
 	EndIf;
 	
 	If Kind = "REPORT" Then
@@ -2711,7 +2711,7 @@ Function ObjectByDescriptionFull(FullName) Export
 	ElsIf Kind = "EXTERNALPROCESSOR" Then
 		Return ExternalDataProcessors.Create(Name);
 	Else
-		Raise StrReplace(NStr("en='%1 is not a report or a processor.';ru='""%1"" не является отчетом или обработкой.'"), "%1", FullName);
+		Raise StrReplace(NStr("en='""%1"" is not a report or a data processor.';ru='""%1"" не является отчетом или обработкой.'"), "%1", FullName);
 	EndIf;
 EndFunction
 
@@ -2801,7 +2801,7 @@ Function ObjectKindByKind(Type) Export
 	
 	Else
 		Raise StringFunctionsClientServer.SubstituteParametersInString(
-			NStr("en='InvalidValueTypeParameter%1';ru='Неверный тип значения параметра (%1)'"), String(Type));
+			NStr("en='Incorrect type of parameter value (%1)';ru='Неверный тип значения параметра (%1)'"), String(Type));
 	
 	EndIf;
 	
@@ -4590,7 +4590,7 @@ Procedure LockInfobase(Val CheckNoOtherSessions = True) Export
 			ModuleSaaSOperations = CommonModule("SaaSOperations");
 			ModuleSaaSOperations.LockCurrentDataArea(CheckNoOtherSessions);
 		Else
-			Raise(NStr("en='The SaaS operations subsystem is unavailable.';ru='Подсистема ""Работа в модели сервиса"" не доступна'"));
+			Raise(NStr("en='Subsystem ""SaaS operations"" is not available';ru='Подсистема ""Работа в модели сервиса"" не доступна'"));
 		EndIf;
 	EndIf;
 		
@@ -4618,7 +4618,7 @@ Procedure UnlockInfobase() Export
 			ModuleSaaSOperations = CommonModule("SaaSOperations");
 			ModuleSaaSOperations.UnlockCurrentDataArea();
 		Else
-			Raise(NStr("en='The SaaS operations subsystem is unavailable.';ru='Подсистема ""Работа в модели сервиса"" не доступна'"));
+			Raise(NStr("en='Subsystem ""SaaS operations"" is not available';ru='Подсистема ""Работа в модели сервиса"" не доступна'"));
 		EndIf;
 	EndIf;
 	
@@ -4758,7 +4758,7 @@ Function GetInterfaceVersions(Val Address, Val User, Val Password = Undefined, V
 	If Not ConnectionParameters.Property("URL") 
 		Or Not ValueIsFilled(ConnectionParameters.URL) Then
 		
-		Raise(NStr("en='URL service is not set.';ru='Не задан URL сервиса.'"));
+		Raise(NStr("en='URL of the service is not specified.';ru='Не задан URL сервиса.'"));
 	EndIf;
 	
 	ReceivingParameters = New Array;
@@ -4796,7 +4796,7 @@ Function GetInterfaceVersionsViaExternalConnection(ExternalConnection, Val Inter
 		|Error description: %1';ru='Корреспондент не поддерживает версионирование интерфейсов подсистем.
 		|Описание ошибки: %1'");
 		MessageString = StringFunctionsClientServer.SubstituteParametersInString(MessageString, DetailErrorDescription(ErrorInfo()));
-		WriteLogEvent(NStr("en='Interface versions receiving';ru='Получение версий интерфейса'", CommonUseClientServer.MainLanguageCode()),
+		WriteLogEvent(NStr("en='Receive interface versions';ru='Получение версий интерфейса'", CommonUseClientServer.MainLanguageCode()),
 			EventLogLevel.Error, , , MessageString);
 		
 		Return New FixedArray(New Array);
@@ -4909,7 +4909,7 @@ Function CommonModule(Name) Export
 	
 	If TypeOf(Module) <> Type("CommonModule") Then
 		Raise StringFunctionsClientServer.SubstituteParametersInString(
-			NStr("en='Common module ""%1"" is not found.';ru='Общий модуль ""%1"" не найден.'"), Name);
+			NStr("en='Common module ""%1"" was not found.';ru='Общий модуль ""%1"" не найден.'"), Name);
 	EndIf;
 	
 	Return Module;
@@ -5164,7 +5164,7 @@ Function WSDefinitions(Val WSDLAddress, Val UserName, Val Password, Val Timeout 
 	Try
 		DeleteFiles(WSDLFileName);
 	Except
-		WriteLogEvent(NStr("en='WSDL receiving';ru='Получение WSDL'", CommonUseClientServer.MainLanguageCode()),
+		WriteLogEvent(NStr("en='Receive WSDL';ru='Получение WSDL'", CommonUseClientServer.MainLanguageCode()),
 			EventLogLevel.Error, , , DetailErrorDescription(ErrorInfo()));
 	EndTry;
 	
@@ -5253,7 +5253,7 @@ Procedure RunSafely(ExportProcedureName, Parameters = Undefined, DataArea = Unde
 				DataArea = SessionSeparatorValue();
 			Else 
 				If DataArea <> SessionSeparatorValue() Then
-					Raise(NStr("en='In this session the reference to the data from the other data area is unavailable!';ru='В данном сеансе недопустимо обращение к данным из другой области данных!'"));
+					Raise(NStr("en='Cannot access data from another data area in this session.';ru='В данном сеансе недопустимо обращение к данным из другой области данных!'"));
 				EndIf;
 			EndIf;
 		EndIf;
@@ -5315,7 +5315,7 @@ Function GetInterfaceVersionsToCache(Val ConnectionParameters, Val InterfaceName
 	If Not ConnectionParameters.Property("URL") 
 		Or Not ValueIsFilled(ConnectionParameters.URL) Then
 		
-		Raise(NStr("en='URL service is not set.';ru='Не задан URL сервиса.'"));
+		Raise(NStr("en='URL of the service is not specified.';ru='Не задан URL сервиса.'"));
 	EndIf;
 	
 	If ConnectionParameters.Property("UserName")
@@ -5363,7 +5363,7 @@ Function GetWSDL(Val Address, Val UserName, Val Password, Val Timeout)
 	OnFileExportAtServer(Address, ReceivingParameters, FileDescription);
 	
 	If Not FileDescription.Status Then
-		Raise(NStr("en='Error when receiving the web service description file:';ru='Ошибка получения файла описания web-сервиса:'") + Chars.LF + FileDescription.ErrorInfo)
+		Raise(NStr("en='An error occurred when receiving a description file of the web service:';ru='Ошибка получения файла описания web-сервиса:'") + Chars.LF + FileDescription.ErrorInfo)
 	EndIf;
 	
 	// Try to create WS definitions on the basis of a received file.
@@ -5388,7 +5388,7 @@ Function GetWSDL(Val Address, Val UserName, Val Password, Val Timeout)
 	Try
 		DeleteFiles(FileDescription.Path);
 	Except
-		WriteLogEvent(NStr("en='WSDL receiving';ru='Получение WSDL'", CommonUseClientServer.MainLanguageCode()),
+		WriteLogEvent(NStr("en='Receive WSDL';ru='Получение WSDL'", CommonUseClientServer.MainLanguageCode()),
 			EventLogLevel.Error, , , DetailErrorDescription(ErrorInfo()));
 	EndTry;
 	
@@ -5657,7 +5657,7 @@ Procedure OnReceivingValuesSeparatorSession(SeparatorValue)
 		ModuleSaaSOperations = CommonModule("SaaSOperations");
 		SeparatorValue = ModuleSaaSOperations.SessionSeparatorValue();
 	Else
-		Raise(NStr("en='The SaaS operations subsystem is unavailable.';ru='Подсистема ""Работа в модели сервиса"" не доступна'"));
+		Raise(NStr("en='Subsystem ""SaaS operations"" is not available';ru='Подсистема ""Работа в модели сервиса"" не доступна'"));
 	EndIf;
 	
 EndProcedure
@@ -5673,7 +5673,7 @@ Procedure WhenGettingUseSeparatorSession(UseSeparator) Export
 		ModuleSaaSOperations = CommonModule("SaaSOperations");
 		UseSeparator = ModuleSaaSOperations.UseSessionSeparator();
 	Else
-		Raise(NStr("en='The SaaS operations subsystem is unavailable.';ru='Подсистема ""Работа в модели сервиса"" не доступна'"));
+		Raise(NStr("en='Subsystem ""SaaS operations"" is not available';ru='Подсистема ""Работа в модели сервиса"" не доступна'"));
 	EndIf;
 	
 EndProcedure
@@ -5776,7 +5776,7 @@ Procedure ReplaceInConstant(Results, Val UsagePlace, Val WriteParameters, Val In
 			Block.Lock();
 		Except
 			// Add record about an unsuccessful attempt to lock the result.
-			Error = NStr("en='Unable to lock constant %1';ru='Не удалось заблокировать константу %1'");
+			Error = NStr("en='Cannot lock constant %1';ru='Не удалось заблокировать константу %1'");
 			Error = StrReplace(Error, "%1", DataPresentation);
 			
 			ActionState = "LockError";
@@ -5816,7 +5816,7 @@ Procedure ReplaceInConstant(Results, Val UsagePlace, Val WriteParameters, Val In
 					ErrorDescription = Information.Definition;
 				EndIf;
 				
-				Error = NStr("en='Unable to write %1 as: %2';ru='Не удалось записать %1 по причине: %2'");
+				Error = NStr("en='Cannot write %1 due to: %2';ru='Не удалось записать %1 по причине: %2'");
 				Error = StrReplace(Error, "%1", DataPresentation);
 				Error = StrReplace(Error, "%2", ErrorDescription);
 				
@@ -5968,7 +5968,7 @@ Procedure ReplaceInObject(Results, Val UsagePlace, Val WriteParameters, Val Inte
 			EndIf;
 			
 			// Add record about record error to result.
-			Error = NStr("en='Unable to write %1 as: %2';ru='Не удалось записать %1 по причине: %2'");
+			Error = NStr("en='Cannot write %1 due to: %2';ru='Не удалось записать %1 по причине: %2'");
 			Error = StrReplace(Error, "%1", DataPresentation);
 			Error = StrReplace(Error, "%2", ErrorDescription);
 			
@@ -6049,7 +6049,7 @@ Procedure ReplaceInSet(Results, Val UsagePlace, Val WriteParameters, Val Interna
 			Block.Lock();
 		Except
 			// Add record about an unsuccessful attempt to lock the result.
-			Error = NStr("en='Unable to lock the set %1';ru='Не удалось заблокировать набор %1'");
+			Error = NStr("en='Cannot lock set %1';ru='Не удалось заблокировать набор %1'");
 			Error = StrReplace(Error, "%1", DataPresentation);
 			
 			ActionState = "LockError";
@@ -6081,7 +6081,7 @@ Procedure ReplaceInSet(Results, Val UsagePlace, Val WriteParameters, Val Interna
 				EndIf;
 				
 				// Add record about record error to result.
-				Error = NStr("en='Unable to write %1 as: %2';ru='Не удалось записать %1 по причине: %2'");
+				Error = NStr("en='Cannot write %1 due to: %2';ru='Не удалось записать %1 по причине: %2'");
 				Error = StrReplace(Error, "%1", DataPresentation);
 				Error = StrReplace(Error, "%2", ErrorDescription);
 				
@@ -6244,7 +6244,7 @@ Procedure DeleteRefsNotExclusively(DeletionResult, Val RefsList, Val WriteParame
 			ToDelete.Add(Ref);
 		Except
 			AddReplacementResult(DeletionResult, Ref, 
-				ReplacementErrorDescription("LockError", Ref, REFPRESENTATION, NStr("en='An error occurred while locking reference for deletion.';ru='Ошибка блокирования ссылки для удаления'")));
+				ReplacementErrorDescription("LockError", Ref, REFPRESENTATION, NStr("en='An error occurred when locking reference for deletion.';ru='Ошибка блокирования ссылки для удаления'")));
 		EndTry
 	EndDo;
 		
@@ -6291,7 +6291,7 @@ Procedure DeleteRefsNotExclusively(DeletionResult, Val RefsList, Val WriteParame
 			ErrorInfo = ErrorInfo();
 			AddReplacementResult(DeletionResult, Ref, 
 				ReplacementErrorDescription("ErrorDelete", Ref, REFPRESENTATION,
-				NStr("en='Removal error';ru='Ошибка удаления'") + Chars.LF + TrimAll( BriefErrorDescription(ErrorInfo))));
+				NStr("en='Removal failed';ru='Ошибка удаления'") + Chars.LF + TrimAll( BriefErrorDescription(ErrorInfo))));
 		EndTry;
 			
 		If Not WriteParameters.PrivilegedRecord Then
@@ -6326,7 +6326,7 @@ Procedure AddChangedObjectsReplacementResults(FinalTable, TableSearchAgain)
 		If FinalTable.FindRows(Filter).Count() = 0 Then
 			AddReplacementResult(FinalTable, Ref, 
 				ReplacementErrorDescription("DataChanged", Data, DataPresentation,
-				NStr("en='Data is added or changed by another user';ru='Данные были добавлены или изменены другим пользователем'")));
+				NStr("en='Data was added or changed by another user';ru='Данные были добавлены или изменены другим пользователем'")));
 		EndIf;
 	EndDo;
 	
@@ -6357,31 +6357,31 @@ Function SetDimensionsDescription(Val Meta, Cache)
 			
 		ElsIf MetaPeriod = Periodicity.Year Then
 			DimensionData.Type           = New TypeDescription("Date");
-			DimensionData.Presentation = NStr("en='Period';ru='отчетный период'");
+			DimensionData.Presentation = NStr("en='Accounting period';ru='отчетный период'");
 			DimensionData.Format        = "L=en_EN; FD = yyyy y.; Am = Date is not set";
 			DimensionsDescription.Insert("Period", DimensionData);
 			
 		ElsIf MetaPeriod = Periodicity.Day Then
 			DimensionData.Type           = New TypeDescription("Date");
-			DimensionData.Presentation = NStr("en='Period';ru='отчетный период'");
+			DimensionData.Presentation = NStr("en='Accounting period';ru='отчетный период'");
 			DimensionData.Format        = "L=en_EN; DLF=D; Am = Date is not set";
 			DimensionsDescription.Insert("Period", DimensionData);
 			
 		ElsIf MetaPeriod = Periodicity.Quarter Then
 			DimensionData.Type           = New TypeDescription("Date");
-			DimensionData.Presentation = NStr("en='Period';ru='отчетный период'");
+			DimensionData.Presentation = NStr("en='Accounting period';ru='отчетный период'");
 			DimensionData.Format        =  "L=en_EN; FS = to ""quarter"" yyyy "" y. ; Am = Date is not set";
 			DimensionsDescription.Insert("Period", DimensionData);
 			
 		ElsIf MetaPeriod = Periodicity.Month Then
 			DimensionData.Type           = New TypeDescription("Date");
-			DimensionData.Presentation = NStr("en='Period';ru='отчетный период'");
+			DimensionData.Presentation = NStr("en='Accounting period';ru='отчетный период'");
 			DimensionData.Format        = "L=en_EN; FS=MMMM yyyy y.; Am = Date is not set";
 			DimensionsDescription.Insert("Period", DimensionData);
 			
 		ElsIf MetaPeriod = Periodicity.Second Then
 			DimensionData.Type           = New TypeDescription("Date");
-			DimensionData.Presentation = NStr("en='Period';ru='отчетный период'");
+			DimensionData.Presentation = NStr("en='Accounting period';ru='отчетный период'");
 			DimensionData.Format        = "L=en_EN; DLF=DT; Am = Date is not set";
 			DimensionsDescription.Insert("Period", DimensionData);
 			
@@ -6780,7 +6780,7 @@ Procedure WriteObject(Val Object, Val WriteParameters)
 		
 		If Object.Parent = Object.Ref Then
 			Raise StringFunctionsClientServer.SubstituteParametersInString(
-				NStr("en='Circular reference occurs in the hierarchy during recording %1.';ru='При записи ""%1"" возникает циклическая ссылка в иерархии.'"),
+				NStr("en='Circular reference occurs in hierarchy when writing ""%1"".';ru='При записи ""%1"" возникает циклическая ссылка в иерархии.'"),
 				String(Object));
 			EndIf;
 			
@@ -6791,7 +6791,7 @@ Procedure WriteObject(Val Object, Val WriteParameters)
 		
 		If Object.Owner = Object.Ref Then
 			Raise StringFunctionsClientServer.SubstituteParametersInString(
-				NStr("en='A circular reference occurs in subordination during writing %1.';ru='При записи ""%1"" возникает циклическая ссылка в подчинении.'"),
+				NStr("en='Circular reference occurs in subordination when writing ""%1"".';ru='При записи ""%1"" возникает циклическая ссылка в подчинении.'"),
 				String(Object));
 		EndIf;
 		Break;
@@ -6892,7 +6892,7 @@ Procedure ReplaceRefWithLongTransaction(ReplacementResult, Val Ref, Val Replacem
 	Except
 		// Add record about an unsuccessful attempt to lock the result.
 		Error = StringFunctionsClientServer.SubstituteParametersInString(
-			NStr("en='Unable to lock all usage places %1';ru='Не удалось заблокировать все места использования %1'"),
+			NStr("en='Cannot lock all usage locations %1';ru='Не удалось заблокировать все места использования %1'"),
 			Ref
 		);
 		AddReplacementResult(ReplacementResult, Ref, 

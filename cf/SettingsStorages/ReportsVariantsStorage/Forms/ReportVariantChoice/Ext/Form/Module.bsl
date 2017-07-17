@@ -105,7 +105,7 @@ Procedure ReportVariantsTreeBeforeDeletion(Item, Cancel)
 	EndIf;
 	
 	If Variant.PictureIndex = 4 Then
-		QuestionText = NStr("en='Unmark ""%1"" for deletion?';ru='Снять с ""%1"" пометку на удаление?'");
+		QuestionText = NStr("en='Clear mark for deletion for ""%1""?';ru='Снять с ""%1"" пометку на удаление?'");
 	Else
 		QuestionText = NStr("en='Mark ""%1"" for deletion?';ru='Пометить ""%1"" на удаление?'");
 	EndIf;
@@ -212,7 +212,7 @@ Procedure OpenVariantForModification()
 		Return;
 	EndIf;
 	If Not VariantModificationRight(Variant, FullRightsForVariants) Then
-		WarningText = NStr("en='The access rights are not sufficient to change the variant ""%1"".';ru='Недостаточно прав доступа для изменения варианта ""%1"".'");
+		WarningText = NStr("en='Insufficient access rights to change variant ""%1"".';ru='Недостаточно прав доступа для изменения варианта ""%1"".'");
 		WarningText = StrReplace(WarningText, "%1", Variant.Description);
 		ShowMessageBox(, WarningText);
 		Return;
@@ -422,7 +422,7 @@ Procedure FillVariantsList()
 			TreeGroup = ReportVariantsTree.GetItems().Add();
 			TreeGroup.GroupNumber = TableRow.GroupNumber;
 			If TableRow.GroupNumber = 2 Then
-				TreeGroup.Description = NStr("en='Hidden in the report panels';ru='Скрытые в панелях отчетов'");
+				TreeGroup.Description = NStr("en='Hidden in report panels';ru='Скрытые в панелях отчетов'");
 				TreeGroup.PictureIndex = 0;
 				TreeGroup.AuthorPicture = -1;
 			ElsIf TableRow.GroupNumber = 3 Then

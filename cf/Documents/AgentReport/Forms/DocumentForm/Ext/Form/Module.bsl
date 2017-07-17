@@ -749,7 +749,7 @@ Procedure BarcodesAreReceivedFragment(UnknownBarcodes) Export
 	
 	For Each CurUndefinedBarcode IN UnknownBarcodes Do
 		
-		MessageString = NStr("en='Data by barcode is not found: %1%; quantity: %2%';ru='Данные по штрихкоду не найдены: %1%; количество: %2%'");
+		MessageString = NStr("en='Barcode data is not found: %1%; quantity: %2%';ru='Данные по штрихкоду не найдены: %1%; количество: %2%'");
 		MessageString = StrReplace(MessageString, "%1%", CurUndefinedBarcode.Barcode);
 		MessageString = StrReplace(MessageString, "%2%", CurUndefinedBarcode.Quantity);
 		CommonUseClientServer.MessageToUser(MessageString);
@@ -877,7 +877,7 @@ Procedure ProcessContractChange(ContractData = Undefined)
 		
 		If QueryBoxPrepayment = True Then
 			
-			QuestionText = NStr("ru = 'Зачет предоплаты будет очищен, продолжить?'; en = 'Prepayment set-off will be cleared, do you want to continue?'");
+			QuestionText = NStr("en='Prepayment setoff will be cleared, continue?';ru='Зачет предоплаты будет очищен, продолжить?'");
 			
 			NotifyDescription = New NotifyDescription("DefineAdvancePaymentOffsetsRefreshNeed", ThisObject, DocumentParameters);
 			ShowQueryBox(NOTifyDescription, QuestionText, QuestionDialogMode.YesNo);
@@ -971,15 +971,15 @@ Procedure SelectionByBalances(Command)
 	Cancel = SmallBusinessClient.BeforeAddToSubordinateTabularSection(ThisForm, "Inventory");
 	
 	If Not ValueIsFilled(Object.Company) Then
-		MessageText = NStr("ru = 'Поле ""Организация"" не заполнено'; en = 'Field ""Company"" is not filled'");
+		MessageText = NStr("en='Company is not filled in';ru='Поле ""Организация"" не заполнено'");
 		SmallBusinessClient.ShowMessageAboutError(ThisForm, MessageText,,, "Company", Cancel);
 	EndIf;
 	If Not ValueIsFilled(Object.Counterparty) Then
-		MessageText = NStr("ru = 'Поле ""Контрагент"" не заполнено'; en = 'Field ""Counterparty"" is not filled'");
+		MessageText = NStr("en='Counterparty is not filled in';ru='Поле ""Контрагент"" не заполнено'");
 		SmallBusinessClient.ShowMessageAboutError(ThisForm, MessageText,,, "Counterparty", Cancel);
 	EndIf;
 	If Not ValueIsFilled(Object.Contract) Then
-		MessageText = NStr("ru = 'Поле ""Договор"" не заполнено'; en = 'Field ""Contract"" is not filled'");
+		MessageText = NStr("en='Contract is not filled in.';ru='Поле ""Договор"" не заполнено'");
 		SmallBusinessClient.ShowMessageAboutError(ThisForm, MessageText,,, "Contract", Cancel);
 	EndIf;
 	
@@ -1545,7 +1545,7 @@ Procedure GetWeight(Command)
 	
 	If TabularSectionRow = Undefined Then
 		
-		ShowMessageBox(Undefined, NStr("en='It is required to select a line to get weight for it.';ru='Необходимо выбрать строку, для которой необходимо получить вес.'"));
+		ShowMessageBox(Undefined, NStr("en='Select a line for which the weight should be received.';ru='Необходимо выбрать строку, для которой необходимо получить вес.'"));
 		
 	ElsIf EquipmentManagerClient.RefreshClientWorkplace() Then // Checks if the operator's workplace is specified
 		

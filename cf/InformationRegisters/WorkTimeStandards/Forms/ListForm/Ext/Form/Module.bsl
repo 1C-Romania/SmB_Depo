@@ -14,14 +14,14 @@ Procedure OnCreateAtServer(Cancel, StandardProcessing)
 		If ProductsAndServices.ProductsAndServicesType <> Enums.ProductsAndServicesTypes.Work Then
 			
 			AutoTitle = False;
-			Title = NStr("en='Time norms are stored only for the work';ru='Нормы времени хранятся только для работ'");
+			Title = NStr("en='Standard hours are stored only for works';ru='Нормы времени хранятся только для работ'");
 
 			Items.List.ReadOnly = True;
 			
 		ElsIf ProductsAndServices.FixedCost Then
 			
 			AutoTitle = False;
-			Title = NStr("en='""Cost calculation method"" should be ""Time""';ru='""Способ расчета стоимости работ"" должен быть ""Норма времени""'");
+			Title = NStr("en='""Work cost calculation method"" should be ""Standard time""';ru='""Способ расчета стоимости работ"" должен быть ""Норма времени""'");
 
 			Items.List.ReadOnly = True;
 			

@@ -152,7 +152,7 @@ Function ServerPlatformTypeAsString() Export
 	EndIf;
 	
 	Raise StringFunctionsClientServer.SubstituteParametersInString(
-		NStr("en='Unknown platform type  ""%1""';ru='Неизвестный тип платформы ""%1""'"),
+		NStr("en='Unknown platform type ""%1""';ru='Неизвестный тип платформы ""%1""'"),
 		String(SystemInfo.PlatformType));
 	
 EndFunction
@@ -301,15 +301,15 @@ EndFunction
 Function WriteErrorToEventLogMonitorAtStartOrExit(StopWork, Val Event, Val ErrorText) Export
 	
 	If Event = "Start" Then
-		EventName = NStr("en='Application start';ru='Запуск программы'", CommonUseClientServer.MainLanguageCode());
+		EventName = NStr("en='Start application';ru='Запуск программы'", CommonUseClientServer.MainLanguageCode());
 		If StopWork Then
-			ErrorDescriptionBegin = NStr("en='An exception case occurred when starting the application. Application start is aborted.';ru='Возникла исключительная ситуация при запуске программы. Запуск программы аварийно завершен.'");
+			ErrorDescriptionBegin = NStr("en='An exception is thrown when starting the application. Application launch is aborted.';ru='Возникла исключительная ситуация при запуске программы. Запуск программы аварийно завершен.'");
 		Else
-			ErrorDescriptionBegin = NStr("en='An exception case occurred when starting the application.';ru='Возникла исключительная ситуация при запуске программы.'");
+			ErrorDescriptionBegin = NStr("en='An exception is thrown when starting the application.';ru='Возникла исключительная ситуация при запуске программы.'");
 		EndIf;
 	Else
-		EventName = NStr("en='Application end';ru='Завершение программы'", CommonUseClientServer.MainLanguageCode());
-		ErrorDescriptionBegin = NStr("en='An exception case occurred at the application exit.';ru='Возникла исключительная ситуация при завершении программы.'");
+		EventName = NStr("en='Exit application';ru='Завершение программы'", CommonUseClientServer.MainLanguageCode());
+		ErrorDescriptionBegin = NStr("en='An exception is thrown when closing the application.';ru='Возникла исключительная ситуация при завершении программы.'");
 	EndIf;
 	
 	ErrorDescription = ErrorDescriptionBegin

@@ -18,10 +18,10 @@ EndProcedure
 &AtServer
 Procedure ChangeVisibleOfEnabledWhenCreatingServer()
 	
-	Text = NStr("en='Exporting the documents to file';ru='Выгрузка документов в файл'");
+	Text = NStr("en='Document export to file';ru='Выгрузка документов в файл'");
 	HyperlinkText = NStr("en='Documents are not found.';ru='Документы не найдены.'");
 	If DataTable.Count() > 1 Then
-		HyperlinkText = NStr("en='Open the electronic documents list (%1)';ru='Открыть список электронных документов (%1)'");
+		HyperlinkText = NStr("en='Open the electronic document list (%1)';ru='Открыть список электронных документов (%1)'");
 		HyperlinkText = StrReplace(HyperlinkText, "%1", DataTable.Count());
 	ElsIf DataTable.Count() = 1 Then
 		HyperlinkText = NStr("en='Electronic document: %1';ru='Электронный документ: %1'");
@@ -94,13 +94,13 @@ Function DumpED(MessageText)
 	
 	Cancel = False;
 	If Not ValueIsFilled(ExportMethod) Then
-		MessageText = NStr("en='It is necessary to specify the export method';ru='Необходимо указать способ выгрузки.'");
+		MessageText = NStr("en='Specify an export method.';ru='Необходимо указать способ выгрузки.'");
 		Cancel = True;
 	EndIf;
 	If ExportMethod = PredefinedValue("Enum.EDExchangeMethods.ThroughEMail")
 		AND Not ValueIsFilled(UserAccount) Then
 		MessageText = MessageText + ?(ValueIsFilled(MessageText), Chars.LF, "")
-			+ NStr("en='Required to specify the account.';ru='Необходимо указать учетную запись.'");
+			+ NStr("en='Specify an account.';ru='Необходимо указать учетную запись.'");
 		Cancel = True;
 	EndIf;
 	If Not Cancel Then
@@ -167,7 +167,7 @@ Procedure QuickExchangeExportED(ExchangeStructuresArray, ParametersStructure)
 		If ExchangeStructuresArray.Count() > 1 Then
 			EmailSubject = NStr("en='Electronic document packages';ru='Пакеты электронных документов'");
 		Else
-			EmailSubject = NStr("en='Package of the electronic document:';ru='Пакет электронного документа:'") + " " + ExchangeStructuresArray[0].FileDescription;
+			EmailSubject = NStr("en='Electronic document package:';ru='Пакет электронного документа:'") + " " + ExchangeStructuresArray[0].FileDescription;
 		EndIf;
 		FormParameters.Insert("Subject", EmailSubject);
 		FormParameters.Insert("UserAccount", ParametersStructure.UserAccount);

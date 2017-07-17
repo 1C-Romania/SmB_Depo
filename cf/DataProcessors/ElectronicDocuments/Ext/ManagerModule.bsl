@@ -138,7 +138,7 @@ Function GenerateEDTakskomPackageAttachedFile(ExchangeStructure) Export
 			ZipContainer.Write();
 			BinaryDataPackage = New BinaryData(ArchiveFileName);
 		Except
-			MessagePattern = NStr("en='%1 (see details in event log monitor).';ru='%1 (подробности см. в Журнале регистрации).'");
+			MessagePattern = NStr("en='%1 (for more information, see Event log).';ru='%1 (подробности см. в Журнале регистрации).'");
 			MessageText = StringFunctionsClientServer.SubstituteParametersInString(MessagePattern,
 				?(ValueIsFilled(ErrorText), ErrorText, BriefErrorDescription(ErrorInfo())));
 			ElectronicDocumentsServiceCallServer.ProcessExceptionByEDOnServer(
@@ -147,8 +147,7 @@ Function GenerateEDTakskomPackageAttachedFile(ExchangeStructure) Export
 		EndTry;
 		DeleteFiles(ArchiveFileName);
 	Else
-		MessagePattern = NStr("en='During the generation %1 the
-		|following  errors occurred: %2';ru='При формировании %1 возникли следующие ошибки: %2'");
+		MessagePattern = NStr("en='The following  errors occurred while generating %1: %2';ru='При формировании %1 возникли следующие ошибки: %2'");
 		MessageText = StringFunctionsClientServer.SubstituteParametersInString(MessagePattern, ExchangeStructure.EDKind,
 			ErrorText);
 		CommonUseClientServer.MessageToUser(MessageText);
@@ -174,7 +173,7 @@ Function QuickExchangeNameSavedFile(EDOwner)
 		Else
 			
 			AttributesStructure = CommonUse.ObjectAttributesValues(EDOwner, "Number, Date");		
-			FileTemplate = NStr("en='%1 # %2 date %3';ru='%1 № %2 от %3'");
+			FileTemplate = NStr("en='%1 No. %2 from %3';ru='%1 № %2 от %3'");
 			FileDescription = StringFunctionsClientServer.SubstituteParametersInString(FileTemplate, String(TypeOf(EDOwner)),
 															AttributesStructure.Number, Format(AttributesStructure.Date, "DLF=D"));
 		EndIf;

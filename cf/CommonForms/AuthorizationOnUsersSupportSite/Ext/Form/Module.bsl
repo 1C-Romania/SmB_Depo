@@ -36,7 +36,7 @@ EndProcedure
 Procedure AuthenticationDataSaveAndContinue()
 	
 	If IsBlankString(Login) AND Not IsBlankString(Password) Then
-		CommonUseClientServer.MessageToUser(NStr("en='Enter code of user for authorization on a 1C firm website.';ru='Введите код пользователя для авторизации на сайте фирмы 1С.'"),, "Login");
+		CommonUseClientServer.MessageToUser(NStr("en='Enter user code for authorization on the 1C website.';ru='Введите код пользователя для авторизации на сайте фирмы 1С.'"),, "Login");
 		Return;
 	EndIf;
 		

@@ -91,7 +91,7 @@ Click "Write" to resolve the differences and not to show this warning message.</
 							<ToolTip>
 								<v8:item>
 									<v8:lang>en</v8:lang>
-									<v8:content>Some properties of infobase user are saved in the user's card. Differences between the properties values are found.</v8:content>
+									<v8:content>Some properties of infobase user are saved in the user card. Difference is found between these properties.</v8:content>
 								</v8:item>
 								<v8:item>
 									<v8:lang>ru</v8:lang>
@@ -200,7 +200,7 @@ Click "Write" to sort out the problem and not to show the warning message.</v8:c
 					<ToolTip>
 						<v8:item>
 							<v8:lang>en</v8:lang>
-							<v8:content>The infobase user is mapped with this catalog user, however it can not be found by the identifier saved.</v8:content>
+							<v8:content>The infobase user was mapped with this catalog user, however it cannot be found by ID.</v8:content>
 						</v8:item>
 						<v8:item>
 							<v8:lang>ru</v8:lang>
@@ -217,7 +217,7 @@ Click "Write" to sort out the problem and not to show the warning message.</v8:c
 			<Title>
 				<v8:item>
 					<v8:lang>en</v8:lang>
-					<v8:content>Group header</v8:content>
+					<v8:content>Header group</v8:content>
 				</v8:item>
 				<v8:item>
 					<v8:lang>ru</v8:lang>
@@ -257,7 +257,7 @@ Click "Write" to sort out the problem and not to show the warning message.</v8:c
 			<Title>
 				<v8:item>
 					<v8:lang>en</v8:lang>
-					<v8:content>Can log on to application group</v8:content>
+					<v8:content>Group can log on to application</v8:content>
 				</v8:item>
 				<v8:item>
 					<v8:lang>ru</v8:lang>
@@ -294,7 +294,7 @@ Click "Write" to sort out the problem and not to show the warning message.</v8:c
 					<Title formatted="false">
 						<v8:item>
 							<v8:lang>en</v8:lang>
-							<v8:content>Consider reviewing settings after logging on</v8:content>
+							<v8:content>It is recommended to check logon settings</v8:content>
 						</v8:item>
 						<v8:item>
 							<v8:lang>ru</v8:lang>
@@ -367,7 +367,7 @@ Click "Write" to sort out the problem and not to show the warning message.</v8:c
 									<Title>
 										<v8:item>
 											<v8:lang>en</v8:lang>
-											<v8:content>Name (mark incomplete switch)</v8:content>
+											<v8:content>Name (mark of incomplete switch)</v8:content>
 										</v8:item>
 										<v8:item>
 											<v8:lang>ru</v8:lang>
@@ -381,7 +381,7 @@ Click "Write" to sort out the problem and not to show the warning message.</v8:c
 											<Title>
 												<v8:item>
 													<v8:lang>en</v8:lang>
-													<v8:content>Name with mark incomplete</v8:content>
+													<v8:content>Name with mark of incomplete</v8:content>
 												</v8:item>
 												<v8:item>
 													<v8:lang>ru</v8:lang>
@@ -407,7 +407,7 @@ Click "Write" to sort out the problem and not to show the warning message.</v8:c
 											<Title>
 												<v8:item>
 													<v8:lang>en</v8:lang>
-													<v8:content>Name without mark incomplete</v8:content>
+													<v8:content>Name without mark of incomplete</v8:content>
 												</v8:item>
 												<v8:item>
 													<v8:lang>ru</v8:lang>
@@ -442,8 +442,7 @@ Click "Write" to sort out the problem and not to show the warning message.</v8:c
 											<ToolTip>
 												<v8:item>
 													<v8:lang>en</v8:lang>
-													<v8:content>Authentication method based on login
-and password specified for 1C:Enterprise user.</v8:content>
+													<v8:content>Method of logon to application with the name and password specified for 1C:Enterprise user.</v8:content>
 												</v8:item>
 												<v8:item>
 													<v8:lang>ru</v8:lang>
@@ -463,7 +462,7 @@ and password specified for 1C:Enterprise user.</v8:content>
 											<Title>
 												<v8:item>
 													<v8:lang>en</v8:lang>
-													<v8:content>Indent group</v8:content>
+													<v8:content>Group indent</v8:content>
 												</v8:item>
 												<v8:item>
 													<v8:lang>ru</v8:lang>
@@ -483,7 +482,7 @@ and password specified for 1C:Enterprise user.</v8:content>
 													<Title>
 														<v8:item>
 															<v8:lang>en</v8:lang>
-															<v8:content>Authentication 1C:Enterprise</v8:content>
+															<v8:content>1C:Enterprise authentication</v8:content>
 														</v8:item>
 														<v8:item>
 															<v8:lang>ru</v8:lang>
@@ -597,7 +596,7 @@ Used only to log on from a web server (the service address is to be configured).
 									<Title>
 										<v8:item>
 											<v8:lang>en</v8:lang>
-											<v8:content>Operating system authentication</v8:content>
+											<v8:content>OS authentication</v8:content>
 										</v8:item>
 										<v8:item>
 											<v8:lang>ru</v8:lang>
@@ -615,7 +614,7 @@ Used only to log on from a web server (the service address is to be configured).
 											<ToolTip>
 												<v8:item>
 													<v8:lang>en</v8:lang>
-													<v8:content>User authentication method by login and password used to log on to operating system and linked with the user of 1C:Enterprise.</v8:content>
+													<v8:content>Method of logon to application with the name and password specified for the operating system user linked with the 1C:Enterprise user.</v8:content>
 												</v8:item>
 												<v8:item>
 													<v8:lang>ru</v8:lang>
@@ -634,7 +633,7 @@ Used only to log on from a web server (the service address is to be configured).
 											<Title>
 												<v8:item>
 													<v8:lang>en</v8:lang>
-													<v8:content>OS authentication parameters</v8:content>
+													<v8:content>OS authentication properties parameters</v8:content>
 												</v8:item>
 												<v8:item>
 													<v8:lang>ru</v8:lang>
@@ -923,7 +922,7 @@ Used only to log on from a web server (the service address is to be configured).
 					<Title>
 						<v8:item>
 							<v8:lang>en</v8:lang>
-							<v8:content>Additional attributes</v8:content>
+							<v8:content>Additional object attributes</v8:content>
 						</v8:item>
 						<v8:item>
 							<v8:lang>ru</v8:lang>
@@ -936,7 +935,7 @@ Used only to log on from a web server (the service address is to be configured).
 					<Title>
 						<v8:item>
 							<v8:lang>en</v8:lang>
-							<v8:content>Comment</v8:content>
+							<v8:content>Note</v8:content>
 						</v8:item>
 						<v8:item>
 							<v8:lang>ru</v8:lang>
@@ -973,7 +972,7 @@ Used only to log on from a web server (the service address is to be configured).
 			<Title>
 				<v8:item>
 					<v8:lang>en</v8:lang>
-					<v8:content>Authentication 1C:Enterprise</v8:content>
+					<v8:content>1C:Enterprise authentication</v8:content>
 				</v8:item>
 				<v8:item>
 					<v8:lang>ru</v8:lang>
@@ -1043,7 +1042,7 @@ Used only to log on from a web server (the service address is to be configured).
 			<Title>
 				<v8:item>
 					<v8:lang>en</v8:lang>
-					<v8:content>Show in the choice list</v8:content>
+					<v8:content>Show in the selection list</v8:content>
 				</v8:item>
 				<v8:item>
 					<v8:lang>ru</v8:lang>
@@ -1059,7 +1058,7 @@ Used only to log on from a web server (the service address is to be configured).
 			<Title>
 				<v8:item>
 					<v8:lang>en</v8:lang>
-					<v8:content>Operating system authentication</v8:content>
+					<v8:content>OS authentication</v8:content>
 				</v8:item>
 				<v8:item>
 					<v8:lang>ru</v8:lang>
@@ -1111,7 +1110,7 @@ Used only to log on from a web server (the service address is to be configured).
 			<Title>
 				<v8:item>
 					<v8:lang>en</v8:lang>
-					<v8:content>Login (to enter)</v8:content>
+					<v8:content>Login</v8:content>
 				</v8:item>
 				<v8:item>
 					<v8:lang>ru</v8:lang>
@@ -1131,7 +1130,7 @@ Used only to log on from a web server (the service address is to be configured).
 			<Title>
 				<v8:item>
 					<v8:lang>en</v8:lang>
-					<v8:content>Can log on to application</v8:content>
+					<v8:content>Logging on to the application is permitted on reading</v8:content>
 				</v8:item>
 				<v8:item>
 					<v8:lang>ru</v8:lang>
@@ -1167,7 +1166,7 @@ Used only to log on from a web server (the service address is to be configured).
 			<Title>
 				<v8:item>
 					<v8:lang>en</v8:lang>
-					<v8:content>Infobase user exists</v8:content>
+					<v8:content>IB user exists</v8:content>
 				</v8:item>
 				<v8:item>
 					<v8:lang>ru</v8:lang>
@@ -1211,7 +1210,7 @@ Used only to log on from a web server (the service address is to be configured).
 			<Title>
 				<v8:item>
 					<v8:lang>en</v8:lang>
-					<v8:content>Current description</v8:content>
+					<v8:content>Current name</v8:content>
 				</v8:item>
 				<v8:item>
 					<v8:lang>ru</v8:lang>
@@ -1230,7 +1229,7 @@ Used only to log on from a web server (the service address is to be configured).
 			<Title>
 				<v8:item>
 					<v8:lang>en</v8:lang>
-					<v8:content>There is mapping to non-existing infobase user</v8:content>
+					<v8:content>There is mapping to a non-existing infobase user</v8:content>
 				</v8:item>
 				<v8:item>
 					<v8:lang>ru</v8:lang>
@@ -1261,7 +1260,7 @@ Used only to log on from a web server (the service address is to be configured).
 					<Title>
 						<v8:item>
 							<v8:lang>en</v8:lang>
-							<v8:content>Check</v8:content>
+							<v8:content>Mark</v8:content>
 						</v8:item>
 						<v8:item>
 							<v8:lang>ru</v8:lang>
@@ -1295,7 +1294,7 @@ Used only to log on from a web server (the service address is to be configured).
 					<Title>
 						<v8:item>
 							<v8:lang>en</v8:lang>
-							<v8:content>Picture no</v8:content>
+							<v8:content>Image number</v8:content>
 						</v8:item>
 						<v8:item>
 							<v8:lang>ru</v8:lang>
@@ -1334,7 +1333,7 @@ Used only to log on from a web server (the service address is to be configured).
 					<Title>
 						<v8:item>
 							<v8:lang>en</v8:lang>
-							<v8:content>This is role</v8:content>
+							<v8:content>This is a role</v8:content>
 						</v8:item>
 						<v8:item>
 							<v8:lang>ru</v8:lang>
@@ -1351,7 +1350,7 @@ Used only to log on from a web server (the service address is to be configured).
 			<Title>
 				<v8:item>
 					<v8:lang>en</v8:lang>
-					<v8:content>Infobase user roles</v8:content>
+					<v8:content>IB user roles</v8:content>
 				</v8:item>
 				<v8:item>
 					<v8:lang>ru</v8:lang>
@@ -1387,7 +1386,7 @@ Used only to log on from a web server (the service address is to be configured).
 			<Title>
 				<v8:item>
 					<v8:lang>en</v8:lang>
-					<v8:content>Show roles subsystems</v8:content>
+					<v8:content>Show role subsystems</v8:content>
 				</v8:item>
 				<v8:item>
 					<v8:lang>ru</v8:lang>
@@ -1460,7 +1459,7 @@ Used only to log on from a web server (the service address is to be configured).
 			<Title>
 				<v8:item>
 					<v8:lang>en</v8:lang>
-					<v8:content>Authentication by protocol OpenID</v8:content>
+					<v8:content>OpenID authentication</v8:content>
 				</v8:item>
 				<v8:item>
 					<v8:lang>ru</v8:lang>
@@ -1489,7 +1488,7 @@ Used only to log on from a web server (the service address is to be configured).
 			<Title>
 				<v8:item>
 					<v8:lang>en</v8:lang>
-					<v8:content>Actions with the service user</v8:content>
+					<v8:content>Actions with SaaS user</v8:content>
 				</v8:item>
 				<v8:item>
 					<v8:lang>ru</v8:lang>
@@ -1502,7 +1501,7 @@ Used only to log on from a web server (the service address is to be configured).
 			<Title>
 				<v8:item>
 					<v8:lang>en</v8:lang>
-					<v8:content>Administration access modification prohibition</v8:content>
+					<v8:content>Administrator access change prohibition</v8:content>
 				</v8:item>
 				<v8:item>
 					<v8:lang>ru</v8:lang>
@@ -1517,7 +1516,7 @@ Used only to log on from a web server (the service address is to be configured).
 			<Title>
 				<v8:item>
 					<v8:lang>en</v8:lang>
-					<v8:content>Synchronization with the service is required</v8:content>
+					<v8:content>Synchronization with service required</v8:content>
 				</v8:item>
 				<v8:item>
 					<v8:lang>ru</v8:lang>
@@ -1532,7 +1531,7 @@ Used only to log on from a web server (the service address is to be configured).
 			<Title>
 				<v8:item>
 					<v8:lang>en</v8:lang>
-					<v8:content>Query of password before write</v8:content>
+					<v8:content>Request password before writing</v8:content>
 				</v8:item>
 				<v8:item>
 					<v8:lang>ru</v8:lang>
@@ -1547,7 +1546,7 @@ Used only to log on from a web server (the service address is to be configured).
 			<Title>
 				<v8:item>
 					<v8:lang>en</v8:lang>
-					<v8:content>Initial infobase user details</v8:content>
+					<v8:content>Initial IB user description</v8:content>
 				</v8:item>
 				<v8:item>
 					<v8:lang>ru</v8:lang>
@@ -1573,7 +1572,7 @@ Used only to log on from a web server (the service address is to be configured).
 			<Title>
 				<v8:item>
 					<v8:lang>en</v8:lang>
-					<v8:content>Can log on to application</v8:content>
+					<v8:content>Logging on to the application is permitted on reading</v8:content>
 				</v8:item>
 				<v8:item>
 					<v8:lang>ru</v8:lang>
@@ -1605,7 +1604,7 @@ Used only to log on from a web server (the service address is to be configured).
 			<Title>
 				<v8:item>
 					<v8:lang>en</v8:lang>
-					<v8:content>Only selected roles</v8:content>
+					<v8:content>Selected roles only</v8:content>
 				</v8:item>
 				<v8:item>
 					<v8:lang>ru</v8:lang>
@@ -1615,7 +1614,7 @@ Used only to log on from a web server (the service address is to be configured).
 			<ToolTip>
 				<v8:item>
 					<v8:lang>en</v8:lang>
-					<v8:content>Show only selected roles</v8:content>
+					<v8:content>Show selected roles only</v8:content>
 				</v8:item>
 				<v8:item>
 					<v8:lang>ru</v8:lang>
@@ -1633,7 +1632,7 @@ Used only to log on from a web server (the service address is to be configured).
 			<Title>
 				<v8:item>
 					<v8:lang>en</v8:lang>
-					<v8:content>Exclude roles</v8:content>
+					<v8:content>Clear roles</v8:content>
 				</v8:item>
 				<v8:item>
 					<v8:lang>ru</v8:lang>
@@ -1643,7 +1642,7 @@ Used only to log on from a web server (the service address is to be configured).
 			<ToolTip>
 				<v8:item>
 					<v8:lang>en</v8:lang>
-					<v8:content>Exclude roles</v8:content>
+					<v8:content>Clear roles</v8:content>
 				</v8:item>
 				<v8:item>
 					<v8:lang>ru</v8:lang>
@@ -1661,7 +1660,7 @@ Used only to log on from a web server (the service address is to be configured).
 			<Title>
 				<v8:item>
 					<v8:lang>en</v8:lang>
-					<v8:content>Enable roles</v8:content>
+					<v8:content>Select roles</v8:content>
 				</v8:item>
 				<v8:item>
 					<v8:lang>ru</v8:lang>
@@ -1671,7 +1670,7 @@ Used only to log on from a web server (the service address is to be configured).
 			<ToolTip>
 				<v8:item>
 					<v8:lang>en</v8:lang>
-					<v8:content>Enable roles</v8:content>
+					<v8:content>Select roles</v8:content>
 				</v8:item>
 				<v8:item>
 					<v8:lang>ru</v8:lang>
@@ -1689,7 +1688,7 @@ Used only to log on from a web server (the service address is to be configured).
 			<Title>
 				<v8:item>
 					<v8:lang>en</v8:lang>
-					<v8:content>Fill from infobase user</v8:content>
+					<v8:content>Fill in from infobase user</v8:content>
 				</v8:item>
 				<v8:item>
 					<v8:lang>ru</v8:lang>
@@ -1699,7 +1698,7 @@ Used only to log on from a web server (the service address is to be configured).
 			<ToolTip>
 				<v8:item>
 					<v8:lang>en</v8:lang>
-					<v8:content>Fill values from infobase user properties</v8:content>
+					<v8:content>Fill out values from the infobase user properties</v8:content>
 				</v8:item>
 				<v8:item>
 					<v8:lang>ru</v8:lang>

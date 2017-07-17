@@ -21,7 +21,7 @@ Procedure OnCreateAtServer(Cancel, StandardProcessing)
 	EndIf;
 	
 	If Not ValueIsFilled(ElectronicDocument) Then
-		MessageText = NStr("en='Electronic document has not been selected';ru='Не выбран электронный документ'");
+		MessageText = NStr("en='Electronic document is not selected';ru='Не выбран электронный документ'");
 		CommonUseClientServer.MessageToUser(MessageText, , "ElectronicDocument", , Cancel);
 		Return;
 	EndIf;
@@ -208,7 +208,7 @@ Procedure SaveDirectoryData(LinkToED)
 		EndIf;
 		
 		If FileName = Undefined Then
-			ErrorText = NStr("en='Unable to view electronic document. Verify the work directory setting';ru='Не удалось просмотреть электронный документ. Проверьте настройку рабочего каталога'");
+			ErrorText = NStr("en='Unable to view the electronic document. Check a working directory setting';ru='Не удалось просмотреть электронный документ. Проверьте настройку рабочего каталога'");
 			CommonUseClientServer.MessageToUser(ErrorText);
 			Return;
 		EndIf;
@@ -250,7 +250,7 @@ Procedure SaveDirectoryData(LinkToED)
 			FolderForUnpacking = ElectronicDocumentsService.WorkingDirectory( , LinkToED.UUID());
 			
 			If FolderForUnpacking = Undefined Then
-				ErrorText = NStr("en='Unable to view electronic document. Verify the work directory setting';ru='Не удалось просмотреть электронный документ. Проверьте настройку рабочего каталога'");
+				ErrorText = NStr("en='Unable to view the electronic document. Check a working directory setting';ru='Не удалось просмотреть электронный документ. Проверьте настройку рабочего каталога'");
 				CommonUseClientServer.MessageToUser(ErrorText);
 				ZIPReading.Close();
 				DeleteFiles(FileName);

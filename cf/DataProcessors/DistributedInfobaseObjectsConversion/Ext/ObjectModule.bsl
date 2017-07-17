@@ -393,7 +393,7 @@ Procedure ReadPriorityChangesFromExchangeMessages(Val MessageReader, CommonDataN
 			
 			If ValueIsFilled(PredefinedItemDoubles) Then
 				WriteLogEvent(
-					NStr("en='Predefined items.Non-unique records are found.';ru='Предопределенные элементы.Найдены не уникальные записи.'",
+					NStr("en='Predefined items.Non-unique entries found.';ru='Предопределенные элементы.Найдены не уникальные записи.'",
 						CommonUseClientServer.MainLanguageCode()),
 					EventLogLevel.Error,
 					,
@@ -535,7 +535,7 @@ Procedure AddPredefinedItemDoubleDescription(WrittenObject, PredefinedItemDouble
 		Else
 			Raise StringFunctionsClientServer.SubstituteParametersInString(
 				NonUniqueRecordErrorTemplate(),
-				NStr("en='While importing predefined items, non-unique records were found.';ru='При загрузке предопределенных элементов найдены не уникальные записи.'"));
+				NStr("en='When importing predefined items, non-unique records were found.';ru='При загрузке предопределенных элементов найдены не уникальные записи.'"));
 		EndIf;
 		// Definition of predefined item duplicates.
 		If Ref = Selection.Ref AND Not ExportedRefIsFound Then
@@ -570,9 +570,9 @@ Procedure AddPredefinedItemDoubleDescription(WrittenObject, PredefinedItemDouble
 
 	If WriteInJournal Then
 		If DoubleNumber = 1 Then
-			Pattern = NStr("en='(exported ref: %1, duplicate ref: %2)';ru='(загружаемая ссылка: %1, ссылка дубля: %2)'");
+			Pattern = NStr("en='(imported reference: %1, duplicate reference: %2)';ru='(загружаемая ссылка: %1, ссылка дубля: %2)'");
 		Else
-			Pattern = NStr("en='(exported ref: %1, duplicate refs: %2)';ru='(загружаемая ссылка: %1, ссылки дублей: %2)'");
+			Pattern = NStr("en='(imported reference: %1, duplicate references %2)';ru='(загружаемая ссылка: %1, ссылки дублей: %2)'");
 		EndIf;
 		PredefinedItemDoubles = PredefinedItemDoubles + Chars.LF
 			+ Table + "." + PredefinedDataName + Chars.LF
@@ -700,37 +700,37 @@ EndFunction
 
 Function ErrorOfOpeningOfExchangeMessageFile()
 	
-	Return NStr("en='Exchange message file opening error';ru='Ошибка открытия файла сообщения обмена'", CommonUseClientServer.MainLanguageCode());
+	Return NStr("en='An error occurred when opening the exchange message file';ru='Ошибка открытия файла сообщения обмена'", CommonUseClientServer.MainLanguageCode());
 	
 EndFunction
 
 Function ErrorOfStartReadOfExchangeMessageFile()
 	
-	Return NStr("en='An error occurred while starting to read the exchange message file';ru='Ошибка при начале чтения файла сообщения обмена'", CommonUseClientServer.MainLanguageCode());
+	Return NStr("en='An error occurred when starting reading the exchange message file';ru='Ошибка при начале чтения файла сообщения обмена'", CommonUseClientServer.MainLanguageCode());
 	
 EndFunction
 
 Function ErrorBeginningRecordsExchangeMessageFile()
 	
-	Return NStr("en='An error occurred while starting to write the exchange message file';ru='Ошибка при начале записи файла сообщения обмена'", CommonUseClientServer.MainLanguageCode());
+	Return NStr("en='An error occurred when starting writing the exchange message file';ru='Ошибка при начале записи файла сообщения обмена'", CommonUseClientServer.MainLanguageCode());
 	
 EndFunction
 
 Function ErrorOfReadingOFExchangeMessageFile()
 	
-	Return NStr("en='Error reading data exchange file';ru='Ошибка чтения файла сообщения обмена'", CommonUseClientServer.MainLanguageCode());
+	Return NStr("en='An error occurred when reading an exchange message file';ru='Ошибка чтения файла сообщения обмена'", CommonUseClientServer.MainLanguageCode());
 	
 EndFunction
 
 Function ErrorOfExchangeMessageFileWrite()
 	
-	Return NStr("en='An error occurred while writing data to the exchange message file';ru='Ошибка записи данных в файл сообщения обмена'");
+	Return NStr("en='An error occurred when writing data to the exchange message file';ru='Ошибка записи данных в файл сообщения обмена'");
 	
 EndFunction
 
 Function ErrorOfDataExchangeKind()
 	
-	Return NStr("en='Exchange not according to the conversion rules is not supported';ru='Обмен не по правилам конвертации не поддерживается'", CommonUseClientServer.MainLanguageCode());
+	Return NStr("en='Exchange not according to conversion rules is not supported';ru='Обмен не по правилам конвертации не поддерживается'", CommonUseClientServer.MainLanguageCode());
 	
 EndFunction
 

@@ -13,7 +13,7 @@ Procedure OnCreateAtServer(Cancel, StandardProcessing)
 	EndIf;
 	
 	// Fill in form fields
-	Items.LoginLabel.Title = NStr("en='Login:';ru='Авторизоваться:'") + " " + Parameters.login;
+	Items.LoginLabel.Title = NStr("en='Authorize:';ru='Авторизоваться:'") + " " + Parameters.login;
 	
 	FreePackagesRow = StrReplace(
 		TrimAll(Parameters.freePackagesED),
@@ -62,7 +62,7 @@ Procedure OnCreateAtServer(Cancel, StandardProcessing)
 	
 	Items.BillingPeriod.Title = HeaderText;
 	
-	ApplicationTitle = NStr("en='Application No%1 from %2';ru='Заявка №%1 от %2'");
+	ApplicationTitle = NStr("en='Request No %1, %2';ru='Заявка №%1 от %2'");
 	ApplicationTitle = StrReplace(ApplicationTitle, "%1", RequestNumber);
 	ApplicationTitle = StrReplace(ApplicationTitle, "%2", Format(RequestDate, "DF = MMMM dd yyyy y. HH:mm:ss"));
 	
@@ -104,7 +104,7 @@ Procedure BeforeClose(Cancel, StandardProcessing)
 			NotifyDescription = New NotifyDescription("OnAnswerQuestionAboutClosingModifiedForm",
 				ThisObject);
 			
-			QuestionText = NStr("en='Data was changed. Close form without saving data?';ru='Данные изменены. Закрыть форму без сохранени данных?'");
+			QuestionText = NStr("en='Data was changed. Close the form without saving data?';ru='Данные изменены. Закрыть форму без сохранени данных?'");
 			ShowQueryBox(NOTifyDescription, QuestionText, QuestionDialogMode.YesNo);
 			Return;
 			
@@ -307,7 +307,7 @@ EndProcedure
 &AtClient
 Procedure SetLabelOnStatusUpdateHyperlink()
 	
-	HeaderText = NStr("en='Check execution of an application (%1 sec. left)';ru='Проверить выполнение заявки (осталось %1 сек.)'");
+	HeaderText = NStr("en='Check the request processing (%1 sec. left)';ru='Проверить выполнение заявки (осталось %1 сек.)'");
 	HeaderText = StrReplace(HeaderText, "%1", String(TimeoutSeconds));
 	Items.LabelRefresh.Title = HeaderText;
 	

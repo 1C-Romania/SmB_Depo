@@ -56,7 +56,7 @@ Procedure SchedulePresentationStartChoice(Item, ChoiceData, StandardProcessing)
 	LockFormDataForEdit();
 	
 	If ValueIsFilled(Object.Pattern) Then
-		ShowMessageBox(, NStr("en='For the jobs based on the templates, the schedule is specified in the template.';ru='Для заданий на основе шаблонов, расписание задается в шаблоне.'"));
+		ShowMessageBox(, NStr("en='Schedule is set in the template for jobs created from templates.';ru='Для заданий на основе шаблонов, расписание задается в шаблоне.'"));
 		Return;
 	EndIf;
 	
@@ -113,9 +113,9 @@ Procedure SetPresentationSchedule(Val Form)
 	If Schedule <> Undefined Then
 		Form.SchedulePresentation = String(Schedule);
 	ElsIf ValueIsFilled(Form.Object.Pattern) Then
-		Form.SchedulePresentation = NStr("en='<Set in template>';ru='<Задается в шаблоне>'");
+		Form.SchedulePresentation = NStr("en='<Specified in the template>';ru='<Задается в шаблоне>'");
 	Else
-		Form.SchedulePresentation = NStr("en='<Not defined>';ru='<Не задано>'");
+		Form.SchedulePresentation = NStr("en='<Not specified>';ru='<Не задано>'");
 	EndIf;
 	
 EndProcedure

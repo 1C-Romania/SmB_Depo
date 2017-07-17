@@ -298,7 +298,7 @@ Function ProvidedDataFromCache(Val RefOrIdentifier) Export
 			// Record in the event log.
 			ErrorInfo = ErrorTextOnFileReceiving(ErrorInfo(), RefOrIdentifier);
 			WriteLogEvent(
-				NStr("en='Supplied data.Receipt of file out of the volume';ru='Поставляемые данные.Получение файла из тома'", 
+				NStr("en='Supplied data.Receiving file from volume';ru='Поставляемые данные.Получение файла из тома'", 
 				CommonUseClientServer.MainLanguageCode()),
 				EventLogLevel.Error,
 				Metadata.Catalogs.SuppliedData,

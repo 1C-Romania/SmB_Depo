@@ -524,11 +524,11 @@ Procedure FillSubscribersPresentation(ArrayRow, RequiredSignatures)
 			If ArrayRow.EDDirection = Enums.EDDirections.Outgoing Then
 				
 				RequiredSignatures.SenderPresentation = LegalEntityIndividualPresentation(ArrayRow.CompanySignature);
-				RequiredSignatures.RecipientPresentation = NStr("en='Not necessary';ru='Не требуется'");
+				RequiredSignatures.RecipientPresentation = NStr("en='Not required';ru='Не требуется'");
 				
 			Else
 				RequiredSignatures.SenderPresentation = LegalEntityIndividualPresentation(ArrayRow.CounterpartySignature);
-				RequiredSignatures.RecipientPresentation = NStr("en='Not necessary';ru='Не требуется'");
+				RequiredSignatures.RecipientPresentation = NStr("en='Not required';ru='Не требуется'");
 				
 			EndIf;
 			
@@ -542,11 +542,11 @@ Procedure FillSubscribersPresentation(ArrayRow, RequiredSignatures)
 						
 				If ArrayRow.EDDirection = Enums.EDDirections.Outgoing Then
 					RequiredSignatures.SenderPresentation = LegalEntityIndividualPresentation(ArrayRow.CompanySignature);
-					RequiredSignatures.RecipientPresentation = NStr("en='Not necessary';ru='Не требуется'");
+					RequiredSignatures.RecipientPresentation = NStr("en='Not required';ru='Не требуется'");
 					
 				Else
 					RequiredSignatures.SenderPresentation = LegalEntityIndividualPresentation(ArrayRow.CounterpartySignature);
-					RequiredSignatures.RecipientPresentation = NStr("en='Not necessary';ru='Не требуется'");
+					RequiredSignatures.RecipientPresentation = NStr("en='Not required';ru='Не требуется'");
 				
 				EndIf;
 			
@@ -565,8 +565,8 @@ Procedure FillSubscribersPresentation(ArrayRow, RequiredSignatures)
 			EndIf;
 			
 		Else
-			RequiredSignatures.SenderPresentation = NStr("en='Not necessary';ru='Не требуется'");
-			RequiredSignatures.RecipientPresentation = NStr("en='Not necessary';ru='Не требуется'");
+			RequiredSignatures.SenderPresentation = NStr("en='Not required';ru='Не требуется'");
+			RequiredSignatures.RecipientPresentation = NStr("en='Not required';ru='Не требуется'");
 
 		EndIf;
 
@@ -627,7 +627,7 @@ Function EDDataFile(LinkToED)
 		EndIf;
 		
 		If FileName = Undefined Then
-			ErrorText = NStr("en='Unable to view electronic document. Verify the work directory setting';ru='Не удалось просмотреть электронный документ. Проверьте настройку рабочего каталога'");
+			ErrorText = NStr("en='Unable to view the electronic document. Check a working directory setting';ru='Не удалось просмотреть электронный документ. Проверьте настройку рабочего каталога'");
 			CommonUseClientServer.MessageToUser(ErrorText);
 			Return Undefined;
 		EndIf;
@@ -639,7 +639,7 @@ Function EDDataFile(LinkToED)
 			FolderForUnpacking = ElectronicDocumentsService.WorkingDirectory(,LinkToED.UUID());
 			
 			If FolderForUnpacking = Undefined Then
-				ErrorText = NStr("en='Unable to view electronic document. Verify the work directory setting';ru='Не удалось просмотреть электронный документ. Проверьте настройку рабочего каталога'");
+				ErrorText = NStr("en='Unable to view the electronic document. Check a working directory setting';ru='Не удалось просмотреть электронный документ. Проверьте настройку рабочего каталога'");
 				CommonUseClientServer.MessageToUser(ErrorText);
 				DeleteFiles(FileName);
 				Return Undefined;

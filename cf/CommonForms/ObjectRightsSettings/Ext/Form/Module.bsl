@@ -270,7 +270,7 @@ Procedure Reread(Command)
 	Else
 		ShowQueryBox(
 			New NotifyDescription("RereadCompletion", ThisObject),
-			NStr("en='Data was changed. Read without saving?';ru='Данные изменены. Прочитать без сохранения?'"),
+			NStr("en='Data is changed. Read without saving?';ru='Данные изменены. Прочитать без сохранения?'"),
 			QuestionDialogMode.YesNo,
 			5,
 			DialogReturnCode.No);
@@ -374,7 +374,7 @@ Procedure WriteBegin(Close = False)
 		Buttons.Add("Cancel", NStr("en='Cancel';ru='Отменить'"));
 		ShowQueryBox(
 			New NotifyDescription("WriteAfterConfirmation", ThisObject),
-			NStr("en='After writing, rights settings will be unavailable.';ru='После записи настройка прав станет недоступной.'"),
+			NStr("en='After writing, you cannot assign access rights.';ru='После записи настройка прав станет недоступной.'"),
 			Buttons,, "Cancel");
 	Else
 		If Close Then
@@ -589,7 +589,7 @@ Procedure AddAttributesOrFormItems(NewAttributes = Undefined)
 		Item.ReadOnly = True;
 		Item.DataPath    = "RulesGroups.SettingOwner";
 		Item.Title = NStr("en='Inherited from';ru='Наследуется от'");
-		Item.ToolTip = NStr("en='The folder, from which the rights settings are inherited';ru='Папка, от которой наследуются настройка прав'");
+		Item.ToolTip = NStr("en='Folder from which access rights settings are inherited';ru='Папка, от которой наследуются настройка прав'");
 		Item.Visible = ParentFilled;
 		
 		ConditionalAppearanceItem = ConditionalAppearance.Items.Add();
@@ -698,7 +698,7 @@ Procedure FillCheckProcessing(Cancel)
 		EndDo;
 		If NoFilledRight Then
 			CommonUseClientServer.MessageToUser(
-				NStr("en='No access right is filled.';ru='Не заполнено ни одно право доступа.'"),
+				NStr("en='No access right is specified.';ru='Не заполнено ни одно право доступа.'"),
 				,
 				"RightGroups[" + Format(LineNumber, "NG=0") + "]." + NameOfFirstRight,
 				,
@@ -712,7 +712,7 @@ Procedure FillCheckProcessing(Cancel)
 		// Check filling
 		If Not ValueIsFilled(CurrentRow["User"]) Then
 			CommonUseClientServer.MessageToUser(
-				NStr("en='User or group is not filled.';ru='Не заполнен пользователь или группа.'"),
+				NStr("en='User or group is not entered.';ru='Не заполнен пользователь или группа.'"),
 				,
 				"RightGroups[" + Format(LineNumber, "NG=0") + "].User",
 				,
@@ -726,9 +726,9 @@ Procedure FillCheckProcessing(Cancel)
 		                        CurrentRow["User"]);
 		If RightGroups.FindRows(Filter).Count() > 1 Then
 			If TypeOf(Filter.User) = Type("CatalogRef.Users") Then
-				MessageText = NStr("en='Setting for the %1 user already exists.';ru='Настройка для пользователя ""%1"" уже есть.'");
+				MessageText = NStr("en='Setting for user ""%1"" already exists.';ru='Настройка для пользователя ""%1"" уже есть.'");
 			Else
-				MessageText = NStr("en='Setting for the %1 users group already exists.';ru='Настройка для группы пользователей ""%1"" уже есть.'");
+				MessageText = NStr("en='Setting for user group ""%1"" already exists.';ru='Настройка для группы пользователей ""%1"" уже есть.'");
 			EndIf;
 			CommonUseClientServer.MessageToUser(
 				StringFunctionsClientServer.SubstituteParametersInString(MessageText, Filter.User),
@@ -822,7 +822,7 @@ Procedure ShowUsersTypeSelectionOrExternalUsers(ContinuationProcessor)
 				"ShowTypeSelectionUsersOrExternalUsersEnd",
 				ThisObject,
 				ContinuationProcessor),
-			NStr("en='Data type choice';ru='Выбор типа данных'"),
+			NStr("en='Select data type';ru='Выбор типа данных'"),
 			ListOfUserTypes[0]);
 	Else
 		ExecuteNotifyProcessing(ContinuationProcessor, SelectionAndPickOutOfExternalUsers);
@@ -921,7 +921,7 @@ Procedure CheckPermissionToManageRights()
 		Return;
 	EndIf;
 	
-	Raise NStr("en='Rights setting is unavailable.';ru='Настройка прав недоступна.'");
+	Raise NStr("en='Right setting is not available.';ru='Настройка прав недоступна.'");
 	
 EndProcedure
 

@@ -149,7 +149,7 @@ Procedure ExportSettingsItem(WriteStream, Val SettingsKey, Val ObjectKey, Val Us
 		WriteLogEvent(
 			NStr("en='DataExportImport.SettingExportSkipped';ru='ВыгрузкаЗагрузкаДанных.ВыгрузкаНастройкиПропущена'", Metadata.DefaultLanguage.LanguageCode),
 			EventLogLevel.Warning,,,
-			NStr("en='The setting export is skipped as invalid characters in the key parameters';ru='Выгрузка настройки пропущена, т.к. в ключевых параметрах содержатся недопустимые символы.'", Metadata.DefaultLanguage.LanguageCode));
+			NStr("en='Setting export is skipped as key parameters contain invalid characters.';ru='Выгрузка настройки пропущена, т.к. в ключевых параметрах содержатся недопустимые символы.'", Metadata.DefaultLanguage.LanguageCode));
 		
 		Cancel = True;
 		

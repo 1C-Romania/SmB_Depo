@@ -607,7 +607,7 @@ Procedure OnWriteServiceData(Object) Export
 	If WorkInSafeMode.SafeModeIsSet() Then
 		
 		Raise StringFunctionsClientServer.SubstituteParametersInString(
-			NStr("en='Record of object %1 is not available: set safe mode: %2!';ru='Запись объекта %1 недоступна: установлен безопасный режим: %2!'"),
+			NStr("en='Writing of object %1 is unavailable: safe mode is set: %2.';ru='Запись объекта %1 недоступна: установлен безопасный режим: %2!'"),
 			Object.Metadata().FullName(),
 			SafeMode()
 		);

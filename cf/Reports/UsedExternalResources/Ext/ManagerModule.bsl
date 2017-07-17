@@ -144,14 +144,14 @@ Function PresentationRequestsPermissionsToUseExternalResources(Val Administratio
 			If AsRequired Then
 				
 				HeaderText = StringFunctionsClientServer.SubstituteParametersInString(
-					NStr("en='For %1 ""%2"" it is required to use the following external resources:';ru='Для %1 ""%2"" требуется использование следующих внешних ресурсов:'"),
+					NStr("en='It is required to use the following external resources for %1 ""%2"":';ru='Для %1 ""%2"" требуется использование следующих внешних ресурсов:'"),
 					Lower(Dictionary.Genitive),
 					ModuleName);
 				
 			Else
 				
 				HeaderText = StringFunctionsClientServer.SubstituteParametersInString(
-					NStr("en='For %1 ""%2"" the following permissions to use external resources will be granted:';ru='Для %1 ""%2"" будут предоставлены следующие разрешения на использование внешних ресурсов:'"),
+					NStr("en='The following permissions for external resource usage will be granted to %1 ""%2"":';ru='Для %1 ""%2"" будут предоставлены следующие разрешения на использование внешних ресурсов:'"),
 					Lower(Dictionary.Genitive),
 					ModuleName);
 				
@@ -183,11 +183,11 @@ Function PresentationRequestsPermissionsToUseExternalResources(Val Administratio
 		If ToDelete.Count() > 0 Then
 			
 			If AsRequired Then
-				Raise NStr("en='Incorrect request of permissions';ru='Некорректный запрос разрешений'");
+				Raise NStr("en='Incorrect permission request';ru='Некорректный запрос разрешений'");
 			EndIf;
 			
 			HeaderText = StringFunctionsClientServer.SubstituteParametersInString(
-					NStr("en='The following permissions for external resources use previously provided to %1 ""%2"" will be deleted:';ru='Будут удалены следующие ранее предоставленные для %1 ""%2"" разрешения на использование внешних ресурсов:'"),
+					NStr("en='The following permissions for external resource usage previously granted to %1 ""%2"" will be deleted:';ru='Будут удалены следующие ранее предоставленные для %1 ""%2"" разрешения на использование внешних ресурсов:'"),
 					Lower(Dictionary.Genitive),
 					ModuleName);
 			
@@ -360,11 +360,11 @@ Procedure GeneratePermissionPresentation(Val SpreadsheetDocument, Val Template, 
 						If DefinitionType = "FileSystemAccess" Then
 							
 							If Resolution.Path = "/temp" Then
-								AuthorizationAdding.Insert("Path", NStr("en='Temporary files directory';ru='Каталог временных файлов'"));
+								AuthorizationAdding.Insert("Path", NStr("en='Temporary file directory';ru='Каталог временных файлов'"));
 							EndIf;
 							
 							If Resolution.Path = "/bin" Then
-								AuthorizationAdding.Insert("Path", NStr("en='Directory in which server 1C:Enterprise is installed.';ru='Каталог, в который установлен сервер 1С:Предприятия'"));
+								AuthorizationAdding.Insert("Path", NStr("en='Directory to which the 1C:Enterprise server is installed';ru='Каталог, в который установлен сервер 1С:Предприятия'"));
 							EndIf;
 							
 						EndIf;

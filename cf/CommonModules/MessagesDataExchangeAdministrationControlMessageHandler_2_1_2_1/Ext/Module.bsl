@@ -68,25 +68,25 @@ EndProcedure
 
 Function SettingsGettingOperationRepresentation()
 	
-	Return NStr("en='Receiving the data synchronization settings from the service Manager.';ru='Получение настроек синхронизации данных из Менеджера сервиса.'");
+	Return NStr("en='Receiving settings of data synchronization from the service manager.';ru='Получение настроек синхронизации данных из Менеджера сервиса.'");
 	
 EndFunction
 
 Function SynchronizationEnablingRepresentation()
 	
-	Return NStr("en='Enabling the data synchronization in the service Manager.';ru='Включение синхронизации данных в Менеджере сервиса.'");
+	Return NStr("en='Enable data synchronization in the service manager.';ru='Включение синхронизации данных в Менеджере сервиса.'");
 	
 EndFunction
 
 Function SynchronizationDisablingRepresentation()
 	
-	Return NStr("en='Disabling the data synchronization in the service Manager.';ru='Отключение синхронизации данных в Менеджере сервиса.'");
+	Return NStr("en='Disable data synchronization in the service manager.';ru='Отключение синхронизации данных в Менеджере сервиса.'");
 	
 EndFunction
 
 Function SynchronizationPerformingRepresentation()
 	
-	Return NStr("en='Executing the data synchronization according to user request.';ru='Выполнение синхронизации данных по запросу пользователя.'");
+	Return NStr("en='Synchronize data on user request.';ru='Выполнение синхронизации данных по запросу пользователя.'");
 	
 EndFunction
 

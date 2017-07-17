@@ -71,7 +71,7 @@ Procedure FillCheckProcessingAtServer(Cancel, CheckedAttributes)
 	If Selection.Next() // Barcode is already written in the database
 		AND Record.SourceRecordKey.Code <> Record.Code Then
 		
-		ErrorDescription = NStr("en='Such code is already assigned for the items %ProductsAndServices%';ru='Такой код уже назначен для номенклатуры %Номенклатура%'");
+		ErrorDescription = NStr("en='Such code is already assigned for products and services %ProductsAndServices%';ru='Такой код уже назначен для номенклатуры %Номенклатура%'");
 		ErrorDescription = StrReplace(ErrorDescription, "%ProductsAndServices%", """" + Selection.ProductsAndServicesPresentation + """"
 						+ ?(ValueIsFilled(Selection.Characteristic), " " + NStr("en='with characteristic';ru='с характеристикой'") + " """ + Selection.CharacteristicPresentation + """", "")
 						+ ?(ValueIsFilled(Selection.Batch), " " + NStr("en='with the batch';ru='с партией'") + " """ + Selection.BatchPresentation + """", "")

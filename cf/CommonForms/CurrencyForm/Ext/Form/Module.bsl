@@ -83,21 +83,21 @@ Procedure CheckFillOfFormAttributes(Cancel)
     	
 	If Not ValueIsFilled(DocumentCurrency) Then
 		Message = New UserMessage();
-		Message.Text = NStr("en='Currency has not been selected!';ru='Не выбрана валюта для заполнения!'");
+		Message.Text = NStr("en='Currency for population is not selected.';ru='Не выбрана валюта для заполнения!'");
 		Message.Field = "DocumentCurrency";
 		Message.Message();
 		Cancel = True;
 	EndIf;
 	If Not ValueIsFilled(ExchangeRate) Then
 		Message = New UserMessage();
-		Message.Text = NStr("en='Currency rate should be different than zero!';ru='Обнаружен нулевой курс валюты документа!'");
+		Message.Text = NStr("en='Zero exchange rate of the document is found.';ru='Обнаружен нулевой курс валюты документа!'");
 		Message.Field = "ExchangeRate";
 		Message.Message();
 		Cancel = True;
 	EndIf;
 	If Not ValueIsFilled(Multiplicity) Then
 		Message = New UserMessage();
-		Message.Text = NStr("en='Settlements currency exchange rate multiplicity is equal to zero! ';ru='Обнаружена нулевая кратность курса валюты документа!'");
+		Message.Text = NStr("en='Document currency rate conversion factor is zero.';ru='Обнаружена нулевая кратность курса валюты документа!'");
 		Message.Field = "SettlementsMultiplicity";
 		Message.Message();
 		Cancel = True;
@@ -107,7 +107,7 @@ Procedure CheckFillOfFormAttributes(Cancel)
 	If VATTaxationIsAttribute Then
 		If Not ValueIsFilled(VATTaxation) Then
             Message = New UserMessage();
-			Message.Text = NStr("en='Field Taxation is required!';ru='Не заполнено налогообложение!'");
+			Message.Text = NStr("en='Taxation is not filled in.';ru='Не заполнено налогообложение!'");
 			Message.Field = "VATTaxation";
 			Message.Message();
 			Cancel = True;

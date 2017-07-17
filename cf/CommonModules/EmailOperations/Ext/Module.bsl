@@ -20,11 +20,11 @@ Function SendE_Mail(Val UserAccount,
 	
 	If TypeOf(UserAccount) <> Type("CatalogRef.EmailAccounts")
 		Or Not ValueIsFilled(UserAccount) Then
-		Raise NStr("en='Account is unfilled or filled incorrectly.';ru='Учетная запись не заполнена или заполнена неправильно.'");
+		Raise NStr("en='Account is not filled in or filled in incorrectly.';ru='Учетная запись не заполнена или заполнена неправильно.'");
 	EndIf;
 	
 	If EmailParameters = Undefined Then
-		Raise NStr("en='The sending parameters are not specified.';ru='Не заданы параметры отправки.'");
+		Raise NStr("en='Sending parameters are not specified.';ru='Не заданы параметры отправки.'");
 	EndIf;
 	
 	TypeOfRecipient = ?(EmailParameters.Property("Whom"), TypeOf(EmailParameters.Whom), Undefined);
@@ -32,7 +32,7 @@ Function SendE_Mail(Val UserAccount,
 	TypeOfBcc = ?(EmailParameters.Property("Bcc"), TypeOf(EmailParameters.Bcc), Undefined);
 	
 	If TypeOfRecipient = Undefined AND TypeOfCc = Undefined AND TypeOfBcc = Undefined Then
-		Raise NStr("en='No recipients have been specified.';ru='Не указано ни одного получателя.'");
+		Raise NStr("en='No recipient is specified.';ru='Не указано ни одного получателя.'");
 	EndIf;
 	
 	If TypeOfRecipient = Type("String") Then
@@ -82,7 +82,7 @@ Function ImportEMails(Val UserAccount,
 	
 	UseForReceiving = CommonUse.ObjectAttributeValue(UserAccount, "UseForReceiving");
 	If Not UseForReceiving Then
-		Raise NStr("en='An account is inappropriate for receiving the messages.';ru='Учетная запись не предназначена для получения сообщений.'");
+		Raise NStr("en='Account is not intended for receiving messages.';ru='Учетная запись не предназначена для получения сообщений.'");
 	EndIf;
 	
 	If ImportParameters = Undefined Then

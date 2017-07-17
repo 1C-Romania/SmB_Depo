@@ -12,7 +12,7 @@ Procedure OnCreateAtServer(Cancel, StandardProcessing)
 	
 	// Check that the form is opened applicationmatically.
 	If Not Parameters.Property("ExchangeMessageFileName") Then
-		Raise NStr("en='Data processor is not aimed for being used directly';ru='Обработка не предназначена для непосредственного использования.'");
+		Raise NStr("en='Data processor is not intended for direct usage.';ru='Обработка не предназначена для непосредственного использования.'");
 	EndIf;
 	
 	PerformDataMapping = True;
@@ -60,19 +60,19 @@ Procedure OnCreateAtServer(Cancel, StandardProcessing)
 	).Value, New FixedStructure("MappingState",  3));
 	
 	VariantsOfFilterStatusMap.Insert(ChoiceList.Add(
-		"MappedObjects", NStr("en='Compared data';ru='Сопоставленные данные'"),,
+		"MappedObjects", NStr("en='Mapped data';ru='Сопоставленные данные'"),,
 	).Value, New FixedStructure("MappingStateAdditional", 0));
 	
 	VariantsOfFilterStatusMap.Insert(ChoiceList.Add(
-		"UnmappedObjects", NStr("en='Uncompared data';ru='Несопоставленные данные'"),
+		"UnmappedObjects", NStr("en='Unmapped data';ru='Несопоставленные данные'"),
 	).Value, New FixedStructure("MappingStateAdditional", 1));
 	
 	VariantsOfFilterStatusMap.Insert(ChoiceList.Add(
-		"UnmappedObjectsSink", NStr("en='Unmatched data of this data base';ru='Несопоставленные данные этой базы'"),
+		"UnmappedObjectsSink", NStr("en='Unmapped data of this base';ru='Несопоставленные данные этой базы'"),
 	).Value, New FixedStructure("MappingState",  1));
 	
 	VariantsOfFilterStatusMap.Insert(ChoiceList.Add(
-		"UnmappedSourceObjects", NStr("en='Second base unmatched data';ru='Несопоставленные данные второй базы'"),
+		"UnmappedSourceObjects", NStr("en='Unmapped second base data';ru='Несопоставленные данные второй базы'"),
 	).Value, New FixedStructure("MappingState", -1));
 	
 	// Defaults
@@ -86,7 +86,7 @@ Procedure OnCreateAtServer(Cancel, StandardProcessing)
 	Else
 		DataPresentation = Synonym;
 	EndIf;
-	Title = NStr("en='Data match ""[DataPresentation]""';ru='Сопоставление данных ""[ПредставлениеДанных]""'");
+	Title = NStr("en='Mapping of data ""[DataPresentation]""';ru='Сопоставление данных ""[ПредставлениеДанных]""'");
 	Title = StrReplace(Title, "[DataPresentation]", DataPresentation);
 	
 	// Set management items visible depending on the set options.
@@ -101,7 +101,7 @@ Procedure OnCreateAtServer(Cancel, StandardProcessing)
 	ThisApplicationName = ?(IsBlankString(ThisApplicationName), NStr("en='This application';ru='Эта программа'"), ThisApplicationName);
 	
 	SecondApplicationName = CommonUse.ObjectAttributeValue(Object.InfobaseNode, "Description");
-	SecondApplicationName = ?(IsBlankString(SecondApplicationName), NStr("en='Second application';ru='Вторая программа'"), SecondApplicationName);
+	SecondApplicationName = ?(IsBlankString(SecondApplicationName), NStr("en='The second application';ru='Вторая программа'"), SecondApplicationName);
 	
 	Items.DataForThisApplication.Title = ThisApplicationName;
 	Items.SecondApplicationData.Title = SecondApplicationName;
@@ -365,7 +365,7 @@ EndProcedure
 
 &AtClient
 Procedure ExecuteDataImport(Command)
-	NString = NStr("en='Do you want to receive data to the infobase?';ru='Получить данные в информационную базу?'");
+	NString = NStr("en='Receive data to the infobase?';ru='Получить данные в информационную базу?'");
 	Notification = New NotifyDescription("ImportDataAfterQuestionOnDataReceiptConfirmation", ThisObject);
 	
 	ShowQueryBox(Notification, NString, QuestionDialogMode.YesNo, ,DialogReturnCode.Yes);
@@ -477,7 +477,7 @@ Procedure GoToNumberOnChange(Val IsGoNext)
 	GoToRowsCurrent = GoToTable.FindRows(New Structure("GoToNumber", GoToNumber));
 	
 	If GoToRowsCurrent.Count() = 0 Then
-		Raise NStr("en='Page for displaying has not been defined.';ru='Не определена страница для отображения.'");
+		Raise NStr("en='Page for displaying is not defined.';ru='Не определена страница для отображения.'");
 	EndIf;
 	
 	GoToRowCurrent = GoToRowsCurrent[0];
@@ -517,7 +517,7 @@ Procedure ExecuteGoToEventHandlers(Val IsGoNext)
 	GoToRowsCurrent = GoToTable.FindRows(New Structure("GoToNumber", GoToNumber));
 	
 	If GoToRowsCurrent.Count() = 0 Then
-		Raise NStr("en='Page for displaying has not been defined.';ru='Не определена страница для отображения.'");
+		Raise NStr("en='Page for displaying is not defined.';ru='Не определена страница для отображения.'");
 	EndIf;
 	
 	GoToRowCurrent = GoToRowsCurrent[0];
@@ -573,7 +573,7 @@ Procedure ExecuteLongOperationHandler()
 	GoToRowsCurrent = GoToTable.FindRows(New Structure("GoToNumber", GoToNumber));
 	
 	If GoToRowsCurrent.Count() = 0 Then
-		Raise NStr("en='Page for displaying has not been defined.';ru='Не определена страница для отображения.'");
+		Raise NStr("en='Page for displaying is not defined.';ru='Не определена страница для отображения.'");
 	EndIf;
 	
 	GoToRowCurrent = GoToRowsCurrent[0];
@@ -654,7 +654,7 @@ Procedure SetConditionalAppearance()
 	FilterElement.RightValue = -1;
 
 	Item.Appearance.SetParameterValue("TextColor", StyleColors.UnavailableCellTextColor);
-	Item.Appearance.SetParameterValue("Text", NStr("en='There is no match, object will be copied';ru='Нет соответствия, объект будет скопирован'"));
+	Item.Appearance.SetParameterValue("Text", NStr("en='No mapping for object. The object will be copied';ru='Нет соответствия, объект будет скопирован'"));
 
 	//
 
@@ -669,7 +669,7 @@ Procedure SetConditionalAppearance()
 	FilterElement.RightValue = 1;
 
 	Item.Appearance.SetParameterValue("TextColor", StyleColors.UnavailableCellTextColor);
-	Item.Appearance.SetParameterValue("Text", NStr("en='There is no match, object will be copied';ru='Нет соответствия, объект будет скопирован'"));
+	Item.Appearance.SetParameterValue("Text", NStr("en='No mapping for object. The object will be copied';ru='Нет соответствия, объект будет скопирован'"));
 
 EndProcedure
 
@@ -680,7 +680,7 @@ Procedure ImportDataAfterQuestionOnDataReceiptConfirmation(Val QuestionResult, V
 	EndIf;
 	
 	If Object.DataSuccessfullyImported Then
-		NString = NStr("en='Data is already received. Do you want to receive the data again?';ru='Данные уже были получены. Выполнить получение данных повторно?'");
+		NString = NStr("en='Data is already received. Receive data again?';ru='Данные уже были получены. Выполнить получение данных повторно?'");
 		Notification = New NotifyDescription("ImportDataAfterQuestionAboutDataReceivedAgain", ThisObject);
 		
 		ShowQueryBox(Notification, NString, QuestionDialogMode.YesNo, ,DialogReturnCode.No);
@@ -949,14 +949,14 @@ Procedure RunUserFieldsTaskCheck(Cancel, UserFields)
 	If UserFields.Count() = 0 Then
 		
 		// The value should be zero.
-		NString = NStr("en='You should set at least one field to display';ru='Следует указать хотя бы одно поле для отображения'");
+		NString = NStr("en='Specify at least one field to display';ru='Следует указать хотя бы одно поле для отображения'");
 		
 		CommonUseClientServer.MessageToUser(NString,,"Object.TableFieldsList",, Cancel);
 		
 	ElsIf UserFields.Count() > MaximumQuantityOfCustomFields() Then
 		
 		// Value can not be greater than the set one.
-		MessageString = NStr("en='Reduce the fields number (you can select no more than %1 fields)';ru='Уменьшите количество полей (можно выбирать не более %1 полей)'");
+		MessageString = NStr("en='Reduce the number of fields (select no more than %1 fields)';ru='Уменьшите количество полей (можно выбирать не более %1 полей)'");
 		MessageString = StringFunctionsClientServer.SubstituteParametersInString(MessageString, String(MaximumQuantityOfCustomFields()));
 		
 		CommonUseClientServer.MessageToUser(MessageString,,"Object.TableFieldsList",, Cancel);
@@ -1016,7 +1016,7 @@ Procedure SetConnectionInteractively()
 		Or CurrentData.MappingState=+1	// Unmatched receiver object.
 	) Then
 		
-		ShowMessageBox(, NStr("en='Objects already mapped';ru='Объекты уже сопоставлены'"), 2);
+		ShowMessageBox(, NStr("en='Objects are already mapped';ru='Объекты уже сопоставлены'"), 2);
 		
 		// Refocus input on the match table.
 		CurrentItem = Items.MappingTable;
@@ -1078,7 +1078,7 @@ Procedure SetConnectionInteractively()
 	Notification.AdditionalParameters.Insert("ID1", ID1);
 	Notification.AdditionalParameters.Insert("ID2", ID2);
 	
-	QuestionText = NStr("en='Do you want to match the selected objects?';ru='Установить соответствие между выбранными объектами?'");
+	QuestionText = NStr("en='Map the selected objects?';ru='Установить соответствие между выбранными объектами?'");
 	ShowQueryBox(Notification, QuestionText, Buttons,, DialogReturnCode.Yes);
 EndProcedure
 
@@ -1376,7 +1376,7 @@ Procedure PerformMappingOfObjects(Cancel)
 			UUID,
 			"DataProcessors.InfobaseObjectsMapping.PerformMappingOfObjects",
 			MethodParameters,
-			NStr("en='Mapping objects';ru='Сопоставление объектов'")
+			NStr("en='Object mapping';ru='Сопоставление объектов'")
 		);
 		
 		If Result.JobCompleted Then
@@ -1389,7 +1389,7 @@ Procedure PerformMappingOfObjects(Cancel)
 		
 	Except
 		Cancel = True;
-		WriteLogEvent(NStr("en='Assistant of the objects matching. Data analysis';ru='Помощник сопоставления объектов.Анализ данных'", CommonUseClientServer.MainLanguageCode()),
+		WriteLogEvent(NStr("en='Object mapping wizard.Data analysis';ru='Помощник сопоставления объектов.Анализ данных'", CommonUseClientServer.MainLanguageCode()),
 			EventLogLevel.Error,,, DetailErrorDescription(ErrorInfo())
 		);
 		Return;
@@ -1406,7 +1406,7 @@ Procedure ExecuteMappingObjectsEnd(Cancel)
 		AfterObjectsMapping(GetFromTempStorage(TemporaryStorageAddress));
 	Except
 		Cancel = True;
-		WriteLogEvent(NStr("en='Assistant of the objects matching. Data analysis';ru='Помощник сопоставления объектов.Анализ данных'", CommonUseClientServer.MainLanguageCode()),
+		WriteLogEvent(NStr("en='Object mapping wizard.Data analysis';ru='Помощник сопоставления объектов.Анализ данных'", CommonUseClientServer.MainLanguageCode()),
 			EventLogLevel.Error,,, DetailErrorDescription(ErrorInfo())
 		);
 		Return;

@@ -255,7 +255,7 @@ Procedure AdditionalAdministrativeDataProcessors(Command)
 	ParametersForm.Insert("DestinationObjects", New ValueList);
 	ParametersForm.Insert("Kind", AdditionalReportsAndDataProcessorsClientServer.DataProcessorKindAdditionalInformationProcessor());
 	ParametersForm.Insert("WindowOpeningMode", FormWindowOpeningMode.LockOwnerWindow);
-	ParametersForm.Insert("Title", NStr("en='Additional administrative data processors';ru='Дополнительные обработки по администрированию'"));
+	ParametersForm.Insert("Title", NStr("en='Additional data processors for administration';ru='Дополнительные обработки по администрированию'"));
 	OpenForm("CommonForm.AdditionalReportsAndDataProcessors", ParametersForm, ThisObject);
 	
 EndProcedure
@@ -269,7 +269,7 @@ Procedure AdditionalReportsOnAdministration(Command)
 	ParametersForm.Insert("DestinationObjects", New ValueList);
 	ParametersForm.Insert("Kind", AdditionalReportsAndDataProcessorsClientServer.DataProcessorKindAdditionalReport());
 	ParametersForm.Insert("WindowOpeningMode", FormWindowOpeningMode.LockOwnerWindow);
-	ParametersForm.Insert("Title", NStr("en='Additional reports on administration';ru='Дополнительные отчеты по администрированию'"));
+	ParametersForm.Insert("Title", NStr("en='Additional administration reports';ru='Дополнительные отчеты по администрированию'"));
 	OpenForm("CommonForm.AdditionalReportsAndDataProcessors", ParametersForm, ThisObject);
 EndProcedure
 // End StandardSubsystems.AdditionalReportsAndDataProcessors

@@ -2271,7 +2271,7 @@ Procedure CounterpartyOnChangeFragment1(Val SettlementsCurrencyBeforeChange, Val
         EndIf;
         
         Object.DocumentCurrency = StructureData.SettlementsCurrency;
-        ShowMessageBox(New NotifyDescription("CounterpartyOnChangeEnd", ThisObject, New Structure("SettlementsCurrencyBeforeChange, StructureData", SettlementsCurrencyBeforeChange, StructureData)), NStr("en='Settlement currency of the contract with counterparty changed! It is necessary to check the document currency!';ru='Изменилась валюта расчетов по договору с контрагентом! Необходимо проверить валюту документа!'"));
+        ShowMessageBox(New NotifyDescription("CounterpartyOnChangeEnd", ThisObject, New Structure("SettlementsCurrencyBeforeChange, StructureData", SettlementsCurrencyBeforeChange, StructureData)), NStr("en='Currency of settlements by contract with the counterparty changed. Check document currency.';ru='Изменилась валюта расчетов по договору с контрагентом! Необходимо проверить валюту документа!'"));
         Return;
         
     EndIf;
@@ -2414,7 +2414,7 @@ Procedure ContractOnChangeFragment(Val SettlementsCurrencyBeforeChange, Val Cont
         EndIf;
         
         Object.DocumentCurrency = StructureData.SettlementsCurrency;
-        ShowMessageBox(New NotifyDescription("ContractOnChangeEnd", ThisObject, New Structure("SettlementsCurrencyBeforeChange", SettlementsCurrencyBeforeChange)), NStr("en='Settlement currency of the contract with counterparty changed! It is necessary to check the document currency!';ru='Изменилась валюта расчетов по договору с контрагентом! Необходимо проверить валюту документа!'"));
+        ShowMessageBox(New NotifyDescription("ContractOnChangeEnd", ThisObject, New Structure("SettlementsCurrencyBeforeChange", SettlementsCurrencyBeforeChange)), NStr("en='Currency of settlements by contract with the counterparty changed. Check document currency.';ru='Изменилась валюта расчетов по договору с контрагентом! Необходимо проверить валюту документа!'"));
         
     EndIf;
 
@@ -2548,7 +2548,7 @@ Procedure StartOnChange(Item)
 	
 	If Object.Start > Object.Finish Then
 		Object.Start = WhenChangingStart;
-		Message(NStr("en='Start date can not be later than the end date.';ru='Дата старта не может быть больше даты финиша.'"));
+		Message(NStr("en='Start date cannot be greater than end date.';ru='Дата старта не может быть больше даты финиша.'"));
 	Else
 		WhenChangingStart = Object.Start;
 	EndIf;

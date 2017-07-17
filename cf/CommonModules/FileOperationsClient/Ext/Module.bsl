@@ -12,7 +12,7 @@
 Procedure OpenScanSettingsForm() Export
 	
 	If CommonUseClientServer.IsLinuxClient() Then
-		MessageText = NStr("en='Scanning is not supported in the client under OS Linux.';ru='Сканирование не поддерживается в клиенте под управлением ОС Linux.'");
+		MessageText = NStr("en='Scanning is not supported in client under OS Linux.';ru='Сканирование не поддерживается в клиенте под управлением ОС Linux.'");
 		ShowMessageBox(, MessageText);
 		Return;
 	EndIf;

@@ -8,7 +8,7 @@
 
 // Presentation of the subsystem. Used when recording into the event log and in other places.
 Function SubsystemDescription(LanguageCode) Export
-	Return NStr("en='Reports variants';ru='Варианты отчетов'", ?(LanguageCode = Undefined, CommonUseClientServer.MainLanguageCode(), LanguageCode));
+	Return NStr("en='Report variants';ru='Варианты отчетов'", ?(LanguageCode = Undefined, CommonUseClientServer.MainLanguageCode(), LanguageCode));
 EndFunction
 
 // Presentation of the importance group.

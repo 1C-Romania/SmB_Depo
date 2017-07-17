@@ -18,7 +18,7 @@ Procedure SearchStringInTable(SearchForward)
 		FoundArea = Classifier.FindText(TrimAll(SearchString), , , , , , True);
 		If FoundArea = Undefined Then
 			
-			MessageText = NStr("en='Measurement unit is not found';ru='Единица измерения не найдена'", CommonUseClientServer.MainLanguageCode());
+			MessageText = NStr("en='Unit of measure is not found';ru='Единица измерения не найдена'", CommonUseClientServer.MainLanguageCode());
 			CommonUseClientServer.MessageToUser(MessageText, , "SearchString");
 			CurrentItem = Items.SearchString;
 			Return;
@@ -52,13 +52,13 @@ Procedure ExecuteCase(CurrentArea, CloseForm = True)
 	
 	If IsBlankString(ShortDescription) Then
 		
-		MessageText = MessageText + ?(IsBlankString(MessageText), "", ", ") + NStr("en='Abbreviation';ru='краткое наименование'");
+		MessageText = MessageText + ?(IsBlankString(MessageText), "", ", ") + NStr("en='short name';ru='краткое наименование'");
 		
 	EndIf;
 	
 	If IsBlankString(DescriptionFull) Then
 		
-		MessageText = MessageText + ?(IsBlankString(MessageText), "", ", ") + NStr("en='full description';ru='полное наименование'");
+		MessageText = MessageText + ?(IsBlankString(MessageText), "", ", ") + NStr("en='full name';ru='полное наименование'");
 		
 	EndIf;
 	
@@ -84,7 +84,7 @@ Procedure ExecuteCase(CurrentArea, CloseForm = True)
 		
 		FormParameters.Insert("Key", UnOfMeas);
 		OpenForm("Catalog.UOMClassifier.Form.ItemForm", FormParameters, ThisForm);
-		WarningText = NStr("en='Measurement unit was added earlier.';ru='Единица измерения была добавлена раннее.'", CommonUseClientServer.MainLanguageCode());
+		WarningText = NStr("en='Unit of measure was added earlier.';ru='Единица измерения была добавлена раннее.'", CommonUseClientServer.MainLanguageCode());
 		ShowMessageBox(, WarningText, , );
 		CloseForm = False;
 		
@@ -132,7 +132,7 @@ Procedure CreateMeasurementUnitByClassifier(FillingValues)
 		
 	Except
 		
-		WriteLogEvent(NStr("en='Measurement unit adding from OKEI';ru='Добавление единиц измерения из ОКЕИ'", CommonUseClientServer.MainLanguageCode()), EventLogLevel.Error, , , ErrorDescription());
+		WriteLogEvent(NStr("en='Add units of measure from RNCMU';ru='Добавление единиц измерения из ОКЕИ'", CommonUseClientServer.MainLanguageCode()), EventLogLevel.Error, , , ErrorDescription());
 		
 	EndTry;
 	

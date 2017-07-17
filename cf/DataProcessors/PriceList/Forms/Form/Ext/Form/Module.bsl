@@ -55,7 +55,7 @@ EndFunction // GetSelectionStructure()
 //
 Procedure UpdateFormTitleAtServer()
 	
-	ThisForm.Title	= NStr("en=""Counterparty's price list"";ru='Прайс-лист компании'") + 
+	ThisForm.Title	= NStr("en='Company price list';ru='Прайс-лист компании'") + 
 		?(ValueIsFilled(ToDate), NStr("en=' on ';ru=' на '") + Format(ToDate, "DLF=DD"), NStr("en='.';ru='.'"));
 	
 EndProcedure // UpdateFormTitleAtServer()
@@ -420,7 +420,7 @@ Procedure OnOpen(Cancel)
 	StatePresentation = Items.SpreadsheetDocument.StatePresentation;
 	StatePresentation.Visible = True;
 	StatePresentation.AdditionalShowMode = AdditionalShowMode.DontUse;
-	StatePresentation.Text = NStr("en='Click the Update command for creating price list.';ru='Нажмите команду Обновить для формирования прайс-листа.'");
+	StatePresentation.Text = NStr("en='Click the Update command to generate a price list.';ru='Нажмите команду Обновить для формирования прайс-листа.'");
 	
 EndProcedure // OnOpen()
 
@@ -747,7 +747,7 @@ Procedure Copy(Command)
 		If AvailablePriceKindsList.Count() < 1 Then
 			
 			CommonUseClientServer.MessageToUser(
-				NStr("en='No prices available for copying exist for the current products and services in the current price list.';ru='В текущем прайс-листе для данной номенклатурной позиции нет цен, доступных для копирования.'")
+				NStr("en='No prices available for copying exist for the current products and services item in the current price list.';ru='В текущем прайс-листе для данной номенклатурной позиции нет цен, доступных для копирования.'")
 						);
 						
 			Return;
@@ -819,7 +819,7 @@ Procedure Change(Command)
 		If AvailablePriceKindsList.Count() < 1 Then
 			
 			CommonUseClientServer.MessageToUser(
-				NStr("en='No prices available for editing exist for the current products and services in current price list.';ru='В текущем прайс-листе для данной номенклатурной позиции нет цен, доступных для изменения.'")
+				NStr("en='No prices available for editing exist for the current products and services item in the current price list.';ru='В текущем прайс-листе для данной номенклатурной позиции нет цен, доступных для изменения.'")
 						);
 						
 			Return;
@@ -855,7 +855,7 @@ Procedure History(Command)
 		AND DetailFromArea.Dynamic) Then
 		
 		CommonUseClientServer.MessageToUser(
-			NStr("en='Can not open history of the prices generation.';ru='Невозможно открыть историю формирования цен.'")
+			NStr("en='Cannot open price generation history.';ru='Невозможно открыть историю формирования цен.'")
 					);
 		Return;
 		
@@ -865,7 +865,7 @@ Procedure History(Command)
 		If AvailablePriceKindsList.Count() < 1 Then
 			
 			CommonUseClientServer.MessageToUser(
-				NStr("en='Can not show price history for the current inventory item.';ru='Для текущего запаса невозможно отобразить историю цены.'")
+				NStr("en='Cannot show price history for the current inventory.';ru='Для текущего запаса невозможно отобразить историю цены.'")
 						);
 						
 			Return;
@@ -1230,7 +1230,7 @@ Procedure PrepareSpreadsheetDocumentInLongActions()
 		UUID,
 		"DataProcessors.PriceList.Generate",
 		BackgroundJobLaunchParameters,
-		NStr("en='Price list data preparation';ru='Подготовка данных прайс-листа'")
+		NStr("en='Prepare price list data';ru='Подготовка данных прайс-листа'")
 	);
 	
 	Completed = AssignmentResult.JobCompleted;
@@ -1289,7 +1289,7 @@ Procedure CheckExecution()
 		StatePresentation.Visible = True;
 		StatePresentation.AdditionalShowMode = AdditionalShowMode.DontUse;
 		StatePresentation.Picture = New Picture;
-		StatePresentation.Text = NStr("en='Data are not actual';ru='Данные не актуалны'");
+		StatePresentation.Text = NStr("en='Data is not relevant';ru='Данные не актуалны'");
 		
 		Items.AbortPriceListBackGroundFormation.Enabled = False;
 		
@@ -1366,7 +1366,7 @@ Procedure ImportDataFromExternalSourceResultDataProcessor(ImportResult, Addition
 		ElsIf ImportResult.ActionsDetails = "ProcessPreparedData" Then
 			
 			ProcessPreparedData(ImportResult);
-			ShowMessageBox(,NStr("en='The data import is completed.';ru='Загрузка данных завершена.'"));
+			ShowMessageBox(,NStr("en='Data import is complete.';ru='Загрузка данных завершена.'"));
 			
 		EndIf;
 		

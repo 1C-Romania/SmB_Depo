@@ -11,11 +11,11 @@ Procedure OnCreateAtServer(Cancel, StandardProcessing)
 	// Only subscriber administrator can create and disable offline workplace.
 	If Not Users.InfobaseUserWithFullAccess() Then
 		
-		Raise NStr("en='The rights are not sufficient for setting the offline work.';ru='Недостаточно прав для настройки автономной работы.'");
+		Raise NStr("en='Insufficient rights to set up offline work.';ru='Недостаточно прав для настройки автономной работы.'");
 		
 	ElsIf Not OfflineWorkService.OfflineWorkSupported() Then
 		
-		Raise NStr("en='Possibility of autonomous work in the application is not provided.';ru='Возможность автономной работы в программе не предусмотрена.'");
+		Raise NStr("en='Offline work is not available in the application.';ru='Возможность автономной работы в программе не предусмотрена.'");
 		
 	EndIf;
 	
@@ -121,7 +121,7 @@ Procedure HowToInstallOrUpdate1CEnterprisePlatformVersion(Command)
 	
 	FormParameters = New Structure;
 	FormParameters.Insert("TemplateName", "HowToInstallOrUpdate1CEnterprisePlatformVersion");
-	FormParameters.Insert("Title", NStr("en='How to install or update the 1C:Enterprise platform version';ru='Как установить или обновить версию платформы 1С:Предприятие'"));
+	FormParameters.Insert("Title", NStr("en='How to install or update 1C:Enterprise platform version';ru='Как установить или обновить версию платформы 1С:Предприятие'"));
 	
 	OpenForm("DataProcessor.OfflineWorkplaceCreationAssistant.Form.AdditionalDetails", FormParameters, ThisObject, "HowToInstallOrUpdate1CEnterprisePlatformVersion");
 	
@@ -132,7 +132,7 @@ Procedure HowToSetOfflineWorkplace(Command)
 	
 	FormParameters = New Structure;
 	FormParameters.Insert("TemplateName", "InstructionForSettingOfflineWorkplace");
-	FormParameters.Insert("Title", NStr("en='Hot to configure the offline workplace';ru='Как настроить автономное рабочее место'"));
+	FormParameters.Insert("Title", NStr("en='How to configure an offline work place';ru='Как настроить автономное рабочее место'"));
 	
 	OpenForm("DataProcessor.OfflineWorkplaceCreationAssistant.Form.AdditionalDetails", FormParameters, ThisObject, "InstructionForSettingOfflineWorkplace");
 	

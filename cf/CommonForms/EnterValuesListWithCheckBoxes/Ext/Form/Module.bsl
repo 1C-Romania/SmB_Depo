@@ -18,7 +18,7 @@ Procedure OnCreateAtServer(Cancel, StandardProcessing)
 	ValuesForSelection = CommonUseClientServer.StructureProperty(Parameters, "ValuesForSelection");
 	marked = CommonUseClientServer.StructureProperty(Parameters, "marked");
 	
-	Title = NStr("en='List of selected';ru='Список выбранных'") + " (" + FieldPresentation + ")";
+	Title = NStr("en='List of selected items';ru='Список выбранных'") + " (" + FieldPresentation + ")";
 	
 	If TypeInformation.TypeCount = 0 Then
 		LimitChoiceWithSpecifiedValues = True;
@@ -135,7 +135,7 @@ Procedure ListBeforeEditingCompletion(Item, NewRow, CancelStartEditing, CancelEn
 	Else
 		For Each ListItemDoubleInForm IN ValuesListInForm Do
 			If ListItemDoubleInForm.Value = Value AND ListItemDoubleInForm <> ListItemInForm Then
-				Status(NStr("en='Found duplicate records. Editing canceled.';ru='Обнаружены дублирующиеся записи. Редактирование отменено.'"));
+				Status(NStr("en='Duplicate records are detected. Editing canceled.';ru='Обнаружены дублирующиеся записи. Редактирование отменено.'"));
 				CancelEndEditing = True; // Deny duplicates.
 				Break;
 			EndIf;

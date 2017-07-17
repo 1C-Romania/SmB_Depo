@@ -238,7 +238,7 @@ EndProcedure
 &AtClient
 Procedure DeleteFromLocalFilesCacheExecute()
 	
-	QuestionText = NStr("en='Do you want to delete the selected files out of the main work directory?';ru='Удалить выбранные файлы из основного рабочего каталога?'");
+	QuestionText = NStr("en='Delete the selected files from the main working directory?';ru='Удалить выбранные файлы из основного рабочего каталога?'");
 	Handler = New NotifyDescription("DeleteFromLocalCacheAfterAnsweringQuestion", ThisObject);
 	ShowQueryBox(Handler, QuestionText, QuestionDialogMode.YesNo);
 	

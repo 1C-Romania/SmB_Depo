@@ -28,27 +28,27 @@
 //
 // 1. For the message output of the managed form field connected to the object attribute.:
 // CommonUseClientServer.MessageToUser(
-// 	NStr("en='Message about error.';ru='Сообщение об ошибке.'"), ,
+// 	NStr("en='Error message.';ru='Сообщение об ошибке.'"), ,
 // 	"FieldInFormAttributeObject",
 // 	"Object");
 //
 // Alternative usage variant in the form of object:
 // CommonUseClientServer.MessageToUser(
-// 	NStr("en='Message about error.';ru='Сообщение об ошибке.'"), ,
+// 	NStr("en='Error message.';ru='Сообщение об ошибке.'"), ,
 // 	"Object.FieldInFormAttributeObject");
 //
 // 2. For the message output next to the managed form field connected to the form attribute:
 // CommonUseClientServer.MessageToUser(
-// 	NStr("en='Message about error.';ru='Сообщение об ошибке.'"), ,
+// 	NStr("en='Error message.';ru='Сообщение об ошибке.'"), ,
 // 	"FormAttributeName");
 //
 // 3. For output messages connected From object infobases.
 // CommonUseClientServer.MessageToUser(
-// 	NStr("en='Message about error.';ru='Сообщение об ошибке.'"), InfobaseObject, "Responsible",,Cancel);
+// 	NStr("en='Error message.';ru='Сообщение об ошибке.'"), InfobaseObject, "Responsible",,Cancel);
 //
 // 4. For output messages to link on object infobases.
 // CommonUseClientServer.MessageToUser(
-// 	NStr("en='Message about error.';ru='Сообщение об ошибке.'"), Refs, , , Cancel);
+// 	NStr("en='Error message.';ru='Сообщение об ошибке.'"), Refs, , , Cancel);
 //
 // Cases of incorrect usage:
 //  1. Simultaneously pass the DataKey and DataPath parameters.
@@ -209,7 +209,7 @@ Function TextFillingErrors(FieldKind = "Field", MessageKind = "Filling",
 
 	If Upper(FieldKind) = "Field" Then
 		If Upper(MessageKind) = "FillType" Then
-			Pattern = NStr("en='Field ""%1"" is not filled';ru='Поле ""%1"" не заполнено'");
+			Pattern = NStr("en='The ""%1"" field is not filled in';ru='Поле ""%1"" не заполнено'");
 		ElsIf Upper(MessageKind) = "CORRECTNESS" Then
 			Pattern = NStr("en='%1 field is filled in incorrectly.
 		|
@@ -219,7 +219,7 @@ Function TextFillingErrors(FieldKind = "Field", MessageKind = "Filling",
 		EndIf;
 	ElsIf Upper(FieldKind) = "Column" Then
 		If Upper(MessageKind) = "FillType" Then
-			Pattern = NStr("en='%1 column is not filled in in %2 row of %3 list';ru='Не заполнена колонка ""%1"" в строке %2 списка ""%3""'");
+			Pattern = NStr("en='Column ""%1"" is not filled out in line %2 of list ""%3""';ru='Не заполнена колонка ""%1"" в строке %2 списка ""%3""'");
 		ElsIf Upper(MessageKind) = "CORRECTNESS" Then
 			Pattern = NStr("en='Column %1 is filled in incorrectly in %2 row of %3 list.
 		|
@@ -229,7 +229,7 @@ Function TextFillingErrors(FieldKind = "Field", MessageKind = "Filling",
 		EndIf;
 	ElsIf Upper(FieldKind) = "LIST" Then
 		If Upper(MessageKind) = "FillType" Then
-			Pattern = NStr("en='No row has been entered to list %3';ru='Не введено ни одной строки в список ""%3""'");
+			Pattern = NStr("en='No lines entered to list ""%3""';ru='Не введено ни одной строки в список ""%3""'");
 		ElsIf Upper(MessageKind) = "CORRECTNESS" Then
 			Pattern = NStr("en='List %3 is filled in incorrectly.
 		|
@@ -331,7 +331,7 @@ Procedure ExpandStructure(StructureReceiver, SourceStructure, WithReplacement = 
 				Continue;
 			Else
 				Raise StringFunctionsClientServer.SubstituteParametersInString(
-					NStr("en='Source and receiver structures intersection by key %1.';ru='Пересечение структур источника и приемника по ключу ""%1"".'"),
+					NStr("en='Structure intersection of source and receiver by key ""%1"".';ru='Пересечение структур источника и приемника по ключу ""%1"".'"),
 					KeyAndValue.Key);
 			EndIf
 		EndIf;
@@ -750,17 +750,17 @@ Procedure SetSpreadsheetDocumentFieldState(SpreadsheetDocumentField, Status = "D
 			StatePresentation.Visible                      = True;
 			StatePresentation.AdditionalShowMode = AdditionalShowMode.Irrelevance;
 			StatePresentation.Picture                       = New Picture;
-			StatePresentation.Text                          = NStr("en='Report is not generated. Click Create to generate the report.';ru='Отчет не сформирован. Нажмите ""Сформировать"" для получения отчета.'");;
+			StatePresentation.Text                          = NStr("en='The report is not generated. Click ""Run report"" to generate the report.';ru='Отчет не сформирован. Нажмите ""Сформировать"" для получения отчета.'");;
 		ElsIf Upper(Status) = "REPORTCREATION" Then  
 			StatePresentation.Visible                      = True;
 			StatePresentation.AdditionalShowMode = AdditionalShowMode.Irrelevance;
 			StatePresentation.Picture                       = PictureLib.LongOperation48;
 			StatePresentation.Text                          = NStr("en='Generating the report...';ru='Отчет формируется...'");
 		Else
-			Raise(NStr("en=""Invalid parameter value (parameter number '2')"";ru=""Недопустимое значение параметра (параметр номер '2')"""));
+			Raise(NStr("en='Invalid parameter value (parameter number 2)';ru=""Недопустимое значение параметра (параметр номер '2')"""));
 		EndIf;
 	Else
-		Raise(NStr("en=""Invalid parameter value (parameter number '1')"";ru=""Недопустимое значение параметра (параметр номер '1')"""));
+		Raise(NStr("en='Invalid parameter value (parameter number 1)';ru=""Недопустимое значение параметра (параметр номер '1')"""));
 	EndIf;
 	
 EndProcedure
@@ -806,12 +806,12 @@ Function CompareVersions(Val VersionString1, Val VersionString2) Export
 	Version1 = StringFunctionsClientServer.DecomposeStringIntoSubstringsArray(Row1, ".");
 	If Version1.Count() <> 4 Then
 		Raise StringFunctionsClientServer.SubstituteParametersInString(
-			NStr("en = 'Invalid version string format: %1'; ru = 'Неправильный формат параметра СтрокаВерсии1: %1'"), VersionString1);
+			NStr("en='Invalid format for parameter VersionRow1: %1';ru='Неправильный формат параметра СтрокаВерсии1: %1'"), VersionString1);
 	EndIf;
 	Version2 = StringFunctionsClientServer.DecomposeStringIntoSubstringsArray(Row2, ".");
 	If Version2.Count() <> 4 Then
 		Raise StringFunctionsClientServer.SubstituteParametersInString(
-	    	NStr("en = 'Invalid version string format: %1'; ru = 'Неправильный формат параметра СтрокаВерсии2: %1'"), VersionString2);
+	    	NStr("en='Invalid format for parameter VersionRow2: %1';ru='Неправильный формат параметра СтрокаВерсии2: %1'"), VersionString2);
 	EndIf;
 	
 	Result = 0;
@@ -841,12 +841,12 @@ Function CompareVersionsWithoutBatchNumber(Val VersionString1, Val VersionString
 	Version1 = StringFunctionsClientServer.DecomposeStringIntoSubstringsArray(Row1, ".");
 	If Version1.Count() <> 3 Then
 		Raise StringFunctionsClientServer.SubstituteParametersInString(
-			NStr("en='Wrong format of the VersionRow1 parameter: %1';ru='Неправильный формат параметра СтрокаВерсии1: %1'"), VersionString1);
+			NStr("en='Invalid format for parameter VersionRow1: %1';ru='Неправильный формат параметра СтрокаВерсии1: %1'"), VersionString1);
 	EndIf;
 	Version2 = StringFunctionsClientServer.DecomposeStringIntoSubstringsArray(Row2, ".");
 	If Version2.Count() <> 3 Then
 		Raise StringFunctionsClientServer.SubstituteParametersInString(
-	    	NStr("en='Wrong format of the VersionRow2 parameter: %1';ru='Неправильный формат параметра СтрокаВерсии2: %1'"), VersionString2);
+	    	NStr("en='Invalid format for parameter VersionRow2: %1';ru='Неправильный формат параметра СтрокаВерсии2: %1'"), VersionString2);
 	EndIf;
 	
 	Result = 0;
@@ -992,10 +992,10 @@ Function InstallOuterDatabaseJoin(Parameters) Export
 	
 	#If Server Or ThickClientOrdinaryApplication Or ExternalConnection Then
 		IsLinux = CommonUse.ThisLinuxServer();
-		ErrorShortInfo = NStr("en='Direct connection to the infobase is unavailable on the server under OS Linux.';ru='Прямое подключение к информационной базе недоступно на сервере под управлением ОС Linux.'");
+		ErrorShortInfo = NStr("en='Direct connection to the infobase on a server under OS Linux is not available.';ru='Прямое подключение к информационной базе недоступно на сервере под управлением ОС Linux.'");
 	#Else
 		IsLinux = IsLinuxClient();
-		ErrorShortInfo = NStr("en='Direct connection to the infobase is unavailable on client managed by Linux OS.';ru='Прямое подключение к информационной базе недоступно на клиенте под управлением ОС Linux.'");
+		ErrorShortInfo = NStr("en='Direct connection to the infobase on a client under OS Linux is not available.';ru='Прямое подключение к информационной базе недоступно на клиенте под управлением ОС Linux.'");
 	#EndIf
 	
 	If IsLinux Then
@@ -1009,7 +1009,7 @@ Function InstallOuterDatabaseJoin(Parameters) Export
 		COMConnector = New COMObject(COMConnectorName()); // "V83.COMConnector"
 	Except
 		Information = ErrorInfo();
-		ErrorMessageString = NStr("en='Unable to connect to another application: %1';ru='Не удалось подключиться к другой программе: %1'");
+		ErrorMessageString = NStr("en='Cannot connect to another application: %1';ru='Не удалось подключиться к другой программе: %1'");
 		
 		Result.ErrorAttachingAddIn = True;
 		Result.DetailedErrorDescription     = StringFunctionsClientServer.SubstituteParametersInString(ErrorMessageString, DetailErrorDescription(Information));
@@ -1025,14 +1025,14 @@ Function InstallOuterDatabaseJoin(Parameters) Export
 	If FileModeWork Then
 		
 		If IsBlankString(Parameters.InfobaseDirectory) Then
-			ErrorMessageString = NStr("en='Infobase directory location has not been set.';ru='Не задано месторасположение каталога информационной базы.'");
+			ErrorMessageString = NStr("en='Location of the infobase directory is not specified.';ru='Не задано месторасположение каталога информационной базы.'");
 			FillCheckingError = True;
 		EndIf;
 		
 	Else
 		
 		If IsBlankString(Parameters.PlatformServerName) Or IsBlankString(Parameters.InfobaseNameAtPlatformServer) Then
-			ErrorMessageString = NStr("en='Mandatory connection parameters are not specified: Server name""; Infobase name on server.';ru='Не заданы обязательные параметры подключения: ""Имя сервера""; ""Имя информационной базы на сервере"".'");
+			ErrorMessageString = NStr("en='Required connection parameters are not specified: ""Server name""; ""Name of infobase on the server"".';ru='Не заданы обязательные параметры подключения: ""Имя сервера""; ""Имя информационной базы на сервере"".'");
 			FillCheckingError = True;
 		EndIf;
 		
@@ -1082,7 +1082,7 @@ Function InstallOuterDatabaseJoin(Parameters) Export
 		Result.Connection = COMConnector.Connect(ConnectionString);
 	Except
 		Information = ErrorInfo();
-		ErrorMessageString = NStr("en='Unable to connect to another application: %1';ru='Не удалось подключиться к другой программе: %1'");
+		ErrorMessageString = NStr("en='Cannot connect to another application: %1';ru='Не удалось подключиться к другой программе: %1'");
 		
 		Result.ErrorAttachingAddIn = True;
 		Result.DetailedErrorDescription     = StringFunctionsClientServer.SubstituteParametersInString(ErrorMessageString, DetailErrorDescription(Information));
@@ -1622,13 +1622,13 @@ Function EmailsFromString(Val String) Export
 		
 		If AddressDefined Then 
 			If HasProhibitedCharsInAlias Then
-				ErrorDescription = NStr("en='Presentation contains invalid symbols';ru='Представление содержит недопустимые символы'");
+				ErrorDescription = NStr("en='The presentation contains invalid characters';ru='Представление содержит недопустимые символы'");
 			EndIf;
 		Else
 			If StringContainsEmail Then 
-				ErrorDescription = NStr("en='Email address has errors';ru='Адрес электронной почты содержит ошибки'");
+				ErrorDescription = NStr("en='Email address contains errors';ru='Адрес электронной почты содержит ошибки'");
 			Else
-				ErrorDescription = NStr("en='Row does not contain the email address';ru='Строка не содержит адреса электронной почты'");
+				ErrorDescription = NStr("en='The string does not contain an email address';ru='Строка не содержит адреса электронной почты'");
 			EndIf;
 		EndIf;	
 		
@@ -1896,8 +1896,8 @@ Function ParseStringWithPostalAddresses(Val EmailAddressString, CallingException
 	
 	ProhibitedChars = "!#$%^&*()+`~|\/=";
 	
-	ProhibitedCharsMessage = NStr("en='Invalid character %1 in the email address %2';ru='Недопустимый символ ""%1"" в адресе электронной почты ""%2""'");
-	MessageInvalidEmailFormat = NStr("en='Incorrect email address % 1';ru='Некорректный адрес электронной почты ""%1""'");
+	ProhibitedCharsMessage = NStr("en='Invalid character ""%1"" in email address ""%2""';ru='Недопустимый символ ""%1"" в адресе электронной почты ""%2""'");
+	MessageInvalidEmailFormat = NStr("en='Incorrect email address ""%1""';ru='Некорректный адрес электронной почты ""%1""'");
 	
 	SubstringArray = StringFunctionsClientServer.DecomposeStringIntoSubstringsArray(EmailAddressString,";",True);
 	SubstringArrayToProcess = New Array;
@@ -2887,13 +2887,13 @@ Procedure CheckParameter(Val ProcedureOrFunctionName, Val ParameterName, Val Par
 	
 	Context = "CommonUseClientServer.CheckParameter";
 	Validate(TypeOf(ProcedureOrFunctionName) = Type("String"), 
-		NStr("en='ProcedureOrFunctionName parameter value is invalid';ru='Недопустимо значение параметра ИмяПроцедурыИлиФункции'"), Context);
+		NStr("en='Invalid value of the ProcedureOrFunctionName parameter';ru='Недопустимо значение параметра ИмяПроцедурыИлиФункции'"), Context);
 	Validate(TypeOf(ParameterName) = Type("String"), 
-		NStr("en='ParameterName parameter value is invalid';ru='Недопустимо значение параметра ИмяПараметра'"), Context);
+		NStr("en='Invalid value of the ParameterName parameter';ru='Недопустимо значение параметра ИмяПараметра'"), Context);
 		
 	ThisTypeDescription = TypeOf(ExpectedTypes) = Type("TypeDescription");
 	Validate(ThisTypeDescription Or TypeOf(ExpectedTypes) = Type("Type"), 
-		NStr("en='ExpectedTypes parameter value is invalid';ru='Недопустимо значение параметра ОжидаемыеТипы'"), Context);
+		NStr("en='Invalid value of parameter ExpectedTypes';ru='Недопустимо значение параметра ОжидаемыеТипы'"), Context);
 		
 	InvalidParameter = NStr("en='Invalid value of the %1 parameter in %2. 
 		|Expected: %3; sent value: %4 (%5 type).';ru='Недопустимое значение параметра %1 в %2. 
@@ -2907,7 +2907,7 @@ Procedure CheckParameter(Val ProcedureOrFunctionName, Val ParameterName, Val Par
 	If TypeOf(ParameterValue) = Type("Structure") AND ExpectedPropertyTypes <> Undefined Then
 		
 		Validate(TypeOf(ExpectedPropertyTypes) = Type("Structure"), 
-			NStr("en='ProcedureOrFunctionName parameter value is invalid';ru='Недопустимо значение параметра ИмяПроцедурыИлиФункции'"), Context);
+			NStr("en='Invalid value of the ProcedureOrFunctionName parameter';ru='Недопустимо значение параметра ИмяПроцедурыИлиФункции'"), Context);
 			
 		NoProperty = NStr("en='Invalid parameter value %1 (Structure) in %2. 
 		|%3 property was expected in the structure (%4 type).';ru='Недопустимое значение параметра %1 (Структура) в %2. 
@@ -3099,8 +3099,8 @@ EndFunction
 // characters if the framing characters are inserted correctly, it removes them.
 Function CheckAndPrepareMailAddress(Val FullNameAddressee, Val MailAddress)
 	
-	ProhibitedCharInRecipientName = NStr("en='Inadmissible character in destination name.';ru='Недопустимый символ в имени адресата.'");
-	EmailContainsProhibitedChar = NStr("en='Inadmissible symbol in the mail address';ru='Недопустимый символ в почтовом адресе.'");
+	ProhibitedCharInRecipientName = NStr("en='Recipient name contains invalid characters.';ru='Недопустимый символ в имени адресата.'");
+	EmailContainsProhibitedChar = NStr("en='Invalid character in mailing address.';ru='Недопустимый символ в почтовом адресе.'");
 	BorderChars = "<>[]";
 	
 	MailAddress     = TrimAll(MailAddress);

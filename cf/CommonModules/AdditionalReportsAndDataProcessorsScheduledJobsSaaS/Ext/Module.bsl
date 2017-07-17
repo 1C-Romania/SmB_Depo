@@ -47,7 +47,7 @@ EndFunction
 Procedure SetJobParameters(Task, Use, Parameters, Schedule) Export
 	
 	If Not Constants.AllowAdditionalReportsAndDataProcessorsPerformByProceduralTasksSaaS.Get() Then
-		Raise NStr("en='Service administration prohibited the regular execution of additional data processors commands as jobs!';ru='Периодическое выполнение команд дополнительных обработок в качестве заданий запрещено администрацией сервиса!'");
+		Raise NStr("en='It is prohibited by the service administration to periodically perform additional data processor commands as jobs.';ru='Периодическое выполнение команд дополнительных обработок в качестве заданий запрещено администрацией сервиса!'");
 	EndIf;
 	
 	MinInterval = Constants.AdditionalReportsAndDataProcessorsProceduralTasksMinIntervalSaaS.Get();
@@ -56,7 +56,7 @@ Procedure SetJobParameters(Task, Use, Parameters, Schedule) Export
 	If Schedule.ExecutionRequired(ChackedDate, OriginalDate) Then
 		
 		Raise StringFunctionsClientServer.SubstituteParametersInString(
-			NStr("en='Schedule specified for the execution of additional report or data processor commands as jobs, should not be more than once in %1 seconds!';ru='Расписание, задаваемое для выполнения команд дополнительного отчета или обработки в качестве заданий, должно быть не чаще, чем 1 раз в %1 секунд!'"), MinInterval);
+			NStr("en='Schedule set for execution of commands of additional report or data processor as jobs should be maximum once in %1 seconds.';ru='Расписание, задаваемое для выполнения команд дополнительного отчета или обработки в качестве заданий, должно быть не чаще, чем 1 раз в %1 секунд!'"), MinInterval);
 		
 	EndIf;
 	

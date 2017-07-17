@@ -134,11 +134,11 @@ Procedure OnCreateAtServer(Cancel, StandardProcessing)
 		
 		MessageText = "";
 		If Not ValueIsFilled(ProductsAndServices) Then
-			MessageText = NStr("en='Products and services are not filled!';ru='Не заполнена номенклатура!'");
+			MessageText = NStr("en='Products and services are not filled in.';ru='Не заполнена номенклатура!'");
 		ElsIf Parameters.Property("ThisIsReceiptDocument") AND ProductsAndServices.ProductsAndServicesType = Enums.ProductsAndServicesTypes.Service Then
-			MessageText = NStr("en='The third party services are not accounted by characteristics!';ru='Для услуг сторонних контрагентов не ведется учет по характеристикам!'");
+			MessageText = NStr("en='Accounting by characteristics is not kept for services of external counterparties.';ru='Для услуг сторонних контрагентов не ведется учет по характеристикам!'");
 		ElsIf Not ProductsAndServices.UseCharacteristics Then
-			MessageText = NStr("en='The products and services are not accounted by characteristics!';ru='Для номенклатуры не ведется учет по характеристикам!'");
+			MessageText = NStr("en='Accounting by characteristics is not kept for the products and services.';ru='Для номенклатуры не ведется учет по характеристикам!'");
 		EndIf;
 		
 		If Not IsBlankString(MessageText) Then

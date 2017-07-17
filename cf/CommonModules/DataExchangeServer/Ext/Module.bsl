@@ -733,13 +733,12 @@ Procedure BeforeCheckingIdentifiersOfMetadataObjectsInSubordinateNodeDIB(Cancel 
 		EnableExchangeMessageDataExportRepetitionBeforeRunning();
 		
 		WriteLogEvent(
-			NStr("en='Data exchange. Import the Metadata objects identifiers catalog';ru='Обмен данными.Загрузка справочника ""Идентификаторы объектов метаданных""'", CommonUseClientServer.MainLanguageCode()),
+			NStr("en='Data exchange. Import the ""Metadata object IDs"" catalog';ru='Обмен данными.Загрузка справочника ""Идентификаторы объектов метаданных""'", CommonUseClientServer.MainLanguageCode()),
 			EventLogLevel.Error,,,
 			DetailErrorDescription(ErrorInfo()));
 		
 		Raise
-			NStr("en='Changes of the Metadata objects identifiers catalog have not
-		|been exported from the main node: data import error.For more information, see the events log monitor.';ru='Из главного узла не загружены изменения справочника ""Идентификаторы объектов метаданных"": ошибка загрузки данных.См. подробности в журнале регистрации.'");
+			NStr("en='Changes of the ""Metadata object IDs"" catalog are not imported from the main node: data import error. For more information, see event log.';ru='Из главного узла не загружены изменения справочника ""Идентификаторы объектов метаданных"": ошибка загрузки данных.См. подробности в журнале регистрации.'");
 	EndTry;
 	SetPrivilegedMode(True);
 	SetDataExchangeMessageImportModeBeforeStart("ImportAllowed", False);
@@ -763,8 +762,7 @@ Procedure BeforeCheckingIdentifiersOfMetadataObjectsInSubordinateNodeDIB(Cancel 
 		EnableExchangeMessageDataExportRepetitionBeforeRunning();
 		
 		Raise
-			NStr("en='Changes of the Metadata objects identifiers catalog have not
-		|been exported from the main node: data import error.For more information, see the events log monitor.';ru='Из главного узла не загружены изменения справочника ""Идентификаторы объектов метаданных"": ошибка загрузки данных.См. подробности в журнале регистрации.'");
+			NStr("en='Changes of the ""Metadata object IDs"" catalog are not imported from the main node: data import error. For more information, see event log.';ru='Из главного узла не загружены изменения справочника ""Идентификаторы объектов метаданных"": ошибка загрузки данных.См. подробности в журнале регистрации.'");
 	EndIf;
 	
 EndProcedure
@@ -973,7 +971,7 @@ Procedure ExecuteUpdateOfDataExchangeRules() Export
 	//RISE Temnikov 18.11.2015 comment + <BR> //ExecuteUpdateOfTypicalRulesVersionForDataExchange(Cancel, ImportedFromFileExchangeRules, ImportedFromFileRecordRules);<BR> //RISE Temnikov 18.11.2015 -<BR>
 	
 	If Cancel Then
-		Raise NStr("en='Errors occurred while updating the data exchange rules (see Events log monitor).';ru='При обновлении правил обмена данными возникли ошибки (см. Журнал регистрации).'");
+		Raise NStr("en='Errors occurred during update of data exchange rules (see the event log).';ru='При обновлении правил обмена данными возникли ошибки (см. Журнал регистрации).'");
 	EndIf;
 	
 	DataExchangeServerCall.ResetCacheMechanismForRegistrationOfObjects();
@@ -1074,7 +1072,7 @@ Procedure UpdateScheduledJobsOfDataExchangeScripts() Export
 		Catalogs.DataExchangeScripts.RefreshScheduledJobData(Cancel, Undefined, Object);
 		
 		If Cancel Then
-			Raise NStr("en='Error on scheduled job updating for exchange data script.';ru='Ошибка при обновлении регламентного задания для сценария обмена данными.'");
+			Raise NStr("en='An error occurred when updating a scheduled job for the data exchange scenario.';ru='Ошибка при обновлении регламентного задания для сценария обмена данными.'");
 		EndIf;
 		
 		InfobaseUpdate.WriteData(Object);
@@ -1211,7 +1209,7 @@ EndFunction
 Function SelectChanges(Val Node, Val MessageNo, Val FilterSample = Undefined) Export
 	
 	If TransactionActive() Then
-		Raise NStr("en='Selection of the data modifications is prohibited in the active transaction.';ru='Выборка изменений данных запрещена в активной транзакции.'");
+		Raise NStr("en='Data change selection is prohibited in an active transaction.';ru='Выборка изменений данных запрещена в активной транзакции.'");
 	EndIf;
 	
 	Return ExchangePlans.SelectChanges(Node, MessageNo, FilterSample);
@@ -1264,7 +1262,7 @@ Function DefaultExchangePlanSettings(ExchangePlanName) Export
 	// Receive default values for the exchange plan.
 	ExchangePlanMetadata = Metadata.ExchangePlans[ExchangePlanName];
 	
-	AssistantFormTitle = NStr("en='data synchronization with %Application% (setup)';ru='Синхронизация данных с %Программа% (настройка)'");
+	AssistantFormTitle = NStr("en='Data synchronization with %Application% (configuration)';ru='Синхронизация данных с %Программа% (настройка)'");
 	AssistantFormTitle = StrReplace(AssistantFormTitle, "%Application%", ExchangePlanMetadata.Synonym);
 	
 	Parameters = New Structure;
@@ -1393,7 +1391,7 @@ Function FTPServerNameAndPath(Val ConnectionString) Export
 		AND Upper(Left(ConnectionString, 7)) <> "FTPS://")
 		OR Find(ConnectionString, "@") <> 0 Then
 		Raise StringFunctionsClientServer.SubstituteParametersInString(
-			NStr("en='Connection to FTP-resource string does not correspond to format: ""%1""';ru='Строка подключения к FTP-ресурсу не соответствует формату: ""%1""'"), ConnectionString
+			NStr("en='FTP connection string does not match the format: ""%1""';ru='Строка подключения к FTP-ресурсу не соответствует формату: ""%1""'"), ConnectionString
 		);
 	EndIf;
 	
@@ -1401,7 +1399,7 @@ Function FTPServerNameAndPath(Val ConnectionString) Export
 	
 	If ConnectionParameters.Count() < 3 Then
 		Raise StringFunctionsClientServer.SubstituteParametersInString(
-			NStr("en='Server name is not specified in the connection to FTP-resource string: ""%1""';ru='В строке подключения к FTP-ресурсу не указано имя сервера: ""%1""'"), ConnectionString
+			NStr("en='Server name is not specified in FTP resource connection string: ""%1""';ru='В строке подключения к FTP-ресурсу не указано имя сервера: ""%1""'"), ConnectionString
 		);
 	EndIf;
 	
@@ -2111,7 +2109,7 @@ Procedure ExecuteDataExchangeByScenarioOfExchangeData(Cancel, ExchangeExecutionS
 			ExchangeSettingsStructure.StartDate = CurrentSessionDate();
 			
 			// Add information about data exchange process to ELM.
-			MessageString = NStr("en='Beginning of the data exchange process by the setting %1';ru='Начало процесса обмена данными по настройке %1'", CommonUseClientServer.MainLanguageCode());
+			MessageString = NStr("en='Data exchange process start for setting %1';ru='Начало процесса обмена данными по настройке %1'", CommonUseClientServer.MainLanguageCode());
 			MessageString = StringFunctionsClientServer.SubstituteParametersInString(MessageString, ExchangeSettingsStructure.ExchangeExecutionSettingsDescription);
 			WriteLogEventOfDataExchange(MessageString, ExchangeSettingsStructure);
 			
@@ -2149,7 +2147,7 @@ Procedure ExecuteDataExchangeByScheduledJob(ExchangeScenarioCode) Export
 	CheckUseDataExchange();
 	
 	If Not ValueIsFilled(ExchangeScenarioCode) Then
-		Raise NStr("en='Data exchange script is not specified.';ru='Не задан сценарий обмена данными.'");
+		Raise NStr("en='Data exchange scenario is not specified.';ru='Не задан сценарий обмена данными.'");
 	EndIf;
 	
 	QueryText = "
@@ -2172,7 +2170,7 @@ Procedure ExecuteDataExchangeByScheduledJob(ExchangeScenarioCode) Export
 		// Perform exchange scenario.
 		ExecuteDataExchangeByScenarioOfExchangeData(False, Selection.Ref);
 	Else
-		MessageString = NStr("en='Data exchange script with %1 code has not been found.';ru='Сценарий обмена данными с кодом %1 не найден.'");
+		MessageString = NStr("en='Data exchange script with code %1 is not found.';ru='Сценарий обмена данными с кодом %1 не найден.'");
 		MessageString = StringFunctionsClientServer.SubstituteParametersInString(MessageString, ExchangeScenarioCode);
 		Raise MessageString;
 	EndIf;
@@ -2214,7 +2212,7 @@ Function GetExchangeMessageToTemporaryDirectory(Cancel, InfobaseNode, ExchangeMe
 	If ExchangeSettingsStructure.Cancel Then
 		
 		If OutputMessages Then
-			NString = NStr("en='Errors occurred while initializing the transport of the exchange message';ru='При инициализации обработки транспорта сообщений обмена возникли ошибки.'");
+			NString = NStr("en='Errors occurred while initializing processing of exchange message transport.';ru='При инициализации обработки транспорта сообщений обмена возникли ошибки.'");
 			CommonUseClientServer.MessageToUser(NString,,,, Cancel);
 		EndIf;
 		
@@ -2235,7 +2233,7 @@ Function GetExchangeMessageToTemporaryDirectory(Cancel, InfobaseNode, ExchangeMe
 	If ExchangeSettingsStructure.ExchangeProcessResult <> Undefined Then
 		
 		If OutputMessages Then
-			NString = NStr("en='On receiving message exchange there occurred errors';ru='При получении сообщений обмена возникли ошибки.'");
+			NString = NStr("en='Errors occurred while receiving exchange messages.';ru='При получении сообщений обмена возникли ошибки.'");
 			CommonUseClientServer.MessageToUser(NString,,,, Cancel);
 		EndIf;
 		
@@ -2290,7 +2288,7 @@ Function GetExchangeMessageFromCorrespondentInfobaseToTempDirectory(Cancel, Info
 		ExchangeMessageDirectoryName = CreateTemporaryDirectoryOfExchangeMessages();
 	Except
 		If OutputMessages Then
-			Message = NStr("en='Unable to exchange: %1';ru='Не удалось произвести обмен: %1'");
+			Message = NStr("en='Cannot exchange: %1';ru='Не удалось произвести обмен: %1'");
 			Message = StringFunctionsClientServer.SubstituteParametersInString(Message, DetailErrorDescription(ErrorInfo()));
 			CommonUseClientServer.MessageToUser(Message,,,, Cancel);
 		EndIf;
@@ -2303,7 +2301,7 @@ Function GetExchangeMessageFromCorrespondentInfobaseToTempDirectory(Cancel, Info
 	
 	If ExternalConnection = Undefined Then
 		
-		Message = NStr("en='Unable to exchange: %1';ru='Не удалось произвести обмен: %1'");
+		Message = NStr("en='Cannot exchange: %1';ru='Не удалось произвести обмен: %1'");
 		If OutputMessages Then
 			MessageForUser = StringFunctionsClientServer.SubstituteParametersInString(Message, DataConnection.ErrorShortInfo);
 			CommonUseClientServer.MessageToUser(MessageForUser,,,, Cancel);
@@ -2327,7 +2325,7 @@ Function GetExchangeMessageFromCorrespondentInfobaseToTempDirectory(Cancel, Info
 		
 		If OutputMessages Then
 			// Output an error message.
-			Message = NStr("en='Unable to export data: %1';ru='Не удалось выгрузить данные: %1'");
+			Message = NStr("en='Cannot export data: %1';ru='Не удалось выгрузить данные: %1'");
 			Message = StringFunctionsClientServer.SubstituteParametersInString(Message, DataConnection.ErrorShortInfo);
 			CommonUseClientServer.MessageToUser(Message,,,, Cancel);
 		EndIf;
@@ -2401,7 +2399,7 @@ Function GetExchangeMessageToTempDirectoryFromCorrespondentInfobaseOverWebServic
 	If Proxy = Undefined Then
 		
 		Cancel = True;
-		Message = NStr("en='An error occurred while setting connection to the second infobase: %1';ru='Ошибка при установке подключения ко второй информационной базе: %1'");
+		Message = NStr("en='An error occurred when establishing connection to the second infobase: %1';ru='Ошибка при установке подключения ко второй информационной базе: %1'");
 		Message = StringFunctionsClientServer.SubstituteParametersInString(Message, ErrorMessageString);
 		ExchangeSettingsStructure = New Structure("EventLogMonitorMessageKey");
 		ExchangeSettingsStructure.EventLogMonitorMessageKey = GetEventLogMonitorMessageKey(InfobaseNode, Enums.ActionsAtExchange.DataImport);
@@ -2423,7 +2421,7 @@ Function GetExchangeMessageToTempDirectoryFromCorrespondentInfobaseOverWebServic
 	Except
 		
 		Cancel = True;
-		Message = NStr("en='Errors occurred in the second infobase while exporting data: %1';ru='При выгрузке данных возникли ошибки во второй информационной базе: %1'", CommonUseClientServer.MainLanguageCode());
+		Message = NStr("en='When exporting data, errors occurred in the second infobase: %1';ru='При выгрузке данных возникли ошибки во второй информационной базе: %1'", CommonUseClientServer.MainLanguageCode());
 		Message = StringFunctionsClientServer.SubstituteParametersInString(Message, DetailErrorDescription(ErrorInfo()));
 		ExchangeSettingsStructure = New Structure("EventLogMonitorMessageKey");
 		ExchangeSettingsStructure.EventLogMonitorMessageKey = GetEventLogMonitorMessageKey(InfobaseNode, Enums.ActionsAtExchange.DataImport);
@@ -2435,7 +2433,7 @@ Function GetExchangeMessageToTempDirectoryFromCorrespondentInfobaseOverWebServic
 	If LongOperation Then
 		ExchangeSettingsStructure = New Structure("EventLogMonitorMessageKey");
 		ExchangeSettingsStructure.EventLogMonitorMessageKey = GetEventLogMonitorMessageKey(InfobaseNode, Enums.ActionsAtExchange.DataImport);
-		WriteLogEventOfDataExchange(NStr("en='Waiting for the data receiving from the base-correspondent...';ru='Ожидание получения данных от базы-корреспондента...'",
+		WriteLogEventOfDataExchange(NStr("en='Pending data from the correspondent base...';ru='Ожидание получения данных от базы-корреспондента...'",
 			CommonUseClientServer.MainLanguageCode()), ExchangeSettingsStructure);
 		Return Result;
 	EndIf;
@@ -2445,7 +2443,7 @@ Function GetExchangeMessageToTempDirectoryFromCorrespondentInfobaseOverWebServic
 	Except
 		
 		Cancel = True;
-		Message = NStr("en='Errors occurred while receiving exchange message from the files pass service: %1';ru='Возникли ошибки при получении сообщения обмена из сервиса передачи файлов: %1'", CommonUseClientServer.MainLanguageCode());
+		Message = NStr("en='Errors occurred when receiving an exchange message from file transfer service: %1';ru='Возникли ошибки при получении сообщения обмена из сервиса передачи файлов: %1'", CommonUseClientServer.MainLanguageCode());
 		Message = StringFunctionsClientServer.SubstituteParametersInString(Message, DetailErrorDescription(ErrorInfo()));
 		ExchangeSettingsStructure = New Structure("EventLogMonitorMessageKey");
 		ExchangeSettingsStructure.EventLogMonitorMessageKey = GetEventLogMonitorMessageKey(InfobaseNode, Enums.ActionsAtExchange.DataImport);
@@ -2458,7 +2456,7 @@ Function GetExchangeMessageToTempDirectoryFromCorrespondentInfobaseOverWebServic
 		ExchangeMessageDirectoryName = CreateTemporaryDirectoryOfExchangeMessages();
 	Except
 		Cancel = True;
-		Message = NStr("en='Errors occurred while receiving the exchange message: %1';ru='При получении сообщения обмена возникли ошибки: %1'", CommonUseClientServer.MainLanguageCode());
+		Message = NStr("en='Errors occurred while receiving exchange messages: %1';ru='При получении сообщения обмена возникли ошибки: %1'", CommonUseClientServer.MainLanguageCode());
 		Message = StringFunctionsClientServer.SubstituteParametersInString(Message, DetailErrorDescription(ErrorInfo()));
 		ExchangeSettingsStructure = New Structure("EventLogMonitorMessageKey");
 		ExchangeSettingsStructure.EventLogMonitorMessageKey = GetEventLogMonitorMessageKey(InfobaseNode, Enums.ActionsAtExchange.DataImport);
@@ -2527,7 +2525,7 @@ Function GetExchangeMessageToTempDirectoryFromCorrespondentInfobaseOverWebServic
 	Except
 		
 		Cancel = True;
-		Message = NStr("en='Errors occurred while receiving exchange message from the files pass service: %1';ru='Возникли ошибки при получении сообщения обмена из сервиса передачи файлов: %1'", CommonUseClientServer.MainLanguageCode());
+		Message = NStr("en='Errors occurred when receiving an exchange message from file transfer service: %1';ru='Возникли ошибки при получении сообщения обмена из сервиса передачи файлов: %1'", CommonUseClientServer.MainLanguageCode());
 		Message = StringFunctionsClientServer.SubstituteParametersInString(Message, DetailErrorDescription(ErrorInfo()));
 		ExchangeSettingsStructure = New Structure("EventLogMonitorMessageKey");
 		ExchangeSettingsStructure.EventLogMonitorMessageKey = GetEventLogMonitorMessageKey(InfobaseNode, Enums.ActionsAtExchange.DataImport);
@@ -2540,7 +2538,7 @@ Function GetExchangeMessageToTempDirectoryFromCorrespondentInfobaseOverWebServic
 		ExchangeMessageDirectoryName = CreateTemporaryDirectoryOfExchangeMessages();
 	Except
 		Cancel = True;
-		Message = NStr("en='Errors occurred while receiving the exchange message: %1';ru='При получении сообщения обмена возникли ошибки: %1'", CommonUseClientServer.MainLanguageCode());
+		Message = NStr("en='Errors occurred while receiving exchange messages: %1';ru='При получении сообщения обмена возникли ошибки: %1'", CommonUseClientServer.MainLanguageCode());
 		Message = StringFunctionsClientServer.SubstituteParametersInString(Message, DetailErrorDescription(ErrorInfo()));
 		ExchangeSettingsStructure = New Structure("EventLogMonitorMessageKey");
 		ExchangeSettingsStructure.EventLogMonitorMessageKey = GetEventLogMonitorMessageKey(InfobaseNode, Enums.ActionsAtExchange.DataImport);
@@ -2832,7 +2830,7 @@ Procedure ExecuteDataExchangeForInfobaseNodeOverFileOrString(InfobaseNode = Unde
 		InfobaseNode = ExchangePlans[ExchangePlanName].FindByCode(CodeOfInfobaseNode);
 		
 		If InfobaseNode.IsEmpty() Then
-			ErrorMessageString = NStr("en='Exchange plan node %1 with the code %1 has not been found.';ru='Узел плана обмена %1 с кодом %2 не найден.'");
+			ErrorMessageString = NStr("en='Exchange plan node %1 with code %2 is not found.';ru='Узел плана обмена %1 с кодом %2 не найден.'");
 			ErrorMessageString = StringFunctionsClientServer.SubstituteParametersInString(ErrorMessageString, ExchangePlanName, CodeOfInfobaseNode);
 			Raise ErrorMessageString;
 		EndIf;
@@ -2843,7 +2841,7 @@ Procedure ExecuteDataExchangeForInfobaseNodeOverFileOrString(InfobaseNode = Unde
 	ExchangeSettingsStructure = DataExchangeReUse.GetExchangeSettingsStructureForInfobaseNode(InfobaseNode, ActionOnExchange, Undefined, False);
 	
 	If ExchangeSettingsStructure.Cancel Then
-		ErrorMessageString = NStr("en='Error when initializing the data exchange process.';ru='Ошибка при инициализации процесса обмена данными.'");
+		ErrorMessageString = NStr("en='An error occurred when initializing the data exchange process.';ru='Ошибка при инициализации процесса обмена данными.'");
 		FixEndExchange(ExchangeSettingsStructure);
 		Raise ErrorMessageString;
 	EndIf;
@@ -2851,7 +2849,7 @@ Procedure ExecuteDataExchangeForInfobaseNodeOverFileOrString(InfobaseNode = Unde
 	ExchangeSettingsStructure.ExchangeProcessResult = Undefined;
 	ExchangeSettingsStructure.StartDate = ?(OperationStartDate = Undefined, CurrentSessionDate(), OperationStartDate);
 	
-	MessageString = NStr("en='The data exchange process beginning for node %1';ru='Начало процесса обмена данными для узла %1'", CommonUseClientServer.MainLanguageCode());
+	MessageString = NStr("en='Data exchange process start for node %1';ru='Начало процесса обмена данными для узла %1'", CommonUseClientServer.MainLanguageCode());
 	MessageString = StringFunctionsClientServer.SubstituteParametersInString(MessageString, ExchangeSettingsStructure.InfobaseNodeDescription);
 	WriteLogEventOfDataExchange(MessageString, ExchangeSettingsStructure);
 	
@@ -3004,7 +3002,7 @@ Procedure RunExchangeActionForInfobaseNode(
 	ExchangeSettingsStructure.ExchangeProcessResult = Undefined;
 	ExchangeSettingsStructure.StartDate = CurrentSessionDate();
 	
-	MessageString = NStr("en='The data exchange process beginning for node %1';ru='Начало процесса обмена данными для узла %1'", CommonUseClientServer.MainLanguageCode());
+	MessageString = NStr("en='Data exchange process start for node %1';ru='Начало процесса обмена данными для узла %1'", CommonUseClientServer.MainLanguageCode());
 	MessageString = StringFunctionsClientServer.SubstituteParametersInString(MessageString, ExchangeSettingsStructure.InfobaseNodeDescription);
 	WriteLogEventOfDataExchange(MessageString, ExchangeSettingsStructure);
 	
@@ -3048,7 +3046,7 @@ Procedure ExecuteExchangeOverWebServiceActionForInfobaseNode(Cancel,
 	ExchangeSettingsStructure.ExchangeProcessResult = Undefined;
 	ExchangeSettingsStructure.StartDate = CurrentSessionDate();
 	
-	MessageString = NStr("en='The data exchange process beginning for node %1';ru='Начало процесса обмена данными для узла %1'", CommonUseClientServer.MainLanguageCode());
+	MessageString = NStr("en='Data exchange process start for node %1';ru='Начало процесса обмена данными для узла %1'", CommonUseClientServer.MainLanguageCode());
 	MessageString = StringFunctionsClientServer.SubstituteParametersInString(MessageString, ExchangeSettingsStructure.InfobaseNodeDescription);
 	WriteLogEventOfDataExchange(MessageString, ExchangeSettingsStructure);
 	
@@ -3094,7 +3092,7 @@ Procedure ExecuteExchangeOverWebServiceActionForInfobaseNode(Cancel,
 									LongOperationAllowed);
 					
 					If LongOperation Then
-						WriteLogEventOfDataExchange(NStr("en='Waiting for the data receiving from the base-correspondent...';ru='Ожидание получения данных от базы-корреспондента...'",
+						WriteLogEventOfDataExchange(NStr("en='Pending data from the correspondent base...';ru='Ожидание получения данных от базы-корреспондента...'",
 							CommonUseClientServer.MainLanguageCode()), ExchangeSettingsStructure);
 						Return;
 					EndIf;
@@ -3216,7 +3214,7 @@ Procedure ExecuteExchangeOverWebServiceActionForInfobaseNode(Cancel,
 									LongOperationAllowed);
 					
 					If LongOperation Then
-						WriteLogEventOfDataExchange(NStr("en='Waiting for the data import in the base-correspondent...';ru='Ожидание загрузки данных в базе-корреспонденте...'",
+						WriteLogEventOfDataExchange(NStr("en='Pending data import in the correspondent base...';ru='Ожидание загрузки данных в базе-корреспонденте...'",
 							CommonUseClientServer.MainLanguageCode()), ExchangeSettingsStructure);
 						Return;
 					EndIf;
@@ -3356,7 +3354,7 @@ Procedure ExecuteExchangeActionForInfobaseNodeByExternalConnection(Cancel, Infob
 		If ObjectConversionRules = Undefined Then
 			
 			// Exchange rules should be specified.
-			NString = NStr("en='Conversion rules in the second infobase for %1 exchange plan are not specified. The exchange has been canceled.';ru='Не заданы правила конвертации во второй информационной базе для плана обмена %1. Обмен отменен.'",
+			NString = NStr("en='Conversion rules for exchange plan %1 are not specified in the second infobase. Exchange is canceled.';ru='Не заданы правила конвертации во второй информационной базе для плана обмена %1. Обмен отменен.'",
 				CommonUseClientServer.MainLanguageCode());
 			ErrorMessageString = StringFunctionsClientServer.SubstituteParametersInString(NString, ExchangeSettingsStructureExternalConnection.ExchangePlanName);
 			WriteLogEventOfDataExchange(ErrorMessageString, ExchangeSettingsStructure, True);
@@ -3585,7 +3583,7 @@ Procedure BeforeReadingMessageExchange(Val Recipient, ExchangeMessage, StandardP
 			
 			SavedExchangeMessage.Write(ExchangeMessage);
 			
-			WriteEventGetData(Recipient, NStr("en='Exchange message is received from cache.';ru='Сообщение обмена получено из кэша.'"));
+			WriteEventGetData(Recipient, NStr("en='The exchange message was received from cache.';ru='Сообщение обмена получено из кэша.'"));
 			
 			SetPrivilegedMode(True);
 			SetDataExchangeMessageImportModeBeforeStart("MessageReceivedFromCache", True);
@@ -3597,7 +3595,7 @@ Procedure BeforeReadingMessageExchange(Val Recipient, ExchangeMessage, StandardP
 			
 			ExchangeMessage = SavedExchangeMessage.PathToFile;
 			
-			WriteEventGetData(Recipient, NStr("en='Exchange message is received from cache.';ru='Сообщение обмена получено из кэша.'"));
+			WriteEventGetData(Recipient, NStr("en='The exchange message was received from cache.';ru='Сообщение обмена получено из кэша.'"));
 			
 			SetPrivilegedMode(True);
 			SetDataExchangeMessageImportModeBeforeStart("MessageReceivedFromCache", True);
@@ -4136,7 +4134,7 @@ Procedure ExecuteStandardNodeChangeImport(
 		ExchangeProcessResult = Enums.ExchangeExecutionResult.Error;
 		
 		WriteLogEvent(EventLogMonitorMessageKey, EventLogLevel.Error,
-			InfobaseNode.Metadata(), InfobaseNode, NStr("en='Exchange message contains data for another infobase node.';ru='Сообщение обмена содержит данные для другого узла информационной базы.'",
+			InfobaseNode.Metadata(), InfobaseNode, NStr("en='The exchange message contains data for another infobase node.';ru='Сообщение обмена содержит данные для другого узла информационной базы.'",
 			CommonUseClientServer.MainLanguageCode()));
 		//
 		Return;
@@ -4467,7 +4465,7 @@ Function GetFileFromStorageInService(Val FileID, Val InfobaseNode, Val PartSize 
 		ExchangeSettingsStructure.EventLogMonitorMessageKey = GetEventLogMonitorMessageKey(InfobaseNode, Enums.ActionsAtExchange.DataImport);
 		
 		Comment = StringFunctionsClientServer.SubstituteParametersInString(
-			NStr("en='Start of receiving of the exchange message from the Internet (number of the file parts %1).';ru='Начало получения сообщения обмена из Интернета (количество частей файла %1).'"),
+			NStr("en='Start of the Internet exchange message receiving (number of file parts is %1).';ru='Начало получения сообщения обмена из Интернета (количество частей файла %1).'"),
 			Format(PartCount, "NZ=0; NG=0")
 		);
 		WriteLogEventOfDataExchange(Comment, ExchangeSettingsStructure);
@@ -4500,14 +4498,14 @@ Function GetFileFromStorageInService(Val FileID, Val InfobaseNode, Val PartSize 
 				WriteLogEvent(EventLogMonitorMessageTextRemovingTemporaryFile(),
 				EventLogLevel.Error,,, DetailErrorDescription(ErrorInfo()));
 			EndTry;
-			Raise(NStr("en='Archive file does not contain the data.';ru='Файл архива не содержит данных.'"));
+			Raise(NStr("en='Archive file contains no data.';ru='Файл архива не содержит данных.'"));
 		EndIf;
 		
 		// Logging of the exchange events.
 		FileOfArchive = New File(ArchiveName);
 		
 		Comment = StringFunctionsClientServer.SubstituteParametersInString(
-			NStr("en='Ending of the exchange message receipt from the Internet (size of the compressed exchange message %1 MB).';ru='Окончание получения сообщения обмена из Интернета (размер сжатого сообщения обмена %1 Мб).'"),
+			NStr("en='End of exchange message receiving from the Internet (size of a compressed exchange message is %1 MB).';ru='Окончание получения сообщения обмена из Интернета (размер сжатого сообщения обмена %1 Мб).'"),
 			Format(Round(FileOfArchive.Size() / 1024 / 1024, 3), "NZ=0; NG=0")
 		);
 		WriteLogEventOfDataExchange(Comment, ExchangeSettingsStructure);
@@ -4730,7 +4728,7 @@ Procedure OnReceiveFileFromStore(Val FileID, FileName)
 	QueryResult = Query.Execute();
 	
 	If QueryResult.IsEmpty() Then
-		Definition = NStr("en='File with ID %1 is not found.';ru='Файл с идентификатором %1 не обнаружен.'");
+		Definition = NStr("en='A file with ID %1 not found.';ru='Файл с идентификатором %1 не обнаружен.'");
 		Raise StringFunctionsClientServer.SubstituteParametersInString(Definition, String(FileID));
 	EndIf;
 	
@@ -5732,12 +5730,12 @@ Procedure CheckIfExchangesPossible() Export
 	
 	If Not Users.RolesAvailable("DataSynchronization, DataSynchronizationSetting") Then
 		
-		Raise NStr("en='You have no rights to synchronize data.';ru='Недостаточно прав для синхронизации данных.'");
+		Raise NStr("en='Insufficient rights to data synchronization.';ru='Недостаточно прав для синхронизации данных.'");
 		
 	ElsIf InfobaseUpdate.InfobaseUpdateRequired()
 	        AND Not DataExchangeServerCall.DataExchangeMessageImportModeBeforeStart("ImportAllowed") Then
 		
-		Raise NStr("en='Infobase is under maintenance..';ru='Информационная база находится в состоянии обновления.'");
+		Raise NStr("en='Infobase is being updated.';ru='Информационная база находится в состоянии обновления.'");
 		
 	EndIf;
 	
@@ -5749,7 +5747,7 @@ Procedure CheckExchangesAdministrationPossibility() Export
 	
 	If Not Users.RolesAvailable("DataSynchronizationSetting") Then
 		
-		Raise NStr("en='You have no rights to administer data synchronization.';ru='Недостаточно прав для администрирования синхронизации данных.'");
+		Raise NStr("en='Insufficient rights to administer data synchronization.';ru='Недостаточно прав для администрирования синхронизации данных.'");
 		
 	EndIf;
 	
@@ -5852,7 +5850,7 @@ Procedure FixEndExchange(ExchangeSettingsStructure) Export
 							ExchangeSettingsStructure.ExchangeProcessResult,
 							ExchangeSettingsStructure.ActionOnExchange);
 	Else
-		MessageString = NStr("en='%1% 2; Objects processed:% 3';ru='%1, %2; Объектов обработано: %3'", CommonUseClientServer.MainLanguageCode());
+		MessageString = NStr("en='%1, %2; Processed objects: %3';ru='%1, %2; Объектов обработано: %3'", CommonUseClientServer.MainLanguageCode());
 		MessageString = StringFunctionsClientServer.SubstituteParametersInString(MessageString,
 							ExchangeSettingsStructure.ExchangeProcessResult,
 							ExchangeSettingsStructure.ActionOnExchange,
@@ -5915,7 +5913,7 @@ EndProcedure
 // 
 Procedure WriteLogEventDataExchangeStart(ExchangeSettingsStructure) Export
 	
-	MessageString = NStr("en='The data exchange process beginning for node %1';ru='Начало процесса обмена данными для узла %1'", CommonUseClientServer.MainLanguageCode());
+	MessageString = NStr("en='Data exchange process start for node %1';ru='Начало процесса обмена данными для узла %1'", CommonUseClientServer.MainLanguageCode());
 	MessageString = StringFunctionsClientServer.SubstituteParametersInString(MessageString, ExchangeSettingsStructure.InfobaseNodeDescription);
 	WriteLogEventOfDataExchange(MessageString, ExchangeSettingsStructure);
 	
@@ -6044,7 +6042,7 @@ Function UnpackZIPFile(Val ArchiveFileFullName, Val FileUnpackPath, Val ArchiveP
 		
 	Except
 		
-		MessageString = NStr("en='Error when extracting the files of the archive: %1 to the folder: %2';ru='Ошибка при распаковке файлов архива: %1 в каталог: %2'");
+		MessageString = NStr("en='An error occurred when unpacking archive files %1 to directory: %2';ru='Ошибка при распаковке файлов архива: %1 в каталог: %2'");
 		MessageString = StringFunctionsClientServer.SubstituteParametersInString(MessageString, ArchiveFileFullName, FileUnpackPath);
 		CommonUseClientServer.MessageToUser(MessageString);
 		
@@ -6092,7 +6090,7 @@ Function PackIntoZipFile(Val ArchiveFileFullName, Val FilePackingMask, Val Archi
 		
 	Except
 		
-		MessageString = NStr("en='An error occurred while packing archive files: %1 from the directory: %2';ru='Ошибка при запаковке файлов архива: %1 из каталог: %2'");
+		MessageString = NStr("en='An error occurred when packing archive files: %1 from directory: %2';ru='Ошибка при запаковке файлов архива: %1 из каталог: %2'");
 		MessageString = StringFunctionsClientServer.SubstituteParametersInString(MessageString, ArchiveFileFullName, FilePackingMask);
 		CommonUseClientServer.MessageToUser(MessageString);
 		
@@ -6327,7 +6325,7 @@ EndFunction
 Function DataAreaNumberByExchangePlanNodeCode(Val NodeCode) Export
 	
 	If TypeOf(NodeCode) <> Type("String") Then
-		Raise NStr("en='Inccorect number parameter type [1].';ru='Неправильный тип параметра номер [1].'");
+		Raise NStr("en='Invalid type of parameter number [1].';ru='Неправильный тип параметра номер [1].'");
 	EndIf;
 	
 	Result = StrReplace(NodeCode, "S0", "");
@@ -6738,7 +6736,7 @@ Procedure ValidateRequiredFormAttributes(Form, Val Attributes)
 	
 	If MissingAttributes.Count() > 0 Then
 		
-		Raise StringFunctionsClientServer.SubstituteParametersInString(NStr("en='Mandatory attributes of node setting form are absent: %1';ru='Отсутствуют обязательные реквизиты формы настройки узла: %1'"),
+		Raise StringFunctionsClientServer.SubstituteParametersInString(NStr("en='No required attributes of node configuration form: %1';ru='Отсутствуют обязательные реквизиты формы настройки узла: %1'"),
 			StringFunctionsClientServer.RowFromArraySubrows(MissingAttributes)
 		);
 	EndIf;
@@ -6859,7 +6857,7 @@ Procedure ExternalConnectionRefreshExchangeSettingsData(Val ExchangePlanName, Va
 	InfobaseNode = ExchangePlans[ExchangePlanName].FindByCode(NodeCode);
 	
 	If Not ValueIsFilled(InfobaseNode) Then
-		Message = NStr("en='Exchange plan node is not found; %1 exchange plan name; %2 node code';ru='Не найден узел плана обмена; имя плана обмена %1; код узла %2'");
+		Message = NStr("en='Exchange plan node is not found; exchange plan name %1; node code %2';ru='Не найден узел плана обмена; имя плана обмена %1; код узла %2'");
 		Message = StringFunctionsClientServer.SubstituteParametersInString(Message, ExchangePlanName, NodeCode);
 		Raise Message;
 	EndIf;
@@ -7215,7 +7213,7 @@ Function SystemAccountingSettingsAreSet(Val ExchangePlanName, Val Correspondent,
 		Correspondent = ExchangePlans[ExchangePlanName].FindByCode(Correspondent);
 		
 		If Not ValueIsFilled(Correspondent) Then
-			Message = NStr("en='Exchange plan node is not found; %1 exchange plan name; %2 node code';ru='Не найден узел плана обмена; имя плана обмена %1; код узла %2'");
+			Message = NStr("en='Exchange plan node is not found; exchange plan name %1; node code %2';ru='Не найден узел плана обмена; имя плана обмена %1; код узла %2'");
 			Message = StringFunctionsClientServer.SubstituteParametersInString(Message, ExchangePlanName, CorrespondentCode);
 			Raise Message;
 		EndIf;
@@ -7764,13 +7762,13 @@ Procedure CheckConnectionOfExchangeMessagesTransportDataProcessor(Cancel, Settin
 		MessagePattern = "%1 %2";
 		//
 		
-		AdditionalMessage = NStr("en='Technical information about an error see in the event log.';ru='Техническую информацию об ошибке см. в журнале регистрации.'");
+		AdditionalMessage = NStr("en='See technical information on the error in the event log.';ru='Техническую информацию об ошибке см. в журнале регистрации.'");
 		
 		ErrorInfo = StringFunctionsClientServer.SubstituteParametersInString(MessagePattern, DataProcessorObject.ErrorMessageString, AdditionalMessage);
 		
 		CommonUseClientServer.MessageToUser(ErrorInfo,,,, Cancel);
 		
-		WriteLogEvent(NStr("en='The exchange messages transport';ru='Транспорт сообщений обмена'", CommonUseClientServer.MainLanguageCode()),
+		WriteLogEvent(NStr("en='Exchange message transport';ru='Транспорт сообщений обмена'", CommonUseClientServer.MainLanguageCode()),
 			EventLogLevel.Error,,, DataProcessorObject.ErrorMessageStringEL);
 		
 	EndIf;
@@ -7814,7 +7812,7 @@ Function InstallOuterDatabaseJoin(SettingsStructure) Export
 	EndTry;
 	
 	If NoFullRights Then
-		Result.DetailedErrorDescription = NStr("en='User specified for connection to another application should be assigned to the System administrator and Full rights roles';ru='Пользователю, указанному для подключения к другой программе, должны быть назначены роли ""Администратор системы"" и ""Полные права""'");
+		Result.DetailedErrorDescription = NStr("en='User specified for connection to another application should have been assigned roles ""System administrator"" and ""Full rights""';ru='Пользователю, указанному для подключения к другой программе, должны быть назначены роли ""Администратор системы"" и ""Полные права""'");
 		Result.ErrorShortInfo   = Result.DetailedErrorDescription;
 		Result.Join = Undefined;
 	Else
@@ -7825,7 +7823,7 @@ Function InstallOuterDatabaseJoin(SettingsStructure) Export
 		EndTry;
 		
 		If StateUnacceptable Then
-			Result.DetailedErrorDescription = NStr("en='Other application is located in the update state.';ru='Другая программа находится в состоянии обновления.'");
+			Result.DetailedErrorDescription = NStr("en='Another application is being updated.';ru='Другая программа находится в состоянии обновления.'");
 			Result.ErrorShortInfo   = Result.DetailedErrorDescription;
 			Result.Join = Undefined;
 		EndIf;
@@ -8036,7 +8034,7 @@ EndFunction
 // 
 Function IsConnectionToCorrespondent(Val Correspondent, Val SettingsStructure, UserMessage = "") Export
 	
-	EventLogMonitorEvent = NStr("en='Data exchange. Connection verification';ru='Обмен данными.Проверка подключения'", CommonUseClientServer.MainLanguageCode());
+	EventLogMonitorEvent = NStr("en='Data exchange.Connection check';ru='Обмен данными.Проверка подключения'", CommonUseClientServer.MainLanguageCode());
 	
 	Try
 		CorrespondentVersions = DataExchangeReUse.CorrespondentVersions(SettingsStructure);
@@ -8258,7 +8256,7 @@ Procedure ExecuteUpdateOfTypicalRulesVersionForDataExchange(Cancel, ImportedFrom
 			AND DataExchangeReUse.IsTemplateOfExchangePlan(ExchangePlanName, "CorrespondentExchangeRules") Then
 			
 			MessageText = StringFunctionsClientServer.SubstituteParametersInString(
-				NStr("en='Updates data conversion rules for the %1 exchange plan.';ru='Выполняется обновление правил конвертации данных для плана обмена %1'"), ExchangePlanName);
+				NStr("en='Updating data conversion rules for exchange plan %1';ru='Выполняется обновление правил конвертации данных для плана обмена %1'"), ExchangePlanName);
 			WriteLogEvent(EventLogMonitorMessageTextDataExchange(),
 				EventLogLevel.Information,,, MessageText);
 			
@@ -8271,7 +8269,7 @@ Procedure ExecuteUpdateOfTypicalRulesVersionForDataExchange(Cancel, ImportedFrom
 			AND DataExchangeReUse.IsTemplateOfExchangePlan(ExchangePlanName, "RegistrationRules") Then
 			
 			MessageText = StringFunctionsClientServer.SubstituteParametersInString(
-				NStr("en='Data registration rules for %1 exchange plan are updated';ru='Выполняется обновление правил регистрации данных для плана обмена %1'"), ExchangePlanName);
+				NStr("en='Updating data registration rules for exchange plan %1';ru='Выполняется обновление правил регистрации данных для плана обмена %1'"), ExchangePlanName);
 			WriteLogEvent(EventLogMonitorMessageTextDataExchange(),
 				EventLogLevel.Information,,, MessageText);
 				
@@ -8364,7 +8362,7 @@ Function ExchangeMessageSizeExceedsValidSize(Val FileName, Val MaximumValidMessa
 			
 			If PackageSize > MaximumValidMessageSize Then
 				
-				MessageString = NStr("en='The outgoing package size is equal to %1 KB that exceeds the permitted size of %2 KB.';ru='Размер исходящего пакета составил %1 Кбайт, что превышает допустимое ограничение %2 Кбайт.'");
+				MessageString = NStr("en='Outgoing package size is %1 KB and exceeds allowable limit of %2 KB.';ru='Размер исходящего пакета составил %1 Кбайт, что превышает допустимое ограничение %2 Кбайт.'");
 				MessageString = StringFunctionsClientServer.SubstituteParametersInString(MessageString, String(PackageSize), String(MaximumValidMessageSize));
 				ShowMessageAboutError(MessageString, Result);
 				
@@ -8497,7 +8495,7 @@ Procedure ImportMessageBeforeInformationBaseUpdating() Export
 				EndIf;
 				
 				If Cancel Then
-					Raise NStr("en='Data receipt out of the main node has completed with errors.';ru='Получение данных из главного узла завершилось с ошибками.'");
+					Raise NStr("en='Receiving data from the main node is completed with errors.';ru='Получение данных из главного узла завершилось с ошибками.'");
 				EndIf;
 			Except
 				SetPrivilegedMode(True);
@@ -9139,8 +9137,8 @@ Procedure RunControlRecordsUndividedData(Val Data) Export
 		AND CommonUseReUse.CanUseSeparatedData()
 		AND Not IsDividedObject(Data) Then
 		
-		ExceptionsRepresentation = NStr("en='Access violation!';ru='Нарушение прав доступа!'");
-		ErrorMessage = NStr("en='Access violation!';ru='Нарушение прав доступа!'", CommonUseClientServer.MainLanguageCode());
+		ExceptionsRepresentation = NStr("en='Access right violation';ru='Нарушение прав доступа!'");
+		ErrorMessage = NStr("en='Access right violation';ru='Нарушение прав доступа!'", CommonUseClientServer.MainLanguageCode());
 		
 		WriteLogEvent(
 			ErrorMessage,
@@ -9854,7 +9852,7 @@ Procedure RunInitOfExchangeSettingsStructure(ExchangeSettingsStructure, Exchange
 	
 	ExchangeSettingsStructure.IsDIBExchange = DataExchangeReUse.ThisIsDistributedInformationBaseNode(ExchangeSettingsStructure.InfobaseNode);
 	
-	ExchangeSettingsStructure.EventLogMonitorMessageKey = NStr("en='Data exchange';ru='Обмен данными описание'");
+	ExchangeSettingsStructure.EventLogMonitorMessageKey = NStr("en='Data exchange description';ru='Обмен данными описание'");
 	
 	// Check whether main fields of exchange settings structure are specified.
 	RunCheckOfMainFieldsOfExchangeSettingsStructure(ExchangeSettingsStructure);
@@ -10016,14 +10014,14 @@ Procedure RunCheckOfMainFieldsOfExchangeSettingsStructure(ExchangeSettingsStruct
 	If Not ValueIsFilled(ExchangeSettingsStructure.InfobaseNode) Then
 		
 		// Infobase node should not be empty.
-		ErrorMessageString = NStr("en='Infobase node with which it is necessary to exchange information is not specified. The exchange has been canceled.';ru='Не задан узел информационной базы с которым нужно производить обмен информацией. Обмен отменен.'",
+		ErrorMessageString = NStr("en='Infobase node with which information shall be exchanged is not specified. Exchange is canceled.';ru='Не задан узел информационной базы с которым нужно производить обмен информацией. Обмен отменен.'",
 			CommonUseClientServer.MainLanguageCode());
 		WriteLogEventOfDataExchange(ErrorMessageString, ExchangeSettingsStructure, True);
 		SetExchangeInitEnd(ExchangeSettingsStructure);
 		
 	ElsIf Not ValueIsFilled(ExchangeSettingsStructure.ExchangeTransportKind) Then
 		
-		ErrorMessageString = NStr("en='Exchange transport kind is not specified. The exchange has been canceled.';ru='Не задан вид транспорта обмена. Обмен отменен.'",
+		ErrorMessageString = NStr("en='Exchange transport kind is not specified. Exchange is canceled.';ru='Не задан вид транспорта обмена. Обмен отменен.'",
 			CommonUseClientServer.MainLanguageCode());
 		WriteLogEventOfDataExchange(ErrorMessageString, ExchangeSettingsStructure, True);
 		
@@ -10031,7 +10029,7 @@ Procedure RunCheckOfMainFieldsOfExchangeSettingsStructure(ExchangeSettingsStruct
 		
 	ElsIf Not ValueIsFilled(ExchangeSettingsStructure.ActionOnExchange) Then
 		
-		ErrorMessageString = NStr("en='Executed action is not specified (export / import). The exchange has been canceled.';ru='Не указано выполняемое действие (выгрузка / загрузка). Обмен отменен.'",
+		ErrorMessageString = NStr("en='Executed action (export/ import) is not specified. Exchange is canceled.';ru='Не указано выполняемое действие (выгрузка / загрузка). Обмен отменен.'",
 			CommonUseClientServer.MainLanguageCode());
 		WriteLogEventOfDataExchange(ErrorMessageString, ExchangeSettingsStructure, True);
 		
@@ -10048,14 +10046,14 @@ Procedure RunExchangeStructureValidityCheck(ExchangeSettingsStructure, UseTransp
 	If Not ValueIsFilled(ExchangeSettingsStructure.InfobaseNode) Then
 		
 		// Infobase node should not be empty.
-		ErrorMessageString = NStr("en='Infobase node with which it is necessary to exchange information is not specified. The exchange has been canceled.';ru='Не задан узел информационной базы с которым нужно производить обмен информацией. Обмен отменен.'",
+		ErrorMessageString = NStr("en='Infobase node with which information shall be exchanged is not specified. Exchange is canceled.';ru='Не задан узел информационной базы с которым нужно производить обмен информацией. Обмен отменен.'",
 			CommonUseClientServer.MainLanguageCode());
 		WriteLogEventOfDataExchange(ErrorMessageString, ExchangeSettingsStructure, True);
 		SetExchangeInitEnd(ExchangeSettingsStructure);
 		
 	ElsIf UseTransportSettings AND Not ValueIsFilled(ExchangeSettingsStructure.ExchangeTransportKind) Then
 		
-		ErrorMessageString = NStr("en='Exchange transport kind is not specified. The exchange has been canceled.';ru='Не задан вид транспорта обмена. Обмен отменен.'",
+		ErrorMessageString = NStr("en='Exchange transport kind is not specified. Exchange is canceled.';ru='Не задан вид транспорта обмена. Обмен отменен.'",
 			CommonUseClientServer.MainLanguageCode());
 		WriteLogEventOfDataExchange(ErrorMessageString, ExchangeSettingsStructure, True);
 		
@@ -10063,7 +10061,7 @@ Procedure RunExchangeStructureValidityCheck(ExchangeSettingsStructure, UseTransp
 		
 	ElsIf Not ValueIsFilled(ExchangeSettingsStructure.ActionOnExchange) Then
 		
-		ErrorMessageString = NStr("en='Executed action is not specified (export / import). The exchange has been canceled.';ru='Не указано выполняемое действие (выгрузка / загрузка). Обмен отменен.'",
+		ErrorMessageString = NStr("en='Executed action (export/ import) is not specified. Exchange is canceled.';ru='Не указано выполняемое действие (выгрузка / загрузка). Обмен отменен.'",
 			CommonUseClientServer.MainLanguageCode());
 		WriteLogEventOfDataExchange(ErrorMessageString, ExchangeSettingsStructure, True);
 		
@@ -10072,7 +10070,7 @@ Procedure RunExchangeStructureValidityCheck(ExchangeSettingsStructure, UseTransp
 	ElsIf ExchangeSettingsStructure.InfobaseNode.DeletionMark Then
 		
 		// Infobase node should not be marked for deletion.
-		ErrorMessageString = NStr("en='Infobase node is marked for deletion. The exchange has been canceled.';ru='Узел информационной базы помечен на удаление. Обмен отменен.'",
+		ErrorMessageString = NStr("en='Infobase node is marked for deletion. Exchange is canceled.';ru='Узел информационной базы помечен на удаление. Обмен отменен.'",
 			CommonUseClientServer.MainLanguageCode());
 		WriteLogEventOfDataExchange(ErrorMessageString, ExchangeSettingsStructure, True);
 		
@@ -10091,7 +10089,7 @@ Procedure RunExchangeStructureValidityCheck(ExchangeSettingsStructure, UseTransp
 		  OR IsBlankString(ExchangeSettingsStructure.CurrentExchangePlanNodeCode) Then
 		
 		// Nodes participating in the exchange should not have an empty code.
-		ErrorMessageString = NStr("en='One of the exchange nodes has an empty code. The exchange has been canceled.';ru='Один из узлов обмена имеет пустой код. Обмен отменен.'",
+		ErrorMessageString = NStr("en='One of exchange nodes has an empty code. Exchange is canceled.';ru='Один из узлов обмена имеет пустой код. Обмен отменен.'",
 			CommonUseClientServer.MainLanguageCode());
 		WriteLogEventOfDataExchange(ErrorMessageString, ExchangeSettingsStructure, True);
 		
@@ -10103,7 +10101,7 @@ Procedure RunExchangeStructureValidityCheck(ExchangeSettingsStructure, UseTransp
 		
 		If Not ExportDataProcessorFile.Exist() Then
 			
-			ErrorMessageString = NStr("en='Extenal processor file for export debugging does not exist. The exchange has been canceled.';ru='Файл внешней обработки для отладки выгрузки не существует. Обмен отменен.'",
+			ErrorMessageString = NStr("en='External data processor file for export debugging does not exist. Exchange is canceled.';ru='Файл внешней обработки для отладки выгрузки не существует. Обмен отменен.'",
 				CommonUseClientServer.MainLanguageCode());
 			WriteLogEventOfDataExchange(ErrorMessageString, ExchangeSettingsStructure, True);
 			
@@ -10117,7 +10115,7 @@ Procedure RunExchangeStructureValidityCheck(ExchangeSettingsStructure, UseTransp
 		
 		If Not ImportDataProcessorFile.Exist() Then
 			
-			ErrorMessageString = NStr("en='Extenal processor file for import debugging does not exist. The exchange has been canceled.';ru='Файл внешней обработки для отладки загрузки не существует. Обмен отменен.'",
+			ErrorMessageString = NStr("en='External data processor file for import debugging does not exist. Exchange is canceled.';ru='Файл внешней обработки для отладки загрузки не существует. Обмен отменен.'",
 				CommonUseClientServer.MainLanguageCode());
 			WriteLogEventOfDataExchange(ErrorMessageString, ExchangeSettingsStructure, True);
 			
@@ -10279,7 +10277,7 @@ Procedure SetExchangeRulesOfDataDump(DataExchangeXMLDataProcessor, ExchangeSetti
 	If ObjectConversionRules = Undefined Then
 		
 		// Exchange rules should be specified.
-		NString = NStr("en='Conversion rules for the exchange plan are not specified %1. Data exporting has been cancelled.';ru='Не заданы правила конвертации для плана обмена %1. Выгрузка данных отменена.'",
+		NString = NStr("en='Conversion rules are not specified for exchange plan %1. Data export is canceled.';ru='Не заданы правила конвертации для плана обмена %1. Выгрузка данных отменена.'",
 			CommonUseClientServer.MainLanguageCode());
 		ErrorMessageString = StringFunctionsClientServer.SubstituteParametersInString(NString, ExchangeSettingsStructure.ExchangePlanName);
 		WriteLogEventOfDataExchange(ErrorMessageString, ExchangeSettingsStructure, True);
@@ -10307,7 +10305,7 @@ Procedure SetDataImportExchangeRules(DataExchangeXMLDataProcessor, ExchangeSetti
 	If ObjectConversionRules = Undefined Then
 		
 		// Exchange rules should be specified.
-		NString = NStr("en='Conversion rules for the exchange plan are not specified %1. Data import is cancelled.';ru='Не заданы правила конвертации для плана обмена %1. Загрузка данных отменена.'",
+		NString = NStr("en='Conversion rules are not specified for exchange plan %1. Data import is canceled.';ru='Не заданы правила конвертации для плана обмена %1. Загрузка данных отменена.'",
 			CommonUseClientServer.MainLanguageCode());
 		ErrorMessageString = StringFunctionsClientServer.SubstituteParametersInString(NString, ExchangeSettingsStructure.ExchangePlanName);
 		WriteLogEventOfDataExchange(ErrorMessageString, ExchangeSettingsStructure, True);
@@ -10648,8 +10646,7 @@ Procedure RegisterErrorDocument(Object, ExchangeNode, ErrorMessage) Export
 		
 	EndIf;
 	
-	MessageString = NStr("en='Unable to post %1 document received from another infobase.%2
-		|All attriutes mandatory for filling are not filled in.';ru='Не удалось провести документ %1, полученный из другой информационной базы.%2 Возможно не заполнены все реквизиты, обязательные к заполнению.'",
+	MessageString = NStr("en='Cannot post document %1 received from another infobase.%2 Maybe not all required attributes are filled in.';ru='Не удалось провести документ %1, полученный из другой информационной базы.%2 Возможно не заполнены все реквизиты, обязательные к заполнению.'",
 		CommonUseClientServer.MainLanguageCode());
 	MessageString = StringFunctionsClientServer.SubstituteParametersInString(MessageString, String(Object), CauseErrors);
 	
@@ -10710,8 +10707,7 @@ Procedure RegisterErrorRecordsObject(Object, ExchangeNode, ErrorMessage) Export
 		
 	EndIf;
 	
-	MessageString = NStr("en='Unable to write %1 object received from another infobase.%2
-		|All attriutes mandatory for filling are not filled in.';ru='Не удалось записать объект %1, полученный из другой информационной базы.%2 Возможно не заполнены все реквизиты, обязательные к заполнению.'",
+	MessageString = NStr("en='Cannot write object %1 received from another infobase. %2 Maybe not all required attributes are filled in.';ru='Не удалось записать объект %1, полученный из другой информационной базы.%2 Возможно не заполнены все реквизиты, обязательные к заполнению.'",
 		CommonUseClientServer.MainLanguageCode());
 	MessageString = StringFunctionsClientServer.SubstituteParametersInString(MessageString, String(Object), CauseErrors);
 	
@@ -10789,7 +10785,7 @@ EndProcedure
 Function SynchronizationDatePresentation(Val SynchronizationDate) Export
 	
 	If Not ValueIsFilled(SynchronizationDate) Then
-		Return NStr("en='Synchronization was not performed.';ru='Синхронизация не выполнялась.'");
+		Return NStr("en='Synchronization has never been performed.';ru='Синхронизация не выполнялась.'");
 	EndIf;
 	
 	Return StringFunctionsClientServer.SubstituteParametersInString(NStr("en='Last synchronization: %1';ru='Последняя синхронизация: %1'"),
@@ -10867,7 +10863,7 @@ Function RelativeSynchronizationDate(Val SynchronizationDate) Export
 			
 		ElsIf DaysNumberDifference = 2 Then // day before yesterday
 			
-			Result = StringFunctionsClientServer.SubstituteParametersInString(NStr("en='The day before yesterday, %1';ru='Позавчера, %1'"), Format(SynchronizationDate, "DLF=T"));
+			Result = StringFunctionsClientServer.SubstituteParametersInString(NStr("en='Day before yesterday, %1';ru='Позавчера, %1'"), Format(SynchronizationDate, "DLF=T"));
 			
 		Else // long ago
 			
@@ -10948,7 +10944,7 @@ Function CorrespondentVersionsDiffer(ExchangePlanName, EventLogMonitorMessageKey
 			
 			ExchangePlanSynonym = Metadata.ExchangePlans[ExchangePlanName].Synonym;
 			
-			MessagePattern = NStr("en='Data synchronization can be complete incorrectly as version of the %1 application (%2)in the conversion rules of this application differs from %3 version in the conversion rules in another application. Make sure that the relevant rules suitable for the used versions of both applications are imported.';ru='Синхронизация данных может быть выполнена некорректно, т.к. версия программы ""%1"" (%2) в правилах конвертации этой программы отличается от версии %3 в правилах конвертации в другой программе. Убедитесь, что загружены актуальные правила, подходящие для используемых версий обеих программ.'");
+			MessagePattern = NStr("en='Data may be synced incorrectly because version of application ""%1"" (%2) is different from the version %3 specified in conversion rules of another application. Make sure that you imported the rules relevant for both applications.';ru='Синхронизация данных может быть выполнена некорректно, т.к. версия программы ""%1"" (%2) в правилах конвертации этой программы отличается от версии %3 в правилах конвертации в другой программе. Убедитесь, что загружены актуальные правила, подходящие для используемых версий обеих программ.'");
 			MessageText = StringFunctionsClientServer.SubstituteParametersInString(MessagePattern, ExchangePlanSynonym, VersionInThisApplicationWithoutBuildNumber, VersionInAnotherApplicationWithoutBuildNumber);
 			
 			WriteLogEvent(EventLogMonitorMessageKey, EventLogLevel.Warning,,, MessageText);
@@ -11119,7 +11115,7 @@ EndFunction
 // 
 Function EventLogMonitorMessageTextEstablishingConnectionToWebService() Export
 	
-	Return NStr("en='Data exchange. Installation of connection to the web service';ru='Обмен данными.Установка подключения к web-сервису'", CommonUseClientServer.MainLanguageCode());
+	Return NStr("en='Data exchange.Connecting to web service';ru='Обмен данными.Установка подключения к web-сервису'", CommonUseClientServer.MainLanguageCode());
 	
 EndFunction
 
@@ -11127,7 +11123,7 @@ EndFunction
 // 
 Function DataExchangeRuleImportingEventLogMonitorMessageText() Export
 	
-	Return NStr("en='Data exchange. Rules import';ru='Обмен данными.Загрузка правил'", CommonUseClientServer.MainLanguageCode());
+	Return NStr("en='Data exchange.Rule import';ru='Обмен данными.Загрузка правил'", CommonUseClientServer.MainLanguageCode());
 	
 EndFunction
 
@@ -11135,7 +11131,7 @@ EndFunction
 // 
 Function DataExchangeCreationEventLogMonitorMessageText() Export
 	
-	Return NStr("en='Data exchange. Data exchange creating';ru='Обмен данными.Создание обмена данными'", CommonUseClientServer.MainLanguageCode());
+	Return NStr("en='Data exchang.Creating data exchange';ru='Обмен данными.Создание обмена данными'", CommonUseClientServer.MainLanguageCode());
 	
 EndFunction
 
@@ -11143,7 +11139,7 @@ EndFunction
 // 
 Function EventLogMonitorMessageTextRemovingTemporaryFile() Export
 	
-	Return NStr("en='Data exchange. Temp file deletion';ru='Обмен данными.Удаление временного файла'", CommonUseClientServer.MainLanguageCode());
+	Return NStr("en='Data exchange.Removing temporary file';ru='Обмен данными.Удаление временного файла'", CommonUseClientServer.MainLanguageCode());
 	
 EndFunction
 
@@ -11151,7 +11147,7 @@ EndFunction
 // 
 Function EventLogMonitorMessageTextDataExchange() Export
 	
-	Return NStr("en='Data exchange';ru='Обмен данными описание'", CommonUseClientServer.MainLanguageCode());
+	Return NStr("en='Data exchange description';ru='Обмен данными описание'", CommonUseClientServer.MainLanguageCode());
 	
 EndFunction
 
@@ -11365,7 +11361,7 @@ Procedure SetDataExchangeMessageFromMainNode(ExchangeMessage, MasterNode) Export
 	
 	Constants.DataExchangeMessageFromMainNode.Set(New ValueStorage(MessageStructure));
 	
-	WriteEventGetData(MasterNode, NStr("en='Exchange message was recorded to cache.';ru='Сообщение обмена записано в кэш.'"));
+	WriteEventGetData(MasterNode, NStr("en='The exchange message was written to cache.';ru='Сообщение обмена записано в кэш.'"));
 	
 EndProcedure
 
@@ -11383,7 +11379,7 @@ Procedure ClearDataExchangeMessageFromMainNode() Export
 	
 	Constants.DataExchangeMessageFromMainNode.Set(New ValueStorage(Undefined));
 	
-	WriteEventGetData(MasterNode(), NStr("en='Exchange message is deleted from cache.';ru='Сообщение обмена удалено из кэша.'"));
+	WriteEventGetData(MasterNode(), NStr("en='The exchange message was deleted from cache.';ru='Сообщение обмена удалено из кэша.'"));
 	
 EndProcedure
 
@@ -11498,7 +11494,7 @@ Function ExternalModuleContainerDictionary() Export
 	
 	Result = New Structure();
 	
-	Result.Insert("Nominative", NStr("en='Data synchronization setup';ru='Настройка синхронизация данных'"));
+	Result.Insert("Nominative", NStr("en='Configure data synchronization';ru='Настройка синхронизация данных'"));
 	Result.Insert("Genitive", NStr("en='Data synchronization settings';ru='Настройки синхронизации данных'"));
 	
 	Return Result;
@@ -11561,22 +11557,22 @@ Function InteractiveExportChange(Val InfobaseNode, Val AddressOfFormStore, Val I
 	
 	ScriptParametersAdditions.Insert("VariantNoneAdds", New Structure("Use, Order, Title", True, 1));
 	ScriptParametersAdditions.VariantNoneAdds.Insert("Explanation", 
-		NStr("en='Will be sent only the data according to the common settings.';ru='Будут отправлены только данные согласно общим настройкам.'")
+		NStr("en='Only data according to general settings will be sent.';ru='Будут отправлены только данные согласно общим настройкам.'")
 	); 
 	
 	ScriptParametersAdditions.Insert("VariantAllDocuments", New Structure("Use, Order, Title", True, 2));
 	ScriptParametersAdditions.VariantAllDocuments.Insert("Explanation",
-		NStr("en='Additionally will be sent all the documents for the period meeting the filter terms.';ru='Дополнительно будут отправлены все документы за период, удовлетворяющие условиям отбора.'")
+		NStr("en='All the period documents which satisfy the filter conditions will be sent additionally.';ru='Дополнительно будут отправлены все документы за период, удовлетворяющие условиям отбора.'")
 	); 
 	
 	ScriptParametersAdditions.Insert("VariantArbitraryFilter", New Structure("Use, Order, Title", True, 3));
 	ScriptParametersAdditions.VariantArbitraryFilter.Insert("Explanation",
-		NStr("en='Additionally will be sent the data according to the filter.';ru='Дополнительно будут отправлены данные согласно отбору.'")
+		NStr("en='Data will be sent additionally according to the filter.';ru='Дополнительно будут отправлены данные согласно отбору.'")
 	); 
 	
 	ScriptParametersAdditions.Insert("VariantAdditionally", New Structure("Use, Order, Title", False,   4));
 	ScriptParametersAdditions.VariantAdditionally.Insert("Explanation",
-		NStr("en='Additional data by the settings will be sent.';ru='Будут отправлены дополнительные данные по настройкам.'")
+		NStr("en='Additional data on settings will be sent.';ru='Будут отправлены дополнительные данные по настройкам.'")
 	); 
 	
 	VariantAdditionally = ScriptParametersAdditions.VariantAdditionally;
@@ -11918,7 +11914,7 @@ Function PresentationDetailedAdditionOfExport(Val AdditionalRegistration, Val De
 		Return TrimAll(Text);
 		
 	ElsIf DetailsOfEmptySelection=Undefined Then
-		Return NStr("en='Additional data have not been selected';ru='Дополнительные данные не выбраны'");
+		Return NStr("en='Additional data is not selected';ru='Дополнительные данные не выбраны'");
 		
 	EndIf;
 	
@@ -11942,7 +11938,7 @@ EndFunction
 // Name for the saving and restoration settings during the online addition of export.
 //
 Function ExportAdditionNameAutoSaveSettings() Export
-	Return NStr("en='Last sending (saved automatically)';ru='Последняя отправка (сохраняется автоматически)'");
+	Return NStr("en='Last sent (saved automatically)';ru='Последняя отправка (сохраняется автоматически)'");
 EndFunction
 
 // Additionally registers objects by settings.
@@ -12098,7 +12094,7 @@ Procedure OnFillingToDoListForSynchronizationWarning(CurrentWorks)
 		Work = CurrentWorks.Add();
 		Work.ID  = AlertOnSynchronizationIdentifier;
 		Work.ThereIsWork       = CountOfPendingProblems > 0;
-		Work.Presentation  = NStr("en='Alert on synchronization';ru='Предупреждения при синхронизации'");
+		Work.Presentation  = NStr("en='Synchronization warnings';ru='Предупреждения при синхронизации'");
 		Work.Quantity     = CountOfPendingProblems;
 		Work.Form          = "InformationRegister.DataExchangeResults.Form.Form";
 		Work.Owner       = Section;
@@ -12149,7 +12145,7 @@ Procedure OnFillingToDoListUpdateRequired(CurrentWorks)
 		Work.ID  = IdentifierUpdateRequired;
 		Work.ThereIsWork       = UpdateSettingRequired;
 		Work.Important         = True;
-		Work.Presentation  = NStr("en='Update the application version';ru='Обновить версию программы'");
+		Work.Presentation  = NStr("en='Update application version';ru='Обновить версию программы'");
 		If CommonUse.SubsystemExists("StandardSubsystems.ConfigurationUpdate") Then
 			ModuleConfigurationUpdateClientServer = CommonUse.CommonModule("ConfigurationUpdateClientServer");
 			FormParameters = New Structure("SystemWorkEnd, ConfigurationUpdateReceived", False, False);
@@ -12158,7 +12154,7 @@ Procedure OnFillingToDoListUpdateRequired(CurrentWorks)
 		Else
 			Work.Form      = "CommonForm.AdditionalDetails";
 			Work.FormParameters = New Structure("Title,TemplateName",
-				NStr("en='Setting update';ru='Установка обновления'"), "InstructionHowToInstallUpdateManually");
+				NStr("en='Install update';ru='Установка обновления'"), "InstructionHowToInstallUpdateManually");
 		EndIf;
 		Work.Owner       = Section;
 		

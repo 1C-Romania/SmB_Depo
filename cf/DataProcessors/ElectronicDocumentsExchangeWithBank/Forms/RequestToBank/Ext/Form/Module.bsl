@@ -34,7 +34,7 @@ Procedure OnCreateAtServer(Cancel, StandardProcessing)
 	EndIf;
 		
 	If ValueIsFilled(Parameters.ElectronicDocument) Then
-		Title = NStr("en='ED query status';ru='Запрос состояния ЭД'");
+		Title = NStr("en='ED state query';ru='Запрос состояния ЭД'");
 	EndIf;
 		
 	PerformCryptoOperationsAtServer = ElectronicDocumentsServiceCallServer.PerformCryptoOperationsAtServer();
@@ -145,7 +145,7 @@ Function SendStatementQueryOnServer(Val QueryParameters, StorageAddress, UUID, J
 	
 	JobCompleted = False;
 		
-	JobDescription = NStr("en='Sending statement query to the bank';ru='Отправка запроса выписки в банк'");
+	JobDescription = NStr("en='Sending a statement request to the bank';ru='Отправка запроса выписки в банк'");
 	ExecuteParameters = New Array;
 	ExecuteParameters.Add(QueryParameters);
 	ExecuteParameters.Add(StorageAddress);
@@ -180,7 +180,7 @@ Function SendEDStateQueryOnServer(Val QueryParameters, StorageAddress, UUID, Job
 	
 	JobCompleted = False;
 		
-	JobDescription = NStr("en='Sending ED state query to the bank';ru='Отправка запроса состояния ЭД в банк'");
+	JobDescription = NStr("en='Sending ED state request to the bank';ru='Отправка запроса состояния ЭД в банк'");
 	ExecuteParameters = New Array;
 	ExecuteParameters.Add(QueryParameters);
 	ExecuteParameters.Add(StorageAddress);
@@ -291,7 +291,7 @@ Procedure ProcessStatementQueryResult()
 	EndIf;
 	
 	NotificationTitle = NStr("en='Electronic document exchange';ru='Обмен электронными документами'");
-	NotificationText = NStr("en='The sent packages are not present';ru='Отправленных пакетов нет'");
+	NotificationText = NStr("en='No sent packages';ru='Отправленных пакетов нет'");
 	
 	If SentCnt > 0 Then
 		NotificationText = NStr("en='Documents sent: (%1)';ru='Отправлено документов: (%1)'");
@@ -346,7 +346,7 @@ Procedure ProcessEDStateQueryResult()
 	EndIf;
 	
 	NotificationTitle = NStr("en='Electronic document exchange';ru='Обмен электронными документами'");
-	NotificationText = NStr("en='The sent packages are not present';ru='Отправленных пакетов нет'");
+	NotificationText = NStr("en='No sent packages';ru='Отправленных пакетов нет'");
 	
 	If SentCnt > 0 Then
 		NotificationText = NStr("en='Documents sent: (%1)';ru='Отправлено документов: (%1)'");
@@ -378,7 +378,7 @@ Function GetStatementAsynchronouslyOnServer(Val QueryParameters, StorageAddress,
 	
 	JobCompleted = False;
 		
-	JobDescription = NStr("en='Getting statement from the bank';ru='Получение выписки из банка'");
+	JobDescription = NStr("en='Receive statement from the bank';ru='Получение выписки из банка'");
 	ExecuteParameters = New Array;
 	ExecuteParameters.Add(QueryParameters);
 	ExecuteParameters.Add(StorageAddress);
@@ -413,7 +413,7 @@ Function GetNotificationOnEDStateAsynchronouslyOnServer(Val QueryParameters, Sto
 	
 	JobCompleted = False;
 		
-	JobDescription = NStr("en='Getting notifications about ED state';ru='Получение извещения о состоянии ЭД'");
+	JobDescription = NStr("en='Receive notification of ED state';ru='Получение извещения о состоянии ЭД'");
 	ExecuteParameters = New Array;
 	ExecuteParameters.Add(QueryParameters);
 	ExecuteParameters.Add(StorageAddress);
@@ -632,7 +632,7 @@ Procedure GetStatementThroughAdditionalDataProcessor()
 	BankStatementParameters = New Structure;
 	StartDateString    = Format(Parameters.StartDate,    "DLF=D");
 	EndDateString = Format(Parameters.EndDate, "DLF=D");
-	EDName = NStr("en='Bank statement for period from 1% to %2';ru='Выписка банка за период с %1 по %2'");
+	EDName = NStr("en='Bank statement for the period from 1% to %2';ru='Выписка банка за период с %1 по %2'");
 	EDName = StringFunctionsClientServer.SubstituteParametersInString(
 						EDName, StartDateString, EndDateString);
 	ReceivedNumber = 0;
@@ -752,7 +752,7 @@ Procedure GetBankStatementiBank2() Export
 	BankStatementParameters = New Structure;
 	StartDateString = Format(Parameters.StartDate, "DLF=D");
 	EndDateString = Format(Parameters.EndDate, "DLF=D");
-	EDName = NStr("en='Bank statement for period from 1% to %2';ru='Выписка банка за период с %1 по %2'");
+	EDName = NStr("en='Bank statement for the period from 1% to %2';ru='Выписка банка за период с %1 по %2'");
 	EDName = StringFunctionsClientServer.SubstituteParametersInString(
 						EDName, StartDateString, EndDateString);
 	ReceivedNumber = 0;

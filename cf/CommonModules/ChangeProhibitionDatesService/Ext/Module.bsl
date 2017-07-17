@@ -302,7 +302,7 @@ Procedure RecalculateCurrentValuesOfRelativeProhibitionDates(WriteResultDescript
 	EndDo;
 	
 	If ThereAreNoRelativeDates Then
-		ResultDescription = NStr("en='Relative prohibition dates are not specified.';ru='Относительные даты запрета не заданы.'");
+		ResultDescription = NStr("en='Relative closing dates are not specified.';ru='Относительные даты запрета не заданы.'");
 		
 	ElsIf Cancel Then
 		If AreUpdatedDates Then
@@ -320,16 +320,16 @@ Procedure RecalculateCurrentValuesOfRelativeProhibitionDates(WriteResultDescript
 	Else
 		If AreUpdatedDates Then
 			ResultDescription =
-				NStr("en='Current values related to prohibition dates recalculed succesfully.';ru='Успешно пересчитаны текущие значения относительных дат запрета.'");
+				NStr("en='Current values of relative closing dates are recalculated.';ru='Успешно пересчитаны текущие значения относительных дат запрета.'");
 		Else
 			ResultDescription =
-				NStr("en='Current values related to prohibition dates have been already recalculated today.';ru='Сегодня уже пересчитаны текущие значения относительных дат запрета.'");
+				NStr("en='Current values of relative closing dates were already recalculated today.';ru='Сегодня уже пересчитаны текущие значения относительных дат запрета.'");
 		EndIf;
 	EndIf;
 	
 	If WriteResultDescriptionToEventLogMonitor Then
 		WriteLogEvent(
-			NStr("en='Change prohibition dates.Related dates recalculation';ru='Даты запрета изменения.Пересчет относительных дат'",
+			NStr("en='Change closing dates.Relative date recalculation';ru='Даты запрета изменения.Пересчет относительных дат'",
 			     CommonUseClientServer.MainLanguageCode()),
 			?(Cancel, EventLogLevel.Error, EventLogLevel.Information),
 			,
@@ -862,9 +862,7 @@ Procedure AddField(MetadataObject,
 	Fields = StringFunctionsClientServer.DecomposeStringIntoSubstringsArray(Field, ".");
 	If Fields.Count() = 0 Then
 		Raise(StringFunctionsClientServer.SubstituteParametersInString(
-			NStr("en='The %2 is not
-		|specified in the data source for
-		|table ""%1"" for changing prohibition check.';ru='Для проверки запрета изменения в источнике данных для таблицы ""%1"" не задано %2.'"),
+			NStr("en='The %2 is not specified to check prohibition change in the data source for table ""%1"".';ru='Для проверки запрета изменения в источнике данных для таблицы ""%1"" не задано %2.'"),
 			Table,
 			FieldTypeForMessages));
 		

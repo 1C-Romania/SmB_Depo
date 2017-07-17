@@ -12,7 +12,7 @@ Procedure OnCreateAtServer(Cancel, StandardProcessing)
 	
 	If Parameters.Node = Manager.ThisNode() Then
 		Raise
-			NStr("en='You can not create the initial image for the node.';ru='Создание начального образа для данного узла невозможно.'");
+			NStr("en='Cannot create initial image for this node.';ru='Создание начального образа для данного узла невозможно.'");
 	Else
 		BaseKind = 0; // File info base
 		TypeDBMS = "";
@@ -60,7 +60,7 @@ Procedure OnCreateAtServer(Cancel, StandardProcessing)
 	EndIf;
 	
 	If Not StandardSubsystemsServerCall.ClientWorkParameters().FileInfobase Then
-		Items.PathToArchiveWithVolumeFiles.InputHint = NStr("en='\\name server\resource\files.zip';ru='\\имя сервера\resource\files.zip'");
+		Items.PathToArchiveWithVolumeFiles.InputHint = NStr("en='\\server name\resource\files.zip';ru='\\имя сервера\resource\files.zip'");
 		Items.PathToArchiveWithVolumeFiles.ChoiceButton = False;
 	EndIf;
 	
@@ -81,7 +81,7 @@ Procedure BaseKindOnChange(Item)
 		Items.PathToArchiveWithVolumeFiles.InputHint = "";
 		Items.PathToArchiveWithVolumeFiles.ChoiceButton = True;
 	Else
-		Items.PathToArchiveWithVolumeFiles.InputHint = NStr("en='\\name server\resource\files.zip';ru='\\имя сервера\resource\files.zip'");
+		Items.PathToArchiveWithVolumeFiles.InputHint = NStr("en='\\server name\resource\files.zip';ru='\\имя сервера\resource\files.zip'");
 		Items.PathToArchiveWithVolumeFiles.ChoiceButton = False;
 	EndIf;
 	
@@ -147,7 +147,7 @@ Procedure CreateInitialImage(Command)
 	EndIf;
 	
 	Handler = New NotifyDescription("CreateInitialImageEnd", ThisObject);
-	ShowMessageBox(Handler, NStr("en='Initial image has beed created successfully.';ru='Создание начального образа успешно завершено.'"));
+	ShowMessageBox(Handler, NStr("en='Initial image has been created.';ru='Создание начального образа успешно завершено.'"));
 EndProcedure
 
 #EndRegion
@@ -190,7 +190,7 @@ Procedure FileSavingHandlerAfterConnectionExpansionFileOperations(Attached, Addi
 	
 	Dialog = New FileDialog(FileDialogMode.Save);
 	
-	Dialog.Title                = NStr("en='Choose file for saving';ru='Выберите файл для сохранения'");
+	Dialog.Title                = NStr("en='Select a file to save to';ru='Выберите файл для сохранения'");
 	Dialog.Multiselect       = False;
 	Dialog.Preview  = False;
 	Dialog.Filter                   = AdditionalParameters.Filter;

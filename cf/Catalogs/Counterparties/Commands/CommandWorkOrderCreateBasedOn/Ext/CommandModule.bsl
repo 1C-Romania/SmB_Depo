@@ -20,7 +20,7 @@ Procedure CommandProcessing(CommandParameter, CommandExecuteParameters)
 	GetFillParameters(FillStructure);
 	
 	If FillStructure.IsFolder Then
-		Raise NStr("en='Unable to select counterparty group.';ru='Нельзя выбирать группу контрагентов.'");
+		Raise NStr("en='You cannot select a counterparty group.';ru='Нельзя выбирать группу контрагентов.'");
 	EndIf;
 	
 	OpenForm("Document.CustomerOrder.ObjectForm", New Structure("FillingValues", FillStructure));

@@ -33,7 +33,7 @@ Procedure OnCreateAtServer(Cancel, StandardProcessing)
 	Parameters.Property("AppliedRulesDescription", AppliedRulesDescription);
 	DuplicateSearchArea = Parameters.DuplicateSearchArea;
 
-	Title = StrReplace( NStr("en='Duplicates search rules %1';ru='Правила поиска дублей ""%1""'"), "%1", Parameters.SelectionAreaPresentation);
+	Title = StrReplace( NStr("en='Rules of searching for duplicates ""%1""';ru='Правила поиска дублей ""%1""'"), "%1", Parameters.SelectionAreaPresentation);
 	
 	InitialSettings = GetFromTempStorage(Parameters.SettingsAddress);
 	DeleteFromTempStorage(Parameters.SettingsAddress);
@@ -174,7 +174,7 @@ Function SelectionErrors()
 		EndIf;
 	EndDo;
 	
-	Return NStr("en='You need to specify at least one rule of duplicates search.';ru='Необходимо указать хотя бы одно правило поиска дублей.'");
+	Return NStr("en='Specify at least one rule for duplicate search.';ru='Необходимо указать хотя бы одно правило поиска дублей.'");
 EndFunction
 
 &AtClient

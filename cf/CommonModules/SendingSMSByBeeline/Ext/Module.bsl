@@ -28,7 +28,7 @@ Function SendSMS(RecipientNumbers, Text, SenderName, Login, Password) Export
 	
 	// Check on filling the mandatory parameters.
 	If IsBlankString(RecipientsString) Or IsBlankString(Text) Then
-		Result.ErrorDescription = NStr("en='Incorrect message parameters';ru='Неверные параметры сообщения'");
+		Result.ErrorDescription = NStr("en='Invalid message parameters';ru='Неверные параметры сообщения'");
 		Return Result;
 	EndIf;
 	
@@ -45,7 +45,7 @@ Function SendSMS(RecipientNumbers, Text, SenderName, Login, Password) Export
 	// query sending
 	FileNameResponse = ExecuteQuery(QueryParameters);
 	If IsBlankString(FileNameResponse) Then
-		Result.ErrorDescription = Result.ErrorDescription + NStr("en='Connection is not set';ru='Соединение не установлено'");
+		Result.ErrorDescription = Result.ErrorDescription + NStr("en='Connection failed';ru='Соединение не установлено'");
 		Return Result;
 	EndIf;		
 	
@@ -168,7 +168,7 @@ Function ExecuteQuery(QueryParameters)
 		Result = FileNameResponse;
 	Except
 		WriteLogEvent(
-			NStr("en='SMS sending';ru='Отправка SMS'", CommonUseClientServer.MainLanguageCode()),
+			NStr("en='Send SMS';ru='Отправка SMS'", CommonUseClientServer.MainLanguageCode()),
 			EventLogLevel.Error,
 			,
 			,
@@ -240,7 +240,7 @@ Function permissions() Export
 	Protocol = "HTTP";
 	Address = "beeline.amega-inform.en";
 	Port = Undefined;
-	Definition = NStr("en='Sending SMS by Beeline.';ru='Отправка SMS через Билайн.'");
+	Definition = NStr("en='Send SMS via Beeline.';ru='Отправка SMS через Билайн.'");
 	
 	permissions = New Array;
 	permissions.Add(

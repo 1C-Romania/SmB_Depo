@@ -7,8 +7,8 @@ Procedure GenerateTableInventory(DocumentRefExpenseReport, StructureAdditionalPr
 	
 	Query = New Query;
 	Query.TempTablesManager = StructureAdditionalProperties.ForPosting.StructureTemporaryTables.TempTablesManager;
-	Query.SetParameter("InventoryReceipt", NStr("en='Inventory receiving';ru='Прием запасов'"));
-	Query.SetParameter("OtherExpenses", NStr("en='Other expenses';ru='Прочих затраты (расходы)'"));
+	Query.SetParameter("InventoryReceipt", NStr("en='Inventory receipt';ru='Прием запасов'"));
+	Query.SetParameter("OtherExpenses", NStr("en='Other costs (expenses)';ru='Прочих затраты (расходы)'"));
 	
 	Query.Text =
 	"SELECT
@@ -153,7 +153,7 @@ Procedure GenerateAdvanceHolderPaymentsTable(DocumentRefExpenseReport, Structure
 	Query.SetParameter("PointInTime", New Boundary(StructureAdditionalProperties.ForPosting.PointInTime, BoundaryType.Including));
 	Query.SetParameter("ControlPeriod", StructureAdditionalProperties.ForPosting.PointInTime.Date);
 	Query.SetParameter("Company", StructureAdditionalProperties.ForPosting.Company);
-	Query.SetParameter("RepaymentOfAdvanceHolderDebt", NStr("en='Repayment of advance holder debt';ru='Погашение долга подотчетника'"));
+	Query.SetParameter("RepaymentOfAdvanceHolderDebt", NStr("en='Repay advance holder debt';ru='Погашение долга подотчетника'"));
 	Query.SetParameter("ExchangeDifference", NStr("en='Exchange rate difference';ru='Курсовая разница'"));
 	
 	Query.Text =
@@ -689,7 +689,7 @@ Procedure GenerateTableIncomeAndExpenses(DocumentRefExpenseReport, StructureAddi
 	Query.SetParameter("Company", StructureAdditionalProperties.ForPosting.Company);
 	Query.SetParameter("PointInTime", New Boundary(StructureAdditionalProperties.ForPosting.PointInTime, BoundaryType.Including));
 	Query.SetParameter("ExchangeDifference", NStr("en='Exchange rate difference';ru='Курсовая разница'"));
-	Query.SetParameter("OtherExpenses", NStr("en='Expenses reflection';ru='Отражение затрат'"));
+	Query.SetParameter("OtherExpenses", NStr("en='Expense recording';ru='Отражение затрат'"));
 	
 	Query.Text =
 	"SELECT
@@ -1246,9 +1246,9 @@ Procedure GenerateTableManagerial(DocumentRefExpenseReport, StructureAdditionalP
 	Query = New Query;
 	Query.TempTablesManager = StructureAdditionalProperties.ForPosting.StructureTemporaryTables.TempTablesManager;
 	Query.SetParameter("ExchangeDifference", NStr("en='Exchange rate difference';ru='Курсовая разница'"));
-	Query.SetParameter("InventoryReceipt", NStr("en='Inventory receiving';ru='Прием запасов'"));
-	Query.SetParameter("VendorsPayment", NStr("en='Payment to vendor';ru='Оплата поставщику'"));
-	Query.SetParameter("OtherExpenses", NStr("en='Other expenses';ru='Прочих затраты (расходы)'"));
+	Query.SetParameter("InventoryReceipt", NStr("en='Inventory receipt';ru='Прием запасов'"));
+	Query.SetParameter("VendorsPayment", NStr("en='Payment to supplier';ru='Оплата поставщику'"));
+	Query.SetParameter("OtherExpenses", NStr("en='Other costs (expenses)';ru='Прочих затраты (расходы)'"));
 	
 	Query.Text =
 	"SELECT
@@ -1747,8 +1747,8 @@ Procedure InitializeDocumentData(DocumentRefExpenseReport, StructureAdditionalPr
 	Query.SetParameter("Company", StructureAdditionalProperties.ForPosting.Company);
 	Query.SetParameter("UseCharacteristics", StructureAdditionalProperties.AccountingPolicy.UseCharacteristics);
 	Query.SetParameter("UseBatches", StructureAdditionalProperties.AccountingPolicy.UseBatches);
-	Query.SetParameter("InventoryReceipt", NStr("en='Inventory receiving';ru='Прием запасов'"));
-	Query.SetParameter("OtherExpenses", NStr("en='Expenses reflection';ru='Отражение затрат'"));
+	Query.SetParameter("InventoryReceipt", NStr("en='Inventory receipt';ru='Прием запасов'"));
+	Query.SetParameter("OtherExpenses", NStr("en='Expense recording';ru='Отражение затрат'"));
 	Query.SetParameter("IncomeAndExpensesAccountingCashMethod", StructureAdditionalProperties.AccountingPolicy.IncomeAndExpensesAccountingCashMethod);
 	
 	Query.Text =

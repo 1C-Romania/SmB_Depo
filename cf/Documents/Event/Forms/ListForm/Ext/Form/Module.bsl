@@ -332,7 +332,7 @@ Procedure SetFilterCurrentWorks()
 	
 	If Parameters.Property("PastPerformance") Then
 		
-		Title = Title + ": " + NStr("ru='просрочено выполнение'; en = 'overdue'");
+		Title = Title + ": " + NStr("ru='просрочено выполнение'; en = 'expired'");
 		SmallBusinessClientServer.SetListFilterItem(
 			List, 
 			"EventBegin", 
@@ -351,7 +351,7 @@ Procedure SetFilterCurrentWorks()
 		
 	ElsIf Parameters.Property("ForToday") Then
 		
-		Title = Title + ": " + NStr("ru='на сегодня'; en = 'for today'");
+		Title = Title + ": " + NStr("ru='на сегодня'; en = 'as of today'");
 		SmallBusinessClientServer.SetListFilterItem(
 			List, 
 			"EventBegin", 

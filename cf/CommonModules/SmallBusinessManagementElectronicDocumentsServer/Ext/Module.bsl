@@ -406,7 +406,7 @@ Function FoundCreateProductsServicesReceipt(StringForImport, ParseTree, RefToOwn
 		If ValueIsFilled(RefToOwner) Then // we receive the changes of the existing document
 			
 			If RefToOwner.Posted Then 
-				Raise NStr("en='Filling according to the ED is possible only for the unposted document';ru='Заполнение на основании ЭД возможно только для непроведенного документа'");
+				Raise NStr("en='Population on the basis of ED is possible only for an unposted document';ru='Заполнение на основании ЭД возможно только для непроведенного документа'");
 			EndIf;
 			
 			DocumentObject = RefToOwner.GetObject();
@@ -471,7 +471,7 @@ Function FoundCreateProductsServicesReceipt(StringForImport, ParseTree, RefToOwn
 		DocumentObject.Write(WriteMode);
 	Except
 		
-		WriteLogEvent(NStr("en='Filling on the ED basis';ru='Заполнение на основании ЭД'"),
+		WriteLogEvent(NStr("en='Population on the ED basis';ru='Заполнение на основании ЭД'"),
 			EventLogLevel.Error, 
 			Metadata.Documents.PurchaseOrder, 
 			RefToOwner, 
@@ -501,7 +501,7 @@ Function FoundCreateCustomerOrder(StringForImport, ParseTree, RefToOwner = Undef
 		If ValueIsFilled(RefToOwner) Then // we receive the changes of the existing document
 			
 			If RefToOwner.Posted Then 
-				Raise NStr("en='Filling according to the ED is possible only for the unposted document';ru='Заполнение на основании ЭД возможно только для непроведенного документа'");
+				Raise NStr("en='Population on the basis of ED is possible only for an unposted document';ru='Заполнение на основании ЭД возможно только для непроведенного документа'");
 			EndIf;
 			
 			DocumentObject = RefToOwner.GetObject();
@@ -608,7 +608,7 @@ Function FoundCreateCustomerOrder(StringForImport, ParseTree, RefToOwner = Undef
 		
 	Except
 		
-		WriteLogEvent(NStr("en='Filling on the ED basis';ru='Заполнение на основании ЭД'"), 
+		WriteLogEvent(NStr("en='Population on the ED basis';ru='Заполнение на основании ЭД'"), 
 			EventLogLevel.Error, 
 			Metadata.Documents.CustomerOrder, 
 			RefToOwner, 
@@ -638,7 +638,7 @@ Function FoundCreatePurchaseOrder(StringForImport, ParseTree, RefToOwner = Undef
 		If ValueIsFilled(RefToOwner) Then // we receive the changes of the existing document
 			
 			If RefToOwner.Posted Then 
-				Raise NStr("en='Filling according to the ED is possible only for the unposted document';ru='Заполнение на основании ЭД возможно только для непроведенного документа'");
+				Raise NStr("en='Population on the basis of ED is possible only for an unposted document';ru='Заполнение на основании ЭД возможно только для непроведенного документа'");
 			EndIf;
 			
 			DocumentObject = RefToOwner.GetObject();
@@ -757,7 +757,7 @@ Function FoundCreatePurchaseOrder(StringForImport, ParseTree, RefToOwner = Undef
 		
 	Except
 		
-		WriteLogEvent(NStr("en='Filling on the ED basis';ru='Заполнение на основании ЭД'"),
+		WriteLogEvent(NStr("en='Population on the ED basis';ru='Заполнение на основании ЭД'"),
 			EventLogLevel.Error, 
 			Metadata.Documents.PurchaseOrder, 
 			RefToOwner, 
@@ -2117,7 +2117,7 @@ Function CreateRefillVendorsProductsAndServices(ObjectString, ParseTree) Export
 	Try
 		NewEl.Write();
 	Except
-		Text = StringFunctionsClientServer.SubstituteParametersInString(NStr("en='Creating of the catalog item %1.';ru='Создание элемента справочника %1.'"), "Supplier products and services"); 
+		Text = StringFunctionsClientServer.SubstituteParametersInString(NStr("en='Creating catalog item %1.';ru='Создание элемента справочника %1.'"), "Supplier products and services"); 
 		WriteLogEvent(Text, EventLogLevel.Error,,,DetailErrorDescription(ErrorInfo()));		
 		Raise;
 	EndTry;

@@ -81,12 +81,12 @@ Procedure OnCreateAtServer(Cancel, StandardProcessing)
 	Ref = Parameters.Ref;
 	
 	If CancelPersonnelGLAccountChange(Ref) Then
-		Items.WithStaff.ToolTip = NStr("en='There are records in the base for this employee! Change of settlement GL accounts with human resources is prohibited!';ru='В базе есть движения по этому сотруднику! Изменение счетов учета по расчетам с персоналом запрещено!'");
+		Items.WithStaff.ToolTip = NStr("en='Records are registered for this employee in the infobase. Cannot change GL accounts for settlements with employees.';ru='В базе есть движения по этому сотруднику! Изменение счетов учета по расчетам с персоналом запрещено!'");
 		Items.WithStaff.Enabled = False;
 	EndIf;
 
 	If CancelAdvanceHoldersGLAccountChange(Ref) Then
-		Items.WithAdvanceHolder.ToolTip = NStr("en='There are records in the base for this advance holder! Change of settlement GL accounts with advance holders is prohibited!';ru='В базе есть движения по этому подотчетнику! Изменение счетов учета по расчетам с подотчетниками запрещено!'");
+		Items.WithAdvanceHolder.ToolTip = NStr("en='Records are registered for this advance holder in the infobase. Cannot change GL accounts for settlements with advance holders.';ru='В базе есть движения по этому подотчетнику! Изменение счетов учета по расчетам с подотчетниками запрещено!'");
 		Items.WithAdvanceHolder.Enabled = False;
 	EndIf;
 	

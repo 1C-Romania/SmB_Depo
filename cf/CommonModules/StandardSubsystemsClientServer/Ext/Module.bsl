@@ -211,7 +211,7 @@ Function CellsAmount(SpreadsheetDocument, SelectedAreas) Export
 		#If Client Then
 			SelectedAreas = SpreadsheetDocument.SelectedAreas;
 		#Else
-			Return NStr("en='Selected Areas parameter value is not specified.';ru='Не указано значение параметра ""ВыделенныеОбласти"".'");
+			Return NStr("en='Value of the SelectedAreas parameter is not specified.';ru='Не указано значение параметра ""ВыделенныеОбласти"".'");
 		#EndIf
 	EndIf;
 	

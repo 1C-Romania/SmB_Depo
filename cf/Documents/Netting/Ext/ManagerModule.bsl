@@ -1853,8 +1853,8 @@ Procedure InitializeDocumentData(DocumentRefNetting, StructureAdditionalProperti
 	
 	Query.SetParameter("Ref", DocumentRefNetting);
 	Query.SetParameter("PointInTime", New Boundary(StructureAdditionalProperties.ForPosting.PointInTime, BoundaryType.Including));
-	Query.SetParameter("Netting", NStr("en='Netting';ru='Взаимозачет'"));
-	Query.SetParameter("Novation", NStr("en='Novation';ru='Переуступка долга'"));
+	Query.SetParameter("Netting", NStr("en='Setoff';ru='Взаимозачет'"));
+	Query.SetParameter("Novation", NStr("en='Debt assignment';ru='Переуступка долга'"));
 	Query.SetParameter("DebtAdjustment", NStr("en='Debt adjustment';ru='Корректировка долга'"));
 	
 	Query.Text =
@@ -2716,7 +2716,7 @@ Procedure RunControl(DocumentRefNetting, AdditionalProperties, Cancel, PostingDe
 		If Not ResultsArray[0].IsEmpty() Then
 			
 			ErrorTitle = NStr("en='Error:';ru='Ошибка:'");
-			MessageTitleText = ErrorTitle + Chars.LF + NStr("en='No possiblity to fix the settlements with customers';ru='Нет возможности зафиксировать расчеты с покупателями'");
+			MessageTitleText = ErrorTitle + Chars.LF + NStr("en='Cannot record settlements with customers';ru='Нет возможности зафиксировать расчеты с покупателями'");
 			SmallBusinessServer.ShowMessageAboutError(
 				DocumentObjectNetting,
 				MessageTitleText,
@@ -2767,7 +2767,7 @@ Procedure RunControl(DocumentRefNetting, AdditionalProperties, Cancel, PostingDe
 		If Not ResultsArray[1].IsEmpty() Then
 			
 			ErrorTitle = NStr("en='Error:';ru='Ошибка:'");
-			MessageTitleText = ErrorTitle + Chars.LF + NStr("en='Cannot record the accounts payables.';ru='Нет возможности зафиксировать расчеты с поставщиками'");
+			MessageTitleText = ErrorTitle + Chars.LF + NStr("en='Cannot record settlements with suppliers';ru='Нет возможности зафиксировать расчеты с поставщиками'");
 			SmallBusinessServer.ShowMessageAboutError(
 				DocumentObjectNetting,
 				MessageTitleText,

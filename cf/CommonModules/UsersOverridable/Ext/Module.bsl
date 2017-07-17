@@ -111,7 +111,7 @@ Procedure OnReceiveOtherSettings(UserInfo, Settings) Export
 		ListSettingValues.Add(SettingValue);
 		
 		InformationAboutSetting    = New Structure;
-		InformationAboutSetting.Insert("SettingName", NStr("en='Confirmation when exiting application';ru='Подтверждение при завершении программы'"));
+		InformationAboutSetting.Insert("SettingName", NStr("en='Confirmation on closing the application';ru='Подтверждение при завершении программы'"));
 		InformationAboutSetting.Insert("SettingPicture", "");
 		InformationAboutSetting.Insert("SettingsList", ListSettingValues);
 		

@@ -699,7 +699,7 @@ Procedure SetFormTitle(Form)
 		EndDo;
 		StringFunctionsClientServer.DeleteLatestCharInRow(Title, 2);
 	Else
-		Title = NStr("ru='Контрагенты'; en = 'Counterparties'");
+		Title = NStr("en='Counterparties';ru='Контрагенты'");
 	EndIf;
 	
 	Form.Title = Title;
@@ -870,7 +870,7 @@ Procedure ImportDataFromExternalSourceResultDataProcessor(ImportResult, Addition
 			
 			ProcessPreparedData(ImportResult);
 			Items.List.Refresh();
-			ShowMessageBox(,NStr("en='The data import is completed.';ru='Загрузка данных завершена.'"));
+			ShowMessageBox(,NStr("en='Data import is complete.';ru='Загрузка данных завершена.'"));
 			
 		EndIf;
 		
@@ -953,7 +953,7 @@ Procedure ProcessPreparedData(ImportResult)
 				
 				If Not IsBlankString(TableRow.Phone) Then
 					
-					PhoneStructure = New Structure("Presentation, Comment", TableRow.Phone, NStr("en='It is imported from external source';ru='Загружено из внешнего источника'"));
+					PhoneStructure = New Structure("Presentation, Comment", TableRow.Phone, NStr("en='Imported from external source';ru='Загружено из внешнего источника'"));
 					ContactInformationManagement.FillContactInformationObject(CatalogItem, Catalogs.ContactInformationKinds.CounterpartyPhone, PhoneStructure);
 					
 				EndIf;

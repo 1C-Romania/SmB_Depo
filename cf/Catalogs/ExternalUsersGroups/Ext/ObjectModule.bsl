@@ -37,7 +37,7 @@ Procedure FillCheckProcessing(Cancel, CheckedAttributes)
 	If Parent = Catalogs.ExternalUsersGroups.AllExternalUsers Then
 		CommonUseClientServer.AddUserError(Errors,
 			"Object.Parent",
-			NStr("en='Predefined group ""All external users"" can not be a parent.';ru='Предопределенная группа ""Все внешние пользователи"" не может быть родителем.'"),
+			NStr("en='Predefined group ""All external users"" cannot be a parent group.';ru='Предопределенная группа ""Все внешние пользователи"" не может быть родителем.'"),
 			"");
 	EndIf;
 	
@@ -54,7 +54,7 @@ Procedure FillCheckProcessing(Cancel, CheckedAttributes)
 				NStr("en='External user is not selected.';ru='Внешний пользователь не выбран.'"),
 				"Object.Content",
 				LineNumber,
-				NStr("en='External user in the row %1 is not selected.';ru='Внешний пользователь в строке %1 не выбран.'"));
+				NStr("en='External user in line %1 was not selected.';ru='Внешний пользователь в строке %1 не выбран.'"));
 			Continue;
 		EndIf;
 		
@@ -66,7 +66,7 @@ Procedure FillCheckProcessing(Cancel, CheckedAttributes)
 				NStr("en='External user is repeated.';ru='Внешний пользователь повторяется.'"),
 				"Object.Content",
 				LineNumber,
-				NStr("en='External user in the %1 row is repeated.';ru='Внешний пользователь в строке %1 повторяется.'"));
+				NStr("en='External user in line %1 is repeated.';ru='Внешний пользователь в строке %1 повторяется.'"));
 		EndIf;
 	EndDo;
 	
@@ -100,19 +100,19 @@ Procedure BeforeWrite(Cancel)
 		
 		If Not Parent.IsEmpty() Then
 			Raise
-				NStr("en='Predefined group ""All external users"" can not be moved.';ru='Предопределенная группа ""Все внешние пользователи"" не может быть перемещена.'");
+				NStr("en='Predefined group ""All external users"" cannot be moved.';ru='Предопределенная группа ""Все внешние пользователи"" не может быть перемещена.'");
 		EndIf;
 		If Content.Count() > 0 Then
 			Raise
-				NStr("en='Adding participants to predetermined group ""All external users"" is banned.';ru='Добавление участников в предопределенную группу ""Все внешние пользователи"" запрещено.'");
+				NStr("en='Adding participants to predefined group ""All external users"" is forbidden.';ru='Добавление участников в предопределенную группу ""Все внешние пользователи"" запрещено.'");
 		EndIf;
 	Else
 		If Parent = Catalogs.ExternalUsersGroups.AllExternalUsers Then
 			Raise
-				NStr("en='Cannot add a subgroup to predetermined group ""All external users"".';ru='Невозможно добавить подгруппу к предопределенной группе ""Все внешние пользователи"".'");
+				NStr("en='Cannot add subgroup to the predefined group ""All external users"".';ru='Невозможно добавить подгруппу к предопределенной группе ""Все внешние пользователи"".'");
 		ElsIf Parent.AllAuthorizationObjects Then
 			Raise StringFunctionsClientServer.SubstituteParametersInString(
-				NStr("en='Cannot add a subgroup to group %1 because it includes all users.';ru='Невозможно добавить подгруппу к группе ""%1"", так как в число ее участников входят все пользователи.'"), Parent);
+				NStr("en='Cannot add a subgroup to the ""%1"" group because it includes all users.';ru='Невозможно добавить подгруппу к группе ""%1"", так как в число ее участников входят все пользователи.'"), Parent);
 		EndIf;
 		
 		If TypeOfAuthorizationObjects = Undefined Then
@@ -122,7 +122,7 @@ Procedure BeforeWrite(Cancel)
 		        AND ValueIsFilled(Parent) Then
 			
 			Raise
-				NStr("en='Cannot move a group to a number of participants that includes all users.';ru='Невозможно переместить группу, в число участников которой входят все пользователи.'");
+				NStr("en='Cannot move the group that includes all users.';ru='Невозможно переместить группу, в число участников которой входят все пользователи.'");
 		EndIf;
 		
 		// Check for uniqueness of a group of all authorization objects of the specified type.
@@ -147,7 +147,7 @@ Procedure BeforeWrite(Cancel)
 				Selection = QueryResult.Select();
 				Selection.Next();
 				Raise StringFunctionsClientServer.SubstituteParametersInString(
-					NStr("en='Group ""%1"" already exists and includes all users of the ""%2"" kind.';ru='Уже существует группа ""%1"", в число участников которой входят все пользователи вида ""%2"".'"),
+					NStr("en='The ""%1"" group already exists and includes all users of the ""%2"" kind.';ru='Уже существует группа ""%1"", в число участников которой входят все пользователи вида ""%2"".'"),
 					Selection.RefPresentation,
 					TypeOfAuthorizationObjects.Metadata().Synonym);
 			EndIf;

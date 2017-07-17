@@ -2090,8 +2090,8 @@ Procedure OCR_AfterImport_IndividualsDocuments(ExchangeFile, Cancel, Ref, Object
 	// ...From the UT 11 object module
 	TextSeries				= NStr("en=', series: %1';ru=', серия: %1'");
 	TextNumber				= NStr("en=',  %No';ru=',  %No'");
-	TextIssuanceDate			= NStr("en=', issued: %1 year';ru=', выдан: %1 года'");
-	TextValidityPeriod		= NStr("en=', valid till: %1 year';ru=', действует до: %1 года'");
+	TextIssuanceDate			= NStr("en=', issued: %1';ru=', выдан: %1 года'");
+	TextValidityPeriod		= NStr("en=', valid till: %1';ru=', действует до: %1 года'");
 	TextDepartmentCode	= NStr("en=', dep. No.%1';ru=', № подр. %1'");
 	
 	If Object.DocumentKind.IsEmpty() Then

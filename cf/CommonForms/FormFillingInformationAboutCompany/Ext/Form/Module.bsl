@@ -185,7 +185,7 @@ Procedure ExecuteActionsOnTransitionToNextPage(Cancel)
 	If mCurrentPageNumber = 2 Then
 		
 		If Not ValueIsFilled(Company.Description) Then
-			MessageText = NStr("en='Specify short description';ru='Укажите краткое наименование.'");
+			MessageText = NStr("en='Specify short name.';ru='Укажите краткое наименование.'");
 			CommonUseClientServer.MessageToUser(
 				MessageText,
 				,

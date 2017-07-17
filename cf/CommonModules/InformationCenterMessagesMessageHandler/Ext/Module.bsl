@@ -281,7 +281,7 @@ Function GenerateInaccessibilityHeader(Title, StartDate, EndDate)
 	
 	InaccessibilityStartDate	= Format(StartDate, "DF=dd.MM.yyyy HH:mm'");
 	DurationUpdate	= DatesDifferenceInMinutes(StartDate, EndDate);
-	Pattern = NStr("en='%1 %2 (%3 min.)';ru='%1 %2 (%3 мин.)'");
+	Pattern = NStr("en='%1 %2 (%3 min)';ru='%1 %2 (%3 мин.)'");
 	Pattern = StringFunctionsClientServer.SubstituteParametersInString(Pattern, String(InaccessibilityStartDate), TrimAll(Title), DurationUpdate);
 	Return Pattern;
 	

@@ -48,7 +48,7 @@ Function ExternalModuleExecutionMode(Val ExternalModule) Export
 		EndIf;
 		
 	Else
-		Raise NStr("en='The function is not intended for call in the infobase in which division by data areas is disabled!';ru='Функция не предназначена для вызова в информационной базе, в которой выключено разделение по областям данных!'");
+		Raise NStr("en='The function cannot be called in the Infobase with disabled separation by data areas.';ru='Функция не предназначена для вызова в информационной базе, в которой выключено разделение по областям данных!'");
 	EndIf;
 	
 EndFunction
@@ -409,7 +409,7 @@ Function AuthorizationKey(Val Resolution) Export
 	Key = XDTOFactory.Create(XDTOFactory.Type("http://www.w3.org/2001/XMLSchema", "hexBinary"), Hashing.HashSum).LexicalMeaning;
 	
 	If StrLen(Key) > 32 Then
-		Raise NStr("en='Exceeding key length';ru='Превышение дланы ключа'");
+		Raise NStr("en='Key length excess';ru='Превышение дланы ключа'");
 	EndIf;
 	
 	Return Key;
@@ -452,7 +452,7 @@ Function PermissionsTableRow(Val PermissionTable, Val Filter, Val AddWithout = T
 	Else
 		
 		Raise StringFunctionsClientServer.SubstituteParametersInString(
-			NStr("en='Violation of lines uniqueness in the permissions table with filter %1';ru='Нарушение уникальности строк в таблице разрешений по отбору %1'"),
+			NStr("en='Violation of row uniqueness in the permission table by filter %1';ru='Нарушение уникальности строк в таблице разрешений по отбору %1'"),
 			CommonUse.ValueToXMLString(Filter));
 		
 	EndIf;
@@ -471,7 +471,7 @@ EndFunction
 Procedure LockGrantedPermissionsRegisters(Val ApplicationModule = Undefined, Val LockExternalModulesConnectionModes = True) Export
 	
 	If Not TransactionActive() Then
-		Raise NStr("en='Transaction is not active!';ru='Транзакция не активна!'");
+		Raise NStr("en='Transaction is not active';ru='Транзакция не активна!'");
 	EndIf;
 	
 	Registers = New Array();
@@ -941,7 +941,7 @@ Function PackageProcessingResult(Val PackageIdentifier) Export
 	Else
 		
 		Raise StringFunctionsClientServer.SubstituteParametersInString(
-			NStr("en='Package of queries %1 not found';ru='Не найден пакет запросов %1'"), PackageIdentifier);
+			NStr("en='Query pack %1 is not found';ru='Не найден пакет запросов %1'"), PackageIdentifier);
 		
 	EndIf;
 	
@@ -981,7 +981,7 @@ Function PackageProcessingState(Val PackageIdentifier)
 	Else
 		
 		Raise StringFunctionsClientServer.SubstituteParametersInString(
-			NStr("en='Package of queries %1 not found';ru='Не найден пакет запросов %1'"), PackageIdentifier);
+			NStr("en='Query pack %1 is not found';ru='Не найден пакет запросов %1'"), PackageIdentifier);
 		
 	EndIf;
 	
@@ -1066,7 +1066,7 @@ Function SerializeQueriesOnExternalResourcesUse(Val QueryIDs) Export
 			Else
 				
 				Raise StringFunctionsClientServer.SubstituteParametersInString(
-					NStr("en='Software module is not serialized by the key: - Type: 1% - Identifier: %2';ru='Не сериализован программный модуль по ключу: - Тип: %1 - Идентификатор: %2'"),
+					NStr("en='Unserialized key program module: - Type: 1% - ID: %2';ru='Не сериализован программный модуль по ключу: - Тип: %1 - Идентификатор: %2'"),
 					Selection.SoftwareModuleType,
 					Selection.SoftwareModuleID);
 				

@@ -189,7 +189,7 @@ EndProcedure
 &AtClient
 Procedure UpdateTimeTableOfReminders()
 	For Each TableRow IN Reminders Do
-		TimePresentation = NStr("en='term is not defined';ru='срок не определен'");
+		TimePresentation = NStr("en='deadline is not set';ru='срок не определен'");
 		
 		If ValueIsFilled(TableRow.EventTime) Then
 			Time = CommonUseClient.SessionDate() - TableRow.EventTime;
@@ -275,15 +275,15 @@ EndProcedure
 Function TimeIntervalPresentation(Val TimeQuantity)
 	Result = "";
 	
-	WeeksRepresentation = NStr("en='Week';ru='Неделя'") + "," + NStr("en='of the week';ru='недели'") + "," + NStr("en='weeks';ru='недель'");
-	DaysRepresentation = NStr("en='day';ru='дне'") + "," + NStr("en='days';ru='дня'") + "," + NStr("en='days';ru='дня'");
-	HoursRepresentation = NStr("en='hour';ru='час'") + "," + NStr("en='hours';ru='часа'") + "," + NStr("en='Hours';ru='часы'");
-	MinutesRepresentation = NStr("en='minute';ru='минуту'") + "," + NStr("en='Minutes';ru='минуты'") + "," + NStr("en='minutes';ru='минут'");
+	WeeksRepresentation = NStr("en='week';ru='неделя'") + "," + NStr("en='weeks';ru='недели'") + "," + NStr("en='weeks';ru='недель'");
+	DaysRepresentation = NStr("en='day';ru='день'") + "," + NStr("en='days';ru='дня'") + "," + NStr("en='days';ru='дней'");
+	HoursRepresentation = NStr("en='hour';ru='час'") + "," + NStr("en='hours';ru='часа'") + "," + NStr("en='hours';ru='часов'");
+	MinutesRepresentation = NStr("en='minute';ru='минута'") + "," + NStr("en='minutes';ru='минуты'") + "," + NStr("en='minutes';ru='минут'");
 	
 	TimeQuantity = Number(TimeQuantity);
 	
 	EventIsOccurred = True;
-	PresentationPattern = NStr("en='%1 ago';ru='%1 назад'");
+	PresentationPattern = NStr("en='%1 back';ru='%1 назад'");
 	If TimeQuantity < 0 Then
 		PresentationPattern = NStr("en='in %1';ru='in %1'");
 		TimeQuantity = -TimeQuantity;
@@ -305,7 +305,7 @@ Function TimeIntervalPresentation(Val TimeQuantity)
 	
 	If WeeksNumber > 4 Then
 		If EventIsOccurred Then
-			Return NStr("en='long ago';ru='очень давно'");
+			Return NStr("en='long time ago';ru='очень давно'");
 		Else
 			Return NStr("en='not soon';ru='еще не скоро'");
 		EndIf;

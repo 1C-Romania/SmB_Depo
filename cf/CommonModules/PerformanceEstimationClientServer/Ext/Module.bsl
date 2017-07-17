@@ -146,7 +146,7 @@ Procedure WriteToEventLogMonitor(EventName, Level, MessageText) Export
 	WriteLogEvent(EventName,
 		Level,
 		,
-		NStr("en='Performance estimation';ru='Оценка производительности'"),
+		NStr("en='Performance assessment';ru='Оценка производительности'"),
 		MessageText);
 	
 EndProcedure

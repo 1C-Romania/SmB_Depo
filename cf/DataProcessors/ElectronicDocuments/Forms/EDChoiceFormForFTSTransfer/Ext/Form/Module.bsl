@@ -416,13 +416,13 @@ Procedure GenerateTableRapidFilter()
 	
 	NewRow = QuickFilters.Add();
 	NewRow.Parameter = "Responsible";
-	NewRow.ParameterPresentation = NStr("en='Responsible:';ru='Ответственный:'");
+	NewRow.ParameterPresentation = NStr("en='Responsible person:';ru='Ответственный:'");
 	NewRow.Type = "CatalogRef.Users";
 	NewRow.Value = Users.AuthorizedUser();
 	
 	NewRow = QuickFilters.Add();
 	NewRow.Parameter = "EDVersionState";
-	NewRow.ParameterPresentation = NStr("en='ED status:';ru='Состояние ЭД:'");
+	NewRow.ParameterPresentation = NStr("en='ED state:';ru='Состояние ЭД:'");
 	NewRow.Type = "EnumRef.EDVersionsStatuses";
 	NewRow.Value = Enums.EDVersionsStates.ExchangeCompleted;
 	
@@ -564,7 +564,7 @@ Procedure AddToSelectedDocuments(RowArray)
 	EDKindAct = PredefinedValue("Enum.EDKinds.ActPerformer");
 	EDStatusExchangeCompleted = PredefinedValue("Enum.EDVersionsStates.ExchangeCompleted");
 	RefArray = New Array;
-	MessagePattern = NStr("en='Electronic document flow for the document ""%1"" is not completed!';ru='Для документа ""%1"" не завершён электронный документооборот!'");
+	MessagePattern = NStr("en='Electronic document flow for the ""%1"" document is not completed.';ru='Для документа ""%1"" не завершён электронный документооборот!'");
 	MessageText = "";
 	For Each String IN RowArray Do
 		RowData = Items.AvailableDocuments.RowData(String);
@@ -610,7 +610,7 @@ Procedure AddToSelectedDocuments(RowArray)
 	EndIf;
 	If VersionCall <> 1 AND Multiselect = False AND SelectedDocumentsTable.Count() > 0 Then
 		If ValueIsFilled(MessageText) Then
-			QuestionText = MessageText + Chars.LF + NStr("en='Continue importing?';ru='Продолжить выгрузку?'");
+			QuestionText = MessageText + Chars.LF + NStr("en='Continue exporting?';ru='Продолжить выгрузку?'");
 			AdditParameters = New Structure("MessageText", MessageText);
 			NotifyDescription = New NotifyDescription("CompleteAdditionToSelectedDocuments", ThisObject, AdditParameters);
 			ShowQueryBox(NOTifyDescription, QuestionText, QuestionDialogMode.YesNo, 30, DialogReturnCode.No);
@@ -829,10 +829,10 @@ Function ImportDescriptionFile(Company, VTInventory, DirectoryAddress)
 		ElectronicDocumentsInternal.ExportEDtoFile(File, DirectoryAddress + "definition.xml", False, "windows-1251");
 		Return True;
 	Except
-		MessagePattern = NStr("en='%1 (see details in event log monitor).';ru='%1 (подробности см. в Журнале регистрации).'");
+		MessagePattern = NStr("en='%1 (for more information, see Event log).';ru='%1 (подробности см. в Журнале регистрации).'");
 		MessageText = StringFunctionsClientServer.SubstituteParametersInString(MessagePattern,
 			?(ValueIsFilled(ErrorText), ErrorText, BriefErrorDescription(ErrorInfo())));
-		ElectronicDocumentsServiceCallServer.ProcessExceptionByEDOnServer(NStr("en='Creating ED import into 1C Accounting';ru='Формирование выгрузки ЭД в 1с-Отчетность'"),
+		ElectronicDocumentsServiceCallServer.ProcessExceptionByEDOnServer(NStr("en='Generate ED import into 1C:Reporting';ru='Формирование выгрузки ЭД в 1с-Отчетность'"),
 																					DetailErrorDescription(ErrorInfo()),
 																					MessageText);
 		
@@ -1050,7 +1050,7 @@ EndProcedure
 Procedure Exporting()
 	
 	If SelectedDocumentsTable.Count() = 0 Then
-		MessageText = NStr("en='At least one document is required to import creation.';ru='Для формирования выгрузки необходимо выбрать хотя бы один документ.'");
+		MessageText = NStr("en='At least one document is required to generate export.';ru='Для формирования выгрузки необходимо выбрать хотя бы один документ.'");
 		CommonUseClientServer.MessageToUser(MessageText);
 	Else
 		Filter = New Structure("RequiredFillSourceDocument", True);

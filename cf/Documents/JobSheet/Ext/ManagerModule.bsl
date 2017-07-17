@@ -329,7 +329,7 @@ Procedure InitializeDocumentData(DocumentRefJobSheet, StructureAdditionalPropert
 	Query.SetParameter("PointInTime",			New Boundary(StructureAdditionalProperties.ForPosting.PointInTime, BoundaryType.Including));
 	Query.SetParameter("Company",				StructureAdditionalProperties.ForPosting.Company);
 	Query.SetParameter("Payroll",				NStr("ru = 'Начисление зарплаты'; en = 'Payroll'"));
-	Query.SetParameter("SalaryDistribution",	NStr("en = 'Cost application on finished goods'; ru = 'Отнесение затрат на продукцию'"));
+	Query.SetParameter("SalaryDistribution",	NStr("en='Attribution of expenses for products';ru='Отнесение затрат на продукцию'"));
 	
 	// FO Use Payroll subsystem.
 	Query.SetParameter("UseSubsystemPayroll", Constants.FunctionalOptionUseSubsystemPayroll.Get());

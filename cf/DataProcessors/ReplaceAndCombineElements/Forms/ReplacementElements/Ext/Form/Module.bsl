@@ -15,7 +15,7 @@ Procedure OnCreateAtServer(Cancel, StandardProcessing)
 	EndIf;
 	
 	If Not Parameters.Property("OpenByScenario") Then
-		Raise NStr("en='Data processor is not aimed for being used directly';ru='Обработка не предназначена для непосредственного использования.'");
+		Raise NStr("en='Data processor is not intended for direct usage.';ru='Обработка не предназначена для непосредственного использования.'");
 	EndIf;
 	
 	// Transfer parameters to the ReplacedRefs table. 
@@ -67,15 +67,15 @@ Procedure OnCreateAtServer(Cancel, StandardProcessing)
 	
 	If ReplaceReferences.Count() > 1 Then
 		Items.LabelSelectedType.Title = StringFunctionsClientServer.SubstituteParametersInString(
-			NStr("en='Select one of the %1 items with which the selected values should be replaced.';ru='Выберите один из элементов ""%1"", на который следует заменить выбранные значения (%2):'"),
+			NStr("en='Select one of the ""%1"" items the selected values (%2) should be replaced with:';ru='Выберите один из элементов ""%1"", на который следует заменить выбранные значения (%2):'"),
 			MainMetadata.Presentation(), ReplaceReferences.Count());
 	Else
-		Title = NStr("en='Item replacement';ru='Замена элемента'");
+		Title = NStr("en='Replace item';ru='Замена элемента'");
 		Items.LabelSelectedType.Title = StringFunctionsClientServer.SubstituteParametersInString(
-			NStr("en='Select one of the %1 items with which %2 should be replaced.';ru='Выберите один из элементов ""%1"", на который следует заменить ""%2"":'"),
+			NStr("en='Select one of the ""%1"" items ""%2"" should be replaced with:';ru='Выберите один из элементов ""%1"", на который следует заменить ""%2"":'"),
 			MainMetadata.Presentation(), ReplaceReferences[0].Ref);
 	EndIf;
-	Items.ToolTipSelectTargetItem.Title = NStr("en='Item for replacement is not found.';ru='Элемент для замены не выбран.'");
+	Items.ToolTipSelectTargetItem.Title = NStr("en='Replacement item is not selected.';ru='Элемент для замены не выбран.'");
 	
 	// Stepped master
 	StepByStepAssistantSettings = InitializeMaster(Items.AssistantSteps, Items.Next, Items.Back, Items.Cancel);
@@ -301,12 +301,12 @@ Function EndingMessage()
 	Count = ReplaceReferences.Count();
 	If Count = 1 Then
 		ResultText = StringFunctionsClientServer.SubstituteParametersInString(
-			NStr("en='%1 item is replaced with %2';ru='Элемент ""%1"" заменен на ""%2""'"),
+			NStr("en='Item ""%1"" is replaced with ""%2""';ru='Элемент ""%1"" заменен на ""%2""'"),
 			ReplaceReferences[0].Ref,
 			TargetItemResult);
 	Else
 		ResultText = StringFunctionsClientServer.SubstituteParametersInString(
-			NStr("en='%1 items are replaced with %2';ru='Элементы (%1) заменены на ""%2""'"),
+			NStr("en='Items (%1) are replaced with ""%2""';ru='Элементы (%1) заменены на ""%2""'"),
 			Count,
 			TargetItemResult);
 	EndIf;
@@ -372,19 +372,19 @@ Function FillFailedReplacements(Val ReplacementResults)
 		
 		ErrorType = ResultRow.ErrorType;
 		If ErrorType = "UnknownData" Then
-			ErrorString.Cause = NStr("en='Data is found that was not planned to be processed.';ru='Обнаружена данные, обработка которых не планировалась.'");
+			ErrorString.Cause = NStr("en='Data which processing was not planned is detected.';ru='Обнаружена данные, обработка которых не планировалась.'");
 			
 		ElsIf ErrorType = "LockError" Then
 			ErrorString.Cause = NStr("en='The data is locked by another user.';ru='Данные заблокированы другим пользователем.'");
 			
 		ElsIf ErrorType = "DataChanged" Then
-			ErrorString.Cause = NStr("en='The data was changed by another user.';ru='Данные изменены другим пользователем.'");
+			ErrorString.Cause = NStr("en='Data is changed by another user.';ru='Данные изменены другим пользователем.'");
 			
 		ElsIf ErrorType = "RecordingError" Then
 			ErrorString.Cause = ResultRow.ErrorText;
 			
 		ElsIf ErrorType = "ErrorDelete" Then
-			ErrorString.Cause = NStr("en='Unable to delete data.';ru='Невозможно удалить данные.'");
+			ErrorString.Cause = NStr("en='You cannot delete data.';ru='Невозможно удалить данные.'");
 			
 		Else
 			ErrorString.Cause = NStr("en='Unknown error.';ru='Неизвестная ошибка.'");
@@ -492,7 +492,7 @@ Procedure InitializeReplacedReferences(Val RefArray)
 	
 	QuantityRefs = RefArray.Count();
 	If QuantityRefs = 0 Then
-		ParametersErrorText = NStr("en='No item is specified for replacement.';ru='Не указано ни одного элемента для замены.'");
+		ParametersErrorText = NStr("en='No item for replacement is specified.';ru='Не указано ни одного элемента для замены.'");
 		Return;
 	EndIf;
 	
@@ -576,17 +576,17 @@ Procedure InitializeReplacedReferences(Val RefArray)
 		|Такие элементы не могут быть заменены.'");
 		Return;
 	ElsIf Conditions.QuantityRefs <> QuantityRefs Then
-		ParametersErrorText = NStr("en='All replaced items should be of the same type.';ru='Все заменяемые элементы должны быть одного типа.'");
+		ParametersErrorText = NStr("en='All replaceable items must be of the same type.';ru='Все заменяемые элементы должны быть одного типа.'");
 		Return;
 	EndIf;
 	
 	If Result[2].Unload().Count() = 0 Then
 		If QuantityRefs > 1 Then
 			ParametersErrorText = StringFunctionsClientServer.SubstituteParametersInString(
-				NStr("en='Do not replace the selected items (%1) with anything.';ru='Выбранные элементы (%1) не на что заменить.'"), QuantityRefs);
+				NStr("en='There is nothing to replace the selected items (%1) with.';ru='Выбранные элементы (%1) не на что заменить.'"), QuantityRefs);
 		Else
 			ParametersErrorText = StringFunctionsClientServer.SubstituteParametersInString(
-				NStr("en='Do not replace the %1 item with anything.';ru='Выбранный элемент ""%1"" не на что заменить.'"), CommonUse.SubjectString(TargetItem));
+				NStr("en='There is nothing to replace selected item ""%1"" with.';ru='Выбранный элемент ""%1"" не на что заменить.'"), CommonUse.SubjectString(TargetItem));
 		EndIf;
 		Return;
 	EndIf;
@@ -605,9 +605,9 @@ Procedure InitializeAssistantScript()
 	ButtonsAssistant = ButtonsAssistant();
 	ButtonsAssistant.Back.Visible = False;
 	ButtonsAssistant.Next.Title = NStr("en='Replace >';ru='Заменить >'");
-	ButtonsAssistant.Next.ToolTip = NStr("en='Start items replacement';ru='Начать замену элементов'");
+	ButtonsAssistant.Next.ToolTip = NStr("en='Start replacing items';ru='Начать замену элементов'");
 	ButtonsAssistant.Cancel.Title = NStr("en='Cancel';ru='Отменить'");
-	ButtonsAssistant.Cancel.ToolTip = NStr("en='Cancel items replacement';ru='Отказаться от замены элементов'");
+	ButtonsAssistant.Cancel.ToolTip = NStr("en='Refuse to replace items';ru='Отказаться от замены элементов'");
 	
 	AddAssistantStep(Items.StepSelectTargetItem, 
 		AssistantStepAction("OnActivating",         "StepSelectTargetItemOnActivating",
@@ -619,8 +619,8 @@ Procedure InitializeAssistantScript()
 	ButtonsAssistant = ButtonsAssistant();
 	ButtonsAssistant.Back.Visible = False;
 	ButtonsAssistant.Next.Visible = False;
-	ButtonsAssistant.Cancel.Title = NStr("en='Break';ru='Прервать'");
-	ButtonsAssistant.Cancel.ToolTip = NStr("en='Break items replacement';ru='Прервать замену элементов'");
+	ButtonsAssistant.Cancel.Title = NStr("en='Abort';ru='Прервать'");
+	ButtonsAssistant.Cancel.ToolTip = NStr("en='Stop item replacement';ru='Прервать замену элементов'");
 	
 	AddAssistantStep(Items.StepReplacement, 
 		AssistantStepAction("OnActivating",         "StepReplacementOnActivating",
@@ -635,7 +635,7 @@ Procedure InitializeAssistantScript()
 	ButtonsAssistant.Next.DefaultButton = False;
 	ButtonsAssistant.Cancel.DefaultButton = True;
 	ButtonsAssistant.Cancel.Title = NStr("en='Close';ru='Закрыть'");
-	ButtonsAssistant.Cancel.ToolTip = NStr("en='Close results of the items replacement';ru='Закрыть результаты замены элементов'");
+	ButtonsAssistant.Cancel.ToolTip = NStr("en='Close results of item replacement';ru='Закрыть результаты замены элементов'");
 	
 	AddAssistantStep(Items.SuccessfulCompletionStep, 
 		AssistantStepAction("OnActivating",         "StepSuccessfulCompletionOnActivating",
@@ -645,11 +645,11 @@ Procedure InitializeAssistantScript()
 	// 3. Errors of reference replacements
 	ButtonsAssistant = ButtonsAssistant();
 	ButtonsAssistant.Back.Title = NStr("en='< Back';ru='< Back'");
-	ButtonsAssistant.Back.ToolTip = NStr("en='Return to the target item selection';ru='Вернутся к выбору целевого элемента'");
+	ButtonsAssistant.Back.ToolTip = NStr("en='Return to target item selection';ru='Вернутся к выбору целевого элемента'");
 	ButtonsAssistant.Next.Title = NStr("en='Repeat replacement >';ru='Повторить замену >'");
-	ButtonsAssistant.Next.ToolTip = NStr("en='Repeat items replacement';ru='Повторить замену элементов'");
+	ButtonsAssistant.Next.ToolTip = NStr("en='Repeat item replacement';ru='Повторить замену элементов'");
 	ButtonsAssistant.Cancel.Title = NStr("en='Close';ru='Закрыть'");
-	ButtonsAssistant.Cancel.ToolTip = NStr("en='Close results of the items replacement';ru='Закрыть результаты замены элементов'");
+	ButtonsAssistant.Cancel.ToolTip = NStr("en='Close results of item replacement';ru='Закрыть результаты замены элементов'");
 	
 	AddAssistantStep(Items.StepRepeatReplacement,
 		AssistantStepAction("OnActivating",         "StepRepeatReplacementOnActivating",
@@ -675,11 +675,11 @@ Procedure StepSelectTargetItemBeforeNextAction(Val StepParameters, Val Additiona
 		Return;
 		
 	ElsIf ReplaceReferences.Count() = 1 AND CurrentData.Ref = ReplaceReferences.Get(0).Ref Then
-		ShowMessageBox( , NStr("en='You can not replace the item with itself.';ru='Нельзя заменять элемент сам на себя.'"));
+		ShowMessageBox( , NStr("en='An item cannot be replaced with itself.';ru='Нельзя заменять элемент сам на себя.'"));
 		Return;
 		
 	ElsIf AttributeValue(CurrentData, "IsFolder", False) Then
-		ShowMessageBox( , NStr("en='You can not replace an item with a group.';ru='Нельзя заменять элемент на группу.'"));
+		ShowMessageBox( , NStr("en='Cannot replace item with group.';ru='Нельзя заменять элемент на группу.'"));
 		Return;
 	EndIf;
 	
@@ -702,7 +702,7 @@ Procedure StepSelectTargetItemBeforeNextAction(Val StepParameters, Val Additiona
 	
 	// An attempt to replace with an item marked for deletion.
 	Text = StringFunctionsClientServer.SubstituteParametersInString(
-		NStr("en='%1 item is marked for deletion. Continue?';ru='Элемент %1 помечен на удаление. Продолжить?'"),
+		NStr("en='Item %1 is marked for deletion. Continue?';ru='Элемент %1 помечен на удаление. Продолжить?'"),
 		CurrentData.Ref
 	);
 	
@@ -830,7 +830,7 @@ Procedure CheckAppliedAreaReplacementAdmissibility(Val StepParameters)
 	EndIf;
 	
 	WarningParameters = New Structure;
-	WarningParameters.Insert("Title", NStr("en='It is impossible to replace items';ru='Невозможно заменить элементы'"));
+	WarningParameters.Insert("Title", NStr("en='You cannot replace items';ru='Невозможно заменить элементы'"));
 	WarningParameters.Insert("MessageText", ErrorText);
 	OpenForm("DataProcessor.ReplaceAndCombineElements.Form.MultilineWarning", WarningParameters, ThisObject);
 	
@@ -1039,7 +1039,7 @@ EndProcedure
 &AtClient
 Procedure RunAssistant()
 	If StepByStepAssistantSettings.StartPage = Undefined Then
-		Raise NStr("en='Before launching the master, an initial page should be set.';ru='Перед запуском мастера должна быть установлена начальная страница.'");
+		Raise NStr("en='Before you run this wizard, set the home page.';ru='Перед запуском мастера должна быть установлена начальная страница.'");
 		
 	ElsIf StepByStepAssistantSettings.StartPage = -1 Then
 		// Warming up. Check if all steps have action handlers.
@@ -1053,7 +1053,7 @@ Procedure RunAssistant()
 						Test = New NotifyDescription(HandlerName, ThisObject);
 					Except
 						Text = StringFunctionsClientServer.SubstituteParametersInString(
-							NStr("en='Error of %1 event handler creation for %2 page, %3 procedure is not defined';ru='Ошибка создания обработчика события %1 для страницы %2, не определена процедура %3'"),
+							NStr("en='An error occurred when creating event handler %1 for page %2, procedure %3 is not defined';ru='Ошибка создания обработчика события %1 для страницы %2, не определена процедура %3'"),
 							NameActions, 
 							StepDescription.Page, 
 							HandlerName
@@ -1093,7 +1093,7 @@ Procedure AssistantStep(Val CommandCode)
 	ElsIf CommandCode = "Cancel" Then
 		Direction = 0;
 	Else
-		Raise NStr("en='Incorrect command of the assistant step';ru='Некорректная команда шага помощника'");
+		Raise NStr("en='Incorrect wizard step command';ru='Некорректная команда шага помощника'");
 	EndIf;
 	
 	StepDescription = StepByStepAssistantSettings.Steps[StepByStepAssistantSettings.CurrentStepNumber];
@@ -1131,7 +1131,7 @@ Procedure GoToAssistantStep(Val IdentifierStep, Val TriggerEvents = False)
 	NextStep = AssistantStepNumberByIdentifier(IdentifierStep);
 	If NextStep = Undefined Then
 		Error = StringFunctionsClientServer.SubstituteParametersInString(
-			NStr("en='%1 assistant step is not found';ru='Не найден шаг помощника %1'"),
+			NStr("en='Step of wizard %1 is not found';ru='Не найден шаг помощника %1'"),
 			IdentifierStep
 		);
 		Raise Error;
@@ -1164,11 +1164,11 @@ Procedure AssistantStepEnd(Val StepParameters)
 		
 	ElsIf StepParameters = 1 AND NextStep > LastStep Then
 		// You are trying to take a step outside forward.
-		Raise NStr("en='You are trying to go out of the assistant last step.';ru='Попытка выхода за последний шаг мастера'");
+		Raise NStr("en='Attempting to go over the last wizard step';ru='Попытка выхода за последний шаг мастера'");
 		
 	ElsIf StepParameters = -1 AND NextStep < 0 Then
 		// You are trying to take a step outside back.
-		Raise NStr("en='You are trying to go back from the assistant first step.';ru='Попытка выхода назад из первого шага мастера'");
+		Raise NStr("en='Attempting to go back from the first wizard step';ru='Попытка выхода назад из первого шага мастера'");
 		
 	EndIf;
 	
@@ -1251,7 +1251,7 @@ Function AssistantStepNumberByIdentifier(Val IdentifierStep)
 		EndIf;
 	EndDo;
 	
-	Raise StrReplace(NStr("en='Not found step ""%1"".';ru='Не найдено шаг ""%1"".'"), "%1", SearchName);
+	Raise StrReplace(NStr("en='Step ""%1"" is not found.';ru='Не найдено шаг ""%1"".'"), "%1", SearchName);
 EndFunction
 
 // Returns the cancel check box
@@ -1302,10 +1302,10 @@ Function BackgroundJobImportOnClient(InterruptIfNotCompleted, ShowDialogBeforeCl
 	If Not InformationAboutJob.Completed Then
 		If ShowDialogBeforeClosing Then
 			Handler   = New NotifyDescription("AfterTaskCancellationAndClosingFormConfirmation", ThisObject);
-			QuestionText = NStr("en='Cancel replacement and close the form?';ru='Прервать замену элементов и закрыть форму?'");
+			QuestionText = NStr("en='Stop items replacement and close the form?';ru='Прервать замену элементов и закрыть форму?'");
 			
 			Buttons = New ValueList;
-			Buttons.Add(DialogReturnCode.Abort, NStr("en='Break';ru='Прервать'"));
+			Buttons.Add(DialogReturnCode.Abort, NStr("en='Abort';ru='Прервать'"));
 			Buttons.Add(DialogReturnCode.No, NStr("en='Do not interrupt';ru='Не прерывать'"));
 			
 			ShowQueryBox(Handler, QuestionText, Buttons, , DialogReturnCode.No);
@@ -1370,7 +1370,7 @@ Function BackGroundJobStart()
 			UUID,
 			"SearchAndDeleteDuplicates.ReplaceRefs",
 			MethodParameters,
-			NStr("en='Search and remove duplicates: Replace references';ru='Поиск и удаление дублей: Замена ссылок'"));
+			NStr("en='Search and delete duplicates: Reference replacement';ru='Поиск и удаление дублей: Замена ссылок'"));
 	Except
 		ErrorInfo = ErrorInfo();
 	EndTry;

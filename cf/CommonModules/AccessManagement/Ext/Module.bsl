@@ -384,7 +384,7 @@ Function IsRight(Right, ObjectReference, User = Undefined) Export
 	
 	If RightsDescriptionFull = Undefined Then
 		Raise StringFunctionsClientServer.SubstituteParametersInString(
-			NStr("en='Description of possible rights for table ""%1"" is not found';ru='Не найдено описание возможных прав для таблицы ""%1""'"),
+			NStr("en='Description of possible rights for the ""%1"" table is not found';ru='Не найдено описание возможных прав для таблицы ""%1""'"),
 			ObjectReference.Metadata().FullName());
 	EndIf;
 	
@@ -392,7 +392,7 @@ Function IsRight(Right, ObjectReference, User = Undefined) Export
 	
 	If RightDetails = Undefined Then
 		Raise StringFunctionsClientServer.SubstituteParametersInString(
-			NStr("en='Description of right ""%1"" for table ""%2"" is not found';ru='Не найдено описание права ""%1"" для таблицы ""%2""'"),
+			NStr("en='Right description ""%1"" for table ""%2"" is not found';ru='Не найдено описание права ""%1"" для таблицы ""%2""'"),
 			Right,
 			ObjectReference.Metadata().FullName());
 	EndIf;
@@ -580,7 +580,7 @@ Procedure OnFormCreationAccessValues(Form,
 	   AND NewCreation Then
 		
 		Raise StringFunctionsClientServer.SubstituteParametersInString(
-			NStr("en='Allowed ""%1"" are used while adding.';ru='Для добавления требуются разрешенные ""%1"".'"),
+			NStr("en='Permitted ""%1"" are required for adding.';ru='Для добавления требуются разрешенные ""%1"".'"),
 			Metadata.FindByType(GroupsProperties.Type).Presentation());
 	EndIf;
 	
@@ -848,7 +848,7 @@ Procedure FillAccessValueSets(Val Object, Table, Val RefOnSubordinatedObject = U
 		// If you disable this condition, then scheduled
 		// job of data filling for access restriction will by cycled.
 		Raise StringFunctionsClientServer.SubstituteParametersInString(
-			NStr("en = 'Object ""%1"" generated access values empty set.'; ru = 'Объект ""%1"" сформировал пустой набор значений доступа.'"),
+			NStr("en='Object ""%1"" generated an empty access value set.';ru='Объект ""%1"" сформировал пустой набор значений доступа.'"),
 			ValueTypeObject);
 	EndIf;
 	

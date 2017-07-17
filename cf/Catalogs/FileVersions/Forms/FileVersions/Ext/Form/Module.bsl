@@ -39,7 +39,7 @@ Procedure ActivateExecute()
 		FillList();
 		Notify("Record_File", New Structure("Event", "ActiveVersionChanged"), Parameters.File);
 	Else
-		ShowMessageBox(, NStr("en='Change of the active version is allowed only for the files that are not locked';ru='Смена активной версии разрешена только для не занятых файлов.'"));
+		ShowMessageBox(, NStr("en='It is allowed to change the active version only for the files that are not locked.';ru='Смена активной версии разрешена только для не занятых файлов.'"));
 	EndIf;
 	
 EndProcedure
@@ -150,7 +150,7 @@ EndProcedure
 Procedure Compare(Command)
 	
 	#If WebClient Then
-		ShowMessageBox(, NStr("en='Versions matching not supported in the web-client.';ru='Сравнение версий не поддерживается в веб-клиенте.'"));
+		ShowMessageBox(, NStr("en='Version comparison is not supported in web client.';ru='Сравнение версий не поддерживается в веб-клиенте.'"));
 		Return;
 	#EndIf
 	
@@ -198,7 +198,7 @@ Procedure Compare(Command)
 		
 		If StandardSubsystemsClientReUse.ClientWorkParameters().ThisIsBasicConfigurationVersion Then
 			CommonUseClientServer.MessageToUser(
-				NStr("en='This operation is not supported in the base version.';ru='Данная операция не поддерживается в базовой версии.'"));
+				NStr("en='This operation is not supported in base version.';ru='Данная операция не поддерживается в базовой версии.'"));
 			Return;
 		EndIf;
 		
@@ -396,7 +396,7 @@ Procedure MarkToDeleteUnmark()
 	
 	If CurrentData.DeletionMark Then 
 		QuestionText = StringFunctionsClientServer.SubstituteParametersInString(
-			NStr("en='Unmark ""%1"" for deletion?';ru='Снять с ""%1"" пометку на удаление?'"),
+			NStr("en='Clear mark for deletion for ""%1""?';ru='Снять с ""%1"" пометку на удаление?'"),
 			String(CurrentData.Ref));
 	Else
 		QuestionText = StringFunctionsClientServer.SubstituteParametersInString(
@@ -495,7 +495,7 @@ Procedure VersionsComparisonAutomatic(Result, ExecuteParameters) Export
 		ExecuteParameters.File2Data = FileOperationsServiceServerCall.FileDataForOpening(
 			Ref2, UUID);
 		
-		StatusText = NStr("en='Matching of ""%1"" file versions in progress...';ru='Выполняется сравнение версий файла ""%1""...'");
+		StatusText = NStr("en='Comparing versions of file ""%1""...';ru='Выполняется сравнение версий файла ""%1""...'");
 		StatusText = StrReplace(StatusText, "%1", String(ExecuteParameters.File1Data.Ref));
 		Status(StatusText);
 		ExecuteParameters.CurrentStep = 3;

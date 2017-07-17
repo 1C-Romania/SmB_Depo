@@ -95,7 +95,7 @@ Procedure Send(Command)
 	
 	SendingResult = SendMessageServer();
 	If SendingResult Then 
-		ShowUserNotification(NStr("en='Message is sent.';ru='Сообщение отправлено.'"));
+		ShowUserNotification(NStr("en='The message was sent.';ru='Сообщение отправлено.'"));
 		Close();
 	Else
 		ClearMessages();
@@ -153,7 +153,7 @@ Function CheckAttributesFilling()
 		EndTry;
 	Else 
 		CommonUseClientServer.MessageToUser(
-			NStr("en='The Response address is not filled in';ru='Не заполнено поле Адрес ответа'"), ,
+			NStr("en='The ""Reply to"" field is not filled in';ru='Не заполнено поле Адрес ответа'"), ,
 			"FromWhom");
 	EndIf;
 	
@@ -182,7 +182,7 @@ Procedure PlaceFilesWithExtension()
 	
 	// Open the files selection dialog.
 	Dialog = New FileDialog(FileDialogMode.Open);
-	Dialog.Title = NStr("en='Select the file';ru='Выберите файл'");
+	Dialog.Title = NStr("en='Select file';ru='Выберите файл'");
 	Dialog.Multiselect = False;
 	
 	NotifyDescription = New NotifyDescription("PutFileWithExtensionAlert", ThisObject);
@@ -218,13 +218,13 @@ Procedure PutFileWithAlertExtensionSizeAlert(Size, AdditionalParameters) Export
 	EndIf;
 	
 	If Not TotalFilesSizeIsOptimal(Size) Then 
-		WarningText = NStr("en='Unable to add file. Selected files size exceeds the limit in %1 MB';ru='Не удалось добавить файл. Размер выбранных файлов превышает предел в %1 Мб'");
+		WarningText = NStr("en='Cannot add the file. Size of the selected files exceeds the limit of %1 MB';ru='Не удалось добавить файл. Размер выбранных файлов превышает предел в %1 Мб'");
 		WarningText = StringFunctionsClientServer.SubstituteParametersInString(WarningText, MaximalFileSize);
 		ClearMessages();
 		ShowMessageToUser(WarningText);
 	EndIf;
 	
-	Status(NStr("en='File is added to a message.';ru='Файл добавляется к сообщению.'"));
+	Status(NStr("en='File is added to the message.';ru='Файл добавляется к сообщению.'"));
 
 	// Add files to table.
 	AddFilesInSelectedFiles(AdditionalParameters.FullFileName);
@@ -290,7 +290,7 @@ Procedure PlaceFilesWithoutExtensionAtServer(StorageAddress, FileName)
 	// Check if total files size is correct.
 	FileSize = NewFile.Size();
 	If Not TotalFilesSizeIsOptimal(FileSize) Then 
-		WarningText = NStr("en='Selected files size exceeds the limit in %1 MB';ru='Размер выбранных файлов превышает предел в %1 Мб'");
+		WarningText = NStr("en='Size of the selected files exceeds the limit of %1 MB';ru='Размер выбранных файлов превышает предел в %1 Мб'");
 		WarningText = StringFunctionsClientServer.SubstituteParametersInString(WarningText, MaximalFileSize);
 		ShowMessageToUser(WarningText);
 		DeleteFromTempStorage(StorageAddress);

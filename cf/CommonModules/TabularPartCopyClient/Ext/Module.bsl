@@ -14,8 +14,8 @@ EndFunction
 
 Procedure NotifyUserCopyRows(CopiedCount) Export
 	
-	TitleText = NStr("en='Rows are copied'; ru='Строки скопированы'"); // Rows are copied
-	MessageText = NStr("en='Rows are copied to clipboard (%CopiedCount%)'; ru='В буфер обмена скопированы строки (%CopiedCount%)'");  //Rows are copied to clipboard
+	TitleText = NStr("en='Lines are copied';ru='Строки скопированы'"); // Rows are copied
+	MessageText = NStr("en='Lines are copied to the clipboard (%CopiedCount%)';ru='В буфер обмена скопированы строки (%CopiedCount%)'");  //Rows are copied to clipboard
 	MessageText = StrReplace(MessageText, "%CopiedCount%", CopiedCount);
 	
 	ShowUserNotification(TitleText,, MessageText);
@@ -26,8 +26,8 @@ EndProcedure
 
 Procedure NotifyUserPasteRows(CopiedCount, PastedCount) Export
 	
-	TitleText = NStr("en='Rows are pasted'; ru='Строки вставлены'");
-	MessageText = NStr("en='Rows are pasted from clipboard (%PastedCount% of %CopiedCount%)'; ru='Из буфера обмена вставлены строки (%PastedCount% из %CopiedCount%)'");
+	TitleText = NStr("en='Lines are inserted';ru='Строки вставлены'");
+	MessageText = NStr("en='Rows are inserted from the clipboard (%PastedCount% of %CopiedCount%)';ru='Из буфера обмена вставлены строки (%PastedCount% из %CopiedCount%)'");
 	MessageText = StrReplace(MessageText, "%PastedCount%", PastedCount);
 	MessageText = StrReplace(MessageText, "%CopiedCount%", CopiedCount);
 	

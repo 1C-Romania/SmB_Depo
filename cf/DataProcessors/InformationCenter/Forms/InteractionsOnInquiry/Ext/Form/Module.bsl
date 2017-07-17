@@ -168,11 +168,11 @@ Procedure FillCorrespondence(DataByCorrespondence)
 		NewInteraction = InteractionsList.Add();
 		NewInteraction.ID = New UUID(InteractionItem.Id);
 		NewInteraction.Subject = InteractionItem.Name;
-		NewInteraction.Definition = ?(IsBlankString(InteractionItem.Description), NStr("en='<Without text>';ru='<Без текста>'"), InteractionItem.Description);
+		NewInteraction.Definition = ?(IsBlankString(InteractionItem.Description), NStr("en='<No text>';ru='<Без текста>'"), InteractionItem.Description);
 		NewInteraction.Date = InteractionItem.Date;
 		NewInteraction.PictureNumber = InformationCenterServer.PictureNumberByInteraction(InteractionItem.Type, InteractionItem.Incoming);
 		NewInteraction.AttachmentPicture = ?(InteractionItem.IsFiles, PictureLib.PaperClip, Undefined);
-		NewInteraction.ExplanationToPicture = ?(InteractionItem.Incoming, NStr("en='inc.';ru='вкл.'"), NStr("en='Source.';ru='Источник.'"));
+		NewInteraction.ExplanationToPicture = ?(InteractionItem.Incoming, NStr("en='incl.';ru='вкл.'"), NStr("en='Source.';ru='Источник.'"));
 		NewInteraction.Incoming = InteractionItem.Incoming;
 		NewInteraction.Type = InteractionItem.Type;
 		NewInteraction.Seen = InteractionItem.Viewed;

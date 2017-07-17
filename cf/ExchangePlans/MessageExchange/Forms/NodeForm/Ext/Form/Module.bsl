@@ -16,13 +16,13 @@ Procedure OnCreateAtServer(Cancel, StandardProcessing)
 		
 		If Object.Blocked Then
 			Items.InfoMessage.Title
-				= NStr("en='This end point is locked.';ru='Эта конечная точка заблокирована.'");
+				= NStr("en='This endpoint is locked.';ru='Эта конечная точка заблокирована.'");
 		ElsIf Object.Leading Then
 			Items.InfoMessage.Title
-				= NStr("en='This end point is leading that is it initiates sending and getting exchange messages for the current information system.';ru='Эта конечная точка является ведущей, т.е. инициирует отправку и получение сообщений обмена для текущей информационной системы.'");
+				= NStr("en='This endpoint is a leading one, that is, it initiates sending and receiving exchange messages for the current information system.';ru='Эта конечная точка является ведущей, т.е. инициирует отправку и получение сообщений обмена для текущей информационной системы.'");
 		Else
 			Items.InfoMessage.Title
-				= NStr("en='This end point is slave which means that it sends and receives exchange messages only upon the request of the current information system.';ru='Эта конечная точка является ведомой, т.е. выполняет отправку и получение сообщений обмена только по требованию текущей информационной системы.'");
+				= NStr("en='This endpoint is a slave one, that is, it sends and receives exchange messages only by the current information system request.';ru='Эта конечная точка является ведомой, т.е. выполняет отправку и получение сообщений обмена только по требованию текущей информационной системы.'");
 		EndIf;
 		
 		Items.MakeThisEndPointSubordinate.Visible = Object.Leading AND Not Object.Blocked;

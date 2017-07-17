@@ -1227,7 +1227,7 @@ Procedure VerifyEnteringAbilityByProductionOrder(FillingData, AttributeValues) E
 	
 	If AttributeValues.Property("Posted") Then
 		If Not AttributeValues.Posted Then
-			ErrorText = NStr("en='Document %Document% is not processed. Entry according to the unposted document is prohibited.';ru='Документ %Документ% не проведен. Ввод на основании непроведенного документа запрещен.'");
+			ErrorText = NStr("en='Document %Document% is not posted. Cannot use the ""input on basis"" method for an unposted document.';ru='Документ %Документ% не проведен. Ввод на основании непроведенного документа запрещен.'");
 			ErrorText = StrReplace(ErrorText, "%Document%", FillingData);
 			Raise ErrorText;
 		EndIf;
@@ -1235,7 +1235,7 @@ Procedure VerifyEnteringAbilityByProductionOrder(FillingData, AttributeValues) E
 	
 	If AttributeValues.Property("Closed") Then
 		If AttributeValues.Closed Then
-			ErrorText = NStr("en='Document %Document% is closed (completed). Entry on the basis of the closed order is completed.';ru='Документ %Документ% закрыт (выполнен). Ввод на основании закрытого заказа запрещен.'");
+			ErrorText = NStr("en='The %Document% document is closed (completed). Cannot enter on the basis of the closed order.';ru='Документ %Документ% закрыт (выполнен). Ввод на основании закрытого заказа запрещен.'");
 			ErrorText = StrReplace(ErrorText, "%Document%", FillingData);
 			Raise ErrorText;
 		EndIf;
@@ -1243,7 +1243,7 @@ Procedure VerifyEnteringAbilityByProductionOrder(FillingData, AttributeValues) E
 	
 	If AttributeValues.Property("OrderState") Then
 		If AttributeValues.OrderState.OrderStatus = Enums.OrderStatuses.Open Then
-			ErrorText = NStr("en='Document %Document% in state %OrderState%. Input on the basis is forbidden.';ru='Документ %Документ% в состоянии %СостояниеЗаказа%. Ввод на основании запрещен.'");
+			ErrorText = NStr("en='The %Document% document in the %OrderState% state. Cannot enter on the basis.';ru='Документ %Документ% в состоянии %СостояниеЗаказа%. Ввод на основании запрещен.'");
 			ErrorText = StrReplace(ErrorText, "%Document%", FillingData);
 			ErrorText = StrReplace(ErrorText, "%OrderState%", AttributeValues.OrderState);
 			Raise ErrorText;
@@ -1423,7 +1423,7 @@ Procedure AddPrintCommands(PrintCommands) Export
 	
 	PrintCommand = PrintCommands.Add();
 	PrintCommand.ID = "RequestToWarehouse";
-	PrintCommand.Presentation = NStr("en='Request to warehouse';ru='Требование на склад'");
+	PrintCommand.Presentation = NStr("en='Demand to the warehouse';ru='Требование на склад'");
 	PrintCommand.FormsList = "DocumentForm,ListForm,DocumentsListForm";
 	PrintCommand.CheckPostingBeforePrint = False;
 	PrintCommand.Order = 1;

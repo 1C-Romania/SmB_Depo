@@ -173,7 +173,7 @@ Procedure ChangeEDPackageFormatOnChange(Item)
 	ExchangeFileStringArray = Object.ExchangeFilesFormats.FindRows(New Structure("Use", True));
 	NotifyDescription = New NotifyDescription("FinishPackageFormatChange", ThisObject);
 	If ExchangeFileStringArray.Count() > 1 Then
-		QuestionText = NStr("en='Changes of the e-document package format will be cleared. Continue?';ru='Изменения формата пакета электронных документов будут очищены. Продолжить?'");
+		QuestionText = NStr("en='Changes of the electronic document package format will be cleared. Continue?';ru='Изменения формата пакета электронных документов будут очищены. Продолжить?'");
 		ShowQueryBox(NOTifyDescription, QuestionText, QuestionDialogMode.YesNo, , DialogReturnCode.Yes);
 	Else
 		ExecuteNotifyProcessing(NOTifyDescription);
@@ -186,7 +186,7 @@ Procedure VerifySignatureCertificatesOnChange(Item)
 	
 	NotifyDescription = New NotifyDescription("FinishChangeChecksCertificates", ThisObject);
 	If Object.CounterpartySignaturesCertificates.Count() <> 0 Then
-		QuestionText = NStr("en='Settings of the counterparty signature certificates check will be cleared. Continue?';ru='Настройки проверка сертификатов подписи контрагентов будут очищены. Продолжить?'");
+		QuestionText = NStr("en='Settings of counterparty signature certificates check will be cleared. Continue?';ru='Настройки проверка сертификатов подписи контрагентов будут очищены. Продолжить?'");
 		ShowQueryBox(NOTifyDescription, QuestionText, QuestionDialogMode.YesNo, , DialogReturnCode.Yes);
 	Else
 		ExecuteNotifyProcessing(NOTifyDescription);
@@ -227,7 +227,7 @@ Procedure SendInvitation(Command)
 	
 	NotifyDescription = New NotifyDescription("FinishInvitationsProcessing", ThisObject);
 	If Modified Then
-		QuestionText = NStr("en='Changes are made to the current EDF setting. Record?';ru='В текущую настройку ЭДО внесены изменения. Записать?'");
+		QuestionText = NStr("en='Current EDF setting was changed. Write?';ru='В текущую настройку ЭДО внесены изменения. Записать?'");
 		ShowQueryBox(NOTifyDescription, QuestionText, QuestionDialogMode.YesNo, , DialogReturnCode.Yes);
 	Else
 		ExecuteNotifyProcessing(NOTifyDescription);
@@ -241,7 +241,7 @@ Procedure AcceptInvitation(Command)
 	AdditParameters = New Structure("Action", "Accept");
 	NotifyDescription = New NotifyDescription("FinishInvitationsProcessing", ThisObject, AdditParameters);
 	If Modified Then
-		QuestionText = NStr("en='Changes are made to the current EDF setting. Record?';ru='В текущую настройку ЭДО внесены изменения. Записать?'");
+		QuestionText = NStr("en='Current EDF setting was changed. Write?';ru='В текущую настройку ЭДО внесены изменения. Записать?'");
 		ShowQueryBox(NOTifyDescription, QuestionText, QuestionDialogMode.YesNo, , DialogReturnCode.Yes);
 	Else
 		ExecuteNotifyProcessing(NOTifyDescription);
@@ -255,7 +255,7 @@ Procedure RejectInvitation(Command)
 	AdditParameters = New Structure("Action", "Reject");
 	NotifyDescription = New NotifyDescription("FinishInvitationsProcessing", ThisObject, AdditParameters);
 	If Modified Then
-		QuestionText = NStr("en='Changes are made to the current EDF setting. Record?';ru='В текущую настройку ЭДО внесены изменения. Записать?'");
+		QuestionText = NStr("en='Current EDF setting was changed. Write?';ru='В текущую настройку ЭДО внесены изменения. Записать?'");
 		ShowQueryBox(NOTifyDescription, QuestionText, QuestionDialogMode.YesNo, , DialogReturnCode.Yes);
 	Else
 		ExecuteNotifyProcessing(NOTifyDescription);
@@ -274,9 +274,9 @@ Procedure SettingsTest(Command)
 	
 	NotifyDescription = New NotifyDescription("CompleteSettingsTest", ThisObject);
 	If Modified Then
-		QuestionText = NStr("en='Changes are made to the current EDF setting. Do you want to continue the test?';ru='В текущую настройку ЭДО внесены изменения. Продолжить выполнение теста?'");
+		QuestionText = NStr("en='Current EDF setting was changed. Continue the test execution?';ru='В текущую настройку ЭДО внесены изменения. Продолжить выполнение теста?'");
 		ButtonList = New ValueList();
-		ButtonList.Add("Execute", NStr("en='Save and perform test';ru='Сохранить и выполнить тест.'"));
+		ButtonList.Add("Execute", NStr("en='Save and test.';ru='Сохранить и выполнить тест.'"));
 		ButtonList.Add("Cancel", NStr("en='Cancel test';ru='Отменить тест.'"));
 		ShowQueryBox(NOTifyDescription, QuestionText, ButtonList, , "Execute", NStr("en='Test settings';ru='Тест настроек'"));
 	Else
@@ -539,9 +539,9 @@ Procedure FormManagement(Form)
 	Items.GroupSettingsDirectExchangeTrustedCertificates.Visible = Form.ThroughDirectory OR Form.ThroughEMail OR Form.ThroughFTP;
 	
 	// AgreementSetupExtendedMode
-	Items.FormEnableAgreementSetupExtendedMode.Title = NStr("en='Enable extended mode of EDF settings';ru='Включить расширенный режим настроек ЭДО'");
+	Items.FormEnableAgreementSetupExtendedMode.Title = NStr("en='Enable advanced mode of EDF settings';ru='Включить расширенный режим настроек ЭДО'");
 	If Object.AgreementSetupExtendedMode Then
-		Items.FormEnableAgreementSetupExtendedMode.Title = NStr("en='Disable extended mode of EDF settings';ru='Выключить расширенный режим настроек ЭДО'");
+		Items.FormEnableAgreementSetupExtendedMode.Title = NStr("en='Disable advanced mode of EDF settings';ru='Выключить расширенный режим настроек ЭДО'");
 	EndIf;
 	
 	Items.EDFProfileSettings.Visible                         = Not Object.AgreementSetupExtendedMode;
@@ -838,7 +838,7 @@ Procedure AddDateByTabularSection(ValueSelected, AddressInStorage = Undefined)
 		Try
 			CryptoCertificate = New CryptoCertificate(BinaryData);
 		Except
-			MessageText = NStr("en='File certificate should be in the DER X format.509, operation aborted.';ru='Файл сертификата должен быть в формате DER X.509, операция прервана.'");
+			MessageText = NStr("en='Certificate file must have DER X.509 format, operation aborted.';ru='Файл сертификата должен быть в формате DER X.509, операция прервана.'");
 			CommonUseClientServer.MessageToUser(MessageText);
 			Return;
 		EndTry;
@@ -871,7 +871,7 @@ Procedure PutInCertificateRepositoryConfiguration(AddressInStorage = Undefined)
 		Try
 			CryptoCertificate = New CryptoCertificate(BinaryData);
 		Except
-			MessageText = NStr("en='File certificate should be in the DER X format.509, operation aborted.';ru='Файл сертификата должен быть в формате DER X.509, операция прервана.'");
+			MessageText = NStr("en='Certificate file must have DER X.509 format, operation aborted.';ru='Файл сертификата должен быть в формате DER X.509, операция прервана.'");
 			CommonUseClientServer.MessageToUser(MessageText);
 			Return;
 		EndTry;
@@ -1026,7 +1026,7 @@ Procedure TestLinksDirectExchangeAtServer(IncomingDocumentsDir, OutgoingDocument
 			BriefErrorDescription(ErrorInfo()));
 	EndTry;
 	MessageText = StringFunctionsClientServer.SubstituteParametersInString(MessagePattern, TestResult);
-	MessageText = NStr("en='Exchange text by %1 profile.';ru='Тест обмена по профилю %1.'") + " " + MessageText;
+	MessageText = NStr("en='Exchange text by the %1 profile.';ru='Тест обмена по профилю %1.'") + " " + MessageText;
 	MessageText = StrReplace(MessageText, "%1", EDFProfileSettings);
 	CommonUseClientServer.MessageToUser(MessageText);
 	
@@ -1152,7 +1152,7 @@ Procedure CompleteSettingsTest(Val Result, Val AdditionalParameters) Export
 
 		Status(NStr("en='Settings test.';ru='Тест настроек.'"),
 			,
-			NStr("en='Testing ED exchange through electronic mail. Please wait...';ru='Выполняется тестирование обмена ЭД через электронную почту. Пожалуйста, подождите..'"));
+			NStr("en='Testing ED exchange via email. Please wait...';ru='Выполняется тестирование обмена ЭД через электронную почту. Пожалуйста, подождите..'"));
 		EDFProfileSettingsParameters = EDFProfileSettingsParameters(OutgoingDocumentsTableRow[0].EDFProfileSettings);
 		EmailOperationsClient.CheckAccount(EDFProfileSettingsParameters.IncomingDocumentsResource);
 		Filter.Insert("ToForm", True);
@@ -1169,7 +1169,7 @@ Procedure CompleteSettingsTest(Val Result, Val AdditionalParameters) Export
 		OutgoingDocumentsTableRow = Object.OutgoingDocuments.FindRows(Filter);
 		Status(NStr("en='Settings test.';ru='Тест настроек.'"),
 		,
-		NStr("en='Testing ED exchange through directory. Please wait...';ru='Выполняется тестирование обмена ЭД через каталог. Пожалуйста, подождите..'"));
+		NStr("en='Testing ED exchange via directory. Please wait...';ru='Выполняется тестирование обмена ЭД через каталог. Пожалуйста, подождите..'"));
 		EDFProfileSettingsParameters = EDFProfileSettingsParameters(OutgoingDocumentsTableRow[0].EDFProfileSettings);
 		
 		PathToParentDirectoryEDFProfileSettings = EDFProfileSettingsParameters.IncomingDocumentsResource;
@@ -1195,7 +1195,7 @@ Procedure CompleteSettingsTest(Val Result, Val AdditionalParameters) Export
 		
 		Status(NStr("en='Settings test.';ru='Тест настроек.'"),
 			,
-			NStr("en='Testing ED exchange through FTP. Please wait...';ru='Выполняется тестирование обмена ЭД через FTP. Пожалуйста, подождите..'"));
+			NStr("en='Testing ED exchange via FTP. Please wait...';ru='Выполняется тестирование обмена ЭД через FTP. Пожалуйста, подождите..'"));
 		EDFProfileSettingsParameters = EDFProfileSettingsParameters(OutgoingDocumentsTableRow[0].EDFProfileSettings);
 		
 		PathToParentDirectoryEDFProfileSettings = EDFProfileSettingsParameters.IncomingDocumentsResource;

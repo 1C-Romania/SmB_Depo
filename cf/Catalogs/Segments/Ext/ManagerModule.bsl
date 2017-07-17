@@ -281,12 +281,12 @@ Function GetAvailableFilterRules() Export
 	
 	GroupAdditional = EventGroup.Rows.Add();
 	GroupAdditional.Name = "EventsAdditionally";
-	GroupAdditional.Presentation = NStr("en='Events clarifications';ru='Уточнения событий'");
+	GroupAdditional.Presentation = NStr("en='Event clarifications';ru='Уточнения событий'");
 	GroupAdditional.IsFolder = True;
 	
 	NewRule = GroupAdditional.Rows.Add();
 	NewRule.Name = "EventsState";
-	NewRule.Presentation = NStr("en='Events state';ru='Состояние событий'");
+	NewRule.Presentation = NStr("en='Event state';ru='Состояние событий'");
 	NewRule.IsFolder = False;
 	NewRule.MultipleUse = False;
 	NewRule.ValueProperties.Insert("TypeRestriction", New TypeDescription("CatalogRef.EventStates"));
@@ -308,7 +308,7 @@ Function GetAvailableFilterRules() Export
 	
 	GroupOrders = Rules.Rows.Add();
 	GroupOrders.Name = "CustomerOrders";
-	GroupOrders.Presentation = NStr("en='Customer orders (days old, quantity)';ru='Заказы покупателей (давность, количество)'");
+	GroupOrders.Presentation = NStr("en='Customer orders (remoteness, quantity)';ru='Заказы покупателей (давность, количество)'");
 	GroupOrders.IsFolder = True;
 	
 	NewRule = GroupOrders.Rows.Add();
@@ -322,7 +322,7 @@ Function GetAvailableFilterRules() Export
 	
 	RuleOrdersQuantity = GroupOrders.Rows.Add();
 	RuleOrdersQuantity.Name = "CustomerOrdersQuantity";
-	RuleOrdersQuantity.Presentation = NStr("en='Orders quantity';ru='Количество заказов'");
+	RuleOrdersQuantity.Presentation = NStr("en='Number of orders';ru='Количество заказов'");
 	RuleOrdersQuantity.IsFolder = False;
 	RuleOrdersQuantity.MultipleUse = True;
 	RuleOrdersQuantity.ValueProperties.Insert("TypeRestriction", New TypeDescription("Number"));
@@ -340,7 +340,7 @@ Function GetAvailableFilterRules() Export
 	
 	GroupAdditional = GroupOrders.Rows.Add();
 	GroupAdditional.Name = "CustomerOrdersAdditionally";
-	GroupAdditional.Presentation = NStr("en='Clarification of customers orders';ru='Уточнения заказов покупателей'");
+	GroupAdditional.Presentation = NStr("en='Clarifications of customer orders';ru='Уточнения заказов покупателей'");
 	GroupAdditional.IsFolder = True;
 	
 	NewRule = GroupAdditional.Rows.Add();
@@ -358,7 +358,7 @@ Function GetAvailableFilterRules() Export
 	
 	Account_sGroup = Rules.Rows.Add();
 	Account_sGroup.Name = "InvoicesForPayment";
-	Account_sGroup.Presentation = NStr("en='Quotations (days old, quantity)';ru='Счета на оплату (давность, количество)'");
+	Account_sGroup.Presentation = NStr("en='Proforma invoices (issue date, quantity)';ru='Счета на оплату (давность, количество)'");
 	Account_sGroup.IsFolder = True;
 	
 	NewRule = Account_sGroup.Rows.Add();
@@ -372,7 +372,7 @@ Function GetAvailableFilterRules() Export
 	
 	RuleAccountsQuantity = Account_sGroup.Rows.Add();
 	RuleAccountsQuantity.Name = "InvoicesForPaymentQuantity";
-	RuleAccountsQuantity.Presentation = NStr("en='Accounts quantity';ru='Количество счетов'");
+	RuleAccountsQuantity.Presentation = NStr("en='Number of accounts';ru='Количество счетов'");
 	RuleAccountsQuantity.IsFolder = False;
 	RuleAccountsQuantity.MultipleUse = True;
 	RuleAccountsQuantity.ValueProperties.Insert("TypeRestriction", New TypeDescription("Number"));
@@ -399,7 +399,7 @@ Function GetAvailableFilterRules() Export
 	
 	NewRule = GroupSalesProductsAndServices.Rows.Add();
 	NewRule.Name = "SalesProductsAndServicesProductsAndServices";
-	NewRule.Presentation = NStr("en='ProductsAndServices';ru='ProductAndServices'");
+	NewRule.Presentation = NStr("en='ProductAndServices';ru='ProductAndServices'");
 	NewRule.IsFolder = False;
 	NewRule.MultipleUse = False;
 	NewRule.ValueProperties.Insert("TypeRestriction", New TypeDescription("CatalogRef.ProductsAndServices"));
@@ -408,7 +408,7 @@ Function GetAvailableFilterRules() Export
 	
 	NewRule = GroupSalesProductsAndServices.Rows.Add();
 	NewRule.Name = "SalesProductsAndServicesProductsAndServicesGroup";
-	NewRule.Presentation = NStr("en='ProductsAndServices group';ru='Группа номенклатуры'");
+	NewRule.Presentation = NStr("en='Products and services group';ru='Группа номенклатуры'");
 	NewRule.IsFolder = False;
 	NewRule.MultipleUse = False;
 	NewRule.ValueProperties.Insert("TypeRestriction", New TypeDescription("CatalogRef.ProductsAndServices"));
@@ -417,7 +417,7 @@ Function GetAvailableFilterRules() Export
 	
 	NewRule = GroupSalesProductsAndServices.Rows.Add();
 	NewRule.Name = "SalesProductsAndServicesProductsAndServicesCategory";
-	NewRule.Presentation = NStr("en='Products and services category';ru='Номенклатурная группа'");
+	NewRule.Presentation = NStr("en='Products and services group';ru='Номенклатурная группа'");
 	NewRule.IsFolder = False;
 	NewRule.MultipleUse = False;
 	NewRule.ValueProperties.Insert("TypeRestriction", New TypeDescription("CatalogRef.ProductsAndServicesCategories"));
@@ -431,7 +431,7 @@ Function GetAvailableFilterRules() Export
 	
 	NewRule = GroupAdditional.Rows.Add();
 	NewRule.Name = "SalesProductsAndServicesPeriod";
-	NewRule.Presentation = NStr("en='For the period (sales by products and servises)';ru='За период (продажи по номенклатуре)'");
+	NewRule.Presentation = NStr("en='For the period (sales by products and services)';ru='За период (продажи по номенклатуре)'");
 	NewRule.IsFolder = False;
 	NewRule.MultipleUse = False;
 	NewRule.ValueProperties.Insert("TypeRestriction", TypeDescriptionStandardPeriod);
@@ -444,12 +444,12 @@ Function GetAvailableFilterRules() Export
 	
 	GroupSalesIncome = Rules.Rows.Add();
 	GroupSalesIncome.Name = "SalesIncome";
-	GroupSalesIncome.Presentation = NStr("en='Sales (income, profit)';ru='Продажи (выручка, прибыль)'");
+	GroupSalesIncome.Presentation = NStr("en='Sales (revenue, profit)';ru='Продажи (выручка, прибыль)'");
 	GroupSalesIncome.IsFolder = True;
 	
 	NewRule = GroupSalesIncome.Rows.Add();
 	NewRule.Name = "SalesIncomeIncome";
-	NewRule.Presentation = NStr("en='Income (man. currency)';ru='Выручка (упр. валюте)'");
+	NewRule.Presentation = NStr("en='Revenue (man. currency)';ru='Выручка (упр. валюте)'");
 	NewRule.IsFolder = False;
 	NewRule.MultipleUse = True;
 	NewRule.ValueProperties.Insert("TypeRestriction", CurrencyTypeDescription);
@@ -467,12 +467,12 @@ Function GetAvailableFilterRules() Export
 	
 	GroupAdditional = GroupSalesIncome.Rows.Add();
 	GroupAdditional.Name = "SalesIncomeAdditionally";
-	GroupAdditional.Presentation = NStr("en='Clarifications of sales profit';ru='Уточнения выручки от продаж'");
+	GroupAdditional.Presentation = NStr("en='Clarifications of revenue from sales';ru='Уточнения выручки от продаж'");
 	GroupAdditional.IsFolder = True;
 	
 	NewRule = GroupAdditional.Rows.Add();
 	NewRule.Name = "SalesIncomePeriod";
-	NewRule.Presentation = NStr("en='For a period (profit from sales)';ru='За период (выручка от продаж)'");
+	NewRule.Presentation = NStr("en='For a period (revenue from sales)';ru='За период (выручка от продаж)'");
 	NewRule.IsFolder = False;
 	NewRule.MultipleUse = False;
 	NewRule.ValueProperties.Insert("TypeRestriction", TypeDescriptionStandardPeriod);
@@ -499,7 +499,7 @@ Function GetAvailableFilterRules() Export
 	
 	NewRule = GroupDebt.Rows.Add();
 	NewRule.Name = "CustomerDebtTerm";
-	NewRule.Presentation = NStr("en='Customer overdue term (days)';ru='Срок просрочки покупателя (дней)'");
+	NewRule.Presentation = NStr("en='Customer overdue period (days)';ru='Срок просрочки покупателя (дней)'");
 	NewRule.IsFolder = False;
 	NewRule.MultipleUse = True;
 	NewRule.ValueProperties.Insert("TypeRestriction", New TypeDescription("Number"));
@@ -508,7 +508,7 @@ Function GetAvailableFilterRules() Export
 	
 	NewRule = GroupDebt.Rows.Add();
 	NewRule.Name = "VendorDebtAmount";
-	NewRule.Presentation = NStr("en='Amount of vendor debt (man. currency)';ru='Сумма долга поставщику (упр. валюте)'");
+	NewRule.Presentation = NStr("en='Amount of debt to supplier (man. currency)';ru='Сумма долга поставщику (упр. валюте)'");
 	NewRule.IsFolder = False;
 	NewRule.MultipleUse = True;
 	NewRule.ValueProperties.Insert("TypeRestriction", CurrencyTypeDescription);
@@ -517,7 +517,7 @@ Function GetAvailableFilterRules() Export
 	
 	NewRule = GroupDebt.Rows.Add();
 	NewRule.Name = "VendorDebtTerm";
-	NewRule.Presentation = NStr("en='Delay to supplier (days)';ru='Срок просрочки поставщику (дней)'");
+	NewRule.Presentation = NStr("en='Supplier overdue period (days)';ru='Срок просрочки поставщику (дней)'");
 	NewRule.IsFolder = False;
 	NewRule.MultipleUse = True;
 	NewRule.ValueProperties.Insert("TypeRestriction", New TypeDescription("Number"));
@@ -1127,25 +1127,25 @@ Procedure AddComparisonTypes(Rule, AddedComparisonsKinds, DefaultTypeNumber = 1)
 		ElsIf KindInString = "LessOrEqual" Then
 			Rule.AvailableComparisonTypes.Add(DataCompositionComparisonType.LessOrEqual, NStr("en='Less or equal';ru='Меньше или равно'"));
 		ElsIf KindInString = "InList" Then
-			Rule.AvailableComparisonTypes.Add(DataCompositionComparisonType.InList,		 NStr("en='In list';ru='В списке'"));
+			Rule.AvailableComparisonTypes.Add(DataCompositionComparisonType.InList,		 NStr("en='In the list';ru='В списке'"));
 		ElsIf KindInString = "NotInList" Then
 			Rule.AvailableComparisonTypes.Add(DataCompositionComparisonType.NotInList,		 NStr("en='Not in the list';ru='Не в списке'"));
 		ElsIf KindInString = "InHierarchy" Then
 			Rule.AvailableComparisonTypes.Add(DataCompositionComparisonType.InHierarchy,		 NStr("en='In group';ru='В группе'"));
 		ElsIf KindInString = "NotInHierarchy" Then
-			Rule.AvailableComparisonTypes.Add(DataCompositionComparisonType.NotInHierarchy,	 NStr("en='Not in the group';ru='Не в группе'"));
+			Rule.AvailableComparisonTypes.Add(DataCompositionComparisonType.NotInHierarchy,	 NStr("en='Not in group';ru='Не в группе'"));
 		ElsIf KindInString = "Filled" Then
-			Rule.AvailableComparisonTypes.Add(DataCompositionComparisonType.Filled,		 NStr("en='Filled';ru='заполненный'"));
+			Rule.AvailableComparisonTypes.Add(DataCompositionComparisonType.Filled,		 NStr("en='filled in';ru='заполненный'"));
 		ElsIf KindInString = "NotFilled" Then
-			Rule.AvailableComparisonTypes.Add(DataCompositionComparisonType.NotFilled,	 NStr("en='not filled';ru='Не заполнено'"));
+			Rule.AvailableComparisonTypes.Add(DataCompositionComparisonType.NotFilled,	 NStr("en='Not filled in';ru='Не заполнено'"));
 		ElsIf KindInString = "BeginsWith" Then
 			Rule.AvailableComparisonTypes.Add(DataCompositionComparisonType.BeginsWith,	 NStr("en='Begins with';ru='Начинается с'"));
 		ElsIf KindInString = "NotBeginsWith" Then
-			Rule.AvailableComparisonTypes.Add(DataCompositionComparisonType.NotBeginsWith,	 NStr("en='Not beginning with';ru='Не начинается с'"));
+			Rule.AvailableComparisonTypes.Add(DataCompositionComparisonType.NotBeginsWith,	 NStr("en='Does not begin with';ru='Не начинается с'"));
 		ElsIf KindInString = "Contains" Then
 			Rule.AvailableComparisonTypes.Add(DataCompositionComparisonType.Contains,		 NStr("en='Contains';ru='Содержит'"));
 		ElsIf KindInString = "NotContains" Then
-			Rule.AvailableComparisonTypes.Add(DataCompositionComparisonType.NotContains,	 NStr("en=""Doesn't contain"";ru='Не содержит'"));
+			Rule.AvailableComparisonTypes.Add(DataCompositionComparisonType.NotContains,	 NStr("en='Does not contain';ru='Не содержит'"));
 		EndIf;
 	EndDo;
 	

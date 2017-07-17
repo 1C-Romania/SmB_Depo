@@ -112,7 +112,7 @@ Procedure BeforeWrite(Cancel, WriteParameters)
 		FieldCounter = FieldCounter + Object.TrackFields3.Count();
 	EndIf;
 	If FieldCounter = 0 Then
-		CommonUseClientServer.MessageToUser(NStr("en='Not a single field was added to any of available tracks.';ru='Не добавлено ни одного поля ни в одной из доступных дорожек.'"), , , , Cancel);
+		CommonUseClientServer.MessageToUser(NStr("en='Not a single field was not added to the any of available tracks.';ru='Не добавлено ни одного поля ни в одной из доступных дорожек.'"), , , , Cancel);
 	EndIf;
 	
 	ControlOfFieldsUniqueness(Cancel);
@@ -365,7 +365,7 @@ Procedure DetermineFieldCoordinates(Notification, TrackData, Prefix, Suffix, Del
 		CCol = CCol - StrLen(Prefix);
 		If NCol < 1 Then
 			// Selected text overlaps the prefix.
-			CommonUseClientServer.MessageToUser(NStr("en='Selected part of the code should not overlap the suffix, prefix or block delimiter.';ru='Выделенный участок кода не должен пересекаться с суффиксом, префиксом или разделителем блоков.'"));
+			CommonUseClientServer.MessageToUser(NStr("en='Selected part of the code should not overlap the suffix, prefix or block separator.';ru='Выделенный участок кода не должен пересекаться с суффиксом, префиксом или разделителем блоков.'"));
 			Return;
 		EndIf;
 	EndIf;
@@ -375,7 +375,7 @@ Procedure DetermineFieldCoordinates(Notification, TrackData, Prefix, Suffix, Del
 		DataRow = Left(DataRow, StrLen(DataRow)-StrLen(Suffix)); // cut suffix if any
 		If CCol-1 > StrLen(DataRow) Then
 			// Selected text overlaps the suffix.
-			CommonUseClientServer.MessageToUser(NStr("en='Selected part of the code should not overlap the suffix, prefix or block delimiter.';ru='Выделенный участок кода не должен пересекаться с суффиксом, префиксом или разделителем блоков.'"));
+			CommonUseClientServer.MessageToUser(NStr("en='Selected part of the code should not overlap the suffix, prefix or block separator.';ru='Выделенный участок кода не должен пересекаться с суффиксом, префиксом или разделителем блоков.'"));
 			Return;
 		EndIf;
 	EndIf;
@@ -383,7 +383,7 @@ Procedure DetermineFieldCoordinates(Notification, TrackData, Prefix, Suffix, Del
 	SeparatorIsFound = Find(Mid(DataRow, NCol, CCol-NCol), Delimiter);
 	If Not IsBlankString(Delimiter) AND SeparatorIsFound > 0 Then
 		// Selected text crosses the delimiter.
-		CommonUseClientServer.MessageToUser(NStr("en='Selected part of the code should not overlap the suffix, prefix or block delimiter.';ru='Выделенный участок кода не должен пересекаться с суффиксом, префиксом или разделителем блоков.'"));
+		CommonUseClientServer.MessageToUser(NStr("en='Selected part of the code should not overlap the suffix, prefix or block separator.';ru='Выделенный участок кода не должен пересекаться с суффиксом, префиксом или разделителем блоков.'"));
 		Return;
 	EndIf;
 	
@@ -405,7 +405,7 @@ Procedure DetermineFieldCoordinates(Notification, TrackData, Prefix, Suffix, Del
 			Break;
 		ElsIf SeparatorPosition = 1 Then
 			// Selected text crosses the delimiter.
-			CommonUseClientServer.MessageToUser(NStr("en='Selected part of the code should not overlap the suffix, prefix or block delimiter.';ru='Выделенный участок кода не должен пересекаться с суффиксом, префиксом или разделителем блоков.'"));
+			CommonUseClientServer.MessageToUser(NStr("en='Selected part of the code should not overlap the suffix, prefix or block separator.';ru='Выделенный участок кода не должен пересекаться с суффиксом, префиксом или разделителем блоков.'"));
 			Return;
 		Else
 			DataRow = Right(DataRow, StrLen(DataRow)-SeparatorPosition);
@@ -426,14 +426,14 @@ Procedure DetermineFieldCoordinates(Notification, TrackData, Prefix, Suffix, Del
 		NextAlert = New NotifyDescription("DetermineFieldCoordinatesEnd", ThisObject, Context);
 		
 		ButtonList = New ValueList;
-		ButtonList.Add(DialogReturnCode.Yes, NStr("en='Field length is fixed';ru='Длина поля фиксированная'"));
-		ButtonList.Add(DialogReturnCode.No, NStr("en='Field length is limited by the delimiter or by the string end';ru='Длина поля ограничивается разделителем или концом строки'"));
+		ButtonList.Add(DialogReturnCode.Yes, NStr("en='Field length fixed';ru='Длина поля фиксированная'"));
+		ButtonList.Add(DialogReturnCode.No, NStr("en='Field length is limited by the separator or by the row end';ru='Длина поля ограничивается разделителем или концом строки'"));
 		ShowChooseFromMenu(NextAlert, ButtonList, );
 		Return;
 		//	
 		//Response = DoQueryBox(NStr("en='Length of selected field is fixed or limited by delimiter/string end?
 		// |""Yes"" - field length fixed
-		// |""No""  - length fields limited by delimiter or string end'"), QuestionDialogMode.YesNo, , DialogReturnCode.No, NStr("en='Length fields in characters';ru='Длина поля в символах'"));
+		// |""No""  - length fields limited by delimiter or string end'"), QuestionDialogMode.YesNo, , DialogReturnCode.No, NStr("en='Field length in characters';ru='Длина поля в символах'"));
 		//	
 		//If Response = DialogReturnCode.Not Then
 		//	
@@ -476,7 +476,7 @@ Procedure ControlOfFieldUniqueness(DoublesList, Field, CurrentLineNumber, TableN
 					If curField.Field = Field Then
 						TwinCounter = TwinCounter + 1;
 						If TwinCounter > 1 Then
-							StrMessage = NStr("en='Track %1, string %2: Field should be unique!';ru='Дорожка %1, строка %2: Поле должно быть уникальным!'");
+							StrMessage = NStr("en='Track %1, line %2: Field should be unique.';ru='Дорожка %1, строка %2: Поле должно быть уникальным!'");
 							StrMessage = StrReplace(StrMessage, "%1", Right("TrackFields"+String(G),1));
 							StrMessage = StrReplace(StrMessage, "%2", String(curField.LineNumber));
 							CommonUseClientServer.MessageToUser(StrMessage
@@ -491,7 +491,7 @@ Procedure ControlOfFieldUniqueness(DoublesList, Field, CurrentLineNumber, TableN
 		EndIf;
 		
 	Else
-		StrMessage = NStr("en='Field can not be empty!';ru='Дорожка %1, строка %2: Поле не может быть пустым!'");
+		StrMessage = NStr("en='Track %1, line %2: Field cannot be empty.';ru='Дорожка %1, строка %2: Поле не может быть пустым!'");
 		StrMessage = StrReplace(StrMessage, "%1", Right(TableName,1));
 		StrMessage = StrReplace(StrMessage, "%2", String(CurrentLineNumber));
 		CommonUseClientServer.MessageToUser(StrMessage
@@ -528,7 +528,7 @@ Procedure CheckTemplateEnd(Result, Parameters) Export
 	If Result = DialogReturnCode.Yes Then
 		
 		If Not ThisForm.Write() Then
-			CommonUseClientServer.MessageToUser(NStr("en='Failed to record template';ru='Не удалось записать шаблон'"));
+			CommonUseClientServer.MessageToUser(NStr("en='Cannot write the template';ru='Не удалось записать шаблон'"));
 			Return;
 		EndIf;
 		
@@ -544,7 +544,7 @@ Procedure CheckTemplateCommand(Command)
 	// Check form on modification.
 	// IN order the changes in template come into effect, you must save them.
 	If ThisForm.Modified Then
-		QuestionText = NStr("en='Template was changed, record changes?';ru='Шаблон был изменен, записать изменения?'");
+		QuestionText = NStr("en='Template was changed. Save changes?';ru='Шаблон был изменен, записать изменения?'");
 		Notification = New NotifyDescription("CheckTemplateEnd", ThisObject);
 		ShowQueryBox(Notification, QuestionText, QuestionDialogMode.YesNo);
 	Else
