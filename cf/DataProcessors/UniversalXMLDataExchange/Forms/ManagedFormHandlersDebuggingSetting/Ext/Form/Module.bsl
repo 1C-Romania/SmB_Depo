@@ -19,13 +19,13 @@ Procedure OnCreateAtServer(Cancel, StandardProcessing)
 	Object.AlgorithmsDebugMode = Parameters.AlgorithmsDebugMode;
 	Object.EventHandlersReadFromFileOfExchangeRules = Parameters.EventHandlersReadFromFileOfExchangeRules;
 	
-	FormTitle = NStr("en='Configure handler debugging when %Event% of data';ru='Настройка отладки обработчиков при %Событие% данных'");	
-	Event = ?(Parameters.EventHandlersReadFromFileOfExchangeRules, NStr("en='exporting';ru='экспорт'"), NStr("en='export';ru='экспорт'"));
+	FormTitle = NStr("en='Configure handler debugging on data %Event%';ru='Настройка отладки обработчиков при %Событие% данных'");	
+	Event = ?(Parameters.EventHandlersReadFromFileOfExchangeRules, NStr("en='export';ru='выгрузке'"), NStr("en='import';ru='загрузке'"));
 	FormTitle = StrReplace(FormTitle, "%Event%", Event);
 	Title = FormTitle;
 	
 	ButtonTitle = NStr("en='Generate %Event% debug engine';ru='Сформировать модуль отладки %Событие%'");
-	Event = ?(Parameters.EventHandlersReadFromFileOfExchangeRules, NStr("en='export';ru='экспорт'"), NStr("en='import';ru='импорт'"));
+	Event = ?(Parameters.EventHandlersReadFromFileOfExchangeRules, NStr("en='export';ru='выгрузки'"), NStr("en='import';ru='загрузки'"));
 	ButtonTitle = StrReplace(ButtonTitle, "%Event%", Event);
 	Items.ExportCodeHandlers.Title = ButtonTitle;
 	

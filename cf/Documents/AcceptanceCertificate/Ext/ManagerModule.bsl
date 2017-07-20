@@ -2008,7 +2008,7 @@ Procedure AddPrintCommands(PrintCommands) Export
 	// ServicesAcceptanceCertificate
 	PrintCommand = PrintCommands.Add();
 	PrintCommand.ID = "Act";
-	PrintCommand.Presentation = NStr("en='Services acceptance certificate';ru='Акт выполненных работ'");
+	PrintCommand.Presentation = NStr("en='Acceptance certificate';ru='Акт выполненных работ'");
 	PrintCommand.FormsList = "DocumentForm,ListForm,DocumentsListForm";
 	PrintCommand.CheckPostingBeforePrint = False;
 	PrintCommand.Order = 1;

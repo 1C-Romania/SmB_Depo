@@ -403,7 +403,7 @@ Procedure ConfigureRepresentationSets()
 	CommandMoveDown			= Commands.Find("MoveDown");
 	
 	If ThisIsSetOfAdditionalInformation Then
-		Title = NStr("ru = 'Дополнительные сведения'; en = 'Custom data'");
+		Title = NStr("en='Additional information';ru='Дополнительные сведения'");
 		
 		CommandCreate.ToolTip	= NStr("en='Create unique information';ru='Создать уникальное сведение'");
 		CommandCreate.Title		= NStr("ru = 'Новое'; en = 'New'");
@@ -439,7 +439,7 @@ Procedure ConfigureRepresentationSets()
 		Items.PropertiesCommon.ToolTip	= NStr("ru = 'Общее дополнительное сведение, которое используется в
 		                                              |нескольких наборах дополнительных сведений.'; en = 'Common custom data used in several additional data sets.'");
 	Else
-		Title = NStr("en='Custom fields';ru='Дополнительные реквизиты'");
+		Title = NStr("en='Additional attributes';ru='Дополнительные реквизиты'");
 		CommandCreate.Title		= NStr("ru='Новый';en='New'");
 		CommandCreate.ToolTip	= NStr("en='Create a unique field';ru='Создать уникальный реквизит'");
 		

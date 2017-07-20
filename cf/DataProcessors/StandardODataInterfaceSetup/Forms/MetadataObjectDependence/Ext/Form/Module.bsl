@@ -9,11 +9,11 @@ Procedure OnCreateAtServer(Cancel, StandardProcessing)
 	MetadataObject = Metadata.FindByFullName(Parameters.FullObjectName);
 	
 	If CommonUseSTL.ThisIsConstant(MetadataObject) Then
-		ObjectTypePresentation = NStr("en='constant';ru='постоянная'");
+		ObjectTypePresentation = NStr("en='constant';ru='константе'");
 	ElsIf CommonUseSTL.ThisIsCatalog(MetadataObject) Then
-		ObjectTypePresentation = NStr("en='catalog';ru='каталог'");
+		ObjectTypePresentation = NStr("en='catalog';ru='справочнику'");
 	ElsIf CommonUseSTL.ThisIsDocument(MetadataObject) Then
-		ObjectTypePresentation = NStr("en='document';ru='документ'");
+		ObjectTypePresentation = NStr("en='document';ru='документу'");
 	ElsIf CommonUseSTL.IsSequenceRecordSet(MetadataObject) Then
 		ObjectTypePresentation = NStr("en='sequences';ru='последовательности'");
 	ElsIf CommonUseSTL.IsDocumentJournal(MetadataObject) Then
@@ -35,9 +35,9 @@ Procedure OnCreateAtServer(Cancel, StandardProcessing)
 	ElsIf CommonUseSTL.ThisIsCalculationRegister(MetadataObject) Then
 		ObjectTypePresentation = NStr("en='calculation register';ru='регистру расчета'");
 	ElsIf CommonUseSTL.IsRecalculationRecordSet(MetadataObject) Then
-		ObjectTypePresentation = NStr("en='recalculation';ru='перерасчет'");
+		ObjectTypePresentation = NStr("en='recalculation';ru='перерасчету'");
 	ElsIf CommonUseSTL.ThisIsBusinessProcess(MetadataObject) Then
-		ObjectTypePresentation = NStr("en='business process';ru='бизнес-процесс'");
+		ObjectTypePresentation = NStr("en='business process';ru='бизнес-процессу'");
 	ElsIf CommonUseSTL.ThisIsTask(MetadataObject) Then
 		ObjectTypePresentation = NStr("en='task';ru='задаче'");
 	ElsIf CommonUseSTL.ThisIsExchangePlan(MetadataObject) Then

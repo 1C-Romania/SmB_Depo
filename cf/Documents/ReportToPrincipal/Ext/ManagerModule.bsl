@@ -1704,7 +1704,7 @@ Function PrintCertificate(ObjectsArray, PrintObjects)
 		TemplateArea.Parameters.VendorPresentation = CompanyPresentation;
 		TemplateArea.Parameters.RecipientPresentation = PresentationOfCounterparty;
 		
-		TemplateArea.Parameters.HeaderText			= NStr("en='Services acceptance certificate';ru='Акт выполненных работ'");
+		TemplateArea.Parameters.HeaderText			= NStr("en='Acceptance certificate';ru='Акт выполненных работ'");
 		TemplateArea.Parameters.TextAboutSumInWords		= 
 			"Commission charge amount is " 
 			+ SmallBusinessServer.GenerateAmountInWords(Header.Amount, Header.DocumentCurrency)
@@ -1969,7 +1969,7 @@ Procedure AddPrintCommands(PrintCommands) Export
 	
 	PrintCommand = PrintCommands.Add();
 	PrintCommand.ID = "ServicesAcceptanceCertificate";
-	PrintCommand.Presentation = NStr("en='Services acceptance certificate';ru='Акт выполненных работ'");
+	PrintCommand.Presentation = NStr("en='Acceptance certificate';ru='Акт выполненных работ'");
 	PrintCommand.FormsList = "DocumentForm,ListForm";
 	PrintCommand.CheckPostingBeforePrint = False;
 	PrintCommand.Order = 4;

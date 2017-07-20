@@ -4509,7 +4509,7 @@ Procedure AddPrintCommands(PrintCommands) Export
 	
 	PrintCommand = PrintCommands.Add();
 	PrintCommand.ID							= "CompletionCertificate";
-	PrintCommand.Presentation				= NStr("en = 'Completion certificate'; ru = 'Акт выполненных работ'");
+	PrintCommand.Presentation				= NStr("en='Acceptance certificate';ru='Акт выполненных работ'");
 	PrintCommand.CheckPostingBeforePrint	= False;
 	PrintCommand.Order						= 2;
 	

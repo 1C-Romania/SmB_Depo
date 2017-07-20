@@ -1209,7 +1209,7 @@ EndFunction // GetGeneratedByText()
 //	
 //	MetadataAttributesArray = New Array();
 //	
-//	NewField = TemplateReports.AddDataSetField(DCS.DataSets[0], "Ref", Nstr("en='Reference';pl='Odwołanie';ru='Ссылка'"));
+//	NewField = TemplateReports.AddDataSetField(DCS.DataSets[0], "Ref", Nstr("en='Ref';pl='Odwołanie';ru='Ссылка'"));
 //	NewField.AttributeUseRestriction.Field = True;
 //	TemplateReports.AddDataSetField(DCS.DataSets[0], "DeletionMark", Nstr("en='Deletion mark';pl='Zaznaczenie do usunięcia'"));
 //	TemplateReports.AddDataSetField(DCS.DataSets[0], "Date", Nstr("en='Date';pl='Data'"));

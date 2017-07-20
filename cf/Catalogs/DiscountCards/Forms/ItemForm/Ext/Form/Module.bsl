@@ -76,12 +76,12 @@ Procedure CheckDiscountCardsDuplicates(Form)
 		ElsIf DuplicateItemsNumber < 5 Then
 			
 			DuplicatesMessageParametersStructure.Insert("DuplicateItemsNumber", DuplicateItemsNumber);
-			DuplicatesMessageParametersStructure.Insert("Declension", NStr("en='maps';ru='карты'"));
+			DuplicatesMessageParametersStructure.Insert("Declension", NStr("en='cards';ru='карты'"));
 			
 		Else
 			
 			DuplicatesMessageParametersStructure.Insert("DuplicateItemsNumber", DuplicateItemsNumber);
-			DuplicatesMessageParametersStructure.Insert("Declension", NStr("en='cards';ru='карты'"));
+			DuplicatesMessageParametersStructure.Insert("Declension", NStr("en='cards';ru='карт'"));
 			
 		EndIf;	
 		

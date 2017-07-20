@@ -116,7 +116,7 @@ Procedure OnClose()
 	// AutomaticDiscounts
 	// Display message about discount calculation if you click the "Post and close" or form closes by the cross with change saving.
 	If UseAutomaticDiscounts AND DiscountsCalculatedBeforeWrite Then
-		ShowUserNotification(NStr("ru = 'Изменение'; en = 'Change:'"), 
+		ShowUserNotification(NStr("ru = 'Изменение:'; en = 'Change:'"), 
 									GetURL(Object.Ref), 
 									String(Object.Ref) + NStr("ru = '. Автоматические скидки (наценки) рассчитаны!'; en = '. Automatic discounts (markups) are calculated!'"), 
 									PictureLib.Information32);

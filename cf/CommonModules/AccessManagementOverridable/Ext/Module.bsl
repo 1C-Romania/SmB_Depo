@@ -25,7 +25,7 @@ Procedure OnFillAccessKinds(AccessKinds) Export
 
 	AccessKind = AccessKinds.Add();
 	AccessKind.Name = "PettyCashes";
-	AccessKind.Presentation    = NStr("en='PettyCashes';ru='Кассы'");
+	AccessKind.Presentation    = NStr("en='Cash funds';ru='Кассы'");
 	AccessKind.ValuesType      = Type("CatalogRef.PettyCashes");
 	
 	AccessKind = AccessKinds.Add();
@@ -481,7 +481,7 @@ Procedure WhenFillingOutProfileGroupsAccessProvided(ProfileDescriptions, UpdateP
 	ProfileDescription = AccessManagement.AccessGroupProfileNewDescription();
 	ProfileDescription.Name           = "Salary";
 	ProfileDescription.ID = "76337574-bff4-11df-9174-e0cb4ed5f4c3";
-	ProfileDescription.Description = NStr("en='Salary';ru='Зарплата'");
+	ProfileDescription.Description = NStr("en='Payroll';ru='Зарплата'");
 	ProfileDescription.Definition = NStr("en='Use this profile to operate with the Payroll section: HR recordkeeping and payroll.';ru='Под профилем осуществляется работа с разделом Зарплата: кадровый учет и расчет зарплаты.'"
 	);
 	

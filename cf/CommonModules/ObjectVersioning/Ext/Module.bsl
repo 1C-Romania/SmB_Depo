@@ -1641,7 +1641,7 @@ Function GetAttributePresentationInLanguage(Val AttributeName) Export
 	ElsIf AttributeName = "DeletionMark" Then
 		Return NStr("ru = 'Пометка удаления'; en='Deletion mark'");
 	ElsIf AttributeName = "Ref" Then
-		Return NStr("ru = 'Ссылка'; en='Ref'");
+		Return NStr("en='Ref';ru='Ссылка'");
 	ElsIf AttributeName = "Parent" Then
 		Return NStr("ru = 'Родитель'; en='Parent'");
 	ElsIf AttributeName = "Owner" Then

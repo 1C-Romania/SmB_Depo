@@ -400,8 +400,8 @@ Function ConfigurationModuleDictionary() Export
 	
 	Result = New Structure();
 	
-	Result.Insert("Nominative", NStr("en='Application';ru='Приложение'"));
-	Result.Insert("Genitive", NStr("en='application';ru='заявление'"));
+	Result.Insert("Nominative", NStr("en='Application';ru='Программа'"));
+	Result.Insert("Genitive", NStr("en='Application';ru='Программы'"));
 	
 	Return Result;
 	

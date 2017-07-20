@@ -174,7 +174,7 @@ Procedure RefreshReport() Export
 	Spreadsheet.Header.Enabled   = True;
 	Spreadsheet.Footer.Enabled   = True;
 	
-	Spreadsheet.Header.LeftText  = Nstr("pl='Firma';ru='Организация'",LanguageCode)+": " + Common.GetLongDescription(Company) + " " + Nstr("en='VAT Number';pl='NIP';ru='ИНН'",LanguageCode)+": " + Taxes.GetVATNumberPresentation(Company.VATNumber);
+	Spreadsheet.Header.LeftText  = Nstr("pl='Firma';ru='Организация'",LanguageCode)+": " + Common.GetLongDescription(Company) + " " + Nstr("en='TIN';pl='NIP';ru='ИНН'",LanguageCode)+": " + Taxes.GetVATNumberPresentation(Company.VATNumber);
 	Spreadsheet.Header.RightText = Metadata().Synonym + ". " + GetPeriodPresentation(BeginPeriodParameterValue.Value, EndPeriodParameterValue.Value) + " "+Nstr("pl='Wygenerowany';ru='Сформированный'",LanguageCode)+": " + GenerationDate;
 	
 	Spreadsheet.Footer.LeftText  = CommonAtServer.GetGeneratedByText();

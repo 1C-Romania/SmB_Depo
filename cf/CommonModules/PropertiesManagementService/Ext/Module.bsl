@@ -903,7 +903,7 @@ Procedure OnFillAccessKinds(AccessKinds) Export
 	
 	AccessKind = AccessKinds.Add();
 	AccessKind.Name = "AdditionalInformation";
-	AccessKind.Presentation = NStr("en='Additional data';ru='Дополнительные сведения'");
+	AccessKind.Presentation = NStr("en='Additional information';ru='Дополнительные сведения'");
 	AccessKind.ValuesType   = Type("ChartOfCharacteristicTypesRef.AdditionalAttributesAndInformation");
 	
 EndProcedure

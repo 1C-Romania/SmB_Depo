@@ -166,7 +166,7 @@ Procedure GenerateBasicInformation() Export
 	EndIf;
 	
 	If Not IsBlankString(TIN) Then
-		RowsArray.Add(NStr("ru='ИНН'; en = 'TIN'") + " " + TIN);
+		RowsArray.Add(NStr("en='TIN';ru='ИНН'") + " " + TIN);
 	EndIf;
 	
 	CI = ContactInformation.Unload();

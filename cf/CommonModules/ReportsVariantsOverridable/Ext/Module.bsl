@@ -31,7 +31,7 @@ Procedure DetermineSectionsWithReportVariants(Sections) Export
 	Sections.Add(Metadata.Subsystems.InventoryAndPurchasing, NStr("en='Inventory and purchases';ru='Запасы и закупки'"));
 	Sections.Add(Metadata.Subsystems.Services, NStr("en='Service';ru='Работы'"));
 	Sections.Add(Metadata.Subsystems.KittingAndProduction, NStr("en='Manufacturing';ru='Производство'"));
-	Sections.Add(Metadata.Subsystems.Finances, NStr("en='Finances';ru='Деньги'"));
+	Sections.Add(Metadata.Subsystems.Finances, NStr("en='Funds';ru='Деньги'"));
 	Sections.Add(Metadata.Subsystems.PayrollAndHumanResources, NStr("en='Payroll and HR';ru='Зарплата и персонал'"));
 	Sections.Add(Metadata.Subsystems.Enterprise, NStr("en='Company';ru='Предприятие'"));
 	Sections.Add(Metadata.Subsystems.Analysis, NStr("en='Analysis';ru='Анализ'"));

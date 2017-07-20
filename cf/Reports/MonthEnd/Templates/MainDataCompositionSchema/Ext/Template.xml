@@ -4409,7 +4409,16 @@ GROUP BY
 						</dcscor:item>
 						<dcscor:item xsi:type="dcsset:SettingsParameterValue">
 							<dcscor:parameter>Title</dcscor:parameter>
-							<dcscor:value xsi:type="xs:string">Exchange differences calculation</dcscor:value>
+							<dcscor:value xsi:type="v8:LocalStringType">
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Exchange rate difference calculation</v8:content>
+								</v8:item>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Расчет курсовых разниц</v8:content>
+								</v8:item>
+							</dcscor:value>
 						</dcscor:item>
 						<dcscor:item xsi:type="dcsset:SettingsParameterValue">
 							<dcscor:parameter>DataParametersOutput</dcscor:parameter>

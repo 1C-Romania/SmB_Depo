@@ -500,7 +500,7 @@ Procedure GenerateDuplicateChecksPresentation(Form)
 		If DuplicatesNumber > 0 Then
 			
 			DuplicatesMessageParametersStructure = New Structure;
-			DuplicatesMessageParametersStructure.Insert("TIN", НСтр("ru = 'ИНН'; en = 'TIN'"));
+			DuplicatesMessageParametersStructure.Insert("TIN", НСтр("en='TIN';ru='ИНН'"));
 			
 			If DuplicatesNumber = 1 Then
 				DuplicatesMessageParametersStructure.Insert("DuplicatesNumber", NStr("ru = 'один'; en = 'one'"));

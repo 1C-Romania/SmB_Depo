@@ -7438,7 +7438,7 @@ Procedure AddPrintCommands(PrintCommands) Export
 	// Services acceptance certificate
 	PrintCommand = PrintCommands.Add();
 	PrintCommand.ID = "ServicesAcceptanceCertificate";
-	PrintCommand.Presentation = NStr("en='Services acceptance certificate';ru='Акт выполненных работ'");
+	PrintCommand.Presentation = NStr("en='Acceptance certificate';ru='Акт выполненных работ'");
 	PrintCommand.FormsList = "FormWorkOrder,ListFormWorkOrder,ShipmentDocumentsListForm,PaymentDocumentsListForm";
 	PrintCommand.CheckPostingBeforePrint = False;
 	PrintCommand.PlaceProperties = "GroupImportantCommandsJobOrder";
