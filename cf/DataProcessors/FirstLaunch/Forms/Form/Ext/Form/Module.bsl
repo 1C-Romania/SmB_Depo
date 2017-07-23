@@ -75,18 +75,27 @@ EndProcedure
 &AtClient
 Procedure Go(Command)
 	
-	// Find the file
-	FileName = PathToFile() + NameOfFile(Postfix);
-	File = New File(FileName);
-	If File.Exist() Then
-		// If file exist then fill data from file at server.
-		FillPredefinedDataAtServer(FileName);
-		Close(True);
-	Else
-		CommonUseClientServer.MessageToUser(
-			StrTemplate(NStr("ru='Файл %1 не найден.';en='File %1 was not found.'"), FileName));
-	EndIf;
+	Dialog = New FileDialog(FileDialogMode.Open);
+	FileFilter = NStr("ru = 'Файл локализации'; en = 'Localization file'") + "(*.xml)|*.xml";
+	Dialog.Filter = FileFilter;
+	Dialog.Multiselect = False;
+	Dialog.Title = "Choose file";
 	
+	If Dialog.Choose() Then
+	
+		// Find the file
+		FileName = Dialog.FullFileName;
+		File = New File(FileName);
+		If File.Exist() Then
+			// If file exist then fill data from file at server.
+			FillPredefinedDataAtServer(FileName);
+			Close(True);
+		Else
+			CommonUseClientServer.MessageToUser(
+				StrTemplate(NStr("ru='Файл %1 не найден.';en='File %1 was not found.'"), FileName));
+		EndIf;
+		
+	EndIf;
 EndProcedure
 
 &AtServer
