@@ -304,17 +304,10 @@ Function ThisIsFirstLaunch() Export
 	
 EndFunction
 
-Function FormExternalFirstLaunch(Adress) Export
+Function FillDefaultFirstLaunch() Export
 	
-	NameExternalFirstLaunch = ExternalDataProcessors.Connect(Adress,, False);
-	Return "ExternalDataProcessor." + NameExternalFirstLaunch + ".Form";
+	InfobaseUpdateSB.DefaultFirstLaunch();
 	
 EndFunction
-
-Function FillDefaultFirstLaunch() Export
-
-	InfobaseUpdateSB.DefaultFirstLaunch();
-
-EndFunction 
 
 #EndRegion

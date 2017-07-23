@@ -312,8 +312,8 @@ Procedure WhenFillingOutProfileGroupsAccessProvided(ProfileDescriptions, UpdateP
 	ProfileDescription = AccessManagement.AccessGroupProfileNewDescription();
 	ProfileDescription.Name           = "Production";
 	ProfileDescription.ID = "76337578-bff4-11df-9174-e0cb4ed5f4c3";	
-	ProfileDescription.Description = NStr("en='Manufacturing';ru='Производство'");
-	ProfileDescription.Definition = NStr("en='Use this profile to operate with the Manufacturing section.';ru='Под профилем осуществляется работа с разделом Производство.'"
+	ProfileDescription.Description = NStr("en='Production';ru='Производство'");
+	ProfileDescription.Definition = NStr("en='Use this profile to operate with the Production section.';ru='Под профилем осуществляется работа с разделом Производство.'"
 	);
 	
 	// SSL

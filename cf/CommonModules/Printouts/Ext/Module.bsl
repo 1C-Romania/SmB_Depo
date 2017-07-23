@@ -41,132 +41,134 @@ EndFunction
 
 Function GetPrintout(Val ObjectRef, Description, Copies = 0, Company = Undefined, Partner = Undefined, PrintMode, GeneralPrintoutForm,ReturnSpreadsheetOrArray=Undefined, FolderToSave = "", TypeOfFile = "") Export
 	
-	If Company = Undefined Then
-		Company = Catalogs.Companies.EmptyRef();
-	EndIf;
+	//  TODO   Jack0999   get out this PrintOut 
 	
-	Result = GetPrintoutSearchResult(Description, ObjectRef, Company, Partner);
-	If Result.IsEmpty() Then
-		
-		If TypeOf(ObjectRef) = TypeOf(Documents.SalesInvoice.EmptyRef())
-			AND ObjectRef.ImmediateStockMovements Then
-			
-			SalesDeliveryRef = InventoryTransaction.GetImmediateStockMovementsOnSalesInvoice(ObjectRef);
-			Result = GetPrintoutSearchResult(Description, SalesDeliveryRef, Company, Partner);
-			
-			If Result.IsEmpty() OR SalesDeliveryRef.IsEmpty() Then
-				
-				Alerts.AddAlert(Alerts.ParametrizeString(Nstr("en = 'Printout %P1 was not found for %P2 (Company: %P3, Partner: %P4)'; pl = 'Wydruk %P1 nie został odnaleziony dla %P2 (Firma: %P3, Kontrahent: %P4)'"),New Structure("P1, P2, P3, P4",Description, ObjectRef,Company,Partner)),Enums.AlertType.Error,,ObjectRef);
-				Return False;		
-				
-			Else
-				
-				 ObjectRef = SalesDeliveryRef;
-				
-			EndIf;	
-			
-		ElsIf TypeOf(ObjectRef) = TypeOf(Documents.SalesCreditNoteReturn.EmptyRef())
-			AND ObjectRef.ImmediateStockMovements Then
-			
-			SalesReturnReceiptRef = InventoryTransaction.GetImmediateStockMovementsOnSalesCreditNoteReturn(ObjectRef);
-			Result = GetPrintoutSearchResult(Description, SalesReturnReceiptRef, Company, Partner);
-			
-			If Result.IsEmpty() OR SalesReturnReceiptRef.IsEmpty() Then
-				
-				Alerts.AddAlert(Alerts.ParametrizeString(Nstr("en = 'Printout %P1 was not found for %P2 (Company: %P3, Partner: %P4)'; pl = 'Wydruk %P1 nie został odnaleziony dla %P2 (Firma: %P3, Kontrahent: %P4)'"),New Structure("P1, P2, P3, P4",Description, ObjectRef,Company,Partner)),Enums.AlertType.Error,,ObjectRef);
-				Return False;		
-				
-			Else
-				
-				ObjectRef = SalesReturnReceiptRef;
-				
-			EndIf;
-			
-		Else
-			
-			Alerts.AddAlert(Alerts.ParametrizeString(Nstr("en = 'Printout %P1 was not found for %P2 (Company: %P3, Partner: %P4)'; pl = 'Wydruk %P1 nie został odnaleziony dla %P2 (Firma: %P3, Kontrahent: %P4)'"),New Structure("P1, P2, P3, P4",Description, ObjectRef,Company,Partner)),Enums.AlertType.Error,,ObjectRef);
-			Return False;		
-			
-		EndIf;	
-		
-	EndIf;
-	
-	Selection = Result.Choose();
-	Selection.Next();
-	
-	DataProcessor = GetPrintoutDataProcessor(Selection.Internal, Selection.FileName, Selection.Template);
-	
-	If DataProcessor = Undefined Then
-		Alerts.AddAlert(Alerts.ParametrizeString(Nstr("en = 'Printout %P1 was not found for %P2 (Company: %P3, Partner: %P4)'; pl = 'Wydruk %P1 nie został odnaleziony dla %P2 (Firma: %P3, Kontrahent: %P4)'"),New Structure("P1, P2, P3, P4",Description, ObjectRef,Company,Partner)),Enums.AlertType.Error,,ObjectRef);
-		Return False;
-	EndIf;
-	
-	DataProcessor.ObjectRef  = ObjectRef;
-	
-	Parameters = DataProcessor.Parameters;
-	If Parameters.Columns.Count() = 0 Then
-		Parameters = GetPrintingParametersTable();
-	EndIf;
-	
-	SavedParametersStructure = Selection.SavedParameters.Get();
-	If TypeOf(SavedParametersStructure) = Type("Structure") Then
-		
-		For Each ParametersRow In Parameters Do
-			
-			SavedParameterValue = Undefined;
-			If SavedParametersStructure.Property(ParametersRow.Name, SavedParameterValue) Then
-				ParametersRow.Value = SavedParameterValue;
-			EndIf;
-			
-		EndDo;
-		
-	EndIf;
-	
-	NumberOfCopies = ?(Copies = 0, Selection.Copies, Copies);
-	
-	NewParameter = Parameters.Add();
-	NewParameter.Name = "COPIES";
-	NewParameter.Value = NumberOfCopies;
-	
-	DataProcessor.Parameters = Parameters;
-	
-	Spreadsheet = DataProcessor.Print();
-	
-	If CommonAtServer.IsDocumentAttribute("IsFiscalPrintOut", DataProcessor.Metadata()) Then
-		Return True;
-	EndIf;
-	
-	PrintoutLanguage = GetPrintingParameter(Parameters, "PrintoutLanguage", Common.GetDefaultLanguageCodeAndDescription().LanguageCode);
-	PageCaption = Description + " (" + NumberOfCopies +  ")";
-	
-	If PrintMode = Enums.PrintMode.Spreadsheet Then
-		ReturnSpreadsheetOrArray = New SpreadsheetDocument;
-	ElsIf PrintMode = Enums.PrintMode.SpreadsheetsArray Then
-		ReturnSpreadsheetOrArray = New Array;
-	Else
-		ReturnSpreadsheetOrArray = Undefined;
-	EndIf;
-	
-	If TypeOf(Spreadsheet) = Type("TextDocument") Then
-		CurReturnSpreadsheet = PrintSpreadsheet(Spreadsheet, GeneralPrintoutForm, PrintMode, PageCaption, NumberOfCopies, PrintoutLanguage, FolderToSave, TypeOfFile);
-		//CurReturnSpreadsheet.Show("Text document");
-	ElsIf TypeOf(Spreadsheet) = Type("SpreadsheetDocument") Then
-		CurReturnSpreadsheet = PrintSpreadsheet(Spreadsheet, GeneralPrintoutForm, PrintMode, PageCaption, NumberOfCopies, PrintoutLanguage, FolderToSave, TypeOfFile);
-		If PrintMode = Enums.PrintMode.Spreadsheet Then
-			ReturnSpreadsheetOrArray = SpreadsheetConcat(ReturnSpreadsheetOrArray,CurReturnSpreadsheet);
-		ElsIf PrintMode = Enums.PrintMode.SpreadsheetsArray Then
-			ReturnSpreadsheetOrArray.Add(CurReturnSpreadsheet);
-		EndIf;	
-	ElsIf TypeOf(Spreadsheet) = Type("Array") Then
-		For Each ArrayElement In Spreadsheet Do
-			CurReturnSpreadsheet = PrintSpreadsheet(ArrayElement,  GeneralPrintoutForm, PrintMode, PageCaption, NumberOfCopies, PrintoutLanguage, FolderToSave, TypeOfFile);
-			If PrintMode = Enums.PrintMode.Spreadsheet Then
-				ReturnSpreadsheetOrArray = SpreadsheetConcat(ReturnSpreadsheetOrArray,CurReturnSpreadsheet);
-			ElsIf PrintMode = Enums.PrintMode.SpreadsheetsArray Then
-				ReturnSpreadsheetOrArray.Add(CurReturnSpreadsheet);	
-			EndIf;	
-		EndDo;
-	EndIf;
+	//If Company = Undefined Then
+	//	Company = Catalogs.Companies.EmptyRef();
+	//EndIf;
+	//
+	//Result = GetPrintoutSearchResult(Description, ObjectRef, Company, Partner);
+	//If Result.IsEmpty() Then
+	//	
+	//	If TypeOf(ObjectRef) = TypeOf(Documents.SalesInvoice.EmptyRef())
+	//		AND ObjectRef.ImmediateStockMovements Then
+	//		
+	//		SalesDeliveryRef = InventoryTransaction.GetImmediateStockMovementsOnSalesInvoice(ObjectRef);
+	//		Result = GetPrintoutSearchResult(Description, SalesDeliveryRef, Company, Partner);
+	//		
+	//		If Result.IsEmpty() OR SalesDeliveryRef.IsEmpty() Then
+	//			
+	//			Alerts.AddAlert(Alerts.ParametrizeString(Nstr("en = 'Printout %P1 was not found for %P2 (Company: %P3, Partner: %P4)'; pl = 'Wydruk %P1 nie został odnaleziony dla %P2 (Firma: %P3, Kontrahent: %P4)'"),New Structure("P1, P2, P3, P4",Description, ObjectRef,Company,Partner)),Enums.AlertType.Error,,ObjectRef);
+	//			Return False;		
+	//			
+	//		Else
+	//			
+	//			 ObjectRef = SalesDeliveryRef;
+	//			
+	//		EndIf;	
+	//		
+	//	ElsIf TypeOf(ObjectRef) = TypeOf(Documents.SalesCreditNoteReturn.EmptyRef())
+	//		AND ObjectRef.ImmediateStockMovements Then
+	//		
+	//		SalesReturnReceiptRef = InventoryTransaction.GetImmediateStockMovementsOnSalesCreditNoteReturn(ObjectRef);
+	//		Result = GetPrintoutSearchResult(Description, SalesReturnReceiptRef, Company, Partner);
+	//		
+	//		If Result.IsEmpty() OR SalesReturnReceiptRef.IsEmpty() Then
+	//			
+	//			Alerts.AddAlert(Alerts.ParametrizeString(Nstr("en = 'Printout %P1 was not found for %P2 (Company: %P3, Partner: %P4)'; pl = 'Wydruk %P1 nie został odnaleziony dla %P2 (Firma: %P3, Kontrahent: %P4)'"),New Structure("P1, P2, P3, P4",Description, ObjectRef,Company,Partner)),Enums.AlertType.Error,,ObjectRef);
+	//			Return False;		
+	//			
+	//		Else
+	//			
+	//			ObjectRef = SalesReturnReceiptRef;
+	//			
+	//		EndIf;
+	//		
+	//	Else
+	//		
+	//		Alerts.AddAlert(Alerts.ParametrizeString(Nstr("en = 'Printout %P1 was not found for %P2 (Company: %P3, Partner: %P4)'; pl = 'Wydruk %P1 nie został odnaleziony dla %P2 (Firma: %P3, Kontrahent: %P4)'"),New Structure("P1, P2, P3, P4",Description, ObjectRef,Company,Partner)),Enums.AlertType.Error,,ObjectRef);
+	//		Return False;		
+	//		
+	//	EndIf;	
+	//	
+	//EndIf;
+	//
+	//Selection = Result.Choose();
+	//Selection.Next();
+	//
+	//DataProcessor = GetPrintoutDataProcessor(Selection.Internal, Selection.FileName, Selection.Template);
+	//
+	//If DataProcessor = Undefined Then
+	//	Alerts.AddAlert(Alerts.ParametrizeString(Nstr("en = 'Printout %P1 was not found for %P2 (Company: %P3, Partner: %P4)'; pl = 'Wydruk %P1 nie został odnaleziony dla %P2 (Firma: %P3, Kontrahent: %P4)'"),New Structure("P1, P2, P3, P4",Description, ObjectRef,Company,Partner)),Enums.AlertType.Error,,ObjectRef);
+	//	Return False;
+	//EndIf;
+	//
+	//DataProcessor.ObjectRef  = ObjectRef;
+	//
+	//Parameters = DataProcessor.Parameters;
+	//If Parameters.Columns.Count() = 0 Then
+	//	Parameters = GetPrintingParametersTable();
+	//EndIf;
+	//
+	//SavedParametersStructure = Selection.SavedParameters.Get();
+	//If TypeOf(SavedParametersStructure) = Type("Structure") Then
+	//	
+	//	For Each ParametersRow In Parameters Do
+	//		
+	//		SavedParameterValue = Undefined;
+	//		If SavedParametersStructure.Property(ParametersRow.Name, SavedParameterValue) Then
+	//			ParametersRow.Value = SavedParameterValue;
+	//		EndIf;
+	//		
+	//	EndDo;
+	//	
+	//EndIf;
+	//
+	//NumberOfCopies = ?(Copies = 0, Selection.Copies, Copies);
+	//
+	//NewParameter = Parameters.Add();
+	//NewParameter.Name = "COPIES";
+	//NewParameter.Value = NumberOfCopies;
+	//
+	//DataProcessor.Parameters = Parameters;
+	//
+	//Spreadsheet = DataProcessor.Print();
+	//
+	//If CommonAtServer.IsDocumentAttribute("IsFiscalPrintOut", DataProcessor.Metadata()) Then
+	//	Return True;
+	//EndIf;
+	//
+	//PrintoutLanguage = GetPrintingParameter(Parameters, "PrintoutLanguage", Common.GetDefaultLanguageCodeAndDescription().LanguageCode);
+	//PageCaption = Description + " (" + NumberOfCopies +  ")";
+	//
+	//If PrintMode = Enums.PrintMode.Spreadsheet Then
+	//	ReturnSpreadsheetOrArray = New SpreadsheetDocument;
+	//ElsIf PrintMode = Enums.PrintMode.SpreadsheetsArray Then
+	//	ReturnSpreadsheetOrArray = New Array;
+	//Else
+	//	ReturnSpreadsheetOrArray = Undefined;
+	//EndIf;
+	//
+	//If TypeOf(Spreadsheet) = Type("TextDocument") Then
+	//	CurReturnSpreadsheet = PrintSpreadsheet(Spreadsheet, GeneralPrintoutForm, PrintMode, PageCaption, NumberOfCopies, PrintoutLanguage, FolderToSave, TypeOfFile);
+	//	//CurReturnSpreadsheet.Show("Text document");
+	//ElsIf TypeOf(Spreadsheet) = Type("SpreadsheetDocument") Then
+	//	CurReturnSpreadsheet = PrintSpreadsheet(Spreadsheet, GeneralPrintoutForm, PrintMode, PageCaption, NumberOfCopies, PrintoutLanguage, FolderToSave, TypeOfFile);
+	//	If PrintMode = Enums.PrintMode.Spreadsheet Then
+	//		ReturnSpreadsheetOrArray = SpreadsheetConcat(ReturnSpreadsheetOrArray,CurReturnSpreadsheet);
+	//	ElsIf PrintMode = Enums.PrintMode.SpreadsheetsArray Then
+	//		ReturnSpreadsheetOrArray.Add(CurReturnSpreadsheet);
+	//	EndIf;	
+	//ElsIf TypeOf(Spreadsheet) = Type("Array") Then
+	//	For Each ArrayElement In Spreadsheet Do
+	//		CurReturnSpreadsheet = PrintSpreadsheet(ArrayElement,  GeneralPrintoutForm, PrintMode, PageCaption, NumberOfCopies, PrintoutLanguage, FolderToSave, TypeOfFile);
+	//		If PrintMode = Enums.PrintMode.Spreadsheet Then
+	//			ReturnSpreadsheetOrArray = SpreadsheetConcat(ReturnSpreadsheetOrArray,CurReturnSpreadsheet);
+	//		ElsIf PrintMode = Enums.PrintMode.SpreadsheetsArray Then
+	//			ReturnSpreadsheetOrArray.Add(CurReturnSpreadsheet);	
+	//		EndIf;	
+	//	EndDo;
+	//EndIf;
 	
 EndFunction // GetPrintout()
 

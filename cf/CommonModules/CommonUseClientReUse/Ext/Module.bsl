@@ -8,7 +8,8 @@
 
 // Returns True if it is a web client in Mac OS.
 Function ThisIsMacOSWebClient() Export
-	
+
+//  TODO  we need to analyse it !
 #If Not WebClient Then
 	Return False;  // This code works only in web client.
 #EndIf

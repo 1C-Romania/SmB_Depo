@@ -504,8 +504,10 @@ Function CreateAdministrator(IBUser = Undefined) Export
 		
 		If IBUser = Undefined Then
 			IBUser = InfobaseUsers.CreateUser();
-			IBUser.Name       = "Administrator";
+			IBUser.Name     = "Administrator";
 			IBUser.FullName = IBUser.Name;
+			IBUser.Language = Metadata.Languages.English;
+			
 			IBUser.Roles.Clear();
 			IBUser.Roles.Add(Metadata.Roles.FullRights);
 			

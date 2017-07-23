@@ -967,11 +967,12 @@ EndProcedure // PurchaseOrdersInProcessClick()
 ////////////////////////////////////////////////////////////////////////////////
 // Production orders
 
+////////////////////////////////////////////////////////////////////////////////
 // Procedure - ExecutionOverdue command handler of the ProductionOrders list.
 //
 &AtClient
 Procedure ManufacturingOrdersDueFulfilmentOfPressing(Item, StandardProcessing)
-	
+
 	StandardProcessing = False;
 	
 	OpenParameters = New Structure;
@@ -983,6 +984,7 @@ Procedure ManufacturingOrdersDueFulfilmentOfPressing(Item, StandardProcessing)
 	
 EndProcedure // ProductionOrdersOverdueExecutionClick()
 
+////////////////////////////////////////////////////////////////////////////////
 // Procedure - ForToday command handler of the ProductionOrders list.
 //
 &AtClient
@@ -999,6 +1001,7 @@ Procedure ManufacturingOrdersOnTodayPress(Item, StandardProcessing)
 	
 EndProcedure // ProductionOrdersForTodayClick()
 
+////////////////////////////////////////////////////////////////////////////////
 // Procedure - InProcess command handler of the ProductionOrders list.
 //
 &AtClient

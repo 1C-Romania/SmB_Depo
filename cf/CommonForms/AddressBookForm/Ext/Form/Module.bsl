@@ -297,8 +297,12 @@ EndProcedure
 Procedure BeforeCloseingTransferProposed(QuestionResult, AdditionalParameters) Export
 	
 	If QuestionResult = DialogReturnCode.Yes Then
-		AddressInStorage = SelectedRecipientsAddressInTemporaryStorage();
-		Close(AddressInStorage);
+		
+	//  TODO  we need to analyse it for 8.3.8
+		#if not webclient then
+			AddressInStorage = SelectedRecipientsAddressInTemporaryStorage();
+			Close(AddressInStorage);
+		#endif
 	ElsIf QuestionResult = DialogReturnCode.No Then
 		AddressInStorage = "CloseWithoutTransfer";
 		Close();

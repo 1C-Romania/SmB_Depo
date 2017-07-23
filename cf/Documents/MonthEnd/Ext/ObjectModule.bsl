@@ -1299,7 +1299,7 @@ Procedure GenerateRegisterRecordsByExpensesRegister(RecordSet, RecordSetManageri
 			If ValueIsFilled(RegisterRecordRow.ProductsAndServices) Then
 				ContentOfAccountingRecord = NStr("en='Expense write-off';ru='Списание расходов'");
 			Else
-				ContentOfAccountingRecord = NStr("en='Inventory write-off from manufacturing';ru='Списание запасов из производства'");
+				ContentOfAccountingRecord = NStr("en='Inventory write-off from Production';ru='Списание запасов из производства'");
 			EndIf;
 		EndIf;
 	EndIf;

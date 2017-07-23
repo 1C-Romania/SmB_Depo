@@ -183,40 +183,18 @@ EndFunction
 Procedure OpenExternalFirstLaunch(Parameters, AdditionalParameters) Export
 	
 	NotifyDescription = New NotifyDescription("CompletionProcessing", ThisObject, AdditionalParameters);
-	
-	File = New File(PathToExternalFirstLaunch());
-	If File.Exist() Then
-		NotifyDescriptionOpenForm = New NotifyDescription("OpenFormAfterPutFile", ThisObject, NotifyDescription);
-		BeginPutFile(NotifyDescriptionOpenForm, "", PathToExternalFirstLaunch(), False);
-	Else
-		CommonUseServerCall.FillDefaultFirstLaunch();
-		ExecuteNotifyProcessing(NotifyDescription, True);
-	EndIf;
-	
-EndProcedure
-
-Procedure OpenFormAfterPutFile(Result, Adress, Path, NotifyDescription) Export
-	
-	If Result = True Then
-		FormName = CommonUseServerCall.FormExternalFirstLaunch(Adress);
-		OpenForm(FormName,,,,,,NotifyDescription);
-	Else
-		CommonUseServerCall.FillDefaultFirstLaunch();
-		ExecuteNotifyProcessing(NotifyDescription, True);
-	EndIf;
+	OpenForm("DataProcessor.FirstLaunch.Form",,,,,,NotifyDescription);
 	
 EndProcedure
 
 Procedure CompletionProcessing(Result, Parameters) Export
 	
+	If Result <> True Then
+		CommonUseServerCall.FillDefaultFirstLaunch();
+	EndIf;
+	
 	ExecuteNotifyProcessing(Parameters.CompletionProcessing);
 	
 EndProcedure
-
-Function PathToExternalFirstLaunch()
-
-	Return "C:\FirstLaunch.epf";
-
-EndFunction
 
 #EndRegion

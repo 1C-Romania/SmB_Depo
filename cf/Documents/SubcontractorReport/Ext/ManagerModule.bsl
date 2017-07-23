@@ -2350,7 +2350,7 @@ Procedure InitializeDocumentData(DocumentRefSubcontractorReport, StructureAdditi
 	// Temporarily: change motions by the order warehouse.
 	Query.SetParameter("UpdateDateToRelease_1_2_1", Constants.UpdateDateToRelease_1_2_1.Get());
 		
-	Query.SetParameter("InventoryAssembly", NStr("en='Manufacturing';ru='Производство'"));
+	Query.SetParameter("InventoryAssembly", NStr("en='Production';ru='Производство'"));
 
 	ResultsArray = Query.ExecuteBatch();
 	

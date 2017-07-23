@@ -233,14 +233,14 @@ Function CheckRecordsByProductionSubsystemRegisters()
 	// 1. Inventory Register.
 	If Not ResultsArray[0].IsEmpty() Then
 		
-		ErrorText = NStr("en='There are records in the ""Inventory"" register where the GL account is of type ""Indirect costs"" or ""Unfinished production"". You cannot clear the ""Manufacturing"" check box.';ru='В информационной базе присутствуют движения по регистру ""Запасы"", где счет учета имеет тип Косвенные затраты или Незавершенное производство! Снятие флага ""Производство"" запрещено!'");
+		ErrorText = NStr("en='There are records in the ""Inventory"" register where the GL account is of type ""Indirect costs"" or ""Unfinished production"". You cannot clear the ""Production"" check box.';ru='В информационной базе присутствуют движения по регистру ""Запасы"", где счет учета имеет тип Косвенные затраты или Незавершенное производство! Снятие флага ""Производство"" запрещено!'");
 		
 	EndIf;
 	
 	// 2. The Inventory received register.
 	If Not ResultsArray[1].IsEmpty() Then
 		
-		ErrorText = ErrorText + ?(IsBlankString(ErrorText), "", Chars.LF) + NStr("en='The ""Received inventory"" accumulation register contains information about acceptance for processing. Cannot clear the ""Manufacturing"" check box.';ru='Регистр накопления ""Запасы принятые"" содержит информацию о приеме в переработку! Снятие флага ""Производство"" запрещено!'");
+		ErrorText = ErrorText + ?(IsBlankString(ErrorText), "", Chars.LF) + NStr("en='The ""Received inventory"" accumulation register contains information about acceptance for processing. Cannot clear the ""Production"" check box.';ru='Регистр накопления ""Запасы принятые"" содержит информацию о приеме в переработку! Снятие флага ""Производство"" запрещено!'");
 		
 	EndIf;
 	
@@ -487,126 +487,126 @@ Function CancellationUncheckFunctionalOptionUseSubsystemProduction()
 	// 1. Order for production Document.
 	If Not ResultsArray[0].IsEmpty() Then
 		
-		ErrorText = NStr("en='There are ""Production order"" documents in the infobase. You cannot clear the ""Manufacturing"" check box.';ru='В информационной базе присутствуют документы ""Заказ на производство""! Снятие флага ""Производство"" запрещено!'");
+		ErrorText = NStr("en='There are ""Production order"" documents in the infobase. You cannot clear the ""Production"" check box.';ru='В информационной базе присутствуют документы ""Заказ на производство""! Снятие флага ""Производство"" запрещено!'");
 		
 	EndIf;
 	
 	// 2. Production Document.
 	If Not ResultsArray[1].IsEmpty() Then
 		
-		ErrorText = ErrorText + ?(IsBlankString(ErrorText), "", Chars.LF) + NStr("en='There are ""Production"" documents in the infobase. You cannot clear the ""Manufacturing"" check box.';ru='В информационной базе присутствуют документы ""Производство""! Снятие флага ""Производство"" запрещено!'");
+		ErrorText = ErrorText + ?(IsBlankString(ErrorText), "", Chars.LF) + NStr("en='There are ""Production"" documents in the infobase. You cannot clear the ""Production"" check box.';ru='В информационной базе присутствуют документы ""Производство""! Снятие флага ""Производство"" запрещено!'");
 		
 	EndIf;
 	
 	// 3. The Cost allocation document.
 	If Not ResultsArray[2].IsEmpty() Then
 		
-		ErrorText = ErrorText + ?(IsBlankString(ErrorText), "", Chars.LF) + NStr("en='The infobase contains documents ""Cost allocation"". Cannot clear the ""Manufacturing"" check box.';ru='В информационной базе присутствуют документы ""Распределение затрат""! Снятие флага ""Производство"" запрещено!'");
+		ErrorText = ErrorText + ?(IsBlankString(ErrorText), "", Chars.LF) + NStr("en='The infobase contains documents ""Cost allocation"". Cannot clear the ""Production"" check box.';ru='В информационной базе присутствуют документы ""Распределение затрат""! Снятие флага ""Производство"" запрещено!'");
 		
 	EndIf;
 	
 	// 4. Customer order (Order for processing) document.
 	If Not ResultsArray[3].IsEmpty() Then
 		
-		ErrorText = ErrorText + ?(IsBlankString(ErrorText), "", Chars.LF) + NStr("en='There are ""Customer order"" documents with operation kind ""Processing order"" in the infobase. Cannot clear the ""Manufacturing"" check box.';ru='В информационной базе присутствуют документы ""Заказ покупателя"" с видом операции ""Заказ на переработку""! Снятие флага ""Производство"" запрещено!'");
+		ErrorText = ErrorText + ?(IsBlankString(ErrorText), "", Chars.LF) + NStr("en='There are ""Customer order"" documents with operation kind ""Processing order"" in the infobase. Cannot clear the ""Production"" check box.';ru='В информационной базе присутствуют документы ""Заказ покупателя"" с видом операции ""Заказ на переработку""! Снятие флага ""Производство"" запрещено!'");
 		
 	EndIf;
 	
 	// 5. The Job sheet document
 	If Not ResultsArray[4].IsEmpty() Then
 		
-		ErrorText = ErrorText + ?(IsBlankString(ErrorText), "", Chars.LF) + NStr("en='There are documents of the ""Job sheet"" kind in the infobase. Cannot clear the ""Manufacturing"" check box.';ru='В информационной базе присутствуют документы ""Сдельный наряд""! Снятие флага ""Производство"" запрещено!'");
+		ErrorText = ErrorText + ?(IsBlankString(ErrorText), "", Chars.LF) + NStr("en='There are documents of the ""Job sheet"" kind in the infobase. Cannot clear the ""Production"" check box.';ru='В информационной базе присутствуют документы ""Сдельный наряд""! Снятие флага ""Производство"" запрещено!'");
 		
 	EndIf;
 	
 	// 6. Transfer between cells document (transfer - department).
 	If Not ResultsArray[5].IsEmpty() Then
 		
-		ErrorText = ErrorText + ?(IsBlankString(ErrorText), "", Chars.LF) + NStr("en='There are documents of the ""Movement among bins"" kind in the infobase where business unit of the company is of ""Department"" type. You cannot clear the ""Manufacturing"" check box.';ru='В информационной базе присутствуют документы ""Перемещение по ячейкам"", где структурная единица компании имеет тип Подразделение! Снятие флага ""Производство"" запрещено!'");
+		ErrorText = ErrorText + ?(IsBlankString(ErrorText), "", Chars.LF) + NStr("en='There are documents of the ""Movement among bins"" kind in the infobase where business unit of the company is of ""Department"" type. You cannot clear the ""Production"" check box.';ru='В информационной базе присутствуют документы ""Перемещение по ячейкам"", где структурная единица компании имеет тип Подразделение! Снятие флага ""Производство"" запрещено!'");
 		
 	EndIf;
 	
 	// 7. The Inventory transfer document (department, indirect costs).
 	If Not ResultsArray[6].IsEmpty() Then
 		
-		ErrorText = ErrorText + ?(IsBlankString(ErrorText), "", Chars.LF) + NStr("en='There are documents of the ""Inventory movement"" kind in the infobase where business unit of the company is of ""Department"" type and/or the account of expenses is of type ""Indirect costs"". You cannot clear the ""Manufacturing"" check box.';ru='В информационной базе присутствуют документы ""Перемещение запасов"", где структурная единица компании имеет тип Подразделение и/или счет затрат имеет тип Косвенные затраты! Снятие флага ""Производство"" запрещено!'");
+		ErrorText = ErrorText + ?(IsBlankString(ErrorText), "", Chars.LF) + NStr("en='There are documents of the ""Inventory movement"" kind in the infobase where business unit of the company is of ""Department"" type and/or the account of expenses is of type ""Indirect costs"". You cannot clear the ""Production"" check box.';ru='В информационной базе присутствуют документы ""Перемещение запасов"", где структурная единица компании имеет тип Подразделение и/или счет затрат имеет тип Косвенные затраты! Снятие флага ""Производство"" запрещено!'");
 		
 	EndIf;
 	
 	// 8. Enter opening balance document (department, indirect costs).
 	If Not ResultsArray[7].IsEmpty() Then
 		
-		ErrorText = ErrorText + ?(IsBlankString(ErrorText), "", Chars.LF) + NStr("en='There are documents of the ""Enter opening balance"" kind in the infobase where business unit of the company is of ""Department"" type and/or the account of expenses is of type ""Indirect costs"" or ""Unfinished production"". You cannot clear the ""Manufacturing"" check box.';ru='В информационной базе присутствуют документы ""Ввод начальных остатков"", где структурная единица компании имеет тип Подразделение и/или счет затрат имеет тип Косвенные затраты или Незавершенное производство! Снятие флага ""Производство"" запрещено!'");
+		ErrorText = ErrorText + ?(IsBlankString(ErrorText), "", Chars.LF) + NStr("en='There are documents of the ""Enter opening balance"" kind in the infobase where business unit of the company is of ""Department"" type and/or the account of expenses is of type ""Indirect costs"" or ""Unfinished production"". You cannot clear the ""Production"" check box.';ru='В информационной базе присутствуют документы ""Ввод начальных остатков"", где структурная единица компании имеет тип Подразделение и/или счет затрат имеет тип Косвенные затраты или Незавершенное производство! Снятие флага ""Производство"" запрещено!'");
 		
 	EndIf;
 	
 	// 9. Fixed assets enter document (unfinished production, indirect costs).
 	If Not ResultsArray[8].IsEmpty() Then
 		
-		ErrorText = ErrorText + ?(IsBlankString(ErrorText), "", Chars.LF) + NStr("en='There are ""Property recognition"" documents in the infobase where the account of expenses is of type ""Indirect costs"" or ""Unfinished production"". You cannot clear the ""Manufacturing"" check box.';ru='В информационной базе присутствуют документы ""Принятие к учету имущества"", где счет затрат имеет тип Косвенные затраты или Незавершенное производство! Снятие флага ""Производство"" запрещено!'");
+		ErrorText = ErrorText + ?(IsBlankString(ErrorText), "", Chars.LF) + NStr("en='There are ""Property recognition"" documents in the infobase where the account of expenses is of type ""Indirect costs"" or ""Unfinished production"". You cannot clear the ""Production"" check box.';ru='В информационной базе присутствуют документы ""Принятие к учету имущества"", где счет затрат имеет тип Косвенные затраты или Незавершенное производство! Снятие флага ""Производство"" запрещено!'");
 		
 	EndIf;
 	
 	// 10. Document Inventory receipt (department).
 	If Not ResultsArray[9].IsEmpty() Then
 		
-		ErrorText = ErrorText + ?(IsBlankString(ErrorText), "", Chars.LF) + NStr("en='There are documents of the ""Inventory capitalization"" kind in the infobase where business unit of the company is of ""Department"" type. You cannot clear the ""Manufacturing"" check box.';ru='В информационной базе присутствуют документы ""Оприходование запасов"", где структурная единица компании имеет тип Подразделение! Снятие флага ""Производство"" запрещено!'");
+		ErrorText = ErrorText + ?(IsBlankString(ErrorText), "", Chars.LF) + NStr("en='There are documents of the ""Inventory capitalization"" kind in the infobase where business unit of the company is of ""Department"" type. You cannot clear the ""Production"" check box.';ru='В информационной базе присутствуют документы ""Оприходование запасов"", где структурная единица компании имеет тип Подразделение! Снятие флага ""Производство"" запрещено!'");
 		
 	EndIf;
 	
 	// 11. The Budget document (unfinished production, indirect costs).
 	If Not ResultsArray[10].IsEmpty() Then
 		
-		ErrorText = ErrorText + ?(IsBlankString(ErrorText), "", Chars.LF) + NStr("en='There are ""Budget"" documents in the infobase where the accounts of expenses are of type ""Indirect costs"" or ""Unfinished production"". You cannot clear the ""Manufacturing"" check box.';ru='В информационной базе присутствуют документы ""Бюджет"", где счета затрат имеют тип Косвенные затраты или Незавершенное производство! Снятие флага ""Производство"" запрещено!'");
+		ErrorText = ErrorText + ?(IsBlankString(ErrorText), "", Chars.LF) + NStr("en='There are ""Budget"" documents in the infobase where the accounts of expenses are of type ""Indirect costs"" or ""Unfinished production"". You cannot clear the ""Production"" check box.';ru='В информационной базе присутствуют документы ""Бюджет"", где счета затрат имеют тип Косвенные затраты или Незавершенное производство! Снятие флага ""Производство"" запрещено!'");
 		
 	EndIf;
 	
 	// 12. The Fixed asserts modernization document (unfinished production, indirect costs).
 	If Not ResultsArray[11].IsEmpty() Then
 		
-		ErrorText = ErrorText + ?(IsBlankString(ErrorText), "", Chars.LF) + NStr("en='There are ""Property parameters change"" documents in the infobase where the account of expenses is of type ""Indirect costs"" or ""Unfinished production"". You cannot clear the ""Manufacturing"" check box.';ru='В информационной базе присутствуют документы ""Изменение параметров имущества"", где счет затрат имеет тип Косвенные затраты или Незавершенное производство! Снятие флага ""Производство"" запрещено!'");
+		ErrorText = ErrorText + ?(IsBlankString(ErrorText), "", Chars.LF) + NStr("en='There are ""Property parameters change"" documents in the infobase where the account of expenses is of type ""Indirect costs"" or ""Unfinished production"". You cannot clear the ""Production"" check box.';ru='В информационной базе присутствуют документы ""Изменение параметров имущества"", где счет затрат имеет тип Косвенные затраты или Незавершенное производство! Снятие флага ""Производство"" запрещено!'");
 		
 	EndIf;
 	
 	// 13. Payroll document (unfinished production, indirect costs).
 	If Not ResultsArray[12].IsEmpty() Then
 		
-		ErrorText = ErrorText + ?(IsBlankString(ErrorText), "", Chars.LF) + NStr("en='There are ""Salary accounting"" documents in the infobase where the account of expenses is of type ""Indirect costs"" or ""Unfinished production"". You cannot clear the ""Manufacturing"" check box.';ru='В информационной базе присутствуют документы ""Начисление зарплаты"", где счет затрат имеет тип Косвенные затраты или Незавершенное производство! Снятие флага ""Производство"" запрещено!'");
+		ErrorText = ErrorText + ?(IsBlankString(ErrorText), "", Chars.LF) + NStr("en='There are ""Salary accounting"" documents in the infobase where the account of expenses is of type ""Indirect costs"" or ""Unfinished production"". You cannot clear the ""Production"" check box.';ru='В информационной базе присутствуют документы ""Начисление зарплаты"", где счет затрат имеет тип Косвенные затраты или Незавершенное производство! Снятие флага ""Производство"" запрещено!'");
 		
 	EndIf;
 	
 	// 14. Tax accrual document (unfinished production, indirect costs).
 	If Not ResultsArray[13].IsEmpty() Then
 		
-		ErrorText = ErrorText + ?(IsBlankString(ErrorText), "", Chars.LF) + NStr("en='There are ""Tax accrual"" documents in the infobase where the account of expenses is of type ""Indirect costs"" or ""Unfinished production"". You cannot clear the ""Manufacturing"" check box.';ru='В информационной базе присутствуют документы ""Начисление налогов"", где счет затрат имеет тип Косвенные затраты или Незавершенное производство! Снятие флага ""Производство"" запрещено!'");
+		ErrorText = ErrorText + ?(IsBlankString(ErrorText), "", Chars.LF) + NStr("en='There are ""Tax accrual"" documents in the infobase where the account of expenses is of type ""Indirect costs"" or ""Unfinished production"". You cannot clear the ""Production"" check box.';ru='В информационной базе присутствуют документы ""Начисление налогов"", где счет затрат имеет тип Косвенные затраты или Незавершенное производство! Снятие флага ""Производство"" запрещено!'");
 		
 	EndIf;
 	
 	// 15. The Operation document (unfinished production, indirect costs).
 	If Not ResultsArray[14].IsEmpty() Then
 		
-		ErrorText = ErrorText + ?(IsBlankString(ErrorText), "", Chars.LF) + NStr("en='There are ""Operation"" documents in the infobase where the account of expenses is of type ""Indirect costs"" or ""Unfinished production"". You cannot clear the ""Manufacturing"" check box.';ru='В информационной базе присутствуют документы ""Операция"", где счет затрат имеет тип Косвенные затраты или Незавершенное производство! Снятие флага ""Производство"" запрещено!'");
+		ErrorText = ErrorText + ?(IsBlankString(ErrorText), "", Chars.LF) + NStr("en='There are ""Operation"" documents in the infobase where the account of expenses is of type ""Indirect costs"" or ""Unfinished production"". You cannot clear the ""Production"" check box.';ru='В информационной базе присутствуют документы ""Операция"", где счет затрат имеет тип Косвенные затраты или Незавершенное производство! Снятие флага ""Производство"" запрещено!'");
 		
 	EndIf;
 	
 	// 16. The Other expenses document (unfinished production,indirect costs).
 	If Not ResultsArray[15].IsEmpty() Then
 		
-		ErrorText = ErrorText + ?(IsBlankString(ErrorText), "", Chars.LF) + NStr("en='There are ""Other costs (expenses)"" documents in the infobase where the account of expenses is of type ""Indirect costs"" or ""Unfinished production"". You cannot clear the ""Manufacturing"" check box.';ru='В информационной базе присутствуют документы ""Прочие затраты (расходы)"", где счет затрат имеет тип Косвенные затраты или Незавершенное производство! Снятие флага ""Производство"" запрещено!'");
+		ErrorText = ErrorText + ?(IsBlankString(ErrorText), "", Chars.LF) + NStr("en='There are ""Other costs (expenses)"" documents in the infobase where the account of expenses is of type ""Indirect costs"" or ""Unfinished production"". You cannot clear the ""Production"" check box.';ru='В информационной базе присутствуют документы ""Прочие затраты (расходы)"", где счет затрат имеет тип Косвенные затраты или Незавершенное производство! Снятие флага ""Производство"" запрещено!'");
 		
 	EndIf;
 	
 	// 17. Catalog ProductsAndServices (unfinished production, indirect costs).
 	If Not ResultsArray[16].IsEmpty() Then
 		
-		ErrorText = ErrorText + ?(IsBlankString(ErrorText), "", Chars.LF) + NStr("en='There are ""Products and services"" catalog items in the infobase where the account of expenses is of type ""Indirect costs"" or ""Unfinished production"" and stock replenishment method is of type ""Production"". You cannot clear the ""Manufacturing"" check box.';ru='В информационной базе присутствуют элементы справочника ""Номенклатура"", где счет учета затрат имеет тип Косвенные затраты, Незавершенное производство или способ пополнения запаса Производство! Снятие флага ""Производство"" запрещено!'");
+		ErrorText = ErrorText + ?(IsBlankString(ErrorText), "", Chars.LF) + NStr("en='There are ""Products and services"" catalog items in the infobase where the account of expenses is of type ""Indirect costs"" or ""Unfinished production"" and stock replenishment method is of type ""Production"". You cannot clear the ""Production"" check box.';ru='В информационной базе присутствуют элементы справочника ""Номенклатура"", где счет учета затрат имеет тип Косвенные затраты, Незавершенное производство или способ пополнения запаса Производство! Снятие флага ""Производство"" запрещено!'");
 		
 	EndIf;
 	
 	// 18. Catalog Structural units (department).
 	If Not ResultsArray[17].IsEmpty() Then
 		
-		ErrorText = ErrorText + ?(IsBlankString(ErrorText), "", Chars.LF) + NStr("en='There are ""Business units"" catalog items in the infobase where the auto movement parameter (movement, picking) is of type ""Department"". You cannot clear the ""Manufacturing"" check box.';ru='В информационной базе присутствуют элементы справочника ""Структурная единица"", где параметр автоперемещения (перемещение, комплектация) имеет тип Подразделение! Снятие флага ""Производство"" запрещено!'");
+		ErrorText = ErrorText + ?(IsBlankString(ErrorText), "", Chars.LF) + NStr("en='There are ""Business units"" catalog items in the infobase where the auto movement parameter (movement, picking) is of type ""Department"". You cannot clear the ""Production"" check box.';ru='В информационной базе присутствуют элементы справочника ""Структурная единица"", где параметр автоперемещения (перемещение, комплектация) имеет тип Подразделение! Снятие флага ""Производство"" запрещено!'");
 		
 	EndIf;
 	

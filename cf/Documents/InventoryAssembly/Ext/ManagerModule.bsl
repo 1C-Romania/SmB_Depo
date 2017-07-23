@@ -6095,7 +6095,7 @@ Procedure InitializeDocumentDataAssembly(DocumentRefInventoryAssembly, Structure
 	UpdateDateToRelease_1_2_1 = Constants.UpdateDateToRelease_1_2_1.Get();
 	Query.SetParameter("UpdateDateToRelease_1_2_1", UpdateDateToRelease_1_2_1);
 	
-	Query.SetParameter("InventoryAssembly", NStr("en='Manufacturing';ru='Производство'"));
+	Query.SetParameter("InventoryAssembly", NStr("en='Production';ru='Производство'"));
 
 	ResultsArray = Query.ExecuteBatch();
 	
@@ -6744,7 +6744,7 @@ Procedure InitializeDocumentDataDisassembly(DocumentRefInventoryAssembly, Struct
 	UpdateDateToRelease_1_2_1 = Constants.UpdateDateToRelease_1_2_1.Get();
 	Query.SetParameter("UpdateDateToRelease_1_2_1", UpdateDateToRelease_1_2_1);
 	
-	Query.SetParameter("InventoryAssembly", NStr("en='Manufacturing';ru='Производство'"));
+	Query.SetParameter("InventoryAssembly", NStr("en='Production';ru='Производство'"));
 
 	ResultsArray = Query.ExecuteBatch();
 	

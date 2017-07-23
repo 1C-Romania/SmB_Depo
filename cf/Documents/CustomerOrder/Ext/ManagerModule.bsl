@@ -1396,7 +1396,7 @@ Procedure GenerateTableInventoryWorks(DocumentRefCustomerOrder, StructureAdditio
 	|	TableInventory.GLAccountCost,
 	|	TableInventory.GLAccount";
 	
-	Query.SetParameter("InventoryAssembly", NStr("en='Manufacturing';ru='Производство'"));
+	Query.SetParameter("InventoryAssembly", NStr("en='Production';ru='Производство'"));
 	QueryResult = Query.Execute();
 	
 	StructureAdditionalProperties.TableForRegisterRecords.Insert("TableInventory", QueryResult.Unload());

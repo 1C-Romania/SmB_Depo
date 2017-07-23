@@ -720,7 +720,7 @@ Function CancellationUncheckFunctionalOptionUseBatches()
 	If GetFunctionalOption("Tolling") Then
 		
 		ErrorText = ErrorText + ?(IsBlankString(ErrorText), "", Chars.LF) + 
-			NStr("en='The ""Processing of supplier''s raw materials"" option is enabled (the Manufacturing section). Clearing the check box is prohibited.';ru='Включена опция ""Переработка давальческого сырья"" (раздел Производство)! Снятие флага запрещено!'");
+			NStr("en='The ""Processing of supplier''s raw materials"" option is enabled (the Production section). Clearing the check box is prohibited.';ru='Включена опция ""Переработка давальческого сырья"" (раздел Производство)! Снятие флага запрещено!'");
 		
 	EndIf;
 	
