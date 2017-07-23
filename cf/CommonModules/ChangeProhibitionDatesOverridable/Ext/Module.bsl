@@ -171,7 +171,7 @@ Procedure CheckDateBanEditingJobOrder(Form, CurrentObject, ImportingProhibitionC
 	
 EndProcedure // CheckJobOrder()
 
-// Starting with version 1.5.3.6 are available for use new sections.
+// Starting availability for use new sections.
 //
 // - CustomerOrders;
 // - PurchaseOrders;
@@ -233,7 +233,8 @@ Procedure UpdateChangesProhibitionDatesSections(DataProcessorCompleted) Export
 				
 			EndIf;
 			
-			Comment = NStr("en='Section is added automatically when updating the SB to version 1.5.3.6';ru='Раздел добавлен автоматически при обновлении УНФ до версии 1.5.3.6'");
+			// do not need to translate!
+			Comment = "Section is added automatically when the Programm was updated";
 			
 			ManagerRegister = InformationRegisters.ChangeProhibitionDates.CreateRecordManager();
 			ManagerRegister.User = Selection.User;
