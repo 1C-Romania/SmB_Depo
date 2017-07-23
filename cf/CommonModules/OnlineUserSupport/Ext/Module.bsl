@@ -227,10 +227,6 @@ Function SubsystemModules() Export
 		Result.Add("OnlineSupportMonitor");
 	EndIf;
 	
-	If CommonUse.SubsystemExists("OnlineUserSupport.1CTaxcomConnection") Then
-		Result.Add("Connection1CTaxcom");
-	EndIf;
-	
 	Return Result;
 	
 EndFunction

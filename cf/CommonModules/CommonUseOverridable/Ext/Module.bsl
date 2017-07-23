@@ -18,7 +18,6 @@ Procedure OnAddSessionSettingsSetupHandler(Handlers) Export
 	
 	// SB
 	Handlers.Insert("ThisIsFirstLaunch", 			"SmallBusinessServer.SessionParametersSetting");
-	Handlers.Insert("DataExchangeWithSiteEnabled",	"ExchangeWithSite.SetSessionParameters");
 	// SB End
 	
 	// Peripherals

@@ -565,38 +565,6 @@ EndProcedure
 
 // Only for internal use.
 //
-Procedure CheckDataExchangeSettingChangePossibility(Source, Cancel) Export
-	
-	If Source.DataExchange.Load Then
-		Return;
-	EndIf;
-	
-	If  Not Source.AdditionalProperties.Property("GettingExchangeMessage")
-		AND Not Source.IsNew()
-		AND Not Source.ThisNode
-		AND DataExchangeReUse.IsSLDataExchangeNode(Source.Ref)
-		AND DataDifferent(Source, Source.Ref.GetObject(),, "SentNo, ReceivedNo, DeletionMark, Code, Name")
-		AND DataExchangeServerCall.ChangesRegistered(Source.Ref)
-		Then
-		
-		SaveAllowedToExportObjects(Source);
-		
-	EndIf;
-	
-	// Code and name of node can not be changed in service.
-	If CommonUseReUse.DataSeparationEnabled()
-		AND Not CommonUseReUse.SessionWithoutSeparator()
-		AND Not Source.IsNew()
-		AND DataDifferent(Source, Source.Ref.GetObject(), "Code, description") Then
-		
-		Raise NStr("en='Cannot change name and code of data synchronization.';ru='Изменение наименования и кода синхронизации данных недопустимо.'");
-		
-	EndIf;
-	
-EndProcedure
-
-// Only for internal use.
-//
 Procedure DisableAutomaticDataSynchronizationOnWrite(Source, Cancel, Replacing) Export
 	
 	If CommonUse.SubsystemExists("ServiceTechnology.SaaS.DataExchangeSaaS") Then
@@ -1427,8 +1395,7 @@ Function GetArrayOfNodesForRegistrationExportIfNeeded(Ref, Val ExchangePlanName,
 		|LEFT JOIN
 		|	InformationRegister.InfobasesObjectsCompliance AS InfobasesObjectsCompliance
 		|ON
-		|	ExchangePlanHeader.Ref = InfobasesObjectsCompliance.InfobaseNode
-		|	AND InfobasesObjectsCompliance.UniqueSourceHandle = &Object
+		|	InfobasesObjectsCompliance.UniqueSourceHandle = &Object
 		|WHERE
 		|	     ExchangePlanHeader.Ref <> &ThisNode
 		|	AND    ExchangePlanHeader.[FlagAttributeName] = VALUE(Enum.ExchangeObjectsExportModes.ExportIfNecessary)

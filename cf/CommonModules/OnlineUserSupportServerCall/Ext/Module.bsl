@@ -45,10 +45,10 @@ Function AvailableOnlineSupportConnection() Export
 		Return True;
 	EndIf;
 	
-	If CommonUse.SubsystemExists("OnlineUserSupport.1CTaxcomConnection")
-		AND Users.RolesAvailable("Use1CTaxcomService", , False) Then
-		Return True;
-	EndIf;
+	//If CommonUse.SubsystemExists("OnlineUserSupport.1CTaxcomConnection")
+	//	AND Users.RolesAvailable("Use1CTaxcomService", , False) Then
+	//	Return True;
+	//EndIf;
 	
 	Return False;
 	

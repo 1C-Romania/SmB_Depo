@@ -73,7 +73,7 @@ Procedure WhenFillingOutProfileGroupsAccessProvided(ProfileDescriptions, UpdateP
 	// SSL
 	ProfileDescription.Roles.Add("BasicRights");
 	ProfileDescription.Roles.Add("OutputToPrinterClipboardFile");
-	ProfileDescription.Roles.Add("ExchangeDataWithSitesProcessing");
+	//ProfileDescription.Roles.Add("ExchangeDataWithSitesProcessing");
 	ProfileDescription.Roles.Add("DataSynchronization");
 	ProfileDescription.Roles.Add("AddChangeBasicReferenceData");
 	ProfileDescription.Roles.Add("AddChangeReportsVariants");
@@ -116,7 +116,7 @@ Procedure WhenFillingOutProfileGroupsAccessProvided(ProfileDescriptions, UpdateP
 	ProfileDescription.Roles.Add("BasicRightsIUS");
 	ProfileDescription.Roles.Add("ConnectionToOnlineSupportService");
 	ProfileDescription.Roles.Add("UseUOSMonitor");
-	ProfileDescription.Roles.Add("Use1CTaxcomService");
+	//ProfileDescription.Roles.Add("Use1CTaxcomService");
 	
 	// SB
 	ProfileDescription.Roles.Add("BasicRightsSB");
@@ -213,7 +213,7 @@ Procedure WhenFillingOutProfileGroupsAccessProvided(ProfileDescriptions, UpdateP
 	// SSL
 	ProfileDescription.Roles.Add("BasicRights");
 	ProfileDescription.Roles.Add("OutputToPrinterClipboardFile");
-	ProfileDescription.Roles.Add("ExchangeDataWithSitesProcessing");
+	//ProfileDescription.Roles.Add("ExchangeDataWithSitesProcessing");
 	ProfileDescription.Roles.Add("DataSynchronization");
 	ProfileDescription.Roles.Add("AddChangeBasicReferenceData");
 	ProfileDescription.Roles.Add("AddChangeReportsVariants");
@@ -256,7 +256,7 @@ Procedure WhenFillingOutProfileGroupsAccessProvided(ProfileDescriptions, UpdateP
 	ProfileDescription.Roles.Add("BasicRightsIUS");
 	ProfileDescription.Roles.Add("ConnectionToOnlineSupportService");
 	ProfileDescription.Roles.Add("UseUOSMonitor");
-	ProfileDescription.Roles.Add("Use1CTaxcomService");
+	//ProfileDescription.Roles.Add("Use1CTaxcomService");
 	
 	// SB
 	ProfileDescription.Roles.Add("BasicRightsSB");
@@ -319,7 +319,7 @@ Procedure WhenFillingOutProfileGroupsAccessProvided(ProfileDescriptions, UpdateP
 	// SSL
 	ProfileDescription.Roles.Add("BasicRights");
 	ProfileDescription.Roles.Add("OutputToPrinterClipboardFile");
-	ProfileDescription.Roles.Add("ExchangeDataWithSitesProcessing");
+	//ProfileDescription.Roles.Add("ExchangeDataWithSitesProcessing");
 	ProfileDescription.Roles.Add("DataSynchronization");
 	ProfileDescription.Roles.Add("AddChangeBasicReferenceData");
 	ProfileDescription.Roles.Add("AddChangeReportsVariants");
@@ -362,7 +362,7 @@ Procedure WhenFillingOutProfileGroupsAccessProvided(ProfileDescriptions, UpdateP
 	ProfileDescription.Roles.Add("BasicRightsIUS");
 	ProfileDescription.Roles.Add("ConnectionToOnlineSupportService");
 	ProfileDescription.Roles.Add("UseUOSMonitor");
-	ProfileDescription.Roles.Add("Use1CTaxcomService");
+	//ProfileDescription.Roles.Add("Use1CTaxcomService");
 	
 	// SB
 	ProfileDescription.Roles.Add("BasicRightsSB");

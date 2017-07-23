@@ -203,14 +203,14 @@ Procedure StartWorkWithEDFOperatorMechanism(
 		
 	Else
 		
-		CommonModule1CTaxcom = CommonUseClient.CommonModule("Connection1CTaxcomClient");
-		CommonModule1CTaxcom.StartWorkWithEDFOperatorMechanism(
-			DSCertificate,
-			Company,
-			BusinessProcessOption,
-			CompanyID,
-			DSCertificatePassword,
-			FormUUID);
+		//CommonModule1CTaxcom = CommonUseClient.CommonModule("Connection1CTaxcomClient");
+		//CommonModule1CTaxcom.StartWorkWithEDFOperatorMechanism(
+		//	DSCertificate,
+		//	Company,
+		//	BusinessProcessOption,
+		//	CompanyID,
+		//	DSCertificatePassword,
+		//	FormUUID);
 		
 	EndIf;
 	

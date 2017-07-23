@@ -50,7 +50,7 @@ EndProcedure
 //
 Procedure CheckUsingUsersInternetSupport(Use) Export
 	
-	Connection1CTaxcomServerCall.Available1CTaxcomServiceUse();
+	//Connection1CTaxcomServerCall.Available1CTaxcomServiceUse();
 	
 EndProcedure
 
@@ -63,8 +63,8 @@ Procedure StartWorkWithEDFOperatorMechanism(SubscriberCertificate,
 												 DSCertificatePassword = Undefined,
 												 FormUUID = Undefined) Export
 	
-	Connection1CTaxcomClient.StartWorkWithEDFOperatorMechanism(SubscriberCertificate, Company, BusinessProcessOption,
-			CompanyID, DSCertificatePassword, FormUUID);
+	//Connection1CTaxcomClient.StartWorkWithEDFOperatorMechanism(SubscriberCertificate, Company, BusinessProcessOption,
+	//		CompanyID, DSCertificatePassword, FormUUID);
 	
 EndProcedure
 

@@ -31238,36 +31238,36 @@ EndProcedure
 // For internal use only
 Procedure GenerateEDCardTakskom(ElectronicDocument, DirectoryAddress, ErrorText, Encrypted = False) Export
 
-	TaxcomCardTree = CommonUseED.DocumentTree("TransferredDataCardTaxcom");
-	
-	// Prepare data tree for package card.
-	PrepareDataByTakskomCard(ElectronicDocument, TaxcomCardTree, Encrypted);
-	
-	// Check if mandatory fields are filled.
-	CheckFillObligatoryAttributesRecursively(TaxcomCardTree, ErrorText);
-	If Not ValueIsFilled(ErrorText) Then
-		Card = GenerateCardTakskomCML(TaxcomCardTree, ErrorText);
-		FileCopy(Card, DirectoryAddress + "card.xml");
-		DeleteFiles(Card);
-	EndIf;
+	//TaxcomCardTree = CommonUseED.DocumentTree("TransferredDataCardTaxcom");
+	//
+	//// Prepare data tree for package card.
+	//PrepareDataByTakskomCard(ElectronicDocument, TaxcomCardTree, Encrypted);
+	//
+	//// Check if mandatory fields are filled.
+	//CheckFillObligatoryAttributesRecursively(TaxcomCardTree, ErrorText);
+	//If Not ValueIsFilled(ErrorText) Then
+	//	Card = GenerateCardTakskomCML(TaxcomCardTree, ErrorText);
+	//	FileCopy(Card, DirectoryAddress + "card.xml");
+	//	DeleteFiles(Card);
+	//EndIf;
 	
 EndProcedure
 
 // For internal use only
 Procedure GenerateEDTransportInformationTakskom(ElectronicDocument, StructureFilesED, DirectoryAddress, ErrorText) Export
 	
-	TreeShippingInformationTakskom = CommonUseED.DocumentTree("TransportInformationTakskom");
-	
-	// Prepare the data tree with transport information.
-	PrepareTakskomTransportInformationData(ElectronicDocument, StructureFilesED, TreeShippingInformationTakskom);
-	
-	// Check if mandatory fields are filled.
-	CheckFillObligatoryAttributesRecursively(TreeShippingInformationTakskom, ErrorText);
-	If Not ValueIsFilled(ErrorText) Then
-		TransportInformationFileName = GenerateTransportInformationTakskomCML(TreeShippingInformationTakskom, ErrorText);
-		FileCopy(TransportInformationFileName, DirectoryAddress + "meta.xml");
-		DeleteFiles(TransportInformationFileName);
-	EndIf;
+	//TreeShippingInformationTakskom = CommonUseED.DocumentTree("TransportInformationTakskom");
+	//
+	//// Prepare the data tree with transport information.
+	//PrepareTakskomTransportInformationData(ElectronicDocument, StructureFilesED, TreeShippingInformationTakskom);
+	//
+	//// Check if mandatory fields are filled.
+	//CheckFillObligatoryAttributesRecursively(TreeShippingInformationTakskom, ErrorText);
+	//If Not ValueIsFilled(ErrorText) Then
+	//	TransportInformationFileName = GenerateTransportInformationTakskomCML(TreeShippingInformationTakskom, ErrorText);
+	//	FileCopy(TransportInformationFileName, DirectoryAddress + "meta.xml");
+	//	DeleteFiles(TransportInformationFileName);
+	//EndIf;
 	
 EndProcedure
 

@@ -197,16 +197,16 @@ EndFunction
 // 
 //
 Function SynchronizedObjectsAccountingSubsystemVersion(Val InfobaseNode) Export
-	Query = New Query("
-	|SELECT TOP 1 
-	|	1
-	|FROM 
-	|	InformationRegister.InfobasesObjectsCompliance
-	|WHERE 
-	|	InfobaseNode = &InfobaseNode");
-	Query.SetParameter("InfobaseNode", InfobaseNode);
-	QueryResult = Query.Execute();
-	Return ?(QueryResult.IsEmpty(),2,1);
+	//Query = New Query("
+	//|SELECT TOP 1 
+	//|	1
+	//|FROM 
+	//|	InformationRegister.InfobasesObjectsCompliance
+	//|WHERE 
+	//|	InfobaseNode = &InfobaseNode");
+	//Query.SetParameter("InfobaseNode", InfobaseNode);
+	//QueryResult = Query.Execute();
+	Return 2;
 EndFunction
 
 // It fills the list of possible error codes.
