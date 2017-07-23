@@ -1085,7 +1085,7 @@
 									<Button name="ListOutgCatalogEDAttachedFilesEDFStructure" id="573">
 										<Type>CommandBarButton</Type>
 										<CommandName>Catalog.EDAttachedFiles.Command.EDFStructure</CommandName>
-										<DataPath>Items.ListOutg.CurrentData.Ref</DataPath>
+										<DataPath>~Items.ListOutg.CurrentData.Ref</DataPath>
 										<ExtendedTooltip name="ListOutgCatalogEDAttachedFilesEDFStructureExtendedTooltip" id="574"/>
 									</Button>
 								</ChildItems>
@@ -1120,7 +1120,7 @@
 							</Events>
 							<ChildItems>
 								<LabelField name="ListEDOutgKind" id="305">
-									<DataPath>ListOutg.KindEDOutg</DataPath>
+									<DataPath>~ListOutg.KindEDOutg</DataPath>
 									<Title>
 										<v8:item>
 											<v8:lang>en</v8:lang>
@@ -1135,28 +1135,28 @@
 									<ExtendedTooltip name="EDInitKindListExtendedTooltip" id="459"/>
 								</LabelField>
 								<LabelField name="ListOutgDocumentNumber" id="321">
-									<DataPath>ListOutg.DocumentNumber</DataPath>
+									<DataPath>~ListOutg.DocumentNumber</DataPath>
 									<Width>20</Width>
 									<ContextMenu name="ListInitDocumentNumberContextMenu" id="322"/>
 									<ExtendedTooltip name="ListInitDocumentNumberExtendedTooltip" id="460"/>
 								</LabelField>
 								<LabelField name="ListOutgDocumentDate" id="307">
-									<DataPath>ListOutg.DocumentDate</DataPath>
+									<DataPath>~ListOutg.DocumentDate</DataPath>
 									<ContextMenu name="ListInitDocumentDateContextMenu" id="308"/>
 									<ExtendedTooltip name="ListInitDocumentDateExtendedTooltip" id="461"/>
 								</LabelField>
 								<LabelField name="ListOutgCounterparty" id="315">
-									<DataPath>ListOutg.Counterparty</DataPath>
+									<DataPath>~ListOutg.Counterparty</DataPath>
 									<ContextMenu name="ListInitCounterpartyContextMenu" id="316"/>
 									<ExtendedTooltip name="ListInitCounterpartyExtendedTooltip" id="462"/>
 								</LabelField>
 								<LabelField name="ListOutgCompany" id="323">
-									<DataPath>ListOutg.Company</DataPath>
+									<DataPath>~ListOutg.Company</DataPath>
 									<ContextMenu name="ListInitCompanyContextMenu" id="324"/>
 									<ExtendedTooltip name="ListInitCompanyExtendedTooltip" id="463"/>
 								</LabelField>
 								<LabelField name="ListOutgEDFormingDateBySender" id="411">
-									<DataPath>ListOutg.EDFormingDateBySender</DataPath>
+									<DataPath>~ListOutg.EDFormingDateBySender</DataPath>
 									<Title>
 										<v8:item>
 											<v8:lang>en</v8:lang>
@@ -1182,7 +1182,7 @@
 									<ExtendedTooltip name="ListInitDateEDFormSenderExtendedTooltip" id="464"/>
 								</LabelField>
 								<LabelField name="ListOutgCreationDate" id="311">
-									<DataPath>ListOutg.CreationDate</DataPath>
+									<DataPath>~ListOutg.CreationDate</DataPath>
 									<Width>20</Width>
 									<ContextMenu name="ListInitCreationDateContextMenu" id="312"/>
 									<ExtendedTooltip name="ListInitCreationDateExtendedTooltip" id="465"/>
@@ -1212,7 +1212,7 @@
 									<ExtendedTooltip name="ListStateInitExtendedTooltip" id="466"/>
 									<ChildItems>
 										<LabelField name="ListOutgEDStatus" id="331">
-											<DataPath>ListOutg.EDStatusOutg</DataPath>
+											<DataPath>~ListOutg.EDStatusOutg</DataPath>
 											<Title>
 												<v8:item>
 													<v8:lang>en</v8:lang>
@@ -1228,7 +1228,7 @@
 											<ExtendedTooltip name="ListInitEDStatusExtendedTooltip" id="467"/>
 										</LabelField>
 										<LabelField name="ListOutgEDStatusChangeDate" id="309">
-											<DataPath>ListOutg.EDStatusChangeDate</DataPath>
+											<DataPath>~ListOutg.EDStatusChangeDate</DataPath>
 											<Title>
 												<v8:item>
 													<v8:lang>en</v8:lang>
@@ -1246,7 +1246,7 @@
 									</ChildItems>
 								</ColumnGroup>
 								<LabelField name="ListOutgIBDocument" id="313">
-									<DataPath>ListOutg.IBDocument</DataPath>
+									<DataPath>~ListOutg.IBDocument</DataPath>
 									<Title>
 										<v8:item>
 											<v8:lang>en</v8:lang>
@@ -1261,7 +1261,7 @@
 									<ExtendedTooltip name="ListOfDocumentsInitDBExtendedTooltip" id="469"/>
 								</LabelField>
 								<LabelField name="ListOutgResponsible" id="325">
-									<DataPath>ListOutg.Responsible</DataPath>
+									<DataPath>~ListOutg.Responsible</DataPath>
 									<ContextMenu name="ListInitResponsibleContextMenu" id="326"/>
 									<ExtendedTooltip name="ListInitResponsibleExtendedTooltip" id="470"/>
 								</LabelField>
@@ -2397,7 +2397,7 @@ WHERE
 				<v8:Type>cfg:DynamicList</v8:Type>
 			</Type>
 			<UseAlways>
-				<Field>ListOutg.Ref</Field>
+				<Field>~ListOutg.Ref</Field>
 			</UseAlways>
 			<Settings xsi:type="DynamicList">
 				<ManualQuery>true</ManualQuery>

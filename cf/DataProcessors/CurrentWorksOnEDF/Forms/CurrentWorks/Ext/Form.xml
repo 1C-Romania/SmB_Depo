@@ -657,7 +657,7 @@
 											<Button name="ProcessContextMenuCatalogEDAttachedFilesEDFStructure" id="1380">
 												<Type>CommandBarButton</Type>
 												<CommandName>Catalog.EDAttachedFiles.Command.EDFStructure</CommandName>
-												<DataPath>Items.Process.CurrentData.ElectronicDocument</DataPath>
+												<DataPath>~Items.Process.CurrentData.ElectronicDocument</DataPath>
 												<ExtendedTooltip name="ProcessContextMenuCatalogEDAttachedFilesEDFStructureExtendedTooltip" id="1381"/>
 											</Button>
 										</ChildItems>
@@ -709,7 +709,7 @@
 											<Button name="ProcessCatalogEDAttachedFilesEDFStructure" id="1378">
 												<Type>CommandBarButton</Type>
 												<CommandName>Catalog.EDAttachedFiles.Command.EDFStructure</CommandName>
-												<DataPath>Items.Process.CurrentData.ElectronicDocument</DataPath>
+												<DataPath>~Items.Process.CurrentData.ElectronicDocument</DataPath>
 												<ExtendedTooltip name="ProcessCatalogEDAttachedFilesEDFStructureExtendedTooltip" id="1379"/>
 											</Button>
 										</ChildItems>
@@ -744,7 +744,7 @@
 									</Events>
 									<ChildItems>
 										<LabelField name="EDToProcessingElectronicDocumentEDKind" id="497">
-											<DataPath>Process.EDKind</DataPath>
+											<DataPath>~Process.EDKind</DataPath>
 											<Title>
 												<v8:item>
 													<v8:lang>en</v8:lang>
@@ -759,12 +759,12 @@
 											<ExtendedTooltip name="EDToProcessingElectronicDocumentTypeEDExtendedTooltip" id="882"/>
 										</LabelField>
 										<LabelField name="EDToProcessingElectronicDocumentCreationDate" id="503">
-											<DataPath>Process.Date</DataPath>
+											<DataPath>~Process.Date</DataPath>
 											<ContextMenu name="EDToProcessingElectronicDocumentCreationDateContextMenu" id="504"/>
 											<ExtendedTooltip name="EDToProcessingElectronicDocumentCreationDateExtendedTooltip" id="883"/>
 										</LabelField>
 										<LabelField name="EDToProcessDocumentAmount" id="499">
-											<DataPath>Process.DocumentAmount</DataPath>
+											<DataPath>~Process.DocumentAmount</DataPath>
 											<Title>
 												<v8:item>
 													<v8:lang>en</v8:lang>
@@ -779,12 +779,12 @@
 											<ExtendedTooltip name="EDToProcessingDocumentSumExtendedTooltip" id="884"/>
 										</LabelField>
 										<LabelField name="EDToCounterpartyProcessing" id="350">
-											<DataPath>Process.Counterparty</DataPath>
+											<DataPath>~Process.Counterparty</DataPath>
 											<ContextMenu name="EDToProcessingCounterpartyContextMenu" id="351"/>
 											<ExtendedTooltip name="EDToProcessingCounterpartyExtendedTooltip" id="885"/>
 										</LabelField>
 										<LabelField name="EDToProcessingCompany" id="354">
-											<DataPath>Process.Company</DataPath>
+											<DataPath>~Process.Company</DataPath>
 											<ContextMenu name="EDToProcessingCompanyContextMenu" id="355"/>
 											<ExtendedTooltip name="EDToProcessingCompanyExtendedTooltip" id="886"/>
 										</LabelField>
@@ -795,12 +795,12 @@
 											<ExtendedTooltip name="EDToProcessingEDOwnerExtendedTooltip" id="887"/>
 										</LabelField>
 										<LabelField name="EDToProcessingEDVersionState" id="356">
-											<DataPath>Process.EDVersionState</DataPath>
+											<DataPath>~Process.EDVersionState</DataPath>
 											<ContextMenu name="EDToProcessingEDVersionStateContextMenu" id="357"/>
 											<ExtendedTooltip name="EDToProcessingEDVersionStateExtendedTooltip" id="888"/>
 										</LabelField>
 										<LabelField name="EDToProcessingEDDirection" id="543">
-											<DataPath>Process.EDDirection</DataPath>
+											<DataPath>~Process.EDDirection</DataPath>
 											<Title>
 												<v8:item>
 													<v8:lang>en</v8:lang>
@@ -815,7 +815,7 @@
 											<ExtendedTooltip name="EDToProcessingEDDirectionExtendedTooltip" id="889"/>
 										</LabelField>
 										<LabelField name="EDCTProcessingResponsible" id="593">
-											<DataPath>Process.Responsible</DataPath>
+											<DataPath>~Process.Responsible</DataPath>
 											<ContextMenu name="EDToProcessingResponsibleContextMenu" id="594"/>
 											<ExtendedTooltip name="EDToProcessingResponsibleExtendedTooltip" id="890"/>
 										</LabelField>
@@ -844,13 +844,13 @@
 											<ExtendedTooltip name="ProcessGroupAdditionalInformationExtendedTooltip" id="1082"/>
 											<ChildItems>
 												<LabelField name="EDToProcessingElectronicDocumentAdditionalInformation" id="515">
-													<DataPath>Process.AdditionalInformation</DataPath>
+													<DataPath>~Process.AdditionalInformation</DataPath>
 													<AutoCellHeight>true</AutoCellHeight>
 													<ContextMenu name="EDToProcessingElectronicDocumentAdditionalInformationContextMenu" id="516"/>
 													<ExtendedTooltip name="EDToProcessingElectronicDocumentAdditionalInformationExtendedTooltip" id="891"/>
 												</LabelField>
 												<LabelField name="ProcessRejectionReason" id="1083">
-													<DataPath>Process.RejectionReason</DataPath>
+													<DataPath>~Process.RejectionReason</DataPath>
 													<TitleLocation>None</TitleLocation>
 													<AutoCellHeight>true</AutoCellHeight>
 													<ContextMenu name="ProcessRejectionReasonContextMenu" id="1084"/>
@@ -1197,7 +1197,7 @@
 											<Button name="SignContextMenuCatalogEDAttachedFilesEDFStructure" id="1370">
 												<Type>CommandBarButton</Type>
 												<CommandName>Catalog.EDAttachedFiles.Command.EDFStructure</CommandName>
-												<DataPath>Items.Sign.CurrentData.ElectronicDocument</DataPath>
+												<DataPath>~Items.Sign.CurrentData.ElectronicDocument</DataPath>
 												<ExtendedTooltip name="SignContextMenuCatalogEDAttachedFilesEDFStructureExtendedTooltip" id="1371"/>
 											</Button>
 										</ChildItems>
@@ -1259,7 +1259,7 @@
 											<Button name="SignCatalogEDAttachedFilesEDFStructure" id="1360">
 												<Type>CommandBarButton</Type>
 												<CommandName>Catalog.EDAttachedFiles.Command.EDFStructure</CommandName>
-												<DataPath>Items.Sign.CurrentData.ElectronicDocument</DataPath>
+												<DataPath>~Items.Sign.CurrentData.ElectronicDocument</DataPath>
 												<ExtendedTooltip name="SignCatalogEDAttachedFilesEDFStructureExtendedTooltip" id="1361"/>
 											</Button>
 										</ChildItems>
@@ -1294,7 +1294,7 @@
 									</Events>
 									<ChildItems>
 										<LabelField name="EDOnElectronicDocumentSigningEDKind" id="493">
-											<DataPath>Sign.EDKind</DataPath>
+											<DataPath>~Sign.EDKind</DataPath>
 											<Title>
 												<v8:item>
 													<v8:lang>en</v8:lang>
@@ -1309,12 +1309,12 @@
 											<ExtendedTooltip name="EDOnElectronicDocumentSigningEDTypeExtendedTooltip" id="922"/>
 										</LabelField>
 										<LabelField name="EDOnSigningElectronicDocumentCreationDate" id="491">
-											<DataPath>Sign.Date</DataPath>
+											<DataPath>~Sign.Date</DataPath>
 											<ContextMenu name="EDOnSigningElectronicDocumentCreationDateContextMenu" id="492"/>
 											<ExtendedTooltip name="EDOnSigningElectronicDocumentCreationDateExtendedTooltip" id="923"/>
 										</LabelField>
 										<LabelField name="EDOnSigningDocumentSum" id="495">
-											<DataPath>Sign.DocumentAmount</DataPath>
+											<DataPath>~Sign.DocumentAmount</DataPath>
 											<Title>
 												<v8:item>
 													<v8:lang>en</v8:lang>
@@ -1329,7 +1329,7 @@
 											<ExtendedTooltip name="EDOnSigningDocumentSumExtendedTooltip" id="924"/>
 										</LabelField>
 										<LabelField name="EDOnSigningCounterparty" id="292">
-											<DataPath>Sign.Counterparty</DataPath>
+											<DataPath>~Sign.Counterparty</DataPath>
 											<ContextMenu name="EDOnSigningCounterpartyContextMenu" id="293"/>
 											<ExtendedTooltip name="EDOnSigningCounterpartyExtendedTooltip" id="925"/>
 										</LabelField>
@@ -1340,12 +1340,12 @@
 											<ExtendedTooltip name="EDEDOwnerSigningOnExtendedTooltip" id="926"/>
 										</LabelField>
 										<LabelField name="EDOnSigningOrganization" id="296">
-											<DataPath>Sign.Company</DataPath>
+											<DataPath>~Sign.Company</DataPath>
 											<ContextMenu name="EDOnSigningCompanyContextMenu" id="297"/>
 											<ExtendedTooltip name="EDOnSigningCompanyExtendedTooltip" id="927"/>
 										</LabelField>
 										<LabelField name="EDOnSigningEDDirection" id="541">
-											<DataPath>Sign.EDDirection</DataPath>
+											<DataPath>~Sign.EDDirection</DataPath>
 											<Title>
 												<v8:item>
 													<v8:lang>en</v8:lang>
@@ -1360,17 +1360,17 @@
 											<ExtendedTooltip name="EDEDDirectionSigningOnExtendedTooltip" id="928"/>
 										</LabelField>
 										<LabelField name="EDOnReSigningOfResponsible" id="591">
-											<DataPath>Sign.Responsible</DataPath>
+											<DataPath>~Sign.Responsible</DataPath>
 											<ContextMenu name="EDOnSigningResponsibleContextMenu" id="592"/>
 											<ExtendedTooltip name="EDOnSigningResponsibleExtendedTooltip" id="929"/>
 										</LabelField>
 										<LabelField name="EDOnSigningElectronicDocumentAdditionalInformation" id="513">
-											<DataPath>Sign.AdditionalInformation</DataPath>
+											<DataPath>~Sign.AdditionalInformation</DataPath>
 											<ContextMenu name="EDOnSigningElectronicDocumentAdditionalInformationContextMenu" id="514"/>
 											<ExtendedTooltip name="EDOnSigningElectronicDocumentAdditionalInformationExtendedTooltip" id="930"/>
 										</LabelField>
 										<LabelField name="SignDescription" id="1196">
-											<DataPath>Sign.Definition</DataPath>
+											<DataPath>~Sign.Definition</DataPath>
 											<Title>
 												<v8:item>
 													<v8:lang>en</v8:lang>
@@ -3670,7 +3670,7 @@ WHERE
 				<v8:Type>cfg:DynamicList</v8:Type>
 			</Type>
 			<UseAlways>
-				<Field>Sign.ElectronicDocument</Field>
+				<Field>~Sign.ElectronicDocument</Field>
 			</UseAlways>
 			<Settings xsi:type="DynamicList">
 				<ManualQuery>true</ManualQuery>
@@ -3784,7 +3784,7 @@ FROM
 				<v8:Type>cfg:DynamicList</v8:Type>
 			</Type>
 			<UseAlways>
-				<Field>Process.ElectronicDocument</Field>
+				<Field>~Process.ElectronicDocument</Field>
 			</UseAlways>
 			<Settings xsi:type="DynamicList">
 				<ManualQuery>true</ManualQuery>

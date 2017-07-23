@@ -633,7 +633,6 @@
 			<Subsystem>DataImportFromExternalSources</Subsystem>
 			<Subsystem>ElectronicInteraction</Subsystem>
 			<Subsystem>Enterprise</Subsystem>
-			<Subsystem>ExchangeWithSites</Subsystem>
 			<Subsystem>InventoryAndPurchasing</Subsystem>
 			<Subsystem>KittingAndProduction</Subsystem>
 			<Subsystem>MarketingAndSales</Subsystem>
@@ -1226,7 +1225,6 @@
 			<SessionParameter>DataAreasUse</SessionParameter>
 			<SessionParameter>DataAreaValue</SessionParameter>
 			<SessionParameter>DataExchangeMessageImportModeBeforeStart</SessionParameter>
-			<SessionParameter>DataExchangeWithSiteEnabled</SessionParameter>
 			<SessionParameter>DataSynchronizationPasswords</SessionParameter>
 			<SessionParameter>ExchangeDataPriority</SessionParameter>
 			<SessionParameter>InfobaseUpdateIsExecute</SessionParameter>
@@ -1238,7 +1236,6 @@
 			<SessionParameter>TablesIDsWithSeparateRightSettings</SessionParameter>
 			<SessionParameter>TablesWithSeparateRightSettings</SessionParameter>
 			<SessionParameter>UsedExchangePlans</SessionParameter>
-			<SessionParameter>UsedExchangeWithSiteNodes</SessionParameter>
 			<SessionParameter>VersionsDifferenceErrorOnReceivingData</SessionParameter>
 			<SessionParameter>CurrentUser</SessionParameter>
 			<SessionParameter>IsBookkeepingAvailable</SessionParameter>
@@ -1300,7 +1297,6 @@
 			<Role>EditObjectAttributes</Role>
 			<Role>EDParametersSetting</Role>
 			<Role>EDReading</Role>
-			<Role>ExchangeDataWithSitesProcessing</Role>
 			<Role>FileFolderOperations</Role>
 			<Role>FileOperations</Role>
 			<Role>FullRights</Role>
@@ -1340,7 +1336,6 @@
 			<Role>SubsystemCRM</Role>
 			<Role>SystemAdministrator</Role>
 			<Role>UpdateDataBaseConfiguration</Role>
-			<Role>Use1CTaxcomService</Role>
 			<Role>UseAdditionalReportsAndDataProcessors</Role>
 			<Role>UseAnalysisReports</Role>
 			<Role>UseDataImportFromExternalSources</Role>
@@ -1478,11 +1473,6 @@
 			<CommonModule>ConfigurationUpdateClientServer</CommonModule>
 			<CommonModule>ConfigurationUpdateOverridable</CommonModule>
 			<CommonModule>ConfigurationUpdateServerCall</CommonModule>
-			<CommonModule>Connection1CTaxcom</CommonModule>
-			<CommonModule>Connection1CTaxcomClient</CommonModule>
-			<CommonModule>Connection1CTaxcomClientServer</CommonModule>
-			<CommonModule>Connection1CTaxcomOverridable</CommonModule>
-			<CommonModule>Connection1CTaxcomServerCall</CommonModule>
 			<CommonModule>ContactInformationClientServer</CommonModule>
 			<CommonModule>ContactInformationClientServerCached</CommonModule>
 			<CommonModule>ContactInformationInternal</CommonModule>
@@ -1523,7 +1513,6 @@
 			<CommonModule>DataExchangeExternalConnection</CommonModule>
 			<CommonModule>DataExchangeGlobal</CommonModule>
 			<CommonModule>DataExchangeOverridable</CommonModule>
-			<CommonModule>DataExchangePeripheralsOfflineEvents</CommonModule>
 			<CommonModule>DataExchangeReUse</CommonModule>
 			<CommonModule>DataExchangeSaaS</CommonModule>
 			<CommonModule>DataExchangeSaaSClient</CommonModule>
@@ -1589,10 +1578,6 @@
 			<CommonModule>EventLogMonitorClient</CommonModule>
 			<CommonModule>EventLogMonitorServerCall</CommonModule>
 			<CommonModule>EventsSBClientServer</CommonModule>
-			<CommonModule>ExchangeMobileApplicationOverridable</CommonModule>
-			<CommonModule>ExchangeWithSite</CommonModule>
-			<CommonModule>ExchangeWithSiteReUse</CommonModule>
-			<CommonModule>ExchangeWithSiteScheduledJobs</CommonModule>
 			<CommonModule>ExportImportExchangePlanNodes</CommonModule>
 			<CommonModule>ExportImportStandardInterfaceStructureOData</CommonModule>
 			<CommonModule>ExportImportUndividedDataReUse</CommonModule>
@@ -1730,7 +1715,6 @@
 			<CommonModule>MessagesSaaSOverridable</CommonModule>
 			<CommonModule>MessagesSaaSReUse</CommonModule>
 			<CommonModule>MessagesSuppliedDataMessageHandler</CommonModule>
-			<CommonModule>MobileApplicationExchangeGeneral</CommonModule>
 			<CommonModule>ObjectFillingSB</CommonModule>
 			<CommonModule>ObjectFillingSBOverridable</CommonModule>
 			<CommonModule>ObjectPrefixationClientServer</CommonModule>
@@ -1937,9 +1921,6 @@
 			<CommonModule>APARAtServer</CommonModule>
 			<CommonModule>BookkeepingAtClient</CommonModule>
 			<CommonModule>BookkeepingAtServer</CommonModule>
-			<CommonModule>DataExchangeEventsBP</CommonModule>
-			<CommonModule>DataExchangeEventsOP</CommonModule>
-			<CommonModule>DataExchangeEventsRT</CommonModule>
 			<CommonModule>BookkeepingCommon</CommonModule>
 			<CommonModule>BookkeepingEventSubscribtionsModule</CommonModule>
 			<CommonModule>Common</CommonModule>
@@ -2015,14 +1996,8 @@
 			<CommonAttribute>DataAreaAuxiliaryData</CommonAttribute>
 			<CommonAttribute>DataAreaBasicData</CommonAttribute>
 			<CommonAttribute>ManualChangeNumber</CommonAttribute>
-			<ExchangePlan>ExchangeRetailSmallBusiness</ExchangePlan>
-			<ExchangePlan>ExchangeSmallBusinessAccounting20</ExchangePlan>
-			<ExchangePlan>ExchangeSmallBusinessAccounting30</ExchangePlan>
-			<ExchangePlan>ExchangeSmallBusinessEntrepreneurReporting</ExchangePlan>
-			<ExchangePlan>ExchangeSmallBusinessSite</ExchangePlan>
 			<ExchangePlan>ExchangeWithPeripheralsOffline</ExchangePlan>
 			<ExchangePlan>MessageExchange</ExchangePlan>
-			<ExchangePlan>MobileApplication</ExchangePlan>
 			<XDTOPackage>ActsTitleOfCustomerFTS</XDTOPackage>
 			<XDTOPackage>ActTitleExecutiveFTS</XDTOPackage>
 			<XDTOPackage>ActTitleOfCustomer</XDTOPackage>
@@ -2098,8 +2073,6 @@
 			<XDTOPackage>SuppliedData</XDTOPackage>
 			<XDTOPackage>Torg12BuyerTitle</XDTOPackage>
 			<XDTOPackage>Torg12SellerTitle</XDTOPackage>
-			<XDTOPackage>TransferredDataCardTaxcom</XDTOPackage>
-			<XDTOPackage>TransportInformationTakskom</XDTOPackage>
 			<XDTOPackage>V8AddinBundle</XDTOPackage>
 			<XDTOPackage>KodyCECHKRAJOW_XDTO</XDTOPackage>
 			<XDTOPackage>StrukturyDanychXDTO</XDTOPackage>
@@ -2110,12 +2083,10 @@
 			<WebService>ManagedApplication_1_0_0_1</WebService>
 			<WebService>MessageExchange</WebService>
 			<WebService>MessageExchange_2_0_1_6</WebService>
-			<WebService>MobileService</WebService>
 			<WebService>RemoteAdministrationOfExchange</WebService>
 			<WebService>RemoteAdministrationOfExchange_2_0_1_6</WebService>
 			<WebService>RemoteAdministrationOfExchange_2_1_6_1</WebService>
 			<WebService>RemoteControl</WebService>
-			<WebService>SiteExchange</WebService>
 			<WSReference>Vies</WSReference>
 			<EventSubscription>AdditionalReportsAndDataProcessorsBeforeMetadataObjectIdentifierDeletion</EventSubscription>
 			<EventSubscription>AttachedFileBeforeDelete</EventSubscription>
@@ -2124,44 +2095,22 @@
 			<EventSubscription>CancelSendNodeDataInDistributedInfobase</EventSubscription>
 			<EventSubscription>ChangeStateVersionsBeforeWriteED</EventSubscription>
 			<EventSubscription>CheckChangeBeforeEDOwnerWrite</EventSubscription>
-			<EventSubscription>CheckDataExchangeSettingChangePossibility</EventSubscription>
 			<EventSubscription>CheckDataMigrationRestrictionFiltersChanges</EventSubscription>
 			<EventSubscription>CheckDateChangesInSubject</EventSubscription>
 			<EventSubscription>CheckDocumentProblemSolving</EventSubscription>
 			<EventSubscription>CheckObjectProblemSolving</EventSubscription>
 			<EventSubscription>CheckOfChangeProhibitionDateBeforeDocumentRecord</EventSubscription>
 			<EventSubscription>CheckOptionValueUseSeveralCompanies</EventSubscription>
-			<EventSubscription>ClearExchangeNodeWithOfflinePeripherals</EventSubscription>
 			<EventSubscription>ClearInfobaseNodeReferences</EventSubscription>
 			<EventSubscription>ClearInformationAboutVersionAuthor</EventSubscription>
 			<EventSubscription>ContactInformationTypesFillOrderingAttributeValue</EventSubscription>
 			<EventSubscription>ContactInformationTypesResetOrderingAttributeValue</EventSubscription>
 			<EventSubscription>CopyFileVersionAttributesToFile</EventSubscription>
-			<EventSubscription>CreateExchangeNodeWithOfflinePeripherals</EventSubscription>
-			<EventSubscription>DataExchangeSmallBusinessAccounting20BeforeDeletion</EventSubscription>
-			<EventSubscription>DataExchangeSmallBusinessAccounting20BeforeWrite</EventSubscription>
-			<EventSubscription>DataExchangeSmallBusinessAccounting20BeforeWriteDocument</EventSubscription>
-			<EventSubscription>DataExchangeSmallBusinessAccounting20BeforeWriteRegister</EventSubscription>
 			<EventSubscription>DisableAutomaticDataSynchronization</EventSubscription>
 			<EventSubscription>DisablePredefinedItemsDeletion</EventSubscription>
 			<EventSubscription>DisablePredefinedItemsDeletionMarkup</EventSubscription>
 			<EventSubscription>DisableUseExchangePlan</EventSubscription>
 			<EventSubscription>EnableUseExchangePlan</EventSubscription>
-			<EventSubscription>ExchangeMobileApplicationOnDocumentWrite</EventSubscription>
-			<EventSubscription>ExchangeMobileApplicationOnRegisterWrite</EventSubscription>
-			<EventSubscription>ExchangeMobileApplicationOnWrite</EventSubscription>
-			<EventSubscription>ExchangeRetailSmallBusinessRegisterChange</EventSubscription>
-			<EventSubscription>ExchangeRetailSmallBusinessRegisterDeletion</EventSubscription>
-			<EventSubscription>ExchangeRetailSmallBusinessRegisterRecordSetChange</EventSubscription>
-			<EventSubscription>ExchangeSmallBusinessAccounting30RegisterChange</EventSubscription>
-			<EventSubscription>ExchangeSmallBusinessAccounting30RegisterDeletion</EventSubscription>
-			<EventSubscription>ExchangeSmallBusinessAccounting30RegisterDocumentChange</EventSubscription>
-			<EventSubscription>ExchangeSmallBusinessAccounting30RegisterRecordSetChange</EventSubscription>
-			<EventSubscription>ExchangeSmallBusinessEntrepreneurReportingRegisterChange</EventSubscription>
-			<EventSubscription>ExchangeSmallBusinessEntrepreneurReportingRegisterDeletion</EventSubscription>
-			<EventSubscription>ExchangeSmallBusinessEntrepreneurReportingRegisterDocumentChange</EventSubscription>
-			<EventSubscription>ExchangeWithSiteBeforeRegisterRecord</EventSubscription>
-			<EventSubscription>ExchangeWithSiteOnObjectWrite</EventSubscription>
 			<EventSubscription>ExecuteActionsAfterGettingNodeDataInDistributedInfobase</EventSubscription>
 			<EventSubscription>ExecuteActionsAfterSendingDataToDistributedNodeInfobase</EventSubscription>
 			<EventSubscription>ExecuteActionsBeforeDeleteEDAttachedFile</EventSubscription>
@@ -2189,13 +2138,9 @@
 			<EventSubscription>ProcessWriteED</EventSubscription>
 			<EventSubscription>RecordDataMigrationRestrictionFilterChanges</EventSubscription>
 			<EventSubscription>RefreshAccessValuesGroups</EventSubscription>
-			<EventSubscription>RegisterCatalogChangesForDataExchangeWithOfflineTradeEquipment</EventSubscription>
-			<EventSubscription>RegisterChangesForDataExchangeWithOfflineTradeEquipment</EventSubscription>
-			<EventSubscription>RegisterChangesOnPeripheralsExchangeRuleChange</EventSubscription>
 			<EventSubscription>RegisterNodesCommonDataChanges</EventSubscription>
 			<EventSubscription>ReportsVariantsBeforeMetadataObjectIdentificatorDelete</EventSubscription>
 			<EventSubscription>ReportsVariantsWhenUserDelete</EventSubscription>
-			<EventSubscription>RetailSmallBusinessExchangeDocumentChangeRecord</EventSubscription>
 			<EventSubscription>SetDeletionMarkOnAttachedDocumentFiles</EventSubscription>
 			<EventSubscription>SetDeletionMarkOnAttachedFiles</EventSubscription>
 			<EventSubscription>SetDeletionMarkOnCatalogFiles</EventSubscription>
@@ -2229,7 +2174,6 @@
 			<ScheduledJob>DeferredInfobaseUpdate</ScheduledJob>
 			<ScheduledJob>DeleteIrrelevantInformationSynchronization</ScheduledJob>
 			<ScheduledJob>DeleteMarked</ScheduledJob>
-			<ScheduledJob>ExchangeWithSite</ScheduledJob>
 			<ScheduledJob>ExportPerformanceEstimation</ScheduledJob>
 			<ScheduledJob>FullTextSearchIndexMerge</ScheduledJob>
 			<ScheduledJob>FullTextSearchUpdateIndex</ScheduledJob>
@@ -2319,7 +2263,6 @@
 			<FunctionalOption>UseEDExchangeWithBanks</FunctionalOption>
 			<FunctionalOption>UseEncryption</FunctionalOption>
 			<FunctionalOption>UseExchangeWithPeripheralsOffline</FunctionalOption>
-			<FunctionalOption>UseExchangeWithSites</FunctionalOption>
 			<FunctionalOption>UseExternalUsers</FunctionalOption>
 			<FunctionalOption>UseFinance</FunctionalOption>
 			<FunctionalOption>UseFullTextSearch</FunctionalOption>
@@ -2457,7 +2400,6 @@
 			<CommonCommand>Dependencies</CommonCommand>
 			<CommonCommand>DonwloadDataToFile</CommonCommand>
 			<CommonCommand>EDFSettingsWithFilter</CommonCommand>
-			<CommonCommand>ExchangeWithPeripheralsOffline</CommonCommand>
 			<CommonCommand>ExecuteDataExchange</CommonCommand>
 			<CommonCommand>ExecuteDataExchangeInteractively</CommonCommand>
 			<CommonCommand>ExportDirectoryInFile</CommonCommand>
@@ -2649,7 +2591,6 @@
 			<Constant>FunctionalOptionUseCounterpartyContractTypes</Constant>
 			<Constant>FunctionalOptionUseDiscountCards</Constant>
 			<Constant>FunctionalOptionUseDiscountsMarkups</Constant>
-			<Constant>FunctionalOptionUseExchangeWithSites</Constant>
 			<Constant>FunctionalOptionUseJobSharing</Constant>
 			<Constant>FunctionalOptionUseOrderWarehouse</Constant>
 			<Constant>FunctionalOptionUsePeripherals</Constant>
@@ -2687,7 +2628,6 @@
 			<Constant>PerformanceRatingRecordPeriod</Constant>
 			<Constant>PlannedTotalsOptimizationDate</Constant>
 			<Constant>PostponeEditProhibitionDate</Constant>
-			<Constant>PrefixForExchangeWithSite</Constant>
 			<Constant>PriceListShowCode</Constant>
 			<Constant>PriceListShowFullDescr</Constant>
 			<Constant>PriceListUseProductsAndServicesHierarchy</Constant>
@@ -3166,7 +3106,6 @@
 			<Enum>ContractKinds</Enum>
 			<Enum>ContractsWithCounterpartiesTemplatesParameters</Enum>
 			<Enum>CostingBases</Enum>
-			<Enum>CounterpartiesIdentificationMethods</Enum>
 			<Enum>CounterpartyContractStatuses</Enum>
 			<Enum>CounterpartyKinds</Enum>
 			<Enum>CurrencyRateSetMethods</Enum>
@@ -3460,7 +3399,6 @@
 			<DataProcessor>ChangeRecordForExchangeData</DataProcessor>
 			<DataProcessor>ClientBank</DataProcessor>
 			<DataProcessor>ConfigurationUpdate</DataProcessor>
-			<DataProcessor>Connection1CTaxcom</DataProcessor>
 			<DataProcessor>ContactInformationInput</DataProcessor>
 			<DataProcessor>CounterpartyPriceLists</DataProcessor>
 			<DataProcessor>CurrencyRatesImportProcess</DataProcessor>
@@ -3468,7 +3406,6 @@
 			<DataProcessor>CurrentWorksOnEDF</DataProcessor>
 			<DataProcessor>DataExchangeCreationAssistant</DataProcessor>
 			<DataProcessor>DataExchangeExecution</DataProcessor>
-			<DataProcessor>DataExchangeWithSiteCreationAssistant</DataProcessor>
 			<DataProcessor>DataExportImportContainerManager</DataProcessor>
 			<DataProcessor>DataExportImportDataExportHandlersManager</DataProcessor>
 			<DataProcessor>DataExportImportDataImportHandlersManager</DataProcessor>
@@ -3610,7 +3547,6 @@
 			<InformationRegister>ClosedPeriodsExceptions</InformationRegister>
 			<InformationRegister>CounterpartyProductsAndServicesPrices</InformationRegister>
 			<InformationRegister>CurrencyRates</InformationRegister>
-			<InformationRegister>CustomerOrdersFromSite</InformationRegister>
 			<InformationRegister>DataAreaDataExchangeStatus</InformationRegister>
 			<InformationRegister>DataAreas</InformationRegister>
 			<InformationRegister>DataAreasActivityRating</InformationRegister>
@@ -3673,7 +3609,6 @@
 			<InformationRegister>InformationPackagesOnLaunch</InformationRegister>
 			<InformationRegister>InventoryManagement</InformationRegister>
 			<InformationRegister>MessageDataExchangeDataAreas</InformationRegister>
-			<InformationRegister>MessagesExchangeWithMobileClientsQueues</InformationRegister>
 			<InformationRegister>MonthEndErrors</InformationRegister>
 			<InformationRegister>NodesCommonDataChange</InformationRegister>
 			<InformationRegister>ObjectDataForRegistrationInExchanges</InformationRegister>

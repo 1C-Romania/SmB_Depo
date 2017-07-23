@@ -1203,10 +1203,6 @@
 			<field>FunctionalOptionAccountingFixedAssets</field>
 		</field>
 		<field xsi:type="DataSetFieldField">
-			<dataPath>FunctionalOptionUseExchangeWithSites</dataPath>
-			<field>FunctionalOptionUseExchangeWithSites</field>
-		</field>
-		<field xsi:type="DataSetFieldField">
 			<dataPath>AddressClassifierDataSource</dataPath>
 			<field>AddressClassifierDataSource</field>
 		</field>
@@ -1365,10 +1361,6 @@
 		<field xsi:type="DataSetFieldField">
 			<dataPath>ServiceManagerOfficeUserName</dataPath>
 			<field>ServiceManagerOfficeUserName</field>
-		</field>
-		<field xsi:type="DataSetFieldField">
-			<dataPath>PrefixForExchangeWithSite</dataPath>
-			<field>PrefixForExchangeWithSite</field>
 		</field>
 		<field xsi:type="DataSetFieldField">
 			<dataPath>UseExternalUsers</dataPath>
@@ -2714,10 +2706,6 @@ FROM
 				<field>FunctionalOptionAccountingFixedAssets</field>
 			</field>
 			<field xsi:type="DataSetFieldField">
-				<dataPath>FunctionalOptionUseExchangeWithSites</dataPath>
-				<field>FunctionalOptionUseExchangeWithSites</field>
-			</field>
-			<field xsi:type="DataSetFieldField">
 				<dataPath>AddressClassifierDataSource</dataPath>
 				<field>AddressClassifierDataSource</field>
 			</field>
@@ -2876,10 +2864,6 @@ FROM
 			<field xsi:type="DataSetFieldField">
 				<dataPath>ServiceManagerOfficeUserName</dataPath>
 				<field>ServiceManagerOfficeUserName</field>
-			</field>
-			<field xsi:type="DataSetFieldField">
-				<dataPath>PrefixForExchangeWithSite</dataPath>
-				<field>PrefixForExchangeWithSite</field>
 			</field>
 			<field xsi:type="DataSetFieldField">
 				<dataPath>UseExternalUsers</dataPath>
@@ -3608,7 +3592,6 @@ FROM
 	Constants.FunctionalOptionUseCharacteristics,
 	Constants.FunctionalOptionUseDiscountCards,
 	Constants.FunctionalOptionUseDiscountsMarkups,
-	Constants.FunctionalOptionUseExchangeWithSites,
 	Constants.FunctionalOptionUseJobSharing,
 	Constants.FunctionalOptionUseOrderWarehouse,
 	Constants.FunctionalOptionUsePeripherals,
@@ -3646,7 +3629,6 @@ FROM
 	Constants.PerformanceRatingRecordPeriod,
 	Constants.PlannedTotalsOptimizationDate,
 	Constants.PostponeEditProhibitionDate,
-	Constants.PrefixForExchangeWithSite,
 	Constants.PriceListShowCode,
 	Constants.PriceListShowFullDescr,
 	Constants.PriceListUseProductsAndServicesHierarchy,
