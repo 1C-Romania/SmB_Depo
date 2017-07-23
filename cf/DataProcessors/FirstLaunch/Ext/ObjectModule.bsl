@@ -7,7 +7,7 @@ Var MapReplaceOfRef;
 // Parameters:
 //    FileName - string - 
 //
-Procedure PredefinedDataAtServer(Val FileName) Export
+Function PredefinedDataAtServer(Val FileName) Export
 	
 	File = New File(FileName);
 	
@@ -41,7 +41,7 @@ Procedure PredefinedDataAtServer(Val FileName) Export
 		OR XMLReader.NamespaceURI <> "http://www.1c.ru/V8/1CV8DtUD/" Then
 		
 		Mess2UserBadFormat();
-		Return;
+		Return False;
 		
 	EndIf;
 	
@@ -50,7 +50,7 @@ Procedure PredefinedDataAtServer(Val FileName) Export
 		OR XMLReader.LocalName <> "Data" Then
 		
 		Mess2UserBadFormat();
-		Return;
+		Return False;
 		
 	EndIf;
 	
@@ -64,7 +64,7 @@ Procedure PredefinedDataAtServer(Val FileName) Export
 	If Not XMLReader.Read() Then 
 		
 		Mess2UserBadFormat();
-		Return;
+		Return False;
 		
 	EndIf;
 	
@@ -109,7 +109,7 @@ Procedure PredefinedDataAtServer(Val FileName) Export
 		OR XMLReader.LocalName <> "Data" Then
 		
 		Mess2UserBadFormat();
-		Return;
+		Return False;
 		
 	EndIf;
 	
@@ -118,7 +118,7 @@ Procedure PredefinedDataAtServer(Val FileName) Export
 		OR XMLReader.LocalName <> "PredefinedData" Then
 		
 		Mess2UserBadFormat();
-		Return;
+		Return False;
 		
 	EndIf;
 	
@@ -130,13 +130,15 @@ Procedure PredefinedDataAtServer(Val FileName) Export
 		OR XMLReader.NamespaceURI <> "http://www.1c.ru/V8/1CV8DtUD/" Then
 		
 		Mess2UserBadFormat();
-		Return;
+		Return False;
 		
 	EndIf;
 	
 	XMLReader.Close();
 	
-EndProcedure
+	Return True;
+	
+EndFunction
 
 /////////////////////////////////////////////////////////////////
 // <Procedure description>
