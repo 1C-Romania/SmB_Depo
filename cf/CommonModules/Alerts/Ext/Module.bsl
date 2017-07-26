@@ -355,16 +355,16 @@ Procedure AddAlert(AlertText,AlertStatus = Undefined,Cancel = Undefined, Object 
 		
 		If AlertStatus = Enums.AlertType.Warning Then
 			
-			If IsInRole("Right_General_YellowAlertDontBlockPosting") Then
-				
-				If CurrentRunMode() = ClientRunMode.OrdinaryApplication Then
-					#If Client Then
+			//If IsInRole("Right_General_YellowAlertDontBlockPosting") Then
+			//	
+			//	If CurrentRunMode() = ClientRunMode.OrdinaryApplication Then
+			//		#If Client Then
 					AlertMessage(AlertTextWithDocumentPresentation,AlertStatus,Cancel);
-					#EndIf
+					//#EndIf
 				
 					Return;
-				EndIf;
-			EndIf;
+			//	EndIf;
+			//EndIf;
 			
 			
 			If AdditionalProperties.Property("OmitWarnings") Then

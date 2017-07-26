@@ -3,6 +3,7 @@
 
 &AtServer
 Procedure OnCreateAtServer(Cancel, StandardProcessing)
+	Company			= SmallBusinessServer.GetCompany(Object.Company); //elmi
 	DocumentsFormAtServer.OnCreateAtServer(ThisForm, Cancel, StandardProcessing);		
 EndProcedure
 

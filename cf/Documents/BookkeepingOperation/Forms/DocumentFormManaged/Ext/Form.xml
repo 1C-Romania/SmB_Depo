@@ -321,6 +321,11 @@
 					<ShowTitle>false</ShowTitle>
 					<ExtendedTooltip name="GroupHeaderRightExtendedTooltip" id="92"/>
 					<ChildItems>
+						<InputField name="Company" id="393">
+							<DataPath>Object.Company</DataPath>
+							<ContextMenu name="CompanyContextMenu" id="394"/>
+							<ExtendedTooltip name="CompanyExtendedTooltip" id="395"/>
+						</InputField>
 						<InputField name="DocumentBase" id="93">
 							<DataPath>Object.DocumentBase</DataPath>
 							<AutoMaxWidth>false</AutoMaxWidth>

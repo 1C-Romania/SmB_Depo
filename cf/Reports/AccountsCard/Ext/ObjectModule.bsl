@@ -123,7 +123,7 @@ Function GenerateReport(Result = Undefined, DetailsData = Undefined, OutputIntoR
 	EndDo;	
 	
 	GenerationDate = CurrentDate(); // fixing generation time
-	VATNumberTemplatesStructure = Constants.VATNumberFormatStrings.Get().Get();
+	VATNumberTemplatesStructure = ""; //Constants.VATNumberFormatStrings.Get().Get(); //elmi ???? закомментировано, так как пока такой константы нет
 	FormattedVATNumbersMap = New Map;
 		
 	// Setting header, footer and page properties
@@ -166,7 +166,7 @@ Function GenerateReport(Result = Undefined, DetailsData = Undefined, OutputIntoR
 	
 	Header.Parameters.Account = Account;
 	Header.Parameters.Company = Common.GetLongDescription(Company);
-	Header.Parameters.Address = InformationRegisters.ContactInformation.Get(New Structure("Object, ContactInformationType, ContactInformationProfile", Company, Enums.ContactInformationTypes.Address, Catalogs.ContactInformationProfiles.CompanyLegalAddress)).Description;
+	Header.Parameters.Address = ContactInformationManagement.ObjectContactInformation(Company, Catalogs.ContactInformationKinds.CompanyLegalAddress); 
 	Header.Parameters.VATNumber     = Taxes.GetVATNumberPresentationWithCash(Company.VATNumber, VATNumberTemplatesStructure, FormattedVATNumbersMap);
 	Header.Parameters.Period  = TemplateReports.GetReportPeriodDescription(SettingsComposer,LanguageCode);
 	Header.Parameters.Filters   = String(SettingsComposer.Settings.Filter);

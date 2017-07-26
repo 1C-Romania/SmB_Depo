@@ -352,10 +352,10 @@ EndFunction // GetErrorTextNotInStock()
 
 Function GetLongDescription(Object) Export 
 	
-	If IsBlankString(Object.LongDescription) Then
+	If IsBlankString(Object.DescriptionFull) Then  
 		Return Object.Description;
 	Else
-		Return Object.LongDescription;
+		Return Object.DescriptionFull; 	
 	EndIf;
 	
 EndFunction // GetLongDescription()

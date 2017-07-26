@@ -326,7 +326,7 @@ Function Post(Form) Export
 EndFunction
 
 // Jack 27.06.2017
-//Procedure NotificationProcessingAtServer(Form, EventName, Parameter) Export
+Procedure NotificationProcessingAtServer(Form, EventName, Parameter) Export
 //	If EventName = "AddingAdditionalAttributes" and Form.UUID = Parameter Then
 //		AdditionalAttributesServer.PutUpdateAddititionalAttributesOnForm(Form);
 //	ElsIf EventName = "LoadData" AND Form.UUID = Parameter.LoadingDestinationUUID Then
@@ -354,7 +354,7 @@ EndFunction
 //		Form.PrefixList.Add("NumberSettings", NStr("pl='Ustawienia...'; en='Settings...'"));
 //		SetFormDocumentTitle(Form);
 //	EndIf;
-//EndProcedure
+EndProcedure
 
 #EndRegion
 
