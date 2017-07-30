@@ -658,9 +658,5 @@ Procedure ExportFileFileChoice(SelectedFiles, AdditionalParameters) Export
 	
 EndProcedure
 
-// ExportToFile procedure work result handler.
-Procedure ExportFileGetFile(ReceivedFiles, AdditionalParameters) Export
-	// Results processing is not required.
-EndProcedure
 
 #EndRegion

@@ -283,6 +283,7 @@ EndProcedure
 
 Procedure AfterLaunchApplication(SelectedItem, Parameters) Export
 	// Stub procedure, because for BeginRunningApplication requires a notification handler.
+	SaveThisProcedure	= True;
 EndProcedure
 
 // Check whether the telephony software is installed on your computer.

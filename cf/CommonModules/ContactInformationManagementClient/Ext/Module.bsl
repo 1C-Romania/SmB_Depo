@@ -1013,6 +1013,7 @@ EndProcedure
 
 Procedure AfterLaunchApplication(SelectedItem, Parameters) Export
 	// Stub procedure, because for BeginRunningApplication requires a notification handler.
+	SaveThisProcedure	= True;
 EndProcedure
 
 #EndRegion

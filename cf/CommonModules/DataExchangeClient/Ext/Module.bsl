@@ -506,6 +506,7 @@ EndProcedure
 // Procedure continued (see above).
 Procedure FileOrDirectoryOpeningHandlerAfterApplicationStart(ReturnCode, AdditionalParameters) Export
 	// No processing is required.
+	SaveThisProcedure	= True;
 EndProcedure
 
 // Opens dialog for file dialog selection requesting for setting of work with files extension.
@@ -967,6 +968,7 @@ EndProcedure
 // 
 Procedure SelectAndSaveFileOnClientAfterReceivingFiles(ReceivedFiles, AdditionalParameters) Export
 	// No processing is required.
+	SaveThisProcedure	= True;
 EndProcedure
 
 // Adds fields to the target structure if there are no fields there.

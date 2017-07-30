@@ -116,10 +116,15 @@ Procedure WriteBegin()
 	
 	Status(NStr("en='Changing property settings. Please wait';ru='Выполняется изменение настройки свойства. Пожалуйста, подождите'"));
 	
+	////////////////////////////////////////////
 	//  TODO  we need to analyse it for 8.3.8
 	#if not webclient then
 		OpenProperty = WriteAtServer();
 	#endif
+	#if webclient then
+		OpenProperty = NULL;
+	#endif
+	////////////////////////////////////////////
 	
 	If OpenProperty <> NULL Then
 		WriteCompletion(OpenProperty);

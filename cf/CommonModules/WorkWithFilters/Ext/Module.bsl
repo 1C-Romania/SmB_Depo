@@ -233,9 +233,13 @@ Procedure SaveFilterSettings(Val Form, ListName = "", StructureItemNames = Undef
 	
 EndProcedure
 
+///////////////////////////////////
+//  Procedure from FH ?
+//  It has parameter "SetFilterByPeriod = True", but raise the error
+//  By default this parameter had to be  False  !
 Procedure RestoreFilterSettings(Form, FilterList, ListName = "", 
 	StructureItemNames = Undefined, StructureFilterFieldNames = Undefined,
-	FormFilterOption="", SetFilterByPeriod = True, TPNameLabelData = "LabelData") Export
+	FormFilterOption="", SetFilterByPeriod = False, TPNameLabelData = "LabelData") Export
 	
 	ObjectKeyName = StrReplace(Form.FormName,".","")+FormFilterOption;
 	//Filters by right panel fields

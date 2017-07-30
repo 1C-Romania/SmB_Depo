@@ -2924,45 +2924,6 @@ Procedure SetContactInformationComment(XMLString, Val Comment) Export
 	
 EndProcedure
 
-Procedure CheckContactInformationAttributesPresence(Form, ArrayOfAddedDetails)
-	
-	FormAttributesList = Form.GetAttributes();
-	
-	CreateContactInformationParameters = True;
-	CreateContactInformationTable = True;
-	For Each Attribute In FormAttributesList Do
-		If Attribute.Name = "ContactInformationParameters" Then
-			CreateContactInformationParameters = False;
-		ElsIf Attribute.Name = "ContactInformationAdditionalAttributeInfo" Then
-			CreateContactInformationTable = False;
-		EndIf;
-	EndDo;
-	
-	If CreateContactInformationTable Then
-		
-		String500 = New TypeDescription("String", , New StringQualifiers(500));
-		
-		// Create values table
-		DescriptionName = "ContactInformationAdditionalAttributeInfo";
-		ArrayOfAddedDetails.Add(New FormAttribute(DescriptionName, New TypeDescription("ValueTable")));
-		ArrayOfAddedDetails.Add(New FormAttribute("AttributeName", String500, DescriptionName));
-		ArrayOfAddedDetails.Add(New FormAttribute("Kind", New TypeDescription("CatalogRef.ContactInformationKinds"), DescriptionName));
-		ArrayOfAddedDetails.Add(New FormAttribute("Type", New TypeDescription("EnumRef.ContactInformationTypes"), DescriptionName));
-		ArrayOfAddedDetails.Add(New FormAttribute("FieldsValues", New TypeDescription("ValueList, String"), DescriptionName));
-		ArrayOfAddedDetails.Add(New FormAttribute("Presentation", String500, DescriptionName));
-		ArrayOfAddedDetails.Add(New FormAttribute("Comment", New TypeDescription("String"), DescriptionName));
-		ArrayOfAddedDetails.Add(New FormAttribute("ThisAttributeOfTabularSection", New TypeDescription("Boolean"), DescriptionName));
-		
-	EndIf;
-	
-	If CreateContactInformationParameters Then
-		
-		ArrayOfAddedDetails.Add(New FormAttribute("ContactInformationParameters", New TypeDescription()));
-		
-	EndIf;
-	
-EndProcedure
-
 #EndRegion
 
 

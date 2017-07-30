@@ -1882,34 +1882,6 @@ Function StreetsByPresentationAddressClassifier(SettlementCode, Text, HideObsole
 	Return Result;
 EndFunction
 
-Function IsChildAddressClassifier(ObjectCode, ParentCode)
-	ParentStructure = CodePartsAddressClassifier(ParentCode);
-	ObjectStructure  = CodePartsAddressClassifier(ObjectCode);
-	
-	If ObjectStructure.StreetCode <> 0 Then
-		Return ObjectStructure.SettlementCode = ParentStructure.SettlementCode
-		And ObjectStructure.AreaCode = ParentStructure.AreaCode
-		And ObjectStructure.CountyCode = ParentStructure.CountyCode
-		And ObjectStructure.StateCode = ParentStructure.StateCode
-		
-	ElsIf ObjectStructure.SettlementCode <> 0 Then
-		Return ObjectStructure.AreaCode = ParentStructure.AreaCode
-		And ObjectStructure.CountyCode = ParentStructure.CountyCode
-		And ObjectStructure.StateCode = ParentStructure.StateCode
-		
-	ElsIf ObjectStructure.AreaCode <> 0 Then
-		Return ObjectStructure.CountyCode = ParentStructure.CountyCode
-		And ObjectStructure.StateCode = ParentStructure.StateCode
-		
-	ElsIf ObjectStructure.CountyCode <> 0 Then
-		Return ObjectStructure.StateCode = ParentStructure.StateCode
-		
-	ElsIf ObjectStructure.StateCode <> 0 Then
-		Return True;
-	EndIf;
-	
-	Return False;
-EndFunction
 
 // Returns an empty template structure, or a structure filled by code.
 Function AttributeListSettlementAddressClassifier(Code = Undefined)
@@ -1981,23 +1953,6 @@ Function AttributeListStreetAddressClassifier(Code = Undefined)
 	Return Result;
 EndFunction
 
-Function AddressItemAutoCompleteListAddressClassifier(Text, AddressPartCode, AddressParts, WarnObsolete, NumberOfRowsToSelect)
-	Return AddressItemAnalysisListAddressClassifier(Text, "", AddressPartCode, AddressParts, True, WarnObsolete, NumberOfRowsToSelect);
-EndFunction
-
-Function AddressItemOptionListByTextAddressClassifier(Text, AddressPartCode, AddressParts, NumberOfRowsToSelect = 50)
-	
-	SearchAddressParts = ContactInformationClientServer.AddressParts(Text);
-	If SearchAddressParts.Count() = 0 Then
-		Return Undefined;
-	EndIf;
-	Description = TrimAll(SearchAddressParts[0].Description);
-	Abbr   = TrimAll(SearchAddressParts[0].Abbr);
-	
-	SearchBySimilarity = IsBlankString(Abbr);
-	
-	Return AddressItemAnalysisListAddressClassifier(Description, Abbr, AddressPartCode, AddressParts, SearchBySimilarity, True, NumberOfRowsToSelect);
-EndFunction
 
 Function AddressItemAnalysisListAddressClassifier(Description, Abbr, AddressPartCode, AddressParts, SearchBySimilarity = True, WarnObsolete = True, NumberOfRowsToSelect = 50)
 	
@@ -2184,82 +2139,6 @@ Procedure FillAddressErrorsAddressClassifier(XDTOHomeCountryAddress, Result)
 	
 EndProcedure
 
-Function ObjectCodeByAddressPartsAddressClassifier(AddressParts, HideObsolete = False) 
-	Var AddressPartValue;
-	
-	AddressClassifierModule = ServerModuleAddressClassifier();
-	If AddressClassifierModule = Undefined Then
-		Return Undefined;
-	EndIf;
-	
-	If AddressParts.Property("Street", AddressPartValue) Then
-		Street = TrimAll(AddressPartValue.Value);
-	Else
-		Street = "";
-	EndIf;
-	
-	If AddressParts.Property("Settlement", AddressPartValue) Then
-		Settlement = TrimAll(AddressPartValue.Value);
-	Else
-		Settlement = "";
-	EndIf;
-	
-	If AddressParts.Property("City", AddressPartValue) Then
-		City = TrimAll(AddressPartValue.Value);
-	Else
-		City = "";
-	EndIf;
-	
-	If AddressParts.Property("County", AddressPartValue) Then
-		County = TrimAll(AddressPartValue.Value);
-	Else
-		County = "";
-	EndIf;
-	
-	If AddressParts.Property("State", AddressPartValue) Then
-		State = TrimAll(AddressPartValue.Value);
-	Else
-		State = "";
-	EndIf;
-	
-	AddressObj = New Structure("PostalCode, BuildingNumber, UnitNumber");
-	AddressObj.Insert("State",      State);
-	AddressObj.Insert("County",     County);
-	AddressObj.Insert("City",       City);
-	AddressObj.Insert("Settlement", Settlement);
-	AddressObj.Insert("Street",     Street);
-	
-	AnalysisResults = AddressClassifierModule.AddressComplianceToClassifierAnalysis(AddressObj);
-	Options = AnalysisResults.Options;
-	If Not IsBlankString(Street) Then
-		If Options.Find(AddressParts.Street.ClassifierCode, "Code") <> Undefined  Then
-			Return AddressParts.Street.ClassifierCode;
-		EndIf;
-		
-	ElsIf Not IsBlankString(Settlement) Then
-		If Options.Find(AddressParts.Settlement.ClassifierCode, "Code") <> Undefined Then
-			Return AddressParts.Settlement.ClassifierCode;
-		EndIf;
-		
-	ElsIf Not IsBlankString(City) Then
-		If Options.Find(AddressParts.City.ClassifierCode, "Code") <> Undefined Then
-			Return AddressParts.City.ClassifierCode;
-		EndIf;
-		
-	ElsIf Not IsBlankString(County) Then
-		If Options.Find(AddressParts.County.ClassifierCode, "Code") <> Undefined Then
-			Return AddressParts.County.ClassifierCode;
-		EndIf;
-		
-	ElsIf Not IsBlankString(State) Then
-		If Options.Find(AddressParts.State.ClassifierCode, "Code") <> Undefined Then
-			Return AddressParts.State.ClassifierCode;
-		EndIf;
-		
-	EndIf;
-	
-	Return Undefined;
-EndFunction
 
 Function StateCodeAddressClassifier(FullDescr)
 	
@@ -2299,17 +2178,6 @@ Function CodeStateAddressClassifier(Val Code)
 	Return "";
 EndFunction
 
-Function AllStatesAddressClassifier() 
-	
-	AddressClassifierModule = ServerModuleAddressClassifier();
-	Query = AddressClassifierModule.QueryAllStatesAddressClassifier();
-	
-	Result = Query.Execute().Unload();
-	Result.Indexes.Add("Code");
-	Result.Indexes.Add("Presentation");
-	
-	Return Result;
-EndFunction
 
 Function DetermineAddressPostalCodeAddressClassifier(XDTOHomeCountryAddress)
 	
@@ -2330,69 +2198,6 @@ Function DetermineAddressPostalCodeAddressClassifier(XDTOHomeCountryAddress)
 	
 EndFunction
 
-Function AddressesByClassifierPostalCode(Val Index, Val AdditionalSearchParameters = Undefined)
-	
-	SearchParameters = New Structure("HideObsolete, NumberOfRowsToSelect", False, 0);
-	If AdditionalSearchParameters <> Undefined Then
-		FillPropertyValues(SearchParameters, AdditionalSearchParameters);
-	EndIf;
-	
-	HideObsolete = SearchParameters.HideObsolete;
-	NumberOfRowsToSelect        = SearchParameters.NumberOfRowsToSelect;
-	
-	AddressClassifierModule = ServerModuleAddressClassifier();
-	Query = AddressClassifierModule.QueryAddressByPostalCodeAddressClassifier(NumberOfRowsToSelect, HideObsolete);
-	
-	Query.SetParameter("PostalCode", TrimAll(Index));
-	
-	Results = Query.ExecuteBatch();
-	
-	// Common part of presentation
-	Data = Results[2].Unload();
-	Row = Data[0];
-	PresentationCommonPart = ContactInformationClientServer.FullDescr(
-		Row.StreetName, Row.StreetAbbr,
-		Row.SettlementName, Row.SettlementAbbr,
-		Row.CityName, Row.CityAbbr,
-		Row.CountyName, Row.CountyAbbr,
-		Row.StateName, Row.StateAbbr
-	);
-	CommonFields = New Structure;
-	For Each Column In Data.Columns Do
-		Name = Column.Name;
-		If Not IsBlankString(Row[Name]) Then
-			CommonFields.Insert(Name, "");
-		EndIf;
-	EndDo;
-	
-	// All results
-	Data = Results[1].Unload();
-	DataColumns = Data.Columns;
-	DataColumns.Insert(0, "Presentation", New TypeDescription("String") );
-	
-	For Each Row In Data Do
-		// Clearing the common fields
-		FillPropertyValues(Row, CommonFields);
-		// Generating a presentation based on the remaining fields
-		Row.Presentation = ContactInformationClientServer.FullDescr(
-			Row.StreetName, Row.StreetAbbr,
-			Row.SettlementName, Row.SettlementAbbr,
-			Row.CityName, Row.CityAbbr,
-			Row.CountyName, Row.CountyAbbr,
-			Row.StateName, Row.StateAbbr
-		);
-	EndDo;
-	
-	// Deleting the unnecessary columns
-	Position = DataColumns.Count() - 1;
-	While Position > 3 Do 
-		DataColumns.Delete(Position);
-		Position = Position - 1;
-	EndDo;
-	
-	Return New Structure("Data, PresentationCommonPart, TooMuchData", Data, PresentationCommonPart,
-		(NumberOfRowsToSelect > 0) And (Data.Count() > NumberOfRowsToSelect) );
-EndFunction
 
 // Value table constructor
 Function ValueTable(ColumnList, IndexList = "")

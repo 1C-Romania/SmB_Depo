@@ -163,6 +163,9 @@
 			<CheckBoxType>Auto</CheckBoxType>
 			<ContextMenu name="ShowOnStartContextMenu" id="6"/>
 			<ExtendedTooltip name="ShowOnStartExtendedTooltip" id="14"/>
+			<Events>
+				<Event name="OnChange">ShowOnWorkStartOnChange</Event>
+			</Events>
 		</CheckBoxField>
 	</ChildItems>
 	<Attributes>

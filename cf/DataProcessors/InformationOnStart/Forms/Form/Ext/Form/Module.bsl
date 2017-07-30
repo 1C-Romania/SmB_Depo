@@ -6,8 +6,10 @@ Procedure OnCreateAtServer(Cancel, StandardProcessing)
 		Return;
 	EndIf;
 	
+	// do not comment!
+	BaseConfiguration       = StandardSubsystemsServer.ThisIsBasicConfigurationVersion();
+	
 	//CurrentLineIndex = -1;
-	//BaseConfiguration       = StandardSubsystemsServer.ThisIsBasicConfigurationVersion();
 	//ConfigurationSaaS = CommonUseReUse.DataSeparationEnabled();
 	//If CommonUse.SubsystemExists("StandardSubsystems.DataExchange") Then
 	//	ModuleDataExchangeReUse = CommonUse.CommonModule("DataExchangeReUse");
@@ -107,5 +109,13 @@ Procedure SaveFlagState(ShowOnWorkStart)
 		CommonUse.CommonSettingsStorageSave("InformationOnStart", "DateOfNearestShow", DateOfNearestShow);
 	EndIf;
 EndProcedure
+
+&AtClient
+Procedure ShowOnWorkStartOnChange(Item)
+	If Not BaseConfiguration And DataSavingRight Then
+		SaveFlagState(ShowOnWorkStart);
+	EndIf;
+EndProcedure
+
 
 #EndRegion
