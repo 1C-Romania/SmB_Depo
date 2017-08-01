@@ -297,10 +297,10 @@
 			<SearchStringModeOnInputByString>AnyPart</SearchStringModeOnInputByString>
 			<FullTextSearchOnInputByString>Use</FullTextSearchOnInputByString>
 			<ChoiceDataGetModeOnInputByString>Background</ChoiceDataGetModeOnInputByString>
-			<DefaultObjectForm/>
+			<DefaultObjectForm>Catalog.SavedSettings.Form.ItemFormManaged</DefaultObjectForm>
 			<DefaultFolderForm/>
-			<DefaultListForm>Catalog.SavedSettings.Form.ListForm</DefaultListForm>
-			<DefaultChoiceForm>Catalog.SavedSettings.Form.ChoiceForm</DefaultChoiceForm>
+			<DefaultListForm>Catalog.SavedSettings.Form.ListFormManaged</DefaultListForm>
+			<DefaultChoiceForm>Catalog.SavedSettings.Form.ListFormManaged</DefaultChoiceForm>
 			<DefaultFolderChoiceForm/>
 			<AuxiliaryObjectForm>Catalog.SavedSettings.Form.ItemFormManaged</AuxiliaryObjectForm>
 			<AuxiliaryFolderForm/>
@@ -705,8 +705,6 @@
 					<FullTextSearch>DontUse</FullTextSearch>
 				</Properties>
 			</Attribute>
-			<Form>ListForm</Form>
-			<Form>ChoiceForm</Form>
 			<Form>ReportSettingChoiceForm</Form>
 			<Form>ItemFormManaged</Form>
 			<Form>ListFormManaged</Form>

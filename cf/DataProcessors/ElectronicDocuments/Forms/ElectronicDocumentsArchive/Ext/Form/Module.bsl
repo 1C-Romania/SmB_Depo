@@ -213,7 +213,7 @@ Procedure PerformEDComparison(ParametersStructure)
 		SpreadsheetDocument = GetFromTempStorage(TemporaryFilesList[1].DataFileAddress);
 		SpreadsheetDocument.Write(SecondMXLFileName);
 		
-		Comparison = New FileComparison;
+		Comparison = New FileCompare;
 		Comparison.CompareMethod = FileCompareMethod.SpreadsheetDocument;
 		Comparison.FirstFile = FirstMXLFileName;
 		Comparison.SecondFile = SecondMXLFileName;

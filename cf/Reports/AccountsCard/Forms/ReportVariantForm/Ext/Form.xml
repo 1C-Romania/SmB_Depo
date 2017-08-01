@@ -177,9 +177,6 @@
 					<AutoMarkIncomplete>true</AutoMarkIncomplete>
 					<ContextMenu name="CompanyContextMenu" id="535"/>
 					<ExtendedTooltip name="CompanyExtendedTooltip" id="536"/>
-					<Events>
-						<Event name="OnChange">CompanyOnChange</Event>
-					</Events>
 				</InputField>
 				<InputField name="Account" id="537">
 					<DataPath>Account</DataPath>
@@ -200,18 +197,12 @@
 					<CheckBoxType>Auto</CheckBoxType>
 					<ContextMenu name="ShowClosePeriodRecordsContextMenu" id="561"/>
 					<ExtendedTooltip name="ShowClosePeriodRecordsExtendedTooltip" id="562"/>
-					<Events>
-						<Event name="OnChange">ShowClosePeriodRecordsOnChange</Event>
-					</Events>
 				</CheckBoxField>
 				<CheckBoxField name="OutputPageTotals" id="548">
 					<DataPath>OutputPageTotals</DataPath>
 					<CheckBoxType>Auto</CheckBoxType>
 					<ContextMenu name="OutputPageTotalsContextMenu" id="549"/>
 					<ExtendedTooltip name="OutputPageTotalsExtendedTooltip" id="550"/>
-					<Events>
-						<Event name="OnChange">OutputPageTotalsOnChange</Event>
-					</Events>
 				</CheckBoxField>
 			</ChildItems>
 		</UsualGroup>

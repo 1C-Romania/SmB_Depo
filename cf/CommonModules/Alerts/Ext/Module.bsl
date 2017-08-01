@@ -283,32 +283,14 @@ EndFunction
 Function ClearAlertsTable(Object = Undefined,Form = Undefined) Export
 	
 	If Object <> Undefined Then
-		
 		If Form = Undefined Then
-			
 			Try
-				
 				AdditionalProperties = Object.AdditionalProperties;
-				
 			Except
-				
 				AdditionalProperties = New Structure();
-				
 			EndTry; 
-			
 			AdditionalProperties.Property("EditingInForm",Form);
-			
 		EndIf;
-		
-		#If Client Then
-		If Form <> Undefined 
-			AND Form.IsOpen() Then
-			
-				AlertsForm = GetCommonForm("AlertsForm",Form,Form);
-				AlertsForm.TableBoxAlerts.Clear();
-		EndIf;
-     	#EndIf
-		
 	EndIf;		
 	
 EndFunction	

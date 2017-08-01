@@ -60,10 +60,6 @@
 				<ContextMenu name="ListSearchControlContextMenu" id="12"/>
 				<ExtendedTooltip name="ListSearchControlExtendedTooltip" id="13"/>
 			</SearchControlAddition>
-			<Events>
-				<Event name="BeforeDeleteRow">ListBeforeDeleteRow</Event>
-				<Event name="AfterDeleteRow">ListAfterDeleteRow</Event>
-			</Events>
 			<ChildItems>
 				<InputField name="ListPresentation" id="14">
 					<DataPath>List.Presentation</DataPath>

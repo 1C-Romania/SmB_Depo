@@ -72,30 +72,21 @@ Procedure SetEnabled(AttributePathToData = "")
 		OR CommonUseReUse.CanUseSeparatedData() Then
 		
 		If AttributePathToData = "ConstantsSet.FunctionalOptionAccountingByMultipleWarehouses" OR AttributePathToData = "" Then
-			
 			CommonUseClientServer.SetFormItemProperty(Items, "CatalogStructuralUnitsWarehouses", "Enabled", ConstantsSet.FunctionalOptionAccountingByMultipleWarehouses);
-			
 		EndIf;
 		
 		If AttributePathToData = "ConstantsSet.UsePurchaseOrderStates" OR AttributePathToData = "" Then
-			
 			CommonUseClientServer.SetFormItemProperty(Items, "SettingPurchaseOrderStatesDefault","Enabled", Not ConstantsSet.UsePurchaseOrderStates);
-			CommonUseClientServer.SetFormItemProperty(Items, "CatalogCustomerOrderStates",			"Enabled", ConstantsSet.UsePurchaseOrderStates);
-			
+			CommonUseClientServer.SetFormItemProperty(Items, "CatalogCustomerOrderStates",	"Enabled", ConstantsSet.UsePurchaseOrderStates);
 		EndIf;
 		
 		If AttributePathToData = "ConstantsSet.FunctionalOptionUseBatches" OR AttributePathToData = "" Then
-			
 			CommonUseClientServer.SetFormItemProperty(Items, "SettingsReceptionProductsForSafeCustody", "Enabled", ConstantsSet.FunctionalOptionUseBatches);
-			
 		EndIf;
 		
 		If AttributePathToData = "ConstantsSet.UseSerialNumbers" OR AttributePathToData = "" Then
-			
-			CommonUseClientServer.SetFormItemProperty(Items, "SettingsКонтролироватьОстатки", "Enabled", ConstantsSet.UseSerialNumbers);
-			
+			CommonUseClientServer.SetFormItemProperty(Items, "SerialNumbersBalanceControl", "Enabled", ConstantsSet.UseSerialNumbers);
 		EndIf;
-
 	EndIf;
 	
 EndProcedure

@@ -2216,61 +2216,61 @@ EndFunction
 
 #If Client Then
 	
-Procedure FilterDragCheck(SettingsComposer, Control, DragParameters, StandardProcessing, Row, Column) Export
-	
-	DragAndDrop.DragCheck_AllowSpreadsheetDocumentAndString(Control, DragParameters, StandardProcessing, Row, Column);
+//Procedure FilterDragCheck(SettingsComposer, Control, DragParameters, StandardProcessing, Row, Column) Export
+//	
+//	DragAndDrop.DragCheck_AllowSpreadsheetDocumentAndString(Control, DragParameters, StandardProcessing, Row, Column);
 
-EndProcedure	
+//EndProcedure	
 
-Procedure FilterDrag(SettingsComposer, Control, DragParameters, StandardProcessing, Row, Column) Export
-	
-	If TypeOf(DragParameters.Value) = Type("SpreadsheetDocument")
-		OR TypeOf(DragParameters.Value) = Type("String") Then
-		
-		If TypeOf(DragParameters.Value) = Type("SpreadsheetDocument") Then
-			ValuesArray = GetValuesArrayFromSpreadsheetDocument(DragParameters.Value);
-		ElsIf TypeOf(DragParameters.Value) = Type("String") Then
-			ValuesArray = GetValuesArrayFromString(DragParameters.Value);
-		EndIf;	
-		
-		ValuesArrayCount = ValuesArray.Count();
-		If ValuesArrayCount = 0 Then
-			Return;
-		EndIf;
-		
-		StandardProcessing = False;
-		DragParameters.Action = DragAction.Copy;
-		DragParameters.AllowedActions = DragAllowedActions.Copy;
-		
-		If Row = Undefined Then
-			SettingsComposerAvailableFilterItemsForm = GetCommonForm("SettingsComposerAvailableFilterItemsForm");
-			SettingsComposerAvailableFilterItemsForm.SettingsComposer = SettingsComposer;
-			Result = SettingsComposerAvailableFilterItemsForm.DoModal();
-			If Result = True Then
-				Row = SettingsComposer.Settings.Filter.Items.Add(Type("DataCompositionFilterItem"));
-				Row.LeftValue = New DataCompositionField(SettingsComposerAvailableFilterItemsForm.DataCompositionField.Field);
-			Else
-				Return;
-			EndIf;	
-		EndIf;	
-		Row.Use = True;
-		If ValuesArrayCount = 1 Then
-			Row.RightValue = ValuesArray[0];
-			If Row.ComparisonType <> DataCompositionComparisonType.NotEqual Then
-				Row.ComparisonType = DataCompositionComparisonType.Equal;
-			EndIf;	
-		Else
-			ValueList = New ValueList;
-			ValueList.LoadValues(ValuesArray);
-			Row.RightValue = ValueList;
-			If Row.ComparisonType <> DataCompositionComparisonType.NotInList Then
-				Row.ComparisonType = DataCompositionComparisonType.InList;
-			EndIf;	
-		EndIf;		
-		
-	EndIf;
-		
-EndProcedure	
+//Procedure FilterDrag(SettingsComposer, Control, DragParameters, StandardProcessing, Row, Column) Export
+//	
+//	If TypeOf(DragParameters.Value) = Type("SpreadsheetDocument")
+//		OR TypeOf(DragParameters.Value) = Type("String") Then
+//		
+//		If TypeOf(DragParameters.Value) = Type("SpreadsheetDocument") Then
+//			ValuesArray = GetValuesArrayFromSpreadsheetDocument(DragParameters.Value);
+//		ElsIf TypeOf(DragParameters.Value) = Type("String") Then
+//			ValuesArray = GetValuesArrayFromString(DragParameters.Value);
+//		EndIf;	
+//		
+//		ValuesArrayCount = ValuesArray.Count();
+//		If ValuesArrayCount = 0 Then
+//			Return;
+//		EndIf;
+//		
+//		StandardProcessing = False;
+//		DragParameters.Action = DragAction.Copy;
+//		DragParameters.AllowedActions = DragAllowedActions.Copy;
+//		
+//		If Row = Undefined Then
+//			SettingsComposerAvailableFilterItemsForm = GetCommonForm("SettingsComposerAvailableFilterItemsForm");
+//			SettingsComposerAvailableFilterItemsForm.SettingsComposer = SettingsComposer;
+//			Result = SettingsComposerAvailableFilterItemsForm.DoModal();
+//			If Result = True Then
+//				Row = SettingsComposer.Settings.Filter.Items.Add(Type("DataCompositionFilterItem"));
+//				Row.LeftValue = New DataCompositionField(SettingsComposerAvailableFilterItemsForm.DataCompositionField.Field);
+//			Else
+//				Return;
+//			EndIf;	
+//		EndIf;	
+//		Row.Use = True;
+//		If ValuesArrayCount = 1 Then
+//			Row.RightValue = ValuesArray[0];
+//			If Row.ComparisonType <> DataCompositionComparisonType.NotEqual Then
+//				Row.ComparisonType = DataCompositionComparisonType.Equal;
+//			EndIf;	
+//		Else
+//			ValueList = New ValueList;
+//			ValueList.LoadValues(ValuesArray);
+//			Row.RightValue = ValueList;
+//			If Row.ComparisonType <> DataCompositionComparisonType.NotInList Then
+//				Row.ComparisonType = DataCompositionComparisonType.InList;
+//			EndIf;	
+//		EndIf;		
+//		
+//	EndIf;
+//		
+//EndProcedure	
 
 Function GetValuesArrayFromString(String) Export
 	

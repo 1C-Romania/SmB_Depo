@@ -5,8 +5,6 @@
 	</AutoCommandBar>
 	<Events>
 		<Event name="ChoiceProcessing">ChoiceProcessing</Event>
-		<Event name="OnOpen">OnOpen</Event>
-		<Event name="BeforeClose">BeforeClose</Event>
 		<Event name="OnCreateAtServer">OnCreateAtServer</Event>
 	</Events>
 	<ChildItems>
@@ -18,7 +16,6 @@
 			<ContextMenu name="SpreadsheetDocumentContextMenu" id="2"/>
 			<ExtendedTooltip name="SpreadsheetDocumentExtendedTooltip" id="3"/>
 			<Events>
-				<Event name="OnChange">SpreadsheetDocumentOnChange</Event>
 				<Event name="Selection">SpreadsheetDocumentSelection</Event>
 				<Event name="DetailProcessing">SpreadsheetDocumentDetailProcessing</Event>
 				<Event name="OnChangeAreaContent">SpreadsheetDocumentOnChangeAreaContent</Event>

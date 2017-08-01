@@ -291,11 +291,11 @@
 			<SearchStringModeOnInputByString>Begin</SearchStringModeOnInputByString>
 			<FullTextSearchOnInputByString>DontUse</FullTextSearchOnInputByString>
 			<ChoiceDataGetModeOnInputByString>Directly</ChoiceDataGetModeOnInputByString>
-			<DefaultObjectForm>Catalog.BookkeepingOperationsTemplates.Form.ItemForm</DefaultObjectForm>
+			<DefaultObjectForm>Catalog.BookkeepingOperationsTemplates.Form.ItemFormManaged</DefaultObjectForm>
 			<DefaultFolderForm>Catalog.BookkeepingOperationsTemplates.Form.GroupFormManaged</DefaultFolderForm>
-			<DefaultListForm>Catalog.BookkeepingOperationsTemplates.Form.ListForm</DefaultListForm>
-			<DefaultChoiceForm>Catalog.BookkeepingOperationsTemplates.Form.ChoiceForm</DefaultChoiceForm>
-			<DefaultFolderChoiceForm>Catalog.BookkeepingOperationsTemplates.Form.GroupChoiceForm</DefaultFolderChoiceForm>
+			<DefaultListForm>Catalog.BookkeepingOperationsTemplates.Form.ListFormManaged</DefaultListForm>
+			<DefaultChoiceForm>Catalog.BookkeepingOperationsTemplates.Form.ChoiceFormManaged</DefaultChoiceForm>
+			<DefaultFolderChoiceForm/>
 			<AuxiliaryObjectForm>Catalog.BookkeepingOperationsTemplates.Form.ItemFormManaged</AuxiliaryObjectForm>
 			<AuxiliaryFolderForm>Catalog.BookkeepingOperationsTemplates.Form.GroupFormManaged</AuxiliaryFolderForm>
 			<AuxiliaryListForm>Catalog.BookkeepingOperationsTemplates.Form.ListFormManaged</AuxiliaryListForm>
@@ -4158,35 +4158,17 @@
 					</Attribute>
 				</ChildObjects>
 			</TabularSection>
-			<Form>ChoiceForm</Form>
 			<Form>ChoiceFormManaged</Form>
-			<Form>Condition</Form>
-			<Form>DocumentFilterSettings</Form>
 			<Form>DocumentFilterSettingsManaged</Form>
-			<Form>EditFormula</Form>
-			<Form>EditFormulaProgrammistic</Form>
 			<Form>EditFormulaProgrammisticManaged</Form>
-			<Form>EditFormulaSimple</Form>
 			<Form>EditFormulaSimpleManaged</Form>
-			<Form>FormulasSetting</Form>
-			<Form>GroupChoiceForm</Form>
-			<Form>GroupForm</Form>
 			<Form>GroupFormManaged</Form>
-			<Form>ItemForm</Form>
 			<Form>ItemFormManaged</Form>
-			<Form>ListForm</Form>
 			<Form>ListFormManaged</Form>
-			<Form>Parameter</Form>
 			<Form>ParameterManaged</Form>
-			<Form>ParameterSelection</Form>
 			<Form>ParameterSelectionManaged</Form>
-			<Form>ParametersSetting</Form>
-			<Form>ParameterWizard</Form>
 			<Form>ParameterWizardManaged</Form>
-			<Form>SelectionHistory</Form>
-			<Form>TableChoiceForm</Form>
 			<Form>TableChoiceFormManaged</Form>
-			<Form>TypeChoiceForm</Form>
 			<Form>TypeChoiceFormManaged</Form>
 			<Template>LinkToBookkeepingData</Template>
 			<Template>LinkToBookkeepingDataTemplate</Template>

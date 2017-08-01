@@ -1404,33 +1404,6 @@
 			<Action>ClearImageLogo</Action>
 			<ModifiesSavedData>true</ModifiesSavedData>
 		</Command>
-		<Command name="ViewImageLogo" id="5">
-			<Title>
-				<v8:item>
-					<v8:lang>en</v8:lang>
-					<v8:content>View logo image</v8:content>
-				</v8:item>
-				<v8:item>
-					<v8:lang>ru</v8:lang>
-					<v8:content>Просмотреть изображение логотипа</v8:content>
-				</v8:item>
-			</Title>
-			<ToolTip>
-				<v8:item>
-					<v8:lang>en</v8:lang>
-					<v8:content>View logo image</v8:content>
-				</v8:item>
-				<v8:item>
-					<v8:lang>ru</v8:lang>
-					<v8:content>Просмотреть изображение логотипа</v8:content>
-				</v8:item>
-			</ToolTip>
-			<Picture>
-				<xr:Ref>StdPicture.Magnifier</xr:Ref>
-				<xr:LoadTransparent>true</xr:LoadTransparent>
-			</Picture>
-			<Action>ViewImageLogo</Action>
-		</Command>
 		<Command name="AddImageFacsimile" id="6">
 			<Title>
 				<v8:item>
@@ -1514,33 +1487,6 @@
 			</Picture>
 			<Action>ClearImageFacsimile</Action>
 			<ModifiesSavedData>true</ModifiesSavedData>
-		</Command>
-		<Command name="ViewPictureFacsimile" id="9">
-			<Title>
-				<v8:item>
-					<v8:lang>en</v8:lang>
-					<v8:content>View facsimile image</v8:content>
-				</v8:item>
-				<v8:item>
-					<v8:lang>ru</v8:lang>
-					<v8:content>Просмотреть изображение факсимиле</v8:content>
-				</v8:item>
-			</Title>
-			<ToolTip>
-				<v8:item>
-					<v8:lang>en</v8:lang>
-					<v8:content>View logo image</v8:content>
-				</v8:item>
-				<v8:item>
-					<v8:lang>ru</v8:lang>
-					<v8:content>Просмотреть изображение логотипа</v8:content>
-				</v8:item>
-			</ToolTip>
-			<Picture>
-				<xr:Ref>StdPicture.Magnifier</xr:Ref>
-				<xr:LoadTransparent>true</xr:LoadTransparent>
-			</Picture>
-			<Action>ViewPictureFacsimile</Action>
 		</Command>
 		<Command name="FacsimileOfAttachedFiles" id="10">
 			<Title>

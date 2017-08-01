@@ -950,7 +950,7 @@ Procedure QueryAssistant(Command)
 	
 	#If ThickClientOrdinaryApplication OR ThickClientManagedApplication Then
 		
-		QueryAssistant = New QueryAssistant;
+		QueryAssistant = New QueryWizard;
 		QueryAssistant.AutoAppendPresentations = False;
 		If Object.Query <> "" Then
 			QueryAssistant.Text = Object.Query;
