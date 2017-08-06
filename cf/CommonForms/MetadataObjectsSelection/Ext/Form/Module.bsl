@@ -383,11 +383,11 @@ Function NewRowOfTree(RowParameters, IsMetadataObject = False)
 	NewRow.Presentation		= ?(ValueIsFilled(RowParameters.Synonym), RowParameters.Synonym, RowParameters.Name);
 	NewRow.Check			= ?(Parameters.SelectedMetadataObjects.FindByValue(RowParameters.FullName) = Undefined, 0, 1);
 	NewRow.Picture			= RowParameters.Picture;
-	NewRow.FullName			= RowParameters.FullName;
+	NewRow.DescriptionFull	= RowParameters.FullName;
 	NewRow.IsMetadataObject	= IsMetadataObject;
 	
 	If NewRow.IsMetadataObject 
-		AND NewRow.FullName = ChoiceInitialValue Then
+		AND NewRow.DescriptionFull = ChoiceInitialValue Then
 		CurrentRowIDOnOpen = NewRow.GetID();
 	EndIf;
 	
@@ -598,8 +598,8 @@ Procedure DataReceiving(Parent = Undefined)
 	ItemCollection = Parent.GetItems();
 	
 	For Each Item IN ItemCollection Do
-		If Item.Check = 1 AND Not IsBlankString(Item.FullName) Then
-			SelectedMetadataObjects.Add(Item.FullName);
+		If Item.Check = 1 AND Not IsBlankString(Item.DescriptionFull) Then
+			SelectedMetadataObjects.Add(Item.DescriptionFull);
 		EndIf;
 		DataReceiving(Item);
 	EndDo;

@@ -57,21 +57,6 @@
 						<DataPath>Object.Ref</DataPath>
 						<ExtendedTooltip name="FormCommonCommandRemindExtendedTooltip" id="210"/>
 					</Button>
-					<Button name="FormSendEmailToCounterparty" id="71">
-						<Type>CommandBarButton</Type>
-						<CommandName>Form.Command.SendEmailToCounterparty</CommandName>
-						<Title>
-							<v8:item>
-								<v8:lang>en</v8:lang>
-								<v8:content>Send email</v8:content>
-							</v8:item>
-							<v8:item>
-								<v8:lang>ru</v8:lang>
-								<v8:content>Отправить email</v8:content>
-							</v8:item>
-						</Title>
-						<ExtendedTooltip name="FormSendByEmailToCounterpartyExtendedTooltip" id="97"/>
-					</Button>
 				</ChildItems>
 			</ButtonGroup>
 			<ButtonGroup name="GroupGlobalCommands" id="217">
@@ -1542,35 +1527,6 @@
 			</Type>
 		</Attribute>
 	</Attributes>
-	<Commands>
-		<Command name="SendEmailToCounterparty" id="4">
-			<Title>
-				<v8:item>
-					<v8:lang>en</v8:lang>
-					<v8:content>Send email to counterparty</v8:content>
-				</v8:item>
-				<v8:item>
-					<v8:lang>ru</v8:lang>
-					<v8:content>Отправить email контрагенту</v8:content>
-				</v8:item>
-			</Title>
-			<ToolTip>
-				<v8:item>
-					<v8:lang>en</v8:lang>
-					<v8:content>Send email to counterparty</v8:content>
-				</v8:item>
-				<v8:item>
-					<v8:lang>ru</v8:lang>
-					<v8:content>Отправить email контрагенту</v8:content>
-				</v8:item>
-			</ToolTip>
-			<Picture>
-				<xr:Ref>CommonPicture.Email</xr:Ref>
-				<xr:LoadTransparent>true</xr:LoadTransparent>
-			</Picture>
-			<Action>SendEmailToCounterparty</Action>
-		</Command>
-	</Commands>
 	<CommandInterface>
 		<NavigationPanel>
 			<Item>
