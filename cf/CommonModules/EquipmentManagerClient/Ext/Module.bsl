@@ -2686,7 +2686,7 @@ Procedure StartDriverSettingFromBaseDistribution(AlertOnEnd, DriverData) Export
 	If Upper(TempFile.Extension) = ".ZIP" Then
 		// Unpack distribution
 		FileOfArchive = New ZipFileReader();
-		FileOfArchive.Open(TempFile.DescriptionFull);
+		FileOfArchive.Open(TempFile.FullName);
 		
 		InstalledFileName = "";
 		If FileOfArchive.Items.Find(TempFile.BaseName  + ".EXE") <> Undefined Then
@@ -2750,6 +2750,14 @@ Function GetDriverObject(DriverData, ErrorText = Undefined) Export
 		Try
 			
 			ProgID = DriverData.ObjectID;
+			
+			ThisIsCOMObject = False;
+			If Find(ProgID, "COMObject") > 0 Then
+				
+				ThisIsCOMObject = True;
+				ProgID = Mid(ProgID, 11);
+			EndIf;
+
 			If IsBlankString(ProgID) Then
 				DriverObject = ""; // Driver is not required
 			Else
@@ -2768,7 +2776,12 @@ Function GetDriverObject(DriverData, ErrorText = Undefined) Export
 						Result = AttachAddIn(DriverLink, StrReplace(ObjectName, ".", "_"));
 					EndIf;
 				EndIf;
-				DriverObject = New (ProgID2);
+				
+				If ThisIsCOMObject Then
+					DriverObject = New COMObject(ProgID2);
+				Else
+					DriverObject = New (ProgID2);
+				EndIf;
 				
 			EndIf;
 				
@@ -2862,26 +2875,8 @@ Procedure SetupDriver(ID, AlertFromDistributionOnEnd = Undefined, AlertFromArchi
 	
 	DriverData = EquipmentManagerServerCall.GetDriverData(ID);
 	
-	Try  
-		If DriverData.AsConfigurationPart Then
-			
-			If DriverData.SuppliedAsDistribution Then
-			#If WebClient Then
-				CommonUseClientServer.MessageToUser(NStr("en='This driver is not supported in the web client.';ru='Данный драйвер не поддерживает работу в веб-клиенте.'")); 
-			#Else
-				If EquipmentManagerClientReUse.IsLinuxClient() Then
-					CommonUseClientServer.MessageToUser(NStr("en='The driver cannot be installed and used in the Linux environment.';ru='Данный драйвер не может быть установлен и использован в среде Linux.'")); 
-					Return;
-				EndIf;
-				StartDriverSettingFromDistributionInLayout(AlertFromDistributionOnEnd, DriverData.DriverTemplateName, DriverData.DriverFileName);
-			#EndIf
-			Else
-				BeginInstallAddIn(AlertFromArchiveOnEnd, "CommonTemplate." + DriverData.DriverTemplateName);
-			EndIf;
-			
-		Else
-			
-			If DriverData.SuppliedAsDistribution Then
+	Try
+		If DriverData.SuppliedAsDistribution Then
 			#If WebClient Then
 				CommonUseClientServer.MessageToUser(NStr("en='This driver is not supported in the web client.';ru='Данный драйвер не поддерживает работу в веб-клиенте.'")); 
 			#Else
@@ -2891,11 +2886,9 @@ Procedure SetupDriver(ID, AlertFromDistributionOnEnd = Undefined, AlertFromArchi
 				EndIf;
 				StartDriverSettingFromBaseDistribution(AlertFromDistributionOnEnd, DriverData);
 			#EndIf
-			Else
-				DriverLink = GetURL(DriverData.HardwareDriver, "ExportedDriver");
-				BeginInstallAddIn(AlertFromArchiveOnEnd, DriverLink);
-			EndIf;
-			
+		Else
+			DriverLink = GetURL(DriverData.HardwareDriver, "ExportedDriver");
+			BeginInstallAddIn(AlertFromArchiveOnEnd, DriverLink);
 		EndIf;
 		
 	Except

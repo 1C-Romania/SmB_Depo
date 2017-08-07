@@ -81,7 +81,8 @@ Procedure RefreshSuppliedDrivers() Export
 	// End Mangnet cards reader
 	
 	// Fiscal cash registers
-	
+	Catalogs.HardwareDrivers.FillPredefinedItem(Enums.PeripheralDriverHandlers.HandlerZekaFiscalRegisters, , , False);
+	Catalogs.HardwareDrivers.FillPredefinedItem(Enums.PeripheralDriverHandlers.HandlerTremolFiscalRegisters, "COMObject/Zfpcom.ZekaFP", , True);
 	// End Fiscal resgisters
 	
 	// Customer displays

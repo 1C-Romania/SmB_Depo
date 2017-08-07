@@ -1,15 +1,15 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
 <PredefinedData xmlns="http://v8.1c.ru/8.3/xcf/predef" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:xr="http://v8.1c.ru/8.3/xcf/readable" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="CatalogPredefinedItems" version="2.4">
-	<Item id="6866f6eb-5e10-4c68-a0da-b3fb9f15d3f1">
-		<Name>Driver1CRarusFiscalRegistersMobius</Name>
-		<Code xsi:type="xs:decimal">0</Code>
-		<Description>1C-Rarus: "Mobius" fiscal registers</Description>
-		<IsFolder>false</IsFolder>
-	</Item>
 	<Item id="2572bcb8-3ac4-4ced-8a09-d5617ae06e00">
 		<Name>Driver1CRarusFiscalRegistersFelix</Name>
 		<Code xsi:type="xs:decimal">0</Code>
 		<Description>1C-Rarus: "Felix" fiscal registers</Description>
+		<IsFolder>false</IsFolder>
+	</Item>
+	<Item id="6866f6eb-5e10-4c68-a0da-b3fb9f15d3f1">
+		<Name>Driver1CRarusFiscalRegistersMobius</Name>
+		<Code xsi:type="xs:decimal">0</Code>
+		<Description>1C-Rarus: "Mobius" fiscal registers</Description>
 		<IsFolder>false</IsFolder>
 	</Item>
 	<Item id="3ed25985-ea6e-45f8-9ca8-ed3c30face07">
@@ -24,16 +24,16 @@
 		<Description>1C: Barcode scanners (NativeApi)</Description>
 		<IsFolder>false</IsFolder>
 	</Item>
-	<Item id="9a0eb32a-0c8b-497f-b9eb-5df7138961af">
-		<Name>Driver1CMagneticCardReaders</Name>
-		<Code xsi:type="xs:decimal">0</Code>
-		<Description>1C: magnetic card readers</Description>
-		<IsFolder>false</IsFolder>
-	</Item>
 	<Item id="d30c1fe3-8271-47c6-aa28-8b5047b4a8dc">
 		<Name>Driver1CFiscalRegistersEmulator</Name>
 		<Code xsi:type="xs:decimal">0</Code>
 		<Description>1C: Fiscal register (emulator)</Description>
+		<IsFolder>false</IsFolder>
+	</Item>
+	<Item id="9a0eb32a-0c8b-497f-b9eb-5df7138961af">
+		<Name>Driver1CMagneticCardReaders</Name>
+		<Code xsi:type="xs:decimal">0</Code>
+		<Description>1C: magnetic card readers</Description>
 		<IsFolder>false</IsFolder>
 	</Item>
 	<Item id="eab8bc20-0e90-4317-a9e8-b2e3742327a4">
@@ -42,22 +42,10 @@
 		<Description>ACOM: label printing scales</Description>
 		<IsFolder>false</IsFolder>
 	</Item>
-	<Item id="5a428475-0087-467b-b0e6-612a70a83f65">
-		<Name>DriverCASElectronicScales</Name>
+	<Item id="455d306d-5653-495b-ba22-5683b1d854e6">
+		<Name>DriverAtolBarCodeScanners</Name>
 		<Code xsi:type="xs:decimal">0</Code>
-		<Description>CAS: electronic scales</Description>
-		<IsFolder>false</IsFolder>
-	</Item>
-	<Item id="b4ea214d-a176-47d7-81bb-dcdd390486be">
-		<Name>DriverTRPOSPOSTerminals</Name>
-		<Code xsi:type="xs:decimal">0</Code>
-		<Description>TRPOS: POS terminals</Description>
-		<IsFolder>false</IsFolder>
-	</Item>
-	<Item id="004401b9-e91c-441f-8320-031336019f1c">
-		<Name>DriverUCSEFTPOSPOSTerminals</Name>
-		<Code xsi:type="xs:decimal">0</Code>
-		<Description>UCSEFTPOS: POS terminals</Description>
+		<Description>Atol bar code scanners handler</Description>
 		<IsFolder>false</IsFolder>
 	</Item>
 	<Item id="d5392e5b-70b6-40f8-968d-e5fa749c8592">
@@ -66,22 +54,22 @@
 		<Description>Atol customer displays handler</Description>
 		<IsFolder>false</IsFolder>
 	</Item>
-	<Item id="b2977f19-14cc-489c-b5f0-e7d597bf9c97">
-		<Name>DriverAtolFiscalRegistersOffline</Name>
+	<Item id="c56a37bc-5d15-4852-b2ba-fa8a26fb7fb3">
+		<Name>DriverAtolElectronicScales</Name>
 		<Code xsi:type="xs:decimal">0</Code>
-		<Description>ATOL: Cashier workplace</Description>
-		<IsFolder>false</IsFolder>
-	</Item>
-	<Item id="455d306d-5653-495b-ba22-5683b1d854e6">
-		<Name>DriverAtolBarCodeScanners</Name>
-		<Code xsi:type="xs:decimal">0</Code>
-		<Description>Atol bar code scanners handler</Description>
+		<Description>Atol electronic scales handler</Description>
 		<IsFolder>false</IsFolder>
 	</Item>
 	<Item id="b40ca7ff-cef0-4c62-9d78-d414800d4b7f">
 		<Name>DriverAtolMagneticCardReaders</Name>
 		<Code xsi:type="xs:decimal">0</Code>
 		<Description>Atol magnetic cards readers handler</Description>
+		<IsFolder>false</IsFolder>
+	</Item>
+	<Item id="b2977f19-14cc-489c-b5f0-e7d597bf9c97">
+		<Name>DriverAtolFiscalRegistersOffline</Name>
+		<Code xsi:type="xs:decimal">0</Code>
+		<Description>ATOL: Cashier workplace</Description>
 		<IsFolder>false</IsFolder>
 	</Item>
 	<Item id="25483988-7238-4a66-bd73-d35bda09fe0f">
@@ -114,16 +102,16 @@
 		<Description>ATOL: Fiscal registers 8.X</Description>
 		<IsFolder>false</IsFolder>
 	</Item>
-	<Item id="c56a37bc-5d15-4852-b2ba-fa8a26fb7fb3">
-		<Name>DriverAtolElectronicScales</Name>
+	<Item id="5a428475-0087-467b-b0e6-612a70a83f65">
+		<Name>DriverCASElectronicScales</Name>
 		<Code xsi:type="xs:decimal">0</Code>
-		<Description>Atol electronic scales handler</Description>
+		<Description>CAS: electronic scales</Description>
 		<IsFolder>false</IsFolder>
 	</Item>
-	<Item id="27bbb6fd-6f61-4cbb-bce5-65b4ea92943b">
-		<Name>DriverVersionTFiscalRegisters</Name>
+	<Item id="16a13f5c-9c24-4323-befd-be711eaa3de8">
+		<Name>DriverKKSCustomerDisplays</Name>
 		<Code xsi:type="xs:decimal">0</Code>
-		<Description>Version-T: KASBI fiscal registers</Description>
+		<Description>CRS: customer displays</Description>
 		<IsFolder>false</IsFolder>
 	</Item>
 	<Item id="ec6f5b26-8f8c-4d44-af4d-855103e7d095">
@@ -132,16 +120,16 @@
 		<Description>GAZPROMBANK: POS terminals</Description>
 		<IsFolder>false</IsFolder>
 	</Item>
-	<Item id="195e0f6c-1100-4275-8e07-146a2c7e22fd">
-		<Name>DriverHexagonBarCodeScanners</Name>
-		<Code xsi:type="xs:decimal">0</Code>
-		<Description>Hexagon: Barcode scanners Proton</Description>
-		<IsFolder>false</IsFolder>
-	</Item>
 	<Item id="d9fb4749-08ea-4c0f-aed7-cd97d0a7aa19">
 		<Name>DriverHexagonDataCollectionTerminals</Name>
 		<Code xsi:type="xs:decimal">0</Code>
 		<Description>Hexagon: "Goods" data collection terminals</Description>
+		<IsFolder>false</IsFolder>
+	</Item>
+	<Item id="195e0f6c-1100-4275-8e07-146a2c7e22fd">
+		<Name>DriverHexagonBarCodeScanners</Name>
+		<Code xsi:type="xs:decimal">0</Code>
+		<Description>Hexagon: Barcode scanners Proton</Description>
 		<IsFolder>false</IsFolder>
 	</Item>
 	<Item id="23b1e6a5-c6f0-4068-93f4-8d095cd8330c">
@@ -160,12 +148,6 @@
 		<Name>DriverINPASPOSTerminalsUNIPOS</Name>
 		<Code xsi:type="xs:decimal">0</Code>
 		<Description>INPAS: UNIPOS POS terminals</Description>
-		<IsFolder>false</IsFolder>
-	</Item>
-	<Item id="16a13f5c-9c24-4323-befd-be711eaa3de8">
-		<Name>DriverKKSCustomerDisplays</Name>
-		<Code xsi:type="xs:decimal">0</Code>
-		<Description>CRS: customer displays</Description>
 		<IsFolder>false</IsFolder>
 	</Item>
 	<Item id="0074399f-d97a-4b2b-ad41-7ebe4af34c5b">
@@ -198,16 +180,22 @@
 		<Description>SB RF: POS terminals</Description>
 		<IsFolder>false</IsFolder>
 	</Item>
-	<Item id="e6186eb2-487e-4b1e-90bc-35bef8b61322">
-		<Name>DriverScancodeCustomerDisplays</Name>
+	<Item id="cdbf57bc-c4fe-41c2-b15b-91685929717f">
+		<Name>DriverScaleCASLabelPrintingScales</Name>
 		<Code xsi:type="xs:decimal">0</Code>
-		<Description>Scancode: Customer displays</Description>
+		<Description>SCALE: Scales with label printing CL5000J</Description>
 		<IsFolder>false</IsFolder>
 	</Item>
 	<Item id="9c51229e-a4da-4957-9773-d59e2bd3af19">
 		<Name>DriverScancodeBarCodeScanners</Name>
 		<Code xsi:type="xs:decimal">0</Code>
 		<Description>Scancode: barcode scanners</Description>
+		<IsFolder>false</IsFolder>
+	</Item>
+	<Item id="e6186eb2-487e-4b1e-90bc-35bef8b61322">
+		<Name>DriverScancodeCustomerDisplays</Name>
+		<Code xsi:type="xs:decimal">0</Code>
+		<Description>Scancode: Customer displays</Description>
 		<IsFolder>false</IsFolder>
 	</Item>
 	<Item id="3664c6df-f092-4e23-aab4-f1d9ac71dbb3">
@@ -222,22 +210,10 @@
 		<Description>Scansiti: data collection terminals</Description>
 		<IsFolder>false</IsFolder>
 	</Item>
-	<Item id="cdbf57bc-c4fe-41c2-b15b-91685929717f">
-		<Name>DriverScaleCASLabelPrintingScales</Name>
+	<Item id="80dc84e2-b85b-4485-a8b3-b82b36229872">
+		<Name>DriverShtrikhMCashRegisterOffline</Name>
 		<Code xsi:type="xs:decimal">0</Code>
-		<Description>SCALE: Scales with label printing CL5000J</Description>
-		<IsFolder>false</IsFolder>
-	</Item>
-	<Item id="2a21d86f-1cdb-439c-b816-567378684dee">
-		<Name>DriverSoftCasePOSTerminals</Name>
-		<Code xsi:type="xs:decimal">0</Code>
-		<Description>SoftCase: POS terminals</Description>
-		<IsFolder>false</IsFolder>
-	</Item>
-	<Item id="4f04e808-d08e-4bed-b9b8-9d66aff43de9">
-		<Name>DriverShtrikhMLabelPrintingScales</Name>
-		<Code xsi:type="xs:decimal">0</Code>
-		<Description>Shtrikh-M: label printing scales</Description>
+		<Description>Shtrikh-M: Cashier</Description>
 		<IsFolder>false</IsFolder>
 	</Item>
 	<Item id="e6e7f3ac-fee4-4023-b7d1-ea09b08bfa49">
@@ -246,16 +222,16 @@
 		<Description>Shtrikh-M: customer displays</Description>
 		<IsFolder>false</IsFolder>
 	</Item>
-	<Item id="80dc84e2-b85b-4485-a8b3-b82b36229872">
-		<Name>DriverShtrikhMCashRegisterOffline</Name>
-		<Code xsi:type="xs:decimal">0</Code>
-		<Description>Shtrikh-M: Cashier</Description>
-		<IsFolder>false</IsFolder>
-	</Item>
 	<Item id="bbf0cd82-7dec-4e20-be2e-3ac2d7c21daf">
 		<Name>DriverShtrikhMDataCollectionTerminals</Name>
 		<Code xsi:type="xs:decimal">0</Code>
 		<Description>Shtrikh-M: data collection terminals</Description>
+		<IsFolder>false</IsFolder>
+	</Item>
+	<Item id="8d9e426d-2a9f-4404-b925-185022de70e5">
+		<Name>DriverShtrikhMElectronicScales</Name>
+		<Code xsi:type="xs:decimal">0</Code>
+		<Description>Shtrikh-M: electronic scales</Description>
 		<IsFolder>false</IsFolder>
 	</Item>
 	<Item id="beeee576-102d-48c5-952d-dc73d20ea6d1">
@@ -264,16 +240,52 @@
 		<Description>Shtrikh-M: fiscal registers</Description>
 		<IsFolder>false</IsFolder>
 	</Item>
+	<Item id="4f04e808-d08e-4bed-b9b8-9d66aff43de9">
+		<Name>DriverShtrikhMLabelPrintingScales</Name>
+		<Code xsi:type="xs:decimal">0</Code>
+		<Description>Shtrikh-M: label printing scales</Description>
+		<IsFolder>false</IsFolder>
+	</Item>
+	<Item id="2a21d86f-1cdb-439c-b816-567378684dee">
+		<Name>DriverSoftCasePOSTerminals</Name>
+		<Code xsi:type="xs:decimal">0</Code>
+		<Description>SoftCase: POS terminals</Description>
+		<IsFolder>false</IsFolder>
+	</Item>
 	<Item id="a2dcb8d0-3137-4606-8e99-c956972696d1">
 		<Name>DriverShtrikhMFiscalRegistersUniversal</Name>
 		<Code xsi:type="xs:decimal">0</Code>
 		<Description>Strikh-M: Fiscal registrers (Universal)</Description>
 		<IsFolder>false</IsFolder>
 	</Item>
-	<Item id="8d9e426d-2a9f-4404-b925-185022de70e5">
-		<Name>DriverShtrikhMElectronicScales</Name>
+	<Item id="8264e1a6-0984-4c31-9f9a-5cf6a64ebe2b">
+		<Name>DriverTremolFiscalRegisters</Name>
 		<Code xsi:type="xs:decimal">0</Code>
-		<Description>Shtrikh-M: electronic scales</Description>
+		<Description>Tremol: Fiscal register</Description>
+		<IsFolder>false</IsFolder>
+	</Item>
+	<Item id="b4ea214d-a176-47d7-81bb-dcdd390486be">
+		<Name>DriverTRPOSPOSTerminals</Name>
+		<Code xsi:type="xs:decimal">0</Code>
+		<Description>TRPOS: POS terminals</Description>
+		<IsFolder>false</IsFolder>
+	</Item>
+	<Item id="004401b9-e91c-441f-8320-031336019f1c">
+		<Name>DriverUCSEFTPOSPOSTerminals</Name>
+		<Code xsi:type="xs:decimal">0</Code>
+		<Description>UCSEFTPOS: POS terminals</Description>
+		<IsFolder>false</IsFolder>
+	</Item>
+	<Item id="27bbb6fd-6f61-4cbb-bce5-65b4ea92943b">
+		<Name>DriverVersionTFiscalRegisters</Name>
+		<Code xsi:type="xs:decimal">0</Code>
+		<Description>Version-T: KASBI fiscal registers</Description>
+		<IsFolder>false</IsFolder>
+	</Item>
+	<Item id="cb441233-e621-49d8-b654-22bfaf4bacbc">
+		<Name>DriverZekaFiscalRegisters</Name>
+		<Code xsi:type="xs:decimal">0</Code>
+		<Description>Zeka: Fiscal register</Description>
 		<IsFolder>false</IsFolder>
 	</Item>
 </PredefinedData>

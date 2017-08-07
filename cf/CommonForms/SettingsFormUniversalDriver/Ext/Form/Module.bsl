@@ -119,8 +119,8 @@ Procedure DeviceTestEnd(ExecutionResult, Parameters) Export
 		
 	EndIf;
 		
-	MessageText = ?(ExecutionResult.Result,  NStr("en='Test succeeded. %AdditionalDescription%';ru='Тест успешно выполнен. %ДополнительноеОписание%'"),
-	                               NStr("en='Test failed. %AdditionalDescription%';ru='Тест не пройден. %ДополнительноеОписание%'"));
+	MessageText = ?(ExecutionResult.Result,  NStr("en='Test succeeded. %AdditionalDetails%';ru='Тест успешно выполнен. %AdditionalDetails%'"),
+	                               NStr("en='Test failed. %AdditionalDetails%';ru='Тест не пройден. %AdditionalDetails%'"));
 	MessageText = StrReplace(MessageText, "%AdditionalDetails%", ?(IsBlankString(AdditionalDetails), "", AdditionalDetails));
 	CommonUseClientServer.MessageToUser(MessageText);
 	

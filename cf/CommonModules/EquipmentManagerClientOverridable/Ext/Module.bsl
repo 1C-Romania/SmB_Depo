@@ -32,6 +32,11 @@ Function GetDriverHandler(DriverHandler, ImportedDriver) Export
 		// End Mangnetic cards readers.
 
 		// Fiscal cash registers
+		If DriverHandler = PredefinedValue("Enum.PeripheralDriverHandlers.HandlerZekaFiscalRegisters") Then
+			Return PeripheralsZekaFiscalRegistrarsClient;
+		ElsIf DriverHandler = PredefinedValue("Enum.PeripheralDriverHandlers.HandlerTremolFiscalRegisters") Then
+			Return PeripheralsTremolFiscalRegistrarsClient;
+		EndIf;
 		
 		// End Fiscal registers.
 

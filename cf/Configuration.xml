@@ -1754,6 +1754,8 @@
 			<CommonModule>PeripheralsOfflineClient</CommonModule>
 			<CommonModule>PeripheralsOfflineServerCall</CommonModule>
 			<CommonModule>PeripheralsUniversalDriverClient</CommonModule>
+			<CommonModule>PeripheralsTremolFiscalRegistrarsClient</CommonModule>
+			<CommonModule>PeripheralsZekaFiscalRegistrarsClient</CommonModule>
 			<CommonModule>PeripheralsUniversalDriverClientAsynchronously</CommonModule>
 			<CommonModule>PermissionForExternalResourcesUseSettingsSaaSClient</CommonModule>
 			<CommonModule>PermissionForExternalResourcesUseSettingsSaaSGlobal</CommonModule>
@@ -2714,10 +2716,8 @@
 			<Constant>LongActionsDebugMode</Constant>
 			<Constant>FirstLaunchPassed</Constant>
 			<CommonForm>AccessRightsSimplified</CommonForm>
-			<CommonForm>AccountPasswordConfirmation</CommonForm>
-			<CommonForm>ActionSelectionWhenFileDifferencesDetected</CommonForm>
 			<CommonForm>AddDigitalSignatureFromFile</CommonForm>
-			<CommonForm>AdditionalDetails</CommonForm>
+			<CommonForm>AccountPasswordConfirmation</CommonForm>
 			<CommonForm>AdditionalInformationEditing</CommonForm>
 			<CommonForm>AdditionalReportsAndDataProcessors</CommonForm>
 			<CommonForm>AdditionalReportsAndDataProcessorsLongOperation</CommonForm>
@@ -2833,8 +2833,12 @@
 			<CommonForm>VolumesFileArchivePathSelection</CommonForm>
 			<CommonForm>WriteCertificatePassword</CommonForm>
 			<CommonForm>SettingsComposerAvailableFilterItemsFormManaged</CommonForm>
+			<CommonForm>SettingsFormTremolFiscalRegisters</CommonForm>
+			<CommonForm>SettingsFormZEKAFiscalRegisters</CommonForm>
 			<CommonForm>StandardPeriodChoiceForm</CommonForm>
 			<CommonForm>StandardPeriodDayChoiceForm</CommonForm>
+			<CommonForm>ActionSelectionWhenFileDifferencesDetected</CommonForm>
+			<CommonForm>AdditionalDetails</CommonForm>
 			<Catalog>AccessGroups</Catalog>
 			<Catalog>AccessGroupsProfiles</Catalog>
 			<Catalog>AccrualAndDeductionKinds</Catalog>

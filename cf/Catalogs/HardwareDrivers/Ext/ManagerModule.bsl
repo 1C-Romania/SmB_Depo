@@ -14,7 +14,7 @@ Function GetDriverData(ID) Export
 	|	SpmHardwareDrivers.Ref,
 	|	SpmHardwareDrivers.PredefinedDataName AS Name,
 	|	SpmHardwareDrivers.EquipmentType AS EquipmentType,
-	|	SpmHardwareDrivers.Predefined AS AsConfigurationPart,
+	|	FALSE AS AsConfigurationPart,
 	|	SpmHardwareDrivers.ObjectID AS ObjectID, 
 	|	SpmHardwareDrivers.DriverHandler AS DriverHandler,
 	|	SpmHardwareDrivers.SuppliedAsDistribution AS SuppliedAsDistribution, 
@@ -54,9 +54,9 @@ Procedure FillPredefinedItem(DriverHandler, ObjectID = Undefined, DriverTemplate
 	
 	//===============================
 	//©# (Begin)	AlekS [2016-09-29]
-	If Metadata.CommonTemplates.Find(DriverTemplateName) = Undefined Then
-		Return;
-	EndIf;
+	//If Metadata.CommonTemplates.Find(DriverTemplateName) = Undefined Then
+	//	Return;
+	//EndIf;
 	//©# (End)		AlekS [2016-09-29]
 	//===============================
 	

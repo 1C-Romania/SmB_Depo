@@ -203,7 +203,7 @@ Function GetDeviceData(ID) Export
 		DataDevice.Insert("EquipmentTypeName"        , EquipmentManagerServerCall.GetEquipmentTypeName(Selection.EquipmentType));
 		DataDevice.Insert("HardwareDriver"           , Selection.HardwareDriver);
 		DataDevice.Insert("HardwareDriverActualName" , Selection.HardwareDriver.PredefinedDataName);
-		DataDevice.Insert("AsConfigurationPart"      , Selection.HardwareDriver.Predefined);
+		DataDevice.Insert("AsConfigurationPart"      , False);
 		DataDevice.Insert("ObjectID"                 , Selection.HardwareDriver.ObjectID);
 		DataDevice.Insert("DriverHandler"            , Selection.HardwareDriver.DriverHandler);
 		DataDevice.Insert("SuppliedAsDistribution"   , Selection.HardwareDriver.SuppliedAsDistribution);

@@ -73,7 +73,7 @@ EndProcedure
 Procedure BeforeWriteAtServer(Cancel, CurrentObject, WriteParameters)
 	
 	// Get the file from storage and put it into object.
-	If Not ProvidedApplication AND IsTempStorageURL(DriverLink) Then
+	If IsTempStorageURL(DriverLink) Then
 		BinaryData = GetFromTempStorage(DriverLink);
 		CurrentObject.ExportedDriver = New ValueStorage(BinaryData, New Deflation(5));
 		CurrentObject.DriverFileName = DriverFileName;
@@ -84,7 +84,7 @@ EndProcedure
 &AtClient
 Procedure AfterWrite(WriteParameters)
 	
-	If Not ProvidedApplication AND Not IsBlankString(Object.DriverFileName) Then
+	If Not IsBlankString(Object.DriverFileName) Then
 		DriverLink = GetURL(Object.Ref, "ExportedDriver");
 		DriverFileName = Object.DriverFileName;
 	EndIf;
@@ -254,9 +254,9 @@ Procedure ImportDriverFile(FullFileName)
 	
 	TempDriverFile = New File(FullFileName);
 	
-	If GetDriverInformationByFile(TempDriverFile.DescriptionFull) Then
+	If GetDriverInformationByFile(FullFileName) Then
 		Notification = New NotifyDescription("ImportDriverFileWhenFinished", ThisObject, TempDriverFile.Name);
-		BeginPuttingFiles(Notification, Undefined, TempDriverFile.DescriptionFull, False) 
+		BeginPuttingFiles(Notification, Undefined, TempDriverFile.FullName, False) 
 	EndIf;
 	
 EndProcedure
