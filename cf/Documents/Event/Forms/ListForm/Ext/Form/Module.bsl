@@ -296,11 +296,7 @@ Procedure SetFilterCurrentWorks()
 	Title		= NStr("ru='События'; en = 'Events'");
 	CurDate		= CurrentSessionDate();
 	
-	CommonUseClientServer.SetFilterDynamicListItem(
-		List,
-		"DeletionMark",
-		False
-	);
+	CommonUseClientServer.SetFilterDynamicListItem(List, "DeletionMark", False);
 	
 	StateList = New ValueList;
 	StateList.Add(Catalogs.EventStates.Canceled);
@@ -327,7 +323,9 @@ Procedure SetFilterCurrentWorks()
 	WorkWithFilters.AttachFilterLabelsFromArray(ThisObject, "State", "States", StateList);
 	WorkWithFilters.SetListFilter(ThisObject, List, "State");
 	
-	WorkWithFilters.AttachFilterLabelsFromArray(ThisObject, "Responsible", "Responsibles", SmallBusinessServer.GetUserEmployees());
+	CurrentUserRef = Users.CurrentUser();
+	WorkWithFilters.AttachFilterLabelsFromArray(ThisObject, "Responsible", "Responsibles", 
+													SmallBusinessServer.GetUserEmployees(CurrentUserRef));
 	WorkWithFilters.SetListFilter(ThisObject, List, "Responsible");
 	
 	If Parameters.Property("PastPerformance") Then
@@ -351,7 +349,7 @@ Procedure SetFilterCurrentWorks()
 		
 	ElsIf Parameters.Property("ForToday") Then
 		
-		Title = Title + ": " + NStr("ru='на сегодня'; en = 'as of today'");
+		Title = Title + ": " + NStr("ru='на сегодня'; en = 'for today'");
 		SmallBusinessClientServer.SetListFilterItem(
 			List, 
 			"EventBegin", 
@@ -372,6 +370,10 @@ Procedure SetFilterCurrentWorks()
 		
 	EndIf;
 	
+	If Parameters.Property("Responsible") Then
+		Title = Title + ", " + NStr("ru='ответственный '; en = 'responsible '") + Parameters.Responsible.Initials;
+	EndIf;
+
 	If Items.PeriodPresentation.Visible Then
 		PeriodPresentation = WorkWithFiltersClientServer.RefreshPeriodPresentation(FilterPeriod);
 	EndIf;

@@ -145,7 +145,7 @@ Procedure SetFilterCurrentWorks()
 	EndIf;
 	
 	If Parameters.Property("ForToday") Then
-		FormHeaderText = NStr("en = 'Customer orders: as of today'");
+		FormHeaderText = NStr("en = 'Customer orders: for today'");
 		SmallBusinessClientServer.SetListFilterItem(List, "ForToday",True);
 	EndIf;
 	
