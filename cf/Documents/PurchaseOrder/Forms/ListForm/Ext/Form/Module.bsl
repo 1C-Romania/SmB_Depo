@@ -137,28 +137,28 @@ Procedure SetFilterCurrentWorks()
 	
 	FormHeaderText = "";
 	If Parameters.Property("PastPerformance") Then
-		FormHeaderText = "Purchase orders: performance is delayed";
+		FormHeaderText = NStr("en='Purchase orders: execution is overdue';ru='Заказы поставщикам: просрочено выполнение'");
 		SmallBusinessClientServer.SetListFilterItem(List, "PastPerformance", True);
 	EndIf;
 	
 	If Parameters.Property("OverduePayment") Then
-		FormHeaderText = "Purchase orders: payment is delayed";
+		FormHeaderText = NStr("en='Purchase orders: payment is overdue';ru='Заказы поставщикам: просрочена оплата'");
 		SmallBusinessClientServer.SetListFilterItem(List, "OverduePayment", True);
 	EndIf;
 	
 	If Parameters.Property("ForToday") Then
-		FormHeaderText = NStr("en = 'Purchase orders: as for today'");
+		FormHeaderText = NStr("en='Purchase orders: for today';ru='Заказы поставщикам: на сегодня'");
 		SmallBusinessClientServer.SetListFilterItem(List, "ForToday", True);
 	EndIf;
 	
 	If Parameters.Property("InProcess") Then
-		FormHeaderText = NStr("en = 'Purchase orders: in progess'");
+		FormHeaderText = NStr("en='Purchase orders: in progess';ru='Заказы поставщикам: в работе'");
 		SmallBusinessClientServer.SetListFilterItem(List, "OrderInProcess", True);
 	EndIf;
 	
 	If Parameters.Property("Responsible") Then
 		SmallBusinessClientServer.SetListFilterItem(List, "Responsible", Parameters.Responsible.List, True, DataCompositionComparisonType.InList);
-		FormHeaderText = FormHeaderText + NStr("en = ', responsible person '") + Parameters.Responsible.Initials;
+		FormHeaderText = FormHeaderText + ", " + NStr("ru='ответственный';en='responsible'") + " " + Parameters.Responsible.Initials;
 	EndIf;
 	
 	If Not IsBlankString(FormHeaderText) Then

@@ -62,7 +62,8 @@ Procedure UpdateSettingsCWP(CWPSetting, DontShowOnOpenCashdeskChoiceForm) Export
 			SetupCWPObject.Write();
 		Except
 			Message = New UserMessage;
-			Message.Text = "Failed to make changes. "+Chars.LF+ErrorDescription();
+			Message.Text = NStr("en='Failed to make changes.';ru='Не удалось внести изменения.'") + 
+									" " + Chars.LF + ErrorDescription();
 			Message.Field = "DontShowOnOpenCashdeskChoiceForm";
 			Message.Message();
 		EndTry;

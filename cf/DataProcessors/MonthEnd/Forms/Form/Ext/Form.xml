@@ -66,6 +66,8 @@
 					<v8:content>Группа навигация по месяцам</v8:content>
 				</v8:item>
 			</ToolTip>
+			<HorizontalStretch>false</HorizontalStretch>
+			<GroupHorizontalAlign>Center</GroupHorizontalAlign>
 			<Group>Horizontal</Group>
 			<Representation>None</Representation>
 			<ShowTitle>false</ShowTitle>
@@ -148,6 +150,8 @@
 							<v8:content>Для организации</v8:content>
 						</v8:item>
 					</Title>
+					<AutoMaxWidth>false</AutoMaxWidth>
+					<HorizontalStretch>false</HorizontalStretch>
 					<AutoMarkIncomplete>true</AutoMarkIncomplete>
 					<ContextMenu name="CounterpartyContextMenu" id="4"/>
 					<ExtendedTooltip name="CounterpartyExtendedTooltip" id="2919"/>
@@ -295,11 +299,6 @@
 													<ContextMenu name="DepreciationAccrual1ContextMenu" id="28"/>
 													<ExtendedTooltip name="DepreciationAccrual1ExtendedTooltip" id="2926"/>
 												</CheckBoxField>
-												<LabelDecoration name="AccrueDepreciationSplitterBlank1" id="1783">
-													<HorizontalStretch>true</HorizontalStretch>
-													<ContextMenu name="AccrueDepreciationSplitterBlank1ContextMenu" id="1784"/>
-													<ExtendedTooltip name="AccrueDepreciationSplitterBlank1ExtendedTooltip" id="2930"/>
-												</LabelDecoration>
 												<PictureDecoration name="DepreciationAccrualPicture1" id="84">
 													<Width>2</Width>
 													<Height>1</Height>
@@ -314,6 +313,7 @@
 															<v8:content>Начисление амортизации картинка1</v8:content>
 														</v8:item>
 													</Title>
+													<GroupHorizontalAlign>Right</GroupHorizontalAlign>
 													<Hyperlink>true</Hyperlink>
 													<Picture>
 														<xr:Ref>CommonPicture.MonthEndWasNotPerformed</xr:Ref>
@@ -338,6 +338,7 @@
 													<v8:content>Группа расчет прямых затрат1</v8:content>
 												</v8:item>
 											</Title>
+											<HorizontalStretch>true</HorizontalStretch>
 											<Group>Horizontal</Group>
 											<Representation>None</Representation>
 											<ShowTitle>false</ShowTitle>
@@ -371,11 +372,6 @@
 													<ContextMenu name="DirectCostCalculation1ContextMenu" id="14"/>
 													<ExtendedTooltip name="DirectCostCalculation1ExtendedTooltip" id="2933"/>
 												</CheckBoxField>
-												<LabelDecoration name="DirectCostCalculationSplitterIsEmpty1" id="1785">
-													<HorizontalStretch>true</HorizontalStretch>
-													<ContextMenu name="DirectCostCalculationSplitterIsEmpty1ContextMenu" id="1786"/>
-													<ExtendedTooltip name="DirectCostCalculationSplitterIsEmpty1ExtendedTooltip" id="2937"/>
-												</LabelDecoration>
 												<PictureDecoration name="DirectCostCalculationPicture1" id="88">
 													<Width>2</Width>
 													<Height>1</Height>
@@ -389,6 +385,7 @@
 															<v8:content>Расчет прямых затрат картинка1</v8:content>
 														</v8:item>
 													</Title>
+													<GroupHorizontalAlign>Right</GroupHorizontalAlign>
 													<Hyperlink>true</Hyperlink>
 													<Picture>
 														<xr:Ref>CommonPicture.MonthEndWasNotPerformed</xr:Ref>
@@ -413,6 +410,7 @@
 													<v8:content>Группа распределение затрат1</v8:content>
 												</v8:item>
 											</Title>
+											<HorizontalStretch>true</HorizontalStretch>
 											<Group>Horizontal</Group>
 											<Representation>None</Representation>
 											<ShowTitle>false</ShowTitle>
@@ -446,11 +444,6 @@
 													<ContextMenu name="CostAllocation1ContextMenu" id="16"/>
 													<ExtendedTooltip name="CostAllocation1ExtendedTooltip" id="2940"/>
 												</CheckBoxField>
-												<LabelDecoration name="CostAllocationSplitterIsEmpty1" id="1787">
-													<HorizontalStretch>true</HorizontalStretch>
-													<ContextMenu name="CostAllocationSplitterIsEmpty1ContextMenu" id="1788"/>
-													<ExtendedTooltip name="CostAllocationSplitterIsEmpty1ExtendedTooltip" id="2944"/>
-												</LabelDecoration>
 												<PictureDecoration name="CostAllocationPicture1" id="90">
 													<Width>2</Width>
 													<Height>1</Height>
@@ -464,6 +457,7 @@
 															<v8:content>Распределение затрат картинка1</v8:content>
 														</v8:item>
 													</Title>
+													<GroupHorizontalAlign>Right</GroupHorizontalAlign>
 													<Hyperlink>true</Hyperlink>
 													<Picture>
 														<xr:Ref>CommonPicture.MonthEndWasNotPerformed</xr:Ref>
@@ -488,6 +482,7 @@
 													<v8:content>Группа расчет фактической себестоимости1</v8:content>
 												</v8:item>
 											</Title>
+											<HorizontalStretch>true</HorizontalStretch>
 											<Group>Horizontal</Group>
 											<Representation>None</Representation>
 											<ShowTitle>false</ShowTitle>
@@ -521,11 +516,6 @@
 													<ContextMenu name="ActualCostCalculation1ContextMenu" id="18"/>
 													<ExtendedTooltip name="ActualCostCalculation1ExtendedTooltip" id="2947"/>
 												</CheckBoxField>
-												<LabelDecoration name="ActualCostCalculationSplitterIsEmpty1" id="1789">
-													<HorizontalStretch>true</HorizontalStretch>
-													<ContextMenu name="ActualCostCalculationSplitterIsEmpty1ContextMenu" id="1790"/>
-													<ExtendedTooltip name="ActualCostCalculationSplitterIsEmpty1ExtendedTooltip" id="2951"/>
-												</LabelDecoration>
 												<PictureDecoration name="ActualCostCalculationPicture1" id="92">
 													<Width>2</Width>
 													<Height>1</Height>
@@ -539,6 +529,7 @@
 															<v8:content>Расчет фактической себестоимости картинка1</v8:content>
 														</v8:item>
 													</Title>
+													<GroupHorizontalAlign>Right</GroupHorizontalAlign>
 													<Hyperlink>true</Hyperlink>
 													<Picture>
 														<xr:Ref>CommonPicture.MonthEndWasNotPerformed</xr:Ref>
@@ -563,6 +554,7 @@
 													<v8:content>Группа расчет себестоимости в рознице1</v8:content>
 												</v8:item>
 											</Title>
+											<HorizontalStretch>true</HorizontalStretch>
 											<Group>Horizontal</Group>
 											<Representation>None</Representation>
 											<ShowTitle>false</ShowTitle>
@@ -596,11 +588,6 @@
 													<ContextMenu name="RetailCostCalculation1ContextMenu" id="20"/>
 													<ExtendedTooltip name="RetailCostCalculation1ExtendedTooltip" id="2954"/>
 												</CheckBoxField>
-												<LabelDecoration name="RetailCostCalculationSplitterIsEmpty1" id="1791">
-													<HorizontalStretch>true</HorizontalStretch>
-													<ContextMenu name="RetailCostCalculationSplitterIsEmpty1ContextMenu" id="1792"/>
-													<ExtendedTooltip name="RetailCostCalculationSplitterIsEmpty1ExtendedTooltip" id="2958"/>
-												</LabelDecoration>
 												<PictureDecoration name="RetailCostCalculationPicture1" id="94">
 													<Width>2</Width>
 													<Height>1</Height>
@@ -614,6 +601,7 @@
 															<v8:content>Расчет себестоимости в рознице картинка1</v8:content>
 														</v8:item>
 													</Title>
+													<GroupHorizontalAlign>Right</GroupHorizontalAlign>
 													<Hyperlink>true</Hyperlink>
 													<Picture>
 														<xr:Ref>CommonPicture.MonthEndWasNotPerformed</xr:Ref>
@@ -638,6 +626,7 @@
 													<v8:content>Группа расчет курсовых разниц1</v8:content>
 												</v8:item>
 											</Title>
+											<HorizontalStretch>true</HorizontalStretch>
 											<Group>Horizontal</Group>
 											<Representation>None</Representation>
 											<ShowTitle>false</ShowTitle>
@@ -671,11 +660,6 @@
 													<ContextMenu name="ExchangeDifferencesCalculation1ContextMenu" id="24"/>
 													<ExtendedTooltip name="ExchangeDifferencesCalculation1ExtendedTooltip" id="2961"/>
 												</CheckBoxField>
-												<LabelDecoration name="ExchangeDifferencesCalculationSplitterIsEmpty1" id="1793">
-													<HorizontalStretch>true</HorizontalStretch>
-													<ContextMenu name="ExchangeDifferencesCalculationSplitterIsEmpty1ContextMenu" id="1794"/>
-													<ExtendedTooltip name="ExchangeDifferencesCalculationSplitterIsEmpty1ExtendedTooltip" id="2965"/>
-												</LabelDecoration>
 												<PictureDecoration name="ExchangeDifferencesCalculationPicture1" id="96">
 													<Width>2</Width>
 													<Height>1</Height>
@@ -689,6 +673,7 @@
 															<v8:content>Расчет курсовых разниц картинка1</v8:content>
 														</v8:item>
 													</Title>
+													<GroupHorizontalAlign>Right</GroupHorizontalAlign>
 													<Hyperlink>true</Hyperlink>
 													<Picture>
 														<xr:Ref>CommonPicture.MonthEndWasNotPerformed</xr:Ref>
@@ -713,6 +698,7 @@
 													<v8:content>Группа расчет финансового результата1</v8:content>
 												</v8:item>
 											</Title>
+											<HorizontalStretch>true</HorizontalStretch>
 											<Group>Horizontal</Group>
 											<Representation>None</Representation>
 											<ShowTitle>false</ShowTitle>
@@ -746,11 +732,6 @@
 													<ContextMenu name="FinancialResultCalculation1ContextMenu" id="26"/>
 													<ExtendedTooltip name="FinancialResultCalculation1ExtendedTooltip" id="2968"/>
 												</CheckBoxField>
-												<LabelDecoration name="FinancialResultCalculationSplitterIsEmpty1" id="1795">
-													<HorizontalStretch>true</HorizontalStretch>
-													<ContextMenu name="FinancialResultCalculationIsSplitterEmpty1ContextMenu" id="1796"/>
-													<ExtendedTooltip name="FinancialResultCalculationSplitterIsEmpty1ExtendedTooltip" id="2972"/>
-												</LabelDecoration>
 												<PictureDecoration name="FinancialResultCalculationPicture1" id="100">
 													<Width>2</Width>
 													<Height>1</Height>
@@ -764,6 +745,7 @@
 															<v8:content>Расчет финансового результата картинка1</v8:content>
 														</v8:item>
 													</Title>
+													<GroupHorizontalAlign>Right</GroupHorizontalAlign>
 													<Hyperlink>true</Hyperlink>
 													<Picture>
 														<xr:Ref>CommonPicture.MonthEndWasNotPerformed</xr:Ref>
@@ -980,11 +962,6 @@ This operation may take a while.</v8:content>
 													<ContextMenu name="DepreciationAccrual2ContextMenu" id="3703"/>
 													<ExtendedTooltip name="DepreciationAccrual2ExtendedTooltip" id="3704"/>
 												</CheckBoxField>
-												<LabelDecoration name="AccrueDepreciationSplitterBlank2" id="3705">
-													<HorizontalStretch>true</HorizontalStretch>
-													<ContextMenu name="AccrueDepreciationSplitterBlank2ContextMenu" id="3706"/>
-													<ExtendedTooltip name="AccrueDepreciationDelimiterEmpty2ExtendedTooltip" id="3707"/>
-												</LabelDecoration>
 												<PictureDecoration name="DepreciationAccrualPicture2" id="3708">
 													<Width>2</Width>
 													<Height>1</Height>
@@ -999,6 +976,7 @@ This operation may take a while.</v8:content>
 															<v8:content>Начисление амортизации картинка1</v8:content>
 														</v8:item>
 													</Title>
+													<GroupHorizontalAlign>Right</GroupHorizontalAlign>
 													<Hyperlink>true</Hyperlink>
 													<Picture>
 														<xr:Ref>CommonPicture.MonthEndWasNotPerformed</xr:Ref>
@@ -1023,6 +1001,7 @@ This operation may take a while.</v8:content>
 													<v8:content>Группа расчет прямых затрат1</v8:content>
 												</v8:item>
 											</Title>
+											<HorizontalStretch>true</HorizontalStretch>
 											<Group>Horizontal</Group>
 											<Representation>None</Representation>
 											<ShowTitle>false</ShowTitle>
@@ -1056,11 +1035,6 @@ This operation may take a while.</v8:content>
 													<ContextMenu name="DirectCostCalculation2ContextMenu" id="3714"/>
 													<ExtendedTooltip name="DirectCostCalculation2ExtendedTooltip" id="3715"/>
 												</CheckBoxField>
-												<LabelDecoration name="DirectCostCalculationSplitterIsEmpty2" id="3716">
-													<HorizontalStretch>true</HorizontalStretch>
-													<ContextMenu name="DirectCostCalculationSplitterIsEmpty2ContextMenu" id="3717"/>
-													<ExtendedTooltip name="DirectCostCalculationDelimiterEmpty2ExtendedTooltip" id="3718"/>
-												</LabelDecoration>
 												<PictureDecoration name="DirectCostCalculationPicture2" id="3719">
 													<Width>2</Width>
 													<Height>1</Height>
@@ -1074,6 +1048,7 @@ This operation may take a while.</v8:content>
 															<v8:content>Расчет прямых затрат картинка1</v8:content>
 														</v8:item>
 													</Title>
+													<GroupHorizontalAlign>Right</GroupHorizontalAlign>
 													<Hyperlink>true</Hyperlink>
 													<Picture>
 														<xr:Ref>CommonPicture.MonthEndWasNotPerformed</xr:Ref>
@@ -1098,6 +1073,7 @@ This operation may take a while.</v8:content>
 													<v8:content>Группа распределение затрат1</v8:content>
 												</v8:item>
 											</Title>
+											<HorizontalStretch>true</HorizontalStretch>
 											<Group>Horizontal</Group>
 											<Representation>None</Representation>
 											<ShowTitle>false</ShowTitle>
@@ -1131,11 +1107,6 @@ This operation may take a while.</v8:content>
 													<ContextMenu name="CostAllocation2ContextMenu" id="3725"/>
 													<ExtendedTooltip name="CostAllocation2ExtendedTooltip" id="3726"/>
 												</CheckBoxField>
-												<LabelDecoration name="CostAllocationSplitterIsEmpty2" id="3727">
-													<HorizontalStretch>true</HorizontalStretch>
-													<ContextMenu name="CostAllocationSplitterIsEmpty2ContextMenu" id="3728"/>
-													<ExtendedTooltip name="CostAllocationDelimiterEmpty2ExtendedTooltip" id="3729"/>
-												</LabelDecoration>
 												<PictureDecoration name="CostAllocationPicture2" id="3730">
 													<Width>2</Width>
 													<Height>1</Height>
@@ -1149,6 +1120,7 @@ This operation may take a while.</v8:content>
 															<v8:content>Распределение затрат картинка1</v8:content>
 														</v8:item>
 													</Title>
+													<GroupHorizontalAlign>Right</GroupHorizontalAlign>
 													<Hyperlink>true</Hyperlink>
 													<Picture>
 														<xr:Ref>CommonPicture.MonthEndWasNotPerformed</xr:Ref>
@@ -1173,6 +1145,7 @@ This operation may take a while.</v8:content>
 													<v8:content>Группа расчет фактической себестоимости1</v8:content>
 												</v8:item>
 											</Title>
+											<HorizontalStretch>true</HorizontalStretch>
 											<Group>Horizontal</Group>
 											<Representation>None</Representation>
 											<ShowTitle>false</ShowTitle>
@@ -1206,11 +1179,6 @@ This operation may take a while.</v8:content>
 													<ContextMenu name="ActualCostCalculation2ContextMenu" id="3736"/>
 													<ExtendedTooltip name="ActualCostCalculation2ExtendedTooltip" id="3737"/>
 												</CheckBoxField>
-												<LabelDecoration name="ActualCostCalculationSplitterIsEmpty2" id="3738">
-													<HorizontalStretch>true</HorizontalStretch>
-													<ContextMenu name="ActualCostCalculationSplitterIsEmpty2ContextMenu" id="3739"/>
-													<ExtendedTooltip name="ActualCostCalculationDelimiterEmpty2ExtendedTooltip" id="3740"/>
-												</LabelDecoration>
 												<PictureDecoration name="ActualCostCalculationPicture2" id="3741">
 													<Width>2</Width>
 													<Height>1</Height>
@@ -1224,6 +1192,7 @@ This operation may take a while.</v8:content>
 															<v8:content>Расчет фактической себестоимости картинка1</v8:content>
 														</v8:item>
 													</Title>
+													<GroupHorizontalAlign>Right</GroupHorizontalAlign>
 													<Hyperlink>true</Hyperlink>
 													<Picture>
 														<xr:Ref>CommonPicture.MonthEndWasNotPerformed</xr:Ref>
@@ -1248,6 +1217,7 @@ This operation may take a while.</v8:content>
 													<v8:content>Группа расчет себестоимости в рознице1</v8:content>
 												</v8:item>
 											</Title>
+											<HorizontalStretch>true</HorizontalStretch>
 											<Group>Horizontal</Group>
 											<Representation>None</Representation>
 											<ShowTitle>false</ShowTitle>
@@ -1281,11 +1251,6 @@ This operation may take a while.</v8:content>
 													<ContextMenu name="RetailCostCalculation2ContextMenu" id="3747"/>
 													<ExtendedTooltip name="RetailCostCalculation2ExtendedTooltip" id="3748"/>
 												</CheckBoxField>
-												<LabelDecoration name="RetailCostCalculationSplitterIsEmpty2" id="3749">
-													<HorizontalStretch>true</HorizontalStretch>
-													<ContextMenu name="RetailCostCalculationSplitterIsEmpty2ContextMenu" id="3750"/>
-													<ExtendedTooltip name="RetailCostCalculationDelimiterEmpty2ExtendedTooltip" id="3751"/>
-												</LabelDecoration>
 												<PictureDecoration name="RetailCostCalculationPicture2" id="3752">
 													<Width>2</Width>
 													<Height>1</Height>
@@ -1299,6 +1264,7 @@ This operation may take a while.</v8:content>
 															<v8:content>Расчет себестоимости в рознице картинка1</v8:content>
 														</v8:item>
 													</Title>
+													<GroupHorizontalAlign>Right</GroupHorizontalAlign>
 													<Hyperlink>true</Hyperlink>
 													<Picture>
 														<xr:Ref>CommonPicture.MonthEndWasNotPerformed</xr:Ref>
@@ -1323,6 +1289,7 @@ This operation may take a while.</v8:content>
 													<v8:content>Группа расчет курсовых разниц1</v8:content>
 												</v8:item>
 											</Title>
+											<HorizontalStretch>true</HorizontalStretch>
 											<Group>Horizontal</Group>
 											<Representation>None</Representation>
 											<ShowTitle>false</ShowTitle>
@@ -1356,11 +1323,6 @@ This operation may take a while.</v8:content>
 													<ContextMenu name="ExchangeDifferencesCalculation2ContextMenu" id="3758"/>
 													<ExtendedTooltip name="ExchangeDifferencesCalculation2ExtendedTooltip" id="3759"/>
 												</CheckBoxField>
-												<LabelDecoration name="ExchangeDifferencesCalculationSplitterIsEmpty2" id="3760">
-													<HorizontalStretch>true</HorizontalStretch>
-													<ContextMenu name="ExchangeDifferencesCalculationSplitterIsEmpty2ContextMenu" id="3761"/>
-													<ExtendedTooltip name="ExchangeDifferencesCalculationDelimiterEmpty2ExtendedTooltip" id="3762"/>
-												</LabelDecoration>
 												<PictureDecoration name="ExchangeDifferencesCalculationPicture2" id="3763">
 													<Width>2</Width>
 													<Height>1</Height>
@@ -1374,6 +1336,7 @@ This operation may take a while.</v8:content>
 															<v8:content>Расчет курсовых разниц картинка1</v8:content>
 														</v8:item>
 													</Title>
+													<GroupHorizontalAlign>Right</GroupHorizontalAlign>
 													<Hyperlink>true</Hyperlink>
 													<Picture>
 														<xr:Ref>CommonPicture.MonthEndWasNotPerformed</xr:Ref>
@@ -1398,6 +1361,7 @@ This operation may take a while.</v8:content>
 													<v8:content>Группа расчет финансового результата1</v8:content>
 												</v8:item>
 											</Title>
+											<HorizontalStretch>true</HorizontalStretch>
 											<Group>Horizontal</Group>
 											<Representation>None</Representation>
 											<ShowTitle>false</ShowTitle>
@@ -1431,11 +1395,6 @@ This operation may take a while.</v8:content>
 													<ContextMenu name="FinancialResultCalculation2ContextMenu" id="3769"/>
 													<ExtendedTooltip name="FinancialResultCalculation2ExtendedTooltip" id="3770"/>
 												</CheckBoxField>
-												<LabelDecoration name="FinancialResultCalculationSplitterIsEmpty2" id="3771">
-													<HorizontalStretch>true</HorizontalStretch>
-													<ContextMenu name="FinancialResultCalculationSplitterIsEmpty2ContextMenu" id="3772"/>
-													<ExtendedTooltip name="FinancialResultCalculationDelimiterEmpty2ExtendedTooltip" id="3773"/>
-												</LabelDecoration>
 												<PictureDecoration name="FinancialResultCalculationPicture2" id="3774">
 													<Width>2</Width>
 													<Height>1</Height>
@@ -1449,6 +1408,7 @@ This operation may take a while.</v8:content>
 															<v8:content>Расчет финансового результата картинка1</v8:content>
 														</v8:item>
 													</Title>
+													<GroupHorizontalAlign>Right</GroupHorizontalAlign>
 													<Hyperlink>true</Hyperlink>
 													<Picture>
 														<xr:Ref>CommonPicture.MonthEndWasNotPerformed</xr:Ref>
@@ -1665,11 +1625,6 @@ This operation may take a while.</v8:content>
 													<ContextMenu name="DepreciationAccrual3ContextMenu" id="3801"/>
 													<ExtendedTooltip name="DepreciationAccrual3ExtendedTooltip" id="3802"/>
 												</CheckBoxField>
-												<LabelDecoration name="AccrueDepreciationSplitterBlank3" id="3803">
-													<HorizontalStretch>true</HorizontalStretch>
-													<ContextMenu name="AccrueDepreciationSplitterBlank3ContextMenu" id="3804"/>
-													<ExtendedTooltip name="AccrueDepreciationDelimiterEmpty3ExtendedTooltip" id="3805"/>
-												</LabelDecoration>
 												<PictureDecoration name="DepreciationAccrualPicture3" id="3806">
 													<Width>2</Width>
 													<Height>1</Height>
@@ -1684,6 +1639,7 @@ This operation may take a while.</v8:content>
 															<v8:content>Начисление амортизации картинка1</v8:content>
 														</v8:item>
 													</Title>
+													<GroupHorizontalAlign>Right</GroupHorizontalAlign>
 													<Hyperlink>true</Hyperlink>
 													<Picture>
 														<xr:Ref>CommonPicture.MonthEndWasNotPerformed</xr:Ref>
@@ -1708,6 +1664,7 @@ This operation may take a while.</v8:content>
 													<v8:content>Группа расчет прямых затрат1</v8:content>
 												</v8:item>
 											</Title>
+											<HorizontalStretch>true</HorizontalStretch>
 											<Group>Horizontal</Group>
 											<Representation>None</Representation>
 											<ShowTitle>false</ShowTitle>
@@ -1741,11 +1698,6 @@ This operation may take a while.</v8:content>
 													<ContextMenu name="DirectCostCalculation3ContextMenu" id="3812"/>
 													<ExtendedTooltip name="DirectCostCalculation3ExtendedTooltip" id="3813"/>
 												</CheckBoxField>
-												<LabelDecoration name="DirectCostCalculationSplitterIsEmpty3" id="3814">
-													<HorizontalStretch>true</HorizontalStretch>
-													<ContextMenu name="DirectCostCalculationSplitterIsEmpty3ContextMenu" id="3815"/>
-													<ExtendedTooltip name="DirectCostCalculationDelimiterEmpty3ExtendedTooltip" id="3816"/>
-												</LabelDecoration>
 												<PictureDecoration name="DirectCostCalculationPicture3" id="3817">
 													<Width>2</Width>
 													<Height>1</Height>
@@ -1759,6 +1711,7 @@ This operation may take a while.</v8:content>
 															<v8:content>Расчет прямых затрат картинка1</v8:content>
 														</v8:item>
 													</Title>
+													<GroupHorizontalAlign>Right</GroupHorizontalAlign>
 													<Hyperlink>true</Hyperlink>
 													<Picture>
 														<xr:Ref>CommonPicture.MonthEndWasNotPerformed</xr:Ref>
@@ -1783,6 +1736,7 @@ This operation may take a while.</v8:content>
 													<v8:content>Группа распределение затрат1</v8:content>
 												</v8:item>
 											</Title>
+											<HorizontalStretch>true</HorizontalStretch>
 											<Group>Horizontal</Group>
 											<Representation>None</Representation>
 											<ShowTitle>false</ShowTitle>
@@ -1816,11 +1770,6 @@ This operation may take a while.</v8:content>
 													<ContextMenu name="CostAllocation3ContextMenu" id="3823"/>
 													<ExtendedTooltip name="CostAllocation3ExtendedTooltip" id="3824"/>
 												</CheckBoxField>
-												<LabelDecoration name="CostAllocationSplitterIsEmpty3" id="3825">
-													<HorizontalStretch>true</HorizontalStretch>
-													<ContextMenu name="CostAllocationSplitterIsEmpty3ContextMenu" id="3826"/>
-													<ExtendedTooltip name="CostAllocationDelimiterEmpty3ExtendedTooltip" id="3827"/>
-												</LabelDecoration>
 												<PictureDecoration name="CostAllocationPicture3" id="3828">
 													<Width>2</Width>
 													<Height>1</Height>
@@ -1834,6 +1783,7 @@ This operation may take a while.</v8:content>
 															<v8:content>Распределение затрат картинка1</v8:content>
 														</v8:item>
 													</Title>
+													<GroupHorizontalAlign>Right</GroupHorizontalAlign>
 													<Hyperlink>true</Hyperlink>
 													<Picture>
 														<xr:Ref>CommonPicture.MonthEndWasNotPerformed</xr:Ref>
@@ -1858,6 +1808,7 @@ This operation may take a while.</v8:content>
 													<v8:content>Группа расчет фактической себестоимости1</v8:content>
 												</v8:item>
 											</Title>
+											<HorizontalStretch>true</HorizontalStretch>
 											<Group>Horizontal</Group>
 											<Representation>None</Representation>
 											<ShowTitle>false</ShowTitle>
@@ -1891,11 +1842,6 @@ This operation may take a while.</v8:content>
 													<ContextMenu name="ActualCostCalculation3ContextMenu" id="3834"/>
 													<ExtendedTooltip name="ActualCostCalculation3ExtendedTooltip" id="3835"/>
 												</CheckBoxField>
-												<LabelDecoration name="ActualCostCalculationSplitterIsEmpty3" id="3836">
-													<HorizontalStretch>true</HorizontalStretch>
-													<ContextMenu name="ActualCostCalculationSplitterIsEmpty3ContextMenu" id="3837"/>
-													<ExtendedTooltip name="ActualCostCalculationDelimiterEmpty3ExtendedTooltip" id="3838"/>
-												</LabelDecoration>
 												<PictureDecoration name="ActualCostCalculationPicture3" id="3839">
 													<Width>2</Width>
 													<Height>1</Height>
@@ -1909,6 +1855,7 @@ This operation may take a while.</v8:content>
 															<v8:content>Расчет фактической себестоимости картинка1</v8:content>
 														</v8:item>
 													</Title>
+													<GroupHorizontalAlign>Right</GroupHorizontalAlign>
 													<Hyperlink>true</Hyperlink>
 													<Picture>
 														<xr:Ref>CommonPicture.MonthEndWasNotPerformed</xr:Ref>
@@ -1933,6 +1880,7 @@ This operation may take a while.</v8:content>
 													<v8:content>Группа расчет себестоимости в рознице1</v8:content>
 												</v8:item>
 											</Title>
+											<HorizontalStretch>true</HorizontalStretch>
 											<Group>Horizontal</Group>
 											<Representation>None</Representation>
 											<ShowTitle>false</ShowTitle>
@@ -1966,11 +1914,6 @@ This operation may take a while.</v8:content>
 													<ContextMenu name="RetailCostCalculation3ContextMenu" id="3845"/>
 													<ExtendedTooltip name="RetailCostCalculation3ExtendedTooltip" id="3846"/>
 												</CheckBoxField>
-												<LabelDecoration name="RetailCostCalculationSplitterIsEmpty3" id="3847">
-													<HorizontalStretch>true</HorizontalStretch>
-													<ContextMenu name="RetailCostCalculationSplitterIsEmpty3ContextMenu" id="3848"/>
-													<ExtendedTooltip name="RetailCostCalculationDelimiterEmpty3ExtendedTooltip" id="3849"/>
-												</LabelDecoration>
 												<PictureDecoration name="RetailCostCalculationPicture3" id="3850">
 													<Width>2</Width>
 													<Height>1</Height>
@@ -1984,6 +1927,7 @@ This operation may take a while.</v8:content>
 															<v8:content>Расчет себестоимости в рознице картинка1</v8:content>
 														</v8:item>
 													</Title>
+													<GroupHorizontalAlign>Right</GroupHorizontalAlign>
 													<Hyperlink>true</Hyperlink>
 													<Picture>
 														<xr:Ref>CommonPicture.MonthEndWasNotPerformed</xr:Ref>
@@ -2008,6 +1952,7 @@ This operation may take a while.</v8:content>
 													<v8:content>Группа расчет курсовых разниц1</v8:content>
 												</v8:item>
 											</Title>
+											<HorizontalStretch>true</HorizontalStretch>
 											<Group>Horizontal</Group>
 											<Representation>None</Representation>
 											<ShowTitle>false</ShowTitle>
@@ -2041,11 +1986,6 @@ This operation may take a while.</v8:content>
 													<ContextMenu name="ExchangeDifferencesCalculation3ContextMenu" id="3856"/>
 													<ExtendedTooltip name="ExchangeDifferencesCalculation3ExtendedTooltip" id="3857"/>
 												</CheckBoxField>
-												<LabelDecoration name="ExchangeDifferencesCalculationSplitterIsEmpty3" id="3858">
-													<HorizontalStretch>true</HorizontalStretch>
-													<ContextMenu name="ExchangeDifferencesCalculationSplitterIsEmpty3ContextMenu" id="3859"/>
-													<ExtendedTooltip name="ExchangeDifferencesCalculationDelimiterEmpty3ExtendedTooltip" id="3860"/>
-												</LabelDecoration>
 												<PictureDecoration name="ExchangeDifferencesCalculationPicture3" id="3861">
 													<Width>2</Width>
 													<Height>1</Height>
@@ -2059,6 +1999,7 @@ This operation may take a while.</v8:content>
 															<v8:content>Расчет курсовых разниц картинка1</v8:content>
 														</v8:item>
 													</Title>
+													<GroupHorizontalAlign>Right</GroupHorizontalAlign>
 													<Hyperlink>true</Hyperlink>
 													<Picture>
 														<xr:Ref>CommonPicture.MonthEndWasNotPerformed</xr:Ref>
@@ -2083,6 +2024,7 @@ This operation may take a while.</v8:content>
 													<v8:content>Группа расчет финансового результата1</v8:content>
 												</v8:item>
 											</Title>
+											<HorizontalStretch>true</HorizontalStretch>
 											<Group>Horizontal</Group>
 											<Representation>None</Representation>
 											<ShowTitle>false</ShowTitle>
@@ -2116,11 +2058,6 @@ This operation may take a while.</v8:content>
 													<ContextMenu name="FinancialResultCalculation3ContextMenu" id="3867"/>
 													<ExtendedTooltip name="FinancialResultCalculation3ExtendedTooltip" id="3868"/>
 												</CheckBoxField>
-												<LabelDecoration name="FinancialResultCalculationSplitterIsEmpty3" id="3869">
-													<HorizontalStretch>true</HorizontalStretch>
-													<ContextMenu name="FinancialResultCalculationIsEmptySplitter3ContextMenu" id="3870"/>
-													<ExtendedTooltip name="FinancialResultCalculationDelimiterEmpty3ExtendedTooltip" id="3871"/>
-												</LabelDecoration>
 												<PictureDecoration name="FinancialResultCalculationPicture3" id="3872">
 													<Width>2</Width>
 													<Height>1</Height>
@@ -2134,6 +2071,7 @@ This operation may take a while.</v8:content>
 															<v8:content>Расчет финансового результата картинка1</v8:content>
 														</v8:item>
 													</Title>
+													<GroupHorizontalAlign>Right</GroupHorizontalAlign>
 													<Hyperlink>true</Hyperlink>
 													<Picture>
 														<xr:Ref>CommonPicture.MonthEndWasNotPerformed</xr:Ref>
@@ -2350,11 +2288,6 @@ This operation may take a while.</v8:content>
 													<ContextMenu name="DepreciationAccrual4ContextMenu" id="3899"/>
 													<ExtendedTooltip name="DepreciationAccrual4ExtendedTooltip" id="3900"/>
 												</CheckBoxField>
-												<LabelDecoration name="AccrueDepreciationSplitterBlank4" id="3901">
-													<HorizontalStretch>true</HorizontalStretch>
-													<ContextMenu name="AccrueDepreciationSplitterBlank4ContextMenu" id="3902"/>
-													<ExtendedTooltip name="AccrueDepreciationDelimiterEmpty4ExtendedTooltip" id="3903"/>
-												</LabelDecoration>
 												<PictureDecoration name="DepreciationAccrualPicture4" id="3904">
 													<Width>2</Width>
 													<Height>1</Height>
@@ -2369,6 +2302,7 @@ This operation may take a while.</v8:content>
 															<v8:content>Начисление амортизации картинка1</v8:content>
 														</v8:item>
 													</Title>
+													<GroupHorizontalAlign>Right</GroupHorizontalAlign>
 													<Hyperlink>true</Hyperlink>
 													<Picture>
 														<xr:Ref>CommonPicture.MonthEndWasNotPerformed</xr:Ref>
@@ -2393,6 +2327,7 @@ This operation may take a while.</v8:content>
 													<v8:content>Группа расчет прямых затрат1</v8:content>
 												</v8:item>
 											</Title>
+											<HorizontalStretch>true</HorizontalStretch>
 											<Group>Horizontal</Group>
 											<Representation>None</Representation>
 											<ShowTitle>false</ShowTitle>
@@ -2426,11 +2361,6 @@ This operation may take a while.</v8:content>
 													<ContextMenu name="DirectCostCalculation4ContextMenu" id="3910"/>
 													<ExtendedTooltip name="DirectCostCalculation4ExtendedTooltip" id="3911"/>
 												</CheckBoxField>
-												<LabelDecoration name="DirectCostCalculationSplitterIsEmpty4" id="3912">
-													<HorizontalStretch>true</HorizontalStretch>
-													<ContextMenu name="DirectCostCalculationSplitterIsEmpty4ContextMenu" id="3913"/>
-													<ExtendedTooltip name="DirectCostCalculationDelimiterEmpty4ExtendedTooltip" id="3914"/>
-												</LabelDecoration>
 												<PictureDecoration name="DirectCostCalculationPicture4" id="3915">
 													<Width>2</Width>
 													<Height>1</Height>
@@ -2444,6 +2374,7 @@ This operation may take a while.</v8:content>
 															<v8:content>Расчет прямых затрат картинка1</v8:content>
 														</v8:item>
 													</Title>
+													<GroupHorizontalAlign>Right</GroupHorizontalAlign>
 													<Hyperlink>true</Hyperlink>
 													<Picture>
 														<xr:Ref>CommonPicture.MonthEndWasNotPerformed</xr:Ref>
@@ -2468,6 +2399,7 @@ This operation may take a while.</v8:content>
 													<v8:content>Группа распределение затрат1</v8:content>
 												</v8:item>
 											</Title>
+											<HorizontalStretch>true</HorizontalStretch>
 											<Group>Horizontal</Group>
 											<Representation>None</Representation>
 											<ShowTitle>false</ShowTitle>
@@ -2501,11 +2433,6 @@ This operation may take a while.</v8:content>
 													<ContextMenu name="CostAllocation4ContextMenu" id="3921"/>
 													<ExtendedTooltip name="CostAllocation4ExtendedTooltip" id="3922"/>
 												</CheckBoxField>
-												<LabelDecoration name="CostAllocationSplitterIsEmpty4" id="3923">
-													<HorizontalStretch>true</HorizontalStretch>
-													<ContextMenu name="CostAllocationSplitterIsEmpty4ContextMenu" id="3924"/>
-													<ExtendedTooltip name="CostAllocationDelimiterEmpty4ExtendedTooltip" id="3925"/>
-												</LabelDecoration>
 												<PictureDecoration name="CostAllocationPicture4" id="3926">
 													<Width>2</Width>
 													<Height>1</Height>
@@ -2519,6 +2446,7 @@ This operation may take a while.</v8:content>
 															<v8:content>Распределение затрат картинка1</v8:content>
 														</v8:item>
 													</Title>
+													<GroupHorizontalAlign>Right</GroupHorizontalAlign>
 													<Hyperlink>true</Hyperlink>
 													<Picture>
 														<xr:Ref>CommonPicture.MonthEndWasNotPerformed</xr:Ref>
@@ -2543,6 +2471,7 @@ This operation may take a while.</v8:content>
 													<v8:content>Группа расчет фактической себестоимости1</v8:content>
 												</v8:item>
 											</Title>
+											<HorizontalStretch>true</HorizontalStretch>
 											<Group>Horizontal</Group>
 											<Representation>None</Representation>
 											<ShowTitle>false</ShowTitle>
@@ -2576,11 +2505,6 @@ This operation may take a while.</v8:content>
 													<ContextMenu name="ActualCostCalculation4ContextMenu" id="3932"/>
 													<ExtendedTooltip name="ActualCostCalculation4ExtendedTooltip" id="3933"/>
 												</CheckBoxField>
-												<LabelDecoration name="ActualCostCalculationSplitterIsEmpty4" id="3934">
-													<HorizontalStretch>true</HorizontalStretch>
-													<ContextMenu name="ActualCostCalculationSplitterIsEmpty4ContextMenu" id="3935"/>
-													<ExtendedTooltip name="ActualCostCalculationDelimiterEmpty4ExtendedTooltip" id="3936"/>
-												</LabelDecoration>
 												<PictureDecoration name="ActualCostCalculationPicture4" id="3937">
 													<Width>2</Width>
 													<Height>1</Height>
@@ -2594,6 +2518,7 @@ This operation may take a while.</v8:content>
 															<v8:content>Расчет фактической себестоимости картинка1</v8:content>
 														</v8:item>
 													</Title>
+													<GroupHorizontalAlign>Right</GroupHorizontalAlign>
 													<Hyperlink>true</Hyperlink>
 													<Picture>
 														<xr:Ref>CommonPicture.MonthEndWasNotPerformed</xr:Ref>
@@ -2618,6 +2543,7 @@ This operation may take a while.</v8:content>
 													<v8:content>Группа расчет себестоимости в рознице1</v8:content>
 												</v8:item>
 											</Title>
+											<HorizontalStretch>true</HorizontalStretch>
 											<Group>Horizontal</Group>
 											<Representation>None</Representation>
 											<ShowTitle>false</ShowTitle>
@@ -2651,11 +2577,6 @@ This operation may take a while.</v8:content>
 													<ContextMenu name="RetailCostCalculation4ContextMenu" id="3943"/>
 													<ExtendedTooltip name="RetailCostCalculation4ExtendedTooltip" id="3944"/>
 												</CheckBoxField>
-												<LabelDecoration name="RetailCostCalculationSplitterIsEmpty4" id="3945">
-													<HorizontalStretch>true</HorizontalStretch>
-													<ContextMenu name="RetailCostCalculationSplitterIsEmpty4ContextMenu" id="3946"/>
-													<ExtendedTooltip name="RetailCostCalculationDelimiterEmpty4ExtendedTooltip" id="3947"/>
-												</LabelDecoration>
 												<PictureDecoration name="RetailCostCalculationPicture4" id="3948">
 													<Width>2</Width>
 													<Height>1</Height>
@@ -2669,6 +2590,7 @@ This operation may take a while.</v8:content>
 															<v8:content>Расчет себестоимости в рознице картинка1</v8:content>
 														</v8:item>
 													</Title>
+													<GroupHorizontalAlign>Right</GroupHorizontalAlign>
 													<Hyperlink>true</Hyperlink>
 													<Picture>
 														<xr:Ref>CommonPicture.MonthEndWasNotPerformed</xr:Ref>
@@ -2693,6 +2615,7 @@ This operation may take a while.</v8:content>
 													<v8:content>Группа расчет курсовых разниц1</v8:content>
 												</v8:item>
 											</Title>
+											<HorizontalStretch>true</HorizontalStretch>
 											<Group>Horizontal</Group>
 											<Representation>None</Representation>
 											<ShowTitle>false</ShowTitle>
@@ -2726,11 +2649,6 @@ This operation may take a while.</v8:content>
 													<ContextMenu name="ExchangeDifferencesCalculation4ContextMenu" id="3954"/>
 													<ExtendedTooltip name="ExchangeDifferencesCalculation4ExtendedTooltip" id="3955"/>
 												</CheckBoxField>
-												<LabelDecoration name="ExchangeDifferencesCalculationSplitterIsEmpty4" id="3956">
-													<HorizontalStretch>true</HorizontalStretch>
-													<ContextMenu name="ExchangeDifferencesCalculationSplitterIsEmpty4ContextMenu" id="3957"/>
-													<ExtendedTooltip name="ExchangeDifferencesCalculationDelimiterEmpty4ExtendedTooltip" id="3958"/>
-												</LabelDecoration>
 												<PictureDecoration name="ExchangeDifferencesCalculationPicture4" id="3959">
 													<Width>2</Width>
 													<Height>1</Height>
@@ -2744,6 +2662,7 @@ This operation may take a while.</v8:content>
 															<v8:content>Расчет курсовых разниц картинка1</v8:content>
 														</v8:item>
 													</Title>
+													<GroupHorizontalAlign>Right</GroupHorizontalAlign>
 													<Hyperlink>true</Hyperlink>
 													<Picture>
 														<xr:Ref>CommonPicture.MonthEndWasNotPerformed</xr:Ref>
@@ -2768,6 +2687,7 @@ This operation may take a while.</v8:content>
 													<v8:content>Группа расчет финансового результата1</v8:content>
 												</v8:item>
 											</Title>
+											<HorizontalStretch>true</HorizontalStretch>
 											<Group>Horizontal</Group>
 											<Representation>None</Representation>
 											<ShowTitle>false</ShowTitle>
@@ -2801,11 +2721,6 @@ This operation may take a while.</v8:content>
 													<ContextMenu name="FinancialResultCalculation4ContextMenu" id="3965"/>
 													<ExtendedTooltip name="FinancialResultCalculation4ExtendedTooltip" id="3966"/>
 												</CheckBoxField>
-												<LabelDecoration name="FinancialResultCalculationIsEmptySplitter4" id="3967">
-													<HorizontalStretch>true</HorizontalStretch>
-													<ContextMenu name="FinancialResultCalculationSplitterIsEmpty4ContextMenu" id="3968"/>
-													<ExtendedTooltip name="FinancialResultCalculationDelimiterEmpty4ExtendedTooltip" id="3969"/>
-												</LabelDecoration>
 												<PictureDecoration name="FinancialResultCalculationPicture4" id="3970">
 													<Width>2</Width>
 													<Height>1</Height>
@@ -2819,6 +2734,7 @@ This operation may take a while.</v8:content>
 															<v8:content>Расчет финансового результата картинка1</v8:content>
 														</v8:item>
 													</Title>
+													<GroupHorizontalAlign>Right</GroupHorizontalAlign>
 													<Hyperlink>true</Hyperlink>
 													<Picture>
 														<xr:Ref>CommonPicture.MonthEndWasNotPerformed</xr:Ref>
@@ -3035,11 +2951,6 @@ This operation may take a while.</v8:content>
 													<ContextMenu name="DepreciationAccrual5ContextMenu" id="3997"/>
 													<ExtendedTooltip name="DepreciationAccrual5ExtendedTooltip" id="3998"/>
 												</CheckBoxField>
-												<LabelDecoration name="AccrueDepreciationSplitterBlank5" id="3999">
-													<HorizontalStretch>true</HorizontalStretch>
-													<ContextMenu name="AccrueDepreciationSplitterBlank5ContextMenu" id="4000"/>
-													<ExtendedTooltip name="AccrueDepreciationDelimiterEmpty5ExtendedTooltip" id="4001"/>
-												</LabelDecoration>
 												<PictureDecoration name="DepreciationAccrualPicture5" id="4002">
 													<Width>2</Width>
 													<Height>1</Height>
@@ -3054,6 +2965,7 @@ This operation may take a while.</v8:content>
 															<v8:content>Начисление амортизации картинка1</v8:content>
 														</v8:item>
 													</Title>
+													<GroupHorizontalAlign>Right</GroupHorizontalAlign>
 													<Hyperlink>true</Hyperlink>
 													<Picture>
 														<xr:Ref>CommonPicture.MonthEndWasNotPerformed</xr:Ref>
@@ -3078,6 +2990,7 @@ This operation may take a while.</v8:content>
 													<v8:content>Группа расчет прямых затрат1</v8:content>
 												</v8:item>
 											</Title>
+											<HorizontalStretch>true</HorizontalStretch>
 											<Group>Horizontal</Group>
 											<Representation>None</Representation>
 											<ShowTitle>false</ShowTitle>
@@ -3111,11 +3024,6 @@ This operation may take a while.</v8:content>
 													<ContextMenu name="DirectCostCalculation5ContextMenu" id="4008"/>
 													<ExtendedTooltip name="DirectCostCalculation5ExtendedTooltip" id="4009"/>
 												</CheckBoxField>
-												<LabelDecoration name="DirectCostCalculationSplitterIsEmpty5" id="4010">
-													<HorizontalStretch>true</HorizontalStretch>
-													<ContextMenu name="DirectCostCalculationSplitterIsEmpty5ContextMenu" id="4011"/>
-													<ExtendedTooltip name="DirectCostCalculationDelimiterEmpty5ExtendedTooltip" id="4012"/>
-												</LabelDecoration>
 												<PictureDecoration name="DirectCostCalculationPicture5" id="4013">
 													<Width>2</Width>
 													<Height>1</Height>
@@ -3129,6 +3037,7 @@ This operation may take a while.</v8:content>
 															<v8:content>Расчет прямых затрат картинка1</v8:content>
 														</v8:item>
 													</Title>
+													<GroupHorizontalAlign>Right</GroupHorizontalAlign>
 													<Hyperlink>true</Hyperlink>
 													<Picture>
 														<xr:Ref>CommonPicture.MonthEndWasNotPerformed</xr:Ref>
@@ -3153,6 +3062,7 @@ This operation may take a while.</v8:content>
 													<v8:content>Группа распределение затрат1</v8:content>
 												</v8:item>
 											</Title>
+											<HorizontalStretch>true</HorizontalStretch>
 											<Group>Horizontal</Group>
 											<Representation>None</Representation>
 											<ShowTitle>false</ShowTitle>
@@ -3186,11 +3096,6 @@ This operation may take a while.</v8:content>
 													<ContextMenu name="CostAllocation5ContextMenu" id="4019"/>
 													<ExtendedTooltip name="CostAllocation5ExtendedTooltip" id="4020"/>
 												</CheckBoxField>
-												<LabelDecoration name="CostAllocationSplitterIsEmpty5" id="4021">
-													<HorizontalStretch>true</HorizontalStretch>
-													<ContextMenu name="CostAllocationSplitterIsEmpty5ContextMenu" id="4022"/>
-													<ExtendedTooltip name="CostAllocationDelimiterEmpty5ExtendedTooltip" id="4023"/>
-												</LabelDecoration>
 												<PictureDecoration name="CostAllocationPicture5" id="4024">
 													<Width>2</Width>
 													<Height>1</Height>
@@ -3204,6 +3109,7 @@ This operation may take a while.</v8:content>
 															<v8:content>Распределение затрат картинка1</v8:content>
 														</v8:item>
 													</Title>
+													<GroupHorizontalAlign>Right</GroupHorizontalAlign>
 													<Hyperlink>true</Hyperlink>
 													<Picture>
 														<xr:Ref>CommonPicture.MonthEndWasNotPerformed</xr:Ref>
@@ -3228,6 +3134,7 @@ This operation may take a while.</v8:content>
 													<v8:content>Группа расчет фактической себестоимости1</v8:content>
 												</v8:item>
 											</Title>
+											<HorizontalStretch>true</HorizontalStretch>
 											<Group>Horizontal</Group>
 											<Representation>None</Representation>
 											<ShowTitle>false</ShowTitle>
@@ -3261,11 +3168,6 @@ This operation may take a while.</v8:content>
 													<ContextMenu name="ActualCostCalculation5ContextMenu" id="4030"/>
 													<ExtendedTooltip name="ActualCostCalculation5ExtendedTooltip" id="4031"/>
 												</CheckBoxField>
-												<LabelDecoration name="ActualCostCalculationSplitterIsEmpty5" id="4032">
-													<HorizontalStretch>true</HorizontalStretch>
-													<ContextMenu name="ActualCostCalculationSplitterIsEmpty5ContextMenu" id="4033"/>
-													<ExtendedTooltip name="ActualCostCalculationDelimiterEmpty5ExtendedTooltip" id="4034"/>
-												</LabelDecoration>
 												<PictureDecoration name="ActualCostCalculationPicture5" id="4035">
 													<Width>2</Width>
 													<Height>1</Height>
@@ -3279,6 +3181,7 @@ This operation may take a while.</v8:content>
 															<v8:content>Расчет фактической себестоимости картинка1</v8:content>
 														</v8:item>
 													</Title>
+													<GroupHorizontalAlign>Right</GroupHorizontalAlign>
 													<Hyperlink>true</Hyperlink>
 													<Picture>
 														<xr:Ref>CommonPicture.MonthEndWasNotPerformed</xr:Ref>
@@ -3303,6 +3206,7 @@ This operation may take a while.</v8:content>
 													<v8:content>Группа расчет себестоимости в рознице1</v8:content>
 												</v8:item>
 											</Title>
+											<HorizontalStretch>true</HorizontalStretch>
 											<Group>Horizontal</Group>
 											<Representation>None</Representation>
 											<ShowTitle>false</ShowTitle>
@@ -3336,11 +3240,6 @@ This operation may take a while.</v8:content>
 													<ContextMenu name="RetailCostCalculation5ContextMenu" id="4041"/>
 													<ExtendedTooltip name="RetailCostCalculation5ExtendedTooltip" id="4042"/>
 												</CheckBoxField>
-												<LabelDecoration name="RetailCostCalculationSplitterIsEmpty5" id="4043">
-													<HorizontalStretch>true</HorizontalStretch>
-													<ContextMenu name="RetailCostCalculationSplitterIsEmpty5ContextMenu" id="4044"/>
-													<ExtendedTooltip name="RetailCostCalculationDelimiterEmpty5ExtendedTooltip" id="4045"/>
-												</LabelDecoration>
 												<PictureDecoration name="RetailCostCalculationPicture5" id="4046">
 													<Width>2</Width>
 													<Height>1</Height>
@@ -3354,6 +3253,7 @@ This operation may take a while.</v8:content>
 															<v8:content>Расчет себестоимости в рознице картинка1</v8:content>
 														</v8:item>
 													</Title>
+													<GroupHorizontalAlign>Right</GroupHorizontalAlign>
 													<Hyperlink>true</Hyperlink>
 													<Picture>
 														<xr:Ref>CommonPicture.MonthEndWasNotPerformed</xr:Ref>
@@ -3378,6 +3278,7 @@ This operation may take a while.</v8:content>
 													<v8:content>Группа расчет курсовых разниц1</v8:content>
 												</v8:item>
 											</Title>
+											<HorizontalStretch>true</HorizontalStretch>
 											<Group>Horizontal</Group>
 											<Representation>None</Representation>
 											<ShowTitle>false</ShowTitle>
@@ -3411,11 +3312,6 @@ This operation may take a while.</v8:content>
 													<ContextMenu name="ExchangeDifferencesCalculation5ContextMenu" id="4052"/>
 													<ExtendedTooltip name="ExchangeDifferencesCalculation5ExtendedTooltip" id="4053"/>
 												</CheckBoxField>
-												<LabelDecoration name="ExchangeDifferencesCalculationSplitterIsEmpty5" id="4054">
-													<HorizontalStretch>true</HorizontalStretch>
-													<ContextMenu name="ExchangeDifferencesCalculationSplitterIsEmpty5ContextMenu" id="4055"/>
-													<ExtendedTooltip name="ExchangeDifferencesCalculationDelimiterEmpty5ExtendedTooltip" id="4056"/>
-												</LabelDecoration>
 												<PictureDecoration name="ExchangeDifferencesCalculationPicture5" id="4057">
 													<Width>2</Width>
 													<Height>1</Height>
@@ -3429,6 +3325,7 @@ This operation may take a while.</v8:content>
 															<v8:content>Расчет курсовых разниц картинка1</v8:content>
 														</v8:item>
 													</Title>
+													<GroupHorizontalAlign>Right</GroupHorizontalAlign>
 													<Hyperlink>true</Hyperlink>
 													<Picture>
 														<xr:Ref>CommonPicture.MonthEndWasNotPerformed</xr:Ref>
@@ -3453,6 +3350,7 @@ This operation may take a while.</v8:content>
 													<v8:content>Группа расчет финансового результата1</v8:content>
 												</v8:item>
 											</Title>
+											<HorizontalStretch>true</HorizontalStretch>
 											<Group>Horizontal</Group>
 											<Representation>None</Representation>
 											<ShowTitle>false</ShowTitle>
@@ -3486,11 +3384,6 @@ This operation may take a while.</v8:content>
 													<ContextMenu name="FinancialResultCalculation5ContextMenu" id="4063"/>
 													<ExtendedTooltip name="FinancialResultCalculation5ExtendedTooltip" id="4064"/>
 												</CheckBoxField>
-												<LabelDecoration name="FinancialResultCalculationSplitterIsEmpty5" id="4065">
-													<HorizontalStretch>true</HorizontalStretch>
-													<ContextMenu name="FinancialResultCalculationSplitterIsEmpty5ContextMenu" id="4066"/>
-													<ExtendedTooltip name="FinancialResultCalculationDelimiterEmpty5ExtendedTooltip" id="4067"/>
-												</LabelDecoration>
 												<PictureDecoration name="FinancialResultCalculationPicture5" id="4068">
 													<Width>2</Width>
 													<Height>1</Height>
@@ -3504,6 +3397,7 @@ This operation may take a while.</v8:content>
 															<v8:content>Расчет финансового результата картинка1</v8:content>
 														</v8:item>
 													</Title>
+													<GroupHorizontalAlign>Right</GroupHorizontalAlign>
 													<Hyperlink>true</Hyperlink>
 													<Picture>
 														<xr:Ref>CommonPicture.MonthEndWasNotPerformed</xr:Ref>
@@ -3720,11 +3614,6 @@ This operation may take a while.</v8:content>
 													<ContextMenu name="DepreciationAccrual6ContextMenu" id="4095"/>
 													<ExtendedTooltip name="DepreciationAccrual6ExtendedTooltip" id="4096"/>
 												</CheckBoxField>
-												<LabelDecoration name="AccrueDepreciationSplitterBlank6" id="4097">
-													<HorizontalStretch>true</HorizontalStretch>
-													<ContextMenu name="AccrueDepreciationSplitterBlank6ContextMenu" id="4098"/>
-													<ExtendedTooltip name="AccrueDepreciationDelimiterEmpty6ExtendedTooltip" id="4099"/>
-												</LabelDecoration>
 												<PictureDecoration name="DepreciationAccrualPicture6" id="4100">
 													<Width>2</Width>
 													<Height>1</Height>
@@ -3739,6 +3628,7 @@ This operation may take a while.</v8:content>
 															<v8:content>Начисление амортизации картинка1</v8:content>
 														</v8:item>
 													</Title>
+													<GroupHorizontalAlign>Right</GroupHorizontalAlign>
 													<Hyperlink>true</Hyperlink>
 													<Picture>
 														<xr:Ref>CommonPicture.MonthEndWasNotPerformed</xr:Ref>
@@ -3763,6 +3653,7 @@ This operation may take a while.</v8:content>
 													<v8:content>Группа расчет прямых затрат1</v8:content>
 												</v8:item>
 											</Title>
+											<HorizontalStretch>true</HorizontalStretch>
 											<Group>Horizontal</Group>
 											<Representation>None</Representation>
 											<ShowTitle>false</ShowTitle>
@@ -3796,11 +3687,6 @@ This operation may take a while.</v8:content>
 													<ContextMenu name="DirectCostCalculation6ContextMenu" id="4106"/>
 													<ExtendedTooltip name="DirectCostCalculation6ExtendedTooltip" id="4107"/>
 												</CheckBoxField>
-												<LabelDecoration name="DirectCostCalculationSplitterIsEmpty6" id="4108">
-													<HorizontalStretch>true</HorizontalStretch>
-													<ContextMenu name="DirectCostCalculationSplitterIsEmpty6ContextMenu" id="4109"/>
-													<ExtendedTooltip name="DirectCostCalculationDelimiterEmpty6ExtendedTooltip" id="4110"/>
-												</LabelDecoration>
 												<PictureDecoration name="DirectCostCalculationPicture6" id="4111">
 													<Width>2</Width>
 													<Height>1</Height>
@@ -3814,6 +3700,7 @@ This operation may take a while.</v8:content>
 															<v8:content>Расчет прямых затрат картинка1</v8:content>
 														</v8:item>
 													</Title>
+													<GroupHorizontalAlign>Right</GroupHorizontalAlign>
 													<Hyperlink>true</Hyperlink>
 													<Picture>
 														<xr:Ref>CommonPicture.MonthEndWasNotPerformed</xr:Ref>
@@ -3838,6 +3725,7 @@ This operation may take a while.</v8:content>
 													<v8:content>Группа распределение затрат1</v8:content>
 												</v8:item>
 											</Title>
+											<HorizontalStretch>true</HorizontalStretch>
 											<Group>Horizontal</Group>
 											<Representation>None</Representation>
 											<ShowTitle>false</ShowTitle>
@@ -3871,11 +3759,6 @@ This operation may take a while.</v8:content>
 													<ContextMenu name="CostAllocation6ContextMenu" id="4117"/>
 													<ExtendedTooltip name="CostAllocation6ExtendedTooltip" id="4118"/>
 												</CheckBoxField>
-												<LabelDecoration name="CostAllocationSplitterIsEmpty6" id="4119">
-													<HorizontalStretch>true</HorizontalStretch>
-													<ContextMenu name="CostAllocationSplitterIsEmpty6ContextMenu" id="4120"/>
-													<ExtendedTooltip name="CostAllocationDelimiterEmpty6ExtendedTooltip" id="4121"/>
-												</LabelDecoration>
 												<PictureDecoration name="CostAllocationPicture6" id="4122">
 													<Width>2</Width>
 													<Height>1</Height>
@@ -3889,6 +3772,7 @@ This operation may take a while.</v8:content>
 															<v8:content>Распределение затрат картинка1</v8:content>
 														</v8:item>
 													</Title>
+													<GroupHorizontalAlign>Right</GroupHorizontalAlign>
 													<Hyperlink>true</Hyperlink>
 													<Picture>
 														<xr:Ref>CommonPicture.MonthEndWasNotPerformed</xr:Ref>
@@ -3913,6 +3797,7 @@ This operation may take a while.</v8:content>
 													<v8:content>Группа расчет фактической себестоимости1</v8:content>
 												</v8:item>
 											</Title>
+											<HorizontalStretch>true</HorizontalStretch>
 											<Group>Horizontal</Group>
 											<Representation>None</Representation>
 											<ShowTitle>false</ShowTitle>
@@ -3946,11 +3831,6 @@ This operation may take a while.</v8:content>
 													<ContextMenu name="ActualCostCalculation6ContextMenu" id="4128"/>
 													<ExtendedTooltip name="ActualCostCalculation6ExtendedTooltip" id="4129"/>
 												</CheckBoxField>
-												<LabelDecoration name="ActualCostCalculationSplitterIsEmpty6" id="4130">
-													<HorizontalStretch>true</HorizontalStretch>
-													<ContextMenu name="ActualCostCalculationSplitterIsEmpty6ContextMenu" id="4131"/>
-													<ExtendedTooltip name="ActualCostCalculationDelimiterEmpty6ExtendedTooltip" id="4132"/>
-												</LabelDecoration>
 												<PictureDecoration name="ActualCostCalculationPicture6" id="4133">
 													<Width>2</Width>
 													<Height>1</Height>
@@ -3964,6 +3844,7 @@ This operation may take a while.</v8:content>
 															<v8:content>Расчет фактической себестоимости картинка1</v8:content>
 														</v8:item>
 													</Title>
+													<GroupHorizontalAlign>Right</GroupHorizontalAlign>
 													<Hyperlink>true</Hyperlink>
 													<Picture>
 														<xr:Ref>CommonPicture.MonthEndWasNotPerformed</xr:Ref>
@@ -3988,6 +3869,7 @@ This operation may take a while.</v8:content>
 													<v8:content>Группа расчет себестоимости в рознице1</v8:content>
 												</v8:item>
 											</Title>
+											<HorizontalStretch>true</HorizontalStretch>
 											<Group>Horizontal</Group>
 											<Representation>None</Representation>
 											<ShowTitle>false</ShowTitle>
@@ -4021,11 +3903,6 @@ This operation may take a while.</v8:content>
 													<ContextMenu name="RetailCostCalculation6ContextMenu" id="4139"/>
 													<ExtendedTooltip name="RetailCostCalculation6ExtendedTooltip" id="4140"/>
 												</CheckBoxField>
-												<LabelDecoration name="RetailCostCalculationSplitterIsEmpty6" id="4141">
-													<HorizontalStretch>true</HorizontalStretch>
-													<ContextMenu name="RetailCostCalculationSplitterIsEmpty6ContextMenu" id="4142"/>
-													<ExtendedTooltip name="RetailCostCalculationDelimiterEmpty6ExtendedTooltip" id="4143"/>
-												</LabelDecoration>
 												<PictureDecoration name="RetailCostCalculationPicture6" id="4144">
 													<Width>2</Width>
 													<Height>1</Height>
@@ -4039,6 +3916,7 @@ This operation may take a while.</v8:content>
 															<v8:content>Расчет себестоимости в рознице картинка1</v8:content>
 														</v8:item>
 													</Title>
+													<GroupHorizontalAlign>Right</GroupHorizontalAlign>
 													<Hyperlink>true</Hyperlink>
 													<Picture>
 														<xr:Ref>CommonPicture.MonthEndWasNotPerformed</xr:Ref>
@@ -4063,6 +3941,7 @@ This operation may take a while.</v8:content>
 													<v8:content>Группа расчет курсовых разниц1</v8:content>
 												</v8:item>
 											</Title>
+											<HorizontalStretch>true</HorizontalStretch>
 											<Group>Horizontal</Group>
 											<Representation>None</Representation>
 											<ShowTitle>false</ShowTitle>
@@ -4096,11 +3975,6 @@ This operation may take a while.</v8:content>
 													<ContextMenu name="ExchangeDifferencesCalculation6ContextMenu" id="4150"/>
 													<ExtendedTooltip name="ExchangeDifferencesCalculation6ExtendedTooltip" id="4151"/>
 												</CheckBoxField>
-												<LabelDecoration name="ExchangeDifferencesCalculationSplitterIsEmpty6" id="4152">
-													<HorizontalStretch>true</HorizontalStretch>
-													<ContextMenu name="ExchangeDifferencesCalculationSplitterIsEmpty6ContextMenu" id="4153"/>
-													<ExtendedTooltip name="ExchangeDifferencesCalculationDelimiterEmpty6ExtendedTooltip" id="4154"/>
-												</LabelDecoration>
 												<PictureDecoration name="ExchangeDifferencesCalculationPicture6" id="4155">
 													<Width>2</Width>
 													<Height>1</Height>
@@ -4114,6 +3988,7 @@ This operation may take a while.</v8:content>
 															<v8:content>Расчет курсовых разниц картинка1</v8:content>
 														</v8:item>
 													</Title>
+													<GroupHorizontalAlign>Right</GroupHorizontalAlign>
 													<Hyperlink>true</Hyperlink>
 													<Picture>
 														<xr:Ref>CommonPicture.MonthEndWasNotPerformed</xr:Ref>
@@ -4138,6 +4013,7 @@ This operation may take a while.</v8:content>
 													<v8:content>Группа расчет финансового результата1</v8:content>
 												</v8:item>
 											</Title>
+											<HorizontalStretch>true</HorizontalStretch>
 											<Group>Horizontal</Group>
 											<Representation>None</Representation>
 											<ShowTitle>false</ShowTitle>
@@ -4171,11 +4047,6 @@ This operation may take a while.</v8:content>
 													<ContextMenu name="FinancialResultCalculation6ContextMenu" id="4161"/>
 													<ExtendedTooltip name="FinancialResultCalculation6ExtendedTooltip" id="4162"/>
 												</CheckBoxField>
-												<LabelDecoration name="FinancialResultCalculationSplitterIsEmpty6" id="4163">
-													<HorizontalStretch>true</HorizontalStretch>
-													<ContextMenu name="FinancialResultCalculationSplitterIsEmpty6ContextMenu" id="4164"/>
-													<ExtendedTooltip name="FinancialResultCalculationDelimiterEmpty6ExtendedTooltip" id="4165"/>
-												</LabelDecoration>
 												<PictureDecoration name="FinancialResultCalculationPicture6" id="4166">
 													<Width>2</Width>
 													<Height>1</Height>
@@ -4189,6 +4060,7 @@ This operation may take a while.</v8:content>
 															<v8:content>Расчет финансового результата картинка1</v8:content>
 														</v8:item>
 													</Title>
+													<GroupHorizontalAlign>Right</GroupHorizontalAlign>
 													<Hyperlink>true</Hyperlink>
 													<Picture>
 														<xr:Ref>CommonPicture.MonthEndWasNotPerformed</xr:Ref>
@@ -4405,11 +4277,6 @@ This operation may take a while.</v8:content>
 													<ContextMenu name="DepreciationAccrual7ContextMenu" id="4193"/>
 													<ExtendedTooltip name="DepreciationAccrual7ExtendedTooltip" id="4194"/>
 												</CheckBoxField>
-												<LabelDecoration name="AccrueDepreciationSplitterBlank7" id="4195">
-													<HorizontalStretch>true</HorizontalStretch>
-													<ContextMenu name="AccrueDepreciationSplitterBlank7ContextMenu" id="4196"/>
-													<ExtendedTooltip name="AccrueDepreciationDelimiterEmpty7ExtendedTooltip" id="4197"/>
-												</LabelDecoration>
 												<PictureDecoration name="DepreciationAccrualPicture7" id="4198">
 													<Width>2</Width>
 													<Height>1</Height>
@@ -4424,6 +4291,7 @@ This operation may take a while.</v8:content>
 															<v8:content>Начисление амортизации картинка1</v8:content>
 														</v8:item>
 													</Title>
+													<GroupHorizontalAlign>Right</GroupHorizontalAlign>
 													<Hyperlink>true</Hyperlink>
 													<Picture>
 														<xr:Ref>CommonPicture.MonthEndWasNotPerformed</xr:Ref>
@@ -4448,6 +4316,7 @@ This operation may take a while.</v8:content>
 													<v8:content>Группа расчет прямых затрат1</v8:content>
 												</v8:item>
 											</Title>
+											<HorizontalStretch>true</HorizontalStretch>
 											<Group>Horizontal</Group>
 											<Representation>None</Representation>
 											<ShowTitle>false</ShowTitle>
@@ -4481,11 +4350,6 @@ This operation may take a while.</v8:content>
 													<ContextMenu name="DirectCostCalculation7ContextMenu" id="4204"/>
 													<ExtendedTooltip name="DirectCostCalculation7ExtendedTooltip" id="4205"/>
 												</CheckBoxField>
-												<LabelDecoration name="DirectCostCalculationSplitterIsEmpty7" id="4206">
-													<HorizontalStretch>true</HorizontalStretch>
-													<ContextMenu name="DirectCostCalculationSplitterIsEmpty7ContextMenu" id="4207"/>
-													<ExtendedTooltip name="DirectCostCalculationDelimiterEmpty7ExtendedTooltip" id="4208"/>
-												</LabelDecoration>
 												<PictureDecoration name="DirectCostCalculationPicture7" id="4209">
 													<Width>2</Width>
 													<Height>1</Height>
@@ -4499,6 +4363,7 @@ This operation may take a while.</v8:content>
 															<v8:content>Расчет прямых затрат картинка1</v8:content>
 														</v8:item>
 													</Title>
+													<GroupHorizontalAlign>Right</GroupHorizontalAlign>
 													<Hyperlink>true</Hyperlink>
 													<Picture>
 														<xr:Ref>CommonPicture.MonthEndWasNotPerformed</xr:Ref>
@@ -4523,6 +4388,7 @@ This operation may take a while.</v8:content>
 													<v8:content>Группа распределение затрат1</v8:content>
 												</v8:item>
 											</Title>
+											<HorizontalStretch>true</HorizontalStretch>
 											<Group>Horizontal</Group>
 											<Representation>None</Representation>
 											<ShowTitle>false</ShowTitle>
@@ -4556,11 +4422,6 @@ This operation may take a while.</v8:content>
 													<ContextMenu name="CostAllocation7ContextMenu" id="4215"/>
 													<ExtendedTooltip name="CostAllocation7ExtendedTooltip" id="4216"/>
 												</CheckBoxField>
-												<LabelDecoration name="CostAllocationSplitterIsEmpty7" id="4217">
-													<HorizontalStretch>true</HorizontalStretch>
-													<ContextMenu name="CostAllocationSplitterIsEmpty7ContextMenu" id="4218"/>
-													<ExtendedTooltip name="CostAllocationDelimiterEmpty7ExtendedTooltip" id="4219"/>
-												</LabelDecoration>
 												<PictureDecoration name="CostAllocationPicture7" id="4220">
 													<Width>2</Width>
 													<Height>1</Height>
@@ -4574,6 +4435,7 @@ This operation may take a while.</v8:content>
 															<v8:content>Распределение затрат картинка1</v8:content>
 														</v8:item>
 													</Title>
+													<GroupHorizontalAlign>Right</GroupHorizontalAlign>
 													<Hyperlink>true</Hyperlink>
 													<Picture>
 														<xr:Ref>CommonPicture.MonthEndWasNotPerformed</xr:Ref>
@@ -4598,6 +4460,7 @@ This operation may take a while.</v8:content>
 													<v8:content>Группа расчет фактической себестоимости1</v8:content>
 												</v8:item>
 											</Title>
+											<HorizontalStretch>true</HorizontalStretch>
 											<Group>Horizontal</Group>
 											<Representation>None</Representation>
 											<ShowTitle>false</ShowTitle>
@@ -4631,11 +4494,6 @@ This operation may take a while.</v8:content>
 													<ContextMenu name="ActualCostCalculation7ContextMenu" id="4226"/>
 													<ExtendedTooltip name="ActualCostCalculation7ExtendedTooltip" id="4227"/>
 												</CheckBoxField>
-												<LabelDecoration name="ActualCostCalculationSplitterIsEmpty7" id="4228">
-													<HorizontalStretch>true</HorizontalStretch>
-													<ContextMenu name="ActualCostCalculationSplitterIsEmpty7ContextMenu" id="4229"/>
-													<ExtendedTooltip name="ActualCostCalculationDelimiterEmpty7ExtendedTooltip" id="4230"/>
-												</LabelDecoration>
 												<PictureDecoration name="ActualCostCalculationPicture7" id="4231">
 													<Width>2</Width>
 													<Height>1</Height>
@@ -4649,6 +4507,7 @@ This operation may take a while.</v8:content>
 															<v8:content>Расчет фактической себестоимости картинка1</v8:content>
 														</v8:item>
 													</Title>
+													<GroupHorizontalAlign>Right</GroupHorizontalAlign>
 													<Hyperlink>true</Hyperlink>
 													<Picture>
 														<xr:Ref>CommonPicture.MonthEndWasNotPerformed</xr:Ref>
@@ -4673,6 +4532,7 @@ This operation may take a while.</v8:content>
 													<v8:content>Группа расчет себестоимости в рознице1</v8:content>
 												</v8:item>
 											</Title>
+											<HorizontalStretch>true</HorizontalStretch>
 											<Group>Horizontal</Group>
 											<Representation>None</Representation>
 											<ShowTitle>false</ShowTitle>
@@ -4706,11 +4566,6 @@ This operation may take a while.</v8:content>
 													<ContextMenu name="RetailCostCalculation7ContextMenu" id="4237"/>
 													<ExtendedTooltip name="RetailCostCalculation7ExtendedTooltip" id="4238"/>
 												</CheckBoxField>
-												<LabelDecoration name="RetailCostCalculationSplitterIsEmpty7" id="4239">
-													<HorizontalStretch>true</HorizontalStretch>
-													<ContextMenu name="RetailCostCalculationSplitterIsEmpty7ContextMenu" id="4240"/>
-													<ExtendedTooltip name="RetailCostCalculationDelimiterEmpty7ExtendedTooltip" id="4241"/>
-												</LabelDecoration>
 												<PictureDecoration name="RetailCostCalculationPicture7" id="4242">
 													<Width>2</Width>
 													<Height>1</Height>
@@ -4724,6 +4579,7 @@ This operation may take a while.</v8:content>
 															<v8:content>Расчет себестоимости в рознице картинка1</v8:content>
 														</v8:item>
 													</Title>
+													<GroupHorizontalAlign>Right</GroupHorizontalAlign>
 													<Hyperlink>true</Hyperlink>
 													<Picture>
 														<xr:Ref>CommonPicture.MonthEndWasNotPerformed</xr:Ref>
@@ -4748,6 +4604,7 @@ This operation may take a while.</v8:content>
 													<v8:content>Группа расчет курсовых разниц1</v8:content>
 												</v8:item>
 											</Title>
+											<HorizontalStretch>true</HorizontalStretch>
 											<Group>Horizontal</Group>
 											<Representation>None</Representation>
 											<ShowTitle>false</ShowTitle>
@@ -4781,11 +4638,6 @@ This operation may take a while.</v8:content>
 													<ContextMenu name="ExchangeDifferencesCalculation7ContextMenu" id="4248"/>
 													<ExtendedTooltip name="ExchangeDifferencesCalculation7ExtendedTooltip" id="4249"/>
 												</CheckBoxField>
-												<LabelDecoration name="ExchangeDifferencesCalculationSplitterIsEmpty7" id="4250">
-													<HorizontalStretch>true</HorizontalStretch>
-													<ContextMenu name="ExchangeDifferencesCalculationSplitterIsEmpty7ContextMenu" id="4251"/>
-													<ExtendedTooltip name="ExchangeDifferencesCalculationDelimiterEmpty7ExtendedTooltip" id="4252"/>
-												</LabelDecoration>
 												<PictureDecoration name="ExchangeDifferencesCalculationPicture7" id="4253">
 													<Width>2</Width>
 													<Height>1</Height>
@@ -4799,6 +4651,7 @@ This operation may take a while.</v8:content>
 															<v8:content>Расчет курсовых разниц картинка1</v8:content>
 														</v8:item>
 													</Title>
+													<GroupHorizontalAlign>Right</GroupHorizontalAlign>
 													<Hyperlink>true</Hyperlink>
 													<Picture>
 														<xr:Ref>CommonPicture.MonthEndWasNotPerformed</xr:Ref>
@@ -4823,6 +4676,7 @@ This operation may take a while.</v8:content>
 													<v8:content>Группа расчет финансового результата1</v8:content>
 												</v8:item>
 											</Title>
+											<HorizontalStretch>true</HorizontalStretch>
 											<Group>Horizontal</Group>
 											<Representation>None</Representation>
 											<ShowTitle>false</ShowTitle>
@@ -4856,11 +4710,6 @@ This operation may take a while.</v8:content>
 													<ContextMenu name="FinancialResultCalculation7ContextMenu" id="4259"/>
 													<ExtendedTooltip name="FinancialResultCalculation7ExtendedTooltip" id="4260"/>
 												</CheckBoxField>
-												<LabelDecoration name="FinancialResultCalculationSplitterIsEmpty7" id="4261">
-													<HorizontalStretch>true</HorizontalStretch>
-													<ContextMenu name="FinancialResultCalculationSplitterIsEmpty7ContextMenu" id="4262"/>
-													<ExtendedTooltip name="FinancialResultCalculationDelimiterEmpty7ExtendedTooltip" id="4263"/>
-												</LabelDecoration>
 												<PictureDecoration name="FinancialResultCalculationPicture7" id="4264">
 													<Width>2</Width>
 													<Height>1</Height>
@@ -4874,6 +4723,7 @@ This operation may take a while.</v8:content>
 															<v8:content>Расчет финансового результата картинка1</v8:content>
 														</v8:item>
 													</Title>
+													<GroupHorizontalAlign>Right</GroupHorizontalAlign>
 													<Hyperlink>true</Hyperlink>
 													<Picture>
 														<xr:Ref>CommonPicture.MonthEndWasNotPerformed</xr:Ref>
@@ -5090,11 +4940,6 @@ This operation may take a while.</v8:content>
 													<ContextMenu name="DepreciationAccrual8ContextMenu" id="4291"/>
 													<ExtendedTooltip name="DepreciationAccrual8ExtendedTooltip" id="4292"/>
 												</CheckBoxField>
-												<LabelDecoration name="AccrueDepreciationSplitterBlank8" id="4293">
-													<HorizontalStretch>true</HorizontalStretch>
-													<ContextMenu name="AccrueDepreciationSplitterBlank8ContextMenu" id="4294"/>
-													<ExtendedTooltip name="AccrueDepreciationDelimiterEmpty8ExtendedTooltip" id="4295"/>
-												</LabelDecoration>
 												<PictureDecoration name="DepreciationAccrualPicture8" id="4296">
 													<Width>2</Width>
 													<Height>1</Height>
@@ -5109,6 +4954,7 @@ This operation may take a while.</v8:content>
 															<v8:content>Начисление амортизации картинка1</v8:content>
 														</v8:item>
 													</Title>
+													<GroupHorizontalAlign>Right</GroupHorizontalAlign>
 													<Hyperlink>true</Hyperlink>
 													<Picture>
 														<xr:Ref>CommonPicture.MonthEndWasNotPerformed</xr:Ref>
@@ -5133,6 +4979,7 @@ This operation may take a while.</v8:content>
 													<v8:content>Группа расчет прямых затрат1</v8:content>
 												</v8:item>
 											</Title>
+											<HorizontalStretch>true</HorizontalStretch>
 											<Group>Horizontal</Group>
 											<Representation>None</Representation>
 											<ShowTitle>false</ShowTitle>
@@ -5166,11 +5013,6 @@ This operation may take a while.</v8:content>
 													<ContextMenu name="DirectCostCalculation8ContextMenu" id="4302"/>
 													<ExtendedTooltip name="DirectCostCalculation8ExtendedTooltip" id="4303"/>
 												</CheckBoxField>
-												<LabelDecoration name="DirectCostCalculationSplitterIsEmpty8" id="4304">
-													<HorizontalStretch>true</HorizontalStretch>
-													<ContextMenu name="DirectCostCalculationSplitterIsEmpty8ContextMenu" id="4305"/>
-													<ExtendedTooltip name="DirectCostCalculationDelimiterEmpty8ExtendedTooltip" id="4306"/>
-												</LabelDecoration>
 												<PictureDecoration name="DirectCostCalculationPicture8" id="4307">
 													<Width>2</Width>
 													<Height>1</Height>
@@ -5184,6 +5026,7 @@ This operation may take a while.</v8:content>
 															<v8:content>Расчет прямых затрат картинка1</v8:content>
 														</v8:item>
 													</Title>
+													<GroupHorizontalAlign>Right</GroupHorizontalAlign>
 													<Hyperlink>true</Hyperlink>
 													<Picture>
 														<xr:Ref>CommonPicture.MonthEndWasNotPerformed</xr:Ref>
@@ -5208,6 +5051,7 @@ This operation may take a while.</v8:content>
 													<v8:content>Группа распределение затрат1</v8:content>
 												</v8:item>
 											</Title>
+											<HorizontalStretch>true</HorizontalStretch>
 											<Group>Horizontal</Group>
 											<Representation>None</Representation>
 											<ShowTitle>false</ShowTitle>
@@ -5241,11 +5085,6 @@ This operation may take a while.</v8:content>
 													<ContextMenu name="CostAllocation8ContextMenu" id="4313"/>
 													<ExtendedTooltip name="CostAllocation8ExtendedTooltip" id="4314"/>
 												</CheckBoxField>
-												<LabelDecoration name="CostAllocationSplitterIsEmpty8" id="4315">
-													<HorizontalStretch>true</HorizontalStretch>
-													<ContextMenu name="CostAllocationSplitterIsEmpty8ContextMenu" id="4316"/>
-													<ExtendedTooltip name="CostAllocationDelimiterEmpty8ExtendedTooltip" id="4317"/>
-												</LabelDecoration>
 												<PictureDecoration name="CostAllocationPicture8" id="4318">
 													<Width>2</Width>
 													<Height>1</Height>
@@ -5259,6 +5098,7 @@ This operation may take a while.</v8:content>
 															<v8:content>Распределение затрат картинка1</v8:content>
 														</v8:item>
 													</Title>
+													<GroupHorizontalAlign>Right</GroupHorizontalAlign>
 													<Hyperlink>true</Hyperlink>
 													<Picture>
 														<xr:Ref>CommonPicture.MonthEndWasNotPerformed</xr:Ref>
@@ -5283,6 +5123,7 @@ This operation may take a while.</v8:content>
 													<v8:content>Группа расчет фактической себестоимости1</v8:content>
 												</v8:item>
 											</Title>
+											<HorizontalStretch>true</HorizontalStretch>
 											<Group>Horizontal</Group>
 											<Representation>None</Representation>
 											<ShowTitle>false</ShowTitle>
@@ -5316,11 +5157,6 @@ This operation may take a while.</v8:content>
 													<ContextMenu name="ActualCostCalculation8ContextMenu" id="4324"/>
 													<ExtendedTooltip name="ActualCostCalculation8ExtendedTooltip" id="4325"/>
 												</CheckBoxField>
-												<LabelDecoration name="ActualCostCalculationSplitterIsEmpty8" id="4326">
-													<HorizontalStretch>true</HorizontalStretch>
-													<ContextMenu name="ActualCostCalculationSplitterIsEmpty8ContextMenu" id="4327"/>
-													<ExtendedTooltip name="ActualCostCalculationDelimiterEmpty8ExtendedTooltip" id="4328"/>
-												</LabelDecoration>
 												<PictureDecoration name="ActualCostCalculationPicture8" id="4329">
 													<Width>2</Width>
 													<Height>1</Height>
@@ -5334,6 +5170,7 @@ This operation may take a while.</v8:content>
 															<v8:content>Расчет фактической себестоимости картинка1</v8:content>
 														</v8:item>
 													</Title>
+													<GroupHorizontalAlign>Right</GroupHorizontalAlign>
 													<Hyperlink>true</Hyperlink>
 													<Picture>
 														<xr:Ref>CommonPicture.MonthEndWasNotPerformed</xr:Ref>
@@ -5358,6 +5195,7 @@ This operation may take a while.</v8:content>
 													<v8:content>Группа расчет себестоимости в рознице1</v8:content>
 												</v8:item>
 											</Title>
+											<HorizontalStretch>true</HorizontalStretch>
 											<Group>Horizontal</Group>
 											<Representation>None</Representation>
 											<ShowTitle>false</ShowTitle>
@@ -5391,11 +5229,6 @@ This operation may take a while.</v8:content>
 													<ContextMenu name="RetailCostCalculation8ContextMenu" id="4335"/>
 													<ExtendedTooltip name="RetailCostCalculation8ExtendedTooltip" id="4336"/>
 												</CheckBoxField>
-												<LabelDecoration name="RetailCostCalculationSplitterIsEmpty8" id="4337">
-													<HorizontalStretch>true</HorizontalStretch>
-													<ContextMenu name="RetailCostCalculationSplitterIsEmpty8ContextMenu" id="4338"/>
-													<ExtendedTooltip name="RetailCostCalculationDelimiterEmpty8ExtendedTooltip" id="4339"/>
-												</LabelDecoration>
 												<PictureDecoration name="RetailCostCalculationPicture8" id="4340">
 													<Width>2</Width>
 													<Height>1</Height>
@@ -5409,6 +5242,7 @@ This operation may take a while.</v8:content>
 															<v8:content>Расчет себестоимости в рознице картинка1</v8:content>
 														</v8:item>
 													</Title>
+													<GroupHorizontalAlign>Right</GroupHorizontalAlign>
 													<Hyperlink>true</Hyperlink>
 													<Picture>
 														<xr:Ref>CommonPicture.MonthEndWasNotPerformed</xr:Ref>
@@ -5433,6 +5267,7 @@ This operation may take a while.</v8:content>
 													<v8:content>Группа расчет курсовых разниц1</v8:content>
 												</v8:item>
 											</Title>
+											<HorizontalStretch>true</HorizontalStretch>
 											<Group>Horizontal</Group>
 											<Representation>None</Representation>
 											<ShowTitle>false</ShowTitle>
@@ -5466,11 +5301,6 @@ This operation may take a while.</v8:content>
 													<ContextMenu name="ExchangeDifferencesCalculation8ContextMenu" id="4346"/>
 													<ExtendedTooltip name="ExchangeDifferencesCalculation8ExtendedTooltip" id="4347"/>
 												</CheckBoxField>
-												<LabelDecoration name="ExchangeDifferencesCalculationSplitterIsEmpty8" id="4348">
-													<HorizontalStretch>true</HorizontalStretch>
-													<ContextMenu name="ExchangeDifferencesCalculationSplitterIsEmpty8ContextMenu" id="4349"/>
-													<ExtendedTooltip name="ExchangeDifferencesCalculationDelimiterEmpty8ExtendedTooltip" id="4350"/>
-												</LabelDecoration>
 												<PictureDecoration name="ExchangeDifferencesCalculationPicture8" id="4351">
 													<Width>2</Width>
 													<Height>1</Height>
@@ -5484,6 +5314,7 @@ This operation may take a while.</v8:content>
 															<v8:content>Расчет курсовых разниц картинка1</v8:content>
 														</v8:item>
 													</Title>
+													<GroupHorizontalAlign>Right</GroupHorizontalAlign>
 													<Hyperlink>true</Hyperlink>
 													<Picture>
 														<xr:Ref>CommonPicture.MonthEndWasNotPerformed</xr:Ref>
@@ -5508,6 +5339,7 @@ This operation may take a while.</v8:content>
 													<v8:content>Группа расчет финансового результата1</v8:content>
 												</v8:item>
 											</Title>
+											<HorizontalStretch>true</HorizontalStretch>
 											<Group>Horizontal</Group>
 											<Representation>None</Representation>
 											<ShowTitle>false</ShowTitle>
@@ -5541,11 +5373,6 @@ This operation may take a while.</v8:content>
 													<ContextMenu name="FinancialResultCalculation8ContextMenu" id="4357"/>
 													<ExtendedTooltip name="FinancialResultCalculation8ExtendedTooltip" id="4358"/>
 												</CheckBoxField>
-												<LabelDecoration name="FinancialResultCalculationSplitterIsEmpty8" id="4359">
-													<HorizontalStretch>true</HorizontalStretch>
-													<ContextMenu name="FinancialResultCalculationSplitterIsEmpty8ContextMenu" id="4360"/>
-													<ExtendedTooltip name="FinancialResultCalculationDelimiterEmpty8ExtendedTooltip" id="4361"/>
-												</LabelDecoration>
 												<PictureDecoration name="FinancialResultCalculationPicture8" id="4362">
 													<Width>2</Width>
 													<Height>1</Height>
@@ -5559,6 +5386,7 @@ This operation may take a while.</v8:content>
 															<v8:content>Расчет финансового результата картинка1</v8:content>
 														</v8:item>
 													</Title>
+													<GroupHorizontalAlign>Right</GroupHorizontalAlign>
 													<Hyperlink>true</Hyperlink>
 													<Picture>
 														<xr:Ref>CommonPicture.MonthEndWasNotPerformed</xr:Ref>
@@ -5775,11 +5603,6 @@ This operation may take a while.</v8:content>
 													<ContextMenu name="DepreciationAccrual9ContextMenu" id="4389"/>
 													<ExtendedTooltip name="DepreciationAccrual9ExtendedTooltip" id="4390"/>
 												</CheckBoxField>
-												<LabelDecoration name="AccrueDepreciationSplitterBlank9" id="4391">
-													<HorizontalStretch>true</HorizontalStretch>
-													<ContextMenu name="AccrueDepreciationSplitterBlank9ContextMenu" id="4392"/>
-													<ExtendedTooltip name="AccrueDepreciationDelimiterEmpty9ExtendedTooltip" id="4393"/>
-												</LabelDecoration>
 												<PictureDecoration name="DepreciationAccrualPicture9" id="4394">
 													<Width>2</Width>
 													<Height>1</Height>
@@ -5794,6 +5617,7 @@ This operation may take a while.</v8:content>
 															<v8:content>Начисление амортизации картинка1</v8:content>
 														</v8:item>
 													</Title>
+													<GroupHorizontalAlign>Right</GroupHorizontalAlign>
 													<Hyperlink>true</Hyperlink>
 													<Picture>
 														<xr:Ref>CommonPicture.MonthEndWasNotPerformed</xr:Ref>
@@ -5818,6 +5642,7 @@ This operation may take a while.</v8:content>
 													<v8:content>Группа расчет прямых затрат1</v8:content>
 												</v8:item>
 											</Title>
+											<HorizontalStretch>true</HorizontalStretch>
 											<Group>Horizontal</Group>
 											<Representation>None</Representation>
 											<ShowTitle>false</ShowTitle>
@@ -5851,11 +5676,6 @@ This operation may take a while.</v8:content>
 													<ContextMenu name="DirectCostCalculation9ContextMenu" id="4400"/>
 													<ExtendedTooltip name="DirectCostCalculation9ExtendedTooltip" id="4401"/>
 												</CheckBoxField>
-												<LabelDecoration name="DirectCostCalculationSplitterIsEmpty9" id="4402">
-													<HorizontalStretch>true</HorizontalStretch>
-													<ContextMenu name="DirectCostCalculationSplitterIsEmpty9ContextMenu" id="4403"/>
-													<ExtendedTooltip name="DirectCostCalculationDelimiterEmpty9ExtendedTooltip" id="4404"/>
-												</LabelDecoration>
 												<PictureDecoration name="DirectCostCalculationPicture9" id="4405">
 													<Width>2</Width>
 													<Height>1</Height>
@@ -5869,6 +5689,7 @@ This operation may take a while.</v8:content>
 															<v8:content>Расчет прямых затрат картинка1</v8:content>
 														</v8:item>
 													</Title>
+													<GroupHorizontalAlign>Right</GroupHorizontalAlign>
 													<Hyperlink>true</Hyperlink>
 													<Picture>
 														<xr:Ref>CommonPicture.MonthEndWasNotPerformed</xr:Ref>
@@ -5893,6 +5714,7 @@ This operation may take a while.</v8:content>
 													<v8:content>Группа распределение затрат1</v8:content>
 												</v8:item>
 											</Title>
+											<HorizontalStretch>true</HorizontalStretch>
 											<Group>Horizontal</Group>
 											<Representation>None</Representation>
 											<ShowTitle>false</ShowTitle>
@@ -5926,11 +5748,6 @@ This operation may take a while.</v8:content>
 													<ContextMenu name="CostAllocation9ContextMenu" id="4411"/>
 													<ExtendedTooltip name="CostAllocation9ExtendedTooltip" id="4412"/>
 												</CheckBoxField>
-												<LabelDecoration name="CostAllocationSplitterIsEmpty9" id="4413">
-													<HorizontalStretch>true</HorizontalStretch>
-													<ContextMenu name="CostAllocationSplitterIsEmpty9ContextMenu" id="4414"/>
-													<ExtendedTooltip name="CostAllocationDelimiterEmpty9ExtendedTooltip" id="4415"/>
-												</LabelDecoration>
 												<PictureDecoration name="CostAllocationPicture9" id="4416">
 													<Width>2</Width>
 													<Height>1</Height>
@@ -5944,6 +5761,7 @@ This operation may take a while.</v8:content>
 															<v8:content>Распределение затрат картинка1</v8:content>
 														</v8:item>
 													</Title>
+													<GroupHorizontalAlign>Right</GroupHorizontalAlign>
 													<Hyperlink>true</Hyperlink>
 													<Picture>
 														<xr:Ref>CommonPicture.MonthEndWasNotPerformed</xr:Ref>
@@ -5968,6 +5786,7 @@ This operation may take a while.</v8:content>
 													<v8:content>Группа расчет фактической себестоимости1</v8:content>
 												</v8:item>
 											</Title>
+											<HorizontalStretch>true</HorizontalStretch>
 											<Group>Horizontal</Group>
 											<Representation>None</Representation>
 											<ShowTitle>false</ShowTitle>
@@ -6001,11 +5820,6 @@ This operation may take a while.</v8:content>
 													<ContextMenu name="ActualCostCalculation9ContextMenu" id="4422"/>
 													<ExtendedTooltip name="ActualCostCalculation9ExtendedTooltip" id="4423"/>
 												</CheckBoxField>
-												<LabelDecoration name="ActualCostCalculationSplitterIsEmpty9" id="4424">
-													<HorizontalStretch>true</HorizontalStretch>
-													<ContextMenu name="ActualCostCalculationSplitterIsEmpty9ContextMenu" id="4425"/>
-													<ExtendedTooltip name="ActualCostCalculationDelimiterEmpty9ExtendedTooltip" id="4426"/>
-												</LabelDecoration>
 												<PictureDecoration name="ActualCostCalculationPicture9" id="4427">
 													<Width>2</Width>
 													<Height>1</Height>
@@ -6019,6 +5833,7 @@ This operation may take a while.</v8:content>
 															<v8:content>Расчет фактической себестоимости картинка1</v8:content>
 														</v8:item>
 													</Title>
+													<GroupHorizontalAlign>Right</GroupHorizontalAlign>
 													<Hyperlink>true</Hyperlink>
 													<Picture>
 														<xr:Ref>CommonPicture.MonthEndWasNotPerformed</xr:Ref>
@@ -6043,6 +5858,7 @@ This operation may take a while.</v8:content>
 													<v8:content>Группа расчет себестоимости в рознице1</v8:content>
 												</v8:item>
 											</Title>
+											<HorizontalStretch>true</HorizontalStretch>
 											<Group>Horizontal</Group>
 											<Representation>None</Representation>
 											<ShowTitle>false</ShowTitle>
@@ -6076,11 +5892,6 @@ This operation may take a while.</v8:content>
 													<ContextMenu name="RetailCostCalculation9ContextMenu" id="4433"/>
 													<ExtendedTooltip name="RetailCostCalculation9ExtendedTooltip" id="4434"/>
 												</CheckBoxField>
-												<LabelDecoration name="RetailCostCalculationSplitterIsEmpty9" id="4435">
-													<HorizontalStretch>true</HorizontalStretch>
-													<ContextMenu name="RetailCostCalculationSplitterIsEmpty9ContextMenu" id="4436"/>
-													<ExtendedTooltip name="RetailCostCalculationDelimiterEmpty9ExtendedTooltip" id="4437"/>
-												</LabelDecoration>
 												<PictureDecoration name="RetailCostCalculationPicture9" id="4438">
 													<Width>2</Width>
 													<Height>1</Height>
@@ -6094,6 +5905,7 @@ This operation may take a while.</v8:content>
 															<v8:content>Расчет себестоимости в рознице картинка1</v8:content>
 														</v8:item>
 													</Title>
+													<GroupHorizontalAlign>Right</GroupHorizontalAlign>
 													<Hyperlink>true</Hyperlink>
 													<Picture>
 														<xr:Ref>CommonPicture.MonthEndWasNotPerformed</xr:Ref>
@@ -6118,6 +5930,7 @@ This operation may take a while.</v8:content>
 													<v8:content>Группа расчет курсовых разниц1</v8:content>
 												</v8:item>
 											</Title>
+											<HorizontalStretch>true</HorizontalStretch>
 											<Group>Horizontal</Group>
 											<Representation>None</Representation>
 											<ShowTitle>false</ShowTitle>
@@ -6151,11 +5964,6 @@ This operation may take a while.</v8:content>
 													<ContextMenu name="ExchangeDifferencesCalculation9ContextMenu" id="4444"/>
 													<ExtendedTooltip name="ExchangeDifferencesCalculation9ExtendedTooltip" id="4445"/>
 												</CheckBoxField>
-												<LabelDecoration name="ExchangeDifferencesCalculationSplitterIsEmpty9" id="4446">
-													<HorizontalStretch>true</HorizontalStretch>
-													<ContextMenu name="ExchangeDifferencesCalculationSplitterIsEmpty9ContextMenu" id="4447"/>
-													<ExtendedTooltip name="ExchangeDifferencesCalculationDelimiterEmpty9ExtendedTooltip" id="4448"/>
-												</LabelDecoration>
 												<PictureDecoration name="ExchangeDifferencesCalculationPicture9" id="4449">
 													<Width>2</Width>
 													<Height>1</Height>
@@ -6169,6 +5977,7 @@ This operation may take a while.</v8:content>
 															<v8:content>Расчет курсовых разниц картинка1</v8:content>
 														</v8:item>
 													</Title>
+													<GroupHorizontalAlign>Right</GroupHorizontalAlign>
 													<Hyperlink>true</Hyperlink>
 													<Picture>
 														<xr:Ref>CommonPicture.MonthEndWasNotPerformed</xr:Ref>
@@ -6193,6 +6002,7 @@ This operation may take a while.</v8:content>
 													<v8:content>Группа расчет финансового результата1</v8:content>
 												</v8:item>
 											</Title>
+											<HorizontalStretch>true</HorizontalStretch>
 											<Group>Horizontal</Group>
 											<Representation>None</Representation>
 											<ShowTitle>false</ShowTitle>
@@ -6226,11 +6036,6 @@ This operation may take a while.</v8:content>
 													<ContextMenu name="FinancialResultCalculations9ContextMenu" id="4455"/>
 													<ExtendedTooltip name="FinancialResultCalculation9ExtendedTooltip" id="4456"/>
 												</CheckBoxField>
-												<LabelDecoration name="FinancialResultCalculationSplitterIsEmpty9" id="4457">
-													<HorizontalStretch>true</HorizontalStretch>
-													<ContextMenu name="FinancialResultCalculationSplitterIsEmpty9ContextMenu" id="4458"/>
-													<ExtendedTooltip name="FinancialResultCalculationDelimiterEmpty9ExtendedTooltip" id="4459"/>
-												</LabelDecoration>
 												<PictureDecoration name="FinancialResultCalculationPicture9" id="4460">
 													<Width>2</Width>
 													<Height>1</Height>
@@ -6244,6 +6049,7 @@ This operation may take a while.</v8:content>
 															<v8:content>Расчет финансового результата картинка1</v8:content>
 														</v8:item>
 													</Title>
+													<GroupHorizontalAlign>Right</GroupHorizontalAlign>
 													<Hyperlink>true</Hyperlink>
 													<Picture>
 														<xr:Ref>CommonPicture.MonthEndWasNotPerformed</xr:Ref>
@@ -6460,15 +6266,9 @@ This operation may take a while.</v8:content>
 													<ContextMenu name="DepreciationAccrual10ContextMenu" id="4487"/>
 													<ExtendedTooltip name="DepreciationAccrual10ExtendedTooltip" id="4488"/>
 												</CheckBoxField>
-												<LabelDecoration name="AccrueDepreciationSplitterBlank10" id="4489">
-													<HorizontalStretch>true</HorizontalStretch>
-													<ContextMenu name="AccrueDepreciationSplitterBlank10ContextMenu" id="4490"/>
-													<ExtendedTooltip name="AccrueDepreciationDelimiterEmpty10ExtendedTooltip" id="4491"/>
-												</LabelDecoration>
 												<PictureDecoration name="DepreciationAccrualPicture10" id="4492">
 													<Width>2</Width>
 													<Height>1</Height>
-													<HorizontalStretch>false</HorizontalStretch>
 													<Title formatted="false">
 														<v8:item>
 															<v8:lang>en</v8:lang>
@@ -6479,6 +6279,7 @@ This operation may take a while.</v8:content>
 															<v8:content>Начисление амортизации картинка1</v8:content>
 														</v8:item>
 													</Title>
+													<GroupHorizontalAlign>Right</GroupHorizontalAlign>
 													<Hyperlink>true</Hyperlink>
 													<Picture>
 														<xr:Ref>CommonPicture.MonthEndWasNotPerformed</xr:Ref>
@@ -6503,6 +6304,7 @@ This operation may take a while.</v8:content>
 													<v8:content>Группа расчет прямых затрат1</v8:content>
 												</v8:item>
 											</Title>
+											<HorizontalStretch>true</HorizontalStretch>
 											<Group>Horizontal</Group>
 											<Representation>None</Representation>
 											<ShowTitle>false</ShowTitle>
@@ -6536,11 +6338,6 @@ This operation may take a while.</v8:content>
 													<ContextMenu name="DirectCostCalculation10ContextMenu" id="4498"/>
 													<ExtendedTooltip name="DirectCostCalculation10ExtendedTooltip" id="4499"/>
 												</CheckBoxField>
-												<LabelDecoration name="DirectCostCalculationSplitterIsEmpty10" id="4500">
-													<HorizontalStretch>true</HorizontalStretch>
-													<ContextMenu name="DirectCostCalculationSplitterIsEmpty10ContextMenu" id="4501"/>
-													<ExtendedTooltip name="DirectCostCalculationDelimiterEmpty10ExtendedTooltip" id="4502"/>
-												</LabelDecoration>
 												<PictureDecoration name="DirectCostCalculationPicture10" id="4503">
 													<Width>2</Width>
 													<Height>1</Height>
@@ -6554,6 +6351,7 @@ This operation may take a while.</v8:content>
 															<v8:content>Расчет прямых затрат картинка1</v8:content>
 														</v8:item>
 													</Title>
+													<GroupHorizontalAlign>Right</GroupHorizontalAlign>
 													<Hyperlink>true</Hyperlink>
 													<Picture>
 														<xr:Ref>CommonPicture.MonthEndWasNotPerformed</xr:Ref>
@@ -6578,6 +6376,7 @@ This operation may take a while.</v8:content>
 													<v8:content>Группа распределение затрат1</v8:content>
 												</v8:item>
 											</Title>
+											<HorizontalStretch>true</HorizontalStretch>
 											<Group>Horizontal</Group>
 											<Representation>None</Representation>
 											<ShowTitle>false</ShowTitle>
@@ -6611,11 +6410,6 @@ This operation may take a while.</v8:content>
 													<ContextMenu name="CostAllocation10ContextMenu" id="4509"/>
 													<ExtendedTooltip name="CostAllocation10ExtendedTooltip" id="4510"/>
 												</CheckBoxField>
-												<LabelDecoration name="CostAllocationSplitterIsEmpty10" id="4511">
-													<HorizontalStretch>true</HorizontalStretch>
-													<ContextMenu name="CostAllocationSplitterIsEmpty10ContextMenu" id="4512"/>
-													<ExtendedTooltip name="CostAllocationDelimiterEmpty10ExtendedTooltip" id="4513"/>
-												</LabelDecoration>
 												<PictureDecoration name="CostAllocationPicture10" id="4514">
 													<Width>2</Width>
 													<Height>1</Height>
@@ -6629,6 +6423,7 @@ This operation may take a while.</v8:content>
 															<v8:content>Распределение затрат картинка1</v8:content>
 														</v8:item>
 													</Title>
+													<GroupHorizontalAlign>Right</GroupHorizontalAlign>
 													<Hyperlink>true</Hyperlink>
 													<Picture>
 														<xr:Ref>CommonPicture.MonthEndWasNotPerformed</xr:Ref>
@@ -6653,6 +6448,7 @@ This operation may take a while.</v8:content>
 													<v8:content>Группа расчет фактической себестоимости1</v8:content>
 												</v8:item>
 											</Title>
+											<HorizontalStretch>true</HorizontalStretch>
 											<Group>Horizontal</Group>
 											<Representation>None</Representation>
 											<ShowTitle>false</ShowTitle>
@@ -6686,11 +6482,6 @@ This operation may take a while.</v8:content>
 													<ContextMenu name="ActualCostCalculation10ContextMenu" id="4520"/>
 													<ExtendedTooltip name="ActualCostCalculation10ExtendedTooltip" id="4521"/>
 												</CheckBoxField>
-												<LabelDecoration name="ActualCostCalculationSplitterIsEmpty10" id="4522">
-													<HorizontalStretch>true</HorizontalStretch>
-													<ContextMenu name="ActualCostCalculationSplitterIsEmpty10ContextMenu" id="4523"/>
-													<ExtendedTooltip name="ActualCostCalculationDelimiterEmpty10ExtendedTooltip" id="4524"/>
-												</LabelDecoration>
 												<PictureDecoration name="ActualCostCalculationPicture10" id="4525">
 													<Width>2</Width>
 													<Height>1</Height>
@@ -6704,6 +6495,7 @@ This operation may take a while.</v8:content>
 															<v8:content>Расчет фактической себестоимости картинка1</v8:content>
 														</v8:item>
 													</Title>
+													<GroupHorizontalAlign>Right</GroupHorizontalAlign>
 													<Hyperlink>true</Hyperlink>
 													<Picture>
 														<xr:Ref>CommonPicture.MonthEndWasNotPerformed</xr:Ref>
@@ -6728,6 +6520,7 @@ This operation may take a while.</v8:content>
 													<v8:content>Группа расчет себестоимости в рознице1</v8:content>
 												</v8:item>
 											</Title>
+											<HorizontalStretch>true</HorizontalStretch>
 											<Group>Horizontal</Group>
 											<Representation>None</Representation>
 											<ShowTitle>false</ShowTitle>
@@ -6761,11 +6554,6 @@ This operation may take a while.</v8:content>
 													<ContextMenu name="RetailCostCalculation10ContextMenu" id="4531"/>
 													<ExtendedTooltip name="RetailCostCalculation10ExtendedTooltip" id="4532"/>
 												</CheckBoxField>
-												<LabelDecoration name="RetailCostCalculationIsEmpty10Splitter" id="4533">
-													<HorizontalStretch>true</HorizontalStretch>
-													<ContextMenu name="RetailCostCalculationIsEmpty10SplitterContextMenu" id="4534"/>
-													<ExtendedTooltip name="RetailCostCalculationDelimiterEmpty10ExtendedTooltip" id="4535"/>
-												</LabelDecoration>
 												<PictureDecoration name="RetailCostCalculationPicture10" id="4536">
 													<Width>2</Width>
 													<Height>1</Height>
@@ -6779,6 +6567,7 @@ This operation may take a while.</v8:content>
 															<v8:content>Расчет себестоимости в рознице картинка1</v8:content>
 														</v8:item>
 													</Title>
+													<GroupHorizontalAlign>Right</GroupHorizontalAlign>
 													<Hyperlink>true</Hyperlink>
 													<Picture>
 														<xr:Ref>CommonPicture.MonthEndWasNotPerformed</xr:Ref>
@@ -6803,6 +6592,7 @@ This operation may take a while.</v8:content>
 													<v8:content>Группа расчет курсовых разниц1</v8:content>
 												</v8:item>
 											</Title>
+											<HorizontalStretch>true</HorizontalStretch>
 											<Group>Horizontal</Group>
 											<Representation>None</Representation>
 											<ShowTitle>false</ShowTitle>
@@ -6836,11 +6626,6 @@ This operation may take a while.</v8:content>
 													<ContextMenu name="ExchangeDifferencesCalculation10ContextMenu" id="4542"/>
 													<ExtendedTooltip name="ExchangeDifferencesCalculation10ExtendedTooltip" id="4543"/>
 												</CheckBoxField>
-												<LabelDecoration name="ExchangeDifferencesCalculationSplitterIsEmpty10" id="4544">
-													<HorizontalStretch>true</HorizontalStretch>
-													<ContextMenu name="ExchangeDifferencesCalculationSplitterIsEmpty10ContextMenu" id="4545"/>
-													<ExtendedTooltip name="ExchangeDifferencesCalculationDelimiterEmpty10ExtendedTooltip" id="4546"/>
-												</LabelDecoration>
 												<PictureDecoration name="ExchangeDifferencesCalculationPicture10" id="4547">
 													<Width>2</Width>
 													<Height>1</Height>
@@ -6854,6 +6639,7 @@ This operation may take a while.</v8:content>
 															<v8:content>Расчет курсовых разниц картинка1</v8:content>
 														</v8:item>
 													</Title>
+													<GroupHorizontalAlign>Right</GroupHorizontalAlign>
 													<Hyperlink>true</Hyperlink>
 													<Picture>
 														<xr:Ref>CommonPicture.MonthEndWasNotPerformed</xr:Ref>
@@ -6878,6 +6664,7 @@ This operation may take a while.</v8:content>
 													<v8:content>Группа расчет финансового результата1</v8:content>
 												</v8:item>
 											</Title>
+											<HorizontalStretch>true</HorizontalStretch>
 											<Group>Horizontal</Group>
 											<Representation>None</Representation>
 											<ShowTitle>false</ShowTitle>
@@ -6911,11 +6698,6 @@ This operation may take a while.</v8:content>
 													<ContextMenu name="FinancialResultCalculation10ContextMenu" id="4553"/>
 													<ExtendedTooltip name="FinancialResultCalculation10ExtendedTooltip" id="4554"/>
 												</CheckBoxField>
-												<LabelDecoration name="FinancialResultCalculationSplitterIsEmpty10" id="4555">
-													<HorizontalStretch>true</HorizontalStretch>
-													<ContextMenu name="FinancialResultCalculationIsEmptySplitter10ContextMenu" id="4556"/>
-													<ExtendedTooltip name="FinancialResultCalculationDelimiterEmpty10ExtendedTooltip" id="4557"/>
-												</LabelDecoration>
 												<PictureDecoration name="FinancialResultCalculationPicture10" id="4558">
 													<Width>2</Width>
 													<Height>1</Height>
@@ -6929,6 +6711,7 @@ This operation may take a while.</v8:content>
 															<v8:content>Расчет финансового результата картинка1</v8:content>
 														</v8:item>
 													</Title>
+													<GroupHorizontalAlign>Right</GroupHorizontalAlign>
 													<Hyperlink>true</Hyperlink>
 													<Picture>
 														<xr:Ref>CommonPicture.MonthEndWasNotPerformed</xr:Ref>
@@ -7145,11 +6928,6 @@ This operation may take a while.</v8:content>
 													<ContextMenu name="DepreciationAccrual11ContextMenu" id="4585"/>
 													<ExtendedTooltip name="DepreciationAccrual11ExtendedTooltip" id="4586"/>
 												</CheckBoxField>
-												<LabelDecoration name="AccrueDepreciationSplitterBlank11" id="4587">
-													<HorizontalStretch>true</HorizontalStretch>
-													<ContextMenu name="AccrueDepreciationSplitterBlank11ContextMenu" id="4588"/>
-													<ExtendedTooltip name="AccrueDepreciationDelimiterEmpty11ExtendedTooltip" id="4589"/>
-												</LabelDecoration>
 												<PictureDecoration name="DepreciationAccrualPicture11" id="4590">
 													<Width>2</Width>
 													<Height>1</Height>
@@ -7164,6 +6942,7 @@ This operation may take a while.</v8:content>
 															<v8:content>Начисление амортизации картинка1</v8:content>
 														</v8:item>
 													</Title>
+													<GroupHorizontalAlign>Right</GroupHorizontalAlign>
 													<Hyperlink>true</Hyperlink>
 													<Picture>
 														<xr:Ref>CommonPicture.MonthEndWasNotPerformed</xr:Ref>
@@ -7188,6 +6967,7 @@ This operation may take a while.</v8:content>
 													<v8:content>Группа расчет прямых затрат1</v8:content>
 												</v8:item>
 											</Title>
+											<HorizontalStretch>true</HorizontalStretch>
 											<Group>Horizontal</Group>
 											<Representation>None</Representation>
 											<ShowTitle>false</ShowTitle>
@@ -7221,11 +7001,6 @@ This operation may take a while.</v8:content>
 													<ContextMenu name="DirectCostCalculation11ContextMenu" id="4596"/>
 													<ExtendedTooltip name="DirectCostCalculation11ExtendedTooltip" id="4597"/>
 												</CheckBoxField>
-												<LabelDecoration name="DirectCostCalculationSplitterIsEmpty11" id="4598">
-													<HorizontalStretch>true</HorizontalStretch>
-													<ContextMenu name="DirectCostCalculationSplitterIsEmpty11ContextMenu" id="4599"/>
-													<ExtendedTooltip name="DirectCostCalculationDelimiterEmpty11ExtendedTooltip" id="4600"/>
-												</LabelDecoration>
 												<PictureDecoration name="DirectCostCalculationPicture11" id="4601">
 													<Width>2</Width>
 													<Height>1</Height>
@@ -7239,6 +7014,7 @@ This operation may take a while.</v8:content>
 															<v8:content>Расчет прямых затрат картинка1</v8:content>
 														</v8:item>
 													</Title>
+													<GroupHorizontalAlign>Right</GroupHorizontalAlign>
 													<Hyperlink>true</Hyperlink>
 													<Picture>
 														<xr:Ref>CommonPicture.MonthEndWasNotPerformed</xr:Ref>
@@ -7263,6 +7039,7 @@ This operation may take a while.</v8:content>
 													<v8:content>Группа распределение затрат1</v8:content>
 												</v8:item>
 											</Title>
+											<HorizontalStretch>true</HorizontalStretch>
 											<Group>Horizontal</Group>
 											<Representation>None</Representation>
 											<ShowTitle>false</ShowTitle>
@@ -7296,11 +7073,6 @@ This operation may take a while.</v8:content>
 													<ContextMenu name="CostAllocation11ContextMenu" id="4607"/>
 													<ExtendedTooltip name="CostAllocation11ExtendedTooltip" id="4608"/>
 												</CheckBoxField>
-												<LabelDecoration name="CostAllocationSplitterIsEmpty11" id="4609">
-													<HorizontalStretch>true</HorizontalStretch>
-													<ContextMenu name="CostAllocationSplitterIsEmpty11ContextMenu" id="4610"/>
-													<ExtendedTooltip name="CostAllocationDelimiterEmpty11ExtendedTooltip" id="4611"/>
-												</LabelDecoration>
 												<PictureDecoration name="CostAllocationPicture11" id="4612">
 													<Width>2</Width>
 													<Height>1</Height>
@@ -7314,6 +7086,7 @@ This operation may take a while.</v8:content>
 															<v8:content>Распределение затрат картинка1</v8:content>
 														</v8:item>
 													</Title>
+													<GroupHorizontalAlign>Right</GroupHorizontalAlign>
 													<Hyperlink>true</Hyperlink>
 													<Picture>
 														<xr:Ref>CommonPicture.MonthEndWasNotPerformed</xr:Ref>
@@ -7338,6 +7111,7 @@ This operation may take a while.</v8:content>
 													<v8:content>Группа расчет фактической себестоимости1</v8:content>
 												</v8:item>
 											</Title>
+											<HorizontalStretch>true</HorizontalStretch>
 											<Group>Horizontal</Group>
 											<Representation>None</Representation>
 											<ShowTitle>false</ShowTitle>
@@ -7371,11 +7145,6 @@ This operation may take a while.</v8:content>
 													<ContextMenu name="ActualCostCalculation11ContextMenu" id="4618"/>
 													<ExtendedTooltip name="ActualCostCalculation11ExtendedTooltip" id="4619"/>
 												</CheckBoxField>
-												<LabelDecoration name="ActualCostCalculationSplitterIsEmpty11" id="4620">
-													<HorizontalStretch>true</HorizontalStretch>
-													<ContextMenu name="ActualCostCalculationSplitterIsEmpty11ContextMenu" id="4621"/>
-													<ExtendedTooltip name="ActualCostCalculationDelimiterEmpty11ExtendedTooltip" id="4622"/>
-												</LabelDecoration>
 												<PictureDecoration name="ActualCostCalculationPicture11" id="4623">
 													<Width>2</Width>
 													<Height>1</Height>
@@ -7389,6 +7158,7 @@ This operation may take a while.</v8:content>
 															<v8:content>Расчет фактической себестоимости картинка1</v8:content>
 														</v8:item>
 													</Title>
+													<GroupHorizontalAlign>Right</GroupHorizontalAlign>
 													<Hyperlink>true</Hyperlink>
 													<Picture>
 														<xr:Ref>CommonPicture.MonthEndWasNotPerformed</xr:Ref>
@@ -7413,6 +7183,7 @@ This operation may take a while.</v8:content>
 													<v8:content>Группа расчет себестоимости в рознице1</v8:content>
 												</v8:item>
 											</Title>
+											<HorizontalStretch>true</HorizontalStretch>
 											<Group>Horizontal</Group>
 											<Representation>None</Representation>
 											<ShowTitle>false</ShowTitle>
@@ -7446,11 +7217,6 @@ This operation may take a while.</v8:content>
 													<ContextMenu name="RetailCostCalculation11ContextMenu" id="4629"/>
 													<ExtendedTooltip name="RetailCostCalculation11ExtendedTooltip" id="4630"/>
 												</CheckBoxField>
-												<LabelDecoration name="RetailCostCalculationSplitterIsEmpty11" id="4631">
-													<HorizontalStretch>true</HorizontalStretch>
-													<ContextMenu name="RetailCostCalculationSplitterIsEmpty11ContextMenu" id="4632"/>
-													<ExtendedTooltip name="RetailCostCalculationDelimiterEmpty11ExtendedTooltip" id="4633"/>
-												</LabelDecoration>
 												<PictureDecoration name="RetailCostCalculationPicture11" id="4634">
 													<Width>2</Width>
 													<Height>1</Height>
@@ -7464,6 +7230,7 @@ This operation may take a while.</v8:content>
 															<v8:content>Расчет себестоимости в рознице картинка1</v8:content>
 														</v8:item>
 													</Title>
+													<GroupHorizontalAlign>Right</GroupHorizontalAlign>
 													<Hyperlink>true</Hyperlink>
 													<Picture>
 														<xr:Ref>CommonPicture.MonthEndWasNotPerformed</xr:Ref>
@@ -7488,6 +7255,7 @@ This operation may take a while.</v8:content>
 													<v8:content>Группа расчет курсовых разниц1</v8:content>
 												</v8:item>
 											</Title>
+											<HorizontalStretch>true</HorizontalStretch>
 											<Group>Horizontal</Group>
 											<Representation>None</Representation>
 											<ShowTitle>false</ShowTitle>
@@ -7521,11 +7289,6 @@ This operation may take a while.</v8:content>
 													<ContextMenu name="ExchangeDifferencesCalculation11ContextMenu" id="4640"/>
 													<ExtendedTooltip name="ExchangeDifferencesCalculation11ExtendedTooltip" id="4641"/>
 												</CheckBoxField>
-												<LabelDecoration name="ExchangeDifferencesCalculationSplitterIsEmpty11" id="4642">
-													<HorizontalStretch>true</HorizontalStretch>
-													<ContextMenu name="ExchangeDifferencesCalculationSplitterIsEmpty11ContextMenu" id="4643"/>
-													<ExtendedTooltip name="ExchangeDifferencesCalculationDelimiterEmpty11ExtendedTooltip" id="4644"/>
-												</LabelDecoration>
 												<PictureDecoration name="ExchangeDifferencesCalculationPicture11" id="4645">
 													<Width>2</Width>
 													<Height>1</Height>
@@ -7539,6 +7302,7 @@ This operation may take a while.</v8:content>
 															<v8:content>Расчет курсовых разниц картинка1</v8:content>
 														</v8:item>
 													</Title>
+													<GroupHorizontalAlign>Right</GroupHorizontalAlign>
 													<Hyperlink>true</Hyperlink>
 													<Picture>
 														<xr:Ref>CommonPicture.MonthEndWasNotPerformed</xr:Ref>
@@ -7563,6 +7327,7 @@ This operation may take a while.</v8:content>
 													<v8:content>Группа расчет финансового результата1</v8:content>
 												</v8:item>
 											</Title>
+											<HorizontalStretch>true</HorizontalStretch>
 											<Group>Horizontal</Group>
 											<Representation>None</Representation>
 											<ShowTitle>false</ShowTitle>
@@ -7596,11 +7361,6 @@ This operation may take a while.</v8:content>
 													<ContextMenu name="FinancialResultCalculation11ContextMenu" id="4651"/>
 													<ExtendedTooltip name="FinancialResultCalculation11ExtendedTooltip" id="4652"/>
 												</CheckBoxField>
-												<LabelDecoration name="FinancialResultCalculationSplitterIsEmpty11" id="4653">
-													<HorizontalStretch>true</HorizontalStretch>
-													<ContextMenu name="FinancialResultCalculationSplitterIsEmpty11ContextMenu" id="4654"/>
-													<ExtendedTooltip name="FinancialResultCalculationDelimiterEmpty11ExtendedTooltip" id="4655"/>
-												</LabelDecoration>
 												<PictureDecoration name="FinancialResultCalculationPicture11" id="4656">
 													<Width>2</Width>
 													<Height>1</Height>
@@ -7614,6 +7374,7 @@ This operation may take a while.</v8:content>
 															<v8:content>Расчет финансового результата картинка1</v8:content>
 														</v8:item>
 													</Title>
+													<GroupHorizontalAlign>Right</GroupHorizontalAlign>
 													<Hyperlink>true</Hyperlink>
 													<Picture>
 														<xr:Ref>CommonPicture.MonthEndWasNotPerformed</xr:Ref>
@@ -7830,11 +7591,6 @@ This operation may take a while.</v8:content>
 													<ContextMenu name="DepreciationAccrual12ContextMenu" id="4683"/>
 													<ExtendedTooltip name="DepreciationAccrual12ExtendedTooltip" id="4684"/>
 												</CheckBoxField>
-												<LabelDecoration name="AccrueDepreciationSplitterBlank12" id="4685">
-													<HorizontalStretch>true</HorizontalStretch>
-													<ContextMenu name="AccrueDepreciationSplitterBlank12ContextMenu" id="4686"/>
-													<ExtendedTooltip name="AccrueDepreciationDelimiterBlank12ExtendedTooltip" id="4687"/>
-												</LabelDecoration>
 												<PictureDecoration name="DepreciationAccrualPicture12" id="4688">
 													<Width>2</Width>
 													<Height>1</Height>
@@ -7849,6 +7605,7 @@ This operation may take a while.</v8:content>
 															<v8:content>Начисление амортизации картинка1</v8:content>
 														</v8:item>
 													</Title>
+													<GroupHorizontalAlign>Right</GroupHorizontalAlign>
 													<Hyperlink>true</Hyperlink>
 													<Picture>
 														<xr:Ref>CommonPicture.MonthEndWasNotPerformed</xr:Ref>
@@ -7873,6 +7630,7 @@ This operation may take a while.</v8:content>
 													<v8:content>Группа расчет прямых затрат1</v8:content>
 												</v8:item>
 											</Title>
+											<HorizontalStretch>true</HorizontalStretch>
 											<Group>Horizontal</Group>
 											<Representation>None</Representation>
 											<ShowTitle>false</ShowTitle>
@@ -7906,11 +7664,6 @@ This operation may take a while.</v8:content>
 													<ContextMenu name="DirectCostCalculation12ContextMenu" id="4694"/>
 													<ExtendedTooltip name="DirectCostCalculation12ExtendedTooltip" id="4695"/>
 												</CheckBoxField>
-												<LabelDecoration name="DirectCostCalculationSplitterIsEmpty12" id="4696">
-													<HorizontalStretch>true</HorizontalStretch>
-													<ContextMenu name="DirectCostCalculationSplitterIsEmpty12ContextMenu" id="4697"/>
-													<ExtendedTooltip name="DirectCostCalculationDelimiterEmpty12ExtendedTooltip" id="4698"/>
-												</LabelDecoration>
 												<PictureDecoration name="DirectCostCalculationPicture12" id="4699">
 													<Width>2</Width>
 													<Height>1</Height>
@@ -7924,6 +7677,7 @@ This operation may take a while.</v8:content>
 															<v8:content>Расчет прямых затрат картинка1</v8:content>
 														</v8:item>
 													</Title>
+													<GroupHorizontalAlign>Right</GroupHorizontalAlign>
 													<Hyperlink>true</Hyperlink>
 													<Picture>
 														<xr:Ref>CommonPicture.MonthEndWasNotPerformed</xr:Ref>
@@ -7948,6 +7702,7 @@ This operation may take a while.</v8:content>
 													<v8:content>Группа распределение затрат1</v8:content>
 												</v8:item>
 											</Title>
+											<HorizontalStretch>true</HorizontalStretch>
 											<Group>Horizontal</Group>
 											<Representation>None</Representation>
 											<ShowTitle>false</ShowTitle>
@@ -7981,11 +7736,6 @@ This operation may take a while.</v8:content>
 													<ContextMenu name="CostAllocation12ContextMenu" id="4705"/>
 													<ExtendedTooltip name="CostAllocation12ExtendedTooltip" id="4706"/>
 												</CheckBoxField>
-												<LabelDecoration name="CostAllocationSplitterIsEmpty12" id="4707">
-													<HorizontalStretch>true</HorizontalStretch>
-													<ContextMenu name="CostAllocationSplitterIsEmpty12ContextMenu" id="4708"/>
-													<ExtendedTooltip name="CostAllocationDelimiterEmpty12ExtendedTooltip" id="4709"/>
-												</LabelDecoration>
 												<PictureDecoration name="CostAllocationPicture12" id="4710">
 													<Width>2</Width>
 													<Height>1</Height>
@@ -7999,6 +7749,7 @@ This operation may take a while.</v8:content>
 															<v8:content>Распределение затрат картинка1</v8:content>
 														</v8:item>
 													</Title>
+													<GroupHorizontalAlign>Right</GroupHorizontalAlign>
 													<Hyperlink>true</Hyperlink>
 													<Picture>
 														<xr:Ref>CommonPicture.MonthEndWasNotPerformed</xr:Ref>
@@ -8023,6 +7774,7 @@ This operation may take a while.</v8:content>
 													<v8:content>Группа расчет фактической себестоимости1</v8:content>
 												</v8:item>
 											</Title>
+											<HorizontalStretch>true</HorizontalStretch>
 											<Group>Horizontal</Group>
 											<Representation>None</Representation>
 											<ShowTitle>false</ShowTitle>
@@ -8056,11 +7808,6 @@ This operation may take a while.</v8:content>
 													<ContextMenu name="ActualCostCalculation12ContextMenu" id="4716"/>
 													<ExtendedTooltip name="ActualCostCalculation12ExtendedTooltip" id="4717"/>
 												</CheckBoxField>
-												<LabelDecoration name="ActualCostCalculationSplitterIsEmpty12" id="4718">
-													<HorizontalStretch>true</HorizontalStretch>
-													<ContextMenu name="ActualCostCalculationSplitterIsEmpty12ContextMenu" id="4719"/>
-													<ExtendedTooltip name="ActualCostCalculationDelimiterEmpty12ExtendedTooltip" id="4720"/>
-												</LabelDecoration>
 												<PictureDecoration name="ActualCostCalculationPicture12" id="4721">
 													<Width>2</Width>
 													<Height>1</Height>
@@ -8074,6 +7821,7 @@ This operation may take a while.</v8:content>
 															<v8:content>Расчет фактической себестоимости картинка1</v8:content>
 														</v8:item>
 													</Title>
+													<GroupHorizontalAlign>Right</GroupHorizontalAlign>
 													<Hyperlink>true</Hyperlink>
 													<Picture>
 														<xr:Ref>CommonPicture.MonthEndWasNotPerformed</xr:Ref>
@@ -8098,6 +7846,7 @@ This operation may take a while.</v8:content>
 													<v8:content>Группа расчет себестоимости в рознице1</v8:content>
 												</v8:item>
 											</Title>
+											<HorizontalStretch>true</HorizontalStretch>
 											<Group>Horizontal</Group>
 											<Representation>None</Representation>
 											<ShowTitle>false</ShowTitle>
@@ -8131,11 +7880,6 @@ This operation may take a while.</v8:content>
 													<ContextMenu name="RetailCostCalculation12ContextMenu" id="4727"/>
 													<ExtendedTooltip name="RetailCostCalculation12ExtendedTooltip" id="4728"/>
 												</CheckBoxField>
-												<LabelDecoration name="RetailCostCalculationSplitterIsEmpty12" id="4729">
-													<HorizontalStretch>true</HorizontalStretch>
-													<ContextMenu name="RetailCostCalculationSplitterIsEmpty12ContextMenu" id="4730"/>
-													<ExtendedTooltip name="RetailCostCalculationDelimiterEmpty12ExtendedTooltip" id="4731"/>
-												</LabelDecoration>
 												<PictureDecoration name="RetailCostCalculationPicture12" id="4732">
 													<Width>2</Width>
 													<Height>1</Height>
@@ -8149,6 +7893,7 @@ This operation may take a while.</v8:content>
 															<v8:content>Расчет себестоимости в рознице картинка1</v8:content>
 														</v8:item>
 													</Title>
+													<GroupHorizontalAlign>Right</GroupHorizontalAlign>
 													<Hyperlink>true</Hyperlink>
 													<Picture>
 														<xr:Ref>CommonPicture.MonthEndWasNotPerformed</xr:Ref>
@@ -8173,6 +7918,7 @@ This operation may take a while.</v8:content>
 													<v8:content>Группа расчет курсовых разниц1</v8:content>
 												</v8:item>
 											</Title>
+											<HorizontalStretch>true</HorizontalStretch>
 											<Group>Horizontal</Group>
 											<Representation>None</Representation>
 											<ShowTitle>false</ShowTitle>
@@ -8206,11 +7952,6 @@ This operation may take a while.</v8:content>
 													<ContextMenu name="ExchangeDifferencesCalculation12ContextMenu" id="4738"/>
 													<ExtendedTooltip name="ExchangeDifferencesCalculation12ExtendedTooltip" id="4739"/>
 												</CheckBoxField>
-												<LabelDecoration name="ExchangeDifferencesCalculationSplitterIsEmpty12" id="4740">
-													<HorizontalStretch>true</HorizontalStretch>
-													<ContextMenu name="ExchangeDifferencesCalculationSplitterIsEmpty12ContextMenu" id="4741"/>
-													<ExtendedTooltip name="ExchangeDifferencesCalculationDelimiterEmpty12ExtendedTooltip" id="4742"/>
-												</LabelDecoration>
 												<PictureDecoration name="ExchangeDifferencesCalculationPicture12" id="4743">
 													<Width>2</Width>
 													<Height>1</Height>
@@ -8224,6 +7965,7 @@ This operation may take a while.</v8:content>
 															<v8:content>Расчет курсовых разниц картинка1</v8:content>
 														</v8:item>
 													</Title>
+													<GroupHorizontalAlign>Right</GroupHorizontalAlign>
 													<Hyperlink>true</Hyperlink>
 													<Picture>
 														<xr:Ref>CommonPicture.MonthEndWasNotPerformed</xr:Ref>
@@ -8248,6 +7990,7 @@ This operation may take a while.</v8:content>
 													<v8:content>Группа расчет финансового результата1</v8:content>
 												</v8:item>
 											</Title>
+											<HorizontalStretch>true</HorizontalStretch>
 											<Group>Horizontal</Group>
 											<Representation>None</Representation>
 											<ShowTitle>false</ShowTitle>
@@ -8281,11 +8024,6 @@ This operation may take a while.</v8:content>
 													<ContextMenu name="FinancialResultCalculation12ContextMenu" id="4749"/>
 													<ExtendedTooltip name="FinancialResultCalculation12ExtendedTooltip" id="4750"/>
 												</CheckBoxField>
-												<LabelDecoration name="FinancialResultCalculationSplitterIsEmpty12" id="4751">
-													<HorizontalStretch>true</HorizontalStretch>
-													<ContextMenu name="FinancialResultCalculationSplitterIsEmpty12ContextMenu" id="4752"/>
-													<ExtendedTooltip name="FinancialResultCalculationDelimiterEmpty12ExtendedTooltip" id="4753"/>
-												</LabelDecoration>
 												<PictureDecoration name="FinancialResultCalculationPicture12" id="4754">
 													<Width>2</Width>
 													<Height>1</Height>
@@ -8299,6 +8037,7 @@ This operation may take a while.</v8:content>
 															<v8:content>Расчет финансового результата картинка1</v8:content>
 														</v8:item>
 													</Title>
+													<GroupHorizontalAlign>Right</GroupHorizontalAlign>
 													<Hyperlink>true</Hyperlink>
 													<Picture>
 														<xr:Ref>CommonPicture.MonthEndWasNotPerformed</xr:Ref>
@@ -8568,11 +8307,14 @@ This operation may take a while.</v8:content>
 			</ChildItems>
 		</UsualGroup>
 		<CommandBar name="Group4" id="641">
+			<HorizontalStretch>false</HorizontalStretch>
+			<GroupHorizontalAlign>Left</GroupHorizontalAlign>
 			<HorizontalLocation>Right</HorizontalLocation>
 			<ExtendedTooltip name="Group4ExtendedTooltip" id="3614"/>
 			<ChildItems>
 				<Button name="ExecutePreliminaryAnalysis" id="3690">
 					<Type>CommandBarButton</Type>
+					<AutoMaxWidth>false</AutoMaxWidth>
 					<CommandName>Form.Command.ExecutePreliminaryAnalysis</CommandName>
 					<ExtendedTooltip name="ExecutePreliminaryAnalysisExtendedTooltip" id="3691"/>
 				</Button>
@@ -8581,16 +8323,19 @@ This operation may take a while.</v8:content>
 					<Representation>PictureAndText</Representation>
 					<DefaultButton>true</DefaultButton>
 					<DefaultItem>true</DefaultItem>
+					<AutoMaxWidth>false</AutoMaxWidth>
 					<CommandName>Form.Command.ExecuteMonthEnd</CommandName>
 					<ExtendedTooltip name="ExecuteMonthEndExtendedTooltip" id="3615"/>
 				</Button>
 				<Button name="CancelMonthEnd" id="12">
 					<Type>CommandBarButton</Type>
+					<AutoMaxWidth>false</AutoMaxWidth>
 					<CommandName>Form.Command.CancelMonthEnd</CommandName>
 					<ExtendedTooltip name="CancelMonthEndExtendedTooltip" id="3616"/>
 				</Button>
 				<Button name="GenerateReport" id="2811">
 					<Type>CommandBarButton</Type>
+					<AutoMaxWidth>false</AutoMaxWidth>
 					<CommandName>Form.Command.GenerateReport</CommandName>
 					<ExtendedTooltip name="GenerateReportExtendedTooltip" id="3617"/>
 				</Button>

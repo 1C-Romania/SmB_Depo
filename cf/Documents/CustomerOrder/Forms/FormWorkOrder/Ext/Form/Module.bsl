@@ -2876,7 +2876,7 @@ Procedure OnCreateAtServer(Cancel, StandardProcessing)
 	// Form title setting.
 	If Not ValueIsFilled(Object.Ref) Then
 		AutoTitle = False;
-		Title = NStr("ru = 'Заказ-наряд (Создание)'; en = 'Work order (Create)'");
+		Title = NStr("ru='Заказ-наряд (Создание)'; en='Work order (Create)'");
 	EndIf;
 	
 	// Status.

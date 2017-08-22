@@ -134,23 +134,23 @@ Procedure SetFilterCurrentWorks()
 	
 	FormHeaderText = "";
 	If Parameters.Property("PastPerformance") Then
-		FormHeaderText = "Job orders: performance is delayed";
+		FormHeaderText = NStr("en='Work orders: execution is overdue';ru='Заказ-наряды: просрочено выполнение'");
 		SmallBusinessClientServer.SetListFilterItem(List, "PastPerformance", True);
 	EndIf;
 	
 	If Parameters.Property("OverduePayment") Then
-		FormHeaderText = "Job orders: payment is delayed";
+		FormHeaderText = NStr("en='Work orders: payment is overdue';ru='Заказ-наряды: просрочена оплата'");
 		SmallBusinessClientServer.SetListFilterItem(List, "OverduePayment", True);
 	EndIf;
 	
 	If Parameters.Property("ForToday") Then
-		FormHeaderText = "Work orders: for today";
+		FormHeaderText = NStr("en='Work orders: for today';ru='Заказ-наряды: на сегодня'");
 		SmallBusinessClientServer.SetListFilterItem(List, "ForToday",True);
 	EndIf;
 	
 	If Parameters.Property("New") Then
 		UseStatuses = Constants.UseCustomerOrderStates.Get();
-		FormHeaderText = "Customer orders: new";
+		FormHeaderText = NStr("en='Work orders: new';ru='Заказ-наряды: новые'");
 		If UseStatuses Then
 			SmallBusinessClientServer.SetListFilterItem(List, "OrderStateState", PredefinedValue("Enum.OrderStatuses.Open"));
 		Else
@@ -162,7 +162,7 @@ Procedure SetFilterCurrentWorks()
 	EndIf;
 	
 	If Parameters.Property("InProcess") Then
-		FormHeaderText = "Job orders: at work";
+		FormHeaderText = NStr("en='Work orders: in progess';ru='Заказ-наряды: в работе'");
 		SmallBusinessClientServer.SetListFilterItem(List, "OrderInProcess", True);
 	EndIf;
 	
@@ -172,7 +172,7 @@ Procedure SetFilterCurrentWorks()
 		Else
 			SmallBusinessClientServer.SetListFilterItem(List, "Responsible", Parameters.Responsible.List,,DataCompositionComparisonType.InList);
 		EndIf;
-		FormHeaderText = FormHeaderText + ", responsible " + Parameters.Responsible.Initials;
+		FormHeaderText = FormHeaderText + ", " + NStr("ru='ответственный';en='responsible'") + " " + Parameters.Responsible.Initials;
 	EndIf;
 	
 	If Not IsBlankString(FormHeaderText) Then
@@ -262,17 +262,13 @@ Procedure OnCreateAtServer(Cancel, StandardProcessing)
 		
 	// Use customer order status.
 	ElsIf UseStatuses Then
-		
 		Items.OrderStatus.Visible = False;
 		Items.FilterStatus.Visible = False;
-		
 	Else
-		
 		Items.FilterState.Visible = False;
 		Items.FilterActuality.Visible = False;
 		Items.OrderState.Visible = False;
 		Items.Closed.Visible = False;
-		
 	EndIf;
 	
 	PaintList();
@@ -298,16 +294,13 @@ EndProcedure // OnCreateAtServer()
 Procedure OnLoadDataFromSettingsAtServer(Settings)
 	
 	If Parameters.Property("CurrentWorks") Then
-		
 		Settings.Delete("FilterCompany");
 		Settings.Delete("FilterState");
 		Settings.Delete("FilterStatus");
 		Settings.Delete("FilterCounterparty");
 		Settings.Delete("FilterActuality");
 		Settings.Delete("FilterResponsible");
-		
 	Else
-		
 		FilterCompany = Settings.Get("FilterCompany");
 		FilterState = Settings.Get("FilterState");
 		FilterStatus = Settings.Get("FilterStatus");
@@ -344,7 +337,6 @@ Procedure OnLoadDataFromSettingsAtServer(Settings)
 		SmallBusinessClientServer.SetListFilterItem(List, "Company", FilterCompany, ValueIsFilled(FilterCompany));
 		SmallBusinessClientServer.SetListFilterItem(List, "Responsible", FilterResponsible, ValueIsFilled(FilterResponsible));
 		SmallBusinessClientServer.SetListFilterItem(List, "Counterparty", FilterCounterparty, ValueIsFilled(FilterCounterparty));
-		
 	EndIf;
 	
 EndProcedure // OnLoadDataFromSettingsAtServer()

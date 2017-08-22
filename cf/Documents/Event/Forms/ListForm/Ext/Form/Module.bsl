@@ -293,7 +293,7 @@ Procedure SetFilterCurrentWorks()
 	EndIf;
 	
 	AutoTitle	= False;
-	Title		= NStr("ru='События'; en = 'Events'");
+	Title		= NStr("ru='События';en='Events'");
 	CurDate		= CurrentSessionDate();
 	
 	CommonUseClientServer.SetFilterDynamicListItem(List, "DeletionMark", False);
@@ -330,7 +330,7 @@ Procedure SetFilterCurrentWorks()
 	
 	If Parameters.Property("PastPerformance") Then
 		
-		Title = Title + ": " + NStr("ru='просрочено выполнение'; en = 'expired'");
+		Title = Title + ": " + NStr("ru='просроченные';en='expired'");
 		SmallBusinessClientServer.SetListFilterItem(
 			List, 
 			"EventBegin", 
@@ -349,7 +349,7 @@ Procedure SetFilterCurrentWorks()
 		
 	ElsIf Parameters.Property("ForToday") Then
 		
-		Title = Title + ": " + NStr("ru='на сегодня'; en = 'for today'");
+		Title = Title + ": " + NStr("ru='на сегодня';en='for today'");
 		SmallBusinessClientServer.SetListFilterItem(
 			List, 
 			"EventBegin", 
@@ -366,12 +366,12 @@ Procedure SetFilterCurrentWorks()
 		
 	ElsIf Parameters.Property("InProcess") Then
 		
-		Title = Title + ": " + NStr("ru='в работе'; en = 'in process'");
+		Title = Title + ": " + NStr("ru='в работе';en='in process'");
 		
 	EndIf;
 	
 	If Parameters.Property("Responsible") Then
-		Title = Title + ", " + NStr("ru='ответственный '; en = 'responsible '") + Parameters.Responsible.Initials;
+		Title = Title + ", " + NStr("ru='ответственный'; en = 'responsible'") + " " + Parameters.Responsible.Initials;
 	EndIf;
 
 	If Items.PeriodPresentation.Visible Then

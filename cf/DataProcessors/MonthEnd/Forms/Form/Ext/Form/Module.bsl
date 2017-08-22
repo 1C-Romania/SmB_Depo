@@ -293,7 +293,7 @@ Procedure WarnAboutActiveBackgroundJob(Cancel = True)
 	
 	Cancel = True;
 	WarningText = NStr("en='Please wait while the process is finished (recommended) or cancel it manually.';ru='Дождитесь окончания рабочего процесса (рекомендуется) либо прервите его самостоятельно.'");
-	ShowMessageBox(Undefined,WarningText, 10, "it is impossible to close form.");
+	ShowMessageBox(Undefined, WarningText, 10, NStr("en='it is impossible to close form.';ru='невозможно закрыть форму.'"));
 	
 EndProcedure // WarnAboutActiveBackgroundJob()
 

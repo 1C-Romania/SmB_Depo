@@ -135,23 +135,23 @@ Procedure SetFilterCurrentWorks()
 	
 	FormHeaderText = "";
 	If Parameters.Property("PastPerformance") Then
-		FormHeaderText = NStr("en = 'Customer orders: fulfillment is expired'");
+		FormHeaderText = NStr("en='Customer orders: fulfillment is expired';ru='Заказы покупателей: просрочено выполнение'");
 		SmallBusinessClientServer.SetListFilterItem(List, "PastPerformance", True);
 	EndIf;
 	
 	If Parameters.Property("OverduePayment") Then
-		FormHeaderText = NStr("en = 'Customer orders: Payment is overdue'");
+		FormHeaderText = NStr("en='Customer orders: payment is overdue';ru='Заказы покупателей: просрочена оплата'");
 		SmallBusinessClientServer.SetListFilterItem(List, "OverduePayment", True);
 	EndIf;
 	
 	If Parameters.Property("ForToday") Then
-		FormHeaderText = NStr("en = 'Customer orders: for today'");
+		FormHeaderText = NStr("en='Customer orders: for today';ru='Заказы покупателей: на сегодня'");
 		SmallBusinessClientServer.SetListFilterItem(List, "ForToday",True);
 	EndIf;
 	
 	If Parameters.Property("AreNew") Then
 		UseStatuses = Constants.UseCustomerOrderStates.Get();
-		FormHeaderText = "Customer orders: new";
+		FormHeaderText = NStr("en='Customer orders: new';ru='Заказы покупателей: новые'");
 		If UseStatuses Then
 			SmallBusinessClientServer.SetListFilterItem(List, "OrderStateState", PredefinedValue("Enum.OrderStatuses.Open"));
 		Else
@@ -163,7 +163,7 @@ Procedure SetFilterCurrentWorks()
 	EndIf;
 	
 	If Parameters.Property("InProcess") Then
-		FormHeaderText = NStr("en = 'Customer orders: in progress'");
+		FormHeaderText = NStr("en='Customer orders: in progress';ru='Заказы покупателей: в работе'");
 		SmallBusinessClientServer.SetListFilterItem(List, "OrderInProcess", True);
 	EndIf;
 	
@@ -173,7 +173,7 @@ Procedure SetFilterCurrentWorks()
 		Else
 			SmallBusinessClientServer.SetListFilterItem(List, "Responsible", Parameters.Responsible.List,,DataCompositionComparisonType.InList);
 		EndIf;
-		FormHeaderText = FormHeaderText + NStr("en = ', responsible person '") + Parameters.Responsible.Initials;
+		FormHeaderText = FormHeaderText + ", " + NStr("ru='ответственный';en='responsible'") + " " + Parameters.Responsible.Initials;
 	EndIf;
 	
 	If Not IsBlankString(FormHeaderText) Then
