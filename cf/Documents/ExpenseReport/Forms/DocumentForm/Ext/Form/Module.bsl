@@ -722,7 +722,7 @@ Function GenerateLabelPricesAndCurrency(LabelStructure)
 	// Currency.
 	If LabelStructure.CurrencyTransactionsAccounting Then
 		If ValueIsFilled(LabelStructure.DocumentCurrency) Then
-			LabelText = NStr("en='%Currency%';ru='%Currency%'");
+			LabelText = "%Currency%";
 			LabelText = StrReplace(LabelText, "%Currency%", TrimAll(String(LabelStructure.DocumentCurrency)));
 		EndIf;
 	EndIf;
@@ -730,9 +730,9 @@ Function GenerateLabelPricesAndCurrency(LabelStructure)
 	// VAT taxation.
 	If ValueIsFilled(LabelStructure.VATTaxation) Then
 		If IsBlankString(LabelText) Then
-			LabelText = LabelText + NStr("en='%VATTaxation%';ru='%VATTaxation%'");
+			LabelText = LabelText + "%VATTaxation%";
 		Else
-			LabelText = LabelText + NStr("en=' • %VATTaxation%';ru=' • %VATTaxation%'");
+			LabelText = LabelText + " • %VATTaxation%";
 		EndIf;
 		LabelText = StrReplace(LabelText, "%VATTaxation%", TrimAll(String(LabelStructure.VATTaxation)));
 	EndIf;

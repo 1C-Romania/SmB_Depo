@@ -611,7 +611,7 @@ Function GenerateLabelPricesAndCurrency(LabelStructure)
 	// Currency.
 	If LabelStructure.CurrencyTransactionsAccounting Then
 		If ValueIsFilled(LabelStructure.DocumentCurrency) Then
-			LabelText = NStr("en='%Currency%';ru='%Currency%'");
+			LabelText = "%Currency%";
 			LabelText = StrReplace(LabelText, "%Currency%", TrimAll(String(LabelStructure.DocumentCurrency)));
 		EndIf;
 	EndIf;
@@ -619,9 +619,9 @@ Function GenerateLabelPricesAndCurrency(LabelStructure)
 	// Kind of counterparty prices.
 	If ValueIsFilled(LabelStructure.CounterpartyPriceKind) Then
 		If IsBlankString(LabelText) Then
-			LabelText = LabelText + NStr("en='%CounterpartyPriceKind%';ru='%CounterpartyPriceKind%'");
+			LabelText = LabelText + "%CounterpartyPriceKind%";
 		Else
-			LabelText = LabelText + NStr("en=' • %CounterpartyPriceKind%';ru=' • %CounterpartyPriceKind%'");
+			LabelText = LabelText + " • %CounterpartyPriceKind%";
 		EndIf;
 		LabelText = StrReplace(LabelText, "%CounterpartyPriceKind%", TrimAll(String(LabelStructure.CounterpartyPriceKind)));
 	EndIf;
@@ -629,9 +629,9 @@ Function GenerateLabelPricesAndCurrency(LabelStructure)
 	// VAT taxation.
 	If ValueIsFilled(LabelStructure.VATTaxation) Then
 		If IsBlankString(LabelText) Then
-			LabelText = LabelText + NStr("en='%VATTaxation%';ru='%VATTaxation%'");
-		Else
-			LabelText = LabelText + NStr("en=' • %VATTaxation%';ru=' • %VATTaxation%'");
+				LabelText = LabelText + "%VATTaxation%";
+			Else
+				LabelText = LabelText + " • %VATTaxation%";
 		EndIf;
 		LabelText = StrReplace(LabelText, "%VATTaxation%", TrimAll(String(LabelStructure.VATTaxation)));
 	EndIf;

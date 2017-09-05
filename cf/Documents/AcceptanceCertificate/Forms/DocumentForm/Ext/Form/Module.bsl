@@ -576,7 +576,7 @@ Function GenerateLabelPricesAndCurrency(LabelStructure)
 	// Currency.
 	If LabelStructure.CurrencyTransactionsAccounting Then
 		If ValueIsFilled(LabelStructure.DocumentCurrency) Then
-			LabelText = NStr("ru = '%Currency%'; en = '%Currency%'");
+			LabelText = "%Currency%";
 			LabelText = StrReplace(LabelText, "%Currency%", TrimAll(String(LabelStructure.DocumentCurrency)));
 		EndIf;
 	EndIf;	
@@ -584,9 +584,9 @@ Function GenerateLabelPricesAndCurrency(LabelStructure)
 	// Prices kind.
 	If ValueIsFilled(LabelStructure.PriceKind) Then
 		If IsBlankString(LabelText) Then
-			LabelText = LabelText + NStr("ru = '%PriceKind%'; en = '%PriceKind%'");
-		Else	
-			LabelText = LabelText + NStr("ru = ' • %PriceKind%'; en = ' • %PriceKind%'");
+			LabelText = LabelText + "%PriceKind%";
+		Else
+			LabelText = LabelText + " • %PriceKind%";
 		EndIf;	
 		LabelText = StrReplace(LabelText, "%PriceKind%", TrimAll(String(LabelStructure.PriceKind)));
 	EndIf;
@@ -594,9 +594,9 @@ Function GenerateLabelPricesAndCurrency(LabelStructure)
 	// Margins discount kind.
 	If ValueIsFilled(LabelStructure.DiscountKind) Then
 		If IsBlankString(LabelText) Then
-			LabelText = LabelText + NStr("ru = '%DiscountMarkupKind%'; en = '%DiscountMarkupKind%'");
+			LabelText = LabelText + "%DiscountMarkupKind%";
 		Else
-			LabelText = LabelText + NStr("ru = ' • %DiscountMarkupKind%'; en = ' • %MarkupDiscountKind%'");
+			LabelText = LabelText + " • %DiscountMarkupKind%";
 		EndIf;
 		LabelText = StrReplace(LabelText, "%DiscountMarkupKind%", TrimAll(String(LabelStructure.DiscountKind)));
 	EndIf;
@@ -604,9 +604,9 @@ Function GenerateLabelPricesAndCurrency(LabelStructure)
 	// Discount card.
 	If ValueIsFilled(LabelStructure.DiscountCard) Then
 		If IsBlankString(LabelText) Then
-			LabelText = LabelText + NStr("ru = '%DiscountCard%'; en = '%DiscountCard%'");
+			LabelText = LabelText + "%DiscountCard%";
 		Else
-			LabelText = LabelText + NStr("ru = ' • %DiscountCard%'; en = ' • %DiscountCard%'");
+			LabelText = LabelText + " • %DiscountCard%";
 		EndIf;
 		LabelText = StrReplace(LabelText, "%DiscountCard%", String(LabelStructure.DiscountPercentByDiscountCard)+"% by map"); //ShortLP(String(LabelStructure.DiscountCard)));
 	EndIf;	
@@ -614,9 +614,9 @@ Function GenerateLabelPricesAndCurrency(LabelStructure)
 	// VAT taxation.
 	If ValueIsFilled(LabelStructure.VATTaxation) Then
 		If IsBlankString(LabelText) Then
-			LabelText = LabelText + NStr("ru = '%VATTaxation%'; en = '%VATTaxation%'");
+			LabelText = LabelText + "%VATTaxation%";
 		Else
-			LabelText = LabelText + NStr("ru = ' • %VATTaxation%'; en = ' • %VATTaxation%'");
+			LabelText = LabelText + " • %VATTaxation%";
 		EndIf;	
 		LabelText = StrReplace(LabelText, "%VATTaxation%", TrimAll(String(LabelStructure.VATTaxation)));
 	EndIf;

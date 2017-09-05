@@ -421,7 +421,7 @@ Procedure CashDeposition(Command)
 		
 		InAmount = 0;
 		
-		WindowTitle = NStr("en='Deposit amount, %Currency%';ru='Сумма внесения, %Валюта%'");
+		WindowTitle = NStr("en='Deposit amount, ';ru='Сумма внесения, '") + "%Currency%";
 		WindowTitle = StrReplace(
 			WindowTitle,
 			"%Currency%",
@@ -545,7 +545,7 @@ Procedure Withdrawal(Command)
 		
 		WithdrawnAmount = 0;
 		
-		WindowTitle = NStr("en='Withdrawal amount, %Currency%';ru='Сумма выемки, %Валюта%'");
+		WindowTitle = NStr("en='Withdrawal amount, ';ru='Сумма выемки, '") + "%Currency%";
 		WindowTitle = StrReplace(
 			WindowTitle,
 			"%Currency%",

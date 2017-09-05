@@ -574,7 +574,7 @@ Function GenerateLabelPricesAndCurrency(LabelStructure)
 	// Currency.
 	If LabelStructure.CurrencyTransactionsAccounting Then
 		If ValueIsFilled(LabelStructure.DocumentCurrency) Then
-			LabelText = NStr("en='%Currency%';ru='%Currency%'");
+			LabelText = "%Currency%";
 			LabelText = StrReplace(LabelText, "%Currency%", TrimAll(String(LabelStructure.DocumentCurrency)));
 		EndIf;
 	EndIf;
@@ -582,9 +582,9 @@ Function GenerateLabelPricesAndCurrency(LabelStructure)
 	// Prices kind.
 	If ValueIsFilled(LabelStructure.PriceKind) Then
 		If IsBlankString(LabelText) Then
-			LabelText = LabelText + NStr("en='%PriceKind%';ru='%PriceKind%'");
-		Else	
-			LabelText = LabelText + NStr("en=' • %PriceKind%';ru=' • %PriceKind%'");
+			LabelText = LabelText + "%PriceKind%";
+		Else
+			LabelText = LabelText + " • %PriceKind%";
 		EndIf;
 		LabelText = StrReplace(LabelText, "%PriceKind%", TrimAll(String(LabelStructure.PriceKind)));
 	EndIf;
@@ -592,9 +592,9 @@ Function GenerateLabelPricesAndCurrency(LabelStructure)
 	// Margins discount kind.
 	If ValueIsFilled(LabelStructure.DiscountKind) Then
 		If IsBlankString(LabelText) Then
-			LabelText = LabelText + NStr("en='%DiscountMarkupKind%';ru='%DiscountMarkupKind%'");
+			LabelText = LabelText + "%DiscountMarkupKind%";
 		Else
-			LabelText = LabelText + NStr("en=' • %MarkupDiscountKind%';ru=' • %DiscountMarkupKind%'");
+			LabelText = LabelText + " • %DiscountMarkupKind%";
 		EndIf;
 		LabelText = StrReplace(LabelText, "%DiscountMarkupKind%", TrimAll(String(LabelStructure.DiscountKind)));
 	EndIf;
@@ -602,9 +602,9 @@ Function GenerateLabelPricesAndCurrency(LabelStructure)
 	// VAT taxation.
 	If ValueIsFilled(LabelStructure.VATTaxation) Then
 		If IsBlankString(LabelText) Then
-			LabelText = LabelText + NStr("en='%VATTaxation%';ru='%VATTaxation%'");
-		Else
-			LabelText = LabelText + NStr("en=' • %VATTaxation%';ru=' • %VATTaxation%'");
+				LabelText = LabelText + "%VATTaxation%";
+			Else
+				LabelText = LabelText + " • %VATTaxation%";
 		EndIf;
 		LabelText = StrReplace(LabelText, "%VATTaxation%", TrimAll(String(LabelStructure.VATTaxation)));
 	EndIf;

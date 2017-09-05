@@ -39,19 +39,19 @@ EndProcedure // RecalculateDocumentAtClient()
 &AtClient
 Procedure GenerateToolTipsToAttributes()
 	
-	TitleAmountCheque = NStr("en='Receipt amount (%Currency%)';ru='Сумма чека (%Валюта%)'");
+	TitleAmountCheque = NStr("en='Receipt amount (';ru='Сумма чека ('") + "%Currency%" + ")";
 	TitleAmountCheque = StrReplace(TitleAmountCheque, "%Currency%", Object.DocumentCurrency);
 	Items.DocumentAmount.ToolTip = TitleAmountCheque;
 	
-	TitleReceivedCash = NStr("en='Received in cash (%Currency%)';ru='Получено наличными (%Currency%)'");
+	TitleReceivedCash = NStr("en='Received in cash (';ru='Получено наличными ('") + "%Currency%" + ")";
 	TitleReceivedCash = StrReplace(TitleReceivedCash, "%Currency%", Object.DocumentCurrency);
 	Items.CashReceived.ToolTip = TitleReceivedCash;
 	
-	TitlePaymentWithPaymentCards = NStr("en='By payment cards (%Currency%)';ru='Платежными картами (%Currency%)'");
+	TitlePaymentWithPaymentCards = NStr("en='By payment cards (';ru='Платежными картами ('") + "%Currency%" + ")";
 	TitlePaymentWithPaymentCards = StrReplace(TitlePaymentWithPaymentCards, "%Currency%", Object.DocumentCurrency);
 	Items.PaymentWithPaymentCardsTotalAmount.ToolTip = TitlePaymentWithPaymentCards;
 	
-	TitleAmountPutting = NStr("en='Change (%Currency%)';ru='Сдача (%Currency%)'");
+	TitleAmountPutting = NStr("en='Change (';ru='Сдача ('") + "%Currency%" + ")";
 	TitleAmountPutting = StrReplace(TitleAmountPutting, "%Currency%", Object.DocumentCurrency);
 	Items.AmountShortChange.ToolTip = TitleAmountPutting;
 	
@@ -769,7 +769,7 @@ Function GenerateLabelPricesAndCurrency(LabelStructure)
 	// Currency.
 	If LabelStructure.CurrencyTransactionsAccounting Then
 		If ValueIsFilled(LabelStructure.DocumentCurrency) Then
-			LabelText = NStr("en='%Currency%';ru='%Currency%'");
+			LabelText = "%Currency%";
 			LabelText = StrReplace(LabelText, "%Currency%", TrimAll(String(LabelStructure.DocumentCurrency)));
 		EndIf;
 	EndIf;
@@ -777,9 +777,9 @@ Function GenerateLabelPricesAndCurrency(LabelStructure)
 	// Prices kind.
 	If ValueIsFilled(LabelStructure.PriceKind) Then
 		If IsBlankString(LabelText) Then
-			LabelText = LabelText + NStr("en='%PriceKind%';ru='%PriceKind%'");
+			LabelText = LabelText + "%PriceKind%";
 		Else
-			LabelText = LabelText + NStr("en=' • %PriceKind%';ru=' • %PriceKind%'");
+			LabelText = LabelText + " • %PriceKind%";
 		EndIf;
 		LabelText = StrReplace(LabelText, "%PriceKind%", TrimAll(String(LabelStructure.PriceKind)));
 	EndIf;
@@ -787,9 +787,9 @@ Function GenerateLabelPricesAndCurrency(LabelStructure)
 	// Margins discount kind.
 	If ValueIsFilled(LabelStructure.DiscountKind) Then
 		If IsBlankString(LabelText) Then
-			LabelText = LabelText + NStr("en='%DiscountMarkupKind%';ru='%DiscountMarkupKind%'");
+			LabelText = LabelText + "%DiscountMarkupKind%";
 		Else
-			LabelText = LabelText + NStr("en=' • %DiscountMarkupKind%';ru=' • %DiscountMarkupKind%'");
+			LabelText = LabelText + " • %DiscountMarkupKind%";
 		EndIf;
 		LabelText = StrReplace(LabelText, "%DiscountMarkupKind%", TrimAll(String(LabelStructure.DiscountKind)));
 	EndIf;
@@ -797,9 +797,9 @@ Function GenerateLabelPricesAndCurrency(LabelStructure)
 	// Discount card.
 	If ValueIsFilled(LabelStructure.DiscountCard) Then
 		If IsBlankString(LabelText) Then
-			LabelText = LabelText + NStr("en='%DiscountCard%';ru='%DiscountCard%'");
+			LabelText = LabelText + "%DiscountCard%";
 		Else
-			LabelText = LabelText + NStr("en=' • %DiscountCard%';ru=' • %DiscountCard%'");
+			LabelText = LabelText + " • %DiscountCard%";
 		EndIf;
 		LabelText = StrReplace(LabelText, "%DiscountCard%", String(LabelStructure.DiscountPercentByDiscountCard)+"% by map"); //ShortLP(String(LabelStructure.DiscountCard)));
 	EndIf;	
@@ -807,9 +807,9 @@ Function GenerateLabelPricesAndCurrency(LabelStructure)
 	// VAT taxation.
 	If ValueIsFilled(LabelStructure.VATTaxation) Then
 		If IsBlankString(LabelText) Then
-			LabelText = LabelText + NStr("en='%VATTaxation%';ru='%VATTaxation%'");
-		Else
-			LabelText = LabelText + NStr("en=' • %VATTaxation%';ru=' • %VATTaxation%'");
+				LabelText = LabelText + "%VATTaxation%";
+			Else
+				LabelText = LabelText + " • %VATTaxation%";
 		EndIf;	
 		LabelText = StrReplace(LabelText, "%VATTaxation%", TrimAll(String(LabelStructure.VATTaxation)));
 	EndIf;
@@ -1039,19 +1039,19 @@ Procedure OnCreateAtServer(Cancel, StandardProcessing)
 	
 	SmallBusinessClientServer.SetPictureForComment(Items.AdvancedPage, Object.Comment);
 	
-	TitleAmountCheque = NStr("ru = 'Сумма чека (%Валюта%)'; en = 'Receipt amount (%Currency%)'");
+	TitleAmountCheque = NStr("ru = 'Сумма чека ('; en = 'Receipt amount ('") + "%Currency%" + ")";
 	TitleAmountCheque = StrReplace(TitleAmountCheque, "%Currency%", Object.DocumentCurrency);
 	Items.DocumentAmount.ToolTip = TitleAmountCheque;
 	
-	TitleReceivedCash = NStr("ru = 'Получено наличными (%Currency%)'; en = 'Received in cash (%Currency%)'");
+	TitleReceivedCash = NStr("ru = 'Получено наличными ('; en = 'Received in cash ('") + "%Currency%" + ")";
 	TitleReceivedCash = StrReplace(TitleReceivedCash, "%Currency%", Object.DocumentCurrency);
 	Items.CashReceived.ToolTip = TitleReceivedCash;
 	
-	TitlePaymentWithPaymentCards = NStr("ru = 'Платежными картами (%Currency%)'; en = 'By payment cards (%Currency%)'");
+	TitlePaymentWithPaymentCards = NStr("ru = 'Платежными картами ('; en = 'By payment cards ('") + "%Currency%" + ")";
 	TitlePaymentWithPaymentCards = StrReplace(TitlePaymentWithPaymentCards, "%Currency%", Object.DocumentCurrency);
 	Items.PaymentWithPaymentCardsTotalAmount.ToolTip = TitlePaymentWithPaymentCards;
 	
-	TitleAmountPutting = NStr("en='Change (%Currency%)';ru='Сдача (%Currency%)'");
+	TitleAmountPutting = NStr("en='Change (';ru='Сдача ('") + "%Currency%" + ")";
 	TitleAmountPutting = StrReplace(TitleAmountPutting, "%Currency%", Object.DocumentCurrency);
 	Items.AmountShortChange.ToolTip = TitleAmountPutting;
 
