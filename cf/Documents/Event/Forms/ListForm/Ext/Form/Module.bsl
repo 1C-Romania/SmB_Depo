@@ -320,12 +320,12 @@ Procedure SetFilterCurrentWorks()
 		StateList.Add(Selection.Ref);
 	EndDo;
 	
-	WorkWithFilters.AttachFilterLabelsFromArray(ThisObject, "State", "States", StateList);
+	WorkWithFilters.AttachFilterLabelsFromArray(ThisObject, "State", "States", StateList.UnloadValues());
 	WorkWithFilters.SetListFilter(ThisObject, List, "State");
 	
 	CurrentUserRef = Users.CurrentUser();
 	WorkWithFilters.AttachFilterLabelsFromArray(ThisObject, "Responsible", "Responsibles", 
-													SmallBusinessServer.GetUserEmployees(CurrentUserRef));
+							SmallBusinessServer.GetUserEmployees(CurrentUserRef).UnloadColumn("Employee"));
 	WorkWithFilters.SetListFilter(ThisObject, List, "Responsible");
 	
 	If Parameters.Property("PastPerformance") Then
