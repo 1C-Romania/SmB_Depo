@@ -308,23 +308,17 @@ EndFunction // CancellationUncheckUseCustomerOrderStates()
 Function CancellationUncheckFunctionalOptionUseDiscountsMarkups()
 	
 	ErrorText = "";
-	
 	SetPrivilegedMode(True);
-	
 	SelectionMarkupAndDiscountKinds = Catalogs.MarkupAndDiscountKinds.Select();
 	While SelectionMarkupAndDiscountKinds.Next() Do
-		
 		RefArray = New Array;
 		RefArray.Add(SelectionMarkupAndDiscountKinds.Ref);
 		RefsTable = FindByRef(RefArray);
 		
 		If RefsTable.Count() > 0 Then
-			
 			ErrorText = NStr("en='Kinds of discounts and markups are used in the infobase. Cannot clear the check box.';ru='В базе используются виды скидок, наценок! Снятие опции запрещено!'");
 			Break;
-			
 		EndIf;
-		
 	EndDo;
 	
 	SetPrivilegedMode(False);
@@ -340,36 +334,32 @@ Function CancellationUncheckFunctionalOptionUseDiscountsMarkups()
 	ArrayOfDocuments.Add("Document.ReceiptCR.Inventory");
 	ArrayOfDocuments.Add("Document.ReceiptCRReturn.Inventory");
 	
-	QueryPattern = "SELECT TOP 1 CWT_Of document.Ref FROM &DocumentTabularSection AS CWT_Of document WHERE CWT_Of document.DiscountMarkupPercent <> 0";
+	QueryPattern = "SELECT TOP 1
+	               |	CWT_Of_Document.Ref
+	               |FROM
+	               |	&DocumentTabularSection AS CWT_Of_Document
+	               |WHERE
+	               |	CWT_Of_Document.DiscountMarkupPercent <> 0";
 	
 	Query = New Query;
 	
 	For Each ArrayElement IN ArrayOfDocuments Do
-		
 		If Not IsBlankString(Query.Text) Then
-			
 			Query.Text = Query.Text + Chars.LF + "UNION ALL" + Chars.LF;
-			
 		EndIf;
-		
 		Query.Text = Query.Text + StrReplace(QueryPattern, "&DocumentTabularSection", ArrayElement);
-		
 	EndDo;
 	
 	QueryResult = Query.Execute();
 	
 	If Not QueryResult.IsEmpty() Then
-		
 		ErrorText = ErrorText + ?(IsBlankString(ErrorText), "", Chars.LF) + NStr("en='Discounts and markups are used in the documents. Cannot clear the check box.';ru='В документах используются скидки и наценки! Снятие опции запрещено!'");
-		
 	EndIf;
 	
 	// DiscountCards
 	If GetFunctionalOption("UseDiscountCards") Then
-		
 		ErrorText = ErrorText + ?(IsBlankString(ErrorText), "", Chars.LF) + 
 			NStr("en='The ""Use discount cards"" option is enabled. Clearing the check box is prohibited.';ru='Включена опция ""Использовать дисконтные карты""! Снятие флага запрещено!'");
-		
 	EndIf;
 	// End DiscountCards
 	
@@ -523,23 +513,17 @@ EndFunction // CancellationUncheckFunctionalOptionAccountingRetail()
 Function CancellationUncheckFunctionalOptionUseAutomaticDiscountsMarkups()
 	
 	ErrorText = "";
-	
 	SetPrivilegedMode(True);
-	
 	SelectionAutomaticDiscounts = Catalogs.AutomaticDiscounts.Select();
 	While SelectionAutomaticDiscounts.Next() Do
-		
 		RefArray = New Array;
 		RefArray.Add(SelectionAutomaticDiscounts.Ref);
 		RefsTable = FindByRef(RefArray);
 		
 		If RefsTable.Count() > 0 Then
-			
 			ErrorText = NStr("en='Kinds of automatic discounts and markups are used in the infobase. Cannot clear the check box.';ru='В базе используются виды автоматических скидок, наценок! Снятие опции запрещено!'");
 			Break;
-			
 		EndIf;
-		
 	EndDo;
 	
 	SetPrivilegedMode(False);
@@ -555,28 +539,25 @@ Function CancellationUncheckFunctionalOptionUseAutomaticDiscountsMarkups()
 	ArrayOfDocuments.Add("Document.ReceiptCRReturn.Inventory");
 	ArrayOfDocuments.Add("Document.ProcessingReport.Products");
 	
-	QueryPattern = "SELECT TOP 1 CWT_Of document.Ref FROM &DocumentTabularSection AS CWT_Of document WHERE CWT_Of document.AutomaticDiscountsPercent <> 0";
-	
+	QueryPattern = "SELECT TOP 1
+	               |	CWT_Of_Document.Ref
+	               |FROM
+	               |	&DocumentTabularSection AS CWT_Of_Document
+	               |WHERE
+	               |	CWT_Of_Document.AutomaticDiscountsPercent <> 0";
 	Query = New Query;
 	
 	For Each ArrayElement IN ArrayOfDocuments Do
-		
 		If Not IsBlankString(Query.Text) Then
-			
 			Query.Text = Query.Text + Chars.LF + "UNION ALL" + Chars.LF;
-			
 		EndIf;
-		
 		Query.Text = Query.Text + StrReplace(QueryPattern, "&DocumentTabularSection", ArrayElement);
-		
 	EndDo;
 	
 	QueryResult = Query.Execute();
 	
 	If Not QueryResult.IsEmpty() Then
-		
 		ErrorText = ErrorText + ?(IsBlankString(ErrorText), "", Chars.LF) + NStr("en='Automatic discounts and markups are used in the documents. Cannot clear the check box.';ru='В документах используются автоматические скидки и наценки! Снятие опции запрещено!'");
-		
 	EndIf;
 	
 	Return ErrorText;
