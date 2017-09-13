@@ -491,13 +491,13 @@ Procedure Attachable_ListWithSelection_Value_AutoPick(Item, Text, ChoiceData, Pa
 			UBound = KeyArray.UBound();
 			Context = Parameters;
 			For IndexOf = 0 To UBound Do
-				Key = KeyArray[IndexOf];
+				curKey = KeyArray[IndexOf];
 				If IndexOf = UBound Then
-					Context.Insert(Key, LeaderValue);
+					Context.Insert(curKey, LeaderValue);
 				Else
-					InsertedContext = CommonUseClientServer.StructureProperty(Context, Key);
+					InsertedContext = CommonUseClientServer.StructureProperty(Context, curKey);
 					If InsertedContext = Undefined Then
-						InsertedContext = Context.Insert(Key, New Structure);
+						InsertedContext = Context.Insert(curKey, New Structure);
 					ElsIf TypeOf(InsertedContext) <> Type("Structure") Then
 						Break;
 					EndIf;

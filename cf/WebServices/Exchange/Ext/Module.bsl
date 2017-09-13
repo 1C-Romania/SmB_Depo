@@ -15,7 +15,10 @@ Function RunExport(ExchangePlanName, CodeOfInfobaseNode, ExchangeMessageStorage)
 	
 	ExchangeMessage = "";
 	
-	DataExchangeServer.ExportForInfobaseNodeViaString(ExchangePlanName, CodeOfInfobaseNode, ExchangeMessage);
+	//DataExchangeServer.ExportForInfobaseNodeViaString(ExchangePlanName, CodeOfInfobaseNode, ExchangeMessage);
+	DataExchangeServer.ExportForInfobaseNodeViaString(MessageExchangeInternal.ConvertExchangePlanName(ExchangePlanName), CodeOfInfobaseNode, ExchangeMessage);
+	
+	ExchangeMessage = MessageExchangeInternal.ConvertBackExchangePlanMessageData(ExchangeMessage);
 	
 	ExchangeMessageStorage = New ValueStorage(ExchangeMessage, New Deflation(9));
 	
@@ -30,7 +33,8 @@ Function RunImport(ExchangePlanName, CodeOfInfobaseNode, ExchangeMessageStorage)
 	
 	SetPrivilegedMode(True);
 	
-	DataExchangeServer.ImportForInfobaseNodeViaString(ExchangePlanName, CodeOfInfobaseNode, ExchangeMessageStorage.Get());
+	//DataExchangeServer.ImportForInfobaseNodeViaString(ExchangePlanName, CodeOfInfobaseNode, ExchangeMessageStorage.Get());
+	DataExchangeServer.ImportForInfobaseNodeViaString(MessageExchangeInternal.ConvertExchangePlanName(ExchangePlanName), CodeOfInfobaseNode, MessageExchangeInternal.ConvertExchangePlanMessageData(ExchangeMessageStorage.Get()));
 	
 EndFunction
 
@@ -528,11 +532,11 @@ EndProcedure
 
 Function ExportImportDataBackgroundJobKey(ExchangePlan, NodeCode)
 	
-	Key = "ExchangePlan:[ExchangePlan] NodeCode:[NodeCode]";
-	Key = StrReplace(Key, "[ExchangePlan]", ExchangePlan);
-	Key = StrReplace(Key, "[NodeCode]", NodeCode);
+	strKey = "ExchangePlan:[ExchangePlan] NodeCode:[NodeCode]";
+	strKey = StrReplace(strKey, "[ExchangePlan]", ExchangePlan);
+	strKey = StrReplace(strKey, "[NodeCode]", NodeCode);
 	
-	Return Key;
+	Return strKey;
 EndFunction
 
 Function RegisterDataForInitialExport(Val ExchangePlanName, Val NodeCode, LongOperation, ActionID, CatalogsOnly)

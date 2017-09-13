@@ -549,7 +549,7 @@ Procedure InitializeReplacedReferences(Val RefArray)
 		|FROM
 		|	" + TableName + " AS
 		|		TargetTable LEFT JOIN ReplaceReferences AS
-		|		ReplaceReferences BY TargetTable.Ref =
+		|		ReplaceReferences ON TargetTable.Ref =
 		|		ReplaceReferences.Ref AND TargetTable.Owner =
 		|ReplaceReferences.Owner
 		|WHERE ReplaceReferences.Ref IS

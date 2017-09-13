@@ -5,6 +5,21 @@
 
 #Region ServiceProceduresAndFunctions
 
+// Fills in the match of methods names and their aliases for call from the jobs queue.
+//
+// Parameters:
+//  AccordanceNamespaceAliases - Correspondence
+//   Key - Method alias, for example, ClearDataArea.
+//   Value - Method name for call, for example, SaaSOperations.ClearDataArea.
+//    You can specify Undefined as a value, in this case, it is
+// considered that name matches the alias.
+//
+Procedure WhenYouDefineAliasesHandlers(AccordanceNamespaceAliases) Export
+	
+	AccordanceNamespaceAliases.Insert("ExchangeWithSite.PerformJobExchange");
+	
+EndProcedure
+
 // Forms a list of queue jobs templates
 //
 // Parameters:

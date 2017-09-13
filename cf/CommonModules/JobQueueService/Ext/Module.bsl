@@ -455,29 +455,12 @@ Procedure ProcessJobQueue(BackgroundJobKey) Export
 	|	NestedSelect.LastStartDate,
 	|	NestedSelect.CompletionDateLastRun
 	|FROM
-	|(SELECT TOP 111
-	|	NestedSelect.DataArea,
-	|	NestedSelect.ID AS ID,
-	|	NestedSelect.Use,
-	|	NestedSelect.ScheduledStartTime AS ScheduledStartTime,
-	|	NestedSelect.ActiveBackgroundJob,
-	|	NestedSelect.ExclusiveExecution AS ExclusiveExecution,
-	|	NestedSelect.TryNumber,
-	|	NestedSelect.Pattern,
-	|	NestedSelect.RefsTemplate,
-	|	NestedSelect.TimeZone,
-	|	NestedSelect.Schedule,
-	|	NestedSelect.MethodName,
-	|	NestedSelect.Parameters,
-	|	NestedSelect.LastStartDate,
-	|	NestedSelect.CompletionDateLastRun
-	|FROM
 	|	(" +  QueryText + ") AS
 	|
 	|NestedSelect ORDER
 	|	BY ExclusiveExecution
 	|	DESC,
-	|	PlannedStartMoment, Identifier";
+	|	ScheduledStartTime, ID";
 	
 	Query.Text = QueryText;
 	SelectionSizeText = Format(ActiveBackgroundJobMaxCount * 3, "NZ=; NG=");
@@ -948,7 +931,7 @@ EndFunction
 
 Function ActiveBackgroundJobCount()
 	
-	Filter = New Structure("Description, Status", GetActiveBackgroundJobDescription(), BackgroundJobState.Active); 
+	Filter = New Structure("Description, State", GetActiveBackgroundJobDescription(), BackgroundJobState.Active); 
 	ActiveBackgroundJobs = BackgroundJobs.GetBackgroundJobs(Filter); 
 	
 	ActiveBackgroundJobCount = ActiveBackgroundJobs.Count();
@@ -983,10 +966,10 @@ EndFunction
 Procedure StartActiveBackgroundJob(BackgroundJobsToStartCount) 
 	
 	For IndexOf = 1 To BackgroundJobsToStartCount Do
-		Key = New UUID;
+		UUID = New UUID;
 		Parameters = New Array;
-		Parameters.Add(Key);
-		BackgroundJobs.Execute("JobQueueService.ProcessJobQueue", Parameters, Key, GetActiveBackgroundJobDescription());
+		Parameters.Add(UUID);
+		BackgroundJobs.Execute("JobQueueService.ProcessJobQueue", Parameters, UUID, GetActiveBackgroundJobDescription());
 	EndDo;
 	
 EndProcedure
@@ -1070,8 +1053,8 @@ Function NextExecutionDateSchedule(Val Schedule, Val DateForChecks,
 		Return '00010101';
 	EndIf;
 		
-	If DateForChecks < Schedule.StartDate Then
-		DateForChecks = Schedule.StartDate;
+	If DateForChecks < Schedule.BeginDate Then
+		DateForChecks = Schedule.BeginDate;
 	EndIf;
 	
 	CanChangeDay = True;

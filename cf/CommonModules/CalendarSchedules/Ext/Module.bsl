@@ -64,7 +64,7 @@ Function GetDatesArrayByCalendar(Val WorkSchedule, Val DateFrom, Val DaysArray, 
 	|FROM
 	|	TTSubsequentDatesGraphics AS FollowScheduleDates
 	|		INNER JOIN TTSubsequentDatesGraphics AS CalendarSchedules
-	|		BY (CalendarSchedules.ScheduleDate <= FollowScheduleDates.ScheduleDate)
+	|		ON (CalendarSchedules.ScheduleDate <= FollowScheduleDates.ScheduleDate)
 	|
 	|GROUP BY
 	|	FollowScheduleDates.ScheduleDate
@@ -77,7 +77,7 @@ Function GetDatesArrayByCalendar(Val WorkSchedule, Val DateFrom, Val DaysArray, 
 	|FROM
 	|	TTIncrementInDays AS IncrementDays
 	|		LEFT JOIN TTSuggestedDatesGraphicsWithNumberOfDays AS NextDays
-	|		BY IncrementDays.DaysNumber = NextDays.DaysIncludedToScheduleCount
+	|		ON IncrementDays.DaysNumber = NextDays.DaysIncludedToScheduleCount
 	|
 	|ORDER BY
 	|	IncrementDays.RowIndex";
@@ -224,7 +224,7 @@ Function GetDatesDiffByCalendar(Val WorkSchedule, Val StartDate, Val EndDate, Ca
 		|FROM
 		|	InformationRegister.BusinessCalendarData AS CalendarSchedules
 		|		INNER JOIN TTVariousYearsGraphics AS YearGraphics
-		|		BY (YearGraphics.Year = CalendarSchedules.Year)
+		|		ON (YearGraphics.Year = CalendarSchedules.Year)
 		|WHERE
 		|	CalendarSchedules.BusinessCalendar = &WorkSchedule";
 		Query.SetParameter("WorkSchedule", WorkSchedule);
@@ -245,7 +245,7 @@ Function GetDatesDiffByCalendar(Val WorkSchedule, Val StartDate, Val EndDate, Ca
 	|FROM
 	|	TTVariousDatesGraphics AS ScheduleDates
 	|		LEFT JOIN VTCalendarSchedules AS DaysIncludedInSchedule
-	|		BY (DaysIncludedInSchedule.Year = YEAR(ScheduleDates.ScheduleDate))
+	|		ON (DaysIncludedInSchedule.Year = YEAR(ScheduleDates.ScheduleDate))
 	|			AND (DaysIncludedInSchedule.ScheduleDate <= ScheduleDates.ScheduleDate)
 	|			AND (DaysIncludedInSchedule.DayIncludedInSchedule)
 	|
@@ -261,10 +261,10 @@ Function GetDatesDiffByCalendar(Val WorkSchedule, Val StartDate, Val EndDate, Ca
 	|FROM
 	|	TTGraphicDates AS ScheduleDates
 	|		LEFT JOIN VTCalendarSchedules AS ScheduleData
-	|		BY (ScheduleData.Year = YEAR(ScheduleDates.ScheduleDate))
+	|		ON (ScheduleData.Year = YEAR(ScheduleDates.ScheduleDate))
 	|			AND (ScheduleData.ScheduleDate = ScheduleDates.ScheduleDate)
 	|		LEFT JOIN TTCountOfDaysIncludedInLine AS DaysIncludedInSchedule
-	|		BY (DaysIncludedInSchedule.ScheduleDate = ScheduleDates.ScheduleDate)
+	|		ON (DaysIncludedInSchedule.ScheduleDate = ScheduleDates.ScheduleDate)
 	|
 	|ORDER BY
 	|	ScheduleDates.ScheduleDate";
@@ -359,7 +359,7 @@ Function GetWorkingDaysDates(Schedule, BeginningDates, GetPreceding = False, Cal
 		|FROM
 		|	BeginningDates AS BeginningDates
 		|		LEFT JOIN InformationRegister.BusinessCalendarData AS CalendarDates
-		|		BY (CalendarDates.Date %ConditionSign% BeginningDates.Date)
+		|		ON (CalendarDates.Date %ConditionSign% BeginningDates.Date)
 		|			AND (CalendarDates.BusinessCalendar = &Schedule)
 		|			AND (CalendarDates.DayKind IN (
 		|			VALUE(Enum.BusinessCalendarDayKinds.Working), 

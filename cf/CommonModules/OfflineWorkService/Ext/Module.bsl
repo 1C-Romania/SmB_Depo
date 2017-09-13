@@ -435,7 +435,7 @@ Function OfflineWorkplacesMonitor() Export
 	|	ExchangePlan.[ExchangePlanName] AS ExchangePlan
 	|
 	|	LEFT JOIN SuccessfulDataExchangeStatus AS SuccessfulDataExchangeStatus
-	|	BY ExchangePlan.Ref = SuccessfulDataExchangeStatus.OfflineWorkplace
+	|	ON ExchangePlan.Ref = SuccessfulDataExchangeStatus.OfflineWorkplace
 	|
 	|WHERE
 	|	ExchangePlan.Ref <> &ApplicationInService

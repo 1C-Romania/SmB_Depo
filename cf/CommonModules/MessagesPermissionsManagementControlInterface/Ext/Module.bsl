@@ -26,6 +26,13 @@ Function ApplicationInterface() Export
 	
 EndFunction
 
+// Returns the name of the messages application interface
+Function ProgramInterface() Export
+	
+	Return "ApplicationPermissionsControl";
+	
+EndFunction
+
 // Registers message handlers as handlers of message exchange channels
 //
 // Parameters:

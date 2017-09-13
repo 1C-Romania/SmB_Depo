@@ -225,7 +225,7 @@ Function WriteInExecutionProtocol(ExchangeComponents,
 			If Value = Undefined Then
 				Continue;
 			EndIf; 
-			Key = Field.Key;
+			FieldKey = Field.Key;
 			Str  = Str + Chars.LF + Indent + Chars.Tab
 				+ StringFunctionsClientServer.SupplementString(Field.Key, Align) + " =  " + String(Value);
 			

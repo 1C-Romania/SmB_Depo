@@ -1942,24 +1942,24 @@ Function ChangeRecordRuleStructure(Rule, Columns)
 	
 	For Each Column IN Columns Do
 		
-		Key = Column.Name;
-		Value = Rule[Key];
+		ColumnName = Column.Name;
+		Value = Rule[ColumnName];
 		
 		If TypeOf(Value) = Type("ValueTable") Then
 			
-			Result.Insert(Key, Value.Copy());
+			Result.Insert(ColumnName, Value.Copy());
 			
 		ElsIf TypeOf(Value) = Type("ValueTree") Then
 			
-			Result.Insert(Key, Value.Copy());
+			Result.Insert(ColumnName, Value.Copy());
 			
 		ElsIf TypeOf(Value) = Type("Structure") Then
 			
-			Result.Insert(Key, CopyStructure(Value));
+			Result.Insert(ColumnName, CopyStructure(Value));
 			
 		Else
 			
-			Result.Insert(Key, Value);
+			Result.Insert(ColumnName, Value);
 			
 		EndIf;
 		
@@ -3041,23 +3041,23 @@ Procedure SetValuesOnNode(ExchangePlanNode, Settings)
 	
 	For Each Item IN Settings Do
 		
-		Key = Item.Key;
+		ItemKey = Item.Key;
 		Value = Item.Value;
 		
-		If ExchangePlanNode.Metadata().Attributes.Find(Key) = Undefined
-			AND ExchangePlanNode.Metadata().TabularSections.Find(Key) = Undefined Then
+		If ExchangePlanNode.Metadata().Attributes.Find(ItemKey) = Undefined
+			AND ExchangePlanNode.Metadata().TabularSections.Find(ItemKey) = Undefined Then
 			Continue;
 		EndIf;
 		
 		If TypeOf(Value) = Type("Array") Then
 			
-			AttributeData = GetReferenceTypeFromFirstExchangePlanTabularSectionAttribute(ExchangePlanName, Key);
+			AttributeData = GetReferenceTypeFromFirstExchangePlanTabularSectionAttribute(ExchangePlanName, ItemKey);
 			
 			If AttributeData = Undefined Then
 				Continue;
 			EndIf;
 			
-			NodeTable = ExchangePlanNode[Key];
+			NodeTable = ExchangePlanNode[ItemKey];
 			
 			NodeTable.Clear();
 			
@@ -3077,11 +3077,11 @@ Procedure SetValuesOnNode(ExchangePlanNode, Settings)
 			
 		ElsIf TypeOf(Value) = Type("Structure") Then
 			
-			FillExchangePlanNodeTable(ExchangePlanNode, Value, Key);
+			FillExchangePlanNodeTable(ExchangePlanNode, Value, ItemKey);
 			
 		Else // primitive types
 			
-			ExchangePlanNode[Key] = Value;
+			ExchangePlanNode[ItemKey] = Value;
 			
 		EndIf;
 		

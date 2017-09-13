@@ -93,7 +93,7 @@ Procedure PrepareDataArea(Val Message, Val Sender, Val FromExporting)
 	MessagesRemoteAdministrationImplementation.PrepareDataArea(
 		MessageBody.Zone,
 		FromExporting,
-		?(FromExporting, Undefined, MessageBody.Type),
+		?(FromExporting, Undefined, MessageBody.Kind),
 		MessageBody.DataFileId);
 	
 EndProcedure

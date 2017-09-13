@@ -10,13 +10,13 @@ Procedure BeforeWrite(Cancel)
 	
 	MessageChannel = Description;
 	
-	BodyContent = MessageBody.Get();
+	BodyContent = Body.Get();
 	
 	// StandardSubsystems.SaaS.BasicFunctionalitySaaS
 	MessagesSaaS.BeforeMessageSending(MessageChannel, BodyContent);
 	// End StandardSubsystems.SaaS.BasicFunctionalitySaaS
 	
-	MessageBody = New ValueStorage(BodyContent);
+	Body = New ValueStorage(BodyContent);
 	
 EndProcedure
 

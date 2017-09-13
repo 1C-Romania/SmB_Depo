@@ -560,11 +560,11 @@ EndProcedure
 
 Function ExportImportDataBackgroundJobKey(ExchangePlan, NodeCode)
 	
-	Key = "ExchangePlan:[ExchangePlan] NodeCode:[NodeCode]";
-	Key = StrReplace(Key, "[ExchangePlan]", ExchangePlan);
-	Key = StrReplace(Key, "[NodeCode]", NodeCode);
+	strKey = "ExchangePlan:[ExchangePlan] NodeCode:[NodeCode]";
+	strKey = StrReplace(strKey, "[ExchangePlan]", ExchangePlan);
+	strKey = StrReplace(strKey, "[NodeCode]", NodeCode);
 	
-	Return Key;
+	Return strKey;
 EndFunction
 
 Function RegisterDataForInitialExport(Val ExchangePlanName, Val NodeCode, LongOperation, ActionID, CatalogsOnly)

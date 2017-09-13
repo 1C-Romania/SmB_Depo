@@ -23,7 +23,7 @@
 		<ChildObjects>
 			<Operation uuid="339c9220-fd5b-45d3-b300-cdcc8788f87e">
 				<Properties>
-					<Name>ExecuteExport</Name>
+					<Name>Upload</Name>
 					<Synonym>
 						<v8:item>
 							<v8:lang>en</v8:lang>
@@ -103,11 +103,11 @@
 			</Operation>
 			<Operation uuid="d047caa8-7bcf-41ac-a18e-97877d6e0a2a">
 				<Properties>
-					<Name>Import</Name>
+					<Name>Download</Name>
 					<Synonym>
 						<v8:item>
 							<v8:lang>en</v8:lang>
-							<v8:content>Import</v8:content>
+							<v8:content>Download</v8:content>
 						</v8:item>
 						<v8:item>
 							<v8:lang>ru</v8:lang>
@@ -183,7 +183,7 @@
 			</Operation>
 			<Operation uuid="110121eb-a0eb-4662-8911-3dcc3d341a73">
 				<Properties>
-					<Name>ExecuteDataExport</Name>
+					<Name>UploadData</Name>
 					<Synonym>
 						<v8:item>
 							<v8:lang>en</v8:lang>
@@ -320,7 +320,7 @@
 			</Operation>
 			<Operation uuid="49dbe467-8832-4ede-9a05-494248619aeb">
 				<Properties>
-					<Name>ExecuteDataImport</Name>
+					<Name>DownloadData</Name>
 					<Synonym>
 						<v8:item>
 							<v8:lang>en</v8:lang>
@@ -579,7 +579,7 @@
 			</Operation>
 			<Operation uuid="496e5de8-d75c-4536-9993-75374f070b40">
 				<Properties>
-					<Name>GetCommonNodeData</Name>
+					<Name>GetCommonNodsData</Name>
 					<Synonym>
 						<v8:item>
 							<v8:lang>en</v8:lang>
@@ -621,7 +621,7 @@
 			</Operation>
 			<Operation uuid="48febdbd-a085-4113-8511-ed7ff6be7d3c">
 				<Properties>
-					<Name>CreateDataExchange</Name>
+					<Name>CreateExchange</Name>
 					<Synonym>
 						<v8:item>
 							<v8:lang>en</v8:lang>
@@ -720,7 +720,7 @@
 			</Operation>
 			<Operation uuid="789514e5-8ea3-4a5e-88c5-ed89c4135866">
 				<Properties>
-					<Name>UpdateDataExchangeSettings</Name>
+					<Name>UpdateExchange</Name>
 					<Synonym>
 						<v8:item>
 							<v8:lang>en</v8:lang>
@@ -800,7 +800,7 @@
 			</Operation>
 			<Operation uuid="e0619d14-c658-4eb5-841a-3a029de28be4">
 				<Properties>
-					<Name>RecordCatalogChangesOnly</Name>
+					<Name>RegisterOnlyCatalogData</Name>
 					<Synonym>
 						<v8:item>
 							<v8:lang>en</v8:lang>
@@ -899,7 +899,7 @@
 			</Operation>
 			<Operation uuid="e58233ec-6cfc-4a8b-9929-689fa69cdb07">
 				<Properties>
-					<Name>RecordAllChangesExceptCatalogs</Name>
+					<Name>RegisterAllDataExceptCatalogs</Name>
 					<Synonym>
 						<v8:item>
 							<v8:lang>en</v8:lang>
@@ -998,7 +998,7 @@
 			</Operation>
 			<Operation uuid="1c722dfd-2b07-4985-9188-17353de24771">
 				<Properties>
-					<Name>GetLongOperationState</Name>
+					<Name>GetContinuousOperationStatus</Name>
 					<Synonym>
 						<v8:item>
 							<v8:lang>en</v8:lang>

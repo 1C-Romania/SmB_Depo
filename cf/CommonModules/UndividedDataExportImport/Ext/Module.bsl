@@ -291,7 +291,7 @@ Procedure CheckNaturalKeysTakesPresence(Val MetadataObject, Val NaturalKeyFields
 	|FROM
 	|	vtTakes AS vtTakes
 	|		INNER JOIN " + TableName + " AS
-	|		_Table_Catalog_First BY vtDubli.Ref
+	|		_Table_Catalog_First ON vtDubli.Ref
 	|		<> _Table_Catalog_First.Ref %3";
 	
 	AdditionalRequestText = "";

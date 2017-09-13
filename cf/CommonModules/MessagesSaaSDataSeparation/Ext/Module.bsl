@@ -53,7 +53,7 @@ EndFunction
 Procedure MessageBeforeWrite(MessageObject, StandardProcessing) Export
 	
 	Message = Undefined;
-	If MessagesSaaS.BodyContainTypedMessage(MessageObject.MessageBody.Get(), Message) Then
+	If MessagesSaaS.BodyContainTypedMessage(MessageObject.Body.Get(), Message) Then
 		
 		If MessagesSaaSReUse.TypeAreaBody().IsDescendant(Message.Body.Type()) Then
 			

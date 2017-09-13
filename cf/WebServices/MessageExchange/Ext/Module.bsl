@@ -24,7 +24,8 @@ Function DeliverMessages(SenderCode, StreamStorage)
 	// Importing messages into the infobase.
 	MessageExchangeInternal.SerializeDataFromStream(
 		Sender,
-		StreamStorage.Get(),
+		//StreamStorage.Get(),
+		MessageExchangeInternal.ConvertExchangePlanMessageData(StreamStorage.Get()),
 		ImportedMessages,
 		DataReadInPart);
 	
@@ -85,6 +86,8 @@ Function GetInfobaseParameters(ThisEndPointDescription)
 	Result = New Structure;
 	Result.Insert("Code",          ThisPointParameters.Code);
 	Result.Insert("Description", ThisPointParameters.Description);
+	Result.Insert("Код",          ThisPointParameters.Code);
+	Result.Insert("Наименование", ThisPointParameters.Description);
 	
 	Return ValueToStringInternal(Result);
 EndFunction
@@ -94,7 +97,8 @@ Function ToConnectEndPoint(Code, Description, RecipientConnectionSettingsString)
 	
 	Cancel = False;
 	
-	MessageExchangeInternal.ConnectEndPointAtRecipient(Cancel, Code, Description, ValueFromStringInternal(RecipientConnectionSettingsString));
+	//MessageExchangeInternal.ConnectEndPointAtRecipient(Cancel, Code, Description, ValueFromStringInternal(RecipientConnectionSettingsString));
+	MessageExchangeInternal.ConnectEndpointAtRecipient(Cancel, Code, Description, MessageExchangeInternal.ConvertRecipientConnectionSettings(ValueFromStringInternal(RecipientConnectionSettingsString)));
 	
 	Return Not Cancel;
 EndFunction
@@ -102,7 +106,8 @@ EndFunction
 // Corresponds to operation UpdateConnectionSettings.
 Function RefreshConnectionSettings(Code, ConnectionSettingsString)
 	
-	ConnectionSettings = ValueFromStringInternal(ConnectionSettingsString);
+	//ConnectionSettings = ValueFromStringInternal(ConnectionSettingsString);
+	ConnectionSettings = MessageExchangeInternal.ConvertRecipientConnectionSettings(ValueFromStringInternal(ConnectionSettingsString));
 	
 	SetPrivilegedMode(True);
 	
@@ -119,7 +124,9 @@ Function RefreshConnectionSettings(Code, ConnectionSettingsString)
 		RecordStructure.Insert("Node", EndPoint);
 		RecordStructure.Insert("ExchangeMessageTransportKindByDefault", Enums.ExchangeMessagesTransportKinds.WS);
 		
-		RecordStructure.Insert("WSURLWebService",   ConnectionSettings.WSURLWebService);
+		ConnectionSettings = MessageExchangeInternal.ConvertRecipientConnectionSettings(ConnectionSettings);
+		
+		RecordStructure.Insert("WSURL",   ConnectionSettings.WSURLWebService);
 		RecordStructure.Insert("WSUserName", ConnectionSettings.WSUserName);
 		RecordStructure.Insert("WSPassword",          ConnectionSettings.WSPassword);
 		RecordStructure.Insert("WSRememberPassword", True);
@@ -149,13 +156,15 @@ Function CheckConnectionAtRecipient(ConnectionSettingsString, SenderCode)
 	
 	ErrorMessageString = "";
 	
-	WSProxy = MessageExchangeInternal.GetWSProxy(ValueFromStringInternal(ConnectionSettingsString), ErrorMessageString);
+	ConnectionSettingsStructure = MessageExchangeInternal.ConvertRecipientConnectionSettings(ValueFromStringInternal(ConnectionSettingsString));
+	WSProxy = MessageExchangeInternal.GetWSProxy(ConnectionSettingsStructure, ErrorMessageString);
 	
 	If WSProxy = Undefined Then
 		Raise ErrorMessageString;
 	EndIf;
 	
-	WSProxy.CheckConnectionAtSender(SenderCode);
+	//WSProxy.CheckConnectionAtSender(SenderCode);
+	WSProxy.TestConnectionSender(SenderCode);
 	
 EndFunction
 

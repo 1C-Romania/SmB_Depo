@@ -103,9 +103,13 @@ Procedure SetDataChangeFlag() Export
 	
 	BeginTransaction();
 	Try
-		MessageExchange.SendMessage("DataExchange\ManagementApplication\DataChangeFlag",
-						New Structure("NodeCode", DataExchangeServer.ExchangePlanNodeCodeString(DataArea)),
-						SaaSReUse.ServiceManagerEndPoint());
+		MessageExchange.SendMessage(MessageExchangeInternal.ConvertBackExchangePlanMessageData("DataExchange\ManagementApplication\DataChangeFlag"),
+				New Structure(MessageExchangeInternal.ConvertBackExchangePlanMessageData("NodeCode"), DataExchangeServer.ExchangePlanNodeCodeString(DataArea)),
+				SaaSReUse.ServiceManagerEndpoint());
+
+		//MessageExchange.SendMessage("DataExchange\ManagementApplication\DataChangeFlag",
+		//				New Structure("NodeCode", DataExchangeServer.ExchangePlanNodeCodeString(DataArea)),
+		//				SaaSReUse.ServiceManagerEndPoint());
 		
 		Constants.DataChangesRecorded.Set(True);
 		
@@ -436,7 +440,7 @@ Procedure LockEndPoints() Export
 	|WHERE
 	|	MessageExchange.Ref <> &ThisNode
 	|	AND MessageExchange.Ref <> &ServiceManagerEndPoint
-	|	AND Not MessageExchange.Blocked";
+	|	AND Not MessageExchange.Locked";
 	
 	Query = New Query;
 	Query.SetParameter("ThisNode", MessageExchangeInternal.ThisNode());
@@ -448,7 +452,7 @@ Procedure LockEndPoints() Export
 	While Selection.Next() Do
 		
 		EndPoint = Selection.Ref.GetObject();
-		EndPoint.Blocked = True;
+		EndPoint.Locked = True;
 		EndPoint.Write();
 		
 	EndDo;
@@ -1335,7 +1339,8 @@ Procedure ExecuteDataExchangeScenarioActionInSecondInfobase(ScenarioRowIndex, Da
 		
 		// Indicate the exchange completion in the managing application
 		WSServiceProxy = DataExchangeSaaSReUse.GetExchangeServiceWSProxy();
-		WSServiceProxy.CommitExchange(XDTOSerializer.WriteXDTO(DataExchangeScenario));
+		//WSServiceProxy.CommitExchange(XDTOSerializer.WriteXDTO(DataExchangeScenario));
+		WSServiceProxy.CommitExchange(XDTOSerializer.WriteXDTO(MessageExchangeInternal.ConvertBackDataExchangeScenarioValueTable(DataExchangeScenario)));
 		Return;
 	EndIf;
 	
@@ -1476,9 +1481,9 @@ Function SynchronizationStatusesData() Export
 	|FROM
 	|	DataExchangeStatusExport AS DataExchangeStatusExport
 	|		LEFT JOIN DataExchangeStatusImport AS DataExchangeStatusImport
-	|		BY DataExchangeStatusExport.InfobaseNode = DataExchangeStatusImport.InfobaseNode
+	|		ON DataExchangeStatusExport.InfobaseNode = DataExchangeStatusImport.InfobaseNode
 	|		LEFT JOIN ProblemsExchangeData AS ProblemsExchangeData
-	|		BY DataExchangeStatusExport.InfobaseNode = ProblemsExchangeData.InfobaseNode";
+	|		ON DataExchangeStatusExport.InfobaseNode = ProblemsExchangeData.InfobaseNode";
 	
 	Query = New Query;
 	Query.Text = QueryText;

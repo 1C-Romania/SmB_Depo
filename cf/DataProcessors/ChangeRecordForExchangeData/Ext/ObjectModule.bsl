@@ -124,7 +124,7 @@ Function SetNodTree(ObjectData = Undefined, TableName = Undefined) Export
 			|LEFT JOIN
 			|	" + CurTableName + ".Changes
 			|AS
-			|ChangesTable BY ChangesTable.Node = ExchangePlan.Ref
+			|ChangesTable ON ChangesTable.Node = ExchangePlan.Ref
 			|	" + QueryText + "
 			|WHERE
 			|	NOT

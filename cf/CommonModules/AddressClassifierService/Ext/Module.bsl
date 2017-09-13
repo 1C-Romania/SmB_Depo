@@ -2632,7 +2632,7 @@ Function OneAddressAnalysisByClassifier(Address, Levels)
 		|	Constructions FROM // Subordinacy hierarchy InformationRegister.AddressObjects
 		|	AS RFTerritorialEntity LEFT JOIN InformationRegister.AdditionalAddressInformation AS
 		|
-		|	RFTerritorialEntityAdditionally BY RFTerritorialEntityAdditionally.Identifier
+		|	RFTerritorialEntityAdditionally ON RFTerritorialEntityAdditionally.Identifier
 		|
 		|=
 		|	RFTerritorialEntity.Additionally
@@ -2641,7 +2641,7 @@ Function OneAddressAnalysisByClassifier(Address, Levels)
 		|LEFT
 		|	JOIN InformationRegister.AddressObjects AS
 		|District
-		|	BY District.Description = &DistrictName
+		|	ON District.Description = &DistrictName
 		|	AND District.Abbreviation = &RegionAbbr
 		|	AND District.Level = 2 AND District.RFTerritorialEntityCode
 		|	= RFTerritorialEntity.RFTerritorialEntityCode
@@ -2651,7 +2651,7 @@ Function OneAddressAnalysisByClassifier(Address, Levels)
 		|	= 0 AND District.AdditionalItemCode = 0 AND District.SubordinateItemCode
 		|	= 0 LEFT JOIN InformationRegister.AdditionalAddressInformation
 		|	AS
-		|	DistrictAdditionally BY DistrictAdditionally.Identifier
+		|	DistrictAdditionally ON DistrictAdditionally.Identifier
 		|=
 		|	District.Additionally
 		|", "") + "
@@ -2660,7 +2660,7 @@ Function OneAddressAnalysisByClassifier(Address, Levels)
 		|LEFT
 		|	JOIN InformationRegister.AddressObjects AS
 		|District
-		|	BY District.Description = &DistrictName
+		|	ON District.Description = &DistrictName
 		|	AND District.Abbreviation = &DistrictAbbreviation AND District.Level
 		|	= 3 AND District.RFTerritorialEntityCode = RFTerritorialEntity.RFTerritorialEntityCode
 		|	AND District.RegionCode
@@ -2672,7 +2672,7 @@ Function OneAddressAnalysisByClassifier(Address, Levels)
 		|	District.SubordinateItemCode = 0
 		|	LEFT JOIN InformationRegister.AdditionalAddressInformation
 		|AS
-		|	DistrictAdditionally BY DistrictAdditionally.Identifier
+		|	DistrictAdditionally ON DistrictAdditionally.Identifier
 		|=
 		|	DistrictAdditionally
 		|", "") + "
@@ -2681,7 +2681,7 @@ Function OneAddressAnalysisByClassifier(Address, Levels)
 		|LEFT
 		|	JOIN InformationRegister.AddressObjects AS
 		|City
-		|	BY City.Name = &CityName
+		|	ON City.Name = &CityName
 		|	AND City.Abbreviation = &CityAbbreviation AND City.Level
 		|	= 4 AND City.RFTerritorialEntityCode = RFTerritorialEntity.RFTerritorialEntityCode
 		|	AND City.RegionCode
@@ -2693,7 +2693,7 @@ Function OneAddressAnalysisByClassifier(Address, Levels)
 		|	= 0 AND
 		|	City.SubordinateItemCode = 0 LEFT JOIN InformationRegister.AdditionalAddressInformation
 		|AS
-		|	CityAdditionally BY CityAdditionally.Identifier
+		|	CityAdditionally ON CityAdditionally.Identifier
 		|=
 		|	City.Additionaly
 		|", "") + "
@@ -2702,7 +2702,7 @@ Function OneAddressAnalysisByClassifier(Address, Levels)
 		|LEFT
 		|	JOIN InformationRegister.AddressObjects AS
 		|UrbanDistrict
-		|	BY UrbanDistrict.Description = &UrbanDistrictDescpription
+		|	ON UrbanDistrict.Description = &UrbanDistrictDescpription
 		|	AND UrbanDistrict.Abbreviation = &UrbanDistrictAbbreviation
 		|	AND UrbanDistrict.Level = 5 AND UrbanDistrict.RFTerritorialEntityCode = RFTerritorialEntity.RFTerritorialEntityCode
 		|	AND UrbanDistrict.DistrictCode
@@ -2723,7 +2723,7 @@ Function OneAddressAnalysisByClassifier(Address, Levels)
 		|LEFT
 		|	JOIN InformationRegister.AddressObjects AS
 		|Settlement
-		|	BY Settlement.Name = &SettlementName
+		|	ON Settlement.Name = &SettlementName
 		|	AND Settlement.Abbreviation = &SettlementAbbreviation AND Settlement.Level
 		|	= 6 AND Settlement.RFTerritorialEntityCode = RFTerritorialEntity.RFTerritorialEntityCode
 		|	AND Settlement.DistrictCode
@@ -2744,7 +2744,7 @@ Function OneAddressAnalysisByClassifier(Address, Levels)
 		|LEFT
 		|	JOIN InformationRegister.AddressObjects AS
 		|Street
-		|	BY Street.Name = &StreetName
+		|	ON Street.Name = &StreetName
 		|	AND Street.Abbreviation = &StreetAbbreviation AND Street.Level
 		|	= 7 AND Street.RFTerritorialEntityCode = RFTerritorialEntity.RFTerritorialEntityCode
 		|	AND Street.DistrictCode
@@ -2765,7 +2765,7 @@ Function OneAddressAnalysisByClassifier(Address, Levels)
 		|LEFT
 		|	JOIN InformationRegister.AddressObjects AS
 		|Additional
-		|	BY Additional.Name = &AdditionalName
+		|	ON Additional.Name = &AdditionalName
 		|	AND Additional.Abbreviation = &AdditionalAbbreviation AND Additional.Level
 		|	= 90 AND Additional.RFTerritorialEntityCode = RFTerritorialEntity.RFTerritorialEntityCode
 		|	AND Additional.DistrictCode
@@ -2779,14 +2779,14 @@ Function OneAddressAnalysisByClassifier(Address, Levels)
 		|LEFT JOIN
 		|InformationRegister.AdditionalAddressInformation AS
 		|AdditionalAdditionally
-		|BY AdditionalAdditionally.Identifier = Additional.Additionaly
+		|ON AdditionalAdditionally.Identifier = Additional.Additionaly
 		|", "") + "
 		|	
 		|" + ?(CheckSubordinate, "
 		|LEFT
 		|	JOIN InformationRegister.AddressObjects AS
 		|Subordinate
-		|	BY Subordinate.Name = &SubordinateName
+		|	ON Subordinate.Name = &SubordinateName
 		|	AND Subordinate.Abbreviation = &SubordinateAbbreviation AND Subordinate.Level
 		|	= 91 AND Subordinate.RFTerritorialEntityCode = RFTerritorialEntity.RFTerritorialEntityCode
 		|	AND Subordinate.DistrictCode
@@ -2800,7 +2800,7 @@ Function OneAddressAnalysisByClassifier(Address, Levels)
 		|LEFT
 		|	JOIN InformationRegister.AdditionalAddressInformation
 		|AS
-		|	SubordinateAdditionally BY SubordinateAdditionally.Identifier = SubordinateAdditionally
+		|	SubordinateAdditionally ON SubordinateAdditionally.Identifier = SubordinateAdditionally
 		|", "") + "
 		|
 		|// Write buildings
@@ -4281,25 +4281,25 @@ Procedure SetAddressLevelsByAddressParts(PartsAddresses, Levels) Export
 		ElsIf Level = 2 Then
 			FieldList.Insert("District", "DistrictCode");
 			ConnectionText = ConnectionText + " LEFT JOIN District AS
-				| District BY RFTerritorialEntity.RFTerritorialEntityCode AND District.RFTerritorialEntityCode =";
+				| District ON RFTerritorialEntity.RFTerritorialEntityCode AND District.RFTerritorialEntityCode =";
 			DistrictCode = "District.DistrictCode";
 		ElsIf Level = 3 Then
 			FieldList.Insert("Region", "RegionCode");
 			ConnectionText = ConnectionText + " LEFT JOIN Region AS
-				| Region BY Region.RFTerritorialEntityCode =
+				| Region ON Region.RFTerritorialEntityCode =
 				| RFTerritorialEntity.RFTerritorialEntityCode AND Region.DistrictCode = " + DistrictCode;
 				RegionCode = "Region.RegionCode";
 		ElsIf Level = 4 Then
 			FieldList.Insert("City", "CityCode");
 			ConnectionText = ConnectionText + " LEFT JOIN City AS
-				| City BY City.RFTerritorialEntityCode =
+				| City ON City.RFTerritorialEntityCode =
 				| RFTerritorialEntity.RFTerritorialEntityCode AND City.DistrictCode = " + DistrictCode + "
 				| AND  City.RegionCode = " + RegionCode;
 				CityCode = "City.CityCode";
 		ElsIf Level = 5 Then
 				FieldList.Insert("UrbanDistrict", "UrbanDistrictCode");
 				ConnectionText = ConnectionText + " LEFT JOIN UrbanDistrict AS
-					| UrbanDistrict BY UrbanDistrict.RFTerritorialEntityCode =
+					| UrbanDistrict ON UrbanDistrict.RFTerritorialEntityCode =
 					| RFTerritorialEntity.RFTerritorialEntityCode AND UrbanDistrict.DistrictCode = " + DistrictCode + "
 					| AND  UrbanDistrict.RegionCode = " + RegionCode + "
 					| AND  UrbanDistrict.CityCode = " + CityCode;
@@ -4307,7 +4307,7 @@ Procedure SetAddressLevelsByAddressParts(PartsAddresses, Levels) Export
 		ElsIf Level = 6 Then
 				FieldList.Insert("Settlement", "SettlementCode");
 				ConnectionText = ConnectionText + " LEFT JOIN Settlement AS
-					| Settlement BY Settlement.RFTerritorialEntityCode =
+					| Settlement ON Settlement.RFTerritorialEntityCode =
 					| RFTerritorialEntity.RFTerritorialEntityCode AND Settlement.DistrictCode = " + DistrictCode + "
 					| AND  Settlement.RegionCode = " + RegionCode + "
 					| AND  Settlement.CityCode = " + CityCode + "
@@ -4316,7 +4316,7 @@ Procedure SetAddressLevelsByAddressParts(PartsAddresses, Levels) Export
 		ElsIf Level = 7 Then
 				FieldList.Insert("Streets", "StreetCode");
 				ConnectionText = ConnectionText + " LEFT JOIN Streets AS
-					| Streets BY Streets.RFTerritorialEntityCode =
+					| Streets ON Streets.RFTerritorialEntityCode =
 					| RFTerritorialEntity.RFTerritorialEntityCode AND Streets.DistrictCode = " + DistrictCode + "
 					| AND  Streets.RegionCode = " + RegionCode + "
 					| AND  Streets.CityCode = " + CityCode + "
@@ -4683,25 +4683,25 @@ Procedure SetAddressLevelsByAddressPartsForSettlement(Levels, PartsAddresses) Ex
 		ElsIf Level = 2 Then
 			FieldList.Insert("District");
 			ConnectionText = ConnectionText + " LEFT JOIN District AS
-				| District BY RFTerritorialEntity.RFTerritorialEntityCode AND District.RFTerritorialEntityCode =";
+				| District ON RFTerritorialEntity.RFTerritorialEntityCode AND District.RFTerritorialEntityCode =";
 			DistrictCode = "District.DistrictCode";
 		ElsIf Level = 3 Then
 			FieldList.Insert("Region");
 			ConnectionText = ConnectionText + " LEFT JOIN Region AS
-				| Region BY Region.RFTerritorialEntityCode =
+				| Region ON Region.RFTerritorialEntityCode =
 				| RFTerritorialEntity.RFTerritorialEntityCode AND Region.DistrictCode = " + DistrictCode;
 				RegionCode = "Region.RegionCode";
 		ElsIf Level = 4 Then
 			FieldList.Insert("City");
 			ConnectionText = ConnectionText + " LEFT JOIN City AS
-				| City BY City.RFTerritorialEntityCode =
+				| City ON City.RFTerritorialEntityCode =
 				| RFTerritorialEntity.RFTerritorialEntityCode AND City.DistrictCode = " + DistrictCode + "
 				| AND  City.RegionCode = " + RegionCode;
 				CityCode = "City.CityCode";
 		ElsIf Level = 5 Then
 				FieldList.Insert("UrbanDistrict");
 				ConnectionText = ConnectionText + " LEFT JOIN UrbanDistrict AS
-					| UrbanDistrict BY UrbanDistrict.RFTerritorialEntityCode =
+					| UrbanDistrict ON UrbanDistrict.RFTerritorialEntityCode =
 					| RFTerritorialEntity.RFTerritorialEntityCode AND UrbanDistrict.DistrictCode = " + DistrictCode + "
 					| AND  UrbanDistrict.RegionCode = " + RegionCode + "
 					| AND  UrbanDistrict.CityCode = " + CityCode;
@@ -4709,7 +4709,7 @@ Procedure SetAddressLevelsByAddressPartsForSettlement(Levels, PartsAddresses) Ex
 		ElsIf Level = 6 Then
 				FieldList.Insert("Settlement");
 				ConnectionText = ConnectionText + " LEFT JOIN Settlement AS
-					| Settlement BY Settlement.RFTerritorialEntityCode =
+					| Settlement ON Settlement.RFTerritorialEntityCode =
 					| RFTerritorialEntity.RFTerritorialEntityCode AND Settlement.DistrictCode = " + DistrictCode + "
 					| AND  Settlement.RegionCode = " + RegionCode + "
 					| AND  Settlement.CityCode = " + CityCode + "

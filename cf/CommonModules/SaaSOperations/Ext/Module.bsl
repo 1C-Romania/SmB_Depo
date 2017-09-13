@@ -621,12 +621,12 @@ Procedure DataAreasMaintenance() Export
 	
 	While Selection.Next() Do
 		
-		Key = CreateAuxiliaryDataRecordKeyOfInformationRegister(
+		RecordKey = CreateAuxiliaryDataRecordKeyOfInformationRegister(
 			InformationRegisters.DataAreas,
 			New Structure(SupportDataSplitter(), Selection.DataArea));
 		
 		Try
-			LockDataForEdit(Key);
+			LockDataForEdit(RecordKey);
 		Except
 			Continue;
 		EndTry;
@@ -640,7 +640,7 @@ Procedure DataAreasMaintenance() Export
 		ElsIf Manager.Status = Enums.DataAreaStatuses.ToDelete Then 
 			MethodName = "SaaSOperations.ClearDataArea";
 		Else
-			UnlockDataForEdit(Key);
+			UnlockDataForEdit(RecordKey);
 			Continue;
 		EndIf;
 		
@@ -652,7 +652,7 @@ Procedure DataAreasMaintenance() Export
 			JobFilter.Insert("DataArea", Selection.DataArea);
 			Jobs = JobQueue.GetJobs(JobFilter);
 			If Jobs.Count() > 0 Then
-				UnlockDataForEdit(Key);
+				UnlockDataForEdit(RecordKey);
 				Continue;
 			EndIf;
 			
@@ -684,13 +684,13 @@ Procedure DataAreasMaintenance() Export
 			
 			JobQueue.AddJob(JobParameters);
 			
-			UnlockDataForEdit(Key);
+			UnlockDataForEdit(RecordKey);
 		Else
 			
 			ChangeAreasStateAndNotifyManager(Manager, ?(Manager.Status = Enums.DataAreaStatuses.New,
 				"FatalError", "ErrorDelete"), NStr("en='Number of attempts to process the area is exceeded';ru='Исчерпано количество попыток обработки области'"));
 			
-			UnlockDataForEdit(Key);
+			UnlockDataForEdit(RecordKey);
 			
 		EndIf;
 		

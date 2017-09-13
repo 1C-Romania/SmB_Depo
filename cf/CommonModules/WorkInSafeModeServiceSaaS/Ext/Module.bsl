@@ -406,13 +406,13 @@ Function AuthorizationKey(Val Resolution) Export
 	Hashing = New DataHashing(HashFunction.MD5);
 	Hashing.Append(CommonUse.ObjectXDTOInXMLString(Resolution));
 	
-	Key = XDTOFactory.Create(XDTOFactory.Type("http://www.w3.org/2001/XMLSchema", "hexBinary"), Hashing.HashSum).LexicalMeaning;
+	AuthorizationKey = XDTOFactory.Create(XDTOFactory.Type("http://www.w3.org/2001/XMLSchema", "hexBinary"), Hashing.HashSum).LexicalMeaning;
 	
-	If StrLen(Key) > 32 Then
-		Raise NStr("en='Key length excess';ru='Превышение дланы ключа'");
+	If StrLen(AuthorizationKey) > 32 Then
+		Raise NStr("en='Key length excess';ru='Превышение длины ключа'");
 	EndIf;
 	
-	Return Key;
+	Return AuthorizationKey;
 	
 EndFunction
 
@@ -495,7 +495,7 @@ Procedure LockGrantedPermissionsRegisters(Val ApplicationModule = Undefined, Val
 	EndIf;
 	
 	If ApplicationModule <> Undefined Then
-		Key = RegisterKeyByLink(ApplicationModule);
+		stKey = RegisterKeyByLink(ApplicationModule);
 	EndIf;
 	
 	Block = New DataLock();
@@ -503,8 +503,8 @@ Procedure LockGrantedPermissionsRegisters(Val ApplicationModule = Undefined, Val
 	For Each Register IN Registers Do
 		RegisterBlock = Block.Add(Register.CreateRecordSet().Metadata().FullName());
 		If ApplicationModule <> Undefined Then
-			RegisterBlock.SetValue("SoftwareModuleType", Key.Type);
-			RegisterBlock.SetValue("SoftwareModuleID", Key.ID);
+			RegisterBlock.SetValue("SoftwareModuleType", stKey.Type);
+			RegisterBlock.SetValue("SoftwareModuleID", stKey.ID);
 		EndIf;
 	EndDo;
 	
@@ -790,8 +790,8 @@ Procedure ClearIrrelevantQueries() Export
 			
 			Try
 				
-				Key = Register.CreateRecordKey(New Structure("IDRequest", Selection.IDRequest));
-				LockDataForEdit(Key);
+				RecordKey = Register.CreateRecordKey(New Structure("IDRequest", Selection.IDRequest));
+				LockDataForEdit(RecordKey);
 				
 			Except
 				

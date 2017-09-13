@@ -767,11 +767,11 @@ Procedure RefreshEmailAddress(Val UserObject, Val Address, Val EmailAddressStruc
 		TabularSectionRow.Presentation = Address;
 		
 		If EmailAddressStructure.Count() > 0 Then
-			TabularSectionRow.EMail_Address = EmailAddressStructure[0].Address;
+			TabularSectionRow.EmailAddress = EmailAddressStructure[0].Address;
 			
-			Pos = Find(TabularSectionRow.EMail_Address, "@");
+			Pos = Find(TabularSectionRow.EmailAddress, "@");
 			If Pos <> 0 Then
-				TabularSectionRow.ServerDomainName = Mid(TabularSectionRow.EMail_Address, Pos + 1);
+				TabularSectionRow.ServerDomainName = Mid(TabularSectionRow.EmailAddress, Pos + 1);
 			EndIf;
 		EndIf;
 	EndIf;

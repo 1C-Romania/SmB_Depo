@@ -114,7 +114,7 @@ Procedure GenerateDataAreaUpdatePlan(LibraryID, AllHandlers,
 				|FROM
 				|	Libraries AS Libraries
 				|		LEFT JOIN InformationRegister.SubsystemVersions AS SubsystemVersions
-				|		BY Libraries.Name = SubsystemVersions.SubsystemName";
+				|		ON Libraries.Name = SubsystemVersions.SubsystemName";
 				
 			BeginTransaction();
 			Try
@@ -221,7 +221,7 @@ Procedure OnEnablePostponedUpdating(Val Use) Export
 	Jobs = JobQueue.GetJobs(JobFilter);
 	
 	JobParameters = New Structure("Use", Use);
-	JobQueue.ChangeTask(Tasks[0].ID, JobParameters);
+	JobQueue.ChangeTask(Jobs[0].ID, JobParameters);
 	
 EndProcedure
 
@@ -474,7 +474,7 @@ Procedure TransferSubsystemsVersionsToAuxiliaryData() Export
 		|FROM
 		|	InformationRegister.DeleteVersionSubsystems AS DeleteVersionSubsystems
 		|		LEFT JOIN InformationRegister.DataAreasSubsystemVersions AS DataAreasSubsystemVersions
-		|		BY DeleteVersionSubsystems.DataArea = DataAreasSubsystemVersions.DataAreaAuxiliaryData
+		|		ON DeleteVersionSubsystems.DataArea = DataAreasSubsystemVersions.DataAreaAuxiliaryData
 		|			AND DeleteVersionSubsystems.SubsystemName = DataAreasSubsystemVersions.SubsystemName
 		|WHERE
 		|	DeleteVersionSubsystems.DataArea <> -1";
@@ -560,10 +560,10 @@ Procedure ScheduleDataAreaUpdate(Val LockAreas = True, Val LockMessage = "") Exp
 	|FROM
 	|	InformationRegister.DataAreas AS DataAreas
 	|		LEFT JOIN InformationRegister.DataAreasSubsystemVersions AS DataAreasSubsystemVersions
-	|		BY DataAreas.DataAreaAuxiliaryData = DataAreasSubsystemVersions.DataAreaAuxiliaryData
+	|		ON DataAreas.DataAreaAuxiliaryData = DataAreasSubsystemVersions.DataAreaAuxiliaryData
 	|			AND (DataAreasSubsystemVersions.SubsystemName = &SubsystemName)
 	|		LEFT JOIN InformationRegister.DataAreasActivityRating AS DataAreasActivityRating
-	|		BY DataAreas.DataAreaAuxiliaryData = DataAreasActivityRating.DataAreaAuxiliaryData
+	|		ON DataAreas.DataAreaAuxiliaryData = DataAreasActivityRating.DataAreaAuxiliaryData
 	|WHERE
 	|	DataAreas.Status IN (VALUE(Enum.DataAreaStatuses.Used))
 	|	AND (DataAreasSubsystemVersions.DataAreaAuxiliaryData IS NULL 
@@ -900,7 +900,7 @@ Procedure SetVersionForAllDataAreas(LibraryID, OriginalVersionOfDB, MetadataIBVe
 		|FROM
 		|	InformationRegister.DataAreas AS DataAreas
 		|		INNER JOIN InformationRegister.DataAreasSubsystemVersions AS DataAreasSubsystemVersions
-		|		BY DataAreas.DataAreaAuxiliaryData = DataAreasSubsystemVersions.DataAreaAuxiliaryData
+		|		ON DataAreas.DataAreaAuxiliaryData = DataAreasSubsystemVersions.DataAreaAuxiliaryData
 		|WHERE
 		|	DataAreas.Status = VALUE(Enum.DataAreaStatuses.Used)
 		|	AND DataAreasSubsystemVersions.SubsystemName = &SubsystemName

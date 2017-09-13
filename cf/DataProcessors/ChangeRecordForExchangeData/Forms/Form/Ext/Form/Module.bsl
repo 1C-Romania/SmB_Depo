@@ -1717,7 +1717,7 @@ Procedure AdjustRefsList(TableName, Description)
 		|MainTable RIGHT JOIN
 		|	" + TableName + ".Changes
 		|AS
-		|ChangesTable BY MainTable.Ref
+		|ChangesTable ON MainTable.Ref
 		|=
 		|ChangesTable.Ref WHERE ChangesTable.Node = &SelectedNode
 		|";
@@ -2281,12 +2281,12 @@ Function StructureOfSetKeyRecords(Val CurrentData)
 			Result.FormName = ListOfSetsRecordsTableName + ".RecordForm";
 			Result.Parameter = "Key";
 			
-			Key = New Structure;
+			stKey = New Structure;
 			For Each RequestColumn IN Set.Unload().Columns Do
 				ColumnName = RequestColumn.Name;
-				Key.Insert(ColumnName, Set[0][ColumnName]);
+				stKey.Insert(ColumnName, Set[0][ColumnName]);
 			EndDo;
-			Result.Value = Definition.Manager.CreateRecordKey(Key);
+			Result.Value = Definition.Manager.CreateRecordKey(stKey);
 		Else
 			// List
 			Result.FormName = ListOfSetsRecordsTableName + ".ListForm";

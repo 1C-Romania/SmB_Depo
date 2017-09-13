@@ -13,7 +13,11 @@ Procedure SessionParametersSetting(SessionParameterNames)
 	// End ServiceTechnology
 	
 	// by Jack 28.03.2017
-	SessionParameters.IsBookkeepingAvailable = Constants.BookkeepingFunctionalityConstant.Get();
+	If CommonUseCached.CanUseSeparatedData() Then
+		SessionParameters.IsBookkeepingAvailable = Constants.BookkeepingFunctionalityConstant.Get();
+	Else
+		SessionParameters.IsBookkeepingAvailable = False;
+	EndIf;
 
 	
 EndProcedure

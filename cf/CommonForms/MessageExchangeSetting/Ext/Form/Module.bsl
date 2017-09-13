@@ -205,12 +205,12 @@ Procedure RefreshNodeStateList()
 	Array = New Array;
 	Array.Add("MessageExchange");
 	
-	DataExchangeMonitor = DataExchangeServer.DataExchangeMonitorTable(Array, "Leading,Blocked");
+	DataExchangeMonitor = DataExchangeServer.DataExchangeMonitorTable(Array, "Leading,Locked");
 	
 	// Update data in nodes state list.
 	For Each Setting IN DataExchangeMonitor Do
 		
-		If Setting.Blocked Then
+		If Setting.Locked Then
 			Continue;
 		EndIf;
 		

@@ -14,7 +14,7 @@ Procedure OnCreateAtServer(Cancel, StandardProcessing)
 	
 	If Not IsThisNode Then
 		
-		If Object.Blocked Then
+		If Object.Locked Then
 			Items.InfoMessage.Title
 				= NStr("en='This endpoint is locked.';ru='Эта конечная точка заблокирована.'");
 		ElsIf Object.Leading Then
@@ -25,7 +25,7 @@ Procedure OnCreateAtServer(Cancel, StandardProcessing)
 				= NStr("en='This endpoint is a slave one, that is, it sends and receives exchange messages only by the current information system request.';ru='Эта конечная точка является ведомой, т.е. выполняет отправку и получение сообщений обмена только по требованию текущей информационной системы.'");
 		EndIf;
 		
-		Items.MakeThisEndPointSubordinate.Visible = Object.Leading AND Not Object.Blocked;
+		Items.MakeThisEndPointSubordinate.Visible = Object.Leading AND Not Object.Locked;
 		
 	EndIf;
 	

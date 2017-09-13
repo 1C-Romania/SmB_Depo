@@ -165,7 +165,7 @@ Procedure ConnectCorrespondent(Message, Sender)
 		EndIf;
 		
 		CorrespondentObject = ConnectedCorrespondent.GetObject();
-		CorrespondentObject.Blocked = True;
+		CorrespondentObject.Locked = True;
 		CorrespondentObject.Write();
 		
 	Else // We update connection settings for this end point and correspondent
@@ -209,7 +209,7 @@ Procedure ConnectCorrespondent(Message, Sender)
 		EndIf;
 		
 		CorrespondentObject = Correspondent.GetObject();
-		CorrespondentObject.Blocked = True;
+		CorrespondentObject.Locked = True;
 		CorrespondentObject.Write();
 		
 	EndIf;

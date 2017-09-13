@@ -26,6 +26,13 @@ Function ApplicationInterface() Export
 	
 EndFunction
 
+// Returns the name of the messages application interface.
+Function ProgramInterface() Export
+	
+	Return "ApplicationExtensionsPermissions";
+	
+EndFunction
+
 // Registers the supported versions of messages interface.
 //
 // Parameters:

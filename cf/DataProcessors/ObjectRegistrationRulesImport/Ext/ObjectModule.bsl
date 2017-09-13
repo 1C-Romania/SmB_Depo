@@ -744,7 +744,7 @@ Function GetDataTableTextForORR(DataTable)
 		
 		TableDataText = TableDataText + Chars.LF + Chars.LF + "LEFT JOIN" + Chars.LF
 		                 + "ExchangePlan." + Registration.ExchangePlanName + "." + TableRow.Name + " AS " + TableSynonym + "" + Chars.LF
-		                 + "BY ExchangePlanMainTable.Ref = " + TableSynonym + ".Ref";
+		                 + "ON ExchangePlanMainTable.Ref = " + TableSynonym + ".Ref";
 		
 	EndDo;
 	

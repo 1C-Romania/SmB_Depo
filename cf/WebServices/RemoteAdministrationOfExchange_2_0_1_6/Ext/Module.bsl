@@ -52,7 +52,7 @@ Function ExecuteDataExchangeScenarioActionInFirstInfobase(ScenarioRowIndex, Data
 	
 	ScenarioString = DataExchangeScenario[ScenarioRowIndex];
 	
-	Key = ScenarioString.ExchangePlanName + ScenarioString.CodeOfInfobaseNode + ScenarioString.ThisNodeCode;
+	strKey = ScenarioString.ExchangePlanName + ScenarioString.CodeOfInfobaseNode + ScenarioString.ThisNodeCode;
 	
 	ExchangeMode = SharingDataMode(DataExchangeScenario);
 	
@@ -65,7 +65,7 @@ Function ExecuteDataExchangeScenarioActionInFirstInfobase(ScenarioRowIndex, Data
 		
 		BackgroundJobs.Execute("DataExchangeSaaS.ExecuteDataExchangeScenarioActionInFirstInfobaseFromSharedSession",
 			Parameters,
-			Key
+			strKey
 		);
 	ElsIf ExchangeMode = "Automatic" Then
 		
@@ -78,7 +78,7 @@ Function ExecuteDataExchangeScenarioActionInFirstInfobase(ScenarioRowIndex, Data
 			JobParameters.Insert("DataArea", ScenarioString.FirstInfobaseSeparatorValue);
 			JobParameters.Insert("MethodName", "DataExchangeSaaS.PerformDataExchangeScriptActionInFirstInfobase");
 			JobParameters.Insert("Parameters", Parameters);
-			JobParameters.Insert("Key", Key);
+			JobParameters.Insert("Key", strKey);
 			JobParameters.Insert("Use", True);
 			
 			SetPrivilegedMode(True);
@@ -105,7 +105,7 @@ Function ExecuteDataExchangeScenarioActionInSecondInfobase(ScenarioRowIndex, Dat
 	
 	ScenarioString = DataExchangeScenario[ScenarioRowIndex];
 	
-	Key = ScenarioString.ExchangePlanName + ScenarioString.CodeOfInfobaseNode + ScenarioString.ThisNodeCode;
+	strKey = ScenarioString.ExchangePlanName + ScenarioString.CodeOfInfobaseNode + ScenarioString.ThisNodeCode;
 	
 	ExchangeMode = SharingDataMode(DataExchangeScenario);
 	
@@ -118,7 +118,7 @@ Function ExecuteDataExchangeScenarioActionInSecondInfobase(ScenarioRowIndex, Dat
 		
 		BackgroundJobs.Execute("DataExchangeSaaS.ExecuteDataExchangeScenarioActionInSecondInfobaseFromSharedSession",
 			Parameters,
-			Key
+			strKey
 		);
 		
 	ElsIf ExchangeMode = "Automatic" Then
@@ -132,7 +132,7 @@ Function ExecuteDataExchangeScenarioActionInSecondInfobase(ScenarioRowIndex, Dat
 			JobParameters.Insert("DataArea", ScenarioString.SecondInfobaseSeparatorValue);
 			JobParameters.Insert("MethodName", "DataExchangeSaaS.PerformDataExchangeScriptActionInSecondInfobase");
 			JobParameters.Insert("Parameters", Parameters);
-			JobParameters.Insert("Key", Key);
+			JobParameters.Insert("Key", strKey);
 			JobParameters.Insert("Use", True);
 			
 			SetPrivilegedMode(True);

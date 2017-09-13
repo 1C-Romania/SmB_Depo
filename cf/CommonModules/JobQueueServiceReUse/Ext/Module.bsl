@@ -205,7 +205,7 @@ Function JobQueueParameters() Export
 	ParameterDescription = Result.Add();
 	ParameterDescription.Name = "Schedule";
 	ParameterDescription.Field = ParameterDescription.Name;
-	ParameterDescription.Type = New TypeDescription("ScheduledJobSchedule, Undefined");
+	ParameterDescription.Type = New TypeDescription("JobSchedule, Undefined");
 	ParameterDescription.Insert = True;
 	ParameterDescription.Update = True;
 	

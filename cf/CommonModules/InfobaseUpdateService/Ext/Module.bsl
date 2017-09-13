@@ -2618,6 +2618,10 @@ Procedure ExecuteHandlersAfterInfobaseUpdate(Val IterationsUpdate, Val ToWriteIn
 	
 EndProcedure
 
+Procedure ExecuteDeferredUpdate() Export
+	//TODO: Get function from SL. Check how Catalogs.QueueJobsTemplates element with name "DeferredInfobaseUpdate" should be created.
+EndProcedure
+	
 Function PrepareDetailedInformationAboutUpdate(Handler, Parameters, LibraryID, PostponedHandler = False)
 	
 	ProcessingDetails = New Structure;

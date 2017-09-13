@@ -211,8 +211,8 @@ Function GetJobs(Val Filter) Export
 				|" + SelectionFields + ",
 				|	ISNULL(TimeZone.Value, """") AS
 				|TimeZone
-				|	FROM %1 AS Queue LEFT JOIN Constant.TimeZoneDataArea
-				|		AS TimeZone BY Queue.DataAreaAuxiliaryData = TimeZones.DataAreaAuxiliaryData",
+				|	FROM %1 AS Queue LEFT JOIN Constant.DataAreaTimeZone
+				|		AS TimeZone ON Queue.DataAreaAuxiliaryData = TimeZone.DataAreaAuxiliaryData",
 				CatalogJobs.EmptyRef().Metadata().FullName());
 			
 		Else
@@ -253,7 +253,7 @@ Function GetJobs(Val Filter) Export
 	// Casting results
 	Result.Columns.Schedule.Name = "ScheduleStorage";
 	Result.Columns.Parameters.Name = "ParametersStorage";
-	Result.Columns.Add("Schedule", New TypeDescription("ScheduledJobSchedule, Undefined"));
+	Result.Columns.Add("Schedule", New TypeDescription("JobSchedule, Undefined"));
 	Result.Columns.Add("Parameters", New TypeDescription("Array"));
 	
 	For Each JobRow IN Result Do

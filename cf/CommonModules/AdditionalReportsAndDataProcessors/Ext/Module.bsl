@@ -1491,7 +1491,7 @@ Procedure ReplaceReferencesToMetadataObjectNames() Export
 	|FROM
 	|	Catalog.AdditionalReportsAndDataProcessors.Purpose AS TablePurpose
 	|		LEFT JOIN Catalog.MetadataObjectIDs AS CatalogOfIOM
-	|		BY TablePurpose.DeleteMetadataObjectFullName = CatalogOfIOM.DescriptionFull
+	|		ON TablePurpose.DeleteMetadataObjectFullName = CatalogOfIOM.DescriptionFull
 	|TOTALS BY
 	|	CatalogRef";
 	
@@ -2330,7 +2330,7 @@ Function GetTableOfRecords(UsersWithAdditDataProcessors)
 	|FROM
 	|	Catalog.AdditionalReportsAndDataProcessors AS AdditionalReportsAndDataProcessors
 	|		INNER JOIN Catalog.AdditionalReportsAndDataProcessors.Commands AS AdditionalReportsAndDataProcessorsCommands
-	|		BY (AdditionalReportsAndDataProcessorsCommands.Ref = AdditionalReportsAndDataProcessors.Ref)";
+	|		ON (AdditionalReportsAndDataProcessorsCommands.Ref = AdditionalReportsAndDataProcessors.Ref)";
 	
 	Query = New Query;
 	Query.Text = QueryText;
@@ -2361,12 +2361,12 @@ Function GetTableOfRecords(UsersWithAdditDataProcessors)
 	|FROM
 	|	Catalog.AdditionalReportsAndDataProcessors AS AdditionalReportsAndDataProcessors
 	|		INNER JOIN Catalog.AdditionalReportsAndDataProcessors.Commands AS AdditionalReportsAndDataProcessorsCommands
-	|		BY (AdditionalReportsAndDataProcessorsCommands.Ref = AdditionalReportsAndDataProcessors.Ref)
+	|		ON (AdditionalReportsAndDataProcessorsCommands.Ref = AdditionalReportsAndDataProcessors.Ref)
 	|		INNER JOIN InformationRegister.UserSettingsOfAccessToDataProcessors AS UserSettingsOfAccessToDataProcessors
-	|		BY (UserSettingsOfAccessToDataProcessors.AdditionalReportOrDataProcessor = AdditionalReportsAndDataProcessors.Ref)
+	|		ON (UserSettingsOfAccessToDataProcessors.AdditionalReportOrDataProcessor = AdditionalReportsAndDataProcessors.Ref)
 	|			AND (UserSettingsOfAccessToDataProcessors.CommandID = AdditionalReportsAndDataProcessorsCommands.ID)
 	|		INNER JOIN Catalog.Users AS Users
-	|		BY (Users.Ref = UserSettingsOfAccessToDataProcessors.User)";
+	|		ON (Users.Ref = UserSettingsOfAccessToDataProcessors.User)";
 	
 	Query = New Query;
 	Query.Text = QueryText;

@@ -545,7 +545,7 @@ Procedure SendMessageToRecipient(MessageChannel, MessageBody, Recipient, IsInsta
 		
 		Raise NStr("en='Value of the Recipient parameter is not specified for the MessagesExchange.SendMessage method.';ru='Не задано значение параметра ""Получатель"" для метода ОбменСообщениями.ОтправитьСообщение.'");
 		
-	ElsIf CommonUse.ObjectAttributeValue(Recipient, "Blocked") Then
+	ElsIf CommonUse.ObjectAttributeValue(Recipient, "Locked") Then
 		
 		Raise StringFunctionsClientServer.SubstituteParametersInString(
 			NStr("en='Attempting to send message to the locked endpoint ""%1"".';ru='Попытка отправки сообщения заблокированной конечной точке ""%1"".'"),
@@ -568,7 +568,7 @@ Procedure SendMessageToRecipient(MessageChannel, MessageBody, Recipient, IsInsta
 	NewMessage.Code = 0;
 	NewMessage.ProcessMessageRetryCount = 0;
 	NewMessage.Locked = False;
-	NewMessage.MessageBody = New ValueStorage(MessageBody);
+	NewMessage.Body = New ValueStorage(MessageBody);
 	NewMessage.Sender = MessageExchangeInternal.ThisNode();
 	NewMessage.IsInstantMessage = IsInstantMessage;
 	
@@ -666,6 +666,12 @@ Procedure DeliverMessagesToRecipient(EndPoint, Val Messages)
 	Stream = "";
 	
 	MessageExchangeInternal.SerializeDataToStream(Messages, Stream);
+	
+	If Endpoint = Constants.ServiceManagerEndpoint.Get() Then
+		Stream = MessageExchangeInternal.ConvertBackExchangePlanMessageData(Stream);
+	Else
+		Stream = MessageExchangeInternal.ConvertExchangePlanMessageData(Stream);
+	EndIf;
 	
 	MessageExchangeReUse.WSEndPointProxy(EndPoint, 10).DeliverMessages(MessageExchangeInternal.ThisNodeCode(), New ValueStorage(Stream, New Deflation(9)));
 	

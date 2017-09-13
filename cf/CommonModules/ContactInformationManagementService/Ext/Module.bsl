@@ -3107,11 +3107,11 @@ Procedure FillAddressErrorsByClassifier(XDTOAddressRF, CheckCheckBoxes, Result)
 	For Each CheckResult In AnalysisResults.Data Do
 		If CheckResult.AddressChecked Then
 			For Each AddressError In CheckResult.Errors Do
-				Key = AddressError.Key;
-				If Processed[Key] = Undefined Then
-					Result.Add(New Structure("PathXPath, FieldEssence, AddressChecked", Key,, CheckResult.AddressChecked), 
+				ErrorKey = AddressError.Key;
+				If Processed[ErrorKey] = Undefined Then
+					Result.Add(New Structure("PathXPath, FieldEssence, AddressChecked", ErrorKey,, CheckResult.AddressChecked), 
 						TrimAll(AddressError.Text + Chars.LF + AddressError.ToolTip));
-					Processed[Key] = True;
+					Processed[ErrorKey] = True;
 				EndIf;
 			EndDo;
 		EndIf;

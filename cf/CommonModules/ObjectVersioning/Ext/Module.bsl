@@ -42,7 +42,7 @@ Procedure UpdateObjectVersioningSettings() Export
 	|FROM
 	|	VersioningObjectsTable AS VersioningObjectsTable
 	|		LEFT JOIN InformationRegister.ObjectVersioningSettings AS ObjectVersioningSettings
-	|			BY ObjectVersioningSettings.ObjectType = VersioningObjectsTable.ObjectType
+	|			ON ObjectVersioningSettings.ObjectType = VersioningObjectsTable.ObjectType
 	|WHERE
 	|	ObjectVersioningSettings.Variant IS NULL ";
 			

@@ -1638,7 +1638,7 @@ Procedure ExecuteMatchBySelectedAttribute(MatchedQuantity = 0, MapingColumnsList
 	|SELECT
 	|	MatchCatalog.Ref, MappingTable.ID
 	|FROM
-	|	Catalog." + CatalogName + " AS MatchCatalog RIGHT JOIN MatchTable AS MatchTable BY " + Conditions.AssociationCondition + "
+	|	Catalog." + CatalogName + " AS MatchCatalog RIGHT JOIN MatchTable AS MatchTable ON " + Conditions.AssociationCondition + "
 	|WHERE
 	|	       MatchCatalog.RemovalMark = FALSE " + Conditions.Where + "
 	|	ORDER BY MatchTable.Identifier TOTAL BY MatchTable.Identifier";

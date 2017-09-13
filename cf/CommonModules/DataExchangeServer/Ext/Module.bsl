@@ -361,7 +361,7 @@ Function BackupCopiesParameters(Val Sender, Val ReceivedNo) Export
 	Result = New Structure("Sender, ReceivedNo, BackupRestored");
 	Result.Sender = Sender;
 	Result.ReceivedNo = ReceivedNo;
-	Result.RestoredBackupCopy = (ReceivedNo > CommonUse.ObjectAttributeValue(Sender, "SentNo"));
+	Result.BackupRestored = (ReceivedNo > CommonUse.ObjectAttributeValue(Sender, "SentNo"));
 	
 	Return New FixedStructure(Result);
 EndFunction
@@ -379,7 +379,7 @@ EndFunction
 //
 Procedure WhenRestoringBackupCopies(Val BackupCopiesParameters) Export
 	
-	If BackupCopiesParameters.RestoredBackupCopy Then
+	If BackupCopiesParameters.BackupRestored Then
 		
 		// Set the number of the received message in correspondent as a number of the sent message in this base.
 		NodeObject = BackupCopiesParameters.Sender.GetObject();
@@ -4142,7 +4142,7 @@ Procedure ExecuteStandardNodeChangeImport(
 	
 	BackupCopiesParameters = BackupCopiesParameters(MessageReader.Sender, MessageReader.ReceivedNo);
 	
-	DeleteChangeRecords = Not BackupCopiesParameters.RestoredBackupCopy;
+	DeleteChangeRecords = Not BackupCopiesParameters.BackupRestored;
 	
 	If DeleteChangeRecords Then
 		
@@ -5959,17 +5959,17 @@ Procedure NodeSettingsFormOnCreateAtServerHandler(Form, FormAttributeName)
 	
 	For Each FilterSettings IN Form[FormAttributeName] Do
 		
-		Key = FilterSettings.Key;
+		FSKey = FilterSettings.Key;
 		
-		If FormAttributes.Find(Key) = Undefined Then
+		If FormAttributes.Find(FSKey) = Undefined Then
 			Continue;
 		EndIf;
 		
-		If TypeOf(Form[Key]) = Type("FormDataCollection") Then
+		If TypeOf(Form[FSKey]) = Type("FormDataCollection") Then
 			
 			Table = New ValueTable;
 			
-			TabularSectionStructure = Form.Parameters[FormAttributeName][Key];
+			TabularSectionStructure = Form.Parameters[FormAttributeName][FSKey];
 			
 			For Each Item IN TabularSectionStructure Do
 				
@@ -5981,15 +5981,15 @@ Procedure NodeSettingsFormOnCreateAtServerHandler(Form, FormAttributeName)
 				
 			EndDo;
 			
-			Form[Key].Load(Table);
+			Form[FSKey].Load(Table);
 			
 		Else
 			
-			Form[Key] = Form.Parameters[FormAttributeName][Key];
+			Form[FSKey] = Form.Parameters[FormAttributeName][FSKey];
 			
 		EndIf;
 		
-		Form[FormAttributeName][Key] = Form.Parameters[FormAttributeName][Key];
+		Form[FormAttributeName][FSKey] = Form.Parameters[FormAttributeName][FSKey];
 		
 	EndDo;
 	
@@ -6885,7 +6885,7 @@ Function GetFilterSettingsValues(ExternalConnectionSettingsStructure) Export
 				
 				If Find(Item.Key, "_Key") > 0 Then
 					
-					Key = StrReplace(Item.Key, "_Key", "");
+					strKey = StrReplace(Item.Key, "_Key", "");
 					
 					Array = New Array;
 					
@@ -6901,7 +6901,7 @@ Function GetFilterSettingsValues(ExternalConnectionSettingsStructure) Export
 						
 					EndDo;
 					
-					ResultNested.Insert(Key, Array);
+					ResultNested.Insert(strKey, Array);
 					
 				EndIf;
 				
@@ -6913,7 +6913,7 @@ Function GetFilterSettingsValues(ExternalConnectionSettingsStructure) Export
 			
 			If Find(FilterSettings.Key, "_Key") > 0 Then
 				
-				Key = StrReplace(FilterSettings.Key, "_Key", "");
+				strKey = StrReplace(FilterSettings.Key, "_Key", "");
 				
 				Try
 					If IsBlankString(FilterSettings.Value) Then
@@ -6925,7 +6925,7 @@ Function GetFilterSettingsValues(ExternalConnectionSettingsStructure) Export
 					Value = Undefined;
 				EndTry;
 				
-				Result.Insert(Key, Value);
+				Result.Insert(strKey, Value);
 				
 			EndIf;
 			

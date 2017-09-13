@@ -298,7 +298,7 @@ Function GetTextOfElectronicDocumentsQueryOnSigning(ForDesktop = True, AddFilter
 				QueryText = QueryText + " And EDForSigning.EDForward = &EDForward";
 			EndIf;
 		EndIf;
-		QueryText = QueryText + " ARRANGE BY DocumentDate";
+		QueryText = QueryText + " ORDER BY DocumentDate";
 	EndIf;
 	
 	Return QueryText;

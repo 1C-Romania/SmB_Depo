@@ -52,7 +52,7 @@ Function ExecuteDataExchangeScenarioActionInFirstInfobase(ScenarioRowIndex, Data
 	
 	ScenarioString = DataExchangeScenario[ScenarioRowIndex];
 	
-	Key = ScenarioString.ExchangePlanName + ScenarioString.CodeOfInfobaseNode + ScenarioString.ThisNodeCode;
+	strKey = ScenarioString.ExchangePlanName + ScenarioString.CodeOfInfobaseNode + ScenarioString.ThisNodeCode;
 	
 	Parameters = New Array;
 	Parameters.Add(ScenarioRowIndex);
@@ -61,7 +61,7 @@ Function ExecuteDataExchangeScenarioActionInFirstInfobase(ScenarioRowIndex, Data
 	JobParameters = New Structure;
 	JobParameters.Insert("MethodName"    , "DataExchangeSaaS.PerformDataExchangeScriptActionInFirstInfobase");
 	JobParameters.Insert("Parameters"    , Parameters);
-	JobParameters.Insert("Key"         , Key);
+	JobParameters.Insert("Key"         , strKey);
 	JobParameters.Insert("DataArea", ScenarioString.FirstInfobaseSeparatorValue);
 	
 	Try
@@ -83,7 +83,7 @@ Function ExecuteDataExchangeScenarioActionInSecondInfobase(ScenarioRowIndex, Dat
 	
 	ScenarioString = DataExchangeScenario[ScenarioRowIndex];
 	
-	Key = ScenarioString.ExchangePlanName + ScenarioString.CodeOfInfobaseNode + ScenarioString.ThisNodeCode;
+	strKey = ScenarioString.ExchangePlanName + ScenarioString.CodeOfInfobaseNode + ScenarioString.ThisNodeCode;
 	
 	Parameters = New Array;
 	Parameters.Add(ScenarioRowIndex);
@@ -92,7 +92,7 @@ Function ExecuteDataExchangeScenarioActionInSecondInfobase(ScenarioRowIndex, Dat
 	JobParameters = New Structure;
 	JobParameters.Insert("MethodName"    , "DataExchangeSaaS.PerformDataExchangeScriptActionInSecondInfobase");
 	JobParameters.Insert("Parameters"    , Parameters);
-	JobParameters.Insert("Key"         , Key);
+	JobParameters.Insert("Key"         , strKey);
 	JobParameters.Insert("DataArea", ScenarioString.SecondInfobaseSeparatorValue);
 	
 	Try

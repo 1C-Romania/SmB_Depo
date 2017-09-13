@@ -141,33 +141,37 @@ EndFunction
 //
 Function DataSeparationEnabled() Export
 	
-	If Not IsSeparatedConfiguration() Then
-		Return False;
-	Else
-		Return False
-	EndIf;
+	Return CommonUseCached.IsSeparatedConfiguration() And GetFunctionalOption("SaaS");
+	
+	//If Not IsSeparatedConfiguration() Then
+	//	Return False;
+	//Else
+	//	Return False
+	//EndIf;
 	
 EndFunction
 
-//// Returns a flag, shows if called of separated data is allowed from this session.
-//// If it is called in shared configuration it returns True.
-////
-//// Returns:
-//// Boolean.
-////
-//Function CanUseSeparatedData() Export
-//	
-//	If Not DataSeparationEnabled() Then
-//		
-//		Return True;
-//	Else
-//		
-//		SetPrivilegedMode(True);
-//		Return CommonUse.UseSessionSeparator();
-//		
-//	EndIf;
-//	
-//EndFunction
+// Returns a flag, shows if called of separated data is allowed from this session.
+// If it is called in shared configuration it returns True.
+//
+// Returns:
+// Boolean.
+//
+Function CanUseSeparatedData() Export
+	
+	Return Not CommonUseCached.DataSeparationEnabled() Or CommonUse.UseSessionSeparator();
+	
+	//If Not DataSeparationEnabled() Then
+	//	
+	//	Return True;
+	//Else
+	//	
+	//	SetPrivilegedMode(True);
+	//	Return CommonUse.UseSessionSeparator();
+	//	
+	//EndIf;
+	
+EndFunction
 
 //// Returns a WSDefinitions object created considering passed parameters.
 ////

@@ -1836,7 +1836,8 @@ EndProcedure
 Procedure SetDataFillingForAccessRestriction(Val Use) Export
 	
 	If CommonUseReUse.DataSeparationEnabled() Then
-		If CommonUse.SubsystemExists("StandardSubsystems.SaaS.AccessManagementSaaS") Then
+		//TODO: no such subsystem in SL 2.2.4.11
+		If CommonUse.SubsystemExists("StandardSubsystems.SaaS.AccessManagementSaaS") And False Then
 			AccessControlModuleServiceSaaS = CommonUse.CommonModule("AccessManagementServiceSaaS");
 			AccessControlModuleServiceSaaS.SetDataFillingForAccessRestriction(Use);
 		EndIf;

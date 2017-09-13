@@ -490,7 +490,9 @@ Function CacheVersionsData(Val ID, Val DataType, Val ReceivingParameters, Val Us
 			CommonUse.RefreshVersionCacheData(ID, DataType, ReceivingParameters);
 			RequiredRereadData = True;
 		Else
-			JobMethodName = "CommonUse.UpdateVersionCacheData";
+			//JobMethodName = "CommonUse.UpdateVersionCacheData";
+			JobMethodName = "CommonUse.RefreshVersionCacheData";
+			
 			DescriptionSchTask = StringFunctionsClientServer.SubstituteParametersInString(
 				NStr("en='Updating version cache. Identifier of record %1. Data type %2.';ru='Обновление кэша версий. Идентификатор записи %1. Тип данных %2.'"),
 				ID,

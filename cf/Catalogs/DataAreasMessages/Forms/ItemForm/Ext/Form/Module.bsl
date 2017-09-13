@@ -8,7 +8,7 @@ Procedure OnCreateAtServer(Cancel, StandardProcessing)
 		Return;
 	EndIf;
 	
-	MessageBody = CommonUse.ObjectAttributeValue(Object.Ref, "MessageBody").Get();
+	MessageBody = CommonUse.ObjectAttributeValue(Object.Ref, "Body").Get();
 	
 	If TypeOf(MessageBody) = Type("String") Then
 		

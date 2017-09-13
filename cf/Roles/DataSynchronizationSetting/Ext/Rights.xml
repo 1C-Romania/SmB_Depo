@@ -46,7 +46,7 @@
 		</right>
 	</object>
 	<object>
-		<name>WebService.Exchange.Operation.ExecuteDataExport</name>
+		<name>WebService.Exchange.Operation.UploadData</name>
 		<right>
 			<name>Use</name>
 			<value>true</value>
@@ -67,7 +67,7 @@
 		</right>
 	</object>
 	<object>
-		<name>WebService.Exchange.Operation.GetLongOperationState</name>
+		<name>WebService.Exchange.Operation.GetContinuousOperationStatus</name>
 		<right>
 			<name>Use</name>
 			<value>true</value>
@@ -131,7 +131,7 @@
 		</right>
 	</object>
 	<object>
-		<name>WebService.Exchange.Operation.ExecuteExport</name>
+		<name>WebService.Exchange.Operation.Upload</name>
 		<right>
 			<name>Use</name>
 			<value>true</value>
@@ -230,21 +230,21 @@
 		</right>
 	</object>
 	<object>
-		<name>WebService.Exchange.Operation.CreateDataExchange</name>
+		<name>WebService.Exchange.Operation.CreateExchange</name>
 		<right>
 			<name>Use</name>
 			<value>true</value>
 		</right>
 	</object>
 	<object>
-		<name>WebService.Exchange.Operation.GetCommonNodeData</name>
+		<name>WebService.Exchange.Operation.GetCommonNodsData</name>
 		<right>
 			<name>Use</name>
 			<value>true</value>
 		</right>
 	</object>
 	<object>
-		<name>WebService.Exchange.Operation.ExecuteDataImport</name>
+		<name>WebService.Exchange.Operation.DownloadData</name>
 		<right>
 			<name>Use</name>
 			<value>true</value>
@@ -290,7 +290,7 @@
 		</right>
 	</object>
 	<object>
-		<name>WebService.Exchange.Operation.UpdateDataExchangeSettings</name>
+		<name>WebService.Exchange.Operation.UpdateExchange</name>
 		<right>
 			<name>Use</name>
 			<value>true</value>
@@ -519,7 +519,7 @@
 		</right>
 	</object>
 	<object>
-		<name>WebService.Exchange.Operation.Import</name>
+		<name>WebService.Exchange.Operation.Download</name>
 		<right>
 			<name>Use</name>
 			<value>true</value>
@@ -558,7 +558,7 @@
 		</right>
 	</object>
 	<object>
-		<name>WebService.Exchange.Operation.RecordCatalogChangesOnly</name>
+		<name>WebService.Exchange.Operation.RegisterOnlyCatalogData</name>
 		<right>
 			<name>Use</name>
 			<value>true</value>
@@ -572,7 +572,7 @@
 		</right>
 	</object>
 	<object>
-		<name>WebService.Exchange.Operation.RecordAllChangesExceptCatalogs</name>
+		<name>WebService.Exchange.Operation.RegisterAllDataExceptCatalogs</name>
 		<right>
 			<name>Use</name>
 			<value>true</value>

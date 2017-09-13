@@ -300,6 +300,10 @@ EndFunction
 
 Function ThisIsFirstLaunch() Export
 	
+	If Not CommonUseCached.CanUseSeparatedData() Then
+		Return False;
+	EndIf;
+	
 	Return Not ValueIsFilled(Constants.AccountingCurrency.Get());
 	
 EndFunction

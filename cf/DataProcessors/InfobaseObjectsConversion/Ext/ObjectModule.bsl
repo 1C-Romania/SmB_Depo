@@ -14059,7 +14059,7 @@ Procedure ReadExchangeData(MessageReader, DataAnalysis)
 	MessageReader.DataAnalysis = DataAnalysis;
 	MessageReader = New FixedStructure(MessageReader);
 	
-	RestoredBackupCopy = (MessageReader.ReceivedNo > CommonUse.ObjectAttributeValue(MessageReader.Sender, "SentNo"));
+	BackupRestored = (MessageReader.ReceivedNo > CommonUse.ObjectAttributeValue(MessageReader.Sender, "SentNo"));
 	
 	If DataImportToInformationBaseMode() Then
 		
@@ -14076,7 +14076,7 @@ Procedure ReadExchangeData(MessageReader, DataAnalysis)
 			Raise NStr("en='Exchange message was previously received';ru='Сообщение обмена было принято ранее'");
 		EndIf;
 		
-		DeleteChangeRecords = DeleteChangeRecords AND Not RestoredBackupCopy;
+		DeleteChangeRecords = DeleteChangeRecords AND Not BackupRestored;
 		
 		If DeleteChangeRecords Then // Delete registration of changes.
 			
@@ -14098,7 +14098,7 @@ Procedure ReadExchangeData(MessageReader, DataAnalysis)
 			
 		EndIf;
 		
-		If RestoredBackupCopy Then
+		If BackupRestored Then
 			
 			MessageReader.SenderObject.SentNo = MessageReader.ReceivedNo;
 			MessageReader.SenderObject.DataExchange.Load = True;
