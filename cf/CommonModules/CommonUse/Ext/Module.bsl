@@ -6529,7 +6529,7 @@ Function ObjectDescription(Val Meta)
 			EndDo;
 			
 			If FieldList.Count() > 0 Then
-				ObjectDescription.TabularSections.Add(New Structure("Name, FieldsList", MetaTable.Name, FieldList));
+				ObjectDescription.TabularSections.Add(New Structure("Name, FieldList", MetaTable.Name, FieldList));
 			EndIf;
 		EndDo;
 	EndIf;
@@ -6546,7 +6546,7 @@ Function ObjectDescription(Val Meta)
 			EndDo;
 			
 			If FieldList.Count() > 0 Then
-				ObjectDescription.StandardTabularSections.Add(New Structure("Name, FieldsList", MetaTable.Name, FieldList));
+				ObjectDescription.StandardTabularSections.Add(New Structure("Name, FieldList", MetaTable.Name, FieldList));
 			EndIf;
 		EndDo;
 	EndIf;
@@ -6772,7 +6772,7 @@ Procedure WriteObject(Val Object, Val WriteParameters)
 	EndIf;
 	
 	// Check for possible cyclical refs.
-	AttributesTest= New Structure("Hierarchical, ExtDimensionKinds, Owners", False, Undefined, New Array);
+	AttributesTest= New Structure("Hierarchical, ExtDimensionTypes, Owners", False, Undefined, New Array);
 	FillPropertyValues(AttributesTest, ObjectMetadata);
 	
 	// By parent
