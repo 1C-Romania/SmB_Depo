@@ -27,9 +27,9 @@ Procedure DistributeTabSectExpensesByQuantity() Export
 	For Each StringInventory IN Inventory Do
 		
 		StringInventory.Factor = StringInventory.Quantity / GCD * 1000;
-		StringInventory.AmountExpenses = ?(DistributionBaseQuantity <> 0, Round((TotalExpenses - SrcAmount) * StringInventory.Quantity / DistributionBaseQuantity, 2, 1),0);
+		StringInventory.AmountExpense = ?(DistributionBaseQuantity <> 0, Round((TotalExpenses - SrcAmount) * StringInventory.Quantity / DistributionBaseQuantity, 2, 1),0);
 		DistributionBaseQuantity = DistributionBaseQuantity - StringInventory.Quantity;
-		SrcAmount = SrcAmount + StringInventory.AmountExpenses;
+		SrcAmount = SrcAmount + StringInventory.AmountExpense;
 		
 	EndDo;
 	
@@ -60,9 +60,9 @@ Procedure DistributeTabSectExpensesByAmount() Export
 	For Each StringInventory IN Inventory Do
 		
 		StringInventory.Factor = StringInventory.Amount / GCD * 100;
-		StringInventory.AmountExpenses = ?(ReserveAmount <> 0, Round((TotalExpenses - SrcAmount) * StringInventory.Amount / ReserveAmount, 2, 1), 0);
+		StringInventory.AmountExpense = ?(ReserveAmount <> 0, Round((TotalExpenses - SrcAmount) * StringInventory.Amount / ReserveAmount, 2, 1), 0);
 		ReserveAmount = ReserveAmount - StringInventory.Amount;
-		SrcAmount = SrcAmount + StringInventory.AmountExpenses;
+		SrcAmount = SrcAmount + StringInventory.AmountExpense;
 		
 	EndDo;
 	
