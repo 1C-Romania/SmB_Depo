@@ -209,7 +209,7 @@ EndProcedure
 // BasisDocument - DocumentRef.SupplierInvoice - supplier
 // invoice FillingData - Structure - Document filling data
 //	
-Procedure FillByCustomerOrder(FillingData)
+Procedure FillByCustomerOrder(FillingData) Export
 	
 	// Document basis and document setting.
 	OrdersArray = New Array;
@@ -467,7 +467,7 @@ EndProcedure // FillByCustomerOrder()
 // BasisDocument - DocumentRef.SupplierInvoice - supplier
 // invoice FillingData - Structure - Document filling data
 //	
-Procedure FillByInvoiceForPayment(FillingData)
+Procedure FillByInvoiceForPayment(FillingData) Export
 	
 	// Filling out a document header.
 	ThisObject.BasisDocument = FillingData.Ref;

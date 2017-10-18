@@ -2078,6 +2078,9 @@ WHERE
 				<Type>Auto</Type>
 				<Index>16</Index>
 				<DefaultVisible>false</DefaultVisible>
+				<Visible>
+					<xr:Common>false</xr:Common>
+				</Visible>
 			</Item>
 			<Item>
 				<Command>Document.AcceptanceCertificate.StandardCommand.CreateBasedOn</Command>
@@ -2188,6 +2191,9 @@ WHERE
 				<CommandGroup>FormCommandBarCreateBasedOn</CommandGroup>
 				<Index>3</Index>
 				<DefaultVisible>false</DefaultVisible>
+				<Visible>
+					<xr:Common>false</xr:Common>
+				</Visible>
 			</Item>
 			<Item>
 				<Command>Document.CustomerOrder.Command.ReservationCancelCreateBasedOn</Command>
@@ -2195,6 +2201,9 @@ WHERE
 				<CommandGroup>FormCommandBarCreateBasedOn</CommandGroup>
 				<Index>2</Index>
 				<DefaultVisible>false</DefaultVisible>
+				<Visible>
+					<xr:Common>false</xr:Common>
+				</Visible>
 			</Item>
 			<Item>
 				<Command>DataProcessor.ElectronicDocuments.Command.GenerateSignSendED</Command>
