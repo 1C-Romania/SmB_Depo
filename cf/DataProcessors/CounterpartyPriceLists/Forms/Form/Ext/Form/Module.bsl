@@ -1288,7 +1288,6 @@ Procedure Print(Command)
 	EndIf;
 	
 	SpreadsheetDocument.Print(False);
-	SpreadsheetDocument.Show();
 
 EndProcedure
 
