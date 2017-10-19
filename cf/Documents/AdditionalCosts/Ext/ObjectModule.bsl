@@ -268,7 +268,7 @@ EndProcedure
 // BasisDocument - DocumentRef.SupplierInvoice - supplier invoice 
 // FillingData - Structure - Document filling data
 //	
-Procedure FillByPurchaseInvoice(FillingData)
+Procedure FillBySupplierInvoice(FillingData) Export
 	
 	Company = FillingData.Company;
 	Counterparty = FillingData.Counterparty;
@@ -310,7 +310,7 @@ EndProcedure // FillBySupplierInvoice()
 //  BasisDocument - DocumentRef.ExpenseReport - The expense report
 //  FillingData - Structure - Document filling data
 //	
-Procedure FillByExpenseReport(FillingData)
+Procedure FillByExpenseReport(FillingData) Export
 		
 	Company = FillingData.Company;
 	DocumentCurrency = FillingData.DocumentCurrency;
@@ -339,13 +339,11 @@ EndProcedure // FillByExpenseReport()
 //
 Procedure Filling(FillingData, StandardProcessing) Export
 	
-	If TypeOf(FillingData) = Type("DocumentRef.SupplierInvoice") Then
-		FillByPurchaseInvoice(FillingData);
-	ElsIf TypeOf(FillingData) = Type("DocumentRef.ExpenseReport") Then
-		FillByExpenseReport(FillingData);
-	ElsIf TypeOf(FillingData) = Type("Structure") Then
-		FillPropertyValues(ThisObject, FillingData);
-	EndIf;
+	FillingStrategy = New Map;
+	FillingStrategy[Type("DocumentRef.SupplierInvoice")] = "FillBySupplierInvoice";
+	FillingStrategy[Type("DocumentRef.ExpenseReport")]   = "FillByExpenseReport";
+	
+	ObjectFillingSB.FillDocument(ThisObject, FillingData, FillingStrategy);
 	
 EndProcedure // FillingProcessor()
 

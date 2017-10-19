@@ -1014,7 +1014,7 @@ EndProcedure // FillByPurchaseOrder()
 // BasisDocument - DocumentRef.CustomerInvoice - customer
 // invoice FillingData - Structure - Document filling data
 //	
-Procedure FillByReceiptCR(FillingData)
+Procedure FillByReceiptCR(FillingData) Export
 	
 	// Filling out a document header.
 	OperationKind = Enums.OperationKindsSupplierInvoice.ReturnFromCustomer;
@@ -1066,13 +1066,13 @@ EndProcedure // OnCopy()
 Procedure Filling(FillingData, StandardProcessing) Export
 	
 	FillingStrategy = New Map;
-	FillingStrategy[Type("Structure")]								= "FillByStructure";
-	FillingStrategy[Type("DocumentRef.CustomerInvoice")]			= "FillByCustomerInvoice";
-	FillingStrategy[Type("DocumentRef.CustomerOrder")]				= "FillByCustomerOrder";
-	FillingStrategy[Type("DocumentRef.PurchaseOrder")]				= "FillByPurchaseOrder";
-	FillingStrategy[Type("DocumentRef.GoodsReceipt")]				= "FillByGoodsReceipt";
-	FillingStrategy[Type("DocumentRef.SupplierInvoiceForPayment")]	= "FillBySupplierInvoiceForPayment";
-	FillingStrategy[Type("DocumentRef.ReceiptCR")]					= "FillByReceiptCR";
+	FillingStrategy[Type("Structure")]                             = "FillByStructure";
+	FillingStrategy[Type("DocumentRef.CustomerInvoice")]           = "FillByCustomerInvoice";
+	FillingStrategy[Type("DocumentRef.CustomerOrder")]             = "FillByCustomerOrder";
+	FillingStrategy[Type("DocumentRef.PurchaseOrder")]             = "FillByPurchaseOrder";
+	FillingStrategy[Type("DocumentRef.GoodsReceipt")]              = "FillByGoodsReceipt";
+	FillingStrategy[Type("DocumentRef.SupplierInvoiceForPayment")] = "FillBySupplierInvoiceForPayment";
+	FillingStrategy[Type("DocumentRef.ReceiptCR")]                 = "FillByReceiptCR";
 	
 	ObjectFillingSB.FillDocument(ThisObject, FillingData, FillingStrategy);
 	
