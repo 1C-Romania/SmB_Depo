@@ -56,17 +56,11 @@ EndProcedure
 Function GetDecorationTitleContent(TabularSectionName) 
 	
 	If Object[TabularSectionName].Count() < 1 Then
-		
-		DecorationTitle = "Multiple filter is not filled";
-		
+		DecorationTitle = NStr("en = 'Multiple filter is not filled'; ru = 'Множественный фильтр не заполнен'");
 	ElsIf Object[TabularSectionName].Count() > 1 Then
-		
 		DecorationTitle = "Selected items: " + String(Object[TabularSectionName][0].Ref) + "; " + String(Object[TabularSectionName][1].Ref) + "...";
-		
 	Else
-		
 		DecorationTitle = "Selected item: " + String(Object[TabularSectionName][0].Ref);
-		
 	EndIf;
 	
 	Return DecorationTitle;

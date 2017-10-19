@@ -55,8 +55,8 @@ EndFunction // GetSelectionStructure()
 //
 Procedure UpdateFormTitleAtServer()
 	
-	ThisForm.Title	= NStr("en='Company price list';ru='Прайс-лист компании'") + 
-		?(ValueIsFilled(ToDate), NStr("en=' on ';ru=' на '") + Format(ToDate, "DLF=DD"), NStr("en='.';ru='.'"));
+	ThisForm.Title	= NStr("en='Company Price-list';ru='Прайс-лист Компании'") + 
+		?(ValueIsFilled(ToDate), NStr("en=' on ';ru=' на '") + Format(ToDate, "DLF=DD"), ".");
 	
 EndProcedure // UpdateFormTitleAtServer()
 
@@ -117,13 +117,9 @@ Function GetRecordKey(ParametersStructure, ActualOnly = False)
 	|	ProductsAndServicesPricesSliceLast.Price";
 	
 	If ActualOnly Then
-		
 		Query.Text = StrReplace(Query.Text, "&ActualOnly", "Actuality");
-		
 	Else
-		
 		Query.Text = StrReplace(Query.Text, "&ActualOnly", "True");
-		
 	EndIf;
 	
 	Query.SetParameter("ToDate", 
@@ -138,8 +134,8 @@ Function GetRecordKey(ParametersStructure, ActualOnly = False)
 	ResultTable = Query.Execute().Unload();
 	If ResultTable.Count() > 0 Then
 		
-		ReturnStructure.Period				= ResultTable[0].Period;
-		ReturnStructure.Price					= ResultTable[0].Price;
+		ReturnStructure.Period			= ResultTable[0].Period;
+		ReturnStructure.Price			= ResultTable[0].Price;
 		ReturnStructure.CreateNewRecord	= False;
 		
 	EndIf; 
@@ -195,27 +191,17 @@ Procedure ChangeFilterPage(TabularSectionName, List)
 	SetAsCurrentPage = Undefined;
 	
 	For Each PageOfGroup in GroupPages.ChildItems Do
-		
 		If List Then
-			
 			If Find(PageOfGroup.Name, "MultipleFilter") > 0 Then
-			
 				SetAsCurrentPage = PageOfGroup;
 				Break;
-			
 			EndIf;
-			
 		Else
-			
 			If Find(PageOfGroup.Name, "QuickFilter") > 0 Then
-			
 				SetAsCurrentPage = PageOfGroup;
 				Break;
-				
 			EndIf;
-			
 		EndIf;
-		
 	EndDo;
 	
 	Items["DecorationMultipleFilter" + TabularSectionName].Title = GetDecorationTitleContent(TabularSectionName);
@@ -234,9 +220,7 @@ Function FillArrayByTabularSectionAtClient(TabularSectionName)
 	ValueArray = New Array;
 	
 	For Each TableRow IN Object[TabularSectionName] Do
-		
 		ValueArray.Add(TableRow.Ref);
-		
 	EndDo;
 	
 	Return ValueArray;
@@ -292,16 +276,11 @@ Procedure RestoreValuesOfFilters(SettingsStructure, TSNamesStructure)
 		
 		TabularSectionName	= NamesStructureItem.Key;
 		If SettingsStructure.Property(NamesStructureItem.Value) Then
-			
 			ItemArray		= SettingsStructure[NamesStructureItem.Value];
-			
 		EndIf;
 		
-		If Not TypeOf(ItemArray) = Type("Array") 
-			OR ItemArray.Count() < 1 Then
-			
+		If Not TypeOf(ItemArray) = Type("Array") OR ItemArray.Count() < 1 Then
 			Continue;
-			
 		EndIf;
 		
 		Object[TabularSectionName].Clear();
@@ -372,18 +351,18 @@ Procedure OnCreateAtServer(Cancel, StandardProcessing)
 		
 	Else
 		
-		PriceKind						= Catalogs.PriceKinds.Wholesale;
-		Actuality				= True;
+		PriceKind			= Catalogs.PriceKinds.Wholesale;
+		Actuality			= True;
 		EnableAutoCreation	= True;
 		
 	EndIf;
 	
-	ToDate 									= Undefined;
-	OutputCode								= Constants.PriceListShowCode.Get();
-	OutputFullDescr				= Constants.PriceListShowFullDescr.Get();
-	ItemHierarchy					= Constants.PriceListUseProductsAndServicesHierarchy.Get();
-	FormateByAvailabilityInWarehouses			= Constants.FormPriceListByAvailabilityInWarehouses.Get();
-	UseCharacteristics				= GetFunctionalOption("UseCharacteristics");
+	ToDate 					= Undefined;
+	OutputCode				= Constants.PriceListShowCode.Get();
+	OutputFullDescr			= Constants.PriceListShowFullDescr.Get();
+	ItemHierarchy			= Constants.PriceListUseProductsAndServicesHierarchy.Get();
+	FormateByAvailabilityInWarehouses	= Constants.FormPriceListByAvailabilityInWarehouses.Get();
+	UseCharacteristics		= GetFunctionalOption("UseCharacteristics");
 	Items.ShowTitle.Check	= False;
 	
 	Items.AbortPriceListBackGroundFormation.Visible = Not CommonUse.FileInfobase();
@@ -431,17 +410,17 @@ Procedure OnClose()
 	
 	SettingsStructure = New Structure;
 	
-	SettingsStructure.Insert("PriceKind", 			PriceKind);
-	SettingsStructure.Insert("CWT_PriceKinds", 		FillArrayByTabularSectionAtClient("PriceKinds"));
+	SettingsStructure.Insert("PriceKind", PriceKind);
+	SettingsStructure.Insert("CWT_PriceKinds", FillArrayByTabularSectionAtClient("PriceKinds"));
 	
-	SettingsStructure.Insert("PriceGroup", 	PriceGroup);
-	SettingsStructure.Insert("CWT_PriceGroups",	FillArrayByTabularSectionAtClient("PriceGroups"));
+	SettingsStructure.Insert("PriceGroup", PriceGroup);
+	SettingsStructure.Insert("CWT_PriceGroups", FillArrayByTabularSectionAtClient("PriceGroups"));
 	
-	SettingsStructure.Insert("ProductsAndServices", 		ProductsAndServices);
+	SettingsStructure.Insert("ProductsAndServices",	ProductsAndServices);
 	SettingsStructure.Insert("CWT_ProductsAndServices",	FillArrayByTabularSectionAtClient("ProductsAndServices"));
 	
-	SettingsStructure.Insert("ToDate", 			ToDate);
-	SettingsStructure.Insert("Actuality",		Actuality);
+	SettingsStructure.Insert("ToDate", ToDate);
+	SettingsStructure.Insert("Actuality", Actuality);
 	SettingsStructure.Insert("EnableAutoCreation", EnableAutoCreation);
 	
 	SaveFormSettings(SettingsStructure);
@@ -452,21 +431,13 @@ EndProcedure
 Function GetDecorationTitleContent(TabularSectionName) 
 	
 	If Object[TabularSectionName].Count() < 1 Then
-		
-		DecorationTitle = "Multiple filter isn't filled";
-		
+		DecorationTitle = NStr("en = 'Multiple filter is not filled'; ru = 'Множественный фильтр не заполнен'");
 	ElsIf Object[TabularSectionName].Count() = 2 Then
-		
 		DecorationTitle = String(Object[TabularSectionName][0].Ref) + "; " + String(Object[TabularSectionName][1].Ref);
-		
 	ElsIf Object[TabularSectionName].Count() > 2 Then
-		
 		DecorationTitle = String(Object[TabularSectionName][0].Ref) + "; " + String(Object[TabularSectionName][1].Ref) + "...";
-		
 	Else
-		
 		DecorationTitle = String(Object[TabularSectionName][0].Ref);
-		
 	EndIf;
 	
 	Return DecorationTitle;
@@ -483,22 +454,19 @@ Procedure NotificationProcessing(EventName, Parameter, Source)
 	// StandardSubsystems.PerformanceEstimation
 	
 	If EventName = "PriceChanged" Then
-		
 		If Parameter Then
-			
 			InitializeDataRefresh();
-			
 		EndIf;
 		
 	ElsIf EventName = "MultipleFilters" AND TypeOf(Parameter) = Type("Structure") Then
 		
-		ToDate 							= Parameter.ToDate;
-		Actuality					= Parameter.Actuality;
-		EnableAutoCreation		= Parameter.EnableAutoCreation;
-		OutputCode						= Parameter.OutputCode;
+		ToDate				= Parameter.ToDate;
+		Actuality 			= Parameter.Actuality;
+		EnableAutoCreation	= Parameter.EnableAutoCreation;
+		OutputCode			= Parameter.OutputCode;
 		OutputFullDescr		= Parameter.OutputFullDescr;
-		ItemHierarchy			= Parameter.ItemHierarchy;
-		FormateByAvailabilityInWarehouses	= Parameter.FormateByAvailabilityInWarehouses;
+		ItemHierarchy		= Parameter.ItemHierarchy;
+		FormateByAvailabilityInWarehouses = Parameter.FormateByAvailabilityInWarehouses;
 		
 		// Price kinds
 		ThisIsMultipleFilter = (TypeOf(Parameter.PriceKind) = Type("Array"));
@@ -626,10 +594,7 @@ Procedure Add(Command)
 		AND DetailFromArea.Dynamic Then
 		
 		CommonUseClientServer.MessageToUser(
-			NStr("en='Impossible to add the price.
-		|Perhaps, dynamic price type is selected.';ru='Невозможно добавить цену.
-		|Возможно выбран динамический тип цен .'")
-					);
+			NStr("en='Impossible to add the price. Perhaps, dynamic price type is selected.';ru='Невозможно добавить цену. Возможно выбран динамический тип цен .'"));
 		Return;
 		
 	ElsIf DetailFromArea.Property("DetailsMatch") Then
@@ -735,10 +700,7 @@ Procedure Copy(Command)
 		AND DetailFromArea.Dynamic) Then
 		
 		CommonUseClientServer.MessageToUser(
-			NStr("en='Impossible to copy the price.
-		|Perhaps, dynamic price type or the blank cell has been selected.';ru='Невозможно скопировать цену.
-		|Возможно выбран динамический тип цен или пустая ячейка.'")
-					);
+			NStr("en='Impossible to copy the price. Perhaps, dynamic price type or the blank cell has been selected.';ru='Невозможно скопировать цену. Возможно выбран динамический тип цен или пустая ячейка.'"));
 		Return;
 		
 	ElsIf DetailFromArea.Property("DetailsMatch") Then
@@ -747,8 +709,7 @@ Procedure Copy(Command)
 		If AvailablePriceKindsList.Count() < 1 Then
 			
 			CommonUseClientServer.MessageToUser(
-				NStr("en='No prices available for copying exist for the current products and services item in the current price list.';ru='В текущем прайс-листе для данной номенклатурной позиции нет цен, доступных для копирования.'")
-						);
+				NStr("en='No prices available for copying exist for the current products and services item in the current price list.';ru='В текущем прайс-листе для данной номенклатурной позиции нет цен, доступных для копирования.'"));
 						
 			Return;
 			
@@ -772,10 +733,7 @@ Procedure Copy(Command)
 		Then
 		
 		CommonUseClientServer.MessageToUser(
-			NStr("en='Dynamic price or empty cell is specified.
-		|Copying is not possible.';ru='Указана динамическая цена либо пустая ячейка.
-		|Копирование не возможно.'")
-				);
+			NStr("en='Dynamic price or empty cell is specified. Copying is not possible.';ru='Указана динамическая цена либо пустая ячейка. Копирование не возможно.'"));
 				
 		Return;
 		
@@ -807,10 +765,7 @@ Procedure Change(Command)
 		AND DetailFromArea.Dynamic) Then
 		
 		CommonUseClientServer.MessageToUser(
-			NStr("en='Impossible to change the price.
-		|Perhaps, dynamic price type or the blank cell has been selected.';ru='Невозможно изменить цену.
-		|Возможно выбран динамический тип цен или пустая ячейка.'")
-					);
+			NStr("en='Impossible to change the price. Perhaps, dynamic price type or the blank cell has been selected.';ru='Невозможно изменить цену. Возможно выбран динамический тип цен или пустая ячейка.'"));
 		Return;
 		
 	ElsIf DetailFromArea.Property("DetailsMatch") Then
@@ -819,8 +774,7 @@ Procedure Change(Command)
 		If AvailablePriceKindsList.Count() < 1 Then
 			
 			CommonUseClientServer.MessageToUser(
-				NStr("en='No prices available for editing exist for the current products and services item in the current price list.';ru='В текущем прайс-листе для данной номенклатурной позиции нет цен, доступных для изменения.'")
-						);
+				NStr("en='No prices available for editing exist for the current products and services item in the current price list.';ru='В текущем прайс-листе для данной номенклатурной позиции нет цен, доступных для изменения.'"));
 						
 			Return;
 			
@@ -855,32 +809,22 @@ Procedure History(Command)
 		AND DetailFromArea.Dynamic) Then
 		
 		CommonUseClientServer.MessageToUser(
-			NStr("en='Cannot open price generation history.';ru='Невозможно открыть историю формирования цен.'")
-					);
+			NStr("en='Cannot open price generation history.';ru='Невозможно открыть историю формирования цен.'"));
 		Return;
 		
 	ElsIf DetailFromArea.Property("DetailsMatch") Then
 		
 		AvailablePriceKindsList = GetPriceKindsChoiceList(DetailFromArea.DetailsMatch, TRUE);
 		If AvailablePriceKindsList.Count() < 1 Then
-			
 			CommonUseClientServer.MessageToUser(
-				NStr("en='Cannot show price history for the current inventory.';ru='Для текущего запаса невозможно отобразить историю цены.'")
-						);
-						
+				NStr("en='Cannot show price history for the current inventory.';ru='Для текущего запаса невозможно отобразить историю цены.'"));
 			Return;
-			
 		ElsIf AvailablePriceKindsList.Count() > 0 Then
-			
 			SelectedPriceKind = AvailablePriceKindsList[0].Value;
 			Details 	= DetailFromArea.DetailsMatch.Get(SelectedPriceKind);
-			
 		EndIf;
-		
 	Else
-		
 		Details = DetailFromArea;
-		
 	EndIf;
 	
 	StructureFilter = New Structure;
@@ -1015,27 +959,19 @@ Procedure SpreadsheetDocumentSelection(Item, Area, StandardProcessing)
 		
 		StandardProcessing = False;
 		If Area.Left = 3 Or Area.Left = 2 Then //Expand the SKU as ProductsAndServices
-			
 			OpeningStructure = New Structure("Key", Area.Details.ProductsAndServices);
 			OpenForm("Catalog.ProductsAndServices.ObjectForm", OpeningStructure);
-			
 		ElsIf UseCharacteristics AND Area.Left = 4 Then
-			
 			OpeningStructure = New Structure("Key", Area.Details.Characteristic);
 			OpenForm("Catalog.ProductsAndServicesCharacteristics.ObjectForm", OpeningStructure);
-			
 		Else
-			
 			ParametersStructure = Area.Details;
 			
 			If ParametersStructure.Property("Period") Then
-				
 				ParametersStructure.Period = CurrentDate();
-				
 			EndIf;
 			
 			OpenRegisterRecordForm(ParametersStructure);
-			
 		EndIf;
 		
 	EndIf;
@@ -1182,11 +1118,8 @@ EndFunction // GetFormationParametersStructure()
 // 
 Procedure InitializeDataRefresh(ThisIsManualCall = False)
 	
-	If Not EnableAutoCreation 
-		AND Not ThisIsManualCall Then
-		
+	If Not EnableAutoCreation AND Not ThisIsManualCall Then
 		Return;
-		
 	EndIf;
 	
 	StatePresentation = Items.SpreadsheetDocument.StatePresentation;
@@ -1204,9 +1137,7 @@ Procedure InitializeDataRefresh(ThisIsManualCall = False)
 		
 		PerformanceEstimationClientServer.EndTimeMeasurement(
 			"DataProcessorPriceListGenerating", 
-			OperationsStartTime
-			);
-		
+			OperationsStartTime);
 	Else
 		
 		InterruptIfNotCompleted = False;
@@ -1289,7 +1220,7 @@ Procedure CheckExecution()
 		StatePresentation.Visible = True;
 		StatePresentation.AdditionalShowMode = AdditionalShowMode.DontUse;
 		StatePresentation.Picture = New Picture;
-		StatePresentation.Text = NStr("en='Data is not relevant';ru='Данные не актуалны'");
+		StatePresentation.Text = NStr("en='Data is not relevant';ru='Данные не актуальны'");
 		
 		Items.AbortPriceListBackGroundFormation.Enabled = False;
 		

@@ -36,7 +36,7 @@ Procedure AddItemsIntoTabularSection(ItemArray)
 		
 		If Object.ProductsAndServices.FindRows(New Structure("Ref", ArrayElement)).Count() > 0 Then
 			
-			MessageText = NStr("en = 'Item [" + ArrayElement + "] is present in the filter.'");
+			MessageText = NStr("en = 'Item [" + ArrayElement + "] is present in the filter.';en = 'Позиция [" + ArrayElement + "] не присутствует в фильтре.'");
 			CommonUseClientServer.MessageToUser(MessageText);
 			Continue;
 			

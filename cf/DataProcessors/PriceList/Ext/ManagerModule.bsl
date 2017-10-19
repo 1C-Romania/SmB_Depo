@@ -290,13 +290,9 @@ Procedure SpreadsheetDocument_ItemHierarchy(ParametersStructure, SpreadsheetDocu
 		For Each FilterPricesKind IN TSPriceKinds Do
 			
 			If FilterPricesKind.Ref.CalculatesDynamically Then
-				
 				PriceKindsArray.Add(FilterPricesKind.Ref.PricesBaseKind);
-				
 			Else
-				
 				PriceKindsArray.Add(FilterPricesKind.Ref);
-				
 			EndIf;
 			
 		EndDo;
@@ -860,7 +856,8 @@ Procedure OutputDataOnProductAndServicesParent(ProductsAndServicesParentSelectio
 	
 	If Not ValueIsFilled(ProductsAndServicesParentSelection) Then
 		
-		AreaPriceGroup.Parameters.PriceGroup = NStr("en='<...>';ru='<...>'");
+		//AreaPriceGroup.Parameters.PriceGroup = NStr("en='<...>';ru='<...>'");
+		AreaPriceGroup.Parameters.PriceGroup = "<...>";
 		SpreadsheetDocument.Put(AreaPriceGroup);
 		
 		CurrentAreaPriceGroup = SpreadsheetDocument.Area(SpreadsheetDocument.TableHeight, 2, SpreadsheetDocument.TableHeight, SpreadsheetDocument.TableWidth);
