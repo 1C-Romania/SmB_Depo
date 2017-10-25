@@ -308,7 +308,8 @@ EndProcedure
 &AtClient
 Procedure UpdateDialogAtClient()
 	
-	IsAverage = (Object.CostingMethod = PredefinedValue("Enum.GoodsCostingMethods.Average"));
+	//IsAverage = (Object.CostingMethod = PredefinedValue("Enum.GoodsCostingMethods.Average"));
+	IsAverage = (Object.CostingMethod = PredefinedValue("Enum.InventoryValuationMethods.byAverage"));
 	ControlsProcessingAtClientAtServer.SetControlMarkIncompleteAndEnable(Items.AdditionalCostOfGoodsPostingMethodWhenAverage,Object.AdditionalCostOfGoodsPostingMethodWhenAverage,IsAverage);
 	
 	Items.CostOfGoodsWriteOffDefaultDirection.Enabled      = (Object.AdditionalCostOfGoodsPostingMethodWhenAverage = PredefinedValue("Enum.AdditionalCostOfGoodsPostingMethods.AccordingFinalBalance"));
