@@ -3058,10 +3058,10 @@ Function MetadataObjectByID(ID) Export
 		Raise StringFunctionsClientServer.SubstituteParametersInString(
 			NStr("en='An error occurred during the execution of CommonUse function.MetadataObjectByID().
 		|
-		|%1 identifier is found in the ""Metadata objects identifier catalog"", but the ""Deletion markup"" attribute value is not set to True.';
+		|%1 identifier is found in the ""Metadata objects identifier catalog"", but the ""Deletion markup"" attribute value is set to TRUE.';
 		|ru='Ошибка при выполнении функции ОбщегоНазначения.ОбъектМетаданныхПоИдентификатору()
 		|
-		|Идентификатор %1 найден в справочнике ""Идентификаторы объектов метаданных"", но значение реквизита ""Пометка удаления"" установлено Истина.'")
+		|Идентификатор %1 найден в справочнике ""Идентификаторы объектов метаданных"", но значение реквизита ""Пометка удаления"" установлено ИСТИНА.'")
 			+ StandardSubsystemsServer.SpecificationOfErrorParametersWorkApplicationForDeveloper(),
 			String(ID));
 	EndIf;
