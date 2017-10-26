@@ -1716,7 +1716,8 @@ Function DetermineEDPresentation(EDKind, ParametersStructure) Export
 	ElsIf EDKind = Enums.EDKinds.CancellationOffer Then
 		TextEDKind = NStr("en='Cancellation offer';ru='Предложение об аннулировании'");
 	ElsIf EDKind = Enums.EDKinds.PaymentOrder Then
-		TextEDKind = NStr("en='Payment procedure';ru='Порядок платежа'");
+		//TextEDKind = NStr("en='Payment procedure';ru='Порядок платежа'");
+		TextEDKind = NStr("en='Payment procedure';ru='Платежное Поручение'");
 	ElsIf EDKind = Enums.EDKinds.STATEMENT Then
 		TextEDKind = NStr("en='Receipt';ru='Квитанция'");
 	ElsIf EDKind = Enums.EDKinds.AddData Then

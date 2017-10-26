@@ -262,10 +262,9 @@ Procedure RefreshChartCashAssetsBalance()
 		|TOTALS
 		|	SUM(AmountClosingBalance)
 		|BY
-		|	Period PERIODS(DAY, &BeginOfPeriod, &Period)";
+		|	Period PERIODS(Day, &BeginOfPeriod, &Period)";
 	
-	Query.Text = StrReplace(Query.Text, "DAY", Interval);	
-	Query.Text = StrReplace(Query.Text, "Day", Interval);
+	Query.Text = StrReplace(Query.Text, "Day", Interval);	
 	
 	Query.SetParameter("Period", EndOfDay(Period));
 	Query.SetParameter("BeginOfPeriod", BeginOfPeriod);
