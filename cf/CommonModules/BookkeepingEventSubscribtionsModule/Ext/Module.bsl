@@ -1,6 +1,10 @@
 ﻿
 Procedure DocumentsBookkeepingPosting(Source, Cancel, PostingMode) Export
 	
+	If Not GetFunctionalOption("UseFinance") Then
+		Return;
+	EndIf;
+	
 	If TypeOf(Source.Ref) = Type("DocumentRef.BookkeepingOperation")
 		OR TypeOf(Source.Ref) = Type("DocumentRef.ClosePeriod")
 		OR TypeOf(Source.Ref) = Type("DocumentRef.CurrencyAccountsValuation") Then
@@ -114,6 +118,10 @@ Procedure DocumentsBookkeepingPosting(Source, Cancel, PostingMode) Export
 EndProcedure
 
 Procedure DocumentsBookkeepingUndoPosting(Source, Cancel) Export
+	
+	If Not GetFunctionalOption("UseFinance") Then
+		Return;
+	EndIf;
 	
 	If TypeOf(Source.Ref) = Type("DocumentRef.BookkeepingOperation") Then
 		Return;
