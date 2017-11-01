@@ -28,7 +28,7 @@
 Procedure OnAddSubsystem(Definition) Export
 	
 	Definition.Name = "Simple-ERP";
-	Definition.Version = "1.0.0.1";
+	Definition.Version = "1.0.0.2";
 	
 EndProcedure
 
