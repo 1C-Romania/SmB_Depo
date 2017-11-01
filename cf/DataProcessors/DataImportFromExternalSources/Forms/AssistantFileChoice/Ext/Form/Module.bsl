@@ -179,7 +179,7 @@ EndProcedure
 &AtServer
 Function CheckExecutionAtServer(BackgroundJobID, BackgroundJobStorageAddress)
 	
-	CheckResult = New Structure("JobComplete, Value", False, Undefined);
+	CheckResult = New Structure("JobCompleted, Value", False, Undefined);
 	If LongActions.JobCompleted(BackgroundJobID) Then
 		
 		CheckResult.JobCompleted	= True;
