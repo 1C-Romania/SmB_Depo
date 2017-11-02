@@ -117,10 +117,11 @@ Procedure OnCreateAtServer(Cancel, StandardProcessing)
 	List.Parameters.SetParameterValue("TypeOptional", Enums.ReportsTypes.Additional);
 	List.Parameters.SetParameterValue("DisabledApplicationOptions", ReportsVariantsReUse.DisabledApplicationOptions());
 	//Ryabko Vitaly 2016-12-06 Task Задача №360:Локализация вариантов отчетов (
-	UserLanguge = InfoBaseUsers.CurrentUser().Language;
-	If NOT UserLanguge = Undefined Then
-		List.Parameters.SetParameterValue("LangKey", InfoBaseUsers.CurrentUser().Language.LanguageCode);
+	UserLanguage = InfoBaseUsers.CurrentUser().Language;
+	If UserLanguage = Undefined Then
+		UserLanguage = Metadata.DefaultLanguage;
 	EndIf;
+	List.Parameters.SetParameterValue("LangKey", UserLanguage.LanguageCode);
 	//Ryabko Vitaly 2016-12-06 Task Задача №360:Локализация вариантов отчетов )
 	CurrentItem = Items.List;
 	
