@@ -928,15 +928,15 @@ Procedure CommentEndInput(Val EnteredText, Val AdditionalParameters) Export
 	
 	FormAttribute = AdditionalParameters.OwnerForm;
 	
-	PathToAttributeForms = StringFunctionsClientServer.DecomposeStringIntoSubstringsArray(AdditionalParameters.AttributeName, ".");
+	PathToFormAttribute = StringFunctionsClientServer.DecomposeStringIntoSubstringsArray(AdditionalParameters.AttributeName, ".");
 	// If the attribute is of the Object.Comment type etc.
-	If PathToAttributeForms.Count() > 1 Then
-		For IndexOf = 0 To PathToAttributeForms.Count() - 2 Do 
-			FormAttribute = FormAttribute[PathToAttributeForms[IndexOf]];
+	If PathToFormAttribute.Count() > 1 Then
+		For IndexOf = 0 To PathToFormAttribute.Count() - 2 Do 
+			FormAttribute = FormAttribute[PathToFormAttribute[IndexOf]];
 		EndDo;
 	EndIf;	
 	
-	FormAttribute[PathToAttributeForms[PathToAttributeForms.Count() - 1]] = EnteredText;
+	FormAttribute[PathToFormAttribute[PathToFormAttribute.Count() - 1]] = EnteredText;
 	AdditionalParameters.OwnerForm.Modified = True;
 	
 EndProcedure

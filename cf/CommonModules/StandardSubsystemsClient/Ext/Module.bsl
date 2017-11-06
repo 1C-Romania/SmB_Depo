@@ -802,7 +802,7 @@ Procedure ShowExecutionResult(Form, Result, EndProcessor = Undefined) Export
 			Message.TargetID = Form.UUID;
 		EndIf;
 		Message.Text = Result.OutputMessages.Text;
-		Message.Field  = Result.OutputMessages.PathToAttributeForms;
+		Message.Field  = Result.OutputMessages.PathToFormAttribute;
 		Message.Message();
 	EndIf;
 	
@@ -811,7 +811,7 @@ Procedure ShowExecutionResult(Form, Result, EndProcessor = Undefined) Export
 		If ValueIsFilled(OutputWarning.ErrorsText) Then
 			Buttons = New ValueList;
 			Buttons.Add(1, NStr("en='More...';ru='Подробнее...'"));
-			If TypeOf(Form) = Type("ManagedForm") AND ValueIsFilled(OutputWarning.PathToAttributeForms) Then
+			If TypeOf(Form) = Type("ManagedForm") AND ValueIsFilled(OutputWarning.PathToFormAttribute) Then
 				Buttons.Add(2, NStr("en='Go to attribute';ru='Перейти к реквизиту'"));
 			EndIf;
 			Buttons.Add(0, NStr("en='Continue';ru='Продолжить'"));
@@ -894,7 +894,7 @@ Procedure ShowExecutionResultEnd(Response, Result) Export
 			Message = New UserMessage;
 			Message.TargetID = Result.Form.UUID;
 			Message.Text = Result.OutputWarning.Text;
-			Message.Field  = Result.OutputWarning.PathToAttributeForms;
+			Message.Field  = Result.OutputWarning.PathToFormAttribute;
 			Message.Message();
 		EndIf;
 	EndIf;

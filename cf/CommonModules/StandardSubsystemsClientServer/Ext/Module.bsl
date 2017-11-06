@@ -129,9 +129,9 @@ EndProcedure
 //   Text               - String - Notification text.
 //   ErrorsText         - String - Optional. Texts of errors that the user can view if necessary.
 //   Title           - String - Optional. Window title.
-//   PathToAttributeForms - String - Optional. Path to the form attribute which value caused an error.
+//   PathToFormAttribute - String - Optional. Path to the form attribute which value caused an error.
 //
-Procedure DisplayWarning(Result, Text, ErrorsText = "", Title = "", PathToAttributeForms = "") Export
+Procedure DisplayWarning(Result, Text, ErrorsText = "", Title = "", PathToFormAttribute = "") Export
 	OutputWarning = CommonUseClientServer.StructureProperty(Result, "OutputWarning");
 	If OutputWarning = Undefined Then
 		OutputWarning = New Structure("Use, Title, Text, PathToFormAttribute, ErrorsText", False);
@@ -141,7 +141,7 @@ Procedure DisplayWarning(Result, Text, ErrorsText = "", Title = "", PathToAttrib
 	OutputWarning.Title = Title;
 	OutputWarning.Text = Text;
 	OutputWarning.ErrorsText = ErrorsText;
-	OutputWarning.PathToAttributeForms = PathToAttributeForms;
+	OutputWarning.PathToFormAttribute = PathToFormAttribute;
 EndProcedure
 
 // It complements the structure with the info required to display the message of improperly filled form fields.
@@ -150,9 +150,9 @@ EndProcedure
 // Parameters:
 //   Result - Structure - See StandardSubsystemsClient.ShowPerformanceResult().
 //   Text               - String - Message text.
-//   PathToAttributeForms - String - Optional. Path to the form attribute which value caused an error.
+//   PathToFormAttribute - String - Optional. Path to the form attribute which value caused an error.
 //
-Procedure ShowMessage(Result, Text, PathToAttributeForms = "") Export
+Procedure ShowMessage(Result, Text, PathToFormAttribute = "") Export
 	OutputMessages = CommonUseClientServer.StructureProperty(Result, "OutputMessages");
 	If OutputMessages = Undefined Then
 		OutputMessages = New Structure("Use, Text, PathToFormAttribute", False);
@@ -160,7 +160,7 @@ Procedure ShowMessage(Result, Text, PathToAttributeForms = "") Export
 	EndIf;
 	OutputMessages.Use = True;
 	OutputMessages.Text = Text;
-	OutputMessages.PathToAttributeForms = PathToAttributeForms;
+	OutputMessages.PathToFormAttribute = PathToFormAttribute;
 EndProcedure
 
 // It adds info required for the popup notification display to the structure.

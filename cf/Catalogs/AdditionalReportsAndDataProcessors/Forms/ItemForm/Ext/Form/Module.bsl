@@ -952,7 +952,7 @@ Procedure UpdateFromFileMechanicsAtServer(RegistrationParameters)
 		Else
 			ErrorTitle = NStr("en='Data processor is not connected';ru='Обработка не подключена'");
 		EndIf;
-		StandardSubsystemsClientServer.DisplayNotification(
+		StandardSubsystemsClientServer.DisplayWarning(
 			RegistrationParameters,
 			RegistrationParameters.ErrorText,
 			RegistrationParameters.BriefErrorDescription,
