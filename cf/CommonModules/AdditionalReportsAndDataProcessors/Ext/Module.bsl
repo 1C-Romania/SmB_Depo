@@ -272,7 +272,7 @@ EndProcedure
 //
 // Returns: 
 //   RegistrationParameters - Structure - External object parameters.
-//       * Kind - String - External object kind. Corresponds
+//       * Type - String - External object kind. Corresponds
 //                        to the "Kind" attribute (EnumRef.AdditionalReportsAndDataProcessorsKind).
 //           To determine the kind, you can use the
 //           "Kind*" function of the AdditionalReportsAndDataProcessorsClientServer general module or specify the kind explicitly:
@@ -303,8 +303,8 @@ EndProcedure
 //           ** Usage - String - Command type. Corresponds
 //                                       to the "StartOption" attribute (EnumRef.AdditionalProcessorsCallMethods).
 //               ***
-//               "ClientMethodCall" ***
-//               "ServerMethodCall" ***
+//               "CallOfClientMethod" ***
+//               "CallOfServerMethod" ***
 //               "FormFilling" ***
 //               "FormOpening" *** "ScriptInSafeMode".
 //           ** Presentation - String - Command presentation for an end user.
@@ -341,7 +341,7 @@ EndProcedure
 Function ExternalDataProcessorInfo(SSLVersion = "") Export
 	RegistrationParameters = New Structure;
 	
-	RegistrationParameters.Insert("Kind", "");
+	RegistrationParameters.Insert("Type", "");
 	RegistrationParameters.Insert("Version", "0.0");
 	RegistrationParameters.Insert("Purpose", New Array);
 	RegistrationParameters.Insert("Description", Undefined);
