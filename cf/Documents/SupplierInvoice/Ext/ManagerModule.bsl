@@ -573,7 +573,7 @@ Procedure GenerateTableInventoryReturn(DocumentRefPurchaseInvoice, StructureAddi
 			
 			// Receipt.
 			TableRowReceipt = TableInventory.Add();
-			FillPropertyValues(TableRowReceipt, RowTableInventory,,"StructuralUnit, CorrStructuralUnit");
+			FillPropertyValues(TableRowReceipt, RowTableInventory,,"StructuralUnit, StructuralUnitCorr");
 			
 			TableRowReceipt.RecordType = AccumulationRecordType.Receipt;
 						
