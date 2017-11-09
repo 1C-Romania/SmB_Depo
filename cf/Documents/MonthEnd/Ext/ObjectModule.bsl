@@ -19,7 +19,8 @@ EndProcedure // AddErrorIntoTable()
 
 Function GenerateErrorDescriptionCostAllocation(GLAccount, MethodOfDistribution, FilterByOrder, Amount)
 	
-	ErrorDescription = NStr("en='The ""%GLAccount%"" cost in the %Amount% amount allocated for production release by %AllocationMethod% can not be allocated as in the calculated period there was no %AdditionalDetails%.';ru='Затрата ""%СчетУчета%"" в сумме %Сумма%, распределяемая на выпуск продукции по %СпособРаспределения% не может быть распределена, т.к. в рассчитываемом периоде не было %ДополнительноеОписание%.'"
+	ErrorDescription = NStr("en='The ""%GLAccount%"" cost in the %Amount% amount allocated for production release by %AllocationMethod% can not be allocated as in the calculated period there was no %AdditionalDetails%.';
+	|ru='Затрата ""%GLAccount%"" в сумме %Amount%, распределяемая на выпуск продукции по %AllocationMethod% не может быть распределена, т.к. в рассчитываемом периоде не было %AdditionalDetails%.'"
 	);
 	
 	ErrorDescription = StrReplace(
@@ -38,8 +39,8 @@ Function GenerateErrorDescriptionCostAllocation(GLAccount, MethodOfDistribution,
 		ErrorDescription,
 		"%AllocationMethod%",
 		?(MethodOfDistribution = Enums.CostingBases.ProductionVolume,
-			"release volume",
-			"direct costs"
+			NStr("en='release volume';ru='объему выпуска'"),
+			NStr("en='direct costs';ru='прямым затратам'")
 		)
 	);
 	
@@ -47,8 +48,8 @@ Function GenerateErrorDescriptionCostAllocation(GLAccount, MethodOfDistribution,
 		ErrorDescription,
 		"%AdditionalDetails%",
 		?(MethodOfDistribution = Enums.CostingBases.ProductionVolume,
-			"production release%Order%",
-			"allocation of direct costs%Order% specified in the allocation setting"
+			NStr("en='production release%Order%';ru='выпусков продукции%Order%'"),
+			NStr("en='allocation of direct costs%Order% specified in the allocation setting';ru='распределения прямых затрат%Order%, указанных в настройке распределения'")
 		)
 	);
 	
@@ -56,7 +57,7 @@ Function GenerateErrorDescriptionCostAllocation(GLAccount, MethodOfDistribution,
 		ErrorDescription,
 		"%Order%",
 		?(ValueIsFilled(FilterByOrder),
-			" to " + String(FilterByOrder),
+			NStr("en=' to ';ru=' по '") + String(FilterByOrder),
 			""
 		)
 	);
@@ -67,7 +68,8 @@ EndFunction // GenerateCostAllocationErrorDescription()
 
 Function GenerateErrorDescriptionExpensesDistribution(GLAccount, MethodOfDistribution, Amount)
 	
-	ErrorDescription = NStr("en='The ""%GLAccount%"" expense in the %Amount% amount allocated for a financial result by %AllocationMethod% can not be allocated as in the calculated period there was no %AdditionalDetails%.';ru='Затрата ""%СчетУчета%"" в сумме %Сумма%, распределяемая на выпуск продукции по %СпособРаспределения% не может быть распределена, т.к. в рассчитываемом периоде не было %ДополнительноеОписание%.'"
+	ErrorDescription = NStr("en='The ""%GLAccount%"" expense in the %Amount% amount allocated for a financial result by %AllocationMethod% can not be allocated as in the calculated period there was no %AdditionalDetails%.';
+	|ru='Затрата ""%GLAccount%"" в сумме %Amount%, распределяемая на выпуск продукции по %AllocationMethod% не может быть распределена, т.к. в рассчитываемом периоде не было %AdditionalDetails%.'"
 	);
 	
 	ErrorDescription = StrReplace(
@@ -83,13 +85,13 @@ Function GenerateErrorDescriptionExpensesDistribution(GLAccount, MethodOfDistrib
 	);
 	
 	If MethodOfDistribution = Enums.CostingBases.SalesVolume Then
-		TextMethodOfDistribution = "sales volume";
+		TextMethodOfDistribution = NStr("en='sales volume';ru='объему продаж'");
 	ElsIf MethodOfDistribution = Enums.CostingBases.SalesRevenue Then
-		TextMethodOfDistribution = "sales revenue";
+		TextMethodOfDistribution = NStr("en='sales revenue';ru='выручке от продаж'");
 	ElsIf MethodOfDistribution = Enums.CostingBases.CostOfGoodsSold Then
-		TextMethodOfDistribution = "sales primecost";
+		TextMethodOfDistribution = NStr("en='sales primecost';ru='себестоимости продаж'");
 	ElsIf MethodOfDistribution = Enums.CostingBases.GrossProfit Then
-		TextMethodOfDistribution = "gross profit";
+		TextMethodOfDistribution = NStr("en='gross profit';ru='валовой прибыли'");
 	EndIf;
 		
 	ErrorDescription = StrReplace(
@@ -99,13 +101,13 @@ Function GenerateErrorDescriptionExpensesDistribution(GLAccount, MethodOfDistrib
 	);
 	
 	If MethodOfDistribution = Enums.CostingBases.SalesVolume Then
-		TextAdditionalDetails = "sales";
+		TextAdditionalDetails = NStr("en='sales';ru='продаж'");
 	ElsIf MethodOfDistribution = Enums.CostingBases.SalesRevenue Then
-		TextAdditionalDetails = "sales revenue";
+		TextAdditionalDetails = NStr("en='sales revenue';ru='выручки от продаж'");
 	ElsIf MethodOfDistribution = Enums.CostingBases.CostOfGoodsSold Then
-		TextAdditionalDetails = "sales primecost";
+		TextAdditionalDetails = NStr("en='sales primecost';ru='себестоимости продаж'");
 	ElsIf MethodOfDistribution = Enums.CostingBases.GrossProfit Then
-		TextAdditionalDetails = "gross profit";
+		TextAdditionalDetails = NStr("en='gross profit';ru='валовой прибыли'");
 	EndIf;
 	
 	ErrorDescription = StrReplace(
