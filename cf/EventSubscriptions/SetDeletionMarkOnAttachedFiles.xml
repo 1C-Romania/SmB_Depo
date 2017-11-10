@@ -15,13 +15,18 @@
 			</Synonym>
 			<Comment/>
 			<Source>
+				<v8:Type>cfg:CatalogObject.InvoiceForPaymentAttachedFiles</v8:Type>
+				<v8:Type>cfg:CatalogObject.InventoryAssemblyAttachedFiles</v8:Type>
 				<v8:Type>cfg:CatalogObject.FileFolders</v8:Type>
 				<v8:Type>cfg:CatalogObject.Counterparties</v8:Type>
 				<v8:Type>cfg:CatalogObject.CounterpartyContracts</v8:Type>
 				<v8:Type>cfg:CatalogObject.Individuals</v8:Type>
+				<v8:Type>cfg:CatalogObject.ProductionOrderAttachedFiles</v8:Type>
+				<v8:Type>cfg:CatalogObject.AcceptanceCertificateAttachedFiles</v8:Type>
 				<v8:Type>cfg:CatalogObject.ProductsAndServices</v8:Type>
 				<v8:Type>cfg:CatalogObject.Specifications</v8:Type>
 				<v8:Type>cfg:CatalogObject.Companies</v8:Type>
+				<v8:Type>cfg:CatalogObject.CustomerInvoiceAttachedFiles</v8:Type>
 				<v8:Type>cfg:CatalogObject.LegalDocuments</v8:Type>
 			</Source>
 			<Event>BeforeWrite</Event>
