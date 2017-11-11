@@ -235,8 +235,8 @@ Procedure FillBySupplierInvoice(FillingData, Operation = "") Export
 			OperationKind = Enums.OperationKindsCustomerInvoice.SaleToCustomer;
 		Else
 			TextExclusion = StringFunctionsClientServer.SubstituteParametersInString(
-			NStr("ru = 'Невозможен ввод операции ""Продажа покупателю"" на основании операции - ""%1""!'; en = 'Can not enter the operation "" Sale to customer "" on the basis of the operation - ""% 1 ""!'"),
-			FillingData.OperationKind);
+				NStr("ru = 'Невозможен ввод операции ""Продажа покупателю"" на основании операции - ""%1""!'; en = 'Can not enter the operation ""Sale to customer"" on the basis of the operation - ""%1""!'"),
+				FillingData.OperationKind);
 			Raise TextExclusion;
 		EndIf;
 	ElsIf Operation = "Return" Then
@@ -250,8 +250,9 @@ Procedure FillBySupplierInvoice(FillingData, Operation = "") Export
 		ElsIf FillingData.OperationKind = Enums.OperationKindsSupplierInvoice.ReceptionForSafeCustody Then
 			OperationKind = Enums.OperationKindsCustomerInvoice.ReturnFromSafeCustody;
 		Else
-			ErrorMessage = NStr("en='Cannot input the ""Return"" operation based on the ""%OperationKind"" operation.';ru='Невозможен ввод операции ""Возврат"" на основании операции - ""%ВидОперации""!'");
-			ErrorMessage = StrReplace(ErrorMessage, "%OperationKind", FillingData.OperationKind);
+			ErrorMessage = StringFunctionsClientServer.SubstituteParametersInString(
+				NStr("en='Cannot input the ""Return"" operation based on the ""%1"" operation.';ru='Невозможен ввод операции ""Возврат"" на основании операции - ""%1""!'"),
+				FillingData.OperationKind);
 			Raise ErrorMessage;
 		EndIf;			
 	EndIf;

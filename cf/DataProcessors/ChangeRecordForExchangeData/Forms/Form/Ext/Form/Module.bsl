@@ -2073,9 +2073,11 @@ Function GetDescriptionSelectedMetadata(WithoutAccountingAutoRecord, MetaNameGro
 		EndIf;
 	EndDo;
 	
-	Text = StrReplace(Text, "%1", FlagText);
-	Text = StrReplace(Text, "%2", Lower(MetaNameGroup));
-	Text = StrReplace(Text, "%3", Presentation);
+	//Text = StrReplace(Text, "%1", FlagText);
+	//Text = StrReplace(Text, "%2", Lower(MetaNameGroup));
+	//Text = StrReplace(Text, "%3", Presentation);
+	
+	Text = StringFunctionsClientServer.SubstituteParametersInString(Text, FlagText, Lower(MetaNameGroup), Presentation);
 	
 	Return TrimAll(Text);
 EndFunction
