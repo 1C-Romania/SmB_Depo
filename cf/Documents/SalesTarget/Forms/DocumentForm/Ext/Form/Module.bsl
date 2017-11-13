@@ -280,7 +280,7 @@ Procedure ProcessChangesOnButtonPricesAndCurrencies()
 	ParametersStructure.Insert("AmountIncludesVAT", Object.AmountIncludesVAT);
 	ParametersStructure.Insert("IncludeVATInPrice", Object.IncludeVATInPrice);
 	
-	ParametersStructure.Insert("Company",	SubsidiaryCompany); 
+	ParametersStructure.Insert("Company",	Company); 
     ParametersStructure.Insert("DocumentDate", Object.Date);
     	
 	ParametersStructure.Insert("RefillPrices", False);
@@ -656,7 +656,7 @@ Procedure Pick(Command)
 	SelectionParameters = New Structure;
 	
 	SelectionParameters.Insert("Period", 				Object.Date);
-	SelectionParameters.Insert("Company", 			SubsidiaryCompany);
+	SelectionParameters.Insert("Company", 			Company);
 	SelectionParameters.Insert("DocumentOrganization", 	Object.Company);
 	SelectionParameters.Insert("StructuralUnit", 	Object.StructuralUnit);
 	SelectionParameters.Insert("VATTaxation",	   	Object.VATTaxation);

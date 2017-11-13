@@ -745,7 +745,7 @@ Procedure RefillTabularSectionPricesByPriceKind(DocumentForm, TabularSectionName
 	DocumentTabularSection = New Array;
 
 	DataStructure.Insert("Date",				DocumentForm.Object.Date);
-	DataStructure.Insert("Company",				DocumentForm.SubsidiaryCompany);
+	DataStructure.Insert("Company",				DocumentForm.Company);
 	DataStructure.Insert("PriceKind",			DocumentForm.Object.PriceKind);
 	DataStructure.Insert("DocumentCurrency",	DocumentForm.Object.DocumentCurrency);
 	DataStructure.Insert("AmountIncludesVAT",	DocumentForm.Object.AmountIncludesVAT);
