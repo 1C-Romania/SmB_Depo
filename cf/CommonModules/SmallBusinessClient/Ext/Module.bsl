@@ -673,7 +673,7 @@ EndProcedure // OnRegistrationPeriodRegulation()
 //
 Procedure CalculateTabularSectionRowSUM(DocumentForm, TabularSectionRow)
 	
-	If TabularSectionRow.Property("Count") AND TabularSectionRow.Property("Price") Then
+	If TabularSectionRow.Property("Quantity") AND TabularSectionRow.Property("Price") Then
 		TabularSectionRow.Amount = TabularSectionRow.Quantity * TabularSectionRow.Price;
 	EndIf;
 	
