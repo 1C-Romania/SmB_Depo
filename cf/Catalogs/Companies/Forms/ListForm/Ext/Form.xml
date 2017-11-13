@@ -382,4 +382,17 @@
 			<Representation>TextPicture</Representation>
 		</Command>
 	</Commands>
+	<CommandInterface>
+		<CommandBar>
+			<Item>
+				<Command>Catalog.Companies.Command.PrintFaxPrintWorkAssistant</Command>
+				<Type>Auto</Type>
+				<CommandGroup>CommandGroup.Print</CommandGroup>
+				<DefaultVisible>false</DefaultVisible>
+				<Visible>
+					<xr:Common>false</xr:Common>
+				</Visible>
+			</Item>
+		</CommandBar>
+	</CommandInterface>
 </Form>

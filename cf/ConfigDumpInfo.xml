@@ -1300,7 +1300,7 @@
 		<Metadata name="Catalog.Cells.Form.ListForm.Form" id="6bf031da-62af-40b0-ad37-5a4709f23b23.0" configVersion="a9f8db760170714d9397e380bbc3cdee00000000"/>
 		<Metadata name="Catalog.Cells.Help" id="939af764-f036-4b83-9720-781b39f5df43.1" configVersion="a7a568bfc9f56c4082b69aa7db2c29d000000000"/>
 		<Metadata name="Catalog.Cells.ManagerModule" id="939af764-f036-4b83-9720-781b39f5df43.3" configVersion="dbe83f9c8cb6134caab99d3fdd4e3ca000000000"/>
-		<Metadata name="Catalog.Companies" id="6a3c1b05-ee48-4aa9-b2c1-4b66e3aeab70" configVersion="85be5c657a12d84ca761194758bf7a1900000000">
+		<Metadata name="Catalog.Companies" id="6a3c1b05-ee48-4aa9-b2c1-4b66e3aeab70" configVersion="78d8686ca9833146acab8d12b87e8cdc00000000">
 			<Metadata name="Catalog.Companies.Attribute.Prefix" id="121aa82a-5517-44b1-b70b-0a45d30400bf"/>
 			<Metadata name="Catalog.Companies.Attribute.VATNumber" id="12a7feea-f977-42d4-a56f-27fbf023a033"/>
 			<Metadata name="Catalog.Companies.Attribute.IncludeVATInPrice" id="136a6251-a49e-4d46-a465-f2a14d169492"/>
@@ -1331,6 +1331,7 @@
 			<Metadata name="Catalog.Companies.TabularSection.AdditionalAttributes.Attribute.Value" id="cb189e52-fd69-4386-8ea7-ec660cbf227e"/>
 			<Metadata name="Catalog.Companies.Command.ExportAttributes" id="cb42f5cd-6deb-4322-b9dd-95e8f089c2d7"/>
 			<Metadata name="Catalog.Companies.Attribute.PettyCashByDefault" id="ccfe9a5c-f255-46ce-af0d-e0c873974857"/>
+			<Metadata name="Catalog.Companies.Command.PrintFaxPrintWorkAssistant" id="cff7a70d-db4a-4575-a7a4-4b7079a550a9"/>
 			<Metadata name="Catalog.Companies.TabularSection.ContactInformation" id="d4debff8-9a98-4474-ad14-4e65ec1d0e4f"/>
 			<Metadata name="Catalog.Companies.Attribute.LogoFile" id="d52d829b-1fa0-4917-9732-84cdeba76607"/>
 			<Metadata name="Catalog.Companies.Attribute.RegistrationNumber" id="d59730b1-d451-4d0a-beff-76d4ae1291ae"/>
@@ -1345,18 +1346,19 @@
 		<Metadata name="Catalog.Companies.Command.Companies.CommandModule" id="fafff964-8daa-4921-9d53-fd6be3878d94.2" configVersion="7ae17b59a56f6e4f9539f0268f317af200000000"/>
 		<Metadata name="Catalog.Companies.Command.CompanyAttributes.CommandModule" id="981a74f4-cdc2-4016-b462-9b5fd0d6de4d.2" configVersion="3b7964f19e9955428dd8e0c36a084bd300000000"/>
 		<Metadata name="Catalog.Companies.Command.ExportAttributes.CommandModule" id="cb42f5cd-6deb-4322-b9dd-95e8f089c2d7.2" configVersion="e91e9b25981c6f478456bcbfc4d65b2c00000000"/>
-		<Metadata name="Catalog.Companies.Form.ChoiceForm" id="03f1c2d7-956d-45a9-9d8e-a86eca6b2625" configVersion="1b2045372b569546b80454b0525b3f1900000000"/>
-		<Metadata name="Catalog.Companies.Form.ChoiceForm.Form" id="03f1c2d7-956d-45a9-9d8e-a86eca6b2625.0" configVersion="79dfb00a3c646e44b6b752b5b5c1b4e900000000"/>
-		<Metadata name="Catalog.Companies.Form.ItemForm" id="a13862e4-a11d-410e-affc-14bcea210795" configVersion="8895b5b85ecf614783a465c7eaf2af9100000000"/>
-		<Metadata name="Catalog.Companies.Form.ItemForm.Form" id="a13862e4-a11d-410e-affc-14bcea210795.0" configVersion="a441458028239d4a93c1b03770fa491f00000000"/>
-		<Metadata name="Catalog.Companies.Form.ListForm" id="9f382a18-6bd2-492f-92d7-867f7868520b" configVersion="b3f4c24d48ac124d89e95f4d091139d900000000"/>
-		<Metadata name="Catalog.Companies.Form.ListForm.Form" id="9f382a18-6bd2-492f-92d7-867f7868520b.0" configVersion="bc31b516adc0ab47a7cf225cb0455fbd00000000"/>
+		<Metadata name="Catalog.Companies.Command.PrintFaxPrintWorkAssistant.CommandModule" id="cff7a70d-db4a-4575-a7a4-4b7079a550a9.2" configVersion="aee99414d213da4c9755f2f2ba4ec39000000000"/>
+		<Metadata name="Catalog.Companies.Form.ChoiceForm" id="03f1c2d7-956d-45a9-9d8e-a86eca6b2625" configVersion="4b522de61dd4a44c8b5fa591e2f7e0ba00000000"/>
+		<Metadata name="Catalog.Companies.Form.ChoiceForm.Form" id="03f1c2d7-956d-45a9-9d8e-a86eca6b2625.0" configVersion="ed9d98d913af984488b59245fbb3a47600000000"/>
+		<Metadata name="Catalog.Companies.Form.ItemForm" id="a13862e4-a11d-410e-affc-14bcea210795" configVersion="8c764bdd34f6b045a467138e2ff425e500000000"/>
+		<Metadata name="Catalog.Companies.Form.ItemForm.Form" id="a13862e4-a11d-410e-affc-14bcea210795.0" configVersion="ab0b91b1b08ca24087e797661761407600000000"/>
+		<Metadata name="Catalog.Companies.Form.ListForm" id="9f382a18-6bd2-492f-92d7-867f7868520b" configVersion="e02cc0b4ce09b843bc5dd21fa71f81d200000000"/>
+		<Metadata name="Catalog.Companies.Form.ListForm.Form" id="9f382a18-6bd2-492f-92d7-867f7868520b.0" configVersion="ed5492e42474cc49a33b313b160680df00000000"/>
 		<Metadata name="Catalog.Companies.Help" id="6a3c1b05-ee48-4aa9-b2c1-4b66e3aeab70.1" configVersion="09e619c742edef4ebae66bc978f2557a00000000"/>
 		<Metadata name="Catalog.Companies.ManagerModule" id="6a3c1b05-ee48-4aa9-b2c1-4b66e3aeab70.3" configVersion="f9871de72cddc14882cc224181b6ec5400000000"/>
 		<Metadata name="Catalog.Companies.ObjectModule" id="6a3c1b05-ee48-4aa9-b2c1-4b66e3aeab70.0" configVersion="d07734d67ae18f4cb2e6aa45f011d72f00000000"/>
 		<Metadata name="Catalog.Companies.Predefined" id="6a3c1b05-ee48-4aa9-b2c1-4b66e3aeab70.1c" configVersion="d30d639572495746b839c037d1a0b63700000000"/>
-		<Metadata name="Catalog.Companies.Template.AssistantWorkFaxPrint" id="cc06c34a-d35e-4051-b42f-0fd1a5d8dc98" configVersion="2ab16d6ab649ae45995bab780940eb0100000000"/>
-		<Metadata name="Catalog.Companies.Template.AssistantWorkFaxPrint.Template" id="cc06c34a-d35e-4051-b42f-0fd1a5d8dc98.0" configVersion="51b761860d65424bac349e6ee296250100000000"/>
+		<Metadata name="Catalog.Companies.Template.AssistantWorkFaxPrint" id="cc06c34a-d35e-4051-b42f-0fd1a5d8dc98" configVersion="66c1b695ecf5534ca5c0bc7915f4ebff00000000"/>
+		<Metadata name="Catalog.Companies.Template.AssistantWorkFaxPrint.Template" id="cc06c34a-d35e-4051-b42f-0fd1a5d8dc98.0" configVersion="95f317c7a9335448b148d24c21ecc69800000000"/>
 		<Metadata name="Catalog.Companies.Template.CompanyAttributes" id="b4309226-894d-49e5-b951-53f264be5d45" configVersion="0176fec02269f94598da43ca5dd9815900000000"/>
 		<Metadata name="Catalog.Companies.Template.CompanyAttributes.Template" id="b4309226-894d-49e5-b951-53f264be5d45.0" configVersion="643a2d5709a79f4f9a11479bb144edf400000000"/>
 		<Metadata name="Catalog.CompaniesAttachedFiles" id="144f2490-2652-4f1b-a364-0ebfac4529b5" configVersion="a88f90d9989be441be7b5bf802afef1000000000">

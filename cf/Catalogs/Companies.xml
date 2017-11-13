@@ -2291,69 +2291,6 @@ element will be easily recognized in the list of elements</v8:content>
 			<Form>ChoiceForm</Form>
 			<Template>AssistantWorkFaxPrint</Template>
 			<Template>CompanyAttributes</Template>
-			<Command uuid="cb42f5cd-6deb-4322-b9dd-95e8f089c2d7">
-				<Properties>
-					<Name>ExportAttributes</Name>
-					<Synonym>
-						<v8:item>
-							<v8:lang>en</v8:lang>
-							<v8:content>Export attributes</v8:content>
-						</v8:item>
-						<v8:item>
-							<v8:lang>ru</v8:lang>
-							<v8:content>Выгрузить реквизиты</v8:content>
-						</v8:item>
-					</Synonym>
-					<Comment/>
-					<Group>FormCommandBarImportant</Group>
-					<CommandParameterType>
-						<v8:Type>cfg:CatalogRef.Companies</v8:Type>
-					</CommandParameterType>
-					<ParameterUseMode>Single</ParameterUseMode>
-					<ModifiesData>false</ModifiesData>
-					<Representation>Picture</Representation>
-					<ToolTip>
-						<v8:item>
-							<v8:lang>en</v8:lang>
-							<v8:content>Export attributes to XML file</v8:content>
-						</v8:item>
-						<v8:item>
-							<v8:lang>ru</v8:lang>
-							<v8:content>Выгрузить реквизиты в файл XML</v8:content>
-						</v8:item>
-					</ToolTip>
-					<Picture>
-						<xr:Ref>CommonPicture.ExportDataFromInfobaseIntoXMLFile</xr:Ref>
-						<xr:LoadTransparent>true</xr:LoadTransparent>
-						<xr:TransparentPixel x="14" y="1"/>
-					</Picture>
-					<Shortcut/>
-				</Properties>
-			</Command>
-			<Command uuid="981a74f4-cdc2-4016-b462-9b5fd0d6de4d">
-				<Properties>
-					<Name>CompanyAttributes</Name>
-					<Synonym>
-						<v8:item>
-							<v8:lang>en</v8:lang>
-							<v8:content>Company details</v8:content>
-						</v8:item>
-						<v8:item>
-							<v8:lang>ru</v8:lang>
-							<v8:content>Реквизиты организации</v8:content>
-						</v8:item>
-					</Synonym>
-					<Comment/>
-					<Group>NavigationPanelOrdinary</Group>
-					<CommandParameterType/>
-					<ParameterUseMode>Single</ParameterUseMode>
-					<ModifiesData>false</ModifiesData>
-					<Representation>Auto</Representation>
-					<ToolTip/>
-					<Picture/>
-					<Shortcut/>
-				</Properties>
-			</Command>
 			<Command uuid="1d89e2b7-8f66-4210-8ab4-29efde5e5295">
 				<Properties>
 					<Name>AddCompany</Name>
@@ -2394,6 +2331,95 @@ element will be easily recognized in the list of elements</v8:content>
 					<Comment/>
 					<Group>NavigationPanelOrdinary</Group>
 					<CommandParameterType/>
+					<ParameterUseMode>Single</ParameterUseMode>
+					<ModifiesData>false</ModifiesData>
+					<Representation>Auto</Representation>
+					<ToolTip/>
+					<Picture/>
+					<Shortcut/>
+				</Properties>
+			</Command>
+			<Command uuid="981a74f4-cdc2-4016-b462-9b5fd0d6de4d">
+				<Properties>
+					<Name>CompanyAttributes</Name>
+					<Synonym>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Company details</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Реквизиты организации</v8:content>
+						</v8:item>
+					</Synonym>
+					<Comment/>
+					<Group>NavigationPanelOrdinary</Group>
+					<CommandParameterType/>
+					<ParameterUseMode>Single</ParameterUseMode>
+					<ModifiesData>false</ModifiesData>
+					<Representation>Auto</Representation>
+					<ToolTip/>
+					<Picture/>
+					<Shortcut/>
+				</Properties>
+			</Command>
+			<Command uuid="cb42f5cd-6deb-4322-b9dd-95e8f089c2d7">
+				<Properties>
+					<Name>ExportAttributes</Name>
+					<Synonym>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Export attributes</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Выгрузить реквизиты</v8:content>
+						</v8:item>
+					</Synonym>
+					<Comment/>
+					<Group>FormCommandBarImportant</Group>
+					<CommandParameterType>
+						<v8:Type>cfg:CatalogRef.Companies</v8:Type>
+					</CommandParameterType>
+					<ParameterUseMode>Single</ParameterUseMode>
+					<ModifiesData>false</ModifiesData>
+					<Representation>Picture</Representation>
+					<ToolTip>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Export attributes to XML file</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Выгрузить реквизиты в файл XML</v8:content>
+						</v8:item>
+					</ToolTip>
+					<Picture>
+						<xr:Ref>CommonPicture.ExportDataFromInfobaseIntoXMLFile</xr:Ref>
+						<xr:LoadTransparent>true</xr:LoadTransparent>
+						<xr:TransparentPixel x="14" y="1"/>
+					</Picture>
+					<Shortcut/>
+				</Properties>
+			</Command>
+			<Command uuid="cff7a70d-db4a-4575-a7a4-4b7079a550a9">
+				<Properties>
+					<Name>PrintFaxPrintWorkAssistant</Name>
+					<Synonym>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>How to create facsimile fast and easily</v8:content>
+						</v8:item>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Как быстро и просто создать факсимильную подпись и печать?</v8:content>
+						</v8:item>
+					</Synonym>
+					<Comment/>
+					<Group>CommandGroup.Print</Group>
+					<CommandParameterType>
+						<v8:Type>cfg:CatalogRef.Companies</v8:Type>
+					</CommandParameterType>
 					<ParameterUseMode>Single</ParameterUseMode>
 					<ModifiesData>false</ModifiesData>
 					<Representation>Auto</Representation>

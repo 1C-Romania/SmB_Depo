@@ -1118,7 +1118,8 @@
 														</LabelDecoration>
 														<Button name="PrintCatalogAssistantWorkFaxPrint" id="81">
 															<Type>Hyperlink</Type>
-															<CommandName>Form.Command.PrintFaxPrintWorkAssistant0</CommandName>
+															<CommandName>Catalog.Companies.Command.PrintFaxPrintWorkAssistant</CommandName>
+															<DataPath>Object.Ref</DataPath>
 															<ExtendedTooltip name="PrintCatalogAssistantWorkFaxPrintExtendedTooltip" id="152"/>
 														</Button>
 													</ChildItems>
@@ -1628,5 +1629,16 @@
 				<DefaultVisible>false</DefaultVisible>
 			</Item>
 		</NavigationPanel>
+		<CommandBar>
+			<Item>
+				<Command>Catalog.Companies.Command.PrintFaxPrintWorkAssistant</Command>
+				<Type>Auto</Type>
+				<CommandGroup>CommandGroup.Print</CommandGroup>
+				<DefaultVisible>false</DefaultVisible>
+				<Visible>
+					<xr:Common>false</xr:Common>
+				</Visible>
+			</Item>
+		</CommandBar>
 	</CommandInterface>
 </Form>
