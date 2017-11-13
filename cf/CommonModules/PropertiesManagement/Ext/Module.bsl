@@ -705,7 +705,7 @@ Function GetValuesOfProperties(PropertiesOwner,
 		QueryText = StrReplace(QueryTextAdditInfo, "[ALLOWED]", "ALLOWED");
 	EndIf;
 	
-	QueryText = StrReplace(QueryText, "[ObjectWithPropertiesName]", ObjectNameWithProperties);
+	QueryText = StrReplace(QueryText, "[ObjectNameWithProperties]", ObjectNameWithProperties);
 	
 	Query.Parameters.Insert("PropertiesOwner", PropertiesOwner);
 	Query.Parameters.Insert("PropertyArray", PropertyArray);
