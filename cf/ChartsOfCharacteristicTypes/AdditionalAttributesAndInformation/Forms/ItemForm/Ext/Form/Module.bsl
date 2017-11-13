@@ -963,7 +963,7 @@ Procedure RefreshContentOfFormItems(WarningText = "")
 		Items.SpecificationOfValuesListChange.Enabled    = ValueIsFilled(Object.Ref);
 		
 		PropertiesOfOwner = CommonUse.ObjectAttributesValues(
-			Object.AdditionalValuesOwner, "PropertiesSet, Title, ThisIsAdditionalInformation");
+			Object.AdditionalValuesOwner, "PropertySet, Title, ThisIsAdditionalInformation");
 		
 		If PropertiesOfOwner.ThisIsAdditionalInformation <> True Then
 			SpecificationTemplate = NStr("en='Common list of values with attribute ""%1"" of set ""%2""';ru='Список значений общий с реквизитом ""%1"" набора ""%2""'");
