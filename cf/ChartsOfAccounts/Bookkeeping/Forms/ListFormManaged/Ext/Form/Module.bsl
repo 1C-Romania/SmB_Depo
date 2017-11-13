@@ -29,8 +29,15 @@ Procedure ListBeforeAddRow(Item, Cancel, Clone, Parent, Folder, Parameter)
 	
 	// by Jack ParametersFormSettings.Insert("Account",Item.CurrentData.Ref);
 	// by Jack 30.03.2017 add begin
-	If Item.CurrentData<>Undefined Then 
-	   ParametersFormSettings.Insert("Account",Item.CurrentData.Ref);
+	
+	//
+	// BugTracker Issue #152
+	// https://1c-worldwide.bitrix24.com/company/lists/34/element/0/152/
+	//
+	//If Item.CurrentData<>Undefined Then 
+	   //ParametersFormSettings.Insert("Account",Item.CurrentData.Ref);
+	If Item.CurrentRow <> Undefined Then 
+       ParametersFormSettings.Insert("Account", Item.CurrentRow);
 	EndIf;
 	// by Jack 30.03.2017 add end
 
