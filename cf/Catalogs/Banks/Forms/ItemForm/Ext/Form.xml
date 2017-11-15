@@ -42,7 +42,10 @@
 	</AutoCommandBar>
 	<Events>
 		<Event name="AfterWrite">AfterWrite</Event>
+		<Event name="OnReadAtServer">OnReadAtServer</Event>
 		<Event name="OnCreateAtServer">OnCreateAtServer</Event>
+		<Event name="BeforeWriteAtServer">BeforeWriteAtServer</Event>
+		<Event name="FillCheckProcessingAtServer">FillCheckProcessingAtServer</Event>
 	</Events>
 	<ChildItems>
 		<UsualGroup name="MainAttributes" id="66">
@@ -145,6 +148,23 @@
 			<ContextMenu name="CorrAccountContextMenu" id="8"/>
 			<ExtendedTooltip name="CorrAccountExtendedTooltip" id="37"/>
 		</InputField>
+		<UsualGroup name="GroupAdditionalAttributes" id="68">
+			<Title>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Group additional attributes</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>en</v8:lang>
+					<v8:content>Group additional attributes</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Representation>None</Representation>
+			<ShowTitle>false</ShowTitle>
+			<ExtendedTooltip name="GroupAdditionalAttributesExtendedTooltip" id="69"/>
+		</UsualGroup>
 		<InputField name="Address" id="11">
 			<DataPath>Object.Address</DataPath>
 			<EditMode>EnterOnInput</EditMode>
