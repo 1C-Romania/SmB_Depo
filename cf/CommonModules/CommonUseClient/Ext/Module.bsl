@@ -145,7 +145,7 @@ Procedure  ShowFileSystemExtensionInstallationQuestion(NotifyOnCloseDescription,
 		FormParameters = New Structure;
 		FormParameters.Insert("SuggestionText", SuggestionText);
 		FormParameters.Insert("CanContinueWithoutInstalling", CanContinueWithoutInstalling);
-		OpenForm("CommonForm.FileSystemExtensionInstallationQuestion", FormParameters,,,,,Notification);
+		OpenForm("CommonForm.QuestionAboutFileOperationsExtensionSetting", FormParameters,,,,,Notification);
 	Else
 		ExecuteNotifyProcessing(Notification);
 	EndIf;
