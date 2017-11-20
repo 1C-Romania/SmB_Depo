@@ -10,7 +10,6 @@
 			<v8:content>Закупки</v8:content>
 		</v8:item>
 	</Title>
-	<Width>84</Width>
 	<AutoTitle>false</AutoTitle>
 	<Customizable>false</Customizable>
 	<VerticalScroll>useIfNecessary</VerticalScroll>
@@ -42,9 +41,7 @@
 			<ExtendedTooltip name="GroupHeaderExtendedTooltip" id="259"/>
 			<ChildItems>
 				<LabelDecoration name="SectionDescription" id="93">
-					<Width>70</Width>
-					<HorizontalStretch>false</HorizontalStretch>
-					<VerticalStretch>false</VerticalStretch>
+					<AutoMaxWidth>false</AutoMaxWidth>
 					<Title formatted="false">
 						<v8:item>
 							<v8:lang>en</v8:lang>
@@ -56,25 +53,9 @@
 						</v8:item>
 					</Title>
 					<VerticalAlign>Top</VerticalAlign>
+					<TitleHeight>2</TitleHeight>
 					<ContextMenu name="SectionDescriptionContextMenu" id="94"/>
 					<ExtendedTooltip name="SectionDescriptionExtendedTooltip" id="260"/>
-				</LabelDecoration>
-				<LabelDecoration name="IndentDecoration" id="95">
-					<HorizontalStretch>true</HorizontalStretch>
-					<Title formatted="false">
-						<v8:item>
-							<v8:lang>en</v8:lang>
-							<v8:content> </v8:content>
-						</v8:item>
-					</Title>
-					<ToolTip>
-						<v8:item>
-							<v8:lang>en</v8:lang>
-							<v8:content> </v8:content>
-						</v8:item>
-					</ToolTip>
-					<ContextMenu name="IndentDecorationContextMenu" id="96"/>
-					<ExtendedTooltip name="IndentDecorationExtendedTooltip" id="261"/>
 				</LabelDecoration>
 			</ChildItems>
 		</UsualGroup>
@@ -101,9 +82,6 @@
 					<v8:content>Принятие изменений в веб-клиенте</v8:content>
 				</v8:item>
 			</ToolTip>
-			<Width>82</Width>
-			<HorizontalStretch>false</HorizontalStretch>
-			<VerticalStretch>false</VerticalStretch>
 			<Group>Horizontal</Group>
 			<Representation>None</Representation>
 			<ChildItemsWidth>Equal</ChildItemsWidth>
@@ -157,8 +135,6 @@
 					<v8:content>Запасы (номенклатура)</v8:content>
 				</v8:item>
 			</ToolTip>
-			<Width>82</Width>
-			<HorizontalStretch>false</HorizontalStretch>
 			<Group>Vertical</Group>
 			<Representation>NormalSeparation</Representation>
 			<ExtendedTooltip name="SettingInventoryExtendedTooltip" id="270"/>
@@ -192,6 +168,8 @@
 								</v8:item>
 							</ToolTip>
 							<ToolTipRepresentation>ShowBottom</ToolTipRepresentation>
+							<Width>43</Width>
+							<HorizontalStretch>false</HorizontalStretch>
 							<Group>Horizontal</Group>
 							<Representation>None</Representation>
 							<ShowTitle>false</ShowTitle>
@@ -264,6 +242,8 @@
 								</v8:item>
 							</ToolTip>
 							<ToolTipRepresentation>ShowBottom</ToolTipRepresentation>
+							<Width>43</Width>
+							<HorizontalStretch>false</HorizontalStretch>
 							<Group>Horizontal</Group>
 							<Representation>None</Representation>
 							<ShowTitle>false</ShowTitle>
@@ -324,6 +304,7 @@
 					<ExtendedTooltip name="Group2ExtendedTooltip" id="276"/>
 					<ChildItems>
 						<LabelDecoration name="Decoration1" id="352">
+							<Width>1</Width>
 							<ContextMenu name="Decoration1ContextMenu" id="353"/>
 							<ExtendedTooltip name="Decoration1ExtendedTooltip" id="354"/>
 						</LabelDecoration>
@@ -353,7 +334,6 @@
 							<Representation>None</Representation>
 							<ShowTitle>false</ShowTitle>
 							<ExtendedTooltip name="SettingsUseBatchesExtendedTooltip" id="281">
-								<Height>2</Height>
 								<Title formatted="false">
 									<v8:item>
 										<v8:lang>en</v8:lang>
@@ -426,8 +406,6 @@
 					<v8:content>Складской учет</v8:content>
 				</v8:item>
 			</ToolTip>
-			<Width>82</Width>
-			<HorizontalStretch>false</HorizontalStretch>
 			<Group>Vertical</Group>
 			<Representation>NormalSeparation</Representation>
 			<ExtendedTooltip name="SettingWarehousesExtendedTooltip" id="285"/>
@@ -439,38 +417,48 @@
 					<ShowTitle>false</ShowTitle>
 					<ExtendedTooltip name="Group3ExtendedTooltip" id="286"/>
 					<ChildItems>
-						<CheckBoxField name="FunctionalOptionAccountingByMultipleWarehouses" id="148">
-							<DataPath>ConstantsSet.FunctionalOptionAccountingByMultipleWarehouses</DataPath>
-							<Title>
-								<v8:item>
-									<v8:lang>en</v8:lang>
-									<v8:content>Keep records of several warehouses (two or more)</v8:content>
-								</v8:item>
-								<v8:item>
-									<v8:lang>ru</v8:lang>
-									<v8:content>Вести учет по нескольким складам (двум и более)</v8:content>
-								</v8:item>
-							</Title>
-							<TitleLocation>Right</TitleLocation>
-							<ToolTipRepresentation>ShowBottom</ToolTipRepresentation>
-							<CheckBoxType>Auto</CheckBoxType>
-							<ContextMenu name="FunctionalOptionAccountingForMultipleWarehousesContextMenu" id="149"/>
-							<ExtendedTooltip name="FunctionalOptionAccountingForMultipleWarehousesExtendedTooltip" id="287">
-								<Title formatted="false">
-									<v8:item>
-										<v8:lang>en</v8:lang>
-										<v8:content>Enable this option if you need to keep records of several warehouses. If you enable this option, you can specify warehouses in documents.</v8:content>
-									</v8:item>
-									<v8:item>
-										<v8:lang>ru</v8:lang>
-										<v8:content>Если требуется вести учет по нескольким складам в программном продукте, то необходимо включить эту опцию. Также включение этой опции добавляет возможность указания складов в документах.</v8:content>
-									</v8:item>
-								</Title>
-							</ExtendedTooltip>
-							<Events>
-								<Event name="OnChange">FunctionalOptionAccountingByMultipleWarehousesOnChange</Event>
-							</Events>
-						</CheckBoxField>
+						<UsualGroup name="Group7" id="370">
+							<Width>43</Width>
+							<HorizontalStretch>false</HorizontalStretch>
+							<Group>Horizontal</Group>
+							<Representation>None</Representation>
+							<ShowTitle>false</ShowTitle>
+							<ExtendedTooltip name="Group7ExtendedTooltip" id="371"/>
+							<ChildItems>
+								<CheckBoxField name="FunctionalOptionAccountingByMultipleWarehouses" id="148">
+									<DataPath>ConstantsSet.FunctionalOptionAccountingByMultipleWarehouses</DataPath>
+									<Title>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Keep records of several warehouses (two or more)</v8:content>
+										</v8:item>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Вести учет по нескольким складам (двум и более)</v8:content>
+										</v8:item>
+									</Title>
+									<TitleLocation>Right</TitleLocation>
+									<ToolTipRepresentation>ShowBottom</ToolTipRepresentation>
+									<CheckBoxType>Auto</CheckBoxType>
+									<ContextMenu name="FunctionalOptionAccountingForMultipleWarehousesContextMenu" id="149"/>
+									<ExtendedTooltip name="FunctionalOptionAccountingForMultipleWarehousesExtendedTooltip" id="287">
+										<Title formatted="false">
+											<v8:item>
+												<v8:lang>en</v8:lang>
+												<v8:content>Enable this option if you need to keep records of several warehouses. If you enable this option, you can specify warehouses in documents.</v8:content>
+											</v8:item>
+											<v8:item>
+												<v8:lang>ru</v8:lang>
+												<v8:content>Если требуется вести учет по нескольким складам в программном продукте, то необходимо включить эту опцию. Также включение этой опции добавляет возможность указания складов в документах.</v8:content>
+											</v8:item>
+										</Title>
+									</ExtendedTooltip>
+									<Events>
+										<Event name="OnChange">FunctionalOptionAccountingByMultipleWarehousesOnChange</Event>
+									</Events>
+								</CheckBoxField>
+							</ChildItems>
+						</UsualGroup>
 						<Button name="CatalogStructuralUnitsWarehouses" id="153">
 							<Type>Hyperlink</Type>
 							<SkipOnInput>false</SkipOnInput>
@@ -530,6 +518,8 @@
 								</v8:item>
 							</ToolTip>
 							<ToolTipRepresentation>ShowBottom</ToolTipRepresentation>
+							<Width>43</Width>
+							<HorizontalStretch>false</HorizontalStretch>
 							<Group>Horizontal</Group>
 							<Representation>None</Representation>
 							<ShowTitle>false</ShowTitle>
@@ -603,6 +593,8 @@
 								</v8:item>
 							</ToolTip>
 							<ToolTipRepresentation>ShowBottom</ToolTipRepresentation>
+							<Width>43</Width>
+							<HorizontalStretch>false</HorizontalStretch>
 							<Group>Horizontal</Group>
 							<Representation>None</Representation>
 							<ShowTitle>false</ShowTitle>
@@ -685,6 +677,8 @@
 								</v8:item>
 							</ToolTip>
 							<ToolTipRepresentation>ShowBottom</ToolTipRepresentation>
+							<Width>43</Width>
+							<HorizontalStretch>false</HorizontalStretch>
 							<Group>Horizontal</Group>
 							<Representation>None</Representation>
 							<ShowTitle>false</ShowTitle>
@@ -764,6 +758,8 @@
 								</v8:item>
 							</ToolTip>
 							<ToolTipRepresentation>ShowBottom</ToolTipRepresentation>
+							<Width>43</Width>
+							<HorizontalStretch>false</HorizontalStretch>
 							<Group>Horizontal</Group>
 							<Representation>None</Representation>
 							<ShowTitle>false</ShowTitle>
@@ -838,8 +834,6 @@ If the stock balances is ON:Serial numbers must always be entered in all documen
 					<v8:content>Резервирование</v8:content>
 				</v8:item>
 			</ToolTip>
-			<Width>82</Width>
-			<HorizontalStretch>false</HorizontalStretch>
 			<Group>Horizontal</Group>
 			<Representation>NormalSeparation</Representation>
 			<ChildItemsWidth>Equal</ChildItemsWidth>
@@ -867,12 +861,12 @@ If the stock balances is ON:Serial numbers must always be entered in all documen
 						</v8:item>
 					</ToolTip>
 					<ToolTipRepresentation>ShowBottom</ToolTipRepresentation>
-					<Width>48</Width>
+					<Width>43</Width>
+					<HorizontalStretch>false</HorizontalStretch>
 					<Group>Horizontal</Group>
 					<Representation>None</Representation>
 					<ShowTitle>false</ShowTitle>
 					<ExtendedTooltip name="SettingsReservationFOExtendedTooltip" id="303">
-						<Height>3</Height>
 						<Title formatted="false">
 							<v8:item>
 								<v8:lang>en</v8:lang>
@@ -948,8 +942,6 @@ If the stock balances is ON:Serial numbers must always be entered in all documen
 					<v8:content>Заказы поставщикам</v8:content>
 				</v8:item>
 			</ToolTip>
-			<Width>82</Width>
-			<HorizontalStretch>false</HorizontalStretch>
 			<Group>Vertical</Group>
 			<Representation>NormalSeparation</Representation>
 			<ExtendedTooltip name="CustomerOrdersSettingsExtendedTooltip" id="309"/>
@@ -962,66 +954,85 @@ If the stock balances is ON:Serial numbers must always be entered in all documen
 					<ShowTitle>false</ShowTitle>
 					<ExtendedTooltip name="Group5ExtendedTooltip" id="310"/>
 					<ChildItems>
-						<CheckBoxField name="UsePurchaseOrderStates" id="176">
-							<DataPath>ConstantsSet.UsePurchaseOrderStates</DataPath>
-							<Title>
-								<v8:item>
-									<v8:lang>en</v8:lang>
-									<v8:content>Several purchase order states</v8:content>
-								</v8:item>
-								<v8:item>
-									<v8:lang>ru</v8:lang>
-									<v8:content>Несколько состояний заказов поставщикам</v8:content>
-								</v8:item>
-							</Title>
-							<TitleLocation>Right</TitleLocation>
-							<ToolTipRepresentation>ShowBottom</ToolTipRepresentation>
-							<CheckBoxType>Auto</CheckBoxType>
-							<ContextMenu name="UsePurchaseOrderStatesContextMenu" id="177"/>
-							<ExtendedTooltip name="UseVendorsOrderStatusExtendedTooltip" id="311">
-								<Title formatted="false">
-									<v8:item>
-										<v8:lang>en</v8:lang>
-										<v8:content>Enable this option to use several purchase order states (three or more). If this option is disabled, order states are edited in the attributes below.</v8:content>
-									</v8:item>
-									<v8:item>
-										<v8:lang>ru</v8:lang>
-										<v8:content>Включение этой опции позволяет использовать несколько состояний для заказов поставщикам (три и более). При выключенной опции состояния заказов редактируются в реквизитах ниже.</v8:content>
-									</v8:item>
-								</Title>
-							</ExtendedTooltip>
-							<Events>
-								<Event name="OnChange">UsePurchaseOrderStatesOnChange</Event>
-							</Events>
-						</CheckBoxField>
-						<Button name="CatalogCustomerOrderStates" id="192">
-							<Type>Hyperlink</Type>
-							<CommandName>Form.Command.CatalogPurchaseOrderStates</CommandName>
-							<Title>
-								<v8:item>
-									<v8:lang>en</v8:lang>
-									<v8:content>Purchase order states catalog</v8:content>
-								</v8:item>
-								<v8:item>
-									<v8:lang>ru</v8:lang>
-									<v8:content>Справочник "Состояния заказов поставщикам"</v8:content>
-								</v8:item>
-							</Title>
-							<ToolTipRepresentation>ShowBottom</ToolTipRepresentation>
-							<ExtendedTooltip name="CatalogCustomerOrderStatusExtendedTooltip" id="321">
-								<Height>5</Height>
-								<Title formatted="false">
-									<v8:item>
-										<v8:lang>en</v8:lang>
-										<v8:content>Go to the "Purchase order states" catalog. Use the catalog to create arbitrary number of states of definite kinds. To go to the catalog, enable the "Several states of purchase orders" option.</v8:content>
-									</v8:item>
-									<v8:item>
-										<v8:lang>ru</v8:lang>
-										<v8:content>Переход к справочнику состояний заказов поставщиков. Справочник предназначен для самостоятельного создания произвольного количества состояний определенных видов. Для перехода к справочнику необходимо включить опцию "Несколько состояний заказов поставщиков".</v8:content>
-									</v8:item>
-								</Title>
-							</ExtendedTooltip>
-						</Button>
+						<UsualGroup name="Group8" id="372">
+							<Width>43</Width>
+							<HorizontalStretch>false</HorizontalStretch>
+							<Group>Horizontal</Group>
+							<Representation>None</Representation>
+							<ShowTitle>false</ShowTitle>
+							<ExtendedTooltip name="Group8ExtendedTooltip" id="373"/>
+							<ChildItems>
+								<CheckBoxField name="UsePurchaseOrderStates" id="176">
+									<DataPath>ConstantsSet.UsePurchaseOrderStates</DataPath>
+									<Title>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Several purchase order states</v8:content>
+										</v8:item>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Несколько состояний заказов поставщикам</v8:content>
+										</v8:item>
+									</Title>
+									<TitleLocation>Right</TitleLocation>
+									<ToolTipRepresentation>ShowBottom</ToolTipRepresentation>
+									<CheckBoxType>Auto</CheckBoxType>
+									<ContextMenu name="UsePurchaseOrderStatesContextMenu" id="177"/>
+									<ExtendedTooltip name="UseVendorsOrderStatusExtendedTooltip" id="311">
+										<Title formatted="false">
+											<v8:item>
+												<v8:lang>en</v8:lang>
+												<v8:content>Enable this option to use several purchase order states (three or more). If this option is disabled, order states are edited in the attributes below.</v8:content>
+											</v8:item>
+											<v8:item>
+												<v8:lang>ru</v8:lang>
+												<v8:content>Включение этой опции позволяет использовать несколько состояний для заказов поставщикам (три и более). При выключенной опции состояния заказов редактируются в реквизитах ниже.</v8:content>
+											</v8:item>
+										</Title>
+									</ExtendedTooltip>
+									<Events>
+										<Event name="OnChange">UsePurchaseOrderStatesOnChange</Event>
+									</Events>
+								</CheckBoxField>
+							</ChildItems>
+						</UsualGroup>
+						<UsualGroup name="Group9" id="374">
+							<Width>43</Width>
+							<HorizontalStretch>false</HorizontalStretch>
+							<Group>Horizontal</Group>
+							<Representation>None</Representation>
+							<ShowTitle>false</ShowTitle>
+							<ExtendedTooltip name="Group9ExtendedTooltip" id="375"/>
+							<ChildItems>
+								<Button name="CatalogCustomerOrderStates" id="192">
+									<Type>Hyperlink</Type>
+									<CommandName>Form.Command.CatalogPurchaseOrderStates</CommandName>
+									<Title>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Purchase order states catalog</v8:content>
+										</v8:item>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Справочник "Состояния заказов поставщикам"</v8:content>
+										</v8:item>
+									</Title>
+									<ToolTipRepresentation>ShowBottom</ToolTipRepresentation>
+									<ExtendedTooltip name="CatalogCustomerOrderStatusExtendedTooltip" id="321">
+										<Title formatted="false">
+											<v8:item>
+												<v8:lang>en</v8:lang>
+												<v8:content>Go to the "Purchase order states" catalog. Use the catalog to create arbitrary number of states of definite kinds. To go to the catalog, enable the "Several states of purchase orders" option.</v8:content>
+											</v8:item>
+											<v8:item>
+												<v8:lang>ru</v8:lang>
+												<v8:content>Переход к справочнику состояний заказов поставщиков. Справочник предназначен для самостоятельного создания произвольного количества состояний определенных видов. Для перехода к справочнику необходимо включить опцию "Несколько состояний заказов поставщиков".</v8:content>
+											</v8:item>
+										</Title>
+									</ExtendedTooltip>
+								</Button>
+							</ChildItems>
+						</UsualGroup>
 					</ChildItems>
 				</UsualGroup>
 				<UsualGroup name="SettingPurchaseOrderStatesDefault" id="180">
@@ -1145,8 +1156,6 @@ If the stock balances is ON:Serial numbers must always be entered in all documen
 					<v8:content>Ответственное хранение</v8:content>
 				</v8:item>
 			</ToolTip>
-			<Width>82</Width>
-			<HorizontalStretch>false</HorizontalStretch>
 			<Group>Horizontal</Group>
 			<Representation>NormalSeparation</Representation>
 			<ChildItemsWidth>Equal</ChildItemsWidth>
@@ -1174,6 +1183,8 @@ If the stock balances is ON:Serial numbers must always be entered in all documen
 						</v8:item>
 					</ToolTip>
 					<ToolTipRepresentation>ShowBottom</ToolTipRepresentation>
+					<Width>43</Width>
+					<HorizontalStretch>false</HorizontalStretch>
 					<Group>Horizontal</Group>
 					<Representation>None</Representation>
 					<ShowTitle>false</ShowTitle>
@@ -1246,6 +1257,8 @@ If the stock balances is ON:Serial numbers must always be entered in all documen
 						</v8:item>
 					</ToolTip>
 					<ToolTipRepresentation>ShowBottom</ToolTipRepresentation>
+					<Width>43</Width>
+					<HorizontalStretch>false</HorizontalStretch>
 					<Group>Horizontal</Group>
 					<Representation>None</Representation>
 					<ShowTitle>false</ShowTitle>
@@ -1320,9 +1333,6 @@ If the stock balances is ON:Serial numbers must always be entered in all documen
 					<v8:content>Прочие</v8:content>
 				</v8:item>
 			</ToolTip>
-			<Width>82</Width>
-			<Height>8</Height>
-			<HorizontalStretch>false</HorizontalStretch>
 			<Group>Horizontal</Group>
 			<Representation>NormalSeparation</Representation>
 			<ChildItemsWidth>Equal</ChildItemsWidth>
@@ -1350,7 +1360,8 @@ If the stock balances is ON:Serial numbers must always be entered in all documen
 						</v8:item>
 					</ToolTip>
 					<ToolTipRepresentation>ShowBottom</ToolTipRepresentation>
-					<Width>48</Width>
+					<Width>43</Width>
+					<HorizontalStretch>false</HorizontalStretch>
 					<Group>Horizontal</Group>
 					<Representation>None</Representation>
 					<ShowTitle>false</ShowTitle>
@@ -1424,6 +1435,8 @@ If the stock balances is ON:Serial numbers must always be entered in all documen
 						</v8:item>
 					</ToolTip>
 					<ToolTipRepresentation>ShowBottom</ToolTipRepresentation>
+					<Width>43</Width>
+					<HorizontalStretch>false</HorizontalStretch>
 					<Group>Horizontal</Group>
 					<Representation>None</Representation>
 					<ShowTitle>false</ShowTitle>

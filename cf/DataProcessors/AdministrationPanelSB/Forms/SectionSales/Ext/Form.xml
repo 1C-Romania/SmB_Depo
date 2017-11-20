@@ -10,7 +10,6 @@
 			<v8:content>Продажи</v8:content>
 		</v8:item>
 	</Title>
-	<Width>84</Width>
 	<AutoTitle>false</AutoTitle>
 	<Customizable>false</Customizable>
 	<VerticalScroll>useIfNecessary</VerticalScroll>
@@ -37,15 +36,15 @@
 					<v8:content> </v8:content>
 				</v8:item>
 			</ToolTip>
+			<Width>86</Width>
+			<HorizontalStretch>false</HorizontalStretch>
 			<Group>Horizontal</Group>
 			<Representation>None</Representation>
 			<ShowTitle>false</ShowTitle>
 			<ExtendedTooltip name="GroupHeaderExtendedTooltip" id="230"/>
 			<ChildItems>
 				<LabelDecoration name="SectionDescription" id="93">
-					<Width>70</Width>
-					<HorizontalStretch>false</HorizontalStretch>
-					<VerticalStretch>false</VerticalStretch>
+					<AutoMaxWidth>false</AutoMaxWidth>
 					<Title formatted="false">
 						<v8:item>
 							<v8:lang>en</v8:lang>
@@ -57,25 +56,9 @@
 						</v8:item>
 					</Title>
 					<VerticalAlign>Top</VerticalAlign>
+					<TitleHeight>2</TitleHeight>
 					<ContextMenu name="SectionDescriptionContextMenu" id="94"/>
 					<ExtendedTooltip name="SectionDescriptionExtendedTooltip" id="231"/>
-				</LabelDecoration>
-				<LabelDecoration name="IndentDecoration" id="95">
-					<HorizontalStretch>true</HorizontalStretch>
-					<Title formatted="false">
-						<v8:item>
-							<v8:lang>en</v8:lang>
-							<v8:content> </v8:content>
-						</v8:item>
-					</Title>
-					<ToolTip>
-						<v8:item>
-							<v8:lang>en</v8:lang>
-							<v8:content> </v8:content>
-						</v8:item>
-					</ToolTip>
-					<ContextMenu name="IndentDecorationContextMenu" id="96"/>
-					<ExtendedTooltip name="IndentDecorationExtendedTooltip" id="232"/>
 				</LabelDecoration>
 			</ChildItems>
 		</UsualGroup>
@@ -102,9 +85,6 @@
 					<v8:content>Принятие изменений в веб-клиенте</v8:content>
 				</v8:item>
 			</ToolTip>
-			<Width>82</Width>
-			<HorizontalStretch>false</HorizontalStretch>
-			<VerticalStretch>false</VerticalStretch>
 			<Group>Horizontal</Group>
 			<Representation>None</Representation>
 			<ChildItemsWidth>Equal</ChildItemsWidth>
@@ -158,13 +138,13 @@
 					<v8:content>Розница</v8:content>
 				</v8:item>
 			</ToolTip>
-			<Width>82</Width>
-			<HorizontalStretch>false</HorizontalStretch>
 			<Group>Vertical</Group>
 			<Representation>NormalSeparation</Representation>
 			<ExtendedTooltip name="SettingsRetailExtendedTooltip" id="241"/>
 			<ChildItems>
 				<UsualGroup name="Group9" id="310">
+					<Width>43</Width>
+					<HorizontalStretch>false</HorizontalStretch>
 					<Group>Horizontal</Group>
 					<ChildItemsWidth>Equal</ChildItemsWidth>
 					<ShowTitle>false</ShowTitle>
@@ -178,7 +158,6 @@
 							<CheckBoxType>Auto</CheckBoxType>
 							<ContextMenu name="FunctionalOptionAccountingRetailContextMenu" id="108"/>
 							<ExtendedTooltip name="FunctionalOptionAccountingRetailExtendedTooltip" id="243">
-								<Height>3</Height>
 								<Title formatted="false">
 									<v8:item>
 										<v8:lang>en</v8:lang>
@@ -230,6 +209,8 @@
 								</v8:item>
 							</ToolTip>
 							<ToolTipRepresentation>ShowBottom</ToolTipRepresentation>
+							<Width>43</Width>
+							<HorizontalStretch>false</HorizontalStretch>
 							<Group>Horizontal</Group>
 							<Representation>None</Representation>
 							<ShowTitle>false</ShowTitle>
@@ -280,23 +261,32 @@
 								</CheckBoxField>
 							</ChildItems>
 						</UsualGroup>
-						<Button name="CatalogCashRegisters" id="128">
-							<Type>Hyperlink</Type>
-							<CommandName>Form.Command.CatalogCashRegisters</CommandName>
-							<ToolTipRepresentation>ShowBottom</ToolTipRepresentation>
-							<ExtendedTooltip name="CatalogCashRegistersExtendedTooltip" id="259">
-								<Title formatted="false">
-									<v8:item>
-										<v8:lang>en</v8:lang>
-										<v8:content>Go to the "Cash registers" catalog.</v8:content>
-									</v8:item>
-									<v8:item>
-										<v8:lang>ru</v8:lang>
-										<v8:content>Переход к справочнику касс ККМ.</v8:content>
-									</v8:item>
-								</Title>
-							</ExtendedTooltip>
-						</Button>
+						<UsualGroup name="Group13" id="355">
+							<Width>43</Width>
+							<HorizontalStretch>false</HorizontalStretch>
+							<Representation>None</Representation>
+							<ShowTitle>false</ShowTitle>
+							<ExtendedTooltip name="Group13ExtendedTooltip" id="356"/>
+							<ChildItems>
+								<Button name="CatalogCashRegisters" id="128">
+									<Type>Hyperlink</Type>
+									<CommandName>Form.Command.CatalogCashRegisters</CommandName>
+									<ToolTipRepresentation>ShowBottom</ToolTipRepresentation>
+									<ExtendedTooltip name="CatalogCashRegistersExtendedTooltip" id="259">
+										<Title formatted="false">
+											<v8:item>
+												<v8:lang>en</v8:lang>
+												<v8:content>Go to the "Cash registers" catalog.</v8:content>
+											</v8:item>
+											<v8:item>
+												<v8:lang>ru</v8:lang>
+												<v8:content>Переход к справочнику касс ККМ.</v8:content>
+											</v8:item>
+										</Title>
+									</ExtendedTooltip>
+								</Button>
+							</ChildItems>
+						</UsualGroup>
 					</ChildItems>
 				</UsualGroup>
 				<UsualGroup name="SettingAccountingRetailSalesDetails" id="111">
@@ -350,11 +340,13 @@
 								</v8:item>
 							</ToolTip>
 							<ToolTipRepresentation>ShowBottom</ToolTipRepresentation>
+							<Width>43</Width>
+							<HorizontalStretch>false</HorizontalStretch>
 							<Group>Horizontal</Group>
 							<Representation>None</Representation>
 							<ShowTitle>false</ShowTitle>
 							<ExtendedTooltip name="GroupDeleteNotPunchedChecksOnCloseCashRegisterShiftsExtendedTooltip" id="250">
-								<Height>3</Height>
+								<Height>1</Height>
 								<Title formatted="false">
 									<v8:item>
 										<v8:lang>en</v8:lang>
@@ -401,33 +393,43 @@
 								</CheckBoxField>
 							</ChildItems>
 						</UsualGroup>
-						<Button name="CatalogPOSTerminals" id="129">
-							<Type>Hyperlink</Type>
-							<CommandName>Form.Command.CatalogPOSTerminals</CommandName>
-							<Title>
-								<v8:item>
-									<v8:lang>en</v8:lang>
-									<v8:content>POS terminals catalog</v8:content>
-								</v8:item>
-								<v8:item>
-									<v8:lang>ru</v8:lang>
-									<v8:content>Справочник "Эквайринговые терминалы"</v8:content>
-								</v8:item>
-							</Title>
-							<ToolTipRepresentation>ShowBottom</ToolTipRepresentation>
-							<ExtendedTooltip name="CatalogPOSTerminalsExtendedTooltip" id="261">
-								<Title formatted="false">
-									<v8:item>
-										<v8:lang>en</v8:lang>
-										<v8:content>Go to the "POS terminals" catalog.</v8:content>
-									</v8:item>
-									<v8:item>
-										<v8:lang>ru</v8:lang>
-										<v8:content>Переход к справочнику эквайринговых терминалов.</v8:content>
-									</v8:item>
-								</Title>
-							</ExtendedTooltip>
-						</Button>
+						<UsualGroup name="Group12" id="353">
+							<Width>43</Width>
+							<HorizontalStretch>false</HorizontalStretch>
+							<Group>Horizontal</Group>
+							<Representation>None</Representation>
+							<ShowTitle>false</ShowTitle>
+							<ExtendedTooltip name="Group12ExtendedTooltip" id="354"/>
+							<ChildItems>
+								<Button name="CatalogPOSTerminals" id="129">
+									<Type>Hyperlink</Type>
+									<CommandName>Form.Command.CatalogPOSTerminals</CommandName>
+									<Title>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>POS terminals catalog</v8:content>
+										</v8:item>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Справочник "Эквайринговые терминалы"</v8:content>
+										</v8:item>
+									</Title>
+									<ToolTipRepresentation>ShowBottom</ToolTipRepresentation>
+									<ExtendedTooltip name="CatalogPOSTerminalsExtendedTooltip" id="261">
+										<Title formatted="false">
+											<v8:item>
+												<v8:lang>en</v8:lang>
+												<v8:content>Go to the "POS terminals" catalog.</v8:content>
+											</v8:item>
+											<v8:item>
+												<v8:lang>ru</v8:lang>
+												<v8:content>Переход к справочнику эквайринговых терминалов.</v8:content>
+											</v8:item>
+										</Title>
+									</ExtendedTooltip>
+								</Button>
+							</ChildItems>
+						</UsualGroup>
 					</ChildItems>
 				</UsualGroup>
 				<UsualGroup name="Group2" id="100">
@@ -437,67 +439,87 @@
 					<ShowTitle>false</ShowTitle>
 					<ExtendedTooltip name="Group2ExtendedTooltip" id="257"/>
 					<ChildItems>
-						<CheckBoxField name="ControlBalancesDuringCreationCRReceipts" id="124">
-							<DataPath>ConstantsSet.ControlBalancesDuringCreationCRReceipts</DataPath>
-							<TitleLocation>Right</TitleLocation>
-							<ToolTipRepresentation>ShowBottom</ToolTipRepresentation>
-							<CheckBoxType>Auto</CheckBoxType>
-							<ContextMenu name="ControlBalancesDuringCreationCRReceiptsContextMenu" id="125"/>
-							<ExtendedTooltip name="ControlBalancesDuringCreationCRReceiptsExtendedTooltip" id="255">
-								<Title formatted="false">
-									<v8:item>
-										<v8:lang>en</v8:lang>
-										<v8:content>Enable this option to control balance when issuing cash receipts.</v8:content>
-									</v8:item>
-									<v8:item>
-										<v8:lang>ru</v8:lang>
-										<v8:content>Опция подключает контроль остатков при пробитии чеков ККМ.</v8:content>
-									</v8:item>
-								</Title>
-							</ExtendedTooltip>
-							<Events>
-								<Event name="OnChange">ControlBalancesDuringCreationCRReceiptsOnChange</Event>
-							</Events>
-						</CheckBoxField>
-						<CheckBoxField name="EnterInformationForDeclarationsOnAlcoholicProducts" id="342">
-							<DataPath>ConstantsSet.EnterInformationForDeclarationsOnAlcoholicProducts</DataPath>
-							<Title>
-								<v8:item>
-									<v8:lang>en</v8:lang>
-									<v8:content>Alcoholic products</v8:content>
-								</v8:item>
-								<v8:item>
-									<v8:lang>ru</v8:lang>
-									<v8:content>Алкогольная продукция</v8:content>
-								</v8:item>
-							</Title>
-							<TitleLocation>Right</TitleLocation>
-							<ToolTip>
-								<v8:item>
-									<v8:lang>en</v8:lang>
-									<v8:content>
+						<UsualGroup name="Group4" id="345">
+							<Width>43</Width>
+							<HorizontalStretch>false</HorizontalStretch>
+							<Group>Horizontal</Group>
+							<Representation>None</Representation>
+							<ShowTitle>false</ShowTitle>
+							<ExtendedTooltip name="Group4ExtendedTooltip" id="346"/>
+							<ChildItems>
+								<CheckBoxField name="ControlBalancesDuringCreationCRReceipts" id="124">
+									<DataPath>ConstantsSet.ControlBalancesDuringCreationCRReceipts</DataPath>
+									<TitleLocation>Right</TitleLocation>
+									<ToolTipRepresentation>ShowBottom</ToolTipRepresentation>
+									<CheckBoxType>Auto</CheckBoxType>
+									<ContextMenu name="ControlBalancesDuringCreationCRReceiptsContextMenu" id="125"/>
+									<ExtendedTooltip name="ControlBalancesDuringCreationCRReceiptsExtendedTooltip" id="255">
+										<Title formatted="false">
+											<v8:item>
+												<v8:lang>en</v8:lang>
+												<v8:content>Enable this option to control balance when issuing cash receipts.</v8:content>
+											</v8:item>
+											<v8:item>
+												<v8:lang>ru</v8:lang>
+												<v8:content>Опция подключает контроль остатков при пробитии чеков ККМ.</v8:content>
+											</v8:item>
+										</Title>
+									</ExtendedTooltip>
+									<Events>
+										<Event name="OnChange">ControlBalancesDuringCreationCRReceiptsOnChange</Event>
+									</Events>
+								</CheckBoxField>
+							</ChildItems>
+						</UsualGroup>
+						<UsualGroup name="Group11" id="351">
+							<Width>43</Width>
+							<HorizontalStretch>false</HorizontalStretch>
+							<Group>Horizontal</Group>
+							<Representation>None</Representation>
+							<ShowTitle>false</ShowTitle>
+							<ExtendedTooltip name="Group11ExtendedTooltip" id="352"/>
+							<ChildItems>
+								<CheckBoxField name="EnterInformationForDeclarationsOnAlcoholicProducts" id="342">
+									<DataPath>ConstantsSet.EnterInformationForDeclarationsOnAlcoholicProducts</DataPath>
+									<Title>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Alcoholic products</v8:content>
+										</v8:item>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Алкогольная продукция</v8:content>
+										</v8:item>
+									</Title>
+									<TitleLocation>Right</TitleLocation>
+									<ToolTip>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>
  </v8:content>
-								</v8:item>
-							</ToolTip>
-							<ToolTipRepresentation>ShowBottom</ToolTipRepresentation>
-							<CheckBoxType>Auto</CheckBoxType>
-							<ContextMenu name="EnterInformationForDeclarationsOnAlcoholicProductsContextMenu" id="343"/>
-							<ExtendedTooltip name="EnterInformationForDeclarationsOnAlcoholicProductsExtendedTooltip" id="344">
-								<Title formatted="false">
-									<v8:item>
-										<v8:lang>en</v8:lang>
-										<v8:content>Information required to fill in journal of alcoholic product retail sale volume.</v8:content>
-									</v8:item>
-									<v8:item>
-										<v8:lang>ru</v8:lang>
-										<v8:content>Сведения, необходимые для заполнения журнала учета объема розничной продажи алкогольной продукции.</v8:content>
-									</v8:item>
-								</Title>
-							</ExtendedTooltip>
-							<Events>
-								<Event name="OnChange">EnterInformationForDeclarationsOnAlcoholicProductsOnChange</Event>
-							</Events>
-						</CheckBoxField>
+										</v8:item>
+									</ToolTip>
+									<ToolTipRepresentation>ShowBottom</ToolTipRepresentation>
+									<CheckBoxType>Auto</CheckBoxType>
+									<ContextMenu name="EnterInformationForDeclarationsOnAlcoholicProductsContextMenu" id="343"/>
+									<ExtendedTooltip name="EnterInformationForDeclarationsOnAlcoholicProductsExtendedTooltip" id="344">
+										<Title formatted="false">
+											<v8:item>
+												<v8:lang>en</v8:lang>
+												<v8:content>Information required to fill in journal of alcoholic product retail sale volume.</v8:content>
+											</v8:item>
+											<v8:item>
+												<v8:lang>ru</v8:lang>
+												<v8:content>Сведения, необходимые для заполнения журнала учета объема розничной продажи алкогольной продукции.</v8:content>
+											</v8:item>
+										</Title>
+									</ExtendedTooltip>
+									<Events>
+										<Event name="OnChange">EnterInformationForDeclarationsOnAlcoholicProductsOnChange</Event>
+									</Events>
+								</CheckBoxField>
+							</ChildItems>
+						</UsualGroup>
 					</ChildItems>
 				</UsualGroup>
 			</ChildItems>
@@ -524,8 +546,6 @@
 					<v8:content>Прочие</v8:content>
 				</v8:item>
 			</ToolTip>
-			<Width>82</Width>
-			<HorizontalStretch>false</HorizontalStretch>
 			<Group>Vertical</Group>
 			<Representation>NormalSeparation</Representation>
 			<ExtendedTooltip name="SettingsSalesDiscountsMarkupsExtendedTooltip" id="319"/>
@@ -560,6 +580,8 @@
 								</v8:item>
 							</ToolTip>
 							<ToolTipRepresentation>ShowBottom</ToolTipRepresentation>
+							<Width>43</Width>
+							<HorizontalStretch>false</HorizontalStretch>
 							<Group>Horizontal</Group>
 							<Representation>None</Representation>
 							<ShowTitle>false</ShowTitle>
@@ -632,6 +654,8 @@
 								</v8:item>
 							</ToolTip>
 							<ToolTipRepresentation>ShowBottom</ToolTipRepresentation>
+							<Width>43</Width>
+							<HorizontalStretch>false</HorizontalStretch>
 							<Group>Horizontal</Group>
 							<Representation>None</Representation>
 							<ShowTitle>false</ShowTitle>
@@ -714,6 +738,8 @@
 								</v8:item>
 							</ToolTip>
 							<ToolTipRepresentation>ShowBottom</ToolTipRepresentation>
+							<Width>43</Width>
+							<HorizontalStretch>false</HorizontalStretch>
 							<Group>Horizontal</Group>
 							<Representation>None</Representation>
 							<ShowTitle>false</ShowTitle>
@@ -794,8 +820,6 @@
 					<v8:content>Заказы покупателей</v8:content>
 				</v8:item>
 			</ToolTip>
-			<Width>82</Width>
-			<HorizontalStretch>false</HorizontalStretch>
 			<Group>Vertical</Group>
 			<Representation>NormalSeparation</Representation>
 			<ExtendedTooltip name="CustomerOrdersSettingsExtendedTooltip" id="263"/>
@@ -808,56 +832,75 @@
 					<ShowTitle>false</ShowTitle>
 					<ExtendedTooltip name="Group3ExtendedTooltip" id="264"/>
 					<ChildItems>
-						<CheckBoxField name="UseCustomerOrderStates" id="141">
-							<DataPath>ConstantsSet.UseCustomerOrderStates</DataPath>
-							<Title>
-								<v8:item>
-									<v8:lang>en</v8:lang>
-									<v8:content>Several customer order states</v8:content>
-								</v8:item>
-								<v8:item>
-									<v8:lang>ru</v8:lang>
-									<v8:content>Несколько состояний заказов покупателей</v8:content>
-								</v8:item>
-							</Title>
-							<TitleLocation>Right</TitleLocation>
-							<ToolTipRepresentation>ShowBottom</ToolTipRepresentation>
-							<CheckBoxType>Auto</CheckBoxType>
-							<ContextMenu name="CustomerOrdersStatusUsingContextMenu" id="142"/>
-							<ExtendedTooltip name="UseOfCustomerOrdersExtendedTooltip" id="265">
-								<Title formatted="false">
-									<v8:item>
-										<v8:lang>en</v8:lang>
-										<v8:content>Enable this option to use several states of customer orders (three or more). If this option is disabled, order states are edited in the attributes below.</v8:content>
-									</v8:item>
-									<v8:item>
-										<v8:lang>ru</v8:lang>
-										<v8:content>Включение этой опции позволяет использовать несколько состояний для заказов покупателей (три и более). При выключенной опции состояния заказов редактируются в реквизитах ниже.</v8:content>
-									</v8:item>
-								</Title>
-							</ExtendedTooltip>
-							<Events>
-								<Event name="OnChange">UseCustomerOrderStatesOnChange</Event>
-							</Events>
-						</CheckBoxField>
-						<Button name="CatalogCustomerOrderStates" id="156">
-							<Type>Hyperlink</Type>
-							<CommandName>Form.Command.CatalogCustomerOrderStates</CommandName>
-							<ToolTipRepresentation>ShowBottom</ToolTipRepresentation>
-							<ExtendedTooltip name="CatalogCustomerOrderStatusExtendedTooltip" id="275">
-								<Height>5</Height>
-								<Title formatted="false">
-									<v8:item>
-										<v8:lang>en</v8:lang>
-										<v8:content>Go to the "Customer order states" catalog. Use the catalog to create arbitrary number of states of definite kinds. To go to the catalog, enable the "Several customer order states" option.</v8:content>
-									</v8:item>
-									<v8:item>
-										<v8:lang>ru</v8:lang>
-										<v8:content>Переход к справочнику состояний заказов покупателей. Справочник предназначен для самостоятельного создания произвольного количества состояний определенных видов. Для перехода к справочнику необходимо включить опцию "Несколько состояний заказов покупателей".</v8:content>
-									</v8:item>
-								</Title>
-							</ExtendedTooltip>
-						</Button>
+						<UsualGroup name="Group5" id="347">
+							<Width>43</Width>
+							<HorizontalStretch>false</HorizontalStretch>
+							<Group>Horizontal</Group>
+							<Representation>None</Representation>
+							<ShowTitle>false</ShowTitle>
+							<ExtendedTooltip name="Group5ExtendedTooltip" id="348"/>
+							<ChildItems>
+								<CheckBoxField name="UseCustomerOrderStates" id="141">
+									<DataPath>ConstantsSet.UseCustomerOrderStates</DataPath>
+									<Title>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Several customer order states</v8:content>
+										</v8:item>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Несколько состояний заказов покупателей</v8:content>
+										</v8:item>
+									</Title>
+									<TitleLocation>Right</TitleLocation>
+									<ToolTipRepresentation>ShowBottom</ToolTipRepresentation>
+									<CheckBoxType>Auto</CheckBoxType>
+									<ContextMenu name="CustomerOrdersStatusUsingContextMenu" id="142"/>
+									<ExtendedTooltip name="UseOfCustomerOrdersExtendedTooltip" id="265">
+										<Title formatted="false">
+											<v8:item>
+												<v8:lang>en</v8:lang>
+												<v8:content>Enable this option to use several states of customer orders (three or more). If this option is disabled, order states are edited in the attributes below.</v8:content>
+											</v8:item>
+											<v8:item>
+												<v8:lang>ru</v8:lang>
+												<v8:content>Включение этой опции позволяет использовать несколько состояний для заказов покупателей (три и более). При выключенной опции состояния заказов редактируются в реквизитах ниже.</v8:content>
+											</v8:item>
+										</Title>
+									</ExtendedTooltip>
+									<Events>
+										<Event name="OnChange">UseCustomerOrderStatesOnChange</Event>
+									</Events>
+								</CheckBoxField>
+							</ChildItems>
+						</UsualGroup>
+						<UsualGroup name="Group6" id="349">
+							<Width>43</Width>
+							<HorizontalStretch>false</HorizontalStretch>
+							<Group>Horizontal</Group>
+							<Representation>None</Representation>
+							<ShowTitle>false</ShowTitle>
+							<ExtendedTooltip name="Group6ExtendedTooltip" id="350"/>
+							<ChildItems>
+								<Button name="CatalogCustomerOrderStates" id="156">
+									<Type>Hyperlink</Type>
+									<CommandName>Form.Command.CatalogCustomerOrderStates</CommandName>
+									<ToolTipRepresentation>ShowBottom</ToolTipRepresentation>
+									<ExtendedTooltip name="CatalogCustomerOrderStatusExtendedTooltip" id="275">
+										<Title formatted="false">
+											<v8:item>
+												<v8:lang>en</v8:lang>
+												<v8:content>Go to the "Customer order states" catalog. Use the catalog to create arbitrary number of states of definite kinds. To go to the catalog, enable the "Several customer order states" option.</v8:content>
+											</v8:item>
+											<v8:item>
+												<v8:lang>ru</v8:lang>
+												<v8:content>Переход к справочнику состояний заказов покупателей. Справочник предназначен для самостоятельного создания произвольного количества состояний определенных видов. Для перехода к справочнику необходимо включить опцию "Несколько состояний заказов покупателей".</v8:content>
+											</v8:item>
+										</Title>
+									</ExtendedTooltip>
+								</Button>
+							</ChildItems>
+						</UsualGroup>
 					</ChildItems>
 				</UsualGroup>
 				<UsualGroup name="CustomerOrdersDefaultStatusSetting" id="162">
@@ -953,10 +996,6 @@
 								</InputField>
 							</ChildItems>
 						</UsualGroup>
-						<LabelDecoration name="Decoration2" id="315">
-							<ContextMenu name="Decoration2ContextMenu" id="316"/>
-							<ExtendedTooltip name="Decoration2ExtendedTooltip" id="317"/>
-						</LabelDecoration>
 					</ChildItems>
 				</UsualGroup>
 			</ChildItems>
@@ -983,8 +1022,6 @@
 					<v8:content>Комиссионная торговля</v8:content>
 				</v8:item>
 			</ToolTip>
-			<Width>82</Width>
-			<HorizontalStretch>false</HorizontalStretch>
 			<Group>Horizontal</Group>
 			<Representation>NormalSeparation</Representation>
 			<ChildItemsWidth>Equal</ChildItemsWidth>
@@ -1012,6 +1049,8 @@
 						</v8:item>
 					</ToolTip>
 					<ToolTipRepresentation>ShowBottom</ToolTipRepresentation>
+					<Width>43</Width>
+					<HorizontalStretch>false</HorizontalStretch>
 					<Group>Horizontal</Group>
 					<Representation>None</Representation>
 					<ShowTitle>false</ShowTitle>
@@ -1084,11 +1123,12 @@
 						</v8:item>
 					</ToolTip>
 					<ToolTipRepresentation>ShowBottom</ToolTipRepresentation>
+					<Width>43</Width>
+					<HorizontalStretch>false</HorizontalStretch>
 					<Group>Horizontal</Group>
 					<Representation>None</Representation>
 					<ShowTitle>false</ShowTitle>
 					<ExtendedTooltip name="SettingsUseReceptionForCommissionExtendedTooltip" id="284">
-						<Height>5</Height>
 						<Title formatted="false">
 							<v8:item>
 								<v8:lang>en</v8:lang>
@@ -1159,8 +1199,6 @@
 					<v8:content>Прочие</v8:content>
 				</v8:item>
 			</ToolTip>
-			<Width>82</Width>
-			<HorizontalStretch>false</HorizontalStretch>
 			<Group>Vertical</Group>
 			<Representation>NormalSeparation</Representation>
 			<ExtendedTooltip name="SettingsSaleOtherExtendedTooltip" id="288"/>
@@ -1194,6 +1232,8 @@
 								</v8:item>
 							</ToolTip>
 							<ToolTipRepresentation>ShowBottom</ToolTipRepresentation>
+							<Width>43</Width>
+							<HorizontalStretch>false</HorizontalStretch>
 							<Group>Horizontal</Group>
 							<Representation>None</Representation>
 							<ShowTitle>false</ShowTitle>
@@ -1273,6 +1313,8 @@ For example the company "Breeze" won the tender for the design and mounting of v
 								</v8:item>
 							</ToolTip>
 							<ToolTipRepresentation>ShowBottom</ToolTipRepresentation>
+							<Width>43</Width>
+							<HorizontalStretch>false</HorizontalStretch>
 							<Group>Horizontal</Group>
 							<Representation>None</Representation>
 							<ShowTitle>false</ShowTitle>

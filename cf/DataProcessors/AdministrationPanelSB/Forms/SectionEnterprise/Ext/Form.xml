@@ -10,7 +10,6 @@
 			<v8:content>Предприятие</v8:content>
 		</v8:item>
 	</Title>
-	<Width>84</Width>
 	<AutoTitle>false</AutoTitle>
 	<Customizable>false</Customizable>
 	<VerticalScroll>useIfNecessary</VerticalScroll>
@@ -43,10 +42,7 @@
 			<ExtendedTooltip name="GroupHeaderExtendedTooltip" id="139"/>
 			<ChildItems>
 				<LabelDecoration name="SectionDescription" id="93">
-					<Width>70</Width>
-					<Height>2</Height>
-					<HorizontalStretch>false</HorizontalStretch>
-					<VerticalStretch>false</VerticalStretch>
+					<AutoMaxWidth>false</AutoMaxWidth>
 					<Title formatted="false">
 						<v8:item>
 							<v8:lang>en</v8:lang>
@@ -60,23 +56,6 @@
 					<VerticalAlign>Top</VerticalAlign>
 					<ContextMenu name="SectionDescriptionContextMenu" id="94"/>
 					<ExtendedTooltip name="SectionDescriptionExtendedTooltip" id="140"/>
-				</LabelDecoration>
-				<LabelDecoration name="IndentDecoration" id="95">
-					<HorizontalStretch>true</HorizontalStretch>
-					<Title formatted="false">
-						<v8:item>
-							<v8:lang>en</v8:lang>
-							<v8:content> </v8:content>
-						</v8:item>
-					</Title>
-					<ToolTip>
-						<v8:item>
-							<v8:lang>en</v8:lang>
-							<v8:content> </v8:content>
-						</v8:item>
-					</ToolTip>
-					<ContextMenu name="IndentDecorationContextMenu" id="96"/>
-					<ExtendedTooltip name="IndentDecorationExtendedTooltip" id="141"/>
 				</LabelDecoration>
 			</ChildItems>
 		</UsualGroup>
@@ -103,9 +82,6 @@
 					<v8:content>Принятие изменений в веб-клиенте</v8:content>
 				</v8:item>
 			</ToolTip>
-			<Width>82</Width>
-			<HorizontalStretch>false</HorizontalStretch>
-			<VerticalStretch>false</VerticalStretch>
 			<Group>Horizontal</Group>
 			<Representation>None</Representation>
 			<ChildItemsWidth>Equal</ChildItemsWidth>
@@ -159,58 +135,86 @@
 					<v8:content>Компании</v8:content>
 				</v8:item>
 			</ToolTip>
-			<Width>82</Width>
-			<HorizontalStretch>false</HorizontalStretch>
 			<Group>Horizontal</Group>
 			<Representation>NormalSeparation</Representation>
 			<ChildItemsWidth>Equal</ChildItemsWidth>
 			<ExtendedTooltip name="SettingsCompaniesExtendedTooltip" id="150"/>
 			<ChildItems>
-				<Button name="SettingAccountingOnCounterpartysCompanies" id="101">
-					<Type>Hyperlink</Type>
-					<CommandName>Form.Command.SettingAccountingOnCounterpartysCompanies</CommandName>
-					<ToolTipRepresentation>ShowBottom</ToolTipRepresentation>
-					<ExtendedTooltip name="SettingAccountingForCounterpartysExtendedTooltip" id="152">
-						<Title formatted="false">
-							<v8:item>
-								<v8:lang>en</v8:lang>
-								<v8:content>Enable the possibility to use several companies. You can keep records by the company as a whole.</v8:content>
-							</v8:item>
-							<v8:item>
-								<v8:lang>ru</v8:lang>
-								<v8:content>Включение возможности использовать несколько организаций. Возможность вести учет по компании (организации) в целом.</v8:content>
-							</v8:item>
-						</Title>
-					</ExtendedTooltip>
-				</Button>
-				<Button name="CatalogCompanies" id="19">
-					<Type>Hyperlink</Type>
-					<SkipOnInput>false</SkipOnInput>
-					<CommandName>Form.Command.CatalogCompanies</CommandName>
+				<UsualGroup name="CompanySettingsLeft" id="234">
 					<Title>
 						<v8:item>
 							<v8:lang>en</v8:lang>
-							<v8:content>Companies catalog</v8:content>
-						</v8:item>
-						<v8:item>
-							<v8:lang>ru</v8:lang>
-							<v8:content>Справочник "Организации"</v8:content>
+							<v8:content>Company settings left</v8:content>
 						</v8:item>
 					</Title>
-					<ToolTipRepresentation>ShowBottom</ToolTipRepresentation>
-					<ExtendedTooltip name="CatalogCompaniesExtendedTooltip" id="156">
-						<Title formatted="false">
-							<v8:item>
-								<v8:lang>en</v8:lang>
-								<v8:content>Go to the company card or company catalog if the "Accounting by several companies" setting is enabled.</v8:content>
-							</v8:item>
-							<v8:item>
-								<v8:lang>ru</v8:lang>
-								<v8:content>Переход к карточке организации либо справочнику организаций, если включена настройка "Учет по нескольким организациям".</v8:content>
-							</v8:item>
-						</Title>
-					</ExtendedTooltip>
-				</Button>
+					<Width>43</Width>
+					<HorizontalStretch>false</HorizontalStretch>
+					<Representation>None</Representation>
+					<ShowTitle>false</ShowTitle>
+					<ExtendedTooltip name="CompanySettingsLeftExtendedTooltip" id="235"/>
+					<ChildItems>
+						<Button name="SettingAccountingOnCounterpartysCompanies" id="101">
+							<Type>Hyperlink</Type>
+							<CommandName>Form.Command.SettingAccountingOnCounterpartysCompanies</CommandName>
+							<ToolTipRepresentation>ShowBottom</ToolTipRepresentation>
+							<ExtendedTooltip name="SettingAccountingForCounterpartysExtendedTooltip" id="152">
+								<Title formatted="false">
+									<v8:item>
+										<v8:lang>en</v8:lang>
+										<v8:content>Enable the possibility to use several companies. You can keep records by the company as a whole.</v8:content>
+									</v8:item>
+									<v8:item>
+										<v8:lang>ru</v8:lang>
+										<v8:content>Включение возможности использовать несколько организаций. Возможность вести учет по компании (организации) в целом.</v8:content>
+									</v8:item>
+								</Title>
+							</ExtendedTooltip>
+						</Button>
+					</ChildItems>
+				</UsualGroup>
+				<UsualGroup name="CompanySettingsRight" id="236">
+					<ToolTip>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Company settings right</v8:content>
+						</v8:item>
+					</ToolTip>
+					<Width>43</Width>
+					<HorizontalStretch>false</HorizontalStretch>
+					<Representation>None</Representation>
+					<ShowTitle>false</ShowTitle>
+					<ExtendedTooltip name="CompanySettingsRightExtendedTooltip" id="237"/>
+					<ChildItems>
+						<Button name="CatalogCompanies" id="19">
+							<Type>Hyperlink</Type>
+							<SkipOnInput>false</SkipOnInput>
+							<CommandName>Form.Command.CatalogCompanies</CommandName>
+							<Title>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Companies catalog</v8:content>
+								</v8:item>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Справочник "Организации"</v8:content>
+								</v8:item>
+							</Title>
+							<ToolTipRepresentation>ShowBottom</ToolTipRepresentation>
+							<ExtendedTooltip name="CatalogCompaniesExtendedTooltip" id="156">
+								<Title formatted="false">
+									<v8:item>
+										<v8:lang>en</v8:lang>
+										<v8:content>Go to the company card or company catalog if the "Accounting by several companies" setting is enabled.</v8:content>
+									</v8:item>
+									<v8:item>
+										<v8:lang>ru</v8:lang>
+										<v8:content>Переход к карточке организации либо справочнику организаций, если включена настройка "Учет по нескольким организациям".</v8:content>
+									</v8:item>
+								</Title>
+							</ExtendedTooltip>
+						</Button>
+					</ChildItems>
+				</UsualGroup>
 			</ChildItems>
 		</UsualGroup>
 		<UsualGroup name="SettingsOfUnits" id="27">
@@ -235,73 +239,101 @@
 					<v8:content>Подразделения</v8:content>
 				</v8:item>
 			</ToolTip>
-			<Width>82</Width>
-			<HorizontalStretch>false</HorizontalStretch>
 			<Group>Horizontal</Group>
 			<Representation>NormalSeparation</Representation>
 			<ChildItemsWidth>Equal</ChildItemsWidth>
 			<ExtendedTooltip name="SettingsOfSubdivisionsExtendedTooltip" id="158"/>
 			<ChildItems>
-				<CheckBoxField name="FunctionalOptionAccountingByMultipleDepartments" id="28">
-					<DataPath>ConstantsSet.FunctionalOptionAccountingByMultipleDepartments</DataPath>
+				<UsualGroup name="SettingsOfUnitsLeft" id="230">
 					<Title>
 						<v8:item>
 							<v8:lang>en</v8:lang>
-							<v8:content>Accounting by departments </v8:content>
-						</v8:item>
-						<v8:item>
-							<v8:lang>ru</v8:lang>
-							<v8:content>Учет по подразделениям </v8:content>
+							<v8:content>Settings of units left</v8:content>
 						</v8:item>
 					</Title>
-					<TitleLocation>Right</TitleLocation>
-					<ToolTipRepresentation>ShowBottom</ToolTipRepresentation>
-					<CheckBoxType>Auto</CheckBoxType>
-					<ContextMenu name="FunctionalOptionAccountingByMultipleDepartmentsContextMenu" id="29"/>
-					<ExtendedTooltip name="FunctionalOptionAccountingByMultipleDepartmentsExtendedTooltip" id="160">
-						<Title formatted="false">
-							<v8:item>
-								<v8:lang>en</v8:lang>
-								<v8:content>Enable this option to keep accounting of several departments in the software. If you enable this option, you can specify departments in documents.</v8:content>
-							</v8:item>
-							<v8:item>
-								<v8:lang>ru</v8:lang>
-								<v8:content>Требуется включить опцию, если необходимо вести учет по нескольким подразделениям в программном продукте. Также включение этой опции добавляет возможность указания подразделений в документах.</v8:content>
-							</v8:item>
-						</Title>
-					</ExtendedTooltip>
-					<Events>
-						<Event name="OnChange">FunctionalOptionAccountingByMultipleDepartmentsOnChange</Event>
-					</Events>
-				</CheckBoxField>
-				<Button name="CatalogStructuralUnitsDepartment" id="33">
-					<Type>Hyperlink</Type>
-					<SkipOnInput>false</SkipOnInput>
-					<CommandName>Form.Command.CatalogStructuralUnitsDepartment</CommandName>
+					<Width>43</Width>
+					<HorizontalStretch>false</HorizontalStretch>
+					<Representation>None</Representation>
+					<ShowTitle>false</ShowTitle>
+					<ExtendedTooltip name="SettingsOfUnitsLeftExtendedTooltip" id="231"/>
+					<ChildItems>
+						<CheckBoxField name="FunctionalOptionAccountingByMultipleDepartments" id="28">
+							<DataPath>ConstantsSet.FunctionalOptionAccountingByMultipleDepartments</DataPath>
+							<Title>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Accounting by departments </v8:content>
+								</v8:item>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Учет по подразделениям </v8:content>
+								</v8:item>
+							</Title>
+							<TitleLocation>Right</TitleLocation>
+							<ToolTipRepresentation>ShowBottom</ToolTipRepresentation>
+							<CheckBoxType>Auto</CheckBoxType>
+							<ContextMenu name="FunctionalOptionAccountingByMultipleDepartmentsContextMenu" id="29"/>
+							<ExtendedTooltip name="FunctionalOptionAccountingByMultipleDepartmentsExtendedTooltip" id="160">
+								<Title formatted="false">
+									<v8:item>
+										<v8:lang>en</v8:lang>
+										<v8:content>Enable this option to keep accounting of several departments in the software. If you enable this option, you can specify departments in documents.</v8:content>
+									</v8:item>
+									<v8:item>
+										<v8:lang>ru</v8:lang>
+										<v8:content>Требуется включить опцию, если необходимо вести учет по нескольким подразделениям в программном продукте. Также включение этой опции добавляет возможность указания подразделений в документах.</v8:content>
+									</v8:item>
+								</Title>
+							</ExtendedTooltip>
+							<Events>
+								<Event name="OnChange">FunctionalOptionAccountingByMultipleDepartmentsOnChange</Event>
+							</Events>
+						</CheckBoxField>
+					</ChildItems>
+				</UsualGroup>
+				<UsualGroup name="SettingsOfUnitsRight" id="232">
 					<Title>
 						<v8:item>
 							<v8:lang>en</v8:lang>
-							<v8:content>Business units catalog</v8:content>
-						</v8:item>
-						<v8:item>
-							<v8:lang>ru</v8:lang>
-							<v8:content>Справочник "Структурные единицы"</v8:content>
+							<v8:content>Settings of units right</v8:content>
 						</v8:item>
 					</Title>
-					<ToolTipRepresentation>ShowBottom</ToolTipRepresentation>
-					<ExtendedTooltip name="CatalogStructuralUnitsDepartmentExtendedTooltip" id="163">
-						<Title formatted="false">
-							<v8:item>
-								<v8:lang>en</v8:lang>
-								<v8:content>Go to the main department card or if the "Accounting by departments" setting is enabled, go to the structural units catalog with the set filter by departments.</v8:content>
-							</v8:item>
-							<v8:item>
-								<v8:lang>ru</v8:lang>
-								<v8:content>Переход к карточке основного подразделения либо, если включена настройка "Учет по подразделениям", справочнику структурных единиц с установленным отбором по подразделениям.</v8:content>
-							</v8:item>
-						</Title>
-					</ExtendedTooltip>
-				</Button>
+					<Width>43</Width>
+					<HorizontalStretch>false</HorizontalStretch>
+					<Representation>None</Representation>
+					<ShowTitle>false</ShowTitle>
+					<ExtendedTooltip name="SettingsOfUnitsRightExtendedTooltip" id="233"/>
+					<ChildItems>
+						<Button name="CatalogStructuralUnitsDepartment" id="33">
+							<Type>Hyperlink</Type>
+							<SkipOnInput>false</SkipOnInput>
+							<CommandName>Form.Command.CatalogStructuralUnitsDepartment</CommandName>
+							<Title>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Business units catalog</v8:content>
+								</v8:item>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Справочник "Структурные единицы"</v8:content>
+								</v8:item>
+							</Title>
+							<ToolTipRepresentation>ShowBottom</ToolTipRepresentation>
+							<ExtendedTooltip name="CatalogStructuralUnitsDepartmentExtendedTooltip" id="163">
+								<Title formatted="false">
+									<v8:item>
+										<v8:lang>en</v8:lang>
+										<v8:content>Go to the main department card or if the "Accounting by departments" setting is enabled, go to the structural units catalog with the set filter by departments.</v8:content>
+									</v8:item>
+									<v8:item>
+										<v8:lang>ru</v8:lang>
+										<v8:content>Переход к карточке основного подразделения либо, если включена настройка "Учет по подразделениям", справочнику структурных единиц с установленным отбором по подразделениям.</v8:content>
+									</v8:item>
+								</Title>
+							</ExtendedTooltip>
+						</Button>
+					</ChildItems>
+				</UsualGroup>
 			</ChildItems>
 		</UsualGroup>
 		<UsualGroup name="SettingsDirectionsActivity" id="34">
@@ -326,73 +358,107 @@
 					<v8:content>Направления деятельности</v8:content>
 				</v8:item>
 			</ToolTip>
-			<Width>82</Width>
-			<HorizontalStretch>false</HorizontalStretch>
 			<Group>Horizontal</Group>
 			<Representation>NormalSeparation</Representation>
 			<ChildItemsWidth>Equal</ChildItemsWidth>
 			<ExtendedTooltip name="SettingsDirectionsActivityExtendedTooltip" id="165"/>
 			<ChildItems>
-				<CheckBoxField name="FunctionalOptionAccountingByMultipleBusinessActivities" id="35">
-					<DataPath>ConstantsSet.FunctionalOptionAccountingByMultipleBusinessActivities</DataPath>
+				<UsualGroup name="SettingsDirectionsActivityLeft" id="222">
 					<Title>
 						<v8:item>
 							<v8:lang>en</v8:lang>
-							<v8:content>Accounting by business areas</v8:content>
-						</v8:item>
-						<v8:item>
-							<v8:lang>ru</v8:lang>
-							<v8:content>Учет по направлениям деятельности</v8:content>
+							<v8:content>Settings directions activity left</v8:content>
 						</v8:item>
 					</Title>
-					<TitleLocation>Right</TitleLocation>
-					<ToolTipRepresentation>ShowBottom</ToolTipRepresentation>
-					<CheckBoxType>Auto</CheckBoxType>
-					<ContextMenu name="FunctionalOptionAccountingByMultipleBusinessActivitiesContextMenu" id="36"/>
-					<ExtendedTooltip name="FunctionalOptionAccountingInSeveralDirectionsActivityExtendedTooltip" id="167">
-						<Title formatted="false">
-							<v8:item>
-								<v8:lang>en</v8:lang>
-								<v8:content>Enable this option to keep accounting by several business areas. If you enable this option, you can specify business area in documents.</v8:content>
-							</v8:item>
-							<v8:item>
-								<v8:lang>ru</v8:lang>
-								<v8:content>Требуется включить опцию, если необходимо вести учет по нескольким направлениям деятельности. Также включение этой опции добавляет возможность указания направления деятельности в документах.</v8:content>
-							</v8:item>
-						</Title>
-					</ExtendedTooltip>
-					<Events>
-						<Event name="OnChange">FunctionalOptionAccountingByMultipleBusinessActivitiesOnChange</Event>
-					</Events>
-				</CheckBoxField>
-				<Button name="CatalogBusinessActivities" id="40">
-					<Type>Hyperlink</Type>
-					<SkipOnInput>false</SkipOnInput>
-					<CommandName>Form.Command.CatalogBusinessActivities</CommandName>
+					<Width>43</Width>
+					<HorizontalStretch>false</HorizontalStretch>
+					<Representation>None</Representation>
+					<ShowTitle>false</ShowTitle>
+					<ExtendedTooltip name="SettingsDirectionsActivityLeftExtendedTooltip" id="223"/>
+					<ChildItems>
+						<CheckBoxField name="FunctionalOptionAccountingByMultipleBusinessActivities" id="35">
+							<DataPath>ConstantsSet.FunctionalOptionAccountingByMultipleBusinessActivities</DataPath>
+							<Title>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Accounting by business areas</v8:content>
+								</v8:item>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Учет по направлениям деятельности</v8:content>
+								</v8:item>
+							</Title>
+							<TitleLocation>Right</TitleLocation>
+							<ToolTipRepresentation>ShowBottom</ToolTipRepresentation>
+							<CheckBoxType>Auto</CheckBoxType>
+							<ContextMenu name="FunctionalOptionAccountingByMultipleBusinessActivitiesContextMenu" id="36"/>
+							<ExtendedTooltip name="FunctionalOptionAccountingInSeveralDirectionsActivityExtendedTooltip" id="167">
+								<Title formatted="false">
+									<v8:item>
+										<v8:lang>en</v8:lang>
+										<v8:content>Enable this option to keep accounting by several business areas. If you enable this option, you can specify business area in documents.</v8:content>
+									</v8:item>
+									<v8:item>
+										<v8:lang>ru</v8:lang>
+										<v8:content>Требуется включить опцию, если необходимо вести учет по нескольким направлениям деятельности. Также включение этой опции добавляет возможность указания направления деятельности в документах.</v8:content>
+									</v8:item>
+								</Title>
+							</ExtendedTooltip>
+							<Events>
+								<Event name="OnChange">FunctionalOptionAccountingByMultipleBusinessActivitiesOnChange</Event>
+							</Events>
+						</CheckBoxField>
+					</ChildItems>
+				</UsualGroup>
+				<UsualGroup name="SettingsDirectionsActivityRight" id="228">
 					<Title>
 						<v8:item>
 							<v8:lang>en</v8:lang>
-							<v8:content>Business areas catalog</v8:content>
-						</v8:item>
-						<v8:item>
-							<v8:lang>ru</v8:lang>
-							<v8:content>Справочник "Направления деятельности"</v8:content>
+							<v8:content>Settings directions activity right</v8:content>
 						</v8:item>
 					</Title>
-					<ToolTipRepresentation>ShowBottom</ToolTipRepresentation>
-					<ExtendedTooltip name="CatalogBusinessActivitiesExtendedTooltip" id="170">
-						<Title formatted="false">
-							<v8:item>
-								<v8:lang>en</v8:lang>
-								<v8:content>Go to the main business activity setup or business activities catalog if the "Accounting by business activities" option is enabled.if the "Accounting by business activity" setting is enabled.</v8:content>
-							</v8:item>
-							<v8:item>
-								<v8:lang>ru</v8:lang>
-								<v8:content>Переход к карточке основного подразделения либо, если включена настройка "Учет по подразделениям", справочнику структурных единиц с установленным отбором по подразделениям.</v8:content>
-							</v8:item>
-						</Title>
-					</ExtendedTooltip>
-				</Button>
+					<ToolTip>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Settings directions activity right</v8:content>
+						</v8:item>
+					</ToolTip>
+					<Width>41</Width>
+					<HorizontalStretch>false</HorizontalStretch>
+					<Representation>None</Representation>
+					<ShowTitle>false</ShowTitle>
+					<ExtendedTooltip name="SettingsDirectionsActivityRightExtendedTooltip" id="229"/>
+					<ChildItems>
+						<Button name="CatalogBusinessActivities" id="40">
+							<Type>Hyperlink</Type>
+							<SkipOnInput>false</SkipOnInput>
+							<CommandName>Form.Command.CatalogBusinessActivities</CommandName>
+							<Title>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Business areas catalog</v8:content>
+								</v8:item>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Справочник "Направления деятельности"</v8:content>
+								</v8:item>
+							</Title>
+							<ToolTipRepresentation>ShowBottom</ToolTipRepresentation>
+							<ExtendedTooltip name="CatalogBusinessActivitiesExtendedTooltip" id="170">
+								<Title formatted="false">
+									<v8:item>
+										<v8:lang>en</v8:lang>
+										<v8:content>Go to the main business activity setup or business activities catalog if the "Accounting by business activities" option is enabled.if the "Accounting by business activity" setting is enabled.</v8:content>
+									</v8:item>
+									<v8:item>
+										<v8:lang>ru</v8:lang>
+										<v8:content>Переход к карточке основного подразделения либо, если включена настройка "Учет по подразделениям", справочнику структурных единиц с установленным отбором по подразделениям.</v8:content>
+									</v8:item>
+								</Title>
+							</ExtendedTooltip>
+						</Button>
+					</ChildItems>
+				</UsualGroup>
 			</ChildItems>
 		</UsualGroup>
 		<UsualGroup name="ResourcesLoadSettings" id="83">
@@ -417,62 +483,90 @@
 					<v8:content>Планирование загрузки ресурсов предприятия</v8:content>
 				</v8:item>
 			</ToolTip>
-			<Width>82</Width>
-			<HorizontalStretch>false</HorizontalStretch>
 			<Group>Horizontal</Group>
 			<Representation>NormalSeparation</Representation>
 			<ChildItemsWidth>Equal</ChildItemsWidth>
 			<ExtendedTooltip name="SettingsExportResourcesExtendedTooltip" id="172"/>
 			<ChildItems>
-				<CheckBoxField name="FunctionalOptionPlanEnterpriseResourcesImporting" id="84">
-					<DataPath>ConstantsSet.FunctionalOptionPlanEnterpriseResourcesImporting</DataPath>
+				<UsualGroup name="ResourcesLoadSettingsLeft" id="224">
 					<Title>
 						<v8:item>
 							<v8:lang>en</v8:lang>
-							<v8:content>Plan company resource loading</v8:content>
-						</v8:item>
-						<v8:item>
-							<v8:lang>ru</v8:lang>
-							<v8:content>Планировать загрузку ресурсов предприятия</v8:content>
+							<v8:content>Resources load settings left</v8:content>
 						</v8:item>
 					</Title>
-					<TitleLocation>Right</TitleLocation>
-					<ToolTipRepresentation>ShowBottom</ToolTipRepresentation>
-					<CheckBoxType>Auto</CheckBoxType>
-					<ContextMenu name="FunctionalOptionPlanEnterpriseResourcesImportingContextMenu" id="85"/>
-					<ExtendedTooltip name="FunctionalOptionPlanEnterpriseResourcesImportingExtendedTooltip" id="174">
-						<Title formatted="false">
-							<v8:item>
-								<v8:lang>en</v8:lang>
-								<v8:content>Enable this option to determine possibility to plan company resource loading.</v8:content>
-							</v8:item>
-							<v8:item>
-								<v8:lang>ru</v8:lang>
-								<v8:content>Включение опции определяет возможность планирования загрузки ресурсов предприятия.</v8:content>
-							</v8:item>
-						</Title>
-					</ExtendedTooltip>
-					<Events>
-						<Event name="OnChange">FunctionalOptionPlanEnterpriseResourcesImportingOnChange</Event>
-					</Events>
-				</CheckBoxField>
-				<Button name="CatalogEnterpriseResources" id="89">
-					<Type>Hyperlink</Type>
-					<CommandName>Form.Command.CatalogEnterpriseResources</CommandName>
-					<ToolTipRepresentation>ShowBottom</ToolTipRepresentation>
-					<ExtendedTooltip name="CatalogEnterpriseResourcesExtendedTooltip" id="177">
-						<Title formatted="false">
-							<v8:item>
-								<v8:lang>en</v8:lang>
-								<v8:content>Go to the "Company resources" catalog.</v8:content>
-							</v8:item>
-							<v8:item>
-								<v8:lang>ru</v8:lang>
-								<v8:content>Переход к справочнику ресурсов предприятия.</v8:content>
-							</v8:item>
-						</Title>
-					</ExtendedTooltip>
-				</Button>
+					<Width>43</Width>
+					<HorizontalStretch>false</HorizontalStretch>
+					<Representation>None</Representation>
+					<ShowTitle>false</ShowTitle>
+					<ExtendedTooltip name="ResourcesLoadSettingsLeftExtendedTooltip" id="225"/>
+					<ChildItems>
+						<CheckBoxField name="FunctionalOptionPlanEnterpriseResourcesImporting" id="84">
+							<DataPath>ConstantsSet.FunctionalOptionPlanEnterpriseResourcesImporting</DataPath>
+							<Title>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Plan company resource loading</v8:content>
+								</v8:item>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Планировать загрузку ресурсов предприятия</v8:content>
+								</v8:item>
+							</Title>
+							<TitleLocation>Right</TitleLocation>
+							<ToolTipRepresentation>ShowBottom</ToolTipRepresentation>
+							<CheckBoxType>Auto</CheckBoxType>
+							<ContextMenu name="FunctionalOptionPlanEnterpriseResourcesImportingContextMenu" id="85"/>
+							<ExtendedTooltip name="FunctionalOptionPlanEnterpriseResourcesImportingExtendedTooltip" id="174">
+								<Title formatted="false">
+									<v8:item>
+										<v8:lang>en</v8:lang>
+										<v8:content>Enable this option to determine possibility to plan company resource loading.</v8:content>
+									</v8:item>
+									<v8:item>
+										<v8:lang>ru</v8:lang>
+										<v8:content>Включение опции определяет возможность планирования загрузки ресурсов предприятия.</v8:content>
+									</v8:item>
+								</Title>
+							</ExtendedTooltip>
+							<Events>
+								<Event name="OnChange">FunctionalOptionPlanEnterpriseResourcesImportingOnChange</Event>
+							</Events>
+						</CheckBoxField>
+					</ChildItems>
+				</UsualGroup>
+				<UsualGroup name="ResourcesLoadSettingsRight" id="226">
+					<Title>
+						<v8:item>
+							<v8:lang>en</v8:lang>
+							<v8:content>Resources load settings right</v8:content>
+						</v8:item>
+					</Title>
+					<Width>43</Width>
+					<HorizontalStretch>false</HorizontalStretch>
+					<Representation>None</Representation>
+					<ShowTitle>false</ShowTitle>
+					<ExtendedTooltip name="ResourcesLoadSettingsRightExtendedTooltip" id="227"/>
+					<ChildItems>
+						<Button name="CatalogEnterpriseResources" id="89">
+							<Type>Hyperlink</Type>
+							<CommandName>Form.Command.CatalogEnterpriseResources</CommandName>
+							<ToolTipRepresentation>ShowBottom</ToolTipRepresentation>
+							<ExtendedTooltip name="CatalogEnterpriseResourcesExtendedTooltip" id="177">
+								<Title formatted="false">
+									<v8:item>
+										<v8:lang>en</v8:lang>
+										<v8:content>Go to the "Company resources" catalog.</v8:content>
+									</v8:item>
+									<v8:item>
+										<v8:lang>ru</v8:lang>
+										<v8:content>Переход к справочнику ресурсов предприятия.</v8:content>
+									</v8:item>
+								</Title>
+							</ExtendedTooltip>
+						</Button>
+					</ChildItems>
+				</UsualGroup>
 			</ChildItems>
 		</UsualGroup>
 		<UsualGroup name="SettingsMiscellaneous" id="60">
@@ -497,24 +591,19 @@
 					<v8:content>Прочие</v8:content>
 				</v8:item>
 			</ToolTip>
-			<Width>82</Width>
-			<HorizontalStretch>false</HorizontalStretch>
 			<Group>Vertical</Group>
 			<Representation>NormalSeparation</Representation>
 			<ExtendedTooltip name="SettingsOtherExtendedTooltip" id="179"/>
 			<ChildItems>
 				<UsualGroup name="Group1" id="209">
+					<Width>43</Width>
+					<HorizontalStretch>false</HorizontalStretch>
 					<Group>Horizontal</Group>
 					<Representation>None</Representation>
 					<ChildItemsWidth>Equal</ChildItemsWidth>
 					<ShowTitle>false</ShowTitle>
 					<ExtendedTooltip name="Group1ExtendedTooltip" id="210"/>
 					<ChildItems>
-						<LabelDecoration name="Decoration1" id="211">
-							<HorizontalStretch>true</HorizontalStretch>
-							<ContextMenu name="Decoration1ContextMenu" id="212"/>
-							<ExtendedTooltip name="Decoration1ExtendedTooltip" id="213"/>
-						</LabelDecoration>
 						<Button name="CatalogEventStates" id="200">
 							<Type>Hyperlink</Type>
 							<CommandName>Form.Command.CatalogEventStates</CommandName>
@@ -573,11 +662,12 @@
 								</v8:item>
 							</ToolTip>
 							<ToolTipRepresentation>ShowBottom</ToolTipRepresentation>
+							<Width>43</Width>
+							<HorizontalStretch>false</HorizontalStretch>
 							<Group>Horizontal</Group>
 							<Representation>None</Representation>
 							<ShowTitle>false</ShowTitle>
 							<ExtendedTooltip name="SettingUseIncomeAndExpensesAccountingCashMethodIncomeAndCostsSOnExtendedTooltip" id="182">
-								<Height>3</Height>
 								<Title formatted="false">
 									<v8:item>
 										<v8:lang>en</v8:lang>
@@ -666,41 +756,55 @@
 					<ShowTitle>false</ShowTitle>
 					<ExtendedTooltip name="Group10ExtendedTooltip" id="189"/>
 					<ChildItems>
-						<CheckBoxField name="ProductsAndServicesSKUInContent" id="90">
-							<DataPath>ConstantsSet.ProductsAndServicesSKUInContent</DataPath>
+						<UsualGroup name="ProductsAndServicesSKUInContentGroup" id="238">
 							<Title>
 								<v8:item>
 									<v8:lang>en</v8:lang>
-									<v8:content>Include products and services SKU in print forms</v8:content>
-								</v8:item>
-								<v8:item>
-									<v8:lang>ru</v8:lang>
-									<v8:content>Включать артикул номенклатуры в содержание ПФ</v8:content>
+									<v8:content>Products and services SKUIn content group</v8:content>
 								</v8:item>
 							</Title>
-							<TitleLocation>Right</TitleLocation>
-							<ToolTipRepresentation>ShowBottom</ToolTipRepresentation>
-							<CheckBoxType>Auto</CheckBoxType>
-							<ContextMenu name="ProductsAndServicesSKUInContentContextMenu" id="91"/>
-							<ExtendedTooltip name="ProductsAndServicesSKUInContentExtendedTooltip" id="187">
-								<Height>2</Height>
-								<Title formatted="false">
-									<v8:item>
-										<v8:lang>en</v8:lang>
-										<v8:content>When generating print forms, products and services SKU will be added to the field which contains a full name.
+							<Width>43</Width>
+							<HorizontalStretch>false</HorizontalStretch>
+							<Representation>None</Representation>
+							<ShowTitle>false</ShowTitle>
+							<ExtendedTooltip name="ProductsAndServicesSKUInContentGroupExtendedTooltip" id="239"/>
+							<ChildItems>
+								<CheckBoxField name="ProductsAndServicesSKUInContent" id="90">
+									<DataPath>ConstantsSet.ProductsAndServicesSKUInContent</DataPath>
+									<Title>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Include products and services SKU in print forms</v8:content>
+										</v8:item>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Включать артикул номенклатуры в содержание ПФ</v8:content>
+										</v8:item>
+									</Title>
+									<TitleLocation>Right</TitleLocation>
+									<ToolTipRepresentation>ShowBottom</ToolTipRepresentation>
+									<CheckBoxType>Auto</CheckBoxType>
+									<ContextMenu name="ProductsAndServicesSKUInContentContextMenu" id="91"/>
+									<ExtendedTooltip name="ProductsAndServicesSKUInContentExtendedTooltip" id="187">
+										<Title formatted="false">
+											<v8:item>
+												<v8:lang>en</v8:lang>
+												<v8:content>When generating print forms, products and services SKU will be added to the field which contains a full name.
 </v8:content>
-									</v8:item>
-									<v8:item>
-										<v8:lang>ru</v8:lang>
-										<v8:content>При формировании печатных форм в поле, которое содержит полное наименование, будет добавляться артикул номенклатуры.
+											</v8:item>
+											<v8:item>
+												<v8:lang>ru</v8:lang>
+												<v8:content>При формировании печатных форм в поле, которое содержит полное наименование, будет добавляться артикул номенклатуры.
 </v8:content>
-									</v8:item>
-								</Title>
-							</ExtendedTooltip>
-							<Events>
-								<Event name="OnChange">ProductsAndServicesSKUInContentOnChange</Event>
-							</Events>
-						</CheckBoxField>
+											</v8:item>
+										</Title>
+									</ExtendedTooltip>
+									<Events>
+										<Event name="OnChange">ProductsAndServicesSKUInContentOnChange</Event>
+									</Events>
+								</CheckBoxField>
+							</ChildItems>
+						</UsualGroup>
 						<UsualGroup name="SettingsForAccountingNonCurrentAssetsFD" id="127">
 							<Title>
 								<v8:item>
@@ -723,11 +827,12 @@
 								</v8:item>
 							</ToolTip>
 							<ToolTipRepresentation>ShowBottom</ToolTipRepresentation>
+							<Width>43</Width>
+							<HorizontalStretch>false</HorizontalStretch>
 							<Group>Horizontal</Group>
 							<Representation>None</Representation>
 							<ShowTitle>false</ShowTitle>
 							<ExtendedTooltip name="SettingsForAccountingNonCurrentAssetsSFOExtendedTooltip" id="194">
-								<Height>2</Height>
 								<Title formatted="false">
 									<v8:item>
 										<v8:lang>en</v8:lang>
@@ -778,7 +883,8 @@
 					</ChildItems>
 				</UsualGroup>
 				<UsualGroup name="Group11" id="214">
-					<HorizontalStretch>true</HorizontalStretch>
+					<Width>43</Width>
+					<HorizontalStretch>false</HorizontalStretch>
 					<Group>Vertical</Group>
 					<Representation>None</Representation>
 					<ChildItemsWidth>Equal</ChildItemsWidth>
