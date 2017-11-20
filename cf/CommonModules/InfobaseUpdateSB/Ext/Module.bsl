@@ -1023,7 +1023,7 @@ Procedure FillCalculationParametersAndAccrualKinds()
 		NewQueryParameter = ParameterCalculationsPieceDevelopment.QueryParameters.Add();
 		NewQueryParameter.Name = "Department";
 		NewQueryParameter.Presentation = "Department";
-
+		
 		ParameterCalculationsPieceDevelopment.Query =
 		"SELECT
 		|	Source.ImportActualTurnover
@@ -1037,86 +1037,85 @@ Procedure FillCalculationParametersAndAccrualKinds()
 		ParameterCalculationsPieceDevelopment.Write();
 		
 	EndIf;
-
+	
 	// Accruals kinds
 	If Not SmallBusinessServer.AccrualAndDeductionKindsInitialFillingPerformed() Then
 		
 		// Groups
-		NewAccrual 			 = Catalogs.AccrualAndDeductionKinds.CreateFolder();
-		NewAccrual.Description = "accrual";
-		NewAccrual.Write(); 
-
-		GroupAccrual 			 = NewAccrual.Ref;
-
-		NewAccrual 			 = Catalogs.AccrualAndDeductionKinds.CreateFolder();
+		NewAccrual = Catalogs.AccrualAndDeductionKinds.CreateFolder();
+		NewAccrual.Description = "Accruals";
+		NewAccrual.Write();
+		GroupAccrual = NewAccrual.Ref;
+		
+		NewAccrual = Catalogs.AccrualAndDeductionKinds.CreateFolder();
 		NewAccrual.Description = "Deductions";
 		NewAccrual.Write();
-
+		
 		// Salary by days
-		NewAccrual 					= Catalogs.AccrualAndDeductionKinds.CreateItem();
-		NewAccrual.Parent 			= GroupAccrual;
-		NewAccrual.Description 		= "Salary by days";
-		NewAccrual.Type 				= Enums.AccrualAndDeductionTypes.Accrual;
-		NewAccrual.GLExpenseAccount			= ChartsOfAccounts.Managerial.AdministrativeExpenses;
-		NewAccrual.Formula				= "[TariffRate] * [DaysWorked] / [NormDays]";
+		NewAccrual = Catalogs.AccrualAndDeductionKinds.CreateItem();
+		NewAccrual.Parent = GroupAccrual;
+		NewAccrual.Description = "Salary by days";
+		NewAccrual.Type = Enums.AccrualAndDeductionTypes.Accrual;
+		NewAccrual.GLExpenseAccount = ChartsOfAccounts.Managerial.AdministrativeExpenses;
+		NewAccrual.Formula = "[TariffRate] * [DaysWorked] / [NormDays]";
 		NewAccrual.Write();
 		
 		// Salary by hours
-		NewAccrual 					= Catalogs.AccrualAndDeductionKinds.CreateItem();
-		NewAccrual.Parent 			= GroupAccrual;
-		NewAccrual.Description 		= "Salary by hours";
-		NewAccrual.Type 				= Enums.AccrualAndDeductionTypes.Accrual;
-		NewAccrual.GLExpenseAccount			= ChartsOfAccounts.Managerial.IndirectExpenses;
-		NewAccrual.Formula 			= "[TariffRate] * [HoursWorked] / [NormHours]";
+		NewAccrual = Catalogs.AccrualAndDeductionKinds.CreateItem();
+		NewAccrual.Parent = GroupAccrual;
+		NewAccrual.Description = "Salary by hours";
+		NewAccrual.Type = Enums.AccrualAndDeductionTypes.Accrual;
+		NewAccrual.GLExpenseAccount = ChartsOfAccounts.Managerial.IndirectExpenses;
+		NewAccrual.Formula = "[TariffRate] * [HoursWorked] / [NormHours]";
 		NewAccrual.Write();
-
+		
 		// Payment by jobs
-		NewAccrual 					= Catalogs.AccrualAndDeductionKinds.CreateItem();
-		NewAccrual.Parent 			= GroupAccrual;
-		NewAccrual.Description 		= "Payment by jobs";
-		NewAccrual.Type 				= Enums.AccrualAndDeductionTypes.Accrual;
-		NewAccrual.GLExpenseAccount			= ChartsOfAccounts.Managerial.UnfinishedProduction;
-		NewAccrual.Formula 			= "[TariffRate] * [HoursProcessedByJobs]";
+		NewAccrual = Catalogs.AccrualAndDeductionKinds.CreateItem();
+		NewAccrual.Parent = GroupAccrual;
+		NewAccrual.Description = "Payment by jobs";
+		NewAccrual.Type = Enums.AccrualAndDeductionTypes.Accrual;
+		NewAccrual.GLExpenseAccount = ChartsOfAccounts.Managerial.UnfinishedProduction;
+		NewAccrual.Formula = "[TariffRate] * [HoursProcessedByJobs]";
 		NewAccrual.Write();
 		
 		// Sales fee by responsible
-		NewAccrual 					= Catalogs.AccrualAndDeductionKinds.CreateItem();
-		NewAccrual.Parent 			= GroupAccrual;
-		NewAccrual.Description 		= "Sales fee by responsible";
-		NewAccrual.Type 				= Enums.AccrualAndDeductionTypes.Accrual;
-		NewAccrual.GLExpenseAccount			= ChartsOfAccounts.Managerial.UnfinishedProduction;
-		NewAccrual.Formula 			= "[SalesAmountByResponsible]  /  100 * [TariffRate]";
+		NewAccrual = Catalogs.AccrualAndDeductionKinds.CreateItem();
+		NewAccrual.Parent = GroupAccrual;
+		NewAccrual.Description = "Sales fee by responsible";
+		NewAccrual.Type = Enums.AccrualAndDeductionTypes.Accrual;
+		NewAccrual.GLExpenseAccount = ChartsOfAccounts.Managerial.UnfinishedProduction;
+		NewAccrual.Formula = "[SalesAmountByResponsible]  /  100 * [TariffRate]";
 		NewAccrual.Write();
 		
 		// Payment by job sheets
-		NewAccrualReference				= Catalogs.AccrualAndDeductionKinds.PieceRatePayment;
-		NewAccrual						= NewAccrualReference.GetObject();
-		NewAccrual.Parent 			= GroupAccrual;
-		NewAccrual.Description 		= "Accord payment (tariff)";
-		NewAccrual.Type 				= Enums.AccrualAndDeductionTypes.Accrual;
-		NewAccrual.GLExpenseAccount			= ChartsOfAccounts.Managerial.UnfinishedProduction;
-		NewAccrual.Formula 			= "";
+		NewAccrualReference = Catalogs.AccrualAndDeductionKinds.PieceRatePayment;
+		NewAccrual = NewAccrualReference.GetObject();
+		NewAccrual.Parent = GroupAccrual;
+		NewAccrual.Description = "Accord payment (tariff)";
+		NewAccrual.Type = Enums.AccrualAndDeductionTypes.Accrual;
+		NewAccrual.GLExpenseAccount = ChartsOfAccounts.Managerial.UnfinishedProduction;
+		NewAccrual.Formula = "";
 		NewAccrual.Write();
 		
 		// Accord payment in percent
-		NewAccrualReference				= Catalogs.AccrualAndDeductionKinds.PieceRatePaymentPercent;
-		NewAccrual						= NewAccrualReference.GetObject();
-		NewAccrual.Parent 			= GroupAccrual;
-		NewAccrual.Description 		= "Accord payment (% from amount)";
-		NewAccrual.Type 				= Enums.AccrualAndDeductionTypes.Accrual;
-		NewAccrual.GLExpenseAccount			= ChartsOfAccounts.Managerial.UnfinishedProduction;
-		NewAccrual.Formula 			= "";
+		NewAccrualReference = Catalogs.AccrualAndDeductionKinds.PieceRatePaymentPercent;
+		NewAccrual = NewAccrualReference.GetObject();
+		NewAccrual.Parent = GroupAccrual;
+		NewAccrual.Description = "Accord payment (% from amount)";
+		NewAccrual.Type = Enums.AccrualAndDeductionTypes.Accrual;
+		NewAccrual.GLExpenseAccount = ChartsOfAccounts.Managerial.UnfinishedProduction;
+		NewAccrual.Formula = "";
 		NewAccrual.Write();
 		
 		//Fixed amount
-		NewAccrualReference				= Catalogs.AccrualAndDeductionKinds.FixedAmount;
-		NewAccrual						= NewAccrualReference.GetObject();
-		NewAccrual.Code					= "";
-		NewAccrual.Parent 			= GroupAccrual;
-		NewAccrual.Description 		= "Accord payment (fixed amount)";
-		NewAccrual.Type 				= Enums.AccrualAndDeductionTypes.Accrual;
-		NewAccrual.GLExpenseAccount			= ChartsOfAccounts.Managerial.UnfinishedProduction;
-		NewAccrual.Formula 			= "[FixedAmount]";
+		NewAccrualReference = Catalogs.AccrualAndDeductionKinds.FixedAmount;
+		NewAccrual = NewAccrualReference.GetObject();
+		NewAccrual.Code = "";
+		NewAccrual.Parent = GroupAccrual;
+		NewAccrual.Description = "Accord payment (fixed amount)";
+		NewAccrual.Type = Enums.AccrualAndDeductionTypes.Accrual;
+		NewAccrual.GLExpenseAccount = ChartsOfAccounts.Managerial.UnfinishedProduction;
+		NewAccrual.Formula = "[FixedAmount]";
 		NewAccrual.SetNewCode();
 		NewAccrual.Write();
 		
