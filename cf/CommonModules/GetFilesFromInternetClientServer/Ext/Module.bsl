@@ -252,14 +252,14 @@ Function GetFileFromInternet(Val URL, Val SaveSetting, Val ConnectionOptions = U
 		Try
 			Join = New HTTPConnection(ServerName, Port, UserName, UserPassword, Proxy, Timeout, SecureConnection);
 		Except
-			ErrorInfo = ErrorInfo();
-			ErrorInfo = NStr("en='Cannot establish HTTP connection with the %1 server:';ru='Не удалось установить HTTP-соединение с сервером %1:'") + Chars.LF + "%2";
+			ErrorInfo    = ErrorInfo();
+			ErrorMessage = NStr("en='Cannot establish HTTP connection with the %1 server:';ru='Не удалось установить HTTP-соединение с сервером %1:'") + Chars.LF + "%2";
 			WriteErrorInEventLogMonitor(
-				StringFunctionsClientServer.SubstituteParametersInString(ErrorInfo, ServerName, 
+				StringFunctionsClientServer.SubstituteParametersInString(ErrorMessage, ServerName, 
 					DetailErrorDescription(ErrorInfo)));
-			ErrorInfo = StringFunctionsClientServer.SubstituteParametersInString(ErrorInfo, ServerName, 
+			ErrorMessage = StringFunctionsClientServer.SubstituteParametersInString(ErrorMessage, ServerName, 
 					BriefErrorDescription(ErrorInfo));
-			Return GenerateResult(False, ErrorInfo);
+			Return GenerateResult(False, ErrorMessage);
 		EndTry;
 	EndIf;
 	
@@ -290,11 +290,11 @@ Function GetFileFromInternet(Val URL, Val SaveSetting, Val ConnectionOptions = U
 		EndIf;
 		
 	Except
-		ErrorInfo = ErrorInfo();
-		ErrorInfo = NStr("en='Cannot receive the file from server %1:';ru='Не удалось получить файл с сервера %1:'") + Chars.LF + "%2";
+		ErrorInfo    = ErrorInfo();
+		ErrorMessage = NStr("en='Cannot receive the file from server %1:';ru='Не удалось получить файл с сервера %1:'") + Chars.LF + "%2";
 		If RecordError Then
 			WriteErrorInEventLogMonitor(
-				StringFunctionsClientServer.SubstituteParametersInString(ErrorInfo, ServerName, 
+				StringFunctionsClientServer.SubstituteParametersInString(ErrorMessage, ServerName, 
 				DetailErrorDescription(ErrorInfo)));
 		EndIf;
 		Return GenerateResult(False, BriefErrorDescription(ErrorInfo));
