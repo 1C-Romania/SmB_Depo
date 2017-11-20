@@ -18,10 +18,6 @@ Procedure OnCreateAtServer(Cancel, StandardProcessing)
 	AdditionalReportsAndDataProcessors.OnCreateAtServer(ThisForm);
 	// End StandardSubsystems.AdditionalReportsAndDataProcessors
 	
-	// StandardSubsystems.Printing
-	PrintManagement.OnCreateAtServer(ThisForm);
-	// End StandardSubsystems.Printing
-	
 	// StandardSubsystems.Properties
 	PropertiesManagement.OnCreateAtServer(ThisForm, Object, "GroupAdditionalAttributes");
 	// End StandardSubsystems.Properties
@@ -175,13 +171,6 @@ Procedure AdditionalReportsAndProcessingsExecuteAllocatedCommandAtServer(ItemNam
 	
 EndProcedure
 // End StandardSubsystems.AdditionalReportsAndDataProcessors
-
-// StandardSubsystems.Printing
-&AtClient
-Procedure Attachable_ExecutePrintCommand(Command)
-	PrintManagementClient.ExecuteConnectedPrintCommand(Command, ThisObject, Object);
-EndProcedure
-// End StandardSubsystems.Printing
 
 // StandardSubsystems.Properties
 &AtClient
