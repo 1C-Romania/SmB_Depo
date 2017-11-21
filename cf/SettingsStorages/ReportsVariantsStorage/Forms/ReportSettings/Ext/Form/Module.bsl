@@ -1112,7 +1112,7 @@ EndProcedure
 &AtClient
 Procedure SelectedFields_Group(Command)
 	Script = New Structure;
-	Script.Insert("Steps", "FieldsTablesDefineSelectedRows, InputTitle, FieldsTablesGroup, UpdateForm");
+	Script.Insert("Steps", "FieldsTablesDefineSelectedRows, InputTitle, GroupFieldsTables, RefreshForm");
 	Script.Insert("Action", "Group");
 	Script.Insert("TableName", "SelectedFields");
 	Script.Insert("DCGroupType", Type("DataCompositionSelectedFieldGroup"));
@@ -1267,7 +1267,7 @@ EndProcedure
 &AtClient
 Procedure Filters_Group(Command)
 	Script = New Structure;
-	Script.Insert("Steps", "FieldsTablesDefineSelectedRows, FieldsTablesGroup, UpdateForm");
+	Script.Insert("Steps", "FieldsTablesDefineSelectedRows, GroupFieldsTables, UpdateForm");
 	Script.Insert("Action", "Group");
 	Script.Insert("TableName", "Filters");
 	Script.Insert("DCGroupType", Type("DataCompositionFilterItemGroup"));
