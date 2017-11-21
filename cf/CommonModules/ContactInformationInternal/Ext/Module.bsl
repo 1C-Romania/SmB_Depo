@@ -961,17 +961,17 @@ EndFunction
 //
 Function AddressPresentation(XDTOAddress, InformationKind) Export
 	
-	If XDTOAddress.AddressLine1 <> Undefined And  XDTOAddress.AddressLine2 <> Undefined Then//data is passed from the first address inpup form
+	FormationParameters = New Structure("IncludeCountryInPresentation", False);
+	FillPropertyValues(FormationParameters, InformationKind);
+	
+	If XDTOAddress.AddressLine1 <> Undefined And  XDTOAddress.AddressLine2 <> Undefined Then // Data is passed from the first address input form.
 		Return ContactInformationClientServer.FullDescr(TrimAll(XDTOAddress.AddressLine1), "", TrimAll(XDTOAddress.AddressLine2), "", TrimAll(XDTOAddress.City), "",
-			TrimAll(XDTOAddress.State), "", TrimAll(XDTOAddress.PostalCode), "", TrimAll(XDTOAddress.Country));	
+			TrimAll(XDTOAddress.State), "", TrimAll(XDTOAddress.PostalCode), "", ?(FormationParameters.IncludeCountryInPresentation, TrimAll(XDTOAddress.Country), ""));
 	EndIf;
 	
 	// 1) Country, if necessary.
 	// 2) Postal code, state, county, city, settlement, street
 	// 3) Building, unit
-	
-	FormationParameters = New Structure("IncludeCountryInPresentation", False);
-	FillPropertyValues(FormationParameters, InformationKind);
 	
 	Namespace = ContactInformationClientServerCached.Namespace();
 	AddressUS         = XDTOAddress.Content;
