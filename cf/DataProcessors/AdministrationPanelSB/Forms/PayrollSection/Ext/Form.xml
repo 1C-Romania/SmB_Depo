@@ -6,7 +6,6 @@
 			<v8:content>Payroll</v8:content>
 		</v8:item>
 	</Title>
-	<Width>84</Width>
 	<AutoTitle>false</AutoTitle>
 	<Customizable>false</Customizable>
 	<VerticalScroll>useIfNecessary</VerticalScroll>
@@ -38,9 +37,6 @@
 			<ExtendedTooltip name="GroupHeaderExtendedTooltip" id="163"/>
 			<ChildItems>
 				<LabelDecoration name="SectionDescription" id="93">
-					<Width>70</Width>
-					<Height>2</Height>
-					<HorizontalStretch>false</HorizontalStretch>
 					<VerticalStretch>false</VerticalStretch>
 					<Title formatted="false">
 						<v8:item>
@@ -53,6 +49,7 @@
 						</v8:item>
 					</Title>
 					<VerticalAlign>Top</VerticalAlign>
+					<TitleHeight>2</TitleHeight>
 					<ContextMenu name="SectionDescriptionContextMenu" id="94"/>
 					<ExtendedTooltip name="SectionDescriptionExtendedTooltip" id="164"/>
 				</LabelDecoration>
@@ -98,9 +95,6 @@
 					<v8:content>Принятие изменений в веб-клиенте</v8:content>
 				</v8:item>
 			</ToolTip>
-			<Width>82</Width>
-			<HorizontalStretch>false</HorizontalStretch>
-			<VerticalStretch>false</VerticalStretch>
 			<Group>Horizontal</Group>
 			<Representation>None</Representation>
 			<ChildItemsWidth>Equal</ChildItemsWidth>
@@ -176,9 +170,6 @@
 					<v8:content>Штатное расписание</v8:content>
 				</v8:item>
 			</ToolTip>
-			<Width>82</Width>
-			<HorizontalStretch>false</HorizontalStretch>
-			<VerticalStretch>false</VerticalStretch>
 			<Group>Vertical</Group>
 			<Representation>NormalSeparation</Representation>
 			<ExtendedTooltip name="UsageSettingsExtendedTooltip" id="175"/>
@@ -212,6 +203,8 @@
 								</v8:item>
 							</ToolTip>
 							<ToolTipRepresentation>ShowBottom</ToolTipRepresentation>
+							<Width>43</Width>
+							<HorizontalStretch>false</HorizontalStretch>
 							<Group>Horizontal</Group>
 							<Representation>None</Representation>
 							<ShowTitle>false</ShowTitle>
@@ -274,6 +267,8 @@
 								</v8:item>
 							</ToolTip>
 							<ToolTipRepresentation>ShowBottom</ToolTipRepresentation>
+							<Width>43</Width>
+							<HorizontalStretch>false</HorizontalStretch>
 							<Group>Horizontal</Group>
 							<Representation>None</Representation>
 							<ShowTitle>false</ShowTitle>
@@ -355,6 +350,8 @@
 								</v8:item>
 							</ToolTip>
 							<ToolTipRepresentation>ShowBottom</ToolTipRepresentation>
+							<Width>43</Width>
+							<HorizontalStretch>false</HorizontalStretch>
 							<Group>Horizontal</Group>
 							<Representation>None</Representation>
 							<ShowTitle>false</ShowTitle>
@@ -395,10 +392,6 @@
 								</CheckBoxField>
 							</ChildItems>
 						</UsualGroup>
-						<LabelDecoration name="DecorationProportion2" id="140">
-							<ContextMenu name="DecorationProportion2ContextMenu" id="141"/>
-							<ExtendedTooltip name="DecorationProportion2ExtendedTooltip" id="204"/>
-						</LabelDecoration>
 					</ChildItems>
 				</UsualGroup>
 			</ChildItems>
@@ -425,34 +418,38 @@
 					<v8:content>Физические лица и их должности</v8:content>
 				</v8:item>
 			</ToolTip>
-			<Width>82</Width>
-			<HorizontalStretch>false</HorizontalStretch>
 			<Group>Horizontal</Group>
 			<Representation>NormalSeparation</Representation>
 			<ChildItemsWidth>Equal</ChildItemsWidth>
 			<ExtendedTooltip name="PayrollSectionCatalogsExtendedTooltip" id="183"/>
 			<ChildItems>
-				<Button name="CatalogIndividualsDocumentsKinds" id="145">
-					<Type>Hyperlink</Type>
-					<CommandName>Form.Command.CatalogIndividualsDocumentsKinds</CommandName>
-					<ToolTipRepresentation>ShowBottom</ToolTipRepresentation>
-					<ExtendedTooltip name="CatalogOfDocumentsOfPersonsExtendedTooltip" id="191">
-						<Title formatted="false">
-							<v8:item>
-								<v8:lang>en</v8:lang>
-								<v8:content>Go to the "Document kinds of individuals" catalog. The catalog is supplied with populated predefined items.</v8:content>
-							</v8:item>
-							<v8:item>
-								<v8:lang>ru</v8:lang>
-								<v8:content>Переход к справочнику видов документов физических лиц. Справочник поставляется заполненным предопределенными элементами.</v8:content>
-							</v8:item>
-						</Title>
-					</ExtendedTooltip>
-				</Button>
-				<LabelDecoration name="Decoration1" id="216">
-					<ContextMenu name="Decoration1ContextMenu" id="217"/>
-					<ExtendedTooltip name="Decoration1ExtendedTooltip" id="218"/>
-				</LabelDecoration>
+				<UsualGroup name="Group3" id="216">
+					<Width>43</Width>
+					<HorizontalStretch>false</HorizontalStretch>
+					<Group>Horizontal</Group>
+					<Representation>None</Representation>
+					<ShowTitle>false</ShowTitle>
+					<ExtendedTooltip name="Group3ExtendedTooltip" id="217"/>
+					<ChildItems>
+						<Button name="CatalogIndividualsDocumentsKinds" id="145">
+							<Type>Hyperlink</Type>
+							<CommandName>Form.Command.CatalogIndividualsDocumentsKinds</CommandName>
+							<ToolTipRepresentation>ShowBottom</ToolTipRepresentation>
+							<ExtendedTooltip name="CatalogOfDocumentsOfPersonsExtendedTooltip" id="191">
+								<Title formatted="false">
+									<v8:item>
+										<v8:lang>en</v8:lang>
+										<v8:content>Go to the "Document kinds of individuals" catalog. The catalog is supplied with populated predefined items.</v8:content>
+									</v8:item>
+									<v8:item>
+										<v8:lang>ru</v8:lang>
+										<v8:content>Переход к справочнику видов документов физических лиц. Справочник поставляется заполненным предопределенными элементами.</v8:content>
+									</v8:item>
+								</Title>
+							</ExtendedTooltip>
+						</Button>
+					</ChildItems>
+				</UsualGroup>
 			</ChildItems>
 		</UsualGroup>
 	</ChildItems>

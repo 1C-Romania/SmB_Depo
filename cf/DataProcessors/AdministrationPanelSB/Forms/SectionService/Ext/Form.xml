@@ -10,7 +10,6 @@
 			<v8:content>Сервис</v8:content>
 		</v8:item>
 	</Title>
-	<Width>84</Width>
 	<AutoTitle>false</AutoTitle>
 	<Customizable>false</Customizable>
 	<VerticalScroll>useIfNecessary</VerticalScroll>
@@ -42,10 +41,6 @@
 			<ExtendedTooltip name="GroupHeaderExtendedTooltip" id="137"/>
 			<ChildItems>
 				<LabelDecoration name="SectionDescription" id="93">
-					<Width>70</Width>
-					<Height>2</Height>
-					<HorizontalStretch>false</HorizontalStretch>
-					<VerticalStretch>false</VerticalStretch>
 					<Title formatted="false">
 						<v8:item>
 							<v8:lang>en</v8:lang>
@@ -59,23 +54,6 @@
 					<VerticalAlign>Top</VerticalAlign>
 					<ContextMenu name="SectionDescriptionContextMenu" id="94"/>
 					<ExtendedTooltip name="SectionDescriptionExtendedTooltip" id="138"/>
-				</LabelDecoration>
-				<LabelDecoration name="IndentDecoration" id="95">
-					<HorizontalStretch>true</HorizontalStretch>
-					<Title formatted="false">
-						<v8:item>
-							<v8:lang>en</v8:lang>
-							<v8:content> </v8:content>
-						</v8:item>
-					</Title>
-					<ToolTip>
-						<v8:item>
-							<v8:lang>en</v8:lang>
-							<v8:content> </v8:content>
-						</v8:item>
-					</ToolTip>
-					<ContextMenu name="IndentDecorationContextMenu" id="96"/>
-					<ExtendedTooltip name="IndentDecorationExtendedTooltip" id="139"/>
 				</LabelDecoration>
 			</ChildItems>
 		</UsualGroup>
@@ -102,9 +80,6 @@
 					<v8:content>Принятие изменений в веб-клиенте</v8:content>
 				</v8:item>
 			</ToolTip>
-			<Width>82</Width>
-			<HorizontalStretch>false</HorizontalStretch>
-			<VerticalStretch>false</VerticalStretch>
 			<Group>Horizontal</Group>
 			<Representation>None</Representation>
 			<ChildItemsWidth>Equal</ChildItemsWidth>
@@ -193,66 +168,85 @@
 					<ShowTitle>false</ShowTitle>
 					<ExtendedTooltip name="Group1ExtendedTooltip" id="150"/>
 					<ChildItems>
-						<CheckBoxField name="UseJobOrderStates" id="108">
-							<DataPath>ConstantsSet.UseCustomerOrderStates</DataPath>
-							<Title>
-								<v8:item>
-									<v8:lang>en</v8:lang>
-									<v8:content>Several job order states</v8:content>
-								</v8:item>
-								<v8:item>
-									<v8:lang>ru</v8:lang>
-									<v8:content>Несколько состояний заказ-наряда</v8:content>
-								</v8:item>
-							</Title>
-							<TitleLocation>Right</TitleLocation>
-							<ToolTipRepresentation>ShowBottom</ToolTipRepresentation>
-							<CheckBoxType>Auto</CheckBoxType>
-							<ContextMenu name="UseJobOrderStatesContextMenu" id="109"/>
-							<ExtendedTooltip name="UseJobOrderStatesExtendedTooltip" id="151">
-								<Title formatted="false">
-									<v8:item>
-										<v8:lang>en</v8:lang>
-										<v8:content>Enable this option to use several states for documents of the "Job order" kind (3 and more). If the option is disabled, you can edit job order states in the attributes below.</v8:content>
-									</v8:item>
-									<v8:item>
-										<v8:lang>ru</v8:lang>
-										<v8:content>Включение этой опции позволяет использовать несколько состояний для документов вида Заказ-наряд (три и более). При выключенной опции состояния заказ-нарядов редактируются в реквизитах ниже.</v8:content>
-									</v8:item>
-								</Title>
-							</ExtendedTooltip>
-							<Events>
-								<Event name="OnChange">UseJobOrderStatesOnChange</Event>
-							</Events>
-						</CheckBoxField>
-						<Button name="CatalogJobOrderStates" id="124">
-							<Type>Hyperlink</Type>
-							<CommandName>Form.Command.CatalogJobOrderStates</CommandName>
-							<Title>
-								<v8:item>
-									<v8:lang>en</v8:lang>
-									<v8:content>Job order states catalog</v8:content>
-								</v8:item>
-								<v8:item>
-									<v8:lang>ru</v8:lang>
-									<v8:content>Справочник "Состояния заказ-нарядов"</v8:content>
-								</v8:item>
-							</Title>
-							<ToolTipRepresentation>ShowBottom</ToolTipRepresentation>
-							<ExtendedTooltip name="CatalogJobOrderStatesExtendedTooltip" id="161">
-								<Height>5</Height>
-								<Title formatted="false">
-									<v8:item>
-										<v8:lang>en</v8:lang>
-										<v8:content>Go to the "Job order states" catalog. Use this catalog to create any number of states of a certain kind. To go to the catalog, enable the "Several job order states" option.</v8:content>
-									</v8:item>
-									<v8:item>
-										<v8:lang>ru</v8:lang>
-										<v8:content>Переход к справочнику состояний заказ-нарядов. Справочник предназначен для самостоятельного создания произвольного количества состояний определенных видов. Для перехода к справочнику необходимо включить опцию "Несколько состояний заказ-нарядов".</v8:content>
-									</v8:item>
-								</Title>
-							</ExtendedTooltip>
-						</Button>
+						<UsualGroup name="Group2" id="170">
+							<Width>43</Width>
+							<HorizontalStretch>false</HorizontalStretch>
+							<Group>Horizontal</Group>
+							<Representation>None</Representation>
+							<ShowTitle>false</ShowTitle>
+							<ExtendedTooltip name="Group2ExtendedTooltip" id="171"/>
+							<ChildItems>
+								<CheckBoxField name="UseJobOrderStates" id="108">
+									<DataPath>ConstantsSet.UseCustomerOrderStates</DataPath>
+									<Title>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Several job order states</v8:content>
+										</v8:item>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Несколько состояний заказ-наряда</v8:content>
+										</v8:item>
+									</Title>
+									<TitleLocation>Right</TitleLocation>
+									<ToolTipRepresentation>ShowBottom</ToolTipRepresentation>
+									<CheckBoxType>Auto</CheckBoxType>
+									<ContextMenu name="UseJobOrderStatesContextMenu" id="109"/>
+									<ExtendedTooltip name="UseJobOrderStatesExtendedTooltip" id="151">
+										<Title formatted="false">
+											<v8:item>
+												<v8:lang>en</v8:lang>
+												<v8:content>Enable this option to use several states for documents of the "Job order" kind (3 and more). If the option is disabled, you can edit job order states in the attributes below.</v8:content>
+											</v8:item>
+											<v8:item>
+												<v8:lang>ru</v8:lang>
+												<v8:content>Включение этой опции позволяет использовать несколько состояний для документов вида Заказ-наряд (три и более). При выключенной опции состояния заказ-нарядов редактируются в реквизитах ниже.</v8:content>
+											</v8:item>
+										</Title>
+									</ExtendedTooltip>
+									<Events>
+										<Event name="OnChange">UseJobOrderStatesOnChange</Event>
+									</Events>
+								</CheckBoxField>
+							</ChildItems>
+						</UsualGroup>
+						<UsualGroup name="Group3" id="172">
+							<Width>43</Width>
+							<HorizontalStretch>false</HorizontalStretch>
+							<Group>Horizontal</Group>
+							<Representation>None</Representation>
+							<ShowTitle>false</ShowTitle>
+							<ExtendedTooltip name="Group3ExtendedTooltip" id="173"/>
+							<ChildItems>
+								<Button name="CatalogJobOrderStates" id="124">
+									<Type>Hyperlink</Type>
+									<CommandName>Form.Command.CatalogJobOrderStates</CommandName>
+									<Title>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Job order states catalog</v8:content>
+										</v8:item>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Справочник "Состояния заказ-нарядов"</v8:content>
+										</v8:item>
+									</Title>
+									<ToolTipRepresentation>ShowBottom</ToolTipRepresentation>
+									<ExtendedTooltip name="CatalogJobOrderStatesExtendedTooltip" id="161">
+										<Title formatted="false">
+											<v8:item>
+												<v8:lang>en</v8:lang>
+												<v8:content>Go to the "Job order states" catalog. Use this catalog to create any number of states of a certain kind. To go to the catalog, enable the "Several job order states" option.</v8:content>
+											</v8:item>
+											<v8:item>
+												<v8:lang>ru</v8:lang>
+												<v8:content>Переход к справочнику состояний заказ-нарядов. Справочник предназначен для самостоятельного создания произвольного количества состояний определенных видов. Для перехода к справочнику необходимо включить опцию "Несколько состояний заказ-нарядов".</v8:content>
+											</v8:item>
+										</Title>
+									</ExtendedTooltip>
+								</Button>
+							</ChildItems>
+						</UsualGroup>
 					</ChildItems>
 				</UsualGroup>
 				<UsualGroup name="SettingJobOrderStatesDefault" id="112">
@@ -346,10 +340,6 @@
 								</InputField>
 							</ChildItems>
 						</UsualGroup>
-						<LabelDecoration name="Decoration1" id="170">
-							<ContextMenu name="Decoration1ContextMenu" id="171"/>
-							<ExtendedTooltip name="Decoration1ExtendedTooltip" id="172"/>
-						</LabelDecoration>
 					</ChildItems>
 				</UsualGroup>
 			</ChildItems>

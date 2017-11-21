@@ -10,7 +10,6 @@
 			<v8:content>Деньги</v8:content>
 		</v8:item>
 	</Title>
-	<Width>89</Width>
 	<AutoTitle>false</AutoTitle>
 	<Customizable>false</Customizable>
 	<VerticalScroll>useIfNecessary</VerticalScroll>
@@ -42,9 +41,6 @@
 			<ExtendedTooltip name="GroupHeaderExtendedTooltip" id="200"/>
 			<ChildItems>
 				<LabelDecoration name="SectionDescription" id="93">
-					<Width>70</Width>
-					<HorizontalStretch>false</HorizontalStretch>
-					<VerticalStretch>false</VerticalStretch>
 					<Title formatted="false">
 						<v8:item>
 							<v8:lang>en</v8:lang>
@@ -56,6 +52,7 @@
 						</v8:item>
 					</Title>
 					<VerticalAlign>Top</VerticalAlign>
+					<TitleHeight>2</TitleHeight>
 					<ContextMenu name="SectionDescriptionContextMenu" id="94"/>
 					<ExtendedTooltip name="SectionDescriptionExtendedTooltip" id="201"/>
 				</LabelDecoration>
@@ -101,19 +98,26 @@
 					<v8:content>Принятие изменений в веб-клиенте</v8:content>
 				</v8:item>
 			</ToolTip>
-			<Width>82</Width>
-			<HorizontalStretch>false</HorizontalStretch>
-			<VerticalStretch>false</VerticalStretch>
 			<Group>Horizontal</Group>
 			<Representation>None</Representation>
 			<ChildItemsWidth>Equal</ChildItemsWidth>
 			<ShowTitle>false</ShowTitle>
 			<ExtendedTooltip name="WEBApplicationExtendedTooltip" id="254"/>
 			<ChildItems>
-				<LabelDecoration name="DecorationProportion3" id="257">
-					<ContextMenu name="DecorationProportion3ContextMenu" id="258"/>
-					<ExtendedTooltip name="DecorationProportion3ExtendedTooltip" id="259"/>
-				</LabelDecoration>
+				<Button name="UpdateSystemParameters" id="268">
+					<Type>UsualButton</Type>
+					<CommandName>Form.Command.UpdateSystemParameters</CommandName>
+					<Font ref="sys:DefaultGUIFont" kind="WindowsFont"/>
+					<ToolTipRepresentation>ShowBottom</ToolTipRepresentation>
+					<ExtendedTooltip name="UpdateSystemParametersExtendedTooltip" id="269">
+						<Title formatted="false">
+							<v8:item>
+								<v8:lang>en</v8:lang>
+								<v8:content>For the changes to enter into force, it is necessary to update the application parameters or to restart the application.</v8:content>
+							</v8:item>
+						</Title>
+					</ExtendedTooltip>
+				</Button>
 			</ChildItems>
 		</UsualGroup>
 		<UsualGroup name="SettingsCurrency" id="5">
@@ -124,7 +128,7 @@
 				</v8:item>
 				<v8:item>
 					<v8:lang>ru</v8:lang>
-					<v8:content>Вал.</v8:content>
+					<v8:content>Валюта</v8:content>
 				</v8:item>
 			</Title>
 			<TitleTextColor>style:TitleColorSettingsGroup</TitleTextColor>
@@ -138,8 +142,6 @@
 					<v8:content>Вал.</v8:content>
 				</v8:item>
 			</ToolTip>
-			<Width>82</Width>
-			<HorizontalStretch>false</HorizontalStretch>
 			<Group>Vertical</Group>
 			<Representation>NormalSeparation</Representation>
 			<ExtendedTooltip name="SettingsCurrencyExtendedTooltip" id="211"/>
@@ -151,57 +153,76 @@
 					<ShowTitle>false</ShowTitle>
 					<ExtendedTooltip name="Group1ExtendedTooltip" id="212"/>
 					<ChildItems>
-						<CheckBoxField name="FunctionalCurrencyTransactionsAccounting" id="107">
-							<DataPath>ConstantsSet.FunctionalCurrencyTransactionsAccounting</DataPath>
-							<Title>
-								<v8:item>
-									<v8:lang>en</v8:lang>
-									<v8:content>Keep records in foreign currency</v8:content>
-								</v8:item>
-								<v8:item>
-									<v8:lang>ru</v8:lang>
-									<v8:content>Вести учет операций в валюте</v8:content>
-								</v8:item>
-							</Title>
-							<TitleLocation>Right</TitleLocation>
-							<ToolTipRepresentation>ShowBottom</ToolTipRepresentation>
-							<CheckBoxType>Auto</CheckBoxType>
-							<ContextMenu name="FunctionalCurrencyTransactionsAccountingContextMenu" id="108"/>
-							<ExtendedTooltip name="FunctionalCurrencyTransactionsAccountingExtendedTooltip" id="213">
-								<Height>5</Height>
-								<Title formatted="false">
-									<v8:item>
-										<v8:lang>en</v8:lang>
-										<v8:content>If it is necessary to keep records of transactions in several currencies, enable this option. The parameter affects the currency display, exchange rates and currency multiplicity in the corresponding objects, e.g. in the form of prices and currency selection opened from the documents.</v8:content>
-									</v8:item>
-									<v8:item>
-										<v8:lang>ru</v8:lang>
-										<v8:content>Если необходимо вести учет операций в нескольких валютах, то необходимо включить эту опцию. Параметр влияет на отображение валюты, курсов и кратности валюты в соответствующих объектах, например, в форме выбора цен и валюты, вызываемой из документов.</v8:content>
-									</v8:item>
-								</Title>
-							</ExtendedTooltip>
-							<Events>
-								<Event name="OnChange">FunctionalCurrencyTransactionsAccountingOnChange</Event>
-							</Events>
-						</CheckBoxField>
-						<Button name="CatalogCurrencies" id="128">
-							<Type>Hyperlink</Type>
-							<SkipOnInput>false</SkipOnInput>
-							<CommandName>Form.Command.CatalogCurrencies</CommandName>
-							<ToolTipRepresentation>ShowBottom</ToolTipRepresentation>
-							<ExtendedTooltip name="CatalogCurrenciesExtendedTooltip" id="223">
-								<Title formatted="false">
-									<v8:item>
-										<v8:lang>en</v8:lang>
-										<v8:content>Go to the Currencies catalog. You can use it only after you select the "Keep records in foreign currency" check box.</v8:content>
-									</v8:item>
-									<v8:item>
-										<v8:lang>ru</v8:lang>
-										<v8:content>Переход к справочнику валют. Использование возможно после включения опции "Вести учет операций в валюте".</v8:content>
-									</v8:item>
-								</Title>
-							</ExtendedTooltip>
-						</Button>
+						<UsualGroup name="Group3" id="270">
+							<Width>43</Width>
+							<HorizontalStretch>false</HorizontalStretch>
+							<Group>Horizontal</Group>
+							<Representation>None</Representation>
+							<ShowTitle>false</ShowTitle>
+							<ExtendedTooltip name="Group3ExtendedTooltip" id="271"/>
+							<ChildItems>
+								<CheckBoxField name="FunctionalCurrencyTransactionsAccounting" id="107">
+									<DataPath>ConstantsSet.FunctionalCurrencyTransactionsAccounting</DataPath>
+									<Title>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Keep records in foreign currency</v8:content>
+										</v8:item>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Вести учет операций в валюте</v8:content>
+										</v8:item>
+									</Title>
+									<TitleLocation>Right</TitleLocation>
+									<ToolTipRepresentation>ShowBottom</ToolTipRepresentation>
+									<CheckBoxType>Auto</CheckBoxType>
+									<ContextMenu name="FunctionalCurrencyTransactionsAccountingContextMenu" id="108"/>
+									<ExtendedTooltip name="FunctionalCurrencyTransactionsAccountingExtendedTooltip" id="213">
+										<Title formatted="false">
+											<v8:item>
+												<v8:lang>en</v8:lang>
+												<v8:content>If it is necessary to keep records of transactions in several currencies, enable this option. The parameter affects the currency display, exchange rates and currency multiplicity in the corresponding objects, e.g. in the form of prices and currency selection opened from the documents.</v8:content>
+											</v8:item>
+											<v8:item>
+												<v8:lang>ru</v8:lang>
+												<v8:content>Если необходимо вести учет операций в нескольких валютах, то необходимо включить эту опцию. Параметр влияет на отображение валюты, курсов и кратности валюты в соответствующих объектах, например, в форме выбора цен и валюты, вызываемой из документов.</v8:content>
+											</v8:item>
+										</Title>
+									</ExtendedTooltip>
+									<Events>
+										<Event name="OnChange">FunctionalCurrencyTransactionsAccountingOnChange</Event>
+									</Events>
+								</CheckBoxField>
+							</ChildItems>
+						</UsualGroup>
+						<UsualGroup name="Group4" id="272">
+							<Width>43</Width>
+							<HorizontalStretch>false</HorizontalStretch>
+							<Group>Horizontal</Group>
+							<Representation>None</Representation>
+							<ShowTitle>false</ShowTitle>
+							<ExtendedTooltip name="Group4ExtendedTooltip" id="273"/>
+							<ChildItems>
+								<Button name="CatalogCurrencies" id="128">
+									<Type>Hyperlink</Type>
+									<SkipOnInput>false</SkipOnInput>
+									<CommandName>Form.Command.CatalogCurrencies</CommandName>
+									<ToolTipRepresentation>ShowBottom</ToolTipRepresentation>
+									<ExtendedTooltip name="CatalogCurrenciesExtendedTooltip" id="223">
+										<Title formatted="false">
+											<v8:item>
+												<v8:lang>en</v8:lang>
+												<v8:content>Go to the Currencies catalog. You can use it only after you select the "Keep records in foreign currency" check box.</v8:content>
+											</v8:item>
+											<v8:item>
+												<v8:lang>ru</v8:lang>
+												<v8:content>Переход к справочнику валют. Использование возможно после включения опции "Вести учет операций в валюте".</v8:content>
+											</v8:item>
+										</Title>
+									</ExtendedTooltip>
+								</Button>
+							</ChildItems>
+						</UsualGroup>
 					</ChildItems>
 				</UsualGroup>
 				<UsualGroup name="Group2" id="100">
@@ -232,7 +253,8 @@
 									<v8:content>Функциональная учет валютных операций настройки</v8:content>
 								</v8:item>
 							</ToolTip>
-							<HorizontalStretch>true</HorizontalStretch>
+							<Width>43</Width>
+							<HorizontalStretch>false</HorizontalStretch>
 							<Group>Vertical</Group>
 							<Representation>None</Representation>
 							<ShowTitle>false</ShowTitle>
@@ -326,6 +348,7 @@
 								</v8:item>
 							</ToolTip>
 							<ToolTipRepresentation>ShowBottom</ToolTipRepresentation>
+							<HorizontalStretch>false</HorizontalStretch>
 							<Group>Horizontal</Group>
 							<Representation>None</Representation>
 							<ShowTitle>false</ShowTitle>
@@ -444,8 +467,6 @@ options are possible: • &lt;b&gt;At the moment of operation performing&lt;/&gt
 					<v8:content>Авансы и долги</v8:content>
 				</v8:item>
 			</ToolTip>
-			<Width>82</Width>
-			<HorizontalStretch>false</HorizontalStretch>
 			<Group>Horizontal</Group>
 			<Representation>NormalSeparation</Representation>
 			<ChildItemsWidth>Equal</ChildItemsWidth>
@@ -473,6 +494,8 @@ options are possible: • &lt;b&gt;At the moment of operation performing&lt;/&gt
 						</v8:item>
 					</ToolTip>
 					<ToolTipRepresentation>ShowBottom</ToolTipRepresentation>
+					<Width>43</Width>
+					<HorizontalStretch>false</HorizontalStretch>
 					<Group>Horizontal</Group>
 					<Representation>None</Representation>
 					<ShowTitle>false</ShowTitle>
@@ -563,10 +586,6 @@ options are possible: • &lt;b&gt;Yes&lt;/&gt;. Before writing the document, th
 						</RadioButtonField>
 					</ChildItems>
 				</UsualGroup>
-				<LabelDecoration name="DecorationProportion1" id="169">
-					<ContextMenu name="DecorationProportion1ContextMenu" id="170"/>
-					<ExtendedTooltip name="DecorationProportion1ExtendedTooltip" id="238"/>
-				</LabelDecoration>
 			</ChildItems>
 		</UsualGroup>
 		<UsualGroup name="SettingsPaymentCalendar" id="171">
@@ -591,8 +610,6 @@ options are possible: • &lt;b&gt;Yes&lt;/&gt;. Before writing the document, th
 					<v8:content>Платежный календарь</v8:content>
 				</v8:item>
 			</ToolTip>
-			<Width>82</Width>
-			<HorizontalStretch>false</HorizontalStretch>
 			<Group>Horizontal</Group>
 			<Representation>NormalSeparation</Representation>
 			<ChildItemsWidth>Equal</ChildItemsWidth>
@@ -620,11 +637,12 @@ options are possible: • &lt;b&gt;Yes&lt;/&gt;. Before writing the document, th
 						</v8:item>
 					</ToolTip>
 					<ToolTipRepresentation>ShowBottom</ToolTipRepresentation>
+					<Width>43</Width>
+					<HorizontalStretch>false</HorizontalStretch>
 					<Group>Horizontal</Group>
 					<Representation>None</Representation>
 					<ShowTitle>false</ShowTitle>
 					<ExtendedTooltip name="PaymentCalendarSettingsFOExtendedTooltip" id="247">
-						<Height>3</Height>
 						<Title formatted="false">
 							<v8:item>
 								<v8:lang>en</v8:lang>
@@ -671,10 +689,6 @@ options are possible: • &lt;b&gt;Yes&lt;/&gt;. Before writing the document, th
 						</CheckBoxField>
 					</ChildItems>
 				</UsualGroup>
-				<LabelDecoration name="DecorationProportion2" id="190">
-					<ContextMenu name="DecorationProportion2ContextMenu" id="191"/>
-					<ExtendedTooltip name="DecorationProportion2ExtendedTooltip" id="252"/>
-				</LabelDecoration>
 			</ChildItems>
 		</UsualGroup>
 		<UsualGroup name="SettingsAdditionally" id="263">
@@ -699,32 +713,40 @@ options are possible: • &lt;b&gt;Yes&lt;/&gt;. Before writing the document, th
 					<v8:content>Дополнительно</v8:content>
 				</v8:item>
 			</ToolTip>
-			<Width>82</Width>
-			<HorizontalStretch>false</HorizontalStretch>
 			<Group>Vertical</Group>
 			<Representation>NormalSeparation</Representation>
 			<ExtendedTooltip name="SettingsAdditionallyExtendedTooltip" id="264"/>
 			<ChildItems>
-				<CheckBoxField name="FunctionalOptionUseBankCharges" id="265">
-					<DataPath>ConstantsSet.FunctionalOptionUseBankCharges</DataPath>
-					<Title>
-						<v8:item>
-							<v8:lang>en</v8:lang>
-							<v8:content>Bank charges</v8:content>
-						</v8:item>
-						<v8:item>
-							<v8:lang>ru</v8:lang>
-							<v8:content>Банковские комиссии</v8:content>
-						</v8:item>
-					</Title>
-					<TitleLocation>Right</TitleLocation>
-					<CheckBoxType>Auto</CheckBoxType>
-					<ContextMenu name="FunctionalOptionUseBankChargesContextMenu" id="266"/>
-					<ExtendedTooltip name="FunctionalOptionUseBankChargesExtendedTooltip" id="267"/>
-					<Events>
-						<Event name="OnChange">FunctionalOptionUseBankChargesOnChange</Event>
-					</Events>
-				</CheckBoxField>
+				<UsualGroup name="Group5" id="274">
+					<Width>43</Width>
+					<HorizontalStretch>false</HorizontalStretch>
+					<Group>Horizontal</Group>
+					<Representation>None</Representation>
+					<ShowTitle>false</ShowTitle>
+					<ExtendedTooltip name="Group5ExtendedTooltip" id="275"/>
+					<ChildItems>
+						<CheckBoxField name="FunctionalOptionUseBankCharges" id="265">
+							<DataPath>ConstantsSet.FunctionalOptionUseBankCharges</DataPath>
+							<Title>
+								<v8:item>
+									<v8:lang>en</v8:lang>
+									<v8:content>Bank charges</v8:content>
+								</v8:item>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Банковские комиссии</v8:content>
+								</v8:item>
+							</Title>
+							<TitleLocation>Right</TitleLocation>
+							<CheckBoxType>Auto</CheckBoxType>
+							<ContextMenu name="FunctionalOptionUseBankChargesContextMenu" id="266"/>
+							<ExtendedTooltip name="FunctionalOptionUseBankChargesExtendedTooltip" id="267"/>
+							<Events>
+								<Event name="OnChange">FunctionalOptionUseBankChargesOnChange</Event>
+							</Events>
+						</CheckBoxField>
+					</ChildItems>
+				</UsualGroup>
 			</ChildItems>
 		</UsualGroup>
 	</ChildItems>

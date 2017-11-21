@@ -10,7 +10,6 @@
 			<v8:content>Производство</v8:content>
 		</v8:item>
 	</Title>
-	<Width>84</Width>
 	<AutoTitle>false</AutoTitle>
 	<Customizable>false</Customizable>
 	<VerticalScroll>useIfNecessary</VerticalScroll>
@@ -43,10 +42,7 @@
 			<ExtendedTooltip name="GroupHeaderExtendedTooltip" id="173"/>
 			<ChildItems>
 				<LabelDecoration name="SectionDescription" id="93">
-					<Width>70</Width>
-					<Height>2</Height>
-					<HorizontalStretch>false</HorizontalStretch>
-					<VerticalStretch>false</VerticalStretch>
+					<AutoMaxWidth>false</AutoMaxWidth>
 					<Title formatted="false">
 						<v8:item>
 							<v8:lang>en</v8:lang>
@@ -58,25 +54,9 @@
 						</v8:item>
 					</Title>
 					<VerticalAlign>Top</VerticalAlign>
+					<TitleHeight>2</TitleHeight>
 					<ContextMenu name="SectionDescriptionContextMenu" id="94"/>
 					<ExtendedTooltip name="SectionDescriptionExtendedTooltip" id="174"/>
-				</LabelDecoration>
-				<LabelDecoration name="IndentDecoration" id="95">
-					<HorizontalStretch>true</HorizontalStretch>
-					<Title formatted="false">
-						<v8:item>
-							<v8:lang>en</v8:lang>
-							<v8:content> </v8:content>
-						</v8:item>
-					</Title>
-					<ToolTip>
-						<v8:item>
-							<v8:lang>en</v8:lang>
-							<v8:content> </v8:content>
-						</v8:item>
-					</ToolTip>
-					<ContextMenu name="IndentDecorationContextMenu" id="96"/>
-					<ExtendedTooltip name="IndentDecorationExtendedTooltip" id="175"/>
 				</LabelDecoration>
 			</ChildItems>
 		</UsualGroup>
@@ -103,9 +83,6 @@
 					<v8:content>Принятие изменений в веб-клиенте</v8:content>
 				</v8:item>
 			</ToolTip>
-			<Width>82</Width>
-			<HorizontalStretch>false</HorizontalStretch>
-			<VerticalStretch>false</VerticalStretch>
 			<Group>Horizontal</Group>
 			<Representation>None</Representation>
 			<ChildItemsWidth>Equal</ChildItemsWidth>
@@ -131,10 +108,6 @@
 						</Title>
 					</ExtendedTooltip>
 				</Button>
-				<LabelDecoration name="DecorationProportion3" id="214">
-					<ContextMenu name="DecorationProportion3ContextMenu" id="215"/>
-					<ExtendedTooltip name="DecorationProportion3ExtendedTooltip" id="216"/>
-				</LabelDecoration>
 			</ChildItems>
 		</UsualGroup>
 		<CheckBoxField name="FunctionalOptionUseSubsystemProduction" id="163">
@@ -181,8 +154,6 @@
 					<v8:content>Заказы на производство</v8:content>
 				</v8:item>
 			</ToolTip>
-			<Width>82</Width>
-			<HorizontalStretch>false</HorizontalStretch>
 			<Group>Vertical</Group>
 			<Representation>NormalSeparation</Representation>
 			<ExtendedTooltip name="SettingsOrderToProductionExtendedTooltip" id="185"/>
@@ -194,56 +165,75 @@
 					<ShowTitle>false</ShowTitle>
 					<ExtendedTooltip name="Group1ExtendedTooltip" id="186"/>
 					<ChildItems>
-						<CheckBoxField name="UseStatusesProductionOrder" id="127">
-							<DataPath>ConstantsSet.UseProductionOrderStates</DataPath>
-							<Title>
-								<v8:item>
-									<v8:lang>en</v8:lang>
-									<v8:content>Several production order states</v8:content>
-								</v8:item>
-								<v8:item>
-									<v8:lang>ru</v8:lang>
-									<v8:content>Несколько состояний заказов на производство</v8:content>
-								</v8:item>
-							</Title>
-							<TitleLocation>Right</TitleLocation>
-							<ToolTipRepresentation>ShowBottom</ToolTipRepresentation>
-							<CheckBoxType>Auto</CheckBoxType>
-							<ContextMenu name="UseStatusesProductionOrderContextMenu" id="128"/>
-							<ExtendedTooltip name="UseOrderStatusesToProductionExtendedTooltip" id="187">
-								<Title formatted="false">
-									<v8:item>
-										<v8:lang>en</v8:lang>
-										<v8:content>Enable this option to use several states for production orders (three and more). If disabled, document states are edited in the attributes below.</v8:content>
-									</v8:item>
-									<v8:item>
-										<v8:lang>ru</v8:lang>
-										<v8:content>Включение этой опции позволяет использовать несколько состояний для производственных заказов (три и более). При выключенной опции состояния документов редактируются в реквизитах ниже.</v8:content>
-									</v8:item>
-								</Title>
-							</ExtendedTooltip>
-							<Events>
-								<Event name="OnChange">UseStatusesProductionOrderOnChange</Event>
-							</Events>
-						</CheckBoxField>
-						<Button name="CatalogProductionOrderStates" id="131">
-							<Type>Hyperlink</Type>
-							<CommandName>Form.Command.CatalogProductionOrderStates</CommandName>
-							<ToolTipRepresentation>ShowBottom</ToolTipRepresentation>
-							<ExtendedTooltip name="CatalogProductionOrderStatesExtendedTooltip" id="197">
-								<Height>5</Height>
-								<Title formatted="false">
-									<v8:item>
-										<v8:lang>en</v8:lang>
-										<v8:content>Go to the "Production order states" catalog. Use the catalog to create arbitrary number of states of definite kinds. To go to the catalog, enable the "Several production order states" option.</v8:content>
-									</v8:item>
-									<v8:item>
-										<v8:lang>ru</v8:lang>
-										<v8:content>Переход к справочнику состояний заказов на производство. Справочник предназначен для самостоятельного создания произвольного количества состояний определенных видов. Для перехода к справочнику необходимо включить опцию "Несколько состояний заказов на производство".</v8:content>
-									</v8:item>
-								</Title>
-							</ExtendedTooltip>
-						</Button>
+						<UsualGroup name="Group2" id="220">
+							<Width>43</Width>
+							<HorizontalStretch>false</HorizontalStretch>
+							<Group>Horizontal</Group>
+							<Representation>None</Representation>
+							<ShowTitle>false</ShowTitle>
+							<ExtendedTooltip name="Group2ExtendedTooltip" id="221"/>
+							<ChildItems>
+								<CheckBoxField name="UseStatusesProductionOrder" id="127">
+									<DataPath>ConstantsSet.UseProductionOrderStates</DataPath>
+									<Title>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Several production order states</v8:content>
+										</v8:item>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Несколько состояний заказов на производство</v8:content>
+										</v8:item>
+									</Title>
+									<TitleLocation>Right</TitleLocation>
+									<ToolTipRepresentation>ShowBottom</ToolTipRepresentation>
+									<CheckBoxType>Auto</CheckBoxType>
+									<ContextMenu name="UseStatusesProductionOrderContextMenu" id="128"/>
+									<ExtendedTooltip name="UseOrderStatusesToProductionExtendedTooltip" id="187">
+										<Title formatted="false">
+											<v8:item>
+												<v8:lang>en</v8:lang>
+												<v8:content>Enable this option to use several states for production orders (three and more). If disabled, document states are edited in the attributes below.</v8:content>
+											</v8:item>
+											<v8:item>
+												<v8:lang>ru</v8:lang>
+												<v8:content>Включение этой опции позволяет использовать несколько состояний для производственных заказов (три и более). При выключенной опции состояния документов редактируются в реквизитах ниже.</v8:content>
+											</v8:item>
+										</Title>
+									</ExtendedTooltip>
+									<Events>
+										<Event name="OnChange">UseStatusesProductionOrderOnChange</Event>
+									</Events>
+								</CheckBoxField>
+							</ChildItems>
+						</UsualGroup>
+						<UsualGroup name="Group3" id="222">
+							<Width>43</Width>
+							<HorizontalStretch>false</HorizontalStretch>
+							<Group>Horizontal</Group>
+							<Representation>None</Representation>
+							<ShowTitle>false</ShowTitle>
+							<ExtendedTooltip name="Group3ExtendedTooltip" id="223"/>
+							<ChildItems>
+								<Button name="CatalogProductionOrderStates" id="131">
+									<Type>Hyperlink</Type>
+									<CommandName>Form.Command.CatalogProductionOrderStates</CommandName>
+									<ToolTipRepresentation>ShowBottom</ToolTipRepresentation>
+									<ExtendedTooltip name="CatalogProductionOrderStatesExtendedTooltip" id="197">
+										<Title formatted="false">
+											<v8:item>
+												<v8:lang>en</v8:lang>
+												<v8:content>Go to the "Production order states" catalog. Use the catalog to create arbitrary number of states of definite kinds. To go to the catalog, enable the "Several production order states" option.</v8:content>
+											</v8:item>
+											<v8:item>
+												<v8:lang>ru</v8:lang>
+												<v8:content>Переход к справочнику состояний заказов на производство. Справочник предназначен для самостоятельного создания произвольного количества состояний определенных видов. Для перехода к справочнику необходимо включить опцию "Несколько состояний заказов на производство".</v8:content>
+											</v8:item>
+										</Title>
+									</ExtendedTooltip>
+								</Button>
+							</ChildItems>
+						</UsualGroup>
 					</ChildItems>
 				</UsualGroup>
 				<UsualGroup name="SettingDefaultProductionOrdersByStatus" id="112">
@@ -367,8 +357,6 @@
 					<v8:content>Прочие</v8:content>
 				</v8:item>
 			</ToolTip>
-			<Width>82</Width>
-			<HorizontalStretch>false</HorizontalStretch>
 			<Group>Horizontal</Group>
 			<Representation>NormalSeparation</Representation>
 			<ChildItemsWidth>Equal</ChildItemsWidth>
@@ -396,6 +384,8 @@
 						</v8:item>
 					</ToolTip>
 					<ToolTipRepresentation>ShowBottom</ToolTipRepresentation>
+					<Width>43</Width>
+					<HorizontalStretch>false</HorizontalStretch>
 					<Group>Horizontal</Group>
 					<Representation>None</Representation>
 					<ShowTitle>false</ShowTitle>
@@ -458,8 +448,8 @@
 						</v8:item>
 					</ToolTip>
 					<ToolTipRepresentation>ShowBottom</ToolTipRepresentation>
-					<Width>48</Width>
-					<HorizontalStretch>true</HorizontalStretch>
+					<Width>43</Width>
+					<HorizontalStretch>false</HorizontalStretch>
 					<Group>Horizontal</Group>
 					<Representation>None</Representation>
 					<ShowTitle>false</ShowTitle>
