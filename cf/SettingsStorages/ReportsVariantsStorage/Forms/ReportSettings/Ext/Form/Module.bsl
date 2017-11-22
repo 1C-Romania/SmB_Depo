@@ -1267,7 +1267,7 @@ EndProcedure
 &AtClient
 Procedure Filters_Group(Command)
 	Script = New Structure;
-	Script.Insert("Steps", "FieldsTablesDefineSelectedRows, GroupFieldsTables, UpdateForm");
+	Script.Insert("Steps", "FieldsTablesDefineSelectedRows, GroupFieldsTables, RefreshForm");
 	Script.Insert("Action", "Group");
 	Script.Insert("TableName", "Filters");
 	Script.Insert("DCGroupType", Type("DataCompositionFilterItemGroup"));
@@ -1858,7 +1858,7 @@ Procedure VariantStructureBeforeDelete(Item, Cancel)
 	EndIf;
 	
 	Script = New Structure;
-	Script.Insert("Steps", "FieldsTablesDefineSelectedRows, FieldsTablesDeleteRows, UpdateForm");
+	Script.Insert("Steps", "FieldsTablesDefineSelectedRows, FieldsTablesDeleteRows, RefreshForm");
 	Script.Insert("Action", "Delete");
 	Script.Insert("TableName", "VariantStructure");
 	
