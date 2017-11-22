@@ -48,7 +48,7 @@ Procedure Delete(ReportKey, VariantKey, User) Export
 	EndIf;
 	
 	If VariantKey = Undefined Then
-		QueryText = StrReplace(QueryText, "And Variants.VariantKey = &VariantKey", "");
+		QueryText = StrReplace(QueryText, "AND Variants.VariantKey = &VariantKey", "");
 	Else
 		Query.SetParameter("VariantKey", VariantKey);
 	EndIf;
