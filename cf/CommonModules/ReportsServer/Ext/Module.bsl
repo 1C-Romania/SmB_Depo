@@ -1528,7 +1528,7 @@ Procedure OutputSettingItems(Form, Items, SettingProperty, OutputGroup, Other) E
 			ItemPeriodType.HorizontalStretch = False;
 			ItemPeriodType.Width                   = 11;
 			ItemPeriodType.TitleLocation       = FormItemTitleLocation.None;
-			ItemPeriodType.SetAction("OnChange", "Attachable_StandardPeriod_Type_OnChange");
+			ItemPeriodType.SetAction("OnChange", "Attachable_StandardPeriod_Kind_OnChange");
 			
 			// Period kind - Selection list.
 			MinimalPeriodicity = Form.ReportSettings.AccordanceFrequencySettings[SettingProperty.DCField];

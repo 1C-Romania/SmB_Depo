@@ -542,7 +542,7 @@ Procedure Attachable_StandardPeriod_Kind_OnChange(Item)
 	PagesName             = SettingPropertiesType + "_Pages_"      + ItemIdentificator;
 	PeriodValueName       = SettingPropertiesType + "_Value_"      + ItemIdentificator;
 	PeriodPresentationName  = SettingPropertiesType + "_Presentation_" + ItemIdentificator;
-	RandomNamePage = SettingPropertiesType + "_PageRandom_" + ItemIdentificator;
+	RandomNamePage = SettingPropertiesType + "_PageCustom_" + ItemIdentificator;
 	StandardNamePage  = SettingPropertiesType + "_PageStandard_" + ItemIdentificator;
 	
 	Value = ThisObject[PeriodValueName];
