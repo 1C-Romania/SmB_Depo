@@ -55,13 +55,13 @@ Procedure Delete(ReportKey, VariantKey, User) Export
 	
 	If User = Undefined Then
 		
-		QueryText = StrReplace(QueryText, "And Variants.Author = &Author", "");
-		QueryText = StrReplace(QueryText, "And Variants.Author.InfobaseUserID = &GUID", "");
+		QueryText = StrReplace(QueryText, "AND Variants.Author = &Author", "");
+		QueryText = StrReplace(QueryText, "AND Variants.Author.InfobaseUserID = &GUID", "");
 	
 	ElsIf TypeOf(User) = Type("CatalogRef.Users") Then
 		
 		Query.SetParameter("Administrator", User);
-		QueryText = StrReplace(QueryText, "And Variants.Author.InfobaseUserID = &GUID", "");
+		QueryText = StrReplace(QueryText, "AND Variants.Author.InfobaseUserID = &GUID", "");
 		
 	Else
 		
@@ -82,7 +82,7 @@ Procedure Delete(ReportKey, VariantKey, User) Export
 		EndIf;
 		
 		Query.SetParameter("GUID", UserID);
-		QueryText = StrReplace(QueryText, "And Variants.Author = &Author", "");
+		QueryText = StrReplace(QueryText, "AND Variants.Author = &Author", "");
 		
 	EndIf;
 	
@@ -154,12 +154,12 @@ Function GetList(ReportKey, User = Undefined) Export
 	If User = Undefined Then
 		
 		Query.SetParameter("Administrator", CurrentUser);
-		Query.Text = StrReplace(Query.Text, "And Variants.Author.InfobaseUserID = &GUID", "");
+		Query.Text = StrReplace(Query.Text, "AND Variants.Author.InfobaseUserID = &GUID", "");
 	
 	ElsIf TypeOf(User) = Type("CatalogRef.Users") Then
 		
 		Query.SetParameter("Administrator", User);
-		Query.Text = StrReplace(Query.Text, "And Variants.Author.InfobaseUserID = &GUID", "");
+		Query.Text = StrReplace(Query.Text, "AND Variants.Author.InfobaseUserID = &GUID", "");
 		
 	Else
 		
