@@ -1247,6 +1247,7 @@
 					<v8:content>Подвал</v8:content>
 				</v8:item>
 			</ToolTip>
+			<HorizontalStretch>true</HorizontalStretch>
 			<Group>Horizontal</Group>
 			<ShowTitle>false</ShowTitle>
 			<ExtendedTooltip name="FooterExtendedTooltip" id="203"/>
@@ -1323,6 +1324,7 @@
 							<v8:content>Totals</v8:content>
 						</v8:item>
 					</ToolTip>
+					<GroupHorizontalAlign>Right</GroupHorizontalAlign>
 					<Group>Horizontal</Group>
 					<Representation>None</Representation>
 					<ShowTitle>false</ShowTitle>
@@ -1341,33 +1343,6 @@
 							<ShowTitle>false</ShowTitle>
 							<ExtendedTooltip name="DiscountTotalExtendedTooltip" id="401"/>
 							<ChildItems>
-								<UsualGroup name="DiscountUOM" id="402">
-									<Title>
-										<v8:item>
-											<v8:lang>en</v8:lang>
-											<v8:content>Discount UOM</v8:content>
-										</v8:item>
-										<v8:item>
-											<v8:lang>ru</v8:lang>
-											<v8:content>Скидки единицы измерения</v8:content>
-										</v8:item>
-									</Title>
-									<Group>Vertical</Group>
-									<Representation>None</Representation>
-									<United>false</United>
-									<ShowTitle>false</ShowTitle>
-									<ExtendedTooltip name="DiscountUOMExtendedTooltip" id="403"/>
-									<ChildItems>
-										<LabelField name="DocumentCurrency" id="404">
-											<DataPath>Object.DocumentCurrency</DataPath>
-											<TitleLocation>None</TitleLocation>
-											<Width>3</Width>
-											<HorizontalStretch>false</HorizontalStretch>
-											<ContextMenu name="DocumentCurrencyContextMenu" id="405"/>
-											<ExtendedTooltip name="DocumentCurrencyExtendedTooltip" id="406"/>
-										</LabelField>
-									</ChildItems>
-								</UsualGroup>
 								<UsualGroup name="Total" id="407">
 									<Title>
 										<v8:item>
@@ -1433,6 +1408,33 @@
 											<ContextMenu name="InventoryTotalContextMenu" id="413"/>
 											<ExtendedTooltip name="InventoryTotalExtendedTooltip" id="414"/>
 										</InputField>
+									</ChildItems>
+								</UsualGroup>
+								<UsualGroup name="DiscountUOM" id="402">
+									<Title>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Discount UOM</v8:content>
+										</v8:item>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Скидки единицы измерения</v8:content>
+										</v8:item>
+									</Title>
+									<Group>Vertical</Group>
+									<Representation>None</Representation>
+									<United>false</United>
+									<ShowTitle>false</ShowTitle>
+									<ExtendedTooltip name="DiscountUOMExtendedTooltip" id="403"/>
+									<ChildItems>
+										<LabelField name="DocumentCurrency" id="404">
+											<DataPath>Object.DocumentCurrency</DataPath>
+											<TitleLocation>None</TitleLocation>
+											<Width>3</Width>
+											<HorizontalStretch>false</HorizontalStretch>
+											<ContextMenu name="DocumentCurrencyContextMenu" id="405"/>
+											<ExtendedTooltip name="DocumentCurrencyExtendedTooltip" id="406"/>
+										</LabelField>
 									</ChildItems>
 								</UsualGroup>
 							</ChildItems>

@@ -1155,16 +1155,12 @@
 					<v8:content>Группа подвала</v8:content>
 				</v8:item>
 			</ToolTip>
+			<HorizontalStretch>true</HorizontalStretch>
 			<Group>Horizontal</Group>
 			<Representation>None</Representation>
 			<ShowTitle>false</ShowTitle>
 			<ExtendedTooltip name="FooterGroupExtendedTooltip" id="252"/>
 			<ChildItems>
-				<LabelDecoration name="DecorationSplitter" id="281">
-					<HorizontalStretch>true</HorizontalStretch>
-					<ContextMenu name="DecorationSplitterContextMenu" id="282"/>
-					<ExtendedTooltip name="DecorationSeparatorExtendedTooltip" id="283"/>
-				</LabelDecoration>
 				<UsualGroup name="AmountCurrency" id="284">
 					<Title>
 						<v8:item>
@@ -1186,6 +1182,8 @@
 							<v8:content>Сумма, валюта</v8:content>
 						</v8:item>
 					</ToolTip>
+					<HorizontalStretch>false</HorizontalStretch>
+					<GroupHorizontalAlign>Right</GroupHorizontalAlign>
 					<Group>Horizontal</Group>
 					<Representation>None</Representation>
 					<ShowTitle>false</ShowTitle>

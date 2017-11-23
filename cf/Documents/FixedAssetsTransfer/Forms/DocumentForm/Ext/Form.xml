@@ -511,16 +511,12 @@
 									<v8:content>Суммы итогов</v8:content>
 								</v8:item>
 							</ToolTip>
+							<HorizontalStretch>true</HorizontalStretch>
 							<Group>Horizontal</Group>
 							<Representation>None</Representation>
 							<ShowTitle>false</ShowTitle>
 							<ExtendedTooltip name="TotalAmountExtendedTooltip" id="203"/>
 							<ChildItems>
-								<LabelDecoration name="Decoration1" id="237">
-									<HorizontalStretch>true</HorizontalStretch>
-									<ContextMenu name="Decoration1ContextMenu" id="238"/>
-									<ExtendedTooltip name="Decoration1ExtendedTooltip" id="239"/>
-								</LabelDecoration>
 								<UsualGroup name="TotalsGroup" id="163">
 									<Title>
 										<v8:item>
@@ -542,6 +538,8 @@
 											<v8:content>Группа итоги</v8:content>
 										</v8:item>
 									</ToolTip>
+									<HorizontalStretch>false</HorizontalStretch>
+									<GroupHorizontalAlign>Right</GroupHorizontalAlign>
 									<Group>Horizontal</Group>
 									<Representation>None</Representation>
 									<ShowTitle>false</ShowTitle>

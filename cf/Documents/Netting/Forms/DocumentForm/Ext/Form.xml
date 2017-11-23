@@ -541,16 +541,12 @@
 									<v8:content>Группа дебитор итог сумма учета</v8:content>
 								</v8:item>
 							</ToolTip>
+							<HorizontalStretch>true</HorizontalStretch>
 							<Group>Horizontal</Group>
 							<Representation>None</Representation>
 							<ShowTitle>false</ShowTitle>
 							<ExtendedTooltip name="GroupDebitorTotalAccountingAmountExtendedTooltip" id="294"/>
 							<ChildItems>
-								<LabelDecoration name="Decoration1" id="295">
-									<HorizontalStretch>true</HorizontalStretch>
-									<ContextMenu name="Decoration1ContextMenu" id="296"/>
-									<ExtendedTooltip name="Decoration1ExtendedTooltip" id="297"/>
-								</LabelDecoration>
 								<UsualGroup name="GroupDebitorTotalAccountingAmount1" id="298">
 									<Title>
 										<v8:item>
@@ -572,6 +568,8 @@
 											<v8:content>Группа дебитор итог сумма учета1</v8:content>
 										</v8:item>
 									</ToolTip>
+									<HorizontalStretch>false</HorizontalStretch>
+									<GroupHorizontalAlign>Right</GroupHorizontalAlign>
 									<Group>Vertical</Group>
 									<Representation>None</Representation>
 									<ShowTitle>false</ShowTitle>

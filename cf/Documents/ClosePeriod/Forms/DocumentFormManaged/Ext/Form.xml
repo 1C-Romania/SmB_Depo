@@ -929,6 +929,12 @@
 			<ShowTitle>false</ShowTitle>
 			<ExtendedTooltip name="FooterGroupExtendedTooltip" id="111"/>
 			<ChildItems>
+				<InputField name="Comment" id="10">
+					<DataPath>Object.Comment</DataPath>
+					<EditMode>EnterOnInput</EditMode>
+					<ContextMenu name="CommentContextMenu" id="11"/>
+					<ExtendedTooltip name="CommentExtendedTooltip" id="12"/>
+				</InputField>
 				<LabelField name="Author" id="7">
 					<DataPath>Object.Author</DataPath>
 					<EditMode>EnterOnInput</EditMode>
@@ -936,12 +942,6 @@
 					<ContextMenu name="AuthorContextMenu" id="8"/>
 					<ExtendedTooltip name="AuthorExtendedTooltip" id="9"/>
 				</LabelField>
-				<InputField name="Comment" id="10">
-					<DataPath>Object.Comment</DataPath>
-					<EditMode>EnterOnInput</EditMode>
-					<ContextMenu name="CommentContextMenu" id="11"/>
-					<ExtendedTooltip name="CommentExtendedTooltip" id="12"/>
-				</InputField>
 			</ChildItems>
 		</UsualGroup>
 	</ChildItems>

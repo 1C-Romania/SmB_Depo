@@ -1325,16 +1325,12 @@
 					<v8:content>Подвал</v8:content>
 				</v8:item>
 			</ToolTip>
+			<HorizontalStretch>true</HorizontalStretch>
 			<Group>Horizontal</Group>
 			<Representation>None</Representation>
 			<ShowTitle>false</ShowTitle>
 			<ExtendedTooltip name="FooterExtendedTooltip" id="252"/>
 			<ChildItems>
-				<LabelDecoration name="Indent" id="279">
-					<HorizontalStretch>true</HorizontalStretch>
-					<ContextMenu name="IndentContextMenu" id="280"/>
-					<ExtendedTooltip name="IndentExtendedTooltip" id="281"/>
-				</LabelDecoration>
 				<UsualGroup name="Totals" id="161">
 					<Title>
 						<v8:item>
@@ -1356,6 +1352,8 @@
 							<v8:content>Итоги</v8:content>
 						</v8:item>
 					</ToolTip>
+					<HorizontalStretch>false</HorizontalStretch>
+					<GroupHorizontalAlign>Right</GroupHorizontalAlign>
 					<Group>Horizontal</Group>
 					<Representation>None</Representation>
 					<ShowTitle>false</ShowTitle>
