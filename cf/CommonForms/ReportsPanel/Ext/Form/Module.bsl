@@ -1759,7 +1759,10 @@ Function AddSubsystemGroup(FillingParameters, OutputOrderString, IntoGroup)
 	
 	GroupSubsystems = Items.Insert(SubsystemGroupName, Type("FormGroup"), IntoGroup);
 	GroupSubsystems.Type = FormGroupType.UsualGroup;
-	GroupSubsystems.HorizontalStretch = True;
+	// Кондратьев. В последней БСП эта строчка есть, но на текущей платформе
+	// (или версии совместимости) она приводит к кривому виду панели отчетов.
+	// Закомментировал до снятия режима совместимости.
+	// GroupSubsystems.HorizontalStretch = True;
 	GroupSubsystems.Group = ChildFormItemsGroup.Vertical;
 	GroupSubsystems.Representation = UsualGroupRepresentation.None;
 	

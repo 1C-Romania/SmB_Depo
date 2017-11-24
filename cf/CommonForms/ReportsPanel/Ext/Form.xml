@@ -96,95 +96,116 @@
 					<ContextMenu name="Decoration1ContextMenu" id="387"/>
 					<ExtendedTooltip name="Decoration1ExtendedTooltip" id="388"/>
 				</LabelDecoration>
-				<CheckBoxField name="ShowToolTips" id="357">
-					<DataPath>ShowToolTips</DataPath>
-					<Visible>false</Visible>
-					<TitleLocation>Right</TitleLocation>
-					<CheckBoxType>Auto</CheckBoxType>
-					<ContextMenu name="ShowToolTipsForContextMenu" id="358"/>
-					<ExtendedTooltip name="ShowToolTipsExtendedTooltip" id="359"/>
-					<Events>
-						<Event name="OnChange">ShowToolTipsOnChange</Event>
-					</Events>
-				</CheckBoxField>
-				<CommandBar name="CommandBar" id="307">
+				<UsualGroup name="GroupCommandBarRight" id="389">
 					<Title>
 						<v8:item>
 							<v8:lang>en</v8:lang>
-							<v8:content> </v8:content>
+							<v8:content>Group command bar right</v8:content>
 						</v8:item>
 					</Title>
 					<ToolTip>
 						<v8:item>
 							<v8:lang>en</v8:lang>
-							<v8:content> </v8:content>
+							<v8:content>Group command bar right</v8:content>
 						</v8:item>
 					</ToolTip>
-					<Width>26</Width>
-					<Height>1</Height>
-					<HorizontalStretch>false</HorizontalStretch>
-					<HorizontalLocation>Right</HorizontalLocation>
-					<CommandSource>Form</CommandSource>
-					<ExtendedTooltip name="CommandBarExtendedTooltip" id="308"/>
+					<HorizontalStretch>true</HorizontalStretch>
+					<HorizontalAlign>Right</HorizontalAlign>
+					<Representation>None</Representation>
+					<ShowTitle>false</ShowTitle>
+					<ExtendedTooltip name="GroupCommandBarRightExtendedTooltip" id="390"/>
 					<ChildItems>
-						<Button name="Configure" id="231">
-							<Type>CommandBarButton</Type>
-							<OnlyInAllActions>true</OnlyInAllActions>
-							<Width>12</Width>
-							<CommandName>Form.Command.Configure</CommandName>
-							<ExtendedTooltip name="SetupExtendedTooltip" id="269"/>
-						</Button>
-						<Button name="FormRefresh" id="263">
-							<Type>CommandBarButton</Type>
-							<OnlyInAllActions>false</OnlyInAllActions>
-							<CommandName>Form.Command.Refresh</CommandName>
-							<ExtendedTooltip name="FormRefreshExtendedTooltip" id="272"/>
-						</Button>
-						<Button name="FormAllReports" id="360">
-							<Type>CommandBarButton</Type>
-							<OnlyInAllActions>false</OnlyInAllActions>
-							<CommandName>Form.Command.AllReports</CommandName>
-							<ExtendedTooltip name="AllReportsFormExtendedTooltip" id="361"/>
-						</Button>
-						<ButtonGroup name="Settings" id="309">
+						<CheckBoxField name="ShowToolTips" id="357">
+							<DataPath>ShowToolTips</DataPath>
+							<Visible>false</Visible>
+							<TitleLocation>Right</TitleLocation>
+							<CheckBoxType>Auto</CheckBoxType>
+							<ContextMenu name="ShowToolTipsForContextMenu" id="358"/>
+							<ExtendedTooltip name="ShowToolTipsExtendedTooltip" id="359"/>
+							<Events>
+								<Event name="OnChange">ShowToolTipsOnChange</Event>
+							</Events>
+						</CheckBoxField>
+						<CommandBar name="CommandBar" id="307">
 							<Title>
 								<v8:item>
 									<v8:lang>en</v8:lang>
-									<v8:content>Settings</v8:content>
-								</v8:item>
-								<v8:item>
-									<v8:lang>ru</v8:lang>
-									<v8:content>Настройки</v8:content>
+									<v8:content> </v8:content>
 								</v8:item>
 							</Title>
 							<ToolTip>
 								<v8:item>
 									<v8:lang>en</v8:lang>
-									<v8:content>Settings</v8:content>
-								</v8:item>
-								<v8:item>
-									<v8:lang>ru</v8:lang>
-									<v8:content>Настройки</v8:content>
+									<v8:content> </v8:content>
 								</v8:item>
 							</ToolTip>
-							<ExtendedTooltip name="SettingsExtendedTooltip" id="310"/>
+							<Width>26</Width>
+							<Height>1</Height>
+							<HorizontalStretch>false</HorizontalStretch>
+							<HorizontalLocation>Right</HorizontalLocation>
+							<CommandSource>Form</CommandSource>
+							<ExtendedTooltip name="CommandBarExtendedTooltip" id="308"/>
 							<ChildItems>
-								<Button name="DropMySettings" id="239">
+								<Button name="Configure" id="231">
+									<Type>CommandBarButton</Type>
+									<OnlyInAllActions>true</OnlyInAllActions>
+									<Width>12</Width>
+									<CommandName>Form.Command.Configure</CommandName>
+									<ExtendedTooltip name="SetupExtendedTooltip" id="269"/>
+								</Button>
+								<Button name="FormRefresh" id="263">
 									<Type>CommandBarButton</Type>
 									<OnlyInAllActions>false</OnlyInAllActions>
-									<CommandName>Form.Command.DropMySettings</CommandName>
-									<ExtendedTooltip name="DropMySettingsExtendedTooltip" id="273"/>
+									<CommandName>Form.Command.Refresh</CommandName>
+									<ExtendedTooltip name="FormRefreshExtendedTooltip" id="272"/>
+								</Button>
+								<Button name="FormAllReports" id="360">
+									<Type>CommandBarButton</Type>
+									<OnlyInAllActions>false</OnlyInAllActions>
+									<CommandName>Form.Command.AllReports</CommandName>
+									<ExtendedTooltip name="AllReportsFormExtendedTooltip" id="361"/>
+								</Button>
+								<ButtonGroup name="Settings" id="309">
+									<Title>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Settings</v8:content>
+										</v8:item>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Настройки</v8:content>
+										</v8:item>
+									</Title>
+									<ToolTip>
+										<v8:item>
+											<v8:lang>en</v8:lang>
+											<v8:content>Settings</v8:content>
+										</v8:item>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Настройки</v8:content>
+										</v8:item>
+									</ToolTip>
+									<ExtendedTooltip name="SettingsExtendedTooltip" id="310"/>
+									<ChildItems>
+										<Button name="DropMySettings" id="239">
+											<Type>CommandBarButton</Type>
+											<OnlyInAllActions>false</OnlyInAllActions>
+											<CommandName>Form.Command.DropMySettings</CommandName>
+											<ExtendedTooltip name="DropMySettingsExtendedTooltip" id="273"/>
+										</Button>
+									</ChildItems>
+								</ButtonGroup>
+								<Button name="FormChangeForm" id="264">
+									<Type>CommandBarButton</Type>
+									<OnlyInAllActions>false</OnlyInAllActions>
+									<CommandName>Form.StandardCommand.CustomizeForm</CommandName>
+									<ExtendedTooltip name="FormChangeFormExtendedTooltip" id="275"/>
 								</Button>
 							</ChildItems>
-						</ButtonGroup>
-						<Button name="FormChangeForm" id="264">
-							<Type>CommandBarButton</Type>
-							<OnlyInAllActions>false</OnlyInAllActions>
-							<CommandName>Form.StandardCommand.CustomizeForm</CommandName>
-							<ExtendedTooltip name="FormChangeFormExtendedTooltip" id="275"/>
-						</Button>
+						</CommandBar>
 					</ChildItems>
-				</CommandBar>
+				</UsualGroup>
 			</ChildItems>
 		</UsualGroup>
 		<UsualGroup name="Columns" id="3">
